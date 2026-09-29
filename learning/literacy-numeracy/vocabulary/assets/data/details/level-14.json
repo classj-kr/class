@@ -9626,6 +9626,1933 @@
      "en": "Very excited."
     }
    ]
+  },
+  "1792": {
+   "word": "nonetheless",
+   "overview": [
+    "nonetheless는 '그럼에도 불구하고, 그렇지만'이라는 뜻의 부사입니다.",
+    "앞 내용과 반대되거나 뜻밖의 내용을 이어 말할 때 씁니다.",
+    "nevertheless와 거의 같은 뜻이고, however보다 조금 더 격식 있는 말입니다.",
+    "문장 앞, 가운데, 끝에 모두 올 수 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "even so",
+     "en": "Even so, I'll go.",
+     "ko": "그래도 저는 갈 거예요."
+    },
+    {
+     "word": "still",
+     "en": "Still, it was fun.",
+     "ko": "그래도 재미있었어요."
+    }
+   ],
+   "etymology": [
+    "nonetheless는 none(전혀 ~ 않다), the(그만큼), less(덜)가 합쳐진 단어입니다.",
+    "'그것 때문에 조금도 덜하지 않게'라는 뜻입니다.",
+    "앞의 어려움이 있어도 뒤의 사실이 전혀 약해지지 않는다는 느낌을 줍니다.",
+    "그래서 '그럼에도 불구하고'라는 뜻으로 굳어졌습니다.",
+    "nonetheless의 핵심 이미지는 '걸림돌이 있어도 꿋꿋이 이어지는 것 💪'입니다."
+   ],
+   "meanings": [
+    "그럼에도 불구하고, 그렇지만"
+   ],
+   "examples": [
+    {
+     "en": "The weather was bad. Nonetheless, we had fun.",
+     "ko": "날씨는 나빴어요. 그래도 우리는 즐겁게 놀았어요."
+    },
+    {
+     "en": "It's a small school, but nonetheless a good one.",
+     "ko": "작은 학교지만 그래도 좋은 학교예요."
+    },
+    {
+     "en": "She was tired; nonetheless, she finished the race.",
+     "ko": "그녀는 지쳤지만 그럼에도 경주를 끝까지 마쳤어요."
+    },
+    {
+     "en": "The test was hard. He passed nonetheless.",
+     "ko": "시험은 어려웠어요. 그래도 그는 합격했어요."
+    },
+    {
+     "en": "I knew the answer; nonetheless, I was nervous.",
+     "ko": "답을 알았지만 그래도 긴장됐어요."
+    },
+    {
+     "en": "The plan has risks. Nonetheless, it's worth trying.",
+     "ko": "그 계획엔 위험이 있어요. 그래도 해 볼 만해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "nevertheless",
+     "ko": "그럼에도 불구하고",
+     "en": "Nevertheless, we tried."
+    },
+    {
+     "type": "유의어",
+     "word": "however",
+     "ko": "하지만",
+     "en": "However, it rained."
+    },
+    {
+     "type": "연관어",
+     "word": "even so",
+     "ko": "그렇더라도",
+     "en": "Even so, thanks."
+    },
+    {
+     "type": "연관어",
+     "word": "still",
+     "ko": "그래도",
+     "en": "Still, I agree."
+    },
+    {
+     "type": "연관어",
+     "word": "despite",
+     "ko": "~에도 불구하고",
+     "en": "Despite the rain."
+    },
+    {
+     "type": "연관어",
+     "word": "although",
+     "ko": "비록 ~이지만",
+     "en": "Although it's late."
+    }
+   ]
+  },
+  "1093": {
+   "word": "flaw",
+   "overview": [
+    "flaw는 '결함, 흠'이라는 뜻의 명사입니다.",
+    "a flaw in the design(설계상의 결함)처럼 씁니다.",
+    "'(성격상의) 결점, (논리의) 허점'이라는 뜻으로도 자주 씁니다.",
+    "형용사 flawed(결함 있는), flawless(흠 없는, 완벽한)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fault",
+     "en": "A small fault.",
+     "ko": "작은 결점."
+    },
+    {
+     "word": "defect",
+     "en": "A product defect.",
+     "ko": "제품 결함."
+    }
+   ],
+   "etymology": [
+    "flaw는 중세 영어 flawe(조각, 파편)에서 온 단어로 봅니다.",
+    "스칸디나비아 말에서 '얇게 떨어져 나간 조각'을 뜻하던 말과 관련이 있습니다.",
+    "무언가에서 조각이 떨어져 나가 생긴 금이나 흠이라는 뜻이 되었습니다.",
+    "물건의 흠뿐 아니라 계획, 논리, 성격의 약점까지 가리키게 되었습니다.",
+    "flaw의 핵심 이미지는 '매끈한 표면에 난 작은 금 💎⚡'입니다."
+   ],
+   "meanings": [
+    "(사물의) 결함, 흠",
+    "(성격·논리의) 결점, 허점",
+    "금이 가다"
+   ],
+   "examples": [
+    {
+     "en": "There's a small flaw in this glass.",
+     "ko": "이 유리잔에는 작은 흠이 있어요."
+    },
+    {
+     "en": "Everyone has flaws.",
+     "ko": "누구에게나 결점이 있어요."
+    },
+    {
+     "en": "The teacher found a flaw in my argument.",
+     "ko": "선생님이 제 주장의 허점을 찾아내셨어요."
+    },
+    {
+     "en": "The company recalled cars with a safety flaw.",
+     "ko": "그 회사는 안전 결함이 있는 차들을 회수했어요."
+    },
+    {
+     "en": "Her performance was flawless.",
+     "ko": "그녀의 공연은 흠잡을 데가 없었어요."
+    },
+    {
+     "en": "The plan has one fatal flaw.",
+     "ko": "그 계획에는 치명적인 결함이 하나 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fault",
+     "ko": "결점",
+     "en": "It's not my fault."
+    },
+    {
+     "type": "유의어",
+     "word": "defect",
+     "ko": "결함",
+     "en": "A birth defect."
+    },
+    {
+     "type": "반의어",
+     "word": "strength",
+     "ko": "장점",
+     "en": "Your greatest strength."
+    },
+    {
+     "type": "파생어",
+     "word": "flawless",
+     "ko": "흠 없는",
+     "en": "Flawless skin."
+    },
+    {
+     "type": "파생어",
+     "word": "flawed",
+     "ko": "결함 있는",
+     "en": "A flawed plan."
+    },
+    {
+     "type": "연관어",
+     "word": "weakness",
+     "ko": "약점",
+     "en": "A big weakness."
+    }
+   ]
+  },
+  "2075": {
+   "word": "prominent",
+   "overview": [
+    "prominent는 '저명한, 유명한'이라는 뜻의 형용사입니다.",
+    "a prominent scientist(저명한 과학자)처럼 씁니다.",
+    "'두드러진, 눈에 잘 띄는'이라는 뜻으로도 씁니다. (a prominent place)",
+    "'(신체 부위가) 튀어나온'이라는 뜻도 있고, 명사 prominence(명성, 두드러짐)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "famous",
+     "en": "A famous writer.",
+     "ko": "유명한 작가."
+    },
+    {
+     "word": "noticeable",
+     "en": "A noticeable sign.",
+     "ko": "눈에 띄는 표지판."
+    }
+   ],
+   "etymology": [
+    "prominent는 라틴어 prominere(앞으로 튀어나오다)에서 온 단어입니다.",
+    "pro(앞으로)와 minere(튀어나오다)가 합쳐진 말입니다.",
+    "'주변보다 앞으로 불쑥 튀어나온'이라는 뜻에서 시작되었습니다.",
+    "눈에 잘 띄는 것, 그리고 사회에서 두드러지게 이름난 사람을 가리키게 되었습니다.",
+    "prominent의 핵심 이미지는 '무리 속에서 불쑥 튀어나와 눈에 띄는 것 ⛰️'입니다."
+   ],
+   "meanings": [
+    "저명한, 탁월한, 유명한",
+    "두드러진, 눈에 띄는",
+    "튀어나온"
+   ],
+   "examples": [
+    {
+     "en": "She is a prominent doctor in the city.",
+     "ko": "그녀는 그 도시에서 저명한 의사예요."
+    },
+    {
+     "en": "Put the sign in a prominent place.",
+     "ko": "표지판을 눈에 잘 띄는 곳에 두세요."
+    },
+    {
+     "en": "Many prominent people attended the event.",
+     "ko": "많은 유명 인사들이 그 행사에 참석했어요."
+    },
+    {
+     "en": "The tower is the most prominent building in town.",
+     "ko": "그 탑은 마을에서 가장 눈에 띄는 건물이에요."
+    },
+    {
+     "en": "He has a prominent nose.",
+     "ko": "그는 코가 오뚝해요."
+    },
+    {
+     "en": "Music plays a prominent role in the movie.",
+     "ko": "그 영화에서 음악은 두드러진 역할을 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "famous",
+     "ko": "유명한",
+     "en": "A famous singer."
+    },
+    {
+     "type": "유의어",
+     "word": "noticeable",
+     "ko": "눈에 띄는",
+     "en": "A noticeable change."
+    },
+    {
+     "type": "반의어",
+     "word": "unknown",
+     "ko": "알려지지 않은",
+     "en": "An unknown artist."
+    },
+    {
+     "type": "파생어",
+     "word": "prominence",
+     "ko": "명성",
+     "en": "Rise to prominence."
+    },
+    {
+     "type": "연관어",
+     "word": "leading",
+     "ko": "선도적인",
+     "en": "A leading expert."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important role."
+    }
+   ]
+  },
+  "361": {
+   "word": "bulk",
+   "overview": [
+    "bulk는 '(큰) 부피, 덩치'라는 뜻의 명사입니다.",
+    "the bulk of(~의 대부분)라는 표현으로 아주 자주 씁니다.",
+    "buy in bulk(대량으로 사다)처럼 '대량'이라는 뜻으로도 씁니다.",
+    "형용사 bulky(부피가 큰)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "most",
+     "en": "Most of the work.",
+     "ko": "일의 대부분."
+    },
+    {
+     "word": "large amount",
+     "en": "A large amount.",
+     "ko": "많은 양."
+    }
+   ],
+   "etymology": [
+    "bulk는 고대 노르드어 bulki(배에 실은 짐)에서 온 단어입니다.",
+    "원래는 배 안에 쌓아 둔 짐 더미를 뜻했습니다.",
+    "'크고 무거운 덩어리, 많은 양'이라는 뜻으로 넓어졌습니다.",
+    "무언가의 대부분을 차지하는 큰 덩어리, 대량 구매를 가리킵니다.",
+    "bulk의 핵심 이미지는 '배 안 가득 쌓인 커다란 짐 더미 📦📦📦'입니다."
+   ],
+   "meanings": [
+    "대부분",
+    "부피, 덩치",
+    "대량",
+    "부피가 커지다"
+   ],
+   "examples": [
+    {
+     "en": "The bulk of the work is done.",
+     "ko": "일의 대부분이 끝났어요."
+    },
+    {
+     "en": "We buy rice in bulk to save money.",
+     "ko": "우리는 돈을 아끼려고 쌀을 대량으로 사요."
+    },
+    {
+     "en": "The elephant moved its huge bulk slowly.",
+     "ko": "코끼리는 거대한 덩치를 천천히 움직였어요."
+    },
+    {
+     "en": "The bulk of the students live nearby.",
+     "ko": "학생들 대부분이 근처에 살아요."
+    },
+    {
+     "en": "This jacket is warm but bulky.",
+     "ko": "이 재킷은 따뜻하지만 부피가 커요."
+    },
+    {
+     "en": "Bulk orders get a discount.",
+     "ko": "대량 주문은 할인을 받아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "majority",
+     "ko": "대다수",
+     "en": "The majority of people."
+    },
+    {
+     "type": "유의어",
+     "word": "mass",
+     "ko": "덩어리",
+     "en": "A large mass."
+    },
+    {
+     "type": "파생어",
+     "word": "bulky",
+     "ko": "부피가 큰",
+     "en": "A bulky bag."
+    },
+    {
+     "type": "연관어",
+     "word": "volume",
+     "ko": "부피",
+     "en": "The volume of water."
+    },
+    {
+     "type": "연관어",
+     "word": "quantity",
+     "ko": "양",
+     "en": "A large quantity."
+    },
+    {
+     "type": "연관어",
+     "word": "wholesale",
+     "ko": "도매의",
+     "en": "Wholesale prices."
+    }
+   ]
+  },
+  "412": {
+   "word": "carve",
+   "overview": [
+    "carve는 '새기다, 조각하다'라는 뜻의 동사입니다.",
+    "carve wood(나무를 조각하다)처럼 씁니다.",
+    "'(고기를) 썰다, 저미다'라는 뜻으로도 씁니다. (carve the turkey)",
+    "carve out(애써 이루어 내다)이라는 표현도 쓰고, 명사 carving(조각품)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cut",
+     "en": "Cut the wood.",
+     "ko": "나무를 자르다."
+    },
+    {
+     "word": "shape",
+     "en": "Shape the stone.",
+     "ko": "돌을 다듬다."
+    }
+   ],
+   "etymology": [
+    "carve는 고대 영어 ceorfan(자르다, 새기다)에서 온 단어입니다.",
+    "그리스어 graphein(새기다, 쓰다)과 먼 뿌리가 이어진다고 봅니다.",
+    "'칼로 깎고 파서 모양을 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "나무·돌을 조각하는 것, 고기를 썰어 나누는 것, 노력으로 길을 개척하는 것에 씁니다.",
+    "carve의 핵심 이미지는 '칼끝으로 조금씩 깎아 모양을 새기는 것 🪵🔪'입니다."
+   ],
+   "meanings": [
+    "새기다, 조각하다",
+    "썰다, 베다"
+   ],
+   "examples": [
+    {
+     "en": "He carved a bird out of wood.",
+     "ko": "그는 나무로 새를 조각했어요."
+    },
+    {
+     "en": "They carved their names into the tree.",
+     "ko": "그들은 나무에 이름을 새겼어요."
+    },
+    {
+     "en": "Dad carved the chicken for dinner.",
+     "ko": "아빠가 저녁으로 닭고기를 썰어 주셨어요."
+    },
+    {
+     "en": "We carve pumpkins for Halloween.",
+     "ko": "우리는 핼러윈에 호박을 조각해요."
+    },
+    {
+     "en": "The statue was carved from marble.",
+     "ko": "그 조각상은 대리석을 깎아 만들었어요."
+    },
+    {
+     "en": "She carved out a career in music.",
+     "ko": "그녀는 음악 분야에서 경력을 쌓아 올렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sculpt",
+     "ko": "조각하다",
+     "en": "Sculpt clay."
+    },
+    {
+     "type": "유의어",
+     "word": "engrave",
+     "ko": "새기다",
+     "en": "Engrave a ring."
+    },
+    {
+     "type": "파생어",
+     "word": "carving",
+     "ko": "조각품",
+     "en": "A wood carving."
+    },
+    {
+     "type": "연관어",
+     "word": "knife",
+     "ko": "칼",
+     "en": "A sharp knife."
+    },
+    {
+     "type": "연관어",
+     "word": "wood",
+     "ko": "나무",
+     "en": "Soft wood."
+    },
+    {
+     "type": "연관어",
+     "word": "statue",
+     "ko": "조각상",
+     "en": "A stone statue."
+    }
+   ]
+  },
+  "565": {
+   "word": "conceal",
+   "overview": [
+    "conceal은 '숨기다, 감추다'라는 뜻의 동사입니다.",
+    "conceal the truth(진실을 숨기다)처럼 씁니다.",
+    "hide보다 격식 있는 말로, 일부러 보이지 않게 하거나 알리지 않는 것을 뜻합니다.",
+    "명사 concealment(은폐)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hide",
+     "en": "Hide the gift.",
+     "ko": "선물을 숨기다."
+    },
+    {
+     "word": "cover up",
+     "en": "Cover up a mistake.",
+     "ko": "실수를 덮다."
+    }
+   ],
+   "etymology": [
+    "conceal은 라틴어 concelare(완전히 숨기다)에서 온 단어입니다.",
+    "con(완전히)과 celare(숨기다)가 합쳐진 말입니다.",
+    "cell(작은 방), cellar(지하 저장고)와도 '감추어 두는 곳'이라는 뜻으로 이어집니다.",
+    "'남이 보거나 알지 못하게 꼭꼭 숨기다'라는 뜻이 그대로 이어져 왔습니다.",
+    "conceal의 핵심 이미지는 '보이지 않게 꼭꼭 덮어 숨기는 것 🙈'입니다."
+   ],
+   "meanings": [
+    "감추다, 숨기다, 은닉하다, 비밀로 하다"
+   ],
+   "examples": [
+    {
+     "en": "She tried to conceal her surprise.",
+     "ko": "그녀는 놀란 기색을 감추려고 했어요."
+    },
+    {
+     "en": "The thief concealed the money under the floor.",
+     "ko": "도둑은 바닥 밑에 돈을 숨겼어요."
+    },
+    {
+     "en": "He couldn't conceal his excitement.",
+     "ko": "그는 신나는 마음을 숨길 수 없었어요."
+    },
+    {
+     "en": "Don't conceal the truth from your parents.",
+     "ko": "부모님께 진실을 숨기지 마세요."
+    },
+    {
+     "en": "The door was concealed behind a bookshelf.",
+     "ko": "그 문은 책장 뒤에 숨겨져 있었어요."
+    },
+    {
+     "en": "The clouds concealed the moon.",
+     "ko": "구름이 달을 가렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "hide",
+     "ko": "숨기다",
+     "en": "Hide and seek."
+    },
+    {
+     "type": "반의어",
+     "word": "reveal",
+     "ko": "드러내다",
+     "en": "Reveal the truth."
+    },
+    {
+     "type": "반의어",
+     "word": "show",
+     "ko": "보여 주다",
+     "en": "Show your face."
+    },
+    {
+     "type": "파생어",
+     "word": "concealment",
+     "ko": "은폐",
+     "en": "Concealment of facts."
+    },
+    {
+     "type": "연관어",
+     "word": "secret",
+     "ko": "비밀",
+     "en": "Keep a secret."
+    },
+    {
+     "type": "연관어",
+     "word": "disguise",
+     "ko": "변장",
+     "en": "In disguise."
+    }
+   ]
+  },
+  "2348": {
+   "word": "sentiment",
+   "overview": [
+    "sentiment는 '감정, 정서, 소감'이라는 뜻의 명사입니다.",
+    "public sentiment(여론, 대중의 정서)처럼 씁니다.",
+    "'(어떤 일에 대한) 생각, 의견'이라는 뜻으로도 씁니다.",
+    "형용사 sentimental(감상적인, 정에 약한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "feeling",
+     "en": "A warm feeling.",
+     "ko": "따뜻한 감정."
+    },
+    {
+     "word": "opinion",
+     "en": "A common opinion.",
+     "ko": "흔한 의견."
+    }
+   ],
+   "etymology": [
+    "sentiment는 라틴어 sentire(느끼다)에서 온 단어입니다.",
+    "sense(감각), sensitive(민감한), consent(동의)와 같은 가족입니다.",
+    "'마음으로 느끼는 것'이라는 뜻에서 시작되었습니다.",
+    "개인의 감정뿐 아니라 여러 사람이 함께 느끼는 생각과 정서를 가리키게 되었습니다.",
+    "sentiment의 핵심 이미지는 '마음속에서 우러나오는 느낌과 생각 💭💗'입니다."
+   ],
+   "meanings": [
+    "느낌, 감정, 소감",
+    "생각, 의견"
+   ],
+   "examples": [
+    {
+     "en": "I share your sentiment.",
+     "ko": "저도 같은 마음이에요."
+    },
+    {
+     "en": "Public sentiment is against the plan.",
+     "ko": "여론은 그 계획에 반대해요."
+    },
+    {
+     "en": "The card expressed a lovely sentiment.",
+     "ko": "그 카드에는 사랑스러운 마음이 담겨 있었어요."
+    },
+    {
+     "en": "There is strong anti-war sentiment in the country.",
+     "ko": "그 나라에는 반전 정서가 강해요."
+    },
+    {
+     "en": "She kept the old toy for sentimental reasons.",
+     "ko": "그녀는 추억 때문에 그 낡은 장난감을 간직했어요."
+    },
+    {
+     "en": "His words reflected the sentiment of the team.",
+     "ko": "그의 말은 팀의 마음을 대변했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "feeling",
+     "ko": "감정",
+     "en": "Hurt feelings."
+    },
+    {
+     "type": "유의어",
+     "word": "emotion",
+     "ko": "감정",
+     "en": "Show emotion."
+    },
+    {
+     "type": "파생어",
+     "word": "sentimental",
+     "ko": "감상적인",
+     "en": "A sentimental song."
+    },
+    {
+     "type": "연관어",
+     "word": "opinion",
+     "ko": "의견",
+     "en": "Public opinion."
+    },
+    {
+     "type": "연관어",
+     "word": "attitude",
+     "ko": "태도",
+     "en": "A good attitude."
+    },
+    {
+     "type": "연관어",
+     "word": "sense",
+     "ko": "느낌",
+     "en": "A sense of pride."
+    }
+   ]
+  },
+  "750": {
+   "word": "deliberate",
+   "overview": [
+    "deliberate는 형용사로 '고의적인, 계획된'이라는 뜻입니다. (발음: de-LIB-er-it)",
+    "a deliberate mistake(일부러 한 실수)처럼 씁니다.",
+    "'신중한, 찬찬한'이라는 뜻으로도 씁니다.",
+    "동사로는 '숙고하다, 신중히 생각하다'라는 뜻이며 (발음: de-LIB-er-ate), 부사 deliberately(일부러)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "on purpose",
+     "en": "Did it on purpose.",
+     "ko": "일부러 했다."
+    },
+    {
+     "word": "think carefully",
+     "en": "Think carefully first.",
+     "ko": "먼저 신중히 생각하다."
+    }
+   ],
+   "etymology": [
+    "deliberate는 라틴어 deliberare(잘 따져 보다)에서 온 단어입니다.",
+    "de(완전히)와 librare(저울질하다)가 합쳐진 말로, libra(저울)에서 나왔습니다.",
+    "'저울에 올려 이리저리 무게를 재 보다'라는 뜻에서 시작되었습니다.",
+    "충분히 따져 본 뒤 하는 행동이라서 '고의적인, 신중한'이라는 뜻이 생겼습니다.",
+    "deliberate의 핵심 이미지는 '저울에 올려 곰곰이 따져 본 뒤 하는 행동 ⚖️'입니다."
+   ],
+   "meanings": [
+    "숙고하다",
+    "고의적인, 의도적인",
+    "신중한"
+   ],
+   "examples": [
+    {
+     "en": "It wasn't an accident—it was deliberate.",
+     "ko": "그건 사고가 아니라 고의였어요."
+    },
+    {
+     "en": "He deliberately ignored my message.",
+     "ko": "그는 일부러 제 메시지를 무시했어요."
+    },
+    {
+     "en": "The jury deliberated for two days.",
+     "ko": "배심원단은 이틀 동안 숙고했어요."
+    },
+    {
+     "en": "She spoke in a slow, deliberate voice.",
+     "ko": "그녀는 느리고 신중한 목소리로 말했어요."
+    },
+    {
+     "en": "They made a deliberate choice to live simply.",
+     "ko": "그들은 소박하게 살기로 신중히 선택했어요."
+    },
+    {
+     "en": "Let's deliberate before we decide.",
+     "ko": "결정하기 전에 곰곰이 생각해 봐요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "intentional",
+     "ko": "의도적인",
+     "en": "An intentional act."
+    },
+    {
+     "type": "유의어",
+     "word": "careful",
+     "ko": "신중한",
+     "en": "A careful choice."
+    },
+    {
+     "type": "반의어",
+     "word": "accidental",
+     "ko": "우연한",
+     "en": "An accidental fall."
+    },
+    {
+     "type": "파생어",
+     "word": "deliberately",
+     "ko": "일부러",
+     "en": "Deliberately late."
+    },
+    {
+     "type": "연관어",
+     "word": "consider",
+     "ko": "고려하다",
+     "en": "Consider the options."
+    },
+    {
+     "type": "연관어",
+     "word": "on purpose",
+     "ko": "고의로",
+     "en": "Did you do it on purpose?"
+    }
+   ]
+  },
+  "1470": {
+   "word": "isolate",
+   "overview": [
+    "isolate는 '고립시키다, 격리하다'라는 뜻의 동사입니다.",
+    "isolate sick patients(환자를 격리하다)처럼 씁니다.",
+    "'(물질·원인 등을) 분리해 내다'라는 뜻으로도 씁니다.",
+    "형용사 isolated(고립된, 외딴), 명사 isolation(고립, 격리)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "separate",
+     "en": "Separate the groups.",
+     "ko": "무리를 떼어 놓다."
+    },
+    {
+     "word": "cut off",
+     "en": "Cut off from the world.",
+     "ko": "세상과 단절된."
+    }
+   ],
+   "etymology": [
+    "isolate는 이탈리아어 isolato(섬처럼 떨어진)에서 온 단어입니다.",
+    "라틴어 insula(섬)에서 나온 말로, island(섬), peninsula(반도)와 뿌리가 이어집니다.",
+    "'섬처럼 다른 곳과 떨어뜨려 놓다'라는 뜻에서 시작되었습니다.",
+    "사람이나 물건을 다른 것들과 떼어 혼자 있게 하는 것을 가리키게 되었습니다.",
+    "isolate의 핵심 이미지는 '바다 한가운데 홀로 떨어진 섬 🏝️'입니다."
+   ],
+   "meanings": [
+    "고립시키다, 격리하다",
+    "분리하다, 분리된 것"
+   ],
+   "examples": [
+    {
+     "en": "The sick cat was isolated from the others.",
+     "ko": "아픈 고양이는 다른 고양이들과 격리되었어요."
+    },
+    {
+     "en": "The village was isolated by the snow.",
+     "ko": "그 마을은 눈 때문에 고립되었어요."
+    },
+    {
+     "en": "Scientists isolated the virus.",
+     "ko": "과학자들은 그 바이러스를 분리해 냈어요."
+    },
+    {
+     "en": "Don't isolate yourself from your friends.",
+     "ko": "친구들과 떨어져 혼자 지내지 마세요."
+    },
+    {
+     "en": "They live in an isolated house in the mountains.",
+     "ko": "그들은 산속 외딴집에 살아요."
+    },
+    {
+     "en": "Loneliness can make people feel isolated.",
+     "ko": "외로움은 사람들을 고립된 기분이 들게 할 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "separate",
+     "ko": "분리하다",
+     "en": "Separate the trash."
+    },
+    {
+     "type": "반의어",
+     "word": "connect",
+     "ko": "연결하다",
+     "en": "Connect with friends."
+    },
+    {
+     "type": "파생어",
+     "word": "isolation",
+     "ko": "고립, 격리",
+     "en": "Social isolation."
+    },
+    {
+     "type": "파생어",
+     "word": "isolated",
+     "ko": "고립된",
+     "en": "An isolated island."
+    },
+    {
+     "type": "연관어",
+     "word": "alone",
+     "ko": "혼자",
+     "en": "Feel alone."
+    },
+    {
+     "type": "연관어",
+     "word": "island",
+     "ko": "섬",
+     "en": "A desert island."
+    }
+   ]
+  },
+  "1455": {
+   "word": "intervene",
+   "overview": [
+    "intervene은 '(문제 해결을 위해) 개입하다, 끼어들다'라는 뜻의 동사입니다.",
+    "The teacher intervened.(선생님이 개입하셨다)처럼 씁니다.",
+    "'(싸움 등을) 중재하다'라는 긍정적 뜻과 '간섭하다'라는 부정적 뜻이 모두 있습니다.",
+    "명사 intervention(개입, 중재)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "step in",
+     "en": "Step in to help.",
+     "ko": "돕기 위해 나서다."
+    },
+    {
+     "word": "interfere",
+     "en": "Don't interfere.",
+     "ko": "간섭하지 마세요."
+    }
+   ],
+   "etymology": [
+    "intervene은 라틴어 intervenire(사이에 들어오다)에서 온 단어입니다.",
+    "inter(사이에)와 venire(오다)가 합쳐진 말로, event(사건), convention(모임)과 같은 가족입니다.",
+    "'두 사람이나 두 일 사이로 들어오다'라는 뜻이 그대로 이어져 왔습니다.",
+    "다툼이나 문제 사이에 끼어들어 막거나 바꾸려는 행동을 가리킵니다.",
+    "intervene의 핵심 이미지는 '맞선 두 사람 사이로 두 팔을 벌리고 들어서는 것 🙅‍♂️'입니다."
+   ],
+   "meanings": [
+    "(긍정적) 중재하다, 조정하다",
+    "(부정적) 끼어들다, 개입하다, 간섭하다"
+   ],
+   "examples": [
+    {
+     "en": "The teacher intervened to stop the fight.",
+     "ko": "선생님이 싸움을 말리려고 나서셨어요."
+    },
+    {
+     "en": "The government intervened to lower prices.",
+     "ko": "정부가 물가를 낮추려고 개입했어요."
+    },
+    {
+     "en": "I didn't want to intervene in their argument.",
+     "ko": "저는 그들의 말다툼에 끼어들고 싶지 않았어요."
+    },
+    {
+     "en": "The referee intervened when the players argued.",
+     "ko": "선수들이 다투자 심판이 중재했어요."
+    },
+    {
+     "en": "Early intervention can help sick patients.",
+     "ko": "조기 개입은 환자들에게 도움이 될 수 있어요."
+    },
+    {
+     "en": "Rain intervened and the game was stopped.",
+     "ko": "비가 내리는 바람에 경기가 중단되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "step in",
+     "ko": "나서다",
+     "en": "Step in quickly."
+    },
+    {
+     "type": "유의어",
+     "word": "interfere",
+     "ko": "간섭하다",
+     "en": "Interfere in others' lives."
+    },
+    {
+     "type": "파생어",
+     "word": "intervention",
+     "ko": "개입",
+     "en": "Medical intervention."
+    },
+    {
+     "type": "연관어",
+     "word": "mediate",
+     "ko": "중재하다",
+     "en": "Mediate a dispute."
+    },
+    {
+     "type": "연관어",
+     "word": "conflict",
+     "ko": "갈등",
+     "en": "End the conflict."
+    },
+    {
+     "type": "연관어",
+     "word": "prevent",
+     "ko": "막다",
+     "en": "Prevent accidents."
+    }
+   ]
+  },
+  "2865": {
+   "word": "vertical",
+   "overview": [
+    "vertical은 '수직의, 세로의'라는 뜻의 형용사입니다.",
+    "a vertical line(세로선)처럼 씁니다.",
+    "땅과 직각으로 위아래로 곧게 선 방향을 뜻합니다.",
+    "반의어는 horizontal(수평의, 가로의)이고, 명사로 '수직선'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "upright",
+     "en": "Stand upright.",
+     "ko": "똑바로 서다."
+    },
+    {
+     "word": "up and down",
+     "en": "Move up and down.",
+     "ko": "위아래로 움직이다."
+    }
+   ],
+   "etymology": [
+    "vertical은 라틴어 vertex(꼭대기, 정점)에서 온 단어입니다.",
+    "vertere(돌다)와 관련된 말로, 원래는 소용돌이의 중심이나 머리 꼭대기를 뜻했습니다.",
+    "'꼭대기를 향해 똑바로 선'이라는 뜻에서 '수직의'라는 뜻이 되었습니다.",
+    "위아래로 곧게 뻗은 방향이나 모양을 가리킵니다.",
+    "vertical의 핵심 이미지는 '하늘을 향해 위아래로 곧게 선 선 ↕️'입니다."
+   ],
+   "meanings": [
+    "세로의, 수직의",
+    "수직선"
+   ],
+   "examples": [
+    {
+     "en": "Draw a vertical line down the middle.",
+     "ko": "가운데에 세로선을 그으세요."
+    },
+    {
+     "en": "The cliff is almost vertical.",
+     "ko": "그 절벽은 거의 수직이에요."
+    },
+    {
+     "en": "Hold the phone in a vertical position.",
+     "ko": "휴대폰을 세로로 드세요."
+    },
+    {
+     "en": "The shirt has vertical stripes.",
+     "ko": "그 셔츠에는 세로 줄무늬가 있어요."
+    },
+    {
+     "en": "Rock climbers love vertical walls.",
+     "ko": "암벽 등반가들은 수직 벽을 좋아해요."
+    },
+    {
+     "en": "The vertical axis shows temperature.",
+     "ko": "세로축은 온도를 나타내요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "upright",
+     "ko": "똑바로 선",
+     "en": "An upright piano."
+    },
+    {
+     "type": "유의어",
+     "word": "perpendicular",
+     "ko": "수직의",
+     "en": "A perpendicular line."
+    },
+    {
+     "type": "반의어",
+     "word": "horizontal",
+     "ko": "수평의",
+     "en": "A horizontal line."
+    },
+    {
+     "type": "연관어",
+     "word": "line",
+     "ko": "선",
+     "en": "A straight line."
+    },
+    {
+     "type": "연관어",
+     "word": "height",
+     "ko": "높이",
+     "en": "The height of a tower."
+    },
+    {
+     "type": "연관어",
+     "word": "stripe",
+     "ko": "줄무늬",
+     "en": "Blue stripes."
+    }
+   ]
+  },
+  "612": {
+   "word": "contrast",
+   "overview": [
+    "contrast는 '대조, 차이'라는 뜻의 명사입니다. (발음: CON-trast)",
+    "in contrast(대조적으로)라는 표현으로 아주 자주 씁니다.",
+    "동사로는 '대조하다, 대조를 이루다'라는 뜻입니다. (발음: con-TRAST)",
+    "사진·화면의 '명암 대비'를 뜻하기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "difference",
+     "en": "A big difference.",
+     "ko": "큰 차이."
+    },
+    {
+     "word": "compare",
+     "en": "Compare the two.",
+     "ko": "둘을 비교하다."
+    }
+   ],
+   "etymology": [
+    "contrast는 이탈리아어 contrastare(맞서다)에서 온 단어입니다.",
+    "라틴어 contra(반대로)와 stare(서다)가 합쳐진 말로, contrary(반대의)와 뿌리가 통합니다.",
+    "'서로 반대편에 마주 서다'라는 뜻에서 시작되었습니다.",
+    "두 가지를 나란히 놓았을 때 확연히 드러나는 차이를 가리키게 되었습니다.",
+    "contrast의 핵심 이미지는 '흑과 백처럼 나란히 놓여 차이가 확 드러나는 것 ⚫⚪'입니다."
+   ],
+   "meanings": [
+    "대조, 차이",
+    "대조하다"
+   ],
+   "examples": [
+    {
+     "en": "There's a big contrast between summer and winter here.",
+     "ko": "이곳은 여름과 겨울의 차이가 커요."
+    },
+    {
+     "en": "In contrast, his brother is very quiet.",
+     "ko": "대조적으로 그의 형은 아주 조용해요."
+    },
+    {
+     "en": "Contrast the two poems in your essay.",
+     "ko": "에세이에서 두 시를 대조해 보세요."
+    },
+    {
+     "en": "The white flowers contrast with the dark leaves.",
+     "ko": "하얀 꽃들이 짙은 잎사귀와 대조를 이뤄요."
+    },
+    {
+     "en": "Increase the contrast of the photo.",
+     "ko": "사진의 명암 대비를 높이세요."
+    },
+    {
+     "en": "The old and new buildings make a nice contrast.",
+     "ko": "옛 건물과 새 건물이 멋진 대조를 이뤄요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "difference",
+     "ko": "차이",
+     "en": "What's the difference?"
+    },
+    {
+     "type": "반의어",
+     "word": "similarity",
+     "ko": "유사점",
+     "en": "Find a similarity."
+    },
+    {
+     "type": "연관어",
+     "word": "compare",
+     "ko": "비교하다",
+     "en": "Compare prices."
+    },
+    {
+     "type": "연관어",
+     "word": "opposite",
+     "ko": "반대의",
+     "en": "The opposite side."
+    },
+    {
+     "type": "연관어",
+     "word": "whereas",
+     "ko": "~인 반면에",
+     "en": "I like tea, whereas she likes coffee."
+    },
+    {
+     "type": "연관어",
+     "word": "distinct",
+     "ko": "뚜렷한",
+     "en": "A distinct change."
+    }
+   ]
+  },
+  "831": {
+   "word": "distribute",
+   "overview": [
+    "distribute는 '나누어 주다, 분배하다'라는 뜻의 동사입니다.",
+    "distribute food to people(사람들에게 음식을 나눠 주다)처럼 씁니다.",
+    "'(상품을) 유통하다, 배포하다'라는 뜻으로도 씁니다.",
+    "'(골고루) 퍼뜨리다, 분포시키다'라는 뜻도 있고, 명사 distribution(분배, 유통)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hand out",
+     "en": "Hand out papers.",
+     "ko": "종이를 나눠 주다."
+    },
+    {
+     "word": "share",
+     "en": "Share the snacks.",
+     "ko": "간식을 나누다."
+    }
+   ],
+   "etymology": [
+    "distribute는 라틴어 distribuere(나누어 주다)에서 온 단어입니다.",
+    "dis(따로따로)와 tribuere(주다, 배정하다)가 합쳐진 말로, contribute(기여하다), tribute(공물)와 같은 가족입니다.",
+    "원래는 로마의 부족(tribus)마다 몫을 나누어 준다는 뜻과 관련이 있다고 봅니다.",
+    "여러 사람이나 장소에 골고루 나누어 주는 것을 가리키게 되었습니다.",
+    "distribute의 핵심 이미지는 '여러 사람에게 하나씩 골고루 나눠 주는 손길 🤲📦'입니다."
+   ],
+   "meanings": [
+    "나누어 주다, 분배하다, 할당하다",
+    "배달하다, 배포하다, 유통하다"
+   ],
+   "examples": [
+    {
+     "en": "The teacher distributed the test papers.",
+     "ko": "선생님이 시험지를 나눠 주셨어요."
+    },
+    {
+     "en": "Volunteers distributed food to the families.",
+     "ko": "자원봉사자들이 가족들에게 음식을 나눠 줬어요."
+    },
+    {
+     "en": "The company distributes its products worldwide.",
+     "ko": "그 회사는 전 세계에 제품을 유통해요."
+    },
+    {
+     "en": "Distribute the paint evenly on the wall.",
+     "ko": "벽에 페인트를 고르게 펴 바르세요."
+    },
+    {
+     "en": "The money was distributed among the winners.",
+     "ko": "상금은 우승자들에게 분배되었어요."
+    },
+    {
+     "en": "The film will be distributed in 50 countries.",
+     "ko": "그 영화는 50개국에 배급될 거예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "hand out",
+     "ko": "나눠 주다",
+     "en": "Hand out flyers."
+    },
+    {
+     "type": "유의어",
+     "word": "share",
+     "ko": "나누다",
+     "en": "Share equally."
+    },
+    {
+     "type": "반의어",
+     "word": "collect",
+     "ko": "모으다",
+     "en": "Collect the papers."
+    },
+    {
+     "type": "파생어",
+     "word": "distribution",
+     "ko": "분배, 유통",
+     "en": "Fair distribution."
+    },
+    {
+     "type": "연관어",
+     "word": "deliver",
+     "ko": "배달하다",
+     "en": "Deliver mail."
+    },
+    {
+     "type": "연관어",
+     "word": "supply",
+     "ko": "공급하다",
+     "en": "Supply water."
+    }
+   ]
+  },
+  "1424": {
+   "word": "insert",
+   "overview": [
+    "insert는 동사로 '끼워 넣다, 삽입하다'라는 뜻입니다. (발음: in-SERT)",
+    "insert a coin(동전을 넣다)처럼 씁니다.",
+    "'(글에 단어·문장을) 써넣다'라는 뜻으로도 씁니다.",
+    "명사로는 '삽입물, (신문의) 광고 전단'이라는 뜻입니다. (발음: IN-sert)"
+   ],
+   "easy": [
+    {
+     "word": "put in",
+     "en": "Put in the key.",
+     "ko": "열쇠를 넣다."
+    },
+    {
+     "word": "add",
+     "en": "Add a word.",
+     "ko": "단어를 추가하다."
+    }
+   ],
+   "etymology": [
+    "insert는 라틴어 inserere(안에 끼워 넣다)에서 온 단어입니다.",
+    "in(안으로)과 serere(잇다, 끼우다)가 합쳐진 말로, series(연속)와 뿌리가 이어집니다.",
+    "'줄지어 이어진 것 사이에 끼워 넣다'라는 뜻에서 시작되었습니다.",
+    "틈이나 구멍에 무언가를 넣는 것, 글 사이에 내용을 덧붙이는 것을 가리킵니다.",
+    "insert의 핵심 이미지는 '틈 사이로 쏙 밀어 넣는 것 💳'입니다."
+   ],
+   "meanings": [
+    "삽입하다, 끼워 넣다",
+    "삽입물, 끼워 넣는 것"
+   ],
+   "examples": [
+    {
+     "en": "Insert the key and turn it.",
+     "ko": "열쇠를 넣고 돌리세요."
+    },
+    {
+     "en": "Please insert your card into the machine.",
+     "ko": "기계에 카드를 넣어 주세요."
+    },
+    {
+     "en": "Insert a picture into your report.",
+     "ko": "보고서에 그림을 삽입하세요."
+    },
+    {
+     "en": "She inserted a comma in the sentence.",
+     "ko": "그녀는 문장에 쉼표를 넣었어요."
+    },
+    {
+     "en": "The magazine came with a free insert.",
+     "ko": "잡지에 무료 부록이 끼워져 있었어요."
+    },
+    {
+     "en": "Insert two coins to start the game.",
+     "ko": "게임을 시작하려면 동전 두 개를 넣으세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "put in",
+     "ko": "넣다",
+     "en": "Put in the batteries."
+    },
+    {
+     "type": "반의어",
+     "word": "remove",
+     "ko": "빼다",
+     "en": "Remove the card."
+    },
+    {
+     "type": "반의어",
+     "word": "extract",
+     "ko": "뽑아내다",
+     "en": "Extract a tooth."
+    },
+    {
+     "type": "파생어",
+     "word": "insertion",
+     "ko": "삽입",
+     "en": "Easy insertion."
+    },
+    {
+     "type": "연관어",
+     "word": "add",
+     "ko": "추가하다",
+     "en": "Add sugar."
+    },
+    {
+     "type": "연관어",
+     "word": "slot",
+     "ko": "구멍, 투입구",
+     "en": "A coin slot."
+    }
+   ]
+  },
+  "2666": {
+   "word": "tempt",
+   "overview": [
+    "tempt는 '유혹하다, 꾀다'라는 뜻의 동사입니다.",
+    "be tempted to do(~하고 싶은 마음이 들다)처럼 수동태로 자주 씁니다.",
+    "'(관심을) 끌다, 마음이 동하게 하다'라는 뜻으로도 씁니다.",
+    "명사 temptation(유혹), 형용사 tempting(솔깃한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "attract",
+     "en": "Attract customers.",
+     "ko": "손님을 끌다."
+    },
+    {
+     "word": "lure",
+     "en": "Lure the fish.",
+     "ko": "물고기를 꾀다."
+    }
+   ],
+   "etymology": [
+    "tempt는 라틴어 temptare(시험하다, 떠보다)에서 온 단어입니다.",
+    "attempt(시도하다)와 같은 뿌리의 말입니다.",
+    "원래는 '사람이 얼마나 굳센지 시험해 보다'라는 뜻이었습니다.",
+    "하면 안 되는 일을 하고 싶게 마음을 흔들어 보는 '유혹하다'라는 뜻이 되었습니다.",
+    "tempt의 핵심 이미지는 '눈앞의 달콤한 케이크처럼 마음을 흔드는 것 🍰'입니다."
+   ],
+   "meanings": [
+    "꾀다, 유혹하다",
+    "(관심·주의를) 끌다"
+   ],
+   "examples": [
+    {
+     "en": "The cake tempted me, but I was on a diet.",
+     "ko": "케이크가 먹고 싶었지만 다이어트 중이었어요."
+    },
+    {
+     "en": "I was tempted to skip class.",
+     "ko": "수업을 빼먹고 싶은 마음이 들었어요."
+    },
+    {
+     "en": "Nothing could tempt him to give up.",
+     "ko": "무엇도 그를 포기하게 만들 수 없었어요."
+    },
+    {
+     "en": "The sale tempted many shoppers.",
+     "ko": "할인 행사가 많은 쇼핑객을 끌어들였어요."
+    },
+    {
+     "en": "That offer sounds really tempting.",
+     "ko": "그 제안은 정말 솔깃하네요."
+    },
+    {
+     "en": "Try to resist the temptation to check your phone.",
+     "ko": "휴대폰을 보고 싶은 유혹을 참아 보세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "lure",
+     "ko": "꾀다",
+     "en": "Lure with food."
+    },
+    {
+     "type": "유의어",
+     "word": "attract",
+     "ko": "끌어당기다",
+     "en": "Attract attention."
+    },
+    {
+     "type": "반의어",
+     "word": "resist",
+     "ko": "참다, 저항하다",
+     "en": "Resist the urge."
+    },
+    {
+     "type": "파생어",
+     "word": "temptation",
+     "ko": "유혹",
+     "en": "Give in to temptation."
+    },
+    {
+     "type": "파생어",
+     "word": "tempting",
+     "ko": "솔깃한",
+     "en": "A tempting offer."
+    },
+    {
+     "type": "연관어",
+     "word": "desire",
+     "ko": "욕구",
+     "en": "A strong desire."
+    }
+   ]
+  },
+  "845": {
+   "word": "domain",
+   "overview": [
+    "domain은 '(지식·활동의) 영역, 분야'라는 뜻의 명사입니다.",
+    "the domain of science(과학의 영역)처럼 씁니다.",
+    "'(다스리는) 영토, 소유지'라는 뜻으로도 씁니다.",
+    "인터넷에서는 '도메인(웹 주소)'이라는 뜻이고, public domain은 '공공 재산, 저작권이 없는 상태'입니다."
+   ],
+   "easy": [
+    {
+     "word": "field",
+     "en": "The field of art.",
+     "ko": "미술 분야."
+    },
+    {
+     "word": "area",
+     "en": "An area of study.",
+     "ko": "학문 영역."
+    }
+   ],
+   "etymology": [
+    "domain은 라틴어 dominium(소유, 지배권)에서 온 단어입니다.",
+    "dominus(주인)에서 나온 말로, dominate(지배하다)와 같은 가족입니다.",
+    "원래는 '주인이 다스리는 땅'이라는 뜻이었습니다.",
+    "누군가의 영향이 미치는 범위, 학문이나 활동의 분야, 인터넷 주소로 뜻이 넓어졌습니다.",
+    "domain의 핵심 이미지는 '주인이 다스리는 울타리 안의 영역 🏰'입니다."
+   ],
+   "meanings": [
+    "영역, 영토",
+    "소유지, 소유권",
+    "활동 분야, 범위",
+    "(인터넷) 도메인"
+   ],
+   "examples": [
+    {
+     "en": "Cooking is my mom's domain.",
+     "ko": "요리는 우리 엄마의 영역이에요."
+    },
+    {
+     "en": "The king ruled over a large domain.",
+     "ko": "왕은 넓은 영토를 다스렸어요."
+    },
+    {
+     "en": "This question is outside my domain.",
+     "ko": "이 질문은 제 전문 분야 밖이에요."
+    },
+    {
+     "en": "We bought a domain name for our website.",
+     "ko": "우리는 웹사이트용 도메인 이름을 샀어요."
+    },
+    {
+     "en": "The old book is now in the public domain.",
+     "ko": "그 옛날 책은 이제 저작권이 없어요."
+    },
+    {
+     "en": "Physics and chemistry are different domains.",
+     "ko": "물리학과 화학은 서로 다른 분야예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "field",
+     "ko": "분야",
+     "en": "The medical field."
+    },
+    {
+     "type": "유의어",
+     "word": "territory",
+     "ko": "영토",
+     "en": "Enemy territory."
+    },
+    {
+     "type": "연관어",
+     "word": "area",
+     "ko": "영역",
+     "en": "A key area."
+    },
+    {
+     "type": "연관어",
+     "word": "website",
+     "ko": "웹사이트",
+     "en": "Visit the website."
+    },
+    {
+     "type": "연관어",
+     "word": "kingdom",
+     "ko": "왕국",
+     "en": "A magic kingdom."
+    },
+    {
+     "type": "연관어",
+     "word": "dominate",
+     "ko": "지배하다",
+     "en": "Dominate the game."
+    }
+   ]
+  },
+  "571": {
+   "word": "conclude",
+   "overview": [
+    "conclude는 '결론을 내리다'라는 뜻의 동사입니다.",
+    "conclude that ~(~라고 결론 내리다)처럼 씁니다.",
+    "'끝내다, 마치다'라는 뜻으로도 씁니다. (conclude a speech, 연설을 마무리하다)",
+    "'(조약·계약을) 체결하다'라는 뜻도 있고, 명사 conclusion(결론)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "decide",
+     "en": "Decide it's true.",
+     "ko": "사실이라고 판단하다."
+    },
+    {
+     "word": "finish",
+     "en": "Finish the meeting.",
+     "ko": "회의를 끝내다."
+    }
+   ],
+   "etymology": [
+    "conclude는 라틴어 concludere(완전히 닫다)에서 온 단어입니다.",
+    "con(완전히)과 claudere(닫다)가 합쳐진 말로, close(닫다), include(포함하다)와 같은 가족입니다.",
+    "'문을 완전히 닫아 끝맺다'라는 뜻에서 시작되었습니다.",
+    "이야기나 행사를 마무리하는 것, 생각을 정리해 최종 판단을 내리는 것을 가리키게 되었습니다.",
+    "conclude의 핵심 이미지는 '마지막 문을 탁 닫으며 끝맺는 것 🚪✅'입니다."
+   ],
+   "meanings": [
+    "결론을 내다",
+    "끝맺다, 종결하다",
+    "(조약을) 체결하다"
+   ],
+   "examples": [
+    {
+     "en": "The scientists concluded that the water was safe.",
+     "ko": "과학자들은 그 물이 안전하다고 결론 내렸어요."
+    },
+    {
+     "en": "The concert concluded with a famous song.",
+     "ko": "콘서트는 유명한 노래로 마무리되었어요."
+    },
+    {
+     "en": "What can we conclude from this data?",
+     "ko": "이 자료에서 어떤 결론을 내릴 수 있을까요?"
+    },
+    {
+     "en": "She concluded her speech with a joke.",
+     "ko": "그녀는 농담으로 연설을 끝맺었어요."
+    },
+    {
+     "en": "The two countries concluded a peace treaty.",
+     "ko": "두 나라는 평화 조약을 체결했어요."
+    },
+    {
+     "en": "In conclusion, we need more parks.",
+     "ko": "결론적으로 우리에게는 공원이 더 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "finish",
+     "ko": "끝내다",
+     "en": "Finish the race."
+    },
+    {
+     "type": "유의어",
+     "word": "decide",
+     "ko": "결정하다",
+     "en": "Decide quickly."
+    },
+    {
+     "type": "반의어",
+     "word": "begin",
+     "ko": "시작하다",
+     "en": "Begin the lesson."
+    },
+    {
+     "type": "파생어",
+     "word": "conclusion",
+     "ko": "결론",
+     "en": "Reach a conclusion."
+    },
+    {
+     "type": "연관어",
+     "word": "result",
+     "ko": "결과",
+     "en": "The final result."
+    },
+    {
+     "type": "연관어",
+     "word": "end",
+     "ko": "끝",
+     "en": "The end of the story."
+    }
+   ]
+  },
+  "1914": {
+   "word": "patent",
+   "overview": [
+    "patent는 명사로 '특허(권)'라는 뜻으로 가장 자주 씁니다.",
+    "apply for a patent(특허를 신청하다)처럼 씁니다.",
+    "형용사로는 '명백한, 뻔한'이라는 뜻입니다. (a patent lie, 뻔한 거짓말)",
+    "동사로는 '특허를 얻다', patent leather는 '에나멜 가죽'을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "official right",
+     "en": "An official right.",
+     "ko": "공식적인 권리."
+    },
+    {
+     "word": "obvious",
+     "en": "An obvious lie.",
+     "ko": "뻔한 거짓말."
+    }
+   ],
+   "etymology": [
+    "patent는 라틴어 patere(열려 있다, 드러나 있다)에서 온 단어입니다.",
+    "원래는 왕이 권리를 주며 '누구나 볼 수 있게 펼쳐 놓은 공문서(letters patent)'를 뜻했습니다.",
+    "그 공문서로 발명품에 대한 독점 권리를 주면서 '특허'라는 뜻이 생겼습니다.",
+    "모두에게 활짝 열려 드러나 있다는 뜻에서 '명백한'이라는 형용사 뜻도 나왔습니다.",
+    "patent의 핵심 이미지는 '발명가의 권리를 모두 앞에 펼쳐 보이는 문서 📜💡'입니다."
+   ],
+   "meanings": [
+    "명백한",
+    "특허(권)",
+    "특허를 얻다"
+   ],
+   "examples": [
+    {
+     "en": "The inventor got a patent for his new machine.",
+     "ko": "그 발명가는 새 기계로 특허를 받았어요."
+    },
+    {
+     "en": "The company holds many patents.",
+     "ko": "그 회사는 특허를 많이 가지고 있어요."
+    },
+    {
+     "en": "She patented her invention last year.",
+     "ko": "그녀는 작년에 자신의 발명품을 특허 냈어요."
+    },
+    {
+     "en": "That's a patent lie!",
+     "ko": "그건 뻔한 거짓말이에요!"
+    },
+    {
+     "en": "You need a patent to protect your idea.",
+     "ko": "아이디어를 보호하려면 특허가 필요해요."
+    },
+    {
+     "en": "He wore shiny patent leather shoes.",
+     "ko": "그는 반짝이는 에나멜 가죽 구두를 신었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "obvious",
+     "ko": "명백한",
+     "en": "An obvious answer."
+    },
+    {
+     "type": "연관어",
+     "word": "invention",
+     "ko": "발명품",
+     "en": "A clever invention."
+    },
+    {
+     "type": "연관어",
+     "word": "inventor",
+     "ko": "발명가",
+     "en": "A young inventor."
+    },
+    {
+     "type": "연관어",
+     "word": "copyright",
+     "ko": "저작권",
+     "en": "Copyright law."
+    },
+    {
+     "type": "연관어",
+     "word": "trademark",
+     "ko": "상표",
+     "en": "A registered trademark."
+    },
+    {
+     "type": "연관어",
+     "word": "right",
+     "ko": "권리",
+     "en": "Equal rights."
+    }
+   ]
+  },
+  "1557": {
+   "word": "leisure",
+   "overview": [
+    "leisure는 '여가, 한가한 시간'이라는 뜻의 명사입니다.",
+    "leisure time(여가 시간)처럼 씁니다.",
+    "at your leisure(편할 때, 천천히)라는 표현도 자주 씁니다.",
+    "형용사처럼 '여가의, 레저의'라는 뜻으로도 씁니다. (leisure activities, 여가 활동)"
+   ],
+   "easy": [
+    {
+     "word": "free time",
+     "en": "Enjoy your free time.",
+     "ko": "자유 시간을 즐기다."
+    },
+    {
+     "word": "relaxation",
+     "en": "Time for relaxation.",
+     "ko": "쉬는 시간."
+    }
+   ],
+   "etymology": [
+    "leisure는 옛 프랑스어 leisir(허락되다, 자유롭다)에서 온 단어입니다.",
+    "라틴어 licere(허락되다)에서 나온 말로, license(면허)와 같은 가족입니다.",
+    "'일에서 벗어나 마음대로 해도 되는 시간'이라는 뜻이 되었습니다.",
+    "일이나 공부를 하지 않고 쉬거나 즐기는 자유로운 시간을 가리킵니다.",
+    "leisure의 핵심 이미지는 '해먹에 누워 느긋하게 쉬는 자유 시간 🏖️'입니다."
+   ],
+   "meanings": [
+    "여가, 한가함, 레저",
+    "한가한"
+   ],
+   "examples": [
+    {
+     "en": "What do you do in your leisure time?",
+     "ko": "여가 시간에 뭐 하세요?"
+    },
+    {
+     "en": "Reading is my favorite leisure activity.",
+     "ko": "독서는 제가 가장 좋아하는 여가 활동이에요."
+    },
+    {
+     "en": "Read the book at your leisure.",
+     "ko": "그 책은 편할 때 천천히 읽으세요."
+    },
+    {
+     "en": "The town has a new leisure center.",
+     "ko": "그 마을에는 새 레저 센터가 있어요."
+    },
+    {
+     "en": "People have more leisure than in the past.",
+     "ko": "사람들은 예전보다 여가가 더 많아요."
+    },
+    {
+     "en": "They walked at a leisurely pace.",
+     "ko": "그들은 느긋한 속도로 걸었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "free time",
+     "ko": "자유 시간",
+     "en": "Free time activities."
+    },
+    {
+     "type": "유의어",
+     "word": "recreation",
+     "ko": "오락, 휴양",
+     "en": "Outdoor recreation."
+    },
+    {
+     "type": "반의어",
+     "word": "work",
+     "ko": "일",
+     "en": "Go to work."
+    },
+    {
+     "type": "파생어",
+     "word": "leisurely",
+     "ko": "느긋한",
+     "en": "A leisurely walk."
+    },
+    {
+     "type": "연관어",
+     "word": "hobby",
+     "ko": "취미",
+     "en": "A fun hobby."
+    },
+    {
+     "type": "연관어",
+     "word": "relax",
+     "ko": "쉬다",
+     "en": "Relax at home."
+    }
+   ]
+  },
+  "550": {
+   "word": "compensate",
+   "overview": [
+    "compensate는 '보상하다, 배상하다'라는 뜻의 동사입니다.",
+    "compensate someone for a loss(손실을 보상해 주다)처럼 씁니다.",
+    "compensate for(~을 메우다, 보완하다)라는 뜻으로도 아주 자주 씁니다.",
+    "명사 compensation(보상, 보수)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "pay back",
+     "en": "Pay back the money.",
+     "ko": "돈을 돌려주다."
+    },
+    {
+     "word": "make up for",
+     "en": "Make up for lost time.",
+     "ko": "잃은 시간을 만회하다."
+    }
+   ],
+   "etymology": [
+    "compensate는 라틴어 compensare(무게를 맞추다)에서 온 단어입니다.",
+    "com(함께)과 pensare(무게를 달다)가 합쳐진 말로, pension(연금)과 뿌리가 이어집니다.",
+    "'저울 양쪽의 무게를 맞춰 균형을 이루다'라는 뜻에서 시작되었습니다.",
+    "잃은 만큼 되돌려 주거나, 부족한 부분을 다른 것으로 메워 균형을 맞추는 것을 가리키게 되었습니다.",
+    "compensate의 핵심 이미지는 '기운 저울에 추를 올려 균형을 맞추는 것 ⚖️'입니다."
+   ],
+   "meanings": [
+    "보상하다, 배상하다",
+    "(for) 메우다, 보완하다"
+   ],
+   "examples": [
+    {
+     "en": "The airline compensated us for the lost luggage.",
+     "ko": "항공사는 잃어버린 짐에 대해 우리에게 보상해 줬어요."
+    },
+    {
+     "en": "Hard work can compensate for a lack of talent.",
+     "ko": "노력은 재능 부족을 메워 줄 수 있어요."
+    },
+    {
+     "en": "Workers were compensated for working overtime.",
+     "ko": "직원들은 초과 근무에 대한 보상을 받았어요."
+    },
+    {
+     "en": "Nothing can compensate for losing a friend.",
+     "ko": "친구를 잃은 것은 무엇으로도 보상할 수 없어요."
+    },
+    {
+     "en": "She studied extra to compensate for missed classes.",
+     "ko": "그녀는 빠진 수업을 만회하려고 추가로 공부했어요."
+    },
+    {
+     "en": "He received compensation for his injury.",
+     "ko": "그는 부상에 대한 보상금을 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "make up for",
+     "ko": "만회하다",
+     "en": "Make up for it."
+    },
+    {
+     "type": "유의어",
+     "word": "repay",
+     "ko": "갚다",
+     "en": "Repay a loan."
+    },
+    {
+     "type": "파생어",
+     "word": "compensation",
+     "ko": "보상",
+     "en": "Fair compensation."
+    },
+    {
+     "type": "연관어",
+     "word": "reward",
+     "ko": "보상",
+     "en": "A big reward."
+    },
+    {
+     "type": "연관어",
+     "word": "loss",
+     "ko": "손실",
+     "en": "A heavy loss."
+    },
+    {
+     "type": "연관어",
+     "word": "balance",
+     "ko": "균형",
+     "en": "Keep balance."
+    }
+   ]
   }
  }
 }
