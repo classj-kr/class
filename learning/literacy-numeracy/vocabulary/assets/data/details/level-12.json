@@ -17244,6 +17244,1931 @@
      "en": "Ask the cashier."
     }
    ]
+  },
+  "1477": {
+   "word": "jar",
+   "overview": [
+    "jar는 명사로 '(유리·도자기) 병, 단지'라는 뜻입니다.",
+    "a jar of jam(잼 한 병)처럼 씁니다.",
+    "동사로는 '삐걱거리다, 귀에 거슬리다', '충격을 주다, 덜컹하게 하다'라는 뜻으로 씁니다.",
+    "'(의견이) 어긋나다, 조화를 이루지 못하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "container",
+     "en": "A glass container.",
+     "ko": "유리 용기."
+    },
+    {
+     "word": "shake",
+     "en": "Shake someone up.",
+     "ko": "누군가를 뒤흔들다."
+    }
+   ],
+   "etymology": [
+    "명사 jar는 아랍어 jarrah(흙으로 만든 물 항아리)에서 프랑스어를 거쳐 온 단어입니다.",
+    "동사 jar는 이와 다른 뿌리로, 거칠게 긁히는 소리를 흉내 낸 말에서 나왔습니다.",
+    "그래서 '삐걱거리는 소리를 내다, 귀에 거슬리다'라는 뜻이 되었습니다.",
+    "거슬리는 소리처럼 마음에 충격을 주거나 서로 어긋나는 것에도 비유적으로 씁니다.",
+    "jar의 핵심 이미지는 '둥근 단지, 그리고 덜컹하고 거슬리는 충격 🫙'입니다."
+   ],
+   "meanings": [
+    "(유리·도자기) 병, 단지",
+    "삐걱거리다, 불협화음을 일으키다",
+    "어긋나다, 불쾌감을 주다"
+   ],
+   "examples": [
+    {
+     "en": "She opened a jar of strawberry jam.",
+     "ko": "그녀는 딸기잼 한 병을 열었어요."
+    },
+    {
+     "en": "Put the cookies back in the jar.",
+     "ko": "쿠키를 단지에 다시 넣어 두세요."
+    },
+    {
+     "en": "The loud alarm jarred me awake.",
+     "ko": "시끄러운 알람 소리에 저는 화들짝 깼어요."
+    },
+    {
+     "en": "The fall jarred his knee badly.",
+     "ko": "넘어지면서 그의 무릎에 심한 충격이 갔어요."
+    },
+    {
+     "en": "Her bright red coat jarred with the calm room.",
+     "ko": "그녀의 새빨간 코트는 차분한 방과 어울리지 않았어요."
+    },
+    {
+     "en": "We collected coins in a big glass jar.",
+     "ko": "우리는 큰 유리병에 동전을 모았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "bottle",
+     "ko": "병",
+     "en": "A water bottle."
+    },
+    {
+     "type": "연관어",
+     "word": "lid",
+     "ko": "뚜껑",
+     "en": "Close the lid."
+    },
+    {
+     "type": "연관어",
+     "word": "container",
+     "ko": "용기",
+     "en": "A plastic container."
+    },
+    {
+     "type": "연관어",
+     "word": "shock",
+     "ko": "충격",
+     "en": "A sudden shock."
+    },
+    {
+     "type": "파생어",
+     "word": "jarring",
+     "ko": "귀에 거슬리는",
+     "en": "A jarring sound."
+    },
+    {
+     "type": "연관어",
+     "word": "clash",
+     "ko": "어울리지 않다",
+     "en": "The colors clash."
+    }
+   ]
+  },
+  "526": {
+   "word": "colony",
+   "overview": [
+    "colony는 '식민지'라는 뜻의 명사입니다.",
+    "a former British colony(과거 영국 식민지)처럼 씁니다.",
+    "생물에서는 '(개미·박테리아 등의) 군집, 집단 서식지'라는 뜻으로 씁니다.",
+    "'(같은 직업·국적의) 거주지, 집단'이라는 뜻으로도 씁니다. (an artists' colony)"
+   ],
+   "easy": [
+    {
+     "word": "settlement",
+     "en": "An early settlement.",
+     "ko": "초기 정착지."
+    },
+    {
+     "word": "group",
+     "en": "A group of ants.",
+     "ko": "개미 무리."
+    }
+   ],
+   "etymology": [
+    "colony는 라틴어 colonia(농부들의 정착지)에서 온 단어입니다.",
+    "colere(땅을 갈다, 살다)에서 나온 말로, culture(문화, 경작)와 같은 가족입니다.",
+    "원래는 로마 사람들이 새 땅에 가서 농사를 지으며 만든 정착촌을 뜻했습니다.",
+    "다른 나라가 지배하는 땅(식민지), 그리고 생물이 무리 지어 사는 곳으로 뜻이 넓어졌습니다.",
+    "colony의 핵심 이미지는 '낯선 땅에 무리 지어 자리 잡은 정착지 🐜'입니다."
+   ],
+   "meanings": [
+    "식민지",
+    "(식물, 동물) 군락, 군집"
+   ],
+   "examples": [
+    {
+     "en": "India was once a British colony.",
+     "ko": "인도는 한때 영국의 식민지였어요."
+    },
+    {
+     "en": "A colony of ants lives under that rock.",
+     "ko": "개미 군집이 그 바위 밑에 살아요."
+    },
+    {
+     "en": "The thirteen colonies later became the United States.",
+     "ko": "13개의 식민지가 나중에 미국이 되었어요."
+    },
+    {
+     "en": "Penguins live in large colonies.",
+     "ko": "펭귄은 큰 무리를 이루어 살아요."
+    },
+    {
+     "en": "Scientists grew a colony of bacteria in the lab.",
+     "ko": "과학자들은 실험실에서 세균 군집을 배양했어요."
+    },
+    {
+     "en": "The village became a colony for artists.",
+     "ko": "그 마을은 예술가들의 거주지가 되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "colonial",
+     "ko": "식민지의",
+     "en": "Colonial history."
+    },
+    {
+     "type": "파생어",
+     "word": "colonist",
+     "ko": "식민지 개척자",
+     "en": "Early colonists."
+    },
+    {
+     "type": "연관어",
+     "word": "settlement",
+     "ko": "정착지",
+     "en": "A small settlement."
+    },
+    {
+     "type": "연관어",
+     "word": "empire",
+     "ko": "제국",
+     "en": "A vast empire."
+    },
+    {
+     "type": "연관어",
+     "word": "independence",
+     "ko": "독립",
+     "en": "Fight for independence."
+    },
+    {
+     "type": "연관어",
+     "word": "swarm",
+     "ko": "떼",
+     "en": "A swarm of bees."
+    }
+   ]
+  },
+  "1745": {
+   "word": "mutual",
+   "overview": [
+    "mutual은 '서로의, 상호 간의'라는 뜻의 형용사입니다.",
+    "mutual respect(서로 간의 존중)처럼 씁니다.",
+    "'공동의, 공통의'라는 뜻으로도 씁니다. (a mutual friend, 둘 다 아는 친구)",
+    "The feeling is mutual.(나도 같은 마음이야)이라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "shared",
+     "en": "A shared interest.",
+     "ko": "공통 관심사."
+    },
+    {
+     "word": "two-way",
+     "en": "A two-way street.",
+     "ko": "양방향 도로."
+    }
+   ],
+   "etymology": [
+    "mutual은 라틴어 mutuus(주고받는, 빌려주는)에서 온 단어입니다.",
+    "mutare(바꾸다)와 관련된 말로, mutation(돌연변이, 변화)과 뿌리가 이어집니다.",
+    "'서로 주고받으며 바꾸는'이라는 뜻에서 시작되었습니다.",
+    "양쪽이 똑같이 주고받는 감정이나 관계, 함께 가진 것을 가리키게 되었습니다.",
+    "mutual의 핵심 이미지는 '양쪽이 똑같이 주고받는 마음 ↔️'입니다."
+   ],
+   "meanings": [
+    "상호 간의, 서로의",
+    "공동의"
+   ],
+   "examples": [
+    {
+     "en": "Friendship is built on mutual trust.",
+     "ko": "우정은 서로에 대한 신뢰 위에 세워져요."
+    },
+    {
+     "en": "We met through a mutual friend.",
+     "ko": "우리는 둘 다 아는 친구를 통해 만났어요."
+    },
+    {
+     "en": "They parted by mutual agreement.",
+     "ko": "그들은 서로 합의하에 헤어졌어요."
+    },
+    {
+     "en": "\"I like you.\" \"The feeling is mutual.\"",
+     "ko": "\"난 네가 좋아.\" \"나도 같은 마음이야.\""
+    },
+    {
+     "en": "The two countries share mutual interests.",
+     "ko": "그 두 나라는 공동의 이익을 공유해요."
+    },
+    {
+     "en": "Mutual respect makes teamwork easier.",
+     "ko": "서로 존중하면 협동이 더 쉬워져요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "shared",
+     "ko": "공유된",
+     "en": "A shared goal."
+    },
+    {
+     "type": "파생어",
+     "word": "mutually",
+     "ko": "서로",
+     "en": "Mutually helpful."
+    },
+    {
+     "type": "연관어",
+     "word": "common",
+     "ko": "공통의",
+     "en": "Common ground."
+    },
+    {
+     "type": "연관어",
+     "word": "reciprocal",
+     "ko": "상호적인",
+     "en": "A reciprocal deal."
+    },
+    {
+     "type": "연관어",
+     "word": "respect",
+     "ko": "존중",
+     "en": "Show respect."
+    },
+    {
+     "type": "연관어",
+     "word": "trust",
+     "ko": "신뢰",
+     "en": "Build trust."
+    }
+   ]
+  },
+  "1287": {
+   "word": "harvest",
+   "overview": [
+    "harvest는 '수확, 추수'라는 뜻의 명사이자 '수확하다'라는 뜻의 동사입니다.",
+    "the rice harvest(벼 수확)처럼 씁니다.",
+    "'수확량, 수확기'를 가리키기도 합니다.",
+    "비유적으로 '(노력의) 결과, 성과'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "crop",
+     "en": "A good crop.",
+     "ko": "좋은 수확물."
+    },
+    {
+     "word": "gather",
+     "en": "Gather the apples.",
+     "ko": "사과를 거두어들이다."
+    }
+   ],
+   "etymology": [
+    "harvest는 고대 영어 hærfest(가을)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 것으로, 독일어 Herbst(가을)와 같은 가족입니다.",
+    "원래는 계절 '가을'을 뜻했는데, 가을에 곡식을 거두므로 '수확'이라는 뜻이 되었습니다.",
+    "영어에서 가을은 autumn/fall이 차지하고, harvest는 '수확'이라는 뜻만 남았습니다.",
+    "harvest의 핵심 이미지는 '가을 들판에서 한 해의 결실을 거두는 것 🌾'입니다."
+   ],
+   "meanings": [
+    "추수, 수확",
+    "수확하다"
+   ],
+   "examples": [
+    {
+     "en": "Farmers are busy during the harvest season.",
+     "ko": "농부들은 수확철에 바빠요."
+    },
+    {
+     "en": "This year's apple harvest was very good.",
+     "ko": "올해 사과 수확이 아주 좋았어요."
+    },
+    {
+     "en": "They harvest the rice in October.",
+     "ko": "그들은 10월에 벼를 수확해요."
+    },
+    {
+     "en": "Chuseok is a harvest festival in Korea.",
+     "ko": "추석은 한국의 추수 명절이에요."
+    },
+    {
+     "en": "Bad weather ruined the wheat harvest.",
+     "ko": "나쁜 날씨가 밀 수확을 망쳤어요."
+    },
+    {
+     "en": "She reaped a rich harvest from years of study.",
+     "ko": "그녀는 여러 해 공부한 끝에 큰 결실을 거두었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "crop",
+     "ko": "작물, 수확물",
+     "en": "A rice crop."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "Work on a farm."
+    },
+    {
+     "type": "연관어",
+     "word": "gather",
+     "ko": "모으다",
+     "en": "Gather fruit."
+    },
+    {
+     "type": "연관어",
+     "word": "grain",
+     "ko": "곡물",
+     "en": "Whole grain."
+    },
+    {
+     "type": "연관어",
+     "word": "autumn",
+     "ko": "가을",
+     "en": "Late autumn."
+    },
+    {
+     "type": "연관어",
+     "word": "plant",
+     "ko": "심다",
+     "en": "Plant seeds."
+    }
+   ]
+  },
+  "108": {
+   "word": "ambition",
+   "overview": [
+    "ambition은 '야망, 포부'라는 뜻의 명사입니다.",
+    "a lifelong ambition(평생의 꿈)처럼 씁니다.",
+    "무언가를 이루고 성공하려는 강한 바람을 뜻합니다.",
+    "형용사 ambitious(야심 찬)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "dream",
+     "en": "Follow your dream.",
+     "ko": "꿈을 따라가다."
+    },
+    {
+     "word": "goal",
+     "en": "Reach a goal.",
+     "ko": "목표를 이루다."
+    }
+   ],
+   "etymology": [
+    "ambition은 라틴어 ambitio(돌아다님)에서 온 단어입니다.",
+    "ambi(주위를)와 ire(가다)가 합쳐진 말입니다.",
+    "고대 로마에서 공직 후보가 표를 얻으려고 여기저기 돌아다니던 것을 뜻했습니다.",
+    "그 모습에서 '높은 자리와 성공을 향한 강한 욕망'이라는 뜻이 생겼습니다.",
+    "ambition의 핵심 이미지는 '높은 꿈을 향해 부지런히 뛰어다니는 열망 🔥'입니다."
+   ],
+   "meanings": [
+    "야심, 야망, 포부"
+   ],
+   "examples": [
+    {
+     "en": "Her ambition is to become a doctor.",
+     "ko": "그녀의 꿈은 의사가 되는 거예요."
+    },
+    {
+     "en": "He is full of ambition and energy.",
+     "ko": "그는 야망과 에너지로 가득해요."
+    },
+    {
+     "en": "Visiting Paris was his lifelong ambition.",
+     "ko": "파리를 방문하는 것은 그의 평생 소원이었어요."
+    },
+    {
+     "en": "Too much ambition can hurt friendships.",
+     "ko": "지나친 야망은 우정을 해칠 수 있어요."
+    },
+    {
+     "en": "The young singer has big ambitions.",
+     "ko": "그 젊은 가수는 큰 포부를 가지고 있어요."
+    },
+    {
+     "en": "She finally achieved her ambition.",
+     "ko": "그녀는 마침내 자신의 꿈을 이루었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "aspiration",
+     "ko": "열망",
+     "en": "High aspirations."
+    },
+    {
+     "type": "파생어",
+     "word": "ambitious",
+     "ko": "야심 찬",
+     "en": "An ambitious plan."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "목표",
+     "en": "Set a goal."
+    },
+    {
+     "type": "연관어",
+     "word": "dream",
+     "ko": "꿈",
+     "en": "A big dream."
+    },
+    {
+     "type": "연관어",
+     "word": "success",
+     "ko": "성공",
+     "en": "Great success."
+    },
+    {
+     "type": "연관어",
+     "word": "determination",
+     "ko": "결단력",
+     "en": "Strong determination."
+    }
+   ]
+  },
+  "857": {
+   "word": "draft",
+   "overview": [
+    "draft는 '초안, 초고'라는 뜻의 명사입니다.",
+    "the first draft(첫 초안)처럼 씁니다.",
+    "'밑그림, 도안', '외풍(찬바람)', '징병'이라는 뜻으로도 씁니다.",
+    "동사로는 '초안을 작성하다, 징집하다'라는 뜻입니다. 영국 영어에서는 바람 뜻일 때 draught로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "rough copy",
+     "en": "A rough copy.",
+     "ko": "대강 쓴 원고."
+    },
+    {
+     "word": "outline",
+     "en": "Make an outline.",
+     "ko": "개요를 짜다."
+    }
+   ],
+   "etymology": [
+    "draft는 중세 영어 draght(끌기)에서 온 단어입니다.",
+    "draw(끌다, 그리다)와 같은 뿌리에서 나온 말입니다.",
+    "'끌어당기다'에서 선을 끌어 그린 밑그림, 끌려 들어오는 찬바람이라는 뜻이 나왔습니다.",
+    "사람을 군대로 끌어오는 징병, 글의 첫 밑그림인 초안이라는 뜻으로도 넓어졌습니다.",
+    "draft의 핵심 이미지는 '처음 대강 끌어 그린 밑그림 📝'입니다."
+   ],
+   "meanings": [
+    "밑그림, 도안",
+    "초안, 초고",
+    "초안을 작성하다"
+   ],
+   "examples": [
+    {
+     "en": "I finished the first draft of my essay.",
+     "ko": "저는 에세이 초안을 끝냈어요."
+    },
+    {
+     "en": "The teacher checked our drafts before the final copy.",
+     "ko": "선생님은 최종본 전에 우리 초안을 확인하셨어요."
+    },
+    {
+     "en": "She drafted a letter to the principal.",
+     "ko": "그녀는 교장 선생님께 드릴 편지 초안을 썼어요."
+    },
+    {
+     "en": "There's a cold draft coming from the window.",
+     "ko": "창문에서 찬바람이 들어와요."
+    },
+    {
+     "en": "He was drafted into the army at nineteen.",
+     "ko": "그는 열아홉 살에 군대에 징집되었어요."
+    },
+    {
+     "en": "The email is still saved as a draft.",
+     "ko": "그 이메일은 아직 임시 보관함에 저장되어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "outline",
+     "ko": "개요",
+     "en": "A brief outline."
+    },
+    {
+     "type": "연관어",
+     "word": "sketch",
+     "ko": "스케치",
+     "en": "A quick sketch."
+    },
+    {
+     "type": "연관어",
+     "word": "revise",
+     "ko": "수정하다",
+     "en": "Revise the essay."
+    },
+    {
+     "type": "연관어",
+     "word": "final",
+     "ko": "최종의",
+     "en": "The final version."
+    },
+    {
+     "type": "연관어",
+     "word": "edit",
+     "ko": "편집하다",
+     "en": "Edit the text."
+    },
+    {
+     "type": "연관어",
+     "word": "breeze",
+     "ko": "바람",
+     "en": "A cool breeze."
+    }
+   ]
+  },
+  "2007": {
+   "word": "portrait",
+   "overview": [
+    "portrait는 '초상화, 인물 사진'이라는 뜻의 명사입니다.",
+    "paint a portrait(초상화를 그리다)처럼 씁니다.",
+    "'(글·영화로 그린) 상세한 묘사'라는 뜻으로도 씁니다.",
+    "사진·화면에서는 '세로 방향'을 portrait mode라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "picture of a person",
+     "en": "A picture of a person.",
+     "ko": "인물 그림."
+    },
+    {
+     "word": "description",
+     "en": "A vivid description.",
+     "ko": "생생한 묘사."
+    }
+   ],
+   "etymology": [
+    "portrait는 옛 프랑스어 portraire(그려 내다)에서 온 단어입니다.",
+    "라틴어 pro(앞으로)와 trahere(끌다)가 합쳐진 말로, portray(묘사하다)와 같은 가족입니다.",
+    "'사람의 모습을 끌어내어 그려 보이다'라는 뜻에서 시작되었습니다.",
+    "사람의 얼굴이나 모습을 그린 그림, 사진, 글 속 묘사까지 가리킵니다.",
+    "portrait의 핵심 이미지는 '한 사람의 모습을 고스란히 담아낸 그림 🖼️'입니다."
+   ],
+   "meanings": [
+    "초상화",
+    "인물 사진",
+    "상세한 묘사"
+   ],
+   "examples": [
+    {
+     "en": "The artist painted a portrait of the queen.",
+     "ko": "그 화가는 여왕의 초상화를 그렸어요."
+    },
+    {
+     "en": "A family portrait hangs in the living room.",
+     "ko": "가족사진이 거실에 걸려 있어요."
+    },
+    {
+     "en": "The book gives a vivid portrait of village life.",
+     "ko": "그 책은 마을 생활을 생생하게 그려 내요."
+    },
+    {
+     "en": "She took portraits of people on the street.",
+     "ko": "그녀는 거리의 사람들 인물 사진을 찍었어요."
+    },
+    {
+     "en": "The Mona Lisa is a famous portrait.",
+     "ko": "모나리자는 유명한 초상화예요."
+    },
+    {
+     "en": "Turn the phone to take a portrait photo.",
+     "ko": "세로 사진을 찍으려면 휴대폰을 돌리세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "painting",
+     "ko": "그림",
+     "en": "A famous painting."
+    },
+    {
+     "type": "연관어",
+     "word": "photograph",
+     "ko": "사진",
+     "en": "An old photograph."
+    },
+    {
+     "type": "연관어",
+     "word": "portray",
+     "ko": "묘사하다",
+     "en": "Portray a hero."
+    },
+    {
+     "type": "연관어",
+     "word": "artist",
+     "ko": "화가",
+     "en": "A skilled artist."
+    },
+    {
+     "type": "연관어",
+     "word": "landscape",
+     "ko": "풍경화, 가로 방향",
+     "en": "A landscape painting."
+    },
+    {
+     "type": "연관어",
+     "word": "self-portrait",
+     "ko": "자화상",
+     "en": "Van Gogh's self-portrait."
+    }
+   ]
+  },
+  "911": {
+   "word": "eliminate",
+   "overview": [
+    "eliminate는 '제거하다, 없애다'라는 뜻의 동사입니다.",
+    "eliminate waste(낭비를 없애다)처럼 씁니다.",
+    "'(경기·선발에서) 탈락시키다'라는 뜻으로도 자주 씁니다.",
+    "명사 elimination(제거, 탈락)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "remove",
+     "en": "Remove the dirt.",
+     "ko": "먼지를 없애다."
+    },
+    {
+     "word": "knock out",
+     "en": "Knock out a team.",
+     "ko": "팀을 탈락시키다."
+    }
+   ],
+   "etymology": [
+    "eliminate는 라틴어 eliminare(문지방 밖으로 내쫓다)에서 온 단어입니다.",
+    "e(밖으로)와 limen(문지방)이 합쳐진 말로, limit(한계)과도 뿌리가 이어집니다.",
+    "'집 문지방 밖으로 몰아내다'라는 뜻에서 시작되었습니다.",
+    "필요 없는 것을 없애는 것, 경쟁에서 떨어뜨리는 것으로 뜻이 넓어졌습니다.",
+    "eliminate의 핵심 이미지는 '필요 없는 것을 문 밖으로 몰아내는 것 🚪'입니다."
+   ],
+   "meanings": [
+    "제거하다, 없애다, 삭제하다",
+    "탈락시키다"
+   ],
+   "examples": [
+    {
+     "en": "We must eliminate all spelling errors.",
+     "ko": "우리는 모든 철자 오류를 없애야 해요."
+    },
+    {
+     "en": "Our team was eliminated in the first round.",
+     "ko": "우리 팀은 1라운드에서 탈락했어요."
+    },
+    {
+     "en": "Regular exercise can help eliminate stress.",
+     "ko": "규칙적인 운동은 스트레스를 없애는 데 도움이 돼요."
+    },
+    {
+     "en": "The detective eliminated three suspects.",
+     "ko": "그 형사는 용의자 세 명을 제외했어요."
+    },
+    {
+     "en": "The new machine eliminates the need for extra workers.",
+     "ko": "그 새 기계 덕분에 추가 인력이 필요 없어졌어요."
+    },
+    {
+     "en": "Try to eliminate sugar from your diet.",
+     "ko": "식단에서 설탕을 빼 보세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "remove",
+     "ko": "제거하다",
+     "en": "Remove stains."
+    },
+    {
+     "type": "파생어",
+     "word": "elimination",
+     "ko": "제거, 탈락",
+     "en": "The elimination round."
+    },
+    {
+     "type": "연관어",
+     "word": "get rid of",
+     "ko": "없애다",
+     "en": "Get rid of junk."
+    },
+    {
+     "type": "연관어",
+     "word": "delete",
+     "ko": "삭제하다",
+     "en": "Delete the file."
+    },
+    {
+     "type": "연관어",
+     "word": "exclude",
+     "ko": "제외하다",
+     "en": "Exclude the cost."
+    },
+    {
+     "type": "연관어",
+     "word": "include",
+     "ko": "포함하다",
+     "en": "Include everyone."
+    }
+   ]
+  },
+  "1661": {
+   "word": "medium",
+   "overview": [
+    "medium은 형용사로 '중간의'라는 뜻입니다.",
+    "medium size(중간 크기)처럼 씁니다.",
+    "명사로는 '매체, 수단'이라는 뜻입니다. (a medium of communication, 의사소통 수단)",
+    "복수형은 mediums 또는 media이며, media(대중 매체)가 여기서 나왔습니다."
+   ],
+   "easy": [
+    {
+     "word": "middle",
+     "en": "The middle size.",
+     "ko": "중간 크기."
+    },
+    {
+     "word": "means",
+     "en": "A means of travel.",
+     "ko": "이동 수단."
+    }
+   ],
+   "etymology": [
+    "medium은 라틴어 medium(가운데, 중간)에서 온 단어입니다.",
+    "medius(가운데의)에서 나온 말로, middle(가운데), media(매체)와 같은 가족입니다.",
+    "'양쪽 사이의 가운데'라는 뜻에서 시작되었습니다.",
+    "가운데에서 무언가를 전달해 주는 '매체, 수단'이라는 뜻으로 넓어졌습니다.",
+    "medium의 핵심 이미지는 '양쪽 사이 한가운데서 이어 주는 것 ⚖️'입니다."
+   ],
+   "meanings": [
+    "(크기, 양 등이) 중간의",
+    "(크기, 양) 중간",
+    "매체, 수단, 소재, 도구"
+   ],
+   "examples": [
+    {
+     "en": "I'd like a medium coffee, please.",
+     "ko": "중간 크기 커피 한 잔 주세요."
+    },
+    {
+     "en": "Cook the steak until it's medium.",
+     "ko": "스테이크를 미디엄으로 익혀 주세요."
+    },
+    {
+     "en": "Television is a powerful medium.",
+     "ko": "텔레비전은 영향력 있는 매체예요."
+    },
+    {
+     "en": "The artist works in the medium of clay.",
+     "ko": "그 예술가는 점토를 재료로 작업해요."
+    },
+    {
+     "en": "He is of medium height.",
+     "ko": "그는 중간 키예요."
+    },
+    {
+     "en": "English is used as a medium of instruction.",
+     "ko": "영어가 수업 언어로 사용돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "average",
+     "ko": "평균의",
+     "en": "Average height."
+    },
+    {
+     "type": "연관어",
+     "word": "middle",
+     "ko": "가운데",
+     "en": "The middle seat."
+    },
+    {
+     "type": "변화형",
+     "word": "media",
+     "ko": "매체들, 대중 매체",
+     "en": "Social media."
+    },
+    {
+     "type": "연관어",
+     "word": "means",
+     "ko": "수단",
+     "en": "A means to an end."
+    },
+    {
+     "type": "연관어",
+     "word": "large",
+     "ko": "큰",
+     "en": "A large pizza."
+    },
+    {
+     "type": "연관어",
+     "word": "small",
+     "ko": "작은",
+     "en": "A small cup."
+    }
+   ]
+  },
+  "906": {
+   "word": "elegant",
+   "overview": [
+    "elegant는 '우아한, 품위 있는'이라는 뜻의 형용사입니다.",
+    "an elegant dress(우아한 드레스)처럼 씁니다.",
+    "'(해결책·생각이) 간결하고 훌륭한'이라는 뜻으로도 씁니다.",
+    "명사 elegance(우아함)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "graceful",
+     "en": "A graceful dancer.",
+     "ko": "우아한 무용수."
+    },
+    {
+     "word": "stylish",
+     "en": "A stylish coat.",
+     "ko": "멋진 코트."
+    }
+   ],
+   "etymology": [
+    "elegant는 라틴어 elegans(까다롭게 고르는)에서 온 단어입니다.",
+    "eligere(골라내다)와 관련된 말로, elect(선출하다), select(고르다)와 뿌리가 이어집니다.",
+    "'좋은 것만 신중하게 골라내는'이라는 뜻에서 시작되었습니다.",
+    "잘 골라 다듬어서 세련되고 품위 있는 모습을 가리키게 되었습니다.",
+    "elegant의 핵심 이미지는 '좋은 것만 골라 다듬은 세련된 품위 🦢'입니다."
+   ],
+   "meanings": [
+    "우아하다, 멋지다, 근사하다"
+   ],
+   "examples": [
+    {
+     "en": "She wore an elegant black dress to the party.",
+     "ko": "그녀는 파티에 우아한 검은 드레스를 입었어요."
+    },
+    {
+     "en": "The hotel lobby is simple but elegant.",
+     "ko": "그 호텔 로비는 단순하지만 품위 있어요."
+    },
+    {
+     "en": "Swans move in an elegant way.",
+     "ko": "백조는 우아하게 움직여요."
+    },
+    {
+     "en": "That's an elegant solution to the math problem.",
+     "ko": "그건 그 수학 문제에 대한 깔끔하고 훌륭한 풀이예요."
+    },
+    {
+     "en": "The old building has elegant windows.",
+     "ko": "그 오래된 건물에는 멋스러운 창문들이 있어요."
+    },
+    {
+     "en": "He writes in an elegant style.",
+     "ko": "그는 품위 있는 문체로 글을 써요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "graceful",
+     "ko": "우아한",
+     "en": "A graceful movement."
+    },
+    {
+     "type": "파생어",
+     "word": "elegance",
+     "ko": "우아함",
+     "en": "Simple elegance."
+    },
+    {
+     "type": "연관어",
+     "word": "stylish",
+     "ko": "세련된",
+     "en": "A stylish hat."
+    },
+    {
+     "type": "연관어",
+     "word": "classy",
+     "ko": "고급스러운",
+     "en": "A classy restaurant."
+    },
+    {
+     "type": "연관어",
+     "word": "sophisticated",
+     "ko": "세련된",
+     "en": "A sophisticated design."
+    },
+    {
+     "type": "연관어",
+     "word": "clumsy",
+     "ko": "어설픈",
+     "en": "A clumsy move."
+    }
+   ]
+  },
+  "560": {
+   "word": "compound",
+   "overview": [
+    "compound는 명사로 '(화학) 화합물, 혼합물'이라는 뜻입니다.",
+    "a chemical compound(화학 화합물)처럼 씁니다.",
+    "형용사로는 '복합의', 명사로는 '(울타리 친) 구내, 단지'라는 뜻도 있습니다.",
+    "동사로는 '(문제를) 악화시키다, 가중시키다'라는 뜻으로 씁니다. (발음: com-POUND)"
+   ],
+   "easy": [
+    {
+     "word": "mixture",
+     "en": "A mixture of colors.",
+     "ko": "색의 혼합."
+    },
+    {
+     "word": "make worse",
+     "en": "Make it worse.",
+     "ko": "상황을 더 나쁘게 하다."
+    }
+   ],
+   "etymology": [
+    "compound는 라틴어 componere(함께 놓다, 조립하다)에서 온 단어입니다.",
+    "com(함께)과 ponere(놓다)가 합쳐진 말로, component(구성 요소), compose(구성하다)와 같은 가족입니다.",
+    "'여러 요소를 함께 놓아 하나로 만든 것'이라는 뜻에서 시작되었습니다.",
+    "화학 화합물, 합성어, 그리고 문제 위에 문제가 겹쳐 '악화되다'라는 뜻으로 넓어졌습니다.",
+    "compound의 핵심 이미지는 '여러 요소를 합쳐 하나로 만든 덩어리 🧪'입니다."
+   ],
+   "meanings": [
+    "복합의",
+    "복합체",
+    "(화학) 화합물",
+    "악화시키다"
+   ],
+   "examples": [
+    {
+     "en": "Water is a compound of hydrogen and oxygen.",
+     "ko": "물은 수소와 산소의 화합물이에요."
+    },
+    {
+     "en": "\"Sunflower\" is a compound word.",
+     "ko": "\"sunflower\"는 합성어예요."
+    },
+    {
+     "en": "The heavy rain compounded the traffic problems.",
+     "ko": "폭우가 교통 문제를 더 악화시켰어요."
+    },
+    {
+     "en": "The family lives in a walled compound.",
+     "ko": "그 가족은 담으로 둘러싸인 구내에 살아요."
+    },
+    {
+     "en": "Scientists discovered a new compound in the plant.",
+     "ko": "과학자들은 그 식물에서 새로운 화합물을 발견했어요."
+    },
+    {
+     "en": "Compound interest makes savings grow faster.",
+     "ko": "복리는 저축액을 더 빨리 불려 줘요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "mixture",
+     "ko": "혼합물",
+     "en": "A strange mixture."
+    },
+    {
+     "type": "연관어",
+     "word": "element",
+     "ko": "원소",
+     "en": "A chemical element."
+    },
+    {
+     "type": "연관어",
+     "word": "combine",
+     "ko": "결합하다",
+     "en": "Combine the ingredients."
+    },
+    {
+     "type": "연관어",
+     "word": "worsen",
+     "ko": "악화시키다",
+     "en": "Worsen the pain."
+    },
+    {
+     "type": "연관어",
+     "word": "complex",
+     "ko": "복합의",
+     "en": "A complex system."
+    },
+    {
+     "type": "연관어",
+     "word": "chemical",
+     "ko": "화학의",
+     "en": "A chemical reaction."
+    }
+   ]
+  },
+  "2109": {
+   "word": "pursue",
+   "overview": [
+    "pursue는 '추구하다, (목표를) 좇다'라는 뜻의 동사입니다.",
+    "pursue a dream(꿈을 좇다)처럼 씁니다.",
+    "'뒤쫓다, 추격하다'라는 뜻으로도 씁니다.",
+    "명사 pursuit(추구, 추격)도 자주 씁니다. (the pursuit of happiness, 행복 추구)"
+   ],
+   "easy": [
+    {
+     "word": "chase",
+     "en": "Chase a thief.",
+     "ko": "도둑을 쫓다."
+    },
+    {
+     "word": "go after",
+     "en": "Go after your goals.",
+     "ko": "목표를 향해 나아가다."
+    }
+   ],
+   "etymology": [
+    "pursue는 라틴어 prosequi(뒤따라가다)에서 온 단어입니다.",
+    "pro(앞으로)와 sequi(따르다)가 합쳐진 말로, sequence(순서), follow와 뜻이 통합니다.",
+    "'앞에 있는 것을 계속 따라가다'라는 뜻이 그대로 이어져 왔습니다.",
+    "도망가는 사람을 뒤쫓는 것, 이루고 싶은 목표를 꾸준히 좇는 것 모두에 씁니다.",
+    "pursue의 핵심 이미지는 '앞서가는 목표를 끝까지 뒤쫓는 것 🏃‍♀️'입니다."
+   ],
+   "meanings": [
+    "추구하다",
+    "뒤쫓다, 추격하다"
+   ],
+   "examples": [
+    {
+     "en": "She wants to pursue a career in music.",
+     "ko": "그녀는 음악 분야에서 경력을 쌓고 싶어 해요."
+    },
+    {
+     "en": "The police pursued the car for miles.",
+     "ko": "경찰은 그 차를 몇 마일이나 뒤쫓았어요."
+    },
+    {
+     "en": "Never stop pursuing your dreams.",
+     "ko": "꿈을 좇는 것을 절대 멈추지 마세요."
+    },
+    {
+     "en": "He decided to pursue his studies abroad.",
+     "ko": "그는 해외에서 학업을 이어 가기로 했어요."
+    },
+    {
+     "en": "The lion pursued the zebra across the plain.",
+     "ko": "사자는 평원을 가로질러 얼룩말을 쫓았어요."
+    },
+    {
+     "en": "We will pursue the matter further.",
+     "ko": "우리는 그 문제를 더 조사할 거예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "chase",
+     "ko": "쫓다",
+     "en": "Chase a ball."
+    },
+    {
+     "type": "파생어",
+     "word": "pursuit",
+     "ko": "추구, 추격",
+     "en": "The pursuit of knowledge."
+    },
+    {
+     "type": "연관어",
+     "word": "follow",
+     "ko": "따르다",
+     "en": "Follow your heart."
+    },
+    {
+     "type": "연관어",
+     "word": "seek",
+     "ko": "찾다, 구하다",
+     "en": "Seek help."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "목표",
+     "en": "A clear goal."
+    },
+    {
+     "type": "연관어",
+     "word": "career",
+     "ko": "경력",
+     "en": "A long career."
+    }
+   ]
+  },
+  "682": {
+   "word": "crucial",
+   "overview": [
+    "crucial은 '결정적인, 아주 중요한'이라는 뜻의 형용사입니다.",
+    "a crucial decision(결정적인 결정)처럼 씁니다.",
+    "어떤 일의 결과를 좌우할 만큼 중요한 것을 뜻합니다.",
+    "It is crucial that ~(~하는 것이 매우 중요하다)처럼도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "very important",
+     "en": "A very important step.",
+     "ko": "아주 중요한 단계."
+    },
+    {
+     "word": "key",
+     "en": "A key moment.",
+     "ko": "중요한 순간."
+    }
+   ],
+   "etymology": [
+    "crucial은 라틴어 crux(십자가, 교차점)에서 온 단어입니다.",
+    "cross(십자가, 교차하다)와 같은 가족입니다.",
+    "길이 갈라지는 십자로에서 어느 쪽으로 갈지 정해야 하는 모습에서 나왔습니다.",
+    "'앞으로의 방향을 결정짓는 갈림길처럼 중요한'이라는 뜻이 되었습니다.",
+    "crucial의 핵심 이미지는 '운명을 가르는 갈림길 위의 중요한 순간 🔑'입니다."
+   ],
+   "meanings": [
+    "결정적인, 중요한"
+   ],
+   "examples": [
+    {
+     "en": "Sleep is crucial for good health.",
+     "ko": "잠은 건강에 매우 중요해요."
+    },
+    {
+     "en": "The final minutes of the game were crucial.",
+     "ko": "경기의 마지막 몇 분이 결정적이었어요."
+    },
+    {
+     "en": "She played a crucial role in the project.",
+     "ko": "그녀는 그 프로젝트에서 결정적인 역할을 했어요."
+    },
+    {
+     "en": "It's crucial that you arrive on time.",
+     "ko": "제시간에 도착하는 것이 정말 중요해요."
+    },
+    {
+     "en": "The witness gave crucial information to the police.",
+     "ko": "그 목격자는 경찰에게 결정적인 정보를 제공했어요."
+    },
+    {
+     "en": "Teamwork is crucial to success.",
+     "ko": "협동은 성공에 꼭 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "vital",
+     "ko": "필수적인",
+     "en": "A vital role."
+    },
+    {
+     "type": "유의어",
+     "word": "essential",
+     "ko": "필수적인",
+     "en": "Essential skills."
+    },
+    {
+     "type": "반의어",
+     "word": "trivial",
+     "ko": "사소한",
+     "en": "A trivial matter."
+    },
+    {
+     "type": "연관어",
+     "word": "critical",
+     "ko": "중대한",
+     "en": "A critical moment."
+    },
+    {
+     "type": "연관어",
+     "word": "decisive",
+     "ko": "결정적인",
+     "en": "A decisive win."
+    },
+    {
+     "type": "연관어",
+     "word": "key",
+     "ko": "핵심적인",
+     "en": "A key factor."
+    }
+   ]
+  },
+  "2247": {
+   "word": "riot",
+   "overview": [
+    "riot는 '폭동'이라는 뜻의 명사이자 '폭동을 일으키다'라는 뜻의 동사입니다.",
+    "a riot broke out(폭동이 일어났다)처럼 씁니다.",
+    "a riot of color(형형색색의 화려함)처럼 '다채로운 것의 가득함'을 뜻하기도 합니다.",
+    "구어에서 '아주 재미있는 사람·일'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "uprising",
+     "en": "A violent uprising.",
+     "ko": "폭력적인 봉기."
+    },
+    {
+     "word": "disorder",
+     "en": "Public disorder.",
+     "ko": "공공 무질서."
+    }
+   ],
+   "etymology": [
+    "riot는 옛 프랑스어 riote(말다툼, 소란)에서 온 단어입니다.",
+    "원래는 시끄럽게 떠들고 다투는 소동을 뜻했습니다.",
+    "점차 많은 사람이 모여 거리에서 폭력을 쓰는 '폭동'이라는 뜻이 되었습니다.",
+    "색이나 소리가 소란스러울 만큼 가득한 모습에도 비유적으로 씁니다.",
+    "riot의 핵심 이미지는 '군중이 통제를 잃고 들끓는 소란 🔥'입니다."
+   ],
+   "meanings": [
+    "폭동을 일으키다",
+    "폭동, 소동"
+   ],
+   "examples": [
+    {
+     "en": "Police were called to stop the riot.",
+     "ko": "폭동을 막기 위해 경찰이 출동했어요."
+    },
+    {
+     "en": "Angry fans rioted after the match.",
+     "ko": "화난 팬들이 경기 후 난동을 부렸어요."
+    },
+    {
+     "en": "The garden was a riot of color in spring.",
+     "ko": "봄에 그 정원은 온갖 색으로 가득했어요."
+    },
+    {
+     "en": "Food shortages led to riots in the city.",
+     "ko": "식량 부족이 그 도시에서 폭동으로 이어졌어요."
+    },
+    {
+     "en": "The police wore riot gear.",
+     "ko": "경찰은 진압 장비를 착용했어요."
+    },
+    {
+     "en": "Your uncle is a riot—he's so funny!",
+     "ko": "너희 삼촌 정말 웃기다—진짜 재밌어!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "uprising",
+     "ko": "봉기",
+     "en": "A popular uprising."
+    },
+    {
+     "type": "연관어",
+     "word": "protest",
+     "ko": "시위",
+     "en": "A peaceful protest."
+    },
+    {
+     "type": "연관어",
+     "word": "violence",
+     "ko": "폭력",
+     "en": "Stop the violence."
+    },
+    {
+     "type": "연관어",
+     "word": "chaos",
+     "ko": "혼란",
+     "en": "Total chaos."
+    },
+    {
+     "type": "연관어",
+     "word": "rebel",
+     "ko": "반란을 일으키다",
+     "en": "Rebel against rules."
+    },
+    {
+     "type": "연관어",
+     "word": "crowd",
+     "ko": "군중",
+     "en": "A huge crowd."
+    }
+   ]
+  },
+  "1584": {
+   "word": "literature",
+   "overview": [
+    "literature는 '문학'이라는 뜻의 명사입니다.",
+    "English literature(영문학)처럼 씁니다.",
+    "'(특정 분야의) 문헌, 자료'라는 뜻으로도 씁니다. (medical literature, 의학 문헌)",
+    "'(광고·안내용) 인쇄물'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "books",
+     "en": "Classic books.",
+     "ko": "고전 책들."
+    },
+    {
+     "word": "writings",
+     "en": "Ancient writings.",
+     "ko": "고대의 글들."
+    }
+   ],
+   "etymology": [
+    "literature는 라틴어 litteratura(글쓰기, 학식)에서 온 단어입니다.",
+    "littera(글자)에서 나온 말로, letter(글자), literal(글자 그대로의)과 같은 가족입니다.",
+    "원래는 '글자를 다루는 지식, 학식'이라는 뜻이었습니다.",
+    "예술로서 쓰인 글 전체, 그리고 어떤 주제에 관해 쓰인 자료들을 가리키게 되었습니다.",
+    "literature의 핵심 이미지는 '글자로 쌓아 올린 이야기와 지식의 세계 📚'입니다."
+   ],
+   "meanings": [
+    "문학",
+    "(특정 분야의) 문헌, 인쇄물"
+   ],
+   "examples": [
+    {
+     "en": "She studies Korean literature at university.",
+     "ko": "그녀는 대학에서 국문학을 공부해요."
+    },
+    {
+     "en": "Shakespeare is a giant of English literature.",
+     "ko": "셰익스피어는 영문학의 거장이에요."
+    },
+    {
+     "en": "Children's literature can teach important lessons.",
+     "ko": "아동 문학은 중요한 교훈을 가르쳐 줄 수 있어요."
+    },
+    {
+     "en": "The doctor read the latest literature on the disease.",
+     "ko": "그 의사는 그 병에 관한 최신 문헌을 읽었어요."
+    },
+    {
+     "en": "Please take some literature about our programs.",
+     "ko": "저희 프로그램 안내 자료를 가져가세요."
+    },
+    {
+     "en": "He won a prize for literature.",
+     "ko": "그는 문학상을 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "literary",
+     "ko": "문학의",
+     "en": "A literary prize."
+    },
+    {
+     "type": "연관어",
+     "word": "novel",
+     "ko": "소설",
+     "en": "A long novel."
+    },
+    {
+     "type": "연관어",
+     "word": "poetry",
+     "ko": "시",
+     "en": "Modern poetry."
+    },
+    {
+     "type": "연관어",
+     "word": "author",
+     "ko": "작가",
+     "en": "A popular author."
+    },
+    {
+     "type": "연관어",
+     "word": "fiction",
+     "ko": "소설, 허구",
+     "en": "Science fiction."
+    },
+    {
+     "type": "연관어",
+     "word": "classic",
+     "ko": "고전",
+     "en": "A literary classic."
+    }
+   ]
+  },
+  "1889": {
+   "word": "panel",
+   "overview": [
+    "panel은 '(평평한) 판, 패널'이라는 뜻의 명사입니다.",
+    "a solar panel(태양 전지판)처럼 씁니다.",
+    "'위원단, 심사단, 토론자단'이라는 뜻으로도 아주 자주 씁니다.",
+    "a control panel(조작판, 제어판)처럼 기계의 조작 장치를 가리키기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "board",
+     "en": "A wooden board.",
+     "ko": "나무판."
+    },
+    {
+     "word": "committee",
+     "en": "A small committee.",
+     "ko": "작은 위원회."
+    }
+   ],
+   "etymology": [
+    "panel은 옛 프랑스어 panel(천 조각)에서 온 단어입니다.",
+    "라틴어 pannus(천 조각)에서 나온 말입니다.",
+    "원래는 작은 천 조각, 그리고 배심원 명단을 적던 양피지 조각을 뜻했습니다.",
+    "그래서 '평평한 판'이라는 뜻과 '선정된 사람들의 모임(위원단)'이라는 뜻이 함께 생겼습니다.",
+    "panel의 핵심 이미지는 '평평한 판, 그리고 한자리에 모인 전문가단 🧑‍⚖️'입니다."
+   ],
+   "meanings": [
+    "패널, 판",
+    "위원단, 심사단"
+   ],
+   "examples": [
+    {
+     "en": "The house has solar panels on the roof.",
+     "ko": "그 집 지붕에는 태양 전지판이 있어요."
+    },
+    {
+     "en": "A panel of judges chose the winner.",
+     "ko": "심사위원단이 우승자를 뽑았어요."
+    },
+    {
+     "en": "Experts joined a panel discussion on climate change.",
+     "ko": "전문가들이 기후 변화에 관한 토론회에 참여했어요."
+    },
+    {
+     "en": "The pilot checked the control panel.",
+     "ko": "조종사는 계기판을 확인했어요."
+    },
+    {
+     "en": "One wooden panel of the door was broken.",
+     "ko": "문의 나무판 하나가 부서져 있었어요."
+    },
+    {
+     "en": "The comic book has six panels on each page.",
+     "ko": "그 만화책은 각 페이지에 여섯 칸이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "committee",
+     "ko": "위원회",
+     "en": "Join a committee."
+    },
+    {
+     "type": "연관어",
+     "word": "board",
+     "ko": "판, 이사회",
+     "en": "A notice board."
+    },
+    {
+     "type": "연관어",
+     "word": "judge",
+     "ko": "심사위원",
+     "en": "A fair judge."
+    },
+    {
+     "type": "연관어",
+     "word": "expert",
+     "ko": "전문가",
+     "en": "An expert opinion."
+    },
+    {
+     "type": "연관어",
+     "word": "discussion",
+     "ko": "토론",
+     "en": "A group discussion."
+    },
+    {
+     "type": "연관어",
+     "word": "screen",
+     "ko": "화면",
+     "en": "A touch screen."
+    }
+   ]
+  },
+  "2459": {
+   "word": "sole",
+   "overview": [
+    "sole은 형용사로 '유일한, 단독의'라는 뜻입니다.",
+    "the sole survivor(유일한 생존자)처럼 씁니다.",
+    "명사로는 '발바닥, 신발 밑창'이라는 뜻으로도 씁니다.",
+    "물고기 '가자미류(서대)'를 뜻하기도 하며, 부사 solely(오로지)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "only",
+     "en": "The only reason.",
+     "ko": "유일한 이유."
+    },
+    {
+     "word": "single",
+     "en": "A single owner.",
+     "ko": "단 한 명의 주인."
+    }
+   ],
+   "etymology": [
+    "형용사 sole은 라틴어 solus(혼자의)에서 온 단어로, solo(독주), solitary(외로운)와 같은 가족입니다.",
+    "'다른 것 없이 오직 하나뿐인'이라는 뜻이 그대로 이어져 왔습니다.",
+    "명사 sole(발바닥)은 라틴어 solea(샌들, 밑창)에서 온 다른 뿌리의 단어입니다.",
+    "발바닥처럼 납작한 모양의 물고기도 sole이라고 부르게 되었습니다.",
+    "sole의 핵심 이미지는 '오직 하나뿐인 것, 그리고 땅에 닿는 발바닥 👣'입니다."
+   ],
+   "meanings": [
+    "혼자(단독)의, 유일한",
+    "발바닥, 밑창"
+   ],
+   "examples": [
+    {
+     "en": "He was the sole survivor of the crash.",
+     "ko": "그는 그 사고의 유일한 생존자였어요."
+    },
+    {
+     "en": "Her sole goal was to win the gold medal.",
+     "ko": "그녀의 유일한 목표는 금메달을 따는 것이었어요."
+    },
+    {
+     "en": "The sole of my shoe has a hole in it.",
+     "ko": "제 신발 밑창에 구멍이 났어요."
+    },
+    {
+     "en": "She is the sole owner of the company.",
+     "ko": "그녀는 그 회사의 단독 소유주예요."
+    },
+    {
+     "en": "The sand burned the soles of our feet.",
+     "ko": "모래가 우리 발바닥을 뜨겁게 달궜어요."
+    },
+    {
+     "en": "He did it for the sole purpose of helping others.",
+     "ko": "그는 오로지 다른 사람을 돕기 위해 그 일을 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "only",
+     "ko": "유일한",
+     "en": "The only child."
+    },
+    {
+     "type": "유의어",
+     "word": "single",
+     "ko": "단 하나의",
+     "en": "A single chance."
+    },
+    {
+     "type": "파생어",
+     "word": "solely",
+     "ko": "오로지",
+     "en": "Solely responsible."
+    },
+    {
+     "type": "연관어",
+     "word": "alone",
+     "ko": "혼자",
+     "en": "Live alone."
+    },
+    {
+     "type": "연관어",
+     "word": "exclusive",
+     "ko": "독점적인",
+     "en": "Exclusive rights."
+    },
+    {
+     "type": "연관어",
+     "word": "heel",
+     "ko": "발뒤꿈치, 굽",
+     "en": "High heels."
+    }
+   ]
+  },
+  "2350": {
+   "word": "sequence",
+   "overview": [
+    "sequence는 '순서, 차례'라는 뜻의 명사입니다.",
+    "in sequence(순서대로)처럼 씁니다.",
+    "'연속, (일련의) 연쇄'라는 뜻으로도 씁니다. (a sequence of events, 일련의 사건들)",
+    "영화의 '(연속된) 장면'이나 수학의 '수열'을 가리키기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "order",
+     "en": "In the right order.",
+     "ko": "올바른 순서로."
+    },
+    {
+     "word": "series",
+     "en": "A series of steps.",
+     "ko": "일련의 단계."
+    }
+   ],
+   "etymology": [
+    "sequence는 라틴어 sequentia(뒤따름)에서 온 단어입니다.",
+    "sequi(따르다)에서 나온 말로, sequel(속편), consequence(결과)와 같은 가족입니다.",
+    "'하나가 다른 하나를 차례로 뒤따르는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "정해진 순서, 연달아 일어나는 일들, 연속된 장면이나 숫자를 가리킵니다.",
+    "sequence의 핵심 이미지는 '하나가 다음 하나를 차례로 뒤따르는 줄 🔢'입니다."
+   ],
+   "meanings": [
+    "연속, 반복",
+    "순서",
+    "결과"
+   ],
+   "examples": [
+    {
+     "en": "Put the pictures in the correct sequence.",
+     "ko": "그림들을 올바른 순서로 놓으세요."
+    },
+    {
+     "en": "A strange sequence of events led to the accident.",
+     "ko": "이상한 일련의 사건들이 그 사고로 이어졌어요."
+    },
+    {
+     "en": "The numbers 2, 4, 6, 8 form a sequence.",
+     "ko": "2, 4, 6, 8이라는 숫자들은 수열을 이뤄요."
+    },
+    {
+     "en": "The movie's opening sequence is amazing.",
+     "ko": "그 영화의 오프닝 장면은 정말 멋져요."
+    },
+    {
+     "en": "Follow the steps in sequence.",
+     "ko": "단계를 차례대로 따르세요."
+    },
+    {
+     "en": "Scientists studied the DNA sequence.",
+     "ko": "과학자들은 DNA 염기 서열을 연구했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "order",
+     "ko": "순서",
+     "en": "Alphabetical order."
+    },
+    {
+     "type": "연관어",
+     "word": "series",
+     "ko": "연속",
+     "en": "A TV series."
+    },
+    {
+     "type": "연관어",
+     "word": "pattern",
+     "ko": "패턴",
+     "en": "Find the pattern."
+    },
+    {
+     "type": "연관어",
+     "word": "consequence",
+     "ko": "결과",
+     "en": "Face the consequences."
+    },
+    {
+     "type": "연관어",
+     "word": "sequel",
+     "ko": "속편",
+     "en": "A movie sequel."
+    },
+    {
+     "type": "연관어",
+     "word": "step",
+     "ko": "단계",
+     "en": "The next step."
+    }
+   ]
+  },
+  "130": {
+   "word": "anxiety",
+   "overview": [
+    "anxiety는 '불안, 걱정'이라는 뜻의 명사입니다.",
+    "feel anxiety(불안을 느끼다)처럼 씁니다.",
+    "'(~하고 싶은) 갈망, 열망'이라는 뜻으로도 씁니다.",
+    "형용사 anxious(불안한, 간절히 바라는)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "worry",
+     "en": "Constant worry.",
+     "ko": "끊임없는 걱정."
+    },
+    {
+     "word": "nervousness",
+     "en": "Nervousness before a test.",
+     "ko": "시험 전 긴장."
+    }
+   ],
+   "etymology": [
+    "anxiety는 라틴어 anxietas(불안)에서 온 단어입니다.",
+    "angere(목을 조르다, 괴롭히다)에서 나온 말로, anger(분노), anguish(고뇌)와 뿌리가 이어집니다.",
+    "'가슴이 조여드는 듯한 괴로운 느낌'이라는 뜻에서 시작되었습니다.",
+    "앞으로 일어날 일을 걱정하며 마음이 조마조마한 상태를 가리키게 되었습니다.",
+    "anxiety의 핵심 이미지는 '가슴이 조여드는 조마조마한 마음 😟'입니다."
+   ],
+   "meanings": [
+    "불안, 염려",
+    "갈망, 열망",
+    "(정신의학) 불안"
+   ],
+   "examples": [
+    {
+     "en": "Many students feel anxiety before exams.",
+     "ko": "많은 학생들이 시험 전에 불안을 느껴요."
+    },
+    {
+     "en": "Deep breathing can help reduce anxiety.",
+     "ko": "심호흡은 불안을 줄이는 데 도움이 될 수 있어요."
+    },
+    {
+     "en": "She waited for the results with anxiety.",
+     "ko": "그녀는 조마조마하며 결과를 기다렸어요."
+    },
+    {
+     "en": "Talking to a friend eased his anxiety.",
+     "ko": "친구와 이야기하자 그의 걱정이 누그러졌어요."
+    },
+    {
+     "en": "The news caused anxiety across the country.",
+     "ko": "그 소식은 전국에 불안을 불러일으켰어요."
+    },
+    {
+     "en": "If anxiety lasts a long time, ask a doctor for help.",
+     "ko": "불안이 오래가면 의사에게 도움을 구하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "worry",
+     "ko": "걱정",
+     "en": "Don't worry."
+    },
+    {
+     "type": "파생어",
+     "word": "anxious",
+     "ko": "불안한",
+     "en": "An anxious look."
+    },
+    {
+     "type": "반의어",
+     "word": "calm",
+     "ko": "평온",
+     "en": "Stay calm."
+    },
+    {
+     "type": "연관어",
+     "word": "stress",
+     "ko": "스트레스",
+     "en": "Reduce stress."
+    },
+    {
+     "type": "연관어",
+     "word": "fear",
+     "ko": "두려움",
+     "en": "Face your fear."
+    },
+    {
+     "type": "연관어",
+     "word": "nervous",
+     "ko": "긴장한",
+     "en": "Feel nervous."
+    }
+   ]
+  },
+  "1705": {
+   "word": "mode",
+   "overview": [
+    "mode는 '방식, 방법'이라는 뜻의 명사입니다.",
+    "a mode of transport(교통수단)처럼 씁니다.",
+    "기기의 '모드, 작동 상태'라는 뜻으로 아주 자주 씁니다. (silent mode, 무음 모드)",
+    "'유행, 양식'이나 수학의 '최빈값'을 뜻하기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "way",
+     "en": "A way of life.",
+     "ko": "생활 방식."
+    },
+    {
+     "word": "setting",
+     "en": "Change the setting.",
+     "ko": "설정을 바꾸다."
+    }
+   ],
+   "etymology": [
+    "mode는 라틴어 modus(방법, 척도)에서 온 단어입니다.",
+    "model(모형), modern(현대의), modest(겸손한)와 같은 가족입니다.",
+    "'무언가를 하는 정해진 방식, 틀'이라는 뜻이 그대로 이어져 왔습니다.",
+    "기계가 특정한 방식으로 작동하는 상태, 한 시대의 유행 양식까지 가리킵니다.",
+    "mode의 핵심 이미지는 '어떻게 할지를 정하는 방식과 설정 🔘'입니다."
+   ],
+   "meanings": [
+    "방식, 양식",
+    "모드, 상태"
+   ],
+   "examples": [
+    {
+     "en": "Please switch your phone to silent mode.",
+     "ko": "휴대폰을 무음 모드로 바꿔 주세요."
+    },
+    {
+     "en": "The train is a popular mode of transport.",
+     "ko": "기차는 인기 있는 교통수단이에요."
+    },
+    {
+     "en": "The camera has a night mode.",
+     "ko": "그 카메라에는 야간 모드가 있어요."
+    },
+    {
+     "en": "After the holiday, I'm back in work mode.",
+     "ko": "휴가가 끝나고 저는 다시 일하는 모드예요."
+    },
+    {
+     "en": "Writing letters was the main mode of communication.",
+     "ko": "편지 쓰기는 주요한 의사소통 방식이었어요."
+    },
+    {
+     "en": "The game has an easy mode for beginners.",
+     "ko": "그 게임에는 초보자를 위한 쉬움 모드가 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "method",
+     "ko": "방법",
+     "en": "A teaching method."
+    },
+    {
+     "type": "연관어",
+     "word": "way",
+     "ko": "방식",
+     "en": "A better way."
+    },
+    {
+     "type": "연관어",
+     "word": "setting",
+     "ko": "설정",
+     "en": "Adjust the settings."
+    },
+    {
+     "type": "연관어",
+     "word": "style",
+     "ko": "양식",
+     "en": "A new style."
+    },
+    {
+     "type": "연관어",
+     "word": "manner",
+     "ko": "방식",
+     "en": "In a friendly manner."
+    },
+    {
+     "type": "연관어",
+     "word": "model",
+     "ko": "모형",
+     "en": "A model plane."
+    }
+   ]
   }
  }
 }
