@@ -13477,6 +13477,1932 @@
      "en": "Search online."
     }
    ]
+  },
+  "1060": {
+   "word": "fertile",
+   "overview": [
+    "fertile은 '(땅이) 비옥한, 기름진'이라는 뜻의 형용사입니다.",
+    "fertile soil(비옥한 토양)처럼 씁니다.",
+    "'(생물이) 번식력이 있는'이라는 뜻으로도 씁니다.",
+    "a fertile imagination(풍부한 상상력)처럼 '창의적인, 풍부한'이라는 비유적 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "rich",
+     "en": "Rich soil.",
+     "ko": "기름진 흙."
+    },
+    {
+     "word": "productive",
+     "en": "A productive field.",
+     "ko": "수확이 많은 밭."
+    }
+   ],
+   "etymology": [
+    "fertile은 라틴어 fertilis(열매를 많이 맺는)에서 온 단어입니다.",
+    "ferre(나르다, 맺다)에서 나온 말로, transfer(옮기다), offer(제공하다)와 뿌리가 이어집니다.",
+    "'풍성한 열매를 맺어 내는'이라는 뜻에서 시작되었습니다.",
+    "작물이 잘 자라는 땅, 새끼를 잘 낳는 생물, 아이디어가 샘솟는 머리를 가리키게 되었습니다.",
+    "fertile의 핵심 이미지는 '씨앗만 뿌려도 쑥쑥 자라는 기름진 땅 🌱🌾'입니다."
+   ],
+   "meanings": [
+    "비옥한",
+    "번식력이 있는",
+    "창의적인, 풍부한"
+   ],
+   "examples": [
+    {
+     "en": "Rice grows well in this fertile valley.",
+     "ko": "이 비옥한 골짜기에서는 벼가 잘 자라요."
+    },
+    {
+     "en": "The soil near the river is very fertile.",
+     "ko": "강 근처의 흙은 아주 기름져요."
+    },
+    {
+     "en": "She has a fertile imagination.",
+     "ko": "그녀는 상상력이 풍부해요."
+    },
+    {
+     "en": "Farmers add compost to make the land fertile.",
+     "ko": "농부들은 땅을 비옥하게 하려고 퇴비를 넣어요."
+    },
+    {
+     "en": "The area was once fertile farmland.",
+     "ko": "그 지역은 한때 비옥한 농지였어요."
+    },
+    {
+     "en": "The city is fertile ground for new businesses.",
+     "ko": "그 도시는 새 사업이 자라기 좋은 토양이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rich",
+     "ko": "기름진",
+     "en": "Rich farmland."
+    },
+    {
+     "type": "유의어",
+     "word": "productive",
+     "ko": "생산적인",
+     "en": "A productive land."
+    },
+    {
+     "type": "반의어",
+     "word": "barren",
+     "ko": "불모의",
+     "en": "Barren desert."
+    },
+    {
+     "type": "파생어",
+     "word": "fertilizer",
+     "ko": "비료",
+     "en": "Use fertilizer."
+    },
+    {
+     "type": "연관어",
+     "word": "soil",
+     "ko": "흙",
+     "en": "Good soil."
+    },
+    {
+     "type": "연관어",
+     "word": "crop",
+     "ko": "농작물",
+     "en": "Grow crops."
+    }
+   ]
+  },
+  "972": {
+   "word": "evolve",
+   "overview": [
+    "evolve는 '진화하다, 서서히 발전하다'라는 뜻의 동사입니다.",
+    "Birds evolved from dinosaurs.(새는 공룡에서 진화했다)처럼 씁니다.",
+    "'(생각·제도 등이) 점점 변화·발전하다'라는 뜻으로도 자주 씁니다.",
+    "명사 evolution(진화, 발전)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "develop",
+     "en": "Develop slowly.",
+     "ko": "천천히 발전하다."
+    },
+    {
+     "word": "grow",
+     "en": "Grow over time.",
+     "ko": "시간이 지나며 자라다."
+    }
+   ],
+   "etymology": [
+    "evolve는 라틴어 evolvere(펼치다, 풀어내다)에서 온 단어입니다.",
+    "e(밖으로)와 volvere(굴리다)가 합쳐진 말로, revolve(회전하다)와 같은 가족입니다.",
+    "원래는 둘둘 말린 두루마리를 펼쳐 가는 것을 뜻했습니다.",
+    "숨어 있던 것이 조금씩 펼쳐지듯 서서히 변하고 발전하는 것을 가리키게 되었습니다.",
+    "evolve의 핵심 이미지는 '두루마리가 조금씩 펼쳐지듯 서서히 변해 가는 것 📜➡️'입니다."
+   ],
+   "meanings": [
+    "서서히 발전(전개)하다",
+    "진화하다, 점진적으로 변화하다"
+   ],
+   "examples": [
+    {
+     "en": "Humans evolved over millions of years.",
+     "ko": "인류는 수백만 년에 걸쳐 진화했어요."
+    },
+    {
+     "en": "The small shop evolved into a big company.",
+     "ko": "그 작은 가게는 큰 회사로 성장했어요."
+    },
+    {
+     "en": "Language keeps evolving.",
+     "ko": "언어는 계속 변화해요."
+    },
+    {
+     "en": "Her style evolved as she grew older.",
+     "ko": "그녀의 스타일은 나이가 들면서 변해 갔어요."
+    },
+    {
+     "en": "Whales evolved from land animals.",
+     "ko": "고래는 육지 동물에서 진화했어요."
+    },
+    {
+     "en": "Phones have evolved a lot in 20 years.",
+     "ko": "휴대폰은 20년 동안 많이 발전했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "develop",
+     "ko": "발전하다",
+     "en": "Develop skills."
+    },
+    {
+     "type": "유의어",
+     "word": "change",
+     "ko": "변하다",
+     "en": "Change slowly."
+    },
+    {
+     "type": "파생어",
+     "word": "evolution",
+     "ko": "진화",
+     "en": "The theory of evolution."
+    },
+    {
+     "type": "연관어",
+     "word": "adapt",
+     "ko": "적응하다",
+     "en": "Adapt to the climate."
+    },
+    {
+     "type": "연관어",
+     "word": "species",
+     "ko": "종",
+     "en": "A new species."
+    },
+    {
+     "type": "연관어",
+     "word": "progress",
+     "ko": "진보",
+     "en": "Make progress."
+    }
+   ]
+  },
+  "2486": {
+   "word": "spectrum",
+   "overview": [
+    "spectrum은 '스펙트럼'이라는 뜻의 명사입니다.",
+    "the color spectrum(색 스펙트럼)처럼 씁니다.",
+    "빛이 프리즘을 통과해 무지개처럼 나뉜 색의 띠를 뜻합니다.",
+    "'(다양한 것들의) 범위, 폭'이라는 뜻으로 아주 자주 씁니다. (a wide spectrum of opinions)"
+   ],
+   "easy": [
+    {
+     "word": "range",
+     "en": "A wide range.",
+     "ko": "넓은 범위."
+    },
+    {
+     "word": "rainbow colors",
+     "en": "Rainbow colors.",
+     "ko": "무지개 색."
+    }
+   ],
+   "etymology": [
+    "spectrum은 라틴어 spectrum(모습, 환영)에서 온 단어입니다.",
+    "specere(보다)에서 나온 말로, spectacle(광경), inspect(검사하다)와 같은 가족입니다.",
+    "17세기 뉴턴이 빛을 프리즘에 통과시켜 나타난 색의 띠를 이렇게 불렀습니다.",
+    "여러 색이 이어지듯, 한쪽 끝에서 다른 쪽 끝까지 이어지는 '범위'라는 뜻으로 넓어졌습니다.",
+    "spectrum의 핵심 이미지는 '빨강에서 보라까지 이어진 무지개 띠 🌈'입니다."
+   ],
+   "meanings": [
+    "스펙트럼",
+    "범위"
+   ],
+   "examples": [
+    {
+     "en": "A rainbow shows the colors of the spectrum.",
+     "ko": "무지개는 스펙트럼의 색들을 보여 줘요."
+    },
+    {
+     "en": "The class has a wide spectrum of talents.",
+     "ko": "그 반에는 다양한 재능이 모여 있어요."
+    },
+    {
+     "en": "People from across the political spectrum agreed.",
+     "ko": "정치 성향이 다양한 사람들이 모두 동의했어요."
+    },
+    {
+     "en": "Red is at one end of the spectrum.",
+     "ko": "빨강은 스펙트럼의 한쪽 끝에 있어요."
+    },
+    {
+     "en": "The store sells a broad spectrum of products.",
+     "ko": "그 가게는 폭넓은 제품을 팔아요."
+    },
+    {
+     "en": "We can't see the whole light spectrum.",
+     "ko": "우리는 빛 스펙트럼 전체를 볼 수는 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "range",
+     "ko": "범위",
+     "en": "A price range."
+    },
+    {
+     "type": "연관어",
+     "word": "rainbow",
+     "ko": "무지개",
+     "en": "A bright rainbow."
+    },
+    {
+     "type": "연관어",
+     "word": "prism",
+     "ko": "프리즘",
+     "en": "Light through a prism."
+    },
+    {
+     "type": "연관어",
+     "word": "light",
+     "ko": "빛",
+     "en": "White light."
+    },
+    {
+     "type": "연관어",
+     "word": "variety",
+     "ko": "다양성",
+     "en": "A variety of colors."
+    },
+    {
+     "type": "연관어",
+     "word": "scale",
+     "ko": "척도",
+     "en": "On a scale of 1 to 10."
+    }
+   ]
+  },
+  "2185": {
+   "word": "reluctant",
+   "overview": [
+    "reluctant는 '꺼리는, 마음이 내키지 않는'이라는 뜻의 형용사입니다.",
+    "be reluctant to do(~하기를 꺼리다)처럼 씁니다.",
+    "하긴 하지만 억지로, 망설이며 하는 모습을 뜻합니다.",
+    "부사 reluctantly(마지못해), 명사 reluctance(꺼림)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "unwilling",
+     "en": "Unwilling to help.",
+     "ko": "돕기 싫어하는."
+    },
+    {
+     "word": "hesitant",
+     "en": "Hesitant to speak.",
+     "ko": "말하기를 망설이는."
+    }
+   ],
+   "etymology": [
+    "reluctant는 라틴어 reluctari(맞서 싸우다, 저항하다)에서 온 단어입니다.",
+    "re(반대로)와 luctari(씨름하다)가 합쳐진 말입니다.",
+    "'하라는 것에 맞서 씨름하며 버티는'이라는 뜻에서 시작되었습니다.",
+    "무언가를 하기 싫어서 마음속으로 버티는 태도를 가리키게 되었습니다.",
+    "reluctant의 핵심 이미지는 '발을 질질 끌며 마지못해 가는 모습 🐢'입니다."
+   ],
+   "meanings": [
+    "마음이 내키지 않는, 꺼리는"
+   ],
+   "examples": [
+    {
+     "en": "He was reluctant to leave the party.",
+     "ko": "그는 파티를 떠나기 싫어했어요."
+    },
+    {
+     "en": "She was reluctant to talk about the problem.",
+     "ko": "그녀는 그 문제에 대해 말하기를 꺼렸어요."
+    },
+    {
+     "en": "The shy boy was a reluctant speaker.",
+     "ko": "그 수줍은 소년은 마지못해 발표했어요."
+    },
+    {
+     "en": "Many people are reluctant to change their habits.",
+     "ko": "많은 사람들이 습관을 바꾸기를 꺼려요."
+    },
+    {
+     "en": "She reluctantly agreed to help.",
+     "ko": "그녀는 마지못해 돕기로 했어요."
+    },
+    {
+     "en": "Don't be reluctant to ask questions.",
+     "ko": "질문하는 걸 망설이지 마세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "unwilling",
+     "ko": "내키지 않는",
+     "en": "Unwilling to go."
+    },
+    {
+     "type": "유의어",
+     "word": "hesitant",
+     "ko": "망설이는",
+     "en": "Hesitant to answer."
+    },
+    {
+     "type": "반의어",
+     "word": "eager",
+     "ko": "열망하는",
+     "en": "Eager to learn."
+    },
+    {
+     "type": "반의어",
+     "word": "willing",
+     "ko": "기꺼이 하는",
+     "en": "Willing to help."
+    },
+    {
+     "type": "파생어",
+     "word": "reluctantly",
+     "ko": "마지못해",
+     "en": "Reluctantly agree."
+    },
+    {
+     "type": "파생어",
+     "word": "reluctance",
+     "ko": "꺼림",
+     "en": "Show reluctance."
+    }
+   ]
+  },
+  "2227": {
+   "word": "retain",
+   "overview": [
+    "retain은 '유지하다, 간직하다, 보유하다'라는 뜻의 동사입니다.",
+    "retain heat(열을 보존하다)처럼 씁니다.",
+    "'(기억·정보를) 잊지 않고 간직하다'라는 뜻으로도 자주 씁니다.",
+    "'(변호사를) 고용하다'라는 법률 용어로도 쓰고, 명사 retention(보유, 기억)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "keep",
+     "en": "Keep the receipt.",
+     "ko": "영수증을 간직하다."
+    },
+    {
+     "word": "hold",
+     "en": "Hold water.",
+     "ko": "물을 머금다."
+    }
+   ],
+   "etymology": [
+    "retain은 라틴어 retinere(뒤에 붙잡아 두다)에서 온 단어입니다.",
+    "re(뒤로)와 tenere(붙잡다)가 합쳐진 말로, contain(담다), obtain(얻다)과 같은 가족입니다.",
+    "'빠져나가지 않게 뒤에서 붙잡아 두다'라는 뜻이 그대로 이어져 왔습니다.",
+    "열이나 물, 기억, 사람 등을 계속 가지고 있는 것을 가리킵니다.",
+    "retain의 핵심 이미지는 '빠져나가지 않게 꼭 붙들어 두는 것 🤲'입니다."
+   ],
+   "meanings": [
+    "계속 유지하다, 간직하다, 보유하다",
+    "(변호사를) 고용하다"
+   ],
+   "examples": [
+    {
+     "en": "This jacket retains heat very well.",
+     "ko": "이 재킷은 열을 아주 잘 보존해요."
+    },
+    {
+     "en": "The town has retained its old charm.",
+     "ko": "그 마을은 옛 정취를 그대로 간직하고 있어요."
+    },
+    {
+     "en": "It's hard to retain so much information.",
+     "ko": "그렇게 많은 정보를 기억하기는 어려워요."
+    },
+    {
+     "en": "The champion retained her title.",
+     "ko": "그 챔피언은 타이틀을 지켰어요."
+    },
+    {
+     "en": "Clay soil retains water.",
+     "ko": "점토질 흙은 물을 머금어요."
+    },
+    {
+     "en": "The company wants to retain good workers.",
+     "ko": "그 회사는 좋은 직원들을 계속 붙잡아 두고 싶어 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "keep",
+     "ko": "유지하다",
+     "en": "Keep a secret."
+    },
+    {
+     "type": "유의어",
+     "word": "maintain",
+     "ko": "유지하다",
+     "en": "Maintain speed."
+    },
+    {
+     "type": "반의어",
+     "word": "lose",
+     "ko": "잃다",
+     "en": "Lose your memory."
+    },
+    {
+     "type": "파생어",
+     "word": "retention",
+     "ko": "보유, 유지",
+     "en": "Water retention."
+    },
+    {
+     "type": "연관어",
+     "word": "remember",
+     "ko": "기억하다",
+     "en": "Remember names."
+    },
+    {
+     "type": "연관어",
+     "word": "preserve",
+     "ko": "보존하다",
+     "en": "Preserve food."
+    }
+   ]
+  },
+  "327": {
+   "word": "boundary",
+   "overview": [
+    "boundary는 '경계(선)'라는 뜻의 명사입니다.",
+    "the boundary between two countries(두 나라 사이의 경계)처럼 씁니다.",
+    "'(허용되는) 한계, 범위'라는 뜻으로도 씁니다. (push the boundaries, 한계를 넓히다)",
+    "사람 사이의 '선, 지켜야 할 거리'라는 뜻으로도 자주 씁니다. (set boundaries)"
+   ],
+   "easy": [
+    {
+     "word": "border",
+     "en": "Cross the border.",
+     "ko": "국경을 넘다."
+    },
+    {
+     "word": "limit",
+     "en": "A speed limit.",
+     "ko": "속도 제한."
+    }
+   ],
+   "etymology": [
+    "boundary는 bound(경계)에 -ary(~에 관한 것)가 붙은 단어입니다.",
+    "bound는 옛 프랑스어 bodne(경계 표시)에서 왔습니다.",
+    "'땅과 땅 사이를 나누는 경계 표시'라는 뜻에서 시작되었습니다.",
+    "지역을 나누는 선뿐 아니라 해도 되는 것과 안 되는 것 사이의 한계를 가리키게 되었습니다.",
+    "boundary의 핵심 이미지는 '두 영역을 가르는 분명한 선 ➖🚧'입니다."
+   ],
+   "meanings": [
+    "경계(선)",
+    "범위, 한계, 영역"
+   ],
+   "examples": [
+    {
+     "en": "The river forms the boundary between the two towns.",
+     "ko": "강이 두 마을 사이의 경계를 이뤄요."
+    },
+    {
+     "en": "The ball went over the boundary line.",
+     "ko": "공이 경계선을 넘어갔어요."
+    },
+    {
+     "en": "Science keeps pushing the boundaries of knowledge.",
+     "ko": "과학은 계속 지식의 한계를 넓혀 가요."
+    },
+    {
+     "en": "It's important to set boundaries with friends.",
+     "ko": "친구 사이에도 선을 정하는 게 중요해요."
+    },
+    {
+     "en": "The fence marks the boundary of our yard.",
+     "ko": "울타리가 우리 마당의 경계를 표시해요."
+    },
+    {
+     "en": "Art has no boundaries.",
+     "ko": "예술에는 경계가 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "border",
+     "ko": "국경, 경계",
+     "en": "The border line."
+    },
+    {
+     "type": "유의어",
+     "word": "limit",
+     "ko": "한계",
+     "en": "Know your limits."
+    },
+    {
+     "type": "연관어",
+     "word": "edge",
+     "ko": "가장자리",
+     "en": "The edge of the table."
+    },
+    {
+     "type": "연관어",
+     "word": "line",
+     "ko": "선",
+     "en": "Draw a line."
+    },
+    {
+     "type": "연관어",
+     "word": "fence",
+     "ko": "울타리",
+     "en": "A wooden fence."
+    },
+    {
+     "type": "연관어",
+     "word": "territory",
+     "ko": "영토",
+     "en": "National territory."
+    }
+   ]
+  },
+  "1363": {
+   "word": "hypothesis",
+   "overview": [
+    "hypothesis는 '가설, 가정'이라는 뜻의 명사입니다.",
+    "test a hypothesis(가설을 검증하다)처럼 씁니다.",
+    "과학 실험에서 증명하기 전에 '아마 이럴 것이다'라고 세우는 생각을 뜻합니다.",
+    "복수형은 hypotheses이고, 형용사 hypothetical(가상의)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "guess",
+     "en": "A smart guess.",
+     "ko": "똑똑한 추측."
+    },
+    {
+     "word": "theory",
+     "en": "A new theory.",
+     "ko": "새로운 이론."
+    }
+   ],
+   "etymology": [
+    "hypothesis는 그리스어 hypo(아래에)와 thesis(놓음, 주장)가 합쳐진 단어입니다.",
+    "thesis(논문, 주장)와 같은 뿌리의 말입니다.",
+    "'논의의 바탕 아래에 깔아 두는 생각'이라는 뜻에서 시작되었습니다.",
+    "실험이나 연구로 확인하기 전에 먼저 세워 두는 설명, 즉 '가설'을 가리킵니다.",
+    "hypothesis의 핵심 이미지는 '실험을 시작하기 전에 세우는 아마도의 답 🧪❓'입니다."
+   ],
+   "meanings": [
+    "가정, 가설"
+   ],
+   "examples": [
+    {
+     "en": "Scientists tested their hypothesis with an experiment.",
+     "ko": "과학자들은 실험으로 가설을 검증했어요."
+    },
+    {
+     "en": "My hypothesis is that plants grow faster in sunlight.",
+     "ko": "제 가설은 식물이 햇빛 아래에서 더 빨리 자란다는 거예요."
+    },
+    {
+     "en": "The results supported the hypothesis.",
+     "ko": "결과는 그 가설을 뒷받침했어요."
+    },
+    {
+     "en": "Write your hypothesis before the experiment.",
+     "ko": "실험 전에 가설을 적으세요."
+    },
+    {
+     "en": "The data proved the hypothesis wrong.",
+     "ko": "자료가 그 가설이 틀렸음을 보여 줬어요."
+    },
+    {
+     "en": "This is just a hypothetical question.",
+     "ko": "이건 그냥 가정해서 묻는 질문이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "theory",
+     "ko": "이론",
+     "en": "A scientific theory."
+    },
+    {
+     "type": "유의어",
+     "word": "assumption",
+     "ko": "가정",
+     "en": "A wrong assumption."
+    },
+    {
+     "type": "파생어",
+     "word": "hypothetical",
+     "ko": "가상의",
+     "en": "A hypothetical case."
+    },
+    {
+     "type": "연관어",
+     "word": "experiment",
+     "ko": "실험",
+     "en": "Do an experiment."
+    },
+    {
+     "type": "연관어",
+     "word": "evidence",
+     "ko": "증거",
+     "en": "Find evidence."
+    },
+    {
+     "type": "연관어",
+     "word": "prove",
+     "ko": "증명하다",
+     "en": "Prove it."
+    }
+   ]
+  },
+  "488": {
+   "word": "clash",
+   "overview": [
+    "clash는 '충돌하다, 맞붙다'라는 뜻의 동사입니다.",
+    "Fans clashed with the police.(팬들이 경찰과 충돌했다)처럼 씁니다.",
+    "'(의견이) 대립하다', '(색이) 어울리지 않다', '(일정이) 겹치다'라는 뜻으로도 씁니다.",
+    "명사로는 '충돌, 불화, 쨍그랑 소리'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "fight",
+     "en": "A big fight.",
+     "ko": "큰 싸움."
+    },
+    {
+     "word": "not match",
+     "en": "Colors that don't match.",
+     "ko": "안 어울리는 색."
+    }
+   ],
+   "etymology": [
+    "clash는 금속이 서로 세게 부딪히는 '쨍그랑' 소리를 흉내 낸 단어입니다.",
+    "clap(탁 치다), crash(충돌)와 비슷한 소리 흉내말입니다.",
+    "'칼이나 금속이 서로 부딪치다'라는 뜻에서 시작되었습니다.",
+    "사람이나 의견이 부딪치는 것, 색이나 일정이 서로 맞지 않는 것까지 뜻이 넓어졌습니다.",
+    "clash의 핵심 이미지는 '두 칼날이 쨍 하고 맞부딪치는 것 ⚔️'입니다."
+   ],
+   "meanings": [
+    "충돌하다, 맞부딪치다",
+    "충돌, 불화",
+    "어울리지 않다, 겹치다"
+   ],
+   "examples": [
+    {
+     "en": "The two groups clashed over the plan.",
+     "ko": "두 집단은 그 계획을 두고 충돌했어요."
+    },
+    {
+     "en": "That red shirt clashes with your pink pants.",
+     "ko": "그 빨간 셔츠는 분홍 바지와 안 어울려요."
+    },
+    {
+     "en": "My piano lesson clashes with soccer practice.",
+     "ko": "제 피아노 수업이 축구 연습과 시간이 겹쳐요."
+    },
+    {
+     "en": "There was a clash between the two teams.",
+     "ko": "두 팀 사이에 충돌이 있었어요."
+    },
+    {
+     "en": "We heard the clash of swords in the movie.",
+     "ko": "영화에서 칼이 부딪치는 소리가 들렸어요."
+    },
+    {
+     "en": "Their opinions often clash.",
+     "ko": "그들의 의견은 자주 부딪쳐요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "conflict",
+     "ko": "갈등",
+     "en": "A family conflict."
+    },
+    {
+     "type": "유의어",
+     "word": "collide",
+     "ko": "충돌하다",
+     "en": "Two cars collided."
+    },
+    {
+     "type": "반의어",
+     "word": "match",
+     "ko": "어울리다",
+     "en": "Colors that match."
+    },
+    {
+     "type": "반의어",
+     "word": "agree",
+     "ko": "동의하다",
+     "en": "Agree with you."
+    },
+    {
+     "type": "연관어",
+     "word": "argue",
+     "ko": "다투다",
+     "en": "Argue loudly."
+    },
+    {
+     "type": "연관어",
+     "word": "crash",
+     "ko": "충돌",
+     "en": "A car crash."
+    }
+   ]
+  },
+  "490": {
+   "word": "clause",
+   "overview": [
+    "clause는 문법에서 '절'이라는 뜻의 명사입니다.",
+    "a main clause(주절), a relative clause(관계절)처럼 씁니다.",
+    "주어와 동사를 갖춘 문장의 한 부분을 뜻합니다.",
+    "법률·계약서의 '조항'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "part of a sentence",
+     "en": "Part of a sentence.",
+     "ko": "문장의 한 부분."
+    },
+    {
+     "word": "rule",
+     "en": "A rule in the contract.",
+     "ko": "계약서의 규칙."
+    }
+   ],
+   "etymology": [
+    "clause는 라틴어 clausula(끝맺음, 짧은 문장)에서 온 단어입니다.",
+    "claudere(닫다)에서 나온 말로, close(닫다), include(포함하다)와 같은 가족입니다.",
+    "원래는 '한 부분을 닫아 끝맺은 짧은 말'이라는 뜻이었습니다.",
+    "문장 속에서 하나로 완결된 작은 부분, 계약서의 한 항목을 가리키게 되었습니다.",
+    "clause의 핵심 이미지는 '긴 문장 속에서 괄호처럼 닫힌 한 덩어리 📝'입니다."
+   ],
+   "meanings": [
+    "(문법) 절",
+    "조항"
+   ],
+   "examples": [
+    {
+     "en": "\"Because it rained\" is a clause.",
+     "ko": "\"because it rained\"는 절이에요."
+    },
+    {
+     "en": "This sentence has two clauses.",
+     "ko": "이 문장에는 절이 두 개 있어요."
+    },
+    {
+     "en": "Underline the main clause.",
+     "ko": "주절에 밑줄을 치세요."
+    },
+    {
+     "en": "Read every clause of the contract carefully.",
+     "ko": "계약서의 모든 조항을 꼼꼼히 읽으세요."
+    },
+    {
+     "en": "The rental contract has a clause about pets.",
+     "ko": "그 임대 계약서에는 반려동물에 관한 조항이 있어요."
+    },
+    {
+     "en": "A relative clause starts with words like \"who.\"",
+     "ko": "관계절은 \"who\" 같은 단어로 시작해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "sentence",
+     "ko": "문장",
+     "en": "A long sentence."
+    },
+    {
+     "type": "연관어",
+     "word": "phrase",
+     "ko": "구",
+     "en": "A short phrase."
+    },
+    {
+     "type": "연관어",
+     "word": "grammar",
+     "ko": "문법",
+     "en": "English grammar."
+    },
+    {
+     "type": "연관어",
+     "word": "subject",
+     "ko": "주어",
+     "en": "The subject of a sentence."
+    },
+    {
+     "type": "연관어",
+     "word": "contract",
+     "ko": "계약서",
+     "en": "Sign a contract."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Follow the rule."
+    }
+   ]
+  },
+  "2785": {
+   "word": "trend",
+   "overview": [
+    "trend는 '경향, 추세, 동향'이라는 뜻의 명사입니다.",
+    "a growing trend(늘어나는 추세)처럼 씁니다.",
+    "'유행, 트렌드'라는 뜻으로 아주 자주 씁니다. (fashion trends)",
+    "동사로는 '경향을 보이다', SNS에서 '인기를 끌다(trending)'라는 뜻이고, 형용사 trendy(유행하는)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fashion",
+     "en": "The latest fashion.",
+     "ko": "최신 유행."
+    },
+    {
+     "word": "direction",
+     "en": "A new direction.",
+     "ko": "새로운 방향."
+    }
+   ],
+   "etymology": [
+    "trend는 고대 영어 trendan(돌다, 굴러가다)에서 온 단어입니다.",
+    "원래는 강이나 길이 '어느 방향으로 굽어 흘러가다'라는 뜻이었습니다.",
+    "무언가가 흘러가는 일반적인 방향, 즉 '경향, 추세'라는 뜻이 되었습니다.",
+    "많은 사람들이 같은 방향으로 따라가는 '유행'이라는 뜻으로도 넓어졌습니다.",
+    "trend의 핵심 이미지는 '많은 사람이 같은 방향으로 흘러가는 물결 📈'입니다."
+   ],
+   "meanings": [
+    "경향, 추세, 트렌드",
+    "유행",
+    "경향을 띠다, 유행하다"
+   ],
+   "examples": [
+    {
+     "en": "There is a trend toward healthy eating.",
+     "ko": "건강한 식습관이 늘어나는 추세예요."
+    },
+    {
+     "en": "She always follows the latest fashion trends.",
+     "ko": "그녀는 항상 최신 패션 유행을 따라요."
+    },
+    {
+     "en": "The song is trending on social media.",
+     "ko": "그 노래는 소셜 미디어에서 인기를 끌고 있어요."
+    },
+    {
+     "en": "Prices show an upward trend.",
+     "ko": "가격이 오르는 추세를 보여요."
+    },
+    {
+     "en": "Online shopping is a growing trend.",
+     "ko": "온라인 쇼핑은 커지고 있는 흐름이에요."
+    },
+    {
+     "en": "That café is very trendy.",
+     "ko": "그 카페는 아주 유행을 타는 곳이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "tendency",
+     "ko": "경향",
+     "en": "A strong tendency."
+    },
+    {
+     "type": "유의어",
+     "word": "fashion",
+     "ko": "유행",
+     "en": "Follow fashion."
+    },
+    {
+     "type": "파생어",
+     "word": "trendy",
+     "ko": "유행하는",
+     "en": "Trendy clothes."
+    },
+    {
+     "type": "연관어",
+     "word": "popular",
+     "ko": "인기 있는",
+     "en": "A popular game."
+    },
+    {
+     "type": "연관어",
+     "word": "pattern",
+     "ko": "패턴",
+     "en": "A clear pattern."
+    },
+    {
+     "type": "연관어",
+     "word": "style",
+     "ko": "스타일",
+     "en": "A new style."
+    }
+   ]
+  },
+  "1766": {
+   "word": "neglect",
+   "overview": [
+    "neglect는 '(돌보지 않고) 방치하다, 소홀히 하다'라는 뜻의 동사입니다.",
+    "neglect your health(건강을 소홀히 하다)처럼 씁니다.",
+    "neglect to do(~하는 것을 잊다, 하지 않다)처럼도 씁니다.",
+    "명사로는 '방치, 태만'이라는 뜻이고, 형용사 negligent(태만한)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ignore",
+     "en": "Ignore the problem.",
+     "ko": "문제를 무시하다."
+    },
+    {
+     "word": "forget",
+     "en": "Forget to water plants.",
+     "ko": "식물에 물 주는 걸 잊다."
+    }
+   ],
+   "etymology": [
+    "neglect는 라틴어 neglegere(신경 쓰지 않다)에서 온 단어입니다.",
+    "neg(아니다)와 legere(고르다, 주의하다)가 합쳐진 말로, select(고르다), collect(모으다)와 뿌리가 이어집니다.",
+    "'눈여겨 골라 챙기지 않다'라는 뜻에서 시작되었습니다.",
+    "돌봐야 할 사람이나 일을 챙기지 않고 내버려 두는 것을 가리키게 되었습니다.",
+    "neglect의 핵심 이미지는 '돌보지 않아 먼지 쌓인 채 버려진 화분 🥀'입니다."
+   ],
+   "meanings": [
+    "방치하다, 소홀히 하다",
+    "태만, 방치"
+   ],
+   "examples": [
+    {
+     "en": "Don't neglect your homework.",
+     "ko": "숙제를 소홀히 하지 마세요."
+    },
+    {
+     "en": "The old house was neglected for years.",
+     "ko": "그 낡은 집은 몇 년 동안 방치되었어요."
+    },
+    {
+     "en": "He neglected to tell me about the change.",
+     "ko": "그는 변경 사항을 나에게 알리지 않았어요."
+    },
+    {
+     "en": "Pets suffer when they are neglected.",
+     "ko": "반려동물은 방치되면 고통받아요."
+    },
+    {
+     "en": "The garden fell into neglect.",
+     "ko": "그 정원은 버려진 채 황폐해졌어요."
+    },
+    {
+     "en": "Busy parents shouldn't neglect their children.",
+     "ko": "바쁜 부모도 아이들을 소홀히 해서는 안 돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ignore",
+     "ko": "무시하다",
+     "en": "Ignore the warning."
+    },
+    {
+     "type": "반의어",
+     "word": "care for",
+     "ko": "돌보다",
+     "en": "Care for a baby."
+    },
+    {
+     "type": "반의어",
+     "word": "attend to",
+     "ko": "처리하다, 돌보다",
+     "en": "Attend to a patient."
+    },
+    {
+     "type": "파생어",
+     "word": "negligent",
+     "ko": "태만한",
+     "en": "A negligent driver."
+    },
+    {
+     "type": "연관어",
+     "word": "abandon",
+     "ko": "버리다",
+     "en": "Abandon a pet."
+    },
+    {
+     "type": "연관어",
+     "word": "forget",
+     "ko": "잊다",
+     "en": "Forget a birthday."
+    }
+   ]
+  },
+  "729": {
+   "word": "decay",
+   "overview": [
+    "decay는 '썩다, 부패하다'라는 뜻의 동사이자 '부패, 부식'이라는 뜻의 명사입니다.",
+    "tooth decay(충치)처럼 씁니다.",
+    "'(건물이) 낡아 허물어지다', '(사회·제도가) 쇠퇴하다'라는 뜻으로도 씁니다.",
+    "과학에서는 '(방사성 물질의) 붕괴'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "rot",
+     "en": "The fruit rots.",
+     "ko": "과일이 썩어요."
+    },
+    {
+     "word": "break down",
+     "en": "Leaves break down.",
+     "ko": "나뭇잎이 분해돼요."
+    }
+   ],
+   "etymology": [
+    "decay는 옛 프랑스어 decair(떨어지다, 약해지다)에서 온 단어입니다.",
+    "라틴어 de(아래로)와 cadere(떨어지다)가 합쳐진 말로, accident(사고), cascade(폭포)와 뿌리가 이어집니다.",
+    "'좋은 상태에서 아래로 떨어져 가다'라는 뜻에서 시작되었습니다.",
+    "음식이나 이가 썩는 것, 건물이나 사회가 서서히 무너지는 것을 가리키게 되었습니다.",
+    "decay의 핵심 이미지는 '시간이 지나며 조금씩 무너지고 썩어 가는 것 🍂🦷'입니다."
+   ],
+   "meanings": [
+    "썩다, 부패하다",
+    "부패, 부식, 충치",
+    "(입자 등의) 붕괴, 쇠퇴"
+   ],
+   "examples": [
+    {
+     "en": "Sugar causes tooth decay.",
+     "ko": "설탕은 충치를 일으켜요."
+    },
+    {
+     "en": "Fallen leaves decay and feed the soil.",
+     "ko": "떨어진 나뭇잎은 썩어서 흙의 영양이 돼요."
+    },
+    {
+     "en": "The old building was left to decay.",
+     "ko": "그 오래된 건물은 허물어지도록 방치되었어요."
+    },
+    {
+     "en": "Brush your teeth to prevent decay.",
+     "ko": "충치를 막으려면 이를 닦으세요."
+    },
+    {
+     "en": "The empire slowly decayed.",
+     "ko": "그 제국은 서서히 쇠퇴했어요."
+    },
+    {
+     "en": "Bacteria help dead plants decay.",
+     "ko": "세균은 죽은 식물이 분해되도록 도와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rot",
+     "ko": "썩다",
+     "en": "Rotten wood."
+    },
+    {
+     "type": "유의어",
+     "word": "decline",
+     "ko": "쇠퇴",
+     "en": "A slow decline."
+    },
+    {
+     "type": "반의어",
+     "word": "grow",
+     "ko": "자라다",
+     "en": "Grow strong."
+    },
+    {
+     "type": "연관어",
+     "word": "cavity",
+     "ko": "충치 구멍",
+     "en": "Fill a cavity."
+    },
+    {
+     "type": "연관어",
+     "word": "bacteria",
+     "ko": "세균",
+     "en": "Harmful bacteria."
+    },
+    {
+     "type": "연관어",
+     "word": "ruin",
+     "ko": "폐허",
+     "en": "Ancient ruins."
+    }
+   ]
+  },
+  "2479": {
+   "word": "span",
+   "overview": [
+    "span은 '(일정한) 기간, 길이'라는 뜻의 명사입니다.",
+    "a short attention span(짧은 집중 시간)처럼 씁니다.",
+    "'(다리·날개의) 폭, 길이'라는 뜻으로도 씁니다. (the span of a bridge)",
+    "동사로는 '(기간·거리에) 걸치다, 이어지다'라는 뜻입니다. (span 50 years)"
+   ],
+   "easy": [
+    {
+     "word": "period",
+     "en": "A short period.",
+     "ko": "짧은 기간."
+    },
+    {
+     "word": "cover",
+     "en": "Cover ten years.",
+     "ko": "10년에 걸치다."
+    }
+   ],
+   "etymology": [
+    "span은 고대 영어 span(한 뼘)에서 온 단어입니다.",
+    "원래는 손을 쫙 폈을 때 엄지 끝에서 새끼손가락 끝까지의 길이를 뜻했습니다.",
+    "'한쪽 끝에서 다른 쪽 끝까지 쭉 뻗은 길이'라는 뜻으로 넓어졌습니다.",
+    "공간의 폭, 그리고 처음부터 끝까지 이어진 시간의 길이를 가리키게 되었습니다.",
+    "span의 핵심 이미지는 '한쪽 끝에서 다른 끝까지 쭉 펼친 손 뼘 🖐️↔️'입니다."
+   ],
+   "meanings": [
+    "기간, 길이",
+    "폭",
+    "(기간에) 걸치다"
+   ],
+   "examples": [
+    {
+     "en": "Young children have a short attention span.",
+     "ko": "어린아이들은 집중하는 시간이 짧아요."
+    },
+    {
+     "en": "Her career spanned forty years.",
+     "ko": "그녀의 경력은 40년에 걸쳐 이어졌어요."
+    },
+    {
+     "en": "The bridge spans the river.",
+     "ko": "그 다리는 강을 가로질러 놓여 있어요."
+    },
+    {
+     "en": "The eagle's wings have a wide span.",
+     "ko": "그 독수리는 날개폭이 넓어요."
+    },
+    {
+     "en": "In a short span of time, the town grew fast.",
+     "ko": "짧은 기간 동안 그 마을은 빠르게 성장했어요."
+    },
+    {
+     "en": "Dogs have a shorter life span than humans.",
+     "ko": "개는 사람보다 수명이 짧아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "period",
+     "ko": "기간",
+     "en": "A long period."
+    },
+    {
+     "type": "유의어",
+     "word": "length",
+     "ko": "길이",
+     "en": "The length of the road."
+    },
+    {
+     "type": "연관어",
+     "word": "life span",
+     "ko": "수명",
+     "en": "A long life span."
+    },
+    {
+     "type": "연관어",
+     "word": "cover",
+     "ko": "걸치다",
+     "en": "Cover a wide area."
+    },
+    {
+     "type": "연관어",
+     "word": "bridge",
+     "ko": "다리",
+     "en": "Cross the bridge."
+    },
+    {
+     "type": "연관어",
+     "word": "attention",
+     "ko": "주의",
+     "en": "Pay attention."
+    }
+   ]
+  },
+  "2726": {
+   "word": "timber",
+   "overview": [
+    "timber는 '(건축용) 목재'라는 뜻의 명사입니다.",
+    "a timber house(목조 주택)처럼 씁니다.",
+    "베어 낸 나무, 또는 건물용으로 자른 나무판·기둥을 뜻합니다.",
+    "나무를 벨 때 쓰러진다고 외치는 말 Timber!(나무 넘어가요!)로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wood",
+     "en": "A piece of wood.",
+     "ko": "나무 한 조각."
+    },
+    {
+     "word": "lumber",
+     "en": "Buy lumber.",
+     "ko": "목재를 사다."
+    }
+   ],
+   "etymology": [
+    "timber는 고대 영어 timber(건물, 건축 재료)에서 온 단어입니다.",
+    "독일어 Zimmer(방)와 같은 게르만 말 뿌리에서 나왔습니다.",
+    "원래는 '집을 짓는 것, 건물'이라는 뜻이었습니다.",
+    "집을 지을 때 쓰는 재료인 '나무, 목재'를 가리키게 되었습니다.",
+    "timber의 핵심 이미지는 '집을 짓기 위해 반듯하게 잘라 둔 나무 🪵🏠'입니다."
+   ],
+   "meanings": [
+    "목재"
+   ],
+   "examples": [
+    {
+     "en": "The old house was built of timber.",
+     "ko": "그 오래된 집은 목재로 지어졌어요."
+    },
+    {
+     "en": "The forest provides timber for building.",
+     "ko": "그 숲은 건축용 목재를 제공해요."
+    },
+    {
+     "en": "Workers cut timber in the mountains.",
+     "ko": "일꾼들이 산에서 목재를 벴어요."
+    },
+    {
+     "en": "The bridge has strong timber beams.",
+     "ko": "그 다리에는 튼튼한 나무 들보가 있어요."
+    },
+    {
+     "en": "The country exports a lot of timber.",
+     "ko": "그 나라는 목재를 많이 수출해요."
+    },
+    {
+     "en": "\"Timber!\" shouted the man as the tree fell.",
+     "ko": "나무가 쓰러지자 그 남자는 \"나무 넘어가요!\"라고 외쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wood",
+     "ko": "나무",
+     "en": "Burn wood."
+    },
+    {
+     "type": "유의어",
+     "word": "lumber",
+     "ko": "목재",
+     "en": "Cut lumber."
+    },
+    {
+     "type": "연관어",
+     "word": "forest",
+     "ko": "숲",
+     "en": "A thick forest."
+    },
+    {
+     "type": "연관어",
+     "word": "log",
+     "ko": "통나무",
+     "en": "A log cabin."
+    },
+    {
+     "type": "연관어",
+     "word": "carpenter",
+     "ko": "목수",
+     "en": "A skilled carpenter."
+    },
+    {
+     "type": "연관어",
+     "word": "beam",
+     "ko": "들보",
+     "en": "A wooden beam."
+    }
+   ]
+  },
+  "847": {
+   "word": "dominate",
+   "overview": [
+    "dominate는 '지배하다, 우위를 차지하다'라는 뜻의 동사입니다.",
+    "dominate the game(경기를 압도하다)처럼 씁니다.",
+    "'(주변에서) 가장 두드러지다, 내려다보다'라는 뜻으로도 씁니다. (The castle dominates the town.)",
+    "형용사 dominant(지배적인), 명사 domination(지배)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "control",
+     "en": "Control the game.",
+     "ko": "경기를 장악하다."
+    },
+    {
+     "word": "lead",
+     "en": "Lead the market.",
+     "ko": "시장을 이끌다."
+    }
+   ],
+   "etymology": [
+    "dominate는 라틴어 dominari(주인 노릇을 하다)에서 온 단어입니다.",
+    "dominus(주인)에서 나온 말로, domain(영역), dominant(지배적인)와 같은 가족입니다.",
+    "'주인처럼 모든 것을 좌지우지하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "힘으로 다스리는 것, 경기나 시장에서 압도적으로 앞서는 것을 가리키게 되었습니다.",
+    "dominate의 핵심 이미지는 '높은 곳에서 모든 것을 내려다보며 쥐고 있는 주인 👑'입니다."
+   ],
+   "meanings": [
+    "지배하다",
+    "우위를 차지하다, 위압하다",
+    "(가장) 두드러지다"
+   ],
+   "examples": [
+    {
+     "en": "Our team dominated the whole game.",
+     "ko": "우리 팀이 경기 내내 압도했어요."
+    },
+    {
+     "en": "A few big companies dominate the market.",
+     "ko": "몇몇 큰 회사들이 시장을 장악하고 있어요."
+    },
+    {
+     "en": "He tends to dominate conversations.",
+     "ko": "그는 대화를 주도하려는 경향이 있어요."
+    },
+    {
+     "en": "The tall tower dominates the city skyline.",
+     "ko": "높은 탑이 도시의 스카이라인에서 가장 두드러져요."
+    },
+    {
+     "en": "The news was dominated by the election.",
+     "ko": "뉴스는 선거 소식으로 가득했어요."
+    },
+    {
+     "en": "Lions dominate other animals in the grassland.",
+     "ko": "사자는 초원에서 다른 동물들을 압도해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "control",
+     "ko": "통제하다",
+     "en": "Control the ball."
+    },
+    {
+     "type": "유의어",
+     "word": "rule",
+     "ko": "다스리다",
+     "en": "Rule a kingdom."
+    },
+    {
+     "type": "파생어",
+     "word": "dominant",
+     "ko": "지배적인",
+     "en": "A dominant team."
+    },
+    {
+     "type": "파생어",
+     "word": "domination",
+     "ko": "지배",
+     "en": "World domination."
+    },
+    {
+     "type": "연관어",
+     "word": "power",
+     "ko": "권력",
+     "en": "Hold power."
+    },
+    {
+     "type": "연관어",
+     "word": "lead",
+     "ko": "앞서다",
+     "en": "Take the lead."
+    }
+   ]
+  },
+  "2308": {
+   "word": "scatter",
+   "overview": [
+    "scatter는 '흩뿌리다, 흩어지게 하다'라는 뜻의 동사입니다.",
+    "scatter seeds(씨앗을 흩뿌리다)처럼 씁니다.",
+    "자동사로는 '(사람·동물이) 뿔뿔이 흩어지다'라는 뜻입니다.",
+    "형용사 scattered(흩어진, 드문드문한)도 자주 씁니다. (scattered showers, 곳에 따라 소나기)"
+   ],
+   "easy": [
+    {
+     "word": "spread",
+     "en": "Spread the seeds.",
+     "ko": "씨앗을 뿌리다."
+    },
+    {
+     "word": "run away",
+     "en": "The birds ran away.",
+     "ko": "새들이 흩어져 달아났어요."
+    }
+   ],
+   "etymology": [
+    "scatter는 중세 영어 scateren(흩뿌리다)에서 온 단어입니다.",
+    "shatter(산산조각 내다)와 같은 뿌리의 말로 봅니다.",
+    "'여기저기 넓게 흩어 뿌리다'라는 뜻이 그대로 이어져 왔습니다.",
+    "물건을 흩뿌리는 것, 사람이나 동물이 사방으로 흩어지는 것을 가리킵니다.",
+    "scatter의 핵심 이미지는 '한 줌의 씨앗을 사방으로 휙 뿌리는 것 🌰✨'입니다."
+   ],
+   "meanings": [
+    "흩어지다",
+    "흩어지게 하다, 흩뿌리다"
+   ],
+   "examples": [
+    {
+     "en": "The farmer scattered seeds on the field.",
+     "ko": "농부가 밭에 씨앗을 흩뿌렸어요."
+    },
+    {
+     "en": "The birds scattered when the dog ran toward them.",
+     "ko": "개가 달려가자 새들이 흩어졌어요."
+    },
+    {
+     "en": "Toys were scattered all over the floor.",
+     "ko": "장난감이 바닥 여기저기 흩어져 있었어요."
+    },
+    {
+     "en": "The crowd scattered when it started to rain.",
+     "ko": "비가 오기 시작하자 사람들이 흩어졌어요."
+    },
+    {
+     "en": "My family is scattered across the country.",
+     "ko": "우리 가족은 전국에 흩어져 살아요."
+    },
+    {
+     "en": "There will be scattered showers tomorrow.",
+     "ko": "내일은 곳에 따라 소나기가 내리겠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "spread",
+     "ko": "퍼뜨리다",
+     "en": "Spread the news."
+    },
+    {
+     "type": "유의어",
+     "word": "sprinkle",
+     "ko": "뿌리다",
+     "en": "Sprinkle salt."
+    },
+    {
+     "type": "반의어",
+     "word": "gather",
+     "ko": "모으다",
+     "en": "Gather the leaves."
+    },
+    {
+     "type": "반의어",
+     "word": "collect",
+     "ko": "모으다",
+     "en": "Collect stamps."
+    },
+    {
+     "type": "파생어",
+     "word": "scattered",
+     "ko": "흩어진",
+     "en": "Scattered clouds."
+    },
+    {
+     "type": "연관어",
+     "word": "seed",
+     "ko": "씨앗",
+     "en": "Plant seeds."
+    }
+   ]
+  },
+  "2775": {
+   "word": "transmit",
+   "overview": [
+    "transmit는 '(신호·정보를) 전송하다, 방송하다'라는 뜻의 동사입니다.",
+    "transmit data(데이터를 전송하다)처럼 씁니다.",
+    "'(병을) 옮기다, 전염시키다'라는 뜻으로도 씁니다.",
+    "'(지식·가치를) 전하다'라는 뜻도 있고, 명사 transmission(전송, 전염), transmitter(송신기)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "send",
+     "en": "Send a signal.",
+     "ko": "신호를 보내다."
+    },
+    {
+     "word": "pass on",
+     "en": "Pass on a cold.",
+     "ko": "감기를 옮기다."
+    }
+   ],
+   "etymology": [
+    "transmit는 라틴어 transmittere(건너편으로 보내다)에서 온 단어입니다.",
+    "trans(건너)와 mittere(보내다)가 합쳐진 말로, mission(임무), submit(제출하다)과 같은 가족입니다.",
+    "'한쪽에서 다른 쪽으로 건너 보내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "전파나 전기로 신호를 보내는 것, 병이 사람에게서 사람으로 건너가는 것을 가리킵니다.",
+    "transmit의 핵심 이미지는 '안테나에서 멀리 건너편으로 신호를 쏘아 보내는 것 📡'입니다."
+   ],
+   "meanings": [
+    "전송하다, 송신하다, 방송하다",
+    "(병을) 옮기다",
+    "(지식을) 전하다"
+   ],
+   "examples": [
+    {
+     "en": "The satellite transmits signals to Earth.",
+     "ko": "인공위성은 지구로 신호를 전송해요."
+    },
+    {
+     "en": "The game was transmitted live on TV.",
+     "ko": "그 경기는 TV로 생중계되었어요."
+    },
+    {
+     "en": "Mosquitoes can transmit diseases.",
+     "ko": "모기는 병을 옮길 수 있어요."
+    },
+    {
+     "en": "Wash your hands so you don't transmit germs.",
+     "ko": "세균을 옮기지 않도록 손을 씻으세요."
+    },
+    {
+     "en": "Parents transmit values to their children.",
+     "ko": "부모는 자녀에게 가치관을 전해 줘요."
+    },
+    {
+     "en": "The phone transmits your voice as radio waves.",
+     "ko": "휴대폰은 목소리를 전파로 보내요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "send",
+     "ko": "보내다",
+     "en": "Send an email."
+    },
+    {
+     "type": "유의어",
+     "word": "broadcast",
+     "ko": "방송하다",
+     "en": "Broadcast the news."
+    },
+    {
+     "type": "반의어",
+     "word": "receive",
+     "ko": "받다",
+     "en": "Receive a signal."
+    },
+    {
+     "type": "파생어",
+     "word": "transmission",
+     "ko": "전송, 전염",
+     "en": "Data transmission."
+    },
+    {
+     "type": "연관어",
+     "word": "signal",
+     "ko": "신호",
+     "en": "A weak signal."
+    },
+    {
+     "type": "연관어",
+     "word": "infect",
+     "ko": "감염시키다",
+     "en": "Infect others."
+    }
+   ]
+  },
+  "1631": {
+   "word": "margin",
+   "overview": [
+    "margin은 '(종이의) 여백, 가장자리'라는 뜻의 명사입니다.",
+    "write in the margin(여백에 쓰다)처럼 씁니다.",
+    "'(표·점수의) 차이, 격차'라는 뜻으로도 씁니다. (win by a narrow margin, 근소한 차로 이기다)",
+    "'이윤, 마진', '(여유) 폭'이라는 뜻도 있고, 형용사 marginal(미미한)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "edge",
+     "en": "The edge of the page.",
+     "ko": "페이지 가장자리."
+    },
+    {
+     "word": "difference",
+     "en": "A small difference.",
+     "ko": "작은 차이."
+    }
+   ],
+   "etymology": [
+    "margin은 라틴어 margo(가장자리, 경계)에서 온 단어입니다.",
+    "mark(표시, 경계)와 먼 뿌리가 이어진다고 봅니다.",
+    "'무언가의 가장 바깥 가장자리'라는 뜻이 그대로 이어져 왔습니다.",
+    "종이 가장자리의 빈 공간, 두 숫자 사이의 여유나 차이, 가격 사이의 이윤을 가리키게 되었습니다.",
+    "margin의 핵심 이미지는 '글 가장자리에 남겨 둔 빈 공간 📄'입니다."
+   ],
+   "meanings": [
+    "가장자리, 여백",
+    "(득표의) 격차, 차이",
+    "중간 이윤, 마진"
+   ],
+   "examples": [
+    {
+     "en": "Write your notes in the margin.",
+     "ko": "여백에 메모를 쓰세요."
+    },
+    {
+     "en": "Our team won by a narrow margin.",
+     "ko": "우리 팀은 근소한 차이로 이겼어요."
+    },
+    {
+     "en": "Leave a wide margin on each side.",
+     "ko": "양쪽에 여백을 넉넉히 두세요."
+    },
+    {
+     "en": "She won the election by a large margin.",
+     "ko": "그녀는 큰 표 차이로 선거에서 이겼어요."
+    },
+    {
+     "en": "The store makes a small profit margin.",
+     "ko": "그 가게는 이윤이 적어요."
+    },
+    {
+     "en": "Give yourself a margin of time in case of traffic.",
+     "ko": "교통 체증에 대비해 시간 여유를 두세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "edge",
+     "ko": "가장자리",
+     "en": "The edge of the cliff."
+    },
+    {
+     "type": "유의어",
+     "word": "gap",
+     "ko": "격차",
+     "en": "A big gap."
+    },
+    {
+     "type": "파생어",
+     "word": "marginal",
+     "ko": "미미한",
+     "en": "A marginal change."
+    },
+    {
+     "type": "연관어",
+     "word": "border",
+     "ko": "테두리",
+     "en": "A red border."
+    },
+    {
+     "type": "연관어",
+     "word": "profit",
+     "ko": "이익",
+     "en": "Make a profit."
+    },
+    {
+     "type": "연관어",
+     "word": "page",
+     "ko": "페이지",
+     "en": "Turn the page."
+    }
+   ]
+  },
+  "2083": {
+   "word": "proportion",
+   "overview": [
+    "proportion은 '비율'이라는 뜻의 명사입니다.",
+    "a large proportion of students(학생들의 상당 비율)처럼 씁니다.",
+    "'(전체 중) 부분', '균형, 조화'라는 뜻으로도 씁니다. (in proportion, 균형이 맞는)",
+    "out of proportion(지나치게 과장된)이라는 표현도 쓰고, 형용사 proportional(비례하는)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "A large part.",
+     "ko": "큰 부분."
+    },
+    {
+     "word": "ratio",
+     "en": "A ratio of 2 to 1.",
+     "ko": "2대 1의 비율."
+    }
+   ],
+   "etymology": [
+    "proportion은 라틴어 pro portione(몫에 따라)에서 온 단어입니다.",
+    "portio(몫, 부분)에서 나온 말로, portion(부분), part(부분)와 같은 가족입니다.",
+    "'각자 몫에 맞게 나눈 크기'라는 뜻에서 시작되었습니다.",
+    "전체에서 부분이 차지하는 양, 그리고 부분들 사이의 알맞은 균형을 가리키게 되었습니다.",
+    "proportion의 핵심 이미지는 '전체 파이에서 한 조각이 차지하는 크기 🥧'입니다."
+   ],
+   "meanings": [
+    "비율",
+    "부분",
+    "균형, 정도",
+    "비례하게 하다"
+   ],
+   "examples": [
+    {
+     "en": "A large proportion of the class walks to school.",
+     "ko": "반 학생 중 상당수가 걸어서 등교해요."
+    },
+    {
+     "en": "Mix sugar and flour in equal proportions.",
+     "ko": "설탕과 밀가루를 같은 비율로 섞으세요."
+    },
+    {
+     "en": "The drawing is out of proportion.",
+     "ko": "그 그림은 비율이 맞지 않아요."
+    },
+    {
+     "en": "Your punishment should be in proportion to the mistake.",
+     "ko": "벌은 실수의 정도에 맞아야 해요."
+    },
+    {
+     "en": "Don't blow the problem out of proportion.",
+     "ko": "문제를 지나치게 부풀리지 마세요."
+    },
+    {
+     "en": "The proportion of girls to boys is 1 to 1.",
+     "ko": "여학생과 남학생의 비율은 1대 1이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ratio",
+     "ko": "비율",
+     "en": "A 3:1 ratio."
+    },
+    {
+     "type": "유의어",
+     "word": "percentage",
+     "ko": "백분율",
+     "en": "A high percentage."
+    },
+    {
+     "type": "파생어",
+     "word": "proportional",
+     "ko": "비례하는",
+     "en": "Proportional to size."
+    },
+    {
+     "type": "연관어",
+     "word": "balance",
+     "ko": "균형",
+     "en": "Keep balance."
+    },
+    {
+     "type": "연관어",
+     "word": "portion",
+     "ko": "부분",
+     "en": "A small portion."
+    },
+    {
+     "type": "연관어",
+     "word": "size",
+     "ko": "크기",
+     "en": "The right size."
+    }
+   ]
+  },
+  "2114": {
+   "word": "quantity",
+   "overview": [
+    "quantity는 '양, 수량'이라는 뜻의 명사입니다.",
+    "a large quantity of water(많은 양의 물)처럼 씁니다.",
+    "quality(질)와 짝을 이뤄 자주 비교합니다. (quality over quantity, 양보다 질)",
+    "in large quantities(대량으로)라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "amount",
+     "en": "A small amount.",
+     "ko": "적은 양."
+    },
+    {
+     "word": "number",
+     "en": "A large number.",
+     "ko": "많은 수."
+    }
+   ],
+   "etymology": [
+    "quantity는 라틴어 quantitas(얼마나 많은가)에서 온 단어입니다.",
+    "quantus(얼마나 큰, 얼마나 많은)에서 나온 말입니다.",
+    "'얼마나 많은지를 나타내는 크기'라는 뜻이 그대로 이어져 왔습니다.",
+    "셀 수 있거나 잴 수 있는 것의 양이나 수를 가리킵니다.",
+    "quantity의 핵심 이미지는 '저울에 올려 잰 얼마만큼의 양 ⚖️📦'입니다."
+   ],
+   "meanings": [
+    "양, 수량"
+   ],
+   "examples": [
+    {
+     "en": "Buy food in small quantities to avoid waste.",
+     "ko": "낭비를 막으려면 음식을 조금씩 사세요."
+    },
+    {
+     "en": "The factory makes toys in large quantities.",
+     "ko": "그 공장은 장난감을 대량으로 만들어요."
+    },
+    {
+     "en": "Quality is more important than quantity.",
+     "ko": "양보다 질이 더 중요해요."
+    },
+    {
+     "en": "Check the quantity before you order.",
+     "ko": "주문하기 전에 수량을 확인하세요."
+    },
+    {
+     "en": "A huge quantity of snow fell overnight.",
+     "ko": "밤사이 엄청난 양의 눈이 내렸어요."
+    },
+    {
+     "en": "What quantity of flour do we need?",
+     "ko": "밀가루가 얼마나 필요해요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "amount",
+     "ko": "양",
+     "en": "A large amount."
+    },
+    {
+     "type": "유의어",
+     "word": "number",
+     "ko": "수",
+     "en": "The number of students."
+    },
+    {
+     "type": "반의어",
+     "word": "quality",
+     "ko": "질",
+     "en": "High quality."
+    },
+    {
+     "type": "연관어",
+     "word": "measure",
+     "ko": "재다",
+     "en": "Measure the flour."
+    },
+    {
+     "type": "연관어",
+     "word": "volume",
+     "ko": "부피, 양",
+     "en": "Sales volume."
+    },
+    {
+     "type": "연관어",
+     "word": "count",
+     "ko": "세다",
+     "en": "Count to ten."
+    }
+   ]
   }
  }
 }
