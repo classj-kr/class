@@ -1913,6 +1913,1919 @@
      "en": "A stubborn attitude."
     }
    ]
+  },
+  "2767": {
+   "word": "tragic",
+   "overview": [
+    "tragic은 '비극적인, 비참한'이라는 뜻의 형용사입니다.",
+    "a tragic accident(비극적인 사고)처럼 씁니다.",
+    "매우 슬프고 불행한 결과를 낳는 사건을 뜻합니다.",
+    "명사 tragedy(비극)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sad",
+     "en": "A sad ending.",
+     "ko": "슬픈 결말."
+    },
+    {
+     "word": "devastating",
+     "en": "A devastating loss.",
+     "ko": "참담한 상실."
+    }
+   ],
+   "etymology": [
+    "tragic은 그리스어 tragoidia(염소의 노래)에서 온 단어입니다.",
+    "고대 그리스 연극제에서 염소를 상으로 걸고 부르던 슬픈 합창 노래에서 유래했다고 전해집니다.",
+    "그 노래가 발전해 주인공이 몰락하는 비극 연극 장르가 되었습니다.",
+    "지금은 연극뿐 아니라 현실에서 벌어지는 슬프고 불행한 사건 전반을 가리킵니다.",
+    "tragic의 핵심 이미지는 '주인공의 운명이 슬프게 몰락하는 비극 😢'입니다."
+   ],
+   "meanings": [
+    "비참한",
+    "비극의, 비극적인"
+   ],
+   "examples": [
+    {
+     "en": "The tragic accident shocked the entire town.",
+     "ko": "그 비극적인 사고는 그 마을 전체를 충격에 빠뜨렸어요."
+    },
+    {
+     "en": "She wrote a tragic story about lost love.",
+     "ko": "그녀는 잃어버린 사랑에 대한 비극적인 이야기를 썼어요."
+    },
+    {
+     "en": "His tragic death left the family devastated.",
+     "ko": "그의 비극적인 죽음은 그 가족을 망연자실하게 했어요."
+    },
+    {
+     "en": "The play is considered a classic tragic drama.",
+     "ko": "그 연극은 고전적인 비극 드라마로 여겨져요."
+    },
+    {
+     "en": "It was tragic to see the forest destroyed by fire.",
+     "ko": "그 숲이 화재로 파괴된 것을 보는 것은 비참했어요."
+    },
+    {
+     "en": "The tragic hero's downfall moved the audience.",
+     "ko": "그 비극적인 영웅의 몰락은 그 관객을 감동시켰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "tragedy",
+     "ko": "비극",
+     "en": "A great tragedy."
+    },
+    {
+     "type": "연관어",
+     "word": "sad",
+     "ko": "슬픈",
+     "en": "A sad story."
+    },
+    {
+     "type": "연관어",
+     "word": "devastating",
+     "ko": "참담한",
+     "en": "A devastating blow."
+    },
+    {
+     "type": "연관어",
+     "word": "misfortune",
+     "ko": "불행",
+     "en": "A terrible misfortune."
+    },
+    {
+     "type": "연관어",
+     "word": "grief",
+     "ko": "슬픔",
+     "en": "Deep grief."
+    },
+    {
+     "type": "연관어",
+     "word": "disaster",
+     "ko": "재난",
+     "en": "A natural disaster."
+    }
+   ]
+  },
+  "1764": {
+   "word": "needle",
+   "overview": [
+    "needle은 '바늘'이라는 뜻의 명사입니다.",
+    "thread a needle(바늘에 실을 꿰다)처럼 씁니다.",
+    "주사기의 '침'을 가리키는 뜻으로도 씁니다.",
+    "동사로는 '자꾸 놀려서 짜증나게 하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "pin",
+     "en": "A sharp pin.",
+     "ko": "날카로운 핀."
+    },
+    {
+     "word": "syringe tip",
+     "en": "A syringe tip.",
+     "ko": "주사기 끝."
+    }
+   ],
+   "etymology": [
+    "needle은 고대 영어 nædl(바늘)에서 온 단어입니다.",
+    "게르만과 인도유럽 말 뿌리로, '바느질하다, 꿰매다'라는 동작과 관련이 있습니다.",
+    "'실을 꿰어 천을 잇는 데 쓰는 가늘고 뾰족한 도구'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 바느질 도구뿐 아니라 주사기 바늘, 나침반 바늘까지 뾰족한 도구 전반을 가리킵니다.",
+    "needle의 핵심 이미지는 '가늘고 뾰족하게 찌르고 꿰매는 바늘 🪡'입니다."
+   ],
+   "meanings": [
+    "바늘, 침"
+   ],
+   "examples": [
+    {
+     "en": "She threaded the needle carefully before sewing.",
+     "ko": "그녀는 바느질하기 전에 그 바늘에 조심스럽게 실을 꿰었어요."
+    },
+    {
+     "en": "The nurse inserted the needle gently into his arm.",
+     "ko": "그 간호사는 그의 팔에 부드럽게 그 침을 삽입했어요."
+    },
+    {
+     "en": "He accidentally pricked his finger with the needle.",
+     "ko": "그는 실수로 그 바늘로 자신의 손가락을 찔렀어요."
+    },
+    {
+     "en": "The compass needle always points north.",
+     "ko": "그 나침반 바늘은 항상 북쪽을 가리켜요."
+    },
+    {
+     "en": "Finding him in the crowd was like finding a needle in a haystack.",
+     "ko": "그 군중 속에서 그를 찾는 것은 건초 더미에서 바늘을 찾는 것 같았어요."
+    },
+    {
+     "en": "She stopped needling her brother about the mistake.",
+     "ko": "그녀는 그 실수에 대해 자신의 오빠를 놀리는 것을 그만두었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "pin",
+     "ko": "핀",
+     "en": "A safety pin."
+    },
+    {
+     "type": "연관어",
+     "word": "thread",
+     "ko": "실",
+     "en": "A spool of thread."
+    },
+    {
+     "type": "연관어",
+     "word": "sew",
+     "ko": "꿰매다",
+     "en": "Sew a button."
+    },
+    {
+     "type": "연관어",
+     "word": "syringe",
+     "ko": "주사기",
+     "en": "A sterile syringe."
+    },
+    {
+     "type": "연관어",
+     "word": "sharp",
+     "ko": "날카로운",
+     "en": "A sharp point."
+    },
+    {
+     "type": "연관어",
+     "word": "compass",
+     "ko": "나침반",
+     "en": "A brass compass."
+    }
+   ]
+  },
+  "751": {
+   "word": "delicate",
+   "overview": [
+    "delicate는 '섬세한, 우아한'이라는 뜻의 형용사입니다.",
+    "delicate hands(섬세한 손)처럼 씁니다.",
+    "'(맛, 느낌이) 미묘하고 은은한'이라는 뜻으로도 씁니다.",
+    "'다루기 힘든, 조심스러운'이라는 뜻으로도 씁니다. (a delicate situation, 미묘한 상황)"
+   ],
+   "easy": [
+    {
+     "word": "fragile",
+     "en": "A fragile vase.",
+     "ko": "깨지기 쉬운 화병."
+    },
+    {
+     "word": "subtle",
+     "en": "A subtle flavor.",
+     "ko": "은은한 맛."
+    }
+   ],
+   "etymology": [
+    "delicate는 라틴어 delicatus(매혹적인, 사치스러운)에서 온 단어입니다.",
+    "deliciae(즐거움, 기쁨)에서 나온 말로, delicious(맛있는)와 같은 가족입니다.",
+    "'너무 곱고 정교해서 즐거움을 주는'이라는 뜻에서 시작되었습니다.",
+    "그 고운 성질에서 쉽게 손상될 만큼 섬세하다는 뜻, 그리고 다루기 조심스러운 상황이라는 뜻이 나왔습니다.",
+    "delicate의 핵심 이미지는 '너무 곱고 여려서 조심스럽게 다뤄야 하는 섬세함 🌸'입니다."
+   ],
+   "meanings": [
+    "(모습, 외모) 우아하다, 섬세하다",
+    "(맛, 느낌) 미묘하다, 정교하다, 은은하다"
+   ],
+   "examples": [
+    {
+     "en": "The vase has a delicate floral pattern.",
+     "ko": "그 화병은 우아한 꽃무늬를 가지고 있어요."
+    },
+    {
+     "en": "She has delicate features and a soft voice.",
+     "ko": "그녀는 섬세한 이목구비와 부드러운 목소리를 가지고 있어요."
+    },
+    {
+     "en": "The soup had a delicate, subtle flavor.",
+     "ko": "그 수프는 미묘하고 은은한 맛을 가지고 있었어요."
+    },
+    {
+     "en": "Handle the antique dishes with delicate care.",
+     "ko": "그 골동품 접시들을 조심스럽게 다루세요."
+    },
+    {
+     "en": "This is a delicate matter that requires tact.",
+     "ko": "이것은 재치가 필요한 민감한 사안이에요."
+    },
+    {
+     "en": "The butterfly's wings were incredibly delicate.",
+     "ko": "그 나비의 날개는 믿을 수 없을 만큼 섬세했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fragile",
+     "ko": "연약한",
+     "en": "A fragile object."
+    },
+    {
+     "type": "연관어",
+     "word": "subtle",
+     "ko": "미묘한",
+     "en": "A subtle hint."
+    },
+    {
+     "type": "연관어",
+     "word": "fine",
+     "ko": "정교한",
+     "en": "Fine detail."
+    },
+    {
+     "type": "연관어",
+     "word": "gentle",
+     "ko": "부드러운",
+     "en": "A gentle touch."
+    },
+    {
+     "type": "연관어",
+     "word": "sensitive",
+     "ko": "민감한",
+     "en": "A sensitive topic."
+    },
+    {
+     "type": "연관어",
+     "word": "graceful",
+     "ko": "우아한",
+     "en": "A graceful dancer."
+    }
+   ]
+  },
+  "985": {
+   "word": "executive",
+   "overview": [
+    "executive는 '(기업의) 임원, 경영진'이라는 뜻의 명사입니다.",
+    "a company executive(회사 임원)처럼 씁니다.",
+    "형용사로는 '행정의, 경영의'라는 뜻으로도 씁니다.",
+    "미국 정치에서는 '행정부'를 가리키는 데도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "manager",
+     "en": "A senior manager.",
+     "ko": "고위 관리자."
+    },
+    {
+     "word": "administrator",
+     "en": "A skilled administrator.",
+     "ko": "능숙한 행정가."
+    }
+   ],
+   "etymology": [
+    "executive는 라틴어 exsequi(끝까지 따라가서 실행하다)에서 온 단어입니다.",
+    "ex(밖으로)와 sequi(따르다)가 합쳐진 말로, execute(실행하다)와 같은 가족입니다.",
+    "'결정된 것을 끝까지 실행하고 관리하는 사람'이라는 뜻에서 시작되었습니다.",
+    "지금은 회사의 경영을 실행하는 임원, 국가의 정책을 집행하는 행정부를 가리킵니다.",
+    "executive의 핵심 이미지는 '결정된 계획을 끝까지 실행하고 이끄는 경영진 💼'입니다."
+   ],
+   "meanings": [
+    "(기업의) 임원, 관리직, 경영진, 중역",
+    "(미국 정치) 행정부"
+   ],
+   "examples": [
+    {
+     "en": "She was promoted to senior executive last year.",
+     "ko": "그녀는 작년에 고위 임원으로 승진했어요."
+    },
+    {
+     "en": "The executive team met to discuss the budget.",
+     "ko": "그 경영진은 그 예산을 논의하려고 만났어요."
+    },
+    {
+     "en": "He works as an executive at a tech company.",
+     "ko": "그는 한 기술 회사에서 임원으로 일해요."
+    },
+    {
+     "en": "The executive branch enforces the country's laws.",
+     "ko": "그 행정부는 그 나라의 법률을 집행해요."
+    },
+    {
+     "en": "Executive decisions require careful consideration.",
+     "ko": "경영 결정들은 신중한 고려를 필요로 해요."
+    },
+    {
+     "en": "The board appointed a new chief executive.",
+     "ko": "그 이사회는 새로운 최고 경영자를 임명했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "manager",
+     "ko": "관리자",
+     "en": "A store manager."
+    },
+    {
+     "type": "연관어",
+     "word": "administrator",
+     "ko": "행정가",
+     "en": "A school administrator."
+    },
+    {
+     "type": "연관어",
+     "word": "leadership",
+     "ko": "리더십",
+     "en": "Strong leadership."
+    },
+    {
+     "type": "연관어",
+     "word": "corporate",
+     "ko": "기업의",
+     "en": "Corporate culture."
+    },
+    {
+     "type": "연관어",
+     "word": "board",
+     "ko": "이사회",
+     "en": "The company board."
+    },
+    {
+     "type": "연관어",
+     "word": "management",
+     "ko": "경영진",
+     "en": "Senior management."
+    }
+   ]
+  },
+  "1939": {
+   "word": "permit",
+   "overview": [
+    "permit은 '허락하다, 허가하다'라는 뜻의 동사입니다.",
+    "permit smoking(흡연을 허용하다)처럼 씁니다.",
+    "명사로는 '허가서, 면허장'이라는 뜻으로 씁니다. (parking permit, 주차 허가증)",
+    "weather permitting(날씨가 허락한다면)처럼 조건절로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "allow",
+     "en": "Allow entry.",
+     "ko": "입장을 허락하다."
+    },
+    {
+     "word": "license",
+     "en": "A driving license.",
+     "ko": "운전 면허증."
+    }
+   ],
+   "etymology": [
+    "permit은 라틴어 permittere(끝까지 보내다, 허락하다)에서 온 단어입니다.",
+    "per(끝까지)와 mittere(보내다)가 합쳐진 말로, transmit(전송하다)과 같은 가족입니다.",
+    "'막지 않고 끝까지 지나가도록 놓아 보내다'라는 뜻에서 시작되었습니다.",
+    "지금은 어떤 행동을 막지 않고 허락하는 모든 상황과, 그 허락을 증명하는 문서를 가리킵니다.",
+    "permit의 핵심 이미지는 '막지 않고 지나가도록 놓아 주는 공식적인 허락 ✅'입니다."
+   ],
+   "meanings": [
+    "허락하다, 허가하다",
+    "허가서, 면허장"
+   ],
+   "examples": [
+    {
+     "en": "Smoking is not permitted inside the building.",
+     "ko": "흡연은 그 건물 안에서 허용되지 않아요."
+    },
+    {
+     "en": "She applied for a work permit last month.",
+     "ko": "그녀는 지난달 근로 허가증을 신청했어요."
+    },
+    {
+     "en": "The teacher permitted extra time for the exam.",
+     "ko": "그 선생님은 그 시험을 위한 추가 시간을 허락했어요."
+    },
+    {
+     "en": "You need a permit to build on this land.",
+     "ko": "이 땅에 건축하려면 허가증이 필요해요."
+    },
+    {
+     "en": "Weather permitting, the event will be held outdoors.",
+     "ko": "날씨가 허락한다면, 그 행사는 야외에서 열릴 거예요."
+    },
+    {
+     "en": "The parking permit must be displayed on the dashboard.",
+     "ko": "그 주차 허가증은 그 계기판에 게시되어야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "allow",
+     "ko": "허락하다",
+     "en": "Allow a request."
+    },
+    {
+     "type": "연관어",
+     "word": "license",
+     "ko": "면허",
+     "en": "A driving license."
+    },
+    {
+     "type": "연관어",
+     "word": "approve",
+     "ko": "승인하다",
+     "en": "Approve a plan."
+    },
+    {
+     "type": "연관어",
+     "word": "authorize",
+     "ko": "인가하다",
+     "en": "Authorize access."
+    },
+    {
+     "type": "연관어",
+     "word": "grant",
+     "ko": "부여하다",
+     "en": "Grant approval."
+    },
+    {
+     "type": "연관어",
+     "word": "forbid",
+     "ko": "금지하다",
+     "en": "Forbid entry."
+    }
+   ]
+  },
+  "1938": {
+   "word": "permanent",
+   "overview": [
+    "permanent는 '영구적인, 영속적인'이라는 뜻의 형용사입니다.",
+    "a permanent job(정규직)처럼 씁니다.",
+    "변하지 않고 계속 지속되는 것을 뜻합니다.",
+    "부사 permanently(영구적으로)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "lasting",
+     "en": "A lasting effect.",
+     "ko": "지속적인 영향."
+    },
+    {
+     "word": "forever",
+     "en": "Change forever.",
+     "ko": "영원히 변하다."
+    }
+   ],
+   "etymology": [
+    "permanent는 라틴어 permanere(끝까지 머무르다)에서 온 단어입니다.",
+    "per(끝까지)와 manere(머무르다)가 합쳐진 말로, remain(남다)과 같은 가족입니다.",
+    "'중간에 사라지지 않고 끝까지 계속 남아 있다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 임시가 아니라 오래도록 변하지 않고 지속되는 모든 상태를 가리킵니다.",
+    "permanent의 핵심 이미지는 '끝까지 변하지 않고 그 자리에 계속 머무르는 영구성 🏛️'입니다."
+   ],
+   "meanings": [
+    "영구적인"
+   ],
+   "examples": [
+    {
+     "en": "She finally found a permanent job after months of searching.",
+     "ko": "그녀는 여러 달의 찾기 끝에 마침내 정규직을 찾았어요."
+    },
+    {
+     "en": "The accident left a permanent scar on his arm.",
+     "ko": "그 사고는 그의 팔에 영구적인 흉터를 남겼어요."
+    },
+    {
+     "en": "They made the temporary fix into a permanent solution.",
+     "ko": "그들은 그 임시 조치를 영구적인 해결책으로 만들었어요."
+    },
+    {
+     "en": "The museum has a permanent collection of ancient art.",
+     "ko": "그 박물관은 고대 예술의 상설 컬렉션을 가지고 있어요."
+    },
+    {
+     "en": "His decision to move was permanent, not temporary.",
+     "ko": "이사하겠다는 그의 결정은 일시적이지 않고 영구적이었어요."
+    },
+    {
+     "en": "The change had a permanent effect on the community.",
+     "ko": "그 변화는 그 지역 사회에 영구적인 영향을 미쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "temporary",
+     "ko": "일시적인",
+     "en": "A temporary fix."
+    },
+    {
+     "type": "파생어",
+     "word": "permanently",
+     "ko": "영구적으로",
+     "en": "Change permanently."
+    },
+    {
+     "type": "연관어",
+     "word": "lasting",
+     "ko": "지속적인",
+     "en": "A lasting impression."
+    },
+    {
+     "type": "연관어",
+     "word": "stable",
+     "ko": "안정적인",
+     "en": "A stable job."
+    },
+    {
+     "type": "연관어",
+     "word": "fixed",
+     "ko": "고정된",
+     "en": "A fixed schedule."
+    },
+    {
+     "type": "연관어",
+     "word": "eternal",
+     "ko": "영원한",
+     "en": "Eternal peace."
+    }
+   ]
+  },
+  "1447": {
+   "word": "interfere",
+   "overview": [
+    "interfere는 '방해하다, 간섭하다'라는 뜻의 동사입니다.",
+    "interfere with plans(계획을 방해하다)처럼 씁니다.",
+    "남의 일에 끼어들어 참견하는 것을 뜻하기도 합니다.",
+    "명사 interference(방해, 간섭)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "meddle",
+     "en": "Meddle in affairs.",
+     "ko": "일에 참견하다."
+    },
+    {
+     "word": "disrupt",
+     "en": "Disrupt a plan.",
+     "ko": "계획을 방해하다."
+    }
+   ],
+   "etymology": [
+    "interfere는 라틴어 inter(사이에)와 ferire(치다, 부딪치다)가 합쳐진 단어입니다.",
+    "'두 대상 사이에 끼어들어 부딪치다'라는 뜻에서 시작되었습니다.",
+    "그렇게 끼어들어 흐름을 막거나 남의 일에 참견하는 것을 가리키는 데 굳어졌습니다.",
+    "지금은 계획, 신호, 관계 등 다양한 것을 방해하는 상황에 폭넓게 씁니다.",
+    "interfere의 핵심 이미지는 '두 대상 사이에 끼어들어 흐름을 막는 방해 🚧'입니다."
+   ],
+   "meanings": [
+    "방해하다, 간섭하다"
+   ],
+   "examples": [
+    {
+     "en": "She refused to interfere in her friends' argument.",
+     "ko": "그녀는 자신의 친구들의 말다툼에 간섭하기를 거부했어요."
+    },
+    {
+     "en": "Noise from the street interfered with his concentration.",
+     "ko": "그 거리의 소음은 그의 집중을 방해했어요."
+    },
+    {
+     "en": "The government should not interfere with private businesses.",
+     "ko": "그 정부는 사적인 기업들에 간섭해서는 안 돼요."
+    },
+    {
+     "en": "Bad weather interfered with the flight schedule.",
+     "ko": "나쁜 날씨는 그 비행 일정을 방해했어요."
+    },
+    {
+     "en": "Her parents never interfered with her career choices.",
+     "ko": "그녀의 부모님은 결코 그녀의 진로 선택에 간섭하지 않았어요."
+    },
+    {
+     "en": "Signal interference disrupted the radio broadcast.",
+     "ko": "신호 간섭이 그 라디오 방송을 방해했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "meddle",
+     "ko": "참견하다",
+     "en": "Meddle in others' business."
+    },
+    {
+     "type": "파생어",
+     "word": "interference",
+     "ko": "간섭",
+     "en": "Radio interference."
+    },
+    {
+     "type": "연관어",
+     "word": "disrupt",
+     "ko": "방해하다",
+     "en": "Disrupt the process."
+    },
+    {
+     "type": "연관어",
+     "word": "obstruct",
+     "ko": "방해하다",
+     "en": "Obstruct traffic."
+    },
+    {
+     "type": "연관어",
+     "word": "hinder",
+     "ko": "저해하다",
+     "en": "Hinder progress."
+    },
+    {
+     "type": "연관어",
+     "word": "intervene",
+     "ko": "개입하다",
+     "en": "Intervene quickly."
+    }
+   ]
+  },
+  "575": {
+   "word": "conduct",
+   "overview": [
+    "conduct는 '수행하다, 처리하다'라는 뜻의 동사입니다.",
+    "conduct a survey(설문 조사를 실시하다)처럼 씁니다.",
+    "'(오케스트라를) 지휘하다'라는 뜻으로도 씁니다.",
+    "명사로는 '행위, 품행'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "carry out",
+     "en": "Carry out a study.",
+     "ko": "연구를 수행하다."
+    },
+    {
+     "word": "behavior",
+     "en": "Good behavior.",
+     "ko": "좋은 행동."
+    }
+   ],
+   "etymology": [
+    "conduct는 라틴어 conducere(함께 이끌다)에서 온 단어입니다.",
+    "com(함께)과 ducere(이끌다)가 합쳐진 말로, leader(지도자, '이끄는 사람')와 뜻이 통하는 가족입니다.",
+    "'무언가를 처음부터 끝까지 이끌어 나가다'라는 뜻이 그대로 이어져 왔습니다.",
+    "오케스트라를 이끄는 지휘, 실험을 이끄는 수행, 사람의 행동을 이끄는 품행까지 뜻이 넓어졌습니다.",
+    "conduct의 핵심 이미지는 '처음부터 끝까지 이끌어 나가는 수행과 지휘 🎼'입니다."
+   ],
+   "meanings": [
+    "수행하다, 처리하다, 경영관리하다",
+    "지휘하다",
+    "행위, 행실, 품행, 행동"
+   ],
+   "examples": [
+    {
+     "en": "The scientists conducted a series of experiments.",
+     "ko": "그 과학자들은 일련의 실험들을 수행했어요."
+    },
+    {
+     "en": "He was chosen to conduct the orchestra tonight.",
+     "ko": "그는 오늘 밤 그 오케스트라를 지휘하도록 선택되었어요."
+    },
+    {
+     "en": "Her conduct in class earned her praise from the teacher.",
+     "ko": "그 수업에서의 그녀의 품행은 그 선생님으로부터 칭찬을 받았어요."
+    },
+    {
+     "en": "The company conducted a thorough investigation.",
+     "ko": "그 회사는 철저한 조사를 실시했어요."
+    },
+    {
+     "en": "Metal conducts electricity better than wood.",
+     "ko": "금속은 나무보다 전기를 더 잘 전도해요."
+    },
+    {
+     "en": "Students must follow the school's code of conduct.",
+     "ko": "학생들은 그 학교의 행동 강령을 따라야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "carry out",
+     "ko": "수행하다",
+     "en": "Carry out a task."
+    },
+    {
+     "type": "연관어",
+     "word": "behavior",
+     "ko": "행동",
+     "en": "Strange behavior."
+    },
+    {
+     "type": "연관어",
+     "word": "manage",
+     "ko": "관리하다",
+     "en": "Manage a project."
+    },
+    {
+     "type": "연관어",
+     "word": "direct",
+     "ko": "지휘하다",
+     "en": "Direct a film."
+    },
+    {
+     "type": "연관어",
+     "word": "perform",
+     "ko": "수행하다",
+     "en": "Perform a task."
+    },
+    {
+     "type": "연관어",
+     "word": "manner",
+     "ko": "태도",
+     "en": "Proper manner."
+    }
+   ]
+  },
+  "2233": {
+   "word": "reverse",
+   "overview": [
+    "reverse는 '반대의, 거꾸로'라는 뜻의 명사이자 동사입니다.",
+    "in reverse order(역순으로)처럼 씁니다.",
+    "동사로는 '뒤집다, 후진하다'라는 뜻으로 씁니다.",
+    "'(결정을) 취소하다, 무효화하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "opposite",
+     "en": "The opposite side.",
+     "ko": "반대편."
+    },
+    {
+     "word": "back up",
+     "en": "Back up the car.",
+     "ko": "차를 후진하다."
+    }
+   ],
+   "etymology": [
+    "reverse는 라틴어 revertere(돌아가다, 뒤집다)에서 온 단어입니다.",
+    "re(뒤로)와 vertere(돌다)가 합쳐진 말로, converse(대화하다), version(판)과 같은 가족입니다.",
+    "'원래 방향에서 뒤로 돌아서다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 순서나 방향을 거꾸로 하는 것, 결정을 뒤집는 것까지 폭넓게 씁니다.",
+    "reverse의 핵심 이미지는 '가던 방향을 뒤로 돌려 거꾸로 만드는 것 🔙'입니다."
+   ],
+   "meanings": [
+    "반대, 역, 후진",
+    "(순서, 방향) 거꾸로 하다, 뒤집다",
+    "무효화시키다, 취소하다"
+   ],
+   "examples": [
+    {
+     "en": "He put the car in reverse and backed out of the driveway.",
+     "ko": "그는 그 차를 후진으로 넣고 그 진입로에서 뒤로 나왔어요."
+    },
+    {
+     "en": "The court reversed its previous decision.",
+     "ko": "그 법원은 자신의 이전 결정을 뒤집었어요."
+    },
+    {
+     "en": "She read the names in reverse alphabetical order.",
+     "ko": "그녀는 그 이름들을 역알파벳순으로 읽었어요."
+    },
+    {
+     "en": "The medicine helped reverse the effects of the poison.",
+     "ko": "그 약은 그 독의 효과를 되돌리는 것을 도왔어요."
+    },
+    {
+     "en": "He reversed his opinion after hearing new evidence.",
+     "ko": "그는 새로운 증거를 들은 후 자신의 의견을 뒤집었어요."
+    },
+    {
+     "en": "Please turn the shirt to its reverse side.",
+     "ko": "그 셔츠를 그것의 뒷면으로 뒤집어 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "forward",
+     "ko": "앞으로",
+     "en": "Move forward."
+    },
+    {
+     "type": "연관어",
+     "word": "opposite",
+     "ko": "반대의",
+     "en": "The opposite effect."
+    },
+    {
+     "type": "연관어",
+     "word": "backward",
+     "ko": "뒤로",
+     "en": "Step backward."
+    },
+    {
+     "type": "연관어",
+     "word": "cancel",
+     "ko": "취소하다",
+     "en": "Cancel an order."
+    },
+    {
+     "type": "연관어",
+     "word": "flip",
+     "ko": "뒤집다",
+     "en": "Flip the switch."
+    },
+    {
+     "type": "연관어",
+     "word": "undo",
+     "ko": "취소하다",
+     "en": "Undo an action."
+    }
+   ]
+  },
+  "14": {
+   "word": "absurd",
+   "overview": [
+    "absurd는 '우스꽝스러운, 터무니없는'이라는 뜻의 형용사입니다.",
+    "an absurd idea(터무니없는 생각)처럼 씁니다.",
+    "논리적으로 말이 안 되거나 우스울 만큼 비합리적인 것을 뜻합니다.",
+    "명사 absurdity(부조리, 불합리)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ridiculous",
+     "en": "A ridiculous claim.",
+     "ko": "말도 안 되는 주장."
+    },
+    {
+     "word": "silly",
+     "en": "A silly excuse.",
+     "ko": "어처구니없는 변명."
+    }
+   ],
+   "etymology": [
+    "absurd는 라틴어 absurdus(귀에 거슬리는, 음이 맞지 않는)에서 온 단어입니다.",
+    "ab(멀리)와 surdus(귀먹은, 소리가 둔한)가 합쳐진 말입니다.",
+    "'듣기에 조화롭지 않고 귀에 거슬리는 소리'라는 뜻에서 시작되었습니다.",
+    "그 조화롭지 않음에서 '논리적으로 앞뒤가 맞지 않는, 터무니없는'이라는 뜻으로 넓어졌습니다.",
+    "absurd의 핵심 이미지는 '앞뒤가 전혀 맞지 않아 우스꽝스러운 상황 🤪'입니다."
+   ],
+   "meanings": [
+    "우스꽝스러운, 터무니없는"
+   ],
+   "examples": [
+    {
+     "en": "It's absurd to think we can finish this in one day.",
+     "ko": "우리가 이것을 하루 만에 끝낼 수 있다고 생각하는 것은 터무니없어요."
+    },
+    {
+     "en": "The comedian told an absurd but hilarious story.",
+     "ko": "그 코미디언은 터무니없지만 아주 우스운 이야기를 했어요."
+    },
+    {
+     "en": "His excuse for being late was completely absurd.",
+     "ko": "그의 지각에 대한 변명은 완전히 터무니없었어요."
+    },
+    {
+     "en": "The whole situation felt absurd and unreal.",
+     "ko": "그 상황 전체가 우스꽝스럽고 비현실적으로 느껴졌어요."
+    },
+    {
+     "en": "She found the rule absurd and unnecessary.",
+     "ko": "그녀는 그 규칙이 터무니없고 불필요하다고 생각했어요."
+    },
+    {
+     "en": "It seemed absurd that no one had noticed the mistake.",
+     "ko": "아무도 그 실수를 알아채지 못했다는 것은 어처구니없어 보였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ridiculous",
+     "ko": "터무니없는",
+     "en": "A ridiculous rule."
+    },
+    {
+     "type": "파생어",
+     "word": "absurdity",
+     "ko": "부조리",
+     "en": "The absurdity of it all."
+    },
+    {
+     "type": "연관어",
+     "word": "silly",
+     "ko": "어리석은",
+     "en": "A silly mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "illogical",
+     "ko": "비논리적인",
+     "en": "An illogical argument."
+    },
+    {
+     "type": "연관어",
+     "word": "nonsense",
+     "ko": "터무니없는 말",
+     "en": "Pure nonsense."
+    },
+    {
+     "type": "연관어",
+     "word": "unreasonable",
+     "ko": "불합리한",
+     "en": "An unreasonable demand."
+    }
+   ]
+  },
+  "2636": {
+   "word": "tag",
+   "overview": [
+    "tag는 '꼬리표, 태그'라는 뜻의 명사입니다.",
+    "a price tag(가격표)처럼 씁니다.",
+    "동사로는 '꼬리표를 붙이다'라는 뜻으로 씁니다.",
+    "'술래잡기'라는 놀이를 가리키는 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "label",
+     "en": "A price label.",
+     "ko": "가격 라벨."
+    },
+    {
+     "word": "label it",
+     "en": "Label the item.",
+     "ko": "물품에 표시하다."
+    }
+   ],
+   "etymology": [
+    "tag는 중세 영어 tagge(끝에 매다는 작은 조각)에서 온 단어로 추정됩니다.",
+    "게르만 말 뿌리와 관련이 있다고 봅니다.",
+    "'물건 끝에 매달아 정보를 표시하는 작은 조각'이라는 뜻이 그대로 이어져 왔습니다.",
+    "아이들이 서로를 손으로 살짝 '태그'하며 잡는 놀이 이름으로도 쓰이게 되었습니다.",
+    "tag의 핵심 이미지는 '무언가에 매달려 정보를 알려 주는 작은 꼬리표 🏷️'입니다."
+   ],
+   "meanings": [
+    "꼬리표, 태그",
+    "꼬리표를 붙이다",
+    "술래잡기에서 잡다"
+   ],
+   "examples": [
+    {
+     "en": "She checked the price tag before buying the shirt.",
+     "ko": "그녀는 그 셔츠를 사기 전에 그 가격표를 확인했어요."
+    },
+    {
+     "en": "The kids played tag in the park all afternoon.",
+     "ko": "그 아이들은 오후 내내 그 공원에서 술래잡기를 했어요."
+    },
+    {
+     "en": "He tagged his friend in the photo online.",
+     "ko": "그는 온라인에서 그 사진에 자신의 친구를 태그했어요."
+    },
+    {
+     "en": "Each item has a tag with its size and material.",
+     "ko": "각 물품은 자신의 사이즈와 소재가 적힌 꼬리표를 가지고 있어요."
+    },
+    {
+     "en": "She tagged him as it before running away.",
+     "ko": "그녀는 도망치기 전에 그를 술래로 잡았어요."
+    },
+    {
+     "en": "The name tag helped identify each guest.",
+     "ko": "그 이름표는 각 손님을 식별하는 것을 도왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "label",
+     "ko": "라벨",
+     "en": "A clothing label."
+    },
+    {
+     "type": "연관어",
+     "word": "price",
+     "ko": "가격",
+     "en": "The retail price."
+    },
+    {
+     "type": "연관어",
+     "word": "sticker",
+     "ko": "스티커",
+     "en": "A colorful sticker."
+    },
+    {
+     "type": "연관어",
+     "word": "game",
+     "ko": "놀이",
+     "en": "A children's game."
+    },
+    {
+     "type": "연관어",
+     "word": "mark",
+     "ko": "표시하다",
+     "en": "Mark the box."
+    },
+    {
+     "type": "연관어",
+     "word": "identify",
+     "ko": "식별하다",
+     "en": "Identify the item."
+    }
+   ]
+  },
+  "1548": {
+   "word": "leather",
+   "overview": [
+    "leather는 동물의 '가죽'이라는 뜻의 명사입니다.",
+    "a leather jacket(가죽 재킷)처럼 씁니다.",
+    "무두질하여 만든 튼튼하고 부드러운 소재를 뜻합니다.",
+    "가방, 신발, 옷 등 다양한 제품의 재료로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "animal skin",
+     "en": "Treated animal skin.",
+     "ko": "가공된 동물 가죽."
+    },
+    {
+     "word": "hide",
+     "en": "Cow hide.",
+     "ko": "소가죽."
+    }
+   ],
+   "etymology": [
+    "leather는 고대 영어 leðer(가죽)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 아주 오래된 단어입니다.",
+    "'동물의 가죽을 무두질하여 튼튼하게 만든 소재'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금도 옷, 신발, 가방 등 다양한 제품의 재료로 널리 씁니다.",
+    "leather의 핵심 이미지는 '무두질을 거쳐 튼튼하고 부드러워진 가죽 소재 🧥'입니다."
+   ],
+   "meanings": [
+    "(동물의) 가죽"
+   ],
+   "examples": [
+    {
+     "en": "She bought a stylish leather handbag.",
+     "ko": "그녀는 세련된 가죽 핸드백을 샀어요."
+    },
+    {
+     "en": "The chair is upholstered in soft leather.",
+     "ko": "그 의자는 부드러운 가죽으로 씌워져 있어요."
+    },
+    {
+     "en": "He wore a black leather jacket to the concert.",
+     "ko": "그는 그 콘서트에 검은 가죽 재킷을 입고 갔어요."
+    },
+    {
+     "en": "These boots are made of genuine leather.",
+     "ko": "이 부츠들은 진짜 가죽으로 만들어졌어요."
+    },
+    {
+     "en": "The factory produces high-quality leather goods.",
+     "ko": "그 공장은 고품질 가죽 제품들을 생산해요."
+    },
+    {
+     "en": "Leather requires special care to stay soft.",
+     "ko": "가죽은 부드러운 상태를 유지하려면 특별한 관리가 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hide",
+     "ko": "가죽",
+     "en": "Cattle hide."
+    },
+    {
+     "type": "연관어",
+     "word": "jacket",
+     "ko": "재킷",
+     "en": "A warm jacket."
+    },
+    {
+     "type": "연관어",
+     "word": "boot",
+     "ko": "부츠",
+     "en": "Sturdy boots."
+    },
+    {
+     "type": "연관어",
+     "word": "handbag",
+     "ko": "핸드백",
+     "en": "A designer handbag."
+    },
+    {
+     "type": "연관어",
+     "word": "material",
+     "ko": "소재",
+     "en": "Durable material."
+    },
+    {
+     "type": "연관어",
+     "word": "tan",
+     "ko": "무두질하다",
+     "en": "Tan the hide."
+    }
+   ]
+  },
+  "1255": {
+   "word": "guardian",
+   "overview": [
+    "guardian은 '수호자, 보호자'라는 뜻의 명사입니다.",
+    "a legal guardian(법적 후견인)처럼 씁니다.",
+    "법적으로 미성년자나 재산을 책임지고 돌보는 사람을 뜻합니다.",
+    "'보호하는 존재, 수호신'이라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "protector",
+     "en": "A loyal protector.",
+     "ko": "충성스러운 보호자."
+    },
+    {
+     "word": "caretaker",
+     "en": "A legal caretaker.",
+     "ko": "법적 보호자."
+    }
+   ],
+   "etymology": [
+    "guardian은 옛 프랑스어 garder(지키다, 보호하다)에서 온 단어입니다.",
+    "guard(경비, 지키다)와 같은 가족입니다.",
+    "'누군가나 무언가를 책임지고 지키는 사람'이라는 뜻이 그대로 이어져 왔습니다.",
+    "법적으로 아이를 돌보는 후견인, 신화 속 수호신 모두를 가리키는 데 씁니다.",
+    "guardian의 핵심 이미지는 '소중한 존재를 곁에서 지키고 보호하는 수호자 🛡️'입니다."
+   ],
+   "meanings": [
+    "수호자",
+    "후견인"
+   ],
+   "examples": [
+    {
+     "en": "Her grandmother became her legal guardian.",
+     "ko": "그녀의 할머니는 그녀의 법적 후견인이 되었어요."
+    },
+    {
+     "en": "The knight was known as the guardian of the kingdom.",
+     "ko": "그 기사는 그 왕국의 수호자로 알려져 있었어요."
+    },
+    {
+     "en": "Parents or guardians must sign the permission form.",
+     "ko": "부모님이나 후견인은 그 동의서에 서명해야 해요."
+    },
+    {
+     "en": "The old tree was seen as a guardian of the forest.",
+     "ko": "그 오래된 나무는 그 숲의 수호자로 여겨졌어요."
+    },
+    {
+     "en": "He appointed his brother as the children's guardian.",
+     "ko": "그는 자신의 형을 그 아이들의 후견인으로 지정했어요."
+    },
+    {
+     "en": "A guardian angel watched over the sleeping child.",
+     "ko": "수호천사가 그 잠든 아이를 지켜보았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "protector",
+     "ko": "보호자",
+     "en": "A fierce protector."
+    },
+    {
+     "type": "연관어",
+     "word": "caretaker",
+     "ko": "관리인",
+     "en": "A dedicated caretaker."
+    },
+    {
+     "type": "연관어",
+     "word": "parent",
+     "ko": "부모",
+     "en": "A loving parent."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect the weak."
+    },
+    {
+     "type": "연관어",
+     "word": "custody",
+     "ko": "양육권",
+     "en": "Legal custody."
+    },
+    {
+     "type": "연관어",
+     "word": "watch over",
+     "ko": "지켜보다",
+     "en": "Watch over closely."
+    }
+   ]
+  },
+  "2681": {
+   "word": "terror",
+   "overview": [
+    "terror는 '공포, 테러'라는 뜻의 명사입니다.",
+    "a reign of terror(공포 정치)처럼 씁니다.",
+    "극심한 두려움 또는 폭력을 사용하는 행위를 뜻합니다.",
+    "terrorism(테러 행위), terrorist(테러리스트)와 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "extreme fear",
+     "en": "Extreme fear.",
+     "ko": "극도의 두려움."
+    },
+    {
+     "word": "violent attack",
+     "en": "A violent attack.",
+     "ko": "폭력적인 공격."
+    }
+   ],
+   "etymology": [
+    "terror는 라틴어 terrere(겁먹게 하다)에서 온 단어입니다.",
+    "terrify(겁먹게 하다), terrific(대단한, 원래는 '무서운')과 같은 가족입니다.",
+    "'너무나 무서워서 공포에 질리게 만드는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 극심한 공포뿐 아니라 폭력을 통해 공포를 조장하는 행위 자체를 가리킵니다.",
+    "terror의 핵심 이미지는 '극심한 폭력과 공포로 사람들을 마비시키는 것 💣'입니다."
+   ],
+   "meanings": [
+    "폭력을 쓰는 일, 폭행, 테러"
+   ],
+   "examples": [
+    {
+     "en": "The country suffered years of political terror.",
+     "ko": "그 나라는 여러 해 동안 정치적 폭압을 겪었어요."
+    },
+    {
+     "en": "She screamed in terror when she saw the fire.",
+     "ko": "그녀는 그 화재를 보고 공포에 질려 비명을 질렀어요."
+    },
+    {
+     "en": "Governments work together to fight terror.",
+     "ko": "정부들은 테러에 맞서 싸우려고 함께 협력해요."
+    },
+    {
+     "en": "The regime ruled through terror and fear.",
+     "ko": "그 정권은 폭력과 공포를 통해 통치했어요."
+    },
+    {
+     "en": "The city lived in terror during the war.",
+     "ko": "그 도시는 그 전쟁 동안 공포 속에서 살았어요."
+    },
+    {
+     "en": "The attack spread terror across the region.",
+     "ko": "그 공격은 그 지역 전체에 공포를 퍼뜨렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fear",
+     "ko": "두려움",
+     "en": "Overwhelming fear."
+    },
+    {
+     "type": "파생어",
+     "word": "terrorism",
+     "ko": "테러리즘",
+     "en": "Combat terrorism."
+    },
+    {
+     "type": "연관어",
+     "word": "horror",
+     "ko": "공포",
+     "en": "Sheer horror."
+    },
+    {
+     "type": "연관어",
+     "word": "violence",
+     "ko": "폭력",
+     "en": "Political violence."
+    },
+    {
+     "type": "연관어",
+     "word": "attack",
+     "ko": "공격",
+     "en": "A sudden attack."
+    },
+    {
+     "type": "연관어",
+     "word": "panic",
+     "ko": "공황",
+     "en": "Widespread panic."
+    }
+   ]
+  },
+  "1272": {
+   "word": "halt",
+   "overview": [
+    "halt는 '멈추다, 정지하다'라는 뜻의 동사입니다.",
+    "come to a halt(멈춰 서다)처럼 씁니다.",
+    "진행 중이던 일이나 움직임을 갑자기 멈추는 것을 뜻합니다.",
+    "명사로도 '정지, 멈춤'이라는 뜻으로 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "stop",
+     "en": "Stop moving.",
+     "ko": "움직임을 멈추다."
+    },
+    {
+     "word": "pause",
+     "en": "Pause the process.",
+     "ko": "과정을 멈추다."
+    }
+   ],
+   "etymology": [
+    "halt는 독일어 halten(멈추다, 붙잡다)에서 온 단어입니다.",
+    "군사 명령어로 병사들에게 행진을 멈추라고 할 때 쓰이던 말에서 유래했습니다.",
+    "'진행 중인 움직임을 갑자기 완전히 멈추다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 행진뿐 아니라 생산, 교통 등 모든 진행을 멈추는 상황에 폭넓게 씁니다.",
+    "halt의 핵심 이미지는 '명령 한마디에 딱 멈춰 서는 정지 ✋'입니다."
+   ],
+   "meanings": [
+    "멈추다, 서다, 정지하다(시키다)"
+   ],
+   "examples": [
+    {
+     "en": "The train came to a sudden halt.",
+     "ko": "그 기차는 갑자기 멈춰 섰어요."
+    },
+    {
+     "en": "Production was halted due to a shortage of parts.",
+     "ko": "생산은 부품 부족으로 인해 중단되었어요."
+    },
+    {
+     "en": "The soldiers halted at the general's command.",
+     "ko": "그 군인들은 그 장군의 명령에 멈춰 섰어요."
+    },
+    {
+     "en": "Heavy traffic halted movement across the bridge.",
+     "ko": "심한 교통 체증은 그 다리를 가로지르는 이동을 멈추게 했어요."
+    },
+    {
+     "en": "The strike halted operations at the factory.",
+     "ko": "그 파업은 그 공장에서의 운영을 중단시켰어요."
+    },
+    {
+     "en": "She halted mid-sentence, unsure what to say.",
+     "ko": "그녀는 무슨 말을 해야 할지 몰라 문장 중간에 멈췄어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "stop",
+     "ko": "멈추다",
+     "en": "Stop the car."
+    },
+    {
+     "type": "연관어",
+     "word": "pause",
+     "ko": "일시 정지하다",
+     "en": "Pause briefly."
+    },
+    {
+     "type": "연관어",
+     "word": "cease",
+     "ko": "중단하다",
+     "en": "Cease fire."
+    },
+    {
+     "type": "연관어",
+     "word": "suspend",
+     "ko": "중단시키다",
+     "en": "Suspend service."
+    },
+    {
+     "type": "연관어",
+     "word": "block",
+     "ko": "막다",
+     "en": "Block traffic."
+    },
+    {
+     "type": "연관어",
+     "word": "freeze",
+     "ko": "얼어붙다",
+     "en": "Freeze in place."
+    }
+   ]
+  },
+  "422": {
+   "word": "cattle",
+   "overview": [
+    "cattle은 '(집합적으로) 소'라는 뜻의 명사입니다.",
+    "raise cattle(소를 기르다)처럼 씁니다.",
+    "농장에서 기르는 소 떼 전체를 가리키는 말로, 항상 복수로 취급합니다.",
+    "단수형이 따로 없고 개별 소는 cow, bull 등으로 부릅니다."
+   ],
+   "easy": [
+    {
+     "word": "cows",
+     "en": "A herd of cows.",
+     "ko": "소 떼."
+    },
+    {
+     "word": "livestock",
+     "en": "Farm livestock.",
+     "ko": "농장 가축."
+    }
+   ],
+   "etymology": [
+    "cattle은 라틴어 capitale(재산, 자본)에서 온 단어입니다.",
+    "capital(자본, 재산)과 같은 뿌리에서 나온 단어입니다.",
+    "옛날 농경 사회에서 소는 재산과 부를 나타내는 가장 중요한 자산이었습니다.",
+    "'재산'이라는 뜻에서 시작해 그 대표적인 재산인 '소 떼'를 가리키는 뜻으로 좁혀졌습니다.",
+    "cattle의 핵심 이미지는 '농장의 소중한 재산이자 무리 지어 풀을 뜯는 소 떼 🐄'입니다."
+   ],
+   "meanings": [
+    "(복수) 가축 소, 들소"
+   ],
+   "examples": [
+    {
+     "en": "The farmer raises cattle on his ranch.",
+     "ko": "그 농부는 자신의 목장에서 소를 길러요."
+    },
+    {
+     "en": "Hundreds of cattle grazed on the open field.",
+     "ko": "수백 마리의 소가 그 탁 트인 들판에서 풀을 뜯었어요."
+    },
+    {
+     "en": "The cattle were driven to the market for sale.",
+     "ko": "그 소들은 판매를 위해 그 시장으로 몰려갔어요."
+    },
+    {
+     "en": "Cattle farming is a major industry in this region.",
+     "ko": "소 사육은 이 지역에서 주요 산업이에요."
+    },
+    {
+     "en": "The cattle drink water from the nearby stream.",
+     "ko": "그 소들은 그 근처의 개울에서 물을 마셔요."
+    },
+    {
+     "en": "A storm scattered the cattle across the plains.",
+     "ko": "폭풍이 그 소들을 그 평원 곳곳에 흩어지게 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "cow",
+     "ko": "암소",
+     "en": "A milking cow."
+    },
+    {
+     "type": "연관어",
+     "word": "livestock",
+     "ko": "가축",
+     "en": "Manage livestock."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "A cattle farm."
+    },
+    {
+     "type": "연관어",
+     "word": "ranch",
+     "ko": "목장",
+     "en": "A large ranch."
+    },
+    {
+     "type": "연관어",
+     "word": "herd",
+     "ko": "떼",
+     "en": "A herd of sheep."
+    },
+    {
+     "type": "연관어",
+     "word": "graze",
+     "ko": "풀을 뜯다",
+     "en": "Graze on grass."
+    }
+   ]
+  },
+  "1367": {
+   "word": "ideal",
+   "overview": [
+    "ideal은 '이상, 이상적인 것'이라는 뜻의 명사이자 형용사입니다.",
+    "the ideal solution(이상적인 해결책)처럼 씁니다.",
+    "완벽하다고 여겨지는 기준이나 목표를 뜻합니다.",
+    "부사 ideally(이상적으로는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "perfect",
+     "en": "A perfect match.",
+     "ko": "완벽한 조합."
+    },
+    {
+     "word": "best possible",
+     "en": "The best possible option.",
+     "ko": "가능한 최선의 선택."
+    }
+   ],
+   "etymology": [
+    "ideal은 그리스어 idea(형태, 관념)에서 온 단어입니다.",
+    "idein(보다)에서 나온 말로, idea(생각, 아이디어)와 같은 가족입니다.",
+    "고대 그리스 철학에서는 눈에 보이는 것 너머의 완전한 본질을 뜻했습니다.",
+    "지금은 현실에서 도달하고 싶은 완벽한 기준이나 목표를 가리키는 데 폭넓게 씁니다.",
+    "ideal의 핵심 이미지는 '현실 너머에 있는 가장 완벽한 모습, 이상 🌟'입니다."
+   ],
+   "meanings": [
+    "이상"
+   ],
+   "examples": [
+    {
+     "en": "This location is ideal for a family vacation.",
+     "ko": "이 장소는 가족 휴가에 이상적이에요."
+    },
+    {
+     "en": "She pursued her ideal of becoming a great teacher.",
+     "ko": "그녀는 훌륭한 선생님이 되겠다는 자신의 이상을 추구했어요."
+    },
+    {
+     "en": "The weather was ideal for hiking that day.",
+     "ko": "그날 날씨는 하이킹에 이상적이었어요."
+    },
+    {
+     "en": "He has a clear ideal of what success looks like.",
+     "ko": "그는 성공이 어떤 모습인지에 대한 명확한 이상을 가지고 있어요."
+    },
+    {
+     "en": "This job seems like the ideal fit for her skills.",
+     "ko": "이 직업은 그녀의 기술에 이상적으로 맞는 것처럼 보여요."
+    },
+    {
+     "en": "They discussed their ideals about justice and equality.",
+     "ko": "그들은 정의와 평등에 대한 자신들의 이상을 논의했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "perfect",
+     "ko": "완벽한",
+     "en": "A perfect day."
+    },
+    {
+     "type": "파생어",
+     "word": "ideally",
+     "ko": "이상적으로",
+     "en": "Ideally, we'd finish early."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "목표",
+     "en": "A lifelong goal."
+    },
+    {
+     "type": "연관어",
+     "word": "vision",
+     "ko": "비전",
+     "en": "A clear vision."
+    },
+    {
+     "type": "연관어",
+     "word": "standard",
+     "ko": "기준",
+     "en": "A high standard."
+    },
+    {
+     "type": "연관어",
+     "word": "principle",
+     "ko": "원칙",
+     "en": "A guiding principle."
+    }
+   ]
+  },
+  "395": {
+   "word": "candidate",
+   "overview": [
+    "candidate는 '후보, 후보자'라는 뜻의 명사입니다.",
+    "a presidential candidate(대통령 후보)처럼 씁니다.",
+    "'지원자, 응시자'라는 뜻으로도 씁니다.",
+    "선거나 채용 등에서 선택받기 위해 나선 사람을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "applicant",
+     "en": "A job applicant.",
+     "ko": "구직 지원자."
+    },
+    {
+     "word": "nominee",
+     "en": "An award nominee.",
+     "ko": "수상 후보."
+    }
+   ],
+   "etymology": [
+    "candidate는 라틴어 candidatus(흰옷을 입은 사람)에서 온 단어입니다.",
+    "candidus(하얀, 빛나는)에서 나온 말로, candid(솔직한)와도 이어지는 뿌리입니다.",
+    "고대 로마에서 공직에 출마하는 사람들이 순수함을 상징하는 흰 토가를 입었던 데서 유래했습니다.",
+    "지금은 선거, 채용 등에서 선택을 받기 위해 나선 모든 사람을 가리킵니다.",
+    "candidate의 핵심 이미지는 '흰옷을 입고 선택받기 위해 나선 후보자 🗳️'입니다."
+   ],
+   "meanings": [
+    "후보, 후보자",
+    "지원자, 응시자"
+   ],
+   "examples": [
+    {
+     "en": "Three candidates are running for mayor this year.",
+     "ko": "세 명의 후보자들이 올해 시장 자리에 출마해요."
+    },
+    {
+     "en": "She is a strong candidate for the job.",
+     "ko": "그녀는 그 일자리에 강력한 지원자예요."
+    },
+    {
+     "en": "The committee interviewed each candidate carefully.",
+     "ko": "그 위원회는 각 후보자를 신중하게 면접했어요."
+    },
+    {
+     "en": "He became a candidate for the scholarship program.",
+     "ko": "그는 그 장학 프로그램의 후보자가 되었어요."
+    },
+    {
+     "en": "Voters compared the policies of both candidates.",
+     "ko": "유권자들은 그 두 후보자들의 정책들을 비교했어요."
+    },
+    {
+     "en": "The exam determines which candidates pass.",
+     "ko": "그 시험은 어떤 응시자들이 합격하는지 결정해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "nominee",
+     "ko": "지명자",
+     "en": "An award nominee."
+    },
+    {
+     "type": "연관어",
+     "word": "applicant",
+     "ko": "지원자",
+     "en": "A job applicant."
+    },
+    {
+     "type": "연관어",
+     "word": "election",
+     "ko": "선거",
+     "en": "A national election."
+    },
+    {
+     "type": "연관어",
+     "word": "vote",
+     "ko": "투표",
+     "en": "Cast a vote."
+    },
+    {
+     "type": "연관어",
+     "word": "run for",
+     "ko": "출마하다",
+     "en": "Run for office."
+    },
+    {
+     "type": "연관어",
+     "word": "interview",
+     "ko": "면접",
+     "en": "A job interview."
+    }
+   ]
+  },
+  "1001": {
+   "word": "explode",
+   "overview": [
+    "explode는 '폭발하다'라는 뜻의 동사입니다.",
+    "the bomb exploded(그 폭탄이 폭발했다)처럼 씁니다.",
+    "'(감정이) 격발하다, 갑자기 터지다'라는 비유적인 뜻으로도 씁니다.",
+    "명사 explosion(폭발)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "blow up",
+     "en": "Blow up a balloon.",
+     "ko": "풍선을 부풀리다/터뜨리다."
+    },
+    {
+     "word": "burst",
+     "en": "Burst suddenly.",
+     "ko": "갑자기 터지다."
+    }
+   ],
+   "etymology": [
+    "explode는 라틴어 explodere(무대에서 야유하며 쫓아내다)에서 온 단어입니다.",
+    "ex(밖으로)와 plaudere(손뼉 치다)가 합쳐진 말로, applaud(박수치다)와 같은 가족입니다.",
+    "원래는 관객이 야유의 박수를 쳐서 배우를 무대 밖으로 쫓아낸다는 뜻이었습니다.",
+    "그 갑작스럽고 격렬한 소리와 힘에서 지금의 '폭발하다'라는 뜻으로 바뀌었습니다.",
+    "explode의 핵심 이미지는 '순식간에 강렬하게 터져 나오는 폭발과 격발 💥'입니다."
+   ],
+   "meanings": [
+    "폭발하다",
+    "(감정이) 격발하다"
+   ],
+   "examples": [
+    {
+     "en": "The bomb exploded near the old bridge.",
+     "ko": "그 폭탄은 그 오래된 다리 근처에서 폭발했어요."
+    },
+    {
+     "en": "He exploded with anger after hearing the news.",
+     "ko": "그는 그 소식을 듣고 분노로 격발했어요."
+    },
+    {
+     "en": "The balloon exploded with a loud pop.",
+     "ko": "그 풍선은 큰 펑 소리와 함께 터졌어요."
+    },
+    {
+     "en": "Sales exploded after the new product launched.",
+     "ko": "그 새로운 제품이 출시된 후 판매량이 폭발적으로 늘었어요."
+    },
+    {
+     "en": "The volcano exploded, sending ash into the sky.",
+     "ko": "그 화산은 폭발하여 재를 하늘로 내뿜었어요."
+    },
+    {
+     "en": "The gas leak caused the tank to explode.",
+     "ko": "그 가스 누출은 그 탱크가 폭발하게 만들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "burst",
+     "ko": "터지다",
+     "en": "Burst into flames."
+    },
+    {
+     "type": "파생어",
+     "word": "explosion",
+     "ko": "폭발",
+     "en": "A loud explosion."
+    },
+    {
+     "type": "연관어",
+     "word": "blast",
+     "ko": "폭발",
+     "en": "A powerful blast."
+    },
+    {
+     "type": "연관어",
+     "word": "erupt",
+     "ko": "분출하다",
+     "en": "The volcano erupts."
+    },
+    {
+     "type": "연관어",
+     "word": "detonate",
+     "ko": "폭발시키다",
+     "en": "Detonate a bomb."
+    },
+    {
+     "type": "연관어",
+     "word": "outburst",
+     "ko": "폭발",
+     "en": "An emotional outburst."
+    }
+   ]
+  },
+  "2360": {
+   "word": "severe",
+   "overview": [
+    "severe는 '엄격한, 가혹한'이라는 뜻의 형용사입니다.",
+    "severe punishment(가혹한 처벌)처럼 씁니다.",
+    "'(정도가) 심각한, 극심한'이라는 뜻으로도 아주 자주 씁니다. (severe weather, 심한 날씨)",
+    "명사 severity(심각함, 엄격함)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "strict",
+     "en": "A strict teacher.",
+     "ko": "엄격한 선생님."
+    },
+    {
+     "word": "serious",
+     "en": "A serious problem.",
+     "ko": "심각한 문제."
+    }
+   ],
+   "etymology": [
+    "severe는 라틴어 severus(엄격한, 진지한)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 확실하지 않지만, 관대함이 없는 엄격한 태도를 뜻했습니다.",
+    "'봐주지 않고 엄격하게 대하는 태도'라는 뜻이 그대로 이어져 왔습니다.",
+    "그 강도가 세다는 의미에서 날씨, 질병, 손상 등이 극심한 것을 가리키는 뜻으로도 넓어졌습니다.",
+    "severe의 핵심 이미지는 '봐주지 않고 강하게 몰아붙이는 엄격함과 극심함 ⛈️'입니다."
+   ],
+   "meanings": [
+    "엄격한, 가혹한"
+   ],
+   "examples": [
+    {
+     "en": "The judge gave a severe sentence for the crime.",
+     "ko": "그 판사는 그 범죄에 대해 가혹한 형을 내렸어요."
+    },
+    {
+     "en": "The region suffered severe drought last summer.",
+     "ko": "그 지역은 지난여름 극심한 가뭄을 겪었어요."
+    },
+    {
+     "en": "He experienced severe pain after the surgery.",
+     "ko": "그는 그 수술 후 극심한 통증을 겪었어요."
+    },
+    {
+     "en": "Her parents were quite severe about curfews.",
+     "ko": "그녀의 부모님은 통금에 대해 꽤 엄격했어요."
+    },
+    {
+     "en": "Severe weather warnings were issued for the coast.",
+     "ko": "심각한 기상 경보가 그 해안에 발령되었어요."
+    },
+    {
+     "en": "The company faced severe criticism for the decision.",
+     "ko": "그 회사는 그 결정에 대해 가혹한 비판에 직면했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "strict",
+     "ko": "엄격한",
+     "en": "A strict rule."
+    },
+    {
+     "type": "파생어",
+     "word": "severity",
+     "ko": "심각성",
+     "en": "The severity of the illness."
+    },
+    {
+     "type": "연관어",
+     "word": "harsh",
+     "ko": "가혹한",
+     "en": "A harsh winter."
+    },
+    {
+     "type": "연관어",
+     "word": "serious",
+     "ko": "심각한",
+     "en": "A serious injury."
+    },
+    {
+     "type": "연관어",
+     "word": "extreme",
+     "ko": "극심한",
+     "en": "Extreme heat."
+    },
+    {
+     "type": "연관어",
+     "word": "intense",
+     "ko": "강렬한",
+     "en": "Intense pressure."
+    }
+   ]
   }
  }
 }
