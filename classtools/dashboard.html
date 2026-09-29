@@ -87,6 +87,15 @@
             color: var(--text-muted);
         }
 
+        .clock-date-en {
+            margin-top: 2px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--accent-green);
+            opacity: 0.85;
+        }
+
         /* Main Dashboard Grid */
         .dashboard-grid {
             display: grid;
@@ -794,6 +803,8 @@
             color: var(--accent-amber);
         }
         .cal-day.holiday, .cal-day.holiday .cal-event-label { color: var(--accent-danger); }
+        .cal-day.in-range { background: rgba(255, 255, 255, 0.05); }
+        .cal-day.in-range:hover { background: rgba(255, 255, 255, 0.1); }
         .cal-day.today .cal-event-label { color: #0b0f0c; }
         .calendar-status { color: var(--text-muted); font-size: 0.78rem; }
         .calendar-status button { margin-left: 6px; color: var(--accent-green); background: none; border: 0; cursor: pointer; text-decoration: underline; }
@@ -1169,6 +1180,7 @@
             .clock-time { font-size: clamp(1.9rem, 6vw, 2.8rem); }
             .clock-seconds { font-size: 1rem; }
             .clock-date { font-size: 0.75rem; }
+            .clock-date-en { font-size: 0.68rem; }
             .weather-card .weather-temp { font-size: 1.35rem; }
             .weather-condition { font-size: 0.8rem; }
             .dashboard-grid {
@@ -1183,6 +1195,7 @@
         <div class="clock-card">
             <div class="clock-time"><span id="clockHM">--:--</span><span class="clock-seconds" id="clockSec">:--</span></div>
             <div class="clock-date" id="clockDate"></div>
+            <div class="clock-date-en" id="clockDateEn"></div>
         </div>
         <div class="weather-card" aria-label="현재 날씨">
             <div class="weather-temp" id="weatherTemp">--°</div>
@@ -1367,6 +1380,10 @@
         const clockHM = document.getElementById("clockHM");
         const clockSec = document.getElementById("clockSec");
         const clockDate = document.getElementById("clockDate");
+        const clockDateEn = document.getElementById("clockDateEn");
+        const englishWeekdayFormatter = new Intl.DateTimeFormat("en-US", {
+            weekday: "short", month: "short", day: "numeric", year: "numeric"
+        });
         const currentDayLabel = document.getElementById("currentDayLabel");
 
         const checklistGrid = document.getElementById("checklistGrid");
@@ -1424,6 +1441,7 @@
             const dayName = days[now.getDay()];
 
             clockDate.textContent = `${year}년 ${month}월 ${date}일 (${dayName})`;
+            clockDateEn.textContent = englishWeekdayFormatter.format(now);
             currentDayLabel.textContent = `${dayName}요일`;
             selectedDayTab = (["월","화","수","목","금"].includes(dayName)) ? dayName : "월";
 
@@ -2461,7 +2479,8 @@
             const year = calendarCursor.getFullYear();
             const month = calendarCursor.getMonth();
 
-            calMonthTitle.textContent = `${year}년 ${month + 1}월`;
+            const englishMonthName = new Date(year, month, 1).toLocaleDateString("en-US", { month: "long" });
+            calMonthTitle.textContent = `${year}년 ${month + 1}월 · ${englishMonthName} ${year}`;
 
             const firstDay = new Date(year, month, 1).getDay();
             const lastDate = new Date(year, month + 1, 0).getDate();
@@ -2481,6 +2500,7 @@
                 calendarMini.append(document.createElement("div"));
             }
 
+            let prevRunEntries = null;
             for (let date = 1; date <= lastDate; date++) {
                 const dayEl = document.createElement("div");
                 dayEl.className = "cal-day";
@@ -2498,12 +2518,23 @@
                 const entries = calendarEntries(dateKey);
                 if (entries.some(entry => entry.holiday)) dayEl.classList.add("holiday");
                 dayEl.textContent = date;
+                // A multi-day run of the exact same single entry (e.g. "여름방학" repeated
+                // for weeks) only prints its label on the first day of the run; the rest just
+                // get a subtle tint, so long vacations don't blow up the grid's row height.
+                const runKey = entries.length ? entries.map(e => e.title).join("|") : null;
+                const isContinuation = entries.length === 1 && runKey === prevRunEntries;
+                prevRunEntries = runKey;
                 if (entries.length) {
-                    dayEl.classList.add("has-event", "has-label");
-                    const label = document.createElement("span");
-                    label.className = "cal-event-label";
-                    label.textContent = entries[0].title + (entries.length > 1 ? " +" + (entries.length - 1) : "");
-                    dayEl.append(label);
+                    dayEl.classList.add("has-event");
+                    if (isContinuation) {
+                        dayEl.classList.add("in-range");
+                    } else {
+                        dayEl.classList.add("has-label");
+                        const label = document.createElement("span");
+                        label.className = "cal-event-label";
+                        label.textContent = entries[0].title + (entries.length > 1 ? " +" + (entries.length - 1) : "");
+                        dayEl.append(label);
+                    }
                     dayEl.title = entries.map(entry => entry.title).join(" · ");
                 }
                 dayEl.tabIndex = 0;
