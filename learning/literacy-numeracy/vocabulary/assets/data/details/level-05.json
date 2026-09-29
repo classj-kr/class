@@ -13559,6 +13559,1939 @@
      "en": "Prevent injury."
     }
    ]
+  },
+  "2056": {
+   "word": "prison",
+   "overview": [
+    "prison은 '감옥'이라는 뜻의 명사입니다. 범죄를 저지른 사람을 가두어 두는 곳입니다.",
+    "go to prison(감옥에 가다), in prison(감옥에서)처럼 씁니다.",
+    "감옥에 갇힌 사람은 prisoner(죄수)라고 합니다.",
+    "jail도 비슷한 뜻인데, prison은 오래 가두는 큰 시설, jail은 짧게 가두는 작은 시설을 뜻할 때가 많습니다."
+   ],
+   "easy": [
+    {
+     "word": "jail",
+     "en": "Go to jail.",
+     "ko": "감옥에 가다."
+    },
+    {
+     "word": "cage",
+     "en": "A locked cage.",
+     "ko": "잠긴 우리."
+    }
+   ],
+   "etymology": [
+    "prison은 라틴어 prehensio(붙잡힘)에서 온 단어입니다.",
+    "prehendere(붙잡다)에서 나온 말로, surprise(놀람, '갑자기 붙잡힘')와도 같은 뿌리입니다.",
+    "'붙잡혀서 갇힌 곳'이라는 뜻이 그대로 이어져 왔습니다.",
+    "옛 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "prison의 핵심 이미지는 '철창 안에 갇혀 자유를 잃은 곳 🔒'입니다."
+   ],
+   "meanings": [
+    "감옥, 교도소"
+   ],
+   "examples": [
+    {
+     "en": "He was sent to prison for stealing.",
+     "ko": "그는 도둑질을 해서 감옥에 보내졌어요."
+    },
+    {
+     "en": "The prison is guarded day and night.",
+     "ko": "그 감옥은 밤낮으로 경비가 돼요."
+    },
+    {
+     "en": "She spent ten years in prison.",
+     "ko": "그녀는 10년을 감옥에서 보냈어요."
+    },
+    {
+     "en": "The escaped prisoner was caught quickly.",
+     "ko": "탈옥한 죄수는 빠르게 잡혔어요."
+    },
+    {
+     "en": "Prison is meant to punish and teach.",
+     "ko": "감옥은 벌을 주고 가르치기 위한 곳이에요."
+    },
+    {
+     "en": "He was released from prison after five years.",
+     "ko": "그는 5년 후 감옥에서 풀려났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "jail",
+     "ko": "감옥",
+     "en": "Put in jail."
+    },
+    {
+     "type": "파생어",
+     "word": "prisoner",
+     "ko": "죄수",
+     "en": "A former prisoner."
+    },
+    {
+     "type": "연관어",
+     "word": "guard",
+     "ko": "경비원",
+     "en": "A prison guard."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "Commit a crime."
+    },
+    {
+     "type": "연관어",
+     "word": "punish",
+     "ko": "벌하다",
+     "en": "Punish criminals."
+    },
+    {
+     "type": "연관어",
+     "word": "free",
+     "ko": "자유로운, 석방하다",
+     "en": "Set free."
+    }
+   ]
+  },
+  "1619": {
+   "word": "major",
+   "overview": [
+    "major는 '주요한', '중대한'이라는 뜻의 형용사입니다. minor(사소한)의 반대말입니다.",
+    "a major problem(중대한 문제), a major role(주요한 역할)처럼 씁니다.",
+    "대학에서 '전공'이라는 뜻으로도 씁니다. My major is science.(내 전공은 과학이에요.)",
+    "군대 계급 '소령'이라는 명사 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "important",
+     "en": "A major event.",
+     "ko": "중요한 사건."
+    },
+    {
+     "word": "main",
+     "en": "The main idea.",
+     "ko": "주된 생각."
+    }
+   ],
+   "etymology": [
+    "major는 라틴어 major(더 큰)에서 온 단어입니다.",
+    "magnus(큰)의 비교급으로, magnificent(웅대한), magnify(확대하다)와 같은 가족입니다.",
+    "'더 크고 중요한'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'대학 전공'이라는 뜻은 '가장 큰 비중을 차지하는 공부'라는 느낌에서 나왔습니다.",
+    "major의 핵심 이미지는 '작은 것들 사이에서 우뚝 솟은 중요한 것 🔝'입니다."
+   ],
+   "meanings": [
+    "주요한, 중대한 (형용사)",
+    "(대학) 전공 (명사)",
+    "(군대) 소령 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "There was a major storm last night.",
+     "ko": "어젯밤에 큰 폭풍이 있었어요."
+    },
+    {
+     "en": "My sister's major is computer science.",
+     "ko": "우리 언니의 전공은 컴퓨터 공학이에요."
+    },
+    {
+     "en": "This is a major decision for our family.",
+     "ko": "이건 우리 가족에게 중대한 결정이에요."
+    },
+    {
+     "en": "He played a major role in the project.",
+     "ko": "그는 그 프로젝트에서 주요한 역할을 맡았어요."
+    },
+    {
+     "en": "The major led his soldiers carefully.",
+     "ko": "그 소령은 병사들을 조심스럽게 이끌었어요."
+    },
+    {
+     "en": "This is a major improvement.",
+     "ko": "이건 큰 발전이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important day."
+    },
+    {
+     "type": "반의어",
+     "word": "minor",
+     "ko": "사소한",
+     "en": "A minor issue."
+    },
+    {
+     "type": "연관어",
+     "word": "main",
+     "ko": "주된",
+     "en": "The main point."
+    },
+    {
+     "type": "연관어",
+     "word": "huge",
+     "ko": "거대한",
+     "en": "A huge change."
+    },
+    {
+     "type": "연관어",
+     "word": "subject",
+     "ko": "과목, 주제",
+     "en": "My favorite subject."
+    },
+    {
+     "type": "연관어",
+     "word": "captain",
+     "ko": "대위, 주장",
+     "en": "The team captain."
+    }
+   ]
+  },
+  "2537": {
+   "word": "stick",
+   "overview": [
+    "stick은 '막대기'라는 뜻의 명사이자 '달라붙다', '찌르다'라는 뜻의 동사입니다.",
+    "pick up a stick(막대기를 줍다)처럼 명사로, stick to the wall(벽에 달라붙다)처럼 동사로 씁니다.",
+    "stick with는 '~을 계속하다', '~을 고수하다'라는 뜻입니다.",
+    "과거형과 과거분사는 모두 stuck입니다."
+   ],
+   "easy": [
+    {
+     "word": "branch",
+     "en": "A tree branch.",
+     "ko": "나뭇가지."
+    },
+    {
+     "word": "glue",
+     "en": "Use glue.",
+     "ko": "풀을 써."
+    }
+   ],
+   "etymology": [
+    "stick은 고대 영어 sticca(막대기)와 stician(찌르다)에서 온 단어입니다.",
+    "두 단어가 합쳐지며 지금의 뜻을 함께 가지게 되었습니다.",
+    "'날카로운 것으로 찌르다'라는 뜻에서 '달라붙다'라는 뜻도 자연스럽게 나왔습니다.",
+    "stitch(바느질하다)도 같은 뿌리에서 나온 단어입니다.",
+    "stick의 핵심 이미지는 '땅에 꽂힌 막대기와 딱 달라붙는 접착제 🪵'입니다."
+   ],
+   "meanings": [
+    "막대기 (명사)",
+    "달라붙다 (동사)",
+    "찌르다, 꽂다 (동사)",
+    "(stick with) ~을 계속하다"
+   ],
+   "examples": [
+    {
+     "en": "The dog fetched the stick.",
+     "ko": "개가 막대기를 물어 왔어요."
+    },
+    {
+     "en": "The gum stuck to my shoe.",
+     "ko": "껌이 내 신발에 붙었어요."
+    },
+    {
+     "en": "Stick the poster on the wall.",
+     "ko": "포스터를 벽에 붙여."
+    },
+    {
+     "en": "Let's stick with our original plan.",
+     "ko": "원래 계획대로 계속 밀고 나가자."
+    },
+    {
+     "en": "She stuck a flag in the sand.",
+     "ko": "그녀는 모래에 깃발을 꽂았어요."
+    },
+    {
+     "en": "Don't stick your fork in the socket.",
+     "ko": "포크를 콘센트에 찌르지 마."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "stuck",
+     "ko": "붙었다, 꽂혔다 (과거형)",
+     "en": "It got stuck."
+    },
+    {
+     "type": "연관어",
+     "word": "branch",
+     "ko": "나뭇가지",
+     "en": "A broken branch."
+    },
+    {
+     "type": "연관어",
+     "word": "glue",
+     "ko": "풀, 접착제",
+     "en": "A glue stick."
+    },
+    {
+     "type": "연관어",
+     "word": "tape",
+     "ko": "테이프",
+     "en": "Use tape."
+    },
+    {
+     "type": "연관어",
+     "word": "attach",
+     "ko": "붙이다",
+     "en": "Attach a photo."
+    },
+    {
+     "type": "연관어",
+     "word": "poke",
+     "ko": "찌르다",
+     "en": "Poke a hole."
+    }
+   ]
+  },
+  "1828": {
+   "word": "offer",
+   "overview": [
+    "offer는 '제안하다', '제공하다'라는 뜻의 동사이자 '제안'이라는 뜻의 명사입니다.",
+    "offer help(도움을 주겠다고 하다), a good offer(좋은 제안)처럼 씁니다.",
+    "가게에서 물건을 '~에 판매하다'라는 뜻으로도 씁니다.",
+    "accept an offer(제안을 받아들이다), turn down an offer(제안을 거절하다)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "give",
+     "en": "Give a hand.",
+     "ko": "손을 내밀다."
+    },
+    {
+     "word": "suggest",
+     "en": "Suggest an idea.",
+     "ko": "생각을 제안하다."
+    }
+   ],
+   "etymology": [
+    "offer는 라틴어 offerre(앞으로 가져오다, 바치다)에서 온 단어입니다.",
+    "ob(~을 향해)와 ferre(나르다)가 합쳐진 말입니다.",
+    "'상대를 향해 무언가를 가져다 바치다'라는 뜻이 그대로 이어져 왔습니다.",
+    "transfer(옮기다), suffer(고통받다)도 ferre에서 나온 같은 가족 단어들입니다.",
+    "offer의 핵심 이미지는 '두 손을 내밀어 무언가를 건네주는 모습 🤲'입니다."
+   ],
+   "meanings": [
+    "제안하다, 제공하다 (동사)",
+    "제안, 제의 (명사)",
+    "(가격을) 제시하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She offered to help me with my homework.",
+     "ko": "그녀는 내 숙제를 도와주겠다고 했어요."
+    },
+    {
+     "en": "This school offers many activities.",
+     "ko": "이 학교는 많은 활동을 제공해요."
+    },
+    {
+     "en": "He accepted the job offer.",
+     "ko": "그는 그 일자리 제안을 받아들였어요."
+    },
+    {
+     "en": "Can I offer you some tea?",
+     "ko": "차 좀 드릴까요?"
+    },
+    {
+     "en": "They offered a great price for the house.",
+     "ko": "그들은 그 집에 좋은 가격을 제시했어요."
+    },
+    {
+     "en": "I made an offer to buy the bike.",
+     "ko": "나는 자전거를 사겠다고 제안했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "suggest",
+     "ko": "제안하다",
+     "en": "Suggest a plan."
+    },
+    {
+     "type": "연관어",
+     "word": "give",
+     "ko": "주다",
+     "en": "Give a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "provide",
+     "ko": "제공하다",
+     "en": "Provide food."
+    },
+    {
+     "type": "연관어",
+     "word": "accept",
+     "ko": "받아들이다",
+     "en": "Accept the offer."
+    },
+    {
+     "type": "연관어",
+     "word": "refuse",
+     "ko": "거절하다",
+     "en": "Refuse politely."
+    },
+    {
+     "type": "연관어",
+     "word": "help",
+     "ko": "돕다",
+     "en": "Offer help."
+    }
+   ]
+  },
+  "2436": {
+   "word": "smart",
+   "overview": [
+    "smart는 '영리한', '똑똑한'이라는 뜻의 형용사입니다.",
+    "a smart student(똑똑한 학생), a smart move(현명한 행동)처럼 씁니다.",
+    "smartphone(스마트폰)처럼 '똑똑한 기능이 있는'이라는 뜻으로도 씁니다.",
+    "'옷차림이 말쑥한', '고급스러운'이라는 뜻도 있습니다. a smart suit(말쑥한 정장)"
+   ],
+   "easy": [
+    {
+     "word": "clever",
+     "en": "A clever fox.",
+     "ko": "영리한 여우."
+    },
+    {
+     "word": "intelligent",
+     "en": "An intelligent kid.",
+     "ko": "똑똑한 아이."
+    }
+   ],
+   "etymology": [
+    "smart는 고대 영어 smeortan(따끔거리다, 쑤시다)에서 온 단어입니다.",
+    "처음에는 '아프다', '따끔거리다'라는 전혀 다른 뜻이었습니다.",
+    "'따끔하게 정신이 번쩍 드는'이라는 뜻에서 '재빠른', '영리한'으로 뜻이 넓어졌습니다.",
+    "'옷차림이 말쑥한'이라는 뜻도 '눈에 확 띄게 단정한'이라는 느낌에서 나왔습니다.",
+    "smart의 핵심 이미지는 '머리 회전이 빠르고 번뜩이는 지혜 💡'입니다."
+   ],
+   "meanings": [
+    "영리한, 똑똑한 (형용사)",
+    "(기기가) 똑똑한, 스마트한 (형용사)",
+    "옷차림이 말쑥한 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "She is a very smart student.",
+     "ko": "그녀는 아주 똑똑한 학생이에요."
+    },
+    {
+     "en": "That was a smart decision.",
+     "ko": "그건 현명한 결정이었어요."
+    },
+    {
+     "en": "My dad bought a smart TV.",
+     "ko": "우리 아빠가 스마트 TV를 사셨어요."
+    },
+    {
+     "en": "He looked smart in his new suit.",
+     "ko": "그는 새 정장을 입으니 말쑥해 보였어요."
+    },
+    {
+     "en": "Dolphins are known to be smart animals.",
+     "ko": "돌고래는 영리한 동물로 알려져 있어요."
+    },
+    {
+     "en": "It's smart to save some money.",
+     "ko": "돈을 좀 저축하는 게 현명해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "clever",
+     "ko": "영리한",
+     "en": "A clever plan."
+    },
+    {
+     "type": "유의어",
+     "word": "intelligent",
+     "ko": "지적인",
+     "en": "An intelligent question."
+    },
+    {
+     "type": "반의어",
+     "word": "foolish",
+     "ko": "어리석은",
+     "en": "A foolish mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "wise",
+     "ko": "지혜로운",
+     "en": "A wise choice."
+    },
+    {
+     "type": "연관어",
+     "word": "smartphone",
+     "ko": "스마트폰",
+     "en": "Check your smartphone."
+    },
+    {
+     "type": "연관어",
+     "word": "quick",
+     "ko": "빠른",
+     "en": "A quick thinker."
+    }
+   ]
+  },
+  "2158": {
+   "word": "record",
+   "overview": [
+    "record[명사 rékərd, 동사 rikɔ́rd]는 '기록'이라는 뜻의 명사이자 '기록하다'라는 뜻의 동사입니다.",
+    "keep a record(기록을 남기다), break a record(기록을 깨다)처럼 씁니다.",
+    "record a song(노래를 녹음하다)처럼 소리나 영상을 '녹음/녹화하다'라는 뜻으로도 씁니다.",
+    "옛날 음악을 재생하던 둥근 판(음반)도 record라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "write down",
+     "en": "Write it down.",
+     "ko": "그것을 적어 둬."
+    },
+    {
+     "word": "video",
+     "en": "Take a video.",
+     "ko": "영상을 찍어."
+    }
+   ],
+   "etymology": [
+    "record는 라틴어 recordari(기억하다, 마음에 다시 새기다)에서 온 단어입니다.",
+    "re(다시)와 cor, cordis(마음)가 합쳐진 말입니다.",
+    "'마음에 다시 담아 기억해 두는 것'이라는 뜻에서 '기록'이 되었습니다.",
+    "cordial(다정한), courage(용기, '마음에서 나오는 힘')도 같은 뿌리를 가진 단어들입니다.",
+    "record의 핵심 이미지는 '잊지 않으려고 남겨 둔 흔적 📜'입니다."
+   ],
+   "meanings": [
+    "기록 (명사)",
+    "(경기 등의) 최고 기록 (명사)",
+    "기록하다 (동사)",
+    "녹음하다, 녹화하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Keep a record of your daily exercise.",
+     "ko": "매일 운동한 기록을 남겨."
+    },
+    {
+     "en": "She broke the world record.",
+     "ko": "그녀는 세계 기록을 깼어요."
+    },
+    {
+     "en": "Let's record this song for the show.",
+     "ko": "공연을 위해 이 노래를 녹음하자."
+    },
+    {
+     "en": "The camera recorded everything.",
+     "ko": "카메라가 모든 것을 녹화했어요."
+    },
+    {
+     "en": "This is the fastest time on record.",
+     "ko": "이건 지금까지 기록된 시간 중 가장 빠른 시간이에요."
+    },
+    {
+     "en": "Please record your answers here.",
+     "ko": "여기에 답을 기록해 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사, 기록",
+     "en": "Keep history."
+    },
+    {
+     "type": "연관어",
+     "word": "video",
+     "ko": "영상",
+     "en": "Watch a video."
+    },
+    {
+     "type": "연관어",
+     "word": "note",
+     "ko": "메모",
+     "en": "Take a note."
+    },
+    {
+     "type": "연관어",
+     "word": "score",
+     "ko": "점수, 기록",
+     "en": "A high score."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억",
+     "en": "A good memory."
+    },
+    {
+     "type": "연관어",
+     "word": "music",
+     "ko": "음악",
+     "en": "Play music."
+    }
+   ]
+  },
+  "1316": {
+   "word": "hide",
+   "overview": [
+    "hide는 '숨다', '숨기다'라는 뜻의 동사입니다.",
+    "hide behind a tree(나무 뒤에 숨다), hide a secret(비밀을 숨기다)처럼 씁니다.",
+    "play hide and seek(숨바꼭질을 하다)라는 표현도 자주 씁니다.",
+    "명사로는 짐승의 '가죽'이라는 뜻도 있습니다. 과거형은 hid, 과거분사는 hidden입니다."
+   ],
+   "easy": [
+    {
+     "word": "conceal",
+     "en": "Conceal your face.",
+     "ko": "얼굴을 가려."
+    },
+    {
+     "word": "cover",
+     "en": "Cover your eyes.",
+     "ko": "눈을 가려."
+    }
+   ],
+   "etymology": [
+    "hide는 고대 영어 hȳdan(숨기다, 감추다)에서 온 단어입니다.",
+    "'덮다', '보호하다'를 뜻하는 아주 옛말과 이어진다고 봅니다.",
+    "'가죽'을 뜻하는 hide는 고대 영어 hȳd에서 온 다른 단어이지만, 모양이 비슷해 지금은 같이 쓰입니다.",
+    "동물의 가죽이 몸을 '덮어 숨겨' 준다는 느낌이 은근히 두 단어를 이어 줍니다.",
+    "hide의 핵심 이미지는 '살금살금 숨어 들키지 않게 숨기 🙈'입니다."
+   ],
+   "meanings": [
+    "숨다 (동사)",
+    "숨기다, 감추다 (동사)",
+    "(짐승의) 가죽 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Let's play hide and seek.",
+     "ko": "숨바꼭질하자."
+    },
+    {
+     "en": "The cat hid under the bed.",
+     "ko": "고양이가 침대 밑에 숨었어요."
+    },
+    {
+     "en": "She hid the present in the closet.",
+     "ko": "그녀는 옷장에 선물을 숨겼어요."
+    },
+    {
+     "en": "Don't hide your true feelings.",
+     "ko": "진짜 감정을 숨기지 마."
+    },
+    {
+     "en": "He hid behind the curtain.",
+     "ko": "그는 커튼 뒤에 숨었어요."
+    },
+    {
+     "en": "The shoes are made of leather hide.",
+     "ko": "그 신발은 가죽으로 만들어졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "hid",
+     "ko": "숨었다 (과거형)",
+     "en": "He hid quickly."
+    },
+    {
+     "type": "변화형",
+     "word": "hidden",
+     "ko": "숨겨진 (과거분사)",
+     "en": "A hidden treasure."
+    },
+    {
+     "type": "유의어",
+     "word": "conceal",
+     "ko": "숨기다",
+     "en": "Conceal the truth."
+    },
+    {
+     "type": "연관어",
+     "word": "secret",
+     "ko": "비밀",
+     "en": "Keep a secret."
+    },
+    {
+     "type": "연관어",
+     "word": "cover",
+     "ko": "덮다, 가리다",
+     "en": "Cover your mouth."
+    },
+    {
+     "type": "연관어",
+     "word": "hideout",
+     "ko": "은신처",
+     "en": "A secret hideout."
+    }
+   ]
+  },
+  "2941": {
+   "word": "whether",
+   "overview": [
+    "whether는 '~인지 아닌지'라는 뜻의 접속사입니다. 두 가지 가능성 중 무엇인지 말할 때 씁니다.",
+    "I don't know whether it will rain.(비가 올지 안 올지 모르겠어요.)처럼 씁니다.",
+    "whether or not은 '~이든 아니든'이라는 뜻입니다.",
+    "발음이 같은 weather(날씨)와 헷갈리지 않도록 철자를 조심해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "if",
+     "en": "Ask if it's true.",
+     "ko": "사실인지 물어봐."
+    },
+    {
+     "word": "or not",
+     "en": "Yes or not.",
+     "ko": "그런지 아닌지."
+    }
+   ],
+   "etymology": [
+    "whether는 고대 영어 hwæther(둘 중 어느 것)에서 온 단어입니다.",
+    "hwā(누구)에 '둘 중 하나'를 뜻하는 옛 어미가 붙은 말입니다.",
+    "which(어느 것)와도 먼 친척인 뿌리를 가진다고 봅니다.",
+    "'둘 중 어느 것'이라는 원래 뜻에서 '~인지 아닌지'라는 지금의 접속사 뜻이 나왔습니다.",
+    "whether의 핵심 이미지는 '둘 중 어느 쪽인지 저울질하는 마음 ⚖️'입니다."
+   ],
+   "meanings": [
+    "~인지 아닌지",
+    "(whether... or...) ~이든 ~이든"
+   ],
+   "examples": [
+    {
+     "en": "I don't know whether she will come.",
+     "ko": "그녀가 올지 안 올지 모르겠어요."
+    },
+    {
+     "en": "Ask him whether he wants tea or coffee.",
+     "ko": "그에게 차를 원하는지 커피를 원하는지 물어봐."
+    },
+    {
+     "en": "We'll go, whether it rains or not.",
+     "ko": "비가 오든 안 오든 우리는 갈 거예요."
+    },
+    {
+     "en": "I'm not sure whether this is correct.",
+     "ko": "이게 맞는지 확실하지 않아요."
+    },
+    {
+     "en": "It doesn't matter whether you win or lose.",
+     "ko": "이기든 지든 중요하지 않아요."
+    },
+    {
+     "en": "Decide whether to stay or leave.",
+     "ko": "남을지 떠날지 결정해."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "if",
+     "ko": "~인지",
+     "en": "Ask if it's ready."
+    },
+    {
+     "type": "연관어",
+     "word": "or",
+     "ko": "또는",
+     "en": "Tea or coffee."
+    },
+    {
+     "type": "연관어",
+     "word": "decide",
+     "ko": "결정하다",
+     "en": "Decide quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "choice",
+     "ko": "선택",
+     "en": "A hard choice."
+    },
+    {
+     "type": "연관어",
+     "word": "weather",
+     "ko": "날씨 (발음이 같은 말)",
+     "en": "Sunny weather."
+    },
+    {
+     "type": "연관어",
+     "word": "either",
+     "ko": "어느 하나의",
+     "en": "Either way."
+    }
+   ]
+  },
+  "2179": {
+   "word": "relax",
+   "overview": [
+    "relax는 '쉬다', '긴장을 풀다'라는 뜻의 동사입니다.",
+    "Relax and enjoy.(긴장 풀고 즐겨요.)처럼 씁니다.",
+    "근육이나 몸을 '느슨하게 하다'라는 뜻도 있습니다. Relax your shoulders.(어깨의 힘을 빼.)",
+    "명사 relaxation(휴식, 이완)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "rest",
+     "en": "Take a rest.",
+     "ko": "쉬어."
+    },
+    {
+     "word": "calm down",
+     "en": "Calm down.",
+     "ko": "진정해."
+    }
+   ],
+   "etymology": [
+    "relax는 라틴어 relaxare(느슨하게 하다)에서 온 단어입니다.",
+    "re(다시)와 laxare(느슨하게 하다)가 합쳐진 말입니다.",
+    "lax(느슨한)와 같은 뿌리로, '팽팽했던 것을 다시 느슨하게 풀어 주다'라는 뜻입니다.",
+    "release(풀어 주다, 놓아주다)도 같은 가족 단어입니다.",
+    "relax의 핵심 이미지는 '긴장된 근육이 스르르 풀리는 편안함 😌'입니다."
+   ],
+   "meanings": [
+    "쉬다, 편안히 하다",
+    "(긴장·근육을) 풀다"
+   ],
+   "examples": [
+    {
+     "en": "Just relax and take a deep breath.",
+     "ko": "그냥 긴장 풀고 심호흡을 해."
+    },
+    {
+     "en": "We relaxed on the beach all afternoon.",
+     "ko": "우리는 오후 내내 해변에서 쉬었어요."
+    },
+    {
+     "en": "Relax your muscles before you stretch.",
+     "ko": "스트레칭 전에 근육의 긴장을 풀어."
+    },
+    {
+     "en": "Music helps me relax.",
+     "ko": "음악은 내가 편안해지는 데 도움을 줘요."
+    },
+    {
+     "en": "After the exam, we finally relaxed.",
+     "ko": "시험이 끝나고 우리는 마침내 긴장을 풀었어요."
+    },
+    {
+     "en": "Relax, everything will be fine.",
+     "ko": "진정해, 다 잘될 거야."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rest",
+     "ko": "쉬다",
+     "en": "Rest a while."
+    },
+    {
+     "type": "파생어",
+     "word": "relaxation",
+     "ko": "휴식, 이완",
+     "en": "A moment of relaxation."
+    },
+    {
+     "type": "연관어",
+     "word": "calm",
+     "ko": "차분한",
+     "en": "Stay calm."
+    },
+    {
+     "type": "연관어",
+     "word": "stress",
+     "ko": "스트레스",
+     "en": "Reduce stress."
+    },
+    {
+     "type": "연관어",
+     "word": "breathe",
+     "ko": "숨 쉬다",
+     "en": "Breathe deeply."
+    },
+    {
+     "type": "연관어",
+     "word": "loosen",
+     "ko": "느슨하게 하다",
+     "en": "Loosen the knot."
+    }
+   ]
+  },
+  "2097": {
+   "word": "public",
+   "overview": [
+    "public은 '공공의', '대중의'라는 뜻의 형용사이자 '대중', '일반 사람들'이라는 뜻의 명사입니다.",
+    "a public park(공원, 공공 공원), the general public(일반 대중)처럼 씁니다.",
+    "in public은 '사람들 앞에서', '공개적으로'라는 뜻입니다.",
+    "반대말은 private(사적인, 개인의)입니다."
+   ],
+   "easy": [
+    {
+     "word": "everyone",
+     "en": "Open to everyone.",
+     "ko": "모두에게 열려 있는."
+    },
+    {
+     "word": "open",
+     "en": "An open space.",
+     "ko": "열린 공간."
+    }
+   ],
+   "etymology": [
+    "public은 라틴어 publicus(사람들의, 국민의)에서 온 단어입니다.",
+    "populus(백성, 국민)에서 나온 말로, people(사람들), population(인구)과 같은 가족입니다.",
+    "'모든 사람에게 속하는', '누구나 이용할 수 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "publish(출판하다)도 '사람들에게 공개하다'라는 같은 뿌리에서 나온 단어입니다.",
+    "public의 핵심 이미지는 '누구에게나 열려 있는 공공장소 🏛️'입니다."
+   ],
+   "meanings": [
+    "공공의, 대중의 (형용사)",
+    "대중, 일반 사람들 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "This is a public library.",
+     "ko": "이건 공공 도서관이에요."
+    },
+    {
+     "en": "The park is open to the public.",
+     "ko": "그 공원은 대중에게 개방되어 있어요."
+    },
+    {
+     "en": "She spoke in public for the first time.",
+     "ko": "그녀는 처음으로 사람들 앞에서 연설했어요."
+    },
+    {
+     "en": "Public transportation is very useful.",
+     "ko": "대중교통은 아주 유용해요."
+    },
+    {
+     "en": "The general public loved the new movie.",
+     "ko": "일반 대중은 새 영화를 정말 좋아했어요."
+    },
+    {
+     "en": "This information is now public.",
+     "ko": "이 정보는 이제 공개됐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "private",
+     "ko": "사적인",
+     "en": "A private room."
+    },
+    {
+     "type": "연관어",
+     "word": "people",
+     "ko": "사람들",
+     "en": "Many people."
+    },
+    {
+     "type": "연관어",
+     "word": "government",
+     "ko": "정부",
+     "en": "The government."
+    },
+    {
+     "type": "연관어",
+     "word": "open",
+     "ko": "열린, 개방된",
+     "en": "An open door."
+    },
+    {
+     "type": "연관어",
+     "word": "community",
+     "ko": "지역 사회",
+     "en": "Our community."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "A public school."
+    }
+   ]
+  },
+  "1582": {
+   "word": "list",
+   "overview": [
+    "list는 '목록'이라는 뜻의 명사이자 '목록을 만들다'라는 뜻의 동사입니다.",
+    "a shopping list(장보기 목록), make a list(목록을 만들다)처럼 씁니다.",
+    "이름이나 물건을 순서대로 죽 적어 놓은 것을 말합니다.",
+    "동사로는 '~을 목록에 올리다', '나열하다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "menu",
+     "en": "Look at the menu.",
+     "ko": "메뉴를 봐."
+    },
+    {
+     "word": "write down",
+     "en": "Write it down.",
+     "ko": "그것을 적어."
+    }
+   ],
+   "etymology": [
+    "list는 옛 프랑스어 liste(줄, 목록)에서 온 단어입니다.",
+    "'천 조각의 가장자리, 테두리'를 뜻하는 아주 옛말과 이어진다고 봅니다.",
+    "옷감의 가장자리에 물건 이름을 줄지어 적은 데서 '목록'이라는 뜻이 나왔다고 봅니다.",
+    "지금은 순서대로 적힌 어떤 목록이든 두루 list라고 부릅니다.",
+    "list의 핵심 이미지는 '해야 할 일을 하나씩 적어 내려간 목록 📝'입니다."
+   ],
+   "meanings": [
+    "목록 (명사)",
+    "목록을 만들다, 나열하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I made a shopping list.",
+     "ko": "나는 장보기 목록을 만들었어요."
+    },
+    {
+     "en": "Check the list before you leave.",
+     "ko": "떠나기 전에 목록을 확인해."
+    },
+    {
+     "en": "Her name is on the list.",
+     "ko": "그녀의 이름이 목록에 있어요."
+    },
+    {
+     "en": "Please list the items in order.",
+     "ko": "물건들을 순서대로 나열해 주세요."
+    },
+    {
+     "en": "This is my to-do list for today.",
+     "ko": "이게 오늘 내가 할 일 목록이에요."
+    },
+    {
+     "en": "The book has a list of ingredients.",
+     "ko": "그 책에는 재료 목록이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "shopping list",
+     "ko": "장보기 목록",
+     "en": "A long shopping list."
+    },
+    {
+     "type": "연관어",
+     "word": "to-do list",
+     "ko": "할 일 목록",
+     "en": "Finish the to-do list."
+    },
+    {
+     "type": "연관어",
+     "word": "menu",
+     "ko": "메뉴",
+     "en": "Read the menu."
+    },
+    {
+     "type": "연관어",
+     "word": "order",
+     "ko": "순서",
+     "en": "In order."
+    },
+    {
+     "type": "연관어",
+     "word": "write",
+     "ko": "쓰다",
+     "en": "Write a note."
+    },
+    {
+     "type": "연관어",
+     "word": "check",
+     "ko": "확인하다",
+     "en": "Check the list."
+    }
+   ]
+  },
+  "332": {
+   "word": "brain",
+   "overview": [
+    "brain은 '뇌', '두뇌'라는 뜻의 명사입니다. 머릿속에서 생각하고 명령을 내리는 기관입니다.",
+    "use your brain(머리를 쓰다), a brain teaser(머리를 쓰는 퍼즐)처럼 씁니다.",
+    "'똑똑한 사람'을 가리켜 She is the brains of the team.(그녀가 팀의 두뇌예요.)처럼 씁니다.",
+    "형용사 brainy는 '똑똑한'이라는 뜻의 편한 말투입니다."
+   ],
+   "easy": [
+    {
+     "word": "head",
+     "en": "Use your head.",
+     "ko": "머리를 써."
+    },
+    {
+     "word": "mind",
+     "en": "A sharp mind.",
+     "ko": "예리한 정신."
+    }
+   ],
+   "etymology": [
+    "brain은 고대 영어 brægen(뇌)에서 온 단어입니다.",
+    "독일어 지역 말과 이어지는 아주 오래된 뿌리를 가진다고 봅니다.",
+    "정확한 더 옛 뿌리는 확실하지 않지만, 천 년 넘게 거의 같은 뜻으로 쓰여 왔습니다.",
+    "brainstorm(브레인스토밍)은 brain과 storm(폭풍)이 합쳐져 '생각이 폭풍처럼 쏟아짐'이라는 뜻입니다.",
+    "brain의 핵심 이미지는 '온갖 생각이 오가는 몸의 사령탑 🧠'입니다."
+   ],
+   "meanings": [
+    "뇌, 두뇌",
+    "(비유) 지능, 똑똑한 사람"
+   ],
+   "examples": [
+    {
+     "en": "The brain controls our body.",
+     "ko": "뇌는 우리 몸을 조종해요."
+    },
+    {
+     "en": "Use your brain to solve this puzzle.",
+     "ko": "이 퍼즐을 풀려면 머리를 써."
+    },
+    {
+     "en": "Reading books is good for your brain.",
+     "ko": "책을 읽는 것은 뇌에 좋아요."
+    },
+    {
+     "en": "She has a brilliant brain for math.",
+     "ko": "그녀는 수학에 뛰어난 두뇌를 가졌어요."
+    },
+    {
+     "en": "Let's have a brainstorm session.",
+     "ko": "브레인스토밍 시간을 갖자."
+    },
+    {
+     "en": "This game is a real brain teaser.",
+     "ko": "이 게임은 정말 머리를 쓰는 퍼즐이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "mind",
+     "ko": "정신, 마음",
+     "en": "Keep an open mind."
+    },
+    {
+     "type": "연관어",
+     "word": "head",
+     "ko": "머리",
+     "en": "A sore head."
+    },
+    {
+     "type": "파생어",
+     "word": "brainy",
+     "ko": "똑똑한",
+     "en": "A brainy kid."
+    },
+    {
+     "type": "연관어",
+     "word": "think",
+     "ko": "생각하다",
+     "en": "Think carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "smart",
+     "ko": "영리한",
+     "en": "A smart move."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억(력)",
+     "en": "A good memory."
+    }
+   ]
+  },
+  "2090": {
+   "word": "proud",
+   "overview": [
+    "proud는 '자랑스러운'이라는 뜻의 형용사입니다.",
+    "I'm proud of you.(네가 자랑스러워.)처럼 자주 씁니다.",
+    "be proud of는 '~을 자랑스러워하다'라는 뜻입니다.",
+    "지나치게 자기를 내세우는 '거만한'이라는 뜻으로도 쓰일 수 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "pleased",
+     "en": "So pleased.",
+     "ko": "정말 기쁜."
+    },
+    {
+     "word": "pride",
+     "en": "A sense of pride.",
+     "ko": "자부심."
+    }
+   ],
+   "etymology": [
+    "proud는 옛 프랑스어 prud(용감한, 훌륭한)에서 온 단어입니다.",
+    "라틴어 prodesse(도움이 되다)와 이어진다고 봅니다.",
+    "'훌륭하고 뛰어난'이라는 뜻에서 '자랑스러운'이라는 지금의 뜻이 나왔습니다.",
+    "명사 pride(자부심, 긍지)도 같은 가족 단어입니다.",
+    "proud의 핵심 이미지는 '가슴이 뿌듯하게 차오르는 자랑스러움 🏆'입니다."
+   ],
+   "meanings": [
+    "자랑스러운",
+    "거만한, 자존심이 강한"
+   ],
+   "examples": [
+    {
+     "en": "I'm so proud of you!",
+     "ko": "네가 정말 자랑스러워!"
+    },
+    {
+     "en": "She was proud of her hard work.",
+     "ko": "그녀는 자신의 노력이 자랑스러웠어요."
+    },
+    {
+     "en": "Parents feel proud when their kids succeed.",
+     "ko": "부모는 아이가 성공하면 자랑스러움을 느껴요."
+    },
+    {
+     "en": "We are proud to be part of this team.",
+     "ko": "우리는 이 팀의 일원인 것이 자랑스러워요."
+    },
+    {
+     "en": "He was too proud to ask for help.",
+     "ko": "그는 자존심이 너무 강해서 도움을 청하지 못했어요."
+    },
+    {
+     "en": "She stood proud after winning the race.",
+     "ko": "그녀는 경주에서 이긴 후 자랑스럽게 서 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "pride",
+     "ko": "자부심, 긍지",
+     "en": "Take pride in it."
+    },
+    {
+     "type": "연관어",
+     "word": "pleased",
+     "ko": "기쁜, 만족한",
+     "en": "Pleased with results."
+    },
+    {
+     "type": "연관어",
+     "word": "confident",
+     "ko": "자신감 있는",
+     "en": "Feel confident."
+    },
+    {
+     "type": "반의어",
+     "word": "ashamed",
+     "ko": "부끄러운",
+     "en": "Ashamed of it."
+    },
+    {
+     "type": "연관어",
+     "word": "achievement",
+     "ko": "성취",
+     "en": "A great achievement."
+    },
+    {
+     "type": "연관어",
+     "word": "success",
+     "ko": "성공",
+     "en": "A big success."
+    }
+   ]
+  },
+  "2651": {
+   "word": "tea",
+   "overview": [
+    "tea는 '차'라는 뜻의 명사입니다. 찻잎을 뜨거운 물에 우려 마시는 음료입니다.",
+    "a cup of tea(차 한 잔), green tea(녹차), black tea(홍차)처럼 씁니다.",
+    "영국에서는 오후에 차와 함께 간단히 먹는 식사를 afternoon tea라고 합니다.",
+    "'차 마시는 시간', '오후 간단한 식사'를 뜻하는 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "drink",
+     "en": "A hot drink.",
+     "ko": "따뜻한 음료."
+    },
+    {
+     "word": "coffee",
+     "en": "A cup of coffee.",
+     "ko": "커피 한 잔."
+    }
+   ],
+   "etymology": [
+    "tea는 중국 남부 지방(민난어)의 말 tê(차)에서 온 단어입니다.",
+    "네덜란드 상인들이 이 발음을 유럽에 가져가 tea가 되었습니다.",
+    "북쪽 중국어를 통해 들어간 나라에서는 chai, cha처럼 다른 발음으로 불립니다.",
+    "그래서 세계 여러 언어의 '차'라는 단어는 tea 계열과 cha 계열, 두 가지로 나뉩니다.",
+    "tea의 핵심 이미지는 '김이 모락모락 나는 따뜻한 찻잔 🍵'입니다."
+   ],
+   "meanings": [
+    "차 (음료)",
+    "(영국) 오후 간단한 식사, 차 마시는 시간"
+   ],
+   "examples": [
+    {
+     "en": "Would you like a cup of tea?",
+     "ko": "차 한 잔 드릴까요?"
+    },
+    {
+     "en": "I drink green tea every morning.",
+     "ko": "나는 매일 아침 녹차를 마셔요."
+    },
+    {
+     "en": "Let's have tea and cookies.",
+     "ko": "차와 쿠키를 먹자."
+    },
+    {
+     "en": "She made tea for her grandma.",
+     "ko": "그녀는 할머니를 위해 차를 끓였어요."
+    },
+    {
+     "en": "This tea is a bit too hot.",
+     "ko": "이 차는 좀 너무 뜨거워요."
+    },
+    {
+     "en": "We had afternoon tea at the hotel.",
+     "ko": "우리는 호텔에서 오후 티타임을 즐겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "coffee",
+     "ko": "커피",
+     "en": "A cup of coffee."
+    },
+    {
+     "type": "연관어",
+     "word": "cup",
+     "ko": "잔",
+     "en": "A tea cup."
+    },
+    {
+     "type": "연관어",
+     "word": "kettle",
+     "ko": "주전자",
+     "en": "Boil the kettle."
+    },
+    {
+     "type": "연관어",
+     "word": "leaf",
+     "ko": "잎",
+     "en": "Tea leaves."
+    },
+    {
+     "type": "연관어",
+     "word": "sugar",
+     "ko": "설탕",
+     "en": "Add sugar."
+    },
+    {
+     "type": "연관어",
+     "word": "drink",
+     "ko": "마시다, 음료",
+     "en": "Drink water."
+    }
+   ]
+  },
+  "1136": {
+   "word": "forward",
+   "overview": [
+    "forward는 '앞으로'라는 뜻의 부사입니다. 방향이나 시간이 앞을 향하는 것을 말합니다.",
+    "move forward(앞으로 움직이다), look forward to(~을 기대하다)처럼 씁니다.",
+    "look forward to는 뒤에 명사나 동명사(~ing)가 오는 아주 자주 쓰는 표현입니다.",
+    "축구에서 '공격수'라는 뜻의 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ahead",
+     "en": "Go ahead.",
+     "ko": "앞으로 가."
+    },
+    {
+     "word": "look forward to",
+     "en": "Look forward to it.",
+     "ko": "그것을 기대해."
+    }
+   ],
+   "etymology": [
+    "forward는 fore(앞)와 ward(~을 향한)가 합쳐진 말입니다.",
+    "고대 영어 foreweard(앞을 향한)에서 온 단어입니다.",
+    "ward는 '방향'을 뜻해서, backward(뒤로), toward(~을 향해)에도 같이 쓰입니다.",
+    "'앞으로 나아가는 방향'이라는 뜻이 시간에도 쓰여, '앞으로 다가올 일'을 기대한다는 표현이 생겼습니다.",
+    "forward의 핵심 이미지는 '망설임 없이 앞으로 나아가는 걸음 ➡️'입니다."
+   ],
+   "meanings": [
+    "앞으로, 전방으로 (부사)",
+    "(look forward to) ~을 기대하다",
+    "(축구 등) 공격수 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Please take one step forward.",
+     "ko": "한 걸음 앞으로 나와 주세요."
+    },
+    {
+     "en": "I'm looking forward to the summer vacation.",
+     "ko": "나는 여름 방학이 정말 기대돼요."
+    },
+    {
+     "en": "The car moved forward slowly.",
+     "ko": "차가 천천히 앞으로 움직였어요."
+    },
+    {
+     "en": "He is a forward on the soccer team.",
+     "ko": "그는 축구팀의 공격수예요."
+    },
+    {
+     "en": "Let's move forward with the plan.",
+     "ko": "계획대로 앞으로 진행하자."
+    },
+    {
+     "en": "From now forward, things will be different.",
+     "ko": "이제부터는 상황이 달라질 거예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "backward",
+     "ko": "뒤로",
+     "en": "Step backward."
+    },
+    {
+     "type": "연관어",
+     "word": "ahead",
+     "ko": "앞으로",
+     "en": "Go straight ahead."
+    },
+    {
+     "type": "연관어",
+     "word": "toward",
+     "ko": "~을 향해",
+     "en": "Walk toward home."
+    },
+    {
+     "type": "연관어",
+     "word": "future",
+     "ko": "미래",
+     "en": "Plan for the future."
+    },
+    {
+     "type": "연관어",
+     "word": "progress",
+     "ko": "진전",
+     "en": "Make progress."
+    },
+    {
+     "type": "연관어",
+     "word": "expect",
+     "ko": "기대하다",
+     "en": "Expect the best."
+    }
+   ]
+  },
+  "2471": {
+   "word": "soul",
+   "overview": [
+    "soul은 '영혼'이라는 뜻의 명사입니다. 사람의 몸속에 있다고 여겨지는, 몸이 죽어도 남는다고 믿어지는 부분입니다.",
+    "body and soul(몸과 마음)처럼 씁니다.",
+    "'사람', '영혼을 가진 존재'라는 뜻으로도 씁니다. Not a soul was there.(한 사람도 없었어요.)",
+    "음악 장르 soul music(소울 뮤직)이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "spirit",
+     "en": "Team spirit.",
+     "ko": "팀 정신."
+    },
+    {
+     "word": "heart",
+     "en": "From the heart.",
+     "ko": "진심으로."
+    }
+   ],
+   "etymology": [
+    "soul은 고대 영어 sāwol(영혼, 생명)에서 온 단어입니다.",
+    "독일어 Seele(영혼)와 같은 뿌리입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "몸이 죽어도 남아 있다고 여겨지는 '생명의 근원'이라는 뜻으로 오랫동안 쓰여 왔습니다.",
+    "soul의 핵심 이미지는 '몸 안 깊숙이 자리한 마음과 생명의 근원 ✨'입니다."
+   ],
+   "meanings": [
+    "영혼",
+    "(비유) 사람, 존재",
+    "(음악) 소울 (장르)"
+   ],
+   "examples": [
+    {
+     "en": "She believes the soul lives on after death.",
+     "ko": "그녀는 영혼이 죽음 이후에도 계속 산다고 믿어요."
+    },
+    {
+     "en": "He gave his heart and soul to the project.",
+     "ko": "그는 그 프로젝트에 마음과 정성을 다했어요."
+    },
+    {
+     "en": "Not a soul was in the room.",
+     "ko": "방 안에는 아무도 없었어요."
+    },
+    {
+     "en": "Music touches the soul.",
+     "ko": "음악은 영혼을 울려요."
+    },
+    {
+     "en": "She sang with all her soul.",
+     "ko": "그녀는 온 영혼을 다해 노래했어요."
+    },
+    {
+     "en": "He loves listening to soul music.",
+     "ko": "그는 소울 음악 듣는 걸 좋아해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "spirit",
+     "ko": "정신, 영혼",
+     "en": "A free spirit."
+    },
+    {
+     "type": "연관어",
+     "word": "heart",
+     "ko": "마음",
+     "en": "A kind heart."
+    },
+    {
+     "type": "연관어",
+     "word": "body",
+     "ko": "몸",
+     "en": "Body and mind."
+    },
+    {
+     "type": "연관어",
+     "word": "mind",
+     "ko": "정신",
+     "en": "A peaceful mind."
+    },
+    {
+     "type": "연관어",
+     "word": "life",
+     "ko": "생명, 삶",
+     "en": "A full life."
+    },
+    {
+     "type": "연관어",
+     "word": "music",
+     "ko": "음악",
+     "en": "Beautiful music."
+    }
+   ]
+  },
+  "70": {
+   "word": "agent",
+   "overview": [
+    "agent는 '대리인', '요원'이라는 뜻의 명사입니다. 다른 사람을 대신해 일을 처리해 주는 사람을 말합니다.",
+    "a travel agent(여행사 직원), a secret agent(비밀 요원)처럼 씁니다.",
+    "배우나 운동선수를 대신해 일을 처리하는 사람도 agent라고 합니다.",
+    "과학에서는 어떤 작용을 일으키는 '물질'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "representative",
+     "en": "A sales representative.",
+     "ko": "영업 담당자."
+    },
+    {
+     "word": "spy",
+     "en": "A secret spy.",
+     "ko": "비밀 스파이."
+    }
+   ],
+   "etymology": [
+    "agent는 라틴어 agere(행하다, 하다)에서 온 단어입니다.",
+    "'행동하는 사람'이라는 뜻에서 '대신 일을 처리해 주는 사람'이 되었습니다.",
+    "act(행동하다), action(행동)도 agere에서 나온 같은 가족 단어입니다.",
+    "'무엇을 일으키는 작용'이라는 뜻에서 화학의 '작용 물질'이라는 뜻도 생겼습니다.",
+    "agent의 핵심 이미지는 '누군가를 대신해 일을 처리해 주는 사람 🕵️'입니다."
+   ],
+   "meanings": [
+    "대리인, 중개인 (명사)",
+    "요원, 첩보원 (명사)",
+    "(화학) 작용 물질 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "My mom called a travel agent to plan the trip.",
+     "ko": "우리 엄마는 여행 계획을 짜려고 여행사 직원에게 전화했어요."
+    },
+    {
+     "en": "The secret agent found important clues.",
+     "ko": "그 비밀 요원은 중요한 단서를 찾았어요."
+    },
+    {
+     "en": "The actor's agent arranged the interview.",
+     "ko": "그 배우의 에이전트가 인터뷰를 잡았어요."
+    },
+    {
+     "en": "Cleaning agents can be dangerous if mixed.",
+     "ko": "세정제는 섞으면 위험할 수 있어요."
+    },
+    {
+     "en": "A real estate agent helped us find a house.",
+     "ko": "부동산 중개인이 우리가 집을 찾는 걸 도와줬어요."
+    },
+    {
+     "en": "The FBI agent investigated the case.",
+     "ko": "그 FBI 요원이 그 사건을 조사했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "spy",
+     "ko": "스파이",
+     "en": "A clever spy."
+    },
+    {
+     "type": "연관어",
+     "word": "represent",
+     "ko": "대표하다",
+     "en": "Represent the team."
+    },
+    {
+     "type": "연관어",
+     "word": "detective",
+     "ko": "탐정",
+     "en": "A famous detective."
+    },
+    {
+     "type": "연관어",
+     "word": "action",
+     "ko": "행동",
+     "en": "Take action."
+    },
+    {
+     "type": "연관어",
+     "word": "chemical",
+     "ko": "화학 물질",
+     "en": "A chemical reaction."
+    },
+    {
+     "type": "연관어",
+     "word": "mission",
+     "ko": "임무",
+     "en": "A secret mission."
+    }
+   ]
+  },
+  "304": {
+   "word": "blow",
+   "overview": [
+    "blow는 '불다'라는 뜻의 동사입니다. 바람이나 입김이 세게 나오는 것을 말합니다.",
+    "The wind blows.(바람이 불어요.), blow a balloon(풍선을 불다)처럼 씁니다.",
+    "blow your nose는 '코를 풀다'라는 뜻입니다.",
+    "명사로는 '강한 타격', '충격'이라는 뜻이 있습니다. a heavy blow(강한 타격)"
+   ],
+   "easy": [
+    {
+     "word": "wind",
+     "en": "Strong wind.",
+     "ko": "강한 바람."
+    },
+    {
+     "word": "breathe",
+     "en": "Breathe out.",
+     "ko": "숨을 내쉬어."
+    }
+   ],
+   "etymology": [
+    "blow는 고대 영어 blāwan(불다, 부풀다)에서 온 단어입니다.",
+    "'부풀다', '숨을 내쉬다'라는 뜻의 아주 옛 게르만 말에서 나왔습니다.",
+    "'타격'이라는 명사 뜻의 blow는 뿌리가 다른 중세 영어 단어로, 우연히 같은 모양이 되었습니다.",
+    "과거형은 blew, 과거분사는 blown입니다.",
+    "blow의 핵심 이미지는 '휘이잉 세차게 불어오는 바람 💨'입니다."
+   ],
+   "meanings": [
+    "(바람이) 불다 (동사)",
+    "(입김으로) 불다 (동사)",
+    "타격, 충격 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The wind blew all night.",
+     "ko": "밤새 바람이 불었어요."
+    },
+    {
+     "en": "Blow out the candles!",
+     "ko": "촛불을 불어서 꺼!"
+    },
+    {
+     "en": "She blew up the balloon.",
+     "ko": "그녀는 풍선을 불어서 부풀렸어요."
+    },
+    {
+     "en": "Blow your nose with this tissue.",
+     "ko": "이 휴지로 코를 풀어."
+    },
+    {
+     "en": "The news was a big blow to the team.",
+     "ko": "그 소식은 팀에게 큰 충격이었어요."
+    },
+    {
+     "en": "A strong gust blew the papers away.",
+     "ko": "강한 돌풍이 종이를 날려 버렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "blew",
+     "ko": "불었다 (과거형)",
+     "en": "The wind blew."
+    },
+    {
+     "type": "연관어",
+     "word": "wind",
+     "ko": "바람",
+     "en": "A cold wind."
+    },
+    {
+     "type": "연관어",
+     "word": "breath",
+     "ko": "숨",
+     "en": "Take a breath."
+    },
+    {
+     "type": "연관어",
+     "word": "balloon",
+     "ko": "풍선",
+     "en": "A red balloon."
+    },
+    {
+     "type": "연관어",
+     "word": "storm",
+     "ko": "폭풍",
+     "en": "A big storm."
+    },
+    {
+     "type": "연관어",
+     "word": "shock",
+     "ko": "충격",
+     "en": "A big shock."
+    }
+   ]
+  },
+  "2309": {
+   "word": "scene",
+   "overview": [
+    "scene은 '장면', '현장'이라는 뜻의 명사입니다. 영화, 연극, 또는 실제 사건이 일어나는 모습을 말합니다.",
+    "a movie scene(영화 장면), the crime scene(범죄 현장)처럼 씁니다.",
+    "make a scene은 '소란을 피우다'라는 뜻의 표현입니다.",
+    "'경치', '풍경'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "view",
+     "en": "A beautiful view.",
+     "ko": "아름다운 경치."
+    },
+    {
+     "word": "moment",
+     "en": "A special moment.",
+     "ko": "특별한 순간."
+    }
+   ],
+   "etymology": [
+    "scene은 그리스어 skēnē(무대, 배경 막)에서 온 단어입니다.",
+    "옛 그리스 연극에서 배우들이 옷을 갈아입던 무대 뒤 천막을 뜻했습니다.",
+    "그 무대에서 펼쳐지는 '장면'을 뜻하게 되었습니다.",
+    "scenery(경치, 무대 배경)도 같은 가족에서 나온 단어입니다.",
+    "scene의 핵심 이미지는 '카메라가 찍는 한 장면 🎬'입니다."
+   ],
+   "meanings": [
+    "(영화·연극의) 장면",
+    "(사건이 일어난) 현장",
+    "경치, 풍경",
+    "(make a scene) 소란"
+   ],
+   "examples": [
+    {
+     "en": "This is my favorite scene in the movie.",
+     "ko": "이건 영화에서 내가 제일 좋아하는 장면이에요."
+    },
+    {
+     "en": "Police arrived at the crime scene.",
+     "ko": "경찰이 범죄 현장에 도착했어요."
+    },
+    {
+     "en": "The mountain scene was breathtaking.",
+     "ko": "그 산 경치는 숨이 멎을 듯 아름다웠어요."
+    },
+    {
+     "en": "Don't make a scene in public.",
+     "ko": "사람들 앞에서 소란 피우지 마."
+    },
+    {
+     "en": "The actors rehearsed the last scene.",
+     "ko": "배우들은 마지막 장면을 연습했어요."
+    },
+    {
+     "en": "We took a photo of the beautiful scene.",
+     "ko": "우리는 그 아름다운 풍경 사진을 찍었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "scenery",
+     "ko": "경치, 배경",
+     "en": "Beautiful scenery."
+    },
+    {
+     "type": "연관어",
+     "word": "movie",
+     "ko": "영화",
+     "en": "A funny movie."
+    },
+    {
+     "type": "연관어",
+     "word": "stage",
+     "ko": "무대",
+     "en": "On the stage."
+    },
+    {
+     "type": "연관어",
+     "word": "view",
+     "ko": "경치, 전망",
+     "en": "A nice view."
+    },
+    {
+     "type": "연관어",
+     "word": "act",
+     "ko": "연기하다, 막",
+     "en": "Act naturally."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "Solve the crime."
+    }
+   ]
+  },
+  "2215": {
+   "word": "respect",
+   "overview": [
+    "respect는 '존경', '존중'이라는 뜻의 명사이자 '존경하다'라는 뜻의 동사입니다.",
+    "show respect(존경을 표하다), respect your elders(어른을 공경하다)처럼 씁니다.",
+    "with respect to는 '~에 관해서는'이라는 뜻의 표현입니다.",
+    "형용사 respectful(공손한, 존경하는 태도의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "admire",
+     "en": "Admire her work.",
+     "ko": "그녀의 작품에 감탄하다."
+    },
+    {
+     "word": "honor",
+     "en": "Honor your parents.",
+     "ko": "부모님을 공경해."
+    }
+   ],
+   "etymology": [
+    "respect는 라틴어 respicere(다시 돌아보다, 되돌아보다)에서 온 단어입니다.",
+    "re(다시)와 specere(보다)가 합쳐진 말입니다.",
+    "'다시 눈여겨보다', 곧 '중요하게 여겨 다시 살펴보다'라는 뜻에서 '존경'이 되었습니다.",
+    "spectator(관중), inspect(검사하다)도 specere에서 나온 같은 가족입니다.",
+    "respect의 핵심 이미지는 '상대를 소중히 여겨 고개 숙이는 마음 🙇'입니다."
+   ],
+   "meanings": [
+    "존경, 존중 (명사)",
+    "존경하다, 존중하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "We should respect our teachers.",
+     "ko": "우리는 선생님을 존경해야 해요."
+    },
+    {
+     "en": "She has great respect for her grandmother.",
+     "ko": "그녀는 할머니를 매우 존경해요."
+    },
+    {
+     "en": "Please respect other people's opinions.",
+     "ko": "다른 사람의 의견을 존중해 주세요."
+    },
+    {
+     "en": "He earned the respect of his classmates.",
+     "ko": "그는 반 친구들의 존경을 얻었어요."
+    },
+    {
+     "en": "Show respect when you speak to elders.",
+     "ko": "어른께 말할 때는 공손하게 해."
+    },
+    {
+     "en": "With respect to the schedule, let's talk later.",
+     "ko": "일정에 관해서는 나중에 이야기하자."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "honor",
+     "ko": "존경하다",
+     "en": "Honor the elderly."
+    },
+    {
+     "type": "유의어",
+     "word": "admire",
+     "ko": "존경하다, 감탄하다",
+     "en": "Admire her courage."
+    },
+    {
+     "type": "파생어",
+     "word": "respectful",
+     "ko": "공손한",
+     "en": "A respectful bow."
+    },
+    {
+     "type": "반의어",
+     "word": "disrespect",
+     "ko": "무례, 무시",
+     "en": "Show disrespect."
+    },
+    {
+     "type": "연관어",
+     "word": "polite",
+     "ko": "예의 바른",
+     "en": "Be polite."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "소중히 여기다",
+     "en": "Value your time."
+    }
+   ]
   }
  }
 }
