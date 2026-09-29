@@ -11553,6 +11553,1930 @@
      "en": "Keep balance."
     }
    ]
+  },
+  "951": {
+   "word": "err",
+   "overview": [
+    "err는 '실수하다, 잘못하다'라는 뜻의 동사입니다.",
+    "To err is human.(실수하는 것은 인간적이다)이라는 유명한 말이 있습니다.",
+    "err on the side of caution(지나치다 싶을 만큼 조심하다)이라는 표현도 자주 씁니다.",
+    "격식 있는 말이고, 명사 error(실수, 오류)가 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "make a mistake",
+     "en": "Everyone makes mistakes.",
+     "ko": "누구나 실수를 해요."
+    },
+    {
+     "word": "be wrong",
+     "en": "I was wrong.",
+     "ko": "제가 틀렸어요."
+    }
+   ],
+   "etymology": [
+    "err는 라틴어 errare(헤매다, 길을 잃다)에서 온 단어입니다.",
+    "error(실수), erratic(변덕스러운)과 같은 가족입니다.",
+    "원래는 '바른 길에서 벗어나 헤매다'라는 뜻이었습니다.",
+    "올바른 판단에서 벗어나는 것, 즉 '실수하다'라는 뜻이 되었습니다.",
+    "err의 핵심 이미지는 '바른 길에서 살짝 벗어나 헤매는 발걸음 🚶‍♂️❓'입니다."
+   ],
+   "meanings": [
+    "틀리다, 잘못하다"
+   ],
+   "examples": [
+    {
+     "en": "To err is human.",
+     "ko": "실수하는 것은 인간적인 일이에요."
+    },
+    {
+     "en": "The judge erred in his decision.",
+     "ko": "판사는 판결에서 실수를 했어요."
+    },
+    {
+     "en": "When in doubt, err on the side of caution.",
+     "ko": "확실하지 않을 때는 조심하는 쪽을 택하세요."
+    },
+    {
+     "en": "I erred in trusting him.",
+     "ko": "그를 믿은 건 제 잘못이었어요."
+    },
+    {
+     "en": "Even experts sometimes err.",
+     "ko": "전문가들도 가끔 실수해요."
+    },
+    {
+     "en": "It's better to err on the side of kindness.",
+     "ko": "친절한 쪽으로 좀 지나친 편이 더 나아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "mistake",
+     "ko": "실수하다",
+     "en": "Mistake him for someone else."
+    },
+    {
+     "type": "파생어",
+     "word": "error",
+     "ko": "실수, 오류",
+     "en": "A spelling error."
+    },
+    {
+     "type": "파생어",
+     "word": "erroneous",
+     "ko": "잘못된",
+     "en": "Erroneous information."
+    },
+    {
+     "type": "연관어",
+     "word": "wrong",
+     "ko": "틀린",
+     "en": "The wrong answer."
+    },
+    {
+     "type": "연관어",
+     "word": "fault",
+     "ko": "잘못",
+     "en": "My fault."
+    },
+    {
+     "type": "연관어",
+     "word": "correct",
+     "ko": "옳은",
+     "en": "The correct answer."
+    }
+   ]
+  },
+  "12": {
+   "word": "absorb",
+   "overview": [
+    "absorb는 '(액체·빛·열을) 흡수하다, 빨아들이다'라는 뜻의 동사입니다.",
+    "absorb water(물을 흡수하다)처럼 씁니다.",
+    "'(정보를) 받아들이다, 이해하다'라는 뜻으로도 씁니다.",
+    "be absorbed in(~에 열중하다, 몰두하다)이라는 표현도 자주 쓰고, 명사 absorption(흡수)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "soak up",
+     "en": "Soak up water.",
+     "ko": "물을 빨아들이다."
+    },
+    {
+     "word": "take in",
+     "en": "Take in information.",
+     "ko": "정보를 받아들이다."
+    }
+   ],
+   "etymology": [
+    "absorb는 라틴어 absorbere(빨아들이다, 삼키다)에서 온 단어입니다.",
+    "ab(~에서)와 sorbere(빨아 마시다)가 합쳐진 말입니다.",
+    "'주변의 것을 쭉 빨아들여 삼키다'라는 뜻이 그대로 이어져 왔습니다.",
+    "물이나 빛뿐 아니라 지식을 받아들이거나 어떤 일에 푹 빠지는 것에도 씁니다.",
+    "absorb의 핵심 이미지는 '스펀지가 물을 쭉 빨아들이는 것 🧽💧'입니다."
+   ],
+   "meanings": [
+    "흡수하다, 빨아들이다",
+    "(정보를) 받아들이다",
+    "열중하게 하다"
+   ],
+   "examples": [
+    {
+     "en": "The towel absorbs water quickly.",
+     "ko": "그 수건은 물을 빨리 흡수해요."
+    },
+    {
+     "en": "Plants absorb sunlight to make food.",
+     "ko": "식물은 양분을 만들려고 햇빛을 흡수해요."
+    },
+    {
+     "en": "Children absorb new words like sponges.",
+     "ko": "아이들은 스펀지처럼 새 단어를 흡수해요."
+    },
+    {
+     "en": "She was absorbed in her book.",
+     "ko": "그녀는 책에 푹 빠져 있었어요."
+    },
+    {
+     "en": "Dark colors absorb more heat.",
+     "ko": "어두운 색은 열을 더 많이 흡수해요."
+    },
+    {
+     "en": "It's a lot of information to absorb.",
+     "ko": "한 번에 받아들이기엔 정보가 많아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "soak up",
+     "ko": "흡수하다",
+     "en": "Soak up the sun."
+    },
+    {
+     "type": "유의어",
+     "word": "take in",
+     "ko": "받아들이다",
+     "en": "Take in the view."
+    },
+    {
+     "type": "반의어",
+     "word": "reflect",
+     "ko": "반사하다",
+     "en": "Reflect light."
+    },
+    {
+     "type": "파생어",
+     "word": "absorption",
+     "ko": "흡수",
+     "en": "Water absorption."
+    },
+    {
+     "type": "연관어",
+     "word": "sponge",
+     "ko": "스펀지",
+     "en": "A wet sponge."
+    },
+    {
+     "type": "연관어",
+     "word": "focus",
+     "ko": "집중",
+     "en": "Stay focused."
+    }
+   ]
+  },
+  "2491": {
+   "word": "sphere",
+   "overview": [
+    "sphere는 '구, 공 모양'이라는 뜻의 명사입니다.",
+    "a perfect sphere(완벽한 구)처럼 씁니다.",
+    "'(활동·영향의) 영역, 분야'라는 뜻으로도 씁니다. (the political sphere, 정치 영역)",
+    "atmosphere(대기), hemisphere(반구)에도 들어 있는 말입니다."
+   ],
+   "easy": [
+    {
+     "word": "ball",
+     "en": "A round ball.",
+     "ko": "둥근 공."
+    },
+    {
+     "word": "field",
+     "en": "A field of work.",
+     "ko": "일의 분야."
+    }
+   ],
+   "etymology": [
+    "sphere는 그리스어 sphaira(공, 구)에서 온 단어입니다.",
+    "고대 사람들은 하늘을 별들이 박힌 거대한 둥근 공으로 생각했습니다.",
+    "'모든 방향으로 똑같이 둥근 입체'라는 뜻이 그대로 이어져 왔습니다.",
+    "공 안쪽처럼 어떤 힘이 미치는 범위, 즉 '영역'이라는 뜻으로도 넓어졌습니다.",
+    "sphere의 핵심 이미지는 '어느 쪽에서 봐도 둥근 공 🌐'입니다."
+   ],
+   "meanings": [
+    "(수학) 구",
+    "(활동 등의) 영역, 범위"
+   ],
+   "examples": [
+    {
+     "en": "The Earth is almost a perfect sphere.",
+     "ko": "지구는 거의 완벽한 구예요."
+    },
+    {
+     "en": "A basketball is a sphere.",
+     "ko": "농구공은 구 모양이에요."
+    },
+    {
+     "en": "She is famous in the sphere of music.",
+     "ko": "그녀는 음악 분야에서 유명해요."
+    },
+    {
+     "en": "Calculate the volume of the sphere.",
+     "ko": "그 구의 부피를 구하세요."
+    },
+    {
+     "en": "Korea is in the Northern Hemisphere.",
+     "ko": "한국은 북반구에 있어요."
+    },
+    {
+     "en": "The country is in China's sphere of influence.",
+     "ko": "그 나라는 중국의 영향권 안에 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ball",
+     "ko": "공",
+     "en": "Throw the ball."
+    },
+    {
+     "type": "유의어",
+     "word": "globe",
+     "ko": "구, 지구",
+     "en": "Spin the globe."
+    },
+    {
+     "type": "파생어",
+     "word": "spherical",
+     "ko": "구형의",
+     "en": "A spherical shape."
+    },
+    {
+     "type": "연관어",
+     "word": "hemisphere",
+     "ko": "반구",
+     "en": "The Southern Hemisphere."
+    },
+    {
+     "type": "연관어",
+     "word": "atmosphere",
+     "ko": "대기, 분위기",
+     "en": "A warm atmosphere."
+    },
+    {
+     "type": "연관어",
+     "word": "field",
+     "ko": "분야",
+     "en": "The field of science."
+    }
+   ]
+  },
+  "2235": {
+   "word": "revive",
+   "overview": [
+    "revive는 '되살리다, 소생시키다'라는 뜻의 동사입니다.",
+    "revive a patient(환자를 소생시키다)처럼 씁니다.",
+    "'(기운·관심을) 다시 살리다, (유행을) 부활시키다'라는 뜻으로도 자주 씁니다.",
+    "명사 revival(부활, 재유행)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bring back",
+     "en": "Bring back an old style.",
+     "ko": "옛 스타일을 되살리다."
+    },
+    {
+     "word": "refresh",
+     "en": "Refresh your mind.",
+     "ko": "기분을 상쾌하게 하다."
+    }
+   ],
+   "etymology": [
+    "revive는 라틴어 revivere(다시 살다)에서 온 단어입니다.",
+    "re(다시)와 vivere(살다)가 합쳐진 말로, vivid(생생한), survive(살아남다)와 같은 가족입니다.",
+    "'꺼져 가던 생명을 다시 살아나게 하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람뿐 아니라 시든 꽃, 잊힌 전통, 약해진 경제가 다시 살아나는 것에도 씁니다.",
+    "revive의 핵심 이미지는 '시들었던 꽃이 물을 먹고 다시 고개를 드는 것 🌷💧'입니다."
+   ],
+   "meanings": [
+    "소생시키다, 되살아나다",
+    "다시 유행시키다, 부활시키다"
+   ],
+   "examples": [
+    {
+     "en": "The doctors revived him after the accident.",
+     "ko": "의사들이 사고 후 그를 소생시켰어요."
+    },
+    {
+     "en": "A cold drink revived me on the hot day.",
+     "ko": "더운 날 시원한 음료가 기운을 되살려 줬어요."
+    },
+    {
+     "en": "The town is trying to revive old traditions.",
+     "ko": "그 마을은 옛 전통을 되살리려 하고 있어요."
+    },
+    {
+     "en": "The flowers revived after I watered them.",
+     "ko": "물을 주자 꽃들이 다시 살아났어요."
+    },
+    {
+     "en": "The band's music revived in the 2020s.",
+     "ko": "그 밴드의 음악은 2020년대에 다시 인기를 얻었어요."
+    },
+    {
+     "en": "They hope to revive the economy.",
+     "ko": "그들은 경제를 되살리길 바라요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "restore",
+     "ko": "복원하다",
+     "en": "Restore a painting."
+    },
+    {
+     "type": "유의어",
+     "word": "renew",
+     "ko": "새롭게 하다",
+     "en": "Renew interest."
+    },
+    {
+     "type": "반의어",
+     "word": "die out",
+     "ko": "소멸하다",
+     "en": "The custom died out."
+    },
+    {
+     "type": "파생어",
+     "word": "revival",
+     "ko": "부활",
+     "en": "A cultural revival."
+    },
+    {
+     "type": "연관어",
+     "word": "recover",
+     "ko": "회복하다",
+     "en": "Recover quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "survive",
+     "ko": "살아남다",
+     "en": "Survive the winter."
+    }
+   ]
+  },
+  "2659": {
+   "word": "telegraph",
+   "overview": [
+    "telegraph는 '전신, 전보'라는 뜻의 명사입니다.",
+    "send a message by telegraph(전신으로 소식을 보내다)처럼 씁니다.",
+    "전기 신호로 멀리 떨어진 곳에 글자(모스 부호 등)를 보내는 옛 통신 방식을 뜻합니다.",
+    "동사로는 '전보를 치다', '(의도를) 무심코 드러내다'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "old message system",
+     "en": "An old message system.",
+     "ko": "옛날 통신 방식."
+    },
+    {
+     "word": "wire",
+     "en": "Send a wire.",
+     "ko": "전보를 치다."
+    }
+   ],
+   "etymology": [
+    "telegraph는 그리스어 tele(멀리)와 graphein(쓰다)이 합쳐진 단어입니다.",
+    "telephone(전화), television(텔레비전)의 tele-와 같은 말입니다.",
+    "'멀리까지 글을 써 보내는 장치'라는 뜻으로 19세기에 만들어졌습니다.",
+    "전화가 나오기 전 전선을 통해 소식을 전하던 기술을 가리킵니다.",
+    "telegraph의 핵심 이미지는 '전선을 따라 멀리 날아가는 뚜뚜뚜 신호 📡'입니다."
+   ],
+   "meanings": [
+    "전신, 전보",
+    "전보를 치다"
+   ],
+   "examples": [
+    {
+     "en": "The telegraph changed long-distance communication.",
+     "ko": "전신은 먼 거리 통신을 바꿔 놓았어요."
+    },
+    {
+     "en": "News of the victory was sent by telegraph.",
+     "ko": "승리 소식은 전신으로 전해졌어요."
+    },
+    {
+     "en": "Telegraph messages used Morse code.",
+     "ko": "전보는 모스 부호를 사용했어요."
+    },
+    {
+     "en": "Workers put up telegraph poles across the country.",
+     "ko": "노동자들은 전국에 전신주를 세웠어요."
+    },
+    {
+     "en": "Before phones, people sent telegraphs.",
+     "ko": "전화가 생기기 전에는 사람들이 전보를 보냈어요."
+    },
+    {
+     "en": "His face telegraphed his next move.",
+     "ko": "그의 표정에서 다음 행동이 훤히 드러났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "telegram",
+     "ko": "전보",
+     "en": "Send a telegram."
+    },
+    {
+     "type": "연관어",
+     "word": "telephone",
+     "ko": "전화",
+     "en": "Answer the telephone."
+    },
+    {
+     "type": "연관어",
+     "word": "Morse code",
+     "ko": "모스 부호",
+     "en": "Learn Morse code."
+    },
+    {
+     "type": "연관어",
+     "word": "message",
+     "ko": "메시지",
+     "en": "A short message."
+    },
+    {
+     "type": "연관어",
+     "word": "wire",
+     "ko": "전선",
+     "en": "An electric wire."
+    },
+    {
+     "type": "연관어",
+     "word": "communication",
+     "ko": "통신",
+     "en": "Fast communication."
+    }
+   ]
+  },
+  "510": {
+   "word": "cluster",
+   "overview": [
+    "cluster는 '(작은 것들의) 무리, 송이, 떼'라는 뜻의 명사입니다.",
+    "a cluster of grapes(포도 한 송이)처럼 씁니다.",
+    "동사로는 '무리를 이루다, 모여들다'라는 뜻입니다. (cluster around the fire)",
+    "산업 '클러스터(단지)'처럼 관련된 것들이 모인 곳을 뜻하기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "bunch",
+     "en": "A bunch of grapes.",
+     "ko": "포도 한 송이."
+    },
+    {
+     "word": "group",
+     "en": "A small group.",
+     "ko": "작은 무리."
+    }
+   ],
+   "etymology": [
+    "cluster는 고대 영어 clyster(송이, 다발)에서 온 단어입니다.",
+    "clot(엉긴 덩어리)과 같은 게르만 말 뿌리에서 나왔다고 봅니다.",
+    "'여러 개가 뭉쳐 한 송이를 이룬 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "별, 집, 사람처럼 가까이 모여 있는 무리를 가리키는 데 씁니다.",
+    "cluster의 핵심 이미지는 '알알이 모여 한 송이를 이룬 포도 🍇'입니다."
+   ],
+   "meanings": [
+    "무리, 송이, 집단",
+    "무리를 이루다"
+   ],
+   "examples": [
+    {
+     "en": "A cluster of stars shone in the sky.",
+     "ko": "별 무리가 하늘에서 반짝였어요."
+    },
+    {
+     "en": "The children clustered around the teacher.",
+     "ko": "아이들이 선생님 주위로 모여들었어요."
+    },
+    {
+     "en": "She picked a cluster of grapes.",
+     "ko": "그녀는 포도 한 송이를 땄어요."
+    },
+    {
+     "en": "Small houses clustered along the river.",
+     "ko": "작은 집들이 강을 따라 옹기종기 모여 있었어요."
+    },
+    {
+     "en": "The city has a cluster of tech companies.",
+     "ko": "그 도시에는 기술 회사들이 모여 있어요."
+    },
+    {
+     "en": "Bees clustered on the flowers.",
+     "ko": "벌들이 꽃 위에 떼 지어 모였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bunch",
+     "ko": "송이, 다발",
+     "en": "A bunch of bananas."
+    },
+    {
+     "type": "유의어",
+     "word": "group",
+     "ko": "무리",
+     "en": "A group of friends."
+    },
+    {
+     "type": "반의어",
+     "word": "scatter",
+     "ko": "흩어지다",
+     "en": "Scatter everywhere."
+    },
+    {
+     "type": "연관어",
+     "word": "gather",
+     "ko": "모이다",
+     "en": "Gather together."
+    },
+    {
+     "type": "연관어",
+     "word": "crowd",
+     "ko": "군중",
+     "en": "A small crowd."
+    },
+    {
+     "type": "연관어",
+     "word": "swarm",
+     "ko": "떼",
+     "en": "A swarm of ants."
+    }
+   ]
+  },
+  "1481": {
+   "word": "jog",
+   "overview": [
+    "jog는 '천천히 달리다, 조깅하다'라는 뜻의 동사입니다.",
+    "go jogging(조깅하러 가다)처럼 씁니다.",
+    "'(살짝) 밀다, 툭 치다'라는 뜻도 있고, jog someone's memory(기억을 되살리다)라는 표현도 자주 씁니다.",
+    "명사로는 '조깅, 천천히 달리기'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "run slowly",
+     "en": "Run slowly in the park.",
+     "ko": "공원에서 천천히 달리다."
+    },
+    {
+     "word": "nudge",
+     "en": "Nudge a friend.",
+     "ko": "친구를 살짝 찌르다."
+    }
+   ],
+   "etymology": [
+    "jog는 중세 영어 shog(흔들다, 덜컹거리다)에서 온 것으로 봅니다.",
+    "몸이 위아래로 가볍게 흔들리는 모습을 나타낸 말입니다.",
+    "'몸을 들썩이며 가볍게 달리다'라는 뜻이 되었습니다.",
+    "살짝 툭 밀어 움직이게 하는 것, 잊은 기억을 흔들어 깨우는 것에도 씁니다.",
+    "jog의 핵심 이미지는 '가볍게 들썩이며 천천히 달리는 것 🏃‍♀️'입니다."
+   ],
+   "meanings": [
+    "천천히 달리다, 조깅하다",
+    "살짝 밀다",
+    "(기억을) 일깨우다",
+    "조깅"
+   ],
+   "examples": [
+    {
+     "en": "My dad jogs every morning.",
+     "ko": "우리 아빠는 매일 아침 조깅을 하세요."
+    },
+    {
+     "en": "Let's go for a jog in the park.",
+     "ko": "공원에서 조깅하러 가요."
+    },
+    {
+     "en": "She jogged slowly around the track.",
+     "ko": "그녀는 트랙을 천천히 달렸어요."
+    },
+    {
+     "en": "This photo might jog your memory.",
+     "ko": "이 사진을 보면 기억이 날지도 몰라요."
+    },
+    {
+     "en": "He jogged my arm and I spilled my drink.",
+     "ko": "그가 제 팔을 툭 쳐서 음료를 쏟았어요."
+    },
+    {
+     "en": "Jogging is good for your heart.",
+     "ko": "조깅은 심장에 좋아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "run",
+     "ko": "달리다",
+     "en": "Run fast."
+    },
+    {
+     "type": "연관어",
+     "word": "exercise",
+     "ko": "운동",
+     "en": "Daily exercise."
+    },
+    {
+     "type": "연관어",
+     "word": "sprint",
+     "ko": "전력 질주",
+     "en": "A short sprint."
+    },
+    {
+     "type": "연관어",
+     "word": "nudge",
+     "ko": "살짝 찌르다",
+     "en": "A gentle nudge."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억",
+     "en": "A good memory."
+    },
+    {
+     "type": "연관어",
+     "word": "track",
+     "ko": "트랙",
+     "en": "A running track."
+    }
+   ]
+  },
+  "1416": {
+   "word": "inject",
+   "overview": [
+    "inject는 '(약을) 주사하다'라는 뜻의 동사입니다.",
+    "inject medicine(약을 주사하다)처럼 씁니다.",
+    "'(돈·자원을) 투입하다', '(새로운 기운을) 불어넣다'라는 뜻으로도 씁니다. (inject humor, 유머를 곁들이다)",
+    "명사 injection(주사, 투입)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "give a shot",
+     "en": "Give a flu shot.",
+     "ko": "독감 주사를 놓다."
+    },
+    {
+     "word": "add",
+     "en": "Add some fun.",
+     "ko": "재미를 더하다."
+    }
+   ],
+   "etymology": [
+    "inject는 라틴어 inicere(안으로 던지다)에서 온 단어입니다.",
+    "in(안으로)과 iacere(던지다)가 합쳐진 말로, reject(거절하다), project(계획)와 같은 가족입니다.",
+    "'무언가를 안으로 던져 넣다'라는 뜻에서 시작되었습니다.",
+    "주삿바늘로 약을 몸속에 넣는 것, 돈이나 새로운 요소를 집어넣는 것을 가리키게 되었습니다.",
+    "inject의 핵심 이미지는 '바늘 끝으로 안에 쏙 넣어 주는 것 💉'입니다."
+   ],
+   "meanings": [
+    "주사하다",
+    "(비유) (돈을) 투입하다, (활기를) 불어넣다"
+   ],
+   "examples": [
+    {
+     "en": "The nurse injected the medicine into my arm.",
+     "ko": "간호사가 제 팔에 약을 주사했어요."
+    },
+    {
+     "en": "The government injected money into the economy.",
+     "ko": "정부는 경제에 자금을 투입했어요."
+    },
+    {
+     "en": "She injected some humor into her speech.",
+     "ko": "그녀는 연설에 유머를 좀 섞었어요."
+    },
+    {
+     "en": "The new players injected energy into the team.",
+     "ko": "새 선수들이 팀에 활기를 불어넣었어요."
+    },
+    {
+     "en": "The doctor gave him an injection.",
+     "ko": "의사가 그에게 주사를 놓았어요."
+    },
+    {
+     "en": "Some medicines must be injected, not swallowed.",
+     "ko": "어떤 약은 삼키지 않고 주사로 맞아야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "insert",
+     "ko": "넣다",
+     "en": "Insert a coin."
+    },
+    {
+     "type": "파생어",
+     "word": "injection",
+     "ko": "주사",
+     "en": "A painful injection."
+    },
+    {
+     "type": "연관어",
+     "word": "needle",
+     "ko": "바늘",
+     "en": "A sharp needle."
+    },
+    {
+     "type": "연관어",
+     "word": "vaccine",
+     "ko": "백신",
+     "en": "Get a vaccine."
+    },
+    {
+     "type": "연관어",
+     "word": "medicine",
+     "ko": "약",
+     "en": "Take medicine."
+    },
+    {
+     "type": "연관어",
+     "word": "boost",
+     "ko": "북돋우다",
+     "en": "Boost energy."
+    }
+   ]
+  },
+  "770": {
+   "word": "descend",
+   "overview": [
+    "descend는 '내려가다, 내려오다'라는 뜻의 동사입니다.",
+    "descend the stairs(계단을 내려가다)처럼 씁니다.",
+    "be descended from(~의 자손이다)이라는 표현으로도 자주 씁니다.",
+    "명사 descent(하강, 혈통), descendant(자손)도 씁니다. 반대말은 ascend(오르다)입니다."
+   ],
+   "easy": [
+    {
+     "word": "go down",
+     "en": "Go down the hill.",
+     "ko": "언덕을 내려가다."
+    },
+    {
+     "word": "come from",
+     "en": "Come from a king.",
+     "ko": "왕의 핏줄이다."
+    }
+   ],
+   "etymology": [
+    "descend는 라틴어 descendere(아래로 오르다, 내려가다)에서 온 단어입니다.",
+    "de(아래로)와 scandere(오르다)가 합쳐진 말로, ascend(오르다)와 짝을 이루는 말입니다.",
+    "'높은 곳에서 아래로 내려가다'라는 뜻이 그대로 이어져 왔습니다.",
+    "조상에서 자손으로 대대로 내려오는 혈통의 뜻으로도 넓어졌습니다.",
+    "descend의 핵심 이미지는 '계단을 한 칸씩 아래로 내려가는 것 ⬇️'입니다."
+   ],
+   "meanings": [
+    "내리다, 내려가다",
+    "경사지다",
+    "(from) 계통을 잇다, 자손이다"
+   ],
+   "examples": [
+    {
+     "en": "The plane began to descend.",
+     "ko": "비행기가 하강하기 시작했어요."
+    },
+    {
+     "en": "We descended the mountain slowly.",
+     "ko": "우리는 천천히 산을 내려왔어요."
+    },
+    {
+     "en": "She is descended from a famous scholar.",
+     "ko": "그녀는 유명한 학자의 후손이에요."
+    },
+    {
+     "en": "The road descends to the sea.",
+     "ko": "그 길은 바다 쪽으로 내리막이에요."
+    },
+    {
+     "en": "Darkness descended on the city.",
+     "ko": "도시에 어둠이 내려앉았어요."
+    },
+    {
+     "en": "Birds are descended from dinosaurs.",
+     "ko": "새는 공룡의 후손이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "go down",
+     "ko": "내려가다",
+     "en": "Go down the stairs."
+    },
+    {
+     "type": "반의어",
+     "word": "ascend",
+     "ko": "오르다",
+     "en": "Ascend the mountain."
+    },
+    {
+     "type": "반의어",
+     "word": "climb",
+     "ko": "오르다",
+     "en": "Climb a tree."
+    },
+    {
+     "type": "파생어",
+     "word": "descendant",
+     "ko": "자손",
+     "en": "A royal descendant."
+    },
+    {
+     "type": "파생어",
+     "word": "descent",
+     "ko": "하강, 혈통",
+     "en": "A steep descent."
+    },
+    {
+     "type": "연관어",
+     "word": "ancestor",
+     "ko": "조상",
+     "en": "Our ancestors."
+    }
+   ]
+  },
+  "205": {
+   "word": "awe",
+   "overview": [
+    "awe는 '경외감, (감탄 섞인) 두려움'이라는 뜻의 명사입니다.",
+    "in awe(경외감에 사로잡혀)처럼 씁니다.",
+    "아주 크고 놀라운 것 앞에서 느끼는 존경과 놀라움, 약간의 두려움이 섞인 감정입니다.",
+    "동사로는 '경외감을 느끼게 하다'라는 뜻이고, awesome(굉장한), awful(끔찍한)도 같은 뿌리입니다."
+   ],
+   "easy": [
+    {
+     "word": "wonder",
+     "en": "Full of wonder.",
+     "ko": "경이로움으로 가득한."
+    },
+    {
+     "word": "amazement",
+     "en": "Look in amazement.",
+     "ko": "놀라서 바라보다."
+    }
+   ],
+   "etymology": [
+    "awe는 고대 노르드어 agi(두려움)에서 온 단어입니다.",
+    "원래는 '무서움, 공포'라는 뜻이 강했습니다.",
+    "점차 거대한 자연이나 위대한 존재 앞에서 느끼는 '두려움 섞인 존경과 감탄'으로 바뀌었습니다.",
+    "awesome은 좋은 쪽(굉장한)으로, awful은 나쁜 쪽(끔찍한)으로 뜻이 갈라졌습니다.",
+    "awe의 핵심 이미지는 '거대한 폭포 앞에서 입을 벌린 채 서 있는 마음 😮'입니다."
+   ],
+   "meanings": [
+    "경외(감)",
+    "두렵게 만들다, 경외감을 느끼게 하다"
+   ],
+   "examples": [
+    {
+     "en": "We stood in awe of the huge waterfall.",
+     "ko": "우리는 거대한 폭포 앞에서 경외감에 휩싸였어요."
+    },
+    {
+     "en": "The children looked at the dinosaur in awe.",
+     "ko": "아이들은 감탄하며 공룡을 바라봤어요."
+    },
+    {
+     "en": "She was awed by the beauty of the stars.",
+     "ko": "그녀는 별들의 아름다움에 압도되었어요."
+    },
+    {
+     "en": "The young player is in awe of his coach.",
+     "ko": "그 어린 선수는 자기 코치를 몹시 우러러봐요."
+    },
+    {
+     "en": "The Grand Canyon fills visitors with awe.",
+     "ko": "그랜드캐니언은 방문객들을 경외감에 빠뜨려요."
+    },
+    {
+     "en": "That concert was awesome!",
+     "ko": "그 콘서트는 정말 굉장했어요!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wonder",
+     "ko": "경이",
+     "en": "The wonder of nature."
+    },
+    {
+     "type": "유의어",
+     "word": "admiration",
+     "ko": "감탄",
+     "en": "Great admiration."
+    },
+    {
+     "type": "파생어",
+     "word": "awesome",
+     "ko": "굉장한",
+     "en": "An awesome view."
+    },
+    {
+     "type": "파생어",
+     "word": "awful",
+     "ko": "끔찍한",
+     "en": "An awful day."
+    },
+    {
+     "type": "연관어",
+     "word": "respect",
+     "ko": "존경",
+     "en": "Show respect."
+    },
+    {
+     "type": "연관어",
+     "word": "amazing",
+     "ko": "놀라운",
+     "en": "An amazing story."
+    }
+   ]
+  },
+  "602": {
+   "word": "contemporary",
+   "overview": [
+    "contemporary는 '현대의, 동시대의'라는 뜻의 형용사입니다.",
+    "contemporary art(현대 미술)처럼 씁니다.",
+    "'(과거 어떤 시기와) 같은 시대의'라는 뜻으로도 씁니다.",
+    "명사로는 '동시대 사람, 동년배'라는 뜻입니다. (Mozart's contemporaries, 모차르트와 같은 시대 사람들)"
+   ],
+   "easy": [
+    {
+     "word": "modern",
+     "en": "Modern music.",
+     "ko": "현대 음악."
+    },
+    {
+     "word": "of the same time",
+     "en": "From the same time.",
+     "ko": "같은 시대의."
+    }
+   ],
+   "etymology": [
+    "contemporary는 라틴어 com(함께)과 tempus(시간)가 합쳐진 단어입니다.",
+    "temporary(일시적인), tempo(빠르기)와 같은 가족입니다.",
+    "'같은 시간을 함께 사는'이라는 뜻에서 시작되었습니다.",
+    "같은 시대를 사는 사람, 그리고 지금 이 시대의 것, 즉 '현대의'라는 뜻이 되었습니다.",
+    "contemporary의 핵심 이미지는 '같은 시계 아래 함께 살아가는 시대 ⏰🤝'입니다."
+   ],
+   "meanings": [
+    "현대의",
+    "같은 시대의",
+    "동시대 사람"
+   ],
+   "examples": [
+    {
+     "en": "The museum shows contemporary art.",
+     "ko": "그 박물관은 현대 미술을 전시해요."
+    },
+    {
+     "en": "She enjoys contemporary music.",
+     "ko": "그녀는 현대 음악을 즐겨 들어요."
+    },
+    {
+     "en": "Shakespeare and Cervantes were contemporaries.",
+     "ko": "셰익스피어와 세르반테스는 같은 시대 사람이었어요."
+    },
+    {
+     "en": "The book describes contemporary life in Seoul.",
+     "ko": "그 책은 오늘날 서울의 삶을 그려요."
+    },
+    {
+     "en": "The house has a contemporary design.",
+     "ko": "그 집은 현대적인 디자인이에요."
+    },
+    {
+     "en": "Contemporary reports describe the battle.",
+     "ko": "그 당시 기록들이 그 전투를 묘사해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "modern",
+     "ko": "현대의",
+     "en": "Modern technology."
+    },
+    {
+     "type": "유의어",
+     "word": "current",
+     "ko": "현재의",
+     "en": "Current events."
+    },
+    {
+     "type": "반의어",
+     "word": "ancient",
+     "ko": "고대의",
+     "en": "Ancient history."
+    },
+    {
+     "type": "연관어",
+     "word": "temporary",
+     "ko": "일시적인",
+     "en": "A temporary job."
+    },
+    {
+     "type": "연관어",
+     "word": "art",
+     "ko": "미술",
+     "en": "Modern art."
+    },
+    {
+     "type": "연관어",
+     "word": "era",
+     "ko": "시대",
+     "en": "A new era."
+    }
+   ]
+  },
+  "2281": {
+   "word": "rural",
+   "overview": [
+    "rural은 '시골의, 농촌의'라는 뜻의 형용사입니다.",
+    "rural areas(시골 지역)처럼 씁니다.",
+    "도시(urban)와 반대되는, 논밭과 자연이 많은 지역을 뜻합니다.",
+    "rural life(전원생활)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "country",
+     "en": "Country life.",
+     "ko": "시골 생활."
+    },
+    {
+     "word": "farm",
+     "en": "Farm areas.",
+     "ko": "농촌 지역."
+    }
+   ],
+   "etymology": [
+    "rural은 라틴어 ruralis(시골의)에서 온 단어입니다.",
+    "rus(시골, 들판)에서 나온 말입니다.",
+    "'도시 밖 들판과 농지가 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금도 도시와 대비되는 농촌, 전원 지역을 가리킵니다.",
+    "rural의 핵심 이미지는 '논밭과 들판이 펼쳐진 한적한 시골 🌾🏡'입니다."
+   ],
+   "meanings": [
+    "시골의, 전원의"
+   ],
+   "examples": [
+    {
+     "en": "My grandparents live in a rural village.",
+     "ko": "우리 조부모님은 시골 마을에 사세요."
+    },
+    {
+     "en": "Rural areas have fewer hospitals.",
+     "ko": "농촌 지역에는 병원이 더 적어요."
+    },
+    {
+     "en": "She grew up in rural Gangwon-do.",
+     "ko": "그녀는 강원도 시골에서 자랐어요."
+    },
+    {
+     "en": "Many young people leave rural towns for cities.",
+     "ko": "많은 젊은이들이 도시로 가려고 시골 마을을 떠나요."
+    },
+    {
+     "en": "They enjoy the quiet rural life.",
+     "ko": "그들은 조용한 전원생활을 즐겨요."
+    },
+    {
+     "en": "The bus connects rural areas to the city.",
+     "ko": "그 버스는 시골 지역과 도시를 이어 줘요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "countryside",
+     "ko": "시골",
+     "en": "The quiet countryside."
+    },
+    {
+     "type": "반의어",
+     "word": "urban",
+     "ko": "도시의",
+     "en": "Urban areas."
+    },
+    {
+     "type": "연관어",
+     "word": "village",
+     "ko": "마을",
+     "en": "A small village."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "Work on a farm."
+    },
+    {
+     "type": "연관어",
+     "word": "agriculture",
+     "ko": "농업",
+     "en": "Modern agriculture."
+    },
+    {
+     "type": "연관어",
+     "word": "peaceful",
+     "ko": "평화로운",
+     "en": "A peaceful place."
+    }
+   ]
+  },
+  "1672": {
+   "word": "merge",
+   "overview": [
+    "merge는 '합치다, 합병하다'라는 뜻의 동사입니다.",
+    "The two companies merged.(두 회사가 합병했다)처럼 씁니다.",
+    "'(차선이) 합류하다, (하나로) 녹아들다'라는 뜻으로도 씁니다.",
+    "명사 merger(합병)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "combine",
+     "en": "Combine two teams.",
+     "ko": "두 팀을 합치다."
+    },
+    {
+     "word": "join",
+     "en": "Join together.",
+     "ko": "하나로 합치다."
+    }
+   ],
+   "etymology": [
+    "merge는 라틴어 mergere(물에 잠기다, 가라앉다)에서 온 단어입니다.",
+    "emerge(나타나다, '물 밖으로 나오다')와 같은 뿌리의 말입니다.",
+    "원래는 '물속에 푹 잠기다'라는 뜻이었습니다.",
+    "서로 물에 잠기듯 섞여 하나가 되는 것, 즉 '합치다'라는 뜻이 되었습니다.",
+    "merge의 핵심 이미지는 '두 물줄기가 만나 하나의 강이 되는 것 🌊🔀'입니다."
+   ],
+   "meanings": [
+    "합치다, 합병하다",
+    "하나가 되다"
+   ],
+   "examples": [
+    {
+     "en": "The two schools merged into one.",
+     "ko": "두 학교가 하나로 합쳐졌어요."
+    },
+    {
+     "en": "Merge the two files before sending them.",
+     "ko": "보내기 전에 두 파일을 하나로 합치세요."
+    },
+    {
+     "en": "Cars must merge carefully onto the highway.",
+     "ko": "차들은 고속도로에 조심해서 합류해야 해요."
+    },
+    {
+     "en": "The river merges with the sea here.",
+     "ko": "여기서 강이 바다와 만나요."
+    },
+    {
+     "en": "Dreams and reality merged in the movie.",
+     "ko": "그 영화에서는 꿈과 현실이 하나로 섞였어요."
+    },
+    {
+     "en": "The merger created a huge company.",
+     "ko": "그 합병으로 거대한 회사가 생겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "combine",
+     "ko": "결합하다",
+     "en": "Combine the colors."
+    },
+    {
+     "type": "유의어",
+     "word": "unite",
+     "ko": "통합하다",
+     "en": "Unite the country."
+    },
+    {
+     "type": "반의어",
+     "word": "separate",
+     "ko": "분리하다",
+     "en": "Separate the groups."
+    },
+    {
+     "type": "파생어",
+     "word": "merger",
+     "ko": "합병",
+     "en": "A company merger."
+    },
+    {
+     "type": "연관어",
+     "word": "blend",
+     "ko": "섞다",
+     "en": "Blend the fruit."
+    },
+    {
+     "type": "연관어",
+     "word": "fuse",
+     "ko": "융합하다",
+     "en": "Fuse the styles."
+    }
+   ]
+  },
+  "1064": {
+   "word": "fiber",
+   "overview": [
+    "fiber는 '섬유, 실 같은 가닥'이라는 뜻의 명사입니다.",
+    "cotton fiber(면섬유)처럼 씁니다.",
+    "음식의 '식이 섬유'라는 뜻으로 아주 자주 씁니다. (high in fiber, 식이 섬유가 풍부한)",
+    "'(근육·신경의) 섬유 조직'을 뜻하기도 하며, 영국식 철자는 fibre입니다."
+   ],
+   "easy": [
+    {
+     "word": "thread",
+     "en": "A thin thread.",
+     "ko": "가는 실."
+    },
+    {
+     "word": "roughage",
+     "en": "Eat roughage.",
+     "ko": "섬유질을 먹다."
+    }
+   ],
+   "etymology": [
+    "fiber는 라틴어 fibra(가는 실, 섬유)에서 온 단어입니다.",
+    "원래는 식물이나 동물 몸속의 가느다란 실 같은 가닥을 뜻했습니다.",
+    "'실처럼 가늘고 긴 가닥'이라는 뜻이 그대로 이어져 왔습니다.",
+    "옷감의 섬유, 채소 속의 식이 섬유, 광섬유까지 폭넓게 가리킵니다.",
+    "fiber의 핵심 이미지는 '실처럼 가늘고 길게 이어진 가닥 🧵🥦'입니다."
+   ],
+   "meanings": [
+    "섬유",
+    "실 모양 조직",
+    "식이 섬유"
+   ],
+   "examples": [
+    {
+     "en": "Vegetables are high in fiber.",
+     "ko": "채소에는 식이 섬유가 풍부해요."
+    },
+    {
+     "en": "This shirt is made of natural fibers.",
+     "ko": "이 셔츠는 천연 섬유로 만들어졌어요."
+    },
+    {
+     "en": "Fiber helps your stomach stay healthy.",
+     "ko": "식이 섬유는 장 건강에 도움이 돼요."
+    },
+    {
+     "en": "Muscle is made of long fibers.",
+     "ko": "근육은 긴 섬유들로 이루어져 있어요."
+    },
+    {
+     "en": "Our internet uses fiber-optic cables.",
+     "ko": "우리 인터넷은 광섬유 케이블을 써요."
+    },
+    {
+     "en": "Whole grains contain more fiber.",
+     "ko": "통곡물에는 식이 섬유가 더 많아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "thread",
+     "ko": "실",
+     "en": "A spool of thread."
+    },
+    {
+     "type": "연관어",
+     "word": "cotton",
+     "ko": "면",
+     "en": "Soft cotton."
+    },
+    {
+     "type": "연관어",
+     "word": "fabric",
+     "ko": "천",
+     "en": "Silk fabric."
+    },
+    {
+     "type": "연관어",
+     "word": "vegetable",
+     "ko": "채소",
+     "en": "Fresh vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "diet",
+     "ko": "식단",
+     "en": "A healthy diet."
+    },
+    {
+     "type": "연관어",
+     "word": "nutrient",
+     "ko": "영양소",
+     "en": "Key nutrients."
+    }
+   ]
+  },
+  "1198": {
+   "word": "geography",
+   "overview": [
+    "geography는 '지리학, 지리'라는 뜻의 명사입니다.",
+    "a geography class(지리 수업)처럼 씁니다.",
+    "땅의 모양, 기후, 나라, 사람들의 생활 등을 연구하는 학문을 뜻합니다.",
+    "'(어떤 지역의) 지형, 지리적 특징'이라는 뜻으로도 쓰고, geographic(al)(지리의)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "study of places",
+     "en": "The study of places.",
+     "ko": "장소에 관한 공부."
+    },
+    {
+     "word": "land features",
+     "en": "The land features.",
+     "ko": "땅의 특징."
+    }
+   ],
+   "etymology": [
+    "geography는 그리스어 geo(땅)와 graphein(쓰다, 그리다)이 합쳐진 단어입니다.",
+    "geology(지질학), geometry(기하학, '땅을 재는 것')와 같은 가족입니다.",
+    "'땅의 모습을 글과 그림으로 기록한 것'이라는 뜻에서 시작되었습니다.",
+    "지구의 땅, 바다, 기후, 사람의 생활을 연구하는 학문을 가리키게 되었습니다.",
+    "geography의 핵심 이미지는 '지구의 모습을 그림으로 그려 담은 지도 🗺️'입니다."
+   ],
+   "meanings": [
+    "지리, 지리학",
+    "지형"
+   ],
+   "examples": [
+    {
+     "en": "We learned about mountains in geography class.",
+     "ko": "우리는 지리 시간에 산에 대해 배웠어요."
+    },
+    {
+     "en": "She knows a lot about world geography.",
+     "ko": "그녀는 세계 지리를 잘 알아요."
+    },
+    {
+     "en": "The geography of Korea has many mountains.",
+     "ko": "한국은 지형상 산이 많아요."
+    },
+    {
+     "en": "Geography affects how people live.",
+     "ko": "지리는 사람들이 사는 방식에 영향을 줘요."
+    },
+    {
+     "en": "I'm not good at geography—where is Peru?",
+     "ko": "저는 지리를 잘 몰라요—페루가 어디예요?"
+    },
+    {
+     "en": "National Geographic is a famous magazine.",
+     "ko": "내셔널 지오그래픽은 유명한 잡지예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "geographic",
+     "ko": "지리의",
+     "en": "Geographic features."
+    },
+    {
+     "type": "파생어",
+     "word": "geographer",
+     "ko": "지리학자",
+     "en": "A famous geographer."
+    },
+    {
+     "type": "연관어",
+     "word": "map",
+     "ko": "지도",
+     "en": "Read a map."
+    },
+    {
+     "type": "연관어",
+     "word": "climate",
+     "ko": "기후",
+     "en": "A warm climate."
+    },
+    {
+     "type": "연관어",
+     "word": "continent",
+     "ko": "대륙",
+     "en": "Seven continents."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "World history."
+    }
+   ]
+  },
+  "1452": {
+   "word": "interpret",
+   "overview": [
+    "interpret는 '해석하다, 이해하다'라는 뜻의 동사입니다.",
+    "interpret a dream(꿈을 해몽하다)처럼 씁니다.",
+    "'통역하다'라는 뜻으로도 자주 씁니다. (interpret for visitors)",
+    "명사 interpretation(해석), interpreter(통역사)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "explain",
+     "en": "Explain the meaning.",
+     "ko": "뜻을 설명하다."
+    },
+    {
+     "word": "translate",
+     "en": "Translate for me.",
+     "ko": "나를 위해 통역해 줘."
+    }
+   ],
+   "etymology": [
+    "interpret는 라틴어 interpres(중개인, 설명해 주는 사람)에서 온 단어입니다.",
+    "inter(사이에)와 관련된 말로, 두 쪽 사이에서 뜻을 전해 주는 사람을 가리켰습니다.",
+    "'사이에서 뜻을 풀어 전해 주다'라는 뜻이 되었습니다.",
+    "말이나 글, 행동의 의미를 풀어 이해하는 것, 다른 언어로 옮겨 전하는 것을 가리킵니다.",
+    "interpret의 핵심 이미지는 '두 사람 사이에서 뜻을 풀어 전하는 다리 🌉🗣️'입니다."
+   ],
+   "meanings": [
+    "해석하다",
+    "통역하다"
+   ],
+   "examples": [
+    {
+     "en": "How do you interpret this poem?",
+     "ko": "이 시를 어떻게 해석하세요?"
+    },
+    {
+     "en": "She interpreted for the Korean visitors.",
+     "ko": "그녀는 한국인 방문객들을 위해 통역했어요."
+    },
+    {
+     "en": "I interpreted his silence as a yes.",
+     "ko": "저는 그의 침묵을 승낙으로 받아들였어요."
+    },
+    {
+     "en": "Scientists interpret the data carefully.",
+     "ko": "과학자들은 자료를 신중하게 해석해요."
+    },
+    {
+     "en": "The dream is hard to interpret.",
+     "ko": "그 꿈은 해석하기 어려워요."
+    },
+    {
+     "en": "He works as an interpreter at the UN.",
+     "ko": "그는 유엔에서 통역사로 일해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "explain",
+     "ko": "설명하다",
+     "en": "Explain clearly."
+    },
+    {
+     "type": "유의어",
+     "word": "translate",
+     "ko": "번역하다",
+     "en": "Translate a book."
+    },
+    {
+     "type": "파생어",
+     "word": "interpretation",
+     "ko": "해석",
+     "en": "A different interpretation."
+    },
+    {
+     "type": "파생어",
+     "word": "interpreter",
+     "ko": "통역사",
+     "en": "Hire an interpreter."
+    },
+    {
+     "type": "연관어",
+     "word": "understand",
+     "ko": "이해하다",
+     "en": "Understand the rules."
+    },
+    {
+     "type": "연관어",
+     "word": "meaning",
+     "ko": "의미",
+     "en": "The hidden meaning."
+    }
+   ]
+  },
+  "862": {
+   "word": "dread",
+   "overview": [
+    "dread는 '(앞으로 올 일을) 몹시 두려워하다'라는 뜻의 동사입니다.",
+    "dread going to the dentist(치과 가는 것을 몹시 두려워하다)처럼 씁니다.",
+    "명사로는 '두려움, 걱정'이라는 뜻입니다. (a feeling of dread)",
+    "형용사 dreadful(끔찍한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fear",
+     "en": "Fear the dark.",
+     "ko": "어둠을 무서워하다."
+    },
+    {
+     "word": "worry",
+     "en": "Worry about the test.",
+     "ko": "시험을 걱정하다."
+    }
+   ],
+   "etymology": [
+    "dread는 고대 영어 ondrædan(두려워하다)에서 온 단어입니다.",
+    "앞부분이 떨어져 나가 지금의 dread가 되었습니다.",
+    "'앞으로 닥칠 일을 생각하며 몹시 무서워하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금 무서운 것보다 앞으로 일어날 일을 걱정하며 겁내는 느낌이 강합니다.",
+    "dread의 핵심 이미지는 '다가올 일을 떠올리며 몸이 움츠러드는 두려움 😰'입니다."
+   ],
+   "meanings": [
+    "몹시 두려워하다",
+    "공포, 걱정"
+   ],
+   "examples": [
+    {
+     "en": "I dread going to the dentist.",
+     "ko": "저는 치과 가는 게 너무 싫고 무서워요."
+    },
+    {
+     "en": "She dreaded the first day at her new school.",
+     "ko": "그녀는 새 학교 첫날을 몹시 두려워했어요."
+    },
+    {
+     "en": "He felt a sense of dread before the exam.",
+     "ko": "그는 시험 전에 두려움을 느꼈어요."
+    },
+    {
+     "en": "Many students dread public speaking.",
+     "ko": "많은 학생들이 사람들 앞에서 말하는 걸 두려워해요."
+    },
+    {
+     "en": "The weather was dreadful all week.",
+     "ko": "일주일 내내 날씨가 끔찍했어요."
+    },
+    {
+     "en": "I dread to think what could have happened.",
+     "ko": "무슨 일이 일어날 수 있었을지 생각만 해도 무서워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fear",
+     "ko": "두려워하다",
+     "en": "Fear failure."
+    },
+    {
+     "type": "유의어",
+     "word": "worry",
+     "ko": "걱정하다",
+     "en": "Worry too much."
+    },
+    {
+     "type": "반의어",
+     "word": "look forward to",
+     "ko": "고대하다",
+     "en": "Look forward to the trip."
+    },
+    {
+     "type": "파생어",
+     "word": "dreadful",
+     "ko": "끔찍한",
+     "en": "A dreadful mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "anxiety",
+     "ko": "불안",
+     "en": "Feel anxiety."
+    },
+    {
+     "type": "연관어",
+     "word": "nervous",
+     "ko": "긴장한",
+     "en": "Feel nervous."
+    }
+   ]
+  },
+  "74": {
+   "word": "agriculture",
+   "overview": [
+    "agriculture는 '농업'이라는 뜻의 명사입니다.",
+    "modern agriculture(현대 농업)처럼 씁니다.",
+    "작물을 기르고 가축을 키워 식량을 생산하는 일을 뜻합니다.",
+    "형용사 agricultural(농업의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "farming",
+     "en": "Farming life.",
+     "ko": "농사짓는 삶."
+    },
+    {
+     "word": "growing food",
+     "en": "Growing food.",
+     "ko": "식량 재배."
+    }
+   ],
+   "etymology": [
+    "agriculture는 라틴어 ager(밭)와 cultura(가꿈, 경작)가 합쳐진 단어입니다.",
+    "culture(문화, 원래 '땅을 가꿈')와 같은 뿌리의 말입니다.",
+    "'밭을 갈고 가꾸는 일'이라는 뜻이 그대로 이어져 왔습니다.",
+    "곡식과 채소를 기르고 가축을 키우는 일 전체를 가리킵니다.",
+    "agriculture의 핵심 이미지는 '밭을 일구어 곡식을 기르는 일 🚜🌾'입니다."
+   ],
+   "meanings": [
+    "농업"
+   ],
+   "examples": [
+    {
+     "en": "Agriculture is important to the country's economy.",
+     "ko": "농업은 그 나라 경제에 중요해요."
+    },
+    {
+     "en": "Many people in the village work in agriculture.",
+     "ko": "그 마을의 많은 사람들이 농업에 종사해요."
+    },
+    {
+     "en": "Machines have changed modern agriculture.",
+     "ko": "기계가 현대 농업을 바꿔 놓았어요."
+    },
+    {
+     "en": "She studies agriculture at university.",
+     "ko": "그녀는 대학에서 농학을 공부해요."
+    },
+    {
+     "en": "Water is essential for agriculture.",
+     "ko": "물은 농업에 꼭 필요해요."
+    },
+    {
+     "en": "The land is used for agricultural purposes.",
+     "ko": "그 땅은 농업용으로 쓰여요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "farming",
+     "ko": "농사",
+     "en": "Organic farming."
+    },
+    {
+     "type": "파생어",
+     "word": "agricultural",
+     "ko": "농업의",
+     "en": "Agricultural land."
+    },
+    {
+     "type": "연관어",
+     "word": "farmer",
+     "ko": "농부",
+     "en": "A hardworking farmer."
+    },
+    {
+     "type": "연관어",
+     "word": "crop",
+     "ko": "농작물",
+     "en": "Grow crops."
+    },
+    {
+     "type": "연관어",
+     "word": "harvest",
+     "ko": "수확",
+     "en": "Autumn harvest."
+    },
+    {
+     "type": "연관어",
+     "word": "rural",
+     "ko": "농촌의",
+     "en": "Rural life."
+    }
+   ]
+  },
+  "2888": {
+   "word": "vivid",
+   "overview": [
+    "vivid는 '생생한, 선명한'이라는 뜻의 형용사입니다.",
+    "a vivid memory(생생한 기억)처럼 씁니다.",
+    "'(색이) 강렬한, 선명한'이라는 뜻으로도 씁니다. (vivid colors)",
+    "a vivid imagination(풍부한 상상력)이라는 표현도 쓰고, 부사 vividly(생생하게)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "clear",
+     "en": "A clear picture.",
+     "ko": "선명한 사진."
+    },
+    {
+     "word": "bright",
+     "en": "Bright colors.",
+     "ko": "밝은 색."
+    }
+   ],
+   "etymology": [
+    "vivid는 라틴어 vividus(생기 넘치는)에서 온 단어입니다.",
+    "vivere(살다)에서 나온 말로, revive(되살리다), survive(살아남다)와 같은 가족입니다.",
+    "'살아 있는 것처럼 생기가 넘치는'이라는 뜻에서 시작되었습니다.",
+    "기억, 그림, 색깔이 눈앞에 살아 있는 듯 또렷한 것을 가리키게 되었습니다.",
+    "vivid의 핵심 이미지는 '눈앞에 살아 움직이는 듯 또렷한 장면 🌈'입니다."
+   ],
+   "meanings": [
+    "생생한, 선명한",
+    "강렬한"
+   ],
+   "examples": [
+    {
+     "en": "I have a vivid memory of my first trip abroad.",
+     "ko": "첫 해외여행이 생생하게 기억나요."
+    },
+    {
+     "en": "The painting uses vivid colors.",
+     "ko": "그 그림은 강렬한 색을 써요."
+    },
+    {
+     "en": "She has a vivid imagination.",
+     "ko": "그녀는 상상력이 풍부해요."
+    },
+    {
+     "en": "The author gives a vivid description of the city.",
+     "ko": "작가는 그 도시를 생생하게 묘사해요."
+    },
+    {
+     "en": "I had a very vivid dream last night.",
+     "ko": "어젯밤 아주 생생한 꿈을 꿨어요."
+    },
+    {
+     "en": "He vividly remembers his grandfather's stories.",
+     "ko": "그는 할아버지의 이야기를 생생하게 기억해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "clear",
+     "ko": "선명한",
+     "en": "A clear image."
+    },
+    {
+     "type": "유의어",
+     "word": "bright",
+     "ko": "밝은",
+     "en": "A bright red."
+    },
+    {
+     "type": "반의어",
+     "word": "dull",
+     "ko": "칙칙한",
+     "en": "Dull colors."
+    },
+    {
+     "type": "반의어",
+     "word": "vague",
+     "ko": "흐릿한",
+     "en": "A vague memory."
+    },
+    {
+     "type": "파생어",
+     "word": "vividly",
+     "ko": "생생하게",
+     "en": "Vividly remember."
+    },
+    {
+     "type": "연관어",
+     "word": "imagination",
+     "ko": "상상력",
+     "en": "Use your imagination."
+    }
+   ]
+  },
+  "1400": {
+   "word": "index",
+   "overview": [
+    "index는 '(책의) 색인, 찾아보기'라는 뜻의 명사입니다.",
+    "look in the index(색인을 찾아보다)처럼 씁니다.",
+    "'지표, 지수'라는 뜻으로도 씁니다. (the price index, 물가 지수)",
+    "index finger는 '집게손가락(검지)'이며, 복수형은 indexes 또는 indices입니다."
+   ],
+   "easy": [
+    {
+     "word": "list",
+     "en": "A list of words.",
+     "ko": "단어 목록."
+    },
+    {
+     "word": "sign",
+     "en": "A sign of growth.",
+     "ko": "성장의 징후."
+    }
+   ],
+   "etymology": [
+    "index는 라틴어 index(가리키는 것, 집게손가락)에서 온 단어입니다.",
+    "indicare(가리키다)와 관련된 말로, indicate(나타내다)와 같은 가족입니다.",
+    "원래는 무언가를 가리키는 '집게손가락'이라는 뜻이었습니다.",
+    "책에서 원하는 내용을 손가락처럼 가리켜 주는 '색인', 경제 상태를 가리키는 '지수'가 되었습니다.",
+    "index의 핵심 이미지는 '원하는 곳을 콕 가리켜 주는 집게손가락 ☝️📖'입니다."
+   ],
+   "meanings": [
+    "색인, 찾아보기",
+    "지표, 지수",
+    "집게손가락"
+   ],
+   "examples": [
+    {
+     "en": "Look up the word in the index at the back.",
+     "ko": "뒤쪽 색인에서 그 단어를 찾아보세요."
+    },
+    {
+     "en": "The index lists all the topics in the book.",
+     "ko": "색인에는 그 책의 모든 주제가 나와 있어요."
+    },
+    {
+     "en": "The price index rose last month.",
+     "ko": "지난달 물가 지수가 올랐어요."
+    },
+    {
+     "en": "Point with your index finger.",
+     "ko": "집게손가락으로 가리키세요."
+    },
+    {
+     "en": "The library uses a computer index.",
+     "ko": "그 도서관은 컴퓨터 색인을 사용해요."
+    },
+    {
+     "en": "The UV index is high today.",
+     "ko": "오늘 자외선 지수가 높아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "list",
+     "ko": "목록",
+     "en": "A shopping list."
+    },
+    {
+     "type": "유의어",
+     "word": "indicator",
+     "ko": "지표",
+     "en": "An economic indicator."
+    },
+    {
+     "type": "연관어",
+     "word": "contents",
+     "ko": "목차",
+     "en": "Table of contents."
+    },
+    {
+     "type": "연관어",
+     "word": "finger",
+     "ko": "손가락",
+     "en": "Point a finger."
+    },
+    {
+     "type": "연관어",
+     "word": "indicate",
+     "ko": "나타내다",
+     "en": "Indicate the way."
+    },
+    {
+     "type": "연관어",
+     "word": "search",
+     "ko": "검색하다",
+     "en": "Search online."
+    }
+   ]
   }
  }
 }
