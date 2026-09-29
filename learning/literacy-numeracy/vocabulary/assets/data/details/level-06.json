@@ -3868,6 +3868,1942 @@
      "en": "Call your name."
     }
    ]
+  },
+  "2714": {
+   "word": "throat",
+   "overview": [
+    "throat은 '목구멍', '인후'라는 뜻의 명사입니다. 입 안쪽에서 몸속으로 이어지는 부분입니다.",
+    "a sore throat(목이 아픔), clear your throat(헛기침하다)처럼 씁니다.",
+    "음식이나 물을 삼킬 때, 소리를 낼 때 쓰이는 몸의 중요한 부분입니다.",
+    "at each other's throats는 '서로 심하게 다투는'이라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "neck",
+     "en": "A long neck.",
+     "ko": "긴 목."
+    },
+    {
+     "word": "cough",
+     "en": "Cough loudly.",
+     "ko": "크게 기침하다."
+    }
+   ],
+   "etymology": [
+    "throat은 고대 영어 throte(목구멍)에서 온 단어입니다.",
+    "'삼키다', '목구멍'을 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "천 년 넘게 비슷한 뜻으로 쓰여 온 단어입니다.",
+    "throttle(목을 조르다, 제어하다)도 같은 뿌리에서 나온 단어입니다.",
+    "throat의 핵심 이미지는 '음식과 소리가 지나가는 몸속 길 🗣️'입니다."
+   ],
+   "meanings": [
+    "목구멍, 인후"
+   ],
+   "examples": [
+    {
+     "en": "I have a sore throat today.",
+     "ko": "오늘 목이 아파요."
+    },
+    {
+     "en": "Drink warm water for your throat.",
+     "ko": "목을 위해 따뜻한 물을 마셔."
+    },
+    {
+     "en": "The doctor checked her throat.",
+     "ko": "의사가 그녀의 목구멍을 살펴봤어요."
+    },
+    {
+     "en": "He cleared his throat before speaking.",
+     "ko": "그는 말하기 전에 헛기침을 했어요."
+    },
+    {
+     "en": "The spicy food burned my throat.",
+     "ko": "매운 음식이 목을 얼얼하게 했어요."
+    },
+    {
+     "en": "A fish bone got stuck in his throat.",
+     "ko": "생선 가시가 그의 목에 걸렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "neck",
+     "ko": "목",
+     "en": "A stiff neck."
+    },
+    {
+     "type": "연관어",
+     "word": "cough",
+     "ko": "기침하다",
+     "en": "Cough badly."
+    },
+    {
+     "type": "연관어",
+     "word": "swallow",
+     "ko": "삼키다",
+     "en": "Swallow the pill."
+    },
+    {
+     "type": "연관어",
+     "word": "voice",
+     "ko": "목소리",
+     "en": "A loud voice."
+    },
+    {
+     "type": "연관어",
+     "word": "sore",
+     "ko": "아픈",
+     "en": "A sore muscle."
+    },
+    {
+     "type": "연관어",
+     "word": "cold",
+     "ko": "감기",
+     "en": "Catch a cold."
+    }
+   ]
+  },
+  "1329": {
+   "word": "hole",
+   "overview": [
+    "hole은 '구멍'이라는 뜻의 명사입니다. 무엇에 뚫린 빈 공간을 말합니다.",
+    "a hole in the wall(벽에 난 구멍), dig a hole(구멍을 파다)처럼 씁니다.",
+    "동물이 사는 '굴'도 hole이라고 합니다. a rabbit hole(토끼 굴)",
+    "발음이 같은 whole(전체의)과 헷갈리지 않도록 철자를 조심해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "gap",
+     "en": "Fill the gap.",
+     "ko": "틈을 메워."
+    },
+    {
+     "word": "opening",
+     "en": "A small opening.",
+     "ko": "작은 구멍."
+    }
+   ],
+   "etymology": [
+    "hole은 고대 영어 hol(구멍, 빈 공간)에서 온 단어입니다.",
+    "'속이 빈', '오목한'이라는 뜻의 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "hollow(속이 빈)도 같은 뿌리에서 나온 형제 단어입니다.",
+    "천 년 넘게 비슷한 뜻으로 쓰여 온 단어입니다.",
+    "hole의 핵심 이미지는 '땅이나 벽에 뻥 뚫린 빈 공간 🕳️'입니다."
+   ],
+   "meanings": [
+    "구멍",
+    "(동물의) 굴"
+   ],
+   "examples": [
+    {
+     "en": "There's a hole in my sock.",
+     "ko": "내 양말에 구멍이 났어요."
+    },
+    {
+     "en": "The dog dug a hole in the yard.",
+     "ko": "개가 마당에 구멍을 팠어요."
+    },
+    {
+     "en": "A rabbit lives in that hole.",
+     "ko": "토끼는 저 굴에 살아요."
+    },
+    {
+     "en": "Fill the hole with sand.",
+     "ko": "그 구멍을 모래로 메워."
+    },
+    {
+     "en": "There's a hole in the fence.",
+     "ko": "울타리에 구멍이 있어요."
+    },
+    {
+     "en": "The mouse hid in a small hole.",
+     "ko": "쥐가 작은 구멍에 숨었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "gap",
+     "ko": "틈, 간격",
+     "en": "A wide gap."
+    },
+    {
+     "type": "연관어",
+     "word": "opening",
+     "ko": "구멍, 통로",
+     "en": "A small opening."
+    },
+    {
+     "type": "연관어",
+     "word": "dig",
+     "ko": "파다",
+     "en": "Dig deep."
+    },
+    {
+     "type": "연관어",
+     "word": "hollow",
+     "ko": "속이 빈",
+     "en": "A hollow tree."
+    },
+    {
+     "type": "연관어",
+     "word": "whole",
+     "ko": "전체의 (발음이 같은 말)",
+     "en": "The whole cake."
+    },
+    {
+     "type": "연관어",
+     "word": "burrow",
+     "ko": "굴",
+     "en": "A rabbit's burrow."
+    }
+   ]
+  },
+  "1592": {
+   "word": "lock",
+   "overview": [
+    "lock은 '잠그다'라는 뜻의 동사이자 '자물쇠'라는 뜻의 명사입니다.",
+    "lock the door(문을 잠그다), a padlock(맹꽁이자물쇠)처럼 씁니다.",
+    "lock up은 '잠가서 안전하게 하다', '가두다'라는 뜻입니다.",
+    "'자물쇠'라는 명사 뜻과 '한 뭉치의 머리카락'을 뜻하는 다른 단어 lock도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "key",
+     "en": "Turn the key.",
+     "ko": "열쇠를 돌려."
+    },
+    {
+     "word": "close",
+     "en": "Close the door.",
+     "ko": "문을 닫아."
+    }
+   ],
+   "etymology": [
+    "lock은 고대 영어 loc(잠그는 기구, 빗장)에서 온 단어입니다.",
+    "'닫다', '막다'라는 뜻의 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "천 년 넘게 '무엇을 잠가 막는 도구'라는 뜻으로 쓰여 온 단어입니다.",
+    "'머리카락 한 뭉치'를 뜻하는 lock은 뿌리가 다른 전혀 별개의 단어입니다.",
+    "lock의 핵심 이미지는 '찰칵 소리를 내며 잠기는 자물쇠 🔒'입니다."
+   ],
+   "meanings": [
+    "잠그다 (동사)",
+    "자물쇠 (명사)",
+    "(운하의) 수문 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Please lock the door before you leave.",
+     "ko": "나가기 전에 문을 잠가 주세요."
+    },
+    {
+     "en": "I forgot to bring the lock for my bike.",
+     "ko": "나는 자전거 자물쇠를 가져오는 걸 잊었어요."
+    },
+    {
+     "en": "The door was locked from the inside.",
+     "ko": "그 문은 안에서 잠겨 있었어요."
+    },
+    {
+     "en": "She locked her valuables in a safe.",
+     "ko": "그녀는 귀중품을 금고에 잠가 두었어요."
+    },
+    {
+     "en": "We locked up the shop for the night.",
+     "ko": "우리는 밤 동안 가게 문을 잠갔어요."
+    },
+    {
+     "en": "Ships pass through the lock in the canal.",
+     "ko": "배들은 운하의 수문을 통과해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "key",
+     "ko": "열쇠",
+     "en": "A shiny key."
+    },
+    {
+     "type": "연관어",
+     "word": "door",
+     "ko": "문",
+     "en": "Open the door."
+    },
+    {
+     "type": "반의어",
+     "word": "unlock",
+     "ko": "잠금을 풀다",
+     "en": "Unlock the door."
+    },
+    {
+     "type": "연관어",
+     "word": "safe",
+     "ko": "금고",
+     "en": "Put in a safe."
+    },
+    {
+     "type": "연관어",
+     "word": "close",
+     "ko": "닫다",
+     "en": "Close tightly."
+    },
+    {
+     "type": "연관어",
+     "word": "secure",
+     "ko": "안전하게 하다",
+     "en": "Secure the area."
+    }
+   ]
+  },
+  "932": {
+   "word": "engine",
+   "overview": [
+    "engine은 '엔진'이라는 뜻의 명사입니다. 자동차나 비행기 등을 움직이게 하는 기계 장치입니다.",
+    "start the engine(엔진을 켜다), a car engine(자동차 엔진)처럼 씁니다.",
+    "기차의 '기관차'도 engine이라고 합니다.",
+    "search engine(검색 엔진)처럼 다른 말과 함께도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "motor",
+     "en": "A car motor.",
+     "ko": "자동차 모터."
+    },
+    {
+     "word": "machine",
+     "en": "A big machine.",
+     "ko": "큰 기계."
+    }
+   ],
+   "etymology": [
+    "engine은 라틴어 ingenium(타고난 재능, 독창적인 장치)에서 온 단어입니다.",
+    "gignere(낳다, 만들어 내다)에서 나온 말로, genius(천재), generate(만들어 내다)와 같은 가족입니다.",
+    "옛날에는 '똑똑한 발명품', '기계 장치'를 두루 뜻했습니다.",
+    "산업혁명 시기에 힘을 내는 기계 장치를 특별히 engine이라고 부르게 되었습니다.",
+    "engine의 핵심 이미지는 '부릉부릉 힘차게 돌아가는 심장 같은 기계 🏎️'입니다."
+   ],
+   "meanings": [
+    "엔진, 기관",
+    "기관차"
+   ],
+   "examples": [
+    {
+     "en": "The car engine wouldn't start.",
+     "ko": "자동차 엔진이 시동이 걸리지 않았어요."
+    },
+    {
+     "en": "This plane has two engines.",
+     "ko": "이 비행기는 엔진이 두 개예요."
+    },
+    {
+     "en": "The mechanic fixed the engine.",
+     "ko": "정비공이 엔진을 고쳤어요."
+    },
+    {
+     "en": "Use a search engine to find information.",
+     "ko": "정보를 찾으려면 검색 엔진을 이용해."
+    },
+    {
+     "en": "The fire engine arrived quickly.",
+     "ko": "소방차가 빠르게 도착했어요."
+    },
+    {
+     "en": "Steam engines were used in old trains.",
+     "ko": "옛날 기차에는 증기 기관이 쓰였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "motor",
+     "ko": "모터, 발동기",
+     "en": "An electric motor."
+    },
+    {
+     "type": "연관어",
+     "word": "machine",
+     "ko": "기계",
+     "en": "A washing machine."
+    },
+    {
+     "type": "연관어",
+     "word": "car",
+     "ko": "자동차",
+     "en": "A fast car."
+    },
+    {
+     "type": "연관어",
+     "word": "fire engine",
+     "ko": "소방차",
+     "en": "Call a fire engine."
+    },
+    {
+     "type": "연관어",
+     "word": "power",
+     "ko": "힘",
+     "en": "Engine power."
+    },
+    {
+     "type": "연관어",
+     "word": "mechanic",
+     "ko": "정비공",
+     "en": "A skilled mechanic."
+    }
+   ]
+  },
+  "555": {
+   "word": "complete",
+   "overview": [
+    "complete는 '완전한'이라는 뜻의 형용사이자 '완성하다', '끝내다'라는 뜻의 동사입니다.",
+    "a complete set(완전한 세트), complete the task(과제를 끝내다)처럼 씁니다.",
+    "'완전히', '전적으로'라는 강조의 뜻으로도 씁니다. a complete surprise(완전히 뜻밖의 일)",
+    "부사 completely(완전히)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "finish",
+     "en": "Finish the work.",
+     "ko": "일을 끝내다."
+    },
+    {
+     "word": "whole",
+     "en": "The whole set.",
+     "ko": "전체 세트."
+    }
+   ],
+   "etymology": [
+    "complete는 라틴어 completus(가득 채워진, 완성된)에서 온 단어입니다.",
+    "com(완전히)과 plere(채우다)가 합쳐진 말입니다.",
+    "supply(공급하다), plenty(풍부함)도 plere에서 나온 같은 가족 단어들입니다.",
+    "'빈틈없이 완전히 채워진'이라는 뜻이 그대로 '완전한'으로 이어졌습니다.",
+    "complete의 핵심 이미지는 '한 조각도 빠짐없이 채워진 퍼즐 🧩'입니다."
+   ],
+   "meanings": [
+    "완전한 (형용사)",
+    "완성하다, 끝내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She has a complete set of encyclopedias.",
+     "ko": "그녀는 완전한 백과사전 세트를 가지고 있어요."
+    },
+    {
+     "en": "Please complete this form.",
+     "ko": "이 양식을 작성해 주세요."
+    },
+    {
+     "en": "He completed the marathon in four hours.",
+     "ko": "그는 네 시간 만에 마라톤을 완주했어요."
+    },
+    {
+     "en": "It was a complete surprise to me.",
+     "ko": "그건 저에게 완전히 뜻밖의 일이었어요."
+    },
+    {
+     "en": "The building project is now complete.",
+     "ko": "그 건축 프로젝트는 이제 완료됐어요."
+    },
+    {
+     "en": "We need one more piece to complete the puzzle.",
+     "ko": "퍼즐을 완성하려면 조각 하나가 더 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "whole",
+     "ko": "전체의",
+     "en": "The whole class."
+    },
+    {
+     "type": "유의어",
+     "word": "finish",
+     "ko": "끝내다",
+     "en": "Finish the race."
+    },
+    {
+     "type": "파생어",
+     "word": "completely",
+     "ko": "완전히",
+     "en": "Completely true."
+    },
+    {
+     "type": "반의어",
+     "word": "incomplete",
+     "ko": "불완전한",
+     "en": "An incomplete answer."
+    },
+    {
+     "type": "연관어",
+     "word": "full",
+     "ko": "가득 찬",
+     "en": "A full glass."
+    },
+    {
+     "type": "연관어",
+     "word": "achieve",
+     "ko": "성취하다",
+     "en": "Achieve a goal."
+    }
+   ]
+  },
+  "2917": {
+   "word": "weapon",
+   "overview": [
+    "weapon은 '무기'라는 뜻의 명사입니다. 싸우거나 공격할 때 쓰는 도구입니다.",
+    "a dangerous weapon(위험한 무기), carry a weapon(무기를 소지하다)처럼 씁니다.",
+    "칼, 총, 활 등 사람을 다치게 할 수 있는 모든 도구를 두루 가리킵니다.",
+    "'강력한 수단'을 비유해서도 씁니다. Knowledge is a powerful weapon.(지식은 강력한 무기예요.)"
+   ],
+   "easy": [
+    {
+     "word": "gun",
+     "en": "A loaded gun.",
+     "ko": "장전된 총."
+    },
+    {
+     "word": "sword",
+     "en": "A sharp sword.",
+     "ko": "날카로운 칼."
+    }
+   ],
+   "etymology": [
+    "weapon은 고대 영어 wǣpen(무기)에서 온 단어입니다.",
+    "독일어 Waffe(무기)와 같은 뿌리입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "천 년 넘게 '싸움에 쓰는 도구'라는 뜻으로 쓰여 온 단어입니다.",
+    "weapon의 핵심 이미지는 '전투에서 쓰이는 칼과 방패 ⚔️'입니다."
+   ],
+   "meanings": [
+    "무기",
+    "(비유) 강력한 수단"
+   ],
+   "examples": [
+    {
+     "en": "The soldier carried a heavy weapon.",
+     "ko": "그 군인은 무거운 무기를 들고 있었어요."
+    },
+    {
+     "en": "Weapons are not allowed in school.",
+     "ko": "학교에는 무기를 가져올 수 없어요."
+    },
+    {
+     "en": "The knight's weapon was a shining sword.",
+     "ko": "그 기사의 무기는 반짝이는 검이었어요."
+    },
+    {
+     "en": "Knowledge can be a powerful weapon.",
+     "ko": "지식은 강력한 무기가 될 수 있어요."
+    },
+    {
+     "en": "Police found a hidden weapon.",
+     "ko": "경찰은 숨겨진 무기를 발견했어요."
+    },
+    {
+     "en": "The museum displays ancient weapons.",
+     "ko": "그 박물관은 고대 무기들을 전시해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "gun",
+     "ko": "총",
+     "en": "A loaded gun."
+    },
+    {
+     "type": "연관어",
+     "word": "sword",
+     "ko": "검",
+     "en": "A sharp sword."
+    },
+    {
+     "type": "연관어",
+     "word": "attack",
+     "ko": "공격하다",
+     "en": "Attack the enemy."
+    },
+    {
+     "type": "연관어",
+     "word": "army",
+     "ko": "군대",
+     "en": "The whole army."
+    },
+    {
+     "type": "연관어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In great danger."
+    },
+    {
+     "type": "연관어",
+     "word": "defend",
+     "ko": "방어하다",
+     "en": "Defend the castle."
+    }
+   ]
+  },
+  "680": {
+   "word": "crowd",
+   "overview": [
+    "crowd는 '군중', '무리'라는 뜻의 명사이자 '몰려들다'라는 뜻의 동사입니다.",
+    "a large crowd(큰 군중), a crowd of people(사람들의 무리)처럼 씁니다.",
+    "동사로는 '한 곳에 잔뜩 모이다'라는 뜻입니다. People crowded around the stage.(사람들이 무대 주위로 몰려들었어요.)",
+    "형용사 crowded는 '붐비는'이라는 뜻으로 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "group",
+     "en": "A big group.",
+     "ko": "큰 무리."
+    },
+    {
+     "word": "many people",
+     "en": "Many people came.",
+     "ko": "많은 사람이 왔어."
+    }
+   ],
+   "etymology": [
+    "crowd는 고대 영어 crūdan(밀치다, 밀어붙이다)에서 온 단어입니다.",
+    "'서로 밀치며 모인 사람들'이라는 뜻이 '군중'으로 이어졌습니다.",
+    "천 년 넘게 비슷한 뜻으로 쓰여 온 단어입니다.",
+    "crowded(붐비는)도 여기서 나온 형용사입니다.",
+    "crowd의 핵심 이미지는 '한곳에 빽빽하게 모인 사람들의 무리 👥'입니다."
+   ],
+   "meanings": [
+    "군중, 무리 (명사)",
+    "몰려들다, 붐비다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "A large crowd gathered at the stadium.",
+     "ko": "많은 군중이 경기장에 모였어요."
+    },
+    {
+     "en": "The crowd cheered loudly.",
+     "ko": "군중이 큰 소리로 환호했어요."
+    },
+    {
+     "en": "People crowded around the singer.",
+     "ko": "사람들이 그 가수 주위로 몰려들었어요."
+    },
+    {
+     "en": "I don't like crowded places.",
+     "ko": "나는 사람 많은 곳을 좋아하지 않아요."
+    },
+    {
+     "en": "She got lost in the crowd.",
+     "ko": "그녀는 인파 속에서 길을 잃었어요."
+    },
+    {
+     "en": "Thousands of fans crowded the streets.",
+     "ko": "수천 명의 팬들이 거리로 몰려들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "group",
+     "ko": "무리",
+     "en": "A large group."
+    },
+    {
+     "type": "파생어",
+     "word": "crowded",
+     "ko": "붐비는",
+     "en": "A crowded bus."
+    },
+    {
+     "type": "연관어",
+     "word": "gather",
+     "ko": "모이다",
+     "en": "Gather together."
+    },
+    {
+     "type": "연관어",
+     "word": "audience",
+     "ko": "청중, 관객",
+     "en": "A large audience."
+    },
+    {
+     "type": "연관어",
+     "word": "cheer",
+     "ko": "환호하다",
+     "en": "Cheer loudly."
+    },
+    {
+     "type": "연관어",
+     "word": "fan",
+     "ko": "팬",
+     "en": "A big fan."
+    }
+   ]
+  },
+  "2781": {
+   "word": "treat",
+   "overview": [
+    "treat는 '다루다', '대하다'라는 뜻의 동사이자 '특별한 것'이라는 뜻의 명사입니다.",
+    "treat someone kindly(누군가를 친절하게 대하다)처럼 씁니다.",
+    "'치료하다'라는 뜻으로도 씁니다. treat an illness(병을 치료하다)",
+    "명사로는 특별히 주는 '간식', '즐거움'이라는 뜻도 있습니다. It's my treat!(내가 살게!)"
+   ],
+   "easy": [
+    {
+     "word": "deal with",
+     "en": "Deal with kindly.",
+     "ko": "친절하게 대하다."
+    },
+    {
+     "word": "snack",
+     "en": "A sweet snack.",
+     "ko": "달콤한 간식."
+    }
+   ],
+   "etymology": [
+    "treat는 라틴어 tractare(다루다, 취급하다)에서 온 단어입니다.",
+    "trahere(끌다, 당기다)에서 나온 말로, tractor(트랙터, '끄는 것')와 같은 가족입니다.",
+    "'무엇을 손에 잡고 다루다'라는 뜻에서 '대우하다', '치료하다'로 뜻이 넓어졌습니다.",
+    "'특별히 대접하는 것'이라는 뜻에서 '간식', '즐거움'이라는 명사 뜻도 생겼습니다.",
+    "treat의 핵심 이미지는 '누군가를 정성껏 대접하는 특별한 순간 🍦'입니다."
+   ],
+   "meanings": [
+    "다루다, 대하다 (동사)",
+    "치료하다 (동사)",
+    "특별한 것, 간식 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Please treat others with kindness.",
+     "ko": "다른 사람들을 친절하게 대해 주세요."
+    },
+    {
+     "en": "The doctor treated her broken arm.",
+     "ko": "의사가 그녀의 부러진 팔을 치료했어요."
+    },
+    {
+     "en": "Ice cream is a special treat for kids.",
+     "ko": "아이스크림은 아이들에게 특별한 간식이에요."
+    },
+    {
+     "en": "Don't treat this as a joke.",
+     "ko": "이걸 농담으로 취급하지 마."
+    },
+    {
+     "en": "This medicine treats headaches.",
+     "ko": "이 약은 두통을 치료해요."
+    },
+    {
+     "en": "Dinner is my treat tonight.",
+     "ko": "오늘 저녁은 내가 살게."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "handle",
+     "ko": "다루다",
+     "en": "Handle with care."
+    },
+    {
+     "type": "연관어",
+     "word": "cure",
+     "ko": "치료하다",
+     "en": "Cure the disease."
+    },
+    {
+     "type": "연관어",
+     "word": "snack",
+     "ko": "간식",
+     "en": "A yummy snack."
+    },
+    {
+     "type": "연관어",
+     "word": "reward",
+     "ko": "보상",
+     "en": "A special reward."
+    },
+    {
+     "type": "연관어",
+     "word": "doctor",
+     "ko": "의사",
+     "en": "See a doctor."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "Be kind."
+    }
+   ]
+  },
+  "2261": {
+   "word": "roll",
+   "overview": [
+    "roll은 '구르다', '굴리다'라는 뜻의 동사이자 '두루마리'라는 뜻의 명사입니다.",
+    "The ball rolled away.(공이 굴러갔어요.)처럼 씁니다.",
+    "roll up은 '돌돌 말다'라는 뜻입니다. roll up a mat(매트를 돌돌 말다)",
+    "빵 종류 a bread roll(작고 둥근 빵)이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "turn over",
+     "en": "Turn over.",
+     "ko": "굴러 넘어가다."
+    },
+    {
+     "word": "wrap",
+     "en": "Wrap it up.",
+     "ko": "그것을 말아."
+    }
+   ],
+   "etymology": [
+    "roll은 라틴어 rotulus(작은 바퀴)에서 온 단어입니다.",
+    "rota(바퀴)에서 나온 말로, route(길), rotate(회전하다)와 같은 가족입니다.",
+    "'바퀴처럼 둥글게 돌며 움직이다'라는 뜻이 '구르다'로 이어졌습니다.",
+    "종이를 둥글게 만 '두루마리'라는 뜻도 원래 뜻과 자연스럽게 이어집니다.",
+    "roll의 핵심 이미지는 '데굴데굴 굴러가는 공 ⚽'입니다."
+   ],
+   "meanings": [
+    "구르다, 굴리다 (동사)",
+    "(종이 등을) 말다 (동사)",
+    "두루마리 (명사)",
+    "작고 둥근 빵 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The ball rolled down the hill.",
+     "ko": "공이 언덕 아래로 굴러갔어요."
+    },
+    {
+     "en": "Roll up the sleeping bag.",
+     "ko": "침낭을 돌돌 말아."
+    },
+    {
+     "en": "She bought a roll of paper towels.",
+     "ko": "그녀는 종이 타월 한 롤을 샀어요."
+    },
+    {
+     "en": "He rolled the dice and got a six.",
+     "ko": "그는 주사위를 굴려 6이 나왔어요."
+    },
+    {
+     "en": "We had bread rolls for breakfast.",
+     "ko": "우리는 아침으로 둥근 빵을 먹었어요."
+    },
+    {
+     "en": "The drums started to roll.",
+     "ko": "북소리가 둥둥 울리기 시작했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "turn",
+     "ko": "돌다",
+     "en": "Turn around."
+    },
+    {
+     "type": "연관어",
+     "word": "wheel",
+     "ko": "바퀴",
+     "en": "A round wheel."
+    },
+    {
+     "type": "연관어",
+     "word": "bounce",
+     "ko": "튀다",
+     "en": "Bounce the ball."
+    },
+    {
+     "type": "연관어",
+     "word": "wrap",
+     "ko": "말다, 감다",
+     "en": "Wrap a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "spin",
+     "ko": "회전하다",
+     "en": "Spin around."
+    },
+    {
+     "type": "연관어",
+     "word": "bread",
+     "ko": "빵",
+     "en": "Fresh bread."
+    }
+   ]
+  },
+  "2494": {
+   "word": "spirit",
+   "overview": [
+    "spirit은 '영혼', '정신'이라는 뜻의 명사입니다. 몸이 아닌 마음이나 성격의 핵심을 말합니다.",
+    "team spirit(팀 정신), a free spirit(자유로운 영혼)처럼 씁니다.",
+    "'유령', '귀신'이라는 뜻으로도 씁니다.",
+    "동사로는 '기운을 북돋우다'라는 뜻이 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "soul",
+     "en": "Body and soul.",
+     "ko": "몸과 영혼."
+    },
+    {
+     "word": "attitude",
+     "en": "A positive attitude.",
+     "ko": "긍정적인 태도."
+    }
+   ],
+   "etymology": [
+    "spirit은 라틴어 spiritus(숨, 생명력)에서 온 단어입니다.",
+    "spirare(숨 쉬다)에서 나온 말로, inspire(영감을 주다, '안으로 숨을 불어넣다')와 같은 가족입니다.",
+    "'몸에 생기를 불어넣는 숨결'이라는 뜻에서 '영혼', '정신'이 되었습니다.",
+    "respire(호흡하다), aspire(열망하다)도 같은 뿌리에서 나온 단어들입니다.",
+    "spirit의 핵심 이미지는 '몸속에 생기를 불어넣는 활기찬 마음 ✨'입니다."
+   ],
+   "meanings": [
+    "영혼, 정신 (명사)",
+    "기운, 활기 (명사)",
+    "유령, 귀신 (명사)",
+    "기운을 북돋우다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Our team has great spirit.",
+     "ko": "우리 팀은 정신력이 대단해요."
+    },
+    {
+     "en": "She has a free spirit.",
+     "ko": "그녀는 자유로운 영혼을 가졌어요."
+    },
+    {
+     "en": "The old house is said to have spirits.",
+     "ko": "그 오래된 집에는 유령이 있다고 해요."
+    },
+    {
+     "en": "His words spirited us up before the game.",
+     "ko": "그의 말이 경기 전 우리의 기운을 북돋아 주었어요."
+    },
+    {
+     "en": "Keep your spirit high, even in hard times.",
+     "ko": "힘든 때에도 기운을 잃지 마."
+    },
+    {
+     "en": "The team showed true fighting spirit.",
+     "ko": "그 팀은 진정한 투지를 보여 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "soul",
+     "ko": "영혼",
+     "en": "Body and soul."
+    },
+    {
+     "type": "연관어",
+     "word": "mind",
+     "ko": "정신",
+     "en": "A calm mind."
+    },
+    {
+     "type": "연관어",
+     "word": "ghost",
+     "ko": "유령",
+     "en": "A friendly ghost."
+    },
+    {
+     "type": "연관어",
+     "word": "energy",
+     "ko": "활력",
+     "en": "Full of energy."
+    },
+    {
+     "type": "연관어",
+     "word": "inspire",
+     "ko": "영감을 주다",
+     "en": "Inspire others."
+    },
+    {
+     "type": "연관어",
+     "word": "team",
+     "ko": "팀",
+     "en": "Team spirit."
+    }
+   ]
+  },
+  "925": {
+   "word": "empty",
+   "overview": [
+    "empty는 '비어 있는'이라는 뜻의 형용사이자 '비우다'라는 뜻의 동사입니다.",
+    "an empty box(빈 상자), empty the trash(쓰레기통을 비우다)처럼 씁니다.",
+    "'공허한', '허무한'이라는 비유적인 뜻으로도 씁니다. an empty feeling(공허한 느낌)",
+    "반대말은 full(가득 찬)입니다."
+   ],
+   "easy": [
+    {
+     "word": "vacant",
+     "en": "A vacant seat.",
+     "ko": "빈자리."
+    },
+    {
+     "word": "nothing inside",
+     "en": "Nothing inside.",
+     "ko": "안에 아무것도 없는."
+    }
+   ],
+   "etymology": [
+    "empty는 고대 영어 ǣmetta(여가, 한가함)에서 온 단어입니다.",
+    "'할 일이 없어 텅 빈 시간'이라는 뜻에서 '텅 빈'이라는 지금의 뜻이 나왔습니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "'속이 비어 있는 상태'를 나타내는 뜻으로 오랫동안 쓰여 왔습니다.",
+    "empty의 핵심 이미지는 '아무것도 없이 텅 빈 상자 📦'입니다."
+   ],
+   "meanings": [
+    "비어 있는, 빈 (형용사)",
+    "공허한 (형용사)",
+    "비우다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The box is empty.",
+     "ko": "그 상자는 비어 있어요."
+    },
+    {
+     "en": "Please empty your pockets.",
+     "ko": "주머니를 비워 주세요."
+    },
+    {
+     "en": "The room felt empty and quiet.",
+     "ko": "그 방은 텅 비고 조용하게 느껴졌어요."
+    },
+    {
+     "en": "He felt an empty feeling after the game ended.",
+     "ko": "그는 경기가 끝난 후 공허한 느낌이 들었어요."
+    },
+    {
+     "en": "The bus was almost empty this morning.",
+     "ko": "오늘 아침 버스는 거의 텅 비어 있었어요."
+    },
+    {
+     "en": "She emptied the water bottle into the plant.",
+     "ko": "그녀는 물병에 있던 물을 화분에 다 부었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "full",
+     "ko": "가득 찬",
+     "en": "A full cup."
+    },
+    {
+     "type": "연관어",
+     "word": "vacant",
+     "ko": "비어 있는",
+     "en": "A vacant house."
+    },
+    {
+     "type": "연관어",
+     "word": "hollow",
+     "ko": "속이 빈",
+     "en": "A hollow log."
+    },
+    {
+     "type": "연관어",
+     "word": "clear",
+     "ko": "치우다",
+     "en": "Clear the table."
+    },
+    {
+     "type": "연관어",
+     "word": "pour",
+     "ko": "붓다",
+     "en": "Pour the water."
+    },
+    {
+     "type": "연관어",
+     "word": "lonely",
+     "ko": "외로운",
+     "en": "Feel lonely."
+    }
+   ]
+  },
+  "1563": {
+   "word": "level",
+   "overview": [
+    "level은 '수준', '단계'라는 뜻의 명사이자 '수평의'라는 뜻의 형용사입니다.",
+    "a high level(높은 수준), on the same level(같은 수준에서)처럼 씁니다.",
+    "'평평한', '수평인'이라는 형용사 뜻도 있습니다. Make sure the table is level.(탁자가 수평인지 확인해.)",
+    "게임의 '레벨', '단계'라는 뜻으로도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "stage",
+     "en": "Reach a new stage.",
+     "ko": "새 단계에 이르다."
+    },
+    {
+     "word": "flat",
+     "en": "A flat surface.",
+     "ko": "평평한 표면."
+    }
+   ],
+   "etymology": [
+    "level은 라틴어 libella(수평기, 작은 저울)에서 온 단어입니다.",
+    "libra(저울)에서 나온 말로, balance(균형)와도 먼 친척입니다.",
+    "'물체가 기울지 않고 평평한지 재는 도구'라는 뜻에서 '수평의'가 되었습니다.",
+    "'같은 높이'라는 뜻에서 '수준', '단계'로 뜻이 넓어졌습니다.",
+    "level의 핵심 이미지는 '기울지 않고 반듯하게 균형 잡힌 수평선 📏'입니다."
+   ],
+   "meanings": [
+    "수준, 단계 (명사)",
+    "수평의, 평평한 (형용사)",
+    "(높이·수준을) 맞추다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "This game has ten levels.",
+     "ko": "이 게임은 레벨이 열 개예요."
+    },
+    {
+     "en": "Her English level is very high.",
+     "ko": "그녀의 영어 수준은 아주 높아요."
+    },
+    {
+     "en": "Make sure the shelf is level.",
+     "ko": "선반이 수평인지 확인해."
+    },
+    {
+     "en": "The water level rose after the rain.",
+     "ko": "비가 온 후 수위가 올라갔어요."
+    },
+    {
+     "en": "We are on the same level of understanding.",
+     "ko": "우리는 이해의 수준이 같아요."
+    },
+    {
+     "en": "He passed the first level of the exam.",
+     "ko": "그는 시험의 첫 단계를 통과했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "stage",
+     "ko": "단계",
+     "en": "The next stage."
+    },
+    {
+     "type": "연관어",
+     "word": "flat",
+     "ko": "평평한",
+     "en": "A flat road."
+    },
+    {
+     "type": "연관어",
+     "word": "balance",
+     "ko": "균형",
+     "en": "Keep balance."
+    },
+    {
+     "type": "연관어",
+     "word": "standard",
+     "ko": "기준, 수준",
+     "en": "A high standard."
+    },
+    {
+     "type": "연관어",
+     "word": "grade",
+     "ko": "등급, 학년",
+     "en": "A high grade."
+    },
+    {
+     "type": "연관어",
+     "word": "height",
+     "ko": "높이",
+     "en": "The right height."
+    }
+   ]
+  },
+  "1446": {
+   "word": "interest",
+   "overview": [
+    "interest는 '흥미', '관심'이라는 뜻의 명사이자 '관심을 끌다'라는 뜻의 동사입니다.",
+    "have an interest in(~에 관심이 있다), lose interest(흥미를 잃다)처럼 씁니다.",
+    "은행에서 '이자'라는 뜻으로도 씁니다. pay interest(이자를 내다)",
+    "형용사 interesting(흥미로운), interested(관심 있는)를 구별해서 써야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "curiosity",
+     "en": "Show curiosity.",
+     "ko": "호기심을 보이다."
+    },
+    {
+     "word": "hobby",
+     "en": "My hobby.",
+     "ko": "내 취미."
+    }
+   ],
+   "etymology": [
+    "interest는 라틴어 interesse(사이에 있다, 중요하다)에서 온 단어입니다.",
+    "inter(사이에)와 esse(있다)가 합쳐진 말입니다.",
+    "'~에게 중요하게 관련되다'라는 뜻에서 '관심', '이해관계'가 되었습니다.",
+    "빌린 돈에 '더해지는' 이자라는 뜻도 여기서 자연스럽게 이어졌다고 봅니다.",
+    "interest의 핵심 이미지는 '눈이 반짝이며 끌리는 관심 ✨'입니다."
+   ],
+   "meanings": [
+    "흥미, 관심 (명사)",
+    "이자 (명사)",
+    "관심을 끌다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She has a strong interest in science.",
+     "ko": "그녀는 과학에 강한 관심이 있어요."
+    },
+    {
+     "en": "This story didn't interest me at all.",
+     "ko": "이 이야기는 나에게 전혀 흥미롭지 않았어요."
+    },
+    {
+     "en": "The bank pays interest on savings.",
+     "ko": "은행은 저축에 이자를 지급해요."
+    },
+    {
+     "en": "He lost interest in the game quickly.",
+     "ko": "그는 그 게임에 빠르게 흥미를 잃었어요."
+    },
+    {
+     "en": "What are your interests?",
+     "ko": "네 관심사는 뭐야?"
+    },
+    {
+     "en": "The museum interests many visitors.",
+     "ko": "그 박물관은 많은 방문객의 관심을 끌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "interesting",
+     "ko": "흥미로운",
+     "en": "An interesting book."
+    },
+    {
+     "type": "파생어",
+     "word": "interested",
+     "ko": "관심 있는",
+     "en": "Interested in art."
+    },
+    {
+     "type": "연관어",
+     "word": "curiosity",
+     "ko": "호기심",
+     "en": "Full of curiosity."
+    },
+    {
+     "type": "연관어",
+     "word": "hobby",
+     "ko": "취미",
+     "en": "My favorite hobby."
+    },
+    {
+     "type": "연관어",
+     "word": "attention",
+     "ko": "주의",
+     "en": "Get attention."
+    },
+    {
+     "type": "연관어",
+     "word": "bank",
+     "ko": "은행",
+     "en": "Save at a bank."
+    }
+   ]
+  },
+  "220": {
+   "word": "band",
+   "overview": [
+    "band는 '악단', '밴드'라는 뜻의 명사입니다. 함께 음악을 연주하는 무리입니다.",
+    "a rock band(록 밴드), join a band(밴드에 가입하다)처럼 씁니다.",
+    "'띠', '끈'이라는 뜻으로도 씁니다. a rubber band(고무줄)",
+    "동사로는 '무리를 이루다', '결속하다'라는 뜻이 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "group",
+     "en": "A music group.",
+     "ko": "음악 그룹."
+    },
+    {
+     "word": "strip",
+     "en": "A rubber strip.",
+     "ko": "고무 띠."
+    }
+   ],
+   "etymology": [
+    "band는 옛 프랑스어 bande(무리, 띠)에서 온 단어입니다.",
+    "게르만 말 뿌리로, '묶다'를 뜻하는 아주 옛말과 이어진다고 봅니다.",
+    "'함께 묶인 사람들의 무리'라는 뜻에서 '악단', '집단'이 되었습니다.",
+    "bond(유대, 채권)도 같은 뿌리에서 나온 형제 단어입니다.",
+    "band의 핵심 이미지는 '함께 뭉쳐 연주하는 음악 밴드 🎸'입니다."
+   ],
+   "meanings": [
+    "악단, 밴드 (명사)",
+    "띠, 끈 (명사)",
+    "무리, 집단 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "My brother plays guitar in a band.",
+     "ko": "우리 형은 밴드에서 기타를 연주해요."
+    },
+    {
+     "en": "She wore a wide rubber band on her wrist.",
+     "ko": "그녀는 손목에 넓은 고무줄을 끼고 있었어요."
+    },
+    {
+     "en": "The band played their new song.",
+     "ko": "그 밴드는 새 노래를 연주했어요."
+    },
+    {
+     "en": "A band of travelers walked through the desert.",
+     "ko": "여행자 무리가 사막을 걸어갔어요."
+    },
+    {
+     "en": "Tie the papers with a rubber band.",
+     "ko": "고무줄로 종이들을 묶어."
+    },
+    {
+     "en": "The whole band worked together on the album.",
+     "ko": "밴드 전체가 함께 그 앨범을 작업했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "group",
+     "ko": "그룹",
+     "en": "A dance group."
+    },
+    {
+     "type": "연관어",
+     "word": "music",
+     "ko": "음악",
+     "en": "Loud music."
+    },
+    {
+     "type": "연관어",
+     "word": "guitar",
+     "ko": "기타",
+     "en": "Play the guitar."
+    },
+    {
+     "type": "연관어",
+     "word": "concert",
+     "ko": "콘서트",
+     "en": "Go to a concert."
+    },
+    {
+     "type": "연관어",
+     "word": "strip",
+     "ko": "띠, 끈",
+     "en": "A cloth strip."
+    },
+    {
+     "type": "연관어",
+     "word": "bond",
+     "ko": "유대, 결속",
+     "en": "A strong bond."
+    }
+   ]
+  },
+  "1097": {
+   "word": "flight",
+   "overview": [
+    "flight는 '비행', '항공편'이라는 뜻의 명사입니다.",
+    "a long flight(긴 비행), book a flight(항공편을 예약하다)처럼 씁니다.",
+    "'날기'라는 원래 뜻에서 '도주', '탈출'이라는 뜻으로도 씁니다. flight from danger(위험으로부터의 도주)",
+    "flight of stairs는 '한 층의 계단'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "flying",
+     "en": "Enjoy flying.",
+     "ko": "나는 것을 즐기다."
+    },
+    {
+     "word": "trip",
+     "en": "A long trip.",
+     "ko": "긴 여행."
+    }
+   ],
+   "etymology": [
+    "flight는 고대 영어 flyht(날기)에서 온 단어입니다.",
+    "fly(날다)와 같은 뿌리를 가진 말입니다.",
+    "'날아가는 행위'라는 뜻이 비행기의 '비행'으로 이어졌습니다.",
+    "'날아서 도망가다'라는 뜻에서 '도주', '탈출'이라는 뜻도 나왔습니다.",
+    "flight의 핵심 이미지는 '하늘을 가로지르는 비행기 여정 ✈️'입니다."
+   ],
+   "meanings": [
+    "비행, 항공편",
+    "(계단의) 한 층",
+    "도주, 탈출"
+   ],
+   "examples": [
+    {
+     "en": "Our flight leaves at nine tomorrow.",
+     "ko": "우리 항공편은 내일 9시에 출발해요."
+    },
+    {
+     "en": "It was a long flight to Europe.",
+     "ko": "유럽까지 긴 비행이었어요."
+    },
+    {
+     "en": "Walk up two flights of stairs.",
+     "ko": "계단 두 층을 걸어 올라가."
+    },
+    {
+     "en": "The bird's flight was smooth and quiet.",
+     "ko": "그 새의 비행은 부드럽고 조용했어요."
+    },
+    {
+     "en": "We booked our flight online.",
+     "ko": "우리는 온라인으로 항공편을 예약했어요."
+    },
+    {
+     "en": "His flight from the burning building was quick.",
+     "ko": "불타는 건물에서 그의 탈출은 신속했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "airplane",
+     "ko": "비행기",
+     "en": "Board the airplane."
+    },
+    {
+     "type": "연관어",
+     "word": "fly",
+     "ko": "날다",
+     "en": "Birds fly high."
+    },
+    {
+     "type": "연관어",
+     "word": "airport",
+     "ko": "공항",
+     "en": "At the airport."
+    },
+    {
+     "type": "연관어",
+     "word": "stairs",
+     "ko": "계단",
+     "en": "Climb the stairs."
+    },
+    {
+     "type": "연관어",
+     "word": "escape",
+     "ko": "탈출",
+     "en": "A daring escape."
+    },
+    {
+     "type": "연관어",
+     "word": "ticket",
+     "ko": "표",
+     "en": "A plane ticket."
+    }
+   ]
+  },
+  "2132": {
+   "word": "raise",
+   "overview": [
+    "raise는 '들어 올리다', '높이다'라는 뜻의 동사입니다.",
+    "raise your hand(손을 들다), raise the price(가격을 올리다)처럼 씁니다.",
+    "'아이를 기르다', '키우다'라는 뜻으로도 씁니다. raise children(아이를 기르다)",
+    "명사로는 '(급여) 인상'이라는 뜻이 있습니다. get a raise(급여 인상을 받다)"
+   ],
+   "easy": [
+    {
+     "word": "lift",
+     "en": "Lift the box.",
+     "ko": "상자를 들어 올려."
+    },
+    {
+     "word": "grow up",
+     "en": "Grow up children.",
+     "ko": "아이를 기르다."
+    }
+   ],
+   "etymology": [
+    "raise는 옛 노르드어(바이킹의 말) reisa(들어 올리다, 세우다)에서 온 단어입니다.",
+    "rise(오르다)와 같은 뿌리를 가진 단어입니다.",
+    "rise가 '스스로 오르다'라면, raise는 '무언가를 위로 올리다'라는 뜻으로 나뉘어 쓰입니다.",
+    "'아이를 기르다'라는 뜻은 '자라도록 위로 끌어올리다'라는 느낌에서 나왔다고 봅니다.",
+    "raise의 핵심 이미지는 '높이 번쩍 들어 올리는 손 ✋'입니다."
+   ],
+   "meanings": [
+    "들어 올리다, 높이다 (동사)",
+    "(질문 등을) 제기하다 (동사)",
+    "(아이를) 기르다 (동사)",
+    "(급여) 인상 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Raise your hand if you know the answer.",
+     "ko": "답을 알면 손을 들어."
+    },
+    {
+     "en": "The store raised its prices.",
+     "ko": "그 가게는 가격을 올렸어요."
+    },
+    {
+     "en": "She was raised in a small town.",
+     "ko": "그녀는 작은 마을에서 자랐어요."
+    },
+    {
+     "en": "He raised an important question.",
+     "ko": "그는 중요한 질문을 제기했어요."
+    },
+    {
+     "en": "My dad got a raise at work.",
+     "ko": "우리 아빠는 직장에서 급여 인상을 받았어요."
+    },
+    {
+     "en": "We raised money for the school.",
+     "ko": "우리는 학교를 위해 기금을 모았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "lift",
+     "ko": "들어 올리다",
+     "en": "Lift the weight."
+    },
+    {
+     "type": "연관어",
+     "word": "rise",
+     "ko": "오르다",
+     "en": "The sun rises."
+    },
+    {
+     "type": "연관어",
+     "word": "grow",
+     "ko": "기르다, 자라다",
+     "en": "Grow a garden."
+    },
+    {
+     "type": "연관어",
+     "word": "increase",
+     "ko": "증가시키다",
+     "en": "Increase the amount."
+    },
+    {
+     "type": "연관어",
+     "word": "question",
+     "ko": "질문",
+     "en": "Raise a question."
+    },
+    {
+     "type": "연관어",
+     "word": "salary",
+     "ko": "급여",
+     "en": "A monthly salary."
+    }
+   ]
+  },
+  "2001": {
+   "word": "pop",
+   "overview": [
+    "pop은 '펑 하는 소리'라는 뜻의 명사이자 '펑 하고 터지다', '갑자기 나타나다'라는 뜻의 동사입니다.",
+    "The balloon popped.(풍선이 펑 터졌어요.)처럼 씁니다.",
+    "'팝 음악'이라는 뜻으로도 아주 자주 씁니다. pop music(팝 음악)",
+    "pop up은 '불쑥 나타나다'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "burst",
+     "en": "Burst suddenly.",
+     "ko": "갑자기 터지다."
+    },
+    {
+     "word": "appear",
+     "en": "Appear suddenly.",
+     "ko": "갑자기 나타나다."
+    }
+   ],
+   "etymology": [
+    "pop은 '펑' 하는 소리를 흉내 낸 의성어에서 온 단어입니다.",
+    "1400년대쯤부터 영어에서 쓰이기 시작했습니다.",
+    "'갑작스럽고 짧은 소리'라는 뜻에서 '갑자기 나타나다'라는 뜻이 넓어졌습니다.",
+    "'대중적인'을 뜻하는 popular를 줄여서 pop music이라는 말도 생겼습니다.",
+    "pop의 핵심 이미지는 '풍선이 펑 하고 터지는 순간 🎈'입니다."
+   ],
+   "meanings": [
+    "펑 하는 소리 (명사)",
+    "펑 하고 터지다 (동사)",
+    "갑자기 나타나다 (동사, pop up)",
+    "팝 음악 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The balloon popped with a loud bang.",
+     "ko": "풍선이 큰 소리를 내며 펑 터졌어요."
+    },
+    {
+     "en": "She loves listening to pop music.",
+     "ko": "그녀는 팝 음악 듣는 것을 정말 좋아해요."
+    },
+    {
+     "en": "A message popped up on the screen.",
+     "ko": "화면에 메시지가 불쑥 떴어요."
+    },
+    {
+     "en": "He popped in to say hello.",
+     "ko": "그는 인사하러 잠깐 들렀어요."
+    },
+    {
+     "en": "The corn started to pop in the pan.",
+     "ko": "팬에서 옥수수가 펑펑 튀기 시작했어요."
+    },
+    {
+     "en": "Don't pop the bubble wrap too loudly.",
+     "ko": "뽁뽁이를 너무 시끄럽게 터트리지 마."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "burst",
+     "ko": "터지다",
+     "en": "Burst into tears."
+    },
+    {
+     "type": "연관어",
+     "word": "balloon",
+     "ko": "풍선",
+     "en": "A red balloon."
+    },
+    {
+     "type": "연관어",
+     "word": "music",
+     "ko": "음악",
+     "en": "Listen to music."
+    },
+    {
+     "type": "연관어",
+     "word": "sudden",
+     "ko": "갑작스러운",
+     "en": "A sudden change."
+    },
+    {
+     "type": "연관어",
+     "word": "appear",
+     "ko": "나타나다",
+     "en": "Appear suddenly."
+    },
+    {
+     "type": "연관어",
+     "word": "popular",
+     "ko": "인기 있는",
+     "en": "A popular song."
+    }
+   ]
+  },
+  "497": {
+   "word": "client",
+   "overview": [
+    "client는 '고객', '의뢰인'이라는 뜻의 명사입니다. 서비스나 전문적인 도움을 받는 사람입니다.",
+    "a law firm's client(법률 사무소의 의뢰인), meet a client(고객을 만나다)처럼 씁니다.",
+    "customer가 물건을 사는 손님이라면, client는 변호사, 회계사 등 전문가의 서비스를 받는 사람에게 더 자주 씁니다.",
+    "컴퓨터에서는 서버에 연결하는 '클라이언트'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "customer",
+     "en": "A store customer.",
+     "ko": "가게 손님."
+    },
+    {
+     "word": "patient",
+     "en": "The doctor's patient.",
+     "ko": "의사의 환자."
+    }
+   ],
+   "etymology": [
+    "client는 라틴어 cliens(따르는 사람, 보호받는 사람)에서 온 단어입니다.",
+    "clinare(기울다, 몸을 굽히다)에서 나온 말로, decline(거절하다, '몸을 뒤로 기울이다')과 같은 가족입니다.",
+    "옛 로마에서 힘 있는 사람의 보호를 받던 사람을 cliens라고 불렀습니다.",
+    "그 뜻이 넓어져 '전문가의 도움을 받는 사람'이 되었습니다.",
+    "client의 핵심 이미지는 '전문가에게 도움을 요청하는 의뢰인 💼'입니다."
+   ],
+   "meanings": [
+    "고객, 의뢰인",
+    "(컴퓨터) 클라이언트"
+   ],
+   "examples": [
+    {
+     "en": "The lawyer met with her client.",
+     "ko": "그 변호사는 의뢰인을 만났어요."
+    },
+    {
+     "en": "Our company has many loyal clients.",
+     "ko": "우리 회사는 충성도 높은 고객이 많아요."
+    },
+    {
+     "en": "The designer showed her work to the client.",
+     "ko": "그 디자이너는 고객에게 자신의 작품을 보여 줬어요."
+    },
+    {
+     "en": "He is our biggest client this year.",
+     "ko": "그는 올해 우리의 가장 큰 고객이에요."
+    },
+    {
+     "en": "The accountant handles many clients' taxes.",
+     "ko": "그 회계사는 많은 고객의 세금을 처리해요."
+    },
+    {
+     "en": "Please keep the client's information private.",
+     "ko": "고객의 정보를 비공개로 유지해 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "customer",
+     "ko": "손님, 고객",
+     "en": "A regular customer."
+    },
+    {
+     "type": "연관어",
+     "word": "service",
+     "ko": "서비스",
+     "en": "Great service."
+    },
+    {
+     "type": "연관어",
+     "word": "lawyer",
+     "ko": "변호사",
+     "en": "Hire a lawyer."
+    },
+    {
+     "type": "연관어",
+     "word": "business",
+     "ko": "사업",
+     "en": "A small business."
+    },
+    {
+     "type": "연관어",
+     "word": "meeting",
+     "ko": "회의",
+     "en": "A client meeting."
+    },
+    {
+     "type": "연관어",
+     "word": "contract",
+     "ko": "계약",
+     "en": "Sign a contract."
+    }
+   ]
+  },
+  "311": {
+   "word": "bomb",
+   "overview": [
+    "bomb은 '폭탄'이라는 뜻의 명사이자 '폭격하다'라는 뜻의 동사입니다.",
+    "drop a bomb(폭탄을 투하하다)처럼 씁니다.",
+    "구어에서 '완전히 실패한 것'을 뜻하기도 합니다. The movie was a bomb.(그 영화는 완전히 망했어요.)",
+    "발음할 때 b는 소리 내지 않아서 '밤'이라고 읽습니다."
+   ],
+   "easy": [
+    {
+     "word": "explosive",
+     "en": "A dangerous explosive.",
+     "ko": "위험한 폭발물."
+    },
+    {
+     "word": "explode",
+     "en": "Explode loudly.",
+     "ko": "크게 폭발하다."
+    }
+   ],
+   "etymology": [
+    "bomb은 그리스어 bombos(윙윙거리는 소리, 쿵 소리)에서 온 단어입니다.",
+    "폭발할 때 나는 큰 소리를 흉내 낸 말이라고 봅니다.",
+    "프랑스어와 이탈리아어를 거쳐 영어에 들어왔습니다.",
+    "1500년대 화약 무기가 발달하면서 '폭탄'이라는 뜻으로 자리 잡았습니다.",
+    "bomb의 핵심 이미지는 '쾅 하고 터지는 위험한 무기 💣'입니다."
+   ],
+   "meanings": [
+    "폭탄 (명사)",
+    "폭격하다 (동사)",
+    "(구어) 완전한 실패 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The bomb exploded far away.",
+     "ko": "그 폭탄은 멀리서 폭발했어요."
+    },
+    {
+     "en": "Planes bombed the city during the war.",
+     "ko": "전쟁 중에 비행기들이 그 도시를 폭격했어요."
+    },
+    {
+     "en": "Police found a suspicious bomb.",
+     "ko": "경찰이 수상한 폭탄을 발견했어요."
+    },
+    {
+     "en": "The movie was a total bomb at the box office.",
+     "ko": "그 영화는 흥행에서 완전히 망했어요."
+    },
+    {
+     "en": "The building was destroyed by a bomb.",
+     "ko": "그 건물은 폭탄에 의해 파괴됐어요."
+    },
+    {
+     "en": "Bomb threats are taken very seriously.",
+     "ko": "폭탄 협박은 아주 심각하게 받아들여져요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "explode",
+     "ko": "폭발하다",
+     "en": "Explode with force."
+    },
+    {
+     "type": "연관어",
+     "word": "explosive",
+     "ko": "폭발물",
+     "en": "A hidden explosive."
+    },
+    {
+     "type": "연관어",
+     "word": "war",
+     "ko": "전쟁",
+     "en": "During the war."
+    },
+    {
+     "type": "연관어",
+     "word": "attack",
+     "ko": "공격",
+     "en": "A surprise attack."
+    },
+    {
+     "type": "연관어",
+     "word": "destroy",
+     "ko": "파괴하다",
+     "en": "Destroy a building."
+    },
+    {
+     "type": "연관어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In great danger."
+    }
+   ]
+  },
+  "2615": {
+   "word": "suspect",
+   "overview": [
+    "suspect[동사 səspékt]는 '의심하다'라는 뜻의 동사이고, suspect[명사 sʌ́spekt]는 '용의자'라는 뜻의 명사입니다.",
+    "I suspect he lied.(나는 그가 거짓말했다고 의심해요.)처럼 씁니다.",
+    "the main suspect(주요 용의자)처럼 경찰 수사에서 자주 씁니다.",
+    "형용사로는 '의심스러운'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "doubt",
+     "en": "Doubt his words.",
+     "ko": "그의 말을 의심하다."
+    },
+    {
+     "word": "criminal",
+     "en": "A wanted criminal.",
+     "ko": "수배 중인 범인."
+    }
+   ],
+   "etymology": [
+    "suspect는 라틴어 suspicere(위를 올려다보다, 의심하다)에서 온 단어입니다.",
+    "sub(아래에서)와 specere(보다)가 합쳐진 말입니다.",
+    "'아래에서 위를 몰래 올려다보며 살피다'라는 뜻에서 '의심하다'가 되었습니다.",
+    "respect(존경, '다시 보다'), spectator(관중, '보는 사람')도 같은 뿌리에서 나온 단어들입니다.",
+    "suspect의 핵심 이미지는 '눈을 가늘게 뜨고 의심의 눈초리를 보내는 것 🧐'입니다."
+   ],
+   "meanings": [
+    "의심하다 (동사)",
+    "용의자 (명사)",
+    "의심스러운 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "I suspect he is not telling the truth.",
+     "ko": "나는 그가 진실을 말하지 않는다고 의심해요."
+    },
+    {
+     "en": "The police arrested a suspect.",
+     "ko": "경찰이 용의자를 체포했어요."
+    },
+    {
+     "en": "She suspected something was wrong.",
+     "ko": "그녀는 뭔가 잘못됐다고 의심했어요."
+    },
+    {
+     "en": "He became the main suspect in the case.",
+     "ko": "그는 그 사건의 주요 용의자가 되었어요."
+    },
+    {
+     "en": "The package looked suspect to the guard.",
+     "ko": "그 소포는 경비원에게 의심스러워 보였어요."
+    },
+    {
+     "en": "Detectives questioned all the suspects.",
+     "ko": "형사들이 모든 용의자를 심문했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "doubt",
+     "ko": "의심하다",
+     "en": "Doubt the story."
+    },
+    {
+     "type": "연관어",
+     "word": "criminal",
+     "ko": "범인, 범죄자",
+     "en": "A dangerous criminal."
+    },
+    {
+     "type": "연관어",
+     "word": "detective",
+     "ko": "형사, 탐정",
+     "en": "A sharp detective."
+    },
+    {
+     "type": "연관어",
+     "word": "guilty",
+     "ko": "유죄인",
+     "en": "Found guilty."
+    },
+    {
+     "type": "연관어",
+     "word": "arrest",
+     "ko": "체포하다",
+     "en": "Arrest the thief."
+    },
+    {
+     "type": "연관어",
+     "word": "evidence",
+     "ko": "증거",
+     "en": "Strong evidence."
+    }
+   ]
   }
  }
 }
