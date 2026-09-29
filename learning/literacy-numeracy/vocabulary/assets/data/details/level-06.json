@@ -5804,6 +5804,1934 @@
      "en": "Strong evidence."
     }
    ]
+  },
+  "1010": {
+   "word": "extra",
+   "overview": [
+    "extra는 '추가의', '여분의'라는 뜻의 형용사이자 '특별히'라는 뜻의 부사입니다.",
+    "extra time(추가 시간), an extra chair(여분의 의자)처럼 씁니다.",
+    "부사로는 '더욱', '특별히'라는 뜻입니다. extra careful(특별히 조심하는)",
+    "명사로는 영화의 '단역 배우'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "additional",
+     "en": "Additional time.",
+     "ko": "추가 시간."
+    },
+    {
+     "word": "more",
+     "en": "One more.",
+     "ko": "하나 더."
+    }
+   ],
+   "etymology": [
+    "extra는 라틴어 extra(바깥에, ~ 이외에)에서 온 단어입니다.",
+    "exterior(외부의), extraordinary(비범한, '평범함 밖의')와 같은 뿌리입니다.",
+    "'정해진 범위 밖에 더해진 것'이라는 뜻에서 '추가의'가 되었습니다.",
+    "1700년대쯤부터 지금의 뜻으로 널리 쓰이기 시작했습니다.",
+    "extra의 핵심 이미지는 '기본보다 하나 더 딸려 오는 보너스 ➕'입니다."
+   ],
+   "meanings": [
+    "추가의, 여분의 (형용사)",
+    "특별히, 더욱 (부사)",
+    "단역 배우 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "We need an extra chair for the guest.",
+     "ko": "손님을 위해 여분의 의자가 필요해요."
+    },
+    {
+     "en": "Please be extra careful with this box.",
+     "ko": "이 상자는 특별히 조심해 주세요."
+    },
+    {
+     "en": "I got extra time to finish my homework.",
+     "ko": "나는 숙제를 끝낼 추가 시간을 받았어요."
+    },
+    {
+     "en": "Would you like extra cheese on your pizza?",
+     "ko": "피자에 치즈 추가하시겠어요?"
+    },
+    {
+     "en": "He worked as an extra in the movie.",
+     "ko": "그는 그 영화에서 단역 배우로 일했어요."
+    },
+    {
+     "en": "Bring extra socks for the camping trip.",
+     "ko": "캠핑 여행에 여분의 양말을 가져와."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "additional",
+     "ko": "추가의",
+     "en": "Additional cost."
+    },
+    {
+     "type": "연관어",
+     "word": "more",
+     "ko": "더 많은",
+     "en": "One more piece."
+    },
+    {
+     "type": "연관어",
+     "word": "spare",
+     "ko": "여분의",
+     "en": "A spare key."
+    },
+    {
+     "type": "연관어",
+     "word": "bonus",
+     "ko": "보너스",
+     "en": "A bonus gift."
+    },
+    {
+     "type": "연관어",
+     "word": "special",
+     "ko": "특별한",
+     "en": "A special day."
+    },
+    {
+     "type": "연관어",
+     "word": "careful",
+     "ko": "조심스러운",
+     "en": "Be careful."
+    }
+   ]
+  },
+  "2853": {
+   "word": "van",
+   "overview": [
+    "van은 '밴', '승합차'라는 뜻의 명사입니다. 짐이나 사람을 여럿 실을 수 있는 상자 모양의 자동차입니다.",
+    "a delivery van(배달용 밴)처럼 씁니다.",
+    "여러 사람이 함께 타는 큰 차나, 물건을 나르는 트럭 같은 차를 두루 가리킵니다.",
+    "이름의 일부로 쓰일 때는 Van Gogh(반 고흐)처럼 네덜란드 성씨에서 온 '~의'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "truck",
+     "en": "A delivery truck.",
+     "ko": "배달 트럭."
+    },
+    {
+     "word": "car",
+     "en": "A big car.",
+     "ko": "큰 자동차."
+    }
+   ],
+   "etymology": [
+    "van은 caravan(대상, 짐마차 행렬)을 줄인 말입니다.",
+    "caravan은 페르시아어 kārwān(짐을 실은 무리)에서 왔습니다.",
+    "1800년대에 짐을 나르는 '큰 마차'를 뜻하는 말로 줄여 쓰이기 시작했습니다.",
+    "자동차가 발명된 후에도 짐을 나르는 상자 모양 차에 이 이름이 그대로 남았습니다.",
+    "van의 핵심 이미지는 '짐과 사람을 넉넉히 실을 수 있는 상자 모양 차 🚐'입니다."
+   ],
+   "meanings": [
+    "밴, 승합차",
+    "화물차"
+   ],
+   "examples": [
+    {
+     "en": "The delivery van arrived at noon.",
+     "ko": "배달용 밴이 정오에 도착했어요."
+    },
+    {
+     "en": "We packed the van with camping gear.",
+     "ko": "우리는 밴에 캠핑 장비를 실었어요."
+    },
+    {
+     "en": "Seven people can fit in this van.",
+     "ko": "이 밴에는 일곱 명이 탈 수 있어요."
+    },
+    {
+     "en": "The school van picked us up this morning.",
+     "ko": "학교 밴이 오늘 아침 우리를 태우러 왔어요."
+    },
+    {
+     "en": "He drives a moving van for his job.",
+     "ko": "그는 일 때문에 이삿짐 밴을 운전해요."
+    },
+    {
+     "en": "The ice cream van plays a happy tune.",
+     "ko": "아이스크림 밴은 즐거운 곡을 틀어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "truck",
+     "ko": "트럭",
+     "en": "A moving truck."
+    },
+    {
+     "type": "연관어",
+     "word": "car",
+     "ko": "자동차",
+     "en": "A family car."
+    },
+    {
+     "type": "연관어",
+     "word": "delivery",
+     "ko": "배달",
+     "en": "Fast delivery."
+    },
+    {
+     "type": "연관어",
+     "word": "drive",
+     "ko": "운전하다",
+     "en": "Drive carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "vehicle",
+     "ko": "차량",
+     "en": "A large vehicle."
+    },
+    {
+     "type": "연관어",
+     "word": "cargo",
+     "ko": "화물",
+     "en": "Carry cargo."
+    }
+   ]
+  },
+  "2954": {
+   "word": "wild",
+   "overview": [
+    "wild는 '야생의'라는 뜻의 형용사입니다. 사람이 기르지 않고 자연 속에서 자라거나 사는 것을 말합니다.",
+    "a wild animal(야생 동물), grow wild(야생으로 자라다)처럼 씁니다.",
+    "'거친', '난폭한'이라는 뜻으로도 씁니다. a wild party(왁자지껄한 파티)",
+    "명사로는 the wild(야생, 자연)라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "untamed",
+     "en": "An untamed horse.",
+     "ko": "길들여지지 않은 말."
+    },
+    {
+     "word": "nature",
+     "en": "Wild nature.",
+     "ko": "야생 자연."
+    }
+   ],
+   "etymology": [
+    "wild는 고대 영어 wilde(길들여지지 않은, 자연 그대로의)에서 온 단어입니다.",
+    "독일어 wild(야생의)와 같은 뿌리입니다.",
+    "'사람 손이 닿지 않은 자연 그대로의'라는 뜻이 그대로 이어져 왔습니다.",
+    "wilderness(야생 지역, 황무지)도 같은 가족 단어입니다.",
+    "wild의 핵심 이미지는 '누구의 손도 타지 않은 자유로운 자연 🦁'입니다."
+   ],
+   "meanings": [
+    "야생의 (형용사)",
+    "거친, 난폭한 (형용사)",
+    "야생, 자연 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Lions live in the wild in Africa.",
+     "ko": "사자는 아프리카 야생에서 살아요."
+    },
+    {
+     "en": "These flowers grow wild in the field.",
+     "ko": "이 꽃들은 들판에서 야생으로 자라요."
+    },
+    {
+     "en": "The kids went wild at the party.",
+     "ko": "아이들이 파티에서 신나서 흥분했어요."
+    },
+    {
+     "en": "We saw wild horses running free.",
+     "ko": "우리는 야생마들이 자유롭게 달리는 것을 봤어요."
+    },
+    {
+     "en": "The animal was released back into the wild.",
+     "ko": "그 동물은 다시 야생으로 방생되었어요."
+    },
+    {
+     "en": "It was a wild storm last night.",
+     "ko": "어젯밤은 거친 폭풍이 몰아쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "tame",
+     "ko": "길들여진",
+     "en": "A tame cat."
+    },
+    {
+     "type": "연관어",
+     "word": "nature",
+     "ko": "자연",
+     "en": "Nature is beautiful."
+    },
+    {
+     "type": "연관어",
+     "word": "animal",
+     "ko": "동물",
+     "en": "A wild animal."
+    },
+    {
+     "type": "연관어",
+     "word": "forest",
+     "ko": "숲",
+     "en": "A dense forest."
+    },
+    {
+     "type": "연관어",
+     "word": "free",
+     "ko": "자유로운",
+     "en": "Set free."
+    },
+    {
+     "type": "연관어",
+     "word": "jungle",
+     "ko": "정글",
+     "en": "Deep in the jungle."
+    }
+   ]
+  },
+  "1658": {
+   "word": "medical",
+   "overview": [
+    "medical은 '의학의', '의료의'라는 뜻의 형용사입니다.",
+    "medical care(의료 서비스), a medical checkup(건강 검진)처럼 씁니다.",
+    "medical school(의과 대학), a medical doctor(의사)처럼 다른 말과 함께 자주 씁니다.",
+    "영국에서는 명사로 '건강 검진'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "health",
+     "en": "Good health.",
+     "ko": "좋은 건강."
+    },
+    {
+     "word": "doctor",
+     "en": "See a doctor.",
+     "ko": "의사를 만나다."
+    }
+   ],
+   "etymology": [
+    "medical은 라틴어 medicalis(치료의)에서 온 단어입니다.",
+    "medicus(의사)에서 나온 말로, medicine(약, 의학)과 같은 가족입니다.",
+    "'병을 치료하는 것과 관련된'이라는 뜻이 그대로 이어져 왔습니다.",
+    "remedy(치료법)도 같은 뿌리에서 나온 단어입니다.",
+    "medical의 핵심 이미지는 '청진기를 든 의사와 병원 🩺'입니다."
+   ],
+   "meanings": [
+    "의학의, 의료의 (형용사)",
+    "(영국) 건강 검진 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She works in the medical field.",
+     "ko": "그녀는 의료 분야에서 일해요."
+    },
+    {
+     "en": "He needs medical attention right away.",
+     "ko": "그는 즉시 의료 처치가 필요해요."
+    },
+    {
+     "en": "I have a medical checkup next week.",
+     "ko": "나는 다음 주에 건강 검진이 있어요."
+    },
+    {
+     "en": "Medical students study for many years.",
+     "ko": "의대생은 여러 해 동안 공부해요."
+    },
+    {
+     "en": "The hospital has advanced medical equipment.",
+     "ko": "그 병원은 첨단 의료 장비를 갖추고 있어요."
+    },
+    {
+     "en": "Please bring your medical records.",
+     "ko": "의료 기록을 가져와 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "health",
+     "ko": "건강",
+     "en": "Good health."
+    },
+    {
+     "type": "연관어",
+     "word": "doctor",
+     "ko": "의사",
+     "en": "A kind doctor."
+    },
+    {
+     "type": "연관어",
+     "word": "hospital",
+     "ko": "병원",
+     "en": "Go to the hospital."
+    },
+    {
+     "type": "연관어",
+     "word": "medicine",
+     "ko": "약, 의학",
+     "en": "Take medicine."
+    },
+    {
+     "type": "연관어",
+     "word": "nurse",
+     "ko": "간호사",
+     "en": "A caring nurse."
+    },
+    {
+     "type": "연관어",
+     "word": "treatment",
+     "ko": "치료",
+     "en": "Medical treatment."
+    }
+   ]
+  },
+  "2368": {
+   "word": "shame",
+   "overview": [
+    "shame은 '수치심', '창피함'이라는 뜻의 명사이자 '창피하게 하다'라는 뜻의 동사입니다.",
+    "feel shame(수치심을 느끼다), What a shame!(정말 안타깝네요!)처럼 씁니다.",
+    "What a shame!은 '정말 안타깝다', '아쉽다'라는 뜻으로 흔히 씁니다.",
+    "형용사 shameful은 '부끄러운', '수치스러운'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "embarrassed",
+     "en": "Feel embarrassed.",
+     "ko": "창피함을 느끼다."
+    },
+    {
+     "word": "too bad",
+     "en": "That's too bad.",
+     "ko": "그거 참 아쉽네."
+    }
+   ],
+   "etymology": [
+    "shame은 고대 영어 scamu(수치심, 부끄러움)에서 온 단어입니다.",
+    "'덮다', '가리다'를 뜻하는 아주 옛말과 이어진다고 봅니다.",
+    "부끄러워서 얼굴을 가리고 싶은 마음에서 나온 뜻이라고 봅니다.",
+    "천 년 넘게 비슷한 뜻으로 쓰여 온 단어입니다.",
+    "shame의 핵심 이미지는 '얼굴이 빨개져 고개를 숙이고 싶은 부끄러움 😳'입니다."
+   ],
+   "meanings": [
+    "수치심, 창피함 (명사)",
+    "(what a shame) 안타까운 일 (명사)",
+    "창피하게 하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She felt shame after her mistake.",
+     "ko": "그녀는 실수 후 수치심을 느꼈어요."
+    },
+    {
+     "en": "What a shame you can't come to the party!",
+     "ko": "파티에 못 온다니 정말 아쉽네요!"
+    },
+    {
+     "en": "He has no shame about lying.",
+     "ko": "그는 거짓말하는 것에 부끄러움이 없어요."
+    },
+    {
+     "en": "Don't shame others for their mistakes.",
+     "ko": "다른 사람들의 실수에 대해 창피를 주지 마."
+    },
+    {
+     "en": "It's a shame that the trip got canceled.",
+     "ko": "여행이 취소된 건 아쉬운 일이에요."
+    },
+    {
+     "en": "Shame on you for breaking your promise!",
+     "ko": "약속을 어기다니 부끄러운 줄 알아!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "embarrassment",
+     "ko": "당혹감",
+     "en": "Feel embarrassment."
+    },
+    {
+     "type": "파생어",
+     "word": "shameful",
+     "ko": "부끄러운",
+     "en": "A shameful act."
+    },
+    {
+     "type": "연관어",
+     "word": "guilt",
+     "ko": "죄책감",
+     "en": "Feel guilt."
+    },
+    {
+     "type": "연관어",
+     "word": "pride",
+     "ko": "자부심",
+     "en": "Take pride."
+    },
+    {
+     "type": "연관어",
+     "word": "sorry",
+     "ko": "미안한",
+     "en": "Feel sorry."
+    },
+    {
+     "type": "연관어",
+     "word": "blush",
+     "ko": "얼굴이 빨개지다",
+     "en": "Blush shyly."
+    }
+   ]
+  },
+  "164": {
+   "word": "asleep",
+   "overview": [
+    "asleep은 '잠든', '잠이 든'이라는 뜻의 형용사입니다.",
+    "fall asleep(잠들다), be fast asleep(깊이 잠들어 있다)처럼 씁니다.",
+    "명사 앞에는 쓰지 않고, be동사 뒤에서만 씁니다. an asleep baby라고 하지 않고 a sleeping baby라고 합니다.",
+    "다리 등이 '저린' 상태를 뜻하기도 합니다. My foot is asleep.(발이 저려요.)"
+   ],
+   "easy": [
+    {
+     "word": "sleeping",
+     "en": "A sleeping baby.",
+     "ko": "잠자는 아기."
+    },
+    {
+     "word": "fall asleep",
+     "en": "Fall asleep fast.",
+     "ko": "빨리 잠들다."
+    }
+   ],
+   "etymology": [
+    "asleep은 on(안에)과 sleep(잠)이 합쳐진 말입니다.",
+    "고대 영어 on slæpe(잠 안에)에서 온 단어입니다.",
+    "'잠 속에 들어가 있는 상태'라는 뜻이 그대로 이어져 왔습니다.",
+    "alive(살아 있는)도 on과 life가 합쳐진 비슷한 방식으로 만들어진 단어입니다.",
+    "asleep의 핵심 이미지는 '이불을 덮고 곤히 잠든 모습 😴'입니다."
+   ],
+   "meanings": [
+    "잠든, 잠이 든",
+    "(팔·다리 등이) 저린"
+   ],
+   "examples": [
+    {
+     "en": "The baby fell asleep quickly.",
+     "ko": "아기가 빨리 잠들었어요."
+    },
+    {
+     "en": "He was fast asleep on the couch.",
+     "ko": "그는 소파에서 깊이 잠들어 있었어요."
+    },
+    {
+     "en": "I couldn't fall asleep last night.",
+     "ko": "나는 어젯밤에 잠들 수가 없었어요."
+    },
+    {
+     "en": "My leg is asleep from sitting too long.",
+     "ko": "너무 오래 앉아 있어서 다리가 저려요."
+    },
+    {
+     "en": "She stayed asleep through the storm.",
+     "ko": "그녀는 폭풍이 치는 동안에도 계속 잠들어 있었어요."
+    },
+    {
+     "en": "Try not to wake him. He's asleep.",
+     "ko": "그를 깨우지 않도록 해. 자고 있어."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sleeping",
+     "ko": "자고 있는",
+     "en": "A sleeping cat."
+    },
+    {
+     "type": "반의어",
+     "word": "awake",
+     "ko": "깨어 있는",
+     "en": "Wide awake."
+    },
+    {
+     "type": "연관어",
+     "word": "sleep",
+     "ko": "잠, 자다",
+     "en": "Get some sleep."
+    },
+    {
+     "type": "연관어",
+     "word": "tired",
+     "ko": "피곤한",
+     "en": "Feel tired."
+    },
+    {
+     "type": "연관어",
+     "word": "dream",
+     "ko": "꿈꾸다",
+     "en": "Dream sweetly."
+    },
+    {
+     "type": "연관어",
+     "word": "nap",
+     "ko": "낮잠",
+     "en": "Take a nap."
+    }
+   ]
+  },
+  "1590": {
+   "word": "local",
+   "overview": [
+    "local은 '지역의', '현지의'라는 뜻의 형용사입니다.",
+    "a local store(동네 가게), local news(지역 뉴스)처럼 씁니다.",
+    "'지역 주민'이라는 명사로도 씁니다. Ask a local for directions.(현지인에게 길을 물어봐.)",
+    "부사 locally(그 지역에서)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "nearby",
+     "en": "A nearby shop.",
+     "ko": "가까운 가게."
+    },
+    {
+     "word": "hometown",
+     "en": "My hometown.",
+     "ko": "내 고향."
+    }
+   ],
+   "etymology": [
+    "local은 라틴어 localis(장소의)에서 온 단어입니다.",
+    "locus(장소)에서 나온 말로, location(위치)과 같은 가족입니다.",
+    "'특정 장소와 관련된'이라는 뜻이 '지역의', '현지의'로 이어졌습니다.",
+    "locate(위치를 찾다), dislocate(제자리에서 벗어나다)도 같은 뿌리입니다.",
+    "local의 핵심 이미지는 '우리 동네에서 벌어지는 익숙한 일 🏘️'입니다."
+   ],
+   "meanings": [
+    "지역의, 현지의 (형용사)",
+    "지역 주민 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I bought fruit at the local market.",
+     "ko": "나는 지역 시장에서 과일을 샀어요."
+    },
+    {
+     "en": "Ask a local for the best restaurant.",
+     "ko": "가장 좋은 식당은 현지인에게 물어봐."
+    },
+    {
+     "en": "The local news covered the festival.",
+     "ko": "지역 뉴스가 그 축제를 다뤘어요."
+    },
+    {
+     "en": "This is a local tradition in our town.",
+     "ko": "이건 우리 마을의 지역 전통이에요."
+    },
+    {
+     "en": "She attends the local school.",
+     "ko": "그녀는 지역 학교에 다녀요."
+    },
+    {
+     "en": "Locals recommended a quiet beach.",
+     "ko": "현지인들이 조용한 해변을 추천해 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "national",
+     "ko": "전국의",
+     "en": "National news."
+    },
+    {
+     "type": "연관어",
+     "word": "community",
+     "ko": "지역 사회",
+     "en": "A close community."
+    },
+    {
+     "type": "연관어",
+     "word": "neighborhood",
+     "ko": "동네",
+     "en": "A quiet neighborhood."
+    },
+    {
+     "type": "연관어",
+     "word": "hometown",
+     "ko": "고향",
+     "en": "Visit my hometown."
+    },
+    {
+     "type": "연관어",
+     "word": "region",
+     "ko": "지역",
+     "en": "This region."
+    },
+    {
+     "type": "연관어",
+     "word": "resident",
+     "ko": "주민",
+     "en": "A local resident."
+    }
+   ]
+  },
+  "773": {
+   "word": "deserve",
+   "overview": [
+    "deserve는 '~을 받을 자격이 있다', '~할 만하다'라는 뜻의 동사입니다.",
+    "You deserve a break.(너는 쉴 자격이 있어.)처럼 씁니다.",
+    "좋은 일과 나쁜 일 둘 다에 쓸 수 있습니다. He deserves punishment.(그는 벌을 받을 만해요.)",
+    "get what one deserves는 '자업자득이다'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "earn",
+     "en": "Earn a reward.",
+     "ko": "보상을 받을 만하다."
+    },
+    {
+     "word": "be worthy of",
+     "en": "Be worthy of praise.",
+     "ko": "칭찬받을 만하다."
+    }
+   ],
+   "etymology": [
+    "deserve는 라틴어 deservire(열심히 섬기다)에서 온 단어입니다.",
+    "de(완전히)와 servire(섬기다)가 합쳐진 말입니다.",
+    "servant(하인), service(봉사)와 같은 뿌리입니다.",
+    "'열심히 섬겨서 받을 만한 자격을 얻다'라는 뜻에서 지금의 뜻이 나왔습니다.",
+    "deserve의 핵심 이미지는 '노력한 만큼 받아 마땅한 보상 🏅'입니다."
+   ],
+   "meanings": [
+    "~을 받을 자격이 있다, ~할 만하다"
+   ],
+   "examples": [
+    {
+     "en": "You deserve a reward for your hard work.",
+     "ko": "너는 열심히 일한 것에 대한 보상을 받을 자격이 있어."
+    },
+    {
+     "en": "She deserves to be happy.",
+     "ko": "그녀는 행복해질 자격이 있어요."
+    },
+    {
+     "en": "He deserved to win the prize.",
+     "ko": "그는 그 상을 받을 자격이 있었어요."
+    },
+    {
+     "en": "This problem deserves careful attention.",
+     "ko": "이 문제는 신중한 주의를 받을 만해요."
+    },
+    {
+     "en": "They deserve credit for their effort.",
+     "ko": "그들은 노력에 대해 인정받을 자격이 있어요."
+    },
+    {
+     "en": "Everyone deserves a second chance.",
+     "ko": "모두는 두 번째 기회를 받을 자격이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "earn",
+     "ko": "얻다, 받을 자격을 얻다",
+     "en": "Earn respect."
+    },
+    {
+     "type": "연관어",
+     "word": "reward",
+     "ko": "보상",
+     "en": "A well-earned reward."
+    },
+    {
+     "type": "연관어",
+     "word": "worthy",
+     "ko": "가치 있는",
+     "en": "A worthy cause."
+    },
+    {
+     "type": "연관어",
+     "word": "praise",
+     "ko": "칭찬",
+     "en": "Deserve praise."
+    },
+    {
+     "type": "연관어",
+     "word": "punishment",
+     "ko": "벌",
+     "en": "Deserve punishment."
+    },
+    {
+     "type": "연관어",
+     "word": "effort",
+     "ko": "노력",
+     "en": "A lot of effort."
+    }
+   ]
+  },
+  "1228": {
+   "word": "grace",
+   "overview": [
+    "grace는 '우아함', '품위'라는 뜻의 명사입니다.",
+    "move with grace(우아하게 움직이다)처럼 씁니다.",
+    "종교에서는 '은혜', '자비'라는 뜻으로도 씁니다. by the grace of God(신의 은혜로)",
+    "여자 이름으로도 자주 쓰이는 단어입니다. 형용사 graceful은 '우아한'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "elegance",
+     "en": "Move with elegance.",
+     "ko": "우아하게 움직이다."
+    },
+    {
+     "word": "mercy",
+     "en": "Show mercy.",
+     "ko": "자비를 베풀다."
+    }
+   ],
+   "etymology": [
+    "grace는 라틴어 gratia(호의, 은혜)에서 온 단어입니다.",
+    "gratus(기쁜, 고마운)에서 나온 말로, grateful(고마워하는), gratitude(감사)와 같은 가족입니다.",
+    "'남에게서 받는 호의와 아름다움'이라는 뜻이 '우아함', '은혜'로 이어졌습니다.",
+    "여자 이름 Grace는 이 아름다운 뜻을 담아 지어졌습니다.",
+    "grace의 핵심 이미지는 '물 흐르듯 우아하게 움직이는 발레리나 🩰'입니다."
+   ],
+   "meanings": [
+    "우아함, 품위 (명사)",
+    "(종교) 은혜, 자비 (명사)",
+    "(사람 이름) 그레이스"
+   ],
+   "examples": [
+    {
+     "en": "The dancer moved with such grace.",
+     "ko": "그 무용수는 아주 우아하게 움직였어요."
+    },
+    {
+     "en": "She accepted the loss with grace.",
+     "ko": "그녀는 우아하게 패배를 받아들였어요."
+    },
+    {
+     "en": "Some people say grace before meals.",
+     "ko": "어떤 사람들은 식사 전에 감사 기도를 해요."
+    },
+    {
+     "en": "His graceful manners impressed everyone.",
+     "ko": "그의 우아한 태도는 모두에게 감명을 줬어요."
+    },
+    {
+     "en": "My friend's name is Grace.",
+     "ko": "내 친구 이름은 그레이스예요."
+    },
+    {
+     "en": "The swan glided across the lake with grace.",
+     "ko": "백조가 우아하게 호수를 미끄러지듯 지나갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "graceful",
+     "ko": "우아한",
+     "en": "A graceful move."
+    },
+    {
+     "type": "유의어",
+     "word": "elegance",
+     "ko": "우아함",
+     "en": "Natural elegance."
+    },
+    {
+     "type": "연관어",
+     "word": "beauty",
+     "ko": "아름다움",
+     "en": "Timeless beauty."
+    },
+    {
+     "type": "연관어",
+     "word": "mercy",
+     "ko": "자비",
+     "en": "Show mercy."
+    },
+    {
+     "type": "연관어",
+     "word": "gratitude",
+     "ko": "감사",
+     "en": "Show gratitude."
+    },
+    {
+     "type": "연관어",
+     "word": "dance",
+     "ko": "춤",
+     "en": "A graceful dance."
+    }
+   ]
+  },
+  "592": {
+   "word": "consider",
+   "overview": [
+    "consider는 '고려하다', '숙고하다'라는 뜻의 동사입니다.",
+    "consider the options(선택지를 고려하다)처럼 씁니다.",
+    "'~라고 여기다', '~로 간주하다'라는 뜻으로도 씁니다. I consider her a friend.(나는 그녀를 친구로 여겨요.)",
+    "명사 consideration(고려, 사려)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "think about",
+     "en": "Think about it.",
+     "ko": "그것에 대해 생각해."
+    },
+    {
+     "word": "regard",
+     "en": "Regard as important.",
+     "ko": "중요하게 여기다."
+    }
+   ],
+   "etymology": [
+    "consider는 라틴어 considerare(자세히 살펴보다)에서 온 단어입니다.",
+    "con(함께)과 sidus, sideris(별)가 합쳐진 말이라고 봅니다.",
+    "옛날 점성술사들이 별들을 자세히 관찰하며 미래를 살피던 데서 나온 말이라는 설이 있습니다.",
+    "'주의 깊게 자세히 살펴보다'라는 뜻이 '고려하다'로 이어졌습니다.",
+    "consider의 핵심 이미지는 '이쪽저쪽 꼼꼼히 따져 보는 신중한 생각 🤔'입니다."
+   ],
+   "meanings": [
+    "고려하다, 숙고하다",
+    "~라고 여기다, 간주하다"
+   ],
+   "examples": [
+    {
+     "en": "Please consider my suggestion.",
+     "ko": "제 제안을 고려해 주세요."
+    },
+    {
+     "en": "We should consider all the options.",
+     "ko": "우리는 모든 선택지를 고려해야 해요."
+    },
+    {
+     "en": "I consider him a close friend.",
+     "ko": "나는 그를 친한 친구로 여겨요."
+    },
+    {
+     "en": "She considered moving to a new city.",
+     "ko": "그녀는 새 도시로 이사하는 것을 고려했어요."
+    },
+    {
+     "en": "Consider the feelings of others.",
+     "ko": "다른 사람들의 감정을 배려해."
+    },
+    {
+     "en": "It's worth considering carefully.",
+     "ko": "그건 신중하게 고려할 가치가 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "think about",
+     "ko": "~에 대해 생각하다",
+     "en": "Think about plans."
+    },
+    {
+     "type": "파생어",
+     "word": "consideration",
+     "ko": "고려, 사려",
+     "en": "Give consideration."
+    },
+    {
+     "type": "연관어",
+     "word": "regard",
+     "ko": "여기다",
+     "en": "Regard highly."
+    },
+    {
+     "type": "연관어",
+     "word": "option",
+     "ko": "선택지",
+     "en": "A good option."
+    },
+    {
+     "type": "연관어",
+     "word": "decide",
+     "ko": "결정하다",
+     "en": "Decide carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "thoughtful",
+     "ko": "사려 깊은",
+     "en": "A thoughtful person."
+    }
+   ]
+  },
+  "1538": {
+   "word": "lay",
+   "overview": [
+    "lay는 '놓다', '눕히다'라는 뜻의 동사입니다. 무언가를 조심스럽게 내려놓는 것을 말합니다.",
+    "lay the book on the table(책을 탁자에 놓다)처럼 씁니다.",
+    "새가 '알을 낳다'라는 뜻으로도 씁니다. Hens lay eggs.(암탉은 알을 낳아요.)",
+    "lie(눕다, 놓여 있다)의 과거형과 철자가 같아서 헷갈리기 쉬우니 주의해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "put down",
+     "en": "Put it down.",
+     "ko": "그것을 내려놔."
+    },
+    {
+     "word": "place",
+     "en": "Place it here.",
+     "ko": "여기에 놔."
+    }
+   ],
+   "etymology": [
+    "lay는 고대 영어 lecgan(놓다, 눕히다)에서 온 단어입니다.",
+    "lie(눕다)와 같은 뿌리에서 나온 사역동사로, '눕게 만들다'라는 뜻이었습니다.",
+    "lie는 스스로 눕는 것이고, lay는 다른 것을 눕히는 것이라서 뜻이 다릅니다.",
+    "이 두 단어는 지금도 영어를 쓰는 사람들도 자주 헷갈리는 단어입니다.",
+    "lay의 핵심 이미지는 '조심스럽게 물건을 내려놓는 손 🖐️'입니다."
+   ],
+   "meanings": [
+    "놓다, 두다",
+    "눕히다",
+    "(알을) 낳다"
+   ],
+   "examples": [
+    {
+     "en": "Lay the blanket on the grass.",
+     "ko": "잔디 위에 담요를 깔아."
+    },
+    {
+     "en": "She laid the baby down gently.",
+     "ko": "그녀는 아기를 조심스럽게 눕혔어요."
+    },
+    {
+     "en": "Hens lay eggs every morning.",
+     "ko": "암탉은 매일 아침 알을 낳아요."
+    },
+    {
+     "en": "He laid his pen on the desk.",
+     "ko": "그는 책상에 펜을 놓았어요."
+    },
+    {
+     "en": "Please lay the table for dinner.",
+     "ko": "저녁을 위해 식탁을 차려 줘."
+    },
+    {
+     "en": "The bird laid three eggs in the nest.",
+     "ko": "그 새는 둥지에 알 세 개를 낳았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "lie",
+     "ko": "눕다 (혼동하기 쉬운 말)",
+     "en": "Lie down and rest."
+    },
+    {
+     "type": "연관어",
+     "word": "put",
+     "ko": "놓다",
+     "en": "Put it there."
+    },
+    {
+     "type": "연관어",
+     "word": "place",
+     "ko": "두다",
+     "en": "Place it carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "egg",
+     "ko": "알",
+     "en": "A fresh egg."
+    },
+    {
+     "type": "연관어",
+     "word": "set",
+     "ko": "놓다, 두다",
+     "en": "Set the table."
+    },
+    {
+     "type": "연관어",
+     "word": "flat",
+     "ko": "평평한",
+     "en": "Lay it flat."
+    }
+   ]
+  },
+  "1982": {
+   "word": "plenty",
+   "overview": [
+    "plenty는 '충분함', '풍부함'이라는 뜻의 명사입니다. plenty of는 '많은 ~', '충분한 ~'이라는 뜻으로 아주 자주 씁니다.",
+    "plenty of time(충분한 시간), plenty of food(충분한 음식)처럼 씁니다.",
+    "형용사처럼도 씁니다. There's plenty left.(많이 남아 있어요.)",
+    "a land of plenty(풍요의 땅)처럼 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "a lot",
+     "en": "A lot of time.",
+     "ko": "많은 시간."
+    },
+    {
+     "word": "enough",
+     "en": "Enough food.",
+     "ko": "충분한 음식."
+    }
+   ],
+   "etymology": [
+    "plenty는 라틴어 plenitas(가득함, 풍부함)에서 온 단어입니다.",
+    "plenus(가득한)에서 나온 말로, complete(완전한), full(가득 찬)과 같은 가족입니다.",
+    "'넘칠 만큼 가득한 양'이라는 뜻이 '충분함', '풍부함'으로 이어졌습니다.",
+    "plentiful(풍부한)도 같은 가족 단어입니다.",
+    "plenty의 핵심 이미지는 '넘칠 만큼 가득 찬 곳간 🌾'입니다."
+   ],
+   "meanings": [
+    "충분함, 풍부함 (명사)",
+    "(plenty of) 많은 ~"
+   ],
+   "examples": [
+    {
+     "en": "We have plenty of time before the movie.",
+     "ko": "영화 보기 전에 시간이 충분해요."
+    },
+    {
+     "en": "There's plenty of food for everyone.",
+     "ko": "모두를 위한 음식이 충분해요."
+    },
+    {
+     "en": "She has plenty of experience in teaching.",
+     "ko": "그녀는 가르치는 경험이 풍부해요."
+    },
+    {
+     "en": "Take as much as you like. There's plenty.",
+     "ko": "원하는 만큼 가져가. 많이 있어."
+    },
+    {
+     "en": "We got plenty of rain this summer.",
+     "ko": "이번 여름에 비가 충분히 왔어요."
+    },
+    {
+     "en": "There are plenty of stars in the sky tonight.",
+     "ko": "오늘 밤 하늘에는 별이 많아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "a lot",
+     "ko": "많은",
+     "en": "A lot of fun."
+    },
+    {
+     "type": "유의어",
+     "word": "enough",
+     "ko": "충분한",
+     "en": "Enough water."
+    },
+    {
+     "type": "파생어",
+     "word": "plentiful",
+     "ko": "풍부한",
+     "en": "A plentiful harvest."
+    },
+    {
+     "type": "연관어",
+     "word": "many",
+     "ko": "많은",
+     "en": "Many friends."
+    },
+    {
+     "type": "연관어",
+     "word": "abundant",
+     "ko": "풍부한",
+     "en": "Abundant resources."
+    },
+    {
+     "type": "연관어",
+     "word": "full",
+     "ko": "가득 찬",
+     "en": "A full basket."
+    }
+   ]
+  },
+  "1028": {
+   "word": "faith",
+   "overview": [
+    "faith는 '믿음', '신뢰'라는 뜻의 명사입니다.",
+    "have faith in(~에 대한 믿음이 있다), lose faith(믿음을 잃다)처럼 씁니다.",
+    "종교적인 '신앙심'이라는 뜻으로도 씁니다.",
+    "형용사 faithful은 '충실한', '믿음직한'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "trust",
+     "en": "Trust in her.",
+     "ko": "그녀를 믿는다."
+    },
+    {
+     "word": "belief",
+     "en": "A strong belief.",
+     "ko": "강한 믿음."
+    }
+   ],
+   "etymology": [
+    "faith는 라틴어 fides(믿음, 신뢰)에서 온 단어입니다.",
+    "fidere(믿다)에서 나온 말로, confidence(자신감), fidelity(충실함)와 같은 가족입니다.",
+    "'다른 사람이나 무언가를 굳게 믿는 마음'이라는 뜻이 그대로 이어져 왔습니다.",
+    "종교적인 '신앙'이라는 뜻도 여기서 자연스럽게 넓어졌습니다.",
+    "faith의 핵심 이미지는 '보이지 않아도 굳게 믿는 마음 🙏'입니다."
+   ],
+   "meanings": [
+    "믿음, 신뢰",
+    "(종교적) 신앙"
+   ],
+   "examples": [
+    {
+     "en": "I have faith in you.",
+     "ko": "나는 너를 믿어."
+    },
+    {
+     "en": "She never lost faith in her dream.",
+     "ko": "그녀는 자신의 꿈에 대한 믿음을 절대 잃지 않았어요."
+    },
+    {
+     "en": "Many people practice their faith every day.",
+     "ko": "많은 사람들은 매일 신앙생활을 해요."
+    },
+    {
+     "en": "He kept faith with his friends.",
+     "ko": "그는 친구들에게 신의를 지켰어요."
+    },
+    {
+     "en": "It takes faith to try something new.",
+     "ko": "새로운 것을 시도하려면 믿음이 필요해요."
+    },
+    {
+     "en": "Her faith in humanity remained strong.",
+     "ko": "인류에 대한 그녀의 믿음은 여전히 강했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "trust",
+     "ko": "신뢰",
+     "en": "Build trust."
+    },
+    {
+     "type": "유의어",
+     "word": "belief",
+     "ko": "믿음",
+     "en": "A firm belief."
+    },
+    {
+     "type": "파생어",
+     "word": "faithful",
+     "ko": "충실한",
+     "en": "A faithful friend."
+    },
+    {
+     "type": "연관어",
+     "word": "hope",
+     "ko": "희망",
+     "en": "Keep hope alive."
+    },
+    {
+     "type": "연관어",
+     "word": "religion",
+     "ko": "종교",
+     "en": "Practice a religion."
+    },
+    {
+     "type": "연관어",
+     "word": "confidence",
+     "ko": "자신감",
+     "en": "Full of confidence."
+    }
+   ]
+  },
+  "255": {
+   "word": "beg",
+   "overview": [
+    "beg는 '간청하다', '빌다'라는 뜻의 동사입니다.",
+    "beg for forgiveness(용서를 빌다)처럼 씁니다.",
+    "돈이나 음식을 '구걸하다'라는 뜻으로도 씁니다.",
+    "I beg your pardon.(다시 한번 말씀해 주시겠어요? / 죄송합니다.)이라는 정중한 표현으로도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "plead",
+     "en": "Plead for help.",
+     "ko": "도움을 간청하다."
+    },
+    {
+     "word": "ask desperately",
+     "en": "Ask desperately.",
+     "ko": "간절히 부탁하다."
+    }
+   ],
+   "etymology": [
+    "beg는 고대 영어 bedecian(간청하다, 구걸하다)에서 온 것으로 봅니다.",
+    "정확한 뿌리는 확실하지 않지만, '요청하다'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "beggar(거지)도 같은 가족에서 나온 단어입니다.",
+    "'간절히 부탁하다'라는 강한 뜻으로 오랫동안 쓰여 왔습니다.",
+    "beg의 핵심 이미지는 '두 손을 모으고 간절히 부탁하는 모습 🙏'입니다."
+   ],
+   "meanings": [
+    "간청하다, 애원하다",
+    "구걸하다"
+   ],
+   "examples": [
+    {
+     "en": "She begged him to stay.",
+     "ko": "그녀는 그에게 남아 달라고 애원했어요."
+    },
+    {
+     "en": "I beg you, please help me.",
+     "ko": "제발, 저를 도와주세요."
+    },
+    {
+     "en": "The dog begged for a treat.",
+     "ko": "개가 간식을 달라고 애원했어요."
+    },
+    {
+     "en": "He begged for a second chance.",
+     "ko": "그는 두 번째 기회를 간청했어요."
+    },
+    {
+     "en": "I beg your pardon, could you repeat that?",
+     "ko": "죄송한데, 그거 다시 말씀해 주시겠어요?"
+    },
+    {
+     "en": "The poor man begged on the street corner.",
+     "ko": "그 가난한 남자는 길모퉁이에서 구걸했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "plead",
+     "ko": "간청하다",
+     "en": "Plead for mercy."
+    },
+    {
+     "type": "연관어",
+     "word": "ask",
+     "ko": "부탁하다",
+     "en": "Ask for help."
+    },
+    {
+     "type": "연관어",
+     "word": "beggar",
+     "ko": "거지",
+     "en": "A poor beggar."
+    },
+    {
+     "type": "연관어",
+     "word": "forgiveness",
+     "ko": "용서",
+     "en": "Ask forgiveness."
+    },
+    {
+     "type": "연관어",
+     "word": "desperate",
+     "ko": "절박한",
+     "en": "A desperate plea."
+    },
+    {
+     "type": "연관어",
+     "word": "please",
+     "ko": "제발",
+     "en": "Please help."
+    }
+   ]
+  },
+  "2217": {
+   "word": "responsible",
+   "overview": [
+    "responsible은 '책임이 있는'이라는 뜻의 형용사입니다.",
+    "be responsible for(~에 대해 책임이 있다)처럼 씁니다.",
+    "'책임감 있는', '믿을 수 있는'이라는 뜻으로도 씁니다. a responsible student(책임감 있는 학생)",
+    "명사 responsibility(책임)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "in charge",
+     "en": "In charge of it.",
+     "ko": "그것을 담당하는."
+    },
+    {
+     "word": "reliable",
+     "en": "A reliable friend.",
+     "ko": "믿을 수 있는 친구."
+    }
+   ],
+   "etymology": [
+    "responsible은 라틴어 respondere(응답하다)에서 온 단어입니다.",
+    "re(다시)와 spondere(약속하다)가 합쳐진 말입니다.",
+    "response(응답), correspond(부합하다)도 같은 뿌리에서 나온 형제 단어들입니다.",
+    "'약속에 답할 수 있는', '결과에 답해야 하는'이라는 뜻에서 '책임이 있는'이 되었습니다.",
+    "responsible의 핵심 이미지는 '자신이 한 일에 끝까지 책임지는 태도 🙋'입니다."
+   ],
+   "meanings": [
+    "책임이 있는",
+    "책임감 있는, 믿을 수 있는",
+    "(사물이) ~의 원인이 되는"
+   ],
+   "examples": [
+    {
+     "en": "Who is responsible for this mess?",
+     "ko": "이 엉망진창인 상황은 누구 책임이에요?"
+    },
+    {
+     "en": "She is a very responsible student.",
+     "ko": "그녀는 아주 책임감 있는 학생이에요."
+    },
+    {
+     "en": "Heavy rain was responsible for the flood.",
+     "ko": "폭우가 홍수의 원인이었어요."
+    },
+    {
+     "en": "You are responsible for your own actions.",
+     "ko": "너는 자신의 행동에 책임이 있어."
+    },
+    {
+     "en": "He felt responsible for the team's loss.",
+     "ko": "그는 팀의 패배에 대해 책임을 느꼈어요."
+    },
+    {
+     "en": "Being a pet owner is a big responsibility.",
+     "ko": "반려동물을 기르는 것은 큰 책임이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "responsibility",
+     "ko": "책임",
+     "en": "Take responsibility."
+    },
+    {
+     "type": "유의어",
+     "word": "reliable",
+     "ko": "믿을 만한",
+     "en": "A reliable source."
+    },
+    {
+     "type": "연관어",
+     "word": "duty",
+     "ko": "의무",
+     "en": "A sense of duty."
+    },
+    {
+     "type": "연관어",
+     "word": "blame",
+     "ko": "탓하다",
+     "en": "Blame someone."
+    },
+    {
+     "type": "연관어",
+     "word": "trustworthy",
+     "ko": "신뢰할 수 있는",
+     "en": "A trustworthy friend."
+    },
+    {
+     "type": "연관어",
+     "word": "in charge",
+     "ko": "담당하는",
+     "en": "In charge of tasks."
+    }
+   ]
+  },
+  "1685": {
+   "word": "military",
+   "overview": [
+    "military는 '군사의', '군대의'라는 뜻의 형용사이자 '군대'라는 뜻의 명사입니다.",
+    "military training(군사 훈련), join the military(군대에 입대하다)처럼 씁니다.",
+    "육군, 해군, 공군을 모두 아우르는 넓은 뜻으로 씁니다.",
+    "army는 주로 '육군'을 뜻하지만, military는 군대 전체를 가리킵니다."
+   ],
+   "easy": [
+    {
+     "word": "army",
+     "en": "The whole army.",
+     "ko": "군대 전체."
+    },
+    {
+     "word": "soldier",
+     "en": "A young soldier.",
+     "ko": "젊은 군인."
+    }
+   ],
+   "etymology": [
+    "military는 라틴어 militaris(군인의)에서 온 단어입니다.",
+    "miles, militis(군인)에서 나온 말입니다.",
+    "'군인과 관련된 모든 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "militia(민병대)도 같은 뿌리에서 나온 단어입니다.",
+    "military의 핵심 이미지는 '나라를 지키는 육해공군 전체 🎖️'입니다."
+   ],
+   "meanings": [
+    "군사의, 군대의 (형용사)",
+    "군대 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "He served in the military for five years.",
+     "ko": "그는 5년 동안 군 복무를 했어요."
+    },
+    {
+     "en": "The country increased its military spending.",
+     "ko": "그 나라는 군사 예산을 늘렸어요."
+    },
+    {
+     "en": "Military training is very tough.",
+     "ko": "군사 훈련은 아주 힘들어요."
+    },
+    {
+     "en": "The military helped after the earthquake.",
+     "ko": "군대는 지진 후에 도왔어요."
+    },
+    {
+     "en": "She comes from a military family.",
+     "ko": "그녀는 군인 가족 출신이에요."
+    },
+    {
+     "en": "The base was under military control.",
+     "ko": "그 기지는 군의 통제하에 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "army",
+     "ko": "육군, 군대",
+     "en": "Join the army."
+    },
+    {
+     "type": "연관어",
+     "word": "soldier",
+     "ko": "군인",
+     "en": "A brave soldier."
+    },
+    {
+     "type": "연관어",
+     "word": "navy",
+     "ko": "해군",
+     "en": "Serve in the navy."
+    },
+    {
+     "type": "연관어",
+     "word": "war",
+     "ko": "전쟁",
+     "en": "During the war."
+    },
+    {
+     "type": "연관어",
+     "word": "weapon",
+     "ko": "무기",
+     "en": "A military weapon."
+    },
+    {
+     "type": "연관어",
+     "word": "base",
+     "ko": "기지",
+     "en": "A military base."
+    }
+   ]
+  },
+  "541": {
+   "word": "common",
+   "overview": [
+    "common은 '흔한', '공통의'라는 뜻의 형용사입니다.",
+    "a common mistake(흔한 실수), have common interests(공통의 관심사가 있다)처럼 씁니다.",
+    "in common은 '공통으로'라는 뜻의 표현입니다. We have a lot in common.(우리는 공통점이 많아요.)",
+    "'평범한'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "usual",
+     "en": "The usual way.",
+     "ko": "평소의 방식."
+    },
+    {
+     "word": "shared",
+     "en": "A shared goal.",
+     "ko": "공유하는 목표."
+    }
+   ],
+   "etymology": [
+    "common은 라틴어 communis(공유하는, 공동의)에서 온 단어입니다.",
+    "com(함께)과 munis(임무를 가진)가 합쳐진 말입니다.",
+    "community(공동체), communicate(의사소통하다)도 같은 뿌리에서 나온 형제 단어들입니다.",
+    "'모두가 함께 나누는 것'이라는 뜻에서 '흔한', '공통의'로 이어졌습니다.",
+    "common의 핵심 이미지는 '모두가 똑같이 가지고 있는 흔한 것 🤝'입니다."
+   ],
+   "meanings": [
+    "흔한, 보통의",
+    "공통의, 공유의"
+   ],
+   "examples": [
+    {
+     "en": "This is a common mistake among students.",
+     "ko": "이건 학생들 사이에서 흔한 실수예요."
+    },
+    {
+     "en": "We have a lot in common.",
+     "ko": "우리는 공통점이 많아요."
+    },
+    {
+     "en": "Cats are common pets in Korea.",
+     "ko": "고양이는 한국에서 흔한 반려동물이에요."
+    },
+    {
+     "en": "It's common to feel nervous before a test.",
+     "ko": "시험 전에 긴장하는 건 흔한 일이에요."
+    },
+    {
+     "en": "They share a common goal.",
+     "ko": "그들은 공통의 목표를 공유해요."
+    },
+    {
+     "en": "Common sense tells us to be careful.",
+     "ko": "상식적으로 우리는 조심해야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "usual",
+     "ko": "평소의",
+     "en": "The usual time."
+    },
+    {
+     "type": "반의어",
+     "word": "rare",
+     "ko": "드문",
+     "en": "A rare event."
+    },
+    {
+     "type": "연관어",
+     "word": "shared",
+     "ko": "공유된",
+     "en": "A shared room."
+    },
+    {
+     "type": "연관어",
+     "word": "ordinary",
+     "ko": "평범한",
+     "en": "An ordinary day."
+    },
+    {
+     "type": "연관어",
+     "word": "typical",
+     "ko": "전형적인",
+     "en": "A typical example."
+    },
+    {
+     "type": "연관어",
+     "word": "community",
+     "ko": "공동체",
+     "en": "Our community."
+    }
+   ]
+  },
+  "1494": {
+   "word": "justice",
+   "overview": [
+    "justice는 '정의', '공정함'이라는 뜻의 명사입니다.",
+    "fight for justice(정의를 위해 싸우다), a court of justice(사법 법원)처럼 씁니다.",
+    "형용사 just(공정한)에서 나온 명사입니다.",
+    "미국 대법원 판사도 justice라고 부릅니다."
+   ],
+   "easy": [
+    {
+     "word": "fairness",
+     "en": "Show fairness.",
+     "ko": "공정함을 보이다."
+    },
+    {
+     "word": "law",
+     "en": "Follow the law.",
+     "ko": "법을 따르다."
+    }
+   ],
+   "etymology": [
+    "justice는 라틴어 justitia(정의, 공정함)에서 온 단어입니다.",
+    "jus(법, 권리)에서 나온 말로, judge(판사), just(공정한)와 같은 가족입니다.",
+    "'법에 따라 옳고 그름을 바로잡는 것'이라는 뜻이 '정의'로 이어졌습니다.",
+    "injustice(불의)는 justice의 반대말입니다.",
+    "justice의 핵심 이미지는 '한쪽으로 기울지 않는 정의의 저울 ⚖️'입니다."
+   ],
+   "meanings": [
+    "정의, 공정함",
+    "사법, 재판",
+    "(미국) 대법원 판사"
+   ],
+   "examples": [
+    {
+     "en": "We should fight for justice.",
+     "ko": "우리는 정의를 위해 싸워야 해요."
+    },
+    {
+     "en": "The story is about justice and fairness.",
+     "ko": "그 이야기는 정의와 공정함에 관한 것이에요."
+    },
+    {
+     "en": "Justice was finally served.",
+     "ko": "마침내 정의가 실현됐어요."
+    },
+    {
+     "en": "The court seeks justice for the victims.",
+     "ko": "그 법원은 피해자들을 위한 정의를 추구해요."
+    },
+    {
+     "en": "Everyone deserves justice under the law.",
+     "ko": "모두는 법 아래 정의를 받을 자격이 있어요."
+    },
+    {
+     "en": "She works as a justice on the court.",
+     "ko": "그녀는 법원에서 판사로 일해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fairness",
+     "ko": "공정함",
+     "en": "Judge with fairness."
+    },
+    {
+     "type": "반의어",
+     "word": "injustice",
+     "ko": "불의",
+     "en": "Fight injustice."
+    },
+    {
+     "type": "연관어",
+     "word": "law",
+     "ko": "법",
+     "en": "Follow the law."
+    },
+    {
+     "type": "연관어",
+     "word": "judge",
+     "ko": "판사",
+     "en": "A wise judge."
+    },
+    {
+     "type": "연관어",
+     "word": "fair",
+     "ko": "공정한",
+     "en": "A fair decision."
+    },
+    {
+     "type": "연관어",
+     "word": "court",
+     "ko": "법정",
+     "en": "Go to court."
+    }
+   ]
+  },
+  "1271": {
+   "word": "hall",
+   "overview": [
+    "hall은 '홀', '복도'라는 뜻의 명사입니다. 큰 방이나 건물 안의 넓은 통로를 말합니다.",
+    "a concert hall(콘서트홀), walk down the hall(복도를 걸어가다)처럼 씁니다.",
+    "town hall(시청)처럼 공식 건물의 이름으로도 씁니다.",
+    "City Hall(시청)처럼 대문자로 쓰면 특정 건물 이름이 됩니다."
+   ],
+   "easy": [
+    {
+     "word": "corridor",
+     "en": "A long corridor.",
+     "ko": "긴 복도."
+    },
+    {
+     "word": "room",
+     "en": "A big room.",
+     "ko": "큰 방."
+    }
+   ],
+   "etymology": [
+    "hall은 고대 영어 heall(큰 방, 저택)에서 온 단어입니다.",
+    "'덮다', '숨기다'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "옛날에는 성이나 저택의 넓고 중요한 '큰 방'을 뜻했습니다.",
+    "지금은 학교, 콘서트장, 시청 등 여러 건물의 넓은 공간이나 복도를 가리킵니다.",
+    "hall의 핵심 이미지는 '높은 천장의 넓고 웅장한 홀 🏛️'입니다."
+   ],
+   "meanings": [
+    "홀, 넓은 방",
+    "복도",
+    "(town hall) 시청, 회관"
+   ],
+   "examples": [
+    {
+     "en": "The concert was held in a big hall.",
+     "ko": "그 콘서트는 큰 홀에서 열렸어요."
+    },
+    {
+     "en": "Walk down the hall to the classroom.",
+     "ko": "복도를 따라 걸어가서 교실로 가."
+    },
+    {
+     "en": "We went to the town hall for the meeting.",
+     "ko": "우리는 회의를 위해 시청에 갔어요."
+    },
+    {
+     "en": "The hall was decorated with balloons.",
+     "ko": "그 홀은 풍선으로 장식되어 있었어요."
+    },
+    {
+     "en": "Please don't run in the hall.",
+     "ko": "복도에서 뛰지 마세요."
+    },
+    {
+     "en": "The school hall was full of students.",
+     "ko": "학교 강당은 학생들로 가득했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "corridor",
+     "ko": "복도",
+     "en": "A narrow corridor."
+    },
+    {
+     "type": "연관어",
+     "word": "room",
+     "ko": "방",
+     "en": "A big room."
+    },
+    {
+     "type": "연관어",
+     "word": "building",
+     "ko": "건물",
+     "en": "A tall building."
+    },
+    {
+     "type": "연관어",
+     "word": "concert",
+     "ko": "콘서트",
+     "en": "A live concert."
+    },
+    {
+     "type": "연관어",
+     "word": "meeting",
+     "ko": "회의",
+     "en": "A staff meeting."
+    },
+    {
+     "type": "연관어",
+     "word": "auditorium",
+     "ko": "강당",
+     "en": "A school auditorium."
+    }
+   ]
+  },
+  "870": {
+   "word": "drug",
+   "overview": [
+    "drug은 '약', '약물'이라는 뜻의 명사입니다. 병을 치료하는 데 쓰는 물질을 말합니다.",
+    "take a drug(약을 먹다), a new drug(새로운 약)처럼 씁니다.",
+    "몸에 해로운 '마약'이라는 뜻으로도 씁니다. illegal drugs(불법 마약)",
+    "drugstore(약국, 미국식)처럼 다른 말과 함께도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "medicine",
+     "en": "Take medicine.",
+     "ko": "약을 먹다."
+    },
+    {
+     "word": "pill",
+     "en": "Swallow a pill.",
+     "ko": "알약을 삼키다."
+    }
+   ],
+   "etymology": [
+    "drug은 옛 프랑스어 drogue(약재, 재료)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "'몸에 영향을 주는 물질'이라는 뜻이 '약'과 '마약' 두 가지로 넓어졌습니다.",
+    "1300년대쯤부터 영어에서 쓰이기 시작했습니다.",
+    "drug의 핵심 이미지는 '병을 낫게 하는 약과 몸에 해로운 마약, 두 얼굴 💊'입니다."
+   ],
+   "meanings": [
+    "약, 약물 (명사)",
+    "마약 (명사)",
+    "약을 넣다, 마취시키다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The doctor gave her a drug for the pain.",
+     "ko": "의사가 그녀에게 통증을 위한 약을 줬어요."
+    },
+    {
+     "en": "Illegal drugs are dangerous and harmful.",
+     "ko": "불법 마약은 위험하고 해로워요."
+    },
+    {
+     "en": "This drug helps treat allergies.",
+     "ko": "이 약은 알레르기 치료에 도움을 줘요."
+    },
+    {
+     "en": "Say no to drugs.",
+     "ko": "마약은 절대 안 돼요."
+    },
+    {
+     "en": "Scientists developed a new drug for the disease.",
+     "ko": "과학자들이 그 병을 위한 새로운 약을 개발했어요."
+    },
+    {
+     "en": "Always follow the doctor's instructions for drugs.",
+     "ko": "약은 항상 의사의 지시를 따라야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "medicine",
+     "ko": "약",
+     "en": "Take medicine."
+    },
+    {
+     "type": "연관어",
+     "word": "pill",
+     "ko": "알약",
+     "en": "A small pill."
+    },
+    {
+     "type": "연관어",
+     "word": "doctor",
+     "ko": "의사",
+     "en": "See a doctor."
+    },
+    {
+     "type": "연관어",
+     "word": "pharmacy",
+     "ko": "약국",
+     "en": "Go to the pharmacy."
+    },
+    {
+     "type": "연관어",
+     "word": "illegal",
+     "ko": "불법의",
+     "en": "Illegal activity."
+    },
+    {
+     "type": "연관어",
+     "word": "treatment",
+     "ko": "치료",
+     "en": "A new treatment."
+    }
+   ]
   }
  }
 }
