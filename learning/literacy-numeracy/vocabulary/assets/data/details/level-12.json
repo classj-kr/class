@@ -3826,6 +3826,1918 @@
      "en": "Intense pressure."
     }
    ]
+  },
+  "2887": {
+   "word": "vital",
+   "overview": [
+    "vital은 '생명의, 활기 있는'이라는 뜻의 형용사입니다.",
+    "vital signs(생명 징후, 활력 징후)처럼 씁니다.",
+    "'(비유) 필수적인, 매우 중요한'이라는 뜻으로도 아주 자주 씁니다.",
+    "명사 vitality(활력, 생명력)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "essential",
+     "en": "An essential step.",
+     "ko": "필수적인 단계."
+    },
+    {
+     "word": "crucial",
+     "en": "A crucial decision.",
+     "ko": "중대한 결정."
+    }
+   ],
+   "etymology": [
+    "vital은 라틴어 vita(생명, 삶)에서 온 단어입니다.",
+    "vivere(살다)에서 나온 말로, survive(생존하다), vivid(생생한)와 같은 가족입니다.",
+    "'생명이 있고 살아 있음을 나타내는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "생명 유지에 꼭 필요한 것에서 '반드시 필요한, 매우 중요한'이라는 뜻으로 넓어졌습니다.",
+    "vital의 핵심 이미지는 '생명을 지탱하는 데 반드시 필요한 활력 ❤️'입니다."
+   ],
+   "meanings": [
+    "생명의, 활기 있는, 생기에 찬",
+    "(비유) 필수적인, 긴요한"
+   ],
+   "examples": [
+    {
+     "en": "Water is vital for all living things.",
+     "ko": "물은 모든 생명체에게 필수적이에요."
+    },
+    {
+     "en": "The nurse checked the patient's vital signs.",
+     "ko": "그 간호사는 그 환자의 활력 징후를 확인했어요."
+    },
+    {
+     "en": "Good communication is vital in any relationship.",
+     "ko": "좋은 소통은 어떤 관계에서든 매우 중요해요."
+    },
+    {
+     "en": "Sleep plays a vital role in maintaining health.",
+     "ko": "수면은 건강을 유지하는 데 중요한 역할을 해요."
+    },
+    {
+     "en": "The heart is a vital organ in the human body.",
+     "ko": "심장은 인체에서 생명 유지에 필수적인 장기예요."
+    },
+    {
+     "en": "Her vital energy inspired everyone around her.",
+     "ko": "그녀의 활기찬 에너지는 그녀 주위의 모두에게 영감을 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "essential",
+     "ko": "필수적인",
+     "en": "An essential skill."
+    },
+    {
+     "type": "파생어",
+     "word": "vitality",
+     "ko": "활력",
+     "en": "Youthful vitality."
+    },
+    {
+     "type": "연관어",
+     "word": "crucial",
+     "ko": "중대한",
+     "en": "A crucial moment."
+    },
+    {
+     "type": "연관어",
+     "word": "critical",
+     "ko": "결정적인",
+     "en": "A critical issue."
+    },
+    {
+     "type": "연관어",
+     "word": "necessary",
+     "ko": "필요한",
+     "en": "A necessary step."
+    },
+    {
+     "type": "연관어",
+     "word": "life",
+     "ko": "생명",
+     "en": "Save a life."
+    }
+   ]
+  },
+  "2229": {
+   "word": "retreat",
+   "overview": [
+    "retreat는 '후퇴'라는 뜻의 명사이자 동사입니다.",
+    "the army retreated(그 군대는 후퇴했다)처럼 씁니다.",
+    "'피정, 은거지'라는 뜻으로도 씁니다. (a mountain retreat, 산속 은신처)",
+    "위험이나 어려움을 피해 물러나는 것을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "withdraw",
+     "en": "Withdraw troops.",
+     "ko": "군대를 철수시키다."
+    },
+    {
+     "word": "hideaway",
+     "en": "A quiet hideaway.",
+     "ko": "조용한 은신처."
+    }
+   ],
+   "etymology": [
+    "retreat는 라틴어 retrahere(뒤로 끌다)에서 온 단어입니다.",
+    "re(뒤로)와 trahere(끌다)가 합쳐진 말로, attract(끌어당기다)와 같은 가족입니다.",
+    "'위험한 곳에서 뒤로 물러나 안전한 곳으로 물러서다'라는 뜻이 그대로 이어져 왔습니다.",
+    "군사적 후퇴뿐 아니라 조용히 쉬며 재충전하는 은신처를 가리키는 데도 씁니다.",
+    "retreat의 핵심 이미지는 '위험을 피해 조용하고 안전한 곳으로 물러서는 것 🏔️'입니다."
+   ],
+   "meanings": [
+    "후퇴",
+    "피정, 은거, 은신처"
+   ],
+   "examples": [
+    {
+     "en": "The army was forced to retreat under heavy fire.",
+     "ko": "그 군대는 심한 포격 아래서 후퇴할 수밖에 없었어요."
+    },
+    {
+     "en": "She spent the weekend at a peaceful mountain retreat.",
+     "ko": "그녀는 평화로운 산속 은신처에서 그 주말을 보냈어요."
+    },
+    {
+     "en": "The company organized a retreat for team building.",
+     "ko": "그 회사는 팀워크 강화를 위한 수련회를 조직했어요."
+    },
+    {
+     "en": "He retreated to his room after the argument.",
+     "ko": "그는 그 말다툼 후 자신의 방으로 물러났어요."
+    },
+    {
+     "en": "The enemy troops began a hasty retreat.",
+     "ko": "그 적군 부대는 급한 후퇴를 시작했어요."
+    },
+    {
+     "en": "She uses meditation as a retreat from stress.",
+     "ko": "그녀는 스트레스로부터의 도피처로 명상을 이용해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "withdraw",
+     "ko": "철수하다",
+     "en": "Withdraw quietly."
+    },
+    {
+     "type": "반의어",
+     "word": "advance",
+     "ko": "전진하다",
+     "en": "Advance forward."
+    },
+    {
+     "type": "연관어",
+     "word": "escape",
+     "ko": "탈출",
+     "en": "A quiet escape."
+    },
+    {
+     "type": "연관어",
+     "word": "shelter",
+     "ko": "피난처",
+     "en": "Seek shelter."
+    },
+    {
+     "type": "연관어",
+     "word": "hideaway",
+     "ko": "은신처",
+     "en": "A secret hideaway."
+    },
+    {
+     "type": "연관어",
+     "word": "surrender",
+     "ko": "항복하다",
+     "en": "Refuse to surrender."
+    }
+   ]
+  },
+  "869": {
+   "word": "drown",
+   "overview": [
+    "drown은 '물에 빠져 죽다, 익사시키다'라는 뜻의 동사입니다.",
+    "drown in the river(강에서 익사하다)처럼 씁니다.",
+    "'(소리를) 묻히게 하다'라는 비유적인 뜻으로도 씁니다. (drown out, 소리를 압도하다)",
+    "'(감정에) 빠지다'라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sink and die",
+     "en": "Sink and drown.",
+     "ko": "가라앉아 익사하다."
+    },
+    {
+     "word": "overwhelm sound",
+     "en": "Overwhelm the noise.",
+     "ko": "소음을 압도하다."
+    }
+   ],
+   "etymology": [
+    "drown은 중세 영어 drounen(물에 빠지다)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 단어로, 물속으로 완전히 가라앉는 모습을 나타냈습니다.",
+    "'물속에 잠겨 숨을 쉬지 못해 죽다'라는 뜻이 그대로 이어져 왔습니다.",
+    "그 완전히 잠기는 이미지에서 소리나 감정에 압도되는 비유적 뜻도 생겼습니다.",
+    "drown의 핵심 이미지는 '물속에 완전히 잠겨 숨을 쉴 수 없게 되는 것 🌊'입니다."
+   ],
+   "meanings": [
+    "물에 빠져 죽다, 익사시키다",
+    "소리 등을 묻히게 하다"
+   ],
+   "examples": [
+    {
+     "en": "The swimmer nearly drowned in the strong current.",
+     "ko": "그 수영하는 사람은 그 강한 물살에서 거의 익사할 뻔했어요."
+    },
+    {
+     "en": "The loud music drowned out their conversation.",
+     "ko": "그 시끄러운 음악은 그들의 대화를 묻히게 했어요."
+    },
+    {
+     "en": "Rescuers saved the boy from drowning.",
+     "ko": "구조대원들은 그 소년을 익사에서 구했어요."
+    },
+    {
+     "en": "She felt like she was drowning in paperwork.",
+     "ko": "그녀는 자신이 서류 작업에 빠져 허우적대는 것처럼 느꼈어요."
+    },
+    {
+     "en": "The flood drowned the entire village.",
+     "ko": "그 홍수는 그 마을 전체를 물에 잠기게 했어요."
+    },
+    {
+     "en": "His words were drowned out by the cheering crowd.",
+     "ko": "그의 말들은 그 환호하는 군중에 의해 묻혔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "sink",
+     "ko": "가라앉다",
+     "en": "The ship sank."
+    },
+    {
+     "type": "연관어",
+     "word": "submerge",
+     "ko": "잠기다",
+     "en": "Submerge completely."
+    },
+    {
+     "type": "연관어",
+     "word": "flood",
+     "ko": "홍수",
+     "en": "A severe flood."
+    },
+    {
+     "type": "연관어",
+     "word": "overwhelm",
+     "ko": "압도하다",
+     "en": "Overwhelm with grief."
+    },
+    {
+     "type": "연관어",
+     "word": "rescue",
+     "ko": "구조하다",
+     "en": "Rescue a swimmer."
+    },
+    {
+     "type": "연관어",
+     "word": "water",
+     "ko": "물",
+     "en": "Deep water."
+    }
+   ]
+  },
+  "87": {
+   "word": "alike",
+   "overview": [
+    "alike는 '비슷한, 같은'이라는 뜻의 형용사입니다.",
+    "look alike(비슷하게 생기다)처럼 씁니다.",
+    "부사로는 '똑같이, 마찬가지로'라는 뜻으로도 씁니다.",
+    "young and old alike(젊은이나 노인이나 똑같이)처럼 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "similar",
+     "en": "Very similar.",
+     "ko": "매우 비슷한."
+    },
+    {
+     "word": "same",
+     "en": "Nearly the same.",
+     "ko": "거의 똑같은."
+    }
+   ],
+   "etymology": [
+    "alike는 고대 영어 gelic(비슷한, 같은 모양의)에서 온 단어입니다.",
+    "like(같은, 좋아하다)와도 같은 뿌리에서 나온 단어입니다.",
+    "'서로 같은 모양이나 성질을 지닌'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 사람이나 사물이 서로 닮았거나, 여러 대상에게 똑같이 적용됨을 나타냅니다.",
+    "alike의 핵심 이미지는 '서로 닮아 구별하기 어려운 비슷함 👯'입니다."
+   ],
+   "meanings": [
+    "비슷한, 같은"
+   ],
+   "examples": [
+    {
+     "en": "The twins look remarkably alike.",
+     "ko": "그 쌍둥이는 놀라울 만큼 비슷하게 생겼어요."
+    },
+    {
+     "en": "Teachers and students alike enjoyed the festival.",
+     "ko": "선생님들과 학생들 모두 그 축제를 즐겼어요."
+    },
+    {
+     "en": "The two houses are alike in size and shape.",
+     "ko": "그 두 집은 크기와 모양이 비슷해요."
+    },
+    {
+     "en": "All the members dressed alike for the event.",
+     "ko": "모든 회원들이 그 행사를 위해 똑같이 옷을 입었어요."
+    },
+    {
+     "en": "The sisters think and act alike most of the time.",
+     "ko": "그 자매들은 대부분의 시간 동안 비슷하게 생각하고 행동해요."
+    },
+    {
+     "en": "Old and new alike, every design was displayed.",
+     "ko": "오래된 것이든 새것이든 모든 디자인이 전시되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "similar",
+     "ko": "비슷한",
+     "en": "A similar style."
+    },
+    {
+     "type": "반의어",
+     "word": "different",
+     "ko": "다른",
+     "en": "A different approach."
+    },
+    {
+     "type": "연관어",
+     "word": "identical",
+     "ko": "동일한",
+     "en": "Identical twins."
+    },
+    {
+     "type": "연관어",
+     "word": "resemble",
+     "ko": "닮다",
+     "en": "Resemble a parent."
+    },
+    {
+     "type": "연관어",
+     "word": "same",
+     "ko": "같은",
+     "en": "The same idea."
+    },
+    {
+     "type": "연관어",
+     "word": "equally",
+     "ko": "동등하게",
+     "en": "Treat equally."
+    }
+   ]
+  },
+  "2985": {
+   "word": "wreck",
+   "overview": [
+    "wreck은 '난파선, 잔해'라는 뜻의 명사입니다.",
+    "a shipwreck(난파선)처럼 씁니다.",
+    "동사로는 '파괴하다, 망치다'라는 뜻으로 씁니다.",
+    "'(사고 등으로) 부서진 것'을 가리키는 데도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ruin",
+     "en": "Ruin the plan.",
+     "ko": "계획을 망치다."
+    },
+    {
+     "word": "crash",
+     "en": "A car crash.",
+     "ko": "자동차 충돌 사고."
+    }
+   ],
+   "etymology": [
+    "wreck은 고대 노르드어 wrek(떠내려온 물건, 표류물)에서 온 단어입니다.",
+    "wreak(가하다)와도 이어지는 게르만 말 뿌리로 추정됩니다.",
+    "'파도에 부서져 해안으로 밀려온 배의 잔해'라는 뜻에서 시작되었습니다.",
+    "지금은 배뿐 아니라 자동차 사고, 망가진 계획까지 폭넓게 씁니다.",
+    "wreck의 핵심 이미지는 '산산이 부서져 잔해만 남은 파괴의 흔적 🚢'입니다."
+   ],
+   "meanings": [
+    "난파선",
+    "잔해",
+    "파괴하다, 난파시키다"
+   ],
+   "examples": [
+    {
+     "en": "Divers explored the shipwreck on the ocean floor.",
+     "ko": "다이버들은 그 해저의 난파선을 탐험했어요."
+    },
+    {
+     "en": "The storm wrecked several boats in the harbor.",
+     "ko": "그 폭풍은 그 항구에 있던 여러 배들을 파괴했어요."
+    },
+    {
+     "en": "His careless mistake wrecked the entire project.",
+     "ko": "그의 부주의한 실수는 그 프로젝트 전체를 망쳤어요."
+    },
+    {
+     "en": "The car was completely wrecked in the accident.",
+     "ko": "그 차는 그 사고에서 완전히 파손되었어요."
+    },
+    {
+     "en": "Rescue teams searched the plane wreck for survivors.",
+     "ko": "구조팀들은 생존자들을 찾으려고 그 비행기 잔해를 수색했어요."
+    },
+    {
+     "en": "The scandal wrecked his political career.",
+     "ko": "그 스캔들은 그의 정치 경력을 망쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ruin",
+     "ko": "망치다",
+     "en": "Ruin a surprise."
+    },
+    {
+     "type": "연관어",
+     "word": "crash",
+     "ko": "충돌",
+     "en": "A car crash."
+    },
+    {
+     "type": "연관어",
+     "word": "destroy",
+     "ko": "파괴하다",
+     "en": "Destroy a building."
+    },
+    {
+     "type": "연관어",
+     "word": "debris",
+     "ko": "잔해",
+     "en": "Scattered debris."
+    },
+    {
+     "type": "연관어",
+     "word": "damage",
+     "ko": "손상",
+     "en": "Severe damage."
+    },
+    {
+     "type": "연관어",
+     "word": "shipwreck",
+     "ko": "난파선",
+     "en": "An ancient shipwreck."
+    }
+   ]
+  },
+  "145": {
+   "word": "approve",
+   "overview": [
+    "approve는 '찬성하다, 승인하다'라는 뜻의 동사입니다.",
+    "approve a plan(계획을 승인하다)처럼 씁니다.",
+    "'(공식적으로) 인가하다, 허락하다'라는 뜻으로도 씁니다.",
+    "명사 approval(승인, 찬성)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "agree",
+     "en": "Agree with the idea.",
+     "ko": "그 생각에 동의하다."
+    },
+    {
+     "word": "authorize",
+     "en": "Authorize a payment.",
+     "ko": "결제를 승인하다."
+    }
+   ],
+   "etymology": [
+    "approve는 라틴어 approbare(좋다고 증명하다)에서 온 단어입니다.",
+    "ad(~쪽으로)와 probare(시험하다, 증명하다)가 합쳐진 말로, prove(증명하다)와 같은 가족입니다.",
+    "'시험해 보고 좋다고 증명하다'라는 뜻에서 시작되었습니다.",
+    "지금은 어떤 계획이나 행동에 대해 공식적으로 좋다고 인정하는 모든 상황에 씁니다.",
+    "approve의 핵심 이미지는 '검토를 거쳐 좋다고 공식적으로 인정하는 승인 ✅'입니다."
+   ],
+   "meanings": [
+    "찬성하다",
+    "인가하다, 허락하다"
+   ],
+   "examples": [
+    {
+     "en": "The board approved the new budget plan.",
+     "ko": "그 이사회는 그 새로운 예산 계획을 승인했어요."
+    },
+    {
+     "en": "Her parents did not approve of the relationship.",
+     "ko": "그녀의 부모님은 그 관계를 찬성하지 않았어요."
+    },
+    {
+     "en": "The government approved funding for the project.",
+     "ko": "그 정부는 그 프로젝트에 대한 자금 지원을 승인했어요."
+    },
+    {
+     "en": "He nodded to approve the design.",
+     "ko": "그는 그 디자인을 승인하려고 고개를 끄덕였어요."
+    },
+    {
+     "en": "The FDA approved the new medication.",
+     "ko": "그 식품의약국은 그 새로운 약물을 승인했어요."
+    },
+    {
+     "en": "She waited anxiously for her boss to approve the request.",
+     "ko": "그녀는 자신의 상사가 그 요청을 승인하기를 초조하게 기다렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "authorize",
+     "ko": "승인하다",
+     "en": "Authorize access."
+    },
+    {
+     "type": "파생어",
+     "word": "approval",
+     "ko": "승인",
+     "en": "Seek approval."
+    },
+    {
+     "type": "반의어",
+     "word": "disapprove",
+     "ko": "반대하다",
+     "en": "Disapprove strongly."
+    },
+    {
+     "type": "연관어",
+     "word": "agree",
+     "ko": "동의하다",
+     "en": "Agree to terms."
+    },
+    {
+     "type": "연관어",
+     "word": "endorse",
+     "ko": "지지하다",
+     "en": "Endorse a candidate."
+    },
+    {
+     "type": "연관어",
+     "word": "permit",
+     "ko": "허가하다",
+     "en": "Permit access."
+    }
+   ]
+  },
+  "2304": {
+   "word": "scandal",
+   "overview": [
+    "scandal은 '추문, 스캔들'이라는 뜻의 명사입니다.",
+    "a political scandal(정치 스캔들)처럼 씁니다.",
+    "대중에게 충격과 분노를 일으키는 부도덕한 행위를 뜻합니다.",
+    "형용사 scandalous(수치스러운, 충격적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "controversy",
+     "en": "A public controversy.",
+     "ko": "공적인 논란."
+    },
+    {
+     "word": "disgrace",
+     "en": "A public disgrace.",
+     "ko": "공개적인 망신."
+    }
+   ],
+   "etymology": [
+    "scandal은 그리스어 skandalon(걸림돌, 함정)에서 온 단어입니다.",
+    "누군가 걸려 넘어지게 만드는 덫이나 장애물을 뜻하는 말이었습니다.",
+    "'사람의 명예를 걸려 넘어지게 만드는 부끄러운 사건'이라는 뜻으로 발전했습니다.",
+    "지금은 대중에게 충격과 논란을 일으키는 부정한 사건 전반을 가리킵니다.",
+    "scandal의 핵심 이미지는 '명예를 걸려 넘어지게 하는 충격적인 추문 📰'입니다."
+   ],
+   "meanings": [
+    "추문"
+   ],
+   "examples": [
+    {
+     "en": "The scandal ended the politician's career.",
+     "ko": "그 스캔들은 그 정치인의 경력을 끝냈어요."
+    },
+    {
+     "en": "Reporters uncovered a major financial scandal.",
+     "ko": "기자들은 큰 금융 스캔들을 밝혀냈어요."
+    },
+    {
+     "en": "The company faced a scandal over unsafe products.",
+     "ko": "그 회사는 안전하지 않은 제품들에 대한 추문에 직면했어요."
+    },
+    {
+     "en": "The scandal spread quickly across social media.",
+     "ko": "그 스캔들은 소셜 미디어를 통해 빠르게 퍼졌어요."
+    },
+    {
+     "en": "She was involved in a scandal that shocked the public.",
+     "ko": "그녀는 그 대중을 충격에 빠뜨린 스캔들에 연루되었어요."
+    },
+    {
+     "en": "The scandal revealed years of corruption.",
+     "ko": "그 스캔들은 여러 해에 걸친 부패를 드러냈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "controversy",
+     "ko": "논란",
+     "en": "A heated controversy."
+    },
+    {
+     "type": "파생어",
+     "word": "scandalous",
+     "ko": "충격적인",
+     "en": "A scandalous affair."
+    },
+    {
+     "type": "연관어",
+     "word": "corruption",
+     "ko": "부패",
+     "en": "Political corruption."
+    },
+    {
+     "type": "연관어",
+     "word": "disgrace",
+     "ko": "망신",
+     "en": "A public disgrace."
+    },
+    {
+     "type": "연관어",
+     "word": "expose",
+     "ko": "폭로하다",
+     "en": "Expose the truth."
+    },
+    {
+     "type": "연관어",
+     "word": "gossip",
+     "ko": "소문",
+     "en": "Office gossip."
+    }
+   ]
+  },
+  "2303": {
+   "word": "scan",
+   "overview": [
+    "scan은 '훑어보다, 정밀 검사하다'라는 뜻의 동사입니다.",
+    "scan the room(방을 훑어보다)처럼 씁니다.",
+    "'스캔하다'라는 뜻으로도 씁니다. (scan a document, 문서를 스캔하다)",
+    "명사로는 '정밀 검사, 스캔 영상'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "look over",
+     "en": "Look over quickly.",
+     "ko": "재빨리 훑어보다."
+    },
+    {
+     "word": "digitize",
+     "en": "Digitize a photo.",
+     "ko": "사진을 디지털화하다."
+    }
+   ],
+   "etymology": [
+    "scan은 라틴어 scandere(오르다, 운율에 맞춰 읽다)에서 온 단어입니다.",
+    "시의 운율을 한 음절씩 짚어 가며 확인하던 데서 시작되었습니다.",
+    "'세밀하게 한 부분씩 훑어보며 검토하다'라는 뜻으로 발전했습니다.",
+    "지금은 눈으로 훑어보는 것뿐 아니라 기계로 정밀하게 읽어 들이는 것까지 폭넓게 씁니다.",
+    "scan의 핵심 이미지는 '한 부분씩 놓치지 않고 훑으며 검사하는 것 🔍'입니다."
+   ],
+   "meanings": [
+    "훑어보다, 스캔하다",
+    "정밀 검사, 스캔 영상"
+   ],
+   "examples": [
+    {
+     "en": "She scanned the crowd for a familiar face.",
+     "ko": "그녀는 낯익은 얼굴을 찾으려고 그 군중을 훑어보았어요."
+    },
+    {
+     "en": "He scanned the document and sent it by email.",
+     "ko": "그는 그 문서를 스캔하고 이메일로 보냈어요."
+    },
+    {
+     "en": "The doctor ordered a brain scan for the patient.",
+     "ko": "그 의사는 그 환자를 위한 뇌 스캔을 지시했어요."
+    },
+    {
+     "en": "She quickly scanned the newspaper headlines.",
+     "ko": "그녀는 그 신문 헤드라인들을 재빨리 훑어보았어요."
+    },
+    {
+     "en": "The cashier scanned each item at checkout.",
+     "ko": "그 계산원은 그 계산대에서 각 물품을 스캔했어요."
+    },
+    {
+     "en": "The scan revealed no signs of injury.",
+     "ko": "그 스캔은 부상의 흔적을 보이지 않았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "look over",
+     "ko": "훑어보다",
+     "en": "Look over the notes."
+    },
+    {
+     "type": "연관어",
+     "word": "examine",
+     "ko": "검사하다",
+     "en": "Examine closely."
+    },
+    {
+     "type": "연관어",
+     "word": "search",
+     "ko": "검색하다",
+     "en": "Search for clues."
+    },
+    {
+     "type": "연관어",
+     "word": "check",
+     "ko": "확인하다",
+     "en": "Check the results."
+    },
+    {
+     "type": "연관어",
+     "word": "digital",
+     "ko": "디지털의",
+     "en": "A digital copy."
+    },
+    {
+     "type": "연관어",
+     "word": "MRI",
+     "ko": "자기 공명 영상",
+     "en": "An MRI scan."
+    }
+   ]
+  },
+  "905": {
+   "word": "electronic",
+   "overview": [
+    "electronic은 '전자의, 전자 장치의'라는 뜻의 형용사입니다.",
+    "electronic devices(전자 기기들)처럼 씁니다.",
+    "전자의 흐름을 이용해 작동하는 기술과 관련된 것을 뜻합니다.",
+    "명사 electronics(전자공학, 전자제품)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "digital",
+     "en": "A digital device.",
+     "ko": "디지털 기기."
+    },
+    {
+     "word": "battery-powered",
+     "en": "A battery-powered gadget.",
+     "ko": "배터리로 작동하는 기기."
+    }
+   ],
+   "etymology": [
+    "electronic은 electron(전자)에서 파생된 단어입니다.",
+    "electron은 그리스어 elektron(호박, 琥珀)에서 왔는데, 호박을 문지르면 정전기가 생기는 데서 이름이 붙었습니다.",
+    "20세기 초 전자의 흐름을 다루는 새로운 과학 분야가 electronics(전자공학)라는 이름을 얻었습니다.",
+    "지금은 전자의 흐름을 이용해 작동하는 모든 기기와 기술을 가리킵니다.",
+    "electronic의 핵심 이미지는 '보이지 않는 전자의 흐름으로 작동하는 첨단 기술 💻'입니다."
+   ],
+   "meanings": [
+    "(물리) 전자의"
+   ],
+   "examples": [
+    {
+     "en": "She bought several electronic gadgets for her office.",
+     "ko": "그녀는 자신의 사무실을 위한 여러 전자 기기들을 샀어요."
+    },
+    {
+     "en": "Electronic payments have become very common today.",
+     "ko": "전자 결제는 오늘날 매우 흔해졌어요."
+    },
+    {
+     "en": "The store sells a wide range of electronic devices.",
+     "ko": "그 가게는 다양한 전자 기기들을 판매해요."
+    },
+    {
+     "en": "He studies electronic engineering at university.",
+     "ko": "그는 대학에서 전자 공학을 공부해요."
+    },
+    {
+     "en": "The electronic signal was too weak to detect.",
+     "ko": "그 전자 신호는 너무 약해서 감지되지 않았어요."
+    },
+    {
+     "en": "Electronic music has grown popular among young people.",
+     "ko": "전자 음악은 젊은 사람들 사이에서 인기가 높아졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "electronics",
+     "ko": "전자공학",
+     "en": "Study electronics."
+    },
+    {
+     "type": "연관어",
+     "word": "digital",
+     "ko": "디지털의",
+     "en": "Digital technology."
+    },
+    {
+     "type": "연관어",
+     "word": "device",
+     "ko": "기기",
+     "en": "A smart device."
+    },
+    {
+     "type": "연관어",
+     "word": "circuit",
+     "ko": "회로",
+     "en": "An electrical circuit."
+    },
+    {
+     "type": "연관어",
+     "word": "battery",
+     "ko": "배터리",
+     "en": "A rechargeable battery."
+    },
+    {
+     "type": "연관어",
+     "word": "gadget",
+     "ko": "기기",
+     "en": "A useful gadget."
+    }
+   ]
+  },
+  "2201": {
+   "word": "republic",
+   "overview": [
+    "republic은 '공화국'이라는 뜻의 명사입니다.",
+    "the Republic of Korea(대한민국)처럼 씁니다.",
+    "국민이 선출한 대표를 통해 통치되는 국가 체제를 뜻합니다.",
+    "왕이 아닌 국민이 주권을 가진 정치 체제를 가리킵니다."
+   ],
+   "easy": [
+    {
+     "word": "democratic nation",
+     "en": "A democratic nation.",
+     "ko": "민주적인 국가."
+    },
+    {
+     "word": "elected government",
+     "en": "An elected government.",
+     "ko": "선출된 정부."
+    }
+   ],
+   "etymology": [
+    "republic은 라틴어 res publica(공공의 것)에서 온 단어입니다.",
+    "res(것, 사물)와 publicus(공공의)가 합쳐진 말로, public(공공의)과 같은 가족입니다.",
+    "'국가가 왕 한 사람이 아닌 국민 전체의 공공 재산이라는 뜻'에서 시작되었습니다.",
+    "고대 로마의 정치 체제 이름에서 유래해 지금은 국민이 대표를 뽑아 통치하는 국가를 가리킵니다.",
+    "republic의 핵심 이미지는 '국가가 왕이 아닌 국민 모두의 것이라는 공화 정치 🏛️'입니다."
+   ],
+   "meanings": [
+    "공화국, 공화정치"
+   ],
+   "examples": [
+    {
+     "en": "The country became a republic after the revolution.",
+     "ko": "그 나라는 그 혁명 후 공화국이 되었어요."
+    },
+    {
+     "en": "The Republic of Korea celebrates its independence day.",
+     "ko": "대한민국은 자신의 독립 기념일을 기념해요."
+    },
+    {
+     "en": "Citizens of the republic elect their leaders.",
+     "ko": "그 공화국의 시민들은 자신들의 지도자들을 선출해요."
+    },
+    {
+     "en": "The republic's constitution guarantees basic rights.",
+     "ko": "그 공화국의 헌법은 기본권을 보장해요."
+    },
+    {
+     "en": "Many nations transitioned from monarchies to republics.",
+     "ko": "많은 나라들이 군주제에서 공화국으로 전환했어요."
+    },
+    {
+     "en": "The president leads the republic for a fixed term.",
+     "ko": "그 대통령은 정해진 임기 동안 그 공화국을 이끌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "democracy",
+     "ko": "민주주의",
+     "en": "A thriving democracy."
+    },
+    {
+     "type": "반의어",
+     "word": "monarchy",
+     "ko": "군주제",
+     "en": "An ancient monarchy."
+    },
+    {
+     "type": "연관어",
+     "word": "constitution",
+     "ko": "헌법",
+     "en": "Amend the constitution."
+    },
+    {
+     "type": "연관어",
+     "word": "citizen",
+     "ko": "시민",
+     "en": "A loyal citizen."
+    },
+    {
+     "type": "연관어",
+     "word": "government",
+     "ko": "정부",
+     "en": "A stable government."
+    },
+    {
+     "type": "연관어",
+     "word": "president",
+     "ko": "대통령",
+     "en": "Elect a president."
+    }
+   ]
+  },
+  "1873": {
+   "word": "overnight",
+   "overview": [
+    "overnight은 '밤사이에, 하룻밤 동안'이라는 뜻의 부사이자 형용사입니다.",
+    "stay overnight(하룻밤 묵다)처럼 씁니다.",
+    "'갑자기, 순식간에'라는 비유적인 뜻으로도 씁니다. (overnight success, 하루아침에 이룬 성공)",
+    "형용사로는 '하룻밤의, 야간의'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "all night",
+     "en": "Stay all night.",
+     "ko": "밤새 머물다."
+    },
+    {
+     "word": "suddenly",
+     "en": "Change suddenly.",
+     "ko": "갑자기 변하다."
+    }
+   ],
+   "etymology": [
+    "overnight은 over(~에 걸쳐)와 night(밤)이 합쳐진 단어입니다.",
+    "'밤을 넘어 다음 날까지 이어지는'이라는 뜻에서 시작되었습니다.",
+    "'하룻밤 사이에 일어나는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "그 짧은 시간 안에 벌어지는 변화라는 뜻에서 '갑자기, 순식간에'라는 비유적 뜻도 생겼습니다.",
+    "overnight의 핵심 이미지는 '밤이 지나는 사이 순식간에 벌어지는 변화 🌙'입니다."
+   ],
+   "meanings": [
+    "밤사이에, 하룻밤 동안, 갑자기, 하룻밤의"
+   ],
+   "examples": [
+    {
+     "en": "They decided to stay overnight at a nearby hotel.",
+     "ko": "그들은 그 근처 호텔에서 하룻밤 묵기로 결정했어요."
+    },
+    {
+     "en": "The singer became famous overnight after the video went viral.",
+     "ko": "그 가수는 그 영상이 입소문 난 후 하루아침에 유명해졌어요."
+    },
+    {
+     "en": "The temperature dropped dramatically overnight.",
+     "ko": "그 기온은 밤사이에 극적으로 떨어졌어요."
+    },
+    {
+     "en": "She packed an overnight bag for the trip.",
+     "ko": "그녀는 그 여행을 위한 하룻밤용 가방을 챙겼어요."
+    },
+    {
+     "en": "The situation changed overnight after the announcement.",
+     "ko": "그 상황은 그 발표 후 하룻밤 사이에 바뀌었어요."
+    },
+    {
+     "en": "He worked overnight to finish the report on time.",
+     "ko": "그는 그 보고서를 제시간에 끝내려고 밤새 일했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "suddenly",
+     "ko": "갑자기",
+     "en": "Suddenly appear."
+    },
+    {
+     "type": "연관어",
+     "word": "instantly",
+     "ko": "즉시",
+     "en": "Change instantly."
+    },
+    {
+     "type": "연관어",
+     "word": "stay",
+     "ko": "머물다",
+     "en": "Stay overnight."
+    },
+    {
+     "type": "연관어",
+     "word": "quickly",
+     "ko": "빠르게",
+     "en": "Grow quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "night",
+     "ko": "밤",
+     "en": "A sleepless night."
+    },
+    {
+     "type": "연관어",
+     "word": "success",
+     "ko": "성공",
+     "en": "An overnight success."
+    }
+   ]
+  },
+  "647": {
+   "word": "counsel",
+   "overview": [
+    "counsel은 '조언, 상담'이라는 뜻의 명사이자 '조언하다'라는 뜻의 동사입니다.",
+    "seek counsel(조언을 구하다)처럼 씁니다.",
+    "법정에서 '변호인, 법률 자문'을 가리키는 뜻으로도 씁니다.",
+    "명사 counselor(상담사, 고문)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "advice",
+     "en": "Good advice.",
+     "ko": "좋은 조언."
+    },
+    {
+     "word": "guidance",
+     "en": "Seek guidance.",
+     "ko": "지도를 구하다."
+    }
+   ],
+   "etymology": [
+    "counsel은 라틴어 consulere(상의하다, 조언을 구하다)에서 온 단어입니다.",
+    "con(함께)과 sulere(상담하다)가 합쳐진 말로, consult(상담하다)와 같은 가족입니다.",
+    "'여럿이 함께 머리를 맞대고 조언을 나누는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 개인적인 조언뿐 아니라 법정에서의 변호인 역할까지 가리킵니다.",
+    "counsel의 핵심 이미지는 '지혜를 모아 신중하게 건네는 조언 🗣️'입니다."
+   ],
+   "meanings": [
+    "조언, 상담",
+    "조언하다"
+   ],
+   "examples": [
+    {
+     "en": "She sought counsel from her mentor before deciding.",
+     "ko": "그녀는 결정하기 전에 자신의 멘토로부터 조언을 구했어요."
+    },
+    {
+     "en": "The lawyer served as counsel for the defense.",
+     "ko": "그 변호사는 그 피고 측 변호인으로 활동했어요."
+    },
+    {
+     "en": "He counseled his students to pursue their passions.",
+     "ko": "그는 자신의 학생들에게 자신들의 열정을 추구하라고 조언했어요."
+    },
+    {
+     "en": "The school offers counsel for students facing difficulties.",
+     "ko": "그 학교는 어려움을 겪는 학생들을 위한 상담을 제공해요."
+    },
+    {
+     "en": "Wise counsel helped her make the right choice.",
+     "ko": "현명한 조언은 그녀가 올바른 선택을 하도록 도왔어요."
+    },
+    {
+     "en": "The king relied on the counsel of his advisors.",
+     "ko": "그 왕은 자신의 고문들의 조언에 의존했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "advice",
+     "ko": "조언",
+     "en": "Helpful advice."
+    },
+    {
+     "type": "파생어",
+     "word": "counselor",
+     "ko": "상담사",
+     "en": "A school counselor."
+    },
+    {
+     "type": "연관어",
+     "word": "guidance",
+     "ko": "지도",
+     "en": "Career guidance."
+    },
+    {
+     "type": "연관어",
+     "word": "consult",
+     "ko": "상담하다",
+     "en": "Consult an expert."
+    },
+    {
+     "type": "연관어",
+     "word": "lawyer",
+     "ko": "변호사",
+     "en": "Hire a lawyer."
+    },
+    {
+     "type": "연관어",
+     "word": "advisor",
+     "ko": "조언자",
+     "en": "A trusted advisor."
+    }
+   ]
+  },
+  "804": {
+   "word": "dignity",
+   "overview": [
+    "dignity는 '존엄성, 품위'라는 뜻의 명사입니다.",
+    "with dignity(품위 있게)처럼 씁니다.",
+    "인간으로서 존중받아 마땅한 가치와 자존감을 뜻합니다.",
+    "형용사 dignified(위엄 있는, 품위 있는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "self-respect",
+     "en": "Keep your self-respect.",
+     "ko": "자존감을 지키다."
+    },
+    {
+     "word": "pride",
+     "en": "A sense of pride.",
+     "ko": "자부심."
+    }
+   ],
+   "etymology": [
+    "dignity는 라틴어 dignitas(가치, 명예)에서 온 단어입니다.",
+    "dignus(가치 있는, 합당한)에서 나온 말로, dignify(위엄을 부여하다)와 같은 가족입니다.",
+    "'한 사람이 지닌 본래의 가치와 그에 합당한 존중'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 인간이 마땅히 지녀야 할 존엄과 자존감을 가리키는 데 폭넓게 씁니다.",
+    "dignity의 핵심 이미지는 '누구도 함부로 대할 수 없는 인간 본연의 존엄 🕊️'입니다."
+   ],
+   "meanings": [
+    "자존감"
+   ],
+   "examples": [
+    {
+     "en": "She handled the criticism with dignity and grace.",
+     "ko": "그녀는 그 비판을 존엄과 품위를 지키며 다뤘어요."
+    },
+    {
+     "en": "Every person deserves to be treated with dignity.",
+     "ko": "모든 사람은 존엄하게 대우받을 자격이 있어요."
+    },
+    {
+     "en": "He lost his job but never lost his dignity.",
+     "ko": "그는 자신의 직업을 잃었지만 결코 자신의 자존감을 잃지 않았어요."
+    },
+    {
+     "en": "The hospital works to preserve patients' dignity.",
+     "ko": "그 병원은 환자들의 존엄성을 지키려고 노력해요."
+    },
+    {
+     "en": "She stood tall, maintaining her dignity under pressure.",
+     "ko": "그녀는 압박 속에서도 자신의 품위를 유지하며 당당히 섰어요."
+    },
+    {
+     "en": "The elderly deserve care that respects their dignity.",
+     "ko": "노인들은 자신들의 존엄성을 존중하는 돌봄을 받을 자격이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "self-respect",
+     "ko": "자존감",
+     "en": "Preserve self-respect."
+    },
+    {
+     "type": "파생어",
+     "word": "dignified",
+     "ko": "품위 있는",
+     "en": "A dignified manner."
+    },
+    {
+     "type": "연관어",
+     "word": "honor",
+     "ko": "명예",
+     "en": "Bring honor."
+    },
+    {
+     "type": "연관어",
+     "word": "pride",
+     "ko": "자부심",
+     "en": "Take pride."
+    },
+    {
+     "type": "연관어",
+     "word": "respect",
+     "ko": "존중",
+     "en": "Show respect."
+    },
+    {
+     "type": "연관어",
+     "word": "grace",
+     "ko": "품위",
+     "en": "Handle with grace."
+    }
+   ]
+  },
+  "2732": {
+   "word": "tissue",
+   "overview": [
+    "tissue는 생물학적 '조직'이라는 뜻의 명사입니다.",
+    "muscle tissue(근육 조직)처럼 씁니다.",
+    "'화장지, 티슈'라는 일상적인 뜻으로도 아주 자주 씁니다.",
+    "여러 세포가 모여 특정 기능을 하는 신체 구성 단위를 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "cells",
+     "en": "Body cells.",
+     "ko": "몸의 세포."
+    },
+    {
+     "word": "paper towel",
+     "en": "A soft paper towel.",
+     "ko": "부드러운 종이 타월."
+    }
+   ],
+   "etymology": [
+    "tissue는 옛 프랑스어 tissu(짜여진 것, 직물)에서 온 단어입니다.",
+    "tistre(짜다, 엮다)에서 나온 말로, 원래는 직물을 뜻했습니다.",
+    "'실이 짜여 이루어진 천처럼, 세포가 모여 이루어진 조직'이라는 뜻으로 발전했습니다.",
+    "부드러운 종이도 천처럼 짜인 느낌을 준다고 해서 '화장지'라는 뜻이 나왔습니다.",
+    "tissue의 핵심 이미지는 '세포들이 섬세하게 짜여 이루어진 조직 🧬'입니다."
+   ],
+   "meanings": [
+    "(생물) 조직"
+   ],
+   "examples": [
+    {
+     "en": "The doctor examined a sample of the damaged tissue.",
+     "ko": "그 의사는 그 손상된 조직의 샘플을 검사했어요."
+    },
+    {
+     "en": "She reached for a tissue to wipe her tears.",
+     "ko": "그녀는 자신의 눈물을 닦으려고 티슈를 집었어요."
+    },
+    {
+     "en": "Muscle tissue repairs itself after exercise.",
+     "ko": "근육 조직은 운동 후 스스로 회복돼요."
+    },
+    {
+     "en": "The wound affected only the surface tissue.",
+     "ko": "그 상처는 오직 표면 조직에만 영향을 미쳤어요."
+    },
+    {
+     "en": "He blew his nose with a tissue.",
+     "ko": "그는 티슈로 자신의 코를 풀었어요."
+    },
+    {
+     "en": "Scientists studied plant tissue under the microscope.",
+     "ko": "과학자들은 현미경으로 그 식물 조직을 연구했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "cell",
+     "ko": "세포",
+     "en": "A living cell."
+    },
+    {
+     "type": "연관어",
+     "word": "organ",
+     "ko": "장기",
+     "en": "A vital organ."
+    },
+    {
+     "type": "연관어",
+     "word": "napkin",
+     "ko": "냅킨",
+     "en": "A paper napkin."
+    },
+    {
+     "type": "연관어",
+     "word": "muscle",
+     "ko": "근육",
+     "en": "A torn muscle."
+    },
+    {
+     "type": "연관어",
+     "word": "skin",
+     "ko": "피부",
+     "en": "Healthy skin."
+    },
+    {
+     "type": "연관어",
+     "word": "wound",
+     "ko": "상처",
+     "en": "Heal a wound."
+    }
+   ]
+  },
+  "2867": {
+   "word": "vessel",
+   "overview": [
+    "vessel은 '배, 선박'이라는 뜻의 명사입니다.",
+    "a fishing vessel(어선)처럼 씁니다.",
+    "'그릇, 용기'라는 뜻으로도 씁니다.",
+    "몸 안의 '혈관'이라는 뜻으로도 씁니다. (blood vessel, 혈관)"
+   ],
+   "easy": [
+    {
+     "word": "ship",
+     "en": "A large ship.",
+     "ko": "큰 배."
+    },
+    {
+     "word": "container",
+     "en": "A water container.",
+     "ko": "물 용기."
+    }
+   ],
+   "etymology": [
+    "vessel은 라틴어 vas(그릇, 용기)에서 온 단어입니다.",
+    "'액체나 물건을 담는 속이 빈 그릇'이라는 뜻이 그대로 이어져 왔습니다.",
+    "물 위를 떠다니며 사람과 짐을 담는 큰 배도 vessel이라고 부르게 되었습니다.",
+    "몸 안에서 피를 나르는 관도 액체를 담아 흐르게 한다는 점에서 같은 이름이 붙었습니다.",
+    "vessel의 핵심 이미지는 '무언가를 담아 나르는 그릇과 배, 그리고 혈관 🚢'입니다."
+   ],
+   "meanings": [
+    "배, 선박",
+    "그릇, 용기",
+    "혈관"
+   ],
+   "examples": [
+    {
+     "en": "The fishing vessel returned to port at dawn.",
+     "ko": "그 어선은 새벽에 그 항구로 돌아왔어요."
+    },
+    {
+     "en": "She poured the water into a ceramic vessel.",
+     "ko": "그녀는 그 물을 도자기 그릇에 부었어요."
+    },
+    {
+     "en": "The doctor checked for damage to the blood vessels.",
+     "ko": "그 의사는 그 혈관들의 손상 여부를 확인했어요."
+    },
+    {
+     "en": "A massive cargo vessel docked at the harbor.",
+     "ko": "거대한 화물선이 그 항구에 정박했어요."
+    },
+    {
+     "en": "Ancient vessels were often decorated with intricate patterns.",
+     "ko": "고대의 그릇들은 종종 정교한 무늬들로 장식되었어요."
+    },
+    {
+     "en": "Blood flows through vessels throughout the body.",
+     "ko": "피는 몸 전체에 걸쳐 혈관들을 통해 흘러요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ship",
+     "ko": "배",
+     "en": "A cargo ship."
+    },
+    {
+     "type": "연관어",
+     "word": "boat",
+     "ko": "보트",
+     "en": "A small boat."
+    },
+    {
+     "type": "연관어",
+     "word": "container",
+     "ko": "용기",
+     "en": "A storage container."
+    },
+    {
+     "type": "연관어",
+     "word": "blood vessel",
+     "ko": "혈관",
+     "en": "A narrow blood vessel."
+    },
+    {
+     "type": "연관어",
+     "word": "cargo",
+     "ko": "화물",
+     "en": "Transport cargo."
+    },
+    {
+     "type": "연관어",
+     "word": "vase",
+     "ko": "화병",
+     "en": "A ceramic vase."
+    }
+   ]
+  },
+  "1362": {
+   "word": "hut",
+   "overview": [
+    "hut은 '(통나무) 오두막'이라는 뜻의 명사입니다.",
+    "a mountain hut(산장)처럼 씁니다.",
+    "간단한 재료로 지은 작고 소박한 거처를 뜻합니다.",
+    "캠프장이나 산속의 임시 숙소를 가리키는 데도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cabin",
+     "en": "A wooden cabin.",
+     "ko": "나무 오두막."
+    },
+    {
+     "word": "shack",
+     "en": "A small shack.",
+     "ko": "작은 판잣집."
+    }
+   ],
+   "etymology": [
+    "hut은 프랑스어 hutte(오두막)에서 온 단어입니다.",
+    "게르만 말 뿌리와도 관련이 있으며, 군인들이 임시로 짓던 소박한 거처를 뜻했습니다.",
+    "'간단한 재료로 지은 작고 소박한 집'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 산장, 캠프장 숙소 등 임시 거처를 가리키는 데 폭넓게 씁니다.",
+    "hut의 핵심 이미지는 '통나무로 소박하게 지어진 작은 오두막 🛖'입니다."
+   ],
+   "meanings": [
+    "(통나무) 오두막, (캠프장의) 산장"
+   ],
+   "examples": [
+    {
+     "en": "They spent the night in a small mountain hut.",
+     "ko": "그들은 작은 산장에서 그 밤을 보냈어요."
+    },
+    {
+     "en": "The fisherman built a hut near the shore.",
+     "ko": "그 어부는 그 해안 근처에 오두막을 지었어요."
+    },
+    {
+     "en": "Hikers can rest at huts along the trail.",
+     "ko": "하이커들은 그 산길을 따라 있는 산장들에서 쉴 수 있어요."
+    },
+    {
+     "en": "The village consisted of simple wooden huts.",
+     "ko": "그 마을은 소박한 나무 오두막들로 이루어져 있었어요."
+    },
+    {
+     "en": "A tiny hut stood at the edge of the forest.",
+     "ko": "작은 오두막 하나가 그 숲 가장자리에 서 있었어요."
+    },
+    {
+     "en": "They repaired the old hut before winter arrived.",
+     "ko": "그들은 겨울이 오기 전에 그 오래된 오두막을 수리했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cabin",
+     "ko": "오두막",
+     "en": "A log cabin."
+    },
+    {
+     "type": "연관어",
+     "word": "shack",
+     "ko": "판잣집",
+     "en": "A rundown shack."
+    },
+    {
+     "type": "연관어",
+     "word": "cottage",
+     "ko": "시골집",
+     "en": "A cozy cottage."
+    },
+    {
+     "type": "연관어",
+     "word": "shelter",
+     "ko": "쉼터",
+     "en": "Build a shelter."
+    },
+    {
+     "type": "연관어",
+     "word": "mountain",
+     "ko": "산",
+     "en": "A steep mountain."
+    },
+    {
+     "type": "연관어",
+     "word": "camp",
+     "ko": "야영지",
+     "en": "Set up camp."
+    }
+   ]
+  },
+  "766": {
+   "word": "deposit",
+   "overview": [
+    "deposit은 '예금하다, 입금하다'라는 뜻의 동사입니다.",
+    "deposit money(돈을 예금하다)처럼 씁니다.",
+    "명사로는 '예금, 보증금'이라는 뜻으로도 씁니다.",
+    "'(물질이) 쌓이다, 퇴적하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "put money in",
+     "en": "Put money in the bank.",
+     "ko": "은행에 돈을 넣다."
+    },
+    {
+     "word": "down payment",
+     "en": "A down payment.",
+     "ko": "계약금."
+    }
+   ],
+   "etymology": [
+    "deposit은 라틴어 deponere(내려놓다, 맡기다)에서 온 단어입니다.",
+    "de(아래로)와 ponere(놓다)가 합쳐진 말로, position(위치)과 같은 가족입니다.",
+    "'무언가를 안전하게 맡기려고 내려놓다'라는 뜻이 그대로 이어져 왔습니다.",
+    "은행에 돈을 맡기는 것, 계약을 위한 선금, 강물이 흙을 쌓아 놓는 것까지 폭넓게 씁니다.",
+    "deposit의 핵심 이미지는 '안전하게 맡기려고 조심스레 내려놓는 것 🏦'입니다."
+   ],
+   "meanings": [
+    "예금하다"
+   ],
+   "examples": [
+    {
+     "en": "She deposited her paycheck at the bank.",
+     "ko": "그녀는 자신의 급여를 그 은행에 예금했어요."
+    },
+    {
+     "en": "He paid a deposit to reserve the apartment.",
+     "ko": "그는 그 아파트를 예약하려고 보증금을 냈어요."
+    },
+    {
+     "en": "The river deposited sediment along its banks.",
+     "ko": "그 강은 자신의 강둑을 따라 퇴적물을 쌓았어요."
+    },
+    {
+     "en": "You can deposit cash at the ATM.",
+     "ko": "당신은 그 현금 인출기에서 현금을 입금할 수 있어요."
+    },
+    {
+     "en": "The security deposit will be refunded after checkout.",
+     "ko": "그 보증금은 그 체크아웃 후 환불될 거예요."
+    },
+    {
+     "en": "Minerals were deposited over millions of years.",
+     "ko": "광물들은 수백만 년에 걸쳐 퇴적되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "save",
+     "ko": "저축하다",
+     "en": "Save money."
+    },
+    {
+     "type": "연관어",
+     "word": "bank",
+     "ko": "은행",
+     "en": "Visit the bank."
+    },
+    {
+     "type": "연관어",
+     "word": "withdraw",
+     "ko": "인출하다",
+     "en": "Withdraw cash."
+    },
+    {
+     "type": "연관어",
+     "word": "sediment",
+     "ko": "퇴적물",
+     "en": "Layers of sediment."
+    },
+    {
+     "type": "연관어",
+     "word": "payment",
+     "ko": "지불금",
+     "en": "A monthly payment."
+    },
+    {
+     "type": "연관어",
+     "word": "account",
+     "ko": "계좌",
+     "en": "A savings account."
+    }
+   ]
+  },
+  "1550": {
+   "word": "lecture",
+   "overview": [
+    "lecture는 '강의, 강연'이라는 뜻의 명사입니다.",
+    "attend a lecture(강의에 참석하다)처럼 씁니다.",
+    "동사로는 '강의하다, 잔소리하다'라는 뜻으로도 씁니다.",
+    "구어에서는 부모나 선생님의 '잔소리'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "talk",
+     "en": "A public talk.",
+     "ko": "공개 강연."
+    },
+    {
+     "word": "scold",
+     "en": "Scold a student.",
+     "ko": "학생을 꾸짖다."
+    }
+   ],
+   "etymology": [
+    "lecture는 라틴어 legere(읽다)에서 온 단어입니다.",
+    "lecture(강의)는 원래 '소리 내어 읽는 것'이라는 뜻이었습니다.",
+    "중세 대학에서 교수가 책을 소리 내어 읽어 학생들에게 가르치던 방식에서 이 이름이 굳어졌습니다.",
+    "그 지루하고 길게 이어지는 설명에서 '잔소리'라는 구어적 뜻도 생겼습니다.",
+    "lecture의 핵심 이미지는 '교단에 서서 지식을 소리 내어 전달하는 강의 🎓'입니다."
+   ],
+   "meanings": [
+    "강의, 강연"
+   ],
+   "examples": [
+    {
+     "en": "The professor gave an interesting lecture on history.",
+     "ko": "그 교수는 역사에 대한 흥미로운 강의를 했어요."
+    },
+    {
+     "en": "She attended a lecture about climate change.",
+     "ko": "그녀는 기후 변화에 대한 강연에 참석했어요."
+    },
+    {
+     "en": "His mother gave him a lecture about being late.",
+     "ko": "그의 어머니는 그에게 늦은 것에 대해 잔소리를 했어요."
+    },
+    {
+     "en": "The lecture hall was filled with eager students.",
+     "ko": "그 강의실은 열의 있는 학생들로 가득 찼어요."
+    },
+    {
+     "en": "He recorded the lecture to review later.",
+     "ko": "그는 나중에 복습하려고 그 강의를 녹음했어요."
+    },
+    {
+     "en": "She prefers small discussions over long lectures.",
+     "ko": "그녀는 긴 강의보다 작은 토론을 선호해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "talk",
+     "ko": "강연",
+     "en": "A guest talk."
+    },
+    {
+     "type": "연관어",
+     "word": "speech",
+     "ko": "연설",
+     "en": "A public speech."
+    },
+    {
+     "type": "연관어",
+     "word": "professor",
+     "ko": "교수",
+     "en": "A university professor."
+    },
+    {
+     "type": "연관어",
+     "word": "seminar",
+     "ko": "세미나",
+     "en": "A research seminar."
+    },
+    {
+     "type": "연관어",
+     "word": "scold",
+     "ko": "꾸짖다",
+     "en": "Scold gently."
+    },
+    {
+     "type": "연관어",
+     "word": "class",
+     "ko": "수업",
+     "en": "Attend class."
+    }
+   ]
+  },
+  "2593": {
+   "word": "suite",
+   "overview": [
+    "suite는 호텔의 '스위트룸'이라는 뜻의 명사입니다.",
+    "book a suite(스위트룸을 예약하다)처럼 씁니다.",
+    "'한 벌, 한 세트'라는 뜻으로도 씁니다. (a suite of furniture, 가구 한 세트)",
+    "음악에서 '모음곡'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "luxury room",
+     "en": "A luxury room.",
+     "ko": "고급 객실."
+    },
+    {
+     "word": "set",
+     "en": "A furniture set.",
+     "ko": "가구 세트."
+    }
+   ],
+   "etymology": [
+    "suite는 프랑스어 suite(뒤따름, 연속)에서 온 단어입니다.",
+    "라틴어 sequi(따르다)에서 나온 말로, sequence(연속)와 같은 가족입니다.",
+    "'서로 이어져 하나의 세트를 이루는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "여러 방이 이어진 호화로운 객실, 연이은 곡들로 이루어진 모음곡 모두를 가리킵니다.",
+    "suite의 핵심 이미지는 '여러 개가 이어져 하나의 세트를 이루는 것 🛏️'입니다."
+   ],
+   "meanings": [
+    "스위트룸",
+    "한 벌",
+    "모음곡"
+   ],
+   "examples": [
+    {
+     "en": "They booked a suite for their honeymoon.",
+     "ko": "그들은 자신들의 신혼여행을 위해 스위트룸을 예약했어요."
+    },
+    {
+     "en": "The hotel suite had a stunning view of the city.",
+     "ko": "그 호텔 스위트룸은 그 도시의 멋진 경치를 가지고 있었어요."
+    },
+    {
+     "en": "She bought a suite of matching furniture.",
+     "ko": "그녀는 서로 어울리는 가구 세트를 샀어요."
+    },
+    {
+     "en": "The orchestra performed a famous suite by the composer.",
+     "ko": "그 오케스트라는 그 작곡가의 유명한 모음곡을 연주했어요."
+    },
+    {
+     "en": "The executive office includes a private suite.",
+     "ko": "그 임원 사무실은 개인 스위트룸을 포함해요."
+    },
+    {
+     "en": "They upgraded to a suite for the anniversary trip.",
+     "ko": "그들은 그 기념일 여행을 위해 스위트룸으로 업그레이드했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "room",
+     "ko": "객실",
+     "en": "A hotel room."
+    },
+    {
+     "type": "연관어",
+     "word": "set",
+     "ko": "세트",
+     "en": "A matching set."
+    },
+    {
+     "type": "연관어",
+     "word": "luxury",
+     "ko": "고급",
+     "en": "A luxury resort."
+    },
+    {
+     "type": "연관어",
+     "word": "furniture",
+     "ko": "가구",
+     "en": "New furniture."
+    },
+    {
+     "type": "연관어",
+     "word": "hotel",
+     "ko": "호텔",
+     "en": "A five-star hotel."
+    },
+    {
+     "type": "연관어",
+     "word": "composer",
+     "ko": "작곡가",
+     "en": "A famous composer."
+    }
+   ]
+  },
+  "241": {
+   "word": "beam",
+   "overview": [
+    "beam은 건축용 '들보, 대들보'라는 뜻의 명사입니다.",
+    "a wooden beam(나무 들보)처럼 씁니다.",
+    "'빛줄기, 광선'이라는 뜻으로도 아주 자주 씁니다.",
+    "동사로는 '환하게 웃다, 빛을 발하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ray of light",
+     "en": "A ray of light.",
+     "ko": "빛줄기."
+    },
+    {
+     "word": "support bar",
+     "en": "A support bar.",
+     "ko": "지지대."
+    }
+   ],
+   "etymology": [
+    "beam은 고대 영어 beam(나무, 들보)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 오래된 단어로, 원래는 나무 자체를 뜻했습니다.",
+    "'건물을 떠받치는 굵은 나무 기둥'이라는 뜻으로 좁혀졌습니다.",
+    "햇빛이 나무 사이로 곧게 뻗어 나오는 모습에서 '빛줄기'라는 뜻도 나왔습니다.",
+    "beam의 핵심 이미지는 '곧게 뻗어 나가는 튼튼한 들보와 환한 빛줄기 ☀️'입니다."
+   ],
+   "meanings": [
+    "빔"
+   ],
+   "examples": [
+    {
+     "en": "A wooden beam supports the roof of the barn.",
+     "ko": "나무 들보 하나가 그 헛간의 지붕을 지탱해요."
+    },
+    {
+     "en": "A beam of sunlight shone through the window.",
+     "ko": "햇빛 한 줄기가 그 창문을 통해 비쳤어요."
+    },
+    {
+     "en": "She beamed with pride at her daughter's graduation.",
+     "ko": "그녀는 자신의 딸의 졸업식에서 자부심으로 환하게 웃었어요."
+    },
+    {
+     "en": "The laser beam cut through the metal precisely.",
+     "ko": "그 레이저 빔은 그 금속을 정밀하게 절단했어요."
+    },
+    {
+     "en": "Engineers checked the strength of the steel beams.",
+     "ko": "엔지니어들은 그 강철 들보들의 강도를 확인했어요."
+    },
+    {
+     "en": "He beamed with joy when he saw the surprise party.",
+     "ko": "그는 그 깜짝 파티를 보고 기쁨으로 환하게 웃었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "ray",
+     "ko": "광선",
+     "en": "A ray of hope."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지지대",
+     "en": "A steel support."
+    },
+    {
+     "type": "연관어",
+     "word": "smile",
+     "ko": "미소",
+     "en": "A wide smile."
+    },
+    {
+     "type": "연관어",
+     "word": "light",
+     "ko": "빛",
+     "en": "Bright light."
+    },
+    {
+     "type": "연관어",
+     "word": "structure",
+     "ko": "구조물",
+     "en": "A stable structure."
+    },
+    {
+     "type": "연관어",
+     "word": "laser",
+     "ko": "레이저",
+     "en": "A laser pointer."
+    }
+   ]
   }
  }
 }
