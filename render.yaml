@@ -22,6 +22,8 @@ services:
         sync: false
       - key: TEACHER_PIN
         sync: false
+      - key: KMA_API_KEY
+        sync: false
   - type: web
     name: classj-assets
     runtime: static
