@@ -3860,6 +3860,1935 @@
      "en": "Good manners."
     }
    ]
+  },
+  "2415": {
+   "word": "site",
+   "overview": [
+    "site는 '장소', '부지'라는 뜻의 명사입니다.",
+    "a construction site(건설 현장), a historic site(유적지)처럼 씁니다.",
+    "website(웹사이트)를 줄여서 site라고도 아주 자주 씁니다.",
+    "발음이 같은 sight(시력, 광경)와 헷갈리지 않도록 철자를 조심해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "place",
+     "en": "A special place.",
+     "ko": "특별한 장소."
+    },
+    {
+     "word": "website",
+     "en": "Visit a website.",
+     "ko": "웹사이트를 방문하다."
+    }
+   ],
+   "etymology": [
+    "site는 라틴어 situs(위치, 자리)에서 온 단어입니다.",
+    "sinere(놓다, 두다)에서 나온 말입니다.",
+    "'무언가가 놓여 있는 자리'라는 뜻이 그대로 이어져 왔습니다.",
+    "situation(상황), position(위치)과도 이어지는 뿌리라고 봅니다.",
+    "site의 핵심 이미지는 '건물이 세워지거나 유적이 남은 특정한 자리 📍'입니다."
+   ],
+   "meanings": [
+    "장소, 부지",
+    "(website의 줄임말) 웹사이트"
+   ],
+   "examples": [
+    {
+     "en": "This is the site of the new school.",
+     "ko": "여기가 새 학교가 들어설 부지예요."
+    },
+    {
+     "en": "We visited a historic site last weekend.",
+     "ko": "우리는 지난 주말에 유적지를 방문했어요."
+    },
+    {
+     "en": "The construction site was very noisy.",
+     "ko": "그 건설 현장은 아주 시끄러웠어요."
+    },
+    {
+     "en": "I found this recipe on a cooking site.",
+     "ko": "나는 이 요리법을 요리 사이트에서 찾았어요."
+    },
+    {
+     "en": "The camping site was near a lake.",
+     "ko": "그 캠핑장은 호수 근처에 있었어요."
+    },
+    {
+     "en": "Please check our site for updates.",
+     "ko": "업데이트는 저희 사이트를 확인해 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "place",
+     "ko": "장소",
+     "en": "A quiet place."
+    },
+    {
+     "type": "연관어",
+     "word": "website",
+     "ko": "웹사이트",
+     "en": "Visit the website."
+    },
+    {
+     "type": "연관어",
+     "word": "location",
+     "ko": "위치",
+     "en": "A great location."
+    },
+    {
+     "type": "연관어",
+     "word": "construction",
+     "ko": "건설",
+     "en": "Under construction."
+    },
+    {
+     "type": "연관어",
+     "word": "historic",
+     "ko": "역사적인",
+     "en": "A historic building."
+    },
+    {
+     "type": "연관어",
+     "word": "sight",
+     "ko": "광경 (발음이 같은 말)",
+     "en": "A beautiful sight."
+    }
+   ]
+  },
+  "1512": {
+   "word": "knowledge",
+   "overview": [
+    "knowledge는 '지식', '앎'이라는 뜻의 명사입니다.",
+    "general knowledge(일반 상식), have knowledge of(~에 대한 지식이 있다)처럼 씁니다.",
+    "to my knowledge는 '내가 아는 한'이라는 뜻의 표현입니다.",
+    "동사 know(알다)에서 나온 명사입니다. 발음할 때 k는 소리 내지 않습니다."
+   ],
+   "easy": [
+    {
+     "word": "information",
+     "en": "Useful information.",
+     "ko": "유용한 정보."
+    },
+    {
+     "word": "understanding",
+     "en": "A deep understanding.",
+     "ko": "깊은 이해."
+    }
+   ],
+   "etymology": [
+    "knowledge는 know(알다)와 옛 접미사 -ledge가 합쳐진 말입니다.",
+    "고대 영어 cnāwan(알다)에서 온 knowledge입니다.",
+    "'아는 상태'라는 뜻이 그대로 명사로 이어져 왔습니다.",
+    "acknowledge(인정하다, '알고 있음을 밝히다')도 같은 가족 단어입니다.",
+    "knowledge의 핵심 이미지는 '책과 경험을 통해 차곡차곡 쌓은 지식 📚'입니다."
+   ],
+   "meanings": [
+    "지식, 앎"
+   ],
+   "examples": [
+    {
+     "en": "She has a lot of knowledge about animals.",
+     "ko": "그녀는 동물에 대해 아는 것이 많아요."
+    },
+    {
+     "en": "Reading books gives you knowledge.",
+     "ko": "책을 읽으면 지식을 얻을 수 있어요."
+    },
+    {
+     "en": "To my knowledge, the store is closed today.",
+     "ko": "제가 아는 한 그 가게는 오늘 문을 닫았어요."
+    },
+    {
+     "en": "He has deep knowledge of history.",
+     "ko": "그는 역사에 대해 깊은 지식이 있어요."
+    },
+    {
+     "en": "Knowledge is power.",
+     "ko": "아는 것이 힘이에요."
+    },
+    {
+     "en": "This test measures your general knowledge.",
+     "ko": "이 시험은 일반 상식을 측정해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "information",
+     "ko": "정보",
+     "en": "Share information."
+    },
+    {
+     "type": "연관어",
+     "word": "know",
+     "ko": "알다",
+     "en": "Know the truth."
+    },
+    {
+     "type": "연관어",
+     "word": "learn",
+     "ko": "배우다",
+     "en": "Learn a lot."
+    },
+    {
+     "type": "연관어",
+     "word": "wisdom",
+     "ko": "지혜",
+     "en": "Ancient wisdom."
+    },
+    {
+     "type": "연관어",
+     "word": "understand",
+     "ko": "이해하다",
+     "en": "Understand fully."
+    },
+    {
+     "type": "연관어",
+     "word": "education",
+     "ko": "교육",
+     "en": "A good education."
+    }
+   ]
+  },
+  "1969": {
+   "word": "pity",
+   "overview": [
+    "pity는 '유감', '동정'이라는 뜻의 명사입니다.",
+    "What a pity!(정말 안됐다!), feel pity for(~을 불쌍히 여기다)처럼 씁니다.",
+    "동사로는 '불쌍히 여기다'라는 뜻입니다.",
+    "It's a pity that...는 '~라니 안타깝다'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "sympathy",
+     "en": "Show sympathy.",
+     "ko": "동정을 보이다."
+    },
+    {
+     "word": "shame",
+     "en": "What a shame!",
+     "ko": "정말 아쉽다!"
+    }
+   ],
+   "etymology": [
+    "pity는 라틴어 pietas(경건함, 자비)에서 온 단어입니다.",
+    "pius(경건한)에서 나온 말로, piety(경건함)와 같은 가족입니다.",
+    "'남을 불쌍히 여기는 자비로운 마음'이라는 뜻이 그대로 이어져 왔습니다.",
+    "compassion(연민)과도 뜻이 비슷하지만 뿌리는 다릅니다.",
+    "pity의 핵심 이미지는 '불쌍한 사람을 보고 마음 아파하는 것 😢'입니다."
+   ],
+   "meanings": [
+    "유감, 안타까움 (명사)",
+    "동정, 연민 (명사)",
+    "불쌍히 여기다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "What a pity you can't come to the party!",
+     "ko": "파티에 못 오다니 정말 안됐네!"
+    },
+    {
+     "en": "She felt pity for the lost puppy.",
+     "ko": "그녀는 길 잃은 강아지를 불쌍히 여겼어요."
+    },
+    {
+     "en": "It's a pity that the trip was canceled.",
+     "ko": "여행이 취소되다니 아쉬워요."
+    },
+    {
+     "en": "I pity anyone who has to work in this heat.",
+     "ko": "이 더위에 일해야 하는 사람이 안됐다고 생각해요."
+    },
+    {
+     "en": "He looked at the stray dog with pity.",
+     "ko": "그는 유기견을 동정 어린 눈으로 바라봤어요."
+    },
+    {
+     "en": "Don't feel sorry for me, I don't need your pity.",
+     "ko": "나를 안쓰럽게 여기지 마, 네 동정은 필요 없어."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sympathy",
+     "ko": "동정, 공감",
+     "en": "Show sympathy."
+    },
+    {
+     "type": "유의어",
+     "word": "shame",
+     "ko": "안타까움",
+     "en": "What a shame."
+    },
+    {
+     "type": "연관어",
+     "word": "sad",
+     "ko": "슬픈",
+     "en": "Feel sad."
+    },
+    {
+     "type": "연관어",
+     "word": "compassion",
+     "ko": "연민",
+     "en": "Full of compassion."
+    },
+    {
+     "type": "연관어",
+     "word": "sorry",
+     "ko": "안타까운, 미안한",
+     "en": "I'm so sorry."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "A kind heart."
+    }
+   ]
+  },
+  "175": {
+   "word": "assume",
+   "overview": [
+    "assume은 '가정하다', '추정하다'라는 뜻의 동사입니다.",
+    "Let's assume that...(~라고 가정해 보자), I assumed you knew.(나는 네가 아는 줄 알았어.)처럼 씁니다.",
+    "'(책임 등을) 맡다'라는 격식 있는 뜻으로도 씁니다.",
+    "명사 assumption(가정, 추측)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "guess",
+     "en": "Guess the answer.",
+     "ko": "답을 추측하다."
+    },
+    {
+     "word": "think",
+     "en": "Think it's true.",
+     "ko": "그게 사실이라고 생각하다."
+    }
+   ],
+   "etymology": [
+    "assume은 라틴어 assumere(받아들이다, 취하다)에서 온 단어입니다.",
+    "ad(~에게)와 sumere(취하다)가 합쳐진 말입니다.",
+    "consume(소비하다), resume(재개하다)도 sumere에서 나온 같은 가족입니다.",
+    "'증거 없이 생각을 취해 받아들이다'라는 뜻에서 '가정하다'가 되었습니다.",
+    "assume의 핵심 이미지는 '확실하지 않아도 그렇다고 미리 짐작하는 것 🤔'입니다."
+   ],
+   "meanings": [
+    "가정하다, 추정하다",
+    "(책임 등을) 맡다"
+   ],
+   "examples": [
+    {
+     "en": "Let's assume the story is true.",
+     "ko": "그 이야기가 사실이라고 가정해 보자."
+    },
+    {
+     "en": "I assumed you would be late.",
+     "ko": "나는 네가 늦을 거라고 추측했어."
+    },
+    {
+     "en": "Don't assume things without checking first.",
+     "ko": "먼저 확인하지 않고 넘겨짚지 마."
+    },
+    {
+     "en": "She assumed the role of team leader.",
+     "ko": "그녀는 팀장의 역할을 맡았어요."
+    },
+    {
+     "en": "We can't assume everyone agrees.",
+     "ko": "우리는 모두가 동의한다고 넘겨짚을 수 없어요."
+    },
+    {
+     "en": "He assumed responsibility for the mistake.",
+     "ko": "그는 그 실수에 대한 책임을 맡았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "guess",
+     "ko": "추측하다",
+     "en": "Guess the answer."
+    },
+    {
+     "type": "유의어",
+     "word": "suppose",
+     "ko": "가정하다",
+     "en": "Suppose it rains."
+    },
+    {
+     "type": "파생어",
+     "word": "assumption",
+     "ko": "가정, 추측",
+     "en": "A false assumption."
+    },
+    {
+     "type": "연관어",
+     "word": "believe",
+     "ko": "믿다",
+     "en": "Believe in it."
+    },
+    {
+     "type": "연관어",
+     "word": "expect",
+     "ko": "예상하다",
+     "en": "Expect the best."
+    },
+    {
+     "type": "연관어",
+     "word": "responsibility",
+     "ko": "책임",
+     "en": "Take responsibility."
+    }
+   ]
+  },
+  "2248": {
+   "word": "rise",
+   "overview": [
+    "rise는 '오르다', '떠오르다'라는 뜻의 동사이자 '상승', '증가'라는 뜻의 명사입니다.",
+    "The sun rises.(해가 떠올라요.)처럼 스스로 위로 오르는 것을 나타냅니다.",
+    "a rise in prices(가격 상승)처럼 명사로도 자주 씁니다.",
+    "과거형은 rose, 과거분사는 risen입니다. rise는 스스로 오르고, raise는 다른 것을 올린다는 차이가 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "go up",
+     "en": "Go up slowly.",
+     "ko": "천천히 오르다."
+    },
+    {
+     "word": "increase",
+     "en": "Increase in price.",
+     "ko": "가격 인상."
+    }
+   ],
+   "etymology": [
+    "rise는 고대 영어 rīsan(일어서다, 오르다)에서 온 단어입니다.",
+    "독일어 지역 말과 이어지는 아주 오래된 게르만 뿌리입니다.",
+    "raise(들어 올리다)와도 같은 뿌리에서 나온 말인데, rise는 자동사, raise는 타동사로 나뉩니다.",
+    "arise(생기다, '일어나다'), sunrise(일출)도 같은 가족 단어입니다.",
+    "rise의 핵심 이미지는 '아침 해가 스스로 서서히 떠오르는 모습 🌅'입니다."
+   ],
+   "meanings": [
+    "(스스로) 오르다, 떠오르다 (동사)",
+    "일어서다 (동사)",
+    "상승, 증가 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The sun rises in the east.",
+     "ko": "해는 동쪽에서 떠올라요."
+    },
+    {
+     "en": "Prices have risen a lot this year.",
+     "ko": "올해 가격이 많이 올랐어요."
+    },
+    {
+     "en": "She rose from her chair to greet us.",
+     "ko": "그녀는 우리를 맞으러 의자에서 일어섰어요."
+    },
+    {
+     "en": "There was a sudden rise in temperature.",
+     "ko": "기온이 갑자기 상승했어요."
+    },
+    {
+     "en": "Smoke rose from the chimney.",
+     "ko": "굴뚝에서 연기가 피어올랐어요."
+    },
+    {
+     "en": "His fame rose quickly after the movie.",
+     "ko": "그의 명성은 그 영화 이후 빠르게 높아졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "rose",
+     "ko": "올랐다 (과거형)",
+     "en": "The sun rose."
+    },
+    {
+     "type": "연관어",
+     "word": "raise",
+     "ko": "들어 올리다",
+     "en": "Raise your hand."
+    },
+    {
+     "type": "연관어",
+     "word": "increase",
+     "ko": "증가하다",
+     "en": "Increase quickly."
+    },
+    {
+     "type": "반의어",
+     "word": "fall",
+     "ko": "떨어지다",
+     "en": "Prices fall."
+    },
+    {
+     "type": "연관어",
+     "word": "sunrise",
+     "ko": "일출",
+     "en": "Watch the sunrise."
+    },
+    {
+     "type": "연관어",
+     "word": "climb",
+     "ko": "오르다",
+     "en": "Climb the stairs."
+    }
+   ]
+  },
+  "2203": {
+   "word": "request",
+   "overview": [
+    "request는 '요청', '부탁'이라는 뜻의 명사이자 '요청하다'라는 뜻의 동사입니다.",
+    "make a request(요청을 하다), request help(도움을 요청하다)처럼 씁니다.",
+    "ask보다 조금 더 격식 있는 말투에서 씁니다.",
+    "on request는 '요청 시에'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "ask",
+     "en": "Ask for help.",
+     "ko": "도움을 부탁하다."
+    },
+    {
+     "word": "wish",
+     "en": "Make a wish.",
+     "ko": "소원을 빌다."
+    }
+   ],
+   "etymology": [
+    "request는 라틴어 requirere(다시 찾다, 필요로 하다)에서 온 단어입니다.",
+    "re(다시)와 quaerere(찾다, 구하다)가 합쳐진 말입니다.",
+    "require(요구하다), question(질문, '찾아 묻는 것')도 같은 뿌리에서 나온 단어들입니다.",
+    "'무언가를 구하려고 다시 청하다'라는 뜻이 '요청하다'로 이어졌습니다.",
+    "request의 핵심 이미지는 '정중하게 건네는 부탁의 말 🙏'입니다."
+   ],
+   "meanings": [
+    "요청, 부탁 (명사)",
+    "요청하다, 신청하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I have a small request to make.",
+     "ko": "저에게 작은 부탁이 있어요."
+    },
+    {
+     "en": "She requested more time for the project.",
+     "ko": "그녀는 그 프로젝트를 위해 더 많은 시간을 요청했어요."
+    },
+    {
+     "en": "We received many requests for help.",
+     "ko": "우리는 도움 요청을 많이 받았어요."
+    },
+    {
+     "en": "Please request a copy of the document.",
+     "ko": "그 서류의 사본을 요청해 주세요."
+    },
+    {
+     "en": "Menus are available on request.",
+     "ko": "메뉴는 요청 시에 제공돼요."
+    },
+    {
+     "en": "He requested that we arrive early.",
+     "ko": "그는 우리가 일찍 도착해 달라고 요청했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ask",
+     "ko": "부탁하다",
+     "en": "Ask a favor."
+    },
+    {
+     "type": "연관어",
+     "word": "require",
+     "ko": "요구하다",
+     "en": "Require patience."
+    },
+    {
+     "type": "연관어",
+     "word": "demand",
+     "ko": "요구하다",
+     "en": "Demand an answer."
+    },
+    {
+     "type": "연관어",
+     "word": "apply",
+     "ko": "신청하다",
+     "en": "Apply for a job."
+    },
+    {
+     "type": "연관어",
+     "word": "favor",
+     "ko": "부탁",
+     "en": "Do me a favor."
+    },
+    {
+     "type": "연관어",
+     "word": "wish",
+     "ko": "바라다",
+     "en": "Wish for peace."
+    }
+   ]
+  },
+  "1932": {
+   "word": "per",
+   "overview": [
+    "per는 '~마다', '~당'이라는 뜻의 전치사입니다.",
+    "50 kilometers per hour(시간당 50킬로미터), per person(1인당)처럼 씁니다.",
+    "as per는 '~에 따라서'라는 뜻의 격식 있는 표현입니다.",
+    "숫자와 함께 비율을 나타낼 때 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "each",
+     "en": "For each person.",
+     "ko": "각 사람마다."
+    },
+    {
+     "word": "a",
+     "en": "Once a day.",
+     "ko": "하루에 한 번."
+    }
+   ],
+   "etymology": [
+    "per는 라틴어 per(~을 통하여, ~마다)에서 온 단어입니다.",
+    "'하나하나를 통과하며 두루'라는 뜻에서 '~마다', '~당'이라는 뜻이 되었습니다.",
+    "percent(퍼센트, '백 개마다'), perform(수행하다, '끝까지 하다')도 per에서 나온 단어들입니다.",
+    "라틴어를 그대로 들여와 영어에서도 비슷한 뜻으로 씁니다.",
+    "per의 핵심 이미지는 '하나하나마다 똑같이 적용되는 비율 📐'입니다."
+   ],
+   "meanings": [
+    "~마다, ~당"
+   ],
+   "examples": [
+    {
+     "en": "The car can go 100 kilometers per hour.",
+     "ko": "그 차는 시속 100킬로미터로 갈 수 있어요."
+    },
+    {
+     "en": "The tickets cost ten dollars per person.",
+     "ko": "표는 1인당 10달러예요."
+    },
+    {
+     "en": "We meet once per week.",
+     "ko": "우리는 일주일에 한 번 만나요."
+    },
+    {
+     "en": "As per the instructions, close the window.",
+     "ko": "설명에 따라 창문을 닫아."
+    },
+    {
+     "en": "She earns twenty dollars per hour.",
+     "ko": "그녀는 시간당 20달러를 벌어요."
+    },
+    {
+     "en": "The room can hold ten people per session.",
+     "ko": "그 방은 회차당 열 명을 수용할 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "each",
+     "ko": "각각의",
+     "en": "Each one."
+    },
+    {
+     "type": "연관어",
+     "word": "percent",
+     "ko": "퍼센트",
+     "en": "Fifty percent."
+    },
+    {
+     "type": "연관어",
+     "word": "hour",
+     "ko": "시간",
+     "en": "One hour."
+    },
+    {
+     "type": "연관어",
+     "word": "rate",
+     "ko": "비율",
+     "en": "A high rate."
+    },
+    {
+     "type": "연관어",
+     "word": "average",
+     "ko": "평균",
+     "en": "The average score."
+    },
+    {
+     "type": "연관어",
+     "word": "amount",
+     "ko": "양",
+     "en": "A small amount."
+    }
+   ]
+  },
+  "1234": {
+   "word": "grant",
+   "overview": [
+    "grant는 '주다', '승인하다'라는 뜻의 동사이자 '보조금', '지원금'이라는 뜻의 명사입니다.",
+    "grant a wish(소원을 들어주다), grant permission(허락을 해 주다)처럼 씁니다.",
+    "take for granted는 '당연하게 여기다'라는 아주 자주 쓰는 표현입니다.",
+    "명사로는 정부나 단체가 주는 '지원금'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "give",
+     "en": "Give permission.",
+     "ko": "허락을 주다."
+    },
+    {
+     "word": "allow",
+     "en": "Allow entry.",
+     "ko": "입장을 허락하다."
+    }
+   ],
+   "etymology": [
+    "grant는 옛 프랑스어 graunter(약속하다, 승인하다)에서 온 단어입니다.",
+    "라틴어 credere(믿다)와 이어진다는 설이 있습니다.",
+    "'상대의 요청을 믿고 들어주다'라는 뜻이 '주다', '승인하다'로 이어졌습니다.",
+    "'당연하게 여기다'라는 표현은 '이미 주어진 것으로 여기다'라는 느낌에서 나왔습니다.",
+    "grant의 핵심 이미지는 '요청을 흔쾌히 들어주는 것 🎁'입니다."
+   ],
+   "meanings": [
+    "주다, 승인하다 (동사)",
+    "보조금, 지원금 (명사)",
+    "(take for granted) 당연하게 여기다"
+   ],
+   "examples": [
+    {
+     "en": "The fairy granted her three wishes.",
+     "ko": "요정이 그녀에게 세 가지 소원을 들어줬어요."
+    },
+    {
+     "en": "The school received a grant for new books.",
+     "ko": "그 학교는 새 책을 위한 지원금을 받았어요."
+    },
+    {
+     "en": "Permission was granted for the trip.",
+     "ko": "그 여행을 위한 허락이 승인되었어요."
+    },
+    {
+     "en": "Don't take your family for granted.",
+     "ko": "네 가족을 당연하게 여기지 마."
+    },
+    {
+     "en": "The government grants funding for research.",
+     "ko": "정부는 연구를 위한 자금을 지원해요."
+    },
+    {
+     "en": "I take it for granted that you'll help.",
+     "ko": "나는 네가 도와줄 거라고 당연히 여겨."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "give",
+     "ko": "주다",
+     "en": "Give a gift."
+    },
+    {
+     "type": "유의어",
+     "word": "allow",
+     "ko": "허락하다",
+     "en": "Allow access."
+    },
+    {
+     "type": "연관어",
+     "word": "permission",
+     "ko": "허락",
+     "en": "Ask permission."
+    },
+    {
+     "type": "연관어",
+     "word": "fund",
+     "ko": "자금",
+     "en": "A research fund."
+    },
+    {
+     "type": "연관어",
+     "word": "wish",
+     "ko": "소원",
+     "en": "Make a wish."
+    },
+    {
+     "type": "연관어",
+     "word": "approve",
+     "ko": "승인하다",
+     "en": "Approve the plan."
+    }
+   ]
+  },
+  "1649": {
+   "word": "meal",
+   "overview": [
+    "meal은 '식사', '끼니'라는 뜻의 명사입니다.",
+    "have a meal(식사를 하다), three meals a day(하루 세 끼)처럼 씁니다.",
+    "'곡식 가루'라는 뜻으로도 씁니다. oatmeal(오트밀)",
+    "a home-cooked meal(집밥)처럼 다른 말과 함께도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "food",
+     "en": "Delicious food.",
+     "ko": "맛있는 음식."
+    },
+    {
+     "word": "dinner",
+     "en": "Have dinner.",
+     "ko": "저녁을 먹다."
+    }
+   ],
+   "etymology": [
+    "meal은 고대 영어 mǣl(정해진 때, 식사 시간)에서 온 단어입니다.",
+    "'정해진 시간에 먹는 식사'라는 뜻이 그대로 이어져 왔습니다.",
+    "'곡식 가루'라는 뜻의 meal은 grind(갈다)와 이어지는 다른 뿌리에서 나왔습니다.",
+    "meantime(그동안)의 mean도 '시간'과 관련된 먼 친척이라고 봅니다.",
+    "meal의 핵심 이미지는 '식탁에 둘러앉아 먹는 한 끼 식사 🍽️'입니다."
+   ],
+   "meanings": [
+    "식사, 끼니 (명사)",
+    "곡식 가루 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "We eat three meals a day.",
+     "ko": "우리는 하루 세 끼를 먹어요."
+    },
+    {
+     "en": "This was a delicious meal.",
+     "ko": "이건 맛있는 식사였어요."
+    },
+    {
+     "en": "Mom always makes healthy meals.",
+     "ko": "엄마는 항상 건강한 식사를 만들어 주세요."
+    },
+    {
+     "en": "The airline serves a meal on long flights.",
+     "ko": "항공사는 긴 비행에서 식사를 제공해요."
+    },
+    {
+     "en": "Skipping a meal is not good for your health.",
+     "ko": "끼니를 거르는 것은 건강에 좋지 않아요."
+    },
+    {
+     "en": "Oatmeal is made from ground oats.",
+     "ko": "오트밀은 갈아 놓은 귀리로 만들어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "food",
+     "ko": "음식",
+     "en": "Tasty food."
+    },
+    {
+     "type": "연관어",
+     "word": "breakfast",
+     "ko": "아침 식사",
+     "en": "A big breakfast."
+    },
+    {
+     "type": "연관어",
+     "word": "lunch",
+     "ko": "점심",
+     "en": "School lunch."
+    },
+    {
+     "type": "연관어",
+     "word": "dinner",
+     "ko": "저녁 식사",
+     "en": "Family dinner."
+    },
+    {
+     "type": "연관어",
+     "word": "eat",
+     "ko": "먹다",
+     "en": "Eat slowly."
+    },
+    {
+     "type": "연관어",
+     "word": "cook",
+     "ko": "요리하다",
+     "en": "Cook a meal."
+    }
+   ]
+  },
+  "754": {
+   "word": "deliver",
+   "overview": [
+    "deliver는 '배달하다', '전달하다'라는 뜻의 동사입니다.",
+    "deliver a package(소포를 배달하다)처럼 씁니다.",
+    "deliver a speech(연설을 하다)처럼 '전하다'라는 뜻으로도 씁니다.",
+    "'출산하다'라는 뜻으로도 씁니다. 명사 delivery(배달, 출산)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bring",
+     "en": "Bring the mail.",
+     "ko": "우편물을 가져오다."
+    },
+    {
+     "word": "hand over",
+     "en": "Hand over the letter.",
+     "ko": "편지를 건네다."
+    }
+   ],
+   "etymology": [
+    "deliver는 라틴어 deliberare(자유롭게 하다, 넘겨주다)에서 온 단어입니다.",
+    "de(완전히)와 liberare(자유롭게 하다)가 합쳐진 말입니다.",
+    "liberty(자유), liberate(해방시키다)와 같은 가족입니다.",
+    "'짐을 옮겨 완전히 넘겨줘서 자유롭게 하다'라는 뜻에서 '배달하다'가 되었습니다.",
+    "deliver의 핵심 이미지는 '문 앞까지 물건을 가져다주는 배달 📦'입니다."
+   ],
+   "meanings": [
+    "배달하다, 전달하다",
+    "(연설 등을) 하다",
+    "(아기를) 출산하다"
+   ],
+   "examples": [
+    {
+     "en": "The mailman delivers letters every morning.",
+     "ko": "우편배달부가 매일 아침 편지를 배달해요."
+    },
+    {
+     "en": "She delivered a moving speech.",
+     "ko": "그녀는 감동적인 연설을 했어요."
+    },
+    {
+     "en": "The doctor helped deliver the baby.",
+     "ko": "의사가 아기를 받는 것을 도왔어요."
+    },
+    {
+     "en": "Can you deliver this package to my house?",
+     "ko": "이 소포를 우리 집으로 배달해 줄 수 있어요?"
+    },
+    {
+     "en": "We delivered the good news to the team.",
+     "ko": "우리는 좋은 소식을 팀에 전달했어요."
+    },
+    {
+     "en": "The pizza is usually delivered within 30 minutes.",
+     "ko": "피자는 보통 30분 이내에 배달돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "delivery",
+     "ko": "배달, 출산",
+     "en": "Fast delivery."
+    },
+    {
+     "type": "연관어",
+     "word": "package",
+     "ko": "소포",
+     "en": "A small package."
+    },
+    {
+     "type": "연관어",
+     "word": "mail",
+     "ko": "우편",
+     "en": "Check the mail."
+    },
+    {
+     "type": "연관어",
+     "word": "speech",
+     "ko": "연설",
+     "en": "Give a speech."
+    },
+    {
+     "type": "연관어",
+     "word": "baby",
+     "ko": "아기",
+     "en": "A newborn baby."
+    },
+    {
+     "type": "연관어",
+     "word": "send",
+     "ko": "보내다",
+     "en": "Send a gift."
+    }
+   ]
+  },
+  "2174": {
+   "word": "regular",
+   "overview": [
+    "regular는 '규칙적인', '정기적인'이라는 뜻의 형용사입니다.",
+    "regular exercise(규칙적인 운동), a regular customer(단골손님)처럼 씁니다.",
+    "'보통의', '일반적인'이라는 뜻으로도 씁니다. a regular size(보통 크기)",
+    "부사 regularly(규칙적으로)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "normal",
+     "en": "A normal day.",
+     "ko": "평범한 하루."
+    },
+    {
+     "word": "usual",
+     "en": "The usual time.",
+     "ko": "평소의 시간."
+    }
+   ],
+   "etymology": [
+    "regular는 라틴어 regularis(규칙에 따른)에서 온 단어입니다.",
+    "regula(자, 규칙)에서 나온 말로, rule(규칙)과 같은 가족입니다.",
+    "'규칙을 따라 늘 똑같이 돌아오는'이라는 뜻이 '규칙적인'으로 이어졌습니다.",
+    "'특별하지 않고 흔한'이라는 뜻도 여기서 자연스럽게 넓어졌습니다.",
+    "regular의 핵심 이미지는 '늘 같은 시간에 반복되는 규칙적인 습관 ⏰'입니다."
+   ],
+   "meanings": [
+    "규칙적인, 정기적인",
+    "보통의, 일반적인",
+    "단골의 (regular customer)"
+   ],
+   "examples": [
+    {
+     "en": "Regular exercise keeps you healthy.",
+     "ko": "규칙적인 운동은 건강을 지켜 줘요."
+    },
+    {
+     "en": "She is a regular customer at this shop.",
+     "ko": "그녀는 이 가게의 단골손님이에요."
+    },
+    {
+     "en": "We have regular meetings every Monday.",
+     "ko": "우리는 매주 월요일에 정기 회의를 해요."
+    },
+    {
+     "en": "I'd like a regular size coffee, please.",
+     "ko": "보통 크기 커피 주세요."
+    },
+    {
+     "en": "He goes to bed at a regular time.",
+     "ko": "그는 규칙적인 시간에 자러 가요."
+    },
+    {
+     "en": "This is just a regular Tuesday for me.",
+     "ko": "이건 저에게 그냥 평범한 화요일이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "normal",
+     "ko": "정상적인",
+     "en": "A normal life."
+    },
+    {
+     "type": "유의어",
+     "word": "usual",
+     "ko": "평소의",
+     "en": "The usual routine."
+    },
+    {
+     "type": "파생어",
+     "word": "regularly",
+     "ko": "규칙적으로",
+     "en": "Exercise regularly."
+    },
+    {
+     "type": "반의어",
+     "word": "irregular",
+     "ko": "불규칙한",
+     "en": "An irregular pattern."
+    },
+    {
+     "type": "연관어",
+     "word": "schedule",
+     "ko": "일정",
+     "en": "A fixed schedule."
+    },
+    {
+     "type": "연관어",
+     "word": "routine",
+     "ko": "일과",
+     "en": "A daily routine."
+    }
+   ]
+  },
+  "2628": {
+   "word": "switch",
+   "overview": [
+    "switch는 '스위치'라는 뜻의 명사이자 '바꾸다', '전환하다'라는 뜻의 동사입니다.",
+    "turn on the switch(스위치를 켜다)처럼 씁니다.",
+    "switch places(자리를 바꾸다), switch jobs(직업을 바꾸다)처럼 동사로도 자주 씁니다.",
+    "switch on/off는 '켜다/끄다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "button",
+     "en": "Press the button.",
+     "ko": "버튼을 눌러."
+    },
+    {
+     "word": "change",
+     "en": "Change places.",
+     "ko": "자리를 바꿔."
+    }
+   ],
+   "etymology": [
+    "switch는 중세 저지 독일어 swutsche(가는 나뭇가지, 채찍)에서 온 단어입니다.",
+    "처음에는 '나뭇가지로 치다'라는 뜻이었습니다.",
+    "전기 스위치가 발명되며 '전환 장치'라는 뜻이 새로 생겼습니다.",
+    "레버를 딱 꺾어 바꾸는 모습에서 '바꾸다'라는 동사 뜻도 나왔습니다.",
+    "switch의 핵심 이미지는 '딸깍하고 눌러 전기를 켜고 끄는 스위치 🔌'입니다."
+   ],
+   "meanings": [
+    "스위치 (명사)",
+    "바꾸다, 전환하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Flip the switch to turn on the light.",
+     "ko": "불을 켜려면 스위치를 눌러."
+    },
+    {
+     "en": "Let's switch seats for a while.",
+     "ko": "잠시 자리를 바꾸자."
+    },
+    {
+     "en": "She switched jobs last month.",
+     "ko": "그녀는 지난달에 직업을 바꿨어요."
+    },
+    {
+     "en": "Can you switch off the TV?",
+     "ko": "TV 좀 꺼 줄래?"
+    },
+    {
+     "en": "We switched to a new plan.",
+     "ko": "우리는 새 계획으로 전환했어요."
+    },
+    {
+     "en": "The light switch is on the wall.",
+     "ko": "전등 스위치는 벽에 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "change",
+     "ko": "바꾸다",
+     "en": "Change your mind."
+    },
+    {
+     "type": "연관어",
+     "word": "button",
+     "ko": "버튼",
+     "en": "Press the button."
+    },
+    {
+     "type": "연관어",
+     "word": "turn on",
+     "ko": "켜다",
+     "en": "Turn on the light."
+    },
+    {
+     "type": "연관어",
+     "word": "turn off",
+     "ko": "끄다",
+     "en": "Turn off the TV."
+    },
+    {
+     "type": "연관어",
+     "word": "electricity",
+     "ko": "전기",
+     "en": "Save electricity."
+    },
+    {
+     "type": "연관어",
+     "word": "swap",
+     "ko": "교환하다",
+     "en": "Swap seats."
+    }
+   ]
+  },
+  "452": {
+   "word": "chase",
+   "overview": [
+    "chase는 '쫓다', '추적하다'라는 뜻의 동사이자 '추격'이라는 뜻의 명사입니다.",
+    "chase a ball(공을 쫓다), a car chase(자동차 추격전)처럼 씁니다.",
+    "'~을 추구하다'라는 비유적인 뜻으로도 씁니다. chase your dreams(꿈을 좇다)",
+    "play chase는 아이들이 하는 '술래잡기'를 말합니다."
+   ],
+   "easy": [
+    {
+     "word": "run after",
+     "en": "Run after the cat.",
+     "ko": "고양이를 쫓아 달리다."
+    },
+    {
+     "word": "follow",
+     "en": "Follow closely.",
+     "ko": "가까이 따라가다."
+    }
+   ],
+   "etymology": [
+    "chase는 옛 프랑스어 chacier(사냥하다, 쫓다)에서 온 단어입니다.",
+    "라틴어 capere(잡다)에서 나온 말로, capture(붙잡다)와 같은 가족입니다.",
+    "'잡으려고 뒤쫓다'라는 뜻이 그대로 이어져 왔습니다.",
+    "purchase(구매하다)도 원래 '뒤쫓아 얻다'라는 뜻에서 나온 같은 가족입니다.",
+    "chase의 핵심 이미지는 '숨 가쁘게 뒤쫓는 추격전 🏃'입니다."
+   ],
+   "meanings": [
+    "쫓다, 추적하다 (동사)",
+    "추구하다 (동사)",
+    "추격, 추적 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The dog chased the ball across the yard.",
+     "ko": "개가 마당을 가로질러 공을 쫓았어요."
+    },
+    {
+     "en": "The police chased the car for miles.",
+     "ko": "경찰은 몇 마일이나 그 차를 추격했어요."
+    },
+    {
+     "en": "She chased her dream of becoming a singer.",
+     "ko": "그녀는 가수가 되겠다는 꿈을 좇았어요."
+    },
+    {
+     "en": "The kids played chase in the park.",
+     "ko": "아이들은 공원에서 술래잡기를 했어요."
+    },
+    {
+     "en": "It was an exciting car chase in the movie.",
+     "ko": "그 영화에는 흥미진진한 자동차 추격전이 있었어요."
+    },
+    {
+     "en": "The cat chased the mouse into a hole.",
+     "ko": "고양이가 쥐를 구멍 속으로 몰아넣었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "run after",
+     "ko": "뒤쫓다",
+     "en": "Run after a ball."
+    },
+    {
+     "type": "연관어",
+     "word": "follow",
+     "ko": "따르다",
+     "en": "Follow closely."
+    },
+    {
+     "type": "연관어",
+     "word": "hunt",
+     "ko": "사냥하다",
+     "en": "Hunt for food."
+    },
+    {
+     "type": "연관어",
+     "word": "catch",
+     "ko": "잡다",
+     "en": "Catch the thief."
+    },
+    {
+     "type": "연관어",
+     "word": "escape",
+     "ko": "도망치다",
+     "en": "Escape quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "dream",
+     "ko": "꿈",
+     "en": "Follow your dream."
+    }
+   ]
+  },
+  "2260": {
+   "word": "role",
+   "overview": [
+    "role은 '역할'이라는 뜻의 명사입니다.",
+    "play a role(역할을 맡다), an important role(중요한 역할)처럼 씁니다.",
+    "연극이나 영화의 '배역'이라는 뜻으로도 씁니다.",
+    "role model은 '본보기가 되는 사람'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "Play a part.",
+     "ko": "역할을 맡다."
+    },
+    {
+     "word": "job",
+     "en": "My job here.",
+     "ko": "여기서의 내 일."
+    }
+   ],
+   "etymology": [
+    "role은 프랑스어 rôle(두루마리)에서 온 단어입니다.",
+    "라틴어 rotulus(작은 바퀴, 둥글게 만 것)에서 나온 말로, roll(구르다, 두루마리)과 같은 가족입니다.",
+    "옛날 배우들은 자신이 맡은 대사를 두루마리에 적어 보고 연기했습니다.",
+    "그 '두루마리'가 배우가 맡은 '배역', '역할'이라는 뜻이 되었습니다.",
+    "role의 핵심 이미지는 '무대에서 각자 맡은 배역을 연기하는 것 🎭'입니다."
+   ],
+   "meanings": [
+    "역할",
+    "(연극·영화의) 배역"
+   ],
+   "examples": [
+    {
+     "en": "She played an important role in the project.",
+     "ko": "그녀는 프로젝트에서 중요한 역할을 맡았어요."
+    },
+    {
+     "en": "He got the main role in the school play.",
+     "ko": "그는 학교 연극에서 주연을 맡았어요."
+    },
+    {
+     "en": "Parents play a big role in a child's life.",
+     "ko": "부모는 아이의 삶에서 큰 역할을 해요."
+    },
+    {
+     "en": "My teacher is a role model for me.",
+     "ko": "우리 선생님은 저에게 본보기가 되는 분이에요."
+    },
+    {
+     "en": "Each person has a role in this team.",
+     "ko": "각 사람은 이 팀에서 역할이 있어요."
+    },
+    {
+     "en": "She auditioned for a role in the movie.",
+     "ko": "그녀는 그 영화의 배역을 위해 오디션을 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "part",
+     "ko": "역할, 부분",
+     "en": "Play a part."
+    },
+    {
+     "type": "연관어",
+     "word": "actor",
+     "ko": "배우",
+     "en": "A talented actor."
+    },
+    {
+     "type": "연관어",
+     "word": "character",
+     "ko": "등장인물",
+     "en": "The main character."
+    },
+    {
+     "type": "연관어",
+     "word": "job",
+     "ko": "일, 직무",
+     "en": "A big job."
+    },
+    {
+     "type": "연관어",
+     "word": "duty",
+     "ko": "의무",
+     "en": "A daily duty."
+    },
+    {
+     "type": "연관어",
+     "word": "responsibility",
+     "ko": "책임",
+     "en": "Take responsibility."
+    }
+   ]
+  },
+  "1824": {
+   "word": "odd",
+   "overview": [
+    "odd는 '이상한', '기이한'이라는 뜻의 형용사입니다.",
+    "an odd feeling(이상한 느낌), an odd number(홀수)처럼 씁니다.",
+    "'홀수의'라는 뜻으로도 아주 자주 씁니다. 반대말은 even(짝수의)입니다.",
+    "odds는 '가능성', '승산'이라는 뜻의 명사로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "strange",
+     "en": "A strange feeling.",
+     "ko": "이상한 느낌."
+    },
+    {
+     "word": "weird",
+     "en": "So weird!",
+     "ko": "정말 이상해!"
+    }
+   ],
+   "etymology": [
+    "odd는 옛 노르드어(바이킹의 말) oddi(뾰족한 끝, 삼각형)에서 온 단어입니다.",
+    "짝을 이룰 수 없이 하나가 튀어나온 '삼각형의 남는 꼭짓점'을 뜻했습니다.",
+    "'짝을 이루지 못하고 남는 것'이라는 뜻에서 '홀수'라는 뜻이 나왔습니다.",
+    "'짝이 안 맞아 특이한'이라는 뜻에서 '이상한'이라는 뜻도 넓어졌습니다.",
+    "odd의 핵심 이미지는 '짝을 이루지 못하고 혼자 튀는 것 🔢'입니다."
+   ],
+   "meanings": [
+    "이상한, 기이한",
+    "(숫자) 홀수의",
+    "(odds) 가능성, 승산"
+   ],
+   "examples": [
+    {
+     "en": "That's an odd thing to say.",
+     "ko": "그건 이상한 말이네요."
+    },
+    {
+     "en": "Three and five are odd numbers.",
+     "ko": "3과 5는 홀수예요."
+    },
+    {
+     "en": "There's something odd about this room.",
+     "ko": "이 방에는 뭔가 이상한 점이 있어요."
+    },
+    {
+     "en": "The odds of winning are very low.",
+     "ko": "이길 승산은 아주 낮아요."
+    },
+    {
+     "en": "He wore odd socks by accident.",
+     "ko": "그는 실수로 짝이 안 맞는 양말을 신었어요."
+    },
+    {
+     "en": "She has an odd sense of humor.",
+     "ko": "그녀는 독특한 유머 감각을 가지고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "strange",
+     "ko": "이상한",
+     "en": "A strange sound."
+    },
+    {
+     "type": "유의어",
+     "word": "weird",
+     "ko": "이상한",
+     "en": "A weird dream."
+    },
+    {
+     "type": "반의어",
+     "word": "even",
+     "ko": "짝수의",
+     "en": "An even number."
+    },
+    {
+     "type": "연관어",
+     "word": "unusual",
+     "ko": "흔치 않은",
+     "en": "An unusual event."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "A round number."
+    },
+    {
+     "type": "연관어",
+     "word": "chance",
+     "ko": "가능성",
+     "en": "A good chance."
+    }
+   ]
+  },
+  "59": {
+   "word": "affair",
+   "overview": [
+    "affair는 '일', '사건'이라는 뜻의 명사입니다. 복수형 affairs는 '상황', '문제'라는 뜻입니다.",
+    "current affairs(시사 문제), foreign affairs(외교 문제)처럼 씁니다.",
+    "'그다지 좋지 않은 사건'이라는 뜻으로도 씁니다. a messy affair(골치 아픈 일)",
+    "'불륜'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "matter",
+     "en": "A serious matter.",
+     "ko": "심각한 문제."
+    },
+    {
+     "word": "business",
+     "en": "None of your business.",
+     "ko": "네가 상관할 일이 아니야."
+    }
+   ],
+   "etymology": [
+    "affair는 옛 프랑스어 afaire(할 일)에서 온 단어입니다.",
+    "à faire(해야 할 것)가 합쳐진 말입니다.",
+    "'다뤄야 할 일'이라는 뜻이 '사건', '문제'로 이어졌습니다.",
+    "'불륜'이라는 뜻은 '은밀히 다루는 일'이라는 느낌에서 나왔습니다.",
+    "affair의 핵심 이미지는 '신경 써서 처리해야 할 일이나 사건 📋'입니다."
+   ],
+   "meanings": [
+    "일, 사건 (명사)",
+    "(affairs) 상황, 정세 (명사)",
+    "불륜 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "This is a private affair.",
+     "ko": "이건 개인적인 일이에요."
+    },
+    {
+     "en": "The minister deals with foreign affairs.",
+     "ko": "그 장관은 외교 문제를 다뤄요."
+    },
+    {
+     "en": "We should stay informed about current affairs.",
+     "ko": "우리는 시사 문제에 대해 잘 알고 있어야 해요."
+    },
+    {
+     "en": "The whole affair was very confusing.",
+     "ko": "그 사건 전체가 아주 혼란스러웠어요."
+    },
+    {
+     "en": "It's none of your affair.",
+     "ko": "그건 네가 상관할 일이 아니야."
+    },
+    {
+     "en": "The wedding was a grand affair.",
+     "ko": "그 결혼식은 성대한 행사였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "matter",
+     "ko": "문제, 일",
+     "en": "A serious matter."
+    },
+    {
+     "type": "유의어",
+     "word": "business",
+     "ko": "일, 사업",
+     "en": "None of your business."
+    },
+    {
+     "type": "연관어",
+     "word": "event",
+     "ko": "사건, 행사",
+     "en": "A big event."
+    },
+    {
+     "type": "연관어",
+     "word": "situation",
+     "ko": "상황",
+     "en": "A tricky situation."
+    },
+    {
+     "type": "연관어",
+     "word": "politics",
+     "ko": "정치",
+     "en": "World politics."
+    },
+    {
+     "type": "연관어",
+     "word": "private",
+     "ko": "개인적인",
+     "en": "A private matter."
+    }
+   ]
+  },
+  "2383": {
+   "word": "shock",
+   "overview": [
+    "shock는 '충격'이라는 뜻의 명사이자 '충격을 주다'라는 뜻의 동사입니다.",
+    "in shock(충격을 받은 상태로), come as a shock(충격으로 다가오다)처럼 씁니다.",
+    "전기 '감전'이라는 뜻으로도 씁니다. get a shock(감전되다)",
+    "형용사 shocked(충격받은), shocking(충격적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "surprise",
+     "en": "A big surprise.",
+     "ko": "큰 놀람."
+    },
+    {
+     "word": "amaze",
+     "en": "Amaze everyone.",
+     "ko": "모두를 놀라게 하다."
+    }
+   ],
+   "etymology": [
+    "shock는 프랑스어 choc(충돌, 부딪침)에서 온 단어입니다.",
+    "choquer(부딪치다)에서 나온 말입니다.",
+    "'세게 부딪치는 물리적 충격'이라는 뜻에서 '정신적 충격'으로도 뜻이 넓어졌습니다.",
+    "전기가 발명되며 '감전'이라는 뜻도 새로 생겼습니다.",
+    "shock의 핵심 이미지는 '갑작스러운 소식에 얼어붙는 충격 😲'입니다."
+   ],
+   "meanings": [
+    "충격 (명사)",
+    "충격을 주다, 놀라게 하다 (동사)",
+    "감전 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The news came as a big shock to us.",
+     "ko": "그 소식은 우리에게 큰 충격으로 다가왔어요."
+    },
+    {
+     "en": "She was in shock after the accident.",
+     "ko": "그녀는 사고 후 충격에 빠져 있었어요."
+    },
+    {
+     "en": "The horror movie shocked the audience.",
+     "ko": "그 공포 영화는 관객들에게 충격을 줬어요."
+    },
+    {
+     "en": "He got a small shock from the wire.",
+     "ko": "그는 전선에서 약한 감전을 당했어요."
+    },
+    {
+     "en": "It was shocking to hear such news.",
+     "ko": "그런 소식을 듣는 건 충격적이었어요."
+    },
+    {
+     "en": "The sudden loss shocked everyone in town.",
+     "ko": "그 갑작스러운 죽음은 마을 전체에 충격을 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "surprise",
+     "ko": "놀람",
+     "en": "A big surprise."
+    },
+    {
+     "type": "파생어",
+     "word": "shocked",
+     "ko": "충격받은",
+     "en": "Shocked look."
+    },
+    {
+     "type": "파생어",
+     "word": "shocking",
+     "ko": "충격적인",
+     "en": "Shocking news."
+    },
+    {
+     "type": "연관어",
+     "word": "electric",
+     "ko": "전기의",
+     "en": "An electric shock."
+    },
+    {
+     "type": "연관어",
+     "word": "amazed",
+     "ko": "놀란",
+     "en": "Truly amazed."
+    },
+    {
+     "type": "연관어",
+     "word": "scare",
+     "ko": "겁주다",
+     "en": "Scare easily."
+    }
+   ]
+  },
+  "2587": {
+   "word": "suffer",
+   "overview": [
+    "suffer는 '고통받다', '겪다'라는 뜻의 동사입니다.",
+    "suffer from a disease(병을 앓다)처럼 씁니다.",
+    "suffer a loss(손실을 입다)처럼 나쁜 일을 겪는다는 뜻으로도 씁니다.",
+    "명사 suffering(고통)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "have pain",
+     "en": "Have pain.",
+     "ko": "고통을 겪다."
+    },
+    {
+     "word": "go through",
+     "en": "Go through hard times.",
+     "ko": "힘든 시간을 겪다."
+    }
+   ],
+   "etymology": [
+    "suffer는 라틴어 sufferre(아래에서 견디다)에서 온 단어입니다.",
+    "sub(아래에서)와 ferre(나르다, 견디다)가 합쳐진 말입니다.",
+    "offer(제안하다), transfer(옮기다)도 ferre에서 나온 같은 가족 단어들입니다.",
+    "'무거운 것을 아래에서 참고 견디다'라는 뜻이 '고통받다'로 이어졌습니다.",
+    "suffer의 핵심 이미지는 '아픔과 고통을 묵묵히 견디는 것 😖'입니다."
+   ],
+   "meanings": [
+    "고통받다, 앓다",
+    "(손실 등을) 겪다, 입다"
+   ],
+   "examples": [
+    {
+     "en": "He suffers from a bad cold.",
+     "ko": "그는 심한 감기로 고생하고 있어요."
+    },
+    {
+     "en": "Many people suffered during the war.",
+     "ko": "많은 사람들이 전쟁 중에 고통받았어요."
+    },
+    {
+     "en": "The company suffered a big loss.",
+     "ko": "그 회사는 큰 손실을 입었어요."
+    },
+    {
+     "en": "She suffers from allergies every spring.",
+     "ko": "그녀는 매년 봄마다 알레르기로 고생해요."
+    },
+    {
+     "en": "We don't want anyone to suffer needlessly.",
+     "ko": "우리는 누구도 불필요하게 고통받길 원치 않아요."
+    },
+    {
+     "en": "His grades suffered because of stress.",
+     "ko": "스트레스 때문에 그의 성적이 나빠졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "pain",
+     "ko": "고통",
+     "en": "Feel pain."
+    },
+    {
+     "type": "파생어",
+     "word": "suffering",
+     "ko": "고통",
+     "en": "Human suffering."
+    },
+    {
+     "type": "연관어",
+     "word": "hurt",
+     "ko": "아프다",
+     "en": "Hurt badly."
+    },
+    {
+     "type": "연관어",
+     "word": "illness",
+     "ko": "질병",
+     "en": "A serious illness."
+    },
+    {
+     "type": "연관어",
+     "word": "endure",
+     "ko": "견디다",
+     "en": "Endure hardship."
+    },
+    {
+     "type": "연관어",
+     "word": "loss",
+     "ko": "손실",
+     "en": "A great loss."
+    }
+   ]
+  },
+  "1978": {
+   "word": "plate",
+   "overview": [
+    "plate는 '접시'라는 뜻의 명사입니다.",
+    "a dinner plate(식사용 접시), wash the plates(접시를 씻다)처럼 씁니다.",
+    "자동차의 '번호판'이라는 뜻으로도 씁니다. a license plate(자동차 번호판)",
+    "지질학의 '판'이라는 뜻으로도 씁니다. tectonic plates(지각판)"
+   ],
+   "easy": [
+    {
+     "word": "dish",
+     "en": "Wash the dish.",
+     "ko": "그릇을 씻어."
+    },
+    {
+     "word": "bowl",
+     "en": "A bowl of soup.",
+     "ko": "수프 한 그릇."
+    }
+   ],
+   "etymology": [
+    "plate는 그리스어 platys(평평한, 넓은)에서 온 단어입니다.",
+    "라틴어를 거쳐 옛 프랑스어 plate(평평한 판)로 영어에 들어왔습니다.",
+    "plateau(고원, '평평한 땅')도 같은 뿌리에서 나온 단어입니다.",
+    "'평평한 판'이라는 뜻이 '접시', '번호판', '지각판'으로 두루 넓어졌습니다.",
+    "plate의 핵심 이미지는 '음식을 담는 둥글고 평평한 접시 🍽️'입니다."
+   ],
+   "meanings": [
+    "접시",
+    "(자동차) 번호판",
+    "(지질학) 판"
+   ],
+   "examples": [
+    {
+     "en": "Put the food on your plate.",
+     "ko": "음식을 접시에 담아."
+    },
+    {
+     "en": "She washed all the dirty plates.",
+     "ko": "그녀는 더러운 접시를 모두 씻었어요."
+    },
+    {
+     "en": "The car's license plate was covered in mud.",
+     "ko": "그 차의 번호판은 진흙으로 덮여 있었어요."
+    },
+    {
+     "en": "Earthquakes happen when tectonic plates move.",
+     "ko": "지진은 지각판이 움직일 때 일어나요."
+    },
+    {
+     "en": "There's a broken plate in the sink.",
+     "ko": "싱크대에 깨진 접시가 있어요."
+    },
+    {
+     "en": "We set out plates and spoons for dinner.",
+     "ko": "우리는 저녁을 위해 접시와 숟가락을 놓았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "dish",
+     "ko": "그릇",
+     "en": "A clean dish."
+    },
+    {
+     "type": "연관어",
+     "word": "bowl",
+     "ko": "그릇, 사발",
+     "en": "A soup bowl."
+    },
+    {
+     "type": "연관어",
+     "word": "cup",
+     "ko": "컵",
+     "en": "A tea cup."
+    },
+    {
+     "type": "연관어",
+     "word": "fork",
+     "ko": "포크",
+     "en": "Use a fork."
+    },
+    {
+     "type": "연관어",
+     "word": "kitchen",
+     "ko": "부엌",
+     "en": "A tidy kitchen."
+    },
+    {
+     "type": "연관어",
+     "word": "meal",
+     "ko": "식사",
+     "en": "A tasty meal."
+    }
+   ]
+  },
+  "138": {
+   "word": "appear",
+   "overview": [
+    "appear는 '나타나다', '~인 것 같다'라는 뜻의 동사입니다.",
+    "A rainbow appeared.(무지개가 나타났어요.)처럼 씁니다.",
+    "It appears that...(~인 것 같아요)처럼 seem과 비슷한 뜻으로도 씁니다.",
+    "명사 appearance(모습, 출현)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "show up",
+     "en": "Show up suddenly.",
+     "ko": "갑자기 나타나다."
+    },
+    {
+     "word": "seem",
+     "en": "Seem happy.",
+     "ko": "행복해 보이다."
+    }
+   ],
+   "etymology": [
+    "appear는 라틴어 apparere(나타나다, 눈에 보이다)에서 온 단어입니다.",
+    "ad(~을 향해)와 parere(보이다, 나타나다)가 합쳐진 말입니다.",
+    "'앞으로 나와 눈에 보이게 되다'라는 뜻이 그대로 이어져 왔습니다.",
+    "apparent(명백한, '분명히 나타나는'), appearance(외모, 출현)도 같은 가족 단어들입니다.",
+    "appear의 핵심 이미지는 '갑자기 눈앞에 짠 하고 나타나는 것 ✨'입니다."
+   ],
+   "meanings": [
+    "나타나다, 출현하다",
+    "~인 것 같다, ~처럼 보이다",
+    "(책 등이) 출판되다"
+   ],
+   "examples": [
+    {
+     "en": "A rainbow appeared after the rain.",
+     "ko": "비가 온 후에 무지개가 나타났어요."
+    },
+    {
+     "en": "She appears to be very tired.",
+     "ko": "그녀는 아주 피곤해 보여요."
+    },
+    {
+     "en": "The actor appeared on stage suddenly.",
+     "ko": "그 배우가 갑자기 무대에 나타났어요."
+    },
+    {
+     "en": "It appears that we made a mistake.",
+     "ko": "우리가 실수를 한 것 같아요."
+    },
+    {
+     "en": "His new book will appear next month.",
+     "ko": "그의 새 책은 다음 달에 출판될 거예요."
+    },
+    {
+     "en": "Stars appear in the sky at night.",
+     "ko": "밤에는 하늘에 별이 나타나요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "show up",
+     "ko": "나타나다",
+     "en": "Show up on time."
+    },
+    {
+     "type": "유의어",
+     "word": "seem",
+     "ko": "~인 것 같다",
+     "en": "Seem calm."
+    },
+    {
+     "type": "파생어",
+     "word": "appearance",
+     "ko": "모습, 출현",
+     "en": "A sudden appearance."
+    },
+    {
+     "type": "반의어",
+     "word": "disappear",
+     "ko": "사라지다",
+     "en": "Disappear quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "visible",
+     "ko": "보이는",
+     "en": "Clearly visible."
+    },
+    {
+     "type": "연관어",
+     "word": "emerge",
+     "ko": "나타나다",
+     "en": "Emerge slowly."
+    }
+   ]
   }
  }
 }
