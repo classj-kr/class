@@ -13473,6 +13473,1927 @@
      "en": "A friendly conversation."
     }
    ]
+  },
+  "593": {
+   "word": "consist",
+   "overview": [
+    "consist는 '(~로) 구성되다, 이루어지다'라는 뜻의 동사입니다.",
+    "consist of(~로 구성되다)처럼 of와 함께 씁니다. (수동태로 쓰지 않아요)",
+    "consist in(~에 있다, ~에 달려 있다)이라는 격식 있는 표현도 있습니다.",
+    "형용사 consistent(일관된), 명사 consistency(일관성, 농도)도 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "be made of",
+     "en": "It is made of wood.",
+     "ko": "그것은 나무로 만들어져 있다."
+    },
+    {
+     "word": "have",
+     "en": "The team has five players.",
+     "ko": "그 팀은 선수가 다섯 명이다."
+    }
+   ],
+   "etymology": [
+    "consist는 라틴어 consistere(함께 서다, 굳게 서다)에서 온 단어입니다.",
+    "con(함께)과 sistere(서다)가 합쳐진 말로, insist(주장하다), persist(지속하다)와 같은 가족입니다.",
+    "'여러 부분이 함께 서서 하나를 이루다'라는 뜻에서 시작되었습니다.",
+    "어떤 것이 어떤 부분들로 이루어져 있는지를 말할 때 쓰게 되었습니다.",
+    "consist의 핵심 이미지는 '여러 재료가 모여 하나의 샌드위치를 이루는 것 🥪🧩'입니다."
+   ],
+   "meanings": [
+    "(~로) 구성되다, 이루어지다",
+    "(~에) 있다"
+   ],
+   "examples": [
+    {
+     "en": "The team consists of eleven players.",
+     "ko": "그 팀은 열한 명의 선수로 구성되어 있어요."
+    },
+    {
+     "en": "Breakfast consisted of bread and milk.",
+     "ko": "아침 식사는 빵과 우유였어요."
+    },
+    {
+     "en": "Water consists of hydrogen and oxygen.",
+     "ko": "물은 수소와 산소로 이루어져 있어요."
+    },
+    {
+     "en": "The test consists of three parts.",
+     "ko": "그 시험은 세 부분으로 되어 있어요."
+    },
+    {
+     "en": "True happiness consists in helping others.",
+     "ko": "진정한 행복은 남을 돕는 데 있어요."
+    },
+    {
+     "en": "Her work is always consistent.",
+     "ko": "그녀의 작업은 항상 일관돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "comprise",
+     "ko": "구성되다",
+     "en": "The house comprises five rooms."
+    },
+    {
+     "type": "유의어",
+     "word": "be made up of",
+     "ko": "~로 이루어지다",
+     "en": "Made up of 30 students."
+    },
+    {
+     "type": "파생어",
+     "word": "consistent",
+     "ko": "일관된",
+     "en": "Consistent effort."
+    },
+    {
+     "type": "파생어",
+     "word": "consistency",
+     "ko": "일관성, 농도",
+     "en": "Keep consistency."
+    },
+    {
+     "type": "연관어",
+     "word": "include",
+     "ko": "포함하다",
+     "en": "Include tax."
+    },
+    {
+     "type": "연관어",
+     "word": "compose",
+     "ko": "구성하다",
+     "en": "Composed of ten members."
+    }
+   ]
+  },
+  "919": {
+   "word": "emit",
+   "overview": [
+    "emit은 '(빛·열·가스·소리를) 내뿜다, 방출하다'라는 뜻의 동사입니다.",
+    "emit light(빛을 내다), emit carbon dioxide(이산화탄소를 배출하다)처럼 씁니다.",
+    "안에 있던 것을 밖으로 내보내는 것을 뜻합니다.",
+    "명사 emission(배출, 배출물)도 자주 씁니다. (carbon emissions, 탄소 배출량)"
+   ],
+   "easy": [
+    {
+     "word": "give off",
+     "en": "Give off heat.",
+     "ko": "열을 내다."
+    },
+    {
+     "word": "send out",
+     "en": "Send out a signal.",
+     "ko": "신호를 보내다."
+    }
+   ],
+   "etymology": [
+    "emit은 라틴어 emittere(밖으로 보내다)에서 온 단어입니다.",
+    "e(밖으로)와 mittere(보내다)가 합쳐진 말로, submit(제출하다), transmit(전송하다)과 같은 가족입니다.",
+    "'밖으로 내보내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "빛, 열, 가스, 소리 등을 밖으로 뿜어내는 것을 가리킵니다.",
+    "emit의 핵심 이미지는 '굴뚝에서 연기가 뿜어져 나오는 것 🏭💨'입니다."
+   ],
+   "meanings": [
+    "(빛·열·향기 등을) 방사하다, 내뿜다",
+    "(소리를) 내다"
+   ],
+   "examples": [
+    {
+     "en": "The sun emits light and heat.",
+     "ko": "태양은 빛과 열을 내뿜어요."
+    },
+    {
+     "en": "Cars emit harmful gases.",
+     "ko": "자동차는 해로운 가스를 배출해요."
+    },
+    {
+     "en": "The machine emitted a loud beep.",
+     "ko": "그 기계가 큰 삐 소리를 냈어요."
+    },
+    {
+     "en": "Flowers emit a sweet smell.",
+     "ko": "꽃은 달콤한 향기를 풍겨요."
+    },
+    {
+     "en": "This lamp emits a soft yellow light.",
+     "ko": "이 램프는 부드러운 노란빛을 내요."
+    },
+    {
+     "en": "We must reduce carbon emissions.",
+     "ko": "우리는 탄소 배출량을 줄여야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "give off",
+     "ko": "내뿜다",
+     "en": "Give off a smell."
+    },
+    {
+     "type": "유의어",
+     "word": "release",
+     "ko": "방출하다",
+     "en": "Release energy."
+    },
+    {
+     "type": "반의어",
+     "word": "absorb",
+     "ko": "흡수하다",
+     "en": "Absorb water."
+    },
+    {
+     "type": "파생어",
+     "word": "emission",
+     "ko": "배출",
+     "en": "Gas emissions."
+    },
+    {
+     "type": "연관어",
+     "word": "radiate",
+     "ko": "방사하다",
+     "en": "Radiate heat."
+    },
+    {
+     "type": "연관어",
+     "word": "pollution",
+     "ko": "오염",
+     "en": "Air pollution."
+    }
+   ]
+  },
+  "518": {
+   "word": "coincide",
+   "overview": [
+    "coincide는 '(두 가지 일이) 동시에 일어나다, 겹치다'라는 뜻의 동사입니다.",
+    "coincide with(~와 동시에 일어나다)처럼 씁니다.",
+    "'(의견·생각이) 일치하다'라는 뜻으로도 씁니다.",
+    "명사 coincidence(우연의 일치)를 자주 씁니다. (What a coincidence!, 이런 우연이!)"
+   ],
+   "easy": [
+    {
+     "word": "happen together",
+     "en": "They happen together.",
+     "ko": "그것들이 함께 일어나다."
+    },
+    {
+     "word": "match",
+     "en": "Our ideas match.",
+     "ko": "우리 생각이 일치하다."
+    }
+   ],
+   "etymology": [
+    "coincide는 중세 라틴어 coincidere(함께 떨어지다)에서 온 단어입니다.",
+    "co(함께)와 incidere(~에 떨어지다, 일어나다)가 합쳐진 말로, incident(사건), accident(사고)와 같은 가족입니다.",
+    "'같은 곳에 함께 떨어지다'라는 뜻에서 시작되었습니다.",
+    "두 가지 일이 같은 때에 일어나거나, 생각이 같은 지점에서 만나는 것을 가리키게 되었습니다.",
+    "coincide의 핵심 이미지는 '두 시계 바늘이 같은 곳에서 딱 겹치는 것 🕛🎯'입니다."
+   ],
+   "meanings": [
+    "동시에 일어나다, 겹치다",
+    "부합하다, 일치하다"
+   ],
+   "examples": [
+    {
+     "en": "My birthday coincides with Children's Day this year.",
+     "ko": "올해 내 생일은 어린이날과 겹쳐요."
+    },
+    {
+     "en": "The festival coincided with the full moon.",
+     "ko": "그 축제는 보름달이 뜨는 날과 겹쳤어요."
+    },
+    {
+     "en": "Our opinions coincide on this matter.",
+     "ko": "이 문제에 대해서는 우리 의견이 일치해요."
+    },
+    {
+     "en": "The two events coincided by chance.",
+     "ko": "두 사건은 우연히 동시에 일어났어요."
+    },
+    {
+     "en": "His vacation coincided with mine.",
+     "ko": "그의 휴가가 내 휴가와 겹쳤어요."
+    },
+    {
+     "en": "What a coincidence to meet you here!",
+     "ko": "여기서 만나다니 이런 우연이!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "overlap",
+     "ko": "겹치다",
+     "en": "The dates overlap."
+    },
+    {
+     "type": "유의어",
+     "word": "agree",
+     "ko": "일치하다",
+     "en": "The results agree."
+    },
+    {
+     "type": "반의어",
+     "word": "differ",
+     "ko": "다르다",
+     "en": "Our views differ."
+    },
+    {
+     "type": "파생어",
+     "word": "coincidence",
+     "ko": "우연의 일치",
+     "en": "Pure coincidence."
+    },
+    {
+     "type": "파생어",
+     "word": "coincidental",
+     "ko": "우연의 일치인",
+     "en": "A coincidental meeting."
+    },
+    {
+     "type": "연관어",
+     "word": "simultaneous",
+     "ko": "동시의",
+     "en": "Simultaneous events."
+    }
+   ]
+  },
+  "1080": {
+   "word": "finite",
+   "overview": [
+    "finite는 '유한한, 한정된'이라는 뜻의 형용사입니다.",
+    "finite resources(유한한 자원)처럼 씁니다.",
+    "끝이나 한계가 있어서 무한히 계속되지 않는 것을 뜻합니다.",
+    "반의어는 infinite(무한한)이고, 문법에서 finite verb는 '정형 동사(시제·주어에 따라 모양이 바뀌는 동사)'입니다."
+   ],
+   "easy": [
+    {
+     "word": "limited",
+     "en": "Limited time.",
+     "ko": "제한된 시간."
+    },
+    {
+     "word": "not endless",
+     "en": "Not endless.",
+     "ko": "끝이 없지 않은."
+    }
+   ],
+   "etymology": [
+    "finite는 라틴어 finitus(한계가 정해진)에서 온 단어입니다.",
+    "finire(끝내다, 한계를 정하다)에서 나온 말로, finish(끝내다), final(마지막의)과 같은 가족입니다.",
+    "'끝이 정해진'이라는 뜻에서 시작되었습니다.",
+    "수, 양, 시간이 어느 정도까지만 있고 끝이 있는 것을 가리키게 되었습니다.",
+    "finite의 핵심 이미지는 '끝이 보이는 길, 바닥이 있는 그릇 🛤️🔚'입니다."
+   ],
+   "meanings": [
+    "유한한, 한정된",
+    "(문법) 정형의"
+   ],
+   "examples": [
+    {
+     "en": "Oil is a finite resource.",
+     "ko": "석유는 유한한 자원이에요."
+    },
+    {
+     "en": "We have a finite amount of time.",
+     "ko": "우리에게 주어진 시간은 한정되어 있어요."
+    },
+    {
+     "en": "The Earth's water supply is finite.",
+     "ko": "지구의 물 공급량은 유한해요."
+    },
+    {
+     "en": "There is a finite number of seats.",
+     "ko": "좌석 수는 정해져 있어요."
+    },
+    {
+     "en": "Our patience is not infinite; it's finite.",
+     "ko": "우리의 인내심은 무한하지 않아요. 한계가 있어요."
+    },
+    {
+     "en": "Every sentence needs a finite verb.",
+     "ko": "모든 문장에는 정형 동사가 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "limited",
+     "ko": "제한된",
+     "en": "Limited space."
+    },
+    {
+     "type": "유의어",
+     "word": "restricted",
+     "ko": "한정된",
+     "en": "A restricted area."
+    },
+    {
+     "type": "반의어",
+     "word": "infinite",
+     "ko": "무한한",
+     "en": "Infinite space."
+    },
+    {
+     "type": "반의어",
+     "word": "endless",
+     "ko": "끝없는",
+     "en": "An endless road."
+    },
+    {
+     "type": "연관어",
+     "word": "resource",
+     "ko": "자원",
+     "en": "Water resources."
+    },
+    {
+     "type": "연관어",
+     "word": "finish",
+     "ko": "끝내다",
+     "en": "Finish the race."
+    }
+   ]
+  },
+  "1683": {
+   "word": "migrate",
+   "overview": [
+    "migrate는 '(동물이 계절에 따라) 이동하다'라는 뜻의 동사입니다.",
+    "Birds migrate south in winter.(새들은 겨울에 남쪽으로 이동한다)처럼 씁니다.",
+    "'(사람이 일자리를 찾아) 이주하다'라는 뜻으로도 쓰고, 컴퓨터에서는 '(데이터를) 옮기다'라는 뜻입니다.",
+    "명사 migration(이주, 이동), migrant(이주자, 철새)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "move",
+     "en": "Move to a new place.",
+     "ko": "새로운 곳으로 옮기다."
+    },
+    {
+     "word": "travel",
+     "en": "Travel far.",
+     "ko": "멀리 이동하다."
+    }
+   ],
+   "etymology": [
+    "migrate는 라틴어 migrare(옮겨 가다, 이사하다)에서 온 단어입니다.",
+    "immigrate(이민 오다), emigrate(이민 가다)와 같은 가족입니다.",
+    "'사는 곳을 바꾸어 옮겨 가다'라는 뜻이 그대로 이어져 왔습니다.",
+    "철새처럼 계절마다 먼 곳으로 이동하는 것, 사람들이 다른 지역으로 옮겨 사는 것을 가리킵니다.",
+    "migrate의 핵심 이미지는 'V자로 날아 따뜻한 남쪽으로 가는 철새 떼 🪿🪿➡️'입니다."
+   ],
+   "meanings": [
+    "(동물이) 이동하다",
+    "이주하다, 이민하다",
+    "(데이터를) 옮기다"
+   ],
+   "examples": [
+    {
+     "en": "Many birds migrate south for the winter.",
+     "ko": "많은 새가 겨울을 나러 남쪽으로 이동해요."
+    },
+    {
+     "en": "Salmon migrate up the river to lay eggs.",
+     "ko": "연어는 알을 낳으러 강을 거슬러 올라가요."
+    },
+    {
+     "en": "People migrated to cities to find work.",
+     "ko": "사람들은 일자리를 찾아 도시로 이주했어요."
+    },
+    {
+     "en": "Whales migrate thousands of kilometers each year.",
+     "ko": "고래는 해마다 수천 킬로미터를 이동해요."
+    },
+    {
+     "en": "We migrated all our files to a new server.",
+     "ko": "우리는 모든 파일을 새 서버로 옮겼어요."
+    },
+    {
+     "en": "The migration of butterflies is amazing.",
+     "ko": "나비의 이동은 놀라워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "move",
+     "ko": "이동하다",
+     "en": "Move abroad."
+    },
+    {
+     "type": "유의어",
+     "word": "relocate",
+     "ko": "이전하다",
+     "en": "Relocate the office."
+    },
+    {
+     "type": "반의어",
+     "word": "settle",
+     "ko": "정착하다",
+     "en": "Settle down."
+    },
+    {
+     "type": "파생어",
+     "word": "migration",
+     "ko": "이주, 이동",
+     "en": "Bird migration."
+    },
+    {
+     "type": "파생어",
+     "word": "migrant",
+     "ko": "이주자",
+     "en": "Migrant workers."
+    },
+    {
+     "type": "연관어",
+     "word": "immigrate",
+     "ko": "이민 오다",
+     "en": "Immigrate to Canada."
+    }
+   ]
+  },
+  "2222": {
+   "word": "restrict",
+   "overview": [
+    "restrict는 '(수·양·범위를) 제한하다, 한정하다'라는 뜻의 동사입니다.",
+    "restrict the number of visitors(방문객 수를 제한하다)처럼 씁니다.",
+    "'(행동·자유를) 막다, 금지하다'라는 뜻으로도 씁니다.",
+    "명사 restriction(제한), 형용사 restricted(제한된)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "limit",
+     "en": "Limit screen time.",
+     "ko": "화면 보는 시간을 제한하다."
+    },
+    {
+     "word": "control",
+     "en": "Control the crowd.",
+     "ko": "사람들을 통제하다."
+    }
+   ],
+   "etymology": [
+    "restrict는 라틴어 restringere(뒤로 묶다, 제한하다)에서 온 단어입니다.",
+    "re(뒤로)와 stringere(단단히 당기다)가 합쳐진 말로, restrain(억제하다), strict(엄격한)와 같은 가족입니다.",
+    "'뒤로 단단히 잡아당겨 묶다'라는 뜻에서 시작되었습니다.",
+    "어떤 범위를 넘지 못하도록 묶어 두고 제한하는 것을 가리키게 되었습니다.",
+    "restrict의 핵심 이미지는 '울타리를 쳐서 넘어가지 못하게 막는 것 🚧⛔'입니다."
+   ],
+   "meanings": [
+    "제한하다, 한정하다",
+    "(자유·활동을) 막다, 금지하다"
+   ],
+   "examples": [
+    {
+     "en": "Parents often restrict their children's screen time.",
+     "ko": "부모들은 흔히 아이들의 화면 사용 시간을 제한해요."
+    },
+    {
+     "en": "The museum restricts photography.",
+     "ko": "그 박물관은 사진 촬영을 제한해요."
+    },
+    {
+     "en": "Speed is restricted to 30 km/h near schools.",
+     "ko": "학교 근처에서는 속도가 시속 30킬로미터로 제한돼요."
+    },
+    {
+     "en": "Heavy snow restricted our movement.",
+     "ko": "폭설 때문에 우리는 이동이 제한되었어요."
+    },
+    {
+     "en": "This area is restricted to staff only.",
+     "ko": "이 구역은 직원만 들어갈 수 있어요."
+    },
+    {
+     "en": "There are no age restrictions for this event.",
+     "ko": "이 행사에는 나이 제한이 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "limit",
+     "ko": "제한하다",
+     "en": "Limit the cost."
+    },
+    {
+     "type": "유의어",
+     "word": "confine",
+     "ko": "국한하다",
+     "en": "Confine the fire."
+    },
+    {
+     "type": "반의어",
+     "word": "allow",
+     "ko": "허락하다",
+     "en": "Allow visitors."
+    },
+    {
+     "type": "반의어",
+     "word": "free",
+     "ko": "풀어 주다",
+     "en": "Free the animals."
+    },
+    {
+     "type": "파생어",
+     "word": "restriction",
+     "ko": "제한",
+     "en": "Travel restrictions."
+    },
+    {
+     "type": "파생어",
+     "word": "restricted",
+     "ko": "제한된",
+     "en": "A restricted area."
+    }
+   ]
+  },
+  "765": {
+   "word": "depict",
+   "overview": [
+    "depict는 '(그림·글·영상으로) 그리다, 묘사하다'라는 뜻의 동사입니다.",
+    "depict a scene(장면을 묘사하다)처럼 씁니다.",
+    "depict A as B(A를 B로 묘사하다)라는 표현도 자주 씁니다.",
+    "describe보다 격식 있는 말로, 생생하게 보여 주는 느낌이 강하며, 명사 depiction(묘사)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "show",
+     "en": "Show a scene.",
+     "ko": "장면을 보여 주다."
+    },
+    {
+     "word": "describe",
+     "en": "Describe the place.",
+     "ko": "그 장소를 묘사하다."
+    }
+   ],
+   "etymology": [
+    "depict는 라틴어 depingere(그림으로 그리다)에서 온 단어입니다.",
+    "de(완전히)와 pingere(그리다, 칠하다)가 합쳐진 말로, paint(칠하다), picture(그림)와 같은 가족입니다.",
+    "'완전히 그려 내다'라는 뜻에서 시작되었습니다.",
+    "그림뿐 아니라 글, 영화, 조각으로 무언가를 생생하게 보여 주는 것을 가리키게 되었습니다.",
+    "depict의 핵심 이미지는 '붓으로 장면을 생생하게 그려 내는 것 🖌️🖼️'입니다."
+   ],
+   "meanings": [
+    "(그림·말로) 그리다, 묘사하다"
+   ],
+   "examples": [
+    {
+     "en": "The painting depicts a busy market.",
+     "ko": "그 그림은 북적이는 시장을 그리고 있어요."
+    },
+    {
+     "en": "The movie depicts life in the 1950s.",
+     "ko": "그 영화는 1950년대의 삶을 묘사해요."
+    },
+    {
+     "en": "The book depicts the hero as brave and kind.",
+     "ko": "그 책은 주인공을 용감하고 친절한 사람으로 그려요."
+    },
+    {
+     "en": "Ancient cave art depicts animals and hunters.",
+     "ko": "고대 동굴 벽화에는 동물과 사냥꾼이 그려져 있어요."
+    },
+    {
+     "en": "The statue depicts a famous king.",
+     "ko": "그 조각상은 유명한 왕을 표현하고 있어요."
+    },
+    {
+     "en": "His depiction of the city was very realistic.",
+     "ko": "그가 묘사한 도시는 아주 사실적이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "portray",
+     "ko": "묘사하다",
+     "en": "Portray a character."
+    },
+    {
+     "type": "유의어",
+     "word": "illustrate",
+     "ko": "삽화로 보여 주다",
+     "en": "Illustrate a book."
+    },
+    {
+     "type": "유의어",
+     "word": "describe",
+     "ko": "묘사하다",
+     "en": "Describe the man."
+    },
+    {
+     "type": "파생어",
+     "word": "depiction",
+     "ko": "묘사",
+     "en": "A vivid depiction."
+    },
+    {
+     "type": "연관어",
+     "word": "picture",
+     "ko": "그림",
+     "en": "Draw a picture."
+    },
+    {
+     "type": "연관어",
+     "word": "represent",
+     "ko": "나타내다",
+     "en": "Represent peace."
+    }
+   ]
+  },
+  "1919": {
+   "word": "pave",
+   "overview": [
+    "pave는 '(길을) 포장하다'라는 뜻의 동사입니다.",
+    "pave a road(도로를 포장하다)처럼 씁니다. (pave A with B, A를 B로 포장하다)",
+    "pave the way for(~의 길을 닦다, ~을 가능하게 하다)라는 비유 표현을 아주 자주 씁니다.",
+    "명사 pavement(포장도로, 영국에서는 인도)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cover the road",
+     "en": "Cover the road with stones.",
+     "ko": "길을 돌로 덮다."
+    },
+    {
+     "word": "prepare",
+     "en": "Prepare the way.",
+     "ko": "길을 준비하다."
+    }
+   ],
+   "etymology": [
+    "pave는 라틴어 pavire(두드려 다지다)에서 온 단어입니다.",
+    "옛 프랑스어 paver(길을 깔다)를 거쳐 영어로 들어왔습니다.",
+    "'땅을 두드려 단단하게 다지다'라는 뜻에서 시작되었습니다.",
+    "돌이나 아스팔트로 길을 까는 것, 그리고 나중 일이 쉽게 이루어지도록 길을 닦는 것을 가리키게 되었습니다.",
+    "pave의 핵심 이미지는 '울퉁불퉁한 흙길에 판판한 돌을 까는 것 🛣️🧱'입니다."
+   ],
+   "meanings": [
+    "(길을) 포장하다",
+    "(pave the way) 길을 닦다, 준비하다"
+   ],
+   "examples": [
+    {
+     "en": "Workers paved the road last summer.",
+     "ko": "일꾼들이 지난여름에 그 도로를 포장했어요."
+    },
+    {
+     "en": "The path is paved with stones.",
+     "ko": "그 오솔길은 돌로 포장되어 있어요."
+    },
+    {
+     "en": "Her work paved the way for other women scientists.",
+     "ko": "그녀의 업적은 다른 여성 과학자들의 길을 열어 주었어요."
+    },
+    {
+     "en": "The old dirt road was finally paved.",
+     "ko": "오래된 흙길이 드디어 포장되었어요."
+    },
+    {
+     "en": "This invention paved the way for smartphones.",
+     "ko": "이 발명은 스마트폰이 나올 길을 닦았어요."
+    },
+    {
+     "en": "Walk on the pavement, not the road.",
+     "ko": "차도 말고 인도로 걸으세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "surface",
+     "ko": "포장하다",
+     "en": "Surface the road."
+    },
+    {
+     "type": "유의어",
+     "word": "prepare",
+     "ko": "준비하다",
+     "en": "Prepare the ground."
+    },
+    {
+     "type": "파생어",
+     "word": "pavement",
+     "ko": "포장도로, 인도",
+     "en": "A wet pavement."
+    },
+    {
+     "type": "연관어",
+     "word": "road",
+     "ko": "도로",
+     "en": "A busy road."
+    },
+    {
+     "type": "연관어",
+     "word": "asphalt",
+     "ko": "아스팔트",
+     "en": "Hot asphalt."
+    },
+    {
+     "type": "연관어",
+     "word": "path",
+     "ko": "길",
+     "en": "A narrow path."
+    }
+   ]
+  },
+  "1408": {
+   "word": "inflate",
+   "overview": [
+    "inflate는 '(공기·가스로) 부풀리다, 부풀다'라는 뜻의 동사입니다.",
+    "inflate a balloon(풍선을 불다)처럼 씁니다.",
+    "'(가격을) 올리다', '(숫자·중요성을) 부풀려 말하다'라는 뜻으로도 씁니다.",
+    "명사 inflation(물가 상승, 인플레이션), 반의어 deflate(바람을 빼다)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "blow up",
+     "en": "Blow up a balloon.",
+     "ko": "풍선을 불다."
+    },
+    {
+     "word": "fill with air",
+     "en": "Fill the tire with air.",
+     "ko": "타이어에 공기를 넣다."
+    }
+   ],
+   "etymology": [
+    "inflate는 라틴어 inflare(불어 넣다)에서 온 단어입니다.",
+    "in(안으로)과 flare(불다)가 합쳐진 말로, flute(플루트)와 뿌리가 이어진다고 봅니다.",
+    "'안으로 바람을 불어 넣다'라는 뜻에서 시작되었습니다.",
+    "풍선처럼 부풀리는 것, 가격이나 숫자를 실제보다 크게 부풀리는 것을 가리키게 되었습니다.",
+    "inflate의 핵심 이미지는 '바람을 불어 넣어 빵빵해지는 풍선 🎈💨'입니다."
+   ],
+   "meanings": [
+    "팽창하다, 부풀다",
+    "(공기로) 부풀리다",
+    "(가격·숫자를) 올리다, 과장하다"
+   ],
+   "examples": [
+    {
+     "en": "Inflate the balloons before the party.",
+     "ko": "파티 전에 풍선을 불어 두세요."
+    },
+    {
+     "en": "The life jacket inflates automatically.",
+     "ko": "그 구명조끼는 자동으로 부풀어요."
+    },
+    {
+     "en": "My bike tire needs to be inflated.",
+     "ko": "내 자전거 타이어에 바람을 넣어야 해요."
+    },
+    {
+     "en": "They inflated the price during the holiday.",
+     "ko": "그들은 연휴 동안 가격을 올렸어요."
+    },
+    {
+     "en": "He inflated the story to make it more exciting.",
+     "ko": "그는 더 흥미진진하게 들리도록 이야기를 부풀렸어요."
+    },
+    {
+     "en": "Inflation makes things more expensive.",
+     "ko": "인플레이션은 물건값을 더 비싸게 만들어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "blow up",
+     "ko": "불다, 부풀리다",
+     "en": "Blow up the pool."
+    },
+    {
+     "type": "유의어",
+     "word": "exaggerate",
+     "ko": "과장하다",
+     "en": "Don't exaggerate."
+    },
+    {
+     "type": "반의어",
+     "word": "deflate",
+     "ko": "바람을 빼다",
+     "en": "Deflate the tire."
+    },
+    {
+     "type": "파생어",
+     "word": "inflation",
+     "ko": "인플레이션, 팽창",
+     "en": "High inflation."
+    },
+    {
+     "type": "파생어",
+     "word": "inflatable",
+     "ko": "부풀릴 수 있는",
+     "en": "An inflatable boat."
+    },
+    {
+     "type": "연관어",
+     "word": "expand",
+     "ko": "팽창하다",
+     "en": "Metal expands when hot."
+    }
+   ]
+  },
+  "785": {
+   "word": "detach",
+   "overview": [
+    "detach는 '떼어 내다, 분리하다'라는 뜻의 동사입니다.",
+    "detach A from B(A를 B에서 떼어 내다)처럼 씁니다.",
+    "'(감정적으로) 거리를 두다'라는 뜻으로도 쓰며, 형용사 detached는 '분리된, 무관심한, 단독의'라는 뜻입니다.",
+    "반의어는 attach(붙이다)이고, 명사 detachment(분리, 무심함)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "take off",
+     "en": "Take off the lid.",
+     "ko": "뚜껑을 떼다."
+    },
+    {
+     "word": "separate",
+     "en": "Separate the parts.",
+     "ko": "부품을 분리하다."
+    }
+   ],
+   "etymology": [
+    "detach는 프랑스어 détacher(떼어 내다)에서 온 단어입니다.",
+    "dé(떨어져)와 attacher(붙이다)의 뒷부분이 합쳐진 말로, attach(붙이다)와 짝을 이룹니다.",
+    "'붙어 있던 것을 풀어 떼어 놓다'라는 뜻에서 시작되었습니다.",
+    "물건을 분리하는 것, 마음을 어떤 일에서 떼어 거리를 두는 것을 가리키게 되었습니다.",
+    "detach의 핵심 이미지는 '점선을 따라 쪽지를 뜯어내는 것 ✂️📄'입니다."
+   ],
+   "meanings": [
+    "떼어 내다, 분리하다",
+    "(감정적으로) 거리를 두다"
+   ],
+   "examples": [
+    {
+     "en": "Detach the coupon and bring it to the store.",
+     "ko": "쿠폰을 뜯어서 가게에 가져오세요."
+    },
+    {
+     "en": "You can detach the hood from the jacket.",
+     "ko": "그 재킷은 모자를 떼어 낼 수 있어요."
+    },
+    {
+     "en": "The rocket detached from the spacecraft.",
+     "ko": "로켓이 우주선에서 분리되었어요."
+    },
+    {
+     "en": "She tried to detach herself from her worries.",
+     "ko": "그녀는 걱정거리에서 마음을 떼어 내려고 했어요."
+    },
+    {
+     "en": "They live in a detached house.",
+     "ko": "그들은 단독 주택에 살아요."
+    },
+    {
+     "en": "He seemed cold and detached.",
+     "ko": "그는 차갑고 무관심해 보였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "separate",
+     "ko": "분리하다",
+     "en": "Separate the pages."
+    },
+    {
+     "type": "유의어",
+     "word": "remove",
+     "ko": "제거하다",
+     "en": "Remove the cover."
+    },
+    {
+     "type": "반의어",
+     "word": "attach",
+     "ko": "붙이다",
+     "en": "Attach a photo."
+    },
+    {
+     "type": "파생어",
+     "word": "detached",
+     "ko": "분리된, 무심한",
+     "en": "A detached house."
+    },
+    {
+     "type": "파생어",
+     "word": "detachment",
+     "ko": "분리, 무심함",
+     "en": "A sense of detachment."
+    },
+    {
+     "type": "연관어",
+     "word": "unplug",
+     "ko": "플러그를 뽑다",
+     "en": "Unplug the TV."
+    }
+   ]
+  },
+  "649": {
+   "word": "counterpart",
+   "overview": [
+    "counterpart는 '(다른 쪽에서) 같은 역할을 하는 사람이나 것, 상대'라는 뜻의 명사입니다.",
+    "the Korean minister and his Japanese counterpart(한국 장관과 일본 쪽 장관)처럼 씁니다.",
+    "서로 다른 집단이나 장소에서 같은 지위나 기능을 가진 짝을 뜻합니다.",
+    "법률에서는 '(문서의) 사본, 부본'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "equal",
+     "en": "Meet your equal.",
+     "ko": "동등한 상대를 만나다."
+    },
+    {
+     "word": "match",
+     "en": "A perfect match.",
+     "ko": "완벽한 짝."
+    }
+   ],
+   "etymology": [
+    "counterpart는 counter(반대쪽의, 마주 보는)와 part(부분)가 합쳐진 단어입니다.",
+    "counter는 라틴어 contra(반대로, 마주하여)에서 왔습니다.",
+    "원래는 계약서를 두 장 만들 때 상대편이 가지는 '짝이 되는 문서'를 뜻했습니다.",
+    "여기서 반대편에서 같은 역할을 하는 사람이나 사물을 가리키게 되었습니다.",
+    "counterpart의 핵심 이미지는 '거울 건너편에서 마주 보는 짝 🪞👥'입니다."
+   ],
+   "meanings": [
+    "상응하는 사람(것), 상대",
+    "(법적 문서의) 사본, 부본"
+   ],
+   "examples": [
+    {
+     "en": "The president met his French counterpart.",
+     "ko": "대통령은 프랑스 대통령과 만났어요."
+    },
+    {
+     "en": "Our school's team played against their counterparts from Japan.",
+     "ko": "우리 학교 팀은 일본의 같은 학교 팀과 경기를 했어요."
+    },
+    {
+     "en": "Online stores are cheaper than their offline counterparts.",
+     "ko": "온라인 상점이 오프라인 상점보다 저렴해요."
+    },
+    {
+     "en": "The male bird is more colorful than its female counterpart.",
+     "ko": "수컷 새는 암컷보다 색이 더 화려해요."
+    },
+    {
+     "en": "Each signed a counterpart of the contract.",
+     "ko": "양측은 각자 계약서 한 부씩에 서명했어요."
+    },
+    {
+     "en": "She talked with her counterpart at the other company.",
+     "ko": "그녀는 다른 회사에서 같은 일을 맡은 사람과 이야기했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "equivalent",
+     "ko": "대응하는 것",
+     "en": "The English equivalent."
+    },
+    {
+     "type": "유의어",
+     "word": "peer",
+     "ko": "동등한 사람",
+     "en": "Respected by peers."
+    },
+    {
+     "type": "연관어",
+     "word": "partner",
+     "ko": "상대, 동반자",
+     "en": "A dance partner."
+    },
+    {
+     "type": "연관어",
+     "word": "copy",
+     "ko": "사본",
+     "en": "Make a copy."
+    },
+    {
+     "type": "연관어",
+     "word": "opposite",
+     "ko": "반대편의",
+     "en": "The opposite side."
+    },
+    {
+     "type": "연관어",
+     "word": "match",
+     "ko": "짝",
+     "en": "Find a match."
+    }
+   ]
+  },
+  "1817": {
+   "word": "obsess",
+   "overview": [
+    "obsess는 '(생각이) 사로잡다, 집착하게 하다'라는 뜻의 동사입니다.",
+    "be obsessed with(~에 사로잡히다, 푹 빠지다)처럼 수동태로 자주 씁니다.",
+    "obsess about/over(~에 대해 계속 걱정하다, 집착하다)처럼 쓰기도 합니다.",
+    "명사 obsession(집착, 강박), 형용사 obsessive(강박적인)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "think about all the time",
+     "en": "Think about it all the time.",
+     "ko": "그것을 계속 생각하다."
+    },
+    {
+     "word": "be crazy about",
+     "en": "Be crazy about soccer.",
+     "ko": "축구에 푹 빠지다."
+    }
+   ],
+   "etymology": [
+    "obsess는 라틴어 obsidere(포위하다, 둘러싸다)에서 온 단어입니다.",
+    "ob(맞서서)와 sedere(앉다)가 합쳐진 말로, sit(앉다), session(회의)과 뿌리가 이어집니다.",
+    "원래는 적군이 성을 에워싸고 앉아 있는 것처럼 '포위하다'라는 뜻이었습니다.",
+    "어떤 생각이 마음을 포위해서 떠나지 않는 것, 즉 집착을 가리키게 되었습니다.",
+    "obsess의 핵심 이미지는 '한 가지 생각이 머릿속을 빙빙 에워싸는 것 🌀🧠'입니다."
+   ],
+   "meanings": [
+    "사로잡다, 집착하게 하다",
+    "(~에) 집착하다, 계속 신경 쓰다"
+   ],
+   "examples": [
+    {
+     "en": "He is obsessed with dinosaurs.",
+     "ko": "그는 공룡에 푹 빠져 있어요."
+    },
+    {
+     "en": "Don't obsess over small mistakes.",
+     "ko": "작은 실수에 너무 집착하지 마세요."
+    },
+    {
+     "en": "She obsesses about her grades.",
+     "ko": "그녀는 성적에 지나치게 신경 써요."
+    },
+    {
+     "en": "The idea obsessed him for years.",
+     "ko": "그 생각은 몇 년 동안 그를 사로잡았어요."
+    },
+    {
+     "en": "My brother has an obsession with video games.",
+     "ko": "우리 형은 비디오 게임에 집착해요."
+    },
+    {
+     "en": "She's obsessive about keeping her room clean.",
+     "ko": "그녀는 방을 깨끗하게 하는 데 강박적이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "preoccupy",
+     "ko": "마음을 사로잡다",
+     "en": "Preoccupied with work."
+    },
+    {
+     "type": "유의어",
+     "word": "fixate",
+     "ko": "집착하다",
+     "en": "Fixate on details."
+    },
+    {
+     "type": "반의어",
+     "word": "ignore",
+     "ko": "무시하다",
+     "en": "Ignore the problem."
+    },
+    {
+     "type": "파생어",
+     "word": "obsession",
+     "ko": "집착",
+     "en": "An obsession with fame."
+    },
+    {
+     "type": "파생어",
+     "word": "obsessive",
+     "ko": "강박적인",
+     "en": "Obsessive behavior."
+    },
+    {
+     "type": "연관어",
+     "word": "addicted",
+     "ko": "중독된",
+     "en": "Addicted to games."
+    }
+   ]
+  },
+  "2875": {
+   "word": "vigor",
+   "overview": [
+    "vigor는 '활력, 힘, 기운'이라는 뜻의 명사입니다.",
+    "with vigor(힘차게, 활기차게)처럼 씁니다.",
+    "몸과 마음의 힘이 넘치는 상태, 또는 강한 열정을 뜻합니다.",
+    "법률에서는 in vigor(효력이 있는)처럼 '효력'을 뜻하기도 합니다. 형용사 vigorous(활발한, 격렬한)도 씁니다. 영국식 철자는 vigour입니다."
+   ],
+   "easy": [
+    {
+     "word": "energy",
+     "en": "Full of energy.",
+     "ko": "에너지가 넘치는."
+    },
+    {
+     "word": "strength",
+     "en": "Great strength.",
+     "ko": "큰 힘."
+    }
+   ],
+   "etymology": [
+    "vigor는 라틴어 vigor(활기, 힘)에서 온 단어입니다.",
+    "vigere(생기가 넘치다, 활발하다)에서 나온 말로, vigilant(경계하는), vegetable(채소)과 뿌리가 이어집니다.",
+    "'생기가 넘쳐흐르는 힘'이라는 뜻이 그대로 이어져 왔습니다.",
+    "힘차게 활동하는 몸과 마음의 기운, 그리고 법이 살아 있는 효력을 가리킵니다.",
+    "vigor의 핵심 이미지는 '힘이 넘쳐 펄쩍펄쩍 뛰는 모습 💪⚡'입니다."
+   ],
+   "meanings": [
+    "활력, 힘, 기운",
+    "(법) 효력, 유효성"
+   ],
+   "examples": [
+    {
+     "en": "The old man still works with great vigor.",
+     "ko": "그 노인은 여전히 힘차게 일해요."
+    },
+    {
+     "en": "She returned to her studies with new vigor.",
+     "ko": "그녀는 새로운 활력을 얻어 공부로 돌아갔어요."
+    },
+    {
+     "en": "The team played with vigor and passion.",
+     "ko": "그 팀은 활기와 열정을 가지고 경기했어요."
+    },
+    {
+     "en": "Exercise gives you vigor.",
+     "ko": "운동은 활력을 줘요."
+    },
+    {
+     "en": "The law remains in vigor.",
+     "ko": "그 법은 여전히 효력이 있어요."
+    },
+    {
+     "en": "Vigorous exercise makes your heart stronger.",
+     "ko": "격렬한 운동은 심장을 더 튼튼하게 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "energy",
+     "ko": "에너지",
+     "en": "Full of energy."
+    },
+    {
+     "type": "유의어",
+     "word": "vitality",
+     "ko": "활력",
+     "en": "Youthful vitality."
+    },
+    {
+     "type": "반의어",
+     "word": "weakness",
+     "ko": "약함",
+     "en": "A sign of weakness."
+    },
+    {
+     "type": "반의어",
+     "word": "fatigue",
+     "ko": "피로",
+     "en": "Feel fatigue."
+    },
+    {
+     "type": "파생어",
+     "word": "vigorous",
+     "ko": "활발한, 격렬한",
+     "en": "Vigorous activity."
+    },
+    {
+     "type": "변화형",
+     "word": "vigour",
+     "ko": "활력(영국식)",
+     "en": "Full of vigour."
+    }
+   ]
+  },
+  "616": {
+   "word": "convene",
+   "overview": [
+    "convene은 '(회의를) 소집하다'라는 뜻의 동사입니다.",
+    "convene a meeting(회의를 소집하다)처럼 씁니다.",
+    "'(회의를 위해) 모이다'라는 뜻으로도 씁니다.",
+    "격식 있는 말이며, convention(대회, 관습), convenient(편리한)와 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "call a meeting",
+     "en": "Call a meeting.",
+     "ko": "회의를 소집하다."
+    },
+    {
+     "word": "gather",
+     "en": "Gather together.",
+     "ko": "함께 모이다."
+    }
+   ],
+   "etymology": [
+    "convene은 라틴어 convenire(함께 오다, 모이다)에서 온 단어입니다.",
+    "con(함께)과 venire(오다)가 합쳐진 말로, event(사건), adventure(모험), convenient(편리한)와 같은 가족입니다.",
+    "'사람들이 한곳으로 함께 오다'라는 뜻에서 시작되었습니다.",
+    "공식적인 회의를 열기 위해 사람들을 모으거나 모이는 것을 가리키게 되었습니다.",
+    "convene의 핵심 이미지는 '종을 울려 사람들을 회의실로 불러 모으는 것 🔔👥'입니다."
+   ],
+   "meanings": [
+    "(회의 등을) 소집하다",
+    "(회의를 위해) 모이다"
+   ],
+   "examples": [
+    {
+     "en": "The principal convened a meeting of all teachers.",
+     "ko": "교장 선생님은 전체 교사 회의를 소집하셨어요."
+    },
+    {
+     "en": "World leaders convened in Seoul.",
+     "ko": "세계 지도자들이 서울에 모였어요."
+    },
+    {
+     "en": "The committee will convene next Monday.",
+     "ko": "위원회는 다음 주 월요일에 열릴 거예요."
+    },
+    {
+     "en": "An emergency meeting was convened.",
+     "ko": "긴급회의가 소집되었어요."
+    },
+    {
+     "en": "The class council convenes once a month.",
+     "ko": "학급 회의는 한 달에 한 번 열려요."
+    },
+    {
+     "en": "Scientists convened to discuss climate change.",
+     "ko": "과학자들이 기후 변화를 논의하기 위해 모였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "assemble",
+     "ko": "모이다",
+     "en": "Assemble in the hall."
+    },
+    {
+     "type": "유의어",
+     "word": "summon",
+     "ko": "소집하다",
+     "en": "Summon the council."
+    },
+    {
+     "type": "반의어",
+     "word": "dismiss",
+     "ko": "해산시키다",
+     "en": "Dismiss the class."
+    },
+    {
+     "type": "반의어",
+     "word": "adjourn",
+     "ko": "휴회하다",
+     "en": "Adjourn the meeting."
+    },
+    {
+     "type": "파생어",
+     "word": "convention",
+     "ko": "대회, 관습",
+     "en": "A comic convention."
+    },
+    {
+     "type": "연관어",
+     "word": "meeting",
+     "ko": "회의",
+     "en": "A staff meeting."
+    }
+   ]
+  },
+  "1845": {
+   "word": "opt",
+   "overview": [
+    "opt는 '(~을) 선택하다, 고르다'라는 뜻의 동사입니다.",
+    "opt for(~을 택하다), opt to do(~하기로 하다)처럼 씁니다.",
+    "opt out (of)(~에서 빠지기로 하다, 탈퇴하다), opt in(참여하기로 하다)이라는 표현도 자주 씁니다.",
+    "명사 option(선택권), 형용사 optional(선택 가능한)과 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "choose",
+     "en": "Choose the red one.",
+     "ko": "빨간 것을 고르다."
+    },
+    {
+     "word": "decide",
+     "en": "Decide to stay.",
+     "ko": "머물기로 하다."
+    }
+   ],
+   "etymology": [
+    "opt는 라틴어 optare(고르다, 바라다)에서 온 단어입니다.",
+    "option(선택), adopt(입양하다, 채택하다)와 같은 가족입니다.",
+    "'여러 가지 중에서 바라는 것을 고르다'라는 뜻이 그대로 이어져 왔습니다.",
+    "여러 선택지 가운데 하나를 정하는 것을 가리킵니다.",
+    "opt의 핵심 이미지는 '갈림길에서 한쪽 길을 딱 고르는 것 🔀👉'입니다."
+   ],
+   "meanings": [
+    "(~을 하기로) 택하다, 선택하다",
+    "(opt out) 빠지기로 하다"
+   ],
+   "examples": [
+    {
+     "en": "Many students opt for science subjects.",
+     "ko": "많은 학생이 과학 과목을 선택해요."
+    },
+    {
+     "en": "She opted to walk instead of taking the bus.",
+     "ko": "그녀는 버스를 타는 대신 걷기로 했어요."
+    },
+    {
+     "en": "I opted for the cheaper phone.",
+     "ko": "저는 더 저렴한 휴대폰을 골랐어요."
+    },
+    {
+     "en": "You can opt out of the trip if you want.",
+     "ko": "원하면 그 여행에서 빠져도 돼요."
+    },
+    {
+     "en": "He opted against joining the team.",
+     "ko": "그는 팀에 들어가지 않기로 했어요."
+    },
+    {
+     "en": "The after-school class is optional.",
+     "ko": "방과 후 수업은 선택 사항이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "choose",
+     "ko": "선택하다",
+     "en": "Choose wisely."
+    },
+    {
+     "type": "유의어",
+     "word": "select",
+     "ko": "고르다",
+     "en": "Select a color."
+    },
+    {
+     "type": "파생어",
+     "word": "option",
+     "ko": "선택권",
+     "en": "Another option."
+    },
+    {
+     "type": "파생어",
+     "word": "optional",
+     "ko": "선택 가능한",
+     "en": "Optional homework."
+    },
+    {
+     "type": "연관어",
+     "word": "opt out",
+     "ko": "빠지기로 하다",
+     "en": "Opt out of emails."
+    },
+    {
+     "type": "연관어",
+     "word": "prefer",
+     "ko": "선호하다",
+     "en": "Prefer tea."
+    }
+   ]
+  },
+  "2525": {
+   "word": "statistic",
+   "overview": [
+    "statistic은 '통계 수치, 통계 자료의 한 항목'이라는 뜻의 명사입니다.",
+    "a shocking statistic(충격적인 통계 수치)처럼 씁니다.",
+    "보통 복수형 statistics로 '통계, 통계 자료', 단수 취급하면 '통계학'이라는 뜻입니다.",
+    "형용사 statistical(통계의), 명사 statistician(통계학자)도 씁니다. 줄여서 stats라고도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "number",
+     "en": "A big number.",
+     "ko": "큰 숫자."
+    },
+    {
+     "word": "data",
+     "en": "Look at the data.",
+     "ko": "자료를 보다."
+    }
+   ],
+   "etymology": [
+    "statistic은 독일어 Statistik(국가에 관한 학문)에서 온 단어입니다.",
+    "라틴어 status(상태), 이탈리아어 statista(정치가)와 뿌리가 이어지며, state(국가, 상태)와 같은 가족입니다.",
+    "원래는 나라의 인구, 재산 같은 '국가 상태'를 숫자로 조사하는 학문을 뜻했습니다.",
+    "지금은 여러 자료를 모아 숫자로 정리하고 분석한 결과를 가리킵니다.",
+    "statistic의 핵심 이미지는 '숫자와 막대그래프로 정리된 자료 📊🔢'입니다."
+   ],
+   "meanings": [
+    "통계 수치, (통계의) 한 항목",
+    "(statistics) 통계, 통계학"
+   ],
+   "examples": [
+    {
+     "en": "One surprising statistic is that most people sleep less than seven hours.",
+     "ko": "놀라운 통계 하나는 대부분의 사람이 7시간 미만으로 잔다는 거예요."
+    },
+    {
+     "en": "Statistics show that crime has decreased.",
+     "ko": "통계에 따르면 범죄가 줄었어요."
+    },
+    {
+     "en": "She is studying statistics at university.",
+     "ko": "그녀는 대학에서 통계학을 공부해요."
+    },
+    {
+     "en": "The player's statistics are impressive.",
+     "ko": "그 선수의 기록은 인상적이에요."
+    },
+    {
+     "en": "Don't become just another statistic—wear a seatbelt!",
+     "ko": "통계 속 숫자 하나가 되지 않도록 안전띠를 매세요!"
+    },
+    {
+     "en": "The report includes statistical data.",
+     "ko": "그 보고서에는 통계 자료가 들어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "figure",
+     "ko": "수치",
+     "en": "Sales figures."
+    },
+    {
+     "type": "유의어",
+     "word": "data",
+     "ko": "자료",
+     "en": "Collect data."
+    },
+    {
+     "type": "변화형",
+     "word": "statistics",
+     "ko": "통계, 통계학",
+     "en": "Official statistics."
+    },
+    {
+     "type": "파생어",
+     "word": "statistical",
+     "ko": "통계의",
+     "en": "Statistical analysis."
+    },
+    {
+     "type": "연관어",
+     "word": "survey",
+     "ko": "조사",
+     "en": "A national survey."
+    },
+    {
+     "type": "연관어",
+     "word": "percentage",
+     "ko": "백분율",
+     "en": "A high percentage."
+    }
+   ]
+  },
+  "2073": {
+   "word": "prohibit",
+   "overview": [
+    "prohibit는 '(법·규칙으로) 금지하다'라는 뜻의 동사입니다.",
+    "Smoking is prohibited.(흡연 금지)처럼 수동태로 자주 씁니다.",
+    "prohibit someone from doing(~가 …하는 것을 금지하다)처럼 씁니다.",
+    "forbid보다 공식적인 말이고, 명사 prohibition(금지)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ban",
+     "en": "Ban phones in class.",
+     "ko": "수업 중 휴대폰을 금지하다."
+    },
+    {
+     "word": "not allow",
+     "en": "Pets are not allowed.",
+     "ko": "반려동물은 허용되지 않아요."
+    }
+   ],
+   "etymology": [
+    "prohibit는 라틴어 prohibere(앞에서 막다)에서 온 단어입니다.",
+    "pro(앞에)와 habere(잡다, 가지다)가 합쳐진 말로, habit(습관), exhibit(전시하다)와 같은 가족입니다.",
+    "'앞을 가로막아 붙잡다'라는 뜻에서 시작되었습니다.",
+    "법이나 규칙으로 어떤 행동을 하지 못하게 막는 것을 가리키게 되었습니다.",
+    "prohibit의 핵심 이미지는 '빨간 원에 사선이 그어진 금지 표지판 🚫'입니다."
+   ],
+   "meanings": [
+    "금지하다",
+    "막다, 저지하다"
+   ],
+   "examples": [
+    {
+     "en": "Swimming is prohibited in this lake.",
+     "ko": "이 호수에서는 수영이 금지되어 있어요."
+    },
+    {
+     "en": "The law prohibits selling alcohol to children.",
+     "ko": "법은 아이들에게 술을 파는 것을 금지해요."
+    },
+    {
+     "en": "Students are prohibited from using phones during exams.",
+     "ko": "학생들은 시험 중 휴대폰 사용이 금지돼요."
+    },
+    {
+     "en": "The high cost prohibits many people from traveling.",
+     "ko": "비싼 비용 때문에 많은 사람이 여행을 못 가요."
+    },
+    {
+     "en": "Parking is strictly prohibited here.",
+     "ko": "여기는 주차가 엄격히 금지되어 있어요."
+    },
+    {
+     "en": "The city announced a prohibition on fireworks.",
+     "ko": "시는 불꽃놀이 금지를 발표했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "forbid",
+     "ko": "금하다",
+     "en": "Forbid him to go."
+    },
+    {
+     "type": "유의어",
+     "word": "ban",
+     "ko": "금지하다",
+     "en": "Ban plastic bags."
+    },
+    {
+     "type": "반의어",
+     "word": "permit",
+     "ko": "허용하다",
+     "en": "Permit entry."
+    },
+    {
+     "type": "반의어",
+     "word": "allow",
+     "ko": "허락하다",
+     "en": "Allow pets."
+    },
+    {
+     "type": "파생어",
+     "word": "prohibition",
+     "ko": "금지",
+     "en": "A prohibition on smoking."
+    },
+    {
+     "type": "연관어",
+     "word": "illegal",
+     "ko": "불법의",
+     "en": "Illegal parking."
+    }
+   ]
+  },
+  "784": {
+   "word": "destruct",
+   "overview": [
+    "destruct는 '파괴하다, (로켓·장치를) 자폭시키다'라는 뜻의 동사입니다.",
+    "self-destruct(자폭하다, 스스로 무너지다)라는 표현으로 가장 많이 씁니다.",
+    "보통은 destroy(파괴하다)를 쓰고, destruct는 주로 기계·로켓 같은 전문 분야에서 씁니다.",
+    "명사 destruction(파괴), 형용사 destructive(파괴적인)를 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "destroy",
+     "en": "Destroy the wall.",
+     "ko": "벽을 부수다."
+    },
+    {
+     "word": "break down",
+     "en": "Break down the old house.",
+     "ko": "낡은 집을 허물다."
+    }
+   ],
+   "etymology": [
+    "destruct는 라틴어 destruere(허물다, 무너뜨리다)에서 온 단어입니다.",
+    "de(거꾸로)와 struere(쌓다)가 합쳐진 말로, construct(건설하다), structure(구조)와 짝을 이룹니다.",
+    "'쌓아 올린 것을 거꾸로 허물다'라는 뜻에서 시작되었습니다.",
+    "20세기에 로켓이나 무기를 일부러 파괴하는 것을 가리키는 말로 다시 쓰이게 되었습니다.",
+    "destruct의 핵심 이미지는 '쌓은 블록 탑이 와르르 무너지는 것 🧱💥'입니다."
+   ],
+   "meanings": [
+    "파괴하다",
+    "자폭시키다, 자폭하다"
+   ],
+   "examples": [
+    {
+     "en": "The rocket was designed to destruct if it went off course.",
+     "ko": "그 로켓은 경로를 벗어나면 자폭하도록 설계되었어요."
+    },
+    {
+     "en": "The message will self-destruct in ten seconds.",
+     "ko": "이 메시지는 10초 후에 자동으로 삭제돼요."
+    },
+    {
+     "en": "Bad habits can make a person self-destruct.",
+     "ko": "나쁜 습관은 사람을 스스로 무너지게 할 수 있어요."
+    },
+    {
+     "en": "The storm caused great destruction.",
+     "ko": "폭풍은 큰 파괴를 일으켰어요."
+    },
+    {
+     "en": "War is very destructive.",
+     "ko": "전쟁은 매우 파괴적이에요."
+    },
+    {
+     "en": "The old bridge was destroyed by the flood.",
+     "ko": "오래된 다리는 홍수로 무너졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "destroy",
+     "ko": "파괴하다",
+     "en": "Destroy the evidence."
+    },
+    {
+     "type": "유의어",
+     "word": "demolish",
+     "ko": "철거하다",
+     "en": "Demolish the building."
+    },
+    {
+     "type": "반의어",
+     "word": "construct",
+     "ko": "건설하다",
+     "en": "Construct a dam."
+    },
+    {
+     "type": "파생어",
+     "word": "destruction",
+     "ko": "파괴",
+     "en": "Mass destruction."
+    },
+    {
+     "type": "파생어",
+     "word": "destructive",
+     "ko": "파괴적인",
+     "en": "A destructive storm."
+    },
+    {
+     "type": "연관어",
+     "word": "self-destruct",
+     "ko": "자폭하다",
+     "en": "The robot self-destructed."
+    }
+   ]
+  },
+  "1752": {
+   "word": "narrate",
+   "overview": [
+    "narrate는 '(이야기를) 들려주다, 서술하다'라는 뜻의 동사입니다.",
+    "narrate a story(이야기를 들려주다)처럼 씁니다.",
+    "'(영화·다큐멘터리의) 해설을 하다, 내레이션을 하다'라는 뜻으로도 씁니다.",
+    "명사 narrator(화자, 해설자), narration(내레이션), narrative(이야기, 서사)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tell",
+     "en": "Tell a story.",
+     "ko": "이야기를 하다."
+    },
+    {
+     "word": "describe",
+     "en": "Describe what happened.",
+     "ko": "무슨 일이 있었는지 설명하다."
+    }
+   ],
+   "etymology": [
+    "narrate는 라틴어 narrare(이야기하다, 알리다)에서 온 단어입니다.",
+    "gnarus(알고 있는)와 관련된 말로, know(알다), ignore(무시하다)와 먼 뿌리가 이어진다고 봅니다.",
+    "'알고 있는 것을 남에게 이야기해 알리다'라는 뜻에서 시작되었습니다.",
+    "일어난 일을 순서대로 이야기하거나, 영상에 목소리로 해설을 입히는 것을 가리키게 되었습니다.",
+    "narrate의 핵심 이미지는 '책을 펼쳐 놓고 이야기를 들려주는 목소리 📖🎙️'입니다."
+   ],
+   "meanings": [
+    "이야기를 하다, 서술하다",
+    "(영상의) 해설을 하다"
+   ],
+   "examples": [
+    {
+     "en": "Grandma narrated old stories to us.",
+     "ko": "할머니께서 우리에게 옛날이야기를 들려주셨어요."
+    },
+    {
+     "en": "The documentary was narrated by a famous actor.",
+     "ko": "그 다큐멘터리는 유명 배우가 해설을 맡았어요."
+    },
+    {
+     "en": "The story is narrated by a young girl.",
+     "ko": "그 이야기는 한 어린 소녀의 목소리로 서술돼요."
+    },
+    {
+     "en": "He narrated what happened during the trip.",
+     "ko": "그는 여행 중에 있었던 일을 이야기했어요."
+    },
+    {
+     "en": "Who is the narrator of this novel?",
+     "ko": "이 소설의 화자는 누구인가요?"
+    },
+    {
+     "en": "Write a short narrative about your summer.",
+     "ko": "여름에 있었던 일에 대해 짧은 이야기를 써 보세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "tell",
+     "ko": "말하다",
+     "en": "Tell the truth."
+    },
+    {
+     "type": "유의어",
+     "word": "recount",
+     "ko": "이야기하다",
+     "en": "Recount the event."
+    },
+    {
+     "type": "파생어",
+     "word": "narrator",
+     "ko": "화자, 해설자",
+     "en": "The narrator's voice."
+    },
+    {
+     "type": "파생어",
+     "word": "narrative",
+     "ko": "이야기, 서사",
+     "en": "A personal narrative."
+    },
+    {
+     "type": "파생어",
+     "word": "narration",
+     "ko": "내레이션",
+     "en": "Clear narration."
+    },
+    {
+     "type": "연관어",
+     "word": "story",
+     "ko": "이야기",
+     "en": "A bedtime story."
+    }
+   ]
+  },
+  "769": {
+   "word": "derive",
+   "overview": [
+    "derive는 '(~에서) 얻다, 끌어내다'라는 뜻의 동사입니다.",
+    "derive pleasure from(~에서 즐거움을 얻다)처럼 from과 함께 씁니다.",
+    "be derived from / derive from(~에서 유래하다)처럼 말의 기원을 말할 때 자주 씁니다.",
+    "명사 derivation(유래, 파생), 형용사 derivative(파생된)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "get",
+     "en": "Get joy from music.",
+     "ko": "음악에서 기쁨을 얻다."
+    },
+    {
+     "word": "come from",
+     "en": "The word comes from Latin.",
+     "ko": "그 단어는 라틴어에서 왔다."
+    }
+   ],
+   "etymology": [
+    "derive는 라틴어 derivare(물길을 끌어오다)에서 온 단어입니다.",
+    "de(~로부터)와 rivus(시냇물)가 합쳐진 말로, river(강)와 뿌리가 이어진다고 봅니다.",
+    "원래는 강에서 물길을 내어 물을 끌어오는 것을 뜻했습니다.",
+    "어떤 근원에서 무언가를 끌어내 얻는 것, 말이나 생각이 어디서 흘러나왔는지(유래)를 가리키게 되었습니다.",
+    "derive의 핵심 이미지는 '큰 강에서 물길을 끌어와 흐르게 하는 것 🏞️➡️💧'입니다."
+   ],
+   "meanings": [
+    "얻다, 끌어내다",
+    "(~에서) 유래하다"
+   ],
+   "examples": [
+    {
+     "en": "She derives great joy from painting.",
+     "ko": "그녀는 그림 그리기에서 큰 기쁨을 얻어요."
+    },
+    {
+     "en": "The word 'derive' is derived from Latin.",
+     "ko": "'derive'라는 단어는 라틴어에서 유래했어요."
+    },
+    {
+     "en": "Many medicines are derived from plants.",
+     "ko": "많은 약이 식물에서 얻어져요."
+    },
+    {
+     "en": "The festival derives its name from an old legend.",
+     "ko": "그 축제의 이름은 옛 전설에서 유래했어요."
+    },
+    {
+     "en": "We can derive useful lessons from history.",
+     "ko": "우리는 역사에서 유용한 교훈을 얻을 수 있어요."
+    },
+    {
+     "en": "Energy can be derived from wind and sunlight.",
+     "ko": "에너지는 바람과 햇빛에서 얻을 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "obtain",
+     "ko": "얻다",
+     "en": "Obtain permission."
+    },
+    {
+     "type": "유의어",
+     "word": "originate",
+     "ko": "유래하다",
+     "en": "Originate in China."
+    },
+    {
+     "type": "유의어",
+     "word": "stem from",
+     "ko": "~에서 비롯되다",
+     "en": "Stem from fear."
+    },
+    {
+     "type": "파생어",
+     "word": "derivation",
+     "ko": "유래, 파생",
+     "en": "The derivation of a word."
+    },
+    {
+     "type": "파생어",
+     "word": "derivative",
+     "ko": "파생된, 파생물",
+     "en": "A derivative work."
+    },
+    {
+     "type": "연관어",
+     "word": "origin",
+     "ko": "기원",
+     "en": "The origin of life."
+    }
+   ]
   }
  }
 }
