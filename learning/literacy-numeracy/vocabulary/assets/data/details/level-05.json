@@ -7759,6 +7759,1942 @@
      "en": "Win the match."
     }
    ]
+  },
+  "2330": {
+   "word": "secret",
+   "overview": [
+    "secret은 '비밀'이라는 뜻의 명사이자 '비밀의'라는 뜻의 형용사입니다.",
+    "keep a secret(비밀을 지키다), tell a secret(비밀을 말하다)처럼 씁니다.",
+    "a secret door(비밀 문), a secret plan(비밀 계획)처럼 형용사로도 씁니다.",
+    "in secret은 '몰래', '비밀리에'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "hidden",
+     "en": "A hidden treasure.",
+     "ko": "숨겨진 보물."
+    },
+    {
+     "word": "private",
+     "en": "Private information.",
+     "ko": "개인적인 정보."
+    }
+   ],
+   "etymology": [
+    "secret은 라틴어 secretus(따로 떨어진, 감춰진)에서 온 단어입니다.",
+    "se(따로)와 cernere(가리다, 나누다)가 합쳐진 말입니다.",
+    "'다른 것과 따로 떨어뜨려 감춰 둔 것'이라는 뜻에서 '비밀'이 되었습니다.",
+    "secretary(비서)도 원래 '비밀 이야기를 맡아 두는 사람'이라는 뜻에서 나온 같은 가족입니다.",
+    "secret의 핵심 이미지는 '아무도 모르게 꽁꽁 숨겨 둔 이야기 🤫'입니다."
+   ],
+   "meanings": [
+    "비밀 (명사)",
+    "비밀의, 몰래 하는 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Can you keep a secret?",
+     "ko": "비밀 지킬 수 있어?"
+    },
+    {
+     "en": "I have a secret to tell you.",
+     "ko": "너한테 할 비밀 이야기가 있어."
+    },
+    {
+     "en": "This is a secret recipe.",
+     "ko": "이건 비밀 요리법이에요."
+    },
+    {
+     "en": "They built a secret hideout in the woods.",
+     "ko": "그들은 숲속에 비밀 아지트를 지었어요."
+    },
+    {
+     "en": "She smiled a secret smile.",
+     "ko": "그녀는 은밀한 미소를 지었어요."
+    },
+    {
+     "en": "Don't tell anyone. It's a secret.",
+     "ko": "아무한테도 말하지 마. 이건 비밀이야."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "private",
+     "ko": "사적인",
+     "en": "A private diary."
+    },
+    {
+     "type": "연관어",
+     "word": "hidden",
+     "ko": "숨겨진",
+     "en": "A hidden door."
+    },
+    {
+     "type": "파생어",
+     "word": "secretly",
+     "ko": "몰래",
+     "en": "Secretly plan."
+    },
+    {
+     "type": "연관어",
+     "word": "mystery",
+     "ko": "수수께끼",
+     "en": "A big mystery."
+    },
+    {
+     "type": "연관어",
+     "word": "hide",
+     "ko": "숨기다",
+     "en": "Hide the gift."
+    },
+    {
+     "type": "연관어",
+     "word": "trust",
+     "ko": "신뢰",
+     "en": "Build trust."
+    }
+   ]
+  },
+  "1047": {
+   "word": "fault",
+   "overview": [
+    "fault는 '잘못', '결점'이라는 뜻의 명사입니다. 누구 탓인지 말할 때 자주 씁니다.",
+    "It's not my fault.(내 잘못이 아니야.), find fault with(~의 흠을 잡다)처럼 씁니다.",
+    "'결함', '고장'이라는 뜻도 있습니다. a fault in the machine(기계의 결함)",
+    "땅이 갈라진 '단층'이라는 지질학 용어로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "mistake",
+     "en": "A small mistake.",
+     "ko": "작은 실수."
+    },
+    {
+     "word": "blame",
+     "en": "Don't blame me.",
+     "ko": "나를 탓하지 마."
+    }
+   ],
+   "etymology": [
+    "fault는 라틴어 fallere(속이다, 실수하게 하다)에서 온 단어입니다.",
+    "fail(실패하다), false(거짓의)와 같은 가족 단어입니다.",
+    "'속아서 저지른 실수'라는 뜻에서 '잘못', '결점'이 되었습니다.",
+    "1500년대쯤 철자에 l이 추가되어 지금의 fault 모양이 되었습니다.",
+    "fault의 핵심 이미지는 '누구 탓인지 손가락으로 가리키는 실수 ⚠️'입니다."
+   ],
+   "meanings": [
+    "잘못, 탓 (명사)",
+    "결점, 흠 (명사)",
+    "(기계 등의) 결함, 고장 (명사)",
+    "(지질) 단층 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "It's not your fault.",
+     "ko": "네 잘못이 아니야."
+    },
+    {
+     "en": "Everyone has faults.",
+     "ko": "누구나 결점이 있어요."
+    },
+    {
+     "en": "The accident was caused by a fault in the engine.",
+     "ko": "그 사고는 엔진 결함 때문에 일어났어요."
+    },
+    {
+     "en": "Whose fault was it?",
+     "ko": "누구 잘못이었어요?"
+    },
+    {
+     "en": "She always finds fault with everything.",
+     "ko": "그녀는 늘 모든 것에서 흠을 찾아요."
+    },
+    {
+     "en": "I admit it was my fault.",
+     "ko": "그건 제 잘못이었다는 걸 인정해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "mistake",
+     "ko": "실수",
+     "en": "Fix the mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "blame",
+     "ko": "탓하다",
+     "en": "Blame each other."
+    },
+    {
+     "type": "연관어",
+     "word": "flaw",
+     "ko": "결함",
+     "en": "A design flaw."
+    },
+    {
+     "type": "연관어",
+     "word": "responsible",
+     "ko": "책임이 있는",
+     "en": "Feel responsible."
+    },
+    {
+     "type": "연관어",
+     "word": "wrong",
+     "ko": "잘못된",
+     "en": "The wrong answer."
+    },
+    {
+     "type": "연관어",
+     "word": "sorry",
+     "ko": "미안한",
+     "en": "I'm sorry."
+    }
+   ]
+  },
+  "2551": {
+   "word": "straight",
+   "overview": [
+    "straight는 '곧은', '똑바로'라는 뜻입니다. 구부러지지 않고 일직선인 모습을 말합니다.",
+    "a straight line(직선), stand up straight(똑바로 서다)처럼 씁니다.",
+    "'솔직한'이라는 뜻도 있습니다. give a straight answer(솔직한 답을 주다)",
+    "straight ahead는 '바로 앞으로', '곧장'이라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "direct",
+     "en": "A direct road.",
+     "ko": "곧은 길."
+    },
+    {
+     "word": "not curved",
+     "en": "Not curved at all.",
+     "ko": "전혀 굽지 않은."
+    }
+   ],
+   "etymology": [
+    "straight는 stretch(펼치다, 늘이다)의 옛 과거분사 streht에서 온 단어입니다.",
+    "'팽팽하게 늘여진'이라는 뜻에서 '곧은'이라는 지금의 뜻이 나왔습니다.",
+    "stretch, strait(좁은 해협)와도 같은 뿌리로 이어집니다.",
+    "'구부러짐 없이 곧다'라는 뜻이 '숨김없이 솔직하다'라는 비유로도 넓어졌습니다.",
+    "straight의 핵심 이미지는 '자로 잰 듯 곧게 뻗은 길 📏'입니다."
+   ],
+   "meanings": [
+    "곧은, 일직선의 (형용사)",
+    "곧장, 똑바로 (부사)",
+    "솔직한 (형용사)",
+    "연이은 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Draw a straight line.",
+     "ko": "직선을 그려."
+    },
+    {
+     "en": "Go straight and turn left.",
+     "ko": "곧장 가서 왼쪽으로 돌아."
+    },
+    {
+     "en": "Sit up straight.",
+     "ko": "똑바로 앉아."
+    },
+    {
+     "en": "Give me a straight answer.",
+     "ko": "솔직한 답을 줘."
+    },
+    {
+     "en": "She has straight hair.",
+     "ko": "그녀는 생머리예요."
+    },
+    {
+     "en": "He won three games straight.",
+     "ko": "그는 세 경기를 연속으로 이겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "curved",
+     "ko": "굽은",
+     "en": "A curved road."
+    },
+    {
+     "type": "반의어",
+     "word": "crooked",
+     "ko": "구부러진",
+     "en": "A crooked line."
+    },
+    {
+     "type": "연관어",
+     "word": "direct",
+     "ko": "직접적인, 곧은",
+     "en": "A direct path."
+    },
+    {
+     "type": "연관어",
+     "word": "honest",
+     "ko": "정직한",
+     "en": "Be honest."
+    },
+    {
+     "type": "연관어",
+     "word": "line",
+     "ko": "선",
+     "en": "Draw a line."
+    },
+    {
+     "type": "연관어",
+     "word": "stretch",
+     "ko": "펴다, 늘이다",
+     "en": "Stretch your arms."
+    }
+   ]
+  },
+  "388": {
+   "word": "calm",
+   "overview": [
+    "calm은 '차분한', '고요한'이라는 뜻의 형용사이자 '진정시키다'라는 뜻의 동사입니다.",
+    "Stay calm.(침착해.), a calm sea(잔잔한 바다)처럼 씁니다.",
+    "calm down(진정하다, 진정시키다)이 아주 자주 쓰는 표현입니다.",
+    "발음할 때 l은 소리 내지 않아서 '캄'에 가깝게 읽습니다."
+   ],
+   "easy": [
+    {
+     "word": "quiet",
+     "en": "A quiet place.",
+     "ko": "조용한 곳."
+    },
+    {
+     "word": "peaceful",
+     "en": "A peaceful morning.",
+     "ko": "평화로운 아침."
+    }
+   ],
+   "etymology": [
+    "calm은 그리스어 kauma(열, 한낮의 더위)에서 온 단어입니다.",
+    "한낮의 뜨거운 더위 속에서는 배들이 항해를 멈추고 쉬었는데, 이 '쉬는 시간'에서 '고요함'이라는 뜻이 나왔다고 봅니다.",
+    "옛 이탈리아어와 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "바다가 잔잔한 상태를 뜻하는 a calm sea에 이 옛 뜻이 남아 있습니다.",
+    "calm의 핵심 이미지는 '바람 한 점 없이 고요한 바다 🌊'입니다."
+   ],
+   "meanings": [
+    "차분한, 침착한 (형용사)",
+    "고요한, 잔잔한 (형용사)",
+    "진정시키다, 진정하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Please stay calm.",
+     "ko": "침착함을 유지해 주세요."
+    },
+    {
+     "en": "The sea was calm this morning.",
+     "ko": "오늘 아침 바다는 잔잔했어요."
+    },
+    {
+     "en": "She spoke in a calm voice.",
+     "ko": "그녀는 차분한 목소리로 말했어요."
+    },
+    {
+     "en": "Try to calm down and think.",
+     "ko": "진정하고 생각해 봐."
+    },
+    {
+     "en": "Music helps calm my mind.",
+     "ko": "음악은 내 마음을 진정시키는 데 도움이 돼요."
+    },
+    {
+     "en": "He calmed the crying baby.",
+     "ko": "그는 우는 아기를 달랬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "nervous",
+     "ko": "불안한",
+     "en": "Feel nervous."
+    },
+    {
+     "type": "유의어",
+     "word": "peaceful",
+     "ko": "평화로운",
+     "en": "A peaceful town."
+    },
+    {
+     "type": "유의어",
+     "word": "quiet",
+     "ko": "조용한",
+     "en": "A quiet library."
+    },
+    {
+     "type": "연관어",
+     "word": "relax",
+     "ko": "편히 쉬다",
+     "en": "Relax at home."
+    },
+    {
+     "type": "연관어",
+     "word": "peace",
+     "ko": "평화",
+     "en": "World peace."
+    },
+    {
+     "type": "연관어",
+     "word": "stress",
+     "ko": "스트레스",
+     "en": "Reduce stress."
+    }
+   ]
+  },
+  "2536": {
+   "word": "step",
+   "overview": [
+    "step은 '걸음', '단계'라는 뜻의 명사이자 '걷다'라는 뜻의 동사입니다.",
+    "take a step(한 걸음 내딛다), step by step(한 걸음씩, 단계별로)처럼 씁니다.",
+    "'계단 한 칸'도 step이라고 합니다. Watch your step.(발밑 조심하세요.)",
+    "step on은 '~을 밟다'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "walk",
+     "en": "Walk slowly.",
+     "ko": "천천히 걸어."
+    },
+    {
+     "word": "stage",
+     "en": "The next stage.",
+     "ko": "다음 단계."
+    }
+   ],
+   "etymology": [
+    "step은 고대 영어 steppan(걷다, 발을 딛다)에서 온 단어입니다.",
+    "'단단히 밟다'라는 뜻의 아주 옛말과 이어진다고 봅니다.",
+    "'한 걸음'이라는 뜻에서 '순서 중 한 단계'라는 뜻이 자연스럽게 넓어졌습니다.",
+    "계단(stairs)의 '한 칸'도 발을 딛는 곳이라서 step이라고 부르게 되었습니다.",
+    "step의 핵심 이미지는 '한 걸음씩 앞으로 나아가기 👣'입니다."
+   ],
+   "meanings": [
+    "걸음, 발걸음 (명사)",
+    "(순서상의) 단계 (명사)",
+    "(계단의) 한 칸 (명사)",
+    "걷다, 발을 내딛다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Take one step at a time.",
+     "ko": "한 번에 한 걸음씩 내딛어."
+    },
+    {
+     "en": "This is the first step in the plan.",
+     "ko": "이건 계획의 첫 번째 단계예요."
+    },
+    {
+     "en": "Watch your step on the stairs.",
+     "ko": "계단에서 발밑을 조심해."
+    },
+    {
+     "en": "She stepped on my foot by accident.",
+     "ko": "그녀가 실수로 내 발을 밟았어요."
+    },
+    {
+     "en": "Follow these steps to solve the puzzle.",
+     "ko": "퍼즐을 풀려면 이 단계들을 따라 해."
+    },
+    {
+     "en": "He took a big step forward.",
+     "ko": "그는 앞으로 크게 한 걸음 내디뎠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "walk",
+     "ko": "걷다",
+     "en": "Walk together."
+    },
+    {
+     "type": "연관어",
+     "word": "stairs",
+     "ko": "계단",
+     "en": "Climb the stairs."
+    },
+    {
+     "type": "연관어",
+     "word": "stage",
+     "ko": "단계",
+     "en": "The next stage."
+    },
+    {
+     "type": "연관어",
+     "word": "footprint",
+     "ko": "발자국",
+     "en": "Footprints in the snow."
+    },
+    {
+     "type": "연관어",
+     "word": "progress",
+     "ko": "진전",
+     "en": "Make progress."
+    },
+    {
+     "type": "연관어",
+     "word": "process",
+     "ko": "과정",
+     "en": "A learning process."
+    }
+   ]
+  },
+  "999": {
+   "word": "explain",
+   "overview": [
+    "explain은 '설명하다'라는 뜻의 동사입니다. 무언가를 알기 쉽게 말해 주는 것을 말합니다.",
+    "explain the rules(규칙을 설명하다), explain why(왜인지 설명하다)처럼 씁니다.",
+    "explain to someone(누군가에게 설명하다) 순서로 씁니다. explain me는 틀린 표현입니다.",
+    "명사 explanation(설명)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tell",
+     "en": "Tell me why.",
+     "ko": "왜인지 말해 줘."
+    },
+    {
+     "word": "describe",
+     "en": "Describe the picture.",
+     "ko": "그림을 설명해."
+    }
+   ],
+   "etymology": [
+    "explain은 라틴어 explanare(펴서 평평하게 하다, 분명하게 하다)에서 온 단어입니다.",
+    "ex(밖으로)와 planus(평평한)가 합쳐진 말입니다.",
+    "'구겨진 것을 펴서 평평하게 만들다'라는 뜻에서 '복잡한 것을 알기 쉽게 펴 보이다', 곧 '설명하다'가 되었습니다.",
+    "plain(평평한, 명백한)도 같은 뿌리에서 나온 단어입니다.",
+    "explain의 핵심 이미지는 '구겨진 종이를 펴듯 이해하기 쉽게 풀어 주기 📄'입니다."
+   ],
+   "meanings": [
+    "설명하다"
+   ],
+   "examples": [
+    {
+     "en": "Can you explain this word to me?",
+     "ko": "이 단어를 저에게 설명해 주실 수 있어요?"
+    },
+    {
+     "en": "The teacher explained the math problem.",
+     "ko": "선생님이 수학 문제를 설명해 주셨어요."
+    },
+    {
+     "en": "Please explain why you were late.",
+     "ko": "왜 늦었는지 설명해 줘."
+    },
+    {
+     "en": "She explained the rules of the game.",
+     "ko": "그녀는 게임의 규칙을 설명했어요."
+    },
+    {
+     "en": "I'll explain everything later.",
+     "ko": "나중에 전부 설명해 줄게요."
+    },
+    {
+     "en": "He couldn't explain what happened.",
+     "ko": "그는 무슨 일이 있었는지 설명할 수 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "explanation",
+     "ko": "설명",
+     "en": "A clear explanation."
+    },
+    {
+     "type": "유의어",
+     "word": "describe",
+     "ko": "묘사하다, 설명하다",
+     "en": "Describe your day."
+    },
+    {
+     "type": "연관어",
+     "word": "understand",
+     "ko": "이해하다",
+     "en": "Understand the rule."
+    },
+    {
+     "type": "연관어",
+     "word": "tell",
+     "ko": "말하다",
+     "en": "Tell the truth."
+    },
+    {
+     "type": "연관어",
+     "word": "clarify",
+     "ko": "명확히 하다",
+     "en": "Clarify the point."
+    },
+    {
+     "type": "연관어",
+     "word": "reason",
+     "ko": "이유",
+     "en": "A good reason."
+    }
+   ]
+  },
+  "1957": {
+   "word": "piece",
+   "overview": [
+    "piece는 '조각', '부분'이라는 뜻의 명사입니다. 무엇의 일부를 말합니다.",
+    "a piece of cake(케이크 한 조각), a piece of paper(종이 한 장)처럼 씁니다.",
+    "음악이나 예술 작품 하나도 piece라고 합니다. a piece of music(음악 한 곡)",
+    "발음이 같은 peace(평화)와 헷갈리지 않도록 철자를 조심해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "A small part.",
+     "ko": "작은 부분."
+    },
+    {
+     "word": "bit",
+     "en": "A little bit.",
+     "ko": "약간."
+    }
+   ],
+   "etymology": [
+    "piece는 옛 프랑스어 piece(조각, 부분)에서 온 단어입니다.",
+    "더 멀리는 갈리아(옛 프랑스 지역) 사람들의 말에서 왔다고 봅니다. '자른 조각'이라는 뜻이었습니다.",
+    "무엇을 잘라서 나눈 한 부분이라는 뜻이 그대로 이어져 왔습니다.",
+    "예술 작품을 piece라고 부르는 것은 '전체 창작 활동 중 만들어 낸 한 작품'이라는 뜻에서 나왔습니다.",
+    "piece의 핵심 이미지는 '케이크를 자른 한 조각 🍰'입니다."
+   ],
+   "meanings": [
+    "조각, 부분",
+    "(글·음악·미술) 한 작품, 한 편",
+    "(체스 등의) 말"
+   ],
+   "examples": [
+    {
+     "en": "Can I have a piece of cake?",
+     "ko": "케이크 한 조각 먹어도 돼요?"
+    },
+    {
+     "en": "Give me a piece of paper.",
+     "ko": "종이 한 장 줘."
+    },
+    {
+     "en": "She played a beautiful piece on the piano.",
+     "ko": "그녀는 피아노로 아름다운 곡을 연주했어요."
+    },
+    {
+     "en": "The puzzle has a thousand pieces.",
+     "ko": "그 퍼즐은 조각이 천 개예요."
+    },
+    {
+     "en": "He broke the vase into pieces.",
+     "ko": "그는 꽃병을 산산조각 냈어요."
+    },
+    {
+     "en": "This is my favorite piece of art.",
+     "ko": "이건 내가 제일 좋아하는 예술 작품이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "part",
+     "ko": "부분",
+     "en": "One part of it."
+    },
+    {
+     "type": "유의어",
+     "word": "bit",
+     "ko": "조각, 조금",
+     "en": "A little bit."
+    },
+    {
+     "type": "연관어",
+     "word": "whole",
+     "ko": "전체의",
+     "en": "The whole cake."
+    },
+    {
+     "type": "연관어",
+     "word": "slice",
+     "ko": "얇은 조각",
+     "en": "A slice of bread."
+    },
+    {
+     "type": "연관어",
+     "word": "puzzle",
+     "ko": "퍼즐",
+     "en": "Solve a puzzle."
+    },
+    {
+     "type": "연관어",
+     "word": "peace",
+     "ko": "평화 (발음이 같은 말)",
+     "en": "World peace."
+    }
+   ]
+  },
+  "2716": {
+   "word": "throw",
+   "overview": [
+    "throw는 '던지다'라는 뜻의 동사입니다. 손으로 무언가를 힘껏 날려 보내는 것을 말합니다.",
+    "throw a ball(공을 던지다), throw away(버리다)처럼 씁니다.",
+    "throw a party(파티를 열다)처럼 관용적인 표현으로도 씁니다.",
+    "과거형은 threw, 과거분사는 thrown입니다."
+   ],
+   "easy": [
+    {
+     "word": "toss",
+     "en": "Toss the ball.",
+     "ko": "공을 던져."
+    },
+    {
+     "word": "catch",
+     "en": "Catch the ball.",
+     "ko": "공을 잡아."
+    }
+   ],
+   "etymology": [
+    "throw는 고대 영어 thrāwan(비틀다, 돌리다)에서 온 단어입니다.",
+    "처음에는 '실을 꼬다', '비틀다'라는 뜻이었습니다.",
+    "팔을 비틀듯 휘둘러 물건을 날려 보내는 동작에서 '던지다'라는 뜻이 되었습니다.",
+    "실을 꼬는 사람을 뜻하던 옛말 thrower도 이 뜻과 이어집니다.",
+    "throw의 핵심 이미지는 '팔을 크게 휘둘러 공을 멀리 날리기 🏐'입니다."
+   ],
+   "meanings": [
+    "던지다",
+    "(throw away) 버리다",
+    "(throw a party) (파티를) 열다"
+   ],
+   "examples": [
+    {
+     "en": "Throw the ball to me!",
+     "ko": "나한테 공 던져!"
+    },
+    {
+     "en": "Don't throw your trash on the ground.",
+     "ko": "쓰레기를 바닥에 버리지 마."
+    },
+    {
+     "en": "She threw the paper into the bin.",
+     "ko": "그녀는 종이를 쓰레기통에 던져 넣었어요."
+    },
+    {
+     "en": "He can throw the ball very far.",
+     "ko": "그는 공을 아주 멀리 던질 수 있어요."
+    },
+    {
+     "en": "We threw a surprise party for her.",
+     "ko": "우리는 그녀를 위해 깜짝 파티를 열었어요."
+    },
+    {
+     "en": "The pitcher threw a fast ball.",
+     "ko": "투수가 빠른 공을 던졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "threw",
+     "ko": "던졌다 (과거형)",
+     "en": "He threw it far."
+    },
+    {
+     "type": "변화형",
+     "word": "thrown",
+     "ko": "던져진 (과거분사)",
+     "en": "The ball was thrown."
+    },
+    {
+     "type": "유의어",
+     "word": "toss",
+     "ko": "던지다",
+     "en": "Toss a coin."
+    },
+    {
+     "type": "반의어",
+     "word": "catch",
+     "ko": "잡다",
+     "en": "Catch the ball."
+    },
+    {
+     "type": "연관어",
+     "word": "throw away",
+     "ko": "버리다",
+     "en": "Throw away trash."
+    },
+    {
+     "type": "연관어",
+     "word": "pitch",
+     "ko": "(공을) 던지다",
+     "en": "Pitch the ball."
+    }
+   ]
+  },
+  "2973": {
+   "word": "wonder",
+   "overview": [
+    "wonder는 '궁금해하다', '놀라다'라는 뜻의 동사이자 '경이', '놀라움'이라는 뜻의 명사입니다.",
+    "I wonder if...(~인지 궁금해요), no wonder(당연하지, 놀랍지 않다)처럼 씁니다.",
+    "the wonders of nature(자연의 경이로움)처럼 명사로도 씁니다.",
+    "형용사 wonderful(멋진, 놀라운)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "curious",
+     "en": "I'm curious.",
+     "ko": "궁금해."
+    },
+    {
+     "word": "amazing",
+     "en": "So amazing!",
+     "ko": "정말 놀라워!"
+    }
+   ],
+   "etymology": [
+    "wonder는 고대 영어 wundor(놀라운 일, 기적)에서 온 단어입니다.",
+    "독일어 Wunder(기적)와 같은 뿌리입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "'놀라운 일을 보고 궁금해하다'라는 뜻이 동사로도 자연스럽게 쓰이게 되었습니다.",
+    "wonder의 핵심 이미지는 '눈을 동그랗게 뜨고 놀라며 궁금해하는 마음 ✨'입니다."
+   ],
+   "meanings": [
+    "궁금해하다 (동사)",
+    "놀라다, 경탄하다 (동사)",
+    "경이, 놀라운 것 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I wonder what she is doing now.",
+     "ko": "그녀가 지금 뭘 하고 있을지 궁금해요."
+    },
+    {
+     "en": "We wondered at the beautiful stars.",
+     "ko": "우리는 아름다운 별들에 경탄했어요."
+    },
+    {
+     "en": "It's no wonder you're tired. You worked all day.",
+     "ko": "네가 피곤한 건 당연해. 하루 종일 일했잖아."
+    },
+    {
+     "en": "The Grand Canyon is a wonder of nature.",
+     "ko": "그랜드 캐니언은 자연의 경이로움이에요."
+    },
+    {
+     "en": "I wonder if it will rain tomorrow.",
+     "ko": "내일 비가 올지 궁금해요."
+    },
+    {
+     "en": "Children look at the world with wonder.",
+     "ko": "아이들은 세상을 경이로운 눈으로 바라봐요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "wonderful",
+     "ko": "멋진, 놀라운",
+     "en": "A wonderful day."
+    },
+    {
+     "type": "연관어",
+     "word": "curious",
+     "ko": "궁금한",
+     "en": "A curious child."
+    },
+    {
+     "type": "연관어",
+     "word": "amazed",
+     "ko": "놀란",
+     "en": "Amazed by it."
+    },
+    {
+     "type": "연관어",
+     "word": "surprise",
+     "ko": "놀라움",
+     "en": "A big surprise."
+    },
+    {
+     "type": "연관어",
+     "word": "magic",
+     "ko": "마법",
+     "en": "Feel like magic."
+    },
+    {
+     "type": "연관어",
+     "word": "question",
+     "ko": "질문",
+     "en": "Ask a question."
+    }
+   ]
+  },
+  "2981": {
+   "word": "worth",
+   "overview": [
+    "worth는 '~의 가치가 있는'이라는 뜻의 형용사이자 '가치'라는 뜻의 명사입니다.",
+    "worth trying(해 볼 가치가 있는), worth 100 dollars(100달러의 가치가 있는)처럼 씁니다.",
+    "It's worth it.(그건 그럴 만한 가치가 있어요.)라는 표현을 아주 자주 씁니다.",
+    "형용사 worthy(가치 있는), 명사 worthless(가치 없는)가 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "value",
+     "en": "High value.",
+     "ko": "높은 가치."
+    },
+    {
+     "word": "deserve",
+     "en": "Deserve a prize.",
+     "ko": "상을 받을 만하다."
+    }
+   ],
+   "etymology": [
+    "worth는 고대 영어 weorth(가치 있는, 귀중한)에서 온 단어입니다.",
+    "독일어 wert(가치 있는)와 같은 뿌리입니다.",
+    "'무게가 있어 값어치가 있는'이라는 뜻에서 지금의 뜻으로 이어져 왔습니다.",
+    "worship(예배, 숭배)도 원래 worth(가치)와 ship(상태)이 합쳐져 '가치 있게 여김'이라는 뜻이었습니다.",
+    "worth의 핵심 이미지는 '들인 노력만큼 값어치가 있는 것 💎'입니다."
+   ],
+   "meanings": [
+    "~의 가치가 있는 (형용사)",
+    "가치, 값어치 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "This book is worth reading.",
+     "ko": "이 책은 읽을 가치가 있어요."
+    },
+    {
+     "en": "The painting is worth a million dollars.",
+     "ko": "그 그림은 백만 달러의 가치가 있어요."
+    },
+    {
+     "en": "It's worth trying, even if you might fail.",
+     "ko": "실패할지도 모르지만 해 볼 가치가 있어요."
+    },
+    {
+     "en": "Is it worth the risk?",
+     "ko": "그건 위험을 감수할 만한 가치가 있어요?"
+    },
+    {
+     "en": "Money can't measure the worth of friendship.",
+     "ko": "돈으로는 우정의 가치를 잴 수 없어요."
+    },
+    {
+     "en": "This experience was worth every minute.",
+     "ko": "이 경험은 매 순간이 가치 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "worthy",
+     "ko": "가치 있는",
+     "en": "A worthy cause."
+    },
+    {
+     "type": "파생어",
+     "word": "worthless",
+     "ko": "가치 없는",
+     "en": "A worthless item."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치",
+     "en": "High value."
+    },
+    {
+     "type": "연관어",
+     "word": "deserve",
+     "ko": "~을 받을 자격이 있다",
+     "en": "Deserve credit."
+    },
+    {
+     "type": "연관어",
+     "word": "price",
+     "ko": "가격",
+     "en": "A fair price."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important skill."
+    }
+   ]
+  },
+  "715": {
+   "word": "darling",
+   "overview": [
+    "darling은 '사랑하는 사람'이라는 뜻으로, 가까운 사람을 부드럽게 부를 때 쓰는 애칭입니다.",
+    "honey처럼 부부나 연인, 가족끼리 다정하게 부르는 말입니다. Darling, dinner is ready.(여보, 저녁 다 됐어요.)",
+    "형용사로는 '사랑스러운', '소중한'이라는 뜻입니다. a darling little puppy(사랑스러운 작은 강아지)",
+    "격식 있는 편지의 인사말로도 씁니다. Darling Mom,(사랑하는 엄마께,)"
+   ],
+   "easy": [
+    {
+     "word": "dear",
+     "en": "Dear friend.",
+     "ko": "사랑하는 친구."
+    },
+    {
+     "word": "sweetheart",
+     "en": "Hi, sweetheart.",
+     "ko": "안녕, 자기야."
+    }
+   ],
+   "etymology": [
+    "darling은 고대 영어 dēorling에서 온 단어입니다.",
+    "dēor(소중한, 사랑스러운)에 '작은 것'을 뜻하는 -ling이 붙은 말입니다.",
+    "'소중하고 사랑스러운 작은 존재'라는 뜻이 그대로 이어져 왔습니다.",
+    "dear(소중한)도 같은 뿌리인 dēor에서 나온 형제 단어입니다.",
+    "darling의 핵심 이미지는 '가장 소중하게 여기는 사람을 부르는 다정한 말 💗'입니다."
+   ],
+   "meanings": [
+    "사랑하는 사람, 자기야 (명사)",
+    "사랑스러운, 소중한 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Darling, please pass the salt.",
+     "ko": "여보, 소금 좀 건네줘요."
+    },
+    {
+     "en": "She is my darling daughter.",
+     "ko": "그녀는 내 사랑스러운 딸이에요."
+    },
+    {
+     "en": "Good morning, darling.",
+     "ko": "잘 잤어요, 자기야."
+    },
+    {
+     "en": "What a darling little kitten!",
+     "ko": "정말 사랑스러운 새끼 고양이구나!"
+    },
+    {
+     "en": "Darling, don't worry about it.",
+     "ko": "여보, 그건 걱정하지 마."
+    },
+    {
+     "en": "He called his wife his darling.",
+     "ko": "그는 아내를 자기라고 다정하게 불렀어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "honey",
+     "ko": "여보, 자기야",
+     "en": "Hi, honey."
+    },
+    {
+     "type": "유의어",
+     "word": "sweetheart",
+     "ko": "자기야",
+     "en": "My sweetheart."
+    },
+    {
+     "type": "연관어",
+     "word": "dear",
+     "ko": "소중한, ~에게 (편지)",
+     "en": "Dear friend."
+    },
+    {
+     "type": "연관어",
+     "word": "love",
+     "ko": "사랑",
+     "en": "A love letter."
+    },
+    {
+     "type": "연관어",
+     "word": "beloved",
+     "ko": "사랑하는",
+     "en": "My beloved family."
+    },
+    {
+     "type": "연관어",
+     "word": "adorable",
+     "ko": "사랑스러운",
+     "en": "An adorable puppy."
+    }
+   ]
+  },
+  "1069": {
+   "word": "figure",
+   "overview": [
+    "figure는 '숫자', '모습', '인물'이라는 뜻의 명사이자 '생각하다', '알아내다'라는 뜻의 동사입니다.",
+    "sales figures(매출 숫자), a famous figure(유명한 인물)처럼 씁니다.",
+    "figure out은 '알아내다', '이해하다'라는 아주 자주 쓰는 표현입니다. I figured it out!(알아냈어요!)",
+    "'몸매', '체형'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "number",
+     "en": "A big number.",
+     "ko": "큰 숫자."
+    },
+    {
+     "word": "person",
+     "en": "A famous person.",
+     "ko": "유명한 사람."
+    }
+   ],
+   "etymology": [
+    "figure는 라틴어 figura(모습, 형태)에서 온 단어입니다.",
+    "fingere(만들다, 빚다)에서 나온 말입니다.",
+    "'빚어 만든 모습', '형체'라는 뜻이 사람의 '인물', 도형의 '모양', 계산의 '숫자'로 넓어졌습니다.",
+    "fiction(소설)도 같은 뿌리에서 나온 단어입니다.",
+    "figure의 핵심 이미지는 '눈앞에 뚜렷하게 그려지는 모습이나 숫자 📊'입니다."
+   ],
+   "meanings": [
+    "숫자, 수치 (명사)",
+    "인물 (명사)",
+    "모양, 몸매 (명사)",
+    "생각하다, 알아내다 (동사, figure out)"
+   ],
+   "examples": [
+    {
+     "en": "Let's look at the sales figures.",
+     "ko": "매출 숫자를 봅시다."
+    },
+    {
+     "en": "She is an important figure in history.",
+     "ko": "그녀는 역사에서 중요한 인물이에요."
+    },
+    {
+     "en": "I finally figured out the answer.",
+     "ko": "나는 마침내 답을 알아냈어요."
+    },
+    {
+     "en": "Can you figure out this puzzle?",
+     "ko": "이 퍼즐을 풀어낼 수 있어?"
+    },
+    {
+     "en": "He exercises to keep a good figure.",
+     "ko": "그는 좋은 몸매를 유지하려고 운동해요."
+    },
+    {
+     "en": "What's the exact figure for this month?",
+     "ko": "이번 달 정확한 수치가 뭐예요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "number",
+     "ko": "숫자",
+     "en": "A round number."
+    },
+    {
+     "type": "연관어",
+     "word": "figure out",
+     "ko": "알아내다",
+     "en": "Figure out the way."
+    },
+    {
+     "type": "연관어",
+     "word": "shape",
+     "ko": "모양",
+     "en": "A round shape."
+    },
+    {
+     "type": "연관어",
+     "word": "statue",
+     "ko": "조각상",
+     "en": "A stone statue."
+    },
+    {
+     "type": "연관어",
+     "word": "person",
+     "ko": "사람, 인물",
+     "en": "A key person."
+    },
+    {
+     "type": "연관어",
+     "word": "calculate",
+     "ko": "계산하다",
+     "en": "Calculate the cost."
+    }
+   ]
+  },
+  "2523": {
+   "word": "state",
+   "overview": [
+    "state는 '상태'라는 뜻의 명사이자 '~을 말하다', '진술하다'라는 뜻의 동사입니다.",
+    "a state of happiness(행복한 상태)처럼 씁니다.",
+    "미국의 '주(州)'도 state라고 합니다. the United States(미국)",
+    "동사로는 '분명히 말하다'라는 뜻입니다. Please state your name.(이름을 말씀해 주세요.)"
+   ],
+   "easy": [
+    {
+     "word": "condition",
+     "en": "In good condition.",
+     "ko": "좋은 상태로."
+    },
+    {
+     "word": "country",
+     "en": "Which country?",
+     "ko": "어느 나라?"
+    }
+   ],
+   "etymology": [
+    "state는 라틴어 status(서 있는 상태, 신분)에서 온 단어입니다.",
+    "stare(서다)에서 나온 말입니다. stand(서다)와도 먼 친척입니다.",
+    "'멈춰 서 있는 상태'라는 뜻에서 '상태', '신분'이 되었습니다.",
+    "정치적으로 '나라' 또는 '주'라는 뜻도 여기서 나왔는데, 하나의 단단히 서 있는 조직체를 뜻합니다.",
+    "state의 핵심 이미지는 '지금 이 순간 서 있는 모습, 그 상태 📍'입니다."
+   ],
+   "meanings": [
+    "상태 (명사)",
+    "국가, (미국의) 주 (명사)",
+    "말하다, 진술하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The room was in a messy state.",
+     "ko": "방이 어질러진 상태였어요."
+    },
+    {
+     "en": "California is a state in the USA.",
+     "ko": "캘리포니아는 미국의 한 주예요."
+    },
+    {
+     "en": "Please state your reason clearly.",
+     "ko": "이유를 분명하게 말씀해 주세요."
+    },
+    {
+     "en": "He is in a good state of mind.",
+     "ko": "그는 마음 상태가 좋아요."
+    },
+    {
+     "en": "The report states the facts clearly.",
+     "ko": "그 보고서는 사실을 분명하게 말해 줘요."
+    },
+    {
+     "en": "Every state has its own laws.",
+     "ko": "각 주마다 자체 법률이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "condition",
+     "ko": "상태",
+     "en": "A good condition."
+    },
+    {
+     "type": "연관어",
+     "word": "country",
+     "ko": "나라",
+     "en": "A small country."
+    },
+    {
+     "type": "연관어",
+     "word": "nation",
+     "ko": "국가",
+     "en": "A proud nation."
+    },
+    {
+     "type": "연관어",
+     "word": "government",
+     "ko": "정부",
+     "en": "The government."
+    },
+    {
+     "type": "연관어",
+     "word": "declare",
+     "ko": "선언하다",
+     "en": "Declare victory."
+    },
+    {
+     "type": "연관어",
+     "word": "situation",
+     "ko": "상황",
+     "en": "A difficult situation."
+    }
+   ]
+  },
+  "1791": {
+   "word": "none",
+   "overview": [
+    "none은 '아무것도 ~않다', '하나도 없다'라는 뜻의 대명사입니다.",
+    "None of us knew the answer.(우리 중 아무도 답을 몰랐어요.)처럼 씁니다.",
+    "None is left.(하나도 안 남았어요.)처럼 no + 명사와 비슷한 뜻으로 씁니다.",
+    "none other than은 '다름 아닌 바로 ~'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "nothing",
+     "en": "Nothing left.",
+     "ko": "아무것도 안 남았어."
+    },
+    {
+     "word": "no one",
+     "en": "No one came.",
+     "ko": "아무도 안 왔어."
+    }
+   ],
+   "etymology": [
+    "none은 고대 영어 nān(하나도 아닌)에서 온 단어입니다.",
+    "ne(아니다)와 ān(하나)이 합쳐진 말로, '하나도 아니다'라는 뜻입니다.",
+    "no(부정을 나타내는 말)도 같은 뿌리에서 나온 형제 단어입니다.",
+    "none은 원래 대명사로 혼자 쓰이고, no는 명사 앞에 붙여 쓰는 차이가 있습니다.",
+    "none의 핵심 이미지는 '텅 비어서 아무것도 남지 않은 상태 🚫'입니다."
+   ],
+   "meanings": [
+    "아무것도 ~않다, 하나도 없다",
+    "아무도 ~않다"
+   ],
+   "examples": [
+    {
+     "en": "None of the cookies are left.",
+     "ko": "쿠키가 하나도 안 남았어요."
+    },
+    {
+     "en": "None of us wanted to leave.",
+     "ko": "우리 중 아무도 떠나고 싶어 하지 않았어요."
+    },
+    {
+     "en": "I have none.",
+     "ko": "나는 하나도 없어요."
+    },
+    {
+     "en": "None of the answers were correct.",
+     "ko": "정답이 하나도 없었어요."
+    },
+    {
+     "en": "There's none left in the fridge.",
+     "ko": "냉장고에 하나도 안 남았어요."
+    },
+    {
+     "en": "It was none other than my best friend.",
+     "ko": "다름 아닌 바로 내 가장 친한 친구였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "no",
+     "ko": "아무 ~도 없는",
+     "en": "No time."
+    },
+    {
+     "type": "연관어",
+     "word": "nothing",
+     "ko": "아무것도",
+     "en": "Nothing to do."
+    },
+    {
+     "type": "연관어",
+     "word": "no one",
+     "ko": "아무도",
+     "en": "No one here."
+    },
+    {
+     "type": "반의어",
+     "word": "all",
+     "ko": "모두",
+     "en": "All of them."
+    },
+    {
+     "type": "연관어",
+     "word": "any",
+     "ko": "아무",
+     "en": "Any of you."
+    },
+    {
+     "type": "연관어",
+     "word": "zero",
+     "ko": "영, 0",
+     "en": "Zero mistakes."
+    }
+   ]
+  },
+  "1535": {
+   "word": "law",
+   "overview": [
+    "law는 '법', '법률'이라는 뜻의 명사입니다. 나라나 사회가 정한 지켜야 할 규칙입니다.",
+    "break the law(법을 어기다), obey the law(법을 지키다)처럼 씁니다.",
+    "자연의 '법칙'이라는 뜻으로도 씁니다. the law of gravity(중력의 법칙)",
+    "law school(법학 대학원)에서 공부하면 lawyer(변호사)가 될 수 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "rule",
+     "en": "Follow the rule.",
+     "ko": "규칙을 따라."
+    },
+    {
+     "word": "police",
+     "en": "Call the police.",
+     "ko": "경찰을 불러."
+    }
+   ],
+   "etymology": [
+    "law는 옛 노르드어(바이킹의 말) lag(놓인 것, 정해진 것)에서 온 단어입니다.",
+    "'함께 놓아 정한 것'이라는 뜻에서 '법'이 되었습니다.",
+    "lie(눕다), lay(놓다)와 먼 친척인 뿌리를 가진다고 봅니다.",
+    "lawyer(변호사)는 law에서 나온 말로, '법을 다루는 사람'이라는 뜻입니다.",
+    "law의 핵심 이미지는 '모두가 지키기로 정해 놓은 규칙 ⚖️'입니다."
+   ],
+   "meanings": [
+    "법, 법률",
+    "(자연의) 법칙",
+    "법학"
+   ],
+   "examples": [
+    {
+     "en": "Everyone must obey the law.",
+     "ko": "모두가 법을 지켜야 해요."
+    },
+    {
+     "en": "It's against the law to steal.",
+     "ko": "훔치는 것은 법에 어긋나요."
+    },
+    {
+     "en": "She studies law at university.",
+     "ko": "그녀는 대학교에서 법학을 공부해요."
+    },
+    {
+     "en": "The law of gravity keeps us on the ground.",
+     "ko": "중력의 법칙이 우리를 땅에 붙잡아 둬요."
+    },
+    {
+     "en": "New laws were made to protect the environment.",
+     "ko": "환경을 보호하려고 새 법이 만들어졌어요."
+    },
+    {
+     "en": "He wants to become a lawyer someday.",
+     "ko": "그는 언젠가 변호사가 되고 싶어 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "School rules."
+    },
+    {
+     "type": "파생어",
+     "word": "lawyer",
+     "ko": "변호사",
+     "en": "A famous lawyer."
+    },
+    {
+     "type": "반의어",
+     "word": "illegal",
+     "ko": "불법의",
+     "en": "An illegal act."
+    },
+    {
+     "type": "연관어",
+     "word": "legal",
+     "ko": "합법적인",
+     "en": "A legal contract."
+    },
+    {
+     "type": "연관어",
+     "word": "court",
+     "ko": "법정",
+     "en": "Go to court."
+    },
+    {
+     "type": "연관어",
+     "word": "justice",
+     "ko": "정의",
+     "en": "Fight for justice."
+    }
+   ]
+  },
+  "2199": {
+   "word": "report",
+   "overview": [
+    "report는 '보고서', '보도'라는 뜻의 명사이자 '보고하다', '알리다'라는 뜻의 동사입니다.",
+    "write a report(보고서를 쓰다), a news report(뉴스 보도)처럼 씁니다.",
+    "report to someone은 '누구에게 보고하다'라는 뜻입니다.",
+    "학교 성적표는 영어로 report card라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "tell",
+     "en": "Tell the news.",
+     "ko": "소식을 전해."
+    },
+    {
+     "word": "news",
+     "en": "Breaking news.",
+     "ko": "속보."
+    }
+   ],
+   "etymology": [
+    "report는 라틴어 reportare(다시 가져오다, 전하다)에서 온 단어입니다.",
+    "re(다시)와 portare(나르다, 옮기다)가 합쳐진 말입니다.",
+    "'소식을 다시 가져와서 전하다'라는 뜻에서 '보고하다'가 되었습니다.",
+    "transport(운송하다), import(수입하다)도 portare에서 나온 같은 가족입니다.",
+    "report의 핵심 이미지는 '조사한 것을 정리해서 전하는 소식 📰'입니다."
+   ],
+   "meanings": [
+    "보고서, 리포트 (명사)",
+    "보도, 소식 (명사)",
+    "보고하다, 알리다 (동사)",
+    "신고하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I need to write a report on animals.",
+     "ko": "나는 동물에 대한 보고서를 써야 해요."
+    },
+    {
+     "en": "According to the news report, it will rain.",
+     "ko": "뉴스 보도에 따르면 비가 올 거예요."
+    },
+    {
+     "en": "Please report any problems to the teacher.",
+     "ko": "문제가 있으면 선생님께 알려 주세요."
+    },
+    {
+     "en": "She reported the lost dog to the police.",
+     "ko": "그녀는 경찰에 잃어버린 개를 신고했어요."
+    },
+    {
+     "en": "My report card has all good grades.",
+     "ko": "내 성적표에는 좋은 성적만 있어요."
+    },
+    {
+     "en": "He reports directly to the manager.",
+     "ko": "그는 관리자에게 직접 보고해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "news",
+     "ko": "뉴스",
+     "en": "Good news."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "기록",
+     "en": "Keep a record."
+    },
+    {
+     "type": "파생어",
+     "word": "reporter",
+     "ko": "기자",
+     "en": "A TV reporter."
+    },
+    {
+     "type": "연관어",
+     "word": "inform",
+     "ko": "알리다",
+     "en": "Inform the police."
+    },
+    {
+     "type": "연관어",
+     "word": "announce",
+     "ko": "발표하다",
+     "en": "Announce the winner."
+    },
+    {
+     "type": "연관어",
+     "word": "grade",
+     "ko": "성적",
+     "en": "A good grade."
+    }
+   ]
+  },
+  "470": {
+   "word": "choice",
+   "overview": [
+    "choice는 '선택'이라는 뜻의 명사입니다. 여러 개 중에서 하나를 고르는 것을 말합니다.",
+    "make a choice(선택을 하다), have no choice(선택의 여지가 없다)처럼 씁니다.",
+    "동사 choose(고르다)의 명사형입니다.",
+    "형용사처럼 명사 앞에서 '엄선된', '고급의'라는 뜻으로도 씁니다. choice fruit(엄선된 과일)"
+   ],
+   "easy": [
+    {
+     "word": "option",
+     "en": "Two options.",
+     "ko": "두 가지 선택지."
+    },
+    {
+     "word": "pick",
+     "en": "Pick one.",
+     "ko": "하나 골라."
+    }
+   ],
+   "etymology": [
+    "choice는 옛 프랑스어 chois(선택)에서 온 단어입니다.",
+    "choisir(고르다, 선택하다)에서 나온 말로, choose(고르다)와 같은 뿌리입니다.",
+    "'여러 개 중 마음에 드는 것을 골라내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'엄선된'이라는 형용사 뜻은 '고르고 골라 뽑은'이라는 느낌에서 나왔습니다.",
+    "choice의 핵심 이미지는 '갈림길에서 어느 쪽을 고를지 고민하는 순간 🔀'입니다."
+   ],
+   "meanings": [
+    "선택 (명사)",
+    "선택권, 선택지 (명사)",
+    "엄선된, 고급의 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "You have two choices.",
+     "ko": "너에게는 두 가지 선택지가 있어."
+    },
+    {
+     "en": "It was a difficult choice to make.",
+     "ko": "그건 하기 어려운 선택이었어요."
+    },
+    {
+     "en": "I have no choice but to accept it.",
+     "ko": "나는 그걸 받아들이는 것 말고는 선택의 여지가 없어요."
+    },
+    {
+     "en": "She made a good choice.",
+     "ko": "그녀는 좋은 선택을 했어요."
+    },
+    {
+     "en": "This restaurant serves choice cuts of meat.",
+     "ko": "이 식당은 최고급 고기 부위를 내놓아요."
+    },
+    {
+     "en": "The choice is yours.",
+     "ko": "선택은 네 몫이야."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "choose",
+     "ko": "고르다",
+     "en": "Choose wisely."
+    },
+    {
+     "type": "유의어",
+     "word": "option",
+     "ko": "선택지",
+     "en": "A good option."
+    },
+    {
+     "type": "연관어",
+     "word": "decision",
+     "ko": "결정",
+     "en": "Make a decision."
+    },
+    {
+     "type": "연관어",
+     "word": "pick",
+     "ko": "고르다",
+     "en": "Pick a card."
+    },
+    {
+     "type": "연관어",
+     "word": "select",
+     "ko": "선정하다",
+     "en": "Select an item."
+    },
+    {
+     "type": "연관어",
+     "word": "prefer",
+     "ko": "선호하다",
+     "en": "Prefer this one."
+    }
+   ]
+  },
+  "464": {
+   "word": "chief",
+   "overview": [
+    "chief는 '우두머리', '최고의'라는 뜻입니다. 무리를 이끄는 가장 높은 사람을 말합니다.",
+    "the chief of police(경찰서장), a chief goal(가장 중요한 목표)처럼 씁니다.",
+    "옛날 부족이나 마을을 이끄는 '족장'을 chief라고 불렀습니다.",
+    "부사 chiefly는 '주로', '대부분'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "leader",
+     "en": "Our leader.",
+     "ko": "우리의 지도자."
+    },
+    {
+     "word": "main",
+     "en": "The main idea.",
+     "ko": "주된 생각."
+    }
+   ],
+   "etymology": [
+    "chief는 옛 프랑스어 chief(머리, 우두머리)에서 온 단어입니다.",
+    "라틴어 caput(머리)에서 나온 말로, captain(대장), cap(모자)과 같은 가족입니다.",
+    "'머리가 되는 사람'이라는 뜻에서 '우두머리'가 되었습니다.",
+    "'가장 중요한'이라는 형용사 뜻도 '머리처럼 으뜸가는'이라는 느낌에서 나왔습니다.",
+    "chief의 핵심 이미지는 '무리를 이끄는 가장 높은 자리 👑'입니다."
+   ],
+   "meanings": [
+    "우두머리, 장(長) (명사)",
+    "가장 중요한, 주요한 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "He is the chief of the fire department.",
+     "ko": "그는 소방서장이에요."
+    },
+    {
+     "en": "Our chief goal is to win the game.",
+     "ko": "우리의 가장 중요한 목표는 경기에서 이기는 거예요."
+    },
+    {
+     "en": "The village chief made the final decision.",
+     "ko": "마을 족장이 최종 결정을 내렸어요."
+    },
+    {
+     "en": "Safety is our chief concern.",
+     "ko": "안전이 우리의 가장 큰 관심사예요."
+    },
+    {
+     "en": "She works as the chief editor of the magazine.",
+     "ko": "그녀는 그 잡지의 편집장으로 일해요."
+    },
+    {
+     "en": "The chief reason for the delay was the weather.",
+     "ko": "지연의 가장 큰 이유는 날씨였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "leader",
+     "ko": "지도자",
+     "en": "A wise leader."
+    },
+    {
+     "type": "연관어",
+     "word": "boss",
+     "ko": "상사",
+     "en": "My boss."
+    },
+    {
+     "type": "연관어",
+     "word": "main",
+     "ko": "주된",
+     "en": "The main point."
+    },
+    {
+     "type": "연관어",
+     "word": "captain",
+     "ko": "주장",
+     "en": "Team captain."
+    },
+    {
+     "type": "파생어",
+     "word": "chiefly",
+     "ko": "주로",
+     "en": "Chiefly because of."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "Very important."
+    }
+   ]
+  },
+  "2553": {
+   "word": "strange",
+   "overview": [
+    "strange는 '이상한', '낯선'이라는 뜻의 형용사입니다. 흔하지 않아서 놀랍거나 어색한 것을 말합니다.",
+    "a strange sound(이상한 소리), a strange place(낯선 곳)처럼 씁니다.",
+    "It's strange that...(~라니 이상하다)처럼도 자주 씁니다.",
+    "명사 stranger는 '낯선 사람', '모르는 사람'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "weird",
+     "en": "So weird!",
+     "ko": "정말 이상해!"
+    },
+    {
+     "word": "unfamiliar",
+     "en": "An unfamiliar face.",
+     "ko": "낯선 얼굴."
+    }
+   ],
+   "etymology": [
+    "strange는 옛 프랑스어 estrange(낯선, 외국의)에서 온 단어입니다.",
+    "라틴어 extraneus(바깥의, 외부의)에서 나온 말입니다.",
+    "extra(바깥에)와 이어져, '바깥에서 온 익숙하지 않은 것'이라는 뜻이었습니다.",
+    "stranger(낯선 사람)도 같은 뿌리에서 나온 단어입니다.",
+    "strange의 핵심 이미지는 '평소와 달라 고개를 갸웃하게 만드는 낯섦 ❓'입니다."
+   ],
+   "meanings": [
+    "이상한, 기이한",
+    "낯선, 익숙하지 않은"
+   ],
+   "examples": [
+    {
+     "en": "I heard a strange noise last night.",
+     "ko": "나는 어젯밤에 이상한 소리를 들었어요."
+    },
+    {
+     "en": "It felt strange to be back at school.",
+     "ko": "학교에 돌아오니 낯설게 느껴졌어요."
+    },
+    {
+     "en": "This is a strange place I've never seen before.",
+     "ko": "여긴 전에 본 적 없는 낯선 곳이에요."
+    },
+    {
+     "en": "It's strange that he didn't call.",
+     "ko": "그가 전화하지 않았다니 이상해요."
+    },
+    {
+     "en": "Don't talk to strangers.",
+     "ko": "낯선 사람과는 이야기하지 마."
+    },
+    {
+     "en": "She had a strange feeling something was wrong.",
+     "ko": "그녀는 뭔가 잘못됐다는 이상한 느낌이 들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "weird",
+     "ko": "이상한",
+     "en": "A weird dream."
+    },
+    {
+     "type": "유의어",
+     "word": "unusual",
+     "ko": "흔치 않은",
+     "en": "Unusual weather."
+    },
+    {
+     "type": "파생어",
+     "word": "stranger",
+     "ko": "낯선 사람",
+     "en": "A kind stranger."
+    },
+    {
+     "type": "반의어",
+     "word": "familiar",
+     "ko": "익숙한",
+     "en": "A familiar face."
+    },
+    {
+     "type": "연관어",
+     "word": "mystery",
+     "ko": "수수께끼",
+     "en": "A strange mystery."
+    },
+    {
+     "type": "연관어",
+     "word": "foreign",
+     "ko": "외국의, 낯선",
+     "en": "A foreign land."
+    }
+   ]
+  },
+  "1191": {
+   "word": "general",
+   "overview": [
+    "general은 '일반적인', '전체적인'이라는 뜻의 형용사이자 군대의 '장군'이라는 뜻의 명사입니다.",
+    "in general(일반적으로), general information(일반적인 정보)처럼 씁니다.",
+    "군대의 아주 높은 계급인 '장군'도 general이라고 합니다.",
+    "general store는 여러 물건을 조금씩 파는 '잡화점'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "common",
+     "en": "A common problem.",
+     "ko": "흔한 문제."
+    },
+    {
+     "word": "overall",
+     "en": "The overall plan.",
+     "ko": "전체적인 계획."
+    }
+   ],
+   "etymology": [
+    "general은 라틴어 generalis(전체에 관한, 일반적인)에서 온 단어입니다.",
+    "genus(종류, 부류)에서 나온 말입니다. gene(유전자)과도 먼 친척입니다.",
+    "'특정한 하나가 아니라 여러 종류를 아우르는'이라는 뜻에서 '일반적인'이 되었습니다.",
+    "군대에서 여러 부대를 두루 지휘하는 사람이라서 '장군'이라는 뜻도 생겼습니다.",
+    "general의 핵심 이미지는 '한 가지가 아니라 전체를 아우르는 넓은 시야 🗺️'입니다."
+   ],
+   "meanings": [
+    "일반적인, 전체적인 (형용사)",
+    "(군대) 장군 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "In general, students like recess time.",
+     "ko": "일반적으로 학생들은 쉬는 시간을 좋아해요."
+    },
+    {
+     "en": "This is a general rule for everyone.",
+     "ko": "이건 모두를 위한 일반적인 규칙이에요."
+    },
+    {
+     "en": "The general led his soldiers into battle.",
+     "ko": "장군이 병사들을 이끌고 전투에 나섰어요."
+    },
+    {
+     "en": "We had a general idea of the plan.",
+     "ko": "우리는 계획에 대한 대략적인 생각이 있었어요."
+    },
+    {
+     "en": "The general public liked the new park.",
+     "ko": "일반 대중은 새 공원을 좋아했어요."
+    },
+    {
+     "en": "Speaking in general terms, the trip was fun.",
+     "ko": "대체로 말하면, 그 여행은 재미있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "common",
+     "ko": "흔한, 공통의",
+     "en": "A common goal."
+    },
+    {
+     "type": "반의어",
+     "word": "specific",
+     "ko": "구체적인",
+     "en": "A specific answer."
+    },
+    {
+     "type": "연관어",
+     "word": "overall",
+     "ko": "전반적인",
+     "en": "The overall score."
+    },
+    {
+     "type": "연관어",
+     "word": "soldier",
+     "ko": "군인",
+     "en": "A brave soldier."
+    },
+    {
+     "type": "연관어",
+     "word": "army",
+     "ko": "군대",
+     "en": "Join the army."
+    },
+    {
+     "type": "연관어",
+     "word": "typical",
+     "ko": "전형적인",
+     "en": "A typical day."
+    }
+   ]
   }
  }
 }
