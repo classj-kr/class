@@ -3853,6 +3853,1931 @@
      "en": "Win an award."
     }
    ]
+  },
+  "2535": {
+   "word": "stem",
+   "overview": [
+    "stem은 '(식물의) 줄기'라는 뜻의 명사입니다.",
+    "a flower stem(꽃줄기)처럼 씁니다.",
+    "동사로는 stem from(~에서 비롯되다, 생기다)이라는 표현으로 아주 자주 씁니다.",
+    "'(흐름을) 막다, 저지하다'라는 뜻도 있고, STEM은 과학·기술·공학·수학 교육을 뜻하기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "stalk",
+     "en": "A long stalk.",
+     "ko": "긴 줄기."
+    },
+    {
+     "word": "come from",
+     "en": "Come from fear.",
+     "ko": "두려움에서 오다."
+    }
+   ],
+   "etymology": [
+    "stem은 고대 영어 stemn(나무줄기, 배의 앞머리)에서 온 단어입니다.",
+    "stand(서다)와 같은 게르만 말 뿌리에서 나왔다고 봅니다.",
+    "'식물이 곧게 서 있게 받쳐 주는 줄기'라는 뜻이 그대로 이어져 왔습니다.",
+    "잎과 꽃이 줄기에서 나오듯, 어떤 일이 '~에서 비롯되다'라는 뜻이 생겼습니다.",
+    "stem의 핵심 이미지는 '꽃과 잎이 뻗어 나오는 곧은 줄기 🌷'입니다."
+   ],
+   "meanings": [
+    "줄기",
+    "(from) ~에서 비롯되다",
+    "못하게 막다, 저지하다"
+   ],
+   "examples": [
+    {
+     "en": "Cut the flower stems before putting them in water.",
+     "ko": "꽃을 물에 꽂기 전에 줄기를 자르세요."
+    },
+    {
+     "en": "Her fear of water stems from a childhood accident.",
+     "ko": "그녀의 물 공포증은 어릴 적 사고에서 비롯됐어요."
+    },
+    {
+     "en": "The nurse pressed the cut to stem the bleeding.",
+     "ko": "간호사는 피를 멈추려고 상처를 눌렀어요."
+    },
+    {
+     "en": "Many problems stem from poor communication.",
+     "ko": "많은 문제는 소통 부족에서 생겨요."
+    },
+    {
+     "en": "The rose has a long, thorny stem.",
+     "ko": "그 장미는 가시 달린 긴 줄기가 있어요."
+    },
+    {
+     "en": "The school offers STEM classes after school.",
+     "ko": "그 학교는 방과 후에 과학·기술 수업을 열어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "stalk",
+     "ko": "줄기",
+     "en": "A celery stalk."
+    },
+    {
+     "type": "연관어",
+     "word": "root",
+     "ko": "뿌리",
+     "en": "Deep roots."
+    },
+    {
+     "type": "연관어",
+     "word": "leaf",
+     "ko": "잎",
+     "en": "A green leaf."
+    },
+    {
+     "type": "연관어",
+     "word": "originate",
+     "ko": "비롯되다",
+     "en": "Originate in China."
+    },
+    {
+     "type": "연관어",
+     "word": "cause",
+     "ko": "원인",
+     "en": "The main cause."
+    },
+    {
+     "type": "연관어",
+     "word": "stop",
+     "ko": "막다",
+     "en": "Stop the flow."
+    }
+   ]
+  },
+  "1073": {
+   "word": "filter",
+   "overview": [
+    "filter는 '필터, 여과 장치'라는 뜻의 명사입니다.",
+    "a water filter(정수 필터)처럼 씁니다.",
+    "동사로는 '거르다, 여과하다'라는 뜻입니다.",
+    "사진 앱의 '필터', 이메일의 '스팸 필터'처럼 원치 않는 것을 걸러 내는 기능에도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "strainer",
+     "en": "A tea strainer.",
+     "ko": "차 거름망."
+    },
+    {
+     "word": "clean",
+     "en": "Clean the water.",
+     "ko": "물을 깨끗하게 하다."
+    }
+   ],
+   "etymology": [
+    "filter는 중세 라틴어 filtrum(펠트 천)에서 온 단어입니다.",
+    "felt(펠트)와 같은 게르만 말 뿌리에서 나왔습니다.",
+    "옛날에는 촘촘한 펠트 천으로 액체를 걸러 불순물을 없앴습니다.",
+    "그래서 '걸러 내는 장치, 거르다'라는 뜻이 되었고, 지금은 정보를 걸러 내는 것에도 씁니다.",
+    "filter의 핵심 이미지는 '필요한 것만 통과시키고 나머지는 걸러 내는 망 🧃'입니다."
+   ],
+   "meanings": [
+    "필터, 여과 장치",
+    "거르다, 여과하다"
+   ],
+   "examples": [
+    {
+     "en": "The water filter removes dirt.",
+     "ko": "정수 필터가 불순물을 없애 줘요."
+    },
+    {
+     "en": "Change the air filter every few months.",
+     "ko": "몇 달마다 공기 필터를 갈아 주세요."
+    },
+    {
+     "en": "She added a filter to her photo.",
+     "ko": "그녀는 사진에 필터를 입혔어요."
+    },
+    {
+     "en": "Filter the coffee through a paper filter.",
+     "ko": "종이 필터로 커피를 거르세요."
+    },
+    {
+     "en": "The email filter blocks spam.",
+     "ko": "이메일 필터가 스팸을 막아요."
+    },
+    {
+     "en": "Sunlight filtered through the leaves.",
+     "ko": "햇빛이 나뭇잎 사이로 스며들었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "strain",
+     "ko": "거르다",
+     "en": "Strain the soup."
+    },
+    {
+     "type": "연관어",
+     "word": "screen",
+     "ko": "걸러 내다",
+     "en": "Screen the calls."
+    },
+    {
+     "type": "연관어",
+     "word": "clean",
+     "ko": "깨끗한",
+     "en": "Clean water."
+    },
+    {
+     "type": "연관어",
+     "word": "block",
+     "ko": "막다",
+     "en": "Block spam."
+    },
+    {
+     "type": "연관어",
+     "word": "remove",
+     "ko": "제거하다",
+     "en": "Remove dust."
+    },
+    {
+     "type": "연관어",
+     "word": "pure",
+     "ko": "순수한",
+     "en": "Pure air."
+    }
+   ]
+  },
+  "1614": {
+   "word": "magnet",
+   "overview": [
+    "magnet은 '자석'이라는 뜻의 명사입니다.",
+    "a fridge magnet(냉장고 자석)처럼 씁니다.",
+    "'(사람·관심을) 끌어당기는 것·사람'이라는 비유적인 뜻으로도 씁니다. (a magnet for tourists)",
+    "형용사 magnetic(자석의, 매력 있는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "attraction",
+     "en": "A big attraction.",
+     "ko": "큰 볼거리."
+    },
+    {
+     "word": "pull",
+     "en": "The pull of the magnet.",
+     "ko": "자석이 끌어당기는 힘."
+    }
+   ],
+   "etymology": [
+    "magnet은 그리스어 magnes lithos(마그네시아의 돌)에서 온 단어입니다.",
+    "고대 그리스의 마그네시아 지방에서 쇠를 끌어당기는 돌이 발견되었다고 전해집니다.",
+    "그 지역 이름이 '쇠를 끌어당기는 돌', 즉 자석을 가리키게 되었습니다.",
+    "사람이나 관심을 끌어당기는 매력적인 존재에도 비유적으로 씁니다.",
+    "magnet의 핵심 이미지는 '쇠붙이를 착 끌어당기는 자석 🧲'입니다."
+   ],
+   "meanings": [
+    "자석",
+    "(사람을) 끌어당기는 것"
+   ],
+   "examples": [
+    {
+     "en": "The magnet picked up the paper clips.",
+     "ko": "자석이 클립들을 끌어당겼어요."
+    },
+    {
+     "en": "She stuck the photo on the fridge with a magnet.",
+     "ko": "그녀는 자석으로 냉장고에 사진을 붙였어요."
+    },
+    {
+     "en": "The beach is a magnet for tourists.",
+     "ko": "그 해변은 관광객을 끌어모으는 곳이에요."
+    },
+    {
+     "en": "Magnets have a north pole and a south pole.",
+     "ko": "자석에는 N극과 S극이 있어요."
+    },
+    {
+     "en": "He is a magnet for trouble.",
+     "ko": "그는 늘 말썽을 몰고 다녀요."
+    },
+    {
+     "en": "The Earth acts like a giant magnet.",
+     "ko": "지구는 거대한 자석처럼 작용해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "magnetic",
+     "ko": "자석의, 매력 있는",
+     "en": "A magnetic field."
+    },
+    {
+     "type": "연관어",
+     "word": "attract",
+     "ko": "끌어당기다",
+     "en": "Attract visitors."
+    },
+    {
+     "type": "연관어",
+     "word": "iron",
+     "ko": "철",
+     "en": "A piece of iron."
+    },
+    {
+     "type": "연관어",
+     "word": "compass",
+     "ko": "나침반",
+     "en": "Read a compass."
+    },
+    {
+     "type": "연관어",
+     "word": "pole",
+     "ko": "극",
+     "en": "The North Pole."
+    },
+    {
+     "type": "연관어",
+     "word": "repel",
+     "ko": "밀어내다",
+     "en": "Magnets repel."
+    }
+   ]
+  },
+  "2847": {
+   "word": "vaccine",
+   "overview": [
+    "vaccine은 '백신'이라는 뜻의 명사입니다.",
+    "get a vaccine(백신을 맞다)처럼 씁니다.",
+    "병에 걸리지 않도록 몸에 면역을 만들어 주는 약을 뜻합니다.",
+    "동사 vaccinate(예방 접종하다), 명사 vaccination(예방 접종)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "shot",
+     "en": "Get a flu shot.",
+     "ko": "독감 주사를 맞다."
+    },
+    {
+     "word": "medicine",
+     "en": "A new medicine.",
+     "ko": "새로운 약."
+    }
+   ],
+   "etymology": [
+    "vaccine은 라틴어 vacca(소)에서 온 단어입니다.",
+    "18세기 영국 의사 에드워드 제너가 소의 병(우두)을 이용해 천연두를 막는 방법을 발견했습니다.",
+    "그래서 '소에서 얻은 것'이라는 뜻의 vaccine이라는 이름이 붙었습니다.",
+    "지금은 여러 병을 예방하기 위해 맞는 모든 백신을 가리킵니다.",
+    "vaccine의 핵심 이미지는 '몸에 미리 방패를 만들어 주는 주사 💉🛡️'입니다."
+   ],
+   "meanings": [
+    "백신"
+   ],
+   "examples": [
+    {
+     "en": "The flu vaccine is available at the clinic.",
+     "ko": "그 병원에서 독감 백신을 맞을 수 있어요."
+    },
+    {
+     "en": "Scientists worked hard to develop the vaccine.",
+     "ko": "과학자들은 그 백신을 개발하려고 열심히 연구했어요."
+    },
+    {
+     "en": "Babies get several vaccines in their first year.",
+     "ko": "아기들은 첫해에 여러 가지 백신을 맞아요."
+    },
+    {
+     "en": "Vaccines help protect us from diseases.",
+     "ko": "백신은 우리를 질병으로부터 보호하도록 도와줘요."
+    },
+    {
+     "en": "My arm hurt a little after the vaccine.",
+     "ko": "백신을 맞은 뒤 팔이 조금 아팠어요."
+    },
+    {
+     "en": "The children were vaccinated at school.",
+     "ko": "아이들은 학교에서 예방 접종을 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "vaccinate",
+     "ko": "예방 접종하다",
+     "en": "Vaccinate the dog."
+    },
+    {
+     "type": "파생어",
+     "word": "vaccination",
+     "ko": "예방 접종",
+     "en": "A vaccination record."
+    },
+    {
+     "type": "연관어",
+     "word": "virus",
+     "ko": "바이러스",
+     "en": "A new virus."
+    },
+    {
+     "type": "연관어",
+     "word": "immune",
+     "ko": "면역이 있는",
+     "en": "Immune to the flu."
+    },
+    {
+     "type": "연관어",
+     "word": "disease",
+     "ko": "질병",
+     "en": "Prevent disease."
+    },
+    {
+     "type": "연관어",
+     "word": "injection",
+     "ko": "주사",
+     "en": "A painful injection."
+    }
+   ]
+  },
+  "760": {
+   "word": "dense",
+   "overview": [
+    "dense는 '빽빽한, 밀집한'이라는 뜻의 형용사입니다.",
+    "a dense forest(울창한 숲)처럼 씁니다.",
+    "'(안개·연기가) 짙은', '(물질이) 밀도가 높은'이라는 뜻으로도 씁니다.",
+    "구어에서는 '둔한, 이해가 느린'이라는 뜻도 있고, 명사 density(밀도)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "thick",
+     "en": "Thick fog.",
+     "ko": "짙은 안개."
+    },
+    {
+     "word": "crowded",
+     "en": "A crowded city.",
+     "ko": "붐비는 도시."
+    }
+   ],
+   "etymology": [
+    "dense는 라틴어 densus(빽빽한, 두꺼운)에서 온 단어입니다.",
+    "'틈 없이 촘촘하게 들어찬'이라는 뜻이 그대로 이어져 왔습니다.",
+    "나무가 빽빽한 숲, 사람이 몰린 도시, 짙은 안개 등에 씁니다.",
+    "과학에서는 같은 부피 안에 많은 양이 들어찬 '밀도가 높은'이라는 뜻으로 씁니다.",
+    "dense의 핵심 이미지는 '틈 하나 없이 빽빽하게 들어찬 것 🌲🌲🌲'입니다."
+   ],
+   "meanings": [
+    "밀집한, 밀도가 높은",
+    "짙은, 무거운"
+   ],
+   "examples": [
+    {
+     "en": "We got lost in the dense forest.",
+     "ko": "우리는 울창한 숲에서 길을 잃었어요."
+    },
+    {
+     "en": "The fog was so dense we couldn't see the road.",
+     "ko": "안개가 너무 짙어서 길이 보이지 않았어요."
+    },
+    {
+     "en": "Seoul has a dense population.",
+     "ko": "서울은 인구가 밀집해 있어요."
+    },
+    {
+     "en": "Iron is denser than wood.",
+     "ko": "철은 나무보다 밀도가 높아요."
+    },
+    {
+     "en": "The book is full of dense information.",
+     "ko": "그 책은 빽빽한 정보로 가득해요."
+    },
+    {
+     "en": "Thick, dense smoke filled the room.",
+     "ko": "짙고 자욱한 연기가 방을 채웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "thick",
+     "ko": "짙은, 두꺼운",
+     "en": "A thick jungle."
+    },
+    {
+     "type": "반의어",
+     "word": "sparse",
+     "ko": "드문드문한",
+     "en": "Sparse hair."
+    },
+    {
+     "type": "파생어",
+     "word": "density",
+     "ko": "밀도",
+     "en": "Population density."
+    },
+    {
+     "type": "연관어",
+     "word": "crowded",
+     "ko": "붐비는",
+     "en": "A crowded bus."
+    },
+    {
+     "type": "연관어",
+     "word": "heavy",
+     "ko": "무거운",
+     "en": "Heavy rain."
+    },
+    {
+     "type": "연관어",
+     "word": "compact",
+     "ko": "촘촘한",
+     "en": "A compact car."
+    }
+   ]
+  },
+  "1788": {
+   "word": "nod",
+   "overview": [
+    "nod는 '(고개를) 끄덕이다'라는 뜻의 동사입니다.",
+    "nod in agreement(동의하며 고개를 끄덕이다)처럼 씁니다.",
+    "'(인사로) 고개를 까딱하다', nod off(꾸벅꾸벅 졸다)라는 뜻으로도 씁니다.",
+    "명사로는 '끄덕임'이라는 뜻입니다. (give a nod)"
+   ],
+   "easy": [
+    {
+     "word": "agree",
+     "en": "Agree with a nod.",
+     "ko": "고개를 끄덕여 동의하다."
+    },
+    {
+     "word": "doze",
+     "en": "Doze in class.",
+     "ko": "수업 중에 졸다."
+    }
+   ],
+   "etymology": [
+    "nod는 중세 영어 nodden(고개를 숙이다)에서 온 단어입니다.",
+    "정확한 뿌리는 확실하지 않지만, 머리를 가볍게 흔드는 동작을 나타낸 말로 봅니다.",
+    "'고개를 위아래로 가볍게 움직이다'라는 뜻이 그대로 이어져 왔습니다.",
+    "동의, 인사, 신호, 그리고 졸 때 고개가 떨어지는 모습까지 가리킵니다.",
+    "nod의 핵심 이미지는 '고개를 위아래로 가볍게 까딱이는 것 🙂‍↕️'입니다."
+   ],
+   "meanings": [
+    "(고개를) 끄덕이다",
+    "꾸벅꾸벅 졸다",
+    "끄덕임"
+   ],
+   "examples": [
+    {
+     "en": "She nodded to show she understood.",
+     "ko": "그녀는 이해했다는 뜻으로 고개를 끄덕였어요."
+    },
+    {
+     "en": "He nodded hello to his neighbor.",
+     "ko": "그는 이웃에게 고개를 까딱하며 인사했어요."
+    },
+    {
+     "en": "Grandpa nodded off in his chair.",
+     "ko": "할아버지는 의자에서 꾸벅꾸벅 조셨어요."
+    },
+    {
+     "en": "The teacher gave me a nod to start.",
+     "ko": "선생님은 시작하라는 뜻으로 제게 고개를 끄덕여 주셨어요."
+    },
+    {
+     "en": "Nod if you can hear me.",
+     "ko": "제 말이 들리면 고개를 끄덕이세요."
+    },
+    {
+     "en": "Everyone nodded in agreement.",
+     "ko": "모두가 동의하며 고개를 끄덕였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "shake one's head",
+     "ko": "고개를 젓다",
+     "en": "Shake your head."
+    },
+    {
+     "type": "연관어",
+     "word": "agree",
+     "ko": "동의하다",
+     "en": "I agree."
+    },
+    {
+     "type": "연관어",
+     "word": "bow",
+     "ko": "절하다",
+     "en": "Bow politely."
+    },
+    {
+     "type": "연관어",
+     "word": "gesture",
+     "ko": "몸짓",
+     "en": "A kind gesture."
+    },
+    {
+     "type": "연관어",
+     "word": "doze",
+     "ko": "졸다",
+     "en": "Doze off."
+    },
+    {
+     "type": "연관어",
+     "word": "wink",
+     "ko": "윙크하다",
+     "en": "Wink at me."
+    }
+   ]
+  },
+  "763": {
+   "word": "depart",
+   "overview": [
+    "depart는 '떠나다, 출발하다'라는 뜻의 동사입니다.",
+    "The train departs at 9.(기차는 9시에 출발한다)처럼 씁니다.",
+    "leave보다 격식 있는 말로, 공항·역 안내에서 자주 씁니다.",
+    "depart from(~에서 벗어나다)이라는 뜻도 있고, 명사 departure(출발)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "leave",
+     "en": "Leave home.",
+     "ko": "집을 떠나다."
+    },
+    {
+     "word": "set off",
+     "en": "Set off early.",
+     "ko": "일찍 출발하다."
+    }
+   ],
+   "etymology": [
+    "depart는 옛 프랑스어 departir(나누다, 떠나다)에서 온 단어입니다.",
+    "de(떨어져)와 partir(나누다)가 합쳐진 말로, part(부분), apart(떨어져)와 같은 가족입니다.",
+    "원래는 '둘로 나누다'라는 뜻이었다가 '갈라져 떠나다'라는 뜻이 되었습니다.",
+    "기차, 비행기, 사람이 한곳에서 떠나 출발하는 것을 가리킵니다.",
+    "depart의 핵심 이미지는 '정든 곳에서 떨어져 출발하는 것 🚆'입니다."
+   ],
+   "meanings": [
+    "떠나다, 출발하다",
+    "멀어지다, 벗어나다"
+   ],
+   "examples": [
+    {
+     "en": "The bus departs every 20 minutes.",
+     "ko": "버스는 20분마다 출발해요."
+    },
+    {
+     "en": "Our flight departs from Gate 5.",
+     "ko": "우리 비행기는 5번 게이트에서 출발해요."
+    },
+    {
+     "en": "The guests departed after dinner.",
+     "ko": "손님들은 저녁 식사 후 떠났어요."
+    },
+    {
+     "en": "The ship departed for Jeju at dawn.",
+     "ko": "그 배는 새벽에 제주로 출항했어요."
+    },
+    {
+     "en": "Check the departure time on your ticket.",
+     "ko": "표에서 출발 시간을 확인하세요."
+    },
+    {
+     "en": "He departed from the usual plan.",
+     "ko": "그는 평소 계획에서 벗어났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Leave the room."
+    },
+    {
+     "type": "반의어",
+     "word": "arrive",
+     "ko": "도착하다",
+     "en": "Arrive on time."
+    },
+    {
+     "type": "파생어",
+     "word": "departure",
+     "ko": "출발",
+     "en": "The departure gate."
+    },
+    {
+     "type": "연관어",
+     "word": "flight",
+     "ko": "항공편",
+     "en": "A long flight."
+    },
+    {
+     "type": "연관어",
+     "word": "station",
+     "ko": "역",
+     "en": "A train station."
+    },
+    {
+     "type": "연관어",
+     "word": "schedule",
+     "ko": "시간표",
+     "en": "The bus schedule."
+    }
+   ]
+  },
+  "1719": {
+   "word": "monument",
+   "overview": [
+    "monument는 '기념물, 기념비'라는 뜻의 명사입니다.",
+    "a war monument(전쟁 기념비)처럼 씁니다.",
+    "중요한 사람이나 사건을 기억하기 위해 세운 건축물이나 조각을 뜻합니다.",
+    "'유적, 역사적 건축물'이라는 뜻도 있고, 형용사 monumental(기념비적인, 엄청난)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "memorial",
+     "en": "A war memorial.",
+     "ko": "전쟁 기념물."
+    },
+    {
+     "word": "statue",
+     "en": "A bronze statue.",
+     "ko": "청동상."
+    }
+   ],
+   "etymology": [
+    "monument는 라틴어 monumentum(기억하게 하는 것)에서 온 단어입니다.",
+    "monere(생각나게 하다, 경고하다)에서 나온 말로, monitor(감시하다), remind와 뜻이 통합니다.",
+    "'사람들이 잊지 않도록 떠올리게 하는 것'이라는 뜻에서 시작되었습니다.",
+    "중요한 일이나 인물을 기억하려고 세운 기념비, 오래된 유적을 가리키게 되었습니다.",
+    "monument의 핵심 이미지는 '잊지 말자며 우뚝 세운 기념비 🗽'입니다."
+   ],
+   "meanings": [
+    "기념물, 기념비",
+    "유적"
+   ],
+   "examples": [
+    {
+     "en": "They built a monument to the soldiers.",
+     "ko": "그들은 군인들을 기리는 기념비를 세웠어요."
+    },
+    {
+     "en": "The Statue of Liberty is a famous monument.",
+     "ko": "자유의 여신상은 유명한 기념물이에요."
+    },
+    {
+     "en": "The old temple is a national monument.",
+     "ko": "그 오래된 절은 국가 유적이에요."
+    },
+    {
+     "en": "We laid flowers at the monument.",
+     "ko": "우리는 기념비에 꽃을 바쳤어요."
+    },
+    {
+     "en": "Tourists take photos in front of the monument.",
+     "ko": "관광객들이 기념물 앞에서 사진을 찍어요."
+    },
+    {
+     "en": "Building the tower was a monumental task.",
+     "ko": "그 탑을 짓는 일은 엄청난 과업이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "memorial",
+     "ko": "기념관, 기념물",
+     "en": "A memorial hall."
+    },
+    {
+     "type": "파생어",
+     "word": "monumental",
+     "ko": "기념비적인, 엄청난",
+     "en": "A monumental success."
+    },
+    {
+     "type": "연관어",
+     "word": "statue",
+     "ko": "조각상",
+     "en": "A tall statue."
+    },
+    {
+     "type": "연관어",
+     "word": "history",
+     "ko": "역사",
+     "en": "Local history."
+    },
+    {
+     "type": "연관어",
+     "word": "landmark",
+     "ko": "랜드마크",
+     "en": "A famous landmark."
+    },
+    {
+     "type": "연관어",
+     "word": "remember",
+     "ko": "기억하다",
+     "en": "Remember the past."
+    }
+   ]
+  },
+  "1460": {
+   "word": "invade",
+   "overview": [
+    "invade는 '침략하다, 침입하다'라는 뜻의 동사입니다.",
+    "invade a country(나라를 침략하다)처럼 씁니다.",
+    "'(사생활을) 침해하다', '(많은 사람·동물이) 몰려들다'라는 뜻으로도 씁니다.",
+    "명사 invasion(침략, 침해), invader(침략자)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "attack",
+     "en": "Attack the city.",
+     "ko": "도시를 공격하다."
+    },
+    {
+     "word": "enter by force",
+     "en": "Enter by force.",
+     "ko": "강제로 들어가다."
+    }
+   ],
+   "etymology": [
+    "invade는 라틴어 invadere(쳐들어가다)에서 온 단어입니다.",
+    "in(안으로)과 vadere(가다)가 합쳐진 말입니다.",
+    "'남의 영역 안으로 억지로 밀고 들어가다'라는 뜻이 그대로 이어져 왔습니다.",
+    "군대가 나라를 침략하는 것뿐 아니라 사생활이나 공간을 침범하는 것에도 씁니다.",
+    "invade의 핵심 이미지는 '남의 경계를 넘어 밀고 들어가는 것 ⚔️'입니다."
+   ],
+   "meanings": [
+    "침입하다, 침략하다",
+    "침해하다"
+   ],
+   "examples": [
+    {
+     "en": "The army invaded the country in 1950.",
+     "ko": "그 군대는 1950년에 그 나라를 침략했어요."
+    },
+    {
+     "en": "Don't invade my privacy.",
+     "ko": "제 사생활을 침해하지 마세요."
+    },
+    {
+     "en": "Ants invaded the kitchen.",
+     "ko": "개미들이 부엌으로 쳐들어왔어요."
+    },
+    {
+     "en": "Fans invaded the field after the game.",
+     "ko": "경기가 끝나자 팬들이 경기장으로 몰려들었어요."
+    },
+    {
+     "en": "Viruses invade the body's cells.",
+     "ko": "바이러스는 몸의 세포에 침입해요."
+    },
+    {
+     "en": "The castle was built to stop invaders.",
+     "ko": "그 성은 침략자를 막으려고 지어졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "attack",
+     "ko": "공격하다",
+     "en": "Attack the base."
+    },
+    {
+     "type": "유의어",
+     "word": "occupy",
+     "ko": "점령하다",
+     "en": "Occupy the town."
+    },
+    {
+     "type": "반의어",
+     "word": "defend",
+     "ko": "방어하다",
+     "en": "Defend the city."
+    },
+    {
+     "type": "파생어",
+     "word": "invasion",
+     "ko": "침략, 침해",
+     "en": "An invasion of privacy."
+    },
+    {
+     "type": "파생어",
+     "word": "invader",
+     "ko": "침략자",
+     "en": "Foreign invaders."
+    },
+    {
+     "type": "연관어",
+     "word": "army",
+     "ko": "군대",
+     "en": "A strong army."
+    }
+   ]
+  },
+  "168": {
+   "word": "assemble",
+   "overview": [
+    "assemble은 '(부품을) 조립하다'라는 뜻의 동사입니다.",
+    "assemble furniture(가구를 조립하다)처럼 씁니다.",
+    "'(사람들이) 모이다, 모으다'라는 뜻으로도 자주 씁니다.",
+    "명사 assembly(조립, 집회, 의회)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "put together",
+     "en": "Put the pieces together.",
+     "ko": "조각들을 맞추다."
+    },
+    {
+     "word": "gather",
+     "en": "Gather in the hall.",
+     "ko": "강당에 모이다."
+    }
+   ],
+   "etymology": [
+    "assemble은 옛 프랑스어 assembler(한데 모으다)에서 온 단어입니다.",
+    "라틴어 ad(~쪽으로)와 simul(함께)이 합쳐진 말로, similar(비슷한), simultaneous(동시의)와 뿌리가 이어집니다.",
+    "'흩어진 것을 한데 모으다'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람을 한곳에 모으는 것, 부품을 하나로 모아 조립하는 것을 가리킵니다.",
+    "assemble의 핵심 이미지는 '흩어진 조각들을 한데 모아 완성하는 것 🧩'입니다."
+   ],
+   "meanings": [
+    "(기계 등을) 조립하다",
+    "모이다, 모으다"
+   ],
+   "examples": [
+    {
+     "en": "It took two hours to assemble the bookshelf.",
+     "ko": "책장을 조립하는 데 두 시간이 걸렸어요."
+    },
+    {
+     "en": "Students assembled in the gym.",
+     "ko": "학생들이 체육관에 모였어요."
+    },
+    {
+     "en": "The factory assembles cars.",
+     "ko": "그 공장은 자동차를 조립해요."
+    },
+    {
+     "en": "She assembled a team of experts.",
+     "ko": "그녀는 전문가 팀을 꾸렸어요."
+    },
+    {
+     "en": "Follow the instructions to assemble the toy.",
+     "ko": "설명서를 따라 장난감을 조립하세요."
+    },
+    {
+     "en": "A crowd assembled outside the building.",
+     "ko": "건물 밖에 군중이 모였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "build",
+     "ko": "만들다",
+     "en": "Build a model."
+    },
+    {
+     "type": "유의어",
+     "word": "gather",
+     "ko": "모이다",
+     "en": "Gather together."
+    },
+    {
+     "type": "반의어",
+     "word": "disassemble",
+     "ko": "분해하다",
+     "en": "Disassemble the machine."
+    },
+    {
+     "type": "파생어",
+     "word": "assembly",
+     "ko": "조립, 집회",
+     "en": "A school assembly."
+    },
+    {
+     "type": "연관어",
+     "word": "parts",
+     "ko": "부품",
+     "en": "Spare parts."
+    },
+    {
+     "type": "연관어",
+     "word": "instructions",
+     "ko": "설명서",
+     "en": "Read the instructions."
+    }
+   ]
+  },
+  "114": {
+   "word": "analyze",
+   "overview": [
+    "analyze는 '분석하다'라는 뜻의 동사입니다.",
+    "analyze data(자료를 분석하다)처럼 씁니다.",
+    "무언가를 작은 부분으로 나누어 자세히 살펴보는 것을 뜻합니다.",
+    "명사 analysis(분석), analyst(분석가)도 자주 씁니다. 영국식 철자는 analyse입니다."
+   ],
+   "easy": [
+    {
+     "word": "examine",
+     "en": "Examine the results.",
+     "ko": "결과를 살펴보다."
+    },
+    {
+     "word": "study",
+     "en": "Study the problem.",
+     "ko": "문제를 연구하다."
+    }
+   ],
+   "etymology": [
+    "analyze는 그리스어 analyein(풀어 헤치다)에서 온 단어입니다.",
+    "ana(위로, 완전히)와 lyein(풀다)이 합쳐진 말입니다.",
+    "'얽힌 것을 풀어 하나하나 나누다'라는 뜻에서 시작되었습니다.",
+    "복잡한 것을 작은 부분으로 나누어 원리를 알아내는 것을 가리키게 되었습니다.",
+    "analyze의 핵심 이미지는 '복잡한 것을 조각조각 풀어 들여다보는 것 🔬'입니다."
+   ],
+   "meanings": [
+    "분석하다"
+   ],
+   "examples": [
+    {
+     "en": "Scientists analyzed the water samples.",
+     "ko": "과학자들은 물 샘플을 분석했어요."
+    },
+    {
+     "en": "Let's analyze why we lost the game.",
+     "ko": "우리가 왜 경기에서 졌는지 분석해 봐요."
+    },
+    {
+     "en": "The computer analyzes thousands of photos.",
+     "ko": "그 컴퓨터는 수천 장의 사진을 분석해요."
+    },
+    {
+     "en": "We analyzed the poem in English class.",
+     "ko": "우리는 영어 시간에 그 시를 분석했어요."
+    },
+    {
+     "en": "The coach analyzed the video of the match.",
+     "ko": "코치는 경기 영상을 분석했어요."
+    },
+    {
+     "en": "The results of the analysis surprised everyone.",
+     "ko": "분석 결과는 모두를 놀라게 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "examine",
+     "ko": "조사하다",
+     "en": "Examine the evidence."
+    },
+    {
+     "type": "유의어",
+     "word": "study",
+     "ko": "연구하다",
+     "en": "Study the data."
+    },
+    {
+     "type": "파생어",
+     "word": "analysis",
+     "ko": "분석",
+     "en": "A careful analysis."
+    },
+    {
+     "type": "파생어",
+     "word": "analyst",
+     "ko": "분석가",
+     "en": "A data analyst."
+    },
+    {
+     "type": "연관어",
+     "word": "data",
+     "ko": "자료",
+     "en": "Collect data."
+    },
+    {
+     "type": "연관어",
+     "word": "research",
+     "ko": "연구",
+     "en": "Do research."
+    }
+   ]
+  },
+  "1292": {
+   "word": "hazard",
+   "overview": [
+    "hazard는 '위험, 위험 요소'라는 뜻의 명사입니다.",
+    "a fire hazard(화재 위험 요소)처럼 씁니다.",
+    "동사로는 '(추측을) 과감히 해 보다'라는 뜻으로 씁니다. (hazard a guess, 조심스럽게 추측해 보다)",
+    "형용사 hazardous(위험한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "danger",
+     "en": "A real danger.",
+     "ko": "실제 위험."
+    },
+    {
+     "word": "risk",
+     "en": "A health risk.",
+     "ko": "건강상의 위험."
+    }
+   ],
+   "etymology": [
+    "hazard는 아랍어 al-zahr(주사위)에서 프랑스어를 거쳐 온 단어로 봅니다.",
+    "원래는 주사위를 던져 운을 거는 놀이를 뜻했습니다.",
+    "결과를 알 수 없는 운에 맡기는 데서 '위험, 위험한 일'이라는 뜻이 되었습니다.",
+    "지금은 사람에게 해를 줄 수 있는 모든 위험 요소를 가리킵니다.",
+    "hazard의 핵심 이미지는 '언제 터질지 모르는 노란 경고 표지 ⚠️'입니다."
+   ],
+   "meanings": [
+    "위험, 위험 요소",
+    "과감히 추측하다"
+   ],
+   "examples": [
+    {
+     "en": "Wet floors are a safety hazard.",
+     "ko": "젖은 바닥은 안전사고 위험 요소예요."
+    },
+    {
+     "en": "Smoking is a serious health hazard.",
+     "ko": "흡연은 심각한 건강 위험 요소예요."
+    },
+    {
+     "en": "Those old wires are a fire hazard.",
+     "ko": "저 낡은 전선들은 화재 위험이 있어요."
+    },
+    {
+     "en": "Can I hazard a guess?",
+     "ko": "제가 한번 추측해 봐도 될까요?"
+    },
+    {
+     "en": "Hazardous waste must be handled carefully.",
+     "ko": "유해 폐기물은 조심스럽게 다뤄야 해요."
+    },
+    {
+     "en": "Ice on the road is a hazard for drivers.",
+     "ko": "도로 위 얼음은 운전자에게 위험해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In danger."
+    },
+    {
+     "type": "유의어",
+     "word": "risk",
+     "ko": "위험",
+     "en": "Take a risk."
+    },
+    {
+     "type": "반의어",
+     "word": "safety",
+     "ko": "안전",
+     "en": "Safety first."
+    },
+    {
+     "type": "파생어",
+     "word": "hazardous",
+     "ko": "위험한",
+     "en": "Hazardous chemicals."
+    },
+    {
+     "type": "연관어",
+     "word": "warning",
+     "ko": "경고",
+     "en": "A warning sign."
+    },
+    {
+     "type": "연관어",
+     "word": "accident",
+     "ko": "사고",
+     "en": "A car accident."
+    }
+   ]
+  },
+  "2023": {
+   "word": "preach",
+   "overview": [
+    "preach는 '설교하다'라는 뜻의 동사입니다.",
+    "preach to the people(사람들에게 설교하다)처럼 씁니다.",
+    "'(생각·가치를) 강력히 주장하다, 전하다'라는 뜻으로도 씁니다.",
+    "'(듣기 싫게) 훈계하다, 잔소리하다'라는 부정적 뜻도 있고, preacher(설교자)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "teach",
+     "en": "Teach good values.",
+     "ko": "좋은 가치를 가르치다."
+    },
+    {
+     "word": "lecture",
+     "en": "Don't lecture me.",
+     "ko": "나한테 설교하지 마."
+    }
+   ],
+   "etymology": [
+    "preach는 라틴어 praedicare(공개적으로 알리다)에서 온 단어입니다.",
+    "prae(앞에서)와 dicare(선언하다)가 합쳐진 말로, predict(예측하다)와 뿌리가 통합니다.",
+    "'사람들 앞에서 크게 알리다'라는 뜻에서 시작되었습니다.",
+    "종교적 가르침을 전하는 '설교', 그리고 남에게 옳은 것을 강하게 말하는 훈계로 뜻이 넓어졌습니다.",
+    "preach의 핵심 이미지는 '사람들 앞에 서서 옳다고 믿는 것을 외치는 것 📢'입니다."
+   ],
+   "meanings": [
+    "설교하다",
+    "강하게 주장하다, 훈계하다"
+   ],
+   "examples": [
+    {
+     "en": "The priest preached about kindness.",
+     "ko": "신부님은 친절에 대해 설교하셨어요."
+    },
+    {
+     "en": "Don't preach to me about studying!",
+     "ko": "공부하라고 나한테 설교하지 마!"
+    },
+    {
+     "en": "She preaches the importance of exercise.",
+     "ko": "그녀는 운동의 중요성을 강조해요."
+    },
+    {
+     "en": "Practice what you preach.",
+     "ko": "남에게 말하는 대로 스스로 실천하세요."
+    },
+    {
+     "en": "He preached peace and love.",
+     "ko": "그는 평화와 사랑을 전했어요."
+    },
+    {
+     "en": "The pastor preaches every Sunday.",
+     "ko": "그 목사님은 매주 일요일에 설교하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "lecture",
+     "ko": "훈계하다",
+     "en": "Lecture the kids."
+    },
+    {
+     "type": "파생어",
+     "word": "preacher",
+     "ko": "설교자",
+     "en": "A famous preacher."
+    },
+    {
+     "type": "연관어",
+     "word": "sermon",
+     "ko": "설교",
+     "en": "A long sermon."
+    },
+    {
+     "type": "연관어",
+     "word": "teach",
+     "ko": "가르치다",
+     "en": "Teach English."
+    },
+    {
+     "type": "연관어",
+     "word": "church",
+     "ko": "교회",
+     "en": "Go to church."
+    },
+    {
+     "type": "연관어",
+     "word": "advise",
+     "ko": "충고하다",
+     "en": "Advise a friend."
+    }
+   ]
+  },
+  "57": {
+   "word": "advocate",
+   "overview": [
+    "advocate는 동사로 '옹호하다, 지지하다, 주장하다'라는 뜻입니다. (발음: AD-vo-kate)",
+    "advocate for change(변화를 주장하다)처럼 씁니다.",
+    "명사로는 '옹호자, 지지자'라는 뜻입니다. (발음: AD-vo-kit)",
+    "'(법정의) 변호사'라는 뜻도 있고, 명사 advocacy(옹호)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "support",
+     "en": "Support the idea.",
+     "ko": "그 생각을 지지하다."
+    },
+    {
+     "word": "supporter",
+     "en": "A strong supporter.",
+     "ko": "강력한 지지자."
+    }
+   ],
+   "etymology": [
+    "advocate는 라틴어 advocare(불러오다, 도움을 청하다)에서 온 단어입니다.",
+    "ad(~쪽으로)와 vocare(부르다)가 합쳐진 말로, voice(목소리), provoke(도발하다)와 같은 가족입니다.",
+    "원래는 법정에서 도와 달라고 '불러온 사람', 즉 변호인을 뜻했습니다.",
+    "누군가나 어떤 생각을 위해 목소리를 내어 지지하는 것을 가리키게 되었습니다.",
+    "advocate의 핵심 이미지는 '누군가를 위해 대신 목소리를 높이는 사람 🗣️'입니다."
+   ],
+   "meanings": [
+    "편을 들다, 옹호하다, 주장하다",
+    "지지하다",
+    "옹호자, 변호사"
+   ],
+   "examples": [
+    {
+     "en": "She advocates for children's rights.",
+     "ko": "그녀는 아동의 권리를 옹호해요."
+    },
+    {
+     "en": "He is a strong advocate of healthy eating.",
+     "ko": "그는 건강한 식습관을 적극 지지하는 사람이에요."
+    },
+    {
+     "en": "Many doctors advocate regular exercise.",
+     "ko": "많은 의사들이 규칙적인 운동을 권장해요."
+    },
+    {
+     "en": "The group advocates for animal protection.",
+     "ko": "그 단체는 동물 보호를 주장해요."
+    },
+    {
+     "en": "She became an advocate for the environment.",
+     "ko": "그녀는 환경 보호 운동가가 되었어요."
+    },
+    {
+     "en": "They advocate using public transportation.",
+     "ko": "그들은 대중교통 이용을 주장해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "support",
+     "ko": "지지하다",
+     "en": "Support a team."
+    },
+    {
+     "type": "유의어",
+     "word": "champion",
+     "ko": "옹호자",
+     "en": "A champion of peace."
+    },
+    {
+     "type": "반의어",
+     "word": "oppose",
+     "ko": "반대하다",
+     "en": "Oppose the plan."
+    },
+    {
+     "type": "파생어",
+     "word": "advocacy",
+     "ko": "옹호",
+     "en": "Human rights advocacy."
+    },
+    {
+     "type": "연관어",
+     "word": "promote",
+     "ko": "장려하다",
+     "en": "Promote health."
+    },
+    {
+     "type": "연관어",
+     "word": "lawyer",
+     "ko": "변호사",
+     "en": "Hire a lawyer."
+    }
+   ]
+  },
+  "2790": {
+   "word": "trim",
+   "overview": [
+    "trim은 '(깎아) 다듬다, 손질하다'라는 뜻의 동사입니다.",
+    "trim the hedge(울타리 나무를 다듬다)처럼 씁니다.",
+    "'(비용·양을) 줄이다'라는 뜻으로도 씁니다. (trim the budget)",
+    "명사로는 '다듬기, 장식 테두리', 형용사로는 '날씬한, 말쑥한'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "cut",
+     "en": "Cut your hair.",
+     "ko": "머리를 자르다."
+    },
+    {
+     "word": "neat",
+     "en": "A neat garden.",
+     "ko": "잘 정돈된 정원."
+    }
+   ],
+   "etymology": [
+    "trim은 고대 영어 trymian(정돈하다, 준비하다)에서 온 단어입니다.",
+    "'단단하고 깔끔하게 만들다'라는 뜻이었습니다.",
+    "삐져나온 부분을 잘라 내어 깔끔하게 다듬는다는 뜻으로 굳어졌습니다.",
+    "머리, 나무, 예산 등에서 불필요한 부분을 조금 잘라 내는 것을 가리킵니다.",
+    "trim의 핵심 이미지는 '삐져나온 부분을 싹둑 잘라 깔끔하게 다듬는 것 ✂️'입니다."
+   ],
+   "meanings": [
+    "(깎아) 다듬다, 정돈하다, 손질하다",
+    "줄이다",
+    "날씬한, 말쑥한"
+   ],
+   "examples": [
+    {
+     "en": "I just want to trim my hair a little.",
+     "ko": "머리를 조금만 다듬고 싶어요."
+    },
+    {
+     "en": "Dad trimmed the bushes in the yard.",
+     "ko": "아빠가 마당의 덤불을 다듬으셨어요."
+    },
+    {
+     "en": "Trim the fat off the meat.",
+     "ko": "고기에서 비계를 떼어 내세요."
+    },
+    {
+     "en": "The company trimmed its budget.",
+     "ko": "그 회사는 예산을 줄였어요."
+    },
+    {
+     "en": "The dress has lace trim around the collar.",
+     "ko": "그 드레스는 깃 둘레에 레이스 장식이 있어요."
+    },
+    {
+     "en": "He stays trim by running every day.",
+     "ko": "그는 매일 달리기를 해서 날씬하게 유지해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cut",
+     "ko": "자르다",
+     "en": "Cut the paper."
+    },
+    {
+     "type": "유의어",
+     "word": "clip",
+     "ko": "깎다",
+     "en": "Clip your nails."
+    },
+    {
+     "type": "연관어",
+     "word": "neat",
+     "ko": "깔끔한",
+     "en": "A neat room."
+    },
+    {
+     "type": "연관어",
+     "word": "reduce",
+     "ko": "줄이다",
+     "en": "Reduce costs."
+    },
+    {
+     "type": "연관어",
+     "word": "scissors",
+     "ko": "가위",
+     "en": "Sharp scissors."
+    },
+    {
+     "type": "연관어",
+     "word": "slim",
+     "ko": "날씬한",
+     "en": "A slim figure."
+    }
+   ]
+  },
+  "30": {
+   "word": "ache",
+   "overview": [
+    "ache는 '(계속) 아프다, 쑤시다'라는 뜻의 동사입니다.",
+    "My legs ache.(다리가 쑤셔요)처럼 씁니다.",
+    "명사로는 '(계속되는) 아픔, 통증'이라는 뜻입니다.",
+    "headache(두통), toothache(치통), stomachache(복통)처럼 합쳐서 자주 씁니다. 발음은 [에이크]입니다."
+   ],
+   "easy": [
+    {
+     "word": "hurt",
+     "en": "My back hurts.",
+     "ko": "허리가 아파요."
+    },
+    {
+     "word": "pain",
+     "en": "A dull pain.",
+     "ko": "둔한 통증."
+    }
+   ],
+   "etymology": [
+    "ache는 고대 영어 acan(아프다)에서 온 단어입니다.",
+    "원래 동사는 ake, 명사는 ache로 철자가 달랐는데, 나중에 ache로 통일되었습니다.",
+    "'날카롭진 않지만 계속 쑤시는 아픔'이라는 뜻이 그대로 이어져 왔습니다.",
+    "몸의 통증뿐 아니라 마음이 아린 것, 무언가를 몹시 그리워하는 것에도 씁니다.",
+    "ache의 핵심 이미지는 '오래도록 은근히 쑤시는 아픔 🤕'입니다."
+   ],
+   "meanings": [
+    "아프다, 쑤시다",
+    "아픔, 통증"
+   ],
+   "examples": [
+    {
+     "en": "My whole body aches after the hike.",
+     "ko": "등산 후에 온몸이 쑤셔요."
+    },
+    {
+     "en": "I have a terrible headache.",
+     "ko": "저는 두통이 심해요."
+    },
+    {
+     "en": "He went to the dentist because of a toothache.",
+     "ko": "그는 치통 때문에 치과에 갔어요."
+    },
+    {
+     "en": "Her heart ached when she said goodbye.",
+     "ko": "작별 인사를 할 때 그녀의 마음이 아렸어요."
+    },
+    {
+     "en": "My feet ache from standing all day.",
+     "ko": "하루 종일 서 있었더니 발이 아파요."
+    },
+    {
+     "en": "The ache in my back is getting better.",
+     "ko": "허리 통증이 나아지고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "hurt",
+     "ko": "아프다",
+     "en": "It hurts."
+    },
+    {
+     "type": "유의어",
+     "word": "pain",
+     "ko": "통증",
+     "en": "Sharp pain."
+    },
+    {
+     "type": "파생어",
+     "word": "headache",
+     "ko": "두통",
+     "en": "A bad headache."
+    },
+    {
+     "type": "파생어",
+     "word": "toothache",
+     "ko": "치통",
+     "en": "A painful toothache."
+    },
+    {
+     "type": "연관어",
+     "word": "sore",
+     "ko": "쑤시는",
+     "en": "Sore muscles."
+    },
+    {
+     "type": "연관어",
+     "word": "medicine",
+     "ko": "약",
+     "en": "Take medicine."
+    }
+   ]
+  },
+  "917": {
+   "word": "emerge",
+   "overview": [
+    "emerge는 '(물속·어둠 등에서) 나오다, 나타나다'라는 뜻의 동사입니다.",
+    "emerge from the water(물 밖으로 나오다)처럼 씁니다.",
+    "'(사실이) 드러나다, 알려지다'라는 뜻으로도 씁니다. (It emerged that ~)",
+    "'(새로) 생겨나다, 부상하다'라는 뜻도 있고, 명사 emergence(출현)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "appear",
+     "en": "Appear suddenly.",
+     "ko": "갑자기 나타나다."
+    },
+    {
+     "word": "come out",
+     "en": "Come out of the cave.",
+     "ko": "동굴에서 나오다."
+    }
+   ],
+   "etymology": [
+    "emerge는 라틴어 emergere(물 위로 떠오르다)에서 온 단어입니다.",
+    "e(밖으로)와 mergere(잠기다)가 합쳐진 말로, merge(합치다)와 뿌리가 이어집니다.",
+    "'물속에 잠겨 있다가 밖으로 떠오르다'라는 뜻에서 시작되었습니다.",
+    "숨어 있던 것이 모습을 드러내거나 새로운 것이 생겨나는 것을 가리키게 되었습니다.",
+    "emerge의 핵심 이미지는 '물속에서 스르르 떠올라 모습을 드러내는 것 🐢'입니다."
+   ],
+   "meanings": [
+    "(물속·어둠 등에서) 나오다, 나타나다",
+    "(사실이) 드러나다",
+    "생겨나다, 부상하다"
+   ],
+   "examples": [
+    {
+     "en": "The sun emerged from behind the clouds.",
+     "ko": "해가 구름 뒤에서 나타났어요."
+    },
+    {
+     "en": "A diver emerged from the water.",
+     "ko": "잠수부가 물 밖으로 나왔어요."
+    },
+    {
+     "en": "It emerged that he had lied.",
+     "ko": "그가 거짓말을 했다는 사실이 드러났어요."
+    },
+    {
+     "en": "New problems emerged during the project.",
+     "ko": "프로젝트 중에 새로운 문제들이 생겼어요."
+    },
+    {
+     "en": "She emerged as the leader of the group.",
+     "ko": "그녀는 그 모임의 리더로 떠올랐어요."
+    },
+    {
+     "en": "Butterflies emerge from their cocoons.",
+     "ko": "나비는 고치에서 나와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "appear",
+     "ko": "나타나다",
+     "en": "Appear on stage."
+    },
+    {
+     "type": "반의어",
+     "word": "disappear",
+     "ko": "사라지다",
+     "en": "Disappear quickly."
+    },
+    {
+     "type": "파생어",
+     "word": "emergence",
+     "ko": "출현",
+     "en": "The emergence of AI."
+    },
+    {
+     "type": "파생어",
+     "word": "emergency",
+     "ko": "비상사태",
+     "en": "In an emergency."
+    },
+    {
+     "type": "연관어",
+     "word": "arise",
+     "ko": "생기다",
+     "en": "Problems arise."
+    },
+    {
+     "type": "연관어",
+     "word": "reveal",
+     "ko": "드러내다",
+     "en": "Reveal a secret."
+    }
+   ]
+  },
+  "1691": {
+   "word": "mineral",
+   "overview": [
+    "mineral은 '광물'이라는 뜻의 명사입니다.",
+    "rich in minerals(광물이 풍부한)처럼 씁니다.",
+    "영양에서는 칼슘·철분 같은 '무기질, 미네랄'을 뜻합니다.",
+    "형용사로는 '광물의, 광물성의'라는 뜻입니다. (mineral water, 생수)"
+   ],
+   "easy": [
+    {
+     "word": "rock",
+     "en": "A shiny rock.",
+     "ko": "반짝이는 돌."
+    },
+    {
+     "word": "nutrient",
+     "en": "An important nutrient.",
+     "ko": "중요한 영양소."
+    }
+   ],
+   "etymology": [
+    "mineral은 중세 라틴어 minerale(광산에서 캐낸 것)에서 온 단어입니다.",
+    "minera(광산)에서 나온 말로, mine(광산)과 같은 가족입니다.",
+    "'땅속 광산에서 캐내는 물질'이라는 뜻에서 시작되었습니다.",
+    "금, 철 같은 광물, 그리고 몸에 필요한 무기질 영양소를 가리키게 되었습니다.",
+    "mineral의 핵심 이미지는 '땅속 깊이에서 캐낸 반짝이는 돌과 영양 💎'입니다."
+   ],
+   "meanings": [
+    "광물",
+    "무기물, 미네랄",
+    "광물성의"
+   ],
+   "examples": [
+    {
+     "en": "Gold and silver are valuable minerals.",
+     "ko": "금과 은은 귀한 광물이에요."
+    },
+    {
+     "en": "Vegetables are full of vitamins and minerals.",
+     "ko": "채소에는 비타민과 미네랄이 가득해요."
+    },
+    {
+     "en": "Calcium is a mineral that makes bones strong.",
+     "ko": "칼슘은 뼈를 튼튼하게 하는 무기질이에요."
+    },
+    {
+     "en": "I'll have a bottle of mineral water.",
+     "ko": "생수 한 병 주세요."
+    },
+    {
+     "en": "The country is rich in mineral resources.",
+     "ko": "그 나라는 광물 자원이 풍부해요."
+    },
+    {
+     "en": "We saw many colorful minerals at the museum.",
+     "ko": "우리는 박물관에서 색색의 광물을 많이 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "rock",
+     "ko": "암석",
+     "en": "Hard rock."
+    },
+    {
+     "type": "연관어",
+     "word": "vitamin",
+     "ko": "비타민",
+     "en": "Vitamin D."
+    },
+    {
+     "type": "연관어",
+     "word": "mine",
+     "ko": "광산",
+     "en": "A coal mine."
+    },
+    {
+     "type": "연관어",
+     "word": "iron",
+     "ko": "철",
+     "en": "Iron and steel."
+    },
+    {
+     "type": "연관어",
+     "word": "crystal",
+     "ko": "수정",
+     "en": "A clear crystal."
+    },
+    {
+     "type": "연관어",
+     "word": "nutrient",
+     "ko": "영양소",
+     "en": "Plant nutrients."
+    }
+   ]
+  },
+  "1902": {
+   "word": "particle",
+   "overview": [
+    "particle은 '(아주 작은) 입자, 조각'이라는 뜻의 명사입니다.",
+    "dust particles(먼지 입자)처럼 씁니다.",
+    "'극소량, 티끌만큼'이라는 뜻으로도 씁니다. (not a particle of truth)",
+    "물리학에서는 '소립자', 문법에서는 give up의 up 같은 '불변화사'를 가리킵니다."
+   ],
+   "easy": [
+    {
+     "word": "tiny piece",
+     "en": "A tiny piece.",
+     "ko": "아주 작은 조각."
+    },
+    {
+     "word": "speck",
+     "en": "A speck of dust.",
+     "ko": "먼지 한 톨."
+    }
+   ],
+   "etymology": [
+    "particle은 라틴어 particula(작은 부분)에서 온 단어입니다.",
+    "pars(부분)에 '작은'을 뜻하는 -cula가 붙은 말로, part(부분)와 같은 가족입니다.",
+    "'아주 작은 부분'이라는 뜻이 그대로 이어져 왔습니다.",
+    "먼지 알갱이부터 원자 속 작은 입자까지, 매우 작은 조각을 가리킵니다.",
+    "particle의 핵심 이미지는 '눈에 겨우 보일 만큼 작은 알갱이 ✨'입니다."
+   ],
+   "meanings": [
+    "입자, 소량",
+    "(물리) 소립자",
+    "(문법) 불변화사"
+   ],
+   "examples": [
+    {
+     "en": "Dust particles floated in the sunlight.",
+     "ko": "먼지 입자들이 햇빛 속에 떠다녔어요."
+    },
+    {
+     "en": "Atoms are made of even smaller particles.",
+     "ko": "원자는 더 작은 입자들로 이루어져 있어요."
+    },
+    {
+     "en": "Fine particles in the air can harm your lungs.",
+     "ko": "공기 속 미세 입자는 폐에 해로울 수 있어요."
+    },
+    {
+     "en": "There wasn't a particle of truth in his story.",
+     "ko": "그의 이야기에는 진실이 티끌만큼도 없었어요."
+    },
+    {
+     "en": "The filter catches tiny particles.",
+     "ko": "그 필터는 아주 작은 입자들을 걸러 내요."
+    },
+    {
+     "en": "In \"look up,\" \"up\" is a particle.",
+     "ko": "\"look up\"에서 \"up\"은 불변화사예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "speck",
+     "ko": "작은 알갱이",
+     "en": "A speck of dirt."
+    },
+    {
+     "type": "유의어",
+     "word": "bit",
+     "ko": "조금",
+     "en": "A bit of salt."
+    },
+    {
+     "type": "연관어",
+     "word": "atom",
+     "ko": "원자",
+     "en": "Split the atom."
+    },
+    {
+     "type": "연관어",
+     "word": "dust",
+     "ko": "먼지",
+     "en": "Fine dust."
+    },
+    {
+     "type": "연관어",
+     "word": "physics",
+     "ko": "물리학",
+     "en": "Study physics."
+    },
+    {
+     "type": "연관어",
+     "word": "part",
+     "ko": "부분",
+     "en": "A small part."
+    }
+   ]
+  },
+  "1023": {
+   "word": "faculty",
+   "overview": [
+    "faculty는 '(타고난) 능력, 기능'이라는 뜻의 명사입니다.",
+    "the faculty of speech(말하는 능력)처럼 씁니다.",
+    "'(대학의) 학부, (학교의) 교수진·교직원 전체'라는 뜻으로도 자주 씁니다.",
+    "복수형 faculties는 '(정신·신체의) 기능'이라는 뜻으로 씁니다. (in full possession of her faculties)"
+   ],
+   "easy": [
+    {
+     "word": "ability",
+     "en": "A natural ability.",
+     "ko": "타고난 능력."
+    },
+    {
+     "word": "teaching staff",
+     "en": "The teaching staff.",
+     "ko": "교직원."
+    }
+   ],
+   "etymology": [
+    "faculty는 라틴어 facultas(할 수 있는 힘)에서 온 단어입니다.",
+    "facilis(하기 쉬운)에서 나온 말로, facility(시설), easy와 뜻이 통하는 가족입니다.",
+    "'무언가를 해낼 수 있는 힘, 능력'이라는 뜻에서 시작되었습니다.",
+    "중세 대학에서 각 학문 분야를 가르치는 능력을 가진 집단, 즉 '학부, 교수진'이라는 뜻이 생겼습니다.",
+    "faculty의 핵심 이미지는 '무언가를 해낼 수 있는 힘, 그리고 그 힘을 가진 교수진 🎓'입니다."
+   ],
+   "meanings": [
+    "능력, 재능",
+    "(대학의) 학부, 교수진"
+   ],
+   "examples": [
+    {
+     "en": "She teaches in the Faculty of Science.",
+     "ko": "그녀는 이과 대학에서 가르쳐요."
+    },
+    {
+     "en": "The faculty met to discuss the new schedule.",
+     "ko": "교수진이 새 일정을 논의하려고 모였어요."
+    },
+    {
+     "en": "Humans have the faculty of language.",
+     "ko": "인간에게는 언어 능력이 있어요."
+    },
+    {
+     "en": "Even at 95, he had all his faculties.",
+     "ko": "그는 아흔다섯 살에도 정신이 온전했어요."
+    },
+    {
+     "en": "The school has an excellent faculty.",
+     "ko": "그 학교에는 훌륭한 교사진이 있어요."
+    },
+    {
+     "en": "She has a great faculty for remembering names.",
+     "ko": "그녀는 이름을 기억하는 재주가 뛰어나요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ability",
+     "ko": "능력",
+     "en": "A special ability."
+    },
+    {
+     "type": "유의어",
+     "word": "staff",
+     "ko": "직원",
+     "en": "School staff."
+    },
+    {
+     "type": "연관어",
+     "word": "professor",
+     "ko": "교수",
+     "en": "A math professor."
+    },
+    {
+     "type": "연관어",
+     "word": "university",
+     "ko": "대학교",
+     "en": "A big university."
+    },
+    {
+     "type": "연관어",
+     "word": "department",
+     "ko": "학과",
+     "en": "The English department."
+    },
+    {
+     "type": "연관어",
+     "word": "talent",
+     "ko": "재능",
+     "en": "A natural talent."
+    }
+   ]
   }
  }
 }
