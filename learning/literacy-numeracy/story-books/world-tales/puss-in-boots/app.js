@@ -773,8 +773,7 @@ const EN = {
                     right: [
                         "\"A mouse? You think a mouse is difficult? Watch closely!\"",
                         "His body shrank and shrank until he was a little mouse, and the mouse went scurrying across the floorboards.",
-                        "Quick as lightning, the cat pounced on the mouse and swallowed it whole.",
-                        "And that was the end of the magician who could turn into anything."
+                        "Quick as lightning, the cat pounced and swallowed it whole. That was the end of the magician."
                     ]
                 },
                 {

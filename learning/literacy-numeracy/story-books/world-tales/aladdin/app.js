@@ -615,10 +615,10 @@ const EN = {
                         "From the cave floor the mouth of the cave looked far above him. \"Uncle, give me your hand!\""
                     ],
                     right: [
-                        "\"Hand up the lamp first!\" said the man, holding out his hand.",
+                        "\"Hand up the lamp first!\" said the man.",
                         "\"Pull me out first,\" said Aladdin. \"Then I'll give it to you.\"",
                         "The man's face twisted. He wanted the lamp, not Aladdin.",
-                        "\"You wretched boy!\" He shoved the stone lid back over the hole, and it slammed shut. Aladdin was sealed in."
+                        "\"You wretched boy!\" He pushed the lid back, and it slammed shut. Aladdin was sealed in."
                     ]
                 }
             ]

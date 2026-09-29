@@ -729,7 +729,7 @@ const EN = {
                     right: [
                         "\"Wait for me! Wait!\" he called.",
                         "But nobody heard him. Every one of them was listening to the pipe.",
-                        "The line went straight out of the town. Now the grown-ups tried to shout, but no sound came. Their feet would not move, as if they were stuck to the ground.",
+                        "The line went straight out of the town. The grown-ups tried to shout, but no sound came, and their feet would not move.",
                         "Just then the church bell rang, and at last they could move again."
                     ]
                 }

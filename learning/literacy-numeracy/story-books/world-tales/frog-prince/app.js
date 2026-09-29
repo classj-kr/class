@@ -563,12 +563,12 @@ const EN = {
                     art: '01-ball.webp',
                     emoji: '🟡',
                     left: [
-                        "The princess tossed her golden ball up into the air, and it flashed in the sunlight.",
+                        "The princess tossed her golden ball high into the air.",
                         "\"One, two, three!\"",
-                        "She was the king's youngest daughter, and people said even the sun paused a moment when he saw her face.",
+                        "She was the king's youngest daughter, so lovely that even the sun paused to look at her.",
                         "Her dearest thing was a golden ball.",
                         "In the sunlight it shone until it dazzled you.",
-                        "She even kept it beside her pillow when she slept."
+                        "She even slept with it by her pillow."
                     ],
                     right: [
                         "Behind the palace lay a deep wood,",
@@ -970,7 +970,7 @@ const EN = {
         '01-ball.webp': [
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'It shone until it dazzled you.' },
             { word: 'dearest', meaning: '가장 아끼는', sentence: 'Her dearest thing was a golden ball.' },
-            { word: 'pause', meaning: '걸음을 멈추다', sentence: 'Even the sun paused a moment.' },
+            { word: 'pause', meaning: '잠깐 멈추다', sentence: 'Even the sun paused to look at her.' },
             { word: 'lime tree', meaning: '보리수', sentence: 'The princess played under a lime tree by the pond.' }
         ],
         '01-ball-2.webp': [

@@ -573,11 +573,10 @@ const EN = {
                     art: '01-home.webp',
                     emoji: '🏡',
                     left: [
-                        "Steam rose from the copper pot over the fire, and the kitchen smelled of boiling potatoes.",
+                        "In a small French village lived a curly-haired boy called Rémi.",
+                        "A copper pot hung over the hearth, and the kitchen smelled of boiling potatoes.",
                         "\"Rémi, wash your hands and sit down.\"",
-                        "Mother Barberin called him with the ladle in her hand, and a boy with curly hair and large eyes came running in. Rémi had always called her Mother. She had brought him up, and she was always gentle with Rémi.",
-                        "The house was very poor, but the kitchen was always warm.",
-                        "A copper pot hung over the hearth, smelling of potatoes."
+                        "Rémi came running in. Mother Barberin had brought him up, and she was always gentle with Rémi. He called her Mother."
                     ],
                     right: [
                         "She always pushed her own share across to him. \"Have another one tonight.\"",

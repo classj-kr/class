@@ -572,7 +572,6 @@ const EN = {
                         "\"Ivan! Still asleep?\"",
                         "His brothers shook the youngest awake, and Ivan sat up with his hair all in a tangle.",
                         "It was a farmer's house in a Russian village, and the two elder sons were lazy and loud.",
-                        "The youngest, Ivan, went about with his hair all in a tangle.",
                         "The family had one field of wheat.",
                         "That wheat was what they all lived on."
                     ],
