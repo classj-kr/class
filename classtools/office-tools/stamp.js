@@ -219,7 +219,7 @@
     canvas.hidden = !photo;
     $('stamp-placeholder').hidden = Boolean(photo);
     $('stamp-placeholder').textContent = '도장 사진을 선택해 주세요.';
-    $('stamp-download').disabled = !photo;
+    $('stamp-download').disabled = $('stamp-to-pdf').disabled = !photo;
     $('stamp-rotate-left').disabled = !photo;
     $('stamp-rotate-right').disabled = !photo;
     if (!photo) { status(''); return; }
@@ -257,7 +257,7 @@
     canvas.hidden = !name || !ready;
     $('stamp-placeholder').hidden = Boolean(name && ready);
     $('stamp-placeholder').textContent = name ? fonts[settings.font].state === 'failed' ? '이 도장을 불러오지 못했습니다. 다른 도장을 선택해 주세요.' : '도장을 불러오는 중…' : '이름을 입력해 주세요.';
-    $('stamp-download').disabled = !name || !ready;
+    $('stamp-download').disabled = $('stamp-to-pdf').disabled = !name || !ready;
     drawStamp(canvas, name, settings);
     renderPresets();
     status('');
@@ -345,6 +345,15 @@
       document.body.append(link); link.click(); link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 60000);
     }, 'image/png');
+  });
+
+  // 만든 도장을 PDF 도구로 넘긴다. sessionStorage라 탭을 닫으면 남지 않는다.
+  $('stamp-to-pdf').addEventListener('click', () => {
+    if ($('stamp-to-pdf').disabled) return;
+    render();
+    try { sessionStorage.setItem('classj:pdf-stamp', canvas.toDataURL('image/png')); }
+    catch (_) { status('도장을 넘기지 못했습니다. 투명 PNG로 저장한 뒤 PDF 도구에서 선택해 주세요.'); return; }
+    window.location.href = '/classtools/pdf-tools/#stamp';
   });
 
   async function readJSON(url) {

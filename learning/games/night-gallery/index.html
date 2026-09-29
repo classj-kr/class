@@ -2,23 +2,70 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#152d29">
   <meta name="robots" content="noindex,nofollow">
   <title>밤의 미술관 · 카드 게임</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-title-restore2">
+  <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+  <script src="../../../assets/network/game-network.js?v=20260821"></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
   <script type="module" src="app.mjs"></script>
 </head>
 <body>
-  <div class="shell">
+  <section id="missingScreen" class="screen missing-screen hidden">
+    <div class="panel name-missing">
+      <h2>이름이 없습니다</h2>
+      <p>메인 화면에서 한글 이름을 먼저 입력한 뒤 다시 들어오세요.</p>
+      <button class="primary" type="button" onclick="location.href='../../../'">메인 화면으로</button>
+    </div>
+  </section>
+
+  <section id="lobbyScreen" class="screen hidden" data-multiplayer-lobby>
+    <div class="panel lobby-panel">
+      <h1>NIGHT GALLERY</h1>
+      <p class="sub">밤의 미술관 · 2~5명 · <span id="savedName">-</span></p>
+      <div class="mp-lobby-tabs">
+        <button id="hostTab" class="tab active" type="button">Create Room</button>
+        <button id="joinTab" class="tab" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
+      </div>
+      <div id="hostPane" class="mp-lobby-card">
+        <div class="mp-lobby-room-code" id="roomCode">----</div>
+        <div class="mp-lobby-status" id="hostStatus">방을 만드는 중입니다.</div>
+      </div>
+      <div id="joinPane" class="mp-lobby-card hidden">
+        <div class="mp-lobby-row">
+          <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="Room Code">
+          <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
+        </div>
+        <div class="mp-lobby-status" id="joinStatus"></div>
+      </div>
+      <div class="mp-lobby-card">
+        <div class="mp-lobby-status" id="lobbyGuide">참가 가능 인원: 2~5명</div>
+        <div class="mp-lobby-player-list" id="lobbyPlayers"></div>
+      </div>
+      <div class="mp-lobby-actions">
+        <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
+        <button id="rulesBtnLobby" class="quiet" type="button">Rules</button>
+        <button id="leaveBtnLobby" class="quiet" type="button">나가기</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="gameScreen" class="shell hidden">
     <header class="topbar">
-      <a class="brand" href="./" aria-label="밤의 미술관 처음 화면"><span class="brand-mark" aria-hidden="true">▧</span><span>밤의 미술관</span></a>
-      <nav aria-label="게임 메뉴"><span class="local-badge">로컬 플레이</span><button id="rules-button" data-open-rules class="quiet">게임 방법 <span aria-hidden="true">↗</span></button><button id="home-button" class="quiet" hidden>처음으로</button></nav>
+      <div class="brand" aria-label="밤의 미술관"><span class="brand-mark" aria-hidden="true">▧</span><span>밤의 미술관</span></div>
+      <nav aria-label="게임 메뉴">
+        <span id="roomBadge" class="local-badge">ROOM ----</span>
+        <button id="rulesBtnGame" data-open-rules class="quiet" type="button">Rules</button>
+        <button id="leaveBtnGame" class="quiet" type="button">나가기</button>
+      </nav>
     </header>
     <main id="app"></main>
   </div>
-  <dialog id="rules-dialog" aria-labelledby="rules-title">
+
+  <dialog id="rules-dialog" role="dialog" aria-labelledby="rules-title">
     <div class="dialog-head"><span>게임 방법</span><button class="quiet" data-close="rules-dialog" aria-label="게임 방법 닫기">닫기 ✕</button></div>
     <h2 id="rules-title">기본 규칙</h2>
     <p>손에 든 카드 5장 중 1장을 내고 전리품을 가져온 뒤, 카드 1장을 뽑아요. 가운데 전리품 9개가 모두 사라지면 라운드가 끝나요.</p>
@@ -30,10 +77,18 @@
     </div>
     <h3>라운드가 끝나면</h3><p>챙긴 전리품을 뒤집어 보관해요. 이제 뺏기지 않아요. 손패와 경비견은 이어지고, 경비견을 가진 사람이 다음 라운드를 시작해요. 경비견이 아직 가운데에 있다면 원래 다음 차례부터 시작해요.</p>
     <h3>4라운드 뒤, 누가 이길까요?</h3><p>전리품에 표시된 알리바이를 모두 세어요. <strong>3~5명은 가장 적은 사람이 탈락</strong>하고, 동점이면 함께 탈락해요. 남은 사람 중 전리품 점수가 가장 높은 사람이 승리! 점수도 같으면 알리바이가 많은 사람이, 그것도 같으면 공동 승리예요.</p><p><strong>2명일 때는 탈락 대신 10점 감점.</strong> 알리바이가 같으면 둘 다 감점하지 않아요.</p>
-    <details><summary>규칙 출처와 시제품 안내</summary><p>Art Robbery · 게임 설계 Reiner Knizia · 출판 Helvetiq의 규칙을 참고한 비공식 로컬 시제품이에요. 화면·도형·코드·한국어 설명은 새로 제작했어요. 원작 이미지나 설명서 파일을 포함하지 않으며, 이용허락을 받은 공식 디지털판은 아니에요.</p><p>초판 구성 기준으로 3라운드는 보스 2개, 숫자 5 전리품은 없어요. 공개 사진에서 가려진 2·4라운드의 중복 숫자 개수는 아직 실물 대조 전이며, 현재는 임시 배치로 플레이해요. 첫 차례는 시작 화면에서 최근 미술관 방문자를 선택해요. 보관한 전리품은 원작처럼 뒤집어 두고 최종 결과에서 공개해요.</p><a href="https://helvetiq.com/media/hexaattachment/products/attachments/art-robbery_rules_EN.pdf" target="_blank" rel="noopener">출판사 공식 규칙서 ↗</a></details>
+    <details><summary>규칙 출처와 시제품 안내</summary><p>Art Robbery · 게임 설계 Reiner Knizia · 출판 Helvetiq의 규칙을 참고한 비공식 시제품이에요. 화면·도형·코드·한국어 설명은 새로 제작했어요. 원작 이미지나 설명서 파일을 포함하지 않으며, 이용허락을 받은 공식 디지털판은 아니에요.</p><p>초판 구성 기준으로 3라운드는 보스 2개, 숫자 5 전리품은 없어요. 공개 사진에서 가려진 2·4라운드의 중복 숫자 개수는 아직 실물 대조 전이며, 현재는 임시 배치로 플레이해요.</p><a href="https://helvetiq.com/media/hexaattachment/products/attachments/art-robbery_rules_EN.pdf" target="_blank" rel="noopener">출판사 공식 규칙서 ↗</a></details>
     <button class="primary dialog-done" data-close="rules-dialog">알겠어요</button>
   </dialog>
-  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title">지금 게임을 끝낼까요?</h2><p>진행 중인 게임의 기록이 지워져요.</p><div class="button-row"><button class="quiet" data-close="confirm-dialog">계속하기</button><button id="confirm-reset" class="primary">처음으로</button></div></dialog>
+
+  <dialog id="abort-dialog" aria-labelledby="abort-title">
+    <h2 id="abort-title">게임 중단</h2>
+    <p id="abort-message">연결이 종료되었어요.</p>
+    <div class="button-row">
+      <button id="abort-reload" class="primary" type="button">대기실로 돌아가기</button>
+    </div>
+  </dialog>
+
   <div id="announcement" class="sr-only" aria-live="polite"></div>
 </body>
 </html>
