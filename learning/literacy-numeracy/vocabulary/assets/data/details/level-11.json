@@ -17257,6 +17257,1917 @@
      "en": "A kind gesture."
     }
    ]
+  },
+  "1019": {
+   "word": "facility",
+   "overview": [
+    "facility는 '시설, 설비'라는 뜻의 명사입니다.",
+    "a sports facility(스포츠 시설)처럼 씁니다.",
+    "특정 목적을 위해 지어진 건물이나 장비를 뜻합니다.",
+    "'재능, 손쉬움'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "building",
+     "en": "A public building.",
+     "ko": "공공 건물."
+    },
+    {
+     "word": "equipment",
+     "en": "Modern equipment.",
+     "ko": "현대적인 장비."
+    }
+   ],
+   "etymology": [
+    "facility는 라틴어 facilis(쉬운, 하기 쉬운)에서 온 단어입니다.",
+    "facere(만들다, 하다)에서 나온 말로, factory(공장)와 같은 가족입니다.",
+    "'무언가를 쉽게 할 수 있도록 도와주는 능력이나 재능'이라는 뜻에서 시작되었습니다.",
+    "그 일을 쉽게 하도록 지어진 건물이나 시설이라는 뜻으로 넓어졌습니다.",
+    "facility의 핵심 이미지는 '어떤 일을 쉽고 편하게 할 수 있도록 갖춘 시설 🏟️'입니다."
+   ],
+   "meanings": [
+    "설비, 시설"
+   ],
+   "examples": [
+    {
+     "en": "The school has a new sports facility.",
+     "ko": "그 학교는 새로운 스포츠 시설을 가지고 있어요."
+    },
+    {
+     "en": "The hospital lacks proper medical facilities.",
+     "ko": "그 병원은 적절한 의료 시설이 부족해요."
+    },
+    {
+     "en": "The city built a modern recycling facility.",
+     "ko": "그 도시는 현대적인 재활용 시설을 지었어요."
+    },
+    {
+     "en": "He showed remarkable facility for learning languages.",
+     "ko": "그는 언어를 배우는 데 놀라운 재능을 보였어요."
+    },
+    {
+     "en": "The gym offers facilities for all age groups.",
+     "ko": "그 체육관은 모든 연령대를 위한 시설들을 제공해요."
+    },
+    {
+     "en": "The research facility employs hundreds of scientists.",
+     "ko": "그 연구 시설은 수백 명의 과학자들을 고용해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "building",
+     "ko": "건물",
+     "en": "A tall building."
+    },
+    {
+     "type": "연관어",
+     "word": "equipment",
+     "ko": "장비",
+     "en": "New equipment."
+    },
+    {
+     "type": "연관어",
+     "word": "amenity",
+     "ko": "편의 시설",
+     "en": "A modern amenity."
+    },
+    {
+     "type": "연관어",
+     "word": "center",
+     "ko": "센터",
+     "en": "A community center."
+    },
+    {
+     "type": "연관어",
+     "word": "resource",
+     "ko": "자원",
+     "en": "A shared resource."
+    },
+    {
+     "type": "연관어",
+     "word": "infrastructure",
+     "ko": "기반 시설",
+     "en": "Public infrastructure."
+    }
+   ]
+  },
+  "2629": {
+   "word": "symbol",
+   "overview": [
+    "symbol은 '상징, 기호'라는 뜻의 명사입니다.",
+    "a symbol of peace(평화의 상징)처럼 씁니다.",
+    "어떤 개념이나 대상을 대신 나타내는 표식을 뜻합니다.",
+    "수학, 화학 등에서 쓰이는 '부호, 기호'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sign",
+     "en": "A warning sign.",
+     "ko": "경고 표시."
+    },
+    {
+     "word": "representation",
+     "en": "A visual representation.",
+     "ko": "시각적 표현."
+    }
+   ],
+   "etymology": [
+    "symbol은 그리스어 symbolon(표식, 증표)에서 온 단어입니다.",
+    "syn(함께)과 ballein(던지다)이 합쳐진 말로, 원래는 반으로 쪼갠 물건을 맞춰 신원을 증명하던 증표였습니다.",
+    "'서로 맞춰 보아 의미를 확인하는 표식'이라는 뜻에서 시작되었습니다.",
+    "지금은 어떤 개념이나 가치를 대표하여 나타내는 모든 표식을 가리킵니다.",
+    "symbol의 핵심 이미지는 '보이지 않는 의미를 눈에 보이게 나타내는 표식 🕊️'입니다."
+   ],
+   "meanings": [
+    "상징, 징표, 표식",
+    "부호, 기호"
+   ],
+   "examples": [
+    {
+     "en": "The dove is a symbol of peace.",
+     "ko": "비둘기는 평화의 상징이에요."
+    },
+    {
+     "en": "The plus sign is a mathematical symbol.",
+     "ko": "더하기 부호는 수학적 기호예요."
+    },
+    {
+     "en": "Her ring became a symbol of their love.",
+     "ko": "그녀의 반지는 그들의 사랑의 상징이 되었어요."
+    },
+    {
+     "en": "The flag is a national symbol of unity.",
+     "ko": "그 국기는 통합의 국가적 상징이에요."
+    },
+    {
+     "en": "Each chemical element has its own symbol.",
+     "ko": "각 화학 원소는 자신만의 기호를 가지고 있어요."
+    },
+    {
+     "en": "The lion symbolizes courage in many cultures.",
+     "ko": "사자는 많은 문화에서 용기를 상징해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sign",
+     "ko": "기호",
+     "en": "A traffic sign."
+    },
+    {
+     "type": "파생어",
+     "word": "symbolic",
+     "ko": "상징적인",
+     "en": "A symbolic gesture."
+    },
+    {
+     "type": "연관어",
+     "word": "icon",
+     "ko": "아이콘",
+     "en": "A cultural icon."
+    },
+    {
+     "type": "연관어",
+     "word": "represent",
+     "ko": "나타내다",
+     "en": "Represent freedom."
+    },
+    {
+     "type": "연관어",
+     "word": "emblem",
+     "ko": "상징물",
+     "en": "A national emblem."
+    },
+    {
+     "type": "연관어",
+     "word": "meaning",
+     "ko": "의미",
+     "en": "A deeper meaning."
+    }
+   ]
+  },
+  "107": {
+   "word": "ambassador",
+   "overview": [
+    "ambassador는 '대사'라는 뜻의 명사입니다.",
+    "the ambassador to France(주프랑스 대사)처럼 씁니다.",
+    "자기 나라를 대표해 다른 나라에 파견되는 최고위 외교관을 뜻합니다.",
+    "비유적으로 '(어떤 분야의) 대표, 홍보 대사'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "diplomat",
+     "en": "A senior diplomat.",
+     "ko": "고위 외교관."
+    },
+    {
+     "word": "representative",
+     "en": "An official representative.",
+     "ko": "공식 대표."
+    }
+   ],
+   "etymology": [
+    "ambassador는 라틴어 ambactus(하인, 사신)에서 온 단어입니다.",
+    "옛 켈트어에서 온 말로 추정되며, '주군을 대신해 임무를 수행하는 사람'이라는 뜻이었습니다.",
+    "'국가를 대표해 다른 나라에 파견되는 공식 사절'이라는 뜻으로 굳어졌습니다.",
+    "지금은 외교관뿐 아니라 어떤 분야나 브랜드를 대표하는 사람도 가리킵니다.",
+    "ambassador의 핵심 이미지는 '자기 나라를 대표해 임무를 수행하는 외교 사절 🎖️'입니다."
+   ],
+   "meanings": [
+    "(외교) 대사"
+   ],
+   "examples": [
+    {
+     "en": "The ambassador met with the foreign minister.",
+     "ko": "그 대사는 그 외무 장관과 만났어요."
+    },
+    {
+     "en": "She was appointed as ambassador to Japan.",
+     "ko": "그녀는 주일본 대사로 임명되었어요."
+    },
+    {
+     "en": "The ambassador represented his country at the summit.",
+     "ko": "그 대사는 그 정상 회담에서 자신의 나라를 대표했어요."
+    },
+    {
+     "en": "He serves as a goodwill ambassador for the charity.",
+     "ko": "그는 그 자선 단체를 위한 친선 대사로 활동해요."
+    },
+    {
+     "en": "The ambassador's residence is near the capital.",
+     "ko": "그 대사의 관저는 그 수도 근처에 있어요."
+    },
+    {
+     "en": "The athlete became an ambassador for the sport.",
+     "ko": "그 운동선수는 그 스포츠를 위한 홍보 대사가 되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "diplomat",
+     "ko": "외교관",
+     "en": "A career diplomat."
+    },
+    {
+     "type": "연관어",
+     "word": "embassy",
+     "ko": "대사관",
+     "en": "Visit the embassy."
+    },
+    {
+     "type": "연관어",
+     "word": "representative",
+     "ko": "대표",
+     "en": "A trade representative."
+    },
+    {
+     "type": "연관어",
+     "word": "envoy",
+     "ko": "사절",
+     "en": "A special envoy."
+    },
+    {
+     "type": "연관어",
+     "word": "foreign",
+     "ko": "외국의",
+     "en": "Foreign affairs."
+    },
+    {
+     "type": "연관어",
+     "word": "negotiate",
+     "ko": "협상하다",
+     "en": "Negotiate a treaty."
+    }
+   ]
+  },
+  "1615": {
+   "word": "magnificent",
+   "overview": [
+    "magnificent는 '웅장한, 훌륭한'이라는 뜻의 형용사입니다.",
+    "a magnificent view(웅장한 경치)처럼 씁니다.",
+    "매우 크고 아름다워서 인상적인 것을 뜻합니다.",
+    "명사 magnificence(장엄함)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "grand",
+     "en": "A grand palace.",
+     "ko": "웅장한 궁전."
+    },
+    {
+     "word": "splendid",
+     "en": "A splendid sight.",
+     "ko": "화려한 광경."
+    }
+   ],
+   "etymology": [
+    "magnificent는 라틴어 magnificus(위대한 것을 만드는)에서 온 단어입니다.",
+    "magnus(큰, 위대한)와 facere(만들다)가 합쳐진 말로, magnify(확대하다)와 같은 가족입니다.",
+    "'위대함을 만들어 낼 만큼 웅장하고 훌륭한'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 규모나 아름다움이 사람을 압도할 만큼 대단한 것을 가리킵니다.",
+    "magnificent의 핵심 이미지는 '보는 이를 압도할 만큼 웅장하고 화려한 아름다움 🏰'입니다."
+   ],
+   "meanings": [
+    "대단한, 훌륭한, 멋진"
+   ],
+   "examples": [
+    {
+     "en": "The view from the mountain was magnificent.",
+     "ko": "그 산에서 보이는 경치는 웅장했어요."
+    },
+    {
+     "en": "They built a magnificent castle centuries ago.",
+     "ko": "그들은 수 세기 전에 웅장한 성을 지었어요."
+    },
+    {
+     "en": "The orchestra gave a magnificent performance.",
+     "ko": "그 오케스트라는 훌륭한 공연을 선사했어요."
+    },
+    {
+     "en": "Her magnificent garden attracted many visitors.",
+     "ko": "그녀의 멋진 정원은 많은 방문객들을 끌어들였어요."
+    },
+    {
+     "en": "The cathedral's magnificent architecture amazed tourists.",
+     "ko": "그 대성당의 웅장한 건축은 관광객들을 놀라게 했어요."
+    },
+    {
+     "en": "The sunset painted a magnificent sky.",
+     "ko": "그 일몰은 멋진 하늘을 그려냈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "grand",
+     "ko": "웅장한",
+     "en": "A grand hall."
+    },
+    {
+     "type": "파생어",
+     "word": "magnificence",
+     "ko": "장엄함",
+     "en": "Royal magnificence."
+    },
+    {
+     "type": "연관어",
+     "word": "splendid",
+     "ko": "화려한",
+     "en": "A splendid feast."
+    },
+    {
+     "type": "연관어",
+     "word": "majestic",
+     "ko": "장엄한",
+     "en": "A majestic mountain."
+    },
+    {
+     "type": "연관어",
+     "word": "stunning",
+     "ko": "굉장한",
+     "en": "A stunning view."
+    },
+    {
+     "type": "연관어",
+     "word": "impressive",
+     "ko": "인상적인",
+     "en": "An impressive display."
+    }
+   ]
+  },
+  "2801": {
+   "word": "tube",
+   "overview": [
+    "tube는 '관, 튜브'라는 뜻의 명사입니다.",
+    "a tube of toothpaste(치약 튜브)처럼 씁니다.",
+    "속이 비어 액체나 기체가 통과할 수 있는 원통형 물체를 뜻합니다.",
+    "영국에서는 the Tube가 '런던 지하철'을 가리키는 표현으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "pipe",
+     "en": "A rubber pipe.",
+     "ko": "고무관."
+    },
+    {
+     "word": "cylinder",
+     "en": "A thin cylinder.",
+     "ko": "가느다란 원통."
+    }
+   ],
+   "etymology": [
+    "tube는 라틴어 tubus(관, 파이프)에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 확실하지 않지만, 로마 시대부터 물이나 공기를 나르는 관을 뜻했습니다.",
+    "'속이 비어 무언가가 통과할 수 있는 긴 원통형 물체'라는 뜻이 그대로 이어져 왔습니다.",
+    "런던의 지하철이 둥근 터널 모양이어서 the Tube라는 별명이 붙었습니다.",
+    "tube의 핵심 이미지는 '속이 뻥 뚫려 무언가가 흐르는 긴 관 🧴'입니다."
+   ],
+   "meanings": [
+    "tube를 사용하거나 만들다"
+   ],
+   "examples": [
+    {
+     "en": "She squeezed the last bit of toothpaste from the tube.",
+     "ko": "그녀는 그 튜브에서 마지막 치약을 짜냈어요."
+    },
+    {
+     "en": "The doctor inserted a tube to help him breathe.",
+     "ko": "그 의사는 그가 숨 쉬는 것을 돕기 위해 관을 삽입했어요."
+    },
+    {
+     "en": "He took the Tube to work every morning.",
+     "ko": "그는 매일 아침 그 지하철을 타고 출근했어요."
+    },
+    {
+     "en": "Water flowed through the narrow tube.",
+     "ko": "물이 그 좁은 관을 통해 흘렀어요."
+    },
+    {
+     "en": "The scientist tested the liquid in a glass tube.",
+     "ko": "그 과학자는 그 액체를 유리관에서 시험했어요."
+    },
+    {
+     "en": "A rubber tube connects the two containers.",
+     "ko": "고무관 하나가 그 두 용기를 연결해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "pipe",
+     "ko": "관",
+     "en": "A water pipe."
+    },
+    {
+     "type": "연관어",
+     "word": "cylinder",
+     "ko": "원통",
+     "en": "A metal cylinder."
+    },
+    {
+     "type": "연관어",
+     "word": "hose",
+     "ko": "호스",
+     "en": "A garden hose."
+    },
+    {
+     "type": "연관어",
+     "word": "subway",
+     "ko": "지하철",
+     "en": "Take the subway."
+    },
+    {
+     "type": "연관어",
+     "word": "container",
+     "ko": "용기",
+     "en": "A plastic container."
+    },
+    {
+     "type": "연관어",
+     "word": "channel",
+     "ko": "통로",
+     "en": "A water channel."
+    }
+   ]
+  },
+  "2600": {
+   "word": "superior",
+   "overview": [
+    "superior는 '우수한, 더 나은'이라는 뜻의 형용사입니다.",
+    "superior quality(우수한 품질)처럼 씁니다.",
+    "명사로는 '상급자, 상관'이라는 뜻으로 씁니다.",
+    "'우월감을 느끼는, 거만한'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "better",
+     "en": "A better product.",
+     "ko": "더 나은 제품."
+    },
+    {
+     "word": "boss",
+     "en": "Report to your boss.",
+     "ko": "상사에게 보고하다."
+    }
+   ],
+   "etymology": [
+    "superior는 라틴어 superior(더 위의)에서 온 단어입니다.",
+    "super(위에)에서 나온 말로, superb(최고의), superb와 같은 가족입니다.",
+    "'다른 것보다 더 높은 위치에 있는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "품질이 더 뛰어난 것, 지위가 더 높은 사람 모두를 가리키는 데 폭넓게 씁니다.",
+    "superior의 핵심 이미지는 '다른 것보다 한 단계 위에 서 있는 뛰어남 ⬆️'입니다."
+   ],
+   "meanings": [
+    "더 높은 지위나 질의 사람"
+   ],
+   "examples": [
+    {
+     "en": "This brand offers superior quality products.",
+     "ko": "이 브랜드는 우수한 품질의 제품들을 제공해요."
+    },
+    {
+     "en": "She reported the issue to her superior.",
+     "ko": "그녀는 그 문제를 자신의 상관에게 보고했어요."
+    },
+    {
+     "en": "His superior skills earned him a promotion.",
+     "ko": "그의 뛰어난 기술은 그에게 승진을 가져다주었어요."
+    },
+    {
+     "en": "He acted with a superior attitude toward others.",
+     "ko": "그는 다른 사람들에게 거만한 태도로 행동했어요."
+    },
+    {
+     "en": "The team showed superior performance in the finals.",
+     "ko": "그 팀은 그 결승전에서 뛰어난 기량을 보였어요."
+    },
+    {
+     "en": "Military officers must obey their superiors.",
+     "ko": "군 장교들은 자신들의 상관에게 복종해야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "inferior",
+     "ko": "열등한",
+     "en": "An inferior copy."
+    },
+    {
+     "type": "연관어",
+     "word": "better",
+     "ko": "더 나은",
+     "en": "A better option."
+    },
+    {
+     "type": "연관어",
+     "word": "boss",
+     "ko": "상사",
+     "en": "A strict boss."
+    },
+    {
+     "type": "연관어",
+     "word": "excellent",
+     "ko": "훌륭한",
+     "en": "Excellent quality."
+    },
+    {
+     "type": "연관어",
+     "word": "rank",
+     "ko": "계급",
+     "en": "A higher rank."
+    },
+    {
+     "type": "연관어",
+     "word": "arrogant",
+     "ko": "거만한",
+     "en": "An arrogant tone."
+    }
+   ]
+  },
+  "2951": {
+   "word": "wicked",
+   "overview": [
+    "wicked는 '사악한, 못된'이라는 뜻의 형용사입니다.",
+    "a wicked witch(사악한 마녀)처럼 씁니다.",
+    "도덕적으로 나쁘고 해로운 것을 뜻합니다.",
+    "구어에서는 반대로 '아주 멋진, 대단한'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "evil",
+     "en": "An evil villain.",
+     "ko": "사악한 악당."
+    },
+    {
+     "word": "naughty",
+     "en": "A naughty grin.",
+     "ko": "짓궂은 미소."
+    }
+   ],
+   "etymology": [
+    "wicked는 고대 영어 wicca(마법사, 마녀)와 관련된 뿌리에서 온 단어입니다.",
+    "마법이나 어둠의 힘과 연관 지어져 '사악한'이라는 뜻이 굳어졌습니다.",
+    "동화 속 사악한 마녀나 악당을 묘사하는 대표적인 단어로 자리 잡았습니다.",
+    "20세기 구어에서는 반어적으로 '아주 대단한, 멋진'이라는 긍정적 뜻으로도 쓰이게 되었습니다.",
+    "wicked의 핵심 이미지는 '어둠의 힘을 지닌 사악하고 못된 존재 🧙‍♀️'입니다."
+   ],
+   "meanings": [
+    "사악하다, 간사하다"
+   ],
+   "examples": [
+    {
+     "en": "The story features a wicked witch and a brave hero.",
+     "ko": "그 이야기는 사악한 마녀와 용감한 영웅을 특징으로 해요."
+    },
+    {
+     "en": "His wicked smile revealed his true intentions.",
+     "ko": "그의 사악한 미소는 그의 진짜 의도를 드러냈어요."
+    },
+    {
+     "en": "She felt guilty for her wicked thoughts.",
+     "ko": "그녀는 자신의 못된 생각들에 대해 죄책감을 느꼈어요."
+    },
+    {
+     "en": "The wicked king ruled with cruelty.",
+     "ko": "그 사악한 왕은 잔혹함으로 통치했어요."
+    },
+    {
+     "en": "That's a wicked idea, let's do it!",
+     "ko": "그거 정말 멋진 생각이야, 하자!"
+    },
+    {
+     "en": "The wicked stepmother treated Cinderella badly.",
+     "ko": "그 사악한 계모는 신데렐라를 나쁘게 대했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "evil",
+     "ko": "사악한",
+     "en": "An evil plan."
+    },
+    {
+     "type": "반의어",
+     "word": "good",
+     "ko": "선한",
+     "en": "A good deed."
+    },
+    {
+     "type": "연관어",
+     "word": "wickedness",
+     "ko": "사악함",
+     "en": "Pure wickedness."
+    },
+    {
+     "type": "연관어",
+     "word": "villain",
+     "ko": "악당",
+     "en": "A classic villain."
+    },
+    {
+     "type": "연관어",
+     "word": "sinister",
+     "ko": "불길한",
+     "en": "A sinister look."
+    },
+    {
+     "type": "연관어",
+     "word": "naughty",
+     "ko": "짓궂은",
+     "en": "A naughty child."
+    }
+   ]
+  },
+  "1738": {
+   "word": "multiple",
+   "overview": [
+    "multiple은 '다수의, 여러 개의'라는 뜻의 형용사입니다.",
+    "multiple choices(여러 개의 선택지)처럼 씁니다.",
+    "하나 이상의 여러 요소로 이루어진 것을 뜻합니다.",
+    "명사로는 수학에서 '배수'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "many",
+     "en": "Many reasons.",
+     "ko": "많은 이유들."
+    },
+    {
+     "word": "several",
+     "en": "Several options.",
+     "ko": "여러 선택지."
+    }
+   ],
+   "etymology": [
+    "multiple은 라틴어 multiplex(여러 겹의)에서 온 단어입니다.",
+    "multus(많은)와 plicare(접다, 겹치다)가 합쳐진 말로, multiply(곱하다)와 같은 가족입니다.",
+    "'여러 겹으로 겹쳐져 있는, 하나가 아닌'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 두 개 이상의 요소나 부분으로 이루어진 모든 것을 가리키는 데 폭넓게 씁니다.",
+    "multiple의 핵심 이미지는 '여러 겹으로 겹쳐진 다수의 요소 🔢'입니다."
+   ],
+   "meanings": [
+    "다수의, 많은 부분(요소)으로 된, 다양한"
+   ],
+   "examples": [
+    {
+     "en": "The store offers multiple payment options.",
+     "ko": "그 가게는 여러 결제 옵션들을 제공해요."
+    },
+    {
+     "en": "She has multiple degrees in different fields.",
+     "ko": "그녀는 서로 다른 분야에서 여러 개의 학위를 가지고 있어요."
+    },
+    {
+     "en": "The accident caused multiple injuries.",
+     "ko": "그 사고는 여러 부상들을 초래했어요."
+    },
+    {
+     "en": "He manages multiple projects at the same time.",
+     "ko": "그는 동시에 여러 프로젝트들을 관리해요."
+    },
+    {
+     "en": "Twelve is a multiple of three.",
+     "ko": "12는 3의 배수예요."
+    },
+    {
+     "en": "The company has multiple branches nationwide.",
+     "ko": "그 회사는 전국적으로 여러 지점들을 가지고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "several",
+     "ko": "몇몇의",
+     "en": "Several attempts."
+    },
+    {
+     "type": "파생어",
+     "word": "multiply",
+     "ko": "곱하다",
+     "en": "Multiply two numbers."
+    },
+    {
+     "type": "연관어",
+     "word": "various",
+     "ko": "다양한",
+     "en": "Various styles."
+    },
+    {
+     "type": "연관어",
+     "word": "numerous",
+     "ko": "수많은",
+     "en": "Numerous examples."
+    },
+    {
+     "type": "연관어",
+     "word": "many",
+     "ko": "많은",
+     "en": "Many choices."
+    },
+    {
+     "type": "연관어",
+     "word": "combination",
+     "ko": "조합",
+     "en": "A unique combination."
+    }
+   ]
+  },
+  "380": {
+   "word": "buzz",
+   "overview": [
+    "buzz는 '윙윙거리는 소리'라는 뜻의 명사이자 '윙윙거리다'라는 뜻의 동사입니다.",
+    "the buzz of bees(벌들이 윙윙거리는 소리)처럼 씁니다.",
+    "'(소문 등으로) 떠들썩함, 흥분'이라는 뜻으로도 씁니다.",
+    "give someone a buzz는 '전화를 걸다'라는 구어 표현으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hum",
+     "en": "A low hum.",
+     "ko": "낮은 웅웅거림."
+    },
+    {
+     "word": "excitement",
+     "en": "A lot of excitement.",
+     "ko": "많은 흥분."
+    }
+   ],
+   "etymology": [
+    "buzz는 벌이나 곤충이 내는 소리를 흉내 낸 의성어입니다.",
+    "'ㅂ' 소리가 반복되는 발음 자체가 윙윙거리는 소리를 닮았습니다.",
+    "'벌레들이 날며 내는 지속적인 낮은 소리'라는 뜻에서 시작되었습니다.",
+    "사람들 사이에 퍼지는 소문이나 화제도 그 웅성거림에 비유해 buzz라고 부르게 되었습니다.",
+    "buzz의 핵심 이미지는 '벌레들이 날갯짓하며 내는 윙윙거리는 소리와 그 열기 🐝'입니다."
+   ],
+   "meanings": [
+    "윙윙거리는 소리, 웅성거림",
+    "윙윙거리다, 떠들썩하다"
+   ],
+   "examples": [
+    {
+     "en": "The buzz of bees filled the garden.",
+     "ko": "벌들의 윙윙거리는 소리가 그 정원을 채웠어요."
+    },
+    {
+     "en": "There was a lot of buzz about the new movie.",
+     "ko": "그 새로운 영화에 대해 많은 화제가 있었어요."
+    },
+    {
+     "en": "The room buzzed with excitement before the show.",
+     "ko": "그 방은 그 공연 전 흥분으로 떠들썩했어요."
+    },
+    {
+     "en": "A fly buzzed around the kitchen.",
+     "ko": "파리 한 마리가 그 부엌 주위를 윙윙거리며 날았어요."
+    },
+    {
+     "en": "She gave her friend a buzz to check in.",
+     "ko": "그녀는 안부를 확인하려고 자신의 친구에게 전화를 걸었어요."
+    },
+    {
+     "en": "The buzzing sound came from the broken fan.",
+     "ko": "그 윙윙거리는 소리는 그 고장 난 선풍기에서 나왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hum",
+     "ko": "웅웅거리다",
+     "en": "The engine hums."
+    },
+    {
+     "type": "연관어",
+     "word": "excitement",
+     "ko": "흥분",
+     "en": "Genuine excitement."
+    },
+    {
+     "type": "연관어",
+     "word": "gossip",
+     "ko": "소문",
+     "en": "Office gossip."
+    },
+    {
+     "type": "연관어",
+     "word": "bee",
+     "ko": "벌",
+     "en": "A busy bee."
+    },
+    {
+     "type": "연관어",
+     "word": "noise",
+     "ko": "소음",
+     "en": "A loud noise."
+    },
+    {
+     "type": "연관어",
+     "word": "chatter",
+     "ko": "수다",
+     "en": "Constant chatter."
+    }
+   ]
+  },
+  "467": {
+   "word": "chin",
+   "overview": [
+    "chin은 얼굴의 '턱'이라는 뜻의 명사입니다.",
+    "raise your chin(턱을 들다)처럼 씁니다.",
+    "입 아래에 있는 얼굴의 뾰족한 부분을 뜻합니다.",
+    "keep your chin up은 '기운을 내다'라는 관용 표현으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "jaw area",
+     "en": "The jaw area.",
+     "ko": "턱 부위."
+    },
+    {
+     "word": "lower face",
+     "en": "The lower face.",
+     "ko": "얼굴 아랫부분."
+    }
+   ],
+   "etymology": [
+    "chin은 고대 영어 cin(턱)에서 온 단어입니다.",
+    "게르만과 인도유럽 말 뿌리에서 온 아주 오래된 신체 부위 이름입니다.",
+    "'입 아래 얼굴의 끝부분'이라는 뜻이 그대로 이어져 왔습니다.",
+    "keep your chin up이라는 표현은 턱을 들어 올려 당당한 자세를 취하는 모습에서 나왔습니다.",
+    "chin의 핵심 이미지는 '얼굴의 맨 아래에서 당당함을 나타내는 턱 😊'입니다."
+   ],
+   "meanings": [
+    "(신체 부분) 턱"
+   ],
+   "examples": [
+    {
+     "en": "She rested her chin on her hands.",
+     "ko": "그녀는 자신의 손 위에 자신의 턱을 얹었어요."
+    },
+    {
+     "en": "He has a small scar on his chin.",
+     "ko": "그는 자신의 턱에 작은 흉터를 가지고 있어요."
+    },
+    {
+     "en": "Keep your chin up; things will get better.",
+     "ko": "기운을 내; 상황은 나아질 거야."
+    },
+    {
+     "en": "The boxer took a direct hit to the chin.",
+     "ko": "그 권투 선수는 그 턱에 직격탄을 맞았어요."
+    },
+    {
+     "en": "She tilted her chin proudly before the photo.",
+     "ko": "그녀는 그 사진 전에 자신의 턱을 자랑스럽게 들었어요."
+    },
+    {
+     "en": "His beard covered most of his chin.",
+     "ko": "그의 수염은 그의 턱 대부분을 덮었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "jaw",
+     "ko": "턱뼈",
+     "en": "A strong jaw."
+    },
+    {
+     "type": "연관어",
+     "word": "face",
+     "ko": "얼굴",
+     "en": "A round face."
+    },
+    {
+     "type": "연관어",
+     "word": "beard",
+     "ko": "수염",
+     "en": "A thick beard."
+    },
+    {
+     "type": "연관어",
+     "word": "cheek",
+     "ko": "뺨",
+     "en": "A rosy cheek."
+    },
+    {
+     "type": "연관어",
+     "word": "mouth",
+     "ko": "입",
+     "en": "Open your mouth."
+    },
+    {
+     "type": "연관어",
+     "word": "confidence",
+     "ko": "자신감",
+     "en": "Show confidence."
+    }
+   ]
+  },
+  "2817": {
+   "word": "ultimate",
+   "overview": [
+    "ultimate은 '궁극적인, 최종적인'이라는 뜻의 형용사입니다.",
+    "the ultimate goal(궁극적인 목표)처럼 씁니다.",
+    "'결정적인, 최고의'라는 뜻으로도 씁니다.",
+    "부사 ultimately(결국, 궁극적으로)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "final",
+     "en": "The final decision.",
+     "ko": "최종 결정."
+    },
+    {
+     "word": "best",
+     "en": "The best example.",
+     "ko": "최고의 예."
+    }
+   ],
+   "etymology": [
+    "ultimate은 라틴어 ultimus(가장 먼, 마지막의)에서 온 단어입니다.",
+    "ultra(그 너머로)와도 이어지는 뿌리로, '더 이상 갈 수 없는 맨 끝'이라는 뜻이었습니다.",
+    "'모든 것의 맨 마지막, 최종 단계'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 최종 목표뿐 아니라 최고의, 결정적인 것을 가리키는 데도 폭넓게 씁니다.",
+    "ultimate의 핵심 이미지는 '더 이상 갈 곳이 없는 마지막이자 최고의 지점 🏁'입니다."
+   ],
+   "meanings": [
+    "마지막의, 최종적, 결정적"
+   ],
+   "examples": [
+    {
+     "en": "Her ultimate goal is to become a doctor.",
+     "ko": "그녀의 궁극적인 목표는 의사가 되는 것이에요."
+    },
+    {
+     "en": "The final match will decide the ultimate winner.",
+     "ko": "그 결승전은 그 최종 우승자를 결정할 거예요."
+    },
+    {
+     "en": "This is the ultimate test of his skill.",
+     "ko": "이것은 그의 실력에 대한 결정적인 시험이에요."
+    },
+    {
+     "en": "The ultimate decision rests with the board.",
+     "ko": "그 최종 결정은 그 이사회에 달려 있어요."
+    },
+    {
+     "en": "For many fans, this is the ultimate experience.",
+     "ko": "많은 팬들에게, 이것은 궁극의 경험이에요."
+    },
+    {
+     "en": "Their ultimate responsibility is to protect the public.",
+     "ko": "그들의 궁극적인 책임은 대중을 보호하는 것이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "final",
+     "ko": "최종의",
+     "en": "The final answer."
+    },
+    {
+     "type": "파생어",
+     "word": "ultimately",
+     "ko": "결국",
+     "en": "Ultimately, he succeeded."
+    },
+    {
+     "type": "연관어",
+     "word": "supreme",
+     "ko": "최고의",
+     "en": "Supreme quality."
+    },
+    {
+     "type": "연관어",
+     "word": "decisive",
+     "ko": "결정적인",
+     "en": "A decisive moment."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "목표",
+     "en": "A long-term goal."
+    },
+    {
+     "type": "연관어",
+     "word": "best",
+     "ko": "최고의",
+     "en": "The best choice."
+    }
+   ]
+  },
+  "2509": {
+   "word": "squeeze",
+   "overview": [
+    "squeeze는 '꽉 쥐다, 짜내다'라는 뜻의 동사입니다.",
+    "squeeze a lemon(레몬을 짜다)처럼 씁니다.",
+    "'비집고 들어가다'라는 뜻으로도 씁니다.",
+    "명사로는 '압박, 소량'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "press",
+     "en": "Press firmly.",
+     "ko": "세게 누르다."
+    },
+    {
+     "word": "squash",
+     "en": "Squash the fruit.",
+     "ko": "과일을 짓누르다."
+    }
+   ],
+   "etymology": [
+    "squeeze는 중세 영어 queysen(짓누르다)에서 발전한 단어로 추정됩니다.",
+    "옛 게르만 말 뿌리와 관련이 있다고 봅니다.",
+    "'양쪽에서 힘을 가해 부피를 줄이거나 내용물을 짜내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "좁은 공간에 몸을 밀어 넣거나 예산 등을 압박하는 상황에도 비유적으로 씁니다.",
+    "squeeze의 핵심 이미지는 '양쪽에서 힘을 가해 짜내거나 밀어 넣는 압박 🍋'입니다."
+   ],
+   "meanings": [
+    "꽉 쥐다, 짜내다",
+    "비집고 들어가다",
+    "압박, 소량"
+   ],
+   "examples": [
+    {
+     "en": "She squeezed the orange to make fresh juice.",
+     "ko": "그녀는 신선한 주스를 만들려고 그 오렌지를 짰어요."
+    },
+    {
+     "en": "He squeezed her hand to comfort her.",
+     "ko": "그는 그녀를 위로하려고 그녀의 손을 꽉 쥐었어요."
+    },
+    {
+     "en": "They squeezed into the crowded elevator.",
+     "ko": "그들은 그 붐비는 엘리베이터에 비집고 들어갔어요."
+    },
+    {
+     "en": "Add a squeeze of lemon to the salad.",
+     "ko": "그 샐러드에 레몬 한 방울을 짜서 넣으세요."
+    },
+    {
+     "en": "The economic squeeze affected many families.",
+     "ko": "그 경제적 압박은 많은 가족들에게 영향을 미쳤어요."
+    },
+    {
+     "en": "He squeezed the toothpaste tube from the bottom.",
+     "ko": "그는 그 치약 튜브를 아래쪽부터 짰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "press",
+     "ko": "누르다",
+     "en": "Press the button."
+    },
+    {
+     "type": "연관어",
+     "word": "squash",
+     "ko": "으깨다",
+     "en": "Squash a bug."
+    },
+    {
+     "type": "연관어",
+     "word": "compress",
+     "ko": "압축하다",
+     "en": "Compress a file."
+    },
+    {
+     "type": "연관어",
+     "word": "grip",
+     "ko": "쥐다",
+     "en": "A firm grip."
+    },
+    {
+     "type": "연관어",
+     "word": "juice",
+     "ko": "즙",
+     "en": "Fresh juice."
+    },
+    {
+     "type": "연관어",
+     "word": "cram",
+     "ko": "밀어 넣다",
+     "en": "Cram into a bag."
+    }
+   ]
+  },
+  "942": {
+   "word": "entry",
+   "overview": [
+    "entry는 '들어감, 입장'이라는 뜻의 명사입니다.",
+    "gain entry(입장하다)처럼 씁니다.",
+    "'참가, 출전, 응모'라는 뜻으로도 씁니다.",
+    "'입구' 그리고 사전이나 일기의 '항목'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "entrance",
+     "en": "The main entrance.",
+     "ko": "정문 입구."
+    },
+    {
+     "word": "submission",
+     "en": "A contest submission.",
+     "ko": "대회 출품작."
+    }
+   ],
+   "etymology": [
+    "entry는 라틴어 intrare(들어가다)에서 온 단어입니다.",
+    "enter(들어가다)와 같은 가족입니다.",
+    "'어떤 공간이나 상태로 들어가는 행위'라는 뜻이 그대로 이어져 왔습니다.",
+    "그 들어가는 통로, 대회에 출품한 작품, 사전의 한 항목까지 뜻이 넓어졌습니다.",
+    "entry의 핵심 이미지는 '안으로 들어서는 첫걸음이자 기록된 항목 🚪'입니다."
+   ],
+   "meanings": [
+    "들어감, 입장",
+    "참가, 출전, 응모",
+    "입구"
+   ],
+   "examples": [
+    {
+     "en": "Entry to the museum is free on Sundays.",
+     "ko": "그 박물관 입장은 일요일마다 무료예요."
+    },
+    {
+     "en": "She submitted her entry for the art contest.",
+     "ko": "그녀는 그 미술 대회에 자신의 출품작을 제출했어요."
+    },
+    {
+     "en": "The dictionary entry explains the word's origin.",
+     "ko": "그 사전 항목은 그 단어의 기원을 설명해요."
+    },
+    {
+     "en": "Guards checked IDs at the entry point.",
+     "ko": "경비원들은 그 입구 지점에서 신분증들을 확인했어요."
+    },
+    {
+     "en": "Only a few entries were accepted for the competition.",
+     "ko": "그 대회를 위해 오직 몇 개의 출품작들만 받아들여졌어요."
+    },
+    {
+     "en": "She wrote a new entry in her diary.",
+     "ko": "그녀는 자신의 일기에 새로운 항목을 썼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "entrance",
+     "ko": "입구",
+     "en": "The front entrance."
+    },
+    {
+     "type": "연관어",
+     "word": "submission",
+     "ko": "제출",
+     "en": "A late submission."
+    },
+    {
+     "type": "연관어",
+     "word": "access",
+     "ko": "접근",
+     "en": "Gain access."
+    },
+    {
+     "type": "연관어",
+     "word": "participant",
+     "ko": "참가자",
+     "en": "A contest participant."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "기록",
+     "en": "A diary record."
+    },
+    {
+     "type": "연관어",
+     "word": "admission",
+     "ko": "입장",
+     "en": "Free admission."
+    }
+   ]
+  },
+  "367": {
+   "word": "burden",
+   "overview": [
+    "burden은 '무거운 짐, 부담'이라는 뜻의 명사입니다.",
+    "a heavy burden(무거운 짐)처럼 씁니다.",
+    "물리적인 짐뿐 아니라 정신적, 경제적 부담을 뜻하기도 합니다.",
+    "동사로는 '짐을 지우다, 부담을 주다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "load",
+     "en": "A heavy load.",
+     "ko": "무거운 짐."
+    },
+    {
+     "word": "responsibility",
+     "en": "A big responsibility.",
+     "ko": "큰 책임."
+    }
+   ],
+   "etymology": [
+    "burden은 고대 영어 byrthen(짐, 나르는 것)에서 온 단어입니다.",
+    "bear(나르다, 견디다)와 같은 게르만 말 뿌리에서 나온 단어입니다.",
+    "'등에 지고 나르는 무거운 짐'이라는 뜻이 그대로 이어져 왔습니다.",
+    "물리적인 짐뿐 아니라 마음을 무겁게 하는 책임과 걱정까지 뜻이 넓어졌습니다.",
+    "burden의 핵심 이미지는 '등을 짓누르며 견뎌 내야 하는 무거운 짐 🎒'입니다."
+   ],
+   "meanings": [
+    "무거운 짐, 짐, 짐 나르기"
+   ],
+   "examples": [
+    {
+     "en": "She carried the burden of caring for her family.",
+     "ko": "그녀는 자신의 가족을 돌보는 부담을 짊어졌어요."
+    },
+    {
+     "en": "The tax increase became a burden for many people.",
+     "ko": "그 세금 인상은 많은 사람들에게 부담이 되었어요."
+    },
+    {
+     "en": "He felt the burden of responsibility on his shoulders.",
+     "ko": "그는 자신의 어깨에 지워진 책임의 무게를 느꼈어요."
+    },
+    {
+     "en": "The mule carried a heavy burden up the hill.",
+     "ko": "그 노새는 무거운 짐을 지고 그 언덕을 올랐어요."
+    },
+    {
+     "en": "Sharing the work eased their burden.",
+     "ko": "그 일을 나누는 것은 그들의 부담을 덜어 주었어요."
+    },
+    {
+     "en": "She didn't want to burden her friends with her problems.",
+     "ko": "그녀는 자신의 문제로 자신의 친구들에게 부담을 주고 싶지 않았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "load",
+     "ko": "짐",
+     "en": "A heavy load."
+    },
+    {
+     "type": "연관어",
+     "word": "responsibility",
+     "ko": "책임",
+     "en": "Bear responsibility."
+    },
+    {
+     "type": "연관어",
+     "word": "weight",
+     "ko": "무게",
+     "en": "Bear the weight."
+    },
+    {
+     "type": "연관어",
+     "word": "stress",
+     "ko": "스트레스",
+     "en": "Relieve stress."
+    },
+    {
+     "type": "연관어",
+     "word": "obligation",
+     "ko": "의무",
+     "en": "A legal obligation."
+    },
+    {
+     "type": "연관어",
+     "word": "carry",
+     "ko": "나르다",
+     "en": "Carry a load."
+    }
+   ]
+  },
+  "1113": {
+   "word": "fond",
+   "overview": [
+    "fond는 '좋아하는, 애정 어린'이라는 뜻의 형용사입니다.",
+    "be fond of(~을 좋아하다)라는 표현으로 자주 씁니다.",
+    "누군가나 무언가에 대한 따뜻한 애정을 뜻합니다.",
+    "'다정한, 애정이 담긴'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "like",
+     "en": "Like someone.",
+     "ko": "누군가를 좋아하다."
+    },
+    {
+     "word": "affectionate",
+     "en": "An affectionate hug.",
+     "ko": "다정한 포옹."
+    }
+   ],
+   "etymology": [
+    "fond는 중세 영어 fonned(어리석은, 순진한)에서 온 단어입니다.",
+    "원래는 '어리석을 만큼 무언가를 맹목적으로 좋아하는'이라는 뜻이었습니다.",
+    "시간이 지나며 부정적인 뜻은 사라지고 '깊이 좋아하는, 애정이 담긴'이라는 긍정적 뜻만 남았습니다.",
+    "지금은 순수하고 따뜻한 애정을 나타내는 데 널리 씁니다.",
+    "fond의 핵심 이미지는 '마음 깊이 우러나오는 따뜻한 애정 💕'입니다."
+   ],
+   "meanings": [
+    "좋아하는, 애정 어린"
+   ],
+   "examples": [
+    {
+     "en": "She is very fond of her little brother.",
+     "ko": "그녀는 자신의 남동생을 아주 좋아해요."
+    },
+    {
+     "en": "He has fond memories of his childhood home.",
+     "ko": "그는 자신의 어린 시절 집에 대한 애정 어린 기억을 가지고 있어요."
+    },
+    {
+     "en": "They grew fond of the small village over time.",
+     "ko": "그들은 시간이 지나면서 그 작은 마을을 좋아하게 되었어요."
+    },
+    {
+     "en": "She gave her grandmother a fond farewell.",
+     "ko": "그녀는 자신의 할머니에게 다정한 작별 인사를 했어요."
+    },
+    {
+     "en": "I'm quite fond of spicy food.",
+     "ko": "저는 매운 음식을 꽤 좋아해요."
+    },
+    {
+     "en": "He spoke of his old teacher with fond respect.",
+     "ko": "그는 자신의 옛 선생님에 대해 애정 어린 존경심으로 말했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "affectionate",
+     "ko": "다정한",
+     "en": "An affectionate smile."
+    },
+    {
+     "type": "연관어",
+     "word": "like",
+     "ko": "좋아하다",
+     "en": "Like a hobby."
+    },
+    {
+     "type": "연관어",
+     "word": "attached",
+     "ko": "애착이 있는",
+     "en": "Feel attached."
+    },
+    {
+     "type": "연관어",
+     "word": "warm",
+     "ko": "따뜻한",
+     "en": "A warm smile."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억",
+     "en": "A happy memory."
+    },
+    {
+     "type": "연관어",
+     "word": "love",
+     "ko": "사랑",
+     "en": "Show love."
+    }
+   ]
+  },
+  "2526": {
+   "word": "statue",
+   "overview": [
+    "statue는 '조각상, 동상'이라는 뜻의 명사입니다.",
+    "a bronze statue(청동 동상)처럼 씁니다.",
+    "돌, 청동 등으로 사람이나 동물의 형상을 만든 예술 작품을 뜻합니다.",
+    "역사적 인물이나 신을 기리기 위해 세우는 경우가 많습니다."
+   ],
+   "easy": [
+    {
+     "word": "sculpture",
+     "en": "A stone sculpture.",
+     "ko": "석상 조각."
+    },
+    {
+     "word": "figure",
+     "en": "A carved figure.",
+     "ko": "조각된 형상."
+    }
+   ],
+   "etymology": [
+    "statue는 라틴어 statua(서 있는 형상)에서 온 단어입니다.",
+    "stare(서다)에서 나온 말로, status(지위)와 같은 가족입니다.",
+    "'움직이지 않고 서 있는 사람이나 동물의 형상'이라는 뜻이 그대로 이어져 왔습니다.",
+    "역사적 인물을 기리거나 예술 작품으로 세우는 조각품을 가리키는 데 굳어졌습니다.",
+    "statue의 핵심 이미지는 '한자리에 우뚝 서서 세월을 지켜보는 조각상 🗿'입니다."
+   ],
+   "meanings": [
+    "조각상, 동상, 입상"
+   ],
+   "examples": [
+    {
+     "en": "A large statue stands in the city square.",
+     "ko": "큰 동상 하나가 그 도심 광장에 서 있어요."
+    },
+    {
+     "en": "The statue honors the country's first president.",
+     "ko": "그 동상은 그 나라의 초대 대통령을 기려요."
+    },
+    {
+     "en": "Tourists took photos beside the ancient statue.",
+     "ko": "관광객들은 그 고대의 조각상 옆에서 사진을 찍었어요."
+    },
+    {
+     "en": "The artist carved the statue from solid marble.",
+     "ko": "그 예술가는 단단한 대리석으로 그 조각상을 새겼어요."
+    },
+    {
+     "en": "The garden features several small statues.",
+     "ko": "그 정원은 여러 개의 작은 조각상들을 특징으로 해요."
+    },
+    {
+     "en": "He stood as still as a statue.",
+     "ko": "그는 조각상처럼 미동도 없이 서 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sculpture",
+     "ko": "조각",
+     "en": "A modern sculpture."
+    },
+    {
+     "type": "연관어",
+     "word": "monument",
+     "ko": "기념비",
+     "en": "A war monument."
+    },
+    {
+     "type": "연관어",
+     "word": "marble",
+     "ko": "대리석",
+     "en": "White marble."
+    },
+    {
+     "type": "연관어",
+     "word": "bronze",
+     "ko": "청동",
+     "en": "A bronze medal."
+    },
+    {
+     "type": "연관어",
+     "word": "figure",
+     "ko": "형상",
+     "en": "A human figure."
+    },
+    {
+     "type": "연관어",
+     "word": "carve",
+     "ko": "조각하다",
+     "en": "Carve wood."
+    }
+   ]
+  },
+  "2": {
+   "word": "abandon",
+   "overview": [
+    "abandon은 '버리다, 포기하다'라는 뜻의 동사입니다.",
+    "abandon a plan(계획을 포기하다)처럼 씁니다.",
+    "'버리고 떠나다, 방치하다'라는 뜻으로도 씁니다.",
+    "명사 abandonment(유기, 포기)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "give up",
+     "en": "Give up a plan.",
+     "ko": "계획을 포기하다."
+    },
+    {
+     "word": "leave behind",
+     "en": "Leave behind a pet.",
+     "ko": "반려동물을 버리고 떠나다."
+    }
+   ],
+   "etymology": [
+    "abandon은 옛 프랑스어 abandoner(완전히 넘겨주다, 놓아 버리다)에서 온 단어입니다.",
+    "a bandon(누군가의 뜻대로)이라는 표현에서 나온 말로, '자신의 권한을 완전히 놓아 버리다'라는 뜻이었습니다.",
+    "'무언가를 완전히 포기하고 그대로 두다'라는 뜻으로 굳어졌습니다.",
+    "지금은 계획, 장소, 사람 등을 완전히 버리고 떠나는 모든 상황에 폭넓게 씁니다.",
+    "abandon의 핵심 이미지는 '더 이상 붙잡지 않고 완전히 놓아 버리는 포기 🚶'입니다."
+   ],
+   "meanings": [
+    "단념하다, 포기하다, 버리다",
+    "버리고 떠나다",
+    "방치하다"
+   ],
+   "examples": [
+    {
+     "en": "They had to abandon the sinking ship.",
+     "ko": "그들은 그 침몰하는 배를 버리고 떠나야 했어요."
+    },
+    {
+     "en": "She refused to abandon her dream of becoming an artist.",
+     "ko": "그녀는 예술가가 되겠다는 자신의 꿈을 포기하기를 거부했어요."
+    },
+    {
+     "en": "The building was abandoned decades ago.",
+     "ko": "그 건물은 수십 년 전에 버려졌어요."
+    },
+    {
+     "en": "He abandoned the project after facing setbacks.",
+     "ko": "그는 좌절을 겪은 후 그 프로젝트를 포기했어요."
+    },
+    {
+     "en": "The dog was abandoned near the highway.",
+     "ko": "그 개는 그 고속도로 근처에 버려졌어요."
+    },
+    {
+     "en": "They abandoned their original plan for a new one.",
+     "ko": "그들은 자신들의 원래 계획을 새로운 것을 위해 포기했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "give up",
+     "ko": "포기하다",
+     "en": "Give up hope."
+    },
+    {
+     "type": "파생어",
+     "word": "abandonment",
+     "ko": "유기, 포기",
+     "en": "Fear of abandonment."
+    },
+    {
+     "type": "연관어",
+     "word": "desert",
+     "ko": "버리다",
+     "en": "Desert a post."
+    },
+    {
+     "type": "연관어",
+     "word": "leave",
+     "ko": "떠나다",
+     "en": "Leave suddenly."
+    },
+    {
+     "type": "연관어",
+     "word": "neglect",
+     "ko": "방치하다",
+     "en": "Neglect a duty."
+    },
+    {
+     "type": "연관어",
+     "word": "forsake",
+     "ko": "저버리다",
+     "en": "Forsake a friend."
+    }
+   ]
+  },
+  "1526": {
+   "word": "lap",
+   "overview": [
+    "lap은 '무릎 위'라는 뜻의 명사입니다.",
+    "sit on someone's lap(누군가의 무릎 위에 앉다)처럼 씁니다.",
+    "경주의 '한 바퀴'라는 뜻으로도 씁니다.",
+    "동사로는 동물이 물을 '핥아 먹다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "knees",
+     "en": "Sit on your knees.",
+     "ko": "무릎 위에 앉다."
+    },
+    {
+     "word": "round",
+     "en": "One more round.",
+     "ko": "한 바퀴 더."
+    }
+   ],
+   "etymology": [
+    "lap은 고대 영어 læppa(옷자락, 늘어진 부분)에서 온 단어입니다.",
+    "게르만 말 뿌리로, 앉았을 때 옷이 무릎 위로 늘어지는 부분을 뜻했습니다.",
+    "'앉은 자세에서 허벅지와 배 사이에 생기는 오목한 공간'이라는 뜻으로 굳어졌습니다.",
+    "경주 트랙을 한 바퀴 도는 것, 그리고 물결이 찰랑거리며 핥는 소리에도 비유적으로 씁니다.",
+    "lap의 핵심 이미지는 '앉았을 때 무릎 위에 생기는 포근한 공간 🧍'입니다."
+   ],
+   "meanings": [
+    "무릎 위",
+    "한 바퀴",
+    "핥다, 찰랑거리다"
+   ],
+   "examples": [
+    {
+     "en": "The cat curled up on her lap.",
+     "ko": "그 고양이는 그녀의 무릎 위에서 몸을 웅크렸어요."
+    },
+    {
+     "en": "He completed the final lap of the race.",
+     "ko": "그는 그 경주의 마지막 바퀴를 완주했어요."
+    },
+    {
+     "en": "The dog lapped up water from the bowl.",
+     "ko": "그 개는 그 그릇에서 물을 핥아 먹었어요."
+    },
+    {
+     "en": "Waves gently lapped against the shore.",
+     "ko": "파도가 그 해안에 부드럽게 찰랑거렸어요."
+    },
+    {
+     "en": "She held the baby on her lap during the flight.",
+     "ko": "그녀는 그 비행 동안 그 아기를 자신의 무릎 위에 안았어요."
+    },
+    {
+     "en": "The runners cheered as they finished the last lap.",
+     "ko": "그 주자들은 그 마지막 바퀴를 마치며 환호했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "knee",
+     "ko": "무릎",
+     "en": "A skinned knee."
+    },
+    {
+     "type": "연관어",
+     "word": "round",
+     "ko": "바퀴, 순회",
+     "en": "The final round."
+    },
+    {
+     "type": "연관어",
+     "word": "race",
+     "ko": "경주",
+     "en": "A close race."
+    },
+    {
+     "type": "연관어",
+     "word": "track",
+     "ko": "트랙",
+     "en": "A running track."
+    },
+    {
+     "type": "연관어",
+     "word": "sit",
+     "ko": "앉다",
+     "en": "Sit comfortably."
+    },
+    {
+     "type": "연관어",
+     "word": "wave",
+     "ko": "파도",
+     "en": "A gentle wave."
+    }
+   ]
+  },
+  "1960": {
+   "word": "pill",
+   "overview": [
+    "pill은 '알약'이라는 뜻의 명사입니다.",
+    "take a pill(알약을 먹다)처럼 씁니다.",
+    "삼키기 쉽게 만든 작고 둥근 형태의 약을 뜻합니다.",
+    "the pill은 '피임약'을 가리키는 표현으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tablet",
+     "en": "A small tablet.",
+     "ko": "작은 정제."
+    },
+    {
+     "word": "medicine",
+     "en": "Take medicine.",
+     "ko": "약을 먹다."
+    }
+   ],
+   "etymology": [
+    "pill은 라틴어 pilula(작은 공)에서 온 단어입니다.",
+    "pila(공)에서 나온 말로, 약을 작고 둥근 공 모양으로 만든 데서 이름이 붙었습니다.",
+    "'삼키기 쉽게 뭉쳐 만든 작고 둥근 약'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금도 여러 형태의 약 중 삼키는 알약을 가리키는 대표적인 단어로 씁니다.",
+    "pill의 핵심 이미지는 '삼키기 쉽게 작고 둥글게 뭉쳐 만든 알약 💊'입니다."
+   ],
+   "meanings": [
+    "알약, 당의정"
+   ],
+   "examples": [
+    {
+     "en": "She took a pill to relieve her headache.",
+     "ko": "그녀는 자신의 두통을 덜기 위해 알약 하나를 먹었어요."
+    },
+    {
+     "en": "The doctor prescribed pills for his high blood pressure.",
+     "ko": "그 의사는 그의 고혈압을 위해 알약들을 처방했어요."
+    },
+    {
+     "en": "He forgot to take his morning pill.",
+     "ko": "그는 자신의 아침 알약을 먹는 것을 잊어버렸어요."
+    },
+    {
+     "en": "The pill bottle sat on the kitchen counter.",
+     "ko": "그 알약 병은 그 부엌 조리대 위에 놓여 있었어요."
+    },
+    {
+     "en": "Some pills need to be taken with food.",
+     "ko": "몇몇 알약들은 음식과 함께 복용해야 해요."
+    },
+    {
+     "en": "She swallowed the bitter pill with water.",
+     "ko": "그녀는 그 쓴 알약을 물과 함께 삼켰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "tablet",
+     "ko": "정제",
+     "en": "A vitamin tablet."
+    },
+    {
+     "type": "연관어",
+     "word": "medicine",
+     "ko": "약",
+     "en": "Cold medicine."
+    },
+    {
+     "type": "연관어",
+     "word": "prescription",
+     "ko": "처방전",
+     "en": "Fill a prescription."
+    },
+    {
+     "type": "연관어",
+     "word": "swallow",
+     "ko": "삼키다",
+     "en": "Swallow the pill."
+    },
+    {
+     "type": "연관어",
+     "word": "dose",
+     "ko": "복용량",
+     "en": "A daily dose."
+    },
+    {
+     "type": "연관어",
+     "word": "capsule",
+     "ko": "캡슐",
+     "en": "A gel capsule."
+    }
+   ]
+  },
+  "529": {
+   "word": "combat",
+   "overview": [
+    "combat은 '전투, 싸움'이라는 뜻의 명사이자 '맞서 싸우다'라는 뜻의 동사입니다.",
+    "hand-to-hand combat(백병전)처럼 씁니다.",
+    "군사적 전투뿐 아니라 문제와 맞서 싸우는 것을 뜻하기도 합니다.",
+    "combat crime(범죄에 맞서 싸우다)처럼 동사로도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fight",
+     "en": "A fierce fight.",
+     "ko": "치열한 싸움."
+    },
+    {
+     "word": "battle",
+     "en": "A tough battle.",
+     "ko": "힘든 전투."
+    }
+   ],
+   "etymology": [
+    "combat은 라틴어 combattere(함께 싸우다)에서 온 단어입니다.",
+    "com(함께)과 battere(치다, 싸우다)가 합쳐진 말로, battle(전투)과 같은 가족입니다.",
+    "'양쪽이 서로 맞붙어 싸우는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "군사적 전투뿐 아니라 질병, 범죄 등 눈에 보이지 않는 대상과 싸우는 데도 폭넓게 씁니다.",
+    "combat의 핵심 이미지는 '두 세력이 정면으로 맞붙는 치열한 전투 ⚔️'입니다."
+   ],
+   "meanings": [
+    "전투, 싸움",
+    "맞서 싸우다"
+   ],
+   "examples": [
+    {
+     "en": "The soldiers were trained for combat.",
+     "ko": "그 군인들은 전투를 위해 훈련받았어요."
+    },
+    {
+     "en": "The government launched a campaign to combat crime.",
+     "ko": "그 정부는 범죄에 맞서 싸우기 위한 캠페인을 시작했어요."
+    },
+    {
+     "en": "He was wounded during close combat.",
+     "ko": "그는 근접 전투 동안 부상을 입었어요."
+    },
+    {
+     "en": "Doctors work to combat the spread of disease.",
+     "ko": "의사들은 그 질병의 확산에 맞서 싸우려고 노력해요."
+    },
+    {
+     "en": "The video game features intense combat scenes.",
+     "ko": "그 비디오 게임은 격렬한 전투 장면들을 특징으로 해요."
+    },
+    {
+     "en": "They combat poverty through education programs.",
+     "ko": "그들은 교육 프로그램들을 통해 빈곤에 맞서 싸워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fight",
+     "ko": "싸움",
+     "en": "A street fight."
+    },
+    {
+     "type": "연관어",
+     "word": "battle",
+     "ko": "전투",
+     "en": "A fierce battle."
+    },
+    {
+     "type": "연관어",
+     "word": "war",
+     "ko": "전쟁",
+     "en": "Declare war."
+    },
+    {
+     "type": "연관어",
+     "word": "soldier",
+     "ko": "군인",
+     "en": "A brave soldier."
+    },
+    {
+     "type": "연관어",
+     "word": "struggle",
+     "ko": "투쟁",
+     "en": "A long struggle."
+    },
+    {
+     "type": "연관어",
+     "word": "defend",
+     "ko": "방어하다",
+     "en": "Defend the city."
+    }
+   ]
   }
  }
 }
