@@ -55,13 +55,13 @@ const CHAPTERS = [
                 "art": "02-broken-2.webp",
                 "emoji": "🔧",
                 "left": [
-                    "마리는 인형을 조심스레 안아 들었습니다. 손수건을 풀어 턱을 감아 주었지요.",
+                    "마리는 인형을 조심스레 안아 들었습니다. 주머니에서 손수건을 꺼내 턱을 감아 주었지요.",
                     "\"아프지? 내가 고쳐 줄게.\"",
                     "그 모습을 보고 대부님이 다가와 나직이 말했습니다."
                 ],
                 "right": [
                     "\"그 인형에게는 사연이 있단다. 먼 나라 왕자였는데 생쥐 왕의 마법에 걸려 저렇게 됐다는구나. 누군가 지켜 주면 마법이 풀린다더라.\"",
-                    "마리는 그 말을 몇 번이나 곱씹었지요.",
+                    "마리는 그 말을 몇 번이나 떠올려 보았지요.",
                     "밤이 깊자 마리는 인형을 나무 아래에 눕혔습니다. 작은 이불도 덮어 주었지요."
                 ]
             }
@@ -188,7 +188,7 @@ const CHAPTERS = [
                 "right": [
                     "마리는 걸음을 멈추고 귀를 기울였지요. 나뭇가지가 흔들릴 때마다 소리가 조금씩 달랐습니다.",
                     "그때 눈이 내리기 시작했습니다.",
-                    "그런데 어쩐지 이상했지요. 눈송이가 사람처럼 팔을 벌리고 빙글빙글 돌며 춤을 추는 것이었습니다. 어디선가 음악이 흘러 온 숲이 함께 흔들렸지요."
+                    "그런데 어쩐지 이상했지요. 눈송이가 사람처럼 팔을 벌리고 빙글빙글 돌며 춤을 추는 것이었습니다. 어디선가 음악이 흘러나오자 숲 전체가 함께 흔들렸지요."
                 ]
             },
             {
@@ -231,11 +231,11 @@ const CHAPTERS = [
                 "emoji": "🍬",
                 "left": [
                     "광장에서 큰 잔치가 열렸습니다. 여러 나라 사람들이 차례로 나와 춤을 추었지요.",
-                    "초콜릿 나라 사람들은 발을 탁탁 굴렀습니다. 차 나라 사람들은 부채를 촤르르 폈지요. 사탕 나라 사람들은 빙글빙글 돌다 폴짝 뛰어올랐습니다.",
+                    "초콜릿 나라 사람들은 발을 탁탁 굴렀습니다. 녹차 나라 사람들은 부채를 촤르르 폈지요. 사탕 나라 사람들은 빙글빙글 돌다 폴짝 뛰어올랐습니다.",
                     "마지막엔 꽃들이 한들한들 춤을 췄지요. 마리가 웃으며 말했습니다. \"손뼉 치느라 손이 다 아파요!\""
                 ],
                 "right": [
-                    "잔치가 무르익을 무렵 왕자가 곁에 앉았습니다.",
+                    "잔치가 한창일 때 왕자가 곁에 앉았습니다.",
                     "\"여기서 저와 지내지 않으실래요?\"",
                     "마리는 잠시 생각에 잠겼지요. 집이 떠올랐습니다. 어머니와 프리츠의 얼굴도 떠올랐지요.",
                     "마리는 조그맣게 대답했습니다. \"저는 돌아가야 할 것 같아요.\""
@@ -403,11 +403,11 @@ const AFTERWORD = {
                 "호프만이 지은 이야기를 뒤에 차이콥스키가 발레 음악으로 만들었습니다. 그래서 더 널리 알려졌지요.",
                 "호두까기 인형은 선물 가운데 가장 볼품없었습니다. 얼굴이 우스꽝스러운 인형이었지요. 다른 아이들은 거들떠보지 않았습니다.",
                 "마리만 그것을 안고 다녔습니다. 손수건으로 턱을 매어 주기도 했고요. 그래서 밤에 벌어지는 일을 마리만 보게 됩니다.",
-                "싸움이 벌어졌을 때 마리는 숨지 않았습니다. 슬리퍼를 집어 던졌지요. 그 한 번이 판을 갈랐습니다."
+                "싸움이 벌어졌을 때 마리는 숨지 않았습니다. 슬리퍼를 집어 던졌지요. 그 슬리퍼 한 짝 덕분에 싸움에서 이겼습니다."
             ],
             right: [
                 "어른들은 마리의 말을 믿지 않습니다. 꿈을 꾼 것이라고 하지요. 이야기는 누가 옳은지 끝까지 딱 잘라 말하지 않습니다.",
-                "여러분은 그날 밤 일이 있었다고 보십니까?"
+                "여러분은 그날 밤 일이 꿈이었다고 보십니까, 정말 있었던 일이라고 보십니까?"
             ]
         }
     ]
@@ -993,7 +993,7 @@ const EN = {
             { word: 'mend', meaning: '고치다', sentence: "I'll mend you." },
             { word: 'spell', meaning: '마법', sentence: 'The Mouse King put a spell on him.' },
             { word: 'stand by', meaning: '지켜 주다', sentence: 'The spell breaks if somebody stands by him.' },
-            { word: 'turn over in one’s mind', meaning: '곱씹다', sentence: 'Marie turned that over in her mind.' }
+            { word: 'turn over in one’s mind', meaning: '곰곰이 떠올려 보다', sentence: 'Marie turned that over in her mind.' }
         ],
         '03-midnight.webp': [
             { word: 'creep out', meaning: '살금살금 나가다', sentence: 'She crept out to the sitting room.' },
@@ -1059,7 +1059,7 @@ const EN = {
             { word: 'stamp', meaning: '발을 구르다', sentence: 'The Chocolate people stamped their feet.' },
             { word: 'with a snap', meaning: '촤르르', sentence: 'The Tea people opened out fans with a snap.' },
             { word: 'spring', meaning: '폴짝 뛰다', sentence: 'The Candy people sprang into the air.' },
-            { word: 'at its height', meaning: '무르익을 무렵', sentence: 'When the feast was at its height.' }
+            { word: 'at its height', meaning: '한창일 때', sentence: 'When the feast was at its height.' }
         ],
         '08-morning.webp': [
             { word: 'open the way', meaning: '길을 열어 주다', sentence: 'I shall open the way for you.' },
@@ -1077,7 +1077,7 @@ const EN = {
             { word: 'impressive', meaning: '볼품 있는', sentence: 'The least impressive present of the lot.' },
             { word: 'stiff', meaning: '굳은', sentence: 'A doll with a stiff jaw.' },
             { word: 'a second look', meaning: '거들떠보기', sentence: 'Nobody gave him a second look.' },
-            { word: 'turn', meaning: '판을 가르다', sentence: 'That one throw turned the whole thing.' },
+            { word: 'turn', meaning: '싸움의 결과를 바꾸다', sentence: 'That one throw turned the whole thing.' },
             { word: 'come down on one side', meaning: '한쪽으로 딱 잘라 말하다', sentence: 'The story never quite comes down on one side.' }
         ]
     }
@@ -1096,11 +1096,14 @@ const WORDS_KO = {
     "01-gift.webp": [
         { w: "대롱대롱", k: "작은 것이 매달려 흔들리는 모습.", s: "가지마다 촛불이 켜지고 금박 사과가 대롱대롱 매달렸습니다." },
         { w: "병정", k: "옛날에 군인을 부르던 말.", s: "프리츠는 병정 인형을, 마리는 새 인형을 받았습니다." },
-        { w: "해마다", k: "한 해도 빠지지 않고 매년.", s: "해마다 신기한 것을 만들어 오시는 분이었지요." }
+        { w: "해마다", k: "한 해도 빠지지 않고 매년.", s: "해마다 신기한 것을 만들어 오시는 분이었지요." },
+        { w: "금박", k: "종이처럼 아주 얇게 편 금.", s: "가지마다 촛불이 켜지고 금박 사과가 대롱대롱 매달렸습니다." },
+        { w: "대부", k: "아이가 태어났을 때, 그 아이를 평생 돌봐 주기로 약속한 어른.", s: "그때 대부님이 들어오셨지요." }
     ],
     "01-gift-2.webp": [
         { w: "아래위", k: "아래쪽과 위쪽 양쪽.", s: "턱이 아래위로 딱딱 벌어졌지요." },
-        { w: "까다", k: "단단한 껍데기를 벗겨 내다.", s: "호두를 까는 인형이었습니다." }
+        { w: "까다", k: "단단한 껍데기를 벗겨 내다.", s: "호두를 까는 인형이었습니다." },
+        { w: "태엽", k: "감아 두면 풀리면서 시계나 장난감을 움직이게 하는, 얇고 길게 만 쇠줄.", s: "태엽을 감자 성안의 인형들이 움직이기 시작했습니다." }
     ],
     "02-broken.webp": [
         { w: "이리저리", k: "여기로 저기로 오가며.", s: "마리는 그 인형을 안고 이리저리 다녔습니다." },

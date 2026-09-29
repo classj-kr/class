@@ -7,13 +7,13 @@ const CHAPTERS = [
                 "art": "01-home.webp",
                 "emoji": "🏡",
                 "left": [
+                    "프랑스의 작은 시골 마을에 레미라는 아이가 살았습니다. 곱슬머리에 눈이 큰 아이였지요. 레미는 바르브랭 아주머니를 엄마라고 부르며 자랐습니다.",
                     "아궁이에 걸린 구리 냄비에서 김이 폴폴 올랐습니다. 감자 삶는 냄새가 부엌에 가득했지요.",
                     "\"레미야, 손 씻고 와 앉아라.\"",
-                    "바르브랭 아주머니가 국자를 들고 불렀습니다. 곱슬머리에 눈이 큰 아이가 뛰어 들어왔지요.",
-                    "가난해도 부엌만은 늘 따뜻한 집이었습니다."
+                    "아주머니가 국자를 들고 부르자 레미가 뛰어 들어왔지요. 가난해도 부엌만은 늘 따뜻한 집이었습니다."
                 ],
                 "right": [
-                    "아주머니는 늘 제 몫을 레미 앞에 밀어 놓았습니다. \"오늘은 하나 더 먹으렴.\"",
+                    "아주머니는 늘 자기 몫을 레미 앞에 밀어 놓았습니다. \"오늘은 하나 더 먹으렴.\"",
                     "겨울이면 레미를 무릎에 앉히고 이야기를 들려주었지요. 레미는 그 시간이 제일 좋았습니다.",
                     "아버지는 멀리 파리에서 일했지요. 몇 해째 돌아오지 않아서 레미는 아버지 얼굴이 잘 떠오르지 않았습니다."
                 ]
@@ -22,13 +22,13 @@ const CHAPTERS = [
                 "art": "01-home-2.webp",
                 "emoji": "🏡",
                 "left": [
-                    "그러던 어느 날 파리에서 소식이 왔습니다. 아버지가 일하다 크게 다쳤다는 것이었지요. 집에는 돈이 뚝 떨어졌습니다.",
+                    "그러던 어느 날 파리에서 소식이 왔습니다. 아버지가 일하다 크게 다쳤다는 것이었지요. 이제 집에는 먹을 것을 살 돈도 없었습니다.",
                     "그날 밤 아주머니가 레미를 꼭 끌어안았지요. 한참 동안 말이 없다가 겨우 입을 열었습니다."
                 ],
                 "right": [
                     "\"사실 너는 내가 낳은 아이가 아니란다. 길에 버려진 너를 우리가 데려온 거였어. 이제 그 사실을 알아야 할 때가 되었구나.\"",
                     "레미는 무슨 말인지 알아듣지 못했습니다. 입술만 달싹였지요. 가슴이 꽉 막힌 것 같았습니다.",
-                    "아주머니의 눈에서 눈물이 흘렀지요. 레미는 그 손을 꼭 잡았습니다."
+                    "아주머니의 눈에서 눈물이 흘렀지요. 레미는 아주머니의 손을 꼭 잡았습니다."
                 ]
             }
         ]
@@ -42,12 +42,12 @@ const CHAPTERS = [
                 "emoji": "🎩",
                 "left": [
                     "얼마 뒤 마을에 낯선 사람이 들어왔습니다. 떠돌이 악사였지요.",
-                    "흰 머리에 챙 넓은 모자를 쓰고 있었습니다. 망토는 낡았지만 걸음이 반듯했지요.",
+                    "흰 머리에 챙 넓은 모자를 쓰고 있었습니다. 망토는 낡았지만 허리는 꼿꼿했지요.",
                     "이름은 비탈리스라고 했습니다. 뒤에는 개 세 마리가 따랐지요."
                 ],
                 "right": [
                     "흰 푸들 한 마리와 작은 개 두 마리였습니다. 어깨에는 빨간 웃옷을 입은 작은 원숭이가 앉아 있었지요.",
-                    "노인이 하프를 켜자 개들이 뒷발로 서서 춤을 추었습니다. 마을 사람들이 우르르 모여들었지요.",
+                    "노인이 하프를 연주하자 개들이 뒷발로 서서 춤을 추었습니다. 마을 사람들이 우르르 모여들었지요.",
                     "레미도 그 틈에 끼어 구경했지요. 이런 구경거리는 처음이었습니다."
                 ]
             },
@@ -78,7 +78,7 @@ const CHAPTERS = [
                 "emoji": "🐩",
                 "left": [
                     "길 위의 하루하루는 고단했습니다. 아침이면 걷고 낮이면 공연을 했지요. 밤에는 헛간이나 나무 밑에서 잤습니다.",
-                    "비가 오면 온몸이 젖었지요. 그래도 레미는 금세 식구들과 친해졌습니다.",
+                    "비가 오면 온몸이 젖었지요. 그래도 레미는 금세 개들과 원숭이와 친해졌습니다.",
                     "밤이면 흰 푸들 카피가 레미 옆에 바짝 붙어 잤지요. 털이 따뜻해서 추운 줄을 몰랐습니다."
                 ],
                 "right": [
@@ -146,7 +146,7 @@ const CHAPTERS = [
                 "art": "05-parting.webp",
                 "emoji": "💔",
                 "left": [
-                    "그 겨울이 지나는 동안 식구가 하나둘 줄었습니다. 제르비노와 돌체는 눈보라 속에 사라졌고, 졸리쾨르는 추위를 이기지 못했지요.",
+                    "그 겨울 동안 식구가 하나둘 줄었습니다. 제르비노와 돌체는 늑대에게 물려 갔고, 졸리쾨르는 감기를 앓다가 죽었지요.",
                     "할아버지도 자주 기침을 했습니다. 걸음도 눈에 띄게 느려졌지요.",
                     "\"좀 쉬세요, 할아버지.\"",
                     "\"쉬면 굶는단다.\" 할아버지는 웃으며 하프를 다시 멨지요."
@@ -162,11 +162,11 @@ const CHAPTERS = [
                 "emoji": "💔",
                 "left": [
                     "\"레미야, 잘 들어라. 카피를 잘 돌보아라. 그 아이가 너를 지켜 줄 것이다. 그리고 어디서든 노래를 그치지 말아라.\"",
-                    "레미는 무슨 말인지 알 것 같았지요. \"할아버지, 그런 말씀 마세요.\"",
+                    "레미는 가슴이 철렁했습니다. 꼭 마지막 인사 같았거든요. \"할아버지, 그런 말씀 마세요.\"",
                     "할아버지는 빙그레 웃기만 했습니다."
                 ],
                 "right": [
-                    "그러고는 조용히 눈을 감았지요. 레미는 카피를 안고 한참을 울었습니다. 카피도 목을 길게 빼고 울었지요.",
+                    "그러고는 조용히 눈을 감았습니다. 할아버지는 그렇게 돌아가셨지요. 레미는 카피를 안고 한참을 울었습니다. 카피도 목을 길게 빼고 울었지요.",
                     "해가 뜨고 거리에 사람이 오갔습니다.",
                     "그날부터 레미는 혼자 길을 걷게 되었지요. 곁에는 카피뿐이었습니다."
                 ]
@@ -181,9 +181,9 @@ const CHAPTERS = [
                 "art": "06-barge.webp",
                 "emoji": "⛵",
                 "left": [
-                    "레미는 카피와 함께 길을 걸었습니다. 하프를 켜서 겨우 끼니를 이었지요.",
+                    "레미는 카피와 함께 길을 걸었습니다. 하프를 연주해 번 돈으로 겨우 밥을 사 먹었지요.",
                     "어느 날 강가에 이르렀습니다. 버드나무가 늘어진 조용한 물가였지요.",
-                    "물에서 시원한 바람이 불어왔지요. 레미는 물가에 앉아 하프를 켰습니다."
+                    "물에서 시원한 바람이 불어왔지요. 레미는 물가에 앉아 하프를 연주했습니다."
                 ],
                 "right": [
                     "거기 배 한 척이 매여 있었습니다. 창가에 꽃 화분이 놓인 배였지요. 부인 한 사람이 갑판에 나와 있었습니다.",
@@ -196,14 +196,14 @@ const CHAPTERS = [
                 "emoji": "⛵",
                 "left": [
                     "레미는 배에 올랐습니다. 오랜만에 지붕 아래에서 잤지요.",
-                    "아침이면 뱃머리나 강둑에 앉아 하프를 켰습니다. 강물이 천천히 흘러갔지요. 아픈 아이가 그 소리를 좋아했습니다.",
+                    "아침이면 뱃머리나 강둑에 앉아 하프를 연주했습니다. 강물이 천천히 흘러갔지요. 아픈 아이가 그 소리를 좋아했습니다.",
                     "아이는 담요 밖으로 손을 내밀며 졸랐지요. \"한 번만 더 해 줘.\""
                 ],
                 "right": [
                     "어느 날 그 아이가 처음으로 웃었지요. 부인이 눈물을 글썽였습니다.",
                     "\"네 덕분이구나.\"",
                     "레미도 마음이 따뜻해졌지요. 제 집이 생긴 것 같았습니다. 그렇게 여름이 지나갔지요.",
-                    "레미는 웃는 날이 많아졌습니다."
+                    "부인은 가끔 레미를 보며 한숨을 쉬었지요. \"아기 때 잃어버린 우리 큰아이가 살아 있다면, 꼭 너만 하겠구나.\""
                 ]
             }
         ]
@@ -231,13 +231,13 @@ const CHAPTERS = [
                 "emoji": "⛏️",
                 "left": [
                     "\"물이다! 어서 위로!\"",
-                    "하지만 길이 이미 막혔습니다. 레미와 광부들은 좁은 굴에 갇혔지요. 등불 하나만 겨우 남았습니다.",
+                    "하지만 나가는 길은 이미 물에 잠겼습니다. 레미와 광부들은 좁은 굴에 갇혔지요. 등불 하나만 겨우 남았습니다.",
                     "나이 든 광부가 침착하게 말했지요. \"모두 벽에 등을 붙이고 앉게. 힘을 아껴야 하네.\"",
                     "시간이 아주 더디게 흘렀습니다."
                 ],
                 "right": [
                     "배가 고프고 몸이 떨렸습니다. 누군가 흐느끼기 시작했지요.",
-                    "그때 레미가 조용히 노래를 불렀습니다. 어둠 속에 그 소리만 울렸지요. 열나흘 만에 곡괭이 소리가 들려왔습니다.",
+                    "그때 레미가 조용히 노래를 불렀습니다. 어둠 속에 그 소리만 울렸지요. 갇힌 지 열나흘 만에 벽 너머에서 곡괭이 소리가 들려왔습니다.",
                     "사람들이 서로를 얼싸안았지요."
                 ]
             }
@@ -256,16 +256,16 @@ const CHAPTERS = [
                     "레미는 그 마을에서 한동안 지냈지요. 얼굴에 묻은 검댕을 씻어 내는 데만 한참이 걸렸습니다."
                 ],
                 "right": [
-                    "그러다 다시 길을 걷기로 했지요. 카피와 하프가 늘 함께였습니다.",
-                    "갱도에서 살아 나온 아이 이야기는 멀리까지 퍼졌지요. 어느 날 그 이야기를 들은 사람들이 레미를 찾아왔습니다.",
-                    "레미에게는 원래 어머니와 형제가 있었던 것이지요. 레미는 한참 동안 믿기지가 않았습니다."
+                    "갱도에서 살아 나온 아이 이야기는 멀리까지 퍼졌지요. 며칠 뒤 마차 한 대가 광산 마을에 섰습니다. 신사 두 사람이 서류를 들고 내려 레미를 찾았지요.",
+                    "\"네 어머니가 너를 오래 찾고 계셨단다. 강 위의 배에서 만난 그 부인이 바로 네 어머니시다.\"",
+                    "배에 누워 있던 아픈 아이는 레미의 동생이었습니다. 레미는 한참 동안 믿기지가 않았지요."
                 ]
             },
             {
                 "art": "08-ending-2.webp",
                 "emoji": "💗",
                 "left": [
-                    "레미는 새 식구들과 함께 지내게 되었습니다.",
+                    "레미는 어머니와 동생과 함께 살게 되었습니다.",
                     "그런데 가장 먼저 한 일이 있었지요. 바르브랭 아주머니를 모셔 온 것이었습니다. 아주머니는 레미를 보고 한참을 울었지요.",
                     "아주머니는 구리 냄비도 챙겨 왔습니다. \"오늘은 하나 더 먹으렴.\""
                 ],
@@ -276,7 +276,7 @@ const CHAPTERS = [
                 ]
             }
         ],
-        "moral": "피가 이어지지 않아도, 곁을 지켜 준 이들이 이미 가족이랍니다."
+        "moral": "나를 낳아 준 사람이 아니어도, 곁에서 돌봐 준 사람은 가족이랍니다."
     }
 ];
 
@@ -292,7 +292,7 @@ function artFrame(src, emoji) {
 const COVER = {
     title: '집 없는 아이',
     intro: [
-        '프랑스의 작가 엑토르 말로가 1878년에 펴낸 이야기예요. 원래 제목은 가족 없이라는 뜻이랍니다.',
+        '프랑스의 작가 엑토르 말로가 1878년에 펴낸 이야기예요. 원래 제목은 프랑스 말로 "가족 없이"라는 뜻이랍니다.',
         '떠돌이 악사와 개 세 마리, 원숭이 한 마리와 함께 프랑스 곳곳을 걸어 다니는 아이의 이야기예요. 그 시절 시골 마을과 광산의 모습이 이야기 속에 그대로 담겨 있습니다.'
     ]
 };
@@ -404,7 +404,7 @@ const AFTERWORD = {
                 "길 위의 식구들도 다시 보십시오. 카피와 제르비노와 돌체와 졸리쾨르지요. 할아버지는 그들을 레미의 형제라고 했습니다."
             ],
             right: [
-                "레미가 새 식구를 찾은 뒤 가장 먼저 한 일은 바르브랭 아주머니를 모셔 온 것입니다. 길러 준 사람을 잊지 않은 것이지요.",
+                "레미가 진짜 어머니를 찾은 뒤 가장 먼저 한 일은 바르브랭 아주머니를 모셔 온 것입니다. 길러 준 사람을 잊지 않은 것이지요.",
                 "레미에게 가족은 무엇이었을까요?"
             ]
         }
@@ -454,7 +454,7 @@ const QUIZ = [
         "q": "레미는 하프를 어떻게 배웠나요?",
         "choices": [
             "줄이 안 울려 금세 그만두었다",
-            "낮 공연에서만 켜 보았다",
+            "낮 공연에서만 연주해 보았다",
             "손끝이 부르터도 밤마다 연습했다"
         ],
         "answer": 2
@@ -462,7 +462,7 @@ const QUIZ = [
     {
         "q": "눈보라 치던 밤 할아버지가 한 일은 무엇인가요?",
         "choices": [
-            "하프를 켰다",
+            "하프를 연주했다",
             "외투를 벗어 줬다",
             "굴로 데려갔다"
         ],
@@ -487,7 +487,7 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "레미가 새 식구를 만난 뒤 가장 먼저 한 일은 무엇인가요?",
+        "q": "레미가 진짜 어머니를 만난 뒤 가장 먼저 한 일은 무엇인가요?",
         "choices": [
             "광산으로 돌아갔다",
             "바르브랭을 모셔 왔다",
@@ -575,7 +575,7 @@ const EN = {
                     left: [
                         "Steam rose from the copper pot over the fire, and the kitchen smelled of boiling potatoes.",
                         "\"Rémi, wash your hands and sit down.\"",
-                        "Mother Barberin called him with the ladle in her hand, and a boy with curly hair and large eyes came running in. She had brought him up, and she was always gentle with Rémi.",
+                        "Mother Barberin called him with the ladle in her hand, and a boy with curly hair and large eyes came running in. Rémi had always called her Mother. She had brought him up, and she was always gentle with Rémi.",
                         "The house was very poor, but the kitchen was always warm.",
                         "A copper pot hung over the hearth, smelling of potatoes."
                     ],
@@ -592,7 +592,7 @@ const EN = {
                     emoji: '🏡',
                     left: [
                         "Then one day news came from Paris.",
-                        "Rémi's father had been badly hurt at work, and there was no money left.",
+                        "Rémi's father had been badly hurt at work, and now there was no money even for food.",
                         "That night Mother Barberin held Rémi tight.",
                         "For a long while she said nothing. Then at last she spoke."
                     ],
@@ -600,7 +600,7 @@ const EN = {
                         "\"The truth is, you are not a child I bore. You were left on the road, and we took you in.\"",
                         "Rémi did not understand. His lips only moved.",
                         "There was a strange ache in his chest.",
-                        "Tears ran down her face, and Rémi held her hand tight."
+                        "Tears ran down Mother Barberin's face, and Rémi held her hand tight."
                     ]
                 }
             ]
@@ -742,7 +742,7 @@ const EN = {
                     art: '05-parting.webp',
                     emoji: '🕯️',
                     left: [
-                        "That winter the family grew smaller. Zerbino and Dolce were lost in the snow, and Joli-Cœur died of the cold.",
+                        "That winter the family grew smaller. Zerbino and Dolce were carried off by wolves, and Joli-Cœur caught a bad cold and died.",
                         "The old man coughed often, and his walk grew noticeably slower.",
                         "\"Do rest a while, grandfather.\"",
                         "\"Rest, and we go hungry.\" He smiled and took up the harp again."
@@ -759,11 +759,11 @@ const EN = {
                     left: [
                         "\"Rémi, listen to me. Take good care of Capi. He will look after you.\"",
                         "\"And wherever you are, do not stop singing.\"",
-                        "Rémi thought he understood. \"Grandfather, don't talk like that.\"",
+                        "Rémi's heart sank. It sounded like a last goodbye. \"Grandfather, don't talk like that.\"",
                         "But the old man only smiled."
                     ],
                     right: [
-                        "Then he quietly closed his eyes.",
+                        "Then he quietly closed his eyes. The old man had died.",
                         "Rémi held Capi and wept a long time. Capi stretched out his neck and howled.",
                         "The sun rose, and people came and went in the street.",
                         "From that day Rémi walked the road alone, with only Capi beside him."
@@ -805,7 +805,7 @@ const EN = {
                         "One day the child smiled for the first time. The lady's eyes filled.",
                         "\"That is your doing.\"",
                         "Rémi felt warm inside. It was as though he had a home of his own.",
-                        "And so the summer went by. Rémi laughed more and more."
+                        "And so the summer went by. Sometimes the lady looked at Rémi and sighed. \"My eldest boy was lost as a baby. If he is alive, he is just your age.\""
                     ]
                 }
             ]
@@ -836,7 +836,7 @@ const EN = {
                     emoji: '⛏️',
                     left: [
                         "\"Water! Get up top, quickly!\"",
-                        "But the way was blocked already.",
+                        "But the way out was already under water.",
                         "Rémi and the miners were shut into a narrow tunnel with one lamp.",
                         "An old miner said calmly, \"Sit with your backs to the wall. Save your strength.\"",
                         "The time went by terribly slowly."
@@ -864,10 +864,10 @@ const EN = {
                         "Rémi stayed in that town a while. It took days to wash the coal dust off."
                     ],
                     right: [
-                        "Then he walked on again, with Capi and the harp.",
                         "The story of the boy saved from the mine spread far.",
-                        "One day some people who had heard it came looking for him.",
-                        "They had been searching for him for years. Rémi had a mother and brothers!",
+                        "A few days later a carriage stopped in the mining town. Two gentlemen got out with papers and asked for Rémi.",
+                        "\"Your mother has been looking for you for years. The lady on the river boat is your mother.\"",
+                        "The sick boy on the boat was Rémi's little brother.",
                         "He could hardly believe it."
                     ]
                 },
@@ -875,7 +875,7 @@ const EN = {
                     art: '08-ending-2.webp',
                     emoji: '💫',
                     left: [
-                        "Rémi went to live with his new family.",
+                        "Rémi went to live with his mother and brother.",
                         "But first he brought Mother Barberin to come and live with them.",
                         "She looked at Rémi and wept a long time.",
                         "She had brought the copper pot too. \"Have another one tonight.\""
@@ -1050,7 +1050,7 @@ const EN = {
             { word: 'pour into', meaning: '밀려들다', sentence: 'Water was pouring into the gallery.' }
         ],
         '07-mine-2.webp': [
-            { word: 'block', meaning: '막다', sentence: 'The way was blocked already.' },
+            { word: 'under water', meaning: '물에 잠긴', sentence: 'The way out was already under water.' },
             { word: 'shut in', meaning: '가두다', sentence: 'They were shut into a narrow tunnel.' },
             { word: 'shiver', meaning: '몸이 떨리다', sentence: 'They were hungry and shivering.' },
             { word: 'sob', meaning: '흐느끼다', sentence: 'Somebody began to sob.' }
@@ -1059,10 +1059,10 @@ const EN = {
             { word: 'rescuer', meaning: '구조대', sentence: 'The rescuers broke through the wall.' },
             { word: 'coal dust', meaning: '검댕', sentence: 'It took days to wash the coal dust off.' },
             { word: 'lick', meaning: '핥다', sentence: 'Capi kept licking his cheek.' },
-            { word: 'search for', meaning: '찾아다니다', sentence: 'They had been searching for him for years.' }
+            { word: 'carriage', meaning: '마차', sentence: 'A carriage stopped in the mining town.' }
         ],
         '08-ending-2.webp': [
-            { word: 'go to live with', meaning: '함께 지내다', sentence: 'Rémi went to live with his new family.' },
+            { word: 'go to live with', meaning: '함께 지내다', sentence: 'Rémi went to live with his mother and brother.' },
             { word: 'bring', meaning: '모셔 오다', sentence: 'He brought Mother Barberin to come and live with them.' },
             { word: 'ever after', meaning: '그 뒤로도', sentence: 'He went on teaching ever after.' },
             { word: 'at one’s feet', meaning: '발치에', sentence: 'With Capi at his feet.' }
@@ -1089,18 +1089,17 @@ const WORDS_KO = {
     ],
     "01-home.webp": [
         { w: "구리", k: "붉은빛이 도는 단단한 쇠붙이.", s: "아궁이에 걸린 구리 냄비에서 김이 폴폴 올랐습니다." },
-        { w: "국자", k: "국이나 물을 떠내는 큰 숟가락.", s: "바르브랭 아주머니가 국자를 들고 불렀습니다." },
-        { w: "곱슬머리", k: "돌돌 말려 곱슬곱슬한 머리.", s: "곱슬머리에 눈이 큰 아이가 뛰어 들어왔지요." },
+        { w: "국자", k: "국이나 물을 떠내는 큰 숟가락.", s: "아주머니가 국자를 들고 부르자 레미가 뛰어 들어왔지요." },
+        { w: "곱슬머리", k: "돌돌 말려 곱슬곱슬한 머리.", s: "곱슬머리에 눈이 큰 아이였지요." },
         { w: "아궁이", k: "불을 때려고 낸 부엌 구멍.", s: "아궁이에 걸린 구리 냄비에서 김이 폴폴 올랐습니다." }
     ],
     "01-home-2.webp": [
-        { w: "돈이 뚝 떨어지다", k: "쓸 돈이 갑자기 하나도 없게 되다.", s: "집에는 돈이 뚝 떨어졌습니다." },
         { w: "입을 열다", k: "드디어 말을 하기 시작하다.", s: "한참 동안 말이 없다가 겨우 입을 열었습니다." },
         { w: "달싹이다", k: "입술이 조금씩 움직이다.", s: "입술만 달싹였지요." }
     ],
     "02-vitalis.webp": [
         { w: "웃옷", k: "위에 걸쳐 입는 옷.", s: "어깨에는 빨간 웃옷을 입은 작은 원숭이가 앉아 있었지요." },
-        { w: "켜다", k: "줄이 있는 악기를 문질러 소리를 내다.", s: "노인이 하프를 켜자 개들이 뒷발로 서서 춤을 추었습니다." },
+        { w: "하프", k: "줄을 여러 개 세워 매고 손가락으로 뜯어 소리를 내는 악기.", s: "노인이 하프를 연주하자 개들이 뒷발로 서서 춤을 추었습니다. 마을 사람들이 우르르 모여들었지요." },
         { w: "구경거리", k: "재미있게 볼 만한 것.", s: "이런 구경거리는 처음이었습니다." }
     ],
     "02-vitalis-2.webp": [
@@ -1110,7 +1109,7 @@ const WORDS_KO = {
     ],
     "03-troupe.webp": [
         { w: "고단하다", k: "몸이 몹시 피곤하다.", s: "길 위의 하루하루는 고단했습니다." },
-        { w: "금세", k: "얼마 지나지 않아 곧.", s: "그래도 레미는 금세 식구들과 친해졌습니다." },
+        { w: "금세", k: "얼마 지나지 않아 곧.", s: "그래도 레미는 금세 개들과 원숭이와 친해졌습니다." },
         { w: "바짝", k: "빈틈없이 아주 가깝게.", s: "밤이면 흰 푸들 카피가 레미 옆에 바짝 붙어 잤지요." },
         { w: "웃음을 터뜨리다", k: "참지 못하고 크게 웃다.", s: "사람들이 그때마다 웃음을 터뜨렸지요." }
     ],
@@ -1136,17 +1135,16 @@ const WORDS_KO = {
     ],
     "05-parting-2.webp": [
         { w: "빙그레", k: "소리 없이 부드럽게 웃는 모습.", s: "할아버지는 빙그레 웃기만 했습니다." },
-        { w: "눈을 감다", k: "세상을 떠나다.", s: "그러고는 조용히 눈을 감았지요." }
+        { w: "돌아가시다", k: "'죽다'를 높여 이르는 말.", s: "할아버지는 그렇게 돌아가셨지요." }
     ],
     "06-barge.webp": [
-        { w: "끼니를 잇다", k: "굶지 않고 겨우 먹고 살다.", s: "하프를 켜서 겨우 끼니를 이었지요." },
         { w: "척", k: "배를 셀 때 쓰는 말.", s: "거기 배 한 척이 매여 있었습니다." },
         { w: "갑판", k: "배 위쪽의 넓고 평평한 바닥.", s: "부인 한 사람이 갑판에 나와 있었습니다." },
         { w: "꾸벅", k: "고개를 한 번 숙이는 모습.", s: "레미는 고개를 꾸벅 숙였습니다." }
     ],
     "06-barge-2.webp": [
         { w: "오랜만에", k: "오랜 시간이 지난 뒤에.", s: "오랜만에 지붕 아래에서 잤지요." },
-        { w: "강둑", k: "강물이 넘치지 않게 쌓아 놓은 언덕.", s: "아침이면 뱃머리나 강둑에 앉아 하프를 켰습니다." },
+        { w: "강둑", k: "강물이 넘치지 않게 쌓아 놓은 언덕.", s: "아침이면 뱃머리나 강둑에 앉아 하프를 연주했습니다." },
         { w: "조르다", k: "해 달라고 자꾸 부탁하다.", s: "아이는 담요 밖으로 손을 내밀며 졸랐지요." }
     ],
     "07-mine.webp": [
@@ -1158,16 +1156,16 @@ const WORDS_KO = {
     "07-mine-2.webp": [
         { w: "침착하다", k: "놀라지 않고 차분하다.", s: "나이 든 광부가 침착하게 말했지요." },
         { w: "더디다", k: "움직임이 몹시 느리다.", s: "시간이 아주 더디게 흘렀습니다." },
-        { w: "열나흘", k: "열네 날.", s: "열나흘 만에 곡괭이 소리가 들려왔습니다." },
+        { w: "열나흘", k: "열네 날.", s: "갇힌 지 열나흘 만에 벽 너머에서 곡괭이 소리가 들려왔습니다." },
         { w: "얼싸안다", k: "두 팔을 벌려 꼭 껴안다.", s: "사람들이 서로를 얼싸안았지요." }
     ],
     "08-ending.webp": [
         { w: "눈부시다", k: "빛이 세어 눈을 뜨기 어렵다.", s: "햇빛이 눈부셔 앞이 보이지 않았습니다." },
         { w: "한동안", k: "꽤 오랜 사이.", s: "레미는 그 마을에서 한동안 지냈지요." },
-        { w: "믿기지 않다", k: "사실 같지 않아 믿어지지 않다.", s: "레미는 한참 동안 믿기지가 않았습니다." }
+        { w: "믿기지 않다", k: "사실 같지 않아 믿어지지 않다.", s: "배에 누워 있던 아픈 아이는 레미의 동생이었습니다. 레미는 한참 동안 믿기지가 않았지요." },
+        { w: "신사", k: "옷차림과 몸가짐이 점잖은 남자 어른.", s: "며칠 뒤 마차 한 대가 광산 마을에 섰습니다. 신사 두 사람이 서류를 들고 내려 레미를 찾았지요." }
     ],
     "08-ending-2.webp": [
-        { w: "식구", k: "한집에서 함께 사는 사람들.", s: "레미는 새 식구들과 함께 지내게 되었습니다." },
         { w: "챙기다", k: "잊지 않고 갖추어 가지다.", s: "아주머니는 구리 냄비도 챙겨 왔습니다." },
         { w: "둘러앉다", k: "여럿이 동그렇게 모여 앉다.", s: "뜰에 사람들이 둘러앉았지요." },
         { w: "엎드리다", k: "배를 바닥에 대고 눕다.", s: "카피는 늘 그 곁에 엎드려 있었지요." }
@@ -1175,7 +1173,7 @@ const WORDS_KO = {
     "end.webp": [
         { w: "쓸 데", k: "쓰게 되는 자리나 때.", s: "배워 두면 언젠가 쓸 데가 있다고 했습니다." },
         { w: "당장", k: "바로 그 자리에서 곧.", s: "그날 당장 쓸 데가 없는 것을 가르친 것입니다." },
-        { w: "모시다", k: "어른을 높여 대하면서 데려오다.", s: "레미가 새 식구를 찾은 뒤 가장 먼저 한 일은 바르브랭 아주머니를 모셔 온 것입니다." }
+        { w: "모시다", k: "어른을 높여 대하면서 데려오다.", s: "레미가 진짜 어머니를 찾은 뒤 가장 먼저 한 일은 바르브랭 아주머니를 모셔 온 것입니다." }
     ]
 };
 
