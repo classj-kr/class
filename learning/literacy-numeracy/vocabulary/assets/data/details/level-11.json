@@ -3832,6 +3832,1923 @@
      "en": "Inner strength."
     }
    ]
+  },
+  "2872": {
+   "word": "victory",
+   "overview": [
+    "victory는 '승리'라는 뜻의 명사입니다.",
+    "win a victory(승리를 거두다)처럼 씁니다.",
+    "경쟁, 전투, 시합 등에서 이기는 것을 뜻합니다.",
+    "형용사 victorious(승리한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "win",
+     "en": "A big win.",
+     "ko": "큰 승리."
+    },
+    {
+     "word": "triumph",
+     "en": "A great triumph.",
+     "ko": "위대한 승리."
+    }
+   ],
+   "etymology": [
+    "victory는 라틴어 victoria(승리)에서 온 단어입니다.",
+    "vincere(이기다, 정복하다)에서 나온 말로, convince(설득하다, '완전히 이기다')와 같은 가족입니다.",
+    "'경쟁에서 상대를 이겨 얻은 결과'라는 뜻이 그대로 이어져 왔습니다.",
+    "전쟁, 스포츠, 선거 등 다양한 겨룸에서의 승리를 폭넓게 가리킵니다.",
+    "victory의 핵심 이미지는 '치열한 경쟁 끝에 손에 넣은 승리의 영광 🏆'입니다."
+   ],
+   "meanings": [
+    "승리"
+   ],
+   "examples": [
+    {
+     "en": "The team celebrated their victory with a parade.",
+     "ko": "그 팀은 퍼레이드로 자신들의 승리를 축하했어요."
+    },
+    {
+     "en": "Her hard work led to a well-deserved victory.",
+     "ko": "그녀의 노력은 마땅히 받을 만한 승리로 이어졌어요."
+    },
+    {
+     "en": "The nation celebrated its victory in the war.",
+     "ko": "그 나라는 그 전쟁에서의 승리를 축하했어요."
+    },
+    {
+     "en": "It was a close game, but they achieved victory.",
+     "ko": "접전이었지만, 그들은 승리를 거뒀어요."
+    },
+    {
+     "en": "The candidate claimed victory in the election.",
+     "ko": "그 후보는 그 선거에서 승리를 선언했어요."
+    },
+    {
+     "en": "Victory tasted sweet after months of hard training.",
+     "ko": "몇 달간의 힘든 훈련 끝에 승리는 달콤하게 느껴졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "win",
+     "ko": "승리",
+     "en": "A clear win."
+    },
+    {
+     "type": "반의어",
+     "word": "defeat",
+     "ko": "패배",
+     "en": "Accept defeat."
+    },
+    {
+     "type": "파생어",
+     "word": "victorious",
+     "ko": "승리한",
+     "en": "A victorious army."
+    },
+    {
+     "type": "연관어",
+     "word": "triumph",
+     "ko": "승리",
+     "en": "A great triumph."
+    },
+    {
+     "type": "연관어",
+     "word": "champion",
+     "ko": "챔피언",
+     "en": "A world champion."
+    },
+    {
+     "type": "연관어",
+     "word": "celebrate",
+     "ko": "축하하다",
+     "en": "Celebrate success."
+    }
+   ]
+  },
+  "2640": {
+   "word": "talent",
+   "overview": [
+    "talent는 '재능, 소질'이라는 뜻의 명사입니다.",
+    "a talent for music(음악에 대한 재능)처럼 씁니다.",
+    "특별한 능력이나 재주를 뜻합니다.",
+    "형용사 talented(재능 있는)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ability",
+     "en": "A special ability.",
+     "ko": "특별한 능력."
+    },
+    {
+     "word": "gift",
+     "en": "A natural gift.",
+     "ko": "타고난 재주."
+    }
+   ],
+   "etymology": [
+    "talent는 그리스어 talanton(저울, 무게 단위)에서 온 단어입니다.",
+    "고대에는 금이나 은의 무게를 재는 화폐 단위였습니다.",
+    "성경 우화에서 하인들에게 달란트(재물)를 맡기는 이야기에서 '타고난 재능'이라는 비유적 뜻이 나왔습니다.",
+    "'하늘이 준 귀중한 재능'이라는 뜻으로 지금까지 널리 씁니다.",
+    "talent의 핵심 이미지는 '하늘이 내려 준 귀한 재능이라는 보물 🌟'입니다."
+   ],
+   "meanings": [
+    "재능, 소질"
+   ],
+   "examples": [
+    {
+     "en": "She has a natural talent for singing.",
+     "ko": "그녀는 노래에 타고난 재능이 있어요."
+    },
+    {
+     "en": "His talent for drawing was obvious from a young age.",
+     "ko": "그림에 대한 그의 재능은 어린 나이부터 뚜렷했어요."
+    },
+    {
+     "en": "The coach spotted her talent right away.",
+     "ko": "그 코치는 그녀의 재능을 바로 알아봤어요."
+    },
+    {
+     "en": "Everyone has a unique talent worth developing.",
+     "ko": "모두가 계발할 가치가 있는 고유한 재능을 가지고 있어요."
+    },
+    {
+     "en": "He wasted his talent by giving up too soon.",
+     "ko": "그는 너무 일찍 포기해서 자신의 재능을 낭비했어요."
+    },
+    {
+     "en": "The show discovers young talent from around the country.",
+     "ko": "그 프로그램은 전국의 젊은 인재를 발굴해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ability",
+     "ko": "능력",
+     "en": "A rare ability."
+    },
+    {
+     "type": "유의어",
+     "word": "gift",
+     "ko": "재능",
+     "en": "A hidden gift."
+    },
+    {
+     "type": "파생어",
+     "word": "talented",
+     "ko": "재능 있는",
+     "en": "A talented artist."
+    },
+    {
+     "type": "연관어",
+     "word": "skill",
+     "ko": "기술",
+     "en": "A valuable skill."
+    },
+    {
+     "type": "연관어",
+     "word": "genius",
+     "ko": "천재",
+     "en": "A creative genius."
+    },
+    {
+     "type": "연관어",
+     "word": "potential",
+     "ko": "잠재력",
+     "en": "Untapped potential."
+    }
+   ]
+  },
+  "1697": {
+   "word": "miracle",
+   "overview": [
+    "miracle은 '기적'이라는 뜻의 명사입니다.",
+    "a miracle happened(기적이 일어났다)처럼 씁니다.",
+    "과학이나 상식으로 설명할 수 없는 놀라운 일을 뜻합니다.",
+    "형용사 miraculous(기적적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wonder",
+     "en": "A true wonder.",
+     "ko": "진정한 경이."
+    },
+    {
+     "word": "amazing event",
+     "en": "An amazing event.",
+     "ko": "놀라운 사건."
+    }
+   ],
+   "etymology": [
+    "miracle은 라틴어 mirari(놀라워하다)에서 온 단어입니다.",
+    "admire(감탄하다), marvel(경탄하다)과 같은 가족입니다.",
+    "'너무나 놀라워서 신의 힘이 아니고서는 설명할 수 없는 일'이라는 뜻이 그대로 이어져 왔습니다.",
+    "종교적 의미를 넘어 지금은 믿기 힘들 정도로 좋은 결과나 사건에도 폭넓게 씁니다.",
+    "miracle의 핵심 이미지는 '이성으로는 설명할 수 없는 놀라운 기적 ✨'입니다."
+   ],
+   "meanings": [
+    "기적"
+   ],
+   "examples": [
+    {
+     "en": "It was a miracle that no one was hurt in the accident.",
+     "ko": "그 사고에서 아무도 다치지 않은 것은 기적이었어요."
+    },
+    {
+     "en": "Doctors called her recovery a miracle.",
+     "ko": "의사들은 그녀의 회복을 기적이라고 불렀어요."
+    },
+    {
+     "en": "Finding the missing dog after a week felt like a miracle.",
+     "ko": "일주일 후 잃어버린 개를 찾은 것은 기적처럼 느껴졌어요."
+    },
+    {
+     "en": "She believes miracles can happen if you have faith.",
+     "ko": "그녀는 믿음이 있으면 기적이 일어날 수 있다고 믿어요."
+    },
+    {
+     "en": "It would take a miracle for us to finish on time.",
+     "ko": "우리가 제시간에 끝내려면 기적이 필요할 거예요."
+    },
+    {
+     "en": "The birth of a healthy baby is always a miracle.",
+     "ko": "건강한 아기의 출생은 항상 기적이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wonder",
+     "ko": "경이",
+     "en": "A natural wonder."
+    },
+    {
+     "type": "파생어",
+     "word": "miraculous",
+     "ko": "기적적인",
+     "en": "A miraculous escape."
+    },
+    {
+     "type": "연관어",
+     "word": "amazing",
+     "ko": "놀라운",
+     "en": "An amazing story."
+    },
+    {
+     "type": "연관어",
+     "word": "faith",
+     "ko": "믿음",
+     "en": "Strong faith."
+    },
+    {
+     "type": "연관어",
+     "word": "hope",
+     "ko": "희망",
+     "en": "Never lose hope."
+    },
+    {
+     "type": "연관어",
+     "word": "blessing",
+     "ko": "축복",
+     "en": "A true blessing."
+    }
+   ]
+  },
+  "1337": {
+   "word": "hook",
+   "overview": [
+    "hook은 '갈고리, 고리'라는 뜻의 명사이자 '걸다, 낚다'라는 뜻의 동사입니다.",
+    "hang a coat on a hook(고리에 코트를 걸다)처럼 씁니다.",
+    "낚시의 '낚싯바늘'이라는 뜻으로도 씁니다.",
+    "get hooked on은 '~에 푹 빠지다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hanger",
+     "en": "A wall hanger.",
+     "ko": "벽걸이."
+    },
+    {
+     "word": "fishing hook",
+     "en": "A fishing hook.",
+     "ko": "낚싯바늘."
+    }
+   ],
+   "etymology": [
+    "hook은 고대 영어 hoc(갈고리)에서 온 단어입니다.",
+    "'끝이 구부러진 도구'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "'물건을 걸거나 낚기 위해 끝이 구부러진 도구'라는 뜻이 그대로 이어져 왔습니다.",
+    "'낚싯바늘로 물고기를 낚듯 사람의 마음을 사로잡다'라는 비유적인 뜻도 여기서 나왔습니다.",
+    "hook의 핵심 이미지는 '끝이 구부러져 무언가를 걸거나 낚아채는 갈고리 🪝'입니다."
+   ],
+   "meanings": [
+    "갈고리, 고리 (명사)",
+    "걸다, 달다, 낚다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She hung her bag on the hook by the door.",
+     "ko": "그녀는 문 옆 고리에 자기 가방을 걸었어요."
+    },
+    {
+     "en": "He caught a big fish with his hook.",
+     "ko": "그는 자기 낚싯바늘로 큰 물고기를 잡았어요."
+    },
+    {
+     "en": "The coat hook fell off the wall.",
+     "ko": "그 코트 고리가 벽에서 떨어졌어요."
+    },
+    {
+     "en": "The catchy song hooked listeners immediately.",
+     "ko": "그 매력적인 노래는 청취자들을 즉시 사로잡았어요."
+    },
+    {
+     "en": "She got hooked on the new TV series.",
+     "ko": "그녀는 그 새 텔레비전 시리즈에 푹 빠졌어요."
+    },
+    {
+     "en": "Please hang your towel on the hook.",
+     "ko": "그 고리에 당신의 수건을 걸어 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "hanger",
+     "ko": "옷걸이",
+     "en": "A wooden hanger."
+    },
+    {
+     "type": "연관어",
+     "word": "fish",
+     "ko": "물고기",
+     "en": "Catch a fish."
+    },
+    {
+     "type": "연관어",
+     "word": "hang",
+     "ko": "걸다",
+     "en": "Hang a picture."
+    },
+    {
+     "type": "연관어",
+     "word": "catch",
+     "ko": "잡다",
+     "en": "Catch a ball."
+    },
+    {
+     "type": "연관어",
+     "word": "attract",
+     "ko": "끌어당기다",
+     "en": "Attract attention."
+    },
+    {
+     "type": "연관어",
+     "word": "curve",
+     "ko": "곡선",
+     "en": "A sharp curve."
+    }
+   ]
+  },
+  "1239": {
+   "word": "grateful",
+   "overview": [
+    "grateful은 '감사하는, 고맙게 여기는'이라는 뜻의 형용사입니다.",
+    "grateful for her help(그녀의 도움에 감사하는)처럼 씁니다.",
+    "누군가의 친절이나 도움에 진심으로 고마움을 느끼는 것을 뜻합니다.",
+    "명사 gratitude(감사)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "thankful",
+     "en": "Feel thankful.",
+     "ko": "고마움을 느끼다."
+    },
+    {
+     "word": "appreciative",
+     "en": "An appreciative smile.",
+     "ko": "감사하는 미소."
+    }
+   ],
+   "etymology": [
+    "grateful은 라틴어 gratus(기쁜, 감사하는)에서 온 단어입니다.",
+    "grace(은혜), congratulate(축하하다)와 같은 가족입니다.",
+    "'받은 은혜에 기쁘게 반응하는 마음'이라는 뜻이 그대로 이어져 왔습니다.",
+    "다른 사람의 친절이나 도움에 대한 진심 어린 고마움을 나타내는 데 씁니다.",
+    "grateful의 핵심 이미지는 '받은 은혜에 진심으로 고마워하는 감사한 마음 🙏'입니다."
+   ],
+   "meanings": [
+    "감사하는, 고맙게 여기는"
+   ],
+   "examples": [
+    {
+     "en": "She was grateful for her friend's support.",
+     "ko": "그녀는 자기 친구의 지지에 감사했어요."
+    },
+    {
+     "en": "I'm grateful to have such a caring family.",
+     "ko": "저는 이렇게 배려심 있는 가족을 가진 것에 감사해요."
+    },
+    {
+     "en": "He felt grateful after receiving help from a stranger.",
+     "ko": "그는 낯선 사람에게 도움을 받은 후 감사함을 느꼈어요."
+    },
+    {
+     "en": "We are grateful for your generous donation.",
+     "ko": "우리는 당신의 관대한 기부에 감사드려요."
+    },
+    {
+     "en": "She wrote a grateful letter to her mentor.",
+     "ko": "그녀는 자신의 멘토에게 감사의 편지를 썼어요."
+    },
+    {
+     "en": "He remained grateful despite the difficult year.",
+     "ko": "그는 힘든 한 해를 보냈음에도 감사한 마음을 유지했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "thankful",
+     "ko": "감사하는",
+     "en": "Feel thankful."
+    },
+    {
+     "type": "파생어",
+     "word": "gratitude",
+     "ko": "감사",
+     "en": "Show gratitude."
+    },
+    {
+     "type": "연관어",
+     "word": "appreciate",
+     "ko": "감사히 여기다",
+     "en": "Appreciate the effort."
+    },
+    {
+     "type": "연관어",
+     "word": "thank",
+     "ko": "감사하다",
+     "en": "Thank a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "blessed",
+     "ko": "축복받은",
+     "en": "Feel blessed."
+    },
+    {
+     "type": "연관어",
+     "word": "kindness",
+     "ko": "친절",
+     "en": "Show kindness."
+    }
+   ]
+  },
+  "2780": {
+   "word": "treasure",
+   "overview": [
+    "treasure는 '보물'이라는 뜻의 명사이자 '소중히 여기다'라는 뜻의 동사입니다.",
+    "find a treasure(보물을 찾다)처럼 씁니다.",
+    "매우 귀중한 것이나 사람을 뜻합니다.",
+    "treasure map(보물 지도)처럼 다른 말과도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "precious thing",
+     "en": "A precious thing.",
+     "ko": "귀중한 것."
+    },
+    {
+     "word": "cherish",
+     "en": "Cherish a memory.",
+     "ko": "추억을 소중히 여기다."
+    }
+   ],
+   "etymology": [
+    "treasure는 그리스어 thesauros(보물 창고)에서 온 단어입니다.",
+    "thesaurus(유의어 사전, '단어의 보물창고')와도 같은 뿌리에서 나온 단어입니다.",
+    "'귀중한 금은보화를 모아 둔 창고'라는 뜻이 그대로 이어져 왔습니다.",
+    "'매우 귀중히 여겨 소중하게 간직하다'라는 동사 뜻도 이 이미지에서 나왔습니다.",
+    "treasure의 핵심 이미지은 '반짝이는 금은보화가 가득한 보물 상자 💰'입니다."
+   ],
+   "meanings": [
+    "보물 (명사)",
+    "소중히 여기다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Pirates buried their treasure on a remote island.",
+     "ko": "해적들은 자신들의 보물을 외딴 섬에 묻었어요."
+    },
+    {
+     "en": "She treasures the photos from her childhood.",
+     "ko": "그녀는 자기 어린 시절의 사진들을 소중히 여겨요."
+    },
+    {
+     "en": "The museum displays ancient treasures from Egypt.",
+     "ko": "그 박물관은 이집트의 고대 보물들을 전시해요."
+    },
+    {
+     "en": "He found a treasure chest while diving.",
+     "ko": "그는 잠수하다가 보물 상자를 발견했어요."
+    },
+    {
+     "en": "Her grandmother's ring is a family treasure.",
+     "ko": "그녀 할머니의 반지는 집안의 보물이에요."
+    },
+    {
+     "en": "We treasure every moment we spend together.",
+     "ko": "우리는 함께 보내는 매 순간을 소중히 여겨요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "riches",
+     "ko": "부, 재물",
+     "en": "Great riches."
+    },
+    {
+     "type": "연관어",
+     "word": "cherish",
+     "ko": "소중히 여기다",
+     "en": "Cherish a friendship."
+    },
+    {
+     "type": "연관어",
+     "word": "gold",
+     "ko": "금",
+     "en": "Pure gold."
+    },
+    {
+     "type": "연관어",
+     "word": "valuable",
+     "ko": "귀중한",
+     "en": "A valuable item."
+    },
+    {
+     "type": "연관어",
+     "word": "precious",
+     "ko": "귀중한",
+     "en": "A precious gem."
+    },
+    {
+     "type": "연관어",
+     "word": "gem",
+     "ko": "보석",
+     "en": "A shining gem."
+    }
+   ]
+  },
+  "2205": {
+   "word": "rescue",
+   "overview": [
+    "rescue는 '구하다, 구조하다'라는 뜻의 동사이자 '구조'라는 뜻의 명사입니다.",
+    "rescue a drowning man(물에 빠진 사람을 구하다)처럼 씁니다.",
+    "위험한 상황에서 누군가를 안전하게 구해 내는 것을 뜻합니다.",
+    "명사 rescuer(구조자)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "save",
+     "en": "Save a life.",
+     "ko": "생명을 구하다."
+    },
+    {
+     "word": "help escape",
+     "en": "Help escape danger.",
+     "ko": "위험에서 벗어나도록 돕다."
+    }
+   ],
+   "etymology": [
+    "rescue는 옛 프랑스어 rescoure(다시 구해 내다)에서 온 단어입니다.",
+    "re(다시)와 excutere(흔들어 떨어뜨리다)가 합쳐진 말로, '위험에서 흔들어 빼내다'라는 뜻이었습니다.",
+    "'위험에 붙잡혀 있던 것을 흔들어 빼내 안전하게 구하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람뿐 아니라 동물이나 상황을 위험에서 구해 내는 데도 폭넓게 씁니다.",
+    "rescue의 핵심 이미지는 '위험에 빠진 사람을 안전하게 끌어내는 구조 🚁'입니다."
+   ],
+   "meanings": [
+    "구하다, 구조하다 (동사)",
+    "구조 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Firefighters rescued the family from the burning house.",
+     "ko": "소방관들은 불타는 집에서 그 가족을 구했어요."
+    },
+    {
+     "en": "The lifeguard rescued a swimmer from the waves.",
+     "ko": "그 안전 요원은 파도에서 수영하던 사람을 구했어요."
+    },
+    {
+     "en": "The rescue team searched all night for survivors.",
+     "ko": "그 구조팀은 밤새 생존자들을 찾았어요."
+    },
+    {
+     "en": "She adopted a rescue dog from the shelter.",
+     "ko": "그녀는 그 보호소에서 구조된 개를 입양했어요."
+    },
+    {
+     "en": "Volunteers helped rescue animals after the flood.",
+     "ko": "자원봉사자들은 그 홍수 후 동물들을 구하는 것을 도왔어요."
+    },
+    {
+     "en": "The daring rescue was reported on the news.",
+     "ko": "그 대담한 구조는 뉴스에 보도되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "save",
+     "ko": "구하다",
+     "en": "Save a life."
+    },
+    {
+     "type": "연관어",
+     "word": "help",
+     "ko": "돕다",
+     "en": "Help immediately."
+    },
+    {
+     "type": "연관어",
+     "word": "shelter",
+     "ko": "보호소",
+     "en": "An animal shelter."
+    },
+    {
+     "type": "연관어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In great danger."
+    },
+    {
+     "type": "연관어",
+     "word": "survivor",
+     "ko": "생존자",
+     "en": "A lucky survivor."
+    },
+    {
+     "type": "연관어",
+     "word": "firefighter",
+     "ko": "소방관",
+     "en": "A brave firefighter."
+    }
+   ]
+  },
+  "1131": {
+   "word": "former",
+   "overview": [
+    "former는 '이전의, 전직의'라는 뜻의 형용사입니다.",
+    "a former president(전직 대통령)처럼 씁니다.",
+    "'(the former) 전자'라는 뜻으로도 씁니다. (둘 중 먼저 언급된 것)",
+    "latter(후자)와 자주 짝을 이뤄 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "previous",
+     "en": "The previous owner.",
+     "ko": "이전 주인."
+    },
+    {
+     "word": "ex-",
+     "en": "Her ex-teacher.",
+     "ko": "그녀의 전 선생님."
+    }
+   ],
+   "etymology": [
+    "former는 fore(앞의)의 비교급 형태에서 온 단어입니다.",
+    "before(전에), forward(앞으로)와도 이어지는 뿌리입니다.",
+    "'지금보다 앞선 시간에 속하는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "둘 중 '먼저 언급된 것'을 가리키는 the former(전자)라는 표현으로도 자주 씁니다.",
+    "former의 핵심 이미지는 '지금보다 한발 앞서 있던 이전의 시간 ⏮️'입니다."
+   ],
+   "meanings": [
+    "이전의, 전직의",
+    "(the former) 전자"
+   ],
+   "examples": [
+    {
+     "en": "The former president gave a speech at the event.",
+     "ko": "그 전직 대통령은 그 행사에서 연설을 했어요."
+    },
+    {
+     "en": "She met her former teacher at the reunion.",
+     "ko": "그녀는 그 동창회에서 자신의 예전 선생님을 만났어요."
+    },
+    {
+     "en": "Between the two options, the former is cheaper.",
+     "ko": "그 두 선택지 중에서, 전자가 더 저렴해요."
+    },
+    {
+     "en": "His former job was in finance.",
+     "ko": "그의 이전 직업은 금융업이었어요."
+    },
+    {
+     "en": "The former champion trains new athletes now.",
+     "ko": "그 전직 챔피언은 지금 새로운 선수들을 훈련시켜요."
+    },
+    {
+     "en": "She reconnected with a former classmate online.",
+     "ko": "그녀는 온라인으로 예전 반 친구와 다시 연락했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "previous",
+     "ko": "이전의",
+     "en": "The previous year."
+    },
+    {
+     "type": "반의어",
+     "word": "latter",
+     "ko": "후자",
+     "en": "The latter option."
+    },
+    {
+     "type": "연관어",
+     "word": "past",
+     "ko": "과거",
+     "en": "In the past."
+    },
+    {
+     "type": "연관어",
+     "word": "ex",
+     "ko": "전~",
+     "en": "Her ex-partner."
+    },
+    {
+     "type": "연관어",
+     "word": "old",
+     "ko": "옛날의",
+     "en": "An old friend."
+    },
+    {
+     "type": "연관어",
+     "word": "prior",
+     "ko": "이전의",
+     "en": "Prior experience."
+    }
+   ]
+  },
+  "730": {
+   "word": "decent",
+   "overview": [
+    "decent는 '품위 있는, 예의 바른'이라는 뜻의 형용사입니다.",
+    "a decent person(품위 있는 사람)처럼 씁니다.",
+    "'괜찮은, 적당한'이라는 뜻으로도 씁니다. a decent salary(괜찮은 급여)",
+    "명사 decency(품위, 예의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "proper",
+     "en": "Proper behavior.",
+     "ko": "적절한 행동."
+    },
+    {
+     "word": "fair",
+     "en": "A fair wage.",
+     "ko": "공정한 임금."
+    }
+   ],
+   "etymology": [
+    "decent는 라틴어 decere(어울리다, 적절하다)에서 온 단어입니다.",
+    "decorate(장식하다), dignity(존엄성)와도 이어지는 뿌리입니다.",
+    "'상황에 어울리게 알맞고 적절한'이라는 뜻이 그대로 이어져 왔습니다.",
+    "도덕적으로 올바르고 예의 바른 태도뿐 아니라 '충분히 괜찮은 수준'을 가리키는 데도 폭넓게 씁니다.",
+    "decent의 핵심 이미지는 '상황에 알맞게 예의 바르고 적절한 품위 🎩'입니다."
+   ],
+   "meanings": [
+    "품위 있는, 예의 바른",
+    "괜찮은, 적당한"
+   ],
+   "examples": [
+    {
+     "en": "He is a decent man who always helps others.",
+     "ko": "그는 항상 다른 사람들을 돕는 품위 있는 사람이에요."
+    },
+    {
+     "en": "She got a decent grade on the difficult exam.",
+     "ko": "그녀는 그 어려운 시험에서 괜찮은 성적을 받았어요."
+    },
+    {
+     "en": "Everyone deserves a decent place to live.",
+     "ko": "모두가 괜찮은 살 곳을 가질 자격이 있어요."
+    },
+    {
+     "en": "It's just decent to say thank you.",
+     "ko": "고맙다고 말하는 것은 그냥 예의 바른 일이에요."
+    },
+    {
+     "en": "The restaurant serves decent food at a fair price.",
+     "ko": "그 식당은 공정한 가격에 괜찮은 음식을 제공해요."
+    },
+    {
+     "en": "He offered decent advice to the new employee.",
+     "ko": "그는 그 신입 직원에게 적절한 조언을 해 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "proper",
+     "ko": "적절한",
+     "en": "Proper conduct."
+    },
+    {
+     "type": "파생어",
+     "word": "decency",
+     "ko": "품위",
+     "en": "Basic decency."
+    },
+    {
+     "type": "연관어",
+     "word": "fair",
+     "ko": "공정한",
+     "en": "A fair chance."
+    },
+    {
+     "type": "연관어",
+     "word": "respectable",
+     "ko": "존경할 만한",
+     "en": "A respectable job."
+    },
+    {
+     "type": "연관어",
+     "word": "honest",
+     "ko": "정직한",
+     "en": "An honest answer."
+    },
+    {
+     "type": "연관어",
+     "word": "polite",
+     "ko": "예의 바른",
+     "en": "A polite greeting."
+    }
+   ]
+  },
+  "2690": {
+   "word": "theme",
+   "overview": [
+    "theme은 '주제'라는 뜻의 명사입니다.",
+    "the theme of the story(그 이야기의 주제)처럼 씁니다.",
+    "글, 영화, 행사 등을 관통하는 중심 생각을 뜻합니다.",
+    "theme park(테마파크)처럼 다른 말과도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "main idea",
+     "en": "The main idea.",
+     "ko": "핵심 아이디어."
+    },
+    {
+     "word": "subject",
+     "en": "A chosen subject.",
+     "ko": "선택된 주제."
+    }
+   ],
+   "etymology": [
+    "theme은 그리스어 thema(놓인 것, 주제)에서 온 단어입니다.",
+    "tithenai(놓다, 두다)에서 나온 말로, thesis(논제)와도 이어지는 뿌리입니다.",
+    "'글이나 이야기의 중심에 놓인 근본 생각'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 파티, 공원 등 행사나 장소를 관통하는 콘셉트를 가리키는 데도 폭넓게 씁니다.",
+    "theme의 핵심 이미지는 '이야기 전체를 하나로 꿰뚫는 중심 주제 🎨'입니다."
+   ],
+   "meanings": [
+    "주제"
+   ],
+   "examples": [
+    {
+     "en": "The theme of the novel is love and loss.",
+     "ko": "그 소설의 주제는 사랑과 상실이에요."
+    },
+    {
+     "en": "The party had a beach theme.",
+     "ko": "그 파티는 해변 테마를 가지고 있었어요."
+    },
+    {
+     "en": "Friendship is a common theme in her books.",
+     "ko": "우정은 그녀의 책들에서 흔한 주제예요."
+    },
+    {
+     "en": "The teacher discussed the main theme of the poem.",
+     "ko": "선생님은 그 시의 주된 주제를 논의하셨어요."
+    },
+    {
+     "en": "The wedding decoration followed a spring theme.",
+     "ko": "그 결혼식 장식은 봄 테마를 따랐어요."
+    },
+    {
+     "en": "Courage is a recurring theme throughout the film.",
+     "ko": "용기는 그 영화 전체에서 반복되는 주제예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "subject",
+     "ko": "주제",
+     "en": "The main subject."
+    },
+    {
+     "type": "연관어",
+     "word": "topic",
+     "ko": "화제",
+     "en": "A hot topic."
+    },
+    {
+     "type": "연관어",
+     "word": "concept",
+     "ko": "개념",
+     "en": "A design concept."
+    },
+    {
+     "type": "연관어",
+     "word": "idea",
+     "ko": "생각",
+     "en": "A central idea."
+    },
+    {
+     "type": "연관어",
+     "word": "message",
+     "ko": "메시지",
+     "en": "A clear message."
+    },
+    {
+     "type": "연관어",
+     "word": "motif",
+     "ko": "모티프",
+     "en": "A recurring motif."
+    }
+   ]
+  },
+  "1030": {
+   "word": "false",
+   "overview": [
+    "false는 '틀린, 거짓된'이라는 뜻의 형용사입니다.",
+    "a false statement(거짓 진술)처럼 씁니다.",
+    "'가짜의, 인공의'라는 뜻으로도 씁니다. false teeth(틀니)",
+    "true/false quiz(참/거짓 퀴즈)처럼 대비되는 뜻으로 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "untrue",
+     "en": "An untrue claim.",
+     "ko": "사실이 아닌 주장."
+    },
+    {
+     "word": "fake",
+     "en": "A fake smile.",
+     "ko": "가짜 미소."
+    }
+   ],
+   "etymology": [
+    "false는 라틴어 falsus(속인, 거짓의)에서 온 단어입니다.",
+    "fallere(속이다, 실패하게 하다)에서 나온 말로, fail(실패하다), fault(잘못)와 같은 가족입니다.",
+    "'사실을 속여 진짜가 아닌 것으로 만든'이라는 뜻이 그대로 이어져 왔습니다.",
+    "진실과 반대되는 모든 것, 그리고 진짜가 아닌 인공물에도 폭넓게 씁니다.",
+    "false의 핵심 이미지는 '진실을 가리고 속이는 거짓된 것 ❌'입니다."
+   ],
+   "meanings": [
+    "그릇된, 틀린, 거짓된, 허위의",
+    "가짜의, 인공의"
+   ],
+   "examples": [
+    {
+     "en": "He gave a false name to the police.",
+     "ko": "그는 경찰에게 거짓 이름을 말했어요."
+    },
+    {
+     "en": "The statement turned out to be false.",
+     "ko": "그 진술은 거짓으로 밝혀졌어요."
+    },
+    {
+     "en": "She wore false eyelashes for the party.",
+     "ko": "그녀는 그 파티를 위해 인조 속눈썹을 붙였어요."
+    },
+    {
+     "en": "It was a false alarm; there was no real danger.",
+     "ko": "그건 오경보였어요, 실제 위험은 없었어요."
+    },
+    {
+     "en": "He was accused of making false accusations.",
+     "ko": "그는 허위 고발을 한 혐의를 받았어요."
+    },
+    {
+     "en": "The old man wore false teeth for years.",
+     "ko": "그 노인은 여러 해 동안 틀니를 착용했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "untrue",
+     "ko": "사실이 아닌",
+     "en": "An untrue rumor."
+    },
+    {
+     "type": "반의어",
+     "word": "true",
+     "ko": "사실인",
+     "en": "A true story."
+    },
+    {
+     "type": "연관어",
+     "word": "fake",
+     "ko": "가짜의",
+     "en": "A fake watch."
+    },
+    {
+     "type": "연관어",
+     "word": "lie",
+     "ko": "거짓말",
+     "en": "Tell a lie."
+    },
+    {
+     "type": "연관어",
+     "word": "wrong",
+     "ko": "틀린",
+     "en": "A wrong answer."
+    },
+    {
+     "type": "연관어",
+     "word": "artificial",
+     "ko": "인공적인",
+     "en": "Artificial flavor."
+    }
+   ]
+  },
+  "2401": {
+   "word": "silent",
+   "overview": [
+    "silent는 '조용한, 침묵하는'이라는 뜻의 형용사입니다.",
+    "remain silent(침묵을 지키다)처럼 씁니다.",
+    "소리가 전혀 없는 완전한 고요함을 뜻합니다.",
+    "명사 silence(침묵)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "quiet",
+     "en": "A quiet room.",
+     "ko": "조용한 방."
+    },
+    {
+     "word": "soundless",
+     "en": "A soundless night.",
+     "ko": "소리 없는 밤."
+    }
+   ],
+   "etymology": [
+    "silent는 라틴어 silere(조용하다, 침묵하다)에서 온 단어입니다.",
+    "'아무 소리도 내지 않고 고요한 상태'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람이 말을 하지 않는 것뿐 아니라 완전히 소리가 없는 환경에도 폭넓게 씁니다.",
+    "silent letter(묵음 글자)처럼 언어학 용어로도 씁니다.",
+    "silent의 핵심 이미지는 '숨소리조차 들리지 않을 만큼 고요한 침묵 🤫'입니다."
+   ],
+   "meanings": [
+    "조용한, 고요한",
+    "말이 없는, 침묵의",
+    "소리 없는, 무성의"
+   ],
+   "examples": [
+    {
+     "en": "The library was completely silent.",
+     "ko": "그 도서관은 완전히 조용했어요."
+    },
+    {
+     "en": "She remained silent throughout the meeting.",
+     "ko": "그녀는 그 회의 내내 침묵을 지켰어요."
+    },
+    {
+     "en": "The letter 'k' is silent in the word 'knife.'",
+     "ko": "'knife'라는 단어에서 'k'는 묵음이에요."
+    },
+    {
+     "en": "A silent tension filled the room.",
+     "ko": "말없는 긴장감이 그 방을 가득 채웠어요."
+    },
+    {
+     "en": "The forest was silent except for the wind.",
+     "ko": "그 숲은 바람 소리를 빼고는 고요했어요."
+    },
+    {
+     "en": "He gave a silent nod instead of speaking.",
+     "ko": "그는 말하는 대신 조용히 고개를 끄덕였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "quiet",
+     "ko": "조용한",
+     "en": "A quiet street."
+    },
+    {
+     "type": "파생어",
+     "word": "silence",
+     "ko": "침묵",
+     "en": "An awkward silence."
+    },
+    {
+     "type": "연관어",
+     "word": "still",
+     "ko": "고요한",
+     "en": "A still night."
+    },
+    {
+     "type": "연관어",
+     "word": "mute",
+     "ko": "무언의",
+     "en": "A mute response."
+    },
+    {
+     "type": "연관어",
+     "word": "calm",
+     "ko": "차분한",
+     "en": "A calm sea."
+    },
+    {
+     "type": "연관어",
+     "word": "peaceful",
+     "ko": "평화로운",
+     "en": "A peaceful morning."
+    }
+   ]
+  },
+  "245": {
+   "word": "beast",
+   "overview": [
+    "beast는 '짐승, 야수'라는 뜻의 명사입니다.",
+    "a wild beast(야생 짐승)처럼 씁니다.",
+    "'흉악한 사람'이라는 비유적인 뜻으로도 씁니다.",
+    "beauty and the beast(미녀와 야수)처럼 이야기 제목에도 자주 등장합니다."
+   ],
+   "easy": [
+    {
+     "word": "animal",
+     "en": "A wild animal.",
+     "ko": "야생 동물."
+    },
+    {
+     "word": "creature",
+     "en": "A giant creature.",
+     "ko": "거대한 생명체."
+    }
+   ],
+   "etymology": [
+    "beast는 라틴어 bestia(짐승, 동물)에서 온 단어입니다.",
+    "bestial(짐승 같은)과도 이어지는 뿌리입니다.",
+    "'사람이 아닌 야생의 큰 동물'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'짐승처럼 잔인하고 흉악한 사람'이라는 비유적인 뜻으로도 폭넓게 씁니다.",
+    "beast의 핵심 이미지는 '거칠고 강력한 힘을 가진 야생의 짐승 🐺'입니다."
+   ],
+   "meanings": [
+    "짐승, 야수 (집합적)",
+    "흉악한 사람"
+   ],
+   "examples": [
+    {
+     "en": "The forest was home to many wild beasts.",
+     "ko": "그 숲은 많은 야생 짐승의 서식지였어요."
+    },
+    {
+     "en": "The story tells of a beast who becomes human.",
+     "ko": "그 이야기는 인간이 되는 야수에 관해 이야기해요."
+    },
+    {
+     "en": "He was called a beast for his cruel actions.",
+     "ko": "그는 자신의 잔인한 행동으로 흉악한 사람이라고 불렸어요."
+    },
+    {
+     "en": "The ancient legend describes a fearsome beast.",
+     "ko": "그 고대 전설은 무시무시한 짐승을 묘사해요."
+    },
+    {
+     "en": "Hunters tracked the beast through the forest.",
+     "ko": "사냥꾼들은 그 숲을 통해 그 짐승을 추적했어요."
+    },
+    {
+     "en": "The movie features a giant sea beast.",
+     "ko": "그 영화는 거대한 바다 짐승을 등장시켜요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "animal",
+     "ko": "동물",
+     "en": "A wild animal."
+    },
+    {
+     "type": "연관어",
+     "word": "creature",
+     "ko": "생명체",
+     "en": "A strange creature."
+    },
+    {
+     "type": "연관어",
+     "word": "monster",
+     "ko": "괴물",
+     "en": "A scary monster."
+    },
+    {
+     "type": "연관어",
+     "word": "wild",
+     "ko": "야생의",
+     "en": "A wild forest."
+    },
+    {
+     "type": "연관어",
+     "word": "fierce",
+     "ko": "사나운",
+     "en": "A fierce lion."
+    },
+    {
+     "type": "연관어",
+     "word": "predator",
+     "ko": "포식자",
+     "en": "A dangerous predator."
+    }
+   ]
+  },
+  "782": {
+   "word": "destiny",
+   "overview": [
+    "destiny는 '운명'이라는 뜻의 명사입니다.",
+    "fulfill one's destiny(자신의 운명을 실현하다)처럼 씁니다.",
+    "미리 정해져 있다고 여겨지는 삶의 방향이나 결말을 뜻합니다.",
+    "fate와 비슷하지만 destiny는 좀 더 목적과 의미가 담긴 운명을 가리킵니다."
+   ],
+   "easy": [
+    {
+     "word": "fate",
+     "en": "Accept one's fate.",
+     "ko": "자신의 운명을 받아들이다."
+    },
+    {
+     "word": "future path",
+     "en": "A future path.",
+     "ko": "미래의 길."
+    }
+   ],
+   "etymology": [
+    "destiny는 라틴어 destinare(단단히 고정하다, 정하다)에서 온 단어입니다.",
+    "de(완전히)와 stare(서다)가 합쳐진 말로, stand(서다), constant(끊임없는)와 같은 가족입니다.",
+    "'미리 확고하게 정해져 흔들리지 않는 삶의 방향'이라는 뜻이 그대로 이어져 왔습니다.",
+    "개인의 목적과 의미가 담긴 특별한 운명을 가리키는 데 자주 씁니다.",
+    "destiny의 핵심 이미지는 '이미 확고하게 정해진 삶의 특별한 길 🌟'입니다."
+   ],
+   "meanings": [
+    "운명"
+   ],
+   "examples": [
+    {
+     "en": "She believes it was her destiny to become a doctor.",
+     "ko": "그녀는 의사가 되는 것이 자신의 운명이었다고 믿어요."
+    },
+    {
+     "en": "He felt that meeting her was his destiny.",
+     "ko": "그는 그녀를 만난 것이 자신의 운명이라고 느꼈어요."
+    },
+    {
+     "en": "The hero embraced his destiny to save the kingdom.",
+     "ko": "그 영웅은 그 왕국을 구하는 자신의 운명을 받아들였어요."
+    },
+    {
+     "en": "Some believe we control our own destiny.",
+     "ko": "어떤 사람들은 우리가 자신의 운명을 스스로 통제한다고 믿어요."
+    },
+    {
+     "en": "Their paths crossed as if by destiny.",
+     "ko": "그들의 길은 마치 운명처럼 교차했어요."
+    },
+    {
+     "en": "She followed her destiny and became a writer.",
+     "ko": "그녀는 자신의 운명을 따라 작가가 되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fate",
+     "ko": "운명",
+     "en": "Accept fate."
+    },
+    {
+     "type": "연관어",
+     "word": "future",
+     "ko": "미래",
+     "en": "A bright future."
+    },
+    {
+     "type": "연관어",
+     "word": "purpose",
+     "ko": "목적",
+     "en": "Find your purpose."
+    },
+    {
+     "type": "연관어",
+     "word": "path",
+     "ko": "길",
+     "en": "A chosen path."
+    },
+    {
+     "type": "연관어",
+     "word": "luck",
+     "ko": "운",
+     "en": "Good luck."
+    },
+    {
+     "type": "연관어",
+     "word": "meant to be",
+     "ko": "운명적인",
+     "en": "It was meant to be."
+    }
+   ]
+  },
+  "2285": {
+   "word": "sacrifice",
+   "overview": [
+    "sacrifice는 '희생'이라는 뜻의 명사이자 '희생하다'라는 뜻의 동사입니다.",
+    "make a sacrifice(희생을 치르다)처럼 씁니다.",
+    "다른 것을 위해 소중한 것을 포기하는 것을 뜻합니다.",
+    "종교적 의미로 '제물'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "give up",
+     "en": "Give up free time.",
+     "ko": "자유 시간을 포기하다."
+    },
+    {
+     "word": "offering",
+     "en": "A religious offering.",
+     "ko": "종교적 제물."
+    }
+   ],
+   "etymology": [
+    "sacrifice는 라틴어 sacrificium(신성한 행위)에서 온 단어입니다.",
+    "sacer(신성한)와 facere(만들다)가 합쳐진 말로, sacred(신성한)와 같은 가족입니다.",
+    "'신에게 바치기 위해 소중한 것을 신성하게 만들다'라는 뜻에서 시작되었습니다.",
+    "지금은 종교적 의미를 넘어 '더 중요한 목적을 위해 소중한 것을 포기하다'라는 뜻으로 폭넓게 씁니다.",
+    "sacrifice의 핵심 이미지는 '더 큰 가치를 위해 소중한 것을 내려놓는 희생 🕯️'입니다."
+   ],
+   "meanings": [
+    "희생, 제물 (명사)",
+    "희생하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Parents often sacrifice their own needs for their children.",
+     "ko": "부모들은 종종 자녀를 위해 자신의 필요를 희생해요."
+    },
+    {
+     "en": "She sacrificed her career to care for her family.",
+     "ko": "그녀는 자기 가족을 돌보려고 자신의 경력을 희생했어요."
+    },
+    {
+     "en": "His sacrifice made the team's victory possible.",
+     "ko": "그의 희생은 그 팀의 승리를 가능하게 만들었어요."
+    },
+    {
+     "en": "They made many sacrifices to build a better future.",
+     "ko": "그들은 더 나은 미래를 만들려고 많은 희생을 했어요."
+    },
+    {
+     "en": "Ancient cultures made sacrifices to their gods.",
+     "ko": "고대 문화들은 자신들의 신에게 제물을 바쳤어요."
+    },
+    {
+     "en": "Success often requires hard work and sacrifice.",
+     "ko": "성공은 종종 노력과 희생을 필요로 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "give up",
+     "ko": "포기하다",
+     "en": "Give up comfort."
+    },
+    {
+     "type": "연관어",
+     "word": "devote",
+     "ko": "헌신하다",
+     "en": "Devote your life."
+    },
+    {
+     "type": "연관어",
+     "word": "offer",
+     "ko": "바치다",
+     "en": "Offer a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "loss",
+     "ko": "손실",
+     "en": "Accept a loss."
+    },
+    {
+     "type": "연관어",
+     "word": "commitment",
+     "ko": "헌신",
+     "en": "A strong commitment."
+    },
+    {
+     "type": "연관어",
+     "word": "selfless",
+     "ko": "이타적인",
+     "en": "A selfless act."
+    }
+   ]
+  },
+  "2408": {
+   "word": "sin",
+   "overview": [
+    "sin은 종교적, 도덕적 '죄'라는 뜻의 명사이자 '죄를 짓다'라는 뜻의 동사입니다.",
+    "commit a sin(죄를 짓다)처럼 씁니다.",
+    "도덕적, 종교적 규범을 어기는 행위를 뜻합니다.",
+    "형용사 sinful(죄 많은)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wrongdoing",
+     "en": "Admit wrongdoing.",
+     "ko": "잘못을 인정하다."
+    },
+    {
+     "word": "moral fault",
+     "en": "A moral fault.",
+     "ko": "도덕적 결함."
+    }
+   ],
+   "etymology": [
+    "sin은 고대 영어 synn(죄, 잘못)에서 온 단어입니다.",
+    "'옳음에서 벗어난 상태'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "'도덕적, 종교적 규범을 어기는 행위'라는 뜻이 그대로 이어져 왔습니다.",
+    "많은 종교에서 인간이 신 앞에서 저지르는 잘못을 가리키는 무거운 단어로 씁니다.",
+    "sin의 핵심 이미지는 '도덕과 신앙의 길에서 벗어난 잘못, 죄 🙏'입니다."
+   ],
+   "meanings": [
+    "죄 (명사)",
+    "죄를 짓다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Many religions teach that lying is a sin.",
+     "ko": "많은 종교는 거짓말이 죄라고 가르쳐요."
+    },
+    {
+     "en": "He confessed his sins to the priest.",
+     "ko": "그는 그 사제에게 자신의 죄를 고백했어요."
+    },
+    {
+     "en": "She felt guilty, believing she had sinned.",
+     "ko": "그녀는 자신이 죄를 지었다고 믿으며 죄책감을 느꼈어요."
+    },
+    {
+     "en": "The story explores themes of sin and redemption.",
+     "ko": "그 이야기는 죄와 구원이라는 주제를 탐구해요."
+    },
+    {
+     "en": "It would be a sin to waste such good food.",
+     "ko": "이렇게 좋은 음식을 낭비하는 것은 아까운 일일 거예요."
+    },
+    {
+     "en": "He asked for forgiveness for his sins.",
+     "ko": "그는 자신의 죄에 대한 용서를 구했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "wrongdoing",
+     "ko": "잘못",
+     "en": "Admit wrongdoing."
+    },
+    {
+     "type": "연관어",
+     "word": "guilt",
+     "ko": "죄책감",
+     "en": "Feel guilt."
+    },
+    {
+     "type": "연관어",
+     "word": "forgive",
+     "ko": "용서하다",
+     "en": "Forgive a sin."
+    },
+    {
+     "type": "연관어",
+     "word": "confess",
+     "ko": "고백하다",
+     "en": "Confess a secret."
+    },
+    {
+     "type": "연관어",
+     "word": "religion",
+     "ko": "종교",
+     "en": "A world religion."
+    },
+    {
+     "type": "연관어",
+     "word": "moral",
+     "ko": "도덕적인",
+     "en": "A moral choice."
+    }
+   ]
+  },
+  "86": {
+   "word": "alien",
+   "overview": [
+    "alien은 '외국의, 이질적인'이라는 뜻의 형용사이자 '외국인, 외계인'이라는 뜻의 명사입니다.",
+    "an alien concept(생소한 개념)처럼 씁니다.",
+    "'우주인, 외계인'이라는 뜻으로도 아주 자주 씁니다.",
+    "동사로는 '소원하게 만들다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "foreign",
+     "en": "A foreign country.",
+     "ko": "외국."
+    },
+    {
+     "word": "extraterrestrial",
+     "en": "An extraterrestrial being.",
+     "ko": "외계 생명체."
+    }
+   ],
+   "etymology": [
+    "alien은 라틴어 alienus(다른 사람의, 낯선)에서 온 단어입니다.",
+    "alius(다른)에서 나온 말로, alter(바꾸다), alternative(대안)와 같은 가족입니다.",
+    "'자기 것이 아니라 다른 사람에게 속한, 낯선'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'다른 나라에서 온 사람'과 '다른 행성에서 온 생명체' 모두에 폭넓게 씁니다.",
+    "alien의 핵심 이미지는 '익숙한 세계와는 전혀 다른 낯선 존재 👽'입니다."
+   ],
+   "meanings": [
+    "외국의, 외국인의 (형용사)",
+    "우주인의 (형용사)",
+    "외국인, 외계인 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The movie is about an alien invasion.",
+     "ko": "그 영화는 외계인 침공에 관한 것이에요."
+    },
+    {
+     "en": "This custom is completely alien to me.",
+     "ko": "이 관습은 저에게 완전히 낯설어요."
+    },
+    {
+     "en": "Some believe aliens have visited Earth.",
+     "ko": "어떤 사람들은 외계인이 지구를 방문했다고 믿어요."
+    },
+    {
+     "en": "She had to apply for an alien registration card.",
+     "ko": "그녀는 외국인 등록증을 신청해야 했어요."
+    },
+    {
+     "en": "The scientist searched for signs of alien life.",
+     "ko": "그 과학자는 외계 생명체의 흔적을 찾았어요."
+    },
+    {
+     "en": "His strange behavior felt alien to his friends.",
+     "ko": "그의 이상한 행동은 친구들에게 낯설게 느껴졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "foreign",
+     "ko": "외국의",
+     "en": "A foreign language."
+    },
+    {
+     "type": "연관어",
+     "word": "extraterrestrial",
+     "ko": "외계의",
+     "en": "An extraterrestrial signal."
+    },
+    {
+     "type": "연관어",
+     "word": "strange",
+     "ko": "낯선",
+     "en": "A strange custom."
+    },
+    {
+     "type": "연관어",
+     "word": "unfamiliar",
+     "ko": "낯선",
+     "en": "An unfamiliar place."
+    },
+    {
+     "type": "연관어",
+     "word": "space",
+     "ko": "우주",
+     "en": "Outer space."
+    },
+    {
+     "type": "연관어",
+     "word": "immigrant",
+     "ko": "이민자",
+     "en": "A new immigrant."
+    }
+   ]
+  },
+  "740": {
+   "word": "defend",
+   "overview": [
+    "defend는 '방어하다, 지키다'라는 뜻의 동사입니다.",
+    "defend the country(나라를 지키다)처럼 씁니다.",
+    "'변호하다, 옹호하다'라는 뜻으로도 씁니다.",
+    "명사 defense(방어), defender(방어자)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "protect",
+     "en": "Protect a friend.",
+     "ko": "친구를 보호하다."
+    },
+    {
+     "word": "guard",
+     "en": "Guard the castle.",
+     "ko": "성을 지키다."
+    }
+   ],
+   "etymology": [
+    "defend는 라틴어 defendere(막아 내다, 물리치다)에서 온 단어입니다.",
+    "de(멀리)와 fendere(치다, 때리다)가 합쳐진 말로, offend(불쾌하게 하다)와 반대되는 뿌리입니다.",
+    "'공격을 쳐서 멀리 물리치며 지키다'라는 뜻이 그대로 이어져 왔습니다.",
+    "물리적 방어뿐 아니라 말이나 논리로 누군가를 옹호하는 데도 폭넓게 씁니다.",
+    "defend의 핵심 이미지는 '공격을 막아 내며 굳건히 지키는 방어 🛡️'입니다."
+   ],
+   "meanings": [
+    "방어하다, 지키다",
+    "변호하다, 옹호하다"
+   ],
+   "examples": [
+    {
+     "en": "Soldiers defended the border against invaders.",
+     "ko": "군인들은 침입자들에 맞서 국경을 지켰어요."
+    },
+    {
+     "en": "She defended her friend against the false accusation.",
+     "ko": "그녀는 그 거짓 고발에 맞서 자기 친구를 변호했어요."
+    },
+    {
+     "en": "The lawyer defended his client in court.",
+     "ko": "그 변호사는 법정에서 자신의 의뢰인을 변호했어요."
+    },
+    {
+     "en": "The team defended their lead until the final whistle.",
+     "ko": "그 팀은 마지막 호루라기까지 자신들의 리드를 지켰어요."
+    },
+    {
+     "en": "He defended his decision with strong reasons.",
+     "ko": "그는 강력한 이유로 자신의 결정을 옹호했어요."
+    },
+    {
+     "en": "Animals often defend their young from predators.",
+     "ko": "동물들은 종종 포식자들로부터 자신들의 새끼를 지켜요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect the family."
+    },
+    {
+     "type": "파생어",
+     "word": "defense",
+     "ko": "방어",
+     "en": "National defense."
+    },
+    {
+     "type": "연관어",
+     "word": "guard",
+     "ko": "지키다",
+     "en": "Guard the entrance."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지지하다",
+     "en": "Support a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "argue",
+     "ko": "주장하다",
+     "en": "Argue a point."
+    },
+    {
+     "type": "연관어",
+     "word": "attack",
+     "ko": "공격",
+     "en": "Fend off an attack."
+    }
+   ]
+  },
+  "1754": {
+   "word": "nasty",
+   "overview": [
+    "nasty는 '끔찍한, 불쾌한, 심술궂은'이라는 뜻의 형용사입니다.",
+    "a nasty smell(끔찍한 냄새)처럼 씁니다.",
+    "사람의 성격이 '못된, 심술궂은'이라는 뜻으로도 씁니다.",
+    "상처나 상황이 '아주 나쁜, 심각한'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "unpleasant",
+     "en": "An unpleasant taste.",
+     "ko": "불쾌한 맛."
+    },
+    {
+     "word": "mean",
+     "en": "A mean remark.",
+     "ko": "못된 말."
+    }
+   ],
+   "etymology": [
+    "nasty는 네덜란드어 nestig(더러운, 지저분한)와 관련이 있는 단어로 봅니다.",
+    "정확한 더 옛 뿌리는 확실하지 않습니다.",
+    "'더럽고 불쾌해서 역겨운'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 냄새, 맛뿐 아니라 성격이나 상황의 나쁨을 가리키는 데도 폭넓게 씁니다.",
+    "nasty의 핵심 이미지는 '불쾌하고 못돼서 눈살을 찌푸리게 하는 것 🤢'입니다."
+   ],
+   "meanings": [
+    "끔찍한, 불쾌한",
+    "심술궂은, 못된",
+    "심각한"
+   ],
+   "examples": [
+    {
+     "en": "There was a nasty smell coming from the kitchen.",
+     "ko": "부엌에서 끔찍한 냄새가 났어요."
+    },
+    {
+     "en": "He made a nasty comment about her work.",
+     "ko": "그는 그녀의 작업에 대해 못된 말을 했어요."
+    },
+    {
+     "en": "She fell and got a nasty cut on her leg.",
+     "ko": "그녀는 넘어져서 다리에 심한 상처를 입었어요."
+    },
+    {
+     "en": "The weather turned nasty during our hike.",
+     "ko": "날씨는 우리 하이킹 동안 아주 나빠졌어요."
+    },
+    {
+     "en": "He can be nasty when he's angry.",
+     "ko": "그는 화가 나면 못되게 굴 수 있어요."
+    },
+    {
+     "en": "It was a nasty surprise to find the door broken.",
+     "ko": "그 문이 부서진 것을 발견한 건 불쾌한 놀라움이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "unpleasant",
+     "ko": "불쾌한",
+     "en": "An unpleasant surprise."
+    },
+    {
+     "type": "반의어",
+     "word": "pleasant",
+     "ko": "유쾌한",
+     "en": "A pleasant smell."
+    },
+    {
+     "type": "연관어",
+     "word": "mean",
+     "ko": "심술궂은",
+     "en": "A mean trick."
+    },
+    {
+     "type": "연관어",
+     "word": "cruel",
+     "ko": "잔인한",
+     "en": "A cruel joke."
+    },
+    {
+     "type": "연관어",
+     "word": "disgusting",
+     "ko": "역겨운",
+     "en": "A disgusting smell."
+    },
+    {
+     "type": "연관어",
+     "word": "severe",
+     "ko": "심각한",
+     "en": "A severe injury."
+    }
+   ]
+  },
+  "2999": {
+   "word": "zone",
+   "overview": [
+    "zone은 '구역, 지대'라는 뜻의 명사이자 '구역으로 나누다'라는 뜻의 동사입니다.",
+    "a no-parking zone(주차 금지 구역)처럼 씁니다.",
+    "특정한 목적이나 특징을 가진 구획된 지역을 뜻합니다.",
+    "time zone(시간대)처럼 다른 말과도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "area",
+     "en": "A restricted area.",
+     "ko": "제한 구역."
+    },
+    {
+     "word": "section",
+     "en": "A parking section.",
+     "ko": "주차 구역."
+    }
+   ],
+   "etymology": [
+    "zone은 그리스어 zone(허리띠, 벨트)에서 온 단어입니다.",
+    "고대 지리학자들은 지구를 허리띠처럼 둘러싼 가로 띠 모양의 기후대로 나눴습니다.",
+    "'특정 기준으로 나눈 하나의 구역'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 기후대뿐 아니라 안전 구역, 시간대 등 다양한 구획을 가리키는 데 폭넓게 씁니다.",
+    "zone의 핵심 이미지은 '허리띠처럼 특정 기준으로 둘러 나눈 구역 🗺️'입니다."
+   ],
+   "meanings": [
+    "구역, 지대 (명사)",
+    "구역으로 나누다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "This area is a no-smoking zone.",
+     "ko": "이 구역은 금연 구역이에요."
+    },
+    {
+     "en": "The city is divided into several time zones.",
+     "ko": "그 도시는 여러 시간대로 나뉘어요."
+    },
+    {
+     "en": "Drivers must slow down in the school zone.",
+     "ko": "운전자들은 그 학교 구역에서 속도를 줄여야 해요."
+    },
+    {
+     "en": "The building was zoned for commercial use.",
+     "ko": "그 건물은 상업용으로 구역이 지정되었어요."
+    },
+    {
+     "en": "They entered a danger zone during the storm.",
+     "ko": "그들은 그 폭풍 동안 위험 구역에 들어갔어요."
+    },
+    {
+     "en": "This part of town is zoned for residential housing.",
+     "ko": "그 동네의 이 부분은 주거용 주택으로 구역이 지정되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "area",
+     "ko": "구역",
+     "en": "A quiet area."
+    },
+    {
+     "type": "연관어",
+     "word": "region",
+     "ko": "지역",
+     "en": "A coastal region."
+    },
+    {
+     "type": "연관어",
+     "word": "district",
+     "ko": "지구",
+     "en": "A shopping district."
+    },
+    {
+     "type": "연관어",
+     "word": "boundary",
+     "ko": "경계",
+     "en": "A clear boundary."
+    },
+    {
+     "type": "연관어",
+     "word": "section",
+     "ko": "구획",
+     "en": "A parking section."
+    },
+    {
+     "type": "연관어",
+     "word": "border",
+     "ko": "경계",
+     "en": "A national border."
+    }
+   ]
   }
  }
 }
