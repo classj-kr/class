@@ -97,8 +97,8 @@
         .groups-grid {
             --tone: #173f45;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+            gap: 12px;
         }
 
         .daily-tools-grid { --tone: #0f766e; }
@@ -109,11 +109,12 @@
         .tool-card {
             display: flex;
             align-items: center;
-            gap: 14px;
-            min-height: 72px;
-            padding: 14px 18px;
+            gap: 10px;
+            min-width: 0;
+            min-height: 64px;
+            padding: 12px 14px;
             border: 0;
-            border-radius: 18px;
+            border-radius: 14px;
             background: linear-gradient(135deg, var(--tone), color-mix(in srgb, var(--tone) 78%, black));
             box-shadow: 0 8px 22px color-mix(in srgb, var(--tone) 28%, transparent);
             text-decoration: none;
@@ -130,17 +131,20 @@
         .tool-icon {
             display: grid;
             place-items: center;
-            flex: 0 0 44px;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            flex: 0 0 36px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: rgba(255, 255, 255, 0.18);
-            font-size: 1.35rem;
+            font-size: 1.15rem;
         }
 
         .tool-name {
             margin: 0;
-            font-size: 1.12rem;
+            font-size: 1rem;
+            line-height: 1.4;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
             font-weight: 800;
             letter-spacing: -0.03em;
             color: #fff;
@@ -188,7 +192,18 @@
                 padding: 60px 0 50px;
             }
             .tools-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .tools-grid .tool-card {
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+                min-height: 104px;
+                padding: 12px 8px;
+                text-align: center;
+            }
+            .tools-grid .tool-name {
+                font-size: 0.92rem;
             }
         }
     </style>
@@ -221,7 +236,6 @@
             <a class="tool-card" href="school-roster"><span class="tool-icon" aria-hidden="true">👥</span><h3 class="tool-name">전체 명단</h3></a>
             <a class="tool-card" href="record-ai"><span class="tool-icon" aria-hidden="true">📝</span><h3 class="tool-name">생활기록부</h3></a>
             <a class="tool-card" href="/classtools/office-tools/"><span class="tool-icon" aria-hidden="true">🗂️</span><h3 class="tool-name">사무용 도구</h3></a>
-            <a class="tool-card" href="/classtools/pdf-tools/"><span class="tool-icon" aria-hidden="true">📄</span><h3 class="tool-name">PDF 도구</h3></a>
             <a class="tool-card" href="privacy.html"><span class="tool-icon" aria-hidden="true">🔒</span><h3 class="tool-name">개인정보 요청 관리</h3></a>
         </div>
 

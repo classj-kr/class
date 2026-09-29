@@ -1,10 +1,13 @@
 {
-  "version": "20260926-stamp-print-size",
+  "version": "20260929-office-hub",
   "files": {
-    "classtools/office-tools/index.html": "9b0d95d349d52f03f74b63f83fc55c444387e480d6d355de286f35e1c088072a",
-    "classtools/office-tools/style.css": "08021ea9692a5a1d046100638047980650e549aa7d6f9cf9a448795aa02360c7",
-    "classtools/office-tools/stamp.js": "ccedf7ac61d8a3a977fa6b31be21a92c1d0c7d28d6c0f0056595a1a369f13b20",
-    "classtools/office-tools/tools.js": "b47bfa08ec80573b0344937d8184da579ac7968dea83698d82780f4fb538b3c5",
-    "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea"
+    "classtools/office-tools/index.html": "c6ec559d06c7e45847d55ec451383fbbb91d758c0c2f60c4aa26c2ad2c3f9617",
+    "classtools/office-tools/style.css": "e1a365ac114dd397ff5f56b3e5c2c776641b02b6bc7fed58fe92945bed55da31",
+    "classtools/office-tools/stamp.js": "99d58d4fd5efae08d4c77260c18eca396b471d1d2e193d4cacb9590a6bffa07f",
+    "classtools/office-tools/tools.js": "c7c85175ac61f163208bf1231c50c3a13035d88cb9b30f77aaa006559bf62175",
+    "classtools/office-tools/fonts/ChosunGs.TTF": "4e191bc30d23ce34797dcaf7a0965dedd67a2d85cc5dd87325ee96626cba7bea",
+    "classtools/office-tools/workbench.html": "806ca02539fd74e55c8c2521625fc38b28e4c36397b21188d2e78b566d7e99e1",
+    "classtools/office-tools/hub.css": "63cba338643df7bd21c9d9cabd166aa8dfbeadeb314167eadbab403e6dbbbb60",
+    "classtools/office-tools/hub.js": "4098d10d5064f0e7077501f4c4f5f95fcf1446109ca690f0437dd5dae179ef67"
   }
 }

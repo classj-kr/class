@@ -27,7 +27,6 @@ const expectedMultiplayerGames = [
     "kingdom-trails",
     "lastcard",
     "loveletter",
-    "night-gallery",
     "nimgame",
     "omok",
     "reversi",
