@@ -15442,6 +15442,1938 @@
      "en": "Feel sick."
     }
    ]
+  },
+  "2729": {
+   "word": "tiny",
+   "overview": [
+    "tiny는 '아주 작은'이라는 뜻의 형용사입니다. small보다 훨씬 강조된 작음을 나타냅니다.",
+    "a tiny insect(아주 작은 곤충), a tiny piece(아주 작은 조각)처럼 씁니다.",
+    "구어에서 tiny bit는 '아주 조금'이라는 뜻으로 자주 씁니다.",
+    "huge(거대한)의 반대말처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "small",
+     "en": "A small bug.",
+     "ko": "작은 벌레."
+    },
+    {
+     "word": "little",
+     "en": "A little baby.",
+     "ko": "작은 아기."
+    }
+   ],
+   "etymology": [
+    "tiny는 1300년대쯤 tine(아주 작은 것)이라는 옛말에서 온 단어입니다.",
+    "정확한 더 옛 뿌리는 잘 알려져 있지 않습니다.",
+    "'눈에 겨우 보일 만큼 작은'이라는 뜻으로 쓰이기 시작했습니다.",
+    "지금은 small보다 훨씬 강한 '아주 작음'을 나타낼 때 씁니다.",
+    "tiny의 핵심 이미지는 '개미처럼 눈에 겨우 보이는 작은 크기 🐜'입니다."
+   ],
+   "meanings": [
+    "아주 작은"
+   ],
+   "examples": [
+    {
+     "en": "There's a tiny insect on the leaf.",
+     "ko": "잎사귀에 아주 작은 곤충이 있어요."
+    },
+    {
+     "en": "The baby has tiny fingers.",
+     "ko": "아기는 손가락이 아주 작아요."
+    },
+    {
+     "en": "We live in a tiny apartment.",
+     "ko": "우리는 아주 작은 아파트에 살아요."
+    },
+    {
+     "en": "Just a tiny bit of sugar, please.",
+     "ko": "설탕은 아주 조금만 넣어 주세요."
+    },
+    {
+     "en": "The kitten was so tiny it fit in my hand.",
+     "ko": "새끼 고양이가 너무 작아서 내 손안에 딱 들어갔어요."
+    },
+    {
+     "en": "A tiny mistake can cause big problems.",
+     "ko": "아주 작은 실수가 큰 문제를 일으킬 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "small",
+     "ko": "작은",
+     "en": "A small box."
+    },
+    {
+     "type": "유의어",
+     "word": "little",
+     "ko": "작은",
+     "en": "A little house."
+    },
+    {
+     "type": "반의어",
+     "word": "huge",
+     "ko": "거대한",
+     "en": "A huge whale."
+    },
+    {
+     "type": "연관어",
+     "word": "tiny bit",
+     "ko": "아주 조금",
+     "en": "A tiny bit more."
+    },
+    {
+     "type": "연관어",
+     "word": "mini",
+     "ko": "미니, 소형의",
+     "en": "A mini car."
+    },
+    {
+     "type": "연관어",
+     "word": "insect",
+     "ko": "곤충",
+     "en": "A small insect."
+    }
+   ]
+  },
+  "1999": {
+   "word": "pool",
+   "overview": [
+    "pool은 '수영장', '웅덩이'라는 뜻의 명사입니다.",
+    "a swimming pool(수영장), a pool of water(물웅덩이)처럼 씁니다.",
+    "동사로는 '자금을 모으다'라는 뜻도 있습니다. pool our money(우리의 돈을 함께 모으다)",
+    "당구(pool)라는 게임의 이름으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "puddle",
+     "en": "A rain puddle.",
+     "ko": "빗물 웅덩이."
+    },
+    {
+     "word": "swim",
+     "en": "Go swimming.",
+     "ko": "수영하러 가다."
+    }
+   ],
+   "etymology": [
+    "pool은 고대 영어 pōl(웅덩이, 작은 못)에서 온 단어입니다.",
+    "독일어 지역 말과 이어지는 아주 오래된 게르만 뿌리입니다.",
+    "천 년 넘게 '고인 물'이라는 뜻으로 쓰여 온 단어입니다.",
+    "'자금을 모으다'라는 뜻은 여러 곳의 물이 한곳에 고이는 모습에서 나온 비유라고 봅니다.",
+    "pool의 핵심 이미지는 '시원한 물이 가득 찬 수영장 🏊'입니다."
+   ],
+   "meanings": [
+    "수영장 (명사)",
+    "웅덩이, 작은 못 (명사)",
+    "(자금 등을) 모으다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "We swam in the pool all afternoon.",
+     "ko": "우리는 오후 내내 수영장에서 수영했어요."
+    },
+    {
+     "en": "There's a pool of water on the road.",
+     "ko": "도로에 물웅덩이가 있어요."
+    },
+    {
+     "en": "Let's pool our money to buy the gift.",
+     "ko": "선물을 사려고 돈을 함께 모으자."
+    },
+    {
+     "en": "The hotel has a large swimming pool.",
+     "ko": "그 호텔에는 큰 수영장이 있어요."
+    },
+    {
+     "en": "A pool of blood was found at the scene.",
+     "ko": "현장에서 핏자국 웅덩이가 발견되었어요."
+    },
+    {
+     "en": "They played a game of pool at the club.",
+     "ko": "그들은 클럽에서 당구 게임을 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "swim",
+     "ko": "수영하다",
+     "en": "Swim fast."
+    },
+    {
+     "type": "연관어",
+     "word": "water",
+     "ko": "물",
+     "en": "Clean water."
+    },
+    {
+     "type": "연관어",
+     "word": "puddle",
+     "ko": "웅덩이",
+     "en": "A muddy puddle."
+    },
+    {
+     "type": "연관어",
+     "word": "lake",
+     "ko": "호수",
+     "en": "A quiet lake."
+    },
+    {
+     "type": "연관어",
+     "word": "share",
+     "ko": "나누다, 모으다",
+     "en": "Share resources."
+    },
+    {
+     "type": "연관어",
+     "word": "fund",
+     "ko": "기금",
+     "en": "Raise a fund."
+    }
+   ]
+  },
+  "2082": {
+   "word": "property",
+   "overview": [
+    "property는 '재산', '소유물'이라는 뜻의 명사입니다.",
+    "private property(사유 재산), personal property(개인 소지품)처럼 씁니다.",
+    "'부동산', '토지'라는 뜻으로도 아주 자주 씁니다. a piece of property(부동산 한 채)",
+    "'속성', '특성'이라는 뜻으로도 씁니다. the property of water(물의 성질)"
+   ],
+   "easy": [
+    {
+     "word": "belongings",
+     "en": "Personal belongings.",
+     "ko": "개인 소지품."
+    },
+    {
+     "word": "land",
+     "en": "Buy land.",
+     "ko": "땅을 사다."
+    }
+   ],
+   "etymology": [
+    "property는 라틴어 proprietas(고유함, 소유물)에서 온 단어입니다.",
+    "proprius(자기 자신의)에서 나온 말로, proper(적절한, '자기에게 맞는')와 같은 가족입니다.",
+    "'자기 자신에게 속하는 것'이라는 뜻이 '재산', '소유물'로 이어졌습니다.",
+    "'물건이 가진 고유한 특성'이라는 뜻도 여기서 자연스럽게 넓어졌습니다.",
+    "property의 핵심 이미지는 '자기 이름으로 등록된 소중한 소유물 🏡'입니다."
+   ],
+   "meanings": [
+    "재산, 소유물 (명사)",
+    "부동산, 토지 (명사)",
+    "속성, 특성 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "This is private property. No trespassing.",
+     "ko": "여기는 사유지입니다. 출입 금지."
+    },
+    {
+     "en": "They bought a small property in the countryside.",
+     "ko": "그들은 시골에 작은 부동산을 샀어요."
+    },
+    {
+     "en": "Please respect other people's property.",
+     "ko": "다른 사람의 재산을 존중해 주세요."
+    },
+    {
+     "en": "Water has the property of expanding when frozen.",
+     "ko": "물은 얼면 팽창하는 성질이 있어요."
+    },
+    {
+     "en": "The stolen property was returned to its owner.",
+     "ko": "도난당한 재산이 주인에게 돌아갔어요."
+    },
+    {
+     "en": "The company owns a lot of property downtown.",
+     "ko": "그 회사는 시내에 많은 부동산을 소유하고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "belongings",
+     "ko": "소지품",
+     "en": "Personal belongings."
+    },
+    {
+     "type": "연관어",
+     "word": "land",
+     "ko": "땅",
+     "en": "A piece of land."
+    },
+    {
+     "type": "연관어",
+     "word": "own",
+     "ko": "소유하다",
+     "en": "Own a house."
+    },
+    {
+     "type": "연관어",
+     "word": "estate",
+     "ko": "부동산, 재산",
+     "en": "Real estate."
+    },
+    {
+     "type": "연관어",
+     "word": "characteristic",
+     "ko": "특성",
+     "en": "A key characteristic."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치",
+     "en": "High value."
+    }
+   ]
+  },
+  "2357": {
+   "word": "settle",
+   "overview": [
+    "settle은 '정착하다', '해결하다'라는 뜻의 동사입니다.",
+    "settle in a new town(새 마을에 정착하다), settle a problem(문제를 해결하다)처럼 씁니다.",
+    "settle down은 '자리 잡다', '진정하다'라는 뜻의 표현입니다.",
+    "'대금을 정산하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "solve",
+     "en": "Solve a problem.",
+     "ko": "문제를 해결하다."
+    },
+    {
+     "word": "move to",
+     "en": "Move to a new city.",
+     "ko": "새 도시로 이사하다."
+    }
+   ],
+   "etymology": [
+    "settle은 고대 영어 setlan(자리를 잡게 하다)에서 온 단어입니다.",
+    "sit(앉다)과 같은 뿌리를 가진 단어입니다.",
+    "'제자리에 앉혀 안정시키다'라는 뜻이 '정착하다', '해결하다'로 이어졌습니다.",
+    "settlement(정착, 합의)도 같은 가족 단어입니다.",
+    "settle의 핵심 이미지는 '흔들리던 것이 제자리를 찾고 가라앉는 것 🏡'입니다."
+   ],
+   "meanings": [
+    "정착하다",
+    "해결하다, 합의를 보다",
+    "(대금을) 정산하다",
+    "(settle down) 진정하다, 자리 잡다"
+   ],
+   "examples": [
+    {
+     "en": "They settled in a small town near the coast.",
+     "ko": "그들은 해안 근처 작은 마을에 정착했어요."
+    },
+    {
+     "en": "Let's settle this argument peacefully.",
+     "ko": "이 다툼을 평화롭게 해결하자."
+    },
+    {
+     "en": "Please settle down and be quiet.",
+     "ko": "진정하고 조용히 해 주세요."
+    },
+    {
+     "en": "We settled the bill before leaving.",
+     "ko": "우리는 떠나기 전에 계산을 마쳤어요."
+    },
+    {
+     "en": "Dust settled on the old furniture.",
+     "ko": "먼지가 오래된 가구 위에 내려앉았어요."
+    },
+    {
+     "en": "The two sides settled their differences.",
+     "ko": "양쪽은 이견을 해결했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "solve",
+     "ko": "해결하다",
+     "en": "Solve the puzzle."
+    },
+    {
+     "type": "파생어",
+     "word": "settlement",
+     "ko": "정착, 합의",
+     "en": "Reach a settlement."
+    },
+    {
+     "type": "연관어",
+     "word": "move",
+     "ko": "이사하다",
+     "en": "Move to Seoul."
+    },
+    {
+     "type": "연관어",
+     "word": "calm",
+     "ko": "진정하다",
+     "en": "Calm down."
+    },
+    {
+     "type": "연관어",
+     "word": "agree",
+     "ko": "합의하다",
+     "en": "Agree to terms."
+    },
+    {
+     "type": "연관어",
+     "word": "pay",
+     "ko": "지불하다",
+     "en": "Pay the bill."
+    }
+   ]
+  },
+  "288": {
+   "word": "bite",
+   "overview": [
+    "bite는 '물다', '깨물다'라는 뜻의 동사이자 '한 입'이라는 뜻의 명사입니다.",
+    "The dog bit me.(개가 나를 물었어요.)처럼 씁니다.",
+    "take a bite(한 입 먹다)처럼 명사로도 자주 씁니다.",
+    "과거형은 bit, 과거분사는 bitten입니다."
+   ],
+   "easy": [
+    {
+     "word": "chew",
+     "en": "Chew your food.",
+     "ko": "음식을 씹어."
+    },
+    {
+     "word": "taste",
+     "en": "Take a taste.",
+     "ko": "맛을 봐."
+    }
+   ],
+   "etymology": [
+    "bite는 고대 영어 bītan(물다)에서 온 단어입니다.",
+    "독일어 beißen(물다)과 같은 뿌리입니다.",
+    "천 년 넘게 '이빨로 물다'라는 뜻으로 쓰여 온 단어입니다.",
+    "bit(조금, '물어뜯은 조각')도 같은 뿌리에서 나온 단어입니다.",
+    "bite의 핵심 이미지는 '이빨로 앙 하고 무는 순간 🦷'입니다."
+   ],
+   "meanings": [
+    "물다, 깨물다 (동사)",
+    "한 입, 한 조각 (명사)",
+    "(모기 등에) 물림 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The dog bit my shoe.",
+     "ko": "개가 내 신발을 물었어요."
+    },
+    {
+     "en": "Can I have a bite of your sandwich?",
+     "ko": "네 샌드위치 한 입 먹어도 돼?"
+    },
+    {
+     "en": "I got a mosquito bite on my arm.",
+     "ko": "팔에 모기 물린 자국이 생겼어요."
+    },
+    {
+     "en": "She took a big bite of the apple.",
+     "ko": "그녀는 사과를 한 입 크게 베어 물었어요."
+    },
+    {
+     "en": "Be careful, the snake might bite.",
+     "ko": "조심해, 뱀이 물 수도 있어."
+    },
+    {
+     "en": "He was bitten by a spider.",
+     "ko": "그는 거미에게 물렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "bit",
+     "ko": "물었다 (과거형)",
+     "en": "The dog bit him."
+    },
+    {
+     "type": "변화형",
+     "word": "bitten",
+     "ko": "물린 (과거분사)",
+     "en": "Bitten by a bug."
+    },
+    {
+     "type": "연관어",
+     "word": "chew",
+     "ko": "씹다",
+     "en": "Chew slowly."
+    },
+    {
+     "type": "연관어",
+     "word": "tooth",
+     "ko": "이",
+     "en": "A sharp tooth."
+    },
+    {
+     "type": "연관어",
+     "word": "eat",
+     "ko": "먹다",
+     "en": "Eat quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "mosquito",
+     "ko": "모기",
+     "en": "A buzzing mosquito."
+    }
+   ]
+  },
+  "1278": {
+   "word": "handsome",
+   "overview": [
+    "handsome은 '잘생긴'이라는 뜻의 형용사입니다. 주로 남자의 외모를 칭찬할 때 씁니다.",
+    "a handsome man(잘생긴 남자)처럼 씁니다.",
+    "'상당한', '넉넉한'이라는 뜻으로도 씁니다. a handsome amount(상당한 액수)",
+    "여자에게는 보통 pretty나 beautiful을 더 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "good-looking",
+     "en": "A good-looking guy.",
+     "ko": "잘생긴 남자."
+    },
+    {
+     "word": "attractive",
+     "en": "An attractive smile.",
+     "ko": "매력적인 미소."
+    }
+   ],
+   "etymology": [
+    "handsome은 hand(손)와 some(~을 잘하는)이 합쳐진 말입니다.",
+    "처음에는 '손으로 다루기 쉬운', '편리한'이라는 뜻이었습니다.",
+    "'다루기 좋은'에서 '보기 좋은', '잘생긴'으로 뜻이 넓어졌습니다.",
+    "지금도 '상당한', '넉넉한'이라는 뜻에 옛 의미가 조금 남아 있습니다.",
+    "handsome의 핵심 이미지는 '보기만 해도 기분 좋은 잘생긴 얼굴 😎'입니다."
+   ],
+   "meanings": [
+    "잘생긴",
+    "(양이나 액수가) 상당한, 넉넉한"
+   ],
+   "examples": [
+    {
+     "en": "He is a very handsome young man.",
+     "ko": "그는 아주 잘생긴 젊은 남자예요."
+    },
+    {
+     "en": "The prince in the story is handsome and kind.",
+     "ko": "이야기 속 왕자는 잘생기고 친절해요."
+    },
+    {
+     "en": "She received a handsome reward.",
+     "ko": "그녀는 상당한 보상을 받았어요."
+    },
+    {
+     "en": "My grandfather was handsome when he was young.",
+     "ko": "우리 할아버지는 젊었을 때 잘생기셨어요."
+    },
+    {
+     "en": "That's a handsome dog with shiny fur.",
+     "ko": "저건 털이 반짝이는 멋진 개예요."
+    },
+    {
+     "en": "He made a handsome profit from the sale.",
+     "ko": "그는 판매로 상당한 이익을 남겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "good-looking",
+     "ko": "잘생긴",
+     "en": "A good-looking boy."
+    },
+    {
+     "type": "유의어",
+     "word": "attractive",
+     "ko": "매력적인",
+     "en": "An attractive face."
+    },
+    {
+     "type": "연관어",
+     "word": "pretty",
+     "ko": "예쁜",
+     "en": "A pretty flower."
+    },
+    {
+     "type": "연관어",
+     "word": "cute",
+     "ko": "귀여운",
+     "en": "A cute puppy."
+    },
+    {
+     "type": "연관어",
+     "word": "charming",
+     "ko": "매력적인",
+     "en": "A charming smile."
+    },
+    {
+     "type": "연관어",
+     "word": "prince",
+     "ko": "왕자",
+     "en": "A brave prince."
+    }
+   ]
+  },
+  "2829": {
+   "word": "unit",
+   "overview": [
+    "unit은 '단위', '구성 단위'라는 뜻의 명사입니다.",
+    "a unit of measurement(측정 단위), a family unit(가족 단위)처럼 씁니다.",
+    "군대의 '부대'라는 뜻으로도 씁니다.",
+    "학교 교과서의 '단원'이라는 뜻으로도 아주 자주 씁니다. Unit 3(3단원)"
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "A small part.",
+     "ko": "작은 부분."
+    },
+    {
+     "word": "chapter",
+     "en": "The next chapter.",
+     "ko": "다음 챕터."
+    }
+   ],
+   "etymology": [
+    "unit은 라틴어 unus(하나)에서 온 단어입니다.",
+    "unite(연합하다), unique(유일한)와 같은 뿌리를 가진 단어입니다.",
+    "'전체를 이루는 하나의 부분'이라는 뜻이 '단위', '구성 요소'로 이어졌습니다.",
+    "1500년대쯤 수학 용어로 쓰이기 시작해, 점점 여러 분야에서 쓰이게 되었습니다.",
+    "unit의 핵심 이미지는 '전체를 이루는 하나의 조각 🧱'입니다."
+   ],
+   "meanings": [
+    "단위, 구성 단위",
+    "(군대) 부대",
+    "(교과서의) 단원"
+   ],
+   "examples": [
+    {
+     "en": "A meter is a unit of length.",
+     "ko": "미터는 길이의 단위예요."
+    },
+    {
+     "en": "Let's study Unit 5 today.",
+     "ko": "오늘 5단원을 공부하자."
+    },
+    {
+     "en": "The military sent a special unit.",
+     "ko": "군대는 특수 부대를 보냈어요."
+    },
+    {
+     "en": "The family is the smallest social unit.",
+     "ko": "가족은 가장 작은 사회적 단위예요."
+    },
+    {
+     "en": "Each unit of the machine works together.",
+     "ko": "그 기계의 각 부품은 함께 작동해요."
+    },
+    {
+     "en": "This apartment building has fifty units.",
+     "ko": "이 아파트 건물에는 세대가 50개 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "part",
+     "ko": "부분",
+     "en": "A missing part."
+    },
+    {
+     "type": "연관어",
+     "word": "chapter",
+     "ko": "장, 단원",
+     "en": "Read a chapter."
+    },
+    {
+     "type": "연관어",
+     "word": "group",
+     "ko": "그룹",
+     "en": "A study group."
+    },
+    {
+     "type": "연관어",
+     "word": "measure",
+     "ko": "측정하다",
+     "en": "Measure carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "army",
+     "ko": "군대",
+     "en": "An army unit."
+    },
+    {
+     "type": "연관어",
+     "word": "whole",
+     "ko": "전체",
+     "en": "The whole unit."
+    }
+   ]
+  },
+  "82": {
+   "word": "alarm",
+   "overview": [
+    "alarm은 '경보', '자명종'이라는 뜻의 명사이자 '놀라게 하다'라는 뜻의 동사입니다.",
+    "a fire alarm(화재 경보기), set an alarm(알람을 맞추다)처럼 씁니다.",
+    "'불안', '놀람'이라는 뜻으로도 씁니다. with alarm(불안해하며)",
+    "형용사 alarmed는 '놀란', alarming은 '걱정스러운'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "alert",
+     "en": "An emergency alert.",
+     "ko": "긴급 경고."
+    },
+    {
+     "word": "worry",
+     "en": "Cause worry.",
+     "ko": "걱정을 일으키다."
+    }
+   ],
+   "etymology": [
+    "alarm은 이탈리아어 all'arme(무기를 들어라!)에서 온 단어입니다.",
+    "옛날에 위험이 닥치면 병사들에게 이렇게 외쳐 무장을 알렸습니다.",
+    "'위험을 알리는 외침'이라는 뜻이 '경보'로 이어졌습니다.",
+    "arm(팔, 무기)과도 이어지는 뿌리입니다.",
+    "alarm의 핵심 이미지는 '위험을 알리는 요란한 경보음 🚨'입니다."
+   ],
+   "meanings": [
+    "경보, 경보기 (명사)",
+    "자명종 (명사)",
+    "불안, 놀람 (명사)",
+    "놀라게 하다, 불안하게 하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The fire alarm went off suddenly.",
+     "ko": "화재 경보기가 갑자기 울렸어요."
+    },
+    {
+     "en": "I set my alarm for six in the morning.",
+     "ko": "나는 아침 6시로 알람을 맞췄어요."
+    },
+    {
+     "en": "She looked at him with alarm.",
+     "ko": "그녀는 불안해하며 그를 바라봤어요."
+    },
+    {
+     "en": "The loud noise alarmed the whole neighborhood.",
+     "ko": "그 큰 소리가 온 동네를 놀라게 했어요."
+    },
+    {
+     "en": "Don't be alarmed, it's just a drill.",
+     "ko": "놀라지 마세요, 그냥 훈련이에요."
+    },
+    {
+     "en": "The security alarm protects the store.",
+     "ko": "보안 경보기가 그 가게를 지켜요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "alert",
+     "ko": "경고",
+     "en": "An emergency alert."
+    },
+    {
+     "type": "연관어",
+     "word": "clock",
+     "ko": "시계",
+     "en": "An alarm clock."
+    },
+    {
+     "type": "연관어",
+     "word": "fire",
+     "ko": "화재",
+     "en": "A fire drill."
+    },
+    {
+     "type": "연관어",
+     "word": "warning",
+     "ko": "경고",
+     "en": "A warning sign."
+    },
+    {
+     "type": "연관어",
+     "word": "worry",
+     "ko": "걱정",
+     "en": "Cause worry."
+    },
+    {
+     "type": "연관어",
+     "word": "scare",
+     "ko": "겁먹게 하다",
+     "en": "Scare easily."
+    }
+   ]
+  },
+  "1659": {
+   "word": "medicine",
+   "overview": [
+    "medicine은 '약', '의학'이라는 뜻의 명사입니다.",
+    "take medicine(약을 먹다), study medicine(의학을 공부하다)처럼 씁니다.",
+    "'치료법'이라는 넓은 뜻으로도 씁니다.",
+    "형용사 medical(의학의)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "pill",
+     "en": "Swallow a pill.",
+     "ko": "알약을 삼키다."
+    },
+    {
+     "word": "drug",
+     "en": "A new drug.",
+     "ko": "새로운 약."
+    }
+   ],
+   "etymology": [
+    "medicine은 라틴어 medicina(치료의 기술)에서 온 단어입니다.",
+    "medicus(의사)에서 나온 말로, medical(의학의)과 같은 가족입니다.",
+    "'병을 낫게 하는 기술과 물질'이라는 뜻이 그대로 이어져 왔습니다.",
+    "remedy(치료법)도 같은 뿌리에서 나온 단어입니다.",
+    "medicine의 핵심 이미지는 '아플 때 먹는 병 낫게 하는 약 💊'입니다."
+   ],
+   "meanings": [
+    "약",
+    "의학, 의술"
+   ],
+   "examples": [
+    {
+     "en": "Take this medicine three times a day.",
+     "ko": "이 약을 하루에 세 번 드세요."
+    },
+    {
+     "en": "She wants to study medicine at university.",
+     "ko": "그녀는 대학교에서 의학을 공부하고 싶어 해요."
+    },
+    {
+     "en": "The doctor prescribed medicine for my cough.",
+     "ko": "의사가 내 기침 약을 처방해 주셨어요."
+    },
+    {
+     "en": "Modern medicine has saved many lives.",
+     "ko": "현대 의학은 많은 생명을 구했어요."
+    },
+    {
+     "en": "Don't forget to take your medicine.",
+     "ko": "약 먹는 것 잊지 마."
+    },
+    {
+     "en": "Traditional medicine uses natural herbs.",
+     "ko": "전통 의학은 자연 약초를 이용해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "drug",
+     "ko": "약물",
+     "en": "Take a drug."
+    },
+    {
+     "type": "유의어",
+     "word": "pill",
+     "ko": "알약",
+     "en": "Swallow a pill."
+    },
+    {
+     "type": "파생어",
+     "word": "medical",
+     "ko": "의학의",
+     "en": "Medical care."
+    },
+    {
+     "type": "연관어",
+     "word": "doctor",
+     "ko": "의사",
+     "en": "See a doctor."
+    },
+    {
+     "type": "연관어",
+     "word": "hospital",
+     "ko": "병원",
+     "en": "Go to the hospital."
+    },
+    {
+     "type": "연관어",
+     "word": "cure",
+     "ko": "치료법, 치료하다",
+     "en": "Find a cure."
+    }
+   ]
+  },
+  "20": {
+   "word": "access",
+   "overview": [
+    "access는 '접근', '이용'이라는 뜻의 명사이자 '접근하다', '이용하다'라는 뜻의 동사입니다.",
+    "access to the internet(인터넷 접속), have access to(~에 접근할 수 있다)처럼 씁니다.",
+    "동사로는 '(정보에) 접속하다'라는 뜻으로 컴퓨터와 관련해 아주 자주 씁니다.",
+    "형용사 accessible은 '접근하기 쉬운'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "enter",
+     "en": "Enter the site.",
+     "ko": "사이트에 들어가다."
+    },
+    {
+     "word": "use",
+     "en": "Use the internet.",
+     "ko": "인터넷을 쓰다."
+    }
+   ],
+   "etymology": [
+    "access는 라틴어 accessus(다가감, 접근)에서 온 단어입니다.",
+    "ad(~을 향해)와 cedere(가다)가 합쳐진 말입니다.",
+    "proceed(진행하다), succeed(성공하다)도 cedere에서 나온 같은 가족 단어들입니다.",
+    "'무언가를 향해 다가가는 것'이라는 뜻이 '접근', '이용'으로 이어졌습니다.",
+    "access의 핵심 이미지는 '닫힌 문을 열고 들어가는 통로 🚪'입니다."
+   ],
+   "meanings": [
+    "접근, 이용 (명사)",
+    "접근하다, 이용하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Do you have access to the internet at home?",
+     "ko": "집에 인터넷 접속이 되어 있어요?"
+    },
+    {
+     "en": "Students can access the library after school.",
+     "ko": "학생들은 방과 후에 도서관을 이용할 수 있어요."
+    },
+    {
+     "en": "You need a password to access this file.",
+     "ko": "이 파일에 접근하려면 비밀번호가 필요해요."
+    },
+    {
+     "en": "The building has easy access for wheelchairs.",
+     "ko": "그 건물은 휠체어로 쉽게 접근할 수 있어요."
+    },
+    {
+     "en": "We accessed the data through the computer.",
+     "ko": "우리는 컴퓨터를 통해 자료에 접근했어요."
+    },
+    {
+     "en": "Everyone should have access to clean water.",
+     "ko": "모두가 깨끗한 물을 이용할 수 있어야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "enter",
+     "ko": "들어가다",
+     "en": "Enter the room."
+    },
+    {
+     "type": "파생어",
+     "word": "accessible",
+     "ko": "접근하기 쉬운",
+     "en": "Easily accessible."
+    },
+    {
+     "type": "연관어",
+     "word": "internet",
+     "ko": "인터넷",
+     "en": "Use the internet."
+    },
+    {
+     "type": "연관어",
+     "word": "enter",
+     "ko": "입력하다",
+     "en": "Enter data."
+    },
+    {
+     "type": "연관어",
+     "word": "reach",
+     "ko": "도달하다",
+     "en": "Reach the top."
+    },
+    {
+     "type": "연관어",
+     "word": "password",
+     "ko": "비밀번호",
+     "en": "A strong password."
+    }
+   ]
+  },
+  "1091": {
+   "word": "flat",
+   "overview": [
+    "flat은 '평평한'이라는 뜻의 형용사이자 영국식 영어로 '아파트'라는 뜻의 명사입니다.",
+    "a flat surface(평평한 표면)처럼 씁니다.",
+    "a flat tire(바람 빠진 타이어)처럼 '납작해진'이라는 뜻으로도 씁니다.",
+    "음악에서는 '반음 낮은'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "level",
+     "en": "A level surface.",
+     "ko": "평평한 표면."
+    },
+    {
+     "word": "apartment",
+     "en": "A small apartment.",
+     "ko": "작은 아파트."
+    }
+   ],
+   "etymology": [
+    "flat은 옛 노르드어(바이킹의 말) flatr(평평한)에서 온 단어입니다.",
+    "독일어 platt(평평한)와도 이어지는 뿌리라고 봅니다.",
+    "'울퉁불퉁하지 않고 반듯한'이라는 뜻이 그대로 이어져 왔습니다.",
+    "영국에서 '아파트'를 flat이라고 부르는 것은, 한 층이 '평평하게' 이어진 구조에서 나왔다고 봅니다.",
+    "flat의 핵심 이미지는 '울퉁불퉁함 없이 반듯한 평평한 면 📏'입니다."
+   ],
+   "meanings": [
+    "평평한 (형용사)",
+    "바람이 빠진, 납작해진 (형용사)",
+    "(영국) 아파트 (명사)",
+    "(음악) 반음 낮은 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "The table has a flat surface.",
+     "ko": "그 탁자는 표면이 평평해요."
+    },
+    {
+     "en": "My bike has a flat tire.",
+     "ko": "내 자전거 타이어에 바람이 빠졌어요."
+    },
+    {
+     "en": "She lives in a small flat in London.",
+     "ko": "그녀는 런던의 작은 아파트에 살아요."
+    },
+    {
+     "en": "Lay the paper flat on the desk.",
+     "ko": "종이를 책상에 평평하게 놓아."
+    },
+    {
+     "en": "We ran the race in five minutes flat.",
+     "ko": "우리는 딱 5분 만에 경주를 뛰었어요."
+    },
+    {
+     "en": "The note was a bit flat during the song.",
+     "ko": "그 음은 노래 중에 살짝 반음 낮았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "level",
+     "ko": "평평한",
+     "en": "A level ground."
+    },
+    {
+     "type": "연관어",
+     "word": "apartment",
+     "ko": "아파트 (미국)",
+     "en": "A city apartment."
+    },
+    {
+     "type": "연관어",
+     "word": "smooth",
+     "ko": "매끄러운",
+     "en": "A smooth surface."
+    },
+    {
+     "type": "연관어",
+     "word": "tire",
+     "ko": "타이어",
+     "en": "A car tire."
+    },
+    {
+     "type": "연관어",
+     "word": "ground",
+     "ko": "땅",
+     "en": "Flat ground."
+    },
+    {
+     "type": "반의어",
+     "word": "curved",
+     "ko": "굽은",
+     "en": "A curved line."
+    }
+   ]
+  },
+  "1915": {
+   "word": "path",
+   "overview": [
+    "path는 '길', '경로'라는 뜻의 명사입니다. 사람이나 발자국으로 생긴 좁은 길을 말합니다.",
+    "a garden path(정원 길), find a path(길을 찾다)처럼 씁니다.",
+    "'인생의 길', '나아가는 과정'이라는 비유적인 뜻으로도 자주 씁니다.",
+    "컴퓨터에서 파일의 '경로'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "trail",
+     "en": "Follow the trail.",
+     "ko": "오솔길을 따라가."
+    },
+    {
+     "word": "way",
+     "en": "Find the way.",
+     "ko": "길을 찾아."
+    }
+   ],
+   "etymology": [
+    "path는 고대 영어 pæth(길, 오솔길)에서 온 단어입니다.",
+    "독일어 Pfad(오솔길)와 같은 뿌리라고 봅니다.",
+    "'사람들이 걸어 다녀서 생긴 좁은 길'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'인생의 길'이라는 비유적 뜻도 여기서 자연스럽게 넓어졌습니다.",
+    "path의 핵심 이미지는 '숲속에 나 있는 구불구불한 오솔길 🌲'입니다."
+   ],
+   "meanings": [
+    "길, 오솔길",
+    "경로, 과정",
+    "(컴퓨터) 파일 경로"
+   ],
+   "examples": [
+    {
+     "en": "We walked along a narrow path in the woods.",
+     "ko": "우리는 숲속의 좁은 길을 따라 걸었어요."
+    },
+    {
+     "en": "She chose a different career path.",
+     "ko": "그녀는 다른 직업의 길을 선택했어요."
+    },
+    {
+     "en": "Follow this path to reach the lake.",
+     "ko": "이 길을 따라가면 호수에 도달해요."
+    },
+    {
+     "en": "The storm's path was tracked carefully.",
+     "ko": "폭풍의 경로가 신중하게 추적되었어요."
+    },
+    {
+     "en": "Life sometimes leads us down unexpected paths.",
+     "ko": "삶은 때때로 우리를 예상치 못한 길로 이끌어요."
+    },
+    {
+     "en": "Watch out for rocks on the path.",
+     "ko": "길에 있는 돌을 조심해."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "trail",
+     "ko": "오솔길",
+     "en": "A hiking trail."
+    },
+    {
+     "type": "유의어",
+     "word": "way",
+     "ko": "길",
+     "en": "Find a way."
+    },
+    {
+     "type": "연관어",
+     "word": "road",
+     "ko": "도로",
+     "en": "A busy road."
+    },
+    {
+     "type": "연관어",
+     "word": "route",
+     "ko": "경로",
+     "en": "Take a route."
+    },
+    {
+     "type": "연관어",
+     "word": "walk",
+     "ko": "걷다",
+     "en": "Walk slowly."
+    },
+    {
+     "type": "연관어",
+     "word": "direction",
+     "ko": "방향",
+     "en": "The right direction."
+    }
+   ]
+  },
+  "1284": {
+   "word": "harm",
+   "overview": [
+    "harm은 '해', '손해'라는 뜻의 명사이자 '해치다'라는 뜻의 동사입니다.",
+    "do harm(해를 끼치다), no harm done(별 피해 없음)처럼 씁니다.",
+    "harm은 mean to harm someone(누군가를 해치려고 하다)처럼 씁니다.",
+    "형용사 harmful(해로운), harmless(무해한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "damage",
+     "en": "Cause damage.",
+     "ko": "손상을 일으키다."
+    },
+    {
+     "word": "hurt",
+     "en": "Hurt someone.",
+     "ko": "누군가를 다치게 하다."
+    }
+   ],
+   "etymology": [
+    "harm은 고대 영어 hearm(상처, 슬픔)에서 온 단어입니다.",
+    "독일어 Harm(슬픔, 근심)과 같은 뿌리입니다.",
+    "'몸이나 마음에 입힌 상처'라는 뜻이 그대로 이어져 왔습니다.",
+    "천 년 넘게 비슷한 뜻으로 쓰여 온 단어입니다.",
+    "harm의 핵심 이미지는 '누군가에게 상처를 입히는 나쁜 영향 ⚠️'입니다."
+   ],
+   "meanings": [
+    "해, 손해 (명사)",
+    "해치다, 해를 끼치다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Too much sugar can harm your health.",
+     "ko": "설탕을 너무 많이 먹으면 건강에 해로울 수 있어요."
+    },
+    {
+     "en": "The storm did a lot of harm to the crops.",
+     "ko": "그 폭풍은 농작물에 큰 피해를 입혔어요."
+    },
+    {
+     "en": "I meant no harm by my words.",
+     "ko": "내 말에 나쁜 의도는 없었어요."
+    },
+    {
+     "en": "Don't harm the animals in the park.",
+     "ko": "공원에 있는 동물들을 해치지 마."
+    },
+    {
+     "en": "There's no harm in trying.",
+     "ko": "시도해서 나쁠 건 없어요."
+    },
+    {
+     "en": "Pollution can harm the environment.",
+     "ko": "오염은 환경에 해를 끼칠 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "damage",
+     "ko": "손상",
+     "en": "Cause damage."
+    },
+    {
+     "type": "유의어",
+     "word": "hurt",
+     "ko": "다치게 하다",
+     "en": "Hurt feelings."
+    },
+    {
+     "type": "파생어",
+     "word": "harmful",
+     "ko": "해로운",
+     "en": "A harmful chemical."
+    },
+    {
+     "type": "반의어",
+     "word": "harmless",
+     "ko": "무해한",
+     "en": "A harmless bug."
+    },
+    {
+     "type": "연관어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In danger."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect nature."
+    }
+   ]
+  },
+  "544": {
+   "word": "community",
+   "overview": [
+    "community는 '지역 사회', '공동체'라는 뜻의 명사입니다.",
+    "our local community(우리 지역 사회), a community center(주민 센터)처럼 씁니다.",
+    "같은 관심사나 배경을 가진 사람들의 '집단'이라는 뜻으로도 씁니다. the online community(온라인 커뮤니티)",
+    "형용사 community는 명사 앞에서 '지역 사회의'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "neighborhood",
+     "en": "Our neighborhood.",
+     "ko": "우리 동네."
+    },
+    {
+     "word": "group",
+     "en": "A close group.",
+     "ko": "친밀한 그룹."
+    }
+   ],
+   "etymology": [
+    "community는 라틴어 communitas(공동체, 공통성)에서 온 단어입니다.",
+    "communis(공동의)에서 나온 말로, common(흔한, 공동의), communicate(의사소통하다)와 같은 가족입니다.",
+    "'함께 무언가를 나누는 사람들의 모임'이라는 뜻이 '공동체'로 이어졌습니다.",
+    "지역 사회부터 온라인 모임까지 두루 쓰이는 넓은 단어입니다.",
+    "community의 핵심 이미지는 '서로 돕고 어울려 사는 사람들의 모임 🏘️'입니다."
+   ],
+   "meanings": [
+    "지역 사회, 공동체",
+    "(공통 관심사를 가진) 집단"
+   ],
+   "examples": [
+    {
+     "en": "Our community held a festival last weekend.",
+     "ko": "우리 지역 사회는 지난 주말에 축제를 열었어요."
+    },
+    {
+     "en": "She volunteers to help her community.",
+     "ko": "그녀는 지역 사회를 돕기 위해 자원봉사를 해요."
+    },
+    {
+     "en": "The online gaming community is very large.",
+     "ko": "온라인 게임 커뮤니티는 아주 커요."
+    },
+    {
+     "en": "We should support our local community.",
+     "ko": "우리는 우리 지역 사회를 지원해야 해요."
+    },
+    {
+     "en": "The community center offers free classes.",
+     "ko": "주민 센터는 무료 수업을 제공해요."
+    },
+    {
+     "en": "Everyone in this community knows each other.",
+     "ko": "이 지역 사회의 모두는 서로 알고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "neighborhood",
+     "ko": "동네",
+     "en": "A quiet neighborhood."
+    },
+    {
+     "type": "연관어",
+     "word": "society",
+     "ko": "사회",
+     "en": "Modern society."
+    },
+    {
+     "type": "연관어",
+     "word": "local",
+     "ko": "지역의",
+     "en": "A local shop."
+    },
+    {
+     "type": "연관어",
+     "word": "group",
+     "ko": "그룹",
+     "en": "A study group."
+    },
+    {
+     "type": "연관어",
+     "word": "volunteer",
+     "ko": "자원봉사자",
+     "en": "Become a volunteer."
+    },
+    {
+     "type": "연관어",
+     "word": "together",
+     "ko": "함께",
+     "en": "Work together."
+    }
+   ]
+  },
+  "2480": {
+   "word": "spare",
+   "overview": [
+    "spare는 '여분의'라는 뜻의 형용사이자 '아끼다', '용서하다'라는 뜻의 동사입니다.",
+    "a spare key(여분의 열쇠), spare time(여가 시간)처럼 씁니다.",
+    "spare someone's life는 '누군가의 목숨을 살려 주다'라는 뜻입니다.",
+    "Can you spare a minute?(잠깐 시간 좀 내주실 수 있어요?)라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "extra",
+     "en": "An extra key.",
+     "ko": "여분의 열쇠."
+    },
+    {
+     "word": "free time",
+     "en": "In my free time.",
+     "ko": "내 여가 시간에."
+    }
+   ],
+   "etymology": [
+    "spare는 고대 영어 sparian(아끼다, 절약하다)에서 온 단어입니다.",
+    "'필요 이상 쓰지 않고 남겨 두다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'남겨 둔 여분'이라는 뜻에서 '여분의'라는 형용사 뜻이 나왔습니다.",
+    "'목숨을 아끼다'라는 뜻에서 '용서하다'라는 뜻도 자연스럽게 넓어졌습니다.",
+    "spare의 핵심 이미지는 '만약을 위해 아껴 둔 여분의 것 🔑'입니다."
+   ],
+   "meanings": [
+    "여분의, 예비의 (형용사)",
+    "아끼다, 절약하다 (동사)",
+    "(시간·돈을) 할애하다 (동사)",
+    "용서하다, 살려 주다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Do you have a spare key?",
+     "ko": "여분의 열쇠 있어요?"
+    },
+    {
+     "en": "What do you do in your spare time?",
+     "ko": "여가 시간에는 뭘 해요?"
+    },
+    {
+     "en": "Can you spare a moment to talk?",
+     "ko": "이야기할 시간을 잠깐 내주실 수 있어요?"
+    },
+    {
+     "en": "He spared the animal's life.",
+     "ko": "그는 그 동물의 목숨을 살려 줬어요."
+    },
+    {
+     "en": "We keep a spare tire in the car.",
+     "ko": "우리는 차에 예비 타이어를 넣어 둬요."
+    },
+    {
+     "en": "Please spare no effort in helping her.",
+     "ko": "그녀를 돕는 데 노력을 아끼지 말아 주세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "extra",
+     "ko": "여분의",
+     "en": "An extra chair."
+    },
+    {
+     "type": "연관어",
+     "word": "save",
+     "ko": "아끼다, 절약하다",
+     "en": "Save money."
+    },
+    {
+     "type": "연관어",
+     "word": "free time",
+     "ko": "자유 시간",
+     "en": "Enjoy free time."
+    },
+    {
+     "type": "연관어",
+     "word": "forgive",
+     "ko": "용서하다",
+     "en": "Forgive a mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "backup",
+     "ko": "예비의",
+     "en": "A backup plan."
+    },
+    {
+     "type": "연관어",
+     "word": "reserve",
+     "ko": "비축하다",
+     "en": "Reserve energy."
+    }
+   ]
+  },
+  "2487": {
+   "word": "speech",
+   "overview": [
+    "speech는 '연설', '담화'라는 뜻의 명사입니다.",
+    "give a speech(연설을 하다), a wedding speech(결혼식 축사)처럼 씁니다.",
+    "'말하는 능력'이라는 뜻으로도 씁니다. freedom of speech(언론의 자유)",
+    "동사 speak(말하다)에서 나온 명사입니다."
+   ],
+   "easy": [
+    {
+     "word": "talk",
+     "en": "Give a talk.",
+     "ko": "강연을 하다."
+    },
+    {
+     "word": "words",
+     "en": "Choose your words.",
+     "ko": "말을 신중히 골라."
+    }
+   ],
+   "etymology": [
+    "speech는 고대 영어 spæc(말하기)에서 온 단어입니다.",
+    "speak(말하다)와 같은 뿌리를 가진 명사입니다.",
+    "'입으로 소리 내어 하는 말'이라는 뜻이 그대로 이어져 왔습니다.",
+    "freedom of speech(언론의 자유)는 아주 중요한 사회적 가치로 여겨집니다.",
+    "speech의 핵심 이미지는 '많은 사람 앞에서 힘주어 하는 연설 🎤'입니다."
+   ],
+   "meanings": [
+    "연설, 담화",
+    "말하는 능력, 말투"
+   ],
+   "examples": [
+    {
+     "en": "She gave a wonderful speech at graduation.",
+     "ko": "그녀는 졸업식에서 멋진 연설을 했어요."
+    },
+    {
+     "en": "He was nervous before his speech.",
+     "ko": "그는 연설 전에 긴장했어요."
+    },
+    {
+     "en": "Freedom of speech is an important right.",
+     "ko": "언론의 자유는 중요한 권리예요."
+    },
+    {
+     "en": "The president's speech was broadcast live.",
+     "ko": "대통령의 연설이 생방송으로 나갔어요."
+    },
+    {
+     "en": "She practiced her speech many times.",
+     "ko": "그녀는 연설을 여러 번 연습했어요."
+    },
+    {
+     "en": "His speech was clear and confident.",
+     "ko": "그의 말투는 분명하고 자신감이 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "speak",
+     "ko": "말하다",
+     "en": "Speak clearly."
+    },
+    {
+     "type": "연관어",
+     "word": "talk",
+     "ko": "이야기",
+     "en": "A friendly talk."
+    },
+    {
+     "type": "연관어",
+     "word": "voice",
+     "ko": "목소리",
+     "en": "A loud voice."
+    },
+    {
+     "type": "연관어",
+     "word": "language",
+     "ko": "언어",
+     "en": "A foreign language."
+    },
+    {
+     "type": "연관어",
+     "word": "address",
+     "ko": "연설하다",
+     "en": "Address the crowd."
+    },
+    {
+     "type": "연관어",
+     "word": "audience",
+     "ko": "청중",
+     "en": "A large audience."
+    }
+   ]
+  },
+  "2365": {
+   "word": "shake",
+   "overview": [
+    "shake는 '흔들다', '떨다'라는 뜻의 동사입니다.",
+    "shake hands(악수하다), shake your head(고개를 젓다)처럼 씁니다.",
+    "shake with fear(무서워서 떨다)처럼 몸이 떨리는 것도 나타냅니다.",
+    "과거형은 shook, 과거분사는 shaken입니다."
+   ],
+   "easy": [
+    {
+     "word": "tremble",
+     "en": "Tremble with fear.",
+     "ko": "무서워서 떨다."
+    },
+    {
+     "word": "wobble",
+     "en": "Wobble slightly.",
+     "ko": "살짝 흔들리다."
+    }
+   ],
+   "etymology": [
+    "shake는 고대 영어 sceacan(흔들다, 떨다)에서 온 단어입니다.",
+    "'빠르게 움직이다'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "천 년 넘게 '흔들다', '떨다'라는 뜻으로 쓰여 온 단어입니다.",
+    "milkshake(밀크셰이크)는 우유를 흔들어 섞은 음료라서 이런 이름이 붙었습니다.",
+    "shake의 핵심 이미지는 '땅이 흔들리듯 떨리는 움직임 🫨'입니다."
+   ],
+   "meanings": [
+    "흔들다, 흔들리다",
+    "떨다",
+    "(shake hands) 악수하다"
+   ],
+   "examples": [
+    {
+     "en": "Please shake the bottle before you drink it.",
+     "ko": "마시기 전에 병을 흔들어 주세요."
+    },
+    {
+     "en": "They shook hands after the game.",
+     "ko": "그들은 경기 후에 악수했어요."
+    },
+    {
+     "en": "Her hands were shaking with nervousness.",
+     "ko": "그녀의 손은 긴장으로 떨리고 있었어요."
+    },
+    {
+     "en": "The earthquake shook the whole building.",
+     "ko": "지진이 건물 전체를 흔들었어요."
+    },
+    {
+     "en": "He shook his head in disagreement.",
+     "ko": "그는 반대의 의미로 고개를 저었어요."
+    },
+    {
+     "en": "The dog shook the water off its fur.",
+     "ko": "개가 털에 묻은 물을 흔들어서 털어 냈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "shook",
+     "ko": "흔들었다 (과거형)",
+     "en": "The ground shook."
+    },
+    {
+     "type": "유의어",
+     "word": "tremble",
+     "ko": "떨다",
+     "en": "Tremble with cold."
+    },
+    {
+     "type": "연관어",
+     "word": "earthquake",
+     "ko": "지진",
+     "en": "A strong earthquake."
+    },
+    {
+     "type": "연관어",
+     "word": "hand",
+     "ko": "손",
+     "en": "Shake hands."
+    },
+    {
+     "type": "연관어",
+     "word": "nervous",
+     "ko": "긴장한",
+     "en": "Feel nervous."
+    },
+    {
+     "type": "연관어",
+     "word": "mix",
+     "ko": "섞다",
+     "en": "Mix well."
+    }
+   ]
+  },
+  "1598": {
+   "word": "loose",
+   "overview": [
+    "loose는 '느슨한', '헐렁한'이라는 뜻의 형용사입니다. tight(꽉 조이는)의 반대말입니다.",
+    "a loose shirt(헐렁한 셔츠), a loose tooth(흔들리는 이)처럼 씁니다.",
+    "'풀려난', '묶이지 않은'이라는 뜻으로도 씁니다. The dog is loose.(개가 풀려났어요.)",
+    "발음이 비슷한 lose(잃다)와 철자를 헷갈리기 쉬우니 조심해야 합니다."
+   ],
+   "easy": [
+    {
+     "word": "not tight",
+     "en": "Not tight at all.",
+     "ko": "전혀 조이지 않는."
+    },
+    {
+     "word": "free",
+     "en": "Set the dog free.",
+     "ko": "개를 풀어 주다."
+    }
+   ],
+   "etymology": [
+    "loose는 옛 노르드어(바이킹의 말) lauss(풀린, 자유로운)에서 온 단어입니다.",
+    "lose(잃다)와 같은 뿌리를 가진 단어입니다.",
+    "'묶인 것에서 풀려나 자유로운'이라는 뜻이 그대로 이어져 왔습니다.",
+    "loosen(느슨하게 하다)도 같은 가족 단어입니다.",
+    "loose의 핵심 이미지는 '헐렁하게 늘어져 있어 잘 맞지 않는 것 👕'입니다."
+   ],
+   "meanings": [
+    "느슨한, 헐렁한",
+    "풀려난, 묶이지 않은"
+   ],
+   "examples": [
+    {
+     "en": "This shirt is too loose for me.",
+     "ko": "이 셔츠는 나한테 너무 헐렁해요."
+    },
+    {
+     "en": "My tooth is loose. It might fall out soon.",
+     "ko": "내 이가 흔들려. 곧 빠질지도 몰라."
+    },
+    {
+     "en": "The dog got loose and ran away.",
+     "ko": "그 개가 풀려나서 도망갔어요."
+    },
+    {
+     "en": "Tie your shoelaces. They're loose.",
+     "ko": "신발 끈을 묶어. 풀려 있어."
+    },
+    {
+     "en": "The knot came loose after a while.",
+     "ko": "그 매듭은 시간이 지나 풀렸어요."
+    },
+    {
+     "en": "She wore her hair loose today.",
+     "ko": "그녀는 오늘 머리를 풀어 헤치고 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "tight",
+     "ko": "꽉 조이는",
+     "en": "A tight fit."
+    },
+    {
+     "type": "파생어",
+     "word": "loosen",
+     "ko": "느슨하게 하다",
+     "en": "Loosen the belt."
+    },
+    {
+     "type": "연관어",
+     "word": "free",
+     "ko": "자유로운",
+     "en": "Set free."
+    },
+    {
+     "type": "연관어",
+     "word": "untie",
+     "ko": "풀다",
+     "en": "Untie the knot."
+    },
+    {
+     "type": "연관어",
+     "word": "lose",
+     "ko": "잃다 (혼동하기 쉬운 말)",
+     "en": "Lose a game."
+    },
+    {
+     "type": "연관어",
+     "word": "wobbly",
+     "ko": "흔들리는",
+     "en": "A wobbly chair."
+    }
+   ]
+  },
+  "2263": {
+   "word": "roof",
+   "overview": [
+    "roof는 '지붕'이라는 뜻의 명사입니다. 집이나 건물의 맨 위를 덮는 부분입니다.",
+    "a red roof(빨간 지붕), under the same roof(같은 지붕 아래에서)처럼 씁니다.",
+    "여러 개일 때는 roofs 또는 rooves라고 합니다.",
+    "동사로는 '지붕을 씌우다'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "top",
+     "en": "The top of the house.",
+     "ko": "집의 맨 위."
+    },
+    {
+     "word": "ceiling",
+     "en": "A high ceiling.",
+     "ko": "높은 천장."
+    }
+   ],
+   "etymology": [
+    "roof는 고대 영어 hrōf(지붕)에서 온 단어입니다.",
+    "'꼭대기', '위'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "천 년 넘게 '집 위를 덮는 것'이라는 뜻으로 쓰여 온 단어입니다.",
+    "'같은 지붕 아래'라는 표현은 '한 가족으로 함께 살다'라는 뜻으로도 씁니다.",
+    "roof의 핵심 이미지는 '비바람을 막아 주는 집의 맨 위 지붕 🏠'입니다."
+   ],
+   "meanings": [
+    "지붕",
+    "(무엇의) 꼭대기, 위"
+   ],
+   "examples": [
+    {
+     "en": "Snow covered the roof of the house.",
+     "ko": "눈이 집 지붕을 덮었어요."
+    },
+    {
+     "en": "We live under the same roof as my grandparents.",
+     "ko": "우리는 조부모님과 같은 지붕 아래 살아요."
+    },
+    {
+     "en": "The rain leaked through the roof.",
+     "ko": "비가 지붕을 통해 새어 들어왔어요."
+    },
+    {
+     "en": "Birds built a nest on the roof.",
+     "ko": "새들이 지붕에 둥지를 지었어요."
+    },
+    {
+     "en": "The old roof needs to be repaired.",
+     "ko": "그 낡은 지붕은 수리가 필요해요."
+    },
+    {
+     "en": "We watched the sunset from the roof.",
+     "ko": "우리는 지붕에서 노을을 봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "house",
+     "ko": "집",
+     "en": "A small house."
+    },
+    {
+     "type": "연관어",
+     "word": "ceiling",
+     "ko": "천장",
+     "en": "A high ceiling."
+    },
+    {
+     "type": "연관어",
+     "word": "wall",
+     "ko": "벽",
+     "en": "A brick wall."
+    },
+    {
+     "type": "연관어",
+     "word": "chimney",
+     "ko": "굴뚝",
+     "en": "A tall chimney."
+    },
+    {
+     "type": "연관어",
+     "word": "building",
+     "ko": "건물",
+     "en": "A tall building."
+    },
+    {
+     "type": "연관어",
+     "word": "top",
+     "ko": "꼭대기",
+     "en": "The mountain top."
+    }
+   ]
+  },
+  "2191": {
+   "word": "remind",
+   "overview": [
+    "remind는 '상기시키다', '일깨우다'라는 뜻의 동사입니다.",
+    "remind someone of/about(누군가에게 ~을 생각나게 하다)처럼 씁니다.",
+    "This reminds me of...(이것은 나에게 ~을 떠올리게 해요)라는 표현도 자주 씁니다.",
+    "명사 reminder(상기시키는 것)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "make think of",
+     "en": "Make me think of you.",
+     "ko": "너를 생각나게 하다."
+    },
+    {
+     "word": "recall",
+     "en": "Recall a memory.",
+     "ko": "기억을 떠올리다."
+    }
+   ],
+   "etymology": [
+    "remind는 re(다시)와 mind(마음)가 합쳐진 말입니다.",
+    "1600년대쯤 영어에서 만들어진 단어입니다.",
+    "'다시 마음속에 떠오르게 하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "reminder(메모, 알림)도 같은 가족 단어입니다.",
+    "remind의 핵심 이미지는 '까맣게 잊고 있던 것을 다시 생각나게 해 주는 것 🔔'입니다."
+   ],
+   "meanings": [
+    "상기시키다, 일깨우다"
+   ],
+   "examples": [
+    {
+     "en": "Please remind me to buy milk.",
+     "ko": "나한테 우유 사는 거 알려 줘."
+    },
+    {
+     "en": "This song reminds me of my childhood.",
+     "ko": "이 노래는 나에게 어린 시절을 떠올리게 해요."
+    },
+    {
+     "en": "She reminded him about the meeting.",
+     "ko": "그녀는 그에게 회의에 대해 상기시켜 줬어요."
+    },
+    {
+     "en": "The picture reminds us of that happy day.",
+     "ko": "그 사진은 우리에게 그 행복했던 날을 떠올리게 해요."
+    },
+    {
+     "en": "Can you remind me what time we're leaving?",
+     "ko": "우리 몇 시에 떠나는지 다시 알려 줄래?"
+    },
+    {
+     "en": "He looks like his father, doesn't he remind you?",
+     "ko": "그는 아버지를 닮았어요, 안 그래요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "recall",
+     "ko": "떠올리다",
+     "en": "Recall the past."
+    },
+    {
+     "type": "연관어",
+     "word": "memory",
+     "ko": "기억",
+     "en": "A fond memory."
+    },
+    {
+     "type": "연관어",
+     "word": "forget",
+     "ko": "잊다",
+     "en": "Forget easily."
+    },
+    {
+     "type": "연관어",
+     "word": "remember",
+     "ko": "기억하다",
+     "en": "Remember well."
+    },
+    {
+     "type": "파생어",
+     "word": "reminder",
+     "ko": "알림, 상기시키는 것",
+     "en": "Set a reminder."
+    },
+    {
+     "type": "연관어",
+     "word": "note",
+     "ko": "메모",
+     "en": "Leave a note."
+    }
+   ]
   }
  }
 }
