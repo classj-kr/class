@@ -7700,6 +7700,1932 @@
      "en": "Tell the truth."
     }
    ]
+  },
+  "34": {
+   "word": "acquire",
+   "overview": [
+    "acquire는 '(노력해서) 얻다, 습득하다'라는 뜻의 동사입니다.",
+    "acquire a skill(기술을 습득하다)처럼 씁니다.",
+    "'(물건·회사를) 사들이다, 취득하다'라는 뜻으로도 씁니다.",
+    "명사 acquisition(습득, 인수)도 씁니다. get보다 격식 있는 말입니다."
+   ],
+   "easy": [
+    {
+     "word": "get",
+     "en": "Get new skills.",
+     "ko": "새로운 기술을 얻다."
+    },
+    {
+     "word": "learn",
+     "en": "Learn a language.",
+     "ko": "언어를 배우다."
+    }
+   ],
+   "etymology": [
+    "acquire는 라틴어 acquirere(더 얻다, 손에 넣다)에서 온 단어입니다.",
+    "ad(~에 더하여)와 quaerere(찾다, 구하다)가 합쳐진 말로, question(질문), request(요청)와 같은 가족입니다.",
+    "'찾아 구해서 자기 것으로 더하다'라는 뜻에서 시작되었습니다.",
+    "지식이나 기술을 익혀 자기 것으로 만드는 것, 물건을 사들이는 것을 가리키게 되었습니다.",
+    "acquire의 핵심 이미지는 '찾아서 손에 넣어 내 것으로 만드는 것 🤲'입니다."
+   ],
+   "meanings": [
+    "배워서 얻다, 익히다, 습득하다",
+    "획득하다, 취득하다"
+   ],
+   "examples": [
+    {
+     "en": "Children acquire language very quickly.",
+     "ko": "아이들은 언어를 아주 빨리 습득해요."
+    },
+    {
+     "en": "She acquired a lot of experience abroad.",
+     "ko": "그녀는 해외에서 많은 경험을 쌓았어요."
+    },
+    {
+     "en": "The museum acquired a famous painting.",
+     "ko": "그 박물관은 유명한 그림 한 점을 사들였어요."
+    },
+    {
+     "en": "He acquired a taste for spicy food.",
+     "ko": "그는 매운 음식을 좋아하게 되었어요."
+    },
+    {
+     "en": "The company was acquired by a bigger firm.",
+     "ko": "그 회사는 더 큰 기업에 인수되었어요."
+    },
+    {
+     "en": "Reading helps you acquire new words.",
+     "ko": "독서는 새로운 단어를 익히는 데 도움이 돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "obtain",
+     "ko": "얻다",
+     "en": "Obtain a visa."
+    },
+    {
+     "type": "유의어",
+     "word": "gain",
+     "ko": "얻다",
+     "en": "Gain knowledge."
+    },
+    {
+     "type": "반의어",
+     "word": "lose",
+     "ko": "잃다",
+     "en": "Lose a chance."
+    },
+    {
+     "type": "파생어",
+     "word": "acquisition",
+     "ko": "습득, 인수",
+     "en": "Language acquisition."
+    },
+    {
+     "type": "연관어",
+     "word": "learn",
+     "ko": "배우다",
+     "en": "Learn quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "skill",
+     "ko": "기술",
+     "en": "A new skill."
+    }
+   ]
+  },
+  "737": {
+   "word": "dedicate",
+   "overview": [
+    "dedicate는 '(시간·노력을) 바치다, 전념하다'라는 뜻의 동사입니다.",
+    "dedicate oneself to(~에 헌신하다)처럼 씁니다.",
+    "'(책·노래를) 헌정하다, 바치다'라는 뜻으로도 씁니다. (This song is dedicated to my mom.)",
+    "형용사 dedicated(헌신적인, 전용의), 명사 dedication(헌신)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "devote",
+     "en": "Devote your time.",
+     "ko": "시간을 쏟다."
+    },
+    {
+     "word": "give",
+     "en": "Give your best.",
+     "ko": "최선을 다하다."
+    }
+   ],
+   "etymology": [
+    "dedicate는 라틴어 dedicare(신에게 바치다, 선언하다)에서 온 단어입니다.",
+    "de(완전히)와 dicare(선언하다)가 합쳐진 말로, dictionary(사전)와 뿌리가 통합니다.",
+    "원래는 신전이나 제물을 '공식적으로 신께 바친다고 선언하다'라는 뜻이었습니다.",
+    "자신의 시간과 노력을 한 가지에 온전히 바치는 것, 작품을 누군가에게 헌정하는 것을 가리키게 되었습니다.",
+    "dedicate의 핵심 이미지는 '두 손으로 소중한 것을 온전히 바치는 것 🎁'입니다."
+   ],
+   "meanings": [
+    "헌정하다",
+    "전념하다, 바치다"
+   ],
+   "examples": [
+    {
+     "en": "She dedicated her life to helping children.",
+     "ko": "그녀는 아이들을 돕는 데 평생을 바쳤어요."
+    },
+    {
+     "en": "The author dedicated the book to his parents.",
+     "ko": "작가는 그 책을 부모님께 헌정했어요."
+    },
+    {
+     "en": "He is a dedicated teacher.",
+     "ko": "그는 헌신적인 선생님이에요."
+    },
+    {
+     "en": "I dedicate two hours a day to piano practice.",
+     "ko": "저는 하루 두 시간을 피아노 연습에 쏟아요."
+    },
+    {
+     "en": "This song is dedicated to all our fans.",
+     "ko": "이 노래를 모든 팬분들께 바칩니다."
+    },
+    {
+     "en": "The park was dedicated to the soldiers.",
+     "ko": "그 공원은 군인들을 기리기 위해 세워졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "devote",
+     "ko": "바치다",
+     "en": "Devote yourself."
+    },
+    {
+     "type": "유의어",
+     "word": "commit",
+     "ko": "전념하다",
+     "en": "Commit to a goal."
+    },
+    {
+     "type": "파생어",
+     "word": "dedication",
+     "ko": "헌신",
+     "en": "Hard work and dedication."
+    },
+    {
+     "type": "파생어",
+     "word": "dedicated",
+     "ko": "헌신적인",
+     "en": "A dedicated fan."
+    },
+    {
+     "type": "연관어",
+     "word": "effort",
+     "ko": "노력",
+     "en": "Great effort."
+    },
+    {
+     "type": "연관어",
+     "word": "honor",
+     "ko": "기리다",
+     "en": "Honor the heroes."
+    }
+   ]
+  },
+  "1821": {
+   "word": "occupy",
+   "overview": [
+    "occupy는 '(공간·시간을) 차지하다'라는 뜻의 동사입니다.",
+    "Is this seat occupied?(이 자리 주인 있나요?)처럼 씁니다.",
+    "'(군대가) 점령하다', '(마음·시간을) 바쁘게 하다'라는 뜻으로도 씁니다. (keep yourself occupied, 바쁘게 지내다)",
+    "명사 occupation(직업, 점령)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "take up",
+     "en": "Take up space.",
+     "ko": "공간을 차지하다."
+    },
+    {
+     "word": "fill",
+     "en": "Fill the room.",
+     "ko": "방을 채우다."
+    }
+   ],
+   "etymology": [
+    "occupy는 라틴어 occupare(붙잡다, 차지하다)에서 온 단어입니다.",
+    "ob(~에 대해)와 capere(잡다)가 합쳐진 말로, capture(붙잡다)와 같은 가족입니다.",
+    "'어떤 곳을 붙잡아 자기 것으로 삼다'라는 뜻에서 시작되었습니다.",
+    "자리를 차지하는 것, 땅을 점령하는 것, 시간과 마음을 채우는 것을 가리키게 되었습니다.",
+    "occupy의 핵심 이미지는 '빈자리를 붙잡고 채워 차지하는 것 🪑'입니다."
+   ],
+   "meanings": [
+    "(장소를) 차지하다",
+    "(시간을) 소비하다, 바쁘게 하다",
+    "점령하다"
+   ],
+   "examples": [
+    {
+     "en": "Excuse me, is this seat occupied?",
+     "ko": "실례지만 이 자리에 누가 있나요?"
+    },
+    {
+     "en": "The bed occupies half of the room.",
+     "ko": "침대가 방의 절반을 차지해요."
+    },
+    {
+     "en": "The army occupied the city.",
+     "ko": "군대가 그 도시를 점령했어요."
+    },
+    {
+     "en": "Reading keeps me occupied on long trips.",
+     "ko": "긴 여행 중에는 책을 읽으며 시간을 보내요."
+    },
+    {
+     "en": "The bathroom is occupied right now.",
+     "ko": "화장실은 지금 사용 중이에요."
+    },
+    {
+     "en": "Her mind was occupied with the test.",
+     "ko": "그녀의 머릿속은 시험 생각으로 가득했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "take up",
+     "ko": "차지하다",
+     "en": "Take up time."
+    },
+    {
+     "type": "유의어",
+     "word": "fill",
+     "ko": "채우다",
+     "en": "Fill the space."
+    },
+    {
+     "type": "반의어",
+     "word": "vacate",
+     "ko": "비우다",
+     "en": "Vacate the room."
+    },
+    {
+     "type": "파생어",
+     "word": "occupation",
+     "ko": "직업, 점령",
+     "en": "What's your occupation?"
+    },
+    {
+     "type": "연관어",
+     "word": "busy",
+     "ko": "바쁜",
+     "en": "Stay busy."
+    },
+    {
+     "type": "연관어",
+     "word": "invade",
+     "ko": "침략하다",
+     "en": "Invade a country."
+    }
+   ]
+  },
+  "677": {
+   "word": "critic",
+   "overview": [
+    "critic은 '비평가, 평론가'라는 뜻의 명사입니다.",
+    "a film critic(영화 평론가)처럼 씁니다.",
+    "'(어떤 것을) 비판하는 사람'이라는 뜻으로도 씁니다. (a critic of the plan)",
+    "형용사 critical(비판적인, 중대한), 명사 criticism(비판)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "reviewer",
+     "en": "A book reviewer.",
+     "ko": "서평가."
+    },
+    {
+     "word": "judge",
+     "en": "A fair judge.",
+     "ko": "공정한 판정자."
+    }
+   ],
+   "etymology": [
+    "critic은 그리스어 kritikos(판단할 줄 아는)에서 온 단어입니다.",
+    "krinein(가르다, 판단하다)에서 나온 말로, crisis(위기, '갈림길')와 같은 가족입니다.",
+    "'좋고 나쁨을 가려 판단하는 사람'이라는 뜻이 되었습니다.",
+    "예술 작품을 평가하는 평론가, 그리고 무언가의 문제를 지적하는 사람을 가리킵니다.",
+    "critic의 핵심 이미지는 '작품을 꼼꼼히 들여다보며 좋고 나쁨을 가리는 사람 🧐'입니다."
+   ],
+   "meanings": [
+    "비평가, 평론가",
+    "비판하는 사람"
+   ],
+   "examples": [
+    {
+     "en": "The movie was loved by critics.",
+     "ko": "그 영화는 평론가들에게 사랑받았어요."
+    },
+    {
+     "en": "She works as a food critic.",
+     "ko": "그녀는 음식 평론가로 일해요."
+    },
+    {
+     "en": "He is a strong critic of the new law.",
+     "ko": "그는 새 법을 강하게 비판하는 사람이에요."
+    },
+    {
+     "en": "Critics say the plan is too expensive.",
+     "ko": "비판자들은 그 계획이 너무 비싸다고 말해요."
+    },
+    {
+     "en": "You are your own worst critic.",
+     "ko": "당신은 자신에게 가장 엄격한 비평가예요."
+    },
+    {
+     "en": "The book received praise from critics.",
+     "ko": "그 책은 평론가들에게 칭찬을 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "reviewer",
+     "ko": "평론가",
+     "en": "A film reviewer."
+    },
+    {
+     "type": "반의어",
+     "word": "fan",
+     "ko": "팬",
+     "en": "A huge fan."
+    },
+    {
+     "type": "파생어",
+     "word": "criticism",
+     "ko": "비판",
+     "en": "Accept criticism."
+    },
+    {
+     "type": "파생어",
+     "word": "criticize",
+     "ko": "비판하다",
+     "en": "Criticize the plan."
+    },
+    {
+     "type": "파생어",
+     "word": "critical",
+     "ko": "비판적인",
+     "en": "Critical thinking."
+    },
+    {
+     "type": "연관어",
+     "word": "review",
+     "ko": "평론",
+     "en": "A good review."
+    }
+   ]
+  },
+  "2030": {
+   "word": "prejudice",
+   "overview": [
+    "prejudice는 '편견, 선입견'이라는 뜻의 명사입니다.",
+    "racial prejudice(인종 편견)처럼 씁니다.",
+    "잘 알지도 못하면서 미리 나쁘게 판단하는 태도를 뜻합니다.",
+    "동사로는 '편견을 갖게 하다, (불리한) 영향을 미치다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "unfair opinion",
+     "en": "An unfair opinion.",
+     "ko": "불공평한 생각."
+    },
+    {
+     "word": "bias",
+     "en": "A strong bias.",
+     "ko": "강한 편향."
+    }
+   ],
+   "etymology": [
+    "prejudice는 라틴어 praejudicium(미리 내린 판결)에서 온 단어입니다.",
+    "prae(미리)와 judicium(판단, 판결)이 합쳐진 말로, judge(판단하다)와 같은 가족입니다.",
+    "'충분히 알아보기도 전에 미리 판단해 버리는 것'이라는 뜻이 되었습니다.",
+    "특히 어떤 집단이나 사람에 대한 근거 없는 나쁜 생각을 가리킵니다.",
+    "prejudice의 핵심 이미지는 '보기도 전에 미리 찍어 버리는 판단 도장 🔖'입니다."
+   ],
+   "meanings": [
+    "편견",
+    "편견을 갖게 하다, 영향을 미치다"
+   ],
+   "examples": [
+    {
+     "en": "We should fight against prejudice.",
+     "ko": "우리는 편견에 맞서야 해요."
+    },
+    {
+     "en": "Don't judge people with prejudice.",
+     "ko": "편견을 가지고 사람을 판단하지 마세요."
+    },
+    {
+     "en": "The book is about prejudice and friendship.",
+     "ko": "그 책은 편견과 우정에 관한 이야기예요."
+    },
+    {
+     "en": "She faced prejudice because of her accent.",
+     "ko": "그녀는 억양 때문에 편견에 부딪혔어요."
+    },
+    {
+     "en": "Travel can help break down prejudices.",
+     "ko": "여행은 편견을 깨는 데 도움이 될 수 있어요."
+    },
+    {
+     "en": "Don't let one bad experience prejudice you.",
+     "ko": "한 번의 나쁜 경험으로 편견을 갖지 마세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bias",
+     "ko": "편향",
+     "en": "Media bias."
+    },
+    {
+     "type": "유의어",
+     "word": "stereotype",
+     "ko": "고정관념",
+     "en": "A common stereotype."
+    },
+    {
+     "type": "반의어",
+     "word": "fairness",
+     "ko": "공정함",
+     "en": "Fairness for all."
+    },
+    {
+     "type": "연관어",
+     "word": "discrimination",
+     "ko": "차별",
+     "en": "Stop discrimination."
+    },
+    {
+     "type": "연관어",
+     "word": "judge",
+     "ko": "판단하다",
+     "en": "Don't judge."
+    },
+    {
+     "type": "연관어",
+     "word": "respect",
+     "ko": "존중",
+     "en": "Mutual respect."
+    }
+   ]
+  },
+  "2448": {
+   "word": "soak",
+   "overview": [
+    "soak은 '(액체에) 담그다, 적시다'라는 뜻의 동사입니다.",
+    "soak the beans(콩을 불리다)처럼 씁니다.",
+    "'흠뻑 적시다', soak up(흡수하다, 만끽하다)이라는 뜻으로도 씁니다.",
+    "형용사 soaked / soaking wet(흠뻑 젖은)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wet",
+     "en": "Get wet.",
+     "ko": "젖다."
+    },
+    {
+     "word": "put in water",
+     "en": "Put it in water.",
+     "ko": "물에 넣어 두다."
+    }
+   ],
+   "etymology": [
+    "soak은 고대 영어 socian(흠뻑 적시다)에서 온 단어입니다.",
+    "suck(빨다)과 같은 게르만 말 뿌리에서 나왔다고 봅니다.",
+    "'물을 빨아들이도록 푹 담가 두다'라는 뜻이 그대로 이어져 왔습니다.",
+    "스펀지처럼 흡수하는 것, 햇볕이나 분위기를 만끽하는 것에도 씁니다.",
+    "soak의 핵심 이미지는 '물속에 푹 담가 속까지 흠뻑 젖게 하는 것 🧽'입니다."
+   ],
+   "meanings": [
+    "적시다, 담그다",
+    "흡수하다"
+   ],
+   "examples": [
+    {
+     "en": "Soak the rice for 30 minutes before cooking.",
+     "ko": "밥을 짓기 전에 쌀을 30분 동안 불리세요."
+    },
+    {
+     "en": "I got soaked in the rain.",
+     "ko": "비에 흠뻑 젖었어요."
+    },
+    {
+     "en": "The towel soaked up the spilled milk.",
+     "ko": "수건이 쏟은 우유를 빨아들였어요."
+    },
+    {
+     "en": "She soaked her tired feet in warm water.",
+     "ko": "그녀는 지친 발을 따뜻한 물에 담갔어요."
+    },
+    {
+     "en": "We soaked up the sun at the beach.",
+     "ko": "우리는 해변에서 햇볕을 만끽했어요."
+    },
+    {
+     "en": "Let the dirty pan soak overnight.",
+     "ko": "더러운 냄비를 밤새 물에 담가 두세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "drench",
+     "ko": "흠뻑 적시다",
+     "en": "Drenched in sweat."
+    },
+    {
+     "type": "유의어",
+     "word": "absorb",
+     "ko": "흡수하다",
+     "en": "Absorb water."
+    },
+    {
+     "type": "반의어",
+     "word": "dry",
+     "ko": "말리다",
+     "en": "Dry your hair."
+    },
+    {
+     "type": "연관어",
+     "word": "wet",
+     "ko": "젖은",
+     "en": "Wet shoes."
+    },
+    {
+     "type": "연관어",
+     "word": "dip",
+     "ko": "살짝 담그다",
+     "en": "Dip the bread."
+    },
+    {
+     "type": "연관어",
+     "word": "sponge",
+     "ko": "스펀지",
+     "en": "A kitchen sponge."
+    }
+   ]
+  },
+  "475": {
+   "word": "chronic",
+   "overview": [
+    "chronic은 '(병이) 만성의'라는 뜻의 형용사입니다.",
+    "chronic pain(만성 통증)처럼 씁니다.",
+    "'(문제가) 오래 계속되는, 고질적인'이라는 뜻으로도 씁니다. (a chronic shortage)",
+    "반대로 갑자기 심해지는 병은 acute(급성의)라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "long-lasting",
+     "en": "A long-lasting cold.",
+     "ko": "오래가는 감기."
+    },
+    {
+     "word": "constant",
+     "en": "Constant pain.",
+     "ko": "계속되는 통증."
+    }
+   ],
+   "etymology": [
+    "chronic은 그리스어 khronikos(시간에 관한)에서 온 단어입니다.",
+    "khronos(시간)에서 나온 말로, chronology(연대기), synchronize(동시에 맞추다)와 같은 가족입니다.",
+    "'오랜 시간에 걸친'이라는 뜻이 되었습니다.",
+    "특히 쉽게 낫지 않고 오래 계속되는 병이나 문제를 가리킵니다.",
+    "chronic의 핵심 이미지는 '시계가 계속 돌아가도 끝나지 않고 이어지는 것 ⏳'입니다."
+   ],
+   "meanings": [
+    "시간을 길게 끄는, 장기간의",
+    "(질병) 만성의"
+   ],
+   "examples": [
+    {
+     "en": "My grandmother has chronic back pain.",
+     "ko": "우리 할머니는 만성 허리 통증이 있으세요."
+    },
+    {
+     "en": "Asthma is a chronic disease.",
+     "ko": "천식은 만성 질환이에요."
+    },
+    {
+     "en": "The city has a chronic shortage of parking spaces.",
+     "ko": "그 도시는 주차 공간이 고질적으로 부족해요."
+    },
+    {
+     "en": "Chronic stress can hurt your health.",
+     "ko": "만성 스트레스는 건강을 해칠 수 있어요."
+    },
+    {
+     "en": "He is a chronic complainer.",
+     "ko": "그는 늘 불평을 달고 사는 사람이에요."
+    },
+    {
+     "en": "Lack of sleep can become a chronic problem.",
+     "ko": "수면 부족은 만성적인 문제가 될 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "long-term",
+     "ko": "장기적인",
+     "en": "Long-term illness."
+    },
+    {
+     "type": "유의어",
+     "word": "persistent",
+     "ko": "끈질긴",
+     "en": "A persistent cough."
+    },
+    {
+     "type": "반의어",
+     "word": "acute",
+     "ko": "급성의",
+     "en": "Acute pain."
+    },
+    {
+     "type": "연관어",
+     "word": "disease",
+     "ko": "질병",
+     "en": "Heart disease."
+    },
+    {
+     "type": "연관어",
+     "word": "pain",
+     "ko": "통증",
+     "en": "Back pain."
+    },
+    {
+     "type": "연관어",
+     "word": "treatment",
+     "ko": "치료",
+     "en": "Long treatment."
+    }
+   ]
+  },
+  "2617": {
+   "word": "sustain",
+   "overview": [
+    "sustain은 '(오래) 유지하다, 지속시키다'라는 뜻의 동사입니다.",
+    "sustain growth(성장을 지속하다)처럼 씁니다.",
+    "'(피해·부상을) 입다, 겪다'라는 뜻으로도 씁니다. (sustain an injury, 부상을 입다)",
+    "'(생명을) 지탱하다, 먹여 살리다'라는 뜻도 있고, sustainable(지속 가능한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "keep up",
+     "en": "Keep up the effort.",
+     "ko": "노력을 계속하다."
+    },
+    {
+     "word": "suffer",
+     "en": "Suffer an injury.",
+     "ko": "부상을 당하다."
+    }
+   ],
+   "etymology": [
+    "sustain은 라틴어 sustinere(아래에서 받쳐 들다)에서 온 단어입니다.",
+    "sub(아래에서)와 tenere(붙잡다)가 합쳐진 말로, contain(담다), maintain(유지하다)과 같은 가족입니다.",
+    "'무너지지 않게 아래에서 떠받치다'라는 뜻에서 시작되었습니다.",
+    "무언가를 오래 이어지게 받쳐 주는 것, 그리고 피해의 무게를 떠안는 것을 가리키게 되었습니다.",
+    "sustain의 핵심 이미지는 '아래에서 두 손으로 꾸준히 떠받치는 것 🏋️'입니다."
+   ],
+   "meanings": [
+    "유지하다, 지속시키다",
+    "(피해·손실·충격 등을) 받다, 입다",
+    "(생명을) 지탱하다"
+   ],
+   "examples": [
+    {
+     "en": "It's hard to sustain interest for so long.",
+     "ko": "그렇게 오랫동안 흥미를 유지하기는 어려워요."
+    },
+    {
+     "en": "He sustained a knee injury during the game.",
+     "ko": "그는 경기 중에 무릎 부상을 입었어요."
+    },
+    {
+     "en": "Water and food sustain life.",
+     "ko": "물과 음식이 생명을 유지시켜요."
+    },
+    {
+     "en": "The building sustained heavy damage in the storm.",
+     "ko": "그 건물은 폭풍으로 큰 피해를 입었어요."
+    },
+    {
+     "en": "We need sustainable energy for the future.",
+     "ko": "미래를 위해 지속 가능한 에너지가 필요해요."
+    },
+    {
+     "en": "The team sustained its lead until the end.",
+     "ko": "그 팀은 끝까지 앞선 점수를 지켰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "maintain",
+     "ko": "유지하다",
+     "en": "Maintain speed."
+    },
+    {
+     "type": "유의어",
+     "word": "suffer",
+     "ko": "겪다",
+     "en": "Suffer a loss."
+    },
+    {
+     "type": "파생어",
+     "word": "sustainable",
+     "ko": "지속 가능한",
+     "en": "Sustainable living."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지탱하다",
+     "en": "Support the weight."
+    },
+    {
+     "type": "연관어",
+     "word": "continue",
+     "ko": "계속하다",
+     "en": "Continue working."
+    },
+    {
+     "type": "연관어",
+     "word": "injury",
+     "ko": "부상",
+     "en": "A serious injury."
+    }
+   ]
+  },
+  "573": {
+   "word": "condemn",
+   "overview": [
+    "condemn은 '(강하게) 비난하다, 규탄하다'라는 뜻의 동사입니다.",
+    "condemn violence(폭력을 규탄하다)처럼 씁니다.",
+    "'(형을) 선고하다', '(나쁜 상황에) 몰아넣다'라는 뜻으로도 씁니다. (condemned to a life of poverty)",
+    "'(건물을) 사용 불가 판정하다'라는 뜻도 있고, n은 소리 나지 않습니다. [컨뎀]"
+   ],
+   "easy": [
+    {
+     "word": "criticize",
+     "en": "Criticize strongly.",
+     "ko": "강하게 비판하다."
+    },
+    {
+     "word": "blame",
+     "en": "Blame someone.",
+     "ko": "누군가를 탓하다."
+    }
+   ],
+   "etymology": [
+    "condemn은 라틴어 condemnare(유죄 판결하다)에서 온 단어입니다.",
+    "con(완전히)과 damnare(벌하다, 손해를 입히다)가 합쳐진 말로, damage(손해)와 뿌리가 이어집니다.",
+    "'완전히 죄가 있다고 판결하다'라는 뜻에서 시작되었습니다.",
+    "공개적으로 강하게 잘못을 지적하는 것, 벌을 선고하는 것을 가리키게 되었습니다.",
+    "condemn의 핵심 이미지는 '손가락으로 가리키며 잘못을 강하게 꾸짖는 것 👉⚖️'입니다."
+   ],
+   "meanings": [
+    "비난하다, 규탄하다",
+    "판결하다, (형을) 선고하다",
+    "(나쁜 상황에) 몰아넣다"
+   ],
+   "examples": [
+    {
+     "en": "World leaders condemned the attack.",
+     "ko": "세계 지도자들이 그 공격을 규탄했어요."
+    },
+    {
+     "en": "The prisoner was condemned to ten years in jail.",
+     "ko": "그 죄수는 징역 10년을 선고받았어요."
+    },
+    {
+     "en": "Many people condemned his rude behavior.",
+     "ko": "많은 사람들이 그의 무례한 행동을 비난했어요."
+    },
+    {
+     "en": "The old building was condemned as unsafe.",
+     "ko": "그 오래된 건물은 안전하지 않다는 판정을 받았어요."
+    },
+    {
+     "en": "We must condemn bullying in all forms.",
+     "ko": "우리는 어떤 형태의 괴롭힘도 규탄해야 해요."
+    },
+    {
+     "en": "Poverty condemned them to a hard life.",
+     "ko": "가난 때문에 그들은 힘든 삶을 살 수밖에 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "criticize",
+     "ko": "비판하다",
+     "en": "Criticize the plan."
+    },
+    {
+     "type": "유의어",
+     "word": "blame",
+     "ko": "비난하다",
+     "en": "Don't blame me."
+    },
+    {
+     "type": "반의어",
+     "word": "praise",
+     "ko": "칭찬하다",
+     "en": "Praise the team."
+    },
+    {
+     "type": "파생어",
+     "word": "condemnation",
+     "ko": "비난",
+     "en": "Strong condemnation."
+    },
+    {
+     "type": "연관어",
+     "word": "sentence",
+     "ko": "형을 선고하다",
+     "en": "Sentence to prison."
+    },
+    {
+     "type": "연관어",
+     "word": "guilty",
+     "ko": "유죄의",
+     "en": "Found guilty."
+    }
+   ]
+  },
+  "1411": {
+   "word": "ingredient",
+   "overview": [
+    "ingredient는 '(요리의) 재료, 성분'이라는 뜻의 명사입니다.",
+    "fresh ingredients(신선한 재료)처럼 씁니다.",
+    "'(성공 등의) 요소, 구성 요소'라는 비유적인 뜻으로도 씁니다. (the key ingredient for success)",
+    "보통 복수형 ingredients로 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "An important part.",
+     "ko": "중요한 부분."
+    },
+    {
+     "word": "element",
+     "en": "A key element.",
+     "ko": "핵심 요소."
+    }
+   ],
+   "etymology": [
+    "ingredient는 라틴어 ingredi(안으로 들어가다)에서 온 단어입니다.",
+    "in(안으로)과 gradi(걷다, 가다)가 합쳐진 말로, progress(진보), grade(단계)와 뿌리가 이어집니다.",
+    "'어떤 것 안으로 들어가는 것'이라는 뜻에서 시작되었습니다.",
+    "요리나 약 안에 들어가는 재료, 그리고 무언가를 이루는 요소를 가리키게 되었습니다.",
+    "ingredient의 핵심 이미지는 '냄비 속으로 하나씩 들어가는 요리 재료 🥕🧅'입니다."
+   ],
+   "meanings": [
+    "성분, 재료",
+    "(성공 등의) 요소"
+   ],
+   "examples": [
+    {
+     "en": "Mix all the ingredients in a bowl.",
+     "ko": "모든 재료를 그릇에 넣고 섞으세요."
+    },
+    {
+     "en": "This soup uses only fresh ingredients.",
+     "ko": "이 수프에는 신선한 재료만 들어가요."
+    },
+    {
+     "en": "Check the ingredients if you have allergies.",
+     "ko": "알레르기가 있다면 성분을 확인하세요."
+    },
+    {
+     "en": "Flour, eggs, and milk are the main ingredients.",
+     "ko": "밀가루, 달걀, 우유가 주재료예요."
+    },
+    {
+     "en": "Hard work is the key ingredient for success.",
+     "ko": "노력은 성공의 핵심 요소예요."
+    },
+    {
+     "en": "We went to the market to buy ingredients.",
+     "ko": "우리는 재료를 사러 시장에 갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "component",
+     "ko": "구성 요소",
+     "en": "A key component."
+    },
+    {
+     "type": "유의어",
+     "word": "element",
+     "ko": "요소",
+     "en": "An important element."
+    },
+    {
+     "type": "연관어",
+     "word": "recipe",
+     "ko": "요리법",
+     "en": "Follow the recipe."
+    },
+    {
+     "type": "연관어",
+     "word": "cook",
+     "ko": "요리하다",
+     "en": "Cook dinner."
+    },
+    {
+     "type": "연관어",
+     "word": "fresh",
+     "ko": "신선한",
+     "en": "Fresh vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "mix",
+     "ko": "섞다",
+     "en": "Mix well."
+    }
+   ]
+  },
+  "708": {
+   "word": "dairy",
+   "overview": [
+    "dairy는 '유제품'이라는 뜻의 명사이자 형용사입니다.",
+    "dairy products(유제품)처럼 씁니다.",
+    "우유와 치즈, 버터, 요구르트처럼 우유로 만든 식품을 뜻합니다.",
+    "'낙농장, 낙농업'이라는 뜻도 있습니다. (a dairy farm, 낙농장)"
+   ],
+   "easy": [
+    {
+     "word": "milk products",
+     "en": "Milk products.",
+     "ko": "우유 제품."
+    },
+    {
+     "word": "milk farm",
+     "en": "A milk farm.",
+     "ko": "젖소 농장."
+    }
+   ],
+   "etymology": [
+    "dairy는 중세 영어 deierie(젖 짜는 곳)에서 온 단어입니다.",
+    "dey(젖 짜는 여자, 하녀)와 -ery(장소)가 합쳐진 말입니다.",
+    "원래는 우유를 짜고 버터·치즈를 만들던 방이나 건물을 뜻했습니다.",
+    "지금은 우유와 그것으로 만든 식품, 그리고 낙농업을 가리킵니다.",
+    "dairy의 핵심 이미지는 '신선한 우유와 치즈가 나오는 농장 🐄🧀'입니다."
+   ],
+   "meanings": [
+    "낙농, 낙농장",
+    "유제품(의)"
+   ],
+   "examples": [
+    {
+     "en": "Milk, cheese, and yogurt are dairy products.",
+     "ko": "우유, 치즈, 요구르트는 유제품이에요."
+    },
+    {
+     "en": "He can't eat dairy because of an allergy.",
+     "ko": "그는 알레르기 때문에 유제품을 못 먹어요."
+    },
+    {
+     "en": "We visited a dairy farm on the field trip.",
+     "ko": "우리는 현장 학습으로 낙농장에 갔어요."
+    },
+    {
+     "en": "Dairy foods are a good source of calcium.",
+     "ko": "유제품은 좋은 칼슘 공급원이에요."
+    },
+    {
+     "en": "The dairy section is at the back of the store.",
+     "ko": "유제품 코너는 가게 뒤쪽에 있어요."
+    },
+    {
+     "en": "This ice cream is dairy-free.",
+     "ko": "이 아이스크림에는 유제품이 들어 있지 않아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "milk",
+     "ko": "우유",
+     "en": "Fresh milk."
+    },
+    {
+     "type": "연관어",
+     "word": "cheese",
+     "ko": "치즈",
+     "en": "Melted cheese."
+    },
+    {
+     "type": "연관어",
+     "word": "butter",
+     "ko": "버터",
+     "en": "Bread and butter."
+    },
+    {
+     "type": "연관어",
+     "word": "cow",
+     "ko": "소",
+     "en": "A dairy cow."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "A family farm."
+    },
+    {
+     "type": "연관어",
+     "word": "calcium",
+     "ko": "칼슘",
+     "en": "Rich in calcium."
+    }
+   ]
+  },
+  "2485": {
+   "word": "spectacle",
+   "overview": [
+    "spectacle은 '(굉장한) 광경, 볼거리, 구경거리'라는 뜻의 명사입니다.",
+    "an amazing spectacle(놀라운 광경)처럼 씁니다.",
+    "make a spectacle of oneself(웃음거리가 되다)라는 표현도 씁니다.",
+    "복수형 spectacles는 '안경'이라는 뜻이고, 형용사 spectacular(장관인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "show",
+     "en": "A big show.",
+     "ko": "큰 공연."
+    },
+    {
+     "word": "sight",
+     "en": "A beautiful sight.",
+     "ko": "아름다운 광경."
+    }
+   ],
+   "etymology": [
+    "spectacle은 라틴어 spectaculum(구경거리)에서 온 단어입니다.",
+    "spectare(바라보다)에서 나온 말로, spectator(관중), inspect(검사하다)와 같은 가족입니다.",
+    "'사람들이 모여 바라보는 것'이라는 뜻에서 시작되었습니다.",
+    "눈을 뗄 수 없는 멋진 광경, 그리고 눈을 도와주는 도구인 안경(spectacles)을 가리키게 되었습니다.",
+    "spectacle의 핵심 이미지는 '모두가 넋을 놓고 바라보는 장관 🎆'입니다."
+   ],
+   "meanings": [
+    "광경, 볼거리",
+    "(spectacles) 안경"
+   ],
+   "examples": [
+    {
+     "en": "The fireworks were a wonderful spectacle.",
+     "ko": "불꽃놀이는 멋진 볼거리였어요."
+    },
+    {
+     "en": "The opening ceremony was a huge spectacle.",
+     "ko": "개막식은 엄청난 장관이었어요."
+    },
+    {
+     "en": "Grandpa can't read without his spectacles.",
+     "ko": "할아버지는 안경 없이는 글을 못 읽으세요."
+    },
+    {
+     "en": "Don't make a spectacle of yourself!",
+     "ko": "남들 앞에서 웃음거리가 되지 마!"
+    },
+    {
+     "en": "The sunset over the sea was a spectacle.",
+     "ko": "바다 위 노을은 장관이었어요."
+    },
+    {
+     "en": "The view from the top was spectacular.",
+     "ko": "꼭대기에서 본 경치는 장관이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sight",
+     "ko": "광경",
+     "en": "An amazing sight."
+    },
+    {
+     "type": "유의어",
+     "word": "show",
+     "ko": "쇼",
+     "en": "A light show."
+    },
+    {
+     "type": "파생어",
+     "word": "spectacular",
+     "ko": "장관인",
+     "en": "A spectacular view."
+    },
+    {
+     "type": "파생어",
+     "word": "spectator",
+     "ko": "관중",
+     "en": "Thousands of spectators."
+    },
+    {
+     "type": "연관어",
+     "word": "glasses",
+     "ko": "안경",
+     "en": "Wear glasses."
+    },
+    {
+     "type": "연관어",
+     "word": "event",
+     "ko": "행사",
+     "en": "A big event."
+    }
+   ]
+  },
+  "2433": {
+   "word": "slope",
+   "overview": [
+    "slope는 '경사, 비탈'이라는 뜻의 명사입니다.",
+    "a steep slope(가파른 비탈)처럼 씁니다.",
+    "동사로는 '경사지다, 비탈지다'라는 뜻입니다.",
+    "a ski slope(스키 슬로프), 수학의 '기울기'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hill",
+     "en": "A small hill.",
+     "ko": "작은 언덕."
+    },
+    {
+     "word": "incline",
+     "en": "A gentle incline.",
+     "ko": "완만한 경사."
+    }
+   ],
+   "etymology": [
+    "slope는 중세 영어 aslope(비스듬히)에서 온 단어입니다.",
+    "slip(미끄러지다)과 관련된 말로 봅니다.",
+    "'한쪽으로 비스듬하게 기울어진'이라는 뜻에서 시작되었습니다.",
+    "기울어진 땅, 비탈, 그리고 비스듬히 기울어지는 것을 가리키게 되었습니다.",
+    "slope의 핵심 이미지는 '한쪽으로 비스듬히 기울어진 언덕길 ⛷️'입니다."
+   ],
+   "meanings": [
+    "비탈, 경사",
+    "경사지다, 비탈지다",
+    "경사지게 하다"
+   ],
+   "examples": [
+    {
+     "en": "We skied down the snowy slope.",
+     "ko": "우리는 눈 덮인 비탈을 스키로 내려왔어요."
+    },
+    {
+     "en": "The garden slopes down to the river.",
+     "ko": "정원은 강 쪽으로 비탈져 있어요."
+    },
+    {
+     "en": "Be careful on the steep slope.",
+     "ko": "가파른 비탈에서 조심하세요."
+    },
+    {
+     "en": "The roof slopes so rain can run off.",
+     "ko": "빗물이 흘러내리도록 지붕이 경사져 있어요."
+    },
+    {
+     "en": "Sheep were eating grass on the slope.",
+     "ko": "양들이 비탈에서 풀을 뜯고 있었어요."
+    },
+    {
+     "en": "Find the slope of the line.",
+     "ko": "그 직선의 기울기를 구하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "incline",
+     "ko": "경사",
+     "en": "A steep incline."
+    },
+    {
+     "type": "유의어",
+     "word": "hill",
+     "ko": "언덕",
+     "en": "Climb a hill."
+    },
+    {
+     "type": "반의어",
+     "word": "flat",
+     "ko": "평평한",
+     "en": "Flat land."
+    },
+    {
+     "type": "연관어",
+     "word": "steep",
+     "ko": "가파른",
+     "en": "A steep road."
+    },
+    {
+     "type": "연관어",
+     "word": "ski",
+     "ko": "스키",
+     "en": "Go skiing."
+    },
+    {
+     "type": "연관어",
+     "word": "angle",
+     "ko": "각도",
+     "en": "A sharp angle."
+    }
+   ]
+  },
+  "1388": {
+   "word": "impose",
+   "overview": [
+    "impose는 '(세금·규칙·벌을) 부과하다, 강요하다'라는 뜻의 동사입니다.",
+    "impose a tax(세금을 부과하다)처럼 씁니다.",
+    "impose something on someone(~에게 …을 억지로 지우다)처럼 on과 함께 씁니다.",
+    "impose on someone은 '폐를 끼치다'라는 뜻이고, 형용사 imposing(인상적인, 위압적인)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "force",
+     "en": "Force a rule on them.",
+     "ko": "그들에게 규칙을 강요하다."
+    },
+    {
+     "word": "put on",
+     "en": "Put a tax on it.",
+     "ko": "그것에 세금을 매기다."
+    }
+   ],
+   "etymology": [
+    "impose는 라틴어 imponere(위에 올려놓다)에서 온 단어입니다.",
+    "in(위에)과 ponere(놓다)가 합쳐진 말로, position(위치), compose(구성하다)와 같은 가족입니다.",
+    "'누군가의 어깨 위에 짐을 올려놓다'라는 뜻에서 시작되었습니다.",
+    "세금이나 규칙, 생각을 다른 사람에게 억지로 지우는 것을 가리키게 되었습니다.",
+    "impose의 핵심 이미지는 '남의 어깨 위에 무거운 짐을 얹는 것 🏋️'입니다."
+   ],
+   "meanings": [
+    "(힘들거나 불쾌한 것을) 부과하다, 지우다",
+    "강요하다",
+    "폐를 끼치다"
+   ],
+   "examples": [
+    {
+     "en": "The government imposed a new tax on sugar.",
+     "ko": "정부는 설탕에 새로운 세금을 부과했어요."
+    },
+    {
+     "en": "Don't impose your opinions on others.",
+     "ko": "다른 사람에게 당신의 의견을 강요하지 마세요."
+    },
+    {
+     "en": "The school imposed strict rules on phones.",
+     "ko": "학교는 휴대폰에 대해 엄격한 규칙을 시행했어요."
+    },
+    {
+     "en": "I don't want to impose on you.",
+     "ko": "당신에게 폐를 끼치고 싶지 않아요."
+    },
+    {
+     "en": "The city imposed a curfew after the storm.",
+     "ko": "폭풍 뒤에 시는 통행금지령을 내렸어요."
+    },
+    {
+     "en": "The judge imposed a large fine.",
+     "ko": "판사는 큰 벌금을 부과했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "force",
+     "ko": "강요하다",
+     "en": "Force a decision."
+    },
+    {
+     "type": "유의어",
+     "word": "enforce",
+     "ko": "시행하다",
+     "en": "Enforce the law."
+    },
+    {
+     "type": "반의어",
+     "word": "remove",
+     "ko": "없애다",
+     "en": "Remove the tax."
+    },
+    {
+     "type": "파생어",
+     "word": "imposition",
+     "ko": "부과, 폐",
+     "en": "An unfair imposition."
+    },
+    {
+     "type": "연관어",
+     "word": "tax",
+     "ko": "세금",
+     "en": "Pay taxes."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Strict rules."
+    }
+   ]
+  },
+  "1624": {
+   "word": "manifest",
+   "overview": [
+    "manifest는 동사로 '(감정·특징을) 분명히 드러내다, 나타내다'라는 뜻입니다.",
+    "manifest itself(스스로 드러나다)처럼 씁니다.",
+    "형용사로는 '명백한, 분명한'이라는 뜻입니다.",
+    "명사로는 '(배·비행기의) 화물 목록, 승객 명단'이라는 뜻이고, manifesto(선언문)도 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "show",
+     "en": "Show your feelings.",
+     "ko": "감정을 드러내다."
+    },
+    {
+     "word": "obvious",
+     "en": "An obvious sign.",
+     "ko": "뚜렷한 징후."
+    }
+   ],
+   "etymology": [
+    "manifest는 라틴어 manifestus(손으로 잡을 수 있을 만큼 분명한)에서 온 단어입니다.",
+    "manus(손)와 관련된 말로, manual(손으로 하는)과 뿌리가 이어집니다.",
+    "'손에 잡힐 듯 뚜렷하게 드러난'이라는 뜻에서 시작되었습니다.",
+    "숨어 있던 감정이나 증상이 겉으로 분명히 드러나는 것을 가리키게 되었습니다.",
+    "manifest의 핵심 이미지는 '손에 잡힐 만큼 뚜렷하게 겉으로 드러나는 것 ✋'입니다."
+   ],
+   "meanings": [
+    "(감정·태도·특질을 분명히) 나타내다, 드러내 보이다",
+    "명백한",
+    "(배·비행기의) 화물 목록, 승객 명단"
+   ],
+   "examples": [
+    {
+     "en": "Her fear manifested as a headache.",
+     "ko": "그녀의 두려움은 두통으로 나타났어요."
+    },
+    {
+     "en": "The problem manifested itself after a few weeks.",
+     "ko": "그 문제는 몇 주 뒤에 드러났어요."
+    },
+    {
+     "en": "His talent was manifest from an early age.",
+     "ko": "그의 재능은 어릴 때부터 분명했어요."
+    },
+    {
+     "en": "Symptoms of the illness manifest quickly.",
+     "ko": "그 병의 증상은 빨리 나타나요."
+    },
+    {
+     "en": "The captain checked the ship's manifest.",
+     "ko": "선장은 배의 화물 목록을 확인했어요."
+    },
+    {
+     "en": "Their kindness was manifest in everything they did.",
+     "ko": "그들의 친절함은 그들이 하는 모든 일에서 드러났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "show",
+     "ko": "보여 주다",
+     "en": "Show emotion."
+    },
+    {
+     "type": "유의어",
+     "word": "obvious",
+     "ko": "명백한",
+     "en": "An obvious reason."
+    },
+    {
+     "type": "반의어",
+     "word": "hide",
+     "ko": "숨기다",
+     "en": "Hide the truth."
+    },
+    {
+     "type": "파생어",
+     "word": "manifestation",
+     "ko": "표현, 징후",
+     "en": "A clear manifestation."
+    },
+    {
+     "type": "연관어",
+     "word": "reveal",
+     "ko": "드러내다",
+     "en": "Reveal a secret."
+    },
+    {
+     "type": "연관어",
+     "word": "symptom",
+     "ko": "증상",
+     "en": "Cold symptoms."
+    }
+   ]
+  },
+  "2631": {
+   "word": "symphony",
+   "overview": [
+    "symphony는 '교향곡'이라는 뜻의 명사입니다.",
+    "Beethoven's Ninth Symphony(베토벤 교향곡 9번)처럼 씁니다.",
+    "오케스트라가 연주하는 여러 악장으로 된 긴 음악 작품을 뜻합니다.",
+    "a symphony orchestra(교향악단)처럼도 쓰고, '(여러 요소의) 조화'라는 비유적 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "orchestra music",
+     "en": "Orchestra music.",
+     "ko": "관현악 음악."
+    },
+    {
+     "word": "harmony",
+     "en": "Beautiful harmony.",
+     "ko": "아름다운 조화."
+    }
+   ],
+   "etymology": [
+    "symphony는 그리스어 symphonia(소리의 어울림)에서 온 단어입니다.",
+    "syn(함께)과 phone(소리)이 합쳐진 말로, telephone(전화), microphone(마이크)과 같은 가족입니다.",
+    "'여러 소리가 함께 어울려 울리는 것'이라는 뜻에서 시작되었습니다.",
+    "여러 악기가 함께 연주하는 큰 규모의 음악 작품을 가리키게 되었습니다.",
+    "symphony의 핵심 이미지는 '수많은 악기가 한마음으로 울려 퍼지는 음악 🎻🎺🥁'입니다."
+   ],
+   "meanings": [
+    "교향곡",
+    "교향악단, 조화"
+   ],
+   "examples": [
+    {
+     "en": "The orchestra played Beethoven's Fifth Symphony.",
+     "ko": "오케스트라가 베토벤 교향곡 5번을 연주했어요."
+    },
+    {
+     "en": "Mozart wrote 41 symphonies.",
+     "ko": "모차르트는 교향곡을 41곡 썼어요."
+    },
+    {
+     "en": "We went to a symphony concert last night.",
+     "ko": "우리는 어젯밤 교향악 연주회에 갔어요."
+    },
+    {
+     "en": "She plays violin in the city symphony orchestra.",
+     "ko": "그녀는 시립 교향악단에서 바이올린을 연주해요."
+    },
+    {
+     "en": "The garden was a symphony of colors.",
+     "ko": "정원은 색깔들의 향연이었어요."
+    },
+    {
+     "en": "A symphony usually has four movements.",
+     "ko": "교향곡은 보통 네 개의 악장으로 되어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "orchestra",
+     "ko": "오케스트라",
+     "en": "A youth orchestra."
+    },
+    {
+     "type": "연관어",
+     "word": "composer",
+     "ko": "작곡가",
+     "en": "A great composer."
+    },
+    {
+     "type": "연관어",
+     "word": "conductor",
+     "ko": "지휘자",
+     "en": "The conductor bowed."
+    },
+    {
+     "type": "연관어",
+     "word": "concert",
+     "ko": "연주회",
+     "en": "A piano concert."
+    },
+    {
+     "type": "연관어",
+     "word": "classical",
+     "ko": "클래식의",
+     "en": "Classical music."
+    },
+    {
+     "type": "연관어",
+     "word": "harmony",
+     "ko": "화음",
+     "en": "Perfect harmony."
+    }
+   ]
+  },
+  "1148": {
+   "word": "frequent",
+   "overview": [
+    "frequent는 '잦은, 빈번한'이라는 뜻의 형용사입니다.",
+    "frequent visits(잦은 방문)처럼 씁니다.",
+    "동사로는 '(장소에) 자주 다니다'라는 뜻으로 씁니다. (발음: fre-QUENT)",
+    "부사 frequently(자주), 명사 frequency(빈도, 주파수)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "often",
+     "en": "It happens often.",
+     "ko": "그건 자주 일어나요."
+    },
+    {
+     "word": "regular",
+     "en": "A regular visitor.",
+     "ko": "단골 방문객."
+    }
+   ],
+   "etymology": [
+    "frequent는 라틴어 frequens(붐비는, 자주 있는)에서 온 단어입니다.",
+    "원래는 '사람들이 빽빽하게 모인, 붐비는'이라는 뜻이었습니다.",
+    "많은 사람이 자주 모이는 모습에서 '자주 일어나는'이라는 뜻이 되었습니다.",
+    "어떤 일이 자주 반복되거나 어떤 장소에 자주 가는 것을 가리킵니다.",
+    "frequent의 핵심 이미지는 '달력에 동그라미가 빼곡할 만큼 자주 일어나는 것 📅'입니다."
+   ],
+   "meanings": [
+    "자주 일어나는, 빈번한",
+    "자주 다니다"
+   ],
+   "examples": [
+    {
+     "en": "She is a frequent visitor to the library.",
+     "ko": "그녀는 도서관에 자주 오는 사람이에요."
+    },
+    {
+     "en": "Frequent hand washing prevents colds.",
+     "ko": "손을 자주 씻으면 감기를 예방할 수 있어요."
+    },
+    {
+     "en": "Buses are frequent in the city center.",
+     "ko": "도심에는 버스가 자주 다녀요."
+    },
+    {
+     "en": "He makes frequent trips to Busan.",
+     "ko": "그는 부산에 자주 가요."
+    },
+    {
+     "en": "Earthquakes are frequent in Japan.",
+     "ko": "일본에서는 지진이 자주 일어나요."
+    },
+    {
+     "en": "The café is frequented by students.",
+     "ko": "그 카페에는 학생들이 자주 찾아와요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "regular",
+     "ko": "정기적인",
+     "en": "A regular customer."
+    },
+    {
+     "type": "유의어",
+     "word": "common",
+     "ko": "흔한",
+     "en": "A common mistake."
+    },
+    {
+     "type": "반의어",
+     "word": "rare",
+     "ko": "드문",
+     "en": "A rare event."
+    },
+    {
+     "type": "파생어",
+     "word": "frequently",
+     "ko": "자주",
+     "en": "Frequently asked questions."
+    },
+    {
+     "type": "파생어",
+     "word": "frequency",
+     "ko": "빈도, 주파수",
+     "en": "Radio frequency."
+    },
+    {
+     "type": "연관어",
+     "word": "often",
+     "ko": "자주",
+     "en": "Visit often."
+    }
+   ]
+  },
+  "1864": {
+   "word": "outrage",
+   "overview": [
+    "outrage는 '격분, 분노'라는 뜻의 명사입니다.",
+    "express outrage(분노를 표하다)처럼 씁니다.",
+    "'(분노를 일으키는) 잔혹 행위, 난폭한 짓'이라는 뜻으로도 씁니다.",
+    "동사로는 '격분하게 하다'라는 뜻이고, 형용사 outrageous(터무니없는, 너무한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "anger",
+     "en": "Great anger.",
+     "ko": "큰 분노."
+    },
+    {
+     "word": "shock",
+     "en": "Public shock.",
+     "ko": "사회적 충격."
+    }
+   ],
+   "etymology": [
+    "outrage는 옛 프랑스어 outrage(지나침, 도를 넘음)에서 온 단어입니다.",
+    "라틴어 ultra(넘어서)에서 나온 말로, out(밖)이나 rage(분노)와는 원래 다른 뿌리입니다.",
+    "'도를 한참 넘어선 지나친 행동'이라는 뜻에서 시작되었습니다.",
+    "그런 행동, 그리고 그것 때문에 사람들이 느끼는 거센 분노를 가리키게 되었습니다.",
+    "outrage의 핵심 이미지는 '도를 넘은 일에 터져 나오는 거센 분노 😡📢'입니다."
+   ],
+   "meanings": [
+    "격노, 분노, 분개",
+    "난폭, 폭행"
+   ],
+   "examples": [
+    {
+     "en": "The news caused public outrage.",
+     "ko": "그 소식은 대중의 분노를 일으켰어요."
+    },
+    {
+     "en": "Parents expressed outrage at the decision.",
+     "ko": "학부모들은 그 결정에 분노를 표했어요."
+    },
+    {
+     "en": "The attack was an outrage.",
+     "ko": "그 공격은 용납할 수 없는 만행이었어요."
+    },
+    {
+     "en": "Fans were outraged by the referee's call.",
+     "ko": "팬들은 심판 판정에 격분했어요."
+    },
+    {
+     "en": "That price is outrageous!",
+     "ko": "그 가격은 너무해요!"
+    },
+    {
+     "en": "She shouted in outrage.",
+     "ko": "그녀는 분통을 터뜨리며 소리쳤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fury",
+     "ko": "격노",
+     "en": "Full of fury."
+    },
+    {
+     "type": "유의어",
+     "word": "anger",
+     "ko": "분노",
+     "en": "Hide anger."
+    },
+    {
+     "type": "파생어",
+     "word": "outrageous",
+     "ko": "터무니없는",
+     "en": "An outrageous lie."
+    },
+    {
+     "type": "연관어",
+     "word": "protest",
+     "ko": "항의",
+     "en": "A loud protest."
+    },
+    {
+     "type": "연관어",
+     "word": "shock",
+     "ko": "충격",
+     "en": "A big shock."
+    },
+    {
+     "type": "연관어",
+     "word": "injustice",
+     "ko": "부당함",
+     "en": "Fight injustice."
+    }
+   ]
+  },
+  "1096": {
+   "word": "flexible",
+   "overview": [
+    "flexible은 '유연한, 잘 휘는'이라는 뜻의 형용사입니다.",
+    "a flexible body(유연한 몸)처럼 씁니다.",
+    "'(계획·생각이) 융통성 있는, 탄력적인'이라는 뜻으로 아주 자주 씁니다. (flexible hours, 탄력 근무 시간)",
+    "명사 flexibility(유연성)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bendable",
+     "en": "A bendable straw.",
+     "ko": "잘 구부러지는 빨대."
+    },
+    {
+     "word": "adaptable",
+     "en": "An adaptable plan.",
+     "ko": "변경할 수 있는 계획."
+    }
+   ],
+   "etymology": [
+    "flexible은 라틴어 flexibilis(구부릴 수 있는)에서 온 단어입니다.",
+    "flectere(구부리다)에서 나온 말로, reflect(반사하다, '뒤로 구부리다')와 같은 가족입니다.",
+    "'부러지지 않고 잘 휘어지는'이라는 뜻에서 시작되었습니다.",
+    "몸의 유연함뿐 아니라 상황에 맞게 잘 바꿀 수 있는 계획이나 생각에도 씁니다.",
+    "flexible의 핵심 이미지는 '부러지지 않고 부드럽게 휘어지는 대나무 🎋'입니다."
+   ],
+   "meanings": [
+    "유연한, 잘 휘는",
+    "융통성이 있는"
+   ],
+   "examples": [
+    {
+     "en": "Gymnasts have very flexible bodies.",
+     "ko": "체조 선수들은 몸이 아주 유연해요."
+    },
+    {
+     "en": "Our plans for the weekend are flexible.",
+     "ko": "우리의 주말 계획은 바꿀 수 있어요."
+    },
+    {
+     "en": "This plastic is light and flexible.",
+     "ko": "이 플라스틱은 가볍고 잘 휘어요."
+    },
+    {
+     "en": "The job has flexible working hours.",
+     "ko": "그 일은 근무 시간이 탄력적이에요."
+    },
+    {
+     "en": "Good teachers are flexible with students.",
+     "ko": "좋은 선생님은 학생들에게 융통성 있게 대해요."
+    },
+    {
+     "en": "Stretching every day keeps you flexible.",
+     "ko": "매일 스트레칭하면 몸이 유연해져요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "adaptable",
+     "ko": "적응력 있는",
+     "en": "An adaptable person."
+    },
+    {
+     "type": "반의어",
+     "word": "rigid",
+     "ko": "딱딱한, 경직된",
+     "en": "Rigid rules."
+    },
+    {
+     "type": "반의어",
+     "word": "stiff",
+     "ko": "뻣뻣한",
+     "en": "A stiff neck."
+    },
+    {
+     "type": "파생어",
+     "word": "flexibility",
+     "ko": "유연성",
+     "en": "Improve flexibility."
+    },
+    {
+     "type": "연관어",
+     "word": "bend",
+     "ko": "구부리다",
+     "en": "Bend your knees."
+    },
+    {
+     "type": "연관어",
+     "word": "stretch",
+     "ko": "스트레칭하다",
+     "en": "Stretch your arms."
+    }
+   ]
+  },
+  "940": {
+   "word": "enthusiastic",
+   "overview": [
+    "enthusiastic은 '열정적인, 열렬한'이라는 뜻의 형용사입니다.",
+    "an enthusiastic fan(열성 팬)처럼 씁니다.",
+    "be enthusiastic about(~에 열정적이다, ~을 몹시 좋아하다)처럼 씁니다.",
+    "명사 enthusiasm(열정), enthusiast(열성 팬, 애호가)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "excited",
+     "en": "Excited students.",
+     "ko": "신이 난 학생들."
+    },
+    {
+     "word": "eager",
+     "en": "Eager to learn.",
+     "ko": "배우고 싶어 하는."
+    }
+   ],
+   "etymology": [
+    "enthusiastic은 그리스어 enthousiasmos(신이 깃듦)에서 온 단어입니다.",
+    "en(안에)과 theos(신)가 합쳐진 말로, '신이 마음속에 들어온 상태'를 뜻했습니다.",
+    "원래는 신에게 사로잡힌 듯한 강한 영감과 흥분을 가리켰습니다.",
+    "지금은 무언가를 몹시 좋아하고 신이 나서 열심히 하는 태도를 가리킵니다.",
+    "enthusiastic의 핵심 이미지는 '가슴속에 불꽃이 들어온 듯 신나는 열정 🔥🙌'입니다."
+   ],
+   "meanings": [
+    "열광적인",
+    "열심인"
+   ],
+   "examples": [
+    {
+     "en": "The students were enthusiastic about the trip.",
+     "ko": "학생들은 여행에 대해 무척 들떠 있었어요."
+    },
+    {
+     "en": "She is an enthusiastic reader.",
+     "ko": "그녀는 열성적인 독서가예요."
+    },
+    {
+     "en": "The crowd gave an enthusiastic cheer.",
+     "ko": "관중은 열렬한 환호를 보냈어요."
+    },
+    {
+     "en": "He wasn't very enthusiastic about the idea.",
+     "ko": "그는 그 생각에 별로 내키지 않아 했어요."
+    },
+    {
+     "en": "Our new coach is young and enthusiastic.",
+     "ko": "우리 새 코치는 젊고 열정적이에요."
+    },
+    {
+     "en": "Her enthusiasm made everyone want to join.",
+     "ko": "그녀의 열정 덕분에 모두가 참여하고 싶어 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "eager",
+     "ko": "열망하는",
+     "en": "Eager to help."
+    },
+    {
+     "type": "유의어",
+     "word": "passionate",
+     "ko": "열정적인",
+     "en": "A passionate artist."
+    },
+    {
+     "type": "반의어",
+     "word": "indifferent",
+     "ko": "무관심한",
+     "en": "Indifferent to sports."
+    },
+    {
+     "type": "파생어",
+     "word": "enthusiasm",
+     "ko": "열정",
+     "en": "Full of enthusiasm."
+    },
+    {
+     "type": "파생어",
+     "word": "enthusiast",
+     "ko": "열성 팬, 애호가",
+     "en": "A car enthusiast."
+    },
+    {
+     "type": "연관어",
+     "word": "excited",
+     "ko": "신이 난",
+     "en": "Very excited."
+    }
+   ]
   }
  }
 }
