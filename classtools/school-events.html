@@ -232,7 +232,12 @@
 
     const WEEKDAY_NAMES = ["일", "월", "화", "수", "목", "금", "토"];
 
-    let currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM
+    // toISOString()은 UTC 기준이라 KST에서 날짜가 하루 밀리므로 로컬 날짜로 직접 만든다.
+    function localDateStr(date = new Date()) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    }
+
+    let currentMonth = localDateStr().slice(0, 7); // YYYY-MM
 
     async function api(path, opts = {}) {
         const res = await fetch(path, {
@@ -367,18 +372,13 @@
         }
     }
 
-    document.getElementById("prevMonthBtn").addEventListener("click", () => {
+    function shiftMonth(delta) {
         const [y, m] = currentMonth.split("-").map(Number);
-        const d = new Date(y, m - 2, 1);
-        currentMonth = d.toISOString().slice(0, 7);
+        currentMonth = localDateStr(new Date(y, m - 1 + delta, 1)).slice(0, 7);
         loadEvents();
-    });
-    document.getElementById("nextMonthBtn").addEventListener("click", () => {
-        const [y, m] = currentMonth.split("-").map(Number);
-        const d = new Date(y, m, 1);
-        currentMonth = d.toISOString().slice(0, 7);
-        loadEvents();
-    });
+    }
+    document.getElementById("prevMonthBtn").addEventListener("click", () => shiftMonth(-1));
+    document.getElementById("nextMonthBtn").addEventListener("click", () => shiftMonth(1));
 
     document.getElementById("eventScope").addEventListener("change", (e) => {
         document.getElementById("gradeChecksRow").hidden = e.target.value !== "GRADE";
@@ -421,7 +421,7 @@
             });
             setStatus("등록되었습니다.");
             document.getElementById("addEventForm").reset();
-            document.getElementById("eventDate").value = new Date().toISOString().slice(0, 10);
+            document.getElementById("eventDate").value = localDateStr();
             document.getElementById("gradeChecksRow").hidden = true;
             await loadEvents();
         } catch (err) {
@@ -429,7 +429,7 @@
         }
     });
 
-    document.getElementById("eventDate").value = new Date().toISOString().slice(0, 10);
+    document.getElementById("eventDate").value = localDateStr();
     loadEvents();
 })();
 </script>

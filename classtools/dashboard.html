@@ -80,20 +80,24 @@
             font-weight: 700;
         }
 
+        /* 영어 노출용이라 약어 없이 요일/월 이름을 전부 쓰고, 나무 배경 위에서도 읽히게 밝게 둔다. */
         .clock-date {
-            margin-top: 6px;
-            font-size: 0.9rem;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
             font-weight: 700;
-            color: var(--text-muted);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
-        .clock-date-en {
-            margin-top: 2px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
+        .clock-weekday {
+            font-size: 1.1rem;
             color: var(--accent-green);
-            opacity: 0.85;
+        }
+
+        .clock-month-day {
+            font-size: 1rem;
+            color: #ffffff;
         }
 
         /* Main Dashboard Grid */
@@ -1180,8 +1184,8 @@
             .clock-card, .weather-card { padding: 10px; }
             .clock-time { font-size: clamp(1.9rem, 6vw, 2.8rem); }
             .clock-seconds { font-size: 1rem; }
-            .clock-date { font-size: 0.75rem; }
-            .clock-date-en { font-size: 0.68rem; }
+            .clock-weekday { font-size: 0.9rem; }
+            .clock-month-day { font-size: 0.82rem; }
             .weather-card .weather-temp { font-size: 1.35rem; }
             .weather-condition { font-size: 0.8rem; }
             .dashboard-grid {
@@ -1195,8 +1199,10 @@
     <header class="dashboard-header">
         <div class="clock-card">
             <div class="clock-time"><span id="clockHM">--:--</span><span class="clock-seconds" id="clockSec">:--</span></div>
-            <div class="clock-date" id="clockDate"></div>
-            <div class="clock-date-en" id="clockDateEn"></div>
+            <div class="clock-date" lang="en">
+                <span class="clock-weekday" id="clockWeekday"></span>
+                <span class="clock-month-day" id="clockMonthDay"></span>
+            </div>
         </div>
         <div class="weather-card" aria-label="현재 날씨">
             <div class="weather-temp" id="weatherTemp">--°</div>
@@ -1380,11 +1386,10 @@
 
         const clockHM = document.getElementById("clockHM");
         const clockSec = document.getElementById("clockSec");
-        const clockDate = document.getElementById("clockDate");
-        const clockDateEn = document.getElementById("clockDateEn");
-        const englishWeekdayFormatter = new Intl.DateTimeFormat("en-US", {
-            weekday: "short", month: "short", day: "numeric", year: "numeric"
-        });
+        const clockWeekday = document.getElementById("clockWeekday");
+        const clockMonthDay = document.getElementById("clockMonthDay");
+        const englishWeekdayFormatter = new Intl.DateTimeFormat("en-US", { weekday: "long" });
+        const englishMonthDayFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric" });
         const currentDayLabel = document.getElementById("currentDayLabel");
 
         const checklistGrid = document.getElementById("checklistGrid");
@@ -1435,14 +1440,11 @@
             clockHM.textContent = `${hours}:${mins}`;
             clockSec.textContent = `:${secs}`;
 
-            const year = now.getFullYear();
-            const month = now.getMonth() + 1;
-            const date = now.getDate();
             const days = ["일", "월", "화", "수", "목", "금", "토"];
             const dayName = days[now.getDay()];
 
-            clockDate.textContent = `${year}년 ${month}월 ${date}일 (${dayName})`;
-            clockDateEn.textContent = englishWeekdayFormatter.format(now);
+            clockWeekday.textContent = englishWeekdayFormatter.format(now);
+            clockMonthDay.textContent = englishMonthDayFormatter.format(now);
             currentDayLabel.textContent = `${dayName}요일`;
             selectedDayTab = (["월","화","수","목","금"].includes(dayName)) ? dayName : "월";
 
