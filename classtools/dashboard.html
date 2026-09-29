@@ -48,16 +48,17 @@
         #weatherHumidity { font-size: 0.85rem; color: #7ce4ff; }
         #dustBadge { align-self: flex-start; font-size: 0.72rem; padding: 3px 7px; border-radius: 5px; }
         .forecast-card { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
-        .forecast-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.7rem; color: var(--text-muted); }
-        #forecastCaption { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .forecast-meta a { color: var(--text-muted); font-size: 0.65rem; white-space: nowrap; text-decoration: none; }
         .hourly-forecast { display: grid; grid-template-columns: repeat(var(--forecast-columns, 1), minmax(0, 1fr)); gap: 2px; min-width: 0; }
         .forecast-hour { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px 1px; min-width: 0; border-radius: 7px; }
         .forecast-hour.is-current { background: rgba(117,214,159,0.14); outline: 1px solid rgba(117,214,159,0.3); outline-offset: -1px; }
         .forecast-time { color: var(--text-muted); font-size: 0.73rem; }
         .forecast-icon { font-size: 1.25rem; line-height: 1.2; }
         .forecast-temperature { font-size: 1.05rem; font-weight: 800; }
-        .forecast-rain { color: #7ce4ff; font-size: 0.66rem; white-space: nowrap; }
+        /* 강수확률은 높을수록 진하게: 30% 미만은 흐리게, 60% 이상은 파란 바탕으로 띄운다. */
+        .forecast-rain { color: var(--text-sub); font-size: 0.7rem; white-space: nowrap; padding: 1px 5px; border-radius: 6px; }
+        .forecast-rain.rain-some { color: #7ce4ff; font-weight: 700; }
+        .forecast-rain.rain-high { color: #04141c; background: #4fc3f7; font-weight: 800; }
+        .forecast-hour.next-day { box-shadow: inset 1px 0 0 rgba(255,255,255,0.18); }
         .forecast-message { grid-column: 1 / -1; padding: 18px 0; font-size: 0.85rem; color: var(--text-muted); }
         #forecastRetry { align-self: flex-start; color: var(--accent-green); border: 0; background: none; font: inherit; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
 
@@ -1188,11 +1189,7 @@
             <div id="weatherHumidity">습도 --%</div>
             <div id="dustBadge" class="dust-pill">미세먼지 불러오는 중</div>
         </div>
-        <div class="forecast-card" aria-label="오늘 시간대별 일기예보">
-            <div class="forecast-meta">
-                <span id="forecastCaption">오늘의 시간대별 예보</span>
-                <a id="weatherSource" href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
-            </div>
+        <div class="forecast-card" id="forecastCard" aria-label="시간대별 일기예보">
             <div class="hourly-forecast" id="hourlyForecast"><span class="forecast-message">시간대별 예보 불러오는 중...</span></div>
             <button id="forecastRetry" type="button" hidden>다시 불러오기</button>
         </div>
@@ -2667,7 +2664,6 @@
 
         let hourlyWeather = [];
         let forecastDate = "";
-        let forecastEstimated = false;
         let latestWeatherCoordinates = null;
         let forecastRequestVersion = 0;
         let weatherLastRequestedAt = 0;
@@ -2704,27 +2700,40 @@
         }
 
         function renderHourlyForecast() {
-            if (!hourlyWeather.length) return;
+            // 지난 시간은 빼고 지금 시간대부터 24시간을 보여 준다.
+            const now = koreanWeatherClock();
+            const nowKey = now.date + "T" + String(now.hour).padStart(2, "0");
+            const upcoming = hourlyWeather.filter(item => item.time.slice(0, 13) >= nowKey).slice(0, 24);
+            if (!upcoming.length) return;
             const grid = document.getElementById("hourlyForecast");
             const capacity = Math.max(1, Math.floor(grid.clientWidth / 48));
-            const step = [1, 2, 3, 4, 6, 12, 24].find(value => Math.ceil(hourlyWeather.length / value) <= capacity) || 24;
-            const hours = hourlyWeather.filter(item => item.hour % step === 0);
-            const now = koreanWeatherClock();
+            const step = [1, 2, 3, 4, 6, 12, 24].find(value => Math.ceil(upcoming.length / value) <= capacity) || 24;
+            // 몇 시간씩 건너뛸 때도 사이에 낀 비 소식을 놓치지 않게 강수확률은 그 구간의 최댓값을 쓴다.
+            const hours = upcoming.filter((_, index) => index % step === 0).map((item, index) => {
+                const span = upcoming.slice(index * step, index * step + step).map(slot => slot.rain).filter(Number.isFinite);
+                return { ...item, rain: span.length ? Math.max(...span) : item.rain };
+            });
             grid.style.setProperty("--forecast-columns", hours.length);
             grid.replaceChildren();
-            document.getElementById("forecastCaption").textContent = "오늘 · " + step + "시간 간격 · 강수확률"
-                + (forecastEstimated ? " · 위치 추정" : "");
-            hours.forEach(item => {
+            let markedNextDay = false;
+            hours.forEach((item, index) => {
                 const condition = describeWeatherItem(item);
                 const cell = document.createElement("div");
                 cell.className = "forecast-hour";
-                if (forecastDate === now.date && now.hour >= item.hour && now.hour < item.hour + step) cell.classList.add("is-current");
+                if (index === 0) cell.classList.add("is-current");
+                const isNextDay = !item.time.startsWith(now.date);
+                if (isNextDay && !markedNextDay) {
+                    cell.classList.add("next-day");
+                    markedNextDay = true;
+                }
                 const temperature = Number.isFinite(item.temperature) ? Math.round(item.temperature) + "°" : "--°";
-                const probability = Number.isFinite(item.rain) ? Math.round(item.rain) + "%" : "--%";
-                cell.title = item.hour + "시 · " + condition.name + " · " + temperature + " · 강수확률 " + probability;
+                const rain = Number.isFinite(item.rain) ? Math.round(item.rain) : null;
+                const probability = rain === null ? "--%" : rain + "%";
+                cell.title = (isNextDay ? "내일 " : "") + item.hour + "시 · " + condition.name + " · " + temperature + " · 강수확률 " + probability;
                 cell.setAttribute("aria-label", cell.title);
+                const rainClass = rain >= 60 ? " rain-high" : rain >= 30 ? " rain-some" : "";
                 [["forecast-time", String(item.hour).padStart(2, "0") + "시"], ["forecast-icon", condition.icon],
-                 ["forecast-temperature", temperature], ["forecast-rain", "💧 " + probability]].forEach(([className, value]) => {
+                 ["forecast-temperature", temperature], ["forecast-rain" + rainClass, (rain >= 30 ? "💧" : "") + probability]].forEach(([className, value]) => {
                     const span = document.createElement("span");
                     span.className = className;
                     span.textContent = value;
@@ -2752,7 +2761,7 @@
 
         async function loadOpenMeteoWeather(lat, lon) {
             const query = new URLSearchParams({
-                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "1",
+                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "2",
                 current: "temperature_2m,relative_humidity_2m,weather_code,is_day",
                 hourly: "temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,is_day"
             });
@@ -2783,7 +2792,6 @@
             const version = ++forecastRequestVersion;
             latestWeatherCoordinates = { lat, lon, isEstimated };
             weatherLastRequestedAt = Date.now();
-            forecastEstimated = isEstimated;
             hourlyWeather = [];
             showForecastMessage("시간대별 예보 불러오는 중...");
             document.getElementById("weatherTemp").textContent = "--°";
@@ -2800,9 +2808,7 @@
             if (version !== forecastRequestVersion) return;
             if (results[0].status === "fulfilled") {
                 const { source, current, hourly } = results[0].value;
-                const sourceLink = document.getElementById("weatherSource");
-                sourceLink.textContent = source === "kma" ? "기상청" : "Open-Meteo";
-                sourceLink.href = source === "kma" ? "https://www.weather.go.kr/" : "https://open-meteo.com/";
+                document.getElementById("forecastCard").title = "자료: " + (source === "kma" ? "기상청" : "Open-Meteo");
                 const condition = describeWeatherItem(current);
                 const temp = document.getElementById("weatherTemp");
                 temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
@@ -2813,11 +2819,11 @@
                 const humidity = current.humidity;
                 document.getElementById("weatherHumidity").textContent = "습도 " + (Number.isFinite(humidity) ? Math.round(humidity) + "%" : "--%");
                 forecastDate = koreanWeatherClock().date;
-                hourlyWeather = hourly.filter(item => item.time.startsWith(forecastDate + "T"));
+                hourlyWeather = hourly;
                 if (hourlyWeather.length) {
                     document.getElementById("forecastRetry").hidden = true;
                     renderHourlyForecast();
-                } else showForecastMessage("오늘의 시간대별 예보를 불러오지 못했습니다.", true);
+                } else showForecastMessage("시간대별 예보를 불러오지 못했습니다.", true);
             } else showForecastMessage("일기예보를 불러오지 못했습니다.", true);
 
             const pm10 = results[1].status === "fulfilled" ? results[1].value.current?.pm10 : null;

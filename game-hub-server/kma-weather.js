@@ -65,10 +65,12 @@ function forecastBase(now) {
   return { baseDate: kstParts(shiftHours(now, -24)).date, baseTime: "2300" };
 }
 
-// 전날 23시 발표분은 오늘 0시부터 담고 있어서, 최신 발표분에 없는 오늘의
-// 지난 시간대를 채우는 데 쓴다.
-function previousNightBase(now) {
-  return { baseDate: kstParts(shiftHours(now, -24)).date, baseTime: "2300" };
+// 최신 발표분은 발표 다음 시각부터 담고 있어서(11시 발표 → 12시부터) 지금
+// 시간대가 빠질 수 있다. 바로 앞 발표분으로 그 시간을 채운다.
+function previousForecastBase({ baseDate, baseTime }) {
+  const issued = new Date(`${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}T${baseTime.slice(0, 2)}:00:00+09:00`);
+  const parts = kstParts(shiftHours(issued, -3));
+  return { baseDate: parts.date, baseTime: String(parts.hour).padStart(2, "0") + "00" };
 }
 
 // 대시보드는 Open-Meteo(WMO) 날씨 코드로 아이콘을 그리므로 같은 코드로 맞춘다.
@@ -165,29 +167,29 @@ function createKmaWeather({ serviceKey, fetchImpl = fetch, now = () => new Date(
     const at = now();
     const grid = latLonToGrid(lat, lon);
     const latest = forecastBase(at);
-    const night = previousNightBase(at);
-    const sameBase = latest.baseDate === night.baseDate && latest.baseTime === night.baseTime;
-    const [ncstItems, latestItems, nightItems] = await Promise.all([
+    const [ncstItems, latestItems, previousItems] = await Promise.all([
       nowcast(grid, at),
       forecast(grid, latest),
-      sameBase ? Promise.resolve([]) : forecast(grid, night).catch(() => [])
+      forecast(grid, previousForecastBase(latest)).catch(() => [])
     ]);
 
-    const today = kstParts(at).date;
+    // 지금 시간대부터 24시간(밤이면 다음 날 새벽까지)만 보낸다.
+    const { date: today, hour: currentHour } = kstParts(at);
+    const startKey = today + String(currentHour).padStart(2, "0") + "00";
     const hours = new Map();
-    // 전날 밤 발표분을 먼저 깔고 최신 발표분으로 덮어쓴다.
-    for (const item of [...nightItems, ...latestItems]) {
-      if (item.fcstDate !== today) continue;
-      const hour = Number(String(item.fcstTime).slice(0, 2));
-      if (!hours.has(hour)) hours.set(hour, {});
-      hours.get(hour)[item.category] = item.fcstValue;
+    // 앞 발표분을 먼저 깔고 최신 발표분으로 덮어쓴다.
+    for (const item of [...previousItems, ...latestItems]) {
+      const slotKey = item.fcstDate + item.fcstTime;
+      if (slotKey < startKey) continue;
+      if (!hours.has(slotKey)) hours.set(slotKey, {});
+      hours.get(slotKey)[item.category] = item.fcstValue;
     }
-    const isoDate = `${today.slice(0, 4)}-${today.slice(4, 6)}-${today.slice(6, 8)}`;
-    const hourly = [...hours.entries()].sort((a, b) => a[0] - b[0]).map(([hour, values]) => {
-      const time = `${isoDate}T${String(hour).padStart(2, "0")}:00`;
+    const hourly = [...hours.keys()].sort().slice(0, 24).map((slotKey) => {
+      const values = hours.get(slotKey);
+      const time = `${slotKey.slice(0, 4)}-${slotKey.slice(4, 6)}-${slotKey.slice(6, 8)}T${slotKey.slice(8, 10)}:00`;
       const condition = toWeatherCode(values.PTY, values.SKY);
       return {
-        time, hour,
+        time, hour: Number(slotKey.slice(8, 10)),
         temperature: values.TMP === undefined ? null : Number(values.TMP),
         humidity: values.REH === undefined ? null : Number(values.REH),
         rain: values.POP === undefined ? null : Number(values.POP),
@@ -198,8 +200,7 @@ function createKmaWeather({ serviceKey, fetchImpl = fetch, now = () => new Date(
 
     const observed = Object.fromEntries(ncstItems.map((item) => [item.category, item.obsrValue]));
     const observedBase = ncstItems[0] ? `${ncstItems[0].baseDate}${ncstItems[0].baseTime}` : "";
-    const currentHour = kstParts(at).hour;
-    const nowSlot = hourly.find((item) => item.hour === currentHour) || hourly.find((item) => item.hour > currentHour);
+    const nowSlot = hourly[0];
     // 실황에는 하늘상태가 없어서, 비·눈이 없으면 이번 시간 예보의 하늘상태를 쓴다.
     const currentCondition = Number(observed.PTY) > 0 ? toWeatherCode(observed.PTY) : { code: nowSlot?.code ?? null, label: nowSlot?.label || "" };
     return {

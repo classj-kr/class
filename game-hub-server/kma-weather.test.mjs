@@ -36,20 +36,19 @@ function kmaResponse(items) {
   return { text: async () => JSON.stringify({ response: { header: { resultCode: "00", resultMsg: "NORMAL_SERVICE" }, body: { items: { item: items } } } }) };
 }
 
-function forecastItems(baseTime, hours, temperature) {
-  return hours.flatMap((hour) => {
-    const fcstTime = String(hour).padStart(2, "0") + "00";
-    return [
-      { category: "TMP", fcstDate: "20260929", fcstTime, fcstValue: String(temperature(hour)), baseTime },
-      { category: "REH", fcstDate: "20260929", fcstTime, fcstValue: "60", baseTime },
-      { category: "POP", fcstDate: "20260929", fcstTime, fcstValue: "10", baseTime },
-      { category: "SKY", fcstDate: "20260929", fcstTime, fcstValue: "1", baseTime },
-      { category: "PTY", fcstDate: "20260929", fcstTime, fcstValue: "0", baseTime }
-    ];
-  });
+// 발표 시각 다음 시각부터 48시간치 예보를 만든다(실제 단기예보처럼 날짜를 넘긴다).
+function forecastItems(baseDate, baseTime, temperature) {
+  const issued = kst(`${baseDate.slice(0, 4)}-${baseDate.slice(4, 6)}-${baseDate.slice(6, 8)}T${baseTime.slice(0, 2)}:00:00`);
+  return Array.from({ length: 48 }, (_, index) => {
+    const slot = new Date(issued.getTime() + (index + 1) * 3600e3 + 9 * 3600e3);
+    const fcstDate = slot.toISOString().slice(0, 10).replace(/-/g, "");
+    const fcstTime = slot.toISOString().slice(11, 13) + "00";
+    return [["TMP", temperature], ["REH", 60], ["POP", 10], ["SKY", 1], ["PTY", 0]]
+      .map(([category, fcstValue]) => ({ category, fcstDate, fcstTime, fcstValue: String(fcstValue), baseTime }));
+  }).flat();
 }
 
-test("실황과 예보를 합치고, 지난 시간대는 전날 밤 발표분으로 채운다", async () => {
+test("지금 시간대부터 24시간을 보내고, 최신 발표분에 없는 지금 시간은 앞 발표분으로 채운다", async () => {
   const calls = [];
   const fetchImpl = async (url) => {
     const params = new URL(url).searchParams;
@@ -61,19 +60,22 @@ test("실황과 예보를 합치고, 지난 시간대는 전날 밤 발표분으
         { category: "PTY", obsrValue: "0", baseDate: "20260929", baseTime: "1000" }
       ]);
     }
-    if (params.get("base_time") === "2300") return kmaResponse(forecastItems("2300", [...Array(24).keys()], () => 15));
-    return kmaResponse(forecastItems("0800", [...Array(15).keys()].map((i) => i + 9), (hour) => hour + 10));
+    const baseTime = params.get("base_time");
+    return kmaResponse(forecastItems(params.get("base_date"), baseTime, baseTime === "1100" ? 24 : 20));
   };
-  const service = createKmaWeather({ serviceKey: "test-key", fetchImpl, now: () => kst("2026-09-29T10:42:00") });
+  // 11시 20분: 11시 발표분은 12시부터라 11시 칸은 08시 발표분에서 온다.
+  const service = createKmaWeather({ serviceKey: "test-key", fetchImpl, now: () => kst("2026-09-29T11:20:00") });
   const result = await service.getWeather(37.663, 127.0678);
 
   assert.equal(result.source, "kma");
   assert.deepEqual(result.current, { time: "2026-09-29T10:00", temperature: 21.6, humidity: 56, code: 0, label: "맑음", isDay: 1 });
   assert.equal(result.hourly.length, 24);
-  assert.equal(result.hourly[0].temperature, 15); // 전날 23시 발표분
-  assert.equal(result.hourly[14].temperature, 24); // 오늘 08시 발표분이 덮어씀
-  assert.equal(result.hourly[0].isDay, 0);
-  assert.equal(result.hourly[14].isDay, 1);
+  assert.equal(result.hourly[0].time, "2026-09-29T11:00");
+  assert.equal(result.hourly[0].temperature, 20); // 08시 발표분
+  assert.equal(result.hourly[1].temperature, 24); // 11시 발표분이 덮어씀
+  assert.equal(result.hourly[23].time, "2026-09-30T10:00"); // 다음 날 오전까지 이어진다
+  assert.equal(result.hourly[0].isDay, 1);
+  assert.equal(result.hourly[12].isDay, 0); // 밤 11시
 
   await service.getWeather(37.663, 127.0678);
   assert.equal(calls.length, 3, "같은 격자는 캐시에서 다시 쓴다");
