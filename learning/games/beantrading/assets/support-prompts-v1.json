@@ -1,0 +1,25 @@
+{
+  "game": "콩 거래",
+  "generator": "Built-in ImageGen",
+  "reference": "images/bean-kidney-v3.png",
+  "assets": [
+    {
+      "key": "card-back-v1",
+      "name": "카드 뒷면",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset for the original Korean classroom browser card game '콩 거래 / BEAN TRADING'. The input image is a STYLE AND MATERIAL REFERENCE ONLY: match its warm hand-drawn 2D board-game illustration, varied dark ink contour, softly painted gouache grain, rich forest/teal greens, ochre gold and warm cream. Do not copy the bean character, its face, pose or costume. Original artwork, no existing game's branding. Create ONE FLAT PORTRAIT 2:3 CARD BACK, straight-on, no perspective, no product mockup, no scene outside the card. Artwork fills the entire rectangular canvas to its edges. Main field deep forest teal, a slim double cream-and-ochre inset border with clean rounded internal corners. Curling bean vines and small leaves frame the edges with tasteful decorative rhythm. Center a large warm golden circular medallion bearing two plump bean-seed shapes arranged like a friendly trading emblem, surrounded by two simple curved exchange arrows; no faces. Keep the emblem bold and readable at tiny playing-card size, surface rich matte printed paper with subtle hand-painted grain, balanced composition. The pattern should feel lively, polished and collectible, not a corporate icon. Upper/lower ornaments balanced. All edges are solid opaque artwork, no transparent margin. NO TEXT, letters, numerals, label boxes, logos, watermark, characters or screenshots."
+    },
+    {
+      "key": "field-background-v1",
+      "name": "밭 배경",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset for the original Korean classroom browser card game '콩 거래 / BEAN TRADING'. The input image is a STYLE AND MATERIAL REFERENCE ONLY: match its warm hand-drawn 2D board-game illustration, varied dark ink contour, softly painted gouache grain, rich forest/teal greens, ochre gold and warm cream. Do not copy the bean character, its face, pose or costume. Original artwork, no existing game's branding. Create ONE WIDE LANDSCAPE 16:9 GAME TABLE BACKGROUND. A charming small bean-growing farm viewed from a gently elevated angle. Foreground and central 65% is a broad uncluttered warm brown tilled-soil bed, softly textured with a few subtle horizontal planting furrows: it will sit behind live game cards, so keep this area calm and unobstructed. Bean leaves, pods and a few little sprouts cluster along the far left and right margins, small rustic fence or low wooden edging behind the soil. In the upper quarter, a modest strip of soft rolling green countryside and warm late-afternoon sky. Clear cheerful 2D ink-and-gouache illustration matching the reference character; natural soft light, cream highlights and rich earthy greens. Do not make photorealistic, glossy 3D or dense noisy texture. No characters, faces, written signs, card objects, UI boxes, coins, text, logos or watermark. No huge central trees or props. Full-bleed opaque landscape artwork."
+    },
+    {
+      "key": "coin-v1",
+      "name": "금화 아이콘",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset for the original Korean classroom browser card game '콩 거래 / BEAN TRADING'. The input image is a STYLE AND MATERIAL REFERENCE ONLY: match its warm hand-drawn 2D board-game illustration, varied dark ink contour, softly painted gouache grain, rich forest/teal greens, ochre gold and warm cream. Do not copy the bean character, its face, pose or costume. Original artwork, no existing game's branding. Create ONE SINGLE GOLD COIN GAME SPRITE centered in a square canvas with generous transparent margins. Almost front-on view, turned just enough to show a ridged rim at the right. Bold circular silhouette with thick ochre rim, warm buttery-gold metal, expressive hand-painted highlights and fine ink/gouache grain, restrained simple shading. Embossed in the center is a bean seed with TWO small sprout leaves: a clean readable symbol, no face. The token should visually match the coin held by the reference bean merchant but be its own standalone icon. One tiny tasteful white glint touching the upper-left rim is allowed; no scatter of particles. Coin fills 72 percent of the square. Genuine transparent alpha around coin and glint, no ground plane, drop shadow, background circle, fog or gray halo. NO letters, numerals, currency marks, faces, logo or watermark."
+    }
+  ]
+}

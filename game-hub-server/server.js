@@ -10,6 +10,7 @@ const LastCard = require("./lastcard");
 const Bomb77 = require("./bomb77");
 const Rummikub = require("./rummikub");
 const GemGuild = require("./gemguild");
+const BeanTrading = require("./beantrading");
 const CityChase = require("./citychase");
 const KingdomTrails = require("./kingdomtrails");
 const Blokus = require("./blokus");
@@ -355,6 +356,7 @@ const MAX_ROOM_PLAYERS = {
   loveletter: 4,
   rummikub: 4,
   gemguild: 4,
+  beantrading: 5,
   citychase: 6,
   kingdomtrails: 4,
   blokus: 4,
@@ -391,6 +393,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   loveletter: "/learning/games/loveletter/loveletter",
   rummikub: "/learning/games/rummikub/rummikub",
   gemguild: "/learning/games/gemguild/gemguild",
+  beantrading: "/learning/games/beantrading/beantrading",
   citychase: "/learning/games/citychase/citychase",
   kingdomtrails: "/learning/games/kingdom-trails/kingdom-trails",
   blokus: "/learning/games/blokus/blokus",
@@ -836,6 +839,22 @@ function scheduleRummikubTimeout(room) {
     rummikubBroadcast(room);
   }, wait);
   room.rummikubTimer.unref?.();
+}
+
+function beanTradingBroadcast(room) {
+  if (!room?.beantrading) return;
+  for (const [id, client] of room.clients) {
+    safeSend(client, { type: "BEANTRADING_STATE", state: BeanTrading.stateFor(room.beantrading, id) });
+  }
+  clearTimeout(room.beantradingTimer);
+  const game = room.beantrading;
+  if (game.phase !== "playing" || !game.deadline) return;
+  room.beantradingTimer = setTimeout(() => {
+    if (rooms.get(roomKey(room.gameId, room.roomCode)) !== room) return;
+    BeanTrading.autoPlay(game);
+    beanTradingBroadcast(room);
+  }, Math.max(25, game.deadline - Date.now()));
+  room.beantradingTimer.unref?.();
 }
 
 function gemGuildBroadcast(room) {
@@ -2064,6 +2083,7 @@ wss.on("connection", (socket, request) => {
         if (existingRoom.loveletter) loveLetterBroadcast(existingRoom);
         if (existingRoom.rummikub) rummikubBroadcast(existingRoom);
         if (existingRoom.gemguild) gemGuildBroadcast(existingRoom);
+        if (existingRoom.beantrading) beanTradingBroadcast(existingRoom);
         if (existingRoom.citychase) cityChaseBroadcast(existingRoom);
         if (existingRoom.kingdomtrails) kingdomTrailsBroadcast(existingRoom);
         if (existingRoom.blokus) blokusBroadcast(existingRoom);
@@ -2129,6 +2149,9 @@ wss.on("connection", (socket, request) => {
       }
       if (gameId === "gemguild") {
         room.gemguild = GemGuild.createGame(playerId, cleanToken(message.name, 12) || "방장");
+      }
+      if (gameId === "beantrading") {
+        room.beantrading = BeanTrading.createGame(playerId, cleanToken(message.name, 12) || "방장");
       }
       if (gameId === "citychase") {
         room.citychase = CityChase.createGame(playerId, cleanToken(message.name, 12) || "방장");
@@ -2220,6 +2243,7 @@ wss.on("connection", (socket, request) => {
       if (room.loveletter) loveLetterBroadcast(room);
       if (room.rummikub) rummikubBroadcast(room);
       if (room.gemguild) gemGuildBroadcast(room);
+      if (room.beantrading) beanTradingBroadcast(room);
       if (room.citychase) cityChaseBroadcast(room);
       if (room.kingdomtrails) kingdomTrailsBroadcast(room);
       if (room.blokus) blokusBroadcast(room);
@@ -2285,6 +2309,7 @@ wss.on("connection", (socket, request) => {
         if (room.loveletter) loveLetterBroadcast(room);
         if (room.rummikub) rummikubBroadcast(room);
         if (room.gemguild) gemGuildBroadcast(room);
+        if (room.beantrading) beanTradingBroadcast(room);
         if (room.citychase) cityChaseBroadcast(room);
         if (room.kingdomtrails) kingdomTrailsBroadcast(room);
         if (room.blokus) blokusBroadcast(room);
@@ -2388,6 +2413,16 @@ wss.on("connection", (socket, request) => {
           return;
         }
         GemGuild.addPlayer(room.gemguild, playerId, cleanToken(message.name, 12) || `플레이어 ${room.gemguild.players.length + 1}`);
+      }
+      if (room.beantrading) {
+        if (room.beantrading.phase !== "lobby") {
+          room.clients.delete(playerId);
+          socket.meta.roomKey = null;
+          socket.meta.role = null;
+          safeSend(socket, { type: "ERROR", message: "이미 시작한 게임입니다." });
+          return;
+        }
+        BeanTrading.addPlayer(room.beantrading, playerId, cleanToken(message.name, 12) || `플레이어 ${room.beantrading.players.length + 1}`);
       }
       if (room.citychase) {
         if (room.citychase.phase !== "lobby") {
@@ -2690,6 +2725,7 @@ wss.on("connection", (socket, request) => {
       if (room.loveletter) loveLetterBroadcast(room);
       if (room.rummikub) rummikubBroadcast(room);
       if (room.gemguild) gemGuildBroadcast(room);
+      if (room.beantrading) beanTradingBroadcast(room);
       if (room.citychase) cityChaseBroadcast(room);
       if (room.kingdomtrails) kingdomTrailsBroadcast(room);
       if (room.blokus) blokusBroadcast(room);
@@ -3926,6 +3962,19 @@ wss.on("connection", (socket, request) => {
       return;
     }
 
+    if (type === "BEANTRADING_ACTION") {
+      const room = socket.meta.roomKey ? rooms.get(socket.meta.roomKey) : null;
+      if (!room?.beantrading) {
+        safeSend(socket, { type: "BEANTRADING_ERROR", message: "콩 거래 방에 참가하지 않았습니다." });
+        return;
+      }
+      const revision = room.beantrading.revision;
+      const result = BeanTrading.act(room.beantrading, playerId, cleanToken(message.action, 30), message);
+      if (!result.ok) safeSend(socket, { type: "BEANTRADING_ERROR", message: result.error });
+      if (result.ok || room.beantrading.revision !== revision) beanTradingBroadcast(room);
+      return;
+    }
+
     if (type === "GEMGUILD_ACTION") {
       const room = socket.meta.roomKey ? rooms.get(socket.meta.roomKey) : null;
       const game = room?.gemguild;
@@ -4318,6 +4367,7 @@ wss.on("connection", (socket, request) => {
         clearTimeout(currentRoom.loveletterTimer);
         clearTimeout(currentRoom.rummikubTimer);
         clearTimeout(currentRoom.gemguildTimer);
+        clearTimeout(currentRoom.beantradingTimer);
         clearTimeout(currentRoom.kingdomtrailsTimer);
         clearTimeout(currentRoom.lastcardTimer);
         clearTimeout(currentRoom.bomb77Timer);
@@ -4381,6 +4431,13 @@ wss.on("connection", (socket, request) => {
         GemGuild.removePlayer(currentRoom.gemguild, playerId);
         if (gameWasActive) {
           GemGuild.resetToLobby(currentRoom.gemguild, "플레이어가 나가 게임을 중단하고 대기실로 돌아왔습니다.");
+        }
+      }
+      if (currentRoom.beantrading) {
+        const gameWasActive = currentRoom.beantrading.phase !== "lobby";
+        BeanTrading.removePlayer(currentRoom.beantrading, playerId);
+        if (gameWasActive) {
+          BeanTrading.resetToLobby(currentRoom.beantrading, "플레이어가 나가 게임을 중단하고 대기실로 돌아왔습니다.");
         }
       }
       if (currentRoom.citychase) {
@@ -4547,6 +4604,7 @@ wss.on("connection", (socket, request) => {
       if (currentRoom.loveletter) loveLetterBroadcast(currentRoom);
       if (currentRoom.rummikub) rummikubBroadcast(currentRoom);
       if (currentRoom.gemguild) gemGuildBroadcast(currentRoom);
+      if (currentRoom.beantrading) beanTradingBroadcast(currentRoom);
       if (currentRoom.citychase) cityChaseBroadcast(currentRoom);
       if (currentRoom.kingdomtrails) kingdomTrailsBroadcast(currentRoom);
       if (currentRoom.blokus) blokusBroadcast(currentRoom);
