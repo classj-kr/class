@@ -9566,6 +9566,1930 @@
      "en": "An undergraduate course."
     }
    ]
+  },
+  "1197": {
+   "word": "genuine",
+   "overview": [
+    "genuine은 '진짜의, 진품의'라는 뜻의 형용사입니다.",
+    "genuine leather(진짜 가죽)처럼 씁니다.",
+    "'진심에서 우러나온, 꾸밈없는'이라는 뜻으로도 아주 자주 씁니다.",
+    "a genuine smile(진심 어린 미소)처럼 사람의 감정에도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "real",
+     "en": "Real gold.",
+     "ko": "진짜 금."
+    },
+    {
+     "word": "sincere",
+     "en": "A sincere apology.",
+     "ko": "진심 어린 사과."
+    }
+   ],
+   "etymology": [
+    "genuine은 라틴어 genuinus(타고난, 본래의)에서 온 단어입니다.",
+    "gignere(낳다)와 관련된 말로, gene(유전자), generate(만들어 내다)와 같은 가족입니다.",
+    "'태어날 때부터 본래 그대로인, 섞이지 않은'이라는 뜻에서 시작되었습니다.",
+    "가짜가 아닌 진품, 꾸밈이 아닌 진심이라는 뜻으로 넓어졌습니다.",
+    "genuine의 핵심 이미지는 '꾸밈도 흉내도 없는 본래 그대로의 진짜 💎'입니다."
+   ],
+   "meanings": [
+    "모조가 아닌 진짜의",
+    "마음에서 우러나오는, 꾸밈이 없는, 진정한"
+   ],
+   "examples": [
+    {
+     "en": "This bag is made of genuine leather.",
+     "ko": "이 가방은 진짜 가죽으로 만들어졌어요."
+    },
+    {
+     "en": "She showed genuine concern for her classmates.",
+     "ko": "그녀는 자신의 반 친구들을 진심으로 걱정했어요."
+    },
+    {
+     "en": "Experts confirmed that the painting was genuine.",
+     "ko": "전문가들은 그 그림이 진품임을 확인했어요."
+    },
+    {
+     "en": "His apology seemed genuine.",
+     "ko": "그의 사과는 진심인 것 같았어요."
+    },
+    {
+     "en": "They have a genuine interest in science.",
+     "ko": "그들은 과학에 진정한 관심을 가지고 있어요."
+    },
+    {
+     "en": "It was a genuine mistake, not a trick.",
+     "ko": "그건 속임수가 아니라 정말 실수였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "authentic",
+     "ko": "진품의",
+     "en": "An authentic antique."
+    },
+    {
+     "type": "반의어",
+     "word": "fake",
+     "ko": "가짜의",
+     "en": "A fake watch."
+    },
+    {
+     "type": "연관어",
+     "word": "real",
+     "ko": "진짜의",
+     "en": "A real diamond."
+    },
+    {
+     "type": "연관어",
+     "word": "sincere",
+     "ko": "진실한",
+     "en": "Sincere thanks."
+    },
+    {
+     "type": "파생어",
+     "word": "genuinely",
+     "ko": "진심으로",
+     "en": "Genuinely happy."
+    },
+    {
+     "type": "연관어",
+     "word": "honest",
+     "ko": "정직한",
+     "en": "An honest answer."
+    }
+   ]
+  },
+  "1435": {
+   "word": "institute",
+   "overview": [
+    "institute는 '연구소, 협회, 기관'이라는 뜻의 명사입니다.",
+    "a research institute(연구소)처럼 씁니다.",
+    "동사로는 '(제도를) 만들다, (규칙을) 제정하다, 도입하다'라는 뜻으로 씁니다.",
+    "명사 institution(기관, 제도)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "organization",
+     "en": "A science organization.",
+     "ko": "과학 단체."
+    },
+    {
+     "word": "establish",
+     "en": "Establish a rule.",
+     "ko": "규칙을 세우다."
+    }
+   ],
+   "etymology": [
+    "institute는 라틴어 instituere(세우다, 설립하다)에서 온 단어입니다.",
+    "in(안에)과 statuere(세우다)가 합쳐진 말로, statue(조각상), status(지위)와 같은 가족입니다.",
+    "'무언가를 단단히 세워 자리 잡게 하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "새 제도나 규칙을 세우는 것, 그리고 그렇게 세워진 연구·교육 기관을 가리킵니다.",
+    "institute의 핵심 이미지는 '제도와 기관을 단단히 세워 자리 잡게 하는 것 🏛️'입니다."
+   ],
+   "meanings": [
+    "(제도나 단체를) 만들다, 설립하다",
+    "(규칙을) 제정하다",
+    "(소송을) 제기하다",
+    "연구소, 협회"
+   ],
+   "examples": [
+    {
+     "en": "She works at a research institute for marine biology.",
+     "ko": "그녀는 해양 생물학 연구소에서 일해요."
+    },
+    {
+     "en": "The school instituted a new dress code.",
+     "ko": "그 학교는 새로운 복장 규정을 도입했어요."
+    },
+    {
+     "en": "He studied engineering at a technical institute.",
+     "ko": "그는 한 기술 연구소 겸 학교에서 공학을 공부했어요."
+    },
+    {
+     "en": "The city instituted a recycling program last year.",
+     "ko": "그 도시는 작년에 재활용 제도를 시행했어요."
+    },
+    {
+     "en": "The institute publishes a report every year.",
+     "ko": "그 연구소는 매년 보고서를 발간해요."
+    },
+    {
+     "en": "The family instituted legal action against the company.",
+     "ko": "그 가족은 그 회사를 상대로 소송을 제기했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "establish",
+     "ko": "설립하다",
+     "en": "Establish a school."
+    },
+    {
+     "type": "파생어",
+     "word": "institution",
+     "ko": "기관, 제도",
+     "en": "A financial institution."
+    },
+    {
+     "type": "연관어",
+     "word": "organization",
+     "ko": "조직",
+     "en": "A nonprofit organization."
+    },
+    {
+     "type": "연관어",
+     "word": "academy",
+     "ko": "학원, 학술원",
+     "en": "A music academy."
+    },
+    {
+     "type": "연관어",
+     "word": "research",
+     "ko": "연구",
+     "en": "Scientific research."
+    },
+    {
+     "type": "연관어",
+     "word": "introduce",
+     "ko": "도입하다",
+     "en": "Introduce a policy."
+    }
+   ]
+  },
+  "551": {
+   "word": "compete",
+   "overview": [
+    "compete는 '경쟁하다, (시합에) 참가하다'라는 뜻의 동사입니다.",
+    "compete with/against someone for something처럼 씁니다.",
+    "여럿이 같은 목표를 두고 이기려고 겨루는 것을 뜻합니다.",
+    "명사 competition(경쟁, 대회), 형용사 competitive(경쟁적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "contend",
+     "en": "Contend for a prize.",
+     "ko": "상을 두고 겨루다."
+    },
+    {
+     "word": "take part",
+     "en": "Take part in a race.",
+     "ko": "경주에 참가하다."
+    }
+   ],
+   "etymology": [
+    "compete는 라틴어 competere(함께 추구하다)에서 온 단어입니다.",
+    "com(함께)과 petere(구하다, 향해 가다)가 합쳐진 말입니다.",
+    "원래는 '여럿이 같은 것을 함께 추구하다'라는 뜻이었습니다.",
+    "같은 목표를 향해 함께 달리다 보니 '서로 겨루다'라는 뜻으로 굳어졌습니다.",
+    "compete의 핵심 이미지는 '같은 목표를 향해 나란히 달리며 겨루는 것 🏃'입니다."
+   ],
+   "meanings": [
+    "(with/against somebody) (for something) 경쟁하다"
+   ],
+   "examples": [
+    {
+     "en": "Twenty teams will compete in the tournament.",
+     "ko": "스무 팀이 그 대회에서 경쟁할 거예요."
+    },
+    {
+     "en": "Small shops find it hard to compete with big stores.",
+     "ko": "작은 가게들은 큰 상점들과 경쟁하기 어렵다고 느껴요."
+    },
+    {
+     "en": "The two students competed for first place.",
+     "ko": "그 두 학생은 1등을 두고 겨뤘어요."
+    },
+    {
+     "en": "She will compete in the Olympics next year.",
+     "ko": "그녀는 내년에 올림픽에 출전할 거예요."
+    },
+    {
+     "en": "Plants compete for sunlight and water.",
+     "ko": "식물들은 햇빛과 물을 두고 경쟁해요."
+    },
+    {
+     "en": "He doesn't like to compete against his friends.",
+     "ko": "그는 자기 친구들과 경쟁하는 것을 좋아하지 않아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "competition",
+     "ko": "경쟁, 대회",
+     "en": "A singing competition."
+    },
+    {
+     "type": "파생어",
+     "word": "competitive",
+     "ko": "경쟁적인",
+     "en": "A competitive market."
+    },
+    {
+     "type": "파생어",
+     "word": "competitor",
+     "ko": "경쟁자",
+     "en": "A strong competitor."
+    },
+    {
+     "type": "반의어",
+     "word": "cooperate",
+     "ko": "협력하다",
+     "en": "Cooperate with others."
+    },
+    {
+     "type": "연관어",
+     "word": "rival",
+     "ko": "경쟁자",
+     "en": "An old rival."
+    },
+    {
+     "type": "연관어",
+     "word": "contest",
+     "ko": "대회",
+     "en": "A drawing contest."
+    }
+   ]
+  },
+  "2980": {
+   "word": "worship",
+   "overview": [
+    "worship은 '숭배하다, 예배하다'라는 뜻의 동사이자 '숭배, 예배'라는 뜻의 명사입니다.",
+    "worship God(신을 섬기다)처럼 씁니다.",
+    "'(사람을) 무척 존경하다, 떠받들다'라는 뜻으로도 씁니다.",
+    "a place of worship(예배 장소)라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "pray",
+     "en": "Pray at church.",
+     "ko": "교회에서 기도하다."
+    },
+    {
+     "word": "adore",
+     "en": "Adore a hero.",
+     "ko": "영웅을 무척 좋아하다."
+    }
+   ],
+   "etymology": [
+    "worship은 고대 영어 weorthscipe(가치 있음, 존경받을 만함)에서 온 단어입니다.",
+    "worth(가치)와 -ship(상태)이 합쳐진 말입니다.",
+    "'가장 큰 가치를 지닌 존재로 여겨 떠받드는 것'이라는 뜻으로 발전했습니다.",
+    "신을 섬기는 종교적 의식뿐 아니라 사람이나 대상을 지나치게 떠받드는 데도 씁니다.",
+    "worship의 핵심 이미지는 '가장 귀한 존재로 여겨 우러러 섬기는 마음 🙏'입니다."
+   ],
+   "meanings": [
+    "받들다, 예배하다, 숭배하다"
+   ],
+   "examples": [
+    {
+     "en": "People gather at the temple to worship.",
+     "ko": "사람들은 예배하려고 그 사원에 모여요."
+    },
+    {
+     "en": "The ancient Egyptians worshipped many gods.",
+     "ko": "고대 이집트인들은 많은 신을 숭배했어요."
+    },
+    {
+     "en": "The church holds worship every Sunday morning.",
+     "ko": "그 교회는 매주 일요일 아침에 예배를 드려요."
+    },
+    {
+     "en": "He worships his older brother.",
+     "ko": "그는 자신의 형을 무척 우러러봐요."
+    },
+    {
+     "en": "Freedom of worship is protected by law.",
+     "ko": "종교의 자유는 법으로 보호돼요."
+    },
+    {
+     "en": "The old tree was once worshipped by villagers.",
+     "ko": "그 오래된 나무는 한때 마을 사람들에게 숭배받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "adore",
+     "ko": "흠모하다",
+     "en": "Adore her smile."
+    },
+    {
+     "type": "연관어",
+     "word": "pray",
+     "ko": "기도하다",
+     "en": "Pray quietly."
+    },
+    {
+     "type": "연관어",
+     "word": "religion",
+     "ko": "종교",
+     "en": "World religions."
+    },
+    {
+     "type": "연관어",
+     "word": "temple",
+     "ko": "사원",
+     "en": "An old temple."
+    },
+    {
+     "type": "연관어",
+     "word": "sacred",
+     "ko": "신성한",
+     "en": "A sacred place."
+    },
+    {
+     "type": "연관어",
+     "word": "idol",
+     "ko": "우상",
+     "en": "A pop idol."
+    }
+   ]
+  },
+  "756": {
+   "word": "democracy",
+   "overview": [
+    "democracy는 '민주주의, 민주 국가'라는 뜻의 명사입니다.",
+    "live in a democracy(민주 국가에 살다)처럼 씁니다.",
+    "국민이 투표로 대표를 뽑고 나라의 주인이 되는 정치 제도를 뜻합니다.",
+    "형용사 democratic(민주적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "people's rule",
+     "en": "Rule by the people.",
+     "ko": "국민에 의한 통치."
+    },
+    {
+     "word": "free elections",
+     "en": "Hold free elections.",
+     "ko": "자유 선거를 치르다."
+    }
+   ],
+   "etymology": [
+    "democracy는 그리스어 demokratia에서 온 단어입니다.",
+    "demos(민중, 국민)와 kratos(힘, 통치)가 합쳐진 말입니다.",
+    "'국민이 힘을 가지고 나라를 다스리는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "고대 아테네에서 시민들이 직접 모여 결정하던 제도에서 시작되었습니다.",
+    "democracy의 핵심 이미지는 '국민 한 사람 한 사람이 나라의 주인이 되는 제도 🗳️'입니다."
+   ],
+   "meanings": [
+    "민주주의"
+   ],
+   "examples": [
+    {
+     "en": "Voting is an important part of democracy.",
+     "ko": "투표는 민주주의의 중요한 부분이에요."
+    },
+    {
+     "en": "The country became a democracy in the 1980s.",
+     "ko": "그 나라는 1980년대에 민주 국가가 되었어요."
+    },
+    {
+     "en": "Free speech is essential in a democracy.",
+     "ko": "민주 국가에서 표현의 자유는 꼭 필요해요."
+    },
+    {
+     "en": "Ancient Athens is famous for its early democracy.",
+     "ko": "고대 아테네는 초기 민주주의로 유명해요."
+    },
+    {
+     "en": "The students learned how democracy works.",
+     "ko": "학생들은 민주주의가 어떻게 작동하는지 배웠어요."
+    },
+    {
+     "en": "People marched in the streets for democracy.",
+     "ko": "사람들은 민주주의를 위해 거리를 행진했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "democratic",
+     "ko": "민주적인",
+     "en": "A democratic process."
+    },
+    {
+     "type": "반의어",
+     "word": "dictatorship",
+     "ko": "독재",
+     "en": "A military dictatorship."
+    },
+    {
+     "type": "연관어",
+     "word": "election",
+     "ko": "선거",
+     "en": "A fair election."
+    },
+    {
+     "type": "연관어",
+     "word": "vote",
+     "ko": "투표",
+     "en": "The right to vote."
+    },
+    {
+     "type": "연관어",
+     "word": "freedom",
+     "ko": "자유",
+     "en": "Freedom of speech."
+    },
+    {
+     "type": "연관어",
+     "word": "republic",
+     "ko": "공화국",
+     "en": "A democratic republic."
+    }
+   ]
+  },
+  "1747": {
+   "word": "myth",
+   "overview": [
+    "myth는 '신화, 전설'이라는 뜻의 명사입니다.",
+    "Greek myths(그리스 신화)처럼 씁니다.",
+    "'잘못된 통념, 근거 없는 믿음'이라는 뜻으로도 아주 자주 씁니다.",
+    "형용사 mythical(신화의, 가공의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "legend",
+     "en": "An old legend.",
+     "ko": "오래된 전설."
+    },
+    {
+     "word": "false belief",
+     "en": "A common false belief.",
+     "ko": "흔한 잘못된 믿음."
+    }
+   ],
+   "etymology": [
+    "myth는 그리스어 mythos(말, 이야기)에서 온 단어입니다.",
+    "원래는 그냥 '입으로 전해지는 이야기'라는 뜻이었습니다.",
+    "신과 영웅, 세상의 시작을 설명하는 옛이야기를 가리키게 되었습니다.",
+    "사실이 아닌데도 널리 믿어지는 생각을 가리키는 뜻으로도 넓어졌습니다.",
+    "myth의 핵심 이미지는 '오래 전해 내려온, 사실처럼 믿어지는 이야기 📖'입니다."
+   ],
+   "meanings": [
+    "전설, 설화, 신화",
+    "잘못된 통념, (흔한) 오해"
+   ],
+   "examples": [
+    {
+     "en": "We read Greek myths about Zeus and Athena.",
+     "ko": "우리는 제우스와 아테나에 관한 그리스 신화를 읽었어요."
+    },
+    {
+     "en": "It's a myth that goldfish have a three-second memory.",
+     "ko": "금붕어의 기억력이 3초라는 건 잘못된 통념이에요."
+    },
+    {
+     "en": "Every culture has myths about how the world began.",
+     "ko": "모든 문화에는 세상이 어떻게 시작되었는지에 관한 신화가 있어요."
+    },
+    {
+     "en": "The scientist wanted to break common myths about health.",
+     "ko": "그 과학자는 건강에 관한 흔한 오해들을 깨고 싶어 했어요."
+    },
+    {
+     "en": "The dragon appears in many ancient myths.",
+     "ko": "용은 많은 고대 신화에 등장해요."
+    },
+    {
+     "en": "Is it a myth or a fact?",
+     "ko": "그건 잘못된 속설인가요, 사실인가요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "legend",
+     "ko": "전설",
+     "en": "A local legend."
+    },
+    {
+     "type": "반의어",
+     "word": "fact",
+     "ko": "사실",
+     "en": "A proven fact."
+    },
+    {
+     "type": "파생어",
+     "word": "mythology",
+     "ko": "신화학, 신화",
+     "en": "Norse mythology."
+    },
+    {
+     "type": "파생어",
+     "word": "mythical",
+     "ko": "신화 속의",
+     "en": "A mythical creature."
+    },
+    {
+     "type": "연관어",
+     "word": "folklore",
+     "ko": "민간 설화",
+     "en": "Korean folklore."
+    },
+    {
+     "type": "연관어",
+     "word": "misconception",
+     "ko": "오해",
+     "en": "A common misconception."
+    }
+   ]
+  },
+  "2259": {
+   "word": "rod",
+   "overview": [
+    "rod는 '막대, 장대'라는 뜻의 명사입니다.",
+    "a fishing rod(낚싯대)처럼 씁니다.",
+    "a lightning rod(피뢰침)처럼 특정한 용도의 막대를 가리키기도 합니다.",
+    "옛날에는 '회초리, 매'라는 뜻으로도 썼습니다."
+   ],
+   "easy": [
+    {
+     "word": "stick",
+     "en": "A long stick.",
+     "ko": "긴 막대기."
+    },
+    {
+     "word": "pole",
+     "en": "A metal pole.",
+     "ko": "금속 기둥."
+    }
+   ],
+   "etymology": [
+    "rod는 고대 영어 rodd(막대, 회초리)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 단어로, 가늘고 곧은 나뭇가지를 뜻했습니다.",
+    "'가늘고 곧게 뻗은 막대'라는 뜻이 그대로 이어져 왔습니다.",
+    "낚싯대, 커튼 봉, 피뢰침처럼 길고 곧은 막대 모양의 도구에 두루 씁니다.",
+    "rod의 핵심 이미지는 '가늘고 곧게 뻗은 막대 🎣'입니다."
+   ],
+   "meanings": [
+    "막대, 장대",
+    "피뢰침을 설치하다"
+   ],
+   "examples": [
+    {
+     "en": "He bought a new fishing rod for the trip.",
+     "ko": "그는 그 여행을 위해 새 낚싯대를 샀어요."
+    },
+    {
+     "en": "A lightning rod protects the building from lightning.",
+     "ko": "피뢰침은 그 건물을 번개로부터 보호해요."
+    },
+    {
+     "en": "Hang the curtains on the metal rod.",
+     "ko": "그 커튼을 금속 봉에 거세요."
+    },
+    {
+     "en": "The bridge is supported by steel rods.",
+     "ko": "그 다리는 강철 막대들로 지탱되고 있어요."
+    },
+    {
+     "en": "She measured the length with a wooden rod.",
+     "ko": "그녀는 나무 막대로 그 길이를 쟀어요."
+    },
+    {
+     "en": "The old saying warns against sparing the rod.",
+     "ko": "그 옛 속담은 매를 아끼지 말라고 경고해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "stick",
+     "ko": "막대기",
+     "en": "A walking stick."
+    },
+    {
+     "type": "연관어",
+     "word": "pole",
+     "ko": "장대",
+     "en": "A flag pole."
+    },
+    {
+     "type": "연관어",
+     "word": "bar",
+     "ko": "막대",
+     "en": "An iron bar."
+    },
+    {
+     "type": "연관어",
+     "word": "fishing",
+     "ko": "낚시",
+     "en": "Go fishing."
+    },
+    {
+     "type": "연관어",
+     "word": "lightning",
+     "ko": "번개",
+     "en": "A flash of lightning."
+    },
+    {
+     "type": "연관어",
+     "word": "staff",
+     "ko": "지팡이",
+     "en": "A wizard's staff."
+    }
+   ]
+  },
+  "1869": {
+   "word": "overcome",
+   "overview": [
+    "overcome은 '극복하다, 이겨내다'라는 뜻의 동사입니다.",
+    "overcome difficulties(어려움을 극복하다)처럼 씁니다.",
+    "수동태로 쓰이면 '(감정에) 압도되다'라는 뜻이 됩니다. (be overcome with joy)",
+    "과거형은 overcame, 과거분사는 overcome입니다."
+   ],
+   "easy": [
+    {
+     "word": "get over",
+     "en": "Get over a cold.",
+     "ko": "감기를 이겨내다."
+    },
+    {
+     "word": "beat",
+     "en": "Beat your fear.",
+     "ko": "두려움을 이기다."
+    }
+   ],
+   "etymology": [
+    "overcome은 over(위로, 넘어)와 come(오다)이 합쳐진 단어입니다.",
+    "고대 영어 ofercuman(이기다, 정복하다)에서 온 말입니다.",
+    "'장애물 위로 넘어와 그것을 이기다'라는 뜻이 그대로 이어져 왔습니다.",
+    "어려움을 이겨 내는 것, 감정이 사람을 덮쳐 압도하는 것 모두에 씁니다.",
+    "overcome의 핵심 이미지는 '앞을 막는 벽을 넘어 이겨 내는 것 🧗'입니다."
+   ],
+   "meanings": [
+    "극복하다"
+   ],
+   "examples": [
+    {
+     "en": "She overcame her fear of speaking in public.",
+     "ko": "그녀는 사람들 앞에서 말하는 두려움을 극복했어요."
+    },
+    {
+     "en": "The team overcame many challenges to win.",
+     "ko": "그 팀은 이기기 위해 많은 난관을 극복했어요."
+    },
+    {
+     "en": "He was overcome with emotion at the ceremony.",
+     "ko": "그는 그 식에서 감정에 북받쳤어요."
+    },
+    {
+     "en": "With practice, you can overcome your weaknesses.",
+     "ko": "연습하면 당신은 약점을 극복할 수 있어요."
+    },
+    {
+     "en": "They worked together to overcome the problem.",
+     "ko": "그들은 그 문제를 극복하려고 함께 노력했어요."
+    },
+    {
+     "en": "The firefighters were almost overcome by smoke.",
+     "ko": "그 소방관들은 연기에 거의 쓰러질 뻔했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "conquer",
+     "ko": "정복하다",
+     "en": "Conquer your fears."
+    },
+    {
+     "type": "연관어",
+     "word": "get over",
+     "ko": "이겨내다",
+     "en": "Get over a loss."
+    },
+    {
+     "type": "연관어",
+     "word": "defeat",
+     "ko": "물리치다",
+     "en": "Defeat the enemy."
+    },
+    {
+     "type": "연관어",
+     "word": "obstacle",
+     "ko": "장애물",
+     "en": "A big obstacle."
+    },
+    {
+     "type": "연관어",
+     "word": "challenge",
+     "ko": "도전, 난관",
+     "en": "Face a challenge."
+    },
+    {
+     "type": "연관어",
+     "word": "survive",
+     "ko": "살아남다",
+     "en": "Survive the storm."
+    }
+   ]
+  },
+  "2136": {
+   "word": "rank",
+   "overview": [
+    "rank는 '계급, 지위, 순위'라는 뜻의 명사입니다.",
+    "the rank of captain(대위 계급)처럼 씁니다.",
+    "동사로는 '순위를 매기다, (어떤) 순위에 들다'라는 뜻으로 씁니다.",
+    "'줄, 열'이라는 뜻으로도 씁니다. (a taxi rank, 택시 승차장)"
+   ],
+   "easy": [
+    {
+     "word": "level",
+     "en": "A higher level.",
+     "ko": "더 높은 단계."
+    },
+    {
+     "word": "position",
+     "en": "A top position.",
+     "ko": "최상위 자리."
+    }
+   ],
+   "etymology": [
+    "rank는 옛 프랑스어 ranc(줄, 열)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 것으로, 원래는 병사들이 늘어선 '줄'을 뜻했습니다.",
+    "줄에 서는 위치가 지위를 보여 주면서 '계급, 등급'이라는 뜻이 생겼습니다.",
+    "지금은 순위를 매기는 것, 사회적 지위, 군대 계급까지 폭넓게 씁니다.",
+    "rank의 핵심 이미지는 '높낮이 순서대로 늘어선 줄과 자리 🎖️'입니다."
+   ],
+   "meanings": [
+    "순위, 계급, 계층, 등급, (사회적) 지위, 신분",
+    "고위, 고관",
+    "열, 줄, 정렬"
+   ],
+   "examples": [
+    {
+     "en": "He rose to the rank of general.",
+     "ko": "그는 장군 계급까지 올랐어요."
+    },
+    {
+     "en": "The university ranks among the best in the world.",
+     "ko": "그 대학은 세계 최고 대학들 가운데 순위에 들어요."
+    },
+    {
+     "en": "Students were ranked by their test scores.",
+     "ko": "학생들은 시험 점수로 순위가 매겨졌어요."
+    },
+    {
+     "en": "She joined the ranks of famous writers.",
+     "ko": "그녀는 유명 작가들의 대열에 합류했어요."
+    },
+    {
+     "en": "Soldiers stood in neat ranks.",
+     "ko": "병사들은 가지런히 줄지어 섰어요."
+    },
+    {
+     "en": "Our team is ranked third in the league.",
+     "ko": "우리 팀은 리그에서 3위에 올라 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "grade",
+     "ko": "등급",
+     "en": "A high grade."
+    },
+    {
+     "type": "연관어",
+     "word": "position",
+     "ko": "지위",
+     "en": "A senior position."
+    },
+    {
+     "type": "연관어",
+     "word": "status",
+     "ko": "신분",
+     "en": "Social status."
+    },
+    {
+     "type": "연관어",
+     "word": "ranking",
+     "ko": "순위",
+     "en": "World rankings."
+    },
+    {
+     "type": "연관어",
+     "word": "level",
+     "ko": "수준",
+     "en": "An advanced level."
+    },
+    {
+     "type": "연관어",
+     "word": "row",
+     "ko": "줄",
+     "en": "The front row."
+    }
+   ]
+  },
+  "2560": {
+   "word": "strict",
+   "overview": [
+    "strict는 '엄격한'이라는 뜻의 형용사입니다.",
+    "a strict teacher(엄격한 선생님)처럼 씁니다.",
+    "'엄밀한, 정확한'이라는 뜻으로도 씁니다. (in the strict sense, 엄밀한 의미에서)",
+    "부사 strictly(엄격하게, 엄밀히)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "firm",
+     "en": "Firm rules.",
+     "ko": "확고한 규칙."
+    },
+    {
+     "word": "exact",
+     "en": "The exact meaning.",
+     "ko": "정확한 뜻."
+    }
+   ],
+   "etymology": [
+    "strict는 라틴어 strictus(꽉 조인, 팽팽한)에서 온 단어입니다.",
+    "stringere(꽉 묶다)에서 나온 말로, restrict(제한하다)와 같은 가족입니다.",
+    "'느슨함 없이 꽉 조여 있는'이라는 뜻에서 시작되었습니다.",
+    "규칙을 조금도 느슨하게 두지 않는 태도, 정확하고 엄밀한 뜻으로 넓어졌습니다.",
+    "strict의 핵심 이미지는 '느슨함 없이 팽팽하게 조인 규칙 📏'입니다."
+   ],
+   "meanings": [
+    "엄격한",
+    "엄밀한"
+   ],
+   "examples": [
+    {
+     "en": "My parents are strict about bedtime.",
+     "ko": "제 부모님은 잠자는 시간에 대해 엄격하세요."
+    },
+    {
+     "en": "The school has strict rules about phones.",
+     "ko": "그 학교는 휴대폰에 관해 엄격한 규칙이 있어요."
+    },
+    {
+     "en": "She follows a strict diet before competitions.",
+     "ko": "그녀는 대회 전에 엄격한 식단을 지켜요."
+    },
+    {
+     "en": "The coach was strict but fair.",
+     "ko": "그 코치는 엄격했지만 공정했어요."
+    },
+    {
+     "en": "In the strict sense, a tomato is a fruit.",
+     "ko": "엄밀한 의미에서 토마토는 과일이에요."
+    },
+    {
+     "en": "Entry is strictly limited to members.",
+     "ko": "입장은 회원으로 엄격히 제한돼요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "firm",
+     "ko": "단호한",
+     "en": "A firm decision."
+    },
+    {
+     "type": "반의어",
+     "word": "lenient",
+     "ko": "관대한",
+     "en": "A lenient judge."
+    },
+    {
+     "type": "파생어",
+     "word": "strictly",
+     "ko": "엄격하게",
+     "en": "Strictly forbidden."
+    },
+    {
+     "type": "연관어",
+     "word": "severe",
+     "ko": "가혹한",
+     "en": "A severe punishment."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Break a rule."
+    },
+    {
+     "type": "연관어",
+     "word": "discipline",
+     "ko": "규율",
+     "en": "Strong discipline."
+    }
+   ]
+  },
+  "1132": {
+   "word": "formula",
+   "overview": [
+    "formula는 '(수학, 화학의) 공식, 식'이라는 뜻의 명사입니다.",
+    "a math formula(수학 공식)처럼 씁니다.",
+    "'(일반적인) 방식, 비법'이라는 뜻으로도 씁니다. (a formula for success, 성공 비결)",
+    "'분유'라는 뜻으로도 씁니다. 복수형은 formulas 또는 formulae입니다."
+   ],
+   "easy": [
+    {
+     "word": "equation",
+     "en": "Solve an equation.",
+     "ko": "방정식을 풀다."
+    },
+    {
+     "word": "method",
+     "en": "A simple method.",
+     "ko": "간단한 방법."
+    }
+   ],
+   "etymology": [
+    "formula는 라틴어 formula(작은 틀, 규칙)에서 온 단어입니다.",
+    "forma(모양, 틀)에 '작은'을 뜻하는 -ula가 붙은 말로, form(형태)과 같은 가족입니다.",
+    "'정해진 작은 틀, 따라야 할 규칙'이라는 뜻에서 시작되었습니다.",
+    "수학·화학의 공식, 일을 해내는 정해진 방식, 정해진 성분의 분유까지 뜻이 넓어졌습니다.",
+    "formula의 핵심 이미지는 '넣으면 늘 같은 답이 나오는 정해진 틀 🧮'입니다."
+   ],
+   "meanings": [
+    "(수학, 화학) 식, 공식",
+    "(일반적) 방식, 형식"
+   ],
+   "examples": [
+    {
+     "en": "Use this formula to find the area of a circle.",
+     "ko": "원의 넓이를 구하려면 이 공식을 사용하세요."
+    },
+    {
+     "en": "The chemical formula for water is H₂O.",
+     "ko": "물의 화학식은 H₂O예요."
+    },
+    {
+     "en": "There is no simple formula for happiness.",
+     "ko": "행복에 대한 간단한 공식은 없어요."
+    },
+    {
+     "en": "The company kept its secret formula safe.",
+     "ko": "그 회사는 자신의 비밀 제조법을 안전하게 지켰어요."
+    },
+    {
+     "en": "The baby drinks formula every three hours.",
+     "ko": "그 아기는 세 시간마다 분유를 먹어요."
+    },
+    {
+     "en": "The movie follows a familiar formula.",
+     "ko": "그 영화는 익숙한 공식을 따라요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "equation",
+     "ko": "방정식",
+     "en": "A simple equation."
+    },
+    {
+     "type": "연관어",
+     "word": "method",
+     "ko": "방법",
+     "en": "A new method."
+    },
+    {
+     "type": "연관어",
+     "word": "recipe",
+     "ko": "요리법, 비결",
+     "en": "A recipe for success."
+    },
+    {
+     "type": "연관어",
+     "word": "calculate",
+     "ko": "계산하다",
+     "en": "Calculate the cost."
+    },
+    {
+     "type": "연관어",
+     "word": "chemistry",
+     "ko": "화학",
+     "en": "Study chemistry."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "A basic rule."
+    }
+   ]
+  },
+  "376": {
+   "word": "butcher",
+   "overview": [
+    "butcher는 '정육점 주인, 푸줏간'이라는 뜻의 명사입니다.",
+    "go to the butcher's(정육점에 가다)처럼 씁니다.",
+    "동사로는 '(고기용으로 동물을) 도살하다'라는 뜻으로 씁니다.",
+    "비유적으로 '(일을) 엉망으로 망쳐 놓다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "meat seller",
+     "en": "A local meat seller.",
+     "ko": "동네 고기 장수."
+    },
+    {
+     "word": "ruin",
+     "en": "Ruin the song.",
+     "ko": "노래를 망치다."
+    }
+   ],
+   "etymology": [
+    "butcher는 옛 프랑스어 bouchier(염소 고기를 파는 사람)에서 온 단어입니다.",
+    "boc(숫염소)에서 나온 말로, 원래는 염소를 잡아 고기를 파는 사람을 뜻했습니다.",
+    "나중에 모든 종류의 고기를 손질해 파는 사람을 가리키게 되었습니다.",
+    "거칠게 자르고 다루는 모습에서 '일을 엉망으로 망치다'라는 비유적 뜻이 생겼습니다.",
+    "butcher의 핵심 이미지는 '칼로 고기를 손질해 파는 정육점 🥩'입니다."
+   ],
+   "meanings": [
+    "정육점 주인, 푸줏간",
+    "망쳐 놓다"
+   ],
+   "examples": [
+    {
+     "en": "She bought some chicken at the butcher's.",
+     "ko": "그녀는 정육점에서 닭고기를 좀 샀어요."
+    },
+    {
+     "en": "The butcher cut the meat into thin slices.",
+     "ko": "그 정육점 주인은 고기를 얇게 썰었어요."
+    },
+    {
+     "en": "My grandfather worked as a butcher for thirty years.",
+     "ko": "제 할아버지는 30년 동안 정육점 일을 하셨어요."
+    },
+    {
+     "en": "The singer completely butchered the famous song.",
+     "ko": "그 가수는 그 유명한 노래를 완전히 망쳐 놓았어요."
+    },
+    {
+     "en": "The editor butchered my story by cutting half of it.",
+     "ko": "그 편집자는 절반을 잘라 내서 제 이야기를 엉망으로 만들었어요."
+    },
+    {
+     "en": "The butcher shop on the corner sells fresh sausages.",
+     "ko": "모퉁이의 정육점은 신선한 소시지를 팔아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "meat",
+     "ko": "고기",
+     "en": "Fresh meat."
+    },
+    {
+     "type": "연관어",
+     "word": "knife",
+     "ko": "칼",
+     "en": "A sharp knife."
+    },
+    {
+     "type": "연관어",
+     "word": "baker",
+     "ko": "제빵사",
+     "en": "The local baker."
+    },
+    {
+     "type": "연관어",
+     "word": "shop",
+     "ko": "가게",
+     "en": "A small shop."
+    },
+    {
+     "type": "연관어",
+     "word": "ruin",
+     "ko": "망치다",
+     "en": "Ruin a plan."
+    },
+    {
+     "type": "연관어",
+     "word": "slaughter",
+     "ko": "도살하다",
+     "en": "Slaughter cattle."
+    }
+   ]
+  },
+  "1694": {
+   "word": "ministry",
+   "overview": [
+    "ministry는 '(정부의) 부, 부처'라는 뜻의 명사입니다.",
+    "the Ministry of Education(교육부)처럼 씁니다.",
+    "종교에서는 '성직, 목회, 사역'이라는 뜻으로도 씁니다.",
+    "부처를 이끄는 장관은 minister라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "department",
+     "en": "A government department.",
+     "ko": "정부 부서."
+    },
+    {
+     "word": "church work",
+     "en": "Church work.",
+     "ko": "교회 일."
+    }
+   ],
+   "etymology": [
+    "ministry는 라틴어 ministerium(섬김, 봉사)에서 온 단어입니다.",
+    "minister(하인, 시중드는 사람)에서 나온 말로, minus(더 작은)와도 이어지는 뿌리입니다.",
+    "원래는 '다른 사람을 섬기고 돕는 일'이라는 뜻이었습니다.",
+    "나라와 국민을 섬기는 정부 부처, 신도를 섬기는 목회라는 두 뜻으로 넓어졌습니다.",
+    "ministry의 핵심 이미지는 '국민이나 신도를 섬기며 일하는 곳과 그 일 🏢'입니다."
+   ],
+   "meanings": [
+    "정부 부처",
+    "목회, 사역",
+    "성직자 집단"
+   ],
+   "examples": [
+    {
+     "en": "The Ministry of Health announced new guidelines.",
+     "ko": "보건부는 새로운 지침을 발표했어요."
+    },
+    {
+     "en": "She works for the Ministry of Foreign Affairs.",
+     "ko": "그녀는 외교부에서 일해요."
+    },
+    {
+     "en": "He entered the ministry after studying theology.",
+     "ko": "그는 신학을 공부한 뒤 성직에 들어섰어요."
+    },
+    {
+     "en": "The ministry will review the school budget.",
+     "ko": "그 부처는 학교 예산을 검토할 거예요."
+    },
+    {
+     "en": "Her ministry focuses on helping homeless people.",
+     "ko": "그녀의 사역은 노숙인을 돕는 데 초점을 맞춰요."
+    },
+    {
+     "en": "Officials from three ministries attended the meeting.",
+     "ko": "세 부처의 공무원들이 그 회의에 참석했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "department",
+     "ko": "부서",
+     "en": "The sales department."
+    },
+    {
+     "type": "연관어",
+     "word": "minister",
+     "ko": "장관, 목사",
+     "en": "The prime minister."
+    },
+    {
+     "type": "연관어",
+     "word": "government",
+     "ko": "정부",
+     "en": "The central government."
+    },
+    {
+     "type": "연관어",
+     "word": "official",
+     "ko": "공무원",
+     "en": "A government official."
+    },
+    {
+     "type": "연관어",
+     "word": "church",
+     "ko": "교회",
+     "en": "A small church."
+    },
+    {
+     "type": "연관어",
+     "word": "policy",
+     "ko": "정책",
+     "en": "A new policy."
+    }
+   ]
+  },
+  "2055": {
+   "word": "prior",
+   "overview": [
+    "prior는 '사전의, 이전의'라는 뜻의 형용사입니다.",
+    "prior experience(이전 경험)처럼 씁니다.",
+    "prior to(~보다 먼저, ~ 이전에)라는 표현으로 아주 자주 씁니다.",
+    "명사 priority(우선순위)도 같은 뿌리의 단어입니다."
+   ],
+   "easy": [
+    {
+     "word": "earlier",
+     "en": "An earlier meeting.",
+     "ko": "이전 회의."
+    },
+    {
+     "word": "before",
+     "en": "Before the class.",
+     "ko": "수업 전에."
+    }
+   ],
+   "etymology": [
+    "prior는 라틴어 prior(앞의, 먼저의)에서 온 단어입니다.",
+    "pro(앞에)와 관련된 말로, prime(첫째의), primary(주요한)와 같은 가족입니다.",
+    "'시간이나 순서에서 앞서는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "먼저 해야 할 일이라는 뜻에서 priority(우선순위)라는 단어도 생겼습니다.",
+    "prior의 핵심 이미지는 '시간 순서에서 한발 앞서 있는 것 ⏪'입니다."
+   ],
+   "meanings": [
+    "(다른 무엇·특정 시간보다) 사전의"
+   ],
+   "examples": [
+    {
+     "en": "No prior experience is needed for this job.",
+     "ko": "이 일에는 사전 경험이 필요 없어요."
+    },
+    {
+     "en": "Please arrive ten minutes prior to the start.",
+     "ko": "시작 10분 전에 도착해 주세요."
+    },
+    {
+     "en": "She had a prior appointment, so she couldn't come.",
+     "ko": "그녀는 선약이 있어서 올 수 없었어요."
+    },
+    {
+     "en": "Prior to the trip, we checked the weather.",
+     "ko": "그 여행 전에 우리는 날씨를 확인했어요."
+    },
+    {
+     "en": "You need prior permission to enter the lab.",
+     "ko": "그 실험실에 들어가려면 사전 허가가 필요해요."
+    },
+    {
+     "en": "His prior knowledge helped him learn faster.",
+     "ko": "그의 사전 지식은 그가 더 빨리 배우는 데 도움이 되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "previous",
+     "ko": "이전의",
+     "en": "The previous day."
+    },
+    {
+     "type": "반의어",
+     "word": "subsequent",
+     "ko": "그 후의",
+     "en": "Subsequent events."
+    },
+    {
+     "type": "파생어",
+     "word": "priority",
+     "ko": "우선순위",
+     "en": "A top priority."
+    },
+    {
+     "type": "연관어",
+     "word": "earlier",
+     "ko": "더 이른",
+     "en": "An earlier train."
+    },
+    {
+     "type": "연관어",
+     "word": "advance",
+     "ko": "사전의",
+     "en": "In advance."
+    },
+    {
+     "type": "연관어",
+     "word": "former",
+     "ko": "이전의",
+     "en": "A former teacher."
+    }
+   ]
+  },
+  "1907": {
+   "word": "passage",
+   "overview": [
+    "passage는 '통로, 복도'라는 뜻의 명사입니다.",
+    "a narrow passage(좁은 통로)처럼 씁니다.",
+    "글의 '한 구절, 단락'이라는 뜻으로도 아주 자주 씁니다. (read the passage, 지문을 읽다)",
+    "'통과, 지나감, (시간의) 경과'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hallway",
+     "en": "A long hallway.",
+     "ko": "긴 복도."
+    },
+    {
+     "word": "excerpt",
+     "en": "A short excerpt.",
+     "ko": "짧은 발췌문."
+    }
+   ],
+   "etymology": [
+    "passage는 옛 프랑스어 passage(지나감, 통로)에서 온 단어입니다.",
+    "passer(지나가다)에서 나온 말로, pass(지나가다), passenger(승객)와 같은 가족입니다.",
+    "'지나가는 행위, 그리고 지나가는 길'이라는 뜻이 그대로 이어져 왔습니다.",
+    "글을 읽으며 지나가는 한 부분이라는 뜻에서 '구절, 지문'이라는 뜻도 생겼습니다.",
+    "passage의 핵심 이미지는 '사람이나 시간, 글이 지나가는 길 🚪'입니다."
+   ],
+   "meanings": [
+    "통로, 복도",
+    "(글의) 구절, 단락",
+    "통과, (시간의) 경과"
+   ],
+   "examples": [
+    {
+     "en": "Read the passage and answer the questions.",
+     "ko": "그 지문을 읽고 질문에 답하세요."
+    },
+    {
+     "en": "A dark passage led to the old library.",
+     "ko": "어두운 통로가 그 오래된 도서관으로 이어졌어요."
+    },
+    {
+     "en": "She quoted a passage from her favorite novel.",
+     "ko": "그녀는 자신이 가장 좋아하는 소설의 한 구절을 인용했어요."
+    },
+    {
+     "en": "The passage of time healed his sadness.",
+     "ko": "시간이 흐르면서 그의 슬픔이 치유되었어요."
+    },
+    {
+     "en": "The ship made a safe passage across the ocean.",
+     "ko": "그 배는 대양을 안전하게 건넜어요."
+    },
+    {
+     "en": "The new law needs passage by Congress.",
+     "ko": "그 새 법은 의회의 통과가 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "corridor",
+     "ko": "복도",
+     "en": "A long corridor."
+    },
+    {
+     "type": "연관어",
+     "word": "hallway",
+     "ko": "복도",
+     "en": "Walk down the hallway."
+    },
+    {
+     "type": "연관어",
+     "word": "paragraph",
+     "ko": "단락",
+     "en": "The first paragraph."
+    },
+    {
+     "type": "연관어",
+     "word": "excerpt",
+     "ko": "발췌",
+     "en": "An excerpt from a book."
+    },
+    {
+     "type": "연관어",
+     "word": "tunnel",
+     "ko": "터널",
+     "en": "A dark tunnel."
+    },
+    {
+     "type": "연관어",
+     "word": "journey",
+     "ko": "여정",
+     "en": "A long journey."
+    }
+   ]
+  },
+  "1854": {
+   "word": "organ",
+   "overview": [
+    "organ은 몸의 '기관, 장기'라는 뜻의 명사입니다.",
+    "internal organs(내장 기관)처럼 씁니다.",
+    "악기 '오르간, 풍금'이라는 뜻으로도 씁니다.",
+    "'(조직의) 기관'이라는 뜻으로도 씁니다. 형용사 organic(유기농의, 유기체의)도 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "body part",
+     "en": "An important body part.",
+     "ko": "중요한 신체 부위."
+    },
+    {
+     "word": "pipe instrument",
+     "en": "A church pipe instrument.",
+     "ko": "교회의 파이프 악기."
+    }
+   ],
+   "etymology": [
+    "organ은 그리스어 organon(도구, 악기)에서 온 단어입니다.",
+    "ergon(일)과 관련된 말로, work(일)와도 먼 뿌리가 이어집니다.",
+    "원래는 '일을 하는 도구'라는 뜻이었습니다.",
+    "몸 안에서 저마다 일을 맡은 부분(장기), 소리를 내는 도구(오르간)로 뜻이 나뉘었습니다.",
+    "organ의 핵심 이미지는 '저마다 맡은 일을 해내는 도구와 기관 🫀'입니다."
+   ],
+   "meanings": [
+    "(악기) 오르간, 풍금",
+    "(생물) 기관"
+   ],
+   "examples": [
+    {
+     "en": "The heart is one of the most important organs.",
+     "ko": "심장은 가장 중요한 장기 중 하나예요."
+    },
+    {
+     "en": "She plays the organ at church every Sunday.",
+     "ko": "그녀는 매주 일요일 교회에서 오르간을 연주해요."
+    },
+    {
+     "en": "The skin is the largest organ of the body.",
+     "ko": "피부는 몸에서 가장 큰 기관이에요."
+    },
+    {
+     "en": "He decided to become an organ donor.",
+     "ko": "그는 장기 기증자가 되기로 결심했어요."
+    },
+    {
+     "en": "The sound of the organ filled the cathedral.",
+     "ko": "오르간 소리가 그 대성당을 가득 채웠어요."
+    },
+    {
+     "en": "Eyes are the organs of sight.",
+     "ko": "눈은 시각 기관이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "heart",
+     "ko": "심장",
+     "en": "A healthy heart."
+    },
+    {
+     "type": "연관어",
+     "word": "lung",
+     "ko": "폐",
+     "en": "Strong lungs."
+    },
+    {
+     "type": "연관어",
+     "word": "body",
+     "ko": "몸",
+     "en": "The human body."
+    },
+    {
+     "type": "연관어",
+     "word": "piano",
+     "ko": "피아노",
+     "en": "Play the piano."
+    },
+    {
+     "type": "파생어",
+     "word": "organic",
+     "ko": "유기농의",
+     "en": "Organic vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "donor",
+     "ko": "기증자",
+     "en": "A blood donor."
+    }
+   ]
+  },
+  "1609": {
+   "word": "luxury",
+   "overview": [
+    "luxury는 '사치, 호화로움'이라는 뜻의 명사입니다.",
+    "live in luxury(호화롭게 살다)처럼 씁니다.",
+    "'사치품, 고급품'이라는 뜻으로도 씁니다.",
+    "형용사처럼 a luxury hotel(고급 호텔)로도 쓰고, 형용사 luxurious(호화로운)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "comfort",
+     "en": "Great comfort.",
+     "ko": "큰 안락함."
+    },
+    {
+     "word": "expensive thing",
+     "en": "An expensive thing.",
+     "ko": "값비싼 물건."
+    }
+   ],
+   "etymology": [
+    "luxury는 라틴어 luxuria(넘쳐남, 과도함)에서 온 단어입니다.",
+    "luxus(지나침, 풍성함)에서 나온 말입니다.",
+    "원래는 '필요 이상으로 넘쳐나는 것'이라는 약간 부정적인 뜻이었습니다.",
+    "지금은 꼭 필요하지 않지만 즐거움과 편안함을 주는 고급스러운 것을 가리킵니다.",
+    "luxury의 핵심 이미지는 '필요를 넘어서 넘쳐흐르는 호화로움 ✨'입니다."
+   ],
+   "meanings": [
+    "사치품, 고급품",
+    "사치, 호화"
+   ],
+   "examples": [
+    {
+     "en": "They stayed at a luxury hotel by the sea.",
+     "ko": "그들은 바닷가의 고급 호텔에 묵었어요."
+    },
+    {
+     "en": "A long bath is my little luxury on weekends.",
+     "ko": "긴 목욕은 주말에 누리는 저의 작은 사치예요."
+    },
+    {
+     "en": "The rich family lived in great luxury.",
+     "ko": "그 부유한 가족은 아주 호화롭게 살았어요."
+    },
+    {
+     "en": "For many people, a car is a luxury, not a need.",
+     "ko": "많은 사람들에게 차는 필수품이 아니라 사치품이에요."
+    },
+    {
+     "en": "We don't have the luxury of waiting any longer.",
+     "ko": "우리는 더 이상 기다릴 여유가 없어요."
+    },
+    {
+     "en": "The store sells luxury watches and jewelry.",
+     "ko": "그 가게는 고급 시계와 보석을 팔아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "necessity",
+     "ko": "필수품",
+     "en": "A basic necessity."
+    },
+    {
+     "type": "파생어",
+     "word": "luxurious",
+     "ko": "호화로운",
+     "en": "A luxurious room."
+    },
+    {
+     "type": "연관어",
+     "word": "wealth",
+     "ko": "부",
+     "en": "Great wealth."
+    },
+    {
+     "type": "연관어",
+     "word": "comfort",
+     "ko": "안락함",
+     "en": "Home comfort."
+    },
+    {
+     "type": "연관어",
+     "word": "expensive",
+     "ko": "비싼",
+     "en": "An expensive car."
+    },
+    {
+     "type": "연관어",
+     "word": "brand",
+     "ko": "브랜드",
+     "en": "A famous brand."
+    }
+   ]
+  },
+  "352": {
+   "word": "broadcast",
+   "overview": [
+    "broadcast는 '방송하다'라는 뜻의 동사이자 '방송, 방송 프로그램'이라는 뜻의 명사입니다.",
+    "broadcast the news(뉴스를 방송하다)처럼 씁니다.",
+    "'(소문 등을) 널리 퍼뜨리다'라는 뜻으로도 씁니다.",
+    "과거형·과거분사는 보통 broadcast 그대로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "air",
+     "en": "Air a show.",
+     "ko": "프로그램을 방영하다."
+    },
+    {
+     "word": "spread",
+     "en": "Spread the news.",
+     "ko": "소식을 퍼뜨리다."
+    }
+   ],
+   "etymology": [
+    "broadcast는 broad(넓게)와 cast(던지다)가 합쳐진 단어입니다.",
+    "원래는 농부가 씨앗을 밭에 넓게 흩뿌리는 방법을 가리키는 농사 용어였습니다.",
+    "20세기 라디오가 등장하면서 '전파를 넓게 흩뿌려 보내다'라는 뜻이 되었습니다.",
+    "지금은 TV, 라디오, 인터넷 방송 모두에 씁니다.",
+    "broadcast의 핵심 이미지는 '씨앗을 뿌리듯 소식을 널리 흩뿌리는 방송 📡'입니다."
+   ],
+   "meanings": [
+    "방송하다",
+    "방송, 방송 프로그램",
+    "방송의, 전파된, 확산된"
+   ],
+   "examples": [
+    {
+     "en": "The game will be broadcast live tonight.",
+     "ko": "그 경기는 오늘 밤 생중계될 거예요."
+    },
+    {
+     "en": "We watched the news broadcast after dinner.",
+     "ko": "우리는 저녁 식사 후 뉴스 방송을 봤어요."
+    },
+    {
+     "en": "The station broadcasts music 24 hours a day.",
+     "ko": "그 방송국은 하루 24시간 음악을 방송해요."
+    },
+    {
+     "en": "Don't broadcast my secret to everyone!",
+     "ko": "내 비밀을 모두에게 떠벌리지 마!"
+    },
+    {
+     "en": "The president's speech was broadcast nationwide.",
+     "ko": "대통령의 연설이 전국에 방송되었어요."
+    },
+    {
+     "en": "She works in broadcast journalism.",
+     "ko": "그녀는 방송 저널리즘 분야에서 일해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "air",
+     "ko": "방송하다",
+     "en": "Air a program."
+    },
+    {
+     "type": "파생어",
+     "word": "broadcaster",
+     "ko": "방송인, 방송사",
+     "en": "A public broadcaster."
+    },
+    {
+     "type": "연관어",
+     "word": "channel",
+     "ko": "채널",
+     "en": "Change the channel."
+    },
+    {
+     "type": "연관어",
+     "word": "station",
+     "ko": "방송국",
+     "en": "A radio station."
+    },
+    {
+     "type": "연관어",
+     "word": "live",
+     "ko": "생방송의",
+     "en": "A live show."
+    },
+    {
+     "type": "연관어",
+     "word": "audience",
+     "ko": "시청자",
+     "en": "A large audience."
+    }
+   ]
+  },
+  "2428": {
+   "word": "slice",
+   "overview": [
+    "slice는 '얇은 조각'이라는 뜻의 명사입니다.",
+    "a slice of bread(빵 한 조각)처럼 씁니다.",
+    "동사로는 '얇게 썰다, 베다'라는 뜻으로 씁니다.",
+    "'몫, 부분'이라는 비유적인 뜻으로도 씁니다. (a slice of the profits)"
+   ],
+   "easy": [
+    {
+     "word": "piece",
+     "en": "A piece of cake.",
+     "ko": "케이크 한 조각."
+    },
+    {
+     "word": "cut",
+     "en": "Cut the apple.",
+     "ko": "사과를 자르다."
+    }
+   ],
+   "etymology": [
+    "slice는 옛 프랑스어 esclice(쪼갠 조각)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 것으로, 무언가를 쪼개거나 떼어 낸 조각을 뜻했습니다.",
+    "'얇고 넓적하게 잘라 낸 조각'이라는 뜻이 그대로 이어져 왔습니다.",
+    "전체에서 떼어 낸 한 부분이라는 뜻에서 '몫'이라는 비유적 뜻도 생겼습니다.",
+    "slice의 핵심 이미지는 '칼로 얇게 썰어 낸 한 조각 🍕'입니다."
+   ],
+   "meanings": [
+    "얇은 조각",
+    "얇게 썰다",
+    "베다"
+   ],
+   "examples": [
+    {
+     "en": "Can I have another slice of pizza?",
+     "ko": "피자 한 조각 더 먹어도 될까요?"
+    },
+    {
+     "en": "Slice the tomatoes thinly.",
+     "ko": "토마토를 얇게 써세요."
+    },
+    {
+     "en": "He put a slice of cheese on his sandwich.",
+     "ko": "그는 자신의 샌드위치에 치즈 한 장을 올렸어요."
+    },
+    {
+     "en": "She sliced her finger while cutting onions.",
+     "ko": "그녀는 양파를 썰다가 손가락을 베였어요."
+    },
+    {
+     "en": "The movie shows a slice of everyday life.",
+     "ko": "그 영화는 일상생활의 한 단면을 보여 줘요."
+    },
+    {
+     "en": "Each partner gets a slice of the profits.",
+     "ko": "각 동업자는 이익의 한 몫을 받아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "piece",
+     "ko": "조각",
+     "en": "A piece of paper."
+    },
+    {
+     "type": "연관어",
+     "word": "cut",
+     "ko": "자르다",
+     "en": "Cut the cake."
+    },
+    {
+     "type": "연관어",
+     "word": "chop",
+     "ko": "잘게 썰다",
+     "en": "Chop the carrots."
+    },
+    {
+     "type": "연관어",
+     "word": "knife",
+     "ko": "칼",
+     "en": "A bread knife."
+    },
+    {
+     "type": "연관어",
+     "word": "portion",
+     "ko": "몫, 1인분",
+     "en": "A large portion."
+    },
+    {
+     "type": "연관어",
+     "word": "thin",
+     "ko": "얇은",
+     "en": "A thin layer."
+    }
+   ]
+  },
+  "1878": {
+   "word": "pace",
+   "overview": [
+    "pace는 '속도, 페이스'라는 뜻의 명사입니다.",
+    "at a steady pace(일정한 속도로)처럼 씁니다.",
+    "'한 걸음, 보폭'이라는 뜻으로도 씁니다.",
+    "동사로는 '서성거리다, 속도를 조절하다'라는 뜻으로 씁니다. keep pace with(~에 뒤지지 않다)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "speed",
+     "en": "A slow speed.",
+     "ko": "느린 속도."
+    },
+    {
+     "word": "step",
+     "en": "One step forward.",
+     "ko": "한 걸음 앞으로."
+    }
+   ],
+   "etymology": [
+    "pace는 라틴어 passus(걸음, 보폭)에서 온 단어입니다.",
+    "pandere(펼치다)에서 나온 말로, 다리를 벌려 내딛는 한 걸음을 뜻했습니다.",
+    "'한 걸음의 길이'에서 '걷거나 움직이는 속도'라는 뜻으로 넓어졌습니다.",
+    "초조하게 왔다 갔다 걷는 것, 일의 진행 속도까지 폭넓게 씁니다.",
+    "pace의 핵심 이미지는 '한 걸음 한 걸음 이어지는 움직임의 속도 🚶'입니다."
+   ],
+   "meanings": [
+    "속도",
+    "보폭",
+    "서성거리다",
+    "속도를 조절하다"
+   ],
+   "examples": [
+    {
+     "en": "She walked at a fast pace to catch the bus.",
+     "ko": "그녀는 버스를 타려고 빠른 걸음으로 걸었어요."
+    },
+    {
+     "en": "Everyone learns at their own pace.",
+     "ko": "모든 사람은 자기만의 속도로 배워요."
+    },
+    {
+     "en": "He paced up and down the room nervously.",
+     "ko": "그는 초조하게 방 안을 왔다 갔다 했어요."
+    },
+    {
+     "en": "Runners need to pace themselves in a marathon.",
+     "ko": "주자들은 마라톤에서 속도를 조절해야 해요."
+    },
+    {
+     "en": "It's hard to keep pace with changing technology.",
+     "ko": "변화하는 기술에 뒤지지 않기는 어려워요."
+    },
+    {
+     "en": "Take two paces forward.",
+     "ko": "두 걸음 앞으로 나오세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "speed",
+     "ko": "속도",
+     "en": "Top speed."
+    },
+    {
+     "type": "연관어",
+     "word": "step",
+     "ko": "걸음",
+     "en": "A small step."
+    },
+    {
+     "type": "연관어",
+     "word": "rate",
+     "ko": "속도, 비율",
+     "en": "A steady rate."
+    },
+    {
+     "type": "연관어",
+     "word": "tempo",
+     "ko": "빠르기",
+     "en": "A slow tempo."
+    },
+    {
+     "type": "연관어",
+     "word": "stride",
+     "ko": "성큼성큼 걷기",
+     "en": "A long stride."
+    },
+    {
+     "type": "연관어",
+     "word": "wander",
+     "ko": "거닐다",
+     "en": "Wander around."
+    }
+   ]
   }
  }
 }
