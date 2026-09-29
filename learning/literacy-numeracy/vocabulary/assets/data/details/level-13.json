@@ -13476,6 +13476,1933 @@
      "en": "Go through the park."
     }
    ]
+  },
+  "1827": {
+   "word": "offend",
+   "overview": [
+    "offend는 '기분을 상하게 하다, 불쾌하게 하다'라는 뜻의 동사입니다.",
+    "I didn't mean to offend you.(기분 상하게 하려던 건 아니었어요)처럼 씁니다.",
+    "'(법·규칙을) 어기다, 죄를 짓다'라는 뜻으로도 씁니다.",
+    "명사 offense(위반, 모욕), 형용사 offensive(불쾌한, 공격적인)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "upset",
+     "en": "Upset a friend.",
+     "ko": "친구를 속상하게 하다."
+    },
+    {
+     "word": "insult",
+     "en": "Insult someone.",
+     "ko": "누군가를 모욕하다."
+    }
+   ],
+   "etymology": [
+    "offend는 라틴어 offendere(부딪치다, 거슬리다)에서 온 단어입니다.",
+    "ob(~에 맞서)와 fendere(치다)가 합쳐진 말로, defend(방어하다)와 같은 가족입니다.",
+    "'무언가에 쿵 부딪치다'라는 뜻에서 시작되었습니다.",
+    "상대의 마음에 거칠게 부딪쳐 상처를 주는 것, 규칙에 어긋나는 것을 가리키게 되었습니다.",
+    "offend의 핵심 이미지는 '말이나 행동이 상대 마음에 쿵 부딪쳐 상처를 내는 것 😣'입니다."
+   ],
+   "meanings": [
+    "남을 불쾌하게 만들다, 화를 돋우다",
+    "모욕하다",
+    "(법을) 어기다"
+   ],
+   "examples": [
+    {
+     "en": "I'm sorry if my joke offended you.",
+     "ko": "제 농담이 기분 상하게 했다면 미안해요."
+    },
+    {
+     "en": "She was offended by his rude comment.",
+     "ko": "그녀는 그의 무례한 말에 기분이 상했어요."
+    },
+    {
+     "en": "Be careful not to offend anyone.",
+     "ko": "아무의 기분도 상하게 하지 않도록 조심하세요."
+    },
+    {
+     "en": "The loud music offended the neighbors.",
+     "ko": "시끄러운 음악이 이웃들의 심기를 건드렸어요."
+    },
+    {
+     "en": "People who offend again may go to prison.",
+     "ko": "다시 범죄를 저지르는 사람은 감옥에 갈 수도 있어요."
+    },
+    {
+     "en": "No offense, but I don't agree.",
+     "ko": "기분 나쁘게 듣지 마세요, 하지만 저는 동의하지 않아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "insult",
+     "ko": "모욕하다",
+     "en": "Insult a guest."
+    },
+    {
+     "type": "유의어",
+     "word": "upset",
+     "ko": "속상하게 하다",
+     "en": "Upset your mom."
+    },
+    {
+     "type": "파생어",
+     "word": "offensive",
+     "ko": "불쾌한",
+     "en": "Offensive language."
+    },
+    {
+     "type": "파생어",
+     "word": "offense",
+     "ko": "위반, 모욕",
+     "en": "Take offense."
+    },
+    {
+     "type": "연관어",
+     "word": "rude",
+     "ko": "무례한",
+     "en": "A rude reply."
+    },
+    {
+     "type": "연관어",
+     "word": "apologize",
+     "ko": "사과하다",
+     "en": "Apologize sincerely."
+    }
+   ]
+  },
+  "2253": {
+   "word": "roar",
+   "overview": [
+    "roar는 '(사자 등이) 으르렁거리다, 포효하다'라는 뜻의 동사입니다.",
+    "The lion roared.(사자가 포효했다)처럼 씁니다.",
+    "'(사람이) 고함치다, (크게) 웃다', '(엔진·바람이) 굉음을 내다'라는 뜻으로도 씁니다.",
+    "명사로는 '포효, 굉음, 함성'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "growl",
+     "en": "The dog growls.",
+     "ko": "개가 으르렁거려요."
+    },
+    {
+     "word": "shout",
+     "en": "Shout loudly.",
+     "ko": "크게 소리치다."
+    }
+   ],
+   "etymology": [
+    "roar는 고대 영어 rarian(울부짖다)에서 온 단어입니다.",
+    "짐승이 크게 우는 소리를 흉내 낸 말로 봅니다.",
+    "'깊고 크게 울부짖다'라는 뜻이 그대로 이어져 왔습니다.",
+    "동물의 울음뿐 아니라 사람들의 함성, 엔진이나 파도의 굉음에도 씁니다.",
+    "roar의 핵심 이미지는 '사자가 입을 크게 벌리고 내지르는 포효 🦁'입니다."
+   ],
+   "meanings": [
+    "크게 소리치다, 울부짖다",
+    "(동물이) 으르렁거리다, 포효하다",
+    "외침, 포효, 굉음"
+   ],
+   "examples": [
+    {
+     "en": "The lion let out a loud roar.",
+     "ko": "사자가 크게 포효했어요."
+    },
+    {
+     "en": "The crowd roared when the team scored.",
+     "ko": "팀이 득점하자 관중이 함성을 질렀어요."
+    },
+    {
+     "en": "We heard the roar of the engine.",
+     "ko": "우리는 엔진의 굉음을 들었어요."
+    },
+    {
+     "en": "Everyone roared with laughter at his joke.",
+     "ko": "모두가 그의 농담에 크게 웃음을 터뜨렸어요."
+    },
+    {
+     "en": "The waves roared against the rocks.",
+     "ko": "파도가 바위에 부딪히며 우렁차게 울렸어요."
+    },
+    {
+     "en": "The tiger roared at the visitors.",
+     "ko": "호랑이가 관람객들을 향해 으르렁거렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "growl",
+     "ko": "으르렁거리다",
+     "en": "A low growl."
+    },
+    {
+     "type": "유의어",
+     "word": "shout",
+     "ko": "외치다",
+     "en": "Shout for help."
+    },
+    {
+     "type": "연관어",
+     "word": "lion",
+     "ko": "사자",
+     "en": "A wild lion."
+    },
+    {
+     "type": "연관어",
+     "word": "thunder",
+     "ko": "천둥",
+     "en": "Rolling thunder."
+    },
+    {
+     "type": "연관어",
+     "word": "loud",
+     "ko": "시끄러운",
+     "en": "A loud noise."
+    },
+    {
+     "type": "연관어",
+     "word": "whisper",
+     "ko": "속삭이다",
+     "en": "Whisper softly."
+    }
+   ]
+  },
+  "298": {
+   "word": "blink",
+   "overview": [
+    "blink는 '(눈을) 깜빡이다'라는 뜻의 동사입니다.",
+    "blink your eyes(눈을 깜빡이다)처럼 씁니다.",
+    "'(불빛이) 깜박거리다, 명멸하다'라는 뜻으로도 씁니다.",
+    "명사로는 '깜빡임'이라는 뜻이고, in the blink of an eye(눈 깜짝할 사이에)라는 표현이 유명합니다."
+   ],
+   "easy": [
+    {
+     "word": "wink",
+     "en": "Wink at a friend.",
+     "ko": "친구에게 윙크하다."
+    },
+    {
+     "word": "flash",
+     "en": "The light flashed.",
+     "ko": "불빛이 번쩍였어요."
+    }
+   ],
+   "etymology": [
+    "blink는 중세 영어 blenken(번쩍이다, 흘끗 보다)에서 온 단어입니다.",
+    "네덜란드어 blinken(반짝이다)과 같은 뿌리로 봅니다.",
+    "원래는 '빛이 잠깐 번쩍이다'라는 뜻이었습니다.",
+    "눈꺼풀이 잠깐 감겼다 뜨는 동작, 불빛이 깜박이는 것을 가리키게 되었습니다.",
+    "blink의 핵심 이미지는 '눈 깜짝할 사이 반짝하고 닫혔다 열리는 것 😉'입니다."
+   ],
+   "meanings": [
+    "(눈을) 깜박이다",
+    "(빛이) 번쩍이다, 깜박거리다"
+   ],
+   "examples": [
+    {
+     "en": "She blinked in the bright sunlight.",
+     "ko": "그녀는 밝은 햇빛에 눈을 깜빡였어요."
+    },
+    {
+     "en": "The red light on the camera is blinking.",
+     "ko": "카메라의 빨간 불이 깜박이고 있어요."
+    },
+    {
+     "en": "It happened in the blink of an eye.",
+     "ko": "그건 눈 깜짝할 사이에 일어났어요."
+    },
+    {
+     "en": "Try not to blink when I take the photo.",
+     "ko": "제가 사진 찍을 때 눈을 깜빡이지 않도록 해 보세요."
+    },
+    {
+     "en": "He didn't even blink when he heard the price.",
+     "ko": "그는 가격을 듣고도 눈 하나 깜짝하지 않았어요."
+    },
+    {
+     "en": "The stars seemed to blink in the night sky.",
+     "ko": "밤하늘에서 별들이 깜박이는 것 같았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wink",
+     "ko": "윙크하다",
+     "en": "Wink an eye."
+    },
+    {
+     "type": "연관어",
+     "word": "eye",
+     "ko": "눈",
+     "en": "Close your eyes."
+    },
+    {
+     "type": "연관어",
+     "word": "flash",
+     "ko": "번쩍이다",
+     "en": "A camera flash."
+    },
+    {
+     "type": "연관어",
+     "word": "flicker",
+     "ko": "깜박거리다",
+     "en": "The candle flickered."
+    },
+    {
+     "type": "연관어",
+     "word": "stare",
+     "ko": "빤히 보다",
+     "en": "Stare at the screen."
+    },
+    {
+     "type": "연관어",
+     "word": "moment",
+     "ko": "순간",
+     "en": "Just a moment."
+    }
+   ]
+  },
+  "2167": {
+   "word": "reform",
+   "overview": [
+    "reform은 '개혁'이라는 뜻의 명사이자 '개혁하다, 개선하다'라는 뜻의 동사입니다.",
+    "education reform(교육 개혁)처럼 씁니다.",
+    "제도나 조직을 더 좋게 바꾸는 것을 뜻합니다.",
+    "'(사람이) 행실을 고치다, 교화하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "improve",
+     "en": "Improve the system.",
+     "ko": "제도를 개선하다."
+    },
+    {
+     "word": "change",
+     "en": "A big change.",
+     "ko": "큰 변화."
+    }
+   ],
+   "etymology": [
+    "reform은 라틴어 reformare(다시 모양을 만들다)에서 온 단어입니다.",
+    "re(다시)와 formare(모양을 만들다)가 합쳐진 말로, form(형태)과 같은 가족입니다.",
+    "'잘못된 모양을 새롭게 다시 빚다'라는 뜻에서 시작되었습니다.",
+    "사회 제도나 법을 더 좋은 모습으로 바꾸는 '개혁'을 가리키게 되었습니다.",
+    "reform의 핵심 이미지는 '낡은 틀을 다시 빚어 더 나은 모양으로 바꾸는 것 🔨'입니다."
+   ],
+   "meanings": [
+    "개혁",
+    "개혁하다, 개선하다"
+   ],
+   "examples": [
+    {
+     "en": "The government promised to reform the tax system.",
+     "ko": "정부는 세금 제도를 개혁하겠다고 약속했어요."
+    },
+    {
+     "en": "Many people support education reform.",
+     "ko": "많은 사람들이 교육 개혁을 지지해요."
+    },
+    {
+     "en": "The new law brought major reforms.",
+     "ko": "새 법은 큰 개혁을 가져왔어요."
+    },
+    {
+     "en": "He promised to reform his bad habits.",
+     "ko": "그는 나쁜 습관을 고치겠다고 약속했어요."
+    },
+    {
+     "en": "The school reformed its lunch program.",
+     "ko": "그 학교는 급식 제도를 개선했어요."
+    },
+    {
+     "en": "Reform takes time and patience.",
+     "ko": "개혁에는 시간과 인내가 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "improve",
+     "ko": "개선하다",
+     "en": "Improve your skills."
+    },
+    {
+     "type": "파생어",
+     "word": "reformer",
+     "ko": "개혁가",
+     "en": "A social reformer."
+    },
+    {
+     "type": "연관어",
+     "word": "change",
+     "ko": "변화",
+     "en": "Make a change."
+    },
+    {
+     "type": "연관어",
+     "word": "system",
+     "ko": "제도",
+     "en": "The school system."
+    },
+    {
+     "type": "연관어",
+     "word": "policy",
+     "ko": "정책",
+     "en": "A new policy."
+    },
+    {
+     "type": "연관어",
+     "word": "revolution",
+     "ko": "혁명",
+     "en": "A quiet revolution."
+    }
+   ]
+  },
+  "1946": {
+   "word": "phenomenon",
+   "overview": [
+    "phenomenon은 '현상'이라는 뜻의 명사입니다.",
+    "a natural phenomenon(자연 현상)처럼 씁니다.",
+    "'놀라운 사람·것, 경이로운 존재'라는 뜻으로도 씁니다.",
+    "복수형은 phenomena이고, 형용사 phenomenal(경이적인)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "event",
+     "en": "A rare event.",
+     "ko": "드문 일."
+    },
+    {
+     "word": "happening",
+     "en": "A strange happening.",
+     "ko": "이상한 일."
+    }
+   ],
+   "etymology": [
+    "phenomenon은 그리스어 phainomenon(눈에 나타나는 것)에서 온 단어입니다.",
+    "phainein(보여 주다, 나타나다)에서 나온 말로, phase(단계), fantasy(환상)와 뿌리가 이어집니다.",
+    "'우리 눈앞에 드러나 보이는 일'이라는 뜻에서 시작되었습니다.",
+    "관찰할 수 있는 자연이나 사회의 현상, 그리고 눈에 띄게 놀라운 것을 가리키게 되었습니다.",
+    "phenomenon의 핵심 이미지는 '눈앞에 신기하게 드러나는 일 🌈'입니다."
+   ],
+   "meanings": [
+    "현상",
+    "경이로운 사람·것"
+   ],
+   "examples": [
+    {
+     "en": "A rainbow is a natural phenomenon.",
+     "ko": "무지개는 자연 현상이에요."
+    },
+    {
+     "en": "Scientists study strange weather phenomena.",
+     "ko": "과학자들은 이상한 기상 현상을 연구해요."
+    },
+    {
+     "en": "Online shopping is a modern phenomenon.",
+     "ko": "온라인 쇼핑은 현대적인 현상이에요."
+    },
+    {
+     "en": "The singer became a global phenomenon.",
+     "ko": "그 가수는 세계적인 돌풍을 일으킨 존재가 되었어요."
+    },
+    {
+     "en": "The northern lights are an amazing phenomenon.",
+     "ko": "오로라는 놀라운 현상이에요."
+    },
+    {
+     "en": "This phenomenon is hard to explain.",
+     "ko": "이 현상은 설명하기 어려워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "phenomena",
+     "ko": "(복수형) 현상들",
+     "en": "Natural phenomena."
+    },
+    {
+     "type": "파생어",
+     "word": "phenomenal",
+     "ko": "경이적인",
+     "en": "A phenomenal success."
+    },
+    {
+     "type": "연관어",
+     "word": "event",
+     "ko": "사건",
+     "en": "A major event."
+    },
+    {
+     "type": "연관어",
+     "word": "nature",
+     "ko": "자연",
+     "en": "The laws of nature."
+    },
+    {
+     "type": "연관어",
+     "word": "science",
+     "ko": "과학",
+     "en": "Study science."
+    },
+    {
+     "type": "연관어",
+     "word": "trend",
+     "ko": "유행",
+     "en": "A new trend."
+    }
+   ]
+  },
+  "620": {
+   "word": "convict",
+   "overview": [
+    "convict는 동사로 '유죄를 선고하다'라는 뜻입니다. (발음: con-VICT)",
+    "be convicted of theft(절도죄로 유죄 판결을 받다)처럼 수동태로 자주 씁니다.",
+    "명사로는 '죄수, 기결수'라는 뜻입니다. (발음: CON-vict)",
+    "명사 conviction(유죄 판결, 확신)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "find guilty",
+     "en": "Find him guilty.",
+     "ko": "그에게 유죄를 선고하다."
+    },
+    {
+     "word": "prisoner",
+     "en": "A prisoner in jail.",
+     "ko": "감옥에 있는 죄수."
+    }
+   ],
+   "etymology": [
+    "convict는 라틴어 convincere(완전히 이기다, 증명하다)에서 온 단어입니다.",
+    "con(완전히)과 vincere(이기다)가 합쳐진 말로, convince(확신시키다), victory(승리)와 같은 가족입니다.",
+    "'증거로 상대의 잘못을 완전히 증명해 이기다'라는 뜻에서 시작되었습니다.",
+    "법정에서 죄가 있음을 증명해 유죄를 선고하는 것, 그리고 그렇게 판결받은 사람을 가리킵니다.",
+    "convict의 핵심 이미지는 '증거로 잘못을 입증해 내려지는 유죄 판결 ⚖️'입니다."
+   ],
+   "meanings": [
+    "유죄를 선고하다",
+    "죄수, 기결수",
+    "믿게끔 하다"
+   ],
+   "examples": [
+    {
+     "en": "He was convicted of stealing a car.",
+     "ko": "그는 자동차 절도로 유죄 판결을 받았어요."
+    },
+    {
+     "en": "The jury convicted the man of fraud.",
+     "ko": "배심원단은 그 남자에게 사기죄로 유죄를 평결했어요."
+    },
+    {
+     "en": "The escaped convict was caught the next day.",
+     "ko": "탈옥한 죄수는 다음 날 붙잡혔어요."
+    },
+    {
+     "en": "There wasn't enough evidence to convict her.",
+     "ko": "그녀에게 유죄를 선고할 만한 증거가 충분하지 않았어요."
+    },
+    {
+     "en": "He spoke with deep conviction.",
+     "ko": "그는 깊은 확신을 가지고 말했어요."
+    },
+    {
+     "en": "The convicted thief went to prison for two years.",
+     "ko": "유죄 판결을 받은 도둑은 2년 동안 수감되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "acquit",
+     "ko": "무죄를 선고하다",
+     "en": "The court acquitted him."
+    },
+    {
+     "type": "파생어",
+     "word": "conviction",
+     "ko": "유죄 판결, 확신",
+     "en": "A strong conviction."
+    },
+    {
+     "type": "연관어",
+     "word": "guilty",
+     "ko": "유죄의",
+     "en": "Found guilty."
+    },
+    {
+     "type": "연관어",
+     "word": "court",
+     "ko": "법정",
+     "en": "Go to court."
+    },
+    {
+     "type": "연관어",
+     "word": "prisoner",
+     "ko": "죄수",
+     "en": "Free the prisoner."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "Commit a crime."
+    }
+   ]
+  },
+  "1595": {
+   "word": "lone",
+   "overview": [
+    "lone은 '혼자인, 외로운, 단 하나의'라는 뜻의 형용사입니다.",
+    "a lone traveler(혼자 여행하는 사람)처럼 씁니다.",
+    "명사 앞에서만 쓰며, '(그 자리에) 단 하나뿐인'이라는 느낌을 줍니다. (the lone survivor)",
+    "비슷한 말로 alone(혼자), lonely(외로운)가 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "single",
+     "en": "A single tree.",
+     "ko": "나무 한 그루."
+    },
+    {
+     "word": "only",
+     "en": "The only one.",
+     "ko": "유일한 것."
+    }
+   ],
+   "etymology": [
+    "lone은 alone(혼자)의 앞부분 a가 떨어져 나가 만들어진 단어입니다.",
+    "alone은 all(완전히)과 one(하나)이 합쳐진 말입니다.",
+    "'완전히 하나뿐인, 혼자인'이라는 뜻이 그대로 이어져 왔습니다.",
+    "무리 없이 홀로 떨어져 있는 사람이나 사물을 가리킵니다.",
+    "lone의 핵심 이미지는 '넓은 곳에 홀로 서 있는 하나 🌳'입니다."
+   ],
+   "meanings": [
+    "혼자인, 외로운",
+    "단 하나의, 외동의"
+   ],
+   "examples": [
+    {
+     "en": "A lone tree stood on the hill.",
+     "ko": "언덕 위에 나무 한 그루가 홀로 서 있었어요."
+    },
+    {
+     "en": "She was the lone girl on the team.",
+     "ko": "그녀는 그 팀의 유일한 여자아이였어요."
+    },
+    {
+     "en": "A lone wolf howled in the night.",
+     "ko": "외로운 늑대 한 마리가 밤에 울부짖었어요."
+    },
+    {
+     "en": "He was the lone survivor of the crash.",
+     "ko": "그는 그 사고의 유일한 생존자였어요."
+    },
+    {
+     "en": "A lone rider crossed the desert.",
+     "ko": "홀로 말을 탄 사람이 사막을 건넜어요."
+    },
+    {
+     "en": "She is a lone parent raising two children.",
+     "ko": "그녀는 두 아이를 키우는 한부모예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "solitary",
+     "ko": "혼자의",
+     "en": "A solitary walk."
+    },
+    {
+     "type": "유의어",
+     "word": "single",
+     "ko": "단 하나의",
+     "en": "A single rose."
+    },
+    {
+     "type": "연관어",
+     "word": "alone",
+     "ko": "혼자",
+     "en": "Live alone."
+    },
+    {
+     "type": "연관어",
+     "word": "lonely",
+     "ko": "외로운",
+     "en": "Feel lonely."
+    },
+    {
+     "type": "연관어",
+     "word": "only",
+     "ko": "유일한",
+     "en": "The only child."
+    },
+    {
+     "type": "연관어",
+     "word": "together",
+     "ko": "함께",
+     "en": "Stay together."
+    }
+   ]
+  },
+  "2070": {
+   "word": "profound",
+   "overview": [
+    "profound는 '(영향·감정이) 깊은, 엄청난'이라는 뜻의 형용사입니다.",
+    "a profound effect(깊은 영향)처럼 씁니다.",
+    "'(생각·지식이) 심오한, 깊이 있는'이라는 뜻으로도 씁니다.",
+    "부사 profoundly(깊이, 크게)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "deep",
+     "en": "A deep thought.",
+     "ko": "깊은 생각."
+    },
+    {
+     "word": "strong",
+     "en": "A strong effect.",
+     "ko": "강한 영향."
+    }
+   ],
+   "etymology": [
+    "profound는 라틴어 profundus(깊은, 바닥이 먼)에서 온 단어입니다.",
+    "pro(앞으로, 아래로)와 fundus(바닥)가 합쳐진 말로, fund(기금, 기초)와 뿌리가 이어집니다.",
+    "'바닥까지 까마득히 깊은'이라는 뜻에서 시작되었습니다.",
+    "감정, 영향, 생각이 아주 깊은 곳까지 닿는 것을 가리키게 되었습니다.",
+    "profound의 핵심 이미지는 '바닥이 보이지 않을 만큼 깊은 우물 🌊'입니다."
+   ],
+   "meanings": [
+    "깊은",
+    "(생각·느낌이) 심오한, 철저한"
+   ],
+   "examples": [
+    {
+     "en": "The trip had a profound effect on her.",
+     "ko": "그 여행은 그녀에게 깊은 영향을 미쳤어요."
+    },
+    {
+     "en": "He asked a profound question about life.",
+     "ko": "그는 삶에 관한 심오한 질문을 던졌어요."
+    },
+    {
+     "en": "We felt profound sadness at the news.",
+     "ko": "우리는 그 소식에 깊은 슬픔을 느꼈어요."
+    },
+    {
+     "en": "The internet brought profound changes to society.",
+     "ko": "인터넷은 사회에 엄청난 변화를 가져왔어요."
+    },
+    {
+     "en": "The old man spoke with profound wisdom.",
+     "ko": "그 노인은 깊은 지혜를 담아 말했어요."
+    },
+    {
+     "en": "I was profoundly moved by the movie.",
+     "ko": "저는 그 영화에 깊이 감동받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "deep",
+     "ko": "깊은",
+     "en": "Deep love."
+    },
+    {
+     "type": "반의어",
+     "word": "shallow",
+     "ko": "얕은",
+     "en": "A shallow idea."
+    },
+    {
+     "type": "파생어",
+     "word": "profoundly",
+     "ko": "깊이",
+     "en": "Profoundly grateful."
+    },
+    {
+     "type": "연관어",
+     "word": "serious",
+     "ko": "진지한, 심각한",
+     "en": "A serious talk."
+    },
+    {
+     "type": "연관어",
+     "word": "wisdom",
+     "ko": "지혜",
+     "en": "Words of wisdom."
+    },
+    {
+     "type": "연관어",
+     "word": "intense",
+     "ko": "강렬한",
+     "en": "Intense feelings."
+    }
+   ]
+  },
+  "678": {
+   "word": "crop",
+   "overview": [
+    "crop은 '농작물'이라는 뜻의 명사입니다.",
+    "grow crops(농작물을 재배하다)처럼 씁니다.",
+    "'(한 해의) 수확량, 작황'이라는 뜻으로도 씁니다. (a good crop)",
+    "동사로는 '(사진을) 잘라 내다, (머리를) 짧게 깎다'라는 뜻이고, crop up은 '갑자기 생기다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "harvest",
+     "en": "The rice harvest.",
+     "ko": "쌀 수확."
+    },
+    {
+     "word": "cut",
+     "en": "Cut the picture.",
+     "ko": "사진을 자르다."
+    }
+   ],
+   "etymology": [
+    "crop은 고대 영어 cropp(이삭, 꼭대기)에서 온 단어입니다.",
+    "원래는 식물의 윗부분, 곡식의 이삭을 뜻했습니다.",
+    "그 이삭을 거두어들인 '수확물, 농작물'이라는 뜻이 되었습니다.",
+    "윗부분을 싹둑 자르는 모습에서 사진이나 머리를 '잘라 내다'라는 뜻도 생겼습니다.",
+    "crop의 핵심 이미지는 '밭에서 자라 거두어들이는 농작물 🌽'입니다."
+   ],
+   "meanings": [
+    "농작물",
+    "작황, 수확량",
+    "(머리를) 단발로 깎다, (사진을) 자르다"
+   ],
+   "examples": [
+    {
+     "en": "Rice is the main crop in this area.",
+     "ko": "쌀은 이 지역의 주요 농작물이에요."
+    },
+    {
+     "en": "The dry weather damaged the crops.",
+     "ko": "가뭄이 농작물에 피해를 줬어요."
+    },
+    {
+     "en": "Farmers had a good crop of apples this year.",
+     "ko": "올해 농부들은 사과 작황이 좋았어요."
+    },
+    {
+     "en": "Crop the photo to remove the background.",
+     "ko": "배경이 안 보이게 사진을 잘라 내세요."
+    },
+    {
+     "en": "She had her hair cropped short.",
+     "ko": "그녀는 머리를 짧게 잘랐어요."
+    },
+    {
+     "en": "A few problems cropped up during the trip.",
+     "ko": "여행 중에 몇 가지 문제가 갑자기 생겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "harvest",
+     "ko": "수확",
+     "en": "A rich harvest."
+    },
+    {
+     "type": "연관어",
+     "word": "farm",
+     "ko": "농장",
+     "en": "A dairy farm."
+    },
+    {
+     "type": "연관어",
+     "word": "grain",
+     "ko": "곡물",
+     "en": "Grain prices."
+    },
+    {
+     "type": "연관어",
+     "word": "field",
+     "ko": "밭",
+     "en": "A rice field."
+    },
+    {
+     "type": "연관어",
+     "word": "plant",
+     "ko": "심다",
+     "en": "Plant potatoes."
+    },
+    {
+     "type": "연관어",
+     "word": "trim",
+     "ko": "다듬다",
+     "en": "Trim the edges."
+    }
+   ]
+  },
+  "1924": {
+   "word": "peasant",
+   "overview": [
+    "peasant는 '(옛날의) 소작농, 농민'이라는 뜻의 명사입니다.",
+    "medieval peasants(중세의 농민들)처럼 씁니다.",
+    "주로 역사 속에서 땅을 빌려 농사짓던 가난한 사람들을 가리킵니다.",
+    "현대에 사람을 peasant라고 부르면 '촌놈'처럼 무례하게 들릴 수 있으니 주의하세요."
+   ],
+   "easy": [
+    {
+     "word": "poor farmer",
+     "en": "A poor farmer.",
+     "ko": "가난한 농부."
+    },
+    {
+     "word": "villager",
+     "en": "A simple villager.",
+     "ko": "소박한 마을 사람."
+    }
+   ],
+   "etymology": [
+    "peasant는 옛 프랑스어 paisant(시골 사람)에서 온 단어입니다.",
+    "pais(지역, 시골)에서 나온 말로, 라틴어 pagus(시골 마을)와 뿌리가 이어집니다.",
+    "'시골에서 땅을 일구며 사는 사람'이라는 뜻이 되었습니다.",
+    "특히 옛날 왕과 귀족 아래에서 농사를 짓던 가난한 농민을 가리킵니다.",
+    "peasant의 핵심 이미지는 '옛날 시골에서 땅을 일구던 가난한 농민 👨‍🌾'입니다."
+   ],
+   "meanings": [
+    "소작농, 농민",
+    "하층민"
+   ],
+   "examples": [
+    {
+     "en": "In the Middle Ages, most people were peasants.",
+     "ko": "중세에는 대부분의 사람들이 농민이었어요."
+    },
+    {
+     "en": "The peasants worked the land for the lord.",
+     "ko": "농민들은 영주를 위해 땅을 일궜어요."
+    },
+    {
+     "en": "The story is about a peasant who became a king.",
+     "ko": "그 이야기는 왕이 된 농부에 관한 거예요."
+    },
+    {
+     "en": "Peasants paid heavy taxes to the king.",
+     "ko": "농민들은 왕에게 무거운 세금을 냈어요."
+    },
+    {
+     "en": "The painting shows peasants dancing at a festival.",
+     "ko": "그 그림은 축제에서 춤추는 농민들을 보여 줘요."
+    },
+    {
+     "en": "The peasants rose up against the unfair rules.",
+     "ko": "농민들은 불공평한 규칙에 맞서 들고일어났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "farmer",
+     "ko": "농부",
+     "en": "A hardworking farmer."
+    },
+    {
+     "type": "반의어",
+     "word": "noble",
+     "ko": "귀족",
+     "en": "A rich noble."
+    },
+    {
+     "type": "연관어",
+     "word": "village",
+     "ko": "마을",
+     "en": "A quiet village."
+    },
+    {
+     "type": "연관어",
+     "word": "land",
+     "ko": "땅",
+     "en": "Farm land."
+    },
+    {
+     "type": "연관어",
+     "word": "poverty",
+     "ko": "가난",
+     "en": "Live in poverty."
+    },
+    {
+     "type": "연관어",
+     "word": "medieval",
+     "ko": "중세의",
+     "en": "A medieval castle."
+    }
+   ]
+  },
+  "1795": {
+   "word": "norm",
+   "overview": [
+    "norm은 '규범, 기준'이라는 뜻의 명사입니다.",
+    "social norms(사회적 규범)처럼 씁니다.",
+    "'보통의 일, 일반적인 수준, 평균'이라는 뜻으로도 씁니다. (Working from home is now the norm.)",
+    "형용사 normal(보통의)도 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "standard",
+     "en": "A high standard.",
+     "ko": "높은 기준."
+    },
+    {
+     "word": "usual",
+     "en": "The usual way.",
+     "ko": "평소 방식."
+    }
+   ],
+   "etymology": [
+    "norm은 라틴어 norma(목수의 직각자)에서 온 단어입니다.",
+    "normal(보통의), enormous(거대한, '기준을 벗어난')와 같은 가족입니다.",
+    "원래는 반듯한 직각을 재는 도구였습니다.",
+    "'반듯한 기준', 그리고 사람들이 따르는 보통의 규칙과 수준을 가리키게 되었습니다.",
+    "norm의 핵심 이미지는 '모두가 맞춰 따르는 반듯한 기준선 📏'입니다."
+   ],
+   "meanings": [
+    "표준, 규범",
+    "평균적 수준, 보통의 일"
+   ],
+   "examples": [
+    {
+     "en": "Online classes have become the norm.",
+     "ko": "온라인 수업이 흔한 일이 되었어요."
+    },
+    {
+     "en": "Every culture has its own social norms.",
+     "ko": "모든 문화에는 나름의 사회 규범이 있어요."
+    },
+    {
+     "en": "His behavior was far from the norm.",
+     "ko": "그의 행동은 보통과 아주 달랐어요."
+    },
+    {
+     "en": "Hot summers are becoming the norm.",
+     "ko": "더운 여름이 흔해지고 있어요."
+    },
+    {
+     "en": "She broke the norm and wore bright colors.",
+     "ko": "그녀는 관례를 깨고 밝은 색 옷을 입었어요."
+    },
+    {
+     "en": "Scores above the norm are rare.",
+     "ko": "평균 이상의 점수는 드물어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "standard",
+     "ko": "기준",
+     "en": "Safety standards."
+    },
+    {
+     "type": "유의어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "Follow the rules."
+    },
+    {
+     "type": "반의어",
+     "word": "exception",
+     "ko": "예외",
+     "en": "An exception to the rule."
+    },
+    {
+     "type": "파생어",
+     "word": "normal",
+     "ko": "보통의",
+     "en": "A normal day."
+    },
+    {
+     "type": "연관어",
+     "word": "average",
+     "ko": "평균",
+     "en": "Above average."
+    },
+    {
+     "type": "연관어",
+     "word": "custom",
+     "ko": "관습",
+     "en": "A local custom."
+    }
+   ]
+  },
+  "2599": {
+   "word": "superb",
+   "overview": [
+    "superb는 '최고의, 아주 훌륭한'이라는 뜻의 형용사입니다.",
+    "a superb performance(훌륭한 공연)처럼 씁니다.",
+    "excellent보다 조금 더 감탄하는 느낌이 담긴 말입니다.",
+    "부사 superbly(훌륭하게)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "excellent",
+     "en": "Excellent work.",
+     "ko": "훌륭한 솜씨."
+    },
+    {
+     "word": "wonderful",
+     "en": "A wonderful view.",
+     "ko": "멋진 경치."
+    }
+   ],
+   "etymology": [
+    "superb는 라틴어 superbus(뛰어난, 자랑스러운)에서 온 단어입니다.",
+    "super(위에)에서 나온 말로, superior(우수한), supreme(최고의)과 같은 가족입니다.",
+    "원래는 '남보다 위에 선, 당당한'이라는 뜻이었습니다.",
+    "보는 사람이 감탄할 만큼 뛰어나고 훌륭한 것을 가리키게 되었습니다.",
+    "superb의 핵심 이미지는 '모든 것 위에 우뚝 선 최고의 수준 🏅'입니다."
+   ],
+   "meanings": [
+    "아주 뛰어난, 최상의, 우수한"
+   ],
+   "examples": [
+    {
+     "en": "The food at the restaurant was superb.",
+     "ko": "그 식당 음식은 최고였어요."
+    },
+    {
+     "en": "She gave a superb speech.",
+     "ko": "그녀는 훌륭한 연설을 했어요."
+    },
+    {
+     "en": "The hotel has superb views of the sea.",
+     "ko": "그 호텔은 바다 전망이 아주 훌륭해요."
+    },
+    {
+     "en": "He is a superb goalkeeper.",
+     "ko": "그는 뛰어난 골키퍼예요."
+    },
+    {
+     "en": "The dancers were in superb form.",
+     "ko": "무용수들은 최상의 컨디션이었어요."
+    },
+    {
+     "en": "What a superb idea!",
+     "ko": "정말 멋진 생각이에요!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "excellent",
+     "ko": "훌륭한",
+     "en": "An excellent job."
+    },
+    {
+     "type": "유의어",
+     "word": "outstanding",
+     "ko": "뛰어난",
+     "en": "Outstanding results."
+    },
+    {
+     "type": "반의어",
+     "word": "poor",
+     "ko": "형편없는",
+     "en": "Poor quality."
+    },
+    {
+     "type": "연관어",
+     "word": "superior",
+     "ko": "우수한",
+     "en": "Superior quality."
+    },
+    {
+     "type": "연관어",
+     "word": "magnificent",
+     "ko": "웅장한",
+     "en": "A magnificent palace."
+    },
+    {
+     "type": "연관어",
+     "word": "perfect",
+     "ko": "완벽한",
+     "en": "A perfect day."
+    }
+   ]
+  },
+  "2142": {
+   "word": "rational",
+   "overview": [
+    "rational은 '이성적인, 합리적인'이라는 뜻의 형용사입니다.",
+    "a rational decision(합리적인 결정)처럼 씁니다.",
+    "감정보다 논리와 이성에 따라 생각하는 것을 뜻합니다.",
+    "수학에서는 '유리수(rational number)'라는 뜻으로도 쓰고, 반의어는 irrational입니다."
+   ],
+   "easy": [
+    {
+     "word": "reasonable",
+     "en": "A reasonable plan.",
+     "ko": "합리적인 계획."
+    },
+    {
+     "word": "logical",
+     "en": "A logical answer.",
+     "ko": "논리적인 답."
+    }
+   ],
+   "etymology": [
+    "rational은 라틴어 rationalis(이성을 가진)에서 온 단어입니다.",
+    "ratio(계산, 이성)에서 나온 말로, reason(이성, 이유), ratio(비율)와 같은 가족입니다.",
+    "'따져 보고 계산할 줄 아는'이라는 뜻에서 시작되었습니다.",
+    "감정에 휩쓸리지 않고 이치에 맞게 생각하는 태도, 그리고 분수로 나타낼 수 있는 수를 가리킵니다.",
+    "rational의 핵심 이미지는 '차분하게 따져 보고 판단하는 머리 🧮'입니다."
+   ],
+   "meanings": [
+    "합리적인, 이성적인",
+    "유리수(의)"
+   ],
+   "examples": [
+    {
+     "en": "Let's try to make a rational decision.",
+     "ko": "합리적인 결정을 내리도록 해 봐요."
+    },
+    {
+     "en": "She stayed calm and rational during the crisis.",
+     "ko": "그녀는 위기 속에서도 침착하고 이성적이었어요."
+    },
+    {
+     "en": "There must be a rational explanation.",
+     "ko": "분명히 합리적인 설명이 있을 거예요."
+    },
+    {
+     "en": "Humans are rational animals.",
+     "ko": "인간은 이성적인 동물이에요."
+    },
+    {
+     "en": "Fractions like 1/2 are rational numbers.",
+     "ko": "1/2 같은 분수는 유리수예요."
+    },
+    {
+     "en": "His fear of spiders isn't rational.",
+     "ko": "그가 거미를 무서워하는 건 이성적인 게 아니에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "reasonable",
+     "ko": "합리적인",
+     "en": "A reasonable price."
+    },
+    {
+     "type": "유의어",
+     "word": "logical",
+     "ko": "논리적인",
+     "en": "Logical thinking."
+    },
+    {
+     "type": "반의어",
+     "word": "irrational",
+     "ko": "비이성적인",
+     "en": "An irrational fear."
+    },
+    {
+     "type": "연관어",
+     "word": "reason",
+     "ko": "이성",
+     "en": "Use your reason."
+    },
+    {
+     "type": "연관어",
+     "word": "sensible",
+     "ko": "분별 있는",
+     "en": "A sensible choice."
+    },
+    {
+     "type": "연관어",
+     "word": "emotional",
+     "ko": "감정적인",
+     "en": "An emotional reaction."
+    }
+   ]
+  },
+  "1510": {
+   "word": "knot",
+   "overview": [
+    "knot은 '매듭'이라는 뜻의 명사입니다.",
+    "tie a knot(매듭을 묶다)처럼 씁니다.",
+    "'(긴장으로) 뭉친 느낌', '(나무의) 옹이', '노트(배의 속도 단위)'라는 뜻도 있습니다.",
+    "동사로는 '매듭을 짓다'라는 뜻이고, k는 소리 나지 않아 not과 같이 발음합니다."
+   ],
+   "easy": [
+    {
+     "word": "tie",
+     "en": "Tie your shoes.",
+     "ko": "신발 끈을 묶다."
+    },
+    {
+     "word": "tangle",
+     "en": "A tangle of wires.",
+     "ko": "엉킨 전선."
+    }
+   ],
+   "etymology": [
+    "knot은 고대 영어 cnotta(매듭)에서 온 단어입니다.",
+    "knit(뜨개질하다)와 같은 게르만 말 뿌리에서 나왔습니다.",
+    "'끈을 꼬아 단단히 묶은 덩어리'라는 뜻이 그대로 이어져 왔습니다.",
+    "옛날 뱃사람들이 매듭지은 줄로 배의 속도를 재어서 속도 단위로도 쓰이게 되었습니다.",
+    "knot의 핵심 이미지는 '끈을 꼬아 단단히 묶은 매듭 🪢'입니다."
+   ],
+   "meanings": [
+    "매듭",
+    "매듭을 만들다, 매듭짓다",
+    "(배의 속도 단위) 노트"
+   ],
+   "examples": [
+    {
+     "en": "Tie a knot at the end of the thread.",
+     "ko": "실 끝에 매듭을 지으세요."
+    },
+    {
+     "en": "My hair is full of knots.",
+     "ko": "제 머리카락이 온통 엉켜 있어요."
+    },
+    {
+     "en": "I had a knot in my stomach before the test.",
+     "ko": "시험 전에 배가 꼬이는 것처럼 긴장됐어요."
+    },
+    {
+     "en": "The sailor can tie many kinds of knots.",
+     "ko": "그 선원은 여러 종류의 매듭을 묶을 수 있어요."
+    },
+    {
+     "en": "The ship was sailing at 20 knots.",
+     "ko": "그 배는 20노트로 항해하고 있었어요."
+    },
+    {
+     "en": "They tied the knot last spring.",
+     "ko": "그들은 지난봄에 결혼했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "tie",
+     "ko": "묶다",
+     "en": "Tie a ribbon."
+    },
+    {
+     "type": "반의어",
+     "word": "untie",
+     "ko": "풀다",
+     "en": "Untie the rope."
+    },
+    {
+     "type": "연관어",
+     "word": "rope",
+     "ko": "밧줄",
+     "en": "A long rope."
+    },
+    {
+     "type": "연관어",
+     "word": "tangle",
+     "ko": "엉킴",
+     "en": "Hair tangles."
+    },
+    {
+     "type": "연관어",
+     "word": "string",
+     "ko": "끈",
+     "en": "A piece of string."
+    },
+    {
+     "type": "연관어",
+     "word": "loose",
+     "ko": "느슨한",
+     "en": "A loose knot."
+    }
+   ]
+  },
+  "1382": {
+   "word": "immune",
+   "overview": [
+    "immune은 '면역이 있는'이라는 뜻의 형용사입니다.",
+    "be immune to a disease(병에 면역이 있다)처럼 씁니다.",
+    "'(영향을) 받지 않는', '(의무 등이) 면제된'이라는 뜻으로도 씁니다.",
+    "the immune system(면역 체계), 명사 immunity(면역)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "protected",
+     "en": "Protected from disease.",
+     "ko": "병으로부터 보호받는."
+    },
+    {
+     "word": "not affected",
+     "en": "Not affected by it.",
+     "ko": "그것에 영향받지 않는."
+    }
+   ],
+   "etymology": [
+    "immune은 라틴어 immunis(의무를 면제받은)에서 온 단어입니다.",
+    "in(없는)과 munus(의무, 세금)가 합쳐진 말로, community(공동체)와 뿌리가 이어집니다.",
+    "원래는 세금이나 의무를 내지 않아도 되는 상태를 뜻했습니다.",
+    "몸이 병에 걸릴 '의무'에서 벗어난 상태, 즉 '면역이 있는'이라는 뜻이 되었습니다.",
+    "immune의 핵심 이미지는 '병균이 뚫고 들어오지 못하는 보호막 🛡️'입니다."
+   ],
+   "meanings": [
+    "면역이 있는",
+    "(영향을) 받지 않는, 면제된",
+    "면역자, 면제자"
+   ],
+   "examples": [
+    {
+     "en": "After the vaccine, you'll be immune to the disease.",
+     "ko": "백신을 맞으면 그 병에 면역이 생길 거예요."
+    },
+    {
+     "en": "Sleep helps keep your immune system strong.",
+     "ko": "잠은 면역 체계를 튼튼하게 유지하도록 도와줘요."
+    },
+    {
+     "en": "No one is immune to mistakes.",
+     "ko": "실수에서 자유로운 사람은 없어요."
+    },
+    {
+     "en": "She seems immune to criticism.",
+     "ko": "그녀는 비판에 끄떡도 하지 않는 것 같아요."
+    },
+    {
+     "en": "Some people are naturally immune to the virus.",
+     "ko": "어떤 사람들은 그 바이러스에 자연 면역이 있어요."
+    },
+    {
+     "en": "Eating fruit can boost your immune system.",
+     "ko": "과일을 먹으면 면역력을 높일 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "resistant",
+     "ko": "저항력 있는",
+     "en": "Water-resistant."
+    },
+    {
+     "type": "파생어",
+     "word": "immunity",
+     "ko": "면역",
+     "en": "Build immunity."
+    },
+    {
+     "type": "연관어",
+     "word": "vaccine",
+     "ko": "백신",
+     "en": "Get a vaccine."
+    },
+    {
+     "type": "연관어",
+     "word": "virus",
+     "ko": "바이러스",
+     "en": "A flu virus."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect your health."
+    },
+    {
+     "type": "연관어",
+     "word": "infection",
+     "ko": "감염",
+     "en": "Prevent infection."
+    }
+   ]
+  },
+  "2088": {
+   "word": "protein",
+   "overview": [
+    "protein은 '단백질'이라는 뜻의 명사입니다.",
+    "high in protein(단백질이 풍부한)처럼 씁니다.",
+    "근육과 몸을 만드는 데 필요한 중요한 영양소입니다.",
+    "고기, 달걀, 콩, 우유 등에 많이 들어 있습니다. 발음은 [프로우틴]입니다."
+   ],
+   "easy": [
+    {
+     "word": "nutrient",
+     "en": "An important nutrient.",
+     "ko": "중요한 영양소."
+    },
+    {
+     "word": "body-building food",
+     "en": "Food that builds muscles.",
+     "ko": "근육을 만드는 음식."
+    }
+   ],
+   "etymology": [
+    "protein은 그리스어 proteios(으뜸가는, 가장 중요한)에서 온 단어입니다.",
+    "protos(첫째의)에서 나온 말로, prototype(원형)과 뿌리가 이어집니다.",
+    "19세기 과학자들이 '생명에 가장 중요한 첫째가는 물질'이라는 뜻으로 이름 붙였습니다.",
+    "지금은 몸을 이루고 유지하는 핵심 영양소를 가리킵니다.",
+    "protein의 핵심 이미지는 '몸을 튼튼하게 쌓아 올리는 으뜸 영양소 🥚💪'입니다."
+   ],
+   "meanings": [
+    "단백질"
+   ],
+   "examples": [
+    {
+     "en": "Eggs are a good source of protein.",
+     "ko": "달걀은 좋은 단백질 공급원이에요."
+    },
+    {
+     "en": "Muscles need protein to grow.",
+     "ko": "근육이 자라려면 단백질이 필요해요."
+    },
+    {
+     "en": "Beans and tofu are high in protein.",
+     "ko": "콩과 두부에는 단백질이 풍부해요."
+    },
+    {
+     "en": "Athletes often eat protein-rich food.",
+     "ko": "운동선수들은 단백질이 풍부한 음식을 자주 먹어요."
+    },
+    {
+     "en": "The label shows how much protein is in the snack.",
+     "ko": "라벨에 그 간식에 단백질이 얼마나 들었는지 나와 있어요."
+    },
+    {
+     "en": "Our bodies can't make some proteins on their own.",
+     "ko": "우리 몸은 일부 단백질을 스스로 만들지 못해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "vitamin",
+     "ko": "비타민",
+     "en": "Vitamin C."
+    },
+    {
+     "type": "연관어",
+     "word": "muscle",
+     "ko": "근육",
+     "en": "Build muscle."
+    },
+    {
+     "type": "연관어",
+     "word": "diet",
+     "ko": "식단",
+     "en": "A healthy diet."
+    },
+    {
+     "type": "연관어",
+     "word": "meat",
+     "ko": "고기",
+     "en": "Lean meat."
+    },
+    {
+     "type": "연관어",
+     "word": "nutrition",
+     "ko": "영양",
+     "en": "Good nutrition."
+    },
+    {
+     "type": "연관어",
+     "word": "carbohydrate",
+     "ko": "탄수화물",
+     "en": "Carbohydrates give energy."
+    }
+   ]
+  },
+  "2677": {
+   "word": "terrace",
+   "overview": [
+    "terrace는 '테라스'라는 뜻의 명사입니다.",
+    "have coffee on the terrace(테라스에서 커피를 마시다)처럼 씁니다.",
+    "산비탈을 깎아 만든 '계단식 밭(지형)'이라는 뜻으로도 씁니다. (rice terraces, 계단식 논)",
+    "영국에서는 '(한 줄로 이어 지은) 연립 주택'을 가리키기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "patio",
+     "en": "Sit on the patio.",
+     "ko": "안뜰에 앉다."
+    },
+    {
+     "word": "balcony",
+     "en": "A sunny balcony.",
+     "ko": "햇살 드는 발코니."
+    }
+   ],
+   "etymology": [
+    "terrace는 라틴어 terra(땅)에서 온 단어입니다.",
+    "territory(영토), terrain(지형)과 같은 가족입니다.",
+    "원래는 '흙을 쌓아 평평하게 만든 단'을 뜻했습니다.",
+    "건물 옆의 평평한 야외 공간, 그리고 비탈에 층층이 만든 평평한 밭을 가리키게 되었습니다.",
+    "terrace의 핵심 이미지는 '흙을 층층이 평평하게 다진 단 🏞️'입니다."
+   ],
+   "meanings": [
+    "테라스",
+    "계단식 지형",
+    "연립 주택",
+    "계단식으로 만들다"
+   ],
+   "examples": [
+    {
+     "en": "We ate lunch on the terrace.",
+     "ko": "우리는 테라스에서 점심을 먹었어요."
+    },
+    {
+     "en": "The hotel room has a private terrace.",
+     "ko": "그 호텔 방에는 개인 테라스가 있어요."
+    },
+    {
+     "en": "Rice terraces cover the hillside.",
+     "ko": "계단식 논이 언덕을 뒤덮고 있어요."
+    },
+    {
+     "en": "The café terrace was full on the sunny day.",
+     "ko": "화창한 날 카페 테라스가 꽉 찼어요."
+    },
+    {
+     "en": "Farmers terraced the slopes to grow tea.",
+     "ko": "농부들은 차를 기르려고 비탈을 계단식으로 만들었어요."
+    },
+    {
+     "en": "They live in a small terrace house in London.",
+     "ko": "그들은 런던의 작은 연립 주택에 살아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "patio",
+     "ko": "안뜰",
+     "en": "A stone patio."
+    },
+    {
+     "type": "연관어",
+     "word": "balcony",
+     "ko": "발코니",
+     "en": "Stand on the balcony."
+    },
+    {
+     "type": "연관어",
+     "word": "garden",
+     "ko": "정원",
+     "en": "A roof garden."
+    },
+    {
+     "type": "연관어",
+     "word": "slope",
+     "ko": "비탈",
+     "en": "A steep slope."
+    },
+    {
+     "type": "연관어",
+     "word": "view",
+     "ko": "경치",
+     "en": "A great view."
+    },
+    {
+     "type": "연관어",
+     "word": "territory",
+     "ko": "영토",
+     "en": "Enemy territory."
+    }
+   ]
+  },
+  "303": {
+   "word": "blossom",
+   "overview": [
+    "blossom은 '(나무의) 꽃'이라는 뜻의 명사입니다.",
+    "cherry blossoms(벚꽃)처럼 씁니다.",
+    "'꽃이 활짝 핌, 만개'라는 뜻으로도 씁니다. (in full blossom)",
+    "동사로는 '꽃이 피다, (사람·관계가) 꽃피다, 성장하다'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "flower",
+     "en": "A pink flower.",
+     "ko": "분홍색 꽃."
+    },
+    {
+     "word": "grow",
+     "en": "Grow into a leader.",
+     "ko": "지도자로 성장하다."
+    }
+   ],
+   "etymology": [
+    "blossom은 고대 영어 blostm(꽃)에서 온 단어입니다.",
+    "bloom(꽃이 피다)과 같은 게르만 말 뿌리에서 나왔습니다.",
+    "'열매 맺는 나무에 피는 꽃'이라는 뜻이 그대로 이어져 왔습니다.",
+    "사람의 재능이나 관계가 꽃처럼 활짝 피어나는 것에도 비유적으로 씁니다.",
+    "blossom의 핵심 이미지는 '봄날 나뭇가지마다 활짝 피어난 꽃 🌸'입니다."
+   ],
+   "meanings": [
+    "꽃나무의 꽃",
+    "꽃이 활짝 핌, 만개",
+    "꽃이 피다, 꽃피다"
+   ],
+   "examples": [
+    {
+     "en": "The cherry blossoms are beautiful in April.",
+     "ko": "4월에는 벚꽃이 아름다워요."
+    },
+    {
+     "en": "The apple trees are in full blossom.",
+     "ko": "사과나무에 꽃이 활짝 피었어요."
+    },
+    {
+     "en": "Their friendship blossomed over the summer.",
+     "ko": "그들의 우정은 여름 동안 꽃피었어요."
+    },
+    {
+     "en": "She blossomed into a confident speaker.",
+     "ko": "그녀는 자신감 있는 연설가로 성장했어요."
+    },
+    {
+     "en": "Bees visit the orange blossoms.",
+     "ko": "벌들이 오렌지 꽃을 찾아와요."
+    },
+    {
+     "en": "We went to see the plum blossoms.",
+     "ko": "우리는 매화를 보러 갔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bloom",
+     "ko": "꽃, 꽃이 피다",
+     "en": "Roses bloom."
+    },
+    {
+     "type": "연관어",
+     "word": "flower",
+     "ko": "꽃",
+     "en": "Wild flowers."
+    },
+    {
+     "type": "연관어",
+     "word": "petal",
+     "ko": "꽃잎",
+     "en": "Pink petals."
+    },
+    {
+     "type": "연관어",
+     "word": "spring",
+     "ko": "봄",
+     "en": "Early spring."
+    },
+    {
+     "type": "연관어",
+     "word": "bud",
+     "ko": "꽃봉오리",
+     "en": "A flower bud."
+    },
+    {
+     "type": "연관어",
+     "word": "wither",
+     "ko": "시들다",
+     "en": "Flowers wither."
+    }
+   ]
+  },
+  "165": {
+   "word": "aspect",
+   "overview": [
+    "aspect는 '측면, 양상'이라는 뜻의 명사입니다.",
+    "every aspect of life(삶의 모든 측면)처럼 씁니다.",
+    "어떤 문제나 상황을 이루는 여러 부분 중 하나를 뜻합니다.",
+    "'(건물이 향한) 방향', 문법에서는 '(동사의) 상'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "An important part.",
+     "ko": "중요한 부분."
+    },
+    {
+     "word": "side",
+     "en": "The other side.",
+     "ko": "다른 면."
+    }
+   ],
+   "etymology": [
+    "aspect는 라틴어 aspectus(바라봄, 모습)에서 온 단어입니다.",
+    "ad(~쪽으로)와 specere(보다)가 합쳐진 말로, inspect(검사하다), respect(존중하다)와 같은 가족입니다.",
+    "'어느 한쪽에서 바라본 모습'이라는 뜻에서 시작되었습니다.",
+    "하나의 문제를 여러 방향에서 볼 때 드러나는 각각의 면을 가리키게 되었습니다.",
+    "aspect의 핵심 이미지는 '보석의 여러 면처럼 보는 방향마다 다른 측면 💎'입니다."
+   ],
+   "meanings": [
+    "국면, 측면",
+    "(문법) 상",
+    "방향"
+   ],
+   "examples": [
+    {
+     "en": "We discussed every aspect of the plan.",
+     "ko": "우리는 그 계획의 모든 측면을 논의했어요."
+    },
+    {
+     "en": "The best aspect of the job is the people.",
+     "ko": "그 일의 가장 좋은 점은 사람들이에요."
+    },
+    {
+     "en": "Money is only one aspect of success.",
+     "ko": "돈은 성공의 한 측면일 뿐이에요."
+    },
+    {
+     "en": "Consider the safety aspect first.",
+     "ko": "안전 측면을 먼저 고려하세요."
+    },
+    {
+     "en": "Music is an important aspect of our culture.",
+     "ko": "음악은 우리 문화의 중요한 부분이에요."
+    },
+    {
+     "en": "The house has a southern aspect.",
+     "ko": "그 집은 남향이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "side",
+     "ko": "면",
+     "en": "The bright side."
+    },
+    {
+     "type": "유의어",
+     "word": "feature",
+     "ko": "특징",
+     "en": "A key feature."
+    },
+    {
+     "type": "연관어",
+     "word": "part",
+     "ko": "부분",
+     "en": "A big part."
+    },
+    {
+     "type": "연관어",
+     "word": "dimension",
+     "ko": "차원, 측면",
+     "en": "A new dimension."
+    },
+    {
+     "type": "연관어",
+     "word": "point of view",
+     "ko": "관점",
+     "en": "My point of view."
+    },
+    {
+     "type": "연관어",
+     "word": "factor",
+     "ko": "요인",
+     "en": "An important factor."
+    }
+   ]
+  },
+  "283": {
+   "word": "biology",
+   "overview": [
+    "biology는 '생물학'이라는 뜻의 명사입니다.",
+    "a biology class(생물 수업)처럼 씁니다.",
+    "식물, 동물, 사람 등 살아 있는 것을 연구하는 학문입니다.",
+    "생물학자는 biologist, 형용사는 biological(생물학의)입니다."
+   ],
+   "easy": [
+    {
+     "word": "life science",
+     "en": "Study life science.",
+     "ko": "생명 과학을 공부하다."
+    },
+    {
+     "word": "study of living things",
+     "en": "The study of living things.",
+     "ko": "생물에 관한 공부."
+    }
+   ],
+   "etymology": [
+    "biology는 그리스어 bios(생명)와 logia(학문)가 합쳐진 단어입니다.",
+    "biography(전기, '삶의 기록'), antibiotic(항생제)도 bios에서 나왔습니다.",
+    "-logy는 psychology(심리학)처럼 '~에 관한 학문'을 뜻합니다.",
+    "'생명을 연구하는 학문'이라는 뜻으로 19세기 초에 만들어졌습니다.",
+    "biology의 핵심 이미지는 '살아 숨 쉬는 모든 생명을 들여다보는 학문 🔬🌱'입니다."
+   ],
+   "meanings": [
+    "생물학"
+   ],
+   "examples": [
+    {
+     "en": "Biology is my favorite subject.",
+     "ko": "생물은 제가 가장 좋아하는 과목이에요."
+    },
+    {
+     "en": "We studied plant cells in biology class.",
+     "ko": "우리는 생물 시간에 식물 세포를 공부했어요."
+    },
+    {
+     "en": "She wants to study marine biology.",
+     "ko": "그녀는 해양 생물학을 공부하고 싶어 해요."
+    },
+    {
+     "en": "The biology lab has many microscopes.",
+     "ko": "생물 실험실에는 현미경이 많아요."
+    },
+    {
+     "en": "Biology helps us understand how our bodies work.",
+     "ko": "생물학은 우리 몸이 어떻게 작동하는지 이해하도록 도와줘요."
+    },
+    {
+     "en": "My uncle is a biologist who studies birds.",
+     "ko": "우리 삼촌은 새를 연구하는 생물학자예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "biologist",
+     "ko": "생물학자",
+     "en": "A famous biologist."
+    },
+    {
+     "type": "파생어",
+     "word": "biological",
+     "ko": "생물학의",
+     "en": "Biological parents."
+    },
+    {
+     "type": "연관어",
+     "word": "chemistry",
+     "ko": "화학",
+     "en": "A chemistry test."
+    },
+    {
+     "type": "연관어",
+     "word": "physics",
+     "ko": "물리학",
+     "en": "Study physics."
+    },
+    {
+     "type": "연관어",
+     "word": "cell",
+     "ko": "세포",
+     "en": "Blood cells."
+    },
+    {
+     "type": "연관어",
+     "word": "gene",
+     "ko": "유전자",
+     "en": "Genes and DNA."
+    }
+   ]
   }
  }
 }
