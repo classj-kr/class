@@ -117,7 +117,7 @@ const CHAPTERS = [
                 "emoji": "🪲",
                 "left": [
                     "마야는 다시 길을 나섰습니다. 흙길을 따라 낮게 날았지요. 저 앞에서 어떤 딱정벌레가 꿈틀거렸습니다.",
-                    "그 딱정벌레는 커다란 공을 굴리는 쇠똥구리였지요. 목에는 빳빳한 깃을 두르고 있었습니다. 얼굴이 온통 벌게져 있었지요.",
+                    "그 딱정벌레는 커다란 공을 굴리는 쇠똥구리였지요. 목에는 빳빳한 옷깃을 세우고 있었습니다. 얼굴이 온통 벌게져 있었지요.",
                     "공이 자꾸 뒤로 굴러 내려왔거든요. 마야는 딱한 마음이 들었습니다."
                 ],
                 "right": [
@@ -138,7 +138,7 @@ const CHAPTERS = [
                     "마야는 그 말이 조금 무뚝뚝하게 들렸지요. 그래도 곁에서 지켜보았습니다."
                 ],
                 "right": [
-                    "쿠르트는 결국 공을 언덕 위로 올렸지요. 땀을 뻘뻘 흘리면서도 웃었습니다. 깃이 삐뚤어진 줄도 몰랐지요.",
+                    "쿠르트는 결국 공을 언덕 위로 올렸지요. 땀을 뻘뻘 흘리면서도 웃었습니다. 옷깃이 삐뚤어진 줄도 몰랐지요.",
                     "마야는 그만 웃음이 났습니다.",
                     "\"봐라, 되지 않느냐.\"",
                     "마야는 그 말이 오래 마음에 남았지요.",
@@ -298,13 +298,13 @@ const CHAPTERS = [
                 "art": "08-ending-3.webp",
                 "emoji": "🎉",
                 "left": [
-                    "그 소리에 온 벌집이 잠에서 깼습니다. 방마다 문이 열리고 벌들이 쏟아져 나왔지요. \"마야가 우리를 살렸대!\" 누군가 외쳤습니다.",
+                    "환호성을 듣고 안쪽 방에 있던 어린 벌들까지 우르르 쏟아져 나왔지요. \"마야가 우리를 살렸대!\" 누군가 외쳤습니다.",
                     "그 말이 입에서 입으로 옮겨 갔지요. 순식간에 문 앞이 가득 찼습니다.",
                     "그때 카산드라가 천천히 걸어 나왔습니다."
                 ],
                 "right": [
                     "카산드라가 마야 앞에 멈춰 섰습니다. 그러고는 마야를 꼭 안아 주었지요. \"장하구나, 마야.\"",
-                    "젊은 벌들이 창을 높이 들고 환호했습니다. 꽃잎이 눈처럼 흩날렸지요.",
+                    "젊은 벌들이 날개를 붕붕 떨며 환호했습니다. 꽃잎이 눈처럼 흩날렸지요.",
                     "달빛 아래, 벌집 앞에서는 밤새 잔치가 이어졌습니다."
                 ]
             }
@@ -438,7 +438,7 @@ const AFTERWORD = {
             ],
             right: [
                 "말벌 이야기를 듣고 마야는 돌아갑니다. 나온 것을 나무랄 무리에게로요. 그것이 이 이야기에서 가장 어려운 걸음입니다.",
-                "말벌들이 물러간 뒤, 마야 스스로 하는 말을 보십시오. 바깥세상을 궁금해한 것이 헛일은 아니었다고 하지요. 규칙을 어긴 벌이 그 규칙을 지킨 셈입니다.",
+                "말벌들이 물러간 뒤, 마야 스스로 하는 말을 보십시오. 바깥세상을 궁금해한 것이 헛일은 아니었다고 하지요. 규칙을 어기고 밖에 나갔던 벌이 오히려 벌집을 지킨 셈입니다.",
                 "마야가 벌집을 나온 것은 잘한 일이었을까요?"
             ]
         }
@@ -942,14 +942,14 @@ const EN = {
                     art: '08-ending-3.webp',
                     emoji: '🎉',
                     left: [
-                        "The cheer woke the whole hive. Doors opened, and bees came pouring out.",
+                        "At the cheering, even the little bees from the inner rooms came pouring out.",
                         "\"Maya saved us all!\" somebody called.",
                         "The word passed from bee to bee, and the doorway was packed.",
                         "Then Cassandra came slowly out."
                     ],
                     right: [
                         "Cassandra stopped in front of Maya and hugged her tight. \"Well done, Maya.\"",
-                        "The young guard bees raised their spears and cheered as flower petals drifted down like snow, and under the moon the feast went on all night."
+                        "The young guard bees buzzed their wings and cheered as flower petals drifted down like snow, and under the moon the feast went on all night."
                     ]
                 }
             ]
@@ -1249,7 +1249,7 @@ const WORDS_KO = {
     "08-ending-3.webp": [
         { w: "순식간에", k: "아주 짧은 사이에.", s: "순식간에 문 앞이 가득 찼습니다." },
         { w: "장하다", k: "훌륭해서 칭찬할 만하다.", s: "\"장하구나, 마야.\"" },
-        { w: "창", k: "긴 자루 끝에 날을 붙인 무기.", s: "젊은 벌들이 창을 높이 들고 환호했습니다." }
+        { w: "붕붕", k: "벌이 날개를 떨 때 나는 소리.", s: "젊은 벌들이 날개를 붕붕 떨며 환호했습니다." }
     ],
     "end.webp": [
         { w: "어기다", k: "정해 놓은 것을 지키지 않다.", s: "규칙을 어긴 것이지요." },
