@@ -13458,6 +13458,1922 @@
      "en": "A famous author."
     }
    ]
+  },
+  "408": {
+   "word": "carpet",
+   "overview": [
+    "carpet은 '양탄자, 카펫'이라는 뜻의 명사입니다.",
+    "a soft carpet(부드러운 카펫)처럼 씁니다.",
+    "roll out the red carpet은 '융숭하게 환영하다'라는 뜻의 관용 표현입니다.",
+    "동사로는 '카펫을 깔다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "rug",
+     "en": "A soft rug.",
+     "ko": "부드러운 러그."
+    },
+    {
+     "word": "floor covering",
+     "en": "A floor covering.",
+     "ko": "바닥 덮개."
+    }
+   ],
+   "etymology": [
+    "carpet은 옛 이탈리아어 carpita(거친 천, 담요)에서 온 단어입니다.",
+    "라틴어 carpere(뜯다, 잡아 뜯다)에서 나온 말로, 실을 뜯어서 짠 천이라는 뜻이었습니다.",
+    "'바닥에 깔아 걷기 좋고 따뜻하게 해 주는 두꺼운 천'이라는 뜻으로 넓어졌습니다.",
+    "red carpet(레드 카펫)이라는 표현도 귀빈을 환영하는 화려한 카펫에서 나왔습니다.",
+    "carpet의 핵심 이미지는 '발밑을 포근하게 감싸는 두꺼운 양탄자 🟥'입니다."
+   ],
+   "meanings": [
+    "양탄자, 카펫"
+   ],
+   "examples": [
+    {
+     "en": "The living room has a soft blue carpet.",
+     "ko": "그 거실은 부드러운 파란색 카펫을 가지고 있어요."
+    },
+    {
+     "en": "They rolled out the red carpet for the guests.",
+     "ko": "그들은 손님들을 위해 레드 카펫을 깔았어요."
+    },
+    {
+     "en": "She vacuumed the carpet every weekend.",
+     "ko": "그녀는 매주 주말마다 카펫을 청소기로 청소했어요."
+    },
+    {
+     "en": "The carpet in the hallway was old and worn.",
+     "ko": "복도의 카펫은 낡고 닳아 있었어요."
+    },
+    {
+     "en": "He spilled juice on the new carpet.",
+     "ko": "그는 새 카펫에 주스를 쏟았어요."
+    },
+    {
+     "en": "Actors walked down the red carpet at the ceremony.",
+     "ko": "배우들은 그 시상식에서 레드 카펫을 걸었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rug",
+     "ko": "러그",
+     "en": "A small rug."
+    },
+    {
+     "type": "연관어",
+     "word": "floor",
+     "ko": "바닥",
+     "en": "A wooden floor."
+    },
+    {
+     "type": "연관어",
+     "word": "soft",
+     "ko": "부드러운",
+     "en": "A soft texture."
+    },
+    {
+     "type": "연관어",
+     "word": "vacuum",
+     "ko": "청소기로 청소하다",
+     "en": "Vacuum the room."
+    },
+    {
+     "type": "연관어",
+     "word": "living room",
+     "ko": "거실",
+     "en": "A cozy living room."
+    },
+    {
+     "type": "연관어",
+     "word": "decorate",
+     "ko": "장식하다",
+     "en": "Decorate the house."
+    }
+   ]
+  },
+  "2186": {
+   "word": "rely",
+   "overview": [
+    "rely는 '의지하다, 신뢰하다'라는 뜻의 동사입니다.",
+    "rely on someone(누군가에게 의지하다)처럼 씁니다.",
+    "믿고 도움이나 지지를 구하는 것을 뜻합니다.",
+    "명사 reliance(의지), 형용사 reliable(믿을 만한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "depend on",
+     "en": "Depend on family.",
+     "ko": "가족에게 의지하다."
+    },
+    {
+     "word": "trust",
+     "en": "Trust a friend.",
+     "ko": "친구를 신뢰하다."
+    }
+   ],
+   "etymology": [
+    "rely는 옛 프랑스어 relier(다시 묶다, 결속하다)에서 온 단어입니다.",
+    "re(다시)와 liare(묶다)가 합쳐진 말로, ally(동맹), rally(집결하다)와 같은 가족입니다.",
+    "'단단히 묶여 서로 의지하는 관계'라는 뜻에서 시작되었습니다.",
+    "'믿고 그 대상에게 자신을 맡기다'라는 뜻으로 지금까지 널리 씁니다.",
+    "rely의 핵심 이미지는 '믿음으로 단단히 묶여 서로 의지하는 관계 🤝'입니다."
+   ],
+   "meanings": [
+    "의지하다, 신뢰하다"
+   ],
+   "examples": [
+    {
+     "en": "She relies on her parents for support.",
+     "ko": "그녀는 지원을 받기 위해 부모님께 의지해요."
+    },
+    {
+     "en": "You can rely on him to finish the job.",
+     "ko": "당신은 그가 그 일을 끝낼 거라고 믿어도 돼요."
+    },
+    {
+     "en": "Farmers rely on rain for their crops.",
+     "ko": "농부들은 작물을 위해 비에 의지해요."
+    },
+    {
+     "en": "We rely on technology more than ever before.",
+     "ko": "우리는 그 어느 때보다 기술에 더 의존해요."
+    },
+    {
+     "en": "She learned to rely on herself after moving out.",
+     "ko": "그녀는 독립한 후 스스로에게 의지하는 법을 배웠어요."
+    },
+    {
+     "en": "The team relies on good communication to succeed.",
+     "ko": "그 팀은 성공하기 위해 좋은 소통에 의존해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "depend",
+     "ko": "의지하다",
+     "en": "Depend on luck."
+    },
+    {
+     "type": "유의어",
+     "word": "trust",
+     "ko": "신뢰하다",
+     "en": "Trust completely."
+    },
+    {
+     "type": "파생어",
+     "word": "reliable",
+     "ko": "믿을 만한",
+     "en": "A reliable source."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지원",
+     "en": "Offer support."
+    },
+    {
+     "type": "연관어",
+     "word": "count on",
+     "ko": "믿다",
+     "en": "Count on a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "help",
+     "ko": "도움",
+     "en": "Need help."
+    }
+   ]
+  },
+  "2372": {
+   "word": "shave",
+   "overview": [
+    "shave는 '면도하다'라는 뜻의 동사입니다.",
+    "shave his beard(수염을 면도하다)처럼 씁니다.",
+    "나무를 얇게 '깎아 내다'라는 뜻으로도 씁니다.",
+    "명사 shaver(면도기)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "trim",
+     "en": "Trim a beard.",
+     "ko": "수염을 다듬다."
+    },
+    {
+     "word": "remove hair",
+     "en": "Remove hair.",
+     "ko": "털을 제거하다."
+    }
+   ],
+   "etymology": [
+    "shave는 고대 영어 sceafan(깎다, 긁어내다)에서 온 단어입니다.",
+    "'날카로운 날로 표면을 얇게 긁어내다'를 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "'날카로운 칼날로 얼굴이나 몸의 털을 얇게 깎아 내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "나무나 다른 재료의 표면을 얇게 깎아 내는 데도 비슷하게 씁니다.",
+    "shave의 핵심 이미지는 '날카로운 날로 표면을 매끈하게 밀어내는 면도 🪒'입니다."
+   ],
+   "meanings": [
+    "면도하다",
+    "얇게 깎아 내다"
+   ],
+   "examples": [
+    {
+     "en": "He shaves every morning before work.",
+     "ko": "그는 출근 전 매일 아침 면도해요."
+    },
+    {
+     "en": "She uses a special cream to shave her legs.",
+     "ko": "그녀는 다리를 면도하는 데 특별한 크림을 써요."
+    },
+    {
+     "en": "The carpenter shaved off a thin layer of wood.",
+     "ko": "그 목수는 얇은 나무 층을 깎아 냈어요."
+    },
+    {
+     "en": "He forgot to shave before the interview.",
+     "ko": "그는 면접 전에 면도하는 것을 잊었어요."
+    },
+    {
+     "en": "She shaved a few seconds off her best time.",
+     "ko": "그녀는 자신의 최고 기록에서 몇 초를 줄였어요."
+    },
+    {
+     "en": "His electric shaver ran out of battery.",
+     "ko": "그의 전기면도기는 배터리가 다 됐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "trim",
+     "ko": "다듬다",
+     "en": "Trim the hedge."
+    },
+    {
+     "type": "연관어",
+     "word": "razor",
+     "ko": "면도날",
+     "en": "A sharp razor."
+    },
+    {
+     "type": "연관어",
+     "word": "beard",
+     "ko": "수염",
+     "en": "A long beard."
+    },
+    {
+     "type": "연관어",
+     "word": "cream",
+     "ko": "크림",
+     "en": "Shaving cream."
+    },
+    {
+     "type": "연관어",
+     "word": "smooth",
+     "ko": "매끄러운",
+     "en": "A smooth face."
+    },
+    {
+     "type": "연관어",
+     "word": "cut",
+     "ko": "자르다",
+     "en": "Cut the wood."
+    }
+   ]
+  },
+  "340": {
+   "word": "breast",
+   "overview": [
+    "breast는 '가슴, 흉부'라는 뜻의 신체 부위 명사입니다.",
+    "breast cancer(유방암)처럼 씁니다.",
+    "닭 등의 '가슴살'이라는 뜻으로도 씁니다. chicken breast(닭가슴살)",
+    "make a clean breast of는 '모든 것을 솔직히 고백하다'라는 관용 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "chest",
+     "en": "The upper chest.",
+     "ko": "가슴 윗부분."
+    },
+    {
+     "word": "front of body",
+     "en": "The front of the body.",
+     "ko": "몸의 앞부분."
+    }
+   ],
+   "etymology": [
+    "breast는 고대 영어 breost(가슴)에서 온 단어입니다.",
+    "'부풀어 오른 것'을 뜻하는 아주 옛 게르만 말과 이어진다고 봅니다.",
+    "'몸의 앞쪽, 심장과 폐를 감싸는 부위'라는 뜻이 그대로 이어져 왔습니다.",
+    "새나 동물의 가슴 부위, 특히 식용 가슴살을 가리키는 데도 폭넓게 씁니다.",
+    "breast의 핵심 이미지는 '심장을 감싸고 있는 몸의 앞쪽, 가슴 🫀'입니다."
+   ],
+   "meanings": [
+    "가슴, 흉부",
+    "(닭 등의) 가슴살"
+   ],
+   "examples": [
+    {
+     "en": "She had regular checkups for breast health.",
+     "ko": "그녀는 유방 건강을 위해 정기 검진을 받았어요."
+    },
+    {
+     "en": "We had grilled chicken breast for dinner.",
+     "ko": "우리는 저녁으로 구운 닭가슴살을 먹었어요."
+    },
+    {
+     "en": "He held his hand over his breast in respect.",
+     "ko": "그는 존경의 표시로 자기 가슴에 손을 얹었어요."
+    },
+    {
+     "en": "The bird's breast feathers were bright red.",
+     "ko": "그 새의 가슴 깃털은 밝은 빨간색이었어요."
+    },
+    {
+     "en": "Doctors recommend regular breast exams.",
+     "ko": "의사들은 정기적인 유방 검진을 권해요."
+    },
+    {
+     "en": "She finally made a clean breast of the whole story.",
+     "ko": "그녀는 마침내 그 이야기 전체를 솔직히 고백했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "chest",
+     "ko": "가슴",
+     "en": "A broad chest."
+    },
+    {
+     "type": "연관어",
+     "word": "heart",
+     "ko": "심장",
+     "en": "A beating heart."
+    },
+    {
+     "type": "연관어",
+     "word": "lung",
+     "ko": "폐",
+     "en": "Healthy lungs."
+    },
+    {
+     "type": "연관어",
+     "word": "chicken",
+     "ko": "닭",
+     "en": "Grilled chicken."
+    },
+    {
+     "type": "연관어",
+     "word": "health",
+     "ko": "건강",
+     "en": "Good health."
+    },
+    {
+     "type": "연관어",
+     "word": "exam",
+     "ko": "검진",
+     "en": "A medical exam."
+    }
+   ]
+  },
+  "2145": {
+   "word": "react",
+   "overview": [
+    "react는 '반응하다'라는 뜻의 동사입니다.",
+    "react to the news(그 소식에 반응하다)처럼 씁니다.",
+    "화학 물질이 서로 '반응하다'라는 뜻으로도 씁니다.",
+    "명사 reaction(반응)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "respond",
+     "en": "Respond quickly.",
+     "ko": "빠르게 반응하다."
+    },
+    {
+     "word": "act back",
+     "en": "Act back immediately.",
+     "ko": "즉시 되받아 행동하다."
+    }
+   ],
+   "etymology": [
+    "react는 re(다시, 반대로)와 act(행동하다)가 합쳐진 단어입니다.",
+    "라틴어 agere(행하다)에서 나온 말로, action(행동)과 같은 가족입니다.",
+    "'상대의 행동에 맞서 다시 행동으로 되돌려 주다'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람의 반응뿐 아니라 화학 물질이 서로 작용하는 것에도 폭넓게 씁니다.",
+    "react의 핵심 이미지는 '어떤 자극에 대해 즉각적으로 되돌아오는 반응 ⚡'입니다."
+   ],
+   "meanings": [
+    "반응하다"
+   ],
+   "examples": [
+    {
+     "en": "She reacted with surprise to the good news.",
+     "ko": "그녀는 그 좋은 소식에 놀라움으로 반응했어요."
+    },
+    {
+     "en": "How did he react when you told him?",
+     "ko": "네가 그에게 말했을 때 그는 어떻게 반응했어?"
+    },
+    {
+     "en": "The chemicals reacted quickly when mixed.",
+     "ko": "그 화학 물질들은 섞였을 때 빠르게 반응했어요."
+    },
+    {
+     "en": "He reacted calmly under pressure.",
+     "ko": "그는 압박 속에서도 차분하게 반응했어요."
+    },
+    {
+     "en": "Some skin reacts badly to certain soaps.",
+     "ko": "어떤 피부는 특정 비누에 나쁘게 반응해요."
+    },
+    {
+     "en": "The crowd reacted with loud applause.",
+     "ko": "군중은 큰 박수로 반응했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "respond",
+     "ko": "응답하다",
+     "en": "Respond quickly."
+    },
+    {
+     "type": "파생어",
+     "word": "reaction",
+     "ko": "반응",
+     "en": "A strong reaction."
+    },
+    {
+     "type": "연관어",
+     "word": "act",
+     "ko": "행동하다",
+     "en": "Act fast."
+    },
+    {
+     "type": "연관어",
+     "word": "behave",
+     "ko": "행동하다",
+     "en": "Behave calmly."
+    },
+    {
+     "type": "연관어",
+     "word": "surprise",
+     "ko": "놀람",
+     "en": "A big surprise."
+    },
+    {
+     "type": "연관어",
+     "word": "emotion",
+     "ko": "감정",
+     "en": "A strong emotion."
+    }
+   ]
+  },
+  "2089": {
+   "word": "protest",
+   "overview": [
+    "protest는 '항의, 시위'라는 뜻의 명사이자 '항의하다'라는 뜻의 동사입니다.",
+    "hold a protest(시위를 벌이다)처럼 씁니다.",
+    "동사 protest[프로테스트]는 명사와 강세 위치가 다릅니다.",
+    "불공평하다고 여기는 것에 반대해서 목소리를 내는 것을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "complain",
+     "en": "Complain publicly.",
+     "ko": "공개적으로 항의하다."
+    },
+    {
+     "word": "demonstrate",
+     "en": "Demonstrate peacefully.",
+     "ko": "평화롭게 시위하다."
+    }
+   ],
+   "etymology": [
+    "protest는 라틴어 protestari(공개적으로 증언하다)에서 온 단어입니다.",
+    "pro(앞에서)와 testari(증언하다)가 합쳐진 말로, testify(증언하다)와 같은 가족입니다.",
+    "'모두 앞에서 공개적으로 자신의 입장을 증언하듯 밝히다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'부당함에 맞서 공개적으로 반대 목소리를 내다'라는 뜻으로 지금까지 널리 씁니다.",
+    "protest의 핵심 이미지는 '부당함에 맞서 목소리를 높이는 항의와 시위 ✊'입니다."
+   ],
+   "meanings": [
+    "항의, 시위 (명사)",
+    "항의하다, 이의를 제기하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Thousands joined the protest against the new law.",
+     "ko": "수천 명이 그 새 법에 반대하는 시위에 참여했어요."
+    },
+    {
+     "en": "He protested against the unfair decision.",
+     "ko": "그는 그 불공평한 결정에 항의했어요."
+    },
+    {
+     "en": "Students organized a peaceful protest on campus.",
+     "ko": "학생들은 캠퍼스에서 평화로운 시위를 조직했어요."
+    },
+    {
+     "en": "She protested her innocence throughout the trial.",
+     "ko": "그녀는 재판 내내 자신의 결백을 주장했어요."
+    },
+    {
+     "en": "The workers protested against low wages.",
+     "ko": "노동자들은 낮은 임금에 항의했어요."
+    },
+    {
+     "en": "The protest lasted for several hours downtown.",
+     "ko": "그 시위는 시내에서 몇 시간 동안 계속되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "demonstrate",
+     "ko": "시위하다",
+     "en": "Demonstrate against war."
+    },
+    {
+     "type": "연관어",
+     "word": "complain",
+     "ko": "불평하다",
+     "en": "Complain loudly."
+    },
+    {
+     "type": "연관어",
+     "word": "oppose",
+     "ko": "반대하다",
+     "en": "Oppose the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "rally",
+     "ko": "집회",
+     "en": "Attend a rally."
+    },
+    {
+     "type": "연관어",
+     "word": "march",
+     "ko": "행진하다",
+     "en": "March downtown."
+    },
+    {
+     "type": "연관어",
+     "word": "unfair",
+     "ko": "불공평한",
+     "en": "An unfair rule."
+    }
+   ]
+  },
+  "542": {
+   "word": "communicate",
+   "overview": [
+    "communicate는 '소통하다, 전달하다'라는 뜻의 동사입니다.",
+    "communicate clearly(명확하게 소통하다)처럼 씁니다.",
+    "말, 글, 몸짓 등을 통해 생각이나 정보를 주고받는 것을 뜻합니다.",
+    "명사 communication(소통, 의사소통)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "talk",
+     "en": "Talk openly.",
+     "ko": "터놓고 이야기하다."
+    },
+    {
+     "word": "share",
+     "en": "Share ideas.",
+     "ko": "생각을 나누다."
+    }
+   ],
+   "etymology": [
+    "communicate는 라틴어 communicare(공유하다, 나누다)에서 온 단어입니다.",
+    "communis(공동의, 공통의)에서 나온 말로, community(공동체)와 같은 가족입니다.",
+    "'생각이나 정보를 다른 사람과 공동으로 나누다'라는 뜻이 그대로 이어져 왔습니다.",
+    "말뿐 아니라 글, 몸짓, 기술을 통한 모든 형태의 소통에 폭넓게 씁니다.",
+    "communicate의 핵심 이미지는 '생각과 마음을 서로 공유하며 다리를 놓는 소통 💬'입니다."
+   ],
+   "meanings": [
+    "소통하다, 전달하다"
+   ],
+   "examples": [
+    {
+     "en": "It's important to communicate your feelings clearly.",
+     "ko": "당신의 감정을 명확하게 전달하는 것은 중요해요."
+    },
+    {
+     "en": "They communicate through video calls every week.",
+     "ko": "그들은 매주 영상 통화를 통해 소통해요."
+    },
+    {
+     "en": "Animals communicate in many different ways.",
+     "ko": "동물들은 여러 다양한 방식으로 소통해요."
+    },
+    {
+     "en": "She communicates well with her students.",
+     "ko": "그녀는 자신의 학생들과 잘 소통해요."
+    },
+    {
+     "en": "Good leaders communicate their vision clearly.",
+     "ko": "훌륭한 리더들은 자신의 비전을 명확하게 전달해요."
+    },
+    {
+     "en": "We need to communicate more openly as a team.",
+     "ko": "우리는 팀으로서 더 터놓고 소통해야 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "share",
+     "ko": "공유하다",
+     "en": "Share information."
+    },
+    {
+     "type": "파생어",
+     "word": "communication",
+     "ko": "소통",
+     "en": "Clear communication."
+    },
+    {
+     "type": "연관어",
+     "word": "express",
+     "ko": "표현하다",
+     "en": "Express feelings."
+    },
+    {
+     "type": "연관어",
+     "word": "connect",
+     "ko": "연결되다",
+     "en": "Connect with others."
+    },
+    {
+     "type": "연관어",
+     "word": "language",
+     "ko": "언어",
+     "en": "A common language."
+    },
+    {
+     "type": "연관어",
+     "word": "interact",
+     "ko": "교류하다",
+     "en": "Interact daily."
+    }
+   ]
+  },
+  "1089": {
+   "word": "flame",
+   "overview": [
+    "flame은 '불꽃'이라는 뜻의 명사이자 '불꽃을 내며 타다'라는 뜻의 동사입니다.",
+    "a candle's flame(촛불의 불꽃)처럼 씁니다.",
+    "'격렬한 감정'이라는 비유적인 뜻으로도 씁니다. the flame of love(사랑의 불꽃)",
+    "old flame은 '옛 연인'이라는 뜻의 표현으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fire",
+     "en": "A small fire.",
+     "ko": "작은 불."
+    },
+    {
+     "word": "burning light",
+     "en": "A burning light.",
+     "ko": "타오르는 불빛."
+    }
+   ],
+   "etymology": [
+    "flame은 라틴어 flamma(불꽃)에서 온 단어입니다.",
+    "flagrare(타오르다)에서 나온 말로, flagrant(명백한, '불타는 듯 뚜렷한')와 같은 가족입니다.",
+    "'뜨겁게 타오르는 빛의 혀 모양'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'사랑이나 열정처럼 뜨겁게 타오르는 감정'이라는 비유적인 뜻도 여기서 나왔습니다.",
+    "flame의 핵심 이미지는 '혀처럼 넘실대며 뜨겁게 타오르는 불꽃 🔥'입니다."
+   ],
+   "meanings": [
+    "불꽃 (명사)",
+    "불꽃을 내며 타다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The candle's flame flickered in the wind.",
+     "ko": "그 촛불의 불꽃은 바람에 깜빡였어요."
+    },
+    {
+     "en": "The wood flamed brightly in the fireplace.",
+     "ko": "그 나무는 벽난로에서 밝게 타올랐어요."
+    },
+    {
+     "en": "Flames spread quickly through the dry forest.",
+     "ko": "불꽃이 그 마른 숲을 빠르게 퍼져 나갔어요."
+    },
+    {
+     "en": "He kept the flame of hope alive.",
+     "ko": "그는 희망의 불씨를 계속 살려 뒀어요."
+    },
+    {
+     "en": "She saw an old flame at the reunion.",
+     "ko": "그녀는 그 동창회에서 옛 연인을 봤어요."
+    },
+    {
+     "en": "Firefighters fought the flames all night.",
+     "ko": "소방관들은 밤새 그 불길과 싸웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fire",
+     "ko": "불",
+     "en": "Light a fire."
+    },
+    {
+     "type": "연관어",
+     "word": "burn",
+     "ko": "타다",
+     "en": "Burn brightly."
+    },
+    {
+     "type": "연관어",
+     "word": "candle",
+     "ko": "초",
+     "en": "Light a candle."
+    },
+    {
+     "type": "연관어",
+     "word": "spark",
+     "ko": "불꽃",
+     "en": "A tiny spark."
+    },
+    {
+     "type": "연관어",
+     "word": "heat",
+     "ko": "열",
+     "en": "Intense heat."
+    },
+    {
+     "type": "연관어",
+     "word": "passion",
+     "ko": "열정",
+     "en": "Burning passion."
+    }
+   ]
+  },
+  "920": {
+   "word": "emotion",
+   "overview": [
+    "emotion은 '감정'이라는 뜻의 명사입니다.",
+    "show emotion(감정을 드러내다)처럼 씁니다.",
+    "기쁨, 슬픔, 분노 등 마음속에서 일어나는 강한 느낌을 뜻합니다.",
+    "형용사 emotional(감정적인)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "feeling",
+     "en": "A strong feeling.",
+     "ko": "강한 느낌."
+    },
+    {
+     "word": "sentiment",
+     "en": "A shared sentiment.",
+     "ko": "공유된 감정."
+    }
+   ],
+   "etymology": [
+    "emotion은 라틴어 emovere(밖으로 움직이다, 흔들다)에서 온 단어입니다.",
+    "ex(밖으로)와 movere(움직이다)가 합쳐진 말로, move(움직이다), motion(움직임)과 같은 가족입니다.",
+    "'마음속에서 밖으로 흔들려 나오는 강렬한 느낌'이라는 뜻이 그대로 이어져 왔습니다.",
+    "기쁨, 슬픔, 분노 등 마음을 흔드는 모든 느낌을 폭넓게 가리킵니다.",
+    "emotion의 핵심 이미지는 '마음속에서 밖으로 물결치듯 솟아오르는 감정 💗'입니다."
+   ],
+   "meanings": [
+    "감정, 느낌"
+   ],
+   "examples": [
+    {
+     "en": "She couldn't hide her emotions during the speech.",
+     "ko": "그녀는 그 연설 동안 자신의 감정을 숨길 수 없었어요."
+    },
+    {
+     "en": "The movie touched many people's emotions.",
+     "ko": "그 영화는 많은 사람의 감정을 건드렸어요."
+    },
+    {
+     "en": "It's healthy to express your emotions openly.",
+     "ko": "감정을 터놓고 표현하는 것은 건강한 일이에요."
+    },
+    {
+     "en": "His voice was full of emotion.",
+     "ko": "그의 목소리는 감정으로 가득했어요."
+    },
+    {
+     "en": "Fear is a natural human emotion.",
+     "ko": "두려움은 자연스러운 인간의 감정이에요."
+    },
+    {
+     "en": "She felt a mix of emotions after the win.",
+     "ko": "그녀는 그 승리 후 뒤섞인 감정을 느꼈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "feeling",
+     "ko": "느낌",
+     "en": "A gut feeling."
+    },
+    {
+     "type": "파생어",
+     "word": "emotional",
+     "ko": "감정적인",
+     "en": "An emotional moment."
+    },
+    {
+     "type": "연관어",
+     "word": "sentiment",
+     "ko": "감정, 정서",
+     "en": "A shared sentiment."
+    },
+    {
+     "type": "연관어",
+     "word": "mood",
+     "ko": "기분",
+     "en": "A cheerful mood."
+    },
+    {
+     "type": "연관어",
+     "word": "express",
+     "ko": "표현하다",
+     "en": "Express feelings."
+    },
+    {
+     "type": "연관어",
+     "word": "heart",
+     "ko": "마음",
+     "en": "Speak from the heart."
+    }
+   ]
+  },
+  "280": {
+   "word": "bin",
+   "overview": [
+    "bin은 '통, 저장함'이라는 뜻의 명사이자 '분류하여 넣다'라는 뜻의 동사입니다.",
+    "a trash bin(쓰레기통)처럼 씁니다.",
+    "곡식 등을 저장하는 큰 통이라는 뜻으로도 씁니다.",
+    "recycling bin(재활용통)처럼 다른 말과 자주 합쳐 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "container",
+     "en": "A storage container.",
+     "ko": "저장 용기."
+    },
+    {
+     "word": "trash can",
+     "en": "A trash can.",
+     "ko": "쓰레기통."
+    }
+   ],
+   "etymology": [
+    "bin은 고대 영어 binn(구유, 저장함)에서 온 단어입니다.",
+    "'곡식이나 여물을 담아 두는 통'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 쓰레기, 재활용품, 곡식 등 다양한 것을 담는 통에 폭넓게 씁니다.",
+    "동사로는 '통에 분류해서 넣다'라는 뜻으로도 씁니다.",
+    "bin의 핵심 이미지는 '물건을 분류해서 담아 두는 통, 저장함 🗑️'입니다."
+   ],
+   "meanings": [
+    "통, 저장함 (명사)",
+    "분류하여 넣다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Please throw the paper in the recycling bin.",
+     "ko": "그 종이를 재활용통에 버려 주세요."
+    },
+    {
+     "en": "The trash bin was overflowing with garbage.",
+     "ko": "그 쓰레기통은 쓰레기로 넘쳐나고 있었어요."
+    },
+    {
+     "en": "Grain was stored in a large bin on the farm.",
+     "ko": "곡식은 농장의 큰 저장함에 보관되었어요."
+    },
+    {
+     "en": "She binned the old newspapers.",
+     "ko": "그녀는 오래된 신문들을 통에 버렸어요."
+    },
+    {
+     "en": "Each bin is labeled for different types of waste.",
+     "ko": "각 통은 다른 종류의 쓰레기를 위해 표시되어 있어요."
+    },
+    {
+     "en": "He emptied the bin before it got too full.",
+     "ko": "그는 통이 너무 가득 차기 전에 비웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "container",
+     "ko": "용기",
+     "en": "A storage container."
+    },
+    {
+     "type": "연관어",
+     "word": "trash",
+     "ko": "쓰레기",
+     "en": "Take out the trash."
+    },
+    {
+     "type": "연관어",
+     "word": "recycle",
+     "ko": "재활용하다",
+     "en": "Recycle plastic."
+    },
+    {
+     "type": "연관어",
+     "word": "waste",
+     "ko": "폐기물",
+     "en": "Reduce waste."
+    },
+    {
+     "type": "연관어",
+     "word": "storage",
+     "ko": "저장",
+     "en": "Extra storage."
+    },
+    {
+     "type": "연관어",
+     "word": "empty",
+     "ko": "비우다",
+     "en": "Empty the bin."
+    }
+   ]
+  },
+  "604": {
+   "word": "content",
+   "overview": [
+    "content는 '내용'이라는 뜻의 명사이자 '만족스러운'이라는 뜻의 형용사입니다.",
+    "the content of the book(그 책의 내용)처럼 씁니다.",
+    "형용사 content[컨텐트]는 명사와 강세 위치가 다릅니다. feel content(만족스러워하다)",
+    "복수형 contents는 '목차, 내용물'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "substance",
+     "en": "The main substance.",
+     "ko": "주된 내용."
+    },
+    {
+     "word": "satisfied",
+     "en": "Feel satisfied.",
+     "ko": "만족스러워하다."
+    }
+   ],
+   "etymology": [
+    "content(내용)는 라틴어 contentum(담긴 것)에서 온 단어입니다.",
+    "com(함께)과 tenere(붙잡다, 담다)가 합쳐진 말로, contain(담다, 포함하다)과 같은 가족입니다.",
+    "'그릇 안에 담겨 있는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "형용사 content(만족스러운)는 다른 뿌리로, '자신이 가진 것에 만족해 담아 두는 마음'에서 나왔습니다.",
+    "content의 핵심 이미지는 '그릇 안에 담긴 내용물과 그것에 만족하는 마음 📦'입니다."
+   ],
+   "meanings": [
+    "내용, 내용물 (명사)",
+    "만족스러운 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "The content of the letter surprised her.",
+     "ko": "그 편지의 내용은 그녀를 놀라게 했어요."
+    },
+    {
+     "en": "He felt content with his simple life.",
+     "ko": "그는 자신의 소박한 삶에 만족했어요."
+    },
+    {
+     "en": "Please check the table of contents.",
+     "ko": "목차를 확인해 주세요."
+    },
+    {
+     "en": "This website has a lot of useful content.",
+     "ko": "이 웹사이트는 많은 유용한 콘텐츠를 가지고 있어요."
+    },
+    {
+     "en": "She was content just to relax at home.",
+     "ko": "그녀는 그냥 집에서 쉬는 것만으로 만족했어요."
+    },
+    {
+     "en": "The content of the speech focused on kindness.",
+     "ko": "그 연설의 내용은 친절함에 초점을 맞췄어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "substance",
+     "ko": "내용",
+     "en": "The main substance."
+    },
+    {
+     "type": "유의어",
+     "word": "satisfied",
+     "ko": "만족한",
+     "en": "Feel satisfied."
+    },
+    {
+     "type": "연관어",
+     "word": "material",
+     "ko": "자료",
+     "en": "Study material."
+    },
+    {
+     "type": "연관어",
+     "word": "subject",
+     "ko": "주제",
+     "en": "The main subject."
+    },
+    {
+     "type": "연관어",
+     "word": "happy",
+     "ko": "행복한",
+     "en": "A happy life."
+    },
+    {
+     "type": "연관어",
+     "word": "peaceful",
+     "ko": "평화로운",
+     "en": "A peaceful mind."
+    }
+   ]
+  },
+  "726": {
+   "word": "debate",
+   "overview": [
+    "debate는 '논쟁, 토론'이라는 뜻의 명사이자 '논쟁하다, 토론하다'라는 뜻의 동사입니다.",
+    "a heated debate(격렬한 논쟁)처럼 씁니다.",
+    "찬반이 갈리는 주제에 대해 서로 다른 의견을 논리적으로 주고받는 것을 뜻합니다.",
+    "학교의 '토론 대회'라는 뜻으로도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "discussion",
+     "en": "A group discussion.",
+     "ko": "그룹 토론."
+    },
+    {
+     "word": "argue",
+     "en": "Argue a point.",
+     "ko": "요점을 주장하다."
+    }
+   ],
+   "etymology": [
+    "debate는 옛 프랑스어 debatre(다투다, 싸우다)에서 온 단어입니다.",
+    "de(강조)와 batre(치다, 싸우다)가 합쳐진 말로, battle(전투)과 같은 가족입니다.",
+    "'말로 서로 치고받으며 다투는 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 몸싸움이 아니라 '논리적으로 주장을 주고받는 토론'이라는 뜻으로 씁니다.",
+    "debate의 핵심 이미지는 '논리로 서로의 주장을 겨루는 토론 🗣️'입니다."
+   ],
+   "meanings": [
+    "논쟁, 토론 (명사)",
+    "논쟁하다, 토론하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "There was a heated debate about the new policy.",
+     "ko": "그 새 정책에 대한 격렬한 논쟁이 있었어요."
+    },
+    {
+     "en": "They debated the issue for over an hour.",
+     "ko": "그들은 그 문제에 대해 한 시간 넘게 논쟁했어요."
+    },
+    {
+     "en": "The school held a debate competition last week.",
+     "ko": "그 학교는 지난주에 토론 대회를 열었어요."
+    },
+    {
+     "en": "She is skilled at debating difficult topics.",
+     "ko": "그녀는 어려운 주제를 토론하는 데 능숙해요."
+    },
+    {
+     "en": "The candidates debated on live television.",
+     "ko": "그 후보들은 생방송 텔레비전에서 토론했어요."
+    },
+    {
+     "en": "This subject is still under debate among scientists.",
+     "ko": "이 주제는 과학자들 사이에서 여전히 논쟁 중이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "discussion",
+     "ko": "토론",
+     "en": "A group discussion."
+    },
+    {
+     "type": "연관어",
+     "word": "argue",
+     "ko": "주장하다",
+     "en": "Argue a case."
+    },
+    {
+     "type": "연관어",
+     "word": "opinion",
+     "ko": "의견",
+     "en": "A strong opinion."
+    },
+    {
+     "type": "연관어",
+     "word": "discuss",
+     "ko": "논의하다",
+     "en": "Discuss the plan."
+    },
+    {
+     "type": "연관어",
+     "word": "disagree",
+     "ko": "동의하지 않다",
+     "en": "Disagree politely."
+    },
+    {
+     "type": "연관어",
+     "word": "topic",
+     "ko": "주제",
+     "en": "A hot topic."
+    }
+   ]
+  },
+  "2066": {
+   "word": "profession",
+   "overview": [
+    "profession은 '직업'이라는 뜻의 명사입니다.",
+    "by profession(직업으로는)처럼 씁니다.",
+    "전문적인 훈련과 자격이 필요한 직업을 가리킵니다.",
+    "형용사 professional(전문적인, 전문가의)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "job",
+     "en": "A stable job.",
+     "ko": "안정된 직업."
+    },
+    {
+     "word": "career",
+     "en": "A long career.",
+     "ko": "오랜 경력."
+    }
+   ],
+   "etymology": [
+    "profession은 라틴어 professio(공개적으로 선언함)에서 온 단어입니다.",
+    "pro(앞에서)와 fateri(고백하다, 밝히다)가 합쳐진 말로, confess(고백하다)와 같은 가족입니다.",
+    "처음에는 종교적 서약을 '공개적으로 선언하다'라는 뜻이었습니다.",
+    "'전문적인 훈련을 마치고 공개적으로 하겠다고 선언한 일'이라는 뜻으로 넓어졌습니다.",
+    "profession의 핵심 이미지는 '전문 지식과 훈련을 갖춘 공식적인 직업 👩‍⚕️'입니다."
+   ],
+   "meanings": [
+    "직업"
+   ],
+   "examples": [
+    {
+     "en": "She is a doctor by profession.",
+     "ko": "그녀는 직업으로는 의사예요."
+    },
+    {
+     "en": "Teaching is a respected profession.",
+     "ko": "교직은 존경받는 직업이에요."
+    },
+    {
+     "en": "He chose his profession carefully after college.",
+     "ko": "그는 대학 졸업 후 신중하게 자신의 직업을 선택했어요."
+    },
+    {
+     "en": "Many professions require years of training.",
+     "ko": "많은 직업은 수년간의 훈련을 필요로 해요."
+    },
+    {
+     "en": "Law is considered a demanding profession.",
+     "ko": "법조계는 힘든 직업으로 여겨져요."
+    },
+    {
+     "en": "She's proud of her profession as a nurse.",
+     "ko": "그녀는 간호사로서의 자신의 직업을 자랑스러워해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "job",
+     "ko": "직업",
+     "en": "A part-time job."
+    },
+    {
+     "type": "파생어",
+     "word": "professional",
+     "ko": "전문적인",
+     "en": "A professional attitude."
+    },
+    {
+     "type": "연관어",
+     "word": "career",
+     "ko": "경력",
+     "en": "A successful career."
+    },
+    {
+     "type": "연관어",
+     "word": "occupation",
+     "ko": "직업",
+     "en": "State your occupation."
+    },
+    {
+     "type": "연관어",
+     "word": "training",
+     "ko": "훈련",
+     "en": "Professional training."
+    },
+    {
+     "type": "연관어",
+     "word": "skill",
+     "ko": "기술",
+     "en": "A valuable skill."
+    }
+   ]
+  },
+  "266": {
+   "word": "bench",
+   "overview": [
+    "bench는 '벤치, 긴 의자'라는 뜻의 명사입니다.",
+    "sit on a bench(벤치에 앉다)처럼 씁니다.",
+    "법률에서 '판사석, 판사직'이라는 뜻으로도 씁니다.",
+    "스포츠에서 대기하는 선수들의 '벤치'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "long seat",
+     "en": "A long seat.",
+     "ko": "긴 좌석."
+    },
+    {
+     "word": "park seat",
+     "en": "A park seat.",
+     "ko": "공원 의자."
+    }
+   ],
+   "etymology": [
+    "bench는 고대 영어 benc(긴 의자)에서 온 단어입니다.",
+    "'여러 명이 나란히 앉을 수 있는 긴 좌석'이라는 뜻이 그대로 이어져 왔습니다.",
+    "옛날 재판관이 앉던 높은 긴 의자에서 '판사석, 판사직'이라는 뜻이 나왔습니다.",
+    "운동선수가 경기를 기다리며 앉는 좌석도 같은 이미지에서 '벤치'라고 부릅니다.",
+    "bench의 핵심 이미지는 '여러 사람이 나란히 앉는 튼튼한 긴 의자 🪑'입니다."
+   ],
+   "meanings": [
+    "벤치, 긴 의자",
+    "(법률) 판사석, 판사직"
+   ],
+   "examples": [
+    {
+     "en": "They sat on a bench in the park.",
+     "ko": "그들은 공원의 벤치에 앉았어요."
+    },
+    {
+     "en": "The judge on the bench listened carefully.",
+     "ko": "판사석에 있던 판사는 신중하게 들었어요."
+    },
+    {
+     "en": "He was benched for most of the game.",
+     "ko": "그는 그 경기의 대부분 동안 벤치에 앉아 있었어요."
+    },
+    {
+     "en": "The old wooden bench creaked when she sat down.",
+     "ko": "그 낡은 나무 벤치는 그녀가 앉았을 때 삐걱거렸어요."
+    },
+    {
+     "en": "There's a bench under the shade of the tree.",
+     "ko": "그 나무 그늘 아래에 벤치가 있어요."
+    },
+    {
+     "en": "He was appointed to the bench after years as a lawyer.",
+     "ko": "그는 변호사로 수년간 일한 후 판사직에 임명되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "seat",
+     "ko": "좌석",
+     "en": "A comfortable seat."
+    },
+    {
+     "type": "연관어",
+     "word": "park",
+     "ko": "공원",
+     "en": "A quiet park."
+    },
+    {
+     "type": "연관어",
+     "word": "judge",
+     "ko": "판사",
+     "en": "A fair judge."
+    },
+    {
+     "type": "연관어",
+     "word": "court",
+     "ko": "법정",
+     "en": "A crowded court."
+    },
+    {
+     "type": "연관어",
+     "word": "sit",
+     "ko": "앉다",
+     "en": "Sit quietly."
+    },
+    {
+     "type": "연관어",
+     "word": "team",
+     "ko": "팀",
+     "en": "A winning team."
+    }
+   ]
+  },
+  "823": {
+   "word": "display",
+   "overview": [
+    "display는 '전시, 진열'이라는 뜻의 명사이자 '전시하다'라는 뜻의 동사입니다.",
+    "on display(전시 중인)처럼 씁니다.",
+    "컴퓨터나 텔레비전의 '화면, 디스플레이'라는 뜻으로도 아주 자주 씁니다.",
+    "'(감정 등을) 드러내다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "show",
+     "en": "Show artwork.",
+     "ko": "작품을 보여주다."
+    },
+    {
+     "word": "screen",
+     "en": "A bright screen.",
+     "ko": "밝은 화면."
+    }
+   ],
+   "etymology": [
+    "display는 라틴어 displicare(펼치다, 풀다)에서 온 단어입니다.",
+    "dis(따로)와 plicare(접다)가 합쳐진 말로, complex(복잡한, '함께 접힌')와 같은 가족입니다.",
+    "'접혀 있던 것을 펼쳐 눈앞에 보여 주다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'감정이나 능력을 겉으로 펼쳐 드러내다'라는 비유적인 뜻도 여기서 나왔습니다.",
+    "display의 핵심 이미지는 '접혀 있던 것을 활짝 펼쳐 보여 주는 전시 🖥️'입니다."
+   ],
+   "meanings": [
+    "전시, 진열 (명사)",
+    "전시하다 (동사)",
+    "화면, 디스플레이 (명사)",
+    "(감정 등을) 드러내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The museum has a new display of ancient art.",
+     "ko": "그 박물관은 고대 미술의 새로운 전시를 하고 있어요."
+    },
+    {
+     "en": "She displayed her paintings at the gallery.",
+     "ko": "그녀는 화랑에서 자신의 그림들을 전시했어요."
+    },
+    {
+     "en": "The phone's display cracked when it fell.",
+     "ko": "그 휴대폰의 화면은 떨어졌을 때 깨졌어요."
+    },
+    {
+     "en": "He displayed great courage during the crisis.",
+     "ko": "그는 그 위기 동안 큰 용기를 드러냈어요."
+    },
+    {
+     "en": "The store's window display attracted many customers.",
+     "ko": "그 가게의 진열창 전시는 많은 손님을 끌어들였어요."
+    },
+    {
+     "en": "The trophy was on display in the school hallway.",
+     "ko": "그 트로피는 학교 복도에 전시되어 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "show",
+     "ko": "보여주다",
+     "en": "Show pride."
+    },
+    {
+     "type": "연관어",
+     "word": "exhibit",
+     "ko": "전시(하다)",
+     "en": "An art exhibit."
+    },
+    {
+     "type": "연관어",
+     "word": "screen",
+     "ko": "화면",
+     "en": "A wide screen."
+    },
+    {
+     "type": "연관어",
+     "word": "reveal",
+     "ko": "드러내다",
+     "en": "Reveal talent."
+    },
+    {
+     "type": "연관어",
+     "word": "arrange",
+     "ko": "배열하다",
+     "en": "Arrange flowers."
+    },
+    {
+     "type": "연관어",
+     "word": "gallery",
+     "ko": "화랑",
+     "en": "An art gallery."
+    }
+   ]
+  },
+  "2812": {
+   "word": "twin",
+   "overview": [
+    "twin은 '쌍둥이'라는 뜻의 명사입니다.",
+    "identical twins(일란성 쌍둥이)처럼 씁니다.",
+    "형용사로는 '쌍둥이의, 짝을 이루는'이라는 뜻으로도 씁니다. twin beds(트윈 침대)",
+    "동사로는 '짝을 이루다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "identical sibling",
+     "en": "An identical sibling.",
+     "ko": "똑같이 생긴 형제자매."
+    },
+    {
+     "word": "matching pair",
+     "en": "A matching pair.",
+     "ko": "짝을 이루는 한 쌍."
+    }
+   ],
+   "etymology": [
+    "twin은 고대 영어 twinn(둘로 이루어진)에서 온 단어입니다.",
+    "two(둘)와 같은 뿌리에서 나온 단어입니다.",
+    "'같은 배 속에서 함께 태어난 두 사람'이라는 뜻이 그대로 이어져 왔습니다.",
+    "짝을 이루는 두 개의 물건이나 개념에도 폭넓게 씁니다. (예: twin cities)",
+    "twin의 핵심 이미지는 '똑같이 닮은 채로 함께 태어난 쌍둥이 👯'입니다."
+   ],
+   "meanings": [
+    "쌍둥이 (명사)",
+    "쌍둥이의, 짝을 이루는 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "She has an identical twin sister.",
+     "ko": "그녀는 일란성 쌍둥이 여동생이 있어요."
+    },
+    {
+     "en": "The twins wore matching outfits.",
+     "ko": "그 쌍둥이는 똑같은 옷을 입었어요."
+    },
+    {
+     "en": "It's hard to tell the twins apart.",
+     "ko": "그 쌍둥이를 구별하기는 어려워요."
+    },
+    {
+     "en": "The hotel room had two twin beds.",
+     "ko": "그 호텔 방은 트윈 침대 두 개가 있었어요."
+    },
+    {
+     "en": "My twin brother and I share many interests.",
+     "ko": "제 쌍둥이 형과 저는 많은 관심사를 공유해요."
+    },
+    {
+     "en": "The two cities are twinned as sister cities.",
+     "ko": "그 두 도시는 자매 도시로 짝지어져 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "sibling",
+     "ko": "형제자매",
+     "en": "A close sibling."
+    },
+    {
+     "type": "연관어",
+     "word": "identical",
+     "ko": "일란성의, 동일한",
+     "en": "Identical twins."
+    },
+    {
+     "type": "연관어",
+     "word": "pair",
+     "ko": "짝",
+     "en": "A matching pair."
+    },
+    {
+     "type": "연관어",
+     "word": "double",
+     "ko": "두 배의",
+     "en": "A double room."
+    },
+    {
+     "type": "연관어",
+     "word": "family",
+     "ko": "가족",
+     "en": "A big family."
+    },
+    {
+     "type": "연관어",
+     "word": "match",
+     "ko": "일치하다",
+     "en": "Match perfectly."
+    }
+   ]
+  },
+  "2124": {
+   "word": "quote",
+   "overview": [
+    "quote는 '인용하다'라는 뜻의 동사이자 '인용문'이라는 뜻의 명사입니다.",
+    "quote a famous saying(유명한 말을 인용하다)처럼 씁니다.",
+    "'견적, 시세'라는 뜻으로도 씁니다. get a quote(견적을 받다)",
+    "명사 quotation(인용, 견적)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "cite",
+     "en": "Cite a source.",
+     "ko": "출처를 인용하다."
+    },
+    {
+     "word": "saying",
+     "en": "A famous saying.",
+     "ko": "유명한 말."
+    }
+   ],
+   "etymology": [
+    "quote는 라틴어 quotare(숫자를 매기다, 구분하다)에서 온 단어입니다.",
+    "quot(얼마나 많은)에서 나온 말로, quota(할당량)와 같은 가족입니다.",
+    "옛날에는 책의 구절에 번호를 매겨 참조하는 것을 뜻했습니다.",
+    "'다른 사람의 말을 그대로 가져와 표시하다'라는 뜻으로 넓어졌습니다.",
+    "quote의 핵심 이미지는 '다른 사람의 말을 그대로 가져와 담아내는 인용 💬'입니다."
+   ],
+   "meanings": [
+    "인용하다 (동사)",
+    "인용문 (명사)",
+    "견적, 시세 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "She quoted a famous line from the movie.",
+     "ko": "그녀는 그 영화의 유명한 대사를 인용했어요."
+    },
+    {
+     "en": "He asked for a quote before starting the repair.",
+     "ko": "그는 그 수리를 시작하기 전에 견적을 요청했어요."
+    },
+    {
+     "en": "This quote inspired many people.",
+     "ko": "이 인용문은 많은 사람에게 영감을 줬어요."
+    },
+    {
+     "en": "The reporter quoted the mayor directly.",
+     "ko": "그 기자는 시장의 말을 그대로 인용했어요."
+    },
+    {
+     "en": "Please put the quote in quotation marks.",
+     "ko": "그 인용문을 인용 부호 안에 넣어 주세요."
+    },
+    {
+     "en": "We got three quotes before choosing a contractor.",
+     "ko": "우리는 계약자를 선택하기 전에 세 개의 견적을 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cite",
+     "ko": "인용하다",
+     "en": "Cite an author."
+    },
+    {
+     "type": "파생어",
+     "word": "quotation",
+     "ko": "인용, 견적",
+     "en": "A price quotation."
+    },
+    {
+     "type": "연관어",
+     "word": "saying",
+     "ko": "말, 격언",
+     "en": "A wise saying."
+    },
+    {
+     "type": "연관어",
+     "word": "estimate",
+     "ko": "견적",
+     "en": "A rough estimate."
+    },
+    {
+     "type": "연관어",
+     "word": "source",
+     "ko": "출처",
+     "en": "A reliable source."
+    },
+    {
+     "type": "연관어",
+     "word": "reference",
+     "ko": "참조",
+     "en": "A helpful reference."
+    }
+   ]
+  },
+  "1931": {
+   "word": "pepper",
+   "overview": [
+    "pepper는 '후추' 또는 '고추'라는 뜻의 명사입니다.",
+    "salt and pepper(소금과 후추)처럼 씁니다.",
+    "bell pepper(피망), chili pepper(고추)처럼 다양한 고추과 식물을 가리킵니다.",
+    "동사로는 '후추를 뿌리다', '~을 퍼붓다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "spice",
+     "en": "A hot spice.",
+     "ko": "매운 향신료."
+    },
+    {
+     "word": "chili",
+     "en": "A red chili.",
+     "ko": "빨간 고추."
+    }
+   ],
+   "etymology": [
+    "pepper는 산스크리트어 pippali(후추 열매)에서 온 단어입니다.",
+    "그리스어와 라틴어를 거쳐 영어에 들어왔습니다.",
+    "원래는 인도가 원산지인 검은 후추 열매를 가리켰습니다.",
+    "신대륙 발견 후 매운맛이 나는 고추류 식물에도 같은 이름이 붙게 되었습니다.",
+    "pepper의 핵심 이미지는 '음식에 알싸한 매운맛을 더하는 후추와 고추 🌶️'입니다."
+   ],
+   "meanings": [
+    "후추",
+    "고추, 피망"
+   ],
+   "examples": [
+    {
+     "en": "Add a little salt and pepper to the soup.",
+     "ko": "그 수프에 소금과 후추를 조금 넣어."
+    },
+    {
+     "en": "She grows peppers in her garden.",
+     "ko": "그녀는 자신의 정원에서 고추를 길러요."
+    },
+    {
+     "en": "This dish uses red bell peppers.",
+     "ko": "이 요리는 빨간 피망을 써요."
+    },
+    {
+     "en": "He sneezed after smelling the ground pepper.",
+     "ko": "그는 갈린 후추 냄새를 맡고 재채기했어요."
+    },
+    {
+     "en": "Chili peppers add a spicy kick to the meal.",
+     "ko": "고추는 그 음식에 매운맛을 더해요."
+    },
+    {
+     "en": "Questions peppered the speaker after the talk.",
+     "ko": "그 강연 후 질문들이 그 연사에게 쏟아졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "spice",
+     "ko": "향신료",
+     "en": "A strong spice."
+    },
+    {
+     "type": "연관어",
+     "word": "salt",
+     "ko": "소금",
+     "en": "A pinch of salt."
+    },
+    {
+     "type": "연관어",
+     "word": "chili",
+     "ko": "고추",
+     "en": "A spicy chili."
+    },
+    {
+     "type": "연관어",
+     "word": "spicy",
+     "ko": "매운",
+     "en": "A spicy soup."
+    },
+    {
+     "type": "연관어",
+     "word": "vegetable",
+     "ko": "채소",
+     "en": "Fresh vegetables."
+    },
+    {
+     "type": "연관어",
+     "word": "flavor",
+     "ko": "맛",
+     "en": "A bold flavor."
+    }
+   ]
+  },
+  "547": {
+   "word": "compare",
+   "overview": [
+    "compare는 '비교하다, 견주다'라는 뜻의 동사입니다.",
+    "compare two products(두 제품을 비교하다)처럼 씁니다.",
+    "'~에 비유하다'라는 뜻으로도 씁니다. compare her to a rose(그녀를 장미에 비유하다)",
+    "명사 comparison(비교)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "contrast",
+     "en": "Contrast two ideas.",
+     "ko": "두 생각을 대조하다."
+    },
+    {
+     "word": "match up",
+     "en": "Match up the results.",
+     "ko": "결과를 맞춰 보다."
+    }
+   ],
+   "etymology": [
+    "compare는 라틴어 comparare(짝지어 나란히 놓다)에서 온 단어입니다.",
+    "com(함께)과 par(같은, 짝)가 합쳐진 말로, pair(짝), parallel(평행한)과 같은 가족입니다.",
+    "'두 가지를 나란히 놓고 서로 얼마나 비슷하거나 다른지 살펴보다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'한쪽을 다른 쪽에 비유하며 견주다'라는 뜻으로도 폭넓게 씁니다.",
+    "compare의 핵심 이미지는 '두 가지를 나란히 놓고 견주어 보는 비교 ⚖️'입니다."
+   ],
+   "meanings": [
+    "비교하다, 견주다",
+    "비유하다"
+   ],
+   "examples": [
+    {
+     "en": "She compared the prices at two different stores.",
+     "ko": "그녀는 두 다른 가게의 가격을 비교했어요."
+    },
+    {
+     "en": "The poet compared her smile to sunshine.",
+     "ko": "그 시인은 그녀의 미소를 햇살에 비유했어요."
+    },
+    {
+     "en": "Nothing compares to a home-cooked meal.",
+     "ko": "집밥에 비할 만한 것은 없어요."
+    },
+    {
+     "en": "Let's compare our answers before submitting.",
+     "ko": "제출하기 전에 우리 답을 비교해 보자."
+    },
+    {
+     "en": "Compared to last year, sales have increased.",
+     "ko": "작년과 비교했을 때, 매출이 증가했어요."
+    },
+    {
+     "en": "The teacher asked us to compare the two stories.",
+     "ko": "선생님은 우리에게 그 두 이야기를 비교하라고 하셨어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "contrast",
+     "ko": "대조하다",
+     "en": "Contrast the styles."
+    },
+    {
+     "type": "파생어",
+     "word": "comparison",
+     "ko": "비교",
+     "en": "Make a comparison."
+    },
+    {
+     "type": "연관어",
+     "word": "match",
+     "ko": "맞추다",
+     "en": "Match the colors."
+    },
+    {
+     "type": "연관어",
+     "word": "similar",
+     "ko": "비슷한",
+     "en": "A similar idea."
+    },
+    {
+     "type": "연관어",
+     "word": "difference",
+     "ko": "차이",
+     "en": "Spot the difference."
+    },
+    {
+     "type": "연관어",
+     "word": "evaluate",
+     "ko": "평가하다",
+     "en": "Evaluate options."
+    }
+   ]
+  },
+  "943": {
+   "word": "envelope",
+   "overview": [
+    "envelope는 '봉투'라는 뜻의 명사입니다.",
+    "seal the envelope(봉투를 봉하다)처럼 씁니다.",
+    "편지나 서류를 넣어 보내는 종이 봉투를 뜻합니다.",
+    "push the envelope는 '한계를 뛰어넘다'라는 관용 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "paper cover",
+     "en": "A paper cover.",
+     "ko": "종이 덮개."
+    },
+    {
+     "word": "letter holder",
+     "en": "A letter holder.",
+     "ko": "편지를 담는 것."
+    }
+   ],
+   "etymology": [
+    "envelope는 프랑스어 envelopper(감싸다, 싸다)에서 온 단어입니다.",
+    "en(안으로)과 voloper(감싸다)가 합쳐진 말로, develop(발전시키다, '감싸진 것을 펼치다')과 반대되는 뿌리입니다.",
+    "'편지나 서류를 감싸서 보호하는 종이'라는 뜻이 그대로 이어져 왔습니다.",
+    "push the envelope(한계를 넘다)라는 표현은 비행기 성능의 한계선을 뜻하는 기술 용어에서 유래했습니다.",
+    "envelope의 핵심 이미지는 '편지를 소중하게 감싸서 보호하는 봉투 ✉️'입니다."
+   ],
+   "meanings": [
+    "봉투"
+   ],
+   "examples": [
+    {
+     "en": "She sealed the envelope before mailing it.",
+     "ko": "그녀는 그 봉투를 부치기 전에 봉했어요."
+    },
+    {
+     "en": "He wrote the address on the envelope.",
+     "ko": "그는 그 봉투에 주소를 썼어요."
+    },
+    {
+     "en": "The letter arrived in a plain white envelope.",
+     "ko": "그 편지는 평범한 하얀 봉투에 담겨 도착했어요."
+    },
+    {
+     "en": "She put the invitation inside a pink envelope.",
+     "ko": "그녀는 그 초대장을 분홍색 봉투 안에 넣었어요."
+    },
+    {
+     "en": "Please put a stamp on the envelope.",
+     "ko": "그 봉투에 우표를 붙여 주세요."
+    },
+    {
+     "en": "The scientist pushed the envelope of what was possible.",
+     "ko": "그 과학자는 가능한 것의 한계를 뛰어넘었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "letter",
+     "ko": "편지",
+     "en": "Write a letter."
+    },
+    {
+     "type": "연관어",
+     "word": "stamp",
+     "ko": "우표",
+     "en": "A colorful stamp."
+    },
+    {
+     "type": "연관어",
+     "word": "mail",
+     "ko": "우편",
+     "en": "Send by mail."
+    },
+    {
+     "type": "연관어",
+     "word": "seal",
+     "ko": "봉하다",
+     "en": "Seal it tight."
+    },
+    {
+     "type": "연관어",
+     "word": "paper",
+     "ko": "종이",
+     "en": "White paper."
+    },
+    {
+     "type": "연관어",
+     "word": "address",
+     "ko": "주소",
+     "en": "Write the address."
+    }
+   ]
   }
  }
 }
