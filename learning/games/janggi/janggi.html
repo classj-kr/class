@@ -44,7 +44,7 @@ body:has(#game:not(.hidden)){height:100dvh;min-height:0;align-items:flex-start;o
 body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 12px);max-width:none;height:calc(100dvh - 12px);min-height:0;padding:8px;overflow:hidden}
 #game:not(.hidden){display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,20vw,300px);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"board head" "board side";gap:8px;height:100%}
 #game .gamebody{display:contents}
-#game .gamehead{grid-area:head;grid-template-columns:1fr;gap:4px;padding:0 0 6px}
+#game .gamehead{grid-area:head;grid-template-columns:1fr;gap:4px;padding:0 56px 6px 0}
 #game .gamehead>div{text-align:center}
 #game .turnwrap{gap:4px}
 #game .turn{width:100%;min-width:0;padding:6px}
@@ -84,6 +84,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 #game .side .match-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex-shrink:0}
 #game .match-actions .btn{min-height:44px;margin:0}
 #game .music{display:none}
+@media(min-width:900px){body:has(.room-call-bar:not(.hidden)) #game .side{padding-bottom:158px;box-sizing:border-box}}
 @media(max-width:899px){
  #game:not(.hidden){height:100%;min-height:0;grid-template-rows:minmax(0,1fr) auto auto}
  #game .gamehead{padding:0;gap:6px}
@@ -99,7 +100,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
  #game .chat-title{margin:0}
 }
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260926-title-restore2">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/network/room-call.js?v=20260822e"></script>
@@ -140,7 +141,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <div class="music"><b>음악</b><button id="mute1" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div>
 </section>
 <section id="game" class="hidden">
-<div class="gamehead"><div><span id="roleChip" class="chip"></span></div><div class="turnwrap"><div id="turnText" class="turn">대기 중</div><div id="turnClock" class="clock">00:30</div></div><div class="right"><span id="connectionChip" class="chip">● 연결됨</span></div></div>
+<div class="gamehead"><div class="turnwrap"><div id="turnText" class="turn">대기 중</div><div id="turnClock" class="clock">00:30</div></div></div>
 <div class="gamebody"><div class="boardwrap"><div id="board" class="board"></div></div><aside class="side"><div class="match-actions"><button class="btn danger" onclick="resign()">기권</button><button id="rematchBtn" class="btn" onclick="requestRematch()">재대국 요청</button><button id="rulesBtnGame" class="btn" type="button">규칙</button><button id="leaveBtnGame" class="btn" type="button">메인 화면으로</button></div><h3>대국 상태</h3><div id="notice" class="notice">말을 선택하세요.</div><div class="capture-area"><div class="capture-card"><span class="capture-label">초가 잡은 말</span><div id="choCaptures" class="captures"></div></div><div class="capture-card"><span class="capture-label">한이 잡은 말</span><div id="hanCaptures" class="captures"></div></div></div><div id="log" class="log"></div><button type="button" class="chat-title chat-toggle" onclick="toggleChatPanel()">채팅<span id="chatBadge" class="chat-badge hidden">0</span><span id="chatCaret" class="chat-caret">▸</span></button><div id="chatPanel" class="chat-panel collapsed"><div id="chatLog" class="chat-log"><div class="chat-msg">상대방과 간단한 메시지를 주고받을 수 있습니다.</div></div><div class="chat-row"><input id="chatInput" class="chat-input" maxlength="100" autocomplete="off" placeholder="메시지 입력" onkeydown="if(event.key==='Enter'){event.preventDefault();sendChat()}"><button class="btn chat-send" onclick="sendChat()">보내기</button></div></div><div class="music"><button id="mute2" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div></aside></div>
 </section>
 </div>
@@ -182,7 +183,7 @@ function makeInitialState(choFormation,hanFormation,timeLimit){const cho=validFo
 function createJanggiStartData(snapshot){const ids=Object.keys(snapshot.players),guestId=ids.find(id=>String(id)!==String(snapshot.myId));return{state:makeInitialState(snapshot.players[snapshot.myId]?.formation,snapshot.players[guestId]?.formation,$('turnTimeLimit').value)}}
 function applyStartState(nextState){if(!nextState)return;Object.assign(state,clone(nextState));selected=null;legalTargets=[];gameOver=false;rematchMine=false;rematchOther=false;logs=['대국 시작 — 초 선수의 차례입니다.'];connected=true;launch();resetTurnTimer()}
 function startJanggiGame(session){syncLobbyState(session);applyStartState(session.data?.state)}
-function disconnect({title='연결 종료',message='상대방과의 연결이 끊어졌습니다. 페이지를 새로고침해 주세요.'}={}){connected=false;stopTurnTimer();$('connectionChip').textContent='● 연결 끊김';showModal(title,message)}
+function disconnect({title='연결 종료',message='상대방과의 연결이 끊어졌습니다. 페이지를 새로고침해 주세요.'}={}){connected=false;stopTurnTimer();showModal(title,message)}
 function send(p){return lobby?.send(p)||false}
 function normalizeChatText(value){return String(value||'').replace(/[\r\n\t]+/g,' ').replace(/\s{2,}/g,' ').trim().slice(0,100)}
 function sendChat(sourceId='chatInput'){if(!connected)return;const input=$(sourceId),text=normalizeChatText(input.value);if(!text)return;if(!send({type:'chat',text}))return;chatMessages.push({mine:true,label:displayPlayerLabel(mySide()),text});input.value='';renderChat()}
@@ -199,7 +200,7 @@ function stopTurnTimer(){if(turnTimerId){clearInterval(turnTimerId);turnTimerId=
 function resetTurnTimer(){stopTurnTimer();if(gameOver||!state.started)return;state.timeLimit=validTimeLimit(state.timeLimit);turnDeadline=Date.now()+state.timeLimit*1000;updateTurnClock();turnTimerId=setInterval(()=>{updateTurnClock();if(myRole==='host'&&Date.now()>=turnDeadline&&!gameOver)finishByTimeout()},100)}
 function updateTurnClock(){const el=$('turnClock');if(!el)return;if(gameOver||!turnDeadline){el.textContent='--:--';el.className='clock';return}const ms=Math.max(0,turnDeadline-Date.now()),sec=Math.ceil(ms/1000);el.textContent=`00:${String(sec).padStart(2,'0')}`;el.className='clock'+(sec<=5?' danger':sec<=10?' warning':'')}
 function finishByTimeout(){if(gameOver)return;const timedOut=state.turn;state.turn=otherSide(timedOut);selected=null;legalTargets=[];logs.unshift(`${sideLabel(timedOut)}이(가) 시간 초과로 차례를 넘겼습니다.`);resetTurnTimer();send({type:'timeout',state:clone(state),logs:clone(logs)});render()}
-function launch(){$('lobby').classList.add('hidden');$('game').classList.remove('hidden');$('roleChip').textContent=`${getPlayerName()} · ${sideLabel(mySide())} · ${myRole==='host'?'방장':'손님'} · ${state.timeLimit}초`;render();renderChat();syncChatAvailability()}
+function launch(){$('lobby').classList.add('hidden');$('game').classList.remove('hidden');render();renderChat();syncChatAvailability()}
 const INITIAL_PIECE_COUNTS={king:1,guard:2,rook:2,horse:2,elephant:2,cannon:2,soldier:5};
 function capturedPiecesBy(side){const victim=otherSide(side),remaining={};state.pieces.filter(piece=>piece.side===victim).forEach(piece=>{remaining[piece.type]=(remaining[piece.type]||0)+1});return Object.entries(INITIAL_PIECE_COUNTS).flatMap(([type,count])=>Array.from({length:Math.max(0,count-(remaining[type]||0))},()=>({type,side:victim})))}
 function renderCapturedPieces(){[["cho","choCaptures"],["han","hanCaptures"]].forEach(([side,id])=>{const container=$(id);if(!container)return;const captured=capturedPiecesBy(side);container.replaceChildren();if(!captured.length){const empty=document.createElement("span");empty.className="capture-empty";empty.textContent="아직 없습니다.";container.appendChild(empty);return}captured.forEach(piece=>{const token=document.createElement("span");token.className="capture-piece "+piece.side;token.textContent=pieceText(piece);token.title=sideLabel(side)+"이(가) 잡은 "+pieceName(piece);container.appendChild(token)})})}
