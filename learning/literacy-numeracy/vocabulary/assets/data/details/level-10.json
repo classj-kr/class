@@ -17265,6 +17265,1915 @@
      "en": "Guide a student."
     }
    ]
+  },
+  "903": {
+   "word": "elect",
+   "overview": [
+    "elect는 '뽑다, 선출하다'라는 뜻의 동사입니다.",
+    "elect a president(대통령을 선출하다)처럼 씁니다.",
+    "투표를 통해 대표자를 뽑는 것을 뜻합니다.",
+    "명사 election(선거)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "vote for",
+     "en": "Vote for a leader.",
+     "ko": "지도자에게 투표하다."
+    },
+    {
+     "word": "choose",
+     "en": "Choose a representative.",
+     "ko": "대표를 선택하다."
+    }
+   ],
+   "etymology": [
+    "elect는 라틴어 eligere(골라내다, 선택하다)에서 온 단어입니다.",
+    "e(밖으로)와 legere(모으다, 고르다)가 합쳐진 말로, select(선택하다), collect(모으다)와 같은 가족입니다.",
+    "'여럿 중에서 신중하게 골라내다'라는 뜻이 그대로 이어져 왔습니다.",
+    "투표를 통해 대표자를 골라 세우는 정치적인 뜻으로 특히 자주 씁니다.",
+    "elect의 핵심 이미지는 '투표로 신중하게 골라내어 세우는 선출 🗳️'입니다."
+   ],
+   "meanings": [
+    "뽑다, 선출하다, 선발하다"
+   ],
+   "examples": [
+    {
+     "en": "Citizens elected a new mayor this year.",
+     "ko": "시민들은 올해 새 시장을 선출했어요."
+    },
+    {
+     "en": "She was elected class president.",
+     "ko": "그녀는 반 회장으로 선출되었어요."
+    },
+    {
+     "en": "The nation will elect a leader next month.",
+     "ko": "그 나라는 다음 달에 지도자를 선출할 거예요."
+    },
+    {
+     "en": "Members elected him to represent the group.",
+     "ko": "회원들은 그를 그 그룹을 대표하도록 선출했어요."
+    },
+    {
+     "en": "The team elected to try a new strategy.",
+     "ko": "그 팀은 새로운 전략을 시도하기로 선택했어요."
+    },
+    {
+     "en": "Voters elected the candidate with the most experience.",
+     "ko": "유권자들은 가장 경험이 많은 후보를 선출했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "vote for",
+     "ko": "투표하다",
+     "en": "Vote for change."
+    },
+    {
+     "type": "파생어",
+     "word": "election",
+     "ko": "선거",
+     "en": "A national election."
+    },
+    {
+     "type": "연관어",
+     "word": "choose",
+     "ko": "선택하다",
+     "en": "Choose wisely."
+    },
+    {
+     "type": "연관어",
+     "word": "vote",
+     "ko": "투표하다",
+     "en": "Vote today."
+    },
+    {
+     "type": "연관어",
+     "word": "president",
+     "ko": "대통령",
+     "en": "The new president."
+    },
+    {
+     "type": "연관어",
+     "word": "candidate",
+     "ko": "후보자",
+     "en": "A strong candidate."
+    }
+   ]
+  },
+  "106": {
+   "word": "amaze",
+   "overview": [
+    "amaze는 '놀라게 하다, 경탄하게 하다'라는 뜻의 동사입니다.",
+    "amaze the audience(관객을 놀라게 하다)처럼 씁니다.",
+    "믿기 힘들 만큼 대단하거나 신기해서 놀라움을 안겨 주는 것을 뜻합니다.",
+    "형용사 amazing(놀라운), amazed(놀란)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "astonish",
+     "en": "Astonish everyone.",
+     "ko": "모두를 놀라게 하다."
+    },
+    {
+     "word": "surprise",
+     "en": "Surprise the crowd.",
+     "ko": "군중을 놀라게 하다."
+    }
+   ],
+   "etymology": [
+    "amaze는 고대 영어 amasian(어리둥절하게 하다, 넋을 잃게 하다)에서 온 단어입니다.",
+    "maze(미로, '헤매게 만드는 것')와 같은 뿌리에서 나온 단어입니다.",
+    "'미로에 갇힌 듯 넋을 잃고 어리둥절해지다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 부정적인 혼란보다는 긍정적인 놀라움과 경탄을 나타내는 데 씁니다.",
+    "amaze의 핵심 이미지는 '믿기 힘든 대단함에 넋을 잃고 놀라는 경탄 🤩'입니다."
+   ],
+   "meanings": [
+    "놀라게 하다, 경탄하게 하다"
+   ],
+   "examples": [
+    {
+     "en": "Her talent amazed everyone in the room.",
+     "ko": "그녀의 재능은 방 안의 모두를 놀라게 했어요."
+    },
+    {
+     "en": "The magician's tricks amazed the children.",
+     "ko": "그 마술사의 마술은 아이들을 놀라게 했어요."
+    },
+    {
+     "en": "It amazes me how quickly he learns.",
+     "ko": "그가 얼마나 빨리 배우는지 저를 놀라게 해요."
+    },
+    {
+     "en": "The stunning view amazed all the tourists.",
+     "ko": "그 멋진 경치는 모든 관광객을 놀라게 했어요."
+    },
+    {
+     "en": "She was amazed by the size of the mountain.",
+     "ko": "그녀는 그 산의 크기에 놀랐어요."
+    },
+    {
+     "en": "His kindness continues to amaze me.",
+     "ko": "그의 친절함은 계속 저를 놀라게 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "astonish",
+     "ko": "놀라게 하다",
+     "en": "Astonish the world."
+    },
+    {
+     "type": "파생어",
+     "word": "amazing",
+     "ko": "놀라운",
+     "en": "An amazing view."
+    },
+    {
+     "type": "파생어",
+     "word": "amazed",
+     "ko": "놀란",
+     "en": "Feel amazed."
+    },
+    {
+     "type": "연관어",
+     "word": "surprise",
+     "ko": "놀라게 하다",
+     "en": "Surprise a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "wonder",
+     "ko": "경이",
+     "en": "A natural wonder."
+    },
+    {
+     "type": "연관어",
+     "word": "impress",
+     "ko": "감명을 주다",
+     "en": "Impress the judges."
+    }
+   ]
+  },
+  "557": {
+   "word": "complicate",
+   "overview": [
+    "complicate는 '복잡하게 만들다, 악화시키다'라는 뜻의 동사입니다.",
+    "complicate the situation(상황을 복잡하게 만들다)처럼 씁니다.",
+    "단순했던 것을 더 어렵고 얽히게 만드는 것을 뜻합니다.",
+    "형용사 complicated(복잡한)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "confuse",
+     "en": "Confuse the process.",
+     "ko": "과정을 혼란스럽게 만들다."
+    },
+    {
+     "word": "make harder",
+     "en": "Make things harder.",
+     "ko": "일을 더 어렵게 만들다."
+    }
+   ],
+   "etymology": [
+    "complicate는 라틴어 complicare(함께 접다, 뒤엉키게 하다)에서 온 단어입니다.",
+    "com(함께)과 plicare(접다)가 합쳐진 말로, complex(복잡한), reply(답하다)와 같은 가족입니다.",
+    "'여러 겹을 함께 접어 엉키게 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'단순한 문제를 여러 요소가 얽혀 어렵게 만들다'라는 뜻으로 지금까지 널리 씁니다.",
+    "complicate의 핵심 이미지는 '여러 겹이 접혀 엉키듯 어려워지는 복잡함 🧶'입니다."
+   ],
+   "meanings": [
+    "복잡하게 만들다, 악화시키다"
+   ],
+   "examples": [
+    {
+     "en": "His late arrival complicated the schedule.",
+     "ko": "그의 늦은 도착은 그 일정을 복잡하게 만들었어요."
+    },
+    {
+     "en": "Don't complicate things by adding unnecessary steps.",
+     "ko": "불필요한 단계를 추가해서 일을 복잡하게 만들지 마."
+    },
+    {
+     "en": "The new rule complicated the process further.",
+     "ko": "그 새 규칙은 그 과정을 더욱 복잡하게 만들었어요."
+    },
+    {
+     "en": "Her illness complicated the surgery.",
+     "ko": "그녀의 질병은 그 수술을 더 어렵게 만들었어요."
+    },
+    {
+     "en": "Miscommunication complicated their relationship.",
+     "ko": "소통 부족은 그들의 관계를 악화시켰어요."
+    },
+    {
+     "en": "This decision could complicate future negotiations.",
+     "ko": "이 결정은 향후 협상을 복잡하게 만들 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "confuse",
+     "ko": "혼란스럽게 하다",
+     "en": "Confuse the reader."
+    },
+    {
+     "type": "파생어",
+     "word": "complicated",
+     "ko": "복잡한",
+     "en": "A complicated plan."
+    },
+    {
+     "type": "연관어",
+     "word": "worsen",
+     "ko": "악화시키다",
+     "en": "Worsen a problem."
+    },
+    {
+     "type": "연관어",
+     "word": "tangle",
+     "ko": "엉키게 하다",
+     "en": "Tangle the wires."
+    },
+    {
+     "type": "연관어",
+     "word": "difficult",
+     "ko": "어려운",
+     "en": "A difficult task."
+    },
+    {
+     "type": "연관어",
+     "word": "simple",
+     "ko": "단순한",
+     "en": "A simple solution."
+    }
+   ]
+  },
+  "447": {
+   "word": "characteristic",
+   "overview": [
+    "characteristic은 '특징, 특질'이라는 뜻의 명사이자 '특유한, 특징적인'이라는 뜻의 형용사입니다.",
+    "a key characteristic(핵심 특징)처럼 씁니다.",
+    "그 사람이나 사물을 다른 것과 구별 짓는 고유한 성질을 뜻합니다.",
+    "부사 characteristically(특유하게)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "trait",
+     "en": "A personality trait.",
+     "ko": "성격 특성."
+    },
+    {
+     "word": "feature",
+     "en": "A unique feature.",
+     "ko": "독특한 특징."
+    }
+   ],
+   "etymology": [
+    "characteristic은 그리스어 kharakter(새겨진 표시, 각인)에서 온 단어입니다.",
+    "kharassein(긁어서 새기다)에서 나온 말로, character(성격, 등장인물)와 같은 가족입니다.",
+    "'그 대상에게 뚜렷하게 새겨진 고유한 표시'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람의 성격뿐 아니라 사물의 고유한 특성을 가리키는 데도 폭넓게 씁니다.",
+    "characteristic의 핵심 이미지는 '그 대상만의 것으로 뚜렷하게 새겨진 고유한 특징 🏷️'입니다."
+   ],
+   "meanings": [
+    "특징, 특질, 특색 (명사)",
+    "특징적인, 특유한 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "Honesty is one of her best characteristics.",
+     "ko": "정직함은 그녀의 최고의 특징 중 하나예요."
+    },
+    {
+     "en": "This bird has a characteristic red beak.",
+     "ko": "이 새는 특징적인 빨간 부리를 가지고 있어요."
+    },
+    {
+     "en": "Patience is a key characteristic of a good teacher.",
+     "ko": "인내심은 좋은 교사의 핵심 특성이에요."
+    },
+    {
+     "en": "His characteristic humor made everyone laugh.",
+     "ko": "그의 특유한 유머는 모두를 웃게 만들었어요."
+    },
+    {
+     "en": "Each species has its own unique characteristics.",
+     "ko": "각 종은 자신만의 고유한 특징들을 가지고 있어요."
+    },
+    {
+     "en": "She responded with her characteristic calmness.",
+     "ko": "그녀는 자신의 특유한 침착함으로 대응했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "trait",
+     "ko": "특성",
+     "en": "A unique trait."
+    },
+    {
+     "type": "연관어",
+     "word": "feature",
+     "ko": "특징",
+     "en": "A key feature."
+    },
+    {
+     "type": "연관어",
+     "word": "quality",
+     "ko": "특징",
+     "en": "A good quality."
+    },
+    {
+     "type": "연관어",
+     "word": "identity",
+     "ko": "정체성",
+     "en": "A personal identity."
+    },
+    {
+     "type": "연관어",
+     "word": "nature",
+     "ko": "본성",
+     "en": "Human nature."
+    },
+    {
+     "type": "연관어",
+     "word": "typical",
+     "ko": "전형적인",
+     "en": "A typical example."
+    }
+   ]
+  },
+  "982": {
+   "word": "excite",
+   "overview": [
+    "excite는 '흥분시키다, 들뜨게 하다'라는 뜻의 동사입니다.",
+    "excite the fans(팬들을 흥분시키다)처럼 씁니다.",
+    "관심이나 감정을 강하게 불러일으키는 것을 뜻합니다.",
+    "형용사 excited(신난), exciting(흥미진진한)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "thrill",
+     "en": "Thrill the crowd.",
+     "ko": "군중을 짜릿하게 하다."
+    },
+    {
+     "word": "energize",
+     "en": "Energize the team.",
+     "ko": "팀에 활력을 불어넣다."
+    }
+   ],
+   "etymology": [
+    "excite는 라틴어 excitare(불러일으키다, 흔들어 깨우다)에서 온 단어입니다.",
+    "ex(밖으로)와 citare(움직이다, 부르다)가 합쳐진 말로, cite(인용하다)와도 이어지는 뿌리입니다.",
+    "'잠들어 있던 감정을 밖으로 흔들어 깨우다'라는 뜻이 그대로 이어져 왔습니다.",
+    "기대, 즐거움, 열정 등 강한 긍정적 감정을 불러일으키는 데 폭넓게 씁니다.",
+    "excite의 핵심 이미지는 '잠들어 있던 감정을 흔들어 깨우는 흥분과 설렘 🎉'입니다."
+   ],
+   "meanings": [
+    "흥분시키다, 들뜨게 하다"
+   ],
+   "examples": [
+    {
+     "en": "The news excited everyone in the office.",
+     "ko": "그 소식은 사무실의 모두를 흥분시켰어요."
+    },
+    {
+     "en": "The upcoming trip excites her a lot.",
+     "ko": "다가오는 여행은 그녀를 아주 들뜨게 해요."
+    },
+    {
+     "en": "His speech excited the entire audience.",
+     "ko": "그의 연설은 관객 전체를 흥분시켰어요."
+    },
+    {
+     "en": "The idea of a new adventure excites him.",
+     "ko": "새로운 모험이라는 생각은 그를 들뜨게 해요."
+    },
+    {
+     "en": "The concert excited fans of all ages.",
+     "ko": "그 콘서트는 모든 연령대의 팬들을 흥분시켰어요."
+    },
+    {
+     "en": "The possibility of winning excited the whole team.",
+     "ko": "이길 가능성은 팀 전체를 들뜨게 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "thrill",
+     "ko": "짜릿하게 하다",
+     "en": "Thrill the fans."
+    },
+    {
+     "type": "파생어",
+     "word": "excited",
+     "ko": "신난",
+     "en": "Feel excited."
+    },
+    {
+     "type": "파생어",
+     "word": "exciting",
+     "ko": "흥미진진한",
+     "en": "An exciting game."
+    },
+    {
+     "type": "연관어",
+     "word": "energize",
+     "ko": "활력을 주다",
+     "en": "Energize a team."
+    },
+    {
+     "type": "연관어",
+     "word": "inspire",
+     "ko": "영감을 주다",
+     "en": "Inspire creativity."
+    },
+    {
+     "type": "연관어",
+     "word": "thrilled",
+     "ko": "짜릿해하는",
+     "en": "Feel thrilled."
+    }
+   ]
+  },
+  "2856": {
+   "word": "vary",
+   "overview": [
+    "vary는 '다르다, 변화하다'라는 뜻의 동사입니다.",
+    "Prices vary by store.(가격은 가게마다 달라요.)처럼 씁니다.",
+    "'~을 바꾸다, 다양하게 하다'라는 뜻으로도 씁니다.",
+    "명사 variety(다양성), 형용사 various(다양한)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "differ",
+     "en": "Differ by region.",
+     "ko": "지역에 따라 다르다."
+    },
+    {
+     "word": "change",
+     "en": "Change over time.",
+     "ko": "시간이 지나며 변하다."
+    }
+   ],
+   "etymology": [
+    "vary는 라틴어 variare(다양하게 하다, 바꾸다)에서 온 단어입니다.",
+    "varius(다채로운, 여러 가지의)에서 나온 말로, various(다양한)와 같은 가족입니다.",
+    "'한 가지가 아니라 여러 형태로 달라지다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'의도적으로 무언가를 다양하게 바꾸다'라는 뜻으로도 폭넓게 씁니다.",
+    "vary의 핵심 이미지는 '한 가지로 고정되지 않고 여러 모습으로 달라지는 변화 🎨'입니다."
+   ],
+   "meanings": [
+    "바뀌다, 변하다, 다르다",
+    "바꾸다, 다양하게 하다"
+   ],
+   "examples": [
+    {
+     "en": "Prices vary depending on the season.",
+     "ko": "가격은 계절에 따라 달라져요."
+    },
+    {
+     "en": "Her mood varies from day to day.",
+     "ko": "그녀의 기분은 날마다 달라져요."
+    },
+    {
+     "en": "The teacher varies her lessons to keep students interested.",
+     "ko": "선생님은 학생들의 흥미를 유지하려고 자신의 수업을 다양하게 해요."
+    },
+    {
+     "en": "Weather in this region varies greatly by season.",
+     "ko": "이 지역의 날씨는 계절에 따라 크게 달라져요."
+    },
+    {
+     "en": "The size of the fruit varies from small to large.",
+     "ko": "그 과일의 크기는 작은 것부터 큰 것까지 다양해요."
+    },
+    {
+     "en": "Opinions on the topic vary widely.",
+     "ko": "그 주제에 대한 의견은 크게 다양해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "differ",
+     "ko": "다르다",
+     "en": "Differ greatly."
+    },
+    {
+     "type": "파생어",
+     "word": "variety",
+     "ko": "다양성",
+     "en": "A wide variety."
+    },
+    {
+     "type": "파생어",
+     "word": "various",
+     "ko": "다양한",
+     "en": "Various options."
+    },
+    {
+     "type": "연관어",
+     "word": "change",
+     "ko": "변하다",
+     "en": "Change often."
+    },
+    {
+     "type": "연관어",
+     "word": "differ",
+     "ko": "다르다",
+     "en": "Differ slightly."
+    },
+    {
+     "type": "연관어",
+     "word": "range",
+     "ko": "범위",
+     "en": "A wide range."
+    }
+   ]
+  },
+  "922": {
+   "word": "emphasize",
+   "overview": [
+    "emphasize는 '강조하다, 역설하다'라는 뜻의 동사입니다.",
+    "emphasize the importance(중요성을 강조하다)처럼 씁니다.",
+    "무언가를 특별히 부각시켜 강하게 전달하는 것을 뜻합니다.",
+    "명사 emphasis(강조)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "stress",
+     "en": "Stress a point.",
+     "ko": "요점을 강조하다."
+    },
+    {
+     "word": "highlight",
+     "en": "Highlight a fact.",
+     "ko": "사실을 부각시키다."
+    }
+   ],
+   "etymology": [
+    "emphasize는 그리스어 emphasis(뚜렷이 드러남, 표현)에서 온 단어입니다.",
+    "en(안에)과 phainein(보이다)이 합쳐진 말로, phase(단계), phenomenon(현상)과도 이어지는 뿌리입니다.",
+    "'속에 있는 뜻을 겉으로 뚜렷이 드러내 보이다'라는 뜻이 그대로 이어져 왔습니다.",
+    "말이나 글에서 특정 부분을 더욱 뚜렷하게 부각시키는 데 폭넓게 씁니다.",
+    "emphasize의 핵심 이미지는 '중요한 부분을 뚜렷하게 도드라지게 하는 강조 🔆'입니다."
+   ],
+   "meanings": [
+    "강조하다, 역설하다"
+   ],
+   "examples": [
+    {
+     "en": "The teacher emphasized the importance of homework.",
+     "ko": "선생님은 숙제의 중요성을 강조하셨어요."
+    },
+    {
+     "en": "She emphasized her point by repeating it twice.",
+     "ko": "그녀는 자신의 요점을 두 번 반복해서 강조했어요."
+    },
+    {
+     "en": "The report emphasizes the need for change.",
+     "ko": "그 보고서는 변화의 필요성을 강조해요."
+    },
+    {
+     "en": "He emphasized safety during the training.",
+     "ko": "그는 그 훈련 동안 안전을 강조했어요."
+    },
+    {
+     "en": "Her speech emphasized the value of teamwork.",
+     "ko": "그녀의 연설은 팀워크의 가치를 강조했어요."
+    },
+    {
+     "en": "Doctors emphasize the importance of regular exercise.",
+     "ko": "의사들은 규칙적인 운동의 중요성을 강조해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "stress",
+     "ko": "강조하다",
+     "en": "Stress a fact."
+    },
+    {
+     "type": "파생어",
+     "word": "emphasis",
+     "ko": "강조",
+     "en": "Put emphasis on it."
+    },
+    {
+     "type": "연관어",
+     "word": "highlight",
+     "ko": "부각시키다",
+     "en": "Highlight a point."
+    },
+    {
+     "type": "연관어",
+     "word": "underline",
+     "ko": "밑줄을 긋다, 강조하다",
+     "en": "Underline the key word."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important fact."
+    },
+    {
+     "type": "연관어",
+     "word": "focus",
+     "ko": "집중하다",
+     "en": "Focus on details."
+    }
+   ]
+  },
+  "1417": {
+   "word": "injure",
+   "overview": [
+    "injure는 '상처를 입히다, 다치게 하다'라는 뜻의 동사입니다.",
+    "injure his leg(그의 다리를 다치게 하다)처럼 씁니다.",
+    "명사 injury(부상), 형용사 injured(다친)도 아주 자주 씁니다.",
+    "'명예나 자존심을 손상시키다'라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hurt",
+     "en": "Hurt his back.",
+     "ko": "그의 등을 다치게 하다."
+    },
+    {
+     "word": "wound",
+     "en": "Wound the arm.",
+     "ko": "팔에 상처를 입히다."
+    }
+   ],
+   "etymology": [
+    "injure는 라틴어 injuria(부당함, 손해)에서 온 단어입니다.",
+    "in(부정)과 jus(법, 정의)가 합쳐진 말로, justice(정의)와 같은 가족입니다.",
+    "'정당하지 않게 누군가에게 해를 끼치다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 몸에 직접적인 상처를 입히는 뜻으로 가장 자주 씁니다.",
+    "injure의 핵심 이미지는 '몸이나 명예에 부당하게 해를 끼치는 상처 🩹'입니다."
+   ],
+   "meanings": [
+    "상처를 입히다, 다치게 하다"
+   ],
+   "examples": [
+    {
+     "en": "He injured his ankle while playing soccer.",
+     "ko": "그는 축구를 하다가 발목을 다쳤어요."
+    },
+    {
+     "en": "The accident injured three passengers.",
+     "ko": "그 사고는 승객 세 명을 다치게 했어요."
+    },
+    {
+     "en": "She injured her back lifting heavy boxes.",
+     "ko": "그녀는 무거운 상자들을 들다가 등을 다쳤어요."
+    },
+    {
+     "en": "His pride was injured by the harsh comment.",
+     "ko": "그의 자존심은 그 가혹한 발언으로 상처를 입었어요."
+    },
+    {
+     "en": "Fortunately, no one was seriously injured.",
+     "ko": "다행히도, 아무도 심각하게 다치지 않았어요."
+    },
+    {
+     "en": "The fall injured her wrist badly.",
+     "ko": "그 낙상은 그녀의 손목을 심하게 다치게 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "hurt",
+     "ko": "다치게 하다",
+     "en": "Hurt yourself."
+    },
+    {
+     "type": "파생어",
+     "word": "injury",
+     "ko": "부상",
+     "en": "A serious injury."
+    },
+    {
+     "type": "파생어",
+     "word": "injured",
+     "ko": "다친",
+     "en": "An injured player."
+    },
+    {
+     "type": "연관어",
+     "word": "wound",
+     "ko": "상처",
+     "en": "A deep wound."
+    },
+    {
+     "type": "연관어",
+     "word": "accident",
+     "ko": "사고",
+     "en": "A car accident."
+    },
+    {
+     "type": "연관어",
+     "word": "damage",
+     "ko": "손상",
+     "en": "Serious damage."
+    }
+   ]
+  },
+  "1236": {
+   "word": "graph",
+   "overview": [
+    "graph는 '그래프, 도표'라는 뜻의 명사이자 '그래프로 나타내다'라는 뜻의 동사입니다.",
+    "read a graph(그래프를 읽다)처럼 씁니다.",
+    "데이터를 선, 막대, 점 등으로 시각화한 것을 뜻합니다.",
+    "a bar graph(막대그래프), a line graph(꺾은선 그래프)처럼 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "chart",
+     "en": "A bar chart.",
+     "ko": "막대 차트."
+    },
+    {
+     "word": "diagram",
+     "en": "A simple diagram.",
+     "ko": "간단한 도해."
+    }
+   ],
+   "etymology": [
+    "graph는 그리스어 graphein(쓰다, 그리다)에서 온 단어입니다.",
+    "photograph(사진), paragraph(문단)와 같은 가족입니다.",
+    "'선을 그려 데이터를 시각적으로 나타낸 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "숫자만으로는 알기 어려운 경향을 한눈에 보여 주는 시각 자료로 폭넓게 씁니다.",
+    "graph의 핵심 이미지는 '숫자를 선과 막대로 그려 한눈에 보여 주는 그래프 📈'입니다."
+   ],
+   "meanings": [
+    "그래프, 도표 (명사)",
+    "그래프로 나타내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The graph shows the company's sales over time.",
+     "ko": "그 그래프는 시간에 따른 그 회사의 매출을 보여줘요."
+    },
+    {
+     "en": "She graphed the results of her experiment.",
+     "ko": "그녀는 자신의 실험 결과를 그래프로 나타냈어요."
+    },
+    {
+     "en": "This line graph illustrates temperature changes.",
+     "ko": "이 꺾은선 그래프는 온도 변화를 보여줘요."
+    },
+    {
+     "en": "Students learned to read graphs in math class.",
+     "ko": "학생들은 수학 수업에서 그래프를 읽는 법을 배웠어요."
+    },
+    {
+     "en": "The bar graph compares scores from each team.",
+     "ko": "그 막대그래프는 각 팀의 점수를 비교해요."
+    },
+    {
+     "en": "He graphed his monthly expenses to track spending.",
+     "ko": "그는 지출을 추적하려고 자신의 월별 비용을 그래프로 나타냈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "chart",
+     "ko": "차트",
+     "en": "A pie chart."
+    },
+    {
+     "type": "연관어",
+     "word": "diagram",
+     "ko": "도해",
+     "en": "A clear diagram."
+    },
+    {
+     "type": "연관어",
+     "word": "data",
+     "ko": "데이터",
+     "en": "Analyze data."
+    },
+    {
+     "type": "연관어",
+     "word": "figure",
+     "ko": "수치",
+     "en": "Sales figures."
+    },
+    {
+     "type": "연관어",
+     "word": "trend",
+     "ko": "경향",
+     "en": "A rising trend."
+    },
+    {
+     "type": "연관어",
+     "word": "statistics",
+     "ko": "통계",
+     "en": "Review statistics."
+    }
+   ]
+  },
+  "1439": {
+   "word": "insure",
+   "overview": [
+    "insure는 '보험에 들다, 보험을 제공하다'라는 뜻의 동사입니다.",
+    "insure the car(그 차에 보험을 들다)처럼 씁니다.",
+    "'(안전 등을) 확실하게 하다'라는 뜻으로도 씁니다. (이 뜻은 ensure와 자주 혼용됩니다.)",
+    "명사 insurance(보험)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "protect financially",
+     "en": "Protect financially.",
+     "ko": "재정적으로 보호하다."
+    },
+    {
+     "word": "cover",
+     "en": "Cover the damage.",
+     "ko": "손해를 보장하다."
+    }
+   ],
+   "etymology": [
+    "insure는 옛 프랑스어 enseurer(확실하게 하다)에서 온 단어입니다.",
+    "en(~하게 하다)과 seur(확실한, sure)가 합쳐진 말로, sure(확실한), assure(장담하다)와 같은 가족입니다.",
+    "'손해가 생겨도 보장받도록 확실하게 해 두다'라는 뜻이 그대로 이어져 왔습니다.",
+    "돈을 내고 위험에 대비하는 금융 상품인 '보험'에 특히 자주 씁니다.",
+    "insure의 핵심 이미지는 '미래의 손해에 대비해 확실하게 보장해 두는 보험 🛡️'입니다."
+   ],
+   "meanings": [
+    "보험에 들다, 보험을 제공하다",
+    "확실하게 하다"
+   ],
+   "examples": [
+    {
+     "en": "He insured his car against theft and damage.",
+     "ko": "그는 도난과 손상에 대비해 자기 차에 보험을 들었어요."
+    },
+    {
+     "en": "The company insures homes and businesses.",
+     "ko": "그 회사는 주택과 사업체에 보험을 제공해요."
+    },
+    {
+     "en": "She insured her jewelry before traveling.",
+     "ko": "그녀는 여행하기 전에 자신의 보석에 보험을 들었어요."
+    },
+    {
+     "en": "It's wise to insure valuable items.",
+     "ko": "귀중한 물품에 보험을 드는 것은 현명해요."
+    },
+    {
+     "en": "The policy insures against natural disasters.",
+     "ko": "그 보험 증권은 자연재해에 대비해 보장해요."
+    },
+    {
+     "en": "He wanted to insure his family's financial future.",
+     "ko": "그는 자기 가족의 재정적 미래를 확실히 보장받고 싶어 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "insurance",
+     "ko": "보험",
+     "en": "Health insurance."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect your assets."
+    },
+    {
+     "type": "연관어",
+     "word": "cover",
+     "ko": "보장하다",
+     "en": "Cover the cost."
+    },
+    {
+     "type": "연관어",
+     "word": "policy",
+     "ko": "보험 증권",
+     "en": "An insurance policy."
+    },
+    {
+     "type": "연관어",
+     "word": "risk",
+     "ko": "위험",
+     "en": "Reduce risk."
+    },
+    {
+     "type": "연관어",
+     "word": "guarantee",
+     "ko": "보장하다",
+     "en": "Guarantee safety."
+    }
+   ]
+  },
+  "617": {
+   "word": "converse",
+   "overview": [
+    "converse는 '이야기하다, 대화하다'라는 뜻의 동사입니다.",
+    "converse with a friend(친구와 대화하다)처럼 씁니다.",
+    "명사·형용사로는 '반대, 반대의'라는 뜻으로도 씁니다. the converse is true(그 반대도 사실이다)",
+    "명사 conversation(대화)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "talk",
+     "en": "Talk casually.",
+     "ko": "편하게 이야기하다."
+    },
+    {
+     "word": "opposite",
+     "en": "The opposite view.",
+     "ko": "반대 견해."
+    }
+   ],
+   "etymology": [
+    "converse(대화하다)는 라틴어 conversari(함께 어울려 지내다)에서 온 단어입니다.",
+    "com(함께)과 vertere(돌다, 향하다)가 합쳐진 말로, convert(전환하다)와 같은 가족입니다.",
+    "'서로 함께 어울리며 말을 주고받다'라는 뜻이 그대로 이어져 왔습니다.",
+    "converse(반대의)는 다른 뿌리로, '방향을 반대로 돌린'이라는 뜻에서 나온 별개의 단어입니다.",
+    "converse의 핵심 이미지는 '서로 마주 보며 말을 주고받는 대화 💬'입니다."
+   ],
+   "meanings": [
+    "이야기하다, 대화하다 (동사)",
+    "반대, 역 (명사)",
+    "반대의 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "They conversed about their favorite books.",
+     "ko": "그들은 자신들이 가장 좋아하는 책에 대해 이야기했어요."
+    },
+    {
+     "en": "The converse of this statement is also true.",
+     "ko": "이 진술의 반대도 사실이에요."
+    },
+    {
+     "en": "She loves to converse with people from other cultures.",
+     "ko": "그녀는 다른 문화권 사람들과 대화하는 것을 아주 좋아해요."
+    },
+    {
+     "en": "We conversed easily during the long flight.",
+     "ko": "우리는 그 긴 비행 동안 편하게 대화했어요."
+    },
+    {
+     "en": "His view is the converse of what the report suggests.",
+     "ko": "그의 견해는 그 보고서가 시사하는 것과 반대예요."
+    },
+    {
+     "en": "They conversed in French during dinner.",
+     "ko": "그들은 저녁 식사 동안 프랑스어로 대화했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "talk",
+     "ko": "이야기하다",
+     "en": "Talk openly."
+    },
+    {
+     "type": "파생어",
+     "word": "conversation",
+     "ko": "대화",
+     "en": "A long conversation."
+    },
+    {
+     "type": "연관어",
+     "word": "chat",
+     "ko": "잡담하다",
+     "en": "Chat casually."
+    },
+    {
+     "type": "연관어",
+     "word": "discuss",
+     "ko": "논의하다",
+     "en": "Discuss a topic."
+    },
+    {
+     "type": "연관어",
+     "word": "opposite",
+     "ko": "반대의",
+     "en": "The opposite direction."
+    },
+    {
+     "type": "연관어",
+     "word": "reverse",
+     "ko": "반대의",
+     "en": "In reverse order."
+    }
+   ]
+  },
+  "1375": {
+   "word": "illustrate",
+   "overview": [
+    "illustrate는 '설명하다, 예를 들어 보여 주다'라는 뜻의 동사입니다.",
+    "illustrate the point(그 요점을 설명하다)처럼 씁니다.",
+    "책에 '삽화를 그리다'라는 뜻으로도 아주 자주 씁니다.",
+    "명사 illustration(삽화, 설명)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "show with example",
+     "en": "Show with an example.",
+     "ko": "예시로 보여주다."
+    },
+    {
+     "word": "draw pictures",
+     "en": "Draw pictures for a book.",
+     "ko": "책에 그림을 그리다."
+    }
+   ],
+   "etymology": [
+    "illustrate는 라틴어 illustrare(밝게 비추다)에서 온 단어입니다.",
+    "in(안으로)과 lustrare(빛을 비추다)가 합쳐진 말로, luster(광택)와도 이어지는 뿌리입니다.",
+    "'어두웠던 것을 밝게 비춰 분명하게 보여 주다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'글로 설명하기 어려운 것을 그림으로 밝혀 보여 주다'라는 뜻에서 '삽화를 그리다'도 나왔습니다.",
+    "illustrate의 핵심 이미지는 '어두운 이해를 밝게 비춰 분명히 보여 주는 설명과 삽화 🖼️'입니다."
+   ],
+   "meanings": [
+    "설명하다, 예를 들어 보여 주다",
+    "삽화를 그리다"
+   ],
+   "examples": [
+    {
+     "en": "This example illustrates the main idea well.",
+     "ko": "이 예시는 그 주된 생각을 잘 설명해 줘요."
+    },
+    {
+     "en": "She illustrated the children's book with colorful drawings.",
+     "ko": "그녀는 그 아동 도서에 알록달록한 그림으로 삽화를 그렸어요."
+    },
+    {
+     "en": "The chart illustrates the growth of the company.",
+     "ko": "그 차트는 그 회사의 성장을 보여줘요."
+    },
+    {
+     "en": "He used a diagram to illustrate his explanation.",
+     "ko": "그는 자신의 설명을 보여 주려고 도해를 사용했어요."
+    },
+    {
+     "en": "The story illustrates the importance of honesty.",
+     "ko": "그 이야기는 정직함의 중요성을 보여줘요."
+    },
+    {
+     "en": "Photos illustrate each step of the recipe.",
+     "ko": "사진들이 그 요리법의 각 단계를 보여줘요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "explain",
+     "ko": "설명하다",
+     "en": "Explain clearly."
+    },
+    {
+     "type": "파생어",
+     "word": "illustration",
+     "ko": "삽화, 설명",
+     "en": "A colorful illustration."
+    },
+    {
+     "type": "연관어",
+     "word": "demonstrate",
+     "ko": "보여주다",
+     "en": "Demonstrate a method."
+    },
+    {
+     "type": "연관어",
+     "word": "example",
+     "ko": "예시",
+     "en": "A clear example."
+    },
+    {
+     "type": "연관어",
+     "word": "draw",
+     "ko": "그리다",
+     "en": "Draw a picture."
+    },
+    {
+     "type": "연관어",
+     "word": "show",
+     "ko": "보여주다",
+     "en": "Show the results."
+    }
+   ]
+  },
+  "1997": {
+   "word": "pollute",
+   "overview": [
+    "pollute는 '오염시키다, 더럽히다'라는 뜻의 동사입니다.",
+    "pollute the river(강을 오염시키다)처럼 씁니다.",
+    "공기, 물, 땅 등을 해로운 물질로 더럽히는 것을 뜻합니다.",
+    "명사 pollution(오염), pollutant(오염 물질)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "contaminate",
+     "en": "Contaminate water.",
+     "ko": "물을 오염시키다."
+    },
+    {
+     "word": "dirty",
+     "en": "Dirty the air.",
+     "ko": "공기를 더럽히다."
+    }
+   ],
+   "etymology": [
+    "pollute는 라틴어 polluere(더럽히다, 오염시키다)에서 온 단어입니다.",
+    "por(완전히)와 luere(씻다, 더럽히다)가 합쳐진 말입니다.",
+    "'깨끗했던 것을 완전히 더럽혀 못쓰게 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "환경을 해치는 산업 폐기물, 매연 등에 특히 자주 씁니다.",
+    "pollute의 핵심 이미지는 '깨끗한 자연을 해로운 물질로 더럽히는 오염 🏭'입니다."
+   ],
+   "meanings": [
+    "더럽히다, 오염시키다"
+   ],
+   "examples": [
+    {
+     "en": "Factories should not pollute the rivers.",
+     "ko": "공장들은 강을 오염시켜서는 안 돼요."
+    },
+    {
+     "en": "Car exhaust pollutes the air in the city.",
+     "ko": "자동차 배기가스는 그 도시의 공기를 오염시켜요."
+    },
+    {
+     "en": "Plastic waste pollutes our oceans every day.",
+     "ko": "플라스틱 쓰레기는 매일 우리의 바다를 오염시켜요."
+    },
+    {
+     "en": "Chemicals from the factory polluted the soil.",
+     "ko": "그 공장에서 나온 화학 물질이 그 토양을 오염시켰어요."
+    },
+    {
+     "en": "We must work together to stop polluting the planet.",
+     "ko": "우리는 지구를 오염시키는 것을 멈추기 위해 함께 노력해야 해요."
+    },
+    {
+     "en": "Noise can also pollute a peaceful environment.",
+     "ko": "소음도 평화로운 환경을 오염시킬 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "contaminate",
+     "ko": "오염시키다",
+     "en": "Contaminate soil."
+    },
+    {
+     "type": "파생어",
+     "word": "pollution",
+     "ko": "오염",
+     "en": "Air pollution."
+    },
+    {
+     "type": "연관어",
+     "word": "dirty",
+     "ko": "더럽히다",
+     "en": "Dirty the water."
+    },
+    {
+     "type": "연관어",
+     "word": "waste",
+     "ko": "폐기물",
+     "en": "Toxic waste."
+    },
+    {
+     "type": "연관어",
+     "word": "environment",
+     "ko": "환경",
+     "en": "Protect the environment."
+    },
+    {
+     "type": "연관어",
+     "word": "smoke",
+     "ko": "연기",
+     "en": "Thick smoke."
+    }
+   ]
+  },
+  "767": {
+   "word": "depress",
+   "overview": [
+    "depress는 '풀 죽게 하다, 우울하게 하다'라는 뜻의 동사입니다.",
+    "The news depressed her.(그 소식은 그녀를 우울하게 했어요.)처럼 씁니다.",
+    "'(경기를) 침체시키다'라는 뜻으로도 씁니다.",
+    "형용사 depressed(우울한), 명사 depression(우울증, 불경기)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sadden",
+     "en": "Sadden a friend.",
+     "ko": "친구를 슬프게 하다."
+    },
+    {
+     "word": "discourage",
+     "en": "Discourage a worker.",
+     "ko": "노동자의 사기를 꺾다."
+    }
+   ],
+   "etymology": [
+    "depress는 라틴어 deprimere(아래로 누르다)에서 온 단어입니다.",
+    "de(아래로)와 premere(누르다)가 합쳐진 말로, press(누르다), express(표현하다)와 같은 가족입니다.",
+    "'무언가를 짓눌러 아래로 내려앉게 하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'마음을 짓눌러 기운이 없고 우울하게 만들다'라는 비유적인 뜻으로도 폭넓게 씁니다.",
+    "depress의 핵심 이미지는 '마음을 짓눌러 가라앉게 만드는 우울함 😔'입니다."
+   ],
+   "meanings": [
+    "짓누르다, 풀 죽게 하다, 우울하게 하다",
+    "(경기를) 침체시키다"
+   ],
+   "examples": [
+    {
+     "en": "The gloomy weather depressed her mood.",
+     "ko": "그 우중충한 날씨는 그녀의 기분을 우울하게 했어요."
+    },
+    {
+     "en": "Bad news can depress the whole family.",
+     "ko": "나쁜 소식은 가족 전체를 우울하게 할 수 있어요."
+    },
+    {
+     "en": "The recession depressed the local economy.",
+     "ko": "그 불황은 지역 경제를 침체시켰어요."
+    },
+    {
+     "en": "High unemployment depressed consumer spending.",
+     "ko": "높은 실업률은 소비자 지출을 위축시켰어요."
+    },
+    {
+     "en": "Losing the game depressed the entire team.",
+     "ko": "그 경기에서 진 것은 팀 전체를 풀 죽게 했어요."
+    },
+    {
+     "en": "The empty house depressed her every time she visited.",
+     "ko": "그 빈집은 그녀가 방문할 때마다 그녀를 우울하게 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sadden",
+     "ko": "슬프게 하다",
+     "en": "Sadden a child."
+    },
+    {
+     "type": "파생어",
+     "word": "depression",
+     "ko": "우울증, 불경기",
+     "en": "Suffer from depression."
+    },
+    {
+     "type": "파생어",
+     "word": "depressed",
+     "ko": "우울한",
+     "en": "Feel depressed."
+    },
+    {
+     "type": "연관어",
+     "word": "discourage",
+     "ko": "낙담시키다",
+     "en": "Discourage effort."
+    },
+    {
+     "type": "연관어",
+     "word": "sad",
+     "ko": "슬픈",
+     "en": "Feel sad."
+    },
+    {
+     "type": "연관어",
+     "word": "economy",
+     "ko": "경제",
+     "en": "A weak economy."
+    }
+   ]
+  },
+  "1040": {
+   "word": "fascinate",
+   "overview": [
+    "fascinate는 '매혹시키다, 마음을 사로잡다'라는 뜻의 동사입니다.",
+    "fascinate the audience(관객을 매혹시키다)처럼 씁니다.",
+    "무언가에 깊이 흥미를 느껴 눈을 뗄 수 없게 만드는 것을 뜻합니다.",
+    "형용사 fascinating(매혹적인), fascinated(매료된)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "captivate",
+     "en": "Captivate the crowd.",
+     "ko": "군중을 사로잡다."
+    },
+    {
+     "word": "interest deeply",
+     "en": "Interest deeply.",
+     "ko": "깊이 흥미를 갖게 하다."
+    }
+   ],
+   "etymology": [
+    "fascinate는 라틴어 fascinare(마법을 걸다, 홀리다)에서 온 단어입니다.",
+    "fascinum(마법의 부적, 저주)에서 나온 말입니다.",
+    "'마법에 걸린 듯 눈을 뗄 수 없게 홀리다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 마법이 아니라 순수한 흥미와 매력으로 마음을 사로잡는 데 씁니다.",
+    "fascinate의 핵심 이미지는 '마법에 걸린 듯 눈을 떼지 못하게 하는 매혹 ✨'입니다."
+   ],
+   "meanings": [
+    "매혹시키다, 마음을 사로잡다"
+   ],
+   "examples": [
+    {
+     "en": "The story of ancient Egypt fascinates her.",
+     "ko": "고대 이집트의 이야기는 그녀를 매혹시켜요."
+    },
+    {
+     "en": "His magic tricks fascinated the children.",
+     "ko": "그의 마술은 아이들을 매혹시켰어요."
+    },
+    {
+     "en": "She has always been fascinated by space.",
+     "ko": "그녀는 항상 우주에 매료되어 왔어요."
+    },
+    {
+     "en": "The documentary fascinated viewers with its details.",
+     "ko": "그 다큐멘터리는 그 세부 사항들로 시청자들을 매혹시켰어요."
+    },
+    {
+     "en": "The mystery of the old house fascinated the town.",
+     "ko": "그 오래된 집의 미스터리는 마을 사람들을 매혹시켰어요."
+    },
+    {
+     "en": "He finds insects fascinating to study.",
+     "ko": "그는 곤충을 연구하는 것이 매혹적이라고 생각해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "captivate",
+     "ko": "사로잡다",
+     "en": "Captivate an audience."
+    },
+    {
+     "type": "파생어",
+     "word": "fascinating",
+     "ko": "매혹적인",
+     "en": "A fascinating story."
+    },
+    {
+     "type": "파생어",
+     "word": "fascinated",
+     "ko": "매료된",
+     "en": "Feel fascinated."
+    },
+    {
+     "type": "연관어",
+     "word": "interest",
+     "ko": "흥미",
+     "en": "A deep interest."
+    },
+    {
+     "type": "연관어",
+     "word": "amaze",
+     "ko": "놀라게 하다",
+     "en": "Amaze the crowd."
+    },
+    {
+     "type": "연관어",
+     "word": "curious",
+     "ko": "호기심 있는",
+     "en": "A curious mind."
+    }
+   ]
+  },
+  "1158": {
+   "word": "frustrate",
+   "overview": [
+    "frustrate는 '좌절시키다, 답답하게 만들다'라는 뜻의 동사입니다.",
+    "frustrate his efforts(그의 노력을 좌절시키다)처럼 씁니다.",
+    "'(계획 등을) 무산시키다'라는 뜻으로도 씁니다.",
+    "형용사 frustrated(좌절한), frustrating(답답한)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "discourage",
+     "en": "Discourage a student.",
+     "ko": "학생의 사기를 꺾다."
+    },
+    {
+     "word": "block",
+     "en": "Block a plan.",
+     "ko": "계획을 막다."
+    }
+   ],
+   "etymology": [
+    "frustrate는 라틴어 frustrare(속이다, 헛되게 하다)에서 온 단어입니다.",
+    "frustra(헛되이, 소용없이)에서 나온 말입니다.",
+    "'노력했지만 결과가 헛되게 되어 실망하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'계획이나 목표를 방해해서 실패하게 만들다'라는 뜻으로도 폭넓게 씁니다.",
+    "frustrate의 핵심 이미지는 '애썼지만 결과가 헛되어 답답해지는 좌절 😣'입니다."
+   ],
+   "meanings": [
+    "좌절시키다, 답답하게 만들다",
+    "(계획 등을) 무산시키다"
+   ],
+   "examples": [
+    {
+     "en": "The slow internet frustrated her all day.",
+     "ko": "그 느린 인터넷은 하루 종일 그녀를 답답하게 했어요."
+    },
+    {
+     "en": "Bad weather frustrated their travel plans.",
+     "ko": "나쁜 날씨는 그들의 여행 계획을 무산시켰어요."
+    },
+    {
+     "en": "He felt frustrated when he couldn't solve the puzzle.",
+     "ko": "그는 그 퍼즐을 풀 수 없었을 때 답답함을 느꼈어요."
+    },
+    {
+     "en": "Constant delays frustrated the entire project team.",
+     "ko": "끊임없는 지연은 전체 프로젝트 팀을 좌절시켰어요."
+    },
+    {
+     "en": "Her lack of progress frustrated her coach.",
+     "ko": "그녀의 발전 부족은 그녀의 코치를 답답하게 했어요."
+    },
+    {
+     "en": "The obstacles frustrated his attempt to finish early.",
+     "ko": "그 장애물들은 일찍 끝내려는 그의 시도를 좌절시켰어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "discourage",
+     "ko": "낙담시키다",
+     "en": "Discourage progress."
+    },
+    {
+     "type": "파생어",
+     "word": "frustrated",
+     "ko": "좌절한",
+     "en": "Feel frustrated."
+    },
+    {
+     "type": "파생어",
+     "word": "frustrating",
+     "ko": "답답한",
+     "en": "A frustrating delay."
+    },
+    {
+     "type": "연관어",
+     "word": "block",
+     "ko": "막다",
+     "en": "Block a path."
+    },
+    {
+     "type": "연관어",
+     "word": "disappoint",
+     "ko": "실망시키다",
+     "en": "Disappoint a fan."
+    },
+    {
+     "type": "연관어",
+     "word": "obstacle",
+     "ko": "장애물",
+     "en": "Face an obstacle."
+    }
+   ]
+  },
+  "54": {
+   "word": "advertize",
+   "overview": [
+    "advertize(=advertise)는 '광고하다, 널리 알리다'라는 뜻의 동사입니다.",
+    "advertise a product(제품을 광고하다)처럼 씁니다.",
+    "미국식 철자는 advertise가 더 일반적입니다.",
+    "명사 advertisement(광고), advertiser(광고주)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "promote",
+     "en": "Promote a sale.",
+     "ko": "세일을 홍보하다."
+    },
+    {
+     "word": "publicize",
+     "en": "Publicize an event.",
+     "ko": "행사를 널리 알리다."
+    }
+   ],
+   "etymology": [
+    "advertise는 라틴어 advertere(주의를 돌리다)에서 온 단어입니다.",
+    "ad(~쪽으로)와 vertere(돌리다)가 합쳐진 말로, convert(전환하다), reverse(뒤집다)와 같은 가족입니다.",
+    "'사람들의 주의를 특정한 것으로 돌리게 하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'상품이나 서비스를 널리 알려 사람들의 관심을 끌다'라는 뜻으로 굳어졌습니다.",
+    "advertise의 핵심 이미지는 '사람들의 시선을 끌어당기는 광고 📺'입니다."
+   ],
+   "meanings": [
+    "광고하다, 널리 알리다"
+   ],
+   "examples": [
+    {
+     "en": "The company advertised its new product on TV.",
+     "ko": "그 회사는 텔레비전에서 자신의 새 제품을 광고했어요."
+    },
+    {
+     "en": "They advertised the job opening online.",
+     "ko": "그들은 온라인으로 그 채용 공고를 알렸어요."
+    },
+    {
+     "en": "She advertised her services through social media.",
+     "ko": "그녀는 소셜 미디어를 통해 자신의 서비스를 홍보했어요."
+    },
+    {
+     "en": "The store advertised a big sale this weekend.",
+     "ko": "그 가게는 이번 주말 큰 세일을 광고했어요."
+    },
+    {
+     "en": "Businesses advertise to attract more customers.",
+     "ko": "기업들은 더 많은 고객을 끌어들이려고 광고해요."
+    },
+    {
+     "en": "The event was advertised on posters around town.",
+     "ko": "그 행사는 마을 곳곳의 포스터로 알려졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "promote",
+     "ko": "홍보하다",
+     "en": "Promote a product."
+    },
+    {
+     "type": "파생어",
+     "word": "advertisement",
+     "ko": "광고",
+     "en": "A TV advertisement."
+    },
+    {
+     "type": "연관어",
+     "word": "publicize",
+     "ko": "알리다",
+     "en": "Publicize the news."
+    },
+    {
+     "type": "연관어",
+     "word": "market",
+     "ko": "홍보하다, 시장",
+     "en": "Market a brand."
+    },
+    {
+     "type": "연관어",
+     "word": "brand",
+     "ko": "브랜드",
+     "en": "A famous brand."
+    },
+    {
+     "type": "연관어",
+     "word": "sale",
+     "ko": "판매, 세일",
+     "en": "A big sale."
+    }
+   ]
+  },
+  "953": {
+   "word": "especial",
+   "overview": [
+    "especial은 '특별한, 각별한'이라는 뜻의 형용사입니다.",
+    "of especial interest(특히 흥미로운)처럼 씁니다.",
+    "special보다 좀 더 격식 있고 문어적인 단어입니다.",
+    "부사 especially(특히)가 훨씬 더 자주 쓰입니다."
+   ],
+   "easy": [
+    {
+     "word": "special",
+     "en": "A special occasion.",
+     "ko": "특별한 경우."
+    },
+    {
+     "word": "particular",
+     "en": "Particular attention.",
+     "ko": "특별한 관심."
+    }
+   ],
+   "etymology": [
+    "especial은 라틴어 specialis(특정한, 특별한)에서 온 단어입니다.",
+    "species(종류, 모습)에서 나온 말로, special(특별한)과 같은 가족입니다.",
+    "'전체 중에서 콕 짚어 두드러지는 특별한'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 special이 더 일반적으로 쓰이고, especial은 격식체 글에서 주로 씁니다.",
+    "especial의 핵심 이미지는 '전체 중에서 유독 도드라지는 각별함 ⭐'입니다."
+   ],
+   "meanings": [
+    "특별한, 각별한"
+   ],
+   "examples": [
+    {
+     "en": "This topic is of especial importance to researchers.",
+     "ko": "이 주제는 연구자들에게 각별히 중요해요."
+    },
+    {
+     "en": "She showed especial care for the elderly patient.",
+     "ko": "그녀는 그 노인 환자에게 각별한 관심을 보였어요."
+    },
+    {
+     "en": "He took especial interest in the new project.",
+     "ko": "그는 그 새 프로젝트에 특별한 관심을 가졌어요."
+    },
+    {
+     "en": "The event holds especial significance for the town.",
+     "ko": "그 행사는 그 마을에 각별한 의미를 지녀요."
+    },
+    {
+     "en": "She has an especial talent for painting.",
+     "ko": "그녀는 그림에 특별한 재능을 가지고 있어요."
+    },
+    {
+     "en": "This point deserves especial attention.",
+     "ko": "이 요점은 각별한 주의를 받을 만해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "special",
+     "ko": "특별한",
+     "en": "A special gift."
+    },
+    {
+     "type": "파생어",
+     "word": "especially",
+     "ko": "특히",
+     "en": "Especially true."
+    },
+    {
+     "type": "연관어",
+     "word": "particular",
+     "ko": "특정한",
+     "en": "A particular case."
+    },
+    {
+     "type": "연관어",
+     "word": "unique",
+     "ko": "독특한",
+     "en": "A unique style."
+    },
+    {
+     "type": "연관어",
+     "word": "important",
+     "ko": "중요한",
+     "en": "An important detail."
+    },
+    {
+     "type": "연관어",
+     "word": "significant",
+     "ko": "중요한",
+     "en": "A significant event."
+    }
+   ]
+  },
+  "1587": {
+   "word": "livingroom",
+   "overview": [
+    "livingroom(living room)은 '거실'이라는 뜻의 명사입니다.",
+    "sit in the living room(거실에 앉아 있다)처럼 씁니다.",
+    "가족이 함께 모여 쉬고 대화하는 집 안의 공간을 뜻합니다.",
+    "보통 두 단어로 living room이라고 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "family room",
+     "en": "A cozy family room.",
+     "ko": "아늑한 가족실."
+    },
+    {
+     "word": "sitting room",
+     "en": "A comfortable sitting room.",
+     "ko": "편안한 거실."
+    }
+   ],
+   "etymology": [
+    "living room은 living(사는, 생활하는)과 room(방)이 합쳐진 단어입니다.",
+    "옛날에는 다양한 활동이 이루어지는 방을 parlour(응접실)라고 불렀습니다.",
+    "20세기 들어 가족이 함께 '생활하는 방'이라는 뜻에서 living room이라는 이름이 널리 쓰이게 되었습니다.",
+    "가족이 모여 쉬고, TV를 보고, 손님을 맞이하는 집의 중심 공간을 가리킵니다.",
+    "living room의 핵심 이미지는 '가족이 함께 모여 편히 쉬는 거실 🛋️'입니다."
+   ],
+   "meanings": [
+    "거실"
+   ],
+   "examples": [
+    {
+     "en": "The family gathered in the living room to watch a movie.",
+     "ko": "그 가족은 영화를 보려고 거실에 모였어요."
+    },
+    {
+     "en": "She decorated the living room with new furniture.",
+     "ko": "그녀는 새 가구로 거실을 꾸몄어요."
+    },
+    {
+     "en": "The living room has a large window facing the garden.",
+     "ko": "그 거실은 정원을 향한 큰 창문을 가지고 있어요."
+    },
+    {
+     "en": "He fell asleep on the couch in the living room.",
+     "ko": "그는 거실 소파에서 잠들었어요."
+    },
+    {
+     "en": "We keep our books on shelves in the living room.",
+     "ko": "우리는 거실 선반에 책들을 보관해요."
+    },
+    {
+     "en": "The children played games in the living room all afternoon.",
+     "ko": "아이들은 오후 내내 거실에서 게임을 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "sofa",
+     "ko": "소파",
+     "en": "A comfy sofa."
+    },
+    {
+     "type": "연관어",
+     "word": "furniture",
+     "ko": "가구",
+     "en": "New furniture."
+    },
+    {
+     "type": "연관어",
+     "word": "television",
+     "ko": "텔레비전",
+     "en": "Watch television."
+    },
+    {
+     "type": "연관어",
+     "word": "bedroom",
+     "ko": "침실",
+     "en": "A cozy bedroom."
+    },
+    {
+     "type": "연관어",
+     "word": "kitchen",
+     "ko": "부엌",
+     "en": "A modern kitchen."
+    },
+    {
+     "type": "연관어",
+     "word": "home",
+     "ko": "집",
+     "en": "A warm home."
+    }
+   ]
+  },
+  "2416": {
+   "word": "situate",
+   "overview": [
+    "situate는 '~을 (어떤 장소에) 놓다, 위치시키다'라는 뜻의 동사입니다.",
+    "The house is situated near the river.(그 집은 강 근처에 위치해 있어요.)처럼 씁니다.",
+    "주로 수동태(be situated)로 자주 씁니다.",
+    "명사 situation(상황, 위치)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "locate",
+     "en": "Locate a building.",
+     "ko": "건물을 두다."
+    },
+    {
+     "word": "place",
+     "en": "Place an object.",
+     "ko": "물건을 놓다."
+    }
+   ],
+   "etymology": [
+    "situate는 라틴어 situare(자리를 잡다)에서 온 단어입니다.",
+    "situs(위치, 장소)에서 나온 말로, site(부지), situation(상황)과 같은 가족입니다.",
+    "'특정한 장소에 자리를 잡아 놓다'라는 뜻이 그대로 이어져 왔습니다.",
+    "건물이나 마을의 지리적 위치를 설명할 때 특히 자주 씁니다.",
+    "situate의 핵심 이미지는 '특정한 자리에 콕 자리 잡은 위치 📍'입니다."
+   ],
+   "meanings": [
+    "~을 (장소·처지에) 놓다, 위치시키다"
+   ],
+   "examples": [
+    {
+     "en": "The school is situated in the center of town.",
+     "ko": "그 학교는 마을 중심에 위치해 있어요."
+    },
+    {
+     "en": "They situated the new factory near the highway.",
+     "ko": "그들은 그 새 공장을 고속도로 근처에 두었어요."
+    },
+    {
+     "en": "The hotel is situated close to the beach.",
+     "ko": "그 호텔은 해변 가까이에 위치해 있어요."
+    },
+    {
+     "en": "The story is situated in a small village.",
+     "ko": "그 이야기는 작은 마을을 배경으로 해요."
+    },
+    {
+     "en": "The castle is situated on top of a hill.",
+     "ko": "그 성은 언덕 꼭대기에 위치해 있어요."
+    },
+    {
+     "en": "The company situated its headquarters downtown.",
+     "ko": "그 회사는 자신의 본사를 시내에 두었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "locate",
+     "ko": "위치시키다",
+     "en": "Locate an office."
+    },
+    {
+     "type": "파생어",
+     "word": "situation",
+     "ko": "상황, 위치",
+     "en": "A difficult situation."
+    },
+    {
+     "type": "연관어",
+     "word": "place",
+     "ko": "놓다",
+     "en": "Place carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "position",
+     "ko": "위치",
+     "en": "A central position."
+    },
+    {
+     "type": "연관어",
+     "word": "location",
+     "ko": "장소",
+     "en": "A great location."
+    },
+    {
+     "type": "연관어",
+     "word": "site",
+     "ko": "부지",
+     "en": "A construction site."
+    }
+   ]
   }
  }
 }
