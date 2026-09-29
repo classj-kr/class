@@ -1,0 +1,1945 @@
+{
+ "version": "v1",
+ "level": 6,
+ "description": "Level 6 상세설명. 개요 · 어원 · 뜻 · 예문 · 함께 익히기 구조.",
+ "entries": {
+  "2326": {
+   "word": "search",
+   "overview": [
+    "search는 '찾다', '검색하다'라는 뜻의 동사이자 '탐색', '검색'이라는 뜻의 명사입니다.",
+    "search for(~을 찾다), search the internet(인터넷을 검색하다)처럼 씁니다.",
+    "in search of는 '~을 찾아서'라는 뜻의 표현입니다.",
+    "search party(수색대)처럼 실종된 사람을 찾을 때도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "look for",
+     "en": "Look for keys.",
+     "ko": "열쇠를 찾아."
+    },
+    {
+     "word": "find",
+     "en": "Find the answer.",
+     "ko": "답을 찾아."
+    }
+   ],
+   "etymology": [
+    "search는 옛 프랑스어 cerchier(둘러보다, 찾아다니다)에서 온 단어입니다.",
+    "라틴어 circare(빙 돌다)에서 나온 말로, circle(원)과 같은 가족입니다.",
+    "'무언가를 찾으려고 이곳저곳 빙빙 돌아다니다'라는 뜻이 '찾다'로 이어졌습니다.",
+    "research(연구, '다시 찾다')도 같은 뿌리에서 나온 단어입니다.",
+    "search의 핵심 이미지는 '온 사방을 뒤지며 무언가를 찾는 모습 🔍'입니다."
+   ],
+   "meanings": [
+    "찾다, 수색하다 (동사)",
+    "검색하다 (동사)",
+    "탐색, 수색, 검색 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "I searched for my keys everywhere.",
+     "ko": "나는 열쇠를 찾으려고 온 사방을 뒤졌어요."
+    },
+    {
+     "en": "Let's search the internet for information.",
+     "ko": "정보를 찾으려고 인터넷을 검색해 보자."
+    },
+    {
+     "en": "The police searched the house.",
+     "ko": "경찰이 집을 수색했어요."
+    },
+    {
+     "en": "After a long search, we found the puppy.",
+     "ko": "긴 수색 끝에 우리는 강아지를 찾았어요."
+    },
+    {
+     "en": "She searched her bag for a pen.",
+     "ko": "그녀는 펜을 찾으려고 가방을 뒤졌어요."
+    },
+    {
+     "en": "The search continued into the night.",
+     "ko": "수색은 밤까지 계속됐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "look for",
+     "ko": "찾다",
+     "en": "Look for a job."
+    },
+    {
+     "type": "연관어",
+     "word": "find",
+     "ko": "찾아내다",
+     "en": "Find the answer."
+    },
+    {
+     "type": "파생어",
+     "word": "research",
+     "ko": "연구",
+     "en": "Do research."
+    },
+    {
+     "type": "연관어",
+     "word": "explore",
+     "ko": "탐험하다",
+     "en": "Explore the forest."
+    },
+    {
+     "type": "연관어",
+     "word": "hunt",
+     "ko": "찾아다니다",
+     "en": "Hunt for treasure."
+    },
+    {
+     "type": "연관어",
+     "word": "discover",
+     "ko": "발견하다",
+     "en": "Discover a secret."
+    }
+   ]
+  },
+  "155": {
+   "word": "arrest",
+   "overview": [
+    "arrest는 '체포'라는 뜻의 명사이자 '체포하다'라는 뜻의 동사입니다.",
+    "The police arrested him.(경찰이 그를 체포했어요.)처럼 씁니다.",
+    "under arrest는 '체포된 상태로'라는 뜻입니다. You're under arrest.(당신을 체포합니다.)",
+    "형용사 arresting은 '눈길을 끄는', '주목할 만한'이라는 다른 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "catch",
+     "en": "Catch a thief.",
+     "ko": "도둑을 잡다."
+    },
+    {
+     "word": "capture",
+     "en": "Capture the criminal.",
+     "ko": "범인을 붙잡다."
+    }
+   ],
+   "etymology": [
+    "arrest는 옛 프랑스어 arester(멈추게 하다, 붙잡다)에서 온 단어입니다.",
+    "라틴어 ad(~을 향해)와 restare(멈춰 서다)가 합쳐진 말입니다.",
+    "rest(휴식, '멈춰 서 있음')와도 같은 뿌리를 가진 단어입니다.",
+    "'움직이지 못하게 딱 멈춰 세우다'라는 뜻에서 '체포하다'가 되었습니다.",
+    "arrest의 핵심 이미지는 '경찰이 손목에 수갑을 채우는 순간 🚔'입니다."
+   ],
+   "meanings": [
+    "체포 (명사)",
+    "체포하다 (동사)",
+    "(진행 등을) 멈추게 하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The police arrested the thief.",
+     "ko": "경찰이 도둑을 체포했어요."
+    },
+    {
+     "en": "He was placed under arrest.",
+     "ko": "그는 체포됐어요."
+    },
+    {
+     "en": "The suspect was arrested last night.",
+     "ko": "용의자는 어젯밤에 체포됐어요."
+    },
+    {
+     "en": "Officers made three arrests today.",
+     "ko": "경찰관들이 오늘 세 명을 체포했어요."
+    },
+    {
+     "en": "Doctors tried to arrest the spread of the illness.",
+     "ko": "의사들은 질병의 확산을 막으려고 노력했어요."
+    },
+    {
+     "en": "You have the right to remain silent when arrested.",
+     "ko": "체포될 때는 묵비권을 행사할 권리가 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "catch",
+     "ko": "잡다",
+     "en": "Catch a criminal."
+    },
+    {
+     "type": "연관어",
+     "word": "police",
+     "ko": "경찰",
+     "en": "Call the police."
+    },
+    {
+     "type": "연관어",
+     "word": "crime",
+     "ko": "범죄",
+     "en": "Commit a crime."
+    },
+    {
+     "type": "연관어",
+     "word": "suspect",
+     "ko": "용의자",
+     "en": "A main suspect."
+    },
+    {
+     "type": "연관어",
+     "word": "prison",
+     "ko": "감옥",
+     "en": "Sent to prison."
+    },
+    {
+     "type": "연관어",
+     "word": "handcuff",
+     "ko": "수갑",
+     "en": "Put on handcuffs."
+    }
+   ]
+  },
+  "1509": {
+   "word": "knock",
+   "overview": [
+    "knock은 '두드리다', '노크하다'라는 뜻의 동사이자 '두드리는 소리'라는 뜻의 명사입니다.",
+    "knock on the door(문을 두드리다)처럼 씁니다.",
+    "knock down은 '넘어뜨리다', knock over는 '넘어뜨려 쓰러뜨리다'라는 뜻입니다.",
+    "발음할 때 k는 소리 내지 않아서 '낙'에 가깝게 읽습니다."
+   ],
+   "easy": [
+    {
+     "word": "tap",
+     "en": "Tap the table.",
+     "ko": "탁자를 톡톡 치다."
+    },
+    {
+     "word": "hit",
+     "en": "Hit the door.",
+     "ko": "문을 치다."
+    }
+   ],
+   "etymology": [
+    "knock은 고대 영어 cnocian(두드리다)에서 온 단어입니다.",
+    "'딱, 딱' 하는 소리를 흉내 낸 아주 오래된 말이라고 봅니다.",
+    "천 년 넘게 비슷한 뜻과 소리로 쓰여 온 단어입니다.",
+    "옛날에는 k도 소리를 냈지만, 지금은 knee(무릎), know(알다)처럼 발음하지 않습니다.",
+    "knock의 핵심 이미지는 '똑똑 문을 두드리는 소리 🚪'입니다."
+   ],
+   "meanings": [
+    "두드리다, 노크하다 (동사)",
+    "(세게) 치다 (동사)",
+    "두드리는 소리, 노크 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Someone is knocking on the door.",
+     "ko": "누군가 문을 두드리고 있어요."
+    },
+    {
+     "en": "I heard a knock at the window.",
+     "ko": "나는 창문에서 두드리는 소리를 들었어요."
+    },
+    {
+     "en": "He knocked the vase off the table.",
+     "ko": "그는 탁자에서 화병을 쳐서 떨어뜨렸어요."
+    },
+    {
+     "en": "She knocked twice before entering.",
+     "ko": "그녀는 들어가기 전에 두 번 노크했어요."
+    },
+    {
+     "en": "Please knock before you come in.",
+     "ko": "들어오기 전에 노크해 주세요."
+    },
+    {
+     "en": "The wind knocked down the fence.",
+     "ko": "바람이 울타리를 쓰러뜨렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "door",
+     "ko": "문",
+     "en": "Open the door."
+    },
+    {
+     "type": "연관어",
+     "word": "tap",
+     "ko": "톡톡 두드리다",
+     "en": "Tap the glass."
+    },
+    {
+     "type": "연관어",
+     "word": "hit",
+     "ko": "치다",
+     "en": "Hit the target."
+    },
+    {
+     "type": "연관어",
+     "word": "knock down",
+     "ko": "넘어뜨리다",
+     "en": "Knock down a wall."
+    },
+    {
+     "type": "연관어",
+     "word": "knock out",
+     "ko": "기절시키다",
+     "en": "Knock him out."
+    },
+    {
+     "type": "연관어",
+     "word": "bang",
+     "ko": "쾅 치다",
+     "en": "Bang the drum."
+    }
+   ]
+  },
+  "1916": {
+   "word": "patient",
+   "overview": [
+    "patient는 '환자'라는 뜻의 명사이자 '참을성 있는'이라는 뜻의 형용사입니다.",
+    "a hospital patient(입원 환자), Be patient.(참을성 있게 기다려요.)처럼 씁니다.",
+    "명사 patience(참을성, 인내심)도 자주 씁니다.",
+    "두 뜻 모두 '견디다', '참다'라는 같은 뿌리에서 나왔습니다."
+   ],
+   "easy": [
+    {
+     "word": "sick person",
+     "en": "A sick person.",
+     "ko": "아픈 사람."
+    },
+    {
+     "word": "calm",
+     "en": "Stay calm.",
+     "ko": "침착함을 유지해."
+    }
+   ],
+   "etymology": [
+    "patient는 라틴어 patiens(견디는, 참는)에서 온 단어입니다.",
+    "pati(견디다, 고통받다)에서 나온 말입니다.",
+    "'병으로 인한 고통을 견디는 사람'이라는 뜻에서 '환자'가 되었습니다.",
+    "'견디는 태도'라는 뜻에서 '참을성 있는'이라는 형용사 뜻도 함께 생겼습니다.",
+    "patient의 핵심 이미지는 '조급해하지 않고 차분히 기다리는 마음 🕰️'입니다."
+   ],
+   "meanings": [
+    "환자 (명사)",
+    "참을성 있는, 인내심 있는 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "The doctor is checking on a patient.",
+     "ko": "의사가 환자를 살펴보고 있어요."
+    },
+    {
+     "en": "Please be patient. The bus is coming soon.",
+     "ko": "참을성 있게 기다려 주세요. 버스가 곧 올 거예요."
+    },
+    {
+     "en": "The nurse took care of the patient kindly.",
+     "ko": "간호사는 환자를 친절하게 돌봤어요."
+    },
+    {
+     "en": "She is very patient with young children.",
+     "ko": "그녀는 어린아이들에게 아주 참을성이 있어요."
+    },
+    {
+     "en": "The hospital had many patients that day.",
+     "ko": "그날 병원에는 환자가 많았어요."
+    },
+    {
+     "en": "Learning a new language requires patience.",
+     "ko": "새 언어를 배우는 것은 인내심이 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "patience",
+     "ko": "참을성, 인내심",
+     "en": "Have patience."
+    },
+    {
+     "type": "반의어",
+     "word": "impatient",
+     "ko": "참을성 없는",
+     "en": "Impatient driver."
+    },
+    {
+     "type": "연관어",
+     "word": "doctor",
+     "ko": "의사",
+     "en": "See a doctor."
+    },
+    {
+     "type": "연관어",
+     "word": "hospital",
+     "ko": "병원",
+     "en": "Go to the hospital."
+    },
+    {
+     "type": "연관어",
+     "word": "nurse",
+     "ko": "간호사",
+     "en": "A kind nurse."
+    },
+    {
+     "type": "연관어",
+     "word": "wait",
+     "ko": "기다리다",
+     "en": "Wait calmly."
+    }
+   ]
+  },
+  "1074": {
+   "word": "final",
+   "overview": [
+    "final은 '마지막의', '최종적인'이라는 뜻의 형용사입니다.",
+    "the final answer(최종 답), the final day(마지막 날)처럼 씁니다.",
+    "명사로는 대회의 '결승전'이나 학교의 '기말고사'를 뜻합니다.",
+    "부사 finally(마침내, 결국)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "last",
+     "en": "The last chance.",
+     "ko": "마지막 기회."
+    },
+    {
+     "word": "end",
+     "en": "The end of the story.",
+     "ko": "이야기의 끝."
+    }
+   ],
+   "etymology": [
+    "final은 라틴어 finalis(끝의, 마지막의)에서 온 단어입니다.",
+    "finis(끝, 경계)에서 나온 말로, finish(끝내다)와 같은 가족입니다.",
+    "'경계선의 끝'이라는 뜻이 '마지막의', '최종적인'으로 이어졌습니다.",
+    "infinite(무한한, '끝이 없는')도 같은 뿌리에서 나온 단어입니다.",
+    "final의 핵심 이미지는 '더 이상 뒤가 없는 마지막 결승선 🏁'입니다."
+   ],
+   "meanings": [
+    "마지막의, 최종적인 (형용사)",
+    "결승전 (명사)",
+    "기말고사 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "This is my final answer.",
+     "ko": "이게 제 최종 답이에요."
+    },
+    {
+     "en": "Our team made it to the final.",
+     "ko": "우리 팀이 결승전에 진출했어요."
+    },
+    {
+     "en": "The final decision is up to you.",
+     "ko": "최종 결정은 당신에게 달려 있어요."
+    },
+    {
+     "en": "Finals week is always stressful.",
+     "ko": "기말고사 주간은 항상 스트레스가 많아요."
+    },
+    {
+     "en": "She scored the final goal of the game.",
+     "ko": "그녀는 경기의 마지막 골을 넣었어요."
+    },
+    {
+     "en": "The final chapter was very exciting.",
+     "ko": "마지막 장은 아주 흥미진진했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "last",
+     "ko": "마지막의",
+     "en": "The last day."
+    },
+    {
+     "type": "파생어",
+     "word": "finally",
+     "ko": "마침내",
+     "en": "Finally home."
+    },
+    {
+     "type": "연관어",
+     "word": "finish",
+     "ko": "끝내다",
+     "en": "Finish the race."
+    },
+    {
+     "type": "연관어",
+     "word": "end",
+     "ko": "끝",
+     "en": "The end of the movie."
+    },
+    {
+     "type": "연관어",
+     "word": "exam",
+     "ko": "시험",
+     "en": "A final exam."
+    },
+    {
+     "type": "연관어",
+     "word": "champion",
+     "ko": "챔피언",
+     "en": "The final champion."
+    }
+   ]
+  },
+  "952": {
+   "word": "escape",
+   "overview": [
+    "escape는 '탈출하다', '피하다'라는 뜻의 동사이자 '탈출', '도피'라는 뜻의 명사입니다.",
+    "escape from prison(감옥에서 탈출하다), a narrow escape(간신히 벗어남)처럼 씁니다.",
+    "escape는 '위험한 상황에서 빠져나오다'라는 뜻이 핵심입니다.",
+    "fire escape(화재 대피용 계단)처럼 다른 말과 함께도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "run away",
+     "en": "Run away from danger.",
+     "ko": "위험에서 도망치다."
+    },
+    {
+     "word": "get out",
+     "en": "Get out safely.",
+     "ko": "안전하게 빠져나오다."
+    }
+   ],
+   "etymology": [
+    "escape는 옛 프랑스어 escaper를 거쳐 라틴어 excappare(망토를 벗고 도망치다)에서 온 단어입니다.",
+    "ex(밖으로)와 cappa(망토)가 합쳐진 말입니다.",
+    "옛날에는 도망칠 때 잡히기 쉬운 망토를 벗어 던지고 달아났다고 봅니다.",
+    "cap(모자)과도 같은 가족 단어입니다.",
+    "escape의 핵심 이미지는 '위험을 뒤로하고 재빠르게 빠져나오는 순간 🏃'입니다."
+   ],
+   "meanings": [
+    "탈출하다, 도망치다 (동사)",
+    "(위험 등을) 피하다, 모면하다 (동사)",
+    "탈출, 도피 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The bird escaped from its cage.",
+     "ko": "새가 새장에서 탈출했어요."
+    },
+    {
+     "en": "We narrowly escaped the storm.",
+     "ko": "우리는 간신히 폭풍을 피했어요."
+    },
+    {
+     "en": "He tried to escape but was caught.",
+     "ko": "그는 탈출을 시도했지만 잡혔어요."
+    },
+    {
+     "en": "There was no escape from the flood.",
+     "ko": "홍수에서 도망칠 방법이 없었어요."
+    },
+    {
+     "en": "Reading helps me escape from daily stress.",
+     "ko": "독서는 내가 일상의 스트레스에서 벗어나는 데 도움을 줘요."
+    },
+    {
+     "en": "The prisoner made a daring escape.",
+     "ko": "그 죄수는 대담한 탈출을 감행했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "run away",
+     "ko": "도망치다",
+     "en": "Run away home."
+    },
+    {
+     "type": "유의어",
+     "word": "flee",
+     "ko": "달아나다",
+     "en": "Flee the country."
+    },
+    {
+     "type": "연관어",
+     "word": "avoid",
+     "ko": "피하다",
+     "en": "Avoid danger."
+    },
+    {
+     "type": "연관어",
+     "word": "free",
+     "ko": "자유로운, 풀려나다",
+     "en": "Set free."
+    },
+    {
+     "type": "연관어",
+     "word": "prison",
+     "ko": "감옥",
+     "en": "Escape from prison."
+    },
+    {
+     "type": "연관어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "In great danger."
+    }
+   ]
+  },
+  "1640": {
+   "word": "match",
+   "overview": [
+    "match는 '경기', '시합'이라는 뜻의 명사이자 '어울리다', '일치하다'라는 뜻의 동사입니다.",
+    "a soccer match(축구 경기), match colors(색깔을 맞추다)처럼 씁니다.",
+    "'짝', '어울리는 것'이라는 뜻으로도 씁니다. a perfect match(완벽한 짝)",
+    "'성냥'이라는 뜻도 있습니다. light a match(성냥을 켜다)"
+   ],
+   "easy": [
+    {
+     "word": "game",
+     "en": "A soccer game.",
+     "ko": "축구 경기."
+    },
+    {
+     "word": "go with",
+     "en": "Go well together.",
+     "ko": "잘 어울리다."
+    }
+   ],
+   "etymology": [
+    "match는 고대 영어 gemæcca(짝, 동료)에서 온 단어입니다.",
+    "make(만들다)와도 먼 친척인 아주 옛날 뿌리에서 나왔다고 봅니다.",
+    "'서로 짝을 이루는 것'이라는 뜻이 '어울리다'로 이어졌습니다.",
+    "'성냥'이라는 뜻의 match는 옛 프랑스어 mesche(심지)에서 온 전혀 다른 단어입니다.",
+    "match의 핵심 이미지는 '딱 들어맞는 완벽한 짝 🧩'입니다."
+   ],
+   "meanings": [
+    "경기, 시합 (명사)",
+    "짝, 어울리는 것 (명사)",
+    "어울리다, 맞다 (동사)",
+    "성냥 (명사, 다른 단어)"
+   ],
+   "examples": [
+    {
+     "en": "We watched a tennis match.",
+     "ko": "우리는 테니스 경기를 봤어요."
+    },
+    {
+     "en": "Your shoes match your bag.",
+     "ko": "네 신발이 가방이랑 잘 어울려."
+    },
+    {
+     "en": "These two socks don't match.",
+     "ko": "이 양말 두 짝은 서로 안 맞아요."
+    },
+    {
+     "en": "He is a good match for the job.",
+     "ko": "그는 그 일에 잘 맞는 사람이에요."
+    },
+    {
+     "en": "Light a match to start the fire.",
+     "ko": "불을 붙이려면 성냥을 켜."
+    },
+    {
+     "en": "No one could match her speed.",
+     "ko": "아무도 그녀의 속도를 따라잡을 수 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "game",
+     "ko": "경기",
+     "en": "Win the game."
+    },
+    {
+     "type": "연관어",
+     "word": "fit",
+     "ko": "맞다, 적합하다",
+     "en": "Fit perfectly."
+    },
+    {
+     "type": "연관어",
+     "word": "pair",
+     "ko": "짝, 한 쌍",
+     "en": "A matching pair."
+    },
+    {
+     "type": "연관어",
+     "word": "suit",
+     "ko": "어울리다",
+     "en": "Suit your style."
+    },
+    {
+     "type": "연관어",
+     "word": "compete",
+     "ko": "경쟁하다",
+     "en": "Compete fairly."
+    },
+    {
+     "type": "연관어",
+     "word": "fire",
+     "ko": "불",
+     "en": "Light a fire."
+    }
+   ]
+  },
+  "1232": {
+   "word": "grand",
+   "overview": [
+    "grand는 '웅장한', '거대한'이라는 뜻의 형용사입니다. 규모가 크고 인상적인 것을 말합니다.",
+    "a grand palace(웅장한 궁전), a grand celebration(성대한 축하 행사)처럼 씁니다.",
+    "grandmother, grandfather처럼 '조부모'를 나타내는 말에도 쓰입니다.",
+    "grand prize(대상)처럼 '가장 큰', '최고의'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "magnificent",
+     "en": "A magnificent castle.",
+     "ko": "웅장한 성."
+    },
+    {
+     "word": "big and fancy",
+     "en": "Big and fancy.",
+     "ko": "크고 화려한."
+    }
+   ],
+   "etymology": [
+    "grand는 라틴어 grandis(큰, 위엄 있는)에서 온 단어입니다.",
+    "옛 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "'조부모'를 나타내는 grand-는 원래 '큰', '으뜸가는'이라는 뜻에서, 세대의 '한 단계 위'를 가리키게 되었습니다.",
+    "grand prize(대상)의 뜻도 '가장 큰 상'이라는 원래 뜻과 자연스럽게 이어집니다.",
+    "grand의 핵심 이미지는 '눈이 휘둥그레지는 웅장하고 화려한 모습 🏰'입니다."
+   ],
+   "meanings": [
+    "웅장한, 장엄한 (형용사)",
+    "성대한, 대단한 (형용사)",
+    "(grand-) 한 세대 위의"
+   ],
+   "examples": [
+    {
+     "en": "The palace looked grand and beautiful.",
+     "ko": "그 궁전은 웅장하고 아름다워 보였어요."
+    },
+    {
+     "en": "We had a grand celebration for her birthday.",
+     "ko": "우리는 그녀의 생일을 위해 성대한 축하 행사를 열었어요."
+    },
+    {
+     "en": "He won the grand prize in the contest.",
+     "ko": "그는 대회에서 대상을 받았어요."
+    },
+    {
+     "en": "The staircase was truly grand.",
+     "ko": "그 계단은 정말 웅장했어요."
+    },
+    {
+     "en": "It was a grand old building.",
+     "ko": "그것은 웅장한 오래된 건물이었어요."
+    },
+    {
+     "en": "The grand finale was full of fireworks.",
+     "ko": "대미를 장식하는 장면에는 불꽃놀이가 가득했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "magnificent",
+     "ko": "장엄한",
+     "en": "A magnificent view."
+    },
+    {
+     "type": "유의어",
+     "word": "splendid",
+     "ko": "훌륭한",
+     "en": "A splendid castle."
+    },
+    {
+     "type": "파생어",
+     "word": "grandmother",
+     "ko": "할머니",
+     "en": "My grandmother."
+    },
+    {
+     "type": "연관어",
+     "word": "huge",
+     "ko": "거대한",
+     "en": "A huge palace."
+    },
+    {
+     "type": "연관어",
+     "word": "royal",
+     "ko": "왕실의",
+     "en": "The royal family."
+    },
+    {
+     "type": "연관어",
+     "word": "prize",
+     "ko": "상",
+     "en": "Win a prize."
+    }
+   ]
+  },
+  "1641": {
+   "word": "mate",
+   "overview": [
+    "mate는 '동료', '짝'이라는 뜻의 명사입니다. 함께 어울리는 친구나 짝을 말합니다.",
+    "classmate(반 친구), roommate(룸메이트)처럼 다른 말 뒤에 붙어 자주 씁니다.",
+    "영국에서는 친구를 부를 때 mate!(친구야!)라고 편하게 부릅니다.",
+    "동물의 '짝'이라는 뜻으로도 씁니다. Penguins choose one mate for life.(펭귄은 평생 한 짝을 고릅니다.)"
+   ],
+   "easy": [
+    {
+     "word": "friend",
+     "en": "A close friend.",
+     "ko": "친한 친구."
+    },
+    {
+     "word": "partner",
+     "en": "My dance partner.",
+     "ko": "내 춤 파트너."
+    }
+   ],
+   "etymology": [
+    "mate는 중세 저지 독일어 mate(같이 밥을 먹는 사람)에서 온 단어입니다.",
+    "meat(음식)와 같은 뿌리로, '함께 밥을 먹는 동료'라는 뜻이었습니다.",
+    "'함께 지내는 짝, 동료'라는 뜻이 그대로 넓게 이어졌습니다.",
+    "classmate, teammate, roommate처럼 여러 합성어에 쓰입니다.",
+    "mate의 핵심 이미지는 '어깨를 나란히 하는 다정한 동료 👬'입니다."
+   ],
+   "meanings": [
+    "동료, 짝",
+    "(영국 구어) 친구",
+    "(동물의) 짝"
+   ],
+   "examples": [
+    {
+     "en": "He is my best classmate.",
+     "ko": "그는 내 가장 친한 반 친구예요."
+    },
+    {
+     "en": "Hi, mate! How are you?",
+     "ko": "안녕, 친구! 잘 지내?"
+    },
+    {
+     "en": "My roommate is very kind.",
+     "ko": "내 룸메이트는 아주 친절해요."
+    },
+    {
+     "en": "Swans stay with the same mate for life.",
+     "ko": "백조는 평생 같은 짝과 함께 지내요."
+    },
+    {
+     "en": "We are teammates on the soccer team.",
+     "ko": "우리는 축구팀 동료예요."
+    },
+    {
+     "en": "Thanks for helping me, mate!",
+     "ko": "도와줘서 고마워, 친구야!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "friend",
+     "ko": "친구",
+     "en": "A good friend."
+    },
+    {
+     "type": "연관어",
+     "word": "classmate",
+     "ko": "반 친구",
+     "en": "My classmate."
+    },
+    {
+     "type": "연관어",
+     "word": "teammate",
+     "ko": "팀 동료",
+     "en": "A teammate helps."
+    },
+    {
+     "type": "연관어",
+     "word": "partner",
+     "ko": "짝, 파트너",
+     "en": "A business partner."
+    },
+    {
+     "type": "연관어",
+     "word": "roommate",
+     "ko": "룸메이트",
+     "en": "A friendly roommate."
+    },
+    {
+     "type": "연관어",
+     "word": "buddy",
+     "ko": "친구 (미국 구어)",
+     "en": "Hey, buddy!"
+    }
+   ]
+  },
+  "2038": {
+   "word": "press",
+   "overview": [
+    "press는 '누르다'라는 뜻의 동사이자 '언론'이라는 뜻의 명사입니다.",
+    "press the button(버튼을 누르다)처럼 씁니다.",
+    "신문, 뉴스 등 '언론'을 통틀어 the press라고 합니다.",
+    "옷을 다리는 '다림질하다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "push",
+     "en": "Push the button.",
+     "ko": "버튼을 눌러."
+    },
+    {
+     "word": "news",
+     "en": "The news media.",
+     "ko": "뉴스 매체."
+    }
+   ],
+   "etymology": [
+    "press는 라틴어 pressare(계속 누르다)에서 온 단어입니다.",
+    "premere(누르다)에서 나온 말로, print(인쇄하다, '눌러 찍다')와 같은 가족입니다.",
+    "'눌러서 인쇄하다'라는 뜻에서, 인쇄물을 만드는 '언론'이라는 뜻이 나왔습니다.",
+    "옛날 신문은 큰 인쇄기(press)로 찍어 냈기 때문에 이런 이름이 붙었습니다.",
+    "press의 핵심 이미지는 '꾹 눌러 찍어 내는 인쇄기와 소식을 전하는 언론 📰'입니다."
+   ],
+   "meanings": [
+    "누르다 (동사)",
+    "(옷을) 다리다 (동사)",
+    "언론, 신문 (명사)",
+    "누름, 압박 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Press the button to start the machine.",
+     "ko": "기계를 시작하려면 버튼을 눌러."
+    },
+    {
+     "en": "The press reported on the event.",
+     "ko": "언론이 그 사건을 보도했어요."
+    },
+    {
+     "en": "She pressed her shirt before the meeting.",
+     "ko": "그녀는 회의 전에 셔츠를 다렸어요."
+    },
+    {
+     "en": "Reporters from the press asked questions.",
+     "ko": "언론 기자들이 질문했어요."
+    },
+    {
+     "en": "He felt the press of many people around him.",
+     "ko": "그는 주위 많은 사람의 압박을 느꼈어요."
+    },
+    {
+     "en": "Press hard to make the stamp clear.",
+     "ko": "도장을 또렷하게 찍으려면 세게 눌러."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "push",
+     "ko": "누르다, 밀다",
+     "en": "Push the door."
+    },
+    {
+     "type": "연관어",
+     "word": "print",
+     "ko": "인쇄하다",
+     "en": "Print a page."
+    },
+    {
+     "type": "연관어",
+     "word": "news",
+     "ko": "뉴스",
+     "en": "Good news."
+    },
+    {
+     "type": "연관어",
+     "word": "reporter",
+     "ko": "기자",
+     "en": "A news reporter."
+    },
+    {
+     "type": "연관어",
+     "word": "button",
+     "ko": "버튼",
+     "en": "Press the button."
+    },
+    {
+     "type": "연관어",
+     "word": "iron",
+     "ko": "다리미",
+     "en": "Use an iron."
+    }
+   ]
+  },
+  "323": {
+   "word": "bother",
+   "overview": [
+    "bother는 '귀찮게 하다', '괴롭히다'라는 뜻의 동사입니다.",
+    "Don't bother me.(귀찮게 하지 마.)처럼 씁니다.",
+    "'애써 ~하다'라는 뜻으로도 씁니다. Don't bother to call.(굳이 전화할 필요 없어.)",
+    "명사로는 '성가심', '수고'라는 뜻이 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "annoy",
+     "en": "Annoy your sister.",
+     "ko": "언니를 짜증 나게 하다."
+    },
+    {
+     "word": "disturb",
+     "en": "Don't disturb him.",
+     "ko": "그를 방해하지 마."
+    }
+   ],
+   "etymology": [
+    "bother는 1700년대쯤 아일랜드 영어에서 온 단어로, 정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "'귀를 시끄럽게 하다'라는 뜻과 이어진다는 설이 있습니다.",
+    "'성가시게 방해하다'라는 뜻이 오늘날까지 이어져 왔습니다.",
+    "구어에서 아주 자주 쓰는 편한 단어입니다.",
+    "bother의 핵심 이미지는 '자꾸 귀찮게 신경 쓰이는 것 😩'입니다."
+   ],
+   "meanings": [
+    "귀찮게 하다, 괴롭히다 (동사)",
+    "애써 ~하다 (동사)",
+    "성가심, 수고 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Please don't bother me right now.",
+     "ko": "지금은 저를 귀찮게 하지 말아 주세요."
+    },
+    {
+     "en": "Sorry to bother you, but I have a question.",
+     "ko": "귀찮게 해서 죄송한데, 질문이 있어요."
+    },
+    {
+     "en": "Don't bother waiting for me.",
+     "ko": "굳이 나를 기다릴 필요 없어."
+    },
+    {
+     "en": "It's no bother at all.",
+     "ko": "전혀 번거롭지 않아요."
+    },
+    {
+     "en": "The loud noise bothers me a lot.",
+     "ko": "그 큰 소리가 나를 많이 성가시게 해요."
+    },
+    {
+     "en": "She didn't bother to explain why.",
+     "ko": "그녀는 굳이 왜 그런지 설명하려 하지 않았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "annoy",
+     "ko": "짜증 나게 하다",
+     "en": "Annoy everyone."
+    },
+    {
+     "type": "유의어",
+     "word": "disturb",
+     "ko": "방해하다",
+     "en": "Disturb the peace."
+    },
+    {
+     "type": "연관어",
+     "word": "trouble",
+     "ko": "괴롭히다, 문제",
+     "en": "Cause trouble."
+    },
+    {
+     "type": "연관어",
+     "word": "worry",
+     "ko": "걱정하다",
+     "en": "Worry too much."
+    },
+    {
+     "type": "연관어",
+     "word": "care",
+     "ko": "신경 쓰다",
+     "en": "I don't care."
+    },
+    {
+     "type": "연관어",
+     "word": "effort",
+     "ko": "노력, 수고",
+     "en": "Make an effort."
+    }
+   ]
+  },
+  "291": {
+   "word": "blame",
+   "overview": [
+    "blame은 '탓하다', '비난하다'라는 뜻의 동사이자 '책임', '탓'이라는 뜻의 명사입니다.",
+    "blame someone for(누군가를 ~에 대해 탓하다)처럼 씁니다.",
+    "put the blame on(~에게 책임을 돌리다)이라는 표현도 자주 씁니다.",
+    "Don't blame yourself.(자책하지 마.)처럼도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fault",
+     "en": "It's my fault.",
+     "ko": "내 잘못이야."
+    },
+    {
+     "word": "criticize",
+     "en": "Criticize the plan.",
+     "ko": "계획을 비판하다."
+    }
+   ],
+   "etymology": [
+    "blame은 옛 프랑스어 blasmer(비난하다)에서 온 단어입니다.",
+    "라틴어 blasphemare(모독하다, 신성을 더럽히다)에서 나온 말입니다.",
+    "blaspheme(신성 모독하다)와 같은 뿌리를 가진 단어입니다.",
+    "'심하게 비난하다'라는 강한 뜻이 지금의 '탓하다'로 이어졌습니다.",
+    "blame의 핵심 이미지는 '손가락으로 상대를 가리키며 탓하는 모습 👉'입니다."
+   ],
+   "meanings": [
+    "탓하다, 비난하다 (동사)",
+    "책임, 탓 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Don't blame me for your mistake.",
+     "ko": "네 실수를 나한테 탓하지 마."
+    },
+    {
+     "en": "Who's to blame for this mess?",
+     "ko": "이 엉망진창인 상황은 누구 탓이에요?"
+    },
+    {
+     "en": "She blamed herself for the accident.",
+     "ko": "그녀는 그 사고에 대해 자책했어요."
+    },
+    {
+     "en": "I don't blame you for being upset.",
+     "ko": "네가 속상해하는 걸 이해해."
+    },
+    {
+     "en": "He always tries to shift the blame.",
+     "ko": "그는 항상 책임을 떠넘기려고 해요."
+    },
+    {
+     "en": "The team took the blame together.",
+     "ko": "그 팀은 함께 책임을 받아들였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "fault",
+     "ko": "잘못, 탓",
+     "en": "My own fault."
+    },
+    {
+     "type": "유의어",
+     "word": "criticize",
+     "ko": "비판하다",
+     "en": "Criticize the work."
+    },
+    {
+     "type": "연관어",
+     "word": "responsible",
+     "ko": "책임이 있는",
+     "en": "Feel responsible."
+    },
+    {
+     "type": "연관어",
+     "word": "accuse",
+     "ko": "비난하다, 고발하다",
+     "en": "Accuse falsely."
+    },
+    {
+     "type": "연관어",
+     "word": "forgive",
+     "ko": "용서하다",
+     "en": "Forgive a mistake."
+    },
+    {
+     "type": "연관어",
+     "word": "excuse",
+     "ko": "변명",
+     "en": "Make an excuse."
+    }
+   ]
+  },
+  "1701": {
+   "word": "mission",
+   "overview": [
+    "mission은 '임무', '사명'이라는 뜻의 명사입니다. 반드시 해내야 할 특별한 일을 말합니다.",
+    "a secret mission(비밀 임무), a space mission(우주 임무)처럼 씁니다.",
+    "'사명감', '목적'이라는 뜻으로도 씁니다. Our mission is to help others.(우리의 사명은 다른 사람들을 돕는 거예요.)",
+    "종교 단체가 파견하는 '선교'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "task",
+     "en": "Complete a task.",
+     "ko": "임무를 완수하다."
+    },
+    {
+     "word": "purpose",
+     "en": "Have a purpose.",
+     "ko": "목적을 가지다."
+    }
+   ],
+   "etymology": [
+    "mission은 라틴어 missio(보냄)에서 온 단어입니다.",
+    "mittere(보내다)에서 나온 말로, message(메시지), promise(약속)와 같은 가족입니다.",
+    "'특별한 임무를 위해 파견되어 보내진 것'이라는 뜻이 그대로 이어져 왔습니다.",
+    "우주로 '파견되는' 우주선의 여정도 space mission이라고 부릅니다.",
+    "mission의 핵심 이미지는 '반드시 완수해야 할 특별한 사명 🚀'입니다."
+   ],
+   "meanings": [
+    "임무, 사명",
+    "목적",
+    "선교 (활동)"
+   ],
+   "examples": [
+    {
+     "en": "The astronaut completed a difficult mission.",
+     "ko": "그 우주비행사는 어려운 임무를 완수했어요."
+    },
+    {
+     "en": "Our mission is to protect the environment.",
+     "ko": "우리의 사명은 환경을 보호하는 거예요."
+    },
+    {
+     "en": "The spy went on a secret mission.",
+     "ko": "그 스파이는 비밀 임무를 수행했어요."
+    },
+    {
+     "en": "This trip has a special mission.",
+     "ko": "이 여행에는 특별한 목적이 있어요."
+    },
+    {
+     "en": "The rescue team's mission was to find survivors.",
+     "ko": "구조팀의 임무는 생존자를 찾는 것이었어요."
+    },
+    {
+     "en": "She feels it's her mission to teach.",
+     "ko": "그녀는 가르치는 것이 자신의 사명이라고 느껴요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "task",
+     "ko": "임무",
+     "en": "A daily task."
+    },
+    {
+     "type": "연관어",
+     "word": "purpose",
+     "ko": "목적",
+     "en": "A clear purpose."
+    },
+    {
+     "type": "연관어",
+     "word": "goal",
+     "ko": "목표",
+     "en": "A big goal."
+    },
+    {
+     "type": "연관어",
+     "word": "duty",
+     "ko": "의무",
+     "en": "A sense of duty."
+    },
+    {
+     "type": "연관어",
+     "word": "agent",
+     "ko": "요원",
+     "en": "A secret agent."
+    },
+    {
+     "type": "연관어",
+     "word": "space",
+     "ko": "우주",
+     "en": "A space mission."
+    }
+   ]
+  },
+  "1301": {
+   "word": "heaven",
+   "overview": [
+    "heaven은 '하늘', 종교에서 말하는 '천국'이라는 뜻의 명사입니다.",
+    "종교에서는 착한 사람이 죽어서 간다고 여겨지는 곳을 heaven이라고 합니다.",
+    "Good heavens!(맙소사!), Thank heaven!(다행이야!)처럼 감탄사로도 씁니다.",
+    "hell(지옥)의 반대말입니다."
+   ],
+   "easy": [
+    {
+     "word": "sky",
+     "en": "A blue sky.",
+     "ko": "파란 하늘."
+    },
+    {
+     "word": "paradise",
+     "en": "A paradise island.",
+     "ko": "천국 같은 섬."
+    }
+   ],
+   "etymology": [
+    "heaven은 고대 영어 heofon(하늘)에서 온 단어입니다.",
+    "'덮다', '지붕'을 뜻하는 아주 옛말과 이어진다고 봅니다.",
+    "'세상을 덮고 있는 하늘'이라는 뜻이 종교적으로 '천국'을 가리키게 되었습니다.",
+    "많은 문화에서 하늘 위 세계를 신성한 곳으로 여겨 이런 뜻이 자연스럽게 생겼습니다.",
+    "heaven의 핵심 이미지는 '구름 위 평화롭고 아름다운 세계 ☁️'입니다."
+   ],
+   "meanings": [
+    "하늘",
+    "(종교) 천국"
+   ],
+   "examples": [
+    {
+     "en": "In many stories, angels live in heaven.",
+     "ko": "많은 이야기에서 천사는 천국에 살아요."
+    },
+    {
+     "en": "Good heavens! Is that true?",
+     "ko": "맙소사! 그게 사실이야?"
+    },
+    {
+     "en": "The stars filled the night heaven.",
+     "ko": "별들이 밤하늘을 가득 채웠어요."
+    },
+    {
+     "en": "Thank heaven, everyone is safe.",
+     "ko": "다행히도, 모두 안전해요."
+    },
+    {
+     "en": "Some people believe in heaven and hell.",
+     "ko": "어떤 사람들은 천국과 지옥을 믿어요."
+    },
+    {
+     "en": "This beach feels like heaven.",
+     "ko": "이 해변은 천국처럼 느껴져요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "hell",
+     "ko": "지옥",
+     "en": "Heaven and hell."
+    },
+    {
+     "type": "연관어",
+     "word": "sky",
+     "ko": "하늘",
+     "en": "The clear sky."
+    },
+    {
+     "type": "연관어",
+     "word": "angel",
+     "ko": "천사",
+     "en": "A guardian angel."
+    },
+    {
+     "type": "연관어",
+     "word": "paradise",
+     "ko": "낙원",
+     "en": "A tropical paradise."
+    },
+    {
+     "type": "연관어",
+     "word": "god",
+     "ko": "신",
+     "en": "Believe in god."
+    },
+    {
+     "type": "연관어",
+     "word": "star",
+     "ko": "별",
+     "en": "A shooting star."
+    }
+   ]
+  },
+  "2249": {
+   "word": "risk",
+   "overview": [
+    "risk는 '위험'이라는 뜻의 명사이자 '위험을 무릅쓰다'라는 뜻의 동사입니다.",
+    "take a risk(위험을 감수하다), at risk(위험에 처한)처럼 씁니다.",
+    "risk one's life(목숨을 걸다)처럼 무엇을 걸고 하는 위험을 나타냅니다.",
+    "형용사 risky(위험한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "danger",
+     "en": "In danger.",
+     "ko": "위험에 처한."
+    },
+    {
+     "word": "chance",
+     "en": "Take a chance.",
+     "ko": "기회를 잡다."
+    }
+   ],
+   "etymology": [
+    "risk는 이탈리아어 risco(위험)에서 온 단어입니다.",
+    "옛날 뱃사람들이 '암초를 피해 항해하는 위험'을 뜻하는 말에서 왔다는 설이 있습니다.",
+    "1600년대에 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "'미래에 나쁜 일이 일어날 가능성'이라는 뜻으로 널리 쓰이게 되었습니다.",
+    "risk의 핵심 이미지는 '얻는 것과 잃는 것 사이의 아슬아슬한 줄타기 ⚠️'입니다."
+   ],
+   "meanings": [
+    "위험, 위험 요소 (명사)",
+    "위험을 무릅쓰다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Firefighters take risks to save lives.",
+     "ko": "소방관들은 생명을 구하려고 위험을 무릅써요."
+    },
+    {
+     "en": "There is a risk of rain today.",
+     "ko": "오늘 비가 올 위험이 있어요."
+    },
+    {
+     "en": "He risked his life to save the child.",
+     "ko": "그는 아이를 구하려고 목숨을 걸었어요."
+    },
+    {
+     "en": "Smoking increases the risk of illness.",
+     "ko": "흡연은 질병의 위험을 높여요."
+    },
+    {
+     "en": "It's worth the risk to try something new.",
+     "ko": "새로운 것을 시도하는 건 위험을 감수할 가치가 있어요."
+    },
+    {
+     "en": "The area is at risk of flooding.",
+     "ko": "그 지역은 홍수 위험이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "danger",
+     "ko": "위험",
+     "en": "A great danger."
+    },
+    {
+     "type": "파생어",
+     "word": "risky",
+     "ko": "위험한",
+     "en": "A risky move."
+    },
+    {
+     "type": "연관어",
+     "word": "chance",
+     "ko": "가능성, 기회",
+     "en": "Take a chance."
+    },
+    {
+     "type": "연관어",
+     "word": "safe",
+     "ko": "안전한",
+     "en": "Stay safe."
+    },
+    {
+     "type": "연관어",
+     "word": "brave",
+     "ko": "용감한",
+     "en": "Be brave."
+    },
+    {
+     "type": "연관어",
+     "word": "dare",
+     "ko": "감히 ~하다",
+     "en": "Dare to try."
+    }
+   ]
+  },
+  "2046": {
+   "word": "price",
+   "overview": [
+    "price는 '가격', '값'이라는 뜻의 명사입니다.",
+    "the price of milk(우유 가격), a high price(높은 가격)처럼 씁니다.",
+    "'대가'라는 비유적인 뜻으로도 씁니다. the price of success(성공의 대가)",
+    "동사로는 '값을 매기다'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "cost",
+     "en": "The cost of it.",
+     "ko": "그것의 비용."
+    },
+    {
+     "word": "value",
+     "en": "The value of gold.",
+     "ko": "금의 가치."
+    }
+   ],
+   "etymology": [
+    "price는 옛 프랑스어 pris(가치, 값)에서 온 단어입니다.",
+    "라틴어 pretium(가격, 가치)에서 나온 말로, precious(귀중한), appreciate(감사하다)와 같은 가족입니다.",
+    "'값을 매길 만큼 가치가 있는 것'이라는 뜻이 그대로 '가격'으로 이어졌습니다.",
+    "prize(상)도 원래 같은 단어에서 갈라져 나온 형제라고 봅니다.",
+    "price의 핵심 이미지는 '물건표에 붙어 있는 숫자 태그 🏷️'입니다."
+   ],
+   "meanings": [
+    "가격, 값 (명사)",
+    "대가, 희생 (명사)",
+    "값을 매기다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "What's the price of this shirt?",
+     "ko": "이 셔츠 가격이 얼마예요?"
+    },
+    {
+     "en": "The price of gas went up.",
+     "ko": "기름값이 올랐어요."
+    },
+    {
+     "en": "She paid a high price for her success.",
+     "ko": "그녀는 성공을 위해 큰 대가를 치렀어요."
+    },
+    {
+     "en": "We compared prices at different stores.",
+     "ko": "우리는 여러 가게에서 가격을 비교했어요."
+    },
+    {
+     "en": "The store priced the toy at ten dollars.",
+     "ko": "그 가게는 장난감 값을 10달러로 매겼어요."
+    },
+    {
+     "en": "Freedom is worth any price.",
+     "ko": "자유는 어떤 대가를 치러서라도 가치가 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "cost",
+     "ko": "비용",
+     "en": "The cost of living."
+    },
+    {
+     "type": "연관어",
+     "word": "value",
+     "ko": "가치",
+     "en": "High value."
+    },
+    {
+     "type": "연관어",
+     "word": "discount",
+     "ko": "할인",
+     "en": "A big discount."
+    },
+    {
+     "type": "연관어",
+     "word": "expensive",
+     "ko": "비싼",
+     "en": "Very expensive."
+    },
+    {
+     "type": "연관어",
+     "word": "cheap",
+     "ko": "값싼",
+     "en": "A cheap ticket."
+    },
+    {
+     "type": "연관어",
+     "word": "money",
+     "ko": "돈",
+     "en": "Save money."
+    }
+   ]
+  },
+  "1858": {
+   "word": "otherwise",
+   "overview": [
+    "otherwise는 '그렇지 않으면'이라는 뜻의 부사입니다. 하지 않으면 어떤 일이 생길지 말할 때 씁니다.",
+    "Hurry up, otherwise we'll be late.(서둘러, 안 그러면 우리 늦을 거야.)처럼 씁니다.",
+    "'다른 식으로', '달리'라는 뜻으로도 씁니다.",
+    "'그 밖에는'이라는 뜻으로 앞 내용을 정리할 때도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "or else",
+     "en": "Or else you'll fail.",
+     "ko": "안 그러면 실패할 거야."
+    },
+    {
+     "word": "differently",
+     "en": "Think differently.",
+     "ko": "다르게 생각해."
+    }
+   ],
+   "etymology": [
+    "otherwise는 other(다른)와 wise(방식)가 합쳐진 말입니다.",
+    "고대 영어 ōther wīsan(다른 방식으로)에서 온 단어입니다.",
+    "likewise(마찬가지로), clockwise(시계 방향으로)에도 같은 wise가 들어 있습니다.",
+    "'다른 방식으로 한다면'이라는 뜻이 '그렇지 않으면'이라는 지금의 뜻으로 이어졌습니다.",
+    "otherwise의 핵심 이미지는 '만약 다른 길을 택한다면 벌어질 일 🔀'입니다."
+   ],
+   "meanings": [
+    "그렇지 않으면",
+    "다르게, 달리",
+    "그 밖에는, 다른 점에서는"
+   ],
+   "examples": [
+    {
+     "en": "Study hard, otherwise you'll fail the test.",
+     "ko": "열심히 공부해, 안 그러면 시험에 떨어질 거야."
+    },
+    {
+     "en": "I think otherwise.",
+     "ko": "나는 다르게 생각해요."
+    },
+    {
+     "en": "The house is small, but otherwise perfect.",
+     "ko": "그 집은 작지만, 그 밖에는 완벽해요."
+    },
+    {
+     "en": "Take an umbrella, otherwise you'll get wet.",
+     "ko": "우산 가져가, 안 그러면 젖을 거야."
+    },
+    {
+     "en": "She had no choice otherwise.",
+     "ko": "그녀는 다른 선택의 여지가 없었어요."
+    },
+    {
+     "en": "It's raining. Otherwise, we'd go for a walk.",
+     "ko": "비가 와요. 그렇지 않으면 우리는 산책하러 갈 텐데요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "or else",
+     "ko": "그렇지 않으면",
+     "en": "Hurry, or else."
+    },
+    {
+     "type": "연관어",
+     "word": "differently",
+     "ko": "다르게",
+     "en": "Act differently."
+    },
+    {
+     "type": "연관어",
+     "word": "unless",
+     "ko": "~하지 않는다면",
+     "en": "Unless you try."
+    },
+    {
+     "type": "연관어",
+     "word": "except",
+     "ko": "~을 제외하고",
+     "en": "Except for this."
+    },
+    {
+     "type": "연관어",
+     "word": "instead",
+     "ko": "대신에",
+     "en": "Instead of this."
+    },
+    {
+     "type": "연관어",
+     "word": "likewise",
+     "ko": "마찬가지로",
+     "en": "Likewise, do this."
+    }
+   ]
+  },
+  "1085": {
+   "word": "fit",
+   "overview": [
+    "fit은 '맞다', '적합하다'라는 뜻의 동사이자 '건강한', '알맞은'이라는 뜻의 형용사입니다.",
+    "This shirt fits me well.(이 셔츠는 나에게 잘 맞아요.)처럼 씁니다.",
+    "'몸이 건강한'이라는 뜻으로도 씁니다. stay fit(건강을 유지하다)",
+    "'딱 알맞은'이라는 뜻도 있습니다. fit for a king(왕에게 어울리는)"
+   ],
+   "easy": [
+    {
+     "word": "suit",
+     "en": "Suit you well.",
+     "ko": "너에게 잘 어울리다."
+    },
+    {
+     "word": "healthy",
+     "en": "Stay healthy.",
+     "ko": "건강을 유지해."
+    }
+   ],
+   "etymology": [
+    "fit은 1300년대쯤부터 쓰인 말로, 정확한 뿌리는 잘 알려져 있지 않습니다.",
+    "'알맞게 짜인', '적당한'이라는 뜻으로 쓰였다고 봅니다.",
+    "'몸에 딱 맞는 옷'이라는 뜻에서 '몸이 건강한'이라는 뜻으로도 넓어졌습니다.",
+    "fitness(건강, 신체 단련)도 같은 가족에서 나온 단어입니다.",
+    "fit의 핵심 이미지는 '퍼즐 조각처럼 딱 맞아떨어지는 것 🧩'입니다."
+   ],
+   "meanings": [
+    "맞다, 적합하다 (동사)",
+    "알맞은, 적당한 (형용사)",
+    "건강한, 튼튼한 (형용사)"
+   ],
+   "examples": [
+    {
+     "en": "These shoes fit perfectly.",
+     "ko": "이 신발은 완벽하게 맞아요."
+    },
+    {
+     "en": "The puzzle piece doesn't fit here.",
+     "ko": "이 퍼즐 조각은 여기에 안 맞아요."
+    },
+    {
+     "en": "He exercises to stay fit.",
+     "ko": "그는 건강을 유지하려고 운동해요."
+    },
+    {
+     "en": "Is this movie fit for children?",
+     "ko": "이 영화는 아이들이 보기에 적당한가요?"
+    },
+    {
+     "en": "She looked very fit after months of training.",
+     "ko": "그녀는 몇 달간의 훈련 후 아주 건강해 보였어요."
+    },
+    {
+     "en": "This plan doesn't fit our budget.",
+     "ko": "이 계획은 우리 예산에 맞지 않아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "suit",
+     "ko": "어울리다",
+     "en": "Suit your style."
+    },
+    {
+     "type": "파생어",
+     "word": "fitness",
+     "ko": "건강, 신체 단련",
+     "en": "A fitness center."
+    },
+    {
+     "type": "연관어",
+     "word": "match",
+     "ko": "어울리다",
+     "en": "Match perfectly."
+    },
+    {
+     "type": "연관어",
+     "word": "healthy",
+     "ko": "건강한",
+     "en": "A healthy diet."
+    },
+    {
+     "type": "연관어",
+     "word": "size",
+     "ko": "크기",
+     "en": "The right size."
+    },
+    {
+     "type": "연관어",
+     "word": "exercise",
+     "ko": "운동하다",
+     "en": "Exercise daily."
+    }
+   ]
+  },
+  "2440": {
+   "word": "smoke",
+   "overview": [
+    "smoke는 '연기'라는 뜻의 명사이자 '연기가 나다', '담배를 피우다'라는 뜻의 동사입니다.",
+    "smoke from a fire(불에서 나는 연기)처럼 씁니다.",
+    "smoke a cigarette(담배를 피우다)처럼 동사로도 씁니다. 흡연은 건강에 해롭습니다.",
+    "형용사 smoky는 '연기가 자욱한', '훈제한'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "fire",
+     "en": "See the fire.",
+     "ko": "불을 보다."
+    },
+    {
+     "word": "cigarette",
+     "en": "A cigarette pack.",
+     "ko": "담뱃갑."
+    }
+   ],
+   "etymology": [
+    "smoke는 고대 영어 smoca(연기)에서 온 단어입니다.",
+    "독일어 지역 말과 이어지는 아주 오래된 게르만 뿌리를 가진다고 봅니다.",
+    "천 년 넘게 '불에서 나는 회색 기체'라는 뜻으로 쓰여 온 단어입니다.",
+    "담배가 들어오면서 '담배를 피우다'라는 새로운 동사 뜻도 생겼습니다.",
+    "smoke의 핵심 이미지는 '불에서 뭉게뭉게 피어오르는 회색 연기 💨'입니다."
+   ],
+   "meanings": [
+    "연기 (명사)",
+    "연기가 나다 (동사)",
+    "담배를 피우다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Smoke came out of the chimney.",
+     "ko": "굴뚝에서 연기가 나왔어요."
+    },
+    {
+     "en": "There's no smoke without fire.",
+     "ko": "아니 땐 굴뚝에 연기 날까."
+    },
+    {
+     "en": "Smoking is bad for your health.",
+     "ko": "흡연은 건강에 나빠요."
+    },
+    {
+     "en": "The room filled with smoke.",
+     "ko": "방이 연기로 가득 찼어요."
+    },
+    {
+     "en": "He quit smoking two years ago.",
+     "ko": "그는 2년 전에 담배를 끊었어요."
+    },
+    {
+     "en": "The smoke alarm went off.",
+     "ko": "연기 감지기가 울렸어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "fire",
+     "ko": "불",
+     "en": "Put out the fire."
+    },
+    {
+     "type": "파생어",
+     "word": "smoky",
+     "ko": "연기 자욱한",
+     "en": "A smoky room."
+    },
+    {
+     "type": "연관어",
+     "word": "cigarette",
+     "ko": "담배",
+     "en": "A pack of cigarettes."
+    },
+    {
+     "type": "연관어",
+     "word": "chimney",
+     "ko": "굴뚝",
+     "en": "A tall chimney."
+    },
+    {
+     "type": "연관어",
+     "word": "alarm",
+     "ko": "경보기",
+     "en": "A fire alarm."
+    },
+    {
+     "type": "연관어",
+     "word": "quit",
+     "ko": "그만두다",
+     "en": "Quit smoking."
+    }
+   ]
+  },
+  "1048": {
+   "word": "favor",
+   "overview": [
+    "favor는 '호의', '부탁'이라는 뜻의 명사이자 '~을 선호하다', '호의를 베풀다'라는 뜻의 동사입니다.",
+    "Can you do me a favor?(부탁 하나 해도 돼요?)처럼 씁니다.",
+    "in favor of는 '~에 찬성하여'라는 뜻입니다.",
+    "미국식은 favor, 영국식은 favour로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "help",
+     "en": "Ask for help.",
+     "ko": "도움을 청하다."
+    },
+    {
+     "word": "kindness",
+     "en": "Show kindness.",
+     "ko": "친절을 베풀다."
+    }
+   ],
+   "etymology": [
+    "favor는 라틴어 favor(호의, 지지)에서 온 단어입니다.",
+    "favere(호의를 베풀다, 좋아하다)에서 나온 말입니다.",
+    "'좋게 여기고 지지해 주는 마음'이라는 뜻이 그대로 이어져 왔습니다.",
+    "favorite(가장 좋아하는)도 같은 가족 단어입니다.",
+    "favor의 핵심 이미지는 '작은 부탁을 기꺼이 들어주는 다정함 🙏'입니다."
+   ],
+   "meanings": [
+    "호의, 친절 (명사)",
+    "부탁 (명사)",
+    "~을 선호하다, 지지하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Can you do me a favor?",
+     "ko": "부탁 하나만 해도 될까요?"
+    },
+    {
+     "en": "She did me a big favor by helping.",
+     "ko": "그녀가 도와줘서 나에게 큰 호의를 베풀었어요."
+    },
+    {
+     "en": "I'm in favor of this plan.",
+     "ko": "나는 이 계획에 찬성이에요."
+    },
+    {
+     "en": "He favors tea over coffee.",
+     "ko": "그는 커피보다 차를 선호해요."
+    },
+    {
+     "en": "Could I ask a favor of you?",
+     "ko": "부탁 하나 드려도 될까요?"
+    },
+    {
+     "en": "The judge favored a fair decision.",
+     "ko": "그 판사는 공정한 결정을 지지했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "kindness",
+     "ko": "친절",
+     "en": "Act with kindness."
+    },
+    {
+     "type": "파생어",
+     "word": "favorite",
+     "ko": "가장 좋아하는",
+     "en": "My favorite color."
+    },
+    {
+     "type": "연관어",
+     "word": "help",
+     "ko": "도움",
+     "en": "Need help."
+    },
+    {
+     "type": "연관어",
+     "word": "support",
+     "ko": "지지하다",
+     "en": "Support the idea."
+    },
+    {
+     "type": "연관어",
+     "word": "prefer",
+     "ko": "선호하다",
+     "en": "Prefer tea."
+    },
+    {
+     "type": "연관어",
+     "word": "kind",
+     "ko": "친절한",
+     "en": "A kind gesture."
+    }
+   ]
+  }
+ }
+}
