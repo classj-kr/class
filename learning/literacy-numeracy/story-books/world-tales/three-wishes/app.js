@@ -141,7 +141,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "\"이놈의 소시지! 차라리 당신 코에나 붙어 버려라!\"",
-                    "말이 끝나기가 무섭게 일이 벌어졌지요. 소시지가 폴짝 날아올랐습니다. 그러고는 아내의 코끝에 딱 붙었지요.",
+                    "말이 끝나자마자 일이 벌어졌지요. 소시지가 폴짝 날아올랐습니다. 그러고는 아내의 코끝에 딱 붙었지요.",
                     "방 안이 갑자기 조용해졌습니다. 두 사람 다 숨을 멈췄지요."
                 ]
             },
@@ -256,7 +256,7 @@ const CHAPTERS = [
                 ]
             }
         ],
-        "moral": "무엇을 더 얻을까만 생각하다 보면, 이미 가진 것이 얼마나 큰지 놓치게 된답니다."
+        "moral": "나무꾼은 큰 집과 금덩이보다 아내의 코를 골랐답니다. 곁에 있는 사람이 무엇보다 소중하니까요."
     }
 ];
 
@@ -379,9 +379,9 @@ const AFTERWORD = {
             art: 'end.webp',
             left: [
                 "이 이야기는 유럽 여러 나라에 전해 옵니다. 프랑스와 영국에 특히 비슷한 것이 많지요.",
-                "나무꾼 부부가 얻은 것은 소원 세 번이었습니다. 무엇이든 될 수 있었지요.",
+                "나무꾼 부부가 얻은 것은 소원 세 번이었습니다. 큰 집이든 금덩이든 무엇이든 얻을 수 있었지요.",
                 "첫 번째는 소시지 한 줄이었습니다. 아껴 쓰려던 것이 아니라 무심코 나온 말이었고요.",
-                "두 번째는 화가 나서 나온 말이었습니다. 그 말이 아내 코에 소시지를 붙여 놓았지요. 소원 두 번이 홧김에 사라진 것입니다."
+                "두 번째는 화가 나서 나온 말이었습니다. 그 말이 아내 코에 소시지를 붙여 놓았지요. 소원 두 번이 무심코 한 말과 홧김에 한 말로 사라진 것입니다."
             ],
             right: [
                 "마지막 하나로 나무꾼은 큰 집도 금덩이도 고르지 않습니다. 아내의 코를 고르지요.",
@@ -941,7 +941,7 @@ const EN = {
             { word: 'temper', meaning: '화', sentence: "The woodcutter's temper went to the top of his head." },
             { word: 'wretched', meaning: '이놈의', sentence: 'That wretched sausage!' },
             { word: 'stick to', meaning: '들러붙다', sentence: 'I wish it would stick to your nose!' },
-            { word: 'hardly out', meaning: '끝나기가 무섭게', sentence: 'The words were hardly out before it happened.' },
+            { word: 'hardly out', meaning: '끝나자마자', sentence: 'The words were hardly out before it happened.' },
             { word: 'spring up', meaning: '폴짝 날아오르다', sentence: 'The sausage sprang up into the air.' }
         ],
         '05-nose-2.webp': [
@@ -1100,7 +1100,7 @@ const WORDS_KO = {
     "end.webp": [
         { w: "특히", k: "여러 가운데서도 더욱.", s: "프랑스와 영국에 특히 비슷한 것이 많지요." },
         { w: "나무꾼", k: "산에서 나무를 베어다 파는 사람.", s: "나무꾼 부부가 얻은 것은 소원 세 번이었습니다." },
-        { w: "홧김에", k: "화가 난 바람에 앞뒤 생각 없이.", s: "소원 두 번이 홧김에 사라진 것입니다." }
+        { w: "홧김에", k: "화가 난 바람에 앞뒤 생각 없이.", s: "소원 두 번이 무심코 한 말과 홧김에 한 말로 사라진 것입니다." }
     ]
 };
 
