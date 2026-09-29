@@ -18,6 +18,7 @@ const TRANSIENT_ROOM_KEYS = new Set([
   "loveletterTimer",
   "rummikubTimer",
   "gemguildTimer",
+  "beantradingTimer",
   "kingdomtrailsTimer",
   "quizraceBroadcastTimer"
 ]);

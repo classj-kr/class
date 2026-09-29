@@ -654,18 +654,6 @@
             position: relative;
         }
 
-        .cal-day.has-event::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 3px;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--accent-amber);
-            transform: translateX(-50%);
-        }
-
         .cal-day.selected {
             outline: 2px solid var(--accent-green);
             outline-offset: -2px;
@@ -782,22 +770,29 @@
         }
 
         .cal-day {
-            display: grid;
-            place-items: center;
-            padding: 3px 0 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            height: 44px;
+            padding: 3px 1px;
             border-radius: 7px;
             font-size: 1.35rem;
             line-height: 1;
             font-weight: 700;
         }
 
+        .cal-day-number { line-height: 25px; flex: none; }
+
         .cal-day:hover {
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .cal-day.has-label { gap: 2px; padding: 3px 1px 4px; }
-        .cal-day.has-label::after { display: none; }
         .cal-event-label {
+            display: block;
+            width: 100%;
+            height: 12px;
             max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -807,8 +802,6 @@
             color: var(--accent-amber);
         }
         .cal-day.holiday, .cal-day.holiday .cal-event-label { color: var(--accent-danger); }
-        .cal-day.in-range { background: rgba(255, 255, 255, 0.05); }
-        .cal-day.in-range:hover { background: rgba(255, 255, 255, 0.1); }
         .cal-day.other-month { opacity: 0.3; font-weight: 600; cursor: pointer; }
         .cal-day.today .cal-event-label { color: #0b0f0c; }
         .calendar-status { color: var(--text-muted); font-size: 0.78rem; }
@@ -828,10 +821,6 @@
             background: var(--accent-blue);
             color: #0b0f0c;
             font-weight: 800;
-        }
-
-        .cal-day.today.has-event::after {
-            background: #0b0f0c;
         }
 
         @media (max-width: 380px) {
@@ -2506,7 +2495,10 @@
                 dayEl.className = "cal-day other-month";
                 if (dayDate.getDay() === 0) dayEl.classList.add("sun");
                 if (dayDate.getDay() === 6) dayEl.classList.add("sat");
-                dayEl.textContent = dayDate.getDate();
+                const number = document.createElement("span");
+                number.className = "cal-day-number";
+                number.textContent = dayDate.getDate();
+                dayEl.append(number);
                 dayEl.setAttribute("role", "button");
                 dayEl.setAttribute("aria-label", `${dayDate.getFullYear()}년 ${dayDate.getMonth() + 1}월 ${dayDate.getDate()}일로 이동`);
                 dayEl.addEventListener("click", () => {
@@ -2518,7 +2510,6 @@
             };
             for (let i = firstDay; i > 0; i--) appendOtherMonthDay(new Date(year, month, 1 - i));
 
-            let prevRunEntries = null;
             for (let date = 1; date <= lastDate; date++) {
                 const dayEl = document.createElement("div");
                 dayEl.className = "cal-day";
@@ -2535,24 +2526,21 @@
                 dayEl.setAttribute("aria-pressed", String(isSelected));
                 const entries = calendarEntries(dateKey);
                 if (entries.some(entry => entry.holiday)) dayEl.classList.add("holiday");
-                dayEl.textContent = date;
-                // A multi-day run of the exact same single entry (e.g. "여름방학" repeated
-                // for weeks) only prints its label on the first day of the run; the rest just
-                // get a subtle tint, so long vacations don't blow up the grid's row height.
-                const runKey = entries.length ? entries.map(e => e.title).join("|") : null;
-                const isContinuation = entries.length === 1 && runKey === prevRunEntries;
-                prevRunEntries = runKey;
+                const number = document.createElement("span");
+                number.className = "cal-day-number";
+                number.textContent = date;
+                dayEl.append(number);
                 if (entries.length) {
-                    dayEl.classList.add("has-event");
-                    if (isContinuation) {
-                        dayEl.classList.add("in-range");
-                    } else {
-                        dayEl.classList.add("has-label");
-                        const label = document.createElement("span");
-                        label.className = "cal-event-label";
-                        label.textContent = entries[0].title + (entries.length > 1 ? " +" + (entries.length - 1) : "");
-                        dayEl.append(label);
-                    }
+                    const label = document.createElement("span");
+                    label.className = "cal-event-label";
+                    const primaryEntry = entries.find(entry => entry.holiday)
+                        || entries.find(entry => entry.kind === "방학") || entries[0];
+                    label.textContent = primaryEntry.kind === "방학"
+                        ? (primaryEntry.title.includes("여름") ? "여름방학"
+                            : primaryEntry.title.includes("겨울") ? "겨울방학" : "학년말")
+                        : primaryEntry.title.includes("추석") ? "추석"
+                        : primaryEntry.title;
+                    dayEl.append(label);
                     dayEl.title = entries.map(entry => entry.title).join(" · ");
                 }
                 dayEl.tabIndex = 0;
