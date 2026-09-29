@@ -805,6 +805,7 @@
         .cal-day.holiday, .cal-day.holiday .cal-event-label { color: var(--accent-danger); }
         .cal-day.in-range { background: rgba(255, 255, 255, 0.05); }
         .cal-day.in-range:hover { background: rgba(255, 255, 255, 0.1); }
+        .cal-day.other-month { opacity: 0.3; font-weight: 600; cursor: pointer; }
         .cal-day.today .cal-event-label { color: #0b0f0c; }
         .calendar-status { color: var(--text-muted); font-size: 0.78rem; }
         .calendar-status button { margin-left: 6px; color: var(--accent-green); background: none; border: 0; cursor: pointer; text-decoration: underline; }
@@ -2496,9 +2497,24 @@
                 calendarMini.append(h);
             });
 
-            for (let i = 0; i < firstDay; i++) {
-                calendarMini.append(document.createElement("div"));
-            }
+            // 다른 달력들처럼 첫 주·마지막 주의 빈칸은 앞뒤 달 날짜로 흐리게 채운다.
+            // 누르면 그 달로 넘어가며 그 날을 고른다(일정은 보고 있는 달 것만 불러온다).
+            const appendOtherMonthDay = (dayDate) => {
+                const dayEl = document.createElement("div");
+                dayEl.className = "cal-day other-month";
+                if (dayDate.getDay() === 0) dayEl.classList.add("sun");
+                if (dayDate.getDay() === 6) dayEl.classList.add("sat");
+                dayEl.textContent = dayDate.getDate();
+                dayEl.setAttribute("role", "button");
+                dayEl.setAttribute("aria-label", `${dayDate.getFullYear()}년 ${dayDate.getMonth() + 1}월 ${dayDate.getDate()}일로 이동`);
+                dayEl.addEventListener("click", () => {
+                    calendarCursor = new Date(dayDate.getFullYear(), dayDate.getMonth(), 1);
+                    scheduleDateInput.value = localDateKey(dayDate);
+                    loadCalendarData();
+                });
+                calendarMini.append(dayEl);
+            };
+            for (let i = firstDay; i > 0; i--) appendOtherMonthDay(new Date(year, month, 1 - i));
 
             let prevRunEntries = null;
             for (let date = 1; date <= lastDate; date++) {
@@ -2555,6 +2571,8 @@
                 });
                 calendarMini.append(dayEl);
             }
+            const trailing = (7 - (firstDay + lastDate) % 7) % 7;
+            for (let i = 1; i <= trailing; i++) appendOtherMonthDay(new Date(year, month + 1, i));
             renderCalendarAgenda();
         }
         document.getElementById("prevMonthBtn").addEventListener("click", () => {
