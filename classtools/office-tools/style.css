@@ -173,3 +173,10 @@ select:focus-visible, summary:focus-visible { outline: 3px solid #6c9fdf; outlin
   #stamp-download { grid-column: 2; margin: 0; }
   #stamp .preview-note:empty + #stamp-download { grid-row: 2 / 4; }
 }
+
+#stamp-to-pdf { margin-top: 6px; }
+@media (max-width: 560px) {
+  #stamp .checkerboard { grid-row: 2 / 5; }
+  #stamp .preview-note:empty + #stamp-download { grid-row: auto; }
+  #stamp-to-pdf { grid-column: 2; margin: 0; }
+}

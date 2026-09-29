@@ -1,99 +1,428 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
-import { mkdir } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createPreview } from '../learning/games/night-gallery/preview.mjs';
-import { newGame, chooseBotAction, playCard, resolveDefense, botShouldBlock, validSave } from '../learning/games/night-gallery/engine.mjs';
-const require=createRequire(import.meta.url);
-const {chromium}=require('../game-hub-server/node_modules/playwright');
-const key='night-gallery:game:v1';
-let server,browser,url,context,page,errors;
-const read=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),key);
-async function load(state) {await page.evaluate(({key,state})=>localStorage.setItem(key,JSON.stringify(state)),{key,state});await page.reload();await page.locator('#resume-button').click();}
-test.before(async()=>{
-  server=createPreview();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));url=`http://127.0.0.1:${server.address().port}`;
-  browser=await chromium.launch({headless:true,...(process.platform==='win32'?{channel:'msedge'}:{})});
-  await mkdir('outputs/night-gallery',{recursive:true});
-});
-test.beforeEach(async()=>{
-  context=await browser.newContext({viewport:{width:1440,height:1100}});page=await context.newPage();errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(url);
-});
-test.afterEach(async()=>{try{assert.deepEqual(errors,[]);}finally{await context.close();}});
-test.after(async()=>{await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));});
-test('desktop setup, custom names, complete four-raid local game, result and replay',{timeout:120000},async()=>{
-  await page.screenshot({path:'outputs/night-gallery/desktop-lobby.png',fullPage:true});
-  await page.locator('[data-mode="local"]').click();await page.locator('[data-count="3"]').click();
-  await page.getByRole('textbox',{name:'1번 플레이어 이름'}).fill('별이');await page.locator('select[name="starter"]').selectOption('1');
-  await page.getByRole('button',{name:'게임 시작'}).click();
-  assert.equal((await read()).current,1);assert.equal(await page.locator('.hand-card').count(),0);
-  let s=await read(),steps=0;
-  while(s.phase!=='gameover'&&steps++<300){
-    if(s.phase==='round')await page.locator('#next-round').click();
-    else if(s.phase==='defense')await page.locator('[data-defense="block"]').click();
-    else {
-      await page.locator('#reveal-button').click();assert.equal(await page.locator('.hand-card').count(),5);
-      const choice=chooseBotAction(s);await page.locator(`[data-card="${choice.cardId}"]`).click();
-      if(steps===1)await page.screenshot({path:'outputs/night-gallery/desktop-game.png',fullPage:true});
-      if(choice.tileId)await page.locator(`[data-tile="${choice.tileId}"]`).click();else await page.locator('#play-no-target').click();
+import { newGame, chooseBotAction, playCard, resolveDefense } from '../learning/games/night-gallery/engine.mjs';
+
+const require = createRequire(import.meta.url);
+const WebSocket = require('../game-hub-server/node_modules/ws');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+class FakeClassList {
+  constructor(initial = []) {
+    this.set = new Set(initial);
+  }
+  add(...names) { names.forEach((n) => n && this.set.add(n)); }
+  remove(...names) { names.forEach((n) => this.set.delete(n)); }
+  toggle(name, force) {
+    const next = force === undefined ? !this.set.has(name) : Boolean(force);
+    if (next) this.set.add(name);
+    else this.set.delete(name);
+    return next;
+  }
+  contains(name) { return this.set.has(name); }
+}
+
+class FakeElement extends EventTarget {
+  constructor(tagName = 'div', id = '', classes = []) {
+    super();
+    this.tagName = tagName.toUpperCase();
+    this.id = id;
+    this.classList = new FakeClassList(classes);
+    this.children = [];
+    this.parentElement = null;
+    this.dataset = {};
+    this.attributes = {};
+    this.style = {
+      props: {},
+      setProperty(k, v) { this.props[k] = String(v); },
+      getPropertyValue(k) { return this.props[k] || ''; },
+    };
+    this.value = '';
+    this.textContent = '';
+    this._innerHTML = '';
+    this.disabled = false;
+    this.open = false;
+  }
+  get innerHTML() { return this._innerHTML; }
+  set innerHTML(val) {
+    this._innerHTML = String(val ?? '');
+    this.textContent = this._innerHTML.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+  setAttribute(k, v) { this.attributes[k] = String(v); }
+  removeAttribute(k) { delete this.attributes[k]; }
+  appendChild(child) {
+    if (child && typeof child === 'object') {
+      child.parentElement = this;
+      this.children.push(child);
     }
-    s=await read();assert.equal(validSave(s),true);
+    return child;
   }
-  assert.equal(s.phase,'gameover');assert.equal(s.round,4);assert.equal(await page.locator('tbody tr').count(),3);
-  await page.screenshot({path:'outputs/night-gallery/result.png',fullPage:true});
-  await page.reload();await page.locator('#resume-button').click();assert.equal(await page.locator('tbody tr').count(),3);
-  await page.locator('#again-button').click();assert.equal((await read()).round,1);assert.equal((await read()).players[0].name,'별이');
-});
-test('bots take their turns, rules pause them, and refresh resumes without duplicating moves',async()=>{
-  const fixture=newGame({names:['나','루나','모카'],seed:19,starter:1});await load(fixture);
-  await page.locator('[data-open-rules]:visible').click();const before=await read();
-  await page.waitForTimeout(1100);assert.deepEqual(await read(),before);
-  await page.getByRole('button',{name:'알겠어요',exact:true}).click();
-  await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)).current===0,key,{timeout:10000});
-  assert.equal(await page.locator('.hand-card').count(),5);const after=await read();assert.equal(after.turn,2);
-  await page.reload();await page.locator('#resume-button').click();assert.deepEqual(await read(),after);
-  await page.locator('#home-button').click();await page.getByRole('button',{name:'계속하기',exact:true}).click();assert.deepEqual(await read(),after);
-  await page.locator('#home-button').click();await page.locator('#confirm-reset').click();assert.equal(await page.locator('#setup-form').count(),1);assert.equal(await read(),null);
-});
-test('dog defense can survive reload, and handoff hides cards between local turns',async()=>{
-  let s=newGame({names:['가','나','다'],seed:17,mode:'local'}),pending;
-  for(let i=0;i<300&&!pending;i++){
-    if(s.phase==='round')break;
-    const choice=chooseBotAction(s);s=playCard(s,choice.cardId,choice.tileId);
-    if(s.phase==='defense')pending=s;
+  append(...nodes) { nodes.forEach((n) => this.appendChild(n)); }
+  prepend(...nodes) {
+    nodes.forEach((n) => {
+      if (n && typeof n === 'object') n.parentElement = this;
+    });
+    this.children.unshift(...nodes);
   }
-  // Create a valid deterministic defense fixture if this seed did not reach one.
-  if(!pending){
-    s=newGame({names:['가','나','다'],seed:17,mode:'local'});
-    const source=[s.deck,...s.players.map(p=>p.hand)].find(a=>a.some(c=>c.type==='number'&&c.value===5));
-    const i=source.findIndex(c=>c.type==='number'&&c.value===5),card=source[i];source[i]=s.players[0].hand[0];s.players[0].hand[0]=card;
-    const tile=s.center.splice(s.center.findIndex(t=>t.kind==='number'&&t.value===5),1)[0];s.players[1].loot.push(tile);s.dogOwner=1;
-    pending=playCard(s,card.id,tile.id);
+  replaceChildren(...nodes) {
+    this.children = [];
+    nodes.forEach((n) => {
+      if (n?.children?.length && n.tagName === 'FRAGMENT') {
+        n.children.forEach((c) => this.appendChild(c));
+      } else {
+        this.appendChild(n);
+      }
+    });
   }
-  assert.equal(validSave(pending),true);await load(pending);assert.equal(await page.locator('.hand-card').count(),0);
-  await page.reload();await page.locator('#resume-button').click();await page.locator('[data-defense="allow"]').click();
-  assert.deepEqual(await read(),resolveDefense(pending,false));assert.equal(await page.locator('.hand-card').count(),0);
-  await page.locator('#reveal-button').click();assert.equal(await page.locator('.hand-card').count(),5);
+  contains(target) {
+    if (this === target) return true;
+    return this.children.some((c) => c?.contains?.(target));
+  }
+  querySelector(sel) {
+    if (sel === 'h1, .lobby-title') return this.children.find((c) => c.tagName === 'H1') || null;
+    if (sel === 'h2') return this.children.find((c) => c.tagName === 'H2') || null;
+    if (sel === 'button, input, select') return null;
+    return null;
+  }
+  querySelectorAll() { return []; }
+  checkVisibility() { return !this.classList.contains('hidden') && (this.tagName !== 'DIALOG' || this.open); }
+  focus() {}
+  showModal() { this.open = true; }
+  close() { this.open = false; }
+  closest(sel) { return sel === 'button' && this.tagName === 'BUTTON' ? this : null; }
+}
+
+function setupDom(wsUrl, initialName = '별이') {
+  const elements = new Map();
+  const register = (tag, id, classes = []) => {
+    const el = new FakeElement(tag, id, classes);
+    if (id) elements.set(id, el);
+    return el;
+  };
+
+  const missingScreen = register('section', 'missingScreen', ['screen', 'missing-screen', 'hidden']);
+  const lobbyScreen = register('section', 'lobbyScreen', ['screen', 'hidden']);
+  const lobbyPanel = new FakeElement('div', '', ['panel', 'lobby-panel']);
+  const h1 = new FakeElement('h1');
+  h1.textContent = 'NIGHT GALLERY';
+  const savedName = register('span', 'savedName');
+  const hostTab = register('button', 'hostTab', ['tab', 'active']);
+  const joinTab = register('button', 'joinTab', ['tab']);
+  const tabsWrap = new FakeElement('div', '', ['mp-lobby-tabs']);
+  tabsWrap.append(hostTab, joinTab);
+  const roomCode = register('div', 'roomCode', ['mp-lobby-room-code']);
+  const hostStatus = register('div', 'hostStatus', ['mp-lobby-status']);
+  const hostPane = register('div', 'hostPane', ['mp-lobby-card']);
+  hostPane.append(roomCode, hostStatus);
+  const joinCode = register('input', 'joinCode', ['mp-lobby-code-input']);
+  const joinBtn = register('button', 'joinBtn', ['primary']);
+  const joinRow = new FakeElement('div', '', ['mp-lobby-row']);
+  joinRow.append(joinCode, joinBtn);
+  const joinStatus = register('div', 'joinStatus', ['mp-lobby-status']);
+  const joinPane = register('div', 'joinPane', ['mp-lobby-card', 'hidden']);
+  joinPane.append(joinRow, joinStatus);
+  const lobbyGuide = register('div', 'lobbyGuide', ['mp-lobby-status']);
+  const lobbyPlayers = register('div', 'lobbyPlayers', ['mp-lobby-players']);
+  const startBtn = register('button', 'startBtn', ['primary']);
+  const rulesBtnLobby = register('button', 'rulesBtnLobby', ['quiet']);
+  const leaveBtnLobby = register('button', 'leaveBtnLobby', ['quiet']);
+  lobbyPanel.append(h1, savedName, tabsWrap, hostPane, joinPane, lobbyGuide, lobbyPlayers, startBtn, rulesBtnLobby, leaveBtnLobby);
+  lobbyScreen.appendChild(lobbyPanel);
+
+  const gameScreen = register('div', 'gameScreen', ['shell', 'hidden']);
+  const roomBadge = register('span', 'roomBadge', ['local-badge']);
+  const rulesBtnGame = register('button', 'rulesBtnGame', ['quiet']);
+  const leaveBtnGame = register('button', 'leaveBtnGame', ['quiet']);
+  const app = register('main', 'app');
+  const gameError = register('div', 'game-error');
+  gameScreen.append(roomBadge, rulesBtnGame, leaveBtnGame, app, gameError);
+
+  const rulesDialog = register('dialog', 'rules-dialog');
+  const rulesTitle = register('h2', 'rules-title');
+  rulesTitle.textContent = '기본 규칙';
+  rulesDialog.appendChild(rulesTitle);
+
+  const abortDialog = register('dialog', 'abort-dialog');
+  const abortTitle = register('h2', 'abort-title');
+  const abortMessage = register('p', 'abort-message');
+  abortDialog.append(abortTitle, abortMessage);
+  register('div', 'announcement', ['sr-only']);
+
+  const storage = new Map();
+  if (initialName !== null) storage.set('classPlayerName', initialName);
+
+  global.localStorage = {
+    getItem: (k) => (storage.has(k) ? storage.get(k) : null),
+    setItem: (k, v) => storage.set(k, String(v)),
+    removeItem: (k) => storage.delete(k),
+  };
+
+  const docTarget = new EventTarget();
+  global.document = Object.assign(docTarget, {
+    readyState: 'complete',
+    head: new FakeElement('head'),
+    body: new FakeElement('body'),
+    getElementById: (id) => elements.get(id) || null,
+    querySelector: (sel) => {
+      if (sel.startsWith('#')) return elements.get(sel.slice(1)) || null;
+      return null;
+    },
+    querySelectorAll: (sel) => {
+      if (sel.includes('[role=dialog]')) return [rulesDialog, abortDialog];
+      return [];
+    },
+    createElement: (tag) => new FakeElement(tag),
+    createDocumentFragment: () => new FakeElement('fragment'),
+    createTextNode: (text) => ({ textContent: String(text) }),
+  });
+
+  global.getComputedStyle = () => ({
+    backgroundColor: 'rgb(27, 52, 48)',
+    color: 'rgb(244, 238, 223)',
+    borderTopColor: 'rgb(99, 122, 110)',
+    fontSize: '40px',
+    letterSpacing: '0.04em',
+    getPropertyValue: (k) => (k === 'letter-spacing' ? '0.04em' : '40px'),
+  });
+
+  global.location = { href: wsUrl.replace(/^ws/, 'http'), search: '', reload() {} };
+  global.CustomEvent = class CustomEvent extends Event {
+    constructor(type, opts = {}) { super(type); this.detail = opts.detail; }
+  };
+
+  const winTarget = new EventTarget();
+  global.window = Object.assign(winTarget, {
+    document: global.document,
+    location: global.location,
+    localStorage: global.localStorage,
+    getComputedStyle: global.getComputedStyle,
+    setInterval: (fn, ms) => setInterval(fn, ms).unref(),
+    ClassroomNetwork: {
+      generateRoomCode: () => String(1000 + Math.floor(Math.random() * 9000)),
+      createSocket: () => {
+        const ws = new WebSocket(wsUrl);
+        const wrapper = new EventTarget();
+        ws.on('open', () => wrapper.dispatchEvent(new Event('open')));
+        ws.on('message', (data) => wrapper.dispatchEvent(new MessageEvent('message', { data: String(data) })));
+        ws.on('error', () => wrapper.dispatchEvent(new Event('error')));
+        ws.on('close', () => wrapper.dispatchEvent(new Event('close')));
+        wrapper.send = (d) => ws.send(d);
+        wrapper.close = (c, r) => ws.close(c, r);
+        return wrapper;
+      },
+    },
+  });
+
+  delete require.cache[require.resolve('../assets/network/multiplayer-lobby.js')];
+  require('../assets/network/multiplayer-lobby.js');
+
+  return { elements, storage };
+}
+
+function clickButton(attrs = {}) {
+  const btn = new FakeElement('button', attrs.id || '');
+  Object.assign(btn.dataset, attrs.dataset || {});
+  const ev = new Event('click');
+  Object.defineProperty(ev, 'target', { value: btn });
+  global.document.dispatchEvent(ev);
+}
+
+function connectGuest(wsUrl, roomCode, name) {
+  return new Promise((resolve, reject) => {
+    const ws = new WebSocket(wsUrl);
+    const client = {
+      ws,
+      playerId: null,
+      started: false,
+      state: null,
+      hand: [],
+      privateHandsReceived: 0,
+      returnedToLobby: false,
+      sendAction(payload) {
+        ws.send(JSON.stringify({ type: 'GAME_MESSAGE', payload: { type: 'ACTION', ...payload } }));
+      },
+    };
+    ws.on('error', reject);
+    ws.on('message', (raw) => {
+      const msg = JSON.parse(String(raw));
+      if (msg.type === 'CONNECTED') {
+        client.playerId = msg.playerId;
+        ws.send(JSON.stringify({ type: 'JOIN_ROOM', gameId: 'nightgallery', roomCode, name }));
+      } else if (msg.type === 'ROOM_JOINED') {
+        resolve(client);
+      } else if (msg.type === 'GAME_MESSAGE' && msg.payload) {
+        const p = msg.payload;
+        if (p.type === 'CLASSROOM_LOBBY_START') {
+          client.started = true;
+          client.state = p.data?.state || null;
+        } else if (p.type === 'STATE') {
+          client.state = p.state;
+        } else if (p.type === 'PRIVATE_HAND') {
+          assert.equal(String(p.targetId), String(client.playerId), 'Private hand must only reach its target guest');
+          client.hand = p.hand;
+          client.privateHandsReceived += 1;
+        } else if (p.type === 'RETURN_LOBBY') {
+          client.returnedToLobby = true;
+        }
+      }
+    });
+  });
+}
+
+async function waitFor(predicate, timeoutMs = 5000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (predicate()) return;
+    await new Promise((r) => setTimeout(r, 15));
+  }
+  throw new Error('Timed out waiting for condition');
+}
+
+let server, baseUrl, wsUrl;
+
+test.before(async () => {
+  server = createPreview();
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  const { port } = server.address();
+  baseUrl = `http://127.0.0.1:${port}`;
+  wsUrl = `ws://127.0.0.1:${port}`;
 });
-test('mobile and tablet remain within viewport; five-player setup and game are operable',async()=>{
-  for(const width of [360,390,768]){
-    await page.setViewportSize({width,height:900});await page.reload();
-    if(await page.locator('#resume-button').count()){await page.evaluate(key=>localStorage.removeItem(key),key);await page.reload();}
-    await page.locator('[data-mode="local"]').click();await page.locator('[data-count="5"]').click();
-    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-    await page.screenshot({path:`outputs/night-gallery/lobby-${width}.png`,fullPage:true});
-    await page.getByRole('button',{name:'게임 시작'}).click();await page.locator('#reveal-button').click();
-    assert.equal(await page.locator('.player').count(),5);assert.equal(await page.locator('.hand-card').count(),5);
-    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-    const s=await read(),choice=chooseBotAction(s);await page.locator(`[data-card="${choice.cardId}"]`).click();
-    await page.screenshot({path:`outputs/night-gallery/game-${width}.png`,fullPage:true});
-    if(choice.tileId)await page.locator(`[data-tile="${choice.tileId}"]`).click();else await page.locator('#play-no-target').click();
-    assert.equal((await read()).turn,1);
+
+test.after(async () => {
+  if (server) await new Promise((resolve) => server.close(resolve));
+});
+
+test('preview server serves HTML, CSS, JS, shared lobby assets and health check', async () => {
+  for (const route of [
+    '/',
+    '/index.html',
+    '/style.css',
+    '/app.mjs',
+    '/engine.mjs',
+    '/assets/device-game.css',
+    '/assets/network/multiplayer-lobby.css',
+    '/assets/network/game-network.js',
+    '/assets/network/multiplayer-lobby.js',
+    '/health',
+  ]) {
+    const res = await fetch(`${baseUrl}${route}`);
+    assert.equal(res.status, 200, `${route} should return 200`);
+  }
+  const html = await readFile(path.join(__dirname, '../learning/games/night-gallery/index.html'), 'utf8');
+  assert.match(html, /<h1>NIGHT GALLERY<\/h1>/);
+  assert.match(html, /id="missingScreen"/);
+  assert.match(html, /id="lobbyScreen"/);
+});
+
+test('multiplayer lobby, 3-player 4-round game, guard dog defense, rematch and return to lobby', async () => {
+  const { elements } = setupDom(wsUrl, '별이');
+  await import(`../learning/games/night-gallery/app.mjs?t=${Date.now()}`);
+
+  assert.equal(elements.get('missingScreen').classList.contains('hidden'), true);
+  assert.equal(elements.get('lobbyScreen').classList.contains('hidden'), false);
+
+  elements.get('rulesBtnLobby').dispatchEvent(new Event('click'));
+  assert.equal(elements.get('rules-dialog').open, true);
+  assert.equal(elements.get('rules-dialog').classList.contains('mp-ui-rules'), true);
+  clickButton({ dataset: { close: 'rules-dialog' } });
+  assert.equal(elements.get('rules-dialog').open, false);
+
+  elements.get('hostTab').dispatchEvent(new Event('click'));
+  await waitFor(() => /^\d{4}$/.test(elements.get('roomCode').textContent));
+  const roomCode = elements.get('roomCode').textContent;
+
+  const guest1 = await connectGuest(wsUrl, roomCode, '루나');
+  const guest2 = await connectGuest(wsUrl, roomCode, '모카');
+  try {
+    await waitFor(() => Object.keys(window.__nightGallery.lobby.snapshot().players).length === 3);
+    assert.equal(elements.get('startBtn').disabled, false);
+
+    elements.get('startBtn').dispatchEvent(new Event('click'));
+    await waitFor(() => guest1.started && guest2.started && guest1.hand.length === 5 && guest2.hand.length === 5);
+
+    assert.equal(elements.get('gameScreen').classList.contains('hidden'), false);
+    assert.equal(guest1.state.players.every((p) => !('hand' in p) && p.handCount === 5), true);
+
+    const clientsByOrder = [null, guest1, guest2];
+    let steps = 0;
+    while (window.__nightGallery.getHostState().phase !== 'gameover' && steps++ < 300) {
+      const s = window.__nightGallery.getHostState();
+      const prevTurn = s.turn;
+      const prevPhase = s.phase;
+      const prevRound = s.round;
+
+      if (s.phase === 'round') {
+        clickButton({ id: 'next-round' });
+      } else if (s.phase === 'defense') {
+        const defender = s.pending.defender;
+        if (defender === 0) {
+          clickButton({ dataset: { defense: 'block' } });
+        } else {
+          clientsByOrder[defender].sendAction({ action: 'DEFEND', block: true });
+        }
+      } else {
+        const choice = chooseBotAction(s);
+        if (s.current === 0) {
+          clickButton({ dataset: { card: choice.cardId } });
+          if (choice.tileId) clickButton({ dataset: { tile: choice.tileId } });
+          else clickButton({ id: 'play-no-target' });
+        } else {
+          clientsByOrder[s.current].sendAction({
+            action: 'PLAY',
+            cardId: choice.cardId,
+            tileId: choice.tileId ?? null,
+          });
+        }
+      }
+
+      await waitFor(() => {
+        const next = window.__nightGallery.getHostState();
+        return next.turn !== prevTurn || next.phase !== prevPhase || next.round !== prevRound;
+      });
+    }
+
+    const finalState = window.__nightGallery.getHostState();
+    assert.equal(finalState.phase, 'gameover');
+    assert.equal(finalState.round, 4);
+    await waitFor(() => guest1.state?.phase === 'gameover' && guest2.state?.phase === 'gameover');
+    assert.match(elements.get('app').innerHTML, /result-panel/);
+
+    // Verify rematch resets to round 1 and rotates starter
+    clickButton({ id: 'again-button' });
+    await waitFor(() => window.__nightGallery.getHostState().round === 1 && guest1.state?.round === 1);
+    assert.equal(window.__nightGallery.getHostState().current, 1);
+
+    // Verify deterministic guard dog defense over WebSocket from guest1
+    let dState = newGame({ names: ['별이', '루나', '모카'], seed: 17, mode: 'local' });
+    const source = [dState.deck, ...dState.players.map((p) => p.hand)].find((a) => a.some((c) => c.type === 'number' && c.value === 5));
+    const idx = source.findIndex((c) => c.type === 'number' && c.value === 5);
+    const card5 = source[idx];
+    source[idx] = dState.players[0].hand[0];
+    dState.players[0].hand[0] = card5;
+    const tile5 = dState.center.splice(dState.center.findIndex((t) => t.kind === 'number' && t.value === 5), 1)[0];
+    dState.players[1].loot.push(tile5);
+    dState.dogOwner = 1;
+    const pending = playCard(dState, card5.id, tile5.id);
+
+    window.__nightGallery.setHostState(pending);
+    await waitFor(() => guest1.state?.phase === 'defense');
+    guest1.sendAction({ action: 'DEFEND', block: false });
+    await waitFor(() => window.__nightGallery.getHostState().phase === 'turn');
+    assert.deepEqual(window.__nightGallery.getHostState(), resolveDefense(pending, false));
+
+    // Verify return to lobby
+    clickButton({ id: 'new-table' });
+    await waitFor(() => guest1.returnedToLobby && guest2.returnedToLobby);
+    assert.equal(elements.get('lobbyScreen').classList.contains('hidden'), false);
+  } finally {
+    guest1.ws.close();
+    guest2.ws.close();
+    window.__nightGallery.lobby.destroy();
   }
 });
-test('broken saves, storage denial, rules keyboard dismissal and text injection are safe',async()=>{
-  await page.evaluate(key=>localStorage.setItem(key,'{broken'),key);await page.reload();assert.equal(await page.locator('#setup-form').count(),1);
-  await page.getByRole('textbox',{name:'1번 플레이어 이름'}).fill('<img onload>');await page.locator('[data-count="2"]').click();assert.equal(await page.locator('#app img').count(),0);
-  await page.locator('[data-open-rules]:visible').click();await page.keyboard.press('Escape');assert.equal(await page.locator('dialog[open]').count(),0);
-  await context.addInitScript(()=>{Object.defineProperty(Storage.prototype,'getItem',{value(){throw Error('Denied');}});Object.defineProperty(Storage.prototype,'setItem',{value(){throw Error('Denied');}});});
-  await page.reload();await page.getByRole('button',{name:'게임 시작'}).click();assert.equal(await page.locator('.hand-card').count(),5);assert.match(await page.locator('.notice').textContent(),/저장/);
-});
+
+

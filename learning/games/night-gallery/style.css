@@ -14,20 +14,14 @@ dialog{width:min(750px,calc(100% - 30px));max-height:88dvh;color:var(--ink);back
 
 /* Use the same shared entry surface as the other card games. */
 :root { --lobby-surface: #1b3430; --lobby-edge: #637a6e; --lobby-ink: #f4eedf; --lobby-title-size: 40px; }
-body:has(.lobby) .topbar { display: none; }
-body:has(.lobby) { min-height: 100dvh; display: flow-root; }
-.lobby .mp-ui-title { color: var(--gold); font-weight: 800; letter-spacing: -1px; }
-.lobby .mode-options { margin-top: 0; }
-.lobby button, .lobby select { min-height: 44px; }
-.lobby .mode-option { padding: 12px; }
-.lobby .mode-option b { font-size: 14px; }
-.lobby .mode-option small { font-size: 12px; line-height: 1.5; }
-.lobby .names input { min-height: 28px; font-size: 14px; }
-.lobby .names label small { font-size: 11px; }
-.lobby .starter-label { font-size: 13px; }
-.lobby .starter-label select { font-size: 13px; }
-.lobby .setup-note { font-size: 12px; line-height: 1.6; margin-top: 12px; }
-.lobby .quick-rule { margin-top: 16px; padding-top: 14px; }
-.lobby .quick-rule p { font-size: 12px; }
-.lobby .quick-rule > span { flex-shrink: 0; }
-@media(max-width:520px) { .shell { padding-inline: 12px; } .lobby .mode-option small { font-size: 11px; } .lobby .names label { gap: 5px; padding: 6px; } }
+.hidden { display: none !important; }
+.missing-screen { min-height: 100dvh; display: grid; place-items: center; padding: 18px; }
+.lobby-panel, .name-missing { background-color: #1b3430; color: #f4eedf; border: 1px solid #637a6e; border-radius: 18px; padding: 24px; }
+.name-missing { width: min(460px, 100%); text-align: center; display: grid; gap: 14px; justify-items: center; box-shadow: 0 24px 60px #0006; }
+.lobby-panel h1, .name-missing h2, #lobbyScreen .mp-ui-title { color: var(--gold); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(30px, 5vw, 40px); font-weight: 800; letter-spacing: 0.04em; }
+dialog h2, .mp-ui-rules h2 { font-size: 19px; }
+.hand-card:disabled { opacity: 0.84; }
+.hand-card:disabled:hover { transform: rotate(var(--tilt)); }
+#abort-dialog { max-width: 440px; }
+#abort-dialog .button-row { justify-content: flex-end; margin-top: 25px; }
+@media(max-width:520px) { .shell { padding-inline: 12px; } }
