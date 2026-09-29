@@ -11552,6 +11552,1927 @@
      "en": "The minimum wage."
     }
    ]
+  },
+  "554": {
+   "word": "complement",
+   "overview": [
+    "complement는 동사로 '보완하다, (서로) 잘 어울리게 하다'라는 뜻입니다.",
+    "The sauce complements the fish.(소스가 생선 맛을 살려 준다)처럼 씁니다.",
+    "명사로는 '보완물, 잘 어울리는 것', 문법에서는 '보어'라는 뜻입니다.",
+    "형용사 complementary(보완적인)도 씁니다. 발음이 같은 compliment(칭찬)와 철자를 구별하세요."
+   ],
+   "easy": [
+    {
+     "word": "go well with",
+     "en": "It goes well with rice.",
+     "ko": "밥과 잘 어울리다."
+    },
+    {
+     "word": "complete",
+     "en": "Complete the set.",
+     "ko": "세트를 완성하다."
+    }
+   ],
+   "etymology": [
+    "complement는 라틴어 complementum(채워서 완성하는 것)에서 온 단어입니다.",
+    "complere(가득 채우다)에서 나온 말로, complete(완성하다)와 같은 가족입니다.",
+    "'모자란 부분을 채워 전체를 완성하는 것'이라는 뜻에서 시작되었습니다.",
+    "서로 부족한 점을 채워 주어 더 좋은 짝을 이루는 것을 가리키게 되었습니다.",
+    "complement의 핵심 이미지는 '두 조각이 만나 하나의 완성된 그림이 되는 것 🧩🧩'입니다."
+   ],
+   "meanings": [
+    "보완하다, 보충하다",
+    "보완하는 것, 잘 어울리는 것",
+    "(문법) 보어"
+   ],
+   "examples": [
+    {
+     "en": "The two friends complement each other well.",
+     "ko": "그 두 친구는 서로의 부족한 점을 잘 채워 줘요."
+    },
+    {
+     "en": "This sauce complements the meal perfectly.",
+     "ko": "이 소스는 식사와 완벽하게 어울려요."
+    },
+    {
+     "en": "The scarf is a nice complement to your coat.",
+     "ko": "그 스카프는 네 코트와 잘 어울려요."
+    },
+    {
+     "en": "Online lessons complement classroom learning.",
+     "ko": "온라인 수업은 교실 수업을 보완해요."
+    },
+    {
+     "en": "In 'She is happy,' 'happy' is the complement.",
+     "ko": "'She is happy'에서 'happy'는 보어예요."
+    },
+    {
+     "en": "Blue and orange are complementary colors.",
+     "ko": "파란색과 주황색은 보색이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "enhance",
+     "ko": "향상시키다",
+     "en": "Enhance the taste."
+    },
+    {
+     "type": "유의어",
+     "word": "match",
+     "ko": "어울리다",
+     "en": "The colors match."
+    },
+    {
+     "type": "파생어",
+     "word": "complementary",
+     "ko": "보완적인",
+     "en": "Complementary skills."
+    },
+    {
+     "type": "연관어",
+     "word": "compliment",
+     "ko": "칭찬",
+     "en": "Thanks for the compliment."
+    },
+    {
+     "type": "연관어",
+     "word": "complete",
+     "ko": "완성하다",
+     "en": "Complete the puzzle."
+    },
+    {
+     "type": "연관어",
+     "word": "supplement",
+     "ko": "보충하다",
+     "en": "Supplement your diet."
+    }
+   ]
+  },
+  "1871": {
+   "word": "overlap",
+   "overview": [
+    "overlap은 '(일부가) 겹치다, 포개지다'라는 뜻의 동사입니다.",
+    "The two circles overlap.(두 원이 겹친다)처럼 씁니다.",
+    "'(시간·내용이) 일부 겹치다, 공통되다'라는 뜻으로도 씁니다.",
+    "명사로는 '겹침, 중복'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "cover part of",
+     "en": "Cover part of the page.",
+     "ko": "페이지 일부를 덮다."
+    },
+    {
+     "word": "share",
+     "en": "Share the same ideas.",
+     "ko": "같은 생각을 공유하다."
+    }
+   ],
+   "etymology": [
+    "overlap은 over(위에)와 lap(접다, 감싸다)이 합쳐진 단어입니다.",
+    "lap은 원래 옷자락이나 천의 접힌 부분을 뜻하던 말입니다.",
+    "'한 조각이 다른 조각 위로 접혀 덮이다'라는 뜻에서 시작되었습니다.",
+    "물건, 시간, 내용이 일부 같은 자리를 함께 차지하는 것을 가리키게 되었습니다.",
+    "overlap의 핵심 이미지는 '두 원이 일부 겹쳐진 벤 다이어그램 ⭕⭕'입니다."
+   ],
+   "meanings": [
+    "겹치다, 포개지다",
+    "(일부가) 공통되다, 중복되다",
+    "겹침, 중복"
+   ],
+   "examples": [
+    {
+     "en": "The roof tiles overlap to keep the rain out.",
+     "ko": "지붕 기와가 겹쳐 있어서 비가 들어오지 않아요."
+    },
+    {
+     "en": "My piano lesson overlaps with soccer practice.",
+     "ko": "제 피아노 수업이 축구 연습과 시간이 겹쳐요."
+    },
+    {
+     "en": "The two subjects overlap in many ways.",
+     "ko": "두 과목은 여러 면에서 겹쳐요."
+    },
+    {
+     "en": "Draw two circles that overlap.",
+     "ko": "서로 겹치는 원 두 개를 그리세요."
+    },
+    {
+     "en": "There is some overlap between their ideas.",
+     "ko": "그들의 생각에는 겹치는 부분이 좀 있어요."
+    },
+    {
+     "en": "Don't let the stickers overlap.",
+     "ko": "스티커가 겹치지 않게 붙이세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "coincide",
+     "ko": "겹치다, 동시에 일어나다",
+     "en": "The dates coincide."
+    },
+    {
+     "type": "유의어",
+     "word": "cover",
+     "ko": "덮다",
+     "en": "Cover the table."
+    },
+    {
+     "type": "반의어",
+     "word": "separate",
+     "ko": "분리된",
+     "en": "Separate rooms."
+    },
+    {
+     "type": "연관어",
+     "word": "intersect",
+     "ko": "교차하다",
+     "en": "The roads intersect."
+    },
+    {
+     "type": "연관어",
+     "word": "common",
+     "ko": "공통의",
+     "en": "Common interests."
+    },
+    {
+     "type": "연관어",
+     "word": "layer",
+     "ko": "층",
+     "en": "A thin layer."
+    }
+   ]
+  },
+  "1412": {
+   "word": "inhabit",
+   "overview": [
+    "inhabit는 '(어떤 곳에) 살다, 서식하다'라는 뜻의 동사입니다.",
+    "Many animals inhabit the forest.(많은 동물이 그 숲에 산다)처럼 씁니다.",
+    "live in과 비슷하지만 in 없이 바로 장소를 씁니다. 동물이나 집단이 사는 곳을 말할 때 자주 씁니다.",
+    "명사 inhabitant(주민, 서식 동물)도 씁니다. inhibit(억제하다)와 헷갈리지 않게 주의하세요."
+   ],
+   "easy": [
+    {
+     "word": "live in",
+     "en": "Live in a cave.",
+     "ko": "동굴에 살다."
+    },
+    {
+     "word": "occupy",
+     "en": "Occupy the land.",
+     "ko": "그 땅을 차지하다."
+    }
+   ],
+   "etymology": [
+    "inhabit는 라틴어 inhabitare(안에 살다)에서 온 단어입니다.",
+    "in(안에)과 habitare(살다, 머물다)가 합쳐진 말로, habitat(서식지), habit(습관)과 같은 가족입니다.",
+    "'어떤 곳 안에 머물러 살다'라는 뜻이 그대로 이어져 왔습니다.",
+    "사람, 동물, 식물이 어떤 지역에 자리 잡고 사는 것을 가리킵니다.",
+    "inhabit의 핵심 이미지는 '숲속 둥지에 자리 잡고 사는 동물들 🦉🌲'입니다."
+   ],
+   "meanings": [
+    "살다, 거주하다, 서식하다"
+   ],
+   "examples": [
+    {
+     "en": "Polar bears inhabit the Arctic.",
+     "ko": "북극곰은 북극에 살아요."
+    },
+    {
+     "en": "The island is inhabited by rare birds.",
+     "ko": "그 섬에는 희귀한 새들이 살아요."
+    },
+    {
+     "en": "Humans have inhabited this area for thousands of years.",
+     "ko": "인류는 수천 년 동안 이 지역에 살아왔어요."
+    },
+    {
+     "en": "Strange creatures inhabit the deep sea.",
+     "ko": "깊은 바다에는 신기한 생물들이 살아요."
+    },
+    {
+     "en": "The house has not been inhabited for years.",
+     "ko": "그 집은 몇 년째 사람이 살지 않았어요."
+    },
+    {
+     "en": "The town has about 5,000 inhabitants.",
+     "ko": "그 마을에는 약 5,000명의 주민이 살아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "live in",
+     "ko": "~에 살다",
+     "en": "Live in the city."
+    },
+    {
+     "type": "유의어",
+     "word": "reside",
+     "ko": "거주하다",
+     "en": "Reside abroad."
+    },
+    {
+     "type": "반의어",
+     "word": "abandon",
+     "ko": "버리고 떠나다",
+     "en": "Abandon the town."
+    },
+    {
+     "type": "파생어",
+     "word": "inhabitant",
+     "ko": "주민, 서식 동물",
+     "en": "Local inhabitants."
+    },
+    {
+     "type": "파생어",
+     "word": "uninhabited",
+     "ko": "사람이 살지 않는",
+     "en": "An uninhabited island."
+    },
+    {
+     "type": "연관어",
+     "word": "habitat",
+     "ko": "서식지",
+     "en": "A natural habitat."
+    }
+   ]
+  },
+  "1875": {
+   "word": "overwhelm",
+   "overview": [
+    "overwhelm은 '(감정이) 휩싸다, 압도하다'라는 뜻의 동사입니다.",
+    "be overwhelmed by/with(~에 압도되다, 벅차다)처럼 수동태로 자주 씁니다.",
+    "'(수·힘으로) 제압하다', '(일이) 감당 못 하게 하다'라는 뜻으로도 씁니다.",
+    "형용사 overwhelming(압도적인, 너무 벅찬)도 자주 씁니다. (an overwhelming victory, 압승)"
+   ],
+   "easy": [
+    {
+     "word": "be too much",
+     "en": "It's too much for me.",
+     "ko": "나한테는 너무 벅차요."
+    },
+    {
+     "word": "defeat",
+     "en": "Defeat the enemy.",
+     "ko": "적을 무찌르다."
+    }
+   ],
+   "etymology": [
+    "overwhelm은 over(위로)와 중세 영어 whelm(뒤집다, 덮치다)이 합쳐진 단어입니다.",
+    "whelm은 배가 파도에 뒤집히거나 물에 잠기는 것을 뜻하던 말입니다.",
+    "'파도가 위에서 완전히 덮쳐 삼키다'라는 뜻에서 시작되었습니다.",
+    "감정, 일, 힘이 한꺼번에 몰려와 감당하기 어렵게 만드는 것을 가리키게 되었습니다.",
+    "overwhelm의 핵심 이미지는 '거대한 파도가 머리 위로 덮쳐 오는 것 🌊😳'입니다."
+   ],
+   "meanings": [
+    "압도하다, (감정이) 휩싸다",
+    "당황하게 하다, 질리게 하다",
+    "제압하다"
+   ],
+   "examples": [
+    {
+     "en": "She was overwhelmed with joy.",
+     "ko": "그녀는 기쁨에 벅찼어요."
+    },
+    {
+     "en": "I feel overwhelmed by all this homework.",
+     "ko": "숙제가 너무 많아서 감당이 안 돼요."
+    },
+    {
+     "en": "The stronger team overwhelmed their opponents.",
+     "ko": "더 강한 팀이 상대를 압도했어요."
+    },
+    {
+     "en": "The beauty of the mountains overwhelmed us.",
+     "ko": "산의 아름다움에 우리는 압도되었어요."
+    },
+    {
+     "en": "Don't overwhelm new students with too much information.",
+     "ko": "신입생들에게 너무 많은 정보를 한꺼번에 주지 마세요."
+    },
+    {
+     "en": "The response was overwhelming.",
+     "ko": "반응이 엄청났어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "overpower",
+     "ko": "제압하다",
+     "en": "Overpower the guard."
+    },
+    {
+     "type": "유의어",
+     "word": "flood",
+     "ko": "넘쳐나게 하다",
+     "en": "Flooded with emails."
+    },
+    {
+     "type": "반의어",
+     "word": "underwhelm",
+     "ko": "기대에 못 미치다",
+     "en": "The show underwhelmed me."
+    },
+    {
+     "type": "파생어",
+     "word": "overwhelming",
+     "ko": "압도적인",
+     "en": "An overwhelming majority."
+    },
+    {
+     "type": "파생어",
+     "word": "overwhelmed",
+     "ko": "벅찬, 압도된",
+     "en": "Feeling overwhelmed."
+    },
+    {
+     "type": "연관어",
+     "word": "stress",
+     "ko": "스트레스",
+     "en": "Under stress."
+    }
+   ]
+  },
+  "582": {
+   "word": "conform",
+   "overview": [
+    "conform은 '(규칙·관습을) 따르다, 순응하다'라는 뜻의 동사입니다.",
+    "conform to the rules(규칙을 따르다)처럼 to와 함께 씁니다.",
+    "'(기준에) 부합하다, 일치하다'라는 뜻으로도 씁니다.",
+    "명사 conformity(순응, 일치), conformist(순응주의자)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "follow",
+     "en": "Follow the rules.",
+     "ko": "규칙을 따르다."
+    },
+    {
+     "word": "fit in",
+     "en": "Fit in with the group.",
+     "ko": "무리에 어울리다."
+    }
+   ],
+   "etymology": [
+    "conform은 라틴어 conformare(같은 모양으로 만들다)에서 온 단어입니다.",
+    "con(함께)과 formare(모양을 만들다)가 합쳐진 말로, form(형태), uniform(교복)과 같은 가족입니다.",
+    "'다른 것과 같은 모양이 되게 하다'라는 뜻에서 시작되었습니다.",
+    "규칙이나 사회의 기준에 자신을 맞추는 것, 기준과 들어맞는 것을 가리키게 되었습니다.",
+    "conform의 핵심 이미지는 '같은 틀에 맞춰 나란히 선 모양들 🟦🟦🟦'입니다."
+   ],
+   "meanings": [
+    "따르다, 순응하다",
+    "일치하다, 들어맞다"
+   ],
+   "examples": [
+    {
+     "en": "All students must conform to the dress code.",
+     "ko": "모든 학생은 복장 규정을 따라야 해요."
+    },
+    {
+     "en": "The building conforms to safety standards.",
+     "ko": "그 건물은 안전 기준에 부합해요."
+    },
+    {
+     "en": "He refused to conform to what others expected.",
+     "ko": "그는 다른 사람들의 기대에 맞추기를 거부했어요."
+    },
+    {
+     "en": "Teenagers often feel pressure to conform.",
+     "ko": "십 대들은 흔히 남들과 같아져야 한다는 압박을 느껴요."
+    },
+    {
+     "en": "The toys must conform to strict rules.",
+     "ko": "장난감은 엄격한 규정에 맞아야 해요."
+    },
+    {
+     "en": "She values creativity over conformity.",
+     "ko": "그녀는 순응보다 창의성을 중시해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "comply",
+     "ko": "따르다",
+     "en": "Comply with the law."
+    },
+    {
+     "type": "유의어",
+     "word": "obey",
+     "ko": "복종하다",
+     "en": "Obey the rules."
+    },
+    {
+     "type": "반의어",
+     "word": "rebel",
+     "ko": "반항하다",
+     "en": "Rebel against rules."
+    },
+    {
+     "type": "파생어",
+     "word": "conformity",
+     "ko": "순응, 일치",
+     "en": "In conformity with the law."
+    },
+    {
+     "type": "파생어",
+     "word": "conformist",
+     "ko": "순응주의자",
+     "en": "He's not a conformist."
+    },
+    {
+     "type": "연관어",
+     "word": "standard",
+     "ko": "기준",
+     "en": "High standards."
+    }
+   ]
+  },
+  "595": {
+   "word": "constitute",
+   "overview": [
+    "constitute는 '구성하다, (~을) 이루다'라는 뜻의 동사입니다.",
+    "Women constitute 60% of the staff.(여성이 직원의 60%를 차지한다)처럼 씁니다.",
+    "'(~에) 해당하다, ~이 되다'라는 뜻으로도 씁니다. (constitute a crime, 범죄에 해당하다)",
+    "'(기관을) 설립하다'라는 격식 있는 뜻도 있고, 명사 constitution(헌법, 구성, 체질)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "make up",
+     "en": "Make up the team.",
+     "ko": "팀을 이루다."
+    },
+    {
+     "word": "be",
+     "en": "It is a problem.",
+     "ko": "그것은 문제이다."
+    }
+   ],
+   "etymology": [
+    "constitute는 라틴어 constituere(세우다, 정하다)에서 온 단어입니다.",
+    "con(함께)과 statuere(세우다)가 합쳐진 말로, statue(동상), institute(기관)와 같은 가족입니다.",
+    "'여러 부분을 함께 세워 만들다'라는 뜻에서 시작되었습니다.",
+    "여러 요소가 모여 전체를 이루는 것, 기관이나 법을 세우는 것을 가리키게 되었습니다.",
+    "constitute의 핵심 이미지는 '여러 블록이 모여 하나의 건물을 세우는 것 🧱🏛️'입니다."
+   ],
+   "meanings": [
+    "구성하다, 이루다",
+    "(~에) 해당하다, ~이 되다",
+    "(기관을) 설립하다"
+   ],
+   "examples": [
+    {
+     "en": "Twelve months constitute a year.",
+     "ko": "열두 달이 일 년을 이뤄요."
+    },
+    {
+     "en": "Children constitute half of the town's population.",
+     "ko": "어린이가 그 마을 인구의 절반을 차지해요."
+    },
+    {
+     "en": "Copying someone's homework constitutes cheating.",
+     "ko": "남의 숙제를 베끼는 것은 부정행위에 해당해요."
+    },
+    {
+     "en": "The committee was constituted last year.",
+     "ko": "그 위원회는 작년에 설립되었어요."
+    },
+    {
+     "en": "What constitutes a healthy diet?",
+     "ko": "건강한 식단은 무엇으로 이루어지나요?"
+    },
+    {
+     "en": "The constitution protects our rights.",
+     "ko": "헌법은 우리의 권리를 보호해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "make up",
+     "ko": "구성하다",
+     "en": "Girls make up half the class."
+    },
+    {
+     "type": "유의어",
+     "word": "form",
+     "ko": "형성하다",
+     "en": "Form a group."
+    },
+    {
+     "type": "유의어",
+     "word": "establish",
+     "ko": "설립하다",
+     "en": "Establish a school."
+    },
+    {
+     "type": "파생어",
+     "word": "constitution",
+     "ko": "헌법, 구성",
+     "en": "The national constitution."
+    },
+    {
+     "type": "파생어",
+     "word": "constituent",
+     "ko": "구성 요소",
+     "en": "The main constituents."
+    },
+    {
+     "type": "연관어",
+     "word": "compose",
+     "ko": "구성하다",
+     "en": "Composed of water."
+    }
+   ]
+  },
+  "2576": {
+   "word": "subscribe",
+   "overview": [
+    "subscribe는 '(신문·잡지·서비스를) 구독하다, 가입하다'라는 뜻의 동사입니다.",
+    "subscribe to a channel(채널을 구독하다)처럼 to와 함께 씁니다.",
+    "subscribe to an idea(생각에 동의하다)처럼 '(의견에) 찬성하다'라는 뜻으로도 씁니다.",
+    "명사 subscription(구독, 구독료), subscriber(구독자)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sign up",
+     "en": "Sign up for the class.",
+     "ko": "수업에 등록하다."
+    },
+    {
+     "word": "agree with",
+     "en": "Agree with the idea.",
+     "ko": "그 생각에 동의하다."
+    }
+   ],
+   "etymology": [
+    "subscribe는 라틴어 subscribere(아래에 쓰다)에서 온 단어입니다.",
+    "sub(아래에)와 scribere(쓰다)가 합쳐진 말로, describe(묘사하다), script(대본)와 같은 가족입니다.",
+    "원래는 문서 아래에 자기 이름을 적어 서명한다는 뜻이었습니다.",
+    "이름을 적어 동의하거나 정기적으로 무언가를 받겠다고 신청하는 것을 가리키게 되었습니다.",
+    "subscribe의 핵심 이미지는 '신청서 맨 아래에 이름을 적고 구독 버튼을 누르는 것 ✍️🔔'입니다."
+   ],
+   "meanings": [
+    "구독하다, 가입하다",
+    "(의견에) 동의하다, 찬성하다",
+    "(주식 등을) 청약하다, 기부를 약속하다"
+   ],
+   "examples": [
+    {
+     "en": "I subscribe to a science magazine.",
+     "ko": "저는 과학 잡지를 구독해요."
+    },
+    {
+     "en": "Don't forget to subscribe to our channel!",
+     "ko": "저희 채널 구독하는 것 잊지 마세요!"
+    },
+    {
+     "en": "My family subscribes to a music streaming service.",
+     "ko": "우리 가족은 음악 스트리밍 서비스에 가입해 있어요."
+    },
+    {
+     "en": "I don't subscribe to that theory.",
+     "ko": "저는 그 이론에 동의하지 않아요."
+    },
+    {
+     "en": "The channel has a million subscribers.",
+     "ko": "그 채널은 구독자가 백만 명이에요."
+    },
+    {
+     "en": "How much is the monthly subscription?",
+     "ko": "월 구독료가 얼마예요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sign up",
+     "ko": "가입하다",
+     "en": "Sign up online."
+    },
+    {
+     "type": "유의어",
+     "word": "support",
+     "ko": "지지하다",
+     "en": "Support the plan."
+    },
+    {
+     "type": "반의어",
+     "word": "unsubscribe",
+     "ko": "구독을 취소하다",
+     "en": "Unsubscribe from emails."
+    },
+    {
+     "type": "파생어",
+     "word": "subscription",
+     "ko": "구독, 구독료",
+     "en": "A yearly subscription."
+    },
+    {
+     "type": "파생어",
+     "word": "subscriber",
+     "ko": "구독자",
+     "en": "New subscribers."
+    },
+    {
+     "type": "연관어",
+     "word": "channel",
+     "ko": "채널",
+     "en": "A cooking channel."
+    }
+   ]
+  },
+  "1266": {
+   "word": "gymnasium",
+   "overview": [
+    "gymnasium은 '체육관'이라는 뜻의 명사입니다.",
+    "the school gymnasium(학교 체육관)처럼 씁니다.",
+    "실내에서 운동이나 체육 수업을 하는 큰 건물이나 방을 뜻하며, 보통 줄여서 gym이라고 합니다.",
+    "독일 등 일부 유럽 나라에서는 대학 진학을 준비하는 '인문계 고등학교'를 뜻하기도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "gym",
+     "en": "Go to the gym.",
+     "ko": "체육관에 가다."
+    },
+    {
+     "word": "sports hall",
+     "en": "A big sports hall.",
+     "ko": "큰 실내 경기장."
+    }
+   ],
+   "etymology": [
+    "gymnasium은 그리스어 gymnasion(운동하는 곳)에서 온 단어입니다.",
+    "gymnazein(맨몸으로 훈련하다)에서 나온 말로, gymnastics(체조)와 같은 가족입니다.",
+    "고대 그리스에서는 젊은이들이 몸과 마음을 함께 단련하던 장소를 가리켰습니다.",
+    "영어에서는 운동과 체육 수업을 하는 실내 공간, 체육관을 뜻하게 되었습니다.",
+    "gymnasium의 핵심 이미지는 '농구 골대와 매트가 놓인 넓은 실내 체육관 🏀🏫'입니다."
+   ],
+   "meanings": [
+    "체육관"
+   ],
+   "examples": [
+    {
+     "en": "We have P.E. class in the gymnasium.",
+     "ko": "우리는 체육관에서 체육 수업을 해요."
+    },
+    {
+     "en": "The school gymnasium was full of parents.",
+     "ko": "학교 체육관은 학부모들로 가득했어요."
+    },
+    {
+     "en": "The basketball game will be held in the gymnasium.",
+     "ko": "농구 경기는 체육관에서 열릴 거예요."
+    },
+    {
+     "en": "My dad goes to the gym every morning.",
+     "ko": "우리 아빠는 매일 아침 헬스장에 가세요."
+    },
+    {
+     "en": "The new gymnasium has a climbing wall.",
+     "ko": "새 체육관에는 인공 암벽이 있어요."
+    },
+    {
+     "en": "Students practiced gymnastics in the gym.",
+     "ko": "학생들은 체육관에서 체조를 연습했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "gym",
+     "ko": "체육관",
+     "en": "Work out at the gym."
+    },
+    {
+     "type": "유의어",
+     "word": "sports center",
+     "ko": "스포츠 센터",
+     "en": "A local sports center."
+    },
+    {
+     "type": "파생어",
+     "word": "gymnastics",
+     "ko": "체조",
+     "en": "Olympic gymnastics."
+    },
+    {
+     "type": "연관어",
+     "word": "exercise",
+     "ko": "운동",
+     "en": "Daily exercise."
+    },
+    {
+     "type": "연관어",
+     "word": "court",
+     "ko": "코트",
+     "en": "A basketball court."
+    },
+    {
+     "type": "연관어",
+     "word": "locker room",
+     "ko": "탈의실",
+     "en": "The boys' locker room."
+    }
+   ]
+  },
+  "2118": {
+   "word": "questionnaire",
+   "overview": [
+    "questionnaire는 '설문지'라는 뜻의 명사입니다.",
+    "fill out a questionnaire(설문지를 작성하다)처럼 씁니다.",
+    "정보나 의견을 모으려고 여러 질문을 적어 놓은 종이나 양식을 뜻합니다.",
+    "survey(설문 조사)와 비슷하지만, questionnaire는 질문이 적힌 '양식' 자체를 가리킵니다."
+   ],
+   "easy": [
+    {
+     "word": "survey",
+     "en": "Take a survey.",
+     "ko": "설문 조사에 응하다."
+    },
+    {
+     "word": "form",
+     "en": "Fill in the form.",
+     "ko": "양식을 작성하다."
+    }
+   ],
+   "etymology": [
+    "questionnaire는 프랑스어 questionnaire(질문 목록)에서 온 단어입니다.",
+    "question(질문)에 '~의 모음'을 뜻하는 -aire가 붙은 말입니다.",
+    "question은 라틴어 quaerere(찾다, 묻다)에서 왔습니다.",
+    "여러 질문을 한데 모아 답을 받는 양식, 즉 설문지를 가리킵니다.",
+    "questionnaire의 핵심 이미지는 '질문 옆 네모 칸에 체크하는 종이 📋☑️'입니다."
+   ],
+   "meanings": [
+    "설문지"
+   ],
+   "examples": [
+    {
+     "en": "Please fill out this questionnaire.",
+     "ko": "이 설문지를 작성해 주세요."
+    },
+    {
+     "en": "The questionnaire has twenty questions.",
+     "ko": "그 설문지에는 질문이 스무 개 있어요."
+    },
+    {
+     "en": "We sent a questionnaire to all parents.",
+     "ko": "우리는 모든 학부모에게 설문지를 보냈어요."
+    },
+    {
+     "en": "The results of the questionnaire were surprising.",
+     "ko": "설문 결과는 놀라웠어요."
+    },
+    {
+     "en": "Answer the questionnaire honestly.",
+     "ko": "설문지에 솔직하게 답해 주세요."
+    },
+    {
+     "en": "The doctor asked me to complete a health questionnaire.",
+     "ko": "의사가 건강 설문지를 작성해 달라고 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "survey",
+     "ko": "설문 조사",
+     "en": "An online survey."
+    },
+    {
+     "type": "유의어",
+     "word": "form",
+     "ko": "양식",
+     "en": "An application form."
+    },
+    {
+     "type": "연관어",
+     "word": "question",
+     "ko": "질문",
+     "en": "Ask a question."
+    },
+    {
+     "type": "연관어",
+     "word": "respond",
+     "ko": "응답하다",
+     "en": "Respond quickly."
+    },
+    {
+     "type": "연관어",
+     "word": "poll",
+     "ko": "여론 조사",
+     "en": "An opinion poll."
+    },
+    {
+     "type": "연관어",
+     "word": "data",
+     "ko": "자료",
+     "en": "Collect data."
+    }
+   ]
+  },
+  "1440": {
+   "word": "integrate",
+   "overview": [
+    "integrate는 '통합하다, 합치다'라는 뜻의 동사입니다.",
+    "integrate A into/with B(A를 B에 통합하다)처럼 씁니다.",
+    "'(사람이 집단에) 어울리다, 융화하다'라는 뜻으로도 씁니다.",
+    "명사 integration(통합), 형용사 integral(필수적인)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "combine",
+     "en": "Combine the parts.",
+     "ko": "부분들을 합치다."
+    },
+    {
+     "word": "fit in",
+     "en": "Fit in at school.",
+     "ko": "학교에 잘 어울리다."
+    }
+   ],
+   "etymology": [
+    "integrate는 라틴어 integrare(온전하게 만들다)에서 온 단어입니다.",
+    "integer(온전한, 손상되지 않은)에서 나온 말로, integrity(진실성), entire(전체의)와 같은 가족입니다.",
+    "'흩어진 것을 모아 하나의 온전한 것으로 만들다'라는 뜻에서 시작되었습니다.",
+    "여러 부분을 하나로 합치는 것, 사람이 새 집단에 자연스럽게 섞이는 것을 가리키게 되었습니다.",
+    "integrate의 핵심 이미지는 '흩어진 조각들이 모여 하나의 원이 되는 것 🔵🧩'입니다."
+   ],
+   "meanings": [
+    "통합하다",
+    "융합하다, 어울리게 하다"
+   ],
+   "examples": [
+    {
+     "en": "The new phone integrates a camera and a music player.",
+     "ko": "새 휴대폰은 카메라와 음악 재생기를 하나로 합쳤어요."
+    },
+    {
+     "en": "It takes time to integrate into a new school.",
+     "ko": "새 학교에 적응하는 데는 시간이 걸려요."
+    },
+    {
+     "en": "We integrated art into our science project.",
+     "ko": "우리는 과학 프로젝트에 미술을 접목했어요."
+    },
+    {
+     "en": "The two systems were integrated last year.",
+     "ko": "두 시스템은 작년에 통합되었어요."
+    },
+    {
+     "en": "The club helps immigrants integrate into the community.",
+     "ko": "그 모임은 이민자들이 지역 사회에 어울리도록 도와줘요."
+    },
+    {
+     "en": "Racial integration was an important goal.",
+     "ko": "인종 통합은 중요한 목표였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "combine",
+     "ko": "결합하다",
+     "en": "Combine ideas."
+    },
+    {
+     "type": "유의어",
+     "word": "incorporate",
+     "ko": "포함하다",
+     "en": "Incorporate feedback."
+    },
+    {
+     "type": "반의어",
+     "word": "separate",
+     "ko": "분리하다",
+     "en": "Separate the groups."
+    },
+    {
+     "type": "반의어",
+     "word": "segregate",
+     "ko": "분리하다, 차별하다",
+     "en": "Segregate by age."
+    },
+    {
+     "type": "파생어",
+     "word": "integration",
+     "ko": "통합",
+     "en": "Social integration."
+    },
+    {
+     "type": "파생어",
+     "word": "integral",
+     "ko": "필수적인",
+     "en": "An integral part."
+    }
+   ]
+  },
+  "431": {
+   "word": "censor",
+   "overview": [
+    "censor는 명사로 '검열관'이라는 뜻입니다.",
+    "film censors(영화 검열관)처럼 씁니다.",
+    "동사로는 '(책·영화·뉴스 등을) 검열하다, 삭제하다'라는 뜻입니다.",
+    "명사 censorship(검열)도 자주 씁니다. 발음이 비슷한 sensor(감지기)와 구별하세요."
+   ],
+   "easy": [
+    {
+     "word": "cut",
+     "en": "Cut a scene.",
+     "ko": "장면을 자르다."
+    },
+    {
+     "word": "block",
+     "en": "Block the website.",
+     "ko": "웹사이트를 막다."
+    }
+   ],
+   "etymology": [
+    "censor는 라틴어 censor(감찰관)에서 온 단어입니다.",
+    "censere(평가하다, 판단하다)에서 나온 말로, census(인구 조사)와 같은 가족입니다.",
+    "고대 로마의 censor는 인구 조사를 하고 시민들의 행실을 감시하던 관리였습니다.",
+    "여기서 책이나 영화의 내용을 살펴보고 문제 되는 부분을 빼는 사람, 또는 그 행동을 가리키게 되었습니다.",
+    "censor의 핵심 이미지는 '문서의 일부를 검은 줄로 지워 버리는 것 ⬛📰'입니다."
+   ],
+   "meanings": [
+    "검열관",
+    "검열하다, 삭제하다"
+   ],
+   "examples": [
+    {
+     "en": "The government censored the news.",
+     "ko": "정부가 뉴스를 검열했어요."
+    },
+    {
+     "en": "Some scenes were censored from the movie.",
+     "ko": "몇몇 장면이 영화에서 삭제되었어요."
+    },
+    {
+     "en": "The censors banned the book.",
+     "ko": "검열관들이 그 책을 금지했어요."
+    },
+    {
+     "en": "Bad words are censored on TV.",
+     "ko": "TV에서는 나쁜 말이 삭제 처리돼요."
+    },
+    {
+     "en": "Many people fight against censorship.",
+     "ko": "많은 사람이 검열에 맞서 싸워요."
+    },
+    {
+     "en": "The letter was heavily censored.",
+     "ko": "그 편지는 많은 부분이 검열로 지워져 있었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ban",
+     "ko": "금지하다",
+     "en": "Ban the book."
+    },
+    {
+     "type": "유의어",
+     "word": "cut",
+     "ko": "삭제하다",
+     "en": "Cut the scene."
+    },
+    {
+     "type": "파생어",
+     "word": "censorship",
+     "ko": "검열",
+     "en": "Internet censorship."
+    },
+    {
+     "type": "연관어",
+     "word": "freedom",
+     "ko": "자유",
+     "en": "Freedom of speech."
+    },
+    {
+     "type": "연관어",
+     "word": "media",
+     "ko": "대중 매체",
+     "en": "The news media."
+    },
+    {
+     "type": "연관어",
+     "word": "sensor",
+     "ko": "감지기",
+     "en": "A motion sensor."
+    }
+   ]
+  },
+  "146": {
+   "word": "approximate",
+   "overview": [
+    "approximate는 형용사로 '대략의, 근사치의'라는 뜻입니다. (발음: a-PROX-i-mit)",
+    "the approximate cost(대략적인 비용)처럼 씁니다.",
+    "동사로는 '(~에) 가까워지다, 근접하다'라는 뜻입니다. (발음: a-PROX-i-mate)",
+    "부사 approximately(대략, 약)를 아주 자주 씁니다. (approximately 100 people, 약 100명)"
+   ],
+   "easy": [
+    {
+     "word": "about",
+     "en": "About ten minutes.",
+     "ko": "약 10분."
+    },
+    {
+     "word": "rough",
+     "en": "A rough guess.",
+     "ko": "대충 짐작."
+    }
+   ],
+   "etymology": [
+    "approximate는 라틴어 approximare(가까이 다가가다)에서 온 단어입니다.",
+    "ad(~으로)와 proximus(가장 가까운)가 합쳐진 말로, proximity(근접)와 같은 가족입니다.",
+    "'정답 가까이 다가간'이라는 뜻에서 시작되었습니다.",
+    "정확하지는 않지만 실제 값에 아주 가까운 수나 양을 가리키게 되었습니다.",
+    "approximate의 핵심 이미지는 '과녁 한가운데 바로 옆에 꽂힌 화살 🎯➡️'입니다."
+   ],
+   "meanings": [
+    "대략의, 근사치의",
+    "흡사한, 유사한",
+    "(~에) 가까워지다, 근접하다"
+   ],
+   "examples": [
+    {
+     "en": "What is the approximate size of the room?",
+     "ko": "그 방의 대략적인 크기가 어떻게 돼요?"
+    },
+    {
+     "en": "The approximate cost is 50,000 won.",
+     "ko": "비용은 대략 5만 원이에요."
+    },
+    {
+     "en": "The trip takes approximately two hours.",
+     "ko": "그 여행은 약 두 시간 걸려요."
+    },
+    {
+     "en": "Give me an approximate answer.",
+     "ko": "대강의 답을 말해 줘요."
+    },
+    {
+     "en": "The model approximates the real building.",
+     "ko": "그 모형은 실제 건물과 흡사해요."
+    },
+    {
+     "en": "Approximately 30 students joined the club.",
+     "ko": "약 30명의 학생이 그 동아리에 가입했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rough",
+     "ko": "대강의",
+     "en": "A rough estimate."
+    },
+    {
+     "type": "유의어",
+     "word": "estimated",
+     "ko": "추정된",
+     "en": "An estimated cost."
+    },
+    {
+     "type": "반의어",
+     "word": "exact",
+     "ko": "정확한",
+     "en": "The exact time."
+    },
+    {
+     "type": "반의어",
+     "word": "precise",
+     "ko": "정밀한",
+     "en": "A precise number."
+    },
+    {
+     "type": "파생어",
+     "word": "approximately",
+     "ko": "대략",
+     "en": "Approximately 5 km."
+    },
+    {
+     "type": "파생어",
+     "word": "approximation",
+     "ko": "근사치",
+     "en": "A close approximation."
+    }
+   ]
+  },
+  "2844": {
+   "word": "utilize",
+   "overview": [
+    "utilize는 '활용하다, 이용하다'라는 뜻의 동사입니다.",
+    "utilize resources(자원을 활용하다)처럼 씁니다.",
+    "use보다 격식 있는 말로, 무언가를 효과적으로 쓸모 있게 쓰는 것을 뜻합니다.",
+    "명사 utilization(활용), utility(유용성, 공공시설)도 씁니다. 영국식 철자는 utilise입니다."
+   ],
+   "easy": [
+    {
+     "word": "use",
+     "en": "Use your time.",
+     "ko": "시간을 쓰다."
+    },
+    {
+     "word": "make use of",
+     "en": "Make use of the space.",
+     "ko": "공간을 활용하다."
+    }
+   ],
+   "etymology": [
+    "utilize는 프랑스어 utiliser(이용하다)에서 온 단어입니다.",
+    "라틴어 utilis(쓸모 있는)에서 나온 말로, uti(사용하다)와 use(사용하다), utility(유용성)와 같은 가족입니다.",
+    "'쓸모 있게 만들다'라는 뜻에서 시작되었습니다.",
+    "가지고 있는 것을 목적에 맞게 효과적으로 사용하는 것을 가리키게 되었습니다.",
+    "utilize의 핵심 이미지는 '공구 상자 속 도구를 알맞게 꺼내 쓰는 것 🧰👍'입니다."
+   ],
+   "meanings": [
+    "활용하다, 이용하다"
+   ],
+   "examples": [
+    {
+     "en": "We should utilize solar energy more.",
+     "ko": "우리는 태양 에너지를 더 활용해야 해요."
+    },
+    {
+     "en": "The school utilizes computers in every class.",
+     "ko": "그 학교는 모든 수업에서 컴퓨터를 활용해요."
+    },
+    {
+     "en": "Utilize your free time wisely.",
+     "ko": "자유 시간을 현명하게 활용하세요."
+    },
+    {
+     "en": "The old factory was utilized as an art gallery.",
+     "ko": "그 오래된 공장은 미술관으로 활용되었어요."
+    },
+    {
+     "en": "Plants utilize sunlight to make food.",
+     "ko": "식물은 햇빛을 이용해 양분을 만들어요."
+    },
+    {
+     "en": "She utilized her language skills at work.",
+     "ko": "그녀는 직장에서 자신의 외국어 실력을 활용했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "use",
+     "ko": "사용하다",
+     "en": "Use a pen."
+    },
+    {
+     "type": "유의어",
+     "word": "employ",
+     "ko": "쓰다, 이용하다",
+     "en": "Employ a method."
+    },
+    {
+     "type": "반의어",
+     "word": "waste",
+     "ko": "낭비하다",
+     "en": "Waste resources."
+    },
+    {
+     "type": "파생어",
+     "word": "utilization",
+     "ko": "활용",
+     "en": "Land utilization."
+    },
+    {
+     "type": "파생어",
+     "word": "utility",
+     "ko": "유용성, 공공시설",
+     "en": "Utility bills."
+    },
+    {
+     "type": "연관어",
+     "word": "resource",
+     "ko": "자원",
+     "en": "Human resources."
+    }
+   ]
+  },
+  "1169": {
+   "word": "furnish",
+   "overview": [
+    "furnish는 '(집·방에) 가구를 비치하다'라는 뜻의 동사입니다.",
+    "a furnished apartment(가구가 딸린 아파트)처럼 씁니다.",
+    "'(필요한 것을) 제공하다, 공급하다'라는 격식 있는 뜻으로도 씁니다. (furnish A with B, A에게 B를 제공하다)",
+    "명사 furniture(가구)와 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "put furniture in",
+     "en": "Put furniture in the room.",
+     "ko": "방에 가구를 들여놓다."
+    },
+    {
+     "word": "provide",
+     "en": "Provide information.",
+     "ko": "정보를 제공하다."
+    }
+   ],
+   "etymology": [
+    "furnish는 옛 프랑스어 furnir(완성하다, 공급하다)에서 온 단어입니다.",
+    "게르만어에서 '준비하다, 앞으로 내놓다'라는 뜻의 말에서 나왔다고 봅니다.",
+    "'필요한 것을 갖추어 채워 주다'라는 뜻에서 시작되었습니다.",
+    "방이나 집에 필요한 가구를 채워 넣는 것, 필요한 것을 공급하는 것을 가리키게 되었습니다.",
+    "furnish의 핵심 이미지는 '빈방에 소파와 책상을 하나씩 들여놓는 것 🛋️🪑'입니다."
+   ],
+   "meanings": [
+    "(가구를) 비치하다",
+    "제공하다, 공급하다"
+   ],
+   "examples": [
+    {
+     "en": "They furnished the room with a bed and a desk.",
+     "ko": "그들은 방에 침대와 책상을 들여놓았어요."
+    },
+    {
+     "en": "The apartment comes fully furnished.",
+     "ko": "그 아파트는 가구가 모두 갖춰져 있어요."
+    },
+    {
+     "en": "The library furnished us with useful books.",
+     "ko": "도서관이 우리에게 유용한 책들을 제공해 주었어요."
+    },
+    {
+     "en": "The room was simply furnished.",
+     "ko": "그 방은 간소하게 꾸며져 있었어요."
+    },
+    {
+     "en": "Please furnish proof of your address.",
+     "ko": "주소 증빙 서류를 제출해 주세요."
+    },
+    {
+     "en": "We need new furniture for the living room.",
+     "ko": "거실에 새 가구가 필요해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "equip",
+     "ko": "갖추다",
+     "en": "Equip the lab."
+    },
+    {
+     "type": "유의어",
+     "word": "provide",
+     "ko": "제공하다",
+     "en": "Provide meals."
+    },
+    {
+     "type": "유의어",
+     "word": "supply",
+     "ko": "공급하다",
+     "en": "Supply water."
+    },
+    {
+     "type": "파생어",
+     "word": "furniture",
+     "ko": "가구",
+     "en": "Wooden furniture."
+    },
+    {
+     "type": "파생어",
+     "word": "furnished",
+     "ko": "가구가 딸린",
+     "en": "A furnished room."
+    },
+    {
+     "type": "연관어",
+     "word": "decorate",
+     "ko": "꾸미다",
+     "en": "Decorate the room."
+    }
+   ]
+  },
+  "27": {
+   "word": "accumulate",
+   "overview": [
+    "accumulate는 '모이다, 쌓이다'라는 뜻의 동사입니다.",
+    "Dust accumulated on the shelf.(선반에 먼지가 쌓였다)처럼 씁니다.",
+    "'(돈·지식을) 모으다, 축적하다'라는 뜻으로도 씁니다.",
+    "명사 accumulation(축적), 형용사 cumulative(누적되는)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "collect",
+     "en": "Collect stamps.",
+     "ko": "우표를 모으다."
+    },
+    {
+     "word": "pile up",
+     "en": "Snow piles up.",
+     "ko": "눈이 쌓이다."
+    }
+   ],
+   "etymology": [
+    "accumulate는 라틴어 accumulare(쌓아 올리다)에서 온 단어입니다.",
+    "ad(~에)와 cumulare(쌓다)가 합쳐진 말로, cumulus(적운, 뭉게구름)와 같은 가족입니다.",
+    "'더미 위에 계속 쌓아 올리다'라는 뜻에서 시작되었습니다.",
+    "시간이 지나며 조금씩 모이고 늘어나는 것을 가리키게 되었습니다.",
+    "accumulate의 핵심 이미지는 '동전이 하나둘 쌓여 탑이 되는 것 🪙🪙🪙'입니다."
+   ],
+   "meanings": [
+    "모이다, 쌓이다, 축적되다",
+    "모으다, 축적하다"
+   ],
+   "examples": [
+    {
+     "en": "Snow accumulated on the roads overnight.",
+     "ko": "밤사이 도로에 눈이 쌓였어요."
+    },
+    {
+     "en": "She accumulated a lot of knowledge through reading.",
+     "ko": "그녀는 독서로 많은 지식을 쌓았어요."
+    },
+    {
+     "en": "Don't let your homework accumulate.",
+     "ko": "숙제가 밀리지 않게 하세요."
+    },
+    {
+     "en": "He accumulated points by playing the game every day.",
+     "ko": "그는 매일 게임을 해서 포인트를 모았어요."
+    },
+    {
+     "en": "Dust accumulates quickly in this room.",
+     "ko": "이 방에는 먼지가 빨리 쌓여요."
+    },
+    {
+     "en": "The accumulation of trash is a big problem.",
+     "ko": "쓰레기가 쌓이는 것은 큰 문제예요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "collect",
+     "ko": "모으다",
+     "en": "Collect coins."
+    },
+    {
+     "type": "유의어",
+     "word": "gather",
+     "ko": "모으다",
+     "en": "Gather information."
+    },
+    {
+     "type": "유의어",
+     "word": "pile up",
+     "ko": "쌓이다",
+     "en": "Bills piled up."
+    },
+    {
+     "type": "반의어",
+     "word": "scatter",
+     "ko": "흩어지다",
+     "en": "The birds scattered."
+    },
+    {
+     "type": "파생어",
+     "word": "accumulation",
+     "ko": "축적",
+     "en": "An accumulation of snow."
+    },
+    {
+     "type": "연관어",
+     "word": "cumulative",
+     "ko": "누적되는",
+     "en": "A cumulative effect."
+    }
+   ]
+  },
+  "2453": {
+   "word": "sociology",
+   "overview": [
+    "sociology는 '사회학'이라는 뜻의 명사입니다.",
+    "study sociology(사회학을 공부하다)처럼 씁니다.",
+    "사회, 집단, 사람들 사이의 관계와 행동을 연구하는 학문을 뜻합니다.",
+    "sociologist(사회학자), sociological(사회학의)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "study of society",
+     "en": "The study of society.",
+     "ko": "사회에 대한 연구."
+    },
+    {
+     "word": "social science",
+     "en": "A social science.",
+     "ko": "사회 과학."
+    }
+   ],
+   "etymology": [
+    "sociology는 라틴어 socius(동료)와 그리스어 logia(학문)가 합쳐진 단어입니다.",
+    "socius는 social(사회의), society(사회)와 같은 가족입니다.",
+    "19세기 프랑스 학자 콩트가 처음 만든 말로 알려져 있습니다.",
+    "사람들이 함께 모여 이루는 사회를 과학적으로 연구하는 학문을 가리킵니다.",
+    "sociology의 핵심 이미지는 '사람들이 어울려 사는 모습을 돋보기로 관찰하는 것 👥🔍'입니다."
+   ],
+   "meanings": [
+    "사회학"
+   ],
+   "examples": [
+    {
+     "en": "My sister is majoring in sociology.",
+     "ko": "우리 언니는 사회학을 전공하고 있어요."
+    },
+    {
+     "en": "Sociology studies how people live in groups.",
+     "ko": "사회학은 사람들이 집단 속에서 어떻게 사는지 연구해요."
+    },
+    {
+     "en": "The book is about the sociology of families.",
+     "ko": "그 책은 가족 사회학에 관한 거예요."
+    },
+    {
+     "en": "She took a sociology class in college.",
+     "ko": "그녀는 대학에서 사회학 수업을 들었어요."
+    },
+    {
+     "en": "A sociologist studied the effects of social media.",
+     "ko": "한 사회학자가 소셜 미디어의 영향을 연구했어요."
+    },
+    {
+     "en": "This is an important sociological question.",
+     "ko": "이것은 중요한 사회학적 질문이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "sociologist",
+     "ko": "사회학자",
+     "en": "A famous sociologist."
+    },
+    {
+     "type": "파생어",
+     "word": "sociological",
+     "ko": "사회학의",
+     "en": "A sociological study."
+    },
+    {
+     "type": "연관어",
+     "word": "society",
+     "ko": "사회",
+     "en": "Modern society."
+    },
+    {
+     "type": "연관어",
+     "word": "psychology",
+     "ko": "심리학",
+     "en": "Child psychology."
+    },
+    {
+     "type": "연관어",
+     "word": "anthropology",
+     "ko": "인류학",
+     "en": "Cultural anthropology."
+    },
+    {
+     "type": "연관어",
+     "word": "social",
+     "ko": "사회의",
+     "en": "Social problems."
+    }
+   ]
+  },
+  "482": {
+   "word": "cite",
+   "overview": [
+    "cite는 '(글·말을) 인용하다'라는 뜻의 동사입니다.",
+    "cite a source(출처를 밝히다)처럼 씁니다.",
+    "'(이유·예로) 들다, 언급하다'라는 뜻으로도 씁니다. (cite an example, 예를 들다)",
+    "명사 citation(인용, 표창장)도 씁니다. 발음이 같은 site(장소), sight(시력)와 구별하세요."
+   ],
+   "easy": [
+    {
+     "word": "quote",
+     "en": "Quote a writer.",
+     "ko": "작가의 말을 인용하다."
+    },
+    {
+     "word": "mention",
+     "en": "Mention a reason.",
+     "ko": "이유를 언급하다."
+    }
+   ],
+   "etymology": [
+    "cite는 라틴어 citare(불러내다, 움직이게 하다)에서 온 단어입니다.",
+    "ciere(움직이게 하다)에서 나온 말로, excite(흥분시키다), recite(암송하다)와 같은 가족입니다.",
+    "원래는 법정에 사람을 '불러내다'라는 뜻이었습니다.",
+    "다른 사람의 말이나 글을 증거로 불러와 쓰는 '인용하다'라는 뜻이 되었습니다.",
+    "cite의 핵심 이미지는 '책 속 문장을 따옴표로 불러오는 것 📖❝❞'입니다."
+   ],
+   "meanings": [
+    "인용하다",
+    "(예·이유로) 들다, 언급하다"
+   ],
+   "examples": [
+    {
+     "en": "Always cite your sources in a report.",
+     "ko": "보고서에는 항상 출처를 밝히세요."
+    },
+    {
+     "en": "She cited a famous poem in her speech.",
+     "ko": "그녀는 연설에서 유명한 시를 인용했어요."
+    },
+    {
+     "en": "He cited bad weather as the reason for being late.",
+     "ko": "그는 늦은 이유로 나쁜 날씨를 들었어요."
+    },
+    {
+     "en": "Can you cite an example?",
+     "ko": "예를 하나 들어 줄 수 있나요?"
+    },
+    {
+     "en": "The study is often cited by scientists.",
+     "ko": "그 연구는 과학자들이 자주 인용해요."
+    },
+    {
+     "en": "Check the citation at the bottom of the page.",
+     "ko": "페이지 아래쪽의 인용 출처를 확인하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "quote",
+     "ko": "인용하다",
+     "en": "Quote Shakespeare."
+    },
+    {
+     "type": "유의어",
+     "word": "mention",
+     "ko": "언급하다",
+     "en": "Mention his name."
+    },
+    {
+     "type": "파생어",
+     "word": "citation",
+     "ko": "인용, 인용문",
+     "en": "Add a citation."
+    },
+    {
+     "type": "연관어",
+     "word": "source",
+     "ko": "출처",
+     "en": "A reliable source."
+    },
+    {
+     "type": "연관어",
+     "word": "reference",
+     "ko": "참고 문헌",
+     "en": "A list of references."
+    },
+    {
+     "type": "연관어",
+     "word": "example",
+     "ko": "예",
+     "en": "Give an example."
+    }
+   ]
+  },
+  "2407": {
+   "word": "simultaneous",
+   "overview": [
+    "simultaneous는 '동시의, 동시에 일어나는'이라는 뜻의 형용사입니다.",
+    "simultaneous translation(동시통역)처럼 씁니다.",
+    "두 가지 이상의 일이 같은 시간에 일어나는 것을 뜻합니다.",
+    "부사 simultaneously(동시에)를 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "at the same time",
+     "en": "At the same time.",
+     "ko": "같은 시간에."
+    },
+    {
+     "word": "together",
+     "en": "Happen together.",
+     "ko": "함께 일어나다."
+    }
+   ],
+   "etymology": [
+    "simultaneous는 라틴어 simul(동시에, 함께)에서 온 단어입니다.",
+    "simul은 similar(비슷한), same(같은)과 뿌리가 이어집니다.",
+    "'같은 순간에 함께 일어나는'이라는 뜻에서 시작되었습니다.",
+    "두 가지 이상의 일이 정확히 같은 때에 벌어지는 것을 가리킵니다.",
+    "simultaneous의 핵심 이미지는 '출발 신호에 모두 동시에 뛰어나가는 것 🏁🏃🏃‍♀️'입니다."
+   ],
+   "meanings": [
+    "동시의, 동시에 일어나는"
+   ],
+   "examples": [
+    {
+     "en": "There were two simultaneous explosions.",
+     "ko": "두 번의 폭발이 동시에 일어났어요."
+    },
+    {
+     "en": "The concert had simultaneous broadcasts in ten countries.",
+     "ko": "그 콘서트는 10개국에 동시에 방송되었어요."
+    },
+    {
+     "en": "She works as a simultaneous interpreter.",
+     "ko": "그녀는 동시통역사로 일해요."
+    },
+    {
+     "en": "The two events were almost simultaneous.",
+     "ko": "두 사건은 거의 동시에 일어났어요."
+    },
+    {
+     "en": "He can play the piano and sing simultaneously.",
+     "ko": "그는 피아노를 치면서 동시에 노래할 수 있어요."
+    },
+    {
+     "en": "Everyone answered simultaneously.",
+     "ko": "모두가 동시에 대답했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "concurrent",
+     "ko": "동시에 일어나는",
+     "en": "Concurrent events."
+    },
+    {
+     "type": "유의어",
+     "word": "synchronized",
+     "ko": "동시에 맞춰진",
+     "en": "Synchronized swimming."
+    },
+    {
+     "type": "반의어",
+     "word": "separate",
+     "ko": "따로따로의",
+     "en": "Separate times."
+    },
+    {
+     "type": "반의어",
+     "word": "consecutive",
+     "ko": "연이은",
+     "en": "Three consecutive days."
+    },
+    {
+     "type": "파생어",
+     "word": "simultaneously",
+     "ko": "동시에",
+     "en": "Talk simultaneously."
+    },
+    {
+     "type": "연관어",
+     "word": "coincide",
+     "ko": "동시에 일어나다",
+     "en": "The events coincide."
+    }
+   ]
+  },
+  "818": {
+   "word": "discriminate",
+   "overview": [
+    "discriminate는 '차별하다'라는 뜻의 동사입니다.",
+    "discriminate against someone(~을 차별하다)처럼 씁니다.",
+    "'구별하다, 식별하다'라는 뜻으로도 씁니다. (discriminate between A and B, A와 B를 구별하다)",
+    "명사 discrimination(차별, 구별)을 자주 씁니다. (racial discrimination, 인종 차별)"
+   ],
+   "easy": [
+    {
+     "word": "treat unfairly",
+     "en": "Treat people unfairly.",
+     "ko": "사람들을 불공평하게 대하다."
+    },
+    {
+     "word": "tell apart",
+     "en": "Tell the colors apart.",
+     "ko": "색깔을 구별하다."
+    }
+   ],
+   "etymology": [
+    "discriminate는 라틴어 discriminare(나누다, 구별하다)에서 온 단어입니다.",
+    "discrimen(구분, 차이)에서 나온 말로, dis(따로)와 cernere(가려내다)가 합쳐졌습니다.",
+    "cernere는 concern(관계하다), certain(확실한)과 같은 가족입니다.",
+    "원래는 '차이를 가려내다'라는 중립적인 뜻이었지만, 사람을 부당하게 나눠 다르게 대하는 '차별하다'라는 뜻으로 많이 쓰이게 되었습니다.",
+    "discriminate의 핵심 이미지는 '선을 그어 사람들을 부당하게 나누는 것 🚫↔️'입니다."
+   ],
+   "meanings": [
+    "차별하다",
+    "구별하다, 식별하다"
+   ],
+   "examples": [
+    {
+     "en": "It is wrong to discriminate against people because of their race.",
+     "ko": "인종을 이유로 사람을 차별하는 것은 잘못이에요."
+    },
+    {
+     "en": "The law says companies cannot discriminate against women.",
+     "ko": "법에 따르면 회사는 여성을 차별할 수 없어요."
+    },
+    {
+     "en": "Babies can discriminate between different voices.",
+     "ko": "아기들은 서로 다른 목소리를 구별할 수 있어요."
+    },
+    {
+     "en": "Some people cannot discriminate between red and green.",
+     "ko": "어떤 사람들은 빨간색과 초록색을 구별하지 못해요."
+    },
+    {
+     "en": "We should never discriminate based on age.",
+     "ko": "나이를 기준으로 차별해서는 절대 안 돼요."
+    },
+    {
+     "en": "The school has a policy against discrimination.",
+     "ko": "그 학교에는 차별 금지 정책이 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "distinguish",
+     "ko": "구별하다",
+     "en": "Distinguish right from wrong."
+    },
+    {
+     "type": "유의어",
+     "word": "differentiate",
+     "ko": "구별하다",
+     "en": "Differentiate the two."
+    },
+    {
+     "type": "반의어",
+     "word": "include",
+     "ko": "포용하다",
+     "en": "Include everyone."
+    },
+    {
+     "type": "파생어",
+     "word": "discrimination",
+     "ko": "차별",
+     "en": "Fight discrimination."
+    },
+    {
+     "type": "연관어",
+     "word": "prejudice",
+     "ko": "편견",
+     "en": "Overcome prejudice."
+    },
+    {
+     "type": "연관어",
+     "word": "equality",
+     "ko": "평등",
+     "en": "Gender equality."
+    }
+   ]
+  },
+  "817": {
+   "word": "discourse",
+   "overview": [
+    "discourse는 '담화, 담론'이라는 뜻의 명사입니다.",
+    "political discourse(정치 담론)처럼 씁니다.",
+    "어떤 주제에 대한 진지한 대화나 토론, 또는 사회에서 오가는 말과 글 전체를 뜻합니다.",
+    "'강연, 연설'이라는 뜻도 있고, 동사로 '(길게) 이야기하다, 논하다'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "discussion",
+     "en": "A long discussion.",
+     "ko": "긴 논의."
+    },
+    {
+     "word": "talk",
+     "en": "Give a talk.",
+     "ko": "강연을 하다."
+    }
+   ],
+   "etymology": [
+    "discourse는 라틴어 discursus(이리저리 뛰어다님)에서 온 단어입니다.",
+    "dis(여기저기)와 currere(달리다)가 합쳐진 말로, current(흐름), course(과정)와 같은 가족입니다.",
+    "원래는 생각이 이리저리 오가며 이어지는 것을 뜻했습니다.",
+    "생각을 주고받는 긴 대화나 토론, 연설을 가리키게 되었습니다.",
+    "discourse의 핵심 이미지는 '생각과 말이 여러 사람 사이를 오가는 것 💬🔄💬'입니다."
+   ],
+   "meanings": [
+    "담론, 담화, 토론",
+    "강연, 연설",
+    "(길게) 논하다"
+   ],
+   "examples": [
+    {
+     "en": "Social media has changed public discourse.",
+     "ko": "소셜 미디어는 공적 담론을 바꾸어 놓았어요."
+    },
+    {
+     "en": "The professor gave a long discourse on history.",
+     "ko": "교수님은 역사에 관해 긴 강연을 하셨어요."
+    },
+    {
+     "en": "We need more respectful political discourse.",
+     "ko": "우리에게는 더 서로를 존중하는 정치 토론이 필요해요."
+    },
+    {
+     "en": "The book is a discourse on freedom.",
+     "ko": "그 책은 자유에 관한 논설이에요."
+    },
+    {
+     "en": "He discoursed at length about his travels.",
+     "ko": "그는 자기 여행에 대해 길게 이야기했어요."
+    },
+    {
+     "en": "Students study discourse in linguistics class.",
+     "ko": "학생들은 언어학 수업에서 담화를 공부해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "discussion",
+     "ko": "논의",
+     "en": "An open discussion."
+    },
+    {
+     "type": "유의어",
+     "word": "dialogue",
+     "ko": "대화",
+     "en": "A peaceful dialogue."
+    },
+    {
+     "type": "유의어",
+     "word": "speech",
+     "ko": "연설",
+     "en": "Give a speech."
+    },
+    {
+     "type": "연관어",
+     "word": "debate",
+     "ko": "토론",
+     "en": "A heated debate."
+    },
+    {
+     "type": "연관어",
+     "word": "lecture",
+     "ko": "강의",
+     "en": "Attend a lecture."
+    },
+    {
+     "type": "연관어",
+     "word": "conversation",
+     "ko": "대화",
+     "en": "A friendly conversation."
+    }
+   ]
   }
  }
 }
