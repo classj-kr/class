@@ -15403,6 +15403,1928 @@
      "en": "Genes and DNA."
     }
    ]
+  },
+  "1166": {
+   "word": "fundamental",
+   "overview": [
+    "fundamental은 '근본적인, 기본적인'이라는 뜻의 형용사입니다.",
+    "a fundamental change(근본적인 변화)처럼 씁니다.",
+    "명사로는 '기본 원리, 기초'라는 뜻이며, 보통 복수형 fundamentals로 씁니다.",
+    "부사 fundamentally(근본적으로)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "basic",
+     "en": "Basic rules.",
+     "ko": "기본 규칙."
+    },
+    {
+     "word": "essential",
+     "en": "An essential skill.",
+     "ko": "필수적인 기술."
+    }
+   ],
+   "etymology": [
+    "fundamental은 라틴어 fundamentum(토대, 기초)에서 온 단어입니다.",
+    "fundus(바닥)에서 나온 말로, foundation(기초, 토대)과 같은 가족입니다.",
+    "'건물을 받치는 맨 아래 토대의'라는 뜻에서 시작되었습니다.",
+    "어떤 것의 가장 밑바탕이 되는 중요한 부분을 가리키게 되었습니다.",
+    "fundamental의 핵심 이미지는 '모든 것을 떠받치는 맨 아래 주춧돌 🧱'입니다."
+   ],
+   "meanings": [
+    "근본적인, 기본적인",
+    "기본 원리"
+   ],
+   "examples": [
+    {
+     "en": "Reading is a fundamental skill.",
+     "ko": "읽기는 기본적인 능력이에요."
+    },
+    {
+     "en": "Education is a fundamental right.",
+     "ko": "교육은 기본적인 권리예요."
+    },
+    {
+     "en": "There is a fundamental difference between the two ideas.",
+     "ko": "두 생각 사이에는 근본적인 차이가 있어요."
+    },
+    {
+     "en": "Let's review the fundamentals of math.",
+     "ko": "수학의 기본 원리를 복습해 봅시다."
+    },
+    {
+     "en": "The new leader made fundamental changes.",
+     "ko": "새 지도자는 근본적인 변화를 이뤄 냈어요."
+    },
+    {
+     "en": "Practice the fundamentals before trying hard moves.",
+     "ko": "어려운 동작을 해 보기 전에 기본기를 연습하세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "basic",
+     "ko": "기본적인",
+     "en": "Basic knowledge."
+    },
+    {
+     "type": "유의어",
+     "word": "essential",
+     "ko": "필수적인",
+     "en": "Essential nutrients."
+    },
+    {
+     "type": "파생어",
+     "word": "fundamentally",
+     "ko": "근본적으로",
+     "en": "Fundamentally different."
+    },
+    {
+     "type": "연관어",
+     "word": "foundation",
+     "ko": "토대",
+     "en": "A strong foundation."
+    },
+    {
+     "type": "연관어",
+     "word": "core",
+     "ko": "핵심",
+     "en": "Core values."
+    },
+    {
+     "type": "연관어",
+     "word": "principle",
+     "ko": "원리",
+     "en": "A basic principle."
+    }
+   ]
+  },
+  "2845": {
+   "word": "utter",
+   "overview": [
+    "utter는 형용사로 '완전한, 철저한'이라는 뜻입니다.",
+    "utter silence(완전한 정적)처럼 씁니다. 주로 부정적인 상황을 강조합니다. (utter nonsense)",
+    "동사로는 '(소리·말을) 입 밖에 내다, 발하다'라는 뜻입니다. (He didn't utter a word.)",
+    "부사 utterly(완전히), 명사 utterance(발언)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "complete",
+     "en": "Complete silence.",
+     "ko": "완전한 침묵."
+    },
+    {
+     "word": "say",
+     "en": "Say a word.",
+     "ko": "한마디 하다."
+    }
+   ],
+   "etymology": [
+    "utter는 고대 영어 utera(더 바깥의)에서 온 단어입니다.",
+    "out(밖)의 비교급 형태로, outer(바깥쪽의)와 같은 뿌리입니다.",
+    "'끝의 끝, 맨 바깥까지 간'이라는 뜻에서 '완전한, 철저한'이라는 형용사가 되었습니다.",
+    "동사 utter는 '밖으로 내보내다'에서 '말을 입 밖으로 내다'라는 뜻이 되었습니다.",
+    "utter의 핵심 이미지는 '끝의 끝까지 간 완전함, 그리고 입 밖으로 나온 말 🗣️'입니다."
+   ],
+   "meanings": [
+    "철저한, 완전한",
+    "(소리·말을) 입 밖에 내다"
+   ],
+   "examples": [
+    {
+     "en": "The room was in utter silence.",
+     "ko": "방 안은 완전히 조용했어요."
+    },
+    {
+     "en": "That's utter nonsense!",
+     "ko": "그건 완전히 말도 안 되는 소리예요!"
+    },
+    {
+     "en": "He didn't utter a single word all day.",
+     "ko": "그는 하루 종일 한마디도 하지 않았어요."
+    },
+    {
+     "en": "The party was an utter disaster.",
+     "ko": "그 파티는 완전히 엉망이었어요."
+    },
+    {
+     "en": "She was utterly exhausted after the race.",
+     "ko": "그녀는 경주 후에 완전히 지쳤어요."
+    },
+    {
+     "en": "The baby uttered its first word.",
+     "ko": "아기가 첫 단어를 말했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "complete",
+     "ko": "완전한",
+     "en": "A complete failure."
+    },
+    {
+     "type": "유의어",
+     "word": "total",
+     "ko": "전적인",
+     "en": "Total darkness."
+    },
+    {
+     "type": "파생어",
+     "word": "utterly",
+     "ko": "완전히",
+     "en": "Utterly amazing."
+    },
+    {
+     "type": "파생어",
+     "word": "utterance",
+     "ko": "발언",
+     "en": "A short utterance."
+    },
+    {
+     "type": "연관어",
+     "word": "speak",
+     "ko": "말하다",
+     "en": "Speak clearly."
+    },
+    {
+     "type": "연관어",
+     "word": "absolute",
+     "ko": "절대적인",
+     "en": "Absolute silence."
+    }
+   ]
+  },
+  "2578": {
+   "word": "substitute",
+   "overview": [
+    "substitute는 '대신하다, 대체하다'라는 뜻의 동사입니다.",
+    "substitute A for B(B 대신 A를 쓰다)처럼 씁니다.",
+    "명사로는 '대체물, 대리인, 교체 선수'라는 뜻입니다.",
+    "a substitute teacher(대리 교사)라는 표현도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "replace",
+     "en": "Replace the battery.",
+     "ko": "배터리를 교체하다."
+    },
+    {
+     "word": "stand-in",
+     "en": "A stand-in actor.",
+     "ko": "대역 배우."
+    }
+   ],
+   "etymology": [
+    "substitute는 라틴어 substituere(아래에 세우다, 대신 두다)에서 온 단어입니다.",
+    "sub(아래에, 대신)와 statuere(세우다)가 합쳐진 말로, statue(조각상), institute(기관)와 같은 가족입니다.",
+    "'원래 것 자리에 다른 것을 대신 세우다'라는 뜻이 그대로 이어져 왔습니다.",
+    "물건이든 사람이든 원래 것의 역할을 대신하는 것을 가리킵니다.",
+    "substitute의 핵심 이미지는 '빈자리에 대신 들어가 서는 것 🔄'입니다."
+   ],
+   "meanings": [
+    "대신하다, 대체하다",
+    "대신하는 것, 대리자, 대리인"
+   ],
+   "examples": [
+    {
+     "en": "You can substitute honey for sugar.",
+     "ko": "설탕 대신 꿀을 써도 돼요."
+    },
+    {
+     "en": "We had a substitute teacher today.",
+     "ko": "오늘은 대리 선생님이 오셨어요."
+    },
+    {
+     "en": "The coach sent in a substitute.",
+     "ko": "감독은 교체 선수를 투입했어요."
+    },
+    {
+     "en": "There is no substitute for hard work.",
+     "ko": "노력을 대신할 수 있는 것은 없어요."
+    },
+    {
+     "en": "She substituted for her sick friend in the play.",
+     "ko": "그녀는 연극에서 아픈 친구를 대신해 출연했어요."
+    },
+    {
+     "en": "Tofu is a good substitute for meat.",
+     "ko": "두부는 고기를 대신하기 좋은 음식이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "replace",
+     "ko": "대체하다",
+     "en": "Replace the tire."
+    },
+    {
+     "type": "유의어",
+     "word": "alternative",
+     "ko": "대안",
+     "en": "A good alternative."
+    },
+    {
+     "type": "연관어",
+     "word": "instead",
+     "ko": "대신에",
+     "en": "Use this instead."
+    },
+    {
+     "type": "연관어",
+     "word": "swap",
+     "ko": "바꾸다",
+     "en": "Swap seats."
+    },
+    {
+     "type": "연관어",
+     "word": "backup",
+     "ko": "예비",
+     "en": "A backup plan."
+    },
+    {
+     "type": "연관어",
+     "word": "original",
+     "ko": "원래의 것",
+     "en": "The original version."
+    }
+   ]
+  },
+  "2496": {
+   "word": "splash",
+   "overview": [
+    "splash는 '(물을) 튀기다, 철벅거리다'라는 뜻의 동사입니다.",
+    "splash water on your face(얼굴에 물을 끼얹다)처럼 씁니다.",
+    "명사로는 '첨벙 소리, 물보라, (튄) 얼룩'이라는 뜻입니다.",
+    "make a splash(큰 화제가 되다)라는 표현도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "spray",
+     "en": "Spray water.",
+     "ko": "물을 뿌리다."
+    },
+    {
+     "word": "spill",
+     "en": "Spill some juice.",
+     "ko": "주스를 좀 흘리다."
+    }
+   ],
+   "etymology": [
+    "splash는 plash(첨벙 소리)라는 의성어에 s를 붙여 만든 단어입니다.",
+    "물이 튈 때 나는 소리를 흉내 낸 말입니다.",
+    "'물이 첨벙 하고 사방으로 튀다'라는 뜻이 그대로 이어져 왔습니다.",
+    "튄 물처럼 여기저기 묻은 얼룩, 사람들의 눈길을 확 끄는 화제로도 뜻이 넓어졌습니다.",
+    "splash의 핵심 이미지는 '첨벙 하고 사방으로 튀는 물방울 💦'입니다."
+   ],
+   "meanings": [
+    "물을 튀기다, 철벅거리다",
+    "물보라, 얼룩"
+   ],
+   "examples": [
+    {
+     "en": "The kids splashed in the pool all afternoon.",
+     "ko": "아이들은 오후 내내 수영장에서 첨벙거렸어요."
+    },
+    {
+     "en": "A car drove by and splashed me with water.",
+     "ko": "차가 지나가면서 저한테 물을 튀겼어요."
+    },
+    {
+     "en": "I heard a big splash from the lake.",
+     "ko": "호수에서 크게 첨벙 하는 소리가 들렸어요."
+    },
+    {
+     "en": "She splashed cold water on her face.",
+     "ko": "그녀는 얼굴에 찬물을 끼얹었어요."
+    },
+    {
+     "en": "There's a splash of paint on your shirt.",
+     "ko": "셔츠에 페인트가 튀어 있어요."
+    },
+    {
+     "en": "The new movie made a big splash.",
+     "ko": "그 새 영화는 큰 화제를 모았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "spray",
+     "ko": "뿌리다",
+     "en": "Spray the plants."
+    },
+    {
+     "type": "연관어",
+     "word": "splatter",
+     "ko": "튀기다",
+     "en": "Paint splatters."
+    },
+    {
+     "type": "연관어",
+     "word": "wave",
+     "ko": "파도",
+     "en": "Big waves."
+    },
+    {
+     "type": "연관어",
+     "word": "pool",
+     "ko": "수영장",
+     "en": "Jump in the pool."
+    },
+    {
+     "type": "연관어",
+     "word": "wet",
+     "ko": "젖은",
+     "en": "Wet clothes."
+    },
+    {
+     "type": "연관어",
+     "word": "puddle",
+     "ko": "웅덩이",
+     "en": "Jump in a puddle."
+    }
+   ]
+  },
+  "193": {
+   "word": "authentic",
+   "overview": [
+    "authentic은 '진짜의, 진품인'이라는 뜻의 형용사입니다.",
+    "an authentic painting(진품 그림)처럼 씁니다.",
+    "'(음식·문화가) 정통의, 본토의'라는 뜻으로도 자주 씁니다. (authentic Italian food)",
+    "'(사람이) 진정성 있는'이라는 뜻도 있고, 명사 authenticity(진정성)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "real",
+     "en": "Real leather.",
+     "ko": "진짜 가죽."
+    },
+    {
+     "word": "original",
+     "en": "The original painting.",
+     "ko": "원본 그림."
+    }
+   ],
+   "etymology": [
+    "authentic은 그리스어 authentikos(원본의, 권위 있는)에서 온 단어입니다.",
+    "authentes(스스로 해낸 사람, 주인)에서 나온 말입니다.",
+    "'직접 만든 사람에게서 나온 원래의 것'이라는 뜻에서 시작되었습니다.",
+    "가짜나 흉내가 아닌 진짜, 본래 방식 그대로의 것을 가리키게 되었습니다.",
+    "authentic의 핵심 이미지는 '흉내가 아닌 원래 그대로의 진짜 ✅'입니다."
+   ],
+   "meanings": [
+    "진본(진품)인",
+    "정통의, 진정성 있는"
+   ],
+   "examples": [
+    {
+     "en": "Experts said the painting was authentic.",
+     "ko": "전문가들은 그 그림이 진품이라고 했어요."
+    },
+    {
+     "en": "This restaurant serves authentic Mexican food.",
+     "ko": "이 식당은 정통 멕시코 음식을 내요."
+    },
+    {
+     "en": "Is this signature authentic?",
+     "ko": "이 서명은 진짜인가요?"
+    },
+    {
+     "en": "The museum has authentic tools from the Stone Age.",
+     "ko": "그 박물관에는 석기 시대의 진짜 도구들이 있어요."
+    },
+    {
+     "en": "Fans love her because she is authentic.",
+     "ko": "팬들은 그녀가 꾸밈없어서 좋아해요."
+    },
+    {
+     "en": "We wanted an authentic local experience.",
+     "ko": "우리는 진짜 현지 체험을 원했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "genuine",
+     "ko": "진짜의",
+     "en": "A genuine smile."
+    },
+    {
+     "type": "유의어",
+     "word": "real",
+     "ko": "진짜의",
+     "en": "A real diamond."
+    },
+    {
+     "type": "반의어",
+     "word": "fake",
+     "ko": "가짜의",
+     "en": "A fake watch."
+    },
+    {
+     "type": "파생어",
+     "word": "authenticity",
+     "ko": "진정성",
+     "en": "Check its authenticity."
+    },
+    {
+     "type": "연관어",
+     "word": "original",
+     "ko": "원본의",
+     "en": "The original copy."
+    },
+    {
+     "type": "연관어",
+     "word": "traditional",
+     "ko": "전통적인",
+     "en": "Traditional dress."
+    }
+   ]
+  },
+  "2596": {
+   "word": "summit",
+   "overview": [
+    "summit은 '(산의) 정상, 꼭대기'라는 뜻의 명사입니다.",
+    "reach the summit(정상에 오르다)처럼 씁니다.",
+    "'정상 회담'이라는 뜻으로도 아주 자주 씁니다. (a summit meeting)",
+    "'(성공의) 절정'이라는 비유적인 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "top",
+     "en": "The top of the mountain.",
+     "ko": "산꼭대기."
+    },
+    {
+     "word": "peak",
+     "en": "A snowy peak.",
+     "ko": "눈 덮인 봉우리."
+    }
+   ],
+   "etymology": [
+    "summit은 라틴어 summum(가장 높은 곳)에서 온 단어입니다.",
+    "summus(가장 높은)에서 나온 말로, sum(합계, '맨 위에 적는 총합')과 뿌리가 이어집니다.",
+    "'산의 가장 높은 꼭대기'라는 뜻이 그대로 이어져 왔습니다.",
+    "각 나라의 가장 높은 지도자들이 모이는 '정상 회담'이라는 뜻으로도 넓어졌습니다.",
+    "summit의 핵심 이미지는 '더 오를 곳 없는 가장 높은 꼭대기 🏔️'입니다."
+   ],
+   "meanings": [
+    "정상",
+    "수뇌 회담, 정상 회담"
+   ],
+   "examples": [
+    {
+     "en": "We finally reached the summit of the mountain.",
+     "ko": "우리는 마침내 산 정상에 도착했어요."
+    },
+    {
+     "en": "The view from the summit was amazing.",
+     "ko": "정상에서 본 경치는 정말 멋졌어요."
+    },
+    {
+     "en": "World leaders met at the climate summit.",
+     "ko": "세계 지도자들이 기후 정상 회담에서 만났어요."
+    },
+    {
+     "en": "The two presidents held a summit in Seoul.",
+     "ko": "두 대통령은 서울에서 정상 회담을 열었어요."
+    },
+    {
+     "en": "It took six hours to climb to the summit.",
+     "ko": "정상까지 오르는 데 여섯 시간이 걸렸어요."
+    },
+    {
+     "en": "Winning the gold medal was the summit of her career.",
+     "ko": "금메달은 그녀 경력의 절정이었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "peak",
+     "ko": "봉우리",
+     "en": "A mountain peak."
+    },
+    {
+     "type": "유의어",
+     "word": "top",
+     "ko": "꼭대기",
+     "en": "The top shelf."
+    },
+    {
+     "type": "반의어",
+     "word": "base",
+     "ko": "기슭, 바닥",
+     "en": "The base of the mountain."
+    },
+    {
+     "type": "연관어",
+     "word": "climb",
+     "ko": "오르다",
+     "en": "Climb a hill."
+    },
+    {
+     "type": "연관어",
+     "word": "meeting",
+     "ko": "회의",
+     "en": "A team meeting."
+    },
+    {
+     "type": "연관어",
+     "word": "leader",
+     "ko": "지도자",
+     "en": "World leaders."
+    }
+   ]
+  },
+  "2093": {
+   "word": "province",
+   "overview": [
+    "province는 '(행정 구역) 주, 도'라는 뜻의 명사입니다.",
+    "Gyeonggi Province(경기도)처럼 씁니다.",
+    "복수형 the provinces는 '(수도가 아닌) 지방'을 뜻합니다.",
+    "'(지식·활동의) 분야, 영역'이라는 뜻도 있고, 형용사 provincial(지방의)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "region",
+     "en": "A northern region.",
+     "ko": "북부 지역."
+    },
+    {
+     "word": "state",
+     "en": "A large state.",
+     "ko": "큰 주."
+    }
+   ],
+   "etymology": [
+    "province는 라틴어 provincia(로마가 다스리는 바깥 영토)에서 온 단어입니다.",
+    "원래는 고대 로마가 정복해 총독을 보내 다스리던 이탈리아 밖의 땅을 뜻했습니다.",
+    "'나라 안의 큰 행정 구역'이라는 뜻으로 넓어졌습니다.",
+    "수도와 대비되는 '지방', 그리고 누군가가 맡은 '분야'라는 뜻도 생겼습니다.",
+    "province의 핵심 이미지는 '나라 지도 위에 나뉜 큰 행정 구역 🗺️'입니다."
+   ],
+   "meanings": [
+    "지방, 지역",
+    "(행정 구역) 주, 도",
+    "(역사) 옛 로마의 속주"
+   ],
+   "examples": [
+    {
+     "en": "Jeju is a special self-governing province.",
+     "ko": "제주는 특별자치도예요."
+    },
+    {
+     "en": "Canada has ten provinces.",
+     "ko": "캐나다에는 열 개의 주가 있어요."
+    },
+    {
+     "en": "My grandparents live in a small town in the province.",
+     "ko": "우리 조부모님은 지방의 작은 도시에 사세요."
+    },
+    {
+     "en": "The province is famous for its apples.",
+     "ko": "그 지방은 사과로 유명해요."
+    },
+    {
+     "en": "Spain was once a province of Rome.",
+     "ko": "스페인은 한때 로마의 속주였어요."
+    },
+    {
+     "en": "History is not really my province.",
+     "ko": "역사는 제 전문 분야가 아니에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "region",
+     "ko": "지역",
+     "en": "A mountain region."
+    },
+    {
+     "type": "유의어",
+     "word": "state",
+     "ko": "주",
+     "en": "The state of Texas."
+    },
+    {
+     "type": "파생어",
+     "word": "provincial",
+     "ko": "지방의",
+     "en": "A provincial town."
+    },
+    {
+     "type": "연관어",
+     "word": "capital",
+     "ko": "수도",
+     "en": "The capital city."
+    },
+    {
+     "type": "연관어",
+     "word": "county",
+     "ko": "군",
+     "en": "A small county."
+    },
+    {
+     "type": "연관어",
+     "word": "territory",
+     "ko": "영토",
+     "en": "National territory."
+    }
+   ]
+  },
+  "2625": {
+   "word": "swift",
+   "overview": [
+    "swift는 '재빠른, 신속한'이라는 뜻의 형용사입니다.",
+    "a swift reply(신속한 답장)처럼 씁니다.",
+    "움직임이 빠르거나 일이 지체 없이 이루어지는 것을 뜻합니다.",
+    "명사로는 제비와 비슷한 새 '칼새'를 가리키고, 부사 swiftly(재빨리)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "quick",
+     "en": "A quick answer.",
+     "ko": "빠른 대답."
+    },
+    {
+     "word": "fast",
+     "en": "A fast runner.",
+     "ko": "빠른 주자."
+    }
+   ],
+   "etymology": [
+    "swift는 고대 영어 swift(빠른)에서 온 단어입니다.",
+    "sweep(쓸다)과 같은 게르만 말 뿌리에서 나왔다고 봅니다.",
+    "'휙 하고 빠르게 지나가는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "매우 빠르게 나는 새 '칼새'의 이름으로도 쓰입니다.",
+    "swift의 핵심 이미지는 '바람처럼 휙 스쳐 가는 빠름 🦅'입니다."
+   ],
+   "meanings": [
+    "재빠르다, 신속하다"
+   ],
+   "examples": [
+    {
+     "en": "The police took swift action.",
+     "ko": "경찰은 신속하게 조치했어요."
+    },
+    {
+     "en": "The deer was swift and escaped the wolf.",
+     "ko": "사슴은 재빨라서 늑대에게서 도망쳤어요."
+    },
+    {
+     "en": "Thank you for your swift reply.",
+     "ko": "빠른 답장 감사합니다."
+    },
+    {
+     "en": "The river is swift here, so be careful.",
+     "ko": "여기는 강물이 빠르니 조심하세요."
+    },
+    {
+     "en": "She moved swiftly to catch the ball.",
+     "ko": "그녀는 공을 잡으려고 재빨리 움직였어요."
+    },
+    {
+     "en": "The team won a swift victory.",
+     "ko": "그 팀은 순식간에 승리를 거뒀어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "quick",
+     "ko": "빠른",
+     "en": "A quick lunch."
+    },
+    {
+     "type": "유의어",
+     "word": "rapid",
+     "ko": "급속한",
+     "en": "Rapid growth."
+    },
+    {
+     "type": "반의어",
+     "word": "slow",
+     "ko": "느린",
+     "en": "A slow turtle."
+    },
+    {
+     "type": "파생어",
+     "word": "swiftly",
+     "ko": "재빨리",
+     "en": "Move swiftly."
+    },
+    {
+     "type": "연관어",
+     "word": "speed",
+     "ko": "속도",
+     "en": "High speed."
+    },
+    {
+     "type": "연관어",
+     "word": "prompt",
+     "ko": "즉각적인",
+     "en": "A prompt response."
+    }
+   ]
+  },
+  "2772": {
+   "word": "transform",
+   "overview": [
+    "transform은 '(완전히) 바꾸다, 변형시키다'라는 뜻의 동사입니다.",
+    "transform A into B(A를 B로 바꾸다)처럼 씁니다.",
+    "겉모습이나 성질을 크게, 완전히 바꾸는 것을 뜻합니다.",
+    "명사 transformation(변신, 변화)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "change",
+     "en": "Change completely.",
+     "ko": "완전히 바뀌다."
+    },
+    {
+     "word": "turn into",
+     "en": "Turn into a butterfly.",
+     "ko": "나비로 변하다."
+    }
+   ],
+   "etymology": [
+    "transform은 라틴어 transformare(모양을 바꾸다)에서 온 단어입니다.",
+    "trans(건너, 넘어)와 formare(모양을 만들다)가 합쳐진 말로, form(형태)과 같은 가족입니다.",
+    "'원래 모양을 넘어 새로운 모양으로 바꾸다'라는 뜻이 그대로 이어져 왔습니다.",
+    "작은 변화가 아니라 완전히 다른 모습으로 바뀌는 것을 가리킵니다.",
+    "transform의 핵심 이미지는 '애벌레가 나비가 되듯 완전히 변신하는 것 🐛➡️🦋'입니다."
+   ],
+   "meanings": [
+    "변형시키다, 변모시키다, (외관·모양을) 일변시키다"
+   ],
+   "examples": [
+    {
+     "en": "A caterpillar transforms into a butterfly.",
+     "ko": "애벌레는 나비로 변해요."
+    },
+    {
+     "en": "The old factory was transformed into a museum.",
+     "ko": "오래된 공장은 박물관으로 탈바꿈했어요."
+    },
+    {
+     "en": "The internet has transformed our lives.",
+     "ko": "인터넷은 우리 삶을 완전히 바꿔 놓았어요."
+    },
+    {
+     "en": "Paint and new furniture transformed the room.",
+     "ko": "페인트와 새 가구로 방이 완전히 달라졌어요."
+    },
+    {
+     "en": "Reading can transform the way you think.",
+     "ko": "독서는 생각하는 방식을 바꿀 수 있어요."
+    },
+    {
+     "en": "Her transformation after the training was amazing.",
+     "ko": "훈련 후 그녀의 변화는 놀라웠어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "change",
+     "ko": "바꾸다",
+     "en": "Change clothes."
+    },
+    {
+     "type": "유의어",
+     "word": "convert",
+     "ko": "전환하다",
+     "en": "Convert energy."
+    },
+    {
+     "type": "파생어",
+     "word": "transformation",
+     "ko": "변화, 변신",
+     "en": "A total transformation."
+    },
+    {
+     "type": "연관어",
+     "word": "turn into",
+     "ko": "~로 변하다",
+     "en": "Turn into ice."
+    },
+    {
+     "type": "연관어",
+     "word": "improve",
+     "ko": "개선하다",
+     "en": "Improve the city."
+    },
+    {
+     "type": "연관어",
+     "word": "form",
+     "ko": "형태",
+     "en": "A new form."
+    }
+   ]
+  },
+  "1679": {
+   "word": "microphone",
+   "overview": [
+    "microphone은 '마이크'라는 뜻의 명사입니다.",
+    "speak into the microphone(마이크에 대고 말하다)처럼 씁니다.",
+    "소리를 전기 신호로 바꾸어 크게 하거나 녹음하는 장치입니다.",
+    "구어에서는 줄여서 mic(마이크)라고도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "mic",
+     "en": "Hold the mic.",
+     "ko": "마이크를 잡다."
+    },
+    {
+     "word": "sound device",
+     "en": "A sound device.",
+     "ko": "소리 장치."
+    }
+   ],
+   "etymology": [
+    "microphone은 그리스어 mikros(작은)와 phone(소리)이 합쳐진 단어입니다.",
+    "microscope(현미경), telephone(전화)과 같은 뿌리의 말들입니다.",
+    "원래는 '작은 소리를 크게 들리게 하는 장치'라는 뜻으로 만들어졌습니다.",
+    "지금은 소리를 받아 확대하거나 녹음하는 장치를 가리킵니다.",
+    "microphone의 핵심 이미지는 '작은 목소리도 크게 퍼뜨려 주는 마이크 🎤'입니다."
+   ],
+   "meanings": [
+    "마이크로폰, 마이크"
+   ],
+   "examples": [
+    {
+     "en": "Please speak into the microphone.",
+     "ko": "마이크에 대고 말씀해 주세요."
+    },
+    {
+     "en": "The singer held the microphone close.",
+     "ko": "가수는 마이크를 가까이 댔어요."
+    },
+    {
+     "en": "My laptop has a built-in microphone.",
+     "ko": "제 노트북에는 마이크가 내장되어 있어요."
+    },
+    {
+     "en": "Is the microphone on?",
+     "ko": "마이크 켜져 있어요?"
+    },
+    {
+     "en": "Turn off your microphone during the online class.",
+     "ko": "온라인 수업 중에는 마이크를 꺼 주세요."
+    },
+    {
+     "en": "He tapped the microphone to test it.",
+     "ko": "그는 마이크를 톡톡 두드려 확인했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "mic",
+     "ko": "마이크",
+     "en": "Pass the mic."
+    },
+    {
+     "type": "연관어",
+     "word": "speaker",
+     "ko": "스피커",
+     "en": "A loud speaker."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "녹음하다",
+     "en": "Record a song."
+    },
+    {
+     "type": "연관어",
+     "word": "sound",
+     "ko": "소리",
+     "en": "A clear sound."
+    },
+    {
+     "type": "연관어",
+     "word": "volume",
+     "ko": "음량",
+     "en": "Turn up the volume."
+    },
+    {
+     "type": "연관어",
+     "word": "stage",
+     "ko": "무대",
+     "en": "On stage."
+    }
+   ]
+  },
+  "902": {
+   "word": "elaborate",
+   "overview": [
+    "elaborate는 형용사로 '정교한, 공들인, 복잡한'이라는 뜻입니다. (발음: i-LAB-er-it)",
+    "an elaborate design(정교한 디자인)처럼 씁니다.",
+    "동사로는 '자세히 설명하다, 상세히 말하다'라는 뜻입니다. (발음: i-LAB-er-ate)",
+    "Could you elaborate on that?(좀 더 자세히 말해 줄래요?)처럼 on과 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "detailed",
+     "en": "A detailed plan.",
+     "ko": "자세한 계획."
+    },
+    {
+     "word": "explain more",
+     "en": "Explain it more.",
+     "ko": "더 설명하다."
+    }
+   ],
+   "etymology": [
+    "elaborate는 라틴어 elaborare(애써 만들어 내다)에서 온 단어입니다.",
+    "e(밖으로, 완전히)와 laborare(일하다)가 합쳐진 말로, labor(노동)와 같은 가족입니다.",
+    "'많은 노력을 들여 정성껏 만들어 내다'라는 뜻에서 시작되었습니다.",
+    "공들여 복잡하게 만든 것, 그리고 말을 공들여 자세히 풀어내는 것을 가리키게 되었습니다.",
+    "elaborate의 핵심 이미지는 '정성 들여 하나하나 세밀하게 다듬은 것 🪡'입니다."
+   ],
+   "meanings": [
+    "공들인, 정교한, 복잡한",
+    "(더) 자세히 말하다, 설명하다"
+   ],
+   "examples": [
+    {
+     "en": "She wore an elaborate costume to the party.",
+     "ko": "그녀는 파티에 공들인 의상을 입고 갔어요."
+    },
+    {
+     "en": "They made an elaborate plan to surprise their mom.",
+     "ko": "그들은 엄마를 놀라게 하려고 정교한 계획을 세웠어요."
+    },
+    {
+     "en": "Could you elaborate on your idea?",
+     "ko": "당신의 생각을 좀 더 자세히 설명해 줄래요?"
+    },
+    {
+     "en": "The palace has elaborate decorations.",
+     "ko": "그 궁전에는 정교한 장식이 있어요."
+    },
+    {
+     "en": "He refused to elaborate further.",
+     "ko": "그는 더 자세히 말하기를 거부했어요."
+    },
+    {
+     "en": "The dinner was an elaborate meal with ten dishes.",
+     "ko": "저녁은 요리가 열 가지나 나오는 공들인 식사였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "detailed",
+     "ko": "상세한",
+     "en": "A detailed map."
+    },
+    {
+     "type": "유의어",
+     "word": "complex",
+     "ko": "복잡한",
+     "en": "A complex puzzle."
+    },
+    {
+     "type": "반의어",
+     "word": "simple",
+     "ko": "단순한",
+     "en": "A simple dress."
+    },
+    {
+     "type": "연관어",
+     "word": "explain",
+     "ko": "설명하다",
+     "en": "Explain why."
+    },
+    {
+     "type": "연관어",
+     "word": "fancy",
+     "ko": "화려한",
+     "en": "A fancy hotel."
+    },
+    {
+     "type": "연관어",
+     "word": "labor",
+     "ko": "노동",
+     "en": "Hard labor."
+    }
+   ]
+  },
+  "1655": {
+   "word": "mechanism",
+   "overview": [
+    "mechanism은 '(기계) 장치, 기계 구조'라는 뜻의 명사입니다.",
+    "a clock mechanism(시계 장치)처럼 씁니다.",
+    "'(어떤 일이 이루어지는) 방식, 작동 원리, 체계'라는 뜻으로도 아주 자주 씁니다.",
+    "defense mechanism(방어 기제)처럼 심리학에서도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "device",
+     "en": "A small device.",
+     "ko": "작은 장치."
+    },
+    {
+     "word": "system",
+     "en": "A safety system.",
+     "ko": "안전 체계."
+    }
+   ],
+   "etymology": [
+    "mechanism은 그리스어 mekhane(기계, 장치)에서 온 단어입니다.",
+    "machine(기계), mechanic(정비사)과 같은 가족입니다.",
+    "원래는 '기계를 이루는 부품들의 구조'라는 뜻이었습니다.",
+    "기계뿐 아니라 몸, 사회, 마음이 작동하는 원리나 체계까지 가리키게 되었습니다.",
+    "mechanism의 핵심 이미지는 '톱니바퀴가 맞물려 돌아가는 속 구조 ⚙️'입니다."
+   ],
+   "meanings": [
+    "기계 장치",
+    "작동 원리, 기제"
+   ],
+   "examples": [
+    {
+     "en": "The door has a special locking mechanism.",
+     "ko": "그 문에는 특별한 잠금장치가 있어요."
+    },
+    {
+     "en": "Scientists study the mechanism of the disease.",
+     "ko": "과학자들은 그 병이 생기는 원리를 연구해요."
+    },
+    {
+     "en": "The toy's mechanism is broken.",
+     "ko": "그 장난감의 장치가 고장 났어요."
+    },
+    {
+     "en": "Sweating is the body's mechanism for cooling down.",
+     "ko": "땀은 몸이 열을 식히는 방식이에요."
+    },
+    {
+     "en": "We need a mechanism to solve arguments fairly.",
+     "ko": "우리는 다툼을 공정하게 해결할 체계가 필요해요."
+    },
+    {
+     "en": "Laughing can be a defense mechanism.",
+     "ko": "웃음은 방어 기제가 될 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "device",
+     "ko": "장치",
+     "en": "An electronic device."
+    },
+    {
+     "type": "유의어",
+     "word": "system",
+     "ko": "체계",
+     "en": "A new system."
+    },
+    {
+     "type": "연관어",
+     "word": "machine",
+     "ko": "기계",
+     "en": "A washing machine."
+    },
+    {
+     "type": "연관어",
+     "word": "process",
+     "ko": "과정",
+     "en": "A long process."
+    },
+    {
+     "type": "연관어",
+     "word": "gear",
+     "ko": "톱니바퀴",
+     "en": "Change gears."
+    },
+    {
+     "type": "연관어",
+     "word": "structure",
+     "ko": "구조",
+     "en": "The basic structure."
+    }
+   ]
+  },
+  "2854": {
+   "word": "vanish",
+   "overview": [
+    "vanish는 '(갑자기) 사라지다'라는 뜻의 동사입니다.",
+    "vanish into thin air(감쪽같이 사라지다)처럼 씁니다.",
+    "'(존재하던 것이) 없어지다, 소멸하다'라는 뜻으로도 씁니다.",
+    "disappear보다 더 갑작스럽고 신비로운 느낌을 줍니다."
+   ],
+   "easy": [
+    {
+     "word": "disappear",
+     "en": "Disappear suddenly.",
+     "ko": "갑자기 사라지다."
+    },
+    {
+     "word": "go away",
+     "en": "The pain went away.",
+     "ko": "통증이 사라졌어요."
+    }
+   ],
+   "etymology": [
+    "vanish는 라틴어 evanescere(사라지다, 증발하다)에서 온 단어입니다.",
+    "e(밖으로)와 vanescere(비어 가다)가 합쳐진 말로, vain(헛된), vacant(빈)와 뿌리가 통합니다.",
+    "'텅 비어 가다가 흔적 없이 사라지다'라는 뜻이 되었습니다.",
+    "눈앞에 있던 것이 갑자기 보이지 않게 되거나 완전히 없어지는 것을 가리킵니다.",
+    "vanish의 핵심 이미지는 '연기처럼 스르르 흔적 없이 사라지는 것 💨'입니다."
+   ],
+   "meanings": [
+    "사라지다"
+   ],
+   "examples": [
+    {
+     "en": "The magician made the rabbit vanish.",
+     "ko": "마술사는 토끼를 사라지게 했어요."
+    },
+    {
+     "en": "The sun vanished behind the clouds.",
+     "ko": "해가 구름 뒤로 사라졌어요."
+    },
+    {
+     "en": "My keys seem to have vanished.",
+     "ko": "제 열쇠가 감쪽같이 사라진 것 같아요."
+    },
+    {
+     "en": "Many animal species have vanished forever.",
+     "ko": "많은 동물 종이 영원히 사라졌어요."
+    },
+    {
+     "en": "The thief vanished into the crowd.",
+     "ko": "도둑은 군중 속으로 사라졌어요."
+    },
+    {
+     "en": "Her worries vanished when she saw her results.",
+     "ko": "결과를 보자 그녀의 걱정이 싹 사라졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "disappear",
+     "ko": "사라지다",
+     "en": "Disappear from view."
+    },
+    {
+     "type": "유의어",
+     "word": "fade",
+     "ko": "희미해지다",
+     "en": "Fade away."
+    },
+    {
+     "type": "반의어",
+     "word": "appear",
+     "ko": "나타나다",
+     "en": "Appear suddenly."
+    },
+    {
+     "type": "연관어",
+     "word": "magic",
+     "ko": "마술",
+     "en": "A magic trick."
+    },
+    {
+     "type": "연관어",
+     "word": "missing",
+     "ko": "없어진",
+     "en": "A missing dog."
+    },
+    {
+     "type": "연관어",
+     "word": "extinct",
+     "ko": "멸종한",
+     "en": "Extinct animals."
+    }
+   ]
+  },
+  "1818": {
+   "word": "obtain",
+   "overview": [
+    "obtain은 '얻다, 구하다, 획득하다'라는 뜻의 동사입니다.",
+    "obtain permission(허락을 얻다)처럼 씁니다.",
+    "get보다 격식 있는 말로, 노력해서 얻는 느낌이 있습니다.",
+    "격식체에서는 '(규칙·관습이) 존재하다, 통용되다'라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "get",
+     "en": "Get a ticket.",
+     "ko": "표를 구하다."
+    },
+    {
+     "word": "gain",
+     "en": "Gain experience.",
+     "ko": "경험을 얻다."
+    }
+   ],
+   "etymology": [
+    "obtain은 라틴어 obtinere(붙잡아 지키다)에서 온 단어입니다.",
+    "ob(~에 대해)와 tenere(붙잡다)가 합쳐진 말로, contain(담다), maintain(유지하다)과 같은 가족입니다.",
+    "'손에 넣고 단단히 붙잡다'라는 뜻에서 시작되었습니다.",
+    "노력이나 절차를 거쳐 무언가를 얻는 것을 가리키게 되었습니다.",
+    "obtain의 핵심 이미지는 '노력 끝에 손에 넣어 꽉 쥐는 것 🤲'입니다."
+   ],
+   "meanings": [
+    "손에 넣다, 얻다, 획득하다, 취득하다",
+    "(규칙·관습 등이) 존재하다"
+   ],
+   "examples": [
+    {
+     "en": "You must obtain permission to use the room.",
+     "ko": "그 방을 쓰려면 허가를 받아야 해요."
+    },
+    {
+     "en": "She obtained a driver's license last year.",
+     "ko": "그녀는 작년에 운전면허를 땄어요."
+    },
+    {
+     "en": "Where did you obtain this information?",
+     "ko": "이 정보를 어디서 얻었어요?"
+    },
+    {
+     "en": "Tickets can be obtained online.",
+     "ko": "표는 온라인에서 구할 수 있어요."
+    },
+    {
+     "en": "He obtained a degree in engineering.",
+     "ko": "그는 공학 학위를 취득했어요."
+    },
+    {
+     "en": "Scientists obtained new data from the satellite.",
+     "ko": "과학자들은 인공위성에서 새 데이터를 얻었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "get",
+     "ko": "얻다",
+     "en": "Get a job."
+    },
+    {
+     "type": "유의어",
+     "word": "acquire",
+     "ko": "획득하다",
+     "en": "Acquire skills."
+    },
+    {
+     "type": "반의어",
+     "word": "lose",
+     "ko": "잃다",
+     "en": "Lose your keys."
+    },
+    {
+     "type": "연관어",
+     "word": "receive",
+     "ko": "받다",
+     "en": "Receive a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "earn",
+     "ko": "벌다, 얻다",
+     "en": "Earn money."
+    },
+    {
+     "type": "연관어",
+     "word": "permission",
+     "ko": "허가",
+     "en": "Ask permission."
+    }
+   ]
+  },
+  "1684": {
+   "word": "mild",
+   "overview": [
+    "mild는 '(날씨가) 온화한, 포근한'이라는 뜻의 형용사입니다.",
+    "a mild winter(포근한 겨울)처럼 씁니다.",
+    "'(맛이) 순한, 자극적이지 않은', '(병·증상이) 가벼운'이라는 뜻으로도 씁니다.",
+    "'(성격이) 온순한'이라는 뜻도 있고, 부사 mildly(약간, 부드럽게)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "gentle",
+     "en": "A gentle breeze.",
+     "ko": "부드러운 바람."
+    },
+    {
+     "word": "light",
+     "en": "A light cold.",
+     "ko": "가벼운 감기."
+    }
+   ],
+   "etymology": [
+    "mild는 고대 영어 milde(부드러운, 다정한)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 오래된 단어로, 거칠지 않은 부드러움을 뜻했습니다.",
+    "'세지 않고 부드러운'이라는 뜻이 그대로 이어져 왔습니다.",
+    "날씨, 맛, 병, 성격 등이 강하지 않고 순한 것에 두루 씁니다.",
+    "mild의 핵심 이미지는 '맵거나 세지 않고 부드럽게 감싸는 느낌 🍃'입니다."
+   ],
+   "meanings": [
+    "부드럽다, 순하다",
+    "(날씨가) 온화한",
+    "(병이) 가벼운"
+   ],
+   "examples": [
+    {
+     "en": "We had a mild winter this year.",
+     "ko": "올해 겨울은 포근했어요."
+    },
+    {
+     "en": "I'd like the mild curry, please.",
+     "ko": "순한 맛 카레로 주세요."
+    },
+    {
+     "en": "She has a mild cold.",
+     "ko": "그녀는 가벼운 감기에 걸렸어요."
+    },
+    {
+     "en": "Use a mild soap for sensitive skin.",
+     "ko": "민감한 피부에는 순한 비누를 쓰세요."
+    },
+    {
+     "en": "He is a mild and gentle person.",
+     "ko": "그는 온순하고 부드러운 사람이에요."
+    },
+    {
+     "en": "I was mildly surprised by the news.",
+     "ko": "저는 그 소식에 약간 놀랐어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "gentle",
+     "ko": "부드러운",
+     "en": "A gentle voice."
+    },
+    {
+     "type": "반의어",
+     "word": "severe",
+     "ko": "심한",
+     "en": "A severe storm."
+    },
+    {
+     "type": "반의어",
+     "word": "spicy",
+     "ko": "매운",
+     "en": "Spicy food."
+    },
+    {
+     "type": "파생어",
+     "word": "mildly",
+     "ko": "약간, 부드럽게",
+     "en": "Mildly annoyed."
+    },
+    {
+     "type": "연관어",
+     "word": "warm",
+     "ko": "따뜻한",
+     "en": "Warm weather."
+    },
+    {
+     "type": "연관어",
+     "word": "soft",
+     "ko": "부드러운",
+     "en": "Soft music."
+    }
+   ]
+  },
+  "295": {
+   "word": "blend",
+   "overview": [
+    "blend는 '섞다, 혼합하다'라는 뜻의 동사입니다.",
+    "blend the fruit(과일을 갈아 섞다)처럼 씁니다.",
+    "'잘 어울리다, 조화를 이루다'라는 뜻으로도 씁니다. (blend in, 주변에 섞여 들다)",
+    "명사로는 '혼합물'이라는 뜻이고, blender(믹서기)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "mix",
+     "en": "Mix the colors.",
+     "ko": "색을 섞다."
+    },
+    {
+     "word": "combine",
+     "en": "Combine the ingredients.",
+     "ko": "재료를 합치다."
+    }
+   ],
+   "etymology": [
+    "blend는 고대 노르드어 blanda(섞다)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 오래된 단어입니다.",
+    "'여러 가지를 고르게 섞어 하나로 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "재료를 섞는 것뿐 아니라 색, 소리, 사람이 자연스럽게 어우러지는 것에도 씁니다.",
+    "blend의 핵심 이미지는 '여러 재료가 고루 섞여 하나로 어우러지는 것 🥤'입니다."
+   ],
+   "meanings": [
+    "섞다, 혼합하다",
+    "조화를 이루다",
+    "혼합물"
+   ],
+   "examples": [
+    {
+     "en": "Blend the bananas and milk to make a smoothie.",
+     "ko": "바나나와 우유를 갈아 섞어서 스무디를 만드세요."
+    },
+    {
+     "en": "The colors blend beautifully in the painting.",
+     "ko": "그림 속 색깔들이 아름답게 어우러져요."
+    },
+    {
+     "en": "The chameleon blends in with the leaves.",
+     "ko": "카멜레온은 나뭇잎 색과 섞여 눈에 띄지 않아요."
+    },
+    {
+     "en": "This tea is a blend of green tea and mint.",
+     "ko": "이 차는 녹차와 민트를 섞은 거예요."
+    },
+    {
+     "en": "The new student tried to blend in with the class.",
+     "ko": "전학생은 반에 잘 어울리려고 애썼어요."
+    },
+    {
+     "en": "The song blends rock and jazz.",
+     "ko": "그 노래는 록과 재즈를 섞었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "mix",
+     "ko": "섞다",
+     "en": "Mix the flour."
+    },
+    {
+     "type": "유의어",
+     "word": "combine",
+     "ko": "결합하다",
+     "en": "Combine forces."
+    },
+    {
+     "type": "반의어",
+     "word": "separate",
+     "ko": "분리하다",
+     "en": "Separate the colors."
+    },
+    {
+     "type": "파생어",
+     "word": "blender",
+     "ko": "믹서기",
+     "en": "Use a blender."
+    },
+    {
+     "type": "연관어",
+     "word": "mixture",
+     "ko": "혼합물",
+     "en": "A strange mixture."
+    },
+    {
+     "type": "연관어",
+     "word": "harmony",
+     "ko": "조화",
+     "en": "In harmony."
+    }
+   ]
+  },
+  "1607": {
+   "word": "lump",
+   "overview": [
+    "lump는 '덩어리, 혹'이라는 뜻의 명사입니다.",
+    "a lump of sugar(각설탕 한 개)처럼 씁니다.",
+    "a lump in my throat(목이 메는 느낌)이라는 표현도 자주 씁니다.",
+    "동사로는 '한데 묶다, 한 덩어리로 취급하다'라는 뜻이고, a lump sum은 '일시불'입니다."
+   ],
+   "easy": [
+    {
+     "word": "chunk",
+     "en": "A chunk of cheese.",
+     "ko": "치즈 한 덩어리."
+    },
+    {
+     "word": "bump",
+     "en": "A bump on the head.",
+     "ko": "머리에 난 혹."
+    }
+   ],
+   "etymology": [
+    "lump는 중세 영어 lumpe(덩어리)에서 온 단어입니다.",
+    "스칸디나비아 말 뿌리와 관련이 있다고 보며, 모양 없이 뭉친 것을 뜻했습니다.",
+    "'일정한 모양 없이 뭉쳐진 덩어리'라는 뜻이 그대로 이어져 왔습니다.",
+    "몸에 불룩 솟은 혹, 여러 가지를 한데 뭉쳐 다루는 것으로 뜻이 넓어졌습니다.",
+    "lump의 핵심 이미지는 '모양 없이 뭉쳐진 덩어리 🪨'입니다."
+   ],
+   "meanings": [
+    "덩어리, 혹",
+    "덩이로 만들다, 한 덩어리로 취급하다",
+    "한 덩어리의"
+   ],
+   "examples": [
+    {
+     "en": "Add two lumps of sugar to my tea, please.",
+     "ko": "제 차에 각설탕 두 개 넣어 주세요."
+    },
+    {
+     "en": "He has a lump on his head from the fall.",
+     "ko": "그는 넘어져서 머리에 혹이 났어요."
+    },
+    {
+     "en": "Stir the sauce so there are no lumps.",
+     "ko": "덩어리가 생기지 않도록 소스를 저으세요."
+    },
+    {
+     "en": "I felt a lump in my throat at the sad ending.",
+     "ko": "슬픈 결말에 목이 메었어요."
+    },
+    {
+     "en": "Don't lump all teenagers together.",
+     "ko": "모든 십 대를 한데 묶어 생각하지 마세요."
+    },
+    {
+     "en": "They paid the money in one lump sum.",
+     "ko": "그들은 그 돈을 일시불로 냈어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "chunk",
+     "ko": "덩어리",
+     "en": "A chunk of bread."
+    },
+    {
+     "type": "유의어",
+     "word": "bump",
+     "ko": "혹",
+     "en": "A small bump."
+    },
+    {
+     "type": "연관어",
+     "word": "piece",
+     "ko": "조각",
+     "en": "A piece of cake."
+    },
+    {
+     "type": "연관어",
+     "word": "swelling",
+     "ko": "부기",
+     "en": "Reduce swelling."
+    },
+    {
+     "type": "연관어",
+     "word": "group",
+     "ko": "묶다",
+     "en": "Group them together."
+    },
+    {
+     "type": "연관어",
+     "word": "smooth",
+     "ko": "매끄러운",
+     "en": "A smooth sauce."
+    }
+   ]
+  },
+  "316": {
+   "word": "boost",
+   "overview": [
+    "boost는 '(기운·수치를) 북돋우다, 끌어올리다'라는 뜻의 동사입니다.",
+    "boost confidence(자신감을 북돋우다)처럼 씁니다.",
+    "명사로는 '격려, 힘, 증가'라는 뜻입니다. (a boost of energy)",
+    "경제에서는 '경기 부양'이라는 뜻으로도 쓰고, booster(촉진제, 추가 접종)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "increase",
+     "en": "Increase sales.",
+     "ko": "판매를 늘리다."
+    },
+    {
+     "word": "lift",
+     "en": "Lift your mood.",
+     "ko": "기분을 끌어올리다."
+    }
+   ],
+   "etymology": [
+    "boost는 19세기 미국 영어에서 생긴 단어로, 정확한 뿌리는 확실하지 않습니다.",
+    "원래는 '아래에서 밀어 올리다'라는 뜻으로 쓰였습니다.",
+    "누군가를 들어 올려 높은 곳에 오르게 돕는 모습에서 시작되었습니다.",
+    "기운, 자신감, 판매량 등을 위로 끌어올리는 것을 가리키게 되었습니다.",
+    "boost의 핵심 이미지는 '아래에서 힘껏 밀어 위로 올려 주는 것 🚀'입니다."
+   ],
+   "meanings": [
+    "후원, 격려",
+    "경기 부양",
+    "북돋우다, 끌어올리다"
+   ],
+   "examples": [
+    {
+     "en": "Winning the game boosted the team's confidence.",
+     "ko": "경기에서 이기자 팀의 자신감이 높아졌어요."
+    },
+    {
+     "en": "Exercise can boost your mood.",
+     "ko": "운동은 기분을 좋게 해 줄 수 있어요."
+    },
+    {
+     "en": "The new ads boosted sales.",
+     "ko": "새 광고로 판매량이 늘었어요."
+    },
+    {
+     "en": "A cup of coffee gives me a quick energy boost.",
+     "ko": "커피 한 잔이면 금방 기운이 나요."
+    },
+    {
+     "en": "Her kind words were a real boost.",
+     "ko": "그녀의 다정한 말이 큰 힘이 됐어요."
+    },
+    {
+     "en": "The government plans to boost the economy.",
+     "ko": "정부는 경기를 부양할 계획이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "increase",
+     "ko": "증가시키다",
+     "en": "Increase the price."
+    },
+    {
+     "type": "유의어",
+     "word": "raise",
+     "ko": "올리다",
+     "en": "Raise your hand."
+    },
+    {
+     "type": "반의어",
+     "word": "reduce",
+     "ko": "줄이다",
+     "en": "Reduce waste."
+    },
+    {
+     "type": "파생어",
+     "word": "booster",
+     "ko": "촉진제, 추가 접종",
+     "en": "A booster shot."
+    },
+    {
+     "type": "연관어",
+     "word": "encourage",
+     "ko": "격려하다",
+     "en": "Encourage others."
+    },
+    {
+     "type": "연관어",
+     "word": "confidence",
+     "ko": "자신감",
+     "en": "Build confidence."
+    }
+   ]
+  },
+  "1187": {
+   "word": "gaze",
+   "overview": [
+    "gaze는 '(가만히) 응시하다, 바라보다'라는 뜻의 동사입니다.",
+    "gaze at the stars(별을 가만히 바라보다)처럼 at과 함께 씁니다.",
+    "명사로는 '응시, 시선'이라는 뜻입니다.",
+    "stare보다 부드럽고, 감탄하거나 생각에 잠겨 오래 바라보는 느낌입니다."
+   ],
+   "easy": [
+    {
+     "word": "look",
+     "en": "Look at the sea.",
+     "ko": "바다를 보다."
+    },
+    {
+     "word": "stare",
+     "en": "Stare at the screen.",
+     "ko": "화면을 빤히 보다."
+    }
+   ],
+   "etymology": [
+    "gaze는 중세 영어 gasen(바라보다)에서 온 단어입니다.",
+    "스칸디나비아 말에서 온 것으로 보며, 넋을 놓고 바라보는 모습을 나타냈습니다.",
+    "'한곳을 가만히 오래 바라보다'라는 뜻이 그대로 이어져 왔습니다.",
+    "감탄, 사랑, 생각에 잠긴 채 조용히 바라보는 상황에 씁니다.",
+    "gaze의 핵심 이미지는 '생각에 잠겨 한곳을 오래 바라보는 눈길 👀✨'입니다."
+   ],
+   "meanings": [
+    "주시하다, 응시하다",
+    "주시, 시선"
+   ],
+   "examples": [
+    {
+     "en": "She gazed at the stars for hours.",
+     "ko": "그녀는 몇 시간 동안 별을 바라봤어요."
+    },
+    {
+     "en": "He gazed out of the window, lost in thought.",
+     "ko": "그는 생각에 잠겨 창밖을 바라봤어요."
+    },
+    {
+     "en": "The baby gazed at her mother's face.",
+     "ko": "아기는 엄마의 얼굴을 가만히 바라봤어요."
+    },
+    {
+     "en": "We gazed at the beautiful sunset.",
+     "ko": "우리는 아름다운 노을을 바라봤어요."
+    },
+    {
+     "en": "She felt his gaze on her.",
+     "ko": "그녀는 그의 시선이 자신에게 머무는 걸 느꼈어요."
+    },
+    {
+     "en": "The tourists gazed up at the tall tower.",
+     "ko": "관광객들은 높은 탑을 올려다봤어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "stare",
+     "ko": "빤히 보다",
+     "en": "Stare at me."
+    },
+    {
+     "type": "유의어",
+     "word": "look",
+     "ko": "보다",
+     "en": "Look around."
+    },
+    {
+     "type": "반의어",
+     "word": "glance",
+     "ko": "흘끗 보다",
+     "en": "A quick glance."
+    },
+    {
+     "type": "연관어",
+     "word": "watch",
+     "ko": "지켜보다",
+     "en": "Watch the game."
+    },
+    {
+     "type": "연관어",
+     "word": "eye",
+     "ko": "눈",
+     "en": "Bright eyes."
+    },
+    {
+     "type": "연관어",
+     "word": "wonder",
+     "ko": "경이",
+     "en": "Full of wonder."
+    }
+   ]
+  },
+  "2183": {
+   "word": "relieve",
+   "overview": [
+    "relieve는 '(고통·불안을) 덜어 주다, 완화하다'라는 뜻의 동사입니다.",
+    "relieve pain(통증을 덜어 주다)처럼 씁니다.",
+    "형용사 relieved는 '안심한'이라는 뜻입니다. (I was relieved to hear that.)",
+    "'(근무를) 교대해 주다', '(책임에서) 해방시키다'라는 뜻도 있고, 명사는 relief(안도, 구호)입니다."
+   ],
+   "easy": [
+    {
+     "word": "ease",
+     "en": "Ease the pain.",
+     "ko": "통증을 덜다."
+    },
+    {
+     "word": "calm",
+     "en": "Calm your worries.",
+     "ko": "걱정을 가라앉히다."
+    }
+   ],
+   "etymology": [
+    "relieve는 라틴어 relevare(다시 들어 올리다, 가볍게 하다)에서 온 단어입니다.",
+    "re(다시)와 levare(들어 올리다, 가볍게 하다)가 합쳐진 말로, lever(지렛대), relevant(관련 있는)와 같은 가족입니다.",
+    "'무거운 짐을 들어 올려 가볍게 해 주다'라는 뜻에서 시작되었습니다.",
+    "아픔이나 걱정의 무게를 덜어 주는 것, 누군가의 일을 대신 맡아 주는 것을 가리키게 되었습니다.",
+    "relieve의 핵심 이미지는 '어깨의 무거운 짐을 들어 올려 가볍게 해 주는 것 😌'입니다."
+   ],
+   "meanings": [
+    "경감하다, 구제하다",
+    "안심시키다",
+    "교대해 주다"
+   ],
+   "examples": [
+    {
+     "en": "This medicine will relieve your headache.",
+     "ko": "이 약이 두통을 덜어 줄 거예요."
+    },
+    {
+     "en": "I was relieved when I found my phone.",
+     "ko": "휴대폰을 찾았을 때 안심했어요."
+    },
+    {
+     "en": "Talking to a friend can relieve stress.",
+     "ko": "친구와 이야기하면 스트레스가 풀릴 수 있어요."
+    },
+    {
+     "en": "Another guard came to relieve him at midnight.",
+     "ko": "자정에 다른 경비원이 그와 교대하러 왔어요."
+    },
+    {
+     "en": "The new road will relieve traffic in the city.",
+     "ko": "새 도로가 도심 교통 체증을 완화할 거예요."
+    },
+    {
+     "en": "What a relief that everyone is safe!",
+     "ko": "모두가 무사하다니 정말 다행이에요!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ease",
+     "ko": "덜어 주다",
+     "en": "Ease the tension."
+    },
+    {
+     "type": "유의어",
+     "word": "reduce",
+     "ko": "줄이다",
+     "en": "Reduce pain."
+    },
+    {
+     "type": "반의어",
+     "word": "worsen",
+     "ko": "악화시키다",
+     "en": "Worsen the problem."
+    },
+    {
+     "type": "파생어",
+     "word": "relief",
+     "ko": "안도, 구호",
+     "en": "A sigh of relief."
+    },
+    {
+     "type": "파생어",
+     "word": "relieved",
+     "ko": "안심한",
+     "en": "Feel relieved."
+    },
+    {
+     "type": "연관어",
+     "word": "comfort",
+     "ko": "위로하다",
+     "en": "Comfort a friend."
+    }
+   ]
   }
  }
 }
