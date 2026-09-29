@@ -9695,6 +9695,1932 @@
      "en": "A typical day."
     }
    ]
+  },
+  "1882": {
+   "word": "pain",
+   "overview": [
+    "pain은 '아픔', '고통'이라는 뜻의 명사입니다. 몸이나 마음이 아플 때 씁니다.",
+    "feel pain(고통을 느끼다), a sharp pain(날카로운 통증)처럼 씁니다.",
+    "a pain in the neck는 '아주 성가신 것'이라는 뜻의 재미있는 표현입니다.",
+    "형용사 painful(고통스러운), painless(고통 없는)가 같은 가족입니다."
+   ],
+   "easy": [
+    {
+     "word": "hurt",
+     "en": "It hurts.",
+     "ko": "아파요."
+    },
+    {
+     "word": "ache",
+     "en": "A headache.",
+     "ko": "두통."
+    }
+   ],
+   "etymology": [
+    "pain은 라틴어 poena(벌, 벌금)에서 온 단어입니다.",
+    "옛날에는 '벌을 받아서 겪는 고통'이라는 뜻이었습니다.",
+    "penalty(벌칙), punish(벌하다)도 같은 뿌리에서 나온 단어들입니다.",
+    "'벌로 인한 고통'에서 뜻이 넓어져 지금은 어떤 원인이든 '아픔' 전체를 가리킵니다.",
+    "pain의 핵심 이미지는 '몸과 마음을 찌르는 아픔 😖'입니다."
+   ],
+   "meanings": [
+    "아픔, 고통 (명사)",
+    "노력, 수고 (pains, 복수)"
+   ],
+   "examples": [
+    {
+     "en": "I have a pain in my stomach.",
+     "ko": "배가 아파요."
+    },
+    {
+     "en": "She felt no pain after the medicine.",
+     "ko": "그녀는 약을 먹은 후 아무 통증도 느끼지 않았어요."
+    },
+    {
+     "en": "He took great pains to finish the project.",
+     "ko": "그는 그 프로젝트를 끝내려고 많은 수고를 들였어요."
+    },
+    {
+     "en": "The pain went away after a few minutes.",
+     "ko": "몇 분 뒤 아픔이 사라졌어요."
+    },
+    {
+     "en": "Sharing your pain with friends can help.",
+     "ko": "친구들과 아픔을 나누면 도움이 돼요."
+    },
+    {
+     "en": "Growing pains are normal for children.",
+     "ko": "성장통은 아이들에게 흔한 일이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "ache",
+     "ko": "아픔, 쑤심",
+     "en": "A stomachache."
+    },
+    {
+     "type": "파생어",
+     "word": "painful",
+     "ko": "고통스러운",
+     "en": "A painful memory."
+    },
+    {
+     "type": "반의어",
+     "word": "pleasure",
+     "ko": "즐거움",
+     "en": "Simple pleasure."
+    },
+    {
+     "type": "연관어",
+     "word": "hurt",
+     "ko": "아프다",
+     "en": "It really hurts."
+    },
+    {
+     "type": "연관어",
+     "word": "suffer",
+     "ko": "고통받다",
+     "en": "Suffer in silence."
+    },
+    {
+     "type": "연관어",
+     "word": "medicine",
+     "ko": "약",
+     "en": "Take medicine."
+    }
+   ]
+  },
+  "1830": {
+   "word": "officer",
+   "overview": [
+    "officer는 '경찰관', '장교'라는 뜻의 명사입니다. 공적인 임무를 맡은 사람을 말합니다.",
+    "a police officer(경찰관), a military officer(군 장교)처럼 씁니다.",
+    "회사의 높은 직급 사람도 officer라고 부릅니다. a chief officer(임원)",
+    "일반 병사보다 계급이 높은 지휘관을 뜻할 때도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "police",
+     "en": "Call the police.",
+     "ko": "경찰을 불러."
+    },
+    {
+     "word": "soldier",
+     "en": "A brave soldier.",
+     "ko": "용감한 군인."
+    }
+   ],
+   "etymology": [
+    "officer는 라틴어 officium(임무, 직무)에서 온 단어입니다.",
+    "opus(일)와 facere(하다)가 합쳐진 말로, '해야 할 일을 맡은 사람'이라는 뜻입니다.",
+    "office(사무실, 직책)와 같은 뿌리를 가진 단어입니다.",
+    "'공적인 임무를 맡은 사람'이라는 뜻이 경찰관, 장교, 임원 등 여러 직책에 두루 쓰이게 되었습니다.",
+    "officer의 핵심 이미지는 '제복을 입고 임무를 수행하는 사람 👮'입니다."
+   ],
+   "meanings": [
+    "경찰관 (명사)",
+    "(군대) 장교 (명사)",
+    "(회사·단체의) 임원, 관리자 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The police officer helped us cross the street.",
+     "ko": "경찰관이 우리가 길을 건너도록 도와줬어요."
+    },
+    {
+     "en": "My uncle is an officer in the army.",
+     "ko": "우리 삼촌은 육군 장교예요."
+    },
+    {
+     "en": "Excuse me, officer, can you help me?",
+     "ko": "실례합니다, 경찰관님, 저 좀 도와주실 수 있나요?"
+    },
+    {
+     "en": "She was promoted to a senior officer.",
+     "ko": "그녀는 고위 임원으로 승진했어요."
+    },
+    {
+     "en": "The officer wrote down the details.",
+     "ko": "그 경찰관은 세부 사항을 적었어요."
+    },
+    {
+     "en": "The customs officer checked our bags.",
+     "ko": "세관 직원이 우리 가방을 확인했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "police",
+     "ko": "경찰",
+     "en": "Call the police."
+    },
+    {
+     "type": "연관어",
+     "word": "soldier",
+     "ko": "군인",
+     "en": "A young soldier."
+    },
+    {
+     "type": "연관어",
+     "word": "captain",
+     "ko": "대위, 선장",
+     "en": "The team captain."
+    },
+    {
+     "type": "연관어",
+     "word": "office",
+     "ko": "사무실, 직책",
+     "en": "An office job."
+    },
+    {
+     "type": "연관어",
+     "word": "duty",
+     "ko": "임무",
+     "en": "On duty."
+    },
+    {
+     "type": "연관어",
+     "word": "uniform",
+     "ko": "제복",
+     "en": "Wear a uniform."
+    }
+   ]
+  },
+  "2633": {
+   "word": "system",
+   "overview": [
+    "system은 '체계', '제도'라는 뜻의 명사입니다. 여러 부분이 함께 일하도록 짜인 방법을 말합니다.",
+    "a school system(학교 제도), a computer system(컴퓨터 시스템)처럼 씁니다.",
+    "몸속의 '기관 체계'도 system이라고 합니다. the digestive system(소화 기관)",
+    "형용사 systematic은 '체계적인'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "method",
+     "en": "A good method.",
+     "ko": "좋은 방법."
+    },
+    {
+     "word": "organization",
+     "en": "A big organization.",
+     "ko": "큰 조직."
+    }
+   ],
+   "etymology": [
+    "system은 그리스어 systema(함께 세운 것, 짜인 전체)에서 온 단어입니다.",
+    "syn(함께)과 histanai(세우다)가 합쳐진 말입니다.",
+    "'여러 부분이 함께 짜여 하나로 작동하는 전체'라는 뜻이 그대로 이어져 왔습니다.",
+    "stand(서다)와도 먼 친척인 뿌리를 가진다고 봅니다.",
+    "system의 핵심 이미지는 '톱니바퀴처럼 맞물려 돌아가는 전체 구조 ⚙️'입니다."
+   ],
+   "meanings": [
+    "체계, 시스템",
+    "제도, 방식",
+    "(신체의) 기관, 계통"
+   ],
+   "examples": [
+    {
+     "en": "Our school has a new grading system.",
+     "ko": "우리 학교는 새로운 성적 제도가 있어요."
+    },
+    {
+     "en": "The computer system crashed suddenly.",
+     "ko": "컴퓨터 시스템이 갑자기 다운됐어요."
+    },
+    {
+     "en": "Exercise is good for your immune system.",
+     "ko": "운동은 면역 체계에 좋아요."
+    },
+    {
+     "en": "We need a better filing system.",
+     "ko": "우리는 더 나은 파일 정리 체계가 필요해요."
+    },
+    {
+     "en": "The transport system in this city is efficient.",
+     "ko": "이 도시의 교통 시스템은 효율적이에요."
+    },
+    {
+     "en": "Understanding the solar system is fascinating.",
+     "ko": "태양계를 이해하는 건 흥미로워요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "method",
+     "ko": "방법",
+     "en": "A new method."
+    },
+    {
+     "type": "파생어",
+     "word": "systematic",
+     "ko": "체계적인",
+     "en": "A systematic plan."
+    },
+    {
+     "type": "연관어",
+     "word": "organize",
+     "ko": "조직하다",
+     "en": "Organize files."
+    },
+    {
+     "type": "연관어",
+     "word": "network",
+     "ko": "네트워크, 망",
+     "en": "A computer network."
+    },
+    {
+     "type": "연관어",
+     "word": "process",
+     "ko": "과정",
+     "en": "A simple process."
+    },
+    {
+     "type": "연관어",
+     "word": "structure",
+     "ko": "구조",
+     "en": "A clear structure."
+    }
+   ]
+  },
+  "2606": {
+   "word": "suppose",
+   "overview": [
+    "suppose는 '가정하다', '추측하다'라는 뜻의 동사입니다.",
+    "Suppose it rains tomorrow.(만약 내일 비가 온다고 가정해 보자.)처럼 씁니다.",
+    "I suppose so.(그럴 거라고 생각해요.)처럼 확신이 없을 때 자주 씁니다.",
+    "be supposed to는 '~하기로 되어 있다'라는 아주 자주 쓰는 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "guess",
+     "en": "I guess so.",
+     "ko": "그럴 것 같아."
+    },
+    {
+     "word": "assume",
+     "en": "Assume it's true.",
+     "ko": "그게 사실이라고 가정해."
+    }
+   ],
+   "etymology": [
+    "suppose는 라틴어 supponere(아래에 놓다, 가정하다)에서 온 단어입니다.",
+    "sub(아래에)와 ponere(놓다)가 합쳐진 말입니다.",
+    "'생각의 밑바탕에 미리 놓아 두다'라는 뜻에서 '가정하다'가 되었습니다.",
+    "position(위치), compose(작곡하다)도 ponere에서 나온 같은 가족 단어입니다.",
+    "suppose의 핵심 이미지는 '이럴 것이다 하고 미리 짐작해 보는 마음 💭'입니다."
+   ],
+   "meanings": [
+    "가정하다, ~라고 하자",
+    "추측하다, ~라고 생각하다",
+    "(be supposed to) ~하기로 되어 있다"
+   ],
+   "examples": [
+    {
+     "en": "Suppose you won a million dollars.",
+     "ko": "네가 백만 달러에 당첨됐다고 가정해 봐."
+    },
+    {
+     "en": "I suppose you're right.",
+     "ko": "네 말이 맞는 것 같아요."
+    },
+    {
+     "en": "We are supposed to meet at three.",
+     "ko": "우리는 3시에 만나기로 되어 있어요."
+    },
+    {
+     "en": "I don't suppose you know the answer.",
+     "ko": "네가 답을 알 것 같지는 않네."
+    },
+    {
+     "en": "What do you suppose happened?",
+     "ko": "무슨 일이 있었던 것 같아요?"
+    },
+    {
+     "en": "You're not supposed to be here.",
+     "ko": "너 여기 있으면 안 되는데."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "guess",
+     "ko": "추측하다",
+     "en": "Guess the answer."
+    },
+    {
+     "type": "유의어",
+     "word": "assume",
+     "ko": "가정하다",
+     "en": "Assume the worst."
+    },
+    {
+     "type": "연관어",
+     "word": "imagine",
+     "ko": "상상하다",
+     "en": "Imagine a world."
+    },
+    {
+     "type": "연관어",
+     "word": "expect",
+     "ko": "기대하다, 예상하다",
+     "en": "Expect the best."
+    },
+    {
+     "type": "연관어",
+     "word": "believe",
+     "ko": "믿다",
+     "en": "Believe in yourself."
+    },
+    {
+     "type": "연관어",
+     "word": "think",
+     "ko": "생각하다",
+     "en": "Think carefully."
+    }
+   ]
+  },
+  "968": {
+   "word": "evidence",
+   "overview": [
+    "evidence는 '증거'라는 뜻의 명사입니다. 어떤 것이 사실임을 보여 주는 자료입니다.",
+    "find evidence(증거를 찾다), based on evidence(증거를 바탕으로)처럼 씁니다.",
+    "재판에서 아주 중요한 단어로, evidence in court(법정 증거)처럼 씁니다.",
+    "형용사 evident는 '분명한', '명백한'이라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "proof",
+     "en": "Show proof.",
+     "ko": "증거를 보여 줘."
+    },
+    {
+     "word": "clue",
+     "en": "Find a clue.",
+     "ko": "단서를 찾아."
+    }
+   ],
+   "etymology": [
+    "evidence는 라틴어 evidentia(명백함)에서 온 단어입니다.",
+    "e(밖으로)와 videre(보다)가 합쳐진 말로, '밖으로 뚜렷하게 보이는 것'이라는 뜻입니다.",
+    "video(비디오), vision(시각)도 videre에서 나온 같은 가족 단어입니다.",
+    "'눈으로 볼 수 있게 뚜렷이 드러난 사실'이라는 뜻에서 '증거'가 되었습니다.",
+    "evidence의 핵심 이미지는 '눈앞에 뚜렷이 드러나 사실을 증명하는 자료 🔎'입니다."
+   ],
+   "meanings": [
+    "증거",
+    "(과학) 근거, 증빙 자료"
+   ],
+   "examples": [
+    {
+     "en": "The detective looked for evidence.",
+     "ko": "탐정은 증거를 찾았어요."
+    },
+    {
+     "en": "There is no evidence that this works.",
+     "ko": "이게 효과가 있다는 증거는 없어요."
+    },
+    {
+     "en": "Scientists collect evidence to prove their ideas.",
+     "ko": "과학자들은 자신의 생각을 증명하려고 증거를 모아요."
+    },
+    {
+     "en": "The photo was evidence of what happened.",
+     "ko": "그 사진은 무슨 일이 있었는지 보여 주는 증거였어요."
+    },
+    {
+     "en": "She gave clear evidence for her answer.",
+     "ko": "그녀는 자기 답에 대한 분명한 근거를 제시했어요."
+    },
+    {
+     "en": "Based on the evidence, he was innocent.",
+     "ko": "증거를 바탕으로 그는 무죄였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "proof",
+     "ko": "증거",
+     "en": "Solid proof."
+    },
+    {
+     "type": "파생어",
+     "word": "evident",
+     "ko": "분명한",
+     "en": "It's evident."
+    },
+    {
+     "type": "연관어",
+     "word": "clue",
+     "ko": "단서",
+     "en": "A helpful clue."
+    },
+    {
+     "type": "연관어",
+     "word": "detective",
+     "ko": "탐정",
+     "en": "A smart detective."
+    },
+    {
+     "type": "연관어",
+     "word": "fact",
+     "ko": "사실",
+     "en": "A known fact."
+    },
+    {
+     "type": "연관어",
+     "word": "witness",
+     "ko": "목격자",
+     "en": "A key witness."
+    }
+   ]
+  },
+  "2243": {
+   "word": "ride",
+   "overview": [
+    "ride는 '타다'라는 뜻의 동사이자 '타고 가기'라는 뜻의 명사입니다.",
+    "ride a bike(자전거를 타다), ride a horse(말을 타다)처럼 씁니다.",
+    "명사로는 놀이공원의 '놀이 기구'도 ride라고 합니다. a roller coaster ride(롤러코스터 타기)",
+    "give someone a ride는 '차로 태워 주다'라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "drive",
+     "en": "Drive a car.",
+     "ko": "차를 운전하다."
+    },
+    {
+     "word": "bike",
+     "en": "A red bike.",
+     "ko": "빨간 자전거."
+    }
+   ],
+   "etymology": [
+    "ride는 고대 영어 rīdan(말을 타고 가다)에서 온 단어입니다.",
+    "독일어 reiten(말을 타다)과 같은 뿌리입니다.",
+    "처음에는 말을 타는 것만 뜻하다가, 자동차, 자전거 등 탈것 전체로 뜻이 넓어졌습니다.",
+    "과거형은 rode, 과거분사는 ridden입니다.",
+    "ride의 핵심 이미지는 '바람을 가르며 자전거나 말을 타고 달리기 🚲'입니다."
+   ],
+   "meanings": [
+    "타다 (동사)",
+    "타고 가기, 여정 (명사)",
+    "(놀이공원의) 놀이 기구 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "Can you ride a bike?",
+     "ko": "너 자전거 탈 줄 알아?"
+    },
+    {
+     "en": "We rode our bikes to the park.",
+     "ko": "우리는 자전거를 타고 공원에 갔어요."
+    },
+    {
+     "en": "Let's go for a ride in the countryside.",
+     "ko": "시골로 드라이브 가자."
+    },
+    {
+     "en": "This roller coaster ride is so fun!",
+     "ko": "이 롤러코스터는 정말 재미있어요!"
+    },
+    {
+     "en": "Can you give me a ride to school?",
+     "ko": "학교까지 차로 태워다 줄 수 있어요?"
+    },
+    {
+     "en": "She has never ridden a horse before.",
+     "ko": "그녀는 전에 말을 타 본 적이 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "변화형",
+     "word": "rode",
+     "ko": "탔다 (과거형)",
+     "en": "He rode a bike."
+    },
+    {
+     "type": "연관어",
+     "word": "drive",
+     "ko": "운전하다",
+     "en": "Drive carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "bike",
+     "ko": "자전거",
+     "en": "Ride a bike."
+    },
+    {
+     "type": "연관어",
+     "word": "horse",
+     "ko": "말",
+     "en": "A brown horse."
+    },
+    {
+     "type": "연관어",
+     "word": "roller coaster",
+     "ko": "롤러코스터",
+     "en": "A fast roller coaster."
+    },
+    {
+     "type": "연관어",
+     "word": "carousel",
+     "ko": "회전목마",
+     "en": "Ride the carousel."
+    }
+   ]
+  },
+  "1127": {
+   "word": "forgive",
+   "overview": [
+    "forgive는 '용서하다'라는 뜻의 동사입니다. 잘못한 사람을 더 이상 원망하지 않기로 하는 것을 말합니다.",
+    "forgive someone for something(누군가의 무엇을 용서하다)처럼 씁니다.",
+    "Please forgive me.(용서해 주세요.)처럼 사과할 때 씁니다.",
+    "과거형과 과거분사는 forgave, forgiven입니다."
+   ],
+   "easy": [
+    {
+     "word": "excuse",
+     "en": "Excuse my mistake.",
+     "ko": "내 실수를 봐줘."
+    },
+    {
+     "word": "pardon",
+     "en": "I beg your pardon.",
+     "ko": "죄송합니다."
+    }
+   ],
+   "etymology": [
+    "forgive는 for(완전히)와 give(주다)가 합쳐진 말입니다.",
+    "'빚을 완전히 없던 것으로 해 주다'라는 뜻에서 나왔습니다.",
+    "고대 영어 forgiefan(완전히 내주다, 용서하다)에서 온 아주 오래된 단어입니다.",
+    "잘못을 진 사람에게 아무 빚도 없는 것처럼 대해 준다는 뜻이 그대로 이어져 왔습니다.",
+    "forgive의 핵심 이미지는 '마음속 원망을 완전히 내려놓는 것 🕊️'입니다."
+   ],
+   "meanings": [
+    "용서하다"
+   ],
+   "examples": [
+    {
+     "en": "Please forgive me for being late.",
+     "ko": "늦어서 죄송해요, 용서해 주세요."
+    },
+    {
+     "en": "She forgave her friend right away.",
+     "ko": "그녀는 친구를 바로 용서했어요."
+    },
+    {
+     "en": "It's hard to forgive, but it feels good.",
+     "ko": "용서하는 건 어렵지만 기분이 좋아져요."
+    },
+    {
+     "en": "I forgave him for breaking my toy.",
+     "ko": "나는 내 장난감을 부순 것을 그를 용서했어요."
+    },
+    {
+     "en": "Can you ever forgive me?",
+     "ko": "나를 용서해 줄 수 있을까요?"
+    },
+    {
+     "en": "Forgive and forget.",
+     "ko": "용서하고 잊어버려."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "excuse",
+     "ko": "용서하다",
+     "en": "Excuse the noise."
+    },
+    {
+     "type": "유의어",
+     "word": "pardon",
+     "ko": "용서하다",
+     "en": "Pardon me."
+    },
+    {
+     "type": "반의어",
+     "word": "blame",
+     "ko": "탓하다",
+     "en": "Blame each other."
+    },
+    {
+     "type": "연관어",
+     "word": "sorry",
+     "ko": "미안한",
+     "en": "I'm sorry."
+    },
+    {
+     "type": "연관어",
+     "word": "apologize",
+     "ko": "사과하다",
+     "en": "Apologize sincerely."
+    },
+    {
+     "type": "연관어",
+     "word": "mistake",
+     "ko": "실수",
+     "en": "A big mistake."
+    }
+   ]
+  },
+  "1377": {
+   "word": "imagine",
+   "overview": [
+    "imagine은 '상상하다'라는 뜻의 동사입니다. 머릿속으로 무엇을 그려 보는 것을 말합니다.",
+    "Imagine a world without cars.(자동차 없는 세상을 상상해 봐.)처럼 씁니다.",
+    "I can't imagine...(~을 상상도 할 수 없어요)처럼 놀라움을 표현할 때도 씁니다.",
+    "명사 imagination(상상력)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "think of",
+     "en": "Think of a plan.",
+     "ko": "계획을 생각해."
+    },
+    {
+     "word": "picture",
+     "en": "Picture the scene.",
+     "ko": "그 장면을 그려 봐."
+    }
+   ],
+   "etymology": [
+    "imagine은 라틴어 imaginari(마음속에 그림을 그리다)에서 온 단어입니다.",
+    "imago(모습, 이미지)에서 나온 말로, image(이미지)와 같은 가족입니다.",
+    "'마음속에 이미지를 만들다'라는 뜻이 그대로 '상상하다'로 이어졌습니다.",
+    "imagination(상상력), imaginary(상상의)도 같은 뿌리에서 나온 단어들입니다.",
+    "imagine의 핵심 이미지는 '머릿속 스크린에 그림을 그려 보는 것 🎨'입니다."
+   ],
+   "meanings": [
+    "상상하다",
+    "생각하다, ~라고 짐작하다"
+   ],
+   "examples": [
+    {
+     "en": "Imagine flying in the sky like a bird.",
+     "ko": "새처럼 하늘을 나는 것을 상상해 봐."
+    },
+    {
+     "en": "I can't imagine life without my dog.",
+     "ko": "나는 내 개 없는 삶을 상상할 수 없어요."
+    },
+    {
+     "en": "She imagined herself as a famous singer.",
+     "ko": "그녀는 자신이 유명한 가수가 된 것을 상상했어요."
+    },
+    {
+     "en": "Can you imagine what it's like on the moon?",
+     "ko": "달에서는 어떤 느낌일지 상상할 수 있어?"
+    },
+    {
+     "en": "I imagine he's very busy these days.",
+     "ko": "그는 요즘 아주 바쁠 것 같아요."
+    },
+    {
+     "en": "Children love to imagine new worlds.",
+     "ko": "아이들은 새로운 세계를 상상하는 것을 아주 좋아해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "imagination",
+     "ko": "상상력",
+     "en": "A wild imagination."
+    },
+    {
+     "type": "파생어",
+     "word": "imaginary",
+     "ko": "상상의",
+     "en": "An imaginary friend."
+    },
+    {
+     "type": "연관어",
+     "word": "picture",
+     "ko": "그리다, 상상하다",
+     "en": "Picture the future."
+    },
+    {
+     "type": "연관어",
+     "word": "dream",
+     "ko": "꿈꾸다",
+     "en": "Dream big."
+    },
+    {
+     "type": "연관어",
+     "word": "create",
+     "ko": "창조하다",
+     "en": "Create a story."
+    },
+    {
+     "type": "연관어",
+     "word": "believe",
+     "ko": "믿다",
+     "en": "Believe it."
+    }
+   ]
+  },
+  "1433": {
+   "word": "instead",
+   "overview": [
+    "instead는 '대신에'라는 뜻의 부사입니다. 하나를 하지 않고 다른 것을 선택할 때 씁니다.",
+    "Let's walk instead.(대신 걷자.)처럼 문장 끝이나 따로 씁니다.",
+    "instead of + 명사/동명사는 '~ 대신에'라는 뜻입니다. instead of watching TV(TV를 보는 대신)",
+    "instead of는 아주 자주 쓰는 표현이니 잘 익혀 두는 게 좋습니다."
+   ],
+   "easy": [
+    {
+     "word": "rather",
+     "en": "Rather this one.",
+     "ko": "차라리 이거."
+    },
+    {
+     "word": "replace",
+     "en": "Replace it.",
+     "ko": "그걸 대신해."
+    }
+   ],
+   "etymology": [
+    "instead는 in(안에)과 stead(자리, 위치)가 합쳐진 말입니다.",
+    "stead는 '서 있는 자리'를 뜻하는 옛말로, stand(서다)와 같은 뿌리입니다.",
+    "'다른 것의 자리 안에 들어가서'라는 뜻에서 '대신에'가 되었습니다.",
+    "instead of는 '~의 자리에'라는 뜻을 그대로 담고 있는 표현입니다.",
+    "instead의 핵심 이미지는 '한 자리를 다른 것으로 바꿔치기 하는 것 🔄'입니다."
+   ],
+   "meanings": [
+    "대신에",
+    "(instead of) ~ 대신에"
+   ],
+   "examples": [
+    {
+     "en": "I don't want juice. Water instead, please.",
+     "ko": "주스는 안 마실래요. 대신 물 주세요."
+    },
+    {
+     "en": "Instead of playing games, let's read a book.",
+     "ko": "게임하는 대신 책을 읽자."
+    },
+    {
+     "en": "She stayed home instead of going out.",
+     "ko": "그녀는 외출하는 대신 집에 있었어요."
+    },
+    {
+     "en": "We took the bus instead of walking.",
+     "ko": "우리는 걷는 대신 버스를 탔어요."
+    },
+    {
+     "en": "Can I have tea instead?",
+     "ko": "대신 차를 마셔도 될까요?"
+    },
+    {
+     "en": "Use a spoon instead of your hands.",
+     "ko": "손 대신 숟가락을 써."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "rather",
+     "ko": "오히려, 차라리",
+     "en": "I'd rather stay."
+    },
+    {
+     "type": "연관어",
+     "word": "replace",
+     "ko": "대체하다",
+     "en": "Replace the battery."
+    },
+    {
+     "type": "연관어",
+     "word": "alternative",
+     "ko": "대안",
+     "en": "Find an alternative."
+    },
+    {
+     "type": "연관어",
+     "word": "prefer",
+     "ko": "선호하다",
+     "en": "Prefer this one."
+    },
+    {
+     "type": "연관어",
+     "word": "swap",
+     "ko": "바꾸다",
+     "en": "Swap seats."
+    },
+    {
+     "type": "연관어",
+     "word": "choice",
+     "ko": "선택",
+     "en": "Make a choice."
+    }
+   ]
+  },
+  "2833": {
+   "word": "unless",
+   "overview": [
+    "unless는 '만약 ~하지 않는다면'이라는 뜻의 접속사입니다. if not과 같은 뜻입니다.",
+    "Unless it rains, we'll go to the park.(비가 오지 않는다면, 우리는 공원에 갈 거예요.)처럼 씁니다.",
+    "무언가가 일어나지 않는 조건에서 벗어나야 다른 일이 일어난다는 것을 말할 때 씁니다.",
+    "unless는 부정의 뜻을 이미 담고 있어서 not을 또 쓸 필요가 없습니다."
+   ],
+   "easy": [
+    {
+     "word": "if not",
+     "en": "If not, stay.",
+     "ko": "아니라면 있어."
+    },
+    {
+     "word": "except if",
+     "en": "Except if late.",
+     "ko": "늦지 않는다면."
+    }
+   ],
+   "etymology": [
+    "unless는 on lesse than(~보다 적은 조건에서)이라는 옛 표현에서 온 단어입니다.",
+    "less(더 적은)와 이어져, '그 조건이 아닌 한'이라는 뜻이 되었습니다.",
+    "1400년대쯤부터 지금과 비슷한 접속사 형태로 쓰이기 시작했습니다.",
+    "if...not과 뜻이 같지만, 한 단어로 더 간결하게 표현합니다.",
+    "unless의 핵심 이미지는 '이 조건이 채워지지 않는 한 ❌'입니다."
+   ],
+   "meanings": [
+    "만약 ~하지 않는다면"
+   ],
+   "examples": [
+    {
+     "en": "Unless you study, you won't pass the test.",
+     "ko": "공부하지 않으면 시험에 통과하지 못할 거예요."
+    },
+    {
+     "en": "We'll go hiking unless it rains.",
+     "ko": "비가 오지 않으면 우리는 하이킹을 갈 거예요."
+    },
+    {
+     "en": "I won't go unless you come too.",
+     "ko": "너도 오지 않으면 나는 안 갈 거야."
+    },
+    {
+     "en": "Don't open the door unless you know who it is.",
+     "ko": "누군지 모르면 문을 열지 마."
+    },
+    {
+     "en": "Unless something changes, we'll leave tomorrow.",
+     "ko": "뭔가 바뀌지 않는다면 우리는 내일 떠날 거예요."
+    },
+    {
+     "en": "You can't enter unless you have a ticket.",
+     "ko": "표가 없으면 들어갈 수 없어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "if not",
+     "ko": "그렇지 않으면",
+     "en": "If not, wait."
+    },
+    {
+     "type": "연관어",
+     "word": "except",
+     "ko": "~을 제외하고",
+     "en": "Except for me."
+    },
+    {
+     "type": "연관어",
+     "word": "condition",
+     "ko": "조건",
+     "en": "One condition."
+    },
+    {
+     "type": "연관어",
+     "word": "otherwise",
+     "ko": "그렇지 않으면",
+     "en": "Otherwise, we'll fail."
+    },
+    {
+     "type": "연관어",
+     "word": "if",
+     "ko": "만약 ~라면",
+     "en": "If it rains."
+    },
+    {
+     "type": "연관어",
+     "word": "provided",
+     "ko": "~라는 조건으로",
+     "en": "Provided you agree."
+    }
+   ]
+  },
+  "1346": {
+   "word": "hotel",
+   "overview": [
+    "hotel은 '호텔'이라는 뜻의 명사입니다. 여행객이 돈을 내고 묵는 큰 숙박 시설입니다.",
+    "stay at a hotel(호텔에 묵다), book a hotel room(호텔 방을 예약하다)처럼 씁니다.",
+    "레스토랑, 수영장 등 여러 시설이 있는 큰 호텔부터 작은 호텔까지 다양합니다.",
+    "여행 가서 지내는 작고 편안한 숙소는 inn, 여관은 motel이라고도 합니다."
+   ],
+   "easy": [
+    {
+     "word": "inn",
+     "en": "A cozy inn.",
+     "ko": "아늑한 여관."
+    },
+    {
+     "word": "room",
+     "en": "A hotel room.",
+     "ko": "호텔 방."
+    }
+   ],
+   "etymology": [
+    "hotel은 프랑스어 hôtel(저택, 숙박 시설)에서 온 단어입니다.",
+    "라틴어 hospitale(손님을 맞는 곳)에서 나온 말입니다.",
+    "hospital(병원), host(주인, 손님을 맞는 사람)도 같은 뿌리에서 나온 형제 단어들입니다.",
+    "'손님을 정성껏 맞이하는 곳'이라는 뜻이 지금의 호텔로 이어져 왔습니다.",
+    "hotel의 핵심 이미지는 '여행객을 반갑게 맞아 주는 숙소 🏨'입니다."
+   ],
+   "meanings": [
+    "호텔"
+   ],
+   "examples": [
+    {
+     "en": "We stayed at a nice hotel by the beach.",
+     "ko": "우리는 해변 근처의 멋진 호텔에 묵었어요."
+    },
+    {
+     "en": "I booked a hotel room for two nights.",
+     "ko": "나는 이틀 밤 호텔 방을 예약했어요."
+    },
+    {
+     "en": "The hotel has a swimming pool.",
+     "ko": "그 호텔에는 수영장이 있어요."
+    },
+    {
+     "en": "Our hotel room had a great view.",
+     "ko": "우리 호텔 방은 전망이 좋았어요."
+    },
+    {
+     "en": "The hotel staff was very kind.",
+     "ko": "호텔 직원들이 아주 친절했어요."
+    },
+    {
+     "en": "We checked into the hotel late at night.",
+     "ko": "우리는 밤늦게 호텔에 체크인했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "room",
+     "ko": "방",
+     "en": "A double room."
+    },
+    {
+     "type": "연관어",
+     "word": "inn",
+     "ko": "여관",
+     "en": "A country inn."
+    },
+    {
+     "type": "연관어",
+     "word": "guest",
+     "ko": "손님",
+     "en": "A hotel guest."
+    },
+    {
+     "type": "연관어",
+     "word": "reservation",
+     "ko": "예약",
+     "en": "Make a reservation."
+    },
+    {
+     "type": "연관어",
+     "word": "lobby",
+     "ko": "로비",
+     "en": "Meet in the lobby."
+    },
+    {
+     "type": "연관어",
+     "word": "vacation",
+     "ko": "휴가",
+     "en": "A summer vacation."
+    }
+   ]
+  },
+  "183": {
+   "word": "attack",
+   "overview": [
+    "attack은 '공격하다'라는 뜻의 동사이자 '공격'이라는 뜻의 명사입니다.",
+    "attack an enemy(적을 공격하다), a sudden attack(갑작스러운 공격)처럼 씁니다.",
+    "'(질병이) 발작을 일으키다'라는 뜻도 있습니다. a heart attack(심장 마비)",
+    "말이나 글로 세게 비판하는 것도 attack이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "fight",
+     "en": "A big fight.",
+     "ko": "큰 싸움."
+    },
+    {
+     "word": "hit",
+     "en": "Hit the target.",
+     "ko": "목표물을 치다."
+    }
+   ],
+   "etymology": [
+    "attack은 이탈리아어 attaccare(붙이다, 공격을 시작하다)에서 온 단어입니다.",
+    "'맞붙어 싸움을 걸다'라는 뜻이었습니다.",
+    "attach(붙이다, 첨부하다)도 같은 뿌리에서 나온 형제 단어입니다.",
+    "'서로 부딪쳐 붙다'라는 뜻이 '공격하다'로 좁혀졌습니다.",
+    "attack의 핵심 이미지는 '갑자기 달려들어 공격하기 ⚔️'입니다."
+   ],
+   "meanings": [
+    "공격하다 (동사)",
+    "공격 (명사)",
+    "(질병의) 발작 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The lion attacked the zebra.",
+     "ko": "사자가 얼룩말을 공격했어요."
+    },
+    {
+     "en": "The village was under attack.",
+     "ko": "그 마을은 공격을 받고 있었어요."
+    },
+    {
+     "en": "He suffered a heart attack.",
+     "ko": "그는 심장 마비를 일으켰어요."
+    },
+    {
+     "en": "Don't attack others with harsh words.",
+     "ko": "거친 말로 다른 사람을 공격하지 마."
+    },
+    {
+     "en": "The soldiers prepared for the attack.",
+     "ko": "군인들은 공격에 대비했어요."
+    },
+    {
+     "en": "The dog attacked the mailman.",
+     "ko": "개가 우편배달부를 공격했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "반의어",
+     "word": "defend",
+     "ko": "방어하다",
+     "en": "Defend the castle."
+    },
+    {
+     "type": "연관어",
+     "word": "fight",
+     "ko": "싸우다",
+     "en": "Fight bravely."
+    },
+    {
+     "type": "연관어",
+     "word": "enemy",
+     "ko": "적",
+     "en": "A dangerous enemy."
+    },
+    {
+     "type": "연관어",
+     "word": "battle",
+     "ko": "전투",
+     "en": "A fierce battle."
+    },
+    {
+     "type": "연관어",
+     "word": "weapon",
+     "ko": "무기",
+     "en": "A sharp weapon."
+    },
+    {
+     "type": "연관어",
+     "word": "protect",
+     "ko": "보호하다",
+     "en": "Protect the city."
+    }
+   ]
+  },
+  "2270": {
+   "word": "round",
+   "overview": [
+    "round는 '둥근'이라는 뜻의 형용사입니다. 원이나 공처럼 동그란 모양을 말합니다.",
+    "a round table(둥근 탁자), a round face(둥근 얼굴)처럼 씁니다.",
+    "'(한) 회', '라운드'라는 명사로도 씁니다. the first round(첫 번째 라운드)",
+    "동사로는 '숫자를 반올림하다'라는 뜻도 있습니다. round up to 10(10으로 반올림하다)"
+   ],
+   "easy": [
+    {
+     "word": "circular",
+     "en": "A circular shape.",
+     "ko": "원형 모양."
+    },
+    {
+     "word": "ball",
+     "en": "A round ball.",
+     "ko": "둥근 공."
+    }
+   ],
+   "etymology": [
+    "round는 옛 프랑스어 roont(둥근)에서 온 단어입니다.",
+    "라틴어 rotundus(둥근, 바퀴 같은)에서 나온 말로, rota(바퀴)와 이어집니다.",
+    "rotate(회전하다)도 같은 뿌리에서 나온 단어입니다.",
+    "'경기의 한 판'을 round라고 하는 것은 선수들이 돌아가며 대결하는 '한 바퀴'라는 느낌에서 나왔다고 봅니다.",
+    "round의 핵심 이미지는 '모서리 없이 매끈하게 둥근 모양 ⚪'입니다."
+   ],
+   "meanings": [
+    "둥근 (형용사)",
+    "(경기의) 한 회, 라운드 (명사)",
+    "~을 돌아, 둘레에 (전치사·부사)",
+    "(숫자를) 반올림하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "The moon looks round tonight.",
+     "ko": "오늘 밤 달은 둥글게 보여요."
+    },
+    {
+     "en": "She won the first round of the game.",
+     "ko": "그녀는 그 게임의 첫 라운드에서 이겼어요."
+    },
+    {
+     "en": "We walked round the lake.",
+     "ko": "우리는 호수 주변을 돌아 걸었어요."
+    },
+    {
+     "en": "Round the number to the nearest ten.",
+     "ko": "그 숫자를 가장 가까운 10 단위로 반올림해."
+    },
+    {
+     "en": "The table is round, not square.",
+     "ko": "그 탁자는 네모가 아니라 둥글어요."
+    },
+    {
+     "en": "Turn round and look at me.",
+     "ko": "돌아서서 나를 봐."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "circular",
+     "ko": "원형의",
+     "en": "A circular door."
+    },
+    {
+     "type": "반의어",
+     "word": "square",
+     "ko": "네모난",
+     "en": "A square box."
+    },
+    {
+     "type": "연관어",
+     "word": "circle",
+     "ko": "원",
+     "en": "Draw a circle."
+    },
+    {
+     "type": "연관어",
+     "word": "around",
+     "ko": "~ 주위에",
+     "en": "Look around."
+    },
+    {
+     "type": "연관어",
+     "word": "ball",
+     "ko": "공",
+     "en": "A soccer ball."
+    },
+    {
+     "type": "연관어",
+     "word": "match",
+     "ko": "경기, 시합",
+     "en": "The final match."
+    }
+   ]
+  },
+  "993": {
+   "word": "expect",
+   "overview": [
+    "expect는 '기대하다', '예상하다'라는 뜻의 동사입니다. 앞으로 일어날 일을 미리 생각하는 것을 말합니다.",
+    "expect a call(전화가 올 거라 예상하다), I expect so.(그럴 거라 생각해요.)처럼 씁니다.",
+    "expect a baby(아기를 가질 예정이다)처럼 임신했을 때도 씁니다.",
+    "명사 expectation(기대)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hope",
+     "en": "Hope for the best.",
+     "ko": "최선을 바라다."
+    },
+    {
+     "word": "predict",
+     "en": "Predict the future.",
+     "ko": "미래를 예측하다."
+    }
+   ],
+   "etymology": [
+    "expect는 라틴어 exspectare(기다리며 바라보다)에서 온 단어입니다.",
+    "ex(밖으로)와 spectare(바라보다)가 합쳐진 말입니다.",
+    "spectator(관중), spectacle(구경거리)도 spectare에서 나온 같은 가족입니다.",
+    "'무언가를 밖을 향해 기다리며 바라보다'라는 뜻이 '기대하다', '예상하다'로 이어졌습니다.",
+    "expect의 핵심 이미지는 '앞으로 다가올 일을 눈을 크게 뜨고 기다리기 👀'입니다."
+   ],
+   "meanings": [
+    "기대하다, 예상하다",
+    "(아기를) 가질 예정이다"
+   ],
+   "examples": [
+    {
+     "en": "I expect you to be on time.",
+     "ko": "나는 네가 제시간에 올 거라고 기대해."
+    },
+    {
+     "en": "We expect a lot of rain this weekend.",
+     "ko": "우리는 이번 주말에 비가 많이 올 거라고 예상해요."
+    },
+    {
+     "en": "She is expecting a baby.",
+     "ko": "그녀는 아기를 가질 예정이에요."
+    },
+    {
+     "en": "I didn't expect to see you here.",
+     "ko": "여기서 널 만날 줄 몰랐어."
+    },
+    {
+     "en": "The teacher expects us to do our best.",
+     "ko": "선생님은 우리가 최선을 다하기를 기대하세요."
+    },
+    {
+     "en": "As expected, our team won.",
+     "ko": "예상대로 우리 팀이 이겼어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "expectation",
+     "ko": "기대",
+     "en": "High expectations."
+    },
+    {
+     "type": "유의어",
+     "word": "hope",
+     "ko": "바라다",
+     "en": "Hope for good news."
+    },
+    {
+     "type": "유의어",
+     "word": "predict",
+     "ko": "예측하다",
+     "en": "Predict the weather."
+    },
+    {
+     "type": "연관어",
+     "word": "anticipate",
+     "ko": "예상하다",
+     "en": "Anticipate a problem."
+    },
+    {
+     "type": "연관어",
+     "word": "surprise",
+     "ko": "놀라움",
+     "en": "A big surprise."
+    },
+    {
+     "type": "연관어",
+     "word": "wait",
+     "ko": "기다리다",
+     "en": "Wait patiently."
+    }
+   ]
+  },
+  "2678": {
+   "word": "terrible",
+   "overview": [
+    "terrible은 '끔찍한', '아주 나쁜'이라는 뜻의 형용사입니다.",
+    "a terrible accident(끔찍한 사고), feel terrible(기분이 아주 안 좋다)처럼 씁니다.",
+    "구어에서는 심하게 나쁜 것을 강조할 때 아주 자주 씁니다. terrible weather(아주 안 좋은 날씨)",
+    "부사 terribly는 '끔찍하게', '몹시'라는 뜻입니다."
+   ],
+   "easy": [
+    {
+     "word": "awful",
+     "en": "Awful weather.",
+     "ko": "끔찍한 날씨."
+    },
+    {
+     "word": "bad",
+     "en": "A bad day.",
+     "ko": "안 좋은 하루."
+    }
+   ],
+   "etymology": [
+    "terrible은 라틴어 terribilis(무서운, 겁나게 하는)에서 온 단어입니다.",
+    "terrere(겁나게 하다)에서 나온 말로, terror(공포), terrify(겁먹게 하다)와 같은 가족입니다.",
+    "처음에는 '무서워서 벌벌 떨게 만드는'이라는 강한 뜻이었습니다.",
+    "지금은 무섭다는 뜻보다 '아주 안 좋은', '형편없는'이라는 뜻으로 더 자주 씁니다.",
+    "terrible의 핵심 이미지는 '너무 끔찍해서 눈살을 찌푸리게 되는 상황 😖'입니다."
+   ],
+   "meanings": [
+    "끔찍한, 무서운",
+    "아주 나쁜, 형편없는"
+   ],
+   "examples": [
+    {
+     "en": "It was a terrible storm.",
+     "ko": "끔찍한 폭풍이었어요."
+    },
+    {
+     "en": "I feel terrible about what happened.",
+     "ko": "무슨 일이 있었는지 생각하니 기분이 아주 안 좋아요."
+    },
+    {
+     "en": "The food at that restaurant was terrible.",
+     "ko": "그 식당 음식은 형편없었어요."
+    },
+    {
+     "en": "He made a terrible mistake.",
+     "ko": "그는 끔찍한 실수를 저질렀어요."
+    },
+    {
+     "en": "The weather has been terrible all week.",
+     "ko": "이번 주 내내 날씨가 아주 안 좋았어요."
+    },
+    {
+     "en": "I'm terribly sorry for the trouble.",
+     "ko": "폐를 끼쳐서 정말 죄송해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "awful",
+     "ko": "끔찍한",
+     "en": "An awful smell."
+    },
+    {
+     "type": "유의어",
+     "word": "horrible",
+     "ko": "끔찍한",
+     "en": "A horrible sound."
+    },
+    {
+     "type": "반의어",
+     "word": "wonderful",
+     "ko": "멋진",
+     "en": "A wonderful day."
+    },
+    {
+     "type": "파생어",
+     "word": "terribly",
+     "ko": "끔찍하게, 몹시",
+     "en": "Terribly cold."
+    },
+    {
+     "type": "연관어",
+     "word": "terror",
+     "ko": "공포",
+     "en": "A moment of terror."
+    },
+    {
+     "type": "연관어",
+     "word": "disaster",
+     "ko": "재난",
+     "en": "A natural disaster."
+    }
+   ]
+  },
+  "2524": {
+   "word": "station",
+   "overview": [
+    "station은 '역', '정거장'이라는 뜻의 명사입니다. 기차, 버스 등이 서는 곳을 말합니다.",
+    "a train station(기차역), a bus station(버스 정류장)처럼 씁니다.",
+    "특정한 일을 하는 곳도 station이라고 합니다. a police station(경찰서), a fire station(소방서)",
+    "TV나 라디오 '방송국'도 station이라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "stop",
+     "en": "A bus stop.",
+     "ko": "버스 정류장."
+    },
+    {
+     "word": "office",
+     "en": "The police office.",
+     "ko": "경찰 사무실."
+    }
+   ],
+   "etymology": [
+    "station은 라틴어 statio(서 있는 곳, 서 있는 상태)에서 온 단어입니다.",
+    "stare(서다)에서 나온 말로, stand(서다)와도 먼 친척입니다.",
+    "'멈춰 서서 기다리는 정해진 장소'라는 뜻에서 '역', '정거장'이 되었습니다.",
+    "'특정 임무를 위해 정해진 자리'라는 뜻에서 경찰서, 소방서, 방송국도 station이라고 부르게 되었습니다.",
+    "station의 핵심 이미지는 '기차가 멈춰 서는 익숙한 장소 🚉'입니다."
+   ],
+   "meanings": [
+    "역, 정류장",
+    "(경찰서·소방서 등) ~서, ~국",
+    "(방송) 방송국, 채널"
+   ],
+   "examples": [
+    {
+     "en": "I'll meet you at the train station.",
+     "ko": "기차역에서 만나자."
+    },
+    {
+     "en": "The bus station is near my house.",
+     "ko": "버스 정류장은 우리 집 근처에 있어요."
+    },
+    {
+     "en": "Someone reported the theft at the police station.",
+     "ko": "누군가 경찰서에 절도를 신고했어요."
+    },
+    {
+     "en": "The fire station is always ready to help.",
+     "ko": "소방서는 항상 도울 준비가 되어 있어요."
+    },
+    {
+     "en": "Let's change to a different radio station.",
+     "ko": "다른 라디오 방송국으로 바꾸자."
+    },
+    {
+     "en": "Get off at the next station.",
+     "ko": "다음 역에서 내려."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "train",
+     "ko": "기차",
+     "en": "Catch the train."
+    },
+    {
+     "type": "연관어",
+     "word": "bus",
+     "ko": "버스",
+     "en": "Take the bus."
+    },
+    {
+     "type": "연관어",
+     "word": "police",
+     "ko": "경찰",
+     "en": "Call the police."
+    },
+    {
+     "type": "연관어",
+     "word": "subway",
+     "ko": "지하철",
+     "en": "A subway station."
+    },
+    {
+     "type": "연관어",
+     "word": "platform",
+     "ko": "승강장, 플랫폼",
+     "en": "Wait on the platform."
+    },
+    {
+     "type": "연관어",
+     "word": "ticket",
+     "ko": "표",
+     "en": "Buy a ticket."
+    }
+   ]
+  },
+  "1125": {
+   "word": "forever",
+   "overview": [
+    "forever는 '영원히'라는 뜻의 부사입니다. 끝없이 계속되는 것을 말합니다.",
+    "I'll love you forever.(나는 너를 영원히 사랑할 거야.)처럼 씁니다.",
+    "구어에서는 '아주 오랫동안'이라는 과장된 뜻으로도 씁니다. It took forever!(정말 오래 걸렸어!)",
+    "for(위해)와 ever(늘)가 합쳐진 말이라서 뜻을 짐작하기 쉽습니다."
+   ],
+   "easy": [
+    {
+     "word": "always",
+     "en": "Always here.",
+     "ko": "항상 여기."
+    },
+    {
+     "word": "forever and ever",
+     "en": "Forever and ever.",
+     "ko": "영원히 영원히."
+    }
+   ],
+   "etymology": [
+    "forever는 for(~을 위해)와 ever(늘, 언제나)가 합쳐진 말입니다.",
+    "'끝없는 시간을 위해서'라는 뜻이 그대로 이어져 왔습니다.",
+    "옛날에는 for ever처럼 띄어 쓰다가, 점점 한 단어 forever로 붙여 쓰게 되었습니다.",
+    "지금은 영국에서도 미국에서도 forever로 많이 씁니다.",
+    "forever의 핵심 이미지는 '끝없이 이어지는 시간의 길 ♾️'입니다."
+   ],
+   "meanings": [
+    "영원히",
+    "(구어) 아주 오랫동안"
+   ],
+   "examples": [
+    {
+     "en": "I will remember this day forever.",
+     "ko": "나는 이날을 영원히 기억할 거예요."
+    },
+    {
+     "en": "This friendship will last forever.",
+     "ko": "이 우정은 영원히 계속될 거예요."
+    },
+    {
+     "en": "The bus took forever to arrive.",
+     "ko": "버스가 오는 데 정말 오래 걸렸어요."
+    },
+    {
+     "en": "Nothing lasts forever.",
+     "ko": "어떤 것도 영원히 지속되지는 않아요."
+    },
+    {
+     "en": "We'll be friends forever.",
+     "ko": "우리는 영원히 친구일 거예요."
+    },
+    {
+     "en": "I could stay here forever.",
+     "ko": "나는 여기 영원히 있을 수도 있을 것 같아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "always",
+     "ko": "항상",
+     "en": "Always kind."
+    },
+    {
+     "type": "반의어",
+     "word": "never",
+     "ko": "절대 ~않다",
+     "en": "Never give up."
+    },
+    {
+     "type": "연관어",
+     "word": "eternal",
+     "ko": "영원한",
+     "en": "Eternal love."
+    },
+    {
+     "type": "연관어",
+     "word": "permanent",
+     "ko": "영구적인",
+     "en": "A permanent mark."
+    },
+    {
+     "type": "연관어",
+     "word": "endless",
+     "ko": "끝없는",
+     "en": "Endless summer."
+    },
+    {
+     "type": "연관어",
+     "word": "always and forever",
+     "ko": "언제까지나",
+     "en": "Always and forever."
+    }
+   ]
+  },
+  "979": {
+   "word": "except",
+   "overview": [
+    "except는 '~을 제외하고'라는 뜻의 전치사입니다. 하나만 빼고 나머지를 가리킬 때 씁니다.",
+    "everyone except me(나 빼고 모두), except for the rain(비를 빼면)처럼 씁니다.",
+    "동사로는 '제외하다'라는 뜻이 있지만, 전치사로 쓰는 경우가 훨씬 많습니다.",
+    "except that은 '~라는 점만 빼면'이라는 뜻의 표현입니다."
+   ],
+   "easy": [
+    {
+     "word": "but",
+     "en": "All but one.",
+     "ko": "하나 빼고 전부."
+    },
+    {
+     "word": "besides",
+     "en": "Besides that.",
+     "ko": "그것 말고도."
+    }
+   ],
+   "etymology": [
+    "except는 라틴어 exceptus(밖으로 잡아낸)에서 온 단어입니다.",
+    "ex(밖으로)와 capere(잡다)가 합쳐진 말입니다.",
+    "capture(붙잡다), capable(할 수 있는)도 capere에서 나온 같은 가족입니다.",
+    "'다른 것들 속에서 하나만 따로 밖으로 잡아내다'라는 뜻이 '~을 제외하고'가 되었습니다.",
+    "except의 핵심 이미지는 '여럿 중 하나만 쏙 빼놓기 ➖'입니다."
+   ],
+   "meanings": [
+    "~을 제외하고 (전치사)",
+    "제외하다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "Everyone came except him.",
+     "ko": "그를 빼고 모두 왔어요."
+    },
+    {
+     "en": "I like all fruits except bananas.",
+     "ko": "나는 바나나 빼고 모든 과일을 좋아해요."
+    },
+    {
+     "en": "The park is open every day except Monday.",
+     "ko": "그 공원은 월요일 빼고 매일 열어요."
+    },
+    {
+     "en": "Nothing was wrong except the color.",
+     "ko": "색깔 빼고는 아무 문제도 없었어요."
+    },
+    {
+     "en": "She never eats out, except on birthdays.",
+     "ko": "그녀는 생일 빼고는 외식을 절대 안 해요."
+    },
+    {
+     "en": "We had no choice except to wait.",
+     "ko": "우리는 기다리는 것 말고는 선택의 여지가 없었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "but",
+     "ko": "~을 제외하고",
+     "en": "All but one."
+    },
+    {
+     "type": "연관어",
+     "word": "besides",
+     "ko": "~ 말고도",
+     "en": "Besides sports."
+    },
+    {
+     "type": "연관어",
+     "word": "excluding",
+     "ko": "제외하고",
+     "en": "Excluding weekends."
+    },
+    {
+     "type": "연관어",
+     "word": "unless",
+     "ko": "~하지 않는다면",
+     "en": "Unless you try."
+    },
+    {
+     "type": "연관어",
+     "word": "apart from",
+     "ko": "~ 외에는",
+     "en": "Apart from that."
+    },
+    {
+     "type": "연관어",
+     "word": "only",
+     "ko": "오직",
+     "en": "Only him."
+    }
+   ]
+  },
+  "1675": {
+   "word": "message",
+   "overview": [
+    "message는 '메시지', '전갈'이라는 뜻의 명사입니다. 누군가에게 전하는 말이나 글입니다.",
+    "send a message(메시지를 보내다), leave a message(메시지를 남기다)처럼 씁니다.",
+    "이야기나 영화가 전하는 '교훈'도 message라고 합니다. the message of the story(이야기의 교훈)",
+    "동사로는 '메시지를 보내다'라는 뜻입니다. text message(문자 메시지)"
+   ],
+   "easy": [
+    {
+     "word": "note",
+     "en": "Leave a note.",
+     "ko": "쪽지를 남겨."
+    },
+    {
+     "word": "text",
+     "en": "Send a text.",
+     "ko": "문자를 보내."
+    }
+   ],
+   "etymology": [
+    "message는 라틴어 mittere(보내다)에서 온 단어입니다.",
+    "missus(보내진 것)에서 나온 말로, mission(임무), send를 대신하는 여러 단어와 같은 가족입니다.",
+    "'다른 사람에게 보내는 말'이라는 뜻이 그대로 이어져 왔습니다.",
+    "messenger(전달자)도 여기서 나온 말입니다.",
+    "message의 핵심 이미지는 '누군가에게 전해지는 소중한 말 ✉️'입니다."
+   ],
+   "meanings": [
+    "메시지, 전갈 (명사)",
+    "(작품의) 교훈, 메시지 (명사)",
+    "메시지를 보내다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "I sent you a message this morning.",
+     "ko": "오늘 아침에 너한테 메시지 보냈어."
+    },
+    {
+     "en": "Can I leave a message for her?",
+     "ko": "그녀에게 메시지를 남겨도 될까요?"
+    },
+    {
+     "en": "This story has an important message.",
+     "ko": "이 이야기는 중요한 교훈을 담고 있어요."
+    },
+    {
+     "en": "Check your messages later.",
+     "ko": "나중에 메시지 확인해."
+    },
+    {
+     "en": "He got the message right away.",
+     "ko": "그는 그 의미를 바로 알아차렸어요."
+    },
+    {
+     "en": "I'll message you when I arrive.",
+     "ko": "도착하면 메시지 보낼게요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "note",
+     "ko": "쪽지",
+     "en": "A sticky note."
+    },
+    {
+     "type": "연관어",
+     "word": "text",
+     "ko": "문자",
+     "en": "Send a text."
+    },
+    {
+     "type": "파생어",
+     "word": "messenger",
+     "ko": "전달자, 메신저",
+     "en": "A messenger bag."
+    },
+    {
+     "type": "연관어",
+     "word": "send",
+     "ko": "보내다",
+     "en": "Send a gift."
+    },
+    {
+     "type": "연관어",
+     "word": "email",
+     "ko": "이메일",
+     "en": "Check your email."
+    },
+    {
+     "type": "연관어",
+     "word": "meaning",
+     "ko": "의미",
+     "en": "The meaning behind it."
+    }
+   ]
+  },
+  "941": {
+   "word": "entire",
+   "overview": [
+    "entire는 '전부의', '전체의'라는 뜻의 형용사입니다. whole과 비슷한 뜻으로, 빠짐없이 모두를 가리킵니다.",
+    "the entire class(반 전체), the entire day(하루 종일)처럼 씁니다.",
+    "whole보다 조금 더 격식 있는 말투에서 자주 씁니다.",
+    "부사 entirely(완전히, 전적으로)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "whole",
+     "en": "The whole team.",
+     "ko": "팀 전체."
+    },
+    {
+     "word": "all",
+     "en": "All of it.",
+     "ko": "그것 전부."
+    }
+   ],
+   "etymology": [
+    "entire는 라틴어 integer(손대지 않은, 온전한)에서 온 단어입니다.",
+    "in(아닌)과 tangere(만지다)가 합쳐진 말로, '손대지 않아 흠 없이 온전한'이라는 뜻입니다.",
+    "integer(정수), integrity(온전함, 성실함)도 같은 뿌리에서 나온 단어들입니다.",
+    "'조각나지 않고 통째로 온전한'이라는 뜻이 지금의 entire로 이어졌습니다.",
+    "entire의 핵심 이미지는 '한 조각도 빠지지 않은 온전한 전체 🌍'입니다."
+   ],
+   "meanings": [
+    "전부의, 전체의",
+    "완전한, 온전한"
+   ],
+   "examples": [
+    {
+     "en": "I read the entire book in a day.",
+     "ko": "나는 하루 만에 책 전체를 다 읽었어요."
+    },
+    {
+     "en": "The entire family went on vacation together.",
+     "ko": "온 가족이 함께 휴가를 갔어요."
+    },
+    {
+     "en": "It rained the entire weekend.",
+     "ko": "주말 내내 비가 왔어요."
+    },
+    {
+     "en": "She ate the entire pizza by herself.",
+     "ko": "그녀는 피자 한 판을 혼자 다 먹었어요."
+    },
+    {
+     "en": "The entire city was covered in snow.",
+     "ko": "도시 전체가 눈으로 덮였어요."
+    },
+    {
+     "en": "I trust him entirely.",
+     "ko": "나는 그를 완전히 신뢰해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "whole",
+     "ko": "전체의",
+     "en": "The whole world."
+    },
+    {
+     "type": "유의어",
+     "word": "complete",
+     "ko": "완전한",
+     "en": "A complete set."
+    },
+    {
+     "type": "파생어",
+     "word": "entirely",
+     "ko": "완전히",
+     "en": "Entirely true."
+    },
+    {
+     "type": "연관어",
+     "word": "all",
+     "ko": "모든",
+     "en": "All the time."
+    },
+    {
+     "type": "연관어",
+     "word": "total",
+     "ko": "전체의, 총",
+     "en": "The total amount."
+    },
+    {
+     "type": "연관어",
+     "word": "full",
+     "ko": "가득 찬",
+     "en": "A full glass."
+    }
+   ]
   }
  }
 }
