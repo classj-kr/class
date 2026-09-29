@@ -17325,6 +17325,1928 @@
      "en": "Comfort a friend."
     }
    ]
+  },
+  "1775": {
+   "word": "neutral",
+   "overview": [
+    "neutral은 '중립의, 어느 편도 들지 않는'이라는 뜻의 형용사입니다.",
+    "stay neutral(중립을 지키다)처럼 씁니다.",
+    "'(색이) 무채색의, (표정이) 무표정한', 과학에서는 '중성의'라는 뜻으로도 씁니다.",
+    "명사로는 자동차 기어의 '중립'이라는 뜻이 있고, neutrality(중립)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "fair",
+     "en": "A fair judge.",
+     "ko": "공정한 심판."
+    },
+    {
+     "word": "plain",
+     "en": "A plain color.",
+     "ko": "무난한 색."
+    }
+   ],
+   "etymology": [
+    "neutral은 라틴어 neuter(둘 중 어느 쪽도 아닌)에서 온 단어입니다.",
+    "ne(아니다)와 uter(둘 중 하나)가 합쳐진 말입니다.",
+    "'양쪽 어디에도 속하지 않는'이라는 뜻이 그대로 이어져 왔습니다.",
+    "다툼에서 편을 들지 않는 태도, 튀지 않는 색, 전기적으로 +도 -도 아닌 상태를 가리킵니다.",
+    "neutral의 핵심 이미지는 '양쪽 사이 한가운데 치우치지 않고 서 있는 것 ⚖️'입니다."
+   ],
+   "meanings": [
+    "무차별의, 중립의",
+    "중성의",
+    "(색이) 무채색의"
+   ],
+   "examples": [
+    {
+     "en": "Switzerland stayed neutral during the war.",
+     "ko": "스위스는 전쟁 동안 중립을 지켰어요."
+    },
+    {
+     "en": "The referee must be neutral.",
+     "ko": "심판은 중립적이어야 해요."
+    },
+    {
+     "en": "She painted the walls a neutral color like beige.",
+     "ko": "그녀는 벽을 베이지 같은 무난한 색으로 칠했어요."
+    },
+    {
+     "en": "His face was neutral, so I couldn't tell how he felt.",
+     "ko": "그의 표정이 무덤덤해서 기분이 어떤지 알 수 없었어요."
+    },
+    {
+     "en": "Put the car in neutral.",
+     "ko": "차 기어를 중립에 놓으세요."
+    },
+    {
+     "en": "Water is neither acid nor base—it's neutral.",
+     "ko": "물은 산성도 염기성도 아닌 중성이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "impartial",
+     "ko": "공정한",
+     "en": "An impartial judge."
+    },
+    {
+     "type": "반의어",
+     "word": "biased",
+     "ko": "편향된",
+     "en": "A biased opinion."
+    },
+    {
+     "type": "파생어",
+     "word": "neutrality",
+     "ko": "중립",
+     "en": "Political neutrality."
+    },
+    {
+     "type": "연관어",
+     "word": "fair",
+     "ko": "공정한",
+     "en": "A fair game."
+    },
+    {
+     "type": "연관어",
+     "word": "side",
+     "ko": "편",
+     "en": "Take sides."
+    },
+    {
+     "type": "연관어",
+     "word": "balance",
+     "ko": "균형",
+     "en": "Keep balance."
+    }
+   ]
+  },
+  "1184": {
+   "word": "gasoline",
+   "overview": [
+    "gasoline은 '휘발유'라는 뜻의 명사입니다.",
+    "run out of gasoline(휘발유가 떨어지다)처럼 씁니다.",
+    "미국에서는 줄여서 gas, 영국에서는 petrol이라고 합니다.",
+    "자동차 엔진을 움직이는 대표적인 연료입니다."
+   ],
+   "easy": [
+    {
+     "word": "gas",
+     "en": "Fill up with gas.",
+     "ko": "기름을 가득 넣다."
+    },
+    {
+     "word": "fuel",
+     "en": "Car fuel.",
+     "ko": "자동차 연료."
+    }
+   ],
+   "etymology": [
+    "gasoline은 gas(기체)에 -ol(기름)과 -ine(물질을 뜻하는 끝말)이 붙어 만들어진 단어입니다.",
+    "19세기 중반 한 상표 이름에서 시작되었다고 전해집니다.",
+    "쉽게 기체로 날아가는 기름이라는 특징에서 이런 이름이 붙었습니다.",
+    "지금은 자동차 연료로 쓰는 휘발유를 가리킵니다.",
+    "gasoline의 핵심 이미지는 '자동차를 달리게 하는 투명한 연료 ⛽'입니다."
+   ],
+   "meanings": [
+    "휘발유"
+   ],
+   "examples": [
+    {
+     "en": "The price of gasoline went up again.",
+     "ko": "휘발유 값이 또 올랐어요."
+    },
+    {
+     "en": "We need to stop and buy gasoline.",
+     "ko": "우리 멈춰서 휘발유를 넣어야 해요."
+    },
+    {
+     "en": "Electric cars don't use gasoline.",
+     "ko": "전기차는 휘발유를 쓰지 않아요."
+    },
+    {
+     "en": "Keep gasoline away from fire.",
+     "ko": "휘발유는 불에서 멀리 두세요."
+    },
+    {
+     "en": "The car ran out of gasoline on the highway.",
+     "ko": "차가 고속도로에서 휘발유가 떨어졌어요."
+    },
+    {
+     "en": "Gasoline is made from crude oil.",
+     "ko": "휘발유는 원유로 만들어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "petrol",
+     "ko": "(영국) 휘발유",
+     "en": "A petrol station."
+    },
+    {
+     "type": "연관어",
+     "word": "fuel",
+     "ko": "연료",
+     "en": "Save fuel."
+    },
+    {
+     "type": "연관어",
+     "word": "gas station",
+     "ko": "주유소",
+     "en": "Stop at a gas station."
+    },
+    {
+     "type": "연관어",
+     "word": "engine",
+     "ko": "엔진",
+     "en": "A car engine."
+    },
+    {
+     "type": "연관어",
+     "word": "oil",
+     "ko": "석유",
+     "en": "Crude oil."
+    },
+    {
+     "type": "연관어",
+     "word": "electric",
+     "ko": "전기의",
+     "en": "An electric car."
+    }
+   ]
+  },
+  "179": {
+   "word": "athlete",
+   "overview": [
+    "athlete는 '운동선수'라는 뜻의 명사입니다.",
+    "a professional athlete(프로 운동선수)처럼 씁니다.",
+    "영국에서는 특히 육상 선수를 가리킬 때가 많습니다.",
+    "형용사 athletic(운동 신경이 좋은, 체육의)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sports player",
+     "en": "A great sports player.",
+     "ko": "훌륭한 운동선수."
+    },
+    {
+     "word": "runner",
+     "en": "A fast runner.",
+     "ko": "빠른 달리기 선수."
+    }
+   ],
+   "etymology": [
+    "athlete는 그리스어 athletes(상을 두고 겨루는 사람)에서 온 단어입니다.",
+    "athlon(상, 상품)에서 나온 말로, 고대 올림픽 경기 참가자를 뜻했습니다.",
+    "'상을 받기 위해 몸으로 겨루는 사람'이라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 운동 경기에 나서는 모든 선수를 가리킵니다.",
+    "athlete의 핵심 이미지는 '메달을 향해 온 힘을 다해 뛰는 선수 🏃‍♀️🥇'입니다."
+   ],
+   "meanings": [
+    "운동선수 (주로 육상, 체조 분야)"
+   ],
+   "examples": [
+    {
+     "en": "Olympic athletes train for years.",
+     "ko": "올림픽 선수들은 몇 년 동안 훈련해요."
+    },
+    {
+     "en": "She is a talented young athlete.",
+     "ko": "그녀는 재능 있는 어린 운동선수예요."
+    },
+    {
+     "en": "Athletes need to eat healthy food.",
+     "ko": "운동선수는 건강한 음식을 먹어야 해요."
+    },
+    {
+     "en": "He was a star athlete in high school.",
+     "ko": "그는 고등학교 시절 스타 선수였어요."
+    },
+    {
+     "en": "The athletes marched into the stadium.",
+     "ko": "선수들이 경기장으로 입장했어요."
+    },
+    {
+     "en": "My brother is very athletic.",
+     "ko": "제 남동생은 운동 신경이 아주 좋아요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "player",
+     "ko": "선수",
+     "en": "A soccer player."
+    },
+    {
+     "type": "파생어",
+     "word": "athletic",
+     "ko": "운동 신경이 좋은",
+     "en": "An athletic girl."
+    },
+    {
+     "type": "파생어",
+     "word": "athletics",
+     "ko": "육상 경기",
+     "en": "Track and athletics."
+    },
+    {
+     "type": "연관어",
+     "word": "coach",
+     "ko": "코치",
+     "en": "A strict coach."
+    },
+    {
+     "type": "연관어",
+     "word": "medal",
+     "ko": "메달",
+     "en": "A gold medal."
+    },
+    {
+     "type": "연관어",
+     "word": "train",
+     "ko": "훈련하다",
+     "en": "Train hard."
+    }
+   ]
+  },
+  "822": {
+   "word": "dismiss",
+   "overview": [
+    "dismiss는 '(생각·의견을) 묵살하다, 일축하다'라는 뜻의 동사입니다.",
+    "dismiss an idea(생각을 무시해 버리다)처럼 씁니다.",
+    "'해고하다', '(수업·모임을) 해산시키다, 가도 좋다고 하다'라는 뜻으로도 씁니다.",
+    "명사 dismissal(해고, 해산)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "ignore",
+     "en": "Ignore the rumor.",
+     "ko": "소문을 무시하다."
+    },
+    {
+     "word": "fire",
+     "en": "Fire a worker.",
+     "ko": "직원을 해고하다."
+    }
+   ],
+   "etymology": [
+    "dismiss는 라틴어 dimittere(여기저기로 보내다, 내보내다)에서 온 단어입니다.",
+    "dis(떨어져)와 mittere(보내다)가 합쳐진 말로, mission(임무), submit(제출하다)과 같은 가족입니다.",
+    "'자리에서 멀리 내보내다'라는 뜻에서 시작되었습니다.",
+    "사람을 일터나 교실에서 내보내는 것, 생각을 머리 밖으로 내쳐 버리는 것을 가리키게 되었습니다.",
+    "dismiss의 핵심 이미지는 '손을 휘저어 저리 가라고 내보내는 것 👋'입니다."
+   ],
+   "meanings": [
+    "(고려할 가치가 없다고) 묵살하다, 일축하다",
+    "해고하다",
+    "해산시키다"
+   ],
+   "examples": [
+    {
+     "en": "The teacher dismissed the class early.",
+     "ko": "선생님은 수업을 일찍 끝내 주셨어요."
+    },
+    {
+     "en": "He dismissed my idea as silly.",
+     "ko": "그는 제 생각을 어리석다며 일축했어요."
+    },
+    {
+     "en": "The worker was dismissed for being late too often.",
+     "ko": "그 직원은 너무 자주 지각해서 해고되었어요."
+    },
+    {
+     "en": "Don't dismiss your feelings.",
+     "ko": "자신의 감정을 무시하지 마세요."
+    },
+    {
+     "en": "The judge dismissed the case.",
+     "ko": "판사는 그 소송을 기각했어요."
+    },
+    {
+     "en": "Class dismissed!",
+     "ko": "수업 끝, 가도 좋아요!"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "reject",
+     "ko": "거부하다",
+     "en": "Reject the offer."
+    },
+    {
+     "type": "유의어",
+     "word": "fire",
+     "ko": "해고하다",
+     "en": "Get fired."
+    },
+    {
+     "type": "반의어",
+     "word": "hire",
+     "ko": "고용하다",
+     "en": "Hire a new teacher."
+    },
+    {
+     "type": "파생어",
+     "word": "dismissal",
+     "ko": "해고, 해산",
+     "en": "An unfair dismissal."
+    },
+    {
+     "type": "연관어",
+     "word": "ignore",
+     "ko": "무시하다",
+     "en": "Ignore the noise."
+    },
+    {
+     "type": "연관어",
+     "word": "consider",
+     "ko": "고려하다",
+     "en": "Consider the idea."
+    }
+   ]
+  },
+  "1895": {
+   "word": "parallel",
+   "overview": [
+    "parallel은 '평행한'이라는 뜻의 형용사입니다.",
+    "parallel lines(평행선)처럼 씁니다.",
+    "'유사한, 비슷한'이라는 뜻과 명사 '유사점, 비슷한 사례'라는 뜻으로도 씁니다.",
+    "부사로 '나란히'(run parallel to the road, 도로와 나란히 뻗다)라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "side by side",
+     "en": "Walk side by side.",
+     "ko": "나란히 걷다."
+    },
+    {
+     "word": "similar",
+     "en": "A similar story.",
+     "ko": "비슷한 이야기."
+    }
+   ],
+   "etymology": [
+    "parallel은 그리스어 parallelos(서로 나란히)에서 온 단어입니다.",
+    "para(곁에)와 allelon(서로)이 합쳐진 말입니다.",
+    "'서로 곁에 나란히 있어 만나지 않는'이라는 뜻이 되었습니다.",
+    "수학의 평행선, 그리고 서로 닮은 흐름을 보이는 두 일에도 씁니다.",
+    "parallel의 핵심 이미지는 '끝까지 만나지 않고 나란히 달리는 두 선 ‖'입니다."
+   ],
+   "meanings": [
+    "평행한, 유사한",
+    "평행선, 유사점",
+    "나란히 하다, 나란히"
+   ],
+   "examples": [
+    {
+     "en": "Draw two parallel lines.",
+     "ko": "평행선 두 개를 그리세요."
+    },
+    {
+     "en": "The road runs parallel to the river.",
+     "ko": "그 도로는 강과 나란히 뻗어 있어요."
+    },
+    {
+     "en": "There are many parallels between the two stories.",
+     "ko": "두 이야기 사이에는 비슷한 점이 많아요."
+    },
+    {
+     "en": "Railroad tracks are parallel.",
+     "ko": "철로는 평행해요."
+    },
+    {
+     "en": "His career paralleled his father's.",
+     "ko": "그의 경력은 아버지의 경력과 비슷하게 흘러갔어요."
+    },
+    {
+     "en": "The movie is set in a parallel world.",
+     "ko": "그 영화는 평행 세계를 배경으로 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "similar",
+     "ko": "비슷한",
+     "en": "Similar ideas."
+    },
+    {
+     "type": "반의어",
+     "word": "perpendicular",
+     "ko": "수직의",
+     "en": "A perpendicular line."
+    },
+    {
+     "type": "연관어",
+     "word": "line",
+     "ko": "선",
+     "en": "A straight line."
+    },
+    {
+     "type": "연관어",
+     "word": "side by side",
+     "ko": "나란히",
+     "en": "Stand side by side."
+    },
+    {
+     "type": "연관어",
+     "word": "comparison",
+     "ko": "비교",
+     "en": "Make a comparison."
+    },
+    {
+     "type": "연관어",
+     "word": "equal",
+     "ko": "같은",
+     "en": "Equal length."
+    }
+   ]
+  },
+  "2006": {
+   "word": "portion",
+   "overview": [
+    "portion은 '일부, 부분'이라는 뜻의 명사입니다.",
+    "a large portion of the money(그 돈의 큰 부분)처럼 씁니다.",
+    "'(음식의) 1인분, 분량'이라는 뜻으로도 아주 자주 씁니다. (big portions)",
+    "'(나누어 받는) 몫'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "part",
+     "en": "A small part.",
+     "ko": "작은 부분."
+    },
+    {
+     "word": "serving",
+     "en": "One serving.",
+     "ko": "1인분."
+    }
+   ],
+   "etymology": [
+    "portion은 라틴어 portio(몫, 할당분)에서 온 단어입니다.",
+    "pars(부분)와 관련된 말로, part(부분), proportion(비율)과 같은 가족입니다.",
+    "'전체를 나누었을 때 한 사람에게 돌아가는 몫'이라는 뜻이 그대로 이어져 왔습니다.",
+    "전체의 일부분, 그리고 한 사람이 먹는 음식의 양을 가리킵니다.",
+    "portion의 핵심 이미지는 '전체에서 나누어 떼어 낸 한 몫 🍰'입니다."
+   ],
+   "meanings": [
+    "일부, 일정 양, 몫",
+    "(음식의) 1인분"
+   ],
+   "examples": [
+    {
+     "en": "This restaurant serves huge portions.",
+     "ko": "이 식당은 양이 엄청 많아요."
+    },
+    {
+     "en": "A large portion of the class passed the test.",
+     "ko": "반 학생 대부분이 시험에 합격했어요."
+    },
+    {
+     "en": "She saved a portion of her allowance.",
+     "ko": "그녀는 용돈의 일부를 저축했어요."
+    },
+    {
+     "en": "Can I have a small portion of rice?",
+     "ko": "밥을 조금만 주실 수 있어요?"
+    },
+    {
+     "en": "Only a portion of the book is true.",
+     "ko": "그 책의 일부만 사실이에요."
+    },
+    {
+     "en": "Each child got an equal portion of the cake.",
+     "ko": "아이들은 모두 케이크를 똑같이 나눠 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "part",
+     "ko": "부분",
+     "en": "The best part."
+    },
+    {
+     "type": "유의어",
+     "word": "share",
+     "ko": "몫",
+     "en": "Your fair share."
+    },
+    {
+     "type": "반의어",
+     "word": "whole",
+     "ko": "전체",
+     "en": "The whole class."
+    },
+    {
+     "type": "연관어",
+     "word": "serving",
+     "ko": "1인분",
+     "en": "Two servings."
+    },
+    {
+     "type": "연관어",
+     "word": "piece",
+     "ko": "조각",
+     "en": "A piece of pie."
+    },
+    {
+     "type": "연관어",
+     "word": "proportion",
+     "ko": "비율",
+     "en": "A large proportion."
+    }
+   ]
+  },
+  "1467": {
+   "word": "irony",
+   "overview": [
+    "irony는 '아이러니, 뜻밖의 모순'이라는 뜻의 명사입니다.",
+    "the irony of the situation(그 상황의 아이러니)처럼 씁니다.",
+    "기대했던 것과 정반대로 일이 벌어지는 모순된 상황을 뜻합니다.",
+    "'반어법(속뜻과 반대로 말하기)'이라는 뜻도 있고, 형용사 ironic(아이러니한)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "surprise twist",
+     "en": "A surprising twist.",
+     "ko": "뜻밖의 반전."
+    },
+    {
+     "word": "opposite meaning",
+     "en": "Say the opposite.",
+     "ko": "반대로 말하다."
+    }
+   ],
+   "etymology": [
+    "irony는 그리스어 eironeia(모르는 척하기)에서 온 단어입니다.",
+    "eiron(속마음을 숨기고 모르는 척하는 사람)에서 나온 말입니다.",
+    "철학자 소크라테스가 모르는 척 질문하며 상대의 모순을 드러내던 방식과 관련이 있습니다.",
+    "겉과 속이 반대인 말하기, 기대와 반대로 흘러가는 상황을 가리키게 되었습니다.",
+    "irony의 핵심 이미지는 '기대와 정반대로 뒤집히는 뜻밖의 반전 🙃'입니다."
+   ],
+   "meanings": [
+    "반어, 아이러니",
+    "예상과 실제의 모순"
+   ],
+   "examples": [
+    {
+     "en": "The irony is that the fire station burned down.",
+     "ko": "아이러니하게도 소방서가 불에 탔어요."
+    },
+    {
+     "en": "She said \"Great weather!\" with irony as it poured.",
+     "ko": "비가 쏟아지는데 그녀는 반어적으로 \"날씨 좋다!\"라고 했어요."
+    },
+    {
+     "en": "It's ironic that the doctor was sick.",
+     "ko": "의사가 아팠다니 아이러니해요."
+    },
+    {
+     "en": "The story is full of irony.",
+     "ko": "그 이야기는 아이러니로 가득해요."
+    },
+    {
+     "en": "By an irony of fate, they met again years later.",
+     "ko": "운명의 장난처럼 그들은 몇 년 뒤 다시 만났어요."
+    },
+    {
+     "en": "He didn't notice the irony in his words.",
+     "ko": "그는 자기 말 속의 모순을 알아채지 못했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "파생어",
+     "word": "ironic",
+     "ko": "아이러니한",
+     "en": "An ironic twist."
+    },
+    {
+     "type": "파생어",
+     "word": "ironically",
+     "ko": "역설적으로",
+     "en": "Ironically, he won."
+    },
+    {
+     "type": "연관어",
+     "word": "sarcasm",
+     "ko": "빈정거림",
+     "en": "A hint of sarcasm."
+    },
+    {
+     "type": "연관어",
+     "word": "humor",
+     "ko": "유머",
+     "en": "A sense of humor."
+    },
+    {
+     "type": "연관어",
+     "word": "contradiction",
+     "ko": "모순",
+     "en": "A clear contradiction."
+    },
+    {
+     "type": "연관어",
+     "word": "twist",
+     "ko": "반전",
+     "en": "A plot twist."
+    }
+   ]
+  },
+  "200": {
+   "word": "await",
+   "overview": [
+    "await는 '기다리다'라는 뜻의 동사입니다.",
+    "await your reply(당신의 답을 기다리다)처럼 씁니다.",
+    "wait for보다 격식 있는 말로, 뒤에 for 없이 바로 목적어가 옵니다.",
+    "'(어떤 일이) ~을 기다리고 있다'라는 뜻으로도 씁니다. (A surprise awaits you.)"
+   ],
+   "easy": [
+    {
+     "word": "wait for",
+     "en": "Wait for the bus.",
+     "ko": "버스를 기다리다."
+    },
+    {
+     "word": "expect",
+     "en": "Expect good news.",
+     "ko": "좋은 소식을 기대하다."
+    }
+   ],
+   "etymology": [
+    "await는 옛 프랑스어 awaitier(지켜보며 기다리다)에서 온 단어입니다.",
+    "a(~에)와 waitier(지켜보다)가 합쳐진 말로, wait(기다리다)와 같은 뿌리입니다.",
+    "원래는 '숨어서 지켜보다'라는 뜻이었습니다.",
+    "무언가가 오기를 준비하며 기다리는 것을 가리키게 되었습니다.",
+    "await의 핵심 이미지는 '다가올 일을 준비하며 차분히 기다리는 것 ⏳'입니다."
+   ],
+   "meanings": [
+    "기다리다"
+   ],
+   "examples": [
+    {
+     "en": "We are awaiting your answer.",
+     "ko": "저희는 당신의 답변을 기다리고 있어요."
+    },
+    {
+     "en": "A big surprise awaits you at home.",
+     "ko": "집에 큰 깜짝 선물이 기다리고 있어요."
+    },
+    {
+     "en": "Fans eagerly awaited the new album.",
+     "ko": "팬들은 새 앨범을 손꼽아 기다렸어요."
+    },
+    {
+     "en": "The prisoner is awaiting trial.",
+     "ko": "그 죄수는 재판을 기다리고 있어요."
+    },
+    {
+     "en": "The long-awaited day finally came.",
+     "ko": "오래 기다리던 날이 마침내 왔어요."
+    },
+    {
+     "en": "Who knows what awaits us in the future?",
+     "ko": "앞으로 우리에게 무슨 일이 기다리고 있을지 누가 알겠어요?"
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wait for",
+     "ko": "기다리다",
+     "en": "Wait for me."
+    },
+    {
+     "type": "유의어",
+     "word": "expect",
+     "ko": "기대하다",
+     "en": "Expect a call."
+    },
+    {
+     "type": "연관어",
+     "word": "anticipate",
+     "ko": "고대하다",
+     "en": "Anticipate the result."
+    },
+    {
+     "type": "연관어",
+     "word": "patient",
+     "ko": "참을성 있는",
+     "en": "Be patient."
+    },
+    {
+     "type": "연관어",
+     "word": "reply",
+     "ko": "답장",
+     "en": "A quick reply."
+    },
+    {
+     "type": "연관어",
+     "word": "future",
+     "ko": "미래",
+     "en": "The near future."
+    }
+   ]
+  },
+  "2862": {
+   "word": "verse",
+   "overview": [
+    "verse는 '시, 운문'이라는 뜻의 명사입니다.",
+    "written in verse(운문으로 쓰인)처럼 씁니다.",
+    "'(시·노래의) 절, 연'이라는 뜻으로 아주 자주 씁니다. (the first verse)",
+    "'(성경의) 절'이라는 뜻도 있으며, 산문은 prose라고 합니다."
+   ],
+   "easy": [
+    {
+     "word": "poem",
+     "en": "A short poem.",
+     "ko": "짧은 시."
+    },
+    {
+     "word": "part of a song",
+     "en": "Part of a song.",
+     "ko": "노래의 한 부분."
+    }
+   ],
+   "etymology": [
+    "verse는 라틴어 versus(줄, 돌아섬)에서 온 단어입니다.",
+    "vertere(돌다)에서 나온 말로, reverse(반대로), version(판)과 같은 가족입니다.",
+    "밭을 갈 때 한 줄 끝에서 쟁기를 돌려 다음 줄로 가는 모습에서 나왔습니다.",
+    "글이 한 줄 끝에서 돌아 다음 줄로 이어지는 '시 한 줄', 그리고 시·노래의 한 절을 가리킵니다.",
+    "verse의 핵심 이미지는 '줄 끝에서 돌아 이어지는 리듬 있는 시구 📝'입니다."
+   ],
+   "meanings": [
+    "(문학) 시, 운문",
+    "시구, (노래의) 절"
+   ],
+   "examples": [
+    {
+     "en": "Let's sing the first verse again.",
+     "ko": "첫 번째 절을 다시 불러 봐요."
+    },
+    {
+     "en": "The play is written in verse.",
+     "ko": "그 희곡은 운문으로 쓰였어요."
+    },
+    {
+     "en": "She wrote a few verses for her mom's birthday.",
+     "ko": "그녀는 엄마 생신을 위해 시 몇 구절을 썼어요."
+    },
+    {
+     "en": "The song has three verses and a chorus.",
+     "ko": "그 노래는 세 개의 절과 후렴으로 이루어져 있어요."
+    },
+    {
+     "en": "He memorized a verse from the poem.",
+     "ko": "그는 그 시의 한 구절을 외웠어요."
+    },
+    {
+     "en": "The pastor read a verse from the Bible.",
+     "ko": "목사님은 성경의 한 구절을 읽으셨어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "poetry",
+     "ko": "시",
+     "en": "Read poetry."
+    },
+    {
+     "type": "반의어",
+     "word": "prose",
+     "ko": "산문",
+     "en": "Written in prose."
+    },
+    {
+     "type": "연관어",
+     "word": "poem",
+     "ko": "시",
+     "en": "Write a poem."
+    },
+    {
+     "type": "연관어",
+     "word": "chorus",
+     "ko": "후렴",
+     "en": "Sing the chorus."
+    },
+    {
+     "type": "연관어",
+     "word": "rhyme",
+     "ko": "운, 각운",
+     "en": "Words that rhyme."
+    },
+    {
+     "type": "연관어",
+     "word": "lyrics",
+     "ko": "가사",
+     "en": "Song lyrics."
+    }
+   ]
+  },
+  "2966": {
+   "word": "wit",
+   "overview": [
+    "wit는 '재치, 기지'라는 뜻의 명사입니다.",
+    "a sharp wit(날카로운 재치)처럼 씁니다.",
+    "복수형 wits는 '판단력, 정신'이라는 뜻입니다. (keep your wits about you, 정신을 바짝 차리다)",
+    "형용사 witty(재치 있는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "humor",
+     "en": "A good sense of humor.",
+     "ko": "좋은 유머 감각."
+    },
+    {
+     "word": "cleverness",
+     "en": "Quick cleverness.",
+     "ko": "빠른 영리함."
+    }
+   ],
+   "etymology": [
+    "wit는 고대 영어 witt(마음, 이해력)에서 온 단어입니다.",
+    "wise(현명한), witness(증인, '본 것을 아는 사람')와 같은 게르만 말 뿌리에서 나왔습니다.",
+    "원래는 '아는 힘, 지혜'라는 뜻이었습니다.",
+    "머리가 빨리 돌아 재미있고 영리하게 말하는 '재치'라는 뜻으로 굳어졌습니다.",
+    "wit의 핵심 이미지는 '번뜩이는 머리로 톡 튀어나오는 재치 있는 말 💡'입니다."
+   ],
+   "meanings": [
+    "재치, 기지",
+    "(wits) 판단력, 정신"
+   ],
+   "examples": [
+    {
+     "en": "She is known for her quick wit.",
+     "ko": "그녀는 재치가 빠르기로 유명해요."
+    },
+    {
+     "en": "His speech was full of wit and humor.",
+     "ko": "그의 연설은 재치와 유머로 가득했어요."
+    },
+    {
+     "en": "Keep your wits about you in the city.",
+     "ko": "도시에서는 정신을 바짝 차리세요."
+    },
+    {
+     "en": "I was scared out of my wits.",
+     "ko": "저는 너무 무서워서 정신이 나갈 뻔했어요."
+    },
+    {
+     "en": "The witty comment made everyone laugh.",
+     "ko": "그 재치 있는 말에 모두가 웃었어요."
+    },
+    {
+     "en": "He used his wits to escape the trap.",
+     "ko": "그는 기지를 발휘해 함정에서 빠져나왔어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "humor",
+     "ko": "유머",
+     "en": "Dry humor."
+    },
+    {
+     "type": "유의어",
+     "word": "cleverness",
+     "ko": "영리함",
+     "en": "Show cleverness."
+    },
+    {
+     "type": "파생어",
+     "word": "witty",
+     "ko": "재치 있는",
+     "en": "A witty reply."
+    },
+    {
+     "type": "연관어",
+     "word": "intelligence",
+     "ko": "지능",
+     "en": "High intelligence."
+    },
+    {
+     "type": "연관어",
+     "word": "joke",
+     "ko": "농담",
+     "en": "A funny joke."
+    },
+    {
+     "type": "연관어",
+     "word": "wise",
+     "ko": "현명한",
+     "en": "A wise man."
+    }
+   ]
+  },
+  "749": {
+   "word": "delete",
+   "overview": [
+    "delete는 '삭제하다, 지우다'라는 뜻의 동사입니다.",
+    "delete a file(파일을 삭제하다)처럼 씁니다.",
+    "컴퓨터나 휴대폰에서 글, 사진, 파일 등을 없앨 때 아주 자주 씁니다.",
+    "명사 deletion(삭제)도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "erase",
+     "en": "Erase the board.",
+     "ko": "칠판을 지우다."
+    },
+    {
+     "word": "remove",
+     "en": "Remove the photo.",
+     "ko": "사진을 없애다."
+    }
+   ],
+   "etymology": [
+    "delete는 라틴어 delere(지우다, 없애다)에서 온 단어입니다.",
+    "원래는 밀랍 판에 새긴 글씨를 문질러 지우는 것을 뜻했습니다.",
+    "'쓴 것을 흔적 없이 없애다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 특히 컴퓨터 속 데이터를 지우는 말로 널리 쓰입니다.",
+    "delete의 핵심 이미지는 '버튼 하나로 흔적 없이 지워 버리는 것 🗑️'입니다."
+   ],
+   "meanings": [
+    "지우다, 삭제하다"
+   ],
+   "examples": [
+    {
+     "en": "I accidentally deleted my homework file.",
+     "ko": "실수로 숙제 파일을 삭제했어요."
+    },
+    {
+     "en": "Delete any messages from strangers.",
+     "ko": "모르는 사람이 보낸 메시지는 지우세요."
+    },
+    {
+     "en": "She deleted the photo because she didn't like it.",
+     "ko": "그녀는 마음에 들지 않아서 그 사진을 지웠어요."
+    },
+    {
+     "en": "Press the delete key to remove the letter.",
+     "ko": "글자를 지우려면 삭제 키를 누르세요."
+    },
+    {
+     "en": "Please delete the extra words in this sentence.",
+     "ko": "이 문장에서 필요 없는 단어를 지우세요."
+    },
+    {
+     "en": "Deleted files go to the trash first.",
+     "ko": "삭제한 파일은 먼저 휴지통으로 가요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "erase",
+     "ko": "지우다",
+     "en": "Erase a mistake."
+    },
+    {
+     "type": "유의어",
+     "word": "remove",
+     "ko": "제거하다",
+     "en": "Remove the app."
+    },
+    {
+     "type": "반의어",
+     "word": "save",
+     "ko": "저장하다",
+     "en": "Save the file."
+    },
+    {
+     "type": "반의어",
+     "word": "add",
+     "ko": "추가하다",
+     "en": "Add a friend."
+    },
+    {
+     "type": "연관어",
+     "word": "file",
+     "ko": "파일",
+     "en": "Open a file."
+    },
+    {
+     "type": "연관어",
+     "word": "restore",
+     "ko": "복원하다",
+     "en": "Restore the data."
+    }
+   ]
+  },
+  "2635": {
+   "word": "tackle",
+   "overview": [
+    "tackle은 '(문제를) 해결하려 들다, 달려들어 처리하다'라는 뜻의 동사입니다.",
+    "tackle a problem(문제에 달려들다)처럼 씁니다.",
+    "스포츠에서는 '태클하다, (공을 뺏으려) 덤벼들다'라는 뜻입니다.",
+    "명사로는 '태클', '(낚시 등의) 도구'라는 뜻도 있습니다. (fishing tackle, 낚시 도구)"
+   ],
+   "easy": [
+    {
+     "word": "deal with",
+     "en": "Deal with the issue.",
+     "ko": "문제를 처리하다."
+    },
+    {
+     "word": "take on",
+     "en": "Take on a challenge.",
+     "ko": "도전에 맞서다."
+    }
+   ],
+   "etymology": [
+    "tackle은 중세 네덜란드어 takel(배의 밧줄과 도르래)에서 온 단어입니다.",
+    "원래는 배에서 짐을 올리는 도구, 즉 밧줄과 도르래 장치를 뜻했습니다.",
+    "도구로 무언가를 '붙잡아 다루다'라는 뜻에서 사람에게 달려들어 붙잡는 '태클'이 나왔습니다.",
+    "어려운 문제를 붙잡고 씨름하는 것도 tackle이라고 하게 되었습니다.",
+    "tackle의 핵심 이미지는 '두 팔로 달려들어 붙잡고 씨름하는 것 🏈'입니다."
+   ],
+   "meanings": [
+    "(문제를) 해결하려 들다, 달려들다",
+    "태클(하다)",
+    "도구, 낚시도구"
+   ],
+   "examples": [
+    {
+     "en": "We need to tackle the litter problem at school.",
+     "ko": "우리는 학교의 쓰레기 문제를 해결해야 해요."
+    },
+    {
+     "en": "The player tackled his opponent to get the ball.",
+     "ko": "그 선수는 공을 뺏으려고 상대에게 태클했어요."
+    },
+    {
+     "en": "Let's tackle the hardest question first.",
+     "ko": "가장 어려운 문제부터 풀어 봐요."
+    },
+    {
+     "en": "The government is trying to tackle pollution.",
+     "ko": "정부는 오염 문제에 맞서려 하고 있어요."
+    },
+    {
+     "en": "That was a hard but fair tackle.",
+     "ko": "그건 거칠지만 정당한 태클이었어요."
+    },
+    {
+     "en": "Grandpa keeps his fishing tackle in the garage.",
+     "ko": "할아버지는 낚시 도구를 차고에 두세요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "deal with",
+     "ko": "처리하다",
+     "en": "Deal with stress."
+    },
+    {
+     "type": "유의어",
+     "word": "handle",
+     "ko": "다루다",
+     "en": "Handle the situation."
+    },
+    {
+     "type": "반의어",
+     "word": "avoid",
+     "ko": "피하다",
+     "en": "Avoid the problem."
+    },
+    {
+     "type": "연관어",
+     "word": "solve",
+     "ko": "해결하다",
+     "en": "Solve a puzzle."
+    },
+    {
+     "type": "연관어",
+     "word": "football",
+     "ko": "미식축구, 축구",
+     "en": "Play football."
+    },
+    {
+     "type": "연관어",
+     "word": "challenge",
+     "ko": "도전",
+     "en": "Face a challenge."
+    }
+   ]
+  },
+  "223": {
+   "word": "bankrupt",
+   "overview": [
+    "bankrupt는 '파산한'이라는 뜻의 형용사입니다.",
+    "go bankrupt(파산하다)처럼 씁니다.",
+    "동사로는 '파산시키다', 명사로는 '파산자'라는 뜻입니다.",
+    "명사 bankruptcy(파산)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "broke",
+     "en": "I'm totally broke.",
+     "ko": "저 완전 빈털터리예요."
+    },
+    {
+     "word": "out of money",
+     "en": "Out of money.",
+     "ko": "돈이 다 떨어진."
+    }
+   ],
+   "etymology": [
+    "bankrupt는 이탈리아어 banca rotta(부서진 탁자)에서 온 단어입니다.",
+    "banca(탁자, 은행의 어원)와 rotta(부서진)가 합쳐진 말입니다.",
+    "옛날 이탈리아에서는 빚을 갚지 못한 상인의 거래용 탁자를 부수어 영업을 못 하게 했다고 전해집니다.",
+    "그래서 '빚을 갚지 못해 망한'이라는 뜻이 되었습니다.",
+    "bankrupt의 핵심 이미지는 '장사 탁자가 부서져 더 이상 거래할 수 없는 상태 💸'입니다."
+   ],
+   "meanings": [
+    "파산한",
+    "파산시키다",
+    "파산자"
+   ],
+   "examples": [
+    {
+     "en": "The company went bankrupt last year.",
+     "ko": "그 회사는 작년에 파산했어요."
+    },
+    {
+     "en": "Bad investments bankrupted the business.",
+     "ko": "잘못된 투자로 그 사업은 파산했어요."
+    },
+    {
+     "en": "The store closed after it was declared bankrupt.",
+     "ko": "그 가게는 파산 선고를 받은 뒤 문을 닫았어요."
+    },
+    {
+     "en": "He lost everything and became bankrupt.",
+     "ko": "그는 모든 것을 잃고 파산했어요."
+    },
+    {
+     "en": "The airline filed for bankruptcy.",
+     "ko": "그 항공사는 파산 신청을 했어요."
+    },
+    {
+     "en": "Spending too much can leave you bankrupt.",
+     "ko": "돈을 너무 많이 쓰면 파산할 수 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "broke",
+     "ko": "빈털터리의",
+     "en": "Go broke."
+    },
+    {
+     "type": "반의어",
+     "word": "rich",
+     "ko": "부유한",
+     "en": "A rich family."
+    },
+    {
+     "type": "파생어",
+     "word": "bankruptcy",
+     "ko": "파산",
+     "en": "Face bankruptcy."
+    },
+    {
+     "type": "연관어",
+     "word": "debt",
+     "ko": "빚",
+     "en": "Pay off debt."
+    },
+    {
+     "type": "연관어",
+     "word": "company",
+     "ko": "회사",
+     "en": "A big company."
+    },
+    {
+     "type": "연관어",
+     "word": "loss",
+     "ko": "손실",
+     "en": "A huge loss."
+    }
+   ]
+  },
+  "1262": {
+   "word": "gulf",
+   "overview": [
+    "gulf는 '(큰) 만'이라는 뜻의 명사입니다.",
+    "the Gulf of Mexico(멕시코만)처럼 씁니다.",
+    "바다가 육지 안쪽으로 깊숙이 들어온 곳을 뜻하며, bay보다 크고 깊습니다.",
+    "'(두 집단 사이의) 큰 격차, 틈'이라는 비유적인 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "bay",
+     "en": "A quiet bay.",
+     "ko": "조용한 만."
+    },
+    {
+     "word": "big gap",
+     "en": "A big gap.",
+     "ko": "큰 격차."
+    }
+   ],
+   "etymology": [
+    "gulf는 그리스어 kolpos(가슴, 품, 만)에서 온 단어입니다.",
+    "바다가 육지의 품 안으로 둥글게 파고든 모습을 사람의 품에 빗댄 말입니다.",
+    "이탈리아어와 프랑스어를 거쳐 '넓고 깊은 만'이라는 뜻으로 영어에 들어왔습니다.",
+    "넓은 바다처럼 두 쪽 사이가 크게 벌어진 '격차'라는 뜻으로도 넓어졌습니다.",
+    "gulf의 핵심 이미지는 '육지 품속으로 깊숙이 파고든 넓은 바다 🌊'입니다."
+   ],
+   "meanings": [
+    "(지리) 만",
+    "(비유) 큰 격차, 틈"
+   ],
+   "examples": [
+    {
+     "en": "The ship sailed across the Gulf of Mexico.",
+     "ko": "그 배는 멕시코만을 가로질러 항해했어요."
+    },
+    {
+     "en": "Many oil fields are in the Persian Gulf.",
+     "ko": "많은 유전이 페르시아만에 있어요."
+    },
+    {
+     "en": "There is a wide gulf between rich and poor.",
+     "ko": "부자와 가난한 사람 사이에는 큰 격차가 있어요."
+    },
+    {
+     "en": "The storm formed over the warm waters of the gulf.",
+     "ko": "폭풍이 그 만의 따뜻한 바다 위에서 생겨났어요."
+    },
+    {
+     "en": "A gulf opened up between the two friends.",
+     "ko": "두 친구 사이에 틈이 벌어졌어요."
+    },
+    {
+     "en": "Dolphins swim in the gulf.",
+     "ko": "돌고래들이 그 만에서 헤엄쳐요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "bay",
+     "ko": "만",
+     "en": "A sandy bay."
+    },
+    {
+     "type": "연관어",
+     "word": "sea",
+     "ko": "바다",
+     "en": "A calm sea."
+    },
+    {
+     "type": "연관어",
+     "word": "coast",
+     "ko": "해안",
+     "en": "The east coast."
+    },
+    {
+     "type": "연관어",
+     "word": "ocean",
+     "ko": "대양",
+     "en": "The Atlantic Ocean."
+    },
+    {
+     "type": "연관어",
+     "word": "gap",
+     "ko": "격차",
+     "en": "A big gap."
+    },
+    {
+     "type": "연관어",
+     "word": "harbor",
+     "ko": "항구",
+     "en": "A busy harbor."
+    }
+   ]
+  },
+  "1809": {
+   "word": "numerous",
+   "overview": [
+    "numerous는 '수많은, 다수의'라는 뜻의 형용사입니다.",
+    "numerous times(수없이 여러 번)처럼 씁니다.",
+    "many보다 조금 더 격식 있는 말입니다.",
+    "셀 수 있는 명사의 복수형과 함께 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "many",
+     "en": "Many people.",
+     "ko": "많은 사람들."
+    },
+    {
+     "word": "a lot of",
+     "en": "A lot of books.",
+     "ko": "많은 책."
+    }
+   ],
+   "etymology": [
+    "numerous는 라틴어 numerosus(수가 많은)에서 온 단어입니다.",
+    "numerus(수)에서 나온 말로, number(수), numeral(숫자)과 같은 가족입니다.",
+    "'셀 수 있는 수가 아주 많은'이라는 뜻이 그대로 이어져 왔습니다.",
+    "셀 수 있는 것이 무척 많을 때 쓰는 격식 있는 표현입니다.",
+    "numerous의 핵심 이미지는 '하나하나 세기 힘들 만큼 많은 수 🔢'입니다."
+   ],
+   "meanings": [
+    "수많은, 다수의"
+   ],
+   "examples": [
+    {
+     "en": "I've told you numerous times to clean your room.",
+     "ko": "방 청소하라고 수없이 말했잖아요."
+    },
+    {
+     "en": "The singer has won numerous awards.",
+     "ko": "그 가수는 수많은 상을 받았어요."
+    },
+    {
+     "en": "There are numerous ways to solve this problem.",
+     "ko": "이 문제를 푸는 방법은 아주 많아요."
+    },
+    {
+     "en": "Numerous birds live in the wetland.",
+     "ko": "그 습지에는 수많은 새가 살아요."
+    },
+    {
+     "en": "The book has numerous pictures.",
+     "ko": "그 책에는 그림이 아주 많아요."
+    },
+    {
+     "en": "She visited Paris on numerous occasions.",
+     "ko": "그녀는 여러 차례 파리를 방문했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "many",
+     "ko": "많은",
+     "en": "Many friends."
+    },
+    {
+     "type": "유의어",
+     "word": "countless",
+     "ko": "셀 수 없는",
+     "en": "Countless stars."
+    },
+    {
+     "type": "반의어",
+     "word": "few",
+     "ko": "거의 없는",
+     "en": "Few people."
+    },
+    {
+     "type": "연관어",
+     "word": "number",
+     "ko": "수",
+     "en": "A large number."
+    },
+    {
+     "type": "연관어",
+     "word": "several",
+     "ko": "몇몇의",
+     "en": "Several times."
+    },
+    {
+     "type": "연관어",
+     "word": "multiple",
+     "ko": "다수의",
+     "en": "Multiple choices."
+    }
+   ]
+  },
+  "1100": {
+   "word": "flock",
+   "overview": [
+    "flock은 '(새·양의) 떼, 무리'라는 뜻의 명사입니다.",
+    "a flock of birds(새 떼)처럼 씁니다.",
+    "동사로는 '(사람들이) 떼 지어 모이다, 몰려가다'라는 뜻으로 씁니다.",
+    "Birds of a feather flock together.(유유상종)라는 속담이 유명합니다."
+   ],
+   "easy": [
+    {
+     "word": "group",
+     "en": "A group of sheep.",
+     "ko": "양 무리."
+    },
+    {
+     "word": "crowd",
+     "en": "Crowd into the room.",
+     "ko": "방으로 몰려들다."
+    }
+   ],
+   "etymology": [
+    "flock은 고대 영어 flocc(무리, 떼)에서 온 단어입니다.",
+    "원래는 사람이나 동물의 무리를 두루 가리켰습니다.",
+    "점차 특히 새나 양처럼 함께 몰려다니는 동물 무리를 가리키게 되었습니다.",
+    "사람들이 한곳으로 우르르 몰려드는 모습에도 동사로 씁니다.",
+    "flock의 핵심 이미지는 '하늘을 함께 나는 새 떼, 우르르 몰려드는 무리 🐑🐑'입니다."
+   ],
+   "meanings": [
+    "떼, 무리",
+    "떼 지어 모이다"
+   ],
+   "examples": [
+    {
+     "en": "A flock of geese flew over the lake.",
+     "ko": "거위 떼가 호수 위로 날아갔어요."
+    },
+    {
+     "en": "The shepherd watched over his flock.",
+     "ko": "양치기는 자기 양 떼를 지켜봤어요."
+    },
+    {
+     "en": "Tourists flock to the beach every summer.",
+     "ko": "여름마다 관광객들이 해변으로 몰려들어요."
+    },
+    {
+     "en": "Fans flocked to see the famous actor.",
+     "ko": "팬들이 그 유명 배우를 보려고 떼 지어 모였어요."
+    },
+    {
+     "en": "Birds of a feather flock together.",
+     "ko": "같은 깃털의 새끼리 모여요(유유상종)."
+    },
+    {
+     "en": "A flock of pigeons gathered in the square.",
+     "ko": "비둘기 떼가 광장에 모였어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "herd",
+     "ko": "(소 등의) 떼",
+     "en": "A herd of cows."
+    },
+    {
+     "type": "유의어",
+     "word": "crowd",
+     "ko": "군중",
+     "en": "A huge crowd."
+    },
+    {
+     "type": "연관어",
+     "word": "swarm",
+     "ko": "(곤충의) 떼",
+     "en": "A swarm of bees."
+    },
+    {
+     "type": "연관어",
+     "word": "sheep",
+     "ko": "양",
+     "en": "White sheep."
+    },
+    {
+     "type": "연관어",
+     "word": "gather",
+     "ko": "모이다",
+     "en": "Gather around."
+    },
+    {
+     "type": "연관어",
+     "word": "scatter",
+     "ko": "흩어지다",
+     "en": "The birds scattered."
+    }
+   ]
+  },
+  "694": {
+   "word": "currency",
+   "overview": [
+    "currency는 '통화, 화폐'라는 뜻의 명사입니다.",
+    "foreign currency(외화)처럼 씁니다.",
+    "한 나라에서 쓰는 돈의 종류를 뜻합니다. (Korea's currency is the won.)",
+    "'(생각·말이) 널리 퍼짐, 통용'이라는 뜻도 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "money",
+     "en": "Paper money.",
+     "ko": "지폐."
+    },
+    {
+     "word": "cash",
+     "en": "Pay in cash.",
+     "ko": "현금으로 내다."
+    }
+   ],
+   "etymology": [
+    "currency는 라틴어 currere(달리다, 흐르다)에서 온 단어입니다.",
+    "current(흐름, 현재의), course(과정)와 같은 가족입니다.",
+    "'손에서 손으로 흘러 다니는 것'이라는 뜻에서 시작되었습니다.",
+    "사람들 사이를 돌며 쓰이는 돈, 즉 '통화'를 가리키게 되었습니다.",
+    "currency의 핵심 이미지는 '사람들 손을 따라 흘러 다니는 돈 💱'입니다."
+   ],
+   "meanings": [
+    "통화, 화폐",
+    "통용, 유통"
+   ],
+   "examples": [
+    {
+     "en": "The euro is the currency of many European countries.",
+     "ko": "유로는 여러 유럽 나라의 화폐예요."
+    },
+    {
+     "en": "Change your money into local currency.",
+     "ko": "돈을 현지 화폐로 바꾸세요."
+    },
+    {
+     "en": "The Korean currency is the won.",
+     "ko": "한국의 화폐는 원이에요."
+    },
+    {
+     "en": "Bitcoin is a type of digital currency.",
+     "ko": "비트코인은 디지털 화폐의 한 종류예요."
+    },
+    {
+     "en": "The exchange rate for foreign currency changes daily.",
+     "ko": "외화 환율은 매일 바뀌어요."
+    },
+    {
+     "en": "The idea gained currency among young people.",
+     "ko": "그 생각은 젊은이들 사이에서 널리 퍼졌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "money",
+     "ko": "돈",
+     "en": "Save money."
+    },
+    {
+     "type": "연관어",
+     "word": "exchange rate",
+     "ko": "환율",
+     "en": "Check the exchange rate."
+    },
+    {
+     "type": "연관어",
+     "word": "coin",
+     "ko": "동전",
+     "en": "A gold coin."
+    },
+    {
+     "type": "연관어",
+     "word": "dollar",
+     "ko": "달러",
+     "en": "Ten dollars."
+    },
+    {
+     "type": "연관어",
+     "word": "bank",
+     "ko": "은행",
+     "en": "Go to the bank."
+    },
+    {
+     "type": "연관어",
+     "word": "current",
+     "ko": "흐름, 현재의",
+     "en": "Current events."
+    }
+   ]
+  },
+  "2542": {
+   "word": "stitch",
+   "overview": [
+    "stitch는 '바느질하다, 꿰매다'라는 뜻의 동사입니다.",
+    "stitch a button on(단추를 달다)처럼 씁니다.",
+    "명사로는 '한 땀, (상처의) 봉합 한 바늘'이라는 뜻입니다. (get stitches, 상처를 꿰매다)",
+    "'옆구리가 결리는 통증'이라는 뜻도 있고, A stitch in time saves nine.(제때 한 땀이 아홉 땀을 던다)라는 속담이 있습니다."
+   ],
+   "easy": [
+    {
+     "word": "sew",
+     "en": "Sew a dress.",
+     "ko": "드레스를 바느질하다."
+    },
+    {
+     "word": "mend",
+     "en": "Mend the hole.",
+     "ko": "구멍을 수선하다."
+    }
+   ],
+   "etymology": [
+    "stitch는 고대 영어 stice(찌르기, 찌르는 아픔)에서 온 단어입니다.",
+    "stick(찌르다)과 같은 게르만 말 뿌리에서 나왔습니다.",
+    "원래는 '콕 찌르는 것, 찌르는 듯한 통증'을 뜻했습니다.",
+    "바늘로 천을 한 번 찌르고 빼는 '한 땀', 그리고 바느질하는 것을 가리키게 되었습니다.",
+    "stitch의 핵심 이미지는 '바늘이 천을 콕콕 찌르며 이어 가는 한 땀 한 땀 🪡'입니다."
+   ],
+   "meanings": [
+    "바느질하다, 꿰매다",
+    "(바느질의) 한 땀, 봉합",
+    "옆구리 통증"
+   ],
+   "examples": [
+    {
+     "en": "Grandma stitched my torn jeans.",
+     "ko": "할머니가 찢어진 청바지를 꿰매 주셨어요."
+    },
+    {
+     "en": "He needed five stitches after the accident.",
+     "ko": "그는 사고 후 다섯 바늘을 꿰매야 했어요."
+    },
+    {
+     "en": "She stitched her name onto the bag.",
+     "ko": "그녀는 가방에 자기 이름을 수놓았어요."
+    },
+    {
+     "en": "I got a stitch in my side while running.",
+     "ko": "달리다가 옆구리가 결렸어요."
+    },
+    {
+     "en": "The doctor stitched up the cut.",
+     "ko": "의사가 베인 상처를 꿰매 주셨어요."
+    },
+    {
+     "en": "A stitch in time saves nine.",
+     "ko": "제때 한 땀이 나중에 아홉 땀을 덜어 줘요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "sew",
+     "ko": "바느질하다",
+     "en": "Sew a button."
+    },
+    {
+     "type": "연관어",
+     "word": "needle",
+     "ko": "바늘",
+     "en": "A sewing needle."
+    },
+    {
+     "type": "연관어",
+     "word": "thread",
+     "ko": "실",
+     "en": "A red thread."
+    },
+    {
+     "type": "연관어",
+     "word": "wound",
+     "ko": "상처",
+     "en": "Clean the wound."
+    },
+    {
+     "type": "연관어",
+     "word": "knit",
+     "ko": "뜨개질하다",
+     "en": "Knit a scarf."
+    },
+    {
+     "type": "연관어",
+     "word": "mend",
+     "ko": "수선하다",
+     "en": "Mend a sock."
+    }
+   ]
+  },
+  "218": {
+   "word": "ban",
+   "overview": [
+    "ban은 '(공식적으로) 금지하다'라는 뜻의 동사입니다.",
+    "ban smoking(흡연을 금지하다)처럼 씁니다.",
+    "명사로는 '금지, 금지령'이라는 뜻입니다. (a ban on plastic bags)",
+    "be banned from(~이 금지되다, ~에서 출입이 금지되다)처럼 수동태로도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "forbid",
+     "en": "Forbid phones.",
+     "ko": "휴대폰을 금지하다."
+    },
+    {
+     "word": "not allow",
+     "en": "Dogs are not allowed.",
+     "ko": "개는 들어올 수 없어요."
+    }
+   ],
+   "etymology": [
+    "ban은 고대 영어 bannan(명령하다, 소집하다)에서 온 단어입니다.",
+    "게르만 말 뿌리에서 온 것으로, 원래는 '공개적으로 선포하다'라는 뜻이었습니다.",
+    "왕이나 권력자가 공개적으로 '하지 말라'고 선포하는 뜻으로 좁혀졌습니다.",
+    "지금은 법이나 규칙으로 무언가를 공식적으로 막는 것을 가리킵니다.",
+    "ban의 핵심 이미지는 '빨간 금지 표시처럼 공식적으로 막는 것 🚫'입니다."
+   ],
+   "meanings": [
+    "금지하다, 추방하다",
+    "금지, 금지령"
+   ],
+   "examples": [
+    {
+     "en": "The city banned plastic bags.",
+     "ko": "그 도시는 비닐봉지 사용을 금지했어요."
+    },
+    {
+     "en": "Smoking is banned in all restaurants.",
+     "ko": "모든 식당에서 흡연이 금지되어 있어요."
+    },
+    {
+     "en": "The player was banned for three games.",
+     "ko": "그 선수는 세 경기 출전 금지를 받았어요."
+    },
+    {
+     "en": "There is a ban on fishing in this lake.",
+     "ko": "이 호수에서는 낚시가 금지되어 있어요."
+    },
+    {
+     "en": "Phones are banned during exams.",
+     "ko": "시험 중에는 휴대폰이 금지돼요."
+    },
+    {
+     "en": "Many countries want to ban nuclear weapons.",
+     "ko": "많은 나라가 핵무기를 금지하고 싶어 해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "forbid",
+     "ko": "금지하다",
+     "en": "Forbid entry."
+    },
+    {
+     "type": "유의어",
+     "word": "prohibit",
+     "ko": "금지하다",
+     "en": "Prohibit parking."
+    },
+    {
+     "type": "반의어",
+     "word": "allow",
+     "ko": "허용하다",
+     "en": "Allow pets."
+    },
+    {
+     "type": "반의어",
+     "word": "permit",
+     "ko": "허가하다",
+     "en": "Permit visitors."
+    },
+    {
+     "type": "연관어",
+     "word": "rule",
+     "ko": "규칙",
+     "en": "School rules."
+    },
+    {
+     "type": "연관어",
+     "word": "law",
+     "ko": "법",
+     "en": "A new law."
+    }
+   ]
+  },
+  "2161": {
+   "word": "recruit",
+   "overview": [
+    "recruit는 '(신입을) 모집하다, 채용하다'라는 뜻의 동사입니다.",
+    "recruit new members(새 회원을 모집하다)처럼 씁니다.",
+    "명사로는 '신입 사원, 신병, 신입 회원'이라는 뜻입니다.",
+    "명사 recruitment(채용, 모집)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "hire",
+     "en": "Hire new workers.",
+     "ko": "새 직원을 고용하다."
+    },
+    {
+     "word": "newcomer",
+     "en": "Welcome the newcomer.",
+     "ko": "새로 온 사람을 환영하다."
+    }
+   ],
+   "etymology": [
+    "recruit는 프랑스어 recroître(다시 자라다)에서 온 단어입니다.",
+    "re(다시)와 croître(자라다)가 합쳐진 말로, increase(증가하다)와 뿌리가 이어집니다.",
+    "원래는 전쟁으로 줄어든 군대를 새 병사로 '다시 키우다, 보충하다'라는 뜻이었습니다.",
+    "군대, 회사, 동아리 등에 새 사람을 뽑아 채우는 것을 가리키게 되었습니다.",
+    "recruit의 핵심 이미지는 '빈자리를 새 사람으로 다시 채워 키우는 것 🙋'입니다."
+   ],
+   "meanings": [
+    "모집하다, 채용하다",
+    "신입 사원, 신입생",
+    "신병, 초년병"
+   ],
+   "examples": [
+    {
+     "en": "The club is recruiting new members.",
+     "ko": "그 동아리는 새 회원을 모집하고 있어요."
+    },
+    {
+     "en": "The company recruited ten new engineers.",
+     "ko": "그 회사는 새 엔지니어 열 명을 채용했어요."
+    },
+    {
+     "en": "The new recruits started training on Monday.",
+     "ko": "신병들은 월요일에 훈련을 시작했어요."
+    },
+    {
+     "en": "She was recruited by a famous soccer team.",
+     "ko": "그녀는 유명한 축구팀에 스카우트되었어요."
+    },
+    {
+     "en": "We need to recruit more volunteers.",
+     "ko": "우리는 자원봉사자를 더 모집해야 해요."
+    },
+    {
+     "en": "The coach is looking for young recruits.",
+     "ko": "코치는 젊은 신입 선수들을 찾고 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "hire",
+     "ko": "고용하다",
+     "en": "Hire a helper."
+    },
+    {
+     "type": "유의어",
+     "word": "enlist",
+     "ko": "입대시키다, 모집하다",
+     "en": "Enlist in the army."
+    },
+    {
+     "type": "파생어",
+     "word": "recruitment",
+     "ko": "채용",
+     "en": "A recruitment drive."
+    },
+    {
+     "type": "연관어",
+     "word": "member",
+     "ko": "회원",
+     "en": "A new member."
+    },
+    {
+     "type": "연관어",
+     "word": "soldier",
+     "ko": "군인",
+     "en": "A young soldier."
+    },
+    {
+     "type": "연관어",
+     "word": "job",
+     "ko": "일자리",
+     "en": "Find a job."
+    }
+   ]
   }
  }
 }
