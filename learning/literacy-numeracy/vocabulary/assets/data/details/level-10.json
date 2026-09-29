@@ -15353,6 +15353,1918 @@
      "en": "Note a change."
     }
    ]
+  },
+  "481": {
+   "word": "circumstance",
+   "overview": [
+    "circumstance는 '상황, 환경'이라는 뜻의 명사입니다. 주로 복수형으로 씁니다.",
+    "under these circumstances(이런 상황에서)처럼 씁니다.",
+    "특정한 일이 일어난 배경이 되는 조건이나 사실을 뜻합니다.",
+    "'사정, 형편'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "situation",
+     "en": "A difficult situation.",
+     "ko": "어려운 상황."
+    },
+    {
+     "word": "condition",
+     "en": "Current conditions.",
+     "ko": "현재 조건."
+    }
+   ],
+   "etymology": [
+    "circumstance는 라틴어 circumstantia(주위에 서 있는 것)에서 온 단어입니다.",
+    "circum(주위에)과 stare(서다)가 합쳐진 말로, circle(원), stand(서다)와 같은 가족입니다.",
+    "'어떤 일 주위에 서 있는 여러 조건과 사실들'이라는 뜻이 그대로 이어져 왔습니다.",
+    "한 사건을 둘러싼 배경 전체를 가리키는 데 폭넓게 씁니다.",
+    "circumstance의 핵심 이미지는 '한 사건을 둘러싸고 있는 여러 조건과 상황 🌐'입니다."
+   ],
+   "meanings": [
+    "상황, 환경",
+    "사건, 사태, 사실"
+   ],
+   "examples": [
+    {
+     "en": "Under these circumstances, we must cancel the trip.",
+     "ko": "이런 상황에서, 우리는 그 여행을 취소해야 해요."
+    },
+    {
+     "en": "She adapted well to her new circumstances.",
+     "ko": "그녀는 자신의 새로운 환경에 잘 적응했어요."
+    },
+    {
+     "en": "The circumstances of the accident are still unclear.",
+     "ko": "그 사고의 정황은 아직 불분명해요."
+    },
+    {
+     "en": "In no circumstances should you touch this device.",
+     "ko": "어떤 상황에서도 이 기기를 만져서는 안 돼요."
+    },
+    {
+     "en": "His financial circumstances improved after the promotion.",
+     "ko": "그의 재정적 형편은 그 승진 후 나아졌어요."
+    },
+    {
+     "en": "Given the circumstances, she made the right choice.",
+     "ko": "그 상황을 고려하면, 그녀는 옳은 선택을 했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "situation",
+     "ko": "상황",
+     "en": "A tricky situation."
+    },
+    {
+     "type": "연관어",
+     "word": "condition",
+     "ko": "조건",
+     "en": "Poor conditions."
+    },
+    {
+     "type": "연관어",
+     "word": "context",
+     "ko": "맥락",
+     "en": "In this context."
+    },
+    {
+     "type": "연관어",
+     "word": "factor",
+     "ko": "요인",
+     "en": "A key factor."
+    },
+    {
+     "type": "연관어",
+     "word": "situation",
+     "ko": "형편",
+     "en": "Financial situation."
+    },
+    {
+     "type": "연관어",
+     "word": "background",
+     "ko": "배경",
+     "en": "Historical background."
+    }
+   ]
+  },
+  "735": {
+   "word": "decorate",
+   "overview": [
+    "decorate는 '꾸미다, 장식하다'라는 뜻의 동사입니다.",
+    "decorate the room(방을 꾸미다)처럼 씁니다.",
+    "'훈장을 주다'라는 뜻으로도 씁니다.",
+    "명사 decoration(장식)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "adorn",
+     "en": "Adorn the tree.",
+     "ko": "나무를 장식하다."
+    },
+    {
+     "word": "beautify",
+     "en": "Beautify the yard.",
+     "ko": "마당을 아름답게 꾸미다."
+    }
+   ],
+   "etymology": [
+    "decorate는 라틴어 decorare(아름답게 만들다, 꾸미다)에서 온 단어입니다.",
+    "decus(아름다움, 명예)에서 나온 말로, decent(품위 있는)와도 이어지는 뿌리입니다.",
+    "'아름답게 보이도록 겉모습을 꾸며 주다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'용감한 행동에 대해 명예로운 훈장을 달아 주다'라는 뜻도 이 '아름답게 함'에서 나왔습니다.",
+    "decorate의 핵심 이미지는 '아름답게 보이도록 정성껏 꾸미는 장식 🎀'입니다."
+   ],
+   "meanings": [
+    "꾸미다, 장식하다",
+    "훈장을 주다"
+   ],
+   "examples": [
+    {
+     "en": "They decorated the house for the holidays.",
+     "ko": "그들은 명절을 위해 그 집을 꾸몄어요."
+    },
+    {
+     "en": "She decorated the cake with fresh strawberries.",
+     "ko": "그녀는 신선한 딸기로 그 케이크를 장식했어요."
+    },
+    {
+     "en": "The soldier was decorated for his bravery.",
+     "ko": "그 군인은 자신의 용맹함으로 훈장을 받았어요."
+    },
+    {
+     "en": "Kids decorated the classroom with colorful balloons.",
+     "ko": "아이들은 알록달록한 풍선으로 교실을 꾸몄어요."
+    },
+    {
+     "en": "She decorated her room with photos and posters.",
+     "ko": "그녀는 사진과 포스터로 자기 방을 꾸몄어요."
+    },
+    {
+     "en": "The hall was beautifully decorated for the wedding.",
+     "ko": "그 홀은 그 결혼식을 위해 아름답게 장식되었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "adorn",
+     "ko": "장식하다",
+     "en": "Adorn with flowers."
+    },
+    {
+     "type": "파생어",
+     "word": "decoration",
+     "ko": "장식",
+     "en": "Holiday decorations."
+    },
+    {
+     "type": "연관어",
+     "word": "design",
+     "ko": "디자인",
+     "en": "Interior design."
+    },
+    {
+     "type": "연관어",
+     "word": "beautify",
+     "ko": "아름답게 하다",
+     "en": "Beautify the park."
+    },
+    {
+     "type": "연관어",
+     "word": "arrange",
+     "ko": "배열하다",
+     "en": "Arrange flowers."
+    },
+    {
+     "type": "연관어",
+     "word": "ornament",
+     "ko": "장식품",
+     "en": "A festive ornament."
+    }
+   ]
+  },
+  "895": {
+   "word": "educate",
+   "overview": [
+    "educate는 '교육하다, 가르치다'라는 뜻의 동사입니다.",
+    "educate children(아이들을 교육하다)처럼 씁니다.",
+    "지식과 기술을 가르쳐 성장시키는 것을 뜻합니다.",
+    "명사 education(교육), 형용사 educated(교육받은)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "teach",
+     "en": "Teach a class.",
+     "ko": "수업을 가르치다."
+    },
+    {
+     "word": "train",
+     "en": "Train new staff.",
+     "ko": "신입 직원을 훈련시키다."
+    }
+   ],
+   "etymology": [
+    "educate는 라틴어 educare(기르다, 키우다)에서 온 단어입니다.",
+    "e(밖으로)와 ducere(이끌다)가 합쳐진 말로, produce(생산하다), conduct(수행하다)와 같은 가족입니다.",
+    "'아이가 가진 잠재력을 밖으로 이끌어 내어 성장시키다'라는 뜻이 그대로 이어져 왔습니다.",
+    "단순히 지식을 주입하는 것이 아니라 잠재력을 끌어내는 것에 초점이 있는 단어입니다.",
+    "educate의 핵심 이미지는 '내면의 잠재력을 밖으로 이끌어 내는 교육 🎓'입니다."
+   ],
+   "meanings": [
+    "가르치다, 교육하다"
+   ],
+   "examples": [
+    {
+     "en": "Parents educate their children about safety.",
+     "ko": "부모들은 자녀에게 안전에 대해 교육해요."
+    },
+    {
+     "en": "The program aims to educate the public about health.",
+     "ko": "그 프로그램은 대중에게 건강에 대해 교육하는 것을 목표로 해요."
+    },
+    {
+     "en": "She was educated at a local school.",
+     "ko": "그녀는 지역 학교에서 교육받았어요."
+    },
+    {
+     "en": "It's important to educate students about the environment.",
+     "ko": "학생들에게 환경에 대해 교육하는 것은 중요해요."
+    },
+    {
+     "en": "Schools educate children in many subjects.",
+     "ko": "학교들은 아이들에게 많은 과목을 가르쳐요."
+    },
+    {
+     "en": "He educates himself by reading widely.",
+     "ko": "그는 폭넓게 독서함으로써 스스로를 교육해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "teach",
+     "ko": "가르치다",
+     "en": "Teach a lesson."
+    },
+    {
+     "type": "파생어",
+     "word": "education",
+     "ko": "교육",
+     "en": "Higher education."
+    },
+    {
+     "type": "파생어",
+     "word": "educated",
+     "ko": "교육받은",
+     "en": "A well-educated person."
+    },
+    {
+     "type": "연관어",
+     "word": "train",
+     "ko": "훈련시키다",
+     "en": "Train employees."
+    },
+    {
+     "type": "연관어",
+     "word": "school",
+     "ko": "학교",
+     "en": "A local school."
+    },
+    {
+     "type": "연관어",
+     "word": "learn",
+     "ko": "배우다",
+     "en": "Learn quickly."
+    }
+   ]
+  },
+  "141": {
+   "word": "appoint",
+   "overview": [
+    "appoint는 '임명하다, 지명하다'라는 뜻의 동사입니다.",
+    "appoint her as manager(그녀를 매니저로 임명하다)처럼 씁니다.",
+    "'(시간·장소를) 정하다, 지정하다'라는 뜻으로도 씁니다.",
+    "명사 appointment(임명, 약속)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "assign",
+     "en": "Assign a role.",
+     "ko": "역할을 배정하다."
+    },
+    {
+     "word": "name",
+     "en": "Name a leader.",
+     "ko": "지도자를 지명하다."
+    }
+   ],
+   "etymology": [
+    "appoint는 라틴어 appunctare(점을 찍어 정하다)에서 온 단어입니다.",
+    "ad(~에)와 punctum(점)이 합쳐진 말로, point(점)와 같은 가족입니다.",
+    "'정확한 지점을 콕 찍어 정하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "특정 사람을 어떤 직위에 콕 짚어 세우는 '임명하다'라는 뜻으로 넓어졌습니다.",
+    "appoint의 핵심 이미지는 '정확한 자리를 콕 짚어 정하는 임명과 지정 🎯'입니다."
+   ],
+   "meanings": [
+    "지명하다, 임명하다",
+    "정하다, 지정하다"
+   ],
+   "examples": [
+    {
+     "en": "She was appointed as the new director.",
+     "ko": "그녀는 새 이사로 임명되었어요."
+    },
+    {
+     "en": "They appointed a date for the meeting.",
+     "ko": "그들은 그 회의를 위한 날짜를 정했어요."
+    },
+    {
+     "en": "The president appointed him to lead the committee.",
+     "ko": "그 대통령은 그를 그 위원회를 이끌도록 임명했어요."
+    },
+    {
+     "en": "She was appointed to represent her class.",
+     "ko": "그녀는 자신의 반을 대표하도록 지명되었어요."
+    },
+    {
+     "en": "He was appointed head of the department.",
+     "ko": "그는 그 부서의 책임자로 임명되었어요."
+    },
+    {
+     "en": "They appointed a time and place to meet.",
+     "ko": "그들은 만날 시간과 장소를 정했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "assign",
+     "ko": "배정하다",
+     "en": "Assign a task."
+    },
+    {
+     "type": "파생어",
+     "word": "appointment",
+     "ko": "임명, 약속",
+     "en": "A doctor's appointment."
+    },
+    {
+     "type": "연관어",
+     "word": "name",
+     "ko": "지명하다",
+     "en": "Name a winner."
+    },
+    {
+     "type": "연관어",
+     "word": "select",
+     "ko": "선발하다",
+     "en": "Select a candidate."
+    },
+    {
+     "type": "연관어",
+     "word": "position",
+     "ko": "직위",
+     "en": "A senior position."
+    },
+    {
+     "type": "연관어",
+     "word": "choose",
+     "ko": "선택하다",
+     "en": "Choose wisely."
+    }
+   ]
+  },
+  "894": {
+   "word": "edit",
+   "overview": [
+    "edit는 '편집하다'라는 뜻의 동사입니다.",
+    "edit the document(문서를 편집하다)처럼 씁니다.",
+    "글, 영상, 사진 등을 다듬고 고치는 것을 뜻합니다.",
+    "명사 edition(판), editor(편집자)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "revise",
+     "en": "Revise the text.",
+     "ko": "글을 수정하다."
+    },
+    {
+     "word": "correct",
+     "en": "Correct mistakes.",
+     "ko": "실수를 고치다."
+    }
+   ],
+   "etymology": [
+    "edit는 라틴어 edere(내놓다, 출판하다)에서 온 단어입니다.",
+    "e(밖으로)와 dare(주다)가 합쳐진 말로, edition(판)과 같은 가족입니다.",
+    "'글을 세상에 내놓기 전에 다듬어 완성하다'라는 뜻이 그대로 이어져 왔습니다.",
+    "지금은 글뿐 아니라 영상, 사진 등을 다듬는 모든 작업에 폭넓게 씁니다.",
+    "edit의 핵심 이미지는 '세상에 내놓기 전에 꼼꼼히 다듬는 편집 ✂️'입니다."
+   ],
+   "meanings": [
+    "편집하다"
+   ],
+   "examples": [
+    {
+     "en": "She edited her essay before submitting it.",
+     "ko": "그녀는 자신의 에세이를 제출하기 전에 편집했어요."
+    },
+    {
+     "en": "He edits videos for a living.",
+     "ko": "그는 영상을 편집하는 것으로 생계를 유지해요."
+    },
+    {
+     "en": "The teacher edited the report for grammar mistakes.",
+     "ko": "선생님은 문법 실수를 위해 그 보고서를 편집하셨어요."
+    },
+    {
+     "en": "This app makes it easy to edit photos.",
+     "ko": "이 앱은 사진을 편집하는 것을 쉽게 만들어 줘요."
+    },
+    {
+     "en": "She edited the article to make it shorter.",
+     "ko": "그녀는 그 기사를 더 짧게 만들려고 편집했어요."
+    },
+    {
+     "en": "He carefully edited his book before publishing it.",
+     "ko": "그는 자신의 책을 출판하기 전에 신중하게 편집했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "revise",
+     "ko": "수정하다",
+     "en": "Revise a draft."
+    },
+    {
+     "type": "파생어",
+     "word": "editor",
+     "ko": "편집자",
+     "en": "A skilled editor."
+    },
+    {
+     "type": "파생어",
+     "word": "edition",
+     "ko": "판",
+     "en": "A new edition."
+    },
+    {
+     "type": "연관어",
+     "word": "correct",
+     "ko": "고치다",
+     "en": "Correct an error."
+    },
+    {
+     "type": "연관어",
+     "word": "revise",
+     "ko": "개정하다",
+     "en": "Revise a policy."
+    },
+    {
+     "type": "연관어",
+     "word": "publish",
+     "ko": "출판하다",
+     "en": "Publish a book."
+    }
+   ]
+  },
+  "1894": {
+   "word": "paragraph",
+   "overview": [
+    "paragraph는 '단락, 문단'이라는 뜻의 명사입니다.",
+    "write a paragraph(단락을 쓰다)처럼 씁니다.",
+    "법조문의 '조, 항'이라는 뜻으로도 씁니다.",
+    "하나의 중심 생각을 담은 여러 문장의 묶음을 뜻합니다."
+   ],
+   "easy": [
+    {
+     "word": "section",
+     "en": "A short section.",
+     "ko": "짧은 부분."
+    },
+    {
+     "word": "block of text",
+     "en": "A block of text.",
+     "ko": "글 덩어리."
+    }
+   ],
+   "etymology": [
+    "paragraph는 그리스어 paragraphos(옆에 쓴 것)에서 온 단어입니다.",
+    "para(옆에)와 graphein(쓰다)이 합쳐진 말로, graph(그래프), photograph(사진)와 같은 가족입니다.",
+    "고대 필사본에서 새로운 단락이 시작될 때 옆에 표시하던 기호에서 이름이 유래했습니다.",
+    "'하나의 생각을 담아 나눈 글의 한 부분'이라는 뜻으로 굳어졌습니다.",
+    "paragraph의 핵심 이미지는 '하나의 생각을 담아 묶어 놓은 글의 단락 📝'입니다."
+   ],
+   "meanings": [
+    "문단, 단락",
+    "(법조문의) 조, 항"
+   ],
+   "examples": [
+    {
+     "en": "She wrote a strong opening paragraph.",
+     "ko": "그녀는 강력한 도입 단락을 썼어요."
+    },
+    {
+     "en": "Each paragraph should focus on one idea.",
+     "ko": "각 단락은 하나의 생각에 집중해야 해요."
+    },
+    {
+     "en": "Please read the second paragraph carefully.",
+     "ko": "두 번째 단락을 신중하게 읽어 주세요."
+    },
+    {
+     "en": "The essay had five well-organized paragraphs.",
+     "ko": "그 에세이는 다섯 개의 잘 조직된 단락을 가지고 있었어요."
+    },
+    {
+     "en": "This paragraph explains the main argument.",
+     "ko": "이 단락은 주된 논지를 설명해요."
+    },
+    {
+     "en": "He added a new paragraph to clarify his point.",
+     "ko": "그는 자신의 요점을 명확히 하려고 새 단락을 추가했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "section",
+     "ko": "부분",
+     "en": "A short section."
+    },
+    {
+     "type": "연관어",
+     "word": "sentence",
+     "ko": "문장",
+     "en": "A complete sentence."
+    },
+    {
+     "type": "연관어",
+     "word": "essay",
+     "ko": "에세이",
+     "en": "Write an essay."
+    },
+    {
+     "type": "연관어",
+     "word": "text",
+     "ko": "글",
+     "en": "The original text."
+    },
+    {
+     "type": "연관어",
+     "word": "write",
+     "ko": "쓰다",
+     "en": "Write clearly."
+    },
+    {
+     "type": "연관어",
+     "word": "idea",
+     "ko": "생각",
+     "en": "A main idea."
+    }
+   ]
+  },
+  "112": {
+   "word": "amuse",
+   "overview": [
+    "amuse는 '즐겁게 하다, 웃기다'라는 뜻의 동사입니다.",
+    "amuse the children(아이들을 즐겁게 하다)처럼 씁니다.",
+    "'~을 재미있어 하다'라는 뜻으로도 씁니다.",
+    "형용사 amused(재미있어 하는), amusing(재미있는)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "entertain",
+     "en": "Entertain the crowd.",
+     "ko": "군중을 즐겁게 하다."
+    },
+    {
+     "word": "make laugh",
+     "en": "Make everyone laugh.",
+     "ko": "모두를 웃게 만들다."
+    }
+   ],
+   "etymology": [
+    "amuse는 프랑스어 amuser(멍하게 하다, 즐겁게 하다)에서 온 단어입니다.",
+    "a(~하게)와 muser(멍하니 있다, 응시하다)가 합쳐진 말입니다.",
+    "'멍하니 넋을 놓고 즐겁게 빠져들게 만들다'라는 뜻에서 시작되었습니다.",
+    "지금은 재미있는 것으로 웃음을 자아내는 데 폭넓게 씁니다.",
+    "amuse의 핵심 이미지는 '재미난 것에 빠져들어 웃음 짓게 만드는 즐거움 😄'입니다."
+   ],
+   "meanings": [
+    "즐겁게 하다, 흥을 돋우다"
+   ],
+   "examples": [
+    {
+     "en": "The clown amused the children at the party.",
+     "ko": "그 광대는 그 파티에서 아이들을 즐겁게 해 줬어요."
+    },
+    {
+     "en": "Her jokes amused everyone in the room.",
+     "ko": "그녀의 농담은 방 안의 모두를 즐겁게 해 줬어요."
+    },
+    {
+     "en": "He amused himself by reading comic books.",
+     "ko": "그는 만화책을 읽으며 스스로 즐거운 시간을 보냈어요."
+    },
+    {
+     "en": "The funny video amused the whole family.",
+     "ko": "그 웃긴 영상은 가족 전체를 즐겁게 해 줬어요."
+    },
+    {
+     "en": "She was amused by his silly comment.",
+     "ko": "그녀는 그의 우스운 말에 재미있어 했어요."
+    },
+    {
+     "en": "The story amused the students in class.",
+     "ko": "그 이야기는 반 학생들을 즐겁게 해 줬어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "entertain",
+     "ko": "즐겁게 하다",
+     "en": "Entertain a crowd."
+    },
+    {
+     "type": "파생어",
+     "word": "amused",
+     "ko": "재미있어 하는",
+     "en": "Feel amused."
+    },
+    {
+     "type": "파생어",
+     "word": "amusing",
+     "ko": "재미있는",
+     "en": "An amusing story."
+    },
+    {
+     "type": "연관어",
+     "word": "laugh",
+     "ko": "웃다",
+     "en": "Laugh loudly."
+    },
+    {
+     "type": "연관어",
+     "word": "funny",
+     "ko": "웃긴",
+     "en": "A funny joke."
+    },
+    {
+     "type": "연관어",
+     "word": "enjoy",
+     "ko": "즐기다",
+     "en": "Enjoy a show."
+    }
+   ]
+  },
+  "172": {
+   "word": "assign",
+   "overview": [
+    "assign은 '(일·책임을) 맡기다, 배정하다'라는 뜻의 동사입니다.",
+    "assign a task(일을 배정하다)처럼 씁니다.",
+    "사람이나 자원을 특정 역할이나 용도에 배치하는 것을 뜻합니다.",
+    "명사 assignment(과제, 임무)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "give a task",
+     "en": "Give a task.",
+     "ko": "일을 주다."
+    },
+    {
+     "word": "allocate",
+     "en": "Allocate resources.",
+     "ko": "자원을 할당하다."
+    }
+   ],
+   "etymology": [
+    "assign은 라틴어 assignare(표시해서 할당하다)에서 온 단어입니다.",
+    "ad(~에게)와 signare(표시하다)가 합쳐진 말로, sign(표시, 서명)과 같은 가족입니다.",
+    "'표시를 해서 정확하게 정해진 사람에게 나눠 주다'라는 뜻이 그대로 이어져 왔습니다.",
+    "일, 자리, 자원 등을 특정 사람이나 용도에 배정하는 데 폭넓게 씁니다.",
+    "assign의 핵심 이미지는 '정확히 표시해서 나눠 배정하는 임무와 역할 📌'입니다."
+   ],
+   "meanings": [
+    "(일·책임을) 맡기다, 배정하다"
+   ],
+   "examples": [
+    {
+     "en": "The teacher assigned homework for the weekend.",
+     "ko": "선생님은 주말 숙제를 내주셨어요."
+    },
+    {
+     "en": "She was assigned to lead the new project.",
+     "ko": "그녀는 그 새 프로젝트를 이끌도록 배정되었어요."
+    },
+    {
+     "en": "Each student was assigned a partner.",
+     "ko": "각 학생에게 짝이 배정되었어요."
+    },
+    {
+     "en": "The manager assigned tasks to each team member.",
+     "ko": "그 매니저는 각 팀원에게 업무를 배정했어요."
+    },
+    {
+     "en": "He was assigned to the night shift this week.",
+     "ko": "그는 이번 주에 야간 근무에 배정되었어요."
+    },
+    {
+     "en": "The company assigned a budget for the new office.",
+     "ko": "그 회사는 그 새 사무실을 위해 예산을 배정했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "allocate",
+     "ko": "할당하다",
+     "en": "Allocate funds."
+    },
+    {
+     "type": "파생어",
+     "word": "assignment",
+     "ko": "과제, 임무",
+     "en": "A weekly assignment."
+    },
+    {
+     "type": "연관어",
+     "word": "give",
+     "ko": "주다",
+     "en": "Give a task."
+    },
+    {
+     "type": "연관어",
+     "word": "task",
+     "ko": "일",
+     "en": "A daily task."
+    },
+    {
+     "type": "연관어",
+     "word": "responsibility",
+     "ko": "책임",
+     "en": "Take responsibility."
+    },
+    {
+     "type": "연관어",
+     "word": "role",
+     "ko": "역할",
+     "en": "A key role."
+    }
+   ]
+  },
+  "987": {
+   "word": "exhaust",
+   "overview": [
+    "exhaust는 '지치게 하다, 고갈시키다'라는 뜻의 동사이자 '배기가스'라는 뜻의 명사입니다.",
+    "exhaust her energy(그녀의 기운을 다 써 버리다)처럼 씁니다.",
+    "'(자원을) 다 써 버리다'라는 뜻으로도 씁니다.",
+    "형용사 exhausted(기진맥진한)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "tire out",
+     "en": "Tire out completely.",
+     "ko": "완전히 지치게 하다."
+    },
+    {
+     "word": "use up",
+     "en": "Use up all supplies.",
+     "ko": "모든 물품을 다 써 버리다."
+    }
+   ],
+   "etymology": [
+    "exhaust는 라틴어 exhaurire(완전히 비우다, 다 마셔 버리다)에서 온 단어입니다.",
+    "ex(밖으로)와 haurire(퍼내다, 마시다)가 합쳐진 말입니다.",
+    "'남김없이 완전히 퍼내어 텅 비게 만들다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'몸속 기운을 다 써서 완전히 지치게 하다'라는 뜻과 '자동차의 다 태운 가스'라는 뜻으로 넓어졌습니다.",
+    "exhaust의 핵심 이미지는 '남김없이 다 써 버려 텅 비워지는 소진 😩'입니다."
+   ],
+   "meanings": [
+    "다 써 버리다, 고갈시키다",
+    "지치게 하다",
+    "배기가스, 배기 시스템"
+   ],
+   "examples": [
+    {
+     "en": "The long hike exhausted her completely.",
+     "ko": "그 긴 하이킹은 그녀를 완전히 지치게 했어요."
+    },
+    {
+     "en": "They exhausted all possible solutions to the problem.",
+     "ko": "그들은 그 문제에 대한 가능한 모든 해결책을 다 써 봤어요."
+    },
+    {
+     "en": "Car exhaust pollutes the air in big cities.",
+     "ko": "자동차 배기가스는 대도시의 공기를 오염시켜요."
+    },
+    {
+     "en": "She felt exhausted after the marathon.",
+     "ko": "그녀는 그 마라톤 후 기진맥진함을 느꼈어요."
+    },
+    {
+     "en": "The team exhausted its budget by the end of the year.",
+     "ko": "그 팀은 연말까지 자신들의 예산을 다 써 버렸어요."
+    },
+    {
+     "en": "The car's exhaust pipe needed repair.",
+     "ko": "그 차의 배기관은 수리가 필요했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "tire out",
+     "ko": "지치게 하다",
+     "en": "Tire out quickly."
+    },
+    {
+     "type": "파생어",
+     "word": "exhausted",
+     "ko": "기진맥진한",
+     "en": "Feel exhausted."
+    },
+    {
+     "type": "연관어",
+     "word": "tired",
+     "ko": "피곤한",
+     "en": "Feel tired."
+    },
+    {
+     "type": "연관어",
+     "word": "deplete",
+     "ko": "고갈시키다",
+     "en": "Deplete resources."
+    },
+    {
+     "type": "연관어",
+     "word": "pollution",
+     "ko": "오염",
+     "en": "Air pollution."
+    },
+    {
+     "type": "연관어",
+     "word": "energy",
+     "ko": "에너지",
+     "en": "Save energy."
+    }
+   ]
+  },
+  "2997": {
+   "word": "zebra",
+   "overview": [
+    "zebra는 '얼룩말'이라는 뜻의 명사입니다.",
+    "a striped zebra(줄무늬 얼룩말)처럼 씁니다.",
+    "검은색과 흰색 줄무늬가 특징인 아프리카의 초식 동물입니다.",
+    "zebra crossing(횡단보도)처럼 다른 말과도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "striped horse",
+     "en": "A striped horse.",
+     "ko": "줄무늬 말."
+    },
+    {
+     "word": "African animal",
+     "en": "An African animal.",
+     "ko": "아프리카 동물."
+    }
+   ],
+   "etymology": [
+    "zebra는 포르투갈어 zebra(야생 당나귀)에서 온 단어입니다.",
+    "라틴어 equiferus(야생 말)와 관련이 있다고 봅니다.",
+    "'말과 비슷하지만 줄무늬가 있는 아프리카 야생 동물'이라는 뜻이 그대로 이어져 왔습니다.",
+    "검은색과 흰색이 번갈아 나타나는 독특한 무늬로 잘 알려진 동물입니다.",
+    "zebra의 핵심 이미지는 '검고 흰 줄무늬가 선명한 아프리카 초원의 얼룩말 🦓'입니다."
+   ],
+   "meanings": [
+    "얼룩말"
+   ],
+   "examples": [
+    {
+     "en": "Zebras live in herds on the African plains.",
+     "ko": "얼룩말은 아프리카 평원에서 무리 지어 살아요."
+    },
+    {
+     "en": "Each zebra has a unique pattern of stripes.",
+     "ko": "각 얼룩말은 고유한 줄무늬 패턴을 가지고 있어요."
+    },
+    {
+     "en": "We saw zebras grazing at the safari park.",
+     "ko": "우리는 그 사파리 공원에서 풀을 뜯는 얼룩말을 봤어요."
+    },
+    {
+     "en": "The zebra ran quickly across the grassland.",
+     "ko": "그 얼룩말은 그 초원을 가로질러 빠르게 달렸어요."
+    },
+    {
+     "en": "Children love drawing zebras with black and white stripes.",
+     "ko": "아이들은 검고 흰 줄무늬로 얼룩말을 그리는 것을 아주 좋아해요."
+    },
+    {
+     "en": "Zebras are closely related to horses.",
+     "ko": "얼룩말은 말과 밀접하게 관련되어 있어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "horse",
+     "ko": "말",
+     "en": "A wild horse."
+    },
+    {
+     "type": "연관어",
+     "word": "stripe",
+     "ko": "줄무늬",
+     "en": "A black stripe."
+    },
+    {
+     "type": "연관어",
+     "word": "africa",
+     "ko": "아프리카",
+     "en": "African wildlife."
+    },
+    {
+     "type": "연관어",
+     "word": "grassland",
+     "ko": "초원",
+     "en": "An open grassland."
+    },
+    {
+     "type": "연관어",
+     "word": "herd",
+     "ko": "무리",
+     "en": "A large herd."
+    },
+    {
+     "type": "연관어",
+     "word": "wild",
+     "ko": "야생의",
+     "en": "A wild animal."
+    }
+   ]
+  },
+  "170": {
+   "word": "assess",
+   "overview": [
+    "assess는 '평가하다, 사정하다'라는 뜻의 동사입니다.",
+    "assess the situation(상황을 평가하다)처럼 씁니다.",
+    "가치, 양, 상태 등을 신중하게 판단하는 것을 뜻합니다.",
+    "명사 assessment(평가)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "evaluate",
+     "en": "Evaluate a plan.",
+     "ko": "계획을 평가하다."
+    },
+    {
+     "word": "judge",
+     "en": "Judge the quality.",
+     "ko": "품질을 판단하다."
+    }
+   ],
+   "etymology": [
+    "assess는 라틴어 assidere(옆에 앉다)에서 온 단어입니다.",
+    "ad(~에)와 sedere(앉다)가 합쳐진 말로, session(회기), sit(앉다)과 같은 가족입니다.",
+    "옛날 판사 옆에 앉아 세금을 매길 가치를 판단하던 사람을 가리키던 데서 유래했습니다.",
+    "'옆에서 신중하게 살펴 가치나 양을 판단하다'라는 뜻으로 넓어졌습니다.",
+    "assess의 핵심 이미지는 '신중하게 살펴서 가치를 판단하는 평가 📊'입니다."
+   ],
+   "meanings": [
+    "평가하다, 사정하다"
+   ],
+   "examples": [
+    {
+     "en": "Doctors assessed her condition carefully.",
+     "ko": "의사들은 그녀의 상태를 신중하게 평가했어요."
+    },
+    {
+     "en": "The teacher assessed each student's progress.",
+     "ko": "선생님은 각 학생의 발전을 평가하셨어요."
+    },
+    {
+     "en": "Experts assessed the value of the antique painting.",
+     "ko": "전문가들은 그 골동품 그림의 가치를 평가했어요."
+    },
+    {
+     "en": "We need to assess the risks before proceeding.",
+     "ko": "우리는 진행하기 전에 위험을 평가해야 해요."
+    },
+    {
+     "en": "The company assessed its financial performance.",
+     "ko": "그 회사는 자신의 재정 성과를 평가했어요."
+    },
+    {
+     "en": "Inspectors assessed the damage after the storm.",
+     "ko": "검사관들은 그 폭풍 후 피해 규모를 평가했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "evaluate",
+     "ko": "평가하다",
+     "en": "Evaluate results."
+    },
+    {
+     "type": "파생어",
+     "word": "assessment",
+     "ko": "평가",
+     "en": "A risk assessment."
+    },
+    {
+     "type": "연관어",
+     "word": "judge",
+     "ko": "판단하다",
+     "en": "Judge fairly."
+    },
+    {
+     "type": "연관어",
+     "word": "measure",
+     "ko": "측정하다",
+     "en": "Measure progress."
+    },
+    {
+     "type": "연관어",
+     "word": "analyze",
+     "ko": "분석하다",
+     "en": "Analyze data."
+    },
+    {
+     "type": "연관어",
+     "word": "review",
+     "ko": "검토하다",
+     "en": "Review carefully."
+    }
+   ]
+  },
+  "97": {
+   "word": "aloud",
+   "overview": [
+    "aloud는 '소리 내어, 큰 소리로'라는 뜻의 부사입니다.",
+    "read aloud(소리 내어 읽다)처럼 씁니다.",
+    "마음속으로만 생각하지 않고 목소리를 내어 하는 것을 뜻합니다.",
+    "think aloud는 '생각을 소리 내어 말하다'라는 뜻으로 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "out loud",
+     "en": "Read out loud.",
+     "ko": "소리 내어 읽다."
+    },
+    {
+     "word": "audibly",
+     "en": "Speak audibly.",
+     "ko": "들리게 말하다."
+    }
+   ],
+   "etymology": [
+    "aloud는 a(~하게)와 loud(큰, 시끄러운)가 합쳐진 오래된 단어입니다.",
+    "'소리가 들릴 만큼 목청을 내어'라는 뜻이 그대로 이어져 왔습니다.",
+    "속으로 조용히 하는 것과 대비되는, 목소리를 내어 하는 모든 행동에 씁니다.",
+    "책을 읽거나 생각을 말할 때 자주 쓰는 부사입니다.",
+    "aloud의 핵심 이미지는 '마음속에 머물지 않고 목소리로 터져 나오는 소리 🗣️'입니다."
+   ],
+   "meanings": [
+    "소리 내어, 큰 소리로"
+   ],
+   "examples": [
+    {
+     "en": "She read the poem aloud to the class.",
+     "ko": "그녀는 그 시를 반 학생들에게 소리 내어 읽어 줬어요."
+    },
+    {
+     "en": "He thought aloud while solving the problem.",
+     "ko": "그는 그 문제를 풀면서 생각을 소리 내어 말했어요."
+    },
+    {
+     "en": "Please don't laugh aloud during the movie.",
+     "ko": "그 영화 동안 큰 소리로 웃지 말아 주세요."
+    },
+    {
+     "en": "The teacher asked students to read aloud.",
+     "ko": "선생님은 학생들에게 소리 내어 읽으라고 하셨어요."
+    },
+    {
+     "en": "She wondered aloud if the plan would work.",
+     "ko": "그녀는 그 계획이 성공할지 소리 내어 궁금해했어요."
+    },
+    {
+     "en": "He counted aloud as the children ran the race.",
+     "ko": "그는 아이들이 그 경주를 뛰는 동안 소리 내어 세었어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "out loud",
+     "ko": "소리 내어",
+     "en": "Laugh out loud."
+    },
+    {
+     "type": "연관어",
+     "word": "read",
+     "ko": "읽다",
+     "en": "Read carefully."
+    },
+    {
+     "type": "연관어",
+     "word": "speak",
+     "ko": "말하다",
+     "en": "Speak clearly."
+    },
+    {
+     "type": "연관어",
+     "word": "loud",
+     "ko": "시끄러운",
+     "en": "A loud voice."
+    },
+    {
+     "type": "연관어",
+     "word": "silent",
+     "ko": "조용한",
+     "en": "Stay silent."
+    },
+    {
+     "type": "연관어",
+     "word": "voice",
+     "ko": "목소리",
+     "en": "Raise your voice."
+    }
+   ]
+  },
+  "2214": {
+   "word": "resource",
+   "overview": [
+    "resource는 '자원'이라는 뜻의 명사입니다.",
+    "natural resources(천연자원)처럼 씁니다.",
+    "필요할 때 활용할 수 있는 것을 뜻합니다.",
+    "형용사 resourceful(수완이 좋은)도 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "supply",
+     "en": "A natural supply.",
+     "ko": "천연 공급물."
+    },
+    {
+     "word": "material",
+     "en": "Useful material.",
+     "ko": "유용한 자료."
+    }
+   ],
+   "etymology": [
+    "resource는 프랑스어 resourdre(다시 일어나다, 되살아나다)에서 온 단어입니다.",
+    "re(다시)와 surgere(일어나다)가 합쳐진 말로, surge(급증하다)와도 이어지는 뿌리입니다.",
+    "'어려움에서 다시 일어설 수 있게 도와주는 수단'이라는 뜻에서 시작되었습니다.",
+    "'필요할 때 꺼내 쓸 수 있는 자원, 자산'이라는 뜻으로 넓어졌습니다.",
+    "resource의 핵심 이미지는 '어려운 상황에서 다시 일어서게 도와주는 자원 🌳'입니다."
+   ],
+   "meanings": [
+    "자원"
+   ],
+   "examples": [
+    {
+     "en": "Water is a precious natural resource.",
+     "ko": "물은 귀중한 천연자원이에요."
+    },
+    {
+     "en": "The library offers many learning resources.",
+     "ko": "그 도서관은 많은 학습 자료를 제공해요."
+    },
+    {
+     "en": "The country is rich in mineral resources.",
+     "ko": "그 나라는 광물 자원이 풍부해요."
+    },
+    {
+     "en": "We need to use our resources wisely.",
+     "ko": "우리는 우리의 자원을 현명하게 사용해야 해요."
+    },
+    {
+     "en": "This website is a great resource for students.",
+     "ko": "이 웹사이트는 학생들에게 훌륭한 자료예요."
+    },
+    {
+     "en": "Human resources are essential to any company.",
+     "ko": "인적 자원은 어떤 회사에나 필수적이에요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "supply",
+     "ko": "공급물",
+     "en": "A steady supply."
+    },
+    {
+     "type": "파생어",
+     "word": "resourceful",
+     "ko": "수완이 좋은",
+     "en": "A resourceful person."
+    },
+    {
+     "type": "연관어",
+     "word": "material",
+     "ko": "자료",
+     "en": "Study material."
+    },
+    {
+     "type": "연관어",
+     "word": "asset",
+     "ko": "자산",
+     "en": "A valuable asset."
+    },
+    {
+     "type": "연관어",
+     "word": "energy",
+     "ko": "에너지",
+     "en": "Renewable energy."
+    },
+    {
+     "type": "연관어",
+     "word": "wealth",
+     "ko": "부",
+     "en": "National wealth."
+    }
+   ]
+  },
+  "1923": {
+   "word": "pear",
+   "overview": [
+    "pear는 '배'라는 뜻의 명사입니다.",
+    "a juicy pear(즙이 많은 배)처럼 씁니다.",
+    "달콤하고 아삭한 맛으로 사랑받는 과일입니다.",
+    "pear-shaped(배 모양의)처럼 형태를 묘사하는 데도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "sweet fruit",
+     "en": "A sweet fruit.",
+     "ko": "달콤한 과일."
+    },
+    {
+     "word": "crunchy fruit",
+     "en": "A crunchy fruit.",
+     "ko": "아삭한 과일."
+    }
+   ],
+   "etymology": [
+    "pear는 라틴어 pirum(배)에서 온 단어입니다.",
+    "고대부터 유럽과 아시아에서 널리 재배되어 온 과일 이름입니다.",
+    "'위쪽이 좁고 아래쪽이 둥근 독특한 모양의 열매'라는 뜻이 그대로 이어져 왔습니다.",
+    "이 독특한 모양 때문에 pear-shaped(배 모양의)라는 표현도 생겼습니다.",
+    "pear의 핵심 이미지는 '아래가 볼록하고 달콤한 즙이 가득한 배 🍐'입니다."
+   ],
+   "meanings": [
+    "배"
+   ],
+   "examples": [
+    {
+     "en": "She ate a juicy pear for a snack.",
+     "ko": "그녀는 간식으로 즙이 많은 배를 먹었어요."
+    },
+    {
+     "en": "This pear tastes sweet and crisp.",
+     "ko": "이 배는 달콤하고 아삭한 맛이 나요."
+    },
+    {
+     "en": "They planted a pear tree in the backyard.",
+     "ko": "그들은 뒷마당에 배나무를 심었어요."
+    },
+    {
+     "en": "He sliced the pear for the fruit salad.",
+     "ko": "그는 그 과일 샐러드를 위해 배를 썰었어요."
+    },
+    {
+     "en": "Pears are a good source of fiber.",
+     "ko": "배는 좋은 섬유질 공급원이에요."
+    },
+    {
+     "en": "The bowl was full of ripe pears.",
+     "ko": "그 그릇은 잘 익은 배로 가득했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "fruit",
+     "ko": "과일",
+     "en": "Fresh fruit."
+    },
+    {
+     "type": "연관어",
+     "word": "apple",
+     "ko": "사과",
+     "en": "A red apple."
+    },
+    {
+     "type": "연관어",
+     "word": "juicy",
+     "ko": "즙이 많은",
+     "en": "A juicy peach."
+    },
+    {
+     "type": "연관어",
+     "word": "sweet",
+     "ko": "달콤한",
+     "en": "A sweet taste."
+    },
+    {
+     "type": "연관어",
+     "word": "tree",
+     "ko": "나무",
+     "en": "A tall tree."
+    },
+    {
+     "type": "연관어",
+     "word": "ripe",
+     "ko": "익은",
+     "en": "A ripe banana."
+    }
+   ]
+  },
+  "1205": {
+   "word": "giraffe",
+   "overview": [
+    "giraffe는 '기린'이라는 뜻의 명사입니다.",
+    "a tall giraffe(키가 큰 기린)처럼 씁니다.",
+    "긴 목과 다리를 가진 세계에서 가장 키가 큰 육상 동물입니다.",
+    "아프리카 초원에 사는 대표적인 초식 동물입니다."
+   ],
+   "easy": [
+    {
+     "word": "long-necked animal",
+     "en": "A long-necked animal.",
+     "ko": "목이 긴 동물."
+    },
+    {
+     "word": "tall animal",
+     "en": "A very tall animal.",
+     "ko": "아주 키가 큰 동물."
+    }
+   ],
+   "etymology": [
+    "giraffe는 아랍어 zarafa(빨리 걷는 것)에서 온 단어입니다.",
+    "이탈리아어와 프랑스어를 거쳐 영어에 들어왔습니다.",
+    "'길고 우아하게 걷는 아프리카의 큰 동물'이라는 뜻이 그대로 이어져 왔습니다.",
+    "긴 목으로 높은 나무의 잎을 뜯어 먹는 독특한 생김새로 유명합니다.",
+    "giraffe의 핵심 이미지는 '긴 목을 쭉 뻗어 나뭇잎을 뜯는 키 큰 기린 🦒'입니다."
+   ],
+   "meanings": [
+    "기린"
+   ],
+   "examples": [
+    {
+     "en": "The giraffe reached the leaves at the top of the tree.",
+     "ko": "그 기린은 나무 꼭대기에 있는 잎에 닿았어요."
+    },
+    {
+     "en": "We saw giraffes at the zoo yesterday.",
+     "ko": "우리는 어제 동물원에서 기린을 봤어요."
+    },
+    {
+     "en": "A giraffe's long neck helps it eat from tall trees.",
+     "ko": "기린의 긴 목은 그것이 높은 나무에서 먹는 것을 도와줘요."
+    },
+    {
+     "en": "The baby giraffe stayed close to its mother.",
+     "ko": "그 아기 기린은 자기 엄마 곁에 가까이 있었어요."
+    },
+    {
+     "en": "Giraffes have unique spotted patterns.",
+     "ko": "기린은 독특한 반점 무늬를 가지고 있어요."
+    },
+    {
+     "en": "The children were amazed by the tall giraffe.",
+     "ko": "아이들은 그 키 큰 기린에 놀라워했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "연관어",
+     "word": "zoo",
+     "ko": "동물원",
+     "en": "Visit the zoo."
+    },
+    {
+     "type": "연관어",
+     "word": "tall",
+     "ko": "키가 큰",
+     "en": "A tall building."
+    },
+    {
+     "type": "연관어",
+     "word": "neck",
+     "ko": "목",
+     "en": "A long neck."
+    },
+    {
+     "type": "연관어",
+     "word": "africa",
+     "ko": "아프리카",
+     "en": "African wildlife."
+    },
+    {
+     "type": "연관어",
+     "word": "spot",
+     "ko": "반점",
+     "en": "A spotted pattern."
+    },
+    {
+     "type": "연관어",
+     "word": "animal",
+     "ko": "동물",
+     "en": "A wild animal."
+    }
+   ]
+  },
+  "1627": {
+   "word": "manufacture",
+   "overview": [
+    "manufacture는 '제조하다, 생산하다'라는 뜻의 동사이자 '제조, 생산'이라는 뜻의 명사입니다.",
+    "manufacture cars(자동차를 제조하다)처럼 씁니다.",
+    "공장에서 대량으로 물건을 만들어 내는 것을 뜻합니다.",
+    "명사 manufacturer(제조업체)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "produce",
+     "en": "Produce goods.",
+     "ko": "상품을 생산하다."
+    },
+    {
+     "word": "make",
+     "en": "Make products.",
+     "ko": "제품을 만들다."
+    }
+   ],
+   "etymology": [
+    "manufacture는 라틴어 manu factum(손으로 만들어진)에서 온 단어입니다.",
+    "manus(손)와 facere(만들다)가 합쳐진 말로, manual(손으로 하는), factory(공장)와 같은 가족입니다.",
+    "원래는 '손으로 물건을 만드는 것'을 뜻했습니다.",
+    "산업 혁명 이후 기계로 대량 생산하는 것을 가리키는 뜻으로 넓어졌습니다.",
+    "manufacture의 핵심 이미지는 '공장에서 대량으로 물건을 만들어 내는 제조 🏭'입니다."
+   ],
+   "meanings": [
+    "제작하다, 제조하다, 생산하다 (동사)",
+    "제조, 생산 (명사)"
+   ],
+   "examples": [
+    {
+     "en": "The factory manufactures cars for export.",
+     "ko": "그 공장은 수출용 자동차를 제조해요."
+    },
+    {
+     "en": "This company manufactures electronic devices.",
+     "ko": "이 회사는 전자 기기를 생산해요."
+    },
+    {
+     "en": "The manufacture of the product takes several weeks.",
+     "ko": "그 제품의 제조는 몇 주가 걸려요."
+    },
+    {
+     "en": "They manufacture furniture using recycled wood.",
+     "ko": "그들은 재활용 목재를 사용해 가구를 제조해요."
+    },
+    {
+     "en": "The plant manufactures thousands of items daily.",
+     "ko": "그 공장은 매일 수천 개의 물품을 생산해요."
+    },
+    {
+     "en": "Local manufacture supports the region's economy.",
+     "ko": "지역 제조업은 그 지역의 경제를 뒷받침해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "produce",
+     "ko": "생산하다",
+     "en": "Produce goods."
+    },
+    {
+     "type": "파생어",
+     "word": "manufacturer",
+     "ko": "제조업체",
+     "en": "A major manufacturer."
+    },
+    {
+     "type": "연관어",
+     "word": "factory",
+     "ko": "공장",
+     "en": "A busy factory."
+    },
+    {
+     "type": "연관어",
+     "word": "industry",
+     "ko": "산업",
+     "en": "A growing industry."
+    },
+    {
+     "type": "연관어",
+     "word": "make",
+     "ko": "만들다",
+     "en": "Make products."
+    },
+    {
+     "type": "연관어",
+     "word": "assemble",
+     "ko": "조립하다",
+     "en": "Assemble parts."
+    }
+   ]
+  },
+  "693": {
+   "word": "curl",
+   "overview": [
+    "curl은 '곱슬머리, 소용돌이 모양'이라는 뜻의 명사이자 '말다, 구부리다'라는 뜻의 동사입니다.",
+    "curl her hair(그녀의 머리를 말다)처럼 씁니다.",
+    "곱슬곱슬하게 감기거나 말린 형태를 뜻합니다.",
+    "curl up는 '몸을 웅크리다'라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "wave",
+     "en": "A hair wave.",
+     "ko": "머리 웨이브."
+    },
+    {
+     "word": "twist",
+     "en": "Twist the hair.",
+     "ko": "머리카락을 꼬다."
+    }
+   ],
+   "etymology": [
+    "curl은 중세 영어 crullen(곱슬곱슬하게 하다)에서 온 단어입니다.",
+    "게르만 말 뿌리로, '동그랗게 말리다'를 뜻하는 말과 이어진다고 봅니다.",
+    "'실이나 머리카락이 동그랗게 감겨 말린 모양'이라는 뜻이 그대로 이어져 왔습니다.",
+    "'몸을 동그랗게 웅크리다'라는 뜻도 이 '말림'의 이미지에서 나왔습니다.",
+    "curl의 핵심 이미지는 '동그랗게 말리고 감기는 곱슬곱슬한 모양 🌀'입니다."
+   ],
+   "meanings": [
+    "곱슬머리, 소용돌이 모양 (명사)",
+    "말다, 구부리다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She has beautiful curls in her hair.",
+     "ko": "그녀는 자기 머리에 아름다운 곱슬머리를 가지고 있어요."
+    },
+    {
+     "en": "The cat curled up on the warm blanket.",
+     "ko": "그 고양이는 따뜻한 담요 위에서 몸을 웅크렸어요."
+    },
+    {
+     "en": "Smoke curled up from the chimney.",
+     "ko": "연기가 그 굴뚝에서 소용돌이치며 올라왔어요."
+    },
+    {
+     "en": "She used a curling iron to curl her hair.",
+     "ko": "그녀는 자기 머리를 말려고 고데기를 사용했어요."
+    },
+    {
+     "en": "The leaf curled up as it dried.",
+     "ko": "그 잎은 마르면서 말려 올라갔어요."
+    },
+    {
+     "en": "He curled his fingers around the warm cup.",
+     "ko": "그는 그 따뜻한 컵을 손가락으로 감쌌어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "wave",
+     "ko": "웨이브",
+     "en": "A soft wave."
+    },
+    {
+     "type": "연관어",
+     "word": "twist",
+     "ko": "비틀다",
+     "en": "Twist the rope."
+    },
+    {
+     "type": "연관어",
+     "word": "hair",
+     "ko": "머리카락",
+     "en": "Long hair."
+    },
+    {
+     "type": "연관어",
+     "word": "smoke",
+     "ko": "연기",
+     "en": "Rising smoke."
+    },
+    {
+     "type": "연관어",
+     "word": "bend",
+     "ko": "구부리다",
+     "en": "Bend the wire."
+    },
+    {
+     "type": "연관어",
+     "word": "coil",
+     "ko": "감다",
+     "en": "Coil the rope."
+    }
+   ]
+  },
+  "1226": {
+   "word": "govern",
+   "overview": [
+    "govern은 '(나라·정부를) 다스리다, 통치하다'라는 뜻의 동사입니다.",
+    "govern a country(나라를 다스리다)처럼 씁니다.",
+    "'(마음을) 다스리다, 자제하다'라는 뜻으로도 씁니다.",
+    "명사 government(정부), governor(주지사)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "rule",
+     "en": "Rule a kingdom.",
+     "ko": "왕국을 다스리다."
+    },
+    {
+     "word": "control",
+     "en": "Control the outcome.",
+     "ko": "결과를 통제하다."
+    }
+   ],
+   "etymology": [
+    "govern은 그리스어 kybernan(배의 키를 잡다, 조종하다)에서 온 단어입니다.",
+    "라틴어 gubernare를 거쳐 영어에 들어왔습니다.",
+    "'배의 키를 잡아 방향을 조종하듯 나라를 이끌다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'감정이나 행동을 스스로 조종해 다스리다'라는 뜻으로도 넓어졌습니다.",
+    "govern의 핵심 이미지는 '배의 키를 잡듯 나라와 마음을 조종하며 다스리는 통치 🕹️'입니다."
+   ],
+   "meanings": [
+    "다스리다, 통치하다",
+    "(마음을) 다스리다, 자제하다",
+    "지배하다, 좌우하다"
+   ],
+   "examples": [
+    {
+     "en": "The president governs the country.",
+     "ko": "그 대통령은 그 나라를 다스려요."
+    },
+    {
+     "en": "She learned to govern her emotions during the crisis.",
+     "ko": "그녀는 그 위기 동안 자신의 감정을 다스리는 법을 배웠어요."
+    },
+    {
+     "en": "Rules govern how the game is played.",
+     "ko": "규칙이 그 게임이 어떻게 진행되는지를 좌우해요."
+    },
+    {
+     "en": "The council governs the town's local affairs.",
+     "ko": "그 의회는 그 마을의 지역 사안을 관리해요."
+    },
+    {
+     "en": "Physics laws govern how objects move.",
+     "ko": "물리 법칙은 물체가 어떻게 움직이는지를 지배해요."
+    },
+    {
+     "en": "He governed his temper and stayed calm.",
+     "ko": "그는 자신의 성질을 다스리고 침착함을 유지했어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "rule",
+     "ko": "다스리다",
+     "en": "Rule wisely."
+    },
+    {
+     "type": "파생어",
+     "word": "government",
+     "ko": "정부",
+     "en": "The federal government."
+    },
+    {
+     "type": "파생어",
+     "word": "governor",
+     "ko": "주지사",
+     "en": "A state governor."
+    },
+    {
+     "type": "연관어",
+     "word": "control",
+     "ko": "통제하다",
+     "en": "Control a process."
+    },
+    {
+     "type": "연관어",
+     "word": "lead",
+     "ko": "이끌다",
+     "en": "Lead a nation."
+    },
+    {
+     "type": "연관어",
+     "word": "manage",
+     "ko": "관리하다",
+     "en": "Manage affairs."
+    }
+   ]
+  },
+  "418": {
+   "word": "catalogue",
+   "overview": [
+    "catalogue는 '목록, 카탈로그'라는 뜻의 명사이자 '목록을 만들다'라는 뜻의 동사입니다. catalog로도 씁니다.",
+    "a mail-order catalogue(우편 주문 카탈로그)처럼 씁니다.",
+    "상품이나 정보를 체계적으로 정리한 목록을 뜻합니다.",
+    "도서관의 '도서 목록'이라는 뜻으로도 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "list",
+     "en": "A product list.",
+     "ko": "제품 목록."
+    },
+    {
+     "word": "brochure",
+     "en": "A sales brochure.",
+     "ko": "판매 브로슈어."
+    }
+   ],
+   "etymology": [
+    "catalogue는 그리스어 katalogos(목록, 등록)에서 온 단어입니다.",
+    "kata(완전히)와 legein(말하다, 세다)이 합쳐진 말로, dialogue(대화)와도 이어지는 뿌리입니다.",
+    "'하나하나 완전히 세어서 적어 놓은 목록'이라는 뜻이 그대로 이어져 왔습니다.",
+    "상품, 책 등을 체계적으로 정리해 보여 주는 자료를 폭넓게 가리킵니다.",
+    "catalogue의 핵심 이미지는 '상품과 정보를 하나하나 정리한 목록, 카탈로그 📖'입니다."
+   ],
+   "meanings": [
+    "목록, 카탈로그 (명사)",
+    "목록을 만들다 (동사)"
+   ],
+   "examples": [
+    {
+     "en": "She looked through the furniture catalogue.",
+     "ko": "그녀는 그 가구 카탈로그를 살펴봤어요."
+    },
+    {
+     "en": "The library catalogued all its new books.",
+     "ko": "그 도서관은 자신의 모든 새 책을 목록화했어요."
+    },
+    {
+     "en": "This catalogue features the latest fashion trends.",
+     "ko": "이 카탈로그는 최신 패션 트렌드를 특집으로 다뤄요."
+    },
+    {
+     "en": "He ordered a gift from the holiday catalogue.",
+     "ko": "그는 그 명절 카탈로그에서 선물을 주문했어요."
+    },
+    {
+     "en": "Museums catalogue their artifacts carefully.",
+     "ko": "박물관들은 자신들의 유물을 신중하게 목록화해요."
+    },
+    {
+     "en": "The store sends out a new catalogue every season.",
+     "ko": "그 가게는 매 계절 새 카탈로그를 발송해요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "list",
+     "ko": "목록",
+     "en": "A shopping list."
+    },
+    {
+     "type": "연관어",
+     "word": "brochure",
+     "ko": "브로슈어",
+     "en": "A travel brochure."
+    },
+    {
+     "type": "연관어",
+     "word": "record",
+     "ko": "기록하다",
+     "en": "Record details."
+    },
+    {
+     "type": "연관어",
+     "word": "organize",
+     "ko": "정리하다",
+     "en": "Organize files."
+    },
+    {
+     "type": "연관어",
+     "word": "product",
+     "ko": "제품",
+     "en": "A new product."
+    },
+    {
+     "type": "연관어",
+     "word": "library",
+     "ko": "도서관",
+     "en": "A public library."
+    }
+   ]
+  },
+  "1436": {
+   "word": "instruct",
+   "overview": [
+    "instruct는 '가르치다, 교육하다'라는 뜻의 동사입니다.",
+    "instruct students(학생들을 가르치다)처럼 씁니다.",
+    "'지시하다, 명령하다'라는 뜻으로도 씁니다.",
+    "명사 instruction(지시, 설명), instructor(강사)도 아주 자주 씁니다."
+   ],
+   "easy": [
+    {
+     "word": "teach",
+     "en": "Teach a skill.",
+     "ko": "기술을 가르치다."
+    },
+    {
+     "word": "direct",
+     "en": "Direct the team.",
+     "ko": "팀을 지휘하다."
+    }
+   ],
+   "etymology": [
+    "instruct는 라틴어 instruere(안에 쌓아 짓다, 준비시키다)에서 온 단어입니다.",
+    "in(안에)과 struere(쌓다, 짓다)가 합쳐진 말로, structure(구조), construct(건설하다)와 같은 가족입니다.",
+    "'배우는 사람의 머릿속에 지식을 차곡차곡 쌓아 주다'라는 뜻이 그대로 이어져 왔습니다.",
+    "'해야 할 일을 구체적으로 지시하다'라는 뜻으로도 폭넓게 씁니다.",
+    "instruct의 핵심 이미지는 '지식을 차곡차곡 쌓아 주는 가르침과 지시 👨‍🏫'입니다."
+   ],
+   "meanings": [
+    "가르치다, 교육하다",
+    "지시하다, 명령하다"
+   ],
+   "examples": [
+    {
+     "en": "She instructs beginners in swimming.",
+     "ko": "그녀는 초보자들에게 수영을 가르쳐요."
+    },
+    {
+     "en": "The manager instructed the staff to arrive early.",
+     "ko": "그 매니저는 직원들에게 일찍 도착하라고 지시했어요."
+    },
+    {
+     "en": "He instructs a yoga class every morning.",
+     "ko": "그는 매일 아침 요가 수업을 가르쳐요."
+    },
+    {
+     "en": "Please instruct me on how to use this machine.",
+     "ko": "이 기계를 사용하는 법을 저에게 가르쳐 주세요."
+    },
+    {
+     "en": "The pilot instructed passengers to fasten their seatbelts.",
+     "ko": "그 조종사는 승객들에게 안전벨트를 매라고 지시했어요."
+    },
+    {
+     "en": "She was instructed to submit the report by Friday.",
+     "ko": "그녀는 금요일까지 그 보고서를 제출하라는 지시를 받았어요."
+    }
+   ],
+   "together": [
+    {
+     "type": "유의어",
+     "word": "teach",
+     "ko": "가르치다",
+     "en": "Teach a class."
+    },
+    {
+     "type": "파생어",
+     "word": "instruction",
+     "ko": "지시, 설명",
+     "en": "Follow the instructions."
+    },
+    {
+     "type": "파생어",
+     "word": "instructor",
+     "ko": "강사",
+     "en": "A skilled instructor."
+    },
+    {
+     "type": "연관어",
+     "word": "direct",
+     "ko": "지시하다",
+     "en": "Direct traffic."
+    },
+    {
+     "type": "연관어",
+     "word": "train",
+     "ko": "훈련시키다",
+     "en": "Train new hires."
+    },
+    {
+     "type": "연관어",
+     "word": "guide",
+     "ko": "안내하다",
+     "en": "Guide a student."
+    }
+   ]
   }
  }
 }
