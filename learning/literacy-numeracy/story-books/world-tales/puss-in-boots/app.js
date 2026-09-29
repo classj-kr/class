@@ -58,7 +58,7 @@ const CHAPTERS = [
                 "left": [
                     "그날부터 선물이 이어졌습니다. 고양이는 자루로 토끼도 잡고 꿩도 잡아 궁궐로 가져갔지요.",
                     "그때마다 같은 말을 덧붙였습니다. \"카라바 후작님이 보내셨습니다.\"",
-                    "임금님은 그 이름이 익숙해졌지요. \"참 마음 씀씀이가 좋은 분이군.\""
+                    "임금님은 그 이름이 익숙해졌지요. \"선물을 이렇게 꼬박꼬박 보내다니, 참 고마운 분이군.\""
                 ],
                 "right": [
                     "몇 달이 지났습니다. 고양이는 궁궐 소식을 다 알게 됐지요.",
@@ -203,7 +203,7 @@ const CHAPTERS = [
                 "right": [
                     "\"쥐 따위가 어렵겠느냐! 어디 잘 보아라!\"",
                     "마법사의 몸이 쭉쭉 줄어들더니 이내 작은 쥐가 되었지요. 쥐는 마룻바닥을 쪼르르 달렸습니다.",
-                    "그 순간 고양이의 앞발이 번개처럼 내려왔습니다. 방 안이 조용해지고, 마법사는 다시는 나타나지 않았지요."
+                    "그 순간 고양이가 번개처럼 달려들어 쥐를 꿀꺽 삼켜 버렸습니다. 무엇으로든 변하던 마법사는 그렇게 사라졌지요."
                 ]
             },
             {
@@ -230,12 +230,12 @@ const CHAPTERS = [
                 "art": "07-wedding.webp",
                 "emoji": "💍",
                 "left": [
-                    "잔치가 무르익었습니다. 공주와 막내는 이야기를 나눴지요.",
+                    "잔치가 한창이었습니다. 공주와 막내는 이야기를 나눴지요.",
                     "막내는 말재주가 없었지만 거짓말은 하지 않았습니다. \"사실 저는 방앗간에서 자랐습니다.\"",
                     "공주가 빙그레 웃었습니다."
                 ],
                 "right": [
-                    "\"알고 있었어요. 손을 보면 알거든요.\"",
+                    "\"알고 있었어요. 손에 일하던 굳은살이 박여 있던걸요.\"",
                     "막내는 얼굴이 화끈했지요. \"그런데 왜 가만히 계셨어요?\"",
                     "\"고양이가 참 애쓰던걸요.\"",
                     "두 사람은 한참 웃었습니다."
@@ -256,7 +256,7 @@ const CHAPTERS = [
                 ]
             }
         ],
-        "moral": "꾀는 문을 열어 주지만, 그 문으로 들어가 설 사람은 결국 자기 자신이랍니다."
+        "moral": "고양이의 꾀가 막내를 궁궐까지 데려다주었지만, 사실대로 말한 것은 막내 자신이었답니다."
     }
 ];
 
@@ -773,8 +773,8 @@ const EN = {
                     right: [
                         "\"A mouse? You think a mouse is difficult? Watch closely!\"",
                         "His body shrank and shrank until he was a little mouse, and the mouse went scurrying across the floorboards.",
-                        "Quick as lightning, the cat's paw came down.",
-                        "The room went very quiet, and the magician was never seen again."
+                        "Quick as lightning, the cat pounced on the mouse and swallowed it whole.",
+                        "And that was the end of the magician who could turn into anything."
                     ]
                 },
                 {
@@ -809,7 +809,7 @@ const EN = {
                         "The princess smiled."
                     ],
                     right: [
-                        "\"I knew it. You can tell by the hands.\"",
+                        "\"I knew it. Your hands are hard from work.\"",
                         "His face went hot. \"Then why did you say nothing?\"",
                         "\"Your cat was working so very hard.\"",
                         "The two of them laughed for a long while."
@@ -927,7 +927,7 @@ const EN = {
         ],
         '02-gift-2.webp': [
             { word: 'pheasant', meaning: '꿩', sentence: 'Rabbits one time, pheasants the next.' },
-            { word: 'thoughtful', meaning: '마음 씀씀이가 좋은', sentence: 'What a thoughtful man he must be.' },
+            { word: 'thoughtful', meaning: '남을 잘 챙기는', sentence: 'What a thoughtful man he must be.' },
             { word: 'overhear', meaning: '엿듣다', sentence: "One day he overheard some courtiers whispering." },
             { word: 'gleam', meaning: '반짝이다', sentence: "The cat's eyes gleamed." }
         ],
@@ -985,10 +985,10 @@ const EN = {
             { word: 'wink', meaning: '눈을 찡긋하다', sentence: 'The cat gave him a wink.' }
         ],
         '07-wedding.webp': [
-            { word: 'wear on', meaning: '무르익다, 이어지다', sentence: 'The feast wore on.' },
+            { word: 'wear on', meaning: '이어지다', sentence: 'The feast wore on.' },
             { word: 'fall into talk', meaning: '이야기를 나누게 되다', sentence: 'They fell into talk.' },
             { word: 'gift for', meaning: '~에 대한 재주', sentence: 'He had no gift for fine words.' },
-            { word: 'tell by', meaning: '~을 보고 알다', sentence: 'You can tell by the hands.' }
+            { word: 'hard', meaning: '굳은살이 박인, 딱딱한', sentence: 'Your hands are hard from work.' }
         ],
         '07-wedding-2.webp': [
             { word: 'raise one’s glass', meaning: '잔을 들다', sentence: 'The king raised his glass.' },
@@ -1031,7 +1031,8 @@ const WORDS_KO = {
     "02-gift.webp": [
         { w: "풀숲", k: "풀이 우거진 곳.", s: "그러고는 자루 끈 끝을 쥐고 풀숲에 납작 엎드렸습니다." },
         { w: "오므라들다", k: "벌어진 것이 안으로 모여 좁아지다.", s: "고양이가 끈을 홱 당기자 자루 입구가 꽉 오므라들었습니다." },
-        { w: "궁궐", k: "임금님이 살던 아주 큰 집.", s: "고양이는 궁궐로 갔습니다." }
+        { w: "궁궐", k: "임금님이 살던 아주 큰 집.", s: "고양이는 궁궐로 갔습니다." },
+        { w: "후작", k: "옛날 유럽에서 넓은 땅을 가진 높은 귀족을 부르던 이름.", s: "\"카라바 후작님이 임금님께 보내신 선물입니다.\"" }
     ],
     "02-gift-2.webp": [
         { w: "덧붙이다", k: "하던 말에 더 보태다.", s: "그때마다 같은 말을 덧붙였습니다." },
