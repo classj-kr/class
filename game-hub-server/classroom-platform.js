@@ -7,6 +7,7 @@ const { Pool } = require("pg");
 const { attendanceEventSchema, createAttendanceEventHub } = require("./attendance-events");
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
+const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
@@ -1356,6 +1357,7 @@ function createClassroomPlatform(options = {}) {
       await pool.query("DELETE FROM multiplayer_room_snapshots WHERE expires_at <= NOW()");
       await readingBank.initialize();
       await metacognition.initialize();
+      await learningBoards.initialize();
       await voting.initialize();
       await schoolElection.initialize();
       await seating.initialize();
@@ -1555,6 +1557,12 @@ function createClassroomPlatform(options = {}) {
     HttpError,
     asyncRoute
   });
+
+  const learningBoards = createLearningBoards({
+    pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute,
+    failureLimiter: createAuthenticationFailureLimiter()
+  });
+  router.use("/boards", learningBoards.router);
 
   // 학급선거·전교선거·자리 고르기·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
   // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.

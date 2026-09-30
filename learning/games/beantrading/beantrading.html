@@ -5,11 +5,12 @@
   <title>콩 거래 (Bean Trading)</title>
   <meta name="description" content="4~5명이 함께 심고, 흥정하고, 수확하는 콩 거래 게임">
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
-  <link rel="stylesheet" href="game.css?v=5">
+  <link rel="stylesheet" href="game.css?v=6">
   <script src="../../../assets/network/game-network.js?v=20260821" defer></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels" defer></script>
   <script src="engine.js?v=1" defer></script>
-  <script src="game.js?v=5" defer></script>
+  <script src="strategy.js?v=1" defer></script>
+  <script src="game.js?v=6" defer></script>
 </head>
 <body>
 <main class="shell">
@@ -27,7 +28,16 @@
       <div class="turn-banner"><div class="turn-copy"><div class="turn-meta"><span id="roundLabel">1 / 5 라운드</span><span id="roomLabel"></span><span id="stageLabel"></span></div><h2 id="turnTitle"></h2><p id="turnHint"></p></div><div class="timer"><strong id="seconds">10</strong><span>초</span></div><button id="nextBtn" class="primary hidden"></button><button id="rulesBtnGame" class="ghost" type="button">규칙</button></div>
       <div class="game-grid">
         <section class="market panel"><div class="section-head"><h2>오늘의 장터</h2><span id="deckLabel"></span></div><div class="market-center"><div class="draw-pile"><img src="assets/images/card-back-v1.png" alt="카드 더미"><span>공개 카드</span></div><div id="marketCards" class="card-row"></div></div><p id="marketHint" class="muted"></p></section>
-        <aside class="trade-panel panel"><div class="section-head"><h2 id="inboxTitle">받은 제안 <span id="tradeCount"></span></h2><button id="toggleComposer" class="primary" type="button" aria-expanded="false" aria-controls="tradeComposer">제안 만들기</button></div><div id="offers" class="offers" aria-live="polite"></div><div id="tradeComposer" class="hidden"><div class="composer-row"><label for="tradeTarget">거래 상대</label><select id="tradeTarget"></select></div><div class="give-line"><span>내가 주기</span><strong id="giveLabel">아래 손패에서 선택</strong><button id="clearSelection" class="ghost">해제</button></div><div class="composer-row"><label for="wantKind">내가 받기</label><select id="wantKind" aria-label="받고 싶은 콩 종류"></select><button id="addWant" class="secondary">추가</button></div><div id="wantChips" class="chips"></div><button id="offerBtn" class="primary wide">제안 보내기</button></div></aside>
+        <aside class="trade-panel panel">
+          <div class="section-head"><h2 id="inboxTitle">받은 제안 <span id="tradeCount"></span></h2><button id="toggleComposer" class="primary" type="button" aria-expanded="false" aria-controls="tradeComposer quickTrade">제안 만들기</button></div>
+          <div id="offers" class="offers" aria-live="polite"></div>
+          <div id="quickTrade" class="hidden" aria-label="선택한 콩으로 빠른 제안">
+            <div class="quick-choice"><div><small>내가 주기</small><strong id="quickGive"></strong></div><label for="quickWant">내가 받기<select id="quickWant"></select></label></div>
+            <div id="quickTargets" class="quick-targets"></div>
+            <div class="quick-footer"><span class="muted">상대가 수락해야 거래돼요.</span><button id="customTrade" class="ghost" type="button">여러 장·상세 조건</button></div>
+          </div>
+          <div id="tradeComposer" class="hidden"><div class="composer-row"><label for="tradeTarget">거래 상대</label><select id="tradeTarget"></select></div><div class="give-line"><span>내가 주기</span><strong id="giveLabel">아래 손패에서 선택</strong><button id="clearSelection" class="ghost">해제</button></div><div class="composer-row"><label for="wantKind">내가 받기</label><select id="wantKind" aria-label="받고 싶은 콩 종류"></select><button id="addWant" class="secondary">추가</button></div><div id="wantChips" class="chips"></div><button id="offerBtn" class="primary wide">제안 보내기</button></div>
+        </aside>
       </div>
       <section class="farm panel"><div class="fields-section"><div class="section-head"><h2>내 밭</h2><strong id="myCoins" class="coins"></strong></div><div id="myFields" class="my-fields"></div></div><div class="hand-section"><div class="pocket-head"><div class="pocket-tabs" role="tablist" aria-label="내 카드"><button id="handTab" type="button" role="tab" aria-selected="true" aria-controls="handCards">손패 <span id="handCount"></span></button><button id="pendingTab" type="button" role="tab" aria-selected="false" aria-controls="pendingCards">받은 콩 <span id="pendingCount">0</span></button></div><span id="pocketHint" class="muted">← 앞에서부터 심기</span></div><div id="handCards" class="card-row hand" role="tabpanel" aria-labelledby="handTab"></div><div id="pendingCards" class="card-row hand hidden" role="tabpanel" aria-labelledby="pendingTab"></div></div></section>
       <details class="history"><summary>장터 기록</summary><ol id="log"></ol></details>

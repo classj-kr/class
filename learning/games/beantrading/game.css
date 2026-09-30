@@ -103,6 +103,18 @@ h3 { font-size: 16px; }
 .offer .row { margin-top: 7px; }
 .offer .row button { flex: 1; }
 #tradeComposer { overflow-y: auto; min-height: 0; flex: 1; padding: 2px 3px 3px; scrollbar-width: thin; }
+#quickTrade { overflow-y: auto; min-height: 0; flex: 1; scrollbar-width: thin; }
+.quick-choice { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, 1fr); align-items: center; gap: 8px; margin-bottom: 6px; }
+.quick-choice > div { min-width: 0; }
+.quick-choice strong { display: block; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.quick-choice label { display: flex; align-items: center; gap: 6px; font-size: 14px; white-space: nowrap; }
+.quick-choice select { width: 100%; flex: 1; padding-left: 5px; }
+.quick-targets { display: grid; grid-template-columns: repeat(var(--targets, 1), minmax(0, 1fr)); gap: 6px; }
+.quick-targets button { flex-direction: column; gap: 0; padding: 5px 6px; min-width: 44px; }
+.quick-targets strong { width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 16px; line-height: 1.3; }
+.quick-targets span { font-size: 14px; line-height: 1.3; }
+.quick-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; }
+.quick-footer button { font-size: 14px; padding: 5px 8px; }
 .composer-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
 .composer-row label { font-size: 15px; white-space: nowrap; }
 select, input { min-height: 44px; border: 1px solid var(--line); border-radius: 8px; background: #f5f6eb; color: var(--ink); padding: 7px 10px; font-size: 16px; min-width: 0; }
@@ -227,7 +239,7 @@ dialog .row { margin-top: 16px; }
   .market .card-pick img { height: 70px; }
   .market-center { gap: 24px; }
   .trade-panel { min-height: 145px; max-height: 345px; }
-  .trade-panel:has(#tradeComposer:not(.hidden)) { height: 345px; }
+  .trade-panel:has(#tradeComposer:not(.hidden)), .trade-panel:has(#quickTrade:not(.hidden)) { height: 345px; }
   .offers { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-height: 245px; }
   .farm { grid-template-columns: 1fr; gap: 10px; }
   .fields-section { border: 0; padding: 0; }
@@ -256,6 +268,8 @@ dialog .row { margin-top: 16px; }
   .section-head > span { font-size: 13px; }
   .trade-panel .section-head h2 { font-size: 18px; }
   #toggleComposer { padding: 8px 10px; font-size: 15px; }
+  .quick-choice { grid-template-columns: minmax(0, 1fr) 190px; }
+  .quick-targets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #pocketHint { font-size: 13px; }
   .pocket-head { flex-wrap: wrap; gap: 4px; }
   .pocket-tabs { width: 100%; }

@@ -1,14 +1,15 @@
-/* global BeanTrading, ClassroomMultiplayerLobby */
+/* global BeanTrading, BeanTradingStrategy, ClassroomMultiplayerLobby */
 (() => {
   "use strict";
   const $ = id => document.getElementById(id);
   const B = BeanTrading;
+  const strategy = BeanTradingStrategy;
   const beans = Object.fromEntries(B.BEANS.map(b => [b.id, b]));
   const art = file => `assets/images/${file}`;
   const escape = value => String(value).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   let lobby, state, selected = new Set(), want = [], actionPending = false, actionTimer, toastTimer;
   let practice = null, practiceStage = "", stageKey = "", clockOffset = 0, harvestField = 0;
-  let composerOpen = false, pocket = "hand", detailKind = null;
+  let composerOpen = false, quickOpen = false, quickWant = "", pendingOffer = null, pocket = "hand", detailKind = null;
   const botProposed = new Set();
   const savedName = String(localStorage.getItem("classPlayerName") || "").trim();
   const myId = () => practice ? "practice-me" : lobby?.snapshot().myId;
@@ -56,7 +57,7 @@
     $("pendingCount").textContent = `${state.pending.length}장`;
     renderPocket();
     $("deckLabel").textContent = `더미 ${state.deckCount}장 · 수확 ${state.discardCount}장`;
-    $("marketHint").textContent = trading ? (isTurn() ? "공개 카드·손패를 눌러 거래할 콩 선택" : `${playerName(state.turnPlayerId)}님과 거래할 수 있어요.`) : "남은 공개 카드는 현재 차례인 사람이 심어요.";
+    $("marketHint").textContent = trading ? (isTurn() ? "콩 선택 → 상대를 눌러 선물·교환 제안" : `${playerName(state.turnPlayerId)}님과 거래 · 손패에서 콩 선택`) : "남은 공개 카드는 현재 차례인 사람이 심어요.";
   }
   function renderPocket() {
     $("handCards").classList.toggle("hidden", pocket !== "hand");
@@ -75,15 +76,22 @@
     const pool = [...state.hand, ...(isTurn() ? state.market : [])];
     $("giveLabel").textContent = selected.size ? kindsText(pool.filter(c => selected.has(c.id)).map(c => c.kind)) : "손패·공개 카드를 선택하세요";
     $("wantChips").innerHTML = want.length ? want.map((kind, i) => `<button data-remove-want="${i}" aria-label="${beans[kind].name} 받기 취소">${beans[kind].name} ×</button>`).join("") : '<span class="muted">받을 콩을 추가하지 않으면 기부</span>';
-    $("offerBtn").disabled = state.stage !== "trade" || !selected.size && !want.length || actionPending;
+    $("offerBtn").disabled = state.stage !== "trade" || !selected.size && !want.length || actionPending || !!pendingOffer;
     $("addWant").disabled = want.length >= 3;
     const open = composerOpen && state.stage === "trade";
+    const quick = quickOpen && selected.size > 0 && state.stage === "trade" && !open;
     $("tradeComposer").classList.toggle("hidden", !open);
-    $("offers").classList.toggle("hidden", open);
-    $("toggleComposer").setAttribute("aria-expanded", String(open));
+    $("quickTrade").classList.toggle("hidden", !quick);
+    $("offers").classList.toggle("hidden", open || quick);
+    $("toggleComposer").setAttribute("aria-expanded", String(open || quick));
     $("toggleComposer").disabled = state.stage !== "trade";
-    $("toggleComposer").textContent = open ? "제안 목록 보기" : "제안 만들기";
+    $("toggleComposer").textContent = open || quick ? "제안 목록 보기" : "제안 만들기";
     $("tradeCount").textContent = state.offers.filter(o => o.to === myId()).length;
+    const give = kindsText(pool.filter(c => selected.has(c.id)).map(c => c.kind));
+    $("quickGive").textContent = give; $("quickGive").title = give;
+    $("quickWant").value = quickWant;
+    $("quickTargets").style.setProperty("--targets", targets.length);
+    $("quickTargets").innerHTML = targets.map(p => `<button type="button" class="primary" data-quick-to="${escape(p.id)}" ${actionPending || pendingOffer ? "disabled" : ""} aria-label="${escape(p.name)}에게 ${give} 주고 ${quickWant ? `${beans[quickWant].name} 1장 받기 제안` : "선물 제안"}"><strong>${escape(p.name)}</strong><span>${quickWant ? "교환 제안" : "선물 제안"}</span></button>`).join("");
   }
   function renderOffers() {
     const offers = state.offers.slice().reverse().sort((a, b) => Number(b.to === myId()) - Number(a.to === myId()));
@@ -117,6 +125,11 @@
   }
   function installState(nextState) {
     const newOffer = nextState.offers.find(o => o.to === myId() && !state?.offers.some(old => old.id === o.id));
+    if (pendingOffer && nextState.offers.some(o => o.from === myId() && !pendingOffer.previousIds.includes(o.id)
+      && o.to === pendingOffer.to && JSON.stringify(o.give.map(c => c.id)) === JSON.stringify(pendingOffer.giveIds)
+      && JSON.stringify(o.want) === JSON.stringify(pendingOffer.want))) {
+      selected.clear(); want = []; quickWant = ""; composerOpen = false; quickOpen = false; pendingOffer = null;
+    }
     state = nextState; actionPending = false; clearTimeout(actionTimer);
     clockOffset = state.serverNow - Date.now();
     if (state.phase === "lobby") {
@@ -125,7 +138,7 @@
       $("lobbyScreen").classList.remove("hidden"); return;
     }
     const key = `${state.turnNumber}:${state.stage}`;
-    if (key !== stageKey) { selected.clear(); want = []; composerOpen = false; pocket = state.stage === "settle" && state.pending.length ? "pending" : "hand"; stageKey = key; $("harvestDialog").close(); $("beanDialog").close(); }
+    if (key !== stageKey) { selected.clear(); want = []; composerOpen = false; quickOpen = false; quickWant = ""; pendingOffer = null; pocket = state.stage === "settle" && state.pending.length ? "pending" : "hand"; stageKey = key; $("harvestDialog").close(); $("beanDialog").close(); }
     const pool = [...state.hand, ...state.market, ...state.pending];
     selected = new Set([...selected].filter(id => pool.some(c => c.id === id)));
     $("lobbyScreen").classList.add("hidden"); $("missingScreen").classList.add("hidden"); $("gameScreen").classList.remove("hidden");
@@ -137,27 +150,42 @@
     if (state.phase === "ended") { renderResult(); return; }
     renderTurn(); renderCards(); renderFields(); renderComposer(); renderOffers();
     if ($("beanDialog").open) renderBeanDetail();
-    if (newOffer && composerOpen) toast(`${playerName(newOffer.from)}님의 새 제안 · ‘제안 목록 보기’에서 확인하세요.`);
+    if (newOffer && (composerOpen || quickOpen)) toast(`${playerName(newOffer.from)}님의 새 제안 · ‘제안 목록 보기’에서 확인하세요.`);
     $("log").innerHTML = state.log.map(line => `<li>${escape(line)}</li>`).join("");
   }
   function send(action, data = {}) {
-    if (actionPending) return;
+    if (actionPending) return false;
     if (practice) {
       if (action === "RETURN_LOBBY") { location.reload(); return; }
       const result = B.act(practice, myId(), action, data);
       if (!result.ok) toast(result.error);
-      installState(B.stateFor(practice, myId())); return;
+      if (!result.ok) pendingOffer = null;
+      installState(B.stateFor(practice, myId())); return result.ok;
     }
     actionPending = true;
-    if (!lobby.sendServer({ type: "BEANTRADING_ACTION", action, ...data })) { actionPending = false; toast("연결을 확인한 뒤 다시 시도하세요."); return; }
-    clearTimeout(actionTimer); actionTimer = setTimeout(() => { actionPending = false; toast("응답을 기다리는 중입니다. 연결 상태를 확인하세요."); }, 7000);
+    if (!lobby.sendServer({ type: "BEANTRADING_ACTION", action, ...data })) { actionPending = false; toast("연결을 확인한 뒤 다시 시도하세요."); return false; }
+    clearTimeout(actionTimer); actionTimer = setTimeout(() => { actionPending = false; pendingOffer = null; if (state?.phase === "playing") renderComposer(); toast("응답을 기다리는 중입니다. 연결 상태를 확인하세요."); }, 7000);
+    return true;
+  }
+  function sendOffer(data) {
+    if (actionPending || pendingOffer) return;
+    pendingOffer = { ...data, previousIds: state.offers.map(o => o.id) };
+    if (!send("OFFER", data)) pendingOffer = null;
+    renderComposer();
   }
   function selectCard(id) {
+    if (pendingOffer) return;
+    const wasEmpty = !selected.size;
     if (state.stage === "settle") selected = new Set([id]);
     else if (selected.has(id)) selected.delete(id);
     else if (selected.size < 3) selected.add(id);
     else { toast("한 번에 최대 3장까지 제안할 수 있어요."); return; }
+    if (state.stage === "trade" && !composerOpen) {
+      quickOpen = selected.size > 0;
+      if (wasEmpty) { quickWant = ""; $("quickTrade").scrollTop = 0; }
+    }
     renderCards(); renderFields(); renderComposer();
+    if (quickOpen && wasEmpty && window.innerWidth < 1000) $("quickTrade").scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
   function openRules() { if (!$("rulesDialog").open) $("rulesDialog").showModal(); }
   function renderBeanDetail() {
@@ -178,11 +206,10 @@
     toast("연습 모드입니다. 컴퓨터 3명이 함께합니다.");
   }
   function botPlant(id, pile) {
-    const card = pile[0]; if (!card) return;
-    let f = practice.fields[id].findIndex(field => field[0]?.kind === card.kind);
-    if (f < 0) f = practice.fields[id].findIndex(field => !field.length);
-    if (f < 0) { f = practice.fields[id][0].length <= practice.fields[id][1].length ? 0 : 1; B.act(practice, id, "HARVEST", { field: f }); }
-    B.act(practice, id, "PLANT", { field: f, cardId: card.id });
+    const move = strategy.choosePlant(B.stateFor(practice, id), id, pile, practice.stage === "plant");
+    if (!move) return;
+    if (move.harvest) B.act(practice, id, "HARVEST", { field: move.field });
+    B.act(practice, id, "PLANT", { field: move.field, cardId: move.cardId });
   }
   function tickPractice() {
     if (!practice || practice.phase !== "playing") return;
@@ -192,7 +219,11 @@
     else {
       const active = practice.players[practice.turnIndex].id, key = `${practice.turnNumber}:${practice.stage}`;
       if (key !== practiceStage) { practiceStage = key; botProposed.clear(); }
-      if (practice.stage === "plant" && active !== "practice-me") B.autoPlay(practice);
+      if (practice.stage === "plant" && active !== "practice-me") {
+        botPlant(active, practice.hands[active]);
+        if (practice.stage === "plant" && strategy.shouldPlantSecond(B.stateFor(practice, active), active)) botPlant(active, practice.hands[active]);
+        if (practice.stage === "plant") B.act(practice, active, "NEXT");
+      }
       else if (practice.stage === "settle") {
         for (const p of practice.players.filter(p => p.id !== "practice-me")) {
           if (practice.stage !== "settle") break;
@@ -200,15 +231,16 @@
         }
       } else if (practice.stage === "trade") {
         for (const offer of practice.offers.slice()) {
-          if (offer.to !== "practice-me" && offer.give.length >= offer.want.length) B.act(practice, offer.to, "ACCEPT", { offerId: offer.id });
+          if (offer.to === "practice-me" || !practice.offers.some(o => o.id === offer.id)) continue;
+          const decision = strategy.evaluateOffer(B.stateFor(practice, offer.to), offer.to, offer);
+          B.act(practice, offer.to, decision.accept ? "ACCEPT" : "CANCEL", { offerId: offer.id });
+          if (!decision.accept && offer.from === "practice-me") toast(`${playerName(offer.to)}: ${decision.reason === "missing" ? "요청한 콩이 부족해서 거절했어요." : "지금 내 밭에 도움이 되는 조건이 아니라 거절했어요."}`);
         }
         for (const p of practice.players.filter(p => p.id !== "practice-me")) {
           if (botProposed.has(p.id)) continue;
           botProposed.add(p.id);
-          const pool = p.id === active ? [...practice.market, ...practice.hands[p.id]] : practice.hands[p.id];
-          const give = pool.find(c => !practice.fields[p.id].some(f => f[0]?.kind === c.kind)) || pool[0];
-          const desired = practice.fields[p.id].find(f => f.length)?.[0]?.kind || practice.hands[p.id][0]?.kind;
-          if (give && desired) B.act(practice, p.id, "OFFER", { to: p.id === active ? "practice-me" : active, giveIds: [give.id], want: [desired] });
+          const offer = strategy.planOffer(B.stateFor(practice, p.id), p.id);
+          if (offer) B.act(practice, p.id, "OFFER", offer);
         }
         if (active !== "practice-me" && practice.deadline - Date.now() < 13000) B.act(practice, active, "NEXT");
       }
@@ -217,6 +249,7 @@
   }
   function init() {
     $("wantKind").innerHTML = B.BEANS.map(b => `<option value="${b.id}">${b.name}</option>`).join("");
+    $("quickWant").innerHTML = '<option value="">선물 · 받기 없음</option>' + B.BEANS.map(b => `<option value="${b.id}">${b.name} 1장</option>`).join("");
     $("priceTable").innerHTML = B.BEANS.map(b => `<div class="price-bean"><img src="${art(b.art)}" alt=""><strong>${b.name} · 총 ${b.count}장</strong><p>${b.prices.map((n, i) => `${n}장 → ${i + 1}금화`).join("<br>")}</p></div>`).join("");
     $("practiceBtn")?.addEventListener("click", startPractice);
     $("practiceBtnMissing")?.addEventListener("click", startPractice);
@@ -224,6 +257,7 @@
       gameId: "beantrading", initialMode: "guest", getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
       allowedPlayerCounts: [4, 5], minPlayers: 4, maxPlayers: 5,
       rulesButtonIds: ["rulesBtnLobby", "rulesBtnGame"], leaveButtonIds: ["leaveBtnLobby", "leaveBtnGame"],
+      preserveRulesUi: true,
       onRules: openRules, onLeave: () => { if (practice) location.reload(); else location.href = "../../../"; }, onNotice: toast,
       onInvalidStart: () => toast("4~5명이 모여야 시작할 수 있습니다."),
       getLobbyPresentation: ({ count, role, canStart }) => ({ canStart, guideText: role === "host" ? `현재 ${count}명 · 4~5명이 모이면 시작하세요.` : `현재 ${count}명 · 방장이 시작할 때까지 기다리세요.` }),
@@ -232,7 +266,7 @@
       onServerMessage: message => {
         if (practice) return;
         if (message.type === "BEANTRADING_STATE") installState(message.state);
-        if (message.type === "BEANTRADING_ERROR") { actionPending = false; clearTimeout(actionTimer); toast(message.message); if (state?.phase === "playing") renderComposer(); }
+        if (message.type === "BEANTRADING_ERROR") { actionPending = false; pendingOffer = null; clearTimeout(actionTimer); toast(message.message); if (state?.phase === "playing") renderComposer(); }
       },
       onPlayerLeftDuringGame: () => toast("플레이어가 나가 대기실로 돌아갑니다."),
       onAbort: ({ title, message }) => { if (practice) return; $("abortTitle").textContent = title; $("abortMessage").textContent = message; if (!$("abortDialog").open) $("abortDialog").showModal(); }
@@ -241,7 +275,9 @@
     $("leaveBtnGame").addEventListener("click", () => { if (practice) location.reload(); });
     $("closeRules").addEventListener("click", () => $("rulesDialog").close());
     $("closeBean").addEventListener("click", () => $("beanDialog").close());
-    $("toggleComposer").addEventListener("click", () => { composerOpen = !composerOpen; renderComposer(); });
+    $("toggleComposer").addEventListener("click", () => { composerOpen = !composerOpen && !quickOpen; quickOpen = false; renderComposer(); });
+    $("customTrade").addEventListener("click", () => { composerOpen = true; quickOpen = false; want = quickWant ? [quickWant] : []; renderComposer(); });
+    $("quickWant").addEventListener("change", () => { quickWant = $("quickWant").value; renderComposer(); });
     $("handTab").addEventListener("click", () => { pocket = "hand"; renderPocket(); });
     $("pendingTab").addEventListener("click", () => { pocket = "pending"; renderPocket(); });
     $("handTab").addEventListener("keydown", event => { if (["ArrowRight", "ArrowLeft"].includes(event.key)) { event.preventDefault(); pocket = "pending"; renderPocket(); $("pendingTab").focus(); } });
@@ -252,15 +288,12 @@
     $("returnLobbyBtn").addEventListener("click", () => send("RETURN_LOBBY"));
     $("clearSelection").addEventListener("click", () => { selected.clear(); renderCards(); renderComposer(); });
     $("addWant").addEventListener("click", () => { if (want.length < 3) want.push($("wantKind").value); renderComposer(); });
-    $("offerBtn").addEventListener("click", () => {
-      const data = { to: $("tradeTarget").value, giveIds: [...selected], want: [...want] };
-      if (actionPending) return;
-      selected.clear(); want = []; composerOpen = false; send("OFFER", data);
-    });
+    $("offerBtn").addEventListener("click", () => sendOffer({ to: $("tradeTarget").value, giveIds: [...selected], want: [...want] }));
     document.addEventListener("click", event => {
       const button = event.target.closest("button"); if (!button || button.disabled || !state) return;
       if (button.dataset.card) selectCard(button.dataset.card);
       if (button.dataset.kind) openBean(button.dataset.kind);
+      if (button.dataset.quickTo) sendOffer({ to: button.dataset.quickTo, giveIds: [...selected], want: quickWant ? [quickWant] : [] });
       if (button.dataset.plant !== undefined) { const card = plantingCard(); if (card) send("PLANT", { field: Number(button.dataset.plant), cardId: card.id }); }
       if (button.dataset.harvest !== undefined) {
         harvestField = Number(button.dataset.harvest);
