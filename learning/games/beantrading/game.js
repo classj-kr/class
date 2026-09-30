@@ -98,7 +98,7 @@
     state = nextState; actionPending = false; clearTimeout(actionTimer);
     clockOffset = state.serverNow - Date.now();
     if (state.phase === "lobby") {
-      $("gameScreen").classList.add("hidden"); $("welcome").classList.remove("hidden");
+      $("gameScreen").classList.add("hidden");
       if (lobby?.snapshot().started) lobby.returnToLobby();
       $("lobbyScreen").classList.remove("hidden"); return;
     }
@@ -106,7 +106,7 @@
     if (key !== stageKey) { selected.clear(); want = []; stageKey = key; $("harvestDialog").close(); }
     const pool = [...state.hand, ...state.market, ...state.pending];
     selected = new Set([...selected].filter(id => pool.some(c => c.id === id)));
-    $("welcome").classList.add("hidden"); $("lobbyScreen").classList.add("hidden"); $("missingScreen").classList.add("hidden"); $("gameScreen").classList.remove("hidden");
+    $("lobbyScreen").classList.add("hidden"); $("missingScreen").classList.add("hidden"); $("gameScreen").classList.remove("hidden");
     $("roundLabel").textContent = `${state.round} / ${state.roundLimit} 라운드`;
     $("roomLabel").textContent = practice ? "연습 · 컴퓨터 3명" : `방 ${lobby?.snapshot().roomCode || ""}`;
     $("playArea").classList.toggle("hidden", state.phase === "ended");
@@ -201,6 +201,7 @@
       onAbort: ({ title, message }) => { if (practice) return; $("abortTitle").textContent = title; $("abortMessage").textContent = message; if (!$("abortDialog").open) $("abortDialog").showModal(); }
     }).mount();
     $("practiceBtn").addEventListener("click", startPractice);
+    $("practiceBtnMissing").addEventListener("click", startPractice);
     $("rulesBtnGame").addEventListener("click", () => { if (practice) openRules(); });
     $("leaveBtnGame").addEventListener("click", () => { if (practice) location.reload(); });
     $("closeRules").addEventListener("click", () => $("rulesDialog").close());
