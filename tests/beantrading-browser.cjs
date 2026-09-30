@@ -12,6 +12,27 @@ async function attach(page) {
   page.on("pageerror", error => errors.push(error.message));
   page.on("response", response => { if (response.url().includes("/beantrading/") && response.status() >= 400) errors.push(`${response.status()}: ${response.url()}`); });
 }
+async function checkReadability(page, label, fitScreen = false) {
+  const sizes = await page.evaluate(() => {
+    const visible = s => [...document.querySelectorAll(s)].filter(e => e.getClientRects().length);
+    const buttonSizes = visible('#toggleComposer, #nextBtn, .field-harvest, .card-info, .pocket-tabs button, [data-accept], [data-cancel]')
+      .map(e => ({ name: e.getAttribute('aria-label') || e.textContent.trim(), h: e.getBoundingClientRect().height, w: e.getBoundingClientRect().width }));
+    const marketBox = document.querySelector('.market').getBoundingClientRect();
+    const marketHeader = document.querySelector('.market .section-head').getBoundingClientRect();
+    const marketCards = visible('#marketCards .bean-card').map(e => ({ top: e.getBoundingClientRect().top, bottom: e.getBoundingClientRect().bottom }));
+    return { width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth,
+      marketCards, marketTop: marketHeader.bottom, marketBottom: marketBox.bottom,
+      farmBottom: document.querySelector('.farm').getBoundingClientRect().bottom,
+      names: visible('.card-pick > strong').map(e => parseFloat(getComputedStyle(e).fontSize)),
+      values: visible('.card-value b').map(e => parseFloat(getComputedStyle(e).fontSize)), buttonSizes };
+  });
+  assert.ok(sizes.scrollWidth <= sizes.width + 1, `${label}: no page overflow`);
+  assert.ok(sizes.names.length && sizes.names.every(n => n >= 16), `${label}: bean names >=16px`);
+  assert.ok(sizes.values.every(n => n >= 18), `${label}: harvest numbers >=18px`);
+  assert.ok(sizes.buttonSizes.every(b => b.h >= 44 && b.w >= 44), `${label}: touch targets ${JSON.stringify(sizes.buttonSizes.filter(b => b.h < 44 || b.w < 44))}`);
+  assert.ok(sizes.marketCards.every(b => b.top >= sizes.marketTop && b.bottom <= sizes.marketBottom), `${label}: market cards stay inside the panel below its heading`);
+  if (fitScreen) assert.ok(sizes.farmBottom <= sizes.height + 1, `${label}: hand and fields visible without page scrolling, bottom=${sizes.farmBottom}`);
+}
 async function main() {
   const browser = await chromium.launch({ headless: true, channel: "msedge" });
   try {
@@ -19,9 +40,18 @@ async function main() {
     await practice.goto(url); await practice.locator("#practiceBtnMissing").click();
     await practice.locator("#gameScreen:not(.hidden)").waitFor();
     assert.equal(await practice.locator(".player").count(), 4);
+    await practice.locator("#handCards .card-info").first().click();
+    await practice.locator("#beanDialog[open]").waitFor();
+    assert.equal(await practice.locator(".bean-prices tbody tr").count(), 4);
+    assert.match(await practice.locator("#beanDetail").innerText(), /아직 없는 콩/);
+    await practice.locator("#closeBean").click();
     await practice.locator("[data-plant='0']").click();
     await practice.locator("#nextBtn").click();
     await practice.locator("#stageLabel").filter({ hasText: "거래" }).waitFor();
+    assert.equal(await practice.locator("#tradeComposer").isVisible(), false);
+    await practice.locator("#toggleComposer").click();
+    assert.equal(await practice.locator("#tradeComposer").isVisible(), true);
+    await practice.locator("#toggleComposer").click();
     await practice.screenshot({ path: path.join(output, "practice-desktop.png"), fullPage: true });
     await practice.locator("#rulesBtnGame").click();
     assert.equal(await practice.locator("#rulesDialog").evaluate(e => e.open), true);
@@ -37,7 +67,7 @@ async function main() {
 
     const players = [];
     for (const name of ["가람", "나래", "다온", "라온", "마루"]) {
-      const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+      const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, hasTouch: true });
       await context.addInitScript(n => localStorage.setItem("classPlayerName", n), name);
       const page = await context.newPage(); await attach(page); await page.goto(url); players.push(page);
     }
@@ -55,23 +85,49 @@ async function main() {
     for (const page of players) await page.locator("#gameScreen:not(.hidden)").waitFor();
     assert.equal(await host.locator(".player").count(), 5);
     await host.locator("[data-plant='0']").click(); await host.locator("#nextBtn").click();
-    await host.locator("#marketCards .bean-card").first().click();
+    await host.locator("#marketCards .card-pick").first().click();
+    await host.locator("#toggleComposer").click();
     const recipientId = await host.locator("#tradeTarget option").first().getAttribute("value");
     await host.locator("#tradeTarget").selectOption(recipientId);
     await host.locator("#offerBtn").click();
+    await host.locator("#tradeComposer").waitFor({ state: "hidden" });
+    assert.equal(await host.locator("#tradeComposer").isVisible(), false);
+    assert.equal(await players[1].locator("#tradeComposer").isVisible(), false);
+    await players[1].locator("[data-accept]").first().waitFor();
+    await players[1].setViewportSize({ width: 1366, height: 668 });
+    await checkReadability(players[1], "1366x668 incoming offer", true);
+    const acceptSize = await players[1].locator("[data-accept]").first().boundingBox();
+    assert.ok(acceptSize.height >= 48 && acceptSize.width >= 48);
+    for (const selector of ['[data-accept]', '[data-cancel]']) {
+      assert.ok(await players[1].locator(selector).first().evaluate(e => {
+        const r = e.getBoundingClientRect(), panel = document.getElementById('offers').getBoundingClientRect();
+        return r.top >= panel.top && r.bottom <= panel.bottom && e.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+      }), "incoming offer can be accepted or declined without scrolling");
+    }
+    await players[1].screenshot({ path: path.join(output, "received-offer.png"), fullPage: true });
     await players[1].locator("[data-accept]").first().click();
+    await players[1].locator("#pendingTab").click();
     await players[1].locator("#pendingCards .bean-card").first().waitFor();
     await host.screenshot({ path: path.join(output, "multiplayer-desktop.png"), fullPage: true });
     await host.setViewportSize({ width: 1366, height: 768 });
     await host.screenshot({ path: path.join(output, "multiplayer-laptop.png"), fullPage: true });
-    const handBottom = await host.locator("#handCards").evaluate(e => e.getBoundingClientRect().bottom);
-    assert.ok(handBottom <= 768, `laptop hand controls must fit on screen, got ${handBottom}`);
+    await checkReadability(host, "1366x768 Chromebook", true);
+    await host.setViewportSize({ width: 1366, height: 668 });
+    await checkReadability(host, "1366x668 Chromebook with browser toolbar", true);
+    await host.screenshot({ path: path.join(output, "chromebook-toolbar.png"), fullPage: true });
+    await host.setViewportSize({ width: 1024, height: 768 });
+    await checkReadability(host, "1024x768 iPad landscape", true);
+    await host.screenshot({ path: path.join(output, "ipad-landscape.png"), fullPage: true });
+    await host.setViewportSize({ width: 1024, height: 668 });
+    await checkReadability(host, "1024x668 iPad landscape with browser toolbar", true);
     await host.setViewportSize({ width: 820, height: 1180 });
     await host.screenshot({ path: path.join(output, "multiplayer-ipad.png"), fullPage: true });
-    assert.ok(await host.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "iPad page must not overflow horizontally");
+    await checkReadability(host, "820x1180 iPad portrait");
+    await host.setViewportSize({ width: 768, height: 1024 });
+    await checkReadability(host, "768x1024 iPad portrait");
     await host.locator("#nextBtn").click();
     await players[1].locator(".field-plant:not(:disabled)").first().click();
-    await players[1].locator("#myFields .field-plant img").first().waitFor();
+    await players[1].locator("#myFields .field-plant img").first().waitFor({ state: "attached" });
     assert.equal(await players[1].locator("#myFields .field-plant img").count(), 1);
     assert.deepEqual(errors, []);
     console.log("beantrading-browser: practice, rules, 390px and iPad layouts, 5 browser players, gifting and planting OK");
