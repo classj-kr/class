@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { calculateTimeResult, timeAnswerMaxLength, type TimePart, type TimeValue } from "../../../lib/time-calculation";
 
 type PrintMode = "worksheet" | "answers" | "both";
 type Operator = "+" | "−";
-type TimePart = "hours" | "minutes" | "seconds";
-type TimeValue = { hours: number; minutes: number; seconds: number };
 type TimeProblem = { id: string; operator: Operator; parts: TimePart[]; left: TimeValue; right: TimeValue; result: TimeValue };
 type ProblemSet = { seed: number; problems: TimeProblem[] };
 
@@ -32,16 +31,13 @@ function value(hours = 0, minutes = 0, seconds = 0): TimeValue {
 }
 
 function makeProblem(id: string, operator: Operator, parts: TimePart[], left: TimeValue, right: TimeValue): TimeProblem {
-  const leftTotal = left.hours * 3600 + left.minutes * 60 + left.seconds;
-  const rightTotal = right.hours * 3600 + right.minutes * 60 + right.seconds;
-  const total = operator === "+" ? leftTotal + rightTotal : leftTotal - rightTotal;
   return {
     id,
     operator,
     parts,
     left,
     right,
-    result: value(Math.floor(total / 3600), Math.floor((total % 3600) / 60), total % 60),
+    result: calculateTimeResult(left, operator, right, parts),
   };
 }
 
@@ -56,7 +52,7 @@ function minutesSecondsSubtraction(next: () => number, id: string, narrow = fals
 
 function hoursMinutesSubtraction(next: () => number, id: string) {
   const leftHours = integer(next, 4, 8);
-  return makeProblem(id, "−", ["hours", "minutes"], value(leftHours, integer(next, 1, 40)), value(integer(next, 1, leftHours - 1), integer(next, 30, 60)));
+  return makeProblem(id, "−", ["hours", "minutes"], value(leftHours, integer(next, 1, 40)), value(integer(next, 1, leftHours - 1), integer(next, 30, 59)));
 }
 
 function minutesSecondsAddition(next: () => number, id: string) {
@@ -111,7 +107,7 @@ export default function GradeThreeTimeTwoPage() {
   const correct = Object.values(results).filter(Boolean).length;
 
   function updateAnswer(id: string, part: TimePart, answer: string) {
-    setAnswers((current) => ({ ...current, [`${id}-${part}`]: answer.replace(/[^0-9]/g, "").slice(0, 2) }));
+    setAnswers((current) => ({ ...current, [`${id}-${part}`]: answer.replace(/[^0-9]/g, "").slice(0, timeAnswerMaxLength(part)) }));
     setResults((current) => {
       if (!(id in current)) return current;
       const next = { ...current };
@@ -153,7 +149,7 @@ export default function GradeThreeTimeTwoPage() {
         {problem.parts.map((part) => <span key={part} style={{ display: "contents" }}>
           {answerSheet
             ? <strong className="time-calculation-static">{problem.result[part]}</strong>
-            : <input className="time-calculation-input" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={2} value={answers[`${problem.id}-${part}`] ?? ""} onChange={(event) => updateAnswer(problem.id, part, event.target.value)} aria-label={`${problem.id} ${UNIT_LABELS[part]} 답`} />}
+            : <input className="time-calculation-input" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={timeAnswerMaxLength(part)} value={answers[`${problem.id}-${part}`] ?? ""} onChange={(event) => updateAnswer(problem.id, part, event.target.value)} aria-label={`${problem.id} ${UNIT_LABELS[part]} 답`} />}
           <span>{UNIT_LABELS[part]}</span>
         </span>)}
       </div>
