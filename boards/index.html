@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24594e">
+  <title>게시판</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section id="entry" class="entry">
+      <form id="joinForm" class="panel join-panel"><label>방번호<input id="joinCode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6자리" required autocomplete="off"></label><div class="form-row"><label>번호<input id="joinNumber" type="number" min="1" max="60" required></label><label>이름 또는 별명<input id="joinName" maxlength="20" required autocomplete="off"></label></div><button class="primary full" type="submit">입장</button><p id="joinError" class="error" role="alert"></p></form>
+    </section>
+
+    <section id="teacherHome" hidden>
+      <div class="section-head"><button id="newBoard" class="primary">+ 게시판 만들기</button></div>
+      <div id="teacherError" class="panel error" hidden></div>
+      <div id="boardList" class="board-list"></div>
+    </section>
+
+    <section id="boardView" hidden>
+      <div class="toolbar"><div class="toolbar-group"><div class="code-chip"><span>방번호</span><strong id="boardCode"></strong></div><span id="memberCount" class="pill"></span><span id="myIdentity" class="muted"></span><span id="syncStatus" class="sync" role="status">연결됨</span></div><div class="toolbar-group"><button id="shareBoard" hidden>공유</button><button id="settingsBoard" hidden>관리</button><button id="writePost" class="primary">+ 글 쓰기</button></div></div>
+      <p id="boardDescription" class="description"></p>
+      <p id="closedNotice" class="notice" hidden>글쓰기·문제 출제 마감</p>
+      <div id="quizControls" class="quiz-controls" hidden>
+        <label class="filter-bar"><span class="sr-only">문제 보기</span><select id="reviewFilter"><option value="all">전체 문제</option><option value="mine">내 문제</option><option value="pending">검토 대기</option><option value="changes">수정 요청</option><option value="approved">승인 완료</option></select></label>
+        <div class="sets-panel"><details id="setDetails"><summary>문제 세트 <span id="setCount">0</span></summary><div id="setList"></div></details><button id="buildSet" hidden>세트 만들기</button></div>
+      </div>
+      <div id="posts" class="posts"></div>
+    </section>
+
+    <section id="setView" hidden><div class="section-head"><div class="board-title-row"><button id="backToBoard">← 게시판</button><h1 id="setTitle"></h1><span id="setStatus" class="pill"></span></div><div id="setControls" class="toolbar-group"></div></div><p id="setProgress" class="muted"></p><div id="setQuestions" class="questions"></div></section>
+  </main>
+  <div id="toast" role="status" hidden></div>
+
+  <dialog id="createDialog"><form id="createForm"><div class="dialog-head"><h2>게시판 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><fieldset><legend>게시판 유형</legend><div class="layout-options"><label><input type="radio" name="layout" value="wall" checked><b>자유형</b><span>글·링크</span></label><label><input type="radio" name="layout" value="columns"><b>모둠형</b><span>모둠·주제별 열</span></label><label><input type="radio" name="layout" value="roster"><b>번호형</b><span>번호별 한 글</span></label><label><input type="radio" name="layout" value="quiz"><b>문제 출제</b><span>학생 출제 → 교사 승인</span></label></div></fieldset><label>제목<input id="createTitle" maxlength="80" required placeholder="제목"></label><label>설명 (선택)<textarea id="createDescription" maxlength="1000" rows="3" placeholder="안내 내용 (선택)"></textarea></label><label id="columnsLabel" hidden>열 이름 · 한 줄에 하나<textarea id="createColumns" rows="4" maxlength="247">1모둠
+2모둠
+3모둠
+4모둠</textarea></label><label>참여 번호 범위<input id="createSlots" type="number" min="1" max="60" value="30" required><span class="hint">1번부터 입력한 번호까지 참여할 수 있어요.</span></label><p class="form-error error" role="alert"></p><button class="primary full" type="submit">개설</button></form></dialog>
+
+  <dialog id="postDialog"><form id="postForm"><div class="dialog-head"><h2 id="postDialogTitle">글 쓰기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label id="kindLabel" hidden>문제 유형<select id="postKind"><option value="ox">OX 문제</option><option value="choice">객관식 문제</option></select></label><label id="postColumnLabel" hidden>올릴 곳<select id="postColumn"></select></label><label><span id="contentLabel">내용</span><textarea id="postContent" maxlength="2000" rows="5" required placeholder="내용"></textarea></label><label id="linkLabel">링크 (선택)<input id="postLink" type="url" maxlength="1500" placeholder="https://"></label><div id="questionFields" hidden><div id="choiceFields"></div><label>정답<select id="postAnswer" required></select></label><label>해설<textarea id="postExplanation" maxlength="1000" rows="3" placeholder="정답 해설"></textarea></label></div><p class="form-error error" role="alert"></p><button id="submitPost" class="primary full" type="submit">올리기</button></form></dialog>
+
+  <dialog id="shareDialog"><div class="dialog-head"><h2>공유</h2><button data-close aria-label="닫기">✕</button></div><div class="share-content"><strong id="shareCode" class="big-code"></strong><img id="shareQr" width="240" height="240" alt="학생 참여 링크 QR 코드"><label>참여 링크<input id="shareLink" readonly></label><button id="copyLink" class="primary full">링크 복사</button></div></dialog>
+
+  <dialog id="settingsDialog"><form id="settingsForm"><div class="dialog-head"><h2>게시판 관리</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>제목<input id="settingsTitle" maxlength="80" required></label><label>설명 (선택)<textarea id="settingsDescription" maxlength="1000" rows="3"></textarea></label><label class="check"><input id="settingsLocked" type="checkbox">새로운 학생 입장 잠금</label><label class="check"><input id="settingsClosed" type="checkbox">글쓰기·문제 출제 마감</label><label class="check"><input id="settingsNames" type="checkbox">학생 화면에 이름 대신 번호만 표시</label><p class="hint">문제 세트의 풀이 시작·마감은 각 세트에서 따로 관리해요.</p><p class="form-error error" role="alert"></p><button type="submit" class="primary full">설정 저장</button></form><div class="settings-extra"><button id="rotateCode">방번호 바꾸기</button><button id="exportBoard">게시판 기록 내려받기</button><button id="recoverMember">학생 기기 변경</button><button id="deleteBoard" class="danger">게시판 삭제</button></div><p id="recoveryLink" class="hint"></p></dialog>
+
+  <dialog id="reviewDialog"><form id="reviewForm"><div class="dialog-head"><h2>수정 요청하기</h2><button type="button" data-close aria-label="닫기">✕</button></div><p id="reviewContent"></p><label>수정할 내용<textarea id="reviewFeedback" maxlength="500" rows="4" required></textarea></label><p class="form-error error" role="alert"></p><button type="submit" class="primary full">수정 요청</button></form></dialog>
+
+  <dialog id="buildDialog"><form id="buildForm"><div class="dialog-head"><h2>승인 문제로 세트 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>문제 세트 제목<input id="setName" maxlength="80" required></label><p class="hint">승인 문항만 선택할 수 있습니다.</p><div id="approvedChoices"></div><p class="form-error error" role="alert"></p><button type="submit" class="primary full">세트 만들기</button></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
+

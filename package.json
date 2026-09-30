@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "test:learning-boards": "node --test tests/learning-boards.test.cjs",
+    "test:learning-boards:ui": "node tests/learning-boards-browser.cjs",
     "build": "npm --prefix game-hub-server install",
     "start": "npm --prefix game-hub-server start",
-    "test:beantrading": "node --test game-hub-server/beantrading.test.mjs && node tests/beantrading-server-integration.js",
+    "test:beantrading": "node --test game-hub-server/beantrading.test.mjs tests/beantrading-strategy.test.cjs && node tests/beantrading-server-integration.js",
     "test:beantrading:ui": "node tests/beantrading-browser.cjs",
     "test:math-ox": "node --test tests/math-ox-data.test.js",
     "test:curriculum": "node tests/curriculum-reference-contract.js && node tests/science-lab-curriculum-contract.js",

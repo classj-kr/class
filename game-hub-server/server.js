@@ -486,7 +486,7 @@ for (const [route, file] of [
   app.get(route, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
 }
 
-const CLEAN_HTML_ROOTS = ["/admin", "/classboard", "/parent", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
+const CLEAN_HTML_ROOTS = ["/admin", "/boards", "/classboard", "/parent", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
 
@@ -538,7 +538,7 @@ app.use((req, res, next) => {
   });
 });
 
-for (const directory of ["admin", "classboard", "parent", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote", "school-election"]) {
+for (const directory of ["admin", "boards", "classboard", "parent", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote", "school-election"]) {
   app.use(`/${directory}`, express.static(path.join(SITE_ROOT, directory), staticAssetOptions));
 }
 

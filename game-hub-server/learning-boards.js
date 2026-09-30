@@ -49,28 +49,35 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   }
   async function board(db, boardId, lock = false) {
     const row = (await db.query(`SELECT * FROM learning_boards WHERE id=$1${lock ? ' FOR UPDATE' : ''}`, [boardId])).rows[0];
-    if (!row) fail(404, 'BOARD_NOT_FOUND', '보드를 찾을 수 없어요. 삭제되었거나 주소가 바뀌었을 수 있어요.');
+    if (!row) fail(404, 'BOARD_NOT_FOUND', '게시판를 찾을 수 없어요. 삭제되었거나 주소가 바뀌었을 수 있어요.');
     return row;
   }
   async function owner(req, b) {
     const user = await requireTeacher(req);
-    if (String(user.id) !== String(b.owner_id)) fail(403, 'OWNER_REQUIRED', '이 보드를 만든 선생님만 관리할 수 있어요.');
+    if (String(user.id) !== String(b.owner_id)) fail(403, 'OWNER_REQUIRED', '이 게시판를 만든 선생님만 관리할 수 있어요.');
     return { teacher: true, name: '선생님' };
   }
-  async function actor(req, b, db) {
-    const user = await sessionUser(req);
-    if (user && String(user.id) === String(b.owner_id)) return owner(req, b);
+  async function actor(req, b, db, verified) {
+    if (verified?.teacher) return verified;
+    if (!verified) {
+      const user = await sessionUser(req);
+      if (user && String(user.id) === String(b.owner_id)) return owner(req, b);
+    }
     const token = cookie(req, b.id);
     const member = token && (await db.query('SELECT id, number, name FROM learning_board_members WHERE board_id=$1 AND token_hash=$2', [b.id, hash(token)])).rows[0];
-    if (!member) fail(401, 'BOARD_JOIN_REQUIRED', '방번호를 입력하고 보드에 참여해 주세요.');
+    if (!member) fail(401, 'BOARD_JOIN_REQUIRED', '방번호를 입력하고 게시판에 참여해 주세요.');
     return { ...member, teacher: false };
   }
   async function transaction(req, work, teacherOnly = false) {
+    // Resolve platform auth before leasing a connection: auth itself uses pool.query.
+    // Re-check guest membership inside the lock so a device reset cannot race a write.
+    const current = await board(pool, req.params.id);
+    const verified = teacherOnly ? await owner(req, current) : await actor(req, current, pool);
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
       const b = await board(db, req.params.id, true);
-      const who = teacherOnly ? await owner(req, b) : await actor(req, b, db);
+      const who = await actor(req, b, db, verified);
       const result = await work(db, b, who);
       await db.query('COMMIT');
       return result;
@@ -101,7 +108,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const body = req.body || {};
     const title = text(body.title, 80, true);
     const description = text(body.description ?? '', 1000);
-    if (!['wall', 'columns', 'roster', 'quiz'].includes(body.layout)) fail(400, 'INVALID_LAYOUT', '보드 유형을 선택해 주세요.');
+    if (!['wall', 'columns', 'roster', 'quiz'].includes(body.layout)) fail(400, 'INVALID_LAYOUT', '게시판 유형을 선택해 주세요.');
     const columns = body.layout === 'columns' ? body.columns : [];
     if (!Array.isArray(columns) || (body.layout === 'columns' && (columns.length < 2 || columns.length > 8))) fail(400, 'INVALID_COLUMNS', '열을 2~8개 만들어 주세요.');
     const labels = columns.map(s => text(s, 30, true));
@@ -111,7 +118,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query('BEGIN');
       await db.query('SELECT pg_advisory_xact_lock($1)', [Number(user.id)]);
       const count = await db.query('SELECT COUNT(*)::int AS count FROM learning_boards WHERE owner_id=$1', [user.id]);
-      if (count.rows[0].count >= 50) fail(409, 'BOARD_LIMIT', '보드는 50개까지 보관할 수 있어요. 사용하지 않는 보드를 정리해 주세요.');
+      if (count.rows[0].count >= 50) fail(409, 'BOARD_LIMIT', '게시판는 50개까지 보관할 수 있어요. 사용하지 않는 게시판를 정리해 주세요.');
       let created;
       for (let attempt = 0; attempt < 20 && !created; attempt++) {
         const code = String(crypto.randomInt(100000, 1000000));
@@ -143,7 +150,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const member = previous && (await db.query('SELECT id FROM learning_board_members WHERE board_id=$1 AND token_hash=$2', [b.id, hash(previous)])).rows[0];
       if (!member) {
         if (b.locked || b.closed) fail(403, 'BOARD_LOCKED', '선생님이 입장을 닫았어요.');
-        if (number > b.slots) fail(400, 'INVALID_NUMBER', `이 보드에는 ${b.slots}번까지 참여할 수 있어요.`);
+        if (number > b.slots) fail(400, 'INVALID_NUMBER', `이 게시판에는 ${b.slots}번까지 참여할 수 있어요.`);
         const token = crypto.randomBytes(32).toString('hex');
         const added = await db.query(`INSERT INTO learning_board_members(id, board_id, number, name, token_hash)
           VALUES($1,$2,$3,$4,$5) ON CONFLICT(board_id, number) DO NOTHING RETURNING id`, [id(), b.id, number, name, hash(token)]);
@@ -163,12 +170,13 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     res.type('svg').send(await QRCode.toString(url, { type: 'svg', width: 256, margin: 4, errorCorrectionLevel: 'M' }));
   }));
   router.get('/:id', asyncRoute(async (req, res) => {
-    // Consistent snapshot prevents answers leaking across a concurrent reveal/reopen.
+    const verified = await actor(req, await board(pool, req.params.id), pool);
+    // Read a consistent snapshot without nesting platform auth's pool queries.
     const db = await pool.connect();
     try {
       await db.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
       const b = await board(db, req.params.id);
-      const who = await actor(req, b, db);
+      const who = await actor(req, b, db, verified);
       const members = (await db.query('SELECT id, number, name FROM learning_board_members WHERE board_id=$1 ORDER BY number', [b.id])).rows;
       const posts = (await db.query('SELECT * FROM learning_board_posts WHERE board_id=$1 ORDER BY created_at, id', [b.id])).rows;
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
@@ -177,7 +185,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         const own = who.teacher || p.member_id === who.id;
         return { id: p.id, kind: p.kind, content: p.content, link: p.link, column: p.column_index, choices: p.choices,
           author: !m ? '선생님' : b.hide_names && !who.teacher ? `${m.number}번` : `${m.number}번 ${m.name}`,
-          number: m?.number ?? null, mine: own, hidden: p.hidden, createdAt: p.created_at,
+          number: m?.number ?? null, mine: who.teacher ? p.member_id === null : p.member_id === who.id, hidden: p.hidden, createdAt: p.created_at,
           reviewStatus: p.review_status, revision: p.revision,
           ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback } : {}) };
       });
@@ -207,6 +215,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       // Serialize code rotation and allocation through the same unique constraint.
       for (let attempt = 0; attempt < 20; attempt++) {
         const code = String(crypto.randomInt(100000, 1000000));
+        if (code === b.code) continue;
         await db.query('SAVEPOINT rotate_code');
         try {
           await db.query('UPDATE learning_boards SET code=$2 WHERE id=$1', [b.id, code]);
@@ -250,7 +259,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const body = req.body || {};
       const kind = body.kind || 'note';
       if (!['note', 'ox', 'choice'].includes(kind)) fail(400, 'INVALID_KIND', '게시물 유형을 확인해 주세요.');
-      if ((b.layout === 'quiz') === (kind === 'note')) fail(400, 'INVALID_KIND', '이 보드에 맞는 게시물 유형을 선택해 주세요.');
+      if ((b.layout === 'quiz') === (kind === 'note')) fail(400, 'INVALID_KIND', '이 게시판에 맞는 게시물 유형을 선택해 주세요.');
       const content = text(body.content, 2000, true);
       const column = b.layout === 'columns' ? integer(body.column, 0, b.columns.length - 1) : 0;
       const choices = kind === 'ox' ? ['O', 'X'] : kind === 'choice' ? body.choices : [];
@@ -259,7 +268,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const answer = kind === 'note' ? null : integer(body.answer, 0, options.length - 1);
       const explanation = kind === 'note' ? '' : text(body.explanation ?? '', 1000);
       const count = (await db.query('SELECT COUNT(*)::int AS count FROM learning_board_posts WHERE board_id=$1', [b.id])).rows[0].count;
-      if (count >= MAX_POSTS) fail(409, 'POST_LIMIT', `보드에는 글과 문제를 ${MAX_POSTS}개까지 올릴 수 있어요.`);
+      if (count >= MAX_POSTS) fail(409, 'POST_LIMIT', `게시판에는 글과 문제를 ${MAX_POSTS}개까지 올릴 수 있어요.`);
       if (b.layout === 'roster' && !who.teacher && (await db.query('SELECT 1 FROM learning_board_posts WHERE board_id=$1 AND member_id=$2', [b.id, who.id])).rowCount) {
         fail(409, 'ONE_POST_PER_NUMBER', '번호형에서는 한 사람당 한 글을 올려요. 기존 글을 수정해 주세요.');
       }
@@ -314,9 +323,11 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   router.post('/:id/sets', asyncRoute(async (req, res) => {
     const result = await transaction(req, async (db, b) => {
       const selected = req.body?.posts;
-      if (!Array.isArray(selected) || selected.length < 1 || selected.length > 50 || new Set(selected.map(p => p.id)).size !== selected.length) fail(400, 'INVALID_SELECTION', '승인된 문제를 1~50개 선택해 주세요.');
+      if (!Array.isArray(selected) || selected.length < 1 || selected.length > 50 ||
+        !selected.every(p => p && typeof p.id === 'string' && Number.isInteger(p.revision)) ||
+        new Set(selected.map(p => p.id)).size !== selected.length) fail(400, 'INVALID_SELECTION', '승인된 문제를 1~50개 선택해 주세요.');
       const count = (await db.query('SELECT COUNT(*)::int AS count FROM learning_board_sets WHERE board_id=$1', [b.id])).rows[0].count;
-      if (count >= 20) fail(409, 'SET_LIMIT', '보드당 문제 세트는 20개까지 만들 수 있어요.');
+      if (count >= 20) fail(409, 'SET_LIMIT', '게시판당 문제 세트는 20개까지 만들 수 있어요.');
       const available = (await db.query(`SELECT p.*, m.number FROM learning_board_posts p LEFT JOIN learning_board_members m ON p.member_id=m.id
         WHERE p.board_id=$1 AND p.review_status='approved' AND NOT p.hidden AND p.kind<>'note'`, [b.id])).rows;
       const questions = selected.map(item => {
@@ -332,11 +343,12 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     res.status(201).json(result);
   }));
   router.get('/:id/sets/:setId', asyncRoute(async (req, res) => {
+    const verified = await actor(req, await board(pool, req.params.id), pool);
     const db = await pool.connect();
     try {
       await db.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
       const b = await board(db, req.params.id);
-      const who = await actor(req, b, db);
+      const who = await actor(req, b, db, verified);
       const set = (await db.query('SELECT * FROM learning_board_sets WHERE board_id=$1 AND id=$2', [b.id, req.params.setId])).rows[0];
       if (!set) fail(404, 'SET_NOT_FOUND', '문제 세트를 찾을 수 없어요.');
       const answers = (await db.query('SELECT question_id, member_id, choice FROM learning_board_answers WHERE board_id=$1 AND set_id=$2', [b.id, set.id])).rows;
