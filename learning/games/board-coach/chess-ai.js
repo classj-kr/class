@@ -81,6 +81,8 @@
     if(C.status(state).ended) return null;
     const settings=LEVELS[level]||LEVELS.beginner;
     const roots=rootCandidates(state);
+    const finish=C.advance(state,roots[0]);
+    if(C.isInCheck(finish) && !C.allLegalMoves(finish).length) return { move:roots[0], reason:explain(state,roots[0]), depth:1, nodes:0 };
     const learned=book.get(C.positionKey(state));
     if(learned && roots.some(m=>same(m,learned))) return { move:roots.find(m=>same(m,learned)), reason:explain(state,learned), depth:0, nodes:0 };
     const currentClaim=C.drawClaims(state).find(c=>!c.move);

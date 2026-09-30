@@ -149,7 +149,7 @@ bi-·tri-·uni-|bi,tri,uni|bicycle,triangle,unicorn,binoculars,tricycle,uniform,
   });
 
   const atlases = [
-    ["assets/images/phonics-reviewed-scenes-v3.webp", "full,pop,dim,chin,snore,tallest,useless,neutral,disagree,weakness,yes,chore", 3, 4],
+    ["assets/images/phonics-reviewed-scenes-v4.webp", "full,pop,dim,chin,snore,tallest,useless,neutral,disagree,weakness,yes,chore", 3, 4],
     ["assets/images/alphabet-late-atlas.webp", "lip,hill,house,jar,jeep,jelly,jacket,yak,yoyo,yarn,yogurt,yellow,wax,mix,fix,queen,quilt,quill,squid,square,vase,vest,five,oven,seven,zoo,zebra,zero,pizza,maze", 6, 5],
     ["assets/images/lesson-w-h-atlas.webp", "water,wall,wolf,worm,well,horse", 3, 2],
     ["assets/images/lesson-w-position-atlas.webp", "swim,twin,swam,swell,twig,wave", 3, 2],
@@ -339,7 +339,7 @@ bi-·tri-·uni-|bi,tri,uni|bicycle,triangle,unicorn,binoculars,tricycle,uniform,
     "lesson-125-ment-atlas.webp": {"size":[1536,1024],"boxes":[[53,65,393,489],[439,69,702,466],[757,62,1122,498],[1146,89,1460,476],[52,540,389,925],[413,571,749,910],[760,570,1115,947],[1121,532,1479,951]]},
     "lesson-126-able-ible-atlas.webp": {"size":[1536,1024],"boxes":[[42,55,406,509],[409,56,768,511],[768,56,1122,510],[1127,55,1476,512],[39,512,404,937],[409,512,768,939],[768,512,1118,941],[1118,512,1478,942]]},
     "lesson-127-prefix-number-atlas.webp": {"size":[1536,1024],"boxes":[[42,162,419,489],[446,158,768,486],[807,89,1144,488],[1152,228,1521,502],[39,548,379,917],[456,512,737,911],[779,517,1127,946],[1160,541,1437,932]]},
-    "phonics-reviewed-scenes-v3.webp": {"size":[1086,1448],"boxes":[[60,46,313,334],[370,13,707,338],[732,13,1072,343],[27,354,330,691],[366,350,711,695],[736,349,1070,694],[17,701,347,1040],[350,709,733,1040],[734,707,1077,1032],[17,1045,354,1412],[404,1061,691,1408],[733,1044,1075,1417]]}
+    "phonics-reviewed-scenes-v4.webp": {"size":[1086,1448],"boxes":[[69,44,321,321],[390,14,695,334],[730,19,1072,336],[53,361,312,703],[381,385,706,701],[740,343,1070,697],[16,720,355,1065],[356,746,733,1053],[734,738,1080,1067],[17,1086,355,1407],[395,1080,690,1412],[768,1072,1067,1416]]}
   };
   const atlasPicture = (atlas, index) => {
     const reviewed = reviewedPictureBounds[atlas.file.split("/").pop()];
@@ -351,7 +351,7 @@ bi-·tri-·uni-|bi,tri,uni|bicycle,triangle,unicorn,binoculars,tricycle,uniform,
   const pictureFor = (word) => {
     const individualPictures = { nose: "nose-reviewed.webp", yet: "yet-reviewed.webp", drink: "drink-reviewed.webp" };
     if (individualPictures[word]) return { file: "assets/images/" + individualPictures[word], index: 0, columns: 1, rows: 1, crop: [0, 0, 1, 1] };
-    if (word === "square") return { file: "assets/images/phonics-reviewed-scenes-v3.webp", index: 0, columns: 1, rows: 1, crop: [0, 0, 1, 1], diagram: "square" };
+    if (word === "square") return { file: "assets/images/phonics-reviewed-scenes-v4.webp", index: 0, columns: 1, rows: 1, crop: [0, 0, 1, 1], diagram: "square" };
 
     const pictureAliases = { am: "man", at: "house", gray: "grey", hopping: "hopped", stopping: "stopped" };
     const lookupWord = pictureAliases[word] || word;

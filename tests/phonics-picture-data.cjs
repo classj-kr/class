@@ -21,7 +21,7 @@ for (const site of ['phonics', 'phonics-site/public/phonics']) {
     assert.equal(bank[word].picture.repeat, 2, word + ' must show more than one');
   }
   for (const word of ['full','pop','dim','chin','snore','tallest','useless','neutral','disagree','weakness','yes','chore']) {
-    assert.match(bank[word].picture.file, /phonics-reviewed-scenes-v3/);
+    assert.match(bank[word].picture.file, /phonics-reviewed-scenes-v4/);
   }
   assert.equal(bank.square.picture.diagram, 'square');
   assert.equal(bank.bat.meanings.join(','), '박쥐,야구 방망이');
