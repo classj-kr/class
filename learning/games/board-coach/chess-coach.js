@@ -1,0 +1,141 @@
+/* global ClassChessRules, ChessCoachAI, ChessCoachPiece */
+(() => {
+  "use strict";
+  if(new URLSearchParams(location.search).get("game")!=="chess") return;
+  const C=ClassChessRules, AI=ChessCoachAI, $=id=>document.getElementById(id);
+  let state=C.createInitialState("standard"), human="w", level="beginner", started=false;
+  let worker=null, token=0, timeout=null, nextTurn=null, busy=false, job="move";
+  let selected=null, hint=null, pending=null, scene=null, feedback=null, history=[], claims=[];
+  let claimState=null;
+  const escape=text=>String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const endLabels={checkmate:"체크메이트",stalemate:"스테일메이트", "insufficient-material":"메이트할 기물 부족",threefold:"같은 판 3회",fivefold:"같은 판 5회","fifty-move":"50수 규칙","seventy-five-move":"75수 규칙",resign:"기권"};
+  document.title="체스 · AI와 배우기"; $("title").textContent="체스"; $("backLink").href="../chess/chess";
+  $("principle").textContent="중앙 차지하기 → 나이트·비숍 전개 → 캐슬링으로 킹 보호";
+  $("variantNote").textContent="체크를 해소해야 하며, 체크메이트에서 대국이 끝납니다.";
+  document.querySelector(".color-options legend").textContent="내 기물";
+  document.querySelector(".color-options input[value='1'] + span").textContent="백 · 먼저 두기";
+  document.querySelector(".color-options input[value='2'] + span").textContent="흑 · AI 시작 보기";
+  $("rulesCopy").innerHTML='<p>백이 먼저 둡니다. 말을 선택한 다음 표시된 도착 칸을 누르세요. 내 킹이 공격받는 수는 둘 수 없습니다. 체크를 피할 수 없으면 체크메이트, 체크 없이 둘 수 있는 수가 없으면 스테일메이트로 비깁니다.</p><p>킹과 룩이 움직이지 않았고 사이가 비어 있을 때 캐슬링할 수 있습니다. 킹의 시작·경유·도착 칸이 공격받으면 불가능합니다. 앙파상은 상대 폰의 두 칸 이동 직후 한 차례만 가능합니다. 폰은 마지막 줄에서 퀸·룩·비숍·나이트 중 하나로 승격합니다.</p><p>같은 판 3회 또는 잡기·폰 이동 없이 양쪽이 50수씩 두면 무승부를 선언할 수 있습니다. 다음 수로 조건을 채우는 선언도 가능합니다. 5회 반복과 75수 규칙은 자동 적용합니다. 킹만 남는 등 기본적인 메이트 불가능 기물도 자동 판정합니다.</p><p>힌트는 출발·도착 칸을 표시합니다. 내 수 물리기는 그 뒤의 AI 수까지 취소합니다. 시간 제한은 없습니다.</p><p>참고: <a href="https://rcc.fide.com/wp-content/uploads/2022/11/Laws_of_Chess-2023.pdf" target="_blank" rel="noopener">FIDE 체스 규칙</a> · <a href="https://www.chesskid.com/learn/terms/chess-opening" target="_blank" rel="noopener">초반 기본 원칙</a></p>';
+  document.querySelector(".controls").insertAdjacentHTML("beforeend",'<button id="claimDraw" type="button" class="quiet" disabled>무승부 선언</button><button id="resign" type="button" class="quiet" disabled>기권</button>');
+  document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel chess-record"><summary>기보</summary><div id="chessMoves">아직 둔 수가 없습니다.</div></details>');
+  document.body.insertAdjacentHTML("beforeend",'<dialog id="chessPromotion" aria-labelledby="promotionTitle"><h2 id="promotionTitle">승격할 말</h2><div id="chessPromotionChoices"></div><button id="cancelPromotion" class="quiet" type="button">취소</button></dialog><dialog id="chessDraw" aria-labelledby="drawTitle"><h2 id="drawTitle">무승부 선언</h2><p class="muted">표시된 조건으로 대국을 마칩니다.</p><div id="chessDrawChoices"></div><button id="cancelDraw" class="quiet" type="button">취소</button></dialog><dialog id="chessResign" aria-labelledby="resignTitle"><h2 id="resignTitle">이 대국을 기권할까요?</h2><div class="resign-choices"><button id="confirmResign" type="button">기권</button><button id="cancelResign" class="quiet" type="button">계속 두기</button></div></dialog>');
+  function reason(label,title,text) { $("reasonLabel").textContent=label; $("moveLabel").textContent=title; $("reason").textContent=text; }
+  function stop() { token++; worker?.terminate(); worker=null; clearTimeout(timeout); clearTimeout(nextTurn); busy=false; }
+  function render() {
+    const position=scene?.before||state, result=C.status(state), legal=C.allLegalMoves(position);
+    const active=started&&!busy&&!scene&&!result.ended&&state.turn===human;
+    const sources=new Set(legal.map(m=>m.from)), targets=new Set(legal.filter(m=>m.from===selected).map(m=>m.to));
+    const mark=scene?scene.feedback?.alternative||scene.move:hint?.move;
+    const last=position.lastMove, check=C.isInCheck(position)?position.board.indexOf(position.turn+"K"):-1;
+    $("board").className="chess"; $("board").setAttribute("aria-label","체스판");
+    $("board").innerHTML=Array.from({length:64},(_,view)=>{
+      const row=Math.floor(view/8), col=view%8, rank=human==="w"?7-row:row, file=human==="w"?col:7-col, index=rank*8+file;
+      const piece=position.board[index], target=targets.has(index), can=active&&(sources.has(index)||target);
+      const classes=["square",(rank+file)%2?"light":"dark",index===selected?"selected":"",index===check?"checked":"",last&&(index===last.from||index===last.to)?"recent":"",mark&&(index===mark.from||index===mark.to)?"suggested":"",target?"target":""].filter(Boolean).join(" ");
+      return `<button type="button" role="gridcell" data-square="${index}" class="${classes}" ${can?"":"disabled"} aria-pressed="${index===selected}" aria-label="${C.squareName(index)} · ${piece?(piece[0]==="w"?"백 ":"흑 ")+AI.NAMES[piece[1]]:"빈칸"}${target?" · 이동 가능":""}">${row===0?`<span class="axis column" aria-hidden="true">${C.FILES[file]}</span>`:""}${col===0?`<span class="axis row" aria-hidden="true">${rank+1}</span>`:""}${ChessCoachPiece(piece)}${target&&!piece?'<span class="legal-dot"></span>':""}</button>`;
+    }).join("");
+    $("levelLabel").textContent=`${AI.LEVELS[level].name} AI`;
+    $("colorLabel").textContent=`나는 ${human==="w"?"백":"흑"}`;
+    $("score").textContent=`${scene?history.indexOf(scene):state.san.length}수`;
+    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전 · 복기`:!started?"AI 수준을 골라 시작하세요.":result.ended?`${endLabels[result.reason]||"대국 종료"} · ${result.winner?(result.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${result.checked?" · 체크":""}`;
+    $("undo").disabled=!history.some(m=>m.color===human)||!!scene;
+    $("hint").disabled=!active; $("resign").disabled=!started||result.ended||!!scene;
+    if(claimState!==state) { claims=state.turn===human&&!result.ended?C.drawClaims(state):[]; claimState=state; }
+    $("claimDraw").disabled=!active||!claims.length;
+    $("feedbackPanel").classList.toggle("hidden",!feedback||!!scene); $("feedback").textContent=feedback?.text||"";
+    $("reviewPanel").classList.toggle("hidden",!result.ended); $("liveBoard").classList.toggle("hidden",!scene);
+    if(result.ended) {
+      let chosen=history.filter(m=>m.feedback).slice(-3);
+      if(!chosen.length) chosen=history.filter(m=>m.color!==human).slice(-3);
+      $("reviewList").innerHTML=chosen.length?chosen.map(m=>`<button type="button" data-review="${history.indexOf(m)}"><strong>${history.indexOf(m)+1}수 · ${escape(AI.label(m.move))}</strong>${escape(m.feedback?.text||m.reason)}</button>`).join(""):'<p>복기할 수가 없습니다.</p>';
+    }
+    $("chessMoves").textContent=state.san.length?state.san.map((san,i)=>`${i%2===0?`${Math.floor(i/2)+1}. `:""}${san}`).join(" "):"아직 둔 수가 없습니다.";
+  }
+  function commit(move,isHuman=false) {
+    const outcome=C.applyMove(state,move.from,move.to,move.promotion);
+    if(!outcome.ok) { reason("이동 확인","둘 수 없는 수",outcome.error); return; }
+    const before=state, explanation=AI.explain(before,move);
+    feedback=isHuman?AI.review(before,move):feedback;
+    history.push({before,move:outcome.move,color:before.turn,reason:explanation,feedback:isHuman?feedback:null});
+    state=outcome.state; selected=null; hint=null; pending=null;
+    $("retry").classList.add("hidden"); reason(isHuman?"내가 둔 수":"AI의 수",AI.label(outcome.move),isHuman&&feedback?feedback.text:explanation);
+    render(); resume();
+  }
+  function fail(message) { stop(); $("retry").classList.remove("hidden"); reason("계산을 마치지 못했어요","다시 계산할 수 있어요",message); render(); }
+  function calculate(kind) {
+    if(!started||C.status(state).ended||$("setup").open||(kind==="hint")!==(state.turn===human)) return;
+    stop(); job=kind; busy=true; selected=null; hint=null; $("retry").classList.add("hidden"); render();
+    const id=token;
+    if(kind==="hint") reason("힌트 계산 중","후보를 살펴보고 있어요","체크와 기물의 안전을 확인하고 있어요.");
+    try {
+      worker=new Worker("chess-worker.js?v=1");
+      worker.onmessage=({data})=>{
+        if(id!==token||data.token!==token)return;
+        if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
+        const answer=data.result;
+        if(answer.claim&&kind==="move") {
+          const outcome=C.claimDraw(state); if(!outcome.ok)return fail(outcome.error);
+          stop(); state=outcome.state; reason("AI의 선택","무승부 선언",answer.reason); render(); return;
+        }
+        const move=C.allLegalMoves(state).find(m=>AI.same(m,answer.move));
+        if(!move)return fail("수 계산을 다시 시도해 주세요.");
+        worker.terminate();worker=null;clearTimeout(timeout);busy=false;
+        if(kind==="hint") { hint={...answer,move}; reason("힌트 · 한 가지 후보",AI.label(move),answer.reason);render(); }
+        else commit(move);
+      };
+      worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
+      timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},12000);
+      worker.postMessage({token:id,state,level,allowClaim:kind==="move"});
+    } catch {fail("이 브라우저에서 계산을 시작하지 못했어요.");}
+  }
+  function resume() {
+    if(started&&!C.status(state).ended&&state.turn!==human&&!$("setup").open&&!$("chessResign").open) {
+      const id=token;clearTimeout(nextTurn);nextTurn=setTimeout(()=>{if(id===token)calculate("move");},350);
+    }
+  }
+  function chooseSquare(index) {
+    if(!started||busy||scene||C.status(state).ended||state.turn!==human)return;
+    const legal=C.allLegalMoves(state), options=legal.filter(m=>m.from===selected&&m.to===index);
+    if(options.length) {
+      if(options.some(m=>m.promotion)) {
+        pending=options;
+        $("chessPromotionChoices").innerHTML=options.map(m=>`<button type="button" data-promote="${m.promotion}">${ChessCoachPiece(human+m.promotion)}<span>${AI.NAMES[m.promotion]}</span></button>`).join("");
+        $("chessPromotion").showModal();
+      } else commit(options[0],true);
+      return;
+    }
+    selected=selected===index?null:legal.some(m=>m.from===index)?index:null; render();
+  }
+  function undo() {
+    const at=history.findLastIndex(m=>m.color===human);if(at<0)return;
+    stop();state=history[at].before;history=history.slice(0,at);selected=null;hint=null;scene=null;feedback=null;
+    $("retry").classList.add("hidden");reason("다시 생각할 차례","내 수를 물렸어요","내 마지막 수를 두기 전으로 돌아왔어요.");render();
+  }
+  $("board").addEventListener("click",event=>{const b=event.target.closest("[data-square]");if(b)chooseSquare(Number(b.dataset.square));});
+  $("hint").addEventListener("click",()=>calculate("hint")); $("undo").addEventListener("click",undo); $("rethink").addEventListener("click",undo);
+  $("retry").addEventListener("click",()=>calculate(job));
+  $("zoom").addEventListener("click",()=>{const on=$("boardViewport").classList.toggle("zoomed");$("zoom").setAttribute("aria-pressed",String(on));$("zoom").textContent=on?"전체 판 보기":"판 확대";});
+  $("newGame").addEventListener("click",()=>{stop();reason("대국 설정","현재 판은 남아 있어요","설정을 닫으면 이어서 둘 수 있어요.");$("setup").showModal();render();});
+  $("closeSetup").addEventListener("click",()=>$("setup").close()); $("setup").addEventListener("close",resume);
+  $("setupForm").addEventListener("submit",event=>{
+    event.preventDefault();stop();const data=new FormData(event.currentTarget);
+    level=Object.hasOwn(AI.LEVELS,data.get("level"))?data.get("level"):"beginner";human=data.get("color")==="2"?"b":"w";
+    state=C.createInitialState("standard");history=[];selected=null;hint=null;pending=null;scene=null;feedback=null;started=true;
+    $("retry").classList.add("hidden");$("setup").close();reason("첫 수",human==="w"?"백이 먼저 둡니다":"AI의 첫 수를 살펴보세요",$("principle").textContent);render();
+  });
+  $("chessPromotionChoices").addEventListener("click",event=>{const b=event.target.closest("[data-promote]");if(!b||!pending)return;const m=pending.find(m=>m.promotion===b.dataset.promote);$("chessPromotion").close();if(m)commit(m,true);});
+  $("cancelPromotion").addEventListener("click",()=>{$("chessPromotion").close();pending=null;});
+  $("chessPromotion").addEventListener("cancel",()=>{pending=null;});
+  $("claimDraw").addEventListener("click",()=>{
+    $("chessDrawChoices").innerHTML=claims.map((c,i)=>`<button type="button" data-claim="${i}">${c.move?escape(AI.label(c.move))+" 예정 · ":"현재 판 · "}${endLabels[c.reason]}</button>`).join("");$("chessDraw").showModal();
+  });
+  $("chessDrawChoices").addEventListener("click",event=>{const b=event.target.closest("[data-claim]");if(!b)return;const claim=claims[Number(b.dataset.claim)];const outcome=C.claimDraw(state,claim.move);if(!outcome.ok)return;stop();state=outcome.state;$("chessDraw").close();reason("무승부",endLabels[claim.reason],"무승부 선언으로 대국을 마쳤어요.");render();});
+  $("cancelDraw").addEventListener("click",()=>$("chessDraw").close());
+  $("resign").addEventListener("click",()=>{stop();$("chessResign").showModal();render();});
+  $("cancelResign").addEventListener("click",()=>$("chessResign").close());$("chessResign").addEventListener("close",resume);
+  $("confirmResign").addEventListener("click",()=>{stop();state={...state,result:{ended:true,reason:"resign",winner:human==="w"?"b":"w",checked:false}};$("chessResign").close();reason("대국 종료","기권했어요","중요한 장면을 돌아보거나 새 대국을 시작할 수 있어요.");render();});
+  $("reviewList").addEventListener("click",event=>{const b=event.target.closest("[data-review]");if(!b)return;scene=history[Number(b.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();});
+  $("liveBoard").addEventListener("click",()=>{scene=null;reason("대국 복기","마지막 판","중요한 장면을 눌러 다시 살펴보세요.");render();});
+  window.addEventListener("pagehide",stop);window.addEventListener("pageshow",event=>{if(event.persisted){render();resume();}});
+  render();$("setup").showModal();
+})();

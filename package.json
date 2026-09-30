@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "test:chess-coach": "node --test tests/chess-coach.test.cjs && node tests/chess-rules-unit.js && node tests/chess-server-unit.js && node tests/chess-ui-contract.js",
+    "test:chess-coach:ui": "node tests/chess-coach-browser.cjs",
+    "test:board-coach": "node --test tests/board-coach.test.cjs && node tests/omok-unit.js",
+    "test:board-coach:ui": "node tests/board-coach-browser.cjs",
     "test:learning-boards": "node --test tests/learning-boards.test.cjs",
     "test:learning-boards:ui": "node tests/learning-boards-browser.cjs",
     "build": "npm --prefix game-hub-server install",

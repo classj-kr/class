@@ -32,8 +32,9 @@
   function pieceColor(piece) { return piece ? piece[0] : null; }
   function pieceType(piece) { return piece ? piece[1] : null; }
 
-  function createInitialState() {
+  function createInitialState(variant) {
     const state = {
+      ...(variant === "standard" ? { variant } : {}),
       board: [...START_BOARD],
       turn: "w",
       castling: "KQkq",
@@ -51,6 +52,8 @@
 
   function cloneState(state) {
     return {
+      ...(state.variant === "standard" ? { variant: "standard" } : {}),
+      ...(state.result ? { result: { ...state.result } } : {}),
       board: [...state.board],
       turn: state.turn,
       castling: String(state.castling || ""),
@@ -65,7 +68,10 @@
   }
 
   function positionKey(state) {
-    return `${state.board.map(piece => piece || "--").join("")}|${state.turn}|${state.castling || "-"}|${Number.isInteger(state.epSquare) ? squareName(state.epSquare) : "-"}`;
+    let ep = Number.isInteger(state.epSquare) ? squareName(state.epSquare) : "-";
+    // An en passant square changes repetition rights only if capture is legal.
+    if (ep !== "-" && state.variant === "standard" && !state.board.some((p, i) => p === `${state.turn}P` && legalMoves(state, i).some(m => m.enPassant))) ep = "-";
+    return `${state.board.map(piece => piece || "--").join("")}|${state.turn}|${state.castling || "-"}|${ep}`;
   }
 
   function addMove(moves, state, from, to, extra = {}) {
@@ -274,9 +280,20 @@
   }
 
   function legalMoves(state, from) {
-    // Learning rules: threats warn players but never restrict piece movement.
+    if (state.result) return [];
     if (!state.board.includes("wK") || !state.board.includes("bK")) return [];
-    return pseudoMoves(state, from);
+    const candidates = pseudoMoves(state, from);
+    if (state.variant !== "standard") return candidates;
+    return candidates.filter(move => {
+      if (pieceType(move.capture) === "K") return false;
+      if (move.castle) {
+        if (isInCheck(state)) return false;
+        const crossing = cloneState(state), via = move.from + (move.to > move.from ? 1 : -1);
+        crossing.board[move.from] = null; crossing.board[via] = move.piece;
+        if (isSquareAttacked(crossing, via, opposite(state.turn))) return false;
+      }
+      return !isInCheck(makeMoveUnchecked(state, move), state.turn);
+    });
   }
 
   function allLegalMoves(state) {
@@ -304,11 +321,19 @@
   }
 
   function status(state) {
+    if (state.result) return { ...state.result };
     for (const color of ["w", "b"]) {
       if (!state.board.includes(`${color}K`)) return { ended: true, reason: "king-captured", winner: opposite(color), checked: false };
     }
     const moves = allLegalMoves(state);
     const checked = isInCheck(state, state.turn);
+    if (state.variant === "standard") {
+      if (!moves.length) return { ended: true, reason: checked ? "checkmate" : "stalemate", winner: checked ? opposite(state.turn) : null, checked };
+      if (insufficientMaterial(state)) return { ended: true, reason: "insufficient-material", winner: null, checked };
+      if (state.halfmove >= 150) return { ended: true, reason: "seventy-five-move", winner: null, checked };
+      if (repetitionCount(state) >= 5) return { ended: true, reason: "fivefold", winner: null, checked };
+      return { ended: false, reason: null, winner: null, checked };
+    }
     if (!moves.length) return { ended: true, reason: "no-legal-move", winner: null, checked };
     if (state.halfmove >= 100) return { ended: true, reason: "fifty-move", winner: null, checked };
     if (repetitionCount(state) >= 3) return { ended: true, reason: "threefold", winner: null, checked };
@@ -316,7 +341,9 @@
   }
 
   function sanForMove(state, move, nextState) {
-    if (move.castle) return `${move.castle === "K" ? "O-O" : "O-O-O"}${isInCheck(nextState) ? "+" : ""}`;
+    const nextStatus = status(nextState);
+    const suffix = nextStatus.reason === "checkmate" ? "#" : nextStatus.checked ? "+" : "";
+    if (move.castle) return `${move.castle === "K" ? "O-O" : "O-O-O"}${suffix}`;
     const type = pieceType(move.piece);
     let notation = type === "P" ? "" : type;
     if (type !== "P") {
@@ -333,29 +360,62 @@
     if (move.capture) notation += "x";
     notation += squareName(move.to);
     if (move.promotion) notation += `=${move.promotion}`;
-    const nextStatus = status(nextState);
-    if (nextStatus.checked) notation += "+";
+    notation += suffix;
     return notation;
   }
 
+  // For search/perft: the caller supplies a move from allLegalMoves().
+  function advance(state, move) {
+    const next = makeMoveUnchecked(state, move);
+    next.history.push(positionKey(next));
+    return next;
+  }
+
+  function claimReason(state) {
+    if (repetitionCount(state) >= 3) return "threefold";
+    if (state.halfmove >= 100) return "fifty-move";
+    return null;
+  }
+
+  function drawClaims(state) {
+    if (state.variant !== "standard" || status(state).ended) return [];
+    const current = claimReason(state);
+    if (current) return [{ move: null, reason: current }];
+    // FIDE 9.2/9.3 allow a claim before executing an identified next move.
+    if (state.halfmove < 99 && new Set(state.history).size === state.history.length) return [];
+    return allLegalMoves(state).flatMap(move => {
+      const reason = claimReason(advance(state, move));
+      return reason ? [{ move, reason }] : [];
+    });
+  }
+
+  function claimDraw(state, request = null) {
+    const option = drawClaims(state).find(({ move }) => !move ? !request : request && move.from === request.from && move.to === request.to && (move.promotion || null) === (request.promotion || null));
+    if (!option) return { ok: false, error: "무승부를 선언할 수 있는 조건이 아닙니다." };
+    const next = cloneState(state);
+    next.result = { ended: true, reason: option.reason, winner: null, checked: isInCheck(state) };
+    return { ok: true, state: next, status: status(next) };
+  }
+
   function applyMove(state, fromValue, toValue, promotionValue) {
+    if (state.variant === "standard" && status(state).ended) return { ok: false, error: "이미 끝난 대국입니다." };
     const from = Number.isInteger(fromValue) ? fromValue : squareIndex(fromValue);
     const to = Number.isInteger(toValue) ? toValue : squareIndex(toValue);
     const promotion = String(promotionValue || "Q").toUpperCase();
-    if (from < 0 || to < 0) return { ok: false, error: "좌표가 올바르지 않습니다." };
+    if (from < 0 || from >= 64 || to < 0 || to >= 64) return { ok: false, error: "좌표가 올바르지 않습니다." };
     const candidates = legalMoves(state, from).filter(move => move.to === to);
     if (!candidates.length) return { ok: false, error: "둘 수 없는 위치입니다." };
-    const move = candidates.find(candidate => !candidate.promotion || candidate.promotion === promotion) || candidates[0];
-    const next = makeMoveUnchecked(state, move);
+    const move = candidates.find(candidate => !candidate.promotion || candidate.promotion === promotion);
+    if (!move) return { ok: false, error: "승격할 말을 선택하세요." };
+    const next = advance(state, move);
     const san = sanForMove(state, move, next);
     next.san.push(san);
     if (move.capture) next.captures.push(move.capture);
-    next.history.push(positionKey(next));
     next.lastMove.san = san;
     return { ok: true, state: next, move: { ...next.lastMove }, status: status(next) };
   }
 
-  function boardFromFen(fen) {
+  function boardFromFen(fen, variant) {
     const [placement, turn = "w", castling = "-", ep = "-", halfmove = "0", fullmove = "1"] = String(fen || "").trim().split(/\s+/);
     const rows = String(placement || "").split("/");
     if (rows.length !== 8) throw new Error("Invalid FEN");
@@ -374,6 +434,7 @@
       if (file !== 8) throw new Error("Invalid FEN");
     });
     const state = {
+      ...(variant === "standard" ? { variant } : {}),
       board,
       turn: turn === "b" ? "b" : "w",
       castling: castling === "-" ? "" : castling,
@@ -407,6 +468,9 @@
     insufficientMaterial,
     repetitionCount,
     status,
-    applyMove
+    applyMove,
+    advance,
+    drawClaims,
+    claimDraw
   });
 });

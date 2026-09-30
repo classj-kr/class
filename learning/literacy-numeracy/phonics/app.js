@@ -21,8 +21,28 @@
   let activeSoundGameRounds = [];
 
   const soundPattern = (sound) => sound.replaceAll("_", "").replace(/^-/, "");
-  // 소리가 똑같은 낱말은 '들은 단어 고르기'에서 정답이 둘이 되므로 함께 보기로 내지 않는다.
-  const soundAlikeGroups = [["pair", "pear"], ["right", "write"], ["which", "witch"]];
+  // This is word recognition, not a minimal-pair discrimination assessment.
+  // Similar beginnings are deliberately kept apart, including common sounds
+  // that Korean beginners can find difficult to distinguish.
+  const listeningFamily = (word) => {
+    if (/^[aeiou]/.test(word)) return "vowel";
+    if (/^c[iey]/.test(word)) return "sibilant";
+    if (/^(kn|gn)/.test(word)) return "n";
+    if (/^wr/.test(word)) return "lr";
+    if (/^ph/.test(word)) return "fv";
+    if (/^(sh|ch)/.test(word)) return "sibilant";
+    if (/^th/.test(word)) return "td";
+    const groups = { b: "bp", p: "bp", d: "td", t: "td", f: "fv", v: "fv",
+      l: "lr", r: "lr", s: "sibilant", z: "sibilant", c: "kgq", k: "kgq", q: "kgq", g: "kgq" };
+    return groups[word[0]] || word[0];
+  };
+  const soundAlikeGroups = [
+    ["pair", "pear"], ["right", "write"], ["which", "witch"], ["no", "know"],
+    ["see", "sea"], ["to", "two", "too"], ["one", "won"], ["sun", "son"],
+    ["here", "hear"], ["there", "their", "they're"], ["for", "four"],
+    ["by", "buy", "bye"], ["blue", "blew"], ["eight", "ate"], ["new", "knew"],
+    ["night", "knight"], ["whole", "hole"], ["our", "hour"], ["wear", "where"]
+  ];
   const soundsAlike = (a, b) => soundAlikeGroups.some((group) => group.includes(a) && group.includes(b));
   const focusFitsWord = (word, focus) => {
     const parts = focus.replace(/^-/, "").split("_").filter(Boolean);
@@ -78,29 +98,24 @@
   };
   function buildLessonSoundRounds(lesson) {
     const lessonPosition = data.lessons.findIndex((item) => item.id === lesson.id);
+    // No future vocabulary is introduced as a surprise distractor.
     const picturedWords = [...new Set(data.lessons.slice(0, lessonPosition + 1).flatMap((item) => item.words))]
       .filter((word) => data.wordBank[word]?.picture);
-    const lessonWords = lesson.words.filter((word) => data.wordBank[word]?.picture);
+    const lessonWords = [...new Set(lesson.words.filter((word) => data.wordBank[word]?.picture))];
     if (!lessonWords.length) return [];
     const targets = shuffledTargets(lessonWords, lesson.questionCount || Math.min(8, lessonWords.length));
-    const allPictureWords = Object.keys(data.wordBank).filter((word) => data.wordBank[word]?.picture);
     return targets.map((answer, index) => {
-      const sound = focusForAnswer(lesson, answer, index);
-      // 오늘 배운 글자가 든 보기가 정답 하나뿐이면 듣지 않고 글자만 보고도 고른다.
-      // 같은 글자가 든 낱말을 먼저 채우고, 오늘 낱말 하나와 다른 차시 낱말을 섞어 '오늘 본 낱말 고르기'도 막는다.
-      const fits = (word) => Boolean(sound) && focusFitsWord(word, sound);
-      const farLength = (word) => Math.abs(word.length - answer.length) > 1 ? 1 : 0;
-      // 같은 글자가 든 낱말, 길이가 비슷한 낱말 순으로 (sort는 같은 값끼리 순서를 지킨다)
-      const rank = (words) => [...words].sort((a, b) => (Number(fits(b)) - Number(fits(a))) || (farLength(a) - farLength(b)));
-      const usable = (word) => word !== answer && !soundsAlike(word, answer);
-      const outsideLesson = (word) => usable(word) && !lesson.words.includes(word);
-      const sameLesson = rank(shuffle(lessonWords.filter(usable)));
-      const learnedFirst = [...shuffle(picturedWords.filter(outsideLesson)), ...shuffle(allPictureWords.filter((word) => outsideLesson(word) && !picturedWords.includes(word)))];
-      const outside = rank(learnedFirst);
-      const firstPicks = [sameLesson[0], outside[0]].filter(Boolean);
-      const rest = rank(shuffle([...sameLesson.slice(1), ...outside.slice(1)]));
-      const distractors = [...new Set([...firstPicks, ...rest])].slice(0, 3);
-      return { sound, answer, choices: [answer, ...distractors] };
+      const choices = [answer];
+      // Prefer clear contrasts from known words, even if early lessons have
+      // only two or three suitable choices. Never pad with confusing words.
+      for (const candidate of shuffle(picturedWords)) {
+        if (choices.some((word) => word === candidate ||
+            listeningFamily(word) === listeningFamily(candidate) ||
+            soundsAlike(word, candidate))) continue;
+        choices.push(candidate);
+        if (choices.length === 4) break;
+      }
+      return { sound: focusForAnswer(lesson, answer, index), answer, choices };
     });
   }
 
@@ -117,78 +132,51 @@
   const courseAreaFor = (stage) => stage.order <= 9 ? "파닉스" : stage.order <= 11 ? "철자 규칙과 단어 만들기" : stage.order === 12 ? "고급 파닉스" : "접사와 어휘";
   const lessonIndex = () => data.lessons.findIndex((lesson) => lesson.id === current?.id);
   const currentTarget = () => current.dictation[dictationIndex % current.dictation.length];
-  const spriteGeometry = (picture, zoom = 1) => {
-    const column = picture.index % picture.columns;
-    const row = Math.floor(picture.index / picture.columns);
-    const x = (0.5 - zoom * (column + 0.5)) / (1 - picture.columns * zoom) * 100;
-    const y = (0.5 - zoom * (row + 0.5)) / (1 - picture.rows * zoom) * 100;
-    return {
-      size: `${picture.columns * zoom * 100}% ${picture.rows * zoom * 100}%`,
-      position: `${x}% ${y}%`
-    };
-  };
   const cleanSpriteUrl = (picture) => {
-    const key = `${picture.file}:${picture.index}:${picture.columns}:${picture.rows}`;
+    const key = JSON.stringify(picture);
     if (cleanSpriteCache.has(key)) return cleanSpriteCache.get(key);
     const pending = new Promise((resolve, reject) => {
       const image = new Image();
       image.onload = () => {
         const size = 256;
+        const padding = 12;
         const canvas = document.createElement("canvas");
         canvas.width = size;
         canvas.height = size;
-        const context = canvas.getContext("2d", { willReadFrequently: true });
-        const column = picture.index % picture.columns;
-        const row = Math.floor(picture.index / picture.columns);
-        context.drawImage(image, column * image.width / picture.columns, row * image.height / picture.rows, image.width / picture.columns, image.height / picture.rows, 0, 0, size, size);
-        const frame = context.getImageData(0, 0, size, size);
-        const pixels = frame.data;
-        const visited = new Uint8Array(size * size);
-        const queue = new Int32Array(size * size);
-        const foreground = (point) => {
-          const offset = point * 4;
-          const red = pixels[offset];
-          const green = pixels[offset + 1];
-          const blue = pixels[offset + 2];
-          return Math.min(red, green, blue) < 238 || Math.max(red, green, blue) - Math.min(red, green, blue) > 14;
-        };
-        for (let start = 0; start < size * size; start += 1) {
-          if (visited[start] || !foreground(start)) continue;
-          let head = 0;
-          let tail = 1;
-          let touchesEdge = false;
-          queue[0] = start;
-          visited[start] = 1;
-          while (head < tail) {
-            const point = queue[head++];
-            const x = point % size;
-            const y = Math.floor(point / size);
-            if (x < 3 || y < 3 || x >= size - 3 || y >= size - 3) touchesEdge = true;
-            for (const next of [point - 1, point + 1, point - size, point + size]) {
-              if (next < 0 || next >= size * size || visited[next]) continue;
-              const nextX = next % size;
-              if (Math.abs(nextX - x) > 1 || !foreground(next)) continue;
-              visited[next] = 1;
-              queue[tail++] = next;
-            }
-          }
-          if (touchesEdge && tail < size * size * 0.12) {
-            for (let index = 0; index < tail; index += 1) {
-              const offset = queue[index] * 4;
-              pixels[offset] = 255;
-              pixels[offset + 1] = 255;
-              pixels[offset + 2] = 255;
-              pixels[offset + 3] = 255;
-            }
-          }
+        const context = canvas.getContext("2d");
+        if (picture.diagram === "square") {
+          context.fillStyle = "#5b88dc";
+          context.fillRect(42, 42, 172, 172);
+          context.strokeStyle = "#284d91";
+          context.lineWidth = 5;
+          context.strokeRect(42, 42, 172, 172);
+          resolve(canvas.toDataURL("image/webp", 0.9));
+          return;
         }
-        context.putImageData(frame, 0, 0);
+        // Reviewed bounds may cross the old grid lines. Keep every pixel inside
+        // the bounds; edge-connected parts can be wings, tails, or other details.
+        const crop = picture.crop || [
+          (picture.index % picture.columns) / picture.columns,
+          Math.floor(picture.index / picture.columns) / picture.rows,
+          1 / picture.columns, 1 / picture.rows
+        ];
+        const [sx, sy, sw, sh] = crop.map((value, index) => value * (index % 2 ? image.naturalHeight : image.naturalWidth));
+        const copies = picture.repeat || 1;
+        const slotWidth = (size - padding * (copies + 1)) / copies;
+        const scale = Math.min(slotWidth / sw, (size - padding * 2) / sh);
+        const width = sw * scale;
+        const height = sh * scale;
+        for (let copy = 0; copy < copies; copy += 1) {
+          const x = padding + copy * (slotWidth + padding) + (slotWidth - width) / 2;
+          context.drawImage(image, sx, sy, sw, sh, x, (size - height) / 2, width, height);
+        }
         resolve(canvas.toDataURL("image/webp", 0.9));
       };
       image.onerror = reject;
       image.src = picture.file;
     });
     cleanSpriteCache.set(key, pending);
+    pending.catch(() => cleanSpriteCache.delete(key));
     return pending;
   };
   const preloadPictureFile = (file) => {
@@ -208,7 +196,7 @@
   const preloadRoundPictures = (round) => {
     if (!round) return;
     const files = new Set(round.choices.map((word) => {
-      const item = soundPictures[word] || data.wordBank[word];
+      const item = data.wordBank[word] || soundPictures[word];
       return item?.sprite === undefined ? item?.picture?.file : "assets/images/sound-catcher-s-a.webp";
     }).filter(Boolean));
     files.forEach(preloadPictureFile);
@@ -221,20 +209,18 @@
     else setTimeout(warm, 120);
   };
   const applyCleanSprite = (element, picture) => {
-    const geometry = spriteGeometry(picture);
-    element.style.backgroundImage = `url('${picture.file}')`;
-    element.style.backgroundSize = geometry.size;
-    element.style.backgroundPosition = geometry.position;
+    // Do not briefly show an unreviewed grid crop while the real picture loads.
+    element.style.backgroundImage = "none";
+    element.style.backgroundSize = "contain";
+    element.style.backgroundPosition = "center";
+    element.style.backgroundRepeat = "no-repeat";
     cleanSpriteUrl(picture).then((url) => {
       element.style.backgroundImage = `url('${url}')`;
-      element.style.backgroundSize = "contain";
-      element.style.backgroundPosition = "center";
     }).catch(() => {});
   };
   const pictureMarkup = (item, className = "word-scene") => {
     if (!item.picture) return `<span class="${className} picture-pending" aria-hidden="true">${item.scene || ""}</span>`;
-    const geometry = spriteGeometry(item.picture);
-    return `<span class="${className} picture-sprite" aria-hidden="true" style="background-image:url('${item.picture.file}');background-size:${geometry.size};background-position:${geometry.position}"></span>`;
+    return `<span class="${className} picture-sprite" aria-hidden="true"></span>`;
   };
 
   function speak(text, rate = 0.72) {
@@ -365,7 +351,7 @@
     choices.replaceChildren();
 
     shuffle(round.choices).forEach((word) => {
-      const item = soundPictures[word] || data.wordBank[word];
+      const item = data.wordBank[word] || soundPictures[word];
       const button = document.createElement("button");
       const picture = document.createElement("span");
       const label = document.createElement("span");
@@ -374,20 +360,29 @@
       button.type = "button";
       button.className = "sound-choice";
       button.dataset.word = word;
-      button.setAttribute("aria-label", `${item.korean} 그림`);
+      button.setAttribute("aria-label", `${word}, 그림: ${item.pictureMeaning || item.korean}${item.meanings?.length > 1 ? `, 다른 뜻: ${item.meanings.slice(1).join(", ")}` : ""}`);
       picture.className = "sound-choice-picture";
-      if (item.sprite !== undefined) {
-        const column = item.sprite % 4;
-        const row = Math.floor(item.sprite / 4);
-        picture.style.setProperty("--sprite-x", `${column * 100 / 3}%`);
-        picture.style.setProperty("--sprite-y", `${row * 100 / 3}%`);
-      } else {
-        applyCleanSprite(picture, item.picture);
-      }
+      const artwork = item.picture || {
+        file: "assets/images/sound-catcher-s-a.webp", index: item.sprite, columns: 4, rows: 4
+      };
+      applyCleanSprite(picture, artwork);
       label.className = "sound-choice-label";
       english.textContent = word;
-      korean.textContent = item.korean;
+      korean.textContent = item.meanings?.length > 1 ? `그림: ${item.pictureMeaning}` : item.korean;
       label.append(english, korean);
+      if (item.meanings?.length > 1) {
+        const otherMeanings = document.createElement("small");
+        otherMeanings.className = "other-meanings";
+        otherMeanings.textContent = `다른 뜻: ${item.meanings.slice(1).join(" · ")}`;
+        label.append(otherMeanings);
+      }
+      if (item.pictureNote) {
+        const note = document.createElement("small");
+        note.className = "picture-note";
+        note.textContent = item.pictureNote;
+        label.append(note);
+        button.setAttribute("aria-label", button.getAttribute("aria-label") + ", " + item.pictureNote);
+      }
       button.append(picture, label);
       button.addEventListener("click", () => selectSoundChoice(button, word));
       choices.append(button);
