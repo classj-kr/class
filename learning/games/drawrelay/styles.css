@@ -106,6 +106,7 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
 .mp-lobby-player { background: #fff; }
 .lobby-actions { display: grid; grid-template-columns: 1fr auto auto; gap: 9px; margin-top: 0; padding-top: 12px; }
 .lobby-actions .quiet { grid-column: auto; }
+#lobbyScreen.mp-ui-lobby .lobby-actions { display: block; }
 .missing-panel { width: min(620px, 100%); margin: 10vh auto; padding: 44px; text-align: center; }
 
 /* Game */
@@ -207,7 +208,7 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
 @keyframes pageIn { from { opacity: 0; transform: translateY(16px) rotate(-.5deg); } to { opacity: 1; transform: none; } }
 
 @media (min-width: 900px) and (max-height: 900px) {
-  body { padding: 8px; overflow: hidden; }
+  body { padding: 8px; }
   .game-shell { min-height: calc(100vh - 16px); max-height: calc(100vh - 16px); }
   .game-header { padding-block: 8px; }
   .progress-panel { grid-template-columns: minmax(190px, 1fr) auto auto minmax(180px, .55fr); }
@@ -216,6 +217,33 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
   .prompt-panel > p { font-size: 11px; }
   .workspace-head { margin-bottom: 8px; }
   .workspace-head h2 { font-size: clamp(18px, 2vw, 25px); }
+}
+
+/* Short laptop screens need room for the roster and Start, plus normal scrolling. */
+@media (max-height: 800px) {
+  #lobbyScreen.mp-ui-lobby { padding: 18px !important; }
+  #lobbyScreen .mp-ui-header { margin-bottom: 12px; }
+  #lobbyScreen .mp-ui-header .mp-ui-title {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 .22em;
+    padding: 12px 16px;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.05;
+  }
+  #lobbyScreen .mp-ui-title br { display: none; }
+  #lobbyScreen .mp-lobby-pane { padding: 10px 12px; }
+  #lobbyScreen.mp-ui-connected > .mp-ui-extra { margin-top: 8px; }
+  #lobbyScreen :is(.pack-section, .lobby-roster) { margin-block: 6px !important; }
+  #lobbyScreen .pack-section {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+  }
+  #lobbyScreen .pack-head, #lobbyScreen .pack-head strong { margin: 0; }
+  #lobbyScreen .lobby-actions { margin-top: 8px !important; padding-top: 0; }
 }
 
 @media (max-width: 820px) {
