@@ -255,7 +255,7 @@ const METACOG_ITEMS = [
     kind: "looksHard",
     prompt: "얼음이 물에 뜨는 이유로 옳은 것은?",
     choices: [
-      "얼면서 부피가 늘어 물보다 가벼워지기 때문",
+      "같은 부피의 물보다 얼음의 질량이 작기 때문",
       "얼음이 물보다 차가워서 위로 밀려 올라가기 때문",
       "얼음 속에 공기 방울이 갇혀 떠오르게 하기 때문",
       "물이 얼음을 밀어 올리는 힘이 특별히 세기 때문"
@@ -377,10 +377,10 @@ const METACOG_ITEMS = [
 ];
 
 const CONFIDENCE_LEVELS = [
-  { value: 25, label: "그냥 찍었어요", sub: "전혀 모르겠음" },
+  { value: 25, label: "거의 자신 없어요", sub: "맞는지 잘 모르겠음" },
   { value: 50, label: "반반이에요", sub: "둘 중 하나로 좁힘" },
   { value: 75, label: "그럴 것 같아요", sub: "꽤 자신 있음" },
-  { value: 100, label: "확실해요", sub: "틀릴 리 없음" }
+  { value: 100, label: "확실해요", sub: "아주 자신 있음" }
 ];
 
 if (typeof module !== "undefined" && module.exports) {

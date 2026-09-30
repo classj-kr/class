@@ -52,7 +52,7 @@ const METACOG_ITEMS_G4 = [
     id: "G4-L4",
     domain: "어휘",
     kind: "looksHard",
-    prompt: "밑줄 친 낱말의 뜻이 나머지 셋과 다른 것은?",
+    prompt: "다음 표현에서 ‘타다’의 뜻이 나머지 셋과 다른 것은?",
     choices: ["버스를 타다", "그네를 타다", "장작이 타다", "자전거를 타다"],
     answer: 2,
     lure: 0,
@@ -219,10 +219,10 @@ const METACOG_ITEMS_G4 = [
 ];
 
 const CONFIDENCE_LEVELS_G4 = [
-  { value: 25, label: "그냥 찍었어요", sub: "전혀 모르겠음" },
+  { value: 25, label: "거의 자신 없어요", sub: "맞는지 잘 모르겠음" },
   { value: 50, label: "반반이에요", sub: "둘 중 하나로 좁힘" },
   { value: 75, label: "그럴 것 같아요", sub: "꽤 자신 있음" },
-  { value: 100, label: "확실해요", sub: "틀릴 리 없음" }
+  { value: 100, label: "확실해요", sub: "아주 자신 있음" }
 ];
 
 if (typeof module !== "undefined" && module.exports) {

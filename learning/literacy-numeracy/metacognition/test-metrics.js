@@ -135,7 +135,7 @@ function respond(rule) {
   });
 }
 
-check("완벽한 조율: bias ≈ 0, calibrated 유형", () => {
+check("구간별 정답률과 자신감이 일치해도 학생 유형을 판정하지 않는다", () => {
   // 확신 100 문항 4개는 4개 다, 75 문항 8개는 6개, 50 문항 8개는 4개, 25 문항 4개는 1개 정답
   // → 구간별 실제 정답률이 확신도와 정확히 일치한다 (bias = 0)
   const plan = [
@@ -160,20 +160,20 @@ check("완벽한 조율: bias ≈ 0, calibrated 유형", () => {
   const out = M.analyze(responses, METACOG_ITEMS);
   assert.ok(Math.abs(out.metrics.bias) < 0.02, "bias=" + out.metrics.bias);
   assert.ok(out.metrics.discrimination > 0.15, "disc=" + out.metrics.discrimination);
-  assert.strictEqual(out.profile.key, "calibrated");
+  assert.strictEqual(out.profile.key, M.REPORT_KEY);
 });
 
-check("과신·저변별: unchecked 유형 + 확신 100 오답 카드", () => {
+check("자신 있었던 오답을 실제 개수와 근거 확인 활동으로 안내한다", () => {
   const responses = respond((item, index) => ({ confidence: 100, correct: index % 2 === 0 }));
   const out = M.analyze(responses, METACOG_ITEMS);
   assert.ok(out.metrics.bias > 0.4, "bias=" + out.metrics.bias);
   assert.strictEqual(out.metrics.discrimination, 0, "확신이 모두 같으면 변별도 0");
-  assert.strictEqual(out.profile.key, "unchecked");
-  assert.ok(out.cards.some((card) => card.title.includes("‘확실해요’")));
-  assert.ok(out.cards.some((card) => card.tag === "자기 점검"));
+  assert.strictEqual(out.profile.key, M.REPORT_KEY);
+  assert.ok(out.cards.some((card) => card.tag === "답의 근거 확인" && card.evidence.includes("12문항")));
+  assert.ok(out.cards.every((card) => !('severity' in card)));
 });
 
-check("과소평가·고변별: underconfidentSharp + 저확신 정답 카드", () => {
+check("자신 없었던 정답을 능력이나 불안으로 해석하지 않는다", () => {
   const responses = respond((item, index) => ({
     correct: index % 6 !== 0, // 정답률 약 83%
     confidence: index % 6 !== 0 ? 50 : 25
@@ -181,11 +181,11 @@ check("과소평가·고변별: underconfidentSharp + 저확신 정답 카드", 
   const out = M.analyze(responses, METACOG_ITEMS);
   assert.ok(out.metrics.bias < -0.3, "bias=" + out.metrics.bias);
   assert.ok(out.metrics.discrimination >= 0.15, "disc=" + out.metrics.discrimination);
-  assert.strictEqual(out.profile.key, "underconfidentSharp");
-  assert.ok(out.cards.some((card) => card.tag === "과소평가"));
+  assert.strictEqual(out.profile.key, M.REPORT_KEY);
+  assert.ok(out.cards.some((card) => card.action.includes("우연히 맞혔을 수도")));
 });
 
-check("함정 문항에서만 과신하면 직관 제동 카드가 뜬다", () => {
+check("함정 문항 결과로 사고 습관을 단정하지 않는다", () => {
   const responses = respond((item) =>
     item.kind === "trap"
       ? { correct: false, confidence: 100 }
@@ -193,7 +193,8 @@ check("함정 문항에서만 과신하면 직관 제동 카드가 뜬다", () =
   );
   const out = M.analyze(responses, METACOG_ITEMS);
   assert.ok(out.metrics.trapPenalty > 0.15, "trapPenalty=" + out.metrics.trapPenalty);
-  assert.ok(out.cards.some((card) => card.tag === "직관 제동"));
+  assert.ok(out.cards.some((card) => card.tag === "답의 근거 확인"));
+  assert.doesNotMatch(JSON.stringify(out.cards), /직관 제동|3초|위험 신호/);
 });
 
 check("전부 정답이면 변별도는 null, 오류 없이 리포트가 나온다", () => {
@@ -201,24 +202,27 @@ check("전부 정답이면 변별도는 null, 오류 없이 리포트가 나온�
   const out = M.analyze(responses, METACOG_ITEMS);
   assert.strictEqual(out.metrics.discrimination, null);
   assert.strictEqual(out.metrics.bias, 0);
-  assert.strictEqual(out.profile.key, "blurred"); // 변별도를 잴 수 없으면 '흐릿함'으로 분류
+  assert.strictEqual(out.profile.key, M.REPORT_KEY);
+  assert.match(out.profile.headline, /모두 맞혔어요/);
+  assert.doesNotMatch(JSON.stringify(out), /흐릿한|가려내지 못|브레이크/);
   assert.ok(Array.isArray(out.plan) && out.plan.length === 4);
 });
 
-check("우연 수준 정답률이면 해석 주의 카드가 붙는다", () => {
-  const responses = respond((item, index) => ({ correct: index % 4 === 0, confidence: 50 }));
+check("전부 찍고 25% 맞혔을 때 숨은 실력이 있다고 말하지 않는다", () => {
+  const responses = respond((item, index) => ({ correct: index % 4 === 0, confidence: 25 }));
   const out = M.analyze(responses, METACOG_ITEMS);
   assert.strictEqual(out.metrics.lowSignal, true);
-  assert.ok(out.cards.some((card) => card.tag === "해석 주의"));
+  assert.ok(out.cards.some((card) => card.action.includes("우연히 맞혔을 수도")));
+  assert.doesNotMatch(JSON.stringify(out.cards), /과소평가|근거는 이미|아는 것으로 바뀝니다/);
 });
 
-check("빠르게 틀린 경우 속도 카드가 붙는다", () => {
+check("응답 시간으로 성향이나 학습 처방을 만들지 않는다", () => {
   const responses = respond((item, index) => {
     const wrong = index % 3 === 0;
     return { correct: !wrong, confidence: wrong ? 100 : 75, ms: wrong ? 3000 : 20000 };
   });
   const out = M.analyze(responses, METACOG_ITEMS);
-  assert.ok(out.cards.some((card) => card.tag === "속도"), "속도 카드 없음");
+  assert.ok(out.cards.every((card) => card.tag !== "속도"));
 });
 
 check("미응답·잘못된 확신값은 계산에서 제외된다", () => {
@@ -247,10 +251,67 @@ check("캘리브레이션 곡선의 구간 합이 전체 문항 수와 같다", 
   });
 });
 
-check("모든 유형에 2주 실행 계획이 정의돼 있다", () => {
-  Object.keys(M.PROFILES).forEach((key) => {
-    assert.ok(Array.isArray(M.PLANS[key]) && M.PLANS[key].length >= 4, key + " 계획 누락");
-  });
+check("전부 오답이어도 낙인 없이 한 문제부터 복습하도록 안내한다", () => {
+  const out = M.analyze(respond(() => ({ correct: false, confidence: 100 })), METACOG_ITEMS);
+  assert.strictEqual(out.metrics.discrimination, null);
+  assert.match(out.profile.headline, /맞힌 문항이 없어요/);
+  assert.match(out.profile.headline, /한 문제부터/);
+  assert.strictEqual(out.profile.key, M.REPORT_KEY);
+});
+
+check("모든 풀이에 새로운 문제와 근거 확인을 제안한다", () => {
+  assert.strictEqual(M.classify, undefined);
+  assert.strictEqual(M.PROFILES, undefined);
+  for (const correct of [true, false]) {
+    const out = M.analyze(respond(() => ({ correct, confidence: 75 })), METACOG_ITEMS);
+    assert.strictEqual(out.summary.profileKey, "reflection-v1");
+    assert.match(out.plan.join(" "), /처음 보는 문제/);
+    assert.doesNotMatch(out.plan.join(" "), /다섯 번|평균 확신이 올라|과신이 10/);
+  }
+});
+
+check("모르겠어요는 오답·자신감 계산에 포함되지 않는다", () => {
+  const items = METACOG_ITEMS.slice(0, 4);
+  const responses = [
+    { id: items[0].id, choice: items[0].answer, confidence: 100 },
+    { id: items[1].id, choice: (items[1].answer + 1) % 4, confidence: 50 },
+    { id: items[2].id, choice: -1, confidence: null },
+    { id: items[3].id, choice: -1, confidence: null }
+  ];
+  const out = M.analyze(responses, items);
+  assert.equal(out.summary.n, 4);
+  assert.equal(out.summary.unknownCount, 2);
+  assert.equal(out.summary.wrongCount, 1);
+  assert.equal(out.summary.answeredCount, 2);
+  assert.equal(out.summary.accuracy, .25);
+  assert.equal(out.summary.answeredAccuracy, .5);
+  assert.equal(out.summary.confidence, .75);
+  assert.equal(out.summary.bias, .25);
+  assert.equal(out.summary.brier, .125);
+  assert.equal(out.metrics.curve.reduce((sum, bin) => sum + bin.count, 0), 2);
+  assert.match(out.profile.headline, /오답 1개.*‘모르겠어요’ 2개/);
+});
+
+check("모두 모르겠어요여도 결과가 나오며 자신감 통계는 없음으로 남긴다", () => {
+  const out = M.analyze(METACOG_ITEMS.map(item => ({ id: item.id, choice: -1, confidence: null })), METACOG_ITEMS);
+  assert.equal(out.summary.unknownCount, 24);
+  assert.equal(out.summary.wrongCount, 0);
+  assert.equal(out.summary.answeredCount, 0);
+  for (const field of ['confidence', 'bias', 'discrimination', 'calibrationError', 'brier', 'answeredAccuracy']) assert.equal(out.summary[field], null, field);
+  assert.equal(out.metrics.highConfErrors.length, 0);
+  assert.match(out.profile.headline, /모든 문항에 ‘모르겠어요’/);
+  assert.ok(out.cards.some(card => card.tag === '새로 알아보기'));
+});
+
+check("미응답과 잘못된 모름 응답을 완료한 응답으로 세지 않는다", () => {
+  const items = METACOG_ITEMS.slice(0, 4);
+  const rows = [
+    { id: items[0].id, choice: null, confidence: null },
+    { id: items[1].id, choice: -1, confidence: 25 },
+    { id: items[2].id, choice: 9, confidence: 100 },
+    { id: items[3].id, choice: -1, confidence: null }
+  ];
+  assert.equal(M.analyze(rows, items).summary.n, 1);
 });
 
 console.log("\n" + passed + "개 검사 통과");

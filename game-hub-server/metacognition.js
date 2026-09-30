@@ -11,7 +11,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
-const MIGRATION_NAMES = ["004-metacognition"];
+const MIGRATION_NAMES = ["004-metacognition", "005-metacognition-unknown"];
 const PAGE_DIR = path.join(__dirname, "..", "learning", "literacy-numeracy", "metacognition");
 
 /*
@@ -62,12 +62,15 @@ const GRADE_ITEM_FILES = [
 const ITEM_SET_REGISTRY = {};
 const ALL_ITEMS_BY_ID = new Map();
 if (!loadError) {
+  // 2026-09-30: wording/report revision only; all old answer indices and kinds are unchanged.
   ITEM_SET_REGISTRY["metacog-v2"] = METACOG_ITEMS;
+  ITEM_SET_REGISTRY["metacog-v3"] = METACOG_ITEMS;
   GRADE_ITEM_FILES.forEach(([version, file, exportName]) => {
     try {
       const items = require(path.join(PAGE_DIR, file))[exportName];
       if (Array.isArray(items) && items.length) {
         ITEM_SET_REGISTRY[version] = items;
+        ITEM_SET_REGISTRY[version.replace(/-v1$/, "-v2")] = items;
       }
     } catch (error) {
       console.error(`[metacognition] ${file}을 읽지 못해 ${version} 세트를 건너뜁니다.`, error.message);
@@ -95,14 +98,14 @@ function createMetacognition(options = {}) {
     router.use((req, res) => {
       res.status(503).json({
         error: "METACOGNITION_UNAVAILABLE",
-        message: "간이 진단이 잠시 준비 중입니다."
+        message: "학습 자기점검이 잠시 준비 중입니다."
       });
     });
     return {
       router,
       initialize: async () => {},
       normalizeResponses: () => {
-        throw new HttpError(503, "METACOGNITION_UNAVAILABLE", "간이 진단이 잠시 준비 중입니다.");
+        throw new HttpError(503, "METACOGNITION_UNAVAILABLE", "학습 자기점검이 잠시 준비 중입니다.");
       },
       available: false,
       loadError,
@@ -156,10 +159,14 @@ function createMetacognition(options = {}) {
     raw.forEach((entry) => {
       const id = String(entry && entry.id ? entry.id : "").slice(0, 32);
       if (!validIds.has(id) || seen.has(id)) return;
+      // null is unanswered; -1 is an explicit "I don't know" with no invented confidence.
+      if (entry.choice === null || entry.choice === undefined) return;
       const choice = Number(entry.choice);
-      const confidence = Number(entry.confidence);
-      if (!Number.isInteger(choice) || choice < 0 || choice > 9) return;
-      if (!MetacogMetrics.CONFIDENCE_BINS.includes(confidence)) return;
+      const unknown = choice === MetacogMetrics.UNKNOWN_CHOICE;
+      const confidence = unknown ? null : Number(entry.confidence);
+      const item = items.find(item => item.id === id);
+      if (unknown ? entry.confidence !== null : !Number.isInteger(choice) || choice < 0 || choice >= item.choices.length) return;
+      if (!unknown && !MetacogMetrics.CONFIDENCE_BINS.includes(confidence)) return;
       const ms = Number(entry.ms);
       seen.add(id);
       normalized.push({
@@ -248,8 +255,8 @@ function createMetacognition(options = {}) {
            user_id, student_id, class_id, item_set_version, item_count,
            accuracy, mean_confidence, bias, discrimination, calibration_error, brier,
            high_conf_error_count, certain_error_count, low_conf_hit_count,
-           trap_penalty, profile_key, responses, client_summary
-         ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17::JSONB,$18::JSONB)
+           trap_penalty, profile_key, responses, client_summary, unknown_count
+         ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17::JSONB,$18::JSONB,$19)
          RETURNING id, created_at`,
         [
           user.id,
@@ -269,7 +276,8 @@ function createMetacognition(options = {}) {
           summary.trapPenalty,
           summary.profileKey,
           JSON.stringify(responses),
-          JSON.stringify((req.body && req.body.summary) || {})
+          JSON.stringify((req.body && req.body.summary) || {}),
+          summary.unknownCount
         ]
       );
 
@@ -290,7 +298,7 @@ function createMetacognition(options = {}) {
       const user = await requireUser(req);
       const result = await pool.query(
         `SELECT id, created_at, item_set_version, item_count, accuracy, mean_confidence,
-                bias, discrimination, calibration_error, brier, profile_key
+                bias, discrimination, calibration_error, brier, profile_key, unknown_count
          FROM metacognition_attempts
          WHERE user_id = $1
          ORDER BY created_at DESC
@@ -314,7 +322,7 @@ function createMetacognition(options = {}) {
         `SELECT DISTINCT ON (a.user_id)
                 a.user_id, a.created_at, a.accuracy, a.mean_confidence, a.bias,
                 a.discrimination, a.calibration_error, a.high_conf_error_count,
-                a.certain_error_count, a.low_conf_hit_count, a.profile_key,
+                a.certain_error_count, a.low_conf_hit_count, a.profile_key, a.unknown_count, a.item_count,
                 s.roster_name, s.student_number
          FROM metacognition_attempts a
          LEFT JOIN classroom_students s ON s.id = a.student_id
@@ -329,7 +337,8 @@ function createMetacognition(options = {}) {
         return values.length ? values.reduce((sum, value) => sum + Number(value), 0) / values.length : null;
       };
       const profileCounts = rows.reduce((counts, row) => {
-        counts[row.profile_key] = (counts[row.profile_key] || 0) + 1;
+        const key = row.profile_key === MetacogMetrics.REPORT_KEY ? MetacogMetrics.REPORT_KEY : "legacy";
+        counts[key] = (counts[key] || 0) + 1;
         return counts;
       }, {});
 
@@ -343,10 +352,10 @@ function createMetacognition(options = {}) {
           discrimination: average((row) => row.discrimination)
         },
         profileCounts,
-        // 과신이 큰 순서 — 상담이 가장 급한 학생이 위로 온다
+        // 학번순으로 표시한다. 응답 수치로 학생의 상담 우선순위를 판단하지 않는다.
         students: rows
           .slice()
-          .sort((a, b) => Number(b.bias) - Number(a.bias))
+          .sort((a, b) => String(a.student_number ?? "").localeCompare(String(b.student_number ?? ""), "ko", { numeric: true }))
           .map((row) => ({
             studentNumber: row.student_number,
             name: row.roster_name,
@@ -357,7 +366,9 @@ function createMetacognition(options = {}) {
             discrimination: row.discrimination,
             certainErrorCount: row.certain_error_count,
             lowConfHitCount: row.low_conf_hit_count,
-            profileKey: row.profile_key
+            unknownCount: row.unknown_count,
+            answeredCount: row.item_count - row.unknown_count,
+            profileKey: row.profile_key === MetacogMetrics.REPORT_KEY ? MetacogMetrics.REPORT_KEY : null
           }))
       });
     })
@@ -374,7 +385,7 @@ function createMetacognition(options = {}) {
         `SELECT a.id, a.created_at, a.item_set_version, a.item_count, a.accuracy,
                 a.mean_confidence, a.bias, a.discrimination, a.calibration_error,
                 a.brier, a.high_conf_error_count, a.certain_error_count,
-                a.low_conf_hit_count, a.trap_penalty, a.profile_key, a.responses
+                a.low_conf_hit_count, a.trap_penalty, a.profile_key, a.responses, a.unknown_count
          FROM metacognition_attempts a
          WHERE a.class_id = $1
          ORDER BY a.created_at ASC`,
@@ -386,7 +397,7 @@ function createMetacognition(options = {}) {
         "attempt_id", "created_at", "item_set_version", "item_count", "accuracy",
         "mean_confidence", "bias", "discrimination", "calibration_error", "brier",
         "high_conf_errors", "certain_errors", "low_conf_hits", "trap_penalty",
-        "profile_key", "item_id", "confidence", "correct", "response_ms"
+        "profile_key", "item_id", "confidence", "correct", "response_ms", "unknown_count", "response_status"
       ];
       const lines = [header.join(",")];
       // 학급이 여러 학년 세트를 섞어 썼을 수 있어, 등록된 모든 세트를 합친 맵에서 찾는다.
@@ -405,8 +416,10 @@ function createMetacognition(options = {}) {
               .concat([
                 response.id,
                 response.confidence,
-                response.choice === answerById.get(response.id) ? 1 : 0,
-                response.ms === null ? "" : response.ms
+                response.choice === MetacogMetrics.UNKNOWN_CHOICE ? "" : response.choice === answerById.get(response.id) ? 1 : 0,
+                response.ms === null ? "" : response.ms,
+                row.unknown_count,
+                response.choice === MetacogMetrics.UNKNOWN_CHOICE ? "unknown" : response.choice === answerById.get(response.id) ? "correct" : "wrong"
               ])
               .map((cell) => (cell === null || cell === undefined ? "" : String(cell)))
               .join(",")

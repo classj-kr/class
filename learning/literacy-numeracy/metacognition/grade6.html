@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>간이 진단 (초6)</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>학습 자기점검 (초6)</title>
+  <link rel="stylesheet" href="styles.css?v=20260930-reflection">
 </head>
 <body>
   <div class="mc-container">
     <header class="page-header">
       <a href="index.html" class="back-link">← 학년 다시 고르기</a>
-      <h1 class="page-title">간이 진단 (초6)</h1>
-      <p class="page-sub">내가 아는 것과 안다고 느끼는 것의 차이를 재어 봅니다.</p>
+      <h1 class="page-title">학습 자기점검 (초6)</h1>
+      <p class="page-sub">답을 고를 때의 자신감과 실제 결과를 비교하고, 다시 볼 문제를 찾아요.</p>
     </header>
 
     <section class="panel" id="introView">
       <h2 class="panel-title">시작하기 전에</h2>
       <ol class="intro-steps">
-        <li><strong>16문항</strong>을 풉니다. 한 문항마다 답을 고르고, <strong>얼마나 확신하는지</strong>를 함께 고릅니다.</li>
-        <li>정답은 <strong>다 풀고 나서</strong> 한꺼번에 알려 줍니다. 중간에 알려 주면 확신도가 흐트러져 진단이 되지 않습니다.</li>
-        <li>확신도는 솔직할수록 정확합니다. 모르면 <strong>‘그냥 찍었어요’</strong>를 고르는 것이 훨씬 좋은 답변입니다.</li>
-        <li>맞은 개수보다 <strong>확신과 실제가 얼마나 어긋났는지</strong>를 봅니다. 점수를 잘 받는 시험이 아닙니다.</li>
+        <li><strong>16문항</strong>을 풉니다. 답을 고르거나 <strong>‘모르겠어요’</strong>를 표시합니다. 답을 골랐다면 자신감도 표시해 주세요.</li>
+        <li>정답과 해설은 <strong>다 풀고 나서</strong> 함께 확인합니다.</li>
+        <li>자신감은 <strong>지금 느낌 그대로</strong> 골라 주세요. 어떤 표시를 골라도 괜찮아요.</li>
+        <li>끝나면 <strong>내 답과 정답의 근거</strong>를 비교합니다. 이 활동만으로 학습 능력이나 성향을 판단하지 않아요.</li>
       </ol>
       <div class="intro-meta">
         <span>예상 소요 시간 10분 안팎</span>
         <span aria-hidden="true">·</span>
         <span>중간에 나가도 같은 기기에서는 이어서 할 수 있습니다</span>
       </div>
-      <button class="primary-btn" id="startBtn" type="button">진단 시작하기</button>
+      <button class="primary-btn" id="startBtn" type="button">자기점검 시작하기</button>
       <p class="restore-note" id="restoreNote" hidden></p>
     </section>
 
@@ -43,6 +43,7 @@
       <p class="q-prompt" id="qPrompt"></p>
 
       <div class="choice-group" id="choiceGroup" role="radiogroup" aria-label="답 고르기"></div>
+      <p class="unknown-help">답을 모르겠으면 ‘모르겠어요’를 고르고 다음으로 넘어가세요. 자신감을 표시하지 않아도 됩니다.</p>
 
       <div class="confidence-block" id="confidenceBlock" hidden>
         <h3 class="confidence-title">이 답에 얼마나 확신하나요?</h3>
@@ -57,41 +58,44 @@
 
     <section id="reportView" hidden>
       <div class="panel profile-card" id="profileCard">
-        <div class="profile-tag" id="profileTag">진단 결과</div>
+        <div class="profile-tag" id="profileTag">나의 학습 기록</div>
         <h2 class="profile-name" id="profileName"></h2>
         <p class="profile-headline" id="profileHeadline"></p>
+        <p class="report-note">이 기록은 이번 문항에서의 답과 자신감을 보여 줍니다. 문항 수와 배운 내용에 따라 달라질 수 있으며, 학생의 능력이나 성향을 판정하지 않습니다.</p>
       </div>
 
       <div class="stat-row" id="statRow"></div>
 
       <div class="chart-grid">
         <div class="panel chart-card">
-          <h3 class="panel-title">확신과 실제의 어긋남</h3>
-          <p class="chart-help">가로는 스스로 매긴 확신, 세로는 그 확신으로 답한 문항의 실제 정답률입니다. 점이 회색 기준선 <strong>아래</strong>에 있으면 그만큼 자신을 크게 본 것입니다.</p>
+          <h3 class="panel-title">자신감별로 얼마나 맞혔을까?</h3>
+          <p class="chart-help">가로는 표시한 자신감, 세로는 해당 문항의 정답률입니다. ‘모르겠어요’는 포함하지 않습니다. 점을 누르면 문항 수가 나옵니다. 문항이 적은 구간은 한 문제로도 크게 달라질 수 있어요.</p>
           <div class="chart-holder" id="calibrationChart"></div>
         </div>
         <div class="panel chart-card">
-          <h3 class="panel-title">맞힐 때와 틀릴 때의 확신 차이</h3>
-          <p class="chart-help">두 막대가 벌어져 있을수록 스스로 알고 모름을 잘 가려낸다는 뜻입니다. 붙어 있으면 자기 점검이 작동하지 않고 있습니다.</p>
+          <h3 class="panel-title">맞힌 문제와 틀린 문제의 자신감</h3>
+          <p class="chart-help">답을 고른 문제에서만 평균 자신감을 비교합니다. ‘모르겠어요’는 포함하지 않으며, 한쪽 문항이 없으면 둘의 차이를 비교할 수 없어요.</p>
           <div class="chart-holder" id="discriminationChart"></div>
         </div>
       </div>
 
       <div class="panel">
-        <h3 class="panel-title">상담</h3>
+        <h3 class="panel-title">함께 돌아볼 점</h3>
         <div class="card-list" id="counselCards"></div>
       </div>
 
       <div class="panel">
-        <h3 class="panel-title">앞으로 2주 동안 할 일</h3>
+        <h3 class="panel-title">다음 공부에서 해 볼 일</h3>
         <ol class="plan-list" id="planList"></ol>
       </div>
 
       <div class="panel">
         <div class="panel-head">
-          <h3 class="panel-title">문항별 기록</h3>
+          <h3 class="panel-title">문제와 해설 다시 보기</h3>
           <button class="ghost-btn small" id="toggleTableBtn" type="button" aria-expanded="false">펼치기</button>
         </div>
+        <p class="review-help">모른다고 표시한 문제, 자신 있었던 오답, 자신 없었던 정답을 따로 볼 수 있어요. 문제를 펼쳐 처음 고른 이유와 정답의 근거를 비교해 보세요.</p>
+        <div class="review-filters" id="reviewFilters" role="group" aria-label="복습할 문제 고르기" hidden></div>
         <div id="itemTableHolder" hidden></div>
       </div>
 
@@ -100,20 +104,20 @@
         <div class="save-actions">
           <button class="ghost-btn" id="downloadBtn" type="button">결과 리포트 받기<small>인쇄용 · HTML</small></button>
           <button class="ghost-btn" id="rawBtn" type="button">응답 원자료 받기<small>분석용 · JSON</small></button>
-          <button class="ghost-btn" id="retryBtn" type="button">처음부터 다시 하기</button>
+          <button class="ghost-btn" id="retryBtn" type="button">같은 문제 다시 풀기</button>
         </div>
       </div>
     </section>
   </div>
 
-  <script src="items-grade6.js?v=20260918-quiz"></script>
+  <script src="items-grade6.js?v=20260930-reflection"></script>
   <script>
     const METACOG_ITEMS = METACOG_ITEMS_G6;
     const CONFIDENCE_LEVELS = CONFIDENCE_LEVELS_G6;
     window.METACOG_LEVEL_KEY = "g6";
-    window.METACOG_ITEM_SET_VERSION = "metacog-g6-v1";
+    window.METACOG_ITEM_SET_VERSION = "metacog-g6-v2";
   </script>
-  <script src="metrics.js"></script>
-  <script src="app.js"></script>
+  <script src="metrics.js?v=20260930-reflection"></script>
+  <script src="app.js?v=20260930-reflection"></script>
 </body>
 </html>
