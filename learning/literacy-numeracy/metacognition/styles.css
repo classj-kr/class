@@ -156,6 +156,16 @@ body[data-mode="quiz"] .back-link { margin-bottom: 4px; padding: 8px 12px; min-h
 
 .q-prompt { font-size: 19px; font-weight: 600; margin-bottom: 20px; white-space: pre-line; }
 
+.math-fraction {
+  display: inline-grid; grid-template-columns: 1fr; vertical-align: middle;
+  text-align: center; font-size: .9em; line-height: 1.1; margin: 0 .12em;
+  position: relative; white-space: nowrap;
+}
+.fraction-top { grid-row: 1; padding: 0 .18em .12em; border-bottom: 1.5px solid currentColor; }
+.fraction-bottom { grid-row: 2; padding: .12em .18em 0; }
+/* Keep the original text available when copying a question or an answer. */
+.fraction-slash { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
 .choice-group { display: flex; flex-direction: column; gap: 10px; }
 .choice-btn {
   display: flex; align-items: center; gap: 12px;

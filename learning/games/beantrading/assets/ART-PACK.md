@@ -4,7 +4,7 @@
 
 - 콩 캐릭터 8종: `characters-manifest.json`의 최종 PNG
 - 카드 뒷면: `images/card-back-v1.png`
-- 밭 배경: `images/field-background-v1.png`
+- 밭 배경: `images/field-background-v1.webp`
 - 금화 아이콘: `images/coin-v1.png`
 
 전체 미리보기는 `characters.html`입니다. 이미지 경로와 속성은 `art-manifest.json`에 있습니다.
