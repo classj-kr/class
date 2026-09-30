@@ -42,8 +42,8 @@ const CHAPTERS = [
                 "emoji": "👑",
                 "left": [
                     "고양이는 들판으로 갔습니다. 자루를 벌려 놓고 안에 당근을 몇 개 넣었지요.",
-                    "그러고는 자루 끈 끝을 쥐고 풀숲에 납작 엎드렸습니다.",
-                    "이윽고 토끼가 당근 냄새를 맡고 자루에 들어갔지요. 고양이가 끈을 홱 당기자 자루 입구가 꽉 오므라들었습니다.",
+                    "그러고는 끈을 손에 쥐고 풀숲 옆에 서서 기다렸습니다.",
+                    "이윽고 토끼가 당근 냄새를 맡고 자루에 들어갔지요. 고양이가 얼른 달려가 자루 입구를 끈으로 꽁꽁 묶었습니다.",
                     "고양이는 자루를 어깨에 척 멨지요."
                 ],
                 "right": [
@@ -594,8 +594,8 @@ const EN = {
                     emoji: '🐇',
                     left: [
                         "The cat went out to the fields and set his sack open with a few carrots inside.",
-                        "Then he flattened himself down in the grass, holding the string.",
-                        "By and by a rabbit smelled the carrots and went in. The cat pulled the string, and the sack drew tight.",
+                        "Then he stood by the bushes with a string in his paw, and waited.",
+                        "By and by a rabbit smelled the carrots and went in. The cat ran up and tied the sack shut with the string.",
                         "He swung it up onto his shoulder."
                     ],
                     right: [
@@ -919,8 +919,8 @@ const EN = {
             { word: 'strike a pose', meaning: '자세를 잡다', sentence: 'The cat struck a pose in front of the mirror.' }
         ],
         '02-gift.webp': [
-            { word: 'flatten oneself', meaning: '납작 엎드리다', sentence: 'He flattened himself down in the grass.' },
-            { word: 'draw tight', meaning: '팽팽해지다', sentence: 'The cat pulled the string, and the sack drew tight.' },
+            { word: 'stand by', meaning: '곁에 서다', sentence: 'He stood by the bushes with a string in his paw.' },
+            { word: 'tie shut', meaning: '묶어서 닫다', sentence: 'The cat tied the sack shut with the string.' },
             { word: 'bow low', meaning: '허리를 굽히다', sentence: "The cat bowed low before the king." },
             { word: 'marquis', meaning: '후작', sentence: 'It comes from the Marquis of Carabas.' }
         ],
@@ -1028,8 +1028,7 @@ const WORDS_KO = {
         { w: "메다", k: "어깨에 걸쳐 짊어지다.", s: "고양이는 자루를 메고 길을 나섰습니다." }
     ],
     "02-gift.webp": [
-        { w: "풀숲", k: "풀이 우거진 곳.", s: "그러고는 자루 끈 끝을 쥐고 풀숲에 납작 엎드렸습니다." },
-        { w: "오므라들다", k: "벌어진 것이 안으로 모여 좁아지다.", s: "고양이가 끈을 홱 당기자 자루 입구가 꽉 오므라들었습니다." },
+        { w: "풀숲", k: "풀이 우거진 곳.", s: "그러고는 끈을 손에 쥐고 풀숲 옆에 서서 기다렸습니다." },
         { w: "궁궐", k: "임금님이 살던 아주 큰 집.", s: "고양이는 궁궐로 갔습니다." },
         { w: "후작", k: "옛날 유럽에서 넓은 땅을 가진 높은 귀족을 부르던 이름.", s: "\"카라바 후작님이 임금님께 보내신 선물입니다.\"" }
     ],

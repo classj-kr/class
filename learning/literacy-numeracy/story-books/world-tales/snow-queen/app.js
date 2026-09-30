@@ -141,7 +141,7 @@ const CHAPTERS = [
                 "emoji": "🗡️",
                 "left": [
                     "게르다는 다시 길을 떠났습니다. 가는 길에 까마귀 한 마리가 나뭇가지에서 내려왔지요. \"북쪽으로 간 아이를 봤어.\"",
-                    "까마귀는 게르다를 어느 성으로 데려갔습니다. 그 성의 착한 공주가 게르다의 이야기를 듣고 금빛 마차를 내어 주었지요.",
+                    "까마귀는 게르다를 어느 성으로 데려갔습니다. 그 성의 착한 공주가 게르다의 이야기를 듣고 따뜻한 장화와 금빛 마차를 내어 주었지요.",
                     "게르다는 마차를 타고 북쪽으로 향했습니다. 그런데 어두운 숲길에서 도둑들을 만나고 말았지요."
                 ],
                 "right": [
@@ -175,7 +175,7 @@ const CHAPTERS = [
                 "emoji": "🦌",
                 "left": [
                     "도둑 소녀가 순록에게 말했습니다. \"이 아이를 라플란드까지 데려다줘.\"",
-                    "그러고는 맨발인 게르다에게 제 장화를 신겨 주었지요. 빵과 고기도 한 덩이씩 챙겨 주었습니다.",
+                    "그러고는 게르다에게 제 커다란 털장갑을 끼워 주었지요. 빵과 고기도 한 덩이씩 챙겨 주었습니다.",
                     "도둑 소녀는 투덜거리면서도 제 목도리까지 풀어 감아 주었지요."
                 ],
                 "right": [
@@ -193,7 +193,7 @@ const CHAPTERS = [
                     "그런데 아주머니는 고개를 저었지요. \"내가 줄 수 있는 힘은 없단다. 이 아이는 이미 힘이 있어.\""
                 ],
                 "right": [
-                    "아주머니가 말을 이었습니다. \"맨발로 그 먼 길을 헤쳐 왔잖니. 그게 무엇보다 센 힘이지.\"",
+                    "아주머니가 말을 이었습니다. \"혼자서 그 먼 길을 헤쳐 왔잖니. 그게 무엇보다 센 힘이지.\"",
                     "순록은 게르다를 태우고 다시 눈밭을 달렸습니다.",
                     "이윽고 저 멀리 하얀 것이 보였지요. 눈의 여왕의 궁전이었습니다."
                 ]
@@ -267,7 +267,7 @@ const CHAPTERS = [
                 ]
             }
         ],
-        "moral": "게르다는 맨발로 북쪽 끝까지 카이를 찾아갔답니다. 게르다의 뜨거운 눈물이 카이의 얼어붙은 가슴을 녹였지요."
+        "moral": "게르다는 혼자서 북쪽 끝까지 카이를 찾아갔답니다. 게르다의 뜨거운 눈물이 카이의 얼어붙은 가슴을 녹였지요."
     }
 ];
 
@@ -472,8 +472,8 @@ const QUIZ = [
         "q": "아주머니는 게르다의 힘이 어디서 나왔다고 했나요?",
         "choices": [
             "열 사람 몫의 힘",
-            "도둑 소녀의 장화",
-            "맨발로 온 것"
+            "도둑 소녀의 털장갑",
+            "혼자서 먼 길을 온 것"
         ],
         "answer": 2
     },
@@ -493,7 +493,7 @@ const QUIZ = [
                 "게르다가 카이가 강에 빠졌다는 말을 믿지 않은 것을 보면, 카이가 어디선가 살아 있다고 굳게 믿었던 거지.",
                 "핀란드 아주머니가 줄 힘이 없다고 한 것을 보면, 게르다가 이미 그 힘을 지니고 있다고 본 거지.",
                 "카이가 얼음 궁전에서 혼자 얼음 조각을 맞추고 있던 것을 보면, 여왕이 없는 동안에도 거기서 벗어날 생각을 못 했구나.",
-                "도둑 소녀가 게르다에게 장화와 목도리까지 내준 것을 보면, 처음부터 게르다를 보내 줄 생각이었구나."
+                "도둑 소녀가 게르다에게 털장갑과 목도리까지 내준 것을 보면, 처음부터 게르다를 보내 줄 생각이었구나."
             ],
         "answer": 3
     }
@@ -727,10 +727,10 @@ const EN = {
                     art: '05-robber.webp',
                     emoji: '🗝️',
                     left: [
-                        "Gerda set out again, and on the way a crow came down out of a tree.",
+                        "Gerda set out again. On the way a crow came down out of a tree.",
                         "\"I saw a boy who went north.\"",
-                        "The crow led her to a castle, where a kind princess heard her story and gave her a golden carriage.",
-                        "So Gerda drove north in the carriage.",
+                        "The crow led her to a castle, and a kind princess gave her warm boots and a golden carriage.",
+                        "So Gerda drove north.",
                         "But she had not gone far before she ran into robbers, who came swarming out and closed round her."
                     ],
                     right: [
@@ -769,7 +769,7 @@ const EN = {
                     emoji: '🦌',
                     left: [
                         "\"Carry this child to Lapland,\" the robber girl told the reindeer.",
-                        "Then she put her own boots on Gerda's bare feet and packed her a loaf and a piece of meat.",
+                        "Then she gave Gerda her own big fur mittens and packed her a loaf and a piece of meat.",
                         "\"You're not having my blanket,\" she grumbled.",
                         "But she unwound the scarf from her own neck and wrapped it round Gerda's."
                     ],
@@ -792,7 +792,7 @@ const EN = {
                     ],
                     right: [
                         "\"She has it already,\" the woman went on.",
-                        "\"She came all this way barefoot, did she not?\"",
+                        "\"She came all this way on her own, did she not?\"",
                         "\"There is no stronger thing than that.\"",
                         "So the reindeer ran on over the snow.",
                         "At last something white showed far ahead.",
@@ -927,7 +927,7 @@ const EN = {
                 "Gerda would not believe that Kai had drowned in the river — she was sure he was alive somewhere.",
                 "The Finnish woman said she had no strength to give her — she could see Gerda already had it.",
                 "Kai sat alone on the ice fitting pieces together — even with the Queen away, it never occurred to him to leave.",
-                "The robber girl gave Gerda her own boots and her scarf — she had meant to let Gerda go from the start."
+                "The robber girl gave Gerda her own mittens and her scarf — she had meant to let Gerda go from the start."
             ],
             answer: 3
         }
@@ -1002,7 +1002,7 @@ const EN = {
             { word: 'moor', meaning: '매어 두다', sentence: 'A boat moored at the bank.' },
             { word: 'slip loose', meaning: '스르르 풀리다', sentence: 'The rope slipped loose.' },
             { word: 'lean on', meaning: '짚다, 기대다', sentence: 'An old woman came out leaning on a stick.' },
-            { word: 'in case', meaning: '~할까 봐', sentence: 'In case Gerda should remember Kai.' }
+            { word: 'so that', meaning: '~하도록', sentence: 'She hid every rose, so that Gerda would not remember.' }
         ],
         '05-robber.webp': [
             { word: 'crow', meaning: '까마귀', sentence: 'A crow came down out of a tree.' },
@@ -1025,7 +1025,7 @@ const EN = {
         '06-reindeer-2.webp': [
             { word: 'out of breath', meaning: '숨을 몰아쉬는', sentence: "The reindeer, out of breath, begged her." },
             { word: 'beg', meaning: '부탁하다', sentence: "The reindeer begged her." },
-            { word: 'barefoot', meaning: '맨발로', sentence: 'She came all this way barefoot.' }
+            { word: 'on one’s own', meaning: '혼자 힘으로', sentence: 'She came all this way on her own.' }
         ],
         '07-ice-palace.webp': [
             { word: 'set down', meaning: '내려놓다', sentence: 'The reindeer set Gerda down.' },
@@ -1127,7 +1127,7 @@ const WORDS_KO = {
         { w: "싹둑", k: "한 번에 잘라 내는 소리나 모습.", s: "그러더니 이튿날 새벽 게르다를 순록 등에 태우고, 칼로 밧줄을 싹둑 끊어 주었습니다." }
     ],
     "06-reindeer.webp": [
-        { w: "장화", k: "목이 길어 무릎까지 오는 신.", s: "그러고는 맨발인 게르다에게 제 장화를 신겨 주었지요." },
+        { w: "털장갑", k: "안에 털을 대어 만든 따뜻한 장갑.", s: "그러고는 게르다에게 제 커다란 털장갑을 끼워 주었지요." },
         { w: "투덜거리다", k: "마음에 안 들어 작은 소리로 자꾸 말하다.", s: "도둑 소녀는 투덜거리면서도 제 목도리까지 풀어 감아 주었지요." },
         { w: "벌판", k: "넓고 평평한 들.", s: "숲을 지나 벌판으로 나갔지요." },
         { w: "너울너울", k: "천이 물결치듯 부드럽게 움직이는 모습.", s: "밤이 되자 하늘에 초록빛과 보랏빛 빛줄기가 너울너울 흘렀습니다." }
@@ -1135,7 +1135,7 @@ const WORDS_KO = {
     "06-reindeer-2.webp": [
         { w: "들르다", k: "가는 길에 잠깐 찾아가다.", s: "순록은 라플란드를 지나 핀란드 아주머니의 오두막에 들렀습니다." },
         { w: "몫", k: "여럿에게 나누어 돌아가는 양.", s: "\"이 아이에게 열 사람 몫의 힘을 주세요.\"" },
-        { w: "헤치다", k: "막힌 것을 밀어 젖히며 나아가다.", s: "맨발로 그 먼 길을 헤쳐 왔잖니." },
+        { w: "헤치다", k: "막힌 것을 밀어 젖히며 나아가다.", s: "혼자서 그 먼 길을 헤쳐 왔잖니." },
         { w: "궁전", k: "임금이 사는 큰 집.", s: "눈의 여왕의 궁전이었습니다." }
     ],
     "07-ice-palace.webp": [

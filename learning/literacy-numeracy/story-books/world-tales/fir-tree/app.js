@@ -231,7 +231,7 @@ const CHAPTERS = [
                 "right": [
                     "그 뒤로는 다시 오지 않았습니다. 다락방은 또 조용해졌지요.",
                     "작은 창밖으로 눈이 내리고 있었습니다. 전나무는 그 눈을 오래 바라보았지요.",
-                    "그렇게 겨울이 다 갔습니다. 전나무는 점점 마르고 바스락거렸지요."
+                    "그렇게 겨울이 다 갔습니다. 전나무는 점점 시들어 갔지요."
                 ]
             }
         ]
@@ -245,8 +245,8 @@ const CHAPTERS = [
                 "emoji": "🌿",
                 "left": [
                     "봄이 되자 다락문이 열렸습니다. 환한 빛이 쏟아져 들어왔지요.",
-                    "사람들이 전나무를 들고 내려갔습니다. 전나무는 마당으로 옮겨졌지요.",
-                    "오랜만에 햇빛이 가지에 내려앉았습니다. 바람도 다시 가지를 스쳤지요."
+                    "사람들이 전나무를 들고 내려갔습니다. 그러고는 마당 한쪽에 다시 심어 주었지요.",
+                    "오랜만에 햇빛이 가지에 내려앉았습니다. 바람도 다시 가지를 스쳤지요. 시들었던 가지에 조금씩 힘이 돌아왔습니다."
                 ],
                 "right": [
                     "전나무는 눈을 가늘게 떴습니다. 마당 한구석에는 파란 싹이 돋아 있었지요. 어린 나무 한 그루가 자라고 있었습니다.",
@@ -262,7 +262,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "아이들이 웃으며 마당을 뛰어다녔습니다. 전나무는 그 소리를 들었지요. 햇빛이 참 따뜻했습니다.",
-                    "전나무는 눈을 감고 조용히 생각했지요. \"다음에 다시 자란다면, 그때는 오늘을 꼭 알아볼 거야.\""
+                    "전나무는 눈을 감고 조용히 생각했지요. \"이제부터는 오늘이 좋은 날이라는 걸 꼭 알아볼 거야.\""
                 ]
             }
         ],
@@ -388,14 +388,14 @@ const AFTERWORD = {
         {
             art: 'end.webp',
             left: [
-                "크리스마스 이야기처럼 보이지만 즐거운 이야기는 아닙니다. 안데르센은 이런 끝을 자주 썼지요.",
+                "크리스마스 이야기처럼 보이지만 마냥 즐거운 이야기는 아닙니다. 안데르센은 이렇게 쓸쓸한 이야기를 자주 썼지요.",
                 "전나무는 늘 다음을 기다립니다. 얼른 커지기를, 배의 돛대가 되기를, 방에 놓이기를요. 지금 서 있는 숲은 눈에 들어오지 않았지요.",
                 "햇빛과 바람이 지금이 제일 좋은 때라고 해도 듣지 않습니다.",
                 "방에서 촛불을 켠 그 하루가 전나무 평생에 가장 좋은 날이었습니다. 그런데 그날조차 전나무는 내일을 생각합니다."
             ],
             right: [
                 "다락방에 놓인 뒤에야 전나무는 숲을 떠올립니다.",
-                "마지막에 전나무는 눈을 감고 이렇게 생각합니다. 다음에 다시 자란다면 그때는 오늘을 알아보겠다고요. 알아보는 데 평생이 걸린 것이지요.",
+                "마지막에 전나무는 눈을 감고 이렇게 생각합니다. 이제부터는 오늘을 알아보겠다고요. 알아보는 데 평생이 걸린 것이지요.",
                 "전나무는 언제 즐거워할 수 있었을까요?"
             ]
         }
@@ -863,7 +863,7 @@ const EN = {
                         "Snow was falling outside the little window,",
                         "and the fir tree watched it for a long while.",
                         "And so the winter went.",
-                        "The fir tree got drier and drier, and rustled when he moved."
+                        "The fir tree got drier and drier, and his needles began to droop."
                     ]
                 }
             ]
@@ -879,9 +879,9 @@ const EN = {
                         "In the spring the attic door was opened",
                         "and the bright light came pouring in.",
                         "People carried the fir tree down",
-                        "and out into the yard.",
+                        "and planted him again in a corner of the yard.",
                         "For the first time in a long while the sunlight came onto his branches,",
-                        "and the wind went over him again."
+                        "and the wind went over him again. Little by little, strength came back into his branches."
                     ],
                     right: [
                         "The fir tree narrowed his eyes.",
@@ -904,7 +904,7 @@ const EN = {
                         "The children laughed and ran about the yard.",
                         "The fir tree heard them. The sunlight was very warm.",
                         "He closed his eyes, strangely at rest, and thought,",
-                        "\"If I ever grow again, I will know today when I am in it.\""
+                        "\"From now on, I will know a good day while I am in it.\""
                     ]
                 }
             ]
@@ -1067,7 +1067,7 @@ const EN = {
         '07-memory-2.webp': [
             { word: 'go past', meaning: '지나가 버리다', sentence: 'The springs and summers had gone past him.' },
             { word: 'once more', meaning: '다시', sentence: 'The attic was quiet once more.' },
-            { word: 'rustle', meaning: '바스락거리다', sentence: 'He rustled when he moved.' }
+            { word: 'droop', meaning: '힘없이 처지다', sentence: 'His needles began to droop.' }
         ],
         '08-ending.webp': [
             { word: 'pour in', meaning: '쏟아져 들어오다', sentence: 'The bright light came pouring in.' },
@@ -1079,7 +1079,7 @@ const EN = {
             { word: 'pick up', meaning: '줍다', sentence: 'A girl picked something up from the top of the fir tree.' },
             { word: 'pin', meaning: '달다', sentence: 'She pinned it to her chest.' },
             { word: 'at rest', meaning: '편안한', sentence: 'He closed his eyes, strangely at rest.' },
-            { word: 'know', meaning: '알아보다', sentence: 'I will know today when I am in it.' }
+            { word: 'know', meaning: '알아보다', sentence: 'I will know a good day while I am in it.' }
         ],
         'end.webp': [
             { word: 'cheerful', meaning: '즐거운', sentence: 'And it is not a cheerful one.' },
@@ -1172,7 +1172,7 @@ const WORDS_KO = {
     ],
     "07-memory-2.webp": [
         { w: "흘려보내다", k: "그냥 지나가게 두다.", s: "봄도 여름도 그냥 흘려보냈습니다." },
-        { w: "마르다", k: "물기가 빠져 뻣뻣해지다.", s: "전나무는 점점 마르고 바스락거렸지요." }
+        { w: "시들다", k: "물기가 모자라 잎이 힘없이 처지다.", s: "전나무는 점점 시들어 갔지요." }
     ],
     "08-ending.webp": [
         { w: "오랜만에", k: "아주 긴 시간이 지난 뒤에.", s: "오랜만에 햇빛이 가지에 내려앉았습니다." },
