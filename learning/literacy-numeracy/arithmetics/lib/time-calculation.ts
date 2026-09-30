@@ -5,18 +5,19 @@ export function calculateTimeResult(
   left: TimeValue,
   operator: "+" | "−",
   right: TimeValue,
-  parts: readonly TimePart[],
 ): TimeValue {
   const toSeconds = (time: TimeValue) => time.hours * 3600 + time.minutes * 60 + time.seconds;
   const total = toSeconds(left) + (operator === "+" ? 1 : -1) * toSeconds(right);
-  const showHours = parts.includes("hours");
   return {
-    hours: showHours ? Math.floor(total / 3600) : 0,
-    minutes: Math.floor((showHours ? total % 3600 : total) / 60),
+    hours: Math.floor(total / 3600),
+    minutes: Math.floor((total % 3600) / 60),
     seconds: total % 60,
   };
 }
 
-export function timeAnswerMaxLength(part: TimePart) {
-  return part === "minutes" ? 3 : 2;
+export function timeAnswerParts(parts: readonly TimePart[], operator: "+" | "−"): TimePart[] {
+  // 분·초 덧셈은 올림 여부와 관계없이 시간 답 칸을 제공한다.
+  return operator === "+" && !parts.includes("hours")
+    ? ["hours", ...parts]
+    : [...parts];
 }

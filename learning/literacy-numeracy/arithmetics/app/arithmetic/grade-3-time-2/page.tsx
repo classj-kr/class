@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { calculateTimeResult, timeAnswerMaxLength, type TimePart, type TimeValue } from "../../../lib/time-calculation";
+import { calculateTimeResult, timeAnswerParts, type TimePart, type TimeValue } from "../../../lib/time-calculation";
 
 type PrintMode = "worksheet" | "answers" | "both";
 type Operator = "+" | "−";
-type TimeProblem = { id: string; operator: Operator; parts: TimePart[]; left: TimeValue; right: TimeValue; result: TimeValue };
+type TimeProblem = { id: string; operator: Operator; parts: TimePart[]; answerParts: TimePart[]; left: TimeValue; right: TimeValue; result: TimeValue };
 type ProblemSet = { seed: number; problems: TimeProblem[] };
 
 const INITIAL_SEED = 20260720;
@@ -35,9 +35,10 @@ function makeProblem(id: string, operator: Operator, parts: TimePart[], left: Ti
     id,
     operator,
     parts,
+    answerParts: timeAnswerParts(parts, operator),
     left,
     right,
-    result: calculateTimeResult(left, operator, right, parts),
+    result: calculateTimeResult(left, operator, right),
   };
 }
 
@@ -102,12 +103,12 @@ export default function GradeThreeTimeTwoPage() {
     return () => window.removeEventListener("resize", fitA4Sheet);
   }, []);
 
-  const expected = useMemo(() => questionSet.problems.map((problem) => [problem.id, problem.parts.map((part) => String(problem.result[part]))] as const), [questionSet]);
+  const expected = useMemo(() => questionSet.problems.map((problem) => [problem.id, problem.answerParts.map((part) => String(problem.result[part]))] as const), [questionSet]);
   const completed = Object.values(answers).filter(Boolean).length;
   const correct = Object.values(results).filter(Boolean).length;
 
   function updateAnswer(id: string, part: TimePart, answer: string) {
-    setAnswers((current) => ({ ...current, [`${id}-${part}`]: answer.replace(/[^0-9]/g, "").slice(0, timeAnswerMaxLength(part)) }));
+    setAnswers((current) => ({ ...current, [`${id}-${part}`]: answer.replace(/[^0-9]/g, "").slice(0, 2) }));
     setResults((current) => {
       if (!(id in current)) return current;
       const next = { ...current };
@@ -117,7 +118,7 @@ export default function GradeThreeTimeTwoPage() {
   }
 
   function checkAll() {
-    setResults(Object.fromEntries(expected.map(([id, values]) => [id, questionSet.problems.find((problem) => problem.id === id)!.parts.every((part, index) => answers[`${id}-${part}`] === values[index])] )));
+    setResults(Object.fromEntries(expected.map(([id, values]) => [id, questionSet.problems.find((problem) => problem.id === id)!.answerParts.every((part, index) => answers[`${id}-${part}`] === values[index])] )));
   }
 
   function resetAnswers() {
@@ -140,16 +141,18 @@ export default function GradeThreeTimeTwoPage() {
   }
 
   function renderValue(problem: TimeProblem, time: TimeValue) {
-    return <div className={`time-calculation-value ${problem.parts.length === 2 ? "two" : "three"}`}>{problem.parts.map((part) => <span key={part} style={{ display: "contents" }}><strong>{time[part]}</strong><span>{UNIT_LABELS[part]}</span></span>)}</div>;
+    return <div className={`time-calculation-value ${problem.answerParts.length === 2 ? "two" : "three"}`}>{problem.answerParts.map((part) => problem.parts.includes(part)
+      ? <span key={part} style={{ display: "contents" }}><strong>{time[part]}</strong><span>{UNIT_LABELS[part]}</span></span>
+      : <span key={part} style={{ display: "contents" }} aria-hidden="true"><span /><span /></span>)}</div>;
   }
 
   function renderAnswer(problem: TimeProblem, answerSheet: boolean) {
     return (
-      <div className={`time-calculation-value ${problem.parts.length === 2 ? "two" : "three"}`}>
-        {problem.parts.map((part) => <span key={part} style={{ display: "contents" }}>
+      <div className={`time-calculation-value ${problem.answerParts.length === 2 ? "two" : "three"}`}>
+        {problem.answerParts.map((part) => <span key={part} style={{ display: "contents" }}>
           {answerSheet
             ? <strong className="time-calculation-static">{problem.result[part]}</strong>
-            : <input className="time-calculation-input" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={timeAnswerMaxLength(part)} value={answers[`${problem.id}-${part}`] ?? ""} onChange={(event) => updateAnswer(problem.id, part, event.target.value)} aria-label={`${problem.id} ${UNIT_LABELS[part]} 답`} />}
+            : <input className="time-calculation-input" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={2} value={answers[`${problem.id}-${part}`] ?? ""} onChange={(event) => updateAnswer(problem.id, part, event.target.value)} aria-label={`${problem.id} ${UNIT_LABELS[part]} 답`} />}
           <span>{UNIT_LABELS[part]}</span>
         </span>)}
       </div>
@@ -160,7 +163,7 @@ export default function GradeThreeTimeTwoPage() {
     const graded = problem.id in results;
     const isCorrect = results[problem.id] === true;
     return (
-      <div className={`time-calculation-question parts-${problem.parts.length === 2 ? "two" : "three"}${graded ? isCorrect ? " is-correct" : " is-wrong" : ""}`} data-testid="grade-three-time-two-question" key={problem.id}>
+      <div className={`time-calculation-question parts-${problem.answerParts.length === 2 ? "two" : "three"}${graded ? isCorrect ? " is-correct" : " is-wrong" : ""}`} data-testid="grade-three-time-two-question" key={problem.id}>
         <span className="time-calculation-number">{index + 1}</span>
         <div className="time-calculation-line"><b aria-hidden="true" />{renderValue(problem, problem.left)}</div>
         <div className="time-calculation-line"><b>{problem.operator}</b>{renderValue(problem, problem.right)}</div>

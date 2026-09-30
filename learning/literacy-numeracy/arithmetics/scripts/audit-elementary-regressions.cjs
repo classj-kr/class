@@ -78,6 +78,7 @@ async function main() {
           const factor = ({ 시간: 3600, 분: 60, 초: 1 })[unit];
           const answer = Math.floor(total / factor);
           total %= factor;
+          if (unit !== '시간' && answer >= 60) throw new Error(`Missing carry field: ${label}`);
           return { label, answer: String(answer), maxLength: input.maxLength };
         });
       }));
@@ -91,16 +92,31 @@ async function main() {
       }
       await grade();
       assert.match(await score(), /^8\/8/);
-      const longMinutes = answers.find(answer => answer.label.includes('분 답') && Number(answer.answer) >= 60);
-      if (longMinutes) {
-        await page.getByRole('textbox', { name: longMinutes.label, exact: true }).fill(String(Number(longMinutes.answer) - 60));
+      const carriedHours = page.getByRole('textbox', { name: 'grade-three-time-two-ms-add-0 시간 답', exact: true });
+      const carriedMinutes = page.getByRole('textbox', { name: 'grade-three-time-two-ms-add-0 분 답', exact: true });
+      const expectedHours = await carriedHours.inputValue();
+      const expectedMinutes = await carriedMinutes.inputValue();
+      if (seed === null) {
+        assert.equal(expectedHours, '1');
+        assert.equal(expectedMinutes, '22');
+        assert.equal(await page.getByRole('textbox', { name: 'grade-three-time-two-ms-add-0 초 답', exact: true }).inputValue(), '54');
+        await carriedHours.fill('0');
+        await carriedMinutes.fill('82');
         await grade();
         assert.match(await score(), /^7\/8/);
+        await carriedHours.fill(expectedHours);
+        await carriedMinutes.fill(expectedMinutes);
+        await grade();
+        assert.match(await score(), /^8\/8/);
+        await page.screenshot({ path: 'tmp/time-carry-mobile.png', fullPage: true });
       }
+      await carriedHours.fill('');
+      await grade();
+      assert.match(await score(), /^7\/8/);
       await page.getByRole('button', { name: '다시 쓰기', exact: true }).click();
       assert.match(await score(), /^0\/8/);
     }
-    console.log('grade-3-time-2: independent time arithmetic, printed answers, three-digit input, wrong-answer grading and reset PASS');
+    console.log('grade-3-time-2: seconds/minutes carry, hour answer field, printed answers, uncarried-answer rejection and reset PASS');
   } finally {
     await browser.close();
   }
