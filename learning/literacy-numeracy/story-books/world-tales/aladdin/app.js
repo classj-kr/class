@@ -56,11 +56,11 @@ const CHAPTERS = [
                 "left": [
                     "알라딘은 두리번거리며 램프를 찾았습니다. 구석에 먼지 쌓인 낡은 램프 하나가 놓여 있었지요. 알라딘은 그것을 품에 넣었습니다.",
                     "돌아 나오는 길에 반짝이는 보석이 자꾸 눈에 들어왔지요. 알라딘은 참지 못하고 몇 개를 주머니에 슬쩍 넣었습니다.",
-                    "동굴 바닥에서 올려다보니 입구가 아득히 높았지요. \"삼촌, 손 좀 잡아 주세요!\""
+                    "돌계단을 다 올라왔는데도 입구까지는 손이 닿지 않을 만큼 높았지요. \"삼촌, 손 좀 잡아 주세요!\""
                 ],
                 "right": [
                     "\"램프부터 이리 내라!\" 아저씨가 손을 내밀며 재촉했습니다.",
-                    "\"올라가서 드릴게요. 먼저 좀 꺼내 주세요.\"",
+                    "\"올라가서 드릴게요. 먼저 좀 꺼내 주세요!\"",
                     "그러자 아저씨의 얼굴이 무섭게 일그러졌지요. 아저씨가 원한 것은 알라딘이 아니라 램프뿐이었거든요.",
                     "\"이 괘씸한 놈!\" 아저씨가 돌 뚜껑을 힘껏 밀어 구멍을 쿵 닫아 버렸습니다."
                 ]
@@ -75,12 +75,12 @@ const CHAPTERS = [
                 "art": "03-genie.webp",
                 "emoji": "💨",
                 "left": [
-                    "뚜껑이 닫히자 동굴 안은 캄캄해졌습니다. 알라딘은 목이 쉬도록 삼촌을 불렀지만 아무 대답도 없었지요. 그렇게 꼬박 이틀이 지났습니다.",
+                    "뚜껑이 닫히자 동굴 안은 캄캄해졌습니다. 알라딘은 목이 쉬도록 삼촌을 불렀지만 아무 대답도 없었지요. 그렇게 며칠이 지났는지도 알 수 없었습니다.",
                     "배는 고프고 무서워서 눈물이 났지요. 알라딘은 두 손을 싹싹 비비며 빌었습니다.",
                     "그러다 손가락에 낀 반지가 손바닥에 문질러졌지요. 그러자 반지가 번쩍 빛나더니 연기가 뭉게뭉게 피어올랐습니다."
                 ],
                 "right": [
-                    "연기 속에서 커다란 요정이 나타났지요. 반지 속에 살면서 주인의 말을 들어주는 지니였습니다. \"부르셨습니까, 주인님. 무엇이든 말씀하십시오.\"",
+                    "연기 속에서 커다란 요정이 나타났지요. 반지 속에 살면서 주인의 말을 들어주는 지니였습니다. \"부르셨습니까, 주인님? 무엇이든 말씀하십시오.\"",
                     "알라딘은 깜짝 놀랐지만 얼른 소리쳤습니다. \"저를 여기서 꺼내 집으로 보내 주세요!\"",
                     "눈을 질끈 감았다 뜨니 정말 집 앞이었지요. 어머니가 맨발로 달려 나와 알라딘을 끌어안았습니다. \"이 녀석아, 이틀이나 어딜 갔었니!\""
                 ]
@@ -612,7 +612,7 @@ const EN = {
                     left: [
                         "Aladdin looked about for the lamp. He found it in a corner and put it in his coat.",
                         "On the way back, he could not help it. He slipped a few jewels into his pockets.",
-                        "From the cave floor the mouth of the cave looked far above him. \"Uncle, give me your hand!\""
+                        "He climbed the steps, but the mouth of the cave was still too high to reach. \"Uncle, give me your hand!\""
                     ],
                     right: [
                         "\"Hand up the lamp first!\" said the man.",
@@ -632,7 +632,7 @@ const EN = {
                     emoji: '💍',
                     left: [
                         "It was pitch dark in the cave. Aladdin shouted for his uncle, but no one answered.",
-                        "He was shut up there for two days, hungry and frightened.",
+                        "He was shut up there in the dark, hungry and frightened, and could not tell how many days went by.",
                         "He rubbed his hands together hard as he prayed, and that rubbed the ring on his finger. Smoke came billowing up."
                     ],
                     right: [
@@ -939,7 +939,7 @@ const EN = {
         ],
         '03-genie.webp': [
             { word: 'pitch dark', meaning: '캄캄한', sentence: 'It was pitch dark in the cave.' },
-            { word: 'shut up', meaning: '갇힌', sentence: 'He was shut up there for two days.' },
+            { word: 'shut up', meaning: '갇힌', sentence: 'He was shut up there in the dark.' },
             { word: 'rub', meaning: '비비다, 문지르다', sentence: 'He rubbed his hands together hard as he prayed.' },
             { word: 'billow up', meaning: '뭉게뭉게 피어오르다', sentence: 'Smoke came billowing up.' },
             { word: 'genie', meaning: '지니, 요정', sentence: 'Out of it came the genie of the ring.' }
@@ -1050,13 +1050,13 @@ const WORDS_KO = {
     ],
     "02-cave-2.webp": [
         { w: "슬쩍", k: "남이 모르게 재빨리.", s: "알라딘은 참지 못하고 몇 개를 주머니에 슬쩍 넣었습니다." },
-        { w: "아득히", k: "몹시 멀게.", s: "동굴 바닥에서 올려다보니 입구가 아득히 높았지요." },
+        { w: "두리번거리다", k: "무엇을 찾느라 이리저리 자꾸 둘러보다.", s: "알라딘은 두리번거리며 램프를 찾았습니다." },
         { w: "재촉하다", k: "빨리 하라고 자꾸 조르다.", s: "아저씨가 손을 내밀며 재촉했습니다." },
         { w: "괘씸하다", k: "하는 짓이 못마땅하고 밉다.", s: "\"이 괘씸한 놈!\"" }
     ],
     "03-genie.webp": [
         { w: "목이 쉬다", k: "많이 소리쳐 목소리가 갈라지다.", s: "알라딘은 목이 쉬도록 삼촌을 불렀지만 아무 대답도 없었지요." },
-        { w: "꼬박", k: "하나도 빠짐없이 그대로.", s: "그렇게 꼬박 이틀이 지났습니다." },
+        { w: "캄캄하다", k: "아무것도 안 보일 만큼 아주 어둡다.", s: "뚜껑이 닫히자 동굴 안은 캄캄해졌습니다." },
         { w: "싹싹 빌다", k: "두 손을 비비며 제발 도와 달라고 빌다.", s: "알라딘은 두 손을 싹싹 비비며 빌었습니다." },
         { w: "끌어안다", k: "두 팔로 당겨서 안다.", s: "어머니가 맨발로 달려 나와 알라딘을 끌어안았습니다." },
         { w: "지니", k: "램프나 반지 속에 살면서 주인이 시키는 일을 들어주는 요정.", s: "반지 속에 살면서 주인의 말을 들어주는 지니였습니다." }
