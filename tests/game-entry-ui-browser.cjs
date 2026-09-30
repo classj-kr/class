@@ -17,7 +17,7 @@ const games=fs.readdirSync('learning/games',{withFileTypes:true}).filter(e=>e.is
   await page.evaluateOnNewDocument(()=>{if(!location.protocol.startsWith('http'))return;localStorage.setItem('classPlayerName','화면검증');let api;Object.defineProperty(window,'ClassroomMultiplayerLobby',{configurable:true,get:()=>api,set:value=>{api={...value,create:options=>{window.__uiLobby=value.create(options);const prepare=window.__uiLobby._prepareLayout;window.__uiLobby._prepareLayout=function(){const title=this.elements.lobbyScreen.querySelector('h1, .lobby-title')||(this.gameId==='avalon'?document.querySelector('.brand b'):null);if(title)window.__authoredTitle={text:title.textContent.trim(),font:getComputedStyle(title).fontFamily};return prepare.call(this);};return window.__uiLobby;}};}});});
   try{
    await page.setViewport({width:1366,height:768});await page.goto(`${origin}/learning/games/${game}/${file}`,{waitUntil:'networkidle2',timeout:60000});
-   if(game==='citychase')await page.evaluate(async()=>{const image=new Image();image.src='/learning/games/citychase/assets/lobby-city.jpg';await image.decode();});
+   if(game==='citychase')await page.evaluate(async()=>{const image=new Image();image.src='/learning/games/citychase/assets/lobby-city.webp';await image.decode();});
    const multiplayer=await page.evaluate(()=>!!window.__uiLobby);
    async function capture(stage){
     for(const [width,height] of [[1366,768],[768,1024],[390,844]]){

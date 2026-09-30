@@ -115,7 +115,7 @@ async function verify({ mode = 'all' } = {}) {
         await page.locator('.review-item summary').first().click();
         const first = answers[0];
         const item = set.items.find(row => row.id === first.id);
-        const review = await page.locator('.review-item').first().innerText();
+        const review = await page.locator('.review-item').first().textContent();
         assert.ok(review.includes(item.prompt));
         assert.ok(review.includes('내 답: ' + (first.unknown ? '모르겠어요' : item.choices[first.choice])));
         assert.ok(review.includes('정답: ' + item.choices[item.answer]));

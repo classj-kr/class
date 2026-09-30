@@ -121,6 +121,28 @@
   }
 
   /* ── 문항 렌더링 ───────────────────────────────────────── */
+  function renderItemText(target, text) {
+    target.replaceChildren();
+    let offset = 0;
+    for (const match of text.matchAll(/(?<![\w/])(\d+)\/(\d+)(?![\w/])/g)) {
+      target.append(document.createTextNode(text.slice(offset, match.index)));
+      const fraction = document.createElement("span");
+      fraction.className = "math-fraction";
+      fraction.setAttribute("role", "math");
+      fraction.setAttribute("aria-label", match[2] + "분의 " + match[1]);
+      [match[1], "/", match[2]].forEach((part, index) => {
+        const node = document.createElement("span");
+        node.className = ["fraction-top", "fraction-slash", "fraction-bottom"][index];
+        node.setAttribute("aria-hidden", "true");
+        node.textContent = part;
+        fraction.appendChild(node);
+      });
+      target.appendChild(fraction);
+      offset = match.index + match[0].length;
+    }
+    target.append(document.createTextNode(text.slice(offset)));
+  }
+
   function renderQuestion() {
     const itemIndex = currentItemIndex();
     const item = items[itemIndex];
@@ -129,7 +151,7 @@
     el("qIndex").textContent = String(state.index + 1);
     el("qTotal").textContent = String(items.length);
     el("qDomain").textContent = item.domain;
-    el("qPrompt").textContent = item.prompt;
+    renderItemText(el("qPrompt"), item.prompt);
 
     const answered = state.responses.filter(isAnswered).length;
     const percent = Math.round((answered / items.length) * 100);
@@ -147,7 +169,7 @@
       button.setAttribute("aria-checked", response.choice === originalIndex ? "true" : "false");
       button.innerHTML =
         '<span class="choice-num">' + (displayIndex + 1) + "</span><span></span>";
-      button.lastChild.textContent = item.choices[originalIndex];
+      renderItemText(button.lastChild, item.choices[originalIndex]);
       button.addEventListener("click", () => {
         recordTime();
         if (response.choice !== originalIndex) response.confidence = null;
@@ -600,15 +622,15 @@
       heading.textContent = (index + 1) + "번 · " + item.domain + " · " + (row.unknown ? "모르겠어요" : (row.correct ? "정답" : "오답") + " · 자신감 " + row.confidence + "%");
       const prompt = document.createElement("p");
       prompt.className = "review-prompt";
-      prompt.textContent = item.prompt;
+      renderItemText(prompt, item.prompt);
       const chosen = document.createElement("p");
-      chosen.textContent = "내 답: " + (row.unknown ? "모르겠어요" : item.choices[row.choice]);
+      renderItemText(chosen, "내 답: " + (row.unknown ? "모르겠어요" : item.choices[row.choice]));
       const answer = document.createElement("p");
       answer.className = "review-answer";
-      answer.textContent = "정답: " + item.choices[item.answer];
+      renderItemText(answer, "정답: " + item.choices[item.answer]);
       const explanation = document.createElement("p");
       explanation.className = "review-explanation";
-      explanation.textContent = item.explain;
+      renderItemText(explanation, item.explain);
       const reflection = document.createElement("p");
       reflection.className = "review-reflection";
       reflection.textContent = row.unknown
@@ -720,6 +742,10 @@
 body{margin:0;padding:24px;background:#12141c;color:var(--text-main);line-height:1.55;
 font-family:Pretendard,-apple-system,"Segoe UI",Roboto,sans-serif;word-break:keep-all}
 [hidden]{display:none!important}
+.math-fraction{display:inline-grid;grid-template-columns:1fr;vertical-align:middle;text-align:center;font-size:.9em;line-height:1.1;margin:0 .12em;position:relative;white-space:nowrap}
+.fraction-top{grid-row:1;padding:0 .18em .12em;border-bottom:1.5px solid currentColor}
+.fraction-bottom{grid-row:2;padding:.12em .18em 0}
+.fraction-slash{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .review-item{border:1px solid var(--panel-border);border-radius:12px;padding:16px;margin:12px 0}
 .review-item p{margin:10px 0}.review-prompt{white-space:pre-line;font-weight:600}
 .review-item summary{font-weight:700}.report-note{color:var(--text-muted);margin-top:12px}

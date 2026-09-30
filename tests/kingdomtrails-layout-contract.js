@@ -45,7 +45,7 @@ for (const fileName of musicFiles) {
   assert.ok(fs.existsSync(musicPath), `${fileName}: 카르카손 배경음악 파일이 있어야 합니다.`);
   assert.ok(fs.statSync(musicPath).size > 1000000, `${fileName}: 정상적인 OGG 음악 파일이어야 합니다.`);
 }
-const imagePath = path.join(gameDirectory, "assets", "images", "kingdom-countryside.png");
+const imagePath = path.join(gameDirectory, "assets", "images", "kingdom-countryside.webp");
 assert.ok(fs.existsSync(imagePath), "AI 배경 이미지가 프로젝트 폴더에 있어야 합니다.");
 assert.ok(fs.statSync(imagePath).size > 100000, "임시 도형이 아닌 실제 이미지 자산이어야 합니다.");
 
