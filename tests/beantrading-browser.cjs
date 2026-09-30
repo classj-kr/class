@@ -16,7 +16,7 @@ async function main() {
   const browser = await chromium.launch({ headless: true, channel: "msedge" });
   try {
     const practice = await browser.newPage({ viewport: { width: 1440, height: 1000 } }); await attach(practice);
-    await practice.goto(url); await practice.locator("#practiceBtn").click();
+    await practice.goto(url); await practice.locator("#practiceBtnMissing").click();
     await practice.locator("#gameScreen:not(.hidden)").waitFor();
     assert.equal(await practice.locator(".player").count(), 4);
     await practice.locator("[data-plant='0']").click();
@@ -66,12 +66,15 @@ async function main() {
     await host.screenshot({ path: path.join(output, "multiplayer-laptop.png"), fullPage: true });
     const handBottom = await host.locator("#handCards").evaluate(e => e.getBoundingClientRect().bottom);
     assert.ok(handBottom <= 768, `laptop hand controls must fit on screen, got ${handBottom}`);
+    await host.setViewportSize({ width: 820, height: 1180 });
+    await host.screenshot({ path: path.join(output, "multiplayer-ipad.png"), fullPage: true });
+    assert.ok(await host.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "iPad page must not overflow horizontally");
     await host.locator("#nextBtn").click();
     await players[1].locator(".field-plant:not(:disabled)").first().click();
     await players[1].locator("#myFields .field-plant img").first().waitFor();
     assert.equal(await players[1].locator("#myFields .field-plant img").count(), 1);
     assert.deepEqual(errors, []);
-    console.log("beantrading-browser: practice, rules, 390px responsive layout, 5 browser players, gifting and planting OK");
+    console.log("beantrading-browser: practice, rules, 390px and iPad layouts, 5 browser players, gifting and planting OK");
     console.log(`Screenshots: ${output}`);
   } finally { await browser.close(); }
 }
