@@ -102,7 +102,7 @@ assert.match(appSource, /button\.classList\.add\("correct"\);[\s\S]*revealFocus\
 assert.doesNotMatch(appSource, /english\.textContent = "";/, "Sound-catcher words must not be hidden until touch.");
 assert.match(appSource, /shuffle\(round\.choices\)/, "Sound-catcher choices should change position between attempts.");
 assert.match(appSource, /const cleanSpriteUrl = \(picture\)/, "Atlas cards need per-cell cleanup so neighboring picture fragments cannot leak into a card.");
-assert.match(appSource, /touchesEdge && tail < size \* size \* 0\.12/, "Only small edge-connected sprite fragments should be removed.");
+assert.doesNotMatch(appSource, /touchesEdge/, "Picture details must not be deleted just because they touch an assumed grid edge.");
 assert.doesNotMatch(appSource, /hasSound\(answer, sound\)/, "Lesson answers must come from the curated lesson list, not a naive substring match.");
 assert.match(appSource, /split\("_"\)\.filter\(Boolean\)/, "Split VCe graphemes must reveal the vowel and final e separately.");
 

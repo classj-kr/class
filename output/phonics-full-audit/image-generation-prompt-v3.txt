@@ -1,0 +1,13 @@
+Tool: built-in imagegen
+Output: learning/literacy-numeracy/phonics/assets/images/phonics-reviewed-scenes-v3.webp
+References: phonics-reviewed-scenes-v2.webp (edit target); alphabet-atlas-02.webp (paper and pencil reference).
+
+Use case: style-transfer. Redraw the FIRST input image, a 12-scene educational sprite atlas, in a MUCH flatter, simpler hand-drawn primary-school textbook style. The second input is a supporting reference for warm paper and colored-pencil line quality only; simplify more than that reference. This is a corrective style edit: eliminate the polished AI mascot appearance.
+
+Keep EXACTLY the same 3-column by 4-row arrangement and the same twelve meanings and scene order. Whole image portrait 3:4. Every scene must fit entirely within its equal square cell with 10% blank margins on ALL sides and clear blank gutters. Warm near-white paper, no grid lines, no labels or words.
+Row 1: full glass filled to brim; red balloon bursting with broken fragments; child reading by a faint lamp in a dim room.
+Row 2: finger pointing precisely to the chin under the lower lip (show the entire small profile head, not a chopped face); sleeping child with mouth open and simple curved snoring sound marks; three children of clearly different heights standing on the SAME baseline, arrow pointing to only the tallest.
+Row 3: broken umbrella with holes failing to keep rain off its user; neutral referee in white between red and blue teams, equally open hands; two children disagreeing, one points left and one right with opposing simple arrow thought bubbles.
+Row 4: child struggling to lift a small box still resting on the floor; child nodding yes with curved nod motion mark and thumbs up; child mopping a floor.
+
+Style MUST be visibly two-dimensional: loose thin brown pencil outlines with slight natural irregularity, sparse dry colored-pencil strokes, transparent light watercolor washes, large quiet unpainted areas. Modest normal child proportions, small dot eyes, simple nose marks, simple mouths, a few strokes for hair. Muted blue, ochre, green, brick-red. Minimal shading; one very light flat shadow at most. No glossy highlights, no airbrushed gradient skin, no sculpted cheeks, no oversized sparkling anime eyes, no thick textured paint, no dense hatch shading, no plastic or clay surfaces, no 3D rendering, no cinematic lighting, no chibi mascots. Dim scene may use a simple flat gray-blue background patch with a tiny ochre lamp glow, never realistic atmospheric rendering. Keep furniture and clothes minimal and flat. Prioritize readable actions and gentle unpolished textbook illustration over decorative detail.
