@@ -120,7 +120,9 @@ export default function GradeTwoAdditionSubtractionTwoPage() {
     [questionSet],
   );
   const completed = Object.values(answers).filter(Boolean).length;
-  const correct = Object.values(results).filter(Boolean).length;
+  const correct = questionSet.problems.filter((problem) =>
+    problem.hidden.every((field) => results[answerId(problem, field)] === true),
+  ).length;
 
   function updateAnswer(id: string, value: string) {
     setAnswers((current) => ({ ...current, [id]: value.replace(/[^0-9]/g, "").slice(0, 1) }));
@@ -222,7 +224,7 @@ export default function GradeTwoAdditionSubtractionTwoPage() {
     <main className="counting-page digit-page">
       <div className="counting-toolbar">
         <a className="counting-back" href="/arithmetic" aria-label="연산 목록으로 돌아가기">←</a>
-        <div className="counting-progress"><strong>{correct}<small>/24 정답</small></strong></div>
+        <div className="counting-progress"><strong>{correct}<small>/12 정답</small></strong></div>
         <div className="toolbar">
           <button className="button secondary" type="button" onClick={newSet}>새 문제</button>
           <button className="button ghost" type="button" onClick={resetAnswers}>다시 쓰기</button>

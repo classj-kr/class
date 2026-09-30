@@ -9,7 +9,7 @@ type Equation = {
   operator: "+" | "−";
   right: number;
   result: number;
-  hidden: Field[];
+  hidden: [Field];
 };
 type ProblemSet = {
   seed: number;
@@ -51,7 +51,7 @@ function createSingleDigitProblemSet(seed: number): ProblemSet {
   const totals = shuffle([9, 9, 8, 8, 7, 7, 6, 5, 4, 3], next);
   const differences = shuffle([7, 6, 5, 5, 4, 4, 3, 2, 1, 0], next);
 
-  const additions = totals.map((result, index) => {
+  const additions: Equation[] = totals.map((result, index) => {
     const right = result === 3 ? integer(next, 0, 3) : integer(next, 2, result - 2);
     return {
       id: `addition-${index}`,
@@ -63,7 +63,7 @@ function createSingleDigitProblemSet(seed: number): ProblemSet {
     };
   });
 
-  const subtractions = differences.map((result, index) => {
+  const subtractions: Equation[] = differences.map((result, index) => {
     const left = integer(next, result + 2, 9);
     return {
       id: `subtraction-${index}`,
@@ -76,12 +76,12 @@ function createSingleDigitProblemSet(seed: number): ProblemSet {
   });
 
   const mixed: Equation[] = [];
-  function subtraction(index: number, minimum: number, hidden: Field[], includeEndpoints = false) {
+  function subtraction(index: number, minimum: number, hidden: [Field], includeEndpoints = false) {
     const left = integer(next, minimum, 9);
     const right = integer(next, includeEndpoints ? 0 : 1, includeEndpoints ? left : left - 1);
     mixed.push({ id: `mixed-${index}`, left, operator: "−", right, result: left - right, hidden });
   }
-  function addition(index: number, range: "inside" | "allow-zero" | "allow-result", hidden: Field[]) {
+  function addition(index: number, range: "inside" | "allow-zero" | "allow-result", hidden: [Field]) {
     const result = integer(next, 4, 9);
     const left = integer(next, range === "allow-zero" ? 0 : 1, range === "allow-result" ? result : result - 1);
     mixed.push({ id: `mixed-${index}`, left, operator: "+", right: result - left, result, hidden });
@@ -95,8 +95,8 @@ function createSingleDigitProblemSet(seed: number): ProblemSet {
   subtraction(5, 4, ["right"], true);
   addition(6, "allow-zero", ["left"]);
   subtraction(7, 2, ["right"]);
-  subtraction(8, 4, []);
-  addition(9, "allow-result", ["left", "right"]);
+  subtraction(8, 4, ["left"]);
+  addition(9, "allow-result", ["right"]);
 
   return { seed, additions, subtractions, mixed };
 }
@@ -107,7 +107,7 @@ function createTwoDigitProblemSet(seed: number): ProblemSet {
   const boundedByDigits = (value: number) =>
     integer(next, 0, Math.floor(value / 10)) * 10 + integer(next, 0, value % 10);
 
-  const additions = Array.from({ length: 10 }, (_, index) => {
+  const additions: Equation[] = Array.from({ length: 10 }, (_, index) => {
     const result = twoDigit();
     const right = boundedByDigits(result);
     return {
@@ -120,7 +120,7 @@ function createTwoDigitProblemSet(seed: number): ProblemSet {
     };
   });
 
-  const subtractions = Array.from({ length: 10 }, (_, index) => {
+  const subtractions: Equation[] = Array.from({ length: 10 }, (_, index) => {
     const left = twoDigit();
     const right = boundedByDigits(left);
     return {
@@ -146,7 +146,7 @@ function createTwoDigitProblemSet(seed: number): ProblemSet {
     ["+", "right"],
   ];
 
-  const mixed = patterns.map(([operator, hidden], index) => {
+  const mixed: Equation[] = patterns.map(([operator, hidden], index) => {
     if (operator === "−") {
       const left = twoDigit();
       const right = boundedByDigits(left);

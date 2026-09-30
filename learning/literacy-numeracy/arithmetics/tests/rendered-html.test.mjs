@@ -870,6 +870,23 @@ test("renders the first addition and subtraction worksheet in three columns", as
   assert.equal((html.match(/class="addsub-input /g) ?? []).length, 30);
 });
 
+test("renders exactly one blank per addition and subtraction problem", async () => {
+  for (const route of ["add-subtract-1", "add-subtract-2", "add-subtract-3", "add-subtract-4", "grade-2-add-subtract-3"]) {
+    const response = await render(`/arithmetic/${route}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const rows = [...html.matchAll(/<div class="addsub-equation-row">([\s\S]*?)<\/div>/g)];
+    assert.equal(rows.length, 60, `${route}: 30 problems and 30 answers`);
+    rows.forEach(([, row], index) => {
+      assert.equal(
+        (row.match(/<input\b/g) ?? []).length,
+        index < 30 ? 1 : 0,
+        `${route}: ${index < 30 ? "problem" : "answer"} ${index % 30 + 1}`,
+      );
+    });
+  }
+});
+
 test("renders the second addition and subtraction worksheet with two-digit entries", async () => {
   const response = await render("/arithmetic/add-subtract-2");
   assert.equal(response.status, 200);
@@ -1000,6 +1017,7 @@ test("renders the second grade-two worksheet with two missing digits per problem
   assert.match(html, /세로셈 빈칸/);
   assert.match(html, /aria-label="A4 2학년 세로셈 빈칸 문제지"/);
   assert.match(html, /aria-label="A4 2학년 세로셈 빈칸 전체 답지"/);
+  assert.match(html, /<small>\/12 정답<\/small>/);
   assert.doesNotMatch(html, /덧셈뺄셈②/);
   assert.equal((html.match(/data-testid="digit-equation"/g) ?? []).length, 24);
   assert.equal((html.match(/class="digit-input"/g) ?? []).length, 24);
@@ -1275,15 +1293,14 @@ test("renders the second grade-three time calculation worksheet", async () => {
   assert.equal((html.match(/data-testid="grade-three-time-two-question"/g) ?? []).length, 16);
   assert.equal((html.match(/class="time-calculation-input"/g) ?? []).length, 18);
   assert.equal((html.match(/class="time-calculation-static"/g) ?? []).length, 18);
-  assert.equal((html.match(/maxLength="2"/g) ?? []).length, 18);
+  assert.equal((html.match(/maxLength="2"/g) ?? []).length, 10);
+  assert.equal((html.match(/maxLength="3"/g) ?? []).length, 8);
   assert.match(source, /hoursMinutesAddition/);
   assert.match(source, /hoursMinutesSubtraction/);
   assert.match(source, /minutesSecondsAddition/);
   assert.match(source, /minutesSecondsSubtraction/);
   assert.match(source, /mixedSubtractions/);
-  assert.match(source, /Math\.floor\(total \/ 3600\)/);
-  assert.match(source, /Math\.floor\(\(total % 3600\) \/ 60\)/);
-  assert.match(source, /total % 60/);
+  assert.match(html, /class="time-calculation-static">82<\/strong>/);
   assert.match(source, /<small>\/8 정답<\/small>/);
   assert.match(css, /\.time-calculation-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,[\s\S]*?grid-template-rows:\s*repeat\(4,/);
   assert.match(css, /\.time-calculation-question\.is-correct[\s\S]*?background:\s*var\(--green-soft\)/);
