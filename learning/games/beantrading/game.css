@@ -37,9 +37,12 @@ h3 { font-size: 16px; }
 .muted, small { color: var(--muted); font-size: 14px; }
 .section-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; min-width: 0; }
 .section-head > span { font-size: 14px; color: var(--muted); }
-#lobbyScreen { max-width: 900px; margin: 24px auto; }
+#lobbyScreen { max-width: 900px; margin: 0 auto 24px; }
 #lobbyScreen .panel { margin-bottom: 12px; }
-#lobbyScreen.mp-ui-lobby { display: block; }
+#lobbyScreen.mp-ui-lobby { display: block; margin-top: 0 !important; }
+@media (max-width: 640px) {
+  #lobbyScreen.mp-ui-lobby .mp-ui-title { padding-left: 40px; }
+}
 .lobbyTitle { font-size: 30px; letter-spacing: 1px; }
 .mp-lobby-tabs { margin-top: 16px; }
 .room-code { display: block; font-size: 42px; letter-spacing: 8px; margin: 12px 0; }
