@@ -1,0 +1,120 @@
+{
+  "itemSetVersion": "metacog-g9-v2",
+  "completedAt": "2026-09-30T05:15:04.775Z",
+  "responses": [
+    {
+      "id": "G9-L1",
+      "choice": -1,
+      "confidence": null,
+      "ms": 70
+    },
+    {
+      "id": "G9-L2",
+      "choice": -1,
+      "confidence": null,
+      "ms": 229
+    },
+    {
+      "id": "G9-L3",
+      "choice": -1,
+      "confidence": null,
+      "ms": 70
+    },
+    {
+      "id": "G9-L4",
+      "choice": 2,
+      "confidence": 100,
+      "ms": 109
+    },
+    {
+      "id": "G9-N1",
+      "choice": 1,
+      "confidence": 100,
+      "ms": 107
+    },
+    {
+      "id": "G9-N2",
+      "choice": 1,
+      "confidence": 100,
+      "ms": 107
+    },
+    {
+      "id": "G9-N3",
+      "choice": -1,
+      "confidence": null,
+      "ms": 72
+    },
+    {
+      "id": "G9-N4",
+      "choice": -1,
+      "confidence": null,
+      "ms": 71
+    },
+    {
+      "id": "G9-S1",
+      "choice": 1,
+      "confidence": 100,
+      "ms": 105
+    },
+    {
+      "id": "G9-S2",
+      "choice": 1,
+      "confidence": 100,
+      "ms": 109
+    },
+    {
+      "id": "G9-S3",
+      "choice": 2,
+      "confidence": 100,
+      "ms": 106
+    },
+    {
+      "id": "G9-S4",
+      "choice": -1,
+      "confidence": null,
+      "ms": 70
+    },
+    {
+      "id": "G9-R1",
+      "choice": 0,
+      "confidence": 100,
+      "ms": 108
+    },
+    {
+      "id": "G9-R2",
+      "choice": 2,
+      "confidence": 100,
+      "ms": 194
+    },
+    {
+      "id": "G9-R3",
+      "choice": 3,
+      "confidence": 100,
+      "ms": 106
+    },
+    {
+      "id": "G9-R4",
+      "choice": 0,
+      "confidence": 100,
+      "ms": 340
+    }
+  ],
+  "summary": {
+    "n": 16,
+    "accuracy": 0.313,
+    "confidence": 1,
+    "unknownCount": 6,
+    "answeredCount": 10,
+    "wrongCount": 5,
+    "answeredAccuracy": 0.5,
+    "bias": 0.5,
+    "discrimination": 0,
+    "calibrationError": 0.5,
+    "brier": 0.5,
+    "highConfErrorCount": 5,
+    "certainErrorCount": 5,
+    "lowConfHitCount": 0,
+    "trapPenalty": -0.5,
+    "profileKey": "reflection-v1"
+  }
+}

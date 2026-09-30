@@ -8,6 +8,7 @@
   const escape = value => String(value).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   let lobby, state, selected = new Set(), want = [], actionPending = false, actionTimer, toastTimer;
   let practice = null, practiceStage = "", stageKey = "", clockOffset = 0, harvestField = 0;
+  let composerOpen = false, pocket = "hand", detailKind = null;
   const botProposed = new Set();
   const savedName = String(localStorage.getItem("classPlayerName") || "").trim();
   const myId = () => practice ? "practice-me" : lobby?.snapshot().myId;
@@ -23,11 +24,14 @@
   }
   function cardHtml(card, { selectable = false, first = false } = {}) {
     const bean = beans[card.kind];
-    return `<button type="button" class="bean-card${selected.has(card.id) ? " selected" : ""}${first ? " first" : ""}" style="--bean-color:${bean.color}" data-card="${escape(card.id)}" ${selectable ? "" : "disabled"} aria-pressed="${selected.has(card.id)}" aria-label="${bean.name}${first ? ", 먼저 심을 카드" : ""}${selected.has(card.id) ? ", 선택됨" : ""}"><img src="${art(bean.art)}" alt="" draggable="false"><strong>${bean.name}</strong><span class="mini-prices">${bean.prices.map((n, i) => `<span>${n}장<b>${i + 1}금</b></span>`).join("")}</span></button>`;
+    const field = me()?.fields.filter(f => f.kind === card.kind).sort((a, b) => b.count - a.count)[0];
+    const count = field?.count || 0, value = field?.value || 0, next = bean.prices[value];
+    const summary = field ? `내 밭 ${count}장` : "새 밭 기준";
+    return `<article class="bean-card${selected.has(card.id) ? " selected" : ""}${first ? " first" : ""}" style="--bean-color:${bean.color}"><button type="button" class="card-pick" ${selectable ? `data-card="${escape(card.id)}" aria-pressed="${selected.has(card.id)}"` : `data-kind="${bean.id}"`} aria-label="${bean.name}${selectable ? ", 선택" : ", 수확표 보기"}${first ? ", 먼저 심을 카드" : ""}"><img src="${art(bean.art)}" alt="" draggable="false"><strong>${bean.name}</strong><span class="card-value"><span>${summary}</span><b>${value}금화</b></span><span class="next-reward">${next ? `${next - count}장 더 → ${value + 1}금화` : "최대 보상 도달"}</span></button><button class="card-info" type="button" data-kind="${bean.id}" aria-label="${bean.name} 전체 수확표"><span aria-hidden="true">i</span></button></article>`;
   }
   function renderPlayers() {
     $("playerStrip").style.setProperty("--players", state.players.length);
-    $("playerStrip").innerHTML = state.players.map(p => `<article class="player${p.id === state.turnPlayerId && state.phase === "playing" ? " active" : ""}"><div class="player-top"><strong>${escape(p.name)}${p.id === myId() ? " · 나" : ""}</strong><span class="coins">${coin(p.coins)}</span></div><div class="player-fields">${p.fields.map(f => `<div class="mini-field">${f.kind ? `<img src="${art(beans[f.kind].art)}" alt=""><span>${beans[f.kind].name} ${f.count}<small>수확 ${f.value}금화</small></span>` : "빈 밭"}</div>`).join("")}</div><div class="player-meta">손패 ${p.handCount}장${p.pendingCount ? ` · 심을 콩 ${p.pendingCount}장` : ""}</div></article>`).join("");
+    $("playerStrip").innerHTML = state.players.map(p => `<article class="player${p.id === state.turnPlayerId && state.phase === "playing" ? " active" : ""}"><div class="player-top"><strong>${escape(p.name)}${p.id === myId() ? " · 나" : ""}</strong><span class="player-meta" title="손패 ${p.handCount}장${p.pendingCount ? ` · 심을 콩 ${p.pendingCount}장` : ""}">손 ${p.handCount}</span><span class="coins">${coin(p.coins)}</span></div><div class="player-fields">${p.fields.map(f => `<div class="mini-field">${f.kind ? `<span>${beans[f.kind].name} ${f.count}장</span><small>수확 ${f.value}금화</small>` : "빈 밭"}</div>`).join("")}</div></article>`).join("");
   }
   function plantingCard() {
     if (state.stage === "plant" && isTurn() && state.planted < 2) return state.hand[0];
@@ -40,7 +44,7 @@
     $("myFields").innerHTML = me().fields.map((f, index) => {
       const canPlant = !!card && (!f.kind || f.kind === card.kind);
       const bean = beans[f.kind], next = bean?.prices[f.value];
-      return `<div class="field"><button class="field-plant" data-plant="${index}" ${canPlant ? "" : "disabled"} aria-label="${index + 1}번 밭${canPlant ? `에 ${beans[card.kind].name} 심기` : ""}">${bean ? `<img src="${art(bean.art)}" alt=""><strong>${bean.name} ${f.count}장</strong><small>${next ? `${next - f.count}장 더 모으면 ${f.value + 1}금화` : "최대 4금화"}</small>` : `<strong>빈 밭 ${index + 1}</strong><small>어떤 콩이든 OK</small>`}${canPlant ? `<span class="field-action">${beans[card.kind].name} 심기</span>` : ""}</button><button class="field-harvest" data-harvest="${index}" ${f.count ? "" : "disabled"}>${f.count ? `수확 · ${f.value}금화` : "수확할 콩 없음"}</button></div>`;
+      return `<div class="field"><button class="field-plant" data-plant="${index}" ${canPlant ? "" : "disabled"} aria-label="${index + 1}번 밭${canPlant ? `에 ${beans[card.kind].name} 심기` : ""}">${bean ? `<img src="${art(bean.art)}" alt=""><strong>${bean.name} ${f.count}장</strong><small>${next ? `${next - f.count}장 더 → ${f.value + 1}금화` : "최대 4금화"}</small>` : `<strong>빈 밭 ${index + 1}</strong><small>어떤 콩이든 OK</small>`}${canPlant ? `<span class="field-action">${beans[card.kind].name} 심기</span>` : ""}</button><button class="field-harvest" data-harvest="${index}" ${f.count ? "" : "disabled"}>${f.count ? `수확 · ${f.value}금화` : "빈 밭"}</button></div>`;
     }).join("");
   }
   function renderCards() {
@@ -49,8 +53,19 @@
     $("handCards").innerHTML = state.hand.length ? state.hand.map((c, i) => cardHtml(c, { selectable: trading, first: i === 0 })).join("") : '<p class="empty-note">손패가 비었습니다. 차례를 마치면 3장을 받습니다.</p>';
     $("marketCards").innerHTML = state.market.length ? state.market.map(c => cardHtml(c, { selectable: trading && isTurn() })).join("") : `<p class="empty-note">${state.stage === "plant" ? "앞의 콩을 심으면 2장이 공개됩니다." : "공개 카드가 모두 이동했습니다."}</p>`;
     $("pendingCards").innerHTML = state.pending.length ? state.pending.map(c => cardHtml(c, { selectable: state.stage === "settle" })).join("") : '<p class="empty-note">아직 받은 콩이 없어요.</p>';
+    $("pendingCount").textContent = `${state.pending.length}장`;
+    renderPocket();
     $("deckLabel").textContent = `더미 ${state.deckCount}장 · 수확 ${state.discardCount}장`;
-    $("marketHint").textContent = trading ? (isTurn() ? "공개 카드와 내 손패를 눌러 거래할 콩을 선택하세요." : `${playerName(state.turnPlayerId)}님과 거래하세요. 내 손패에서 줄 콩을 고를 수 있어요.`) : "남은 공개 카드는 현재 차례인 사람이 심습니다.";
+    $("marketHint").textContent = trading ? (isTurn() ? "공개 카드·손패를 눌러 거래할 콩 선택" : `${playerName(state.turnPlayerId)}님과 거래할 수 있어요.`) : "남은 공개 카드는 현재 차례인 사람이 심어요.";
+  }
+  function renderPocket() {
+    $("handCards").classList.toggle("hidden", pocket !== "hand");
+    $("pendingCards").classList.toggle("hidden", pocket !== "pending");
+    $("handTab").setAttribute("aria-selected", String(pocket === "hand"));
+    $("pendingTab").setAttribute("aria-selected", String(pocket === "pending"));
+    $("handTab").tabIndex = pocket === "hand" ? 0 : -1;
+    $("pendingTab").tabIndex = pocket === "pending" ? 0 : -1;
+    $("pocketHint").textContent = pocket === "pending" ? (state.stage === "settle" ? "콩 선택 → 내 밭에 심기" : "거래 종료 후 심기 · 재거래 불가") : "← 앞에서부터 심기";
   }
   function renderComposer() {
     const previousTarget = $("tradeTarget").value;
@@ -58,17 +73,23 @@
     $("tradeTarget").innerHTML = targets.map(p => `<option value="${escape(p.id)}">${escape(p.name)}</option>`).join("");
     if (targets.some(p => p.id === previousTarget)) $("tradeTarget").value = previousTarget;
     const pool = [...state.hand, ...(isTurn() ? state.market : [])];
-    $("giveLabel").textContent = kindsText(pool.filter(c => selected.has(c.id)).map(c => c.kind));
-    $("wantChips").innerHTML = want.map((kind, i) => `<button data-remove-want="${i}" title="선택 취소">${beans[kind].name} ×</button>`).join("");
+    $("giveLabel").textContent = selected.size ? kindsText(pool.filter(c => selected.has(c.id)).map(c => c.kind)) : "손패·공개 카드를 선택하세요";
+    $("wantChips").innerHTML = want.length ? want.map((kind, i) => `<button data-remove-want="${i}" aria-label="${beans[kind].name} 받기 취소">${beans[kind].name} ×</button>`).join("") : '<span class="muted">받을 콩을 추가하지 않으면 기부</span>';
     $("offerBtn").disabled = state.stage !== "trade" || !selected.size && !want.length || actionPending;
     $("addWant").disabled = want.length >= 3;
-    $("tradeComposer").classList.toggle("unavailable", state.stage !== "trade");
-    $("tradeCount").textContent = state.stage === "trade" ? "서로 수락하면 성사" : "거래 시간에 열립니다";
+    const open = composerOpen && state.stage === "trade";
+    $("tradeComposer").classList.toggle("hidden", !open);
+    $("offers").classList.toggle("hidden", open);
+    $("toggleComposer").setAttribute("aria-expanded", String(open));
+    $("toggleComposer").disabled = state.stage !== "trade";
+    $("toggleComposer").textContent = open ? "제안 목록 보기" : "제안 만들기";
+    $("tradeCount").textContent = state.offers.filter(o => o.to === myId()).length;
   }
   function renderOffers() {
-    $("offers").innerHTML = state.offers.length ? state.offers.slice().reverse().map(o => {
+    const offers = state.offers.slice().reverse().sort((a, b) => Number(b.to === myId()) - Number(a.to === myId()));
+    $("offers").innerHTML = offers.length ? offers.map(o => {
       const incoming = o.to === myId();
-      return `<article class="offer"><div class="offer-title">${incoming ? `${escape(playerName(o.from))} → 나` : `나 → ${escape(playerName(o.to))}`}</div><p>${incoming ? "내가 받기" : "내가 주기"}: <b>${kindsText(o.give.map(c => c.kind))}</b><br>${incoming ? "내가 주기" : "내가 받기"}: <b>${kindsText(o.want)}</b></p><div class="row">${incoming ? `<button class="primary small" data-accept="${o.id}">이 조건으로 수락</button>` : '<span class="muted">응답 기다리는 중</span>'}<button class="ghost small" data-cancel="${o.id}">${incoming ? "거절" : "취소"}</button></div></article>`;
+      return `<article class="offer${incoming ? " incoming" : ""}"><div class="offer-title">${incoming ? `${escape(playerName(o.from))} → 나` : `나 → ${escape(playerName(o.to))}`}</div><p><span>${incoming ? "내가 받기" : "내가 주기"}</span><b>${kindsText(o.give.map(c => c.kind))}</b></p><p><span>${incoming ? "내가 주기" : "내가 받기"}</span><b>${kindsText(o.want)}</b></p><div class="row">${incoming ? `<button class="primary" data-accept="${o.id}">수락</button>` : '<span class="muted">응답 기다리는 중</span>'}<button class="ghost" data-cancel="${o.id}">${incoming ? "거절" : "취소"}</button></div></article>`;
     }).join("") : `<p class="empty-note">${state.stage === "trade" ? "콩을 선택하고 첫 제안을 보내보세요." : "거래로 받은 콩은 ‘받은 콩’에 모입니다."}</p>`;
   }
   function renderTurn() {
@@ -95,6 +116,7 @@
     $("newGameBtn").classList.toggle("hidden", !isHost()); $("returnLobbyBtn").classList.toggle("hidden", !isHost());
   }
   function installState(nextState) {
+    const newOffer = nextState.offers.find(o => o.to === myId() && !state?.offers.some(old => old.id === o.id));
     state = nextState; actionPending = false; clearTimeout(actionTimer);
     clockOffset = state.serverNow - Date.now();
     if (state.phase === "lobby") {
@@ -103,7 +125,7 @@
       $("lobbyScreen").classList.remove("hidden"); return;
     }
     const key = `${state.turnNumber}:${state.stage}`;
-    if (key !== stageKey) { selected.clear(); want = []; stageKey = key; $("harvestDialog").close(); }
+    if (key !== stageKey) { selected.clear(); want = []; composerOpen = false; pocket = state.stage === "settle" && state.pending.length ? "pending" : "hand"; stageKey = key; $("harvestDialog").close(); $("beanDialog").close(); }
     const pool = [...state.hand, ...state.market, ...state.pending];
     selected = new Set([...selected].filter(id => pool.some(c => c.id === id)));
     $("lobbyScreen").classList.add("hidden"); $("missingScreen").classList.add("hidden"); $("gameScreen").classList.remove("hidden");
@@ -114,6 +136,8 @@
     renderPlayers();
     if (state.phase === "ended") { renderResult(); return; }
     renderTurn(); renderCards(); renderFields(); renderComposer(); renderOffers();
+    if ($("beanDialog").open) renderBeanDetail();
+    if (newOffer && composerOpen) toast(`${playerName(newOffer.from)}님의 새 제안 · ‘제안 목록 보기’에서 확인하세요.`);
     $("log").innerHTML = state.log.map(line => `<li>${escape(line)}</li>`).join("");
   }
   function send(action, data = {}) {
@@ -136,6 +160,17 @@
     renderCards(); renderFields(); renderComposer();
   }
   function openRules() { if (!$("rulesDialog").open) $("rulesDialog").showModal(); }
+  function renderBeanDetail() {
+    const bean = beans[detailKind]; if (!bean) return;
+    const fields = me()?.fields.filter(f => f.kind === bean.id) || [];
+    $("beanDialogTitle").textContent = `${bean.name} 수확표`;
+    $("beanDetail").innerHTML = `<div class="bean-detail-intro"><img src="${art(bean.art)}" alt="${bean.name}"><p>같은 밭에 모은 장수로 계산해요.<br>${fields.length ? fields.map(f => `내 밭 ${f.count}장 → 지금 수확 ${f.value}금화`).join("<br>") : "내 밭에 아직 없는 콩이에요."}</p></div><table class="bean-prices"><thead><tr><th>필요한 콩</th><th>받는 금화</th></tr></thead><tbody>${bean.prices.map((n, i) => `<tr><td>${n}장 이상</td><td><strong>${i + 1}금화</strong></td></tr>`).join("")}</tbody></table><p class="muted">카드 요약은 내 밭 중 이 콩이 가장 많이 심긴 밭 기준입니다. 손패와 받은 콩은 심기 전까지 수확 금액에 포함하지 않아요.</p>`;
+  }
+  function openBean(kind) {
+    if (!beans[kind]) return;
+    detailKind = kind; renderBeanDetail();
+    if (!$("beanDialog").open) $("beanDialog").showModal();
+  }
   function startPractice() {
     lobby?.destroy(); practice = B.createGame("practice-me", savedName || "나");
     ["흥정왕", "콩박사", "농부콩"].forEach((name, i) => B.addPlayer(practice, `bot-${i}`, name));
@@ -151,7 +186,7 @@
   }
   function tickPractice() {
     if (!practice || practice.phase !== "playing") return;
-    if ($("rulesDialog").open) { practice.deadline += 1000; if (state) state.deadline = practice.deadline; return; }
+    if ($("rulesDialog").open || $("beanDialog").open) { practice.deadline += 1000; if (state) state.deadline = practice.deadline; return; }
     const revision = practice.revision;
     if (Date.now() >= practice.deadline) B.autoPlay(practice);
     else {
@@ -183,6 +218,8 @@
   function init() {
     $("wantKind").innerHTML = B.BEANS.map(b => `<option value="${b.id}">${b.name}</option>`).join("");
     $("priceTable").innerHTML = B.BEANS.map(b => `<div class="price-bean"><img src="${art(b.art)}" alt=""><strong>${b.name} · 총 ${b.count}장</strong><p>${b.prices.map((n, i) => `${n}장 → ${i + 1}금화`).join("<br>")}</p></div>`).join("");
+    $("practiceBtn")?.addEventListener("click", startPractice);
+    $("practiceBtnMissing")?.addEventListener("click", startPractice);
     lobby = ClassroomMultiplayerLobby.create({
       gameId: "beantrading", initialMode: "guest", getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
       allowedPlayerCounts: [4, 5], minPlayers: 4, maxPlayers: 5,
@@ -200,11 +237,15 @@
       onPlayerLeftDuringGame: () => toast("플레이어가 나가 대기실로 돌아갑니다."),
       onAbort: ({ title, message }) => { if (practice) return; $("abortTitle").textContent = title; $("abortMessage").textContent = message; if (!$("abortDialog").open) $("abortDialog").showModal(); }
     }).mount();
-    $("practiceBtn").addEventListener("click", startPractice);
-    $("practiceBtnMissing").addEventListener("click", startPractice);
     $("rulesBtnGame").addEventListener("click", () => { if (practice) openRules(); });
     $("leaveBtnGame").addEventListener("click", () => { if (practice) location.reload(); });
     $("closeRules").addEventListener("click", () => $("rulesDialog").close());
+    $("closeBean").addEventListener("click", () => $("beanDialog").close());
+    $("toggleComposer").addEventListener("click", () => { composerOpen = !composerOpen; renderComposer(); });
+    $("handTab").addEventListener("click", () => { pocket = "hand"; renderPocket(); });
+    $("pendingTab").addEventListener("click", () => { pocket = "pending"; renderPocket(); });
+    $("handTab").addEventListener("keydown", event => { if (["ArrowRight", "ArrowLeft"].includes(event.key)) { event.preventDefault(); pocket = "pending"; renderPocket(); $("pendingTab").focus(); } });
+    $("pendingTab").addEventListener("keydown", event => { if (["ArrowRight", "ArrowLeft"].includes(event.key)) { event.preventDefault(); pocket = "hand"; renderPocket(); $("handTab").focus(); } });
     $("reloadBtn").addEventListener("click", () => location.reload());
     $("nextBtn").addEventListener("click", () => send("NEXT"));
     $("newGameBtn").addEventListener("click", () => send("NEW_GAME"));
@@ -213,11 +254,13 @@
     $("addWant").addEventListener("click", () => { if (want.length < 3) want.push($("wantKind").value); renderComposer(); });
     $("offerBtn").addEventListener("click", () => {
       const data = { to: $("tradeTarget").value, giveIds: [...selected], want: [...want] };
-      selected.clear(); want = []; send("OFFER", data);
+      if (actionPending) return;
+      selected.clear(); want = []; composerOpen = false; send("OFFER", data);
     });
     document.addEventListener("click", event => {
       const button = event.target.closest("button"); if (!button || button.disabled || !state) return;
       if (button.dataset.card) selectCard(button.dataset.card);
+      if (button.dataset.kind) openBean(button.dataset.kind);
       if (button.dataset.plant !== undefined) { const card = plantingCard(); if (card) send("PLANT", { field: Number(button.dataset.plant), cardId: card.id }); }
       if (button.dataset.harvest !== undefined) {
         harvestField = Number(button.dataset.harvest);
