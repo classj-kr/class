@@ -50,20 +50,24 @@ async function main() {
         lobby.elements.hostStatus.textContent = "참가자를 기다리는 중입니다.";
         lobby.render();
       }, count);
-      for (const [width, height] of [[1366, 768], [1366, 600], [1280, 720], [1024, 600], [911, 512], [768, 1024], [390, 844]]) {
+      for (const [width, height] of [[1389, 856], [1440, 900], [1366, 801], [1366, 800], [1366, 768], [1366, 600], [1280, 720], [1024, 600], [911, 512], [768, 1024], [390, 844]]) {
         await page.setViewport({ width, height });
         await page.evaluate(() => window.scrollTo(0, 0));
         const before = await page.evaluate(() => {
           const button = document.getElementById("startBtn");
           const rect = button.getBoundingClientRect();
+          const title = document.querySelector("#lobbyScreen .mp-ui-title").getBoundingClientRect();
           return { bottom: rect.bottom, height: rect.height, disabled: button.disabled,
+            titleHeight: title.height, pageHeight: document.documentElement.scrollHeight,
             horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1 };
         });
         assert.equal(before.disabled, count < 4, "Start availability must still follow the player count");
         assert.equal(before.horizontalOverflow, false, `${width}x${height}: horizontal overflow`);
         assert.ok(before.height >= 44, "Start must retain a usable touch target");
-        if (width === 1366 && height === 768) {
-          assert.ok(before.bottom <= height, "Start should fit on a Chromebook screen without scrolling");
+        assert.ok(before.titleHeight <= 70, `${width}x${height}: lobby title must remain compact`);
+        if (height >= 768) {
+          assert.ok(before.bottom <= height, `${width}x${height}: Start should fit without scrolling`);
+          assert.ok(before.pageHeight <= height + 1, `${count} players at ${width}x${height}: unnecessary page scrolling ${JSON.stringify(before)}`);
         }
         if (before.bottom > height) {
           // Wheel input catches overflow:hidden; scrollIntoView would mask the original bug.

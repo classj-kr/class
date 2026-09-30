@@ -143,7 +143,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
         gallery.style.gridTemplateColumns = 'repeat(3, 1fr)';
         gallery.style.width = '600px';
       });
-      await page.locator('#review-gallery').screenshot({ path: path.join(output, name + '-flat-scenes.png') });
+      await page.locator('#review-gallery').screenshot({ path: path.join(output, name + '-reference-scenes.png') });
       assert.deepEqual(await page.evaluate(() => window.pictureDrawErrors), []);
       assert.deepEqual(errors, []);
       console.log(name + ': all 128 lessons / ' + completed + ' questions, meanings, mobile layout, ' + count + ' reviewed pictures passed');

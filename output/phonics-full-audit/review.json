@@ -635,14 +635,14 @@
       "word": "pop",
       "page": 1,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 1,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.35451197053406996,
-          0.006906077348066298,
-          0.2992633517495396,
+          0.35911602209944754,
+          0.009668508287292817,
+          0.28084714548802947,
           0.22099447513812154
         ]
       },
@@ -1146,15 +1146,15 @@
       "word": "dim",
       "page": 2,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 2,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.6777163904235728,
-          0.0055248618784530384,
-          0.31031307550644566,
-          0.22306629834254144
+          0.6721915285451197,
+          0.013121546961325966,
+          0.3149171270718232,
+          0.21892265193370167
         ]
       },
       "meanings": [
@@ -2648,15 +2648,15 @@
       "word": "yes",
       "page": 3,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 10,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.358195211786372,
-          0.7292817679558011,
-          0.2965009208103131,
-          0.24033149171270718
+          0.36372007366482506,
+          0.7458563535911602,
+          0.2716390423572744,
+          0.2292817679558011
         ]
       },
       "meanings": [
@@ -3052,7 +3052,7 @@
       "word": "square",
       "page": 3,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 0,
         "columns": 1,
         "rows": 1,
@@ -3716,15 +3716,15 @@
       "word": "full",
       "page": 4,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 0,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.03683241252302026,
-          0.017265193370165747,
-          0.2569060773480663,
-          0.2085635359116022
+          0.06353591160220995,
+          0.03038674033149171,
+          0.23204419889502761,
+          0.19129834254143646
         ]
       },
       "meanings": [
@@ -4339,15 +4339,15 @@
       "word": "chin",
       "page": 5,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 3,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.019337016574585635,
-          0.23549723756906077,
-          0.3011049723756906,
-          0.23895027624309392
+          0.04880294659300184,
+          0.24930939226519336,
+          0.23848987108655617,
+          0.2361878453038674
         ]
       },
       "meanings": [
@@ -8548,15 +8548,15 @@
       "word": "snore",
       "page": 9,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 4,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.3453038674033149,
-          0.23756906077348067,
-          0.31031307550644566,
-          0.23687845303867403
+          0.35082872928176795,
+          0.26588397790055246,
+          0.2992633517495396,
+          0.21823204419889503
         ]
       },
       "meanings": [
@@ -8569,15 +8569,15 @@
       "word": "chore",
       "page": 9,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 11,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.6777163904235728,
-          0.7237569060773481,
-          0.30847145488029465,
-          0.2506906077348066
+          0.7071823204419889,
+          0.7403314917127072,
+          0.27532228360957645,
+          0.23756906077348067
         ]
       },
       "meanings": [
@@ -10989,15 +10989,15 @@
       "word": "tallest",
       "page": 11,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 5,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.6942909760589319,
-          0.23273480662983426,
-          0.27808471454880296,
-          0.24378453038674033
+          0.6813996316758748,
+          0.23687845303867403,
+          0.30386740331491713,
+          0.24447513812154695
         ]
       },
       "meanings": [
@@ -11304,15 +11304,15 @@
       "word": "useless",
       "page": 12,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 6,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.019337016574585635,
-          0.48204419889502764,
-          0.30386740331491713,
-          0.23480662983425415
+          0.014732965009208104,
+          0.4972375690607735,
+          0.31215469613259667,
+          0.23825966850828728
         ]
       },
       "meanings": [
@@ -11766,15 +11766,15 @@
       "word": "disagree",
       "page": 12,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 8,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.6685082872928176,
-          0.4903314917127072,
-          0.31675874769797424,
-          0.22168508287292818
+          0.6758747697974218,
+          0.5096685082872928,
+          0.31860036832412525,
+          0.2272099447513812
         ]
       },
       "meanings": [
@@ -13102,15 +13102,15 @@
       "word": "neutral",
       "page": 13,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 7,
         "columns": 3,
         "rows": 4,
         "crop": [
-          0.3324125230202578,
-          0.4924033149171271,
-          0.3287292817679558,
-          0.2265193370165746
+          0.3278084714548803,
+          0.5151933701657458,
+          0.34714548802946593,
+          0.21201657458563536
         ]
       },
       "meanings": [
@@ -14548,15 +14548,15 @@
       "word": "weakness",
       "page": 15,
       "picture": {
-        "file": "assets/images/phonics-reviewed-scenes-v2.webp",
+        "file": "assets/images/phonics-reviewed-scenes-v4.webp",
         "index": 9,
         "columns": 3,
         "rows": 4,
         "crop": [
           0.01565377532228361,
-          0.7216850828729282,
-          0.30755064456721914,
-          0.24861878453038674
+          0.75,
+          0.31123388581952116,
+          0.22168508287292818
         ]
       },
       "meanings": [
@@ -15075,5 +15075,25 @@
       "note": "",
       "visuallyReviewed": true
     }
-  ]
+  ],
+  "artStyleReview": {
+    "date": "2026-10-01",
+    "reference": "alphabet-atlas-02.webp",
+    "replacement": "phonics-reviewed-scenes-v4.webp",
+    "comparison": "output/phonics-picture-review/style-comparison-v4.png",
+    "words": [
+      "full",
+      "pop",
+      "dim",
+      "chin",
+      "snore",
+      "tallest",
+      "useless",
+      "neutral",
+      "disagree",
+      "weakness",
+      "yes",
+      "chore"
+    ]
+  }
 }

@@ -73,3 +73,13 @@ test("beginner wins free material and review detects a missed mate",()=>{
   const miss=C.allLegalMoves(mate).find(m=>m.from===sq("a7")&&m.to===sq("a6"));
   assert.match(AI.review(mate,miss).text,/체크메이트/);
 });
+test("a forced win takes priority over a draw claim; hints still give a move",()=>{
+  const winning=fen("7k/5Q2/6K1/8/8/8/r7/q7 w - - 100 51");
+  for(const level of Object.keys(AI.LEVELS)) {
+    const answer=AI.choose(winning,level);assert.ok(answer.move);
+    assert.equal(C.status(C.advance(winning,answer.move)).reason,"checkmate");
+  }
+  const losing=fen("4k3/8/8/8/8/8/8/R3K3 b - - 100 51");
+  assert.equal(AI.choose(losing).claim,true);
+  assert.ok(AI.choose(losing,"beginner",{allowClaim:false}).move);
+});
