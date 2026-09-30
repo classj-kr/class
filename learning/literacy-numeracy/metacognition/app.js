@@ -1,5 +1,5 @@
 /*
- * 메타인지 진단 — 화면 흐름과 리포트 렌더링
+ * 학습 자기점검 — 화면 흐름과 복습 기록
  *
  * 진행 중에는 정오 피드백을 절대 노출하지 않는다. 중간 피드백이 들어가면
  * 이후 문항의 확신도가 오염되어 캘리브레이션 지표가 성립하지 않는다.
@@ -9,12 +9,14 @@
 
   // 학년별 페이지는 app.js를 불러오기 전에 window.METACOG_ITEM_SET_VERSION /
   // window.METACOG_LEVEL_KEY를 지정해 둔다. 지정이 없으면(기존 index.html) 원래 값 그대로다.
-  const ITEM_SET_VERSION = (typeof window !== "undefined" && window.METACOG_ITEM_SET_VERSION) || "metacog-v2";
+  const ITEM_SET_VERSION = (typeof window !== "undefined" && window.METACOG_ITEM_SET_VERSION) || "metacog-v3";
   const LEVEL_SUFFIX = typeof window !== "undefined" && window.METACOG_LEVEL_KEY ? "-" + window.METACOG_LEVEL_KEY : "";
   const PROGRESS_KEY = "metacog-progress-v1" + LEVEL_SUFFIX;
   const RESULT_KEY = "metacog-results-v1" + LEVEL_SUFFIX;
 
   const items = METACOG_ITEMS;
+  const UNKNOWN_CHOICE = MetacogMetrics.UNKNOWN_CHOICE;
+  const isAnswered = row => row.choice === UNKNOWN_CHOICE || row.choice !== null && row.confidence !== null;
 
   /*
    * 선택지 순서를 학생마다 섞는다.
@@ -129,7 +131,7 @@
     el("qDomain").textContent = item.domain;
     el("qPrompt").textContent = item.prompt;
 
-    const answered = state.responses.filter((row) => row.choice !== null && row.confidence !== null).length;
+    const answered = state.responses.filter(isAnswered).length;
     const percent = Math.round((answered / items.length) * 100);
     el("progressFill").style.width = percent + "%";
     el("progressBar").setAttribute("aria-valuenow", String(percent));
@@ -147,6 +149,8 @@
         '<span class="choice-num">' + (displayIndex + 1) + "</span><span></span>";
       button.lastChild.textContent = item.choices[originalIndex];
       button.addEventListener("click", () => {
+        recordTime();
+        if (response.choice !== originalIndex) response.confidence = null;
         response.choice = originalIndex;
         renderQuestion();
         saveProgress();
@@ -154,8 +158,24 @@
       choiceGroup.appendChild(button);
     });
 
+    const unknownButton = document.createElement("button");
+    unknownButton.type = "button";
+    unknownButton.id = "unknownBtn";
+    unknownButton.className = "unknown-btn";
+    unknownButton.setAttribute("role", "radio");
+    unknownButton.setAttribute("aria-checked", String(response.choice === UNKNOWN_CHOICE));
+    unknownButton.textContent = "모르겠어요";
+    unknownButton.addEventListener("click", () => {
+      recordTime();
+      response.choice = UNKNOWN_CHOICE;
+      response.confidence = null;
+      renderQuestion();
+      saveProgress();
+    });
+    choiceGroup.appendChild(unknownButton);
+
     const confidenceBlock = el("confidenceBlock");
-    confidenceBlock.hidden = response.choice === null;
+    confidenceBlock.hidden = response.choice === null || response.choice === UNKNOWN_CHOICE;
     const confidenceGroup = el("confidenceGroup");
     confidenceGroup.innerHTML = "";
     CONFIDENCE_LEVELS.forEach((level) => {
@@ -167,10 +187,11 @@
       const strong = document.createElement("strong");
       strong.textContent = level.label;
       const small = document.createElement("small");
-      small.textContent = level.sub;
+      small.textContent = level.value + "% · " + level.sub;
       button.appendChild(strong);
       button.appendChild(small);
       button.addEventListener("click", () => {
+        recordTime();
         response.confidence = level.value;
         renderQuestion();
         saveProgress();
@@ -179,7 +200,7 @@
     });
 
     el("prevBtn").disabled = state.index === 0;
-    const ready = response.choice !== null && response.confidence !== null;
+    const ready = isAnswered(response);
     const nextBtn = el("nextBtn");
     nextBtn.disabled = !ready;
     nextBtn.textContent = state.index === items.length - 1 ? "결과 보기" : "다음 →";
@@ -247,6 +268,13 @@
   function renderCalibrationChart(metrics) {
     const holder = el("calibrationChart");
     holder.innerHTML = "";
+    if (!metrics.answeredN) {
+      const note = document.createElement("p");
+      note.className = "chart-help";
+      note.textContent = "모든 문항에 ‘모르겠어요’를 표시해 비교할 답과 자신감이 없어요.";
+      holder.appendChild(note);
+      return;
+    }
     const W = 360;
     const H = 250;
     const pad = { top: 16, right: 16, bottom: 40, left: 40 };
@@ -352,7 +380,7 @@
     legend.className = "chart-legend";
     legend.innerHTML =
       '<span class="legend-item"><span class="legend-swatch" style="background:#06b6d4"></span>내 결과</span>' +
-      '<span class="legend-item"><span class="legend-swatch dashed"></span>이상적인 상태(확신 = 정답률)</span>' +
+      '<span class="legend-item"><span class="legend-swatch dashed"></span>비교선(자신감 = 정답률)</span>' +
       (empty.length
         ? '<span class="legend-item">' + empty.map((bin) => bin.confidence + "%").join(", ") + " 구간은 답한 문항 없음</span>"
         : "");
@@ -395,7 +423,7 @@
 
     const bars = [
       { key: "ok", label: "맞힌 문항", mark: "✓", color: "#10b981", value: metrics.confWhenCorrect, count: metrics.graded.filter((r) => r.correct).length },
-      { key: "no", label: "틀린 문항", mark: "✕", color: "#ef4444", value: metrics.confWhenWrong, count: metrics.graded.filter((r) => !r.correct).length }
+      { key: "no", label: "틀린 문항", mark: "✕", color: "#ef4444", value: metrics.confWhenWrong, count: metrics.wrongCount }
     ];
     const barWidth = 62;
     const slot = plotW / bars.length;
@@ -458,7 +486,7 @@
     legend.textContent =
       metrics.discrimination === null
         ? "정답 또는 오답 문항이 없어 차이를 계산할 수 없습니다."
-        : "두 막대의 차이 " + formatPp(metrics.discrimination) + " · 15%p 이상이면 자기 점검이 잘 작동하는 편입니다.";
+        : "이번 두 묶음의 평균 자신감 차이 " + formatPp(metrics.discrimination) + " · 문항 수와 내용에 따라 달라질 수 있어요.";
     holder.appendChild(legend);
   }
 
@@ -478,39 +506,13 @@
     const metrics = analysis.metrics;
     const profile = analysis.profile;
 
-    const card = el("profileCard");
-    card.setAttribute("data-risk", profile.risk);
     el("profileName").textContent = profile.name;
     el("profileHeadline").textContent = profile.headline;
-
-    const biasTone = Math.abs(metrics.bias) <= 0.1 ? "good" : metrics.bias > 0.2 ? "bad" : "warn";
-    const discTone =
-      metrics.discrimination === null ? "neutral" : metrics.discrimination >= 0.15 ? "good" : metrics.discrimination < 0.08 ? "bad" : "warn";
     const tiles = [
-      {
-        label: "실제 정답률",
-        value: formatPct(metrics.accuracy),
-        note: metrics.n + "문항 중 " + Math.round(metrics.accuracy * metrics.n) + "개 정답",
-        tone: "neutral"
-      },
-      {
-        label: "내가 매긴 평균 확신",
-        value: formatPct(metrics.confidence),
-        note: "실제보다 " + (metrics.bias >= 0 ? "높게" : "낮게") + " 잡았습니다",
-        tone: "neutral"
-      },
-      {
-        label: "어긋난 정도",
-        value: formatPp(metrics.bias),
-        note: metrics.bias > 0 ? "확신이 실력보다 앞섬" : metrics.bias < 0 ? "실력보다 자신을 낮춤" : "거의 일치",
-        tone: biasTone
-      },
-      {
-        label: "알고 모름을 가려내는 힘",
-        value: formatPp(metrics.discrimination),
-        note: "맞힐 때와 틀릴 때 확신 차이",
-        tone: discTone
-      }
+      { label: "전체 중 맞힌 비율", value: formatPct(metrics.accuracy), note: "모름을 포함한 " + metrics.n + "문항 중 " + Math.round(metrics.accuracy * metrics.n) + "개 정답", tone: "neutral" },
+      { label: "고른 답이 틀린 문제", value: metrics.wrongCount + "개", note: "‘모르겠어요’는 따로 기록해요", tone: "neutral" },
+      { label: "모르겠어요", value: metrics.unknownCount + "개", note: "새로 알아볼 문제", tone: "neutral" },
+      { label: "자신 있었던 오답", value: metrics.highConfErrors.length + "개", note: "자신감 75% 또는 100% · 근거 다시 보기", tone: "neutral" }
     ];
     const statRow = el("statRow");
     statRow.innerHTML = "";
@@ -539,13 +541,12 @@
     if (!analysis.cards.length) {
       const empty = document.createElement("p");
       empty.className = "counsel-action";
-      empty.textContent = "특별히 걸리는 신호가 없습니다. 아래 실행 계획대로 유지하세요.";
+      empty.textContent = "문제 하나를 골라 내 생각과 해설을 비교해 보세요.";
       cardList.appendChild(empty);
     }
     analysis.cards.forEach((entry) => {
       const node = document.createElement("div");
       node.className = "counsel-card";
-      node.setAttribute("data-severity", String(entry.severity));
       const tag = document.createElement("div");
       tag.className = "counsel-tag";
       tag.textContent = entry.tag;
@@ -571,58 +572,70 @@
     });
 
     renderItemTable(metrics);
+    el("itemTableHolder").hidden = false;
+    el("reviewFilters").hidden = false;
+    el("toggleTableBtn").textContent = "접기";
+    el("toggleTableBtn").setAttribute("aria-expanded", "true");
   }
 
   function renderItemTable(metrics) {
     const holder = el("itemTableHolder");
+    const filters = el("reviewFilters");
     holder.innerHTML = "";
-    const table = document.createElement("table");
-    table.className = "item-table";
-    table.innerHTML =
-      "<thead><tr>" +
-      "<th>번호</th><th>영역</th><th>내 확신</th><th>결과</th><th>해설</th>" +
-      "</tr></thead>";
-    const body = document.createElement("tbody");
-
-    metrics.graded.forEach((row, rowIndex) => {
-      const item = items.find((entry) => entry.id === row.id);
-      const tr = document.createElement("tr");
-      if (!row.correct && row.confidence >= 75) tr.setAttribute("data-flag", "hce");
-      else if (row.correct && row.confidence <= 50) tr.setAttribute("data-flag", "lch");
-
-      const num = document.createElement("td");
-      num.className = "num";
-      num.textContent = String(rowIndex + 1);
-
-      const domain = document.createElement("td");
-      domain.textContent = item.domain;
-
-      const conf = document.createElement("td");
-      conf.className = "num";
-      conf.textContent = row.confidence + "%";
-
-      const mark = document.createElement("td");
-      const span = document.createElement("span");
-      span.className = "mark " + (row.correct ? "ok" : "no");
-      span.textContent = row.correct ? "✓ 정답" : "✕ 오답";
-      mark.appendChild(span);
-
-      const explain = document.createElement("td");
-      explain.className = "exp-cell";
-      explain.textContent = item.explain + (row.tookLure && !row.correct ? " (자주 걸리는 답: " + item.lureWhy + ")" : "");
-
-      tr.append(num, domain, conf, mark, explain);
-      body.appendChild(tr);
+    filters.innerHTML = "";
+    const rows = state.itemOrder.map(index => metrics.graded.find(row => row.id === items[index].id)).filter(Boolean);
+    const options = [
+      { key: "all", label: "전체", match: () => true },
+      { key: "confident-wrong", label: "자신 있었던 오답", match: row => !row.correct && row.confidence >= 75 },
+      { key: "unsure-correct", label: "자신 없었던 정답", match: row => row.correct && row.confidence <= 50 },
+      { key: "wrong", label: "모든 오답", match: row => !row.unknown && !row.correct },
+      { key: "unknown", label: "모르겠어요", match: row => row.unknown }
+    ];
+    rows.forEach((row, index) => {
+      const item = items.find(entry => entry.id === row.id);
+      const card = document.createElement("details");
+      card.className = "review-item";
+      card.dataset.itemId = item.id;
+      const heading = document.createElement("summary");
+      heading.textContent = (index + 1) + "번 · " + item.domain + " · " + (row.unknown ? "모르겠어요" : (row.correct ? "정답" : "오답") + " · 자신감 " + row.confidence + "%");
+      const prompt = document.createElement("p");
+      prompt.className = "review-prompt";
+      prompt.textContent = item.prompt;
+      const chosen = document.createElement("p");
+      chosen.textContent = "내 답: " + (row.unknown ? "모르겠어요" : item.choices[row.choice]);
+      const answer = document.createElement("p");
+      answer.className = "review-answer";
+      answer.textContent = "정답: " + item.choices[item.answer];
+      const explanation = document.createElement("p");
+      explanation.className = "review-explanation";
+      explanation.textContent = item.explain;
+      const reflection = document.createElement("p");
+      reflection.className = "review-reflection";
+      reflection.textContent = row.unknown
+        ? "생각해 보기: 어떤 말이나 풀이 방법이 낯설었나요? 해설을 읽고 새로 알게 된 내용을 설명해 보세요."
+        : "생각해 보기: 처음에 이 답을 고른 이유는 무엇인가요? 해설을 읽고 어떤 근거를 확인했나요?";
+      card.append(heading, prompt, chosen, answer, explanation, reflection);
+      holder.appendChild(card);
     });
-
-    table.appendChild(body);
-    holder.appendChild(table);
-
-    const note = document.createElement("p");
-    note.className = "table-note";
-    note.textContent =
-      "붉은 줄 = 자신 있게 틀린 문항, 초록 줄 = 자신 없이 맞힌 문항. 이 두 가지가 아는 것과 안다고 느끼는 것의 간격을 보여 줍니다.";
-    holder.appendChild(note);
+    const empty = document.createElement("p");
+    empty.className = "review-empty";
+    empty.textContent = "이번 풀이에는 이 조건에 해당하는 문항이 없어요. 다른 묶음을 골라 보세요.";
+    empty.hidden = true;
+    holder.appendChild(empty);
+    options.forEach(option => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "ghost-btn small";
+      button.dataset.filter = option.key;
+      button.textContent = option.label + " (" + rows.filter(option.match).length + ")";
+      button.setAttribute("aria-pressed", String(option.key === "all"));
+      button.addEventListener("click", () => {
+        filters.querySelectorAll("button").forEach(node => node.setAttribute("aria-pressed", String(node === button)));
+        holder.querySelectorAll(".review-item").forEach((node, index) => { node.hidden = !option.match(rows[index]); });
+        empty.hidden = rows.some(option.match);
+      });
+      filters.appendChild(button);
+    });
   }
 
   /* ── 저장 ──────────────────────────────────────────────── */
@@ -706,13 +719,14 @@
 --correct-green:#10b981;--wrong-red:#ef4444;--grid-line:rgba(255,255,255,.08)}
 body{margin:0;padding:24px;background:#12141c;color:var(--text-main);line-height:1.55;
 font-family:Pretendard,-apple-system,"Segoe UI",Roboto,sans-serif;word-break:keep-all}
+[hidden]{display:none!important}
+.review-item{border:1px solid var(--panel-border);border-radius:12px;padding:16px;margin:12px 0}
+.review-item p{margin:10px 0}.review-prompt{white-space:pre-line;font-weight:600}
+.review-item summary{font-weight:700}.report-note{color:var(--text-muted);margin-top:12px}
 .panel{background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:20px;
 padding:22px;margin-bottom:16px}
 .panel-title{font-size:17px;font-weight:700;margin:0 0 10px}
 .profile-card{border-left:4px solid var(--accent-cyan)}
-.profile-card[data-risk="high"]{border-left-color:var(--wrong-red)}
-.profile-card[data-risk="mid"]{border-left-color:var(--accent-gold)}
-.profile-card[data-risk="low"]{border-left-color:var(--correct-green)}
 .profile-tag{font-size:12px;font-weight:700;color:var(--text-dim)}
 .profile-name{font-size:24px;font-weight:800;margin:4px 0 8px}
 .profile-headline{font-size:15px;color:#dbe3ee;margin:0}
@@ -770,7 +784,10 @@ padding:22px;margin-bottom:16px}
   body{background:#ffffff;color:#111827;padding:0}
   .panel,.stat-tile{background:#ffffff;border:1px solid #d1d5db;box-shadow:none;break-inside:avoid}
   .counsel-card{background:#f9fafb;break-inside:avoid}
-  .profile-headline,.counsel-action,.plan-list,.exp-cell{color:#374151}
+  .profile-headline,.counsel-action,.plan-list,.exp-cell,.review-help,.review-item p,.report-note{color:#374151}
+  .review-item{background:#fff;border-color:#d1d5db;break-inside:avoid}
+  .review-reflection{background:#f3f4f6}
+  .review-filters{display:none}
   .item-table tr[data-flag="hce"]{background:#fee2e2}
   .item-table tr[data-flag="lch"]{background:#d1fae5}
   .item-table tr,.chart-card{break-inside:avoid}
@@ -813,6 +830,9 @@ padding:22px;margin-bottom:16px}
     if (savePanel) savePanel.remove();
     const toggle = clone.querySelector("#toggleTableBtn");
     if (toggle) toggle.remove();
+    clone.querySelector("#reviewFilters")?.remove();
+    clone.querySelectorAll(".review-item").forEach(node => { node.hidden = false; node.open = true; });
+    clone.querySelector(".review-empty")?.remove();
     const tableHolder = clone.querySelector("#itemTableHolder");
     if (tableHolder) tableHolder.removeAttribute("hidden"); // 문항별 기록은 펼친 채로
     // 마지막으로 가리켰던 내용이 남아 있는 말풍선과, 마우스만 받는 투명 영역을 걷어낸다
@@ -825,10 +845,10 @@ padding:22px;margin-bottom:16px}
       "<!DOCTYPE html>\n" +
       '<html lang="ko">\n<head>\n<meta charset="UTF-8">\n' +
       '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
-      "<title>간이 진단 결과 " + completedDate + "</title>\n" +
+      "<title>학습 자기점검 기록 " + completedDate + "</title>\n" +
       "<style>\n" + collectStyles() + "\n" + PRINT_CSS + "\n</style>\n</head>\n<body>\n" +
       '<div style="max-width:900px;margin:0 auto">\n' +
-      '<h1 style="font-size:22px;font-weight:800;margin:0 0 4px">간이 진단 결과</h1>\n' +
+      '<h1 style="font-size:22px;font-weight:800;margin:0 0 4px">학습 자기점검 기록</h1>\n' +
       '<p class="export-hint" style="font-size:13px;color:#64748b;margin:0 0 18px">' +
       completedDate + " · 문항 세트 " + payload.itemSetVersion +
       " · 브라우저에서 인쇄하면 종이로 뽑을 수 있습니다</p>\n" +
@@ -915,6 +935,7 @@ padding:22px;margin-bottom:16px}
   el("toggleTableBtn").addEventListener("click", (event) => {
     const holder = el("itemTableHolder");
     holder.hidden = !holder.hidden;
+    el("reviewFilters").hidden = holder.hidden;
     event.currentTarget.setAttribute("aria-expanded", String(!holder.hidden));
     event.currentTarget.textContent = holder.hidden ? "펼치기" : "접기";
   });
@@ -928,6 +949,7 @@ padding:22px;margin-bottom:16px}
     state.orders = freshOrders();
     state.itemOrder = shuffledOrder(items.length);
     state.analysis = null;
+    state.shownAt = 0;
     clearProgress();
     show("intro");
     el("restoreNote").hidden = true;
@@ -939,11 +961,13 @@ padding:22px;margin-bottom:16px}
     el("qTotal").textContent = String(items.length);
     const saved = loadProgress();
     if (saved) {
-      const answered = saved.responses.filter((row) => row.choice !== null && row.confidence !== null).length;
-      if (answered > 0 && answered < items.length) {
+      const answered = saved.responses.filter(isAnswered).length;
+      if (answered > 0) {
+        const common = el("commonSet");
+        if (common) common.open = true;
         const note = el("restoreNote");
         note.hidden = false;
-        note.textContent = "지난번에 " + answered + "문항까지 풀었습니다. ‘진단 시작하기’를 누르면 이어서 진행합니다.";
+        note.textContent = "지난번에 " + answered + "문항까지 풀었습니다. ‘자기점검 시작하기’를 누르면 이어서 진행합니다.";
         state.responses = saved.responses;
         state.index = Math.min(saved.index, items.length - 1);
         // 이어서 풀 때 선택지·문항 순서가 다시 섞이면 학생이 혼란스럽다. 저장된 순서를 그대로 쓴다.

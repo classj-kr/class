@@ -7,7 +7,7 @@
   --accent-cyan: #06b6d4;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-dim: #a3afc2;
   --correct-green: #10b981;
   --correct-bg: rgba(16, 185, 129, 0.15);
   --wrong-red: #ef4444;
@@ -174,6 +174,17 @@ body[data-mode="quiz"] .back-link { margin-bottom: 4px; padding: 8px 12px; min-h
 .choice-btn[aria-checked="true"] { border-color: #6366f1; background: rgba(79, 70, 229, 0.22); }
 .choice-btn[aria-checked="true"] .choice-num { background: var(--accent-blue); color: #ffffff; }
 
+.unknown-btn {
+  min-height: 48px; padding: 12px 16px; margin-top: 4px;
+  border: 2px dashed var(--panel-border); border-radius: 14px;
+  background: transparent; color: var(--text-main); font: inherit;
+  cursor: pointer; width: 100%; text-align: left;
+}
+.unknown-btn:hover, .unknown-btn[aria-checked="true"] {
+  border-color: var(--accent-cyan); background: rgba(6,182,212,.12);
+}
+.unknown-help { color: var(--text-muted); font-size: 13px; margin-top: 10px; }
+
 .confidence-block { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--panel-border); }
 .confidence-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--accent-gold); }
 .confidence-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -193,9 +204,6 @@ body[data-mode="quiz"] .back-link { margin-bottom: 4px; padding: 8px 12px; min-h
 
 /* ── Report ─────────────────────────────────────────────── */
 .profile-card { border-left: 4px solid var(--accent-cyan); }
-.profile-card[data-risk="high"] { border-left-color: var(--wrong-red); }
-.profile-card[data-risk="mid"] { border-left-color: var(--accent-gold); }
-.profile-card[data-risk="low"] { border-left-color: var(--correct-green); }
 .profile-tag { font-size: 12px; font-weight: 700; color: var(--text-dim); letter-spacing: 0.04em; }
 .profile-name { font-size: 24px; font-weight: 800; margin: 4px 0 8px; }
 .profile-headline { font-size: 15px; color: #dbe3ee; }
@@ -230,9 +238,6 @@ body[data-mode="quiz"] .back-link { margin-bottom: 4px; padding: 8px 12px; min-h
   background: rgba(0, 0, 0, 0.25); border-radius: 14px; padding: 16px 18px;
   border-left: 4px solid var(--accent-cyan);
 }
-.counsel-card[data-severity="5"], .counsel-card[data-severity="4"] { border-left-color: var(--wrong-red); }
-.counsel-card[data-severity="3"] { border-left-color: var(--accent-gold); }
-.counsel-card[data-severity="1"] { border-left-color: var(--correct-green); }
 .counsel-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--text-dim); }
 .counsel-title { font-size: 16px; font-weight: 700; margin: 3px 0 8px; }
 .counsel-evidence { font-size: 13px; color: var(--accent-cyan); margin-bottom: 8px; }
@@ -272,3 +277,24 @@ body[data-mode="quiz"] .back-link { margin-bottom: 4px; padding: 8px 12px; min-h
   .quiz-top { flex-wrap: wrap; }
   .progress-track { order: 3; flex-basis: 100%; }
 }
+
+/* Self-check entry and question-based review */
+[hidden] { display: none !important; }
+.intro-purpose { color: #dbe3ee; margin-bottom: 18px; }
+.grade-picker { margin: 18px 0; }
+.grade-picker-label { line-height: 1.7; }
+.grade-picker-links a { min-height: 48px; min-width: 64px; font-size: 16px; }
+.report-note, .review-help { color: var(--text-muted); font-size: 14px; line-height: 1.7; margin-top: 12px; }
+.common-set { border-top: 1px solid var(--panel-border); margin-top: 20px; padding-top: 14px; }
+.common-set summary { cursor: pointer; padding: 10px 0; font-weight: 600; }
+.common-set summary span { display: block; color: var(--text-muted); font-size: 13px; font-weight: 400; margin: 5px 0 0 18px; }
+.review-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.review-filters [aria-pressed="true"] { border-color: var(--accent-cyan); background: rgba(6,182,212,.12); }
+.review-item { border: 1px solid var(--panel-border); border-radius: 14px; padding: 0 16px; margin: 10px 0; }
+.review-item summary { padding: 16px 0; cursor: pointer; font-size: 14px; font-weight: 600; }
+.review-item p { margin: 12px 0; font-size: 14px; }
+.review-prompt { white-space: pre-line; font-weight: 600; color: var(--text-main); }
+.review-answer { font-weight: 700; }
+.review-explanation { color: #dbe3ee; }
+.review-reflection { padding: 12px; background: rgba(6,182,212,.08); border-radius: 10px; color: var(--text-muted); }
+:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 3px; }
