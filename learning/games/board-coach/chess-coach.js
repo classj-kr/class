@@ -17,6 +17,7 @@
   $("rulesCopy").innerHTML='<p>흰색이 먼저 둡니다. 말을 선택한 다음 표시된 도착 칸을 누르세요. 내 왕(킹)이 공격받게 만드는 이동은 할 수 없습니다.</p><p>왕이 공격받는 상태를 ‘체크’라고 합니다. 왕을 옮기거나, 공격을 막거나, 공격하는 말을 잡아 왕을 지켜야 합니다. 어느 방법으로도 지킬 수 없으면 ‘체크메이트’로 패배합니다. 왕이 공격받지 않는데 둘 수 있는 수가 없으면 ‘스테일메이트’로 비깁니다.</p><p>킹과 룩이 움직이지 않았고 사이가 비어 있을 때 캐슬링할 수 있습니다. 킹의 시작·경유·도착 칸이 공격받으면 불가능합니다. 앙파상은 상대 폰의 두 칸 이동 직후 한 차례만 가능합니다. 폰은 마지막 줄에서 퀸·룩·비숍·나이트 중 하나로 승격합니다.</p><p>같은 판 3회 또는 잡기·폰 이동 없이 양쪽이 50수씩 두면 무승부를 선언할 수 있습니다. 다음 수로 조건을 채우는 선언도 가능합니다. 5회 반복과 75수 규칙은 자동 적용합니다. 킹만 남는 등 기본적인 메이트 불가능 기물도 자동 판정합니다.</p><p>힌트는 출발·도착 칸을 표시합니다. 내 수 물리기는 그 뒤의 AI 수까지 취소합니다. 시간 제한은 없습니다.</p><p>참고: <a href="https://rcc.fide.com/wp-content/uploads/2022/11/Laws_of_Chess-2023.pdf" target="_blank" rel="noopener">FIDE 체스 규칙</a> · <a href="https://www.chesskid.com/learn/terms/chess-opening" target="_blank" rel="noopener">초반 기본 원칙</a></p>';
   $("rulesCopy").firstElementChild.insertAdjacentHTML("afterend",'<ul class="piece-rules"><li><b>킹</b>: 어느 방향으로든 한 칸 갑니다. 상대가 공격하는 칸으로는 갈 수 없습니다.</li><li><b>퀸</b>: 가로·세로·대각선으로 원하는 만큼 갑니다.</li><li><b>룩</b>: 가로·세로로 원하는 만큼 갑니다.</li><li><b>비숍</b>: 대각선으로 원하는 만큼 갑니다.</li><li><b>나이트</b>: 한 방향으로 두 칸, 직각으로 한 칸 떨어진 자리로 갑니다. 다른 말을 뛰어넘을 수 있습니다.</li><li><b>폰</b>: 앞으로 한 칸 갑니다. 처음 자리에서는 앞이 비어 있으면 두 칸 갈 수 있습니다. 상대 말은 앞쪽 대각선 한 칸에서 잡습니다. 뒤로는 가지 못합니다.</li></ul><p>자기 말이 있는 칸에는 갈 수 없습니다. 나이트 외의 말은 다른 말을 뛰어넘지 못합니다. 상대 말이 있는 칸으로 이동하면 그 말을 잡습니다.</p>');
   document.querySelector(".controls").insertAdjacentHTML("beforeend",'<button id="claimDraw" type="button" class="quiet" disabled>무승부 선언</button><button id="resign" type="button" class="quiet" disabled>기권</button>');
+  BoardCoachUI.useOriginalTheme("chess");
   document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel chess-record"><summary>기보</summary><div id="chessMoves">아직 둔 수가 없습니다.</div></details>');
   document.body.insertAdjacentHTML("beforeend",'<dialog id="chessPromotion" aria-labelledby="promotionTitle"><h2 id="promotionTitle">승격할 말</h2><div id="chessPromotionChoices"></div><button id="cancelPromotion" class="quiet" type="button">취소</button></dialog><dialog id="chessDraw" aria-labelledby="drawTitle"><h2 id="drawTitle">무승부 선언</h2><p class="muted">표시된 조건으로 대국을 마칩니다.</p><div id="chessDrawChoices"></div><button id="cancelDraw" class="quiet" type="button">취소</button></dialog><dialog id="chessResign" aria-labelledby="resignTitle"><h2 id="resignTitle">이 대국을 기권할까요?</h2><div class="resign-choices"><button id="confirmResign" type="button">기권</button><button id="cancelResign" class="quiet" type="button">계속 두기</button></div></dialog>');
   function reason(label,title,text) { $("reasonLabel").textContent=label; $("moveLabel").textContent=title; $("reason").textContent=text; }
@@ -27,12 +28,12 @@
     const sources=new Set(legal.map(m=>m.from)), targets=new Set(legal.filter(m=>m.from===selected).map(m=>m.to));
     const mark=scene?scene.feedback?.alternative||scene.move:hint?.move;
     const last=position.lastMove, check=C.isInCheck(position)?position.board.indexOf(position.turn+"K"):-1;
-    $("board").className="chess"; $("board").setAttribute("aria-label","체스판");
+    $("board").className="chess chessboard"; $("board").setAttribute("aria-label","체스판");
     $("board").innerHTML=Array.from({length:64},(_,view)=>{
       const row=Math.floor(view/8), col=view%8, rank=human==="w"?7-row:row, file=human==="w"?col:7-col, index=rank*8+file;
       const piece=position.board[index], target=targets.has(index), can=active&&(sources.has(index)||target);
-      const classes=["square",(rank+file)%2?"light":"dark",index===selected?"selected":"",index===check?"checked":"",last&&(index===last.from||index===last.to)?"recent":"",mark&&(index===mark.from||index===mark.to)?"suggested":"",target?"target":""].filter(Boolean).join(" ");
-      return `<button type="button" role="gridcell" data-square="${index}" class="${classes}" ${can?"":"disabled"} aria-pressed="${index===selected}" aria-label="${C.squareName(index)} · ${piece?(piece[0]==="w"?"백 ":"흑 ")+AI.NAMES[piece[1]]:"빈칸"}${target?" · 이동 가능":""}">${row===0?`<span class="axis column" aria-hidden="true">${C.FILES[file]}</span>`:""}${col===0?`<span class="axis row" aria-hidden="true">${rank+1}</span>`:""}${ChessCoachPiece(piece)}${target&&!piece?'<span class="legal-dot"></span>':""}</button>`;
+      const classes=["square",(rank+file)%2?"light":"dark",index===selected?"selected":"",index===check?"checked check":"",last&&(index===last.from||index===last.to)?"recent last":"",mark&&(index===mark.from||index===mark.to)?"suggested":"",target?(piece?"target legal-capture":"target legal-empty"):""].filter(Boolean).join(" ");
+      return `<button type="button" role="gridcell" data-square="${index}" class="${classes}" ${can?"":"disabled"} aria-pressed="${index===selected}" aria-label="${C.squareName(index)} · ${piece?(piece[0]==="w"?"백 ":"흑 ")+AI.NAMES[piece[1]]:"빈칸"}${target?" · 이동 가능":""}">${row===7?`<span class="coord file" aria-hidden="true">${C.FILES[file]}</span>`:""}${col===0?`<span class="coord rank" aria-hidden="true">${rank+1}</span>`:""}${ChessCoachPiece(piece)}</button>`;
     }).join("");
     BoardCoachUI.markMove($("board"),mark,8);
     $("levelLabel").textContent=`${AI.LEVELS[level].name} AI`;
@@ -55,8 +56,10 @@
   function commit(move,isHuman=false) {
     const outcome=C.applyMove(state,move.from,move.to,move.promotion);
     if(!outcome.ok) { reason("이동 확인","둘 수 없는 수",outcome.error); return; }
-    const before=state, explanation=AI.explain(before,move);
-    feedback=isHuman?AI.review(before,move):feedback;
+    const followed=isHuman&&hint?.move&&AI.same(move,hint.move);
+    const before=state, explanation=followed?hint.reason:AI.explain(before,move);
+    // The quick material heuristic must not contradict a deeper hint analysis.
+    feedback=isHuman?(followed?null:AI.review(before,move)):feedback;
     history.push({before,move:outcome.move,color:before.turn,reason:explanation,feedback:isHuman?feedback:null});
     state=outcome.state; selected=null; hint=null; pending=null;
     $("retry").classList.add("hidden"); reason(isHuman?"내가 둔 수":"AI의 수",AI.label(outcome.move),isHuman&&feedback?feedback.text:explanation);
@@ -69,11 +72,16 @@
     const id=token;
     if(kind==="hint") reason("힌트 계산 중","후보를 살펴보고 있어요","체크와 기물의 안전을 확인하고 있어요.");
     try {
-      worker=new Worker("chess-worker.js?v=4");
+      worker=new Worker("chess-worker.js?v=6");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==token)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
         const answer=data.result;
+        if(answer.claim&&kind==="hint") {
+          if(!C.drawClaims(state).some(c=>!c.move))return fail("무승부 조건을 다시 확인해 주세요.");
+          worker.terminate();worker=null;clearTimeout(timeout);busy=false;hint=answer;
+          reason("힌트","무승부 선언",answer.reason);render();BoardCoachUI.revealExplanation();return;
+        }
         if(answer.claim&&kind==="move") {
           const outcome=C.claimDraw(state); if(!outcome.ok)return fail(outcome.error);
           stop(); state=outcome.state; reason("AI의 선택","무승부 선언",answer.reason); render(); return;
@@ -86,7 +94,7 @@
       };
       worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
       timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},12000);
-      worker.postMessage({token:id,state,level,allowClaim:kind==="move"});
+      worker.postMessage({token:id,state,level,kind,allowClaim:kind==="move"});
     } catch {fail("이 브라우저에서 계산을 시작하지 못했어요.");}
   }
   function resume() {

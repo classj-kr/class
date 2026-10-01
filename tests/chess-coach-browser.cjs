@@ -74,7 +74,15 @@ async function main() {
     await draw.locator("#claimDraw").click();await draw.locator("#chessDraw[open]").waitFor();await draw.locator("[data-claim]").first().click();assert.match(await draw.locator("#turn").innerText(),/50수 규칙.*무승부/);await draw.close();
     const aiDraw=await fixture(browser,"4k3/8/8/8/8/8/8/R3K3 b - - 100 51","1");
     await aiDraw.locator("#reviewPanel:not(.hidden)").waitFor();assert.match(await aiDraw.locator("#turn").innerText(),/50수 규칙.*무승부/);await aiDraw.close();
-    console.log("chess: promotion, castling, pinned piece, en passant and human/AI draw claims passed");
+    const hintDraw=await fixture(browser,"4k3/8/8/8/8/8/8/R3K3 b - - 100 51","2");
+    await hintDraw.locator('#hint').click();
+    await hintDraw.locator('#moveLabel').filter({hasText:'무승부 선언'}).waitFor();
+    assert.equal(await hintDraw.locator('#claimDraw').isEnabled(),true);
+    assert.equal(await hintDraw.locator('.suggested').count(),0);
+    assert.match(await hintDraw.locator('#turn').textContent(),/내 차례/,'a hint must never claim the draw for the player');
+    await hintDraw.locator('#claimDraw').click();await hintDraw.locator('[data-claim]').first().click();
+    assert.match(await hintDraw.locator('#turn').textContent(),/50수 규칙.*무승부/);await hintDraw.close();
+    console.log("chess: promotion, castling, pinned piece, en passant and human/AI/hint draw claims passed");
 
     // Exercise an actual AI checkmate and end-game review; both kings remain on the board.
     const mate=await fixture(browser,"rnbqkbnr/pppp1ppp/8/4p3/6P1/5P2/PPPPP2P/RNBQKBNR b KQkq g3 0 2");

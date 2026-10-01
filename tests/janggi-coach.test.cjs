@@ -122,6 +122,47 @@ test("every level develops, wins immediately, blocks mate and avoids poisoned ma
   }
 });
 
+test("all levels break an equal opening loop instead of repeating it, even without search time",()=>{
+  for(const side of ["c","h"]){
+    let s=R.position(R.initial().board,side);
+    const cycle=side==="c"?[[82,65],[1,20],[65,82],[20,1]]:[[1,20],[82,65],[20,1],[65,82]];
+    for(const[from,to]of cycle){const n=R.play(s,{from,to});assert.ok(n.ok);s=n.state;}
+    assert.equal(R.repetitionCount(s),2);assert.equal(R.status(s).ended,false);
+    const unchanged=JSON.stringify(s);
+    for(const level of Object.keys(AI.LEVELS))for(const options of [{nodes:0,ms:0},{ms:10000}]){
+      const answer=AI.choose(s,level,options),next=R.play(s,answer.move);
+      assert.ok(next.ok);assert.equal(R.repetitionCount(next.state),1,`${side} ${level}: avoid replaying the same position`);
+      assert.equal(answer.move.piece[1],"H","develop the other horse, not a random waiting move");
+      assert.equal(AI.mateInOne(next.state),null);assert.equal(JSON.stringify(s),unchanged);
+    }
+  }
+});
+
+test("a quiet reversal is avoided even when the opponent has changed the full position",()=>{
+  let s=R.initial();
+  for(const[from,to]of [[82,65],[1,20],[65,82]])s=R.play(s,{from,to}).state;
+  s=R.play(s,{from:27,to:36}).state;
+  const reverse={from:82,to:65};
+  assert.equal(R.repetitionCount(R.advance(s,reverse)),1,"this is not yet an exact repeated board");
+  for(const level of Object.keys(AI.LEVELS))for(const options of [{nodes:0,ms:0},{ms:10000}]){
+    const answer=AI.choose(s,level,options);
+    assert.equal(R.same(answer.move,reverse),false,`${level} should prefer comparable new development`);
+    assert.ok(!answer.move.kind);
+  }
+});
+
+test("a losing side keeps the saving repetition draw and explains why the game ends",()=>{
+  let s=fixture([["cK",4,8],["hK",3,1],["hR",8,4]],"h");
+  const cycle=[[3,1,3,0],[4,8,5,8],[3,0,3,1],[5,8,4,8]];
+  for(const args of [...cycle,...cycle.slice(0,3)])s=move(s,...args);
+  assert.equal(s.turn,"c");assert.equal(R.repetitionCount(s),2);
+  for(const level of Object.keys(AI.LEVELS))for(const options of [{nodes:0,ms:0},{ms:10000}]){
+    const answer=AI.choose(s,level,options),next=R.play(s,answer.move);
+    assert.ok(next.ok);assert.equal(next.state.result?.reason,"repetition",`${level}: do not lose to avoid a legitimate draw`);
+    assert.equal(next.state.result.winner,null);assert.match(answer.reason,/세 번.*무승부/);
+  }
+});
+
 test("every level accepts a saving bikjang instead of losing an undefended chariot",()=>{
   let s=R.initial("HEEH","EHEH");
   for(const [from,to] of [[58,57],[6,23],[87,58],[31,30],[58,29]]){

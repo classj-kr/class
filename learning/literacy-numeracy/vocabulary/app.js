@@ -1529,7 +1529,7 @@
 
     const records = window.LearningRecords.create('vocabulary', { label: '영단어' });
     let recordBusy = false, recordDepth = 0, recordMode = 'study', completeRequested = false, pendingEvents = [];
-    const recordExcluded = new Set(['data','imageMap','levels','detailCache','detailLoading','gameTimerId','spellingIds','wordMeaningMap','currentBandWords']);
+    const recordExcluded = new Set(['data','progress','spellingWrongProgress','imageMap','levels','detailCache','detailLoading','gameTimerId','spellingIds','wordMeaningMap','currentBandWords']);
     const recordScreens = ['levelScreen','lessonScreen','studyScreen','bandListScreen','lessonQuizScreen','gameScreen','spellingScreen'];
     function lockRecords(busy) {
         recordBusy = busy;

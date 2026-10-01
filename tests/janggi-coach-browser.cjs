@@ -1,6 +1,7 @@
 "use strict";
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path");
 const {chromium}=require("../game-hub-server/node_modules/playwright");
+const rules=require("../learning/games/board-coach/janggi-rules.js");
 const base=process.env.BOARD_COACH_TEST_URL||"http://127.0.0.1:8936",url=base+"/learning/games/board-coach/coach?game=janggi";
 const output=path.resolve(__dirname,"../tmp/janggi-coach");fs.mkdirSync(output,{recursive:true});
 const at=(p,x,y)=>p.locator(`[data-square='${y*9+x}']`),errors=[];
@@ -63,12 +64,24 @@ async function main(){
     await page.route("**/janggi-worker.js?*",async route=>{await new Promise(r=>setTimeout(r,800));try{await route.continue();}catch{}});
     await move(page,1,9,2,7);await page.locator("#turn").filter({hasText:"AI가 생각"}).waitFor();await page.locator("#undo").click();
     await page.waitForTimeout(1100);assert.equal(await page.locator("#janggiMoves").textContent(),"아직 둔 수가 없습니다.");await page.unroute("**/janggi-worker.js?*");
-    for(const [name,viewport]of [["chromebook",{width:1366,height:668}],["ipad-landscape",{width:1024,height:768}],["ipad-portrait",{width:820,height:1180}],["phone",{width:390,height:844}]]){
+    for(const [name,viewport]of [["desktop",{width:1567,height:900}],["chromebook",{width:1366,height:668}],["ipad-landscape",{width:1024,height:768}],["ipad-portrait",{width:820,height:1180}],["phone",{width:390,height:844}]]){
       await page.setViewportSize(viewport);
-      const dims=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth,board:document.getElementById("board").getBoundingClientRect().width,piece:document.querySelector(".janggi-piece").getBoundingClientRect().width}));
+      await page.evaluate(()=>window.scrollTo(0,0));
+      const dims=await page.evaluate(()=>{
+        const board=document.getElementById('board').getBoundingClientRect(),area=document.getElementById('boardViewport').getBoundingClientRect();
+        const piece=document.querySelector('.janggi-piece').getBoundingClientRect();
+        return {scroll:document.documentElement.scrollWidth,width:innerWidth,board:board.width,piece:piece.width,pieceHeight:piece.height,
+          available:Math.min(area.width,area.height*.9),top:board.top,bottom:board.bottom,height:innerHeight};
+      });
       assert.ok(dims.scroll<=dims.width+1,JSON.stringify(dims));assert.ok(dims.board>280&&dims.piece>24,JSON.stringify(dims));
-      if(name==='phone')assert.ok((await page.locator('#board').boundingBox()).y>=50,'the back button must not cover the top rank');
+      assert.ok(dims.board>=dims.available-2,'the board must use the available space instead of a fixed pixel cap: '+JSON.stringify(dims));
+      assert.ok(dims.top>=0&&dims.bottom<=dims.height+1,'the whole board must fit without scrolling: '+JSON.stringify(dims));
+      assert.ok(Math.abs(dims.piece-dims.pieceHeight)<1,'piece lettering must not stretch the circular artwork: '+JSON.stringify(dims));
+      if(viewport.height>viewport.width)assert.ok(dims.top>=50,'the back button must not cover the top rank');
       await page.screenshot({path:path.join(output,name+".png"),fullPage:true});
+      await page.locator('#zoom').click();
+      assert.ok((await page.locator('#board').boundingBox()).width>dims.board+20,'zoom must enlarge even an already large board');
+      await page.locator('#zoom').click();
       await page.locator("#newGame").click();assert.equal(await page.locator("#setup #variantNote").count(),0);
       assert.ok(await page.locator("#setup").evaluate(e=>e.scrollWidth<=e.clientWidth));
       await page.locator("#setup").screenshot({path:path.join(output,name+"-setup.png")});await page.locator("#closeSetup").click();
@@ -90,6 +103,26 @@ async function main(){
     await move(mate,3,2,5,0);assert.match(await mate.locator("#turn").textContent(),/외통수 · 내가 이겼어요/);await mate.locator("#undo").click();assert.match(await at(mate,3,2).getAttribute("aria-label"),/초 차/);await mate.close();
     const pass=await fixture(browser,[["cK",4,8],["hK",3,1]],{passes:1});await pass.locator("#janggiPass").click();assert.match(await pass.locator("#turn").textContent(),/양쪽 한 수 쉬기 · 무승부/);await pass.close();
     console.log("janggi: pinned move, check, bikjang confirmation, mate, passing and ended-game undo passed");
+    let repeated=rules.initial();
+    for(const[from,to]of [[82,65],[1,20],[65,82],[20,1]])repeated=rules.play(repeated,{from,to}).state;
+    const loop=await fixture(browser,[],repeated);
+    assert.match(await loop.locator('#turn').textContent(),/같은 판 2회/);
+    await loop.locator('#hint').click();await loop.locator('.suggested').first().waitFor();
+    const fresh={from:Number(await loop.locator('[aria-label$="추천 수 출발"]').getAttribute('data-square')),to:Number(await loop.locator('[aria-label$="추천 수 도착"]').getAttribute('data-square'))};
+    assert.equal(rules.repetitionCount(rules.play(repeated,fresh).state),1,'real worker must find a fresh continuation');
+    await loop.screenshot({path:path.join(output,'repetition-alternative.png')});await loop.close();
+    const drawBoard=Array(90).fill(null);drawBoard[76]='cK';drawBoard[12]='hK';drawBoard[44]='hR';
+    let drawState=rules.position(drawBoard,'h');
+    for(const[from,to]of [[12,3],[76,77],[3,12],[77,76],[12,3],[76,77],[3,12]])drawState=rules.play(drawState,{from,to}).state;
+    const repetition=await fixture(browser,[],drawState);
+    await move(repetition,5,8,4,8);
+    assert.match(await repetition.locator('#turn').textContent(),/같은 판 반복 · 무승부/);
+    assert.match(await repetition.locator('#reason').textContent(),/세 번.*무승부/);
+    assert.equal(await repetition.locator('#hint').isDisabled(),true);
+    await repetition.screenshot({path:path.join(output,'repetition-finished.png')});
+    await repetition.locator('#undo').click();assert.match(await repetition.locator('#turn').textContent(),/같은 판 2회/);
+    await repetition.close();
+    console.log('janggi: repetition warning, fresh worker hint, threefold draw explanation and undo passed');
     for(const game of ["chess","reversi","omok"]){await page.goto(base+"/learning/games/board-coach/coach?game="+game);await page.locator("#setup[open]").waitFor();assert.equal(await page.locator("#humanFormation").count(),0);await page.locator("#startLearning").click();assert.ok(await page.locator("#board button:not(:disabled)").count()>0);}
     assert.deepEqual(errors,[]);
   }finally{await browser.close();}

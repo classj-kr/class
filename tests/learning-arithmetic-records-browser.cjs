@@ -35,6 +35,12 @@ async function main(){
    list=await request('/sessions?activity=arithmetic');s=(await request('/sessions/'+list.sessions[0].id)).session;assert.equal(s.events.length,1);assert.ok(s.events[0].snapshot.problem.choices,route+' '+JSON.stringify(s.events[0].snapshot));
    await p.reload();await saved();await p.getByRole('button',{name:'답안 입력',exact:true}).click();assert.equal(await p.locator('.trig-derivative-choice.is-selected').count(),1);
  }
+ console.log('Checking partial fields and query separation');
+ await p.goto('http://localhost:4176/arithmetic/grade-5-polygon-measurement');await saved();await p.locator('input:not([type=hidden])').first().fill('999');await p.getByRole('button',{name:'전체 채점',exact:true}).click();await saved();
+ list=await request('/sessions?activity=arithmetic');s=(await request('/sessions/'+list.sessions[0].id)).session;assert.equal(s.events.length,1,'only filled half of a two-field problem is recorded');
+ const ids=[];
+ for(const kind of ['plane-geometry','solid-geometry']){await p.goto('http://localhost:4176/arithmetic/middle-school/curriculum-calculations?kind='+kind);await saved();list=await request('/sessions?activity=arithmetic');const found=list.sessions.find(s=>s.contentKey.endsWith('kind='+kind));assert.ok(found);ids.push(found.id);}
+ assert.notEqual(ids[0],ids[1]);
  assert.deepEqual(errors,[]);
  console.log('PASS arithmetic: raw answer, no blank grading events, refresh restore, retry, completion.');
  }finally{await browser.close();await h.close()}

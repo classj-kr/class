@@ -4,10 +4,14 @@
 })(typeof globalThis!=="undefined"?globalThis:this,function(R){
   "use strict";
   const LEVELS=Object.freeze({
-    beginner:{name:"초급",depth:2,nodes:9000,ms:500},
-    intermediate:{name:"중급",depth:4,nodes:65000,ms:1200},
-    advanced:{name:"상급",depth:6,nodes:200000,ms:2500}
+    // Every level retains the same legal moves, development evaluation and
+    // immediate capture/mate safety. Difficulty limits planning, not accuracy
+    // by inserting random mistakes. The coach has its own larger budget.
+    beginner:{name:"초급",depth:1,nodes:3000,ms:250},
+    intermediate:{name:"중급",depth:3,nodes:20000,ms:700},
+    advanced:{name:"상급",depth:4,nodes:65000,ms:1200}
   });
+  const HINT=Object.freeze({depth:8,nodes:600000,ms:5000,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
   const NAMES={R:"차",C:"포",H:"마",E:"상",A:"사",P:"졸",K:"왕"};
   const name=piece=>piece?.[1]==="P"&&piece[0]==="h"?"병":NAMES[piece?.[1]];
@@ -15,13 +19,26 @@
   const subject=word=>word+((word.charCodeAt(word.length-1)-0xac00)%28?"이":"가");
   const label=move=>move.kind==="pass"?"한 수 쉬기":move.kind==="bikjang"?"빅장 수락":`${name(move.piece)} ${R.coord(move.from)} → ${R.coord(move.to)}`;
   const MATE=100000;
-  function evaluate(state){
+  function cannotForceMate(state){
+    const pieces={c:[],h:[]};for(const p of state.board)if(p)pieces[p[0]].push(p[1]);
+    // With only a bare king to attack, one mobile attacker cannot cover every
+    // palace escape. Home-palace guards cannot join that attack. Keep this
+    // conservative: an enemy guard or other piece can change the geometry.
+    return ['c','h'].some(side=>pieces[side].length===1&&pieces[side][0]==='K'&&
+      pieces[R.other(side)].filter(p=>!['K','A'].includes(p)).length<=1);
+  }
+  function evaluate(state,coaching=false){
+    if(coaching&&cannotForceMate(state))return 0;
+    const kings=coaching?{c:state.board.indexOf('cK'),h:state.board.indexOf('hK')}:null;
+    const pressure=coaching?{c:new Uint8Array(90),h:new Uint8Array(90)}:null;
+    const attackers={c:0,h:0},late=coaching&&state.board.filter(Boolean).length<=14;
     let score=0;
     for(let i=0;i<90;i++){
       const p=state.board[i];if(!p)continue;
       const side=p[0],t=p[1],x=i%9,y=Math.floor(i/9),home=side==="c"?9-y:y;
-      const mobility=R.targets(state.board,i).length;
+      const reach=R.targets(state.board,i),mobility=reach.length;
       let value=VALUES[t];
+      if(late&&t==='A')value=160;
       if(t==="H")value+=mobility*8+(4-Math.abs(4-x))*8+(home>0?35:-25);
       if(t==="E")value+=mobility*7+(home>0?18:0);
       if(t==="R")value+=mobility*4+(home>0?24:0);
@@ -35,6 +52,29 @@
         value-=home===2?25:0;
         for(let a=0;a<90;a++)if(state.board[a]===side+"A"&&Math.abs(a%9-x)<=1&&Math.abs(Math.floor(a/9)-y)<=1)value+=16;
       }
+      if(coaching&&!['K','A'].includes(t)){
+        const king=kings[R.other(side)],ky=Math.floor(king/9),kx=king%9;
+        let nearPalace=false;
+        for(const to of reach)if(to%9>=3&&to%9<=5&&(side==='c'?to<27:to>=63)){
+          pressure[side][to]++;nearPalace=true;
+        }
+        if(nearPalace)attackers[side]++;
+        if(late){
+          // Bring the mobile pieces together around the enemy palace. Empty
+          // squares far from that palace must not outweigh a mating attack.
+          const distance=Math.abs(x-kx)+Math.abs(y-ky);
+          value+=(13-distance)*({R:4,C:5,H:9,E:7,P:8}[t]||0);
+        }
+      }
+      score+=side===state.turn?value:-value;
+    }
+    if(coaching)for(const side of ['c','h']){
+      const enemy=R.other(side),king=kings[enemy];
+      const exits=R.targets(state.board,king),covered=exits.filter(i=>pressure[side][i]).length;
+      const attacked=pressure[side][king]>0;
+      const coordination=Math.min(3,attackers[side]);
+      const value=pressure[side].filter(Boolean).length*6+covered*18+
+        (attacked?24:0)+coordination*coordination*14;
       score+=side===state.turn?value:-value;
     }
     return score;
@@ -66,18 +106,40 @@
     const recaptured=R.boardMoves(next).some(m=>m.to===move.to&&m.capture);
     return VALUES[move.capture[1]]-(recaptured?VALUES[move.piece[1]]:0);
   }
-  function fallbackScore(state,move){
+  function fallbackScore(state,move,coaching=false,drawScore=0){
     const next=R.advance(state,move),end=R.status(next);
-    if(end.ended)return end.winner?(end.winner===state.turn?MATE:-MATE):0;
+    if(end.ended)return end.winner?(end.winner===state.turn?MATE:-MATE):drawScore;
+    if(coaching&&cannotForceMate(next))return drawScore;
     let loss=0;
     for(const reply of R.boardMoves(next))if(reply.capture)loss=Math.max(loss,captureGain(next,reply));
-    return -evaluate(next)-loss-(move.kind==="pass"?30:0);
+    return -evaluate(next,coaching)-loss-(move.kind==="pass"?30:0);
+  }
+  function repetitionCost(state,move){
+    const next=R.advance(state,move);
+    // A legitimate draw may be the only way to save the game. Terminal results
+    // retain their full value, and every legal defense remains available.
+    if(R.status(next).ended)return 0;
+    const repeated=R.repetitionCount(next)>1;
+    const previous=state.history.findLast(h=>h.mover===state.turn)?.move;
+    const reversed=!move.kind&&!move.capture&&previous&&!previous.kind&&
+      previous.from===move.to&&previous.to===move.from&&previous.piece===move.piece;
+    // Less than a third of a soldier's value: prefer a fresh, comparable plan,
+    // but keep a necessary retreat over losing material or allowing mate.
+    return repeated?48:reversed?18:0;
   }
   function choose(state,level="beginner",options={}){
     if(R.status(state).ended)return null;
-    const settings=LEVELS[level]||LEVELS.beginner,candidates=roots(state);
+    const settings={...(LEVELS[level]||LEVELS.beginner),...options},candidates=roots(state);
+    const drawScore=settings.coaching?-120:0;
     if(!candidates.length)return null;
-    const ranked=candidates.map(move=>({move,score:fallbackScore(state,move)})).sort((a,b)=>b.score-a.score);
+    const ranked=candidates.map(move=>{
+      // An unforced king shuffle should not win a near tie over developing or
+      // defending with another piece. Captures and every check escape keep
+      // their value; this is far smaller than even one soldier.
+      const idleKing=move.piece?.[1]==="K"&&!move.capture&&!R.inCheck(state);
+      const cost=repetitionCost(state,move)+(idleKing?(settings.kingTempo||0):0);
+      return {move,cost,score:fallbackScore(state,move,settings.coaching,drawScore)-cost};
+    }).sort((a,b)=>b.score-a.score);
     if(ranked[0].score>=MATE)return {move:ranked[0].move,reason:explain(state,ranked[0].move),depth:1,nodes:0};
     let best=ranked[0].move,nodes=0,completed=0;
     const stop={},deadline=Date.now()+(options.ms??settings.ms),budget=options.nodes??settings.nodes;
@@ -93,16 +155,25 @@
     function search(s,depth,alpha,beta,ply,qleft=3){
       if(++nodes>budget||(nodes%32===0&&Date.now()>deadline))throw stop;
       const end=R.status(s);
-      if(end.ended)return end.winner?(end.winner===s.turn?MATE-ply:-MATE+ply):0;
-      const checked=R.inCheck(s),moves=R.actions(s);
+      if(end.ended)return end.winner?(end.winner===s.turn?MATE-ply:-MATE+ply):(s.turn===state.turn?drawScore:-drawScore);
+      if(settings.coaching&&cannotForceMate(s))return s.turn===state.turn?drawScore:-drawScore;
+      const checked=R.inCheck(s),moves=settings.coaching?null:R.actions(s);
       let value=-Infinity;
       if(depth<=0){
-        const stand=evaluate(s);
+        const stand=evaluate(s,settings.coaching);
         if(!checked){value=stand;if(value>=beta)return value;alpha=Math.max(alpha,value);}
         if(qleft<=0)return checked?stand-100:value;
       }
-      const key=R.key(s);let bestMove=null;
-      for(const move of searchOrder(depth>0||checked?moves:moves.filter(m=>m.capture||m.kind==="bikjang"),key,ply)){
+      const key=R.key(s),legal=moves||R.actions(s);let bestMove=null;
+      const forcing=move=>{
+        if(move.capture||move.kind==='bikjang')return true;
+        // Finish short forcing checks at the horizon at every search level.
+        // Lowering strategic depth must not teach ignoring an immediate mate.
+        if(qleft<2||move.kind)return false;
+        const board=s.board.slice();board[move.to]=board[move.from];board[move.from]=null;
+        return R.inCheck({board,turn:R.other(s.turn)});
+      };
+      for(const move of searchOrder(depth>0||checked?legal:legal.filter(forcing),key,ply)){
         const score=-search(R.advance(s,move),depth-1,-beta,-alpha,ply+1,depth<=0?qleft-1:qleft);
         if(score>value){value=score;bestMove=move;}
         alpha=Math.max(alpha,score);
@@ -122,8 +193,9 @@
     for(let depth=2;depth<=settings.depth;depth++){
       let top=-Infinity,candidate=best;
       try{
-        for(const {move} of ranked.slice().sort((a,b)=>Number(R.same(b.move,best))-Number(R.same(a.move,best)))){
-          const score=-search(R.advance(state,move),depth-1,-Infinity,-top,1);
+        for(const {move,cost} of ranked.slice().sort((a,b)=>Number(R.same(b.move,best))-Number(R.same(a.move,best)))){
+          // Shift the search window as well as the result by the root cost.
+          const score=-search(R.advance(state,move),depth-1,-Infinity,-(top+cost),1)-cost;
           if(score>top){top=score;candidate=move;}
         }
         best=candidate;completed=depth;
@@ -131,8 +203,14 @@
     }
     return {move:best,reason:explain(state,best),depth:completed,nodes};
   }
+  function chooseHint(state,options={}){
+    return choose(state,"advanced",{...HINT,...options});
+  }
   function explain(state,move){
     const next=R.advance(state,move),end=R.status(next);
+    if(end.reason==="repetition")return "같은 말 배치에서 같은 편이 둘 차례가 세 번 나와 무승부로 끝났어요.";
+    if(end.reason==="perpetual-check")return "같은 판을 반복하는 동안 한쪽이 계속 장군을 불렀어요. 이 대국의 반복 장군 규칙에 따라 장군을 반복한 쪽이 졌어요.";
+    if(end.reason==="quiet")return "말을 잡지 않고 100수가 이어져 이 대국은 무승부로 끝났어요.";
     if(move.kind==="bikjang")return "두 왕 사이가 비어 있어요. 빅장을 받아들이면 이 대국은 무승부로 끝나요.";
     if(move.kind==="pass")return end.ended?"양쪽이 연속으로 쉬어 무승부로 끝나요.":"말을 움직이지 않고 차례를 넘겨요. 장군을 받고 있을 때는 쉴 수 없어요.";
     const piece=name(move.piece),at=R.coord(move.to);
@@ -168,5 +246,5 @@
     }
     return null;
   }
-  return {LEVELS,VALUES,NAMES,name,label,evaluate,choose,explain,review,mateInOne,roots};
+  return {LEVELS,HINT,VALUES,NAMES,name,label,evaluate,cannotForceMate,choose,chooseHint,explain,review,mateInOne,roots};
 });

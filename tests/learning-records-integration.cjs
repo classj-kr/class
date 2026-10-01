@@ -82,6 +82,13 @@ async function main() {
     await h.pool.query("UPDATE learning_record_events SET recorded_at = '2026-09-30 15:00:01+00' WHERE session_id=$1 AND attempt_number=2", [id]);
     result = await request('/teacher/report?classId=10:2026:4:1&from=2026-10-01&to=2026-10-01', null, 3);
     assert.equal(result.data.sessions.find(s => s.id === id).summary.firstScored, 0); assert.equal(result.data.sessions.find(s => s.id === id).summary.retryCount, 1);
+    const oldActive = (await request('/sessions', start)).data.session;
+    await h.pool.query('UPDATE school_students SET class_number=2 WHERE id=1');
+    const newClass = (await request('/sessions', start)).data.session;
+    assert.notEqual(newClass.id, oldActive.id, 'new class starts its own activity');
+    assert.equal((await request(`/sessions/${oldActive.id}/changes`, { ...change, revision: oldActive.revision, mutationId: crypto.randomUUID() })).status, 409, 'previous class cannot receive new answers');
+    assert.equal((await request(`/teacher/sessions/${newClass.id}`, null, 3)).status, 404, 'previous teacher cannot see new class activity');
+    assert.equal((await request('/word-progress?activity=vocabulary', null, 0)).status, 401);
     console.log('PASS common records: SQL, both rosters, account/class isolation, resume, idempotency, conflicts, retry semantics, KST dates, no-store.');
   } finally { await h.close(); }
 }

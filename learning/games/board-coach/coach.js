@@ -15,21 +15,22 @@
   document.title = `${name} · AI와 배우기`;
   $("title").textContent = name;
   $("backLink").href = `../${game}/${game}`;
+  BoardCoachUI.useOriginalTheme(game);
   $("principle").textContent = principle;
-  $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>초급도 기본 공격·방어를 확인합니다. 수준이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌 위의 주황 점은 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
+  $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>초급도 기본 공격·방어를 확인합니다. 수준이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
   function stopWork() {
     if (busy && retryKind === "hint") setReason("힌트 계산 취소", "계산을 멈췄어요", "힌트를 누르면 다시 계산합니다.");
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
   }
   function drawBoard(position, mark = null) {
-    const board = $("board"); board.className = game; board.style.setProperty("--size", position.size);
+    const board = $("board"); board.className = `${game} board`; board.style.setProperty("--size", position.size);
     board.setAttribute("aria-label", `${position.size}줄 ${name}판`);
     const legal = new Set(R.legal(position)), canPlay = started && !busy && !state.ended && state.color === human && !reviewPosition;
     const line = new Set(position.line);
     board.innerHTML = position.board.map((v, index) => {
       const row = Math.floor(index / position.size), col = index % position.size;
       const star = game === "omok" && [48, 56, 112, 168, 176].includes(index);
-      return `<button type="button" role="gridcell" class="square${legal.has(index) ? " legal" : ""}${position.last === index ? " last" : ""}${mark === index ? " suggested" : ""}${line.has(index) ? " winning" : ""}" data-index="${index}" ${canPlay && legal.has(index) ? "" : "disabled"} aria-label="${R.coord(index, position.size)} · ${v ? (v === 1 ? "흑돌" : "백돌") : legal.has(index) ? "둘 수 있는 곳" : "둘 수 없는 곳"}">${row === 0 ? `<span class="axis column" aria-hidden="true">${String.fromCharCode(65 + col)}</span>` : ""}${col === 0 ? `<span class="axis row" aria-hidden="true">${row + 1}</span>` : ""}${v ? `<span class="stone ${v === 1 ? "black" : "white"}"></span>` : star ? '<span class="star"></span>' : game === "reversi" && legal.has(index) ? '<span class="legal-dot"></span>' : ""}</button>`;
+      return `<button type="button" role="gridcell" class="square ${game === "omok" ? "point" : "cell"}${legal.has(index) ? " legal" : ""}${position.last === index ? " last" : ""}${mark === index ? " suggested" : ""}${line.has(index) ? " winning" : ""}" data-index="${index}" data-row="${row}" data-col="${col}" ${canPlay && legal.has(index) ? "" : "disabled"} title="${R.coord(index, position.size)}" aria-label="${R.coord(index, position.size)} · ${v ? (v === 1 ? "흑돌" : "백돌") : legal.has(index) ? "둘 수 있는 곳" : "둘 수 없는 곳"}">${v ? `<span class="stone ${game === "reversi" ? "disc " : ""}${v === 1 ? "black" : "white"}"></span>` : star ? '<span class="starDot"></span>' : game === "reversi" && legal.has(index) ? '<span class="hint"></span>' : ""}${mark === index && game === "omok" ? '<span class="hint-ring" aria-hidden="true"></span>' : ""}</button>`;
     }).join("");
   }
   function setReason(label, title, text) { $("reasonLabel").textContent = label; $("moveLabel").textContent = title; $("reason").textContent = text; }
@@ -65,7 +66,7 @@
     render();
     if (kind === "hint") setReason("힌트를 생각하고 있어요", "잠깐만 기다려 주세요", "공격할 곳과 상대의 위협을 함께 살펴보고 있어요.");
     try {
-      worker = new Worker("ai-worker.js?v=2");
+      worker = new Worker("ai-worker.js?v=4");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;
@@ -82,7 +83,7 @@
       };
       worker.onerror = () => { if (id === token) failJob("계산을 다시 시도해 주세요. 수 물리기와 새 대국도 사용할 수 있어요."); };
       timeout = setTimeout(() => { if (id === token) failJob("계산이 오래 걸리고 있어요. 다시 시도하거나 다른 수준을 골라보세요."); }, 10000);
-      worker.postMessage({ token: id, state, level });
+      worker.postMessage({ token: id, state, level, kind });
     } catch { failJob("이 브라우저에서 계산을 시작하지 못했어요. 페이지를 다시 열어 주세요."); }
   }
   function continueComputer() {
@@ -94,8 +95,9 @@
   function place(index) {
     if (!started || busy || state.ended || state.color !== human || reviewPosition || !R.legal(state).includes(index)) return;
     $("retry").classList.add("hidden");
-    hint = null; feedback = AI.review(state, index);
-    const before = state, reason = AI.explain(state, index);
+    const followed=hint?.index===index;
+    const before = state, reason = followed?hint.reason:AI.explain(state, index);
+    hint = null; feedback = followed?null:AI.review(state, index);
     state = R.play(state, index);
     moves.push({ before, index, color: human, feedback, reason });
     setReason("내가 둔 수", `${coordinate(index)}에 두었어요`, feedback?.text || reason);

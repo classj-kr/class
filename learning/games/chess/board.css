@@ -1,0 +1,23 @@
+/* Board and piece artwork shared by online and AI games. */
+:where(.chess-surface) .chessboard{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:min(70dvh,calc(100dvw - 350px));max-width:720px;aspect-ratio:1;border:9px ridge #65401f;box-shadow:0 14px 34px #000,inset 0 0 0 1px #000;user-select:none;touch-action:manipulation}
+:where(.chess-surface) .square{position:relative;display:grid;place-items:center;min-width:0;padding:0;border:0;cursor:pointer;color:#1b1b1b}
+:where(.chess-surface) .square.light{background:var(--light)}
+:where(.chess-surface) .square.dark{background:var(--dark)}
+:where(.chess-surface) .square:focus-visible{outline:4px solid #65b9ff;outline-offset:-4px;z-index:8}
+:where(.chess-surface) .square.selected::before{content:"";position:absolute;inset:5%;border:4px solid #ffd950;background:#ffdf543f;z-index:1}
+:where(.chess-surface) .square.last::before{content:"";position:absolute;inset:0;background:#f6e75c66;z-index:0}
+:where(.chess-surface) .square.check::before{content:"";position:absolute;inset:4%;border-radius:50%;background:#d73d36aa;box-shadow:inset 0 0 0 4px #ffb0aa;z-index:0}
+:where(.chess-surface) .square.legal-empty::after{content:"";position:absolute;width:22%;aspect-ratio:1;border-radius:50%;background:#246fa7bb;box-shadow:0 0 0 3px #fff7;z-index:2}
+:where(.chess-surface) .square.legal-capture::after{content:"";position:absolute;inset:7%;border:5px solid #d93e35;border-radius:50%;box-shadow:0 0 12px #d93e35;z-index:2}
+:where(.chess-surface) .coord{position:absolute;z-index:4;font:800 clamp(8px,1.1vw,12px) Consolas,monospace;opacity:.8;pointer-events:none}
+:where(.chess-surface) .coord.file{right:3px;bottom:2px}
+:where(.chess-surface) .coord.rank{left:3px;top:2px}
+:where(.chess-surface) .light .coord{color:#5d7742}
+:where(.chess-surface) .dark .coord{color:#f4f1d5}
+:where(.chess-surface) .piece-svg{position:relative;z-index:3;width:82%;height:82%;overflow:visible;filter:drop-shadow(0 4px 2px #0007);transition:transform .12s ease}
+:where(.chess-surface) .square:hover .piece-svg{transform:translateY(-2px)}
+:where(.chess-surface) .piece-svg.white{--piece-fill:#f8f1da;--piece-edge:#352d25;--piece-detail:#917a58}
+:where(.chess-surface) .piece-svg.black{--piece-fill:#273242;--piece-edge:#090d13;--piece-detail:#b9c4d0}
+:where(.chess-surface) .piece-body{fill:var(--piece-fill);stroke:var(--piece-edge);stroke-width:2.2;stroke-linejoin:round}
+:where(.chess-surface) .piece-detail{fill:none;stroke:var(--piece-detail);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+

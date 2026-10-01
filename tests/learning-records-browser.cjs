@@ -96,7 +96,7 @@ async function main() {
     await teacherPage.goto(h.base + '/classtools/learning-reports.html');
     await teacherPage.locator('.record-card').first().waitFor();
     await teacherPage.screenshot({ path: path.join(output, 'teacher-report-desktop.png'), fullPage: true });
-    await teacherPage.getByRole('button', { name: '영역별 보고서', exact: true }).click();
+    await teacherPage.getByRole('button', { name: '영역별', exact: true }).click();
     await teacherPage.getByRole('button', { name: '수리', exact: true }).click();
     assert.match(await teacherPage.locator('#records').innerText(), /수학 기초 OX/);
     await teacherPage.getByRole('button', { name: '문항·응답 보기' }).first().click();

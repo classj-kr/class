@@ -20,5 +20,13 @@
     // Only explicit hint/review requests move the view; normal AI turns do not.
     requestAnimationFrame(() => document.querySelector(".explanation")?.scrollIntoView({ block: "nearest", inline: "nearest" }));
   }
-  window.BoardCoachUI = { markMove, revealExplanation };
+  function useOriginalTheme(game) {
+    document.body.classList.add("original-coach", `${game}-surface`);
+    document.querySelector(".board-frame").classList.add("boardFrame");
+    const sidebar=document.querySelector(".sidebar");
+    // Keep navigation inside the compact controls, with the game's own board prominent.
+    document.querySelector(".controls").append(document.getElementById("backLink"));
+    sidebar.prepend(document.querySelector(".topbar"),document.querySelector(".matchbar"),document.querySelector(".lesson"),document.querySelector(".controls"));
+  }
+  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme };
 })();

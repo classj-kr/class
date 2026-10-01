@@ -6,7 +6,7 @@
   let catalog = [], data = { roster: [], sessions: [] }, mode = 'student', selected = null, generation = 0;
   const stamp = value => new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
   $('fromDate').value = $('toDate').value = LearningRecords.today();
-  function status(text, error = false) { $('status').textContent = text; $('status').classList.toggle('error', error); }
+  function status(text, error = false) { $('status').textContent = text; $('status').hidden = !text; $('status').classList.toggle('error', error); }
   function students() {
     const map = new Map();
     for (const row of data.roster) map.set(row.user_id || `${row.student_number}:${row.student_name}`, { id: row.user_id, name: row.student_name, number: row.student_number });
@@ -21,11 +21,11 @@
     const first = filtered.reduce((sum, s) => sum + s.summary.firstScored, 0), right = filtered.reduce((sum, s) => sum + s.summary.firstCorrect, 0);
     const inRange = value => value && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) >= data.range?.from && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) <= data.range?.to;
     $('summary').replaceChildren(...[
-      [`${ids.size} / ${roster.length}`, '활동한 학생', '선택한 기간의 기록'],
-      [String(filtered.filter(s => s.status === 'completed' && inRange(s.completedAt)).length), '완료한 활동', '기간 내 완료 기준'],
-      [`${right} / ${first}`, '처음 맞힌 문제', '첫 풀이의 정답 / 채점된 문제'],
-      [String(filtered.reduce((sum, s) => sum + s.summary.retryCount, 0)), '다시 풀이', '같은 활동에서 다시 제출한 횟수']
-    ].map(([value, title, note]) => { const card = node('article'); card.append(node('p', title), node('strong', value), node('small', note)); return card; }));
+      [`${ids.size} / ${roster.length}`, '활동 학생'],
+      [String(filtered.filter(s => s.status === 'completed' && inRange(s.completedAt)).length), '완료 활동'],
+      [`${right} / ${first}`, '처음 맞힘'],
+      [String(filtered.reduce((sum, s) => sum + s.summary.retryCount, 0)), '재풀이']
+    ].map(([value, title]) => { const card = node('article'); card.append(node('p', title), node('strong', value)); return card; }));
     $('studentTab').setAttribute('aria-pressed', String(mode === 'student')); $('areaTab').setAttribute('aria-pressed', String(mode === 'area'));
     $('areaFilter').hidden = mode !== 'area'; $('listTitle').textContent = mode === 'student' ? '학생' : '영역'; $('listCount').textContent = mode === 'student' ? `${roster.length}명` : '';
     const list = $('studentList'); list.replaceChildren();
@@ -38,7 +38,7 @@
         button.setAttribute('aria-pressed', String(selected === key)); button.onclick = () => { selected = key; render(); }; list.append(button);
       }
       const student = roster.find(s => (s.id || `${s.number}:${s.name}`) === selected);
-      heading(student ? `${student.number}번 ${student.name}` : '학생별 보고서', `${data.range?.from || ''} — ${data.range?.to || ''}`);
+      heading(student ? `${student.number}번 ${student.name}` : '');
       renderRecords(all.filter(s => s.userId === student?.id), false);
     } else {
       const domains = ['전체', ...new Set(catalog.map(s => s.domain))];
@@ -51,43 +51,43 @@
       renderRecords(rows, true);
     }
   }
-  function heading(title, subtitle) { $('reportHeading').replaceChildren(node('h2', title), node('p', subtitle)); }
+  function heading(title, subtitle) { $('reportHeading').hidden = !title; $('reportHeading').replaceChildren(...(title ? [node('h2', title)] : [])); if (subtitle) $('reportHeading').append(node('p', subtitle)); }
   function renderRecords(rows, showName) {
     const target = $('records'); target.replaceChildren();
-    if (!rows.length) { target.append(node('p', '선택한 기간에 저장된 학습 기록이 없어요.', 'empty')); return; }
+    if (!rows.length) { target.append(node('p', '기록 없음', 'empty')); return; }
     for (const row of rows) {
-      const card = node('article', null, 'record-card'), top = node('div', null, 'record-top'), title = node('div');
+      const card = node('article', null, 'record-card'), title = node('div', null, 'record-title');
       title.append(node('p', `${showName ? `${row.studentNumber}번 ${row.studentName} · ` : ''}${row.domain} · ${stamp(row.updatedAt)}`, 'meta'), node('h3', row.title));
-      top.append(title, node('span', row.status === 'completed' ? '완료' : '진행 중', `badge ${row.status}`));
+      const badge = node('span', row.status === 'completed' ? '완료' : '진행 중', `badge ${row.status}`);
       const metrics = node('div', null, 'metrics'), s = row.summary;
       if (s.firstScored) metrics.append(node('span', `처음 맞힘 ${s.firstCorrect}/${s.firstScored}`));
       if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`));
       if (s.readCount) metrics.append(node('span', `열어 본 부분 ${s.readCount}개`));
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
       if (s.hints) metrics.append(node('span', `도움말 ${s.hints}회`));
-      if (!metrics.children.length) metrics.append(node('span', '아직 제출한 응답 없음'));
+      if (!metrics.children.length) metrics.append(node('span', '응답 없음'));
       const detail = node('button', '문항·응답 보기', 'detail-button'); detail.onclick = () => showDetail(row.id);
-      card.append(top, metrics, detail); target.append(card);
+      card.append(title, metrics, badge, detail); target.append(card);
     }
   }
   async function showDetail(id) {
     const body = $('detailBody'); body.replaceChildren(node('p', '응답을 불러오는 중…')); $('detailDialog').showModal();
     try {
-      const { session } = await request(`/teacher/sessions/${id}`); body.replaceChildren(node('h3', session.title), node('p', '이 활동의 전체 응답 이력입니다.', 'footnote'));
+      const { session } = await request(`/teacher/sessions/${id}`); body.replaceChildren(node('h3', session.title), node('p', '전체 기간', 'detail-scope'));
       for (const e of session.events) {
         const block = node('article', null, 'answer');
         block.append(node('small', stamp(e.recordedAt)), node('p', e.snapshot.prompt || e.snapshot.title || e.questionKey), node('p', `응답: ${LearningRecords.responseText(e.response)}`));
         block.append(node('p', e.kind === 'answer' ? `${e.attemptNumber}번째 풀이 · ${e.correct === null ? '채점 없음' : e.correct ? '정답' : '오답'}` : ({ read: '열어 본 부분', 'self-assessment': '스스로 점검', hint: '도움말 확인' }[e.kind]), 'outcome'));
         body.append(block);
       }
-      if (!session.events.length) body.append(node('p', '아직 제출한 응답이 없어요.', 'empty'));
+      if (!session.events.length) body.append(node('p', '응답 없음', 'empty'));
     } catch (error) { body.replaceChildren(node('p', error.message)); }
   }
   async function load() {
-    const current = ++generation; $('load').disabled = true; status('학습 기록을 불러오는 중…');
+    const current = ++generation; $('load').disabled = true; status('불러오는 중…');
     try {
       const result = await request(`/teacher/report?classId=${encodeURIComponent($('classSelect').value)}&from=${$('fromDate').value}&to=${$('toDate').value}`);
-      if (current !== generation) return; data = result; render(); status(`${data.range.from} — ${data.range.to} · ${data.sessions.length}개 활동`);
+      if (current !== generation) return; data = result; render(); status('');
     } catch (error) { if (current === generation) { data = { roster: [], sessions: [] }; render(); status(error.message, true); } }
     finally { if (current === generation) $('load').disabled = false; }
   }
