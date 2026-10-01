@@ -17,7 +17,7 @@
   const me = () => state?.players.find(p => p.id === myId());
   const isTurn = () => state?.turnPlayerId === myId();
   const playerName = id => state?.players.find(p => p.id === id)?.name || "플레이어";
-  const coin = n => `<img src="${art("coin-v1.png")}" alt="">${n}금화`;
+  const coin = n => `<img src="${art("coin-v1.webp")}" alt="">${n}금화`;
   const kindsText = kinds => kinds.length ? kinds.map(k => beans[k].name).join(" · ") : "없음";
   function toast(text) {
     clearTimeout(toastTimer); $("toast").textContent = text; $("toast").classList.remove("hidden");
