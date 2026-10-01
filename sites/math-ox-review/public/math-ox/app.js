@@ -1432,11 +1432,20 @@
     {
       id: 155,
       subject: "초6",
-      topic: "분수의 나눗셈 계산",
-      prompt: "$\\frac{2}{3}\\div\\frac{4}{5}$를 계산할 때는 나누어지는 수 $\\frac{2}{3}$을 뒤집어 $\\frac{3}{2}\\times\\frac{4}{5}=\\frac{12}{10}=\\frac{6}{5}$로 계산해야 한다.",
+      topic: "컵에 따를 수 있는 횟수",
+      prompt: "물 6 L를 한 컵에 $\\frac{3}{4}$ L씩 따르면 몇 컵이 나오는지 구하는 식은 $6 \\div \\frac{3}{4}=8$이다.",
+      answer: "O",
+      pitfall: "컵 수를 구할 때 물의 전체 양에 한 컵의 양을 곱하기 쉽습니다.",
+      reason: "6 L에 $\\frac{3}{4}$ L가 몇 번 들어가는지 구하므로 $6 \\div \\frac{3}{4}=8$입니다. $\\frac{3}{4}$ L씩 8컵을 채우면 정확히 6 L입니다."
+    },
+    {
+      id: 462,
+      subject: "초6",
+      topic: "몫과 남은 물의 양",
+      prompt: "물 5 L를 $\\frac{2}{3}$ L씩 컵에 따르면 몇 컵이 나오는지 구하는 식은 $5 \\div \\frac{2}{3}=7\\frac{1}{2}$인데, 이것은 물 7컵과 남은 물 $0.5$ L를 뜻한다.",
       answer: "X",
-      pitfall: "나누는 분수가 아니라 나누어지는 분수를 뒤집어 계산하는 실수를 하기 쉽습니다.",
-      reason: "분수의 나눗셈은 나누는 수(뒤의 분수) $\\frac{4}{5}$를 뒤집어 곱해야 합니다. $\\frac{2}{3}\\times\\frac{5}{4}=\\frac{10}{12}=\\frac{5}{6}$이 올바른 계산이며, 나누어지는 수를 뒤집는 것은 잘못된 방법입니다."
+      pitfall: "몫의 $\\frac{1}{2}$컵을 물의 양 $\\frac{1}{2}$ L로 읽기 쉽습니다.",
+      reason: "$7\\frac{1}{2}$컵은 가득 채운 7컵과 반 컵 분량입니다. 반 컵의 물은 $\\frac{1}{2}\\times\\frac{2}{3}=\\frac{1}{3}$ L이므로 남은 물은 $0.5$ L가 아니라 $\\frac{1}{3}$ L입니다."
     }
   ];
 
@@ -1547,10 +1556,16 @@
           { left: "$", right: "$", display: false },
         ],
         preProcess: function (math) {
-          if (/\\(int|iint|iiint|oint|sum|prod|lim|bigcap|bigcup)(?![a-zA-Z])/.test(math) && !math.includes("\\displaystyle") && !math.includes("\\textstyle")) {
-            return "\\displaystyle " + math;
+          let processed = math.replace(/(^|[^\w\\])(\d+)\/(\d+)(?!\w)/g, (_, prefix, numerator, denominator) =>
+            `${prefix}\\dfrac{${numerator}}{${denominator}}`
+          );
+          if (currentSubject.startsWith("초")) {
+            processed = processed.replace(/\\frac(?![a-zA-Z])/g, "\\dfrac");
           }
-          return math;
+          if (/\\(int|iint|iiint|oint|sum|prod|lim|bigcap|bigcup)(?![a-zA-Z])/.test(processed) && !processed.includes("\\displaystyle") && !processed.includes("\\textstyle")) {
+            return "\\displaystyle " + processed;
+          }
+          return processed;
         },
         throwOnError: false,
       });
