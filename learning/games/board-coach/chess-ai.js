@@ -8,6 +8,8 @@
     intermediate: { name: "중급", depth: 3, nodes: 35000, ms: 1100 },
     advanced: { name: "상급", depth: 4, nodes: 120000, ms: 2400 }
   });
+  // Teaching advice is independent of the strength selected for the opponent.
+  const HINT = Object.freeze({ depth:6, nodes:360000, ms:4800, kingTempo:24 });
   const VALUES = { P:100, N:320, B:330, R:500, Q:900, K:0 };
   const NAMES = { P:"폰", N:"나이트", B:"비숍", R:"룩", Q:"퀸", K:"킹" };
   const MATE = 100000, book = new Map();
@@ -102,7 +104,7 @@
   }
   function choose(state, level="beginner", options={}) {
     if(C.status(state).ended) return null;
-    const settings=LEVELS[level]||LEVELS.beginner;
+    const settings={...(LEVELS[level]||LEVELS.beginner),...options};
     const roots=rootCandidates(state);
     const finish=C.advance(state,roots[0]);
     if(C.isInCheck(finish) && !C.allLegalMoves(finish).length) return { move:roots[0], reason:explain(state,roots[0]), depth:1, nodes:0 };
@@ -110,6 +112,9 @@
     if(learned && roots.some(m=>same(m,learned))) return { move:roots.find(m=>same(m,learned)), reason:explain(state,learned), depth:0, nodes:0 };
     const currentClaim=C.drawClaims(state).find(c=>!c.move);
     if(options.allowClaim!==false && currentClaim && evaluate(state)<-150) return { claim:true, reason:"이 판은 무승부를 선언할 수 있어요. 기물이 불리한 상황에서 무승부로 마칩니다." };
+    const middleGame=state.board.reduce((sum,p)=>sum+(p&&p[1]!=="P"?VALUES[p[1]]:0),0)>=2400;
+    const checked=C.isInCheck(state);
+    const costs=new Map(roots.map(move=>[move,middleGame&&!checked&&move.piece[1]==="K"&&!move.capture&&!move.castle?(settings.kingTempo||0):0]));
     let nodes=0, best=roots[0], completed=0;
     const stop={}, deadline=Date.now()+(options.ms??settings.ms), maxNodes=options.nodes??settings.nodes;
     function tick() { if(++nodes>maxNodes || (nodes%32===0 && Date.now()>deadline)) throw stop; }
@@ -151,20 +156,24 @@
         const gain=VALUES[reply.capture[1]]+(reply.promotion?VALUES[reply.promotion]-VALUES.P:0);
         loss=Math.max(loss,gain-(recaptured?VALUES[reply.promotion||reply.piece[1]]:0));
       }
-      return {move,score:-evaluate(next)-loss};
+      return {move,score:-evaluate(next)-loss-costs.get(move)};
     }).sort((a,b)=>b.score-a.score)[0].move;
     for(let depth=2;depth<=settings.depth;depth++) {
       let candidate=best, top=-Infinity;
       try {
         const ordered=roots.slice().sort((a,b)=>Number(same(b,best))-Number(same(a,best)));
         for(const move of ordered) {
-          const score=-search(C.advance(state,move),depth-1,-Infinity,-top,1);
+          const cost=costs.get(move);
+          const score=-search(C.advance(state,move),depth-1,-Infinity,-(top+cost),1)-cost;
           if(score>top) { top=score; candidate=move; }
         }
         best=candidate; completed=depth;
       } catch(error) { if(error!==stop) throw error; break; }
     }
     return { move:best, reason:explain(state,best), depth:completed, nodes };
+  }
+  function chooseHint(state,options={}) {
+    return choose(state,"advanced",{...HINT,...options});
   }
   function explain(state,move) {
     const next=C.advance(state,move), at=C.squareName(move.to), piece=NAMES[move.piece[1]];
@@ -205,5 +214,5 @@
     }
     return null;
   }
-  return { LEVELS, NAMES, VALUES, choose, explain, review, evaluate, same, label, mateInOne, book };
+  return { LEVELS, HINT, NAMES, VALUES, choose, chooseHint, explain, review, evaluate, same, label, mateInOne, book };
 });

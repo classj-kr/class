@@ -8,6 +8,7 @@
     intermediate: { name: "중급", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
     advanced: { name: "상급", reversi: 6, omok: 4, nodes: 90000, ms: 1800, width: 12 }
   });
+  const HINT = Object.freeze({ reversi:12, omok:6, nodes:400000, ms:4500, width:16, coaching:true });
   const corners = [0, 7, 56, 63], WIN = 10000000;
   const book = new Map();
   // Randy Fang, Othello: From Beginner to Master, pp. 44–46:
@@ -100,7 +101,7 @@
     });
     return count;
   }
-  function reversiValue(state, color) {
+  function reversiValue(state, color, coaching=false) {
     const b = state.board, opp = 3 - color, empty = b.filter(v => !v).length;
     let score = (R.legal(state, color).length - R.legal(state, opp).length) * 18;
     score -= (frontier(b, color) - frontier(b, opp)) * (empty > 16 ? 7 : 2);
@@ -116,16 +117,32 @@
     }
     const difference = b.filter(v => v === color).length - b.filter(v => v === opp).length;
     score += difference * (empty < 14 ? 12 : 0.2);
+    if(coaching){
+      // Chains of same-colour edge discs connected to a corner cannot flip.
+      const stable=new Set();
+      for(const corner of corners)if(b[corner]){
+        for(const step of [corner%8? -1:1,corner<8?8:-8]){
+          for(let n=0;n<8;n++){const i=corner+n*step;if(b[i]!==b[corner])break;stable.add(i);}
+        }
+      }
+      for(const i of stable)if(!corners.includes(i))score+=b[i]===color?32:-32;
+      // Empty squares adjacent to the opponent's discs can become future moves.
+      const potential=new Set(),opposingPotential=new Set();
+      b.forEach((v,i)=>{if(!v)return;const row=Math.floor(i/8),col=i%8;
+        for(const[dr,dc]of R.directions){const r=row+dr,c=col+dc;if(r>=0&&r<8&&c>=0&&c<8&&!b[r*8+c])(v===opp?potential:opposingPotential).add(r*8+c);}
+      });
+      score+=(potential.size-opposingPotential.size)*4;
+    }
     return score;
   }
-  function reversiRanked(state) {
+  function reversiRanked(state, coaching=false) {
     let moves = R.legal(state).map(index => {
       const next = R.play(state, index);
-      return { index, next, danger: R.legal(next, 3 - state.color).filter(i => corners.includes(i)).length, score: reversiValue(next, state.color) };
+      return { index, next, danger: R.legal(next, 3 - state.color).filter(i => corners.includes(i)).length, score: reversiValue(next, state.color, coaching) };
     });
     // Every level follows these opening/midgame safeguards. In the endgame,
     // search may trade a corner for a better final disc count.
-    if (state.board.filter(v => !v).length > 12) {
+    if (!coaching && state.board.filter(v => !v).length > 12) {
       const takeCorner = moves.filter(m => corners.includes(m.index));
       if (takeCorner.length) moves = takeCorner;
       else if (moves.some(m => !m.danger)) moves = moves.filter(m => !m.danger);
@@ -165,28 +182,38 @@
   }
   function choose(state, level = "beginner", options = {}) {
     if (state.ended) return null;
-    const settings = LEVELS[level] || LEVELS.beginner;
-    const roots = state.game === "omok" ? omokRanked(state) : reversiRanked(state);
+    const settings = {...(LEVELS[level] || LEVELS.beginner),...options};
+    const roots = state.game === "omok" ? omokRanked(state) : reversiRanked(state,settings.coaching);
     if (!roots.length) return null;
     const learned = state.game === "reversi" ? book.get(state.board.join("") + ":" + state.color) : undefined;
     if (learned !== undefined && R.legal(state).includes(learned)) return { index: learned, depth: 0, nodes: 0, reason: explain(state, learned) };
     let nodes = 0, best = roots[0].index, completeDepth = 0;
     const deadline = Date.now() + (options.ms ?? settings.ms), maxNodes = options.nodes ?? settings.nodes;
     const aborted = {};
-    const evaluate = state.game === "omok" ? omokValue : reversiValue;
-    const ranked = state.game === "omok" ? omokRanked : reversiRanked;
+    const evaluate = state.game === "omok" ? omokValue : (s,c)=>reversiValue(s,c,settings.coaching);
+    const ranked = state.game === "omok" ? omokRanked : s=>reversiRanked(s,settings.coaching);
+    const cache=settings.coaching&&state.game==='reversi'?new Map():null;
     function search(position, depth, alpha, beta) {
       if (++nodes > maxNodes || (nodes % 16 === 0 && Date.now() > deadline)) throw aborted;
       if (position.ended) return terminal(position, position.color);
       if (!depth) return evaluate(position, position.color);
+      const originalAlpha=alpha,key=cache?position.board.join('')+position.color:null,entry=cache?.get(key);
+      if(entry?.depth>=depth){
+        if(entry.bound==='exact')return entry.score;
+        if(entry.bound==='lower')alpha=Math.max(alpha,entry.score);else beta=Math.min(beta,entry.score);
+        if(alpha>=beta)return entry.score;
+      }
       let score = -Infinity;
       const moves = ranked(position).slice(0, state.game === "omok" ? settings.width : 64);
+      if(entry)moves.sort((a,b)=>Number(b.index===entry.move)-Number(a.index===entry.move));
+      let bestMove=moves[0]?.index;
       for (const move of moves) {
         const next = move.next || R.play(position, move.index);
         const v = next.color === position.color ? search(next, depth - 1, alpha, beta) : -search(next, depth - 1, -beta, -alpha);
-        score = Math.max(score, v); alpha = Math.max(alpha, v);
+        if(v>score){score=v;bestMove=move.index;}alpha = Math.max(alpha, v);
         if (alpha >= beta) break;
       }
+      if(cache&&(cache.size<60000||cache.has(key)))cache.set(key,{depth,score,move:bestMove,bound:score<=originalAlpha?'upper':score>=beta?'lower':'exact'});
       return score;
     }
     for (let depth = 1; depth <= settings[state.game]; depth++) {
@@ -202,6 +229,18 @@
       } catch (error) { if (error !== aborted) throw error; break; }
     }
     return { index: best, depth: completeDepth, nodes, reason: explain(state, best) };
+  }
+  function chooseHint(state,options={}) {
+    if(state.ended)return null;
+    // At most eight empty squares: solve every legal continuation, including
+    // passes, instead of applying midgame corner or mobility heuristics.
+    const empty=state.board.filter(v=>!v).length;
+    if(state.game==="reversi"&&empty<=8){
+      const best=reversiEndgame(state)[0];
+      const outcome=best.score>0?`${best.score}개 차로 이길 수 있어요`:best.score===0?"비길 수 있어요":`${-best.score}개 차로 지는 결과까지 줄일 수 있어요`;
+      return {index:best.index,depth:empty,exact:true,score:best.score,reason:`${R.coord(best.index,8)}에 두면 상대가 가장 잘 두어도 ${outcome}.`};
+    }
+    return choose(state,"advanced",{...HINT,...options});
   }
   function explain(state, index) {
     const at = R.coord(index, state.size), next = R.play(state, index);
@@ -262,5 +301,5 @@
     }
     return null;
   }
-  return { LEVELS, choose, explain, review, threats, winningMoves, book, corners };
+  return { LEVELS, HINT, choose, chooseHint, explain, review, threats, winningMoves, book, corners };
 });

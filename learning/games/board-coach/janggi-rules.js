@@ -156,6 +156,10 @@
     });
     return checkers.length===1?{ended:true,winner:other(checkers[0]),reason:"perpetual-check"}:{ended:true,winner:null,reason:"repetition"};
   }
+  function repetitionCount(state) {
+    const current=key(state);
+    return state.history.filter(h=>h.key===current).length;
+  }
   function status(state) {
     if(state.result)return state.result;
     if(!facing(state)&&inCheck(state)&&!boardMoves(state).length)return {ended:true,winner:other(state.turn),reason:"mate"};
@@ -169,7 +173,7 @@
     const turn=other(state.turn), special=!!move.kind;
     const next={...state,board:special?state.board.slice():movedBoard(state,move),turn,ply:state.ply+1,
       quiet:move.capture?0:state.quiet+1,passes:move.kind==="pass"?state.passes+1:0,last:{...move,side:state.turn},result:null};
-    next.history=[...state.history,{key:key(next),mover:state.turn,check:inCheck(next)}];
+    next.history=[...state.history,{key:key(next),mover:state.turn,check:inCheck(next),move:{...move}}];
     if(move.kind==="bikjang")next.result={ended:true,winner:null,reason:"bikjang"};
     return next;
   }
@@ -181,5 +185,5 @@
     const next=advance(state,move),result=status(next);if(result.ended)next.result=result;
     return {ok:true,state:next,move};
   }
-  return {initial,position,targets,inCheck,facing,boardMoves,actions,advance,play,status,key,coord,same,other,FORMS};
+  return {initial,position,targets,inCheck,facing,boardMoves,actions,advance,play,status,key,coord,repetitionCount,same,other,FORMS};
 });

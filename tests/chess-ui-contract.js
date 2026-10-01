@@ -6,7 +6,7 @@ const path = require("node:path");
 
 const chessDir = path.resolve(__dirname, "..", "learning", "games", "chess");
 const html = fs.readFileSync(path.join(chessDir, "chess.html"), "utf8");
-const css = fs.readFileSync(path.join(chessDir, "styles.css"), "utf8");
+const css = fs.readFileSync(path.join(chessDir, "board.css"), "utf8") + fs.readFileSync(path.join(chessDir, "styles.css"), "utf8");
 const ui = fs.readFileSync(path.join(chessDir, "chess-ui.js"), "utf8");
 const server = fs.readFileSync(path.resolve(__dirname, "..", "game-hub-server", "server.js"), "utf8");
 const index = fs.readFileSync(path.resolve(__dirname, "..", "index.html"), "utf8");
@@ -14,6 +14,8 @@ const index = fs.readFileSync(path.resolve(__dirname, "..", "index.html"), "utf8
 assert.match(html, /multiplayer-lobby\.css/);
 assert.match(html, /multiplayer-lobby\.js/);
 assert.match(html, /chess-rules\.js/);
+assert.match(html, /board\.css/);
+assert.match(html, /pieces\.js/);
 assert.match(html, /id="board"[^>]+role="grid"/);
 assert.match(html, /id="timeControl"/);
 assert.match(html, /value="bullet"/);

@@ -49,7 +49,7 @@
     BoardCoachUI.markMove($("board"),mark,9);
     $("levelLabel").textContent=AI.LEVELS[level].name+" AI";$("colorLabel").textContent=human==="c"?"나는 초":"나는 한";
     $("score").textContent=`${scene?history.indexOf(scene):state.ply}수`;
-    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 수준을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}`;
+    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 수준을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}${R.repetitionCount(state)===2?" · 같은 판 2회":""}`;
     $("undo").disabled=!history.some(m=>m.side===human)||!!scene;
     $("hint").disabled=!active;$("janggiResign").disabled=!started||end.ended||!!scene;
     const special=moves.find(m=>m.kind);$("janggiPass").disabled=!active||!special;
@@ -64,8 +64,9 @@
   }
   function commit(move,isHuman=false){
     const result=R.play(state,move);if(!result.ok){reason("이동 확인","둘 수 없는 수",result.error);return;}
-    const before=state,explanation=AI.explain(before,result.move);
-    feedback=isHuman?AI.review(before,result.move):feedback;
+    const followed=isHuman&&hint?.move&&R.same(result.move,hint.move);
+    const before=state,explanation=followed?hint.reason:AI.explain(before,result.move);
+    feedback=isHuman?(followed?null:AI.review(before,result.move)):feedback;
     history.push({before,move:result.move,side:before.turn,reason:explanation,feedback:isHuman?feedback:null});
     state=result.state;selected=null;hint=null;$("retry").classList.add("hidden");
     reason(isHuman?"내가 둔 수":"AI의 수",AI.label(result.move),isHuman&&feedback?feedback.text:explanation);render();resume();
@@ -76,7 +77,7 @@
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
     if(kind==="hint")reason("힌트 계산 중","둘 곳을 살펴보고 있어요","왕과 다른 말이 공격받는지 확인하고 있어요.");
     try{
-      worker=new Worker("janggi-worker.js?v=3");
+      worker=new Worker("janggi-worker.js?v=9");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
@@ -87,7 +88,7 @@
       };
       worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
       timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},20000);
-      worker.postMessage({token:id,state,level});
+      worker.postMessage({token:id,state,level,kind});
     }catch{fail("이 브라우저에서 계산을 시작하지 못했어요.");}
   }
   function resume(){

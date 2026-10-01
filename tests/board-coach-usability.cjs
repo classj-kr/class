@@ -37,9 +37,14 @@ async function main(){
   const browser=await chromium.launch({channel:"msedge",headless:true}),errors=[];
   try{
     const page=await browser.newPage({viewport:{width:390,height:844}});
+    await page.addInitScript(()=>{
+      window.coachJobs=[];const send=Worker.prototype.postMessage;
+      Worker.prototype.postMessage=function(data,...args){window.coachJobs.push({kind:data.kind,level:data.level});return send.call(this,data,...args);};
+    });
     page.on("pageerror",e=>errors.push(e.message));
     for(const game of games){
       await start(page,game);const before=await board(page);await hint(page);
+      assert.deepEqual(await page.evaluate(()=>window.coachJobs.at(-1)),{kind:'hint',level:'beginner'},'hint uses its own analysis route even against beginner');
       assert.deepEqual(await board(page),before,"a hint never plays a move");
       if(["chess","janggi"].includes(game))await arrow(page);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));

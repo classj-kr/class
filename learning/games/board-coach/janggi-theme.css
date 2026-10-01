@@ -11,12 +11,14 @@ body.janggi-coach {
   color-scheme: dark;
 }
 .janggi-coach .layout {
-  width: min(1100px, 100%);
+  --coach-side: clamp(260px, 25vw, 300px);
+  width: min(100%, calc(90dvh + var(--coach-side)));
+  max-width: none;
   height: calc(100dvh - 16px);
   min-height: 560px;
-  grid-template-columns: minmax(0, 1fr) clamp(260px, 25vw, 300px);
-  gap: 16px;
-  padding: 12px;
+  grid-template-columns: minmax(0, 1fr) var(--coach-side);
+  gap: 12px;
+  padding: 8px;
   border: 2px solid #6b5520;
   background: linear-gradient(rgba(18,25,37,.88), rgba(8,13,20,.92)),
     url('../../../assets/images/mainbg2.webp') center / cover;
@@ -30,15 +32,16 @@ body.janggi-coach {
 }
 .janggi-coach .board-viewport { height: 100%; border-radius: 0; }
 .janggi-coach .board-frame {
-  width: min(600px, 100cqw, 90cqh);
+  width: min(100cqw, 90cqh);
   aspect-ratio: 9 / 10;
   padding: 0;
 }
-.janggi-coach .board-viewport.zoomed .board-frame { width: 760px; max-width: none; }
+.janggi-coach .board-viewport.zoomed .board-frame { width: max(760px, min(125cqw, 112.5cqh)); max-width: none; }
 #board.janggi {
   --size: 9;
   width: 100%;
   height: 100%;
+  container-type: inline-size;
   grid-template-rows: repeat(10, minmax(0, 1fr));
   box-shadow: inset 0 0 25px rgba(65,31,7,.45), 0 15px 35px #000;
 }
@@ -53,7 +56,9 @@ body.janggi-coach {
   z-index: 5;
 }
 .janggi .square:hover:not(:disabled) { filter: none; }
-.janggi .piece { pointer-events: none; flex-shrink: 0; }
+.janggi .piece { pointer-events: none; flex-shrink: 0; line-height: 1; font-size: clamp(16px, 6cqw, 48px); }
+.janggi .piece.king { font-size: clamp(18px, 6.5cqw, 52px); }
+.janggi .piece.guard, .janggi .piece.soldier { font-size: clamp(14px, 5.2cqw, 42px); }
 .janggi .square.recent::before {
   content: '';
   position: absolute;
@@ -154,14 +159,11 @@ body.janggi-coach {
 .janggi-coach .option small { color: #b7c0cb; }
 .janggi-coach .formation-options select { border-color: #6b5520; border-radius: 0; background: #080c12; }
 @media (orientation: portrait), (max-width: 699px) {
-  body.janggi-coach { padding: 6px; }
+  /* The site back control stays above the board, including portrait tablets. */
+  body.janggi-coach { padding: 52px 6px 6px; }
   .janggi-coach .layout { height: auto; min-height: 0; grid-template-columns: 1fr; padding: 8px; gap: 12px; }
-  .janggi-coach .board-viewport { height: min(calc((100vw - 32px) * 10 / 9), 667px); }
-  .janggi-coach .sidebar { overflow: visible; width: min(600px, 100%); margin: auto; }
+  .janggi-coach .board-viewport { height: min(calc((100vw - 32px) * 10 / 9), calc(100dvh - 78px)); }
+  .janggi-coach .sidebar { overflow: visible; width: 100%; margin: auto; }
   .janggi-coach .sidebar > .explanation { order: 0; }
   .janggi-coach .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 599px) {
-  /* Leave room for the site's fixed back control above the first rank. */
-  body.janggi-coach { padding-top: 52px; }
 }

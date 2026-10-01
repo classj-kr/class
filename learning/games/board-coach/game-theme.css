@@ -1,0 +1,113 @@
+/* Learning controls use each existing game's palette; board art is shared. */
+body.original-coach {
+  min-height: 100dvh; padding: 8px; color: var(--ink); color-scheme: dark;
+  background: var(--scene) center / cover fixed;
+}
+.original-coach.chess-surface {
+  --light: #eeeccf; --dark: #769656;
+  --ink: #eee6d2; --muted: #a7b3c3; --accent: #f0d77c;
+  --edge: #6b5520; --panel: #080c12; --card: #111722; --radius: 0px;
+  --button: linear-gradient(#182130, #0c1119);
+  --primary: linear-gradient(#ecd579, #a68835); --primary-ink: #181207;
+  --scene: linear-gradient(rgba(5,8,12,.54), rgba(5,8,12,.72)), url('../chess/assets/images/background.webp');
+}
+.original-coach.omok-surface {
+  --ink: #f5efe3; --muted: #cbbca7; --accent: #e8bb72;
+  --edge: #806342; --panel: #211a14e8; --card: #17120e; --radius: 12px;
+  --button: #33271c; --primary: linear-gradient(#c3924f, #865c2b); --primary-ink: #160e06;
+  --scene: linear-gradient(#1a110882, #100c08b8), url('../omok/assets/images/background.webp');
+  background: var(--scene) center / cover fixed no-repeat, #16130f;
+}
+.original-coach.reversi-surface {
+  --ink: #f2f7f0; --muted: #b8d6c2; --accent: #7fd99f;
+  --edge: #2f6b45; --panel: #12241ae8; --card: #0e1c14; --radius: 12px;
+  --button: #1a3324; --primary: linear-gradient(#4fae74, #2a6b46); --primary-ink: #06150c;
+  --scene: linear-gradient(#08130d82, #060f09b8), url('../reversi/assets/images/background.webp');
+  background: var(--scene) center / cover fixed no-repeat, #0d1811;
+}
+.original-coach .layout {
+  --coach-side: clamp(260px, 25vw, 300px);
+  width: min(100%, calc(100dvh + var(--coach-side))); max-width: none;
+  height: calc(100dvh - 16px); min-height: 560px;
+  grid-template-columns: var(--coach-side) minmax(0, 1fr); gap: 12px;
+}
+.original-coach .table { grid-column: 2; grid-row: 1; display: block; padding: 8px; min-width: 0; }
+.original-coach .sidebar { grid-column: 1; grid-row: 1; }
+.original-coach .board-viewport { height: 100%; border-radius: 0; }
+.original-coach .board-frame { width: min(100cqw, 100cqh); aspect-ratio: 1; padding: 7px; }
+.original-coach .board-viewport.zoomed .board-frame { width: max(800px, min(125cqw, 125cqh)); max-width: none; }
+.original-coach #board { box-shadow: none; }
+.original-coach.chess-surface .layout {
+  grid-template-columns: minmax(0, 1fr) var(--coach-side);
+  padding: 8px; border: 2px solid #6b5520;
+  background: linear-gradient(rgba(18,25,37,.9), rgba(8,13,20,.94)), url('../../../assets/images/mainbg2.webp') center / cover;
+  box-shadow: 0 20px 70px #000;
+}
+.original-coach.chess-surface .table { grid-column: 1; padding: 0; border: 0; background: none; box-shadow: none; }
+.original-coach.chess-surface .sidebar { grid-column: 2; }
+.original-coach.chess-surface .board-frame { padding: 0; }
+.original-coach #board.chess { width: 100%; max-width: none; height: 100%; box-shadow: 0 14px 34px #000, inset 0 0 0 1px #000; }
+.original-coach .panel { border: 1px solid var(--edge); border-radius: var(--radius); background: var(--panel); }
+.original-coach .sidebar {
+  display: flex; flex-direction: column; gap: 12px; padding: 12px;
+  border: 1px solid var(--edge); border-radius: var(--radius); background: var(--panel);
+  scrollbar-color: var(--edge) var(--panel);
+}
+.original-coach .sidebar > * { flex-shrink: 0; }
+.original-coach .sidebar .panel { padding: 12px; background: var(--card); }
+.original-coach .topbar { width: 100%; min-height: 0; margin: 0; gap: 8px; }
+.original-coach h1 { font-size: 24px; color: var(--accent); }
+.original-coach h2 { font-size: 17px; color: var(--accent); }
+.original-coach .eyebrow, .original-coach .muted { color: var(--muted); }
+.original-coach .matchbar { padding: 10px; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--card); }
+.original-coach #turn { font-size: 16px; }
+.original-coach #score { font-size: 14px; color: var(--muted); }
+.original-coach .sidebar .lesson { padding: 0; border: 0; background: none; }
+.original-coach .lesson .section-title { margin: 0; }
+.original-coach .lesson #principle { display: none; }
+.original-coach .badge { border: 1px solid var(--edge); border-radius: var(--radius); background: var(--card); color: var(--ink); }
+.original-coach .rules a { color: var(--accent); }
+.original-coach .rules summary, .original-coach .chess-record summary { color: var(--accent); }
+.original-coach button:not(.square), .original-coach a.quiet {
+  border: 1px solid var(--edge); border-radius: var(--radius);
+  background: var(--button); color: var(--ink); font-size: 14px; padding: 9px 10px;
+}
+.original-coach button.primary, .original-coach #hint { background: var(--primary); color: var(--primary-ink); }
+.original-coach #resign { background: #351716; color: #f4c6c0; border-color: #74352e; }
+.original-coach .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.original-coach .controls > * { justify-content: center; text-align: center; }
+.original-coach dialog { border: 2px solid var(--edge); border-radius: var(--radius); background: var(--panel); color: var(--ink); box-shadow: 0 20px 70px #000; }
+.original-coach dialog::backdrop { background: #000b; }
+.original-coach .option { border-color: var(--edge); border-radius: var(--radius); }
+.original-coach .option:has(input:checked) { border-color: var(--accent); background: var(--card); }
+.original-coach .option input { accent-color: var(--accent); }
+.original-coach .option small { color: var(--muted); }
+.original-coach .square:hover:not(:disabled) { filter: none; }
+.original-coach .move-arrow { z-index: 5; }
+.original-coach .move-arrow .arrow-line, .original-coach .move-arrow .arrow-head { stroke: #155faa; }
+.original-coach .hint-ring { position: absolute; inset: 8%; border: 3px dashed #fff0a3; border-radius: 50%; z-index: 4; pointer-events: none; }
+.original-coach .square.suggested::after { z-index: 4; }
+.original-coach .reversi .square.legal:hover:not(:disabled) { background: #235a35; }
+.original-coach .omok .square.legal:hover:not(:disabled) { background: #fff2; }
+@media (min-width: 700px) and (max-width: 1299px) and (orientation: landscape) {
+  .original-coach:is(.omok-surface, .reversi-surface) .topbar { padding-left: 34px; }
+}
+@media (orientation: portrait), (max-width: 699px) {
+  /* Keep the site's fixed back control above a full-width tablet or phone board. */
+  body.original-coach { padding-top: 52px; }
+  .original-coach .layout, .original-coach.chess-surface .layout { height: auto; min-height: 0; grid-template-columns: 1fr; }
+  .original-coach .table, .original-coach.chess-surface .table { grid-column: 1; grid-row: 1; }
+  .original-coach .sidebar, .original-coach.chess-surface .sidebar { grid-column: 1; grid-row: 2; width: 100%; margin: auto; overflow: visible; }
+  .original-coach .board-viewport { height: min(calc(100vw - 34px), calc(100dvh - 80px)); }
+  .original-coach.chess-surface .board-viewport { height: min(calc(100vw - 36px), calc(100dvh - 80px)); }
+  .original-coach .sidebar > .explanation { order: 0; }
+  .original-coach .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+  .original-coach.chess-surface #board { border-width: 6px; }
+  .original-coach.omok-surface .stone { inset: 5%; }
+  .original-coach.reversi-surface .disc { inset: 6%; }
+}
+@media (max-width: 560px) {
+  .original-coach:is(.omok-surface, .reversi-surface) .boardFrame { border-width: 3px; }
+}
