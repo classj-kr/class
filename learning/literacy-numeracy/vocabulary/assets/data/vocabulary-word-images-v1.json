@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1109,
+  "totalImages": 1117,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1110,6 +1110,14 @@
     "521": { "word": "collapse", "file": "collapse-v2.webp" },
     "1908": { "word": "passenger", "file": "passenger-v2.webp" },
     "528": { "word": "column", "file": "column-v2.webp" },
-    "545": { "word": "companion", "file": "companion-v2.webp" }
+    "545": { "word": "companion", "file": "companion-v2.webp" },
+    "2630": { "word": "sympathy", "file": "sympathy-v2.webp" },
+    "1594": { "word": "logic", "file": "logic-v2.webp" },
+    "1485": { "word": "journal", "file": "journal-v2.webp" },
+    "1122": { "word": "forehead", "file": "forehead-v2.webp" },
+    "2152": { "word": "receipt", "file": "receipt-v2.webp" },
+    "526": { "word": "colony", "file": "colony-v2.webp" },
+    "1287": { "word": "harvest", "file": "harvest-v2.webp" },
+    "2007": { "word": "portrait", "file": "portrait-v2.webp" }
   }
 }
