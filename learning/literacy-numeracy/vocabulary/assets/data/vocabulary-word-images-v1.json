@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1046,
+  "totalImages": 1054,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1047,6 +1047,14 @@
     "244": { "word": "beard", "file": "beard-v2.webp" },
     "2916": { "word": "wealth", "file": "wealth-v2.webp" },
     "523": { "word": "colleague", "file": "colleague-v2.webp" },
-    "1019": { "word": "facility", "file": "facility-v2.webp" }
+    "1019": { "word": "facility", "file": "facility-v2.webp" },
+    "1913": { "word": "patch", "file": "patch-v2.webp" },
+    "1945": { "word": "phase", "file": "phase-v2.webp" },
+    "1255": { "word": "guardian", "file": "guardian-v2.webp" },
+    "422": { "word": "cattle", "file": "cattle-v2.webp" },
+    "2229": { "word": "retreat", "file": "retreat-v2.webp" },
+    "1362": { "word": "hut", "file": "hut-v2.webp" },
+    "1550": { "word": "lecture", "file": "lecture-v2.webp" },
+    "157": { "word": "arrow", "file": "arrow-v2.webp" }
   }
 }
