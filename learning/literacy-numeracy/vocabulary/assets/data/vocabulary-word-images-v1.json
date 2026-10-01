@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 823,
+  "totalImages": 831,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -824,6 +824,14 @@
     "1788": { "word": "nod", "file": "nod-v2.webp" },
     "763": { "word": "depart", "file": "depart-v2.webp" },
     "1121": { "word": "forecast", "file": "forecast-v2.webp" },
-    "1156": { "word": "frown", "file": "frown-v2.webp" }
+    "1156": { "word": "frown", "file": "frown-v2.webp" },
+    "689": { "word": "culture", "file": "culture-v2.webp" },
+    "1333": { "word": "homework", "file": "homework-v2.webp" },
+    "155": { "word": "arrest", "file": "arrest-v2.webp" },
+    "2954": { "word": "wild", "file": "wild-v2.webp" },
+    "1228": { "word": "grace", "file": "grace-v2.webp" },
+    "446": { "word": "character", "file": "character-v2.webp" },
+    "544": { "word": "community", "file": "community-v2.webp" },
+    "2515": { "word": "stairs", "file": "stairs-v2.webp" }
   }
 }
