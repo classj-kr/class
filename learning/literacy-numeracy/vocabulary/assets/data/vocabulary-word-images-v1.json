@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1069,
+  "totalImages": 1077,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1070,6 +1070,14 @@
     "2201": { "word": "republic", "file": "republic-v2.webp" },
     "804": { "word": "dignity", "file": "dignity-v2.webp" },
     "260": { "word": "belief", "file": "belief-v2.webp" },
-    "907": { "word": "element", "file": "element-v2.webp" }
+    "907": { "word": "element", "file": "element-v2.webp" },
+    "2732": { "word": "tissue", "file": "tissue-v2.webp" },
+    "2867": { "word": "vessel", "file": "vessel-v2.webp" },
+    "2593": { "word": "suite", "file": "suite-v2.webp" },
+    "241": { "word": "beam", "file": "beam-v2.webp" },
+    "1418": { "word": "inn", "file": "inn-v2.webp" },
+    "948": { "word": "era", "file": "era-v2.webp" },
+    "915": { "word": "embassy", "file": "embassy-v2.webp" },
+    "1031": { "word": "fame", "file": "fame-v2.webp" }
   }
 }
