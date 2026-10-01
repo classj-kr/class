@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1085,
+  "totalImages": 1093,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1086,6 +1086,14 @@
     "1176": { "word": "gallery", "file": "gallery-v2.webp" },
     "435": { "word": "certificate", "file": "certificate-v2.webp" },
     "1942": { "word": "perspective", "file": "perspective-v2.webp" },
-    "543": { "word": "communist", "file": "communist-v2.webp" }
+    "543": { "word": "communist", "file": "communist-v2.webp" },
+    "756": { "word": "democracy", "file": "democracy-v2.webp" },
+    "1747": { "word": "myth", "file": "myth-v2.webp" },
+    "1132": { "word": "formula", "file": "formula-v2.webp" },
+    "1694": { "word": "ministry", "file": "ministry-v2.webp" },
+    "1854": { "word": "organ", "file": "organ-v2.webp" },
+    "1609": { "word": "luxury", "file": "luxury-v2.webp" },
+    "816": { "word": "discipline", "file": "discipline-v2.webp" },
+    "2880": { "word": "virgin", "file": "virgin-v2.webp" }
   }
 }
