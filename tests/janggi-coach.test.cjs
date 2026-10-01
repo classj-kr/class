@@ -1,0 +1,144 @@
+"use strict";
+const test=require("node:test"),assert=require("node:assert/strict");
+const R=require("../learning/games/board-coach/janggi-rules.js"),AI=require("../learning/games/board-coach/janggi-ai.js");
+const sq=(x,y)=>y*9+x;
+function fixture(pieces,turn="c") {const board=Array(90).fill(null);for(const [p,x,y]of pieces)board[sq(x,y)]=p;return R.position(board,turn);}
+function raw(pieces,x,y) {const s=fixture(pieces);return R.targets(s.board,sq(x,y)).sort((a,b)=>a-b);}
+function move(s,fx,fy,tx,ty) {const a=R.play(s,{from:sq(fx,fy),to:sq(tx,ty)});assert.equal(a.ok,true,a.error);return a.state;}
+const matePieces=[["cK",4,8],["hK",4,0],["cR",3,2],["cR",5,3],["cP",4,4]];
+
+test("all sixteen formations have 32 pieces and each side's own orientation",()=>{
+  for(const cho of R.FORMS)for(const han of R.FORMS){
+    const s=R.initial(cho,han);assert.equal(s.board.filter(Boolean).length,32);
+    for(const side of ["c","h"]) {
+      const expected={K:1,A:2,R:2,C:2,H:2,E:2,P:5};
+      for(const[t,n]of Object.entries(expected))assert.equal(s.board.filter(p=>p===side+t).length,n);
+    }
+    assert.equal([1,2,6,7].map(x=>s.board[sq(x,9)][1]).join(""),cho);
+    assert.equal([7,6,2,1].map(x=>s.board[sq(x,0)][1]).join(""),han);
+    assert.equal(R.inCheck(s),false);assert.equal(R.facing(s),false);
+    assert.ok(R.actions(s).some(m=>m.kind==="pass"));
+  }
+  assert.equal(R.actions(R.initial()).length,32);
+  assert.deepEqual(R.initial("bad","bad").board,R.initial().board);
+});
+
+test("horse and elephant cannot jump their blocking points",()=>{
+  assert.equal(raw([["cH",4,4]],4,4).length,8);
+  const horse=raw([["cH",4,4],["hP",4,3]],4,4);
+  assert.equal(horse.length,6);assert.ok(!horse.includes(sq(3,2))&&!horse.includes(sq(5,2)));
+  assert.equal(raw([["cE",4,4]],4,4).length,8);
+  for(const blocker of [[4,3],[3,2]])assert.ok(!raw([["cE",4,4],["hP",...blocker]],4,4).includes(sq(2,1)));
+  assert.ok(raw([["cE",0,0]],0,0).every(i=>i>=0&&i<90));
+});
+
+test("cannons require one non-cannon screen and cannot capture cannons",()=>{
+  assert.deepEqual(raw([["cC",4,4]],4,4),[]);
+  const p=[["cC",4,4],["cP",4,3],["hH",4,1]];
+  assert.deepEqual(raw(p,4,4),[sq(4,1),sq(4,2)]);
+  assert.deepEqual(raw([["cC",4,4],["hC",4,3]],4,4),[]);
+  assert.deepEqual(raw([["cC",4,4],["hP",4,3],["hC",4,1]],4,4),[sq(4,2)]);
+  assert.ok(raw([["cC",3,0],["hP",4,1],["hR",5,2]],3,0).includes(sq(5,2)));
+  assert.ok(!raw([["cC",3,0],["hC",4,1],["hR",5,2]],3,0).includes(sq(5,2)));
+  assert.ok(!raw([["cC",4,1],["hP",5,2]],4,1).includes(sq(5,2)));
+});
+
+test("palace lines constrain kings, guards, chariots and soldiers",()=>{
+  assert.equal(raw([["cK",4,8]],4,8).length,8);
+  assert.equal(raw([["cA",3,7]],3,7).length,3);
+  assert.ok(!raw([["cA",4,7]],4,7).includes(sq(3,8)));
+  assert.ok(raw([["cR",3,0]],3,0).includes(sq(5,2)));
+  assert.ok(!raw([["cR",3,0],["hH",4,1]],3,0).includes(sq(5,2)));
+  assert.ok(raw([["cP",3,2]],3,2).includes(sq(4,1)));
+  assert.ok(!raw([["cP",3,7]],3,7).includes(sq(4,8)));
+  assert.ok(raw([["hP",5,7]],5,7).includes(sq(4,8)));
+  assert.ok(!raw([["cP",4,4]],4,4).includes(sq(4,5)));
+});
+
+test("king safety forbids pinned moves, ignoring check, and king capture",()=>{
+  const pin=fixture([["cK",4,8],["hK",3,1],["hR",4,2],["cR",4,6]]);
+  assert.equal(R.play(pin,{from:sq(4,6),to:sq(5,6)}).ok,false);
+  assert.equal(R.play(pin,{from:sq(4,6),to:sq(4,2)}).ok,true);
+  const check=fixture([["cK",4,8],["hK",3,1],["hR",4,2],["cR",0,9]]);
+  assert.equal(R.inCheck(check),true);assert.ok(!R.actions(check).some(m=>m.kind==="pass"));
+  assert.equal(R.play(check,{from:sq(0,9),to:sq(0,2)}).ok,false);
+  for(const m of R.actions(check))assert.equal(R.inCheck(R.advance(check,m),"c"),false);
+  const capture=fixture([["cK",4,8],["hK",3,1],["cR",3,4]]);
+  assert.ok(!R.actions(capture).some(m=>m.capture==="hK"));
+});
+
+test("bikjang can be broken or accepted; it is not a flying king attack",()=>{
+  const s=fixture([["cK",4,8],["hK",4,1],["cR",0,9]]);
+  assert.equal(R.facing(s),true);assert.equal(R.inCheck(s),false);
+  assert.ok(!R.actions(s).some(m=>m.from===sq(0,9)&&m.to===sq(0,8)));
+  const continued=move(s,4,8,3,8);assert.equal(R.facing(continued),false);
+  assert.equal(R.play(s,{kind:"bikjang"}).state.result.reason,"bikjang");
+  const both=fixture([["cK",4,8],["hK",4,1],["hR",0,8]]);
+  assert.equal(R.inCheck(both),true);assert.equal(R.play(both,{kind:"bikjang"}).ok,true);
+});
+
+test("mate, passes, repetition and repeated checking end with correct results",()=>{
+  const s=fixture(matePieces),win=AI.mateInOne(s);assert.ok(win);
+  const end=R.play(s,win).state;assert.equal(end.result.reason,"mate");assert.equal(end.result.winner,"c");
+  assert.equal(R.play(end,{kind:"pass"}).ok,false);
+  let passed=R.play(R.initial(),{kind:"pass"}).state;
+  passed=R.play(passed,{kind:"pass"}).state;assert.equal(passed.result.reason,"passes");
+  let repeated=fixture([["cK",4,8],["hK",3,1],["cR",0,5],["hR",8,4]]);
+  for(let n=0;n<2;n++)for(const args of [[0,5,0,4],[8,4,8,3],[0,4,0,5],[8,3,8,4]])repeated=move(repeated,...args);
+  assert.equal(repeated.result.reason,"repetition");assert.equal(repeated.result.winner,null);
+  let perpetual=fixture([["cK",4,8],["hK",3,1],["cR",3,3],["cP",4,6]],"h");
+  for(let n=0;n<2;n++)for(const args of [[3,1,4,1],[3,3,4,3],[4,1,3,1],[4,3,3,3]])perpetual=move(perpetual,...args);
+  assert.equal(perpetual.result.reason,"perpetual-check");assert.equal(perpetual.result.winner,"h");
+  const quiet={...R.initial(),quiet:99};assert.equal(R.play(quiet,{kind:"pass"}).state.result.reason,"quiet");
+});
+
+test("every level develops, wins immediately, blocks mate and avoids poisoned material",()=>{
+  const free=fixture([["cK",4,8],["hK",4,1],["cR",0,5],["hR",0,2],["cP",4,6]]);
+  const poison=fixture([["cK",4,8],["hK",3,1],["cR",0,5],["hP",0,3],["hR",0,0],["cP",4,6]]);
+  for(const level of Object.keys(AI.LEVELS)){
+    const opening=AI.choose(R.initial(),level);assert.equal(opening.move.piece,"cH");assert.ok(!opening.move.kind);
+    const winner=AI.choose(fixture(matePieces),level);assert.equal(R.status(R.advance(fixture(matePieces),winner.move)).reason,"mate");
+    const defense=fixture([...matePieces,["hR",0,2]],"h"),answer=AI.choose(defense,level);assert.equal(AI.mateInOne(R.advance(defense,answer.move)),null);
+    assert.equal(AI.choose(free,level).move.capture,"hR");
+    assert.notEqual(AI.choose(poison,level).move.capture,"hP");
+    const fallback=AI.choose(poison,level,{nodes:0,ms:0});assert.notEqual(fallback.move.capture,"hP");
+  }
+});
+
+test("every level accepts a saving bikjang instead of losing an undefended chariot",()=>{
+  let s=R.initial("HEEH","EHEH");
+  for(const [from,to] of [[58,57],[6,23],[87,58],[31,30],[58,29]]){
+    const next=R.play(s,{from,to});assert.ok(next.ok);s=next.state;
+  }
+  assert.equal(R.facing(s),true);
+  for(const move of R.boardMoves(s)){
+    const next=R.advance(s,move);
+    assert.ok(R.boardMoves(next).some(reply=>reply.capture==="hR"&&
+      !R.boardMoves(R.advance(next,reply)).some(recapture=>recapture.to===reply.to&&recapture.capture)));
+  }
+  for(const level of Object.keys(AI.LEVELS)){
+    const answer=AI.choose(s,level);assert.equal(answer.move.kind,"bikjang");
+    assert.equal(R.play(s,answer.move).state.result.winner,null);
+  }
+});
+
+test("hints and reviews are legal and input state remains unchanged",()=>{
+  const s=fixture(matePieces),before=JSON.stringify(s),quiet=R.actions(s).find(m=>m.kind==="pass");
+  const feedback=AI.review(s,quiet);assert.ok(feedback);assert.match(feedback.text,/외통수/);
+  assert.equal(R.play(s,feedback.alternative).state.result.reason,"mate");
+  AI.choose(s);assert.equal(JSON.stringify(s),before);
+  assert.equal(R.play(s,{from:-1,to:90}).ok,false);
+});
+
+test("deterministic legal play preserves both kings and pieces across all formations",()=>{
+  let seed=2317;const random=n=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed%n;};
+  for(const form of R.FORMS){
+    let s=R.initial(form,"EHEH");
+    for(let n=0;n<160&&!R.status(s).ended;n++){
+      const options=R.actions(s),m=options[random(options.length)],before=JSON.stringify(s),next=R.play(s,m);assert.ok(next.ok);
+      assert.equal(JSON.stringify(s),before);assert.equal(next.state.board.filter(p=>p?.[1]==="K").length,2);
+      assert.equal(next.state.board.filter(Boolean).length,s.board.filter(Boolean).length-(m.capture?1:0));
+      if(!m.kind)assert.equal(R.inCheck(next.state,s.turn),false);s=next.state;
+    }
+  }
+});

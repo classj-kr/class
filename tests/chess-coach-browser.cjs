@@ -29,7 +29,7 @@ async function main() {
   try {
     const page=await browser.newPage({viewport:{width:1366,height:668}});page.on("pageerror",e=>errors.push(e.message));
     page.on("response",r=>{if(r.url().includes("/board-coach/")&&r.status()>=400)errors.push(`${r.status()}: ${r.url()}`);});
-    await page.goto(base+"/learning/games/chess/chess");await page.locator(".coach-entry a").click();
+    await page.goto(base+"/learning/games/chess/chess");await page.locator("a.coach-entry").click();
     await page.locator("#setup[open]").waitFor();assert.equal(await page.locator("#title").innerText(),"체스");
     await page.locator("#startLearning").click();
     assert.equal(await page.locator(".chess-piece").count(),32);

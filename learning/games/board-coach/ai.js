@@ -152,6 +152,17 @@
     const difference = state.game === "reversi" ? state.board.filter(v => v === color).length - state.board.filter(v => v === 3 - color).length : 0;
     return (state.winner === color ? WIN : -WIN) + difference;
   }
+  function reversiEndgame(state) {
+    const color=state.color,memo=new Map();
+    function solve(s) {
+      if(s.ended)return s.board.filter(v=>v===color).length-s.board.filter(v=>v===3-color).length;
+      const key=s.board.join("")+":"+s.color;
+      if(memo.has(key))return memo.get(key);
+      const scores=R.legal(s).map(i=>solve(R.play(s,i)));
+      const value=(s.color===color?Math.max:Math.min)(...scores);memo.set(key,value);return value;
+    }
+    return R.legal(state).map(index=>({index,score:solve(R.play(state,index))})).sort((a,b)=>b.score-a.score||a.index-b.index);
+  }
   function choose(state, level = "beginner", options = {}) {
     if (state.ended) return null;
     const settings = LEVELS[level] || LEVELS.beginner;
@@ -198,6 +209,8 @@
     if (state.game === "omok") {
       if (!state.count) return index === 112 ? `${at}에서 시작해요. 중앙은 여러 방향으로 돌을 이어 갈 공간이 넓어요.` : `${at}에서 시작했어요. 첫 수는 중앙 H8에서 시작하면 여러 방향으로 돌을 이어 갈 공간을 확보하기 좋아요.`;
       const own = threats(state.board, index, state.color), opponent = threats(state.board, index, 3 - state.color);
+      const replyWins=winningMoves(next,3-state.color);
+      if(replyWins.length)return `${at}에 두면 상대가 ${R.coord(replyWins[0],15)}에서 다섯 돌을 완성할 수 있어요.`;
       if (opponent.win) return `${at}을 막아요. 상대가 여기에 두면 바로 다섯 돌이 이어져요.`;
       if (own.fours >= 2) return `${at}에 두면 다음에 다섯 돌을 완성할 자리가 두 곳 이상 생겨요.`;
       if (own.fours) return `${at}에 두어 네 돌의 위협을 만들어요. 상대는 다음 승리 자리를 막아야 해요.`;
@@ -229,6 +242,18 @@
         if (safe) return { alternative: safe.index, text: `상대가 ${R.coord(danger[0], 15)}에 두면 승리해요. ${R.coord(safe.index, 15)}에서 먼저 막을 수 있었어요.` };
       }
     } else {
+      const empty=state.board.filter(v=>!v).length;
+      if(empty<=8) {
+        const ranked=reversiEndgame(state),chosen=ranked.find(m=>m.index===index),best=ranked[0];
+        if(best.score>chosen.score) {
+          const result=best.score>0?`${best.score}개 차로 이길 수 있어요`:best.score===0?"비길 수 있어요":`${-best.score}개 차까지 줄일 수 있어요`;
+          return {alternative:best.index,text:`${R.coord(best.index,8)}에 두면 상대가 가장 잘 두어도 ${result}. 끝까지 돌 수를 계산해 본 수예요.`};
+        }
+        return null;
+      }
+      // A corner sacrifice can be correct near the end. Do not present the
+      // opening safeguard as a proven improvement without an exact result.
+      if(empty<=12)return null;
       const danger = R.legal(next, 3 - state.color).filter(i => corners.includes(i));
       if (danger.length) {
         const safe = R.legal(state).find(i => !R.legal(R.play(state, i), 3 - state.color).some(j => corners.includes(j)));

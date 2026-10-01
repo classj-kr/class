@@ -7,6 +7,7 @@ const { Pool } = require("pg");
 const { attendanceEventSchema, createAttendanceEventHub } = require("./attendance-events");
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
+const { createLearningRecords } = require("./learning-records");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
@@ -405,6 +406,13 @@ function createClassroomPlatform(options = {}) {
       )`,
       `CREATE UNIQUE INDEX IF NOT EXISTS classroom_users_email_idx
         ON classroom_users (LOWER(email))`,
+      `CREATE TABLE IF NOT EXISTS classroom_teacher_settings (
+        user_id BIGINT PRIMARY KEY REFERENCES classroom_users(id) ON DELETE CASCADE,
+        birthday_mmdd TEXT,
+        birthday_visible BOOLEAN NOT NULL DEFAULT FALSE,
+        avatar_key TEXT,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )`,
       `ALTER TABLE classroom_users
         DROP CONSTRAINT IF EXISTS classroom_users_role_check`,
       `ALTER TABLE classroom_users
@@ -1357,6 +1365,7 @@ function createClassroomPlatform(options = {}) {
       await pool.query("DELETE FROM multiplayer_room_snapshots WHERE expires_at <= NOW()");
       await readingBank.initialize();
       await metacognition.initialize();
+      await learningRecords.initialize();
       await learningBoards.initialize();
       await voting.initialize();
       await schoolElection.initialize();
@@ -1563,6 +1572,11 @@ function createClassroomPlatform(options = {}) {
     failureLimiter: createAuthenticationFailureLimiter()
   });
   router.use("/boards", learningBoards.router);
+
+  const learningRecords = createLearningRecords({
+    pool, requireUser, requireTeacher, requireDatabase, teacherRegistrations, HttpError, asyncRoute
+  });
+  router.use("/learning-records", learningRecords.router);
 
   // 학급선거·전교선거·자리 고르기·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
   // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.
@@ -1784,17 +1798,18 @@ function createClassroomPlatform(options = {}) {
 
   async function readableScheduleClassId(user, requestedClassId) {
     if (user.role === "student") return userClassId(user);
-    if (user.role !== "teacher") return null;
+    if (user.role !== "teacher" && !await teacherRegistration(user)) return null;
     const requested = Number(requestedClassId);
     const result = await pool.query(
       `SELECT c.id
        FROM classroom_classes c
        JOIN classroom_teachers t ON t.school_id = c.school_id
-       WHERE t.user_id = $1 AND t.active = TRUE
+       JOIN classroom_schools sc ON sc.id = c.school_id AND sc.enabled = TRUE
+       WHERE (t.user_id = $1 OR ($3 <> '' AND LOWER(t.google_email) = $3)) AND t.active = TRUE
          AND ($2::BIGINT IS NULL OR c.id = $2)
        ORDER BY CASE WHEN c.teacher_user_id = $1 THEN 0 ELSE 1 END, c.updated_at DESC
        LIMIT 1`,
-      [user.id, Number.isInteger(requested) && requested > 0 ? requested : null]
+      [user.id, Number.isInteger(requested) && requested > 0 ? requested : null, normalizeEmail(user.email)]
     );
     return result.rows[0]?.id || null;
   }
@@ -1937,6 +1952,7 @@ function createClassroomPlatform(options = {}) {
         // Both forms must be recognized or that redirect defeats this bypass.
         const isAlwaysAllowed = requestPath === "/classtools/profile.html"
           || requestPath === "/classtools/profile"
+          || requestPath === "/classtools/ai-client.js"
           // 방번호 입구와 그 입구가 연결하는 두 활동은 메인에서 `always-open`으로
           // 표시한다. 서버도 같은 예외를 알아야 학생을 다시 content=locked로
           // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
@@ -3475,6 +3491,64 @@ function createClassroomPlatform(options = {}) {
     });
   }));
 
+  function teacherPersonalProfile(row = {}) {
+    const key = normalizeAvatarKey(row.avatar_key);
+    return {
+      birthdayMmdd: row.birthday_mmdd || "",
+      birthdayVisible: row.birthday_visible === true,
+      avatar: {
+        key, url: avatarUrl(key), canChange: true,
+        options: AVATAR_KEYS.map((key) => ({ key, url: avatarUrl(key), available: true }))
+      }
+    };
+  }
+
+  router.get("/teacher/settings", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const result = await pool.query(
+      "SELECT birthday_mmdd, birthday_visible, avatar_key FROM classroom_teacher_settings WHERE user_id = $1",
+      [teacher.id]
+    );
+    res.json({ profile: teacherPersonalProfile(result.rows[0]) });
+  }));
+
+  router.patch("/teacher/settings", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const birthdayMmdd = String(req.body?.birthdayMmdd ?? "").trim();
+    const birthdayVisible = req.body?.birthdayVisible;
+    const month = Number(birthdayMmdd.slice(0, 2));
+    const day = Number(birthdayMmdd.slice(2));
+    if (typeof birthdayVisible !== "boolean" || (birthdayMmdd &&
+      (!/^\d{4}$/.test(birthdayMmdd) || month < 1 || month > 12 || day < 1 || day > new Date(2000, month, 0).getDate()))) {
+      throw new HttpError(400, "INVALID_BIRTHDAY", "생일의 월·일과 공개 여부를 확인해 주세요.");
+    }
+    if (birthdayVisible && !birthdayMmdd) {
+      throw new HttpError(400, "BIRTHDAY_REQUIRED", "공개할 생일을 먼저 선택해 주세요.");
+    }
+    const result = await pool.query(
+      `INSERT INTO classroom_teacher_settings (user_id, birthday_mmdd, birthday_visible)
+       VALUES ($1, $2, $3)
+       ON CONFLICT (user_id) DO UPDATE
+       SET birthday_mmdd = EXCLUDED.birthday_mmdd, birthday_visible = EXCLUDED.birthday_visible, updated_at = NOW()
+       RETURNING birthday_mmdd, birthday_visible, avatar_key`,
+      [teacher.id, birthdayMmdd || null, birthdayVisible]
+    );
+    res.json({ profile: teacherPersonalProfile(result.rows[0]) });
+  }));
+
+  router.patch("/teacher/avatar", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const key = normalizeAvatarKey(req.body?.avatarKey);
+    if (!AVATAR_KEY_SET.has(key)) throw new HttpError(400, "INVALID_AVATAR", "목록에서 아바타를 선택해 주세요.");
+    const result = await pool.query(
+      `INSERT INTO classroom_teacher_settings (user_id, avatar_key) VALUES ($1, $2)
+       ON CONFLICT (user_id) DO UPDATE SET avatar_key = EXCLUDED.avatar_key, updated_at = NOW()
+       RETURNING birthday_mmdd, birthday_visible, avatar_key`,
+      [teacher.id, key]
+    );
+    res.json({ profile: teacherPersonalProfile(result.rows[0]) });
+  }));
+
   router.get("/class/schedules", asyncRoute(async (req, res) => {
     const user = await requireUser(req);
     const classId = await readableScheduleClassId(user, req.query.classId);
@@ -3500,6 +3574,23 @@ function createClassroomPlatform(options = {}) {
       `SELECT id, roster_name, birthday_mmdd
        FROM classroom_students
        WHERE class_id = $1 AND birthday_visible = TRUE AND birthday_mmdd IS NOT NULL`,
+      [classId]
+    );
+    // Only the active homeroom teacher's opted-in month/day belongs in this class.
+    // Match registration by email too, before its first user_id link is created.
+    const teacherBirthdays = await pool.query(
+      `SELECT DISTINCT 'teacher-' || u.id::TEXT AS id,
+              t.teacher_name || ' 선생님' AS roster_name, p.birthday_mmdd
+       FROM classroom_classes c
+       JOIN classroom_teachers t ON t.school_id = c.school_id
+         AND t.grade = c.grade AND t.class_number = c.class_number
+         AND COALESCE(t.academic_year, c.academic_year) = c.academic_year
+       JOIN classroom_schools sc ON sc.id = t.school_id AND sc.enabled = TRUE
+       JOIN classroom_users u ON u.id = t.user_id
+         OR (t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email))
+       JOIN classroom_teacher_settings p ON p.user_id = u.id
+       WHERE c.id = $1 AND t.active = TRUE
+         AND p.birthday_visible = TRUE AND p.birthday_mmdd IS NOT NULL`,
       [classId]
     );
     const classMetaRes = await pool.query(
@@ -3535,11 +3626,14 @@ function createClassroomPlatform(options = {}) {
     const savedSchedules = result.rows.map((row) => ({
       id: String(row.id), date: row.event_date, title: row.title, details: row.details || "", type: "schedule", scope: "CLASS", canDelete: true
     }));
-    const schedules = [...annualSchedules, ...savedSchedules, ...birthdayScheduleRows(birthdaysResult.rows)]
+    const birthdayDate = monthStart ? new Date(`${monthStart}T00:00:00Z`) : new Date();
+    const birthdays = birthdayScheduleRows([...birthdaysResult.rows, ...teacherBirthdays.rows], birthdayDate)
+      .filter((row) => !month || row.date.startsWith(month));
+    const schedules = [...annualSchedules, ...savedSchedules, ...birthdays]
       .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
     res.json({
       classId,
-      canEdit: user.role === "teacher" && String(await writableScheduleClassId(user, classId)) === String(classId),
+      canEdit: String(await writableScheduleClassId(user, classId)) === String(classId),
       schedules
     });
   }));

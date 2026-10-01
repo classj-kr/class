@@ -33,52 +33,5 @@ ko: [
     ["Values and perspectives", "Judgment, beauty, health, and personal choice", ["Don't judge a book by its cover.", "Beauty is in the eye of the beholder.", "Cleanliness is next to godliness.", "You can lead a horse to water, but you can't make it drink.", "An apple a day keeps the doctor away."]]
   ]
 };
-let language = "ko", lessonIndex = 0, mode = "study";
-let studyBatch = [], studyPosition = 0, quizOrder = [], quizPosition = 0;
-let currentChoices = null, correct = 0, attempts = 0, questionHadWrong = false;
-let completed = loadCompleted();
 
-function shuffle(items) { const a=[...items]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-function key() { return "class-proverb-lessons-" + language; }
-function loadCompleted() { try { return new Set(JSON.parse(localStorage.getItem("class-proverb-lessons-" + language) || "[]")); } catch (_) { return new Set(); } }
-function lessonFor(item) { const text=item.proverb+" "+item.meaning; const lessons=LESSONS[language]; for(let i=0;i<lessons.length;i++){const matcher=lessons[i][2];if(Array.isArray(matcher)?matcher.includes(item.proverb):matcher.test(text))return i;} return lessons.length-1; }
-function lessonItems(index) { return decks[language].filter((item)=>lessonFor(item)===index); }
-
-function renderLessonList() {
-  const lessons=LESSONS[language];
-  $("completionSummary").textContent=completed.size+" / "+lessons.length+(language==="ko"?" 완료":" complete");
-  $("lessonList").replaceChildren(...lessons.map((lesson,index)=>{
-    const items=lessonItems(index), button=document.createElement("button"); button.type="button"; button.className="lesson-item";
-    button.innerHTML='<span class="lesson-number">'+String(index+1).padStart(2,"0")+'</span><span class="lesson-copy"><strong>'+lesson[0]+'</strong><small>'+lesson[1]+'</small><em>'+items.slice(0,3).map(x=>x.proverb).join(" · ")+'</em></span><span class="lesson-meta">'+items.length+(language==="ko"?"개":"")+(completed.has(index)?'<b>✓ '+(language==="ko"?"완료":"done")+'</b>':"")+'</span>';
-    button.addEventListener("click",()=>startLesson(index)); return button;
-  }));
-}
-function prepareLesson() { studyBatch=decks[language].map((_,i)=>i).filter(i=>lessonFor(decks[language][i])===lessonIndex); studyPosition=0; quizOrder=shuffle(studyBatch); quizPosition=0; correct=0; attempts=0; currentChoices=null; }
-function startLesson(index){ lessonIndex=index; prepareLesson(); document.body.classList.add("learning-active"); $("lessonToolbar").hidden=true; $("lessonOverview").hidden=true; $("learningShell").hidden=false; $("currentLessonTitle").textContent=(language==="ko"?(index+1)+"차시 · ":"Lesson "+(index+1)+" · ")+LESSONS[language][index][0]; setMode("study"); }
-function renderStudy(){ const item=decks[language][studyBatch[studyPosition]], en=language==="en"; $("label").textContent=(studyPosition+1)+" / "+studyBatch.length; $("proverb").textContent=item.proverb; $("literal").textContent=item.literal||""; $("literal").hidden=!item.literal; $("meaning").textContent=item.meaning; if(item.image){$("proverbIllustrationImage").src=item.image;$("proverbIllustrationImage").alt=item.proverb;$("proverbIllustrationFrame").hidden=false;}else $("proverbIllustrationFrame").hidden=true; $("example").textContent=(en?"Example: ":"예: ")+item.example; $("previous").disabled=studyPosition===0; $("next").textContent=studyPosition===studyBatch.length-1?(en?"Lesson quiz":"차시 확인 문제"):(en?"Next proverb":"다음 속담"); }
-// 뜻이 비슷해 이 상황에도 들어맞는 속담(proverbs-lookalikes.js)은 오답으로 내지 않는다.
-function buildChoices(correctIndex){ const deck=decks[language], lookalikes=deck[correctIndex].lookalikes||[], distractors=shuffle(deck.map((_,i)=>i).filter(i=>i!==correctIndex&&!lookalikes.includes(deck[i].proverb))).slice(0,2), ids=shuffle([correctIndex, ...distractors]); return {texts:ids.map(i=>deck[i].proverb),answer:ids.indexOf(correctIndex)}; }
-function renderQuiz(){ questionHadWrong=false; const idx=quizOrder[quizPosition],item=decks[language][idx],en=language==="en"; currentChoices=buildChoices(idx); $("quizKicker").textContent=(en?"LESSON CHECK ":"차시 확인 ")+(quizPosition+1)+" / "+quizOrder.length; $("quiz-title").hidden=true; $("question").textContent=item.question; $("feedback").textContent=""; $("reviewAnswer").hidden=true; $("nextQuestion").hidden=false; $("nextQuestion").disabled=true; $("nextQuestion").dataset.action="next"; $("nextQuestion").textContent=en?"Next question":"다음 문제"; $("choices").replaceChildren(...currentChoices.texts.map((text,i)=>{const b=document.createElement("button");b.type="button";b.textContent=text;b.addEventListener("click",()=>answer(i,b));return b;})); }
-function answer(choice,button){ const buttons=[...$("choices").querySelectorAll("button")]; if(choice!==currentChoices.answer){questionHadWrong=true;button.classList.add("wrong");button.disabled=true;$("feedback").textContent=language==="ko"?"다시 생각하고 다른 답을 골라보세요.":"Try again.";return;} buttons.forEach((b,i)=>{b.disabled=true;if(i===currentChoices.answer)b.classList.add("correct")}); attempts++;if(!questionHadWrong)correct++;$("score").textContent=(language==="ko"?"정답 ":"Correct ")+correct+" / "+attempts;$("feedback").textContent=language==="ko"?"정답! 뜻과 상황을 잘 연결했어요.":"Correct!";$("nextQuestion").disabled=false;$("nextQuestion").textContent=quizPosition===quizOrder.length-1?(language==="ko"?"차시 마무리":"Finish lesson"):(language==="ko"?"다음 문제":"Next question"); }
-function completeQuiz(){ completed.add(lessonIndex);localStorage.setItem(key(),JSON.stringify([...completed]));$("quizKicker").textContent=language==="ko"?"차시 학습 완료":"LESSON COMPLETE";$("quiz-title").hidden=false;$("quiz-title").textContent=language==="ko"?"이번 차시를 끝냈어요!":"Great work!";$("question").textContent=quizOrder.length+(language==="ko"?"문제 중 ":" questions, ")+correct+(language==="ko"?"문제를 한 번에 맞혔습니다.":" correct on the first try.");$("choices").replaceChildren();$("feedback").textContent="";$("nextQuestion").disabled=false;$("nextQuestion").dataset.action="overview";$("nextQuestion").textContent=language==="ko"?"차시 목록으로":"Back to lessons"; }
-function setMode(next){mode=next;const study=mode==="study";$("studyView").hidden=!study;$("quizView").hidden=study;$("score").hidden=study;document.querySelectorAll(".mode-tab").forEach(b=>{const a=b.dataset.mode===mode;b.classList.toggle("active",a);b.setAttribute("aria-selected",String(a));});study?renderStudy():renderQuiz();}
-function showOverview(){ document.body.classList.remove("learning-active"); $("learningShell").hidden=true;$("lessonToolbar").hidden=false;$("lessonOverview").hidden=false;renderLessonList(); }
-
-document.querySelectorAll(".language-tab").forEach(b=>b.addEventListener("click",()=>{language=b.dataset.language;lessonIndex=0;completed=loadCompleted();document.querySelectorAll(".language-tab").forEach(x=>x.classList.toggle("active",x===b));showOverview();}));
-document.querySelectorAll(".mode-tab").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
-$("backToLessons").addEventListener("click",showOverview);
-$("next").addEventListener("click",()=>{if(studyPosition===studyBatch.length-1)setMode("quiz");else{studyPosition++;renderStudy();}});
-$("previous").addEventListener("click",()=>{if(studyPosition>0)studyPosition--;renderStudy();});
-$("nextQuestion").addEventListener("click",()=>{if($("nextQuestion").dataset.action==="overview")showOverview();else if(quizPosition===quizOrder.length-1)completeQuiz();else{quizPosition++;renderQuiz();}});
-$("reviewAnswer").addEventListener("click",()=>{});
-// 공용 뒤로가기 단추(assets/site-back-navigation.js)가 눌리면 먼저 물어본다.
-// 차시 목록(집)이 아니면 사이트 밖으로 나가지 않고 차시 목록으로만 돌아간다.
-window.addEventListener("sitebackrequest",(event)=>{
-    if(document.body.classList.contains("learning-active")){event.preventDefault();showOverview();}
-});
-// 화면 왼쪽 위 화살표는 공용 뒤로가기 단추가 안 떠도 항상 같은 규칙으로 움직인다.
-document.querySelector("a.back")?.addEventListener("click",(event)=>{
-    if(document.body.classList.contains("learning-active")){event.preventDefault();showOverview();}
-});
-if(!decks?.ko?.length||!decks?.en?.length)throw new Error("속담 자료를 불러오지 못했습니다.");
-renderLessonList();
+runRecordedLessons({ activity:'proverbs',label:'속담',decks,lessons:Object.fromEntries(Object.entries(LESSONS).map(([lang,rows])=>[lang,rows.map(row=>({title:row[0],copy:row[1]}))])),lessonFor(item,language){const text=item.proverb+' '+item.meaning;const lessons=LESSONS[language];for(let i=0;i<lessons.length;i++){const matcher=lessons[i][2];if(Array.isArray(matcher)?matcher.includes(item.proverb):matcher.test(text))return i;}return lessons.length-1;},ids:{studyTitle:'proverb',studyProgress:'label',quizProgress:'quizKicker',quizTitle:'quiz-title',image:'proverbIllustrationImage'} });

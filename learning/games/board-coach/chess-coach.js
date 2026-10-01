@@ -10,12 +10,11 @@
   const escape=text=>String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const endLabels={checkmate:"체크메이트",stalemate:"스테일메이트", "insufficient-material":"메이트할 기물 부족",threefold:"같은 판 3회",fivefold:"같은 판 5회","fifty-move":"50수 규칙","seventy-five-move":"75수 규칙",resign:"기권"};
   document.title="체스 · AI와 배우기"; $("title").textContent="체스"; $("backLink").href="../chess/chess";
-  $("principle").textContent="중앙 차지하기 → 나이트·비숍 전개 → 캐슬링으로 킹 보호";
-  $("variantNote").textContent="체크를 해소해야 하며, 체크메이트에서 대국이 끝납니다.";
-  document.querySelector(".color-options legend").textContent="내 기물";
-  document.querySelector(".color-options input[value='1'] + span").textContent="백 · 먼저 두기";
-  document.querySelector(".color-options input[value='2'] + span").textContent="흑 · AI 시작 보기";
-  $("rulesCopy").innerHTML='<p>백이 먼저 둡니다. 말을 선택한 다음 표시된 도착 칸을 누르세요. 내 킹이 공격받는 수는 둘 수 없습니다. 체크를 피할 수 없으면 체크메이트, 체크 없이 둘 수 있는 수가 없으면 스테일메이트로 비깁니다.</p><p>킹과 룩이 움직이지 않았고 사이가 비어 있을 때 캐슬링할 수 있습니다. 킹의 시작·경유·도착 칸이 공격받으면 불가능합니다. 앙파상은 상대 폰의 두 칸 이동 직후 한 차례만 가능합니다. 폰은 마지막 줄에서 퀸·룩·비숍·나이트 중 하나로 승격합니다.</p><p>같은 판 3회 또는 잡기·폰 이동 없이 양쪽이 50수씩 두면 무승부를 선언할 수 있습니다. 다음 수로 조건을 채우는 선언도 가능합니다. 5회 반복과 75수 규칙은 자동 적용합니다. 킹만 남는 등 기본적인 메이트 불가능 기물도 자동 판정합니다.</p><p>힌트는 출발·도착 칸을 표시합니다. 내 수 물리기는 그 뒤의 AI 수까지 취소합니다. 시간 제한은 없습니다.</p><p>참고: <a href="https://rcc.fide.com/wp-content/uploads/2022/11/Laws_of_Chess-2023.pdf" target="_blank" rel="noopener">FIDE 체스 규칙</a> · <a href="https://www.chesskid.com/learn/terms/chess-opening" target="_blank" rel="noopener">초반 기본 원칙</a></p>';
+  $("principle").textContent="중앙 칸을 차지하고, 나이트와 비숍을 꺼내며, 왕을 안전하게 지키세요.";
+  document.querySelector(".color-options legend").textContent="내 말 색깔";
+  document.querySelector(".color-options input[value='1'] + span strong").textContent="흰색";
+  document.querySelector(".color-options input[value='2'] + span strong").textContent="검은색";
+  $("rulesCopy").innerHTML='<p>흰색이 먼저 둡니다. 말을 선택한 다음 표시된 도착 칸을 누르세요. 내 왕(킹)이 공격받게 만드는 이동은 할 수 없습니다.</p><p>왕이 공격받는 상태를 ‘체크’라고 합니다. 왕을 옮기거나, 공격을 막거나, 공격하는 말을 잡아 왕을 지켜야 합니다. 어느 방법으로도 지킬 수 없으면 ‘체크메이트’로 패배합니다. 왕이 공격받지 않는데 둘 수 있는 수가 없으면 ‘스테일메이트’로 비깁니다.</p><p>킹과 룩이 움직이지 않았고 사이가 비어 있을 때 캐슬링할 수 있습니다. 킹의 시작·경유·도착 칸이 공격받으면 불가능합니다. 앙파상은 상대 폰의 두 칸 이동 직후 한 차례만 가능합니다. 폰은 마지막 줄에서 퀸·룩·비숍·나이트 중 하나로 승격합니다.</p><p>같은 판 3회 또는 잡기·폰 이동 없이 양쪽이 50수씩 두면 무승부를 선언할 수 있습니다. 다음 수로 조건을 채우는 선언도 가능합니다. 5회 반복과 75수 규칙은 자동 적용합니다. 킹만 남는 등 기본적인 메이트 불가능 기물도 자동 판정합니다.</p><p>힌트는 출발·도착 칸을 표시합니다. 내 수 물리기는 그 뒤의 AI 수까지 취소합니다. 시간 제한은 없습니다.</p><p>참고: <a href="https://rcc.fide.com/wp-content/uploads/2022/11/Laws_of_Chess-2023.pdf" target="_blank" rel="noopener">FIDE 체스 규칙</a> · <a href="https://www.chesskid.com/learn/terms/chess-opening" target="_blank" rel="noopener">초반 기본 원칙</a></p>';
   document.querySelector(".controls").insertAdjacentHTML("beforeend",'<button id="claimDraw" type="button" class="quiet" disabled>무승부 선언</button><button id="resign" type="button" class="quiet" disabled>기권</button>');
   document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel chess-record"><summary>기보</summary><div id="chessMoves">아직 둔 수가 없습니다.</div></details>');
   document.body.insertAdjacentHTML("beforeend",'<dialog id="chessPromotion" aria-labelledby="promotionTitle"><h2 id="promotionTitle">승격할 말</h2><div id="chessPromotionChoices"></div><button id="cancelPromotion" class="quiet" type="button">취소</button></dialog><dialog id="chessDraw" aria-labelledby="drawTitle"><h2 id="drawTitle">무승부 선언</h2><p class="muted">표시된 조건으로 대국을 마칩니다.</p><div id="chessDrawChoices"></div><button id="cancelDraw" class="quiet" type="button">취소</button></dialog><dialog id="chessResign" aria-labelledby="resignTitle"><h2 id="resignTitle">이 대국을 기권할까요?</h2><div class="resign-choices"><button id="confirmResign" type="button">기권</button><button id="cancelResign" class="quiet" type="button">계속 두기</button></div></dialog>');
@@ -35,7 +34,7 @@
       return `<button type="button" role="gridcell" data-square="${index}" class="${classes}" ${can?"":"disabled"} aria-pressed="${index===selected}" aria-label="${C.squareName(index)} · ${piece?(piece[0]==="w"?"백 ":"흑 ")+AI.NAMES[piece[1]]:"빈칸"}${target?" · 이동 가능":""}">${row===0?`<span class="axis column" aria-hidden="true">${C.FILES[file]}</span>`:""}${col===0?`<span class="axis row" aria-hidden="true">${rank+1}</span>`:""}${ChessCoachPiece(piece)}${target&&!piece?'<span class="legal-dot"></span>':""}</button>`;
     }).join("");
     $("levelLabel").textContent=`${AI.LEVELS[level].name} AI`;
-    $("colorLabel").textContent=`나는 ${human==="w"?"백":"흑"}`;
+    $("colorLabel").textContent=`내 말: ${human==="w"?"흰색":"검은색"}`;
     $("score").textContent=`${scene?history.indexOf(scene):state.san.length}수`;
     $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전 · 복기`:!started?"AI 수준을 골라 시작하세요.":result.ended?`${endLabels[result.reason]||"대국 종료"} · ${result.winner?(result.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${result.checked?" · 체크":""}`;
     $("undo").disabled=!history.some(m=>m.color===human)||!!scene;
@@ -68,7 +67,7 @@
     const id=token;
     if(kind==="hint") reason("힌트 계산 중","후보를 살펴보고 있어요","체크와 기물의 안전을 확인하고 있어요.");
     try {
-      worker=new Worker("chess-worker.js?v=1");
+      worker=new Worker("chess-worker.js?v=3");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==token)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
@@ -121,7 +120,7 @@
     event.preventDefault();stop();const data=new FormData(event.currentTarget);
     level=Object.hasOwn(AI.LEVELS,data.get("level"))?data.get("level"):"beginner";human=data.get("color")==="2"?"b":"w";
     state=C.createInitialState("standard");history=[];selected=null;hint=null;pending=null;scene=null;feedback=null;started=true;
-    $("retry").classList.add("hidden");$("setup").close();reason("첫 수",human==="w"?"백이 먼저 둡니다":"AI의 첫 수를 살펴보세요",$("principle").textContent);render();
+    $("retry").classList.add("hidden");$("setup").close();reason("첫 차례",human==="w"?"내가 먼저 둡니다":"AI가 먼저 둡니다",$("principle").textContent);render();
   });
   $("chessPromotionChoices").addEventListener("click",event=>{const b=event.target.closest("[data-promote]");if(!b||!pending)return;const m=pending.find(m=>m.promotion===b.dataset.promote);$("chessPromotion").close();if(m)commit(m,true);});
   $("cancelPromotion").addEventListener("click",()=>{$("chessPromotion").close();pending=null;});

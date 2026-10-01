@@ -29,15 +29,43 @@
   let currentSubject = "초3";
   let currentUnit = ALL_UNITS;
   let answeredState = {};
+  let records;
+  let recordBusy = false;
 
   const filterNav = document.getElementById("filterNav");
   const unitNav = document.getElementById("unitNav");
   const questionsList = document.getElementById("questionsList");
 
-  function init() {
+  async function init() {
+    records = window.LearningRecords.create('math-ox', { label: '수학 기초 OX', mount: filterNav });
+    await records.ready;
+    const resume = new URLSearchParams(location.search).get('record');
+    const history = await records.history();
+    const recent = history.sessions.find(s => s.status === 'active');
+    if (CURRICULUM_UNITS[resume || recent?.contentKey]) currentSubject = resume || recent.contentKey;
+    await openSubject(currentSubject);
+  }
+
+  async function openSubject(subject) {
+    if (recordBusy) return;
+    recordBusy = true;
+    filterNav.inert = unitNav.inert = questionsList.inert = true;
+    const session = await records.start({ contentKey: subject, title: `수학 기초 OX · ${subject}`, version: '20261001', checkpoint: { answered: {}, unit: ALL_UNITS } });
+    currentSubject = subject;
+    currentUnit = session.checkpoint.unit || ALL_UNITS;
+    answeredState = session.checkpoint.answered || {};
     renderFilters();
     renderUnitNav();
     renderQuestions();
+    filterNav.inert = unitNav.inert = questionsList.inert = false;
+    recordBusy = false;
+  }
+
+  async function saveRecord(events = []) {
+    const total = mathOxData.filter(q => q.subject === currentSubject).length;
+    const current = Object.keys(answeredState).length;
+    const session = await records.save({ checkpoint: { answered: answeredState, unit: currentUnit }, progress: { current, total }, events, complete: current === total });
+    if (session.status === 'completed') records.showResult();
   }
 
   function renderFilters() {
@@ -51,11 +79,7 @@
 
     filterNav.querySelectorAll(".filter-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        currentSubject = btn.dataset.subject;
-        currentUnit = ALL_UNITS;
-        renderFilters();
-        renderUnitNav();
-        renderQuestions();
+        openSubject(btn.dataset.subject);
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
@@ -80,7 +104,7 @@
     unitNav.innerHTML = units
       .map((u) => {
         const { total, solved, right } = unitScore(u);
-        const count = solved > 0 ? `${right}/${total}` : `${total}`;
+        const count = solved > 0 ? `${solved}/${total} 풀이` : `${total}문제`;
         return `<button type="button" class="unit-btn ${u === currentUnit ? "active" : ""} ${
           solved === total && total > 0 ? "done" : ""
         }" data-unit="${u}">${u}<span class="unit-count">${count}</span></button>`;
@@ -88,10 +112,12 @@
       .join("");
 
     unitNav.querySelectorAll(".unit-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", async () => {
+        if (recordBusy) return;
         currentUnit = btn.dataset.unit;
         renderUnitNav();
         renderQuestions();
+        if (records.session.status === 'active') await saveRecord();
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
@@ -128,6 +154,17 @@
         const numberLabel = `${q.subject} 문항 ${relIndexStr}`;
         const isNewUnit = idx === 0 || filtered[idx - 1].unit !== q.unit;
         const unitHeading = isNewUnit ? `<h2 class="unit-heading">${q.unit}</h2>` : "";
+        const explanation = isAnswered ? `
+            <div class="explanation-panel">
+              <div class="feedback-badge ${isCorrect ? "is-correct" : "is-wrong"}">
+                ${isCorrect ? "정답입니다! 🎉 (정답: " + q.answer + ")" : "아쉽습니다! 💡 (정답: " + q.answer + ")"}
+              </div>
+              <div class="exp-box">
+                <p class="exp-content">${q.reason}</p>
+              </div>
+              ${!isCorrect && records.session.status === 'active' ? `<button type="button" class="retry-question" data-id="${q.id}">다시 풀기</button>` : ''}
+            </div>
+        ` : "";
 
         return `
           ${unitHeading}
@@ -154,15 +191,7 @@
               </button>
             </div>
 
-            <div class="explanation-panel">
-              <div class="feedback-badge ${isCorrect ? "is-correct" : "is-wrong"}">
-                ${isCorrect ? "정답입니다! 🎉 (정답: " + q.answer + ")" : "아쉽습니다! 💡 (정답: " + q.answer + ")"}
-              </div>
-              <div class="exp-box">
-                <p class="exp-content">${q.pitfall}</p>
-                <p class="exp-content">${q.reason}</p>
-              </div>
-            </div>
+            ${explanation}
           </div>
         `;
       })
@@ -176,6 +205,11 @@
         handleAnswer(id, choice);
       });
     });
+    questionsList.querySelectorAll('.retry-question').forEach(btn => btn.addEventListener('click', () => {
+      if (recordBusy) return;
+      delete answeredState[btn.dataset.id];
+      renderQuestions();
+    }));
 
     // KaTeX 수식 렌더링
     if (window.renderMathInElement) {
@@ -206,16 +240,23 @@
     }
   }
 
-  function handleAnswer(id, choice) {
+  async function handleAnswer(id, choice) {
     const item = mathOxData.find((q) => q.id === id);
-    if (!item || answeredState[id]) return;
+    if (!item || answeredState[id] || recordBusy) return;
+
+    recordBusy = true;
+    filterNav.inert = unitNav.inert = questionsList.inert = true;
 
     const isCorrect = item.answer === choice;
     answeredState[id] = { selectedChoice: choice, isCorrect };
+    await saveRecord([{ kind: 'answer', questionKey: String(id), response: choice, correct: isCorrect,
+      snapshot: { prompt: item.prompt, subject: item.subject, unit: item.unit } }]);
 
     renderUnitNav();
     renderQuestions();
     window.ClassGameSfx?.play(isCorrect ? "success" : "error");
+    filterNav.inert = unitNav.inert = questionsList.inert = false;
+    recordBusy = false;
   }
 
 

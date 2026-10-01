@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>AI와 배우기</title>
-  <link rel="stylesheet" href="coach.css?v=2">
-  <script src="rules.js?v=1" defer></script><script src="ai.js?v=1" defer></script><script src="coach.js?v=3" defer></script>
-  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=1" defer></script><script src="chess-pieces.js?v=1" defer></script><script src="chess-coach.js?v=1" defer></script>
+  <link rel="stylesheet" href="coach.css?v=4">
+  <script src="rules.js?v=1" defer></script><script src="ai.js?v=2" defer></script><script src="coach.js?v=7" defer></script>
+  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=3" defer></script><script src="chess-pieces.js?v=1" defer></script><script src="chess-coach.js?v=5" defer></script>
+  <script src="janggi-rules.js?v=1" defer></script><script src="janggi-ai.js?v=2" defer></script><script src="janggi-coach.js?v=2" defer></script>
 </head>
 <body>
   <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">AI와 배우기</span><h1 id="title">리버시</h1></div><button id="newGame" type="button">새 대국</button></header>
@@ -30,8 +31,8 @@
       <label class="option"><input type="radio" name="level" value="intermediate"><span><strong>중급 AI</strong><small>이어지는 수를 생각하며</small></span></label>
       <label class="option"><input type="radio" name="level" value="advanced"><span><strong>상급 AI</strong><small>더 긴 전개에 도전</small></span></label>
     </fieldset>
-    <fieldset class="color-options"><legend>내 돌</legend><label class="option"><input type="radio" name="color" value="1" checked><span>흑 · 먼저 두기</span></label><label class="option"><input type="radio" name="color" value="2"><span>백 · AI 시작 보기</span></label></fieldset>
-    <p id="variantNote" class="muted"></p><button id="startLearning" class="primary wide" type="submit">대국 시작</button>
+    <fieldset class="color-options"><legend>내 돌 색깔</legend><label class="option"><input type="radio" name="color" value="1" checked><span><strong>검은색</strong><small>내가 먼저 둡니다</small></span></label><label class="option"><input type="radio" name="color" value="2"><span><strong>흰색</strong><small>AI가 먼저 둡니다</small></span></label></fieldset>
+    <button id="startLearning" class="primary wide" type="submit">대국 시작</button>
   </form></dialog>
 </body>
 </html>

@@ -1,6 +1,6 @@
 import {selectPracticeQuestions,questionDataHTML} from './question-session.mjs?v=20260920-22';
 import {GROUPS,WORLD_LESSONS as LESSONS,WORLD_QUESTIONS as QUESTIONS} from './curriculum.mjs?v=20260922-copy1';
-import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20260920-24';
+import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20261001-climate-palette';
 import {renderVisual} from './atlas-visuals.mjs?v=20260920-18';
 const KEY='classj-atlas-progress-2022-v1';
 export function readProgress(storage){

@@ -471,6 +471,7 @@ for (const [legacyPath, currentPath] of LEGACY_LEARNING_PATHS) {
   });
 }
 
+app.use('/api/learning-records', express.json({ limit: '512kb' }));
 app.use(express.json({ limit: "32kb" }));
 app.get("/api/weather", kmaWeather.handler);
 app.use("/api", (_req, res, next) => {

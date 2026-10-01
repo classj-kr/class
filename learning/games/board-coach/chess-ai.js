@@ -57,6 +57,29 @@
       }
       white += p[0]==="w"?value:-value;
     });
+    // Basic heavy-piece endings: help the winning king approach and drive the
+    // defending king to an edge instead of repeating centralising checks.
+    for(const side of ["w","b"]) {
+      const enemy=side==="w"?"b":"w";
+      const own=state.board.filter(p=>p?.[0]===side),opposing=state.board.filter(p=>p?.[0]===enemy);
+      if(!own.some(p=>["R","Q"].includes(p[1]))||opposing.some(p=>!["K","P"].includes(p[1])))continue;
+      const advantage=own.reduce((n,p)=>n+VALUES[p[1]],0)-opposing.reduce((n,p)=>n+VALUES[p[1]],0);
+      if(advantage<400)continue;
+      const king=state.board.indexOf(side+"K"),target=state.board.indexOf(enemy+"K");
+      const dx=Math.abs(king%8-target%8),dy=Math.abs(Math.floor(king/8)-Math.floor(target/8));
+      const edge=Math.max(Math.abs(target%8-3.5),Math.abs(Math.floor(target/8)-3.5));
+      let finish=edge*40+(7-Math.max(dx,dy))*25+(14-dx-dy)*5;
+      if(opposing.length===1) {
+        finish-=C.legalMoves({...state,turn:enemy,result:null},target).length*12;
+        if(own.length===2&&own.includes(side+"R")) {
+          const rook=state.board.indexOf(side+"R"),rx=rook%8,ry=Math.floor(rook/8),tx=target%8,ty=Math.floor(target/8);
+          // In K+R versus K the rook fences off a rectangle. Shrink that box
+          // while the king approaches; repeated checks alone make no progress.
+          if(rx!==tx&&ry!==ty)finish+=(49-(tx<rx?rx:7-rx)*(ty<ry?ry:7-ry))*5;
+        }
+      }
+      white+=side==="w"?finish:-finish;
+    }
     return state.turn==="w"?white:-white;
   }
   const order = moves => moves.slice().sort((a,b) => priority(b)-priority(a) || a.from-b.from || a.to-b.to);
@@ -117,14 +140,20 @@
       }
       return value;
     }
-    // Deterministic fallback evaluates every candidate's immediate material loss.
+    // Inspect every threatened piece, including pieces that did not move.
+    // Allow legal recaptures before treating a capture as a material loss.
     best=roots.map(move=>{
       const next=C.advance(state,move);
-      const reply=C.allLegalMoves(next).filter(m=>m.capture && m.to===move.to).sort((a,b)=>VALUES[a.piece[1]]-VALUES[b.piece[1]])[0];
-      const placedValue=VALUES[move.promotion || move.piece[1]], gained=move.capture?VALUES[move.capture[1]]:0;
-      return {move,score:-evaluate(next)-(reply?Math.max(0,placedValue-gained):0)};
+      let loss=0;
+      for(const reply of C.allLegalMoves(next).filter(m=>m.capture)) {
+        const after=C.advance(next,reply);
+        const recaptured=C.allLegalMoves(after).some(m=>m.capture&&m.to===reply.to);
+        const gain=VALUES[reply.capture[1]]+(reply.promotion?VALUES[reply.promotion]-VALUES.P:0);
+        loss=Math.max(loss,gain-(recaptured?VALUES[reply.promotion||reply.piece[1]]:0));
+      }
+      return {move,score:-evaluate(next)-loss};
     }).sort((a,b)=>b.score-a.score)[0].move;
-    for(let depth=1;depth<=settings.depth;depth++) {
+    for(let depth=2;depth<=settings.depth;depth++) {
       let candidate=best, top=-Infinity;
       try {
         const ordered=roots.slice().sort((a,b)=>Number(same(b,best))-Number(same(a,best)));

@@ -101,7 +101,7 @@ async function initApp() {
             formsLink.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">event_available</span> 출결·서류 내기';
             userInfoEl.appendChild(formsLink);
         }
-        if (viewerRole === 'student') {
+        if (viewerRole === 'student' || viewerRole === 'teacher') {
             const settingsLink = document.createElement('a');
             settingsLink.href = '/classtools/profile.html';
             settingsLink.className = 'settings-link';

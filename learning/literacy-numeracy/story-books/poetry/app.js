@@ -109,6 +109,8 @@
     const topicPoemList = $("topicPoemList");
 
     const bookScreen = $("bookScreen");
+    const bgm = $("bgm");
+    let resumeMusicOnShelf = false;
     const spreadEl = $("spread");
     const folioLeftEl = $("folioLeft");
     const folioRightEl = $("folioRight");
@@ -513,6 +515,10 @@
         const book = books[bookIndex];
         if (!book) return;
 
+        resumeMusicOnShelf = Boolean(bgm && !bgm.paused);
+        document.body.dataset.musicPausedForReading = "true";
+        bgm?.pause();
+
         currentBookIndex = bookIndex;
 
         // UI 모드 전환: 책장 숨김, 책 뷰 표시
@@ -554,12 +560,16 @@
 
     /* ── 책장 화면 (Shelf Lobby) ──────────────────────────────── */
     function showShelf(activeTab = "order") {
+        delete document.body.dataset.musicPausedForReading;
         bookScreen.hidden = true;
         bookScreen.classList.add("hidden");
         shelfScreen.hidden = false;
         shelfScreen.classList.remove("hidden");
         if (tocBtn) tocBtn.hidden = true;
         window.scrollTo(0, 0);
+
+        if (resumeMusicOnShelf && bgm) bgm.play().catch(() => {});
+        resumeMusicOnShelf = false;
 
         setShelfTab(activeTab);
     }

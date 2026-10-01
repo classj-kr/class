@@ -1,6 +1,6 @@
 const BASE = new URL('./data/', import.meta.url);
-export const CLIMATE_COLORS = {A:'#39b982',B:'#e8bb65',C:'#eaa5a4',D:'#739bd0',E:'#d5d0e5'};
-export const CLIMATE_LEGEND = [['#39b982','열대'],['#e8bb65','건조'],['#eaa5a4','온대'],['#739bd0','냉대'],['#d5d0e5','한대']];
+export const CLIMATE_COLORS = {A:'#eaa5a4',B:'#e8bb65',C:'#39b982',D:'#739bd0',E:'#d5d0e5'};
+export const CLIMATE_LEGEND = [['#eaa5a4','열대'],['#e8bb65','건조'],['#39b982','온대'],['#739bd0','냉대'],['#d5d0e5','한대']];
 export const DENSITY_LEGEND = [['#f2efb2','0–25 미만'],['#d5d776','25–100 미만'],['#efa55f','100–300 미만'],['#dc6b55','300–1,000 미만'],['#a33b63','1,000 이상'],['#75818d','자료 없음']];
 const PLATE_COLORS = ['match',['get','LABEL'],'Convergent Boundary','#ffad78','Divergent Boundary','#65dfd5','Transform Boundary','#caadff','#b6bdc6'];
 export async function installAtlasLayers(map, onPick) {
@@ -21,7 +21,7 @@ export async function installAtlasLayers(map, onPick) {
       if(!response.ok)throw Error('지도 자료를 불러오지 못했습니다.');
       const json=await response.json();
       if(id==='climate') {
-        map.addSource('atlas-climate',{type:'raster',tiles:[new URL('climate-tiles/{z}/{x}/{y}.png',BASE).href.replaceAll('%7B','{').replaceAll('%7D','}')+'?v=20260920-24'],tileSize:json.tiles.tileSize,minzoom:0,maxzoom:json.tiles.maxzoom,attribution:'Peel et al. (2007) · CC BY-NC-SA 2.5'});
+        map.addSource('atlas-climate',{type:'raster',tiles:[new URL('climate-tiles/{z}/{x}/{y}.png',BASE).href.replaceAll('%7B','{').replaceAll('%7D','}')+'?v=20261001-climate-palette'],tileSize:json.tiles.tileSize,minzoom:0,maxzoom:json.tiles.maxzoom,attribution:'Peel et al. (2007) · CC BY-NC-SA 2.5'});
         map.addLayer({id:'atlas-climate-fill',type:'raster',source:'atlas-climate',layout:{visibility:'none'},paint:{'raster-opacity':.7,'raster-resampling':'linear','raster-fade-duration':0}},before);
       } else map.getSource(id==='density'?'atlas-countries':'atlas-plates').setData(json);
     })().catch(error=>{cached.delete(id);throw error;}));
