@@ -93,15 +93,14 @@ const CHAPTERS = [
                 "art": "03-disguise-2.webp",
                 "emoji": "🥛",
                 "left": [
-                    "늑대는 이번에 방앗간으로 갔습니다. \"내 발에 밀가루를 발라 다오.\"",
-                    "방앗간 주인이 망설였지요. \"그건 무슨 일에 쓰시려고요?\"",
-                    "늑대가 이를 드러냈습니다. \"묻지 말고 어서 발라라!\""
+                    "늑대는 이번에 방앗간으로 달려갔습니다. 그러고는 꼬리를 살랑살랑 흔들며 애교를 부렸지요.",
+                    "\"아저씨~ 이 동네에서 제일 솜씨 좋은 방앗간 아저씨~ 제 발에 밀가루 좀 발라 주세요. 네?\"",
+                    "방앗간 주인이 눈을 끔뻑였습니다. \"늑대가 웬일로 이렇게 상냥하지?\" 늑대는 두 앞발을 공손히 내밀고 눈웃음까지 쳤지요."
                 ],
                 "right": [
-                    "주인은 겁이 나서 결국 발을 하얗게 발라 주었습니다. 늑대는 세 번째로 오두막을 찾아왔지요. 고운 목소리로 부르고는 앞발을 창턱에 올렸습니다.",
-                    "이번에는 발이 눈처럼 하얬지요.",
-                    "\"우리 엄마 맞나 봐!\"",
-                    "일곱은 그만 문을 활짝 열고 말았습니다."
+                    "주인은 피식 웃으며 밀가루를 한 바가지 퍼서 앞발에 척척 발라 주었습니다. 푸시시, 하얀 가루가 구름처럼 피어올랐지요. \"에취!\" 늑대는 재채기를 하면서도 싱글벙글했지요.",
+                    "늑대는 세 번째로 오두막을 찾아왔습니다. 고운 목소리로 부르고 앞발을 창턱에 올렸지요. 눈처럼 하얀 발이었습니다.",
+                    "\"우리 엄마 맞나 봐!\" 일곱은 그만 문을 활짝 열고 말았습니다."
                 ]
             }
         ]
@@ -634,12 +633,13 @@ const EN = {
                     art: '03-disguise-2.webp',
                     emoji: '🥛',
                     left: [
-                        "This time the wolf went to the mill. \"Put flour on my paws.\"",
-                        "The miller hesitated. \"And what would that be for?\"",
-                        "The wolf bared his teeth. \"Never mind that. Do it, and be quick.\""
+                        "This time the wolf ran to the mill, wagging his tail and putting on his sweetest voice.",
+                        "\"Oh, Mister Miller! The finest miller in the whole village! Would you put a little flour on my paws? Please?\"",
+                        "The miller blinked. \"Since when is a wolf so polite?\" The wolf held out both paws and smiled with his eyes."
                     ],
                     right: [
-                        "The miller was afraid, and in the end he floured the paws white. The wolf came to the cottage a third time. He called in his soft voice and laid his paws on the sill.",
+                        "The miller chuckled, scooped up a bowl of flour and patted it on. Whoosh! White dust rose like a cloud. \"A-choo!\" sneezed the wolf, grinning all the same.",
+                        "The wolf came to the cottage a third time. He called in his soft voice and laid his paws on the sill.",
                         "This time they were as white as snow.",
                         "\"It really is Mother!\"",
                         "And the seven threw the door wide open."
@@ -898,9 +898,9 @@ const EN = {
             { word: 'back off', meaning: '물러나다', sentence: 'The wolf backed off once more.' }
         ],
         '03-disguise-2.webp': [
-            { word: 'mill', meaning: '방앗간', sentence: 'This time the wolf went to the mill.' },
+            { word: 'mill', meaning: '방앗간', sentence: 'This time the wolf ran to the mill.' },
             { word: 'flour', meaning: '밀가루; 밀가루를 묻히다', sentence: 'Put flour on my paws.' },
-            { word: 'hesitate', meaning: '망설이다', sentence: 'The miller hesitated.' }
+            { word: 'blink', meaning: '눈을 끔뻑이다', sentence: 'The miller blinked.' }
         ],
         '04-hiding.webp': [
             { word: 'stride', meaning: '성큼 걸어 들어가다', sentence: 'In strode the wolf.' },
@@ -998,8 +998,8 @@ const WORDS_KO = {
         { w: "뒷걸음질", k: "뒤로 물러나며 걷는 걸음.", s: "일곱은 한꺼번에 뒷걸음질을 쳤지요." }
     ],
     "03-disguise-2.webp": [
-        { w: "이를 드러내다", k: "이를 보이며 무섭게 굴다.", s: "늑대가 이를 드러냈습니다." },
-        { w: "겁이 나다", k: "무서운 마음이 들다.", s: "주인은 겁이 나서 결국 발을 하얗게 발라 주었습니다." },
+        { w: "애교", k: "귀엽고 상냥하게 굴어 남의 마음을 사려는 짓.", s: "그러고는 꼬리를 살랑살랑 흔들며 애교를 부렸지요." },
+        { w: "바가지", k: "물이나 가루를 퍼 담는 둥근 그릇.", s: "주인은 피식 웃으며 밀가루를 한 바가지 퍼서 앞발에 척척 발라 주었습니다." },
         { w: "활짝", k: "문을 크게 벌리는 모양.", s: "일곱은 그만 문을 활짝 열고 말았습니다." }
     ],
     "04-hiding.webp": [
