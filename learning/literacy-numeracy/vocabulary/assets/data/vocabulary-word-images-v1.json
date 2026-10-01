@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1007,
+  "totalImages": 1015,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1008,6 +1008,14 @@
     "68": { "word": "agency", "file": "agency-v2.webp" },
     "85": { "word": "alert", "file": "alert-v2.webp" },
     "2647": { "word": "task", "file": "task-v2.webp" },
-    "814": { "word": "disaster", "file": "disaster-v2.webp" }
+    "814": { "word": "disaster", "file": "disaster-v2.webp" },
+    "2202": { "word": "reputation", "file": "reputation-v2.webp" },
+    "701": { "word": "custody", "file": "custody-v2.webp" },
+    "2236": { "word": "revolution", "file": "revolution-v2.webp" },
+    "758": { "word": "demon", "file": "demon-v2.webp" },
+    "1703": { "word": "mobile", "file": "mobile-v2.webp" },
+    "449": { "word": "charity", "file": "charity-v2.webp" },
+    "294": { "word": "blast", "file": "blast-v2.webp" },
+    "1787": { "word": "noble", "file": "noble-v2.webp" }
   }
 }
