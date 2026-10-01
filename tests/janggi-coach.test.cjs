@@ -67,6 +67,23 @@ test("king safety forbids pinned moves, ignoring check, and king capture",()=>{
   assert.ok(!R.actions(capture).some(m=>m.capture==="hK"));
 });
 
+test("king attack scan agrees with full enemy move generation on blocked boards",()=>{
+  let seed=93012;const random=n=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed%n;};
+  const pieces=["R","C","H","E","P","A"];
+  for(let n=0;n<2000;n++){
+    const board=Array(90).fill(null);
+    board[sq(3+random(3),7+random(3))]="cK";
+    board[sq(3+random(3),random(3))]="hK";
+    for(let p=0;p<20;p++){const at=random(90);if(!board[at])board[at]=(random(2)?"c":"h")+pieces[random(pieces.length)];}
+    const s=R.position(board);
+    for(const side of ["c","h"]){
+      const king=board.indexOf(side+"K");
+      const expected=board.some((piece,from)=>piece?.[0]===R.other(side)&&R.targets(board,from).includes(king));
+      assert.equal(R.inCheck(s,side),expected,`board ${n}, ${side}`);
+    }
+  }
+});
+
 test("bikjang can be broken or accepted; it is not a flying king attack",()=>{
   const s=fixture([["cK",4,8],["hK",4,1],["cR",0,9]]);
   assert.equal(R.facing(s),true);assert.equal(R.inCheck(s),false);
@@ -119,6 +136,36 @@ test("every level accepts a saving bikjang instead of losing an undefended chari
   for(const level of Object.keys(AI.LEVELS)){
     const answer=AI.choose(s,level);assert.equal(answer.move.kind,"bikjang");
     assert.equal(R.play(s,answer.move).state.result.winner,null);
+  }
+});
+
+test("intermediate and advanced defend a two-move mate instead of grabbing a soldier",()=>{
+  // From a real loss: after repeated checks, the cannon's tempting capture
+  // permits Chariot 49-29+, followed by Chariot 37-17 mate after every reply.
+  let s=fixture([["hA",4,0],["hC",1,1],["hA",4,1],["hK",5,1],
+    ["cR",6,2],["cC",7,2],["hR",1,3],["hP",5,3],["hP",6,3],["cR",8,3],
+    ["cH",0,6],["cP",1,6],["cP",2,6],["cP",3,6],["cE",5,6],["cP",6,6],
+    ["hR",0,8],["cA",4,8],["cK",3,9],["cC",4,9],["cA",5,9],["hC",8,9]],"h");
+  s.ply=75;
+  for(const args of [[0,8,0,9],[3,9,3,8],[0,9,0,8],[3,8,3,9],[0,8,0,9],[3,9,3,8]])s=move(s,...args);
+  function checkingMateInTwo(state){
+    for(const attack of R.boardMoves(state)){
+      const next=R.advance(state,attack);if(!R.inCheck(next)||R.facing(next))continue;
+      const replies=R.actions(next);
+      if(replies.length&&replies.every(reply=>{
+        const response=R.advance(next,reply);
+        return !R.status(response).ended&&AI.mateInOne(response);
+      }))return attack;
+    }
+    return null;
+  }
+  const greedy=R.actions(s).find(m=>m.from===sq(1,1)&&m.to===sq(1,6));assert.ok(greedy);
+  assert.ok(checkingMateInTwo(R.advance(s,greedy)),"old capture loses by force");
+  for(const level of ["intermediate","advanced"]){
+    const answer=AI.choose(s,level,{nodes:65000,ms:10000});
+    const next=R.advance(s,answer.move);
+    assert.equal(AI.mateInOne(next),null);
+    assert.equal(checkingMateInTwo(next),null,`${level} must defend the king`);
   }
 });
 

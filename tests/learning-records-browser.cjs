@@ -1,0 +1,63 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const { chromium } = require('../game-hub-server/node_modules/playwright');
+const { harness } = require('./learning-records-integration.cjs');
+async function main() {
+  const h = await harness(), browser = await chromium.launch({ channel: 'msedge', headless: true });
+  const errors = [], output = path.resolve(__dirname, '../output/learning-records-review'); fs.mkdirSync(output, { recursive: true });
+  const context = async user => { const c = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': String(user) }, viewport: { width: 1440, height: 1000 } }); await c.route('https://**', route => route.abort()); return c; };
+  try {
+    const school = await context(1), home = await context(1), other = await context(2), teacher = await context(3);
+    const page = await school.newPage(); page.on('pageerror', e => errors.push(e.message));
+    const url = h.base + '/learning/literacy-numeracy/math-ox/';
+    await page.goto(url); await page.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor();
+    const first = page.locator('.ox-btn[data-choice="O"]').first(); const qid = await first.getAttribute('data-id');
+    await first.click(); await page.waitForFunction(id => document.querySelector(`#q-card-${id}.answered`), qid);
+    const homePage = await home.newPage(); await homePage.goto(url);
+    await homePage.locator(`#q-card-${qid}.answered`).waitFor();
+    assert.equal(await homePage.locator(`#q-card-${qid} .selected-correct, #q-card-${qid} .selected-wrong`).count(), 1);
+    const otherPage = await other.newPage(); await otherPage.goto(url); await otherPage.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor();
+    assert.equal(await otherPage.locator('.question-card.answered').count(), 0);
+    // Force an outdated copy: home submits after school advances.
+    await page.locator('.question-card:not(.answered) .btn-o').first().click();
+    await page.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor();
+    await homePage.locator('.question-card:not(.answered) .btn-o').first().click();
+    await homePage.getByRole('button', { name: '저장된 진도 다시 불러오기' }).waitFor();
+    await page.screenshot({ path: path.join(output, 'math-records-desktop.png'), fullPage: false });
+    await page.goto(h.base + '/learning/literacy-numeracy/proverbs/');
+    await page.locator('.lesson-item').first().click();
+    await page.getByRole('button', { name: '문제 풀기', exact: true }).click();
+    await page.locator('#choices button').first().waitFor();
+    let fail = true;
+    await page.route('**/api/learning-records/sessions/*/changes', async route => { if (fail) await route.abort(); else await route.continue(); });
+    const choices = await page.locator('#choices button').allTextContents();
+    await page.locator('#choices button').first().click();
+    await page.getByRole('heading', { name: '기록 연결을 확인해 주세요' }).waitFor();
+    fail = false; await page.getByRole('button', { name: '다시 시도', exact: true }).click();
+    await page.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor();
+    await homePage.goto(h.base + '/learning/literacy-numeracy/proverbs/?record=ko:0');
+    await homePage.locator('#quizView:not([hidden])').waitFor();
+    assert.deepEqual(await homePage.locator('#choices button').allTextContents(), choices, 'same randomized choice order on another device');
+    assert.equal(await homePage.locator('#choices button:disabled').count() > 0, true);
+    await page.getByRole('button', { name: '학습 기록', exact: true }).click();
+    await page.locator('learning-records .row').first().waitFor();
+    await page.setViewportSize({ width: 390, height: 844 }); await page.screenshot({ path: path.join(output, 'student-records-mobile.png') });
+    const teacherPage = await teacher.newPage(); teacherPage.on('pageerror', e => errors.push(e.message));
+    await teacherPage.goto(h.base + '/classtools/learning-reports.html');
+    await teacherPage.locator('.record-card').first().waitFor();
+    await teacherPage.screenshot({ path: path.join(output, 'teacher-report-desktop.png'), fullPage: true });
+    await teacherPage.getByRole('button', { name: '영역별 보고서', exact: true }).click();
+    await teacherPage.getByRole('button', { name: '수리', exact: true }).click();
+    assert.match(await teacherPage.locator('#records').innerText(), /수학 기초 OX/);
+    await teacherPage.getByRole('button', { name: '문항·응답 보기' }).first().click();
+    await teacherPage.locator('#detailBody .answer').first().waitFor();
+    await teacherPage.getByRole('button', { name: '닫기', exact: true }).click();
+    await teacherPage.setViewportSize({ width: 390, height: 844 }); await teacherPage.screenshot({ path: path.join(output, 'teacher-report-mobile.png'), fullPage: true });
+    assert.equal(await teacherPage.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    assert.deepEqual(errors, []);
+    console.log('PASS browser: cross-device restore, account separation, conflict prompt, failed-save retry, stable question order, shared history, teacher reports, mobile layout.');
+  } finally { await browser.close(); await h.close(); }
+}
+main().catch(error => { console.error(error); process.exitCode = 1; });

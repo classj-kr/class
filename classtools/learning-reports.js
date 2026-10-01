@@ -14,7 +14,9 @@
     return [...map.values()].sort((a, b) => Number(a.number) - Number(b.number));
   }
   function render() {
-    const all = data.sessions, filtered = mode === 'area' && $('activitySelect').value ? all.filter(s => s.activity === $('activitySelect').value) : all;
+    const all = data.sessions, filtered = mode === 'area' ? all.filter(s =>
+      (!$('activitySelect').value || s.activity === $('activitySelect').value) &&
+      (!selected || selected === '전체' || s.domain === selected)) : all;
     const roster = students(), ids = new Set(filtered.map(s => s.userId));
     const first = filtered.reduce((sum, s) => sum + s.summary.firstScored, 0), right = filtered.reduce((sum, s) => sum + s.summary.firstCorrect, 0);
     const inRange = value => value && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) >= data.range?.from && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) <= data.range?.to;
