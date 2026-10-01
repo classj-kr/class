@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 863,
+  "totalImages": 871,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -864,6 +864,14 @@
     "2998": { "word": "zero", "file": "zero-v2.webp" },
     "2657": { "word": "technology", "file": "technology-v2.webp" },
     "2332": { "word": "section", "file": "section-v2.webp" },
-    "509": { "word": "clue", "file": "clue-v2.webp" }
+    "509": { "word": "clue", "file": "clue-v2.webp" },
+    "997": { "word": "expert", "file": "expert-v2.webp" },
+    "2351": { "word": "series", "file": "series-v2.webp" },
+    "898": { "word": "effort", "file": "effort-v2.webp" },
+    "652": { "word": "county", "file": "county-v2.webp" },
+    "727": { "word": "debt", "file": "debt-v2.webp" },
+    "238": { "word": "bay", "file": "bay-v2.webp" },
+    "856": { "word": "dozen", "file": "dozen-v2.webp" },
+    "2483": { "word": "species", "file": "species-v2.webp" }
   }
 }
