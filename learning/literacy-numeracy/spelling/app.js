@@ -1,11 +1,12 @@
-(() => {
+(async () => {
     "use strict";
 
     const SESSION_SIZE = 10;
-    const PLAYER_NAME_KEY = "classPlayerName";
-    const BEST_SCORE_KEY = "spellingQuizBestScore";
-    const PERSONAL_DECK_KEY = "spellingPersonalQuestionDeckV1";
-    const LESSON_PROGRESS_KEY = "spellingLessonProgressV1";
+    const records = LearningRecords.create('spelling', { label: '한글 맞춤법' });
+    await records.ready;
+    const lessonProgress = {};
+    let busy = false;
+    const setBusy = value => { busy = value; document.querySelector('main').inert = value; };
     const questionBank = Array.isArray(window.SPELLING_QUESTIONS)
         ? window.SPELLING_QUESTIONS
         : [];
@@ -70,47 +71,12 @@
         answers: []
     };
 
-    function readStoredValue(key) {
-        try {
-            return localStorage.getItem(key) || "";
-        } catch (error) {
-            return "";
-        }
-    }
-
-    function writeStoredValue(key, value) {
-        try {
-            localStorage.setItem(key, String(value));
-        } catch (error) {
-            // The quiz still works when storage is unavailable.
-        }
-    }
-
-    function getPlayerName() {
-        return readStoredValue(PLAYER_NAME_KEY).trim();
-    }
-
-    function getBestScore() {
-        const stored = Number.parseInt(readStoredValue(BEST_SCORE_KEY), 10);
-        return Number.isInteger(stored) && stored >= 0 ? Math.min(stored, SESSION_SIZE) : 0;
-    }
-
     function readLessonProgress() {
-        try {
-            const parsed = JSON.parse(readStoredValue(LESSON_PROGRESS_KEY) || "{}");
-            return parsed && typeof parsed === "object" ? parsed : {};
-        } catch (error) {
-            return {};
-        }
+        return lessonProgress;
     }
 
-    function saveLessonResult(lessonId, score, total) {
-        const progress = readLessonProgress();
-        const previous = progress[lessonId];
-        const best = Math.max(Number(previous?.best) || 0, score);
-        progress[lessonId] = { best, total, completedAt: Date.now() };
-        writeStoredValue(LESSON_PROGRESS_KEY, JSON.stringify(progress));
-        return { best, isNewBest: !previous || score > (Number(previous.best) || 0) };
+    function save(events = [], complete = false) {
+        return records.save({ checkpoint: state, events, complete, progress: { current: state.answers.length, total: state.questions.length } });
     }
 
     function shuffle(items) {
@@ -131,12 +97,7 @@
     }
 
     function takePersonalQuestionIds() {
-        return window.SpellingQuestionDeck.take({
-            questions: questionBank,
-            size: SESSION_SIZE,
-            storageKey: PERSONAL_DECK_KEY,
-            storage: window.localStorage
-        });
+        return shuffle(questionBank).slice(0, SESSION_SIZE).map(q => q.id);
     }
 
     function buildSession(questionIds, limit) {
@@ -150,10 +111,6 @@
 
     function setScreen(activeScreen) {
         screens.forEach((screen) => screen?.classList.toggle("hidden", screen !== activeScreen));
-    }
-
-    function updateHeaderBest() {
-        elements.headerBestScore.textContent = `${getBestScore()}/${SESSION_SIZE}`;
     }
 
     function buildLessonCard({ numberText, title, note, metaText, isDone, isPerfect, extraClass, onClick }) {
@@ -185,7 +142,7 @@
     }
 
     function buildRandomCard() {
-        const best = getBestScore();
+        const best = 0;
         return buildLessonCard({
             numberText: "무작위",
             title: "전체 무작위 10문제",
@@ -209,10 +166,10 @@
                 title: lesson.title,
                 note: lesson.note,
                 metaText: record
-                    ? `${record.best === record.total ? "✓ 완벽" : "✓ 완료"} · ${record.best}/${record.total}`
+                    ? '완료'
                     : `${lesson.ids.length}문제`,
                 isDone: Boolean(record),
-                isPerfect: Boolean(record && record.best === record.total),
+                isPerfect: false,
                 onClick: () => startLesson(index)
             });
         }));
@@ -244,13 +201,15 @@
         startQuiz();
     }
 
-    function startQuiz(questionIds) {
+    async function startQuiz(questionIds) {
+        if (busy) return; setBusy(true);
         const isLesson = state.mode === "lesson";
         const ids = Array.isArray(questionIds) ? questionIds : takePersonalQuestionIds();
         const session = buildSession(ids, isLesson ? 0 : SESSION_SIZE);
         const expected = isLesson ? ids.length : SESSION_SIZE;
         if (session.length === 0 || session.length !== expected) {
             elements.lessonProgressSummary.textContent = "문항을 불러오지 못했어요. 새로고침해 주세요.";
+            setBusy(false);
             return;
         }
 
@@ -259,19 +218,24 @@
         state.score = 0;
         state.answered = false;
         state.answers = [];
+        state.tried = {};
+        const saved = await records.start({ contentKey: isLesson ? currentLesson().id : 'random', title: isLesson ? '맞춤법 · ' + currentLesson().title : '맞춤법 · 무작위 10문제', version: '20261002', checkpoint: state });
+        Object.assign(state, saved.checkpoint);
         elements.currentScore.textContent = "0";
         elements.questionTotal.textContent = String(sessionSize());
         elements.quizModeLabel.textContent = isLesson ? `${state.lessonIndex + 1}차시 확인` : "무작위 10문제";
         setScreen(elements.quizScreen);
         renderQuestion();
+        setBusy(false);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function renderQuestion() {
         const question = state.questions[state.currentIndex];
-        state.answered = false;
-        state.hadWrong = false;
-        state.firstWrongChoice = "";
+        const tried = state.tried[question.id] || [];
+        state.answered = tried.includes(question.answer);
+        state.hadWrong = tried.some(choice => choice !== question.answer);
+        state.firstWrongChoice = tried.find(choice => choice !== question.answer) || '';
 
         elements.questionNumber.textContent = String(state.currentIndex + 1);
         elements.progressFill.style.width = `${((state.currentIndex + 1) / sessionSize()) * 100}%`;
@@ -292,6 +256,8 @@
             button.type = "button";
             button.className = "choice-button";
             button.dataset.choice = choice;
+            button.disabled = state.answered || tried.includes(choice);
+            if (tried.includes(choice)) button.classList.add(choice === question.answer ? 'is-correct' : 'is-wrong');
             button.append(document.createTextNode(choice));
 
             number.className = "choice-number";
@@ -303,14 +269,18 @@
             elements.choiceList.append(button);
         });
 
-        elements.choiceList.querySelector("button")?.focus({ preventScroll: true });
+        if (state.answered) { elements.feedbackTitle.textContent = '정답이에요!'; elements.correctAnswer.textContent = '정답: ' + question.answer; elements.explanation.textContent = question.explanation; elements.feedback.classList.remove('hidden'); }
+        elements.choiceList.querySelector('button:not(:disabled)')?.focus({ preventScroll: true });
     }
 
-    function selectAnswer(selectedChoice, selectedButton) {
-        if (state.answered) return;
+    async function selectAnswer(selectedChoice, selectedButton) {
+        if (state.answered || busy) return;
+        setBusy(true);
         const question = state.questions[state.currentIndex];
         const isCorrect = selectedChoice === question.answer;
         const buttons = [...elements.choiceList.querySelectorAll("button")];
+        (state.tried[question.id] ||= []).push(selectedChoice);
+        const event = { kind: 'answer', questionKey: String(question.id), response: selectedChoice, correct: isCorrect, snapshot: { prompt: question.prompt, sentence: question.sentence, choices: question.choices } };
 
         if (!isCorrect) {
             state.hadWrong = true;
@@ -323,6 +293,7 @@
             elements.feedback.classList.add("is-wrong");
             elements.feedback.classList.remove("hidden");
             elements.announcer.textContent = "다시 생각하고 다른 답을 골라보세요.";
+            await save([event]); setBusy(false);
             return;
         }
 
@@ -343,6 +314,7 @@
             selectedChoice: state.hadWrong ? state.firstWrongChoice : selectedChoice,
             isCorrect: !state.hadWrong
         });
+        await save([event]); setBusy(false);
         elements.feedbackTitle.textContent = "정답이에요!";
         elements.feedback.classList.remove("is-wrong");
         elements.correctAnswer.textContent = `정답: ${question.answer}`;
@@ -352,86 +324,21 @@
         elements.nextButton.focus({ preventScroll: true });
     }
 
-    function goToNextQuestion() {
-        if (!state.answered) return;
+    async function goToNextQuestion() {
+        if (!state.answered || busy) return;
         if (state.currentIndex >= sessionSize() - 1) {
             showResults();
             return;
         }
         state.currentIndex += 1;
         renderQuestion();
+        await save();
     }
 
-    function getResultMessage(score, total) {
-        const playerName = getPlayerName();
-        const subject = playerName ? `${playerName} 님, ` : "";
-        const ratio = total > 0 ? score / total : 0;
-        if (score === total) return `${subject}완벽해요! 맞춤법 달인이네요.`;
-        if (ratio >= 0.8) return `${subject}훌륭해요! 거의 다 알고 있어요.`;
-        if (ratio >= 0.6) return `${subject}좋아요! 헷갈린 표현만 다시 살펴봐요.`;
-        return `${subject}괜찮아요. 오답노트를 읽고 한 번 더 도전해 봐요.`;
-    }
-
-    function appendReviewItem(answerRecord) {
-        const item = document.createElement("li");
-        const sentence = document.createElement("span");
-        const answer = document.createElement("span");
-        const chosen = document.createElement("span");
-        const explanation = document.createElement("span");
-
-        sentence.className = "review-sentence";
-        sentence.textContent = answerRecord.question.sentence.replace("___", answerRecord.question.answer);
-        answer.className = "review-answer";
-        answer.textContent = `정답: ${answerRecord.question.answer}`;
-        chosen.className = "review-chosen";
-        chosen.textContent = `내가 고른 답: ${answerRecord.selectedChoice}`;
-        explanation.className = "review-explanation";
-        explanation.textContent = answerRecord.question.explanation;
-        item.append(sentence, chosen, answer, explanation);
-        elements.missedList.append(item);
-    }
-
-    function showResults() {
-        const total = sessionSize();
-        const missed = state.answers.filter((answer) => !answer.isCorrect);
-        elements.finalScore.textContent = String(state.score);
-        elements.finalTotal.textContent = String(total);
-        elements.resultMessage.textContent = getResultMessage(state.score, total);
-        elements.missedList.replaceChildren();
-        missed.forEach(appendReviewItem);
-        elements.perfectReview.classList.toggle("hidden", missed.length !== 0);
-        elements.missedList.classList.toggle("hidden", missed.length === 0);
-
-        elements.nextLessonButton.classList.add("hidden");
-        elements.resultEyebrow.textContent = "LEARNING COMPLETE";
-        elements.resultTitle.textContent = "학습 결과";
-        elements.restartButton.textContent = "새 문제 풀기";
-
-        if (state.mode === "lesson") {
-            const lesson = currentLesson();
-            const { best, isNewBest } = saveLessonResult(lesson.id, state.score, total);
-            const hasNext = state.lessonIndex + 1 < lessons.length;
-            elements.resultEyebrow.textContent = "LESSON COMPLETE";
-            elements.resultTitle.textContent = `${state.lessonIndex + 1}차시 · ${lesson.title}`;
-            elements.bestMessage.textContent = isNewBest
-                ? `이 차시 최고 기록이에요! ${best}/${total}`
-                : `이 차시 최고 기록 ${best}/${total}`;
-            elements.restartButton.textContent = "이 차시 다시 풀기";
-            elements.nextLessonButton.classList.toggle("hidden", !hasNext);
-        } else {
-            const previousBest = getBestScore();
-            const isNewBest = state.score > previousBest;
-            const best = Math.max(previousBest, state.score);
-            if (isNewBest) writeStoredValue(BEST_SCORE_KEY, state.score);
-            elements.bestMessage.textContent = isNewBest
-                ? `새 개인 최고 기록이에요! ${best}/${SESSION_SIZE}`
-                : `개인 최고 기록 ${best}/${SESSION_SIZE}`;
-            updateHeaderBest();
-        }
-
-        setScreen(elements.resultScreen);
-        elements.lessonListButton.focus({ preventScroll: true });
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    async function showResults() {
+        setBusy(true); await save([],true);
+        if(state.mode==='lesson') lessonProgress[currentLesson().id]={completed:true};
+        selectLessonMode(); records.showResult(); setBusy(false);
     }
 
     function restartCurrent() {
@@ -490,6 +397,11 @@
     elements.nextButton.addEventListener("click", goToNextQuestion);
     document.addEventListener("keydown", handleKeyboard);
 
-    updateHeaderBest();
+    elements.headerBestScore?.parentElement?.remove();
+    if (elements.currentScore) elements.currentScore.parentElement.hidden = true;
+    let offset = 0;
+    do { const page = await records.history('&offset=' + offset); for (const row of page.sessions) if (row.status === 'completed') lessonProgress[row.contentKey] = { completed: true }; offset = page.nextOffset; } while (offset != null);
     selectLessonMode();
+    const resume = new URLSearchParams(location.search).get('record');
+    if (resume === 'random') startRandomQuiz(); else if (resume) { const index = lessons.findIndex(l => l.id === resume); if (index >= 0) startLesson(index); }
 })();

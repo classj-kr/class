@@ -27,7 +27,12 @@ p { line-height: 1.65; }
 #score { font-size: 16px; white-space: nowrap; }
 .board-viewport { min-height: 0; min-width: 0; display: grid; place-items: center; overflow: auto; container-type: size; border-radius: 10px; }
 .board-frame { width: min(700px, 100cqw, 100cqh); aspect-ratio: 1; padding: 21px 8px 8px 23px; }
-#board { --size: 8; display: grid; grid-template-columns: repeat(var(--size), minmax(0,1fr)); width: 100%; height: 100%; box-shadow: 0 3px 12px #162b2529; }
+#board { --size: 8; position: relative; display: grid; grid-template-columns: repeat(var(--size), minmax(0,1fr)); width: 100%; height: 100%; box-shadow: 0 3px 12px #162b2529; }
+.move-arrow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.move-arrow path, .move-arrow polyline { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.move-arrow .arrow-edge { stroke: #fffdf7; stroke-width: .15; }
+.move-arrow .arrow-line { stroke: #176c58; stroke-width: .085; }
+.move-arrow .arrow-head { stroke: #176c58; stroke-width: .1; }
 .square { position: relative; min-height: 0; min-width: 0; width: 100%; aspect-ratio: 1; padding: 0; border-radius: 0; border: 1px solid #193e2d; background: #37734f; opacity: 1 !important; }
 .square:disabled { cursor: default; }
 .square.legal:hover:not(:disabled) { background-color: #4b8b60; }
@@ -145,6 +150,7 @@ legend { font-weight: 800; margin-bottom: 8px; }
   .board-frame { padding-left: 19px; padding-top: 18px; }
   .axis { font-size: 10px; }
   .sidebar { display: flex; }
+  .sidebar > .explanation { order: -1; }
   .color-options { grid-template-columns: 1fr; }
   .controls button { flex: 1; padding: 7px; font-size: 14px; }
 }

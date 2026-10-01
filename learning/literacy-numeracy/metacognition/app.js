@@ -4,16 +4,16 @@
  * 진행 중에는 정오 피드백을 절대 노출하지 않는다. 중간 피드백이 들어가면
  * 이후 문항의 확신도가 오염되어 캘리브레이션 지표가 성립하지 않는다.
  */
-(function () {
+(async function () {
   "use strict";
 
   // 학년별 페이지는 app.js를 불러오기 전에 window.METACOG_ITEM_SET_VERSION /
   // window.METACOG_LEVEL_KEY를 지정해 둔다. 지정이 없으면(기존 index.html) 원래 값 그대로다.
   const ITEM_SET_VERSION = (typeof window !== "undefined" && window.METACOG_ITEM_SET_VERSION) || "metacog-v3";
-  const LEVEL_SUFFIX = typeof window !== "undefined" && window.METACOG_LEVEL_KEY ? "-" + window.METACOG_LEVEL_KEY : "";
-  const PROGRESS_KEY = "metacog-progress-v1" + LEVEL_SUFFIX;
-  const RESULT_KEY = "metacog-results-v1" + LEVEL_SUFFIX;
 
+  const records = LearningRecords.create('metacognition', {label:'학습 자기점검'});
+  await records.ready;
+  let saving = false;
   const items = METACOG_ITEMS;
   const UNKNOWN_CHOICE = MetacogMetrics.UNKNOWN_CHOICE;
   const isAnswered = row => row.choice === UNKNOWN_CHOICE || row.choice !== null && row.confidence !== null;
@@ -83,41 +83,9 @@
     report: el("reportView")
   };
 
-  /* ── 진행 상황 임시 저장 ───────────────────────────────── */
-  function saveProgress() {
-    try {
-      localStorage.setItem(
-        PROGRESS_KEY,
-        JSON.stringify({
-          version: ITEM_SET_VERSION,
-          index: state.index,
-          responses: state.responses,
-          orders: state.orders,
-          itemOrder: state.itemOrder
-        })
-      );
-    } catch (_) {
-      /* 저장 실패는 진단 진행을 막지 않는다 */
-    }
-  }
-
-  function clearProgress() {
-    try {
-      localStorage.removeItem(PROGRESS_KEY);
-    } catch (_) {}
-  }
-
-  function loadProgress() {
-    try {
-      const raw = localStorage.getItem(PROGRESS_KEY);
-      if (!raw) return null;
-      const saved = JSON.parse(raw);
-      if (!saved || saved.version !== ITEM_SET_VERSION) return null;
-      if (!Array.isArray(saved.responses) || saved.responses.length !== items.length) return null;
-      return saved;
-    } catch (_) {
-      return null;
-    }
+  const checkpoint = () => ({ version: ITEM_SET_VERSION, index: state.index, responses: state.responses, orders: state.orders, itemOrder: state.itemOrder });
+  function saveProgress(events = [], complete = false) {
+    return records.save({checkpoint:checkpoint(),events,complete,progress:{current:state.responses.filter(isAnswered).length,total:items.length}});
   }
 
   /* ── 문항 렌더링 ───────────────────────────────────────── */
@@ -661,269 +629,6 @@
   }
 
   /* ── 저장 ──────────────────────────────────────────────── */
-  function buildPayload(analysis) {
-    return {
-      itemSetVersion: ITEM_SET_VERSION,
-      completedAt: new Date().toISOString(),
-      responses: state.responses.map((row) => ({
-        id: row.id,
-        choice: row.choice,
-        confidence: row.confidence,
-        ms: row.ms
-      })),
-      summary: analysis.summary
-    };
-  }
-
-  function saveLocally(payload) {
-    try {
-      const raw = localStorage.getItem(RESULT_KEY);
-      const history = raw ? JSON.parse(raw) : [];
-      history.push(payload);
-      localStorage.setItem(RESULT_KEY, JSON.stringify(history.slice(-20)));
-      return true;
-    } catch (_) {
-      return false;
-    }
-  }
-
-  async function saveResult(analysis) {
-    const payload = buildPayload(analysis);
-    const status = el("saveStatus");
-    const storedLocally = saveLocally(payload);
-
-    if (window.location.protocol === "file:") {
-      status.setAttribute("data-state", "local");
-      status.textContent = storedLocally
-        ? "이 기기에만 저장했습니다. 학급 기록으로 남기려면 학습 포털 주소로 접속해 주세요."
-        : "결과를 저장하지 못했습니다. 아래 버튼으로 파일을 받아 두세요.";
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/metacognition/attempts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "same-origin",
-        body: JSON.stringify(payload)
-      });
-      if (response.ok) {
-        status.setAttribute("data-state", "ok");
-        status.textContent = "결과를 학급 기록에 저장했습니다. 선생님이 확인할 수 있습니다.";
-        return;
-      }
-      const detail = await response.json().catch(() => ({}));
-      status.setAttribute("data-state", "local");
-      status.textContent =
-        (detail.error === "LOGIN_REQUIRED" || response.status === 401
-          ? "로그인하지 않아 학급 기록에는 저장하지 못했습니다."
-          : "서버에 저장하지 못했습니다.") +
-        (storedLocally ? " 이 기기에는 저장해 두었습니다." : "");
-    } catch (_) {
-      status.setAttribute("data-state", "local");
-      status.textContent = storedLocally
-        ? "서버에 연결하지 못해 이 기기에만 저장했습니다."
-        : "결과를 저장하지 못했습니다. 아래 버튼으로 파일을 받아 두세요.";
-    }
-  }
-
-  /*
-   * 결과 내려받기 — 사람이 읽는 리포트(HTML) 한 장.
-   * 화면에 그려진 리포트를 그대로 복사해 담으므로 본 것과 같은 내용이 나온다.
-   * 원자료(문항별 응답)는 눈에 보이지 않는 script 블록에 함께 넣는다.
-   * 파일 하나만 챙기면 읽는 것과 분석하는 것이 둘 다 되게 하려는 것이다.
-   */
-
-  // 스타일시트를 읽지 못하는 환경(파일로 직접 열기 등)에서 쓰는 최소 스타일
-  const FALLBACK_EXPORT_CSS = `
-:root{--panel-bg:#1a1e2e;--panel-border:rgba(255,255,255,.12);--accent-gold:#ffb54a;
---accent-cyan:#06b6d4;--text-main:#f8fafc;--text-muted:#94a3b8;--text-dim:#64748b;
---correct-green:#10b981;--wrong-red:#ef4444;--grid-line:rgba(255,255,255,.08)}
-body{margin:0;padding:24px;background:#12141c;color:var(--text-main);line-height:1.55;
-font-family:Pretendard,-apple-system,"Segoe UI",Roboto,sans-serif;word-break:keep-all}
-[hidden]{display:none!important}
-.math-fraction{display:inline-grid;grid-template-columns:1fr;vertical-align:middle;text-align:center;font-size:.9em;line-height:1.1;margin:0 .12em;position:relative;white-space:nowrap}
-.fraction-top{grid-row:1;padding:0 .18em .12em;border-bottom:1.5px solid currentColor}
-.fraction-bottom{grid-row:2;padding:.12em .18em 0}
-.fraction-slash{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.review-item{border:1px solid var(--panel-border);border-radius:12px;padding:16px;margin:12px 0}
-.review-item p{margin:10px 0}.review-prompt{white-space:pre-line;font-weight:600}
-.review-item summary{font-weight:700}.report-note{color:var(--text-muted);margin-top:12px}
-.panel{background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:20px;
-padding:22px;margin-bottom:16px}
-.panel-title{font-size:17px;font-weight:700;margin:0 0 10px}
-.profile-card{border-left:4px solid var(--accent-cyan)}
-.profile-tag{font-size:12px;font-weight:700;color:var(--text-dim)}
-.profile-name{font-size:24px;font-weight:800;margin:4px 0 8px}
-.profile-headline{font-size:15px;color:#dbe3ee;margin:0}
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.stat-tile{background:var(--panel-bg);border:1px solid var(--panel-border);border-radius:16px;padding:16px}
-.stat-label{font-size:12px;color:var(--text-muted)}
-.stat-value{font-size:28px;font-weight:800}
-.stat-note{font-size:12px;color:var(--text-dim)}
-.stat-tile[data-tone="good"] .stat-value{color:var(--correct-green)}
-.stat-tile[data-tone="warn"] .stat-value{color:var(--accent-gold)}
-.stat-tile[data-tone="bad"] .stat-value{color:var(--wrong-red)}
-.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.chart-help{font-size:13px;color:var(--text-muted);margin:0 0 12px}
-.chart-holder svg{width:100%;height:auto;display:block}
-.chart-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12px;color:var(--text-muted)}
-.legend-item{display:inline-flex;align-items:center;gap:6px}
-.legend-swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
-.legend-swatch.dashed{background:repeating-linear-gradient(90deg,#7c879b 0 4px,transparent 4px 7px)}
-.card-list{display:flex;flex-direction:column;gap:12px}
-.counsel-card{background:rgba(0,0,0,.25);border-radius:14px;padding:16px 18px;border-left:4px solid var(--accent-cyan)}
-.counsel-card[data-severity="5"],.counsel-card[data-severity="4"]{border-left-color:var(--wrong-red)}
-.counsel-card[data-severity="3"]{border-left-color:var(--accent-gold)}
-.counsel-card[data-severity="1"]{border-left-color:var(--correct-green)}
-.counsel-tag{font-size:11px;font-weight:700;color:var(--text-dim)}
-.counsel-title{font-size:16px;font-weight:700;margin:3px 0 8px}
-.counsel-evidence{font-size:13px;color:var(--accent-cyan);margin:0 0 8px}
-.counsel-action{font-size:14.5px;color:#dbe3ee;margin:0}
-.plan-list{margin:0 0 0 20px;display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:#dbe3ee}
-.item-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:12px}
-.item-table th,.item-table td{padding:9px 8px;text-align:left;border-bottom:1px solid var(--grid-line);vertical-align:top}
-.item-table th{color:var(--text-muted);font-weight:600;font-size:12px}
-.item-table td.num{font-variant-numeric:tabular-nums}
-.mark{font-weight:700}.mark.ok{color:var(--correct-green)}.mark.no{color:var(--wrong-red)}
-.item-table tr[data-flag="hce"]{background:rgba(239,68,68,.09)}
-.item-table tr[data-flag="lch"]{background:rgba(16,185,129,.09)}
-.table-note{font-size:12px;color:var(--text-dim);margin-top:10px}
-.exp-cell{color:var(--text-muted);font-size:13px}
-@media (max-width:900px){.stat-row{grid-template-columns:repeat(2,1fr)}.chart-grid{grid-template-columns:1fr}}
-`;
-
-  /*
-   * 인쇄용 스타일.
-   * 화면은 어두운 바탕에 밝은 글씨라 그대로 인쇄하면 흰 종이에 흰 글씨가 된다.
-   * 색은 대부분 :root 변수에서 오므로 변수를 밝은 배경용으로 다시 정의하면 한 번에 뒤집힌다.
-   * 다만 SVG 차트는 색을 속성으로 직접 갖고 있어 변수가 닿지 않는다. 아래에서 따로 덮는다.
-   */
-  const PRINT_CSS = `
-@media print{
-  :root{
-    --panel-bg:#ffffff;--panel-border:#d1d5db;--grid-line:#e5e7eb;
-    --text-main:#111827;--text-muted:#4b5563;--text-dim:#6b7280;
-    --accent-cyan:#0e7490;--accent-gold:#b45309;
-    --correct-green:#047857;--wrong-red:#b91c1c;
-  }
-  body{background:#ffffff;color:#111827;padding:0}
-  .panel,.stat-tile{background:#ffffff;border:1px solid #d1d5db;box-shadow:none;break-inside:avoid}
-  .counsel-card{background:#f9fafb;break-inside:avoid}
-  .profile-headline,.counsel-action,.plan-list,.exp-cell,.review-help,.review-item p,.report-note{color:#374151}
-  .review-item{background:#fff;border-color:#d1d5db;break-inside:avoid}
-  .review-reflection{background:#f3f4f6}
-  .review-filters{display:none}
-  .item-table tr[data-flag="hce"]{background:#fee2e2}
-  .item-table tr[data-flag="lch"]{background:#d1fae5}
-  .item-table tr,.chart-card{break-inside:avoid}
-  .export-hint{display:none}
-
-  svg text[fill="#f8fafc"]{fill:#111827}
-  svg text[fill="#94a3b8"],svg text[fill="#64748b"]{fill:#4b5563}
-  svg line[stroke="rgba(255,255,255,0.08)"]{stroke:#e5e7eb}
-  svg line[stroke="rgba(255,255,255,0.22)"]{stroke:#9ca3af}
-  svg circle[fill="#12141c"]{fill:#ffffff}
-  svg circle[fill="#06b6d4"]{fill:#0e7490}
-  svg polyline[stroke="#06b6d4"]{stroke:#0e7490}
-  svg rect[fill="#10b981"]{fill:#047857}
-  svg rect[fill="#ef4444"]{fill:#b91c1c}
-}
-`;
-
-  /** 페이지에 적용된 스타일을 문자열로 뽑는다. 못 뽑으면 최소 스타일로 되돌린다. */
-  function collectStyles() {
-    try {
-      const collected = Array.from(document.styleSheets)
-        .map((sheet) => Array.from(sheet.cssRules).map((rule) => rule.cssText).join("\n"))
-        .join("\n");
-      if (collected.trim().length > 200) return collected;
-    } catch (_) {
-      // file:// 로 직접 열면 브라우저가 cssRules 접근을 막는다
-    }
-    return FALLBACK_EXPORT_CSS;
-  }
-
-  function escapeForScript(text) {
-    return text.replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026");
-  }
-
-  function buildReportHtml(payload) {
-    const clone = document.getElementById("reportView").cloneNode(true);
-    clone.removeAttribute("hidden");
-    // 인쇄본에 필요 없는 조작 요소를 걷어낸다
-    const savePanel = clone.querySelector(".save-panel");
-    if (savePanel) savePanel.remove();
-    const toggle = clone.querySelector("#toggleTableBtn");
-    if (toggle) toggle.remove();
-    clone.querySelector("#reviewFilters")?.remove();
-    clone.querySelectorAll(".review-item").forEach(node => { node.hidden = false; node.open = true; });
-    clone.querySelector(".review-empty")?.remove();
-    const tableHolder = clone.querySelector("#itemTableHolder");
-    if (tableHolder) tableHolder.removeAttribute("hidden"); // 문항별 기록은 펼친 채로
-    // 마지막으로 가리켰던 내용이 남아 있는 말풍선과, 마우스만 받는 투명 영역을 걷어낸다
-    clone.querySelectorAll(".chart-tooltip").forEach((node) => node.remove());
-    clone.querySelectorAll('[fill="transparent"]').forEach((node) => node.remove());
-    clone.querySelectorAll("[tabindex]").forEach((node) => node.removeAttribute("tabindex"));
-
-    const completedDate = payload.completedAt.slice(0, 10).replace(/-/g, ".");
-    return (
-      "<!DOCTYPE html>\n" +
-      '<html lang="ko">\n<head>\n<meta charset="UTF-8">\n' +
-      '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
-      "<title>학습 자기점검 기록 " + completedDate + "</title>\n" +
-      "<style>\n" + collectStyles() + "\n" + PRINT_CSS + "\n</style>\n</head>\n<body>\n" +
-      '<div style="max-width:900px;margin:0 auto">\n' +
-      '<h1 style="font-size:22px;font-weight:800;margin:0 0 4px">학습 자기점검 기록</h1>\n' +
-      '<p class="export-hint" style="font-size:13px;color:#64748b;margin:0 0 18px">' +
-      completedDate + " · 문항 세트 " + payload.itemSetVersion +
-      " · 브라우저에서 인쇄하면 종이로 뽑을 수 있습니다</p>\n" +
-      clone.innerHTML +
-      "\n</div>\n" +
-      '<script type="application/json" id="metacog-raw">' +
-      escapeForScript(JSON.stringify(payload)) +
-      "<\/script>\n</body>\n</html>\n"
-    );
-  }
-
-  function saveBlob(content, mimeType, filename) {
-    const blob = new Blob([content], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  }
-
-  /*
-   * 파일 이름은 반드시 아스키로 짓는다.
-   * 한글이 하나라도 들어가면 크로미움이 download 속성의 이름을 통째로 버리고
-   * 확장자 없는 "download"로 저장한다. 확장자가 없으면 학생이 파일을 열 수 없다.
-   */
-  function downloadResult() {
-    if (!state.analysis) return;
-    const payload = buildPayload(state.analysis);
-    saveBlob(
-      buildReportHtml(payload),
-      "text/html;charset=utf-8",
-      "metacognition-report-" + payload.completedAt.slice(0, 10) + ".html"
-    );
-  }
-
-  function downloadRawData() {
-    if (!state.analysis) return;
-    const payload = buildPayload(state.analysis);
-    saveBlob(
-      JSON.stringify(payload, null, 2),
-      "application/json",
-      "metacognition-raw-" + payload.completedAt.slice(0, 10) + ".json"
-    );
-  }
-
-  /* ── 화면 전환 ─────────────────────────────────────────── */
   function show(name) {
     view.intro.hidden = name !== "intro";
     view.quiz.hidden = name !== "quiz";
@@ -931,16 +636,21 @@ padding:22px;margin-bottom:16px}
     document.body.setAttribute("data-mode", name);
   }
 
-  function finish() {
+  async function finish() {
+    if(saving)return; saving=true; view.quiz.inert=true;
     recordTime();
     const analysis = MetacogMetrics.analyze(state.responses, items);
-    if (!analysis) return;
+    if (!analysis) {saving=false;view.quiz.inert=false;return;}
     state.analysis = analysis;
-    clearProgress();
+    const events = state.responses.filter(isAnswered).map(row => {
+      const item = items.find(q=>q.id===row.id);
+      return {kind:'answer',questionKey:row.id,response:{choice:row.choice,text:row.choice===UNKNOWN_CHOICE?'모르겠어요':item.choices[row.choice],confidence:row.confidence},correct:row.choice===item.answer,durationMs:Math.min(1800000,Math.max(0,Math.round(row.ms))),snapshot:{prompt:item.text || item.prompt || item.question || '',choices:item.choices,version:ITEM_SET_VERSION}};
+    });
+    await saveProgress(events,true);
     renderReport(analysis);
     show("report");
     window.scrollTo({ top: 0, behavior: "smooth" });
-    saveResult(analysis);
+    records.showResult(); saving=false; view.quiz.inert=false;
   }
 
   /* ── 이벤트 ────────────────────────────────────────────── */
@@ -966,42 +676,15 @@ padding:22px;margin-bottom:16px}
     event.currentTarget.textContent = holder.hidden ? "펼치기" : "접기";
   });
 
-  el("downloadBtn").addEventListener("click", downloadResult);
-  el("rawBtn").addEventListener("click", downloadRawData);
-
-  el("retryBtn").addEventListener("click", () => {
-    state.index = 0;
-    state.responses = items.map((item) => ({ id: item.id, choice: null, confidence: null, ms: 0 }));
-    state.orders = freshOrders();
-    state.itemOrder = shuffledOrder(items.length);
-    state.analysis = null;
-    state.shownAt = 0;
-    clearProgress();
-    show("intro");
-    el("restoreNote").hidden = true;
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  el('downloadBtn')?.remove(); el('rawBtn')?.remove(); el('saveStatus')?.closest('.save-panel')?.remove();
+  el('retryBtn').onclick = () => location.reload();
 
   /* ── 초기화 ────────────────────────────────────────────── */
-  (function init() {
-    el("qTotal").textContent = String(items.length);
-    const saved = loadProgress();
-    if (saved) {
-      const answered = saved.responses.filter(isAnswered).length;
-      if (answered > 0) {
-        const common = el("commonSet");
-        if (common) common.open = true;
-        const note = el("restoreNote");
-        note.hidden = false;
-        note.textContent = "지난번에 " + answered + "문항까지 풀었습니다. ‘자기점검 시작하기’를 누르면 이어서 진행합니다.";
-        state.responses = saved.responses;
-        state.index = Math.min(saved.index, items.length - 1);
-        // 이어서 풀 때 선택지·문항 순서가 다시 섞이면 학생이 혼란스럽다. 저장된 순서를 그대로 쓴다.
-        if (validOrders(saved.orders)) state.orders = saved.orders;
-        if (validItemOrder(saved.itemOrder)) state.itemOrder = saved.itemOrder;
-      } else {
-        clearProgress();
-      }
-    }
-  })();
+  el('qTotal').textContent = String(items.length);
+  const session = await records.start({contentKey:window.METACOG_LEVEL_KEY || 'common',title:'학습 자기점검'+(window.METACOG_LEVEL_KEY?' · '+window.METACOG_LEVEL_KEY:''),version:ITEM_SET_VERSION,checkpoint:checkpoint()});
+  const cp=session.checkpoint;
+  if(validOrders(cp.orders)&&validItemOrder(cp.itemOrder)){
+    state.responses=cp.responses;state.orders=cp.orders;state.itemOrder=cp.itemOrder;state.index=Math.min(cp.index,items.length-1);
+    if(cp.responses.some(isAnswered)){el('restoreNote').hidden=false;el('restoreNote').textContent='저장된 자기점검을 이어서 진행합니다.';}
+  }
 })();

@@ -1,4 +1,4 @@
-/* global JanggiCoachRules, JanggiCoachAI */
+/* global JanggiCoachRules, JanggiCoachAI, BoardCoachUI */
 (() => {
   "use strict";
   if(new URLSearchParams(location.search).get("game")!=="janggi")return;
@@ -21,7 +21,7 @@
   document.body.insertAdjacentHTML("beforeend",'<dialog id="janggiConfirm" aria-labelledby="janggiConfirmTitle"><h2 id="janggiConfirmTitle"></h2><p id="janggiConfirmText"></p><div class="resign-choices"><button id="janggiConfirmYes" type="button"></button><button id="janggiConfirmCancel" class="quiet" type="button">취소</button></div></dialog>');
   let confirmKind=null;
   function reason(label,title,text){$("reasonLabel").textContent=label;$("moveLabel").textContent=title;$("reason").textContent=text;}
-  function stop(){token++;worker?.terminate();worker=null;clearTimeout(timeout);clearTimeout(nextTurn);busy=false;}
+  function stop(){if(busy&&job==="hint")reason("힌트 계산 취소","계산을 멈췄어요","힌트를 누르면 다시 계산합니다.");token++;worker?.terminate();worker=null;clearTimeout(timeout);clearTimeout(nextTurn);busy=false;}
   function render(){
     const position=scene?.before||state,end=R.status(state),moves=R.actions(position);
     const active=started&&!busy&&!scene&&!end.ended&&state.turn===human;
@@ -38,6 +38,7 @@
       const face=p?(p[1]==="K"?(p[0]==="c"?"초":"한"):AI.name(p)):"";
       return `<button type="button" role="gridcell" class="${classes}" data-square="${index}" ${can?"":"disabled"} aria-pressed="${selected===index}" aria-label="${R.coord(index)} · ${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p):"빈자리"}${target?" · 이동 가능":""}">${row===0?`<span class="axis column" aria-hidden="true">${index%9+1}</span>`:""}${col===0?`<span class="axis row" aria-hidden="true">${(Math.floor(index/9)+1)%10}</span>`:""}${p?`<span class="janggi-piece ${p[0]} ${p[1]==="K"?"king":""}">${face}</span>`:target?'<span class="legal-dot"></span>':""}</button>`;
     }).join("");
+    BoardCoachUI.markMove($("board"),mark,9);
     $("levelLabel").textContent=AI.LEVELS[level].name+" AI";$("colorLabel").textContent=human==="c"?"나는 초":"나는 한";
     $("score").textContent=`${scene?history.indexOf(scene):state.ply}수`;
     $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 수준을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}`;
@@ -74,7 +75,7 @@
         const answer=data.result,move=R.actions(state).find(m=>R.same(m,answer.move));
         if(!move)return fail("수 계산을 다시 시도해 주세요.");
         worker.terminate();worker=null;clearTimeout(timeout);busy=false;
-        if(kind==="hint"){hint={...answer,move};reason("힌트",AI.label(move),answer.reason);render();}else commit(move);
+        if(kind==="hint"){hint={...answer,move};reason("힌트",AI.label(move),answer.reason);render();BoardCoachUI.revealExplanation();}else commit(move);
       };
       worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
       timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},20000);
@@ -121,7 +122,7 @@
     $("janggiConfirm").close();
   });
   $("janggiConfirmCancel").addEventListener("click",()=>$("janggiConfirm").close());$("janggiConfirm").addEventListener("close",resume);
-  $("reviewList").addEventListener("click",event=>{const button=event.target.closest("[data-review]");if(button){scene=history[Number(button.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();}});
+  $("reviewList").addEventListener("click",event=>{const button=event.target.closest("[data-review]");if(button){scene=history[Number(button.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();BoardCoachUI.revealExplanation();}});
   $("liveBoard").addEventListener("click",()=>{scene=null;reason("대국 돌아보기","마지막 판","중요한 장면을 눌러 다시 살펴보세요.");render();});
   window.addEventListener("pagehide",stop);window.addEventListener("pageshow",event=>{if(event.persisted){render();resume();}});
   render();$("setup").showModal();

@@ -3,6 +3,46 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const Game = require("../game-hub-server/citychase");
 const Board = Game.BOARD;
+const Layout = require("../learning/games/citychase/citychase-layout");
+
+function segmentDistance(point, a, b) {
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const t = Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / (dx * dx + dy * dy)));
+  return Math.hypot(point.x - a.x - t * dx, point.y - a.y - t * dy);
+}
+
+test("display routes preserve every game connection and clear unrelated squares", () => {
+  assert.deepEqual(Layout.roads.map(road => road.edge), Board.EDGES.filter(edge => !edge.visualOnly));
+  for (const road of Layout.roads) {
+    assert.equal(road.points[0].id, road.edge.a);
+    assert.equal(road.points.at(-1).id, road.edge.b);
+    assert.deepEqual(Layout.edgePath(road.edge.b, road.edge.a), [...road.points].reverse());
+    for (const node of Object.values(Layout.NODES)) {
+      if ([road.edge.a, road.edge.b].includes(node.id)) continue;
+      const distance = Math.min(...road.points.slice(1).map((b, i) => segmentDistance(node, road.points[i], b)));
+      assert.ok(distance >= 26, `${road.edge.a}—${road.edge.b} passes too close to unrelated square ${node.id}: ${distance}`);
+    }
+  }
+  // Overpasses must have room for their rails without concealing a game square.
+  for (const crossing of Layout.crossings) for (const node of Object.values(Layout.NODES)) {
+    assert.ok(Math.hypot(node.x - crossing.x, node.y - crossing.y) >= 29);
+  }
+});
+
+test("visual bends are used by previews and animation without becoming extra steps", () => {
+  for (const road of Layout.roads.filter(road => road.raised)) {
+    const ids = [road.edge.a, road.edge.b];
+    assert.deepEqual(Layout.routePath(ids), road.points);
+    assert.equal(road.points.filter(point => point.id).length, 2);
+    assert.deepEqual(Layout.pointAlong(road.points, 0), {x:road.points[0].x, y:road.points[0].y});
+    const end = Layout.pointAlong(road.points, 1);
+    assert.ok(Math.hypot(end.x - road.points.at(-1).x, end.y - road.points.at(-1).y) < .001);
+    for (let i = 0; i <= 20; i += 1) {
+      const point = Layout.pointAlong(road.points, i / 20);
+      assert.ok(road.points.slice(1).some((b, n) => segmentDistance(point, road.points[n], b) < .001));
+    }
+  }
+});
 
 function playingGame() {
   const game = Game.createGame("t", "도둑");

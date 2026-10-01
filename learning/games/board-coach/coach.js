@@ -1,4 +1,4 @@
-/* global BoardCoachRules, BoardCoachAI */
+/* global BoardCoachRules, BoardCoachAI, BoardCoachUI */
 (() => {
   "use strict";
   if (["chess", "janggi"].includes(new URLSearchParams(location.search).get("game"))) return;
@@ -10,7 +10,7 @@
   let moves = [], feedback = null;
   const escape = text => String(text).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const coordinate = i => R.coord(i, state.size);
-  const variant = game === "omok" ? "이 사이트의 오목은 금수 없이 5개 이상 이으면 승리합니다. 렌주 대회의 금수·개국 규칙은 적용하지 않습니다." : "상대 돌을 끼워 뒤집습니다. 둘 곳이 없으면 자동으로 차례를 넘기고, 양쪽 모두 둘 곳이 없으면 돌 수로 승부를 정합니다.";
+  const variant = game === "omok" ? "검은 돌부터 빈자리에 하나씩 번갈아 둡니다. 가로·세로·대각선으로 내 돌을 5개 이상 이으면 이깁니다. 이 사이트에서는 렌주의 금수·개국 규칙을 적용하지 않습니다." : "검은 돌부터 둡니다. 새로 놓을 돌과 내 돌 사이에 상대 돌이 가로·세로·대각선으로 이어진 곳에 놓아, 사이의 상대 돌을 모두 뒤집습니다. 둘 곳이 없으면 자동으로 차례를 넘깁니다. 양쪽 모두 둘 곳이 없을 때 돌이 더 많은 쪽이 이깁니다.";
   const principle = game === "omok" ? "중앙에서 연결하기 → 바로 이길 곳 찾기 → 상대의 세 돌·네 돌 막기" : "모서리 지키기 → 상대가 둘 곳 줄이기 → 마지막 돌 수 계산하기";
   document.title = `${name} · AI와 배우기`;
   $("title").textContent = name;
@@ -18,6 +18,7 @@
   $("principle").textContent = principle;
   $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>초급도 기본 공격·방어를 확인합니다. 수준이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌 위의 주황 점은 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
   function stopWork() {
+    if (busy && retryKind === "hint") setReason("힌트 계산 취소", "계산을 멈췄어요", "힌트를 누르면 다시 계산합니다.");
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
   }
   function drawBoard(position, mark = null) {
@@ -70,7 +71,7 @@
         const { result, error } = event.data;
         if (error || !result || !R.legal(state).includes(result.index)) { failJob("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요."); return; }
         worker?.terminate(); worker = null; clearTimeout(timeout); busy = false;
-        if (kind === "hint") { hint = result; setReason("힌트 · 한 가지 후보", coordinate(result.index), result.reason); render(); }
+        if (kind === "hint") { hint = result; setReason("힌트 · 한 가지 후보", coordinate(result.index), result.reason); render(); BoardCoachUI.revealExplanation(); }
         else {
           const before = state;
           state = R.play(state, result.index);
@@ -113,7 +114,6 @@
   $("retry").addEventListener("click", () => startJob(retryKind));
   $("zoom").addEventListener("click", () => { const on = $("boardViewport").classList.toggle("zoomed"); $("zoom").setAttribute("aria-pressed", String(on)); $("zoom").textContent = on ? "전체 판 보기" : "판 확대"; });
   $("newGame").addEventListener("click", () => {
-    if (busy && retryKind === "hint") setReason("힌트 계산을 멈췄어요", "계속 생각해 보세요", "설정을 닫으면 현재 판을 이어서 둘 수 있어요. 힌트도 다시 볼 수 있어요.");
     stopWork(); $("setup").showModal(); render();
   });
   $("closeSetup").addEventListener("click", () => $("setup").close());
@@ -131,7 +131,7 @@
   $("reviewList").addEventListener("click", event => {
     const button = event.target.closest("[data-review]"); if (!button) return;
     reviewPosition = moves[Number(button.dataset.review)]; hint = null;
-    setReason("중요한 장면", `${coordinate(reviewPosition.index)}에 두기 전`, reviewPosition.feedback?.text || reviewPosition.reason); render();
+    setReason("중요한 장면", `${coordinate(reviewPosition.index)}에 두기 전`, reviewPosition.feedback?.text || reviewPosition.reason); render(); BoardCoachUI.revealExplanation();
   });
   $("liveBoard").addEventListener("click", () => { reviewPosition = null; setReason("대국을 돌아보세요", "마지막 판", "중요한 장면을 다시 보거나 새 대국에 도전해 보세요."); render(); });
   window.addEventListener("pagehide", stopWork);

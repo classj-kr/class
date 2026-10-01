@@ -1,7 +1,15 @@
 (() => {
     "use strict";
 
-    const POEM_PROGRESS_KEY = "poetryPoemProgressV1";
+    const records = LearningRecords.create('poetry', { label: '시 읽기' });
+    let accountProgress = {}, busy = false;
+    const finishReading = records.addAction('이번 읽기 마치기', async () => {
+        if (busy || !records.session || records.session.status !== 'active') return;
+        busy = true; bookScreen.inert = true;
+        await saveRecord([], true); showShelf(); records.showResult(); finishReading.disabled = true;
+        bookScreen.inert = false; busy = false;
+    });
+    finishReading.disabled = true;
 
     // 색인 데이터: poems-index.js에서 POETRY_POEM_INDEX, lessons.js에서 POETRY_BOOKS를 받음
     const poems = Array.isArray(window.POETRY_POEM_INDEX) ? window.POETRY_POEM_INDEX : [];
@@ -49,18 +57,16 @@
     }
 
     // 진도 저장 및 확인
-    function getProgress() {
-        try {
-            return JSON.parse(localStorage.getItem(POEM_PROGRESS_KEY)) || {};
-        } catch {
-            return {};
-        }
+    function getProgress() { return accountProgress; }
+    function saveRecord(events = [], complete = false) {
+        return records.save({checkpoint:{index:currentSpreadIndex,progress:accountProgress,picked:[...quizPickedChoices],wrong:[...quizWrongChoices].map(([id,values])=>[id,[...values]])},events,complete,
+            progress:{current:currentSpreadIndex,total:Math.max(0,spreads.length-1)}});
     }
 
-    function savePoemSolved(poemId, questionId) {
+    function savePoemSolved(poemId, questionId, correct) {
         const prog = getProgress();
         const cur = prog[poemId] || { solved: [], wrong: {} };
-        if (!cur.solved.includes(questionId)) {
+        if (correct && !cur.solved.includes(questionId)) {
             cur.solved.push(questionId);
         }
         if (!cur.wrong) cur.wrong = {};
@@ -72,9 +78,7 @@
             cur.done = true;
         }
         prog[poemId] = cur;
-        try {
-            localStorage.setItem(POEM_PROGRESS_KEY, JSON.stringify(prog));
-        } catch (e) {}
+        accountProgress = prog;
     }
 
     function isPoemDone(poemId) {
@@ -459,13 +463,17 @@
         // E. 퀴즈 보기 클릭 시 채점
         if (s.kind === "quiz") {
             spreadEl.querySelectorAll(".quiz-choice").forEach((btn) => {
-                btn.onclick = () => {
-                    const item = btn.closest(".quiz-item");
+                btn.onclick = async () => {
+                    if (busy) return;
+                    const item = btn.closest('.quiz-item');
                     if (!item || item.classList.contains("graded")) return;
 
                     const isCorrect = btn.getAttribute("data-correct") === "1";
                     const qid = btn.getAttribute("data-qid");
-                    const choice = btn.getAttribute("data-choice");
+                    const choice = btn.getAttribute('data-choice');
+                    busy = true; bookScreen.inert = true;
+                    const q = s.questions.find(q => String(q.id) === qid);
+                    const event = {kind:'answer',questionKey:qid,response:choice,correct:isCorrect,snapshot:{prompt:q?.sentence || q?.prompt || '',poem:s.poem.title,choices:q?.choices || []}};
 
                     if (!isCorrect) {
                         // 틀리면 그 보기만 빨갛게 남기고, 맞는 것을 고를 때까지 다시 고르게 한다. (오답 색칠 유지)
@@ -474,7 +482,7 @@
                             quizWrongChoices.set(qid, new Set());
                         }
                         quizWrongChoices.get(qid).add(choice);
-                        savePoemSolved(s.poem.id, qid);
+                        savePoemSolved(s.poem.id, qid, false); await saveRecord([event]); busy = false; bookScreen.inert = false;
                         return;
                     }
 
@@ -483,7 +491,7 @@
                     item.classList.add("graded");
                     quizPickedChoices.set(qid, choice);
 
-                    savePoemSolved(s.poem.id, qid);
+                    savePoemSolved(s.poem.id, qid, true); await saveRecord([event]); busy = false; bookScreen.inert = false;
                 };
             });
         }
@@ -497,7 +505,8 @@
     }
 
     // 페이지 이동
-    function goTo(targetSpreadIndex, animDirection) {
+    async function goTo(targetSpreadIndex, animDirection) {
+        if(busy || records.session?.status !== 'active')return;
         if (targetSpreadIndex < 0 || targetSpreadIndex >= spreads.length) return;
         const dir = animDirection || (targetSpreadIndex > currentSpreadIndex ? "next" : "prev");
 
@@ -508,12 +517,15 @@
 
         currentSpreadIndex = targetSpreadIndex;
         paint();
+        const spread=spreads[currentSpreadIndex];
+        await saveRecord(spread.kind==='read'?[{kind:'read',questionKey:spread.poem.id,response:'시 열기',snapshot:{title:spread.poem.title}}]:[]);
     }
 
     /* ── 책 열기 ─────────────────────────────────────────────── */
     async function openBook(bookIndex, targetPoemIndex = -1) {
         const book = books[bookIndex];
-        if (!book) return;
+        if (!book || busy) return;
+        busy = true; bookScreen.inert = true;
 
         resumeMusicOnShelf = Boolean(bgm && !bgm.paused);
         document.body.dataset.musicPausedForReading = "true";
@@ -548,14 +560,18 @@
 
         // 펼침면 생성
         spreads = buildSpreads(book, poemsInBook);
+        const session = await records.start({contentKey:String(bookIndex),title:'시 읽기 · '+(book.title || (bookIndex+1)+'권'),version:'20261002',checkpoint:{index:0,progress:{},picked:[],wrong:[]}});
+        accountProgress=session.checkpoint.progress;
+        quizPickedChoices.clear();session.checkpoint.picked.forEach(([id,value])=>quizPickedChoices.set(id,value));
+        quizWrongChoices.clear();session.checkpoint.wrong.forEach(([id,values])=>quizWrongChoices.set(id,new Set(values)));
 
         if (targetPoemIndex >= 0 && targetPoemIndex < poemsInBook.length) {
             currentSpreadIndex = targetPoemIndex * 3 + 1;
         } else {
-            currentSpreadIndex = 0;
+            currentSpreadIndex = session.checkpoint.index;
         }
 
-        paint();
+        paint(); busy=false; bookScreen.inert=false; finishReading.disabled=false;
     }
 
     /* ── 책장 화면 (Shelf Lobby) ──────────────────────────────── */
@@ -769,6 +785,7 @@
     }, { passive: true });
 
     /* ── 초기 실행 ─────────────────────────────────────────────── */
-    showShelf("order");
+    showShelf('order');
+    records.ready.then(() => { const resume=new URLSearchParams(location.search).get('record'); if(resume!==null && books[Number(resume)]) openBook(Number(resume)); });
 
 })();

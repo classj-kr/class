@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 1413,
+  "totalImages": 1437,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1414,6 +1414,30 @@
     "2388": { "word": "short", "file": "short-v2.webp" },
     "2035": { "word": "present", "file": "present-v2.webp" },
     "1608": { "word": "lunch", "file": "lunch-v2.webp" },
-    "900": { "word": "eight", "file": "eight-v2.webp" }
+    "900": { "word": "eight", "file": "eight-v2.webp" },
+    "434": { "word": "certain", "file": "certain-v2.webp" },
+    "738": { "word": "deep", "file": "deep-v2.webp" },
+    "73": { "word": "agree", "file": "agree-v2.webp" },
+    "802": { "word": "difficult", "file": "difficult-v2.webp" },
+    "2354": { "word": "service", "file": "service-v2.webp" },
+    "2241": { "word": "rich", "file": "rich-v2.webp" },
+    "1334": { "word": "honest", "file": "honest-v2.webp" },
+    "1831": { "word": "often", "file": "often-v2.webp" },
+    "2702": { "word": "third", "file": "third-v2.webp" },
+    "2652": { "word": "teach", "file": "teach-v2.webp" },
+    "2476": { "word": "south", "file": "south-v2.webp" },
+    "2434": { "word": "slow", "file": "slow-v2.webp" },
+    "1356": { "word": "hundred", "file": "hundred-v2.webp" },
+    "1796": { "word": "north", "file": "north-v2.webp" },
+    "1252": { "word": "grow", "file": "grow-v2.webp" },
+    "1044": { "word": "fat", "file": "fat-v2.webp" },
+    "256": { "word": "begin", "file": "begin-v2.webp" },
+    "1785": { "word": "nine", "file": "nine-v2.webp" },
+    "2932": { "word": "west", "file": "west-v2.webp" },
+    "1604": { "word": "low", "file": "low-v2.webp" },
+    "151": { "word": "arm", "file": "arm-v2.webp" },
+    "2811": { "word": "twice", "file": "twice-v2.webp" },
+    "679": { "word": "cross", "file": "cross-v2.webp" },
+    "1049": { "word": "favorite", "file": "favorite-v2.webp" }
   }
 }

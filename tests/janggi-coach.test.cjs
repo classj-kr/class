@@ -162,7 +162,7 @@ test("intermediate and advanced defend a two-move mate instead of grabbing a sol
   const greedy=R.actions(s).find(m=>m.from===sq(1,1)&&m.to===sq(1,6));assert.ok(greedy);
   assert.ok(checkingMateInTwo(R.advance(s,greedy)),"old capture loses by force");
   for(const level of ["intermediate","advanced"]){
-    const answer=AI.choose(s,level,{nodes:65000,ms:10000});
+    const answer=AI.choose(s,level,{ms:10000});
     const next=R.advance(s,answer.move);
     assert.equal(AI.mateInOne(next),null);
     assert.equal(checkingMateInTwo(next),null,`${level} must defend the king`);

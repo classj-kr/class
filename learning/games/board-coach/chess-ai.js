@@ -170,15 +170,15 @@
     const next=C.advance(state,move), at=C.squareName(move.to), piece=NAMES[move.piece[1]];
     const object = word => word + ((word.charCodeAt(word.length-1)-0xAC00)%28 ? "을" : "를");
     if(C.isInCheck(next) && !C.allLegalMoves(next).length) return `${object(piece)} ${at}에 두면 체크메이트예요. 상대 킹이 체크를 피할 방법이 없어요.`;
-    if(move.castle) return "캐슬링으로 킹을 옆으로 옮기고 룩을 중앙 쪽으로 연결해요. 킹이 지나가는 칸과 도착할 칸 모두 안전해야 해요.";
-    if(move.promotion) return `폰이 마지막 줄에 도착해 ${NAMES[move.promotion]}으로 승격해요. 퀸·룩·비숍·나이트 중에서 고를 수 있어요.`;
+    if(move.castle) return `캐슬링으로 킹을 ${at}로, 룩을 ${C.squareName(Math.floor(move.to/8)*8+(move.to%8===6?5:3))}로 옮겨요.`;
+    if(move.promotion) return `폰이 마지막 줄에 도착해 ${NAMES[move.promotion]}${move.promotion==="N"?"로":"으로"} 승격해요.`;
     if(move.enPassant) return `${at}에서 앙파상으로 상대 폰을 잡아요. 상대 폰이 두 칸 움직인 바로 다음 차례에만 가능한 수예요.`;
-    if(C.isInCheck(state)) return `${object(piece)} ${at}에 두어 체크를 해소해요. 킹이 공격받으면 먼저 그 위험을 없애야 해요.`;
-    if(move.capture) return `${object(piece)} ${at}에 두어 상대 ${object(NAMES[move.capture[1]])} 잡아요. 상대가 다시 잡을 수 있는지도 함께 살펴보세요.`;
-    if(C.isInCheck(next)) return `${at}의 ${piece} 수로 체크를 걸어요. 상대는 킹을 옮기거나 공격을 막거나 공격하는 말을 잡아야 해요.`;
+    if(C.isInCheck(state)) return `${object(piece)} ${at}로 옮겨 체크를 막아요.`;
+    if(move.capture) return `${object(piece)} ${at}로 옮겨 상대 ${object(NAMES[move.capture[1]])} 잡아요.${C.allLegalMoves(next).some(m=>m.to===move.to&&m.capture)?" 상대가 이 말을 되잡을 수 있어요.":" 상대는 다음 수에 이 말을 바로 잡을 수 없어요."}`;
+    if(C.isInCheck(next)) return `${object(piece)} ${at}로 옮겨 상대 킹을 공격해요(체크).`;
     const home=state.turn==="w"?0:7;
-    if(["N","B"].includes(move.piece[1]) && Math.floor(move.from/8)===home && Math.floor(move.to/8)!==home) return `${object(piece)} ${at}로 전개해요. 처음 줄에 있는 말을 꺼내 공격과 방어에 참여시켜요.`;
-    if(move.piece[1]==="P" && [27,28,35,36].includes(move.to)) return `${at}에 폰을 두어 중앙 공간을 차지해요. 다른 말을 꺼낼 길과 상대의 중앙 진출도 살펴보세요.`;
+    if(["N","B"].includes(move.piece[1]) && Math.floor(move.from/8)===home && Math.floor(move.to/8)!==home) return `${object(piece)} 첫 줄에서 ${at}로 꺼내 공격과 방어에 참여시켜요.`;
+    if(move.piece[1]==="P" && [27,28,35,36].includes(move.to)) return `${at}에 폰을 두어 중앙을 차지해요.`;
     return `${object(piece)} ${at}로 옮겨요. 다음에 이 말이 갈 수 있는 칸과 상대의 공격을 함께 확인하세요.`;
   }
   function loosePiece(state) {
