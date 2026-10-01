@@ -135,7 +135,7 @@
             <div class="card-header">
               <div class="badge-group">
                 <span class="q-number">${numberLabel}</span>
-                <span class="q-topic">${q.topic}</span>
+                ${isAnswered ? `<span class="q-topic">${q.topic}</span>` : ""}
               </div>
             </div>
             

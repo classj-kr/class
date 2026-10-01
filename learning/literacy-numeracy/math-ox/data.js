@@ -33,7 +33,7 @@ window.MATH_OX_DATA = [
       subject: "초3",
       unit: "들이와 무게",
       topic: "무게와 부피 융합",
-      prompt: "물 500 mL의 무게는 0.5 kg이다.",
+      prompt: "물 500 mL의 무게는 $0.5\\,\\mathrm{kg}$이다.",
       answer: "O",
       pitfall: "부피 단위(mL)와 무게 단위(kg)의 관계를 헷갈리기 쉽습니다.",
       reason: "물 1 L = 1000 mL의 무게가 1 kg이므로, 물 500 mL의 무게는 0.5 kg이 맞습니다!"
@@ -3162,7 +3162,7 @@ window.MATH_OX_DATA = [
       subject: "초3",
       unit: "들이와 무게",
       topic: "L와 mL, kg과 g",
-      prompt: "1L는 1000mL이고, 1kg은 1000g이다.",
+      prompt: "1L는 1000mL이고, $1\\,\\mathrm{kg}$은 $1000\\,\\mathrm{g}$이다.",
       answer: "O",
       pitfall: "들이와 무게에서 바꾸는 수가 서로 다를 것이라고 생각하기 쉽습니다.",
       reason: "둘 다 1000입니다. m가 붙은 mL는 L의 $\\frac{1}{1000}$, k가 붙은 kg은 g의 1000배라는 뜻입니다."
@@ -3202,7 +3202,7 @@ window.MATH_OX_DATA = [
       subject: "초3",
       unit: "들이와 무게",
       topic: "t은 얼마나 무거운가",
-      prompt: "1t은 1000kg이다.",
+      prompt: "1t은 $1000\\,\\mathrm{kg}$이다.",
       answer: "O",
       pitfall: "t을 kg보다 조금 큰 단위쯤으로 어림잡기 쉽습니다.",
       reason: "1t은 1000kg입니다. 몸무게가 40kg인 학생 25명을 모아야 1t이 되므로, 자동차나 트럭처럼 아주 무거운 것을 잴 때 씁니다."

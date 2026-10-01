@@ -28,7 +28,7 @@
       id: 3,
       subject: "초3",
       topic: "무게와 부피 융합",
-      prompt: "물 500 mL의 무게는 0.5 kg이다.",
+      prompt: "물 500 mL의 무게는 $0.5\\,\\mathrm{kg}$이다.",
       answer: "O",
       pitfall: "부피 단위(mL)와 무게 단위(kg)의 관계를 헷갈리기 쉽습니다.",
       reason: "물 1 L = 1000 mL의 무게가 1 kg이므로, 물 500 mL의 무게는 0.5 kg이 맞습니다!"
@@ -104,7 +104,7 @@
       id: 11,
       subject: "초4",
       topic: "양과 부피의 구별",
-      prompt: "물 500 mL가 들어있는 컵에서 '물의 양(부피)'은 0.5 kg이다.",
+      prompt: "물 500 mL가 들어있는 컵에서 '물의 양(부피)'은 $0.5\\,\\mathrm{kg}$이다.",
       answer: "X",
       pitfall: "'양'이라는 말만 보고 컵에 적힌 무게 값을 그대로 부피라고 답하기 쉽습니다.",
       reason: "'물의 양(부피)'은 **0.5 L (또는 500 mL)**이며, 0.5 kg은 '물의 무게'를 나타내는 값입니다!"
@@ -1506,7 +1506,7 @@
             <div class="card-header">
               <div class="badge-group">
                 <span class="q-number">${numberLabel}</span>
-                <span class="q-topic">${q.topic}</span>
+                ${isAnswered ? `<span class="q-topic">${q.topic}</span>` : ""}
               </div>
             </div>
             
