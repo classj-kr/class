@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 1397,
+  "totalImages": 1413,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1398,6 +1398,22 @@
     "878": { "word": "during", "file": "during-v2.webp" },
     "67": { "word": "age", "file": "age-v2.webp" },
     "1635": { "word": "marry", "file": "marry-v2.webp" },
-    "2342": { "word": "sell", "file": "sell-v2.webp" }
+    "2342": { "word": "sell", "file": "sell-v2.webp" },
+    "1072": { "word": "film", "file": "film-v2.webp" },
+    "2358": { "word": "seven", "file": "seven-v2.webp" },
+    "2918": { "word": "wear", "file": "wear-v2.webp" },
+    "2410": { "word": "sing", "file": "sing-v2.webp" },
+    "305": { "word": "blue", "file": "blue-v2.webp" },
+    "1759": { "word": "near", "file": "near-v2.webp" },
+    "36": { "word": "across", "file": "across-v2.webp" },
+    "1681": { "word": "middle", "file": "middle-v2.webp" },
+    "1115": { "word": "fool", "file": "fool-v2.webp" },
+    "2682": { "word": "test", "file": "test-v2.webp" },
+    "1251": { "word": "group", "file": "group-v2.webp" },
+    "1482": { "word": "join", "file": "join-v2.webp" },
+    "2388": { "word": "short", "file": "short-v2.webp" },
+    "2035": { "word": "present", "file": "present-v2.webp" },
+    "1608": { "word": "lunch", "file": "lunch-v2.webp" },
+    "900": { "word": "eight", "file": "eight-v2.webp" }
   }
 }

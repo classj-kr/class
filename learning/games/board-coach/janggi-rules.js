@@ -82,7 +82,38 @@
   }
   function inCheck(state, side=state.turn) {
     const king=state.board.indexOf(side+"K"); if(king<0)return true;
-    for(let from=0;from<90;from++)if(state.board[from]?.[0]===other(side)&&targets(state.board,from).includes(king))return true;
+    const board=state.board,enemy=other(side),x=king%9,y=Math.floor(king/9);
+    // Trace attacks back from the king instead of generating every enemy move.
+    // Chariots need a clear ray; cannons need exactly one non-cannon screen.
+    for(const path of rays[king]){
+      let screen=false;
+      for(const from of path){
+        const piece=board[from];if(!piece)continue;
+        if(!screen){
+          if(piece===enemy+"R")return true;
+          if(piece[1]==="C")break;
+          screen=true;
+        }else{
+          if(piece===enemy+"C")return true;
+          break;
+        }
+      }
+    }
+    for(const [bx,by,dx,dy] of HORSE){
+      const fx=x-dx,fy=y-dy;
+      if(inside(fx,fy)&&board[square(fx,fy)]===enemy+"H"&&!board[square(fx+bx,fy+by)])return true;
+    }
+    for(const [bx,by,cx,cy,dx,dy] of ELEPHANT){
+      const fx=x-dx,fy=y-dy;
+      if(inside(fx,fy)&&board[square(fx,fy)]===enemy+"E"&&!board[square(fx+bx,fy+by)]&&!board[square(fx+cx,fy+cy)])return true;
+    }
+    // Soldiers, kings and guards can only attack an adjacent intersection.
+    // Reuse their palace/direction rules for these few possible attackers.
+    for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){
+      if((!dx&&!dy)||!inside(x+dx,y+dy))continue;
+      const from=square(x+dx,y+dy),piece=board[from];
+      if(piece?.[0]===enemy&&["P","K","A"].includes(piece[1])&&targets(board,from).includes(king))return true;
+    }
     return false;
   }
   function facing(state) {

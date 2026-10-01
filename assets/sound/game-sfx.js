@@ -43,6 +43,7 @@
     const FEEDBACK_TEXT_SELECTOR = ".feedback, .result, .answer-result, .quiz-feedback, [class*='feedback' i], [id*='feedback' i], [id*='result' i], [aria-live], [role='status'], [role='alert']";
 
     function readStored(key) {
+        if (/^\/(?:learning\/literacy-numeracy\/|arithmetic(?:\/|$))/.test(location.pathname)) return "";
         try {
             return window.localStorage.getItem(key) || "";
         } catch (_) {

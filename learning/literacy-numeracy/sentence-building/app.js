@@ -1,10 +1,13 @@
-(() => {
+(async () => {
     "use strict";
 
     const course = window.SENTENCE_COURSE;
     if (!course || !Array.isArray(course.lessons)) return;
 
-    const STORAGE_KEY = "classj-sentence-building-progress-v2";
+    const records = LearningRecords.create('sentence-building', { label: '문장 고르기' });
+    await records.ready;
+    let busy = false, restoring = false, choiceOrder = [], writtenText = '', rubric = [];
+    const setBusy = value => { busy = value; document.querySelector('main').inert = value; };
     const elements = {
         courseScreen: document.getElementById("courseScreen"),
         lessonScreen: document.getElementById("lessonScreen"),
@@ -31,7 +34,7 @@
         announcer: document.getElementById("announcer")
     };
 
-    let saved = loadProgress();
+    const saved = { lessons: {} };
     let currentLessonIndex = 0;
     let taskIndex = 0;
     let score = 0;
@@ -41,16 +44,15 @@
     let selectedOrder = [];
     let checked = false;
 
-    function loadProgress() {
-        try {
-            const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-            if (value && value.lessons && typeof value.lessons === "object") return value;
-        } catch (_) {}
-        return { lessons: {}, lastLesson: null };
+    function snapshot() {
+        return { taskIndex, selectedChoice, selectedChoices: [...selectedChoices], orderTokens, selectedOrder, choiceOrder,
+            checked, writtenText: document.getElementById('reportText')?.value || writtenText,
+            rubric: [...elements.activityArea.querySelectorAll('.rubric-checkbox')].map(e => e.checked) };
     }
 
-    function saveProgress() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); } catch (_) {}
+    function save(events = [], complete = false) {
+        return records.save({ checkpoint: snapshot(), events, complete,
+            progress: { current: taskIndex + (checked ? 1 : 0), total: course.lessons[currentLessonIndex].tasks.length } });
     }
 
     function showOnly(screen) {
@@ -110,14 +112,23 @@
 
     }
 
-    function startLesson(index) {
+    async function startLesson(index) {
+        if (busy) return; setBusy(true);
         currentLessonIndex = Math.max(0, Math.min(index, course.lessons.length - 1));
-        taskIndex = 0;
-        score = 0;
-        saved.lastLesson = course.lessons[currentLessonIndex].id;
-        saveProgress();
+        const lesson = course.lessons[currentLessonIndex];
+        const session = await records.start({ contentKey: lesson.id, title: '문장 고르기 · ' + lesson.title, version: '20261002',
+            checkpoint: { taskIndex: 0, selectedChoice: null, selectedChoices: [], orderTokens: [], selectedOrder: [], choiceOrder: [], checked: false, writtenText: '', rubric: [] } });
+        const cp = session.checkpoint;
+        taskIndex = cp.taskIndex; selectedChoice = cp.selectedChoice; selectedChoices = new Set(cp.selectedChoices);
+        orderTokens = cp.orderTokens; selectedOrder = cp.selectedOrder; choiceOrder = cp.choiceOrder; writtenText = cp.writtenText; rubric = cp.rubric;
+        const wasChecked = cp.checked;
+        restoring = true;
         showOnly(elements.lessonScreen);
         renderTask();
+        restoring = false;
+        if (wasChecked) await checkAnswer({ restore: true });
+        else await save();
+        setBusy(false);
     }
 
     function shuffle(values) {
@@ -133,9 +144,7 @@
         const lesson = course.lessons[currentLessonIndex];
         const task = lesson.tasks[taskIndex];
         checked = false;
-        selectedChoice = null;
-        selectedChoices = new Set();
-        selectedOrder = [];
+        if (!restoring) { selectedChoice = null; selectedChoices = new Set(); selectedOrder = []; orderTokens = []; choiceOrder = []; writtenText = ''; rubric = []; }
         elements.feedback.hidden = true;
         elements.feedback.className = "feedback";
         elements.checkButton.hidden = false;
@@ -167,14 +176,16 @@
             list.append(guide);
         }
         const indexedOptions = task.options.map((option, optionIndex) => ({ option, optionIndex }));
-        const optionEntries = task.shuffleOptions === false ? indexedOptions : shuffle(indexedOptions);
+        if (!choiceOrder.length) choiceOrder = (task.shuffleOptions === false ? indexedOptions : shuffle(indexedOptions)).map(e => e.optionIndex);
+        const optionEntries = choiceOrder.map(i => indexedOptions[i]);
         optionEntries.forEach(({ option, optionIndex }, displayIndex) => {
             const button = document.createElement("button");
             button.type = "button";
             button.className = "choice-button";
             button.dataset.optionIndex = String(optionIndex);
             button.textContent = `${displayIndex + 1}. ${option}`;
-            if (allowMultiple) button.setAttribute("aria-pressed", "false");
+            button.classList.toggle('is-selected', allowMultiple ? selectedChoices.has(optionIndex) : selectedChoice === optionIndex);
+            if (allowMultiple) button.setAttribute('aria-pressed', String(selectedChoices.has(optionIndex)));
             button.addEventListener("click", () => {
                 if (checked) return;
                 if (allowMultiple) {
@@ -182,11 +193,13 @@
                     else selectedChoices.add(optionIndex);
                     button.classList.toggle("is-selected", selectedChoices.has(optionIndex));
                     button.setAttribute("aria-pressed", String(selectedChoices.has(optionIndex)));
+                    save();
                     return;
                 }
                 selectedChoice = optionIndex;
                 list.querySelectorAll("button").forEach((item) => item.classList.remove("is-selected"));
                 button.classList.add("is-selected");
+                save();
             });
             list.append(button);
         });
@@ -194,7 +207,7 @@
     }
 
     function renderOrder(task) {
-        orderTokens = shuffle(task.tokens.map((value, index) => ({ id: `${index}-${value}`, value })));
+        if (!orderTokens.length) orderTokens = shuffle(task.tokens.map((value, index) => ({ id: `${index}-${value}`, value })));
         const board = document.createElement("div");
         board.className = "order-board";
         board.innerHTML = `<p>${task.boardLabel || "내가 정한 순서"}</p><div class="token-row selected-tokens"></div>`;
@@ -214,6 +227,7 @@
                 button.addEventListener("click", () => {
                     if (checked) return;
                     selectedOrder.splice(selectedIndex, 1);
+                    save();
                     refresh();
                 });
                 selected.append(button);
@@ -225,6 +239,7 @@
                 button.addEventListener("click", () => {
                     if (checked || used) return;
                     selectedOrder.push(token);
+                    save();
                     refresh();
                 });
                 available.append(button);
@@ -246,21 +261,25 @@
         wrapper.className = "write-area";
         const textarea = document.createElement("textarea");
         textarea.id = "reportText";
+        textarea.value = writtenText;
+        textarea.addEventListener('change', () => save());
         textarea.placeholder = task.placeholder || "조건을 확인하며 글을 쓰세요.";
         textarea.setAttribute("aria-label", `${task.minSentences}문장 이상 글쓰기`);
         const rubric = document.createElement("ul");
         rubric.className = "rubric-list";
-        (task.criteria || []).forEach((criterion) => {
+        (task.criteria || []).forEach((criterion, criterionIndex) => {
             const item = document.createElement("li");
             const label = document.createElement("label");
             label.className = "rubric-check";
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
+            checkbox.checked = Boolean(rubric[criterionIndex]);
             checkbox.className = "rubric-checkbox";
             const text = document.createElement("span");
             text.textContent = criterion;
             checkbox.addEventListener("change", () => {
                 item.classList.toggle("is-checked", checkbox.checked);
+                save();
             });
             label.append(checkbox, text);
             item.append(label);
@@ -318,8 +337,8 @@
         return true;
     }
 
-    function checkAnswer() {
-        if (checked) return;
+    async function checkAnswer({ restore = false } = {}) {
+        if (checked || busy && !restore) return;
         const task = currentTask();
         const correct = validateTask(task);
         if (correct === null) {
@@ -336,6 +355,13 @@
         }
 
         checked = true;
+        if (!restore) {
+            setBusy(true);
+            const response = task.type === 'choice' ? task.options[selectedChoice] : task.type === 'multi' ? [...selectedChoices].map(i => task.options[i]) : task.type === 'order' ? selectedOrder.map(t => t.value) : document.getElementById('reportText').value;
+            await save([{ kind: task.type === 'write' ? 'self-assessment' : 'answer', questionKey: String(taskIndex), response,
+                correct: task.type === 'write' ? null : correct, snapshot: { prompt: task.prompt, scene: task.scene || '', choices: task.options || task.tokens || [] } }]);
+            setBusy(false);
+        }
         elements.hintButton.hidden = true;
         elements.checkButton.hidden = true;
         elements.nextButton.hidden = false;
@@ -368,34 +394,29 @@
 
     function showHint() {
         const task = currentTask();
+        save([{ kind: 'hint', questionKey: String(taskIndex), response: '힌트 확인', snapshot: { prompt: task.prompt } }]);
         showFeedback("hint", "힌트", task.hint);
         elements.announcer.textContent = task.hint;
     }
 
-    function nextTask() {
+    async function nextTask() {
+        if (busy || !checked) return;
         const lesson = course.lessons[currentLessonIndex];
         if (taskIndex < lesson.tasks.length - 1) {
             taskIndex += 1;
             renderTask();
+            await save();
         } else {
             finishLesson();
         }
     }
 
-    function finishLesson() {
+    async function finishLesson() {
+        if (busy) return; setBusy(true);
         const lesson = course.lessons[currentLessonIndex];
-        const old = lessonRecord(lesson.id);
-        saved.lessons[lesson.id] = {
-            completed: true,
-            bestScore: Math.max(old.bestScore || 0, score)
-        };
-        saveProgress();
-        elements.resultScore.textContent = `${score}/${lesson.tasks.length}`;
-        elements.resultMessage.textContent = score === lesson.tasks.length
-            ? "모든 문제를 맞혔습니다."
-            : "틀린 문제는 다시 도전해서 확인해 보세요.";
-        elements.nextLessonButton.hidden = currentLessonIndex >= course.lessons.length - 1;
-        showOnly(elements.resultScreen);
+        await save([], true);
+        saved.lessons[lesson.id] = { completed: true };
+        renderCourse(); showOnly(elements.courseScreen); records.showResult(); setBusy(false);
     }
 
     elements.hintButton.addEventListener("click", showHint);
@@ -410,6 +431,10 @@
     elements.retryButton.addEventListener("click", () => startLesson(currentLessonIndex));
     elements.nextLessonButton.addEventListener("click", () => startLesson(currentLessonIndex + 1));
 
+    let offset = 0;
+    do { const page = await records.history('&offset=' + offset); for (const session of page.sessions) if (session.status === 'completed') saved.lessons[session.contentKey] = { completed: true }; offset = page.nextOffset; } while (offset != null);
     renderCourse();
     showOnly(elements.courseScreen);
+    const resume = new URLSearchParams(location.search).get('record');
+    if (resume) { const index = course.lessons.findIndex(l => l.id === resume); if (index >= 0) await startLesson(index); }
 })();

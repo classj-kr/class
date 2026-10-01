@@ -7,15 +7,20 @@
     score: 0,
     answered: false,
     hadWrong: false,
-    deckHistory: null,
-    deckStorageKey: "",
+    attempts: {},
+    orders: {},
     track: "ko"
   };
   const TRACKS = Object.freeze({
     ko: { prefix: "K", levels: ["사실 확인과 직접 적용", "추론과 인과 관계", "정보 종합과 조건 판단", "근거 적용과 범위 평가"] },
     en: { prefix: "E", levels: ["초3~4 · 짧은 글 사실 찾기", "초5~6 · 사실과 까닭 찾기", "중1~2 · 중심 내용과 세부 정보", "중3 · 영어 선지로 내용 파악"] }
   });
-  const TRACK_STORAGE_KEY = "reading-self-study-track";
+  const records = LearningRecords.create('reading', { label: '비문학 읽기' });
+  let busy = false;
+  const setBusy = value => { busy = value; document.querySelector('.student-main').inert = value; };
+  const checkpoint = () => ({ set: state.set, index: state.index, attempts: state.attempts, orders: state.orders, track: state.track });
+  const save = (events = [], complete = false) => records.save({ checkpoint: checkpoint(), events, complete,
+    progress: { current: state.set.filter(q => (state.attempts[q.id] || []).includes(q.correctIndex)).length, total: state.set.length } });
   const $ = (id) => document.getElementById(id);
   const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
   const shuffle = (items) => {
@@ -65,36 +70,15 @@
   function setTrack(track) {
     if (!TRACKS[track] || track === state.track) return;
     state.track = track;
-    try { window.localStorage.setItem(TRACK_STORAGE_KEY, track); } catch (_) { /* 저장 못 해도 전환은 된다 */ }
     renderTrackSwitch(); renderLevels();
-  }
-
-  // v4: 문항을 통째로 새로 만들어 예전 진행 기록은 맞지 않는다.
-  function deckStorageKey(level) {
-    return `reading-self-study-deck-v4:${state.track}:${level}`;
-  }
-
-  function loadDeckHistory(key) {
-    try {
-      return JSON.parse(window.localStorage.getItem(key) || "null");
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function saveDeckHistory() {
-    if (!state.deckStorageKey || !state.deckHistory) return;
-    try {
-      window.localStorage.setItem(state.deckStorageKey, JSON.stringify(state.deckHistory));
-    } catch (_) {
-      // Practice still works when storage is unavailable.
-    }
   }
 
   // The dashboard only ever holds the lightweight per-item summary (track/
   // level/skillFocus), not full passages -- so opening a level fetches that
   // one deck's items on demand instead of shipping all ~900 items up front.
   async function startSet(level) {
+    if (busy) return;
+    setBusy(true);
     const list = $("levelList");
     list.classList.add("is-loading");
     let candidates;
@@ -105,23 +89,26 @@
     } catch (_) {
       list.classList.remove("is-loading");
       list.replaceChildren(node("p", "empty-pilots", "문제를 불러오지 못했습니다."));
+      setBusy(false);
       return;
     }
     list.classList.remove("is-loading");
     if (!candidates.length) {
       list.replaceChildren(node("p", "empty-pilots", "이 급의 문제를 준비하고 있습니다."));
+      setBusy(false);
       return;
     }
-    state.deckStorageKey = deckStorageKey(level);
-    const drawn = window.ReadingQuestionDeck.draw(candidates, 5, loadDeckHistory(state.deckStorageKey));
-    state.set = drawn.items;
-    state.deckHistory = drawn.history;
-    saveDeckHistory();
-    state.index = 0; state.score = 0; renderQuestion(); show("question"); window.scrollTo({ top: 0, behavior: "smooth" });
+    const items = shuffle(candidates).slice(0, 5);
+    const session = await records.start({ contentKey: `${state.track}:${level}`, title: `비문학 · ${TRACKS[state.track].prefix}${level}`,
+      version: '20261001', checkpoint: { set: items, index: 0, track: state.track, attempts: {},
+        orders: Object.fromEntries(items.map(item => [item.id, shuffle(item.choices.map((_, i) => i))])) } });
+    Object.assign(state, session.checkpoint);
+    renderQuestion(); show("question"); setBusy(false); window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function renderQuestion() {
-    const item = state.set[state.index]; state.answered = false; state.hadWrong = false;
+    const item = state.set[state.index], attempts = state.attempts[item.id] || [];
+    state.answered = attempts.includes(item.correctIndex); state.hadWrong = attempts.some(i => i !== item.correctIndex);
     $("questionProgress").textContent = `${state.index + 1} / ${state.set.length}`;
     $("questionTopic").textContent = item.topicTitle;
     $("progressFill").style.width = `${((state.index + 1) / state.set.length) * 100}%`;
@@ -130,24 +117,35 @@
     $("studentChoices").lang = item.track === "en" && item.targetLevel === 4 ? "en" : "ko";
     $("feedback").hidden = true; $("answerStatus").textContent = "";
     const choices = $("studentChoices"); choices.replaceChildren();
-    shuffle(item.choices.map((choice, originalIndex) => ({ choice, originalIndex }))).forEach(({ choice, originalIndex }, index) => {
+    state.orders[item.id].forEach((originalIndex, index) => {
+      const choice = item.choices[originalIndex];
       const button = node("button", "student-choice", ""); button.type = "button";
       button.dataset.choiceIndex = String(originalIndex);
+      button.disabled = state.answered || attempts.includes(originalIndex);
+      if (attempts.includes(originalIndex)) button.classList.add(originalIndex === item.correctIndex ? 'correct' : 'wrong');
       button.append(node("span", "choice-number", String(index + 1)), node("span", "", choice));
       button.addEventListener("click", () => choose(originalIndex, button)); choices.append(button);
     });
     $("nextButton").disabled = true; $("nextButton").textContent = "정답 확인";
+    if (state.answered) showCorrectFeedback(item);
+    else if (attempts.length) $("answerStatus").textContent = '다시 생각하고 다른 답을 골라보세요.';
   }
 
   function choose(index, selected) {
-    if (state.answered) return;
+    if (state.answered || busy) return;
     [...$("studentChoices").children].forEach((button) => button.classList.remove("selected"));
     selected.classList.add("selected"); $("nextButton").disabled = false; $("nextButton").onclick = () => check(index);
   }
 
-  function check(index) {
+  async function check(index) {
+    if (busy) return;
     if (state.answered) return next();
     const item = state.set[state.index]; const correct = index === item.correctIndex;
+    setBusy(true);
+    (state.attempts[item.id] ||= []).push(index);
+    await save([{ kind: 'answer', questionKey: String(item.id), response: item.choices[index], correct,
+      snapshot: { prompt: item.promptText, passage: item.passageText, choices: item.choices, topic: item.topicTitle } }]);
+    setBusy(false);
     if (!correct) {
       state.hadWrong = true;
       const selected = [...$("studentChoices").children].find((button) => Number(button.dataset.choiceIndex) === index);
@@ -158,9 +156,11 @@
     }
     state.answered = true;
     if (!state.hadWrong) state.score += 1;
-    state.deckHistory = window.ReadingQuestionDeck.recordAnswer(state.deckHistory, item.id, !state.hadWrong);
-    saveDeckHistory();
     [...$("studentChoices").children].forEach((button) => { const choiceIndex = Number(button.dataset.choiceIndex); button.disabled = true; if (choiceIndex === item.correctIndex) button.classList.add("correct"); else if (choiceIndex === index) button.classList.add("wrong"); });
+    showCorrectFeedback(item);
+  }
+
+  function showCorrectFeedback(item) {
     const feedback = $("feedback"); feedback.className = "feedback is-correct";
     feedback.replaceChildren(node("p", "", `정답 · ${item.explanation}`));
     if (item.translation) feedback.append(node("h3", "", "해석"), node("p", "", item.translation));
@@ -174,17 +174,22 @@
     }
     feedback.hidden = false;
     $("nextButton").textContent = state.index === state.set.length - 1 ? "결과 보기" : "다음 문제";
+    $("nextButton").disabled = false;
+    $("nextButton").onclick = next;
   }
 
-  function next() { if (state.index + 1 < state.set.length) { state.index += 1; renderQuestion(); } else { $("resultTitle").textContent = `${state.score} / ${state.set.length}`; $("resultCopy").textContent = `정답 ${state.score}개 · 오답 ${state.set.length - state.score}개`; show("result"); } }
+  async function next() {
+    if (busy || !state.answered) return;
+    setBusy(true);
+    if (state.index + 1 < state.set.length) { state.index++; await save(); renderQuestion(); }
+    else { await save([], true); show('dashboard'); records.showResult(); }
+    setBusy(false);
+  }
 
   async function start() {
     // Render the useful controls before waiting for a cold server or network.
     // The summary request only enriches the cards with live item counts.
-    try {
-      const saved = window.localStorage.getItem(TRACK_STORAGE_KEY);
-      if (TRACKS[saved]) state.track = saved;
-    } catch (_) { /* 기본은 국어 */ }
+    await records.ready;
     renderLevels();
     try {
       const response = await fetch("/api/reading/self-study");
@@ -195,6 +200,8 @@
     } catch (_) {
       // Level buttons remain usable and fetch their deck on demand.
     }
+    const resume = new URLSearchParams(location.search).get('record');
+    if (resume && /^(ko|en):[1-4]$/.test(resume)) { const [track, level] = resume.split(':'); state.track = track; renderTrackSwitch(); await startSet(Number(level)); }
   }
   $("trackSwitch").addEventListener("click", (event) => {
     const button = event.target.closest("button[data-track]");

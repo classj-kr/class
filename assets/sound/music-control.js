@@ -1,6 +1,14 @@
 (() => {
     "use strict";
 
+    // Learning pages keep sound preferences only for the open page.
+    const learningPage = /^\/(?:learning\/literacy-numeracy\/|arithmetic(?:\/|$))/.test(location.pathname);
+    const soundMemory = new Map();
+    const soundStorage = learningPage ? {
+        getItem: key => soundMemory.get(key) ?? null,
+        setItem: (key, value) => soundMemory.set(key, String(value))
+    } : window.localStorage;
+
     const MUSIC_LEVEL_KEY = "classMusicVolumeLevel";
     const MUSIC_VOLUME_KEY = "classMusicVolumeValue";
     const MUSIC_MUTED_KEY = "classMusicMuted";
@@ -60,8 +68,8 @@
     }
 
     // Load Music State
-    const savedMusicLevel = Number(localStorage.getItem(MUSIC_LEVEL_KEY));
-    const savedMusicVolume = Number(localStorage.getItem(MUSIC_VOLUME_KEY));
+    const savedMusicLevel = Number(soundStorage.getItem(MUSIC_LEVEL_KEY));
+    const savedMusicVolume = Number(soundStorage.getItem(MUSIC_VOLUME_KEY));
     let musicVolume = Number.isFinite(savedMusicVolume) && savedMusicVolume > 0 && savedMusicVolume <= 1
         ? savedMusicVolume
         : (Number.isInteger(savedMusicLevel) && savedMusicLevel >= 1 && savedMusicLevel <= 5
@@ -72,12 +80,12 @@
         : Math.max(1, Math.round(musicVolume * 5));
     // Older games stored booleans as "true" while newer menus use "1".
     // Treat both as the same shared setting during the migration.
-    const storedMusicMuted = localStorage.getItem(MUSIC_MUTED_KEY);
+    const storedMusicMuted = soundStorage.getItem(MUSIC_MUTED_KEY);
     let musicMuted = storedMusicMuted === null ? DEFAULT_MUSIC_MUTED : ["1", "true"].includes(storedMusicMuted);
 
     // Load SFX State
-    const savedSfxLevel = Number(localStorage.getItem(SFX_LEVEL_KEY));
-    const savedSfxVolume = Number(localStorage.getItem(SFX_VOLUME_KEY));
+    const savedSfxLevel = Number(soundStorage.getItem(SFX_LEVEL_KEY));
+    const savedSfxVolume = Number(soundStorage.getItem(SFX_VOLUME_KEY));
     let sfxVolume = Number.isFinite(savedSfxVolume) && savedSfxVolume > 0 && savedSfxVolume <= 1
         ? savedSfxVolume
         : (Number.isInteger(savedSfxLevel) && savedSfxLevel >= 1 && savedSfxLevel <= 5
@@ -86,7 +94,7 @@
     let sfxLevel = Number.isInteger(savedSfxLevel) && savedSfxLevel >= 1 && savedSfxLevel <= 5
         ? savedSfxLevel
         : Math.max(1, Math.round(sfxVolume * 5));
-    let sfxMuted = ["1", "true"].includes(localStorage.getItem(SFX_MUTED_KEY));
+    let sfxMuted = ["1", "true"].includes(soundStorage.getItem(SFX_MUTED_KEY));
 
     let applyingAudioState = false;
     let playbackUnlocked = false;
@@ -98,7 +106,7 @@
 
     function readPlaybackPositions() {
         try {
-            const saved = JSON.parse(localStorage.getItem(PLAYBACK_POSITIONS_KEY) || "{}");
+            const saved = JSON.parse(soundStorage.getItem(PLAYBACK_POSITIONS_KEY) || "{}");
             return saved && typeof saved === "object" ? saved : {};
         } catch (_) {
             return {};
@@ -108,16 +116,16 @@
     function savePlaybackState() {
         if (!audio) return;
         const isPlaying = !audio.paused && !audio.ended;
-        localStorage.setItem(PLAYBACK_STATE_KEY, isPlaying ? "playing" : "paused");
+        soundStorage.setItem(PLAYBACK_STATE_KEY, isPlaying ? "playing" : "paused");
 
         if (!isPlaying || !Number.isFinite(audio.currentTime)) return;
         const source = audio.currentSrc || audio.src;
         const positions = readPlaybackPositions();
         positions[source] = audio.currentTime;
-        localStorage.setItem(PLAYBACK_POSITIONS_KEY, JSON.stringify(positions));
+        soundStorage.setItem(PLAYBACK_POSITIONS_KEY, JSON.stringify(positions));
         // Keep these keys for sessions created before per-track resume support.
-        localStorage.setItem(PLAYBACK_SOURCE_KEY, source);
-        localStorage.setItem(PLAYBACK_TIME_KEY, String(audio.currentTime));
+        soundStorage.setItem(PLAYBACK_SOURCE_KEY, source);
+        soundStorage.setItem(PLAYBACK_TIME_KEY, String(audio.currentTime));
     }
 
     function restorePlaybackPosition() {
@@ -125,8 +133,8 @@
         const source = audio.currentSrc || audio.src;
         const positions = readPlaybackPositions();
         const savedTime = Number(
-            positions[source] ?? (localStorage.getItem(PLAYBACK_SOURCE_KEY) === source
-                ? localStorage.getItem(PLAYBACK_TIME_KEY)
+            positions[source] ?? (soundStorage.getItem(PLAYBACK_SOURCE_KEY) === source
+                ? soundStorage.getItem(PLAYBACK_TIME_KEY)
                 : NaN)
         );
         if (!Number.isFinite(savedTime) || savedTime < 0) return;
@@ -195,20 +203,20 @@
     }
 
     function storeState() {
-        localStorage.setItem(MUSIC_LEVEL_KEY, String(musicLevel));
-        localStorage.setItem(MUSIC_VOLUME_KEY, String(musicVolume));
+        soundStorage.setItem(MUSIC_LEVEL_KEY, String(musicLevel));
+        soundStorage.setItem(MUSIC_VOLUME_KEY, String(musicVolume));
         // Older game pages read this value as the literal strings "true" and
         // "false". Keep that canonical format so the shared state survives
         // transitions between the index and every game.
-        localStorage.setItem(MUSIC_MUTED_KEY, musicMuted ? "true" : "false");
-        localStorage.setItem(SFX_LEVEL_KEY, String(sfxLevel));
-        localStorage.setItem(SFX_VOLUME_KEY, String(sfxVolume));
-        localStorage.setItem(SFX_MUTED_KEY, sfxMuted ? "1" : "0");
+        soundStorage.setItem(MUSIC_MUTED_KEY, musicMuted ? "true" : "false");
+        soundStorage.setItem(SFX_LEVEL_KEY, String(sfxLevel));
+        soundStorage.setItem(SFX_VOLUME_KEY, String(sfxVolume));
+        soundStorage.setItem(SFX_MUTED_KEY, sfxMuted ? "1" : "0");
     }
 
     function reloadSharedMusicState() {
-        const storedLevel = Number(localStorage.getItem(MUSIC_LEVEL_KEY));
-        const storedVolume = Number(localStorage.getItem(MUSIC_VOLUME_KEY));
+        const storedLevel = Number(soundStorage.getItem(MUSIC_LEVEL_KEY));
+        const storedVolume = Number(soundStorage.getItem(MUSIC_VOLUME_KEY));
         if (Number.isFinite(storedVolume) && storedVolume > 0 && storedVolume <= 1) {
             musicVolume = storedVolume;
             musicLevel = Math.max(1, Math.round(musicVolume * 5));
@@ -219,11 +227,11 @@
             musicVolume = DEFAULT_MUSIC_VOLUME;
             musicLevel = DEFAULT_MUSIC_LEVEL;
         }
-        const reloadedMusicMuted = localStorage.getItem(MUSIC_MUTED_KEY);
+        const reloadedMusicMuted = soundStorage.getItem(MUSIC_MUTED_KEY);
         musicMuted = reloadedMusicMuted === null ? DEFAULT_MUSIC_MUTED : ["1", "true"].includes(reloadedMusicMuted);
 
-        const storedSfxLevel = Number(localStorage.getItem(SFX_LEVEL_KEY));
-        const storedSfxVolume = Number(localStorage.getItem(SFX_VOLUME_KEY));
+        const storedSfxLevel = Number(soundStorage.getItem(SFX_LEVEL_KEY));
+        const storedSfxVolume = Number(soundStorage.getItem(SFX_VOLUME_KEY));
         if (Number.isFinite(storedSfxVolume) && storedSfxVolume > 0 && storedSfxVolume <= 1) {
             sfxVolume = storedSfxVolume;
             sfxLevel = Math.max(1, Math.round(sfxVolume * 5));
@@ -234,7 +242,7 @@
             sfxVolume = DEFAULT_SFX_VOLUME;
             sfxLevel = DEFAULT_SFX_LEVEL;
         }
-        sfxMuted = ["1", "true"].includes(localStorage.getItem(SFX_MUTED_KEY));
+        sfxMuted = ["1", "true"].includes(soundStorage.getItem(SFX_MUTED_KEY));
         render();
         applyAudioState();
         announceState();

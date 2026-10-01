@@ -5,8 +5,8 @@
   "use strict";
   const LEVELS=Object.freeze({
     beginner:{name:"초급",depth:2,nodes:9000,ms:500},
-    intermediate:{name:"중급",depth:3,nodes:35000,ms:1200},
-    advanced:{name:"상급",depth:4,nodes:120000,ms:2500}
+    intermediate:{name:"중급",depth:4,nodes:65000,ms:1200},
+    advanced:{name:"상급",depth:6,nodes:200000,ms:2500}
   });
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
   const NAMES={R:"차",C:"포",H:"마",E:"상",A:"사",P:"졸",K:"왕"};

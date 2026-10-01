@@ -2,7 +2,8 @@
   "use strict";
 
   const DATA = window.CSAT_MATH;
-  const STORE_KEY = "csat-math-done";
+  let records, busy = false;
+  const answers = {};
 
   // 문제 본문과 풀이는 회차별 파일에 있다. 화면에 띄울 문항의 회차 것만 받아 차례표 항목에 채운다.
   const problemById = new Map(DATA.problems.map((problem) => [problem.id, problem]));
@@ -56,7 +57,7 @@
     unit: null,
     exam: null,
     hideDone: false,
-    done: loadDone(),
+    done: {},
     displayLimit: CHUNK_SIZE
   };
 
@@ -74,23 +75,8 @@
     reset: document.getElementById("reset")
   };
 
-  /* ── 기록 ── */
-  function loadDone() {
-    try {
-      const raw = localStorage.getItem(STORE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    } catch (err) {
-      return {};
-    }
-  }
-
-  function saveDone() {
-    try {
-      localStorage.setItem(STORE_KEY, JSON.stringify(state.done));
-    } catch (err) {
-      /* 저장이 막혀 있어도 푸는 데는 지장이 없다. */
-    }
-  }
+  function checkpoint() { return {done: state.done, answers, subject: state.subject, unit: state.unit, exam: state.exam, hideDone: state.hideDone, displayLimit: state.displayLimit}; }
+  function saveRecord(events = [], complete = false) { return records.save({checkpoint: checkpoint(), events, complete, progress: {current: Object.keys(state.done).length, total: DATA.problems.length}}); }
 
   /* ── 고르기 줄 ── */
   function countBy(pick) {
@@ -230,9 +216,12 @@
     return box;
   }
 
-  function markDone(problem, card, right) {
+  async function markDone(problem, card, right, response) {
+    if (busy) return; busy = true; els.list.inert = true;
+    answers[problem.id] = response;
     state.done[problem.id] = right ? "right" : "wrong";
-    saveDone();
+    await saveRecord([{kind:'answer',questionKey:String(problem.id),response,correct:right,snapshot:{prompt:problem.body || '',choices:problem.choices || [],exam:problem.exam,no:problem.no}}]);
+    busy = false; els.list.inert = false;
     card.classList.add("is-done");
     card.querySelector(".item-mark").textContent = right ? "맞음" : "틀림";
     const items = visibleProblems();
@@ -259,7 +248,7 @@
           if (j + 1 === problem.answer) b.classList.add("is-right");
         });
         if (!right) btn.classList.add("is-wrong");
-        markDone(problem, card, right);
+        markDone(problem, card, right, picked);
       });
       li.appendChild(btn);
       list.appendChild(li);
@@ -292,7 +281,7 @@
       msg.className = "short-msg " + (right ? "is-right" : "is-wrong");
       input.disabled = true;
       btn.disabled = true;
-      markDone(problem, card, right);
+      markDone(problem, card, right, typed);
     }
 
     btn.addEventListener("click", check);
@@ -460,7 +449,10 @@
     updateCount(items, toShow.length);
   }
 
-  function start() {
+  async function start() {
+    records = LearningRecords.create('csat-math',{label:'수능 수학'});
+    const session = await records.start({contentKey:'practice',title:'수능 수학 연습',version:'20261002',checkpoint:checkpoint()});
+    Object.assign(state, session.checkpoint); Object.assign(answers, session.checkpoint.answers || {});
     buildSubjectTabs();
     buildExamSelect();
 
@@ -546,12 +538,18 @@
       render();
     });
 
-    els.reset.addEventListener("click", function () {
-      state.done = {};
-      saveDone();
-      render();
+    els.reset.textContent = '학습 마치기';
+    els.reset.addEventListener('click', async function () {
+      if (busy) return; busy = true;
+      await saveRecord([], true); records.showResult(); els.list.inert = true;
+      els.reset.textContent = '새 풀이 시작';
+      els.reset.onclick = () => location.reload();
     });
 
+    for (const control of [els.subjectTabs, els.unitChips, els.examSelect, els.hideDone]) {
+      control?.addEventListener(control.tagName === 'SELECT' || control.tagName === 'INPUT' ? 'change' : 'click', () => { if (!busy && records.session.status === 'active') saveRecord(); });
+    }
+    els.examSelect.value = state.exam || ''; els.hideDone.checked = state.hideDone;
     render();
   }
 
