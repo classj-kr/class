@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1165,
+  "totalImages": 1173,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1166,6 +1166,14 @@
     "2114": { "word": "quantity", "file": "quantity-v2.webp" },
     "1142": { "word": "fraction", "file": "fraction-v2.webp" },
     "1268": { "word": "habitat", "file": "habitat-v2.webp" },
-    "558": { "word": "component", "file": "component-v2.webp" }
+    "558": { "word": "component", "file": "component-v2.webp" },
+    "2881": { "word": "virtue", "file": "virtue-v2.webp" },
+    "998": { "word": "expertise", "file": "expertise-v2.webp" },
+    "1411": { "word": "ingredient", "file": "ingredient-v2.webp" },
+    "708": { "word": "dairy", "file": "dairy-v2.webp" },
+    "2485": { "word": "spectacle", "file": "spectacle-v2.webp" },
+    "2503": { "word": "spouse", "file": "spouse-v2.webp" },
+    "810": { "word": "diplomat", "file": "diplomat-v2.webp" },
+    "1441": { "word": "intellect", "file": "intellect-v2.webp" }
   }
 }
