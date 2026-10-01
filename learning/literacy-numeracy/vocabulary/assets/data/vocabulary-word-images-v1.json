@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 967,
+  "totalImages": 975,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -968,6 +968,14 @@
     "2749": { "word": "topic", "file": "topic-v2.webp" },
     "994": { "word": "expense", "file": "expense-v2.webp" },
     "1964": { "word": "pine", "file": "pine-v2.webp" },
-    "2053": { "word": "principle", "file": "principle-v2.webp" }
+    "2053": { "word": "principle", "file": "principle-v2.webp" },
+    "1478": { "word": "jaw", "file": "jaw-v2.webp" },
+    "651": { "word": "countryside", "file": "countryside-v2.webp" },
+    "753": { "word": "delight", "file": "delight-v2.webp" },
+    "606": { "word": "context", "file": "context-v2.webp" },
+    "958": { "word": "estimate", "file": "estimate-v2.webp" },
+    "420": { "word": "category", "file": "category-v2.webp" },
+    "79": { "word": "airline", "file": "airline-v2.webp" },
+    "1151": { "word": "fright", "file": "fright-v2.webp" }
   }
 }
