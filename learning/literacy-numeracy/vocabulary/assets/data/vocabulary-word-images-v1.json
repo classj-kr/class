@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 983,
+  "totalImages": 991,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -984,6 +984,14 @@
     "2214": { "word": "resource", "file": "resource-v2.webp" },
     "1587": { "word": "livingroom", "file": "livingroom-v2.webp" },
     "918": { "word": "emergency", "file": "emergency-v2.webp" },
-    "459": { "word": "chef", "file": "chef-v2.webp" }
+    "459": { "word": "chef", "file": "chef-v2.webp" },
+    "481": { "word": "circumstance", "file": "circumstance-v2.webp" },
+    "1717": { "word": "monster", "file": "monster-v2.webp" },
+    "2080": { "word": "proof", "file": "proof-v2.webp" },
+    "2609": { "word": "surgery", "file": "surgery-v2.webp" },
+    "1194": { "word": "genius", "file": "genius-v2.webp" },
+    "655": { "word": "courage", "file": "courage-v2.webp" },
+    "2872": { "word": "victory", "file": "victory-v2.webp" },
+    "2640": { "word": "talent", "file": "talent-v2.webp" }
   }
 }
