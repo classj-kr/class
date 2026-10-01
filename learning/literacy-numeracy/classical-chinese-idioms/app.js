@@ -1,16 +1,11 @@
-(function () {
+(async function () {
     "use strict";
 
     const data = Array.isArray(window.IDIOM_DATA) ? window.IDIOM_DATA : [];
     const core = window.IdiomCore;
     const lessons = Array.isArray(window.IDIOM_LESSONS) ? window.IDIOM_LESSONS : [];
-    const PLAYER_NAME_KEY = "classPlayerName";
-    const LEGACY_PROGRESS_KEY = "classIdiomsProgressV1";
-    const LEGACY_BEST_SCORE_KEY = "classIdiomsBestScoreV1";
-    const playerName = String(localStorage.getItem(PLAYER_NAME_KEY) || "").replace(/[^가-힣]/g, "").slice(0, 6);
-    const playerKeySuffix = playerName ? `:${encodeURIComponent(playerName)}` : "";
-    const PROGRESS_KEY = `${LEGACY_PROGRESS_KEY}${playerKeySuffix}`;
-    const BEST_SCORE_KEY = `${LEGACY_BEST_SCORE_KEY}${playerKeySuffix}`;
+    const records=LearningRecords.create('classical-chinese-idioms',{label:'한자성어'});await records.ready;
+    let recordMode='learn',recordBusy=false;
     const ILLUSTRATIONS = {
         gakjuguggeom: "assets/idioms-v2/gakjuguggeom.webp",
         josammosa: "assets/idioms-v2/josammosa.webp",
@@ -126,29 +121,7 @@
         nuranjiwi: "assets/idioms-v2/nuranjiwi.webp"
     };
 
-    function migrateLegacyStorage() {
-        if (!playerName) return;
 
-        try {
-            if (localStorage.getItem(PROGRESS_KEY) === null) {
-                const legacyProgress = localStorage.getItem(LEGACY_PROGRESS_KEY);
-                if (legacyProgress !== null) {
-                    localStorage.setItem(PROGRESS_KEY, legacyProgress);
-                    localStorage.removeItem(LEGACY_PROGRESS_KEY);
-                }
-            }
-
-            if (localStorage.getItem(BEST_SCORE_KEY) === null) {
-                const legacyBestScore = localStorage.getItem(LEGACY_BEST_SCORE_KEY);
-                if (legacyBestScore !== null) {
-                    localStorage.setItem(BEST_SCORE_KEY, legacyBestScore);
-                    localStorage.removeItem(LEGACY_BEST_SCORE_KEY);
-                }
-            }
-        } catch (_) {}
-    }
-
-    migrateLegacyStorage();
 
     const byId = (id) => document.getElementById(id);
     const elements = {
@@ -185,7 +158,7 @@
         cardNavigation: byId("cardNavigation")
     };
 
-    let progress = loadProgress();
+    let progress = {};
     let currentLessonIndex = 0;
     let quizScope = "lesson";
     let deck = [...data];
@@ -205,26 +178,16 @@
     let selectedLibraryTheme = "전체";
     let toastTimer = 0;
 
-    function readJson(key, fallback) {
-        try {
-            const parsed = JSON.parse(localStorage.getItem(key));
-            return parsed ?? fallback;
-        } catch (_) {
-            return fallback;
-        }
+    function checkpoint(){return {progress,currentLessonIndex,quizScope,deck:deck.map(i=>i.id),currentIndex,reviewOnly,selectedTheme,selectedQuizMode,quiz,quizIndex,quizScore,quizStreak,quizAnswered,quizQuestionHadWrong,quizMistakes,quizIsMistakeRetry,mode:recordMode};}
+    function saveProgress(events=[],complete=false){
+        if(!records.session || records.session.status!=='active')return Promise.resolve();
+        return records.save({checkpoint:checkpoint(),events,complete,progress:{current:recordMode==='game'?Math.min(quiz.length,quizIndex+(quizAnswered?1:0)):currentIndex,total:recordMode==='game'?quiz.length:null}});
     }
-
-    function loadProgress() {
-        return core.normalizeProgress(readJson(PROGRESS_KEY, {}), data.map((item) => item.id));
-    }
-
-    function saveProgress() {
-        try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (_) {}
-    }
-
-    function getBestScore() {
-        const value = Number(localStorage.getItem(BEST_SCORE_KEY) || 0);
-        return Number.isFinite(value) ? Math.max(0, Math.min(10, value)) : 0;
+    async function beginRecord(){
+        const session=await records.start({contentKey:quizScope==='all'?'all':String(currentLessonIndex),title:quizScope==='all'?'한자성어 · 전체 문제':'한자성어 · '+lessons[currentLessonIndex].title,version:'20261002',checkpoint:checkpoint()});
+        const cp=session.checkpoint; progress=cp.progress;currentLessonIndex=cp.currentLessonIndex;quizScope=cp.quizScope;deck=cp.deck.map(id=>data.find(i=>i.id===id)).filter(Boolean);currentIndex=cp.currentIndex;reviewOnly=cp.reviewOnly;selectedTheme=cp.selectedTheme;selectedQuizMode=cp.selectedQuizMode;quiz=cp.quiz;quizIndex=cp.quizIndex;quizScore=cp.quizScore;quizStreak=cp.quizStreak;quizAnswered=cp.quizAnswered;quizQuestionHadWrong=cp.quizQuestionHadWrong;quizMistakes=cp.quizMistakes;quizIsMistakeRetry=cp.quizIsMistakeRetry;recordMode=cp.mode;
+        if(recordMode==='game' && quiz.length){elements.gameIntro.hidden=true;elements.quizResult.hidden=true;elements.quizStage.hidden=false;renderQuestion();}else renderCard();
+        switchView(recordMode);
     }
 
     function showToast(message) {
@@ -343,18 +306,21 @@
     }
 
     function moveCard(direction) {
+        if(recordBusy)return;
         if (!deck.length) return;
         currentIndex = (currentIndex + direction + deck.length) % deck.length;
         revealed = true;
-        renderCard();
+        renderCard(); saveProgress();
         elements.idiomCard.focus({ preventScroll: true });
     }
 
-    function markCurrent(status) {
+    async function markCurrent(status) {
+        if(recordBusy)return;
         const idiom = currentIdiom();
         if (!idiom) return;
         progress[idiom.id] = { status, updatedAt: new Date().toISOString() };
-        saveProgress();
+        recordBusy=true;elements.learningShell.inert=true;
+        await saveProgress([{kind:'self-assessment',questionKey:idiom.id,response:status,snapshot:{title:idiom.word}}]);recordBusy=false;elements.learningShell.inert=false;
         renderSummary();
         renderLessonOverview();
         showToast(`${idiom.word}: ${status === "known" ? "암기 완료" : "복습 필요"}`);
@@ -368,6 +334,7 @@
     }
 
     function switchView(viewName) {
+        recordMode=viewName;
         document.querySelectorAll(".mode-tab").forEach((button) => {
             const active = button.dataset.view === viewName;
             button.classList.toggle("active", active);
@@ -379,11 +346,8 @@
         if (viewName === "library") renderLibrary();
     }
 
-    function renderBestScore() {
-        elements.bestScore.textContent = `${getBestScore()} / 10`;
-    }
-
-    function startQuiz(mistakeIds = null) {
+    async function startQuiz(mistakeIds = null) {
+        if(recordBusy)return;
         const lessonPool = currentLessonItems();
         const quizPool = selectedQuizMode === "image"
             ? lessonPool.filter((idiom) => Boolean(ILLUSTRATIONS[idiom.id]))
@@ -409,14 +373,16 @@
         elements.gameIntro.hidden = true;
         elements.quizResult.hidden = true;
         elements.quizStage.hidden = false;
-        renderQuestion();
+        recordMode="game";
+        if(!records.session || records.session.status!=="active")await beginRecord();
+        renderQuestion(); await saveProgress();
     }
 
     function renderQuestion() {
         const question = quiz[quizIndex];
         if (!question) return finishQuiz();
-        quizAnswered = false;
-        quizQuestionHadWrong = false;
+        const tried=question.tried || [];
+        quizAnswered=tried.includes(question.answerId);quizQuestionHadWrong=tried.some(id=>id!==question.answerId);
         elements.quizPosition.textContent = `문제 ${quizIndex + 1} / ${quiz.length}`;
         elements.quizStreak.textContent = quizStreak;
         elements.quizScore.textContent = quizScore;
@@ -443,19 +409,24 @@
             button.type = "button";
             button.className = "answer-option";
             button.dataset.answerId = option.id;
+            button.disabled=quizAnswered||tried.includes(option.id);
+            if(tried.includes(option.id))button.classList.add(option.id===question.answerId?'correct':'wrong');
             const [word, hanja] = option.label.split(" · ");
             button.innerHTML = `<span>${index + 1}</span>${word}${hanja ? ` · <b class="hanja-inline">${hanja}</b>` : ""}`;
             button.addEventListener("click", () => chooseAnswer(option.id));
             elements.answerOptions.append(button);
         });
-        elements.answerOptions.querySelector("button")?.focus();
+        elements.nextQuestion.disabled=!quizAnswered;
+        elements.answerOptions.querySelector('button:not(:disabled)')?.focus();
     }
 
-    function chooseAnswer(answerId) {
-        if (quizAnswered) return;
+    async function chooseAnswer(answerId) {
+        if(quizAnswered||recordBusy)return;recordBusy=true;elements.learningShell.inert=true;
         const question = quiz[quizIndex];
         const correct = answerId === question.answerId;
         const answerIdiom = data.find((item) => item.id === question.answerId);
+        (question.tried ||= []).push(answerId);
+        const event={kind:'answer',questionKey:question.id+':'+question.type,response:question.options.find(o=>o.id===answerId)?.label||answerId,correct,snapshot:{prompt:question.prompt,choices:question.options.map(o=>o.label)}};
 
         if (!correct) {
             quizQuestionHadWrong = true;
@@ -470,7 +441,7 @@
             elements.feedbackStory.open = false;
             elements.answerFeedback.classList.add("wrong");
             elements.answerFeedback.hidden = false;
-            return;
+            await saveProgress([event]);recordBusy=false;elements.learningShell.inert=false;return;
         }
         quizAnswered = true;
 
@@ -495,46 +466,19 @@
         elements.answerFeedback.classList.toggle("wrong", !correct);
         elements.answerFeedback.hidden = false;
         elements.nextQuestion.textContent = quizIndex === quiz.length - 1 ? "결과 보기 →" : "다음 문제 →";
+        elements.nextQuestion.disabled=false;
+        await saveProgress([event]);recordBusy=false;elements.learningShell.inert=false;
         elements.nextQuestion.focus();
     }
 
-    function goToNextQuestion() {
-        if (!quizAnswered) return;
+    async function goToNextQuestion() {
+        if (!quizAnswered||recordBusy) return;
         quizIndex += 1;
         if (quizIndex >= quiz.length) finishQuiz();
-        else renderQuestion();
+        else {renderQuestion();await saveProgress();}
     }
 
-    function finishQuiz() {
-        elements.quizStage.hidden = true;
-        elements.quizResult.hidden = false;
-        if (!quizIsMistakeRetry) {
-            const best = Math.max(getBestScore(), quizScore);
-            try { localStorage.setItem(BEST_SCORE_KEY, String(best)); } catch (_) {}
-        }
-        renderBestScore();
-        elements.resultScore.textContent = `${quizScore} / ${quiz.length}`;
-
-        const mistakeIds = [...new Set(quizMistakes)];
-        elements.resultTitle.textContent = quizIsMistakeRetry ? "오답 다시 풀기 결과" : "문제 결과";
-        elements.resultMessage.textContent = mistakeIds.length
-            ? `오답 ${mistakeIds.length}개를 복습 목록에 추가했습니다.`
-            : (quizIsMistakeRetry ? "틀렸던 문제를 모두 바로잡았습니다." : "오답이 없습니다.");
-        elements.resultMistakeList.replaceChildren();
-        mistakeIds.forEach((id) => {
-            const idiom = data.find((item) => item.id === id);
-            if (!idiom) return;
-            const item = document.createElement("li");
-            const hanja = document.createElement("b");
-            hanja.className = "hanja-inline";
-            hanja.textContent = idiom.hanja;
-            item.append(`${idiom.word} · `, hanja);
-            elements.resultMistakeList.append(item);
-        });
-        elements.resultMistakeList.hidden = mistakeIds.length === 0;
-        elements.retryMistakes.hidden = mistakeIds.length === 0;
-        elements.reviewMistakes.hidden = mistakeIds.length === 0;
-    }
+    async function finishQuiz(){if(recordBusy)return;recordBusy=true;elements.learningShell.inert=true;await saveProgress([],true);showLessonOverview();records.showResult();recordBusy=false;elements.learningShell.inert=false;}
 
     function retryQuizMistakes() {
         if (!quizMistakes.length) return;
@@ -581,7 +525,8 @@ function renderLessonOverview() {
         });
     }
 
-    function openLesson(index, keepId = "") {
+    async function openLesson(index, keepId = "") {
+        if(recordBusy)return;recordBusy=true;elements.learningShell.inert=true;
         quizScope = "lesson";
         currentLessonIndex = Math.max(0, Math.min(index, lessons.length - 1));
         const lesson = lessons[currentLessonIndex];
@@ -598,11 +543,13 @@ function renderLessonOverview() {
         buildDeck({ keepId });
         revealed = true;
         renderCard();
-        switchView("learn");
+        switchView('learn');quiz=[];quizIndex=0;quizAnswered=false;
+        await beginRecord();recordBusy=false;elements.learningShell.inert=false;
         elements.learningShell.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    function openAllQuiz() {
+    async function openAllQuiz() {
+        if(recordBusy)return;recordBusy=true;elements.learningShell.inert=true;
         quizScope = "all";
         document.body.classList.add("lesson-active");
         elements.lessonOverview.hidden = true;
@@ -610,7 +557,8 @@ function renderLessonOverview() {
         elements.currentLessonNumber.textContent = "전체";
         elements.currentLessonTitle.textContent = "문제은행";
         elements.currentLessonQuiz.textContent = "성어 설명";
-        switchView("game");
+        switchView('game');quiz=[];quizIndex=0;quizAnswered=false;
+        await beginRecord();recordBusy=false;elements.learningShell.inert=false;
         elements.learningShell.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     function showLessonOverview() {
@@ -785,17 +733,19 @@ function renderLessonOverview() {
             document.body.innerHTML = "<p>학습 데이터를 불러오지 못했습니다.</p>";
             return;
         }
-        if (playerName) elements.playerGreeting.textContent = `${playerName} 학습 기록`;
+        elements.playerGreeting.textContent = "한자성어 학습";
         elements.libraryTotal.textContent = data.length;
         buildThemeControls();
 
         renderSummary();
-        renderBestScore();
+        elements.bestScore.parentElement.hidden=true;
         renderLessonOverview();
         buildDeck();
         renderLibrary();
     }
 
     initialize();
+    const resume=new URLSearchParams(location.search).get('record');
+    if(resume==='all')await openAllQuiz();else if(resume!==null && lessons[Number(resume)])await openLesson(Number(resume));
 })();
 
