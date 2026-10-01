@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 991,
+  "totalImages": 999,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -992,6 +992,14 @@
     "1194": { "word": "genius", "file": "genius-v2.webp" },
     "655": { "word": "courage", "file": "courage-v2.webp" },
     "2872": { "word": "victory", "file": "victory-v2.webp" },
-    "2640": { "word": "talent", "file": "talent-v2.webp" }
+    "2640": { "word": "talent", "file": "talent-v2.webp" },
+    "1833": { "word": "okay", "file": "okay-v2.webp" },
+    "1697": { "word": "miracle", "file": "miracle-v2.webp" },
+    "2780": { "word": "treasure", "file": "treasure-v2.webp" },
+    "730": { "word": "decent", "file": "decent-v2.webp" },
+    "2690": { "word": "theme", "file": "theme-v2.webp" },
+    "245": { "word": "beast", "file": "beast-v2.webp" },
+    "782": { "word": "destiny", "file": "destiny-v2.webp" },
+    "362": { "word": "bull", "file": "bull-v2.webp" }
   }
 }
