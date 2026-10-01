@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 975,
+  "totalImages": 983,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -976,6 +976,14 @@
     "958": { "word": "estimate", "file": "estimate-v2.webp" },
     "420": { "word": "category", "file": "category-v2.webp" },
     "79": { "word": "airline", "file": "airline-v2.webp" },
-    "1151": { "word": "fright", "file": "fright-v2.webp" }
+    "1151": { "word": "fright", "file": "fright-v2.webp" },
+    "798": { "word": "dictionary", "file": "dictionary-v2.webp" },
+    "537": { "word": "commerce", "file": "commerce-v2.webp" },
+    "1663": { "word": "melon", "file": "melon-v2.webp" },
+    "1894": { "word": "paragraph", "file": "paragraph-v2.webp" },
+    "2214": { "word": "resource", "file": "resource-v2.webp" },
+    "1587": { "word": "livingroom", "file": "livingroom-v2.webp" },
+    "918": { "word": "emergency", "file": "emergency-v2.webp" },
+    "459": { "word": "chef", "file": "chef-v2.webp" }
   }
 }
