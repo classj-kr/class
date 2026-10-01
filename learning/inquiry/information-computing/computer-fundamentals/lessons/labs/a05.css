@@ -607,3 +607,14 @@
 .network-path-heading.has-context,
     .web-state-heading.has-context { grid-template-columns: 1fr; }
 }
+
+/* 2026-10-01 5차시 다듬기: 낱말 중간 꺾임 금지, 샘플 목록 줄바꿈, A·B 작은 그래프, 기록 전 범례 숨김 */
+.a05-digitizer-lab { word-break: keep-all; }
+.a05-sample-strip { flex-wrap: wrap; overflow-x: visible; }
+.a05-sample-strip button { flex: 0 0 58px; }
+.a05-sample-inspector > p { margin: 10px 0 0; color: #4c4035; font-size: 12px; line-height: 1.5; }
+.a05-snapshot-grid canvas { display: block; width: 100%; height: 120px; border: 1px solid #bba27d; border-radius: 6px; background: #fff; }
+.a05-snapshot-grid canvas[hidden] { display: none; }
+.a05-digitizer-lab[data-a05-recorded="false"] .a05-graph-legend .measured,
+.a05-digitizer-lab[data-a05-recorded="false"] .a05-graph-legend .stored,
+.a05-digitizer-lab[data-a05-recorded="false"] .a05-graph-legend .replay { display: none; }
