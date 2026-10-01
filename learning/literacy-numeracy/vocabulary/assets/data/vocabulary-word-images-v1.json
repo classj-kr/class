@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1181,
+  "totalImages": 1189,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1182,6 +1182,14 @@
     "654": { "word": "coupon", "file": "coupon-v2.webp" },
     "1392": { "word": "incentive", "file": "incentive-v2.webp" },
     "1370": { "word": "ideology", "file": "ideology-v2.webp" },
-    "757": { "word": "democrat", "file": "democrat-v2.webp" }
+    "757": { "word": "democrat", "file": "democrat-v2.webp" },
+    "2995": { "word": "you", "file": "you-v2.webp" },
+    "1364": { "word": "I", "file": "i-v2.webp" },
+    "2688": { "word": "the", "file": "the-v2.webp" },
+    "2734": { "word": "to", "file": "to-v2.webp" },
+    "1": { "word": "a", "file": "a-v2.webp" },
+    "1472": { "word": "it", "file": "it-v2.webp" },
+    "117": { "word": "and", "file": "and-v2.webp" },
+    "2687": { "word": "that", "file": "that-v2.webp" }
   }
 }

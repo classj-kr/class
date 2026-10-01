@@ -750,6 +750,7 @@ function stateFor(game, playerId) {
   const me = playerById(game, id);
   const pawn = currentPawn(game);
   const canAct = game.phase === "playing" && canControl(pawn, id);
+  const movePlans = canAct ? movementPlans(game, pawn) : new Map();
   const known = new Set(game.resources.thief.knownBuildings);
   const buildingState = game.buildings.map(building => {
     let content = "hidden";
@@ -789,7 +790,8 @@ function stateFor(game, playerId) {
     revision: game.revision,
     canAct,
     canSetup: game.phase === "setup" && id === game.policeCaptainId,
-    validMoves: canAct ? reachableDestinations(game, pawn) : [],
+    validMoves: [...movePlans.keys()],
+    moveRoutes: Object.fromEntries([...movePlans].map(([target, route]) => [target, [pawn.position, ...route]])),
     actions: {
       roll: canAct && game.turnMode === "awaiting_roll",
       hide: canHide,
