@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1023,
+  "totalImages": 1031,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1024,6 +1024,14 @@
     "2882": { "word": "virus", "file": "virus-v2.webp" },
     "2527": { "word": "status", "file": "status-v2.webp" },
     "502": { "word": "clinic", "file": "clinic-v2.webp" },
-    "2870": { "word": "vice", "file": "vice-v2.webp" }
+    "2870": { "word": "vice", "file": "vice-v2.webp" },
+    "2787": { "word": "tribe", "file": "tribe-v2.webp" },
+    "1295": { "word": "headquarters", "file": "headquarters-v2.webp" },
+    "1770": { "word": "nephew", "file": "nephew-v2.webp" },
+    "122": { "word": "anniversary", "file": "anniversary-v2.webp" },
+    "588": { "word": "conscience", "file": "conscience-v2.webp" },
+    "257": { "word": "behalf", "file": "behalf-v2.webp" },
+    "1728": { "word": "motive", "file": "motive-v2.webp" },
+    "2680": { "word": "territory", "file": "territory-v2.webp" }
   }
 }
