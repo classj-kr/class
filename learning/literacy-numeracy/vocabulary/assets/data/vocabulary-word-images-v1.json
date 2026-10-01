@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 959,
+  "totalImages": 967,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -960,6 +960,14 @@
     "1479": { "word": "jeans", "file": "jeans-v2.webp" },
     "1200": { "word": "gesture", "file": "gesture-v2.webp" },
     "2892": { "word": "volume", "file": "volume-v2.webp" },
-    "400": { "word": "cape", "file": "cape-v2.webp" }
+    "400": { "word": "cape", "file": "cape-v2.webp" },
+    "1021": { "word": "factor", "file": "factor-v2.webp" },
+    "2170": { "word": "regard", "file": "regard-v2.webp" },
+    "1515": { "word": "laboratory", "file": "laboratory-v2.webp" },
+    "1812": { "word": "oak", "file": "oak-v2.webp" },
+    "2749": { "word": "topic", "file": "topic-v2.webp" },
+    "994": { "word": "expense", "file": "expense-v2.webp" },
+    "1964": { "word": "pine", "file": "pine-v2.webp" },
+    "2053": { "word": "principle", "file": "principle-v2.webp" }
   }
 }
