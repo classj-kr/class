@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 831,
+  "totalImages": 839,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -832,6 +832,14 @@
     "1228": { "word": "grace", "file": "grace-v2.webp" },
     "446": { "word": "character", "file": "character-v2.webp" },
     "544": { "word": "community", "file": "community-v2.webp" },
-    "2515": { "word": "stairs", "file": "stairs-v2.webp" }
+    "2515": { "word": "stairs", "file": "stairs-v2.webp" },
+    "2571": { "word": "stuff", "file": "stuff-v2.webp" },
+    "1696": { "word": "minute", "file": "minute-v2.webp" },
+    "2218": { "word": "rest", "file": "rest-v2.webp" },
+    "1270": { "word": "half", "file": "half-v2.webp" },
+    "1852": { "word": "order", "file": "order-v2.webp" },
+    "724": { "word": "deal", "file": "deal-v2.webp" },
+    "984": { "word": "excuse", "file": "excuse-v2.webp" },
+    "2794": { "word": "trouble", "file": "trouble-v2.webp" }
   }
 }
