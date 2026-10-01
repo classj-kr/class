@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1054,
+  "totalImages": 1061,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1055,6 +1055,13 @@
     "2229": { "word": "retreat", "file": "retreat-v2.webp" },
     "1362": { "word": "hut", "file": "hut-v2.webp" },
     "1550": { "word": "lecture", "file": "lecture-v2.webp" },
-    "157": { "word": "arrow", "file": "arrow-v2.webp" }
+    "157": { "word": "arrow", "file": "arrow-v2.webp" },
+    "2629": { "word": "symbol", "file": "symbol-v2.webp" },
+    "107": { "word": "ambassador", "file": "ambassador-v2.webp" },
+    "467": { "word": "chin", "file": "chin-v2.webp" },
+    "942": { "word": "entry", "file": "entry-v2.webp" },
+    "367": { "word": "burden", "file": "burden-v2.webp" },
+    "2526": { "word": "statue", "file": "statue-v2.webp" },
+    "1960": { "word": "pill", "file": "pill-v2.webp" }
   }
 }
