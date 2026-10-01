@@ -84,9 +84,9 @@ window.scienceSupplementExtensions=({line,label,rect,jar,field})=>({
   fields:[field('fossil','실제 화석 표본',[['shell','바다 조개 화석'],['leaf','나뭇잎 화석']]),field('focus','관찰 초점',[['whole','전체 보기'],['detail','특징 확대']])],
 
   view(s){const shell=s.fossil==='shell';const item=shell?{
-   name:'바다 조개 화석',src:'assets/observations/shell-fossil.jpg',author:'Ghedoghedo',source:'https://commons.wikimedia.org/wiki/File:Amussiopecten_pasinii.JPG',alt:'암석에 남아 있는 부채 모양 조개와 방사상으로 뻗은 굴곡',caption:'사진 왼쪽의 부채 모양과 길게 뻗은 굴곡을 관찰하세요.',origin:'25% 42%'
+   name:'바다 조개 화석',src:'assets/observations/shell-fossil.webp',author:'Ghedoghedo',source:'https://commons.wikimedia.org/wiki/File:Amussiopecten_pasinii.JPG',alt:'암석에 남아 있는 부채 모양 조개와 방사상으로 뻗은 굴곡',caption:'사진 왼쪽의 부채 모양과 길게 뻗은 굴곡을 관찰하세요.',origin:'25% 42%'
   }:{
-   name:'나뭇잎 화석',src:'assets/observations/leaf-fossil.jpg',author:'The Utahraptor (Raptor)',source:'https://commons.wikimedia.org/wiki/File:Leaf_Fossil.jpg',alt:'암석 표면에 남은 갈색 나뭇잎의 윤곽과 중앙에서 갈라지는 잎맥',caption:'잎의 윤곽 안에서 가운데 잎맥과 양옆으로 갈라지는 잎맥을 찾아보세요.',origin:'50% 48%'
+   name:'나뭇잎 화석',src:'assets/observations/leaf-fossil.webp',author:'The Utahraptor (Raptor)',source:'https://commons.wikimedia.org/wiki/File:Leaf_Fossil.jpg',alt:'암석 표면에 남은 갈색 나뭇잎의 윤곽과 중앙에서 갈라지는 잎맥',caption:'잎의 윤곽 안에서 가운데 잎맥과 양옆으로 갈라지는 잎맥을 찾아보세요.',origin:'50% 48%'
   };
   Object.assign(item,{collection:'',license:'CC BY-SA 3.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/3.0/'});
   return{media:{items:[item],enlarged:s.focus==='detail',zoom:1.8,info:'서로 다른 실제 화석 표본입니다. 표본의 실제 크기 비율과 화면의 크기는 다릅니다. 사진은 크기 조정·JPEG 압축을 했으며, 확대 시 화면에서 일부가 잘려 보입니다.'},text:shell?'껍데기 모양이 남은 바다 조개 화석은 이 지층이 만들어질 당시 바다 환경이었을 가능성을 뒷받침합니다. 화석이 옮겨져 쌓였을 가능성 등도 함께 살핍니다.':'잎의 모양과 잎맥이 남아 있습니다. 과거에 식물이 살았다는 증거이며, 어떤 식물인지와 다른 화석·지층 자료를 함께 보면 환경을 더 구체적으로 추리할 수 있습니다.',note:'화석 하나만으로 당시의 모든 환경을 알 수는 없습니다. 여러 자료를 함께 비교합니다.'};}

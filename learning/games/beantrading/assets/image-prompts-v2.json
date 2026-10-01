@@ -4,7 +4,7 @@
   "generator": "Built-in ImageGen",
   "version": 2,
   "artDirection": "Expressive 2D comic characters with different shapes, roles, gestures and visual jokes. This revision replaces the rejected neutral bean mascot direction.",
-  "referenceAsset": "images/bean-kidney-v2.png",
+  "referenceAsset": "images/bean-kidney-v2.webp",
   "assets": [
     {
       "key": "bean-kidney",

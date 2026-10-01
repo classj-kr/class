@@ -270,30 +270,36 @@ app.get("/sitemap.xml", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("application/xml").sendFile(path.join(SITE_ROOT, "sitemap.xml"));
 });
-app.get("/favicon.ico", (_req, res) => {
+app.get("/favicon.webp", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
-  res.sendFile(path.join(SITE_ROOT, "favicon.ico"));
+  res.sendFile(path.join(SITE_ROOT, "favicon.webp"));
 });
-app.get("/favicon-20260824.ico", (_req, res) => {
+app.get("/favicon-20260824.webp", (_req, res) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824.ico"));
+  res.sendFile(path.join(SITE_ROOT, "favicon-20260824.webp"));
 });
-app.get("/favicon-20260824-v2.ico", (_req, res) => {
+app.get("/favicon-20260824-v2.webp", (_req, res) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v2.ico"));
+  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v2.webp"));
 });
-app.get("/favicon-20260824-v3.ico", (_req, res) => {
+app.get("/favicon-20260824-v3.webp", (_req, res) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v3.ico"));
+  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v3.webp"));
 });
-app.get("/favicon-20260824-v5.ico", (_req, res) => {
+app.get("/favicon-20260824-v5.webp", (_req, res) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v5.ico"));
+  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v5.webp"));
 });
-app.get("/favicon-20260824-v6.ico", (_req, res) => {
+app.get("/favicon-20260824-v6.webp", (_req, res) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v6.ico"));
+  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v6.webp"));
 });
+for (const legacyFavicon of ["/favicon.ico", "/favicon-20260824.ico", "/favicon-20260824-v2.ico", "/favicon-20260824-v3.ico", "/favicon-20260824-v5.ico", "/favicon-20260824-v6.ico", "/favicon.png"]) {
+  app.get(legacyFavicon, (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache, must-revalidate");
+    res.redirect(302, "/favicon.webp");
+  });
+}
 app.get("/naverc953171c2ff3a730580e7ed2be00700d.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("text/plain").send("naver-site-verification: naverc953171c2ff3a730580e7ed2be00700d.html\n");
@@ -301,10 +307,6 @@ app.get("/naverc953171c2ff3a730580e7ed2be00700d.html", (_req, res) => {
 app.get("/naver5fab431f6334045f5b69668ad71fc3c8.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("text/plain").send("naver-site-verification: naver5fab431f6334045f5b69668ad71fc3c8.html\n");
-});
-app.get("/favicon.png", (_req, res) => {
-  res.setHeader("Cache-Control", "no-cache, must-revalidate");
-  res.sendFile(path.join(SITE_ROOT, "favicon.png"));
 });
 app.use(
   "/assets",

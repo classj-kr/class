@@ -8,11 +8,11 @@
   <title>경찰과 도둑</title>
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261001-citychase-bg">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="citychase.css?v=20261001-city-map">
+  <link rel="stylesheet" href="citychase.css?v=20261001-original-routes">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules"></script>
-  <script src="citychase-data.js?v=20261001-city-map"></script>
+  <script src="citychase-data.js?v=20261001-original-routes"></script>
 </head>
 <body>
   <main>
@@ -152,9 +152,9 @@
             <h3 id="setupTitle">비밀 물건 배치</h3>
             <p id="setupGuide">경찰팀만 볼 수 있습니다. 서로 다른 장소에 보석 2개와 경보 장치를 배치하세요.</p>
             <div id="secretTabs" class="secretTabs">
-              <button class="secretTab active" type="button" data-secret="gem1"><img class="secretTabIcon" src="assets/secret-gem.png" alt="">보석 1</button>
-              <button class="secretTab" type="button" data-secret="gem2"><img class="secretTabIcon" src="assets/secret-gem.png" alt="">보석 2</button>
-              <button class="secretTab undercover" type="button" data-secret="undercover"><img class="secretTabIcon" src="assets/secret-alarm.png" alt="">경보 장치</button>
+              <button class="secretTab active" type="button" data-secret="gem1"><img class="secretTabIcon" src="assets/secret-gem.webp" alt="">보석 1</button>
+              <button class="secretTab" type="button" data-secret="gem2"><img class="secretTabIcon" src="assets/secret-gem.webp" alt="">보석 2</button>
+              <button class="secretTab undercover" type="button" data-secret="undercover"><img class="secretTabIcon" src="assets/secret-alarm.webp" alt="">경보 장치</button>
             </div>
             <div id="setupSummary" class="setupSummary"></div>
             <button id="confirmSetupBtn" class="primary" type="button" disabled>배치 완료</button>
@@ -252,6 +252,6 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <audio id="bgm" preload="auto"></audio>
-  <script src="citychase.js?v=20261001-city-map"></script>
+  <script src="citychase.js?v=20261001-original-routes"></script>
 </body>
 </html>

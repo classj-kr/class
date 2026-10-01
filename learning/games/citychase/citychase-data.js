@@ -10,88 +10,133 @@
   const HEIGHT = 1000;
   const nodes = {};
   const edges = [];
+
   function addNode(id, x, y, options = {}) {
-    nodes[id] = { id, x, y, label: "거리", ...options };
+    nodes[id] = { id, x, y, label: options.label || "거리", ...options };
+    return nodes[id];
   }
+
   function addEdge(a, b, options = {}) {
-    edges.push({ a, b, teams: null, oneWay: false, displayArrow: false, visualOnly: false, kind: "road", ...options });
+    edges.push({
+      a,
+      b,
+      teams: options.teams || null,
+      oneWay: !!options.oneWay,
+      displayArrow: !!options.displayArrow,
+      visualOnly: !!options.visualOnly,
+      kind: options.kind || "road"
+    });
   }
+
   function addRoute(ids, options = {}) {
-    for (let index = 1; index < ids.length; index += 1) addEdge(ids[index - 1], ids[index], options);
+    for (let index = 0; index < ids.length - 1; index += 1) addEdge(ids[index], ids[index + 1], options);
   }
 
-  // Four straight avenues and five connecting streets. Every crossing is a real square.
-  // Keep the existing square IDs so saved pawn, card and special-square references remain valid.
-  const rows = [
-    ["p0","p1","p2","p3","p4","a1","b1","b2","r4","c1","c2","d1","p5","p6","p7","p8","p9"],
-    ["p35","a6","a5","a4","b6","b4","b5","b3","r3","c6","c5","c4","d6","d4","d5","d3","p12"],
-    ["p31","q9","q0","q1","f0","f1","f2","vcl2","r2","vcr2","g0","g1","g2","vr2","vr1","g3","p16"],
-    ["p29","p28","p27","p26","p25","p24","f5","f4","r1","p23","p22","p21","p20","g4","g5","p18","p19"]
-  ];
-  const rowY = [70, 360, 640, 930];
-  rows.forEach((row, index) => {
-    row.forEach((id, column) => addNode(id, 60 + 55 * column, rowY[index]));
-    addRoute(row);
-  });
-  const columns = [
-    ["p37","p36","p34","p33","p32","vl2","p30","q8","q7"],
-    ["a2","a3","b0","pl0","pl1","pl2","q2","q3","q4"],
-    ["b7","vcl0","vcl1","c0","vcr0","vcr1","f3","f6","f7"],
-    ["c3","c7","d0","pr0","pr1","pr2","g6","g7","vr0"],
-    ["p10","p11","d2","p13","p14","p15","p17","d7","a0"]
-  ];
-  columns.forEach((column, index) => {
-    for (let band = 0; band < 3; band += 1) {
-      const intermediate = column.slice(band * 3, band * 3 + 3);
-      intermediate.forEach((id, step) => addNode(id, 60 + index * 220,
-        rowY[band] + (rowY[band + 1] - rowY[band]) * (step + 1) / 4));
-      const policeLane = band === 1 && (index === 1 || index === 3);
-      if (policeLane) intermediate.forEach(id => Object.assign(nodes[id], { label: "경찰 전용길", lane: "police" }));
-      addRoute([rows[band][index * 4], ...intermediate, rows[band + 1][index * 4]],
-        policeLane ? { teams: ["police"], oneWay: true, kind: "police-lane", displayArrow: true } : {});
-    }
-  });
-
-  // The southwest block is a clockwise loop; arrows apply only to these connected edges.
-  const roundLoop = ["p31","q9","q0","q1","f0","q2","q3","q4","p25","p26","p27","p28","p29","q7","q8","p30","p31"];
-  for (let index = 1; index < roundLoop.length; index += 1) {
-    const a = roundLoop[index - 1], b = roundLoop[index];
-    const edge = edges.find(item => item.a === a && item.b === b || item.a === b && item.b === a);
-    Object.assign(edge, { a, b, oneWay: true, displayArrow: true, kind: "round-zone" });
-    Object.assign(nodes[a], { zone: "circle" });
+  function addLoop(ids, options = {}) {
+    addRoute(ids, options);
+    addEdge(ids[ids.length - 1], ids[0], options);
   }
-  addNode("vl0", 390, 430);
-  addNode("q5", 390, 500);
-  addNode("vl1", 390, 570);
-  addRoute(["c0","vl0","q5","vl1","vcr1"], { teams: ["thief"], kind: "thief-lane" });
 
-  addNode("hideout", 170, 430, { label: "도둑팀 비밀기지", safe: true, start: "thief", effect: "hideout" });
-  addNode("a7", 115, 430);
-  addRoute(["p33","a7","hideout"], { teams: ["thief"], kind: "thief-lane" });
-  addNode("jail", 830, 500, { label: "경찰팀 구금 구역", safe: true, start: "police", effect: "jail" });
-  addNode("q6", 775, 500);
-  addRoute(["pr1","q6","jail","p14"]);
+  function addPoints(prefix, points, options = {}) {
+    points.forEach(([x, y], index) => addNode(`${prefix}${index}`, x, y, options));
+  }
+
+  function addPlaza(prefix, cx, cy, rx, ry) {
+    addPoints(prefix, [
+      [cx - rx, cy - ry], [cx, cy - ry - 8], [cx + rx, cy - ry], [cx + rx + 12, cy],
+      [cx + rx, cy + ry], [cx, cy + ry + 8], [cx - rx, cy + ry], [cx - rx - 12, cy]
+    ]);
+    addLoop(Array.from({ length: 8 }, (_, index) => `${prefix}${index}`));
+  }
+
+  // 중앙 세로 철도와 사진에 보이는 4-3-2-1 역 순서.
+  addNode("r4", 500, 75, { label: "4번 역 · 1번 역으로 이동", effect: "train", effectTarget: "r1", station: 4 });
+  addNode("r3", 500, 365, { label: "3번 역 · 2번 역으로 이동", effect: "train", effectTarget: "r2", station: 3 });
+  addNode("r2", 500, 650, { label: "2번 역 · 3번 역으로 이동", effect: "train", effectTarget: "r3", station: 2 });
+  addNode("r1", 500, 925, { label: "1번 역 · 4번 역으로 이동", effect: "train", effectTarget: "r4", station: 1 });
+  addRoute(["r4", "r3", "r2", "r1"], { kind: "rail", visualOnly: true });
+
+  // 외곽 순환로. 기존 테스트와 저장 상태 호환을 위해 p0~p37 이름을 유지한다.
+  const outer = [
+    ["p0",90,75],["p1",175,75],["p2",260,75],["p3",345,75],["p4",425,75],["r4",500,75],
+    ["p5",575,75],["p6",655,75],["p7",740,75],["p8",825,75],["p9",910,90],
+    ["p10",940,160],["p11",940,245],["p12",940,330],["p13",940,415],["p14",940,500],
+    ["p15",940,585],["p16",940,670],["p17",940,755],["p18",940,840],["p19",910,925],
+    ["p20",825,925],["p21",740,925],["p22",655,925],["p23",575,925],["r1",500,925],
+    ["p24",425,925],["p25",345,925],["p26",260,925],["p27",175,925],["p28",90,910],
+    ["p29",60,830],["p30",60,745],["p31",60,660],["p32",60,575],["p33",60,490],
+    ["p34",60,405],["p35",60,320],["p36",60,235],["p37",65,150]
+  ];
+  outer.forEach(([id, x, y]) => { if (!nodes[id]) addNode(id, x, y); });
+  addLoop(outer.map(([id]) => id));
+
+  // 상단 네 건물: 철도 왼쪽 두 곳, 오른쪽 두 곳.
+  addPlaza("a", 175, 235, 82, 105);
+  addPlaza("b", 385, 235, 78, 105);
+  addPlaza("c", 625, 235, 78, 105);
+  addPlaza("d", 825, 235, 82, 105);
+  addEdge("a0", "p37"); addEdge("a7", "p35"); addEdge("a2", "b0"); addEdge("a4", "b6");
+  addEdge("b1", "r4"); addEdge("b4", "r3");
+  addEdge("c1", "r4"); addEdge("c4", "r3"); addEdge("c2", "d0"); addEdge("c6", "d4");
+  addEdge("d2", "p9"); addEdge("d3", "p12");
+
+  // 하단의 원형 구역 + 철도 왼쪽 건물 + 오른쪽 건물.
+  addPoints("q", [[190,620],[280,645],[345,710],[315,790],[325,875],[225,910],[150,900],[85,835],[100,745],[115,665]], { label: "원형 이동 구역", zone: "circle" });
+  addLoop(Array.from({ length: 10 }, (_, index) => `q${index}`), { kind: "round-zone", oneWay: true });
+  addPlaza("f", 415, 790, 62, 105);
+  addPlaza("g", 800, 790, 100, 110);
+  addEdge("q0", "r2"); addEdge("q1", "f0"); addEdge("q4", "f6"); addEdge("q5", "p26"); addEdge("q7", "p29"); addEdge("q9", "p31");
+  addEdge("f1", "r2"); addEdge("f5", "r1");
+  addEdge("g0", "r2"); addEdge("g5", "r1"); addEdge("g3", "p17"); addEdge("g4", "p19");
+
+  // 위·아래 구역을 이어 주는 불규칙한 세로 경로.
+  addPoints("vl", [[115,385],[105,475],[110,565]]);
+  addRoute(["a6","vl0","vl1","vl2","q9"]);
+  addPoints("vcl", [[395,390],[420,470],[420,565]]);
+  addRoute(["b5","vcl0","vcl1","vcl2","f1"]);
+  addPoints("vcr", [[625,390],[640,470],[660,565]]);
+  addRoute(["c5","vcr0","vcr1","vcr2","g0"]);
+  addPoints("vr", [[875,390],[895,475],[900,570]]);
+  addRoute(["d5","vr0","vr1","vr2","g2"]);
+  addEdge("vl1", "p33"); addEdge("vr1", "p14");
+
+  // 사진의 굵은 경찰 파란 화살표 레인.
+  addPoints("pl", [[285,390],[315,455],[290,525]], { label: "경찰 전용 화살표", lane: "police" });
+  addRoute(["a4","pl0","pl1","pl2","q0"], { teams: ["police"], oneWay: true, kind: "police-lane" });
+  addPoints("pr", [[760,390],[730,455],[755,525]], { label: "경찰 전용 화살표", lane: "police" });
+  addRoute(["d6","pr0","pr1","pr2","g1"], { teams: ["police"], oneWay: true, kind: "police-lane" });
+
+  addNode("hideout", 100, 105, { label: "도둑팀 비밀기지", safe: true, start: "thief", effect: "hideout" });
+  addNode("jail", 925, 875, { label: "경찰팀 구금 구역", safe: true, start: "police", effect: "jail" });
+  addEdge("hideout", "p0", { teams: ["thief"] });
+  addEdge("jail", "p19");
+  addEdge("jail", "g6");
 
   const buildings = [
-    { id: "market", name: "스타박스", icon: "S", x: 170, y: 225, doorNode: "e1", color: "#287960", blurb: "카페" },
-    { id: "air", name: "이다야", icon: "E", x: 390, y: 225, doorNode: "e2", color: "#315cba", blurb: "카페" },
-    { id: "electro", name: "기가커피", icon: "G", x: 610, y: 225, doorNode: "e3", color: "#b77b0c", blurb: "카페" },
-    { id: "pizza", name: "백다방", icon: "B", x: 830, y: 225, doorNode: "e4", color: "#34678c", blurb: "카페" },
-    { id: "snack", name: "투썸플레이트", icon: "T", x: 170, y: 780, doorNode: "e5", color: "#a04661", blurb: "카페" },
-    { id: "burger", name: "맥도날도", icon: "M", x: 390, y: 780, doorNode: "e6", color: "#aa6b28", blurb: "햄버거 가게" },
-    { id: "cafe", name: "놋데리아", icon: "L", x: 830, y: 780, doorNode: "e7", color: "#8c574f", blurb: "햄버거 가게" }
+    { id: "market", name: "스타박스", x: 175, y: 235, doorNode: "e1", color: "#f4b942", lot: { width: 148, height: 132, style: "stone" }, blurb: "카페" },
+    { id: "air", name: "이다야", x: 385, y: 235, doorNode: "e2", color: "#58a6d8", lot: { width: 126, height: 148, style: "fence" }, blurb: "카페" },
+    { id: "electro", name: "기가커피", x: 625, y: 235, doorNode: "e3", color: "#7b6fd0", lot: { width: 146, height: 120, style: "oval" }, blurb: "카페" },
+    { id: "pizza", name: "백다방", x: 825, y: 235, doorNode: "e4", color: "#f08b4d", lot: { width: 158, height: 138, style: "stone" }, blurb: "카페" },
+    { id: "snack", name: "투썸플레이트", x: 205, y: 785, doorNode: "e5", color: "#e85c79", lot: { width: 118, height: 96, style: "round" }, blurb: "카페" },
+    { id: "burger", name: "맥도날도", x: 415, y: 790, doorNode: "e6", color: "#ef765d", lot: { width: 124, height: 146, style: "fence" }, blurb: "햄버거 가게" },
+    { id: "cafe", name: "놋데리아", x: 800, y: 790, doorNode: "e7", color: "#55a96f", lot: { width: 164, height: 142, style: "stone" }, blurb: "햄버거 가게" }
   ];
-  const approaches = ["a5","b5","c5","d5","p27","f5","g5"];
-  buildings.forEach((building, index) => {
-    building.lot = { width: 170, height: 185, style: "block" };
-    addNode(building.doorNode, building.x, index < 4 ? 300 : 855, {
-      label: building.name + " 수색", building: building.id, safe: true, kind: "building"
-    });
-    addEdge(approaches[index], building.doorNode, { teams: ["thief"], kind: "building-lane", displayArrow: true });
+
+  // 모든 건물 입구는 사진처럼 굵은 빨간 진입 레인으로 표시한다.
+  const entrances = [
+    ["e1",175,300,"a5"], ["e2",385,300,"b5"], ["e3",625,300,"c5"], ["e4",825,300,"d5"],
+    ["e5",205,845,"q4"], ["e6",415,850,"f5"], ["e7",800,850,"g5"]
+  ];
+  entrances.forEach(([id, x, y, link], index) => {
+    addNode(id, x, y, { label: `${buildings[index].name} 수색`, building: buildings[index].id, safe: true, kind: "building" });
+    addEdge(link, id, { teams: ["thief"], kind: "building-lane", displayArrow: true });
   });
-  [["r4",4,"r1"],["r3",3,"r2"],["r2",2,"r3"],["r1",1,"r4"]].forEach(([id, station, target]) => {
-    Object.assign(nodes[id], { label: station + "번 역 · " + (5 - station) + "번 역으로 이동", effect: "train", effectTarget: target, station });
-  });
+
+  // 가까운 교차점의 칸은 서로 덮이지 않도록 원작 사진의 빈 공간 쪽으로 벌린다.
+  Object.assign(nodes.d3, { x: 890 });
+  Object.assign(nodes.a7, { x: 95 });
+  Object.assign(nodes.c3, { x: 700 });
+  Object.assign(nodes.d7, { x: 750 });
 
   Object.assign(nodes.p2, { label: "도둑 위치 이동", effect: "thiefTeleport", tone: "red" });
   Object.assign(nodes.p12, { label: "도둑 위치 이동", effect: "thiefTeleport", tone: "red" });
@@ -102,17 +147,17 @@
   Object.assign(nodes.g2, { label: "경찰 위치 이동", effect: "policeTeleport", tone: "blue" });
   Object.assign(nodes.p31, { label: "경찰 위치 이동", effect: "policeTeleport", tone: "blue" });
   Object.assign(nodes.p11, { label: "무조건 멈춤", effect: "stop", tone: "white" });
-  Object.assign(nodes.p13, { label: "버스 · 4칸 전진", effect: "jump", effectTarget: "p17", tone: "white" });
-  Object.assign(nodes.p18, { label: "2칸 뒤로", effect: "jump", effectTarget: "g4", tone: "white" });
-  Object.assign(nodes.p27, { label: "밥을 먹고 힘이 났다 · 3칸 전진", effect: "jump", effectTarget: "q7", tone: "white" });
+  Object.assign(nodes.p13, { label: "버스 · 4칸 전진", effect: "jump", effectTarget: "p16", tone: "white" });
+  Object.assign(nodes.p18, { label: "2칸 뒤로", effect: "jump", effectTarget: "p16", tone: "white" });
+  Object.assign(nodes.p27, { label: "밥을 먹고 힘이 났다 · 3칸 전진", effect: "jump", effectTarget: "p30", tone: "white" });
   Object.assign(nodes.p32, { label: "잊은 물건 · 시작 구역으로", effect: "reset", tone: "white" });
   Object.assign(nodes.a2, { label: "정보 누설", effect: "reveal", tone: "pink" });
   Object.assign(nodes.d2, { label: "비밀 통로", effect: "jump", effectTarget: "e4", tone: "pink" });
   Object.assign(nodes.vcl1, { label: "보석을 동료에게 전달", effect: "transfer", tone: "pink" });
   Object.assign(nodes.vl2, { label: "화장실이 급하다", effect: "reset", tone: "white" });
   Object.assign(nodes.vcr2, { label: "보석을 떨어뜨렸다", effect: "dropGem", tone: "pink" });
-  Object.assign(nodes.g3, { label: "비타민 · 5칸 전진", effect: "jump", effectTarget: "p12", tone: "white" });
-  Object.assign(nodes.q0, { label: "힘이 났다 · 원형 구역 3칸 전진", effect: "jump", effectTarget: "q2", tone: "white" });
+  Object.assign(nodes.g3, { label: "비타민 · 5칸 전진", effect: "jump", effectTarget: "p10", tone: "white" });
+  Object.assign(nodes.q0, { label: "힘이 났다 · 원형 구역 3칸 전진", effect: "jump", effectTarget: "q3", tone: "white" });
   Object.assign(nodes.q2, { label: "정보 누설", effect: "reveal", tone: "pink" });
   Object.assign(nodes.q8, { label: "무조건 멈춤", effect: "stop", tone: "white" });
 
@@ -122,7 +167,8 @@
   function neighbors(nodeId, team) {
     const result = [];
     for (const edge of edges) {
-      if (edge.visualOnly || edge.teams && !edge.teams.includes(team)) continue;
+      if (edge.visualOnly) continue;
+      if (edge.teams && !edge.teams.includes(team)) continue;
       if (edge.a === nodeId) result.push({ id: edge.b, edge });
       if (!edge.oneWay && edge.b === nodeId) result.push({ id: edge.a, edge });
     }
@@ -132,9 +178,14 @@
   const publicNodes = Object.freeze(Object.fromEntries(Object.entries(nodes).map(([id, node]) => [id, Object.freeze({ ...node })])));
   const publicEdges = Object.freeze(edges.map(edge => Object.freeze({ ...edge, teams: edge.teams ? Object.freeze([...edge.teams]) : null })));
   const publicBuildings = Object.freeze(buildings.map(building => Object.freeze({ ...building })));
+
   return Object.freeze({
-    WIDTH, HEIGHT, NODES: publicNodes, EDGES: publicEdges, BUILDINGS: publicBuildings,
-    ROUND_ZONE: Object.freeze({ x: 170, y: 785, radius: 145, entrances: Object.freeze(["p31","q0","f0","p25","p27","p29"]) }),
+    WIDTH,
+    HEIGHT,
+    NODES: publicNodes,
+    EDGES: publicEdges,
+    BUILDINGS: publicBuildings,
+    ROUND_ZONE: Object.freeze({ x: 205, y: 785, radius: 155, entrances: Object.freeze(["q0", "q1", "q4", "q5", "q7", "q9"]) }),
     neighbors
   });
 });

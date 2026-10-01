@@ -6,8 +6,8 @@
   const MESSAGE = Object.freeze({ ACTION: "CITYCHASE_ACTION", STATE: "CITYCHASE_STATE", ERROR: "CITYCHASE_ERROR" });
   const Board = window.CityChaseData;
   const ASSET = Object.freeze({
-    gem: "assets/secret-gem.png",
-    alarm: "assets/secret-alarm.png"
+    gem: "assets/secret-gem.webp",
+    alarm: "assets/secret-alarm.webp"
   });
   const MUSIC = Object.freeze({
     lobby: "assets/music/citychase-lobby.ogg",
@@ -393,7 +393,8 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "building";
-      button.style.cssText = `${positionStyle(building.x, building.y)};--building:${building.color}`;
+      const labelWidth = Math.max((building.lot?.width || 140) - 14, building.name.length * 25);
+      button.style.cssText = `${positionStyle(building.x, building.y)};--building:${building.color};--building-width:${labelWidth / Board.WIDTH * 100}%`;
       button.disabled = movementAnimating;
       button.dataset.buildingId = building.id;
       button.dataset.searchState = knowledge.searched ? "searched" : knowledge.content;
@@ -405,7 +406,7 @@
       if (searchable) button.classList.add("searchable");
       if (state?.phase === "playing" || state?.phase === "ended") button.classList.add("showSearchState");
       if (captainSetup) button.dataset.sfx = "stone";
-      button.innerHTML = `<span class="buildingIcon" aria-hidden="true">${building.icon}</span><span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchLabel(knowledge)}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
+      button.innerHTML = `<span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchLabel(knowledge)}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
       button.addEventListener("click", () => captainSetup ? selectSetupBuilding(building.id) : inspectNode(entrance.id));
       fragment.appendChild(button);
     }
@@ -829,7 +830,7 @@
       const item = document.createElement("div");
       item.className = "intelItem";
       const label = searchLabel(knowledge);
-      item.innerHTML = `<span>${building.icon} ${escapeHtml(building.name)}</span><strong class="intelSecret">${contentBadge(knowledge.content)}${label}</strong>`;
+      item.innerHTML = `<span>${escapeHtml(building.name)}</span><strong class="intelSecret">${contentBadge(knowledge.content)}${label}</strong>`;
       fragment.appendChild(item);
     }
     list.replaceChildren(fragment);

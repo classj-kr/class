@@ -115,7 +115,7 @@
             moonNearsideImage.onload = function() {
                 draw2DMoonPhase(moonRelAngle);
             };
-            moonNearsideImage.src = 'assets/images/moon-nearside-nasa.jpg';
+            moonNearsideImage.src = 'assets/images/moon-nearside-nasa.webp';
 
             const phases = [
                 { angleDeg: 0, name: "🌑 삭 (New Moon)", info: "남중: 정오 (12:00) | 관측 불가 (태양과 함께 이동)", calendar: "음력 1일 경 (삭)" },

@@ -761,7 +761,7 @@ async function loadFlags() {
         const img = new Image();
         img.onload = () => resolve(img);
         img.onerror = reject;
-        img.src = `${BASE}data/flags.png?v=${FLAG_VERSION}`;
+        img.src = `${BASE}data/flags.webp?v=${FLAG_VERSION}`;
       }),
     ]);
     const canvas = document.createElement("canvas");

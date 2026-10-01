@@ -6,7 +6,7 @@
       "id": "bean-kidney",
       "name": "강낭콩",
       "role": "능청스러운 흥정꾼",
-      "file": "images/bean-kidney-v3.png",
+      "file": "images/bean-kidney-v3.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -15,7 +15,7 @@
       "id": "bean-soy",
       "name": "대두",
       "role": "금화 수집가",
-      "file": "images/bean-soy-v3.png",
+      "file": "images/bean-soy-v3.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -24,7 +24,7 @@
       "id": "bean-mung",
       "name": "녹두",
       "role": "성급한 배달부",
-      "file": "images/bean-mung-v3.png",
+      "file": "images/bean-mung-v3.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -33,7 +33,7 @@
       "id": "bean-black",
       "name": "검정콩",
       "role": "꼼꼼한 탐정",
-      "file": "images/bean-black-v3.png",
+      "file": "images/bean-black-v3.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -42,7 +42,7 @@
       "id": "bean-white",
       "name": "흰콩",
       "role": "초보 정원사",
-      "file": "images/bean-white-v3.png",
+      "file": "images/bean-white-v3.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -51,7 +51,7 @@
       "id": "bean-chickpea",
       "name": "병아리콩",
       "role": "허둥대는 요리사",
-      "file": "images/bean-chickpea-v4.png",
+      "file": "images/bean-chickpea-v4.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -60,7 +60,7 @@
       "id": "bean-pinto",
       "name": "얼룩콩",
       "role": "멋 부리는 화가",
-      "file": "images/bean-pinto-v5.png",
+      "file": "images/bean-pinto-v5.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -69,7 +69,7 @@
       "id": "bean-fava",
       "name": "잠두",
       "role": "힘자랑 농부",
-      "file": "images/bean-fava-v3.png",
+      "file": "images/bean-fava-v3.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254
@@ -77,7 +77,7 @@
     {
       "id": "card-back",
       "name": "카드 뒷면",
-      "file": "images/card-back-v1.png",
+      "file": "images/card-back-v1.webp",
       "transparent": false,
       "width": 1024,
       "height": 1536
@@ -93,7 +93,7 @@
     {
       "id": "coin",
       "name": "금화",
-      "file": "images/coin-v1.png",
+      "file": "images/coin-v1.webp",
       "transparent": true,
       "width": 1254,
       "height": 1254

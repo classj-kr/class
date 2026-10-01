@@ -14,33 +14,18 @@ function playingGame() {
   return game;
 }
 
-test("map has no overlapping squares, diagonal roads or false crossings", () => {
-  const nodes = Object.values(Board.NODES);
-  assert.equal(nodes.length, 127);
-  for (let i = 0; i < nodes.length; i += 1) {
-    for (const other of nodes.slice(i + 1)) {
-      assert.ok(Math.hypot(nodes[i].x - other.x, nodes[i].y - other.y) >= 54, nodes[i].id + "/" + other.id);
-    }
-  }
-  for (const edge of Board.EDGES) {
-    const a = Board.NODES[edge.a], b = Board.NODES[edge.b];
-    assert.ok(a.x === b.x || a.y === b.y, edge.a + "/" + edge.b);
-    for (const n of nodes) {
-      if (n.id === a.id || n.id === b.id) continue;
-      const onSegment = (a.x === b.x && n.x === a.x && n.y > Math.min(a.y,b.y) && n.y < Math.max(a.y,b.y))
-        || (a.y === b.y && n.y === a.y && n.x > Math.min(a.x,b.x) && n.x < Math.max(a.x,b.x));
-      assert.equal(onSegment, false, n.id + " lies on an unconnected road");
-    }
-  }
-  const vertical = Board.EDGES.filter(e => Board.NODES[e.a].x === Board.NODES[e.b].x);
-  const horizontal = Board.EDGES.filter(e => Board.NODES[e.a].y === Board.NODES[e.b].y);
-  for (const v of vertical) for (const h of horizontal) {
-    if ([v.a,v.b].some(id => id === h.a || id === h.b)) continue;
-    const a=Board.NODES[v.a],b=Board.NODES[v.b],c=Board.NODES[h.a],d=Board.NODES[h.b];
-    const crossed = a.x >= Math.min(c.x,d.x) && a.x <= Math.max(c.x,d.x)
-      && c.y >= Math.min(a.y,b.y) && c.y <= Math.max(a.y,b.y);
-    assert.equal(crossed, false, v.a + "-" + v.b + " / " + h.a + "-" + h.b);
-  }
+test("original board connections, effects and locations remain unchanged", () => {
+  // Baseline: 742aca7f6, before the visual redesign. Appearance-only building icons are excluded.
+  const signature = JSON.stringify({
+    nodes: Board.NODES, edges: Board.EDGES,
+    buildings: Board.BUILDINGS.map(({id,x,y,doorNode}) => ({id,x,y,doorNode})),
+    roundZone: Board.ROUND_ZONE
+  });
+  assert.equal(require("node:crypto").createHash("sha256").update(signature).digest("hex"),
+    "4e257bb596937522604e64a3e06a7a831e2fb213b56c2d3bf59f9c5d01f93283",
+    "Visual changes must preserve the original board and square effects");
+  assert.equal(Object.keys(Board.NODES).length, 127);
+  assert.equal(Board.EDGES.filter(edge => !edge.visualOnly).length, 158);
 });
 
 test("every team can reach its objectives and exclusive roads respect direction", () => {

@@ -8,7 +8,7 @@
 body {
   background:
     linear-gradient(#fff9e94d, #4e32171f),
-    url("assets/wooden-idioms-background.jpg") center / cover fixed no-repeat;
+    url("assets/wooden-idioms-background.webp") center / cover fixed no-repeat;
 }
 
 .back { color: #315c44; min-height: 44px; display: inline-flex; align-items: center; }

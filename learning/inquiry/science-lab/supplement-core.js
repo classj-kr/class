@@ -92,8 +92,8 @@ function scienceCoreFactory({line,label,rect,jar,field},existing={}) {
   fields:[field('rock','관찰할 암석',[['compare','나란히 비교'],['basalt','현무암'],['granite','화강암']]),field('detail','관찰 초점',[['whole','전체 모습'],['grain','표면 확대']])],
   view(s){
    const samples={
-    basalt:{name:'현무암',src:'assets/rocks/basalt.jpg',alt:'어두운 갈색과 검은색을 띠는 현무암 표본. 잘린 면에서 작은 알갱이의 경계를 구별하기 어렵다.',author:'Nessa Eull',source:'https://commons.wikimedia.org/wiki/File:Basalt_(GeoDIL_number_-_455).jpg',caption:'작은 알갱이의 경계가 뚜렷하게 보이나요?'},
-    granite:{name:'화강암',src:'assets/rocks/granite.jpg',alt:'밝은 회색 화강암 표본에 흰색·회색·검은색 광물 알갱이가 맞물려 있는 모습.',author:'Dexter Perkins',source:'https://commons.wikimedia.org/wiki/File:Biotite_granite_(GeoDIL_number_-_18).jpg',caption:'서로 다른 색의 알갱이가 어디에서 맞닿나요?'}
+    basalt:{name:'현무암',src:'assets/rocks/basalt.webp',alt:'어두운 갈색과 검은색을 띠는 현무암 표본. 잘린 면에서 작은 알갱이의 경계를 구별하기 어렵다.',author:'Nessa Eull',source:'https://commons.wikimedia.org/wiki/File:Basalt_(GeoDIL_number_-_455).jpg',caption:'작은 알갱이의 경계가 뚜렷하게 보이나요?'},
+    granite:{name:'화강암',src:'assets/rocks/granite.webp',alt:'밝은 회색 화강암 표본에 흰색·회색·검은색 광물 알갱이가 맞물려 있는 모습.',author:'Dexter Perkins',source:'https://commons.wikimedia.org/wiki/File:Biotite_granite_(GeoDIL_number_-_18).jpg',caption:'서로 다른 색의 알갱이가 어디에서 맞닿나요?'}
    };
    return{media:{items:s.rock==='compare'?[samples.basalt,samples.granite]:[samples[s.rock]],enlarged:s.detail==='grain'},
     text:s.rock==='basalt'?'이 현무암은 전체적으로 어둡고, 알갱이가 작아 각각의 경계를 구별하기 어렵습니다. 표면을 확대해 화강암의 알갱이와 비교해 보세요. 현무암에는 구멍이 있는 표본도, 거의 없는 표본도 있습니다.':s.rock==='granite'?'이 화강암에는 흰색·회색·검은색 알갱이가 섞여 있습니다. 알갱이들이 서로 맞물린 경계를 눈으로 찾아보세요. 화강암은 현무암보다 보통 알갱이가 큽니다.':'먼저 전체 색을 비교하고, 표면을 확대해 알갱이의 경계를 찾아보세요. 이 현무암은 알갱이를 구별하기 어렵고, 화강암은 여러 색의 알갱이가 서로 맞물려 있습니다. 색과 알갱이의 크기를 함께 살펴보면 두 암석을 구분하는 데 도움이 됩니다.',
