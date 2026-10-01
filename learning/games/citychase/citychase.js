@@ -7,8 +7,7 @@
   const Board = window.CityChaseData;
   const ASSET = Object.freeze({
     gem: "assets/secret-gem.png",
-    alarm: "assets/secret-alarm.png",
-    shop: "assets/shop-building.png"
+    alarm: "assets/secret-alarm.png"
   });
   const MUSIC = Object.freeze({
     lobby: "assets/music/citychase-lobby.ogg",
@@ -212,31 +211,58 @@
     ctx.setTransform(density, 0, 0, density, 0, 0);
     ctx.clearRect(0, 0, width, height);
     const scale = Math.min(width / Board.WIDTH, height / Board.HEIGHT);
+    const lineWidth = Math.max(5, Math.min(9, 10 * scale));
     const project = node => ({ x: node.x / Board.WIDTH * width, y: node.y / Board.HEIGHT * height });
+    const color = edge => edge.kind === "police-lane" ? "#277bd0"
+      : edge.kind === "thief-lane" || edge.kind === "building-lane" ? "#d64f68"
+      : edge.kind === "round-zone" ? "#aa7a35" : "#82919e";
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-
-    for (const edge of Board.EDGES) {
-      if (!nodeMeta(edge.a) || !nodeMeta(edge.b)) continue;
-      const a = project(nodeMeta(edge.a));
-      const b = project(nodeMeta(edge.b));
-      const isRail = edge.kind === "rail";
-      const isRound = edge.kind === "round-zone";
-      const isBuildingLane = edge.kind === "building-lane";
-      const isThief = edge.kind === "thief-lane" || isBuildingLane;
-      const isPolice = edge.kind === "police-lane";
-      const accent = isRail ? "#6f451e" : isRound ? "#9b6528" : isThief ? "#c92f4f" : isPolice ? "#2362b7" : "#233d31";
-      const inner = isRail ? "#d99c45" : isRound ? "#ffe0a0" : isThief ? "#ee5e78" : isPolice ? "#5d9fe5" : "#fff8df";
-      ctx.globalAlpha = isRail || isThief || isPolice ? .96 : .86;
-      ctx.strokeStyle = accent;
-      ctx.lineWidth = (isRail ? 18 : isRound ? 38 : isBuildingLane ? 34 : isThief || isPolice ? 30 : 32) * scale;
-      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-      ctx.strokeStyle = inner;
-      ctx.lineWidth = (isRail ? 9 : isRound ? 28 : isBuildingLane ? 24 : isThief || isPolice ? 20 : 22) * scale;
-      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-      ctx.globalAlpha = 1;
-      if (edge.oneWay || edge.displayArrow) drawArrow(ctx, a, b, accent, scale);
+    // Draw the whole road network in two passes so intersections never have false dividing lines.
+    for (const outline of [true, false]) {
+      for (const edge of Board.EDGES) {
+        if (edge.visualOnly) continue;
+        const a = project(nodeMeta(edge.a)), b = project(nodeMeta(edge.b));
+        ctx.strokeStyle = outline ? "#fff" : color(edge);
+        ctx.lineWidth = lineWidth + (outline ? 5 : 0);
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
     }
+    for (const edge of Board.EDGES) {
+      if (!edge.oneWay && !edge.displayArrow) continue;
+      drawArrow(ctx, project(nodeMeta(edge.a)), project(nodeMeta(edge.b)), "#fff", Math.max(.45, scale * .7));
+    }
+    renderRoutePreview();
+  }
+
+  function renderRoutePreview() {
+    const layer = $("routePreview");
+    const route = state?.moveRoutes?.[inspectedNode];
+    layer.replaceChildren();
+    if (!route?.length || movementAnimating) return;
+    const stage = $("boardStage");
+    const width = stage.clientWidth, height = stage.clientHeight;
+    const points = route.map(id => nodeMeta(id)).filter(Boolean)
+      .map(node => [node.x / Board.WIDTH * width, node.y / Board.HEIGHT * height]);
+    layer.setAttribute("viewBox", "0 0 " + width + " " + height);
+    const ns = "http://www.w3.org/2000/svg";
+    for (const [stroke, lineWidth] of [["#fff", 14], ["#d79400", 8]]) {
+      const line = document.createElementNS(ns, "polyline");
+      line.setAttribute("points", points.map(point => point.join(",")).join(" "));
+      line.setAttribute("fill", "none"); line.setAttribute("stroke", stroke);
+      line.setAttribute("stroke-width", lineWidth); line.setAttribute("stroke-linejoin", "round");
+      line.setAttribute("stroke-linecap", "round");
+      layer.appendChild(line);
+    }
+    points.slice(1).forEach(([x, y], index) => {
+      const circle = document.createElementNS(ns, "circle");
+      circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", 13);
+      circle.setAttribute("fill", "#fff8ce"); circle.setAttribute("stroke", "#a76b00"); circle.setAttribute("stroke-width", 2);
+      const text = document.createElementNS(ns, "text");
+      text.setAttribute("x", x); text.setAttribute("y", y); text.setAttribute("dy", ".35em");
+      text.setAttribute("text-anchor", "middle"); text.textContent = index + 1;
+      layer.append(circle, text);
+    });
   }
 
   function positionStyle(x, y) {
@@ -379,7 +405,7 @@
       if (searchable) button.classList.add("searchable");
       if (state?.phase === "playing" || state?.phase === "ended") button.classList.add("showSearchState");
       if (captainSetup) button.dataset.sfx = "stone";
-      button.innerHTML = `<img class="buildingPiece" src="${ASSET.shop}" alt=""><span class="buildingIcon">${building.icon}</span><span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchLabel(knowledge)}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
+      button.innerHTML = `<span class="buildingIcon" aria-hidden="true">${building.icon}</span><span class="buildingName">${escapeHtml(building.name)}</span><span class="buildingStatus">${searchLabel(knowledge)}</span><span class="buildingKnowledge">${selectedKey ? contentBadge(selectedKey === "undercover" ? "undercover" : "gem") : contentBadge(knowledge.content)}</span>`;
       button.addEventListener("click", () => captainSetup ? selectSetupBuilding(building.id) : inspectNode(entrance.id));
       fragment.appendChild(button);
     }
@@ -416,10 +442,12 @@
       button.style.cssText = positionStyle(node.x, node.y);
       button.dataset.tone = node.tone || "";
       button.dataset.kind = node.kind || "road";
+      const degree = Board.EDGES.filter(edge => !edge.visualOnly && (edge.a === node.id || edge.b === node.id)).length;
+      button.classList.toggle("junction", degree > 2);
       if (node.dense) button.dataset.dense = "true";
       if (node.start) button.dataset.start = node.start;
       if (node.station) button.dataset.station = String(node.station);
-      button.disabled = (!targetClass && !node.effect && !node.start && node.kind !== "building") || actionPending || movementAnimating;
+      button.disabled = actionPending || movementAnimating;
       button.dataset.nodeId = node.id;
       button.classList.toggle("special", !!node.effect);
       const targetLabel = targetClass === "valid" ? `${node.label} · 최종 목적지` : node.label;
@@ -507,7 +535,7 @@
 
   function nodeSymbol(node) {
     if (node.station) return '<span class="stationNumber">' + node.station + '</span><small>↔' + nodeMeta(node.effectTarget).station + '</small>';
-    if (node.start) return node.start === "thief" ? "⌂" : "▦";
+    if (node.start) return (node.start === "thief" ? "⌂" : "▦") + '<span class="startName">' + (node.start === "thief" ? "비밀기지" : "구금 구역") + "</span>";
     if (node.kind === "building") return "수색";
     const symbols = { thiefTeleport: "↔", policeTeleport: "↔", stop: "■", reset: "↩",
       reveal: "◉", transfer: "💎⇄", dropGem: "💎↓" };
@@ -529,6 +557,7 @@
   function closeInspector() {
     inspectedNode = null;
     $("boardInspector").classList.add("hidden");
+    renderRoutePreview();
     if (inspectorReturnFocus?.isConnected) inspectorReturnFocus.focus({ preventScroll: true });
   }
 
@@ -536,6 +565,8 @@
     const node = nodeMeta(inspectedNode);
     $("boardInspector").classList.toggle("hidden", !node || !state);
     if (!node || !state) return;
+    $("boardInspector").dataset.side = node.x < Board.WIDTH / 2 ? "right" : "left";
+    $("boardInspector").dataset.position = node.y > Board.HEIGHT / 2 ? "top" : "bottom";
     $("boardInspectorTitle").textContent = node.label;
     const descriptions = {
       thiefTeleport: "도둑이 도착하면 다른 도둑 이동 칸으로 옮길 수 있습니다.",
@@ -562,7 +593,10 @@
         : "아직 수색하지 않았습니다. 수색 칸에 도착하면 숨겨진 물건을 확인합니다.";
       if (state.canAct && currentPawn()?.carryingGem) description += " 현재 말은 보석을 운반 중이므로 추가 수색할 수 없습니다.";
     }
+    const route = state.moveRoutes?.[inspectedNode];
+    if (route?.length) description += " 표시된 경로로 " + (route.length - 1) + "칸 이동합니다.";
     $("boardInspectorText").textContent = description;
+    renderRoutePreview();
     const pawns = $("boardInspectorPawns");
     pawns.replaceChildren();
     for (const pawn of state.pawns.filter(item => item.position === inspectedNode)) {
