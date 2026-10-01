@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1117,
+  "totalImages": 1125,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1118,6 +1118,14 @@
     "2152": { "word": "receipt", "file": "receipt-v2.webp" },
     "526": { "word": "colony", "file": "colony-v2.webp" },
     "1287": { "word": "harvest", "file": "harvest-v2.webp" },
-    "2007": { "word": "portrait", "file": "portrait-v2.webp" }
+    "2007": { "word": "portrait", "file": "portrait-v2.webp" },
+    "1949": { "word": "phrase", "file": "phrase-v2.webp" },
+    "108": { "word": "ambition", "file": "ambition-v2.webp" },
+    "1584": { "word": "literature", "file": "literature-v2.webp" },
+    "1889": { "word": "panel", "file": "panel-v2.webp" },
+    "2350": { "word": "sequence", "file": "sequence-v2.webp" },
+    "130": { "word": "anxiety", "file": "anxiety-v2.webp" },
+    "1705": { "word": "mode", "file": "mode-v2.webp" },
+    "2930": { "word": "welfare", "file": "welfare-v2.webp" }
   }
 }
