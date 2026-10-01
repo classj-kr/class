@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 935,
+  "totalImages": 943,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -936,6 +936,14 @@
     "920": { "word": "emotion", "file": "emotion-v2.webp" },
     "2066": { "word": "profession", "file": "profession-v2.webp" },
     "266": { "word": "bench", "file": "bench-v2.webp" },
-    "2812": { "word": "twin", "file": "twin-v2.webp" }
+    "2812": { "word": "twin", "file": "twin-v2.webp" },
+    "1677": { "word": "method", "file": "method-v2.webp" },
+    "2656": { "word": "technique", "file": "technique-v2.webp" },
+    "2421": { "word": "skill", "file": "skill-v2.webp" },
+    "2728": { "word": "tin", "file": "tin-v2.webp" },
+    "1111": { "word": "folk", "file": "folk-v2.webp" },
+    "2876": { "word": "villa", "file": "villa-v2.webp" },
+    "706": { "word": "cycle", "file": "cycle-v2.webp" },
+    "427": { "word": "ceiling", "file": "ceiling-v2.webp" }
   }
 }
