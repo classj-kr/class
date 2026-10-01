@@ -60,6 +60,10 @@
       return this;
     }
     setStatus(text, state = '') { this.status.textContent = text; this.status.dataset.state = state; }
+    addAction(label, handler) {
+      const button = el('button', label); button.type = 'button'; button.onclick = handler;
+      this.root.querySelector('.strip').append(button); return button;
+    }
     modal(title, className = '') {
       this.dialog?.close(); this.dialog?.remove();
       const dialog = el('dialog', null, className), header = el('div', null, 'dialog-head'), body = el('div', null, 'body');

@@ -1,8 +1,10 @@
-(() => {
+(async () => {
   "use strict";
   const data = window.PHONICS_CURRICULUM;
   const $ = (id) => document.getElementById(id);
-  const storeKey = "phonicsSeedProgressV4";
+  const records=LearningRecords.create('phonics',{label:'파닉스'});await records.ready;
+  let recordBusy=false;
+  const lockRecord=value=>{recordBusy=value;$('study').inert=value;$('dashboard').inert=value;};
   let current = null;
   let dictationIndex = 0;
   let quizState = [];
@@ -120,11 +122,14 @@
   }
 
   const emptyState = () => ({ done: [], scores: {}, soundScores: {}, stars: 0, streak: 0, lastStudyDate: "", lastLesson: "" });
-  const loadState = () => {
-    try { return { ...emptyState(), ...(JSON.parse(localStorage.getItem(storeKey)) || {}) }; }
-    catch { return emptyState(); }
-  };
-  const saveState = (value) => localStorage.setItem(storeKey, JSON.stringify(value));
+  let accountSummary=emptyState();
+  const loadState=()=>accountSummary;
+  const saveState=value=>{accountSummary=value;};
+  function saveRecord(events=[],complete=false){
+    const count=activeSoundGameRounds.length;
+    const completed=count?Object.values(soundGameState.tried||{}).filter((tried,index)=>tried.includes(activeSoundGameRounds[Number(Object.keys(soundGameState.tried)[index])].answer)).length:quizState.filter(q=>q.selected).length;
+    return records.save({checkpoint:{rounds:activeSoundGameRounds,sound:soundGameState,quiz:quizState,dictationIndex},events,complete,progress:{current:completed,total:count||quizState.length}});
+  }
   const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
   const today = () => new Date().toISOString().slice(0, 10);
   const dayGap = (a, b) => Math.round((new Date(b) - new Date(a)) / 86400000);
@@ -350,7 +355,7 @@
     const choices = $("soundChoices");
     choices.replaceChildren();
 
-    shuffle(round.choices).forEach((word) => {
+    (round.order ||= shuffle(round.choices)).forEach((word) => {
       const item = data.wordBank[word] || soundPictures[word];
       const button = document.createElement("button");
       const picture = document.createElement("span");
@@ -360,6 +365,9 @@
       button.type = "button";
       button.className = "sound-choice";
       button.dataset.word = word;
+      const tried=soundGameState.tried?.[soundGameState.index]||[];
+      button.disabled=soundGameState.locked || tried.includes(word);
+      if(tried.includes(word))button.classList.add(word===round.answer?'correct':'wrong');
       button.setAttribute("aria-label", `${word}, 그림: ${item.pictureMeaning || item.korean}${item.meanings?.length > 1 ? `, 다른 뜻: ${item.meanings.slice(1).join(", ")}` : ""}`);
       picture.className = "sound-choice-picture";
       const artwork = item.picture || {
@@ -387,12 +395,15 @@
       button.addEventListener("click", () => selectSoundChoice(button, word));
       choices.append(button);
     });
+    if(soundGameState.locked){$('soundNext').disabled=false;$('soundFeedback').textContent=round.answer+' · 정답';}
     preloadNextRoundPictures();
   }
 
-  function selectSoundChoice(button, word) {
-    if (soundGameState.locked || button.disabled) return;
+  async function selectSoundChoice(button, word) {
+    if (recordBusy || soundGameState.locked || button.disabled) return;
+    lockRecord(true);
     const round = activeSoundGameRounds[soundGameState.index];
+    (soundGameState.tried[soundGameState.index] ||= []).push(word);
     speak(word, 0.78);
     if (word === round.answer) {
       const firstTry = soundGameState.firstTry;
@@ -413,32 +424,19 @@
       button.classList.add("wrong");
       button.disabled = true;
       $("soundFeedback").textContent = "다시 들어보고 다른 그림을 고르세요.";
-      $("soundFeedback").className = "sound-feedback bad";
+      $('soundFeedback').className='sound-feedback bad';
     }
+    await saveRecord([{kind:'answer',questionKey:String(soundGameState.index),response:word,correct:word===round.answer,snapshot:{prompt:'소리를 듣고 그림 고르기',sound:round.sound,answerAudio:round.answer,choices:round.order}}]);lockRecord(false);
   }
 
-  function startSoundGame() {
-    activeSoundGameRounds = buildLessonSoundRounds(current);
-    if (!activeSoundGameRounds.length) return;
-    soundGameState = { index: 0, score: 0, locked: false, firstTry: true };
-    renderSoundGameRound();
-    speak(activeSoundGameRounds[0].answer, 0.68);
+  function startSoundGame(cp) {
+    activeSoundGameRounds=cp.rounds;soundGameState=cp.sound;
+    renderSoundGameRound();speak(activeSoundGameRounds[soundGameState.index].answer,0.68);
   }
-
-  function finishSoundGame() {
-    const saved = loadState();
-    const isNew = !saved.done.includes(current.id);
-    if (isNew) saved.done.push(current.id);
-    saved.soundScores[current.id] = Math.max(saved.soundScores[current.id] || 0, soundGameState.score);
-    if (isNew) saved.stars += soundGameState.score;
-    saved.lastLesson = data.lessons[1]?.id || current.id;
-    saveState(saved);
-    $("soundChoices").replaceChildren();
-    $("soundFeedback").textContent = `${activeSoundGameRounds.length}문제 중 ${soundGameState.score}문제 정답`;
-    $("soundFeedback").className = "sound-feedback result";
-    $("soundNext").textContent = "차시 목록으로";
-    $("soundNext").disabled = false;
-    soundGameState.finished = true;
+  async function finishSoundGame(){
+    if(recordBusy)return;lockRecord(true);await saveRecord([],true);
+    if(!accountSummary.done.includes(current.id))accountSummary.done.push(current.id);
+    closeStudy();records.showResult();lockRecord(false);
   }
 
   function renderDashboard() {
@@ -614,12 +612,14 @@
     updateQuizSummary();
   }
 
-  function answerQuiz(index, option) {
-    if (quizState[index].selected) return;
+  async function answerQuiz(index, option) {
+    if(recordBusy)return;lockRecord(true);
+    if (quizState[index].selected){lockRecord(false);return;}
     quizState[index].selected = option;
     quizState[index].correct = option === quizState[index].answer;
     if (quizState[index].correct) speak(quizState[index].answer, 0.85);
-    renderQuiz();
+    await saveRecord([{kind:'answer',questionKey:'quiz:'+index,response:option,correct:quizState[index].correct,snapshot:{prompt:'파닉스 확인 문제',answer:quizState[index].answer}}]);
+    renderQuiz();lockRecord(false);
   }
 
   function updateQuizSummary() {
@@ -637,9 +637,10 @@
     }
   }
 
-  function openLesson(id) {
+  async function openLesson(id) {
+    if(recordBusy)return;lockRecord(true);
     current = data.lessons.find((lesson) => lesson.id === id);
-    if (!current) return;
+    if (!current){lockRecord(false);return;}
     dictationIndex = 0;
     const stage = stageFor(current);
     const stageLessons = data.lessons.filter((lesson) => lesson.stageId === current.stageId);
@@ -668,7 +669,10 @@
     const saved = loadState();
     saved.lastLesson = current.id;
     saveState(saved);
-    if (isSoundGame) startSoundGame();
+    const session=await records.start({contentKey:current.id,title:'파닉스 · '+current.title,version:'20261002',checkpoint:{rounds:activeSoundGameRounds,sound:{index:0,score:0,locked:false,firstTry:true,tried:{}},quiz:quizState,dictationIndex:0}});
+    quizState=session.checkpoint.quiz;dictationIndex=session.checkpoint.dictationIndex;
+    if(isSoundGame)startSoundGame(session.checkpoint);
+    await saveRecord();lockRecord(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -680,25 +684,7 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function completeLesson() {
-    const saved = loadState();
-    const score = quizState.filter((item) => item.correct).length;
-    const isNew = !saved.done.includes(current.id);
-    if (isNew) saved.done.push(current.id);
-    saved.scores[current.id] = Math.max(saved.scores[current.id] || 0, score);
-    if (isNew) saved.stars += score;
-    const currentDay = today();
-    if (saved.lastStudyDate !== currentDay) {
-      saved.streak = saved.lastStudyDate && dayGap(saved.lastStudyDate, currentDay) === 1 ? saved.streak + 1 : 1;
-      saved.lastStudyDate = currentDay;
-    }
-    const next = data.lessons[lessonIndex() + 1];
-    saved.lastLesson = next?.id || current.id;
-    saveState(saved);
-    showToast(`완료 처리됨 · 평가 ${score}/3`);
-    if (next) setTimeout(() => openLesson(next.id), 900);
-    else setTimeout(closeStudy, 900);
-  }
+  async function completeLesson(){if(recordBusy)return;lockRecord(true);await saveRecord([],true);if(!accountSummary.done.includes(current.id))accountSummary.done.push(current.id);closeStudy();records.showResult();lockRecord(false);}
 
   $("hearFocus").addEventListener("click", () => playPhonemeSequence(current.focus.length ? current.focus : current.review));
   $("hearWord").addEventListener("click", () => speak(currentTarget()));
@@ -720,22 +706,27 @@
   $("answer").addEventListener("keydown", (event) => { if (event.key === "Enter") $("check").click(); });
   $("complete").addEventListener("click", completeLesson);
   $("soundReplay").addEventListener("click", () => speak(activeSoundGameRounds[soundGameState.index].answer, 0.68));
-  $("soundNext").addEventListener("click", () => {
+  $("soundNext").addEventListener("click", async () => {
+    if(recordBusy)return;
     if (soundGameState.finished) return closeStudy();
     if (soundGameState.index === activeSoundGameRounds.length - 1) return finishSoundGame();
+    lockRecord(true);
     soundGameState.index += 1;
     soundGameState.locked = false;
     soundGameState.firstTry = true;
     renderSoundGameRound();
     speak(activeSoundGameRounds[soundGameState.index].answer, 0.68);
+    await saveRecord();lockRecord(false);
   });
   $("back").addEventListener("click", closeStudy);
   $("closeLesson").addEventListener("click", closeStudy);
   $("previousLesson").addEventListener("click", () => openLesson(data.lessons[lessonIndex() - 1]?.id));
   $("nextLesson").addEventListener("click", () => openLesson(data.lessons[lessonIndex() + 1]?.id));
   $("continueLesson").addEventListener("click", () => openLesson($("continueLesson").dataset.lesson));
-  $("reset").addEventListener("click", () => $("resetDialog").showModal());
-  $("confirmReset").addEventListener("click", () => { localStorage.removeItem(storeKey); closeStudy(); showToast("진도를 처음으로 돌렸어요."); });
-
+  $('reset')?.remove();$('resetDialog')?.remove();
+  for(const id of ['masteryCount','streakCount','starsCount','soundScore']) if($(id)) $(id).parentElement.style.display='none';
+  let offset=0;
+  do{const page=await records.history('&offset='+offset);for(const row of page.sessions)if(row.status==='completed'&&!accountSummary.done.includes(row.contentKey))accountSummary.done.push(row.contentKey);offset=page.nextOffset;}while(offset!=null);
   renderDashboard();
+  const resume=new URLSearchParams(location.search).get('record');if(resume)await openLesson(resume);
 })();

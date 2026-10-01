@@ -804,21 +804,15 @@ button.inspectorPawn { cursor: pointer; }
 .eventDialog form { display: flex; justify-content: flex-end; }
 .eventDialog button { min-width: 120px; min-height: 50px; font-size: 17px; box-shadow: none; }
 
-/* Readable city map: roads and playable squares carry the visual hierarchy. */
-.boardViewport, .boardStage { background: #edf2f5; }
-.boardStage::before { background: none; }
-.boardShade { box-shadow: inset 0 0 0 1px #d4dfe6; }
+/* Readable roads and labels over the original illustrated city background. */
 .boardCanvas { filter: none; }
-.buildingLot, .buildingLot.fence, .buildingLot.oval, .buildingLot.round {
-  border: 0; border-radius: 16px; background: #e0e8ed; box-shadow: none;
-}
-.buildingLot span { display: none; }
-.mapLegend { position: absolute; z-index: 5; top: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 18px; align-items: center; color: #465767; font-size: clamp(11px, 1.4cqw, 14px); font-weight: 750; white-space: nowrap; pointer-events: none; }
+.mapLegend { position: absolute; z-index: 5; top: 7px; left: 50%; transform: translateX(-50%); display: flex; gap: clamp(8px, 1.4cqw, 18px); align-items: center; padding: 4px 10px; border: 1px solid #a3b29e; border-radius: 8px; background: #fffdf3f2; color: #465767; font-size: clamp(10px, 1.25cqw, 13px); font-weight: 750; white-space: nowrap; pointer-events: none; }
 .mapLegend span { display: flex; align-items: center; gap: 6px; }
 .mapLegend span:not(.oneway)::before { content: ""; width: 20px; height: 5px; border-radius: 4px; background: #82919e; }
+.mapLegend .bridgeKey::before { height: 9px !important; border-radius: 0 !important; border-block: 2px solid #43534d; box-shadow: inset 0 1px #fff, inset 0 -1px #fff; }
 .mapLegend .police::before { background: #277bd0 !important; }
 .mapLegend .thief::before { background: #d64f68 !important; }
-.roundZoneCaption { left: 20.5%; top: 68%; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: #876027; }
+.roundZoneCaption { left: 20.5%; top: 68%; padding: 4px 7px; border: 1px solid #a3b29e; border-radius: 6px; background: #fffdf3f2; box-shadow: none; color: #76501f; }
 .roundZoneCaption strong { font-size: clamp(11px, 1.5cqw, 14px); }
 
 .boardStage .node { display: grid; place-items: center; width: clamp(15px, calc(var(--board-unit) * 2.4), 23px); height: clamp(15px, calc(var(--board-unit) * 2.4), 23px); padding: 0; border: 2px solid #82919e; border-radius: 50%; background: #fff; color: #334859; box-shadow: none; opacity: 1; cursor: pointer; }
@@ -832,6 +826,8 @@ button.inspectorPawn { cursor: pointer; }
 .boardStage .node[data-start] { width: 44px; height: 44px; border: 2px solid #c44c65; border-radius: 12px; background: #fff0f4; color: #99213e; font-size: 25px; }
 .boardStage .node[data-start="police"] { border-color: #277bd0; background: #e5f2ff; color: #175497; }
 .startName { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 3px 6px; border-radius: 4px; background: #edf2f5; color: #3a4d5d; font-size: 13px; font-weight: 850; white-space: nowrap; }
+.node[data-start="thief"] .startName { top: 50%; left: calc(100% + 8px); transform: translateY(-50%); }
+.node[data-start="police"] .startName { top: 50%; left: auto; right: calc(100% + 8px); transform: translateY(-50%); padding: 2px 4px; font-size: 11px; }
 .boardStage .node.valid, .boardStage .node.pendingTarget { z-index: 10; border: 3px solid #9d6b00; background: #ffdf71; box-shadow: 0 0 0 4px #ffdf7170; animation: none; }
 .boardStage .node.cardTarget { border-color: #a84b87; background: #f4d7ed; box-shadow: 0 0 0 4px #f4d7ed80; animation: none; }
 .boardStage .node:focus-visible, .boardStage .building:focus-visible, .boardStage .pawn:focus-visible { outline: 3px solid #172f52; outline-offset: 5px; }

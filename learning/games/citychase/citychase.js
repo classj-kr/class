@@ -5,6 +5,7 @@
   const NAME_KEY = "classPlayerName";
   const MESSAGE = Object.freeze({ ACTION: "CITYCHASE_ACTION", STATE: "CITYCHASE_STATE", ERROR: "CITYCHASE_ERROR" });
   const Board = window.CityChaseData;
+  const Layout = window.CityChaseLayout;
   const ASSET = Object.freeze({
     gem: "assets/secret-gem.webp",
     alarm: "assets/secret-alarm.webp"
@@ -55,7 +56,7 @@
   function firstLetter(name) {
     return Array.from(String(name || "?").trim())[0] || "?";
   }
-  function nodeMeta(id) { return Board.NODES[id] || null; }
+  function nodeMeta(id) { return Layout.NODES[id] || null; }
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
@@ -218,19 +219,42 @@
       : edge.kind === "round-zone" ? "#aa7a35" : "#82919e";
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    // Draw the whole road network in two passes so intersections never have false dividing lines.
+    const strokePath = points => {
+      ctx.beginPath();
+      points.forEach((point, index) => index ? ctx.lineTo(point.x, point.y) : ctx.moveTo(point.x, point.y));
+      ctx.stroke();
+    };
+    // Join roads only at real squares. Non-connecting crossings receive an overpass below.
     for (const outline of [true, false]) {
-      for (const edge of Board.EDGES) {
-        if (edge.visualOnly) continue;
-        const a = project(nodeMeta(edge.a)), b = project(nodeMeta(edge.b));
-        ctx.strokeStyle = outline ? "#fff" : color(edge);
+      for (const road of Layout.roads) {
+        ctx.strokeStyle = outline ? "#fff" : color(road.edge);
         ctx.lineWidth = lineWidth + (outline ? 5 : 0);
-        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        strokePath(road.points.map(project));
       }
     }
-    for (const edge of Board.EDGES) {
+    for (const crossing of Layout.crossings) {
+      const center = project(crossing), from = project(crossing.from), to = project(crossing.to);
+      const length = Math.hypot(to.x - from.x, to.y - from.y);
+      const ux = (to.x - from.x) / length, uy = (to.y - from.y) / length;
+      const span = Math.max(12, lineWidth * 1.8);
+      const ends = [{ x: center.x - ux * span, y: center.y - uy * span }, { x: center.x + ux * span, y: center.y + uy * span }];
+      ctx.lineCap = "butt";
+      ctx.strokeStyle = "#29483988"; ctx.lineWidth = lineWidth + 11; strokePath(ends);
+      ctx.strokeStyle = "#fffdf4"; ctx.lineWidth = lineWidth + 7; strokePath(ends);
+      ctx.strokeStyle = color(crossing.over.edge); ctx.lineWidth = lineWidth; strokePath(ends);
+      // Parallel guardrails distinguish a bridge from a junction, even without colour.
+      for (const side of [-1, 1]) {
+        const offset = side * (lineWidth / 2 + 3);
+        ctx.strokeStyle = "#43534d"; ctx.lineWidth = 1.5;
+        strokePath(ends.map(point => ({ x: point.x - uy * offset, y: point.y + ux * offset })));
+      }
+      ctx.lineCap = "round";
+    }
+    for (const road of Layout.roads) {
+      const edge = road.edge;
       if (!edge.oneWay && !edge.displayArrow) continue;
-      drawArrow(ctx, project(nodeMeta(edge.a)), project(nodeMeta(edge.b)), "#fff", Math.max(.45, scale * .7));
+      const from = Layout.pointAlong(road.points, .4), to = Layout.pointAlong(road.points, .7);
+      drawArrow(ctx, project(from), project(to), "#fff", Math.max(.45, scale * .7));
     }
     renderRoutePreview();
   }
@@ -242,7 +266,7 @@
     if (!route?.length || movementAnimating) return;
     const stage = $("boardStage");
     const width = stage.clientWidth, height = stage.clientHeight;
-    const points = route.map(id => nodeMeta(id)).filter(Boolean)
+    const points = Layout.routePath(route)
       .map(node => [node.x / Board.WIDTH * width, node.y / Board.HEIGHT * height]);
     layer.setAttribute("viewBox", "0 0 " + width + " " + height);
     const ns = "http://www.w3.org/2000/svg";
@@ -254,7 +278,8 @@
       line.setAttribute("stroke-linecap", "round");
       layer.appendChild(line);
     }
-    points.slice(1).forEach(([x, y], index) => {
+    route.slice(1).map(nodeMeta).forEach((node, index) => {
+      const x = node.x / Board.WIDTH * width, y = node.y / Board.HEIGHT * height;
       const circle = document.createElementNS(ns, "circle");
       circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", 13);
       circle.setAttribute("fill", "#fff8ce"); circle.setAttribute("stroke", "#a76b00"); circle.setAttribute("stroke-width", 2);
@@ -371,7 +396,7 @@
   function renderLots() {
     const layer = $("lotsLayer");
     const fragment = document.createDocumentFragment();
-    for (const building of Board.BUILDINGS) {
+    for (const building of Layout.BUILDINGS) {
       const lot = building.lot || { width: 130, height: 120, style: "stone" };
       const element = document.createElement("div");
       element.className = `buildingLot ${lot.style}`;
@@ -386,14 +411,14 @@
     const layer = $("buildingsLayer");
     const fragment = document.createDocumentFragment();
     const captainSetup = !!state?.canSetup;
-    for (const building of Board.BUILDINGS) {
+    for (const building of Layout.BUILDINGS) {
       const entrance = Object.values(Board.NODES).find(node => node.building === building.id);
       const searchable = !!entrance && (state?.validMoves || []).includes(entrance.id);
       const knowledge = state?.buildings.find(item => item.id === building.id) || { content: "hidden" };
       const button = document.createElement("button");
       button.type = "button";
       button.className = "building";
-      const labelWidth = Math.max((building.lot?.width || 140) - 14, building.name.length * 25);
+      const labelWidth = Math.max((building.lot?.width || 140) - 30, building.name.length * 23);
       button.style.cssText = `${positionStyle(building.x, building.y)};--building:${building.color};--building-width:${labelWidth / Board.WIDTH * 100}%`;
       button.disabled = movementAnimating;
       button.dataset.buildingId = building.id;
@@ -435,7 +460,7 @@
   function renderNodes() {
     const layer = $("nodesLayer");
     const fragment = document.createDocumentFragment();
-    for (const node of Object.values(Board.NODES)) {
+    for (const node of Object.values(Layout.NODES)) {
       const button = document.createElement("button");
       button.type = "button";
       const targetClass = nodeTargetClass(node.id);
@@ -912,26 +937,22 @@
     pawn.classList.add("moving");
     pawn.style.transition = "none";
     placeAt(route[0]);
-    void pawn.offsetWidth;
-    pawn.style.removeProperty("transition");
-
-    let index = 1;
-    const advance = () => {
+    const segments = move.path.slice(1).map((id, index) => Layout.edgePath(move.path[index], id));
+    const start = performance.now();
+    const advance = now => {
       if (token !== movementAnimationToken) return;
-      placeAt(route[index]);
-      index += 1;
-      if (index < route.length) {
-        window.setTimeout(advance, 300);
+      const progress = (now - start) / 300;
+      const index = Math.floor(progress);
+      if (index < segments.length) {
+        placeAt(Layout.pointAlong(segments[index], progress - index));
+        window.requestAnimationFrame(advance);
         return;
       }
-      window.setTimeout(() => {
-        if (token !== movementAnimationToken) return;
-        movementAnimating = false;
-        renderTurnCard();
-        renderActions();
-        renderBoardState();
-        showNextNotice();
-      }, 300);
+      movementAnimating = false;
+      renderTurnCard();
+      renderActions();
+      renderBoardState();
+      showNextNotice();
     };
     window.requestAnimationFrame(advance);
   }

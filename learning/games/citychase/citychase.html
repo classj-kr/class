@@ -8,11 +8,12 @@
   <title>경찰과 도둑</title>
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261001-citychase-bg">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="citychase.css?v=20261001-original-routes">
+  <link rel="stylesheet" href="citychase.css?v=20261002-road-clearance">
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules"></script>
   <script src="citychase-data.js?v=20261001-original-routes"></script>
+  <script src="citychase-layout.js?v=20261002-road-clearance"></script>
 </head>
 <body>
   <main>
@@ -102,7 +103,7 @@
               <div id="lotsLayer" class="lotsLayer" aria-hidden="true"></div>
               <canvas id="boardCanvas" class="boardCanvas" width="1000" height="1000" aria-hidden="true"></canvas>
               <div class="boardShade" aria-hidden="true"></div>
-              <div class="mapLegend" aria-label="길 안내"><span class="common">공용길</span><span class="police">경찰만</span><span class="thief">도둑만</span><span class="oneway">→ 한 방향</span></div>
+              <div class="mapLegend" aria-label="길 안내"><span class="common">공용길</span><span class="police">경찰만</span><span class="thief">도둑만</span><span class="oneway">→ 한 방향</span><span class="bridgeKey">다리 밑길과 연결 없음</span></div>
               <div class="roundZoneCaption" aria-hidden="true"><strong>↻ 시계 방향</strong></div>
               <div id="buildingsLayer"></div>
               <div id="nodesLayer"></div>
@@ -252,6 +253,6 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <audio id="bgm" preload="auto"></audio>
-  <script src="citychase.js?v=20261001-original-routes"></script>
+  <script src="citychase.js?v=20261002-road-clearance"></script>
 </body>
 </html>

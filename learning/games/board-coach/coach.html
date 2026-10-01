@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>AI와 배우기</title>
-  <link rel="stylesheet" href="coach.css?v=4">
-  <script src="rules.js?v=1" defer></script><script src="ai.js?v=2" defer></script><script src="coach.js?v=7" defer></script>
-  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=3" defer></script><script src="chess-pieces.js?v=1" defer></script><script src="chess-coach.js?v=5" defer></script>
-  <script src="janggi-rules.js?v=2" defer></script><script src="janggi-ai.js?v=3" defer></script><script src="janggi-coach.js?v=3" defer></script>
+  <link rel="stylesheet" href="coach.css?v=5">
+  <script src="coach-ui.js?v=1" defer></script>
+  <script src="rules.js?v=1" defer></script><script src="ai.js?v=2" defer></script><script src="coach.js?v=8" defer></script>
+  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=4" defer></script><script src="chess-pieces.js?v=1" defer></script><script src="chess-coach.js?v=6" defer></script>
+  <script src="janggi-rules.js?v=2" defer></script><script src="janggi-ai.js?v=3" defer></script><script src="janggi-coach.js?v=4" defer></script>
 </head>
 <body>
   <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">AI와 배우기</span><h1 id="title">리버시</h1></div><button id="newGame" type="button">새 대국</button></header>
@@ -17,7 +18,7 @@
       <div class="controls"><button id="hint" type="button">힌트</button><button id="undo" type="button">내 수 물리기</button><button id="zoom" class="quiet" type="button" aria-pressed="false">판 확대</button></div>
     </section>
     <aside class="sidebar" aria-label="배움 안내">
-      <section class="panel lesson"><div class="section-title"><h2 id="levelLabel">초급 AI</h2><span id="colorLabel" class="badge"></span></div><p id="principle"></p><p class="muted">시간 제한 없이 생각해 보세요.</p></section>
+      <section class="panel lesson"><div class="section-title"><h2 id="levelLabel">초급 AI</h2><span id="colorLabel" class="badge"></span></div><p id="principle"></p></section>
       <section class="panel explanation" aria-live="polite"><span class="eyebrow" id="reasonLabel">이번 수의 생각</span><h2 id="moveLabel">기본 원칙부터</h2><p id="reason">수의 이유를 함께 살펴봅니다.</p><button id="retry" class="hidden" type="button">다시 계산하기</button></section>
       <section id="feedbackPanel" class="panel feedback hidden" aria-live="polite"><h2>다시 생각해 볼 수</h2><p id="feedback"></p><button id="rethink" type="button">내 수부터 다시 두기</button></section>
       <section id="reviewPanel" class="panel hidden"><h2>중요한 장면 복기</h2><p class="muted">장면을 누르면 그 수를 두기 전의 판을 봅니다.</p><div id="reviewList"></div><button id="liveBoard" class="quiet hidden" type="button">마지막 판으로</button></section>

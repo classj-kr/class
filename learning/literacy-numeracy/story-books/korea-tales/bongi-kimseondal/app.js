@@ -815,12 +815,9 @@ const UI = {
     }
 };
 
-const LANG_KEY = 'korea-tales-lang';
 const HAS_EN = typeof EN !== 'undefined';
-const readLang = () => { try { return localStorage.getItem(LANG_KEY); } catch (e) { return null; } };
-const saveLang = v => { try { localStorage.setItem(LANG_KEY, v); } catch (e) { /* 저장이 막힌 곳도 있다 */ } };
 
-let LANG = (HAS_EN && readLang() === 'en') ? 'en' : 'ko';
+let LANG = 'ko';
 
 const T  = () => UI[LANG];
 const CH = () => (LANG === 'en' ? EN.chapters  : CHAPTERS);
@@ -1528,7 +1525,7 @@ function applyLang() {
 if (langBtn && HAS_EN) {
     langBtn.addEventListener('click', () => {
         LANG = LANG === 'en' ? 'ko' : 'en';
-        saveLang(LANG);
+
         const here = PAGES[current];
         buildPages();
         // 같은 자리로 돌아간다. 쪽 수가 같으므로 번호를 그대로 쓴다.
@@ -1544,3 +1541,66 @@ if (langBtn && HAS_EN) {
 
 applyLang();
 paint();
+
+
+/* Common account-based book progress and response history. */
+{
+  let hooks = null;
+  const visited = new Set();
+  const originalPaint = paint;
+  const originalGoTo = goTo;
+  function locationRecord() {
+    const p = PAGES[current];
+    return { kind: p.kind, chapter: p.chIndex ?? null, offset: p.left?.[0] ?? p.left?.a ?? 0, art: p.beat?.art || null, part: p.part ?? null, index: current };
+  }
+  function pageKey() {
+    const p = locationRecord();
+    return [LANG, p.kind, p.chapter, p.offset, p.art, p.part].join(':');
+  }
+  function snapshot() {
+    return { lang: LANG, location: locationRecord(), visited: [...visited],
+      orders: QUIZ_ORDER, picked: QUIZ_PICKED,
+      wrong: QUIZ_WRONG.map(set => [...set]) };
+  }
+  function lock(value) { document.getElementById('book').inert = value; if (langBtn) langBtn.disabled = value; }
+  goTo = function (index) { if (hooks?.canAct()) originalGoTo(index); };
+  paint = function () {
+    originalPaint();
+    if (!hooks) return;
+    const p = PAGES[current], key = pageKey();
+    let event;
+    if (['chapter', 'spread'].includes(p.kind) && !visited.has(key)) {
+      visited.add(key);
+      event = { kind: 'read', questionKey: key, response: '페이지 열기', snapshot: { title: document.title, language: LANG, location: locationRecord() } };
+    }
+    hooks.changed(event);
+  };
+  initQuiz = function () {
+    spreadEl.querySelectorAll('.quiz-item').forEach(item => {
+      const qi = Number(item.dataset.qindex), q = QZ()[qi];
+      item.querySelectorAll('.quiz-choice').forEach(button => button.addEventListener('click', async () => {
+        if (!hooks?.canAct() || item.classList.contains('graded')) return;
+        const chosen = Number(button.dataset.choice), correct = chosen === q.answer;
+        if (correct) QUIZ_PICKED[qi] = chosen; else QUIZ_WRONG[qi].add(chosen);
+        await hooks.answer({ kind: 'answer', questionKey: LANG + ':' + qi, response: q.choices[chosen], correct,
+          snapshot: { prompt: q.q, choices: q.choices, language: LANG } });
+      }));
+    });
+  };
+  connectBookRecords({
+    activity: 'korea-tales', key: 'bongi-kimseondal', title: document.title, snapshot, lock,
+    restore(cp) {
+      LANG = cp.lang === 'en' && HAS_EN ? 'en' : 'ko';
+      QUIZ_PICKED.splice(0, QUIZ_PICKED.length, ...cp.picked); cp.wrong.forEach((values, i) => { QUIZ_WRONG[i].clear(); values.forEach(v => QUIZ_WRONG[i].add(v)); }); QUIZ_ORDER.splice(0, QUIZ_ORDER.length, ...cp.orders);
+      cp.visited.forEach(key => visited.add(key));
+      if (typeof applyLang === 'function') applyLang(); buildPages();
+      const loc = cp.location;
+      const index = PAGES.findIndex(p => p.kind === loc.kind &&
+        (loc.art ? p.beat?.art === loc.art : loc.chapter != null ? p.chIndex === loc.chapter && (p.left?.[0] ?? p.left?.a ?? 0) <= loc.offset && (p.right?.[1] ?? p.right?.b ?? p.left?.[1] ?? p.left?.b ?? Infinity) > loc.offset : (p.part ?? null) === loc.part));
+      current = index >= 0 ? index : Math.min(loc.index || 0, PAGES.length - 1);
+      originalPaint();
+    },
+    repaint: originalPaint,
+    connect(value) { hooks = value; originalPaint(); }
+  });
+}

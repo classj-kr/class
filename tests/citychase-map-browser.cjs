@@ -48,13 +48,22 @@ function fixture(){
    const game=fixture();await install(Game.stateFor(game,"t"));
    assert.equal(await page.locator("#nodesLayer .node").count(),127);
    assert.equal(await page.locator(".buildingPiece").count(),0);
-   assert.equal(await page.locator("#boardStage").evaluate(e=>getComputedStyle(e,"::before").backgroundImage),"none");
+   assert.match(await page.locator("#boardStage").evaluate(e=>getComputedStyle(e,"::before").backgroundImage),/city-board-v12\.webp/);
    const viewport=await page.locator("#boardViewport").boundingBox();
    assert(viewport.x>=0&&viewport.y>=0&&viewport.x+viewport.width<=width&&viewport.y+viewport.height<=height);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    for(const building of await page.locator("#buildingsLayer .building").all()){
     assert(await building.evaluate(e=>e.scrollWidth<=e.clientWidth+1));
    }
+   const coveredSquares=await page.evaluate(()=>{
+    const buildings=[...document.querySelectorAll("#buildingsLayer .building")].map(e=>({id:e.dataset.buildingId,rect:e.getBoundingClientRect()}));
+    return [...document.querySelectorAll("#nodesLayer .node")].flatMap(e=>{
+     const r=e.getBoundingClientRect();
+     return buildings.filter(({rect:b})=>r.left<b.right&&r.right>b.left&&r.top<b.bottom&&r.bottom>b.top)
+      .map(b=>e.dataset.nodeId+" hidden by "+b.id);
+    });
+   });
+   assert.deepEqual(coveredSquares,[],name+": building labels must leave every square visible");
    await page.screenshot({path:path.join(output,prefix+name+".png")});
    Game.roll(game,"t",4);
    const state=Game.stateFor(game,"t");await install(state);
@@ -80,6 +89,31 @@ function fixture(){
   const selected=await page.locator('#nodesLayer [data-node-id="p18"]').boundingBox();
   const inspector=await page.locator("#boardInspector").boundingBox();
   assert(inspector.y+inspector.height<selected.y);
+  // The long cross-town connection still costs one step and its pawn follows the displayed bridge.
+  const bridgeGame=fixture();bridgeGame.pawns[0].position="c6";
+  assert(Game.roll(bridgeGame,"t",1).ok);
+  await install(Game.stateFor(bridgeGame,"t"));
+  await page.locator('#nodesLayer [data-node-id="d4"]').tap();
+  assert.equal(await page.locator("#routePreview circle").count(),1);
+  assert.equal(await page.locator("#routePreview polyline").first().evaluate(e=>e.points.numberOfItems),4);
+  await page.screenshot({path:path.join(output,prefix+"bridge-preview.png")});
+  await page.locator("#boardInspectorActions button").tap();
+  assert(Game.moveToDestination(bridgeGame,"t","d4").ok);
+  await page.emulateMedia({reducedMotion:"no-preference"});
+  const samples=await page.evaluate(state=>new Promise((resolve,reject)=>{
+   const samples=[],started=performance.now();let seen=false;
+   reviewOptions.onServerMessage({type:"CITYCHASE_STATE",state});
+   function sample(){
+    const pawn=document.querySelector(".pawn.moving");
+    if(pawn){seen=true;samples.push({x:parseFloat(pawn.style.left)*10,y:parseFloat(pawn.style.top)*10});}
+    else if(seen){resolve(samples);return;}
+    if(performance.now()-started>2000){reject(new Error("bridge animation did not finish"));return;}
+    requestAnimationFrame(sample);
+   }
+   requestAnimationFrame(sample);
+  }),Game.stateFor(bridgeGame,"t"));
+  assert(samples.some(point=>point.x>580&&point.x<870&&Math.abs(point.y-440)<.1),"pawn must travel along the separated lower corridor");
+  console.log("PASS",prefix+"one-step bridge preview and animation");
   assert.deepEqual(errors,[]);
   console.log("Screenshots:",output);
  }finally{await browser.close();server.close();}

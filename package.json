@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "test:coach-quality": "node --test tests/board-coach-quality.test.cjs",
+    "test:coach-usability": "node tests/board-coach-usability.cjs",
     "test:coach-arena": "node tests/board-coach-quality.cjs",
     "test:janggi-coach": "node --test tests/janggi-coach.test.cjs",
     "test:janggi-coach:ui": "node tests/janggi-coach-browser.cjs",
