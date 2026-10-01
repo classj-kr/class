@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 927,
+  "totalImages": 935,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -928,6 +928,14 @@
     "1722": { "word": "moral", "file": "moral-v2.webp" },
     "1626": { "word": "manner", "file": "manner-v2.webp" },
     "568": { "word": "concept", "file": "concept-v2.webp" },
-    "2171": { "word": "region", "file": "region-v2.webp" }
+    "2171": { "word": "region", "file": "region-v2.webp" },
+    "1669": { "word": "menu", "file": "menu-v2.webp" },
+    "796": { "word": "diary", "file": "diary-v2.webp" },
+    "210": { "word": "bacon", "file": "bacon-v2.webp" },
+    "1987": { "word": "poet", "file": "poet-v2.webp" },
+    "920": { "word": "emotion", "file": "emotion-v2.webp" },
+    "2066": { "word": "profession", "file": "profession-v2.webp" },
+    "266": { "word": "bench", "file": "bench-v2.webp" },
+    "2812": { "word": "twin", "file": "twin-v2.webp" }
   }
 }
