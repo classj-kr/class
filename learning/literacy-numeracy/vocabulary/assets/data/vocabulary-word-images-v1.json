@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1101,
+  "totalImages": 1109,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1102,6 +1102,14 @@
     "1434": { "word": "instinct", "file": "instinct-v2.webp" },
     "1951": { "word": "physics", "file": "physics-v2.webp" },
     "2333": { "word": "sector", "file": "sector-v2.webp" },
-    "2717": { "word": "thumb", "file": "thumb-v2.webp" }
+    "2717": { "word": "thumb", "file": "thumb-v2.webp" },
+    "194": { "word": "author", "file": "author-v2.webp" },
+    "1979": { "word": "platform", "file": "platform-v2.webp" },
+    "1305": { "word": "heir", "file": "heir-v2.webp" },
+    "938": { "word": "enterprise", "file": "enterprise-v2.webp" },
+    "521": { "word": "collapse", "file": "collapse-v2.webp" },
+    "1908": { "word": "passenger", "file": "passenger-v2.webp" },
+    "528": { "word": "column", "file": "column-v2.webp" },
+    "545": { "word": "companion", "file": "companion-v2.webp" }
   }
 }
