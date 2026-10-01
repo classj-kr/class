@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1038,
+  "totalImages": 1046,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1039,6 +1039,14 @@
     "1383": { "word": "impact", "file": "impact-v2.webp" },
     "2068": { "word": "profile", "file": "profile-v2.webp" },
     "1190": { "word": "gene", "file": "gene-v2.webp" },
-    "445": { "word": "chaos", "file": "chaos-v2.webp" }
+    "445": { "word": "chaos", "file": "chaos-v2.webp" },
+    "16": { "word": "academy", "file": "academy-v2.webp" },
+    "440": { "word": "chamber", "file": "chamber-v2.webp" },
+    "1565": { "word": "liberty", "file": "liberty-v2.webp" },
+    "1246": { "word": "grief", "file": "grief-v2.webp" },
+    "244": { "word": "beard", "file": "beard-v2.webp" },
+    "2916": { "word": "wealth", "file": "wealth-v2.webp" },
+    "523": { "word": "colleague", "file": "colleague-v2.webp" },
+    "1019": { "word": "facility", "file": "facility-v2.webp" }
   }
 }
