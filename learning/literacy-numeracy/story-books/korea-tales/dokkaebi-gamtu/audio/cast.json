@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "대진",
+  "id": "tc_6a0e85a97f7750959b970d5d"
+ },
+ "roles": {
+  "man": {
+   "name": "근영",
+   "id": "tc_64b8fa1ef1ff6f997055188e"
+  },
+  "old": {
+   "name": "중현",
+   "id": "tc_61cd3cc126463f411925e8a6"
+  },
+  "boy": {
+   "name": "주완",
+   "id": "tc_69e0462f3e5413d26878521e"
+  },
+  "beast": {
+   "name": "듀크",
+   "id": "tc_6075b391922523862ea7598d"
+  }
+ }
+}

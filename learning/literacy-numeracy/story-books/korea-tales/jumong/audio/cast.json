@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "정순",
+  "id": "tc_5ebea242728f5b00075e6211"
+ },
+ "roles": {
+  "man": {
+   "name": "근영",
+   "id": "tc_64b8fa1ef1ff6f997055188e"
+  },
+  "old": {
+   "name": "학철",
+   "id": "tc_63a3d9d14b235ddd6541a78e"
+  },
+  "boy": {
+   "name": "예준",
+   "id": "tc_63edf3d68aab086d6b782a55"
+  },
+  "woman": {
+   "name": "한나",
+   "id": "tc_628d9e0e1374f7682602991b"
+  }
+ }
+}

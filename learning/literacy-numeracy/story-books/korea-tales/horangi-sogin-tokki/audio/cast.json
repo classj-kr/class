@@ -1,0 +1,16 @@
+{
+ "narration": {
+  "name": "주하",
+  "id": "tc_5d01a52563338e00072b8c9c"
+ },
+ "roles": {
+  "girl": {
+   "name": "서윤",
+   "id": "tc_66bf0dd95e009c61025eb27f"
+  },
+  "beast": {
+   "name": "하데스",
+   "id": "tc_6a867e6bd49b8f6a07db59da"
+  }
+ }
+}

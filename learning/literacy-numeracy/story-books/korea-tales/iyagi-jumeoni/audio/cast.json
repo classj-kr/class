@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "지선",
+  "id": "tc_6a4f2130d153a5cac8e19996"
+ },
+ "roles": {
+  "man": {
+   "name": "근혁",
+   "id": "tc_64b8fa40ef03762a5fc0e51d"
+  },
+  "old": {
+   "name": "종대",
+   "id": "tc_67e38d8c771b5511659c4534"
+  },
+  "boy": {
+   "name": "하준",
+   "id": "tc_60db308484130840f23e6ca0"
+  },
+  "granny": {
+   "name": "주하",
+   "id": "tc_5d01a52563338e00072b8c9c"
+  }
+ }
+}

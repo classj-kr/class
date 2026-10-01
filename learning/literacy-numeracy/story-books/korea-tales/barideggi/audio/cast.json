@@ -1,0 +1,32 @@
+{
+ "narration": {
+  "name": "최석",
+  "id": "tc_62ce545fb130717df10ea37a"
+ },
+ "roles": {
+  "man": {
+   "name": "현민",
+   "id": "tc_627ae61ffdf53ef0bb6902cd"
+  },
+  "old": {
+   "name": "덕춘",
+   "id": "tc_5c3c52c95827e00008dd7f34"
+  },
+  "girl": {
+   "name": "채아",
+   "id": "tc_609a8f4362c4bdb3363bbfad"
+  },
+  "woman": {
+   "name": "민지",
+   "id": "tc_5eb55ce920d1b60016e91de6"
+  },
+  "granny": {
+   "name": "경애",
+   "id": "tc_6a867e7a0e6ddfd2f2dd17b6"
+  },
+  "beast": {
+   "name": "하데스",
+   "id": "tc_6a867e6bd49b8f6a07db59da"
+  }
+ }
+}

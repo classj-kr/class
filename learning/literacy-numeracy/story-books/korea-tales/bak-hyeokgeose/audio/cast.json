@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "송진섭 스토리텔러",
+  "id": "tc_65571d1aa52fc0f2872045fa"
+ },
+ "roles": {
+  "man": {
+   "name": "치호",
+   "id": "tc_66b4522ab64a74ebe486bc68"
+  },
+  "old": {
+   "name": "영길",
+   "id": "tc_5ebea13564afaf00087fc2e7"
+  },
+  "granny": {
+   "name": "정순",
+   "id": "tc_5ebea242728f5b00075e6211"
+  },
+  "beast": {
+   "name": "듀크",
+   "id": "tc_6075b391922523862ea7598d"
+  }
+ }
+}

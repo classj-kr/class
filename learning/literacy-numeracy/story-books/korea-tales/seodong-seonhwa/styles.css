@@ -1020,7 +1020,9 @@ html[lang="en"] .vocab-sent {
 }
 
 /* 지금 읽고 있는 문단 */
-.spread-text p.saying {
+.spread-text p.saying,
+.page-cover .saying,
+.after-col .saying {
     background: rgba(215, 171, 95, 0.3);
     border-radius: 6px;
     box-shadow: 0 0 0 4px rgba(215, 171, 95, 0.3);
@@ -1028,5 +1030,5 @@ html[lang="en"] .vocab-sent {
 
 /* 읽어 주는 동안에만 문단을 눌러 그 자리로 옮길 수 있다.
    읽지도 않는데 눌러서 소리가 나면 곤란하므로 그때만 손 모양을 준다. */
-html[lang="en"] .is-reading [data-say] { cursor: pointer; }
-html[lang="en"] .is-reading [data-say]:hover { background: rgba(215, 171, 95, 0.14); border-radius: 6px; }
+.is-reading [data-say] { cursor: pointer; }
+.is-reading [data-say]:hover { background: rgba(215, 171, 95, 0.14); border-radius: 6px; }

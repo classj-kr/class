@@ -1,0 +1,20 @@
+{
+ "narration": {
+  "name": "건석",
+  "id": "tc_6731b2e0855f351b98d30c48"
+ },
+ "roles": {
+  "man": {
+   "name": "정민",
+   "id": "tc_658d1bc867f8ac8fa3cbbeec"
+  },
+  "granny": {
+   "name": "경애",
+   "id": "tc_6a867e7a0e6ddfd2f2dd17b6"
+  },
+  "beast": {
+   "name": "하데스",
+   "id": "tc_6a867e6bd49b8f6a07db59da"
+  }
+ }
+}

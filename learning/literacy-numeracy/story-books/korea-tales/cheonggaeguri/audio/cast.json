@@ -1,0 +1,20 @@
+{
+ "narration": {
+  "name": "성호",
+  "id": "tc_5fe06471a9f79e8f959be96f"
+ },
+ "roles": {
+  "boy": {
+   "name": "시우",
+   "id": "tc_6699eb3849dfac016c29444c"
+  },
+  "mother": {
+   "name": "애란",
+   "id": "tc_5d01a52c63338e00072b8c9f"
+  },
+  "granny": {
+   "name": "숙희",
+   "id": "tc_61c2f70c343884babeed840b"
+  }
+ }
+}

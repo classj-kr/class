@@ -1,0 +1,20 @@
+{
+ "narration": {
+  "name": "순이",
+  "id": "tc_60ad0841061ee28740ec2e1c"
+ },
+ "roles": {
+  "man": {
+   "name": "원호",
+   "id": "tc_66bf0dadd3f21fab24da6708"
+  },
+  "woman": {
+   "name": "소진",
+   "id": "tc_666a9871abcf27a5169850d0"
+  },
+  "granny": {
+   "name": "정순",
+   "id": "tc_5ebea242728f5b00075e6211"
+  }
+ }
+}

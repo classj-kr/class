@@ -1,0 +1,20 @@
+{
+ "narration": {
+  "name": "송진섭 스토리텔러",
+  "id": "tc_65571d1aa52fc0f2872045fa"
+ },
+ "roles": {
+  "man": {
+   "name": "주호",
+   "id": "tc_658d1bea67f8ac8fa3cbbef9"
+  },
+  "old": {
+   "name": "덕춘",
+   "id": "tc_5c3c52c95827e00008dd7f34"
+  },
+  "beast": {
+   "name": "이카루스",
+   "id": "tc_603513d91860484c4dcb6a11"
+  }
+ }
+}

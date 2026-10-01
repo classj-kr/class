@@ -1,0 +1,28 @@
+{
+ "narration": {
+  "name": "명주",
+  "id": "tc_656059fc4db338e38f77d0bc"
+ },
+ "roles": {
+  "man": {
+   "name": "진우",
+   "id": "tc_632293f759d649937b97f323"
+  },
+  "old": {
+   "name": "명일",
+   "id": "tc_62d66c2d1523be99355fda02"
+  },
+  "boy": {
+   "name": "덕구",
+   "id": "tc_618203826672d21ebf37748e"
+  },
+  "girl": {
+   "name": "옥지",
+   "id": "tc_699d27b557c86e3f4249c051"
+  },
+  "woman": {
+   "name": "민지",
+   "id": "tc_5eb55ce920d1b60016e91de6"
+  }
+ }
+}

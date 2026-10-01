@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "지선",
+  "id": "tc_6a4f2130d153a5cac8e19996"
+ },
+ "roles": {
+  "man": {
+   "name": "주호",
+   "id": "tc_658d1bea67f8ac8fa3cbbef9"
+  },
+  "old": {
+   "name": "권일",
+   "id": "tc_675a73eb789ff3ea6cc80235"
+  },
+  "granny": {
+   "name": "숙희",
+   "id": "tc_61c2f70c343884babeed840b"
+  },
+  "beast": {
+   "name": "웨이드",
+   "id": "tc_685ca2dcfa58f44bdbe60d65"
+  }
+ }
+}
