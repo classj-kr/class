@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1141,
+  "totalImages": 1149,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1142,6 +1142,14 @@
     "805": { "word": "dimension", "file": "dimension-v2.webp" },
     "1654": { "word": "mechanic", "file": "mechanic-v2.webp" },
     "1038": { "word": "fare", "file": "fare-v2.webp" },
-    "228": { "word": "barrier", "file": "barrier-v2.webp" }
+    "228": { "word": "barrier", "file": "barrier-v2.webp" },
+    "728": { "word": "decade", "file": "decade-v2.webp" },
+    "1861": { "word": "outcome", "file": "outcome-v2.webp" },
+    "1339": { "word": "horizon", "file": "horizon-v2.webp" },
+    "2782": { "word": "treaty", "file": "treaty-v2.webp" },
+    "171": { "word": "asset", "file": "asset-v2.webp" },
+    "678": { "word": "crop", "file": "crop-v2.webp" },
+    "2088": { "word": "protein", "file": "protein-v2.webp" },
+    "303": { "word": "blossom", "file": "blossom-v2.webp" }
   }
 }
