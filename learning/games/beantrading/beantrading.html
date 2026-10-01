@@ -27,7 +27,7 @@
     <section id="playArea">
       <div class="turn-banner"><div class="turn-copy"><div class="turn-meta"><span id="roundLabel">1 / 5 라운드</span><span id="roomLabel"></span><span id="stageLabel"></span></div><h2 id="turnTitle"></h2><p id="turnHint"></p></div><div class="timer"><strong id="seconds">10</strong><span>초</span></div><button id="nextBtn" class="primary hidden"></button><button id="rulesBtnGame" class="ghost" type="button">규칙</button></div>
       <div class="game-grid">
-        <section class="market panel"><div class="section-head"><h2>오늘의 장터</h2><span id="deckLabel"></span></div><div class="market-center"><div class="draw-pile"><img src="assets/images/card-back-v1.png" alt="카드 더미"><span>공개 카드</span></div><div id="marketCards" class="card-row"></div></div><p id="marketHint" class="muted"></p></section>
+        <section class="market panel"><div class="section-head"><h2>오늘의 장터</h2><span id="deckLabel"></span></div><div class="market-center"><div class="draw-pile"><img src="assets/images/card-back-v1.webp" alt="카드 더미"><span>공개 카드</span></div><div id="marketCards" class="card-row"></div></div><p id="marketHint" class="muted"></p></section>
         <aside class="trade-panel panel">
           <div class="section-head"><h2 id="inboxTitle">받은 제안 <span id="tradeCount"></span></h2><button id="toggleComposer" class="primary" type="button" aria-expanded="false" aria-controls="tradeComposer quickTrade">제안 만들기</button></div>
           <div id="offers" class="offers" aria-live="polite"></div>
@@ -42,7 +42,7 @@
       <section class="farm panel"><div class="fields-section"><div class="section-head"><h2>내 밭</h2><strong id="myCoins" class="coins"></strong></div><div id="myFields" class="my-fields"></div></div><div class="hand-section"><div class="pocket-head"><div class="pocket-tabs" role="tablist" aria-label="내 카드"><button id="handTab" type="button" role="tab" aria-selected="true" aria-controls="handCards">손패 <span id="handCount"></span></button><button id="pendingTab" type="button" role="tab" aria-selected="false" aria-controls="pendingCards">받은 콩 <span id="pendingCount">0</span></button></div><span id="pocketHint" class="muted">← 앞에서부터 심기</span></div><div id="handCards" class="card-row hand" role="tabpanel" aria-labelledby="handTab"></div><div id="pendingCards" class="card-row hand hidden" role="tabpanel" aria-labelledby="pendingTab"></div></div></section>
       <details class="history"><summary>장터 기록</summary><ol id="log"></ol></details>
     </section>
-    <section id="resultPanel" class="panel result hidden"><img class="result-coin" src="assets/images/coin-v1.png" alt="금화"><span class="eyebrow">MARKET CLOSED</span><h2 id="resultTitle"></h2><p>5라운드 종료 · 모든 밭을 자동 수확했습니다.</p><div id="rankings"></div><div class="row result-actions"><button id="newGameBtn" class="primary">한 판 더</button><button id="returnLobbyBtn" class="secondary">대기실로</button></div></section>
+    <section id="resultPanel" class="panel result hidden"><img class="result-coin" src="assets/images/coin-v1.webp" alt="금화"><span class="eyebrow">MARKET CLOSED</span><h2 id="resultTitle"></h2><p>5라운드 종료 · 모든 밭을 자동 수확했습니다.</p><div id="rankings"></div><div class="row result-actions"><button id="newGameBtn" class="primary">한 판 더</button><button id="returnLobbyBtn" class="secondary">대기실로</button></div></section>
   </section>
 </main>
 <dialog id="beanDialog" aria-labelledby="beanDialogTitle"><div class="dialog-head"><h2 id="beanDialogTitle">콩 수확표</h2><button id="closeBean" class="secondary" type="button">닫기</button></div><div id="beanDetail"></div></dialog>

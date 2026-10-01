@@ -14,7 +14,7 @@
             '<path d="M -5 -36 L 5 -36" stroke="#7c2d12" stroke-width="2"/>' +
             '<path d="M -8 -35 L 8 -35" stroke="#facc15" stroke-width="3" stroke-linecap="round"/></g>';
     }
-    const MOON_IMAGE = 'assets/images/moon-nearside-nasa.jpg';
+    const MOON_IMAGE = 'assets/images/moon-nearside-nasa.webp';
     const PLANET_IMAGES = '../solar-system/assets/images/';
     const fmt = value => Number(value.toFixed(3));
     const svgCircle = (b, fill, more='') => `<circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="${fill}" ${more}/>`;

@@ -1,7 +1,7 @@
 {
   "game": "콩 거래",
   "generator": "Built-in ImageGen",
-  "reference": "images/bean-kidney-v3.png",
+  "reference": "images/bean-kidney-v3.webp",
   "assets": [
     {
       "key": "card-back-v1",

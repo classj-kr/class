@@ -16,7 +16,7 @@
       id: 'haetae', order: '01', title: '광화문 해치상', short: '광화문 해치',
       subtitle: '조선 · 광화문', position: [9, 0, -17.75], arrival: [9, 1.62, -23.75], lookAt: [9, 1.8, -17.75],
       modelPath: '../museum/assets/models/gwanghwamun-haetae.glb', realHeight: 3.507, materialTint: 0x817d75, preserveMaterials: true,
-      image: 'assets/haetae.jpg',
+      image: 'assets/haetae.webp',
       facts: [['길이', '2.756m'], ['너비', '1.862m'], ['높이', '3.507m']],
       size: '길이 275.6cm x 너비 186.2cm x 높이 350.7cm',
       note: '광화문 앞에 한 쌍으로 세워진 수호 동물 조각',
@@ -52,7 +52,7 @@
       id: 'david', order: '03', title: '다비드상', short: '다비드상',
       subtitle: '미켈란젤로 · 1501–1504년', position: [19.375, 0, -6.875], arrival: [19.375, 1.62, -23.875], lookAt: [19.375, 5, -6.875],
       modelPath: '../museum/assets/models/david.glb', realHeight: 5.17, materialColor: 0xded8cc, roughness: 0.55,
-      image: '../museum/assets/artworks/d02.jpg',
+      image: '../museum/assets/artworks/d02.webp',
       facts: [['높이', '5.17m'], ['재질', '대리석'], ['제작', '1501-1504년']],
       size: '높이 5.17m (좌대 제외 실측)',
       note: '피렌체 아카데미아 미술관 소장',
@@ -70,7 +70,7 @@
       id: 'venus', order: '04', title: '밀로의 비너스', short: '밀로의 비너스',
       subtitle: '알렉산드로스 추정 · 기원전 150–125년경', position: [-19.375, 0, -6.875], arrival: [-19.375, 1.62, -23.875], lookAt: [-19.375, 2.2, -6.875],
       modelPath: '../museum/assets/models/venus-de-milo.glb', realHeight: 2.04, materialColor: 0xd9d2c5, roughness: 0.58,
-      image: '../museum/assets/artworks/d05.jpg',
+      image: '../museum/assets/artworks/d05.webp',
       facts: [['높이', '2.04m'], ['재질', '대리석'], ['제작', '기원전 150-125년경']],
       size: '높이 204cm',
       note: '루브르 박물관 소장',
@@ -88,7 +88,7 @@
       id: 'pieta', order: '05', title: '피에타상', short: '피에타상',
       subtitle: '미켈란젤로 · 1498–1499년', position: [0, 0, -21.25], arrival: [0, 1.62, -29.25], lookAt: [0, 2.5, -21.25],
       modelPath: '../museum/assets/models/pieta.glb', realHeight: 1.75, materialColor: 0xdbd5c8, roughness: 0.56,
-      image: '../museum/assets/artworks/d06.jpg',
+      image: '../museum/assets/artworks/d06.webp',
       facts: [['높이', '1.75m'], ['너비', '1.95m'], ['재질', '대리석']],
       size: '높이 1.75m x 너비 1.95m',
       note: '바티칸 성 베드로 대성당 소장',
@@ -106,7 +106,7 @@
       id: 'sphinx', order: '06', title: '기자의 대스핑크스', short: '대스핑크스',
       subtitle: '고대 이집트 · 기원전 2500년경', position: [0, 0, 50], arrival: [40, 1.62, 50], lookAt: [0, 10, 50], modelRotation: [0, Math.PI, 0], collisionSize: [24.2, 44.5],
       modelPath: 'assets/models/sphinx.glb', realHeight: 20.22, preserveMaterials: true,
-      image: 'assets/sphinx.jpg',
+      image: 'assets/sphinx.webp',
       facts: [['길이', '73.5m'], ['너비', '19m'], ['높이', '20.22m']],
       size: '길이 73.5m x 너비 19m x 높이 20.22m',
       note: '이집트 기자 고원에 있는 석회암 조각',
@@ -124,7 +124,7 @@
       id: 'liberty', order: '07', title: '자유의 여신상', short: '자유의 여신상',
       subtitle: '프레데리크 바르톨디 · 1886년', position: [52, 0, 0], arrival: [52, 1.62, -58], lookAt: [52, 46, 0], modelRotation: [0, Math.PI, 0],
       modelPath: 'assets/models/statue-of-liberty.glb', realHeight: 46.05, preserveMaterials: true,
-      image: 'assets/liberty.jpg',
+      image: 'assets/liberty.webp',
       facts: [['조각상 높이', '46.05m'], ['받침대', '46.94m'], ['총 높이', '92.99m']],
       size: '조각상 46.05m (받침대 제외)',
       note: '미국 국립공원관리청(NPS) 공식 실측 수치',
@@ -142,7 +142,7 @@
       id: 'moai', order: '08', title: '이스터섬 모아이 석상', short: '모아이 석상',
       subtitle: '칠레 라파누이 · 1250–1500년경', position: [0, 0, 14], arrival: [0, 1.62, 6], lookAt: [0, 3, 14],
       modelPath: 'assets/models/moai.glb', realHeight: 4.0, preserveMaterials: true, modelRotation: [0.2198, -0.0040, -0.0370], groundSink: 0.45,
-      image: 'assets/moai.jpg',
+      image: 'assets/moai.webp',
       facts: [['평균 높이', '약 4.0m'], ['무게', '약 14톤'], ['재질', '응회암']],
       size: '높이 약 4.0m (평균 크기 기준)',
       note: '라파누이 국립공원 유적',
@@ -160,7 +160,7 @@
       id: 'lamassu', order: '09', title: '람마수 (날개 달린 황소상)', short: '람마수 황소상',
       subtitle: '고대 아시리아 · 기원전 8세기', position: [0, 0, -13.75], arrival: [0, 1.62, 0.25], lookAt: [0, 2.5, -13.75],
       modelPath: 'assets/models/lamassu.glb', realHeight: 4.4, preserveMaterials: true,
-      image: 'assets/lamassu.jpg',
+      image: 'assets/lamassu.webp',
       facts: [['높이', '4.4m'], ['길이', '4.4m'], ['재질', '설화석고']],
       size: '높이 4.4m x 길이 4.4m',
       note: '대영박물관 소장 유물',
@@ -279,12 +279,12 @@
     return texture;
   }
 
-  const grassAlbedo = surfaceTexture('assets/textures/grass-albedo.jpg', 48, 48);
-  const grassBump = surfaceTexture('assets/textures/grass-bump.jpg', 48, 48, false);
-  const pathAlbedo = surfaceTexture('assets/textures/stone-path-albedo.jpg', 16, 16);
-  const pathBump = surfaceTexture('assets/textures/stone-path-bump.jpg', 16, 16, false);
-  const graniteAlbedo = surfaceTexture('assets/textures/granite-pedestal-albedo.jpg', 4, 4);
-  const graniteBump = surfaceTexture('assets/textures/granite-pedestal-bump.jpg', 4, 4, false);
+  const grassAlbedo = surfaceTexture('assets/textures/grass-albedo.webp', 48, 48);
+  const grassBump = surfaceTexture('assets/textures/grass-bump.webp', 48, 48, false);
+  const pathAlbedo = surfaceTexture('assets/textures/stone-path-albedo.webp', 16, 16);
+  const pathBump = surfaceTexture('assets/textures/stone-path-bump.webp', 16, 16, false);
+  const graniteAlbedo = surfaceTexture('assets/textures/granite-pedestal-albedo.webp', 4, 4);
+  const graniteBump = surfaceTexture('assets/textures/granite-pedestal-bump.webp', 4, 4, false);
 
   const MAT = {
     grass: new THREE.MeshStandardMaterial({ map: grassAlbedo, bumpMap: grassBump, bumpScale: 0.12, roughness: .94 }),

@@ -21,7 +21,7 @@ window.SOLAR_SYSTEM_DATA = {
             '🔄 [흑점의 생애 주기 및 11년 주기] 개별 흑점은 수일~수개월 동안 서서히 커졌다가 작아지며 소멸하는 생애 주기를 가지며, 흑점 전체 수의 극대/극소는 [약 11년 주기]로 반복됨'
         ],
         trivia: '태양 빛이 지구까지 도착하는 데 걸리는 시간은 약 8분 20초입니다.',
-        photoUrl: 'assets/images/sun.jpg',
+        photoUrl: 'assets/images/sun.webp',
         color: '#ffaa00'
     },
     mercury: {
@@ -51,7 +51,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '태양 주변을 가장 빨리 공전하며, 위성과 고리가 전혀 없습니다.',
         missions: ['메신저(MESSENGER)', '베피콜롬보(BepiColombo)'],
-        photoUrl: 'assets/images/mercury.jpg',
+        photoUrl: 'assets/images/mercury.webp',
         color: '#a8a29e'
     },
     venus: {
@@ -80,7 +80,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '지구와 반대 방향으로 자전하므로 금성에서는 태양이 서쪽에서 떠서 동쪽으로 집니다.',
         missions: ['마젤란(Magellan)', '아카츠키(Akatsuki)'],
-        photoUrl: 'assets/images/venus.jpg',
+        photoUrl: 'assets/images/venus.webp',
         color: '#eab308'
     },
     earth: {
@@ -109,7 +109,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '지구 표면의 약 71%가 푸른 바다로 덮여 있습니다.',
         missions: ['국제우주정거장(ISS)', '허블/제임스웹 우주망원경'],
-        photoUrl: 'assets/images/earth.jpg',
+        photoUrl: 'assets/images/earth.webp',
         color: '#3b82f6'
     },
     moon: {
@@ -136,7 +136,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '인류가 직접 발을 디뎌본 유일한 지구 밖 천체입니다.',
         missions: ['아폴로 11호', '아르테미스 계획', '다누리호'],
-        photoUrl: 'assets/images/moon.jpg',
+        photoUrl: 'assets/images/moon.webp',
         color: '#cbd5e1'
     },
     mars: {
@@ -170,7 +170,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '지구와 자전 주기(24.6시간) 및 자전축 기울기(25.2°)가 매우 유사하여 4계절이 존재합니다.',
         missions: ['퍼서비어런스(Perseverance)', '큐리오시티(Curiosity)', '인사이트'],
-        photoUrl: 'assets/images/mars.jpg',
+        photoUrl: 'assets/images/mars.webp',
         color: '#ef4444'
     },
     jupiter: {
@@ -208,7 +208,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '목성의 위성 가니메데는 수성보다도 크기가 큰 태양계 최대 위성입니다.',
         missions: ['주노(Juno)', '갈릴레오(Galileo)', '보아저 1/2호'],
-        photoUrl: 'assets/images/jupiter.jpg',
+        photoUrl: 'assets/images/jupiter.webp',
         color: '#f97316'
     },
     saturn: {
@@ -248,7 +248,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '토성의 고리는 두께가 불과 수십 미터에 불과하지만 폭은 수십만 킬로미터에 달합니다.',
         missions: ['카시니-하위헌스(Cassini-Huygens)'],
-        photoUrl: 'assets/images/saturn.jpg',
+        photoUrl: 'assets/images/saturn.webp',
         color: '#eab308'
     },
     uranus: {
@@ -286,7 +286,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '천왕성은 극지방이 42년 동안 태양 빛을 계속 받습니다.',
         missions: ['보이저 2호(Voyager 2)'],
-        photoUrl: 'assets/images/uranus.jpg',
+        photoUrl: 'assets/images/uranus.webp',
         color: '#06b6d4'
     },
     neptune: {
@@ -321,7 +321,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '해왕성이 태양을 한 바퀴 도는 데는 164.8년이나 걸립니다.',
         missions: ['보이저 2호(Voyager 2)'],
-        photoUrl: 'assets/images/neptune.jpg',
+        photoUrl: 'assets/images/neptune.webp',
         color: '#2563eb'
     },
     pluto: {
@@ -357,7 +357,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '달보다도 크기가 작은 아담한 왜소행성입니다.',
         missions: ['뉴 하이라이즌스(New Horizons)'],
-        photoUrl: 'assets/images/pluto.jpg',
+        photoUrl: 'assets/images/pluto.webp',
         color: '#94a3b8'
     },
     comet: {
@@ -377,7 +377,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '가장 유명한 핼리 혜성은 약 75~76년 주기로 태양 주위를 공전합니다.',
         missions: ['로제타(Rosetta)', '지오토(Giotto)'],
-        photoUrl: 'assets/images/comet.jpg',
+        photoUrl: 'assets/images/comet.webp',
         color: '#38bdf8'
     },
     meteor: {
@@ -395,7 +395,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '지구에는 매일 약 100톤 이상의 우주 먼지와 유성체가 쏟아집니다.',
         missions: ['지구 대기 관측망'],
-        photoUrl: 'assets/images/meteor.jpg',
+        photoUrl: 'assets/images/meteor.webp',
         color: '#fbbf24'
     },
     asteroid: {
@@ -413,7 +413,7 @@ window.SOLAR_SYSTEM_DATA = {
         ],
         trivia: '소행성대에서 가장 큰 왜소행성 세레스(Ceres)는 지름이 약 940km입니다.',
         missions: ['하야부사 2호', '오시리스-렉스(OSIRIS-REx)'],
-        photoUrl: 'assets/images/asteroid.jpg',
+        photoUrl: 'assets/images/asteroid.webp',
         color: '#a8a29e'
     }
 };

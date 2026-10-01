@@ -12,7 +12,7 @@ const SHELL = [
   '/classboard/notice-card.js',
   '/classboard/push-toggle.js',
   '/classboard/manifest.json',
-  '/favicon.png'
+  '/favicon.webp'
 ];
 
 self.addEventListener('install', (event) => {
@@ -63,8 +63,8 @@ self.addEventListener('push', (event) => {
   }
   event.waitUntil(self.registration.showNotification(data.title || '알림장', {
     body: data.body || '새 글이 올라왔습니다.',
-    icon: '/favicon.png',
-    badge: '/favicon.png',
+    icon: '/favicon.webp',
+    badge: '/favicon.webp',
     data: { url: data.url || '/classboard/' }
   }));
 });

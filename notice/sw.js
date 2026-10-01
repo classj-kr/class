@@ -3,7 +3,7 @@ const CACHE_NAME = 'notice-forms-v3';
 const ASSETS_TO_CACHE = [
   '/notice/index.html',
   '/notice/manifest.json',
-  '/favicon.png'
+  '/favicon.webp'
 ];
 
 self.addEventListener('install', (event) => {
@@ -43,8 +43,8 @@ self.addEventListener('push', (event) => {
   }
   const options = {
     body: data.body,
-    icon: '/favicon.png',
-    badge: '/favicon.png',
+    icon: '/favicon.webp',
+    badge: '/favicon.webp',
     vibrate: [100, 50, 100],
     data: { url: data.url || '/notice/index.html' }
   };

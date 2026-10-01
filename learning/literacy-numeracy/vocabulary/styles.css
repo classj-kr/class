@@ -30,7 +30,7 @@ body {
     color: var(--ink);
     background:
         linear-gradient(rgba(248, 243, 232, .18), rgba(238, 229, 211, .24)),
-        url("assets/images/classroom-background.jpg?v=20260802b") center / cover fixed no-repeat;
+        url("assets/images/classroom-background.webp?v=20260802b") center / cover fixed no-repeat;
     font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
 }
 
