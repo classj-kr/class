@@ -77,7 +77,7 @@
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
     if(kind==="hint")reason("힌트 계산 중","둘 곳을 살펴보고 있어요","왕과 다른 말이 공격받는지 확인하고 있어요.");
     try{
-      worker=new Worker("janggi-worker.js?v=9");
+      worker=new Worker("janggi-worker.js?v=10");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

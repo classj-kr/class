@@ -13,7 +13,8 @@ const status=s=>game==='chess'?C.status(s):game==='janggi'?J.status(s):s;
 const side=s=>s.turn??s.color;
 const checked=s=>game==='chess'?C.isInCheck(s):game==='janggi'?J.inCheck(s):false;
 const ai=game==='chess'?CA:game==='janggi'?JA:A;
-for(const hintFirst of [true,false]){
+const sides=process.argv.includes('--first')?[true]:process.argv.includes('--second')?[false]:[true,false];
+for(const hintFirst of sides){
   const file=path.join(output,`${game}-hint-${hintFirst?'first':'second'}.json`);
   const previous=resume?JSON.parse(fs.readFileSync(file,'utf8')):null;
   if(previous){assert.deepEqual(previous.settings,ai.HINT);if(previous.result!=='unfinished')continue;}
