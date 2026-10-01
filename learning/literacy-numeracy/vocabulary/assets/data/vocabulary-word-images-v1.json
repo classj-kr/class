@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1031,
+  "totalImages": 1038,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1032,6 +1032,13 @@
     "588": { "word": "conscience", "file": "conscience-v2.webp" },
     "257": { "word": "behalf", "file": "behalf-v2.webp" },
     "1728": { "word": "motive", "file": "motive-v2.webp" },
-    "2680": { "word": "territory", "file": "territory-v2.webp" }
+    "2680": { "word": "territory", "file": "territory-v2.webp" },
+    "135": { "word": "apology", "file": "apology-v2.webp" },
+    "491": { "word": "clay", "file": "clay-v2.webp" },
+    "2231": { "word": "reveal", "file": "reveal-v2.webp" },
+    "1383": { "word": "impact", "file": "impact-v2.webp" },
+    "2068": { "word": "profile", "file": "profile-v2.webp" },
+    "1190": { "word": "gene", "file": "gene-v2.webp" },
+    "445": { "word": "chaos", "file": "chaos-v2.webp" }
   }
 }
