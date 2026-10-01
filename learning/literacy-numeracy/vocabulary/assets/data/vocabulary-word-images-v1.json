@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1133,
+  "totalImages": 1141,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1134,6 +1134,14 @@
     "638": { "word": "corridor", "file": "corridor-v2.webp" },
     "717": { "word": "database", "file": "database-v2.webp" },
     "1139": { "word": "fountain", "file": "fountain-v2.webp" },
-    "1285": { "word": "harmony", "file": "harmony-v2.webp" }
+    "1285": { "word": "harmony", "file": "harmony-v2.webp" },
+    "1851": { "word": "orchestra", "file": "orchestra-v2.webp" },
+    "662": { "word": "craft", "file": "craft-v2.webp" },
+    "147": { "word": "architect", "file": "architect-v2.webp" },
+    "2550": { "word": "stove", "file": "stove-v2.webp" },
+    "805": { "word": "dimension", "file": "dimension-v2.webp" },
+    "1654": { "word": "mechanic", "file": "mechanic-v2.webp" },
+    "1038": { "word": "fare", "file": "fare-v2.webp" },
+    "228": { "word": "barrier", "file": "barrier-v2.webp" }
   }
 }
