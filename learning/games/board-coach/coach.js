@@ -1,7 +1,7 @@
 /* global BoardCoachRules, BoardCoachAI */
 (() => {
   "use strict";
-  if (new URLSearchParams(location.search).get("game") === "chess") return;
+  if (["chess", "janggi"].includes(new URLSearchParams(location.search).get("game"))) return;
   const R = BoardCoachRules, AI = BoardCoachAI, $ = id => document.getElementById(id);
   const game = new URLSearchParams(location.search).get("game") === "omok" ? "omok" : "reversi";
   const name = game === "omok" ? "오목" : "리버시";
@@ -16,7 +16,6 @@
   $("title").textContent = name;
   $("backLink").href = `../${game}/${game}`;
   $("principle").textContent = principle;
-  $("variantNote").textContent = variant;
   $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>초급도 기본 공격·방어를 확인합니다. 수준이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌 위의 주황 점은 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
   function stopWork() {
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
@@ -37,7 +36,7 @@
     const current = reviewPosition?.before || state;
     drawBoard(current, reviewPosition ? reviewPosition.feedback?.alternative ?? reviewPosition.index : hint?.index);
     $("levelLabel").textContent = `${AI.LEVELS[level].name} AI`;
-    $("colorLabel").textContent = `나는 ${human === 1 ? "흑" : "백"}`;
+    $("colorLabel").textContent = `내 돌: ${human === 1 ? "검은색" : "흰색"}`;
     const passed = state.passed ? `${state.passed === human ? "내가" : "AI가"} 둘 곳이 없어 차례를 넘겼어요. ` : "";
     $("turn").textContent = reviewPosition ? `${moves.indexOf(reviewPosition) + 1}수 두기 전 · 복기` : !started ? "AI 수준을 골라 시작하세요." : state.ended ? (state.winner ? state.winner === human ? "내가 이겼어요!" : "AI가 이겼어요." : "무승부예요.") : busy && retryKind === "move" ? "AI가 생각하고 있어요…" : passed + (state.color === human ? "내 차례" : "AI 차례");
     $("score").textContent = game === "reversi" ? `흑 ${current.board.filter(v => v === 1).length} : 백 ${current.board.filter(v => v === 2).length}` : `${reviewPosition ? moves.indexOf(reviewPosition) : state.count}수`;
@@ -65,7 +64,7 @@
     render();
     if (kind === "hint") setReason("힌트를 생각하고 있어요", "잠깐만 기다려 주세요", "공격할 곳과 상대의 위협을 함께 살펴보고 있어요.");
     try {
-      worker = new Worker("ai-worker.js?v=1");
+      worker = new Worker("ai-worker.js?v=2");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;
@@ -126,7 +125,7 @@
     human = form.get("color") === "2" ? 2 : 1;
     state = R.initial(game); moves = []; feedback = null; hint = null; reviewPosition = null; started = true;
     $("retry").classList.add("hidden"); $("setup").close();
-    setReason("기본 원칙부터", human === 1 ? "내가 먼저 시작해요" : "AI의 시작을 살펴봐요", principle);
+    setReason("첫 차례", human === 1 ? "내가 먼저 둡니다" : "AI가 먼저 둡니다", principle);
     render();
   });
   $("reviewList").addEventListener("click", event => {

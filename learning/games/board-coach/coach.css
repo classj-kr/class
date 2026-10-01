@@ -60,6 +60,28 @@ p { line-height: 1.65; }
 .piece-body { fill: var(--piece-fill); stroke: var(--piece-edge); stroke-width: 2; stroke-linejoin: round; }
 .piece-detail { fill: none; stroke: var(--piece-edge); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .chess-piece.b .piece-detail { stroke: #94a389; }
+.janggi-coach .board-frame { aspect-ratio: 9 / 10; width: min(620px, 100cqw, 90cqh); }
+.janggi-coach .board-viewport.zoomed .board-frame { width: 760px; max-width: none; }
+#board.janggi { --size: 9; position: relative; background: #e5c48b; border: 2px solid #916530; container-type: inline-size; grid-template-rows: repeat(10, minmax(0, 1fr)); }
+.janggi .square { aspect-ratio: auto; border: 0; background: linear-gradient(transparent calc(50% - .6px),#967348 calc(50% - .6px),#967348 calc(50% + .6px),transparent calc(50% + .6px)),linear-gradient(90deg,transparent calc(50% - .6px),#967348 calc(50% - .6px),#967348 calc(50% + .6px),transparent calc(50% + .6px)); }
+.janggi-piece { position: absolute; inset: 9%; display: grid; place-items: center; background: #fff0c9; color: #16599c; border: 2px solid #9a7544; border-radius: 27%; box-shadow: 0 2px 2px #422b1840, inset 0 0 0 2px #ffe0a5; font-size: clamp(17px, 5cqw, 32px); font-weight: 800; pointer-events: none; }
+.janggi-piece.h { color: #ad2827; }
+.janggi-piece.king { inset: 3%; font-size: clamp(19px, 5.5cqw, 35px); }
+.janggi .square.selected .janggi-piece { outline: 3px solid #32623a; outline-offset: 1px; }
+.janggi .square.checked .janggi-piece { background: #ffd3ba; outline: 3px solid #b54232; }
+.janggi .square.recent { background-color: #e6b553; }
+.janggi .square.target:has(.janggi-piece)::after { content: ''; position: absolute; inset: 2%; border: 3px dashed #b34527; border-radius: 25%; }
+.janggi .square.suggested::after { border-color: #176c58; inset: 1%; border-radius: 25%; }
+.janggi .legal-dot { background: #286f5c; width: 22%; height: 22%; inset: 39%; }
+.janggi-palace { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.janggi-palace path { fill: none; stroke: #967348; stroke-width: .025; }
+.formation-options { grid-template-columns: 1fr 1fr; }
+.formation-options label { display: grid; gap: 6px; font-size: 14px; }
+.formation-options select { width: 100%; min-width: 0; min-height: 44px; padding: 8px; border: 1px solid #bdcbbb; border-radius: 8px; font: inherit; color: inherit; background: #fffdf7; }
+.janggi-record summary { font-weight: 700; cursor: pointer; }
+#janggiMoves { white-space: pre-line; line-height: 1.8; margin-top: 10px; font-size: 15px; }
+.rules ul { padding-left: 20px; line-height: 1.65; }
+.rules li { margin: 6px 0; }
 .chess-record { font-size: 15px; }
 .chess-record summary { cursor: pointer; font-weight: 700; }
 #chessMoves { line-height: 1.9; margin-top: 10px; overflow-wrap: anywhere; }
@@ -96,7 +118,6 @@ legend { font-weight: 800; margin-bottom: 8px; }
 .option input { width: 19px; height: 19px; accent-color: #2c6341; }
 .option small { display: block; color: #61705b; font-size: 14px; margin-top: 3px; }
 .color-options { grid-template-columns: 1fr 1fr; }
-#variantNote { margin: 12px 0; }
 @media (max-width: 1000px) and (orientation: landscape) {
   body { padding: 8px; }
   .layout { grid-template-columns: minmax(0,1fr) 270px; gap: 10px; }
@@ -107,6 +128,7 @@ legend { font-weight: 800; margin-bottom: 8px; }
   .layout { height: auto; min-height: 0; grid-template-columns: 1fr; }
   .table { min-height: 0; }
   .board-viewport { height: min(78vw, 670px); }
+  .janggi-coach .board-viewport { height: min(107vw, 750px); }
   .sidebar { overflow: visible; display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
   .feedback, #reviewPanel, .rules { grid-column: 1 / -1; }
 }

@@ -9,18 +9,19 @@
   <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
   <script src="idiomatic-expressions-data.js?v=20260927-1" defer></script>
   <script src="idiomatic-expressions-illustrations.js" defer></script>
-  <script src="app.js?v=20260927-1" defer></script>
+  <script src="/assets/learning-records.js?v=20261001-1" defer></script>
+  <script src="/assets/learning-lesson.js?v=20261001-1" defer></script>
+  <script src="app.js?v=20261001-common-records" defer></script>
 </head>
 <body>
   <header>
     <a class="back" href="../../../">← 메인</a>
-    <output id="score" aria-live="polite" hidden>정답 0 / 0</output>
   </header>
   <audio id="bgm" src="assets/quiet-dobble-board.ogg" preload="auto" loop></audio>
 
   <main>
     <section id="lessonOverview" class="lesson-overview" aria-labelledby="lessonHeading">
-      <div class="overview-heading"><h1 id="lessonHeading" class="sr-only">차시 선택</h1><strong id="completionSummary">0 / 11 완료</strong></div>
+      <div class="overview-heading"><h1 id="lessonHeading" class="sr-only">차시 선택</h1></div>
       <div id="lessonList" class="lesson-list"></div>
     </section>
     <div id="learningShell" hidden>

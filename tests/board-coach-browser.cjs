@@ -38,8 +38,8 @@ async function main() {
     page.on("response",r=>{if(r.url().includes("/board-coach/")&&r.status()>=400) errors.push(`${r.status()}: ${r.url()}`)});
     for(const game of ["reversi","omok"]) {
       await page.goto(`${base}/learning/games/${game}/${game}`);
-      assert.equal(await page.locator(".coach-entry a").isVisible(),true);
-      await page.locator(".coach-entry a").click();
+      assert.equal(await page.locator("a.coach-entry").isVisible(),true);
+      await page.locator("a.coach-entry").click();
       await page.locator("#setup[open]").waitFor();
       assert.ok(page.url().includes(`game=${game}`));
       await page.locator("#startLearning").click();

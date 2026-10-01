@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-PALETTE = {'A': '#39b982', 'B': '#e8bb65', 'C': '#eaa5a4', 'D': '#739bd0', 'E': '#d5d0e5'}
+PALETTE = {'A': '#eaa5a4', 'B': '#e8bb65', 'C': '#39b982', 'D': '#739bd0', 'E': '#d5d0e5'}
 MAX_ZOOM = 5
 
 

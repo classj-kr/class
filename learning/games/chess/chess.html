@@ -7,22 +7,19 @@
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="styles.css?v=20260921c">
-<link rel="stylesheet" href="../board-coach/entry.css?v=1">
+<link rel="stylesheet" href="../board-coach/entry.css?v=2">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
 <script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
 <script src="chess-rules.js?v=20261001-standard"></script>
 <script src="chess-ui.js?v=20260923-learning" defer></script>
+<script src="../board-coach/entry.js?v=1" defer></script>
 </head>
 <body>
 <main class="shell">
-  <section class="coach-entry" aria-label="AI와 배우기">
-    <div><strong>AI와 배우기</strong><span>초급 AI · 중급 AI · 상급 AI / 힌트 · 수 물리기</span></div>
-    <a href="../board-coach/coach.html?game=chess">학습 대국 시작</a>
-  </section>
   <section id="missingScreen" class="hidden missing-screen">
     <h1 class="title">CHESS</h1>
-    <div class="panel"><strong>이름이 없습니다.</strong><p>이름 변경은 메인 화면에서만 가능합니다.</p><button class="btn primary" type="button" onclick="location.href='../../../'">메인 화면으로</button></div>
+    <div class="panel"><strong>이름이 없습니다.</strong><p>이름 변경은 메인 화면에서만 가능합니다.</p><button class="btn primary" type="button" onclick="location.href='../../../'">메인 화면으로</button><a class="coach-entry" href="../board-coach/coach.html?game=chess">AI와 배우기</a></div>
   </section>
 
   <section id="lobbyScreen" class="hidden lobby-screen mp-lobby-fit" data-multiplayer-lobby>

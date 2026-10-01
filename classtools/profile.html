@@ -48,6 +48,11 @@
         .secondary-button { color:var(--green); background:transparent; }
         .picker-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
         #avatarStatus { min-height:26px; color:var(--muted); font-weight:800; }
+        [hidden] { display:none !important; }
+        .settings-nav { display:flex; gap:12px; margin:16px 0; flex-wrap:wrap; }
+        .settings-nav a,.card a { color:var(--green); }
+        .ai-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+        #aiStatus { min-height:26px; overflow-wrap:anywhere; }
         @media(max-width:600px){.avatar-current{align-items:flex-start}.avatar-current img{width:92px;height:92px}.picker-actions{align-items:stretch;flex-direction:column}}
         @media(max-width:600px){body{padding:18px 14px}.identity{grid-template-columns:1fr}.actions{align-items:stretch;flex-direction:column}button{width:100%}}
     </style>
@@ -55,7 +60,8 @@
 <body><main>
     <div class="top"><a class="back" href="/">← 첫 화면</a><a class="privacy-link" href="/student-privacy">개인정보 안내</a></div>
     <h1>내 정보 설정</h1>
-    <section class="card" aria-labelledby="identityTitle"><h2 id="identityTitle">내 학급</h2><div class="identity"><div><span>학생</span><strong id="studentName">확인 중…</strong></div><div><span>학급</span><strong id="className">확인 중…</strong></div></div></section>
+    <nav class="settings-nav" id="settingsNav" hidden aria-label="내 정보 항목"><a href="#identityTitle">프로필</a><a href="#ai-settings">AI 설정</a></nav>
+    <section class="card" aria-labelledby="identityTitle"><h2 id="identityTitle">내 학급</h2><div class="identity"><div><span id="identityRole">학생</span><strong id="studentName">확인 중…</strong></div><div><span id="affiliationLabel">학급</span><strong id="className">확인 중…</strong></div></div></section>
     <section id="avatarCard" class="card" hidden aria-labelledby="avatarTitle">
         <h2 id="avatarTitle">&#45236; &#50500;&#48148;&#53440;</h2>
         <div class="avatar-current">
@@ -64,7 +70,7 @@
         </div>
         <div class="actions"><span></span><button id="openAvatarPicker" class="secondary-button" type="button">&#50500;&#48148;&#53440; &#48148;&#44984;&#44592;</button></div>
         <div id="avatarPicker" class="avatar-picker" hidden>
-            <p class="hint warning">&#49352; &#50500;&#48148;&#53440;&#47484; &#54869;&#51221;&#54616;&#47732; &#51060;&#48264; &#44592;&#44036;&#51032; &#48320;&#44221; &#44592;&#54924; 1&#54924;&#47484; &#49324;&#50857;&#54633;&#45768;&#45796;.</p>
+            <p id="avatarChangeHint" class="hint warning">&#49352; &#50500;&#48148;&#53440;&#47484; &#54869;&#51221;&#54616;&#47732; &#51060;&#48264; &#44592;&#44036;&#51032; &#48320;&#44221; &#44592;&#54924; 1&#54924;&#47484; &#49324;&#50857;&#54633;&#45768;&#45796;.</p>
             <h3>&#52628;&#52380; &#50500;&#48148;&#53440;</h3>
             <div id="recommendedAvatars" class="avatar-grid"></div>
             <button id="toggleAllAvatars" class="secondary-button" type="button">&#51204;&#52404; &#50500;&#48148;&#53440; &#48372;&#44592;</button>
@@ -80,14 +86,31 @@
             <select id="birthdayDay" aria-label="생일 일"><option value="">일</option></select>
         </div>
         <p id="birthdayHint" class="hint">태어난 해는 받지 않아요. 월과 일만 저장합니다.</p>
-        <label class="choice" for="birthdayVisible"><input id="birthdayVisible" type="checkbox"><span><strong>학급 주요일정에 내 생일 공개</strong><small>켜면 학급 구성원에게 ‘○○ 생일’ 일정이 보여요. 언제든 다시 끌 수 있어요.</small></span></label>
+        <label class="choice" for="birthdayVisible"><input id="birthdayVisible" type="checkbox"><span><strong>학급 대시보드에 내 생일 공개</strong><small id="birthdaySharingHint">켜면 학급 구성원에게 ‘○○ 생일’ 일정이 보여요. 언제든 다시 끌 수 있어요.</small></span></label>
         <p id="preview" class="preview">현재 생일은 공개되지 않습니다.</p>
-        <p class="hint warning">친구의 생일이나 다른 개인정보는 입력하지 마세요.</p>
+        <p id="studentBirthdayHint" class="hint warning">친구의 생일이나 다른 개인정보는 입력하지 마세요.</p>
         <div class="actions"><span id="status" role="status" aria-live="polite"></span><button id="saveButton" type="submit">설정 저장</button></div>
     </form>
     
+    <section id="ai-settings" class="card" hidden aria-labelledby="aiTitle">
+        <h2 id="aiTitle">AI 설정</h2>
+        <p class="hint">생활기록부 등 교사용 AI 기능에서 함께 사용할 Gemini API 키를 관리합니다.</p>
+        <p class="hint">키는 이 브라우저에 현재 교사 계정별로 저장됩니다. 다른 기기에서는 다시 등록해 주세요.</p>
+        <label for="geminiKey">Gemini API 키</label>
+        <input id="geminiKey" type="password" autocomplete="off" spellcheck="false" placeholder="API 키 붙여 넣기">
+        <p class="hint"><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio에서 API 키 만들기</a></p>
+        <div class="ai-actions">
+            <button id="saveAiKey" type="button">키 저장</button>
+            <button id="checkAiKey" class="secondary-button" type="button">연결 확인</button>
+            <button id="deleteAiKey" class="secondary-button" type="button">키 삭제</button>
+        </div>
+        <p id="aiStatus" class="hint" role="status" aria-live="polite"></p>
+    </section>
 </main>
+<script src="/classtools/ai-client.js"></script>
 <script>
+let isTeacherProfile=false;
+function profilePath(){return isTeacherProfile?'/api/teacher/settings':'/api/student/profile'}
 const form=document.querySelector('#profileForm'),birthdayMonth=document.querySelector('#birthdayMonth'),birthdayDay=document.querySelector('#birthdayDay'),visible=document.querySelector('#birthdayVisible'),preview=document.querySelector('#preview'),statusEl=document.querySelector('#status'),saveButton=document.querySelector('#saveButton');
 for(let m=1;m<=12;m+=1){birthdayMonth.add(new Option(`${m}월`,String(m)))}
 function daysInMonth(month){return month?new Date(2000,Number(month),0).getDate():31}
@@ -120,7 +143,8 @@ function renderAvatarGrid(container,options){container.replaceChildren(...option
 function renderAvatar(avatar){
     currentAvatarProfile=avatar||{key:'',url:'',options:[],canChange:false};selectedAvatarKey='';avatarPicker.hidden=true;allAvatars.hidden=true;toggleAllAvatars.textContent='\uc804\uccb4 \uc544\ubc14\ud0c0 \ubcf4\uae30';avatarStatus.textContent='';
     if(currentAvatarProfile.url){currentAvatarImage.src=currentAvatarProfile.url;currentAvatarImage.hidden=false;currentAvatarName.textContent=avatarDisplayName(currentAvatarProfile.key)}else{currentAvatarImage.removeAttribute('src');currentAvatarImage.hidden=true;currentAvatarName.textContent='\uc544\uc9c1 \ubc30\uc815\ub418\uc9c0 \uc54a\uc74c'}
-    if(!currentAvatarProfile.key)avatarPolicy.textContent='\ub2f4\uc784 \uc120\uc0dd\ub2d8\uc774 \uba85\ub2e8\uc744 \uc800\uc7a5\ud558\uba74 \uc544\ubc14\ud0c0\uac00 \uc790\ub3d9\uc73c\ub85c \ubc30\uc815\ub429\ub2c8\ub2e4.';
+    if(isTeacherProfile)avatarPolicy.textContent='원하는 아바타를 선택하고 언제든 바꿀 수 있습니다.';
+    else if(!currentAvatarProfile.key)avatarPolicy.textContent='\ub2f4\uc784 \uc120\uc0dd\ub2d8\uc774 \uba85\ub2e8\uc744 \uc800\uc7a5\ud558\uba74 \uc544\ubc14\ud0c0\uac00 \uc790\ub3d9\uc73c\ub85c \ubc30\uc815\ub429\ub2c8\ub2e4.';
     else if(currentAvatarProfile.canChange)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} \ubcc0\uacbd \uae30\ud68c\uac00 1\ud68c \ub0a8\uc544 \uc788\uc2b5\ub2c8\ub2e4.`;
     else if(currentAvatarProfile.changeUsed)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} \ubcc0\uacbd \uae30\ud68c\ub97c \uc774\ubbf8 \uc0ac\uc6a9\ud588\uc2b5\ub2c8\ub2e4.`;
     else avatarPolicy.textContent='1~2\uc6d4\uc5d0\ub294 \uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.';
@@ -132,19 +156,60 @@ openAvatarPicker.addEventListener('click',()=>{avatarPicker.hidden=!avatarPicker
 toggleAllAvatars.addEventListener('click',()=>{allAvatars.hidden=!allAvatars.hidden;toggleAllAvatars.textContent=allAvatars.hidden?'\uc804\uccb4 \uc544\ubc14\ud0c0 \ubcf4\uae30':'\uc804\uccb4 \uc544\ubc14\ud0c0 \uc811\uae30'});
 saveAvatar.addEventListener('click',async()=>{
     if(!selectedAvatarKey||selectedAvatarKey===currentAvatarProfile?.key)return;
-    if(!confirm('\uc774 \uc544\ubc14\ud0c0\ub85c \ud655\uc815\ud560\uae4c\uc694? \ud655\uc815\ud558\uba74 \uc774\ubc88 \uae30\uac04\uc758 \ubcc0\uacbd \uae30\ud68c 1\ud68c\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.'))return;
+    if(!isTeacherProfile&&!confirm('\uc774 \uc544\ubc14\ud0c0\ub85c \ud655\uc815\ud560\uae4c\uc694? \ud655\uc815\ud558\uba74 \uc774\ubc88 \uae30\uac04\uc758 \ubcc0\uacbd \uae30\ud68c 1\ud68c\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.'))return;
     saveAvatar.disabled=true;avatarStatus.textContent='\uc544\ubc14\ud0c0 \ubcc0\uacbd \uc911\u2026';
-    try{await api('/api/student/avatar',{method:'PATCH',body:JSON.stringify({avatarKey:selectedAvatarKey})});const refreshed=await api('/api/student/profile');renderAvatar(refreshed.profile.avatar);avatarStatus.textContent='\uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud588\uc2b5\ub2c8\ub2e4.'}
+    try{await api(isTeacherProfile?'/api/teacher/avatar':'/api/student/avatar',{method:'PATCH',body:JSON.stringify({avatarKey:selectedAvatarKey})});const refreshed=await api(profilePath());renderAvatar(refreshed.profile.avatar);avatarStatus.textContent='\uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud588\uc2b5\ub2c8\ub2e4.'}
     catch(error){avatarStatus.textContent=error.message;saveAvatar.disabled=false}
 });
 function renderPreview(){const value=currentMmdd();if(visible.checked&&value){preview.textContent=`${Number(value.slice(0,2))}월 ${Number(value.slice(2))}일에 ‘내 생일’ 일정이 학급에 공개됩니다.`;preview.classList.remove('warning')}else{preview.textContent='현재 생일은 공개되지 않습니다.';preview.classList.toggle('warning',visible.checked)}}
 birthdayMonth.addEventListener('change',()=>{populateDayOptions(birthdayMonth.value);renderPreview()});
 birthdayDay.addEventListener('change',renderPreview);
 visible.addEventListener('change',renderPreview);
-form.addEventListener('submit',async event=>{event.preventDefault();const partial=(birthdayMonth.value&&!birthdayDay.value)||(!birthdayMonth.value&&birthdayDay.value);if(partial){statusEl.textContent='월과 일을 모두 선택해 주세요.';return}const mmdd=currentMmdd();if(visible.checked&&!mmdd){statusEl.textContent='생일을 먼저 선택해 주세요.';return}saveButton.disabled=true;statusEl.textContent='저장 중…';try{const data=await api('/api/student/profile',{method:'PATCH',body:JSON.stringify({birthdayMmdd:mmdd,birthdayVisible:visible.checked})});setBirthdaySelects(data.profile.birthdayMmdd);visible.checked=data.profile.birthdayVisible;renderPreview();statusEl.textContent='내 선택을 저장했습니다.'}catch(error){statusEl.textContent=error.message}finally{saveButton.disabled=false}});
+form.addEventListener('submit',async event=>{event.preventDefault();const partial=(birthdayMonth.value&&!birthdayDay.value)||(!birthdayMonth.value&&birthdayDay.value);if(partial){statusEl.textContent='월과 일을 모두 선택해 주세요.';return}const mmdd=currentMmdd();if(visible.checked&&!mmdd){statusEl.textContent='생일을 먼저 선택해 주세요.';return}saveButton.disabled=true;statusEl.textContent='저장 중…';try{const data=await api(profilePath(),{method:'PATCH',body:JSON.stringify({birthdayMmdd:mmdd,birthdayVisible:visible.checked})});setBirthdaySelects(data.profile.birthdayMmdd);visible.checked=data.profile.birthdayVisible;renderPreview();statusEl.textContent='내 선택을 저장했습니다.'}catch(error){statusEl.textContent=error.message}finally{saveButton.disabled=false}});
 // 학급 명단에 이름이 있으면 들여보낸다. me.user.role 한 칸만 보면, 예전에 교직원이나
 // 보호자로 표시된 적 있는 계정은 그 표시가 지워지지 않아 자기 설정 화면에서 튕겨 나간다.
-async function start(){const me=await api('/api/auth/me');if(!me.signedIn||(!me.membership&&me.user?.role!=='student')){location.replace('/');return}const data=await api('/api/student/profile');const profile=data.profile;document.querySelector('#studentName').textContent=`${profile.studentNumber}번 ${profile.name}`;document.querySelector('#className').textContent=`${profile.grade}학년 ${profile.classNumber}반`;setBirthdaySelects(profile.birthdayMmdd);visible.checked=profile.birthdayVisible;renderPreview();form.hidden=false}start().catch(error=>{document.querySelector('#studentName').textContent='불러오지 못했습니다';document.querySelector('#className').textContent=error.message});
-async function startAvatar(){const data=await api('/api/student/profile');renderAvatar(data.profile.avatar);avatarCard.hidden=false}
-startAvatar().catch(error=>{avatarCard.hidden=false;currentAvatarName.textContent='\uc544\ubc14\ud0c0\ub97c \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4';avatarPolicy.textContent=error.message;openAvatarPicker.disabled=true});
+async function start(){
+    const me=await api('/api/auth/me');
+    isTeacherProfile=Boolean(me.isTeacher&&!me.membership);
+    if(!me.signedIn||(!isTeacherProfile&&!me.membership&&me.user?.role!=='student')){location.replace('/');return}
+    if(isTeacherProfile){
+        document.querySelector('.back').href='/classtools/';
+        document.querySelector('.back').textContent='← 교사 홈';
+        document.querySelector('.privacy-link').href='/privacy';
+        document.querySelector('#identityTitle').textContent='내 프로필';
+        document.querySelector('#identityRole').textContent='교사';
+        document.querySelector('#affiliationLabel').textContent='소속';
+        document.querySelector('#studentName').textContent=me.user.name;
+        document.querySelector('#settingsNav').hidden=false;
+        document.querySelector('#studentBirthdayHint').hidden=true;
+        document.querySelector('#avatarChangeHint').hidden=true;
+        document.querySelector('#birthdaySharingHint').textContent='켜면 담임으로 등록된 학급 대시보드에 ‘○○ 선생님 생일’이 표시됩니다. 월·일만 공개하며 언제든 끌 수 있습니다.';
+        const registrations=await api('/api/teacher/profile');
+        document.querySelector('#className').textContent=(registrations.profiles||[]).filter(p=>p.active).map(p=>`${p.schoolName} · ${p.grade&&p.classNumber?`${p.grade}학년 ${p.classNumber}반`:p.teacherType}`).join(' / ')||'담당 학급 미배정';
+        startAiSettings().catch(error=>{document.querySelector('#aiStatus').textContent=error.message});
+    }
+    const {profile}=await api(profilePath());
+    if(!isTeacherProfile){document.querySelector('#studentName').textContent=`${profile.studentNumber}번 ${profile.name}`;document.querySelector('#className').textContent=`${profile.grade}학년 ${profile.classNumber}반`}
+    setBirthdaySelects(profile.birthdayMmdd);visible.checked=profile.birthdayVisible;renderPreview();form.hidden=false;
+    renderAvatar(profile.avatar);avatarCard.hidden=false;
+}
+async function startAiSettings(){
+    const ai=window.ClassroomAI,input=document.querySelector('#geminiKey'),status=document.querySelector('#aiStatus');
+    const buttons=[...document.querySelectorAll('#ai-settings button')];
+    const refresh=()=>{input.value=ai.getKey()};
+    document.querySelector('#ai-settings').hidden=false;
+    buttons.forEach(button=>button.disabled=true);
+    await ai.init();refresh();
+    status.textContent=input.value?'등록된 키를 교사용 AI 기능에서 함께 사용합니다.':'API 키를 등록해 주세요.';
+    buttons.forEach(button=>button.disabled=false);
+    async function perform(action){
+        buttons.forEach(button=>button.disabled=true);
+        try{await action()}catch(error){status.textContent=error.message}finally{buttons.forEach(button=>button.disabled=false)}
+    }
+    document.querySelector('#saveAiKey').onclick=()=>perform(async()=>{ai.saveKey(input.value);refresh();status.textContent='API 키를 저장했습니다.'});
+    document.querySelector('#deleteAiKey').onclick=()=>perform(async()=>{ai.deleteKey();refresh();status.textContent='이 계정의 API 키를 삭제했습니다.'});
+    document.querySelector('#checkAiKey').onclick=()=>perform(async()=>{status.textContent='연결 확인 중…';await ai.checkConnection(input.value);status.textContent='연결을 확인했습니다. 새 키를 입력했다면 키 저장을 눌러 주세요.'});
+    if(location.hash==='#ai-settings')document.querySelector('#ai-settings').scrollIntoView();
+}
+start().catch(error=>{document.querySelector('#studentName').textContent='불러오지 못했습니다';document.querySelector('#className').textContent=error.message});
 </script></body></html>

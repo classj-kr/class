@@ -309,6 +309,7 @@
     }
 
     async function startPlayback() {
+        if (document.body.dataset.musicPausedForReading === "true") return false;
         applyAudioState();
         if (externalMusic) {
             if (!navigator.userActivation?.hasBeenActive) return false;
