@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 847,
+  "totalImages": 855,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -848,6 +848,14 @@
     "1763": { "word": "need", "file": "need-v2.webp" },
     "1597": { "word": "look", "file": "look-v2.webp" },
     "2901": { "word": "want", "file": "want-v2.webp" },
-    "2245": { "word": "right", "file": "right-v2.webp" }
+    "2245": { "word": "right", "file": "right-v2.webp" },
+    "875": { "word": "due", "file": "due-v2.webp" },
+    "1621": { "word": "male", "file": "male-v2.webp" },
+    "2692": { "word": "theory", "file": "theory-v2.webp" },
+    "59": { "word": "affair", "file": "affair-v2.webp" },
+    "1746": { "word": "mystery", "file": "mystery-v2.webp" },
+    "646": { "word": "council", "file": "council-v2.webp" },
+    "2711": { "word": "threat", "file": "threat-v2.webp" },
+    "2047": { "word": "pride", "file": "pride-v2.webp" }
   }
 }
