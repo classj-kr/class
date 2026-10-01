@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { moveBetweenFractionAnswerInputs } from "../../components/fraction-answer-navigation";
@@ -47,10 +49,10 @@ function StaticFractionAnswer({ answer }: { answer: string }) {
 }
 
 export default function GradeSixMixedCalculationPage() {
-  const [seed, setSeed] = useState(INITIAL_SEED);
-  const [decimalAnswers, setDecimalAnswers] = useState<Record<string, string>>({});
-  const [fractionAnswers, setFractionAnswers] = useState<Record<string, FractionWrittenAnswer>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("arithmetic/grade-6-mixed-calculation/page:seed", INITIAL_SEED);
+  const [decimalAnswers, setDecimalAnswers] = useRecordedState<Record<string, string>>("arithmetic/grade-6-mixed-calculation/page:decimalAnswers", {});
+  const [fractionAnswers, setFractionAnswers] = useRecordedState<Record<string, FractionWrittenAnswer>>("arithmetic/grade-6-mixed-calculation/page:fractionAnswers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-6-mixed-calculation/page:results", {});
   const [sheetScale, setSheetScale] = useState(.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
   const problems = useMemo(() => createGradeSixMixedCalculationSet(seed), [seed]);
@@ -176,6 +178,8 @@ export default function GradeSixMixedCalculationPage() {
       <div className="mixed-calculation-grid grade-six-mixed-calculation-grid">{problems.map((problem, index) => renderProblem(problem, index, answerSheet))}</div>
     </div>;
   }
+
+  useRecordQuestions("arithmetic/grade-6-mixed-calculation/page", { problems });
 
   return <main className="counting-page multiplication-page">
     <div className="counting-toolbar"><a className="counting-back" href="/arithmetic" aria-label="연산 목록으로 돌아가기">←</a><div className="counting-progress"><strong>{correct}<small>/6 정답</small></strong></div><div className="toolbar"><button className="button secondary" type="button" onClick={newSet}>새 문제</button><button className="button ghost" type="button" onClick={reset}>다시 풀기</button><div className="print-control"><button className="button ghost print-button" type="button" aria-expanded={printMenuOpen} aria-haspopup="menu" onClick={() => setPrintMenuOpen((open) => !open)}>인쇄</button>{printMenuOpen && <div className="print-menu" role="menu"><button type="button" role="menuitem" onClick={() => printMaterials("worksheet")}>문제지만 인쇄</button><button type="button" role="menuitem" onClick={() => printMaterials("answers")}>답지만 인쇄</button><button type="button" role="menuitem" onClick={() => printMaterials("both")}>문제지+답지 인쇄</button></div>}</div><button className="button primary" type="button" onClick={checkAll}>전체 채점</button></div></div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createIntegrationTechniqueProblemSet,
@@ -11,10 +13,10 @@ import WorksheetQuestionPrompt from "../../../components/worksheet-question-prom
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "../components/worksheet-choice-panel";
 
 export default function IntegrationTechniquesPage() {
-  const [set, setSet] = useState(() => createIntegrationTechniqueProblemSet(20260811));
-  const [reviews, setReviews] = useState<IntegrationTechniqueProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [set, setSet] = useRecordedState("arithmetic/high-school/integration-techniques/page:set", () => createIntegrationTechniqueProblemSet(20260811));
+  const [reviews, setReviews] = useRecordedState<IntegrationTechniqueProblem[]>("arithmetic/high-school/integration-techniques/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/integration-techniques/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/integration-techniques/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
   const problems = useMemo(() => [...set.problems, ...reviews], [set.problems, reviews]);
@@ -59,6 +61,8 @@ export default function IntegrationTechniquesPage() {
       </div>
     );
   }
+  useRecordQuestions("arithmetic/high-school/integration-techniques/page", { problems, choiceProblems });
+
   return (
     <main className="counting-page polynomial-page derivative-page trig-derivative-page formula-only-page">
       <div className="counting-toolbar">

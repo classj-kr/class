@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import InlineMathText from "../../../components/inline-math-text";
@@ -49,13 +51,13 @@ function choiceProblem(problem: MiddleCoreProblem): WorksheetChoiceProblem {
 export default function MiddleCoreCalculationsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [kind, setKind] = useState<MiddleCoreKind>(DEFAULT_KIND);
-  const [problemSet, setProblemSet] = useState(() => (
+  const [kind, setKind] = useRecordedState<MiddleCoreKind>("arithmetic/middle-school/core-calculations/page:kind", DEFAULT_KIND);
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/middle-school/core-calculations/page:problemSet", () => (
     createMiddleCoreProblemSet(DEFAULT_KIND, INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<MiddleCoreProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<MiddleCoreProblem[]>("arithmetic/middle-school/core-calculations/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/middle-school/core-calculations/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/middle-school/core-calculations/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -154,6 +156,8 @@ export default function MiddleCoreCalculationsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/middle-school/core-calculations/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logarithm-page numeric-choice-page middle-quadratic-page middle-core-page">

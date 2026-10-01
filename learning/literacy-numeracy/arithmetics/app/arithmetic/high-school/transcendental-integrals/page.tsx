@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createTranscendentalIntegralProblemSet,
@@ -11,10 +13,10 @@ import WorksheetQuestionPrompt from "../../../components/worksheet-question-prom
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "../components/worksheet-choice-panel";
 
 export default function TranscendentalIntegralsPage() {
-  const [set, setSet] = useState(() => createTranscendentalIntegralProblemSet(20260808));
-  const [reviews, setReviews] = useState<TranscendentalIntegralProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [set, setSet] = useRecordedState("arithmetic/high-school/transcendental-integrals/page:set", () => createTranscendentalIntegralProblemSet(20260808));
+  const [reviews, setReviews] = useRecordedState<TranscendentalIntegralProblem[]>("arithmetic/high-school/transcendental-integrals/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/transcendental-integrals/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/transcendental-integrals/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
   const problems = useMemo(() => [...set.problems, ...reviews], [set.problems, reviews]);
@@ -60,6 +62,8 @@ export default function TranscendentalIntegralsPage() {
       </div>
     );
   }
+  useRecordQuestions("arithmetic/high-school/transcendental-integrals/page", { problems, choiceProblems });
+
   return (
     <main className="counting-page polynomial-page derivative-page trig-derivative-page">
       <div className="counting-toolbar">

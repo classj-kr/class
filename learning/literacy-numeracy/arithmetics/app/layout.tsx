@@ -4,6 +4,7 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import ArithmeticRaceController from "./components/arithmetic-race-controller";
 import ElementaryFocusScroll from "./components/elementary-focus-scroll";
+import LearningRecordBoundary from "./components/learning-record-state";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -39,7 +40,7 @@ export default function RootLayout({
       <head>
         <script src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer />
       </head>
-      <body>{children}<ElementaryFocusScroll /><ArithmeticRaceController /></body>
+      <body><LearningRecordBoundary>{children}</LearningRecordBoundary><ElementaryFocusScroll /><ArithmeticRaceController /></body>
     </html>
   );
 }

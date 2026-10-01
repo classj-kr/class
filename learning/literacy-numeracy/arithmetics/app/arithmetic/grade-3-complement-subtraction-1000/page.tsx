@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -42,9 +44,9 @@ function ResultMark({ value }: { value?: boolean }) {
 }
 
 export default function GradeThreeComplementSubtractionThousandPage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-complement-subtraction-1000/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/grade-3-complement-subtraction-1000/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-3-complement-subtraction-1000/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -137,6 +139,8 @@ export default function GradeThreeComplementSubtractionThousandPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-3-complement-subtraction-1000/page", { problems, expected });
 
   return (
     <main className="counting-page complement-page">

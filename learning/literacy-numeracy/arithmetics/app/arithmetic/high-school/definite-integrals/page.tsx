@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createDefiniteIntegralProblemSet,
@@ -11,10 +13,10 @@ import WorksheetQuestionPrompt from "../../../components/worksheet-question-prom
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "../components/worksheet-choice-panel";
 
 export default function DefiniteIntegralsPage() {
-  const [set, setSet] = useState(() => createDefiniteIntegralProblemSet(20260810));
-  const [reviews, setReviews] = useState<DefiniteIntegralProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [set, setSet] = useRecordedState("arithmetic/high-school/definite-integrals/page:set", () => createDefiniteIntegralProblemSet(20260810));
+  const [reviews, setReviews] = useRecordedState<DefiniteIntegralProblem[]>("arithmetic/high-school/definite-integrals/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/definite-integrals/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/definite-integrals/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
   const problems = useMemo(() => [...set.problems, ...reviews], [set.problems, reviews]);
@@ -66,6 +68,8 @@ export default function DefiniteIntegralsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/definite-integrals/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page derivative-page trig-derivative-page formula-only-page">

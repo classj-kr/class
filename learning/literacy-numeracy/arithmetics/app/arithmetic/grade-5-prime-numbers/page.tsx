@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useState } from "react";
 import {
   gradePrimeNumberSelection,
@@ -11,8 +13,8 @@ import {
 type PrintMode = "worksheet" | "answers" | "both";
 
 export default function GradeFivePrimeNumbersPage() {
-  const [selectedNumbers, setSelectedNumbers] = useState<Set<number>>(() => new Set());
-  const [results, setResults] = useState<Record<number, boolean>>({});
+  const [selectedNumbers, setSelectedNumbers] = useRecordedState<Set<number>>("arithmetic/grade-5-prime-numbers/page:selectedNumbers", () => new Set());
+  const [results, setResults] = useRecordedState<Record<number, boolean>>("arithmetic/grade-5-prime-numbers/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -106,6 +108,8 @@ export default function GradeFivePrimeNumbersPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-5-prime-numbers/page", {  });
 
   return (
     <main className="counting-page multiplication-page">

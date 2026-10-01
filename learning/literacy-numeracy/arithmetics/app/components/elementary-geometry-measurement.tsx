@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { createElementaryGeometryMeasurementSet, normalizeGeometryMeasurementAnswer, type GeometryMeasurementMode, type GeometryMeasurementProblem } from "../../lib/elementary-geometry-measurement";
 
@@ -68,9 +70,9 @@ export default function ElementaryGeometryMeasurement({ mode }: { mode: Geometry
   const plane = mode === "plane";
   const grade = plane ? "5학년" : "6학년";
   const title = plane ? "다각형의 둘레와 넓이" : "직육면체의 겉넓이·부피";
-  const [seed, setSeed] = useState(plane ? 20260822 : 20260823);
-  const [answers, setAnswers] = useState<Answers>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("components/elementary-geometry-measurement:seed", plane ? 20260822 : 20260823);
+  const [answers, setAnswers] = useRecordedState<Answers>("components/elementary-geometry-measurement:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("components/elementary-geometry-measurement:results", {});
   const [scale, setScale] = useState(0.6);
   const [printOpen, setPrintOpen] = useState(false);
   const problems = useMemo(() => createElementaryGeometryMeasurementSet(mode, seed), [mode, seed]);
@@ -114,6 +116,8 @@ export default function ElementaryGeometryMeasurement({ mode }: { mode: Geometry
     return <article className={`circle-question geometry-measurement-question${plane ? "" : " solid-measurement-question"}${graded ? firstResult && secondResult ? " is-correct" : " is-wrong" : ""}`} key={problem.id} data-geometry-kind={problem.kind}><span className="circle-index">{index + 1}</span><Diagram problem={problem} plane={plane} /><div className="circle-answer-pair">{!plane && <p className="solid-measurement-note">{createSolidDiagram(problem).note}</p>}{answerField(problem, "first", key)}{answerField(problem, "second", key)}</div></article>;
   };
   const sheet = (key: boolean) => <div className="a4-sheet counting-sheet circle-sheet geometry-measurement-sheet" style={{ transform: `scale(${scale})` }}><header className="counting-sheet-header"><div className="counting-sheet-title"><span>{grade}</span><strong>{title}{key ? " 정답" : ""}</strong></div><div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div></header><div className="circle-grid">{problems.map((problem, index) => question(problem, index, key))}</div></div>;
+
+  useRecordQuestions("components/elementary-geometry-measurement", { problems });
 
   return <main className="counting-page multiplication-page"><div className="counting-toolbar"><a className="counting-back" href="/arithmetic" aria-label="연산 목록으로 돌아가기">←</a><div className="counting-progress"><strong>{correct}<small>/{problems.length}문제 정답</small></strong></div><div className="toolbar"><button className="button secondary" onClick={fresh}>새 문제</button><button className="button ghost" onClick={reset}>다시 풀기</button><div className="print-control"><button className="button ghost print-button" onClick={() => setPrintOpen(!printOpen)}>인쇄</button>{printOpen && <div className="print-menu"><button onClick={() => print("worksheet")}>문제지만 인쇄</button><button onClick={() => print("answers")}>답지만 인쇄</button><button onClick={() => print("both")}>문제지+답지 인쇄</button></div>}</div><button className="button primary" onClick={check}>전체 채점</button></div></div><div className="a4-stage counting-a4-stage worksheet-stage" style={{ width: 794 * scale, height: 1123 * scale }}>{sheet(false)}</div><div className="a4-stage counting-a4-stage answer-stage" style={{ width: 794 * scale, height: 1123 * scale }}>{sheet(true)}</div></main>;
 }

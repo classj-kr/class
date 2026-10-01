@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { createLogicProblemSet, createLogicReviewProblems, type LogicProblem } from "../../../../lib/sets-propositions-workouts";
 import MathFormula from "../../../components/math-formula";
@@ -7,10 +9,10 @@ import WorksheetQuestionPrompt from "../../../components/worksheet-question-prom
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "../components/worksheet-choice-panel";
 
 export default function SetsPropositionsPage() {
-  const [questionSet, setQuestionSet] = useState(() => createLogicProblemSet(20260729));
-  const [reviews, setReviews] = useState<LogicProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/high-school/sets-propositions/page:questionSet", () => createLogicProblemSet(20260729));
+  const [reviews, setReviews] = useRecordedState<LogicProblem[]>("arithmetic/high-school/sets-propositions/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/sets-propositions/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/sets-propositions/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
   const problems = useMemo(() => [...questionSet.problems, ...reviews], [questionSet.problems, reviews]);
@@ -80,6 +82,8 @@ export default function SetsPropositionsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/sets-propositions/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logic-page">

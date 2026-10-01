@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import DivisionBracket, { blankDivisionBracketAnswer, divisionBracketAnswered, divisionBracketIsCorrect, type DivisionBracketAnswer } from "../../components/division-bracket";
 
@@ -68,9 +70,9 @@ function createProblemSet(seed: number): ProblemSet {
 }
 
 export default function GradeFourDivisionPage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, DivisionBracketAnswer>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-4-division/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, DivisionBracketAnswer>>("arithmetic/grade-4-division/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-4-division/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -173,6 +175,8 @@ export default function GradeFourDivisionPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-4-division/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

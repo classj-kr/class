@@ -41,7 +41,7 @@
         q.querySelector('.feedback').textContent = solved ? '맞았습니다. ' + q.dataset.note : tried.length ? '다시 생각해 보세요.' : '';
       });
     }
-    $('startQuiz').onclick = async () => { if (busy) return; lock(true); state.mode = 'quiz'; await save([]); render(); lock(false); };
+    $('startQuiz').onclick = async () => { if (busy || records.session.status === 'completed') return; lock(true); state.mode = 'quiz'; await save([]); render(); lock(false); };
     $('backLesson').onclick = async () => { if (busy || records.session.status === 'completed') return; lock(true); state.mode = 'study'; await save([]); render(); lock(false); };
     render(); lock(false);
   } else {

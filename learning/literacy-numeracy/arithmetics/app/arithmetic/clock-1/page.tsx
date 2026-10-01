@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -97,9 +99,9 @@ function numericAnswerMatches(value: string | undefined, expected: number) {
 }
 
 export default function ClockOnePage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [responses, setResponses] = useState<Record<string, ClockResponse>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/clock-1/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [responses, setResponses] = useRecordedState<Record<string, ClockResponse>>("arithmetic/clock-1/page:responses", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/clock-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -198,6 +200,8 @@ export default function ClockOnePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/clock-1/page", {  });
 
   return (
     <main className="counting-page clock-page">

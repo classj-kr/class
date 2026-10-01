@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type Friend = "토끼" | "거북이" | "호랑이";
@@ -96,9 +98,9 @@ function ResultMark({ value }: { value?: boolean }) {
 }
 
 export default function GiveAndTakeOnePage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, string>>(emptyAnswers);
-  const [results, setResults] = useState<Record<number, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/give-and-take-1/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/give-and-take-1/page:answers", emptyAnswers);
+  const [results, setResults] = useRecordedState<Record<number, boolean>>("arithmetic/give-and-take-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -236,6 +238,8 @@ export default function GiveAndTakeOnePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/give-and-take-1/page", {  });
 
   return (
     <main className="counting-page give-page">

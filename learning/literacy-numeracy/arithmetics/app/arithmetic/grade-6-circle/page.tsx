@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { createGradeSixCircleSet, normalizeCircleAnswer } from "../../../lib/grade-six-circle";
 import type { CircleProblem } from "../../../lib/grade-six-circle";
@@ -33,9 +35,9 @@ function CircleCompositeDiagram({ problem, instance }: { problem: CircleProblem;
 }
 
 export default function GradeSixCirclePage() {
-  const [seed, setSeed] = useState(20260722);
-  const [answers, setAnswers] = useState<WrittenAnswers>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("arithmetic/grade-6-circle/page:seed", 20260722);
+  const [answers, setAnswers] = useRecordedState<WrittenAnswers>("arithmetic/grade-6-circle/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-6-circle/page:results", {});
   const [scale, setScale] = useState(.6);
   const [printOpen, setPrintOpen] = useState(false);
   const problems = useMemo(() => createGradeSixCircleSet(seed), [seed]);
@@ -73,6 +75,8 @@ export default function GradeSixCirclePage() {
     return <article className={"circle-question" + (graded ? perimeterResult && areaResult ? " is-correct" : " is-wrong" : "")} key={problem.id} data-testid="grade-six-circle-question"><span className="circle-index">{index + 1}</span><CircleCompositeDiagram problem={problem} instance={key ? "answers" : "worksheet"} /><div className="circle-answer-pair">{answerField(problem, "perimeter", key)}{answerField(problem, "area", key)}</div></article>;
   };
   const sheet = (key: boolean) => <div className="a4-sheet counting-sheet circle-sheet" style={{ transform: "scale(" + scale + ")" }}><header className="counting-sheet-header"><div className="counting-sheet-title"><span>6학년</span><strong>원의 둘레와 넓이{key ? " 정답" : ""}</strong></div><div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div></header><p className="circle-guide">원주율 3.14 · 색칠한 부분의 둘레와 넓이를 구하고, 소수 셋째 자리에서 반올림하세요.</p><div className="circle-grid">{problems.map((problem, index) => question(problem, index, key))}</div></div>;
+
+  useRecordQuestions("arithmetic/grade-6-circle/page", { problems });
 
   return <main className="counting-page multiplication-page"><div className="counting-toolbar"><a className="counting-back" href="/arithmetic" aria-label="연산 목록으로 돌아가기">←</a><div className="counting-progress"><strong>{correct}<small>/{problems.length}문제 정답</small></strong></div><div className="toolbar"><button className="button secondary" onClick={fresh}>새 문제</button><button className="button ghost" onClick={reset}>다시 풀기</button><div className="print-control"><button className="button ghost print-button" onClick={() => setPrintOpen(!printOpen)}>인쇄</button>{printOpen && <div className="print-menu"><button onClick={() => print("worksheet")}>문제지만 인쇄</button><button onClick={() => print("answers")}>답지만 인쇄</button><button onClick={() => print("both")}>문제지+답지 인쇄</button></div>}</div><button className="button primary" onClick={check}>전체 채점</button></div></div><div className="a4-stage counting-a4-stage worksheet-stage" style={{ width: 794 * scale, height: 1123 * scale }} aria-label="A4 6학년 원의 둘레와 넓이 문제지">{sheet(false)}</div><div className="a4-stage counting-a4-stage answer-stage" style={{ width: 794 * scale, height: 1123 * scale }} aria-label="A4 6학년 원의 둘레와 넓이 전체 답지">{sheet(true)}</div></main>;
 }

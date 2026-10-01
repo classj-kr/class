@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type Field = "left" | "right" | "result";
@@ -423,9 +425,9 @@ export function AdditionSubtractionWorksheet({ variant, mentalMath = false }: { 
           : "한 자리 수 덧셈·뺄셈";
   const maxLength = variant === "single-digit" ? 1 : variant === "grade-two-missing-parts" ? 3 : 2;
   const grade = variant === "grade-two-missing-parts" ? "2학년" : "1학년";
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED, variant));
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/add-subtract-1/page:questionSet", () => createProblemSet(INITIAL_SEED, variant));
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/add-subtract-1/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/add-subtract-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -511,6 +513,8 @@ export function AdditionSubtractionWorksheet({ variant, mentalMath = false }: { 
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/add-subtract-1/page", { expected });
 
   return (
     <main className="counting-page addsub-page">

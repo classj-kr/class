@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import InlineMathText from "../../../components/inline-math-text";
@@ -43,13 +45,13 @@ function choiceProblem(problem: MiddleFactorizationProblem): WorksheetChoiceProb
 export default function MiddleFactorizationPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [kind, setKind] = useState<MiddleFactorizationKind>(DEFAULT_KIND);
-  const [problemSet, setProblemSet] = useState(() => (
+  const [kind, setKind] = useRecordedState<MiddleFactorizationKind>("arithmetic/middle-school/factorization/page:kind", DEFAULT_KIND);
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/middle-school/factorization/page:problemSet", () => (
     createMiddleFactorizationProblemSet(DEFAULT_KIND, INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<MiddleFactorizationProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<MiddleFactorizationProblem[]>("arithmetic/middle-school/factorization/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/middle-school/factorization/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/middle-school/factorization/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -141,6 +143,8 @@ export default function MiddleFactorizationPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/middle-school/factorization/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logarithm-page numeric-choice-page factorization-page">

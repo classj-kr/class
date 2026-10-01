@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -35,9 +37,9 @@ function FractionValue({ value }: { value: FractionComparisonValue }) {
 }
 
 export default function GradeFiveFractionThreePage() {
-  const [seed, setSeed] = useState(INITIAL_SEED);
-  const [answers, setAnswers] = useState<Record<string, FractionComparisonSign>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("arithmetic/grade-5-fraction-3/page:seed", INITIAL_SEED);
+  const [answers, setAnswers] = useRecordedState<Record<string, FractionComparisonSign>>("arithmetic/grade-5-fraction-3/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-5-fraction-3/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -143,6 +145,8 @@ export default function GradeFiveFractionThreePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-5-fraction-3/page", { problemSet, problems });
 
   return (
     <main className="counting-page multiplication-page">

@@ -21,8 +21,9 @@ CREATE TABLE IF NOT EXISTS learning_record_sessions (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   completed_at TIMESTAMPTZ
 );
-CREATE UNIQUE INDEX IF NOT EXISTS learning_record_active_content
-  ON learning_record_sessions(user_id, activity, content_key, content_version) WHERE status = 'active';
+DROP INDEX IF EXISTS learning_record_active_content;
+CREATE UNIQUE INDEX IF NOT EXISTS learning_record_active_roster_content
+  ON learning_record_sessions(user_id, activity, content_key, content_version, school_id, academic_year, grade, class_number) WHERE status = 'active';
 CREATE INDEX IF NOT EXISTS learning_record_student_date ON learning_record_sessions(user_id, updated_at DESC, id);
 CREATE INDEX IF NOT EXISTS learning_record_class_date ON learning_record_sessions(school_id, academic_year, grade, class_number, updated_at DESC);
 CREATE TABLE IF NOT EXISTS learning_record_events (

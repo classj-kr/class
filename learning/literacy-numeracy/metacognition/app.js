@@ -654,6 +654,7 @@
   }
 
   /* ── 이벤트 ────────────────────────────────────────────── */
+  el("startBtn").disabled=true;
   el("startBtn").addEventListener("click", () => {
     show("quiz");
     renderQuestion();
@@ -676,12 +677,13 @@
     event.currentTarget.textContent = holder.hidden ? "펼치기" : "접기";
   });
 
-  el('downloadBtn')?.remove(); el('rawBtn')?.remove(); el('saveStatus')?.closest('.save-panel')?.remove();
+  el('downloadBtn')?.remove(); el('rawBtn')?.remove(); el('saveStatus')?.remove();
   el('retryBtn').onclick = () => location.reload();
 
   /* ── 초기화 ────────────────────────────────────────────── */
   el('qTotal').textContent = String(items.length);
   const session = await records.start({contentKey:window.METACOG_LEVEL_KEY || 'common',title:'학습 자기점검'+(window.METACOG_LEVEL_KEY?' · '+window.METACOG_LEVEL_KEY:''),version:ITEM_SET_VERSION,checkpoint:checkpoint()});
+  el("startBtn").disabled=false;
   const cp=session.checkpoint;
   if(validOrders(cp.orders)&&validItemOrder(cp.itemOrder)){
     state.responses=cp.responses;state.orders=cp.orders;state.itemOrder=cp.itemOrder;state.index=Math.min(cp.index,items.length-1);

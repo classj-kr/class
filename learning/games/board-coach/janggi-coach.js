@@ -17,6 +17,10 @@
   document.querySelector(".color-options").insertAdjacentHTML("afterend",`<fieldset class="formation-options"><legend>마·상 배치</legend><label>내 차림<select id="humanFormation" name="formation">${formations}</select></label><label>AI 차림<select id="aiFormation" name="aiFormation">${formations}</select></label></fieldset>`);
   $("rulesCopy").innerHTML='<p>초(파란색)가 먼저 둡니다. 말을 누른 뒤 표시된 자리로 옮기세요. 숫자 두 자리는 세로 위치·가로 위치입니다. 초의 맨 아래 줄은 0으로 표시합니다.</p><ul><li><b>차</b>: 가로·세로로 막히지 않는 만큼 갑니다. 궁성에서는 대각선도 갑니다.</li><li><b>포</b>: 포가 아닌 말 하나를 반드시 넘어갑니다. 포는 넘지도 잡지도 못합니다. 궁성 대각선에서는 가운데 말을 넘어갑니다.</li><li><b>마</b>: 곧게 한 칸, 대각선으로 한 칸 갑니다. 첫 길목이 막히면 못 갑니다.</li><li><b>상</b>: 곧게 한 칸, 대각선으로 두 칸 갑니다. 두 길목 중 하나라도 막히면 못 갑니다.</li><li><b>졸·병</b>: 앞으로 또는 옆으로 한 칸 갑니다. 상대 궁성에서는 앞쪽 대각선도 갑니다.</li><li><b>왕·사</b>: 자기 궁성 안의 선을 따라 한 칸 갑니다.</li></ul><p>왕이 공격받으면 장군입니다. 왕을 옮기거나, 공격을 막거나, 공격하는 말을 잡아야 합니다. 어느 방법으로도 피할 수 없으면 외통수로 집니다.</p><p>두 왕이 같은 세로줄에서 마주 보면 빅장입니다. 다음 사람은 사이를 막거나 왕을 옮겨 계속 두거나, ‘빅장 수락’으로 비길 수 있습니다. 빅장과 장군이 동시에 생겨도 빅장을 받아들일 수 있습니다.</p><p>장군이 아닐 때 ‘한 수 쉬기’로 차례를 넘길 수 있습니다. 양쪽이 연속으로 쉬면 무승부입니다.</p><p>학습 대국에서는 같은 판과 차례가 세 번 반복되면 무승부로 끝냅니다. 단, 한쪽이 계속 장군을 부르며 반복했다면 그쪽이 집니다. 잡기 없이 100수(양쪽 50수씩)가 지나도 무승부입니다. 대회의 점수제와 한의 1.5점 덤은 적용하지 않습니다.</p><p>‘내 수 물리기’는 내 마지막 수와 그 뒤의 AI 수를 함께 취소합니다. 시간 제한은 없습니다.</p><p>참고: <a href="https://www.pychess.org/variants/janggi" target="_blank" rel="noopener">장기 행마·빅장 설명</a> · <a href="https://www.kojf.net/theme/sample30/html/content03.php" target="_blank" rel="noopener">대한장기연맹 대회 규정</a></p>';
   document.querySelector(".controls").insertAdjacentHTML("beforeend",'<button id="janggiPass" type="button" class="quiet" disabled>한 수 쉬기</button><button id="janggiResign" type="button" class="quiet" disabled>기권</button>');
+  // Keep the existing Janggi board dominant and group learning controls beside it.
+  $("backLink").textContent="메인 화면으로";
+  document.querySelector(".controls").append($("backLink"));
+  document.querySelector(".sidebar").prepend(document.querySelector(".topbar"),document.querySelector(".matchbar"),document.querySelector(".lesson"),document.querySelector(".controls"));
   document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel janggi-record"><summary>대국 기록</summary><div id="janggiMoves">아직 둔 수가 없습니다.</div></details>');
   document.body.insertAdjacentHTML("beforeend",'<dialog id="janggiConfirm" aria-labelledby="janggiConfirmTitle"><h2 id="janggiConfirmTitle"></h2><p id="janggiConfirmText"></p><div class="resign-choices"><button id="janggiConfirmYes" type="button"></button><button id="janggiConfirmCancel" class="quiet" type="button">취소</button></div></dialog>');
   let confirmKind=null;
@@ -29,14 +33,18 @@
     const targets=new Set(moves.filter(m=>!m.kind&&m.from===selected).map(m=>m.to));
     const mark=scene?scene.feedback?.alternative||scene.move:hint?.move,last=position.last;
     const king=R.inCheck(position)?position.board.indexOf(position.turn+"K"):-1;
-    $("board").className="janggi";$("board").setAttribute("aria-label","장기판");
-    const palace='<svg class="janggi-palace" viewBox="0 0 9 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3.5 .5L5.5 2.5M5.5 .5L3.5 2.5M3.5 7.5L5.5 9.5M5.5 7.5L3.5 9.5"/></svg>';
-    $("board").innerHTML=palace+Array.from({length:90},(_,view)=>{
-      const row=Math.floor(view/9),col=view%9,index=human==="c"?view:89-view,p=position.board[index];
+    $("board").className="janggi janggi-board";$("board").setAttribute("aria-label","장기판");
+    const lines=Array.from({length:9},(_,x)=>`<div class="gridline vline" style="left:${5.55+x*11.11}%" aria-hidden="true"></div>`).join("")+
+      Array.from({length:10},(_,y)=>`<div class="gridline hline" style="top:${5+y*10}%" aria-hidden="true"></div>`).join("");
+    const palace='<svg class="palace-svg" viewBox="0 0 8 9" preserveAspectRatio="none" aria-hidden="true"><line x1="3" y1="0" x2="5" y2="2"/><line x1="5" y1="0" x2="3" y2="2"/><line x1="3" y1="7" x2="5" y2="9"/><line x1="5" y1="7" x2="3" y2="9"/></svg>';
+    $("board").innerHTML=lines+palace+Array.from({length:90},(_,view)=>{
+      const index=human==="c"?view:89-view,p=position.board[index];
       const target=targets.has(index),can=active&&(sources.has(index)||target);
       const classes=["square",target?"target":"",selected===index?"selected":"",king===index?"checked":"",last&&!last.kind&&(last.from===index||last.to===index)?"recent":"",mark&&!mark.kind&&(mark.from===index||mark.to===index)?"suggested":""].filter(Boolean).join(" ");
-      const face=p?(p[1]==="K"?(p[0]==="c"?"초":"한"):AI.name(p)):"";
-      return `<button type="button" role="gridcell" class="${classes}" data-square="${index}" ${can?"":"disabled"} aria-pressed="${selected===index}" aria-label="${R.coord(index)} · ${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p):"빈자리"}${target?" · 이동 가능":""}">${row===0?`<span class="axis column" aria-hidden="true">${index%9+1}</span>`:""}${col===0?`<span class="axis row" aria-hidden="true">${(Math.floor(index/9)+1)%10}</span>`:""}${p?`<span class="janggi-piece ${p[0]} ${p[1]==="K"?"king":""}">${face}</span>`:target?'<span class="legal-dot"></span>':""}</button>`;
+      const face=p?(p[1]==="K"?(p[0]==="c"?"楚":"漢"):p[1]==="P"?(p[0]==="c"?"卒":"兵"):{A:"士",R:"車",C:"包",H:"馬",E:"象"}[p[1]]):"";
+      const type=p?{K:"king",A:"guard",R:"rook",C:"cannon",H:"horse",E:"elephant",P:"soldier"}[p[1]]:"";
+      const pieceClasses=["piece","janggi-piece",p?.[0]==="c"?"cho":"han",type,selected===index?"selected":"",king===index?"check":"",last&&!last.kind&&last.to===index?"last-moved":""].filter(Boolean).join(" ");
+      return `<button type="button" role="gridcell" class="${classes}" data-square="${index}" ${can?"":"disabled"} aria-pressed="${selected===index}" aria-label="${R.coord(index)} · ${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p):"빈자리"}${target?" · 이동 가능":""}" title="${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p)+" · ":""}${R.coord(index)}">${p?`<span class="${pieceClasses}" aria-hidden="true">${face}</span>`:target?'<span class="legal-dot"></span>':""}</button>`;
     }).join("");
     BoardCoachUI.markMove($("board"),mark,9);
     $("levelLabel").textContent=AI.LEVELS[level].name+" AI";$("colorLabel").textContent=human==="c"?"나는 초":"나는 한";

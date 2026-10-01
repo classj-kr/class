@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useState } from "react";
 import {
   createStackedCubesProblemSet, sameViewGrids,
@@ -25,10 +27,10 @@ function blankViews(size: number): ViewGrids {
 }
 
 export default function GradeSixStackedCubesPage() {
-  const [questionSet, setQuestionSet] = useState(() => createStackedCubesProblemSet(20260807));
-  const [counts, setCounts] = useState<Record<string, string>>({});
-  const [views, setViews] = useState<Record<string, ViewGrids>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-6-stacked-cubes/page:questionSet", () => createStackedCubesProblemSet(20260807));
+  const [counts, setCounts] = useRecordedState<Record<string, string>>("arithmetic/grade-6-stacked-cubes/page:counts", {});
+  const [views, setViews] = useRecordedState<Record<string, ViewGrids>>("arithmetic/grade-6-stacked-cubes/page:views", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-6-stacked-cubes/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -177,6 +179,8 @@ export default function GradeSixStackedCubesPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-6-stacked-cubes/page", {  });
 
   return (
     <main className="counting-page stack-page">

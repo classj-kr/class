@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -93,9 +95,9 @@ function expectedField(value: string | undefined, expected: number) {
 }
 
 export default function GradeThreeMeasurementPage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, Answer>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-measurement/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, Answer>>("arithmetic/grade-3-measurement/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-3-measurement/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -196,6 +198,8 @@ export default function GradeThreeMeasurementPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-3-measurement/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

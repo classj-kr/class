@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import InlineMathText from "../../../components/inline-math-text";
@@ -47,13 +49,13 @@ function choiceProblem(problem: MiddleCurriculumProblem): WorksheetChoiceProblem
 
 export default function MiddleCurriculumCalculationsPage() {
   const searchParams = useSearchParams();
-  const [kind, setKind] = useState<MiddleCurriculumKind>(DEFAULT_KIND);
-  const [problemSet, setProblemSet] = useState(() => (
+  const [kind, setKind] = useRecordedState<MiddleCurriculumKind>("arithmetic/middle-school/curriculum-calculations/page:kind", DEFAULT_KIND);
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/middle-school/curriculum-calculations/page:problemSet", () => (
     createMiddleCurriculumProblemSet(DEFAULT_KIND, INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<MiddleCurriculumProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<MiddleCurriculumProblem[]>("arithmetic/middle-school/curriculum-calculations/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/middle-school/curriculum-calculations/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/middle-school/curriculum-calculations/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -179,6 +181,8 @@ export default function MiddleCurriculumCalculationsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/middle-school/curriculum-calculations/page", { problems, choiceProblems });
 
   return (
     <main className={`counting-page polynomial-page logarithm-page numeric-choice-page middle-quadratic-page middle-curriculum-page${kind === "solid-geometry" ? " solid-geometry-page" : ""}${kind === "triangle-quadrilateral" ? " triangle-quadrilateral-page" : ""}`}>

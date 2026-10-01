@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type CountingSet = {
@@ -78,9 +80,9 @@ function ResultMark({ value }: { value?: boolean }) {
 }
 
 export default function CountingOnePage() {
-  const [questionSet, setQuestionSet] = useState(() => createCountingSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Answers>(emptyAnswers);
-  const [results, setResults] = useState<Record<number, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/counting-1/page:questionSet", () => createCountingSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Answers>("arithmetic/counting-1/page:answers", emptyAnswers);
+  const [results, setResults] = useRecordedState<Record<number, boolean>>("arithmetic/counting-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -281,6 +283,8 @@ export default function CountingOnePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/counting-1/page", {  });
 
   return (
     <main className="counting-page">
