@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1213,
+  "totalImages": 1221,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1214,6 +1214,14 @@
     "1312": { "word": "here", "file": "here-v2.webp" },
     "2696": { "word": "they", "file": "they-v2.webp" },
     "1573": { "word": "like", "file": "like-v2.webp" },
-    "1201": { "word": "get", "file": "get-v2.webp" }
+    "1201": { "word": "get", "file": "get-v2.webp" },
+    "2373": { "word": "she", "file": "she-v2.webp" },
+    "1217": { "word": "go", "file": "go-v2.webp" },
+    "1371": { "word": "if", "file": "if-v2.webp" },
+    "1860": { "word": "out", "file": "out-v2.webp" },
+    "7": { "word": "about", "file": "about-v2.webp" },
+    "2835": { "word": "up", "file": "up-v2.webp" },
+    "178": { "word": "at", "file": "at-v2.webp" },
+    "1804": { "word": "now", "file": "now-v2.webp" }
   }
 }
