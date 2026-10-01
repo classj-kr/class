@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1015,
+  "totalImages": 1023,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1016,6 +1016,14 @@
     "1703": { "word": "mobile", "file": "mobile-v2.webp" },
     "449": { "word": "charity", "file": "charity-v2.webp" },
     "294": { "word": "blast", "file": "blast-v2.webp" },
-    "1787": { "word": "noble", "file": "noble-v2.webp" }
+    "1787": { "word": "noble", "file": "noble-v2.webp" },
+    "2672": { "word": "tense", "file": "tense-v2.webp" },
+    "1554": { "word": "legend", "file": "legend-v2.webp" },
+    "2693": { "word": "therapy", "file": "therapy-v2.webp" },
+    "2184": { "word": "religion", "file": "religion-v2.webp" },
+    "2882": { "word": "virus", "file": "virus-v2.webp" },
+    "2527": { "word": "status", "file": "status-v2.webp" },
+    "502": { "word": "clinic", "file": "clinic-v2.webp" },
+    "2870": { "word": "vice", "file": "vice-v2.webp" }
   }
 }
