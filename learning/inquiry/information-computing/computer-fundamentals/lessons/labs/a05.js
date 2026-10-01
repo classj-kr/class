@@ -40,17 +40,18 @@
                         <header><strong>이어지는 마이크 신호와 기록점</strong><small>Continuous Signal and Recorded Samples</small></header>
                         <canvas data-a05-canvas aria-label="이어지는 파형, 측정 순간, 양자화한 숫자 단계를 비교하는 그래프"></canvas>
                         <div class="a05-graph-legend" aria-label="그래프 표시 뜻"><span class="raw">이어지는 신호</span><span class="measured">측정 높이</span><span class="stored">숫자 단계</span><span class="replay">기록값을 이은 재생 모형</span></div>
-                        <p>점 사이의 청록 점선은 저장된 선이 아니라, 기록값을 시간 순서대로 재생한 모습을 단순화한 것입니다.</p>
+                        <p>청록 점선은 저장된 선이 아니라, 기록한 값을 시간 순서대로 이어서 재생 모습을 단순하게 나타낸 것입니다.</p>
                     </section>
                     <aside class="a05-sample-inspector">
                         <span>선택한 샘플 <small>Selected Sample</small></span>
                         <strong data-a05-selected>기록 전</strong>
                         <dl>
                             <div><dt>측정 높이</dt><dd data-a05-raw>—</dd></div>
-                            <div><dt>가까운 단계</dt><dd data-a05-quantized>—</dd></div>
+                            <div><dt>기록한 단계</dt><dd data-a05-quantized>—</dd></div>
                             <div><dt>비트 코드</dt><dd><code data-a05-code>—</code></dd></div>
                             <div><dt>양자화 차이</dt><dd data-a05-error>—</dd></div>
                         </dl>
+                        <p>높이는 가장 낮은 곳을 0, 가장 높은 곳을 100으로 나타냅니다.</p>
                     </aside>
                 </div>
                 <div class="a05-sample-strip" data-a05-sample-list aria-label="기록한 샘플 목록"><p>‘1초 기록’을 누르면 각 측정값의 비트 코드가 나타납니다.</p></div>
@@ -62,8 +63,8 @@
                 <section class="a05-snapshot-compare" aria-labelledby="a05CompareTitle-${mode}">
                     <header><strong id="a05CompareTitle-${mode}">A와 B 비교 <small>Compare Two Records</small></strong><span>한 번에 한 조건만 바꾸면 어느 설정이 결과를 바꾸었는지 알 수 있습니다.</span></header>
                     <div class="a05-snapshot-grid">
-                        <div><button type="button" data-a05-save="a" disabled>현재 기록을 A에 저장 <small>Save as A</small></button><output data-a05-snapshot="a">A: 기록 전</output></div>
-                        <div><button type="button" data-a05-save="b" disabled>현재 기록을 B에 저장 <small>Save as B</small></button><output data-a05-snapshot="b">B: 기록 전</output></div>
+                        <div><button type="button" data-a05-save="a" disabled>현재 기록을 A에 저장 <small>Save as A</small></button><output data-a05-snapshot="a">A: 기록 전</output><canvas data-a05-snapshot-canvas="a" aria-label="A에 저장한 기록 그래프" hidden></canvas></div>
+                        <div><button type="button" data-a05-save="b" disabled>현재 기록을 B에 저장 <small>Save as B</small></button><output data-a05-snapshot="b">B: 기록 전</output><canvas data-a05-snapshot-canvas="b" aria-label="B에 저장한 기록 그래프" hidden></canvas></div>
                     </div>
                     <p data-a05-comparison>A와 B에 기록을 하나씩 저장하세요.</p>
                     ${challenge ? `<ul class="a05-comparison-progress"><li data-a05-progress="rate">샘플링 레이트만 바꾼 비교</li><li data-a05-progress="bits">비트 깊이만 바꾼 비교</li></ul>` : ""}
@@ -97,13 +98,15 @@
         });
     }
 
-    function drawA05DigitizationGraph(canvas, state) {
+    // compact: A·B 비교 칸의 작은 그래프. 눈금 글자 없이 파형·기록점만 그린다.
+    function drawA05DigitizationGraph(canvas, state, compact = false) {
         if (!canvas) return;
         const ratio = Math.max(1, window.devicePixelRatio || 1);
         const rect = canvas.getBoundingClientRect();
-        const width = Math.max(560, Math.round(rect.width || 760));
-        const height = Math.max(260, Math.round(rect.height || 290));
-        const padding = { left: 34, right: 18, top: 18, bottom: 28 };
+        const width = Math.max(compact ? 180 : 560, Math.round(rect.width || (compact ? 320 : 760)));
+        const height = Math.max(compact ? 100 : 260, Math.round(rect.height || (compact ? 120 : 290)));
+        const padding = compact ? { left: 10, right: 10, top: 10, bottom: 10 } : { left: 34, right: 18, top: 18, bottom: 28 };
+        const dot = compact ? 3 : 5;
         const graphWidth = width - padding.left - padding.right;
         const graphHeight = height - padding.top - padding.bottom;
         canvas.width = Math.round(width * ratio);
@@ -125,7 +128,7 @@
             context.stroke();
         }
         context.strokeStyle = "#9a642d";
-        context.lineWidth = 3;
+        context.lineWidth = compact ? 2 : 3;
         context.beginPath();
         for (let index = 0; index <= 240; index += 1) {
             const fraction = index / 240;
@@ -137,8 +140,8 @@
 
         if (state.samples.length) {
             context.strokeStyle = "#08717c";
-            context.lineWidth = 2;
-            context.setLineDash([7, 5]);
+            context.lineWidth = compact ? 1.5 : 2;
+            context.setLineDash(compact ? [4, 3] : [7, 5]);
             context.beginPath();
             state.samples.forEach((sample, index) => {
                 const x = xAt(sample.fraction);
@@ -152,26 +155,31 @@
                 const rawY = yAt(sample.raw);
                 const storedY = yAt(sample.value);
                 context.strokeStyle = "#c16d28";
-                context.lineWidth = 2;
+                context.lineWidth = compact ? 1.5 : 2;
                 context.beginPath();
                 context.moveTo(x, rawY);
                 context.lineTo(x, storedY);
                 context.stroke();
                 context.fillStyle = "#fffdf8";
                 context.strokeStyle = "#9a642d";
-                context.lineWidth = 2;
+                context.lineWidth = compact ? 1.5 : 2;
                 context.beginPath();
-                context.arc(x, rawY, 5, 0, Math.PI * 2);
+                context.arc(x, rawY, dot, 0, Math.PI * 2);
                 context.fill();
                 context.stroke();
                 context.fillStyle = "#08717c";
-                context.fillRect(x - 5, storedY - 5, 10, 10);
+                context.fillRect(x - dot, storedY - dot, dot * 2, dot * 2);
             });
         }
+        if (compact) return;
         context.fillStyle = "#5a4b3e";
         context.font = "700 12px system-ui, sans-serif";
         context.fillText("0초", padding.left, height - 8);
         context.fillText("1초", width - padding.right - 20, height - 8);
+        context.textAlign = "right";
+        context.fillText("100", padding.left - 6, padding.top + 4);
+        context.fillText("0", padding.left - 6, padding.top + graphHeight + 4);
+        context.textAlign = "left";
     }
 
     function setupA05DigitizerLab(root = document.querySelector('[data-a05-lab="concept"]'), options = {}) {
@@ -220,11 +228,13 @@
         const renderSelected = () => {
             const sample = state.samples[state.selected];
             if (!sample) return;
-            root.querySelector("[data-a05-selected]").textContent = `${sample.sampleIndex + 1}번째 · ${sample.fraction.toFixed(2)}초`;
-            root.querySelector("[data-a05-raw]").textContent = sample.raw.toFixed(2);
-            root.querySelector("[data-a05-quantized]").textContent = `${sample.levelIndex}번 단계 → ${sample.value.toFixed(2)}`;
+            // 높이는 -1~1 대신 0~100으로 보여 준다. 소수와 음수는 초등 학생에게 군더더기다.
+            const height = (value) => Math.round(((value + 1) / 2) * 100);
+            root.querySelector("[data-a05-selected]").textContent = `${sample.sampleIndex + 1}번째 샘플 · ${sample.fraction.toFixed(2)}초`;
+            root.querySelector("[data-a05-raw]").textContent = String(height(sample.raw));
+            root.querySelector("[data-a05-quantized]").textContent = `${sample.levelIndex}번 단계 → 높이 ${height(sample.value)}`;
             root.querySelector("[data-a05-code]").textContent = sample.code;
-            root.querySelector("[data-a05-error]").textContent = Math.abs(sample.raw - sample.value).toFixed(2);
+            root.querySelector("[data-a05-error]").textContent = String(Math.abs(height(sample.raw) - height(sample.value)));
             sampleList.querySelectorAll("[data-a05-sample-index]").forEach((button) => {
                 const selected = Number(button.dataset.a05SampleIndex) === state.selected;
                 button.setAttribute("aria-pressed", String(selected));
@@ -255,10 +265,10 @@
                 output.textContent = "A와 B에 기록을 하나씩 저장하세요.";
             } else if (a.rate !== b.rate && a.bits === b.bits) {
                 state.rateCompared = true;
-                output.textContent = `비트 깊이는 ${a.bits}비트로 같고 샘플링 레이트만 ${a.rate}→${b.rate}번/초로 달라졌습니다. 시간 방향의 측정점 수가 달라집니다.`;
+                output.textContent = `비트 깊이는 ${a.bits}비트로 같고 샘플링 레이트만 ${a.rate}→${b.rate}번/초로 달라졌습니다. 두 그래프에서 측정점의 개수를 비교해 보세요. 점이 많을수록 기록이 파형을 더 가깝게 따라갑니다.`;
             } else if (a.rate === b.rate && a.bits !== b.bits) {
                 state.bitsCompared = true;
-                output.textContent = `샘플링 레이트는 ${a.rate}번/초로 같고 비트 깊이만 ${a.bits}→${b.bits}비트로 달라졌습니다. 높이 방향의 단계 수가 달라집니다.`;
+                output.textContent = `샘플링 레이트는 ${a.rate}번/초로 같고 비트 깊이만 ${a.bits}→${b.bits}비트로 달라졌습니다. 두 그래프에서 가로 눈금의 개수와 측정점이 눈금에서 벗어난 거리를 비교해 보세요.`;
             } else if (a.rate === b.rate && a.bits === b.bits) {
                 output.textContent = "A와 B의 두 설정이 같습니다. 한 조건만 바꾼 기록을 다시 저장하세요.";
             } else {
@@ -289,12 +299,17 @@
             renderSummary();
             renderSamples();
             drawA05DigitizationGraph(canvas, state);
-            root.querySelector("[data-a05-status]").textContent = `${state.rate}개의 측정값을 ${state.bits}비트(${2 ** state.bits}단계)로 기록했습니다. 표본 하나를 누르면 측정값과 비트 코드를 볼 수 있습니다.`;
+            root.querySelector("[data-a05-status]").textContent = `${state.rate}개의 측정값을 ${state.bits}비트(${2 ** state.bits}단계)로 기록했습니다. 아래 샘플 하나를 누르면 측정 높이와 비트 코드를 볼 수 있습니다.`;
         });
         saveButtons.forEach((button) => button.addEventListener("click", () => {
             const key = button.dataset.a05Save;
-            state.snapshots[key] = { rate: state.rate, bits: state.bits };
+            state.snapshots[key] = { rate: state.rate, bits: state.bits, samples: state.samples.map((sample) => ({ ...sample })) };
             root.querySelector(`[data-a05-snapshot="${key}"]`).textContent = snapshotText(key);
+            const thumbnail = root.querySelector(`[data-a05-snapshot-canvas="${key}"]`);
+            if (thumbnail) {
+                thumbnail.hidden = false;
+                drawA05DigitizationGraph(thumbnail, state.snapshots[key], true);
+            }
             compareSnapshots();
         }));
         root.querySelector("[data-a05-reset]").addEventListener("click", () => {
@@ -307,6 +322,7 @@
             setPressed(bitButtons, "a05Bits", state.bits);
             root.querySelector('[data-a05-snapshot="a"]').textContent = snapshotText("a");
             root.querySelector('[data-a05-snapshot="b"]').textContent = snapshotText("b");
+            root.querySelectorAll("[data-a05-snapshot-canvas]").forEach((thumbnail) => { thumbnail.hidden = true; });
             root.querySelector("[data-a05-comparison]").textContent = "A와 B에 기록을 하나씩 저장하세요.";
             root.querySelectorAll("[data-a05-progress]").forEach((item) => item.classList.remove("is-complete"));
             root.querySelector("[data-a05-status]").textContent = "두 설정을 고른 뒤 ‘1초 기록’을 누르세요.";
