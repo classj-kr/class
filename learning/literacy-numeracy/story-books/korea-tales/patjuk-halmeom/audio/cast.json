@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "순이",
+  "id": "tc_60ad0841061ee28740ec2e1c"
+ },
+ "roles": {
+  "man": {
+   "name": "세진",
+   "id": "tc_61de29497924994f5abd68db"
+  },
+  "boy": {
+   "name": "호빈이",
+   "id": "tc_5ffda49bcba8f6d3d46fc447"
+  },
+  "granny": {
+   "name": "숙희",
+   "id": "tc_61c2f70c343884babeed840b"
+  },
+  "beast": {
+   "name": "이카루스",
+   "id": "tc_603513d91860484c4dcb6a11"
+  }
+ }
+}

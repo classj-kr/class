@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "명주",
+  "id": "tc_656059fc4db338e38f77d0bc"
+ },
+ "roles": {
+  "man": {
+   "name": "근혁",
+   "id": "tc_64b8fa40ef03762a5fc0e51d"
+  },
+  "old": {
+   "name": "학철",
+   "id": "tc_63a3d9d14b235ddd6541a78e"
+  },
+  "woman": {
+   "name": "유진",
+   "id": "tc_64818767272f62f8ddb73948"
+  },
+  "granny": {
+   "name": "주하",
+   "id": "tc_5d01a52563338e00072b8c9c"
+  }
+ }
+}

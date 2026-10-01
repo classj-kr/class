@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "순이",
+  "id": "tc_60ad0841061ee28740ec2e1c"
+ },
+ "roles": {
+  "boy": {
+   "name": "시우",
+   "id": "tc_6699eb3849dfac016c29444c"
+  },
+  "girl": {
+   "name": "류은",
+   "id": "tc_61659c5818732016a95fe763"
+  },
+  "mother": {
+   "name": "선영",
+   "id": "tc_5c789c317ad86500073a02cb"
+  },
+  "beast": {
+   "name": "듀크",
+   "id": "tc_6075b391922523862ea7598d"
+  }
+ }
+}

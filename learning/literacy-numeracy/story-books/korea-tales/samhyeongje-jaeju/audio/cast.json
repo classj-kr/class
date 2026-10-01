@@ -1,0 +1,20 @@
+{
+ "narration": {
+  "name": "대진",
+  "id": "tc_6a0e85a97f7750959b970d5d"
+ },
+ "roles": {
+  "man": {
+   "name": "태우",
+   "id": "tc_6800a387534948f191cc952b"
+  },
+  "old": {
+   "name": "종대",
+   "id": "tc_67e38d8c771b5511659c4534"
+  },
+  "boy": {
+   "name": "예준",
+   "id": "tc_63edf3d68aab086d6b782a55"
+  }
+ }
+}

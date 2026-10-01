@@ -1,0 +1,28 @@
+{
+ "narration": {
+  "name": "정순",
+  "id": "tc_5ebea242728f5b00075e6211"
+ },
+ "roles": {
+  "man": {
+   "name": "준상",
+   "id": "tc_5ecbbc7399979700087711db"
+  },
+  "old": {
+   "name": "덕춘",
+   "id": "tc_5c3c52c95827e00008dd7f34"
+  },
+  "boy": {
+   "name": "시우",
+   "id": "tc_6699eb3849dfac016c29444c"
+  },
+  "woman": {
+   "name": "민지",
+   "id": "tc_5eb55ce920d1b60016e91de6"
+  },
+  "granny": {
+   "name": "순이",
+   "id": "tc_60ad0841061ee28740ec2e1c"
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "narration": {
+  "name": "인화",
+  "id": "tc_6296a815b958a8ed9610b189"
+ },
+ "roles": {
+  "man": {
+   "name": "이겸",
+   "id": "tc_67bfd35fda120cfcc76b9cb9"
+  },
+  "old": {
+   "name": "종대",
+   "id": "tc_67e38d8c771b5511659c4534"
+  }
+ }
+}

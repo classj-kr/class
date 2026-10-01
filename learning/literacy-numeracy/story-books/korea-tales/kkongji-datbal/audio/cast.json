@@ -1,0 +1,32 @@
+{
+ "narration": {
+  "name": "송진섭 스토리텔러",
+  "id": "tc_65571d1aa52fc0f2872045fa"
+ },
+ "roles": {
+  "man": {
+   "name": "윤성",
+   "id": "tc_5ecbbc696b7c780008be50c4"
+  },
+  "old": {
+   "name": "명일",
+   "id": "tc_62d66c2d1523be99355fda02"
+  },
+  "boy": {
+   "name": "태지",
+   "id": "tc_660645fb8db3e2c06ff7070b"
+  },
+  "mother": {
+   "name": "정숙",
+   "id": "tc_694b51e6dc12c8f4ec1a959c"
+  },
+  "granny": {
+   "name": "경애",
+   "id": "tc_6a867e7a0e6ddfd2f2dd17b6"
+  },
+  "beast": {
+   "name": "스모크",
+   "id": "tc_60126fbf8e097503c73ed8d6"
+  }
+ }
+}

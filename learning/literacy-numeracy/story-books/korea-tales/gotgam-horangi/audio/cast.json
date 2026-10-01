@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "최석",
+  "id": "tc_62ce545fb130717df10ea37a"
+ },
+ "roles": {
+  "man": {
+   "name": "호선",
+   "id": "tc_65a0e1eb23a607b9906c0154"
+  },
+  "boy": {
+   "name": "건우",
+   "id": "tc_624cccbcadcd568510764d65"
+  },
+  "mother": {
+   "name": "연자",
+   "id": "tc_65b21530d893c47d5751840f"
+  },
+  "beast": {
+   "name": "잭",
+   "id": "tc_60e5426de8b95f1d3000d7b5"
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "narration": {
+  "name": "성호",
+  "id": "tc_5fe06471a9f79e8f959be96f"
+ },
+ "roles": {
+  "man": {
+   "name": "근우",
+   "id": "tc_64b8fa538a31659e5e19db28"
+  },
+  "old": {
+   "name": "훈",
+   "id": "tc_6359e7dfb7cde4c3329bc9a5"
+  },
+  "boy": {
+   "name": "준우",
+   "id": "tc_6a98d65b0402016f616a7ac3"
+  },
+  "woman": {
+   "name": "한나",
+   "id": "tc_628d9e0e1374f7682602991b"
+  }
+ }
+}

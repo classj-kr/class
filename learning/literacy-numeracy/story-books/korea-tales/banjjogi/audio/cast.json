@@ -1,0 +1,28 @@
+{
+ "narration": {
+  "name": "인화",
+  "id": "tc_6296a815b958a8ed9610b189"
+ },
+ "roles": {
+  "man": {
+   "name": "진우",
+   "id": "tc_632293f759d649937b97f323"
+  },
+  "old": {
+   "name": "일호",
+   "id": "tc_61945d9c2c11c2c9fd934340"
+  },
+  "boy": {
+   "name": "건우",
+   "id": "tc_624cccbcadcd568510764d65"
+  },
+  "woman": {
+   "name": "한나",
+   "id": "tc_628d9e0e1374f7682602991b"
+  },
+  "beast": {
+   "name": "에드워드",
+   "id": "tc_625fb112fefc49af63d18127"
+  }
+ }
+}
