@@ -7,7 +7,7 @@
   const relics = window.KOREA_HERITAGE;
   const dataset = window.KOREA_GEOGRAPHY;
   if (!relics || !dataset) return;
-  const photoOf = (relic) => `heritage/${relic.photo || `${relic.id}.jpg`}?v=20260731-3`;
+  const photoOf = (relic) => `heritage/${relic.photo || `${relic.id}.webp`}?v=20260731-3`;
   // 목록·말풍선에 붙이는 곳 이름: 관련 장소가 없으면(그림·책처럼 한 곳에 매이지 않는 것) 지금 있는 곳
   const placeOf = (relic) => relic.location || relic.museum;
 

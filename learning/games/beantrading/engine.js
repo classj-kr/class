@@ -8,7 +8,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (randomInt) {
   "use strict";
   const BEANS = Object.freeze([
-    { id: "kidney", name: "강낭콩", count: 22, prices: [3, 5, 7, 9], art: "bean-kidney-v3.png", color: "#bf5441" },
+    { id: "kidney", name: "강낭콩", count: 22, prices: [3, 5, 7, 9], art: "bean-kidney-v3.webp", color: "#bf5441" },
     { id: "soy", name: "대두", count: 20, prices: [3, 5, 6, 8], art: "bean-soy-v3.png", color: "#b38a39" },
     { id: "mung", name: "녹두", count: 18, prices: [3, 4, 6, 7], art: "bean-mung-v3.png", color: "#639059" },
     { id: "black", name: "검정콩", count: 16, prices: [2, 4, 5, 7], art: "bean-black-v3.png", color: "#5b6474" },
