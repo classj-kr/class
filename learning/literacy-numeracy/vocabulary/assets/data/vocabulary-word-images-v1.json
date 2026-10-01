@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1157,
+  "totalImages": 1165,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1158,6 +1158,14 @@
     "1073": { "word": "filter", "file": "filter-v2.webp" },
     "1719": { "word": "monument", "file": "monument-v2.webp" },
     "1902": { "word": "particle", "file": "particle-v2.webp" },
-    "1400": { "word": "index", "file": "index-v2.webp" }
+    "1400": { "word": "index", "file": "index-v2.webp" },
+    "2486": { "word": "spectrum", "file": "spectrum-v2.webp" },
+    "327": { "word": "boundary", "file": "boundary-v2.webp" },
+    "2726": { "word": "timber", "file": "timber-v2.webp" },
+    "1631": { "word": "margin", "file": "margin-v2.webp" },
+    "2114": { "word": "quantity", "file": "quantity-v2.webp" },
+    "1142": { "word": "fraction", "file": "fraction-v2.webp" },
+    "1268": { "word": "habitat", "file": "habitat-v2.webp" },
+    "558": { "word": "component", "file": "component-v2.webp" }
   }
 }
