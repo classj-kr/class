@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1173,
+  "totalImages": 1181,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1174,6 +1174,14 @@
     "2485": { "word": "spectacle", "file": "spectacle-v2.webp" },
     "2503": { "word": "spouse", "file": "spouse-v2.webp" },
     "810": { "word": "diplomat", "file": "diplomat-v2.webp" },
-    "1441": { "word": "intellect", "file": "intellect-v2.webp" }
+    "1441": { "word": "intellect", "file": "intellect-v2.webp" },
+    "1243": { "word": "greed", "file": "greed-v2.webp" },
+    "677": { "word": "critic", "file": "critic-v2.webp" },
+    "615": { "word": "controversy", "file": "controversy-v2.webp" },
+    "2632": { "word": "symptom", "file": "symptom-v2.webp" },
+    "654": { "word": "coupon", "file": "coupon-v2.webp" },
+    "1392": { "word": "incentive", "file": "incentive-v2.webp" },
+    "1370": { "word": "ideology", "file": "ideology-v2.webp" },
+    "757": { "word": "democrat", "file": "democrat-v2.webp" }
   }
 }
