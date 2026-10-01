@@ -62,7 +62,7 @@
       const metrics = node('div', null, 'metrics'), s = row.summary;
       if (s.firstScored) metrics.append(node('span', `처음 맞힘 ${s.firstCorrect}/${s.firstScored}`));
       if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`));
-      if (s.readCount) metrics.append(node('span', `읽기 확인 ${s.readCount}개`));
+      if (s.readCount) metrics.append(node('span', `열어 본 부분 ${s.readCount}개`));
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
       if (s.hints) metrics.append(node('span', `도움말 ${s.hints}회`));
       if (!metrics.children.length) metrics.append(node('span', '아직 제출한 응답 없음'));
@@ -76,8 +76,8 @@
       const { session } = await request(`/teacher/sessions/${id}`); body.replaceChildren(node('h3', session.title), node('p', '이 활동의 전체 응답 이력입니다.', 'footnote'));
       for (const e of session.events) {
         const block = node('article', null, 'answer');
-        block.append(node('small', stamp(e.recordedAt)), node('p', e.snapshot.prompt || e.snapshot.title || e.questionKey), node('p', `응답: ${typeof e.response === 'string' ? e.response : JSON.stringify(e.response)}`));
-        block.append(node('p', e.kind === 'answer' ? `${e.attemptNumber}번째 풀이 · ${e.correct === null ? '채점 없음' : e.correct ? '정답' : '오답'}` : ({ read: '읽기 확인', 'self-assessment': '스스로 점검', hint: '도움말 확인' }[e.kind]), 'outcome'));
+        block.append(node('small', stamp(e.recordedAt)), node('p', e.snapshot.prompt || e.snapshot.title || e.questionKey), node('p', `응답: ${LearningRecords.responseText(e.response)}`));
+        block.append(node('p', e.kind === 'answer' ? `${e.attemptNumber}번째 풀이 · ${e.correct === null ? '채점 없음' : e.correct ? '정답' : '오답'}` : ({ read: '열어 본 부분', 'self-assessment': '스스로 점검', hint: '도움말 확인' }[e.kind]), 'outcome'));
         body.append(block);
       }
       if (!session.events.length) body.append(node('p', '아직 제출한 응답이 없어요.', 'empty'));

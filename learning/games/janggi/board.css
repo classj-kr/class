@@ -1,0 +1,28 @@
+/* Shared by the online Janggi board and AI lessons. */
+.janggi-board{position:relative;width:min(600px,92vw);aspect-ratio:9/10;background:linear-gradient(rgba(229,180,98,.93),rgba(192,137,66,.96));border:10px ridge #6c3e1c;box-shadow:inset 0 0 25px rgba(65,31,7,.45),0 15px 35px #000}
+
+.janggi-board .gridline{position:absolute;background:var(--line,#3f2412);pointer-events:none}
+.janggi-board .vline{top:5%;bottom:5%;width:2px}
+.janggi-board .hline{left:5.55%;right:5.55%;height:2px}
+.janggi-board .palace-svg{position:absolute;left:5.55%;right:5.57%;top:5%;bottom:5%;width:88.88%;height:90%;z-index:3;pointer-events:none;overflow:visible}
+.janggi-board .palace-svg line{stroke:var(--line,#3f2412);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linecap:square}
+.janggi-board .point{position:absolute;width:11.11%;height:10%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.janggi-board .point.move::after{content:"";width:22%;aspect-ratio:1;border-radius:50%;background:rgba(29,105,179,.78);box-shadow:0 0 0 4px rgba(255,255,255,.35)}
+.janggi-board .point.capture::after{content:"";position:absolute;width:72%;aspect-ratio:1;border:4px solid #d8352d;border-radius:50%;box-shadow:0 0 12px #d8352d}
+.janggi-board .piece{width:74%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Batang","Noto Serif KR",serif;font-weight:900;font-size:clamp(20px,4vw,38px);background:radial-gradient(circle at 35% 28%,#f6ddb0,#c98d42 62%,#744118);box-shadow:inset 0 0 0 3px rgba(255,242,199,.45),0 4px 7px rgba(0,0,0,.55);border:3px solid #6a3b18;user-select:none}
+.janggi-board .piece.king{width:82%;font-size:clamp(23px,4.4vw,42px);border-width:4px}
+.janggi-board .piece.guard,.janggi-board .piece.soldier{width:66%;font-size:clamp(17px,3.4vw,32px)}
+.janggi-board .piece.cho{color:#114e91}
+.janggi-board .piece.han{color:#a51f19}
+.janggi-board .piece.selected{transform:translateY(-4px);box-shadow:0 0 0 5px #ffe16f,0 8px 16px #000}
+.janggi-board .point.last-from::before,.janggi-board .point.last-to::before{content:"";position:absolute;inset:8%;border-radius:50%;pointer-events:none;z-index:-1}
+.janggi-board .point.last-from::before{background:rgba(255,226,105,.32);box-shadow:0 0 0 3px rgba(255,226,105,.8),0 0 16px rgba(255,226,105,.55)}
+.janggi-board .point.last-to::before{background:rgba(255,146,61,.34);box-shadow:0 0 0 4px #ff9a3d,0 0 20px rgba(255,123,35,.78)}
+.janggi-board .piece.last-moved{animation:lastmove .9s ease-in-out infinite alternate;box-shadow:inset 0 0 0 3px rgba(255,242,199,.45),0 0 0 5px #ffcf5a,0 0 18px rgba(255,151,47,.85)}
+.janggi-board .piece.path-moving{animation:none!important;z-index:8}
+@keyframes lastmove{to{transform:translateY(-3px);filter:brightness(1.12)}
+}
+.janggi-board .piece.check{animation:checkpulse .7s infinite alternate}
+@keyframes checkpulse{to{box-shadow:0 0 0 6px #e33731,0 0 20px #e33731}
+}
+

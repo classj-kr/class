@@ -66,11 +66,11 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     if (!membership) fail('STUDENT_REQUIRED', '학생 계정으로 로그인하면 학습 기록을 저장할 수 있어요.', 403);
     return { user, membership };
   }
-  async function serialize(db, row, detail = false, range = null) {
+  async function serialize(db, row, detail = false, range = null, providedEvents = null) {
     const args = [row.id];
     let filter = '';
     if (range) { args.push(range.from, range.to); filter = " AND recorded_at >= $2::date AT TIME ZONE 'Asia/Seoul' AND recorded_at < ($3::date + 1) AT TIME ZONE 'Asia/Seoul'"; }
-    const events = (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
+    const events = providedEvents || (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
     return {
       id: row.id, activity: row.activity, domain: activities.get(row.activity)?.domain,
       contentKey: row.content_key, contentVersion: row.content_version, title: row.title, href: row.href,
@@ -97,12 +97,22 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     requireDatabase();
     const user = await requireUser(req);
     const membership = (await pool.query(STUDENT_SQL, [user.id, user.email])).rows[0];
-    res.json({ catalog, mode: membership ? 'student' : 'preview' });
+    res.json({ catalog, mode: membership ? 'student' : 'preview', student: membership ? { name: membership.student_name } : null });
+  }));
+  router.get('/word-progress', asyncRoute(async (req, res) => {
+    const { user } = await student(req);
+    const activity = req.query.activity;
+    if (!['vocabulary', 'classical-chinese-idioms'].includes(activity)) fail('INVALID_ACTIVITY', '활동을 확인해 주세요.');
+    const rows = (await pool.query(`SELECT DISTINCT ON (e.question_key, e.kind) e.question_key, e.kind, e.response, e.correct, e.recorded_at
+      FROM learning_record_events e JOIN learning_record_sessions s ON s.id=e.session_id
+      WHERE s.user_id=$1 AND s.activity=$2 AND e.kind IN ('answer','self-assessment')
+      ORDER BY e.question_key, e.kind, e.recorded_at DESC, e.id DESC`, [user.id, activity])).rows;
+    res.json({ entries: rows.sort((a,b) => new Date(a.recorded_at)-new Date(b.recorded_at)) });
   }));
   router.post('/sessions', asyncRoute(async (req, res) => {
     const { user, membership: m } = await student(req);
     const b = req.body || {}, activity = activities.get(b.activity);
-    if (!activity || !text(b.contentKey) || !text(b.contentVersion, 80) || !text(b.title) || !text(b.href, 512)) fail('INVALID_SESSION', '학습 정보를 확인해 주세요.');
+    if (!activity || !text(b.contentKey, 512) || !text(b.contentVersion, 80) || !text(b.title) || !text(b.href, 512)) fail('INVALID_SESSION', '학습 정보를 확인해 주세요.');
     const url = new URL(b.href, 'https://class.invalid');
     if (url.origin !== 'https://class.invalid' || !url.pathname.startsWith(activity.href) || /[\\\r\n]/.test(b.href)) fail('INVALID_LINK', '학습 주소가 올바르지 않습니다.');
     if (!object(b.checkpoint || {}) || JSON.stringify(b.checkpoint || {}).length > 256000) fail('INVALID_CHECKPOINT', '학습 진도 자료가 너무 큽니다.');
@@ -110,7 +120,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     try {
       await db.query('BEGIN');
       await db.query('SELECT id FROM classroom_users WHERE id = $1 FOR UPDATE', [user.id]);
-      const existing = await db.query("SELECT * FROM learning_record_sessions WHERE user_id = $1 AND activity = $2 AND content_key = $3 AND content_version = $4 AND status = 'active'", [user.id, b.activity, b.contentKey, b.contentVersion]);
+      const existing = await db.query("SELECT * FROM learning_record_sessions WHERE user_id = $1 AND activity = $2 AND content_key = $3 AND content_version = $4 AND school_id=$5 AND academic_year=$6 AND grade=$7 AND class_number=$8 AND status = 'active'", [user.id, b.activity, b.contentKey, b.contentVersion, m.school_id, m.academic_year, m.grade, m.class_number]);
       let row = existing.rows[0];
       if (!row) row = (await db.query(`INSERT INTO learning_record_sessions
         (id, user_id, school_id, academic_year, grade, class_number, student_number, student_name, activity, content_key, content_version, title, href, checkpoint)
@@ -144,7 +154,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     res.json({ session: await serialize(pool, row, true) });
   }));
   router.post('/sessions/:id/changes', asyncRoute(async (req, res) => {
-    const { user } = await student(req), b = req.body || {};
+    const { user, membership } = await student(req), b = req.body || {};
     if (!uuid.test(req.params.id) || !uuid.test(b.mutationId || '') || !Number.isInteger(b.revision) || b.revision < 0) fail('INVALID_CHANGE', '저장 요청을 확인해 주세요.');
     if (!object(b.checkpoint) || JSON.stringify(b.checkpoint).length > 256000 || !Array.isArray(b.events) || b.events.length > 100) fail('INVALID_CHANGE', '진도와 응답을 확인해 주세요.');
     if (b.complete !== undefined && typeof b.complete !== 'boolean') fail('INVALID_COMPLETE', '완료 상태를 확인해 주세요.');
@@ -161,6 +171,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       await db.query('BEGIN');
       const row = (await db.query('SELECT * FROM learning_record_sessions WHERE id = $1 AND user_id = $2 FOR UPDATE', [req.params.id, user.id])).rows[0];
       if (!row) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
+      if (['school_id','academic_year','grade','class_number'].some(k => String(row[k]) !== String(membership[k]))) fail('ROSTER_CHANGED', '학급이 변경되었어요. 현재 학급에서 새 학습을 시작해 주세요.', 409);
       const previous = (await db.query('SELECT payload_hash FROM learning_record_mutations WHERE session_id = $1 AND mutation_id = $2', [row.id, b.mutationId])).rows[0];
       if (previous) {
         if (previous.payload_hash !== hash) fail('MUTATION_REUSED', '이미 사용한 저장 요청입니다.', 409);
@@ -221,8 +232,15 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
         OR s.updated_at >= $5::date AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
       ORDER BY updated_at DESC, id LIMIT 1001`, [...args, range.from, range.to, req.query.activity || null])).rows;
     if (rows.length > 1000) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
+    const eventGroups = new Map(rows.map(row => [row.id, []]));
+    if (rows.length) {
+      const events = (await pool.query(`SELECT session_id, kind, question_key, correct, attempt_number FROM learning_record_events
+        WHERE session_id=ANY($1::uuid[]) AND recorded_at >= $2::date AT TIME ZONE 'Asia/Seoul'
+        AND recorded_at < ($3::date + 1) AT TIME ZONE 'Asia/Seoul' ORDER BY id`, [rows.map(row => row.id), range.from, range.to])).rows;
+      for (const event of events) eventGroups.get(event.session_id).push(event);
+    }
     const sessions = [];
-    for (const row of rows) sessions.push({ ...(await serialize(pool, row, false, range)), userId: String(row.user_id), studentNumber: row.student_number, studentName: row.student_name });
+    for (const row of rows) sessions.push({ ...(await serialize(pool, row, false, range, eventGroups.get(row.id))), userId: String(row.user_id), studentNumber: row.student_number, studentName: row.student_name });
     res.json({ range, roster, sessions });
   }));
   router.get('/teacher/sessions/:id', asyncRoute(async (req, res) => {

@@ -64,7 +64,7 @@ async function main() {
     await page.locator('#checkButton').click();
     await page.waitForFunction(() => !document.querySelector('main').inert);
     const sentenceOrder = await page.locator('.choice-button').allTextContents();
-    await page.reload(); await page.locator('.lesson-card').first().click();
+    await page.reload();
     await page.locator('#nextButton:not([hidden])').waitFor();
     assert.deepEqual(await page.locator('.choice-button').allTextContents(), sentenceOrder);
     await page.goto(h.base + '/learning/literacy-numeracy/spelling/');
@@ -72,7 +72,7 @@ async function main() {
     await page.locator('.choice-button').first().click();
     await page.waitForFunction(() => !document.querySelector('main').inert);
     const spellingQuestion = await page.locator('#questionText').textContent();
-    await page.reload(); await page.locator('.lesson-card').first().click();
+    await page.reload();
     await page.locator('#choiceList button:disabled').first().waitFor();
     assert.equal(await page.locator('#questionText').textContent(), spellingQuestion);
     await page.goto(h.base + '/learning/literacy-numeracy/csat-math/');
@@ -89,7 +89,7 @@ async function main() {
     await page.locator('#nextButton').click();
     await page.waitForFunction(() => !document.querySelector('.student-main').inert);
     const readingChoices = await page.locator('.student-choice').allTextContents();
-    await page.reload(); await page.locator('.level-card').first().click();
+    await page.reload();
     await page.locator('.student-choice.wrong').waitFor();
     assert.deepEqual(await page.locator('.student-choice').allTextContents(), readingChoices);
     const teacherPage = await teacher.newPage(); teacherPage.on('pageerror', e => errors.push(e.message));

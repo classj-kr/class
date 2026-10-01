@@ -10,14 +10,13 @@
     const audio = document.getElementById("bgm");
     if (!audio || !tracks.length) return;
 
-    const savedIndex = Number(localStorage.getItem(TRACK_INDEX_KEY));
+    const savedIndex = 0;
     let trackIndex = Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < tracks.length
         ? savedIndex
         : 0;
 
     function selectTrack(index, shouldPlay = false) {
         trackIndex = (index + tracks.length) % tracks.length;
-        localStorage.setItem(TRACK_INDEX_KEY, String(trackIndex));
         audio.src = tracks[trackIndex];
         if (shouldPlay) audio.play().catch(() => {});
     }

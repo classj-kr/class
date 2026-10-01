@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createGradeSixDecimalThreeSet,
@@ -33,9 +35,9 @@ function sanitizeWholeInput(value: string, maximumLength = 4) {
 }
 
 export default function GradeSixDecimalThreePage() {
-  const [seed, setSeed] = useState(INITIAL_SEED);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("arithmetic/grade-6-decimals-3/page:seed", INITIAL_SEED);
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/grade-6-decimals-3/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-6-decimals-3/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -190,6 +192,8 @@ export default function GradeSixDecimalThreePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-6-decimals-3/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

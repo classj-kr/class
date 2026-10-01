@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
 import InlineMathText from "../../../components/inline-math-text";
@@ -28,12 +30,12 @@ type Props = {
 };
 
 export default function GeometryChoiceWorksheet({ subject = "기하", title, seed, problems, problemSets, createProblems, createSet, pageClassName = "", problemsPerSheet }: Props) {
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/components/geometry-choice-worksheet:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/components/geometry-choice-worksheet:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
-  const [arrangement, setArrangement] = useState(0);
-  const [worksheetSeed, setWorksheetSeed] = useState(seed);
+  const [arrangement, setArrangement] = useRecordedState("arithmetic/high-school/components/geometry-choice-worksheet:arrangement", 0);
+  const [worksheetSeed, setWorksheetSeed] = useRecordedState("arithmetic/high-school/components/geometry-choice-worksheet:worksheetSeed", seed);
   const problemFactory = createProblems ?? createSet;
   const displayedProblems = useMemo(() => {
     const source = problemFactory?.(worksheetSeed) ?? problemSets?.[arrangement % problemSets.length] ?? problems;
@@ -133,6 +135,8 @@ export default function GeometryChoiceWorksheet({ subject = "기하", title, see
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/components/geometry-choice-worksheet", { choiceProblems: panelProblems });
 
   return (
     <main className={`counting-page polynomial-page derivative-page trig-derivative-page geometry-choice-page formula-only-page ${pageClassName}`.trim()}>

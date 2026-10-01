@@ -26,9 +26,16 @@
     const parts = [];
     if (summary.firstScored) parts.push(`처음 맞힘 ${summary.firstCorrect}/${summary.firstScored}`);
     if (summary.retryCount) parts.push(`다시 풀이 ${summary.retryCount}회`);
-    if (summary.readCount) parts.push(`읽은 부분 ${summary.readCount}개`);
+    if (summary.readCount) parts.push(`열어 본 부분 ${summary.readCount}개`);
     if (summary.selfAssessments) parts.push(`스스로 점검 ${summary.selfAssessments}회`);
     return parts.join(' · ') || '아직 제출한 응답이 없어요';
+  }
+  function responseText(value) {
+    if (value == null) return '—';
+    if (typeof value !== 'object') return ({ known: '알고 있어요', unknown: '아직 어려워요', review: '다시 볼래요' }[value] || String(value));
+    if (typeof value.text === 'string') return value.text + (typeof value.confidence === 'number' ? ` · 자신감 ${value.confidence}%` : '');
+    if (Array.isArray(value)) return value.map(responseText).join(' · ');
+    return Object.values(value).map(responseText).join(' · ');
   }
   class RecordClient {
     constructor(activity, options = {}) {
@@ -108,6 +115,8 @@
         try { this.session = (await this.reliable(() => request('/sessions', { activity: this.activity, contentKey, contentVersion: version, title, href, checkpoint }))).session; }
         finally { this.pending--; }
       }
+      const resumeUrl = new URL(location.href); resumeUrl.searchParams.set('record', contentKey);
+      history.replaceState(history.state, '', resumeUrl);
       this.render(); return clone(this.session);
     }
     save({ checkpoint, progress, events = [], complete = false }) {
@@ -175,7 +184,7 @@
         body.append(el('h3', session.title), el('p', summaryLine(session.summary), 'muted'));
         for (const e of session.events) {
           const row = el('div', null, 'detail');
-          row.append(el('p', e.snapshot.prompt || e.snapshot.title || e.questionKey), el('pre', typeof e.response === 'string' ? e.response : JSON.stringify(e.response)),
+          row.append(el('p', e.snapshot.prompt || e.snapshot.title || e.questionKey), el('pre', responseText(e.response)),
             el('p', e.kind === 'answer' ? `${e.attemptNumber}번째 풀이 · ${e.correct == null ? '채점 없음' : e.correct ? '정답' : '오답'}` : ({ read: '읽기', hint: '도움말 확인', 'self-assessment': '스스로 점검' }[e.kind]), 'muted'));
           body.append(row);
         }
@@ -186,12 +195,15 @@
       const s = this.session; if (!s) return;
       const { body } = this.modal('학습 결과');
       body.append(el('h3', s.title)); const numbers = el('div', null, 'numbers');
-      for (const [value, label] of [[`${s.progress.current}${s.progress.total == null ? '' : '/' + s.progress.total}`, '진행'], [`${s.summary.firstCorrect || 0}/${s.summary.firstScored || 0}`, '처음 맞힌 문제'], [s.summary.retryCount || 0, '다시 풀이 횟수']]) {
+      const metrics = [[`${s.progress.current}${s.progress.total == null ? '' : '/' + s.progress.total}`, '진행']];
+      if (s.summary.firstScored) metrics.push([`${s.summary.firstCorrect || 0}/${s.summary.firstScored}`, '처음 맞힌 문제'], [s.summary.retryCount || 0, '다시 풀이 횟수']);
+      else { if (s.summary.readCount) metrics.push([s.summary.readCount, '열어 본 부분']); if (s.summary.selfAssessments) metrics.push([s.summary.selfAssessments, '스스로 점검']); }
+      for (const [value, label] of metrics) {
         const box = el('div', null, 'number'); box.append(el('strong', String(value)), el('span', label)); numbers.append(box);
       }
       body.append(numbers, el('p', this.preview ? '둘러보기에서는 기록이 저장되지 않아요.' : '학생 계정에 저장했어요. 학습 기록에서 다시 확인할 수 있어요.', 'muted'));
       const history = el('button', '학습 기록 보기', 'primary'); history.style.marginTop = '18px'; history.onclick = () => this.showHistory(); body.append(history);
     }
   }
-  window.LearningRecords = Object.freeze({ create: (activity, options) => new RecordClient(activity, options), request, summaryLine, today });
+  window.LearningRecords = Object.freeze({ create: (activity, options) => new RecordClient(activity, options), request, summaryLine, responseText, today });
 })();

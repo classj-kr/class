@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import InlineMathText from "../../../components/inline-math-text";
@@ -62,13 +64,13 @@ function choiceProblem(problem: MiddleCirclePropertiesProblem): WorksheetChoiceP
 
 export default function MiddleCirclePropertiesPage() {
   const searchParams = useSearchParams();
-  const [kind, setKind] = useState<MiddleCirclePropertiesKind>(DEFAULT_KIND);
-  const [problemSet, setProblemSet] = useState(() => (
+  const [kind, setKind] = useRecordedState<MiddleCirclePropertiesKind>("arithmetic/middle-school/circle-properties/page:kind", DEFAULT_KIND);
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/middle-school/circle-properties/page:problemSet", () => (
     createMiddleCirclePropertiesProblemSet(DEFAULT_KIND, INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<MiddleCirclePropertiesProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<MiddleCirclePropertiesProblem[]>("arithmetic/middle-school/circle-properties/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/middle-school/circle-properties/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/middle-school/circle-properties/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -157,6 +159,8 @@ export default function MiddleCirclePropertiesPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/middle-school/circle-properties/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logarithm-page numeric-choice-page middle-quadratic-page">

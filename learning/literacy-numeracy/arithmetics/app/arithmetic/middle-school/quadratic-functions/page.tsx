@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import InlineMathText from "../../../components/inline-math-text";
@@ -64,13 +66,13 @@ function choiceProblem(problem: MiddleQuadraticFunctionProblem): WorksheetChoice
 
 export default function MiddleQuadraticFunctionsPage() {
   const searchParams = useSearchParams();
-  const [kind, setKind] = useState<MiddleQuadraticFunctionKind>(DEFAULT_KIND);
-  const [problemSet, setProblemSet] = useState(() => (
+  const [kind, setKind] = useRecordedState<MiddleQuadraticFunctionKind>("arithmetic/middle-school/quadratic-functions/page:kind", DEFAULT_KIND);
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/middle-school/quadratic-functions/page:problemSet", () => (
     createMiddleQuadraticFunctionProblemSet(DEFAULT_KIND, INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<MiddleQuadraticFunctionProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<MiddleQuadraticFunctionProblem[]>("arithmetic/middle-school/quadratic-functions/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/middle-school/quadratic-functions/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/middle-school/quadratic-functions/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -157,6 +159,8 @@ export default function MiddleQuadraticFunctionsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/middle-school/quadratic-functions/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logarithm-page numeric-choice-page middle-quadratic-page">

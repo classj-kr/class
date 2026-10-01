@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import InlineMathText from "../../../components/inline-math-text";
@@ -42,13 +44,13 @@ function choiceProblem(problem: MiddleTrigonometryProblem): WorksheetChoiceProbl
 
 export default function MiddleTrigonometryPage() {
   const searchParams = useSearchParams();
-  const [kind, setKind] = useState<MiddleTrigonometryKind>(DEFAULT_KIND);
-  const [problemSet, setProblemSet] = useState(() => (
+  const [kind, setKind] = useRecordedState<MiddleTrigonometryKind>("arithmetic/middle-school/trigonometry/page:kind", DEFAULT_KIND);
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/middle-school/trigonometry/page:problemSet", () => (
     createMiddleTrigonometryProblemSet(DEFAULT_KIND, INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<MiddleTrigonometryProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<MiddleTrigonometryProblem[]>("arithmetic/middle-school/trigonometry/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/middle-school/trigonometry/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/middle-school/trigonometry/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -137,6 +139,8 @@ export default function MiddleTrigonometryPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/middle-school/trigonometry/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logarithm-page numeric-choice-page middle-quadratic-page">

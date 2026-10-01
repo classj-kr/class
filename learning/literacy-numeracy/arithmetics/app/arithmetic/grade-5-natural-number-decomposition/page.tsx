@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import { createNaturalNumberDecompositionSet, isPrimeFactorizationAnswer } from "../../../lib/natural-number-decomposition";
 import type { NaturalNumberDecompositionProblem } from "../../../lib/natural-number-decomposition";
@@ -9,9 +11,9 @@ type PrintMode = "worksheet" | "answers" | "both";
 const INITIAL_SEED = 20260721;
 
 export default function GradeFiveNaturalNumberDecompositionPage() {
-  const [seed, setSeed] = useState(INITIAL_SEED);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("arithmetic/grade-5-natural-number-decomposition/page:seed", INITIAL_SEED);
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/grade-5-natural-number-decomposition/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-5-natural-number-decomposition/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -98,6 +100,8 @@ export default function GradeFiveNaturalNumberDecompositionPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-5-natural-number-decomposition/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

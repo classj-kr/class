@@ -7,8 +7,6 @@ type Race = { worksheetName: string; worksheetRoute: string; status: string };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
 type Board = { participants: Array<{ id: string; name: string }>; race: Race };
 
-const PLAYER_NAME_KEY = "classPlayerName";
-
 function normalizedPlayerName(value: string | null) {
   return String(value ?? "").trim().replace(/[^가-힣a-zA-Z0-9]/g, "").slice(0, 20);
 }
@@ -24,8 +22,10 @@ export default function ArithmeticRaceJoinPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const storedName = normalizedPlayerName(window.localStorage.getItem(PLAYER_NAME_KEY));
-    if (storedName) window.setTimeout(() => setName(storedName), 0);
+    void fetch('/api/learning-records/context', { cache: 'no-store', credentials: 'same-origin' })
+      .then(response => response.ok ? response.json() : null)
+      .then(context => { const student = (context as { student?: { name?: string } } | null)?.student; if (student?.name) setName(normalizedPlayerName(student.name)); })
+      .catch(() => setError('학생 계정의 이름을 불러오지 못했습니다. 다시 연결해 주세요.'));
 
     const room = params.get("room");
     const participantId = params.get("participant");
@@ -69,7 +69,7 @@ export default function ArithmeticRaceJoinPage() {
   }, [joined]);
 
   function requireName() {
-    const playerName = normalizedPlayerName(window.localStorage.getItem(PLAYER_NAME_KEY)) || name;
+    const playerName = normalizedPlayerName(name);
     if (!playerName) {
       setError("저장된 내 이름을 찾지 못했습니다. 프로필 이름을 먼저 확인하세요.");
       return null;

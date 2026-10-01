@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   createQuestionSet,
@@ -387,9 +389,9 @@ function QuestionCard({
 }
 
 export default function Home() {
-  const [questionSet, setQuestionSet] = useState(() => createQuestionSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, Answer>>(() => emptyAnswers(questionSet));
-  const [results, setResults] = useState<Record<string, GradeResult>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-fraction-2/page:questionSet", () => createQuestionSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, Answer>>("arithmetic/grade-3-fraction-2/page:answers", () => emptyAnswers(questionSet));
+  const [results, setResults] = useRecordedState<Record<string, GradeResult>>("arithmetic/grade-3-fraction-2/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -527,6 +529,8 @@ export default function Home() {
       </section>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-3-fraction-2/page", {  });
 
   return (
     <main className="counting-page fraction-convert-page">

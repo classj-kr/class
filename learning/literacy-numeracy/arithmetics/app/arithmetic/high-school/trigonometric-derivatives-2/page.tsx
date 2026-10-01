@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createTrigonometricDerivativeTwoChoices,
@@ -13,10 +15,10 @@ import WorksheetQuestionPrompt from "../../../components/worksheet-question-prom
 import WorksheetChoicePanel, { type WorksheetChoiceProblem } from "../components/worksheet-choice-panel";
 
 export default function TrigonometricDerivativesTwoPage() {
-  const [questionSet, setQuestionSet] = useState(() => createTrigonometricDerivativeTwoProblemSet(20260729));
-  const [reviews, setReviews] = useState<TrigonometricDerivativeTwoProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/high-school/trigonometric-derivatives-2/page:questionSet", () => createTrigonometricDerivativeTwoProblemSet(20260729));
+  const [reviews, setReviews] = useRecordedState<TrigonometricDerivativeTwoProblem[]>("arithmetic/high-school/trigonometric-derivatives-2/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/trigonometric-derivatives-2/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/trigonometric-derivatives-2/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
   const problems = useMemo(() => [...questionSet.problems, ...reviews], [questionSet.problems, reviews]);
@@ -90,6 +92,8 @@ export default function TrigonometricDerivativesTwoPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/trigonometric-derivatives-2/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page derivative-page trig-derivative-page trig-derivative-two-page">

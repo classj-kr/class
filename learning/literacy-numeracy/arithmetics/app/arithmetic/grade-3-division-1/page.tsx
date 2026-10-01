@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -108,9 +110,9 @@ function GroupDiagram({ option, className }: { option: GroupOption; className?: 
 }
 
 export default function GradeThreeDivisionOnePage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, 0 | 1 | 2 | 3>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-division-1/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, 0 | 1 | 2 | 3>>("arithmetic/grade-3-division-1/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-3-division-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -214,6 +216,8 @@ export default function GradeThreeDivisionOnePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-3-division-1/page", {  });
 
   return (
     <main className="counting-page division-story-page">

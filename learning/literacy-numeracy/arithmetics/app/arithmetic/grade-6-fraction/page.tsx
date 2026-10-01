@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { moveBetweenFractionAnswerInputs } from "../../components/fraction-answer-navigation";
@@ -50,9 +52,9 @@ function MixedValue({ answer }: { answer: MixedFractionAnswer }) {
 }
 
 export default function GradeSixFractionPage() {
-  const [seed, setSeed] = useState(INITIAL_SEED);
-  const [answers, setAnswers] = useState<Record<string, WrittenAnswer>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [seed, setSeed] = useRecordedState("arithmetic/grade-6-fraction/page:seed", INITIAL_SEED);
+  const [answers, setAnswers] = useRecordedState<Record<string, WrittenAnswer>>("arithmetic/grade-6-fraction/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-6-fraction/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -180,6 +182,8 @@ export default function GradeSixFractionPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-6-fraction/page", { problemSet, problems });
 
   return (
     <main className="counting-page multiplication-page">

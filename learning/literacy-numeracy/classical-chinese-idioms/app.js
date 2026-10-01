@@ -185,7 +185,7 @@
     }
     async function beginRecord(){
         const session=await records.start({contentKey:quizScope==='all'?'all':String(currentLessonIndex),title:quizScope==='all'?'한자성어 · 전체 문제':'한자성어 · '+lessons[currentLessonIndex].title,version:'20261002',checkpoint:checkpoint()});
-        const cp=session.checkpoint; progress=cp.progress;currentLessonIndex=cp.currentLessonIndex;quizScope=cp.quizScope;deck=cp.deck.map(id=>data.find(i=>i.id===id)).filter(Boolean);currentIndex=cp.currentIndex;reviewOnly=cp.reviewOnly;selectedTheme=cp.selectedTheme;selectedQuizMode=cp.selectedQuizMode;quiz=cp.quiz;quizIndex=cp.quizIndex;quizScore=cp.quizScore;quizStreak=cp.quizStreak;quizAnswered=cp.quizAnswered;quizQuestionHadWrong=cp.quizQuestionHadWrong;quizMistakes=cp.quizMistakes;quizIsMistakeRetry=cp.quizIsMistakeRetry;recordMode=cp.mode;
+        const cp=session.checkpoint;currentLessonIndex=cp.currentLessonIndex;quizScope=cp.quizScope;deck=cp.deck.map(id=>data.find(i=>i.id===id)).filter(Boolean);currentIndex=cp.currentIndex;reviewOnly=cp.reviewOnly;selectedTheme=cp.selectedTheme;selectedQuizMode=cp.selectedQuizMode;quiz=cp.quiz;quizIndex=cp.quizIndex;quizScore=cp.quizScore;quizStreak=cp.quizStreak;quizAnswered=cp.quizAnswered;quizQuestionHadWrong=cp.quizQuestionHadWrong;quizMistakes=cp.quizMistakes;quizIsMistakeRetry=cp.quizIsMistakeRetry;recordMode=cp.mode;
         if(recordMode==='game' && quiz.length){elements.gameIntro.hidden=true;elements.quizResult.hidden=true;elements.quizStage.hidden=false;renderQuestion();}else renderCard();
         switchView(recordMode);
     }
@@ -744,6 +744,10 @@ function renderLessonOverview() {
         renderLibrary();
     }
 
+    if(!records.preview){
+        const {entries}=await LearningRecords.request('/word-progress?activity=classical-chinese-idioms');
+        for(const e of entries)if(e.kind==='self-assessment')progress[e.question_key]={status:e.response,updatedAt:e.recorded_at};
+    }
     initialize();
     const resume=new URLSearchParams(location.search).get('record');
     if(resume==='all')await openAllQuiz();else if(resume!==null && lessons[Number(resume)])await openLesson(Number(resume));

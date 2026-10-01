@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
 import WorksheetQuestionPrompt from "../../../components/worksheet-question-prompt";
@@ -35,12 +37,12 @@ function choiceProblem(problem: HighCubicFactorizationProblem): WorksheetChoiceP
 }
 
 export default function CubicSumDifferenceFactorizationPage() {
-  const [problemSet, setProblemSet] = useState(() => (
+  const [problemSet, setProblemSet] = useRecordedState("arithmetic/high-school/cubic-sum-difference-factorization/page:problemSet", () => (
     createHighCubicFactorizationProblemSet(INITIAL_SEED)
   ));
-  const [reviews, setReviews] = useState<HighCubicFactorizationProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [reviews, setReviews] = useRecordedState<HighCubicFactorizationProblem[]>("arithmetic/high-school/cubic-sum-difference-factorization/page:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/cubic-sum-difference-factorization/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/cubic-sum-difference-factorization/page:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [scale, setScale] = useState(0.6);
 
@@ -124,6 +126,8 @@ export default function CubicSumDifferenceFactorizationPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/cubic-sum-difference-factorization/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page logarithm-page numeric-choice-page middle-quadratic-page factorization-page">

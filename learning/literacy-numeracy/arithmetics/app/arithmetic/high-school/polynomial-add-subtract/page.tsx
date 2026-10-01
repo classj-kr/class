@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
 import InlineMathText from "../../../components/inline-math-text";
@@ -18,10 +20,10 @@ type PrintMode = "worksheet" | "answers" | "both";
 const INITIAL_SEED = 20260721;
 
 export default function PolynomialAdditionSubtractionPage() {
-  const [questionSet, setQuestionSet] = useState(() => createPolynomialProblemSet(INITIAL_SEED));
-  const [reviewProblems, setReviewProblems] = useState<PolynomialProblem[]>([]);
-  const [selectedChoices, setSelectedChoices] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/high-school/polynomial-add-subtract/page:questionSet", () => createPolynomialProblemSet(INITIAL_SEED));
+  const [reviewProblems, setReviewProblems] = useRecordedState<PolynomialProblem[]>("arithmetic/high-school/polynomial-add-subtract/page:reviewProblems", []);
+  const [selectedChoices, setSelectedChoices] = useRecordedState<Record<string, string>>("arithmetic/high-school/polynomial-add-subtract/page:selectedChoices", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/polynomial-add-subtract/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
   const [answerPanelOpen, setAnswerPanelOpen] = useState(false);
@@ -180,6 +182,8 @@ export default function PolynomialAdditionSubtractionPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/polynomial-add-subtract/page", { problems });
 
   return (
     <main className="counting-page polynomial-page polynomial-drill-page">

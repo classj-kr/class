@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -67,9 +69,9 @@ function normalizeAnswer(value: string) {
 }
 
 export default function NumberReadingOnePage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/number-reading-1/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/number-reading-1/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/number-reading-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -185,6 +187,8 @@ export default function NumberReadingOnePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/number-reading-1/page", { allProblems });
 
   return (
     <main className="counting-page reading-page">

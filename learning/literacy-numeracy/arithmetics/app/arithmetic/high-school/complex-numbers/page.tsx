@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
 import InlineMathText from "../../../components/inline-math-text";
@@ -24,10 +26,10 @@ function answerLatex(problem: ComplexProblem) {
 }
 
 export default function ComplexNumbersPage() {
-  const [questionSet, setQuestionSet] = useState(() => createComplexProblemSet(INITIAL_SEED));
-  const [reviewProblems, setReviewProblems] = useState<ComplexProblem[]>([]);
-  const [selectedChoices, setSelectedChoices] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/high-school/complex-numbers/page:questionSet", () => createComplexProblemSet(INITIAL_SEED));
+  const [reviewProblems, setReviewProblems] = useRecordedState<ComplexProblem[]>("arithmetic/high-school/complex-numbers/page:reviewProblems", []);
+  const [selectedChoices, setSelectedChoices] = useRecordedState<Record<string, string>>("arithmetic/high-school/complex-numbers/page:selectedChoices", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/complex-numbers/page:results", {});
   const [answerPanelOpen, setAnswerPanelOpen] = useState(false);
   const [sheetScale, setSheetScale] = useState(0.6);
   const problems = useMemo(() => [...questionSet.problems, ...reviewProblems], [questionSet.problems, reviewProblems]);
@@ -119,6 +121,8 @@ export default function ComplexNumbersPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/complex-numbers/page", { problems });
 
   return (
     <main className="counting-page polynomial-page complex-page">

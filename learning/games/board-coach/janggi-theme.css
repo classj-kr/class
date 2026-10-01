@@ -1,0 +1,167 @@
+/* The learning controls sit beside the same board artwork as online Janggi. */
+body.janggi-coach {
+  --line: #3f2412;
+  --gold: #f0d77c;
+  color: #eee6d2;
+  font-family: "Malgun Gothic", sans-serif;
+  min-height: 100dvh;
+  padding: 8px;
+  background: linear-gradient(rgba(5,8,12,.46), rgba(5,8,12,.62)),
+    url('../janggi/assets/images/background.webp') center / cover fixed;
+  color-scheme: dark;
+}
+.janggi-coach .layout {
+  width: min(1100px, 100%);
+  height: calc(100dvh - 16px);
+  min-height: 560px;
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 25vw, 300px);
+  gap: 16px;
+  padding: 12px;
+  border: 2px solid #6b5520;
+  background: linear-gradient(rgba(18,25,37,.88), rgba(8,13,20,.92)),
+    url('../../../assets/images/mainbg2.webp') center / cover;
+  box-shadow: 0 20px 70px #000;
+}
+.janggi-coach .table {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.janggi-coach .board-viewport { height: 100%; border-radius: 0; }
+.janggi-coach .board-frame {
+  width: min(600px, 100cqw, 90cqh);
+  aspect-ratio: 9 / 10;
+  padding: 0;
+}
+.janggi-coach .board-viewport.zoomed .board-frame { width: 760px; max-width: none; }
+#board.janggi {
+  --size: 9;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  box-shadow: inset 0 0 25px rgba(65,31,7,.45), 0 15px 35px #000;
+}
+.janggi .square {
+  aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  background: none;
+  z-index: 5;
+}
+.janggi .square:hover:not(:disabled) { filter: none; }
+.janggi .piece { pointer-events: none; flex-shrink: 0; }
+.janggi .square.recent::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: rgba(255,226,105,.32);
+  box-shadow: 0 0 0 3px rgba(255,226,105,.8);
+  z-index: -1;
+}
+.janggi .square.target:has(.piece)::after {
+  content: '';
+  position: absolute;
+  inset: 12%;
+  border: 3px solid #d8352d;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #d8352d;
+  pointer-events: none;
+}
+.janggi .square.suggested::after { inset: 6%; border-color: #fff0a3; }
+.janggi .legal-dot {
+  width: 22%; height: 22%; inset: 39%;
+  background: rgba(29,105,179,.78);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.35);
+}
+.janggi .move-arrow { z-index: 6; }
+.janggi .move-arrow .arrow-edge { stroke: #fff6d2; }
+.janggi .move-arrow .arrow-line, .janggi .move-arrow .arrow-head { stroke: #155faa; }
+.janggi-coach .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(198,170,85,.28);
+  background: #080c12;
+  scrollbar-color: #6b5520 #080c12;
+}
+.janggi-coach .sidebar > * { flex-shrink: 0; }
+.janggi-coach .topbar { width: 100%; min-height: 0; margin: 0; gap: 8px; }
+.janggi-coach h1 { font-size: 24px; color: var(--gold); }
+.janggi-coach h2 { font-size: 17px; color: var(--gold); }
+.janggi-coach .eyebrow, .janggi-coach .muted { color: #a7b3c3; }
+.janggi-coach .matchbar {
+  padding: 10px;
+  border: 1px solid #6b5520;
+  background: #090d14;
+  color: var(--gold);
+}
+.janggi-coach #turn { font-size: 16px; }
+.janggi-coach #score { font-size: 14px; color: #b7c0cb; }
+.janggi-coach .panel { border-radius: 0; }
+.janggi-coach .sidebar .panel {
+  padding: 12px;
+  border: 1px solid rgba(198,170,85,.28);
+  background: #090d14;
+}
+.janggi-coach .sidebar .lesson { padding: 0; border: 0; background: none; }
+.janggi-coach .lesson .section-title { margin: 0; }
+.janggi-coach .badge {
+  border: 1px solid rgba(198,170,85,.28);
+  border-radius: 0;
+  background: #090d14;
+  color: #b7c0cb;
+}
+.janggi-coach .lesson #principle { display: none; }
+.janggi-coach .explanation h2 { margin-bottom: 8px; }
+.janggi-coach .explanation p { font-size: 15px; color: #d3dbe5; }
+.janggi-coach .sidebar .feedback { border-color: #ad8840; }
+.janggi-coach .rules a { color: #c7ddf5; }
+.janggi-coach .rules summary, .janggi-coach .janggi-record summary { color: var(--gold); }
+.janggi-coach #janggiMoves { color: #b7c0cb; }
+.janggi-coach button:not(.square), .janggi-coach a.quiet {
+  border: 1px solid #6b5520;
+  border-radius: 0;
+  background: linear-gradient(#182130, #0c1119);
+  color: var(--gold);
+  font-size: 14px;
+  padding: 9px 10px;
+}
+.janggi-coach button.primary, .janggi-coach #hint {
+  background: linear-gradient(#ecd579, #a68835);
+  color: #181207;
+  border-color: #f1dc86;
+}
+.janggi-coach #janggiResign { background: #351716; color: #f4c6c0; border-color: #74352e; }
+.janggi-coach .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.janggi-coach .controls > * { justify-content: center; text-align: center; }
+.janggi-coach dialog {
+  border: 2px solid #8c7535;
+  border-radius: 0;
+  background: #111722;
+  color: #eee6d2;
+  box-shadow: 0 20px 70px #000;
+}
+.janggi-coach dialog::backdrop { background: #000b; }
+.janggi-coach .option { border-color: #555031; border-radius: 0; }
+.janggi-coach .option:has(input:checked) { border-color: #f0d77c; background: #29291d; }
+.janggi-coach .option input { accent-color: #d5b956; }
+.janggi-coach .option small { color: #b7c0cb; }
+.janggi-coach .formation-options select { border-color: #6b5520; border-radius: 0; background: #080c12; }
+@media (orientation: portrait), (max-width: 699px) {
+  body.janggi-coach { padding: 6px; }
+  .janggi-coach .layout { height: auto; min-height: 0; grid-template-columns: 1fr; padding: 8px; gap: 12px; }
+  .janggi-coach .board-viewport { height: min(calc((100vw - 32px) * 10 / 9), 667px); }
+  .janggi-coach .sidebar { overflow: visible; width: min(600px, 100%); margin: auto; }
+  .janggi-coach .sidebar > .explanation { order: 0; }
+  .janggi-coach .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+  /* Leave room for the site's fixed back control above the first rank. */
+  body.janggi-coach { padding-top: 52px; }
+}

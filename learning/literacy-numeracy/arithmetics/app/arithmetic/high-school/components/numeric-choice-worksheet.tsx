@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { createNumericChoices, uniqueFormattedChoices } from "../../../../lib/worksheet-choice-utils";
 import MathFormula from "../../../components/math-formula";
@@ -44,10 +46,10 @@ function answerLatex(problem: NumericWorksheetProblem, values: number[]) {
 }
 
 export default function NumericChoiceWorksheet({ initialSeed, subject, title, instruction, createSet, createReviews, formatChoice = answerLatex, makeChoices, showLatexOnWorksheet = true, formulaGuide, pageClassName = "" }: Props) {
-  const [set, setSet] = useState(() => createSet(initialSeed));
-  const [reviews, setReviews] = useState<NumericWorksheetProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [set, setSet] = useRecordedState("arithmetic/high-school/components/numeric-choice-worksheet:set", () => createSet(initialSeed));
+  const [reviews, setReviews] = useRecordedState<NumericWorksheetProblem[]>("arithmetic/high-school/components/numeric-choice-worksheet:reviews", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/components/numeric-choice-worksheet:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/components/numeric-choice-worksheet:results", {});
   const [panelOpen, setPanelOpen] = useState(false);
   const [showFormulaGuide, setShowFormulaGuide] = useState(true);
   const [scale, setScale] = useState(0.6);
@@ -125,6 +127,8 @@ export default function NumericChoiceWorksheet({ initialSeed, subject, title, in
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/components/numeric-choice-worksheet", { problems, choiceProblems });
 
   return (
     <main className={`counting-page polynomial-page logarithm-page numeric-choice-page ${pageClassName}`.trim()}>

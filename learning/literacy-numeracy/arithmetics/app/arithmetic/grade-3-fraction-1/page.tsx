@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { moveBetweenFractionAnswerInputs } from "../../components/fraction-answer-navigation";
@@ -40,9 +42,9 @@ function FractionStack({ numerator, denominator, className = "", inputOrder = fa
 }
 
 export default function GradeThreeFractionOnePage() {
-  const [questionSet, setQuestionSet] = useState(() => createGradeThreeFractionOneSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, Answer>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-fraction-1/page:questionSet", () => createGradeThreeFractionOneSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, Answer>>("arithmetic/grade-3-fraction-1/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-3-fraction-1/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -174,6 +176,8 @@ export default function GradeThreeFractionOnePage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-3-fraction-1/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

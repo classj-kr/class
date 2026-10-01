@@ -6,11 +6,7 @@
     const IMAGE_MANIFEST_URL = "assets/data/vocabulary-word-images-v1.json?v=20260908a";
     const SPELLING_GAME_URL = "assets/data/vocabulary-spelling-game-v1.json";
     const DETAIL_URL_TEMPLATE = "assets/data/details/level-{level}.json?v=20260928a";
-    const DETAIL_OPEN_KEY = "englishVocabularyDetailOpenV1";
     const IMAGE_BASE_URL = "assets/images/";
-    const PROGRESS_KEY = "englishVocabulary3000ProgressV1";
-    const SHUFFLE_PREFERENCE_KEY = "englishVocabularyShuffleEnabledV1";
-    const SPELLING_WRONG_KEY = "englishVocabularySpellingWrongV1";
     const GAME_TIME_LIMIT = 15;
     const LESSON_SIZE = 20;
     const STAGES = [
@@ -117,8 +113,8 @@
         currentIndex: 0,
         revealed: false,
         unknownOnly: false,
-        shuffleEnabled: localStorage.getItem(SHUFFLE_PREFERENCE_KEY) === "true",
-        detailOpen: localStorage.getItem(DETAIL_OPEN_KEY) !== "false",
+        shuffleEnabled: false,
+        detailOpen: true,
         detailCache: new Map(),
         detailLoading: new Map(),
         lessonQuizPool: [],
@@ -167,40 +163,13 @@
         currentBandWords: [],
     };
 
-    function loadProgress() {
-        try {
-            return core.normalizeProgress(JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"));
-        } catch {
-            return {};
-        }
-    }
+    function loadProgress() { return {}; }
 
-    function saveProgress() {
-        localStorage.setItem(PROGRESS_KEY, JSON.stringify(state.progress));
-    }
+    function saveProgress() {}
 
-    function loadSpellingWrongProgress() {
-        try {
-            const stored = JSON.parse(localStorage.getItem(SPELLING_WRONG_KEY) || "{}");
-            if (!stored || typeof stored !== "object" || Array.isArray(stored)) return {};
-            const normalized = {};
-            Object.entries(stored).forEach(([id, entry]) => {
-                if (!/^\d+$/.test(id) || !entry || typeof entry !== "object") return;
-                normalized[id] = {
-                    count: Math.max(1, Number(entry.count) || 1),
-                    lastAnswer: typeof entry.lastAnswer === "string" ? entry.lastAnswer : "",
-                    updatedAt: typeof entry.updatedAt === "string" ? entry.updatedAt : "",
-                };
-            });
-            return normalized;
-        } catch {
-            return {};
-        }
-    }
+    function loadSpellingWrongProgress() { return {}; }
 
-    function saveSpellingWrongProgress() {
-        localStorage.setItem(SPELLING_WRONG_KEY, JSON.stringify(state.spellingWrongProgress));
-    }
+    function saveSpellingWrongProgress() {}
 
     function showToast(message) {
         elements.toast.textContent = message;
@@ -585,7 +554,6 @@
 
     function toggleDetailPanel() {
         state.detailOpen = !state.detailOpen;
-        localStorage.setItem(DETAIL_OPEN_KEY, String(state.detailOpen));
         elements.detailToggle.setAttribute("aria-expanded", String(state.detailOpen));
         elements.detailBody.hidden = !state.detailOpen;
     }
@@ -807,34 +775,7 @@
         nextLessonQuizQuestion();
     }
 
-    function showLessonQuizResult() {
-        elements.lessonQuizQuestionPanel.hidden = true;
-        elements.lessonQuizResultPanel.hidden = false;
-        elements.lessonQuizStats.hidden = true;
-        const total = state.lessonQuizPool.length;
-        const accuracy = total ? Math.round((state.lessonQuizScore / total) * 100) : 0;
-        elements.lessonQuizResultTitle.textContent = `${total}문제를 모두 풀었어요`;
-        elements.lessonQuizResultScore.textContent = `${state.lessonQuizScore} / ${total}`;
-        elements.lessonQuizResultAccuracy.textContent = `${accuracy}%`;
-        elements.lessonQuizResultBestStreak.textContent = String(state.lessonQuizBestStreak);
-        if (state.lessonQuizWrongWords.length) {
-            elements.lessonQuizWrongList.replaceChildren(...state.lessonQuizWrongWords.map((word) => {
-                const chip = document.createElement("span");
-                chip.className = "game-wrong-word";
-                chip.textContent = `${word.word} · ${primaryMeaning(word)}`;
-                return chip;
-            }));
-        } else {
-            const message = document.createElement("span");
-            message.textContent = "모두 맞혔어요!";
-            elements.lessonQuizWrongList.replaceChildren(message);
-        }
-        elements.lessonQuizRetryWrongButton.hidden = state.lessonQuizWrongWords.length === 0;
-        const hasNextLesson = state.currentLesson + 1 < lessonsForLevel(state.currentLevel).length;
-        elements.lessonQuizContinueButton.textContent = hasNextLesson ? "다음 차시" : "차시 선택으로";
-        renderLevelGroups();
-        renderRecommendedLesson();
-    }
+    function showLessonQuizResult() { completeRequested = true; clearGameTimer(); }
 
     function openLessonQuiz(level, lessonIndex) {
         state.currentLevel = Number(level);
@@ -912,7 +853,6 @@
 
     function toggleShuffle() {
         state.shuffleEnabled = !state.shuffleEnabled;
-        localStorage.setItem(SHUFFLE_PREFERENCE_KEY, String(state.shuffleEnabled));
         const baseWords = currentLessonWords();
         const levelWords = state.unknownOnly
             ? baseWords.filter((word) => state.progress[String(word.id)]?.status === "unknown")
@@ -1054,30 +994,7 @@
         renderGameQuestion();
     }
 
-    function showGameResult() {
-        clearGameTimer();
-        state.gameTimeLeft = 0;
-        updateGameStats();
-        elements.gameQuestionPanel.hidden = true;
-        elements.gameResultPanel.hidden = false;
-        const accuracy = Math.round((state.gameScore / state.gameRoundLength) * 100);
-        elements.gameResultScore.textContent = `${state.gameScore} / ${state.gameRoundLength}`;
-        elements.gameResultAccuracy.textContent = `${accuracy}%`;
-        elements.gameResultBestStreak.textContent = String(state.gameBestStreak);
-        if (state.gameWrongWords.length) {
-            elements.gameWrongList.replaceChildren(...state.gameWrongWords.map((word) => {
-                const chip = document.createElement("span");
-                chip.className = "game-wrong-word";
-                chip.textContent = `${word.word} · ${word.meanings[0] || ""}`;
-                return chip;
-            }));
-        } else {
-            const message = document.createElement("span");
-            message.textContent = "Great job! No missed words.";
-            elements.gameWrongList.replaceChildren(message);
-        }
-        elements.gameRetryWrongButton.hidden = state.gameWrongWords.length === 0;
-    }
+    function showGameResult() { completeRequested = true; clearGameTimer(); }
 
     function startGameRound(targetPool = state.gamePool) {
         clearGameTimer();
@@ -1313,33 +1230,7 @@
         }
     }
 
-    function showSpellingResult() {
-        elements.spellingQuestionPanel.hidden = true;
-        elements.spellingResultPanel.hidden = false;
-        const accuracy = state.spellingRoundLength
-            ? Math.round((state.spellingScore / state.spellingRoundLength) * 100)
-            : 0;
-        elements.spellingResultScore.textContent = `${state.spellingScore} / ${state.spellingRoundLength}`;
-        elements.spellingResultAccuracy.textContent = `${accuracy}%`;
-        elements.spellingResultBestStreak.textContent = String(state.spellingBestStreak);
-        if (state.spellingWrongEntries.length) {
-            elements.spellingWrongList.replaceChildren(...state.spellingWrongEntries.map((entry) => {
-                const chip = document.createElement("span");
-                chip.className = "game-wrong-word";
-                chip.textContent = `${entry.word.word} · You typed: ${entry.answer}`;
-                return chip;
-            }));
-        } else {
-            const message = document.createElement("span");
-            message.textContent = "Great job! No missed words.";
-            elements.spellingWrongList.replaceChildren(message);
-        }
-        elements.spellingRetryWrongButton.hidden = state.spellingWrongEntries.length === 0;
-        const remainingStored = storedSpellingWrongWords().length;
-        elements.spellingPlayAgainButton.textContent = state.spellingReviewMode && remainingStored
-            ? `남은 틀린 단어 ${remainingStored}개`
-            : "10 new questions";
-    }
+    function showSpellingResult() { completeRequested = true; clearGameTimer(); }
 
     function startSpellingRound(targetPool = state.spellingPool) {
         state.spellingTargetPool = [...targetPool];
@@ -1509,7 +1400,7 @@
         });
         elements.spellingLevelSelect.addEventListener("change", () => selectSpellingLevel(elements.spellingLevelSelect.value));
         window.addEventListener("keydown", (event) => {
-            if (event.altKey || event.ctrlKey || event.metaKey) return;
+            if (recordBusy || event.altKey || event.ctrlKey || event.metaKey) return;
             if (!elements.spellingScreen.hidden) {
                 if (elements.spellingQuestionPanel.hidden) return;
                 if (/^[a-z]$/i.test(event.key) && !state.spellingAnswered) {
@@ -1627,11 +1518,146 @@
             renderOverallProgress();
             renderLevelGroups();
             renderRecommendedLesson();
+            await initializeRecords();
             bindEvents();
             elements.loadingState.hidden = true;
         } catch (error) {
             console.error(error);
             elements.loadingState.querySelector("p").textContent = "We could not load the words. Please try again soon.";
+        }
+    }
+
+    const records = window.LearningRecords.create('vocabulary', { label: '영단어' });
+    let recordBusy = false, recordDepth = 0, recordMode = 'study', completeRequested = false, pendingEvents = [];
+    const recordExcluded = new Set(['data','imageMap','levels','detailCache','detailLoading','gameTimerId','spellingIds','wordMeaningMap','currentBandWords']);
+    const recordScreens = ['levelScreen','lessonScreen','studyScreen','bandListScreen','lessonQuizScreen','gameScreen','spellingScreen'];
+    function lockRecords(busy) {
+        recordBusy = busy;
+        recordScreens.forEach(key => { elements[key].inert = busy; });
+        finishReading.disabled = busy || records.session?.status !== 'active';
+    }
+    function pack(value) {
+        if (value instanceof Set) return { $set: [...value] };
+        if (Array.isArray(value)) return value.map(pack);
+        if (value && typeof value === 'object') {
+            if (value.id != null && value.word && Array.isArray(value.meanings)) return { $word: String(value.id) };
+            return Object.fromEntries(Object.entries(value).map(([k,v]) => [k,pack(v)]));
+        }
+        return value;
+    }
+    function unpack(value) {
+        if (value?.$set) return new Set(value.$set);
+        if (value?.$word) return state.data.words.find(word => String(word.id) === value.$word);
+        if (Array.isArray(value)) return value.map(unpack);
+        if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([k,v]) => [k,unpack(v)]));
+        return value;
+    }
+    function recordCheckpoint() {
+        return { mode: recordMode, state: pack(Object.fromEntries(Object.entries(state).filter(([k]) => !recordExcluded.has(k)))),
+            spelling: { value: elements.spellingInput.value, tiles: [...elements.spellingTileRack.children].map(b => ({ text: b.textContent, index: b.dataset.tileIndex, disabled: b.disabled })) } };
+    }
+    function recordProgress() {
+        if (recordMode === 'study') return { current: state.currentWords.filter(w => state.progress[w.id]).length, total: state.currentWords.length };
+        const prefix = recordMode === 'quiz' ? 'lessonQuiz' : recordMode;
+        return { current: Math.max(0,state[prefix+'QuestionNumber'] - (state[prefix+'Answered'] ? 0 : 1)), total: recordMode === 'quiz' ? state.lessonQuizPool.length : state[prefix+'RoundLength'] };
+    }
+    function recordAnswer(kind, word, response, correct, choices) {
+        if (!word) return;
+        const key = recordMode + ':' + word.id;
+        pendingEvents.push({kind,questionKey:key,response,correct,snapshot:{prompt:word.word,meaning:primaryMeaning(word),choices}});
+        if (kind === 'answer') {
+            state.recordAttempts ||= {};
+            (state.recordAttempts[key] ||= []).push({ response, correct });
+        }
+    }
+    function restoreRecord(cp) {
+        const accountProgress=state.progress, wrongProgress=state.spellingWrongProgress;
+        Object.assign(state,unpack(cp.state)); state.progress=accountProgress; state.spellingWrongProgress=wrongProgress; recordMode = cp.mode;
+        recordScreens.forEach(k => { elements[k].hidden = true; });
+        const attempts = state.recordAttempts || {};
+        if (recordMode === 'study') { elements.studyScreen.hidden=false; renderStudyCard(); updateShuffleToggle(); }
+        if (recordMode === 'quiz' || recordMode === 'game') {
+            const quiz=recordMode==='quiz', prefix=quiz?'lessonQuiz':'game';
+            elements[prefix+'Screen'].hidden=false; elements[prefix+'QuestionPanel'].hidden=false; elements[prefix+'ResultPanel'].hidden=true;
+            if(quiz){elements.lessonQuizStats.hidden=false;elements.lessonQuizTitle.textContent=`${levelName(state.currentLevel)} · ${state.currentLesson+1}차시`;renderLessonQuizQuestion();}else renderGameQuestion();
+            const tried=attempts[recordMode+':'+state[prefix+'Target'].id] || [];
+            elements[prefix+'Choices'].querySelectorAll('button').forEach(b=>{
+                const entry=tried.find(t=>String(t.response?.id)===b.dataset.wordId);
+                b.disabled=state[prefix+'Answered'] || !!entry;
+                if(entry)b.classList.add(entry.correct?'correct':'incorrect');
+            });
+            elements[prefix+'NextButton'].disabled=!state[prefix+'Answered'];
+            if(tried.length)elements[prefix+'Feedback'].textContent=state[prefix+'Answered']?'저장된 답안을 이어서 볼 수 있어요.':'다른 답을 골라 다시 풀어보세요.';
+            if(state.gameAnswered || recordMode!=='game')clearGameTimer();
+        }
+        if(recordMode==='spelling') {
+            elements.spellingScreen.hidden=false;elements.spellingQuestionPanel.hidden=false;elements.spellingResultPanel.hidden=true;
+            elements.spellingLevelSelect.value=String(state.spellingLevel);renderSpellingQuestion();
+            const saved=cp.spelling || {value:'',tiles:[]};
+            elements.spellingInput.value=saved.value;elements.spellingBuiltWord.textContent=saved.value;
+            elements.spellingTileRack.replaceChildren(...saved.tiles.map(t=>{const b=document.createElement('button');b.type='button';b.className='letter-tile';b.textContent=t.text;b.dataset.tileIndex=t.index;b.disabled=t.disabled||state.spellingAnswered;b.onclick=()=>selectSpellingTile(b);return b;}));
+            elements.spellingInput.disabled=state.spellingAnswered;elements.spellingNextButton.disabled=!state.spellingAnswered;
+            elements.spellingCheckButton.disabled=elements.spellingHintButton.disabled=state.spellingAnswered;
+            if(state.spellingAnswered)elements.spellingFeedback.textContent='저장된 답안: '+saved.value+' · 정답: '+state.spellingTarget.word;
+        }
+        renderOverallProgress(); renderStoredSpellingWrong();
+    }
+    async function recordOperation(run, beginMode) {
+        if (recordDepth) return run();
+        if (recordBusy) return;
+        if (!beginMode && records.session?.status !== 'active') return;
+        lockRecords(true); pendingEvents=[];completeRequested=false;recordDepth++;
+        try {
+            if(beginMode){ recordMode=beginMode;state.recordAttempts={}; }
+            run();
+            clearGameTimer();
+            if(beginMode) {
+                const level=recordMode==='game'?state.gameLevel:recordMode==='spelling'?state.spellingLevel:state.currentLevel;
+                const key=recordMode+':'+level+':'+(recordMode==='study'||recordMode==='quiz'?state.currentLesson:state.spellingReviewMode?'review':'all');
+                const label={study:'단어 익히기',quiz:'뜻 퀴즈',game:'그림 퀴즈',spelling:'철자 퀴즈'}[recordMode];
+                const session=await records.start({contentKey:key,title:`영단어 · ${label} · ${levelName(level)}${recordMode==='study'||recordMode==='quiz'?' · '+(state.currentLesson+1)+'차시':''}`,version:'20261002',checkpoint:recordCheckpoint()});
+                if(session.revision>0)restoreRecord(session.checkpoint);
+            }
+            await records.save({checkpoint:recordCheckpoint(),progress:recordProgress(),events:pendingEvents,complete:completeRequested});
+            if(completeRequested){recordScreens.forEach(k=>{elements[k].hidden=k!=='levelScreen';});renderLevelGroups();renderRecommendedLesson();await records.showResult();}
+        } finally { recordDepth--;lockRecords(false);if(recordMode==='game'&&!state.gameAnswered&&!elements.gameScreen.hidden&&records.session?.status==='active')startGameTimer(); }
+    }
+    const finishReading=records.addAction('이번 학습 마치기',()=>recordOperation(()=>{completeRequested=true;}));
+    finishReading.disabled=true;
+    function wrapRecord(fn, before) { return (...args)=>recordOperation(()=>{before?.(...args);return fn(...args);}); }
+    // Nested learning actions form one checkpoint and one immutable answer batch.
+    const originalOpenLesson=openLesson, originalStartQuiz=startLessonQuiz, originalStartGame=startGameRound, originalStartSpelling=startSpellingRound;
+    openLesson=(...args)=>recordOperation(()=>originalOpenLesson(...args),'study');
+    startLessonQuiz=(...args)=>recordOperation(()=>originalStartQuiz(...args),'quiz');
+    startGameRound=(...args)=>recordOperation(()=>originalStartGame(...args),'game');
+    startSpellingRound=(...args)=>recordOperation(()=>originalStartSpelling(...args),'spelling');
+    moveCard=wrapRecord(moveCard);toggleMeaning=wrapRecord(toggleMeaning);toggleDetailPanel=wrapRecord(toggleDetailPanel);toggleShuffle=wrapRecord(toggleShuffle);
+    markWord=wrapRecord(markWord,status=>recordAnswer('self-assessment',currentWord(),status,null));
+    answerLessonQuiz=wrapRecord(answerLessonQuiz,b=>{if(!state.lessonQuizAnswered&&!b.disabled)recordAnswer('answer',state.lessonQuizTarget,{id:b.dataset.wordId,text:b.textContent},b.dataset.correct==='true',state.lessonQuizChoices.map(c=>c.meaning));});
+    answerGame=wrapRecord(answerGame,(id,timedOut)=>{if(!state.gameAnswered&&!timedOut)recordAnswer('answer',state.gameTarget,{id:String(id),text:state.gameChoices.find(w=>String(w.id)===String(id))?.word},String(id)===String(state.gameTarget.id),state.gameChoices.map(w=>w.word));});
+    checkSpellingAnswer=wrapRecord(checkSpellingAnswer,()=>{if(!state.spellingAnswered&&elements.spellingInput.value.trim())recordAnswer('answer',state.spellingTarget,elements.spellingInput.value,core.normalizeSpellingAnswer(elements.spellingInput.value)===core.normalizeSpellingAnswer(state.spellingTarget.word));});
+    showSpellingHint=wrapRecord(showSpellingHint,()=>recordAnswer('hint',state.spellingTarget,'첫 글자 도움',null));
+    selectSpellingTile=wrapRecord(selectSpellingTile);removeLastSpellingLetter=wrapRecord(removeLastSpellingLetter);
+    nextLessonQuizQuestion=wrapRecord(nextLessonQuizQuestion);nextGameQuestion=wrapRecord(nextGameQuestion);nextSpellingQuestion=wrapRecord(nextSpellingQuestion);
+    showLessonQuizResult=wrapRecord(showLessonQuizResult);showGameResult=wrapRecord(showGameResult);showSpellingResult=wrapRecord(showSpellingResult);
+    async function initializeRecords() {
+        await records.ready;
+        const {sessions}=await records.history();
+        if(!records.preview){
+            const {entries}=await window.LearningRecords.request('/word-progress?activity=vocabulary');
+            for(const e of entries){const [mode,id]=e.question_key.split(':');
+                if(e.kind==='self-assessment')state.progress[id]={status:e.response,updatedAt:e.recorded_at};
+                else if(mode==='quiz')state.progress[id]={status:e.correct?'known':'unknown',updatedAt:e.recorded_at};
+                else if(mode==='spelling'){if(e.correct)delete state.spellingWrongProgress[id];else state.spellingWrongProgress[id]={count:1,lastAnswer:e.response,updatedAt:e.recorded_at};}
+            }
+        }
+        renderOverallProgress();renderLevelGroups();renderRecommendedLesson();renderStoredSpellingWrong();
+        const key=new URLSearchParams(location.search).get('record')||sessions.find(s=>s.status==='active')?.contentKey;
+        if(key){const [mode,level,lesson]=key.split(':');
+            if(mode==='study')await openLesson(Number(level),Number(lesson));
+            else if(mode==='quiz'){state.currentLevel=Number(level);state.currentLesson=Number(lesson);await startLessonQuiz();}
+            else if(mode==='game'){state.gameLevel=Number(level);state.gamePool=core.pictureGamePool(state.data.words,new Set(state.imageMap.keys()),state.gameLevel);await startGameRound();}
+            else if(mode==='spelling'){state.spellingLevel=Number(level);state.spellingReviewMode=lesson==='review';state.spellingPool=core.spellingGamePool(state.data.words,state.spellingIds,state.spellingLevel);await startSpellingRound();}
         }
     }
 

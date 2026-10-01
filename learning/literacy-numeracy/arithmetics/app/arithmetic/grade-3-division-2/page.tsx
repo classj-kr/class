@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -56,9 +58,9 @@ function createProblemSet(seed: number): ProblemSet {
 }
 
 export default function GradeThreeDivisionTwoPage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, Answer>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/grade-3-division-2/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, Answer>>("arithmetic/grade-3-division-2/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/grade-3-division-2/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -151,6 +153,8 @@ export default function GradeThreeDivisionTwoPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/grade-3-division-2/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

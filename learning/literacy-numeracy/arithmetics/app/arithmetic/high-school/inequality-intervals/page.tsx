@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createInequalityChoices,
@@ -33,10 +35,10 @@ function solutionLatex(pieces: SolutionPiece[]) {
 }
 
 export default function InequalityIntervalsPage() {
-  const [questionSet, setQuestionSet] = useState(() => createInequalityProblemSet(INITIAL_SEED));
-  const [reviewProblems, setReviewProblems] = useState<InequalityProblem[]>([]);
-  const [selected, setSelected] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/high-school/inequality-intervals/page:questionSet", () => createInequalityProblemSet(INITIAL_SEED));
+  const [reviewProblems, setReviewProblems] = useRecordedState<InequalityProblem[]>("arithmetic/high-school/inequality-intervals/page:reviewProblems", []);
+  const [selected, setSelected] = useRecordedState<Record<string, string>>("arithmetic/high-school/inequality-intervals/page:selected", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/inequality-intervals/page:results", {});
   const [answerPanelOpen, setAnswerPanelOpen] = useState(false);
   const [sheetScale, setSheetScale] = useState(0.6);
   const problems = useMemo(() => [...questionSet.problems, ...reviewProblems], [questionSet.problems, reviewProblems]);
@@ -112,6 +114,8 @@ export default function InequalityIntervalsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/inequality-intervals/page", { problems, choiceProblems });
 
   return (
     <main className="counting-page polynomial-page inequality-page">

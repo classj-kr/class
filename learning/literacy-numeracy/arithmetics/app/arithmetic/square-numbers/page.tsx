@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -56,9 +58,9 @@ function createProblemSet(seed: number): ProblemSet {
 }
 
 export default function SquareNumbersPage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/square-numbers/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, string>>("arithmetic/square-numbers/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/square-numbers/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -153,6 +155,8 @@ export default function SquareNumbersPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/square-numbers/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">

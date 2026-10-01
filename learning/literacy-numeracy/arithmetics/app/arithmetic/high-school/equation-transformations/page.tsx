@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createEquationChoices,
@@ -49,10 +51,10 @@ function solutionLatex(answers: number[]) {
 }
 
 export default function EquationTransformationsPage() {
-  const [questionSet, setQuestionSet] = useState(() => createEquationProblemSet(INITIAL_SEED));
-  const [reviewProblems, setReviewProblems] = useState<EquationProblem[]>([]);
-  const [selectedChoices, setSelectedChoices] = useState<Record<string, number>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/high-school/equation-transformations/page:questionSet", () => createEquationProblemSet(INITIAL_SEED));
+  const [reviewProblems, setReviewProblems] = useRecordedState<EquationProblem[]>("arithmetic/high-school/equation-transformations/page:reviewProblems", []);
+  const [selectedChoices, setSelectedChoices] = useRecordedState<Record<string, number>>("arithmetic/high-school/equation-transformations/page:selectedChoices", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/high-school/equation-transformations/page:results", {});
   const [answerPanelOpen, setAnswerPanelOpen] = useState(false);
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
@@ -143,6 +145,8 @@ export default function EquationTransformationsPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/high-school/equation-transformations/page", { problems });
 
   return (
     <main className="counting-page polynomial-page equation-page">

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+
 import { useEffect, useMemo, useState } from "react";
 
 type PrintMode = "worksheet" | "answers" | "both";
@@ -163,9 +165,9 @@ function matchesDecimal(value: string | undefined, expected: string) {
 }
 
 export default function UnitConversionPage() {
-  const [questionSet, setQuestionSet] = useState(() => createProblemSet(INITIAL_SEED));
-  const [answers, setAnswers] = useState<Record<string, Record<string, string>>>({});
-  const [results, setResults] = useState<Record<string, boolean>>({});
+  const [questionSet, setQuestionSet] = useRecordedState("arithmetic/unit-conversion/page:questionSet", () => createProblemSet(INITIAL_SEED));
+  const [answers, setAnswers] = useRecordedState<Record<string, Record<string, string>>>("arithmetic/unit-conversion/page:answers", {});
+  const [results, setResults] = useRecordedState<Record<string, boolean>>("arithmetic/unit-conversion/page:results", {});
   const [sheetScale, setSheetScale] = useState(0.6);
   const [printMenuOpen, setPrintMenuOpen] = useState(false);
 
@@ -259,6 +261,8 @@ export default function UnitConversionPage() {
       </div>
     );
   }
+
+  useRecordQuestions("arithmetic/unit-conversion/page", { problems });
 
   return (
     <main className="counting-page multiplication-page">
