@@ -186,6 +186,10 @@
         ],
         preProcess: function (math) {
           let processed = math;
+          // Render numeric fractions such as 1/2 in the same stacked form as \frac.
+          processed = processed.replace(/(^|[^\w\\])(\d+)\/(\d+)(?!\w)/g, (_, prefix, numerator, denominator) =>
+            `${prefix}\\dfrac{${numerator}}{${denominator}}`
+          );
           // Inline fractions make their numerator and denominator much smaller
           // than the Korean sentence on phones. In elementary questions, use
           // display-style fractions without enlarging the whole expression.
