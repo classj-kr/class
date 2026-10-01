@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1093,
+  "totalImages": 1101,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1094,6 +1094,14 @@
     "1854": { "word": "organ", "file": "organ-v2.webp" },
     "1609": { "word": "luxury", "file": "luxury-v2.webp" },
     "816": { "word": "discipline", "file": "discipline-v2.webp" },
-    "2880": { "word": "virgin", "file": "virgin-v2.webp" }
+    "2880": { "word": "virgin", "file": "virgin-v2.webp" },
+    "2311": { "word": "scheme", "file": "scheme-v2.webp" },
+    "1947": { "word": "philosophy", "file": "philosophy-v2.webp" },
+    "590": { "word": "consent", "file": "consent-v2.webp" },
+    "429": { "word": "celebrity", "file": "celebrity-v2.webp" },
+    "1434": { "word": "instinct", "file": "instinct-v2.webp" },
+    "1951": { "word": "physics", "file": "physics-v2.webp" },
+    "2333": { "word": "sector", "file": "sector-v2.webp" },
+    "2717": { "word": "thumb", "file": "thumb-v2.webp" }
   }
 }
