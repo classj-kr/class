@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 951,
+  "totalImages": 959,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -952,6 +952,14 @@
     "1396": { "word": "income", "file": "income-v2.webp" },
     "2155": { "word": "recipe", "file": "recipe-v2.webp" },
     "2721": { "word": "tide", "file": "tide-v2.webp" },
-    "892": { "word": "economy", "file": "economy-v2.webp" }
+    "892": { "word": "economy", "file": "economy-v2.webp" },
+    "2442": { "word": "snack", "file": "snack-v2.webp" },
+    "456": { "word": "cheek", "file": "cheek-v2.webp" },
+    "2737": { "word": "toe", "file": "toe-v2.webp" },
+    "1536": { "word": "lawn", "file": "lawn-v2.webp" },
+    "1479": { "word": "jeans", "file": "jeans-v2.webp" },
+    "1200": { "word": "gesture", "file": "gesture-v2.webp" },
+    "2892": { "word": "volume", "file": "volume-v2.webp" },
+    "400": { "word": "cape", "file": "cape-v2.webp" }
   }
 }
