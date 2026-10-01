@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 903,
+  "totalImages": 911,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -904,6 +904,14 @@
     "180": { "word": "atmosphere", "file": "atmosphere-v2.webp" },
     "438": { "word": "chairman", "file": "chairman-v2.webp" },
     "1820": { "word": "occasion", "file": "occasion-v2.webp" },
-    "2602": { "word": "supper", "file": "supper-v2.webp" }
+    "2602": { "word": "supper", "file": "supper-v2.webp" },
+    "1320": { "word": "highway", "file": "highway-v2.webp" },
+    "1840": { "word": "opera", "file": "opera-v2.webp" },
+    "2290": { "word": "salary", "file": "salary-v2.webp" },
+    "2639": { "word": "tale", "file": "tale-v2.webp" },
+    "1740": { "word": "muscle", "file": "muscle-v2.webp" },
+    "532": { "word": "comedy", "file": "comedy-v2.webp" },
+    "2004": { "word": "pork", "file": "pork-v2.webp" },
+    "1986": { "word": "poem", "file": "poem-v2.webp" }
   }
 }
