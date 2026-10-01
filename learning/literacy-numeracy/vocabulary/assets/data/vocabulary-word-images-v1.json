@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 887,
+  "totalImages": 895,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -888,6 +888,14 @@
     "1758": { "word": "navy", "file": "navy-v2.webp" },
     "1062": { "word": "fever", "file": "fever-v2.webp" },
     "860": { "word": "drama", "file": "drama-v2.webp" },
-    "215": { "word": "balance", "file": "balance-v2.webp" }
+    "215": { "word": "balance", "file": "balance-v2.webp" },
+    "2863": { "word": "version", "file": "version-v2.webp" },
+    "570": { "word": "concert", "file": "concert-v2.webp" },
+    "674": { "word": "crisis", "file": "crisis-v2.webp" },
+    "2649": { "word": "tax", "file": "tax-v2.webp" },
+    "1404": { "word": "industry", "file": "industry-v2.webp" },
+    "1972": { "word": "plain", "file": "plain-v2.webp" },
+    "1727": { "word": "motion", "file": "motion-v2.webp" },
+    "990": { "word": "exit", "file": "exit-v2.webp" }
   }
 }
