@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1125,
+  "totalImages": 1133,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1126,6 +1126,14 @@
     "2350": { "word": "sequence", "file": "sequence-v2.webp" },
     "130": { "word": "anxiety", "file": "anxiety-v2.webp" },
     "1705": { "word": "mode", "file": "mode-v2.webp" },
-    "2930": { "word": "welfare", "file": "welfare-v2.webp" }
+    "2930": { "word": "welfare", "file": "welfare-v2.webp" },
+    "1065": { "word": "fiction", "file": "fiction-v2.webp" },
+    "971": { "word": "evolution", "file": "evolution-v2.webp" },
+    "1523": { "word": "landscape", "file": "landscape-v2.webp" },
+    "69": { "word": "agenda", "file": "agenda-v2.webp" },
+    "638": { "word": "corridor", "file": "corridor-v2.webp" },
+    "717": { "word": "database", "file": "database-v2.webp" },
+    "1139": { "word": "fountain", "file": "fountain-v2.webp" },
+    "1285": { "word": "harmony", "file": "harmony-v2.webp" }
   }
 }
