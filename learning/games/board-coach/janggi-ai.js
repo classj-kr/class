@@ -8,8 +8,8 @@
     // immediate capture/mate safety. Difficulty limits planning, not accuracy
     // by inserting random mistakes. The coach has its own larger budget.
     beginner:{name:"초급",depth:1,nodes:3000,ms:250},
-    intermediate:{name:"중급",depth:3,nodes:20000,ms:700},
-    advanced:{name:"상급",depth:4,nodes:65000,ms:1200}
+    intermediate:{name:"중급",depth:2,nodes:9000,ms:500},
+    advanced:{name:"상급",depth:3,nodes:25000,ms:900}
   });
   const HINT=Object.freeze({depth:8,nodes:600000,ms:5000,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
