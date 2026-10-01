@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 919,
+  "totalImages": 927,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -920,6 +920,14 @@
     "358": { "word": "budget", "file": "budget-v2.webp" },
     "231": { "word": "basis", "file": "basis-v2.webp" },
     "113": { "word": "analysis", "file": "analysis-v2.webp" },
-    "1304": { "word": "height", "file": "height-v2.webp" }
+    "1304": { "word": "height", "file": "height-v2.webp" },
+    "1409": { "word": "influence", "file": "influence-v2.webp" },
+    "1260": { "word": "guilt", "file": "guilt-v2.webp" },
+    "2182": { "word": "relief", "file": "relief-v2.webp" },
+    "1431": { "word": "instance", "file": "instance-v2.webp" },
+    "1722": { "word": "moral", "file": "moral-v2.webp" },
+    "1626": { "word": "manner", "file": "manner-v2.webp" },
+    "568": { "word": "concept", "file": "concept-v2.webp" },
+    "2171": { "word": "region", "file": "region-v2.webp" }
   }
 }
