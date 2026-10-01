@@ -486,6 +486,22 @@ for (const [route, file] of [
   app.get(route, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
 }
 
+for (const [friendlyPath, legacyPath, file] of [
+  ["/learning/games/shape-crossing", "/learning/games/traverse/traverse", "learning/games/traverse/traverse.html"],
+  ["/learning/games/spot-match", "/learning/games/dobble/dobble", "learning/games/dobble/dobble.html"],
+  ["/learning/games/code-words", "/learning/games/codenames/codenames", "learning/games/codenames/codenames.html"],
+  ["/learning/games/manor-mystery", "/learning/games/clue/clue", "learning/games/clue/clue.html"],
+  ["/learning/games/court-deduction", "/learning/games/loveletter/loveletter", "learning/games/loveletter/loveletter.html"],
+  ["/learning/games/quest-deduction", "/learning/games/avalon/avalon", "learning/games/avalon/avalon.html"],
+  ["/learning/games/number-tiles", "/learning/games/rummikub/rummikub", "learning/games/rummikub/rummikub.html"],
+  ["/learning/games/pattern-trio", "/learning/games/setgame/setgame", "learning/games/setgame/setgame.html"],
+  ["/learning/games/number-code", "/learning/games/davincicode/davincicode", "learning/games/davincicode/davincicode.html"],
+  ["/learning/games/corner-blocks", "/learning/games/blokus/blokus", "learning/games/blokus/blokus.html"],
+]) {
+  app.get(friendlyPath, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
+  app.get(legacyPath, (req, res) => res.redirect(308, `${friendlyPath}${req.url.slice(legacyPath.length)}`));
+}
+
 const CLEAN_HTML_ROOTS = ["/admin", "/boards", "/classboard", "/parent", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
