@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 871,
+  "totalImages": 879,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -872,6 +872,14 @@
     "727": { "word": "debt", "file": "debt-v2.webp" },
     "238": { "word": "bay", "file": "bay-v2.webp" },
     "856": { "word": "dozen", "file": "dozen-v2.webp" },
-    "2483": { "word": "species", "file": "species-v2.webp" }
+    "2483": { "word": "species", "file": "species-v2.webp" },
+    "2034": { "word": "presence", "file": "presence-v2.webp" },
+    "2884": { "word": "vision", "file": "vision-v2.webp" },
+    "2347": { "word": "sentence", "file": "sentence-v2.webp" },
+    "187": { "word": "attitude", "file": "attitude-v2.webp" },
+    "923": { "word": "empire", "file": "empire-v2.webp" },
+    "84": { "word": "alcohol", "file": "alcohol-v2.webp" },
+    "209": { "word": "background", "file": "background-v2.webp" },
+    "832": { "word": "district", "file": "district-v2.webp" }
   }
 }
