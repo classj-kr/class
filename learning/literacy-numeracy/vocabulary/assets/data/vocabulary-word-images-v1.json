@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalImages": 1077,
+  "totalImages": 1085,
   "images": {
     "139": { "word": "apple", "file": "apple-v2.webp" },
     "419": { "word": "catch", "file": "catch-v2.webp" },
@@ -1078,6 +1078,14 @@
     "1418": { "word": "inn", "file": "inn-v2.webp" },
     "948": { "word": "era", "file": "era-v2.webp" },
     "915": { "word": "embassy", "file": "embassy-v2.webp" },
-    "1031": { "word": "fame", "file": "fame-v2.webp" }
+    "1031": { "word": "fame", "file": "fame-v2.webp" },
+    "1928": { "word": "penalty", "file": "penalty-v2.webp" },
+    "522": { "word": "collar", "file": "collar-v2.webp" },
+    "635": { "word": "corporate", "file": "corporate-v2.webp" },
+    "2238": { "word": "rhythm", "file": "rhythm-v2.webp" },
+    "1176": { "word": "gallery", "file": "gallery-v2.webp" },
+    "435": { "word": "certificate", "file": "certificate-v2.webp" },
+    "1942": { "word": "perspective", "file": "perspective-v2.webp" },
+    "543": { "word": "communist", "file": "communist-v2.webp" }
   }
 }
