@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2909,
+  "totalImages": 2925,
   "images": {
     "139": {
       "word": "apple",
@@ -11637,6 +11637,70 @@
     "2406": {
       "word": "simulate",
       "file": "simulate-v2.webp"
+    },
+    "2175": {
+      "word": "regulate",
+      "file": "regulate-v2.webp"
+    },
+    "742": {
+      "word": "deficiency",
+      "file": "deficiency-v2.webp"
+    },
+    "666": {
+      "word": "craze",
+      "file": "craze-v2.webp"
+    },
+    "792": {
+      "word": "devise",
+      "file": "devise-v2.webp"
+    },
+    "576": {
+      "word": "confer",
+      "file": "confer-v2.webp"
+    },
+    "637": {
+      "word": "correspond",
+      "file": "correspond-v2.webp"
+    },
+    "1413": {
+      "word": "inherent",
+      "file": "inherent-v2.webp"
+    },
+    "189": {
+      "word": "attribute",
+      "file": "attribute-v2.webp"
+    },
+    "909": {
+      "word": "elevate",
+      "file": "elevate-v2.webp"
+    },
+    "53": {
+      "word": "adverse",
+      "file": "adverse-v2.webp"
+    },
+    "806": {
+      "word": "diminish",
+      "file": "diminish-v2.webp"
+    },
+    "554": {
+      "word": "complement",
+      "file": "complement-v2.webp"
+    },
+    "1871": {
+      "word": "overlap",
+      "file": "overlap-v2.webp"
+    },
+    "1412": {
+      "word": "inhabit",
+      "file": "inhabit-v2.webp"
+    },
+    "1875": {
+      "word": "overwhelm",
+      "file": "overwhelm-v2.webp"
+    },
+    "582": {
+      "word": "conform",
+      "file": "conform-v2.webp"
     }
   }
 }
