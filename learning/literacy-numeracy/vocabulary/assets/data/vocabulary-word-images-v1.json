@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2573,
+  "totalImages": 2589,
   "images": {
     "139": {
       "word": "apple",
@@ -10293,6 +10293,70 @@
     "1237": {
       "word": "grasp",
       "file": "grasp-v2.webp"
+    },
+    "2774": {
+      "word": "translate",
+      "file": "translate-v2.webp"
+    },
+    "1172": {
+      "word": "fury",
+      "file": "fury-v2.webp"
+    },
+    "2050": {
+      "word": "primitive",
+      "file": "primitive-v2.webp"
+    },
+    "1173": {
+      "word": "fuse",
+      "file": "fuse-v2.webp"
+    },
+    "2841": {
+      "word": "urban",
+      "file": "urban-v2.webp"
+    },
+    "424": {
+      "word": "caution",
+      "file": "caution-v2.webp"
+    },
+    "2707": {
+      "word": "thorough",
+      "file": "thorough-v2.webp"
+    },
+    "1827": {
+      "word": "offend",
+      "file": "offend-v2.webp"
+    },
+    "2253": {
+      "word": "roar",
+      "file": "roar-v2.webp"
+    },
+    "298": {
+      "word": "blink",
+      "file": "blink-v2.webp"
+    },
+    "2167": {
+      "word": "reform",
+      "file": "reform-v2.webp"
+    },
+    "1946": {
+      "word": "phenomenon",
+      "file": "phenomenon-v2.webp"
+    },
+    "620": {
+      "word": "convict",
+      "file": "convict-v2.webp"
+    },
+    "1595": {
+      "word": "lone",
+      "file": "lone-v2.webp"
+    },
+    "2070": {
+      "word": "profound",
+      "file": "profound-v2.webp"
+    },
+    "1924": {
+      "word": "peasant",
+      "file": "peasant-v2.webp"
     }
   }
 }
