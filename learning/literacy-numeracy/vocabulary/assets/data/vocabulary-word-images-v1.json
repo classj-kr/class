@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2381,
+  "totalImages": 2397,
   "images": {
     "139": {
       "word": "apple",
@@ -9525,6 +9525,70 @@
     "2681": {
       "word": "terror",
       "file": "terror-v2.webp"
+    },
+    "1272": {
+      "word": "halt",
+      "file": "halt-v2.webp"
+    },
+    "1001": {
+      "word": "explode",
+      "file": "explode-v2.webp"
+    },
+    "2360": {
+      "word": "severe",
+      "file": "severe-v2.webp"
+    },
+    "2887": {
+      "word": "vital",
+      "file": "vital-v2.webp"
+    },
+    "869": {
+      "word": "drown",
+      "file": "drown-v2.webp"
+    },
+    "87": {
+      "word": "alike",
+      "file": "alike-v2.webp"
+    },
+    "2985": {
+      "word": "wreck",
+      "file": "wreck-v2.webp"
+    },
+    "145": {
+      "word": "approve",
+      "file": "approve-v2.webp"
+    },
+    "2303": {
+      "word": "scan",
+      "file": "scan-v2.webp"
+    },
+    "905": {
+      "word": "electronic",
+      "file": "electronic-v2.webp"
+    },
+    "1873": {
+      "word": "overnight",
+      "file": "overnight-v2.webp"
+    },
+    "647": {
+      "word": "counsel",
+      "file": "counsel-v2.webp"
+    },
+    "766": {
+      "word": "deposit",
+      "file": "deposit-v2.webp"
+    },
+    "2751": {
+      "word": "toss",
+      "file": "toss-v2.webp"
+    },
+    "32": {
+      "word": "acid",
+      "file": "acid-v2.webp"
+    },
+    "916": {
+      "word": "embrace",
+      "file": "embrace-v2.webp"
     }
   }
 }
