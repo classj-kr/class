@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2861,
+  "totalImages": 2877,
   "images": {
     "139": {
       "word": "apple",
@@ -11445,6 +11445,70 @@
     "1000": {
       "word": "explicit",
       "file": "explicit-v2.webp"
+    },
+    "873": {
+      "word": "dual",
+      "file": "dual-v2.webp"
+    },
+    "983": {
+      "word": "exclude",
+      "file": "exclude-v2.webp"
+    },
+    "2890": {
+      "word": "vocation",
+      "file": "vocation-v2.webp"
+    },
+    "1940": {
+      "word": "persist",
+      "file": "persist-v2.webp"
+    },
+    "950": {
+      "word": "erect",
+      "file": "erect-v2.webp"
+    },
+    "58": {
+      "word": "aesthetic",
+      "file": "aesthetic-v2.webp"
+    },
+    "549": {
+      "word": "compel",
+      "file": "compel-v2.webp"
+    },
+    "35": {
+      "word": "acquisition",
+      "file": "acquisition-v2.webp"
+    },
+    "2868": {
+      "word": "veterinarian",
+      "file": "veterinarian-v2.webp"
+    },
+    "1210": {
+      "word": "glare",
+      "file": "glare-v2.webp"
+    },
+    "736": {
+      "word": "decrease",
+      "file": "decrease-v2.webp"
+    },
+    "688": {
+      "word": "cultivate",
+      "file": "cultivate-v2.webp"
+    },
+    "743": {
+      "word": "deficit",
+      "file": "deficit-v2.webp"
+    },
+    "1706": {
+      "word": "modify",
+      "file": "modify-v2.webp"
+    },
+    "977": {
+      "word": "exceed",
+      "file": "exceed-v2.webp"
+    },
+    "2209": {
+      "word": "reside",
+      "file": "reside-v2.webp"
     }
   }
 }
