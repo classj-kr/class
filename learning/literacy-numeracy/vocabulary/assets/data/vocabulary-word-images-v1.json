@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2957,
+  "totalImages": 2973,
   "images": {
     "139": {
       "word": "apple",
@@ -11829,6 +11829,70 @@
     "2073": {
       "word": "prohibit",
       "file": "prohibit-v2.webp"
+    },
+    "784": {
+      "word": "destruct",
+      "file": "destruct-v2.webp"
+    },
+    "1752": {
+      "word": "narrate",
+      "file": "narrate-v2.webp"
+    },
+    "769": {
+      "word": "derive",
+      "file": "derive-v2.webp"
+    },
+    "552": {
+      "word": "compile",
+      "file": "compile-v2.webp"
+    },
+    "1407": {
+      "word": "infer",
+      "file": "infer-v2.webp"
+    },
+    "1657": {
+      "word": "mediate",
+      "file": "mediate-v2.webp"
+    },
+    "1449": {
+      "word": "intermediate",
+      "file": "intermediate-v2.webp"
+    },
+    "2165": {
+      "word": "refine",
+      "file": "refine-v2.webp"
+    },
+    "829": {
+      "word": "distort",
+      "file": "distort-v2.webp"
+    },
+    "775": {
+      "word": "designate",
+      "file": "designate-v2.webp"
+    },
+    "6": {
+      "word": "abound",
+      "file": "abound-v2.webp"
+    },
+    "2827": {
+      "word": "unify",
+      "file": "unify-v2.webp"
+    },
+    "1843": {
+      "word": "opportune",
+      "file": "opportune-v2.webp"
+    },
+    "2037": {
+      "word": "preside",
+      "file": "preside-v2.webp"
+    },
+    "1394": {
+      "word": "incline",
+      "file": "incline-v2.webp"
+    },
+    "1577": {
+      "word": "linguistic",
+      "file": "linguistic-v2.webp"
     }
   }
 }
