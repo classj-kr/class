@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2445,
+  "totalImages": 2461,
   "images": {
     "139": {
       "word": "apple",
@@ -9781,6 +9781,70 @@
     "190": {
       "word": "auction",
       "file": "auction-v2.webp"
+    },
+    "1767": {
+      "word": "negotiate",
+      "file": "negotiate-v2.webp"
+    },
+    "363": {
+      "word": "bully",
+      "file": "bully-v2.webp"
+    },
+    "1693": {
+      "word": "minimum",
+      "file": "minimum-v2.webp"
+    },
+    "2268": {
+      "word": "rot",
+      "file": "rot-v2.webp"
+    },
+    "2151": {
+      "word": "rebel",
+      "file": "rebel-v2.webp"
+    },
+    "926": {
+      "word": "encounter",
+      "file": "encounter-v2.webp"
+    },
+    "23": {
+      "word": "accompany",
+      "file": "accompany-v2.webp"
+    },
+    "2398": {
+      "word": "sigh",
+      "file": "sigh-v2.webp"
+    },
+    "2784": {
+      "word": "tremendous",
+      "file": "tremendous-v2.webp"
+    },
+    "1456": {
+      "word": "intimate",
+      "file": "intimate-v2.webp"
+    },
+    "884": {
+      "word": "eager",
+      "file": "eager-v2.webp"
+    },
+    "563": {
+      "word": "compromise",
+      "file": "compromise-v2.webp"
+    },
+    "2025": {
+      "word": "precise",
+      "file": "precise-v2.webp"
+    },
+    "2869": {
+      "word": "via",
+      "file": "via-v2.webp"
+    },
+    "2213": {
+      "word": "resort",
+      "file": "resort-v2.webp"
+    },
+    "1002": {
+      "word": "explore",
+      "file": "explore-v2.webp"
     }
   }
 }
