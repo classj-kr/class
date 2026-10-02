@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2333,
+  "totalImages": 2349,
   "images": {
     "139": {
       "word": "apple",
@@ -9333,6 +9333,70 @@
     "2134": {
       "word": "random",
       "file": "random-v2.webp"
+    },
+    "1803": {
+      "word": "novel",
+      "file": "novel-v2.webp"
+    },
+    "632": {
+      "word": "core",
+      "file": "core-v2.webp"
+    },
+    "837": {
+      "word": "divine",
+      "file": "divine-v2.webp"
+    },
+    "15": {
+      "word": "abuse",
+      "file": "abuse-v2.webp"
+    },
+    "1438": {
+      "word": "insult",
+      "file": "insult-v2.webp"
+    },
+    "1296": {
+      "word": "heal",
+      "file": "heal-v2.webp"
+    },
+    "2021": {
+      "word": "praise",
+      "file": "praise-v2.webp"
+    },
+    "2143": {
+      "word": "raw",
+      "file": "raw-v2.webp"
+    },
+    "2565": {
+      "word": "stroke",
+      "file": "stroke-v2.webp"
+    },
+    "1615": {
+      "word": "magnificent",
+      "file": "magnificent-v2.webp"
+    },
+    "2801": {
+      "word": "tube",
+      "file": "tube-v2.webp"
+    },
+    "2600": {
+      "word": "superior",
+      "file": "superior-v2.webp"
+    },
+    "2951": {
+      "word": "wicked",
+      "file": "wicked-v2.webp"
+    },
+    "1738": {
+      "word": "multiple",
+      "file": "multiple-v2.webp"
+    },
+    "380": {
+      "word": "buzz",
+      "file": "buzz-v2.webp"
+    },
+    "2817": {
+      "word": "ultimate",
+      "file": "ultimate-v2.webp"
     }
   }
 }
