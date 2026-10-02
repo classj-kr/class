@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2205,
+  "totalImages": 2221,
   "images": {
     "139": {
       "word": "apple",
@@ -8821,6 +8821,70 @@
     "2061": {
       "word": "probable",
       "file": "probable-v2.webp"
+    },
+    "182": {
+      "word": "attach",
+      "file": "attach-v2.webp"
+    },
+    "385": {
+      "word": "calculate",
+      "file": "calculate-v2.webp"
+    },
+    "675": {
+      "word": "crisp",
+      "file": "crisp-v2.webp"
+    },
+    "1636": {
+      "word": "marvel",
+      "file": "marvel-v2.webp"
+    },
+    "599": {
+      "word": "consume",
+      "file": "consume-v2.webp"
+    },
+    "1428": {
+      "word": "inspect",
+      "file": "inspect-v2.webp"
+    },
+    "2188": {
+      "word": "remark",
+      "file": "remark-v2.webp"
+    },
+    "735": {
+      "word": "decorate",
+      "file": "decorate-v2.webp"
+    },
+    "895": {
+      "word": "educate",
+      "file": "educate-v2.webp"
+    },
+    "141": {
+      "word": "appoint",
+      "file": "appoint-v2.webp"
+    },
+    "894": {
+      "word": "edit",
+      "file": "edit-v2.webp"
+    },
+    "112": {
+      "word": "amuse",
+      "file": "amuse-v2.webp"
+    },
+    "172": {
+      "word": "assign",
+      "file": "assign-v2.webp"
+    },
+    "987": {
+      "word": "exhaust",
+      "file": "exhaust-v2.webp"
+    },
+    "170": {
+      "word": "assess",
+      "file": "assess-v2.webp"
+    },
+    "97": {
+      "word": "aloud",
+      "file": "aloud-v2.webp"
     }
   }
 }
