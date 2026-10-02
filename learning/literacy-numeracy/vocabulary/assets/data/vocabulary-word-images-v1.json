@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2973,
+  "totalImages": 2989,
   "images": {
     "139": {
       "word": "apple",
@@ -11893,6 +11893,70 @@
     "1577": {
       "word": "linguistic",
       "file": "linguistic-v2.webp"
+    },
+    "947": {
+      "word": "equip",
+      "file": "equip-v2.webp"
+    },
+    "177": {
+      "word": "astonish",
+      "file": "astonish-v2.webp"
+    },
+    "1414": {
+      "word": "inhibit",
+      "file": "inhibit-v2.webp"
+    },
+    "90": {
+      "word": "allocate",
+      "file": "allocate-v2.webp"
+    },
+    "1765": {
+      "word": "negate",
+      "file": "negate-v2.webp"
+    },
+    "676": {
+      "word": "criterion",
+      "file": "criterion-v2.webp"
+    },
+    "2003": {
+      "word": "populate",
+      "file": "populate-v2.webp"
+    },
+    "2024": {
+      "word": "precede",
+      "file": "precede-v2.webp"
+    },
+    "562": {
+      "word": "comprise",
+      "file": "comprise-v2.webp"
+    },
+    "1420": {
+      "word": "innovate",
+      "file": "innovate-v2.webp"
+    },
+    "71": {
+      "word": "aggress",
+      "file": "aggress-v2.webp"
+    },
+    "160": {
+      "word": "artifice",
+      "file": "artifice-v2.webp"
+    },
+    "596": {
+      "word": "constrain",
+      "file": "constrain-v2.webp"
+    },
+    "719": {
+      "word": "datum",
+      "file": "datum-v2.webp"
+    },
+    "781": {
+      "word": "destine",
+      "file": "destine-v2.webp"
+    },
+    "944": {
+      "word": "environ",
+      "file": "environ-v2.webp"
     }
   }
 }
