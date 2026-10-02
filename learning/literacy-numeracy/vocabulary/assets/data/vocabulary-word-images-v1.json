@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2509,
+  "totalImages": 2525,
   "images": {
     "139": {
       "word": "apple",
@@ -10037,6 +10037,70 @@
     "1710": {
       "word": "modest",
       "file": "modest-v2.webp"
+    },
+    "2579": {
+      "word": "subtle",
+      "file": "subtle-v2.webp"
+    },
+    "631": {
+      "word": "cord",
+      "file": "cord-v2.webp"
+    },
+    "1856": {
+      "word": "origin",
+      "file": "origin-v2.webp"
+    },
+    "949": {
+      "word": "erase",
+      "file": "erase-v2.webp"
+    },
+    "1092": {
+      "word": "flavor",
+      "file": "flavor-v2.webp"
+    },
+    "1311": {
+      "word": "hence",
+      "file": "hence-v2.webp"
+    },
+    "2719": {
+      "word": "tick",
+      "file": "tick-v2.webp"
+    },
+    "2250": {
+      "word": "rival",
+      "file": "rival-v2.webp"
+    },
+    "2900": {
+      "word": "wander",
+      "file": "wander-v2.webp"
+    },
+    "912": {
+      "word": "elite",
+      "file": "elite-v2.webp"
+    },
+    "2575": {
+      "word": "submit",
+      "file": "submit-v2.webp"
+    },
+    "2792": {
+      "word": "triumph",
+      "file": "triumph-v2.webp"
+    },
+    "2225": {
+      "word": "resume",
+      "file": "resume-v2.webp"
+    },
+    "830": {
+      "word": "distract",
+      "file": "distract-v2.webp"
+    },
+    "1922": {
+      "word": "peak",
+      "file": "peak-v2.webp"
+    },
+    "1067": {
+      "word": "fierce",
+      "file": "fierce-v2.webp"
     }
   }
 }
