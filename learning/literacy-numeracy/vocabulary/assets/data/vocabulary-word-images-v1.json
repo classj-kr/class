@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2493,
+  "totalImages": 2509,
   "images": {
     "139": {
       "word": "apple",
@@ -9973,6 +9973,70 @@
     "1094": {
       "word": "flee",
       "file": "flee-v2.webp"
+    },
+    "2431": {
+      "word": "slim",
+      "file": "slim-v2.webp"
+    },
+    "2220": {
+      "word": "restore",
+      "file": "restore-v2.webp"
+    },
+    "2181": {
+      "word": "relevant",
+      "file": "relevant-v2.webp"
+    },
+    "1368": {
+      "word": "identical",
+      "file": "identical-v2.webp"
+    },
+    "2210": {
+      "word": "resign",
+      "file": "resign-v2.webp"
+    },
+    "2339": {
+      "word": "seize",
+      "file": "seize-v2.webp"
+    },
+    "1556": {
+      "word": "legitimate",
+      "file": "legitimate-v2.webp"
+    },
+    "2848": {
+      "word": "vacuum",
+      "file": "vacuum-v2.webp"
+    },
+    "928": {
+      "word": "endure",
+      "file": "endure-v2.webp"
+    },
+    "2577": {
+      "word": "substance",
+      "file": "substance-v2.webp"
+    },
+    "639": {
+      "word": "corrupt",
+      "file": "corrupt-v2.webp"
+    },
+    "1180": {
+      "word": "gap",
+      "file": "gap-v2.webp"
+    },
+    "702": {
+      "word": "custom",
+      "file": "custom-v2.webp"
+    },
+    "40": {
+      "word": "addict",
+      "file": "addict-v2.webp"
+    },
+    "2883": {
+      "word": "visible",
+      "file": "visible-v2.webp"
+    },
+    "1710": {
+      "word": "modest",
+      "file": "modest-v2.webp"
     }
   }
 }
