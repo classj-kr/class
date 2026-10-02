@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2189,
+  "totalImages": 2205,
   "images": {
     "139": {
       "word": "apple",
@@ -8757,6 +8757,70 @@
     "2361": {
       "word": "sew",
       "file": "sew-v2.webp"
+    },
+    "584": {
+      "word": "confuse",
+      "file": "confuse-v2.webp"
+    },
+    "2895": {
+      "word": "wage",
+      "file": "wage-v2.webp"
+    },
+    "1209": {
+      "word": "glance",
+      "file": "glance-v2.webp"
+    },
+    "2077": {
+      "word": "promote",
+      "file": "promote-v2.webp"
+    },
+    "954": {
+      "word": "essay",
+      "file": "essay-v2.webp"
+    },
+    "38": {
+      "word": "adapt",
+      "file": "adapt-v2.webp"
+    },
+    "1723": {
+      "word": "moreover",
+      "file": "moreover-v2.webp"
+    },
+    "2612": {
+      "word": "surround",
+      "file": "surround-v2.webp"
+    },
+    "613": {
+      "word": "contribute",
+      "file": "contribute-v2.webp"
+    },
+    "820": {
+      "word": "disgust",
+      "file": "disgust-v2.webp"
+    },
+    "281": {
+      "word": "bind",
+      "file": "bind-v2.webp"
+    },
+    "924": {
+      "word": "employ",
+      "file": "employ-v2.webp"
+    },
+    "530": {
+      "word": "combine",
+      "file": "combine-v2.webp"
+    },
+    "1844": {
+      "word": "oppose",
+      "file": "oppose-v2.webp"
+    },
+    "124": {
+      "word": "annoy",
+      "file": "annoy-v2.webp"
+    },
+    "2061": {
+      "word": "probable",
+      "file": "probable-v2.webp"
     }
   }
 }
