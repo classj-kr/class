@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2557,
+  "totalImages": 2573,
   "images": {
     "139": {
       "word": "apple",
@@ -10229,6 +10229,70 @@
     "988": {
       "word": "exhibit",
       "file": "exhibit-v2.webp"
+    },
+    "2177": {
+      "word": "reject",
+      "file": "reject-v2.webp"
+    },
+    "1963": {
+      "word": "pinch",
+      "file": "pinch-v2.webp"
+    },
+    "1303": {
+      "word": "heel",
+      "file": "heel-v2.webp"
+    },
+    "961": {
+      "word": "evacuate",
+      "file": "evacuate-v2.webp"
+    },
+    "2098": {
+      "word": "publish",
+      "file": "publish-v2.webp"
+    },
+    "2027": {
+      "word": "predict",
+      "file": "predict-v2.webp"
+    },
+    "583": {
+      "word": "confront",
+      "file": "confront-v2.webp"
+    },
+    "33": {
+      "word": "acknowledge",
+      "file": "acknowledge-v2.webp"
+    },
+    "2675": {
+      "word": "terminal",
+      "file": "terminal-v2.webp"
+    },
+    "1024": {
+      "word": "fade",
+      "file": "fade-v2.webp"
+    },
+    "2095": {
+      "word": "psychology",
+      "file": "psychology-v2.webp"
+    },
+    "1215": {
+      "word": "glow",
+      "file": "glow-v2.webp"
+    },
+    "1704": {
+      "word": "mock",
+      "file": "mock-v2.webp"
+    },
+    "1925": {
+      "word": "peel",
+      "file": "peel-v2.webp"
+    },
+    "96": {
+      "word": "alongside",
+      "file": "alongside-v2.webp"
+    },
+    "1237": {
+      "word": "grasp",
+      "file": "grasp-v2.webp"
     }
   }
 }
