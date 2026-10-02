@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2125,
+  "totalImages": 2141,
   "images": {
     "139": {
       "word": "apple",
@@ -8501,6 +8501,70 @@
     "173": {
       "word": "assist",
       "file": "assist-v2.webp"
+    },
+    "1099": {
+      "word": "float",
+      "file": "float-v2.webp"
+    },
+    "1323": {
+      "word": "hint",
+      "file": "hint-v2.webp"
+    },
+    "601": {
+      "word": "contain",
+      "file": "contain-v2.webp"
+    },
+    "1545": {
+      "word": "leap",
+      "file": "leap-v2.webp"
+    },
+    "326": {
+      "word": "bounce",
+      "file": "bounce-v2.webp"
+    },
+    "931": {
+      "word": "engage",
+      "file": "engage-v2.webp"
+    },
+    "1664": {
+      "word": "melt",
+      "file": "melt-v2.webp"
+    },
+    "2208": {
+      "word": "reserve",
+      "file": "reserve-v2.webp"
+    },
+    "462": {
+      "word": "chew",
+      "file": "chew-v2.webp"
+    },
+    "1465": {
+      "word": "involve",
+      "file": "involve-v2.webp"
+    },
+    "1401": {
+      "word": "indicate",
+      "file": "indicate-v2.webp"
+    },
+    "1822": {
+      "word": "occur",
+      "file": "occur-v2.webp"
+    },
+    "125": {
+      "word": "annual",
+      "file": "annual-v2.webp"
+    },
+    "1315": {
+      "word": "hesitate",
+      "file": "hesitate-v2.webp"
+    },
+    "386": {
+      "word": "calendar",
+      "file": "calendar-v2.webp"
+    },
+    "1110": {
+      "word": "fold",
+      "file": "fold-v2.webp"
     }
   }
 }
