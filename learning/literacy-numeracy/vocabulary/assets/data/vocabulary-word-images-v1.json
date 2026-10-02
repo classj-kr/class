@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2685,
+  "totalImages": 2701,
   "images": {
     "139": {
       "word": "apple",
@@ -10741,6 +10741,70 @@
     "1008": {
       "word": "external",
       "file": "external-v2.webp"
+    },
+    "2668": {
+      "word": "tenant",
+      "file": "tenant-v2.webp"
+    },
+    "794": {
+      "word": "diabetes",
+      "file": "diabetes-v2.webp"
+    },
+    "102": {
+      "word": "alternate",
+      "file": "alternate-v2.webp"
+    },
+    "2085": {
+      "word": "prospect",
+      "file": "prospect-v2.webp"
+    },
+    "2189": {
+      "word": "remedy",
+      "file": "remedy-v2.webp"
+    },
+    "710": {
+      "word": "damp",
+      "file": "damp-v2.webp"
+    },
+    "1848": {
+      "word": "oral",
+      "file": "oral-v2.webp"
+    },
+    "2534": {
+      "word": "steep",
+      "file": "steep-v2.webp"
+    },
+    "619": {
+      "word": "convey",
+      "file": "convey-v2.webp"
+    },
+    "827": {
+      "word": "distinct",
+      "file": "distinct-v2.webp"
+    },
+    "1171": {
+      "word": "furthermore",
+      "file": "furthermore-v2.webp"
+    },
+    "881": {
+      "word": "dwell",
+      "file": "dwell-v2.webp"
+    },
+    "980": {
+      "word": "excess",
+      "file": "excess-v2.webp"
+    },
+    "1430": {
+      "word": "install",
+      "file": "install-v2.webp"
+    },
+    "1192": {
+      "word": "generate",
+      "file": "generate-v2.webp"
+    },
+    "1009": {
+      "word": "extinct",
+      "file": "extinct-v2.webp"
     }
   }
 }
