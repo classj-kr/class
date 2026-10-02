@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2877,
+  "totalImages": 2893,
   "images": {
     "139": {
       "word": "apple",
@@ -11509,6 +11509,70 @@
     "2209": {
       "word": "reside",
       "file": "reside-v2.webp"
+    },
+    "1790": {
+      "word": "nominate",
+      "file": "nominate-v2.webp"
+    },
+    "1712": {
+      "word": "molecule",
+      "file": "molecule-v2.webp"
+    },
+    "2078": {
+      "word": "prompt",
+      "file": "prompt-v2.webp"
+    },
+    "1468": {
+      "word": "irritate",
+      "file": "irritate-v2.webp"
+    },
+    "1130": {
+      "word": "format",
+      "file": "format-v2.webp"
+    },
+    "2323": {
+      "word": "sculpt",
+      "file": "sculpt-v2.webp"
+    },
+    "1397": {
+      "word": "incorporate",
+      "file": "incorporate-v2.webp"
+    },
+    "520": {
+      "word": "collaborate",
+      "file": "collaborate-v2.webp"
+    },
+    "197": {
+      "word": "avail",
+      "file": "avail-v2.webp"
+    },
+    "2176": {
+      "word": "reinforce",
+      "file": "reinforce-v2.webp"
+    },
+    "1454": {
+      "word": "interval",
+      "file": "interval-v2.webp"
+    },
+    "1199": {
+      "word": "geology",
+      "file": "geology-v2.webp"
+    },
+    "591": {
+      "word": "conserve",
+      "file": "conserve-v2.webp"
+    },
+    "696": {
+      "word": "curriculum",
+      "file": "curriculum-v2.webp"
+    },
+    "1846": {
+      "word": "optimist",
+      "file": "optimist-v2.webp"
+    },
+    "579": {
+      "word": "confine",
+      "file": "confine-v2.webp"
     }
   }
 }
