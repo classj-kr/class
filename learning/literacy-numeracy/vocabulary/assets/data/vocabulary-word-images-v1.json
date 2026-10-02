@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2637,
+  "totalImages": 2653,
   "images": {
     "139": {
       "word": "apple",
@@ -10549,6 +10549,70 @@
     "397": {
       "word": "canvas",
       "file": "canvas-v2.webp"
+    },
+    "700": {
+      "word": "curve",
+      "file": "curve-v2.webp"
+    },
+    "1313": {
+      "word": "heritage",
+      "file": "heritage-v2.webp"
+    },
+    "2850": {
+      "word": "valid",
+      "file": "valid-v2.webp"
+    },
+    "10": {
+      "word": "absent",
+      "file": "absent-v2.webp"
+    },
+    "2312": {
+      "word": "scholar",
+      "file": "scholar-v2.webp"
+    },
+    "2026": {
+      "word": "predator",
+      "file": "predator-v2.webp"
+    },
+    "2773": {
+      "word": "transition",
+      "file": "transition-v2.webp"
+    },
+    "1290": {
+      "word": "haunt",
+      "file": "haunt-v2.webp"
+    },
+    "807": {
+      "word": "dine",
+      "file": "dine-v2.webp"
+    },
+    "1429": {
+      "word": "inspire",
+      "file": "inspire-v2.webp"
+    },
+    "2849": {
+      "word": "vague",
+      "file": "vague-v2.webp"
+    },
+    "1426": {
+      "word": "insight",
+      "file": "insight-v2.webp"
+    },
+    "734": {
+      "word": "decline",
+      "file": "decline-v2.webp"
+    },
+    "2994": {
+      "word": "yield",
+      "file": "yield-v2.webp"
+    },
+    "1625": {
+      "word": "manipulate",
+      "file": "manipulate-v2.webp"
+    },
+    "1564": {
+      "word": "liberal",
+      "file": "liberal-v2.webp"
     }
   }
 }
