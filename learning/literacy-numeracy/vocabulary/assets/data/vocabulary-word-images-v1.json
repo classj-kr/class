@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2093,
+  "totalImages": 2109,
   "images": {
     "139": {
       "word": "apple",
@@ -8373,6 +8373,70 @@
     "2658": {
       "word": "teenage",
       "file": "teenage-v2.webp"
+    },
+    "1390": {
+      "word": "improve",
+      "file": "improve-v2.webp"
+    },
+    "1026": {
+      "word": "faint",
+      "file": "faint-v2.webp"
+    },
+    "2893": {
+      "word": "volunteer",
+      "file": "volunteer-v2.webp"
+    },
+    "1753": {
+      "word": "narrow",
+      "file": "narrow-v2.webp"
+    },
+    "1760": {
+      "word": "neat",
+      "file": "neat-v2.webp"
+    },
+    "1816": {
+      "word": "observe",
+      "file": "observe-v2.webp"
+    },
+    "2622": {
+      "word": "sweep",
+      "file": "sweep-v2.webp"
+    },
+    "2430": {
+      "word": "slight",
+      "file": "slight-v2.webp"
+    },
+    "1159": {
+      "word": "fry",
+      "file": "fry-v2.webp"
+    },
+    "2463": {
+      "word": "somewhat",
+      "file": "somewhat-v2.webp"
+    },
+    "764": {
+      "word": "depend",
+      "file": "depend-v2.webp"
+    },
+    "2228": {
+      "word": "retire",
+      "file": "retire-v2.webp"
+    },
+    "225": {
+      "word": "bare",
+      "file": "bare-v2.webp"
+    },
+    "1591": {
+      "word": "locate",
+      "file": "locate-v2.webp"
+    },
+    "975": {
+      "word": "examine",
+      "file": "examine-v2.webp"
+    },
+    "2504": {
+      "word": "spray",
+      "file": "spray-v2.webp"
     }
   }
 }
