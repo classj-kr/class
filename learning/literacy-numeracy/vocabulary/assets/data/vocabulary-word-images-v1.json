@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2285,
+  "totalImages": 2301,
   "images": {
     "139": {
       "word": "apple",
@@ -9141,6 +9141,70 @@
     "318": {
       "word": "border",
       "file": "border-v2.webp"
+    },
+    "1095": {
+      "word": "flesh",
+      "file": "flesh-v2.webp"
+    },
+    "1052": {
+      "word": "federal",
+      "file": "federal-v2.webp"
+    },
+    "2237": {
+      "word": "reward",
+      "file": "reward-v2.webp"
+    },
+    "538": {
+      "word": "commit",
+      "file": "commit-v2.webp"
+    },
+    "1012": {
+      "word": "extraordinary",
+      "file": "extraordinary-v2.webp"
+    },
+    "2679": {
+      "word": "terrific",
+      "file": "terrific-v2.webp"
+    },
+    "176": {
+      "word": "assure",
+      "file": "assure-v2.webp"
+    },
+    "2828": {
+      "word": "unique",
+      "file": "unique-v2.webp"
+    },
+    "258": {
+      "word": "behave",
+      "file": "behave-v2.webp"
+    },
+    "577": {
+      "word": "confess",
+      "file": "confess-v2.webp"
+    },
+    "1483": {
+      "word": "joint",
+      "file": "joint-v2.webp"
+    },
+    "167": {
+      "word": "assault",
+      "file": "assault-v2.webp"
+    },
+    "2768": {
+      "word": "trail",
+      "file": "trail-v2.webp"
+    },
+    "1807": {
+      "word": "nuclear",
+      "file": "nuclear-v2.webp"
+    },
+    "1774": {
+      "word": "network",
+      "file": "network-v2.webp"
+    },
+    "739": {
+      "word": "defeat",
+      "file": "defeat-v2.webp"
     }
   }
 }
