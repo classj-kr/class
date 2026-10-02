@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2317,
+  "totalImages": 2333,
   "images": {
     "139": {
       "word": "apple",
@@ -9269,6 +9269,70 @@
     "641": {
       "word": "costume",
       "file": "costume-v2.webp"
+    },
+    "2423": {
+      "word": "skip",
+      "file": "skip-v2.webp"
+    },
+    "1605": {
+      "word": "loyal",
+      "file": "loyal-v2.webp"
+    },
+    "1508": {
+      "word": "knight",
+      "file": "knight-v2.webp"
+    },
+    "2563": {
+      "word": "strip",
+      "file": "strip-v2.webp"
+    },
+    "1137": {
+      "word": "foster",
+      "file": "foster-v2.webp"
+    },
+    "1442": {
+      "word": "intelligent",
+      "file": "intelligent-v2.webp"
+    },
+    "1912": {
+      "word": "pat",
+      "file": "pat-v2.webp"
+    },
+    "1504": {
+      "word": "kit",
+      "file": "kit-v2.webp"
+    },
+    "120": {
+      "word": "angle",
+      "file": "angle-v2.webp"
+    },
+    "403": {
+      "word": "capture",
+      "file": "capture-v2.webp"
+    },
+    "1651": {
+      "word": "meanwhile",
+      "file": "meanwhile-v2.webp"
+    },
+    "2445": {
+      "word": "sneak",
+      "file": "sneak-v2.webp"
+    },
+    "865": {
+      "word": "drill",
+      "file": "drill-v2.webp"
+    },
+    "1813": {
+      "word": "obey",
+      "file": "obey-v2.webp"
+    },
+    "2192": {
+      "word": "remote",
+      "file": "remote-v2.webp"
+    },
+    "2134": {
+      "word": "random",
+      "file": "random-v2.webp"
     }
   }
 }
