@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2061,
+  "totalImages": 2077,
   "images": {
     "139": {
       "word": "apple",
@@ -8245,6 +8245,70 @@
     "1053": {
       "word": "fee",
       "file": "fee-v2.webp"
+    },
+    "2172": {
+      "word": "register",
+      "file": "register-v2.webp"
+    },
+    "2498": {
+      "word": "spoil",
+      "file": "spoil-v2.webp"
+    },
+    "1379": {
+      "word": "immediate",
+      "file": "immediate-v2.webp"
+    },
+    "1357": {
+      "word": "hunger",
+      "file": "hunger-v2.webp"
+    },
+    "789": {
+      "word": "develop",
+      "file": "develop-v2.webp"
+    },
+    "123": {
+      "word": "announce",
+      "file": "announce-v2.webp"
+    },
+    "1432": {
+      "word": "instant",
+      "file": "instant-v2.webp"
+    },
+    "1544": {
+      "word": "lean",
+      "file": "lean-v2.webp"
+    },
+    "1389": {
+      "word": "impress",
+      "file": "impress-v2.webp"
+    },
+    "364": {
+      "word": "bump",
+      "file": "bump-v2.webp"
+    },
+    "841": {
+      "word": "document",
+      "file": "document-v2.webp"
+    },
+    "351": {
+      "word": "broad",
+      "file": "broad-v2.webp"
+    },
+    "2520": {
+      "word": "stare",
+      "file": "stare-v2.webp"
+    },
+    "56": {
+      "word": "advise",
+      "file": "advise-v2.webp"
+    },
+    "1395": {
+      "word": "include",
+      "file": "include-v2.webp"
+    },
+    "788": {
+      "word": "determine",
+      "file": "determine-v2.webp"
     }
   }
 }
