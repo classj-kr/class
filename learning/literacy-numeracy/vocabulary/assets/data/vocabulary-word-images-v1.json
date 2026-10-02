@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2653,
+  "totalImages": 2669,
   "images": {
     "139": {
       "word": "apple",
@@ -10613,6 +10613,70 @@
     "1564": {
       "word": "liberal",
       "file": "liberal-v2.webp"
+    },
+    "1011": {
+      "word": "extract",
+      "file": "extract-v2.webp"
+    },
+    "1574": {
+      "word": "likewise",
+      "file": "likewise-v2.webp"
+    },
+    "1405": {
+      "word": "infant",
+      "file": "infant-v2.webp"
+    },
+    "2316": {
+      "word": "scope",
+      "file": "scope-v2.webp"
+    },
+    "5": {
+      "word": "abort",
+      "file": "abort-v2.webp"
+    },
+    "150": {
+      "word": "arise",
+      "file": "arise-v2.webp"
+    },
+    "1189": {
+      "word": "gender",
+      "file": "gender-v2.webp"
+    },
+    "824": {
+      "word": "dispute",
+      "file": "dispute-v2.webp"
+    },
+    "356": {
+      "word": "brute",
+      "file": "brute-v2.webp"
+    },
+    "366": {
+      "word": "bundle",
+      "file": "bundle-v2.webp"
+    },
+    "618": {
+      "word": "convert",
+      "file": "convert-v2.webp"
+    },
+    "1380": {
+      "word": "immense",
+      "file": "immense-v2.webp"
+    },
+    "181": {
+      "word": "atom",
+      "file": "atom-v2.webp"
+    },
+    "2094": {
+      "word": "provoke",
+      "file": "provoke-v2.webp"
+    },
+    "2103": {
+      "word": "pupil",
+      "file": "pupil-v2.webp"
+    },
+    "1870": {
+      "word": "overhead",
+      "file": "overhead-v2.webp"
     }
   }
 }
