@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2605,
+  "totalImages": 2621,
   "images": {
     "139": {
       "word": "apple",
@@ -10421,6 +10421,70 @@
     "902": {
       "word": "elaborate",
       "file": "elaborate-v2.webp"
+    },
+    "1655": {
+      "word": "mechanism",
+      "file": "mechanism-v2.webp"
+    },
+    "2854": {
+      "word": "vanish",
+      "file": "vanish-v2.webp"
+    },
+    "1818": {
+      "word": "obtain",
+      "file": "obtain-v2.webp"
+    },
+    "1684": {
+      "word": "mild",
+      "file": "mild-v2.webp"
+    },
+    "295": {
+      "word": "blend",
+      "file": "blend-v2.webp"
+    },
+    "1607": {
+      "word": "lump",
+      "file": "lump-v2.webp"
+    },
+    "316": {
+      "word": "boost",
+      "file": "boost-v2.webp"
+    },
+    "1187": {
+      "word": "gaze",
+      "file": "gaze-v2.webp"
+    },
+    "2183": {
+      "word": "relieve",
+      "file": "relieve-v2.webp"
+    },
+    "1775": {
+      "word": "neutral",
+      "file": "neutral-v2.webp"
+    },
+    "179": {
+      "word": "athlete",
+      "file": "athlete-v2.webp"
+    },
+    "822": {
+      "word": "dismiss",
+      "file": "dismiss-v2.webp"
+    },
+    "1895": {
+      "word": "parallel",
+      "file": "parallel-v2.webp"
+    },
+    "2006": {
+      "word": "portion",
+      "file": "portion-v2.webp"
+    },
+    "1467": {
+      "word": "irony",
+      "file": "irony-v2.webp"
+    },
+    "200": {
+      "word": "await",
+      "file": "await-v2.webp"
     }
   }
 }
