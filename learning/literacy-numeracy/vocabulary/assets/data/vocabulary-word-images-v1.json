@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2221,
+  "totalImages": 2237,
   "images": {
     "139": {
       "word": "apple",
@@ -8885,6 +8885,70 @@
     "97": {
       "word": "aloud",
       "file": "aloud-v2.webp"
+    },
+    "1627": {
+      "word": "manufacture",
+      "file": "manufacture-v2.webp"
+    },
+    "693": {
+      "word": "curl",
+      "file": "curl-v2.webp"
+    },
+    "1226": {
+      "word": "govern",
+      "file": "govern-v2.webp"
+    },
+    "418": {
+      "word": "catalogue",
+      "file": "catalogue-v2.webp"
+    },
+    "1436": {
+      "word": "instruct",
+      "file": "instruct-v2.webp"
+    },
+    "903": {
+      "word": "elect",
+      "file": "elect-v2.webp"
+    },
+    "106": {
+      "word": "amaze",
+      "file": "amaze-v2.webp"
+    },
+    "557": {
+      "word": "complicate",
+      "file": "complicate-v2.webp"
+    },
+    "447": {
+      "word": "characteristic",
+      "file": "characteristic-v2.webp"
+    },
+    "982": {
+      "word": "excite",
+      "file": "excite-v2.webp"
+    },
+    "2856": {
+      "word": "vary",
+      "file": "vary-v2.webp"
+    },
+    "922": {
+      "word": "emphasize",
+      "file": "emphasize-v2.webp"
+    },
+    "1417": {
+      "word": "injure",
+      "file": "injure-v2.webp"
+    },
+    "1236": {
+      "word": "graph",
+      "file": "graph-v2.webp"
+    },
+    "1439": {
+      "word": "insure",
+      "file": "insure-v2.webp"
+    },
+    "617": {
+      "word": "converse",
+      "file": "converse-v2.webp"
     }
   }
 }
