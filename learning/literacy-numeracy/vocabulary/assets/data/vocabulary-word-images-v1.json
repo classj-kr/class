@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2925,
+  "totalImages": 2941,
   "images": {
     "139": {
       "word": "apple",
@@ -11701,6 +11701,70 @@
     "582": {
       "word": "conform",
       "file": "conform-v2.webp"
+    },
+    "595": {
+      "word": "constitute",
+      "file": "constitute-v2.webp"
+    },
+    "2576": {
+      "word": "subscribe",
+      "file": "subscribe-v2.webp"
+    },
+    "1266": {
+      "word": "gymnasium",
+      "file": "gymnasium-v2.webp"
+    },
+    "2118": {
+      "word": "questionnaire",
+      "file": "questionnaire-v2.webp"
+    },
+    "1440": {
+      "word": "integrate",
+      "file": "integrate-v2.webp"
+    },
+    "431": {
+      "word": "censor",
+      "file": "censor-v2.webp"
+    },
+    "146": {
+      "word": "approximate",
+      "file": "approximate-v2.webp"
+    },
+    "2844": {
+      "word": "utilize",
+      "file": "utilize-v2.webp"
+    },
+    "1169": {
+      "word": "furnish",
+      "file": "furnish-v2.webp"
+    },
+    "27": {
+      "word": "accumulate",
+      "file": "accumulate-v2.webp"
+    },
+    "2453": {
+      "word": "sociology",
+      "file": "sociology-v2.webp"
+    },
+    "482": {
+      "word": "cite",
+      "file": "cite-v2.webp"
+    },
+    "2407": {
+      "word": "simultaneous",
+      "file": "simultaneous-v2.webp"
+    },
+    "818": {
+      "word": "discriminate",
+      "file": "discriminate-v2.webp"
+    },
+    "817": {
+      "word": "discourse",
+      "file": "discourse-v2.webp"
+    },
+    "593": {
+      "word": "consist",
+      "file": "consist-v2.webp"
     }
   }
 }
