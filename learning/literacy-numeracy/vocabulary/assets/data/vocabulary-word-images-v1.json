@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2349,
+  "totalImages": 2365,
   "images": {
     "139": {
       "word": "apple",
@@ -9397,6 +9397,70 @@
     "2817": {
       "word": "ultimate",
       "file": "ultimate-v2.webp"
+    },
+    "2509": {
+      "word": "squeeze",
+      "file": "squeeze-v2.webp"
+    },
+    "1113": {
+      "word": "fond",
+      "file": "fond-v2.webp"
+    },
+    "2": {
+      "word": "abandon",
+      "file": "abandon-v2.webp"
+    },
+    "1526": {
+      "word": "lap",
+      "file": "lap-v2.webp"
+    },
+    "529": {
+      "word": "combat",
+      "file": "combat-v2.webp"
+    },
+    "1993": {
+      "word": "polish",
+      "file": "polish-v2.webp"
+    },
+    "2923": {
+      "word": "weed",
+      "file": "weed-v2.webp"
+    },
+    "1098": {
+      "word": "flip",
+      "file": "flip-v2.webp"
+    },
+    "2665": {
+      "word": "temporary",
+      "file": "temporary-v2.webp"
+    },
+    "1983": {
+      "word": "plot",
+      "file": "plot-v2.webp"
+    },
+    "2128": {
+      "word": "rage",
+      "file": "rage-v2.webp"
+    },
+    "1543": {
+      "word": "leak",
+      "file": "leak-v2.webp"
+    },
+    "272": {
+      "word": "betray",
+      "file": "betray-v2.webp"
+    },
+    "2857": {
+      "word": "vast",
+      "file": "vast-v2.webp"
+    },
+    "1632": {
+      "word": "marine",
+      "file": "marine-v2.webp"
+    },
+    "2283": {
+      "word": "sack",
+      "file": "sack-v2.webp"
     }
   }
 }
