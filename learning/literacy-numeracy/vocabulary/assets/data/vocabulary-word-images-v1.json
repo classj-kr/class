@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2797,
+  "totalImages": 2813,
   "images": {
     "139": {
       "word": "apple",
@@ -11189,6 +11189,70 @@
     "42": {
       "word": "adequate",
       "file": "adequate-v2.webp"
+    },
+    "1319": {
+      "word": "highlight",
+      "file": "highlight-v2.webp"
+    },
+    "1872": {
+      "word": "overlook",
+      "file": "overlook-v2.webp"
+    },
+    "1996": {
+      "word": "poll",
+      "file": "poll-v2.webp"
+    },
+    "1711": {
+      "word": "moist",
+      "file": "moist-v2.webp"
+    },
+    "13": {
+      "word": "abstract",
+      "file": "abstract-v2.webp"
+    },
+    "1678": {
+      "word": "metropolitan",
+      "file": "metropolitan-v2.webp"
+    },
+    "2318": {
+      "word": "scramble",
+      "file": "scramble-v2.webp"
+    },
+    "934": {
+      "word": "enhance",
+      "file": "enhance-v2.webp"
+    },
+    "22": {
+      "word": "accommodate",
+      "file": "accommodate-v2.webp"
+    },
+    "1926": {
+      "word": "peer",
+      "file": "peer-v2.webp"
+    },
+    "828": {
+      "word": "distinguish",
+      "file": "distinguish-v2.webp"
+    },
+    "1103": {
+      "word": "flourish",
+      "file": "flourish-v2.webp"
+    },
+    "1933": {
+      "word": "perceive",
+      "file": "perceive-v2.webp"
+    },
+    "960": {
+      "word": "ethnic",
+      "file": "ethnic-v2.webp"
+    },
+    "1815": {
+      "word": "oblige",
+      "file": "oblige-v2.webp"
+    },
+    "2221": {
+      "word": "restrain",
+      "file": "restrain-v2.webp"
     }
   }
 }
