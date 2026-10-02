@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2269,
+  "totalImages": 2285,
   "images": {
     "139": {
       "word": "apple",
@@ -9077,6 +9077,70 @@
     "428": {
       "word": "celebrate",
       "file": "celebrate-v2.webp"
+    },
+    "1240": {
+      "word": "grave",
+      "file": "grave-v2.webp"
+    },
+    "1337": {
+      "word": "hook",
+      "file": "hook-v2.webp"
+    },
+    "1239": {
+      "word": "grateful",
+      "file": "grateful-v2.webp"
+    },
+    "2205": {
+      "word": "rescue",
+      "file": "rescue-v2.webp"
+    },
+    "1131": {
+      "word": "former",
+      "file": "former-v2.webp"
+    },
+    "1030": {
+      "word": "false",
+      "file": "false-v2.webp"
+    },
+    "2401": {
+      "word": "silent",
+      "file": "silent-v2.webp"
+    },
+    "2285": {
+      "word": "sacrifice",
+      "file": "sacrifice-v2.webp"
+    },
+    "2408": {
+      "word": "sin",
+      "file": "sin-v2.webp"
+    },
+    "740": {
+      "word": "defend",
+      "file": "defend-v2.webp"
+    },
+    "1754": {
+      "word": "nasty",
+      "file": "nasty-v2.webp"
+    },
+    "2999": {
+      "word": "zone",
+      "file": "zone-v2.webp"
+    },
+    "1393": {
+      "word": "incident",
+      "file": "incident-v2.webp"
+    },
+    "2906": {
+      "word": "warrant",
+      "file": "warrant-v2.webp"
+    },
+    "698": {
+      "word": "curse",
+      "file": "curse-v2.webp"
+    },
+    "318": {
+      "word": "border",
+      "file": "border-v2.webp"
     }
   }
 }
