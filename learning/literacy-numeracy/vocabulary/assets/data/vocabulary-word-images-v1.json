@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2845,
+  "totalImages": 2861,
   "images": {
     "139": {
       "word": "apple",
@@ -11381,6 +11381,70 @@
     "1708": {
       "word": "moderate",
       "file": "moderate-v2.webp"
+    },
+    "2244": {
+      "word": "ridicule",
+      "file": "ridicule-v2.webp"
+    },
+    "748": {
+      "word": "delegate",
+      "file": "delegate-v2.webp"
+    },
+    "47": {
+      "word": "adolescent",
+      "file": "adolescent-v2.webp"
+    },
+    "768": {
+      "word": "deprive",
+      "file": "deprive-v2.webp"
+    },
+    "2540": {
+      "word": "stimulate",
+      "file": "stimulate-v2.webp"
+    },
+    "2840": {
+      "word": "upward",
+      "file": "upward-v2.webp"
+    },
+    "282": {
+      "word": "biography",
+      "file": "biography-v2.webp"
+    },
+    "630": {
+      "word": "copyright",
+      "file": "copyright-v2.webp"
+    },
+    "1855": {
+      "word": "orient",
+      "file": "orient-v2.webp"
+    },
+    "610": {
+      "word": "contradict",
+      "file": "contradict-v2.webp"
+    },
+    "1458": {
+      "word": "intrigue",
+      "file": "intrigue-v2.webp"
+    },
+    "1015": {
+      "word": "eyebrow",
+      "file": "eyebrow-v2.webp"
+    },
+    "1403": {
+      "word": "induce",
+      "file": "induce-v2.webp"
+    },
+    "1317": {
+      "word": "hierarchy",
+      "file": "hierarchy-v2.webp"
+    },
+    "2825": {
+      "word": "undertake",
+      "file": "undertake-v2.webp"
+    },
+    "1000": {
+      "word": "explicit",
+      "file": "explicit-v2.webp"
     }
   }
 }
