@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2525,
+  "totalImages": 2541,
   "images": {
     "139": {
       "word": "apple",
@@ -10101,6 +10101,70 @@
     "1067": {
       "word": "fierce",
       "file": "fierce-v2.webp"
+    },
+    "2039": {
+      "word": "presume",
+      "file": "presume-v2.webp"
+    },
+    "343": {
+      "word": "breed",
+      "file": "breed-v2.webp"
+    },
+    "2036": {
+      "word": "preserve",
+      "file": "preserve-v2.webp"
+    },
+    "850": {
+      "word": "dose",
+      "file": "dose-v2.webp"
+    },
+    "1865": {
+      "word": "outstanding",
+      "file": "outstanding-v2.webp"
+    },
+    "955": {
+      "word": "essence",
+      "file": "essence-v2.webp"
+    },
+    "115": {
+      "word": "anchor",
+      "file": "anchor-v2.webp"
+    },
+    "1448": {
+      "word": "interior",
+      "file": "interior-v2.webp"
+    },
+    "2842": {
+      "word": "urge",
+      "file": "urge-v2.webp"
+    },
+    "2552": {
+      "word": "strain",
+      "file": "strain-v2.webp"
+    },
+    "1901": {
+      "word": "participate",
+      "file": "participate-v2.webp"
+    },
+    "2940": {
+      "word": "whereas",
+      "file": "whereas-v2.webp"
+    },
+    "43": {
+      "word": "adjust",
+      "file": "adjust-v2.webp"
+    },
+    "2713": {
+      "word": "thrill",
+      "file": "thrill-v2.webp"
+    },
+    "897": {
+      "word": "efficient",
+      "file": "efficient-v2.webp"
+    },
+    "2212": {
+      "word": "resolve",
+      "file": "resolve-v2.webp"
     }
   }
 }
