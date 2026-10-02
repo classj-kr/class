@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2141,
+  "totalImages": 2157,
   "images": {
     "139": {
       "word": "apple",
@@ -8565,6 +8565,70 @@
     "1110": {
       "word": "fold",
       "file": "fold-v2.webp"
+    },
+    "302": {
+      "word": "bloom",
+      "file": "bloom-v2.webp"
+    },
+    "589": {
+      "word": "conscious",
+      "file": "conscious-v2.webp"
+    },
+    "29": {
+      "word": "accuse",
+      "file": "accuse-v2.webp"
+    },
+    "2926": {
+      "word": "weigh",
+      "file": "weigh-v2.webp"
+    },
+    "104": {
+      "word": "altogether",
+      "file": "altogether-v2.webp"
+    },
+    "188": {
+      "word": "attract",
+      "file": "attract-v2.webp"
+    },
+    "914": {
+      "word": "embarrass",
+      "file": "embarrass-v2.webp"
+    },
+    "503": {
+      "word": "clip",
+      "file": "clip-v2.webp"
+    },
+    "2010": {
+      "word": "possess",
+      "file": "possess-v2.webp"
+    },
+    "1051": {
+      "word": "feature",
+      "file": "feature-v2.webp"
+    },
+    "628": {
+      "word": "cope",
+      "file": "cope-v2.webp"
+    },
+    "2163": {
+      "word": "reduce",
+      "file": "reduce-v2.webp"
+    },
+    "195": {
+      "word": "automatic",
+      "file": "automatic-v2.webp"
+    },
+    "836": {
+      "word": "divide",
+      "file": "divide-v2.webp"
+    },
+    "2363": {
+      "word": "shade",
+      "file": "shade-v2.webp"
+    },
+    "2105": {
+      "word": "purchase",
+      "file": "purchase-v2.webp"
     }
   }
 }
