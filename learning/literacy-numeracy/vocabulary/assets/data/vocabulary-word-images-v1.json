@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2409,
+  "totalImages": 2413,
   "images": {
     "139": {
       "word": "apple",
@@ -9637,6 +9637,22 @@
     "625": {
       "word": "cooperate",
       "file": "cooperate-v2.webp"
+    },
+    "1247": {
+      "word": "grip",
+      "file": "grip-v2.webp"
+    },
+    "2279": {
+      "word": "rumor",
+      "file": "rumor-v2.webp"
+    },
+    "310": {
+      "word": "bold",
+      "file": "bold-v2.webp"
+    },
+    "945": {
+      "word": "envy",
+      "file": "envy-v2.webp"
     }
   }
 }
