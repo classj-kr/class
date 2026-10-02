@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2829,
+  "totalImages": 2845,
   "images": {
     "139": {
       "word": "apple",
@@ -11317,6 +11317,70 @@
     "578": {
       "word": "confide",
       "file": "confide-v2.webp"
+    },
+    "1378": {
+      "word": "imitate",
+      "file": "imitate-v2.webp"
+    },
+    "1385": {
+      "word": "implement",
+      "file": "implement-v2.webp"
+    },
+    "2601": {
+      "word": "supervise",
+      "file": "supervise-v2.webp"
+    },
+    "1862": {
+      "word": "outline",
+      "file": "outline-v2.webp"
+    },
+    "2033": {
+      "word": "prescribe",
+      "file": "prescribe-v2.webp"
+    },
+    "44": {
+      "word": "administer",
+      "file": "administer-v2.webp"
+    },
+    "2821": {
+      "word": "undergo",
+      "file": "undergo-v2.webp"
+    },
+    "962": {
+      "word": "evaluate",
+      "file": "evaluate-v2.webp"
+    },
+    "17": {
+      "word": "accelerate",
+      "file": "accelerate-v2.webp"
+    },
+    "559": {
+      "word": "compose",
+      "file": "compose-v2.webp"
+    },
+    "1406": {
+      "word": "infect",
+      "file": "infect-v2.webp"
+    },
+    "275": {
+      "word": "bias",
+      "file": "bias-v2.webp"
+    },
+    "540": {
+      "word": "commodity",
+      "file": "commodity-v2.webp"
+    },
+    "835": {
+      "word": "diverse",
+      "file": "diverse-v2.webp"
+    },
+    "921": {
+      "word": "emphasis",
+      "file": "emphasis-v2.webp"
+    },
+    "1708": {
+      "word": "moderate",
+      "file": "moderate-v2.webp"
     }
   }
 }
