@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2173,
+  "totalImages": 2189,
   "images": {
     "139": {
       "word": "apple",
@@ -8693,6 +8693,70 @@
     "787": {
       "word": "detect",
       "file": "detect-v2.webp"
+    },
+    "992": {
+      "word": "expand",
+      "file": "expand-v2.webp"
+    },
+    "2166": {
+      "word": "reflect",
+      "file": "reflect-v2.webp"
+    },
+    "759": {
+      "word": "demonstrate",
+      "file": "demonstrate-v2.webp"
+    },
+    "2830": {
+      "word": "unite",
+      "file": "unite-v2.webp"
+    },
+    "2079": {
+      "word": "pronounce",
+      "file": "pronounce-v2.webp"
+    },
+    "2499": {
+      "word": "sponsor",
+      "file": "sponsor-v2.webp"
+    },
+    "1918": {
+      "word": "pause",
+      "file": "pause-v2.webp"
+    },
+    "2340": {
+      "word": "select",
+      "file": "select-v2.webp"
+    },
+    "1461": {
+      "word": "invent",
+      "file": "invent-v2.webp"
+    },
+    "101": {
+      "word": "alter",
+      "file": "alter-v2.webp"
+    },
+    "745": {
+      "word": "definite",
+      "file": "definite-v2.webp"
+    },
+    "2178": {
+      "word": "relate",
+      "file": "relate-v2.webp"
+    },
+    "2613": {
+      "word": "survey",
+      "file": "survey-v2.webp"
+    },
+    "848": {
+      "word": "donate",
+      "file": "donate-v2.webp"
+    },
+    "1868": {
+      "word": "overall",
+      "file": "overall-v2.webp"
+    },
+    "2361": {
+      "word": "sew",
+      "file": "sew-v2.webp"
     }
   }
 }
