@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2893,
+  "totalImages": 2909,
   "images": {
     "139": {
       "word": "apple",
@@ -11573,6 +11573,70 @@
     "579": {
       "word": "confine",
       "file": "confine-v2.webp"
+    },
+    "2564": {
+      "word": "stripe",
+      "file": "stripe-v2.webp"
+    },
+    "2603": {
+      "word": "supplement",
+      "file": "supplement-v2.webp"
+    },
+    "2805": {
+      "word": "turnover",
+      "file": "turnover-v2.webp"
+    },
+    "166": {
+      "word": "aspire",
+      "file": "aspire-v2.webp"
+    },
+    "603": {
+      "word": "contend",
+      "file": "contend-v2.webp"
+    },
+    "421": {
+      "word": "cater",
+      "file": "cater-v2.webp"
+    },
+    "1018": {
+      "word": "facilitate",
+      "file": "facilitate-v2.webp"
+    },
+    "978": {
+      "word": "excel",
+      "file": "excel-v2.webp"
+    },
+    "959": {
+      "word": "ethic",
+      "file": "ethic-v2.webp"
+    },
+    "2234": {
+      "word": "revise",
+      "file": "revise-v2.webp"
+    },
+    "2861": {
+      "word": "verb",
+      "file": "verb-v2.webp"
+    },
+    "169": {
+      "word": "assert",
+      "file": "assert-v2.webp"
+    },
+    "1144": {
+      "word": "framework",
+      "file": "framework-v2.webp"
+    },
+    "480": {
+      "word": "circulate",
+      "file": "circulate-v2.webp"
+    },
+    "2580": {
+      "word": "suburb",
+      "file": "suburb-v2.webp"
+    },
+    "2406": {
+      "word": "simulate",
+      "file": "simulate-v2.webp"
     }
   }
 }
