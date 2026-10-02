@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2749,
+  "totalImages": 2765,
   "images": {
     "139": {
       "word": "apple",
@@ -10997,6 +10997,70 @@
     "770": {
       "word": "descend",
       "file": "descend-v2.webp"
+    },
+    "205": {
+      "word": "awe",
+      "file": "awe-v2.webp"
+    },
+    "602": {
+      "word": "contemporary",
+      "file": "contemporary-v2.webp"
+    },
+    "2281": {
+      "word": "rural",
+      "file": "rural-v2.webp"
+    },
+    "1672": {
+      "word": "merge",
+      "file": "merge-v2.webp"
+    },
+    "1064": {
+      "word": "fiber",
+      "file": "fiber-v2.webp"
+    },
+    "1198": {
+      "word": "geography",
+      "file": "geography-v2.webp"
+    },
+    "1452": {
+      "word": "interpret",
+      "file": "interpret-v2.webp"
+    },
+    "862": {
+      "word": "dread",
+      "file": "dread-v2.webp"
+    },
+    "74": {
+      "word": "agriculture",
+      "file": "agriculture-v2.webp"
+    },
+    "2888": {
+      "word": "vivid",
+      "file": "vivid-v2.webp"
+    },
+    "1060": {
+      "word": "fertile",
+      "file": "fertile-v2.webp"
+    },
+    "972": {
+      "word": "evolve",
+      "file": "evolve-v2.webp"
+    },
+    "2185": {
+      "word": "reluctant",
+      "file": "reluctant-v2.webp"
+    },
+    "2227": {
+      "word": "retain",
+      "file": "retain-v2.webp"
+    },
+    "1363": {
+      "word": "hypothesis",
+      "file": "hypothesis-v2.webp"
+    },
+    "488": {
+      "word": "clash",
+      "file": "clash-v2.webp"
     }
   }
 }
