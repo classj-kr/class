@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2077,
+  "totalImages": 2093,
   "images": {
     "139": {
       "word": "apple",
@@ -8309,6 +8309,70 @@
     "788": {
       "word": "determine",
       "file": "determine-v2.webp"
+    },
+    "2019": {
+      "word": "practical",
+      "file": "practical-v2.webp"
+    },
+    "2107": {
+      "word": "purple",
+      "file": "purple-v2.webp"
+    },
+    "2186": {
+      "word": "rely",
+      "file": "rely-v2.webp"
+    },
+    "2372": {
+      "word": "shave",
+      "file": "shave-v2.webp"
+    },
+    "340": {
+      "word": "breast",
+      "file": "breast-v2.webp"
+    },
+    "2145": {
+      "word": "react",
+      "file": "react-v2.webp"
+    },
+    "2089": {
+      "word": "protest",
+      "file": "protest-v2.webp"
+    },
+    "542": {
+      "word": "communicate",
+      "file": "communicate-v2.webp"
+    },
+    "280": {
+      "word": "bin",
+      "file": "bin-v2.webp"
+    },
+    "604": {
+      "word": "content",
+      "file": "content-v2.webp"
+    },
+    "726": {
+      "word": "debate",
+      "file": "debate-v2.webp"
+    },
+    "823": {
+      "word": "display",
+      "file": "display-v2.webp"
+    },
+    "2124": {
+      "word": "quote",
+      "file": "quote-v2.webp"
+    },
+    "547": {
+      "word": "compare",
+      "file": "compare-v2.webp"
+    },
+    "2594": {
+      "word": "sum",
+      "file": "sum-v2.webp"
+    },
+    "2658": {
+      "word": "teenage",
+      "file": "teenage-v2.webp"
     }
   }
 }
