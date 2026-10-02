@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2045,
+  "totalImages": 2061,
   "images": {
     "139": {
       "word": "apple",
@@ -8181,6 +8181,70 @@
     "834": {
       "word": "dive",
       "file": "dive-v2.webp"
+    },
+    "2204": {
+      "word": "require",
+      "file": "require-v2.webp"
+    },
+    "31": {
+      "word": "achieve",
+      "file": "achieve-v2.webp"
+    },
+    "594": {
+      "word": "constant",
+      "file": "constant-v2.webp"
+    },
+    "1165": {
+      "word": "fund",
+      "file": "fund-v2.webp"
+    },
+    "1841": {
+      "word": "operate",
+      "file": "operate-v2.webp"
+    },
+    "2437": {
+      "word": "smash",
+      "file": "smash-v2.webp"
+    },
+    "1805": {
+      "word": "nowadays",
+      "file": "nowadays-v2.webp"
+    },
+    "496": {
+      "word": "click",
+      "file": "click-v2.webp"
+    },
+    "369": {
+      "word": "burst",
+      "file": "burst-v2.webp"
+    },
+    "1994": {
+      "word": "polite",
+      "file": "polite-v2.webp"
+    },
+    "2618": {
+      "word": "swallow",
+      "file": "swallow-v2.webp"
+    },
+    "1893": {
+      "word": "parade",
+      "file": "parade-v2.webp"
+    },
+    "317": {
+      "word": "boot",
+      "file": "boot-v2.webp"
+    },
+    "581": {
+      "word": "conflict",
+      "file": "conflict-v2.webp"
+    },
+    "2468": {
+      "word": "sore",
+      "file": "sore-v2.webp"
+    },
+    "1053": {
+      "word": "fee",
+      "file": "fee-v2.webp"
     }
   }
 }
