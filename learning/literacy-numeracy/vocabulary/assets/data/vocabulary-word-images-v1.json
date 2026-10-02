@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2813,
+  "totalImages": 2829,
   "images": {
     "139": {
       "word": "apple",
@@ -11253,6 +11253,70 @@
     "2221": {
       "word": "restrain",
       "file": "restrain-v2.webp"
+    },
+    "25": {
+      "word": "accord",
+      "file": "accord-v2.webp"
+    },
+    "2031": {
+      "word": "premium",
+      "file": "premium-v2.webp"
+    },
+    "548": {
+      "word": "compatible",
+      "file": "compatible-v2.webp"
+    },
+    "2086": {
+      "word": "prosper",
+      "file": "prosper-v2.webp"
+    },
+    "1276": {
+      "word": "handicap",
+      "file": "handicap-v2.webp"
+    },
+    "1003": {
+      "word": "export",
+      "file": "export-v2.webp"
+    },
+    "2889": {
+      "word": "vocabulary",
+      "file": "vocabulary-v2.webp"
+    },
+    "566": {
+      "word": "conceive",
+      "file": "conceive-v2.webp"
+    },
+    "825": {
+      "word": "disrupt",
+      "file": "disrupt-v2.webp"
+    },
+    "2823": {
+      "word": "undermine",
+      "file": "undermine-v2.webp"
+    },
+    "1386": {
+      "word": "imply",
+      "file": "imply-v2.webp"
+    },
+    "1531": {
+      "word": "latter",
+      "file": "latter-v2.webp"
+    },
+    "1422": {
+      "word": "inquire",
+      "file": "inquire-v2.webp"
+    },
+    "1161": {
+      "word": "fulfil",
+      "file": "fulfil-v2.webp"
+    },
+    "2846": {
+      "word": "vacate",
+      "file": "vacate-v2.webp"
+    },
+    "578": {
+      "word": "confide",
+      "file": "confide-v2.webp"
     }
   }
 }
