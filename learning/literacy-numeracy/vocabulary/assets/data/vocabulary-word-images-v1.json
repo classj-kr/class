@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2397,
+  "totalImages": 2409,
   "images": {
     "139": {
       "word": "apple",
@@ -9589,6 +9589,54 @@
     "916": {
       "word": "embrace",
       "file": "embrace-v2.webp"
+    },
+    "1286": {
+      "word": "harsh",
+      "file": "harsh-v2.webp"
+    },
+    "2149": {
+      "word": "rear",
+      "file": "rear-v2.webp"
+    },
+    "2624": {
+      "word": "swell",
+      "file": "swell-v2.webp"
+    },
+    "1495": {
+      "word": "keen",
+      "file": "keen-v2.webp"
+    },
+    "1886": {
+      "word": "pale",
+      "file": "pale-v2.webp"
+    },
+    "2886": {
+      "word": "visual",
+      "file": "visual-v2.webp"
+    },
+    "226": {
+      "word": "bargain",
+      "file": "bargain-v2.webp"
+    },
+    "1671": {
+      "word": "mere",
+      "file": "mere-v2.webp"
+    },
+    "684": {
+      "word": "cruise",
+      "file": "cruise-v2.webp"
+    },
+    "92": {
+      "word": "ally",
+      "file": "ally-v2.webp"
+    },
+    "876": {
+      "word": "dull",
+      "file": "dull-v2.webp"
+    },
+    "625": {
+      "word": "cooperate",
+      "file": "cooperate-v2.webp"
     }
   }
 }
