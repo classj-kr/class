@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2029,
+  "totalImages": 2045,
   "images": {
     "139": {
       "word": "apple",
@@ -8117,6 +8117,70 @@
     "2567": {
       "word": "structure",
       "file": "structure-v2.webp"
+    },
+    "45": {
+      "word": "admire",
+      "file": "admire-v2.webp"
+    },
+    "1730": {
+      "word": "mount",
+      "file": "mount-v2.webp"
+    },
+    "2157": {
+      "word": "recommend",
+      "file": "recommend-v2.webp"
+    },
+    "747": {
+      "word": "delay",
+      "file": "delay-v2.webp"
+    },
+    "2275": {
+      "word": "rub",
+      "file": "rub-v2.webp"
+    },
+    "2288": {
+      "word": "sail",
+      "file": "sail-v2.webp"
+    },
+    "1652": {
+      "word": "measure",
+      "file": "measure-v2.webp"
+    },
+    "1164": {
+      "word": "function",
+      "file": "function-v2.webp"
+    },
+    "1514": {
+      "word": "labor",
+      "file": "labor-v2.webp"
+    },
+    "1593": {
+      "word": "log",
+      "file": "log-v2.webp"
+    },
+    "2159": {
+      "word": "recover",
+      "file": "recover-v2.webp"
+    },
+    "2813": {
+      "word": "twist",
+      "file": "twist-v2.webp"
+    },
+    "60": {
+      "word": "affect",
+      "file": "affect-v2.webp"
+    },
+    "1355": {
+      "word": "humor",
+      "file": "humor-v2.webp"
+    },
+    "2855": {
+      "word": "various",
+      "file": "various-v2.webp"
+    },
+    "834": {
+      "word": "dive",
+      "file": "dive-v2.webp"
     }
   }
 }
