@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2941,
+  "totalImages": 2957,
   "images": {
     "139": {
       "word": "apple",
@@ -11765,6 +11765,70 @@
     "593": {
       "word": "consist",
       "file": "consist-v2.webp"
+    },
+    "919": {
+      "word": "emit",
+      "file": "emit-v2.webp"
+    },
+    "518": {
+      "word": "coincide",
+      "file": "coincide-v2.webp"
+    },
+    "1080": {
+      "word": "finite",
+      "file": "finite-v2.webp"
+    },
+    "1683": {
+      "word": "migrate",
+      "file": "migrate-v2.webp"
+    },
+    "2222": {
+      "word": "restrict",
+      "file": "restrict-v2.webp"
+    },
+    "765": {
+      "word": "depict",
+      "file": "depict-v2.webp"
+    },
+    "1919": {
+      "word": "pave",
+      "file": "pave-v2.webp"
+    },
+    "1408": {
+      "word": "inflate",
+      "file": "inflate-v2.webp"
+    },
+    "785": {
+      "word": "detach",
+      "file": "detach-v2.webp"
+    },
+    "649": {
+      "word": "counterpart",
+      "file": "counterpart-v2.webp"
+    },
+    "1817": {
+      "word": "obsess",
+      "file": "obsess-v2.webp"
+    },
+    "2875": {
+      "word": "vigor",
+      "file": "vigor-v2.webp"
+    },
+    "616": {
+      "word": "convene",
+      "file": "convene-v2.webp"
+    },
+    "1845": {
+      "word": "opt",
+      "file": "opt-v2.webp"
+    },
+    "2525": {
+      "word": "statistic",
+      "file": "statistic-v2.webp"
+    },
+    "2073": {
+      "word": "prohibit",
+      "file": "prohibit-v2.webp"
     }
   }
 }
