@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2989,
+  "totalImages": 3000,
   "images": {
     "139": {
       "word": "apple",
@@ -11957,6 +11957,50 @@
     "944": {
       "word": "environ",
       "file": "environ-v2.webp"
+    },
+    "970": {
+      "word": "evitable",
+      "file": "evitable-v2.webp"
+    },
+    "1259": {
+      "word": "guideline",
+      "file": "guideline-v2.webp"
+    },
+    "1374": {
+      "word": "illude",
+      "file": "illude-v2.webp"
+    },
+    "1381": {
+      "word": "immigrate",
+      "file": "immigrate-v2.webp"
+    },
+    "1555": {
+      "word": "legislate",
+      "file": "legislate-v2.webp"
+    },
+    "1874": {
+      "word": "oversea",
+      "file": "oversea-v2.webp"
+    },
+    "2009": {
+      "word": "posit",
+      "file": "posit-v2.webp"
+    },
+    "2168": {
+      "word": "refrigerate",
+      "file": "refrigerate-v2.webp"
+    },
+    "2467": {
+      "word": "sophisticate",
+      "file": "sophisticate-v2.webp"
+    },
+    "2770": {
+      "word": "transact",
+      "file": "transact-v2.webp"
+    },
+    "2822": {
+      "word": "underlie",
+      "file": "underlie-v2.webp"
     }
   }
 }
