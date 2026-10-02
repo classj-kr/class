@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2701,
+  "totalImages": 2717,
   "images": {
     "139": {
       "word": "apple",
@@ -10805,6 +10805,70 @@
     "1009": {
       "word": "extinct",
       "file": "extinct-v2.webp"
+    },
+    "707": {
+      "word": "cynical",
+      "file": "cynical-v2.webp"
+    },
+    "1421": {
+      "word": "input",
+      "file": "input-v2.webp"
+    },
+    "974": {
+      "word": "exaggerate",
+      "file": "exaggerate-v2.webp"
+    },
+    "34": {
+      "word": "acquire",
+      "file": "acquire-v2.webp"
+    },
+    "737": {
+      "word": "dedicate",
+      "file": "dedicate-v2.webp"
+    },
+    "1821": {
+      "word": "occupy",
+      "file": "occupy-v2.webp"
+    },
+    "2030": {
+      "word": "prejudice",
+      "file": "prejudice-v2.webp"
+    },
+    "2448": {
+      "word": "soak",
+      "file": "soak-v2.webp"
+    },
+    "475": {
+      "word": "chronic",
+      "file": "chronic-v2.webp"
+    },
+    "2617": {
+      "word": "sustain",
+      "file": "sustain-v2.webp"
+    },
+    "573": {
+      "word": "condemn",
+      "file": "condemn-v2.webp"
+    },
+    "2433": {
+      "word": "slope",
+      "file": "slope-v2.webp"
+    },
+    "1388": {
+      "word": "impose",
+      "file": "impose-v2.webp"
+    },
+    "1624": {
+      "word": "manifest",
+      "file": "manifest-v2.webp"
+    },
+    "2631": {
+      "word": "symphony",
+      "file": "symphony-v2.webp"
+    },
+    "1148": {
+      "word": "frequent",
+      "file": "frequent-v2.webp"
     }
   }
 }
