@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2461,
+  "totalImages": 2477,
   "images": {
     "139": {
       "word": "apple",
@@ -9845,6 +9845,70 @@
     "1002": {
       "word": "explore",
       "file": "explore-v2.webp"
+    },
+    "2864": {
+      "word": "versus",
+      "file": "versus-v2.webp"
+    },
+    "1349": {
+      "word": "household",
+      "file": "household-v2.webp"
+    },
+    "2968": {
+      "word": "withdraw",
+      "file": "withdraw-v2.webp"
+    },
+    "1177": {
+      "word": "gamble",
+      "file": "gamble-v2.webp"
+    },
+    "1745": {
+      "word": "mutual",
+      "file": "mutual-v2.webp"
+    },
+    "857": {
+      "word": "draft",
+      "file": "draft-v2.webp"
+    },
+    "911": {
+      "word": "eliminate",
+      "file": "eliminate-v2.webp"
+    },
+    "1661": {
+      "word": "medium",
+      "file": "medium-v2.webp"
+    },
+    "906": {
+      "word": "elegant",
+      "file": "elegant-v2.webp"
+    },
+    "560": {
+      "word": "compound",
+      "file": "compound-v2.webp"
+    },
+    "2109": {
+      "word": "pursue",
+      "file": "pursue-v2.webp"
+    },
+    "682": {
+      "word": "crucial",
+      "file": "crucial-v2.webp"
+    },
+    "2247": {
+      "word": "riot",
+      "file": "riot-v2.webp"
+    },
+    "2459": {
+      "word": "sole",
+      "file": "sole-v2.webp"
+    },
+    "851": {
+      "word": "dot",
+      "file": "dot-v2.webp"
+    },
+    "471": {
+      "word": "choir",
+      "file": "choir-v2.webp"
     }
   }
 }
