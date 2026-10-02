@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2109,
+  "totalImages": 2125,
   "images": {
     "139": {
       "word": "apple",
@@ -8437,6 +8437,70 @@
     "2504": {
       "word": "spray",
       "file": "spray-v2.webp"
+    },
+    "664": {
+      "word": "crawl",
+      "file": "crawl-v2.webp"
+    },
+    "357": {
+      "word": "bubble",
+      "file": "bubble-v2.webp"
+    },
+    "1645": {
+      "word": "maximum",
+      "file": "maximum-v2.webp"
+    },
+    "174": {
+      "word": "associate",
+      "file": "associate-v2.webp"
+    },
+    "1687": {
+      "word": "mill",
+      "file": "mill-v2.webp"
+    },
+    "846": {
+      "word": "domestic",
+      "file": "domestic-v2.webp"
+    },
+    "319": {
+      "word": "bore",
+      "file": "bore-v2.webp"
+    },
+    "1134": {
+      "word": "fortunate",
+      "file": "fortunate-v2.webp"
+    },
+    "2198": {
+      "word": "reply",
+      "file": "reply-v2.webp"
+    },
+    "813": {
+      "word": "disappoint",
+      "file": "disappoint-v2.webp"
+    },
+    "1004": {
+      "word": "expose",
+      "file": "expose-v2.webp"
+    },
+    "1513": {
+      "word": "label",
+      "file": "label-v2.webp"
+    },
+    "956": {
+      "word": "establish",
+      "file": "establish-v2.webp"
+    },
+    "1437": {
+      "word": "instrument",
+      "file": "instrument-v2.webp"
+    },
+    "644": {
+      "word": "cough",
+      "file": "cough-v2.webp"
+    },
+    "173": {
+      "word": "assist",
+      "file": "assist-v2.webp"
     }
   }
 }
