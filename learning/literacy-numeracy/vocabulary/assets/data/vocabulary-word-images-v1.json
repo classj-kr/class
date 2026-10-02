@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2781,
+  "totalImages": 2797,
   "images": {
     "139": {
       "word": "apple",
@@ -11125,6 +11125,70 @@
     "669": {
       "word": "credible",
       "file": "credible-v2.webp"
+    },
+    "801": {
+      "word": "differ",
+      "file": "differ-v2.webp"
+    },
+    "2226": {
+      "word": "retail",
+      "file": "retail-v2.webp"
+    },
+    "797": {
+      "word": "dictate",
+      "file": "dictate-v2.webp"
+    },
+    "1966": {
+      "word": "pioneer",
+      "file": "pioneer-v2.webp"
+    },
+    "2305": {
+      "word": "scarce",
+      "file": "scarce-v2.webp"
+    },
+    "1387": {
+      "word": "import",
+      "file": "import-v2.webp"
+    },
+    "129": {
+      "word": "anticipate",
+      "file": "anticipate-v2.webp"
+    },
+    "1043": {
+      "word": "fasten",
+      "file": "fasten-v2.webp"
+    },
+    "1863": {
+      "word": "output",
+      "file": "output-v2.webp"
+    },
+    "597": {
+      "word": "construct",
+      "file": "construct-v2.webp"
+    },
+    "626": {
+      "word": "coordinate",
+      "file": "coordinate-v2.webp"
+    },
+    "1692": {
+      "word": "minimal",
+      "file": "minimal-v2.webp"
+    },
+    "561": {
+      "word": "comprehend",
+      "file": "comprehend-v2.webp"
+    },
+    "2676": {
+      "word": "terminate",
+      "file": "terminate-v2.webp"
+    },
+    "793": {
+      "word": "devote",
+      "file": "devote-v2.webp"
+    },
+    "42": {
+      "word": "adequate",
+      "file": "adequate-v2.webp"
     }
   }
 }
