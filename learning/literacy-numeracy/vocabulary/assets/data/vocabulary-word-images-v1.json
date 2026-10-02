@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2157,
+  "totalImages": 2173,
   "images": {
     "139": {
       "word": "apple",
@@ -8629,6 +8629,70 @@
     "2105": {
       "word": "purchase",
       "file": "purchase-v2.webp"
+    },
+    "451": {
+      "word": "chart",
+      "file": "chart-v2.webp"
+    },
+    "2474": {
+      "word": "sour",
+      "file": "sour-v2.webp"
+    },
+    "1462": {
+      "word": "invest",
+      "file": "invest-v2.webp"
+    },
+    "1445": {
+      "word": "intent",
+      "file": "intent-v2.webp"
+    },
+    "227": {
+      "word": "bark",
+      "file": "bark-v2.webp"
+    },
+    "1075": {
+      "word": "finance",
+      "file": "finance-v2.webp"
+    },
+    "2541": {
+      "word": "stir",
+      "file": "stir-v2.webp"
+    },
+    "2164": {
+      "word": "refer",
+      "file": "refer-v2.webp"
+    },
+    "1006": {
+      "word": "extend",
+      "file": "extend-v2.webp"
+    },
+    "48": {
+      "word": "adopt",
+      "file": "adopt-v2.webp"
+    },
+    "939": {
+      "word": "entertain",
+      "file": "entertain-v2.webp"
+    },
+    "2298": {
+      "word": "satisfy",
+      "file": "satisfy-v2.webp"
+    },
+    "744": {
+      "word": "define",
+      "file": "define-v2.webp"
+    },
+    "309": {
+      "word": "boil",
+      "file": "boil-v2.webp"
+    },
+    "2137": {
+      "word": "rapid",
+      "file": "rapid-v2.webp"
+    },
+    "787": {
+      "word": "detect",
+      "file": "detect-v2.webp"
     }
   }
 }
