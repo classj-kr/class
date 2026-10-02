@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2621,
+  "totalImages": 2637,
   "images": {
     "139": {
       "word": "apple",
@@ -10485,6 +10485,70 @@
     "200": {
       "word": "await",
       "file": "await-v2.webp"
+    },
+    "2862": {
+      "word": "verse",
+      "file": "verse-v2.webp"
+    },
+    "2966": {
+      "word": "wit",
+      "file": "wit-v2.webp"
+    },
+    "749": {
+      "word": "delete",
+      "file": "delete-v2.webp"
+    },
+    "2635": {
+      "word": "tackle",
+      "file": "tackle-v2.webp"
+    },
+    "223": {
+      "word": "bankrupt",
+      "file": "bankrupt-v2.webp"
+    },
+    "1262": {
+      "word": "gulf",
+      "file": "gulf-v2.webp"
+    },
+    "1809": {
+      "word": "numerous",
+      "file": "numerous-v2.webp"
+    },
+    "1100": {
+      "word": "flock",
+      "file": "flock-v2.webp"
+    },
+    "2542": {
+      "word": "stitch",
+      "file": "stitch-v2.webp"
+    },
+    "218": {
+      "word": "ban",
+      "file": "ban-v2.webp"
+    },
+    "2161": {
+      "word": "recruit",
+      "file": "recruit-v2.webp"
+    },
+    "882": {
+      "word": "dynamic",
+      "file": "dynamic-v2.webp"
+    },
+    "2793": {
+      "word": "troop",
+      "file": "troop-v2.webp"
+    },
+    "136": {
+      "word": "apparent",
+      "file": "apparent-v2.webp"
+    },
+    "1660": {
+      "word": "medieval",
+      "file": "medieval-v2.webp"
+    },
+    "397": {
+      "word": "canvas",
+      "file": "canvas-v2.webp"
     }
   }
 }
