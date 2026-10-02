@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2717,
+  "totalImages": 2733,
   "images": {
     "139": {
       "word": "apple",
@@ -10869,6 +10869,70 @@
     "1148": {
       "word": "frequent",
       "file": "frequent-v2.webp"
+    },
+    "1864": {
+      "word": "outrage",
+      "file": "outrage-v2.webp"
+    },
+    "1096": {
+      "word": "flexible",
+      "file": "flexible-v2.webp"
+    },
+    "940": {
+      "word": "enthusiastic",
+      "file": "enthusiastic-v2.webp"
+    },
+    "1792": {
+      "word": "nonetheless",
+      "file": "nonetheless-v2.webp"
+    },
+    "1093": {
+      "word": "flaw",
+      "file": "flaw-v2.webp"
+    },
+    "2075": {
+      "word": "prominent",
+      "file": "prominent-v2.webp"
+    },
+    "361": {
+      "word": "bulk",
+      "file": "bulk-v2.webp"
+    },
+    "412": {
+      "word": "carve",
+      "file": "carve-v2.webp"
+    },
+    "565": {
+      "word": "conceal",
+      "file": "conceal-v2.webp"
+    },
+    "2348": {
+      "word": "sentiment",
+      "file": "sentiment-v2.webp"
+    },
+    "750": {
+      "word": "deliberate",
+      "file": "deliberate-v2.webp"
+    },
+    "1470": {
+      "word": "isolate",
+      "file": "isolate-v2.webp"
+    },
+    "1455": {
+      "word": "intervene",
+      "file": "intervene-v2.webp"
+    },
+    "2865": {
+      "word": "vertical",
+      "file": "vertical-v2.webp"
+    },
+    "612": {
+      "word": "contrast",
+      "file": "contrast-v2.webp"
+    },
+    "831": {
+      "word": "distribute",
+      "file": "distribute-v2.webp"
     }
   }
 }
