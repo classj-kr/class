@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2765,
+  "totalImages": 2781,
   "images": {
     "139": {
       "word": "apple",
@@ -11061,6 +11061,70 @@
     "488": {
       "word": "clash",
       "file": "clash-v2.webp"
+    },
+    "490": {
+      "word": "clause",
+      "file": "clause-v2.webp"
+    },
+    "2785": {
+      "word": "trend",
+      "file": "trend-v2.webp"
+    },
+    "1766": {
+      "word": "neglect",
+      "file": "neglect-v2.webp"
+    },
+    "729": {
+      "word": "decay",
+      "file": "decay-v2.webp"
+    },
+    "2479": {
+      "word": "span",
+      "file": "span-v2.webp"
+    },
+    "847": {
+      "word": "dominate",
+      "file": "dominate-v2.webp"
+    },
+    "2308": {
+      "word": "scatter",
+      "file": "scatter-v2.webp"
+    },
+    "2775": {
+      "word": "transmit",
+      "file": "transmit-v2.webp"
+    },
+    "2083": {
+      "word": "proportion",
+      "file": "proportion-v2.webp"
+    },
+    "2920": {
+      "word": "weave",
+      "file": "weave-v2.webp"
+    },
+    "501": {
+      "word": "cling",
+      "file": "cling-v2.webp"
+    },
+    "2042": {
+      "word": "prevail",
+      "file": "prevail-v2.webp"
+    },
+    "2207": {
+      "word": "resemble",
+      "file": "resemble-v2.webp"
+    },
+    "2616": {
+      "word": "suspend",
+      "file": "suspend-v2.webp"
+    },
+    "2588": {
+      "word": "suffice",
+      "file": "suffice-v2.webp"
+    },
+    "669": {
+      "word": "credible",
+      "file": "credible-v2.webp"
     }
   }
 }
