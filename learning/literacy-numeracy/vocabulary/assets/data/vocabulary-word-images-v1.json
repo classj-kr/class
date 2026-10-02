@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2733,
+  "totalImages": 2749,
   "images": {
     "139": {
       "word": "apple",
@@ -10933,6 +10933,70 @@
     "831": {
       "word": "distribute",
       "file": "distribute-v2.webp"
+    },
+    "1424": {
+      "word": "insert",
+      "file": "insert-v2.webp"
+    },
+    "2666": {
+      "word": "tempt",
+      "file": "tempt-v2.webp"
+    },
+    "845": {
+      "word": "domain",
+      "file": "domain-v2.webp"
+    },
+    "571": {
+      "word": "conclude",
+      "file": "conclude-v2.webp"
+    },
+    "1914": {
+      "word": "patent",
+      "file": "patent-v2.webp"
+    },
+    "1557": {
+      "word": "leisure",
+      "file": "leisure-v2.webp"
+    },
+    "550": {
+      "word": "compensate",
+      "file": "compensate-v2.webp"
+    },
+    "951": {
+      "word": "err",
+      "file": "err-v2.webp"
+    },
+    "12": {
+      "word": "absorb",
+      "file": "absorb-v2.webp"
+    },
+    "2491": {
+      "word": "sphere",
+      "file": "sphere-v2.webp"
+    },
+    "2235": {
+      "word": "revive",
+      "file": "revive-v2.webp"
+    },
+    "2659": {
+      "word": "telegraph",
+      "file": "telegraph-v2.webp"
+    },
+    "510": {
+      "word": "cluster",
+      "file": "cluster-v2.webp"
+    },
+    "1481": {
+      "word": "jog",
+      "file": "jog-v2.webp"
+    },
+    "1416": {
+      "word": "inject",
+      "file": "inject-v2.webp"
+    },
+    "770": {
+      "word": "descend",
+      "file": "descend-v2.webp"
     }
   }
 }
