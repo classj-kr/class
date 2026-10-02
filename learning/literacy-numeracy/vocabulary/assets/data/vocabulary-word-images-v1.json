@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2237,
+  "totalImages": 2253,
   "images": {
     "139": {
       "word": "apple",
@@ -8949,6 +8949,70 @@
     "617": {
       "word": "converse",
       "file": "converse-v2.webp"
+    },
+    "1375": {
+      "word": "illustrate",
+      "file": "illustrate-v2.webp"
+    },
+    "1997": {
+      "word": "pollute",
+      "file": "pollute-v2.webp"
+    },
+    "767": {
+      "word": "depress",
+      "file": "depress-v2.webp"
+    },
+    "1040": {
+      "word": "fascinate",
+      "file": "fascinate-v2.webp"
+    },
+    "1158": {
+      "word": "frustrate",
+      "file": "frustrate-v2.webp"
+    },
+    "54": {
+      "word": "advertize",
+      "file": "advertize-v2.webp"
+    },
+    "953": {
+      "word": "especial",
+      "file": "especial-v2.webp"
+    },
+    "2416": {
+      "word": "situate",
+      "file": "situate-v2.webp"
+    },
+    "1690": {
+      "word": "mine",
+      "file": "mine-v2.webp"
+    },
+    "1739": {
+      "word": "murder",
+      "file": "murder-v2.webp"
+    },
+    "1688": {
+      "word": "million",
+      "file": "million-v2.webp"
+    },
+    "2928": {
+      "word": "weird",
+      "file": "weird-v2.webp"
+    },
+    "2619": {
+      "word": "swear",
+      "file": "swear-v2.webp"
+    },
+    "1331": {
+      "word": "holy",
+      "file": "holy-v2.webp"
+    },
+    "2242": {
+      "word": "rid",
+      "file": "rid-v2.webp"
+    },
+    "1876": {
+      "word": "owe",
+      "file": "owe-v2.webp"
     }
   }
 }
