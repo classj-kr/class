@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2413,
+  "totalImages": 2429,
   "images": {
     "139": {
       "word": "apple",
@@ -9653,6 +9653,70 @@
     "945": {
       "word": "envy",
       "file": "envy-v2.webp"
+    },
+    "1384": {
+      "word": "imperial",
+      "file": "imperial-v2.webp"
+    },
+    "586": {
+      "word": "congress",
+      "file": "congress-v2.webp"
+    },
+    "1119": {
+      "word": "forbid",
+      "file": "forbid-v2.webp"
+    },
+    "2670": {
+      "word": "tender",
+      "file": "tender-v2.webp"
+    },
+    "2045": {
+      "word": "prey",
+      "file": "prey-v2.webp"
+    },
+    "1230": {
+      "word": "graduate",
+      "file": "graduate-v2.webp"
+    },
+    "1197": {
+      "word": "genuine",
+      "file": "genuine-v2.webp"
+    },
+    "1435": {
+      "word": "institute",
+      "file": "institute-v2.webp"
+    },
+    "551": {
+      "word": "compete",
+      "file": "compete-v2.webp"
+    },
+    "2980": {
+      "word": "worship",
+      "file": "worship-v2.webp"
+    },
+    "2259": {
+      "word": "rod",
+      "file": "rod-v2.webp"
+    },
+    "1869": {
+      "word": "overcome",
+      "file": "overcome-v2.webp"
+    },
+    "2136": {
+      "word": "rank",
+      "file": "rank-v2.webp"
+    },
+    "2560": {
+      "word": "strict",
+      "file": "strict-v2.webp"
+    },
+    "376": {
+      "word": "butcher",
+      "file": "butcher-v2.webp"
+    },
+    "2055": {
+      "word": "prior",
+      "file": "prior-v2.webp"
     }
   }
 }
