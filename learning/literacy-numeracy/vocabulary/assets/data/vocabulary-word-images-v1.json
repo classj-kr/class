@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2365,
+  "totalImages": 2381,
   "images": {
     "139": {
       "word": "apple",
@@ -9461,6 +9461,70 @@
     "2283": {
       "word": "sack",
       "file": "sack-v2.webp"
+    },
+    "1887": {
+      "word": "palm",
+      "file": "palm-v2.webp"
+    },
+    "9": {
+      "word": "abroad",
+      "file": "abroad-v2.webp"
+    },
+    "460": {
+      "word": "chemical",
+      "file": "chemical-v2.webp"
+    },
+    "2944": {
+      "word": "whip",
+      "file": "whip-v2.webp"
+    },
+    "611": {
+      "word": "contrary",
+      "file": "contrary-v2.webp"
+    },
+    "2767": {
+      "word": "tragic",
+      "file": "tragic-v2.webp"
+    },
+    "751": {
+      "word": "delicate",
+      "file": "delicate-v2.webp"
+    },
+    "985": {
+      "word": "executive",
+      "file": "executive-v2.webp"
+    },
+    "1939": {
+      "word": "permit",
+      "file": "permit-v2.webp"
+    },
+    "1938": {
+      "word": "permanent",
+      "file": "permanent-v2.webp"
+    },
+    "1447": {
+      "word": "interfere",
+      "file": "interfere-v2.webp"
+    },
+    "575": {
+      "word": "conduct",
+      "file": "conduct-v2.webp"
+    },
+    "2233": {
+      "word": "reverse",
+      "file": "reverse-v2.webp"
+    },
+    "14": {
+      "word": "absurd",
+      "file": "absurd-v2.webp"
+    },
+    "2636": {
+      "word": "tag",
+      "file": "tag-v2.webp"
+    },
+    "2681": {
+      "word": "terror",
+      "file": "terror-v2.webp"
     }
   }
 }
