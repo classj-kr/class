@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2669,
+  "totalImages": 2685,
   "images": {
     "139": {
       "word": "apple",
@@ -10677,6 +10677,70 @@
     "1870": {
       "word": "overhead",
       "file": "overhead-v2.webp"
+    },
+    "1673": {
+      "word": "merit",
+      "file": "merit-v2.webp"
+    },
+    "2535": {
+      "word": "stem",
+      "file": "stem-v2.webp"
+    },
+    "2847": {
+      "word": "vaccine",
+      "file": "vaccine-v2.webp"
+    },
+    "760": {
+      "word": "dense",
+      "file": "dense-v2.webp"
+    },
+    "1460": {
+      "word": "invade",
+      "file": "invade-v2.webp"
+    },
+    "168": {
+      "word": "assemble",
+      "file": "assemble-v2.webp"
+    },
+    "114": {
+      "word": "analyze",
+      "file": "analyze-v2.webp"
+    },
+    "1292": {
+      "word": "hazard",
+      "file": "hazard-v2.webp"
+    },
+    "2023": {
+      "word": "preach",
+      "file": "preach-v2.webp"
+    },
+    "57": {
+      "word": "advocate",
+      "file": "advocate-v2.webp"
+    },
+    "2790": {
+      "word": "trim",
+      "file": "trim-v2.webp"
+    },
+    "30": {
+      "word": "ache",
+      "file": "ache-v2.webp"
+    },
+    "917": {
+      "word": "emerge",
+      "file": "emerge-v2.webp"
+    },
+    "1691": {
+      "word": "mineral",
+      "file": "mineral-v2.webp"
+    },
+    "1023": {
+      "word": "faculty",
+      "file": "faculty-v2.webp"
+    },
+    "1008": {
+      "word": "external",
+      "file": "external-v2.webp"
     }
   }
 }
