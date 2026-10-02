@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2253,
+  "totalImages": 2269,
   "images": {
     "139": {
       "word": "apple",
@@ -9013,6 +9013,70 @@
     "1876": {
       "word": "owe",
       "file": "owe-v2.webp"
+    },
+    "2971": {
+      "word": "witness",
+      "file": "witness-v2.webp"
+    },
+    "791": {
+      "word": "devil",
+      "file": "devil-v2.webp"
+    },
+    "2591": {
+      "word": "suicide",
+      "file": "suicide-v2.webp"
+    },
+    "1179": {
+      "word": "gang",
+      "file": "gang-v2.webp"
+    },
+    "116": {
+      "word": "ancient",
+      "file": "ancient-v2.webp"
+    },
+    "1045": {
+      "word": "fate",
+      "file": "fate-v2.webp"
+    },
+    "2497": {
+      "word": "split",
+      "file": "split-v2.webp"
+    },
+    "2322": {
+      "word": "screw",
+      "file": "screw-v2.webp"
+    },
+    "1750": {
+      "word": "naked",
+      "file": "naked-v2.webp"
+    },
+    "1167": {
+      "word": "funeral",
+      "file": "funeral-v2.webp"
+    },
+    "2173": {
+      "word": "regret",
+      "file": "regret-v2.webp"
+    },
+    "2232": {
+      "word": "revenge",
+      "file": "revenge-v2.webp"
+    },
+    "394": {
+      "word": "cancer",
+      "file": "cancer-v2.webp"
+    },
+    "2262": {
+      "word": "romantic",
+      "file": "romantic-v2.webp"
+    },
+    "2585": {
+      "word": "suck",
+      "file": "suck-v2.webp"
+    },
+    "428": {
+      "word": "celebrate",
+      "file": "celebrate-v2.webp"
     }
   }
 }
