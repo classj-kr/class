@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2301,
+  "totalImages": 2317,
   "images": {
     "139": {
       "word": "apple",
@@ -9205,6 +9205,70 @@
     "739": {
       "word": "defeat",
       "file": "defeat-v2.webp"
+    },
+    "4": {
+      "word": "aboard",
+      "file": "aboard-v2.webp"
+    },
+    "2620": {
+      "word": "sweat",
+      "file": "sweat-v2.webp"
+    },
+    "2611": {
+      "word": "surrender",
+      "file": "surrender-v2.webp"
+    },
+    "685": {
+      "word": "crush",
+      "file": "crush-v2.webp"
+    },
+    "1533": {
+      "word": "launch",
+      "file": "launch-v2.webp"
+    },
+    "1249": {
+      "word": "gross",
+      "file": "gross-v2.webp"
+    },
+    "2750": {
+      "word": "torture",
+      "file": "torture-v2.webp"
+    },
+    "2284": {
+      "word": "sacred",
+      "file": "sacred-v2.webp"
+    },
+    "2789": {
+      "word": "trigger",
+      "file": "trigger-v2.webp"
+    },
+    "393": {
+      "word": "cancel",
+      "file": "cancel-v2.webp"
+    },
+    "2052": {
+      "word": "principal",
+      "file": "principal-v2.webp"
+    },
+    "1193": {
+      "word": "generous",
+      "file": "generous-v2.webp"
+    },
+    "2272": {
+      "word": "routine",
+      "file": "routine-v2.webp"
+    },
+    "466": {
+      "word": "chill",
+      "file": "chill-v2.webp"
+    },
+    "2495": {
+      "word": "spit",
+      "file": "spit-v2.webp"
+    },
+    "641": {
+      "word": "costume",
+      "file": "costume-v2.webp"
     }
   }
 }
