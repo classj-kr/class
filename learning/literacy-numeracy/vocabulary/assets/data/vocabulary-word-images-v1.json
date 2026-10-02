@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2589,
+  "totalImages": 2605,
   "images": {
     "139": {
       "word": "apple",
@@ -10357,6 +10357,70 @@
     "1924": {
       "word": "peasant",
       "file": "peasant-v2.webp"
+    },
+    "1795": {
+      "word": "norm",
+      "file": "norm-v2.webp"
+    },
+    "2599": {
+      "word": "superb",
+      "file": "superb-v2.webp"
+    },
+    "2142": {
+      "word": "rational",
+      "file": "rational-v2.webp"
+    },
+    "1510": {
+      "word": "knot",
+      "file": "knot-v2.webp"
+    },
+    "1382": {
+      "word": "immune",
+      "file": "immune-v2.webp"
+    },
+    "2677": {
+      "word": "terrace",
+      "file": "terrace-v2.webp"
+    },
+    "165": {
+      "word": "aspect",
+      "file": "aspect-v2.webp"
+    },
+    "1166": {
+      "word": "fundamental",
+      "file": "fundamental-v2.webp"
+    },
+    "2845": {
+      "word": "utter",
+      "file": "utter-v2.webp"
+    },
+    "2578": {
+      "word": "substitute",
+      "file": "substitute-v2.webp"
+    },
+    "2496": {
+      "word": "splash",
+      "file": "splash-v2.webp"
+    },
+    "193": {
+      "word": "authentic",
+      "file": "authentic-v2.webp"
+    },
+    "2596": {
+      "word": "summit",
+      "file": "summit-v2.webp"
+    },
+    "2625": {
+      "word": "swift",
+      "file": "swift-v2.webp"
+    },
+    "2772": {
+      "word": "transform",
+      "file": "transform-v2.webp"
+    },
+    "902": {
+      "word": "elaborate",
+      "file": "elaborate-v2.webp"
     }
   }
 }
