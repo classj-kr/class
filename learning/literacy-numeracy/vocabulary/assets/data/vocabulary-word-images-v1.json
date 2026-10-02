@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2477,
+  "totalImages": 2493,
   "images": {
     "139": {
       "word": "apple",
@@ -9909,6 +9909,70 @@
     "471": {
       "word": "choir",
       "file": "choir-v2.webp"
+    },
+    "1943": {
+      "word": "persuade",
+      "file": "persuade-v2.webp"
+    },
+    "2008": {
+      "word": "pose",
+      "file": "pose-v2.webp"
+    },
+    "1415": {
+      "word": "initial",
+      "file": "initial-v2.webp"
+    },
+    "1344": {
+      "word": "hostile",
+      "file": "hostile-v2.webp"
+    },
+    "2836": {
+      "word": "update",
+      "file": "update-v2.webp"
+    },
+    "778": {
+      "word": "despair",
+      "file": "despair-v2.webp"
+    },
+    "809": {
+      "word": "dip",
+      "file": "dip-v2.webp"
+    },
+    "1106": {
+      "word": "flush",
+      "file": "flush-v2.webp"
+    },
+    "2760": {
+      "word": "toxic",
+      "file": "toxic-v2.webp"
+    },
+    "2133": {
+      "word": "rally",
+      "file": "rally-v2.webp"
+    },
+    "426": {
+      "word": "cease",
+      "file": "cease-v2.webp"
+    },
+    "2346": {
+      "word": "sensible",
+      "file": "sensible-v2.webp"
+    },
+    "2522": {
+      "word": "starve",
+      "file": "starve-v2.webp"
+    },
+    "1880": {
+      "word": "pad",
+      "file": "pad-v2.webp"
+    },
+    "716": {
+      "word": "dash",
+      "file": "dash-v2.webp"
+    },
+    "1094": {
+      "word": "flee",
+      "file": "flee-v2.webp"
     }
   }
 }
