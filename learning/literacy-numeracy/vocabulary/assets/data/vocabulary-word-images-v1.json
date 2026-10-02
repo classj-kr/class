@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2541,
+  "totalImages": 2557,
   "images": {
     "139": {
       "word": "apple",
@@ -10165,6 +10165,70 @@
     "2212": {
       "word": "resolve",
       "file": "resolve-v2.webp"
+    },
+    "474": {
+      "word": "chorus",
+      "file": "chorus-v2.webp"
+    },
+    "24": {
+      "word": "accomplish",
+      "file": "accomplish-v2.webp"
+    },
+    "598": {
+      "word": "consult",
+      "file": "consult-v2.webp"
+    },
+    "1777": {
+      "word": "nevertheless",
+      "file": "nevertheless-v2.webp"
+    },
+    "2514": {
+      "word": "stain",
+      "file": "stain-v2.webp"
+    },
+    "1547": {
+      "word": "lease",
+      "file": "lease-v2.webp"
+    },
+    "2655": {
+      "word": "tease",
+      "file": "tease-v2.webp"
+    },
+    "991": {
+      "word": "exotic",
+      "file": "exotic-v2.webp"
+    },
+    "1007": {
+      "word": "extent",
+      "file": "extent-v2.webp"
+    },
+    "2511": {
+      "word": "stack",
+      "file": "stack-v2.webp"
+    },
+    "2367": {
+      "word": "shallow",
+      "file": "shallow-v2.webp"
+    },
+    "607": {
+      "word": "continent",
+      "file": "continent-v2.webp"
+    },
+    "1670": {
+      "word": "merchant",
+      "file": "merchant-v2.webp"
+    },
+    "2860": {
+      "word": "venture",
+      "file": "venture-v2.webp"
+    },
+    "697": {
+      "word": "curry",
+      "file": "curry-v2.webp"
+    },
+    "988": {
+      "word": "exhibit",
+      "file": "exhibit-v2.webp"
     }
   }
 }
