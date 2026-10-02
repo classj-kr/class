@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "totalImages": 2429,
+  "totalImages": 2445,
   "images": {
     "139": {
       "word": "apple",
@@ -9717,6 +9717,70 @@
     "2055": {
       "word": "prior",
       "file": "prior-v2.webp"
+    },
+    "1907": {
+      "word": "passage",
+      "file": "passage-v2.webp"
+    },
+    "352": {
+      "word": "broadcast",
+      "file": "broadcast-v2.webp"
+    },
+    "2428": {
+      "word": "slice",
+      "file": "slice-v2.webp"
+    },
+    "1878": {
+      "word": "pace",
+      "file": "pace-v2.webp"
+    },
+    "2538": {
+      "word": "stiff",
+      "file": "stiff-v2.webp"
+    },
+    "671": {
+      "word": "creep",
+      "file": "creep-v2.webp"
+    },
+    "2059": {
+      "word": "privilege",
+      "file": "privilege-v2.webp"
+    },
+    "1749": {
+      "word": "naive",
+      "file": "naive-v2.webp"
+    },
+    "859": {
+      "word": "drain",
+      "file": "drain-v2.webp"
+    },
+    "28": {
+      "word": "accurate",
+      "file": "accurate-v2.webp"
+    },
+    "733": {
+      "word": "declare",
+      "file": "declare-v2.webp"
+    },
+    "1700": {
+      "word": "missile",
+      "file": "missile-v2.webp"
+    },
+    "1725": {
+      "word": "mortal",
+      "file": "mortal-v2.webp"
+    },
+    "1644": {
+      "word": "mature",
+      "file": "mature-v2.webp"
+    },
+    "2254": {
+      "word": "roast",
+      "file": "roast-v2.webp"
+    },
+    "190": {
+      "word": "auction",
+      "file": "auction-v2.webp"
     }
   }
 }
