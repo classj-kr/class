@@ -49,8 +49,7 @@
         .picker-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
         #avatarStatus { min-height:26px; color:var(--muted); font-weight:800; }
         [hidden] { display:none !important; }
-        .settings-nav { display:flex; gap:12px; margin:16px 0; flex-wrap:wrap; }
-        .settings-nav a,.card a { color:var(--green); }
+        .card a { color:var(--green); }
         .ai-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
         #aiStatus { min-height:26px; overflow-wrap:anywhere; }
         @media(max-width:600px){.avatar-current{align-items:flex-start}.avatar-current img{width:92px;height:92px}.picker-actions{align-items:stretch;flex-direction:column}}
@@ -60,7 +59,6 @@
 <body><main>
     <div class="top"><a class="back" href="/">← 첫 화면</a><a class="privacy-link" href="/student-privacy">개인정보 안내</a></div>
     <h1>내 정보 설정</h1>
-    <nav class="settings-nav" id="settingsNav" hidden aria-label="내 정보 항목"><a href="#identityTitle">프로필</a><a href="#ai-settings">AI 설정</a></nav>
     <section class="card" aria-labelledby="identityTitle"><h2 id="identityTitle">내 학급</h2><div class="identity"><div><span id="identityRole">학생</span><strong id="studentName">확인 중…</strong></div><div><span id="affiliationLabel">학급</span><strong id="className">확인 중…</strong></div></div></section>
     <section id="avatarCard" class="card" hidden aria-labelledby="avatarTitle">
         <h2 id="avatarTitle">&#45236; &#50500;&#48148;&#53440;</h2>
@@ -180,7 +178,6 @@ async function start(){
         document.querySelector('#identityRole').textContent='교사';
         document.querySelector('#affiliationLabel').textContent='소속';
         document.querySelector('#studentName').textContent=me.user.name;
-        document.querySelector('#settingsNav').hidden=false;
         document.querySelector('#studentBirthdayHint').hidden=true;
         document.querySelector('#avatarChangeHint').hidden=true;
         document.querySelector('#birthdaySharingHint').textContent='켜면 담임으로 등록된 학급 대시보드에 ‘○○ 선생님 생일’이 표시됩니다. 월·일만 공개하며 언제든 끌 수 있습니다.';
