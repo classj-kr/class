@@ -2680,7 +2680,9 @@ function createClassroomPlatform(options = {}) {
     // 네 자리 번호는 만 번이면 다 대 볼 수 있다. 같은 주소에서 15분 안에 여러 번
     // 틀리면 잠시 막는다(구글 로그인과 같은 장치, 한도 30번).
     authFailureLimiter.enforce(req, "guest-passcode");
-    if (passcode !== "2004") {
+    // 운영에서는 GUEST_PASSCODE 환경변수로 번호를 바꿀 수 있다. 없으면 예전 번호 그대로.
+    const expectedPasscode = String(process.env.GUEST_PASSCODE || "2004").trim();
+    if (passcode !== expectedPasscode) {
       authFailureLimiter.recordFailure(req, "guest-passcode");
       throw new HttpError(400, "INVALID_PASSCODE", "비밀번호 4자리를 올바르게 입력하세요.");
     }
