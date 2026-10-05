@@ -1,6 +1,10 @@
 "use strict";
-importScripts("janggi-rules.js?v=3", "janggi-ai.js?v=10");
+importScripts("janggi-rules.js?v=3", "janggi-ai.js?v=11");
 self.onmessage=({data:{token,state,level,kind}})=>{
-  try{self.postMessage({token,result:kind==="hint"?JanggiCoachAI.chooseHint(state):JanggiCoachAI.choose(state,level)});}
+  try{
+    const result=kind==="hint"?JanggiCoachAI.chooseHint(state):JanggiCoachAI.choose(state,level);
+    if(result&&kind!=="hint")result.opponent=JanggiCoachAI.opponentView(state,result.move,result.line);
+    self.postMessage({token,result});
+  }
   catch(error){self.postMessage({token,error:error.message});}
 };
