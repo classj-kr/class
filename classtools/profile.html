@@ -93,7 +93,7 @@
     <section id="ai-settings" class="card" hidden aria-labelledby="aiTitle">
         <h2 id="aiTitle">AI 설정</h2>
         <p class="hint">생활기록부 등 교사용 AI 기능에서 함께 사용할 Gemini API 키를 관리합니다.</p>
-        <p class="hint">키는 이 브라우저에 현재 교사 계정별로 저장됩니다. 다른 기기에서는 다시 등록해 주세요.</p>
+        <p class="hint">키는 서버에 내 계정으로 암호화해 보관되어 어느 컴퓨터에서나 같이 쓰이고, 이 브라우저에는 남지 않습니다.</p>
         <label for="geminiKey">Gemini API 키</label>
         <input id="geminiKey" type="password" autocomplete="off" spellcheck="false" placeholder="API 키 붙여 넣기">
         <p class="hint"><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio에서 API 키 만들기</a></p>
@@ -105,7 +105,7 @@
         <p id="aiStatus" class="hint" role="status" aria-live="polite"></p>
     </section>
 </main>
-<script src="/classtools/ai-client.js"></script>
+<script src="/classtools/ai-client.js?v=20261006-server-key"></script>
 <script>
 let isTeacherProfile=false;
 function profilePath(){return isTeacherProfile?'/api/teacher/settings':'/api/student/profile'}
@@ -193,18 +193,18 @@ async function start(){
 async function startAiSettings(){
     const ai=window.ClassroomAI,input=document.querySelector('#geminiKey'),status=document.querySelector('#aiStatus');
     const buttons=[...document.querySelectorAll('#ai-settings button')];
-    const refresh=()=>{input.value=ai.getKey()};
+    const refresh=()=>{const s=ai.keyStatus();input.value='';input.placeholder=s.registered?'등록된 키 …'+s.last4+' (바꾸려면 새 키 붙여 넣기)':'API 키 붙여 넣기'};
     document.querySelector('#ai-settings').hidden=false;
     buttons.forEach(button=>button.disabled=true);
     await ai.init();refresh();
-    status.textContent=input.value?'등록된 키를 교사용 AI 기능에서 함께 사용합니다.':'API 키를 등록해 주세요.';
+    status.textContent=ai.hasKey()?'등록된 키를 교사용 AI 기능에서 함께 사용합니다.':'API 키를 등록해 주세요.';
     buttons.forEach(button=>button.disabled=false);
     async function perform(action){
         buttons.forEach(button=>button.disabled=true);
         try{await action()}catch(error){status.textContent=error.message}finally{buttons.forEach(button=>button.disabled=false)}
     }
-    document.querySelector('#saveAiKey').onclick=()=>perform(async()=>{ai.saveKey(input.value);refresh();status.textContent='API 키를 저장했습니다.'});
-    document.querySelector('#deleteAiKey').onclick=()=>perform(async()=>{ai.deleteKey();refresh();status.textContent='이 계정의 API 키를 삭제했습니다.'});
+    document.querySelector('#saveAiKey').onclick=()=>perform(async()=>{status.textContent='키를 확인하는 중…';await ai.saveKey(input.value);refresh();status.textContent='API 키를 저장했습니다.'});
+    document.querySelector('#deleteAiKey').onclick=()=>perform(async()=>{await ai.deleteKey();refresh();status.textContent='이 계정의 API 키를 삭제했습니다.'});
     document.querySelector('#checkAiKey').onclick=()=>perform(async()=>{status.textContent='연결 확인 중…';await ai.checkConnection(input.value);status.textContent='연결을 확인했습니다. 새 키를 입력했다면 키 저장을 눌러 주세요.'});
     if(location.hash==='#ai-settings')document.querySelector('#ai-settings').scrollIntoView();
 }

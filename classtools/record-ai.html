@@ -482,7 +482,7 @@
         </section>
     </main>
 
-    <script src="/classtools/ai-client.js"></script>
+    <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
     <script src="record-traits.js?v=1"></script>
     <script>
         (() => {
@@ -797,7 +797,7 @@
             async function refreshAiStatus() {
                 try {
                     await window.ClassroomAI.init();
-                    const hasKey = Boolean(window.ClassroomAI.getKey());
+                    const hasKey = window.ClassroomAI.hasKey();
                     keyStatus.textContent = hasKey ? '내 정보에 등록된 Gemini API 키를 사용합니다.'
                         : '내 정보의 AI 설정에서 API 키를 등록해 주세요.';
                     return hasKey;
