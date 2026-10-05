@@ -8,6 +8,7 @@ const { attendanceEventSchema, createAttendanceEventHub } = require("./attendanc
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
 const { createLearningRecords } = require("./learning-records");
+const { createTeacherAi } = require("./teacher-ai");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
@@ -1367,6 +1368,7 @@ function createClassroomPlatform(options = {}) {
       await metacognition.initialize();
       await learningRecords.initialize();
       await learningBoards.initialize();
+      await teacherAi.initialize();
       await voting.initialize();
       await schoolElection.initialize();
       await seating.initialize();
@@ -1577,6 +1579,15 @@ function createClassroomPlatform(options = {}) {
     pool, requireUser, requireTeacher, requireDatabase, teacherRegistrations, HttpError, asyncRoute
   });
   router.use("/learning-records", learningRecords.router);
+
+  // 교사용 AI 키는 서버에만 둔다. 암호화 비밀값은 AI_KEY_SECRET, 없으면 DB 주소에서 파생.
+  const teacherAi = createTeacherAi({
+    pool, requireTeacher, requireDatabase, HttpError, asyncRoute,
+    secret: process.env.AI_KEY_SECRET
+      ? { value: process.env.AI_KEY_SECRET, derived: false }
+      : { value: `teacher-ai:${databaseUrl || "local"}`, derived: Boolean(databaseUrl) }
+  });
+  router.use("/teacher-ai", teacherAi.router);
 
   // 학급선거·전교선거·자리 고르기·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
   // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.
