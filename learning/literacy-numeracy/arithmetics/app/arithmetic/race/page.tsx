@@ -7,6 +7,8 @@ type Race = { worksheetName: string; worksheetRoute: string; status: string };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
 type Board = { participants: Array<{ id: string; name: string }>; race: Race };
 
+const PLAYER_NAME_KEY = "classPlayerName";
+
 function normalizedPlayerName(value: string | null) {
   return String(value ?? "").trim().replace(/[^가-힣a-zA-Z0-9]/g, "").slice(0, 20);
 }
@@ -22,10 +24,14 @@ export default function ArithmeticRaceJoinPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    // 첫 화면에서 정한 이름(게스트·교사·학생 모두)을 먼저 쓰고, 명단에 있는 학생이면 학습 기록과
+    // 같은 계정 이름으로 바꾼다. 계정 이름만 보면 교사와 게스트는 방을 만들 수 없다.
+    const storedName = normalizedPlayerName(window.localStorage.getItem(PLAYER_NAME_KEY));
+    if (storedName) setName(storedName);
     void fetch('/api/learning-records/context', { cache: 'no-store', credentials: 'same-origin' })
       .then(response => response.ok ? response.json() : null)
       .then(context => { const student = (context as { student?: { name?: string } } | null)?.student; if (student?.name) setName(normalizedPlayerName(student.name)); })
-      .catch(() => setError('학생 계정의 이름을 불러오지 못했습니다. 다시 연결해 주세요.'));
+      .catch(() => { if (!storedName) setError('학생 계정의 이름을 불러오지 못했습니다. 다시 연결해 주세요.'); });
 
     const room = params.get("room");
     const participantId = params.get("participant");
@@ -71,7 +77,7 @@ export default function ArithmeticRaceJoinPage() {
   function requireName() {
     const playerName = normalizedPlayerName(name);
     if (!playerName) {
-      setError("저장된 내 이름을 찾지 못했습니다. 프로필 이름을 먼저 확인하세요.");
+      setError("저장된 내 이름을 찾지 못했습니다. 메인 화면에서 이름을 먼저 정해 주세요.");
       return null;
     }
     return playerName;
