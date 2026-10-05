@@ -28,5 +28,25 @@
     document.querySelector(".controls").append(document.getElementById("backLink"));
     sidebar.prepend(document.querySelector(".topbar"),document.querySelector(".matchbar"),document.querySelector(".lesson"),document.querySelector(".controls"));
   }
-  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme };
+  function mountOpponent() {
+    document.querySelector('.explanation').insertAdjacentHTML('beforebegin','<section id="opponentPanel" class="panel opponent-plan hidden" aria-live="polite" aria-labelledby="opponentTitle"><span class="eyebrow">상대가 노리는 것</span><h2 id="opponentTitle"></h2><p id="opponentIntent"></p><p id="opponentDanger" class="opponent-danger"></p><h3>내 대응 방향</h3><p id="opponentResponse"></p></section>');
+  }
+  function showOpponent(note, board, columns) {
+    document.getElementById('opponentPanel').classList.toggle('hidden', !note);
+    if (!note) return;
+    for (const [id,key] of [['opponentTitle','title'],['opponentIntent','summary'],['opponentDanger','danger'],['opponentResponse','response']]) document.getElementById(id).textContent=note[key]||'';
+    document.getElementById('opponentDanger').classList.toggle('hidden', !note.danger);
+    const cells=[...board.querySelectorAll('[data-square],[data-index]')];
+    for (const index of note.targets||[]) {
+      const cell=cells.find(c=>Number(c.dataset.square??c.dataset.index)===index);
+      if (!cell) continue;
+      cell.classList.add('opponent-target');
+      cell.insertAdjacentHTML('beforeend','<span class="threat-ring" aria-hidden="true"></span>');
+      cell.setAttribute('aria-label',cell.getAttribute('aria-label')+' · '+(note.targetLabel||'상대가 노리는 말'));
+    }
+    const point=index=>{const view=cells.findIndex(c=>Number(c.dataset.square??c.dataset.index)===index);return view<0?null:{x:view%columns+.5,y:Math.floor(view/columns)+.5};};
+    const lines=(note.lines||[]).map(line=>line.map(point)).filter(line=>line.length>1&&line.every(Boolean));
+    if (lines.length) board.insertAdjacentHTML('beforeend',`<svg class="threat-lines" viewBox="0 0 ${columns} ${cells.length/columns}" preserveAspectRatio="none" aria-hidden="true">${lines.map(line=>`<polyline points="${line.map(p=>`${p.x},${p.y}`).join(' ')}"/>`).join('')}</svg>`);
+  }
+  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent };
 })();

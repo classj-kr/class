@@ -20,4 +20,8 @@
 :where(.chess-surface) .piece-svg.black{--piece-fill:#273242;--piece-edge:#090d13;--piece-detail:#b9c4d0}
 :where(.chess-surface) .piece-body{fill:var(--piece-fill);stroke:var(--piece-edge);stroke-width:2.2;stroke-linejoin:round}
 :where(.chess-surface) .piece-detail{fill:none;stroke:var(--piece-detail);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+:where(.chess-surface) #board .square.piece-moving{z-index:10}
+:where(.chess-surface) #board .piece-moving .piece-svg{transition:none;pointer-events:none}
+:where(.chess-surface) #board .moving-ghost,:where(.chess-surface) #board .capture-ghost{position:absolute;left:9%;top:9%;pointer-events:none}
+:where(.chess-surface) #board .capture-ghost{z-index:2}
 

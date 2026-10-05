@@ -1,4 +1,17 @@
 /* Learning controls use each existing game's palette; board art is shared. */
+.original-coach .opponent-plan h3,.original-coach .capture-summary h3{font-size:14px;margin:12px 0 6px;color:var(--accent)}
+.original-coach .opponent-plan p{margin:8px 0;line-height:1.65;overflow-wrap:anywhere}
+.original-coach .opponent-danger{color:#ffd1bd}
+.original-coach .threat-ring{position:absolute;inset:7%;border:3px solid #dc4a37;border-radius:50%;box-shadow:0 0 0 1px #ffe1b5;z-index:4;pointer-events:none}
+.original-coach .threat-lines{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}
+.original-coach .threat-lines polyline{fill:none;stroke:#d63e30;stroke-width:.10;stroke-linecap:round;opacity:.8}
+.original-coach .reversi .square.flipped .disc:not(.flip-ghost){outline:3px solid #f5d981;outline-offset:-3px}
+.original-coach .move-result{margin:0;white-space:pre-line;line-height:1.6}
+.original-coach .capture-trays{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.original-coach .capture-tokens{display:flex;flex-wrap:wrap;gap:6px}
+.original-coach .capture-token{display:flex;align-items:center;gap:3px;font-size:13px}
+.original-coach .capture-token .piece-svg{width:26px;height:30px;flex:none}
+.original-coach .capture-empty{font-size:13px;color:var(--muted)}
 body.original-coach {
   min-height: 100dvh; padding: 8px; color: var(--ink); color-scheme: dark;
   background: var(--scene) center / cover fixed;
