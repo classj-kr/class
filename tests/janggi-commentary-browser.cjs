@@ -89,8 +89,29 @@ async function main(){
     assert.ok((await page.locator('#opponentIntent').innerText()).length>10);
     assert.match(await page.locator('#opponentLine').innerText(),/내가 .*로 응수하면/);
     assert.equal(await page.locator('#board button').first().getAttribute('data-square'),'89');
+    // Reproduce the late ending with the real worker at each difficulty. The
+    // human offers bikjang from the supplied screenshot, then undoes and passes.
+    for(const side of ['c','h'])for(const level of ['beginner','intermediate','advanced']){
+      const ending=Array(90).fill(null);ending[67]='cK';ending[3]='hK';ending[78]='hC';
+      const pieces=side==='c'?ending:ending.reverse().map(p=>p?R.other(p[0])+p[1]:null);
+      const position={...R.position(pieces,side),ply:202},endPage=await browser.newPage({viewport:{width:1366,height:900}});
+      endPage.on('pageerror',e=>errors.push(e.message));
+      await endPage.route('**/janggi-coach.js?*',async route=>{const response=await route.fetch();await route.fulfill({response,body:`window.JanggiCoachRules={...JanggiCoachRules,initial:()=>(${JSON.stringify(position)})};\n`+await response.text()});});
+      await endPage.goto(url+'/learning/games/board-coach/coach?game=janggi');
+      await endPage.locator(`input[name=color][value='${side==='c'?1:2}']`).check();await endPage.locator(`input[name=level][value='${level}']`).check();await endPage.locator('#startLearning').click();
+      await endPage.locator(`[data-square='${side==='c'?67:22}']`).click();await endPage.locator(`[data-square='${side==='c'?66:23}']`).click();
+      await endPage.locator('#reviewPanel:not(.hidden)').waitFor();
+      assert.match(await endPage.locator('#turn').innerText(),/빅장.*무승부/);assert.equal(await endPage.locator('#moveLabel').innerText(),'빅장 수락');
+      assert.match(await endPage.locator('#reason').innerText(),/외통수.*어려워.*빅장/);assert.equal(await endPage.locator('#opponentPanel').isVisible(),false);
+      if(side==='c'&&level==='advanced')await endPage.screenshot({path:path.join(output,'bikjang-accepted.png'),fullPage:true});
+      await endPage.locator('#undo').click();assert.match(await endPage.locator('#turn').innerText(),/내 차례/);
+      await endPage.locator('#janggiPass').click();await endPage.locator('#reviewPanel:not(.hidden)').waitFor();
+      assert.match(await endPage.locator('#turn').innerText(),/양쪽 한 수 쉬기.*무승부/);assert.equal(await endPage.locator('#board .piece').count(),3);
+      await endPage.close();
+    }
     assert.deepEqual(errors,[]);
     console.log('PASS: opponent strategy, discovered threat, forecast, hint persistence, desktop/mobile layout, undo, review, restart and both colors');
+    console.log('PASS: reported king-and-cannon ending accepts bikjang or consecutive passes at every level, both colors, through the real worker');
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

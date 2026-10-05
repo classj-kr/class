@@ -28,7 +28,7 @@
       pieces[R.other(side)].filter(p=>!['K','A'].includes(p)).length<=1);
   }
   function evaluate(state,coaching=false){
-    if(coaching&&cannotForceMate(state))return 0;
+    if(cannotForceMate(state))return 0;
     const kings=coaching?{c:state.board.indexOf('cK'),h:state.board.indexOf('hK')}:null;
     const pressure=coaching?{c:new Uint8Array(90),h:new Uint8Array(90)}:null;
     const attackers={c:0,h:0},late=coaching&&state.board.filter(Boolean).length<=14;
@@ -109,7 +109,7 @@
   function fallbackScore(state,move,coaching=false,drawScore=0){
     const next=R.advance(state,move),end=R.status(next);
     if(end.ended)return end.winner?(end.winner===state.turn?MATE:-MATE):drawScore;
-    if(coaching&&cannotForceMate(next))return drawScore;
+    if(cannotForceMate(next))return drawScore;
     let loss=0;
     for(const reply of R.boardMoves(next))if(reply.capture)loss=Math.max(loss,captureGain(next,reply));
     return -evaluate(next,coaching)-loss-(move.kind==="pass"?30:0);
@@ -132,6 +132,15 @@
     const settings={...(LEVELS[level]||LEVELS.beginner),...options},candidates=roots(state);
     const drawScore=settings.coaching?-120:0;
     if(!candidates.length)return null;
+    if(cannotForceMate(state)){
+      // Material alone must not make the opponent reject a settled ending.
+      // Keep the actual game rules: accept a legal draw, otherwise offer a pass.
+      // roots() still gives an immediate win priority over any draw policy.
+      const draw=candidates.find(m=>m.kind==='bikjang')||candidates.find(m=>{
+        const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
+      })||candidates.find(m=>m.kind==='pass');
+      if(draw)return {move:draw,line:[draw],reason:explain(state,draw),depth:0,nodes:0};
+    }
     const ranked=candidates.map(move=>{
       // An unforced king shuffle should not win a near tie over developing or
       // defending with another piece. Captures and every check escape keep
@@ -157,7 +166,7 @@
       if(++nodes>budget||(nodes%32===0&&Date.now()>deadline))throw stop;
       const end=R.status(s);
       if(end.ended)return end.winner?(end.winner===s.turn?MATE-ply:-MATE+ply):(s.turn===state.turn?drawScore:-drawScore);
-      if(settings.coaching&&cannotForceMate(s))return s.turn===state.turn?drawScore:-drawScore;
+      if(cannotForceMate(s))return s.turn===state.turn?drawScore:-drawScore;
       const checked=R.inCheck(s),moves=settings.coaching?null:R.actions(s);
       let value=-Infinity;
       if(depth<=0){
@@ -247,6 +256,11 @@
     const played=R.play(before,move);if(!played.ok)return null;
     const after=played.state,side=before.turn,end=R.status(after),piece=name(move.piece);
     if(end.ended)return {title:label(move),summary:explain(before,move),danger:"",response:"",forecast:"",targets:[]};
+    if(cannotForceMate(after)&&!R.inCheck(after))return {
+      title:label(move),summary:explain(before,move),danger:'남은 말로는 외통수를 강제하기 어려운 종반이에요.',
+      response:after.passes===1?'지금 ‘한 수 쉬기’를 누르면 양쪽이 연속으로 쉬어 무승부로 끝나요.':R.facing(after)?'‘빅장 수락’을 누르면 무승부로 마칠 수 있어요.':'빅장이나 양쪽의 연속 ‘한 수 쉬기’로 무승부를 마칠 수 있어요.',
+      forecast:'',targets:[]
+    };
     const threats=usefulThreats(after,side),old=usefulThreats(before,side);
     const fresh=threats.find(t=>!old.some(o=>o.move.to===t.move.to&&o.move.from===t.move.from));
     let summary;
@@ -307,8 +321,8 @@
     if(end.reason==="repetition")return "같은 말 배치에서 같은 편이 둘 차례가 세 번 나와 무승부로 끝났어요.";
     if(end.reason==="perpetual-check")return "같은 판을 반복하는 동안 한쪽이 계속 장군을 불렀어요. 이 대국의 반복 장군 규칙에 따라 장군을 반복한 쪽이 졌어요.";
     if(end.reason==="quiet")return "말을 잡지 않고 100수가 이어져 이 대국은 무승부로 끝났어요.";
-    if(move.kind==="bikjang")return "두 왕 사이가 비어 있어요. 빅장을 받아들이면 이 대국은 무승부로 끝나요.";
-    if(move.kind==="pass")return end.ended?"양쪽이 연속으로 쉬어 무승부로 끝나요.":"말을 움직이지 않고 차례를 넘겨요. 장군을 받고 있을 때는 쉴 수 없어요.";
+    if(move.kind==="bikjang")return cannotForceMate(state)?"남은 말로는 외통수를 강제하기 어려워 빅장을 받아들여요. 이 대국은 무승부로 끝나요.":"두 왕 사이가 비어 있어요. 빅장을 받아들이면 이 대국은 무승부로 끝나요.";
+    if(move.kind==="pass")return end.ended?"양쪽이 연속으로 쉬어 무승부로 끝나요.":cannotForceMate(state)?"남은 말로는 외통수를 강제하기 어려워 한 수 쉬어요. 상대도 이어서 쉬면 무승부로 끝나요.":"말을 움직이지 않고 차례를 넘겨요. 장군을 받고 있을 때는 쉴 수 없어요.";
     const piece=name(move.piece),at=R.coord(move.to);
     if(end.reason==="mate")return `${object(piece)} ${at}에 두면 외통수예요. 상대 왕이 공격을 피할 방법이 없어요.`;
     if(R.inCheck(state))return `${object(piece)} ${at}로 옮기면 왕이 더는 공격받지 않아요.`;
@@ -330,6 +344,7 @@
     const next=R.advance(state,move),end=R.status(next);if(end.ended)return null;
     const win=mateInOne(state);
     if(win)return {alternative:win,text:`${label(win)}로 외통수를 만들 수 있었어요. 상대 왕을 공격할 자리도 찾아보세요.`};
+    if(cannotForceMate(state)&&move.kind)return null;
     const danger=mateInOne(next);
     if(danger){
       const safe=roots(state).find(m=>!mateInOne(R.advance(state,m)));
