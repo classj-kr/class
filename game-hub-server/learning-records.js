@@ -177,7 +177,8 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
         if (previous.payload_hash !== hash) fail('MUTATION_REUSED', '이미 사용한 저장 요청입니다.', 409);
         const session = await serialize(db, row, true); await db.query('COMMIT'); return res.json({ session });
       }
-      if (row.revision !== b.revision || row.status !== 'active') fail('RECORD_CONFLICT', '다른 화면에서 진도가 바뀌었어요. 저장된 기록을 다시 불러와 주세요.', 409);
+      const reviewingBook = row.status === 'completed' && b.complete === true && ['korea-tales', 'world-tales', 'world-novels', 'poetry'].includes(row.activity);
+      if (row.revision !== b.revision || (row.status !== 'active' && !reviewingBook)) fail('RECORD_CONFLICT', '다른 화면에서 진도가 바뀌었어요. 저장된 기록을 다시 불러와 주세요.', 409);
       for (const e of b.events) {
         const score = grade(row.activity, e);
         const attempt = (await db.query('SELECT COUNT(*)::int AS count FROM learning_record_events WHERE session_id = $1 AND question_key = $2 AND kind = $3', [row.id, e.questionKey, e.kind])).rows[0].count + 1;
@@ -186,7 +187,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       }
       const updated = (await db.query(`UPDATE learning_record_sessions SET checkpoint = $2::jsonb, progress_current = $3,
         progress_total = $4, status = CASE WHEN $5 THEN 'completed' ELSE 'active' END,
-        completed_at = CASE WHEN $5 THEN NOW() ELSE NULL END, revision = revision + 1, updated_at = NOW()
+        completed_at = CASE WHEN $5 THEN COALESCE(completed_at, NOW()) ELSE NULL END, revision = revision + 1, updated_at = NOW()
         WHERE id = $1 RETURNING *`, [row.id, JSON.stringify(b.checkpoint), p.current, p.total, Boolean(b.complete)])).rows[0];
       await db.query('INSERT INTO learning_record_mutations VALUES ($1,$2,$3)', [row.id, b.mutationId, hash]);
       const session = await serialize(db, updated, true); await db.query('COMMIT'); res.json({ session });

@@ -60,7 +60,15 @@ const WORLD_VOYAGE_PREFIX = "/learn/world-voyage";
 const WORLD_VOYAGE_DATA_DIR = process.env.WORLD_VOYAGE_DATA_DIR
   || process.env.DATA_DIR
   || path.join(__dirname, ".runtime", "world-voyage");
-const WORLD_VOYAGE_STATIC_ROOT = "/learning/inquiry/age-of-exploration";
+// 제 서버 코드를 가진 하위 앱 폴더. 사이트가 주소로 가져다 쓰는 것은 public/ 뿐이다
+// (그래프·문장 만들기가 연산 앱의 public/fonts 글꼴을 쓴다).
+const SUB_APP_STATIC_ROOTS = [
+  "/learning/inquiry/age-of-exploration",
+  "/learning/literacy-numeracy/arithmetics",
+  "/learning/literacy-numeracy/phonics-site",
+];
+// 목록 화면이 따로 없는 묶음 폴더. 옛 뒤로가기 링크가 이리로 오면 메인으로 보낸다.
+const LEARNING_GROUP_ROOTS = new Set(["/learning", "/learning/literacy-numeracy", "/learning/inquiry", "/learning/arts", "/learning/games"]);
 const MUTATING_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 
 function isSameRequestOrigin(req, origin) {
@@ -233,7 +241,7 @@ const staticAssetOptions = {
 // The navigation script is deferred, so hide legacy back links before first paint
 // to stop them flashing. visibility (not display) keeps their size measurable.
 const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/index.html"].includes(location.pathname))document.documentElement.classList.add("site-back-pending")</script>'
-  + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back){visibility:hidden!important}</style>';
+  + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back,a.back-btn){visibility:hidden!important}</style>';
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer></script>';
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20260926-reading-prose">';
@@ -526,8 +534,8 @@ for (const [friendlyPath, legacyPath, file] of [
   app.get(legacyPath, (req, res) => res.redirect(308, `${friendlyPath}${req.url.slice(legacyPath.length)}`));
 }
 
-// 세계 항해는 /learn/world-voyage 프록시로만 연다. 이 폴더에서 주소로 열려도 되는 것은
-// public/ 뿐이고, 서버 코드·저장 폴더·의존성은 내보내지 않는다. express.static 과 같은
+// 세계 항해·연산은 프록시로만 연다. 하위 앱 폴더에서 주소로 열려도 되는 것은 public/
+// 뿐이고, 서버 코드·저장 폴더·의존성은 내보내지 않는다. express.static 과 같은
 // 방식으로 주소를 풀어서 견주어야 %xx 나 겹친 빗금으로 돌아 들어오지 못한다.
 app.use((req, res, next) => {
   let pathname;
@@ -537,8 +545,12 @@ app.use((req, res, next) => {
     return res.status(400).send("잘못된 주소입니다.");
   }
   const normalized = path.posix.normalize(pathname.replace(/\\/g, "/")).toLowerCase();
-  if (normalized !== WORLD_VOYAGE_STATIC_ROOT && !normalized.startsWith(`${WORLD_VOYAGE_STATIC_ROOT}/`)) return next();
-  const inside = normalized.slice(WORLD_VOYAGE_STATIC_ROOT.length);
+  if ((req.method === "GET" || req.method === "HEAD") && LEARNING_GROUP_ROOTS.has(normalized.replace(/\/$/, ""))) {
+    return res.redirect(302, "/");
+  }
+  const subAppRoot = SUB_APP_STATIC_ROOTS.find(root => normalized === root || normalized.startsWith(`${root}/`));
+  if (!subAppRoot) return next();
+  const inside = normalized.slice(subAppRoot.length);
   if (inside === "/public" || inside.startsWith("/public/")) return next();
   res.sendStatus(404);
 });
