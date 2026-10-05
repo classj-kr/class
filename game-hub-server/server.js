@@ -330,6 +330,13 @@ app.use(
   "/fonts",
   express.static(path.join(SITE_ROOT, "learning", "literacy-numeracy", "arithmetics", "dist", "client", "fonts"), staticAssetOptions),
 );
+// 기초연산의 공유용 대표 그림. 연산 앱이 사이트 뿌리 주소로 가리킨다(app/layout.tsx).
+app.get("/og-learning-paths.webp", (_req, res) => {
+  res.setHeader("Cache-Control", "public, max-age=86400");
+  res.sendFile(
+    path.join(SITE_ROOT, "learning", "literacy-numeracy", "arithmetics", "dist", "client", "og-learning-paths.webp"),
+  );
+});
 app.get("/math-learning-banner.webp", (_req, res) => {
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
   res.sendFile(

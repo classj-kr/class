@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host");
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host?.includes("localhost") ? "http" : "https");
-  const socialImage = host ? `${protocol}://${host}/og-learning-paths.png` : undefined;
+  const socialImage = host ? `${protocol}://${host}/og-learning-paths.webp` : undefined;
 
   return {
     title: "기초연산",
