@@ -9,11 +9,11 @@ const CHAPTERS = [
                 "left": [
                     "\"어머니, 꼭 가셔야 해요?\"",
                     "마르코가 어머니의 치맛자락을 붙잡았습니다. 제노바 항구에는 큰 배가 떠날 채비를 하고 있었지요.",
-                    "빚만 늘어 가던 때였습니다. 어머니는 바다 건너 아르헨티나로 일하러 가는 길이었지요.",
-                    "\"돈을 벌어 꼭 부치마.\""
+                    "집에는 빚만 늘어 가던 때였습니다. 어머니는 바다 건너 아르헨티나로 일하러 가는 길이었지요.",
+                    "\"돈을 벌어서 꼭 부치마.\""
                 ],
                 "right": [
-                    "처음에는 다달이 편지가 왔습니다. \"모두 잘 지내고 있으니 걱정 말아라.\"",
+                    "처음에는 다달이 편지가 왔습니다. \"엄마는 잘 지내고 있으니 걱정 말아라.\"",
                     "마르코는 그 편지를 몇 번씩 읽었습니다. 아버지도 그 편지로 힘을 냈지요.",
                     "그런데 어느 때부터인가 편지가 뚝 끊겼습니다. 온 식구가 애를 태웠지요."
                 ]
@@ -62,7 +62,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "이윽고 육지가 보이지 않게 되었습니다. 눈앞에는 바다뿐이었지요. 한 달이 넘는 긴 항해가 시작되었습니다.",
-                    "마르코는 난간을 꼭 잡았지요. 무섭기보다 마음이 급했습니다.",
+                    "마르코는 배 난간을 꼭 잡았지요. 무섭기보다 마음이 급했습니다.",
                     "품속에서 사진을 꺼내 봤지요. \"어머니, 조금만 기다리세요.\""
                 ]
             }
@@ -81,8 +81,8 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "배도 자주 고팠습니다. 그래도 마르코는 참았지요. 어머니를 만날 생각뿐이었습니다.",
-                    "밤이면 하늘을 올려다보았습니다. 별이 어찌나 많은지 몰랐지요.",
-                    "\"어머니도 이 별을 보고 계실 거야.\" 그렇게 생각하면 견딜 만했지요."
+                    "밤이면 하늘을 올려다보았습니다. 총총 박힌 크고 작은 별이 금방이라도 마르코 가슴으로 쏟아질 것 같았지요.",
+                    "'어머니도 저 별을 보고 계실까?' 그렇게 생각하니 어머니가 더 보고 싶어졌지요."
                 ]
             },
             {
@@ -131,7 +131,7 @@ const CHAPTERS = [
                 "right": [
                     "\"여기서 북쪽으로 삼백 킬로미터도 더 가야 한단다.\"",
                     "마르코는 주머니를 뒤졌지요. 가진 돈은 거의 남아 있지 않았습니다.",
-                    "그래도 마르코는 고개를 들었지요. \"여기까지 왔는걸.\" 마르코는 다시 걸음을 옮겼습니다."
+                    "그래도 마르코는 고개를 들었지요. '여기까지 왔는걸!' 마르코는 다시 걸음을 옮겼습니다."
                 ]
             }
         ]
@@ -144,7 +144,7 @@ const CHAPTERS = [
                 "art": "05-help.webp",
                 "emoji": "🤝",
                 "left": [
-                    "마르코는 로사리오로 향했습니다. 걷다가 얻어 타고 또 걸었지요.",
+                    "마르코는 로사리오로 향했습니다. 걷다가 지나가는 수레를 얻어 타고, 내려서 또 걸었지요.",
                     "길은 끝없이 이어졌습니다. 들판이 하늘 끝까지 펼쳐졌지요.",
                     "풀밭에 소 떼가 어른거렸습니다. 가는 곳마다 낯선 사람들이 도와주었지요."
                 ],
@@ -185,7 +185,7 @@ const CHAPTERS = [
                 "right": [
                     "마르코가 겨우 물었습니다. \"투쿠만은 또 얼마나 먼가요?\"",
                     "\"여기서 육백 킬로미터란다. 산 밑까지 가야 해.\"",
-                    "마르코는 한참을 일어나지 못했습니다. 목이 타는데 물도 없었지요. '여기서 그만 돌아갈까.' 그런 생각까지 들었습니다."
+                    "마르코는 한참을 일어나지 못했습니다. 목이 타는데 물도 없었지요. '여기서 그만 돌아갈까?' 그런 생각까지 들었습니다."
                 ]
             },
             {
@@ -197,7 +197,7 @@ const CHAPTERS = [
                     "떠나던 날의 얼굴 그대로였습니다. 마르코는 눈물을 닦았지요."
                 ],
                 "right": [
-                    "\"여기까지 와서 돌아갈 수는 없어.\"",
+                    "'여기까지 와서 돌아갈 수는 없어!'",
                     "마르코는 다시 일어섰습니다. 보따리를 어깨에 고쳐 멨지요. 발이 아파도 참기로 했습니다.",
                     "투쿠만까지는 아직 아주 먼 길이었습니다. 마르코는 다시 북쪽으로 걷기 시작했지요."
                 ]
@@ -218,7 +218,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "어느 날은 하루 종일 굶기도 했지요. 그러다 멀리 산줄기가 보이기 시작했습니다.",
-                    "안데스 산맥이었지요. 마르코는 그것을 보고 힘을 냈습니다. \"거의 다 왔어. 조금만 더.\"",
+                    "안데스 산맥이었지요. 마르코는 그것을 보고 힘을 냈습니다. '거의 다 왔어. 조금만 더!'",
                     "해가 기울 무렵이었지요. 하늘이 붉게 물들었습니다."
                 ]
             },
@@ -496,7 +496,7 @@ const QUIZ = [
         "choices": [
                 "로사리오에서 주저앉아 그만 돌아갈까 생각한 것을 보면, 마르코에게도 그만두고 싶은 때가 있었구나.",
                 "마르코가 도와준 사람들의 이름을 마음에 새기고 밤마다 되뇐 것을 보면, 받은 것을 잊지 않으려 했구나.",
-                "마르코가 배 위에서 어머니도 이 별을 보고 계실 거라 생각한 것을 보면, 그렇게 견딜 힘을 냈구나.",
+                "마르코가 배 위에서 어머니도 저 별을 보고 계실까 생각한 것을 보면, 별을 볼 때마다 어머니가 더 보고 싶었구나.",
                 "아버지가 아는 사람에게 부탁해 뱃삯을 마련해 준 것을 보면, 마르코를 보내는 데 처음부터 찬성했구나."
             ],
         "answer": 3
@@ -574,7 +574,7 @@ const EN = {
                         "So his mother went away to a distant country, Argentina, across the sea. She would work there and send money home."
                     ],
                     right: [
-                        "At first a letter came every month. \"We are all well here, so do not worry.\"",
+                        "At first a letter came every month. \"I am well here, so do not worry.\"",
                         "Marco read those letters over and over. His father took heart from them too.",
                         "But then, one day, the letters simply stopped. The whole family was sick with worry."
                     ]
@@ -644,8 +644,8 @@ const EN = {
                     ],
                     right: [
                         "He was often hungry too, but Marco bore it. He could think of nothing but seeing his mother.",
-                        "At night he looked up at the sky. There were more stars than he had ever seen.",
-                        "\"Mother is looking at these stars too,\" he thought, and then he could bear it."
+                        "At night he looked up at the sky. The stars, big and small, looked ready to pour down onto him.",
+                        "\"Is Mother looking at those stars too?\" he wondered, and he missed her more than ever."
                     ]
                 },
                 {
@@ -891,7 +891,7 @@ const EN = {
             choices: [
                 "At Rosario he sat down and thought of turning back — even Marco had a moment when he wanted to stop.",
                 "He kept the names of everyone who helped him and said them over at night — he did not want to forget what he had been given.",
-                "On the ship he told himself his mother was looking at the same stars — that was how he found the strength to bear it.",
+                "On the ship he wondered whether his mother was looking at the same stars — the stars made him miss her all the more.",
                 "His father asked a friend for a favour to find the fare — he had been in favour of sending Marco from the start."
             ],
             answer: 3
@@ -1050,9 +1050,9 @@ const WORDS_KO = {
     "01-letter.webp": [
         { w: "치맛자락", k: "치마의 아래로 늘어진 부분.", s: "마르코가 어머니의 치맛자락을 붙잡았습니다." },
         { w: "채비", k: "무엇을 하려고 미리 갖추는 준비.", s: "제노바 항구에는 큰 배가 떠날 채비를 하고 있었지요." },
-        { w: "부치다", k: "편지나 돈을 보내다.", s: "\"돈을 벌어 꼭 부치마.\"" },
+        { w: "부치다", k: "편지나 돈을 보내다.", s: "\"돈을 벌어서 꼭 부치마.\"" },
         { w: "다달이", k: "한 달에 한 번씩.", s: "처음에는 다달이 편지가 왔습니다." },
-        { w: "빚", k: "남에게 꾸어서 갚아야 할 돈.", s: "빚만 늘어 가던 때였습니다." }
+        { w: "빚", k: "남에게 꾸어서 갚아야 할 돈.", s: "집에는 빚만 늘어 가던 때였습니다." }
     ],
     "01-letter-2.webp": [
         { w: "한숨", k: "답답할 때 길게 내쉬는 숨.", s: "아버지는 밤마다 한숨을 쉬었지요." },
@@ -1073,8 +1073,7 @@ const WORDS_KO = {
     ],
     "03-voyage.webp": [
         { w: "발 디딜 틈이 없다", k: "사람이 너무 많아 설 자리조차 없다.", s: "배 안은 발 디딜 틈이 없었습니다." },
-        { w: "어찌나", k: "아주 많이. 몹시.", s: "별이 어찌나 많은지 몰랐지요." },
-        { w: "견딜 만하다", k: "참고 지낼 만하다.", s: "그렇게 생각하면 견딜 만했지요." }
+        { w: "총총", k: "별이 촘촘하게 많이 떠 있는 모양.", s: "총총 박힌 크고 작은 별이 금방이라도 마르코 가슴으로 쏟아질 것 같았지요." }
     ],
     "03-voyage-2.webp": [
         { w: "이런저런", k: "이러하고 저러한 여러.", s: "배에는 이런저런 사람이 많았습니다." },

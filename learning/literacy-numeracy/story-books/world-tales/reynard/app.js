@@ -78,7 +78,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "\"아이고, 마침 잘 오셨네요!\"",
-                    "곰은 헛기침을 하고 말했지요. \"임금님이 부르신다. 어서 가자.\"",
+                    "곰은 헛기침을 하고 말했지요. \"임금님이 부르신다. 어서 가자!\"",
                     "\"그럼요, 가야지요. 그런데 그전에 말입니다.\" 여우가 목소리를 낮췄지요."
                 ]
             },
@@ -87,7 +87,7 @@ const CHAPTERS = [
                 "emoji": "🐻",
                 "left": [
                     "\"저 나무에 꿀이 가득한데요. 드시고 가시지요.\"",
-                    "곰은 재판이고 뭐고 다 잊어버렸습니다. 침이 꿀떡 넘어갔지요.",
+                    "꿀이라는 말에 곰은 재판이고 뭐고 다 잊어버렸습니다. 침이 꿀떡 넘어갔지요.",
                     "나무꾼이 쪼개다 만 커다란 나무였습니다. 벌어진 틈에 나무 조각이 끼워져 있었지요. 곰은 그 틈에 머리부터 들이밀었습니다."
                 ],
                 "right": [
@@ -122,7 +122,7 @@ const CHAPTERS = [
                 "left": [
                     "\"딱 한 마리만 잡고 가지요.\"",
                     "고양이는 침을 꼴깍 삼켰습니다. 그러고는 헛간으로 뛰어들었지요.",
-                    "그런데 문턱에 밧줄 올가미가 놓여 있었습니다. 올가미가 고양이 뒷다리에 척 걸렸지요. \"야옹! 사람 살려!\""
+                    "그런데 문턱에 밧줄 올가미가 놓여 있었습니다. 올가미가 고양이 꼬리에 척 걸렸지요. \"야옹! 나 좀 살려!\""
                 ],
                 "right": [
                     "고양이는 거꾸로 대롱대롱 매달렸습니다. 농부가 빗자루를 들고 달려 나왔지요. 여우는 그 소리를 뒤로하고 돌아섰습니다.",
@@ -147,7 +147,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "여우가 굴 앞에 늘어져 있다가 씩 웃었지요. \"자네도 꿀 한번 먹어 보겠나?\"",
-                    "오소리는 손을 저었습니다. \"나한테는 안 통해. 르나르, 이번엔 정말 가야 해.\""
+                    "오소리는 손을 저었습니다. \"나한테는 안 통해. 르나르, 이번엔 정말 가야 해!\""
                 ]
             },
             {
@@ -227,7 +227,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "여우는 공손히 인사를 했지요. 그러고는 언덕을 넘어 사라졌습니다. 고개를 넘자마자 지팡이를 던져 버렸지요.",
-                    "\"휴, 이번에도 잘 빠져나왔군.\"",
+                    "\"휴! 이번에도 잘 빠져나왔군!\"",
                     "여우는 콧노래를 부르며 걸었지요. 앞길이 훤했습니다. 볕이 등을 따뜻하게 데웠지요.",
                     "꼬리가 절로 살랑거렸습니다."
                 ]
@@ -242,8 +242,8 @@ const CHAPTERS = [
                 "art": "08-ending.webp",
                 "emoji": "🍂",
                 "left": [
-                    "짐승들은 해가 질 때까지 늪을 뒤졌습니다.",
-                    "그런데 금은커녕 돌멩이 하나 없었지요. 마른 우물조차 찾지 못했습니다.",
+                    "짐승들은 허우적거리며 간신히 늪을 건넜습니다. 그러고는 해가 질 때까지 마른 우물을 찾아다녔지요.",
+                    "그런데 금은커녕 우물조차 보이지 않았습니다.",
                     "그제야 속은 것을 알았지요. 늑대가 씩씩거리며 돌아왔습니다.",
                     "온몸이 진흙투성이였지요."
                 ],
@@ -478,7 +478,7 @@ const QUIZ = [
         "answer": 2
     },
     {
-        "q": "짐승들이 늪을 뒤진 결과는 어땠나요?",
+        "q": "짐승들이 마른 우물을 찾아다닌 결과는 어땠나요?",
         "choices": [
             "금이 나왔다",
             "아무것도 없었다",
@@ -680,7 +680,7 @@ const EN = {
                     emoji: '🐈',
                     left: [
                         "\"I shall catch just one, and then we go,\" said the cat. He swallowed hard and sprang into the barn.",
-                        "But a rope noose had been set in the doorway, and it caught him neatly round the hind legs.",
+                        "But a rope noose had been set in the doorway, and it caught him neatly by the tail.",
                         "\"Miaow! Help, somebody!\""
                     ],
                     right: [
@@ -800,8 +800,8 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '🍂',
                     left: [
-                        "The beasts searched the marsh until sundown.",
-                        "There was no gold, not so much as a pebble. They never even found the dry well.",
+                        "The beasts floundered across the marsh, then hunted for the dry well until sundown.",
+                        "There was no gold, not so much as a pebble. They could not even find the well.",
                         "Only then did they see they had been fooled.",
                         "The wolf came back puffing with rage, mud from head to foot."
                     ],
@@ -999,7 +999,7 @@ const EN = {
             { word: 'of its own accord', meaning: '절로', sentence: 'His tail swung of its own accord.' }
         ],
         '08-ending.webp': [
-            { word: 'sundown', meaning: '해질녘', sentence: 'The beasts searched the marsh until sundown.' },
+            { word: 'sundown', meaning: '해질녘', sentence: 'They hunted for the dry well until sundown.' },
             { word: 'pebble', meaning: '돌멩이', sentence: 'Not so much as a pebble.' },
             { word: 'fool', meaning: '속이다', sentence: 'Only then did they see they had been fooled.' },
             { word: 'deal out', meaning: '내리다', sentence: 'Deal out the punishment he deserves!' }
@@ -1071,7 +1071,7 @@ const WORDS_KO = {
     ],
     "04-cat-2.webp": [
         { w: "문턱", k: "문 아래에 걸쳐 놓은 나무.", s: "그런데 문턱에 밧줄 올가미가 놓여 있었습니다." },
-        { w: "척", k: "단번에 걸리거나 붙는 모습.", s: "올가미가 고양이 뒷다리에 척 걸렸지요." },
+        { w: "척", k: "단번에 걸리거나 붙는 모습.", s: "올가미가 고양이 꼬리에 척 걸렸지요." },
         { w: "빗자루", k: "먼지나 쓰레기를 쓸어 내는 도구.", s: "농부가 빗자루를 들고 달려 나왔지요." },
         { w: "뒤로하다", k: "등지고 떠나다.", s: "여우는 그 소리를 뒤로하고 돌아섰습니다." }
     ],
@@ -1112,7 +1112,7 @@ const WORDS_KO = {
         { w: "볕", k: "해에서 내리쬐는 밝고 따뜻한 빛.", s: "볕이 등을 따뜻하게 데웠지요." }
     ],
     "08-ending.webp": [
-        { w: "뒤지다", k: "찾으려고 이리저리 헤집다.", s: "짐승들은 해가 질 때까지 늪을 뒤졌습니다." },
+        { w: "허우적거리다", k: "빠져나오려고 팔다리를 마구 휘젓다.", s: "짐승들은 허우적거리며 간신히 늪을 건넜습니다." },
         { w: "씩씩거리다", k: "화가 나서 거친 숨을 내쉬다.", s: "늑대가 씩씩거리며 돌아왔습니다." },
         { w: "진흙투성이", k: "온몸에 진흙이 잔뜩 묻은 모습.", s: "온몸이 진흙투성이였지요." },
         { w: "선뜻", k: "망설이지 않고 얼른.", s: "아무도 선뜻 나서지 않았지요." }
