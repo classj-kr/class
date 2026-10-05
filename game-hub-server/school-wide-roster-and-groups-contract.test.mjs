@@ -26,5 +26,18 @@ test("GET /school-admin/students dedupes a student who exists in both school_stu
 test("GET /teacher/groups resolves the teacher's own grade/class directly from classroom_teachers, not via classroom_classes", () => {
   const body = handlerBody(serverSource, `router.get("/teacher/groups"`);
   assert.doesNotMatch(body, /JOIN classroom_classes/);
-  assert.match(body, /SELECT t\.school_id, t\.grade, t\.class_number\s*\n\s*FROM classroom_teachers t/);
+  // The handler must reuse teacherRegistration() -- the lookup requireTeacher authorises
+  // with -- instead of its own WHERE user_id=$1 LIMIT 1, which could pick another
+  // school's row for an account registered at several schools.
+  assert.match(body, /const registration = await teacherRegistration\(teacher\);/);
+  assert.match(body, /registration\.grade && registration\.class_number/);
+  assert.doesNotMatch(body, /FROM classroom_teachers/);
+
+  const lookupStart = serverSource.indexOf("async function teacherRegistrations(user) {");
+  const lookupEnd = serverSource.indexOf("async function requireTeacher(req) {", lookupStart);
+  assert.ok(lookupStart !== -1 && lookupEnd > lookupStart, "teacherRegistration lookup not found");
+  const lookup = serverSource.slice(lookupStart, lookupEnd);
+  assert.match(lookup, /SELECT t\.id, t\.school_id,[^;]*?t\.grade, t\.class_number,[^;]*?\sFROM classroom_teachers t\s/);
+  assert.doesNotMatch(lookup, /classroom_classes/);
+  assert.match(lookup, /return \(await teacherRegistrations\(user\)\)\[0\] \|\| null;/);
 });

@@ -2,9 +2,17 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
-    .map((match) => match[1])
+// Only executable scripts are syntax-checked; data blocks such as
+// type="application/ld+json" are not JavaScript.
+const JAVASCRIPT_TYPES = new Set(['', 'text/javascript', 'application/javascript', 'module']);
+const inlineScripts = [...html.matchAll(/<script(\s[^>]*)?>([\s\S]*?)<\/script>/g)]
+    .filter((match) => {
+        const type = /\stype\s*=\s*["']?([^"'\s>]*)/i.exec(match[1] || '');
+        return JAVASCRIPT_TYPES.has(type ? type[1].toLowerCase() : '');
+    })
+    .map((match) => match[2])
     .filter((script) => script.trim());
+assert.ok(inlineScripts.length > 0, 'The page must still have inline JavaScript to syntax-check.');
 
 for (const script of inlineScripts) {
     new Function(script);

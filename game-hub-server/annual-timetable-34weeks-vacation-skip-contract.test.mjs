@@ -12,7 +12,7 @@ function fnBody(source, startMarker, endMarker) {
   return source.slice(start, end);
 }
 
-test("renderAnnualTimetable34Weeks counts only actual class weeks toward the 34-week cap, not raw calendar weeks", () => {
+test("renderAnnualTimetable34Weeks counts only actual class weeks, not raw calendar weeks", () => {
   const body = fnBody(
     schoolAdminAppSource,
     "async function renderAnnualTimetable34Weeks()",
@@ -27,12 +27,23 @@ test("renderAnnualTimetable34Weeks counts only actual class weeks toward the 34-
 
   // A week with zero school days (a pure vacation week) must not consume a week-index
   // slot or produce a row -- only weeks with at least one instructional day count,
-  // matching the "weekly_hours * 34" annual-hours convention used elsewhere (curriculum
-  // hours auto-calc).
+  // matching the "weekly hours * actual class weeks" annual-hours rule used elsewhere
+  // (curriculum hours auto-calc).
   assert.match(body, /if \(weekSchoolDays > 0\) \{/);
-  assert.match(body, /weekIndex\+\+;/);
+  assert.match(body, /if \(weekSchoolDays > 0\) \{[\s\S]*?annualTimetableTableBody\.appendChild\(tr\);\s*weekIndex\+\+;\s*\}/);
+
+  // The table reports the number of class weeks it actually counted instead of a fixed 34.
+  assert.match(body, /const totalClassWeeks = weekIndex - 1;/);
+  assert.match(body, /annualTotalWeeksVal\.textContent = `\$\{totalClassWeeks\}주`/);
+  assert.match(body, /연간 \$\{totalClassWeeks\}주 총계/);
+  assert.doesNotMatch(body, /34주 총계/);
 });
 
-test("annual required hours elsewhere in schooladmin/app.js are computed as weekly_hours * 34 actual class weeks, confirming the 34-week table must skip vacation weeks", () => {
-  assert.match(schoolAdminAppSource, /row\.weekly \* 34; \/\/ 34 weeks/);
+test("annual required hours elsewhere in schooladmin/app.js are computed as weekly_hours * actual class weeks, confirming the timetable must skip vacation weeks", () => {
+  // Class weeks are the counted school days of the grade divided by five, not a fixed 34.
+  assert.match(schoolAdminAppSource, /function schoolWeeksForGrade\(grade\) \{\s*return schoolDaysForGrade\(grade\) \/ 5;\s*\}/);
+  const table = fnBody(schoolAdminAppSource, "function renderCurriculumTable(rowsData, previousYear) {", "totalWeekly += row.weekly;");
+  assert.match(table, /const weeks = schoolWeeksForGrade\(/);
+  assert.match(table, /const calcAnnual = Math\.round\(row\.weekly \* weeks\);/);
+  assert.doesNotMatch(schoolAdminAppSource, /\* 34\b/);
 });

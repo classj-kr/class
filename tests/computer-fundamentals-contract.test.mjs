@@ -77,9 +77,10 @@ test("the information and computing menu keeps both course links", () => {
   assert.match(portal, /learning\/inquiry\/information-computing\/computer-fundamentals\//);
   assert.match(portal, /learning\/inquiry\/information-computing\/typing\//);
   assert.doesNotMatch(portal, /learning\/basics\/typing\//);
-  assert.match(portal, /rel="icon" href="favicon\.ico"/);
-  assert.match(coursePage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/favicon\.ico"/);
-  assert.match(lessonPage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/favicon\.ico"/);
+  assert.match(portal, /rel="icon" href="favicon\.webp"/);
+  assert.match(coursePage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/favicon\.webp"/);
+  assert.match(lessonPage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/favicon\.webp"/);
+  assert.ok(exists("favicon.webp"));
 });
 
 test("typing practice returns to its own menu before leaving the page", () => {
@@ -87,7 +88,8 @@ test("typing practice returns to its own menu before leaving the page", () => {
   const typingScript = read("learning/inquiry/information-computing/typing/app.js");
   assert.match(typingScript, /sitebackrequest[^\n]+if\(\$\('#typingHome'\)\.hidden\)/);
   assert.doesNotMatch(typingScript, /sitebackrequest[^\n]+if\(!\$\('#typingHome'\)\.hidden\)/);
-  assert.match(typingPage, /app\.js\?v=20260910-fix-back-navigation/);
+  // 버전 값은 고칠 때마다 바뀐다. 고친 app.js가 옛 캐시에 가리지 않게 버전이 붙어 있는지만 본다.
+  assert.match(typingPage, /<script src="app\.js\?v=[^"]+"><\/script>/);
 });
 
 test("the first lesson names the process directly without promotional copy", () => {
@@ -115,9 +117,15 @@ test("the 36-lesson core course is loaded in dependency order", () => {
   assert.match(coursePage, /<script src="lessons\/course-index\.js\?v=[^"]*" defer><\/script>/);
   assert.equal((coursePage.match(/<script /g) || []).length, 2, "첫 화면은 차례표와 목록 그리는 것만 부른다");
   assert.match(read(`${courseRoot}/lessons/index-data.js`), /window\.COMPUTER_CORE_MODULES/);
-  // 차시 화면은 boot.js 한 줄만 두고, 그 차시에 필요한 파일은 boot.js가 차례대로 넣는다.
+  // 차시 화면에서 이 과정의 파일은 boot.js 한 줄만 두고, 그 차시에 필요한 파일은 boot.js가 차례대로 넣는다.
+  // 사이트 공용 파일(/assets/…)은 따로 불러도 된다.
   assert.match(lessonPage, /<script src="[^"]*boot\.js\?v=/);
-  assert.equal((lessonPage.match(/<script /g) || []).length, 1, "차시 화면은 boot.js 하나만 부른다");
+  const lessonScripts = Array.from(lessonPage.matchAll(/<script\b[^>]*>/g), (match) => match[0]);
+  const lessonScriptSources = lessonScripts.map((tag) => (tag.match(/\ssrc="([^"]*)"/) || [])[1]);
+  assert.ok(lessonScriptSources.every(Boolean), "차시 화면에 줄글 스크립트를 두지 않는다");
+  const courseScripts = lessonScriptSources.filter((src) => !src.startsWith("/assets/"));
+  assert.equal(courseScripts.length, 1, "차시 화면에서 과정 파일은 boot.js 하나만 부른다");
+  assert.match(courseScripts[0], /^boot\.js\?v=/);
   const boot = read(`${courseRoot}/lessons/boot.js`);
   const order = ["foundation-core.js", "index-data.js", "lab-shared.js", "shell.js"];
   let cursor = -1;
@@ -398,8 +406,8 @@ test("activities support touch, pointer, and keyboard while feedback waits for s
 
 test("lesson 13 teaches pointer states through direct manipulation before classification", () => {
   const lesson = allLessons.find((item) => item.id === "d01");
-  assert.equal(lesson.title, "포인터·텍스트 커서·클릭·드래그는 어떻게 다를까?");
-  assert.equal(lesson.english, "How Are the Pointer, Text Cursor, Click, and Drag Different?");
+  assert.equal(lesson.title, "포인터와 커서");
+  assert.equal(lesson.english, "Pointers and Cursors");
   assert.equal(lesson.workedExample.steps.length, 4);
   assert.equal(lesson.activity.type, "none", "D01은 개념 화면의 포인터 실험이 조작을 맡는다");
   assert.match(lessonSource, /function pointerConceptLabMarkup\(\)/);
@@ -434,7 +442,7 @@ test("mobile and Chromebook interiors are project assets used in device comparis
     for (const width of [768, 1536]) {
       assert.ok(exists(`${courseRoot}/assets/images/${name}-internals-exploded-${width}.webp`));
     }
-    assert.ok(exists(`${courseRoot}/assets/source/${name}-internals-exploded-v1.png`));
+    assert.ok(exists(`${courseRoot}/assets/source/${name}-internals-exploded-v1.webp`));
   }
   assert.match(lessonSource, /class="device-comparison-grid"/);
   assert.match(lessonSource, /스마트폰.*SoC/s);

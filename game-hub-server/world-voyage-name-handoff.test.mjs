@@ -19,8 +19,15 @@ assert.doesNotMatch(
 );
 assert.match(
   voyage,
-  /<strong id="playerIdentity"[^>]*aria-live="polite"><\/strong>/,
-  "World Voyage should display the home-page identity as read-only text.",
+  /const mainEntryParams=new URLSearchParams\(location\.search\);\s*const mainPlayerName=String\(mainEntryParams\.get\('name'\)\|\|''\)\.trim\(\);/,
+  "World Voyage must read the player name handed off in the ?name= query.",
+);
+// The entry screen no longer shows the name (it appears on the ship once inside),
+// but a missing or malformed handoff must still block joining.
+assert.match(
+  voyage,
+  /if\(!\/\^\[가-힣\]\{2,6\}\$\/\.test\(mainPlayerName\)\)\{[^}]*joinStartBtn\.disabled=true;\s*\}/,
+  "World Voyage must refuse to start without a valid handed-off name.",
 );
 assert.match(
   voyage,

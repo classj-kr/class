@@ -24,7 +24,7 @@ const sandbox = {
   clearTimeout,
   require(specifier) {
     if (["crypto", "fs", "path"].includes(specifier)) return nodeRequire(`node:${specifier}`);
-    if (["./student-character-style", "./attendance-events", "./web-push", "./canonical-host"].includes(specifier)) return nodeRequire(specifier);
+    if (["./student-character-style", "./attendance-events", "./web-push", "./canonical-host", "./learning-records", "./learning-boards"].includes(specifier)) return nodeRequire(specifier);
     if (specifier === "express") return {};
     if (specifier === "google-auth-library") return { OAuth2Client: class {} };
     if (specifier === "pg") return { Pool: class {} };
@@ -33,6 +33,9 @@ const sandbox = {
     if (specifier === "./voting") return { createVoting: () => ({ router: {}, initialize: async () => {}, hasRoomCode: async () => false, hasQuizRaceCode: async () => false }) };
     if (specifier === "./seating") return { createSeating: () => ({ router: {}, initialize: async () => {}, hasRoomCode: async () => false, resolveCode: async () => null }) };
     if (specifier === "./school-election") return { createSchoolElection: () => ({ router: {}, initialize: async () => {}, hasRoomCode: async () => false, resolveCode: async () => null }) };
+    // Any other sibling module loads for real, so a newly added local dependency does not
+    // break this harness. Packages from node_modules still have to be stubbed on purpose.
+    if (specifier.startsWith("./")) return nodeRequire(specifier);
     throw new Error(`Unexpected dependency: ${specifier}`);
   }
 };

@@ -11,5 +11,5 @@ assert.match(student,/SIMULATION_RATE=2;/);
 assert.match(student,/function movePrediction\(dt\)\{\s*dt\*=SIMULATION_RATE;/);
 assert.match(student,/drawOceanCurrents\(cw,ch,left,top,now=performance\.now\(\)\*SIMULATION_RATE\)/);
 assert.match(student,/drawWindClouds\(cw,ch,left,top,now=performance\.now\(\)\)/);
-assert.match(student,/WIND_VISUAL_FLOW_RATE=5\.6/);
+assert.match(student,/WIND_VISUAL_FLOW_RATE=3\.2/);
 console.log(JSON.stringify({ok:true,simulationRate:2,clockHoursPerSecond:30}));

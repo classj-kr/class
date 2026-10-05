@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import vm from "node:vm";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -16,7 +17,8 @@ test("learning menus use the four top-level domains", () => {
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
       .sort(),
-    ["arts", "games", "inquiry", "literacy-numeracy"],
+    // class-race 는 과목 영역이 아니라 여러 앱이 함께 쓰는 학급 순위전 방이다(2026-09).
+    ["arts", "class-race", "games", "inquiry", "literacy-numeracy"],
   );
 
   const menu = read("index.html");
@@ -38,16 +40,25 @@ test("learning menus use the four top-level domains", () => {
   const teacherMenu = read("classtools/index.html");
   assert.match(teacherMenu, /href="\/learning\/literacy-numeracy\/graph-studio\/"/);
   assert.match(teacherMenu, /<h3 class="tool-name">그래프 그리기<\/h3>/);
-  assert.match(teacherMenu, /<h3 class="tool-name">학급 대시보드<\/h3>/);
+  // 학급 대시보드는 따로 둔 카드가 아니라 「내 학급 · 그룹」 카드에서 그룹별로 연다.
+  assert.match(teacherMenu, /id="main-groups-grid"/);
+  assert.match(teacherMenu, /class="tool-card group-card" onclick="openGroupDashboard\(/);
+  assert.match(teacherMenu, /window\.openGroupDashboard = function[\s\S]{0,200}\/classtools\/dashboard\.html\?groupId=/);
+  assert.equal(fs.existsSync(path.join(root, "classtools/dashboard.html")), true);
+  assert.doesNotMatch(teacherMenu, /<h3 class="tool-name">학급 대시보드<\/h3>/);
   assert.doesNotMatch(teacherMenu, /스마트 학급 대시보드|href="seating"|교실 자리 배치/);
-  assert.doesNotMatch(teacherMenu, /class="tool-(?:icon|desc|arrow)"/);
+  // 카드에는 이름만 둔다. 설명 줄과 화살표는 없고, 그림 글자는 읽어 주지 않게 가린다.
+  assert.doesNotMatch(teacherMenu, /class="tool-(?:desc|arrow)"/);
+  for (const [icon] of teacherMenu.matchAll(/<span class="tool-icon"[^>]*>/g)) {
+    assert.match(icon, /aria-hidden="true"/, icon);
+  }
 });
 
 test("menu-specific asset groups live with their menu", () => {
   const expected = [
     "learning/literacy-numeracy/vocabulary/assets/data/english-vocabulary-3000-v2.json",
     "learning/literacy-numeracy/vocabulary/assets/images/apple-v2.webp",
-    "learning/inquiry/human-body/assets/images/circulation-hero-v2.webp",
+    "learning/inquiry/human-body/assets/images/anatomy-gallery-room-v2.webp",
     "learning/arts/art-appreciation/assets/sound/museum/gallery-01-portrait.ogg",
     "learning/arts/art-appreciation/assets/sound/museum/gallery-02-nature.ogg",
     "learning/arts/art-appreciation/assets/sound/museum/gallery-03-story.ogg",
@@ -115,6 +126,26 @@ test("moved menu assets have no references to their former root locations", () =
   assert.doesNotMatch(sources, /\/assets\/(?:images|sound)\/stone-board/);
 });
 
+// 아발론 역할 카드 주소는 글자 그대로의 파일 이름이 아니라 템플릿으로 만든다.
+// 주소를 만드는 함수를 그대로 돌려, 나올 수 있는 주소를 모두 펼친다.
+function avalonRoleCardUrls() {
+  const lines = read("learning/games/avalon/avalon.html").split(/\r?\n/);
+  const pick = (start) => {
+    const line = lines.find((candidate) => candidate.startsWith(start));
+    assert.ok(line, start);
+    return line;
+  };
+  const context = {};
+  vm.runInNewContext(
+    `${pick("const ROLE_CARD_FILES=")}
+${pick("function roleCardImagePath(")}
+this.urls = Object.keys(ROLE_CARD_FILES).flatMap((role) => ["male", "female"].flatMap((characterStyle) =>
+  [undefined, 1, 2, 3, 4].map((cardVariant) => roleCardImagePath({ role, characterStyle, cardVariant }))));`,
+    context,
+  );
+  return [...new Set(context.urls)];
+}
+
 test("relocated static asset URLs resolve to files in the repository", () => {
   const sourceRoots = [
     path.join(root, "index.html"),
@@ -136,14 +167,29 @@ test("relocated static asset URLs resolve to files in the repository", () => {
 
   const staticUrlPattern =
     /\/learning\/(?:games|literacy-numeracy|inquiry|arts)\/[^"'()\s]+?\.(?:mp3|webp)/g;
+  const templated = new Set();
   for (const sourceFile of sourceFiles) {
     const source = fs.readFileSync(sourceFile, "utf8");
+    const relativeFile = path.relative(root, sourceFile).split(path.sep).join("/");
     for (const url of source.match(staticUrlPattern) || []) {
+      if (url.includes("${")) {
+        templated.add(relativeFile);
+        continue;
+      }
       assert.equal(
         fs.existsSync(path.join(root, url.slice(1))),
         true,
-        `${path.relative(root, sourceFile)} -> ${url}`,
+        `${relativeFile} -> ${url}`,
       );
     }
+  }
+
+  // 템플릿 주소는 펼치는 방법을 아는 곳에서만 쓴다. 다른 파일에 생기면 여기에 펼치는 법을 더한다.
+  assert.deepEqual([...templated], ["learning/games/avalon/avalon.html"]);
+  const roleCardUrls = avalonRoleCardUrls();
+  assert.ok(roleCardUrls.length >= 16, String(roleCardUrls.length));
+  for (const url of roleCardUrls) {
+    assert.match(url, /^\/learning\/games\/avalon\/assets\/images\/cards\/[a-z0-9-]+\.webp$/);
+    assert.equal(fs.existsSync(path.join(root, url.slice(1))), true, `avalon.html -> ${url}`);
   }
 });

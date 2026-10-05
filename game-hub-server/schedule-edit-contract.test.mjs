@@ -25,5 +25,9 @@ test("dashboard exposes schedule edit and clear visual date groups", () => {
   assert.match(dashboardSource, /schedule-this-week/);
   assert.match(dashboardSource, /cancelScheduleEditBtn/);
   assert.match(dashboardSource, /scheduleWindowEnd\.setDate\(now\.getDate\(\) \+ 30\)/);
-  assert.match(dashboardSource, /item\.date >= today && item\.date <= scheduleWindowEndKey/);
+  // Keep the 30-day window, and keep a multi-day event visible until its last day has passed.
+  assert.match(
+    dashboardSource,
+    /if \(item\.date > scheduleWindowEndKey \|\| \(item\.endDate \|\| item\.date\) < today\) return false;/
+  );
 });

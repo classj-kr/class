@@ -9,6 +9,8 @@ const navigation = fs.readFileSync(path.join(root, "assets/site-back-navigation.
 const humanBodyHub = fs.readFileSync(path.join(root, "learning/inquiry/human-body/index.html"), "utf8");
 const expression = navigation.match(/const LEGACY_LABEL = (\/.+\/i);/)?.[1];
 const legacyLabel = Function(`"use strict"; return (${expression})`)();
+// The observer must watch at least these attributes; the list may grow.
+const observedAttributes = JSON.parse(navigation.match(/attributeFilter: (\[[^\]]*\])/)?.[1] || "[]");
 
 test("section-specific legacy navigation labels are recognized", () => {
   for (const label of [
@@ -36,7 +38,9 @@ test("in-activity navigation controls remain available", () => {
 test("client-rendered legacy navigation is observed and hidden", () => {
   assert.match(navigation, /new MutationObserver/);
   assert.match(navigation, /mutation\.addedNodes/);
-  assert.match(navigation, /attributeFilter: \["aria-label", "hidden"\]/);
+  for (const attribute of ["aria-label", "hidden"]) {
+    assert.ok(observedAttributes.includes(attribute), `legacy observer must watch ${attribute}`);
+  }
   assert.match(navigation, /\[data-site-back-legacy\]\{display:none!important\}/);
 });
 
@@ -45,7 +49,10 @@ test("top rows collapse when legacy navigation is their only content", () => {
   assert.match(navigation, /container\.toggleAttribute\("data-site-back-empty"/);
   assert.match(navigation, /\[data-site-back-empty\]\{display:none!important\}/);
   assert.match(navigation, /characterData: true/);
-  assert.match(navigation, /attributeFilter: \["aria-label", "hidden"\]/);
+  // Page CSS can empty a top row without the hidden attribute, so class and style count too.
+  for (const attribute of ["aria-label", "hidden", "class", "style"]) {
+    assert.ok(observedAttributes.includes(attribute), `top-row collapse must re-check on ${attribute} changes`);
+  }
 });
 
 test("the human body hub marks its decorative back link as legacy", () => {

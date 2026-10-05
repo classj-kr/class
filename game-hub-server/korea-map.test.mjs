@@ -261,9 +261,13 @@ for (const [topic, patterns] of Object.entries(essentialCoverage)) {
 // 유물·유적: 사진은 우리 폴더에, 핀은 지형 바탕이 깔린 곳(동경 90~180, 북위 0~66.5)에, 문제는 유물마다 하나.
 const relics = sandbox.window.KOREA_HERITAGE;
 assert.ok(relics.length >= 60, "유물·유적이 빠졌습니다.");
-const relicPhotos = relics.map((relic) => relic.photo || `${relic.id}.jpg`);
+// 사진 이름은 화면이 쓰는 규칙(heritage.js의 photoOf)을 그대로 따른다: photo 칸이 있으면 그것, 없으면 `${id}.확장자`.
+const relicPhotoRule = /heritage\/\$\{relic\.photo \|\| `\$\{relic\.id\}\.(\w+)`\}/.exec(sources.heritage);
+assert.ok(relicPhotoRule, "heritage.js가 유물 사진 이름을 정하는 규칙을 찾지 못했습니다.");
+const relicPhotoOf = (relic) => relic.photo || `${relic.id}.${relicPhotoRule[1]}`;
+const relicPhotos = relics.map(relicPhotoOf);
 for (const relic of relics) {
-  const image = `heritage/${relic.photo || `${relic.id}.jpg`}`;
+  const image = `heritage/${relicPhotoOf(relic)}`;
   assert.ok(exists(image), `${relic.title} 사진(${image})이 없습니다.`);
   assert.ok(relic.lng > 90 && relic.lng < 180 && relic.lat > 0 && relic.lat < 66.5, `${relic.title} 핀이 지도 바탕 밖에 있습니다.`);
   // 설명 창에는 시대·제목·장소·설명 두 문단만. 영어 제목, 암기 메모, 쓰지 않는 칸(노선·지정 번호·유물별 문제)은 두지 않는다.

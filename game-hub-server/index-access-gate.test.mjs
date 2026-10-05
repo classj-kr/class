@@ -30,13 +30,20 @@ assert.match(
 );
 assert.match(
     html,
-    /updatePlayerLearningLinks\(guest\.name\);\s*setHubLocked\(false\);\s*restrictedPreview = false;\s*setStatus\(''\);/,
-    'Submitting a valid player name must unlock the hub.',
+    /updatePlayerLearningLinks\(guest\.name\);(?:\s*\/\/[^\n]*)*\s*await loadClassContentAccess\(\);\s*setHubLocked\(false\);\s*renderClassLocks\(\);\s*restrictedPreview = false;\s*setStatus\(''\);/,
+    'Submitting a valid player name must load the site-wide content locks and then unlock the hub.',
 );
+// Only real destinations (<a>) need a name. Accordion toggles (<summary>) stay
+// openable so signed-out visitors can still browse the submenus.
 assert.match(
     html,
-    /if \(!openAccess \|\| isValidPlayerName\(currentPlayerName\)\) return;\s*const link = event\.target\.closest\('a, summary'\);\s*if \(link && hubContent\.contains\(link\)\) \{\s*event\.preventDefault\(\);\s*setStatus\('Enter a Korean player name before opening a game\.', true\);\s*guestNameInput\.focus\(\);/,
-    'Open access without a valid saved name must lock the hub, including submenu-opening buttons.',
+    /if \(!openAccess \|\| isValidPlayerName\(currentPlayerName\)\) return;\s*const link = event\.target\.closest\('a'\);\s*if \(link && hubContent\.contains\(link\)\) \{\s*event\.preventDefault\(\);\s*setStatus\('Enter a Korean player name before opening a game\.', true\);\s*guestNameInput\.focus\(\);/,
+    'Open access without a valid saved name must block every destination link in the hub.',
+);
+assert.doesNotMatch(
+    html,
+    /event\.target\.closest\('a, summary'\)/,
+    'The name gate must not cancel clicks on submenu-opening buttons.',
 );
 assert.match(
     html,

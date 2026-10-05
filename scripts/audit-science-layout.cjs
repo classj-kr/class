@@ -1,13 +1,15 @@
 // Read-only app audit; screenshots are diagnostic artifacts, not source rewrites.
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
-const {chromium}=require('playwright');
+// playwright는 game-hub-server에만 설치되어 있다. 여기서 못 찾으면 그쪽에서 찾는다.
+const {chromium}=require(require.resolve('playwright',{paths:[__dirname,path.join(__dirname,'../game-hub-server')]}));
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),map=require(path.join(root,'curriculum-map.js'));
 const picked=process.argv.find(a=>a.startsWith('--slugs='))?.slice(8).split(',');
 const slugs=picked||Object.keys(map),capture=process.argv.includes('--capture');let scenarios=0;
 (async()=>{
  const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403);res.end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;const failures=[];
- try{browser=await chromium.launch({headless:true,executablePath:process.env.SCIENCE_BROWSER});
+ // 브라우저 고르기: SCIENCE_BROWSER(실행 파일) > PLAYWRIGHT_CHANNEL > 윈도에서는 Edge > playwright 기본.
+ try{browser=await chromium.launch({headless:true,...(process.env.SCIENCE_BROWSER?{executablePath:process.env.SCIENCE_BROWSER}:process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:process.platform==='win32'?{channel:'msedge'}:{})});
  for(const slug of slugs){const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>(new URL(r.request().url()).hostname==='127.0.0.1'||process.env.SCIENCE_LIVE_FONTS&&['fonts.googleapis.com','fonts.gstatic.com'].includes(new URL(r.request().url()).hostname))?r.continue():r.abort());
  try{await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`);await page.evaluate(()=>document.fonts.ready);
  for(const width of [1366,1024,820,768]){await page.setViewportSize({width,height:width>=1024?768:1024});

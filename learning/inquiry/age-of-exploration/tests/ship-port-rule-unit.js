@@ -14,7 +14,7 @@ const lisbon = MissionCatalog.PLACES.find(place => place.name === '리스본');
 assert.equal(paris?.canEnterFromSea, false);
 assert.equal(lisbon?.canEnterFromSea, true);
 assert.match(server, /place\.canEnterFromSea !== true/);
-assert.match(teacher, /ports=cities\.filter\(p=>p\.canEnterFromSea===true\)/);
+assert.match(teacher, /ports=catalog\.places\.filter\(p=>p\.isOriginalCity&&p\.canEnterFromSea===true\)/);
 assert.match(server, /p\.shipPortId !== place\.id/);
 assert.match(server, /배는 \$\{shipPortName\}에 정박해 있습니다/);
 assert.match(server, /shipPortIdAfter:place\.id/);
