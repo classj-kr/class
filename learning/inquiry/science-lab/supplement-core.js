@@ -22,7 +22,7 @@ function scienceCoreFactory({line,label,rect,jar,field},existing={}) {
   view(s){let svg='',text='',detail=s.focus==='detail';
 
    let media;
-   const photo=(name,file,author,source,license,alt,caption,origin='50% 50%')=>({name,src:'assets/observations/'+file+'.jpg',author,source,license,licenseUrl:license==='CC0'?'https://creativecommons.org/publicdomain/zero/1.0/':'https://creativecommons.org/licenses/by-sa/3.0/',collection:'',alt,caption,origin});
+   const photo=(name,file,author,source,license,alt,caption,origin='50% 50%')=>({name,src:'assets/observations/'+file+'.webp',author,source,license,licenseUrl:license==='CC0'?'https://creativecommons.org/publicdomain/zero/1.0/':'https://creativecommons.org/licenses/by-sa/3.0/',collection:'',alt,caption,origin});
    if(s.sample==='mushroom'){
     media={items:[photo('버섯의 갓 아래','mushroom','sethonfire87','https://wordpress.org/photos/photo/6376536a28/','CC0','버섯의 자루 둘레에서 갓 가장자리까지 방사상으로 뻗은 촘촘한 주름 사진','자루에서 갓 가장자리로 뻗은 주름을 따라 보세요.','55% 40%')],enlarged:detail,zoom:1.7};
     text='버섯의 갓을 아래에서 본 사진입니다. 가운데 자루 주변에서 갓 가장자리까지 촘촘한 주름이 뻗어 있습니다. 버섯은 종류에 따라 갓 아래의 모습이 다릅니다.';

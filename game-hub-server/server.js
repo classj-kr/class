@@ -55,6 +55,12 @@ const ROOM_SNAPSHOT_TTL_SECONDS = Math.max(900, Number(process.env.ROOM_SNAPSHOT
 const ROOM_SNAPSHOT_INTERVAL_MS = 2000;
 const SITE_ROOT = path.resolve(__dirname, "..");
 const WORLD_VOYAGE_PREFIX = "/learn/world-voyage";
+// 세계 항해 하위 서버는 저장 위치를 안 주면 제 작업 폴더의 runtime/ 에 반 저장 파일
+// (방 번호·학생 이름·진도)을 쓴다. 그 자리는 /learning 정적 경로 안이라 주소로 열린다.
+const WORLD_VOYAGE_DATA_DIR = process.env.WORLD_VOYAGE_DATA_DIR
+  || process.env.DATA_DIR
+  || path.join(__dirname, ".runtime", "world-voyage");
+const WORLD_VOYAGE_STATIC_ROOT = "/learning/inquiry/age-of-exploration";
 const MUTATING_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 
 function isSameRequestOrigin(req, origin) {
@@ -122,14 +128,14 @@ function startLearningApp(relativeDirectory, port, label) {
   return child;
 }
 
-function startNodeLearningApp(relativeDirectory, port, label) {
+function startNodeLearningApp(relativeDirectory, port, label, extraEnv = {}) {
   const appDirectory = path.join(SITE_ROOT, relativeDirectory);
   const child = spawn(
     process.execPath,
     ["server.js"],
     {
       cwd: appDirectory,
-      env: { ...process.env, PORT: String(port) },
+      env: { ...process.env, PORT: String(port), ...extraEnv },
       stdio: ["ignore", "inherit", "inherit"],
     },
   );
@@ -180,6 +186,7 @@ const worldVoyageApp = startNodeLearningApp(
   "learning/inquiry/age-of-exploration",
   WORLD_VOYAGE_PORT,
   "World Voyage app",
+  { DATA_DIR: WORLD_VOYAGE_DATA_DIR },
 );
 
 const stopLearningApps = () => {
@@ -298,6 +305,13 @@ for (const legacyFavicon of ["/favicon.ico", "/favicon-20260824.ico", "/favicon-
   app.get(legacyFavicon, (_req, res) => {
     res.setHeader("Cache-Control", "no-cache, must-revalidate");
     res.redirect(302, "/favicon.webp");
+  });
+}
+// index.html 과 학부모 화면이 부르는 크기별 아이콘. 버전 물음표 없이도 불리므로 하루만 둔다.
+for (const sizedIcon of ["favicon-32x32.webp", "favicon-48x48.webp", "favicon-192x192.webp", "apple-touch-icon.webp"]) {
+  app.get(`/${sizedIcon}`, (_req, res) => {
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.sendFile(path.join(SITE_ROOT, sizedIcon));
   });
 }
 app.get("/naverc953171c2ff3a730580e7ed2be00700d.html", (_req, res) => {
@@ -504,6 +518,23 @@ for (const [friendlyPath, legacyPath, file] of [
   app.get(friendlyPath, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
   app.get(legacyPath, (req, res) => res.redirect(308, `${friendlyPath}${req.url.slice(legacyPath.length)}`));
 }
+
+// 세계 항해는 /learn/world-voyage 프록시로만 연다. 이 폴더에서 주소로 열려도 되는 것은
+// public/ 뿐이고, 서버 코드·저장 폴더·의존성은 내보내지 않는다. express.static 과 같은
+// 방식으로 주소를 풀어서 견주어야 %xx 나 겹친 빗금으로 돌아 들어오지 못한다.
+app.use((req, res, next) => {
+  let pathname;
+  try {
+    pathname = decodeURIComponent(req.path);
+  } catch (_) {
+    return res.status(400).send("잘못된 주소입니다.");
+  }
+  const normalized = path.posix.normalize(pathname.replace(/\\/g, "/")).toLowerCase();
+  if (normalized !== WORLD_VOYAGE_STATIC_ROOT && !normalized.startsWith(`${WORLD_VOYAGE_STATIC_ROOT}/`)) return next();
+  const inside = normalized.slice(WORLD_VOYAGE_STATIC_ROOT.length);
+  if (inside === "/public" || inside.startsWith("/public/")) return next();
+  res.sendStatus(404);
+});
 
 const CLEAN_HTML_ROOTS = ["/admin", "/boards", "/classboard", "/parent", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
 app.use((req, res, next) => {

@@ -17,6 +17,7 @@ __pycache__/
 # Locally generated reports and previews
 /outputs/
 /tmp/
+/game-hub-server/.runtime/
 /scratch/
 /.tmp-audio-source/
 /inspect_review_pdf.py
