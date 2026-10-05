@@ -29,5 +29,19 @@ test("ordinary content links and activity buttons are not arrow-link matches", (
 });
 
 test("legacy back-link classes are covered even when their arrow is decorative", () => {
-  assert.match(navigation, /a\.back, a\.back-button, a\.back-link, a\.home, a\.home-link, a\.counting-back, a\.catalog-back/);
+  const selector = navigation.match(/const LEGACY_LINK_SELECTOR = "([^"]+)";/)?.[1];
+  assert.ok(selector, "LEGACY_LINK_SELECTOR is missing");
+  const classes = selector.split(",").map(part => part.trim());
+  for (const legacyClass of [
+    "a.back", "a.back-btn", "a.back-button", "a.back-link", "a.home", "a.home-link", "a.counting-back", "a.catalog-back"
+  ]) {
+    assert.ok(classes.includes(legacyClass), `legacy back-link class not covered: ${legacyClass}`);
+  }
+  assert.match(navigation, /control\.matches\(LEGACY_LINK_SELECTOR\)/);
+
+  // The server hides the same links before first paint; a class missing there flashes on load.
+  const server = fs.readFileSync(path.join(root, "game-hub-server/server.js"), "utf8");
+  const prePaint = server.match(/\.site-back-pending :is\(([^)]+)\)\{visibility:hidden!important\}/)?.[1];
+  assert.ok(prePaint, "the pre-paint hide rule is missing from server.js");
+  assert.deepEqual(prePaint.split(",").map(part => part.trim()).sort(), [...classes].sort());
 });

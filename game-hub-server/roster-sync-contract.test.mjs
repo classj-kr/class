@@ -65,7 +65,18 @@ test("admin/index.html no longer references the deleted roster textarea fields, 
 });
 
 test("record-ai.html reads the roster from the classroom object it actually gets back, and tells the teacher when it couldn't load", () => {
-  assert.match(recordAiSource, /data\?\.classroom\?\.students/);
-  assert.doesNotMatch(recordAiSource, /data\.students/);
-  assert.match(recordAiSource, /학급 명단을 불러오지 못했습니다/);
+  // GET /teacher/class answers { classroom: { students } }. Only the club route
+  // answers a top-level { students }, so that read is allowed in the club branch alone.
+  const classResponse = handlerBody(serverSource, `router.get("/teacher/class"`);
+  assert.match(classResponse, /return res\.json\(\{\s*classroom: \{[\s\S]*?\n\s*students: studentsResult\.rows\.map/);
+  const clubResponse = handlerBody(serverSource, `router.get("/teacher/groups/:groupId/students"`);
+  assert.match(clubResponse, /res\.json\(\{\s*group: \{[^}]*\},\s*students: studentsResult\.rows\.map/);
+
+  assert.match(
+    recordAiSource,
+    /const list = \(scope && scope\.kind === 'club'\) \? \(body\.students \|\| \[\]\) : \(\(body\.classroom \|\| \{\}\)\.students \|\| \[\]\);/
+  );
+  // No other read of `.students` may creep back in (the old bug read it off the class response).
+  assert.equal((recordAiSource.match(/\.students\b/g) || []).length, 2);
+  assert.match(recordAiSource, /rosterStatus\.textContent = '명단을 불러오지 못했습니다\. 인원수를 직접 적어 주세요\.';/);
 });

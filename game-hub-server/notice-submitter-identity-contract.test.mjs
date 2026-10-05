@@ -12,7 +12,7 @@ function fnBody(source, signature) {
   return source.slice(start, start + closeMatch.index);
 }
 
-const body = fnBody(serverSource, "async function resolveNoticeStudent(user, body) {");
+const body = fnBody(serverSource, "async function resolveNoticeStudent(user, body, options) {");
 
 test("resolveNoticeStudent no longer trusts the dead user.membership shortcut", () => {
   assert.doesNotMatch(body, /user\?\.membership/);
@@ -38,7 +38,17 @@ test("resolveNoticeStudent checks both school_students and legacy classroom_stud
   assert.match(body, /JOIN classroom_classes c ON c\.id = s\.class_id/);
 });
 
+test("resolveNoticeStudent can restrict a submission to guardians, so a student cannot file their own absence", () => {
+  assert.match(body, /if \(options\?\.guardianOnly && !isGuardian\) \{/);
+  assert.match(body, /HttpError\(403, "GUARDIAN_ONLY"/);
+  // The guardian rule narrows the identity check; it must come after it, not replace it.
+  assert.ok(body.indexOf('"NOT_AUTHORIZED_FOR_STUDENT"') < body.indexOf('"GUARDIAN_ONLY"'));
+});
+
 test("all four submission endpoints still call resolveNoticeStudent with the session user, so the new check actually gates them", () => {
-  const callSites = serverSource.match(/await resolveNoticeStudent\(user, req\.body\)/g) || [];
+  const callSites = serverSource.match(/await resolveNoticeStudent\(user, req\.body, \{ guardianOnly: true \}\)/g) || [];
   assert.equal(callSites.length, 4);
+  // No endpoint may call it without the guardian-only rule.
+  const allCallSites = serverSource.match(/await resolveNoticeStudent\(/g) || [];
+  assert.equal(allCallSites.length, callSites.length);
 });

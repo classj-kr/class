@@ -13,7 +13,7 @@ test("site pages receive one shared icon-only back control", () => {
 
   assert.match(server, /SITE_BACK_SCRIPT_TAG[\s\S]*site-back-navigation\.js/);
   assert.match(server, /SITE_SFX_SCRIPT_TAG[\s\S]*sound\/game-sfx\.js/);
-  assert.match(server, /game-sfx\.js\?v=20260910-music-controls-1/);
+  assert.match(server, /SITE_SFX_SCRIPT_TAG = '<script[^']*src="\/assets\/sound\/game-sfx\.js\?v=\d{8}-[\w-]+"/);
   assert.match(server, /htmlWithBackNavigation\.includes\("\/assets\/sound\/game-sfx\.js"\)/);
   assert.match(server, /sendSiteHtml\(req, res, indexCandidate, next\)/);
   assert.match(server, /sendSiteHtml\(req, res, candidate, next\)/);
@@ -31,7 +31,13 @@ test("back control climbs from an active game to its lobby first", () => {
   const lobby = read("assets/network/multiplayer-lobby.js");
 
   assert.match(navigation, /new CustomEvent\("sitebackrequest"/);
-  assert.match(lobby, /if \(!this\.started\) return;[\s\S]*event\.preventDefault\(\);[\s\S]*location\.reload\(\)/);
+  // The lobby always handles the request itself: it leaves the room, then an active
+  // game reloads into its lobby and the lobby steps back to the site home.
+  assert.match(
+    lobby,
+    /this\._boundSiteBack = event => \{\s*const playing = typeof this\.options\.isGameActive === "function"\s*\? this\.options\.isGameActive\(\) : this\.started;\s*event\.preventDefault\(\);\s*this\.destroy\(\);\s*if \(playing\) location\.reload\(\);\s*else location\.href = "\/";\s*\};/
+  );
+  assert.match(lobby, /window\.addEventListener\("sitebackrequest", this\._boundSiteBack\)/);
   assert.match(lobby, /leaveButton\.dataset\.siteBackLegacy = "true"/);
 });
 

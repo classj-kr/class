@@ -16,8 +16,8 @@ assert.doesNotMatch(
 
 assert.match(
   html,
-  /href="learning\/inquiry\/periodic-table\/"[\s\S]*?<strong>주기율표<\/strong><small>\(Periodic Table\)<\/small>/,
-  "The periodic-table menu must use the concise Korean title and English translation.",
+  /href="learning\/inquiry\/periodic-table\/"(?:(?!<\/a>)[\s\S])*?<strong>원소·물질 모형<\/strong><small>\(Elements &amp; Matter Model\)<\/small>/,
+  "The periodic-table menu must use the Korean title of the elements-and-matter model with its English translation.",
 );
 assert.doesNotMatch(
   html,
@@ -26,7 +26,7 @@ assert.doesNotMatch(
 );
 assert.match(
   html,
-  /href="learning\/inquiry\/human-body\/"[\s\S]*?<strong>인체 모형<\/strong><small>\(Human Body Model\)<\/small>/,
+  /href="learning\/inquiry\/human-body\/"(?:(?!<\/a>)[\s\S])*?<strong>인체 구조 모형<\/strong><small>\(Body Structure Model\)<\/small>/,
   "The body-learning menu must describe the interactive model focus.",
 );
 assert.doesNotMatch(
@@ -37,7 +37,7 @@ assert.doesNotMatch(
 
 assert.match(
   html,
-  /href="learning\/inquiry\/korea-map\/"[\s\S]*?<strong>국내 지도<\/strong><small>\(Korea Maps\)<\/small>/,
+  /href="learning\/inquiry\/korea-map\/"(?:(?!<\/a>)[\s\S])*?<strong>국내 지도<\/strong><small>\(Korea Map\)<\/small>/,
   "Artifacts, trips, geography and the relief map are tabs of one concise Korea Maps menu item.",
 );
 assert.doesNotMatch(

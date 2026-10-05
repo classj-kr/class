@@ -6,7 +6,11 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = relativePath => fs.readFileSync(path.join(root, relativePath), "utf8");
-const version = "20260825-compact-vertical-1";
+// The compact control shipped as 20260825-compact-vertical-1. Pages bump the
+// value whenever the script changes, so the contract is "cache-busted, and never
+// older than the compact control" rather than one pinned string.
+const compactControlDate = 20260825;
+const versionDate = value => Number((/^(\d{8})-[\w-]+$/.exec(value) || [])[1] || 0);
 
 function htmlFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -37,21 +41,31 @@ test("music and effects use vertical touch sliders", () => {
 });
 
 test("every page requests the cache-busted compact control", () => {
-  const expected = `music-control.js?v=${version}`;
   const users = htmlFiles(root).filter(file => fs.readFileSync(file, "utf8").includes("music-control.js"));
   assert.ok(users.length > 30, "expected the shared control across site pages");
   for (const file of users) {
-    assert.ok(fs.readFileSync(file, "utf8").includes(expected), path.relative(root, file));
+    const references = [...fs.readFileSync(file, "utf8").matchAll(/music-control\.js(?:\?v=([^"'\s>]*))?/g)];
+    for (const reference of references) {
+      assert.ok(
+        versionDate(reference[1] || "") >= compactControlDate,
+        `${path.relative(root, file)} requests ${reference[0]}`,
+      );
+    }
   }
 
   const control = read("assets/sound/music-control.js");
-  assert.match(control, new RegExp(`stylesheetUrl\\.searchParams\\.set\\("v", "${version}"\\)`));
+  const stylesheetVersion = /stylesheetUrl\.searchParams\.set\("v", "([^"]+)"\)/.exec(control);
+  assert.ok(stylesheetVersion, "the control must cache-bust its own stylesheet");
+  assert.ok(versionDate(stylesheetVersion[1]) >= compactControlDate, stylesheetVersion[1]);
 });
 
 test("hanja progress uses the shared site audio state", () => {
   const hanja = read("learning/literacy-numeracy/hanja-meaning/v2/index.html");
 
-  assert.match(hanja, new RegExp(`music-control\\.js\\?v=${version}`));
+  const reference = /<script src="[^"]*assets\/sound\/music-control\.js\?v=([^"]+)"><\/script>/.exec(hanja);
+  assert.ok(reference, "the hanja progress page must load the shared audio control");
+  assert.ok(versionDate(reference[1]) >= compactControlDate, reference[1]);
+  assert.match(hanja, /<audio id="bgm"[^>]*>/, "the shared control needs the page's background music element");
   assert.doesNotMatch(hanja, /hanjaMenuMusicMuted/);
   assert.doesNotMatch(hanja, /id="musicToggle"/);
 });

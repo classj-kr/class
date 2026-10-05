@@ -751,7 +751,7 @@ function finishJoin(result,resumed=false){
   try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}if(!resumed)guideHistory.length=0;
   nearbyGroup.hidden=roomType==='free';
   if(resumed)window.VoyageStudyUI?.connectionRestored();else window.VoyageStudyUI?.close();
-  if(!resumed){showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('바람·해류는 상단 ‘정보’에서 확인하세요.','system')}updateHostBar();applyModeUI();sendInput();
+  if(!resumed){showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('바람·해류는 상단 ‘정보’에서 확인하세요.','system')}updateHostBar();applyModeUI();rearmHeldPad();sendInput();
 }
 function joinRoom(roomCode,name){
   socket.emit('joinClass',{roomCode,name,hostToken:readHostToken(roomCode)},result=>{if(!result?.ok){joinError.textContent=result?.error||'입장하지 못했습니다.';return}finishJoin(result)});
@@ -783,7 +783,10 @@ function sendInput(){if(canTravelNow())socket.emit('input',keys)}
 // 입력을 누를 때 한 번만 보내면, 그 한 번이 유실됐을 때 서버는 배가 멈춰 있다고 여긴다.
 // 화면만 앞서 가다가 스냅샷마다 제자리로 끌려오는 "오뚜기" 현상의 원인이다.
 // 키를 누르고 있는 동안에는 짧게 되풀이해 보내고, 다시 붙었을 때도 한 번 보낸다.
+// 끊기면 키를 모두 지운다. 글쇠는 되풀이되는 keydown 이 다시 켜지만 화면 패드는 pointerdown 이 한 번뿐이라,
+// 아직 누르고 있는 패드 단추(.held)는 다시 붙었을 때 여기서 되살린다.
 function anyKeyHeld(){return !!(keys.up||keys.down||keys.left||keys.right)}
+function rearmHeldPad(){if(!canTravelNow()||(mode!=='sea'&&mode!=='land'))return;for(const b of document.querySelectorAll('#pad button.held[data-dir]'))if(b.dataset.dir in keys)keys[b.dataset.dir]=true}
 setInterval(()=>{if(joined&&anyKeyHeld())sendInput()},250);
 function setDir(dir,on){if(!canTravelNow()||(mode!=='sea'&&mode!=='land'))return;if(dir==='stop'){clearKeys();return}keys[dir]=on;sendInput()}
 for(const b of document.querySelectorAll('#pad button[data-dir]')){

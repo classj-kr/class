@@ -16,7 +16,7 @@ wrapped.x=5050;near(seam.update(wrapped,1/60,'land').x,5050);
 wrapped.x=5100;near(seam.update(wrapped,.5,'land').x,5100);
 near(seam.update({x:5120,y:10},1/60,'land').x,5120);
 // Exercise the actual scheduler with a deferred map render, as MapLibre does.
-const html=fs.readFileSync(path.join(__dirname,'../public/index.html'),'utf8');
+const html=fs.readFileSync(path.join(__dirname,'../public/index.html'),'utf8').replace(/\r\n/g,'\n');
 const loop=html.slice(html.indexOf('function paintScene(){'),html.indexOf('requestAnimationFrame(loop);\nsetInterval',html.indexOf('function paintScene(){')));
 const calls=[],events={},state={assetsReady:true,joined:true,self:{x:100,y:200},mode:'sea',last:0,dpr:1,innerWidth:800,innerHeight:600,keys:{left:true},serverSelf:{moving:true},remote:new Map(),viewMotion:Motion.create(10000),choice:false,globeReady:true,
  ctx:{setTransform(){}},drawMap(){calls.push('overlay')},drawPlayers(){calls.push('players')},movePrediction(){calls.push('prediction')},dxWrap:(a,b)=>a-b,choiceModalActive(){return state.choice},requestAnimationFrame(){},syncGlobeCamera(){calls.push('camera')},globeMap:{on(event,handler){events[event]=handler},triggerRepaint(){calls.push('queued map')}}};

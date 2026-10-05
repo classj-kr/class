@@ -69,13 +69,15 @@ for (const target of [
   }
 }
 
-assert.match(server, /finalQuiz: FinalQuiz\.createFinalQuiz\(target\)/);
+// 장소 학습 미션(studyTargets)은 장소마다 문제를 풀므로 최종 문제를 만들지도, 열지도 않는다.
+assert.match(server, /finalQuiz: studyTargets \? null : FinalQuiz\.createFinalQuiz\(target\)/);
+assert.match(server, /function beginFinalQuiz\(roomCode, p, mission, progress\) \{\s*if \(!isArrivalRace\(mission\) \|\| mission\.studyTargets \|\|/);
 assert.match(server, /socket\.on\('submitFinalQuiz'/);
 assert.match(server, /b\.progress\.finalCorrectCount/);
 assert.match(server, /a\.progress\.completedAt/);
 assert.match(student, /3문제 제출하고 완주/);
 assert.match(student, /missionProgress\?\.finalQuizStatus==='answering'/);
-assert.match(teacher, /최종 문제 \$\{score\}\/3 정답/);
+assert.match(teacher, /'최종 문제 '\+score\+'\/3 정답'/);
 
 console.log(JSON.stringify({
   ok: true,

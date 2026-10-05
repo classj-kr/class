@@ -8,7 +8,7 @@ assert.match(html,/MOBILE_MIN_ZOOM=\.45/);
 assert.match(html,/function isPhoneMapView\(\)/);
 assert.match(html,/zoom=recommendedMapZoom\(\)/);
 assert.match(html,/function resetMapZoomForDevice\(\)/);
-assert.match(html,/joined=true;resetMapZoomForDevice\(\)/);
+assert.match(html,/joined=true;if\(!resumed\)resetMapZoomForDevice\(\)/);
 assert.match(html,/zoomManuallyAdjusted=true;zoom=Math\.max\(minimumMapZoom\(\)/);
 assert.match(html,/orientationchange/);
 console.log('V56 mobile map zoom unit ok');

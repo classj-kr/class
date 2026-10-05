@@ -483,7 +483,7 @@ test('string and expressive families expose virtual-instrument presentation', ()
 });
 
 test('project-bound instrument artwork exists', () => {
-  for (const asset of ['bass-p-style.png', 'bass-j-style.png', 'bass-active-five.png', 'bass-fretless.png', 'guitar-s-style.png', 'guitar-metal-seven.png', 'guitar-hollowbody-jazz.png', 'guitar-dreadnought.png', 'guitar-classical-nylon.png', 'drum-rock-kit.webp', 'drum-metal-kit.webp', 'drum-pop-kit.webp', 'drum-jazz-kit.webp', 'drum-funk-kit.webp', 'violin-expressive-v2.webp', 'viola-expressive-v2.webp', 'cello-expressive.png', 'double-bass-expressive.png', 'flute-expressive.png', 'oboe-expressive.png', 'clarinet-expressive.png', 'bassoon-expressive.png', 'contrabassoon-expressive.webp', 'alto-sax-expressive.png', 'soprano-sax-expressive-v2.webp', 'tenor-sax-expressive-v2.webp', 'baritone-sax-expressive-v2.webp', 'bass-clarinet-expressive-v2.webp', 'piccolo-flute-expressive-v2.webp', 'english-horn-expressive-v2.webp', 'trumpet-expressive.png', 'flugelhorn-expressive.webp', 'euphonium-expressive.webp', 'trombone-expressive.png', 'alto-trombone-expressive-v2.webp', 'bass-trombone-expressive-v2.webp', 'french-horn-expressive.png', 'tuba-expressive-v2.webp', 'harp-concert-v2.webp', 'piccolo-trumpet-expressive.webp', 'timpani-bank.png', 'glockenspiel-concert.png', 'marimba-concert.png', 'vibraphone-concert.png', 'xylophone-compact-concert.webp', 'orchestral-percussion-station.png', 'korean-gayageum.png', 'korean-geomungo.png', 'korean-haegeum-v2.webp', 'korean-ajaeng.png', 'korean-daegeum.png', 'korean-hyangpiri.png', 'korean-taepyeongso.png', 'korean-samulnori-station.png', 'korean-janggu-samul.webp', 'korean-janggu-sanjo.webp', 'korean-buk-samul.webp', 'korean-buk-sori.webp', 'recorder-piccolo-v1.webp', 'recorder-soprano-v1.webp', 'recorder-alto-v1.webp', 'recorder-tenor-v1.webp']) {
+  for (const asset of ['bass-p-style.webp', 'bass-j-style.webp', 'bass-active-five.webp', 'bass-fretless.webp', 'guitar-s-style.webp', 'guitar-metal-seven.webp', 'guitar-hollowbody-jazz.webp', 'guitar-dreadnought.webp', 'guitar-classical-nylon.webp', 'drum-rock-kit.webp', 'drum-metal-kit.webp', 'drum-pop-kit.webp', 'drum-jazz-kit.webp', 'drum-funk-kit.webp', 'violin-expressive-v2.webp', 'viola-expressive-v2.webp', 'cello-expressive.webp', 'double-bass-expressive.webp', 'flute-expressive.webp', 'oboe-expressive.webp', 'clarinet-expressive.webp', 'bassoon-expressive.webp', 'contrabassoon-expressive.webp', 'alto-sax-expressive.webp', 'soprano-sax-expressive-v2.webp', 'tenor-sax-expressive-v2.webp', 'baritone-sax-expressive-v2.webp', 'bass-clarinet-expressive-v2.webp', 'piccolo-flute-expressive-v2.webp', 'english-horn-expressive-v2.webp', 'trumpet-expressive.webp', 'flugelhorn-expressive.webp', 'euphonium-expressive.webp', 'trombone-expressive.webp', 'alto-trombone-expressive-v2.webp', 'bass-trombone-expressive-v2.webp', 'french-horn-expressive.webp', 'tuba-expressive-v2.webp', 'harp-concert-v2.webp', 'piccolo-trumpet-expressive.webp', 'timpani-bank.webp', 'glockenspiel-concert.webp', 'marimba-concert.webp', 'vibraphone-concert.webp', 'xylophone-compact-concert.webp', 'orchestral-percussion-station.webp', 'korean-gayageum.webp', 'korean-geomungo.webp', 'korean-haegeum-v2.webp', 'korean-ajaeng.webp', 'korean-daegeum.webp', 'korean-hyangpiri.webp', 'korean-taepyeongso.webp', 'korean-samulnori-station.webp', 'korean-janggu-samul.webp', 'korean-janggu-sanjo.webp', 'korean-buk-samul.webp', 'korean-buk-sori.webp', 'recorder-piccolo-v1.webp', 'recorder-soprano-v1.webp', 'recorder-alto-v1.webp', 'recorder-tenor-v1.webp']) {
     assert.equal(fs.existsSync(path.join(root, 'assets', 'instruments', asset)), true, asset);
   }
 });
@@ -529,8 +529,15 @@ test('defaults to full physical piano dimensions and supports per-device shrinki
   assert.match(app, /function currentDisplayKey\(\)/);
   assert.match(app, /saved\.profiles\[state\.displayKey\]/);
   assert.match(app, /state\.keyboardScale = Math\.max\(\.5, Math\.min\(1, profile\.scale\)\)/);
-  assert.match(css, /--key-width: 88\.82px/);
-  assert.match(css, /--key-height: 566\.93px/);
+  // 건반 폭은 실제 치수 그대로, 길이는 화면에 맞춰 줄인 비율(WHITE_KEY_LENGTH_SCALE)을 곱한다.
+  // 스크립트가 돌기 전의 CSS 기본값이 app.js가 계산하는 값과 같아야 첫 화면이 출렁이지 않는다.
+  const lengthScale = Number((app.match(/WHITE_KEY_LENGTH_SCALE = ([\d.]+);/) || [])[1]);
+  assert.ok(lengthScale > 0 && lengthScale <= 1, 'WHITE_KEY_LENGTH_SCALE');
+  assert.match(app, /"--key-width", \(PIANO_WHITE_KEY_MM\.width \* factor\)\.toFixed\(2\) \+ "px"/);
+  assert.match(app, /"--key-height", \(PIANO_WHITE_KEY_MM\.length \* WHITE_KEY_LENGTH_SCALE \* factor\)\.toFixed\(2\) \+ "px"/);
+  const pxPerMm = 96 / 25.4;
+  assert.equal((css.match(/--key-width: ([\d.]+)px/) || [])[1], (23.5 * pxPerMm).toFixed(2));
+  assert.equal((css.match(/--key-height: ([\d.]+)px/) || [])[1], (150 * lengthScale * pxPerMm).toFixed(2));
   assert.match(css, /height: var\(--key-height\)/);
 });
 
@@ -646,5 +653,5 @@ test('renders grouped percussion as independent glowing artwork layers', () => {
     assert.match(app, new RegExp(asset.replace('.', '\\.')));
     assert.equal(fs.existsSync(path.join(root, 'assets', 'instruments', asset)), true, asset);
   }
-  assert.doesNotMatch(app, /art: "assets\/instruments\/orchestral-percussion-station\.png"/);
+  assert.doesNotMatch(app, /art: "assets\/instruments\/orchestral-percussion-station\.(?:png|webp)"/);
 });
