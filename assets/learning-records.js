@@ -52,12 +52,19 @@
       this.title = el('p', '학습 기록', 'title'); this.status = el('p', '불러오는 중…', 'status'); this.status.setAttribute('role', 'status');
       identity.append(this.title, this.status); this.progress = el('div', null, 'progress');
       const history = el('button', '학습 기록'); history.type = 'button'; history.onclick = () => this.showHistory();
-      strip.append(identity, this.progress, history); this.root.append(strip);
-      const target = options.mount || document.querySelector('main') || document.body.firstElementChild;
-      if (target?.parentNode) target.before(this.host); else document.body.prepend(this.host);
-      // Some activities reset every element's margins, including the shadow host.
-      const besideTopControls = this.host.getBoundingClientRect().top + scrollY < 64;
-      Object.assign(this.host.style, { display: 'block', width: besideTopControls ? 'calc(100% - 128px)' : '100%', maxWidth: '1180px', margin: '8px auto 10px' });
+      strip.append(identity, this.progress, history); this.strip = strip;
+      if (options.toolbar === false) {
+        // Keep recovery dialogs available without adding a box to the activity layout.
+        this.host.style.display = 'contents';
+        document.body.append(this.host);
+      } else {
+        this.root.append(strip);
+        const target = options.mount || document.querySelector('main') || document.body.firstElementChild;
+        if (target?.parentNode) target.before(this.host); else document.body.prepend(this.host);
+        // Some activities reset every element's margins, including the shadow host.
+        const besideTopControls = this.host.getBoundingClientRect().top + scrollY < 64;
+        Object.assign(this.host.style, { display: 'block', width: besideTopControls ? 'calc(100% - 128px)' : '100%', maxWidth: '1180px', margin: '8px auto 10px' });
+      }
       window.addEventListener('beforeunload', event => { if (this.pending) { event.preventDefault(); event.returnValue = ''; } });
       this.ready = this.initialize();
     }
@@ -77,7 +84,7 @@
     setStatus(text, state = '') { this.status.textContent = text; this.status.dataset.state = state; this.status.hidden = !text; }
     addAction(label, handler) {
       const button = el('button', label); button.type = 'button'; button.onclick = handler;
-      this.root.querySelector('.strip').append(button); return button;
+      this.strip.append(button); return button;
     }
     modal(title, className = '') {
       this.dialog?.close(); this.dialog?.remove();

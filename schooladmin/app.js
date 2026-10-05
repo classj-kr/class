@@ -2083,10 +2083,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (semesterNum === 1) totalSchoolDays1 += weekSchoolDays;
                 else totalSchoolDays2 += weekSchoolDays;
 
-                // 34주는 실제 등교(수업)한 주만 세는 기준이므로 -- 방학처럼 등교일이
-                // 하루도 없는 주는 행을 만들지도, 주차 번호를 소모하지도 않는다.
-                // (school_curriculum_hours의 연간필요시수도 "주당시수 × 34"로 계산되므로
-                // 이 표의 34주는 실수업주와 일치해야 함)
+                // 주차는 실제 등교(수업)한 주만 센다 -- 방학처럼 등교일이 하루도 없는 주는
+                // 행을 만들지도, 주차 번호를 소모하지도 않는다. 연간 필요 시수도 34주 고정이
+                // 아니라 실제 수업 주수로 따지므로(schoolWeeksForGrade) 이 표의 주수와 맞아야 한다.
                 if (weekSchoolDays > 0) {
                     const weeklyHours = monP + tueP + wedP + thuP + friP;
                     cumulativeHours += weeklyHours;
@@ -2115,12 +2114,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 currMon.setDate(currMon.getDate() + 7);
             }
 
+            const totalClassWeeks = weekIndex - 1;
             if (annualTotalHoursVal) annualTotalHoursVal.textContent = `${cumulativeHours.toLocaleString()}시간`;
+            const annualTotalWeeksVal = document.getElementById('annualTotalWeeksVal');
+            if (annualTotalWeeksVal) annualTotalWeeksVal.textContent = `${totalClassWeeks}주`;
             if (semesterDaysVal) semesterDaysVal.textContent = `${totalSchoolDays1}일 / ${totalSchoolDays2}일 (총 ${totalSchoolDays1 + totalSchoolDays2}일)`;
 
             annualTimetableTableFoot.innerHTML = `
                 <tr>
-                    <td colspan="3">연간 34주 총계</td>
+                    <td colspan="3">연간 ${totalClassWeeks}주 총계</td>
                     <td>${totalSchoolDays1 + totalSchoolDays2}일</td>
                     <td colspan="5">월~금 기초시간표 배정 교시 연산 정산</td>
                     <td>-</td>

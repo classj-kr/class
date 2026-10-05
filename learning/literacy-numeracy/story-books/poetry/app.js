@@ -1,15 +1,8 @@
 (() => {
     "use strict";
 
-    const records = LearningRecords.create('poetry', { label: '시 읽기' });
-    let accountProgress = {}, busy = false;
-    const finishReading = records.addAction('이번 읽기 마치기', async () => {
-        if (busy || !records.session || records.session.status !== 'active') return;
-        busy = true; bookScreen.inert = true;
-        await saveRecord([], true); showShelf(); records.showResult(); finishReading.disabled = true;
-        bookScreen.inert = false; busy = false;
-    });
-    finishReading.disabled = true;
+    const records = LearningRecords.create('poetry', { label: '시 읽기', toolbar: false });
+    let accountProgress = {}, busy = false, readingComplete = false;
 
     // 색인 데이터: poems-index.js에서 POETRY_POEM_INDEX, lessons.js에서 POETRY_BOOKS를 받음
     const poems = Array.isArray(window.POETRY_POEM_INDEX) ? window.POETRY_POEM_INDEX : [];
@@ -58,8 +51,9 @@
 
     // 진도 저장 및 확인
     function getProgress() { return accountProgress; }
-    function saveRecord(events = [], complete = false) {
-        return records.save({checkpoint:{index:currentSpreadIndex,progress:accountProgress,picked:[...quizPickedChoices],wrong:[...quizWrongChoices].map(([id,values])=>[id,[...values]])},events,complete,
+    function saveRecord(events = []) {
+        readingComplete ||= spreads.length > 1 && currentSpreadIndex === spreads.length - 1;
+        return records.save({checkpoint:{index:currentSpreadIndex,progress:accountProgress,picked:[...quizPickedChoices],wrong:[...quizWrongChoices].map(([id,values])=>[id,[...values]])},events,complete:readingComplete,
             progress:{current:currentSpreadIndex,total:Math.max(0,spreads.length-1)}});
     }
 
@@ -506,7 +500,7 @@
 
     // 페이지 이동
     async function goTo(targetSpreadIndex, animDirection) {
-        if(busy || records.session?.status !== 'active')return;
+        if(busy || !records.session)return;
         if (targetSpreadIndex < 0 || targetSpreadIndex >= spreads.length) return;
         const dir = animDirection || (targetSpreadIndex > currentSpreadIndex ? "next" : "prev");
 
@@ -561,6 +555,7 @@
         // 펼침면 생성
         spreads = buildSpreads(book, poemsInBook);
         const session = await records.start({contentKey:String(bookIndex),title:'시 읽기 · '+(book.title || (bookIndex+1)+'권'),version:'20261002',checkpoint:{index:0,progress:{},picked:[],wrong:[]}});
+        readingComplete = session.status === 'completed';
         accountProgress=session.checkpoint.progress;
         quizPickedChoices.clear();session.checkpoint.picked.forEach(([id,value])=>quizPickedChoices.set(id,value));
         quizWrongChoices.clear();session.checkpoint.wrong.forEach(([id,values])=>quizWrongChoices.set(id,new Set(values)));
@@ -571,7 +566,10 @@
             currentSpreadIndex = session.checkpoint.index;
         }
 
-        paint(); busy=false; bookScreen.inert=false; finishReading.disabled=false;
+        paint();
+        const spread = spreads[currentSpreadIndex];
+        await saveRecord(spread.kind === 'read' ? [{kind:'read',questionKey:spread.poem.id,response:'시 열기',snapshot:{title:spread.poem.title}}] : []);
+        busy=false; bookScreen.inert=false;
     }
 
     /* ── 책장 화면 (Shelf Lobby) ──────────────────────────────── */
