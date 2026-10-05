@@ -301,5 +301,29 @@
     }
     return null;
   }
-  return { LEVELS, HINT, choose, chooseHint, explain, review, threats, winningMoves, book, corners };
+  function opponentView(before,index) {
+    const after=R.play(before,index),side=before.color,human=3-side,at=R.coord(index,before.size);
+    if(after.ended)return null;
+    if(before.game==='omok') {
+      const wins=winningMoves(after,side),ownWins=winningMoves(after,human);
+      const building=wins.length?[]:nearby(after.board).filter(i=>threats(after.board,i,side).fours>=2);
+      const blocked=winningMoves(before,human).includes(index);
+      const targets=wins.length?wins:building;
+      const lines=wins.map(i=>{const b=after.board.slice();b[i]=side;return R.winningLine(b,i,side).sort((a,b)=>a-b);});
+      const locations=targets.map(i=>R.coord(i,15)).join('·');
+      const summary=wins.length?'상대가 네 돌의 위협을 만들었어요. 다음에 다섯 돌을 완성할 수 있어요.':building.length?'상대가 다음 수에 승리 자리를 두 곳 이상 만들 수 있는 공격을 준비했어요.':blocked?'상대가 내가 다섯 돌을 완성할 자리를 막았어요.':`상대가 ${at}에 돌을 놓았어요. 이어지는 가로·세로·대각선 연결을 살펴보세요.`;
+      const danger=wins.length?`${locations}에 상대가 두면 다섯 돌이 완성돼요. 빨간 선과 원으로 표시했어요.`:building.length?`${locations}에 상대가 두면 다섯 돌을 완성할 자리가 두 곳 이상 생겨요. 빨간 원은 상대의 다음 공격 후보예요.`:'';
+      const response=ownWins.length?`내가 ${ownWins.map(i=>R.coord(i,15)).join('·')}에 두면 먼저 이길 수 있어요. 내 승리 수부터 확인하세요.`:wins.length>1?'상대의 승리 자리가 여러 곳이라 한 곳만 막아서는 모두 막을 수 없어요.':wins.length?`${R.coord(wins[0],15)}를 막는 수부터 살펴보세요.`:building.length?'표시된 공격 후보에 두거나 연결을 끊어 위협을 줄이세요. 힌트로 방어 후보를 확인할 수 있어요.':'내 돌을 연결하면서 상대가 세 돌·네 돌로 이어 갈 자리도 살펴보세요.';
+      return {title:`${at}에 둔 상대의 수`,summary,danger,response,targets,lines,targetLabel:wins.length?'상대가 다섯 돌을 완성할 곳':'상대의 다음 공격 후보'};
+    }
+    const options=R.legal(after,human),oldOptions=R.legal(before,human).length;
+    const enemyCorners=R.legal(after,side).filter(i=>corners.includes(i));
+    const risky=after.color===human?options.map(i=>({index:i,corners:R.legal(R.play(after,i),side).filter(j=>corners.includes(j))})).filter(x=>x.corners.length):[];
+    const ownCorners=options.filter(i=>corners.includes(i));
+    const summary=corners.includes(index)?`상대가 ${at} 모서리를 차지했어요. 이 돌은 다시 뒤집을 수 없어요.`:after.passed?`상대가 ${after.flipped.length}개를 뒤집었고, 내가 둘 곳이 없어 한 번 더 둬요.`:`상대가 ${after.flipped.length}개를 뒤집었어요. 내가 둘 수 있는 자리는 ${oldOptions}곳에서 ${options.length}곳으로 바뀌었어요.`;
+    const danger=enemyCorners.length?`현재 배치에서 상대는 ${enemyCorners.map(i=>R.coord(i,8)).join('·')} 모서리에 둘 수 있어요. 내 수로 이 배치가 달라질 수 있어요.`:risky.length?`내가 ${R.coord(risky[0].index,8)}에 두면 상대에게 ${risky[0].corners.map(i=>R.coord(i,8)).join('·')} 모서리가 열려요.`:'';
+    const response=after.passed?'상대가 연속으로 두는 동안 어떤 돌이 뒤집히는지 살펴보세요.':after.board.filter(v=>!v).length<=12?'후반에는 모서리뿐 아니라 마지막 돌 수가 중요해요. 힌트로 끝까지 이어지는 수를 살펴보세요.':ownCorners.length?`${ownCorners.map(i=>R.coord(i,8)).join('·')} 모서리에 둘 수 있어요. 모서리 확보와 상대의 다음 선택지를 함께 살펴보세요.`:risky.length&&risky.length<options.length?'모서리를 열어 주지 않는 수도 있어요. 돌을 많이 뒤집는 것보다 모서리와 다음에 둘 자리를 함께 비교하세요.':'내가 다음에도 둘 자리를 확보하고 상대에게 모서리를 내주는지 확인하세요.';
+    return {title:`${at}에 둔 상대의 수`,summary,danger,response,targets:enemyCorners.length?enemyCorners:risky.map(x=>x.index),targetLabel:enemyCorners.length?'현재 배치에서 상대가 둘 수 있는 모서리':'상대에게 모서리를 열어 주는 수'};
+  }
+  return { LEVELS, HINT, choose, chooseHint, explain, review, threats, winningMoves, book, corners, opponentView };
 });

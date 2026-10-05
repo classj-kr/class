@@ -3,6 +3,7 @@
 .original-coach .opponent-plan p{margin:8px 0;line-height:1.65;overflow-wrap:anywhere}
 .original-coach .opponent-danger{color:#ffd1bd}
 .original-coach .threat-ring{position:absolute;inset:7%;border:3px solid #dc4a37;border-radius:50%;box-shadow:0 0 0 1px #ffe1b5;z-index:4;pointer-events:none}
+.original-coach .omok .suggested .threat-ring{inset:20%}
 .original-coach .threat-lines{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}
 .original-coach .threat-lines polyline{fill:none;stroke:#d63e30;stroke-width:.10;stroke-linecap:round;opacity:.8}
 .original-coach .reversi .square.flipped .disc:not(.flip-ghost){outline:3px solid #f5d981;outline-offset:-3px}

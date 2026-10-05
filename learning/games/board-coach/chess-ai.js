@@ -173,7 +173,42 @@
     return { move:best, reason:explain(state,best), depth:completed, nodes };
   }
   function chooseHint(state,options={}) {
-    return choose(state,"advanced",{...HINT,...options});
+    const answer=choose(state,"advanced",{...HINT,...options});
+    if(answer?.move) {
+      const threats=captureThreats(state,state.turn==='w'?'b':'w'),next=C.advance(state,answer.move);
+      const remaining=captureThreats(next,next.turn);
+      const saved=threats.find(t=>!remaining.some(r=>r.to===(t.to===answer.move.from?answer.move.to:t.to)));
+      if(saved&&!C.isInCheck(state)) answer.reason=`상대 ${NAMES[saved.piece[1]]}의 ${label(saved)} 공격으로 ${C.squareName(saved.to)}의 내 ${NAMES[saved.capture[1]]}을 잃을 위험이 있어요. 이 수는 그 위협에 대응해요. `+answer.reason;
+    }
+    return answer;
+  }
+  function captureThreats(state,side) {
+    // En passant belongs only to the actual side to move, never a hypothetical turn.
+    const view={...state,turn:side,result:null,epSquare:side===state.turn?state.epSquare:null};
+    const seen=new Set();
+    return C.allLegalMoves(view).filter(m=>m.capture).map(move=>{
+      const next=C.advance(view,move),recaptured=C.allLegalMoves(next).some(m=>m.capture&&m.to===move.to);
+      return {move,gain:VALUES[move.capture[1]]+(move.promotion?VALUES[move.promotion]-VALUES.P:0)-(recaptured?VALUES[move.promotion||move.piece[1]]:0)};
+    }).filter(t=>t.gain>0).sort((a,b)=>b.gain-a.gain).map(t=>t.move).filter(m=>!seen.has(m.to)&&seen.add(m.to));
+  }
+  function opponentView(before,move) {
+    const after=C.advance(before,move);
+    if(C.status(after).ended)return null;
+    const side=before.turn,threats=captureThreats(after,side),old=captureThreats(before,side);
+    const fresh=threats.find(m=>!old.some(o=>o.from===m.from&&o.to===m.to));
+    let summary;
+    if(C.isInCheck(after))summary='상대가 체크를 걸어 내 킹의 대응을 강제하고 있어요.';
+    else if(move.capture)summary=`상대가 내 ${NAMES[move.capture[1]]}을 잡았어요. 이어지는 공격도 확인하세요.`;
+    else if(fresh)summary=fresh.from!==move.to?`상대가 ${NAMES[move.piece[1]]}을 옮겨 ${NAMES[fresh.piece[1]]}의 공격길을 열었어요.`:`상대가 ${C.squareName(fresh.to)}의 내 ${NAMES[fresh.capture[1]]}을 공격하고 있어요.`;
+    else if(move.castle)summary='상대가 캐슬링으로 킹을 옮기고 룩을 중앙 쪽에 배치했어요.';
+    else if(C.isInCheck(before))summary='상대가 내 체크를 해소했어요. 공격을 이어갈 수 있는지 살펴보세요.';
+    else if(['N','B'].includes(move.piece[1])&&Math.floor(move.from/8)===(side==='w'?0:7))summary=`상대가 ${NAMES[move.piece[1]]}을 첫 줄에서 꺼내 공격과 방어에 참여시켰어요.`;
+    else if(move.piece[1]==='P'&&[27,28,35,36].includes(move.to))summary='상대가 폰으로 중앙을 차지했어요. 중앙을 지키는 말을 함께 살펴보세요.';
+    else summary=`상대가 ${NAMES[move.piece[1]]}을 ${C.squareName(move.to)}에 배치했어요.`;
+    const checked=C.isInCheck(after),targets=checked?[after.board.indexOf(after.turn+'K')]:threats.slice(0,2).map(m=>m.to);
+    const danger=checked?'내 킹이 체크를 받고 있어요. 이번 수에 체크를 해소해야 해요.':threats.slice(0,2).map(m=>`상대 ${NAMES[m.piece[1]]}이 ${label(m)}로 내 ${NAMES[m.capture[1]]}을 잡을 수 있어요.`).join(' ');
+    const response=checked?'킹을 피하거나, 공격하는 말을 잡거나, 공격길을 막는 수를 확인하세요.':threats.length?`${C.squareName(threats[0].to)}의 말을 피하거나 지키는 수부터 확인하세요. 상대의 공격하는 말을 잡거나 길을 막는 방법도 있어요.`:'내 말의 안전을 확인하고 나이트·비숍을 꺼내거나 중앙을 지킬 수를 살펴보세요.';
+    return {title:label(move),summary,danger,response,targets};
   }
   function explain(state,move) {
     const next=C.advance(state,move), at=C.squareName(move.to), piece=NAMES[move.piece[1]];
@@ -214,5 +249,5 @@
     }
     return null;
   }
-  return { LEVELS, HINT, NAMES, VALUES, choose, chooseHint, explain, review, evaluate, same, label, mateInOne, book };
+  return { LEVELS, HINT, NAMES, VALUES, choose, chooseHint, explain, review, evaluate, same, label, mateInOne, book, opponentView };
 });

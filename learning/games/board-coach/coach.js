@@ -1,4 +1,4 @@
-/* global BoardCoachRules, BoardCoachAI, BoardCoachUI */
+/* global BoardCoachRules, BoardCoachAI, BoardCoachUI, ClassGameMotion */
 (() => {
   "use strict";
   if (["chess", "janggi"].includes(new URLSearchParams(location.search).get("game"))) return;
@@ -8,6 +8,7 @@
   let state = R.initial(game), level = "beginner", human = 1, started = false, busy = false;
   let worker = null, timeout = null, nextTurnTimer = null, token = 0, hint = null, reviewPosition = null, retryKind = "move";
   let moves = [], feedback = null;
+  let moving=false;
   const escape = text => String(text).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const coordinate = i => R.coord(i, state.size);
   const variant = game === "omok" ? "검은 돌부터 빈자리에 하나씩 번갈아 둡니다. 가로·세로·대각선으로 내 돌을 5개 이상 이으면 이깁니다. 이 사이트에서는 렌주의 금수·개국 규칙을 적용하지 않습니다." : "검은 돌부터 둡니다. 새로 놓을 돌과 내 돌 사이에 상대 돌이 가로·세로·대각선으로 이어진 곳에 놓아, 사이의 상대 돌을 모두 뒤집습니다. 둘 곳이 없으면 자동으로 차례를 넘깁니다. 양쪽 모두 둘 곳이 없을 때 돌이 더 많은 쪽이 이깁니다.";
@@ -16,37 +17,48 @@
   $("title").textContent = name;
   $("backLink").href = `../${game}/${game}`;
   BoardCoachUI.useOriginalTheme(game);
+  BoardCoachUI.mountOpponent();
+  if(game==='reversi')document.querySelector('.controls').insertAdjacentHTML('afterend','<section class="panel" aria-label="최근 뒤집기"><p id="lastFlip" class="move-result" aria-live="polite">돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.</p></section>');
   $("principle").textContent = principle;
   $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>초급도 기본 공격·방어를 확인합니다. 수준이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
   function stopWork() {
     if (busy && retryKind === "hint") setReason("힌트 계산 취소", "계산을 멈췄어요", "힌트를 누르면 다시 계산합니다.");
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
+    moving=false;ClassGameMotion.cancel();
   }
   function drawBoard(position, mark = null) {
     const board = $("board"); board.className = `${game} board`; board.style.setProperty("--size", position.size);
     board.setAttribute("aria-label", `${position.size}줄 ${name}판`);
-    const legal = new Set(R.legal(position)), canPlay = started && !busy && !state.ended && state.color === human && !reviewPosition;
+    const legal = new Set(R.legal(position)), canPlay = started && !busy && !moving && !state.ended && state.color === human && !reviewPosition;
     const line = new Set(position.line);
     board.innerHTML = position.board.map((v, index) => {
       const row = Math.floor(index / position.size), col = index % position.size;
       const star = game === "omok" && [48, 56, 112, 168, 176].includes(index);
       return `<button type="button" role="gridcell" class="square ${game === "omok" ? "point" : "cell"}${legal.has(index) ? " legal" : ""}${position.last === index ? " last" : ""}${mark === index ? " suggested" : ""}${line.has(index) ? " winning" : ""}" data-index="${index}" data-row="${row}" data-col="${col}" ${canPlay && legal.has(index) ? "" : "disabled"} title="${R.coord(index, position.size)}" aria-label="${R.coord(index, position.size)} · ${v ? (v === 1 ? "흑돌" : "백돌") : legal.has(index) ? "둘 수 있는 곳" : "둘 수 없는 곳"}">${v ? `<span class="stone ${game === "reversi" ? "disc " : ""}${v === 1 ? "black" : "white"}"></span>` : star ? '<span class="starDot"></span>' : game === "reversi" && legal.has(index) ? '<span class="hint"></span>' : ""}${mark === index && game === "omok" ? '<span class="hint-ring" aria-hidden="true"></span>' : ""}</button>`;
     }).join("");
+    if(game==='reversi')for(const i of position.flipped||[]) {
+      const cell=board.querySelector(`[data-index="${i}"]`);cell.classList.add('flipped');
+      cell.setAttribute('aria-label',cell.getAttribute('aria-label')+' · 방금 뒤집힌 돌');
+    }
   }
   function setReason(label, title, text) { $("reasonLabel").textContent = label; $("moveLabel").textContent = title; $("reason").textContent = text; }
   function render() {
     const current = reviewPosition?.before || state;
     drawBoard(current, reviewPosition ? reviewPosition.feedback?.alternative ?? reviewPosition.index : hint?.index);
+    const opponent=started&&!reviewPosition&&!state.ended?moves.at(-1)?.opponent:null;
+    BoardCoachUI.showOpponent(opponent,$('board'),state.size);
+    if(game==='reversi')$('lastFlip').textContent=current.flipped?.length?`${current.board[current.last]===human?'내가':'AI가'} ${R.coord(current.last,8)}에 두어 ${current.flipped.length}개를 뒤집었어요.\n금색 테두리: 방금 뒤집힌 돌`:'돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.';
     $("levelLabel").textContent = `${AI.LEVELS[level].name} AI`;
     $("colorLabel").textContent = `내 돌: ${human === 1 ? "검은색" : "흰색"}`;
     const passed = state.passed ? `${state.passed === human ? "내가" : "AI가"} 둘 곳이 없어 차례를 넘겼어요. ` : "";
     $("turn").textContent = reviewPosition ? `${moves.indexOf(reviewPosition) + 1}수 두기 전 · 복기` : !started ? "AI 수준을 골라 시작하세요." : state.ended ? (state.winner ? state.winner === human ? "내가 이겼어요!" : "AI가 이겼어요." : "무승부예요.") : busy && retryKind === "move" ? "AI가 생각하고 있어요…" : passed + (state.color === human ? "내 차례" : "AI 차례");
     $("score").textContent = game === "reversi" ? `흑 ${current.board.filter(v => v === 1).length} : 백 ${current.board.filter(v => v === 2).length}` : `${reviewPosition ? moves.indexOf(reviewPosition) : state.count}수`;
     $("undo").disabled = !moves.some(m => m.color === human) || !!reviewPosition;
-    $("hint").disabled = !started || busy || state.ended || state.color !== human || !!reviewPosition;
+    $("hint").disabled = !started || busy || moving || state.ended || state.color !== human || !!reviewPosition;
+    $('zoom').disabled=moving;
     $("feedbackPanel").classList.toggle("hidden", !feedback || !!reviewPosition);
     $("feedback").textContent = feedback?.text || "";
-    $("reviewPanel").classList.toggle("hidden", !state.ended);
+    $("reviewPanel").classList.toggle("hidden", !state.ended || moving);
     $("liveBoard").classList.toggle("hidden", !reviewPosition);
     if (state.ended) {
       const important = moves.filter(m => m.feedback).slice(-3);
@@ -59,14 +71,14 @@
     setReason("다시 시도할 수 있어요", "계산을 마치지 못했어요", message);
   }
   function startJob(kind) {
-    if (!started || state.ended || $("setup").open) return;
+    if (!started || moving || state.ended || $("setup").open) return;
     if ((kind === "hint") !== (state.color === human)) return;
     stopWork(); hint = null; retryKind = kind; busy = true; $("retry").classList.add("hidden");
     const id = token;
     render();
     if (kind === "hint") setReason("힌트를 생각하고 있어요", "잠깐만 기다려 주세요", "공격할 곳과 상대의 위협을 함께 살펴보고 있어요.");
     try {
-      worker = new Worker("ai-worker.js?v=4");
+      worker = new Worker("ai-worker.js?v=5");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;
@@ -76,9 +88,9 @@
         else {
           const before = state;
           state = R.play(state, result.index);
-          moves.push({ before, color: before.color, index: result.index, reason: result.reason });
+          moves.push({ before, color: before.color, index: result.index, reason: result.reason,opponent:result.opponent||AI.opponentView(before,result.index) });
           setReason("AI의 수", `${coordinate(result.index)}에 두었어요`, result.reason);
-          render(); continueComputer();
+          animateMove(before,result.index);
         }
       };
       worker.onerror = () => { if (id === token) failJob("계산을 다시 시도해 주세요. 수 물리기와 새 대국도 사용할 수 있어요."); };
@@ -87,13 +99,14 @@
     } catch { failJob("이 브라우저에서 계산을 시작하지 못했어요. 페이지를 다시 열어 주세요."); }
   }
   function continueComputer() {
-    if (!state.ended && state.color !== human && !$("setup").open) {
+    if (started && !moving && !state.ended && state.color !== human && !$("setup").open) {
       const id = token;
+      clearTimeout(nextTurnTimer);
       nextTurnTimer = setTimeout(() => { if (id === token) startJob("move"); }, 350);
     }
   }
   function place(index) {
-    if (!started || busy || state.ended || state.color !== human || reviewPosition || !R.legal(state).includes(index)) return;
+    if (!started || busy || moving || state.ended || state.color !== human || reviewPosition || !R.legal(state).includes(index)) return;
     $("retry").classList.add("hidden");
     const followed=hint?.index===index;
     const before = state, reason = followed?hint.reason:AI.explain(state, index);
@@ -101,7 +114,17 @@
     state = R.play(state, index);
     moves.push({ before, index, color: human, feedback, reason });
     setReason("내가 둔 수", `${coordinate(index)}에 두었어요`, feedback?.text || reason);
-    render(); continueComputer();
+    animateMove(before,index);
+  }
+  function animateMove(before,index) {
+    moving=true;render();
+    const animations=[ClassGameMotion.appear($('board').querySelector(`[data-index="${index}"] .stone`))];
+    for(const i of state.flipped||[])animations.push(ClassGameMotion.flip($('board').querySelector(`[data-index="${i}"] .stone`),'stone disc '+(before.board[i]===1?'black':'white')));
+    const id=token,position=state;
+    Promise.all(animations.filter(Boolean).map(a=>a.finished.catch(()=>{}))).then(()=>{
+      if(id!==token||position!==state)return;
+      moving=false;render();continueComputer();
+    });
   }
   function undo() {
     const last = moves.findLastIndex(m => m.color === human);
