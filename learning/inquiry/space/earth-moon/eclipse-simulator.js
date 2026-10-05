@@ -67,8 +67,8 @@
             <g class="ecl-world"><path d="M 178 250 H 1120" class="ecl-axis"/>
             ${cones(lunarGeo,'class="ecl-earth-shadow"')}${cones(solarGeo,'class="ecl-moon-shadow"')}
             <g class="ecl-rays" ${rays.checked?'':'visibility="hidden"'}>${lunarGeo.rays}${solarGeo.rays}</g>
-            ${svgCircle({...model.sun,r:205},'url(#eclSourceHalo)')}${svgCircle(model.sun,'#ffba43')}${texture(model.sun,PLANET_IMAGES+'sun.jpg','eclSourceClip',[1.86,1.87,3.66])}
-            ${svgCircle(model.earth,'#1676ad','stroke="#73caf9" stroke-opacity=".6" stroke-width="3"')}${texture(model.earth,PLANET_IMAGES+'earth.jpg','eclEarthClip',[1.46,1.47,2.94])}${svgCircle(model.earth,'url(#eclNight)')}
+            ${svgCircle({...model.sun,r:205},'url(#eclSourceHalo)')}${svgCircle(model.sun,'#ffba43')}${texture(model.sun,PLANET_IMAGES+'sun.webp','eclSourceClip',[1.86,1.87,3.66])}
+            ${svgCircle(model.earth,'#1676ad','stroke="#73caf9" stroke-opacity=".6" stroke-width="3"')}${texture(model.earth,PLANET_IMAGES+'earth.webp','eclEarthClip',[1.46,1.47,2.94])}${svgCircle(model.earth,'url(#eclNight)')}
             <g clip-path="url(#eclEarthClip)">${cones(solarGeo)}</g>
             ${svgCircle(model.newMoon,'#adb6c1')}${texture(model.newMoon,MOON_IMAGE,'eclNewMoonClip',[1.025,1,2.05])}${svgCircle(model.newMoon,'url(#eclNight)')}
             ${svgCircle(fullMoon,'#cad0d7')}${texture(fullMoon,MOON_IMAGE,'eclFullMoonClip',[1.025,1,2.05])}<g clip-path="url(#eclFullMoonClip)"><polygon points="${lunarGeo.pen}" fill="#080b1d" opacity=".15"/><polygon points="${lunarGeo.umb}" fill="#87391e" opacity=".72"/></g>${svgCircle(fullMoon,'url(#eclSphere)')}

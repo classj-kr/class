@@ -9,13 +9,13 @@
   "use strict";
   const BEANS = Object.freeze([
     { id: "kidney", name: "강낭콩", count: 22, prices: [3, 5, 7, 9], art: "bean-kidney-v3.webp", color: "#bf5441" },
-    { id: "soy", name: "대두", count: 20, prices: [3, 5, 6, 8], art: "bean-soy-v3.png", color: "#b38a39" },
-    { id: "mung", name: "녹두", count: 18, prices: [3, 4, 6, 7], art: "bean-mung-v3.png", color: "#639059" },
-    { id: "black", name: "검정콩", count: 16, prices: [2, 4, 5, 7], art: "bean-black-v3.png", color: "#5b6474" },
-    { id: "white", name: "흰콩", count: 14, prices: [2, 3, 5, 6], art: "bean-white-v3.png", color: "#aa9579" },
-    { id: "chickpea", name: "병아리콩", count: 12, prices: [2, 3, 4, 6], art: "bean-chickpea-v4.png", color: "#c08d24" },
-    { id: "pinto", name: "얼룩콩", count: 10, prices: [2, 3, 4, 5], art: "bean-pinto-v5.png", color: "#987450" },
-    { id: "fava", name: "잠두", count: 8, prices: [1, 2, 3, 4], art: "bean-fava-v3.png", color: "#477b68" }
+    { id: "soy", name: "대두", count: 20, prices: [3, 5, 6, 8], art: "bean-soy-v3.webp", color: "#b38a39" },
+    { id: "mung", name: "녹두", count: 18, prices: [3, 4, 6, 7], art: "bean-mung-v3.webp", color: "#639059" },
+    { id: "black", name: "검정콩", count: 16, prices: [2, 4, 5, 7], art: "bean-black-v3.webp", color: "#5b6474" },
+    { id: "white", name: "흰콩", count: 14, prices: [2, 3, 5, 6], art: "bean-white-v3.webp", color: "#aa9579" },
+    { id: "chickpea", name: "병아리콩", count: 12, prices: [2, 3, 4, 6], art: "bean-chickpea-v4.webp", color: "#c08d24" },
+    { id: "pinto", name: "얼룩콩", count: 10, prices: [2, 3, 4, 5], art: "bean-pinto-v5.webp", color: "#987450" },
+    { id: "fava", name: "잠두", count: 8, prices: [1, 2, 3, 4], art: "bean-fava-v3.webp", color: "#477b68" }
   ]);
   const byKind = Object.fromEntries(BEANS.map(bean => [bean.id, bean]));
   const ROUND_LIMIT = 5;
