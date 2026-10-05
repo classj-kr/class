@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["dujin-hae"] = {
         "poem": {
+            "illustration": "poems/dujin-hae/illustration.webp",
             "lines": [
                 "해야 솟아라. 해야 솟아라. 말갛게 씻은 얼굴 고운 해야 솟아라. 산 넘어 산 넘어서 어둠을 살라 먹고, 산 넘어서 밤새도록 어둠을 살라 먹고, 이글이글 앳된 얼굴 고운 해야 솟아라.",
                 "",

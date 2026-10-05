@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["mogwol-nageune"] = {
         "poem": {
+            "illustration": "poems/mogwol-nageune/illustration.webp",
             "lines": [
                 "강나루 건너서",
                 "밀밭 길을",

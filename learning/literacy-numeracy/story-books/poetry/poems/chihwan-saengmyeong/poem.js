@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["chihwan-saengmyeong"] = {
         "poem": {
+            "illustration": "poems/chihwan-saengmyeong/illustration.webp",
             "lines": [
                 "나의 지식이 독한 회의(懷疑)를 구(救)하지 못하고",
                 "내 또한 삶의 애증(愛憎)을 다 짐지지 못하여",

@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["suyeong-pokpo"] = {
         "poem": {
+            "illustration": "poems/suyeong-pokpo/illustration.webp",
             "lines": [
                 "폭포는 곧은 절벽을 무서운 기색도 없이 떨어진다.",
                 "",

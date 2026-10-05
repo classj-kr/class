@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["jeongju-chucheonsa"] = {
         "poem": {
+            "illustration": "poems/jeongju-chucheonsa/illustration.webp",
             "lines": [
                 "향단아 그넷줄을 밀어라",
                 "머언 바다로",

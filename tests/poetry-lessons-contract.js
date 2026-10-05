@@ -20,7 +20,7 @@ const EXPIRY_CUTOFF_YEAR = 1962;
 // 다른 넷과 달리 "권리가 끝났다"는 뜻이 전혀 아니므로 poetDied 검사를 하지 않는다.
 const ALLOWED_BASIS = new Set(["expired", "oral", "own-translation", "classic", "included"]);
 
-const poetryDir = path.join(__dirname, "..", "learning", "literacy-numeracy", "poetry");
+const poetryDir = path.join(__dirname, "..", "learning", "literacy-numeracy", "story-books", "poetry");
 const read = (name) => fs.readFileSync(path.join(poetryDir, name), "utf8");
 
 const context = { window: {} };
@@ -33,9 +33,9 @@ for (const name of ["poems-index.js", "lessons.js"]) {
 // 검사는 예전처럼 시 한 편을 통째로 놓고 봐야 하므로 여기서 도로 합친다.
 const partsDir = path.join(poetryDir, "poems");
 const poems = context.window.POETRY_POEM_INDEX.map((entry) => {
-    const file = path.join(partsDir, `${entry.id}.js`);
-    assert.ok(fs.existsSync(file), `시 ${entry.id}: poems/${entry.id}.js가 없습니다.`);
-    vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: `${entry.id}.js` });
+    const file = path.join(partsDir, entry.id, "poem.js");
+    assert.ok(fs.existsSync(file), `시 ${entry.id}: poems/${entry.id}/poem.js가 없습니다.`);
+    vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: `${entry.id}/poem.js` });
     const part = context.window.POETRY_PART[entry.id];
     assert.ok(part, `시 ${entry.id}: 본문 파일이 자기 자리에 등록되지 않았습니다.`);
     return { ...entry, ...part.poem, lines: part.poem.lines || [] };

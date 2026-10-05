@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["suyeong-gogung"] = {
         "poem": {
+            "illustration": "poems/suyeong-gogung/illustration.webp",
             "lines": [
                 "왜 나는 조그마한 일에만 분개하는가",
                 "저 왕궁 대신에 왕궁의 음탕 대신에",

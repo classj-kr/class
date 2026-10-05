@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["chihwan-gitbal"] = {
         "poem": {
+            "illustration": "poems/chihwan-gitbal/illustration.webp",
             "lines": [
                 "이것은 소리없는 아우성.",
                 "저 푸른 해원(海原)을 향하여 흔드는",
