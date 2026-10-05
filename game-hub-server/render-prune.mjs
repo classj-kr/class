@@ -22,6 +22,8 @@ export const RENDER_PRUNE_TARGETS = Object.freeze([
   "clean-roster.js",
   // Audit screenshots and QA captures; the server has no /docs route.
   "docs",
+  // Review screenshots and audit pages written by local tooling; nothing serves them.
+  "output",
   "pisa-reference.jpg",
   "references",
   "scratch_all_poems_text.txt",
