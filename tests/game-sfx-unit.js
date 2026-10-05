@@ -31,7 +31,7 @@ for (const soundName of sharedSoundNames) {
     assert.ok(fs.existsSync(filePath), `Missing file-backed ${soundName} sound.`);
     assert.ok(fs.statSync(filePath).size > 1_000, `${soundName}.ogg is unexpectedly small.`);
 }
-for (const soundName of ["click", "bell", "card", "stone", "success", "error", "tick"]) {
+for (const soundName of ["click", "bell", "card", "stone", "capture", "success", "error", "tick"]) {
     assert.ok(sfxSource.includes(`${soundName}:`), `Missing synthesized fallback for ${soundName}.`);
 }
 assert.ok(sfxSource.includes("const soundUrls"), "Shared effects should resolve OGG asset URLs.");
@@ -55,7 +55,7 @@ assert.ok(sfxSource.includes('DEFAULT_VOLUME = 0.65;'), "Default SFX volume shou
 const musicControlSource = fs.readFileSync(musicControlPath, "utf8");
 new vm.Script(musicControlSource, { filename: musicControlPath });
 assert.ok(musicControlSource.includes('new URL("game-sfx.js", currentScript.src)'), "Music-enabled games should load the shared effect module.");
-assert.ok(musicControlSource.includes('sfxScriptUrl.searchParams.set("v", "20260912-feedback-scope-1")'), "Music-enabled games should cache-bust the current shared effect module.");
+assert.ok(musicControlSource.includes('sfxScriptUrl.searchParams.set("v", "20261006-capture")'), "Music-enabled games should cache-bust the current shared effect module.");
 assert.ok(musicControlSource.includes("classmusicchange"), "Music controls should publish the shared mute and volume state.");
 assert.ok(musicControlSource.includes('id="musicVolumeSlider"'), "Shared music volume should use the compact linear slider.");
 assert.ok(musicControlSource.includes('id="sfxVolumeSlider"'), "Shared effect volume should use the compact linear slider.");

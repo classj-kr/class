@@ -23,7 +23,9 @@
     return {rook:'車',cannon:'包',horse:'馬',elephant:'象',guard:'士'}[piece.type];
   }
   function play(piece,board,move,display=(x,y)=>({x,y})){
-    if(!piece?.animate||globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return null;
+    const sound=()=>globalThis.ClassGameSfx?.play(move.captured?'capture':'stone');
+    if(!piece)return null;
+    if(!piece.animate||globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches){sound();return null;}
     const destination=display(move.toX,move.toY),path=route(move).map(p=>display(p.x,p.y));
     const frames=path.map((p,index)=>({
       transform:`translate(${(p.x-destination.x)*board.clientWidth/9}px, ${(p.y-destination.y)*board.clientHeight/10}px)`,
@@ -32,6 +34,8 @@
     const cell=piece.parentElement;
     piece.classList.add('path-moving');cell?.classList.add('motion-cell');
     const travel=duration(move),animation=piece.animate(frames,{duration:travel,easing:'linear'}),animations=[animation];
+    // Canceled moves (undo/new game) must never leave a delayed impact sound.
+    animation.finished.then(sound,()=>{});
     let victim=null,impact=null;
     if(move.captured&&cell){
       victim=document.createElement('span');victim.className=`piece ${move.captured.side} ${move.captured.type} capture-ghost`;
@@ -39,7 +43,7 @@
       impact=document.createElement('span');impact.className='capture-impact';impact.setAttribute('aria-hidden','true');cell.appendChild(impact);
       animations.push(piece.animate([{transform:'scale(1)'},{transform:'scale(1.12)',offset:.35},{transform:'scale(1)'}],{delay:travel,duration:180,easing:'ease-out'}));
       animations.push(victim.animate([{opacity:1,transform:'translateY(0) scale(1)'},{opacity:1,transform:'translateY(-8px) scale(1.08)',offset:.25},{opacity:0,transform:'translateY(-30px) scale(.45)'}],{delay:travel,duration:320,fill:'forwards',easing:'ease-out'}));
-      animations.push(impact.animate([{opacity:0,transform:'scale(.7)'},{opacity:1,offset:.2},{opacity:0,transform:'scale(1.35)'}],{delay:travel,duration:300,fill:'both',easing:'ease-out'}));
+      animations.push(impact.animate([{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1)',offset:.18},{opacity:0,transform:'scale(1.5)'}],{delay:travel,duration:340,fill:'both',easing:'ease-out'}));
     }
     const cleanup=()=>{piece.classList.remove('path-moving');cell?.classList.remove('motion-cell');victim?.remove();impact?.remove();};
     return {animation,finished:Promise.all(animations.map(a=>a.finished.catch(()=>{}))).then(cleanup),cancel:()=>{animations.forEach(a=>a.cancel());cleanup();}};

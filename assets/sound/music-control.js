@@ -44,7 +44,7 @@
         const sfxScriptUrl = currentScript
             ? new URL("game-sfx.js", currentScript.src)
             : new URL("../../assets/sound/game-sfx.js", location.href);
-        sfxScriptUrl.searchParams.set("v", "20260912-feedback-scope-1");
+        sfxScriptUrl.searchParams.set("v", "20261006-capture");
         sfxScript.src = sfxScriptUrl.href;
         document.head.appendChild(sfxScript);
     }
@@ -53,7 +53,8 @@
     // Optional controller contract: setVolume(number), setMuted(boolean), unlock().
     const externalMusic = window.ClassMusicController;
     const audio = externalMusic ? null : document.getElementById("bgm");
-    if (!audio && !externalMusic) return;
+    const sfxOnly = !audio && !externalMusic && currentScript?.hasAttribute("data-sfx-controls");
+    if (!audio && !externalMusic && !sfxOnly) return;
 
     if (!document.querySelector('link[data-class-music-style]')) {
         const stylesheet = document.createElement("link");
@@ -165,6 +166,11 @@
         </div>`;
 
     document.body.appendChild(control);
+    if (sfxOnly) {
+        control.querySelector(".unified-audio-group").style.display = "none";
+        control.querySelector(".unified-audio-divider").style.display = "none";
+        control.querySelector(".unified-audio-panel").style.gridTemplateColumns = "48px";
+    }
     document.body.classList.add("class-music-ready");
 
     const menuToggle = control.querySelector(".unified-audio-menu-toggle");
@@ -260,7 +266,7 @@
     }
 
     function render() {
-        menuToggle.textContent = musicMuted && sfxMuted ? "🔇" : "🔊";
+        menuToggle.textContent = (sfxOnly || musicMuted) && sfxMuted ? "🔇" : "🔊";
         renderSlider(musicMuteBtn, musicVolumeSlider, "음악", "♪", musicVolume, musicMuted);
         renderSlider(sfxMuteBtn, sfxVolumeSlider, "효과음", "✦", sfxVolume, sfxMuted);
     }
@@ -271,7 +277,7 @@
             externalMusic.setMuted(musicMuted);
             return;
         }
-        if (applyingAudioState) return;
+        if (!audio || applyingAudioState) return;
         applyingAudioState = true;
         const targetVolume = musicVolume;
         if (Math.abs(audio.volume - targetVolume) > 0.001) audio.volume = targetVolume;
@@ -317,6 +323,7 @@
     }
 
     async function startPlayback() {
+        if (sfxOnly) return false;
         if (document.body.dataset.musicPausedForReading === "true") return false;
         applyAudioState();
         if (externalMusic) {

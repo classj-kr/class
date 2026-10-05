@@ -119,3 +119,7 @@ legend { font-weight: 800; margin-bottom: 8px; }
   .color-options { grid-template-columns: 1fr; }
   .controls button { flex: 1; padding: 7px; font-size: 14px; }
 }
+
+/* Keep the sound control clear of the new-game button on narrow boards. */
+.board-coach .unified-music-control{top:auto;bottom:max(12px,env(safe-area-inset-bottom))}
+.board-coach .unified-music-control .unified-audio-panel{top:auto;bottom:56px}

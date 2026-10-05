@@ -22,7 +22,7 @@
 .janggi-board .piece.path-moving{animation:none!important;z-index:8}
 .janggi-board .motion-cell{z-index:10}
 .janggi-board .piece.capture-ghost{position:absolute;z-index:9;pointer-events:none;animation:none!important;transform:none;outline:none}
-.janggi-board .capture-impact{position:absolute;inset:8%;z-index:10;border:4px solid #fff0a3;border-radius:50%;box-shadow:0 0 16px #f49b3c;pointer-events:none}
+.janggi-board .capture-impact{inset:8%}
 @keyframes lastmove{to{transform:translateY(-3px);filter:brightness(1.12)}
 }
 .janggi-board .piece.check{animation:checkpulse .7s infinite alternate}

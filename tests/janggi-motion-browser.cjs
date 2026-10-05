@@ -17,6 +17,8 @@ function position(fixture,flip=false){
 async function installProbe(page){
   await page.addInitScript(()=>{
     window.motionLog=[];window.holdMotion=true;
+    window.soundLog=[];
+    addEventListener('classsfxready',()=>{const play=ClassGameSfx.play;ClassGameSfx.play=name=>{if(['capture','stone'].includes(name))soundLog.push(name);return play(name);};});
     const original=Element.prototype.animate;
     Element.prototype.animate=function(frames,options){
       const animation=original.call(this,frames,options);
@@ -65,6 +67,7 @@ async function main(){
       assert.equal(await page.evaluate(()=>motionLog.length),0,'initial boards must not animate');
       await page.locator(`[data-square="${from}"]`).click();await page.locator(`[data-square="${to}"]`).click();
       const motion=await snapshot(page);
+      assert.deepEqual(await page.evaluate(()=>soundLog),[],'sound waits for arrival');
       assert.equal(motion.frames.length,fixture.frames);assert.equal(motion.options.duration,fixture.duration);
       assert.notEqual(motion.frames[0].transform,'translate(0px, 0px)');assert.equal(motion.frames.at(-1).transform,'translate(0px, 0px)');
       assert.equal(motion.cellRaised,true);assert.equal(await page.locator('#hint').isEnabled(),false);
@@ -80,6 +83,7 @@ async function main(){
         }
       }
       await finish(page);
+      assert.deepEqual(await page.evaluate(()=>soundLog),[fixture.capture?'capture':'stone']);
       if(fixture.capture){
         assert.equal(await page.locator('#myCaptureCount').innerText(),'1');assert.equal(await page.locator('#aiCaptureCount').innerText(),'0');
         assert.match(await page.locator('#latestCapture').innerText(),/내 .*상대 .*잡았어요/);
@@ -94,14 +98,17 @@ async function main(){
     const capture=fixtures[2],cancelled=await coach(capture);
     await cancelled.locator('[data-square="45"]').click();await cancelled.locator('[data-square="18"]').click();
     await cancelled.locator('#undo').click();assert.equal(await cancelled.locator('.capture-ghost,.path-moving,.capture-impact').count(),0);
+    assert.deepEqual(await cancelled.evaluate(()=>soundLog),[],'undo cancels impact audio');
     assert.equal(await cancelled.locator('#myCaptureCount').innerText(),'0');assert.match(await cancelled.locator('#turn').innerText(),/^내 차례/);await cancelled.close();
     const opponent=await coach({pieces:[['hR',0,4],['cH',0,6]]},false,{from:36,to:54});
     await opponent.locator('.capture-ghost').waitFor();await finish(opponent);
+    assert.deepEqual(await opponent.evaluate(()=>soundLog),['capture'],'AI capture has the same sound');
     assert.equal(await opponent.locator('#aiCaptureCount').innerText(),'1');assert.match(await opponent.locator('#latestCapture').innerText(),/AI의 차가 내 마를/);
     await opponent.setViewportSize({width:390,height:844});assert.equal(await opponent.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
     await opponent.screenshot({path:path.join(output,'ai-capture-summary-phone.png'),fullPage:true});await opponent.close();
     const reduced=await coach(capture,false,null,true);
     await reduced.locator('[data-square="45"]').click();await reduced.locator('[data-square="18"]').click();
+    assert.deepEqual(await reduced.evaluate(()=>soundLog),['capture']);
     assert.equal(await reduced.evaluate(()=>motionLog.length),0);assert.equal(await reduced.locator('#myCaptureCount').innerText(),'1');await reduced.close();
     // Exercise the actual online controller, with the same positions and moves.
     const online=await browser.newPage({viewport:{width:1280,height:900}});online.on('pageerror',e=>errors.push(e.message));await installProbe(online);
@@ -109,13 +116,15 @@ async function main(){
     for(const fixture of fixtures){
       const s=position(fixture),pieces=s.board.flatMap((p,i)=>p?[{id:i,side:p[0]==='c'?'cho':'han',type:types[p[1]],x:i%9,y:Math.floor(i/9)}]:[]);
       await online.evaluate(({pieces,from,to})=>{
-        motionLog=[];myRole='host';applyStartState({...makeInitialState('HEEH','HEEH',30),pieces});stopTurnTimer();
+        motionLog=[];soundLog=[];myRole='host';applyStartState({...makeInitialState('HEEH','HEEH',30),pieces});stopTurnTimer();
         selected=from;legalTargets=legalMovesFor(state.pieces.find(p=>p.id===selected),state.pieces);moveSelected(to%9,Math.floor(to/9));stopTurnTimer();
       },{pieces,from:fixture.from,to:fixture.to});
       const motion=await snapshot(online);assert.equal(motion.frames.length,fixture.frames);assert.equal(motion.options.duration,fixture.duration);
       if(fixture.capture){assert.ok(motion.ghost);assert.match(await online.locator('#lastCapture').innerText(),/최근 잡기/);}
       await finish(online);
+      assert.deepEqual(await online.evaluate(()=>soundLog),[fixture.capture?'capture':'stone']);
       const count=await online.evaluate(()=>motionLog.length);await online.evaluate(()=>render());assert.equal(await online.evaluate(()=>motionLog.length),count,'rerender must not replay the move');
+      assert.equal(await online.evaluate(()=>soundLog.length),1,'rerender must stay silent');
       console.log('Online '+fixture.name+': PASS');
     }
     await online.evaluate(()=>{applyStartState(makeInitialState('HEEH','HEEH',30));stopTurnTimer();});

@@ -1,0 +1,5 @@
+/* One local impact per captured piece; no board shake or full-screen flash. */
+.capture-impact{position:absolute;inset:9%;z-index:12;pointer-events:none;border:3px solid #fff4bd;border-radius:50%;background:radial-gradient(circle,transparent 40%,#ffbf5266 72%,transparent 73%);box-shadow:0 0 15px #ffb43c,inset 0 0 10px #fff0a3;box-sizing:border-box}
+.capture-impact::after{content:"";position:absolute;inset:-40%;border-radius:50%;background:repeating-conic-gradient(from 10deg,transparent 0deg 34deg,#ffe4a0 35deg 40deg,transparent 41deg 60deg);mask:radial-gradient(transparent 47%,#000 49% 66%,transparent 68%)}
+.capture-ghost{pointer-events:none}
+@media(prefers-reduced-motion:reduce){.capture-impact{display:none}}

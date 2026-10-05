@@ -16,7 +16,7 @@ async function main(){
     browser=await chromium.launch({headless:true,channel:'msedge'});fs.mkdirSync(output,{recursive:true});
     async function boot(game,position,color='1',{scripted,reduced=false}={}){
       const page=await browser.newPage({viewport:{width:1280,height:850},reducedMotion:reduced?'reduce':'no-preference'});page.on('pageerror',e=>errors.push(e.message));
-      await page.addInitScript(()=>{window.motionLog=[];window.holdMotion=true;const original=Element.prototype.animate;Element.prototype.animate=function(frames,options){const animation=original.call(this,frames,options);motionLog.push({element:this,frames,options,animation});if(holdMotion)animation.pause();return animation;};});
+      await page.addInitScript(()=>{window.motionLog=[];window.holdMotion=true;window.soundLog=[];addEventListener('classsfxready',()=>{const play=ClassGameSfx.play;ClassGameSfx.play=name=>{if(['capture','stone'].includes(name))soundLog.push(name);return play(name);};});const original=Element.prototype.animate;Element.prototype.animate=function(frames,options){const animation=original.call(this,frames,options);motionLog.push({element:this,frames,options,animation});if(holdMotion)animation.pause();return animation;};});
       const controller=game==='chess'?'chess-coach':'coach';
       if(position)await page.route(`**/${controller}.js?*`,async route=>{
         const response=await route.fetch(),prefix=game==='chess'?`window.ClassChessRules={...ClassChessRules,createInitialState:()=>ClassChessRules.boardFromFen(${JSON.stringify(position)},'standard')};\n`:`window.BoardCoachRules={...BoardCoachRules,initial:()=>(${JSON.stringify(position)})};\n`;
@@ -32,34 +32,37 @@ async function main(){
     async function move(page,from,to,promotion){await page.locator(`[data-square='${C.squareIndex(from)}']`).click();await page.locator(`[data-square='${C.squareIndex(to)}']`).click();if(promotion)await page.locator(`[data-promote='${promotion}']`).click();}
     const cases=[
       ['knight',null,'g1','f3',null,'1',1],
-      ['capture','4k3/8/8/3p4/4P3/8/8/4K3 w - - 0 1','e4','d5',null,'1',2],
+      ['capture','4k3/8/8/3p4/4P3/8/8/4K3 w - - 0 1','e4','d5',null,'1',3],
       ['castle','4k3/8/8/8/8/8/8/4K2R w K - 0 1','e1','g1',null,'1',2],
       ['black castle','r3k3/8/8/8/8/8/8/4K3 b q - 0 1','e8','c8',null,'2',2],
-      ['en passant','4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1','e5','d6',null,'1',2],
-      ['promotion','4k3/P7/8/8/8/8/8/4K3 w - - 0 1','a7','a8','Q','1',1]
+      ['en passant','4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1','e5','d6',null,'1',3],
+      ['promotion','4k3/P7/8/8/8/8/8/4K3 w - - 0 1','a7','a8','Q','1',1],
+      ['promotion capture','1r2k3/P7/8/8/8/8/8/4K3 w - - 0 1','a7','b8','Q','1',3]
     ];
     for(const [name,fen,from,to,promotion,color,count]of cases){
       const page=await boot('chess',fen,color);assert.equal(await page.evaluate(()=>motionLog.length),0);
-      await move(page,from,to,promotion);assert.equal(await page.evaluate(()=>motionLog.length),count,name);
+      await move(page,from,to,promotion);assert.equal(await page.evaluate(()=>motionLog.length),count,name);assert.deepEqual(await page.evaluate(()=>soundLog),[],'sound waits for arrival');
       assert.equal(await page.locator('#hint').isDisabled(),true);assert.equal(await page.locator('#zoom').isDisabled(),true);
       if(name==='knight')assert.equal(await page.evaluate(()=>motionLog[0].frames.length),3);
-      if(count===2&&!name.includes('castle')){
+      if(count===3){
         assert.equal(await page.locator('#myCaptureCount').innerText(),'0');
         assert.ok(await page.evaluate(()=>motionLog[1].options.delay===motionLog[0].options.duration));
         assert.equal(await page.locator('.capture-ghost').count(),1);
         if(name==='en passant')assert.equal(await page.locator('[data-square="35"] .capture-ghost').count(),1);
       }
+      if(name==='capture'){await page.evaluate(()=>motionLog.forEach(t=>t.animation.currentTime=motionLog[0].options.duration+60));await page.screenshot({path:path.join(output,'chess-capture-impact.png')});}
       await finish(page);
-      if(count===2&&!name.includes('castle')){assert.equal(await page.locator('#myCaptureCount').innerText(),'1');assert.match(await page.locator('#latestCapture').innerText(),/폰.*잡음/);}
+      assert.deepEqual(await page.evaluate(()=>soundLog),[count===3?'capture':'stone']);
+      if(count===3){assert.equal(await page.locator('#myCaptureCount').innerText(),'1');assert.match(await page.locator('#latestCapture').innerText(),/(?:폰|룩).*잡음/);}
       await page.locator('#undo').click();assert.equal(await page.locator('#myCaptureCount').innerText(),'0');assert.equal(await page.locator('#board .capture-ghost,.moving-ghost').count(),0);assert.equal(await page.locator(`[data-square='${C.squareIndex(from)}'] .piece-svg`).count(),1);
       await page.close();
     }
     console.log('chess motion: both colors, knight, captures, castling, en passant, promotion and undo passed');
-    const canceled=await boot('chess',cases[1][1]);await move(canceled,'e4','d5');await canceled.locator('#undo').click();await canceled.waitForTimeout(500);assert.equal(await canceled.locator('.capture-ghost,.piece-moving').count(),0);assert.equal(await canceled.locator('#myCaptureCount').innerText(),'0');await canceled.close();
-    const reduced=await boot('chess',cases[1][1],'1',{reduced:true});await move(reduced,'e4','d5');assert.equal(await reduced.evaluate(()=>motionLog.length),0);assert.equal(await reduced.locator('#myCaptureCount').innerText(),'1');await reduced.close();
+    const canceled=await boot('chess',cases[1][1]);await move(canceled,'e4','d5');await canceled.locator('#undo').click();await canceled.waitForTimeout(500);assert.equal(await canceled.locator('.capture-ghost,.piece-moving').count(),0);assert.equal(await canceled.locator('#myCaptureCount').innerText(),'0');assert.deepEqual(await canceled.evaluate(()=>soundLog),[]);await canceled.close();
+    const reduced=await boot('chess',cases[1][1],'1',{reduced:true});await move(reduced,'e4','d5');assert.equal(await reduced.evaluate(()=>motionLog.length),0);assert.equal(await reduced.locator('#myCaptureCount').innerText(),'1');assert.deepEqual(await reduced.evaluate(()=>soundLog),['capture']);await reduced.close();
     const captured=await boot('chess','4k3/8/8/3p4/4P3/8/8/4K3 b - - 0 1','1',{scripted:['d5','e4']});
-    await captured.waitForFunction(()=>motionLog.length===2);assert.equal(await captured.locator('#aiCaptureCount').innerText(),'0');await finish(captured);
-    assert.equal(await captured.locator('#aiCaptureCount').innerText(),'1');assert.equal(await captured.locator('#myCaptureCount').innerText(),'0');
+    await captured.waitForFunction(()=>motionLog.length===3);assert.equal(await captured.locator('#aiCaptureCount').innerText(),'0');await finish(captured);
+    assert.deepEqual(await captured.evaluate(()=>soundLog),['capture']);assert.equal(await captured.locator('#aiCaptureCount').innerText(),'1');assert.equal(await captured.locator('#myCaptureCount').innerText(),'0');
     const captureText=await captured.locator('#latestCapture').innerText();assert.match(captureText,/AI의.*내 폰 잡음/);
     await move(captured,'e1','d1');await finish(captured);assert.equal(await captured.locator('#latestCapture').innerText(),captureText);
     await captured.locator('#undo').click();assert.equal(await captured.locator('#aiCaptureCount').innerText(),'1');await captured.close();
