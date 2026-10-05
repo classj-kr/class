@@ -180,6 +180,43 @@ test("every level accepts a saving bikjang instead of losing an undefended chari
   }
 });
 
+test('king and cannon versus a bare king accepts bikjang at every level and on either side',()=>{
+  // The reported 202-ply position, immediately before Han declined with K15-14.
+  const original=fixture([['cK',4,7],['hK',4,0],['hC',6,8]],'h');original.ply=202;
+  for(const flipped of [false,true]){
+    const s=flipped?R.position(original.board.slice().reverse().map(p=>p?R.other(p[0])+p[1]:null),'c'):original;
+    assert.equal(R.facing(s),true);assert.equal(AI.evaluate(s),0);assert.equal(AI.evaluate(s,true),0);
+    assert.equal(R.status(s).ended,false,'AI draw policy must not change the rules into automatic adjudication');
+    const before=JSON.stringify(s);
+    for(const level of Object.keys(AI.LEVELS))for(const options of [{nodes:0,ms:0},{}]){
+      const answer=AI.choose(s,level,options);assert.equal(answer.move.kind,'bikjang');assert.match(answer.reason,/외통수.*빅장/);
+      assert.equal(R.play(s,answer.move).state.result.reason,'bikjang');
+    }
+    assert.equal(AI.chooseHint(s).move.kind,'bikjang');assert.equal(JSON.stringify(s),before);
+  }
+});
+
+test('the reported ending offers a pass and finishes on the human response, without phantom strategy',()=>{
+  const s=fixture([['cK',4,7],['hK',3,0],['hC',6,8]],'h');s.ply=202;
+  for(const level of Object.keys(AI.LEVELS)){
+    const answer=AI.choose(s,level);assert.equal(answer.move.kind,'pass');
+    const next=R.play(s,answer.move).state;assert.equal(R.status(next).ended,false);
+    const note=AI.opponentView(s,answer.move);assert.match(note.response,/한 수 쉬기.*무승부/);assert.deepEqual(note.targets,[]);assert.equal(note.forecast,'');
+    const reply=AI.chooseHint(next);assert.equal(reply.move.kind,'pass');assert.equal(R.play(next,reply.move).state.result.reason,'passes');
+  }
+  const human=R.position(s.board,'c'),offered=move(human,4,7,3,7);
+  assert.equal(AI.choose(offered,'advanced').move.kind,'bikjang','do not dodge the next offer by moving the king');
+});
+
+test('an unforceable ending still requires a legal response to check',()=>{
+  const s=fixture([['cK',4,8],['hK',3,1],['hR',4,5]]);
+  assert.equal(R.inCheck(s),true);assert.equal(AI.cannotForceMate(s),true);
+  for(const level of Object.keys(AI.LEVELS)){
+    const answer=AI.choose(s,level);assert.ok(!answer.move.kind);const next=R.play(s,answer.move);
+    assert.ok(next.ok);assert.equal(R.inCheck(next.state,'c'),false);
+  }
+});
+
 test("intermediate and advanced defend a two-move mate instead of grabbing a soldier",()=>{
   // From a real loss: after repeated checks, the cannon's tempting capture
   // permits Chariot 49-29+, followed by Chariot 37-17 mate after every reply.
