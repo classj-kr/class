@@ -1,10 +1,15 @@
-/* global JanggiCoachRules, JanggiCoachAI, BoardCoachUI */
+/* global JanggiCoachRules, JanggiCoachAI, JanggiMotion, BoardCoachUI */
 (() => {
   "use strict";
   if(new URLSearchParams(location.search).get("game")!=="janggi")return;
   const R=JanggiCoachRules,AI=JanggiCoachAI,$=id=>document.getElementById(id);
   let state=R.initial(),human="c",level="beginner",started=false,selected=null,hint=null,scene=null,feedback=null,history=[];
   let worker=null,token=0,timeout=null,nextTurn=null,busy=false,job="move";
+  let motion=null,moving=false;
+  const pieceTypes={R:'rook',C:'cannon',H:'horse',E:'elephant',A:'guard',P:'soldier',K:'king'};
+  const pieceInfo=p=>({side:p[0]==='c'?'cho':'han',type:pieceTypes[p[1]]});
+  const subject=word=>word+((word.charCodeAt(word.length-1)-0xac00)%28?'이':'가');
+  const object=word=>word+((word.charCodeAt(word.length-1)-0xac00)%28?'을':'를');
   const escape=text=>String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const endLabels={mate:"외통수",bikjang:"빅장",passes:"양쪽 한 수 쉬기",repetition:"같은 판 반복","perpetual-check":"반복 장군",quiet:"잡기 없이 100수",resign:"기권"};
   document.title="장기 · AI와 배우기";document.body.classList.add("janggi-coach");
@@ -21,14 +26,41 @@
   $("backLink").textContent="메인 화면으로";
   document.querySelector(".controls").append($("backLink"));
   document.querySelector(".sidebar").prepend(document.querySelector(".topbar"),document.querySelector(".matchbar"),document.querySelector(".lesson"),document.querySelector(".controls"));
+  document.querySelector('.controls').insertAdjacentHTML('afterend','<section id="janggiCaptures" class="panel capture-summary" aria-label="잡은 말"><p id="latestCapture" class="latest-capture" aria-live="polite">아직 잡힌 말이 없어요.</p><div class="capture-trays"><div><h3>내가 잡은 말 <span id="myCaptureCount">0</span></h3><div id="myCaptures" class="capture-tokens"></div></div><div><h3>AI가 잡은 말 <span id="aiCaptureCount">0</span></h3><div id="aiCaptures" class="capture-tokens"></div></div></div></section>');
+  document.querySelector(".explanation").insertAdjacentHTML("beforebegin",'<section id="opponentPanel" class="panel opponent-plan hidden" aria-live="polite" aria-labelledby="opponentTitle"><span class="eyebrow">상대가 노리는 것</span><h2 id="opponentTitle"></h2><p id="opponentIntent"></p><p id="opponentDanger" class="opponent-danger"></p><h3>내 대응 방향</h3><p id="opponentResponse"></p><details id="opponentForecast" open><summary>예상되는 다음 수</summary><p id="opponentLine"></p></details></section>');
   document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel janggi-record"><summary>대국 기록</summary><div id="janggiMoves">아직 둔 수가 없습니다.</div></details>');
   document.body.insertAdjacentHTML("beforeend",'<dialog id="janggiConfirm" aria-labelledby="janggiConfirmTitle"><h2 id="janggiConfirmTitle"></h2><p id="janggiConfirmText"></p><div class="resign-choices"><button id="janggiConfirmYes" type="button"></button><button id="janggiConfirmCancel" class="quiet" type="button">취소</button></div></dialog>');
   let confirmKind=null;
   function reason(label,title,text){$("reasonLabel").textContent=label;$("moveLabel").textContent=title;$("reason").textContent=text;}
-  function stop(){if(busy&&job==="hint")reason("힌트 계산 취소","계산을 멈췄어요","힌트를 누르면 다시 계산합니다.");token++;worker?.terminate();worker=null;clearTimeout(timeout);clearTimeout(nextTurn);busy=false;}
+  function stop(){if(busy&&job==="hint")reason("힌트 계산 취소","계산을 멈췄어요","힌트를 누르면 다시 계산합니다.");token++;worker?.terminate();worker=null;clearTimeout(timeout);clearTimeout(nextTurn);busy=false;moving=false;motion?.cancel();motion=null;}
+  function renderCaptures(position){
+    const captures=position.history.filter(entry=>entry.move?.capture),latest=captures.at(-1);
+    for(const [side,id,countId]of [[human,'myCaptures','myCaptureCount'],[R.other(human),'aiCaptures','aiCaptureCount']]){
+      const taken=captures.filter(entry=>entry.mover===side),groups=new Map();
+      taken.forEach(entry=>groups.set(entry.move.capture,(groups.get(entry.move.capture)||0)+1));
+      $(countId).textContent=taken.length;
+      $(id).innerHTML=groups.size?[...groups].map(([p,count])=>`<span class="capture-token" aria-label="${AI.name(p)} ${count}개"><b class="${p[0]==='c'?'cho':'han'}" aria-hidden="true">${JanggiMotion.face(pieceInfo(p))}</b><span>${AI.name(p)}${count>1?' ×'+count:''}</span></span>`).join(''):'<span class="capture-empty">없음</span>';
+    }
+    if(latest){
+      const m=latest.move,ply=position.ply-position.history.length+1+position.history.indexOf(latest);
+      $('latestCapture').textContent=`최근 잡기 · ${ply}수\n${latest.mover===human?'내':'AI의'} ${subject(AI.name(m.piece))} ${latest.mover===human?'상대':'내'} ${object(AI.name(m.capture))} 잡았어요.`;
+    }else $('latestCapture').textContent='아직 잡힌 말이 없어요.';
+  }
   function render(){
     const position=scene?.before||state,end=R.status(state),moves=R.actions(position);
-    const active=started&&!busy&&!scene&&!end.ended&&state.turn===human;
+    renderCaptures(moving?history.at(-1).before:position);
+    const opponent=started&&!scene&&!end.ended&&state.turn===human?history.at(-1)?.opponent:null;
+    const threatened=new Set(opponent?.targets||[]);
+    $("opponentPanel").classList.toggle("hidden",!opponent);
+    if(opponent){
+      $("opponentTitle").textContent=opponent.title;$("opponentIntent").textContent=opponent.summary;
+      $("opponentDanger").textContent=opponent.danger;$("opponentDanger").classList.toggle("hidden",!opponent.danger);
+      $("opponentResponse").textContent=opponent.response;
+      // Once a hint is chosen, its deeper continuation is shown with the hint.
+      // Keep the threats visible without displaying two competing forecasts.
+      $("opponentForecast").classList.toggle("hidden",!!hint||!opponent.forecast);$("opponentLine").textContent=opponent.forecast;
+    }
+    const active=started&&!busy&&!moving&&!scene&&!end.ended&&state.turn===human;
     const sources=new Set(moves.filter(m=>!m.kind).map(m=>m.from));
     const targets=new Set(moves.filter(m=>!m.kind&&m.from===selected).map(m=>m.to));
     const mark=scene?scene.feedback?.alternative||scene.move:hint?.move,last=position.last;
@@ -40,18 +72,19 @@
     $("board").innerHTML=lines+palace+Array.from({length:90},(_,view)=>{
       const index=human==="c"?view:89-view,p=position.board[index];
       const target=targets.has(index),can=active&&(sources.has(index)||target);
-      const classes=["square",target?"target":"",selected===index?"selected":"",king===index?"checked":"",last&&!last.kind&&(last.from===index||last.to===index)?"recent":"",mark&&!mark.kind&&(mark.from===index||mark.to===index)?"suggested":""].filter(Boolean).join(" ");
+      const classes=["square",target?"target":"",selected===index?"selected":"",king===index?"checked":"",threatened.has(index)?"threatened":"",last&&!last.kind&&(last.from===index||last.to===index)?"recent":"",mark&&!mark.kind&&(mark.from===index||mark.to===index)?"suggested":""].filter(Boolean).join(" ");
       const face=p?(p[1]==="K"?(p[0]==="c"?"楚":"漢"):p[1]==="P"?(p[0]==="c"?"卒":"兵"):{A:"士",R:"車",C:"包",H:"馬",E:"象"}[p[1]]):"";
       const type=p?{K:"king",A:"guard",R:"rook",C:"cannon",H:"horse",E:"elephant",P:"soldier"}[p[1]]:"";
       const pieceClasses=["piece","janggi-piece",p?.[0]==="c"?"cho":"han",type,selected===index?"selected":"",king===index?"check":"",last&&!last.kind&&last.to===index?"last-moved":""].filter(Boolean).join(" ");
-      return `<button type="button" role="gridcell" class="${classes}" data-square="${index}" ${can?"":"disabled"} aria-pressed="${selected===index}" aria-label="${R.coord(index)} · ${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p):"빈자리"}${target?" · 이동 가능":""}" title="${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p)+" · ":""}${R.coord(index)}">${p?`<span class="${pieceClasses}" aria-hidden="true">${face}</span>`:target?'<span class="legal-dot"></span>':""}</button>`;
+      return `<button type="button" role="gridcell" class="${classes}" data-square="${index}" ${can?"":"disabled"} aria-pressed="${selected===index}" aria-label="${R.coord(index)} · ${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p):"빈자리"}${target?" · 이동 가능":""}${threatened.has(index)?" · 상대가 노리는 말":""}" title="${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p)+" · ":""}${R.coord(index)}${threatened.has(index)?" · 상대가 노리는 말":""}">${p?`<span class="${pieceClasses}" aria-hidden="true">${face}</span>`:target?'<span class="legal-dot"></span>':""}</button>`;
     }).join("");
     BoardCoachUI.markMove($("board"),mark,9);
     $("levelLabel").textContent=AI.LEVELS[level].name+" AI";$("colorLabel").textContent=human==="c"?"나는 초":"나는 한";
     $("score").textContent=`${scene?history.indexOf(scene):state.ply}수`;
-    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 수준을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}${R.repetitionCount(state)===2?" · 같은 판 2회":""}`;
+    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 수준을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:moving?"말이 움직이고 있어요…":busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}${R.repetitionCount(state)===2?" · 같은 판 2회":""}`;
     $("undo").disabled=!history.some(m=>m.side===human)||!!scene;
     $("hint").disabled=!active;$("janggiResign").disabled=!started||end.ended||!!scene;
+    $("zoom").disabled=moving;
     const special=moves.find(m=>m.kind);$("janggiPass").disabled=!active||!special;
     $("janggiPass").textContent=special?.kind==="bikjang"?"빅장 수락":"한 수 쉬기";
     $("feedbackPanel").classList.toggle("hidden",!feedback||!!scene);$("feedback").textContent=feedback?.text||"";
@@ -60,31 +93,41 @@
       let chosen=history.filter(m=>m.feedback).slice(-3);if(!chosen.length)chosen=history.filter(m=>m.side!==human).slice(-3);
       $("reviewList").innerHTML=chosen.length?chosen.map(m=>`<button type="button" data-review="${history.indexOf(m)}"><strong>${history.indexOf(m)+1}수 · ${escape(AI.label(m.move))}</strong>${escape(m.feedback?.text||m.reason)}</button>`).join(""):'<p>다시 볼 수가 없습니다.</p>';
     }
-    $("janggiMoves").textContent=history.length?history.map((m,i)=>`${i+1}. ${m.side==="c"?"초":"한"} ${AI.label(m.move)}`).join("\n"):"아직 둔 수가 없습니다.";
+    $("janggiMoves").textContent=history.length?history.map((m,i)=>`${i+1}. ${m.side==="c"?"초":"한"} ${AI.label(m.move)}${m.move.capture?' · '+AI.name(m.move.capture)+' 잡음':''}`).join("\n"):"아직 둔 수가 없습니다.";
   }
-  function commit(move,isHuman=false){
+  function commit(move,isHuman=false,opponent=null){
     const result=R.play(state,move);if(!result.ok){reason("이동 확인","둘 수 없는 수",result.error);return;}
     const followed=isHuman&&hint?.move&&R.same(result.move,hint.move);
     const before=state,explanation=followed?hint.reason:AI.explain(before,result.move);
     feedback=isHuman?(followed?null:AI.review(before,result.move)):feedback;
-    history.push({before,move:result.move,side:before.turn,reason:explanation,feedback:isHuman?feedback:null});
+    history.push({before,move:result.move,side:before.turn,reason:explanation,feedback:isHuman?feedback:null,opponent:isHuman?null:opponent||AI.opponentView(before,result.move)});
     state=result.state;selected=null;hint=null;$("retry").classList.add("hidden");
-    reason(isHuman?"내가 둔 수":"AI의 수",AI.label(result.move),isHuman&&feedback?feedback.text:explanation);render();resume();
+    reason(isHuman?"내가 둔 수":"AI의 수",AI.label(result.move),isHuman&&feedback?feedback.text:explanation);
+    moving=!result.move.kind;render();
+    if(!moving){resume();return;}
+    const m=result.move,position=state,id=token;
+    const type=pieceTypes[m.piece[1]];
+    const display=(x,y)=>human==='h'?{x:8-x,y:9-y}:{x,y};
+    const piece=$("board").querySelector(`[data-square="${m.to}"] .piece`);
+    motion=JanggiMotion.play(piece,$("board"),{fromX:m.from%9,fromY:Math.floor(m.from/9),toX:m.to%9,toY:Math.floor(m.to/9),type,captured:m.capture?pieceInfo(m.capture):null},display);
+    if(!motion){moving=false;render();resume();return;}
+    const current=motion;
+    current.finished.then(()=>{if(token!==id||state!==position||motion!==current)return;motion=null;moving=false;render();resume();});
   }
   function fail(text){stop();$("retry").classList.remove("hidden");reason("계산을 마치지 못했어요","다시 계산할 수 있어요",text);render();}
   function calculate(kind){
-    if(!started||R.status(state).ended||$("setup").open||$("janggiConfirm").open||(kind==="hint")!==(state.turn===human))return;
+    if(!started||moving||R.status(state).ended||$("setup").open||$("janggiConfirm").open||(kind==="hint")!==(state.turn===human))return;
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
     if(kind==="hint")reason("힌트 계산 중","둘 곳을 살펴보고 있어요","왕과 다른 말이 공격받는지 확인하고 있어요.");
     try{
-      worker=new Worker("janggi-worker.js?v=10");
+      worker=new Worker("janggi-worker.js?v=11");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
         const answer=data.result,move=R.actions(state).find(m=>R.same(m,answer.move));
         if(!move)return fail("수 계산을 다시 시도해 주세요.");
         worker.terminate();worker=null;clearTimeout(timeout);busy=false;
-        if(kind==="hint"){hint={...answer,move};reason("힌트",AI.label(move),answer.reason);render();BoardCoachUI.revealExplanation();}else commit(move);
+        if(kind==="hint"){hint={...answer,move};reason("힌트",AI.label(move),answer.reason);render();BoardCoachUI.revealExplanation();}else commit(move,false,answer.opponent);
       };
       worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
       timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},20000);
@@ -92,7 +135,7 @@
     }catch{fail("이 브라우저에서 계산을 시작하지 못했어요.");}
   }
   function resume(){
-    if(started&&!R.status(state).ended&&state.turn!==human&&!$("setup").open&&!$("janggiConfirm").open){
+    if(started&&!moving&&!R.status(state).ended&&state.turn!==human&&!$("setup").open&&!$("janggiConfirm").open){
       const id=token;clearTimeout(nextTurn);nextTurn=setTimeout(()=>{if(id===token)calculate("move");},350);
     }
   }
@@ -102,7 +145,7 @@
     $("retry").classList.add("hidden");reason("다시 생각할 차례","내 수를 물렸어요","내 마지막 수를 두기 전으로 돌아왔어요.");render();
   }
   $("board").addEventListener("click",event=>{
-    const button=event.target.closest("[data-square]");if(!button||busy||scene||!started||state.turn!==human||R.status(state).ended)return;
+    const button=event.target.closest("[data-square]");if(!button||busy||moving||scene||!started||state.turn!==human||R.status(state).ended)return;
     const index=Number(button.dataset.square),moves=R.actions(state),move=moves.find(m=>!m.kind&&m.from===selected&&m.to===index);
     if(move)commit(move,true);else{selected=selected===index?null:moves.some(m=>m.from===index)?index:null;render();}
   });
@@ -131,7 +174,7 @@
     $("janggiConfirm").close();
   });
   $("janggiConfirmCancel").addEventListener("click",()=>$("janggiConfirm").close());$("janggiConfirm").addEventListener("close",resume);
-  $("reviewList").addEventListener("click",event=>{const button=event.target.closest("[data-review]");if(button){scene=history[Number(button.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();BoardCoachUI.revealExplanation();}});
+  $("reviewList").addEventListener("click",event=>{const button=event.target.closest("[data-review]");if(button){stop();scene=history[Number(button.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();BoardCoachUI.revealExplanation();}});
   $("liveBoard").addEventListener("click",()=>{scene=null;reason("대국 돌아보기","마지막 판","중요한 장면을 눌러 다시 살펴보세요.");render();});
   window.addEventListener("pagehide",stop);window.addEventListener("pageshow",event=>{if(event.persisted){render();resume();}});
   render();$("setup").showModal();

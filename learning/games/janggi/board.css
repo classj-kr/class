@@ -20,9 +20,13 @@
 .janggi-board .point.last-to::before{background:rgba(255,146,61,.34);box-shadow:0 0 0 4px #ff9a3d,0 0 20px rgba(255,123,35,.78)}
 .janggi-board .piece.last-moved{animation:lastmove .9s ease-in-out infinite alternate;box-shadow:inset 0 0 0 3px rgba(255,242,199,.45),0 0 0 5px #ffcf5a,0 0 18px rgba(255,151,47,.85)}
 .janggi-board .piece.path-moving{animation:none!important;z-index:8}
+.janggi-board .motion-cell{z-index:10}
+.janggi-board .piece.capture-ghost{position:absolute;z-index:9;pointer-events:none;animation:none!important;transform:none;outline:none}
+.janggi-board .capture-impact{position:absolute;inset:8%;z-index:10;border:4px solid #fff0a3;border-radius:50%;box-shadow:0 0 16px #f49b3c;pointer-events:none}
 @keyframes lastmove{to{transform:translateY(-3px);filter:brightness(1.12)}
 }
 .janggi-board .piece.check{animation:checkpulse .7s infinite alternate}
 @keyframes checkpulse{to{box-shadow:0 0 0 6px #e33731,0 0 20px #e33731}
 }
+@media(prefers-reduced-motion:reduce){.janggi-board .piece.last-moved,.janggi-board .piece.check{animation:none}}
 

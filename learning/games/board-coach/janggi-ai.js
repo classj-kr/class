@@ -140,12 +140,12 @@
       const cost=repetitionCost(state,move)+(idleKing?(settings.kingTempo||0):0);
       return {move,cost,score:fallbackScore(state,move,settings.coaching,drawScore)-cost};
     }).sort((a,b)=>b.score-a.score);
-    if(ranked[0].score>=MATE)return {move:ranked[0].move,reason:explain(state,ranked[0].move),depth:1,nodes:0};
-    let best=ranked[0].move,nodes=0,completed=0;
+    if(ranked[0].score>=MATE)return {move:ranked[0].move,line:[ranked[0].move],reason:explain(state,ranked[0].move),depth:1,nodes:0};
+    let best=ranked[0].move,bestLine=[best],nodes=0,completed=0;
     const stop={},deadline=Date.now()+(options.ms??settings.ms),budget=options.nodes??settings.nodes;
     // Reuse promising moves across iterative depths, not their scores: draw
     // results depend on repetition history as well as the board position.
-    const preferred=new Map(),killers=[],history=new Map();
+    const preferred=new Map(),killers=[],history=new Map(),lines=[];
     const historyKey=m=>`${m.piece}:${m.to}`;
     function searchOrder(moves,key,ply){
       const previous=preferred.get(key),cutoffs=killers[ply]||[];
@@ -153,6 +153,7 @@
       return moves.map(move=>({move,score:rank(move)})).sort((a,b)=>b.score-a.score||(a.move.from??99)-(b.move.from??99)||(a.move.to??99)-(b.move.to??99)).map(a=>a.move);
     }
     function search(s,depth,alpha,beta,ply,qleft=3){
+      lines[ply]=[];
       if(++nodes>budget||(nodes%32===0&&Date.now()>deadline))throw stop;
       const end=R.status(s);
       if(end.ended)return end.winner?(end.winner===s.turn?MATE-ply:-MATE+ply):(s.turn===state.turn?drawScore:-drawScore);
@@ -175,7 +176,7 @@
       };
       for(const move of searchOrder(depth>0||checked?legal:legal.filter(forcing),key,ply)){
         const score=-search(R.advance(s,move),depth-1,-beta,-alpha,ply+1,depth<=0?qleft-1:qleft);
-        if(score>value){value=score;bestMove=move;}
+        if(score>value){value=score;bestMove=move;lines[ply]=[move,...(lines[ply+1]||[])].slice(0,4);}
         alpha=Math.max(alpha,score);
         if(alpha>=beta){
           if(depth>0&&!move.capture&&!move.kind){
@@ -191,20 +192,115 @@
     // Keep the full one-ply capture safety evaluation as the fallback when a
     // device cannot finish depth two. Never replace it with a shallow partial scan.
     for(let depth=2;depth<=settings.depth;depth++){
-      let top=-Infinity,candidate=best;
+      let top=-Infinity,candidate=best,candidateLine=bestLine;
       try{
         for(const {move,cost} of ranked.slice().sort((a,b)=>Number(R.same(b.move,best))-Number(R.same(a.move,best)))){
           // Shift the search window as well as the result by the root cost.
           const score=-search(R.advance(state,move),depth-1,-Infinity,-(top+cost),1)-cost;
-          if(score>top){top=score;candidate=move;}
+          if(score>top){top=score;candidate=move;candidateLine=[move,...(lines[1]||[])].slice(0,5);}
         }
-        best=candidate;completed=depth;
+        best=candidate;bestLine=candidateLine;completed=depth;
       }catch(error){if(error!==stop)throw error;break;}
     }
-    return {move:best,reason:explain(state,best),depth:completed,nodes};
+    return {move:best,line:bestLine,reason:explain(state,best),depth:completed,nodes};
   }
   function chooseHint(state,options={}){
-    return choose(state,"advanced",{...HINT,...options});
+    const answer=choose(state,"advanced",{...HINT,...options});
+    if(answer)answer.reason=explainHint(state,answer.move,answer.line);
+    return answer;
+  }
+  // Inspect attacks in the current layout without pretending the defender has
+  // actually passed. Only legal captures count; pinned attackers cannot threaten.
+  function captureThreats(state,side){
+    const view={...state,turn:side,result:null};
+    return R.boardMoves(view).filter(m=>m.capture).map(move=>({move,gain:captureGain(view,move)}))
+      .sort((a,b)=>b.gain-a.gain||VALUES[b.move.capture[1]]-VALUES[a.move.capture[1]]);
+  }
+  function usefulThreats(state,side){
+    const seen=new Set();
+    return captureThreats(state,side).filter(t=>t.gain>0&&!seen.has(t.move.to)&&seen.add(t.move.to));
+  }
+  function threatText(threat){
+    const m=threat.move;
+    return `상대 ${subject(name(m.piece))} ${R.coord(m.from)} → ${R.coord(m.to)}로 내 ${object(name(m.capture))} 잡을 수 있어요.`;
+  }
+  // Keep only a legal continuation of the completed search. A line is an
+  // example dependent on our reply, never a promise of the opponent's next move.
+  function legalLine(state,line){
+    const out=[];let current=state;
+    for(const request of (line||[]).slice(0,3)){
+      const played=R.play(current,request);if(!played.ok)break;
+      out.push({before:current,move:played.move,after:played.state});current=played.state;
+    }
+    return out;
+  }
+  function nextPurpose(step,owner){
+    const m=step.move,end=R.status(step.after);
+    if(end.ended)return end.winner===owner?"외통수로 끝내는 전개예요.":end.winner?"대국이 끝나는 전개예요.":"무승부로 끝나는 전개예요.";
+    if(m.capture)return `내 ${object(name(m.capture))} 잡는 전개예요.`;
+    if(R.inCheck(step.after))return "내 왕에게 장군을 부르는 전개예요.";
+    const danger=usefulThreats(step.after,owner)[0];
+    if(danger)return `${R.coord(danger.move.to)}의 내 ${object(name(danger.move.capture))} 노리는 전개예요.`;
+    return "자리를 잡는 전개를 예상했어요.";
+  }
+  function opponentView(before,move,line=[]){
+    const played=R.play(before,move);if(!played.ok)return null;
+    const after=played.state,side=before.turn,end=R.status(after),piece=name(move.piece);
+    if(end.ended)return {title:label(move),summary:explain(before,move),danger:"",response:"",forecast:"",targets:[]};
+    const threats=usefulThreats(after,side),old=usefulThreats(before,side);
+    const fresh=threats.find(t=>!old.some(o=>o.move.to===t.move.to&&o.move.from===t.move.from));
+    let summary;
+    if(R.inCheck(after))summary="상대가 장군을 불러 내 왕의 대응을 강제하고 있어요.";
+    else if(move.capture)summary=`상대가 내 ${object(name(move.capture))} 잡았어요. 이어지는 공격도 확인하세요.`;
+    else if(fresh){
+      const discovered=!move.kind&&fresh.move.from!==move.to&&!captureThreats(before,side).some(t=>R.same(t.move,fresh.move));
+      summary=discovered?`상대가 ${object(piece)} 옮겨 ${name(fresh.move.piece)}의 공격길을 열었어요. ${R.coord(fresh.move.to)}의 내 ${object(name(fresh.move.capture))} 노리는 공격이 생겼어요.`:
+        `이번 수로 ${R.coord(fresh.move.to)}의 내 ${object(name(fresh.move.capture))} 노리는 공격이 생겼어요.`;
+    }
+    else if(R.inCheck(before))summary="상대가 내 장군을 피했어요. 공격을 이어갈 수 있는지 살펴보세요.";
+    else if(move.kind)summary=explain(before,move);
+    else {
+      const prior=usefulThreats(before,R.other(side)).find(t=>t.move.to===move.from);
+      const home=side==='c'?9-Math.floor(move.from/9):Math.floor(move.from/9);
+      const palace=board=>R.targets(board,board.indexOf(side+'K'));
+      if(prior&&!captureThreats(after,R.other(side)).some(t=>t.move.to===move.to))summary=`상대가 공격받던 ${object(piece)} 피했어요. 잡으려던 목표가 옮겨졌어요.`;
+      else if(['H','E'].includes(move.piece[1])&&home===0)summary=`상대가 ${object(piece)} 첫 줄에서 꺼내 중앙 싸움에 참여할 준비를 해요.`;
+      else if(threats.length)summary=`상대는 ${R.coord(threats[0].move.to)}의 내 ${object(name(threats[0].move.capture))} 계속 노리고 있어요.`;
+      else if(move.piece[1]==='K'&&palace(after.board).length>palace(before.board).length)summary="상대가 왕의 피할 자리를 늘렸어요.";
+      else if(Math.abs(move.to%9-4)<Math.abs(move.from%9-4))summary=`상대가 ${object(piece)} 중앙 쪽으로 모았어요. 중앙 길과 궁성으로 이어지는 공격을 살펴보세요.`;
+      else summary=`상대가 ${object(piece)} ${R.coord(move.to)}에 배치했어요. 아래 예상 전개에서 이어지는 수를 살펴보세요.`;
+    }
+    const checked=R.inCheck(after),targets=threats.slice(0,2).map(t=>t.move.to);
+    if(checked)targets.unshift(after.board.indexOf(after.turn+'K'));
+    const king=after.board.indexOf(after.turn+'K');
+    const checker=checked?after.board.findIndex((p,i)=>p?.[0]===side&&R.targets(after.board,i).includes(king)):-1;
+    const danger=checked?`${checker>=0?R.coord(checker)+'의 상대 '+subject(name(after.board[checker])):'상대가'} 내 왕에게 장군을 부르고 있어요. 이번 수에 장군을 해소해야 해요.`:threats.slice(0,2).map(threatText).join(' ');
+    const response=checked?"왕을 피하거나, 공격을 막거나, 공격하는 말을 잡는 수를 먼저 확인하세요.":threats.length?
+      `우선 ${R.coord(threats[0].move.to)}의 ${object(name(threats[0].move.capture))} 피하거나 지키는 수를 살펴보세요. 공격하는 말을 잡거나 길목을 막는 방법도 있어요.`:
+      after.ply<20?"내 마와 상도 꺼내고, 차가 나갈 길을 확보하세요.":"상대의 다음 전개에 맞춰 내 말을 지키면서 공격할 자리를 찾으세요.";
+    const steps=legalLine(before,line),forecast=steps.length>=3&&R.same(steps[0].move,move)?
+      `내가 ${label(steps[1].move)}로 응수하면, 상대는 ${label(steps[2].move)}로 ${nextPurpose(steps[2],side)} 내 수가 달라지면 상대의 응수도 달라질 수 있어요.`:"";
+    if(!forecast&&summary.includes('아래 예상 전개'))summary=`상대가 ${object(piece)} ${R.coord(move.to)}에 배치했어요. 이 말이 내 진영으로 들어오는 길을 살펴보세요.`;
+    return {title:label(move),summary,danger,response,forecast,targets:[...new Set(targets)]};
+  }
+  function explainHint(state,move,line=[]){
+    const next=R.advance(state,move),end=R.status(next);
+    if(end.ended||move.kind||R.inCheck(state))return explain(state,move);
+    const threats=usefulThreats(state,R.other(state.turn)),remaining=captureThreats(next,next.turn);
+    const saved=threats.find(t=>!remaining.some(r=>r.move.to===(t.move.to===move.from?move.to:t.move.to)));
+    let reason=explain(state,move);
+    if(saved){
+      const m=saved.move;
+      const defense=m.to===move.from?`${object(name(move.piece))} ${R.coord(move.to)}로 옮겨 그 공격을 피해요.`:
+        `${label(move)}로 ${R.coord(m.to)}의 ${object(name(m.capture))} 바로 잡히지 않게 지켜요.`;
+      reason=`${threatText(saved)} ${defense}${move.capture?` 동시에 상대 ${object(name(move.capture))} 잡아요.`:R.inCheck(next)?" 동시에 장군을 불러요.":""}`;
+    }else if(threats.length){
+      const still=usefulThreats(next,next.turn)[0];
+      if(still)reason+=` 다만 이 수 뒤에도 ${threatText(still)} 이어지는 공격도 살펴보세요.`;
+    }
+    const steps=legalLine(state,line);
+    if(steps.length>=2&&R.same(steps[0].move,move))reason+=`\n예상 응수: 상대 ${label(steps[1].move)}. ${nextPurpose(steps[1],next.turn)}`;
+    return reason;
   }
   function explain(state,move){
     const next=R.advance(state,move),end=R.status(next);
@@ -246,5 +342,5 @@
     }
     return null;
   }
-  return {LEVELS,HINT,VALUES,NAMES,name,label,evaluate,cannotForceMate,choose,chooseHint,explain,review,mateInOne,roots};
+  return {LEVELS,HINT,VALUES,NAMES,name,label,evaluate,cannotForceMate,choose,chooseHint,explain,explainHint,opponentView,review,mateInOne,roots};
 });

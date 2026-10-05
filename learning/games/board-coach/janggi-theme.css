@@ -78,6 +78,7 @@ body.janggi-coach {
   pointer-events: none;
 }
 .janggi .square.suggested::after { inset: 6%; border-color: #fff0a3; }
+.janggi .square.threatened .piece { outline: 3px solid #ce3e30; outline-offset: 3px; }
 .janggi .legal-dot {
   width: 22%; height: 22%; inset: 39%;
   background: rgba(29,105,179,.78);
@@ -125,6 +126,23 @@ body.janggi-coach {
 .janggi-coach .lesson #principle { display: none; }
 .janggi-coach .explanation h2 { margin-bottom: 8px; }
 .janggi-coach .explanation p { font-size: 15px; color: #d3dbe5; }
+.janggi-coach #reason { white-space: pre-line; }
+.janggi-coach .opponent-plan { border-left: 3px solid #c97657 !important; }
+.janggi-coach .opponent-plan h2 { margin: 5px 0 8px; }
+.janggi-coach .opponent-plan h3 { margin: 12px 0 4px; font-size: 13px; color: #f0d77c; }
+.janggi-coach .opponent-plan p { margin: 6px 0; font-size: 14px; line-height: 1.65; color: #d3dbe5; overflow-wrap: anywhere; }
+.janggi-coach .opponent-plan .opponent-danger { color: #ffc4ae; }
+.janggi-coach .opponent-plan summary { margin-top: 10px; font-size: 13px; color: #c7ddf5; cursor: pointer; }
+.janggi-coach .capture-summary .latest-capture { margin: 0 0 8px; white-space: pre-line; color: #ffe1a1; font-size: 13px; line-height: 1.55; }
+.janggi-coach .capture-trays { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.janggi-coach .capture-trays h3 { margin: 0 0 6px; font-size: 12px; color: #b7c0cb; }
+.janggi-coach .capture-trays h3 span { color: #f0d77c; }
+.janggi-coach .capture-tokens { display: flex; flex-wrap: wrap; gap: 5px; }
+.janggi-coach .capture-token { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #eee6d2; }
+.janggi-coach .capture-token b { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #6a3b18; border-radius: 50%; background: #d7a25b; font: 900 16px Batang,serif; }
+.janggi-coach .capture-token .cho { color: #114e91; }
+.janggi-coach .capture-token .han { color: #a51f19; }
+.janggi-coach .capture-empty { color: #8c9aad; font-size: 12px; }
 .janggi-coach .sidebar .feedback { border-color: #ad8840; }
 .janggi-coach .rules a { color: #c7ddf5; }
 .janggi-coach .rules summary, .janggi-coach .janggi-record summary { color: var(--gold); }
