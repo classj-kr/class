@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <script src="/assets/sound/game-sfx.js?v=20260912-feedback-scope-1" defer />
+        <script src="/assets/sound/game-sfx.js?v=20261006-capture" defer />
       </head>
       <body><LearningRecordBoundary>{children}</LearningRecordBoundary><ElementaryFocusScroll /><ArithmeticRaceController /></body>
     </html>
