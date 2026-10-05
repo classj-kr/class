@@ -10,13 +10,13 @@
     const DEFAULT_VOLUME = 0.65;
     const SOUND_NAMES = new Set([
         "click", "select", "back", "bell", "card", "stone", "success",
-        "error", "tick", "turn", "timeout"
+        "error", "tick", "turn", "timeout", "capture"
     ]);
     const SYNTH_FALLBACKS = Object.freeze({
                 select: "click", back: "click", turn: "bell", timeout: "error"
     });
     const scriptUrl = document.currentScript?.src || new URL("/assets/sound/game-sfx.js", window.location.href).href;
-    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => name !== "click"));
+    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => name !== "click" && name !== "capture"));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
         new URL(`sfx/${name}.ogg`, scriptUrl).href
@@ -211,6 +211,16 @@
         noise(ctx, { start: now, duration: 0.025, frequency: 1250, q: 1.1, gain: 0.18 });
     }
 
+    // A short wooden impact, crack and bright tail, distinct from placement.
+    // Synthesized locally so capture feedback never waits for an audio download.
+    function playCapture(ctx) {
+        const now = ctx.currentTime;
+        tone(ctx, { start: now, from: 330, to: 85, duration: 0.16, gain: 0.42, type: "triangle" });
+        noise(ctx, { start: now, duration: 0.055, frequency: 1900, q: 0.7, gain: 0.32 });
+        tone(ctx, { start: now + 0.025, from: 1040, to: 780, duration: 0.13, gain: 0.16 });
+        tone(ctx, { start: now + 0.065, from: 1560, to: 1170, duration: 0.18, gain: 0.09 });
+    }
+
     function playSuccess(ctx) {
         const now = ctx.currentTime;
         [659.25, 830.61, 987.77].forEach((frequency, index) => {
@@ -241,6 +251,7 @@
         bell: playBell,
         card: playCard,
         stone: playStone,
+        capture: playCapture,
         success: playSuccess,
         error: playError,
         tick: playTick
@@ -257,6 +268,7 @@
     }
 
     function playSynth(name) {
+        if (muted) return false;
         const ctx = ensureContext();
         if (!ctx || !output) return false;
         players[SYNTH_FALLBACKS[name] || name](ctx);
@@ -267,6 +279,7 @@
         const soundName = SOUND_NAMES.has(name) ? name : "click";
         if (muted) return false;
         if (soundName === "click") return playSynth(soundName);
+        if (soundName === "capture") return playSynth(soundName);
         const template = getFileTemplate(soundName);
         if (!template) return playSynth(soundName);
         const audio = template.cloneNode();

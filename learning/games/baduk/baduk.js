@@ -160,11 +160,40 @@ function requestAction(kind,row=null,col=null){
 }
 
 function installState(next,broadcast){
+  const previous=gameState;
+  if(!previous||boardKey(previous.board)!==boardKey(next.board)||previous.scoring!==next.scoring)window.ClassGameMotion?.cancel();
   gameState=next;
   localDeadline=Date.now()+Math.max(0,next.turnDeadline-next.hostNow);
   scheduleHostTimeout();
   if(broadcast)lobby.broadcast({type:MESSAGE.STATE,state:gameState});
   showGame();renderGame();
+  animateLastPlacement(previous);
+}
+
+function animateLastPlacement(previous){
+  const next=gameState,move=next.lastMove,motion=window.ClassGameMotion;
+  // Only a newly accepted move animates. Reconnects, duplicate state, rematches
+  // and the agreed removal of dead stones during scoring stay silent.
+  if(!previous||previous.scoring||next.scoring||!move||previous.mode!==next.mode||previous.size!==next.size
+    ||previous.playerOrder.join()!==next.playerOrder.join()||next.moveCount!==previous.moveCount+1
+    ||next.history.length!==previous.history.length+1||next.history.at(-2)!==previous.history.at(-1))return;
+  const index=boardIndex(move.row,move.col,next.size),color=previous.turn+1;
+  if(previous.board[index]||next.board[index]!==color)return;
+  const pointAt=i=>$("board").children[i],captured=[];
+  previous.board.forEach((value,i)=>{if(value===3-color&&!next.board[i])captured.push(i)});
+  const sound=()=>window.ClassGameSfx?.play(captured.length?'capture':'stone');
+  const placement=motion?.appear(pointAt(index).firstElementChild);
+  if(!placement){sound();return;}
+  placement.finished.then(sound,()=>{});
+  for(const i of captured){
+    const point=pointAt(i),ghost=document.createElement('span'),impact=document.createElement('span');
+    ghost.className=`stone ${color===1?'white':'black'} capture-ghost`;
+    impact.className='capture-impact';
+    for(const element of [ghost,impact]){element.setAttribute('aria-hidden','true');point.appendChild(element)}
+    // Hold the victim until the new stone lands (220 ms), then lift and fade.
+    motion.animate(ghost,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:1,transform:'translateY(-6px) scale(1.12)',offset:.25},{opacity:0,transform:'translateY(-22px) scale(.35)'}],340,()=>ghost.remove(),{delay:220,easing:'ease-out'});
+    motion.animate(impact,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1)',offset:.18},{opacity:0,transform:'scale(1.5)'}],340,()=>impact.remove(),{delay:220,easing:'ease-out'});
+  }
 }
 
 function scheduleHostTimeout(){
@@ -210,7 +239,6 @@ function renderGame(){
     point.dataset.stoneValue=String(value);
     if(value===previousValue)return;
     point.innerHTML=value?`<span class="stone ${value===1?"black":"white"}"></span>`:"";
-    if(value)window.ClassGameMotion?.appear(point.firstElementChild);
   });
   $("turnBanner").textContent=gameState.draw?"무승부":gameState.winner?`${playerName(gameState.playerOrder[gameState.winner-1])} 승리`:activeId===snapshot.myId?"내 차례":"상대 차례";
   $("gameStatus").textContent=gameState.scores?`흑 ${gameState.scores.black} · 백 ${gameState.scores.white}`:gameState.mode==="territory"?`${gameState.moveCount}/40수`:gameState.mode==="capture"?"돌 3개를 먼저 잡으면 승리":"두 사람이 연속으로 패스하면 사석 확인 후 계가";
@@ -292,7 +320,7 @@ function showRules(){
 }
 function showToast(message){clearTimeout(toastTimer);$("toast").textContent=message;$("toast").classList.remove("hidden");toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),1800)}
 function showGame(){$("lobbyScreen").classList.add("hidden");$("gameScreen").classList.remove("hidden");$("gameRoomCode").textContent=lobby.snapshot().roomCode||"----"}
-function showLobby(){clearTimeout(hostTimer);gameState=null;$("gameScreen").classList.add("hidden");$("lobbyScreen").classList.remove("hidden")}
+function showLobby(){clearTimeout(hostTimer);window.ClassGameMotion?.cancel();gameState=null;$("gameScreen").classList.add("hidden");$("lobbyScreen").classList.remove("hidden")}
 
 function handleGameMessage(sender,payload){
   if(payload?.type===MESSAGE.ACTION&&lobby.snapshot().role==="host")applyAction({...payload.action,playerId:sender});

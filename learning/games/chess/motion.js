@@ -2,7 +2,11 @@
 (() => {
   'use strict';
   function play(board, previous, move, svg, active = new Set()) {
-    if (!move || !previous[move.from] || !Element.prototype.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+    if (!move || !previous[move.from]) return null;
+    const piece = previous[move.from];
+    const capturedAt = move.enPassant ? Math.floor(move.from/8)*8+move.to%8 : move.to, captured = previous[capturedAt];
+    const isCapture = captured && captured[0] !== piece[0], sound = () => window.ClassGameSfx?.play(isCapture ? 'capture' : 'stone');
+    if (!Element.prototype.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) {sound(); return null;}
     const tasks = [], square = index => board.querySelector(`[data-square="${index}"]`);
     function animate(element, frames, duration, cleanup, delay = 0) {
       const animation = element.animate(frames, {duration, delay, easing:'cubic-bezier(.25,.65,.3,1)', fill:'both'});
@@ -34,18 +38,21 @@
       });
       return duration;
     }
-    const piece = previous[move.from], duration = travel(move.from, move.to, piece, !!move.promotion);
+    const duration = travel(move.from, move.to, piece, !!move.promotion);
+    tasks[0]?.animation.finished.then(sound, () => {});
     if (move.castle) {
       const rank = Math.floor(move.from/8)*8;
       travel(rank+(move.castle==='K'?7:0), rank+(move.castle==='K'?5:3), piece[0]+'R');
     }
-    const capturedAt = move.enPassant ? Math.floor(move.from/8)*8+move.to%8 : move.to, captured = previous[capturedAt];
-    if (captured && captured[0] !== piece[0]) {
+    if (isCapture) {
       const target = square(capturedAt);
       target.insertAdjacentHTML('beforeend', svg(captured, 'capture-ghost'));
       const ghost = target.lastElementChild; ghost.setAttribute('aria-hidden', 'true');
       // Keep the victim on the board until the attacker arrives.
       animate(ghost, [{opacity:1,transform:'translateY(0) scale(1)'},{opacity:1,transform:'translateY(-5px) scale(1.12)',offset:.25},{opacity:0,transform:'translateY(-22px) scale(.5)'}], 300, () => ghost.remove(), duration);
+      const impact = document.createElement('span');
+      impact.className = 'capture-impact'; impact.setAttribute('aria-hidden', 'true'); target.appendChild(impact);
+      animate(impact, [{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1)',offset:.18},{opacity:0,transform:'scale(1.5)'}], 340, () => impact.remove(), duration);
     }
     return {finished:Promise.all(tasks.map(t=>t.animation.finished.catch(()=>{}))), cancel:()=>tasks.forEach(t=>t.cleanup())};
   }

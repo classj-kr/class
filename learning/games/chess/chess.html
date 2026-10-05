@@ -11,12 +11,14 @@
 <link rel="stylesheet" href="../board-coach/entry.css?v=2">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261006-capture" defer></script>
 <script src="chess-rules.js?v=20261001-standard"></script>
 <script src="pieces.js?v=1" defer></script>
-<script src="motion.js?v=1" defer></script>
+<script src="motion.js?v=2" defer></script>
 <script src="chess-ui.js?v=20261006-motion" defer></script>
 <script src="../board-coach/entry.js?v=1" defer></script>
+<link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
+<script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
 </head>
 <body class="chess-surface">
 <main class="shell">
@@ -64,7 +66,7 @@
 
   <section id="gameScreen" class="hidden game-screen">
     <div class="board-column">
-      <div class="board-wrap"><div id="board" class="chessboard" role="grid" aria-label="체스판"></div></div>
+      <div class="board-wrap"><div id="board" data-sfx-clicks="none" class="chessboard" role="grid" aria-label="체스판"></div></div>
     </div>
     <aside class="game-side">
       <div id="topPlayer" class="player-bar opponent"></div>

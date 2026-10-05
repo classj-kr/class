@@ -3,9 +3,9 @@
   'use strict';
   const active = new Set();
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function animate(element, frames, duration = 260, cleanup = () => {}) {
+  function animate(element, frames, duration = 260, cleanup = () => {}, options = {}) {
     if (!element?.animate || reduced()) { cleanup(); return null; }
-    const animation = element.animate(frames, { duration, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'both' });
+    const animation = element.animate(frames, { duration, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'both', ...options });
     const task = { cancel() { animation.cancel(); finish(); } };
     function finish() { if (!active.delete(task)) return; cleanup(); animation.cancel(); }
     active.add(task); animation.finished.then(finish, finish);
