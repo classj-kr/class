@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["suyeong-pul"] = {
         "poem": {
+            "illustration": "poems/suyeong-pul/illustration.webp",
             "lines": [
                 "풀이 눕는다",
                 "비를 몰아오는 동풍에 나부껴",

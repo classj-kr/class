@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["jeongju-gukhwa"] = {
         "poem": {
+            "illustration": "poems/jeongju-gukhwa/illustration.webp",
             "lines": [
                 "한 송이의 국화꽃을 피우기 위해",
                 "봄부터 소쩍새는",

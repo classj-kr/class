@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["jihun-seungmu"] = {
         "poem": {
+            "illustration": "poems/jihun-seungmu/illustration.webp",
             "lines": [
                 "얇은 사(紗) 하이얀 고깔은",
                 "고이 접어서 나빌레라.",

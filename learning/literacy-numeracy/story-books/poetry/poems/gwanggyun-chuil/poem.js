@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["gwanggyun-chuil"] = {
         "poem": {
+            "illustration": "poems/gwanggyun-chuil/illustration.webp",
             "lines": [
                 "낙엽은 폴란드 망명 정부의 지폐",
                 "포화(砲火)에 이즈러진",

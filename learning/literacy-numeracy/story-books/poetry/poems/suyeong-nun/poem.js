@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["suyeong-nun"] = {
         "poem": {
+            "illustration": "poems/suyeong-nun/illustration.webp",
             "lines": [
                 "눈은 살아 있다.",
                 "떨어진 눈은 살아 있다.",
