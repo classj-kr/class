@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "test:coach-quality": "node --test tests/board-coach-quality.test.cjs tests/board-coach-hints.test.cjs",
+    "test:coach-opponent": "node --test tests/board-coach-opponent.test.cjs",
+    "test:coach-feedback:ui": "node tests/board-coach-feedback-browser.cjs --regression",
     "test:coach-usability": "node tests/board-coach-usability.cjs",
     "test:coach-appearance": "node tests/board-coach-appearance.cjs",
     "test:coach-arena": "node tests/board-coach-quality.cjs",

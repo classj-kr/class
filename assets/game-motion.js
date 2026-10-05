@@ -15,9 +15,9 @@
   function appear(element) { return animate(element, [{transform:'scale(.55)',opacity:.3},{transform:'scale(1)',opacity:1}], 220); }
   function flip(element, oldClass) {
     if (reduced()) return;
-    const old = element.cloneNode(true);old.className = oldClass;old.setAttribute('aria-hidden','true');old.style.pointerEvents='none';element.after(old);
+    const old = element.cloneNode(true);old.className = oldClass+' flip-ghost';old.setAttribute('aria-hidden','true');old.style.pointerEvents='none';element.after(old);
     animate(old,[{transform:'scaleX(1)'},{transform:'scaleX(0)'}],150,()=>old.remove());
-    animate(element,[{transform:'scaleX(0)',offset:0},{transform:'scaleX(0)',offset:.5},{transform:'scaleX(1)',offset:1}],300);
+    return animate(element,[{transform:'scaleX(0)',offset:0},{transform:'scaleX(0)',offset:.5},{transform:'scaleX(1)',offset:1}],300);
   }
   function travel(element, from) {
     if (!element || !from || reduced()) return;
