@@ -34,7 +34,7 @@
         const backScriptUrl = currentScript
             ? new URL("../site-back-navigation.js", currentScript.src)
             : new URL("/assets/site-back-navigation.js", location.href);
-        backScriptUrl.searchParams.set("v", "20260917-back-button-2");
+        backScriptUrl.searchParams.set("v", "20260926-empty-header");
         backScript.src = backScriptUrl.href;
         document.head.appendChild(backScript);
     }
