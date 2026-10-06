@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["jaesam-gaeulgang"] = {
         "poem": {
+            "illustration": "poems/jaesam-gaeulgang/illustration.webp",
             "lines": [
                 "마음도 한자리 못 앉아 있는 마음일 때",
                 "친구의 서러운 사랑 이야기를",

@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["gihyeongdo-binjip"] = {
         "poem": {
+            "illustration": "poems/gihyeongdo-binjip/illustration.webp",
             "lines": [
                 "사랑을 잃고 나는 쓰네",
                 "",

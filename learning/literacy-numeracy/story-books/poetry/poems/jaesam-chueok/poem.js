@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["jaesam-chueok"] = {
         "poem": {
+            "illustration": "poems/jaesam-chueok/illustration.webp",
             "lines": [
                 "진주 장터 생어물전에는",
                 "바닷밑이 깔리는 해다진 어스름을,",

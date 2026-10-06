@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["donggyu-pyeonji"] = {
         "poem": {
+            "illustration": "poems/donggyu-pyeonji/illustration.webp",
             "lines": [
                 "Ⅰ",
                 "내 그대를 생각함은 항상 그대가 앉아 있는 배경에서 해가 지고 바람이 부는 일처럼 사소한 일일 것이나 언젠가 그대가 한없이 괴로움 속을 헤매일 때에 오랫동안 전해 오던 그 사소함으로 그대를 불러 보리라.",

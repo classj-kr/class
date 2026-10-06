@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["chunsu-kkot"] = {
         "poem": {
+            "illustration": "poems/chunsu-kkot/illustration.webp",
             "lines": [
                 "내가 그의 이름을 불러 주기 전에는",
                 "그는 다만",

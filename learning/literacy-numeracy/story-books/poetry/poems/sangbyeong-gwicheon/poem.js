@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["sangbyeong-gwicheon"] = {
         "poem": {
+            "illustration": "poems/sangbyeong-gwicheon/illustration.webp",
             "lines": [
                 "나 하늘로 돌아가리라.",
                 "새벽빛 와 닿으면 스러지는",
