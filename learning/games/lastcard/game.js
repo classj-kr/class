@@ -2,8 +2,7 @@
     "use strict";
 
     const GAME_ID = "lastcard";
-    const NAME_KEY = "classPlayerName";
-    const COLORS = ["ember", "tide", "leaf", "volt"];
+        const COLORS = ["ember", "tide", "leaf", "volt"];
     const COLOR_NAMES = { ember: "EMBER", tide: "TIDE", leaf: "LEAF", volt: "VOLT" };
     const ACTION_META = {
         skip: { symbol: "⨯", name: "SKIP", description: "다음 차례 건너뛰기" },
@@ -13,7 +12,7 @@
     const SERVER_MESSAGE = Object.freeze({ STATE: "LASTCARD_STATE", ERROR: "LASTCARD_ERROR" });
     const $ = id => document.getElementById(id);
     const previewName = new URLSearchParams(location.search).get("name");
-    const savedName = String(localStorage.getItem(NAME_KEY) || previewName || "").trim();
+    const savedName = String((window.CLASS_PLAYER_NAME || "") || previewName || "").trim();
 
     let lobby = null;
     let gameState = null;

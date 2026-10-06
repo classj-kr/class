@@ -9,7 +9,7 @@ const MODES=Object.freeze({
   standard:{name:"정식 바둑",size:9,komi:7.5,description:"연속 패스 뒤 사석 확인·양쪽 동의로 계가"}
 });
 const MESSAGE=Object.freeze({ACTION:"BADUK_ACTION",STATE:"BADUK_STATE",RETURN_LOBBY:"BADUK_RETURN_LOBBY"});
-const savedName=String(localStorage.getItem("classPlayerName")||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 let lobby=null;
 let gameState=null;
 let selectedMode="capture";

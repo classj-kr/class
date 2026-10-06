@@ -106,14 +106,13 @@
 
 // 새 게임을 만들 때 반드시 고유한 영문 ID로 바꾸세요.
 const GAME_ID="replace-with-new-game-id";
-const NAME_KEY="classPlayerName";
 const MESSAGE=Object.freeze({ACTION:"TEMPLATE_ACTION",STATE:"TEMPLATE_STATE",RESTART:"TEMPLATE_RESTART"});
 const $=id=>document.getElementById(id);
 
 let lobby=null;
 let gameState=null;
 let toastTimer=null;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function showToast(message){
   clearTimeout(toastTimer);

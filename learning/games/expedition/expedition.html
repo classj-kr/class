@@ -508,7 +508,6 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 "use strict";
 
 const GAME_ID="expedition";
-const NAME_KEY="classPlayerName";
 const THEME_KEY="expeditionTheme";
 const THEME_CARDS=[
   {id:"orerun",name:"광맥 탐사",blurb:"버려진 갱도를 파고 들어가 광물을 캡니다. 낙석·유독가스·붕괴."},
@@ -521,7 +520,7 @@ let lobby=null;
 let state=null;
 let selectedTheme=THEME_CARDS.some(t=>t.id===localStorage.getItem(THEME_KEY))?localStorage.getItem(THEME_KEY):"orerun";
 let toastTimer=null;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function showToast(message){
   clearTimeout(toastTimer);

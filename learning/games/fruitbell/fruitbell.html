@@ -322,7 +322,6 @@ function consumeSfxCue(cue){
 
 const $=id=>document.getElementById(id);
 const KOREAN_NAME_PATTERN=/^[가-힣]{2,6}$/;
-const NAME_STORAGE_KEY="classPlayerName";
 
 
 function openRules(){
@@ -338,7 +337,7 @@ function closeRulesOnBackdrop(event){
 }
 
 function getSavedPlayerName(){
- const saved=normalizeName(localStorage.getItem(NAME_STORAGE_KEY)||"");
+ const saved=normalizeName((window.CLASS_PLAYER_NAME || "")||"");
  return isValidName(saved)?saved:"";
 }
 

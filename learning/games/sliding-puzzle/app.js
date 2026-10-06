@@ -266,7 +266,7 @@
     }
   });
 
-  playerName = normalizePlayerName(localStorage.getItem('classPlayerName'));
+  playerName = normalizePlayerName((window.CLASS_PLAYER_NAME || ""));
   const hasPlayer = isValidPlayerName(playerName);
   playerLine.textContent = hasPlayer ? `PLAYER · ${playerName}` : 'SAVE YOUR NAME ON THE MAIN PAGE';
   startButton.disabled = !hasPlayer;

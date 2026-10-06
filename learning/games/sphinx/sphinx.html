@@ -673,7 +673,7 @@ body{align-items:center;padding:18px}
 
         let saved = "";
         try {
-            saved = normalizeKoreanName(localStorage.getItem("classPlayerName") || "");
+            saved = normalizeKoreanName((window.CLASS_PLAYER_NAME || "") || "");
         } catch (error) {
             // The home-page handoff still works when browser storage is unavailable.
         }

@@ -7,8 +7,6 @@ type Race = { worksheetName: string; worksheetRoute: string; status: string };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
 type Board = { participants: Array<{ id: string; name: string }>; race: Race };
 
-const PLAYER_NAME_KEY = "classPlayerName";
-
 function normalizedPlayerName(value: string | null) {
   return String(value ?? "").trim().replace(/[^가-힣a-zA-Z0-9]/g, "").slice(0, 20);
 }
@@ -24,14 +22,21 @@ export default function ArithmeticRaceJoinPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    // 첫 화면에서 정한 이름(게스트·교사·학생 모두)을 먼저 쓰고, 명단에 있는 학생이면 학습 기록과
-    // 같은 계정 이름으로 바꾼다. 계정 이름만 보면 교사와 게스트는 방을 만들 수 없다.
-    const storedName = normalizedPlayerName(window.localStorage.getItem(PLAYER_NAME_KEY));
-    if (storedName) setName(storedName);
+    // 이름은 브라우저에 두지 않고 서버에 묻는다. 로그인(교사·학생)이나 게스트 입장에서 나온 이름을 먼저 쓰고,
+    // 명단에 있는 학생이면 학습 기록과 같은 계정 이름으로 바꾼다.
+    let gotName = false;
+    void fetch('/api/auth/me', { cache: 'no-store', credentials: 'same-origin' })
+      .then(response => response.ok ? response.json() : null)
+      .then(me => {
+        const info = me as { membership?: { studentName?: string }; guestName?: string; user?: { name?: string } } | null;
+        const candidate = normalizedPlayerName(info?.membership?.studentName || info?.guestName || info?.user?.name || null);
+        if (candidate) { gotName = true; setName(candidate); }
+      })
+      .catch(() => {});
     void fetch('/api/learning-records/context', { cache: 'no-store', credentials: 'same-origin' })
       .then(response => response.ok ? response.json() : null)
-      .then(context => { const student = (context as { student?: { name?: string } } | null)?.student; if (student?.name) setName(normalizedPlayerName(student.name)); })
-      .catch(() => { if (!storedName) setError('학생 계정의 이름을 불러오지 못했습니다. 다시 연결해 주세요.'); });
+      .then(context => { const student = (context as { student?: { name?: string } } | null)?.student; if (student?.name) { gotName = true; setName(normalizedPlayerName(student.name)); } })
+      .catch(() => { if (!gotName) setError('학생 계정의 이름을 불러오지 못했습니다. 다시 연결해 주세요.'); });
 
     const room = params.get("room");
     const participantId = params.get("participant");

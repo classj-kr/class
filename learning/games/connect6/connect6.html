@@ -132,7 +132,6 @@
 "use strict";
 
 const GAME_ID="connect6";
-const NAME_KEY="classPlayerName";
 const BOARD_SIZE=19;
 const TURN_TIME_MS=20000;
 const MESSAGE=Object.freeze({ACTION:"CONNECT6_ACTION",STATE:"CONNECT6_STATE",RETURN_LOBBY:"CONNECT6_RETURN_LOBBY"});
@@ -144,7 +143,7 @@ let gameState=null;
 let toastTimer=null;
 let hostTurnTimer=null;
 let localTurnDeadline=0;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function emptyBoard(){return Array(BOARD_SIZE*BOARD_SIZE).fill(0)}
 function boardIndex(row,col){return row*BOARD_SIZE+col}

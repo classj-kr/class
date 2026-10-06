@@ -10,7 +10,7 @@ assert.match(
 );
 assert.match(
   html,
-  /function setPlayerIdentity\(value, membership = null\)[\s\S]*localStorage\.setItem\('classPlayerName', playerName\);[\s\S]*updatePlayerLearningLinks\(playerName, membership\);/,
+  /function setPlayerIdentity\(value, membership = null\)[\s\S]*currentPlayerName = playerName;[\s\S]*updatePlayerLearningLinks\(playerName, membership\);/,
   'Every playable role must use the shared player identity handoff.',
 );
 assert.match(
@@ -56,7 +56,9 @@ assert.deepEqual(linkUpdates[0], ['', undefined]);
 const adminName = runtime.setPlayerIdentity('사이트 관리자');
 assert.equal(adminName, '사이트관리자');
 assert.equal(runtime.getName(), '사이트관리자');
-assert.deepEqual(writes.at(-1), ['set', 'classPlayerName', '사이트관리자']);
+// 이름은 서버가 쪽마다 박아 넣으므로(2026-10-06) 브라우저에는 쓰지 않는다. 예전 값을 지우기만 한다.
+assert.ok(writes.every(([action, key]) => action === 'remove' && key === 'classPlayerName'), '이름을 브라우저에 쓰면 안 된다');
+assert.doesNotMatch(html, /localStorage\.setItem\('classPlayerName'/);
 assert.deepEqual(linkUpdates.at(-1), ['사이트관리자', null]);
 
 console.log('Index player identity contract passed.');

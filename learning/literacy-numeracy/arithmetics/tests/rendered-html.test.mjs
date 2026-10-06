@@ -745,11 +745,12 @@ test("renders the student-hosted ranking mode entry screen", async () => {
   const raceApiSource = await readFile(new URL("../app/api/arithmetic-race/route.ts", import.meta.url), "utf8");
   const globalCss = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.match(catalogSource, /href="\/arithmetic\/race"/);
-  // 명단에 있는 학생은 계정 이름(학습 기록과 같음), 교사·게스트는 첫 화면에서 정한 이름(classPlayerName)을 쓴다.
+  // 이름은 브라우저에 두지 않는다: 로그인·게스트 이름은 /api/auth/me, 명단 학생은 학습 기록 계정 이름.
+  assert.match(raceSource, /fetch\('\/api\/auth\/me'/);
+  assert.match(raceSource, /info\?\.membership\?\.studentName \|\| info\?\.guestName \|\| info\?\.user\?\.name/);
   assert.match(raceSource, /fetch\('\/api\/learning-records\/context'/);
   assert.match(raceSource, /setName\(normalizedPlayerName\(student\.name\)\)/);
-  assert.match(raceSource, /const PLAYER_NAME_KEY = "classPlayerName";/);
-  assert.match(raceSource, /normalizedPlayerName\(window\.localStorage\.getItem\(PLAYER_NAME_KEY\)\)/);
+  assert.doesNotMatch(raceSource, /localStorage/);
   assert.match(raceSource, /hostToken/);
   assert.match(raceSource, /worksheet\.grade} · {worksheet\.title/);
   assert.doesNotMatch(raceSource, />{worksheet\.name}<\/option>/);

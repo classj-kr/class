@@ -114,7 +114,6 @@ body:has(#gameScreen:not(.hidden)) .shell{min-height:0;height:min(760px,100%);wi
 <script>
 "use strict";
 const GAME_ID="davincicode";
-const NAME_KEY="classPlayerName";
 const COLORS=["black","white"];
 const COLOR_ORDER={black:0,white:1};
 const $=id=>document.getElementById(id);
@@ -126,7 +125,7 @@ let lastTurnOwner=null;
 const TURN_MS=30000;
 let hostTurnTimer=null;
 
-function getSavedName(){try{return String(localStorage.getItem(NAME_KEY)||"").trim().slice(0,12)}catch(_){return ""}}
+function getSavedName(){try{return String((window.CLASS_PLAYER_NAME || "")||"").trim().slice(0,12)}catch(_){return ""}}
 function currentName(){return getSavedName()}
 function applySavedName(){const saved=getSavedName();if(saved){const subtitle=document.querySelector(".subtitle");if(subtitle)subtitle.textContent=`PLAYER · ${saved} · 2~4명`}}
 function openRules(){$("rulesOverlay").classList.add("show")}

@@ -2,8 +2,7 @@
   "use strict";
 
   const GAME_ID = "citychase";
-  const NAME_KEY = "classPlayerName";
-  const MESSAGE = Object.freeze({ ACTION: "CITYCHASE_ACTION", STATE: "CITYCHASE_STATE", ERROR: "CITYCHASE_ERROR" });
+    const MESSAGE = Object.freeze({ ACTION: "CITYCHASE_ACTION", STATE: "CITYCHASE_STATE", ERROR: "CITYCHASE_ERROR" });
   const Board = window.CityChaseData;
   const Layout = window.CityChaseLayout;
   const ASSET = Object.freeze({
@@ -15,7 +14,7 @@
     game: ["assets/music/citychase-game-1.ogg", "assets/music/citychase-game-2.ogg"]
   });
   const $ = id => document.getElementById(id);
-  const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
+  const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
   let lobby = null;
   let state = null;

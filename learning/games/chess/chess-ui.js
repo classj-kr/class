@@ -1,7 +1,6 @@
 "use strict";
 
 const GAME_ID = "chess";
-const NAME_KEY = "classPlayerName";
 const SERVER_MESSAGE = Object.freeze({ STATE: "CHESS_STATE", ERROR: "CHESS_ERROR" });
 const TIME_LABELS = Object.freeze({
   bullet: "빠르게 · 1+1",
@@ -11,7 +10,7 @@ const TIME_LABELS = Object.freeze({
 });
 const PIECE_NAMES = Object.freeze({ K: "킹", Q: "퀸", R: "룩", B: "비숍", N: "나이트", P: "폰" });
 const $ = id => document.getElementById(id);
-const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
+const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
 let lobby = null;
 let gameState = null;

@@ -35,7 +35,6 @@
   const CIRCLED = ["①", "②", "③", "④"];
   const CHUNK_SIZE = 15;
 
-  const PLAYER_NAME_KEY = "classPlayerName";
   const DONE_KEY = "hanguksa-done";
   const LEGACY_SOLVED_KEY = "hanguksa-solved";
   const LEGACY_WRONG_KEY = "hanguksa-wrong";
@@ -199,12 +198,10 @@
     try {
       const params = new URLSearchParams(location.hash.replace(/^#/, ""));
       const handed = normalizePlayerName(params.get("student"));
-      const saved = normalizePlayerName(localStorage.getItem(PLAYER_NAME_KEY));
+      const saved = normalizePlayerName((window.CLASS_PLAYER_NAME || ""));
+      // 이름은 서버가 쪽에 박아 넣은 값을 쓴다. 주소로 넘겨받은 이름은 이 화면에서만 쓰고 저장하지 않는다.
       state.player = handed || saved;
-      if (handed) {
-        localStorage.setItem(PLAYER_NAME_KEY, handed);
-        history.replaceState(null, "", location.pathname + location.search);
-      }
+      if (handed) history.replaceState(null, "", location.pathname + location.search);
     } catch (err) {
       state.player = "";
     }

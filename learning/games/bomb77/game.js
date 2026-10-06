@@ -2,13 +2,12 @@
     "use strict";
 
     const GAME_ID = "bomb77";
-    const NAME_KEY = "classPlayerName";
-    const SERVER_MESSAGE = Object.freeze({ STATE: "BOMB77_STATE", ERROR: "BOMB77_ERROR" });
+        const SERVER_MESSAGE = Object.freeze({ STATE: "BOMB77_STATE", ERROR: "BOMB77_ERROR" });
     const CARD_NAMES = { reverse: "방향 전환", double: "×2 · 다음 사람 두 장" };
     const $ = id => document.getElementById(id);
     const params = new URLSearchParams(location.search);
     const previewName = params.get("name");
-    const savedName = String(localStorage.getItem(NAME_KEY) || previewName || "").trim();
+    const savedName = String((window.CLASS_PLAYER_NAME || "") || previewName || "").trim();
 
     const ROOM_KEY = "bomb77ActiveRoom";
     let savedRoom = null;

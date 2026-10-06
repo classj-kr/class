@@ -1259,7 +1259,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
     }
 
     function getSavedPlayerName() {
-        const saved = normalizeKoreanName(localStorage.getItem("classPlayerName") || "");
+        const saved = normalizeKoreanName((window.CLASS_PLAYER_NAME || "") || "");
         return isValidKoreanName(saved) ? saved : "";
     }
 

@@ -204,7 +204,6 @@ body.game-active .shell{height:100%}
 "use strict";
 
 const GAME_ID="rummikub";
-const NAME_KEY="classPlayerName";
 const RACK_SORT_KEY="rummikubRackSort";
 const COLOR_ORDER=Object.freeze({red:0,blue:1,black:2,orange:3});
 const SERVER_MESSAGE=Object.freeze({STATE:"RUMMIKUB_STATE",ERROR:"RUMMIKUB_ERROR"});
@@ -218,7 +217,7 @@ let actionPending=false;
 let lastRevision=-1;
 let toastTimer=null;
 let rackSortMode=localStorage.getItem(RACK_SORT_KEY)==="color"?"color":"number";
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function showToast(message){clearTimeout(toastTimer);$("toast").textContent=message;$("toast").classList.remove("hidden");toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),2500)}
 function showRules(){$("rulesOverlay").classList.remove("hidden")}

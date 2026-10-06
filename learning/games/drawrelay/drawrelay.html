@@ -202,8 +202,7 @@
   "use strict";
 
   const GAME_ID = "drawrelay";
-  const NAME_KEY = "classPlayerName";
-  const SERVER_MESSAGE = Object.freeze({ STATE: "DRAWRELAY_STATE", ERROR: "DRAWRELAY_ERROR" });
+    const SERVER_MESSAGE = Object.freeze({ STATE: "DRAWRELAY_STATE", ERROR: "DRAWRELAY_ERROR" });
   const CANVAS_WIDTH = 1000;
   const CANVAS_HEIGHT = 700;
   const $ = id => document.getElementById(id);
@@ -221,7 +220,7 @@
   let toastTimer = null;
   let revealChainIndex = 0;
   let revealedEntryCount = 1;
-  const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
+  const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
   function showToast(message) {
     clearTimeout(toastTimer);

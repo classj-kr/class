@@ -2,8 +2,7 @@
     "use strict";
 
     const GAME_ID = "quizrace";
-    const PLAYER_NAME_KEY = "classPlayerName";
-    // 답을 보냈는데 이만큼 기다려도 서버가 말이 없으면 다시 누를 수 있게 풀어 준다.
+        // 답을 보냈는데 이만큼 기다려도 서버가 말이 없으면 다시 누를 수 있게 풀어 준다.
     const ANSWER_WAIT_MS = 6000;
 
     const elements = {
@@ -79,7 +78,7 @@
 
     function getPlayerName() {
         try {
-            return (localStorage.getItem(PLAYER_NAME_KEY) || "").trim();
+            return ((window.CLASS_PLAYER_NAME || "") || "").trim();
         } catch (error) {
             return "";
         }

@@ -74,13 +74,13 @@
 
 <script>
 "use strict";
-const GAME_ID="gemguild",NAME_KEY="classPlayerName";
+const GAME_ID="gemguild";
 const GEMS=["ruby","sapphire","emerald","amethyst","amber"];
 const LABEL={ruby:"루비",sapphire:"사파이어",emerald:"에메랄드",amethyst:"자수정",amber:"호박",gold:"황금"};
 const ART={ruby:"ruby.webp",sapphire:"sapphire.webp",emerald:"emerald.webp",amethyst:"amethyst.webp",amber:"amber.webp"};
 const $=id=>document.getElementById(id);
 let lobby=null,state=null,selectedGems=[],returnSelection=[],selectedCard=null,actionPending=false,toastTimer=null;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 function html(value){return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}
 function showToast(message){clearTimeout(toastTimer);$("toast").textContent=message;$("toast").classList.remove("hidden");toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),2600)}
 function myId(){return lobby?.snapshot().myId||""}function me(){return state?.players.find(player=>player.id===myId())||null}function playerById(id){return state?.players.find(player=>player.id===id)||null}function isMyTurn(){return state?.phase==="playing"&&state.turnPlayerId===myId()&&!state.pending}

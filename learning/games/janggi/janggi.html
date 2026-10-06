@@ -154,7 +154,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <script>
 "use strict";
 const $=id=>document.getElementById(id);const GAME_ID='janggi';let lobby=null,myId=null,myRole='host',players={},connected=false,roomCode='',selected=null,legalTargets=[],logs=[],chatMessages=[],musicStarted=false,volumeLevel=3,gameOver=false,rematchMine=false,rematchOther=false,turnTimerId=null,turnDeadline=0,opponentName='',formationSyncPending=false,lastAnimatedMoveSeq=0;
-const savedPlayerName=(()=>{const name=(localStorage.getItem('classPlayerName')||'').trim();return /^[가-힣]{2,6}$/.test(name)?name:''})();
+const savedPlayerName=(()=>{const name=((window.CLASS_PLAYER_NAME || "")||'').trim();return /^[가-힣]{2,6}$/.test(name)?name:''})();
 function getPlayerName(){return savedPlayerName}
 function displayPlayerLabel(side){if(side===mySide())return getPlayerName();if(opponentName)return opponentName;return sideLabel(side)}
 let boardMotion=null;

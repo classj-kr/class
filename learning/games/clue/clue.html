@@ -434,7 +434,6 @@ body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
 "use strict";
 
 const GAME_ID="clue";
-const NAME_KEY="classPlayerName";
 const SUSPECTS=[
   {name:"백작부인",color:"#b03a6b"},
   {name:"집사장",color:"#5b6270"},
@@ -564,7 +563,7 @@ let myAvatarUrl=null;
 let dieAnimating=false;
 let localDeadline=0;
 let lastAnimatedClueMove=0;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 const GUEST_AVATAR_KEYS=[
   "animal-bear","animal-bee","animal-butterfly","animal-cat","animal-chick","animal-crab","animal-crested-gecko","animal-crocodile","animal-deer","animal-dog",

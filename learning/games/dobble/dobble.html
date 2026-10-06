@@ -305,9 +305,8 @@ body:has(#playArea:not(.hidden)) { padding: 60px 16px 16px; }
 "use strict";
 
 const GAME_ID = "dobble";
-const NAME_KEY = "classPlayerName";
 const $ = id => document.getElementById(id);
-const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
+const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
 // 8개 그림을 카드 안에 원형으로, 겹치지 않게 앵커 위치만 고정한다. 실제 크기·회전은
 // 그림마다 (카드가 바뀌기 전까진 안정적으로) 무작위로 정해서 원작처럼 크기로 눈치채지
