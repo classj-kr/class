@@ -249,7 +249,8 @@
     function activeDrums() {
         const defaultParts = ["kick", "snare", "hat", "openhat", "hightom", "lowtom", "crash", "ride"];
         const modelId = state.currentModel && state.currentModel.id;
-        if (KOREAN_PERCUSSION_PADS[modelId]) return KOREAN_PERCUSSION_PADS[modelId];
+        if (KOREAN_PERCUSSION_PADS[modelId]) return window.PAD_PRESENTATION.isJanggu(modelId)
+            ? window.PAD_PRESENTATION.bindJanggu(KOREAN_PERCUSSION_PADS[modelId]) : KOREAN_PERCUSSION_PADS[modelId];
         if (STATION_DRUMS[modelId]) return STATION_DRUMS[modelId];
         const parts = DRUM_KIT_PARTS[modelId] || defaultParts;
         return parts.map(function (id) { return DRUMS.find(function (drum) { return drum.id === id; }); }).filter(Boolean);
@@ -2135,32 +2136,79 @@
     function renderDrumPads() {
         elements.drumPads.innerHTML = "";
         const drums = activeDrums();
+        const presentation = window.PAD_PRESENTATION;
+        const modelId = state.currentModel && state.currentModel.id;
+        const janggu = presentation.isJanggu(modelId);
+        const kit = Boolean(DRUM_KIT_PARTS[modelId]);
+        elements.drumPads.classList.toggle("spatial-pads", janggu || kit);
+        elements.drumPads.classList.toggle("janggu-pads", janggu);
+        elements.drumPads.classList.toggle("kit-pads", kit);
+        elements.drumPads.setAttribute("aria-label", janggu ? "장구 패드 · 연주자 기준 왼쪽 궁편, 오른쪽 채편" : "타악기 연주 패드");
         elements.drumPads.classList.toggle("extended", drums.length >= 9);
         elements.drumPads.classList.toggle("korean-articulations", Boolean(state.currentModel && KOREAN_PERCUSSION_PADS[state.currentModel.id]));
-        drums.forEach(function (drum) {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.className = "drum-pad";
-            button.dataset.drum = drum.id;
-            if (drum.sourceName) button.title = drum.sourceName;
-            button.style.setProperty("--pad-color", drum.color);
-            button.innerHTML = "<span>" + drum.family + "</span><b>" + drum.name + "</b><small>키보드 " + drum.key + "</small>";
-            button.addEventListener("pointerdown", function (event) {
-                event.preventDefault();
-                setDrumPadActive(button, true);
-                const rect = button.getBoundingClientRect();
-                const config = drumSampleConfig();
-                const kit = config && config.id.startsWith("drums-");
-                // Mouse / ordinary touch pressure is not a measured strike.
-                // Match the computer-keyboard hit; retain expressive pen input.
-                const velocity = kit
-                    ? (event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82)
-                    : (event.pressure > .05 ? Math.max(.4, event.pressure) : core.pointerVelocity((event.clientY - rect.top) / rect.height));
-                triggerDrumV2(drum.sound || drum.id, velocity);
-                pulseInstrumentPart(drum.id);
+        if (janggu) {
+            const guide = document.createElement("p");
+            guide.className = "janggu-guide";
+            guide.textContent = "연주자 기준 · 왼쪽은 궁편, 오른쪽은 채편";
+            elements.drumPads.appendChild(guide);
+        }
+        presentation.groups(modelId, drums, kit).forEach(function (group) {
+            let container = elements.drumPads;
+            if (group.title) {
+                const section = document.createElement("section");
+                section.className = "pad-group pad-group-" + group.id;
+                section.dataset.padGroup = group.id;
+                const heading = document.createElement("h3");
+                heading.textContent = group.title;
+                section.appendChild(heading);
+                if (group.hint) {
+                    const hint = document.createElement("p");
+                    hint.textContent = group.hint;
+                    section.appendChild(hint);
+                }
+                container = document.createElement("div");
+                container.className = "pad-group-grid";
+                section.appendChild(container);
+                elements.drumPads.appendChild(section);
+            }
+            group.pads.forEach(function (drum, index) {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "drum-pad";
+                if ((janggu && index === 0) || group.id === "core") button.classList.add("primary-pad");
+                button.dataset.drum = drum.id;
+                button.dataset.code = drum.code;
+                if (drum.sourceName) button.title = drum.sourceName;
+                button.style.setProperty("--pad-color", drum.color);
+                const visual = presentation.icon(modelId, drum);
+                button.setAttribute("aria-label", drum.name + (visual.tool ? " · " + visual.tool : "") + " · 키보드 " + drum.key);
+                button.innerHTML = visual.svg + "<span class=\"pad-tool\">" + (visual.tool || drum.family) + "</span><b>" + drum.name + "</b><small>키보드 " + drum.key + "</small>";
+                const play = function (velocity) {
+                    setDrumPadActive(button, true);
+                    triggerDrumV2(drum.sound || drum.id, velocity);
+                    pulseInstrumentPart(drum.id);
+                };
+                button.addEventListener("pointerdown", function (event) {
+                    if (event.button !== 0) return;
+                    event.preventDefault();
+                    button.setPointerCapture(event.pointerId);
+                    // Layout and unmeasured touch pressure must not change strike volume.
+                    play(event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82);
+                });
+                button.addEventListener("keydown", function (event) {
+                    if (event.code !== "Space" && event.code !== "Enter") return;
+                    event.preventDefault();
+                    if (!event.repeat) play(.82);
+                });
+                button.addEventListener("keyup", function (event) {
+                    if (event.code === "Space" || event.code === "Enter") { event.preventDefault(); setDrumPadActive(button, false); }
+                });
+                button.addEventListener("click", function (event) {
+                    if (event.detail === 0) { play(.82); setDrumPadActive(button, false); }
+                });
+                ["pointerup", "pointercancel", "lostpointercapture", "blur"].forEach(function (type) { button.addEventListener(type, function () { setDrumPadActive(button, false); }); });
+                container.appendChild(button);
             });
-            ["pointerup", "pointercancel", "pointerleave"].forEach(function (type) { button.addEventListener(type, function () { setDrumPadActive(button, false); }); });
-            elements.drumPads.appendChild(button);
         });
     }
 
