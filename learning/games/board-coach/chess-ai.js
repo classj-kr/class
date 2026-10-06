@@ -4,7 +4,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (C) {
   "use strict";
   const LEVELS = Object.freeze({
-    beginner: { name: "초급", depth: 2, nodes: 9000, ms: 450 },
+    beginner: { name: "초급", depth: 1, nodes: 0, ms: 0, practice: true },
     intermediate: { name: "중급", depth: 3, nodes: 35000, ms: 1100 },
     advanced: { name: "상급", depth: 4, nodes: 120000, ms: 2400 }
   });
@@ -105,13 +105,30 @@
   function choose(state, level="beginner", options={}) {
     if(C.status(state).ended) return null;
     const settings={...(LEVELS[level]||LEVELS.beginner),...options};
-    const roots=rootCandidates(state);
+    const practice=settings.practice&&!settings.coaching;
+    const roots=practice?C.allLegalMoves(state):rootCandidates(state);
+    if(!roots.length)return null;
+    if(practice){
+      const win=roots.find(move=>{const next=C.advance(state,move);return C.isInCheck(next)&&!C.allLegalMoves(next).length;});
+      if(win)return {move:win,reason:explain(state,win),depth:1,nodes:0,practice:true};
+    }
     const finish=C.advance(state,roots[0]);
     if(C.isInCheck(finish) && !C.allLegalMoves(finish).length) return { move:roots[0], reason:explain(state,roots[0]), depth:1, nodes:0 };
     const learned=book.get(C.positionKey(state));
-    if(learned && roots.some(m=>same(m,learned))) return { move:roots.find(m=>same(m,learned)), reason:explain(state,learned), depth:0, nodes:0 };
+    if(!practice && learned && roots.some(m=>same(m,learned))) return { move:roots.find(m=>same(m,learned)), reason:explain(state,learned), depth:0, nodes:0 };
     const currentClaim=C.drawClaims(state).find(c=>!c.move);
     if(options.allowClaim!==false && currentClaim && evaluate(state)<-150) return { claim:true, reason:"이 판은 무승부를 선언할 수 있어요. 기물이 불리한 상황에서 무승부로 마칩니다." };
+    if(practice){
+      const random=options.random||Math.random;
+      // Use legal moves, so checks and pinned pieces still obey the rules.
+      // Most turns explore without checking the opponent's reply; the rest
+      // compare only this move. No opening book, exchange search or mate shield.
+      const developing=roots.filter(m=>m.piece[1]!=='K'||m.capture||m.castle);
+      const candidates=random()<.65?(developing.length?developing:roots):
+        roots.map(move=>({move,score:-evaluate(C.advance(state,move))})).sort((a,b)=>b.score-a.score).slice(0,3).map(m=>m.move);
+      const move=candidates[Math.min(candidates.length-1,Math.floor(random()*candidates.length))];
+      return {move,reason:explain(state,move),depth:1,nodes:0,practice:true};
+    }
     const middleGame=state.board.reduce((sum,p)=>sum+(p&&p[1]!=="P"?VALUES[p[1]]:0),0)>=2400;
     const checked=C.isInCheck(state);
     const costs=new Map(roots.map(move=>[move,middleGame&&!checked&&move.piece[1]==="K"&&!move.capture&&!move.castle?(settings.kingTempo||0):0]));

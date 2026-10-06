@@ -93,7 +93,7 @@
     const id=token;
     if(kind==="hint") reason("힌트 계산 중","후보를 살펴보고 있어요","체크와 기물의 안전을 확인하고 있어요.");
     try {
-      worker=new Worker("chess-worker.js?v=7");
+      worker=new Worker("chess-worker.js?v=8");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==token)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

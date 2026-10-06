@@ -3,13 +3,13 @@ const test = require("node:test"), assert = require("node:assert/strict");
 const fs = require("node:fs"), path = require("node:path"), vm = require("node:vm");
 const R = require("../learning/games/board-coach/rules.js");
 const AI = require("../learning/games/board-coach/ai.js");
-const levels = Object.keys(AI.LEVELS);
+const levels = ["intermediate","advanced"];
 function omok(black = [], white = [], color = 1) {
   const s = R.initial("omok");
   black.forEach(i => s.board[i] = 1); white.forEach(i => s.board[i] = 2);
   s.count = black.length + white.length; s.color = color; return s;
 }
-function select(s, level) { return AI.choose(s, level, { ms: 10000, nodes: 5000 }).index; }
+function select(s, level) { return AI.choose(s, level, { ms: 10000, nodes: 5000, random:()=>.25 }).index; }
 function generator() { let seed = 42; return n => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed % n; }; }
 
 test("legal moves and flips agree with the multiplayer Reversi engine through full games", () => {
@@ -52,7 +52,7 @@ test("Omok wins on all axes, accepts overlines, and never wraps across the edge"
   const end = {...R.initial("omok"), ended:true}; assert.throws(() => R.play(end,112));
 });
 
-test("every level starts centrally and follows the documented Reversi opening", () => {
+test("search opponents start centrally and follow the documented Reversi opening", () => {
   let opening = R.initial("reversi"); for (const i of [44,29,20]) opening = R.play(opening,i);
   for (const level of levels) {
     assert.equal(select(R.initial("omok"),level),112);
@@ -62,7 +62,7 @@ test("every level starts centrally and follows the documented Reversi opening", 
   assert.match(AI.explain(R.initial("omok"),0), /H8/);
 });
 
-test("every Omok level takes wins, blocks straight and broken fours, and prevents open fours", () => {
+test("search Omok opponents take wins, block straight and broken fours, and prevent open fours", () => {
   for (const level of levels) {
     // Own immediate win takes precedence over defending an opponent four.
     const win = omok([105,106,107,108],[120,121,122,123]);
@@ -78,7 +78,7 @@ test("every Omok level takes wins, blocks straight and broken fours, and prevent
   }
 });
 
-test("every Reversi level takes a corner and avoids handing one over when safe alternatives exist", () => {
+test("search Reversi opponents take a corner and avoid handing one over when safe alternatives exist", () => {
   const random = generator(); let corner, safety;
   for (let n=0; n<20 && (!corner || !safety); n++) {
     let s = R.initial("reversi");

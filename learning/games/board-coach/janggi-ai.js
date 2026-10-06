@@ -4,10 +4,9 @@
 })(typeof globalThis!=="undefined"?globalThis:this,function(R){
   "use strict";
   const LEVELS=Object.freeze({
-    // Every level retains the same legal moves, development evaluation and
-    // immediate capture/mate safety. Difficulty limits planning, not accuracy
-    // by inserting random mistakes. The coach has its own larger budget.
-    beginner:{name:"초급",depth:1,nodes:3000,ms:250},
+    // Beginners get a fallible practice opponent; stronger opponents and
+    // teaching hints retain tactical safety and their own search budgets.
+    beginner:{name:"초급",depth:1,nodes:0,ms:0,practice:true},
     intermediate:{name:"중급",depth:2,nodes:9000,ms:500},
     advanced:{name:"상급",depth:3,nodes:25000,ms:900}
   });
@@ -129,9 +128,14 @@
   }
   function choose(state,level="beginner",options={}){
     if(R.status(state).ended)return null;
-    const settings={...(LEVELS[level]||LEVELS.beginner),...options},candidates=roots(state);
+    const settings={...(LEVELS[level]||LEVELS.beginner),...options};
+    const practice=settings.practice&&!settings.coaching,candidates=practice?order(R.actions(state)):roots(state);
     const drawScore=settings.coaching?-120:0;
     if(!candidates.length)return null;
+    if(practice){
+      const win=candidates.find(move=>R.status(R.advance(state,move)).winner===state.turn);
+      if(win)return {move:win,line:[win],reason:explain(state,win),depth:1,nodes:0,practice:true};
+    }
     if(cannotForceMate(state)){
       // Material alone must not make the opponent reject a settled ending.
       // Keep the actual game rules: accept a legal draw, otherwise offer a pass.
@@ -140,6 +144,19 @@
         const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
       })||candidates.find(m=>m.kind==='pass');
       if(draw)return {move:draw,line:[draw],reason:explain(state,draw),depth:0,nodes:0};
+    }
+    if(practice){
+      // Accept an offered bikjang, and preserve a saving repetition draw.
+      const draw=candidates.find(m=>m.kind==='bikjang')||(evaluate(state)<-100&&candidates.find(m=>{
+        const end=R.status(R.advance(state,m));return end.ended&&!end.winner;
+      }));
+      const random=options.random||Math.random,board=candidates.filter(m=>!m.kind);
+      const developing=board.filter(m=>!['K','A'].includes(m.piece[1])||m.capture);
+      const choices=random()<.65?(developing.length?developing:board):board.map(move=>({move,
+        score:-evaluate(R.advance(state,move))-repetitionCost(state,move)
+      })).sort((a,b)=>b.score-a.score).slice(0,3).map(m=>m.move);
+      const move=draw||choices[Math.min(choices.length-1,Math.floor(random()*choices.length))]||candidates[0];
+      return {move,line:[move],reason:explain(state,move),depth:1,nodes:0,practice:true};
     }
     const ranked=candidates.map(move=>{
       // An unforced king shuffle should not win a near tie over developing or

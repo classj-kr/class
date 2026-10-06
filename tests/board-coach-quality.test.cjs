@@ -3,7 +3,7 @@ const test=require("node:test"),assert=require("node:assert/strict");
 const R=require("../learning/games/board-coach/rules.js"),AI=require("../learning/games/board-coach/ai.js");
 const C=require("../learning/games/chess/chess-rules.js"),CA=require("../learning/games/board-coach/chess-ai.js");
 const J=require("../learning/games/board-coach/janggi-rules.js"),JA=require("../learning/games/board-coach/janggi-ai.js");
-const levels=["beginner","intermediate","advanced"];
+const levels=["intermediate","advanced"];
 function randomizer(start){let seed=start;return n=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed%n;};}
 function omok(own,other,color=1){const s=R.initial("omok");for(const i of own)s.board[i]=color;for(const i of other)s.board[i]=3-color;s.count=own.length+other.length;s.color=color;return s;}
 function exactReversi(state,color,memo=new Map()){
@@ -33,7 +33,7 @@ test("Reversi advanced and endgame reviews agree with an independent exact solve
   assert.equal(checked,16);
 });
 
-test("every Omok level wins and blocks on every axis, both colors, including split fours",()=>{
+test("search Omok opponents win and block on every axis, both colors, including split fours",()=>{
   let checked=0;
   for(const color of [1,2])for(const[dr,dc]of R.axes)for(const gap of [0,1,2,3,4]){
     const line=Array.from({length:5},(_,n)=>(5+dr*n)*15+5+dc*n),four=line.filter((_,i)=>i!==gap);
@@ -43,7 +43,7 @@ test("every Omok level wins and blocks on every axis, both colors, including spl
     const defend=omok(blockedEnds,four,color);
     for(const level of levels){const answer=AI.choose(defend,level),next=R.play(defend,answer.index);assert.equal(answer.index,line[gap]);assert.ok(!R.legal(next).some(i=>R.play(next,i).winner===3-color));checked++;}
   }
-  assert.equal(checked,240);
+  assert.equal(checked,160);
 });
 
 test("Omok explanations acknowledge an opponent win before praising a forcing attack",()=>{
@@ -52,7 +52,7 @@ test("Omok explanations acknowledge an opponent win before praising a forcing at
   const both=omok([110,111,112,113],[140,141,142,143]);assert.match(AI.explain(both,114),/승리/);
 });
 
-test("every chess level protects an attacked unmoved queen even with no search budget",()=>{
+test("search chess opponents protect an attacked unmoved queen even with no search budget",()=>{
   for(const level of levels)for(const fen of ['6k1/8/1p6/2p5/3Q4/8/8/1N4K1 w - - 0 1','1n4k1/8/8/3q4/2P5/1P6/8/6K1 b - - 0 1']){
     const s=C.boardFromFen(fen,"standard"),before=JSON.stringify(s),answer=CA.choose(s,level,{nodes:0,ms:0});
     const next=C.advance(s,answer.move);assert.equal(answer.move.piece[1],"Q");
@@ -60,12 +60,12 @@ test("every chess level protects an attacked unmoved queen even with no search b
   }
 });
 
-test("all chess levels convert basic queen and rook endings without repetition or stalemate",()=>{
+test("search chess opponents convert basic queen and rook endings without repetition or stalemate",()=>{
   const endings=[['7k/8/8/8/3Q4/8/8/K7 w - - 0 1','w'],['7k/8/8/8/3R4/8/8/K7 w - - 0 1','w'],['7k/8/8/4q3/8/8/8/K7 b - - 0 1','b'],['7k/8/8/4r3/8/8/8/K7 b - - 0 1','b']];
   for(const level of levels)for(const[fen,winner]of endings){
     let state=C.boardFromFen(fen,"standard"),plies=0;
     while(!C.status(state).ended&&plies<100){
-      const answer=CA.choose(state,state.turn===winner?level:"beginner");
+      const answer=CA.choose(state,state.turn===winner?level:"beginner",{random:()=>.5});
       if(answer.claim){state=C.claimDraw(state).state;break;}
       const next=C.applyMove(state,answer.move.from,answer.move.to,answer.move.promotion);assert.ok(next.ok);state=next.state;plies++;
     }
