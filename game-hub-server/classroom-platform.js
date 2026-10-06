@@ -4116,6 +4116,17 @@ function createClassroomPlatform(options = {}) {
     if (new Set(cleanStudents.map((student) => student.number)).size !== cleanStudents.length) {
       throw new HttpError(400, "DUPLICATE_STUDENT_NUMBER", "Student numbers must be unique.");
     }
+    // 한 구글 계정은 한 학생에게만. 두 줄에 적으면 그 학생이 로그인할 때 한 계정을 두 줄에 연결하려다
+    // (user_id UNIQUE) 막혀 로그인 자체가 안 된다.
+    const seenStudentEmails = new Map();
+    for (const student of cleanStudents) {
+      if (!student.studentEmail) continue;
+      if (seenStudentEmails.has(student.studentEmail)) {
+        throw new HttpError(400, "DUPLICATE_STUDENT_EMAIL",
+          `학생 구글 계정 ${student.studentEmail}이(가) ${seenStudentEmails.get(student.studentEmail)}번과 ${student.number}번 두 줄에 있습니다. 한 계정은 한 학생에게만 적어 주세요.`);
+      }
+      seenStudentEmails.set(student.studentEmail, student.number);
+    }
 
     const client = await pool.connect();
     try {
@@ -7954,6 +7965,8 @@ function createClassroomPlatform(options = {}) {
     }
 
     const seenKeys = new Set();
+    const seenStudentEmails = new Map();
+    const rowLabel = (s) => `${s.grade}학년 ${s.classNumber}반 ${s.studentNumber}번`;
     for (const s of clean) {
       if (!Number.isInteger(s.grade) || s.grade < 1 || s.grade > 12)
         throw new HttpError(400, "INVALID_GRADE", `학년이 올바르지 않습니다: ${s.rosterName}`);
@@ -7962,9 +7975,20 @@ function createClassroomPlatform(options = {}) {
 
       const key = `${s.grade}-${s.classNumber}-${s.studentNumber}`;
       if (seenKeys.has(key)) {
-        throw new HttpError(400, "DUPLICATE_STUDENT_NUMBER", `중복된 학생 번호가 있습니다: ${s.grade}학년 ${s.classNumber}반 ${s.studentNumber}번 (${s.rosterName}). 번호를 다르게 지정해 주세요.`);
+        throw new HttpError(400, "DUPLICATE_STUDENT_NUMBER", `중복된 학생 번호가 있습니다: ${rowLabel(s)} (${s.rosterName}). 번호를 다르게 지정해 주세요.`);
       }
       seenKeys.add(key);
+
+      // 한 구글 계정은 한 학생에게만. 두 줄에 적으면 그 학생이 로그인할 때 한 계정을 두 줄에
+      // 연결하려다(user_id UNIQUE) 막혀 로그인 자체가 안 된다. 보호자 계정은 형제자매가 같이 쓰므로 겹쳐도 된다.
+      if (s.studentEmail) {
+        const other = seenStudentEmails.get(s.studentEmail);
+        if (other) {
+          throw new HttpError(400, "DUPLICATE_STUDENT_EMAIL",
+            `학생 구글 계정 ${s.studentEmail}이(가) 두 줄에 있습니다: ${rowLabel(other)}, ${rowLabel(s)}. 한 계정은 한 학생에게만 적어 주세요.`);
+        }
+        seenStudentEmails.set(s.studentEmail, s);
+      }
     }
 
     const gradeTotalCounts = new Map();
