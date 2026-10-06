@@ -14,7 +14,7 @@ const { createAssessmentPlans } = require("./assessment-plans");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
-const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle } = require("./roster-names");
+const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle, namesLookDifferent } = require("./roster-names");
 const {
   SCHEMA_STATEMENTS: subjectGrantSchema, CLASS_CONTENT_OPEN_SQL, classLabel: subjectClassLabel,
   subjectTeachingClasses, subjectGrantsForClass, subjectGrantedPathsForTeacher, setSubjectGrant
@@ -7846,8 +7846,10 @@ function createClassroomPlatform(options = {}) {
     const students = await pool.query(
       `SELECT s.id, s.grade, s.class_number, s.student_number, s.roster_name, s.name_source,
               s.gender, s.student_email, s.guardian1_email, s.guardian2_email,
-              s.custom_fields, s.user_id, s.created_at
+              s.custom_fields, s.user_id, s.created_at,
+              u.display_name AS google_name
        FROM school_students s
+       LEFT JOIN classroom_users u ON u.id = s.user_id
        WHERE s.school_id = $1 AND s.academic_year = $2
        ORDER BY s.grade, s.class_number,
                 NULLIF(regexp_replace(s.student_number, '\\D', '', 'g'), '')::int`,
@@ -7899,6 +7901,9 @@ function createClassroomPlatform(options = {}) {
     res.json({
       students: students.rows.map(s => ({
         ...s,
+        // 연동된 구글 계정의 이름. 관리자가 적은 성명과 다른 사람으로 보이면 명단에 표시한다.
+        google_name: s.google_name || null,
+        name_mismatch: namesLookDifferent(s.roster_name, s.google_name),
         clubs: clubMap[s.id] || [],
         afterschool: afterschoolMap[s.id] || [],
         shuttle: shuttleMap[s.id] || {}
@@ -8280,10 +8285,12 @@ function createClassroomPlatform(options = {}) {
     const isAdmin = ["관리자", "교장", "교감"].includes(tp.rows[0].teacher_type);
 
     const teachersResult = await pool.query(
-      `SELECT id, teacher_name, name_source, teacher_type, google_email, grade, class_number, subject_name, room_name, teaching_scope, active, user_id IS NOT NULL AS linked
-       FROM classroom_teachers
-       WHERE school_id = $1
-       ORDER BY CASE WHEN teacher_type = '관리자' THEN 1 WHEN teacher_type = '담임' THEN 2 ELSE 3 END, grade, class_number, id`,
+      `SELECT t.id, t.teacher_name, t.name_source, t.teacher_type, t.google_email, t.grade, t.class_number, t.subject_name, t.room_name,
+              t.teaching_scope, t.active, t.user_id IS NOT NULL AS linked, u.display_name AS google_name
+       FROM classroom_teachers t
+       LEFT JOIN classroom_users u ON u.id = t.user_id
+       WHERE t.school_id = $1
+       ORDER BY CASE WHEN t.teacher_type = '관리자' THEN 1 WHEN t.teacher_type = '담임' THEN 2 ELSE 3 END, t.grade, t.class_number, t.id`,
       [schoolId]
     );
 
@@ -8297,6 +8304,9 @@ function createClassroomPlatform(options = {}) {
           name: r.teacher_name,
           // pending: 성명을 비워 두어 첫 로그인을 기다림(자리표시로 계정을 적어 둠). google: 첫 로그인 때 구글 이름으로 채움.
           nameSource: r.name_source || "",
+          // 연동된 구글 계정의 이름. 적어 둔 성명과 다른 사람으로 보이면 명단에 표시한다.
+          googleName: r.google_name || null,
+          nameMismatch: namesLookDifferent(r.teacher_name, r.google_name),
           type: r.teacher_type,
           email: r.google_email,
           grade: r.grade ?? (shown && !r.class_number ? shown.gradeText : null),

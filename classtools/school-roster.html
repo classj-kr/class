@@ -230,6 +230,8 @@
         .name-chip { flex: none; white-space: nowrap; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 10px; cursor: help; }
         .name-chip.pending { background: #f3f4f6; color: #6b7280; }
         .name-chip.google { background: #dbeafe; color: #1d4ed8; }
+        /* 연동된 구글 계정의 이름이 적어 둔 성명과 다른 사람으로 보일 때 */
+        .name-chip.mismatch { background: #fef3c7; color: #b45309; }
         .roster-table .num-col { width: 1%; white-space: nowrap; }
         .roster-table .email-col { min-width: 240px; }
         .roster-table .guardian-col { min-width: 170px; }
@@ -759,9 +761,11 @@
             const namePending = t.nameSource === "pending";
             const nameValue = namePending ? "" : (t.name || "");
             const namePlaceholder = namePending ? "로그인 때 채움" : "성명";
-            const nameChip = namePending
+            const nameChip = (namePending
                 ? `<span class="name-chip pending" title="성명을 비워 두었습니다. 이 교직원이 처음 로그인하면 구글 계정 이름이 들어옵니다.">대기</span>`
-                : (t.nameSource === "google" ? `<span class="name-chip google" title="첫 로그인 때 구글 계정 이름으로 채웠습니다. 실명과 다르면 고쳐 주세요.">구글</span>` : "");
+                : (t.nameSource === "google" ? `<span class="name-chip google" title="첫 로그인 때 구글 계정 이름으로 채웠습니다. 실명과 다르면 고쳐 주세요.">구글</span>` : ""))
+                // 연동된 구글 계정의 이름이 적어 둔 성명과 다른 사람으로 보이면 알려 준다.
+                + (t.nameMismatch && t.googleName ? `<span class="name-chip mismatch" title="연동된 구글 계정 이름은 '${esc(t.googleName)}'입니다. 적어 둔 성명과 달라 보이니 확인해 주세요.">구글 이름 다름</span>` : "");
 
             if (isAdminRow) {
                 // 학교 관리자도 담임·교과를 겸할 수 있다. 잠그는 것은 구글 계정과 삭제뿐이다.
@@ -1093,9 +1097,11 @@
             // 그대로 저장하면 다시 비운 채로 보내 자리표시가 실명으로 굳지 않는다.
             const nameSource = s.name_source || s.nameSource || "";
             const namePending = nameSource === "pending";
-            const nameChip = namePending
+            const nameChip = (namePending
                 ? `<span class="name-chip pending" title="성명을 비워 두었습니다. 학생이 처음 로그인하면 구글 계정 이름이 들어옵니다.">대기</span>`
-                : (nameSource === "google" ? `<span class="name-chip google" title="첫 로그인 때 구글 계정 이름으로 채웠습니다. 실명과 다르면 고쳐 주세요.">구글</span>` : "");
+                : (nameSource === "google" ? `<span class="name-chip google" title="첫 로그인 때 구글 계정 이름으로 채웠습니다. 실명과 다르면 고쳐 주세요.">구글</span>` : ""))
+                // 연동된 구글 계정의 이름이 적어 둔 성명과 다른 사람으로 보이면 알려 준다.
+                + (s.name_mismatch && s.google_name ? `<span class="name-chip mismatch" title="연동된 구글 계정 이름은 '${esc(s.google_name)}'입니다. 적어 둔 성명과 달라 보이니 확인해 주세요.">구글 이름 다름</span>` : "");
 
             const cellInput = (field, value, width="100%", isCustom=false, key="", placeholder="") => {
                 const isEmail = /email$/.test(field);

@@ -88,7 +88,22 @@ async function fillPendingNamesFromGoogle(pool, { email, payload, isStudent, isT
   return filled;
 }
 
+// 관리자가 적은 성명과 연동된 구글 계정의 이름이 서로 다른 사람으로 보이는지. 학교 계정 이름은
+// "길동 홍", "3101홍길동", "홍길동(6-3)"처럼 성명을 품은 채 꾸밈이 붙는 일이 흔하므로, 띄어쓰기를
+// 지우고 낱말 순서를 바꿔 본 뒤에도 성명이 들어 있지 않을 때만 다르다고 본다.
+function namesLookDifferent(rosterName, googleName) {
+  const roster = cleanNamePart(rosterName).replace(/\s+/g, "").toLowerCase();
+  const google = cleanNamePart(googleName);
+  if (!roster || !google) return false;
+  const squashed = google.replace(/\s+/g, "").toLowerCase();
+  if (squashed.includes(roster)) return false;
+  const tokens = google.split(/\s+/).filter(Boolean);
+  if (tokens.length >= 2 && tokens.slice().reverse().join("").toLowerCase().includes(roster)) return false;
+  return true;
+}
+
 module.exports = {
+  namesLookDifferent,
   NAME_SOURCE_PENDING,
   NAME_SOURCE_GOOGLE,
   pendingStudentName,
