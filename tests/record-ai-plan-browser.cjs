@@ -11,9 +11,9 @@ const VALID_KEY = 'AIzaSyTEST-valid-key-0000000000004321';
 const STUDENTS = [{ number: '1', name: '학생 하나' }, { number: '2', name: '학생 둘' }, { number: '3', name: '학생 셋' }];
 const PLAN = [
   { domain: '문학', standards: [{ code: '6국05-05', text: '자신의 경험을 시, 소설, 극, 수필 등 적절한 갈래로 표현한다.' }], element: '경험을 시로 표현하기', levels: 3,
-    criteria: [{ label: '잘함', text: '자신의 경험을 시의 특성을 살려 생생하게 표현할 수 있다.' }, { label: '보통', text: '자신의 경험을 시로 표현할 수 있다.' }, { label: '노력요함', text: '도움을 받아 자신의 경험을 짧은 시로 표현할 수 있다.' }] },
+    criteria: [{ label: '잘함', text: '자신의 경험을 시의 특성을 살려 생생하게 표현한다.' }, { label: '보통', text: '자신의 경험을 시로 표현한다.' }, { label: '노력요함', text: '도움을 받아 자신의 경험을 짧은 시로 표현한다.' }] },
   { domain: '읽기', standards: [], element: '글의 짜임 파악하기', levels: 2,
-    criteria: [{ label: '잘함', text: '글의 짜임을 정확히 파악하고 내용을 요약할 수 있다.' }, { label: '노력요함', text: '' }] }
+    criteria: [{ label: '잘함', text: '글의 짜임을 정확히 파악하고 내용을 요약한다.' }, { label: '노력요함', text: '' }] }
 ];
 const google = [];
 const fetchImpl = async (url, options = {}) => {
@@ -27,7 +27,7 @@ const fetchImpl = async (url, options = {}) => {
   const text = typeof body?.input === 'string' ? body.input : (body?.contents?.[0]?.parts || []).map((p) => p.text || '').join('');
   const count = Number(/학생 (\d+)명이 똑같이/.exec(text)?.[1] || 1);
   const result = /\[평가결과\] (.+)/.exec(text)?.[1] || '';
-  const lines = Array.from({ length: count }, (_, i) => (i + 1) + '. ' + result.replace(/할 수 있다\.$/, '함.') + ' (' + (i + 1) + ')');
+  const lines = Array.from({ length: count }, (_, i) => (i + 1) + '. ' + result.replace(/한다\.$/, '함.') + ' (' + (i + 1) + ')');
   return json(200, { candidates: [{ content: { parts: [{ text: lines.join('\n') }] } }] });
 };
 
@@ -93,7 +93,7 @@ const fetchImpl = async (url, options = {}) => {
     const calls = google.filter((c) => typeof c.body?.input === 'string').map((c) => c.body.input);
     assert.equal(calls.length, 3, '묶음 셋');
     assert.match(calls[0], /학생 2명이 똑같이/);
-    assert.match(calls[0], /\[평가결과\] 자신의 경험을 시의 특성을 살려 생생하게 표현할 수 있다\./);
+    assert.match(calls[0], /\[평가결과\] 자신의 경험을 시의 특성을 살려 생생하게 표현한다\./);
     assert.match(calls[0], /\[성취기준\] 자신의 경험을 시, 소설/);
     assert.match(calls[0], /뜻이 같아야 합니다/);
     assert.match(calls[1], /학생 1명이 똑같이/);

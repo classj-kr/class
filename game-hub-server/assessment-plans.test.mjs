@@ -65,7 +65,7 @@ async function startServer() {
 
 const KEY = { year: 2026, grade: 5, semester: 1, subject: "국어" };
 const query = (key) => "?" + new URLSearchParams(key);
-const ITEMS = [{ domain: "문학", standards: [{ code: "6국05-05", text: "자신의 경험을 시, 소설, 극, 수필 등 적절한 갈래로 표현한다." }], element: "경험을 시로 표현하기", levels: 3, criteria: [{ label: "잘함", text: "경험을 시로 생생하게 표현할 수 있다." }, { label: "보통", text: "경험을 시로 표현할 수 있다." }, { label: "노력요함", text: "도움을 받아 경험을 시로 표현할 수 있다." }] }];
+const ITEMS = [{ domain: "문학", standards: [{ code: "6국05-05", text: "자신의 경험을 시, 소설, 극, 수필 등 적절한 갈래로 표현한다." }], element: "경험을 시로 표현하기", levels: 3, criteria: [{ label: "잘함", text: "경험을 시로 생생하게 표현한다." }, { label: "보통", text: "경험을 시로 표현한다." }, { label: "노력요함", text: "도움을 받아 경험을 시로 표현한다." }] }];
 
 test("cleanItems: 단계 수에 맞춰 단계 이름을 채우고, 길이와 개수를 자른다", () => {
   const [item] = cleanItems([{ domain: " 문학 ", standards: ["6국05-01", { code: "6국05-02", text: "글 " }, { code: "", text: "" }], element: "인물과 면담하기\r\n", levels: 4, criteria: [{ label: "", text: "잘 함" }, { text: "보통" }] }]);

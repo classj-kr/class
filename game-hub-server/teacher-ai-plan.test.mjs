@@ -26,7 +26,7 @@ function fakeGoogle() {
     let answer;
     if (/단계별 평가결과」 문장을 쓴다/.test(text)) {
       const labels = [...text.matchAll(/\{"label":"([^"]+)","text":"…"\}/g)].map((m) => m[1]);
-      answer = { criteria: labels.map((label, i) => ({ label, text: label + " 단계: 인물의 마음을 " + (i === 0 ? "깊이 " : "") + "헤아려  면담할 수 있다." })) };
+      answer = { criteria: labels.map((label, i) => ({ label, text: label + " 단계: 인물의 마음을 " + (i === 0 ? "깊이 " : "") + "헤아려  면담한다." })) };
     } else {
       answer = {
         items: [
@@ -122,12 +122,14 @@ test("성취기준·평가요소로 단계별 평가결과 문장 초안을 받�
     const four = await s.draft("1", { subject: "국어", grade: 5, standards, element: "작품 속 인물과 면담하기", levels: 4, labels: ["매우잘함", "잘함", "보통", "노력요함"] });
     assert.equal(four.status, 200, JSON.stringify(four.body));
     assert.deepEqual(four.body.criteria.map((c) => c.label), ["매우잘함", "잘함", "보통", "노력요함"]);
-    assert.equal(four.body.criteria[0].text, "매우잘함 단계: 인물의 마음을 깊이 헤아려 면담할 수 있다.");
-    assert.equal(four.body.criteria[3].text, "노력요함 단계: 인물의 마음을 헤아려 면담할 수 있다.");
+    assert.equal(four.body.criteria[0].text, "매우잘함 단계: 인물의 마음을 깊이 헤아려 면담한다.");
+    assert.equal(four.body.criteria[3].text, "노력요함 단계: 인물의 마음을 헤아려 면담한다.");
     const sentText = google.seen.at(-1).body.contents[0].parts[0].text;
     assert.match(sentText, /\[6국05-05\] 자신의 경험을/);
     assert.match(sentText, /평가요소: 작품 속 인물과 면담하기/);
     assert.match(sentText, /단계 4개\(매우잘함 \/ 잘함 \/ 보통 \/ 노력요함\)/);
+    assert.match(sentText, /"-ㄴ다\/-는다"로 끝나는 보통 서술문/, "평가결과는 '…한다.' 꼴의 보통 문장");
+    assert.doesNotMatch(sentText, /"…할 수 있다\."로 끝내고/);
 
     // 단계 이름을 안 보내면 기본 이름, 평가요소만 있어도 된다, 둘 다 없으면 400.
     const two = await s.draft("1", { standards: [], element: "분수의 덧셈", levels: 2 });
