@@ -151,7 +151,7 @@ const CHAPTERS = [
                     "막내는 이번에도 대답을 못 했습니다. 그 성도, 지나온 밭들도 진짜 주인은 따로 있었거든요."
                 ],
                 "right": [
-                    "성의 주인은 무엇으로든 변하는 마법사였습니다. 고양이는 마차보다 먼저 성에 닿으려고 달렸지요.",
+                    "그 성도 밭들도 모두 무엇으로든 변하는 마법사의 것이었습니다. 고양이는 마차보다 먼저 성에 닿으려고 달렸지요.",
                     "숨이 턱에 찼지만 멈추지 않았습니다. 성문 앞에 서서 수염을 가다듬었지요.",
                     "그러고는 커다란 문고리를 잡고 두드렸습니다. 쿵, 쿵, 쿵!"
                 ]
@@ -251,7 +251,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "\"저는 후작이 아니라 방앗간 집 막내입니다.\"",
-                    "홀이 조용해졌습니다. 한참 있다 임금님이 웃었지요. \"알고 있었네. 다만 자네 입으로 듣고 싶었지.\"",
+                    "홀이 조용해졌습니다. 한참 있다 임금님이 웃었지요. \"조금 전에 공주가 귀띔해 주더구나. 그래도 자네 입으로 듣고 싶었지.\"",
                     "고양이는 그제야 장화를 벗고 낮잠을 잤답니다."
                 ]
             }
@@ -712,7 +712,7 @@ const EN = {
                         "The castle and all those fields had a real owner of their own."
                     ],
                     right: [
-                        "The master of the castle was a magician who could turn himself into anything.",
+                        "The castle and all those fields belonged to a magician who could turn himself into anything.",
                         "The cat raced to get there before the carriage. He was out of breath, but he did not stop.",
                         "At the gate he straightened his whiskers and took hold of the great iron ring.",
                         "Boom, boom, boom!"
@@ -825,7 +825,7 @@ const EN = {
                     right: [
                         "\"I am not a marquis. I am the miller's youngest son,\" he said, his voice shaking.",
                         "The hall went quiet. At last the king laughed.",
-                        "\"I knew. I only wanted to hear it from you.\"",
+                        "\"The princess whispered it to me just now. Still, I wanted to hear it from you.\"",
                         "The cat took off his boots and had a long nap."
                     ]
                 }
@@ -953,7 +953,7 @@ const EN = {
             { word: 'sideways look', meaning: '곁눈질', sentence: 'The princess gave him a sideways look.' }
         ],
         '05-castle.webp': [
-            { word: 'magician', meaning: '마법사', sentence: 'The master of the castle was a magician.' },
+            { word: 'magician', meaning: '마법사', sentence: 'The castle belonged to a magician.' },
             { word: 'owner', meaning: '주인', sentence: "The castle and all those fields had a real owner of their own." },
             { word: 'straighten', meaning: '가다듬다', sentence: "He straightened his whiskers." },
             { word: 'iron ring', meaning: '문고리', sentence: 'He took hold of the great iron ring.' }
@@ -1062,7 +1062,7 @@ const WORDS_KO = {
     ],
     "05-castle.webp": [
         { w: "따로", k: "한데 섞이지 않고 떨어져서.", s: "그 성도, 지나온 밭들도 진짜 주인은 따로 있었거든요." },
-        { w: "변하다", k: "모습이 다른 것으로 바뀌다.", s: "성의 주인은 무엇으로든 변하는 마법사였습니다." },
+        { w: "변하다", k: "모습이 다른 것으로 바뀌다.", s: "그 성도 밭들도 모두 무엇으로든 변하는 마법사의 것이었습니다." },
         { w: "숨이 턱에 차다", k: "숨이 몹시 가빠 힘들다.", s: "숨이 턱에 찼지만 멈추지 않았습니다." },
         { w: "성문", k: "성으로 드나드는 큰 문.", s: "성문 앞에 서서 수염을 가다듬었지요." }
     ],

@@ -180,9 +180,9 @@ const CHAPTERS = [
                     "양철 나무꾼은 두 팔을 붙들려 하늘로 끌려갔지요. 도로시는 토토를 끌어안고 웅크릴 수밖에 없었습니다."
                 ],
                 "right": [
-                    "도로시와 사자는 마녀의 성으로 끌려갔습니다. 마녀는 도로시에게 부엌일을 시켰지요.",
+                    "도로시와 사자는 마녀의 성으로 끌려갔습니다. 마녀는 사자를 우리에 가두고 도로시에게는 부엌일을 시켰지요.",
                     "마녀는 은구두를 볼 때마다 입맛을 다셨습니다. \"저 구두만 뺏으면 되는데.\"",
-                    "하지만 구두의 힘이 무서워 도로시를 함부로 건드리지 못했지요. 그래서 바닥에 몰래 쇠막대를 놓아 도로시를 넘어뜨리고, 벗겨진 구두 한 짝을 얼른 집어 들었습니다."
+                    "하지만 구두의 힘이 무서워 함부로 건드리지는 못했지요. 그래서 몰래 쇠막대를 놓아 도로시를 넘어뜨리고, 벗겨진 구두 한 짝을 얼른 집었습니다."
                 ]
             },
             {
@@ -195,9 +195,9 @@ const CHAPTERS = [
                     "물이 쏟아지자 마녀가 비명을 질렀습니다."
                 ],
                 "right": [
-                    "\"물이라니! 물은 안 돼!\" 하는 순간 마녀의 몸이 설탕처럼 스르르 녹아내렸습니다. 이윽고 황금 모자만 바닥에 남았지요.",
+                    "\"물이라니! 물은 안 돼!\" 마녀의 몸이 설탕처럼 스르르 녹아내렸습니다. 이윽고 황금 모자와 은구두 한 짝만 바닥에 남았지요. 도로시는 구두를 집어 다시 신었습니다.",
                     "도로시는 우리에 갇힌 사자를 풀어 주고, 황금 모자를 써서 원숭이들을 불렀습니다.",
-                    "원숭이들이 양철 나무꾼을 들어다 주었지요. 도로시는 허수아비에게 짚을 채우고, 양철 나무꾼의 찌그러진 곳을 펴 주었습니다."
+                    "원숭이들이 양철 나무꾼을 데려왔지요. 허수아비에게는 짚을 채우고, 나무꾼의 찌그러진 곳은 펴 주었습니다."
                 ]
             }
         ]
@@ -758,7 +758,7 @@ const EN = {
                         "Dorothy could only crouch down, holding Toto."
                     ],
                     right: [
-                        "Dorothy and the Lion were taken to the castle. Dorothy had to work in the kitchen.",
+                        "Dorothy and the Lion were taken to the castle. The Witch shut the Lion in a cage and set Dorothy to work in the kitchen.",
                         "\"If only I had those silver shoes!\" muttered the Witch.",
                         "But she feared their magic, so she dared not touch Dorothy.",
                         "So she tripped Dorothy with an iron bar and snatched up the shoe that came off."
@@ -775,7 +775,7 @@ const EN = {
                     ],
                     right: [
                         "\"Water! Not water!\"",
-                        "The Witch melted away like a lump of sugar. Only her Golden Cap was left.",
+                        "The Witch melted away like a lump of sugar. Only her Golden Cap and one silver shoe were left. Dorothy put the shoe back on.",
                         "Dorothy let the Lion out of his cage and called the Monkeys with the Golden Cap.",
                         "They brought back the Woodman. Dorothy stuffed the Scarecrow again and hammered out the Woodman's dents."
                     ]
@@ -1103,7 +1103,7 @@ const WORDS_KO = {
         { w: "벽장", k: "벽에 만들어 놓은 물건 넣는 칸.", s: "마녀는 벽장에서 황금 모자를 꺼내 쓰고 주문을 외웠습니다." },
         { w: "흩뿌리다", k: "여기저기 마구 뿌리다.", s: "원숭이들은 허수아비의 짚을 뽑아 구름처럼 흩뿌렸습니다." },
         { w: "입맛을 다시다", k: "몹시 갖고 싶어 하다.", s: "마녀는 은구두를 볼 때마다 입맛을 다셨습니다." },
-        { w: "함부로", k: "이것저것 생각하지 않고 마구.", s: "하지만 구두의 힘이 무서워 도로시를 함부로 건드리지 못했지요." }
+        { w: "함부로", k: "이것저것 생각하지 않고 마구.", s: "하지만 구두의 힘이 무서워 함부로 건드리지는 못했지요." }
     ],
     "06-water.webp": [
         { w: "어림없다", k: "될 수가 없어 말도 안 된다.", s: "\"어림없다. 나머지 한 짝도 곧 내 것이 될걸!\"" },

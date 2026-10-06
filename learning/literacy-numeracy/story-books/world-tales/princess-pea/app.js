@@ -114,7 +114,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "아주 작고 동그란 콩이었지요. 왕비는 그것을 나무판 한가운데에 놓았습니다.",
-                    "\"진짜 공주라면 이걸 느낄 테지.\"",
+                    "\"진짜 공주는 살결이 여려서 이 작은 콩도 느낄 테지.\"",
                     "왕비는 하인들을 불렀지요. \"요를 스무 장 가져오너라.\"",
                     "하인들은 서로 얼굴을 쳐다보았습니다. 잘못 들은 줄 알았거든요."
                 ]
@@ -688,7 +688,7 @@ const EN = {
                     ],
                     right: [
                         "It was a very small, round pea. The queen put it in the middle of the bare boards.",
-                        "\"A real princess will feel that.\"",
+                        "\"A real princess has such tender skin that she will feel even this little pea.\"",
                         "Then she called the servants. \"Bring me twenty mattresses.\"",
                         "The servants looked at each other. They thought they had misheard her."
                     ]
