@@ -79,7 +79,7 @@ const CHAPTERS = [
                 "left": [
                     "이튿날 아침이었습니다. 임금님은 늘 하던 대로 거울 앞에 앉았지요.",
                     "그런데 무언가 이상했습니다. 머리 위로 길쭉한 것이 솟아 있었지요.",
-                    "임금님은 손을 뻗어 만져 보았습니다. 털이 보송보송했지요."
+                    "임금님은 손을 뻗어 만져 보았습니다. 털이 보송보송했지요. 그제야 어제 아폴론이 한 말이 떠올랐지요."
                 ],
                 "right": [
                     "틀림없는 당나귀 귀였습니다.",
@@ -669,7 +669,7 @@ const EN = {
                         "And something was wrong.",
                         "Two long things stood up above his head.",
                         "The king reached up and felt them.",
-                        "They were covered in soft fur."
+                        "They were covered in soft fur. Only then did he remember what Apollo had said the day before."
                     ],
                     right: [
                         "They were donkey's ears, and no mistake.",

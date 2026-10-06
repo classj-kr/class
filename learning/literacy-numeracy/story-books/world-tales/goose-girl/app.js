@@ -81,7 +81,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "공주는 한참 만에야 겨우 입을 열었지요. \"그럴 수 없어.\"",
-                    "\"그럼 여기서 어쩌시려고요? 소리쳐 봐야 들을 사람도 없는데요.\"",
+                    "\"그럼 여기서 어쩌시려고요? 소리쳐 봐야 들을 사람도 없는데요. 말을 안 들으면 이 벌판에 혼자 두고 가겠어요.\"",
                     "정말 길은 앞뒤로 텅 비어 있었습니다. 공주는 고개를 숙이고 옷을 벗어 건넸지요."
                 ]
             },
@@ -148,8 +148,8 @@ const CHAPTERS = [
                     "왕자는 그 말을 믿었지요. 팔라다는 그만 목숨을 잃고 말았습니다."
                 ],
                 "right": [
-                    "그 소식에 공주는 가슴이 철렁했습니다. 이 성에서 자기를 아는 건 팔라다뿐이었으니까요.",
-                    "공주는 성문지기를 찾아가 품에 지닌 돈을 모두 내밀었습니다. \"팔라다의 얼굴을 성문 위에 걸어 주세요. 아침마다 지나며 볼 수 있게요.\"",
+                    "그 소식에 공주는 가슴이 철렁했습니다. 이 성에서 자기를 아는 건 팔라다뿐이었지요.",
+                    "공주는 문지기를 찾아가 거위 치며 받은 품삯을 모두 내밀었습니다. \"팔라다의 얼굴을 성문에 걸어 주세요. 아침마다 볼 수 있게요.\"",
                     "문지기는 망설이다 고개를 끄덕였습니다."
                 ]
             },
@@ -654,7 +654,7 @@ const EN = {
                     right: [
                         "It was a long while before she could speak at all.",
                         "\"I cannot do that.\"",
-                        "\"Then what will you do out here? You may shout as much as you like — there is nobody to hear.\"",
+                        "\"Then what will you do out here? You may shout as much as you like — there is nobody to hear. If you don't do as I say, I'll leave you alone on this plain.\"",
                         "And the road really was empty in both directions.",
                         "The princess bowed her head and handed over her clothes."
                     ]
@@ -732,7 +732,7 @@ const EN = {
                     ],
                     right: [
                         "The princess's heart sank, and she grieved. Falada was the only one here who knew her.",
-                        "She went to the gatekeeper and held out every coin she had.",
+                        "She went to the gatekeeper and held out all the wages she had earned minding the geese.",
                         "\"Please hang Falada's head over the gate, so I can see him every morning.\"",
                         "The gatekeeper hesitated, then nodded."
                     ]
@@ -1121,7 +1121,7 @@ const WORDS_KO = {
         { w: "왕자비", k: "왕자의 아내.", s: "새 왕자비가 된 하녀는 마음이 놓이지 않았습니다." },
         { w: "목숨을 잃다", k: "죽고 말다.", s: "팔라다는 그만 목숨을 잃고 말았습니다." },
         { w: "가슴이 철렁하다", k: "놀라서 가슴이 내려앉다.", s: "그 소식에 공주는 가슴이 철렁했습니다." },
-        { w: "지니다", k: "몸에 늘 가지고 있다.", s: "공주는 성문지기를 찾아가 품에 지닌 돈을 모두 내밀었습니다." }
+        { w: "품삯", k: "일을 해 주고 받는 돈.", s: "공주는 문지기를 찾아가 거위 치며 받은 품삯을 모두 내밀었습니다." }
     ],
     "05-falada-2.webp": [
         { w: "발밑", k: "발이 놓인 바로 아래.", s: "거위들이 꽥꽥거리며 발밑으로 지나갔지요." },

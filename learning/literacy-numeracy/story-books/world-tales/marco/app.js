@@ -125,7 +125,7 @@ const CHAPTERS = [
                 "emoji": "🏚️",
                 "left": [
                     "마르코는 겨우 어머니의 이름을 댔습니다. 그 사람은 고개를 저었지요.",
-                    "\"네 어머니가 일하던 집 식구들은 벌써 이사 갔단다. 로사리오라는 도시로 갔지.\"",
+                    "\"네 어머니가 일하던 집 식구들은 벌써 이사 갔단다. 로사리오라는 도시로 갔지. 새 주소는 여기 적어 주마.\"",
                     "마르코는 다리에서 힘이 쭉 빠졌습니다. \"거기가 어딘가요?\""
                 ],
                 "right": [
@@ -226,7 +226,7 @@ const CHAPTERS = [
                 "art": "07-final-2.webp",
                 "emoji": "🚶",
                 "left": [
-                    "이윽고 흙집 몇 채가 보였습니다. 작은 마을이었지요. 마르코는 마지막 힘을 다해 걸었습니다.",
+                    "이윽고 투쿠만에 닿았습니다. 마르코는 물어물어 그 집을 찾아갔지요.",
                     "마당에서 빨래를 널던 아주머니가 돌아보았지요. 마르코는 말없이 어머니의 사진을 내밀었습니다.",
                     "아주머니가 사진과 마르코를 번갈아 보았지요. \"너…… 혹시 이 사람 아들이니?\""
                 ],
@@ -688,7 +688,7 @@ const EN = {
                     emoji: '🏘️',
                     left: [
                         "At last Marco said his mother's name. The man shook his head.",
-                        "\"The family she worked for moved away. They went to a city called Rosario.\"",
+                        "\"The family she worked for moved away. They went to a city called Rosario. Here, I'll write the new address down for you.\"",
                         "The strength went out of Marco's legs. \"Where is that?\""
                     ],
                     right: [
@@ -802,7 +802,7 @@ const EN = {
                     art: '07-final-2.webp',
                     emoji: '⛰️',
                     left: [
-                        "At last a few earth houses came into view. Marco walked on with the last of his strength.",
+                        "At last he reached Tucumán. Marco asked his way from one person to the next until he found the house.",
                         "A woman hanging out washing turned round. Without a word, Marco held out his mother's photograph.",
                         "The woman looked from the photograph to Marco. \"You… are you this woman's son?\""
                     ],
@@ -1009,7 +1009,7 @@ const EN = {
             { word: 'take heart', meaning: '힘을 내다', sentence: 'Marco took heart at the sight.' }
         ],
         '07-final-2.webp': [
-            { word: 'come into view', meaning: '보이다', sentence: 'A few earth houses came into view.' },
+            { word: 'ask one\'s way', meaning: '길을 물어 가다', sentence: 'Marco asked his way from one person to the next.' },
             { word: 'hang out washing', meaning: '빨래를 널다', sentence: 'A woman hanging out washing turned round.' },
             { word: 'hammer', meaning: '쿵쾅거리다', sentence: "Marco's heart hammered." },
             { word: 'out of breath', meaning: '숨이 가쁜', sentence: 'Marco was out of breath.' }
@@ -1118,7 +1118,7 @@ const WORDS_KO = {
         { w: "해가 기울다", k: "해가 서쪽으로 넘어가다.", s: "해가 기울 무렵이었지요." }
     ],
     "07-final-2.webp": [
-        { w: "채", k: "집을 세는 말.", s: "이윽고 흙집 몇 채가 보였습니다." },
+        { w: "빨래를 널다", k: "빤 옷을 마르라고 펼쳐 걸다.", s: "마당에서 빨래를 널던 아주머니가 돌아보았지요." },
         { w: "번갈아", k: "이쪽저쪽을 차례로 바꾸어.", s: "아주머니가 사진과 마르코를 번갈아 보았지요." },
         { w: "심장", k: "가슴에서 피를 뿜어 주는 곳.", s: "마르코의 심장이 쿵쾅거렸습니다." }
     ],

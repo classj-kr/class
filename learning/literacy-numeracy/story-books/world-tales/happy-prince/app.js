@@ -75,7 +75,7 @@ const CHAPTERS = [
                 "emoji": "❤️",
                 "left": [
                     "\"저는 내일 아침에 떠나야 해요. 동무들이 기다리거든요.\"",
-                    "제비는 그렇게 말하고 고개를 돌렸습니다. 밤바람이 차가워 부리가 다 시렸지요. 그러고는 한참 뒤에 슬그머니 물었습니다.",
+                    "제비는 고개를 돌렸습니다. 밤바람이 차가워 부리가 다 시렸지요. 그래도 열이 나서 뒤척이던 아이가 자꾸 눈에 밟혔습니다. 한참 뒤에 슬그머니 물었지요.",
                     "\"…어느 골목이라고 하셨죠?\""
                 ],
                 "right": [
@@ -218,9 +218,9 @@ const CHAPTERS = [
                     "신하 하나가 거들었지요. \"금박도 다 벗겨졌습니다.\""
                 ],
                 "right": [
-                    "시장이 혀를 찼습니다. \"이래서야 거지나 다름없지. 발치에는 새까지 죽어 있네.\"",
+                    "시장이 혀를 찼습니다. \"이래서야 거지나 다름없지. 발치에 새까지 죽어 있네.\"",
                     "신하들은 서로 눈치를 보다가 입을 모았습니다. \"녹여서 다른 동상을 세우지요.\"",
-                    "시장은 그 자리에서 동상을 내리라고 했지요."
+                    "시장은 그 자리에서 동상을 내리라고 했지요. 발치의 죽은 제비는 쓰레기 더미에 버려졌습니다."
                 ]
             },
             {
@@ -614,7 +614,7 @@ const EN = {
                     left: [
                         "\"I must leave in the morning. My friends are waiting for me.\"",
                         "The swallow said it and turned his head away.",
-                        "The night wind was cold and his beak ached with it.",
+                        "The night wind was cold and his beak ached with it. But the feverish child tossing in his bed kept coming back to him.",
                         "And after a long while he asked, a little sheepishly,",
                         "\"…which alley did you say it was?\""
                     ],
@@ -782,7 +782,7 @@ const EN = {
                     right: [
                         "The mayor clicked his tongue. \"He is little better than a beggar. And there's a dead bird at his feet!\"",
                         "The councillors glanced at one another. \"We might melt him down and put up another.\"",
-                        "The mayor ordered the statue taken down there and then."
+                        "The mayor ordered the statue taken down there and then. The dead swallow at its feet was thrown on the rubbish heap."
                     ]
                 },
                 {
