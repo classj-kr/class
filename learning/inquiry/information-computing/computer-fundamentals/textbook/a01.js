@@ -1,8 +1,11 @@
-(() => {
+(async () => {
 'use strict';
 const M = window.A01Model;
 const $ = (id) => document.getElementById(id);
 const KEY = 'classj:textbook:a01:v1';
+// 완료 기록은 계정별 서버 저장 공간(computer-literacy)에 둔다. 브라우저에는 남기지 않는다(2026-10-06).
+const store = await SiteStorage.open('computer-literacy');
+store.adopt([{ localKey: KEY, item: KEY }]);
 const photoNames = { cat: '고양이', dog: '강아지' };
 const ruleNames = { color: '색 그대로', gray: '흑백', bright: '밝게' };
 const questions = [
@@ -41,9 +44,9 @@ const questions = [
 ];
 function freshProgress() { return { photo: false, transfer: false, answers: questions.map(() => ({ solved: false, attempts: 0, selected: null, firstCorrect: false })) }; }
 let progress = freshProgress();
-let storageAvailable = true;
+const storageAvailable = store.persistent;   // 로그인이 없으면 기록이 남지 않는다
 try {
-    const raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+    const raw = store.get(KEY) ?? null;
     if (raw && raw.version === 1 && Array.isArray(raw.answers)) {
         progress.photo = raw.photo === true;
         progress.transfer = raw.transfer === true;
@@ -54,10 +57,10 @@ try {
             return { selected: a.selected, solved: a.solved === true && a.selected === q.answer && attempts > 0, attempts, firstCorrect: a.firstCorrect === true && a.selected === q.answer && attempts > 0 };
         });
     }
-} catch { /* A broken record is ignored; storage support is checked on write. */ }
+} catch { /* A broken record is ignored. */ }
 function persist() {
-    try { localStorage.setItem(KEY, JSON.stringify({ ...progress, version: 1 })); storageAvailable = true; }
-    catch { storageAvailable = false; }
+    // 답 기록은 같은 객체를 계속 고치므로 보낼 때마다 복사본을 넘긴다.
+    store.set(KEY, JSON.parse(JSON.stringify({ ...progress, version: 1 })));
     updateProgress();
 }
 function node(tag, text, className) {
@@ -316,8 +319,8 @@ function updateProgress() {
         ? '1차시를 마쳤습니다. 확인 문제 ' + questions.length + '개 중 ' + first + '개는 첫 응답에서 맞혔습니다.'
         : '남은 항목은 위의 학습 순서에서 다시 열 수 있습니다.';
     $('storageNotice').textContent = storageAvailable
-        ? '완료한 항목은 이 브라우저에 기록됩니다. 그림·숫자의 작업 화면은 새로고침하면 초기화됩니다.'
-        : '브라우저가 학습 기록 저장을 허용하지 않아, 페이지를 닫으면 완료 기록이 유지되지 않습니다.';
+        ? '완료한 항목은 내 계정에 기록됩니다. 그림·숫자의 작업 화면은 새로고침하면 초기화됩니다.'
+        : '로그인하지 않아 완료 기록이 남지 않습니다. 페이지를 닫으면 기록이 사라집니다.';
 }
 $('resetProgress').addEventListener('click', () => requestReset('이 1차시의 실습·과제·문제 기록을 모두 지웁니다. 기존 교재의 진도는 바뀌지 않습니다.', () => {
     progress = freshProgress(); resetPhoto(); resetNumber(); renderQuestions(); persist();

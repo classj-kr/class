@@ -27,6 +27,8 @@
   const DETAIL_BOUNDS = L.latLngBounds([[31.96, 123.76], [44.94, 133.58]]);
   const SPARSE_TILES = buildTileSets(window.RELIEF_TILES || {});
   const PROGRESS_KEY = "classj-korea-geography-progress-v2";
+  // 문제별 기록은 계정별 서버 저장 공간(korea-map)에 둔다. 브라우저에는 남기지 않는다(2026-10-06).
+  let store = null;
   const KIND_LABELS = {
     range: "산맥", plateau: "고원", basin: "분지", plain: "평야", riverform: "하천 지형", coast: "해안 지형",
     volcano: "화산 지형", karst: "카르스트 지형", peak: "산", river: "강", sea: "바다"
@@ -53,7 +55,10 @@
 
   document.addEventListener("DOMContentLoaded", init);
 
-  function init() {
+  async function init() {
+    // 기록을 읽는 화면(옆 칸·기록 단추)보다 먼저 저장 공간을 연다.
+    store = await SiteStorage.open("korea-map");
+    store.adopt([{ localKey: PROGRESS_KEY, item: PROGRESS_KEY }]);
     initMaps();
     bindControls();
     lessonMapLayer = L.layerGroup().addTo(mainMap);
@@ -234,7 +239,7 @@
     $("#retryWrong").addEventListener("click", () => { $("#recordDialog").close(); startPractice("review"); });
     $("#resetRecord").addEventListener("click", () => {
       if (!confirm("지금까지의 기록을 모두 지울까요?")) return;
-      localStorage.removeItem(PROGRESS_KEY);
+      store.remove(PROGRESS_KEY);
       renderProgress();
       study.refresh();
       fillRecord();
@@ -1385,7 +1390,9 @@
   // ───────────── 기록 ─────────────
   function readProgress() {
     try {
-      const parsed = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}");
+      const saved = store.get(PROGRESS_KEY);
+      // 받아 둔 값을 고치지 않도록 복사해서 돌려준다.
+      const parsed = saved && typeof saved === "object" ? JSON.parse(JSON.stringify(saved)) : {};
       return {
         correct: Number(parsed.correct) || 0,
         total: Number(parsed.total) || 0,
@@ -1399,7 +1406,7 @@
   }
 
   function writeProgress(progress) {
-    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (_) { /* 저장 공간이 없어도 학습은 이어진다 */ }
+    store.set(PROGRESS_KEY, progress);
   }
 
   function recordAnswer(question, correct) {

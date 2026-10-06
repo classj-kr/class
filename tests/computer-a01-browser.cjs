@@ -6,26 +6,16 @@ const puppeteer = require('puppeteer-core');
 const root = path.resolve(__dirname, '..');
 const artifactDir = path.join(root, 'docs/computer-a01-pilot');
 const prefix = '/learning/inquiry/information-computing/computer-fundamentals/textbook/';
-const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.webp': 'image/webp', '.ico': 'image/x-icon' };
-const server = http.createServer((req, res) => {
-    let target;
-    try { target = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname)); }
-    catch { res.writeHead(400).end(); return; }
-    if (!target.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
-    if (fs.existsSync(target) && fs.statSync(target).isDirectory()) target = path.join(target, 'index.html');
-    fs.readFile(target, (error, data) => {
-        if (error) { res.writeHead(404).end(); return; }
-        res.writeHead(200, { 'Content-Type': mime[path.extname(target)] || 'application/octet-stream' }); res.end(data);
-    });
-});
+const { startHarness } = require('./site-storage-harness.cjs');
 const KEY = 'classj:textbook:a01:v1';
 (async () => {
-    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-    const url = 'http://127.0.0.1:' + server.address().port + prefix + 'a01.html';
+    const h = await startHarness();
+    const url = h.base + prefix + 'a01.html';
     let browser;
     try {
         browser = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true, args: ['--no-first-run', '--no-default-browser-check'] });
         const page = await browser.newPage();
+        await page.setCookie({ name: 'test_user', value: '1', url: h.base });
         const errors = [];
         page.on('pageerror', error => errors.push(error.message));
         page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
@@ -95,7 +85,10 @@ const KEY = 'classj:textbook:a01:v1';
         }
         assert.match(await txt('completionMessage'), /4개 중 3개/);
         assert.equal(await txt('progressText'), '3 / 3 완료');
-        await page.evaluate(() => localStorage.setItem('computer-literacy:a01', 'legacy-preserved'));
+        // 진도는 계정 저장 공간(서버)에 남는다. 브라우저 저장소에는 아무것도 두지 않는다.
+        await page.waitForFunction(async () => (await (await fetch('/api/me/storage/computer-literacy', { cache: 'no-store' })).json()).items['classj:textbook:a01:v1']?.version === 1, { polling: 200, timeout: 10000 }).catch(() => {});
+        assert.equal((await h.items('computer-literacy'))[KEY]?.version, 1, '서버에 진도가 남아야 한다');
+        assert.deepEqual(await page.evaluate(() => Object.keys(localStorage).filter(k => /computer-literacy|classj:textbook/.test(k))), []);
         await page.reload({ waitUntil: 'networkidle0' });
         assert.equal(await txt('progressText'), '3 / 3 완료');
         assert.equal(await page.$eval('[data-question="0"] input[value="1"]', el => el.checked), true);
@@ -122,19 +115,22 @@ const KEY = 'classj:textbook:a01:v1';
         await goto('check');
         await page.click('#resetProgress'); await page.click('#resetDialog button[value="confirm"]');
         await page.waitForFunction(() => document.getElementById('progressText').textContent === '0 / 3 완료');
-        assert.equal(await page.evaluate(() => localStorage.getItem('computer-literacy:a01')), 'legacy-preserved');
+        await new Promise(resolve => setTimeout(resolve, 800));
+        assert.ok(((await h.items('computer-literacy'))[KEY]?.answers || []).every(a => !a.solved), '초기화하면 서버 기록도 비워진다');
+        // 예전 판이 남긴 깨진 값은 옮기다 버리고, 화면은 멀쩡히 뜬다.
         await page.evaluate(key => localStorage.setItem(key, '{bad JSON'), KEY);
         await page.reload({ waitUntil: 'networkidle0' });
+        assert.deepEqual(await page.evaluate(() => Object.keys(localStorage).filter(k => /classj:textbook/.test(k))), []);
         await page.waitForFunction(() => document.getElementById('progressText').textContent === '0 / 3 완료');
         assert.deepEqual(errors, []);
 
-        const blocked = await browser.newPage();
-        await blocked.evaluateOnNewDocument(() => {
-            Storage.prototype.setItem = function () { throw new DOMException('Blocked', 'SecurityError'); };
-        });
+        // 로그인하지 않은(게스트) 창에서는 기록이 남지 않는다고 알리고, 브라우저에도 아무것도 남기지 않는다.
+        const guestContext = await browser.createBrowserContext();
+        const blocked = await guestContext.newPage();
         await blocked.goto(url, { waitUntil: 'networkidle0' });
-        assert.match(await blocked.$eval('#storageNotice', el => el.textContent), /허용하지 않아/);
-        await blocked.close();
+        assert.match(await blocked.$eval('#storageNotice', el => el.textContent), /로그인하지 않아/);
+        assert.deepEqual(await blocked.evaluate(() => Object.keys(localStorage).filter(k => /classj:textbook|computer-literacy/.test(k))), []);
+        await guestContext.close();
         fs.writeFileSync(path.join(artifactDir, 'verification.json'), JSON.stringify({
             passed: true, checks: ['actual grayscale pixels', 'unsaved close', 'immutable saved photo', 'keyboard execution', 'independent task rejects stale save', 'close and reopen required', 'specific wrong-answer feedback', 'progress reload', 'cancel and reset isolation', 'malformed storage', 'blocked storage'],
             viewports: viewportReports, consoleErrors: errors
@@ -142,7 +138,7 @@ const KEY = 'classj:textbook:a01:v1';
         console.log('Browser checks passed: photo processing, storage, independent task, feedback, progress; 5 widths × 4 pages.');
     } finally {
         if (browser) await browser.close();
-        await new Promise(resolve => server.close(resolve));
+        await h.close();
     }
 })().catch(error => { console.error(error); process.exitCode = 1; });
 

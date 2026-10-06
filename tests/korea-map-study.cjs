@@ -21,23 +21,17 @@ for(const lesson of dataset.lessons) {
   assert.ok(pools[0].length);
   for(const level of ['essential','basic','advanced','all']) for(const q of sandbox.window.KoreaStudy.questionsFor(lesson,level)) assert.ok(lesson.questionIds.includes(q.id));
 }
-const server=http.createServer((req,res)=>{
-  let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);
-  if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
-  if(file===root)file=path.join(root,'index.html');
-  fs.readFile(file,(err,data)=>{if(err){res.writeHead(404).end();return;}
-    res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css','.json':'application/json','.geojson':'application/json','.webp':'image/webp'}[path.extname(file)]||'application/octet-stream');res.end(data);
-  });
-});
+const { startHarness } = require('./site-storage-harness.cjs');
 (async()=>{
   fs.mkdirSync(output,{recursive:true});
-  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
+  const h=await startHarness();let browser;
   try {
     browser=await puppeteer.launch({headless:true,executablePath:process.env.MAP_TEST_BROWSER||'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--no-first-run','--disable-background-networking']});
     const page=await browser.newPage(),errors=[];
+    await page.setCookie({name:'test_user',value:'1',url:h.base});   // 로그인한 학생: 기록이 서버에 남는다
     page.on('pageerror',e=>errors.push(e.message));
     await page.setViewport({width:1440,height:1000});
-    const url=`http://127.0.0.1:${server.address().port}/`;
+    const url=`${h.base}/learning/inquiry/korea-map/`;   // 틀은 저장소 뿌리를 내보내므로 앱 주소를 붙인다
     await page.goto(url,{waitUntil:'networkidle0'});
     const select=async lesson=>{
       await page.evaluate(l=>{document.querySelector(`[data-theme="${l.topic}"]`).click();const el=document.querySelector('#lessonSelect');el.value=l.id;el.dispatchEvent(new Event('change',{bubbles:true}));},lesson);
@@ -83,7 +77,10 @@ const server=http.createServer((req,res)=>{
     assert.ok(await page.$eval('#nextQuestion',el=>el.disabled));
     assert.ok(!await page.$('#questionDiagram .visual-evidence'));
     await page.evaluate(answer=>[...document.querySelectorAll('#answerOptions button')].find(b=>b.textContent.includes(answer)).click(),fq.options[fq.answer]);
-    const record=await page.evaluate(id=>JSON.parse(localStorage.getItem('classj-korea-geography-progress-v2')).items[id],fq.id);
+    // 첫 답 기록은 계정 저장 공간(서버)에 남는다. 브라우저에는 남지 않는다.
+    await page.waitForFunction(async id=>(await (await fetch('/api/me/storage/korea-map',{cache:'no-store'})).json()).items['classj-korea-geography-progress-v2']?.items?.[id]?.n===2,{polling:200,timeout:10000},fq.id);   // 두 번째 답까지 서버에 닿은 뒤 읽는다
+    const record=(await h.items('korea-map'))['classj-korea-geography-progress-v2'].items[fq.id];
+    assert.deepEqual(await page.evaluate(()=>Object.keys(localStorage).filter(k=>/korea-geography/.test(k))),[]);
     assert.equal(record.n,2);assert.equal(record.c,1);assert.equal(record.wrong,true);
     await page.screenshot({path:path.join(output,'desktop-answer.png')});
     await page.evaluate(()=>document.querySelector('#closePractice').click());
@@ -129,5 +126,5 @@ const server=http.createServer((req,res)=>{
     }
     assert.deepEqual(errors,[]);
     console.log('Study passed: 28 lessons / 195 questions; all existing questions mapped; all visual questions render and reveal; first-answer records persist; graph/map/mixed sessions complete; mobile and exploration tabs work.');
-  } finally {if(browser)await browser.close();await new Promise(r=>server.close(r));}
+  } finally {if(browser)await browser.close();await h.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

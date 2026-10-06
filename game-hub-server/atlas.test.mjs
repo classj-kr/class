@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {GROUPS,LESSONS,QUESTIONS,LEVELS,SOURCES} from '../learning/inquiry/globe/curriculum.mjs';
 import {decodeClimate,CLIMATE_COLORS} from '../learning/inquiry/globe/atlas-layers.mjs';
-import {readProgress,updateProgress} from '../learning/inquiry/globe/atlas-study.mjs';
+import {cleanProgress,updateProgress} from '../learning/inquiry/globe/atlas-study.mjs';
 const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
 const data=p=>JSON.parse(read('learning/inquiry/globe/data/'+p));
 test('32 lessons are scoped, linked to existing standards and attached to real map locations',()=>{
@@ -44,10 +44,11 @@ test('USGS boundary pagination is complete and types are not inferred from missi
   const kinds=new Set(features.map(f=>f.properties.LABEL));assert.deepEqual([...kinds].sort(),['Convergent Boundary','Divergent Boundary','Other','Transform Boundary']);
   assert.ok(features.some(f=>f.properties.LABEL==='Other'));
 });
-test('progress tolerates blocked/corrupt storage and tracks retry results separately',()=>{
-  assert.deepEqual(readProgress({getItem(){throw Error('blocked');}}),{});
-  assert.deepEqual(readProgress({getItem:()=>'{not json'}),{});
-  assert.deepEqual(readProgress({getItem:()=>'null'}),{});
+test('progress tolerates missing/corrupt stored values and tracks retry results separately',()=>{
+  assert.deepEqual(cleanProgress(undefined),{});
+  assert.deepEqual(cleanProgress('{not json'),{});
+  assert.deepEqual(cleanProgress(null),{});
+  assert.deepEqual(cleanProgress([{correct:1}]),{});
   let p=updateProgress({},QUESTIONS[0].id,false);p=updateProgress(p,QUESTIONS[0].id,true);
   assert.deepEqual(p[QUESTIONS[0].id],{correct:1,wrong:1,lastCorrect:true});assert.equal(Object.keys(p).length,1);
 });

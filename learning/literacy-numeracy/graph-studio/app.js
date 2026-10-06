@@ -1,8 +1,11 @@
-(() => {
+(async () => {
   'use strict';
   const C = window.GraphCore, A = window.GraphAnalysis, $ = id => document.getElementById(id);
   const COLORS = ['#197c70', '#db7047', '#6875bb', '#b17f24', '#af5a83', '#477cac', '#8d6aa9', '#71833b'];
-  const KEY = 'graph-board:current:v1', SCENES = 'graph-board:scenes:v1';
+  // 현재 칠판과 수업 보관함은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(게스트는 이 탭 안에서만).
+  const KEY = 'current', SCENES = 'scenes';
+  const store = await SiteStorage.open('graph-studio');
+  store.adopt([{ localKey: 'graph-board:current:v1', item: KEY }, { localKey: 'graph-board:scenes:v1', item: SCENES }]);
   const presets = [
     ['일차함수','기본','ax+b','linear'], ['이차함수','기본','a(x-h)^2+k','quadratic'], ['반비례','기본','a/x'],
     ['삼차함수','다항·유리·무리','a(x-h)^3+k'], ['사차함수','다항·유리·무리','a(x-h)^4+k'], ['절댓값','다항·유리·무리','a abs(x-h)+k'],
@@ -12,9 +15,11 @@
     ['역삼각함수','더 살펴보기','asin(x)'], ['합성함수','더 살펴보기','sin(x^2)'], ['정규분포','더 살펴보기','exp(-((x-h)^2)/(2*a^2))/(a*sqrt(2*pi))']
   ];
   let state = C.initialState(), storageAvailable = true, restoreWarning = '';
-  try { const saved = localStorage.getItem(KEY); if (saved) state = C.validateState(JSON.parse(saved)); }
+  try { const saved = store.get(KEY); if (saved) state = C.validateState(saved); }
   catch { restoreWarning = '이전 수업을 불러오지 못했어요. 기본 그래프로 시작합니다.'; }
   let undo = [], redo = [], mode = 'pan', frame = 0, toastTimer, saveTimer, wheelTimer, dragging = null, pendingSave = false;
+  let saveRun = 0, saving = Promise.resolve(), saveFailed = false;
+  const GUEST_STATUS = '로그인하면 자동 저장돼요', FAILED_STATUS = '자동 저장 불가 · 수업 파일을 내보내세요';
   const cache = new Map(), pointers = new Map(), canvas = $('graphCanvas'), ctx = canvas.getContext('2d');
   let vp, handles = [], analysisCacheKey = '', analysisCached;
   const color = fn => COLORS[(fn.id - 1) % COLORS.length];
@@ -38,12 +43,18 @@
     if (!from.length) { historyButtons(); return; }
     to.push(current); state = C.validateState(JSON.parse(from.pop())); renderAll(); changed();
   }
+  store.onError(() => { saveFailed = true; if (storageAvailable) notify('자동 저장할 수 없어요. 더보기 메뉴에서 수업 파일을 내보내세요.'); storageAvailable = false; $('saveStatus').textContent = FAILED_STATUS; });
   function flushSave() {
     clearTimeout(saveTimer); if (!pendingSave) return; pendingSave = false;
-    try { localStorage.setItem(KEY, JSON.stringify(state)); storageAvailable = true; $('saveStatus').textContent = '이 브라우저에 자동 저장됨'; }
-    catch { if (storageAvailable) notify('자동 저장할 수 없어요. 더보기 메뉴에서 수업 파일을 내보내세요.'); storageAvailable = false; $('saveStatus').textContent = '자동 저장 불가 · 수업 파일을 내보내세요'; }
+    store.set(KEY, state);
+    if (!store.persistent) { $('saveStatus').textContent = GUEST_STATUS; return; }
+    // 탭이 숨겨지는 중(visibilitychange → pagehide 순)이면 저장 공간이 알아서(모아서, 떠날 땐 keepalive 로) 보낸다. 실패하면 onError 가 글귀를 바꾼다.
+    if (document.visibilityState === 'hidden') { if (storageAvailable) $('saveStatus').textContent = '계정에 자동 저장됨'; return; }
+    // 서버가 받았다고 답한 뒤에야 "저장됨"으로 바꾼다. 보내는 차례가 섞이지 않게 한 줄로 세운다.
+    const run = ++saveRun;
+    saving = saving.then(() => { saveFailed = false; return store.flush(); }).then(() => { if (run !== saveRun || saveFailed) return; storageAvailable = true; $('saveStatus').textContent = '계정에 자동 저장됨'; }).catch(() => {});
   }
-  function changed() { pendingSave = true; clearTimeout(saveTimer); $('saveStatus').textContent = storageAvailable ? '저장 중…' : '자동 저장 불가 · 수업 파일을 내보내세요'; saveTimer = setTimeout(flushSave, 220); requestDraw(); historyButtons(); }
+  function changed() { pendingSave = true; clearTimeout(saveTimer); $('saveStatus').textContent = !store.persistent ? GUEST_STATUS : storageAvailable ? '저장 중…' : FAILED_STATUS; saveTimer = setTimeout(flushSave, 220); requestDraw(); historyButtons(); }
   function requestDraw() { if (!frame) frame = requestAnimationFrame(() => { frame = 0; draw(); }); }
   function choose(id) { state.activeId = id; renderSelection(); renderSliders(); renderFormula(); changed(); }
   function renderSelection() { document.querySelectorAll('.function-row').forEach(row => { const selected = Number(row.dataset.id) === state.activeId; row.classList.toggle('selected', selected); row.querySelector('.function-preview').setAttribute('aria-pressed', String(selected)); }); }
@@ -367,7 +378,7 @@
   });
   document.querySelectorAll('[data-close]').forEach(node => node.onclick = () => node.closest('dialog').close());
   function readScenes() {
-    const raw = localStorage.getItem(SCENES); if (!raw) return []; const items = JSON.parse(raw);
+    const items = store.get(SCENES); if (!items) return [];
     if (!Array.isArray(items) || items.length > 40) throw Error('수업 보관함을 읽을 수 없어요.');
     return items.map(item => { if (typeof item.id !== 'string' || typeof item.savedAt !== 'string') throw Error('수업 보관함을 읽을 수 없어요.'); return { id: item.id, savedAt: item.savedAt, state: C.validateState(item.state) }; });
   }
@@ -378,7 +389,7 @@
     scenes.slice().reverse().forEach(scene => {
       const row = element('div', 'scene-card'), info = element('div'); info.append(element('strong', '', scene.state.title || '이름 없는 수업'), element('small', '', `${scene.state.functions.length}개 함수 · ${new Date(scene.savedAt).toLocaleString('ko-KR')}`));
       const open = button('열기', `${scene.state.title} 열기`, () => { checkpoint(); state = C.clone(scene.state); renderAll(); changed(); $('scenesDialog').close(); notify('수업을 열었어요. 실행 취소로 이전 장면에 돌아갈 수 있어요.'); });
-      const remove = button('삭제', `${scene.state.title} 삭제`, () => { if (!window.confirm(`“${scene.state.title}”을 보관함에서 삭제할까요? 현재 칠판은 유지됩니다.`)) return; try { localStorage.setItem(SCENES, JSON.stringify(readScenes().filter(s => s.id !== scene.id))); renderScenes(); } catch { notify('삭제하지 못했어요. 브라우저 저장 공간을 확인하세요.'); } });
+      const remove = button('삭제', `${scene.state.title} 삭제`, () => { if (!window.confirm(`“${scene.state.title}”을 보관함에서 삭제할까요? 현재 칠판은 유지됩니다.`)) return; try { store.set(SCENES, readScenes().filter(s => s.id !== scene.id)); renderScenes(); } catch { notify('삭제하지 못했어요. 보관함을 읽을 수 없습니다.'); } });
       row.append(info, open, remove); list.append(row);
     });
   }
@@ -386,8 +397,8 @@
   $('saveSceneForm').onsubmit = event => {
     event.preventDefault(); const title = $('sceneName').value.trim(); if (!title) { $('sceneName').focus(); return; }
     try { const scenes = readScenes(); if (scenes.length >= 40) { notify('40개까지 보관할 수 있어요. 이전 수업을 파일로 내보내고 정리해 주세요.'); return; }
-      const copy = C.clone(state); copy.title = title; scenes.push({ id: window.crypto.randomUUID(), savedAt: new Date().toISOString(), state: copy }); localStorage.setItem(SCENES, JSON.stringify(scenes));
-      checkpoint(); state.title = title; $('lessonTitle').value = title; changed(); renderScenes(); notify('수업을 보관했어요.');
+      const copy = C.clone(state); copy.title = title; scenes.push({ id: window.crypto.randomUUID(), savedAt: new Date().toISOString(), state: copy }); store.set(SCENES, scenes);
+      checkpoint(); state.title = title; $('lessonTitle').value = title; changed(); renderScenes(); notify(store.persistent ? '수업을 보관했어요.' : '이 탭에만 보관했어요. 로그인하면 계정에 남아요.');
     } catch { notify('보관하지 못했어요. 수업 파일 내보내기로 저장해 주세요.'); }
   };
   function filename() { return (state.title.trim() || '그래프 수업').replace(/[<>:"/\\|?*\u0000-\u001f]/g, '-').slice(0, 70); }
@@ -442,6 +453,7 @@
   window.addEventListener('beforeprint', () => { if (!$('printSheet').children.length) preparePrint(false); });
   window.addEventListener('afterprint', () => $('printSheet').replaceChildren());
   window.addEventListener('pagehide', flushSave); document.addEventListener('visibilitychange', () => { if (document.hidden) flushSave(); });
+  if (!store.persistent) $('saveStatus').textContent = GUEST_STATUS;
   renderLibrary(); renderAll(); setSidebar(window.innerWidth > 760); new ResizeObserver(requestDraw).observe($('canvasWrap'));
   document.fonts.ready.then(requestDraw); if (restoreWarning) notify(restoreWarning);
 })();

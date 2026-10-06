@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   'use strict';
 
   const boardElement = document.getElementById('board');
@@ -38,7 +38,10 @@
 
   const solvedTiles = () => [...Array(size * size - 1)].map((_, index) => index + 1).concat(0);
   const formatTime = seconds => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
-  const bestKey = () => `songhwaplay-sliding-${size}-best`;
+  // 최고 기록은 계정별 서버 저장 공간에 둔다(브라우저에는 남기지 않는다). 게스트는 이 탭 안에서만 기억한다.
+  const store = await SiteStorage.open('sliding-puzzle');
+  const bestKey = () => `best-${size}`;
+  store.adopt([3, 4].map(side => ({ localKey: `songhwaplay-sliding-${side}-best`, item: `best-${side}` })));
 
   function neighboringIndexes(blankIndex) {
     const row = Math.floor(blankIndex / size);
@@ -125,9 +128,9 @@
     stopTimer();
     statusElement.textContent = 'PUZZLE COMPLETE!';
     statusElement.classList.add('success');
-    const previous = JSON.parse(localStorage.getItem(bestKey()) || 'null');
+    const previous = store.get(bestKey()) || null;
     if (!previous || moves < previous.moves || (moves === previous.moves && elapsed < previous.time)) {
-      localStorage.setItem(bestKey(), JSON.stringify({ moves, time: elapsed }));
+      store.set(bestKey(), { moves, time: elapsed });
     }
     updateBest();
     resultSummary.textContent = `${moves} MOVES · ${formatTime(elapsed)}`;
@@ -160,7 +163,7 @@
   }
 
   function updateBest() {
-    const best = JSON.parse(localStorage.getItem(bestKey()) || 'null');
+    const best = store.get(bestKey()) || null;
     bestElement.textContent = best ? `${best.moves}회` : '—';
     bestElement.title = best ? `${best.moves}번 이동, ${formatTime(best.time)}` : '';
   }

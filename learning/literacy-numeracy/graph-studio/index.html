@@ -42,7 +42,7 @@
             <details id="boardMenu" class="board-menu">
               <summary id="menuButton" aria-label="더보기" title="저장 · 내보내기 · 수업 모드"><span aria-hidden="true">⋯</span></summary>
               <div class="menu-content">
-                <div class="document-title"><label for="lessonTitle">수업 이름</label><input id="lessonTitle" maxlength="80" value="나의 그래프 수업"><span id="saveStatus" role="status">이 브라우저에 자동 저장</span></div>
+                <div class="document-title"><label for="lessonTitle">수업 이름</label><input id="lessonTitle" maxlength="80" value="나의 그래프 수업"><span id="saveStatus" role="status">계정에 자동 저장</span></div>
                 <nav aria-label="수업 관리"><button id="scenesButton">수업 보관함</button><button id="exportButton">내보내기</button><button id="teachingButton" aria-pressed="false">수업 모드</button><a href="/classtools/">수업 도구로 돌아가기</a></nav>
               </div>
             </details>
@@ -65,7 +65,7 @@
       </section>
     </section>
   </main>
-  <dialog id="scenesDialog" aria-labelledby="scenesTitle"><div class="dialog-heading"><div><h2 id="scenesTitle">수업 보관함</h2></div><button data-close aria-label="닫기">×</button></div><p class="help">이 브라우저에 보관됩니다. 다른 기기로 옮길 때는 수업 파일을 내보내세요.</p><form id="saveSceneForm" class="save-scene"><input id="sceneName" aria-label="보관할 수업 이름" maxlength="80" required placeholder="예: 이차함수의 평행이동"><button class="primary" type="submit">현재 수업 보관</button></form><div id="sceneList" class="scene-list"></div><div class="dialog-footer"><button id="importButton">수업 파일 불러오기</button><button id="jsonButton">수업 파일 내보내기</button></div></dialog>
+  <dialog id="scenesDialog" aria-labelledby="scenesTitle"><div class="dialog-heading"><div><h2 id="scenesTitle">수업 보관함</h2></div><button data-close aria-label="닫기">×</button></div><p class="help">로그인한 계정에 보관되어 다른 기기에서도 열립니다. 다른 사람에게 건넬 때는 수업 파일을 내보내세요.</p><form id="saveSceneForm" class="save-scene"><input id="sceneName" aria-label="보관할 수업 이름" maxlength="80" required placeholder="예: 이차함수의 평행이동"><button class="primary" type="submit">현재 수업 보관</button></form><div id="sceneList" class="scene-list"></div><div class="dialog-footer"><button id="importButton">수업 파일 불러오기</button><button id="jsonButton">수업 파일 내보내기</button></div></dialog>
   <dialog id="exportDialog" aria-labelledby="exportTitle"><div class="dialog-heading"><div><h2 id="exportTitle">내보내기</h2></div><button data-close aria-label="닫기">×</button></div><p class="help">현재 화면 범위와 비교 그래프, 선택한 좌표를 함께 담습니다.</p><button id="pngButton" class="export-choice"><b>그래프 이미지</b><span>수식과 계수를 포함한 PNG</span><i>↗</i></button><button id="printButton" class="export-choice"><b>설명용 그래프 인쇄</b><span>수식·계수와 함께 수업 자료로</span><i>↗</i></button><button id="blankPrintButton" class="export-choice"><b>빈 좌표평면 인쇄</b><span>학생이 직접 그리는 활동지</span><i>↗</i></button></dialog>
   <input type="file" id="importFile" accept=".json,application/json" hidden>
   <div id="toast" class="toast" role="status" hidden></div>
@@ -73,6 +73,7 @@
   <script src="vendor/katex.min.js"></script>
   <script src="graph-core.js"></script>
   <script src="graph-analysis.js"></script>
-  <script src="app.js?v=20260923-compact"></script>
+  <script src="/assets/site-storage.js?v=20261006-1"></script>
+  <script src="app.js?v=20261006-server-store"></script>
 </body>
 </html>

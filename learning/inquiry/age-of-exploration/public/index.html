@@ -748,7 +748,7 @@ function finishJoin(result,resumed=false){
   ++resumeGeneration;resumePending=false;
   resumeToken=result.resumeToken||resumeToken;try{sessionStorage.setItem('uw3-resume-token',resumeToken)}catch{}connectionReady=true;lastSnapshotAt=performance.now();net.textContent='● 서버 연결';net.className='good';remote.clear();
   joined=true;if(!resumed)resetMapZoomForDevice();sessionMode=result.sessionMode||'competition';roomType=result.roomType||'race';isHost=!!result.isHost;roomCodeCurrent=result.roomLabel||`방 ${result.roomCode||''}`;hostCode.textContent=result.roomCode||'';self={...result.self};serverSelf={...result.self};syncClassClock(result.classGameMinutes);mode=result.self.mode;applyMissionState(result.mission,result.progress,false);missionInteraction=result.interaction||null;cityInteraction=result.cityInteraction||null;portInteraction=result.portInteraction||null;discoveryInteraction=result.discoveryInteraction||null;huntInteraction=result.huntInteraction||null;landmarkQueue=result.cityLandmarks||[];applyClassSettings(result.settings||{});join.style.display='none';joinError.textContent='';
-  try{localStorage.setItem('uw3-room',result.roomCode||'')}catch{}if(!resumed)guideHistory.length=0;
+  try{sessionStorage.setItem('uw3-room',result.roomCode||'')}catch{}if(!resumed)guideHistory.length=0;
   nearbyGroup.hidden=roomType==='free';
   if(resumed)window.VoyageStudyUI?.connectionRestored();else window.VoyageStudyUI?.close();
   if(!resumed){showToast(isHost?`방을 만들었습니다. 방번호 ${result.roomCode}`:`방에 들어왔습니다. 방번호 ${result.roomCode}`,'good');showToast('바람·해류는 상단 ‘정보’에서 확인하세요.','system')}updateHostBar();applyModeUI();rearmHeldPad();sendInput();
@@ -771,7 +771,7 @@ joinForm.addEventListener('submit',e=>{
 });
 hostStartBtn.addEventListener('click',()=>{hostStartBtn.disabled=true;socket.emit('hostStartFree',{},result=>{hostStartBtn.disabled=false;if(!result?.ok){showToast(result?.error||'출발하지 못했습니다.','warn');return}applyClassSettings(result.settings);showToast('출발! 자유롭게 항해하세요.','good')})});
 roomInput.addEventListener('input',()=>{roomInput.value=roomInput.value.replace(/\D/g,'').slice(0,4)});
-const savedRoom=(()=>{try{return localStorage.getItem('uw3-room')||''}catch{return ''}})();roomInput.value=/^\d{4}$/.test(savedRoom)?savedRoom:'';
+const savedRoom=(()=>{try{return sessionStorage.getItem('uw3-room')||''}catch{return ''}})();roomInput.value=/^\d{4}$/.test(savedRoom)?savedRoom:'';
 const mainEntryParams=new URLSearchParams(location.search);
 const mainPlayerName=String(mainEntryParams.get('name')||'').trim();
 if(!/^[가-힣]{2,6}$/.test(mainPlayerName)){

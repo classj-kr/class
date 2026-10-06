@@ -52,7 +52,8 @@ const digest=text=>crypto.createHash('sha256').update(text).digest('hex');
    }
    await page.waitForSelector('#resultDialog[open]');await page.screenshot({path:path.join(out,`${mobile?'mobile':'desktop'}-result.png`)});await click('#finishPractice');
    await page.waitForFunction(()=>!document.querySelector('#resultDialog').open);
-   const records=await page.evaluate(()=>JSON.parse(localStorage.getItem('classj-korea-geography-progress-v2')));assert.ok(Object.keys(records.items).length>=count);
+   // 기록은 로그인한 계정의 서버 저장 공간에만 남는다. 이 확인은 로그인 없이 돌므로 브라우저에 아무것도 남지 않아야 한다.
+   assert.deepEqual(await page.evaluate(()=>Object.keys(localStorage).filter(k=>/korea-geography/.test(k))),[]);
    await click('[data-theme="history"]');await page.waitForSelector('#historyContent');assert.equal(await page.$('#sceneInsight'),null);
    await click('[data-theme="climate"]');await page.select('#lessonSelect','foehn');await page.waitForFunction(()=>document.querySelector('#lessonDiagram')?.dataset.status==='ready');
    await click('[data-mountain-wind="west"]');assert.ok((await page.$eval('.mountain-side.leeward',e=>e.textContent)).includes('강릉'));

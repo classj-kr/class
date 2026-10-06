@@ -1,10 +1,14 @@
-(()=>{
+(async()=>{
 'use strict';
 const M=CompositionStudio,$=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg',storageKey='art-composition-studio-v2';
 let items=M.initial(),reference=null,records=[],selected=1,nextId=5,nextRecord=1,undo=[],redo=[],drag=null,rangeBefore=null;
-let storageAvailable=true;
-try{const data=JSON.parse(localStorage.getItem(storageKey)||'null');if(data&&data.version===2&&M.valid(data.items)&&(!data.reference||M.valid(data.reference))&&Array.isArray(data.records)&&data.records.length<=30&&data.records.every(r=>Number.isSafeInteger(r.id)&&r.id>0&&M.valid(r.items))){items=M.clone(data.items);reference=M.clone(data.reference);records=M.clone(data.records);$('compareToggle').checked=!!data.compare&&!!reference;selected=items[0]?.id??null;nextId=Math.max(0,...items.map(i=>i.id),...(reference||[]).map(i=>i.id),...records.flatMap(r=>r.items.map(i=>i.id)))+1;nextRecord=Math.max(0,...records.map(r=>r.id))+1;}}catch{storageAvailable=false;}
-function persist(){try{localStorage.setItem(storageKey,JSON.stringify({version:2,items,reference,records,compare:$('compareToggle').checked}));storageAvailable=true;$('storageStatus').textContent='이 브라우저에 저장됨';}catch{storageAvailable=false;$('storageStatus').textContent='브라우저 저장 불가 · 그림을 내려받아 보관하세요.';}}
+// 작업은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(로그인이 없으면 이 탭 안에서만 기억).
+let store=null;try{store=await SiteStorage.open('design-principles');store.adopt([{localKey:storageKey,item:'studio'}]);}catch{store=null;}
+let storageAvailable=!!store?.persistent;
+const unsavedNotice='로그인하지 않으면 저장되지 않습니다 · 그림을 내려받아 보관하세요.';
+try{const data=store?store.get('studio'):null;if(data&&data.version===2&&M.valid(data.items)&&(!data.reference||M.valid(data.reference))&&Array.isArray(data.records)&&data.records.length<=30&&data.records.every(r=>Number.isSafeInteger(r.id)&&r.id>0&&M.valid(r.items))){items=M.clone(data.items);reference=M.clone(data.reference);records=M.clone(data.records);$('compareToggle').checked=!!data.compare&&!!reference;selected=items[0]?.id??null;nextId=Math.max(0,...items.map(i=>i.id),...(reference||[]).map(i=>i.id),...records.flatMap(r=>r.items.map(i=>i.id)))+1;nextRecord=Math.max(0,...records.map(r=>r.id))+1;}}catch{/* 읽지 못한 기록은 버리고 새 작업판으로 시작한다. */}
+store?.onError(()=>{$('storageStatus').textContent='저장하지 못했습니다 · 그림을 내려받아 보관하세요.';});
+function persist(){if(!store)return;store.set('studio',{version:2,items,reference,records,compare:$('compareToggle').checked});$('storageStatus').textContent=storageAvailable?'내 계정에 저장됨':unsavedNotice;}
 function status(message){$('editStatus').textContent=message;}
 function pushUndo(before){if(JSON.stringify(before)===JSON.stringify(items))return;undo.push(M.clone(before));if(undo.length>60)undo.shift();redo=[];persist();}
 function finishRange(){if(rangeBefore){pushUndo(rangeBefore);rangeBefore=null;}}
@@ -75,5 +79,5 @@ function renderRecords(){
 $('saveComposition').addEventListener('click',()=>{finishRange();if(!items.length){status('도형을 놓은 뒤 저장하세요.');return;}if(records.length>=30){status('구성 30개를 저장했습니다. 필요 없는 저장 구성을 삭제한 뒤 다시 저장하세요.');return;}records.push({id:nextRecord++,items:M.clone(items)});persist();renderRecords();status('현재 구성을 저장했습니다.');});
 $('exportWork').addEventListener('click',()=>{finishRange();const url=URL.createObjectURL(new Blob([M.exportSvg(items)],{type:'image/svg+xml'})),link=document.createElement('a');link.href=url;link.download='나의-구성.svg';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 window.addEventListener('pagehide',()=>{finishRange();if(drag)persist();});
-render();renderRecords();$('storageStatus').textContent=storageAvailable?'작업은 이 브라우저에 자동 저장됩니다.':'브라우저 저장 불가 · 그림을 내려받아 보관하세요.';
+render();renderRecords();$('storageStatus').textContent=storageAvailable?'작업은 내 계정에 자동 저장됩니다.':unsavedNotice;
 })();

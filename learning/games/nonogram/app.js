@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   'use strict';
 
   const PUZZLES = {
@@ -195,7 +195,10 @@
   });
 
   const formatTime = seconds => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
-  const bestKey = () => `songhwaplay-nonogram-${n}-best`;
+  // 최고 기록은 계정별 서버 저장 공간에 둔다(브라우저에는 남기지 않는다). 게스트는 이 탭 안에서만 기억한다.
+  const store = await SiteStorage.open('nonogram');
+  const bestKey = () => `best-${n}`;
+  store.adopt(Object.keys(PUZZLES).map(size => ({ localKey: `songhwaplay-nonogram-${size}-best`, item: `best-${size}` })));
   const playSfx = name => window.ClassGameSfx?.play(name);
 
   function parseGrid(rows) {
@@ -406,7 +409,7 @@
   }
 
   function updateBest() {
-    const best = JSON.parse(localStorage.getItem(bestKey()) || 'null');
+    const best = store.get(bestKey()) || null;
     bestElement.textContent = best ? formatTime(best.time) : '—';
     bestElement.title = best ? `최고 기록 ${formatTime(best.time)}` : '';
   }
@@ -417,9 +420,9 @@
     stopTimer();
     statusElement.textContent = 'PUZZLE COMPLETE!';
     statusElement.classList.add('success');
-    const previous = JSON.parse(localStorage.getItem(bestKey()) || 'null');
+    const previous = store.get(bestKey()) || null;
     if (!previous || elapsed < previous.time) {
-      localStorage.setItem(bestKey(), JSON.stringify({ time: elapsed }));
+      store.set(bestKey(), { time: elapsed });
     }
     updateBest();
     resultSummary.textContent = formatTime(elapsed);

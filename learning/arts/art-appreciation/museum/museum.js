@@ -1,9 +1,11 @@
-(function () {
+(async function () {
   'use strict';
   if (!window.THREE || !window.MUSEUM_ROOMS) {
     document.body.innerHTML = '<p style="padding:30px;color:white">미술관 파일을 불러오지 못했습니다.</p>';
     return;
   }
+  // 큐레이터 도장은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(로그인이 없으면 이 탭 안에서만 기억).
+  const finaleStore = await SiteStorage.open('museum');
 
   const canvas = document.getElementById('museum-canvas');
   const roomTabs = document.getElementById('room-tabs');
@@ -333,14 +335,15 @@
   }
 
   const FINALE_PROGRESS_KEY = 'museumFinaleRoomsV2';
+  finaleStore.adopt([{localKey:FINALE_PROGRESS_KEY,item:'finaleRooms'}]);
   const museumCompletionState = new Map();
 
   function readFinaleProgress() {
-    try{return JSON.parse(localStorage.getItem(FINALE_PROGRESS_KEY)||'{}')||{};}catch(_){return {};}
+    const progress=finaleStore.get('finaleRooms');return progress&&typeof progress==='object'?{...progress}:{};
   }
 
   function writeFinaleProgress(progress) {
-    try{localStorage.setItem(FINALE_PROGRESS_KEY,JSON.stringify(progress));}catch(_){}
+    finaleStore.set('finaleRooms',progress);
   }
 
   function setMuseumCompletionState(room,state) {

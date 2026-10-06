@@ -2,34 +2,8 @@
 // 다른 브라우저(다른 컴퓨터)에서 같은 계정으로 열면 그대로 보이고, 예전에 브라우저에 두던 것은 옮겨진 뒤 지워진다.
 // 게스트(로그인 없음)는 아무것도 저장하지 않는다.
 const assert = require('node:assert/strict');
-const path = require('node:path');
-const express = require('../game-hub-server/node_modules/express');
-const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite');
+const { startHarness } = require('./site-storage-harness.cjs');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
-const { createUserStorage } = require('../game-hub-server/user-storage');
-
-class HttpError extends Error { constructor(status, code, message) { super(message); this.status = status; this.code = code; } }
-
-async function startHarness() {
-  const db = new PGlite();
-  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1);');
-  const pool = { query: (sql, args) => db.query(sql, args) };
-  const requireUser = async (req) => {
-    if (!/test_teacher=1/.test(req.headers.cookie || '')) throw new HttpError(401, 'AUTH_REQUIRED', '로그인');
-    return { id: 1 };
-  };
-  const feature = createUserStorage({ pool, requireUser, requireDatabase() {}, HttpError,
-    asyncRoute: (fn) => (req, res, next) => Promise.resolve(fn(req, res)).catch(next) });
-  await feature.initialize();
-  const app = express();
-  app.use(express.json({ limit: '1100kb' }));
-  app.use('/api/me/storage', feature.router);
-  app.use('/api', (_req, res) => res.status(404).json({ error: 'NOT_IN_HARNESS' }));
-  app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
-  app.use(express.static(path.resolve(__dirname, '..')));
-  const server = await new Promise((resolve) => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
-  return { db, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise((r) => server.close(r)); await db.close(); } };
-}
 
 async function draw(page, from, to) {
   const box = await page.locator('#board').boundingBox();
@@ -56,7 +30,7 @@ async function waitForItems(page, test, timeoutMs = 10000) {
   try {
     browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
     const first = await browser.newContext({ viewport: { width: 1200, height: 800 } });
-    await first.addCookies([{ name: 'test_teacher', value: '1', url: h.base }]);
+    await first.addCookies([{ name: 'test_user', value: '1', url: h.base }]);
     const page = await first.newPage();
     const errors = []; page.on('pageerror', (e) => errors.push(e.message));
 
@@ -81,7 +55,7 @@ async function waitForItems(page, test, timeoutMs = 10000) {
 
     // 다른 브라우저(다른 컴퓨터)에서 같은 계정으로 열면 그대로 있다.
     const second = await browser.newContext({ viewport: { width: 1200, height: 800 } });
-    await second.addCookies([{ name: 'test_teacher', value: '1', url: h.base }]);
+    await second.addCookies([{ name: 'test_user', value: '1', url: h.base }]);
     const other = await second.newPage();
     other.on('pageerror', (e) => errors.push(e.message));
     await other.goto(h.base + '/classtools/blackboard.html');

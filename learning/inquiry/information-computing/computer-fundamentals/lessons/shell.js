@@ -21,6 +21,16 @@
         }
     });
 
+    // 차시 완료 기록은 계정별 서버 저장 공간(computer-literacy)에 둔다. 브라우저에는 남기지 않는다(2026-10-06).
+    // 이 파일 뒤에 오는 edition.js 가 여기서 그린 화면을 바로 옮겨 쓰므로 그리기는 기다리지 않고, 기록만 열린 뒤 읽고 쓴다.
+    let store = null;
+    const storeReady = SiteStorage.open("computer-literacy").then((opened) => {
+        store = opened;
+        store.adopt(lessons.map((item) => ({ localKey: `computer-literacy:${item.id}`, item: `computer-literacy:${item.id}` })));
+        renderLessonList();
+        return opened;
+    });
+
     const params = new URLSearchParams(window.location.search);
     const requestedId = params.get("lesson") || "a01";
     const requestedIndex = lessons.findIndex((item) => item.id === requestedId);
@@ -1101,9 +1111,7 @@
         const modules = window.COMPUTER_CORE_MODULES || [];
         const completed = new Set();
         lessons.forEach((item) => {
-            try {
-                if (JSON.parse(localStorage.getItem(`computer-literacy:${item.id}`) || "null")?.completed) completed.add(item.id);
-            } catch (_) { /* Ignore damaged local progress. */ }
+            if (store?.get(`computer-literacy:${item.id}`)?.completed) completed.add(item.id);
         });
         list.innerHTML = modules.map((module) => {
             const items = lessons.filter((item) => item.id[0].toUpperCase() === module.code);
@@ -1491,7 +1499,10 @@
             reviewList.append(item);
         });
         if (passed) {
-            try { localStorage.setItem(`computer-literacy:${lesson.id}`, JSON.stringify({ completed: true, score, updatedAt: new Date().toISOString() })); } catch (_) { /* local progress may be blocked */ }
+            storeReady.then((opened) => {
+                opened.set(`computer-literacy:${lesson.id}`, { completed: true, score, updatedAt: new Date().toISOString() });
+                renderLessonList();
+            });
         }
         const nextLink = document.getElementById("nextLesson");
         if (lessonIndex < lessons.length - 1) {

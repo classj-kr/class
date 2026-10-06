@@ -115,7 +115,9 @@ test("the 36-lesson core course is loaded in dependency order", () => {
   assert.doesNotMatch(coursePage, /id="lessonTitle"/);
   assert.match(coursePage, /<script src="lessons\/index-data\.js\?v=[^"]*" defer><\/script>/);
   assert.match(coursePage, /<script src="lessons\/course-index\.js\?v=[^"]*" defer><\/script>/);
-  assert.equal((coursePage.match(/<script /g) || []).length, 2, "첫 화면은 차례표와 목록 그리는 것만 부른다");
+  // 사이트 공용 파일(/assets/…, 계정별 저장 공간)은 따로 불러도 된다. 과정 파일은 차례표와 목록 그리는 것 둘만.
+  const courseIndexScripts = Array.from(coursePage.matchAll(/<script src="([^"]*)"/g), (match) => match[1]).filter((src) => !src.startsWith("/assets/"));
+  assert.equal(courseIndexScripts.length, 2, "첫 화면은 차례표와 목록 그리는 것만 부른다");
   assert.match(read(`${courseRoot}/lessons/index-data.js`), /window\.COMPUTER_CORE_MODULES/);
   // 차시 화면에서 이 과정의 파일은 boot.js 한 줄만 두고, 그 차시에 필요한 파일은 boot.js가 차례대로 넣는다.
   // 사이트 공용 파일(/assets/…)은 따로 불러도 된다.
