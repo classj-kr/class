@@ -20,7 +20,7 @@ const fetchImpl = async (url, options = {}) => {
   let answer;
   if (/단계별 평가결과」 문장을 쓴다/.test(text)) {
     const labels = [...text.matchAll(/\{"label":"([^"]+)","text":"…"\}/g)].map((m) => m[1]);
-    answer = { criteria: labels.map((label, i) => ({ label, text: '초안 ' + (i + 1) + ': 경험을 알맞은 갈래로 표현할 수 있다.' })) };
+    answer = { criteria: labels.map((label, i) => ({ label, text: '초안 ' + (i + 1) + ': 경험을 알맞은 갈래로 표현한다.' })) };
   } else {
     answer = { items: [
       { domain: '읽기', codes: ['6국02-01'], element: '글의 짜임 파악하기', levels: 3, criteria: [{ label: '잘함', text: '짜임을 정확히 파악한다.' }, { label: '보통', text: '짜임을 파악한다.' }, { label: '노력요함', text: '도움을 받아 파악한다.' }] },

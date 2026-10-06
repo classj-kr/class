@@ -323,7 +323,7 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
       '성취기준:\n' + context.standards.map((s) => '[' + s.code + '] ' + s.text).join('\n'),
       context.element ? '평가요소: ' + context.element : '',
       '단계 ' + labels.length + '개(' + labels.join(' / ') + ')마다 한 문장씩 쓴다. 가장 높은 단계는 성취기준을 충분히 도달한 모습, 가장 낮은 단계는 도움을 받아 일부만 하는 모습으로, 단계 사이는 정도의 차이가 또렷하게 드러나게 쓴다.',
-      '문장은 "…할 수 있다."로 끝내고, 학생 이름이나 점수·비율·등급 표현은 쓰지 마라. 성취기준과 평가요소에 없는 내용을 더하지 마라. 각 문장은 60자 안팎.',
+      '문장은 "…을 표현한다." "…을 파악한다."처럼 "-ㄴ다/-는다"로 끝나는 보통 서술문으로 쓴다. "…할 수 있다."나 "…함."으로 끝내지 마라. 학생 이름이나 점수·비율·등급 표현은 쓰지 마라. 성취기준과 평가요소에 없는 내용을 더하지 마라. 각 문장은 60자 안팎.',
       '반드시 아래 모양의 JSON 만 답하라. 다른 말은 쓰지 마라.',
       '{"criteria":[' + labels.map((label) => '{"label":"' + label + '","text":"…"}').join(',') + ']}'
     ].filter(Boolean).join('\n');
