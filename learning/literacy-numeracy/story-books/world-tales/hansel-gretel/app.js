@@ -44,9 +44,9 @@ const CHAPTERS = [
                     "사실은 조약돌을 떨어뜨리고 있었습니다. 몇 걸음마다 하나씩, 톡, 톡."
                 ],
                 "right": [
-                    "이윽고 숲 깊은 곳에 이르렀습니다. 어른들이 마른 가지를 모아 불을 피워 주었지요.",
-                    "새어머니가 말했습니다. \"여기서 잠깐 기다리렴. 곧 데리러 오마.\"",
-                    "저 멀리서 도끼 소리가 들려왔습니다. 남매는 아버지가 나무를 하는 줄 알고 그 소리를 들으며 잠이 들었지요."
+                    "숲 깊은 곳에 닿았습니다. 어른들이 불을 피웠습니다.",
+                    "새어머니가 말했지요. \"여기서 기다리렴. 곧 데리러 오마.\"",
+                    "멀리서 도끼 소리 같은 것이 났습니다. 사실은 바람에 마른 가지가 부딪히는 소리였지만, 남매는 아버지가 나무를 하는 줄 알고 잠이 들었지요."
                 ]
             },
             {
@@ -144,12 +144,12 @@ const CHAPTERS = [
                 "art": "05-cage.webp",
                 "emoji": "🦴",
                 "left": [
-                    "할머니는 상에 맛있는 것을 잔뜩 차려 주었습니다. 우유와 과자와 사과가 놓였지요. 남매는 배가 부르도록 실컷 먹었습니다.",
-                    "잠자리로는 푹신한 침대까지 내주었지요. 남매는 오랜만에 편히 잠들었습니다.",
-                    "그런데 새벽에 일이 벌어졌지요."
+                    "할머니는 우유와 과자와 사과를 잔뜩 차려 주었습니다. 남매는 배가 부르도록 실컷 먹었습니다.",
+                    "잠자리로는 푹신한 침대까지 내주었지요. 남매는 편히 잠들었습니다.",
+                    "사실 할머니는 아이를 잡아먹는 마녀였습니다. 과자 집도 아이들을 꾀려고 지은 것이었지요."
                 ],
                 "right": [
-                    "할머니가 자고 있던 헨젤을 거칠게 끌어내 마당의 우리에 가두었습니다. 그러고는 입맛을 쩝쩝 다셨지요. \"살이 통통하게 오르면 그때 보자꾸나.\"",
+                    "새벽이 되자 할머니는 자고 있던 헨젤을 끌어내 마당의 우리에 가두었습니다. 그러고는 입맛을 쩝쩝 다셨지요. \"살이 통통하게 오르면 그때 보자꾸나.\"",
                     "그레텔에게는 일을 시켰지요. \"물을 긷고 밥을 지어라. 네 오빠를 잘 먹여 살찌워야 하니까.\""
                 ]
             },
@@ -216,7 +216,7 @@ const CHAPTERS = [
                     "남매는 주머니에 담을 수 있는 만큼 담았습니다."
                 ],
                 "right": [
-                    "그러고는 과자 집을 나섰지요. 뒤는 한 번도 돌아보지 않았습니다.",
+                    "부엌에서는 할머니가 문을 두드리며 소리만 질렀지요. 남매는 뒤도 돌아보지 않고 과자 집을 나섰습니다.",
                     "둘은 숲길을 걷고 또 걸었지요. 반나절쯤 갔을 때였습니다.",
                     "앞에 큰 강이 나타났지요. 건널 다리가 어디에도 없었습니다."
                 ]
@@ -580,7 +580,7 @@ const EN = {
                     right: [
                         "At last they came deep into the forest. The grown-ups built the children a fire of dry branches.",
                         "\"Wait here a little while,\" said the stepmother. \"We shall come back for you soon.\"",
-                        "Far off they could hear an axe at work. They thought it was their father, and fell asleep listening."
+                        "Far off came a sound like an axe at work. It was only the wind knocking a dead branch against a tree, but they thought it was their father, and fell asleep."
                     ]
                 },
                 {
@@ -683,10 +683,10 @@ const EN = {
                     left: [
                         "The old woman laid out a whole table for them — milk and cakes and apples. The two ate until they could eat no more.",
                         "She gave them soft beds to sleep in, and for the first time in a long while they slept easy.",
-                        "But something happened before dawn."
+                        "The truth was, the old woman was a witch who ate children, and she had built the house of sweets to lure them in."
                     ],
                     right: [
-                        "The old woman dragged Hansel roughly out of his bed and shut him in the cage in the yard.",
+                        "Before dawn she dragged Hansel out of his bed and shut him in the cage in the yard.",
                         "She licked her lips. \"When you are nice and plump, we shall see.\"",
                         "Gretel she set to work. \"Fetch the water and cook the meals. Your brother must be fed and fattened.\""
                     ]
@@ -760,7 +760,7 @@ const EN = {
                         "They filled their pockets with as much as they could carry."
                     ],
                     right: [
-                        "Then they walked out of the house of sweets, and they never once looked back.",
+                        "In the kitchen the old woman only banged on the door and shouted. The two walked out of the house of sweets without once looking back.",
                         "On and on through the forest they went. About half a day later a wide river appeared in front of them.",
                         "There was no bridge anywhere."
                     ]
@@ -876,7 +876,7 @@ const EN = {
         '02-back-home.webp': [
             { word: 'fall behind', meaning: '뒤처지다', sentence: 'But Hansel kept falling behind.' },
             { word: 'dawdle', meaning: '꾸물거리다', sentence: 'What are you dawdling for?' },
-            { word: 'axe', meaning: '도끼', sentence: 'Far off they could hear an axe at work.' }
+            { word: 'axe', meaning: '도끼', sentence: 'Far off came a sound like an axe at work.' }
         ],
         '02-back-home-2.webp': [
             { word: 'pitch dark', meaning: '캄캄한', sentence: 'When they opened their eyes it was pitch dark.' },
@@ -911,7 +911,7 @@ const EN = {
         ],
         '05-cage.webp': [
             { word: 'lay out', meaning: '상을 차리다', sentence: 'The old woman laid out a whole table for them.' },
-            { word: 'drag', meaning: '끌어내다', sentence: 'She dragged Hansel roughly out of his bed.' },
+            { word: 'drag', meaning: '끌어내다', sentence: 'She dragged Hansel out of his bed.' },
             { word: 'cage', meaning: '우리', sentence: 'She shut him in the cage in the yard.' },
             { word: 'plump', meaning: '살이 오른', sentence: "When you are nice and plump, we shall see." },
             { word: 'fetch', meaning: '길어 오다, 가져오다', sentence: 'Fetch the water and cook the meals.' }
@@ -939,7 +939,7 @@ const EN = {
             { word: 'chest', meaning: '궤짝', sentence: 'In a corner stood several chests.' },
             { word: 'lid', meaning: '뚜껑', sentence: 'They lifted one of the lids.' },
             { word: 'pearl', meaning: '진주', sentence: 'Inside were pearls and precious stones.' },
-            { word: 'look back', meaning: '뒤를 돌아보다', sentence: 'They never once looked back.' }
+            { word: 'look back', meaning: '뒤를 돌아보다', sentence: 'The two walked out of the house of sweets without once looking back.' }
         ],
         '07-home-2.webp': [
             { word: 'duck', meaning: '오리', sentence: 'Just then a white duck came swimming up.' },
@@ -984,7 +984,7 @@ const WORDS_KO = {
     "02-back-home.webp": [
         { w: "꾸짖다", k: "잘못을 따지며 크게 나무라다.", s: "새어머니가 돌아보며 꾸짖었습니다." },
         { w: "둘러대다", k: "그럴듯하게 꾸며 말하다.", s: "헨젤이 둘러댔지요." },
-        { w: "나무를 하다", k: "불을 땔 나무를 베어 모으다.", s: "남매는 아버지가 나무를 하는 줄 알고 그 소리를 들으며 잠이 들었지요." }
+        { w: "나무를 하다", k: "불을 땔 나무를 베어 모으다.", s: "남매는 아버지가 나무를 하는 줄 알고 잠이 들었지요." }
     ],
     "02-back-home-2.webp": [
         { w: "주위", k: "둘레의 가까운 곳.", s: "눈을 뜨니 주위가 온통 캄캄했습니다." },

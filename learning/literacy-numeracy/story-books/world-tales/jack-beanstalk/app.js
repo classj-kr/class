@@ -185,7 +185,7 @@ const CHAPTERS = [
                     "그렇게 몇 달이 지났습니다. 잭은 다시 콩나무를 올랐지요."
                 ],
                 "right": [
-                    "아주머니가 문을 열어 주며 한숨을 쉬었습니다. \"또 왔구나. 조심하렴.\"",
+                    "아주머니는 잭을 알아보고 한숨을 쉬었습니다. 그래도 마음이 약해 배고픈 아이를 내쫓지 못했지요. \"또 왔구나. 조심하렴.\"",
                     "이번에도 곧 발소리가 났지요. 쿵, 쿵, 쿵.",
                     "잭은 얼른 솥 안으로 들어갔습니다. 거인이 성큼 들어와 자리에 앉았지요."
                 ]
@@ -220,9 +220,9 @@ const CHAPTERS = [
                     "잭은 고집을 부렸지요. \"한 번만 더요.\""
                 ],
                 "right": [
-                    "잭은 기어이 또 콩나무를 올라갔지요. 이번에는 아주머니 몰래 성에 들어갔습니다. 아궁이 뒤 그늘에 몸을 숨겼지요.",
-                    "이윽고 거인이 저녁을 먹고 소리쳤습니다. \"하프를 가져와라!\"",
-                    "아주머니가 작은 하프를 가져왔지요. 사람 얼굴이 새겨져 있었습니다."
+                    "잭은 기어이 또 콩나무를 올라갔지요. 마침 문이 조금 열려 있어, 그 틈으로 아주머니 몰래 들어갔습니다. 아궁이 뒤 그늘에 몸을 숨겼지요.",
+                    "거인이 저녁을 먹고 소리쳤습니다. \"하프를 가져와라!\"",
+                    "아주머니가 하프를 가져왔지요. 얼굴이 새겨져 있었습니다."
                 ]
             },
             {
@@ -762,7 +762,7 @@ const EN = {
                         "Some months went by, and Jack climbed the beanstalk again."
                     ],
                     right: [
-                        "The woman opened the door with a sigh.",
+                        "The woman knew him at once and sighed. But she was too soft-hearted to turn a hungry boy away.",
                         "\"You again. Do be careful.\"",
                         "And before long, there were the footsteps.",
                         "Boom. Boom. Boom.",
@@ -802,7 +802,7 @@ const EN = {
                         "But Jack would not give up. \"Just once more.\""
                     ],
                     right: [
-                        "And up the beanstalk he went again. This time he slipped into the castle without the woman seeing him.",
+                        "And up the beanstalk he went again. This time the door happened to stand a little open, and he slipped in through the gap without the woman seeing him.",
                         "He hid in the shadow behind the hearth.",
                         "After supper the giant called out, \"Fetch me the harp!\"",
                         "The woman brought a small harp with a face carved into it."
@@ -1000,7 +1000,7 @@ const EN = {
             { word: 'snore', meaning: '코를 골다', sentence: 'Soon he was snoring.' }
         ],
         '06-goose.webp': [
-            { word: 'sigh', meaning: '한숨을 쉬다', sentence: "The woman opened the door with a sigh." },
+            { word: 'sigh', meaning: '한숨을 쉬다', sentence: "The woman knew him at once and sighed." },
             { word: 'footstep', meaning: '발소리', sentence: 'And before long, there were the footsteps.' }
         ],
         '06-goose-2.webp': [

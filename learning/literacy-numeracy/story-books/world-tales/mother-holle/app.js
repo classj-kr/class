@@ -145,8 +145,7 @@ const CHAPTERS = [
                     "그러자 할머니가 껄껄 웃었지요. 웃는 얼굴은 하나도 무섭지 않았습니다."
                 ],
                 "right": [
-                    "\"무서워하지 마라. 나는 홀레라고 한단다. 우리 집에서 일해 주지 않겠니?\"",
-                    "\"이불을 잘 털어 주면 된단다. 깃털이 날려야 아래 세상에 눈이 오거든.\"",
+                    "\"무서워하지 마라. 나는 홀레라고 한단다. 우리 집에서 일해 주지 않겠니? 이불을 잘 털어 주면 된단다. 깃털이 날려야 아래 세상에 눈이 오거든.\"",
                     "아이는 눈이 그렇게 오는 줄은 몰랐습니다."
                 ]
             },
@@ -209,7 +208,7 @@ const CHAPTERS = [
                 "art": "07-lazy.webp",
                 "emoji": "😏",
                 "left": [
-                    "금빛 아이가 집에 들어서자 온 집이 뒤집혔습니다. 새어머니의 눈이 번쩍했지요.",
+                    "마당의 수탉이 크게 울었지요. \"꼬끼오, 금빛 아이가 왔네!\" 금빛 아이가 집에 들어서자 온 집이 뒤집혔습니다. 새어머니의 눈이 번쩍했지요.",
                     "아이가 있었던 일을 이야기했습니다. 새어머니는 제 딸을 돌아보았지요.",
                     "\"너도 어서 우물에 들어가 보아라!\""
                 ],
@@ -815,7 +814,7 @@ const EN = {
                     art: '07-lazy.webp',
                     emoji: '😒',
                     left: [
-                        "The whole house was in an uproar at the sight of the golden girl,",
+                        "The cockerel in the yard crowed, \"Our golden girl is home!\" The whole house was in an uproar at the sight of her,",
                         "and the stepmother's eyes lit up.",
                         "The girl told them everything that had happened,",
                         "and the stepmother turned to her own daughter.",

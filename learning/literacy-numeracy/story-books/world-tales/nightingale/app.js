@@ -265,9 +265,9 @@ const CHAPTERS = [
                     "밤꾀꼬리는 고개를 조금 기울이더니 조용히 대답했지요."
                 ],
                 "right": [
-                    "\"저는 숲에 살면서 이따금 찾아오겠습니다. 그게 서로에게 더 좋으니까요. 다만 제가 온다는 것은 비밀로 해 주세요.\"",
+                    "\"저는 숲에 살며 이따금 오겠습니다. 그게 서로에게 좋으니까요. 다만 제가 오는 건 비밀로 해 주세요. 그래야 아무도 저를 새장에 가두려 하지 않을 테니까요.\"",
                     "임금님은 고개를 끄덕였습니다. 밤꾀꼬리는 숲으로 날아갔지요.",
-                    "그 뒤로 임금님은 오래오래 건강하게 지냈답니다."
+                    "임금님은 오래오래 건강했답니다."
                 ]
             }
         ],
@@ -876,7 +876,7 @@ const EN = {
                         "The nightingale tilted her head and said quietly, \"I shall live in the wood and come now and then.\""
                     ],
                     right: [
-                        "\"That is better for both of us. Only keep it a secret that I come.\"",
+                        "\"That is better for both of us. Only keep it a secret that I come, so that nobody tries to shut me in a cage again.\"",
                         "The emperor nodded, and the nightingale flew off to the wood.",
                         "And the emperor stayed well for a long, long time."
                     ]
@@ -1154,7 +1154,7 @@ const WORDS_KO = {
     ],
     "08-ending-2.webp": [
         { w: "기울이다", k: "한쪽으로 조금 비스듬하게 하다.", s: "밤꾀꼬리는 고개를 조금 기울이더니 조용히 대답했지요." },
-        { w: "다만", k: "'그런데 한 가지는'이라는 뜻.", s: "\"저는 숲에 살면서 이따금 찾아오겠습니다. 그게 서로에게 더 좋으니까요. 다만 제가 온다는 것은 비밀로 해 주세요.\"" }
+        { w: "다만", k: "'그런데 한 가지는'이라는 뜻.", s: "\"저는 숲에 살며 이따금 오겠습니다. 그게 서로에게 좋으니까요. 다만 제가 오는 건 비밀로 해 주세요. 그래야 아무도 저를 새장에 가두려 하지 않을 테니까요.\"" }
     ],
     "end.webp": [
         { w: "무대로 삼다", k: "이야기가 벌어지는 곳으로 정하다.", s: "안데르센은 가 보지도 않은 중국을 무대로 삼았습니다." },

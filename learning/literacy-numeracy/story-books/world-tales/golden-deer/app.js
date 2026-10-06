@@ -93,7 +93,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "\"임금님, 한 가지만 여쭙겠습니다. 임금님 밥상에 오를 사슴이 하루에 몇 마리나 필요하십니까?\"",
-                    "임금님이 활을 슬며시 내렸지요. \"한 마리면 넉넉하다만.\"",
+                    "임금님이 자리에 천천히 앉았지요. \"한 마리면 넉넉하다만.\"",
                     "\"그럼 이렇게 하시지요. 하루 한 마리씩 스스로 오겠습니다.\" 뜰이 술렁였지요."
                 ]
             }
@@ -673,7 +673,7 @@ const EN = {
                     ],
                     right: [
                         "\"My lord, I shall ask you one thing only. How many deer do you need in a day?\"",
-                        "The king slowly lowered his bow. \"One would be plenty.\"",
+                        "The king slowly sat back down. \"One would be plenty.\"",
                         "\"Then let us do it this way,\" said the deer.",
                         "\"One of us will come to you each day, of our own accord.\"",
                         "The courtyard stirred."
@@ -1119,7 +1119,7 @@ const WORDS_KO = {
         { w: "짐승", k: "네발로 걸어 다니는 동물.", s: "\"짐승이 어찌 사람처럼 걸어 들어오느냐?\"" },
         { w: "여쭙다", k: "어른께 무엇을 묻다.", s: "\"임금님, 한 가지만 여쭙겠습니다. 임금님 밥상에 오를 사슴이 하루에 몇 마리나 필요하십니까?\"" },
         { w: "숨을 죽이다", k: "소리를 내지 않고 가만히 있다.", s: "신하들도 숨을 죽였습니다." },
-        { w: "슬며시", k: "남이 눈치채지 못하게 살짝.", s: "임금님이 활을 슬며시 내렸지요." }
+        { w: "술렁이다", k: "여럿이 웅성거리며 어수선해지다.", s: "뜰이 술렁였지요." }
     ],
     "04-promise.webp": [
         { w: "말을 잇다", k: "하던 말을 끊지 않고 이어 하다.", s: "황금 사슴이 말을 이었습니다." },

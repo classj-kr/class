@@ -80,17 +80,17 @@ const CHAPTERS = [
                     "이반은 새벽에 그것을 알았지요. \"어떡하지! 다 빼앗겼어!\""
                 ],
                 "right": [
-                    "그때 조랑말이 귀를 쫑긋 세웠습니다. \"내 등에 올라타.\"",
-                    "이반은 긴가민가하면서 올라탔지요. 그런데 조랑말은 바람처럼 달렸습니다. 작은데도 어찌나 빠른지 몰랐지요.",
-                    "금세 형들을 따라잡았습니다. 형들은 눈이 휘둥그레졌지요."
+                    "조랑말이 귀를 쫑긋 세웠습니다. \"내 등에 올라타.\"",
+                    "이반은 얼른 올라탔지요. 조랑말은 바람처럼 달렸습니다.",
+                    "금세 형들을 따라잡았습니다. 형들은 눈이 휘둥그레졌지요. 그러고는 머리를 긁적였습니다. \"미안하다, 이반. 집이 너무 가난해서 그랬다.\""
                 ]
             },
             {
                 "art": "03-palace-2.webp",
                 "emoji": "🏰",
                 "left": [
-                    "세 형제는 함께 도시로 갔습니다. 양파 모양 지붕이 즐비한 도시였지요. 시장에 말을 세우자 사람들이 몰려들었습니다.",
-                    "마침 임금님이 지나가던 참이었지요. 임금님은 걸음을 딱 멈췄습니다.",
+                    "이반은 형들을 용서하고 말을 팔아 돈을 나누기로 했습니다. 셋은 함께 도시로 갔습니다. 양파 모양 지붕이 즐비한 도시였지요. 시장에 말을 세우자 사람들이 몰려들었습니다.",
+                    "마침 임금님이 지나가다 걸음을 딱 멈췄습니다.",
                     "\"이런 말은 처음 보는구나!\""
                 ],
                 "right": [
@@ -669,14 +669,14 @@ const EN = {
                         "And the little horse ran like the wind.",
                         "Small as he was, there was no keeping up with him.",
                         "He caught the brothers in no time.",
-                        "Their eyes went round at the sight."
+                        "Their eyes went round at the sight. Then they scratched their heads. \"We're sorry, Ivan. We only did it because home is so poor.\""
                     ]
                 },
                 {
                     art: '03-palace-2.webp',
                     emoji: '🏰',
                     left: [
-                        "The three brothers went on to the city together.",
+                        "Ivan forgave them, and they agreed to sell the horses and share the money. The three brothers went on to the city together.",
                         "It was a city of onion-shaped domes.",
                         "When they stood the horses in the market, a crowd gathered.",
                         "And the Tsar happened to be passing.",
