@@ -2,6 +2,10 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { PGlite } from "@electric-sql/pglite";
+import { createRequire } from "node:module";
+
+// 저장 코드가 전담의 담당 학년·과목을 짝으로 푸는 데 쓰는 진짜 함수.
+const { parseTeachingScope } = createRequire(import.meta.url)("./teaching-scope.js");
 
 // 학교 관리자가 담임·교과를 겸하는 흐름을 실제 저장 코드로 돌려 본다.
 // 라우트 본문을 그대로 떼어 PGlite 위에서 실행하므로, 순서가 틀려 고유 조건에
@@ -17,7 +21,7 @@ function routeBody(signature) {
 }
 
 const saveTeachers = new AsyncFunction(
-  "req", "res", "requireTeacher", "teacherRegistration", "HttpError", "normalizeEmail", "pool",
+  "req", "res", "requireTeacher", "teacherRegistration", "HttpError", "normalizeEmail", "pool", "parseTeachingScope",
   routeBody('router.put("/school/teachers"')
 );
 const setMasterEmail = new AsyncFunction(
@@ -46,6 +50,7 @@ const SCHEMA = `
     teacher_type TEXT NOT NULL DEFAULT 'homeroom',
     subject_name TEXT,
     room_name TEXT,
+    teaching_scope JSONB,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     UNIQUE (school_id, teacher_name)
   );
@@ -112,7 +117,7 @@ async function save(pool, list) {
     { body: { teachers: list, year: 2026 } }, res,
     async () => ({ id: 1 }),
     async () => ({ school_id: 1, teacher_type: "관리자" }),
-    HttpError, normalizeEmail, pool
+    HttpError, normalizeEmail, pool, parseTeachingScope
   );
   return res.body;
 }
@@ -304,5 +309,33 @@ test("handing the school admin to another account does not hand over the previou
     const owners = (await db.query("SELECT grade, class_number, teacher_user_id FROM classroom_classes ORDER BY id")).rows
       .map((r) => [r.grade, r.class_number, r.teacher_user_id === null ? null : Number(r.teacher_user_id)]);
     assert.deepEqual(owners, [[6, 3, 3], [6, 4, null]]);
+  });
+});
+
+test("전담 줄의 담당 학년·과목은 (학년, 교과) 짝으로 저장되고, 담임 줄도 괄호 학년이 있으면 짝을 얻는다", async () => {
+  await withSchool(async ({ db, pool, teachers }) => {
+    await save(pool, [
+      row("가교사", "teacher-a@school.test", 6, 2, { subjectName: "영어(5)" }),
+      { type: "전담", name: "라전담", email: "teacher-d@school.test", grade: "3,4,5,6", classNumber: null, subjectName: "음악, 영어(5,6)", roomName: "음악실" },
+      { type: "전담", name: "마전담", email: "teacher-e@school.test", grade: "", classNumber: null, subjectName: "체육", roomName: null },
+    ]);
+    const rows = (await db.query("SELECT teacher_name, grade, class_number, subject_name, teaching_scope FROM classroom_teachers ORDER BY id")).rows;
+    const byName = Object.fromEntries(rows.map((r) => [r.teacher_name, r]));
+    // 담임: 학년·반은 그대로, 괄호에 적은 5학년 영어만 짝.
+    assert.deepEqual([byName["가교사"].grade, byName["가교사"].class_number, byName["가교사"].subject_name], [6, 2, "영어"]);
+    assert.deepEqual(byName["가교사"].teaching_scope, [{ grade: 5, subject: "영어" }]);
+    // 전담: 학년 칸은 비우고(담임이 아니다) 짝만 남긴다. 괄호 없는 음악은 담당 학년 전부.
+    assert.deepEqual([byName["라전담"].grade, byName["라전담"].class_number, byName["라전담"].subject_name], [null, null, "음악, 영어"]);
+    assert.deepEqual(byName["라전담"].teaching_scope, [
+      { grade: 3, subject: "음악" }, { grade: 4, subject: "음악" }, { grade: 5, subject: "음악" }, { grade: 6, subject: "음악" },
+      { grade: 5, subject: "영어" }, { grade: 6, subject: "영어" },
+    ]);
+    // 학년 없이 과목만: 과목은 남고 짝은 없다.
+    assert.deepEqual([byName["마전담"].subject_name, byName["마전담"].teaching_scope], ["체육", []]);
+
+    // 반 없이 학년만 적고 과목이 없으면 무엇을 맡는지 모른다 → 거절. 반을 적었는데 학년이 여럿이어도 거절.
+    await assert.rejects(save(pool, [{ type: "전담", name: "바전담", email: null, grade: "3,4", classNumber: null, subjectName: "", roomName: null }]), { code: "INVALID_GRADE_CLASS" });
+    await assert.rejects(save(pool, [{ type: "담임", name: "사교사", email: null, grade: "3,4", classNumber: 1, subjectName: "", roomName: null }]), { code: "INVALID_GRADE_CLASS" });
+    assert.equal((await teachers()).length, 4, "거절된 저장은 아무것도 바꾸지 않는다");
   });
 });

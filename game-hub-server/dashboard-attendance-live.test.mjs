@@ -14,6 +14,7 @@ test("parent arrival updates badges and sounds once; initial/reconnected snapsho
   const before=`
     const checklistGrid=document.getElementById("checklistGrid"),missingBadge=document.getElementById("missingBadge");
     const missingStudents=new Set(); const rosterLoadMessage="";
+    let dashboardStore=null;   // 준비물 표시는 계정 저장소에 남는데, 이 검사에선 로그인 전처럼 없는 것으로 둔다.
     const rosterStudents=Array.from({length:24},(_,i)=>({number:i+1,name:"학생"+(i+1)}));
     function isTodayBirthday(){return false;}
     function koreanWeatherClock(){return {date:"2026-09-26"};}

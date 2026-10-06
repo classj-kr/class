@@ -39,9 +39,9 @@ const fetchImpl = async (url, options = {}) => {
       const asyncRoute = (fn) => (req, res, next) => Promise.resolve(fn(req, res)).catch(next);
       const ai = createTeacherAi({ pool, requireTeacher, requireDatabase() {}, HttpError, fetchImpl, warn() {}, asyncRoute, secret: { value: 'harness', derived: false } });
       const plans = createAssessmentPlans({ pool, requireTeacher, requireDatabase() {}, HttpError, asyncRoute,
-        async teacherRegistration() { return { school_id: 10, school_name: '검증초', grade: 5, class_number: 2, teacher_name: '검증 교사' }; } });
+        async teacherRegistration() { return { id: 101, school_id: 10, school_name: '검증초', grade: 5, class_number: 2, teacher_name: '검증 교사' }; } });
       const semester = (new Date().getMonth() + 1 >= 8 || new Date().getMonth() + 1 <= 1) ? 2 : 1;
-      const ready = db.exec("CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY); INSERT INTO classroom_schools VALUES(10); ALTER TABLE classroom_users ADD COLUMN display_name TEXT;")
+      const ready = db.exec("CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY); INSERT INTO classroom_schools VALUES(10); ALTER TABLE classroom_users ADD COLUMN display_name TEXT; CREATE TABLE classroom_teachers(id BIGINT PRIMARY KEY, school_id BIGINT, teaching_scope JSONB); INSERT INTO classroom_teachers VALUES (101, 10, NULL); CREATE TABLE school_master_timetable(id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, subject_name TEXT, teacher_user_id BIGINT);")
         .then(() => Promise.all([ai.initialize(), plans.initialize()]))
         .then(() => pool.query('INSERT INTO assessment_plans (school_id, academic_year, grade, semester, subject_name, items, updated_by) VALUES ($1,$2,$3,$4,$5,$6::jsonb,1)', [10, new Date().getFullYear(), 5, semester, '국어', JSON.stringify(PLAN)]));
       app.use('/api/teacher-ai', (req, res, next) => ready.then(() => next(), next), ai.router);
