@@ -73,8 +73,8 @@ test("teacher roster preserves assigned avatars from both roster sources and pre
   try {
     await db.exec([
       "CREATE TABLE classroom_users (email TEXT)",
-      "CREATE TABLE school_students (school_id INTEGER, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, gender TEXT, avatar_key TEXT, student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, user_id INTEGER)",
-      "CREATE TABLE classroom_students (class_id INTEGER, student_number INTEGER, roster_name TEXT, gender TEXT, birthday_mmdd TEXT, birthday_visible BOOLEAN, avatar_key TEXT, student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, user_id INTEGER)",
+      "CREATE TABLE school_students (school_id INTEGER, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, name_source TEXT, gender TEXT, avatar_key TEXT, student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, user_id INTEGER)",
+      "CREATE TABLE classroom_students (class_id INTEGER, student_number INTEGER, roster_name TEXT, name_source TEXT, gender TEXT, birthday_mmdd TEXT, birthday_visible BOOLEAN, avatar_key TEXT, student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, user_id INTEGER)",
       "INSERT INTO school_students (school_id, academic_year, grade, class_number, student_number, roster_name, avatar_key) VALUES (1, 2026, 6, 2, '1', '학교명부학생', 'animal-cat.webp'), (1, 2026, 6, 3, '3', '다른반학생', 'animal-rabbit.webp')",
       "INSERT INTO classroom_students (class_id, student_number, roster_name, avatar_key) VALUES (10, 1, '중복학생', 'animal-dog.webp'), (10, 2, '학급명부학생', 'animal-tiger.webp')"
     ].join(";"));

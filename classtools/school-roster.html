@@ -226,6 +226,10 @@
         #rosterBody select.roster-cell-input { height: 28px; min-height: 0; padding: 0 4px !important; }
         #rosterBody .delete-item-btn { min-height: 0; min-width: 0; height: 28px; width: 28px; padding: 0; }
         #rosterBody .linked-badge { flex: none; white-space: nowrap; }
+        /* 성명 칸 옆 표시. 대기: 비워 두어 첫 로그인을 기다림. 구글: 첫 로그인 때 구글 이름으로 채움. */
+        .name-chip { flex: none; white-space: nowrap; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 10px; cursor: help; }
+        .name-chip.pending { background: #f3f4f6; color: #6b7280; }
+        .name-chip.google { background: #dbeafe; color: #1d4ed8; }
         .roster-table .num-col { width: 1%; white-space: nowrap; }
         .roster-table .email-col { min-width: 240px; }
         .roster-table .guardian-col { min-width: 170px; }
@@ -505,6 +509,7 @@
             <div class="paste-section" id="pasteSection" style="display:none;">
                 <p style="margin:0 0 10px;font-weight:800;font-size:13px;">엑셀에서 복사하여 붙여넣기</p>
                 <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">엑셀의 헤더 행을 포함하여 붙여넣으세요. 첫 줄을 헤더로 인식합니다.</p>
+                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">성명은 학생구글계정을 적으면 비워 둘 수 있습니다. 학생이 처음 로그인하면 구글 계정 이름이 명단에 들어오고, 명단에 <b>구글</b> 표시가 붙으니 실명과 다르면 고쳐 주세요.</p>
                 <div class="paste-cols-hint" id="pasteColsHint">
                     <span class="col-chip required">학년</span>
                     <span class="col-chip required">반</span>
@@ -533,6 +538,7 @@
                 <div class="card-desc" style="margin-bottom:8px;font-weight:bold;">
                     엑셀에서 아래 순서대로 탭(Tab) 구분된 데이터를 복사하여 붙여넣으세요:
                     <br><span style="color:var(--primary); font-size:12px;">성명 | 구글 계정 | 담당 학년 | 담당 반</span>
+                    <br><span style="font-weight:normal;font-size:12px;color:var(--muted);">성명은 구글 계정을 적으면 비워 둘 수 있습니다(줄을 계정부터 시작). 첫 로그인 때 구글 계정 이름이 들어옵니다.</span>
                 </div>
                 <textarea class="paste-input" id="teacherPasteInput" placeholder="예시:&#10;홍길동	hong@school.es.kr	1	1&#10;김철수	kim@school.es.kr&#10;이영희	lee@school.es.kr	6	2" rows="8"></textarea>
                 <div style="display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;">
@@ -748,6 +754,14 @@
             const isAdminRow = t.type === '관리자' || t.name === '학교관리자' || t.name === '관리자';
             
             const linkedBadge = t.linked ? `<span class="linked-badge">✓ 연동</span>` : `<span style="color:#9ca3af;font-size:11px;">미연동</span>`;
+            // 성명을 비워 둔 줄(pending)은 서버가 계정을 자리표시 이름으로 적어 두므로 칸은 비워 보인다.
+            // 그대로 저장하면 다시 비운 채로 보내 자리표시가 실명으로 굳지 않는다.
+            const namePending = t.nameSource === "pending";
+            const nameValue = namePending ? "" : (t.name || "");
+            const namePlaceholder = namePending ? "로그인 때 채움" : "성명";
+            const nameChip = namePending
+                ? `<span class="name-chip pending" title="성명을 비워 두었습니다. 이 교직원이 처음 로그인하면 구글 계정 이름이 들어옵니다.">대기</span>`
+                : (t.nameSource === "google" ? `<span class="name-chip google" title="첫 로그인 때 구글 계정 이름으로 채웠습니다. 실명과 다르면 고쳐 주세요.">구글</span>` : "");
 
             if (isAdminRow) {
                 // 학교 관리자도 담임·교과를 겸할 수 있다. 잠그는 것은 구글 계정과 삭제뿐이다.
@@ -756,7 +770,7 @@
                 return `
                     <tr style="background:rgba(254,243,199,0.2);">
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(t.name || '')}" placeholder="성명" onchange="updateTeacherField(${idx}, 'name', this.value)">
+                            <div style="display:flex;align-items:center;gap:4px;"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#374151;font-weight:bold;cursor:not-allowed;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" readonly title="학교 관리자 구글 계정은 변경할 수 없습니다">
@@ -785,7 +799,7 @@
             return `
                 <tr>
                     <td>
-                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.name || '')}" placeholder="성명" onchange="updateTeacherField(${idx}, 'name', this.value)">
+                        <div style="display:flex;align-items:center;gap:4px;"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
                     </td>
                     <td>
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" placeholder="구글 계정 이메일" onchange="updateTeacherField(${idx}, 'email', this.value)">
@@ -822,6 +836,8 @@
         if (!allTeachers[idx]) return;
         const cleanVal = field === 'name' ? val.replace(/\s+/g, "") : val.trim();
         allTeachers[idx][field] = cleanVal;
+        // 관리자가 성명 칸을 손대면 더는 구글에서 온 이름이 아니다. 비우면 저장 때 다시 대기가 된다.
+        if (field === 'name') allTeachers[idx].nameSource = "";
         renderTeacherRosterTable();
     };
 
@@ -872,7 +888,8 @@
                 // 담임은 학년 숫자 하나, 전담은 "3,4,5,6" 같은 글 그대로 보낸다(서버가 과목과 짝을 짓는다).
                 const g = c ? (t.grade ? Number(t.grade) : null) : (t.grade ? String(t.grade).trim() : null);
                 const calculatedType = (g && c) ? "담임" : "전담";
-                const cleanName = String(t.name || "").replace(/\s+/g, "");
+                // 대기 줄의 이름은 서버가 둔 자리표시(계정)다. 비운 채로 보내야 실명으로 굳지 않는다.
+                const cleanName = t.nameSource === "pending" ? "" : String(t.name || "").replace(/\s+/g, "");
                 const cleanEmail = t.email ? String(t.email).trim() : null;
 
                 // 분류 칸에서 고른 것이 있으면 그것이 우선, 교·강사면 학년·반으로 자동.
@@ -886,7 +903,7 @@
                     subjectName: t.subjectName ? String(t.subjectName).trim() : null,
                     roomName: t.roomName ? String(t.roomName).trim() : null
                 };
-            }).filter(t => t.name);
+            }).filter(t => t.name || t.email);
 
             const result = await api("/api/school/teachers", {
                 method: "PUT",
@@ -922,12 +939,14 @@
             if (t.name) previousKind.set(String(t.name).replace(/\s+/g, ""), kind);
         }
         const parsed = parseTsv(text).map(cells => {
-            const parts = cells.map(p => p.trim());
+            let parts = cells.map(p => p.trim());
             if (parts.length < 1) return null;
+            // 성명을 비우고 계정부터 적은 줄. 성명 자리를 비워 두고 나머지를 한 칸씩 민다.
+            if (parts[0].includes("@")) parts = ["", ...parts];
 
             const name = parts[0].replace(/\s+/g, "");
-            if (!name) return null;
             const email = (parts[1] && parts[1].includes("@")) ? cleanEmail(parts[1]) : "";
+            if (!name && !email) return null;
             const gradeCell = parts[2] ? parts[2] : (parts[1] && !parts[1].includes("@") ? parts[1] : "");
             const grade = !gradeCell ? null : (/^\d+$/.test(gradeCell) ? Number(gradeCell) : gradeCell);   // 전담은 "3,4,5" 그대로
             const classNumber = parts[3] ? Number(parts[3]) : (parts[2] && !parts[1]?.includes("@") ? Number(parts[2]) : null);
@@ -936,6 +955,8 @@
                 role: previousKind.get(String(email).toLowerCase()) || previousKind.get(name),
                 type: (grade && classNumber) ? "담임" : "전담",
                 name,
+                // 성명을 비운 줄은 표에서도 '대기'로 보여 준다.
+                nameSource: name ? "" : "pending",
                 email,
                 grade,
                 classNumber,
@@ -1058,6 +1079,13 @@
                 : "";
             const cf = s.custom_fields || s.customFields || {};
             const linkedBadge = s.user_id ? `<span class="linked-badge">✓ 연동</span>` : "";
+            // 성명을 비워 둔 학생(pending)은 서버가 계정의 @ 앞부분을 자리표시로 적어 두므로 칸은 비워 보인다.
+            // 그대로 저장하면 다시 비운 채로 보내 자리표시가 실명으로 굳지 않는다.
+            const nameSource = s.name_source || s.nameSource || "";
+            const namePending = nameSource === "pending";
+            const nameChip = namePending
+                ? `<span class="name-chip pending" title="성명을 비워 두었습니다. 학생이 처음 로그인하면 구글 계정 이름이 들어옵니다.">대기</span>`
+                : (nameSource === "google" ? `<span class="name-chip google" title="첫 로그인 때 구글 계정 이름으로 채웠습니다. 실명과 다르면 고쳐 주세요.">구글</span>` : "");
 
             const cellInput = (field, value, width="100%", isCustom=false, key="", placeholder="") => {
                 const isEmail = /email$/.test(field);
@@ -1100,7 +1128,7 @@
                 `<td>${cellInput("grade", s.grade, "36px", false, "", "학년")}</td>`,
                 `<td>${cellInput("class_number", s.class_number, "36px", false, "", "반")}</td>`,
                 `<td>${cellInput("student_number", s.student_number, "44px", false, "", "번호")}</td>`,
-                `<td>${cellInput("roster_name", s.roster_name, "76px", false, "", "이름")}</td>`,
+                `<td><div style="display:flex;align-items:center;gap:4px;">${namePending && !isSchoolAdmin ? `<span style="color:#9ca3af;">(로그인 대기)</span>` : cellInput("roster_name", namePending ? "" : s.roster_name, "76px", false, "", namePending ? "로그인 때 채움" : "이름")}${nameChip}</div></td>`,
                 `<td>${cellInput("gender", s.gender, "36px", false, "", "남/여")}</td>`,
                 ...dynamicCols.map(col => `<td>${cellSelect(col, categoryValue(s, cf, col), originalIndex)}</td>`),
                 `<td><div style="display:flex;align-items:center;gap:6px;">${cellInput("student_email", s.student_email)}${linkedBadge}</div></td>`,
@@ -1207,8 +1235,9 @@
         const g1I = colIdx(["보호자1계정","보호자1","guardian1email","학부모1"]);
         const g2I = colIdx(["보호자2계정","보호자2","guardian2email","학부모2"]);
 
-        if ([gradeI, classI, numI, nameI].includes(-1)) {
-            return setStatus("pasteStatus", "학년, 반, 번호, 성명 열을 찾지 못했습니다. 헤더 행을 포함해 주세요.", "error");
+        // 성명 열은 학생구글계정 열이 있으면 없어도 된다(첫 로그인 때 구글 이름이 들어온다).
+        if ([gradeI, classI, numI].includes(-1) || (nameI === -1 && seI === -1)) {
+            return setStatus("pasteStatus", "학년, 반, 번호 열과 성명(또는 학생구글계정) 열을 찾지 못했습니다. 헤더 행을 포함해 주세요.", "error");
         }
 
         // 갈래마다 열 하나(동아리·방과후부·돌봄반·통학버스). 예전 명단은 항목마다
@@ -1233,7 +1262,9 @@
             const classNum = Number(get(classI));
             const num = get(numI);
             const name = get(nameI).normalize("NFC");
-            if (!name || !num) continue;
+            const studentEmail = cleanEmail(get(seI)) || null;
+            // 성명이 비어도 학생구글계정이 있으면 한 사람이다.
+            if (!num || (!name && !studentEmail)) continue;
 
             const customFields = {};
         [...categoryHeaders, ...legacyHeaders].forEach(c => {
@@ -1246,7 +1277,7 @@
             studentNumber: String(num).replace(/\s+/g, ""),
             rosterName: name.replace(/\s+/g, ""),
             gender: get(genderI) === "여" ? "여" : "남",
-            studentEmail: cleanEmail(get(seI)) || null,
+            studentEmail,
             guardian1Email: cleanEmail(get(g1I)) || null,
             guardian2Email: cleanEmail(get(g2I)) || null,
             // 소속은 전부 customFields 한 곳에만 담는다. clubs/afterschool/shuttle을
@@ -1264,6 +1295,8 @@
             ...s, class_number: s.classNumber, student_number: s.studentNumber,
             roster_name: s.rosterName, student_email: s.studentEmail,
             guardian1_email: s.guardian1Email, guardian2_email: s.guardian2Email,
+            // 성명을 비운 줄은 미리보기에서도 '대기'로 보여 준다.
+            name_source: s.rosterName ? "" : "pending",
             user_id: null
         }));
         updateClassFilter();
@@ -1292,6 +1325,8 @@
             ? val.replace(/\s+/g, "")
             : val.trim();
         allStudents[idx][field] = cleanVal;
+        // 관리자가 성명 칸을 손대면 더는 구글에서 온 이름이 아니다. 비우면 저장 때 다시 대기가 된다.
+        if (field === "roster_name") { allStudents[idx].name_source = ""; allStudents[idx].nameSource = ""; }
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
         setStatus("rosterStatus", "명단이 수정되었습니다. 변경사항을 저장하려면 '💾 저장' 버튼을 누르세요.");
     };
@@ -1368,7 +1403,7 @@
         updateClassFilter();
         renderRosterTable();
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
-        setStatus("rosterStatus", "새 학생 행이 추가되었습니다. 학년, 반, 번호, 성명을 입력 후 '💾 저장' 버튼을 누르세요.");
+        setStatus("rosterStatus", "새 학생 행이 추가되었습니다. 학년, 반, 번호, 성명을 입력 후 '💾 저장' 버튼을 누르세요. 학생 구글계정을 적으면 성명은 비워 둘 수 있습니다.");
     };
 
     window.saveRoster = async function() {
@@ -1381,13 +1416,14 @@
                 grade: Number(s.grade),
                 classNumber: Number(s.class_number || s.classNumber),
                 studentNumber: String(s.student_number || s.studentNumber || "").trim(),
-                rosterName: String(s.roster_name || s.rosterName || "").trim(),
+                // 대기 줄의 이름은 서버가 둔 자리표시다. 비운 채로 보내야 실명으로 굳지 않는다.
+                rosterName: (s.name_source || s.nameSource) === "pending" ? "" : String(s.roster_name || s.rosterName || "").trim(),
                 gender: s.gender || "남",
                 studentEmail: s.student_email || s.studentEmail || null,
                 guardian1Email: s.guardian1_email || s.guardian1Email || null,
                 guardian2Email: s.guardian2_email || s.guardian2Email || null,
                 customFields: s.custom_fields || s.customFields || {}
-            })).filter(s => s.grade && s.classNumber && s.studentNumber && s.rosterName);
+            })).filter(s => s.grade && s.classNumber && s.studentNumber && (s.rosterName || s.studentEmail));
 
             // 중복 번호 검사 (같은 학년/반 내 동일 번호 방지)
             const keys = new Set();
