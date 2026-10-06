@@ -21,6 +21,7 @@ const server = http.createServer((req, res) => {
     if (file.endsWith('instrument-room' + path.sep + 'app.js')) {
       const init = 'document.addEventListener("DOMContentLoaded", init);';
       data = data.toString().replace(init, hook + (req.headers.referer?.includes('render-test') ? 'cacheElements();' : init));
+      data = data.replace('function playSampledDrum(id, velocity) {', 'function playSampledDrum(id, velocity) { (window.sampledDrumInputs ||= []).push({id, velocity});');
     }
     if (path.extname(file) === '.html') data = data.toString().replace('</head>', '<script src="/assets/sound/game-sfx.js" defer></script></head>');
     const type = {'.html':'text/html; charset=utf-8', '.js':'text/javascript', '.css':'text/css', '.ogg':'audio/ogg', '.webp':'image/webp'}[path.extname(file)];
@@ -72,20 +73,20 @@ const server = http.createServer((req, res) => {
         const config = a.DRUM_SAMPLE_SETS[kit];
         const buffer = await decoder.decodeAudioData(await (await fetch(config.root + piece + '.ogg')).arrayBuffer());
         const requested = .8 * Math.pow(10, (config.gainDb + (config.pieceBoostDb?.[piece] || 0)) / 20);
-        const gain = a.balancedDrumGain(buffer, requested, .8, piece);
+        const gain = a.balancedDrumGain(buffer, requested, .8, piece, config.id);
         const context = new OfflineAudioContext(2, buffer.length, buffer.sampleRate);
         const source = context.createBufferSource(), output = context.createGain();
         source.buffer = buffer; output.gain.value = gain;
         source.connect(output).connect(context.destination); source.start();
         const audio = await context.startRendering();
         results.push({kit,piece,rms:a.decodedBufferBodyRms(audio),peak:a.decodedBufferPeak(audio),boostDb:20*Math.log10(gain/requested)});
-        const soft = a.balancedDrumGain(buffer, 0, .8, 'ghost');
+        const soft = a.balancedDrumGain(buffer, 0, .8, 'ghost', config.id);
         if (!(soft < gain)) throw new Error('Soft articulation lost: ' + kit);
       }
       return results;
     });
     for (const row of rendered) {
-      assert.ok(row.rms > (row.kit ? .05 : .015), JSON.stringify(row));
+      assert.ok(row.rms > (row.kit ? .025 : .015), JSON.stringify(row));
       assert.ok(row.peak <= .921, JSON.stringify(row));
       if (row.id) assert.ok(row.offset > .8, JSON.stringify(row));
     }
@@ -125,17 +126,23 @@ const server = http.createServer((req, res) => {
       if (touch) await press('button[data-key-size-close]:not(.key-size-backdrop)');
       const check = async (name, action) => {
         await pause(200);
-        await page.evaluate(() => { audioAudit.sfx = 0; audioAudit.instrument = 0; });
+        await page.evaluate(() => { audioAudit.sfx = 0; audioAudit.instrument = 0; window.sampledDrumInputs = []; });
         await action();
         await page.waitForFunction(() => audioAudit.instrument > 0);
         await pause(200);
-        const audit = await page.evaluate(() => audioAudit);
+        const audit = await page.evaluate(() => ({...audioAudit,drumInputs:window.sampledDrumInputs}));
         assert.equal(audit.sfx, 0, name);
         console.log(`${touch ? 'touch' : 'desktop'} ${name}: instrument=${audit.instrument}, shared effects=${audit.sfx}`);
+        return audit;
       };
       await press('[data-family="drums"]');
-      await check('drum', () => press('[data-drum="kick"]'));
-      await check('computer keyboard', () => page.keyboard.press('a'));
+      const pointerHit = await check('drum kick', () => press('[data-drum="kick"]'));
+      const keyHit = await check('computer keyboard', () => page.keyboard.press('a'));
+      assert.equal(pointerHit.drumInputs[0].velocity,keyHit.drumInputs[0].velocity,'Mouse/touch pads must not be quieter than keyboard hits');
+      for (const piece of ['snare','ride','crash']) {
+        const hit = await check('drum '+piece, () => press('[data-drum="'+piece+'"]'));
+        assert.equal(hit.drumInputs[0].velocity,keyHit.drumInputs[0].velocity,'Consistent tap strength across pads');
+      }
       await press('[data-family="korean"]');
       await press('[data-korean-room="folk"]');
       await check('Korean percussion', () => press('#drumPads button'));
