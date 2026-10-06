@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["chunsu-seosi"] = {
         "poem": {
+            "illustration": "poems/chunsu-seosi/illustration.webp",
             "lines": [
                 "나는 시방 위험한 짐승이다.",
                 "나의 손이 닿으면 너는",

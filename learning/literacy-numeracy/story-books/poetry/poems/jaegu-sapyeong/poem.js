@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["jaegu-sapyeong"] = {
         "poem": {
+            "illustration": "poems/jaegu-sapyeong/illustration.webp",
             "lines": [
                 "막차는 좀처럼 오지 않았다.",
                 "대합실 밖에는 밤새 송이눈이 쌓이고",

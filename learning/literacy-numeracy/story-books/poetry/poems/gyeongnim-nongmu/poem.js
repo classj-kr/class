@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["gyeongnim-nongmu"] = {
         "poem": {
+            "illustration": "poems/gyeongnim-nongmu/illustration.webp",
             "lines": [
                 "징이 울린다 막이 내렸다",
                 "오동나무에 전등이 매어달린 가설 무대",

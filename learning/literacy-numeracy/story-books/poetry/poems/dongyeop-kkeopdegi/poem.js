@@ -4,6 +4,7 @@
     window.POETRY_PART = window.POETRY_PART || {};
     window.POETRY_PART["dongyeop-kkeopdegi"] = {
         "poem": {
+            "illustration": "poems/dongyeop-kkeopdegi/illustration.webp",
             "lines": [
                 "껍데기는 가라.",
                 "사월(四月)도 알맹이만 남고",
