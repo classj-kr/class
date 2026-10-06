@@ -245,6 +245,23 @@ test("re-saving the roster keeps the 'from Google' mark while the name is unchan
   });
 });
 
+test("PUT /school/students refuses the same student Google account on two rows (case-insensitively), since one account can link to only one row", async () => {
+  await withDb(async ({ pool, students }) => {
+    await assert.rejects(
+      () => putStudents(pool, [student("1", "김철수", "S3101@school.test"), student("2", "이영희", "s3101@school.test")]),
+      (error) => error.code === "DUPLICATE_STUDENT_EMAIL" && /3학년 1반 1번, 3학년 1반 2번/.test(error.message)
+    );
+    assert.equal((await students()).length, 0, "nothing is saved when one row is refused");
+
+    // 보호자 계정은 형제자매가 같이 쓰므로 겹쳐도 된다.
+    const body = await putStudents(pool, [
+      student("1", "김철수", "s3101@school.test", { guardian1Email: "parent@home.test" }),
+      student("2", "김영희", "s3102@school.test", { guardian1Email: "parent@home.test" }),
+    ]);
+    assert.equal(body.saved, 2);
+  });
+});
+
 // ─── 교직원 명단 저장 + 첫 로그인 ────────────────────────────────────────
 
 test("PUT /school/teachers accepts a blank name with a Google account (placeholder = the account) and still drops a row with neither", async () => {
@@ -302,6 +319,7 @@ test("every roster table gained name_source, and Google sign-in fills pending na
 
 test("the homeroom class roster route accepts a blank name only with a Google account and stores the placeholder as pending", () => {
   const body = handlerBody('router.put("/teacher/class"');
+  assert.match(body, /DUPLICATE_STUDENT_EMAIL/);
   assert.match(body, /student\.name \? !\/\^\[가-힣\]\{2,6\}\$\/\.test\(student\.name\) : !student\.studentEmail/);
   assert.match(body, /const rosterName = student\.name \|\| pendingStudentName\(student\.studentEmail\)/);
   assert.match(body, /classroom_students\.name_source = 'google'/);
@@ -329,6 +347,11 @@ test("the school roster editor sends pending rows back with an empty name so the
   // 붙여넣기: 성명 열이 없어도 학생구글계정 열이 있으면 받는다. 교직원은 계정부터 적은 줄을 받는다.
   assert.match(schoolRosterHtml, /\(nameI === -1 && seI === -1\)/);
   assert.match(schoolRosterHtml, /if \(parts\[0\]\.includes\("@"\)\) parts = \["", \.\.\.parts\]/);
+  // 같은 학생구글계정이 두 줄에 있으면 저장을 막고 두 칸을 붉게 표시한다.
+  assert.match(schoolRosterHtml, /const accountOwners = new Map\(\)/);
+  assert.match(schoolRosterHtml, /function markDuplicateAccounts\(\)/);
+  assert.match(schoolRosterHtml, /input\[data-field="student_email"\]/);
+  assert.match(classRosterHtml, /duplicateEmails\.length === 0/);
   assert.match(schoolRosterHtml, /name-chip pending/);
   assert.match(schoolRosterHtml, /name-chip google/);
   // 연동된 구글 계정 이름이 적어 둔 성명과 다른 사람으로 보이면 학생·교직원 줄 모두에 표시한다.

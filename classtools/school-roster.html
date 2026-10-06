@@ -284,6 +284,9 @@
             color: var(--muted);
         }
         .col-chip.required { border-color: var(--brand); color: var(--brand); background: var(--brand-soft); }
+        /* 둘 중 하나만 있으면 되는 칸(성명·학생구글계정). 학교가 만든 열(주황)과 헷갈리지 않게 노란 점선. */
+        .col-chip.either { border: 1px dashed #d4a300; color: #7a5500; background: #fff5b8; }
+        .col-chip-or { font-size: 11px; color: var(--muted); margin: 0 -2px; }
         .col-chip.dynamic { border-color: #c88a00; color: #7a5500; background: #fff9e0; }
         textarea.paste-input {
             display: block;
@@ -511,14 +514,15 @@
             <div class="paste-section" id="pasteSection" style="display:none;">
                 <p style="margin:0 0 10px;font-weight:800;font-size:13px;">엑셀에서 복사하여 붙여넣기</p>
                 <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">엑셀의 헤더 행을 포함하여 붙여넣으세요. 첫 줄을 헤더로 인식합니다.</p>
-                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">학년·반·번호는 꼭 있어야 하고, <b>성명과 학생구글계정은 둘 중 하나만</b> 있어도 됩니다. 기기 없이 명단만 쓰는 학년은 성명만 적으면 되고, 성명을 비운 학생은 처음 로그인할 때 구글 계정 이름이 명단에 들어옵니다(<b>구글</b> 표시가 붙으니 실명과 다르면 고쳐 주세요).</p>
+                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">초록 칸(학년·반·번호·성별)은 꼭 있어야 하고, <b>노란 칸(성명·학생구글계정)은 둘 중 하나만</b> 있어도 됩니다. 기기 없이 명단만 쓰는 학년은 성명만 적으면 되고, 성명을 비운 학생은 처음 로그인할 때 구글 계정 이름이 명단에 들어옵니다(<b>구글</b> 표시가 붙으니 실명과 다르면 고쳐 주세요).</p>
                 <div class="paste-cols-hint" id="pasteColsHint">
                     <span class="col-chip required">학년</span>
                     <span class="col-chip required">반</span>
                     <span class="col-chip required">번호</span>
-                    <span class="col-chip" title="학생구글계정이 있으면 비워도 됩니다">성명</span>
+                    <span class="col-chip either" title="학생구글계정이 있으면 비워도 됩니다">성명</span>
+                    <span class="col-chip-or">또는</span>
+                    <span class="col-chip either" title="성명이 있으면 비워도 됩니다">학생구글계정</span>
                     <span class="col-chip required">성별</span>
-                    <span class="col-chip" title="성명이 있으면 비워도 됩니다">학생구글계정</span>
                     <span class="col-chip">보호자1계정</span>
                     <span class="col-chip">보호자2계정</span>
                 </div>
@@ -1116,7 +1120,7 @@
                 const style = isEmail ? "" : ` style="width:${width};"`;
                 const check = isEmail ? ` oninput="markAccountCell(this)"` : "";
                 const title = bad ? ` title="계정 형식을 확인하세요 (따옴표·공백·@ 누락)"` : "";
-                return `<input class="${cls}"${style} value="${esc(value ?? "")}" placeholder="${esc(placeholder)}"${title}${check} onchange="${onInputCode}">`;
+                return `<input class="${cls}"${style} data-field="${esc(field)}" value="${esc(value ?? "")}" placeholder="${esc(placeholder)}"${title}${check} onchange="${onInputCode}">`;
             };
 
             // 갈래 열의 현재 값. 새 방식은 열 이름(동아리)을 키로 쓰고, 예전 명단은
@@ -1154,7 +1158,31 @@
             ];
             return `${divider}<tr>${cells.join("")}</tr>`;
         }).join("");
+        markDuplicateAccounts();
     };
+
+    // 한 구글 계정은 한 학생에게만. 같은 학생구글계정이 두 줄에 있으면 두 칸 다 붉게 표시한다
+    // (저장도 막힌다). 보호자 계정은 형제자매가 같이 쓰므로 겹쳐도 된다.
+    function markDuplicateAccounts() {
+        const inputs = Array.from(document.querySelectorAll('#rosterBody input[data-field="student_email"]'));
+        const counts = new Map();
+        inputs.forEach((input) => {
+            const email = input.value.trim().toLowerCase();
+            if (email) counts.set(email, (counts.get(email) || 0) + 1);
+        });
+        inputs.forEach((input) => {
+            const email = input.value.trim().toLowerCase();
+            const duplicated = Boolean(email) && counts.get(email) > 1;
+            input.classList.toggle("duplicate", duplicated);
+            if (duplicated) {
+                input.classList.add("invalid");
+                input.title = "다른 학생과 같은 계정입니다. 한 계정은 한 학생에게만 적어 주세요.";
+            } else if (input.dataset.wasDuplicate === "true") {
+                markAccountCell(input);
+            }
+            input.dataset.wasDuplicate = String(duplicated);
+        });
+    }
 
     // ─── 붙여넣기 파싱 ─────────────────────────────────────────
     window.togglePasteSection = function() {
@@ -1175,7 +1203,10 @@
             `<span class="col-chip required">학년</span>`,
             `<span class="col-chip required">반</span>`,
             `<span class="col-chip required">번호</span>`,
-            `<span class="col-chip" title="학생구글계정이 있으면 비워도 됩니다">성명</span>`,
+            // 성명과 학생구글계정은 둘 중 하나만 있으면 된다. 나란히 두고 노란 점선으로 묶어 보인다.
+            `<span class="col-chip either" title="학생구글계정이 있으면 비워도 됩니다">성명</span>`,
+            `<span class="col-chip-or">또는</span>`,
+            `<span class="col-chip either" title="성명이 있으면 비워도 됩니다">학생구글계정</span>`,
             `<span class="col-chip required">성별</span>`,
         ];
         // 갈래마다 열 하나. 학교 설정에 등록한 갈래만 보여 준다.
@@ -1185,7 +1216,6 @@
             return names.map(n => `<span class="col-chip dynamic">${esc(n)}</span>`);
         });
         const fixedRightChips = [
-            `<span class="col-chip">학생구글계정</span>`,
             `<span class="col-chip">보호자1계정</span>`,
             `<span class="col-chip">보호자2계정</span>`,
         ];
@@ -1322,7 +1352,12 @@
 
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
         const skippedNote = skippedNameless ? ` 성명도 학생구글계정도 없는 ${skippedNameless}줄은 건너뛰었습니다.` : "";
-        setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료.${skippedNote} 미리보기를 확인 후 저장 버튼을 눌러주세요.`, "ok");
+        // 같은 학생구글계정이 여러 줄에 있으면 저장이 막힌다. 미리보기 단계에서 미리 알려 준다.
+        const accountCounts = new Map();
+        students.forEach((s) => { if (s.studentEmail) accountCounts.set(s.studentEmail, (accountCounts.get(s.studentEmail) || 0) + 1); });
+        const repeated = [...accountCounts].filter(([, n]) => n > 1).map(([email]) => email);
+        const repeatedNote = repeated.length ? ` ⚠️ 학생구글계정이 겹치는 줄이 있습니다(${repeated.join(", ")}). 한 계정은 한 학생에게만 적어 주세요.` : "";
+        setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료.${skippedNote}${repeatedNote} 미리보기를 확인 후 저장 버튼을 눌러주세요.`, repeated.length ? "error" : "ok");
     };
 
     // 비어 있으면 통과. 값이 있으면 따옴표·공백 없는 name@domain.tld 모양이어야 한다.
@@ -1346,6 +1381,7 @@
         allStudents[idx][field] = cleanVal;
         // 관리자가 성명 칸을 손대면 더는 구글에서 온 이름이 아니다. 비우면 저장 때 다시 대기가 된다.
         if (field === "roster_name") { allStudents[idx].name_source = ""; allStudents[idx].nameSource = ""; }
+        if (field === "student_email") markDuplicateAccounts();
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
         setStatus("rosterStatus", "명단이 수정되었습니다. 변경사항을 저장하려면 '💾 저장' 버튼을 누르세요.");
     };
@@ -1459,6 +1495,18 @@
                     throw new Error(`❌ ${s.grade}학년 ${s.classNumber}반 ${s.studentNumber}번이 중복되었습니다. 번호를 서로 다르게 수정해 주세요.`);
                 }
                 keys.add(k);
+            }
+
+            // 한 구글 계정은 한 학생에게만. 두 줄에 적으면 그 학생이 로그인할 때 연결이 막힌다.
+            const accountOwners = new Map();
+            for (const s of studentsToSave) {
+                const email = String(s.studentEmail || "").trim().toLowerCase();
+                if (!email) continue;
+                const here = `${s.grade}학년 ${s.classNumber}반 ${s.studentNumber}번`;
+                if (accountOwners.has(email)) {
+                    throw new Error(`❌ 학생 구글계정 ${email}이(가) 두 줄에 있습니다: ${accountOwners.get(email)}, ${here}. 한 계정은 한 학생에게만 적어 주세요.`);
+                }
+                accountOwners.set(email, here);
             }
 
             const result = await api("/api/school/students", {
