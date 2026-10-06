@@ -32,7 +32,8 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     const cells = (row) => page.locator('#teacherRosterBody tr').nth(row).locator('input');
     assert.equal(await cells(2).nth(2).inputValue(), '3,4,5,6', '전담 줄의 담당 학년은 목록으로 보인다');
     assert.equal(await cells(2).nth(4).inputValue(), '음악, 영어(5,6)', '담당 과목은 괄호 학년까지 보인다');
-    assert.match(await cells(2).nth(2).getAttribute('placeholder'), /전담은 3,4,5,6/);
+    // 칸이 좁아 안내는 자리글 대신 말풍선(title)에 둔다.
+    assert.match(await cells(2).nth(2).getAttribute('title'), /3,4,5,6/);
 
     // 전담 줄을 고쳐 저장하면 학년 목록은 글 그대로, 담임 줄은 숫자로 간다.
     await cells(2).nth(2).fill('3,4');

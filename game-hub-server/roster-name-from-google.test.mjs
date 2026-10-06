@@ -371,8 +371,9 @@ test("the school roster editor sends pending rows back with an empty name so the
   // 붙여넣기: 성명 열이 없어도 학생구글계정 열이 있으면 받는다. 교직원은 계정부터 적은 줄을 받는다.
   assert.match(schoolRosterHtml, /\(nameI === -1 && seI === -1\)/);
   assert.match(schoolRosterHtml, /if \(parts\[0\]\.includes\("@"\)\) parts = \["", \.\.\.parts\]/);
-  // 붙여넣기는 붙여넣은 학년·반만 바꾸고, 저장하면 빠지는 학생은 이름을 보여 주고 확인을 받는다.
-  assert.match(schoolRosterHtml, /const keptRows = allStudents\.filter\(\(s\) => !pastedClasses\.has\(rosterClassOf\(s\)\)\)/);
+  // 붙여넣기는 더하거나 같은 학년·반·번호를 고칠 뿐 아무도 지우지 않고, 저장하면 빠지는 학생은 이름을 보여 주고 확인을 받는다.
+  assert.match(schoolRosterHtml, /const addedRows = previewRows\.filter\(\(row\) => !existingKeys\.has\(rosterKeyOf\(row\)\)\)/);
+  assert.match(schoolRosterHtml, /return pasted \? \{ \.\.\.pasted, id: existing\.id, user_id: existing\.user_id \} : existing;/);
   assert.match(schoolRosterHtml, /confirmRemoval: removedRows\.length > 0/);
   // 같은 학생구글계정이 두 줄에 있으면 저장을 막고 두 칸을 붉게 표시한다.
   assert.match(schoolRosterHtml, /const accountOwners = new Map\(\)/);
