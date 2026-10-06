@@ -1651,7 +1651,7 @@
     }
 
     function playTick() {
-        if (window.PianoEngine) window.PianoEngine.playRhythm([0], BEAT_SECONDS, { countIn: 0 });
+        if (window.PianoEngine) window.PianoEngine.tapRhythm();
     }
 
     function buildBarChoices(list) {
@@ -3046,6 +3046,14 @@
     function bindKeys() {
         document.addEventListener("keydown", event => {
             if (session.screen !== "drill") return;
+            if (session.current && session.current.tap &&
+                (event.key === " " || (event.key === "Enter" && event.target === els.tapPad))) {
+                event.preventDefault();
+                if (event.repeat || session.answered) return;
+                if (session.tapZero === null) startTapRound();
+                else onTap();
+                return;
+            }
             // Focused piano / range buttons retain native Enter and Space activation.
             if (event.target.closest && event.target.closest(".key, .keyboard-navigation button")) return;
             if (event.key === " ") { event.preventDefault(); play(); return; }

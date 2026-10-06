@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#111827">
+    <title>리듬 트레이닝</title>
+    <link rel="stylesheet" href="styles.css?v=20261006-1">
+    <script src="notation.js?v=20261006-vector-notation" defer></script>
+    <script src="rhythm-notation.js?v=20261006-beat-ties" defer></script>
+    <script src="core.js?v=20261006-1" defer></script>
+    <script src="app.js?v=20261006-1" defer></script>
+</head>
+<body data-sfx-clicks="none">
+<main class="shell">
+    <header class="topbar">
+        <a class="page-back" href="/" aria-label="메인으로 돌아가기">←</a>
+        <h1>리듬 트레이닝</h1>
+        <nav aria-label="연습 방식"><button id="soloTab" class="selected" aria-pressed="true">혼자 연습</button><button id="classTab" aria-pressed="false">학급 순위전</button></nav>
+    </header>
+    <p id="notice" class="notice" role="status" hidden></p>
+    <div class="workspace">
+        <aside class="settings" id="settings">
+            <fieldset id="configFields">
+                <legend>연습 설정</legend>
+                <label for="level">리듬</label>
+                <select id="level"><option value="0">기본 박자</option><option value="1" selected>쉼표 섞기</option><option value="2">8분음표</option><option value="3">16분음표</option></select>
+                <label for="bpm">속도 <output id="bpmValue">100</output></label>
+                <input id="bpm" type="range" min="70" max="140" step="5" value="100">
+                <div class="range-labels"><span>느리게</span><span>빠르게</span></div>
+            </fieldset>
+            <div id="soloControls" class="stack">
+                <button id="listen" class="secondary">먼저 듣기</button>
+                <button id="start" class="primary">연습 시작</button>
+                <button id="shuffle" class="quiet">새 리듬</button>
+            </div>
+            <section id="roomEntry" hidden>
+                <form id="joinForm" class="stack">
+                    <label for="code">방 번호</label><input id="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="숫자 6자리" required>
+                    <label for="name">이름</label><input id="name" maxlength="16" autocomplete="off" required>
+                    <button class="primary" id="join">입장하기</button>
+                </form>
+                <button id="create" class="secondary" hidden>교사 · 방 열기</button>
+                <p id="teacherHint" class="helper">교사 계정으로 로그인하면 방을 열 수 있어요.</p>
+            </section>
+            <section id="roomControls" class="stack" hidden>
+                <span class="helper">방 번호</span><strong id="roomCode" class="room-code"></strong>
+                <button id="copy" class="secondary">초대 링크 복사</button>
+                <button id="ready" class="primary" hidden>소리 켜고 준비</button>
+                <button id="roomStart" class="primary" hidden>모두 시작</button>
+                <button id="roomStop" class="secondary" hidden>이번 판 마치기</button>
+                <button id="leave" class="quiet">방 나가기</button>
+            </section>
+            <p class="helper">스페이스바 또는 아래 패드를 한 번씩 눌러요.<br>쉼표에서는 기다려요.</p>
+        </aside>
+        <section class="play-area" aria-label="리듬 연습">
+            <div class="session-bar"><span id="phase">악보를 보고 두드려요</span><span id="barCount">8마디 · 4/4박자</span></div>
+            <div class="beat-dots" id="beats" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div id="score" class="score" aria-label="리듬 악보"></div>
+            <div class="feedback-row"><strong id="feedback" aria-live="polite">준비됐나요?</strong><span id="combo"></span></div>
+            <button id="pad" class="pad" aria-label="리듬 치기"><span>두드리기</span><kbd>SPACE</kbd></button>
+            <button id="stop" class="quiet stop" hidden>그만하기</button>
+            <section id="result" class="result" hidden aria-label="연습 결과">
+                <div><span>정확도</span><strong id="accuracy"></strong></div>
+                <dl><div><dt>정확하게</dt><dd id="perfect"></dd></div><div><dt>놓친 음</dt><dd id="misses"></dd></div><div><dt>더 누름</dt><dd id="extras"></dd></div></dl>
+                <button id="retry" class="secondary">같은 리듬 다시</button>
+            </section>
+            <section id="ranking" class="ranking" hidden>
+                <div class="ranking-title"><h2>우리 반 순위</h2><span id="roomPhase"></span></div>
+                <p id="roomHint" class="helper"></p>
+                <ol id="players"></ol>
+            </section>
+        </section>
+    </div>
+</main>
+</body>
+</html>
