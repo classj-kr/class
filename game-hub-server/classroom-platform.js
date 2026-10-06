@@ -15,6 +15,10 @@ const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./t
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
 const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle } = require("./roster-names");
+const {
+  SCHEMA_STATEMENTS: subjectGrantSchema, CLASS_CONTENT_OPEN_SQL, classLabel: subjectClassLabel,
+  subjectTeachingClasses, subjectGrantsForClass, subjectGrantedPathsForTeacher, setSubjectGrant
+} = require("./subject-content-grants");
 const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
 const { createStudentCharacterStyleResolver } = require("./student-character-style");
@@ -674,6 +678,8 @@ function createClassroomPlatform(options = {}) {
        SELECT DISTINCT ON (class_id) class_id, '/learning/inquiry/korea-map', updated_by, NOW()
        FROM moved
        ON CONFLICT (class_id, content_path) DO NOTHING`,
+      // 전담이 가르치는 반에 오늘 하루 열어 두는 메뉴. 담임의 공개와 별개 칸이라 연 사람만 닫는다.
+      ...subjectGrantSchema,
       `CREATE TABLE IF NOT EXISTS classroom_schedules (
         id BIGSERIAL PRIMARY KEY,
         class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
@@ -1531,6 +1537,20 @@ function createClassroomPlatform(options = {}) {
     return (await teacherRegistrations(user))[0] || null;
   }
 
+  // 전담이 가르치는 반. 교직원 명단의 담당 학년(teaching_scope)에 있는 모든 반과 전담 시간표에
+  // 배정된 반을 합친다. 자기 반이 있는 담임은 여기 오지 않는다(우리 반 설정은 담임 칸을 쓴다).
+  async function subjectTeachingClassesFor(user, registration) {
+    if (!user || !registration) return [];
+    const scopeResult = await pool.query("SELECT teaching_scope FROM classroom_teachers WHERE id = $1", [registration.id]);
+    const grades = normalizePairs(scopeResult.rows[0]?.teaching_scope).map((pair) => pair.grade);
+    return subjectTeachingClasses(pool, {
+      schoolId: registration.school_id,
+      teacherUserId: user.id,
+      academicYear: Number(registration.academic_year) || new Date().getFullYear(),
+      grades
+    });
+  }
+
   async function requireTeacher(req) {
     // Not gated on user.role: role is a single priority slot (admin beats
     // teacher), so a site admin who is also a registered active teacher
@@ -2013,17 +2033,8 @@ function createClassroomPlatform(options = {}) {
           || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
           || requestPath === "/learning/class-race" || requestPath.startsWith("/learning/class-race/");
         if (classId && requestPath && !isAlwaysAllowed) {
-          const enabled = await pool.query(
-            `SELECT 1 FROM classroom_content_enabled
-             WHERE class_id = $1
-               AND (
-                 $2 = content_path
-                 OR $2 LIKE content_path || '/%'
-                 OR ($3 <> '' AND (content_path = $3 OR content_path LIKE $3 || '/%'))
-               )
-             LIMIT 1`,
-            [classId, requestPath, assetRootPath]
-          );
+          // 담임이 연 메뉴든 전담이 오늘 연 메뉴든 하나면 열린다.
+          const enabled = await pool.query(CLASS_CONTENT_OPEN_SQL, [classId, requestPath, assetRootPath]);
           if (!enabled.rows[0]) return res.redirect(302, "/?content=locked");
         }
       }
@@ -2868,20 +2879,6 @@ function createClassroomPlatform(options = {}) {
       });
     }
     const classId = await userClassId(user);
-    if (!classId) {
-      return res.json({
-        mode,
-        enabledPaths: [],
-        globallyDisabledPaths,
-        hasClassAccess: false,
-        canManage: false,
-        canManageGlobally: user.role === "admin"
-      });
-    }
-    const enabled = await pool.query(
-      "SELECT content_path FROM classroom_content_enabled WHERE class_id = $1 ORDER BY content_path",
-      [classId]
-    );
     // Not gated on user.role. That slot is sticky (an account marked 'teacher'
     // once never falls back to 'student') and priority-ordered, so a student
     // whose account had once been registered as staff would be handed the
@@ -2889,26 +2886,89 @@ function createClassroomPlatform(options = {}) {
     // is what PUT /teacher/home-content-access actually enforces; asking the
     // same question here keeps the button and the action in agreement.
     const registration = await teacherRegistration(user);
+    if (!classId) {
+      // 자기 반이 없는 전담. 가르치는 반이 있으면 그 반 전부에 오늘 하루 메뉴를 열고 잠근다.
+      const taught = await subjectTeachingClassesFor(user, registration);
+      if (taught.length === 0) {
+        return res.json({
+          mode,
+          enabledPaths: [],
+          globallyDisabledPaths,
+          hasClassAccess: false,
+          canManage: false,
+          manageScope: "",
+          managedClasses: [],
+          canManageGlobally: user.role === "admin"
+        });
+      }
+      const ownPaths = await subjectGrantedPathsForTeacher(pool, {
+        schoolId: registration.school_id, teacherUserId: user.id, classes: taught
+      });
+      return res.json({
+        mode,
+        enabledPaths: ownPaths,
+        ownEnabledPaths: ownPaths,
+        openedBySubjectTeachers: {},
+        globallyDisabledPaths,
+        hasClassAccess: false,
+        canManage: true,
+        manageScope: "subject",
+        managedClasses: taught.map(subjectClassLabel),
+        canManageGlobally: user.role === "admin"
+      });
+    }
+    const enabled = await pool.query(
+      "SELECT content_path FROM classroom_content_enabled WHERE class_id = $1 ORDER BY content_path",
+      [classId]
+    );
+    // 전담이 오늘 열어 둔 메뉴. 학생에게는 담임이 연 것과 합쳐서 열리고, 담임 화면에는 누가
+    // 열었는지 보인다. 담임은 자기가 연 것만 닫을 수 있다.
+    const classRow = (await pool.query(
+      "SELECT school_id, academic_year, grade, class_number FROM classroom_classes WHERE id = $1",
+      [classId]
+    )).rows[0];
+    const subjectOpened = classRow
+      ? await subjectGrantsForClass(pool, {
+          schoolId: classRow.school_id, academicYear: classRow.academic_year, grade: classRow.grade, classNumber: classRow.class_number
+        })
+      : new Map();
+    const ownPaths = enabled.rows.map((row) => row.content_path);
+    const effectivePaths = [...new Set([...ownPaths, ...subjectOpened.keys()])].sort();
+    const canManage = Boolean(registration && registration.grade !== null && registration.class_number !== null);
     res.json({
       mode,
-      enabledPaths: enabled.rows.map((row) => row.content_path),
+      enabledPaths: effectivePaths,
+      ownEnabledPaths: ownPaths,
+      openedBySubjectTeachers: Object.fromEntries(subjectOpened),
       globallyDisabledPaths,
       hasClassAccess: true,
-      canManage: Boolean(registration && registration.grade !== null && registration.class_number !== null),
+      canManage,
+      manageScope: canManage ? "homeroom" : "",
+      managedClasses: canManage ? [`${registration.grade}-${registration.class_number}`] : [],
       canManageGlobally: user.role === "admin"
     });
   }));
 
   router.put("/teacher/home-content-access", asyncRoute(async (req, res) => {
     const teacher = await requireTeacher(req);
-    const classId = await userClassId(teacher);
-    if (!classId) {
-      throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임교사만 자기 반의 학급 메뉴/게임 잠금을 설정할 수 있습니다. 교직원 명단에서 담당 학년과 반을 지정해 주세요.");
-    }
     const contentPath = normalizeContentPath(req.body?.path);
     const enabled = req.body?.enabled === true;
     if (!contentPath || contentPath === "/") {
       throw new HttpError(400, "INVALID_CONTENT_PATH", "올바른 홈 버튼을 선택해 주세요.");
+    }
+    const classId = await userClassId(teacher);
+    if (!classId) {
+      // 자기 반이 없는 전담은 가르치는 반 전부에 오늘 하루 연다. 담임이 잠가 둔 메뉴도 그 반에서는
+      // 열리고, 담임은 이것을 닫을 수 없다(연 사람만 닫는다). 그날 밤 자정에 저절로 닫힌다.
+      const registration = await teacherRegistration(teacher);
+      const taught = await subjectTeachingClassesFor(teacher, registration);
+      if (taught.length === 0) {
+        throw new HttpError(403, "HOMEROOM_TEACHER_REQUIRED", "담임은 자기 반, 전담은 가르치는 반의 메뉴를 열고 잠글 수 있습니다. 교직원 명단에서 담당 학년·반이나 담당 학년·과목을 지정해 주세요.");
+      }
+      const { expiresAt } = await setSubjectGrant(pool, {
+        schoolId: registration.school_id, teacherUserId: teacher.id, classes: taught, contentPath, enabled
+      });
+      return res.json({ ok: true, path: contentPath, enabled, scope: "subject", classes: taught.map(subjectClassLabel), expiresAt });
     }
     if (enabled) {
       await pool.query(
@@ -2923,7 +2983,7 @@ function createClassroomPlatform(options = {}) {
         [classId, contentPath]
       );
     }
-    res.json({ ok: true, path: contentPath, enabled });
+    res.json({ ok: true, path: contentPath, enabled, scope: "homeroom" });
   }));
 
   router.put("/admin/home-content-access", asyncRoute(async (req, res) => {
