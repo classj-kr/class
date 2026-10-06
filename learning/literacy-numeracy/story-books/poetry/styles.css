@@ -727,14 +727,14 @@ a {
     margin-top: 6px;
     font-family: "Noto Serif KR", "Apple SD Gothic Neo", Georgia, serif !important;
     font-weight: 500;
-    font-size: clamp(14px, 2.5cqh, 22px);
-    line-height: 1.9;
+    font-size: clamp(13.5px, 2.0cqh, 16px);
+    line-height: 1.75;
     color: var(--ink);
     word-break: keep-all;
 }
 
 .poem-stanza {
-    margin: 0 0 16px;
+    margin: 0 0 clamp(10px, 1.8cqh, 14px);
 }
 
 /* 오른쪽 페이지: 감상 요점 & 시어 */
