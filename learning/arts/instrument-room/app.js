@@ -176,8 +176,8 @@
     const AUDIO_SAMPLE_REVISION = "20260905-original-timbre-v3";
     const AD2_DRUM_SAMPLE_REVISION = "20260902-ad2-original-balance-v2";
 
-    // One uniform scalar per kit preserves the relative balance printed in the source mix.
-    // Values place the loudest pad at or below 0.56 peak before the shared velocity scalar.
+    // Initial trim from each source mix. Pad-role bounds below correct the
+    // balance after decoding; a kit-wide scalar alone cannot balance cymbals.
     const DRUM_KIT_GAIN_DB = Object.freeze({
         "drums-rock": 2.38,
         "drums-metal": -2.33,
@@ -197,6 +197,17 @@
         "drums-pop": Object.freeze({ hat: 8, openhat: 8 }),
         "drums-funk": Object.freeze({ hat: 8 }),
         "drums-linn": Object.freeze({ hat: 8 })
+    });
+
+    // RMS bounds for the loudest 100 ms of a strike at full velocity. Kick and
+    // snare carry the groove; sustained cymbals must not mask their attacks.
+    // These are gain-only trims for drum kits, not Korean/orchestral percussion.
+    const DRUM_PIECE_LEVELS = Object.freeze({
+        kick: [.24, .28], snare: [.18, .20], rimshot: [.19, .22],
+        ghost: [.026, .034], sidestick: [.065, .085], rimclick: [.065, .085],
+        hightom: [.11, .14], midtom: [.11, .14], lowtom: [.12, .15],
+        hat: [.045, .055], pedalhat: [.035, .045], openhat: [.05, .065],
+        crash: [.08, .095], ride: [.04, .05], ridebell: [.045, .055]
     });
 
     const DRUM_SAMPLE_SETS = Object.freeze({
@@ -706,9 +717,16 @@
         return bodyRms;
     }
 
-    function balancedDrumGain(buffer, requestedGain, velocity, id) {
+    function balancedDrumGain(buffer, requestedGain, velocity, id, sampleSet) {
         const bodyRms = decodedBufferBodyRms(buffer);
         if (bodyRms < .000001) return volumeOnlyGain(buffer, requestedGain);
+        const bounds = sampleSet && sampleSet.startsWith("drums-") && DRUM_PIECE_LEVELS[id];
+        if (bounds) {
+            const floor = bounds[0] * velocity / bodyRms;
+            const ceiling = bounds[1] * velocity / bodyRms;
+            // Leave mix headroom when kick, snare and cymbals land together.
+            return .9 * volumeOnlyGain(buffer, Math.min(ceiling, Math.max(requestedGain, floor)));
+        }
         // Preserve soft/muted articulations while making even quiet hats and
         // rims audible. Existing louder strikes retain their recorded balance.
         const target = /ghost|soft/.test(id) ? .024 : /damp|mute/.test(id) ? .035 : /accent/.test(id) ? .1 : .08;
@@ -1389,7 +1407,7 @@
             const requestedGain = koreanPercussion
                 ? sampledVelocity * Math.pow(10, koreanPercussionTargetDb(id) / 20) / decodedBufferPeak(sample.buffer)
                 : sampledVelocity * Math.pow(10, gainDb / 20);
-            gain.gain.value = balancedDrumGain(sample.buffer, requestedGain, sampledVelocity, id);
+            gain.gain.value = balancedDrumGain(sample.buffer, requestedGain, sampledVelocity, id, current.id);
             source.connect(gain);
             connectFastToMix(gain, 0);
             if (id === "openhat") {
@@ -2131,7 +2149,13 @@
                 event.preventDefault();
                 setDrumPadActive(button, true);
                 const rect = button.getBoundingClientRect();
-                const velocity = event.pressure > .05 ? Math.max(.4, event.pressure) : core.pointerVelocity((event.clientY - rect.top) / rect.height);
+                const config = drumSampleConfig();
+                const kit = config && config.id.startsWith("drums-");
+                // Mouse / ordinary touch pressure is not a measured strike.
+                // Match the computer-keyboard hit; retain expressive pen input.
+                const velocity = kit
+                    ? (event.pointerType === "pen" && event.pressure > .05 ? Math.max(.4, event.pressure) : .82)
+                    : (event.pressure > .05 ? Math.max(.4, event.pressure) : core.pointerVelocity((event.clientY - rect.top) / rect.height));
                 triggerDrumV2(drum.sound || drum.id, velocity);
                 pulseInstrumentPart(drum.id);
             });
