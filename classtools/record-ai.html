@@ -298,6 +298,18 @@
         }
         .seg-btn.on { background: var(--brand); color: #fff; }
 
+        /* 수행평가 계획의 단계 고르기: 줄은 학생, 칸은 수행평가 */
+        .level-wrap { overflow-x: auto; margin-top: 10px; }
+        .level-table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+        .level-table th, .level-table td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        .level-table th { font-weight: 600; color: var(--muted); font-size: 0.85rem; min-width: 9em; }
+        .level-table th:first-child, .level-table td:first-child { white-space: nowrap; min-width: 0; vertical-align: middle; }
+        .level-table th .all { display: block; margin-top: 4px; font-weight: 400; }
+        .level-table select { width: 100%; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; min-height: 34px; font-size: 0.9rem; }
+        .level-table select.empty { color: var(--muted); }
+        .level-hint { font-size: 0.9rem; color: var(--muted); margin: 0 0 4px; }
+        .level-hint a { color: var(--brand); font-weight: 700; }
+
         /* 학생 한 줄, 낱말 한 줄 */
         .pick-row {
             border-top: 1px solid var(--line);
@@ -440,6 +452,19 @@
                     </div>
                     <div class="status" id="length-status"></div>
                 </div>
+            </div>
+
+            <!-- 「수행평가 계획」 메뉴에 이 학년·학기·과목의 계획이 있으면, 학생마다 단계를 고르고
+                 그 단계의 평가결과 문장으로 쓴다. 계획이 없으면 아래 활동 목록으로 쓴다. -->
+            <div id="assess-group" style="display: none;">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <div class="seg" role="tablist">
+                        <button type="button" class="seg-btn on" id="mode-plan-btn" role="tab">수행평가 계획으로</button>
+                        <button type="button" class="seg-btn" id="mode-list-btn" role="tab">활동 목록으로</button>
+                    </div>
+                </div>
+                <div id="assess-panel"></div>
+                <div class="status" id="assess-status"></div>
             </div>
 
             <div class="form-group" id="topics-group">
@@ -794,9 +819,9 @@
                     subInput.replaceChildren();
                 }
             }
-            areaSelect.addEventListener('change', () => { applyArea(); swapTopics(); swapResult(); renderTraits(); });
-            semesterSelect.addEventListener('change', () => { swapTopics(); swapResult(); });
-            subInput.addEventListener('change', () => { swapTopics(); swapResult(); });
+            areaSelect.addEventListener('change', () => { applyArea(); swapTopics(); swapResult(); renderTraits(); loadAssessment(); });
+            semesterSelect.addEventListener('change', () => { swapTopics(); swapResult(); loadAssessment(); });
+            subInput.addEventListener('change', () => { swapTopics(); swapResult(); loadAssessment(); });
             clearResultBtn.addEventListener('click', () => {
                 if (confirm('이 학기·과목의 문장을 이 브라우저에서 지웁니다. 나이스에 이미 넣은 글은 그대로입니다. 지울까요?')) clearResult();
             });
@@ -1000,6 +1025,7 @@
                 loadTraits();   // 낱말은 반마다 따로 남는다
                 renderTraits();
                 swapResult();   // 대상이 정해진 뒤에 거기에 만들어 둔 문장을 되살린다
+                loadAssessment();   // 학년·학기·과목이 정해져야 수행평가 계획을 찾는다
             }
 
             function buildScopes(classes, groups) {
@@ -1301,6 +1327,145 @@
             byStudentBtn.addEventListener('click', () => { traitView = 'student'; openRow = null; renderTraits(); });
             byWordBtn.addEventListener('click', () => { traitView = 'word'; openRow = null; renderTraits(); });
 
+            // ── 수행평가 계획으로 쓰기 ─────────────────────────────────────
+            // 「수행평가 계획」 메뉴에서 학년이 세운 계획(영역·성취기준·평가요소·단계별 평가결과)을 읽어 온다.
+            // 학생마다 수행평가별 단계를 고르면, 그 단계의 평가결과 문장을 학생마다 표현만 조금씩 달리해 쓴다.
+            // 단계는 반·학기·과목마다 내 계정의 서버 저장 공간에 남는다.
+            const assessGroup = $('assess-group');
+            const assessPanel = $('assess-panel');
+            const assessStatus = $('assess-status');
+            const modePlanBtn = $('mode-plan-btn');
+            const modeListBtn = $('mode-list-btn');
+            let assessPlan = null;      // 지금 학년·학기·과목의 계획 항목들(평가요소와 평가결과 문장이 있는 것만)
+            let assessMode = true;      // 계획이 있을 때 계획으로 쓸지, 활동 목록으로 쓸지
+            let levels = {};            // 학생 열쇠 → { 수행평가 열쇠: 단계 이름 }
+            let assessLoadToken = 0;
+
+            function assessAvailable() { return areaSelect.value === 'subject' && Array.isArray(assessPlan) && assessPlan.length > 0; }
+            function assessActive() { return assessAvailable() && assessMode; }
+            function itemKey(item) { return item.element; }
+            function levelsStoreKey() { return 'record_levels:' + currentClassId + ':' + semesterSelect.value + ':' + subInput.value.trim(); }
+            function loadLevels() { try { levels = JSON.parse(store.get(levelsStoreKey()) || '{}') || {}; } catch (_) { levels = {}; } }
+            function saveLevels() { store.set(levelsStoreKey(), JSON.stringify(levels)); }
+            function levelOf(key) { if (!levels[key]) levels[key] = {}; return levels[key]; }
+
+            async function loadAssessment() {
+                const token = ++assessLoadToken;
+                assessPlan = null;
+                renderAssess();
+                const subject = subInput.value.trim();
+                const semester = parseInt(semesterSelect.value, 10);
+                if (areaSelect.value !== 'subject' || !currentScope || !currentScope.grade || !subject || !semester) return;
+                // 1·2학년의 '바른 생활, 슬기로운 생활, 즐거운 생활'은 계획이 교과마다 따로 있어 셋을 이어 붙인다.
+                const names = subject.split(',').map(name => name.trim()).filter(Boolean);
+                let items = [];
+                try {
+                    const lists = await Promise.all(names.map(async (name) => {
+                        const query = new URLSearchParams({ year: new Date().getFullYear(), grade: currentScope.grade, semester, subject: name });
+                        const res = await fetch('/api/teacher/assessment-plans?' + query);
+                        if (!res.ok) return [];
+                        return ((await res.json()).items || []);
+                    }));
+                    items = lists.flat();
+                } catch (_) { items = []; }
+                if (token !== assessLoadToken) return;   // 그새 다른 과목으로 옮겼다
+                assessPlan = items.filter(item => item.element && Array.isArray(item.criteria) && item.criteria.some(c => c.text));
+                loadLevels();
+                renderAssess();
+            }
+
+            function renderAssess() {
+                const available = assessAvailable();
+                assessGroup.style.display = available ? '' : 'none';
+                if (areaSelect.value !== 'behavior') topicsGroup.style.display = (available && assessMode) ? 'none' : '';
+                if (!available || !assessMode) {
+                    assessPanel.replaceChildren();
+                    assessStatus.textContent = '';
+                    if (available) { modePlanBtn.classList.remove('on'); modeListBtn.classList.add('on'); }
+                    return;
+                }
+                modePlanBtn.classList.add('on');
+                modeListBtn.classList.remove('on');
+
+                const students = traitStudents();
+                const hint = document.createElement('p');
+                hint.className = 'level-hint';
+                hint.append('「수행평가 계획」의 ' + assessPlan.length + '개 평가입니다. 학생마다 단계를 고르면 그 단계의 평가결과 문장으로 씁니다. ');
+                const link = document.createElement('a');
+                link.href = '/classtools/assessment-plan/plan.html';
+                link.textContent = '계획 고치기';
+                hint.append(link);
+
+                const table = document.createElement('table');
+                table.className = 'level-table';
+                const head = document.createElement('tr');
+                head.append(Object.assign(document.createElement('th'), { textContent: '학생' }));
+                assessPlan.forEach(item => {
+                    const th = document.createElement('th');
+                    th.append(item.element);
+                    // 한 단계로 다 맞춰 두고 몇 명만 바꾸는 것이 보통이라, 칸마다 '모두' 를 둔다.
+                    const all = document.createElement('select');
+                    all.className = 'all';
+                    all.setAttribute('aria-label', item.element + ' 모두 같은 단계로');
+                    all.append(new Option('모두 →', ''));
+                    item.criteria.forEach(c => all.append(new Option(c.label, c.label)));
+                    all.addEventListener('change', () => {
+                        if (!all.value) return;
+                        students.forEach(s => { levelOf(s.key)[itemKey(item)] = all.value; });
+                        saveLevels();
+                        renderAssess();
+                    });
+                    th.append(all);
+                    head.append(th);
+                });
+                const thead = document.createElement('thead');
+                thead.append(head);
+                const tbody = document.createElement('tbody');
+                students.forEach(s => {
+                    const tr = document.createElement('tr');
+                    tr.append(Object.assign(document.createElement('td'), { textContent: s.label }));
+                    assessPlan.forEach(item => {
+                        const td = document.createElement('td');
+                        const select = document.createElement('select');
+                        select.setAttribute('aria-label', s.label + ' ' + item.element);
+                        select.append(new Option('—', ''));
+                        item.criteria.forEach(c => select.append(new Option(c.label, c.label)));
+                        const chosen = levelOf(s.key)[itemKey(item)] || '';
+                        select.value = item.criteria.some(c => c.label === chosen) ? chosen : '';
+                        select.classList.toggle('empty', !select.value);
+                        select.addEventListener('change', () => {
+                            levelOf(s.key)[itemKey(item)] = select.value;
+                            select.classList.toggle('empty', !select.value);
+                            saveLevels();
+                            updateAssessStatus(students);
+                        });
+                        td.append(select);
+                        tr.append(td);
+                    });
+                    tbody.append(tr);
+                });
+                table.append(thead, tbody);
+                const wrap = document.createElement('div');
+                wrap.className = 'level-wrap';
+                wrap.append(table);
+                assessPanel.replaceChildren(hint, wrap);
+                updateAssessStatus(students);
+            }
+
+            function pickedLevels(student) {
+                return assessPlan.filter(item => levelOf(student.key)[itemKey(item)]);
+            }
+
+            function updateAssessStatus(students) {
+                const done = students.filter(s => pickedLevels(s).length > 0).length;
+                assessStatus.className = done === students.length ? 'status' : 'status error';
+                assessStatus.textContent = students.length + '명 가운데 ' + done + '명 단계를 골랐습니다'
+                    + (done === students.length ? '.' : '. 단계가 없는 학생은 문장을 만들지 않습니다.');
+            }
+
+            modePlanBtn.addEventListener('click', () => { assessMode = true; renderAssess(); });
+            modeListBtn.addEventListener('click', () => { assessMode = false; renderAssess(); });
+
             // 모델 선택과 호출은 공통 ai-client.js에서 관리한다.
             // ── 문장 만들기 ────────────────────────────────────────────────
             // 선생님은 '독도교육'처럼 활동 이름만 적는다. 그 한 낱말에서 서른 몇 개의
@@ -1469,6 +1634,32 @@
                     + '\'1. \' 처럼 번호를 붙여 한 줄에 하나씩만 적고, 다른 말은 덧붙이지 마세요.';
             }
 
+            // 수행평가 계획의 평가결과 문장 하나를, 같은 단계를 받은 학생 수만큼 표현만 조금씩 달리해 받는다.
+            // 선생님이 바란 것: 학생마다 살짝만 다르게, 누구를 특별하게 쓰지 않게. 뜻은 평가결과 그대로.
+            function buildLevelPrompt(area, sub, item, criterion, count) {
+                const where = semesterSelect.value + ' ' + sub + ' ' + area.label;
+                const standards = (item.standards || []).map(s => s.text).filter(Boolean);
+                return '초등학교 생활기록부 \'' + where + '\' 칸에 넣을 문장을 만듭니다.\n\n'
+                    + '[수행평가] ' + item.element + '\n'
+                    + (standards.length ? '[성취기준] ' + standards.join(' / ') + '\n' : '')
+                    + '[평가결과] ' + criterion.text + '\n\n'
+                    + '위 평가결과는 이 수행평가에서 학생 ' + count + '명이 똑같이 보인 모습입니다.\n'
+                    + '이 ' + count + '명에게 각각 적어 줄 문장을 ' + count + '개 만들어 주세요.\n\n'
+                    + '지켜야 할 것\n'
+                    + '- 평가결과 문장의 뜻을 그대로 옮깁니다. 더 잘하는 것처럼도, 못하는 것처럼도 쓰지 마세요.\n'
+                    + '  \'도움을 받아\' 처럼 평가결과에 있는 조건은 빠뜨리지 않습니다.\n'
+                    + '- 무슨 수행평가였는지(' + item.element + ')가 드러나게 씁니다.\n'
+                    + '- 평가결과와 성취기준에 없는 활동, 장면, 물건, 숫자, 사람을 덧붙이지 마세요.\n'
+                    + '- ' + count + '개 문장은 뜻이 같아야 합니다. 낱말의 차례나 표현만 조금씩 달리하고,\n'
+                    + '  어느 학생을 특별하게 쓰거나 크게 다르게 쓰지 마세요.\n'
+                    + '- 한 사람에 한 문장. \'~함.\' \'~임.\' 처럼 ㅁ 받침으로 끝나는 명사형으로 맺습니다.\n'
+                    + '  \'~할 수 있다.\' \'~하였다.\' \'~했습니다.\' 로 끝내면 안 됩니다.\n'
+                    + '- 단계 이름(' + criterion.label + ')과 점수·등급·학생 이름·번호는 쓰지 않습니다.\n'
+                    + '- 한 문장은 40자 안팎으로 합니다.\n'
+                    + BANNED_RULE
+                    + '\n\'1. \' 처럼 번호를 붙여 한 줄에 하나씩만 적고, 다른 말은 덧붙이지 마세요.';
+            }
+
             // 번호 매긴 목록을 줄별로 끊어 낸다. 앞뒤에 인사말이 붙어 와도 걸러진다.
             function parseNumbered(text, count) {
                 return text.split('\n')
@@ -1569,12 +1760,21 @@
                     ? traitStudents().map(student => ({ ...student, trait: traitOf(student.key) }))
                         .filter(student => student.trait.words.length > 0)
                     : [];
-                const topics = byTraits ? [] : topicsInput.value.split('\n').map(t => t.trim()).filter(Boolean);
+                // 수행평가 계획으로 쓸 때는 학생마다 고른 단계가 재료다. 번호(index)는 명단 차례다.
+                const byPlan = !byTraits && assessActive();
+                const planPicks = byPlan
+                    ? traitStudents().map((student, index) => ({ ...student, index, levels: levelOf(student.key) }))
+                    : [];
+                const topics = (byTraits || byPlan) ? [] : topicsInput.value.split('\n').map(t => t.trim()).filter(Boolean);
                 if (byTraits && picked.length === 0) {
                     alert('학생마다 낱말을 골라 주세요.');
                     return;
                 }
-                if (!byTraits && topics.length === 0) {
+                if (byPlan && !planPicks.some(student => pickedLevels(student).length > 0)) {
+                    alert('학생마다 수행평가 단계를 골라 주세요.');
+                    return;
+                }
+                if (!byTraits && !byPlan && topics.length === 0) {
                     alert('활동을 한 줄 이상 적어 주세요.');
                     topicsInput.focus();
                     return;
@@ -1622,6 +1822,32 @@
                             } catch (error) {
                                 console.error(error);
                                 missed.push({ topic: (g + 1) + '번째 묶음', why: error.message });
+                            }
+                        }
+                    } else if (byPlan) {
+                        // 수행평가마다, 같은 단계를 고른 학생끼리 묶어 한 번에 받는다. 수행평가 차례대로 돌므로
+                        // 한 학생의 글에도 수행평가가 계획 순서대로 이어진다.
+                        const jobs = [];
+                        assessPlan.forEach(item => {
+                            item.criteria.forEach(criterion => {
+                                const group = planPicks.filter(student => student.levels[itemKey(item)] === criterion.label);
+                                if (group.length === 0) return;
+                                if (!criterion.text) { missed.push({ topic: item.element + ' · ' + criterion.label, why: '그 단계의 평가결과 문장이 비어 있습니다. 수행평가 계획에서 적어 주세요.' }); return; }
+                                jobs.push({ item, criterion, group });
+                            });
+                        });
+                        for (let j = 0; j < jobs.length; j += 1) {
+                            setProgress(j, jobs.length);
+                            const job = jobs[j];
+                            try {
+                                const text = await window.ClassroomAI.generate(buildLevelPrompt(area, sub, job.item, job.criterion, job.group.length), () => {});
+                                const sentences = parseNumbered(text, job.group.length);
+                                if (sentences.length === 0) throw new Error('문장을 읽어 내지 못했습니다.');
+                                const order = shuffled(job.group.length);
+                                job.group.forEach((student, i) => perStudent[student.index].push(sentences[order[i] % sentences.length]));
+                            } catch (error) {
+                                console.error(error);
+                                missed.push({ topic: job.item.element + ' · ' + job.criterion.label, why: error.message });
                             }
                         }
                     } else for (let t = 0; t < topics.length; t += 1) {
