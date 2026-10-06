@@ -170,11 +170,13 @@
         const settings = options || {};
         const context = ensureAudio();
         if (!context) return Promise.reject(new Error("이 브라우저는 오디오를 지원하지 않습니다."));
-        return loadSamples().then(function () {
-            playLoadedMidi(midi, settings.when, settings.duration, settings.volume, settings.pan);
-        }).catch(function () {
+        // Direct input must never queue behind all nine sample downloads.
+        // Play once now; loading only improves subsequent presses.
+        if (!playLoadedMidi(midi, settings.when, settings.duration, settings.volume, settings.pan)) {
             playSynthetic(midi, settings.when, settings.duration, settings.volume);
-        });
+        }
+        loadSamples().catch(function () {});
+        return Promise.resolve();
     }
 
     function playNotes(midis, options) {
@@ -219,38 +221,31 @@
     }
 
     /*
-     * 메트로놈 소리. 나무를 때리는 마른 「똑」이라, 아주 짧은 잡음 한 방을 좁은
-     * 띠로 걸러 공명만 남긴다. 잡음이 길거나 띠가 넓으면 메트로놈이 아니라
-     * 하이햇처럼 들린다. 첫 박에는 종을 얹는다 — 메트로놈의 그 「띵」이다.
-     * 울림(reverb)은 거의 주지 않는다. 메트로놈은 마른 소리여야 박이 또렷하다.
+     * 네 박 모두 같은 짧은 「똑」을 내고 첫 박에만 종을 얹는다.
+     * 좁게 거른 잡음은 작은 스피커에서 묻히므로 중음역의 일정한 타격음을 쓴다.
+     * 부드러운 시작/끝으로 클릭 잡음을 막고 잔향 없이 박의 위치를 또렷하게 한다.
      */
     function tick(when, strong) {
         const context = ensureAudio();
         if (!context) return;
         const start = Math.max(context.currentTime, when);
 
-        const body = context.createBiquadFilter();
-        body.type = "bandpass";
-        body.frequency.value = strong ? 2200 : 1350;
-        body.Q.value = 4.5;
         const bodyGain = context.createGain();
         bodyGain.gain.setValueAtTime(.0001, start);
-        bodyGain.gain.exponentialRampToValueAtTime(strong ? .55 : .38, start + .001);
-        bodyGain.gain.exponentialRampToValueAtTime(.0001, start + (strong ? .065 : .05));
-        body.connect(bodyGain);
-        connectToMix(bodyGain, .004);
-
-        const noise = context.createBufferSource();
-        const length = Math.floor(context.sampleRate * .04);
-        const buffer = context.createBuffer(1, length, context.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let index = 0; index < length; index += 1) {
-            data[index] = (Math.random() * 2 - 1) * Math.pow(1 - index / length, 6);
-        }
-        noise.buffer = buffer;
-        noise.connect(body);
-        noise.start(start);
-        noise.stop(start + .05);
+        bodyGain.gain.exponentialRampToValueAtTime(.24, start + .002);
+        bodyGain.gain.exponentialRampToValueAtTime(.0001, start + .075);
+        connectToMix(bodyGain, 0);
+        [1, 2.35].forEach(function (ratio, index) {
+            const body = context.createOscillator();
+            const partial = context.createGain();
+            body.type = "sine";
+            body.frequency.setValueAtTime(1700 * ratio, start);
+            body.frequency.exponentialRampToValueAtTime(1300 * ratio, start + .018);
+            partial.gain.value = index === 0 ? 1 : .22;
+            body.connect(partial).connect(bodyGain);
+            body.start(start);
+            body.stop(start + .085);
+        });
 
         if (!strong) return;
         const bell = context.createOscillator();
@@ -261,7 +256,7 @@
         bellGain.gain.exponentialRampToValueAtTime(.11, start + .003);
         bellGain.gain.exponentialRampToValueAtTime(.0001, start + .26);
         bell.connect(bellGain);
-        connectToMix(bellGain, .012);
+        connectToMix(bellGain, 0);
         bell.start(start);
         bell.stop(start + .29);
     }
@@ -274,7 +269,7 @@
     const RHYTHM_MIDI = 60;
 
     function rhythmNote(when, strong) {
-        loadSamples();
+        loadSamples().catch(function () {});
         if (playLoadedMidi(RHYTHM_MIDI, when, .5, strong ? .14 : .105, 0)) return;
         playSynthetic(RHYTHM_MIDI, when, .45, strong ? .075 : .055);
     }

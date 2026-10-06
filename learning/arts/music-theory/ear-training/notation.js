@@ -143,13 +143,7 @@
      * columns: [{ notes: [spelling, ...] } | null]  — null이면 아직 모르는 음(?)으로 그린다.
      * marks: 열 번호별 색 이름 ("right" | "wrong")
      */
-    /*
-     * 자리표는 유니코드 음악 기호(U+1D11E)를 쓴다. 다만 글꼴마다 글리프가 차지하는
-     * 자리와 크기가 달라서 그냥 찍으면 오선에 맞지 않는다. 그래서 한 번 재 두고,
-     * 잰 테두리를 "위 줄 한 칸 위에서 아래 줄 두 칸 아래까지"에 맞춰 앉힌다.
-     * 자리표의 생김새는 어느 글꼴이나 같은 규격이므로, 이 띠에 맞추면 소용돌이가
-     * 저절로 G선에 온다.
-     */
+    // Bundled vector outlines keep music symbols identical on every OS.
     const CLEF_GLYPH = "\uD834\uDD1E";
     const SHARP_GLYPH = "\u266F";
     const FLAT_GLYPH = "\u266D";
@@ -157,126 +151,59 @@
     const BASS_CLEF_GLYPH = "\uD834\uDD22";
     const NATURAL_GLYPH = "\u266E";
     const G_LINE_ABS = 4 * 7 + 4;   /* 높은음자리표가 가리키는 G4 */
-    const PROBE_SIZE = 100;
+    // BEGIN BUNDLED MUSIC OUTLINES
+    // Noto Music, SIL OFL 1.1; see assets/notation/OFL.txt.
+    // Source SHA256: e913be269fe16723d1dea0afc3c31a28be6958f6a7f0e6d5be6e98506c4022bd
+    const MUSIC_OUTLINES = {
+        "\ud834\udd1e": {"width":611,"height":1732,"path":"M264 533Q250 480 241.0 428.0Q232 376 232 322Q232 275 238.5 233.5Q245 192 257 157Q270 117 291.0 81.5Q312 46 335.5 23.0Q359 0 377 0Q401 0 443 85Q464 128 474.0 178.0Q484 228 484 285Q484 356 465.0 426.5Q446 497 409.5 559.0Q373 621 322 668L357 836Q372 834 382.0 833.0Q392 832 397 832Q458 832 506.0 866.5Q554 901 582.5 957.0Q611 1013 611 1080Q611 1157 571.5 1218.5Q532 1280 453 1309Q458 1326 482 1451Q488 1481 491.0 1498.5Q494 1516 495.0 1529.0Q496 1542 496 1559Q496 1609 471.5 1648.5Q447 1688 405.5 1710.0Q364 1732 313 1732Q261 1732 221.0 1712.5Q181 1693 158.0 1658.5Q135 1624 135 1579Q135 1531 161.5 1499.0Q188 1467 237 1467Q279 1467 305.5 1497.5Q332 1528 332 1570Q332 1606 307.0 1633.0Q282 1660 242 1660H232Q258 1699 314 1699Q383 1699 422.0 1654.0Q461 1609 461 1539Q461 1522 457.0 1493.5Q453 1465 443 1425Q433 1385 427.5 1359.0Q422 1333 420 1322Q386 1332 340 1332Q254 1332 172 1282Q92 1232 46.0 1150.0Q0 1068 0 973Q0 883 41 804Q82 725 142.5 659.0Q203 593 264 533ZM291 508Q314 496 340.0 463.5Q366 431 390.0 389.0Q414 347 429.0 304.5Q444 262 444 228Q444 192 433.0 171.0Q422 150 395 150Q371 150 348.5 172.0Q326 194 308.5 230.5Q291 267 281.0 312.0Q271 357 271 404Q271 436 277.5 462.0Q284 488 291 508ZM348 955Q321 961 297.0 980.5Q273 1000 258.5 1027.5Q244 1055 244 1086Q244 1111 257.0 1137.5Q270 1164 289 1180Q302 1192 315 1198Q330 1205 330 1211Q330 1214 320 1217Q282 1208 251.5 1183.0Q221 1158 203.5 1122.5Q186 1087 186 1047Q186 1004 203.5 964.0Q221 924 252.5 892.0Q284 860 324 844L295 693Q179 787 124.5 877.5Q70 968 70 1057Q70 1122 104.0 1178.0Q138 1234 197.0 1268.5Q256 1303 330 1303Q350 1303 370.5 1299.0Q391 1295 414 1289ZM445 1279Q543 1237 543 1107Q543 1064 521.0 1028.5Q499 993 462.0 972.0Q425 951 379 951Z"},
+        "\ud834\udd22": {"width":692,"height":799,"path":"M0 777Q166 669 238 599Q286 552 323.0 491.5Q360 431 381.5 364.0Q403 297 403 231Q403 172 385.0 126.5Q367 81 333.0 55.0Q299 29 252 29Q234 29 214.5 33.0Q195 37 174 45Q131 61 108.0 86.5Q85 112 85 135Q85 144 93.0 148.0Q101 152 108 152Q118 152 133 148Q140 146 146.5 145.0Q153 144 160 144Q198 144 222.0 166.5Q246 189 246 226Q246 262 216.0 288.0Q186 314 145 314Q96 314 61.0 283.0Q26 252 26 203Q26 144 59.0 98.0Q92 52 148.5 26.0Q205 0 274 0Q350 0 410.0 33.0Q470 66 505.5 123.5Q541 181 541 254Q541 349 488 436Q461 481 426.5 521.0Q392 561 339.0 602.5Q286 644 206.0 692.0Q126 740 7 799ZM637 91Q660 91 676.0 107.0Q692 123 692 146Q692 169 676.0 184.5Q660 200 637 200Q614 200 598.0 184.5Q582 169 582 146Q582 123 598.0 107.0Q614 91 637 91ZM637 311Q660 311 676.0 327.0Q692 343 692 366Q692 389 676.0 404.5Q660 420 637 420Q614 420 598.0 404.5Q582 389 582 366Q582 343 598.0 327.0Q614 311 637 311Z"},
+        "\u266f": {"width":225,"height":756,"path":"M47 463V320L0 332V232L47 219V23H78V211L145 195V0H176V187L225 176V275L176 289V432L225 420V523L176 535V723H145V543L78 561V756H47V568L0 580V477ZM145 439V295L78 312V455Z"},
+        "\u266d": {"width":199,"height":670,"path":"M0 0H31V390Q68 353 115 353Q147 353 173.0 374.5Q199 396 199 437Q199 469 180.0 496.0Q161 523 129 550L60 609Q41 625 26.0 640.5Q11 656 0 670ZM31 603Q57 575 75.0 551.5Q93 528 103 510Q114 491 119.5 475.0Q125 459 125 445Q125 417 112.0 404.5Q99 392 84 392Q68 392 52.5 403.5Q37 415 31 435Z"},
+        "\u266e": {"width":176,"height":707,"path":"M176 170V707H145V495L0 532V0H33V207ZM147 402V274L31 303V430Z"},
+        "\ud834\udd2a": {"width":260,"height":262,"path":"M174 262V217Q174 198 161.5 187.0Q149 176 131 176Q112 176 99.0 187.0Q86 198 86 215V262H0V176H55Q69 176 77.5 162.0Q86 148 86 131Q86 115 76.5 100.5Q67 86 61 86H0V0H86V53Q86 67 99.0 76.5Q112 86 131 86Q146 86 160.0 77.0Q174 68 174 55V0H260V86H209Q196 86 185.0 101.5Q174 117 174 131Q174 148 183.5 162.0Q193 176 209 176H260V262Z"},
+        "\ud834\udd3b": {"width":683,"height":134,"path":"M0 24V0H683V24H523V134H160V24Z"},
+        "\ud834\udd3c": {"width":683,"height":134,"path":"M0 134V110H160V0H523V110H683V134Z"},
+        "\ud834\udd3d": {"width":256,"height":755,"path":"M96 0 256 195Q206 254 179.0 297.0Q152 340 152 384Q152 421 176.0 461.5Q200 502 252 564L236 586Q192 558 154 558Q126 558 112.0 576.5Q98 595 98 621Q98 653 111.5 681.5Q125 710 148 736L135 755Q66 705 33.0 664.0Q0 623 0 575Q0 532 27.0 512.0Q54 492 92 492Q122 492 170 515V513L16 308Q117 219 117 142Q117 81 53 0Z"},
+        "\ud834\udd3e": {"width":262,"height":461,"path":"M105 461 201 121Q180 140 153.5 148.0Q127 156 101 156Q58 156 29.0 133.0Q0 110 0 67Q0 39 20.0 19.5Q40 0 71 0Q100 0 118.5 18.5Q137 37 137 68Q137 90 127 107Q127 113 139 113Q194 113 244 27H262L141 461Z"},
+        "\ud834\udd3f": {"width":330,"height":705,"path":"M105 705 201 365Q180 384 153.5 392.0Q127 400 101 400Q58 400 29.0 377.0Q0 354 0 311Q0 283 19.5 263.5Q39 244 71 244Q100 244 118.5 262.5Q137 281 137 312Q137 334 127 351Q127 357 139 357Q180 357 217 311L269 121Q248 140 221.5 148.0Q195 156 169 156Q126 156 97.0 133.0Q68 110 68 67Q68 39 88.0 19.5Q108 0 139 0Q169 0 187.0 19.0Q205 38 205 68Q205 78 202.0 88.5Q199 99 195 107Q195 113 207 113Q262 113 312 27H330L141 705Z"}
+    };
+    // END BUNDLED MUSIC OUTLINES
 
-    const inkCache = {};
-    let glyphFont;
-
-    /*
-     * SVG의 getBBox()는 글리프가 아니라 글꼴 줄상자를 돌려준다. ♭·♯·자리표가 모두
-     * 같은 높이로 나와서 크기를 맞출 수가 없다. 그래서 캔버스로 실제 먹이 닿는
-     * 테두리를 잰다. 잰 값은 글자 크기 PROBE_SIZE를 기준으로 한 것이다.
-     */
     function inkBox(char) {
-        if (inkCache[char] !== undefined) return inkCache[char];
-        inkCache[char] = null;
-        if (glyphFont === undefined) {
-            const probe = document.createElement("span");
-            probe.className = "sheet-glyph";
-            probe.style.cssText = "position:absolute;left:-9999px;top:0";
-            document.body.append(probe);
-            glyphFont = window.getComputedStyle(probe).fontFamily || "serif";
-            probe.remove();
-        }
-        let metrics = null;
-        try {
-            const context = document.createElement("canvas").getContext("2d");
-            context.font = PROBE_SIZE + "px " + glyphFont;
-            metrics = context.measureText(char);
-        } catch (error) { metrics = null; }
-        if (metrics && typeof metrics.actualBoundingBoxAscent === "number") {
-            const height = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
-            if (height > 0) {
-                inkCache[char] = {
-                    ascent: metrics.actualBoundingBoxAscent,
-                    height: height,
-                    right: metrics.actualBoundingBoxRight
-                };
-            }
-        }
-        return inkCache[char];
+        const shape = MUSIC_OUTLINES[char];
+        return shape ? { ascent: 0, height: shape.height, right: shape.width } : null;
     }
 
-    /*
-     * 글리프를 오선 좌표에 앉힌다. right는 먹이 닿는 오른쪽 끝, height는 먹의 높이,
-     * anchor는 그 높이 안에서 기준이 되는 자리(0이면 맨 위, 1이면 맨 아래)이고
-     * at은 그 기준이 놓일 y다. 예를 들어 내림표는 배가 음표에 걸리므로 anchor가 크다.
-     */
     function glyphNode(char, cls, right, at, height, anchor) {
-        const ink = inkBox(char);
-        if (!ink) return null;
-        const scale = height / ink.height;
-        const node = make("text", {
+        const shape = MUSIC_OUTLINES[char];
+        if (!shape) return null;
+        const scale = height / shape.height;
+        return make("path", {
             class: cls,
-            x: 0, y: 0,
-            "font-size": PROBE_SIZE * scale,
-            transform: "translate(" + (right - ink.right * scale) + ","
-                + (at - anchor * height + ink.ascent * scale) + ")"
+            "data-glyph": char.codePointAt(0).toString(16),
+            d: shape.path,
+            transform: "translate(" + (right - shape.width * scale) + "," + (at - anchor * height) + ") scale(" + scale + ")"
         });
-        node.textContent = char;
-        return node;
+    }
+
+    function glyphIcon(char) {
+        const shape = MUSIC_OUTLINES[char];
+        if (!shape) return null;
+        const svg = make("svg", { class: "music-glyph-icon", viewBox: "0 0 " + shape.width + " " + shape.height, "aria-hidden": "true" });
+        svg.append(glyphNode(char, "sheet-glyph", shape.width, 0, shape.height, 0));
+        return svg;
     }
 
     /* 자리표는 소용돌이가 G선에 오도록 앉힌다. 소용돌이는 먹 높이의 63% 자리다. */
     const CLEF_H = STEP_Y * 14;
     const CLEF_SPIRAL = 0.63;
 
-    /*
-     * 낮은음자리표(F 자리표)는 두 점이 F선 바로 위 칸과 바로 아래 칸에 하나씩 앉는다.
-     * 그래서 두 점의 한가운데가 F선이고, 두 점 사이가 꼭 한 칸이다. 높은음자리표처럼
-     * 먹 높이의 비율로 앉히면 글꼴마다 어긋나므로(윈도 글꼴은 한 칸 아래로 내려앉아
-     * 가운데 줄 D를 감쌌다) 캔버스에 찍어 두 점을 직접 찾는다. 두 점은 글리프의
-     * 맨 오른쪽에 떨어져 있는 먹 기둥이다.
-     */
-    const F_LINE_ABS = 3 * 7 + 3;   /* 낮은음자리표가 가리키는 F3 */
-    let bassFit;
+    const F_LINE_ABS = 3 * 7 + 3;
 
     function bassClefFit() {
-        if (bassFit !== undefined) return bassFit;
-        /* 못 재면 윈도(Segoe UI Symbol)에서 잰 값으로 앉힌다. */
-        bassFit = { height: STEP_Y * 5.8, anchor: 0.43 };
-        const ink = inkBox(BASS_CLEF_GLYPH);
-        if (!ink) return bassFit;
-        const size = PROBE_SIZE * 3;
-        const baseline = PROBE_SIZE * 2;
-        let data;
-        try {
-            const canvas = document.createElement("canvas");
-            canvas.width = size;
-            canvas.height = size;
-            const context = canvas.getContext("2d", { willReadFrequently: true });
-            context.font = PROBE_SIZE + "px " + glyphFont;
-            context.fillText(BASS_CLEF_GLYPH, PROBE_SIZE, baseline);
-            data = context.getImageData(0, 0, size, size).data;
-        } catch (error) { return bassFit; }
-        const inked = (x, y) => data[(y * size + x) * 4 + 3] > 100;
-        const columnInked = x => {
-            for (let y = 0; y < size; y += 1) if (inked(x, y)) return true;
-            return false;
-        };
-        let right = size - 1;
-        while (right >= 0 && !columnInked(right)) right -= 1;
-        let left = right;
-        while (left > 0 && columnInked(left - 1)) left -= 1;
-        /* 점 기둥에서 먹이 있는 줄을 모아, 끊긴 데서 두 덩어리로 나눈다. */
-        const blobs = [];
-        for (let y = 0; y < size; y += 1) {
-            let hit = false;
-            for (let x = left; x <= right && !hit; x += 1) hit = inked(x, y);
-            if (!hit) continue;
-            const last = blobs[blobs.length - 1];
-            if (last && last.bottom === y - 1) last.bottom = y;
-            else blobs.push({ top: y, bottom: y });
-        }
-        if (blobs.length !== 2) return bassFit;
-        const upper = (blobs[0].top + blobs[0].bottom) / 2;
-        const lower = (blobs[1].top + blobs[1].bottom) / 2;
-        const middle = (upper + lower) / 2;
-        bassFit = {
-            height: ink.height * (STEP_Y * 2) / (lower - upper),
-            anchor: (ink.ascent - (baseline - middle)) / ink.height
-        };
-        return bassFit;
+        // Noto Music's two dot centers are at y=754.5 and y=534.5.
+        // Their separation is one staff space; their midpoint sits on F3.
+        return { height: 799 * (STEP_Y * 2) / 220, anchor: (900 - 644.5) / 799 };
     }
 
     function oneClef(char, x, height, anchor, at) {
@@ -498,9 +425,10 @@
 
     window.Notation = {
         natural: natural,
-        /* 리듬 악보도 같은 방법으로 글리프를 재고 같은 모양으로 머리를 그린다. */
+        /* 리듬 악보도 같은 벡터 기호와 음표머리를 쓴다. */
         inkBox: inkBox,
         glyph: glyphNode,
+        icon: glyphIcon,
         ring: ellipseRing,
         spell: spell,
         step: step,

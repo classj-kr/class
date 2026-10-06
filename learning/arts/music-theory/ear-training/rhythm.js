@@ -5,6 +5,7 @@
 
     /*
      * 리듬 한 마디는 사건의 줄이다. v는 음표 값, rest면 쉼표다.
+     * tie는 다음 음표까지 같은 음을 이어 내는 붙임줄이다(새 타격이 아니다).
      * beats는 4분음표 하나를 1로 센 길이.
      */
     const PER_BEAT = 12;
@@ -25,6 +26,7 @@
     Object.keys(VALUES).forEach(name => { VALUES[name].beats = VALUES[name].cells / PER_BEAT; });
 
     const BEAT_W = 74;
+    const BEAT_GAP = 10;
     const LEFT = 44;
     const LINE_Y = 62;
     const STEM_TOP = 28;
@@ -41,9 +43,8 @@
     }
 
     /*
-     * 쉼표는 공식 글리프를 쓴다. 손으로 그으면 지렁이가 된다. 글꼴마다 글리프가
-     * 차지하는 자리와 크기가 달라서, 먹이 닿는 테두리를 재서 맞춘다(notation.js와
-     * 같은 방법). 온쉼표는 줄에 매달고 2분쉼표는 줄 위에 얹고, 나머지는 줄에 걸친다.
+     * 쉼표는 notation.js에 포함한 벡터 기호를 쓴다. 설치 글꼴이나 로딩 순서에
+     * 의존하지 않는다. 온쉼표는 줄에 매달고 2분쉼표는 줄 위에 얹는다.
      */
     const REST_GLYPHS = {
         w: { char: "\uD834\uDD3B", height: 5.2, anchor: 0 },
@@ -109,8 +110,9 @@
     function onsets(bar) {
         const list = [];
         let position = 0;
-        bar.forEach(event => {
-            if (!event.rest) list.push(position);
+        bar.forEach((event, index) => {
+            const continuation = index > 0 && bar[index - 1].tie && !bar[index - 1].rest;
+            if (!event.rest && !continuation) list.push(position);
             position += VALUES[event.v].cells;
         });
         return list;
@@ -168,24 +170,60 @@
         3: "s", 4: "te", 6: "e", 8: "tq", 9: "ed", 12: "q", 18: "qd", 24: "h", 36: "hd", 48: "w"
     };
 
+    // Spell a sustained span with visible quarter-note boundaries. Simple long
+    // notes beginning on a beat retain their familiar half/whole-note forms.
+    function spellSpan(start, cells, rest) {
+        const result = [];
+        let position = start, left = cells;
+        while (left > 0) {
+            const offset = position % PER_BEAT;
+            const wholeBeats = offset === 0 && left % PER_BEAT === 0 && CELL_VALUE[left];
+            const room = Math.min(left, PER_BEAT - offset);
+            const length = wholeBeats ? left : [12, 9, 8, 6, 4, 3].find(size => size <= room);
+            if (!length) return null;
+            const event = { v: CELL_VALUE[length] };
+            if (rest) event.rest = true;
+            result.push(event);
+            position += length;
+            left -= length;
+        }
+        if (!rest) result.slice(0, -1).forEach(event => { event.tie = true; });
+        return result;
+    }
+
+    function notate(bar) {
+        const result = [];
+        let position = 0;
+        bar.forEach(event => {
+            const length = VALUES[event.v].cells;
+            const parts = spellSpan(position, length, event.rest) || [Object.assign({}, event)];
+            if (event.tie && !event.rest) parts[parts.length - 1].tie = true;
+            result.push.apply(result, parts);
+            position += length;
+        });
+        return result;
+    }
+
     /*
      * 치는 자리만 정해 놓고, "다음 칠 자리까지 이어진다"는 규칙으로 음표를 정한다.
      * 이렇게 하면 한 가지 리듬이 한 가지 악보로만 적힌다.
      */
-    function fromOnsets(cells, barCells) {
+    function fromOnsets(cells, totalCells) {
         const sorted = cells.slice().sort((a, b) => a - b);
         const bar = [];
-        if (!sorted.length) return [{ v: "w", rest: true }];
+        if (!sorted.length) return spellSpan(0, totalCells, true);
+        if (sorted.some((cell, index) => !Number.isInteger(cell) || cell < 0 || cell >= totalCells
+            || (index > 0 && cell === sorted[index - 1]))) return null;
         if (sorted[0] > 0) {
-            const gap = sorted[0];
-            if (!CELL_VALUE[gap]) return null;
-            bar.push({ v: CELL_VALUE[gap], rest: true });
+            const rests = spellSpan(0, sorted[0], true);
+            if (!rests) return null;
+            bar.push.apply(bar, rests);
         }
         for (let index = 0; index < sorted.length; index += 1) {
-            const next = index + 1 < sorted.length ? sorted[index + 1] : barCells;
-            const gap = next - sorted[index];
-            if (!CELL_VALUE[gap]) return null;
-            bar.push({ v: CELL_VALUE[gap] });
+            const next = index + 1 < sorted.length ? sorted[index + 1] : totalCells;
+            const notes = spellSpan(sorted[index], next - sorted[index], false);
+            if (!notes) return null;
+            bar.push.apply(bar, notes);
         }
         return bar;
     }
@@ -243,8 +281,9 @@
 
     function render(bar, options) {
         const settings = options || {};
+        bar = notate(bar);
         const beats = barBeats(bar);
-        const width = LEFT + beats * BEAT_W + 26;
+        const width = LEFT + beats * BEAT_W + Math.max(0, Math.ceil(beats) - 1) * BEAT_GAP + 26;
         const svg = make("svg", {
             class: "rhythm",
             style: "width:" + Math.round(width * (settings.zoom || 1.6)) + "px",
@@ -272,7 +311,8 @@
         let position = 0;
         bar.forEach(event => {
             const whole = bar.length === 1 && event.rest;
-            xs.push(whole ? LEFT + beats * BEAT_W / 2 : LEFT + position * BEAT_W + ONSET_PAD);
+            xs.push(whole ? (LEFT + width - 26) / 2
+                : LEFT + position * BEAT_W + Math.floor(position + .000001) * BEAT_GAP + ONSET_PAD);
             position += VALUES[event.v].beats;
         });
 
@@ -304,6 +344,14 @@
                 for (let flag = 0; flag < value.flags; flag += 1) {
                     ink.append(flagNode(x + HEAD_RX - .6, STEM_TOP + flag * 7));
                 }
+            }
+            if (event.tie && bar[index + 1] && !bar[index + 1].rest) {
+                const from = x + 2, to = xs[index + 1] - 2, middle = (from + to) / 2;
+                ink.append(make("path", {
+                    class: "rhythm-tie", "data-from": index, "data-to": index + 1,
+                    d: "M" + from + ",69 Q" + middle + ",82 " + to + ",69"
+                        + " Q" + middle + ",77 " + from + ",69 Z"
+                }));
             }
         });
 
@@ -347,7 +395,7 @@
                      */
                     const to = run.length > 1 ? stemX(run[run.length - 1])
                         : from + (run[0] === group.items[0] ? 9 : -9);
-                    ink.append(make("line", { class: "rhythm-beam", x1: from, y1: y, x2: to, y2: y }));
+                    ink.append(make("line", { class: "rhythm-beam", "data-beat": group.beat, x1: from, y1: y, x2: to, y2: y }));
                     run = [];
                 };
                 group.items.forEach(index => {
@@ -372,6 +420,7 @@
         barBeats: barBeats,
         makeBar: makeBar,
         fromOnsets: fromOnsets,
-        canonical: canonical
+        canonical: canonical,
+        notate: notate
     };
 })();

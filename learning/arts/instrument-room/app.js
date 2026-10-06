@@ -406,6 +406,7 @@
         keyboardSamples: new Map(),
         samplePeaks: new WeakMap(),
         sampleActiveRms: new WeakMap(),
+        sampleBodyRms: new WeakMap(),
         sampleStartOffsets: new WeakMap(),
         keyboardSampleLoads: new Map(),
         sampleCacheOpening: null,
@@ -685,16 +686,48 @@
         return volumeOnlyGain(buffer, Math.max(requestedGain, quietSampleFloor));
     }
 
+    function decodedBufferBodyRms(buffer) {
+        const cached = state.sampleBodyRms.get(buffer);
+        if (Number.isFinite(cached)) return cached;
+        // Measure the audible strike in 100 ms windows. Long recorded tails and
+        // silence must not determine how much a short percussion hit is boosted.
+        const windowSize = Math.max(1, Math.round(buffer.sampleRate * .1));
+        let bodyRms = 0;
+        for (let start = 0; start < buffer.length; start += windowSize) {
+            const end = Math.min(buffer.length, start + windowSize);
+            let energy = 0;
+            for (let channel = 0; channel < buffer.numberOfChannels; channel += 1) {
+                const data = buffer.getChannelData(channel);
+                for (let index = start; index < end; index += 1) energy += data[index] * data[index];
+            }
+            bodyRms = Math.max(bodyRms, Math.sqrt(energy / ((end - start) * buffer.numberOfChannels)));
+        }
+        state.sampleBodyRms.set(buffer, bodyRms);
+        return bodyRms;
+    }
+
+    function balancedDrumGain(buffer, requestedGain, velocity, id) {
+        const bodyRms = decodedBufferBodyRms(buffer);
+        if (bodyRms < .000001) return volumeOnlyGain(buffer, requestedGain);
+        // Preserve soft/muted articulations while making even quiet hats and
+        // rims audible. Existing louder strikes retain their recorded balance.
+        const target = /ghost|soft/.test(id) ? .024 : /damp|mute/.test(id) ? .035 : /accent/.test(id) ? .1 : .08;
+        return volumeOnlyGain(buffer, Math.max(requestedGain, target * velocity / bodyRms));
+    }
+
     function decodedBufferStartOffset(buffer) {
         if (!buffer) return 0;
         const cached = state.sampleStartOffsets.get(buffer);
         if (Number.isFinite(cached)) return cached;
         const threshold = Math.max(.00004, decodedBufferPeak(buffer) * .00008);
-        const scanLength = Math.min(buffer.length, Math.ceil(buffer.sampleRate * .12));
+        // Some recorder recordings contain a full second of leading silence.
+        // Scan to the actual onset while retaining breath/bow/pick lead-in.
+        const scanLength = buffer.length;
+        const channels = Array.from({ length: buffer.numberOfChannels }, function (_, channel) { return buffer.getChannelData(channel); });
         let onset = 0;
         scan: for (let index = 0; index < scanLength; index += 1) {
-            for (let channel = 0; channel < buffer.numberOfChannels; channel += 1) {
-                if (Math.abs(buffer.getChannelData(channel)[index]) >= threshold) {
+            for (let channel = 0; channel < channels.length; channel += 1) {
+                if (Math.abs(channels[channel][index]) >= threshold) {
                     onset = index;
                     break scan;
                 }
@@ -945,6 +978,8 @@
         const task = fetchSampleData(config.root + concertGrandSampleFile(anchor, config) + revision)
             .then(function (data) { return context.decodeAudioData(data); })
             .then(function (buffer) {
+                decodedBufferActiveRms(buffer);
+                decodedBufferStartOffset(buffer);
                 rememberConcertGrandSample(config, anchor, buffer);
                 state.keyboardSampleLoads.delete(key);
                 return { anchor, buffer, sampleSet: config.id };
@@ -1156,23 +1191,6 @@
         oscillator.start(start); overtone.start(start); oscillator.stop(start + 2.5); overtone.stop(start + 2.5);
     }
 
-    function playImmediateStringExcitation(midi, velocity, model, when) {
-        const context = ensureAudio();
-        if (!context || !state.noiseBuffer) return;
-        const start = Math.max(context.currentTime, when || context.currentTime);
-        const source = createNoiseSource();
-        const filter = context.createBiquadFilter();
-        const gain = context.createGain();
-        filter.type = "bandpass";
-        filter.frequency.value = (model === "bass" ? 950 : 2100) + core.midiToFrequency(midi) * 2.2;
-        filter.Q.value = model === "bass" ? .72 : 1.05;
-        gain.gain.setValueAtTime(.0001, start);
-        gain.gain.exponentialRampToValueAtTime(Math.max(.008, velocity * (model === "bass" ? .052 : .044)), start + .00012);
-        gain.gain.exponentialRampToValueAtTime(.0001, start + (model === "bass" ? .016 : .012));
-        source.connect(filter).connect(gain).connect(state.masterGain);
-        source.start(start, Math.random() * Math.max(.01, state.noiseBuffer.duration - .04), .024);
-    }
-
     function stringNoteOn(midi, velocity, when) {
         const model = state.instrument === "bass" ? "bass" : "guitar";
         const sendNote = function (node) {
@@ -1181,7 +1199,6 @@
                 model, params: currentStringParams(), time: when || state.audioContext.currentTime
             });
         };
-        playImmediateStringExcitation(midi, velocity, model, when);
         if (state.stringNode) {
             sendNote(state.stringNode);
             return;
@@ -1282,23 +1299,6 @@
         noteActivity(id, velocity);
     }
 
-    function playImmediateDrumExcitation(id, velocity, when) {
-        const context = ensureAudio();
-        if (!context || !state.noiseBuffer) return;
-        const start = Math.max(context.currentTime, when || context.currentTime);
-        const source = createNoiseSource();
-        const filter = context.createBiquadFilter();
-        const gain = context.createGain();
-        const low = id === "kick" || id === "subtom" || id === "lowtom" || id === "midtom" || id === "hightom";
-        filter.type = low ? "lowpass" : "highpass";
-        filter.frequency.value = low ? (id === "kick" ? 1250 : 1900) : 2400;
-        gain.gain.setValueAtTime(.0001, start);
-        gain.gain.exponentialRampToValueAtTime(Math.max(.01, velocity * (low ? .065 : .052)), start + .0001);
-        gain.gain.exponentialRampToValueAtTime(.0001, start + (low ? .014 : .009));
-        source.connect(filter).connect(gain).connect(state.masterGain);
-        source.start(start, Math.random() * Math.max(.01, state.noiseBuffer.duration - .03), .02);
-    }
-
     function drumSampleConfig() {
         if (!state.currentModel) return null;
         return DRUM_SAMPLE_SETS[state.currentModel.id] || KOREAN_PERCUSSION_SAMPLE_SETS[state.currentModel.id] || null;
@@ -1317,6 +1317,8 @@
         const task = fetchSampleData(config.root + id + ".ogg" + sampleRevision)
             .then(function (data) { return context.decodeAudioData(data); })
             .then(function (buffer) {
+                decodedBufferPeak(buffer);
+                decodedBufferBodyRms(buffer);
                 state.drumSamples.set(key, buffer);
                 state.drumSampleLoads.delete(key);
                 return { buffer, sampleSet: config.id, id };
@@ -1387,7 +1389,7 @@
             const requestedGain = koreanPercussion
                 ? sampledVelocity * Math.pow(10, koreanPercussionTargetDb(id) / 20) / decodedBufferPeak(sample.buffer)
                 : sampledVelocity * Math.pow(10, gainDb / 20);
-            gain.gain.value = volumeOnlyGain(sample.buffer, requestedGain);
+            gain.gain.value = balancedDrumGain(sample.buffer, requestedGain, sampledVelocity, id);
             source.connect(gain);
             connectFastToMix(gain, 0);
             if (id === "openhat") {
@@ -1420,7 +1422,6 @@
             noteActivity(id, velocity);
             return;
         }
-        playImmediateDrumExcitation(id, velocity, context.currentTime);
         const resonance = Number(elements.drumResonanceSlider.value) / 100;
         const tone = Number(elements.drumToneSlider.value) / 100;
         if (state.drumNode) {
@@ -2488,6 +2489,12 @@
         elements.sustainButton.addEventListener("click", function () { if (supportsPianoSustain()) setSustain(!state.sustain, !state.sustain); });
         [elements.toneSlider, elements.muteSlider, elements.pickSlider, elements.driveSlider, elements.drumResonanceSlider, elements.drumToneSlider]
             .forEach(function (slider) { slider.addEventListener("input", syncRangeOutputs); });
+        document.addEventListener("input", function (event) {
+            const slider = event.target;
+            if (!slider.matches(".fx-strip input,.classical-controls input")) return;
+            const output = slider.parentElement.querySelector("output");
+            if (output) output.textContent = slider.value;
+        });
         elements.octaveDown.addEventListener("click", function () { changeKeyboardOctave(-1); });
         elements.whiteKeyDown.addEventListener("click", function () { moveKeyboardByWhiteKey(-1); });
         elements.whiteKeyUp.addEventListener("click", function () { moveKeyboardByWhiteKey(1); });
@@ -2512,9 +2519,6 @@
         const width = Math.max(1, Math.floor(rect.width * ratio));
         const height = Math.max(1, Math.floor(rect.height * ratio));
         if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
-        document.querySelectorAll(".fx-strip input,.classical-controls input").forEach(function (slider) {
-            slider.addEventListener("input", function () { const output = slider.parentElement.querySelector("output"); if (output) output.textContent = slider.value; });
-        });
         const context = canvas.getContext("2d");
         context.clearRect(0, 0, width, height);
         context.save();
