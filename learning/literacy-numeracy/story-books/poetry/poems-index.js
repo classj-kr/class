@@ -15,7 +15,7 @@
                 "그리움"
             ],
             "point": "짧은 일곱 줄에 장면 하나와 마음 하나가 다 들어 있어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -61,7 +61,7 @@
                 "여름"
             ],
             "point": "같은 짜임을 두 번 되풀이해서 규칙 하나를 못 박아요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -76,7 +76,7 @@
                 "가족"
             ],
             "point": "첫 줄과 마지막 줄이 똑같아서 바라는 마음이 더 또렷해져요.",
-            "questionCount": 4,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -91,7 +91,7 @@
                 "봄"
             ],
             "point": "한 낱말을 거듭하며 시작하고, 비슷한 줄을 짝지어 되풀이해요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -106,7 +106,7 @@
                 "봄"
             ],
             "point": "소식을 물건 하나에 담아 보내는 생각이 시 전체를 이끌어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -121,7 +121,7 @@
                 "여름"
             ],
             "point": "흉내내는 말이 줄마다 놓여서 소리 내어 읽으면 더 신이 나요.",
-            "questionCount": 6,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -137,7 +137,7 @@
                 "가을"
             ],
             "point": "참새 소리가 그대로 참새가 쓰는 글자가 되는 재미난 생각이에요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -168,7 +168,7 @@
                 "여름"
             ],
             "point": "처음과 끝을 똑같은 묶음으로 감싸서 노래처럼 들려요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -199,7 +199,7 @@
                 "가족"
             ],
             "point": "달을 부르는 것으로 시작해 바라는 일을 차례차례 늘어놓아요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -215,7 +215,7 @@
                 "놀이"
             ],
             "point": "세 줄뿐인데도 부름과 주고받기가 다 들어 있어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -230,7 +230,7 @@
                 "놀이"
             ],
             "point": "묻고 답하기를 번갈아 하면서 거리가 점점 가까워져요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -245,7 +245,7 @@
                 "자연"
             ],
             "point": "물음으로 시작해 물음으로 다시 시작해요. 보이지 않는 것을 어떻게 아는지 함께 생각하게 해요.",
-            "questionCount": 4,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -260,7 +260,7 @@
                 "놀이"
             ],
             "point": "'~처럼', '~닮았고' 같은 말로 그림자를 눈에 보이게 그려요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -275,7 +275,7 @@
                 "자연"
             ],
             "point": "가까운 곳에서 먼 곳으로 눈길을 옮기며 내리는 비를 그려요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -290,7 +290,7 @@
                 "놀이"
             ],
             "point": "몸이 오르내리는 느낌과 눈에 들어오는 풍경을 함께 그려요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -337,7 +337,7 @@
                 "가족"
             ],
             "point": "바람은 애기가 되고 해님은 아저씨가 돼요. 온 봄이 한 식구처럼 늘어앉아요.",
-            "questionCount": 6,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -353,7 +353,7 @@
                 "가족"
             ],
             "point": "조개껍데기가 짝을 그리워하고, 말하는 이도 바다를 그리워해요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -400,7 +400,7 @@
                 "놀이"
             ],
             "point": "두 번 다 속고 두 번 다 헛걸음이에요. 같은 짜임을 겹쳐서 웃음을 만들어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -416,7 +416,7 @@
                 "가족"
             ],
             "point": "누이가 한 말을 그대로 옮겨 놓고, 그 곁에서 누이를 바라보는 사람이 말해요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -432,7 +432,7 @@
                 "그리움"
             ],
             "point": "고개를 들었다 숙이는 두 몸짓만으로 그리움을 다 말해요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -448,7 +448,7 @@
                 "자연"
             ],
             "point": "비를 눈치 빠른 손님처럼 그렸어요. 소리 없이 든다는 말이 밤을 조용하게 만들어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -463,7 +463,7 @@
                 "기다림"
             ],
             "point": "'~같이'를 쓰지 않고 '나는 나룻배'라고 곧장 말해요. 빗댄 말을 감추면 힘이 세져요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -479,7 +479,7 @@
                 "그리움"
             ],
             "point": "줄을 나누지 않고 이어 쓴 시예요. 하늘빛이 눈썹에 들고 손금이 강물이 돼요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -539,7 +539,7 @@
                 "자연"
             ],
             "point": "첫 묶음은 '피네', 마지막 묶음은 '지네'예요. 한 글자만 바꾸어 처음과 끝을 맞세웠어요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -555,7 +555,7 @@
                 "봄"
             ],
             "point": "물음으로 시작해서 물음으로 끝나요. 그 사이에 지난 약속이 떠올라요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -570,7 +570,7 @@
                 "다짐"
             ],
             "point": "처음과 끝이 똑같은 두 줄이에요. 같은 길인데 가운데에서 날마다 다른 일이 벌어져요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -585,7 +585,7 @@
                 "자연"
             ],
             "point": "세 수를 이어 놓았어요. 수마다 세 줄이고, 마지막 줄은 '두어라·아마도'처럼 감탄으로 시작해요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -615,7 +615,7 @@
                 "가을"
             ],
             "point": "가을에 저절로 갖추어진 것들을 늘어놓다가, 마지막 줄에서 술까지 익었다며 웃어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -646,7 +646,7 @@
                 "봄"
             ],
             "point": "곱게 보내 드리겠다는 말과 꽃까지 뿌리겠다는 말이, 실은 가지 말라는 말이에요.",
-            "questionCount": 6,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -693,7 +693,7 @@
                 "사랑"
             ],
             "point": "복종이 자유보다 달콤하다는 말은 앞뒤가 안 맞아요. 그런데 읽고 나면 뜻이 통해요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -740,7 +740,7 @@
                 "기다림"
             ],
             "point": "푸른 것들 사이에 흰 돛단배·은쟁반·하얀 모시 수건이 놓여요. 손님은 끝까지 오지 않아요.",
-            "questionCount": 6,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -846,7 +846,7 @@
                 "옛이야기"
             ],
             "point": "부르고, 시키고, 안 하면 어쩌겠다고 으릅니다. 네 줄 안에 세 걸음이 다 들어 있어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -878,7 +878,7 @@
                 "밤과 달"
             ],
             "point": "울부짖는 말이 하나도 없어요. 유리를 닦는 손과 별 하나로 아이 잃은 마음을 눌러 놓았어요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -926,7 +926,7 @@
                 "시대"
             ],
             "point": "봄 들판은 살아 움직이며 반기는데, 첫 줄과 마지막 줄이 그 봄을 남의 땅에 가둬요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -942,7 +942,7 @@
                 "이별"
             ],
             "point": "신라 때 향가를 오늘 말로 옮겼어요. 죽은 누이를 한 가지에서 난 잎에 견주었어요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -957,7 +957,7 @@
                 "옛이야기"
             ],
             "point": "아이들에게 부르게 해서 소문을 퍼뜨린 노래예요. 노래가 이야기를 움직였어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -972,7 +972,7 @@
                 "옛이야기"
             ],
             "point": "아무도 오르지 못하는 바위의 꽃을 노인이 꺾어 바치며 부른 노래예요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -1036,7 +1036,7 @@
                 "사랑"
             ],
             "point": "님은 갔는데 보내지 않았다고 해요. 슬픔의 힘을 희망 쪽으로 옮겨 붓는 시예요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1068,7 +1068,7 @@
                 "시대"
             ],
             "point": "비 한 방울 없는 땅, 얼어붙은 땅, 바다 한복판. 꽃이 필 수 없는 곳마다 꽃을 놓았어요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1084,7 +1084,7 @@
                 "기다림"
             ],
             "point": "피는 날은 며칠, 기다리는 날은 삼백예순 날. 그래서 봄이 찬란하면서 슬퍼요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1148,7 +1148,7 @@
                 "배움"
             ],
             "point": "열두 수 가운데 세 수예요. 자연을 벗 삼는 마음에서 배움을 그치지 않겠다는 다짐으로 나아가요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1178,7 +1178,7 @@
                 "사랑"
             ],
             "point": "구운 밤에서 싹이 나야 헤어지겠대요. 될 수 없는 조건을 걸어 절대로 헤어지지 않겠다고 말해요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1194,7 +1194,7 @@
                 "시대"
             ],
             "point": "하늘이 열리던 날부터 천고 뒤까지, 시간을 크게 펼쳐 놓고 지금 여기에 씨를 뿌려요.",
-            "questionCount": 6,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1209,7 +1209,7 @@
                 "다짐"
             ],
             "point": "꽃도 피우지 말라, 거꾸러져도 흔들리지 말라. 한 그루 나무에 굽히지 않는 뜻을 세웠어요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1240,7 +1240,7 @@
                 "다짐"
             ],
             "point": "높은 첨탑 밑에서 서성이다가, 허락된다면 조용히 자기를 바치겠다고 해요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1256,7 +1256,7 @@
                 "시대"
             ],
             "point": "남의 나라 방에서 시가 쉽게 써지는 것을 부끄러워하다가, 끝에서 나와 내가 손을 잡아요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1272,7 +1272,7 @@
                 "그리움"
             ],
             "point": "「진달래꽃」이 눌러 참는 시라면 이 시는 목놓아 부르는 시예요. 느낌표가 시를 이끌어요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1288,7 +1288,7 @@
                 "고향"
             ],
             "point": "육천 리, 삼천 리, 사오천 리. 숫자를 늘였다 줄였다 하며 갈 수 없는 거리를 재요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1303,7 +1303,7 @@
                 "나"
             ],
             "point": "띄어쓰기를 없애 읽는 사람을 멈춰 세워요. 거울 속 나와 악수도 못 하는 갈라진 나를 그렸어요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1319,7 +1319,7 @@
                 "그리움"
             ],
             "point": "산꿩도 뻐꾸기도 꽃도 그대로인데 고향이 아니래요. 변한 것은 고향이 아니라 나예요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1335,7 +1335,7 @@
                 "그리움"
             ],
             "point": "이름은 잊었는데 눈동자와 입술은 남았어요. 노래 가사가 된 시라 처음과 끝이 후렴처럼 돌아와요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1350,7 +1350,7 @@
                 "시대"
             ],
             "point": "푸른 물결과 붉은 마음을 묶음마다 되풀이해요. 빛깔 둘로 한 사람의 뜻을 새겼어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1365,7 +1365,7 @@
                 "이별"
             ],
             "point": "고려 때 한시를 오늘 말로 옮겼어요. 이별 눈물이 강물을 보탠다는 과장이 천 년을 살아남았어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -1397,7 +1397,7 @@
                 "자연"
             ],
             "point": "봄 노래 마흔 수 가운데 앞 두 수예요. 배 떠라, 닻 들어라 하는 후렴이 수마다 바뀌며 하루를 이끌어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1413,7 +1413,7 @@
                 "자연"
             ],
             "point": "가사의 첫머리예요. 임금의 명을 받고 길을 떠나 지나는 곳을 하나하나 적어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1429,7 +1429,7 @@
                 "가을"
             ],
             "point": "비가 온다는 말이 한 번도 없어요. 바람, 산새 걸음, 흰 물살, 빗방울로 비 오는 산을 그려요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1444,7 +1444,7 @@
                 "겨울"
             ],
             "point": "차를 마시는 늙은 주인, 붉은 불, 파릇한 무 순. 바깥은 눈보라인데 방 안은 고요히 따뜻해요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1460,7 +1460,7 @@
                 "자연"
             ],
             "point": "줄을 나누지 않은 산문시예요. 나무 베는 소리조차 없는 고요 속에서 견디겠다고 해요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1476,7 +1476,7 @@
                 "시대"
             ],
             "point": "봄을 노래하던 시인이 독을 찼어요. 허무하다는 벗의 말에 맞서 마음을 지키겠다고 해요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1491,7 +1491,7 @@
                 "소리"
             ],
             "point": "소리꾼과 고수가 숨결을 맞추는 자리를 노래해요. 북은 소리를 떠나면 가죽일 뿐이래요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1507,7 +1507,7 @@
                 "밤과 달"
             ],
             "point": "수만 집의 불빛이어야 할 고향이 무덤 위 이끼예요. 같은 두 줄이 앞뒤를 감싸요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1539,7 +1539,7 @@
                 "옛이야기"
             ],
             "point": "토끼전의 토끼와 프로메테우스를 한자리에 놓았어요. 간은 지켜야 할 양심이에요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1570,7 +1570,7 @@
                 "그리움"
             ],
             "point": "달, 물가, 잣나무에 기파랑의 높은 인격을 실어 기려요. 열 줄 향가의 아홉째 줄은 '아아'로 시작해요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1585,7 +1585,7 @@
                 "나라"
             ],
             "point": "나라를 한 집안에 견주었어요. 임금이 지어 달라 해서 지은 노래라 가르치는 말투예요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1600,7 +1600,7 @@
                 "나라"
             ],
             "point": "훈민정음으로 지은 첫 노래예요. 첫째 장과 둘째 장을 오늘 말로 옮겼어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1695,7 +1695,7 @@
                 "나라"
             ],
             "point": "금강산 봉우리를 충신에, 파도를 고래에 빗대다가, 꿈에서 술을 백성과 먼저 나누겠다고 해요.",
-            "questionCount": 7,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1711,7 +1711,7 @@
                 "나라"
             ],
             "point": "두 여인이 주고받는 말로 짜여 있어요. 묻는 이가 셋째 줄까지, 답하는 이가 긴 사연을, 끝에서 묻는 이가 한 줄 보태요.",
-            "questionCount": 7,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1727,7 +1727,7 @@
                 "여인"
             ],
             "point": "여인이 여인의 목소리로 쓴 가사예요. 앞부분과 끝부분을 실었어요. 견우직녀도 일 년에 한 번은 만나는데 나는 소식조차 없대요.",
-            "questionCount": 6,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1759,7 +1759,7 @@
                 "바다"
             ],
             "point": "임진왜란을 겪은 무인이 다시 수군으로 나가 배 위에서 지은 가사의 첫머리예요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1791,7 +1791,7 @@
                 "배움"
             ],
             "point": "서시와 첫 굽이, 아홉째 굽이예요. 굽이마다 한 수씩, 자연을 즐기며 학문을 본받겠다고 해요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1807,7 +1807,7 @@
                 "나라"
             ],
             "point": "여섯 수 가운데 세 수예요. 산에 사는 즐거움을 노래하다가 그것도 임금 은혜라고 매듭지어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1823,7 +1823,7 @@
                 "가족"
             ],
             "point": "젊어서 귀양 가 지은 다섯 수 가운데 셋이에요. 임금을 향한 마음과 어버이 그리움이 나란히 있어요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1839,7 +1839,7 @@
                 "자연"
             ],
             "point": "여덟 수 가운데 두 수예요. 눈 속에 핀 매화를 믿음직한 벗처럼 대해요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1871,7 +1871,7 @@
                 "밤과 달"
             ],
             "point": "여섯 묶음 가운데 앞 둘이에요. 얼어 죽어도 좋으니 밤이 더디 새라는 말이 사랑의 세기를 보여 줘요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1887,7 +1887,7 @@
                 "그리움"
             ],
             "point": "귀양 간 신하가 임금께 결백을 호소하는 노래예요. 향가처럼 열 줄 남짓에 '아으'가 들어가요.",
-            "questionCount": 3,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1903,7 +1903,7 @@
                 "시대"
             ],
             "point": "참새는 백성의 곡식을 빼앗는 벼슬아치예요. 새 한 마리에 세상 원망을 실었어요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -1919,7 +1919,7 @@
                 "자연"
             ],
             "point": "텅 빈 성과 천 년 구름, 사라진 영웅과 그대로인 산과 강. 사람의 일과 자연을 맞세웠어요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1935,7 +1935,7 @@
                 "나라"
             ],
             "point": "나라가 망하던 1910년, 선비가 마지막으로 남긴 넉 줄이에요. 네 수 가운데 셋째 수예요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1951,7 +1951,7 @@
                 "시대"
             ],
             "point": "귀양살이하며 본 농촌의 세금 수탈을 넉 줄에 담았어요. 「사리화」의 참새가 여기서는 황두예요.",
-            "questionCount": 2,
+            "questionCount": 3,
             "hasModern": false
         },
         {
@@ -1967,7 +1967,7 @@
                 "가족"
             ],
             "point": "사촌 동생이 묻고 형님이 답하는 노래예요. 식구를 새에 견주고, 고운 것이 거친 것으로 바뀐 것을 늘어놓아요.",
-            "questionCount": 5,
+            "questionCount": 4,
             "hasModern": false
         },
         {
@@ -1983,7 +1983,7 @@
                 "자연"
             ],
             "point": "서울 사람들이 부르던 긴 노래의 첫머리예요. 한자말과 우리말이 섞인 채 봄 산을 늘어놓아요.",
-            "questionCount": 2,
+            "questionCount": 4,
             "hasModern": false
         },
         {
