@@ -193,13 +193,13 @@ const CHAPTERS = [
                 "art": "06-caught-2.webp",
                 "emoji": "😨",
                 "left": [
-                    "마녀는 그 자리에서 가위를 꺼냈습니다. 라푼젤의 머리카락을 싹둑 잘랐지요. 금빛 머리카락이 바닥에 쌓였습니다.",
+                    "마녀는 그 자리에서 가위를 꺼내 라푼젤의 머리카락을 싹둑 잘랐습니다. 그러고는 그것을 창가 고리에 단단히 매고, 그 줄을 타고 라푼젤을 데리고 내려갔지요.",
                     "라푼젤은 목소리가 나오지 않았습니다. 그저 두 손을 꼭 쥐고 서 있었지요. 마녀는 라푼젤을 먼 들판으로 데려갔습니다."
                 ],
                 "right": [
                     "나무 한 그루 없는 벌판이었지요. 바람만 휑하니 지나갔습니다.",
                     "마녀는 라푼젤을 두고 돌아서며 말했지요. \"여기서 혼자 지내거라.\"",
-                    "마녀는 탑으로 돌아와 잘린 머리카락을 창가 고리에 단단히 매어 두었습니다. 그리고 저녁이 오기를 기다렸지요. \"어디 한번 와 보아라.\""
+                    "마녀는 라푼젤을 들판에 두고 혼자 탑으로 돌아와, 매어 둔 머리카락을 타고 올라가 저녁이 오기를 기다렸지요. \"어디 한번 와 보아라.\""
                 ]
             }
         ]
@@ -774,14 +774,14 @@ const EN = {
                     emoji: '✂️',
                     left: [
                         "The witch took out her scissors on the spot and cut off Rapunzel's hair. Snip, snip!",
-                        "The golden hair heaped up on the floor.",
+                        "She tied the hair firmly to the peg by the window and climbed down it, taking Rapunzel with her.",
                         "Rapunzel could not make a sound. She only stood there with both hands clenched.",
                         "Then the witch took her far away to a wide, empty plain."
                     ],
                     right: [
                         "It was a plain without one tree on it. Only the wind blew across it.",
                         "As she turned to go, the witch said, \"You will live here alone.\"",
-                        "She went back to the tower and fastened the cut hair firmly to the peg by the window.",
+                        "She left Rapunzel on the plain, went back to the tower alone, and climbed up by the hair she had tied there.",
                         "Then she waited for evening. \"Let him come, then,\" she said."
                     ]
                 }
@@ -1004,10 +1004,10 @@ const EN = {
         ],
         '06-caught-2.webp': [
             { word: 'on the spot', meaning: '그 자리에서', sentence: 'The witch took out her scissors on the spot.' },
-            { word: 'heap up', meaning: '쌓이다', sentence: 'The golden hair heaped up on the floor.' },
+            { word: 'climb down', meaning: '타고 내려가다', sentence: 'She climbed down it, taking Rapunzel with her.' },
             { word: 'clench', meaning: '꼭 쥐다', sentence: 'She only stood there with both hands clenched.' },
             { word: 'plain', meaning: '벌판', sentence: 'It was a plain without one tree on it.' },
-            { word: 'fasten', meaning: '단단히 매다', sentence: 'Fastened the cut hair firmly to the peg by the window.' }
+            { word: 'climb up', meaning: '타고 올라가다', sentence: 'She climbed up by the hair she had tied there.' }
         ],
         '07-empty.webp': [
             { word: 'as he always did', meaning: '여느 때처럼', sentence: 'The prince came to the tower as he always did.' },
@@ -1114,7 +1114,7 @@ const WORDS_KO = {
         { w: "얼굴이 굳다", k: "놀라거나 화가 나서 표정이 딱딱해지다.", s: "마녀의 얼굴이 굳었습니다." }
     ],
     "06-caught-2.webp": [
-        { w: "싹둑", k: "한 번에 잘라 내는 소리나 모습.", s: "라푼젤의 머리카락을 싹둑 잘랐지요." },
+        { w: "싹둑", k: "한 번에 잘라 내는 소리나 모습.", s: "마녀는 그 자리에서 가위를 꺼내 라푼젤의 머리카락을 싹둑 잘랐습니다." },
         { w: "그루", k: "나무를 세는 말.", s: "나무 한 그루 없는 벌판이었지요." },
         { w: "휑하니", k: "텅 비어 쓸쓸하게.", s: "바람만 휑하니 지나갔습니다." }
     ],

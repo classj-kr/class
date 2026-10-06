@@ -30,7 +30,7 @@ const CHAPTERS = [
                     "\"아버지, 저는 그런 재주가 없어요.\"",
                     "\"어쩌겠느냐. 임금님 말씀인데.\"",
                     "이튿날 아침 딸은 성으로 끌려갔지요. 성문이 등 뒤에서 쿵 하고 닫혔습니다.",
-                    "딸은 무섭고 막막하기만 했습니다. 아버지가 왜 그런 말을 했는지 도무지 짐작이 가지 않았지요."
+                    "딸은 무섭고 막막하기만 했습니다. 아버지의 허풍이 이렇게 큰일이 될 줄은 몰랐지요."
                 ]
             }
         ]
@@ -247,8 +247,7 @@ const CHAPTERS = [
                 "art": "08-ending.webp",
                 "emoji": "🔥",
                 "left": [
-                    "\"깊은 숲속을 지나는 길이었습니다. 산 밑 오두막 앞에 불이 피워져 있었지요. 그 앞에서 아주 작은 남자가 한 발로 껑충껑충 뛰며 노래를 부르는데요.\"",
-                    "\"오늘은 빵을 굽고 내일은 죽을 쑤고! 이제 곧 왕비의 아이를 받는다! 내 이름이 룸펠슈틸츠헨인 줄 아무도 모르지!\""
+                    "\"깊은 숲속을 지나는 길이었습니다. 산 밑 오두막 앞에 불이 피워져 있었지요. 그 앞에서 작은 남자가 한 발로 껑충껑충 뛰며 노래를 부르는데요. '오늘은 빵을 굽고 내일은 죽을 쑤고! 이제 곧 왕비의 아이를 받는다! 내 이름이 룸펠슈틸츠헨인 줄 아무도 모르지!'\""
                 ],
                 "right": [
                     "왕비는 심부름꾼에게 큰 상을 내렸습니다. 그러고는 그 이름을 몇 번이나 소리 내어 외워 보았지요.",
@@ -594,7 +593,7 @@ const EN = {
                         "\"Father, I have no such gift!\"",
                         "\"What can I do?\" said her father. \"The king has spoken.\"",
                         "Next morning the girl was taken to the castle, and the gate shut behind her with a thud.",
-                        "She was frightened and could see no way out. Why had her father said such a thing?"
+                        "She was frightened and could see no way out. She had never dreamed her father's boasting would come to this."
                     ]
                 }
             ]
@@ -1048,7 +1047,7 @@ const WORDS_KO = {
         { w: "질리다", k: "놀라서 낯빛이 하얗게 변하다.", s: "딸은 얼굴이 하얗게 질렸습니다." },
         { w: "성문", k: "성으로 드나드는 큰 문.", s: "성문이 등 뒤에서 쿵 하고 닫혔습니다." },
         { w: "막막하다", k: "어찌해야 할지 몰라 앞이 캄캄하다.", s: "딸은 무섭고 막막하기만 했습니다." },
-        { w: "짐작이 가다", k: "그러려니 하고 헤아려지다.", s: "아버지가 왜 그런 말을 했는지 도무지 짐작이 가지 않았지요." }
+        { w: "허풍", k: "실제보다 크게 부풀려서 떠벌리는 말.", s: "아버지의 허풍이 이렇게 큰일이 될 줄은 몰랐지요." }
     ],
     "02-straw.webp": [
         { w: "지경", k: "거의 그렇게 될 정도.", s: "천장까지 닿을 지경이었습니다." },

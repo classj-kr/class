@@ -154,7 +154,7 @@ const CHAPTERS = [
                 "art": "05-meat-2.webp",
                 "emoji": "🦅",
                 "left": [
-                    "신드바드는 자루에 보석을 가득 담았습니다. 허리에 단단히 묶었지요. 그러고는 제일 큰 고깃덩이 밑으로 들어갔습니다.",
+                    "신드바드는 겉옷을 벗어 보석을 가득 싸서 허리에 단단히 묶었지요. 그러고는 제일 큰 고깃덩이 밑으로 들어갔습니다.",
                     "터번을 풀어 제 몸을 고기에 붙들어 맸습니다. 그리고 숨을 죽이고 기다렸지요.",
                     "이윽고 큰 날갯짓 소리가 들렸습니다."
                 ],
@@ -180,7 +180,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "신드바드는 그동안 있었던 일을 이야기했습니다. 상인들은 서로 얼굴만 마주 봤지요.",
-                    "신드바드가 자루에서 보석을 꺼내 나누어 주었습니다. \"제가 매달리는 바람에 고기에 보석이 못 붙었지요. 이걸 받으세요.\"",
+                    "신드바드가 겉옷을 풀어 보석을 꺼내 나누어 주었습니다. \"제가 매달리는 바람에 고기에 보석이 못 붙었지요. 이걸 받으세요.\"",
                     "상인들은 기뻐하며 그를 배까지 데려다주었습니다. 덕분에 신드바드는 무사히 집으로 향할 수 있었지요."
                 ]
             },
@@ -766,8 +766,8 @@ const EN = {
                     art: '05-meat-2.webp',
                     emoji: '🦅',
                     left: [
-                        "Sindbad filled a bag with jewels",
-                        "and tied it firmly at his waist.",
+                        "Sindbad took off his coat, wrapped a heap of jewels in it",
+                        "and tied the bundle firmly at his waist.",
                         "Then he got underneath the largest piece of meat,",
                         "unwound his turban and lashed himself to it.",
                         "And he held his breath and waited.",

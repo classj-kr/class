@@ -95,7 +95,7 @@ const CHAPTERS = [
                 "right": [
                     "그사이 공주는 무럭무럭 자랐지요. 요정들이 준 선물 그대로였습니다.",
                     "곱고, 다정하고, 노래를 잘했지요. 누구나 공주를 좋아했습니다.",
-                    "그렇게 열다섯 해가 흘렀지요. 그래도 아무도 그날을 잊지 않았습니다."
+                    "그렇게 열다섯 해가 흘렀지요. 물레를 다 없앴으니 이제 괜찮다고 다들 마음을 놓았습니다."
                 ]
             }
         ]
@@ -122,10 +122,10 @@ const CHAPTERS = [
                 "art": "04-spindle-2.webp",
                 "emoji": "🧵",
                 "left": [
-                    "방 안에 할머니가 앉아 있었습니다. 무언가를 빙글빙글 돌리고 있었지요.",
+                    "방 안에 할머니가 앉아 있었습니다. 성 안의 누구도 본 적 없는 낯선 할머니였지요. 무언가를 빙글빙글 돌리고 있었습니다.",
                     "\"할머니, 그게 뭐예요?\"",
                     "\"물레란다. 실을 뽑는 기계지.\"",
-                    "나라 안의 물레를 다 태웠으니, 공주는 난생처음 보는 물건이었지요. 실이 손끝에서 술술 뽑혀 나왔습니다."
+                    "나라 안의 물레를 다 태웠으니, 공주는 난생처음 보는 물건이었지요. 실이 술술 뽑혀 나왔습니다."
                 ],
                 "right": [
                     "\"저도 해 봐도 될까요?\"",
@@ -640,7 +640,7 @@ const EN = {
                         "All that while the princess was growing up, exactly as the fairies had promised.",
                         "She was lovely, she was kind, and she sang beautifully. Everybody adored her.",
                         "So fifteen years went by.",
-                        "And still nobody had forgotten that day."
+                        "Every spinning wheel was gone, so everyone felt safe at last."
                     ]
                 }
             ]
@@ -668,7 +668,7 @@ const EN = {
                     art: '04-spindle-2.webp',
                     emoji: '🧵',
                     left: [
-                        "An old woman was sitting in the room, turning something round and round.",
+                        "An old woman was sitting in the room, turning something round and round. Nobody in the castle had ever seen her before.",
                         "\"What is that, grandmother?\" asked the princess.",
                         "\"A spinning wheel, my dear. It spins the thread.\"",
                         "The wheels had all been burnt, so she had never seen one. The thread came running out from under her fingers."

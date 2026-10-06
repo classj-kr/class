@@ -216,8 +216,8 @@ const CHAPTERS = [
                 "art": "07-mine.webp",
                 "emoji": "⛏️",
                 "left": [
-                    "가을이 되자 레미는 다시 길을 떠났습니다. 제 힘으로 살아 보고 싶었거든요.",
-                    "한참을 걸어 광산 마을에 닿았지요. 굴뚝에서 검은 연기가 올랐습니다. 레미는 거기서 일자리를 얻었지요.",
+                    "가을에 레미는 다시 길을 떠났습니다. 제 힘으로 살아 보고 싶었거든요.",
+                    "광산 마을에 닿았지요. 굴뚝에서 검은 연기가 올랐습니다. 레미는 거기서 일자리를 얻었지요. 카피는 땅 위에서 기다렸지요.",
                     "갱도는 땅속 깊이 뻗어 있었습니다. 등불 하나에 의지해 내려갔지요."
                 ],
                 "right": [
@@ -256,9 +256,9 @@ const CHAPTERS = [
                     "레미는 그 마을에서 한동안 지냈지요. 얼굴에 묻은 검댕을 씻어 내는 데만 한참이 걸렸습니다."
                 ],
                 "right": [
-                    "갱도에서 살아 나온 아이 이야기는 멀리까지 퍼졌지요. 며칠 뒤 마차 한 대가 광산 마을에 섰습니다. 신사 두 사람이 서류를 들고 내려 레미를 찾았지요.",
-                    "\"네 어머니가 너를 오래 찾고 계셨단다. 강 위의 배에서 만난 그 부인이 바로 네 어머니시다.\"",
-                    "배에 누워 있던 아픈 아이는 레미의 동생이었습니다. 레미는 한참 동안 믿기지가 않았지요."
+                    "그 이야기는 멀리까지 퍼졌지요. 며칠 뒤 신사 두 사람이 마차에서 내려 레미를 찾았습니다.",
+                    "\"배에서 만난 그 부인이 네 소식을 듣고 우리를 보내셨단다. 네가 길에서 발견된 날이 그 댁 큰아이를 잃은 날과 꼭 같더구나. 그 부인이 바로 네 어머니시다.\"",
+                    "배에 누워 있던 아픈 아이는 레미의 동생이었지요. 레미는 믿기지가 않았습니다."
                 ]
             },
             {
@@ -819,7 +819,7 @@ const EN = {
                     left: [
                         "When autumn came, Rémi took to the road again. He wanted to make his own way.",
                         "He came to a mining town where black smoke rose from the chimneys.",
-                        "Rémi got work there.",
+                        "Rémi got work there. Capi waited for him above ground.",
                         "The gallery ran deep under the ground. They went down by the light of one lamp."
                     ],
                     right: [
@@ -865,7 +865,7 @@ const EN = {
                     right: [
                         "The story of the boy saved from the mine spread far.",
                         "A few days later a carriage stopped in the mining town. Two gentlemen got out with papers and asked for Rémi.",
-                        "\"Your mother has been looking for you for years. The lady on the river boat is your mother.\"",
+                        "\"The lady you met on the river boat heard about you and sent us. The day you were found by the road is the very day her eldest boy was lost. She is your mother.\"",
                         "The sick boy on the boat was Rémi's little brother.",
                         "He could hardly believe it."
                     ]
@@ -1161,8 +1161,8 @@ const WORDS_KO = {
     "08-ending.webp": [
         { w: "눈부시다", k: "빛이 세어 눈을 뜨기 어렵다.", s: "햇빛이 눈부셔 앞이 보이지 않았습니다." },
         { w: "한동안", k: "꽤 오랜 사이.", s: "레미는 그 마을에서 한동안 지냈지요." },
-        { w: "믿기지 않다", k: "사실 같지 않아 믿어지지 않다.", s: "배에 누워 있던 아픈 아이는 레미의 동생이었습니다. 레미는 한참 동안 믿기지가 않았지요." },
-        { w: "신사", k: "옷차림과 몸가짐이 점잖은 남자 어른.", s: "며칠 뒤 마차 한 대가 광산 마을에 섰습니다. 신사 두 사람이 서류를 들고 내려 레미를 찾았지요." }
+        { w: "믿기지 않다", k: "사실 같지 않아 믿어지지 않다.", s: "배에 누워 있던 아픈 아이는 레미의 동생이었지요. 레미는 믿기지가 않았습니다." },
+        { w: "신사", k: "옷차림과 몸가짐이 점잖은 남자 어른.", s: "며칠 뒤 신사 두 사람이 마차에서 내려 레미를 찾았습니다." }
     ],
     "08-ending-2.webp": [
         { w: "챙기다", k: "잊지 않고 갖추어 가지다.", s: "아주머니는 구리 냄비도 챙겨 왔습니다." },
