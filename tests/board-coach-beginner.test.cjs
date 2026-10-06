@@ -30,7 +30,7 @@ test('beginner Omok sometimes sees a four, sometimes leaves a genuine winning op
       if(answer.index===109)defended++;else {assert.equal(R.play(next,109).winner,3-color);missed++;}
     }
     assert.ok(defended>0&&missed>=8,`defended=${defended}, missed=${missed}`);
-    for(const level of ['intermediate','advanced'])assert.equal(A.choose(s,level).index,109);
+    for(const level of ['level2','intermediate','level4','advanced'])assert.equal(A.choose(s,level).index,109);
     assert.equal(A.chooseHint(s,{nodes:100,ms:10000}).index,109,'hints do not inherit opponent mistakes');
   }
 });

@@ -20,7 +20,7 @@
   BoardCoachUI.mountOpponent();
   if(game==='reversi')document.querySelector('.controls').insertAdjacentHTML('afterend','<section class="panel" aria-label="최근 뒤집기"><p id="lastFlip" class="move-result" aria-live="polite">돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.</p></section>');
   $("principle").textContent = principle;
-  $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>초급도 기본 공격·방어를 확인합니다. 수준이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
+  $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>레벨 1은 처음 배우는 연습 상대입니다. 레벨이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
   function stopWork() {
     if (busy && retryKind === "hint") setReason("힌트 계산 취소", "계산을 멈췄어요", "힌트를 누르면 다시 계산합니다.");
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
@@ -48,10 +48,10 @@
     const opponent=started&&!reviewPosition&&!state.ended?moves.at(-1)?.opponent:null;
     BoardCoachUI.showOpponent(opponent,$('board'),state.size);
     if(game==='reversi')$('lastFlip').textContent=current.flipped?.length?`${current.board[current.last]===human?'내가':'AI가'} ${R.coord(current.last,8)}에 두어 ${current.flipped.length}개를 뒤집었어요.\n금색 테두리: 방금 뒤집힌 돌`:'돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.';
-    $("levelLabel").textContent = `${AI.LEVELS[level].name} AI`;
+    $("levelLabel").textContent = AI.LEVELS[level].name;
     $("colorLabel").textContent = `내 돌: ${human === 1 ? "검은색" : "흰색"}`;
     const passed = state.passed ? `${state.passed === human ? "내가" : "AI가"} 둘 곳이 없어 차례를 넘겼어요. ` : "";
-    $("turn").textContent = reviewPosition ? `${moves.indexOf(reviewPosition) + 1}수 두기 전 · 복기` : !started ? "AI 수준을 골라 시작하세요." : state.ended ? (state.winner ? state.winner === human ? "내가 이겼어요!" : "AI가 이겼어요." : "무승부예요.") : busy && retryKind === "move" ? "AI가 생각하고 있어요…" : passed + (state.color === human ? "내 차례" : "AI 차례");
+    $("turn").textContent = reviewPosition ? `${moves.indexOf(reviewPosition) + 1}수 두기 전 · 복기` : !started ? "AI 레벨을 골라 시작하세요." : state.ended ? (state.winner ? state.winner === human ? "내가 이겼어요!" : "AI가 이겼어요." : "무승부예요.") : busy && retryKind === "move" ? "AI가 생각하고 있어요…" : passed + (state.color === human ? "내 차례" : "AI 차례");
     $("score").textContent = game === "reversi" ? `흑 ${current.board.filter(v => v === 1).length} : 백 ${current.board.filter(v => v === 2).length}` : `${reviewPosition ? moves.indexOf(reviewPosition) : state.count}수`;
     $("undo").disabled = !moves.some(m => m.color === human) || !!reviewPosition;
     $("hint").disabled = !started || busy || moving || state.ended || state.color !== human || !!reviewPosition;
@@ -78,7 +78,7 @@
     render();
     if (kind === "hint") setReason("힌트를 생각하고 있어요", "잠깐만 기다려 주세요", "공격할 곳과 상대의 위협을 함께 살펴보고 있어요.");
     try {
-      worker = new Worker("ai-worker.js?v=6");
+      worker = new Worker("ai-worker.js?v=7");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;
@@ -94,7 +94,7 @@
         }
       };
       worker.onerror = () => { if (id === token) failJob("계산을 다시 시도해 주세요. 수 물리기와 새 대국도 사용할 수 있어요."); };
-      timeout = setTimeout(() => { if (id === token) failJob("계산이 오래 걸리고 있어요. 다시 시도하거나 다른 수준을 골라보세요."); }, 10000);
+      timeout = setTimeout(() => { if (id === token) failJob("계산이 오래 걸리고 있어요. 다시 시도하거나 다른 레벨을 골라보세요."); }, 10000);
       worker.postMessage({ token: id, state, level, kind });
     } catch { failJob("이 브라우저에서 계산을 시작하지 못했어요. 페이지를 다시 열어 주세요."); }
   }

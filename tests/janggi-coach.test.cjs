@@ -112,7 +112,7 @@ test("mate, passes, repetition and repeated checking end with correct results",(
 test("search opponents develop, win immediately, block mate and avoid poisoned material",()=>{
   const free=fixture([["cK",4,8],["hK",4,1],["cR",0,5],["hR",0,2],["cP",4,6]]);
   const poison=fixture([["cK",4,8],["hK",3,1],["cR",0,5],["hP",0,3],["hR",0,0],["cP",4,6]]);
-  for(const level of ["intermediate","advanced"]){
+  for(const level of ["level2","intermediate","level4","advanced"]){
     const opening=AI.choose(R.initial(),level);assert.equal(opening.move.piece,"cH");assert.ok(!opening.move.kind);
     const winner=AI.choose(fixture(matePieces),level);assert.equal(R.status(R.advance(fixture(matePieces),winner.move)).reason,"mate");
     const defense=fixture([...matePieces,["hR",0,2]],"h"),answer=AI.choose(defense,level);assert.equal(AI.mateInOne(R.advance(defense,answer.move)),null);

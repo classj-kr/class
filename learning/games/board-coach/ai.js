@@ -4,9 +4,11 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (R) {
   "use strict";
   const LEVELS = Object.freeze({
-    beginner: { name: "초급", reversi: 1, omok: 1, nodes: 0, ms: 0, width: 5, practice: true },
-    intermediate: { name: "중급", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
-    advanced: { name: "상급", reversi: 6, omok: 4, nodes: 90000, ms: 1800, width: 12 }
+    beginner: { name: "레벨 1", reversi: 1, omok: 1, nodes: 0, ms: 0, width: 5, practice: true },
+    level2: { name: "레벨 2", reversi: 2, omok: 2, nodes: 6000, ms: 350, width: 7 },
+    intermediate: { name: "레벨 3", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
+    level4: { name: "레벨 4", reversi: 5, omok: 4, nodes: 45000, ms: 1200, width: 11 },
+    advanced: { name: "레벨 5", reversi: 6, omok: 4, nodes: 90000, ms: 1800, width: 12 }
   });
   const HINT = Object.freeze({ reversi:12, omok:6, nodes:400000, ms:4500, width:16, coaching:true });
   const corners = [0, 7, 56, 63], WIN = 10000000;
