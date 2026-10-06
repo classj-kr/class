@@ -55,7 +55,10 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
     const page = await browser.newPage({ viewport: { width: 1400, height: 900 } });
     const errors = []; page.on('pageerror', (e) => errors.push(e.message));
-    page.on('dialog', (d) => d.accept());
+    // 확인 창은 내용을 기록하고, 시험 단계에 따라 받아들이거나 물린다.
+    const dialogs = [];
+    let dialogAction = 'accept';
+    page.on('dialog', (d) => { dialogs.push(d.message()); if (dialogAction === 'dismiss') d.dismiss(); else d.accept(); });
 
     // ── 전교생 명단: 대기 줄은 비어 보이고, 저장할 때 성명을 비운 채로 보낸다 ──
     await page.goto(base + '/classtools/school-roster.html');
@@ -127,16 +130,39 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     assert.equal(savedStudents.length, 3, '막힌 저장은 서버로 가지 않는다');
     await page.reload();
 
-    // 붙여넣기: 성명 열이 아예 없어도 학생구글계정 열이 있으면 받고, 그 줄은 대기로 미리 보인다.
+    // 붙여넣기는 붙여넣은 반만 바꾼다. 6학년 1반 한 줄을 붙여넣어도 3학년 1반 세 명은 그대로 남아 같이 저장된다.
     await page.locator('#rosterBody tr').nth(2).waitFor();
+    await page.evaluate(() => window.togglePasteSection());
+    await page.locator('#pasteInput').fill('학년\t반\t번호\t성명\t성별\t학생구글계정\n6\t1\t1\t\t여\tks266101@kyesang.sen.es.kr');
+    await page.evaluate(() => window.parsePaste());
+    await page.locator('#pasteStatus').filter({ hasText: '1명 파싱 완료. 붙여넣은 6학년 1반만 바꾸고 다른 반 3명은 그대로 둡니다.' }).waitFor({ timeout: 5000 });
+    assert.equal(await page.locator('#rosterBody tr:not(.class-divider)').count(), 4, '기존 세 줄에 붙여넣은 한 줄이 더해진다');
+    const dialogsBefore = dialogs.length;
+    await page.evaluate(() => window.saveRoster());
+    await waitFor(page, savedStudents, 4);
+    assert.equal(dialogs.length, dialogsBefore, '아무도 빠지지 않으면 묻지 않는다');
+    assert.equal(savedStudents[3].confirmRemoval, false);
+    assert.deepEqual(savedStudents[3].students.map((s) => `${s.grade}-${s.classNumber}-${s.studentNumber}`), ['3-1-1', '3-1-2', '3-1-3', '6-1-1']);
+    await waitReloaded();
+
+    // 붙여넣기: 성명 열이 아예 없어도 학생구글계정 열이 있으면 받고, 그 줄은 대기로 미리 보인다.
+    // 3학년 1반 두 명만 붙여넣었으니 기존 3번 김철수는 빠진다고 미리 알리고, 저장할 때 이름을 보여 주며 묻는다.
     await page.evaluate(() => window.togglePasteSection());
     await page.locator('#pasteInput').fill('학년\t반\t번호\t성별\t학생구글계정\n3\t1\t1\t남\ts3101@school.test\n3\t1\t2\t여\ts3102@school.test');
     await page.evaluate(() => window.parsePaste());
     await page.locator('#pasteStatus').filter({ hasText: '2명 파싱 완료' }).waitFor({ timeout: 5000 });
+    await page.locator('#pasteStatus').filter({ hasText: '붙여넣기에 없는 기존 학생 1명(1반 3번 김철수)은 저장하면 명단에서 빠집니다' }).waitFor({ timeout: 5000 });
     assert.equal(await page.locator('#rosterBody .name-chip.pending').count(), 2, '성명 없는 줄은 대기로 보인다');
+    dialogAction = 'dismiss';
     await page.evaluate(() => window.saveRoster());
-    await waitFor(page, savedStudents, 4);
-    assert.deepEqual(savedStudents[3].students.map((s) => [s.studentNumber, s.rosterName, s.studentEmail, s.gender]),
+    await page.locator('#rosterStatus').filter({ hasText: '저장을 취소했습니다' }).waitFor({ timeout: 5000 });
+    assert.match(dialogs[dialogs.length - 1], /다음 1명이 2026년도 명단에서 빠집니다[\s\S]*3학년 1반 3번 김철수/);
+    assert.equal(savedStudents.length, 4, '물리면 서버로 가지 않는다');
+    dialogAction = 'accept';
+    await page.evaluate(() => window.saveRoster());
+    await waitFor(page, savedStudents, 5);
+    assert.equal(savedStudents[4].confirmRemoval, true, '확인하고 저장하면 그 표시가 같이 간다');
+    assert.deepEqual(savedStudents[4].students.map((s) => [s.studentNumber, s.rosterName, s.studentEmail, s.gender]),
       [['1', '', 's3101@school.test', '남'], ['2', '', 's3102@school.test', '여']]);
 
     // 붙여넣기에 같은 학생구글계정이 두 줄 있으면 미리보기 단계에서 알려 준다.

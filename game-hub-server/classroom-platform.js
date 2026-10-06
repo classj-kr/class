@@ -8004,11 +8004,23 @@ function createClassroomPlatform(options = {}) {
       // (mirrors the classroom_students roster-save assignment below). Usage
       // is tracked per grade so the whole-school save can span many grades.
       const existingResult = await client.query(
-        `SELECT grade, class_number, student_number, avatar_key
+        `SELECT grade, class_number, student_number, roster_name, avatar_key
          FROM school_students
          WHERE school_id = $1 AND academic_year = $2`,
         [schoolId, academicYear]
       );
+      // 이 저장은 보낸 목록에 없는 그 해 학생을 모두 지운다. 한 반만 붙여넣고 저장하는 실수로
+      // 나머지 반이 통째로 사라질 수 있으므로, 빠지는 학생이 있으면 화면이 이름을 보여 주고
+      // 사람이 확인한(confirmRemoval) 뒤에만 지운다. 확인 없이 오면 아무것도 바꾸지 않는다.
+      const keptKeys = new Set(clean.map((s) => `${s.grade}-${s.classNumber}-${s.studentNumber}`));
+      const removedRows = existingResult.rows.filter((row) => !keptKeys.has(`${row.grade}-${row.class_number}-${row.student_number}`));
+      if (removedRows.length > 0 && req.body?.confirmRemoval !== true) {
+        const labels = removedRows.map((row) => `${row.grade}학년 ${row.class_number}반 ${row.student_number}번 ${row.roster_name}`);
+        const error = new HttpError(409, "ROSTER_REMOVAL_NEEDS_CONFIRM",
+          `저장하면 ${removedRows.length}명이 ${academicYear}년도 명단에서 빠집니다: ${labels.slice(0, 10).join(", ")}${removedRows.length > 10 ? " 외" : ""}. 명단 화면에서 확인한 뒤 다시 저장해 주세요.`);
+        error.details = { removed: labels };
+        throw error;
+      }
       const existingAvatarByKey = new Map(
         existingResult.rows.map((row) => [`${row.grade}-${row.class_number}-${row.student_number}`, row.avatar_key || ""])
       );
