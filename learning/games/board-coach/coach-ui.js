@@ -48,7 +48,16 @@
     const lines=(note.lines||[]).map(line=>line.map(point)).filter(line=>line.length>1&&line.every(Boolean));
     if (lines.length) board.insertAdjacentHTML('beforeend',`<svg class="threat-lines" viewBox="0 0 ${columns} ${cells.length/columns}" preserveAspectRatio="none" aria-hidden="true">${lines.map(line=>`<polyline points="${line.map(p=>`${p.x},${p.y}`).join(' ')}"/>`).join('')}</svg>`);
   }
-  function ready() {
+  function ready(levels, game) {
+    let previous = null;
+    for (const input of levelOptions?.querySelectorAll('input') || []) {
+      const settings = levels[input.value], depth = settings[game] ?? settings.depth;
+      input.dataset.description = settings.practice
+        ? '지금 둘 곳을 골라요. 가끔 공격이나 막을 곳을 놓쳐요.'
+        : `${depth}수 앞까지 미리 생각해 봐요.${depth === previous?.depth ? ` ${previous.name}보다 더 많은 둘 곳을 비교해요.` : ''}`;
+      previous = settings.practice ? null : { depth, name: settings.name };
+    }
+    describeLevel();
     window.BoardCoachBoot?.ready();
   }
   const levelOptions = document.querySelector('.level-options');
@@ -57,6 +66,5 @@
     if (selected) document.getElementById('levelDescription').textContent = selected.dataset.description;
   }
   levelOptions?.addEventListener('change', describeLevel);
-  describeLevel();
   window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent, ready };
 })();

@@ -92,6 +92,7 @@ legend { font-weight: 800; margin-bottom: 8px; }
 .level-options .option input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .level-options .option:has(input:focus-visible) { outline: 3px solid #c49023; outline-offset: 3px; }
 #levelDescription { min-height: 3.3em; }
+.level-help { margin-top: 8px; font-size: 13px; }
 .color-options { grid-template-columns: 1fr 1fr; }
 @media (max-width: 1000px) and (orientation: landscape) {
   body { padding: 8px; }

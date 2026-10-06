@@ -167,5 +167,5 @@
   $("reviewList").addEventListener("click",event=>{const b=event.target.closest("[data-review]");if(!b)return;scene=history[Number(b.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();BoardCoachUI.revealExplanation();});
   $("liveBoard").addEventListener("click",()=>{scene=null;reason("대국 복기","마지막 판","중요한 장면을 눌러 다시 살펴보세요.");render();});
   window.addEventListener("pagehide",stop);window.addEventListener("pageshow",event=>{if(event.persisted){render();resume();}});
-  render();BoardCoachUI.ready();$("setup").showModal();
+  render();BoardCoachUI.ready(AI.LEVELS,"chess");$("setup").showModal();
 })();
