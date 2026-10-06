@@ -6,6 +6,7 @@ const express = require('express');
 const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
+const { readPlanDocument } = require('./plan-document');
 
 const API_ROOT = 'https://generativelanguage.googleapis.com/v1beta';
 // 429·500·502·503·504 는 구글 쪽 사정이다. 곧 풀리는 경우가 많다.
@@ -13,6 +14,8 @@ const TRANSIENT = new Set([429, 500, 502, 503, 504]);
 const MAX_PROMPT_CHARS = 60000;
 const GENERATE_LIMIT_PER_MINUTE = 120;
 const KEY_PATTERN = /^[A-Za-z0-9._-]{20,200}$/;
+const MAX_PLAN_FILE_BYTES = 20 * 1024 * 1024;
+const MAX_TOPICS = 40;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -208,6 +211,69 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     return text;
   }
 
+  // 수행평가(활동) 계획서에서 생활기록부에 쓸 "활동·특성 목록"을 뽑는다. 글로 읽은 문서는 글로,
+  // PDF·그림은 그대로 붙여 보낸다. 답은 JSON 한 덩이만 받는다.
+  function topicsPrompt(context, documentText) {
+    const areaName = { subject: '과목별 학기말 종합의견', activity: '창의적 체험활동 특기사항', behavior: '행동특성 및 종합의견' }[context.area] || '과목별 학기말 종합의견';
+    const conditions = [context.grade ? `학년: ${context.grade}학년` : '', context.subject ? `과목(영역): ${context.subject}` : '', context.semester ? `학기: ${context.semester}` : ''].filter(Boolean).join(', ');
+    return [
+      '너는 초·중·고 교사를 돕는 보조자다. 교사가 올린 수행평가(또는 활동) 계획 문서에서 생활기록부 「' + areaName + '」에 쓸 "활동·특성 목록"을 뽑아라.',
+      '한 줄에 하나씩, 학생이 무엇을 했는지가 드러나는 짧은 구(句)로 적는다. 보기: "분수의 덧셈과 뺄셈 계산하기", "직사각형과 삼각형의 넓이 구하기", "실생활 문제를 식으로 나타내고 해결하기".',
+      conditions ? '조건: ' + conditions + '. 문서에 여러 과목·학기·학년이 섞여 있으면 조건에 맞는 것만 고르고, 맞는 것이 하나도 없으면 전부 고른 뒤 note 에 그 사실을 적어라.' : '',
+      '문서에 없는 내용을 지어내지 말고, 평가 기준(상·중·하)·배점·비율·날짜는 빼라. 같은 활동이 여러 번 나오면 하나로 합쳐라. 최대 ' + MAX_TOPICS + '개.',
+      '반드시 아래 모양의 JSON 만 답하라. 다른 말은 쓰지 마라.',
+      '{"subject":"문서의 과목 또는 영역","semester":"1학기|2학기|","topics":[{"title":"활동 주제 한 줄","detail":"단원·평가 요소 같은 짧은 메모"}],"note":"알릴 것이 있으면 한 줄"}',
+      documentText ? '\n문서 내용:\n' + documentText : ''
+    ].filter(Boolean).join('\n');
+  }
+
+  function parseTopics(text) {
+    const body = String(text || '').replace(/^```(?:json)?/m, '').replace(/```\s*$/m, '');
+    const start = body.indexOf('{'), end = body.lastIndexOf('}');
+    if (start < 0 || end <= start) fail('AI_TOPICS_UNREADABLE', '문서에서 목록을 읽어 내지 못했습니다. 다른 파일로 다시 해 보세요.', 502);
+    let parsed;
+    try { parsed = JSON.parse(body.slice(start, end + 1)); } catch (_) { fail('AI_TOPICS_UNREADABLE', '문서에서 목록을 읽어 내지 못했습니다. 다른 파일로 다시 해 보세요.', 502); }
+    const clean = (value, max) => String(value || '').replace(/\s+/g, ' ').trim().slice(0, max);
+    const topics = (Array.isArray(parsed.topics) ? parsed.topics : [])
+      .map((item) => (typeof item === 'string' ? { title: item, detail: '' } : item || {}))
+      .map((item) => ({ title: clean(item.title, 120), detail: clean(item.detail, 200) }))
+      .filter((item) => item.title)
+      .slice(0, MAX_TOPICS);
+    return { subject: clean(parsed.subject, 60), semester: clean(parsed.semester, 20), topics, note: clean(parsed.note, 300) };
+  }
+
+  async function callGeminiWithParts(model, apiKey, parts) {
+    const url = API_ROOT + '/models/' + model + ':generateContent';
+    const body = { contents: [{ parts }], generationConfig: { maxOutputTokens: 4096, temperature: 0.2 } };
+    const result = await callWithRetry(url, apiKey, body);
+    if (result.data) return result.data;
+    failForStatus(result.status, result.why);
+    return null;
+  }
+
+  async function askForTopics(userId, stored, document, context) {
+    const parts = document.kind === 'text'
+      ? [{ text: topicsPrompt(context, document.text) }]
+      : [{ inline_data: { mime_type: document.mime, data: document.base64 } }, { text: topicsPrompt(context, '') }];
+    let model = await pickModel(userId, stored.apiKey, stored.model);
+    let data;
+    try {
+      data = await callGeminiWithParts(model, stored.apiKey, parts);
+    } catch (error) {
+      if (error.code !== 'AI_UPSTREAM_BUSY' && error.code !== 'AI_UPSTREAM_ERROR') throw error;
+      const other = await pickModel(userId, stored.apiKey, null, model);
+      if (other === model) throw error;
+      model = other;
+      data = await callGeminiWithParts(model, stored.apiKey, parts);
+    }
+    const text = extractText(data);
+    if (!text.trim()) {
+      const why = data?.promptFeedback?.blockReason;
+      fail('AI_EMPTY_ANSWER', why ? '답을 받지 못했습니다(' + why + ').' : '문서에서 아무것도 읽어 내지 못했습니다.', 502);
+    }
+    return { ...parseTopics(text), model };
+  }
+
   // 한 계정이 1분에 너무 많이 부르지 못하게. 구글 쪽 한도와 별개로 서버를 지키는 선이다.
   const usage = new Map();
   function countGenerate(userId) {
@@ -284,6 +350,30 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
     const text = await ask(user.id, stored, prompt);
     res.json({ text });
+  }));
+
+  // 수행평가 계획서(pdf·png/jpg·hwpx·docx·txt)를 올리면 활동 주제 목록을 돌려준다.
+  // 파일 본문은 그대로 받고(express.raw), 조건은 주소의 물음표 뒤에 온다.
+  router.post('/extract-topics', express.raw({ type: () => true, limit: MAX_PLAN_FILE_BYTES }), asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    if (!Buffer.isBuffer(req.body) || req.body.length === 0) fail('AI_FILE_REQUIRED', '올릴 파일을 고르세요.');
+    let fileName = '';
+    try { fileName = decodeURIComponent(String(req.get('x-file-name') || '')); } catch (_) { fileName = ''; }
+    const document = readPlanDocument(req.body, fileName);
+    if (document.kind === 'unsupported') fail('AI_FILE_UNSUPPORTED', document.reason, 415);
+    if (document.kind === 'text' && !document.text.trim()) fail('AI_FILE_EMPTY', '문서에 글이 없습니다. 스캔한 문서라면 PDF나 그림으로 올려 주세요.', 422);
+    const context = {
+      area: String(req.query.area || 'subject').slice(0, 20),
+      subject: String(req.query.subject || '').slice(0, 60),
+      semester: String(req.query.semester || '').slice(0, 20),
+      grade: String(req.query.grade || '').slice(0, 4)
+    };
+    countGenerate(user.id);
+    const stored = await storedKey(user.id);
+    if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
+    const result = await askForTopics(user.id, stored, document, context);
+    res.json({ subject: result.subject, semester: result.semester, topics: result.topics, note: result.note, source: document.kind === 'text' ? 'text' : document.mime });
   }));
 
   return { router, initialize };
