@@ -1,5 +1,5 @@
 "use strict";
-importScripts("rules.js?v=1", "ai.js?v=6");
+importScripts("rules.js?v=1", "ai.js?v=7");
 self.onmessage = event => {
   const { token, state, level, kind } = event.data;
   try {

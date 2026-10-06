@@ -12,7 +12,7 @@
     #coachLoading a { display: inline-block; min-height: 48px; padding: 12px; color: #f0d77c; }
     #coachLoading [hidden], html[data-coach-state="ready"] #coachLoading { display: none; }
   </style>
-  <link rel="stylesheet" href="coach.css?v=8">
+  <link rel="stylesheet" href="coach.css?v=9">
   <link rel="stylesheet" href="../chess/board.css?v=2">
   <link rel="stylesheet" href="../omok/board.css?v=1">
   <link rel="stylesheet" href="../reversi/board.css?v=1">
@@ -21,10 +21,10 @@
   <link rel="stylesheet" href="janggi-theme.css?v=4">
   <script src="../../../assets/game-motion.js?v=20261006-capture" defer></script>
   <script src="../chess/motion.js?v=2" defer></script>
-  <script src="coach-ui.js?v=4" defer></script>
-  <script src="rules.js?v=1" defer></script><script src="ai.js?v=6" defer></script><script src="coach.js?v=14" defer></script>
-  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=8" defer></script><script src="../chess/pieces.js?v=1" defer></script><script src="chess-pieces.js?v=2" defer></script><script src="chess-coach.js?v=12" defer></script>
-  <script src="../janggi/motion.js?v=2" defer></script><script src="janggi-rules.js?v=3" defer></script><script src="janggi-ai.js?v=13" defer></script><script src="janggi-coach.js?v=17" defer></script>
+  <script src="coach-ui.js?v=5" defer></script>
+  <script src="rules.js?v=1" defer></script><script src="ai.js?v=7" defer></script><script src="coach.js?v=15" defer></script>
+  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=9" defer></script><script src="../chess/pieces.js?v=1" defer></script><script src="chess-pieces.js?v=2" defer></script><script src="chess-coach.js?v=13" defer></script>
+  <script src="../janggi/motion.js?v=2" defer></script><script src="janggi-rules.js?v=3" defer></script><script src="janggi-ai.js?v=14" defer></script><script src="janggi-coach.js?v=18" defer></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
 <script src="../../../assets/sound/music-control.js?v=20261006-capture" data-sfx-controls defer></script>
@@ -59,12 +59,12 @@
   <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">AI와 배우기</span><h1 id="title">AI와 배우기</h1></div><button id="newGame" type="button">새 대국</button></header>
   <main class="layout">
     <section class="table panel" aria-label="학습 대국">
-      <div class="matchbar"><strong id="turn" role="status">AI 수준을 골라 시작하세요.</strong><span id="score"></span></div>
+      <div class="matchbar"><strong id="turn" role="status">AI 레벨을 골라 시작하세요.</strong><span id="score"></span></div>
       <div id="boardViewport" class="board-viewport"><div class="board-frame"><div id="board" data-sfx-clicks="none" role="grid" aria-label="대국판"></div></div></div>
       <div class="controls"><button id="hint" type="button">힌트</button><button id="undo" type="button">내 수 물리기</button><button id="zoom" class="quiet" type="button" aria-pressed="false">판 확대</button></div>
     </section>
     <aside class="sidebar" aria-label="배움 안내">
-      <section class="panel lesson"><div class="section-title"><h2 id="levelLabel">초급 AI</h2><span id="colorLabel" class="badge"></span></div><p id="principle"></p></section>
+      <section class="panel lesson"><div class="section-title"><h2 id="levelLabel">레벨 1</h2><span id="colorLabel" class="badge"></span></div><p id="principle"></p></section>
       <section class="panel explanation" aria-live="polite"><span class="eyebrow" id="reasonLabel">이번 수의 생각</span><h2 id="moveLabel">기본 원칙부터</h2><p id="reason">수의 이유를 함께 살펴봅니다.</p><button id="retry" class="hidden" type="button">다시 계산하기</button></section>
       <section id="feedbackPanel" class="panel feedback hidden" aria-live="polite"><h2>다시 생각해 볼 수</h2><p id="feedback"></p><button id="rethink" type="button">내 수부터 다시 두기</button></section>
       <section id="reviewPanel" class="panel hidden"><h2>중요한 장면 복기</h2><p class="muted">장면을 누르면 그 수를 두기 전의 판을 봅니다.</p><div id="reviewList"></div><button id="liveBoard" class="quiet hidden" type="button">마지막 판으로</button></section>
@@ -73,11 +73,14 @@
   </main>
   <dialog id="setup" aria-labelledby="setupTitle"><form id="setupForm">
     <div class="section-title"><h2 id="setupTitle">AI와 배우기</h2><button id="closeSetup" class="quiet" type="button" aria-label="설정 닫기">닫기</button></div>
-    <fieldset><legend>AI 수준</legend>
-      <label class="option"><input type="radio" name="level" value="beginner" checked><span><strong>초급 AI</strong><small>처음 배우는 연습 상대 · 공격과 방어의 빈틈을 찾아보세요</small></span></label>
-      <label class="option"><input type="radio" name="level" value="intermediate"><span><strong>중급 AI</strong><small>이어지는 수를 생각하며</small></span></label>
-      <label class="option"><input type="radio" name="level" value="advanced"><span><strong>상급 AI</strong><small>더 긴 전개에 도전</small></span></label>
+    <fieldset class="level-options" aria-describedby="levelDescription"><legend>AI 레벨</legend>
+      <label class="option"><input type="radio" name="level" value="beginner" aria-label="레벨 1" data-description="처음 배우는 연습 상대 · 공격과 방어의 빈틈을 찾아보세요" checked><span><strong>1</strong></span></label>
+      <label class="option"><input type="radio" name="level" value="level2" aria-label="레벨 2" data-description="눈앞의 공격과 방어를 살피는 상대와 연습해요"><span><strong>2</strong></span></label>
+      <label class="option"><input type="radio" name="level" value="intermediate" aria-label="레벨 3" data-description="이어지는 수를 생각하며 대결해요"><span><strong>3</strong></span></label>
+      <label class="option"><input type="radio" name="level" value="level4" aria-label="레벨 4" data-description="더 넓은 전개를 살피는 상대에게 도전해요"><span><strong>4</strong></span></label>
+      <label class="option"><input type="radio" name="level" value="advanced" aria-label="레벨 5" data-description="가장 높은 레벨 · 긴 전개를 읽는 상대에게 도전해요"><span><strong>5</strong></span></label>
     </fieldset>
+    <p id="levelDescription" class="muted" aria-live="polite">처음 배우는 연습 상대 · 공격과 방어의 빈틈을 찾아보세요</p>
     <fieldset class="color-options"><legend>내 돌 색깔</legend><label class="option"><input type="radio" name="color" value="1" checked><span><strong>검은색</strong><small>내가 먼저 둡니다</small></span></label><label class="option"><input type="radio" name="color" value="2"><span><strong>흰색</strong><small>AI가 먼저 둡니다</small></span></label></fieldset>
     <button id="startLearning" class="primary wide" type="submit">대국 시작</button>
   </form></dialog>

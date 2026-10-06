@@ -58,7 +58,7 @@ test("repetition uses legal en passant rights and supports current/prospective c
 test("search opponents develop from the same repertoire, find mate, and answer mate threats",()=>{
   const start=C.createInitialState("standard"), threat=fen("rnbqkbnr/pppp1ppp/8/4p3/6P1/5P2/PPPPP2P/RNBQKBNR b KQkq g3 0 2");
   const defensive=fen("r1bqk2r/pppp1ppp/2n2n2/2b1p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 4 4");
-  for(const level of ["intermediate","advanced"]) {
+  for(const level of ["level2","intermediate","level4","advanced"]) {
     let result=AI.choose(start,level);assert.equal(result.move.from,sq("e2"));assert.equal(result.move.to,sq("e4"));
     result=AI.choose(threat,level,{nodes:1500,ms:10000});assert.equal(C.status(C.advance(threat,result.move)).reason,"checkmate");
     result=AI.choose(defensive,level,{nodes:2500,ms:10000});assert.equal(AI.mateInOne(C.advance(defensive,result.move)),null);

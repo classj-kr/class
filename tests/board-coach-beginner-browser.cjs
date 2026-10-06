@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
 const root=path.resolve(__dirname,'..');
+const levels=['beginner','level2','intermediate','level4','advanced'];
 async function main(){
   const server=http.createServer((req,res)=>{
     const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
@@ -18,27 +19,52 @@ async function main(){
       await page.addInitScript(()=>{
         window.aiReplies=[];const OriginalWorker=Worker;
         window.Worker=class extends OriginalWorker {
-          constructor(...args){super(...args);this.addEventListener('message',event=>aiReplies.push({kind:this.requestKind,...event.data}));}
-          postMessage(data,...args){this.requestKind=data.kind;return super.postMessage(data,...args);}
+          constructor(...args){super(...args);this.addEventListener('message',event=>aiReplies.push({kind:this.requestKind,level:this.requestLevel,...event.data}));}
+          postMessage(data,...args){this.requestKind=data.kind;this.requestLevel=data.level;return super.postMessage(data,...args);}
         };
       });
       await page.goto(base+'/learning/games/board-coach/coach.html?game='+game);
       assert.equal(await page.locator('input[name=level]:checked').inputValue(),'beginner');
       assert.match(await page.locator('#setup').innerText(),/처음 배우는 연습 상대/);
+      assert.deepEqual(await page.locator('input[name=level]').evaluateAll(inputs=>inputs.map(input=>input.getAttribute('aria-label'))),[1,2,3,4,5].map(n=>'레벨 '+n));
+      assert.doesNotMatch(await page.locator('#setup').innerText(),/초급|중급|상급/);
+      const buttons=await page.locator('.level-options .option').evaluateAll(labels=>labels.map(label=>{const r=label.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+      assert.ok(buttons.every(b=>b.width>=44&&b.height>=44&&Math.abs(b.y-buttons[0].y)<1),'all five touch targets fit one row');
+      await page.locator('input[name=level]:checked').focus();await page.keyboard.press('ArrowRight');
+      assert.equal(await page.locator('input[name=level]:checked').inputValue(),'level2');
+      assert.match(await page.locator('#levelDescription').innerText(),/눈앞의 공격과 방어/);
+      await page.keyboard.press('ArrowLeft');
       await page.locator('input[name=color][value="2"]').check();await page.locator('#startLearning').click();
       await page.waitForFunction(()=>aiReplies.some(r=>r.kind==='move'),null,{timeout:15000});
       const beginner=await page.evaluate(()=>aiReplies.find(r=>r.kind==='move'));
       assert.equal(beginner.error,undefined);assert.equal(beginner.result.practice,true);assert.equal(beginner.result.nodes,0);
+      assert.equal(beginner.level,'beginner');assert.equal(await page.locator('#levelLabel').innerText(),'레벨 1');
       await page.locator('#hint').click();await page.waitForFunction(()=>aiReplies.some(r=>r.kind==='hint'),null,{timeout:20000});
       const hint=await page.evaluate(()=>aiReplies.find(r=>r.kind==='hint'));
       assert.equal(hint.error,undefined);assert.notEqual(hint.result.practice,true);assert.ok(hint.result.reason.length>10);
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
-      await page.locator('#newGame').click();await page.locator('input[name=level][value="intermediate"]').check();
-      await page.evaluate(()=>{aiReplies=[]});await page.locator('#startLearning').click();
-      await page.waitForFunction(()=>aiReplies.some(r=>r.kind==='move'),null,{timeout:15000});
-      const intermediate=await page.evaluate(()=>aiReplies.find(r=>r.kind==='move'));
-      assert.equal(intermediate.error,undefined);assert.notEqual(intermediate.result.practice,true);
-      console.log(`${game}: real beginner worker, stronger hint, level switch and phone layout PASS`);await page.close();
+      for(const [index,level] of levels.entries()){
+        if(!index)continue;
+        await page.locator('#newGame').click();await page.getByRole('radio',{name:'레벨 '+(index+1),exact:true}).check();
+        const description=await page.locator('input[name=level]:checked').getAttribute('data-description');
+        assert.equal(await page.locator('#levelDescription').innerText(),description);
+        await page.evaluate(()=>{aiReplies=[]});await page.locator('#startLearning').click();
+        await page.waitForFunction(()=>aiReplies.some(r=>r.kind==='move'),null,{timeout:15000});
+        const reply=await page.evaluate(()=>aiReplies.find(r=>r.kind==='move'));
+        assert.equal(reply.error,undefined);assert.notEqual(reply.result.practice,true);assert.equal(reply.level,level);
+        assert.equal(await page.locator('#levelLabel').innerText(),'레벨 '+(index+1));
+        assert.equal(await page.locator('#retry').isVisible(),false);
+      }
+      await page.locator('#newGame').click();
+      assert.equal(await page.locator('input[name=level]:checked').inputValue(),'advanced');
+      if(game==='janggi'){
+        const output=path.join(root,'tmp/coach-levels');fs.mkdirSync(output,{recursive:true});
+        await page.locator('#setup').evaluate(dialog=>dialog.scrollTop=0);
+        await page.screenshot({path:path.join(output,'janggi-levels-mobile.png')});
+        await page.setViewportSize({width:1280,height:850});
+        await page.screenshot({path:path.join(output,'janggi-levels-desktop.png')});
+      }
+      console.log(`${game}: five numeric levels, real AI workers, stronger hint, keyboard and phone controls PASS`);await page.close();
     }
     assert.deepEqual(errors,[]);
   }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

@@ -51,5 +51,12 @@
   function ready() {
     window.BoardCoachBoot?.ready();
   }
+  const levelOptions = document.querySelector('.level-options');
+  function describeLevel() {
+    const selected = levelOptions?.querySelector('input:checked');
+    if (selected) document.getElementById('levelDescription').textContent = selected.dataset.description;
+  }
+  levelOptions?.addEventListener('change', describeLevel);
+  describeLevel();
   window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent, ready };
 })();

@@ -4,9 +4,11 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (C) {
   "use strict";
   const LEVELS = Object.freeze({
-    beginner: { name: "초급", depth: 1, nodes: 0, ms: 0, practice: true },
-    intermediate: { name: "중급", depth: 3, nodes: 35000, ms: 1100 },
-    advanced: { name: "상급", depth: 4, nodes: 120000, ms: 2400 }
+    beginner: { name: "레벨 1", depth: 1, nodes: 0, ms: 0, practice: true },
+    level2: { name: "레벨 2", depth: 2, nodes: 10000, ms: 500 },
+    intermediate: { name: "레벨 3", depth: 3, nodes: 35000, ms: 1100 },
+    level4: { name: "레벨 4", depth: 4, nodes: 65000, ms: 1700 },
+    advanced: { name: "레벨 5", depth: 4, nodes: 120000, ms: 2400 }
   });
   // Teaching advice is independent of the strength selected for the opponent.
   const HINT = Object.freeze({ depth:6, nodes:360000, ms:4800, kingTempo:24 });

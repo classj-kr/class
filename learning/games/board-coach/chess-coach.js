@@ -52,10 +52,10 @@
     }).join("");
     BoardCoachUI.markMove($("board"),mark,8);
     BoardCoachUI.showOpponent(opponent,$('board'),8);
-    $("levelLabel").textContent=`${AI.LEVELS[level].name} AI`;
+    $("levelLabel").textContent=AI.LEVELS[level].name;
     $("colorLabel").textContent=`내 말: ${human==="w"?"흰색":"검은색"}`;
     $("score").textContent=`${scene?history.indexOf(scene):state.san.length}수`;
-    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전 · 복기`:!started?"AI 수준을 골라 시작하세요.":result.ended?`${endLabels[result.reason]||"대국 종료"} · ${result.winner?(result.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${result.checked?" · 체크":""}`;
+    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전 · 복기`:!started?"AI 레벨을 골라 시작하세요.":result.ended?`${endLabels[result.reason]||"대국 종료"} · ${result.winner?(result.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${result.checked?" · 체크":""}`;
     $("undo").disabled=!history.some(m=>m.color===human)||!!scene;
     $("hint").disabled=!active; $("resign").disabled=!started||result.ended||!!scene;
     $('zoom').disabled=moving;
@@ -93,7 +93,7 @@
     const id=token;
     if(kind==="hint") reason("힌트 계산 중","후보를 살펴보고 있어요","체크와 기물의 안전을 확인하고 있어요.");
     try {
-      worker=new Worker("chess-worker.js?v=8");
+      worker=new Worker("chess-worker.js?v=9");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==token)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

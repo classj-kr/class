@@ -79,9 +79,9 @@
       return `<button type="button" role="gridcell" class="${classes}" data-square="${index}" ${can?"":"disabled"} aria-pressed="${selected===index}" aria-label="${R.coord(index)} · ${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p):"빈자리"}${target?" · 이동 가능":""}${threatened.has(index)?" · 상대가 노리는 말":""}" title="${p?(p[0]==="c"?"초 ":"한 ")+AI.name(p)+" · ":""}${R.coord(index)}${threatened.has(index)?" · 상대가 노리는 말":""}">${p?`<span class="${pieceClasses}" aria-hidden="true">${face}</span>`:target?'<span class="legal-dot"></span>':""}</button>`;
     }).join("");
     BoardCoachUI.markMove($("board"),mark,9);
-    $("levelLabel").textContent=AI.LEVELS[level].name+" AI";$("colorLabel").textContent=human==="c"?"나는 초":"나는 한";
+    $("levelLabel").textContent=AI.LEVELS[level].name;$("colorLabel").textContent=human==="c"?"나는 초":"나는 한";
     $("score").textContent=`${scene?history.indexOf(scene):state.ply}수`;
-    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 수준을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:moving?"말이 움직이고 있어요…":busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}${R.repetitionCount(state)===2?" · 같은 판 2회":""}`;
+    $("turn").textContent=scene?`${history.indexOf(scene)+1}수 두기 전`:!started?"AI 레벨을 골라 시작하세요.":end.ended?`${endLabels[end.reason]} · ${end.winner?(end.winner===human?"내가 이겼어요":"AI가 이겼어요"):"무승부"}`:moving?"말이 움직이고 있어요…":busy&&job==="move"?"AI가 생각하고 있어요…":`${state.turn===human?"내 차례":"AI 차례"}${R.facing(state)?" · 빅장":R.inCheck(state)?" · 장군":""}${R.repetitionCount(state)===2?" · 같은 판 2회":""}`;
     $("undo").disabled=!history.some(m=>m.side===human)||!!scene;
     $("hint").disabled=!active;$("janggiResign").disabled=!started||end.ended||!!scene;
     $("zoom").disabled=moving;
@@ -120,7 +120,7 @@
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
     if(kind==="hint")reason("힌트 계산 중","둘 곳을 살펴보고 있어요","왕과 다른 말이 공격받는지 확인하고 있어요.");
     try{
-      worker=new Worker("janggi-worker.js?v=13");
+      worker=new Worker("janggi-worker.js?v=14");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

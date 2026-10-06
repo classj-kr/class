@@ -3,7 +3,7 @@ const test = require("node:test"), assert = require("node:assert/strict");
 const fs = require("node:fs"), path = require("node:path"), vm = require("node:vm");
 const R = require("../learning/games/board-coach/rules.js");
 const AI = require("../learning/games/board-coach/ai.js");
-const levels = ["intermediate","advanced"];
+const levels = ["level2","intermediate","level4","advanced"];
 function omok(black = [], white = [], color = 1) {
   const s = R.initial("omok");
   black.forEach(i => s.board[i] = 1); white.forEach(i => s.board[i] = 2);

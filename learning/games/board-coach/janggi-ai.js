@@ -6,9 +6,11 @@
   const LEVELS=Object.freeze({
     // Beginners get a fallible practice opponent; stronger opponents and
     // teaching hints retain tactical safety and their own search budgets.
-    beginner:{name:"초급",depth:1,nodes:0,ms:0,practice:true},
-    intermediate:{name:"중급",depth:2,nodes:9000,ms:500},
-    advanced:{name:"상급",depth:3,nodes:25000,ms:900}
+    beginner:{name:"레벨 1",depth:1,nodes:0,ms:0,practice:true},
+    level2:{name:"레벨 2",depth:1,nodes:3500,ms:250},
+    intermediate:{name:"레벨 3",depth:2,nodes:9000,ms:500},
+    level4:{name:"레벨 4",depth:3,nodes:16000,ms:700},
+    advanced:{name:"레벨 5",depth:3,nodes:25000,ms:900}
   });
   const HINT=Object.freeze({depth:8,nodes:600000,ms:5000,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
