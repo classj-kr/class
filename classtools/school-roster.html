@@ -232,6 +232,14 @@
         .name-chip.google { background: #dbeafe; color: #1d4ed8; }
         /* 연동된 구글 계정의 이름이 적어 둔 성명과 다른 사람으로 보일 때 */
         .name-chip.mismatch { background: #fef3c7; color: #b45309; }
+        /* 성명 칸: 표시가 붙어도 입력 칸이 찌그러지지 않게, 자리가 모자라면 표시가 아래 줄로 내려간다. */
+        .name-cell { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+        .name-cell > input { flex: 1 1 90px; min-width: 90px; }
+        /* 교직원 명단 표: 칸 너비를 고정해 구글 계정 칸이 남는 폭을 다 차지하고 다른 칸이 찌그러지는 일을 막는다. */
+        #teacherRosterTable { table-layout: fixed; width: 100%; min-width: 1060px; }
+        .table-container { overflow-x: auto; }
+        #teacherRosterTable th, #teacherRosterTable td { overflow: hidden; }
+        #teacherRosterTable .roster-cell-input { box-sizing: border-box; }
         .roster-table .num-col { width: 1%; white-space: nowrap; }
         .roster-table .email-col { min-width: 240px; }
         .roster-table .guardian-col { min-width: 170px; }
@@ -513,7 +521,7 @@
             <!-- 붙여넣기 입력 섹션 -->
             <div class="paste-section" id="pasteSection" style="display:none;">
                 <p style="margin:0 0 10px;font-weight:800;font-size:13px;">엑셀에서 복사하여 붙여넣기</p>
-                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">엑셀의 헤더 행을 포함하여 붙여넣으세요. 첫 줄을 헤더로 인식합니다.</p>
+                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">엑셀의 헤더 행을 포함하여 붙여넣으세요. 첫 줄을 헤더로 인식합니다. 붙여넣기는 기존 명단에 <b>더하거나 같은 학년·반·번호를 고칠 뿐</b> 기존 학생을 지우지 않습니다. 지우려면 그 줄의 🗑️를 누르세요.</p>
                 <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">초록 칸(학년·반·번호·성별)은 꼭 있어야 하고, <b>노란 칸(성명·학생구글계정)은 둘 중 하나만</b> 있어도 됩니다. 기기 없이 명단만 쓰는 학년은 성명만 적으면 되고, 성명을 비운 학생은 처음 로그인할 때 구글 계정 이름이 명단에 들어옵니다(<b>구글</b> 표시가 붙으니 실명과 다르면 고쳐 주세요).</p>
                 <div class="paste-cols-hint" id="pasteColsHint">
                     <span class="col-chip required">학년</span>
@@ -555,18 +563,18 @@
             </div>
 
             <div class="table-container" style="margin-top:12px;">
-                <table class="roster-table">
+                <table class="roster-table" id="teacherRosterTable">
                     <thead>
                         <tr>
-                            <th style="width:130px;">성명</th>
+                            <th style="width:160px;">성명</th>
                             <th>구글 계정</th>
-                            <th style="width:80px;">담당 학년</th>
-                            <th style="width:80px;">담당 반</th>
-                            <th style="width:110px;">담당 과목 (교과)</th>
-                            <th style="width:110px;">기본 특별실</th>
-                            <th style="width:120px;">분류</th>
-                            <th style="width:90px;">연동 상태</th>
-                            <th style="width:120px;">관리</th>
+                            <th style="width:90px;">담당 학년</th>
+                            <th style="width:64px;">담당 반</th>
+                            <th style="width:190px;">담당 과목 (교과)</th>
+                            <th style="width:120px;">기본 특별실</th>
+                            <th style="width:104px;">분류</th>
+                            <th style="width:80px;">연동 상태</th>
+                            <th style="width:110px;">관리</th>
                         </tr>
                     </thead>
                     <tbody id="teacherRosterBody"></tbody>
@@ -683,6 +691,10 @@
     const SLOT_MARKS = ["①", "②", "③", "④", "⑤", "⑥"];
     let allStudents = [];
     let parsedStudents = null; // 붙여넣기 파싱 결과
+    // 서버에서 불러온 그대로의 명단(학년-반-번호 → 이름표). 저장할 때 누가 빠지는지 견준다.
+    let loadedRosterRows = [];
+    const rosterKeyOf = (s) => `${Number(s.grade)}-${Number(s.class_number ?? s.classNumber)}-${String(s.student_number ?? s.studentNumber ?? "").trim()}`;
+    const studentNumberOrder = (s) => Number(String(s.student_number ?? s.studentNumber ?? "").replace(/\D/g, "")) || 0;
     let isSchoolAdmin = false;
 
     // ─── API ───────────────────────────────────────────────────
@@ -778,22 +790,22 @@
                 return `
                     <tr style="background:rgba(254,243,199,0.2);">
                         <td>
-                            <div style="display:flex;align-items:center;gap:4px;"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
+                            <div class="name-cell"><input class="roster-cell-input" style="border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#374151;font-weight:bold;cursor:not-allowed;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" readonly title="학교 관리자 구글 계정은 변경할 수 없습니다">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년 (전담은 3,4,5,6)" title="담임은 학년 하나. 전담은 맡은 학년을 쉼표로 여러 개" onchange="updateTeacherField(${idx}, 'grade', this.value)">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년" title="담임은 학년 하나. 전담은 맡은 학년을 쉼표로 여러 개(3,4,5,6)" onchange="updateTeacherField(${idx}, 'grade', this.value)">
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.classNumber ?? '')}" placeholder="반" onchange="updateTeacherField(${idx}, 'classNumber', this.value)">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악, 영어(5,6)" title="여러 과목은 쉼표로. 학년마다 다르면 과목 뒤 괄호에: 음악(3,4), 영어(5,6)" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="과목" title="여러 과목은 쉼표로. 학년마다 다르면 과목 뒤 괄호에: 음악(3,4), 영어(5,6)" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="특별실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
                         </td>
                         <td style="text-align:center;color:#9ca3af;">-</td>
                         <td style="text-align:center;">${linkedBadge}</td>
@@ -807,22 +819,22 @@
             return `
                 <tr>
                     <td>
-                        <div style="display:flex;align-items:center;gap:4px;"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
+                        <div class="name-cell"><input class="roster-cell-input" style="border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
                     </td>
                     <td>
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" placeholder="구글 계정 이메일" onchange="updateTeacherField(${idx}, 'email', this.value)">
                     </td>
                     <td>
-                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년 (전담은 3,4,5,6)" title="담임은 학년 하나. 전담은 맡은 학년을 쉼표로 여러 개" onchange="updateTeacherField(${idx}, 'grade', this.value)">
+                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년" title="담임은 학년 하나. 전담은 맡은 학년을 쉼표로 여러 개(3,4,5,6)" onchange="updateTeacherField(${idx}, 'grade', this.value)">
                     </td>
                     <td>
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.classNumber ?? '')}" placeholder="반" onchange="updateTeacherField(${idx}, 'classNumber', this.value)">
                     </td>
                     <td>
-                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악, 영어(5,6)" title="여러 과목은 쉼표로. 학년마다 다르면 과목 뒤 괄호에: 음악(3,4), 영어(5,6)" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
+                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="과목" title="여러 과목은 쉼표로. 학년마다 다르면 과목 뒤 괄호에: 음악(3,4), 영어(5,6)" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
                     </td>
                     <td>
-                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
+                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="특별실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
                     </td>
                     <td style="text-align:center;">
                         <!-- 교·강사는 따로 적지 않고 학년·반으로 담임·교과를 가른다.
@@ -1014,6 +1026,7 @@
         try {
             const data = await api(`/api/school/students?year=${currentYear}`);
             allStudents = data.students || [];
+            loadedRosterRows = allStudents.map((s) => ({ key: rosterKeyOf(s), label: `${s.grade}학년 ${s.class_number}반 ${s.student_number}번 ${s.roster_name}` }));
             updateClassFilter();
             renderRosterTable();
             setStatus("rosterStatus", `총 ${allStudents.length}명`);
@@ -1148,7 +1161,7 @@
                 `<td>${cellInput("grade", s.grade, "36px", false, "", "학년")}</td>`,
                 `<td>${cellInput("class_number", s.class_number, "36px", false, "", "반")}</td>`,
                 `<td>${cellInput("student_number", s.student_number, "44px", false, "", "번호")}</td>`,
-                `<td><div style="display:flex;align-items:center;gap:4px;">${namePending && !isSchoolAdmin ? `<span style="color:#9ca3af;">(로그인 대기)</span>` : cellInput("roster_name", namePending ? "" : s.roster_name, "76px", false, "", namePending ? "로그인 때 채움" : "이름")}${nameChip}</div></td>`,
+                `<td><div class="name-cell">${namePending && !isSchoolAdmin ? `<span style="color:#9ca3af;">(로그인 대기)</span>` : cellInput("roster_name", namePending ? "" : s.roster_name, "90px", false, "", namePending ? "로그인 때 채움" : "이름")}${nameChip}</div></td>`,
                 `<td>${cellInput("gender", s.gender, "36px", false, "", "남/여")}</td>`,
                 ...dynamicCols.map(col => `<td>${cellSelect(col, categoryValue(s, cf, col), originalIndex)}</td>`),
                 `<td><div style="display:flex;align-items:center;gap:6px;">${cellInput("student_email", s.student_email)}${linkedBadge}</div></td>`,
@@ -1338,8 +1351,10 @@
         if (students.length === 0) return setStatus("pasteStatus", "유효한 학생 데이터가 없습니다.", "error");
 
         parsedStudents = students;
-        // 미리보기: 파싱 결과를 allStudents에 임시 반영
-        allStudents = students.map(s => ({
+        // 붙여넣기는 기존 명단에 더하거나 고칠 뿐 아무도 지우지 않는다. 같은 학년·반·번호가 이미 있으면
+        // 그 줄을 붙여넣은 내용으로 바꾸고, 없으면 새로 더한다. 전에는 붙여넣은 것으로 전체 명단을
+        // 갈아 끼워서, 한 반만 붙여넣고 저장하면 나머지가 통째로 지워졌다. 지우는 것은 줄의 🗑️뿐이다.
+        const previewRows = students.map(s => ({
             ...s, class_number: s.classNumber, student_number: s.studentNumber,
             roster_name: s.rosterName, student_email: s.studentEmail,
             guardian1_email: s.guardian1Email, guardian2_email: s.guardian2Email,
@@ -1347,8 +1362,20 @@
             name_source: s.rosterName ? "" : "pending",
             user_id: null
         }));
+        const pastedByKey = new Map(previewRows.map((row) => [rosterKeyOf(row), row]));
+        const existingKeys = new Set(allStudents.map(rosterKeyOf));
+        // 같은 학년·반·번호의 기존 줄은 붙여넣은 내용으로 바꾸되, 서버가 준 id와 계정 연결은 그대로 둔다.
+        const updatedRows = allStudents.map((existing) => {
+            const pasted = pastedByKey.get(rosterKeyOf(existing));
+            return pasted ? { ...pasted, id: existing.id, user_id: existing.user_id } : existing;
+        });
+        const addedRows = previewRows.filter((row) => !existingKeys.has(rosterKeyOf(row)));
+        const replacedCount = previewRows.length - addedRows.length;
+        allStudents = [...updatedRows, ...addedRows].sort((a, b) =>
+            Number(a.grade) - Number(b.grade) || Number(a.class_number) - Number(b.class_number) || studentNumberOrder(a) - studentNumberOrder(b));
         updateClassFilter();
         renderRosterTable();
+        const mergeNote = ` 기존 명단에 새 학생 ${addedRows.length}명을 더하고${replacedCount ? ` 같은 학년·반·번호 ${replacedCount}명은 붙여넣은 내용으로 고칩니다` : ""}. 기존 학생은 지워지지 않습니다.`;
 
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
         const skippedNote = skippedNameless ? ` 성명도 학생구글계정도 없는 ${skippedNameless}줄은 건너뛰었습니다.` : "";
@@ -1357,7 +1384,7 @@
         students.forEach((s) => { if (s.studentEmail) accountCounts.set(s.studentEmail, (accountCounts.get(s.studentEmail) || 0) + 1); });
         const repeated = [...accountCounts].filter(([, n]) => n > 1).map(([email]) => email);
         const repeatedNote = repeated.length ? ` ⚠️ 학생구글계정이 겹치는 줄이 있습니다(${repeated.join(", ")}). 한 계정은 한 학생에게만 적어 주세요.` : "";
-        setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료.${skippedNote}${repeatedNote} 미리보기를 확인 후 저장 버튼을 눌러주세요.`, repeated.length ? "error" : "ok");
+        setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료.${skippedNote}${repeatedNote}${mergeNote} 미리보기를 확인 후 저장 버튼을 눌러주세요.`, repeated.length ? "error" : "ok");
     };
 
     // 비어 있으면 통과. 값이 있으면 따옴표·공백 없는 name@domain.tld 모양이어야 한다.
@@ -1509,9 +1536,22 @@
                 accountOwners.set(email, here);
             }
 
+            // 저장하면 명단에서 빠지는 학생이 있으면 이름을 보여 주고 한 번 더 묻는다. 서버도 이 확인이
+            // 없으면 지우지 않는다. 한 반만 붙여넣고 저장하는 실수로 나머지가 사라지지 않게 하는 마지막 울타리.
+            const keptKeys = new Set(studentsToSave.map((s) => `${s.grade}-${s.classNumber}-${s.studentNumber}`));
+            const removedRows = loadedRosterRows.filter((row) => !keptKeys.has(row.key));
+            if (removedRows.length > 0) {
+                const shown = removedRows.slice(0, 15).map((row) => row.label).join("\n");
+                const more = removedRows.length > 15 ? `\n… 외 ${removedRows.length - 15}명` : "";
+                if (!confirm(`저장하면 다음 ${removedRows.length}명이 ${currentYear}년도 명단에서 빠집니다.\n\n${shown}${more}\n\n계속할까요?`)) {
+                    setStatus("rosterStatus", "저장을 취소했습니다. 명단은 바뀌지 않았습니다.");
+                    return;
+                }
+            }
+
             const result = await api("/api/school/students", {
                 method: "PUT",
-                body: JSON.stringify({ students: studentsToSave, year: currentYear })
+                body: JSON.stringify({ students: studentsToSave, year: currentYear, confirmRemoval: removedRows.length > 0 })
             });
             setStatus("rosterStatus", `✅ ${result.saved}명 저장 완료`, "ok");
             btn.style.display = "none";

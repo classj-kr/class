@@ -113,10 +113,10 @@ async function withDb(run) {
 const res = () => ({ json(value) { this.body = value; } });
 const asAdmin = [async () => ({ id: 1 }), async () => ({ school_id: 1, teacher_type: "관리자" })];
 
-async function putStudents(pool, list) {
+async function putStudents(pool, list, extra = {}) {
   const r = res();
   await saveStudents(
-    { body: { students: list, year: 2026 } }, r, ...asAdmin, HttpError, pool,
+    { body: { students: list, year: 2026, ...extra } }, r, ...asAdmin, HttpError, pool,
     () => 10, () => "animal-cat.webp", pendingStudentName, NAME_SOURCE_PENDING
   );
   return r.body;
@@ -262,6 +262,30 @@ test("PUT /school/students refuses the same student Google account on two rows (
   });
 });
 
+test("PUT /school/students never drops existing students silently: a shorter list is refused until the removal is confirmed", async () => {
+  await withDb(async ({ pool, students }) => {
+    await putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", ""), student("3", "박민수", "")]);
+
+    // 한 반만 붙여넣고 저장한 것처럼 두 명만 보내면, 확인 없이는 아무것도 바꾸지 않는다.
+    await assert.rejects(
+      () => putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", "")]),
+      (error) => error.code === "ROSTER_REMOVAL_NEEDS_CONFIRM" && error.status === 409
+        && /1명이 2026년도 명단에서 빠집니다: 3학년 1반 3번 박민수/.test(error.message)
+        && error.details.removed.length === 1
+    );
+    assert.equal((await students()).length, 3, "거부되면 명단은 그대로다");
+
+    // 같은 학생들을 다시 보내는 것(아무도 빠지지 않음)은 확인이 필요 없다.
+    await putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", ""), student("3", "박민수", "")]);
+    assert.equal((await students()).length, 3);
+
+    // 사람이 확인하면 지운다.
+    const body = await putStudents(pool, [student("1", "김철수", ""), student("2", "이영희", "")], { confirmRemoval: true });
+    assert.equal(body.saved, 2);
+    assert.deepEqual((await students()).map((r) => r.student_number), ["1", "2"]);
+  });
+});
+
 // ─── 교직원 명단 저장 + 첫 로그인 ────────────────────────────────────────
 
 test("PUT /school/teachers accepts a blank name with a Google account (placeholder = the account) and still drops a row with neither", async () => {
@@ -347,6 +371,10 @@ test("the school roster editor sends pending rows back with an empty name so the
   // 붙여넣기: 성명 열이 없어도 학생구글계정 열이 있으면 받는다. 교직원은 계정부터 적은 줄을 받는다.
   assert.match(schoolRosterHtml, /\(nameI === -1 && seI === -1\)/);
   assert.match(schoolRosterHtml, /if \(parts\[0\]\.includes\("@"\)\) parts = \["", \.\.\.parts\]/);
+  // 붙여넣기는 더하거나 같은 학년·반·번호를 고칠 뿐 아무도 지우지 않고, 저장하면 빠지는 학생은 이름을 보여 주고 확인을 받는다.
+  assert.match(schoolRosterHtml, /const addedRows = previewRows\.filter\(\(row\) => !existingKeys\.has\(rosterKeyOf\(row\)\)\)/);
+  assert.match(schoolRosterHtml, /return pasted \? \{ \.\.\.pasted, id: existing\.id, user_id: existing\.user_id \} : existing;/);
+  assert.match(schoolRosterHtml, /confirmRemoval: removedRows\.length > 0/);
   // 같은 학생구글계정이 두 줄에 있으면 저장을 막고 두 칸을 붉게 표시한다.
   assert.match(schoolRosterHtml, /const accountOwners = new Map\(\)/);
   assert.match(schoolRosterHtml, /function markDuplicateAccounts\(\)/);
