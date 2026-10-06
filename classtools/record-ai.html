@@ -354,6 +354,10 @@
         }
         /* 계획서에서 가져오기 */
         .plan-import { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 8px; }
+        /* 파일을 끌고 들어오는 동안만 보이는 놓을 자리 */
+        .drop-hint { position: fixed; inset: 12px; border: 3px dashed var(--brand); border-radius: 18px; background: rgba(36, 107, 85, 0.08); display: none; align-items: center; justify-content: center; pointer-events: none; z-index: 20; }
+        .drop-hint.show { display: flex; }
+        .drop-hint span { background: var(--brand); color: #fff; padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 1.05rem; }
         .plan-import .status { margin-top: 0; }
         #import-plan-dialog { border: 1px solid var(--line, #d9d4c7); border-radius: 12px; padding: 20px 22px; width: min(640px, 92vw); max-height: 86vh; }
         #import-plan-dialog::backdrop { background: rgba(20, 24, 28, 0.45); }
@@ -534,6 +538,8 @@
             <textarea id="result-area" class="form-control" style="display: none;"></textarea>
         </section>
     </main>
+
+    <div class="drop-hint" id="drop-hint" aria-hidden="true"><span>계획서 파일을 여기에 놓으면 활동 주제를 뽑습니다</span></div>
 
     <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
     <script src="/assets/site-storage.js?v=20261006-1"></script>
@@ -849,24 +855,52 @@
                 };
             }
 
-            importBtn.addEventListener('click', async () => {
+            async function importReady() {
                 try {
                     await window.ClassroomAI.init();
                 } catch (error) {
                     importStatus.textContent = error.message;
-                    return;
+                    return false;
                 }
                 if (!window.ClassroomAI.hasKey()) {
                     importStatus.textContent = '내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.';
-                    return;
+                    return false;
                 }
+                return true;
+            }
+
+            importBtn.addEventListener('click', async () => {
+                if (!await importReady()) return;
                 importFile.value = '';
                 importFile.click();
             });
 
-            importFile.addEventListener('change', async () => {
+            importFile.addEventListener('change', () => {
                 const file = importFile.files && importFile.files[0];
-                if (!file) return;
+                if (file) importPlanFile(file);
+            });
+
+            // 파일을 창 어디에나 끌어다 놓아도 단추로 고른 것과 똑같이 읽는다. 「계획서에서 가져오기」가
+            // 보이는 칸(교과·창체의 활동 목록)에서만 받고, 끄는 동안만 놓을 자리를 보여 준다.
+            const IMPORT_TYPES = /\.(pdf|png|jpe?g|webp|hwpx|docx|txt)$/i;
+            const dropHint = $('drop-hint');
+            let dragDepth = 0;
+            const hasFiles = (e) => e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files');
+            const canDrop = () => importBtn.offsetParent !== null;
+            document.addEventListener('dragenter', (e) => { if (!hasFiles(e)) return; e.preventDefault(); dragDepth += 1; if (canDrop()) dropHint.classList.add('show'); });
+            document.addEventListener('dragover', (e) => { if (!hasFiles(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = canDrop() ? 'copy' : 'none'; });
+            document.addEventListener('dragleave', (e) => { if (!hasFiles(e)) return; dragDepth = Math.max(0, dragDepth - 1); if (dragDepth === 0) dropHint.classList.remove('show'); });
+            document.addEventListener('drop', async (e) => {
+                if (!hasFiles(e)) return;
+                e.preventDefault(); dragDepth = 0; dropHint.classList.remove('show');
+                const file = e.dataTransfer.files && e.dataTransfer.files[0];
+                if (!file || !canDrop()) return;
+                if (!IMPORT_TYPES.test(file.name)) { importStatus.textContent = 'PDF·사진·hwpx·docx·txt 파일만 읽을 수 있습니다.'; return; }
+                if (!await importReady()) return;
+                importPlanFile(file);
+            });
+
+            async function importPlanFile(file) {
                 if (file.size > MAX_IMPORT_BYTES) { importStatus.textContent = '20MB가 넘는 파일은 올릴 수 없습니다.'; return; }
                 importBtn.disabled = true;
                 importStatus.textContent = file.name + ' 읽는 중… 제미나이가 활동 주제를 뽑습니다.';
@@ -888,7 +922,7 @@
                 } finally {
                     importBtn.disabled = false;
                 }
-            });
+            }
 
             function renderImportList(data) {
                 const where = [data.subject, data.semester].filter(Boolean).join(' · ');

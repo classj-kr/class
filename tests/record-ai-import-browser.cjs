@@ -84,6 +84,16 @@ const fetchImpl = async (url, options = {}) => {
     }
     assert.match(planItems, /실생활 문제를 식으로/, '학년 공유 계획에 저장돼야 한다');
 
+    // 파일을 창에 끌어다 놓아도 똑같이 읽는다.
+    const dt = await page.evaluateHandle(() => { const dt = new DataTransfer(); dt.items.add(new File(['5학년 수학\n분수'], '계획서.txt', { type: 'text/plain' })); return dt; });
+    await page.dispatchEvent('body', 'dragenter', { dataTransfer: dt });
+    assert.equal(await page.locator('#drop-hint').isVisible(), true, '끌고 들어오면 놓을 자리가 보인다');
+    await page.dispatchEvent('body', 'drop', { dataTransfer: dt });
+    await page.locator('#import-plan-dialog[open]').waitFor({ timeout: 15000 });
+    assert.equal(await page.locator('#import-plan-list label').count(), 3);
+    assert.match(google.at(-1).body.contents[0].parts[0].text, /분수/);
+    await page.locator('#import-plan-cancel').click();
+
     // 바꾸기는 기존 줄을 지운다.
     await page.locator('#import-plan-file').setInputFiles({ name: 'plan.pdf', mimeType: 'application/pdf', buffer: Buffer.from('%PDF-1.4 fake') });
     await page.locator('#import-plan-dialog[open]').waitFor({ timeout: 15000 });

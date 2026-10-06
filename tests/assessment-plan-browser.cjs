@@ -87,7 +87,16 @@ const fetchImpl = async (url, options = {}) => {
     await page.locator('#picker-list label').filter({ hasText: '6국05-05' }).locator('input').check();
     await page.locator('#picker-apply').click();
     assert.equal(await page.locator('.item .chip').count(), 1);
-    assert.equal(await page.locator('.item input.form-control').first().inputValue(), '문학');
+    assert.equal(await page.locator('.item select.form-control').first().inputValue(), '문학', '영역명은 고르기 칸이고 성취기준의 영역으로 채워진다');
+    const domainOptions = await page.locator('.item select.form-control').first().locator('option').evaluateAll((els) => els.map((e) => e.textContent));
+    assert.deepEqual(domainOptions.slice(1, 7), ['듣기⋅말하기', '읽기', '쓰기', '문법', '문학', '매체'], '그 교과의 영역이 다 보인다');
+    // 「직접 적기」를 고르면 글 칸이 되고, 적고 나가면 다시 고르기 칸에 그 이름이 남는다.
+    await page.locator('.item select.form-control').first().selectOption({ label: '직접 적기…' });
+    const custom = page.locator('.item .field input.form-control').first();
+    await custom.fill('독서');
+    await custom.blur();
+    assert.equal(await page.locator('.item select.form-control').first().inputValue(), '독서');
+    await page.locator('.item select.form-control').first().selectOption('문학');
     let items = await waitSaved((list) => list.length === 1 && list[0].standards.length === 1);
     assert.equal(items[0].standards[0].code, '6국05-05');
     assert.equal(items[0].element, '경험을 시로 표현하기');
@@ -131,6 +140,22 @@ const fetchImpl = async (url, options = {}) => {
     assert.equal(items[2].domain, '쓰기', '영역명이 비었으면 성취기준의 영역으로 채운다');
     assert.equal(items[2].levels, 2);
 
+    // 파일을 창에 끌어다 놓아도 똑같이 읽는다. 끄는 동안 놓을 자리가 보이고, 놓으면 사라진다.
+    const dropFile = (name, text) => page.evaluateHandle(({ name, text }) => { const dt = new DataTransfer(); dt.items.add(new File([text], name, { type: 'text/plain' })); return dt; }, { name, text });
+    const dt = await dropFile('계획서.txt', '5학년 국어 수행평가\n읽기: 글의 짜임');
+    await page.dispatchEvent('body', 'dragenter', { dataTransfer: dt });
+    assert.equal(await page.locator('#drop-hint').isVisible(), true, '끌고 들어오면 놓을 자리가 보인다');
+    await page.dispatchEvent('body', 'drop', { dataTransfer: dt });
+    assert.equal(await page.locator('#drop-hint').isVisible(), false);
+    await page.locator('#import-dialog[open]').waitFor({ timeout: 15000 });
+    assert.equal(await page.locator('#import-list label').count(), 2);
+    assert.match(google.at(-1).body.contents[0].parts.map((p) => p.text || '').join(''), /글의 짜임/);
+    await page.locator('#import-cancel').click();
+    assert.equal(await page.locator('.item').count(), 3, '취소하면 계획은 그대로');
+    const bad = await dropFile('계획서.hwp', 'x');
+    await page.dispatchEvent('body', 'drop', { dataTransfer: bad });
+    await page.locator('#toast').filter({ hasText: 'txt 파일만' }).waitFor({ timeout: 5000 });
+
     // 평가요소를 생기부 활동 목록으로 보낸다(확인 창은 자동으로 수락).
     await page.locator('#send-record-btn').click();
     await page.locator('#toast').filter({ hasText: '보냈습니다' }).waitFor({ timeout: 10000 });
@@ -160,6 +185,10 @@ const fetchImpl = async (url, options = {}) => {
     assert.equal(await page.locator('#import-btn').isVisible(), false);
     const refused = await page.evaluate(async (k) => (await fetch('/api/teacher/assessment-plans', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...k, grade: 6, items: [{ element: '몰래' }] }) })).status, key);
     assert.equal(refused, 403, '서버가 다른 학년 저장을 거절한다');
+    const calls = google.length;
+    await page.dispatchEvent('body', 'drop', { dataTransfer: await dropFile('계획서.txt', '6학년') });
+    await page.locator('#toast').filter({ hasText: '보기만 할 수 있어' }).waitFor({ timeout: 5000 });
+    assert.equal(google.length, calls, '보기만인 계획에는 끌어다 놓아도 읽지 않는다');
     await page.locator('#grade-select').selectOption('5');
     await page.locator('.item').nth(1).waitFor();
     assert.equal(await page.locator('#add-item-btn').isVisible(), true);
