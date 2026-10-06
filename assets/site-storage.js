@@ -112,8 +112,11 @@
                 return createStore(app, data.items, true);
             } catch (error) {
                 // 로그인이 없거나(게스트) 서버 DB가 준비되지 않았으면 이 탭 안에서만 기억한다.
-                if (error.status === 401 || error.status === 403 || error.status === 503) return createStore(app, {}, false);
-                throw error;
+                // 그 밖의 오류(네트워크 끊김 등)도 화면을 멈추게 하지 않는다 -- 기억만 하고 저장은 안 되는 상태.
+                if (!(error.status === 401 || error.status === 403 || error.status === 503)) {
+                    console.warn('[site-storage] 저장 공간을 열지 못해 이 탭 안에서만 기억합니다:', error.message);
+                }
+                return createStore(app, {}, false);
             }
         })();
         opened.set(app, promise);

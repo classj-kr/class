@@ -1155,14 +1155,14 @@
     DRILLS.forEach(drill => { DRILL_BY_ID[drill.id] = drill; });
 
     /* 저장 ---------------------------------------------------------------- */
+    /* 기록은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(로그인이 없으면 이 탭 안에서만 기억). */
     const STORAGE_KEY = "earTraining.v2";
     const saved = { stats: {}, presets: {}, setup: {}, progress: {} };
+    let store = null;
 
     function loadSaved() {
         try {
-            const raw = window.localStorage.getItem(STORAGE_KEY);
-            if (!raw) return;
-            const parsed = JSON.parse(raw);
+            const parsed = store ? store.get("saved") : null;
             if (parsed && typeof parsed === "object") {
                 if (parsed.stats && typeof parsed.stats === "object") saved.stats = parsed.stats;
                 if (parsed.setup && typeof parsed.setup === "object") saved.setup = parsed.setup;
@@ -1172,7 +1172,7 @@
     }
 
     function persist() {
-        try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); } catch (error) { /* 무시 */ }
+        if (store) store.set("saved", saved);
     }
 
     function recordAnswer(drillId, itemId, correct) {
@@ -3043,7 +3043,9 @@
         });
     }
 
-    function init() {
+    async function init() {
+        store = await SiteStorage.open("ear-training");
+        store.adopt([{ localKey: STORAGE_KEY, item: "saved" }]);
         ["menuScreen", "courseScreen", "lessonScreen", "drillScreen", "resultScreen",
             "courseList", "courseTitle", "lessonList", "lessonTitle", "lessonBody", "lessonExamples",
             "lessonNext", "lessonKeys", "lessonKeysLabel", "wheelKeys", "toolList", "wheelScreen", "wheelBoard", "wheelChords",

@@ -2,12 +2,13 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const http = require('node:http');
+const { startHarness } = require('./site-storage-harness.cjs');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname,'..'), output = path.join(root,'outputs','graph-board');
-let browser, server, url, context, page, errors;
-const types = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.woff2':'font/woff2'};
-const saved = () => page.evaluate(()=>JSON.parse(localStorage.getItem('graph-board:current:v1')));
+let browser, h, url, context, page, errors;
+// 현재 장면은 계정별 서버 저장 공간(graph-studio/current)에 있다. 쿠키 test_user=1 로 로그인한 계정으로 연다.
+const saved = () => page.evaluate(async()=>(await (await fetch('/api/me/storage/graph-studio',{cache:'no-store'})).json()).items.current??null);
+const signedIn = async ctx => { await ctx.addCookies([{name:'test_user',value:'1',url:h.base}]); return ctx; };
 async function menuAction(id) { await page.locator('#menuButton').click(); await page.locator('#'+id).click(); }
 async function settled() { await page.waitForFunction(()=>document.getElementById('saveStatus').textContent.includes('자동 저장됨')); }
 async function parameter(name,value) { await page.getByRole('spinbutton',{name:`${name} 값`,exact:true}).fill(String(value)); await page.keyboard.press('Tab'); await settled(); }
@@ -16,13 +17,13 @@ async function drag(from,to) { await page.mouse.move(from.x,from.y);await page.m
 async function graphPoint(x,y) { const box=await page.locator('#graphCanvas').boundingBox();const state=await saved()||{view:{x:0,y:0,range:6}}; const scale=Math.min(box.width,box.height)/(2*state.view.range);return {x:box.x+box.width/2+(x-state.view.x)*scale,y:box.y+box.height/2-(y-state.view.y)*scale}; }
 test.before(async()=>{
   await fs.mkdir(output,{recursive:true});
-  server=http.createServer(async(req,res)=>{try{let p=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://local').pathname));if(p!==root&&!p.startsWith(root+path.sep)){res.writeHead(403).end();return;}if((await fs.stat(p)).isDirectory())p=path.join(p,'index.html');res.setHeader('Content-Type',types[path.extname(p)]||'application/octet-stream');res.end(await fs.readFile(p));}catch{res.writeHead(404).end();}});
-  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));url=`http://127.0.0.1:${server.address().port}/learning/literacy-numeracy/graph-studio/`;
+  h=await startHarness();url=`${h.base}/learning/literacy-numeracy/graph-studio/`;
   browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:process.platform==='win32'?{channel:'msedge'}:{})});
 });
-test.beforeEach(async()=>{context=await browser.newContext({viewport:{width:1440,height:900},acceptDownloads:true});page=await context.newPage();errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(url);await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);await page.evaluate(()=>document.fonts.ready);});
+// 서버 저장 공간은 검사 사이에도 남으므로 매 검사 전에 비워 처음 상태에서 시작한다.
+test.beforeEach(async()=>{await h.db.query('DELETE FROM user_storage');context=await signedIn(await browser.newContext({viewport:{width:1440,height:900},acceptDownloads:true}));page=await context.newPage();errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(url);await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);await page.evaluate(()=>document.fonts.ready);});
 test.afterEach(async()=>{try{assert.deepEqual(errors,[]);}finally{await context.close();}});
-test.after(async()=>{await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));});
+test.after(async()=>{await browser?.close();if(h)await h.close();});
 
 test('desktop layout, vertex drag, immutable comparison, undo and redo',async()=>{
   assert.equal(await page.title(),'그래프 칠판');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
@@ -57,7 +58,7 @@ test('pan, zoom, coordinate exploration and reload preserve state',async()=>{
   let state=await saved();assert.ok(Math.abs(state.view.x+1)<.01);assert.ok(Math.abs(state.view.y+1)<.01);
   const box=await page.locator('#graphCanvas').boundingBox();await page.mouse.move(box.x+box.width*.6,box.y+box.height*.6);await page.mouse.wheel(0,-150);await settled();assert.ok((await saved()).view.range<6);
   await page.locator('#traceButton').click();await page.mouse.click(box.x+box.width*.55,box.y+box.height*.55);await settled();await page.locator('#traceReadout').waitFor({state:'visible'});
-  const before=await saved();await page.reload();await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);assert.deepEqual(await saved(),before);
+  const before=await saved();await page.reload();await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);assert.deepEqual(await saved(),before);await page.locator('#traceReadout').waitFor({state:'visible'});
   await menuAction('teachingButton');assert.equal(await page.locator('.function-source').first().isVisible(),false);assert.equal(await page.locator('#sliders').isVisible(),true);await page.screenshot({path:path.join(output,'teaching.png')});
 });
 test('named scene save/open and file export/import round trip',async()=>{
@@ -77,7 +78,7 @@ test('PNG download includes graph and lesson; full and blank printing work',asyn
   await page.emulateMedia({media:'print'});await page.screenshot({path:path.join(output,'print-blank.png'),fullPage:true});
 });
 test('phone layout, panel control and touch pinch',async()=>{
-  await context.close();context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1});page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(url);await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);
+  await context.close();context=await signedIn(await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1}));page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(url);await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);
   assert.equal(await page.locator('#sidebar').isVisible(),false);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.screenshot({path:path.join(output,'mobile.png')});
   await page.locator('#sidebarButton').tap();assert.equal(await page.locator('#sidebar').isVisible(),true);await parameter('h',1);await page.locator('#sidebarButton').tap();
   const box=await page.locator('#graphCanvas').boundingBox(),client=await context.newCDPSession(page),x=box.x+box.width/2,y=box.y+box.height/2;
@@ -86,7 +87,9 @@ test('phone layout, panel control and touch pinch',async()=>{
   await client.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await settled();assert.ok((await saved()).view.range<6);await client.detach();
 });
 test('storage failure is visible and drawing remains usable',async()=>{
-  await page.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Full','QuotaExceededError');};});await page.reload();await page.locator('#homeButton').click();await page.waitForFunction(()=>document.getElementById('saveStatus').textContent.includes('자동 저장 불가'));
+  // 서버 저장 공간이 쓰기를 거절하는 상황(예전엔 브라우저 저장 공간이 꽉 찬 경우)을 흉내 낸다.
+  await context.route(/\/api\/me\/storage\/graph-studio\//,route=>route.request().method()==='PUT'?route.fulfill({status:500,contentType:'application/json',body:JSON.stringify({error:'STORAGE_FAILED',message:'검사용 실패'})}):route.continue());
+  await page.reload();await page.waitForFunction(()=>document.getElementById('graphCanvas').width>100);await page.locator('#homeButton').click();await page.waitForFunction(()=>document.getElementById('saveStatus').textContent.includes('자동 저장 불가'));
   await page.getByRole('textbox',{name:'1번 함수 수식',exact:true}).fill('-x^2');await page.waitForFunction(()=>document.getElementById('graphCount').textContent.includes('1개의 그래프'));assert.equal(await page.locator('.function-error').textContent(),'');
 });
 test('analysis finds crossing and tangent intersections and never labels poles as roots',async()=>{

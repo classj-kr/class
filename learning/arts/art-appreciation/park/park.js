@@ -1,4 +1,4 @@
-(function () {
+(async function () {
   'use strict';
 
   if (!window.THREE) {
@@ -9,6 +9,8 @@
     document.body.innerHTML = '<p style="padding:30px">3D GLB 로더를 불러오지 못했습니다.</p>';
     return;
   }
+  // 큐레이터 도장은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(로그인이 없으면 이 탭 안에서만 기억).
+  const stampStore = await SiteStorage.open('park');
 
   // 05번 전시실(입체·공간)과 100% 동일한 THREE.GLTFLoader 기반 3D 스캔 GLB 로딩 시스템
     const ZONES = [
@@ -545,8 +547,9 @@
     return result;
   }
   const PARK_STAMP_KEY = 'parkFinaleStampV1';
-  function readParkStamp() { try { return localStorage.getItem(PARK_STAMP_KEY) === '1'; } catch (_) { return false; } }
-  function writeParkStamp() { try { localStorage.setItem(PARK_STAMP_KEY, '1'); } catch (_) {} }
+  stampStore.adopt([{ localKey: PARK_STAMP_KEY, item: 'finaleStamp', parse: raw => (raw === '1' ? true : undefined) }]);
+  function readParkStamp() { return stampStore.get('finaleStamp') === true; }
+  function writeParkStamp() { stampStore.set('finaleStamp', true); }
   // 사진 보고 작품 맞히기: 공원의 다른 작품은 생김새가 너무 달라 사진만 봐도 답이 보인다.
   // 작품마다 생김새가 닮은 다른 조각·유적 이름을 보기로 둔다.
   const TITLE_DECOYS = {

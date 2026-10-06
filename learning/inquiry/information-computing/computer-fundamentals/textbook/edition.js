@@ -1,15 +1,18 @@
-(() => {
+(async () => {
 "use strict";
 const id = new URLSearchParams(location.search).get("lesson");
 const entry = (window.COMPUTER_LESSON_INDEX || []).find(x => x.id === id);
 const data = window.COMPUTER_EDITION_DATA?.[id];
 if (!entry || !data) return;
 const key = "classj:textbook:" + id + ":v1";
+// 답 확인 기록은 계정별 서버 저장 공간(computer-literacy)에 둔다. 브라우저에는 남기지 않는다(2026-10-06).
+const store = await SiteStorage.open("computer-literacy");
+store.adopt([{ localKey: key, item: key }]);
 const questions = [data.labCheck, ...data.apply.fields, ...data.checks];
 const fresh = () => ({version:1, labUsed:false, answers:questions.map(() => ({selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
 let progress = fresh();
 try {
- const saved = JSON.parse(localStorage.getItem(key) || "null");
+ const saved = store.get(key) ?? null;
  if (saved?.version === 1 && Array.isArray(saved.answers) && saved.answers.length === questions.length) {
   progress.labUsed = saved.labUsed === true;
   progress.answers = saved.answers.map((a,i) => ({
@@ -87,8 +90,9 @@ const lab=node("div","edition-lab");lab.id="editionLab";
 });
 if(id==="g01")buildBinaryLab(lab);
 pages.lab.append(lab);
-const labNote=node("p","edition-note","화면 속 기기와 기록은 실습 모형입니다. 실습 조작 상태는 다시 열면 초기화되고, 답 확인 기록은 이 브라우저에 저장됩니다.");
+const labNote=node("p","edition-note","화면 속 기기와 기록은 실습 모형입니다. 실습 조작 상태는 다시 열면 초기화되고, 답 확인 기록은 "+(store.persistent?"내 계정에 저장됩니다.":"로그인했을 때만 저장됩니다."));
 pages.lab.append(labNote);
+if(!store.persistent){notice.hidden=false;notice.textContent="로그인하지 않아 답 확인 기록이 남지 않습니다. 실습과 답 확인은 계속할 수 있습니다.";}
 const recordLab=event=>{
  if(!event.target.closest("button,input,select,[role=button],[draggable=true],canvas"))return;
  if(!progress.labUsed){progress.labUsed=true;save();}
@@ -155,7 +159,7 @@ const footer=node("div","edition-page-end");
 const reset=node("button","edition-reset","이 차시 기록 지우기");reset.type="button";
 reset.addEventListener("click",()=>{
  if(!confirm("이 차시의 새 교재 답 확인 기록을 지울까요?"))return;
- progress=fresh();save();location.reload();
+ progress=fresh();save();store.flush().then(()=>location.reload());
 });
 footer.append(reset);
 const index=(window.COMPUTER_LESSON_INDEX||[]).findIndex(x=>x.id===id);
@@ -167,8 +171,8 @@ function completedGroups(){
 }
 function save(){
  progress.completed=completedGroups().every(Boolean);
- try{localStorage.setItem(key,JSON.stringify(progress));}
- catch(_){notice.hidden=false;notice.textContent="이 브라우저에서는 기록을 저장할 수 없습니다. 현재 화면의 실습과 답 확인은 계속할 수 있습니다.";}
+ // 같은 객체를 계속 고치므로 보낼 때마다 복사본을 넘긴다.
+ store.set(key,JSON.parse(JSON.stringify(progress)));
 }
 function update(){
  const groups=completedGroups();

@@ -3,16 +3,19 @@ import {GROUPS,WORLD_LESSONS as LESSONS,WORLD_QUESTIONS as QUESTIONS} from './cu
 import {installAtlasLayers,CLIMATE_LEGEND,DENSITY_LEGEND} from './atlas-layers.mjs?v=20261001-climate-palette';
 import {renderVisual} from './atlas-visuals.mjs?v=20260920-18';
 const KEY='classj-atlas-progress-2022-v1';
-export function readProgress(storage){
-  try {const saved=JSON.parse(storage.getItem(KEY)||'{}');return saved&&typeof saved==='object'&&!Array.isArray(saved)?saved:{};}catch{return {};}
+// 저장된 값이 깨졌거나 없으면 빈 기록으로 본다.
+export function cleanProgress(saved){
+  return saved&&typeof saved==='object'&&!Array.isArray(saved)?saved:{};
 }
 export function updateProgress(progress,id,correct){
   const old=progress[id]||{};
   return {...progress,[id]:{correct:(Number(old.correct)||0)+(correct?1:0),wrong:(Number(old.wrong)||0)+(correct?0:1),lastCorrect:correct}};
 }
 export function createAtlas(api){
-  let query='',current=null,layers=null,loaded=false,revision=0,quiz=null,progress;
-  try{progress=readProgress(localStorage);}catch{progress={};}
+  let query='',current=null,layers=null,loaded=false,revision=0,quiz=null,progress={},store=null;
+  // 풀이 기록은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(로그인이 없으면 이 탭 안에서만 기억).
+  // 문제는 저장 공간이 열린 뒤에만 시작하므로 기록을 읽기 전에 풀이가 쌓이는 일은 없다.
+  const storeReady=SiteStorage.open('atlas').then(opened=>{store=opened;store.adopt([{localKey:KEY,item:'progress'}]);progress=cleanProgress(store.get('progress'));}).catch(()=>{progress={};});
   document.body.classList.add('atlas','lesson-closed');
   document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false" title="메르카토르 도법: 고위도일수록 면적이 크게 보입니다.">평면지도</button></div></header>
     <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden></section><footer class="catalog-footer"><button id="wrongPractice">오답 다시 풀기</button></footer></aside>
@@ -87,7 +90,8 @@ export function createAtlas(api){
     box.innerHTML=`<strong>${{density:'국가·지역별 평균 인구밀도',climate:'주요 기후 지역',plates:'판 경계'}[id]}</strong><div>${rows.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')}</div><small>${{density:'2023 · 명/육지 km² · World Bank',climate:'Peel 외(2007)',plates:'USGS · 경계선 모형 · 실제 이동 속도 아님'}[id]}</small>`;
   }
   function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-  function startQuiz(pool,review=false){
+  async function startQuiz(pool,review=false){
+    await storeReady;
     quiz={items:selectPracticeQuestions(pool,progress,{reviewOnly:review}),at:0,answers:[],solved:[],review};
     if(!$('atlasQuiz').open)$('atlasQuiz').showModal();renderQuestion();
   }
@@ -110,7 +114,7 @@ export function createAtlas(api){
       if(quiz.answers[quiz.at]===undefined){
         quiz.answers[quiz.at]=correct;
         progress=updateProgress(progress,q.id,correct);
-        try{localStorage.setItem(KEY,JSON.stringify(progress));}catch{/* Study remains usable without persistent storage. */}
+        if(store)store.set('progress',progress);
       }
       if(!correct){
         b.classList.add('incorrect');b.disabled=true;

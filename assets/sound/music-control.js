@@ -8,6 +8,8 @@
         getItem: key => soundMemory.get(key) ?? null,
         setItem: (key, value) => soundMemory.set(key, String(value))
     } : window.localStorage;
+    // 이어 듣기(어느 곡 어디까지 들었나)는 이 탭에서 쪽을 옮길 때만 뜻이 있다. 탭을 닫으면 사라지는 저장에 둔다.
+    const playbackStorage = learningPage ? soundStorage : window.sessionStorage;
 
     const MUSIC_LEVEL_KEY = "classMusicVolumeLevel";
     const MUSIC_VOLUME_KEY = "classMusicVolumeValue";
@@ -107,7 +109,7 @@
 
     function readPlaybackPositions() {
         try {
-            const saved = JSON.parse(soundStorage.getItem(PLAYBACK_POSITIONS_KEY) || "{}");
+            const saved = JSON.parse(playbackStorage.getItem(PLAYBACK_POSITIONS_KEY) || "{}");
             return saved && typeof saved === "object" ? saved : {};
         } catch (_) {
             return {};
@@ -117,16 +119,16 @@
     function savePlaybackState() {
         if (!audio) return;
         const isPlaying = !audio.paused && !audio.ended;
-        soundStorage.setItem(PLAYBACK_STATE_KEY, isPlaying ? "playing" : "paused");
+        playbackStorage.setItem(PLAYBACK_STATE_KEY, isPlaying ? "playing" : "paused");
 
         if (!isPlaying || !Number.isFinite(audio.currentTime)) return;
         const source = audio.currentSrc || audio.src;
         const positions = readPlaybackPositions();
         positions[source] = audio.currentTime;
-        soundStorage.setItem(PLAYBACK_POSITIONS_KEY, JSON.stringify(positions));
+        playbackStorage.setItem(PLAYBACK_POSITIONS_KEY, JSON.stringify(positions));
         // Keep these keys for sessions created before per-track resume support.
-        soundStorage.setItem(PLAYBACK_SOURCE_KEY, source);
-        soundStorage.setItem(PLAYBACK_TIME_KEY, String(audio.currentTime));
+        playbackStorage.setItem(PLAYBACK_SOURCE_KEY, source);
+        playbackStorage.setItem(PLAYBACK_TIME_KEY, String(audio.currentTime));
     }
 
     function restorePlaybackPosition() {
@@ -134,8 +136,8 @@
         const source = audio.currentSrc || audio.src;
         const positions = readPlaybackPositions();
         const savedTime = Number(
-            positions[source] ?? (soundStorage.getItem(PLAYBACK_SOURCE_KEY) === source
-                ? soundStorage.getItem(PLAYBACK_TIME_KEY)
+            positions[source] ?? (playbackStorage.getItem(PLAYBACK_SOURCE_KEY) === source
+                ? playbackStorage.getItem(PLAYBACK_TIME_KEY)
                 : NaN)
         );
         if (!Number.isFinite(savedTime) || savedTime < 0) return;

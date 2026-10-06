@@ -1149,10 +1149,13 @@
         if (tabName !== "rhythm" && state.metronomeOn) toggleMetronome();
     }
 
+    // 오늘 연습 횟수는 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다.
+    let store = null;
+
     function loadPracticeCount() {
         const today = new Date().toISOString().slice(0, 10);
         try {
-            const saved = JSON.parse(localStorage.getItem("musicLabPractice") || "null");
+            const saved = store ? store.get("practice") : null;
             state.practiceCount = saved && saved.date === today ? Number(saved.count) || 0 : 0;
         } catch (error) {
             state.practiceCount = 0;
@@ -1164,7 +1167,7 @@
         const today = new Date().toISOString().slice(0, 10);
         state.practiceCount += 1;
         elements.practiceCount.textContent = state.practiceCount;
-        try { localStorage.setItem("musicLabPractice", JSON.stringify({ date: today, count: state.practiceCount })); } catch (error) { /* local storage is optional */ }
+        if (store) store.set("practice", { date: today, count: state.practiceCount });
     }
 
     let toastTimer = 0;
@@ -1332,7 +1335,9 @@
         });
     }
 
-    function init() {
+    async function init() {
+        store = await SiteStorage.open("music-studio");
+        store.adopt([{ localKey: "musicLabPractice", item: "practice" }]);
         cacheElements();
         elements.basicKeySelect = document.getElementById("basicKeySelect");
         elements.basicKeyName = document.getElementById("basicKeyName");

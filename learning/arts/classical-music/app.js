@@ -175,10 +175,16 @@ detailDialog.addEventListener('click',event=>{
   if(event.target===detailDialog||event.target.closest('.dialog-close')||event.target.closest('[data-close-detail]'))detailDialog.close();
 });
 
+// 풀이 기록은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다(로그인이 없으면 이 탭 안에서만 기억).
+// 저장 공간이 열린 뒤에야 문제 단추가 붙으므로, 기록을 읽기 전에 풀이가 쌓이는 일은 없다.
+(async()=>{
 const storeKey='classics-bank-progress-v1';
-let progress=JSON.parse(localStorage.getItem(storeKey)||'{"solved":0,"correct":0,"wrong":[]}');
+const store=await SiteStorage.open('classical-music');
+store.adopt([{localKey:storeKey,item:'progress'}]);
+const loaded=store.get('progress');
+let progress=loaded&&typeof loaded==='object'?{solved:Number(loaded.solved)||0,correct:Number(loaded.correct)||0,wrong:Array.isArray(loaded.wrong)?loaded.wrong:[]}:{solved:0,correct:0,wrong:[]};
 let current=[];
-function save(){localStorage.setItem(storeKey,JSON.stringify(progress));renderStats()}
+function save(){store.set('progress',progress);renderStats()}
 function renderStats(){
   $('#solved-count').textContent=progress.solved;
   $('#accuracy').textContent=progress.solved?`${Math.round(progress.correct/progress.solved*100)}%`:'—';
@@ -219,3 +225,4 @@ $('#check-answer').addEventListener('click',()=>{
   $('#result').innerHTML=`<div class="result-card"><b>${score} / ${current.length}</b><span>${answered<current.length?`${current.length-answered}문제는 답하지 않았어요. `:''}${score===current.length?'완벽해요! 이번에는 다른 시대에 도전해 보세요.':'틀린 문제는 오답 다시 풀기에 저장했어요.'}</span></div>`;
   $('#result').scrollIntoView({behavior:'smooth',block:'center'});
 });
+})();

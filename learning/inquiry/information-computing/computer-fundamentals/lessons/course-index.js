@@ -1,11 +1,17 @@
-(() => {
+(async () => {
     "use strict";
 
     // 첫 화면인 차시 목록. 차시 내용은 하나도 받지 않고 차례표만 그린다.
     const lessons = window.COMPUTER_LESSON_INDEX || [];
     const modules = window.COMPUTER_CORE_MODULES || [];
 
-    const readProgress = (key) => { try { return JSON.parse(localStorage.getItem(key) || "null"); } catch (_) { return null; } };
+    // 차시 완료 기록은 계정별 서버 저장 공간(computer-literacy)에 있다. 브라우저에는 남기지 않는다(2026-10-06).
+    const store = await SiteStorage.open("computer-literacy");
+    store.adopt(lessons.flatMap((item) => [
+        { localKey: "computer-literacy:" + item.id, item: "computer-literacy:" + item.id },
+        { localKey: "classj:textbook:" + item.id + ":v1", item: "classj:textbook:" + item.id + ":v1" }
+    ]));
+    const readProgress = (key) => store.get(key) ?? null;
     const completed = new Set();
     lessons.forEach((item) => {
         try {

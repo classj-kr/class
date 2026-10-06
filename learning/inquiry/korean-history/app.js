@@ -38,6 +38,8 @@
   const DONE_KEY = "hanguksa-done";
   const LEGACY_SOLVED_KEY = "hanguksa-solved";
   const LEGACY_WRONG_KEY = "hanguksa-wrong";
+  // 푼 기록은 계정별 서버 저장 공간에 둔다. 계정마다 따로이므로 이름 꼬리표는 더 붙이지 않는다(2026-10-06).
+  let store = null;
 
   const ERAS = [
     { id: "all", name: "전체 시대", unitIds: [] },
@@ -181,17 +183,29 @@
     return /^[가-힣]{2,6}$/.test(name) ? name : "";
   }
 
+  // 예전 화면이 브라우저에 이름 꼬리표를 붙여 두던 열쇠. 옮길 때만 쓴다.
   function playerKey(base) {
     return state.player ? base + ":" + encodeURIComponent(state.player) : base;
   }
 
-  function readJson(key, fallback) {
-    try {
-      const raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : fallback;
-    } catch (err) {
-      return fallback;
-    }
+  // 예전에 브라우저에 두던 기록을 한 번 옮기고 지운다. 이 학생 이름이 붙은 것을 먼저, 이름 없는 것을 다음에,
+  // 다른 이름이 붙은 것은 옮기지 않고 지우기만 한다(남의 기록일 수 있다).
+  function adoptLegacyRecords() {
+    const bases = [DONE_KEY, LEGACY_SOLVED_KEY, LEGACY_WRONG_KEY];
+    const moves = [];
+    bases.forEach((base) => {
+      if (state.player) moves.push({ localKey: playerKey(base), item: base });
+      moves.push({ localKey: base, item: base });
+    });
+    store.adopt(moves);
+    let leftovers = [];
+    try { leftovers = Object.keys(localStorage).filter((key) => bases.some((base) => key.startsWith(base + ":"))); } catch (err) { leftovers = []; }
+    leftovers.forEach((key) => { try { localStorage.removeItem(key); } catch (err) { /* 지우지 못해도 무방 */ } });
+  }
+
+  function readStored(key, fallback) {
+    const value = store.get(key);
+    return value === undefined || value === null ? fallback : value;
   }
 
   function resolvePlayer() {
@@ -208,23 +222,25 @@
   }
 
   function loadDone() {
-    const done = readJson(playerKey(DONE_KEY), null);
-    if (done) return done;
+    const done = readStored(DONE_KEY, null);
+    if (done && typeof done === "object") return { ...done };
     const migrated = {};
-    const wrong = new Set(readJson(playerKey(LEGACY_WRONG_KEY), []));
-    readJson(playerKey(LEGACY_SOLVED_KEY), []).forEach((id) => {
+    const asList = (value) => (Array.isArray(value) ? value : []);
+    const wrong = new Set(asList(readStored(LEGACY_WRONG_KEY, [])));
+    asList(readStored(LEGACY_SOLVED_KEY, [])).forEach((id) => {
       migrated[id] = wrong.has(id) ? "wrong" : "right";
     });
     wrong.forEach((id) => { migrated[id] = "wrong"; });
+    if (Object.keys(migrated).length) {
+      store.set(DONE_KEY, { ...migrated });
+      store.remove(LEGACY_SOLVED_KEY);
+      store.remove(LEGACY_WRONG_KEY);
+    }
     return migrated;
   }
 
   function saveDone() {
-    try {
-      localStorage.setItem(playerKey(DONE_KEY), JSON.stringify(state.done));
-    } catch (err) {
-      /* 저장이 막혀 있어도 무방 */
-    }
+    store.set(DONE_KEY, { ...state.done });
   }
 
   /* ── 고르기 UI 빌드 ── */
@@ -615,8 +631,10 @@
     });
   }
 
-  function start() {
+  async function start() {
     resolvePlayer();
+    store = await SiteStorage.open("korean-history");
+    adoptLegacyRecords();
     state.done = loadDone();
 
     buildEraTabs();
