@@ -7872,12 +7872,21 @@ function createClassroomPlatform(options = {}) {
       guardian1Email: String(s.guardian1Email || "").trim().toLowerCase() || null,
       guardian2Email: String(s.guardian2Email || "").trim().toLowerCase() || null,
       customFields: (typeof s.customFields === 'object' && s.customFields !== null) ? s.customFields : {}
-    })).filter(s => s.studentNumber && (s.rosterName || s.studentEmail))
-      // 성명을 비우고 구글 계정만 적은 학생은 첫 로그인 때 구글 계정 이름이 들어온다.
-      // 그때까지는 계정의 @ 앞부분을 자리표시 이름으로 두고 name_source 에 'pending'을 남긴다.
-      .map(s => s.rosterName
-        ? { ...s, nameSource: null }
-        : { ...s, rosterName: pendingStudentName(s.studentEmail), nameSource: NAME_SOURCE_PENDING });
+    })).filter(s => s.studentNumber);
+    // 반·번호가 있는 줄은 성명이나 학생 구글 계정 중 하나는 있어야 한다. 기기 없이 명단만 쓰는
+    // 학년(1·2학년)은 성명만, 계정으로 로그인할 학생은 계정만 적어도 된다. 둘 다 없으면 누구인지 알 수 없다.
+    const nameless = clean.find(s => !s.rosterName && !s.studentEmail);
+    if (nameless) {
+      throw new HttpError(400, "STUDENT_NAME_OR_EMAIL_REQUIRED",
+        `${nameless.grade}학년 ${nameless.classNumber}반 ${nameless.studentNumber}번: 성명이나 학생 구글 계정 중 하나는 적어 주세요.`);
+    }
+    // 성명을 비우고 구글 계정만 적은 학생은 첫 로그인 때 구글 계정 이름이 들어온다.
+    // 그때까지는 계정의 @ 앞부분을 자리표시 이름으로 두고 name_source 에 'pending'을 남긴다.
+    for (const s of clean) {
+      if (s.rosterName) { s.nameSource = null; continue; }
+      s.rosterName = pendingStudentName(s.studentEmail);
+      s.nameSource = NAME_SOURCE_PENDING;
+    }
 
     const seenKeys = new Set();
     for (const s of clean) {

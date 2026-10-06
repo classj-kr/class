@@ -164,18 +164,30 @@ test("placeholder names: a student shows the account's local part, a teacher the
 
 // ─── 전교생 명단 저장 + 첫 로그인 ────────────────────────────────────────
 
-test("PUT /school/students keeps a blank-name row that has a Google account as pending, and still drops a row with neither", async () => {
+test("PUT /school/students takes either a name or a Google account per row: name-only rows (no devices) save as before, account-only rows wait for sign-in", async () => {
   await withDb(async ({ pool, students }) => {
     const body = await putStudents(pool, [
       student("1", "", "S3101@school.test"),
       student("2", "김철수", "s3102@school.test"),
-      student("3", "", ""),
+      student("3", "이영희", ""),
+      student("", "번호없음", ""),
     ]);
-    assert.equal(body.saved, 2);
-    assert.deepEqual((await students()).map((r) => [r.student_number, r.roster_name, r.name_source]), [
-      ["1", "s3101", "pending"],
-      ["2", "김철수", null],
+    assert.equal(body.saved, 3, "a row without a number is still dropped");
+    assert.deepEqual((await students()).map((r) => [r.student_number, r.roster_name, r.name_source, r.student_email]), [
+      ["1", "s3101", "pending", "s3101@school.test"],
+      ["2", "김철수", null, "s3102@school.test"],
+      ["3", "이영희", null, null],
     ]);
+  });
+});
+
+test("PUT /school/students refuses a row that has a class and number but neither a name nor a Google account", async () => {
+  await withDb(async ({ pool, students }) => {
+    await assert.rejects(
+      () => putStudents(pool, [student("1", "김철수", ""), student("2", "", "")]),
+      (error) => error.code === "STUDENT_NAME_OR_EMAIL_REQUIRED" && /3학년 1반 2번/.test(error.message)
+    );
+    assert.equal((await students()).length, 0, "nothing is saved when one row is refused");
   });
 });
 
@@ -294,7 +306,7 @@ test("roster reads expose name_source so the editors can tell a placeholder from
 
 test("the school roster editor sends pending rows back with an empty name so the placeholder never becomes the real name", () => {
   assert.match(schoolRosterHtml, /rosterName: \(s\.name_source \|\| s\.nameSource\) === "pending" \? ""/);
-  assert.match(schoolRosterHtml, /\.filter\(s => s\.grade && s\.classNumber && s\.studentNumber && \(s\.rosterName \|\| s\.studentEmail\)\)/);
+  assert.match(schoolRosterHtml, /const nameless = rows\.filter\(s => !s\.rosterName && !s\.studentEmail\)/);
   assert.match(schoolRosterHtml, /const cleanName = t\.nameSource === "pending" \? ""/);
   assert.match(schoolRosterHtml, /\.filter\(t => t\.name \|\| t\.email\)/);
   // 붙여넣기: 성명 열이 없어도 학생구글계정 열이 있으면 받는다. 교직원은 계정부터 적은 줄을 받는다.
