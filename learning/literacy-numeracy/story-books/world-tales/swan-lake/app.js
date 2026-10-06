@@ -73,8 +73,7 @@ const CHAPTERS = [
                 "art": "03-odette.webp",
                 "emoji": "🌙",
                 "left": [
-                    "\"제 이름은 오데트입니다. 저 백조들은 모두 제 친구들이지요.\"",
-                    "\"로트바르트라는 마법사가 저희에게 마법을 걸었어요. 그날부터 낮에는 백조가 되고, 밤에만 사람으로 돌아올 수 있지요.\""
+                    "\"제 이름은 오데트입니다. 저 백조들은 모두 제 친구들이지요. 로트바르트라는 마법사가 저희에게 마법을 걸었어요. 그날부터 낮에는 백조가 되고, 밤에만 사람으로 돌아올 수 있지요.\""
                 ],
                 "right": [
                     "왕자는 가슴이 아팠습니다. \"마법을 푸는 길은 없습니까?\"",
@@ -159,7 +158,7 @@ const CHAPTERS = [
                 "right": [
                     "검은 망토를 두른 사람도 함께 사라졌습니다.",
                     "왕자가 떨리는 목소리로 중얼거렸지요. \"내가…… 내가 무슨 짓을 한 거지.\"",
-                    "왕자는 그 자리에 주저앉을 뻔했습니다. 창밖에서는 날갯짓 소리가 났지요. 퍼덕, 퍼덕. 소리가 점점 멀어졌습니다."
+                    "왕자는 그 자리에 주저앉을 뻔했습니다. 창밖에서 흰 옷자락이 숲 쪽으로 멀어졌지요. 점점 보이지 않게 되었습니다."
                 ]
             }
         ]
@@ -186,8 +185,7 @@ const CHAPTERS = [
                 "art": "06-return-2.webp",
                 "emoji": "🏃",
                 "left": [
-                    "오데트가 천천히 고개를 들었습니다. \"알고 있어요. 로트바르트가 자기 딸에게 제 얼굴을 씌운 거예요.\"",
-                    "\"그래도 맹세는 이미 깨졌는걸요.\" 오데트의 목소리가 떨렸지요. \"이제 저희는 영영 백조로 살아야 해요.\""
+                    "오데트가 천천히 고개를 들었습니다. \"알고 있어요. 로트바르트가 자기 딸에게 제 얼굴을 씌운 거예요. 그래도 맹세는 이미 깨졌는걸요.\" 오데트의 목소리가 떨렸지요. \"이제 저희는 영영 백조로 살아야 해요.\""
                 ],
                 "right": [
                     "왕자는 숨이 턱 막혔습니다.",
@@ -219,8 +217,8 @@ const CHAPTERS = [
                 "art": "07-confront-2.webp",
                 "emoji": "⚡",
                 "left": [
-                    "오데트가 왕자의 곁으로 다가왔습니다. 그러고는 나란히 섰지요. 두 사람은 손을 맞잡았습니다.",
-                    "백조들도 물가로 올라와 둘러섰지요. 모두 로트바르트를 마주 보았습니다. 그러자 검은 날개가 흔들리기 시작했지요.",
+                    "오데트가 왕자 곁에 나란히 섰습니다. 두 사람은 손을 맞잡았지요.",
+                    "백조들도 물가로 올라와 로트바르트를 마주 보고 둘러섰지요. 두 사람의 마음이 하나로 맞서자 검은 날개가 흔들리기 시작했지요.",
                     "깃털이 하나둘 떨어졌습니다. 로트바르트가 소리를 질렀지요."
                 ],
                 "right": [
@@ -245,7 +243,7 @@ const CHAPTERS = [
                 "right": [
                     "오데트는 그대로 사람이었습니다. 백조들의 깃털도 하나둘 벗겨졌지요.",
                     "아가씨들이 물가로 걸어 나왔습니다. 서로를 얼싸안고 웃었지요.",
-                    "마법이 풀린 것이었습니다. 왕자의 마음이 거짓이 아니었으니까요."
+                    "마법이 풀린 것이었습니다. 마법을 건 로트바르트가 사라졌으니까요."
                 ]
             },
             {
@@ -758,9 +756,9 @@ const EN = {
                         "And the man in the black cloak had gone with her.",
                         "\"What… what have I done?\" the prince whispered.",
                         "He very nearly sank to the floor.",
-                        "Outside the window there was the sound of wings.",
-                        "Beat, beat.",
-                        "It went further and further away."
+                        "Outside the window a white hem was slipping away towards the wood.",
+                        "It went further and further away,",
+                        "until it could not be seen at all."
                     ]
                 }
             ]
@@ -835,7 +833,7 @@ const EN = {
                     left: [
                         "Odette came to the prince's side. The two of them took hands.",
                         "The swans came up out of the water and stood round them, facing Rothbart.",
-                        "The black wings began to waver.",
+                        "As the two of them stood together with one heart, the black wings began to waver.",
                         "Feathers fell one by one. Rothbart cried out."
                     ],
                     right: [
@@ -870,7 +868,7 @@ const EN = {
                         "Young women walked up out of the water",
                         "and threw their arms round one another, laughing.",
                         "The spell was broken.",
-                        "Because the prince's heart had not been a lie."
+                        "Because Rothbart, who had cast it, was gone."
                     ]
                 },
                 {
@@ -1057,7 +1055,7 @@ const EN = {
             { word: 'come up', meaning: '떠오르다', sentence: 'The sun came slowly up.' },
             { word: 'look round at', meaning: '돌아보다', sentence: 'The prince looked round at Odette.' },
             { word: 'come away', meaning: '벗겨지다', sentence: "The swans' feathers began coming away." },
-            { word: 'lie', meaning: '거짓', sentence: "Because the prince's heart had not been a lie." }
+            { word: 'cast', meaning: '(마법을) 걸다', sentence: 'Rothbart, who had cast it, was gone.' }
         ],
         '08-ending-2.webp': [
             { word: 'lie warm', meaning: '따뜻하게 닿다', sentence: 'The sunlight lay warm across them.' },
@@ -1141,7 +1139,7 @@ const WORDS_KO = {
     "05-window-2.webp": [
         { w: "하얗게 질리다", k: "놀라서 얼굴빛이 하얘지다.", s: "왕자의 얼굴이 하얗게 질렸지요." },
         { w: "중얼거리다", k: "혼자 낮은 소리로 말하다.", s: "왕자가 떨리는 목소리로 중얼거렸지요." },
-        { w: "날갯짓", k: "새가 날개를 치는 움직임.", s: "창밖에서는 날갯짓 소리가 났지요." }
+        { w: "주저앉다", k: "힘이 빠져 그 자리에 앉아 버리다.", s: "왕자는 그 자리에 주저앉을 뻔했습니다." }
     ],
     "06-return.webp": [
         { w: "뛰쳐나가다", k: "갑자기 밖으로 달려 나가다.", s: "왕자는 무도회장을 뛰쳐나갔습니다." },
@@ -1150,7 +1148,7 @@ const WORDS_KO = {
     ],
     "06-return-2.webp": [
         { w: "씌우다", k: "무엇을 위에 덮어 쓰게 하다.", s: "로트바르트가 자기 딸에게 제 얼굴을 씌운 거예요." },
-        { w: "깨지다", k: "약속이 지켜지지 못하게 되다.", s: "\"그래도 맹세는 이미 깨졌는걸요.\"" },
+        { w: "깨지다", k: "약속이 지켜지지 못하게 되다.", s: "그래도 맹세는 이미 깨졌는걸요." },
         { w: "숨이 턱 막히다", k: "너무 놀라 숨이 잠시 멎다.", s: "왕자는 숨이 턱 막혔습니다." },
         { w: "순식간에", k: "아주 짧은 사이에.", s: "호수가 순식간에 어두워졌습니다." }
     ],
@@ -1161,8 +1159,8 @@ const WORDS_KO = {
         { w: "오히려", k: "생각과는 반대로.", s: "오히려 오데트의 앞을 막아섰지요." }
     ],
     "07-confront-2.webp": [
-        { w: "나란히", k: "줄을 맞추어 가지런하게.", s: "그러고는 나란히 섰지요." },
-        { w: "둘러서다", k: "여럿이 둥글게 둘러 서다.", s: "백조들도 물가로 올라와 둘러섰지요." },
+        { w: "나란히", k: "줄을 맞추어 가지런하게.", s: "오데트가 왕자 곁에 나란히 섰습니다." },
+        { w: "둘러서다", k: "여럿이 둥글게 둘러 서다.", s: "백조들도 물가로 올라와 로트바르트를 마주 보고 둘러섰지요." },
         { w: "허공", k: "아무것도 없는 빈 곳.", s: "잡으려 뻗은 손이 허공을 저었지요." },
         { w: "새벽바람", k: "날이 밝기 전에 부는 바람.", s: "이윽고 새벽바람이 불어오자 검은 그림자는 안개처럼 흩어졌습니다." }
     ],
