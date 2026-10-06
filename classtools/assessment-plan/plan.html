@@ -73,6 +73,10 @@
         .preview-item small { color: var(--muted); display: block; }
         .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; opacity: 0; transition: opacity 0.2s; pointer-events: none; font-size: 0.92rem; max-width: 90vw; }
         .toast.show { opacity: 1; }
+        /* 파일을 끌고 들어오는 동안만 보이는 놓을 자리 */
+        .drop-hint { position: fixed; inset: 12px; border: 3px dashed var(--brand); border-radius: 18px; background: rgba(36, 107, 85, 0.08); display: none; align-items: center; justify-content: center; pointer-events: none; z-index: 20; }
+        .drop-hint.show { display: flex; }
+        .drop-hint span { background: var(--brand); color: #fff; padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 1.05rem; }
         @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .level { grid-template-columns: 1fr; } .toolbar .status { margin-left: 0; width: 100%; } }
     </style>
 </head>
@@ -125,6 +129,7 @@
         </div>
     </dialog>
     <div class="toast" id="toast" role="status"></div>
+    <div class="drop-hint" id="drop-hint" aria-hidden="true"><span>계획서 파일을 여기에 놓으면 이 계획을 채웁니다</span></div>
 
     <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
     <script>
@@ -291,11 +296,7 @@
                 card.append(head);
 
                 const grid = document.createElement('div'); grid.className = 'grid';
-                grid.append(field('영역명', (() => {
-                    const input = document.createElement('input'); input.className = 'form-control'; input.value = item.domain; input.placeholder = '예: 듣기·말하기'; input.setAttribute('list', 'domain-list');
-                    input.addEventListener('input', () => { item.domain = input.value; markDirty(); });
-                    return input;
-                })()));
+                grid.append(field('영역명', domainControl(item)));
                 grid.append(field('평가요소', (() => {
                     const ta = document.createElement('textarea'); ta.className = 'form-control'; ta.value = item.element; ta.placeholder = '예: 작품 속 인물과 면담하기';
                     ta.addEventListener('input', () => { item.element = ta.value; markDirty(); });
@@ -336,6 +337,29 @@
                 }
                 card.append(levels);
                 return card;
+            }
+
+            // 영역명은 그 교과의 영역을 큰 글씨의 고르기 칸으로 보여 준다(브라우저 자동완성 목록은 글씨가 작아 읽기 어렵다).
+            // 목록에 없는 이름(계획서에서 읽어 온 것 등)은 그대로 한 줄로 두고, 「직접 적기」를 고르면 글 칸으로 바뀐다.
+            const CUSTOM_DOMAIN = '\u0000custom';
+            function domainControl(item) {
+                const select = document.createElement('select'); select.className = 'form-control';
+                const names = domainNames.slice();
+                if (item.domain && !names.includes(item.domain)) names.unshift(item.domain);
+                select.append(new Option('영역을 고르세요', '', !item.domain, !item.domain));
+                for (const name of names) select.append(new Option(name, name, false, name === item.domain));
+                select.append(new Option('직접 적기…', CUSTOM_DOMAIN));
+                select.addEventListener('change', () => {
+                    if (select.value === CUSTOM_DOMAIN) {
+                        const input = document.createElement('input'); input.className = 'form-control'; input.value = item.domain; input.placeholder = '영역명을 적으세요';
+                        input.addEventListener('input', () => { item.domain = input.value; markDirty(); });
+                        input.addEventListener('blur', () => { input.replaceWith(domainControl(item)); });
+                        select.replaceWith(input); input.focus();
+                        return;
+                    }
+                    item.domain = select.value; markDirty();
+                });
+                return select;
             }
 
             function field(labelText, control) { const wrap = document.createElement('label'); wrap.className = 'field'; wrap.append(Object.assign(document.createElement('span'), { textContent: labelText }), control); return wrap; }
@@ -405,14 +429,37 @@
             // ── 계획서 파일로 채우기 ─────────────────────────────────────
             const importDialog = $('import-dialog'), importList = $('import-list'), importMeta = $('import-meta'), importFile = $('import-file'), importBtn = $('import-btn');
             let imported = [];
+            const IMPORT_TYPES = /\.(pdf|png|jpe?g|webp|hwpx|docx|txt)$/i;
+            async function importReady() {
+                try { await window.ClassroomAI.init(); } catch (error) { notice(error.message); return false; }
+                if (!window.ClassroomAI.hasKey()) { notice('내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.'); return false; }
+                return true;
+            }
             importBtn.addEventListener('click', async () => {
-                try { await window.ClassroomAI.init(); } catch (error) { notice(error.message); return; }
-                if (!window.ClassroomAI.hasKey()) { notice('내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.'); return; }
+                if (!await importReady()) return;
                 importFile.value = ''; importFile.click();
             });
-            importFile.addEventListener('change', async () => {
-                const file = importFile.files && importFile.files[0];
+            importFile.addEventListener('change', () => { const file = importFile.files && importFile.files[0]; if (file) importPlanFile(file); });
+
+            // 파일을 창 어디에나 끌어다 놓아도 단추로 고른 것과 똑같이 읽는다. 끄는 동안만 놓을 자리를 보여 준다.
+            const dropHint = $('drop-hint');
+            let dragDepth = 0;
+            const hasFiles = (e) => e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files');
+            document.addEventListener('dragenter', (e) => { if (!hasFiles(e)) return; e.preventDefault(); dragDepth += 1; dropHint.classList.add('show'); });
+            document.addEventListener('dragover', (e) => { if (!hasFiles(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = readOnly ? 'none' : 'copy'; });
+            document.addEventListener('dragleave', (e) => { if (!hasFiles(e)) return; dragDepth = Math.max(0, dragDepth - 1); if (dragDepth === 0) dropHint.classList.remove('show'); });
+            document.addEventListener('drop', async (e) => {
+                if (!hasFiles(e)) return;
+                e.preventDefault(); dragDepth = 0; dropHint.classList.remove('show');
+                const file = e.dataTransfer.files && e.dataTransfer.files[0];
                 if (!file) return;
+                if (readOnly) { notice('이 학년·교과는 보기만 할 수 있어 계획서를 넣을 수 없습니다.'); return; }
+                if (!IMPORT_TYPES.test(file.name)) { notice('PDF·사진·hwpx·docx·txt 파일만 읽을 수 있습니다.'); return; }
+                if (!await importReady()) return;
+                importPlanFile(file);
+            });
+
+            async function importPlanFile(file) {
                 if (file.size > 20 * 1024 * 1024) { notice('20MB가 넘는 파일은 올릴 수 없습니다.'); return; }
                 importBtn.disabled = true; planNote.textContent = file.name + ' 읽는 중… 제미나이가 항목을 옮깁니다.';
                 try {
@@ -433,7 +480,7 @@
                     importDialog.showModal(); planNote.textContent = '';
                 } catch (error) { planNote.textContent = error.message; }
                 finally { importBtn.disabled = false; }
-            });
+            }
             function applyImport(mode) {
                 const picked = [...importList.querySelectorAll('input:checked')].map((b) => imported[Number(b.value)]);
                 if (!picked.length) { importDialog.close(); return; }
@@ -458,15 +505,18 @@
 
             // ── 묶기 ────────────────────────────────────────────────────
             $('add-item-btn').addEventListener('click', () => { items.push(newItem()); markDirty(); render(); itemsRoot.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
-            const domainList = document.createElement('datalist'); domainList.id = 'domain-list'; document.body.append(domainList);
-            async function refreshDomainList() { domainList.replaceChildren(...(await standardsForCurrent()).map((g) => Object.assign(document.createElement('option'), { value: g.name }))); }
-            async function switchPlan() { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadPlan(); refreshDomainList(); }
+            // 지금 교과의 영역 이름들. 계획을 불러와 그리기 전에 먼저 읽어 둔다.
+            let domainNames = [];
+            async function refreshDomainList() {
+                try { domainNames = (await standardsForCurrent()).map((g) => g.name); } catch (_) { domainNames = []; }
+            }
+            async function switchPlan() { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await refreshDomainList(); await loadPlan(); }
             // 학년도가 바뀌면 그해 담당 범위도 다시 읽는다(전담 시간표는 학년도마다 다르다).
-            yearSelect.addEventListener('change', async () => { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadScope(Number(yearSelect.value)); labelGrades(); fillSubjects(); await loadPlan(); refreshDomainList(); });
+            yearSelect.addEventListener('change', async () => { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadScope(Number(yearSelect.value)); labelGrades(); fillSubjects(); await refreshDomainList(); await loadPlan(); });
             gradeSelect.addEventListener('change', () => { fillSubjects(); switchPlan(); });
             semesterSelect.addEventListener('change', switchPlan);
             subjectSelect.addEventListener('change', switchPlan);
-            if (await prepare()) { await loadPlan(); refreshDomainList(); }
+            if (await prepare()) { await refreshDomainList(); await loadPlan(); }
         })().catch((error) => { document.getElementById('save-status').textContent = error.message; });
     </script>
 </body>
