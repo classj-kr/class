@@ -52,7 +52,10 @@ const fetchImpl = async (url, options = {}) => {
         CREATE TABLE school_master_timetable(id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, subject_name TEXT, teacher_user_id BIGINT);`)
         .then(() => Promise.all([ai.initialize(), plans.initialize()]));
       app.use('/api/teacher-ai', (req, res, next) => ready.then(() => next(), next), ai.router);
-      app.use('/api/teacher/assessment-plans', (req, res, next) => ready.then(() => next(), next), plans.router);
+      // 저장을 일부러 늦추는 손잡이: 저장 중에 더 고치는 경우를 재현한다.
+      let slowSaveMs = 0;
+      app.post('/__test/slow-save/:ms', (req, res) => { slowSaveMs = Number(req.params.ms) || 0; res.json({ slowSaveMs }); });
+      app.use('/api/teacher/assessment-plans', (req, res, next) => ready.then(() => (req.method === 'PUT' && slowSaveMs ? setTimeout(next, slowSaveMs) : next()), next), plans.router);
       app.get('/api/teacher/available-classes', (_req, res) => res.json({ classes: [{ classId: 1, grade: 5, classNumber: 2, label: '5학년 2반', isHomeroom: true, schoolName: '검증초' }] }));
       app.put('/api/teacher/record-plan', (req, res) => { recordPlans.set([req.body.grade, req.body.area, req.body.semester, req.body.subject].join('|'), req.body.items); res.json({ ok: true, updatedAt: new Date().toISOString() }); });
     }
@@ -175,6 +178,33 @@ const fetchImpl = async (url, options = {}) => {
     // 삭제도 저장된다.
     await page.locator('.item').nth(2).locator('button', { hasText: '삭제' }).click();
     await waitSaved((list) => list.length === 2);
+
+    // 고치자마자 다른 교과로 옮겨도: 고친 것은 국어에 저장되고 수학에는 아무것도 묻지 않는다.
+    const mathKey = { ...key, subject: '수학' };
+    const savedOf = async (k) => page.evaluate(async (k) => (await (await fetch('/api/teacher/assessment-plans?' + new URLSearchParams(k))).json()).items, k);
+    await page.locator('.item textarea').first().fill('바꾼 평가요소');
+    await page.locator('#subject-select').selectOption('수학');
+    await page.locator('#save-status').filter({ hasText: '아직 계획이 없습니다' }).waitFor({ timeout: 10000 });
+    assert.equal(await page.locator('.item').count(), 0, '수학 화면은 비어 있다');
+    assert.deepEqual(await savedOf(mathKey), [], '국어에서 고친 것이 수학으로 새지 않는다');
+    assert.equal((await savedOf(key))[0].element, '바꾼 평가요소', '국어에 저장됐다');
+    await page.locator('#subject-select').selectOption('국어');
+    await page.locator('.item').nth(1).waitFor();
+    assert.equal(await page.locator('.item textarea').first().inputValue(), '바꾼 평가요소');
+
+    // 저장이 느릴 때 그 사이에 더 고치고 바로 옮겨도, 나중에 고친 것까지 저장된 뒤에 옮긴다.
+    await page.evaluate(() => fetch('/__test/slow-save/1500', { method: 'POST' }));
+    await page.locator('.item textarea').first().fill('첫 번째 고침');
+    await page.waitForTimeout(1100);   // 0.9초 뒤 저장이 떠나 1.5초 동안 걸려 있다
+    await page.locator('.item textarea').first().fill('두 번째 고침');
+    await page.locator('#subject-select').selectOption('수학');
+    await page.locator('#save-status').filter({ hasText: '아직 계획이 없습니다' }).waitFor({ timeout: 15000 });
+    await page.evaluate(() => fetch('/__test/slow-save/0', { method: 'POST' }));
+    assert.equal((await savedOf(key))[0].element, '두 번째 고침', '저장 중에 고친 것도 버리지 않는다');
+    assert.deepEqual(await savedOf(mathKey), []);
+    await page.locator('#subject-select').selectOption('국어');
+    await page.locator('.item').nth(1).waitFor();
+    assert.equal(await page.locator('.item textarea').first().inputValue(), '두 번째 고침');
 
     // 담임이 다른 학년을 열면 보기만: 칸이 잠기고 추가·채우기 단추가 사라진다. 서버도 저장을 거절한다.
     assert.match(await page.locator('#grade-select option[value="6"]').innerText(), /보기만/);
