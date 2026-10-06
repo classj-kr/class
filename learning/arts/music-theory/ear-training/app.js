@@ -1202,7 +1202,7 @@
     /* 눌러 보는 건반. 문제를 푸는 자리가 아니면 그냥 소리만 낸다. */
     function soundOnly(midi) {
         if (!window.PianoEngine) return;
-        window.PianoEngine.playSequence([[midi]], .9).catch(() => {});
+        window.PianoEngine.playMidi(midi, { duration: .65, volume: .13 }).catch(() => {});
     }
     const session = {
         screen: "menu",
@@ -1238,6 +1238,7 @@
         session.screen = name;
         document.body.classList.toggle("wheel-open", name === "wheel");
         document.body.classList.toggle("lesson-open", name === "lesson");
+        document.body.classList.toggle("drill-open", name === "drill");
         window.scrollTo({ top: 0 });
     }
 
@@ -1472,10 +1473,8 @@
     };
 
     /*
-     * 마디 하나를 만든다. "치는 자리에서 다음 칠 자리까지 이어진다"는 규칙으로
-     * 적을 수 없는 리듬(붙임줄이 필요한 것)은 버리고 다시 만든다. 그러면 어느
-     * 문제에서나 악보가 한 가지로만 적히고, 마디 속에 쓸데없는 쉼표가 생기지
-     * 않는다 — 8분음표 다음에 8분쉼표를 붙이는 것은 4분음표 하나로 적을 일이다.
+     * 치는 자리에서 다음 칠 자리까지 이어지는 길이를 박 단위로 표기한다.
+     * 박을 넘는 음은 붙임줄로 이어도 실제 타격 수와 채점 기준은 그대로다.
      */
     function rhythmBar(setName) {
         const set = RHYTHM_SETS[setName];
@@ -1511,7 +1510,7 @@
      */
     const NUDGES = [3, -3, 4, -4, 6, -6, 2, -2, 9, -9, 12, -12, 18, -18, 24, -24];
 
-    function nudgeOnsets(cells, allowFirst) {
+    function nudgeOnsets(cells, allowFirst, step) {
         const taken = new Set(cells);
         /* 첫 박은 되도록 그대로 두어 시작을 견주지 못하게 한다. */
         const movable = allowFirst ? cells.slice() : cells.filter(cell => cell > 0);
@@ -1523,6 +1522,14 @@
             for (let way = 0; way < ways.length; way += 1) {
                 const to = from + ways[way];
                 if (to < 0 || to >= BAR_CELLS || taken.has(to)) continue;
+                if (step && to % step !== 0) continue;
+                if (!step) {
+                    // Mixed exercises may use either subdivision in a beat,
+                    // but must not put straight sixteenths inside a triplet.
+                    const beatStart = Math.floor(to / RN.PER_BEAT) * RN.PER_BEAT;
+                    const tripletBeat = cells.some(cell => cell >= beatStart && cell < beatStart + RN.PER_BEAT && cell % 3 !== 0);
+                    if (to % (tripletBeat ? 4 : 3) !== 0) continue;
+                }
                 const moved = cells.filter(cell => cell !== from).concat([to]).sort((a, b) => a - b);
                 const bar = RN.fromOnsets(moved, BAR_CELLS);
                 if (bar) return bar;
@@ -1540,7 +1547,13 @@
          * 정답도 보기와 같은 방법으로 적어야 한다. 만든 그대로 두면 정답만
          * 8분음표+8분쉼표처럼 쉼표를 품어, 쉼표가 있는 보기를 찾으면 답이 된다.
          */
-        const answer = RN.canonical(rhythmBar(item.set).bar, BAR_CELLS);
+        const gridCells = RHYTHM_SETS[item.set].cells;
+        const step = gridCells ? BAR_CELLS / gridCells : item.set === "trip" ? 4 : 0;
+        let answer = RN.canonical(rhythmBar(item.set).bar, BAR_CELLS);
+        const attacks = RN.onsets(answer);
+        // A completely filled grid has no different pattern with the same
+        // attack count. Leave one gap so four valid choices are possible.
+        if (step && attacks.length === BAR_CELLS / step) answer = RN.fromOnsets(attacks.slice(0, -1), BAR_CELLS);
         const want = RN.onsets(answer).length;
         const bars = [answer];
         const fresh = bar => bar && RN.barCells(bar) === BAR_CELLS
@@ -1556,9 +1569,9 @@
                 if (fresh(other)) bars.push(other);
             }
         };
-        fill(() => nudgeOnsets(RN.onsets(answer), false), 300);
-        fill(() => nudgeOnsets(RN.onsets(answer), true), 300);
-        fill(() => nudgeOnsets(RN.onsets(pick(bars)), true), 200);
+        fill(() => nudgeOnsets(RN.onsets(answer), false, step), 300);
+        fill(() => nudgeOnsets(RN.onsets(answer), true, step), 300);
+        fill(() => nudgeOnsets(RN.onsets(pick(bars)), true, step), 200);
         fill(() => RN.canonical(rhythmBar(item.set).bar, BAR_CELLS), 300);
 
         const order = shuffled(bars);
@@ -1825,7 +1838,8 @@
         const button = document.createElement("button");
         button.type = "button";
         button.className = "row-act is-" + act;
-        button.textContent = spec.mark;
+        if (act === "read") button.append(N.icon(spec.mark));
+        else button.textContent = spec.mark;
         button.title = spec.text;
         button.setAttribute("aria-label", rowName(lesson) + " — " + spec.text);
         button.addEventListener("click", () => startRowAct(index, act));
@@ -2844,7 +2858,7 @@
         if (session.answered) return;
         const board = session.current.keyboard;
         const expected = board.answer;
-        window.PianoEngine.playSequence([[midi]], .6).catch(() => {});
+        window.PianoEngine.playMidi(midi, { duration: .43, volume: .13 }).catch(() => {});
 
         /* 알려 준 음은 짚어 봐도 답으로 세지 않는다. */
         if (!session.typed.length && board.given.some(given => given.midi === midi)) return;
@@ -3032,6 +3046,8 @@
     function bindKeys() {
         document.addEventListener("keydown", event => {
             if (session.screen !== "drill") return;
+            // Focused piano / range buttons retain native Enter and Space activation.
+            if (event.target.closest && event.target.closest(".key, .keyboard-navigation button")) return;
             if (event.key === " ") { event.preventDefault(); play(); return; }
             if (event.key === "Enter" && !els.nextButton.hidden) { event.preventDefault(); nextQuestion(); return; }
             if (session.input === "keyboard") return;
