@@ -7,6 +7,7 @@ const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const { readPlanDocument } = require('./plan-document');
+const { cleanItems, LEVEL_LABELS } = require('./assessment-plans');
 
 const API_ROOT = 'https://generativelanguage.googleapis.com/v1beta';
 // 429·500·502·503·504 는 구글 쪽 사정이다. 곧 풀리는 경우가 많다.
@@ -16,6 +17,7 @@ const GENERATE_LIMIT_PER_MINUTE = 120;
 const KEY_PATTERN = /^[A-Za-z0-9._-]{20,200}$/;
 const MAX_PLAN_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_TOPICS = 40;
+const STANDARDS_DIR = path.join(__dirname, '..', 'classtools', 'assessment-plan', 'data');
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -274,6 +276,86 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     return { ...parseTopics(text), model };
   }
 
+  // 수행평가 계획 메뉴가 쓰는 성취기준 자료(교과·학년군). 서버도 같은 파일을 읽어 제미나이에 넘긴다.
+  const standardsCache = new Map();
+  function standardsFor(subjectName, grade) {
+    const band = grade <= 2 ? 'e12' : grade <= 4 ? 'e34' : grade <= 6 ? 'e56' : 'm';
+    const cacheKey = subjectName + '|' + band;
+    if (standardsCache.has(cacheKey)) return standardsCache.get(cacheKey);
+    let found = [];
+    try {
+      const index = JSON.parse(fs.readFileSync(path.join(STANDARDS_DIR, 'index.json'), 'utf8'));
+      const subject = index.subjects.find((s) => s.name === subjectName || s.name.split('·').includes(subjectName));
+      if (subject && subject.bands[band]) {
+        const data = JSON.parse(fs.readFileSync(path.join(STANDARDS_DIR, subject.id + '.json'), 'utf8'));
+        for (const domain of data.bands[band].domains) {
+          if (subject.name !== subjectName && domain.subjectName !== subjectName) continue;
+          for (const st of domain.standards) found.push({ code: st.code, text: st.text, domain: domain.name });
+        }
+      }
+    } catch (_) { found = []; }
+    standardsCache.set(cacheKey, found);
+    return found;
+  }
+
+  function planPrompt(context, standards, documentText) {
+    const labels = LEVEL_LABELS[context.levels] || LEVEL_LABELS[3];
+    return [
+      '너는 초·중학교 교사를 돕는 보조자다. 교사가 올린 수행평가 계획 문서를 나이스 「평가계획(안)」과 같은 틀로 옮겨 적어라.',
+      '조건: ' + [context.grade ? context.grade + '학년' : '', context.subject ? '교과 ' + context.subject : '', context.semester ? context.semester + '학기' : ''].filter(Boolean).join(', ') + '. 문서에 다른 학년·교과·학기가 섞여 있으면 조건에 맞는 것만 옮기고, 맞는 것이 없으면 전부 옮기되 note 에 적어라.',
+      '항목(item) 하나는 평가 한 건이다. 각 항목에 영역명(domain), 성취기준 코드 목록(codes), 평가요소(element), 단계별 평가결과(criteria)를 적는다.',
+      '성취기준 코드는 반드시 아래 목록에서 고른다. 문서에 코드가 없으면 성취기준 문장이나 평가요소가 가장 맞는 코드를 고르고, 정말 맞는 것이 없으면 codes 를 비워 둔다. 목록에 없는 코드를 지어내지 마라.',
+      '평가요소는 문서의 표현을 살려 짧은 구(句)로 적는다(보기: "작품 속 인물과 면담하기"). 단계별 평가결과는 문서에 있으면 그대로 옮기고, 없으면 빈 글로 둔다(지어내지 마라).',
+      '단계 수는 문서를 따르되 ' + Object.keys(LEVEL_LABELS).join('·') + ' 가운데 하나다. 단계 이름의 기본값은 ' + context.levels + '단계면 ' + labels.join('/') + ' 이다.',
+      '반드시 아래 모양의 JSON 만 답하라. 다른 말은 쓰지 마라.',
+      '{"items":[{"domain":"영역명","codes":["6국01-04"],"element":"평가요소","levels":3,"criteria":[{"label":"잘함","text":"…"},{"label":"보통","text":"…"},{"label":"노력요함","text":"…"}]}],"note":"알릴 것이 있으면 한 줄"}',
+      '성취기준 목록(코드: 영역 / 본문):',
+      standards.map((s) => s.code + ': ' + s.domain + ' / ' + s.text).join('\n') || '(목록 없음)',
+      documentText ? '\n문서 내용:\n' + documentText : ''
+    ].filter(Boolean).join('\n');
+  }
+
+  function criteriaPrompt(context) {
+    const labels = context.labels;
+    return [
+      '너는 초·중학교 교사를 돕는 보조자다. 나이스 수행평가 계획의 「단계별 평가결과」 문장을 쓴다.',
+      '조건: ' + [context.grade ? context.grade + '학년' : '', context.subject ? '교과 ' + context.subject : ''].filter(Boolean).join(', ') + '.',
+      '성취기준:\n' + context.standards.map((s) => '[' + s.code + '] ' + s.text).join('\n'),
+      context.element ? '평가요소: ' + context.element : '',
+      '단계 ' + labels.length + '개(' + labels.join(' / ') + ')마다 한 문장씩 쓴다. 가장 높은 단계는 성취기준을 충분히 도달한 모습, 가장 낮은 단계는 도움을 받아 일부만 하는 모습으로, 단계 사이는 정도의 차이가 또렷하게 드러나게 쓴다.',
+      '문장은 "…할 수 있다."로 끝내고, 학생 이름이나 점수·비율·등급 표현은 쓰지 마라. 성취기준과 평가요소에 없는 내용을 더하지 마라. 각 문장은 60자 안팎.',
+      '반드시 아래 모양의 JSON 만 답하라. 다른 말은 쓰지 마라.',
+      '{"criteria":[' + labels.map((label) => '{"label":"' + label + '","text":"…"}').join(',') + ']}'
+    ].filter(Boolean).join('\n');
+  }
+
+  function parseJsonAnswer(text, code, message) {
+    const body = String(text || '').replace(/^```(?:json)?/m, '').replace(/```\s*$/m, '');
+    const start = body.indexOf('{'), end = body.lastIndexOf('}');
+    if (start < 0 || end <= start) fail(code, message, 502);
+    try { return JSON.parse(body.slice(start, end + 1)); } catch (_) { fail(code, message, 502); }
+  }
+
+  async function askJson(userId, stored, parts) {
+    let model = await pickModel(userId, stored.apiKey, stored.model);
+    let data;
+    try {
+      data = await callGeminiWithParts(model, stored.apiKey, parts);
+    } catch (error) {
+      if (error.code !== 'AI_UPSTREAM_BUSY' && error.code !== 'AI_UPSTREAM_ERROR') throw error;
+      const other = await pickModel(userId, stored.apiKey, null, model);
+      if (other === model) throw error;
+      model = other;
+      data = await callGeminiWithParts(model, stored.apiKey, parts);
+    }
+    const answer = extractText(data);
+    if (!answer.trim()) {
+      const why = data?.promptFeedback?.blockReason;
+      fail('AI_EMPTY_ANSWER', why ? '답을 받지 못했습니다(' + why + ').' : '답이 비어 있습니다.', 502);
+    }
+    return answer;
+  }
+
   // 한 계정이 1분에 너무 많이 부르지 못하게. 구글 쪽 한도와 별개로 서버를 지키는 선이다.
   const usage = new Map();
   function countGenerate(userId) {
@@ -374,6 +456,66 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
     const result = await askForTopics(user.id, stored, document, context);
     res.json({ subject: result.subject, semester: result.semester, topics: result.topics, note: result.note, source: document.kind === 'text' ? 'text' : document.mime });
+  }));
+
+  // 수행평가 계획서 파일 → 나이스 틀의 항목 목록. 성취기준 코드는 그 교과·학년군 목록에서만 고른다.
+  router.post('/extract-plan', express.raw({ type: () => true, limit: MAX_PLAN_FILE_BYTES }), asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    if (!Buffer.isBuffer(req.body) || req.body.length === 0) fail('AI_FILE_REQUIRED', '올릴 파일을 고르세요.');
+    let fileName = '';
+    try { fileName = decodeURIComponent(String(req.get('x-file-name') || '')); } catch (_) { fileName = ''; }
+    const document = readPlanDocument(req.body, fileName);
+    if (document.kind === 'unsupported') fail('AI_FILE_UNSUPPORTED', document.reason, 415);
+    if (document.kind === 'text' && !document.text.trim()) fail('AI_FILE_EMPTY', '문서에 글이 없습니다. 스캔한 문서라면 PDF나 그림으로 올려 주세요.', 422);
+    const context = {
+      subject: String(req.query.subject || '').slice(0, 40),
+      grade: Number(req.query.grade) || 0,
+      semester: Number(req.query.semester) || 0,
+      levels: Math.min(5, Math.max(2, Number(req.query.levels) || 3))
+    };
+    if (!context.subject || !context.grade) fail('PLAN_KEY_INVALID', '교과와 학년을 먼저 고르세요.');
+    countGenerate(user.id);
+    const stored = await storedKey(user.id);
+    if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
+    const standards = standardsFor(context.subject, context.grade);
+    const byCode = new Map(standards.map((s) => [s.code, s]));
+    const parts = document.kind === 'text'
+      ? [{ text: planPrompt(context, standards, document.text) }]
+      : [{ inline_data: { mime_type: document.mime, data: document.base64 } }, { text: planPrompt(context, standards, '') }];
+    const parsed = parseJsonAnswer(await askJson(user.id, stored, parts), 'AI_PLAN_UNREADABLE', '문서에서 계획을 읽어 내지 못했습니다. 다른 파일로 다시 해 보세요.');
+    const items = cleanItems((Array.isArray(parsed.items) ? parsed.items : []).map((item) => ({
+      domain: item?.domain,
+      standards: (Array.isArray(item?.codes) ? item.codes : []).map((code) => byCode.get(String(code).trim())).filter(Boolean).map((s) => ({ code: s.code, text: s.text })),
+      element: item?.element,
+      levels: item?.levels,
+      criteria: item?.criteria
+    }))).filter((item) => item.element || item.standards.length);
+    // 영역명이 비었으면 첫 성취기준의 영역을 쓴다.
+    for (const item of items) if (!item.domain && item.standards[0]) item.domain = byCode.get(item.standards[0].code)?.domain || '';
+    res.json({ items, note: String(parsed.note || '').slice(0, 300), standardsKnown: standards.length });
+  }));
+
+  // 성취기준·평가요소 → 단계별 평가결과 문장 초안.
+  router.post('/draft-criteria', asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await requireTeacher(req);
+    const body = req.body || {};
+    const levels = Math.min(5, Math.max(2, Number(body.levels) || 3));
+    const labels = (Array.isArray(body.labels) && body.labels.length === levels ? body.labels : LEVEL_LABELS[levels]).map((label) => String(label || '').trim().slice(0, 20) || '단계');
+    const standards = (Array.isArray(body.standards) ? body.standards : []).slice(0, 8)
+      .map((s) => ({ code: String(s?.code || '').slice(0, 16), text: String(s?.text || '').slice(0, 600) })).filter((s) => s.text);
+    const element = String(body.element || '').slice(0, 400);
+    if (standards.length === 0 && !element) fail('AI_PLAN_CONTEXT_REQUIRED', '성취기준이나 평가요소를 먼저 적어 주세요.');
+    countGenerate(user.id);
+    const stored = await storedKey(user.id);
+    if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);
+    const context = { subject: String(body.subject || '').slice(0, 40), grade: Number(body.grade) || 0, standards, element, labels };
+    const parsed = parseJsonAnswer(await askJson(user.id, stored, [{ text: criteriaPrompt(context) }]), 'AI_CRITERIA_UNREADABLE', '평가결과 문장을 받지 못했습니다. 다시 눌러 보세요.');
+    const given = Array.isArray(parsed.criteria) ? parsed.criteria : [];
+    const criteria = labels.map((label, i) => ({ label, text: String(given[i]?.text || given.find((c) => c?.label === label)?.text || '').replace(/\s+/g, ' ').trim().slice(0, 800) }));
+    if (criteria.every((c) => !c.text)) fail('AI_CRITERIA_UNREADABLE', '평가결과 문장을 받지 못했습니다. 다시 눌러 보세요.', 502);
+    res.json({ criteria });
   }));
 
   return { router, initialize };

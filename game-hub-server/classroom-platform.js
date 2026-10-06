@@ -10,6 +10,7 @@ const { createMetacognition } = require("./metacognition");
 const { createLearningRecords } = require("./learning-records");
 const { createTeacherAi } = require("./teacher-ai");
 const { createUserStorage } = require("./user-storage");
+const { createAssessmentPlans } = require("./assessment-plans");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
@@ -1371,6 +1372,7 @@ function createClassroomPlatform(options = {}) {
       await learningBoards.initialize();
       await teacherAi.initialize();
       await userStorage.initialize();
+      await assessmentPlans.initialize();
       await voting.initialize();
       await schoolElection.initialize();
       await seating.initialize();
@@ -1594,6 +1596,10 @@ function createClassroomPlatform(options = {}) {
   // 계정별 저장 공간. 화면들이 브라우저에 두던 값을 여기로 옮긴다(assets/site-storage.js).
   const userStorage = createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute });
   router.use("/me/storage", userStorage.router);
+
+  // 수행평가 계획(교과별 영역·성취기준·평가요소·단계별 평가기준). 같은 학교 교사가 함께 고친다.
+  const assessmentPlans = createAssessmentPlans({ pool, requireTeacher, teacherRegistration, requireDatabase, HttpError, asyncRoute });
+  router.use("/teacher/assessment-plans", assessmentPlans.router);
 
   // 학급선거·전교선거·자리 고르기·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
   // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.
