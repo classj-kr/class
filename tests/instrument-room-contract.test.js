@@ -37,13 +37,13 @@ test('uses dedicated rooms for the nine primary instrument groups', () => {
   }
 });
 
-test('orders instrument families from Korean traditions to keyboard instruments', () => {
+test('preserves family tab order while opening the keyboard room first', () => {
   const order = ['korean', 'strings', 'woodwind', 'brass', 'percussion', 'drums', 'bass', 'guitar', 'keyboard'];
   const positions = order.map((family) => html.indexOf('data-family="' + family + '"'));
   assert.equal(positions.every((position) => position >= 0), true);
   assert.deepEqual([...positions].sort((a, b) => a - b), positions);
-  assert.match(html, /class="active"[^>]*data-family="korean"[^>]*aria-selected="true"/);
-  assert.match(app, /selectFamily\("korean"\)/);
+  assert.match(html, /class="active"[^>]*data-family="keyboard"[^>]*aria-selected="true"/);
+  assert.match(app, /selectFamily\("keyboard"\)/);
 });
 
 test('keeps the instrument header compact and hides normal audio status', () => {
