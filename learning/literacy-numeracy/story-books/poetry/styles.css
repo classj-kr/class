@@ -953,6 +953,52 @@ a {
     line-height: 1.7;
 }
 
+/* ── 작품 해설 화보 모드 (Note Spread Art Frame) ─────────────── */
+.note-page-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(14px, 3.5cqh, 36px);
+    overflow: hidden;
+}
+
+.note-art-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.note-art-img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 82%;
+    object-fit: contain;
+    border-radius: 8px;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 4px 14px rgba(92, 58, 34, 0.16));
+    transition: transform 0.25s ease;
+}
+
+.note-art-img:hover {
+    transform: scale(1.02);
+}
+
+.note-art-caption {
+    margin-top: clamp(8px, 1.8cqh, 16px);
+    font-family: "Gowun Batang", "Noto Serif KR", serif;
+    font-size: clamp(12.5px, 2.1cqh, 15px);
+    font-weight: 700;
+    color: rgba(92, 58, 34, 0.72);
+    letter-spacing: -0.01em;
+}
+
 /* ── 4. 좁은 화면 및 세로 방향 (Responsive Layout) ─────────────── */
 @media (max-width: 820px), (orientation: portrait) and (max-width: 1100px) {
     .book {
