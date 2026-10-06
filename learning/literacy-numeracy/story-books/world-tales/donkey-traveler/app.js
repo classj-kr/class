@@ -91,7 +91,7 @@ const CHAPTERS = [
                     "그러다 문득 그 언덕의 두 나무가 떠올랐습니다. 붉은 열매를 먹고 이렇게 되었지요."
                 ],
                 "right": [
-                    "\"그럼 노란 열매를 먹으면 어떻게 될까?\"",
+                    "'그럼 노란 열매를 먹으면 어떻게 될까?'",
                     "나그네는 그 생각을 놓지 않았지요. 언젠가 그 언덕으로 돌아가야겠다고 마음먹었습니다.",
                     "그날부터는 밤마다 그 길을 떠올렸지요. 언덕까지 몇 걸음인지도 세어 두었습니다."
                 ]
@@ -126,7 +126,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "털이 스르르 사라졌지요. 귀가 줄어들고 허리가 펴졌습니다. 나그네는 다시 사람이 되었지요.",
-                    "장사꾼은 뒷걸음질을 쳤습니다. \"다, 당나귀가 사람이 되다니!\" 장사꾼은 고삐를 내던진 채 달아났지요.",
+                    "장사꾼은 뒷걸음질을 쳤습니다. \"다, 당나귀가 사람이 되다니!\" 장사꾼은 수레도 버려둔 채 달아났지요.",
                     "나그네는 노란 열매 몇 알을 품에 챙겼습니다."
                 ]
             }
@@ -656,7 +656,7 @@ const EN = {
                         "Then all at once he remembered the two trees on that hill. He had eaten the red fruit and become this."
                     ],
                     right: [
-                        "\"Then what would the yellow fruit do?\"",
+                        "'Then what would the yellow fruit do?'",
                         "The traveller would not let the thought go. He made up his mind to get back to that hill one day.",
                         "From then on he pictured the road every night. He even counted how many steps it was to the hill."
                     ]
@@ -693,7 +693,7 @@ const EN = {
                     ],
                     right: [
                         "The hair melted away. His ears shrank, and his back straightened. The traveller was a person again!",
-                        "The trader backed away. \"A d-donkey turning into a man!\" He dropped the halter and ran.",
+                        "The trader backed away. \"A d-donkey turning into a man!\" He left the cart behind and ran.",
                         "The traveller put a few yellow fruits in his coat."
                     ]
                 }
@@ -1076,7 +1076,7 @@ const WORDS_KO = {
     ],
     "04-escape-2.webp": [
         { w: "우적우적", k: "소리를 내며 크게 씹어 먹는 모양.", s: "그러고는 우적우적 먹었지요." },
-        { w: "내던지다", k: "아무렇게나 던져 버리다.", s: "장사꾼은 고삐를 내던진 채 달아났지요." },
+        { w: "버려두다", k: "그대로 두고 돌보지 않다.", s: "장사꾼은 수레도 버려둔 채 달아났지요." },
         { w: "품", k: "두 팔로 안았을 때 가슴 앞의 자리.", s: "나그네는 노란 열매 몇 알을 품에 챙겼습니다." }
     ],
     "05-innkeeper.webp": [

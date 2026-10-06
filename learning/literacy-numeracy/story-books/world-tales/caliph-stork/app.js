@@ -25,7 +25,7 @@ const CHAPTERS = [
                     "아무도 읽지 못하는 글자였습니다. 임금님은 글을 잘 아는 사람을 불렀지요."
                 ],
                 "right": [
-                    "그 사람이 한참 들여다보더니 말했습니다. \"이건 아주 오래된 글자입니다. 가루를 코로 맡고 '무타보르!' 하고 외우면 어떤 짐승으로든 변한다고 적혀 있군요. 짐승의 말도 알아듣게 된답니다.\"",
+                    "그 사람이 한참 들여다보더니 말했습니다. \"가루를 코로 맡고 '무타보르!' 하고 외우면 어떤 짐승으로든 변하고, 짐승의 말도 알아듣게 된답니다. 다시 사람이 되려면 동쪽을 보고 세 번 절한 뒤 같은 말을 외우면 되고요.\"",
                     "임금님의 눈이 반짝였습니다. 만소르는 어쩐지 마음이 놓이지 않았지요."
                 ]
             }
@@ -53,7 +53,7 @@ const CHAPTERS = [
                 "emoji": "⚠️",
                 "left": [
                     "임금님은 그 말을 흘려들었습니다. \"웃지만 않으면 되지 않소? 그게 뭐 어렵다고!\"",
-                    "만소르는 더 말리지 못했지요. 두 사람은 이튿날 아침 일찍 궁궐 뒤 연못가로 갔습니다. 그러고는 갈대 뒤에 몸을 숨겼지요."
+                    "만소르는 더 말리지 못했지요. 임금님이 자네도 같이 가자며 손을 끌었거든요. 두 사람은 이튿날 아침 일찍 궁궐 뒤 연못가로 갔습니다. 그러고는 갈대 뒤에 몸을 숨겼지요."
                 ],
                 "right": [
                     "마침 황새 두 마리가 물가를 거닐고 있었지요. 긴 다리로 성큼성큼 걸었습니다.",
@@ -203,7 +203,7 @@ const CHAPTERS = [
                 "emoji": "✨",
                 "left": [
                     "두 황새는 밖으로 나왔습니다. 동쪽 하늘이 조금씩 밝아 오고 있었지요.",
-                    "둘은 나란히 동쪽을 향해 섰습니다. 그러고는 목소리를 모아 외쳤지요. \"무타보르!\"",
+                    "둘은 나란히 동쪽을 향해 세 번 절했습니다. 그러고는 목소리를 모아 외쳤지요. \"무타보르!\"",
                     "그러자 깃털이 사르르 사라졌습니다."
                 ],
                 "right": [
@@ -222,7 +222,7 @@ const CHAPTERS = [
                 "right": [
                     "아가씨가 제 손을 한참 들여다봤습니다. \"몇 해 만인지 몰라요!\"",
                     "세 사람은 카슈누어가 자는 안쪽 방으로 갔습니다. 그자는 여전히 곤히 잠들어 있었지요. 세 사람은 밧줄을 찾아 그자를 꽁꽁 묶었습니다.",
-                    "세 사람은 카슈누어를 바그다드로 끌고 가 감옥에 가두었지요. 다시는 남을 해치지 못하게 되었습니다."
+                    "세 사람은 묶인 카슈누어를 끌고 바그다드로 길을 떠났지요. 다시는 남을 해치지 못하게 되었습니다."
                 ]
             }
         ]
@@ -235,7 +235,7 @@ const CHAPTERS = [
                 "art": "08-ending.webp",
                 "emoji": "🏛️",
                 "left": [
-                    "세 사람은 바그다드로 돌아왔습니다. 성문에서 사람들이 걸음을 멈췄지요. 누군가 소리쳤습니다. \"임금님이 살아 돌아오셨다!\"",
+                    "세 사람은 바그다드로 돌아왔습니다. 성문에서 사람들이 걸음을 멈췄지요. 누군가 소리쳤습니다. \"임금님이 살아 돌아오셨다!\" 카슈누어는 그 길로 감옥에 갇혔지요.",
                     "소식은 금세 온 도시에 퍼졌습니다. 신하들이 달려 나와 임금님을 맞았지요. 거리마다 사람들이 몰려나왔습니다."
                 ],
                 "right": [
@@ -577,7 +577,7 @@ const EN = {
                     ],
                     right: [
                         "The man studied it for a long time. \"These letters are very ancient,\" he said.",
-                        "\"It says: smell the powder and say 'Mutabor', and you will turn into any beast you like. You will even understand the speech of beasts.\"",
+                        "\"It says: smell the powder and say 'Mutabor', and you will turn into any beast you like. You will even understand the speech of beasts. To be a man again, face the east, bow three times and say the word once more.\"",
                         "The caliph's eyes lit up. But Mansor was somehow not easy about it."
                     ]
                 }
@@ -606,7 +606,7 @@ const EN = {
                     emoji: '⚠️',
                     left: [
                         "But the caliph let the words go past him. \"All I have to do is not laugh. Where is the difficulty in that?\"",
-                        "Mansor could not stop him.",
+                        "Mansor could not stop him, and the caliph would not go without him.",
                         "Early the next morning the two of them went to the pond behind the palace. They hid behind the reeds."
                     ],
                     right: [
@@ -769,7 +769,7 @@ const EN = {
                     emoji: '✨',
                     left: [
                         "The two storks went outside. The eastern sky was slowly growing light.",
-                        "They stood side by side facing east, and cried out together. \"Mutabor!\"",
+                        "They bowed three times to the east, side by side, and cried out together. \"Mutabor!\"",
                         "At once their feathers melted away."
                     ],
                     right: [
@@ -792,7 +792,7 @@ const EN = {
                         "She looked at her own hands for a long time. \"It has been so many years!\"",
                         "Then the three of them went to the inner room. Kaschnur was still sound asleep.",
                         "They tied him up tightly.",
-                        "The three of them took Kaschnur back to Baghdad and shut him up in prison. He could never harm anybody again."
+                        "Then the three of them set out for Baghdad, dragging the bound Kaschnur along. He could never harm anybody again."
                     ]
                 }
             ]
@@ -806,7 +806,7 @@ const EN = {
                     emoji: '🎉',
                     left: [
                         "The three of them came back to Baghdad. At the city gate, people stopped where they stood.",
-                        "Someone shouted, \"The caliph has come home alive!\"",
+                        "Someone shouted, \"The caliph has come home alive!\" Kaschnur was taken straight to prison.",
                         "The news went round the whole city at once. The courtiers ran out to meet him, and people poured into every street."
                     ],
                     right: [
@@ -986,7 +986,7 @@ const EN = {
             { word: 'let out one’s breath', meaning: '숨을 내쉬다', sentence: 'The three let out their breath.' }
         ],
         '07-mutabor.webp': [
-            { word: 'side by side', meaning: '나란히', sentence: 'They stood side by side facing east.' },
+            { word: 'side by side', meaning: '나란히', sentence: 'They bowed three times to the east, side by side.' },
             { word: 'melt away', meaning: '사르르 사라지다', sentence: 'Their feathers melted away.' },
             { word: 'shrink', meaning: '줄어들다', sentence: 'Their legs shrank.' },
             { word: 'embrace', meaning: '얼싸안다', sentence: 'The two of them embraced.' }
@@ -995,7 +995,7 @@ const EN = {
             { word: 'spell', meaning: '마법', sentence: 'The word had no power over her spell.' },
             { word: 'break', meaning: '풀다', sentence: 'If you take me for your wife, the spell will be broken.' },
             { word: 'sound asleep', meaning: '곤히 잠든', sentence: 'Kaschnur was still sound asleep.' },
-            { word: 'shut up in prison', meaning: '감옥에 가두다', sentence: 'Shut him up in prison.' },
+            { word: 'set out', meaning: '길을 떠나다', sentence: 'The three of them set out for Baghdad.' },
             { word: 'harm', meaning: '해치다', sentence: 'He could never harm anybody again.' }
         ],
         '08-ending.webp': [
@@ -1102,7 +1102,7 @@ const WORDS_KO = {
         { w: "아내로 맞다", k: "아내로 삼아 함께 살다.", s: "\"저를 아내로 맞아 주면 풀린답니다.\"" },
         { w: "곱다", k: "보기에 아주 예쁘다.", s: "깃털이 사라지고 고운 아가씨가 되었지요." },
         { w: "여전히", k: "전과 똑같이.", s: "그자는 여전히 곤히 잠들어 있었지요." },
-        { w: "감옥", k: "죄를 지은 사람을 가두어 두는 곳.", s: "세 사람은 카슈누어를 바그다드로 끌고 가 감옥에 가두었지요." }
+        { w: "길을 떠나다", k: "어디로 가려고 나서다.", s: "세 사람은 묶인 카슈누어를 끌고 바그다드로 길을 떠났지요." }
     ],
     "08-ending.webp": [
         { w: "금세", k: "아주 빠르게.", s: "소식은 금세 온 도시에 퍼졌습니다." },

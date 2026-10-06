@@ -247,7 +247,7 @@ const CHAPTERS = [
                 "right": [
                     "개구리가 있던 자리에 젊은이가 서 있었습니다. 눈이 맑고 고운 옷을 입은 왕자였지요.",
                     "왕자가 공손히 말했습니다. \"저는 마법에 걸려 있던 이웃 나라 왕자입니다. 약속을 지켜 주는 사람을 만나야 풀리는 마법이었지요.\"",
-                    "공주는 아무 말도 하지 못하고 창가에 놓인 황금 공만 바라봤지요."
+                    "공주는 아무 말도 하지 못하고 머리맡에 놓인 황금 공만 바라봤지요."
                 ]
             },
             {
@@ -871,7 +871,7 @@ const EN = {
                         "a prince with clear eyes and fine clothes.",
                         "\"I am a prince from the next kingdom, under a spell,\" he said.",
                         "\"Only someone who kept a promise to me could break it.\"",
-                        "The princess could only look at the golden ball on the windowsill."
+                        "The princess could only look at the golden ball by her pillow."
                     ]
                 },
                 {

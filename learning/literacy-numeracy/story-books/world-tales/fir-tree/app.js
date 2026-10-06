@@ -113,7 +113,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "\"드디어 내 차례구나!\"",
-                    "도끼가 쿵 하고 밑동을 내리쳤지요. 전나무는 아프고 어지러웠습니다. 그대로 눈밭 위로 쓰러지자 흰 눈이 푹 튀어 올랐지요.",
+                    "나무꾼은 전나무를 뿌리째 파내 흙을 털었지요. 전나무는 아프고 어지러웠습니다. 눈밭 위에 눕히자 흰 눈이 푹 튀어 올랐지요.",
                     "가지에 앉았던 눈이 우수수 떨어졌습니다. 숲이 아주 조용해졌지요."
                 ]
             },
@@ -142,7 +142,7 @@ const CHAPTERS = [
                 "art": "05-decorated.webp",
                 "emoji": "🕯️",
                 "left": [
-                    "전나무는 방 한가운데에 세워졌습니다. 통에 모래를 채워 단단히 받쳐 주었지요.",
+                    "전나무는 방 한가운데에 세워졌습니다. 통에 흙을 채워 뿌리를 묻어 주었지요.",
                     "사람들이 상자를 가져왔습니다. 가지마다 금색 사과가 달렸지요.",
                     "종이꽃과 사탕도 매달렸습니다. 초록 가지가 알록달록해졌지요."
                 ],
@@ -705,9 +705,9 @@ const EN = {
                     ],
                     right: [
                         "\"At last it is my turn!\" thought the fir tree.",
-                        "Thunk! The axe bit into the base of his trunk.",
+                        "The woodcutter dug the fir tree up by the roots and shook off the earth.",
                         "It hurt, and his head spun.",
-                        "He crashed down, and the white snow flew up.",
+                        "They laid him on the snow, and the white snow flew up.",
                         "The snow on his branches came showering off,",
                         "and the wood went very quiet."
                     ]
@@ -743,7 +743,7 @@ const EN = {
                     emoji: '⭐',
                     left: [
                         "The fir tree was set up in the middle of the room,",
-                        "in a tub packed with sand to hold him steady.",
+                        "in a tub filled with earth to cover his roots.",
                         "People brought boxes in.",
                         "Gold apples were hung on every branch,",
                         "and paper flowers and sweets as well,",
@@ -970,7 +970,7 @@ const EN = {
                     "The sunlight and the wind tell him that now is the best time. He does not listen. Even on his one evening with the candles lit, he was thinking about tomorrow."
                 ],
                 right: [
-                    "Only up in the attic does the fir tree think of the wood. And by then he has no roots.",
+                    "Only up in the attic does the fir tree think of the wood. And by then it is far behind him.",
                     "At the very end he learns to look at today. It took him a whole life.",
                     "When could the fir tree have been happy?"
                 ]
@@ -1023,7 +1023,7 @@ const EN = {
             { word: 'lie deep', meaning: '소복이 쌓이다', sentence: 'One morning the snow lay deep.' },
             { word: 'do nicely', meaning: '딱 좋다', sentence: 'This one will do nicely.' },
             { word: 'excitement', meaning: '설렘', sentence: 'His excitement was bigger than his fear.' },
-            { word: 'base', meaning: '밑동', sentence: 'The axe bit into the base of his trunk.' },
+            { word: 'dig up', meaning: '파내다', sentence: 'The woodcutter dug the fir tree up by the roots.' },
             { word: 'shower off', meaning: '우수수 떨어지다', sentence: 'The snow on his branches came showering off.' }
         ],
         '04-cut-2.webp': [
@@ -1033,8 +1033,8 @@ const EN = {
             { word: 'swell', meaning: '부풀다', sentence: "The fir tree's heart swelled with joy." }
         ],
         '05-decorated.webp': [
-            { word: 'tub', meaning: '통', sentence: 'In a tub packed with sand.' },
-            { word: 'steady', meaning: '단단히', sentence: 'To hold him steady.' },
+            { word: 'tub', meaning: '통', sentence: 'In a tub filled with earth.' },
+            { word: 'cover', meaning: '덮다', sentence: 'To cover his roots.' },
             { word: 'ache', meaning: '뻐근하다', sentence: 'His branches ached with the weight of it.' },
             { word: 'dim', meaning: '어둑한', sentence: 'The room grew dim.' }
         ],
@@ -1084,7 +1084,7 @@ const EN = {
         'end.webp': [
             { word: 'cheerful', meaning: '즐거운', sentence: 'And it is not a cheerful one.' },
             { word: 'come into it', meaning: '눈에 들어오다', sentence: 'The wood never came into it.' },
-            { word: 'root', meaning: '뿌리', sentence: 'And by then he has no roots.' },
+            { word: 'far behind', meaning: '멀리 뒤에', sentence: 'By then it is far behind him.' },
             { word: 'happy', meaning: '즐거운', sentence: 'When could the fir tree have been happy?' }
         ]
     }
@@ -1137,7 +1137,7 @@ const WORDS_KO = {
         { w: "이듬해", k: "바로 다음 해.", s: "이듬해 겨울, 눈이 소복이 쌓인 아침이었습니다." },
         { w: "녀석", k: "남을 낮추어 부르는 말.", s: "\"이 녀석이 딱 좋겠군.\"" },
         { w: "어지럽다", k: "머리가 빙 돌아 정신이 흐리다.", s: "전나무는 아프고 어지러웠습니다." },
-        { w: "눈밭", k: "눈이 잔뜩 깔린 땅.", s: "그대로 눈밭 위로 쓰러지자 흰 눈이 푹 튀어 올랐지요." }
+        { w: "눈밭", k: "눈이 잔뜩 깔린 땅.", s: "눈밭 위에 눕히자 흰 눈이 푹 튀어 올랐지요." }
     ],
     "04-cut-2.webp": [
         { w: "실리다", k: "짐이 수레나 배에 올려지다.", s: "전나무는 수레에 실렸습니다." },

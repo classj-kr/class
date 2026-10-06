@@ -119,7 +119,7 @@ const CHAPTERS = [
                 "emoji": "🚶‍♀️",
                 "left": [
                     "\"안 된다! 약속은 내가 했으니 내가 가야지.\"",
-                    "\"아버지, 그 꽃을 부탁한 건 저예요.\" 벨의 목소리는 떨리지 않았습니다.",
+                    "\"아버지, 그 꽃을 부탁한 건 저예요.\" 벨의 목소리는 떨리지 않았습니다. 아버지는 밤새 말렸지만 벨은 뜻을 굽히지 않았지요.",
                     "이튿날 새벽 벨은 아버지와 함께 말을 타고 떠났습니다. 말발굽이 눈에 푹푹 빠졌지요. 한참 만에 성에 닿았습니다."
                 ],
                 "right": [
@@ -679,7 +679,7 @@ const EN = {
                     emoji: '🕯️',
                     left: [
                         "\"No!\" cried her father. \"I made the promise, so I must go.\"",
-                        "\"Father, it was I who asked for that flower.\" Belle's voice did not shake.",
+                        "\"Father, it was I who asked for that flower.\" Belle's voice did not shake. Her father begged her all night, but she would not give way.",
                         "Before dawn the next day she put on her coat and rode off with her father. The horse's hooves sank deep into the snow.",
                         "At last they reached the castle."
                     ],
