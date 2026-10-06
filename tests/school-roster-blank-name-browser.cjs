@@ -105,8 +105,19 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     assert.equal(savedStudents[2].students.find((s) => s.studentNumber === '1' && s.grade === 3).rosterName, '', '다시 불러온 대기 줄은 비운 채로 간다');
     await waitReloaded();
 
-    // 반·번호만 있고 성명도 계정도 없는 줄은 저장하지 않고 알려 주며, 명단을 다시 불러오지 않는다.
+    // 같은 학생구글계정을 두 줄에 적으면 두 칸이 붉어지고 저장이 막힌다. 보호자 계정은 겹쳐도 된다.
     const emailInput = (row) => studentRows.nth(row).locator('input').nth(5);
+    await emailInput(1).fill('s3103@school.test');
+    await emailInput(1).dispatchEvent('change'); await emailInput(1).evaluate((el) => el.blur());
+    assert.equal(await page.locator('#rosterBody input[data-field="student_email"].invalid').count(), 2, '겹치는 두 칸이 붉어진다');
+    await page.evaluate(() => window.saveRoster());
+    await page.locator('#rosterStatus').filter({ hasText: '학생 구글계정 s3103@school.test이(가) 두 줄에 있습니다' }).waitFor({ timeout: 5000 });
+    assert.equal(savedStudents.length, 3, '겹치는 계정은 서버로 가지 않는다');
+    await emailInput(1).fill('s3102@school.test');
+    await emailInput(1).dispatchEvent('change'); await emailInput(1).evaluate((el) => el.blur());
+    assert.equal(await page.locator('#rosterBody input[data-field="student_email"].invalid').count(), 0, '고치면 붉은 표시가 사라진다');
+
+    // 반·번호만 있고 성명도 계정도 없는 줄은 저장하지 않고 알려 주며, 명단을 다시 불러오지 않는다.
     await nameInput(2).fill('');
     await nameInput(2).dispatchEvent('change'); await nameInput(2).evaluate((el) => el.blur());
     await emailInput(2).fill('');
@@ -128,8 +139,17 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     assert.deepEqual(savedStudents[3].students.map((s) => [s.studentNumber, s.rosterName, s.studentEmail, s.gender]),
       [['1', '', 's3101@school.test', '남'], ['2', '', 's3102@school.test', '여']]);
 
-    // 성명 열이 있고 일부만 비운 경우. 성명도 계정도 없는 줄은 버린다.
-    await page.locator('#rosterBody tr').nth(2).waitFor();
+    // 붙여넣기에 같은 학생구글계정이 두 줄 있으면 미리보기 단계에서 알려 준다.
+    await page.locator('#rosterBody tr').nth(1).waitFor();
+    await page.evaluate(() => window.togglePasteSection());
+    await page.locator('#pasteInput').fill('학년\t반\t번호\t성명\t성별\t학생구글계정\n3\t1\t1\t김철수\t남\tdup@school.test\n3\t1\t2\t이영희\t여\tDup@school.test');
+    await page.evaluate(() => window.parsePaste());
+    await page.locator('#pasteStatus').filter({ hasText: '학생구글계정이 겹치는 줄이 있습니다(dup@school.test)' }).waitFor({ timeout: 5000 });
+    // 다음 단계가 붙여넣기 칸을 다시 여니 여기서는 닫아 둔다.
+    await page.evaluate(() => window.togglePasteSection());
+
+    // 성명 열이 있고 일부만 비운 경우. 성명도 계정도 없는 줄은 버린다. (앞 미리보기는 두 줄뿐이다.)
+    await page.locator('#rosterBody tr').nth(1).waitFor();
     await page.evaluate(() => window.togglePasteSection());
     await page.locator('#pasteInput').fill('학년\t반\t번호\t성명\t성별\t학생구글계정\n3\t1\t1\t\t남\ts3101@school.test\n3\t1\t2\t김철수\t남\t\n3\t1\t3\t\t남\t');
     await page.evaluate(() => window.parsePaste());
@@ -192,6 +212,11 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await page.locator('#student-emails').dispatchEvent('input');
     await page.locator('#input-status').filter({ hasText: '2명의 학생 명단이 준비되었습니다' }).waitFor({ timeout: 5000 });
     assert.equal(await page.locator('#save-button').isDisabled(), false);
+    // 같은 학생 구글계정을 두 줄에 적으면 막는다.
+    await page.locator('#student-emails').fill('s3101@school.test\nS3101@school.test');
+    await page.locator('#student-emails').dispatchEvent('input');
+    await page.locator('#input-status').filter({ hasText: '학생 구글계정이 두 줄에 있습니다: s3101@school.test' }).waitFor({ timeout: 5000 });
+    assert.equal(await page.locator('#save-button').isDisabled(), true);
 
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ ok: true }));
