@@ -1,0 +1,1442 @@
+{
+ "source": "교육부 고시 제2022-33호 초·중등학교 교육과정(2022-12-22) — https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0",
+ "builtAt": "2026-10-06",
+ "bands": {
+  "2": {
+   "id": "e12",
+   "label": "초등학교 1~2학년",
+   "school": "초등학교",
+   "grades": [
+    1,
+    2
+   ]
+  },
+  "4": {
+   "id": "e34",
+   "label": "초등학교 3~4학년",
+   "school": "초등학교",
+   "grades": [
+    3,
+    4
+   ]
+  },
+  "6": {
+   "id": "e56",
+   "label": "초등학교 5~6학년",
+   "school": "초등학교",
+   "grades": [
+    5,
+    6
+   ]
+  },
+  "9": {
+   "id": "m",
+   "label": "중학교 1~3학년",
+   "school": "중학교",
+   "grades": [
+    7,
+    8,
+    9
+   ]
+  }
+ },
+ "subjects": [
+  {
+   "id": "korean",
+   "name": "국어",
+   "bands": {
+    "e12": {
+     "label": "초등학교 1~2학년",
+     "grades": [
+      1,
+      2
+     ],
+     "domains": [
+      {
+       "name": "듣기⋅말하기",
+       "subjectName": "국어",
+       "count": 5
+      },
+      {
+       "name": "읽기",
+       "subjectName": "국어",
+       "count": 5
+      },
+      {
+       "name": "쓰기",
+       "subjectName": "국어",
+       "count": 4
+      },
+      {
+       "name": "문법",
+       "subjectName": "국어",
+       "count": 3
+      },
+      {
+       "name": "문학",
+       "subjectName": "국어",
+       "count": 4
+      },
+      {
+       "name": "매체",
+       "subjectName": "국어",
+       "count": 2
+      }
+     ]
+    },
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "듣기⋅말하기",
+       "subjectName": "국어",
+       "count": 6
+      },
+      {
+       "name": "읽기",
+       "subjectName": "국어",
+       "count": 6
+      },
+      {
+       "name": "쓰기",
+       "subjectName": "국어",
+       "count": 5
+      },
+      {
+       "name": "문법",
+       "subjectName": "국어",
+       "count": 5
+      },
+      {
+       "name": "문학",
+       "subjectName": "국어",
+       "count": 5
+      },
+      {
+       "name": "매체",
+       "subjectName": "국어",
+       "count": 3
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "듣기⋅말하기",
+       "subjectName": "국어",
+       "count": 7
+      },
+      {
+       "name": "읽기",
+       "subjectName": "국어",
+       "count": 5
+      },
+      {
+       "name": "쓰기",
+       "subjectName": "국어",
+       "count": 6
+      },
+      {
+       "name": "문법",
+       "subjectName": "국어",
+       "count": 6
+      },
+      {
+       "name": "문학",
+       "subjectName": "국어",
+       "count": 6
+      },
+      {
+       "name": "매체",
+       "subjectName": "국어",
+       "count": 4
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "듣기⋅말하기",
+       "subjectName": "국어",
+       "count": 11
+      },
+      {
+       "name": "읽기",
+       "subjectName": "국어",
+       "count": 8
+      },
+      {
+       "name": "쓰기",
+       "subjectName": "국어",
+       "count": 9
+      },
+      {
+       "name": "문법",
+       "subjectName": "국어",
+       "count": 8
+      },
+      {
+       "name": "문학",
+       "subjectName": "국어",
+       "count": 9
+      },
+      {
+       "name": "매체",
+       "subjectName": "국어",
+       "count": 6
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ethics",
+   "name": "도덕",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "자신과의 관계",
+       "subjectName": "도덕",
+       "count": 4
+      },
+      {
+       "name": "타인과의 관계",
+       "subjectName": "도덕",
+       "count": 3
+      },
+      {
+       "name": "사회⋅공동체와의 관계",
+       "subjectName": "도덕",
+       "count": 3
+      },
+      {
+       "name": "자연과의 관계",
+       "subjectName": "도덕",
+       "count": 2
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "자신과의 관계",
+       "subjectName": "도덕",
+       "count": 3
+      },
+      {
+       "name": "타인과의 관계",
+       "subjectName": "도덕",
+       "count": 3
+      },
+      {
+       "name": "사회⋅공동체와의 관계",
+       "subjectName": "도덕",
+       "count": 4
+      },
+      {
+       "name": "자연과의 관계",
+       "subjectName": "도덕",
+       "count": 2
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "자신과의 관계",
+       "subjectName": "도덕",
+       "count": 7
+      },
+      {
+       "name": "타인과의 관계",
+       "subjectName": "도덕",
+       "count": 6
+      },
+      {
+       "name": "사회⋅공동체와의 관계",
+       "subjectName": "도덕",
+       "count": 7
+      },
+      {
+       "name": "자연과의 관계",
+       "subjectName": "도덕",
+       "count": 2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "social",
+   "name": "사회",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "우리가 사는 곳",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "일상에서 만나는 과거",
+       "subjectName": "사회",
+       "count": 3
+      },
+      {
+       "name": "사회 변화와 다양한 문화",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "옛날과 오늘날의 생활 모습",
+       "subjectName": "사회",
+       "count": 3
+      },
+      {
+       "name": "지도로 만나는 우리 지역",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "우리 지역의 문화유산",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "경제활동과 지역 간 교류",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "민주주의와 자치",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "지역문제를 해결하고 지역을 알리는 노력",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "다양한 환경과 삶의 모습",
+       "subjectName": "사회",
+       "count": 2
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "우리나라 국토 여행",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "우리나라 지리 탐구",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "법과 인권의 보장",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "유적과 유물로 살펴본 옛 사람들의 생활",
+       "subjectName": "사회",
+       "count": 3
+      },
+      {
+       "name": "달라지는 시대, 변화하는 생활 모습",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "평화 통일을 위한 노력, 민주화와 산업화",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "민주주의와 시민 참여",
+       "subjectName": "사회",
+       "count": 3
+      },
+      {
+       "name": "지구, 대륙 그리고 국가들",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "세계의 자연환경",
+       "subjectName": "사회",
+       "count": 2
+      },
+      {
+       "name": "시장경제와 국가 간 거래",
+       "subjectName": "사회",
+       "count": 3
+      },
+      {
+       "name": "지구촌 사람들",
+       "subjectName": "사회",
+       "count": 2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "history",
+   "name": "역사",
+   "bands": {
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "역사 학습의 기초",
+       "subjectName": "역사",
+       "count": 2
+      },
+      {
+       "name": "문명의 발생과 고대 세계의 형성",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "세계 종교의 확산과 지역 문화의 발전",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "지역 세계의 교류와 변화",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "제국주의와 국민 국가 건설 운동",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "세계 대전과 사회 변동",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "현대 세계의 전개와 과제",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "국가의 형성과 발전",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "통일신라와 발해",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "고려의 성립과 변천",
+       "subjectName": "역사",
+       "count": 4
+      },
+      {
+       "name": "조선의 성립과 발전",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "조선 사회의 변동",
+       "subjectName": "역사",
+       "count": 3
+      },
+      {
+       "name": "근⋅현대 사회로의 전환",
+       "subjectName": "역사",
+       "count": 4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "math",
+   "name": "수학",
+   "bands": {
+    "e12": {
+     "label": "초등학교 1~2학년",
+     "grades": [
+      1,
+      2
+     ],
+     "domains": [
+      {
+       "name": "수와 연산",
+       "subjectName": "수학",
+       "count": 11
+      },
+      {
+       "name": "변화와 관계",
+       "subjectName": "수학",
+       "count": 2
+      },
+      {
+       "name": "도형과 측정",
+       "subjectName": "수학",
+       "count": 13
+      },
+      {
+       "name": "자료와 가능성",
+       "subjectName": "수학",
+       "count": 3
+      }
+     ]
+    },
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "수와 연산",
+       "subjectName": "수학",
+       "count": 16
+      },
+      {
+       "name": "변화와 관계",
+       "subjectName": "수학",
+       "count": 3
+      },
+      {
+       "name": "도형과 측정",
+       "subjectName": "수학",
+       "count": 25
+      },
+      {
+       "name": "자료와 가능성",
+       "subjectName": "수학",
+       "count": 3
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "수와 연산",
+       "subjectName": "수학",
+       "count": 15
+      },
+      {
+       "name": "변화와 관계",
+       "subjectName": "수학",
+       "count": 5
+      },
+      {
+       "name": "도형과 측정",
+       "subjectName": "수학",
+       "count": 19
+      },
+      {
+       "name": "자료와 가능성",
+       "subjectName": "수학",
+       "count": 6
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "수와 연산",
+       "subjectName": "수학",
+       "count": 10
+      },
+      {
+       "name": "변화와 관계",
+       "subjectName": "수학",
+       "count": 22
+      },
+      {
+       "name": "도형과 측정",
+       "subjectName": "수학",
+       "count": 19
+      },
+      {
+       "name": "자료와 가능성",
+       "subjectName": "수학",
+       "count": 9
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "science",
+   "name": "과학",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "힘과 우리 생활",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "동물의 생활",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "식물의 생활",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "생물의 한살이",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "물체와 물질",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "지구와 바다",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "소리의 성질",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "감염병과 건강한 생활",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "자석의 이용",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "물의 상태 변화",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "땅의 변화",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "다양한 생물과 우리 생활",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "밤하늘 관찰",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "생물과 환경",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "여러 가지 기체",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "기후변화와 우리 생활",
+       "subjectName": "과학",
+       "count": 3
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "지층과 화석",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "빛의 성질",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "용해와 용액",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "우리 몸의 구조와 기능",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "혼합물의 분리",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "날씨와 우리 생활",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "열과 우리 생활",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "자원과 에너지",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "산과 염기",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "물체의 운동",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "식물의 구조와 기능",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "지구의 운동",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "계절의 변화",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "물질의 연소",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "전기의 이용",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "과학과 나의 진로",
+       "subjectName": "과학",
+       "count": 2
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "과학과 인류의 지속가능한 삶",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "생물의 구성과 다양성",
+       "subjectName": "과학",
+       "count": 5
+      },
+      {
+       "name": "열",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "물질의 상태 변화",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "힘의 작용",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "기체의 성질",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "태양계",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "물질의 특성",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "지권의 변화",
+       "subjectName": "과학",
+       "count": 5
+      },
+      {
+       "name": "빛과 파동",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "물질의 구성",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "식물과 에너지",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "동물과 에너지",
+       "subjectName": "과학",
+       "count": 5
+      },
+      {
+       "name": "전기와 자기",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "별과 우주",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "화학 반응의 규칙성",
+       "subjectName": "과학",
+       "count": 6
+      },
+      {
+       "name": "날씨와 기후변화",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "수권과 해수의 순환",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "운동과 에너지",
+       "subjectName": "과학",
+       "count": 4
+      },
+      {
+       "name": "자극과 반응",
+       "subjectName": "과학",
+       "count": 3
+      },
+      {
+       "name": "생식과 유전",
+       "subjectName": "과학",
+       "count": 5
+      },
+      {
+       "name": "재해⋅재난과 안전",
+       "subjectName": "과학",
+       "count": 2
+      },
+      {
+       "name": "과학과 나의 미래",
+       "subjectName": "과학",
+       "count": 2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "practical",
+   "name": "실과",
+   "bands": {
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "인간 발달과 주도적 삶",
+       "subjectName": "실과",
+       "count": 7
+      },
+      {
+       "name": "생활환경과 지속가능한 선택",
+       "subjectName": "실과",
+       "count": 11
+      },
+      {
+       "name": "기술적 문제해결과 혁신",
+       "subjectName": "실과",
+       "count": 5
+      },
+      {
+       "name": "지속가능한 기술과 융합",
+       "subjectName": "실과",
+       "count": 11
+      },
+      {
+       "name": "디지털 사회와 인공지능",
+       "subjectName": "실과",
+       "count": 5
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "tech-home",
+   "name": "기술·가정",
+   "bands": {
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "인간 발달과 주도적 삶",
+       "subjectName": "기술·가정",
+       "count": 12
+      },
+      {
+       "name": "생활환경과 지속가능한 선택",
+       "subjectName": "기술·가정",
+       "count": 14
+      },
+      {
+       "name": "기술적 문제해결과 혁신",
+       "subjectName": "기술·가정",
+       "count": 13
+      },
+      {
+       "name": "지속가능한 기술과 융합",
+       "subjectName": "기술·가정",
+       "count": 13
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "informatics",
+   "name": "정보",
+   "bands": {
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "컴퓨팅 시스템",
+       "subjectName": "정보",
+       "count": 3
+      },
+      {
+       "name": "데이터",
+       "subjectName": "정보",
+       "count": 5
+      },
+      {
+       "name": "알고리즘과 프로그래밍",
+       "subjectName": "정보",
+       "count": 9
+      },
+      {
+       "name": "인공지능",
+       "subjectName": "정보",
+       "count": 5
+      },
+      {
+       "name": "디지털 문화",
+       "subjectName": "정보",
+       "count": 3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "pe",
+   "name": "체육",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "운동",
+       "subjectName": "체육",
+       "count": 6
+      },
+      {
+       "name": "스포츠",
+       "subjectName": "체육",
+       "count": 10
+      },
+      {
+       "name": "표현",
+       "subjectName": "체육",
+       "count": 7
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "운동",
+       "subjectName": "체육",
+       "count": 6
+      },
+      {
+       "name": "스포츠",
+       "subjectName": "체육",
+       "count": 12
+      },
+      {
+       "name": "표현",
+       "subjectName": "체육",
+       "count": 8
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "운동",
+       "subjectName": "체육",
+       "count": 14
+      },
+      {
+       "name": "스포츠",
+       "subjectName": "체육",
+       "count": 27
+      },
+      {
+       "name": "표현",
+       "subjectName": "체육",
+       "count": 10
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "music",
+   "name": "음악",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "연주",
+       "subjectName": "음악",
+       "count": 4
+      },
+      {
+       "name": "감상",
+       "subjectName": "음악",
+       "count": 5
+      },
+      {
+       "name": "창작",
+       "subjectName": "음악",
+       "count": 4
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "연주",
+       "subjectName": "음악",
+       "count": 4
+      },
+      {
+       "name": "감상",
+       "subjectName": "음악",
+       "count": 5
+      },
+      {
+       "name": "창작",
+       "subjectName": "음악",
+       "count": 4
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "연주",
+       "subjectName": "음악",
+       "count": 4
+      },
+      {
+       "name": "감상",
+       "subjectName": "음악",
+       "count": 5
+      },
+      {
+       "name": "창작",
+       "subjectName": "음악",
+       "count": 4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "art",
+   "name": "미술",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "미적 체험",
+       "subjectName": "미술",
+       "count": 4
+      },
+      {
+       "name": "표현",
+       "subjectName": "미술",
+       "count": 5
+      },
+      {
+       "name": "감상",
+       "subjectName": "미술",
+       "count": 4
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "미적 체험",
+       "subjectName": "미술",
+       "count": 4
+      },
+      {
+       "name": "표현",
+       "subjectName": "미술",
+       "count": 5
+      },
+      {
+       "name": "감상",
+       "subjectName": "미술",
+       "count": 4
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "미적 체험",
+       "subjectName": "미술",
+       "count": 4
+      },
+      {
+       "name": "표현",
+       "subjectName": "미술",
+       "count": 5
+      },
+      {
+       "name": "감상",
+       "subjectName": "미술",
+       "count": 4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "english",
+   "name": "영어",
+   "bands": {
+    "e34": {
+     "label": "초등학교 3~4학년",
+     "grades": [
+      3,
+      4
+     ],
+     "domains": [
+      {
+       "name": "이해",
+       "subjectName": "영어",
+       "count": 10
+      },
+      {
+       "name": "표현",
+       "subjectName": "영어",
+       "count": 10
+      }
+     ]
+    },
+    "e56": {
+     "label": "초등학교 5~6학년",
+     "grades": [
+      5,
+      6
+     ],
+     "domains": [
+      {
+       "name": "이해",
+       "subjectName": "영어",
+       "count": 10
+      },
+      {
+       "name": "표현",
+       "subjectName": "영어",
+       "count": 10
+      }
+     ]
+    },
+    "m": {
+     "label": "중학교 1~3학년",
+     "grades": [
+      7,
+      8,
+      9
+     ],
+     "domains": [
+      {
+       "name": "이해",
+       "subjectName": "영어",
+       "count": 10
+      },
+      {
+       "name": "표현",
+       "subjectName": "영어",
+       "count": 11
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "integrated",
+   "name": "바른 생활·슬기로운 생활·즐거운 생활",
+   "bands": {
+    "e12": {
+     "label": "초등학교 1~2학년",
+     "grades": [
+      1,
+      2
+     ],
+     "domains": [
+      {
+       "name": "우리는 누구로 살아갈까",
+       "subjectName": "바른 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 어디서 살아갈까",
+       "subjectName": "바른 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 지금 어떻게 살아갈까",
+       "subjectName": "바른 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 무엇을 하며 살아갈까",
+       "subjectName": "바른 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 누구로 살아갈까",
+       "subjectName": "슬기로운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 어디서 살아갈까",
+       "subjectName": "슬기로운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 지금 어떻게 살아갈까",
+       "subjectName": "슬기로운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 무엇을 하며 살아갈까",
+       "subjectName": "슬기로운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 누구로 살아갈까",
+       "subjectName": "즐거운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 어디서 살아갈까",
+       "subjectName": "즐거운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 지금 어떻게 살아갈까",
+       "subjectName": "즐거운 생활",
+       "count": 4
+      },
+      {
+       "name": "우리는 무엇을 하며 살아갈까",
+       "subjectName": "즐거운 생활",
+       "count": 4
+      }
+     ]
+    }
+   }
+  }
+ ]
+}
