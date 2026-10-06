@@ -191,9 +191,9 @@ const CHAPTERS = [
                 "art": "06-wedding-2.webp",
                 "emoji": "💔",
                 "left": [
-                    "이웃 나라 공주가 앞으로 나왔습니다. 그 얼굴을 본 왕자가 걸음을 뚝 멈췄지요.",
-                    "\"당신이었군요!\"",
-                    "공주는 바로 그 바닷가의 아가씨였습니다. 왕자는 무척 기뻐했지요. \"드디어 찾았습니다.\""
+                    "이웃 나라 공주가 앞으로 나오자 왕자가 걸음을 뚝 멈췄지요.",
+                    "\"당신이었군요! 저를 구해 준 분이 바로 공주님이었다니.\"",
+                    "찾던 사람이 바로 이 공주였으니, 결혼하지 않겠다던 말은 그 자리에서 사라졌지요. \"드디어 찾았습니다.\""
                 ],
                 "right": [
                     "그날로 결혼 잔치가 열렸습니다. 잔치가 끝나자 왕자와 신부는 배를 타고 왕자의 나라로 떠났지요.",
@@ -768,9 +768,8 @@ const EN = {
                     emoji: '💍',
                     left: [
                         "The princess of that country came forward, and at the sight of her face the prince stopped dead.",
-                        "\"It was you!\"",
-                        "She was the very young woman from the shore.",
-                        "The prince was overjoyed. \"I have found you at last.\""
+                        "\"It was you! The one who saved me on the shore — it was you all along.\"",
+                        "The girl he had been searching for was this very princess, so his promise not to marry melted away on the spot. The prince was overjoyed. \"I have found you at last.\""
                     ],
                     right: [
                         "The wedding was fixed that same day, and a great feast was held.",
