@@ -340,6 +340,18 @@
             font-size: 0.86rem;
             color: var(--muted);
         }
+        /* 계획서에서 가져오기 */
+        .plan-import { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 8px; }
+        .plan-import .status { margin-top: 0; }
+        #import-plan-dialog { border: 1px solid var(--line, #d9d4c7); border-radius: 12px; padding: 20px 22px; width: min(640px, 92vw); max-height: 86vh; }
+        #import-plan-dialog::backdrop { background: rgba(20, 24, 28, 0.45); }
+        #import-plan-dialog h2 { margin: 0 0 6px; font-size: 1.1rem; }
+        #import-plan-meta { margin: 0 0 12px; font-size: 0.9rem; color: var(--muted); }
+        #import-plan-list { display: grid; gap: 6px; max-height: 48vh; overflow: auto; margin: 0 0 14px; padding: 0; list-style: none; }
+        #import-plan-list label { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; padding: 8px 10px; border: 1px solid var(--line, #e3ded2); border-radius: 8px; cursor: pointer; }
+        #import-plan-list input { margin-top: 3px; }
+        #import-plan-list small { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+        .plan-import-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
 
         /* 만드는 동안 단추 안에서 도는 고리. 글보다 이것이 기다리는 마음에 낫다. */
         .spinner {
@@ -434,7 +446,23 @@
                 <label for="topics-input" id="topics-label">활동·특성 (한 줄에 하나씩)</label>
                 <textarea id="topics-input" class="form-control" rows="3" style="resize: vertical; min-height: 72px;"></textarea>
                 <div class="status" id="plan-status"></div>
+                <!-- 수행평가 계획서를 올리면 제미나이가 읽어 활동 주제를 뽑아 준다. 선생님이 고른 것만 위 칸에 들어간다. -->
+                <div class="plan-import" id="plan-import">
+                    <button type="button" id="import-plan-btn" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.9rem;">📄 계획서에서 가져오기</button>
+                    <input type="file" id="import-plan-file" accept=".pdf,.png,.jpg,.jpeg,.webp,.hwpx,.docx,.txt" hidden>
+                    <span class="status" id="import-plan-status">수행평가 계획서(PDF·사진·hwpx·docx)를 올리면 활동 주제를 대신 적어 줍니다.</span>
+                </div>
             </div>
+            <dialog id="import-plan-dialog" aria-labelledby="import-plan-title">
+                <h2 id="import-plan-title">계획서에서 찾은 활동 주제</h2>
+                <p id="import-plan-meta"></p>
+                <ul id="import-plan-list"></ul>
+                <div class="plan-import-actions">
+                    <button type="button" id="import-plan-cancel" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.9rem;">취소</button>
+                    <button type="button" id="import-plan-replace" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.9rem;">목록 바꾸기</button>
+                    <button type="button" id="import-plan-append" class="btn" style="padding: 6px 16px; font-size: 0.9rem;">현재 목록에 덧붙이기</button>
+                </div>
+            </dialog>
 
             <!-- 행동특성은 학생마다 다른 글이라 학생마다 따로 받는다.
                  같은 자료를 학생 쪽에서도, 낱말 쪽에서도 고를 수 있게 둔다. -->
@@ -773,6 +801,101 @@
                 if (confirm('이 학기·과목의 문장을 이 브라우저에서 지웁니다. 나이스에 이미 넣은 글은 그대로입니다. 지울까요?')) clearResult();
             });
             topicsInput.addEventListener('input', () => { saveTopics(); savePlan(); });
+
+            // ── 계획서에서 가져오기 ──────────────────────────────────────
+            // 파일은 서버로 보내고, 서버가 선생님 키로 제미나이에 물어 활동 주제 목록을 받아 온다.
+            // 받은 목록은 선생님이 고르고 고친 뒤에야 위 칸에 들어간다.
+            const importBtn = $('import-plan-btn');
+            const importFile = $('import-plan-file');
+            const importStatus = $('import-plan-status');
+            const importDialog = $('import-plan-dialog');
+            const importList = $('import-plan-list');
+            const importMeta = $('import-plan-meta');
+            const IMPORT_DEFAULT_HINT = importStatus.textContent;
+            const MAX_IMPORT_BYTES = 20 * 1024 * 1024;
+
+            function importConditions() {
+                const area = currentArea();
+                return {
+                    area: areaSelect.value,
+                    subject: area.sub ? subInput.value.trim() : '',
+                    semester: area.semester ? semesterSelect.value : '',
+                    grade: currentScope && currentScope.grade ? String(currentScope.grade) : ''
+                };
+            }
+
+            importBtn.addEventListener('click', async () => {
+                try {
+                    await window.ClassroomAI.init();
+                } catch (error) {
+                    importStatus.textContent = error.message;
+                    return;
+                }
+                if (!window.ClassroomAI.hasKey()) {
+                    importStatus.textContent = '내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.';
+                    return;
+                }
+                importFile.value = '';
+                importFile.click();
+            });
+
+            importFile.addEventListener('change', async () => {
+                const file = importFile.files && importFile.files[0];
+                if (!file) return;
+                if (file.size > MAX_IMPORT_BYTES) { importStatus.textContent = '20MB가 넘는 파일은 올릴 수 없습니다.'; return; }
+                importBtn.disabled = true;
+                importStatus.textContent = file.name + ' 읽는 중… 제미나이가 활동 주제를 뽑습니다.';
+                try {
+                    const res = await fetch('/api/teacher-ai/extract-topics?' + new URLSearchParams(importConditions()), {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: { 'Content-Type': file.type || 'application/octet-stream', 'X-File-Name': encodeURIComponent(file.name) },
+                        body: file
+                    });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok) throw new Error(data.message || '파일을 읽지 못했습니다 (' + res.status + ').');
+                    if (!Array.isArray(data.topics) || data.topics.length === 0) throw new Error(data.note || '문서에서 활동 주제를 찾지 못했습니다. 조건(과목·학기)을 확인하거나 다른 파일을 올려 보세요.');
+                    renderImportList(data);
+                    importDialog.showModal();
+                    importStatus.textContent = IMPORT_DEFAULT_HINT;
+                } catch (error) {
+                    importStatus.textContent = error.message;
+                } finally {
+                    importBtn.disabled = false;
+                }
+            });
+
+            function renderImportList(data) {
+                const where = [data.subject, data.semester].filter(Boolean).join(' · ');
+                importMeta.textContent = (where ? where + ' — ' : '') + data.topics.length + '개를 찾았습니다. 넣을 것만 고르세요.' + (data.note ? ' ' + data.note : '');
+                importList.replaceChildren(...data.topics.map((topic, index) => {
+                    const label = document.createElement('label');
+                    const box = document.createElement('input');
+                    box.type = 'checkbox'; box.checked = true; box.value = String(index);
+                    const text = document.createElement('span');
+                    text.textContent = topic.title;
+                    if (topic.detail) { const small = document.createElement('small'); small.textContent = topic.detail; text.appendChild(small); }
+                    label.append(box, text);
+                    return label;
+                }));
+                importList.dataset.topics = JSON.stringify(data.topics.map(topic => topic.title));
+            }
+
+            function applyImported(mode) {
+                const titles = JSON.parse(importList.dataset.topics || '[]');
+                const picked = [...importList.querySelectorAll('input:checked')].map(box => titles[Number(box.value)]).filter(Boolean);
+                if (picked.length === 0) { importDialog.close(); return; }
+                const existing = topicsInput.value.split('\n').map(line => line.trim()).filter(Boolean);
+                const merged = mode === 'replace' ? picked : existing.concat(picked.filter(title => !existing.includes(title)));
+                topicsInput.value = merged.join('\n');
+                topicsInput.dispatchEvent(new Event('input', { bubbles: true }));   // 저장·학년 공유 계획에 반영
+                importDialog.close();
+                importStatus.textContent = picked.length + '개를 ' + (mode === 'replace' ? '목록에 넣었습니다.' : '덧붙였습니다.') + ' 필요하면 위 칸에서 고치세요.';
+                topicsInput.focus();
+            }
+            $('import-plan-append').addEventListener('click', () => applyImported('append'));
+            $('import-plan-replace').addEventListener('click', () => applyImported('replace'));
+            $('import-plan-cancel').addEventListener('click', () => importDialog.close());
             charTarget.addEventListener('input', savePlan);
             applyArea();
 

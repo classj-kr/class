@@ -8,7 +8,8 @@ const { createUserStorage } = require('../game-hub-server/user-storage');
 
 class HttpError extends Error { constructor(status, code, message) { super(message); this.status = status; this.code = code; } }
 
-async function startHarness({ extraRoutes } = {}) {
+// me(user) 를 주면 /api/auth/me 응답을 바꿀 수 있다(교사 화면 검사용).
+async function startHarness({ extraRoutes, me } = {}) {
   const db = new PGlite();
   await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2);');
   const pool = { query: (sql, args) => db.query(sql, args) };
@@ -21,7 +22,9 @@ async function startHarness({ extraRoutes } = {}) {
   app.use(express.json({ limit: '1100kb' }));
   app.get('/api/auth/me', (req, res) => {
     const user = userOf(req);
-    res.json(user ? { signedIn: true, user: { id: user.id, name: '검증 학생', role: 'student' }, membership: { studentName: '검증 학생', grade: 3, classNumber: 1, studentNumber: '7' } } : { signedIn: false });
+    if (!user) return res.json({ signedIn: false });
+    if (me) return res.json(me(user));
+    res.json({ signedIn: true, user: { id: user.id, name: '검증 학생', role: 'student' }, membership: { studentName: '검증 학생', grade: 3, classNumber: 1, studentNumber: '7' } });
   });
   if (extraRoutes) extraRoutes(app, { db, pool, userOf });
   app.use('/api/me/storage', feature.router);
