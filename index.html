@@ -1391,6 +1391,38 @@
             // 우리 반 공개 설정을 할 수 있는 사람인가(담임). 사이트 관리자는 우리 반
             // 잠금에 막히지 않지만, 담임을 겸하면 우리 반 설정도 따로 갖는다.
             let canManageClassContent = false;
+            // 전담이 오늘 열어 둔 메뉴(경로 -> 선생님 이름들). 학생에게는 담임이 연 것과 합쳐 열리고,
+            // 담임은 이것을 닫을 수 없다(연 사람만 닫는다). 그날 밤 자정에 저절로 닫힌다.
+            let subjectOpenedPaths = new Map();
+            // 이 교사가 공개 설정을 하는 범위. homeroom: 우리 반. subject: 전담이 가르치는 반 전부(오늘 하루).
+            let contentManageScope = '';
+            let managedClassLabels = [];
+            const CONTENT_ACCESS_BUTTON_LABEL = '🔒 우리 반 기초학력 메뉴 공개/잠금 설정';
+
+            function contentAccessButtonLabel() {
+                return contentManageScope === 'subject'
+                    ? `🔒 가르치는 ${managedClassLabels.length}개 반 메뉴 오늘 공개/잠금 설정`
+                    : CONTENT_ACCESS_BUTTON_LABEL;
+            }
+
+            function contentAudienceLabel() {
+                return contentManageScope === 'subject'
+                    ? `가르치는 ${managedClassLabels.length}개 반 학생에게 오늘 하루`
+                    : '우리 반 학생에게';
+            }
+
+            // 담임이 연 것이든 전담이 오늘 연 것이든 하나면 열린다.
+            function isClassPathOpen(path) {
+                return classEnabledPaths.has(path) || subjectOpenedPaths.has(path);
+            }
+
+            // 담임이 잠가도 전담이 오늘 열어 둔 메뉴는 학생에게 계속 열려 있다. 그 사실을 알려 준다.
+            function subjectOpenedLockNote(paths) {
+                const names = new Set();
+                paths.forEach((path) => (subjectOpenedPaths.get(path) || []).forEach((name) => names.add(name)));
+                if (names.size === 0) return '';
+                return `우리 반 공개는 껐지만 전담 ${[...names].join(', ')} 선생님이 오늘 열어 두어 학생에게는 오늘까지 열려 있습니다.`;
+            }
 
             function normalizedContentPath(href) {
                 if (!href) return '';
@@ -1418,7 +1450,7 @@
 
             function isAccessControlEnabled(control) {
                 const paths = contentPathsForControl(control);
-                return paths.length > 0 && paths.every((path) => classEnabledPaths.has(path));
+                return paths.length > 0 && paths.every(isClassPathOpen);
             }
 
             function isGloballyDisabledPath(path) {
@@ -1462,12 +1494,21 @@
                     const showGlobalDisabled = globallyDisabled && (globalContentAccessEditing || globallyLocked);
                     const classLocked = classLocksVisible && (groupControl
                         ? !isAccessControlEnabled(groupControl)
-                        : !classEnabledPaths.has(path));
+                        : !isClassPathOpen(path));
                     link.classList.toggle('is-global-locked', showGlobalDisabled);
                     link.classList.toggle('is-class-locked', classLocked && !showGlobalDisabled);
                     link.dataset.globalDisabled = String(globallyDisabled);
                     link.dataset.globalLocked = String(globallyLocked);
                     link.dataset.classLocked = String(classLocked);
+                    // 담임이 공개 설정을 하는 동안, 전담이 오늘 열어 둔 메뉴는 누가 열었는지 보여 준다.
+                    const openedBy = subjectOpenedPaths.get(path);
+                    if (openedBy && contentAccessEditing && !classEnabledPaths.has(path)) {
+                        link.title = `전담 ${openedBy.join(', ')} 선생님이 오늘 열어 둠 · 연 분만 닫을 수 있음`;
+                        link.dataset.subjectOpened = 'true';
+                    } else if (link.dataset.subjectOpened === 'true') {
+                        link.removeAttribute('title');
+                        delete link.dataset.subjectOpened;
+                    }
                     if (globallyLocked || (globalContentAccessEditing && globallyDisabled)) {
                         link.setAttribute('aria-disabled', globalContentAccessEditing ? 'false' : 'true');
                         link.setAttribute('aria-label', `${link.textContent.trim()} · 전체관리자가 사용 중지`);
@@ -1493,6 +1534,17 @@
                     control.dataset.globalDisabled = String(globallyLocked);
                     control.dataset.globalLocked = String(blockedForViewer);
                     control.dataset.classLocked = String(classLocked);
+                    // 담임이 공개 설정을 하는 동안, 전담이 오늘 열어 둔 묶음은 누가 열었는지 보여 준다.
+                    const controlPaths = contentPathsForControl(control);
+                    const controlOpenedBy = new Set();
+                    controlPaths.forEach((path) => (subjectOpenedPaths.get(path) || []).forEach((name) => controlOpenedBy.add(name)));
+                    if (controlOpenedBy.size > 0 && contentAccessEditing && !controlPaths.every((path) => classEnabledPaths.has(path))) {
+                        control.title = `전담 ${[...controlOpenedBy].join(', ')} 선생님이 오늘 열어 둠 · 연 분만 닫을 수 있음`;
+                        control.dataset.subjectOpened = 'true';
+                    } else if (control.dataset.subjectOpened === 'true') {
+                        control.removeAttribute('title');
+                        delete control.dataset.subjectOpened;
+                    }
                     control.setAttribute('aria-label', showGlobalDisabled
                         ? `${control.dataset.baseAriaLabel} · 전체관리자가 사용 중지`
                         : classLocked
@@ -1506,7 +1558,15 @@
 
             async function loadClassContentAccess() {
                 const result = await api('/api/home-content-access');
-                classEnabledPaths = new Set(result.enabledPaths || []);
+                // 공개 설정을 하는 교사는 자기가 연 것만 토글한다. 학생은 열린 것 전부를 본다.
+                classEnabledPaths = new Set(result.canManage === true
+                    ? (result.ownEnabledPaths || result.enabledPaths || [])
+                    : (result.enabledPaths || []));
+                subjectOpenedPaths = new Map(Object.entries(result.openedBySubjectTeachers || {}));
+                contentManageScope = result.manageScope || (result.canManage === true ? 'homeroom' : '');
+                managedClassLabels = Array.isArray(result.managedClasses) ? result.managedClasses : [];
+                if (!contentAccessEditing) contentAccessButton.textContent = contentAccessButtonLabel();
+                contentAccessButton.title = contentManageScope === 'subject' ? managedClassLabels.join(', ') : '';
                 globallyDisabledPaths = new Set(result.globallyDisabledPaths || []);
                 canBypassGlobalContentLock = result.canManageGlobally === true;
                 canManageClassContent = result.canManage === true;
@@ -1570,8 +1630,8 @@
                         });
                         renderClassLocks();
                         setStatus(nextEnabled
-                            ? '이 메뉴와 모든 하위 메뉴를 우리 반 학생에게 공개했습니다.'
-                            : '이 메뉴와 모든 하위 메뉴를 우리 반 학생에게 잠갔습니다.');
+                            ? `이 메뉴와 모든 하위 메뉴를 ${contentAudienceLabel()} 공개했습니다.`
+                            : subjectOpenedLockNote(paths) || `이 메뉴와 모든 하위 메뉴를 ${contentAudienceLabel()} 잠갔습니다.`);
                     } catch (error) {
                         await loadClassContentAccess().catch(() => renderClassLocks());
                         setStatus(error.message, true);
@@ -2205,7 +2265,7 @@
                     const path = contentPathForLink(selectedLink);
                     if (!path) return;
                     const nextEnabled = !classEnabledPaths.has(path);
-                    selectedLink.classList.toggle('is-class-locked', !nextEnabled);
+                    selectedLink.classList.toggle('is-class-locked', !nextEnabled && !subjectOpenedPaths.has(path));
                     try {
                         await api('/api/teacher/home-content-access', {
                             method: 'PUT',
@@ -2214,7 +2274,9 @@
                         if (nextEnabled) classEnabledPaths.add(path);
                         else classEnabledPaths.delete(path);
                         renderClassLocks();
-                        setStatus(nextEnabled ? '이 버튼을 우리 반 학생에게 공개했습니다.' : '이 버튼을 우리 반 학생에게 잠갔습니다.');
+                        setStatus(nextEnabled
+                            ? `이 버튼을 ${contentAudienceLabel()} 공개했습니다.`
+                            : subjectOpenedLockNote([path]) || `이 버튼을 ${contentAudienceLabel()} 잠갔습니다.`);
                     } catch (error) {
                         renderClassLocks();
                         setStatus(error.message, true);
@@ -2254,7 +2316,7 @@
                 }
                 contentAccessEditing = !contentAccessEditing;
                 contentAccessButton.setAttribute('aria-pressed', String(contentAccessEditing));
-                contentAccessButton.textContent = contentAccessEditing ? '✅ 공개 설정 완료' : '🔒 우리 반 기초학력 메뉴 공개/잠금 설정';
+                contentAccessButton.textContent = contentAccessEditing ? '✅ 공개 설정 완료' : contentAccessButtonLabel();
                 contentAccessButton.style.background = contentAccessEditing ? 'linear-gradient(135deg, #059669, #10b981)' : 'linear-gradient(135deg, #0284c7, #2563eb)';
                 document.body.classList.toggle('content-access-editing', contentAccessEditing);
                 if (contentAccessEditing) {
@@ -2262,15 +2324,19 @@
                 }
                 renderClassLocks();
                 setStatus(contentAccessEditing
-                    ? '각 상위 버튼을 눌러 공개하세요. 하위 메뉴는 상위 설정을 함께 따릅니다.'
-                    : '우리 반 공개 설정을 저장했습니다.');
+                    ? (contentManageScope === 'subject'
+                        ? `각 상위 버튼을 눌러 공개하세요. 가르치는 ${managedClassLabels.length}개 반(${managedClassLabels.join(', ')})에 오늘 하루 적용되고, 오늘 밤 자정에 저절로 닫힙니다.`
+                        : '각 상위 버튼을 눌러 공개하세요. 하위 메뉴는 상위 설정을 함께 따릅니다.')
+                    : (contentManageScope === 'subject'
+                        ? '가르치는 반 공개 설정을 저장했습니다. 전담이 연 메뉴는 오늘 밤 자정에 닫힙니다.'
+                        : '우리 반 공개 설정을 저장했습니다.'));
             });
 
             globalContentAccessButton.addEventListener('click', () => {
                 if (contentAccessEditing) {
                     contentAccessEditing = false;
                     contentAccessButton.setAttribute('aria-pressed', 'false');
-                    contentAccessButton.textContent = '🔒 우리 반 기초학력 메뉴 공개/잠금 설정';
+                    contentAccessButton.textContent = contentAccessButtonLabel();
                     contentAccessButton.style.background = 'linear-gradient(135deg, #0284c7, #2563eb)';
                     document.body.classList.remove('content-access-editing');
                 }
