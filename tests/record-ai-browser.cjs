@@ -1,300 +1,113 @@
-// 생활기록부 화면을 진짜 크롬으로 열어, 키 저장부터 결과 그리기까지 돌려 본다.
-// 학급 명단과 구글 API 는 가짜 답으로 바꿔치기해서 실제로 부르지 않는다.
-//
-// 구글이 주소도 모델 이름도 바꾸는 중이라 세 가지를 다 본다.
-//  - 'new'     : 새 주소가 살아 있는 경우
-//  - 'legacy'  : 새 주소가 404 라서 옛 주소로 돌아가야 하는 경우
-//  - 'retired' : 고른 모델이 은퇴해서, 구글이 알려 준 이름으로 갈아타야 하는 경우
-//  - 'busy'    : 구글 쪽이 붐벼 503 을 내는 경우. 스스로 다시 넣어 봐야 한다
-//  - 'partial' : 수행평가 하나만 끝내 실패하는 경우. 받은 것은 살려야 한다
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
-const assert = require('assert/strict');
-const pp = require('puppeteer-core');
+// 생활기록부 화면의 활동 목록 흐름을 실제 브라우저로 돌린다. 키는 서버에 있고 브라우저는
+// /api/teacher-ai/generate 만 부르므로, 서버에 (가짜) 제미나이를 붙여 수행평가마다 한 번씩 받아
+// 학생별로 잇는지, 한 수행평가가 끝내 실패해도 받은 것은 살리는지, 만든 문장이 계정에 남는지를 본다.
+// (주소 바꿔 타기·은퇴 모델·붐빔 재시도는 서버 몫이라 game-hub-server/teacher-ai.test.mjs 가 본다.)
+const assert = require('node:assert/strict');
+const { startHarness, HttpError } = require('./site-storage-harness.cjs');
+const { chromium } = require('../game-hub-server/node_modules/playwright');
+const { createTeacherAi } = require('../game-hub-server/teacher-ai');
 
-const ROOT = path.join(__dirname, '..');
-const PAGE = fs.readFileSync(path.join(ROOT, 'classtools/record-ai.html'), 'utf8');
-const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-
-const STUDENTS = [
-  { number: '1', name: '김하늘' },
-  { number: '2', name: '박서준' },
-  { number: '3', name: '이도윤' }
-];
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-  res.end(PAGE);
-});
-
-// 구글은 제 서버에서 내줄 때 다른 곳에서 불러도 된다는 머리말을 붙인다.
-// 흉내 낼 때 이걸 빼면 브라우저가 답을 막아 버린다.
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': '*',
-  'Access-Control-Allow-Methods': 'GET,POST,OPTIONS'
+const VALID_KEY = 'AIzaSyTEST-valid-key-0000000000004321';
+const STUDENTS = [{ number: '1', name: '학생 하나' }, { number: '2', name: '학생 둘' }, { number: '3', name: '학생 셋' }];
+const FAILING_TOPIC = '도형의 넓이 구하기';
+const google = [];
+const fetchImpl = async (url, options = {}) => {
+  const key = options.headers?.['x-goog-api-key'] || '';
+  const body = options.body ? JSON.parse(options.body) : null;
+  google.push({ url: String(url), key, body });
+  const json = (status, data) => ({ ok: status < 400, status, json: async () => data });
+  if (key !== VALID_KEY) return json(403, { error: { message: 'API key not valid' } });
+  if (String(url).endsWith('/models')) return json(200, { models: [{ name: 'models/gemini-2.5-flash' }] });
+  const text = typeof body?.input === 'string' ? body.input : (body?.contents?.[0]?.parts || []).map((p) => p.text || '').join('');
+  // 둘째 수행평가는 어느 주소로 와도 끝내 거절한다(400 은 다시 넣어 보지 않는 오류).
+  if (text.includes('[수행평가] ' + FAILING_TOPIC)) return json(400, { error: { message: '흉내: 이 요청은 받지 않습니다.' } });
+  const topic = /\[수행평가\] (.+)/.exec(text)?.[1] || '';
+  const count = Number(/학생 (\d+)명에게/.exec(text)?.[1] || 1);
+  const lines = Array.from({ length: count }, (_, i) => (i + 1) + '. ' + topic + ' 수행평가에서 ' + ['차근차근', '꼼꼼하게', '스스로'][i % 3] + ' 해냄.');
+  return json(200, { candidates: [{ content: { parts: [{ text: lines.join('\n') }] } }] });
 };
 
-const json = (body, status) => ({
-  status: status || 200,
-  contentType: 'application/json; charset=utf-8',
-  headers: CORS,
-  body: JSON.stringify(body)
-});
-
-const SENTENCES = '1. 첫째 문장임.\n2. 둘째 문장임.\n3. 셋째 문장임.';
-
-// 은퇴한 모델을 부르면 구글이 대신 쓸 이름을 적어 보낸다.
-const SUCCESSOR = 'gemini-3.6-flash';
-const SECOND_TOPIC = '도형의 넓이 구하기';
-const retiredMessage = (name) => 'This model models/' + name
-  + ' is no longer available to new users. Please update your code to use models/'
-  + SUCCESSOR + ' for the latest features and improvements.';
-
-async function run(browser, port, mode) {
-  const state = { calls: 0, attempts: 0, perPrompt: new Map(), wrongFallback: false, badBody: null, modelsUsed: [], keySeen: [], consoleErrors: [], pageErrors: [] };
-  // 판마다 새 방을 쓴다. 한 방을 같이 쓰면 앞 판이 브라우저에 남긴 키와
-  // 수행평가가 뒤 판에 그대로 딸려 와 엉뚱한 수를 센다.
-  const context = browser.createBrowserContext
-    ? await browser.createBrowserContext()
-    : await browser.createIncognitoBrowserContext();
-  const page = await context.newPage();
-  page.on('console', m => { if (m.type() === 'error') state.consoleErrors.push(m.text()); });
-  page.on('pageerror', e => state.pageErrors.push(String(e)));
-
-  try {
-    await page.setRequestInterception(true);
-    page.on('request', request => {
-      const url = request.url();
-      const google = url.includes('generativelanguage.googleapis.com');
-      if (request.method() === 'OPTIONS' && google) {
-        return request.respond({ status: 204, headers: CORS, body: '' });
-      }
-      if (google) state.keySeen.push({ url, header: request.headers()['x-goog-api-key'] || null });
-
-      if (url.includes('/api/teacher/available-classes')) {
-        return request.respond(json({ classes: [{ id: '10', academicYear: 2026, grade: 6, classNumber: 2 }] }));
-      }
-      if (url.includes('/api/teacher/class')) {
-        return request.respond(json({ classroom: { grade: 6, classNumber: 2, students: STUDENTS } }));
-      }
-      if (google && url.endsWith('/v1beta/models')) {
-        // 목록에는 은퇴한 옛 모델이 앞에 섞여 있다. 순서대로 집으면 안 된다.
-        return request.respond(json({
-          models: [
-            { name: 'models/gemini-2.5-flash' },
-            { name: 'models/gemini-3.8-flash-image' },
-            { name: 'models/gemini-3.6-flash' },
-            { name: 'models/gemini-3.8-flash' },
-            { name: 'models/gemini-3.8-pro' }
-          ]
-        }));
-      }
-      if (url.endsWith('/v1beta/interactions')) {
-        if (mode === 'legacy') {
-          return request.respond(json({ error: { message: '흉내: 이 주소는 없습니다.' } }, 404));
-        }
-        // 구글은 temperature 를 바깥에 두면 Unknown parameter 라며 400 을 낸다.
-        const sent = JSON.parse(request.postData() || '{}');
-        if ('temperature' in sent || 'max_output_tokens' in sent) {
-          state.badBody = Object.keys(sent).join(', ');
-          return request.respond(json({ error: { message: "흉내: Unknown parameter 'temperature'." } }, 400));
-        }
-        state.modelsUsed.push(sent.model);
-        state.attempts += 1;
-        // 수행평가 하나마다 두 번은 붐빈다고 튕긴다. 모델을 바꿔 봐야 소용없고,
-        // 기다렸다 다시 넣어야만 통과한다.
-        const promptKey = String(sent.input || '').slice(0, 60);
-        const tries = (state.perPrompt.get(promptKey) || 0) + 1;
-        state.perPrompt.set(promptKey, tries);
-        if (mode === 'busy' && tries <= 2) {
-          return request.respond(json({
-            error: { message: sent.model + ' is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.' }
-          }, 503));
-        }
-        if (mode === 'partial' && String(sent.input || '').includes(SECOND_TOPIC)) {
-          return request.respond(json({ error: { message: '흉내: 이 내용은 받아 줄 수 없습니다.' } }, 400));
-        }
-        if (mode === 'retired' && sent.model !== SUCCESSOR) {
-          return request.respond(json({ error: { message: retiredMessage(sent.model) } }, 400));
-        }
-        state.calls += 1;
-        // 새 주소는 steps 안에 글을 담아 보낸다. 훑어서 찾아내야 한다.
-        return request.respond(json({ steps: [{ content: [{ text: SENTENCES }] }] }));
-      }
-      if (url.includes(':generateContent')) {
-        const used = (url.match(/models\/([^:]+):generateContent/) || [])[1] || '';
-        state.modelsUsed.push(used);
-        if (mode === 'partial') {
-          const sent = JSON.parse(request.postData() || '{}');
-          const asked = JSON.stringify(sent.contents || '');
-          if (asked.includes(SECOND_TOPIC)) {
-            return request.respond(json({ error: { message: '흉내: 이 내용은 받아 줄 수 없습니다.' } }, 400));
-          }
-        } else if (mode === 'retired') {
-          // 은퇴한 모델은 어느 주소로 불러도 거절당한다.
-          if (used !== SUCCESSOR) {
-            return request.respond(json({ error: { message: retiredMessage(used) } }, 400));
-          }
-        } else if (mode !== 'legacy') {
-          state.wrongFallback = true;
-        }
-        state.calls += 1;
-        return request.respond(json({ candidates: [{ content: { parts: [{ text: SENTENCES }] } }] }));
-      }
-      return request.continue();
-    });
-
-    await page.goto(`http://127.0.0.1:${port}/classtools/record-ai`, { waitUntil: 'networkidle0' });
-
-    // 1) 명단이 뜨는가
-    await page.waitForFunction("document.getElementById('roster-list').children.length > 0", { timeout: 5000 });
-    const rosterText = await page.$eval('#roster-list', el => el.textContent);
-    assert.ok(rosterText.includes('김하늘') && rosterText.includes('이도윤'), '명단 이름이 안 보임: ' + rosterText);
-    assert.ok((await page.$eval('#roster-status', el => el.textContent)).includes('3명'), '명단 인원 표시가 이상함');
-    // 한 줄에 한 명씩 내려 적혀야 한다. 옆으로 늘어놓으면 줄 맨 위 자리가 같아진다.
-    const rowTops = await page.evaluate(() => Array.from(document.getElementById('roster-list').children)
-      .map(el => Math.round(el.getBoundingClientRect().top)));
-    assert.ok(rowTops.length === 3 && rowTops[0] < rowTops[1] && rowTops[1] < rowTops[2],
-      '명단이 세로로 쌓이지 않음: ' + JSON.stringify(rowTops));
-    assert.ok(await page.$eval('#manual-count-group', el => getComputedStyle(el).display === 'none'),
-      '명단이 있는데 인원수 칸이 떠 있음');
-    assert.ok(await page.$eval('#class-group', el => getComputedStyle(el).display === 'none'),
-      '반이 하나인데 학급 고르는 칸이 떠 있음');
-
-    // 사진으로 확인하고 싶을 때만 찍는다.
-    if (process.env.RECORD_SHOT && mode === 'new') {
-      const main = await page.evaluateHandle(() => document.querySelector('main'));
-      await main.asElement().screenshot({ path: process.env.RECORD_SHOT });
-    }
-
-    // 2) 첫 화면이 과목별이고 학기·과목 칸이 열려 있는가
-    assert.equal(await page.$eval('#area-select', el => el.value), 'subject');
-    assert.ok(await page.$eval('#semester-group', el => getComputedStyle(el).display !== 'none'),
-      '과목별인데 학기 칸이 안 열림');
-    assert.ok(await page.$eval('#sub-group', el => getComputedStyle(el).display !== 'none'),
-      '과목별인데 과목 칸이 안 열림');
-    // 아무 말이나 쳐 넣지 못하도록 고르는 칸이어야 한다.
-    assert.equal(await page.$eval('#sub-input', el => el.tagName), 'SELECT', '과목이 고르는 칸이 아님');
-    assert.ok(await page.$eval('#sub-input', el => el.options.length > 5), '과목 목록이 비어 있음');
-    assert.ok((await page.$eval('#topics-hint', el => el.textContent)).includes('수행평가'),
-      '수행평가 안내가 안 보임');
-
-    // 3) 키 저장
-    await page.type('#api-key-input', 'AQ.AbFAKEKEYFORTEST');
-    await page.click('#save-key-btn');
-    await page.waitForFunction("document.getElementById('key-status').textContent.includes('저장')", { timeout: 3000 });
-
-    // 4) 수행평가 두 줄 적고 돌리기
-    await page.select('#sub-input', '수학');
-    await page.click('#topics-input');
-    await page.type('#topics-input', '분수의 덧셈과 뺄셈 계산하기\n도형의 넓이 구하기');
-    await page.click('#generate-btn');
-    await page.waitForFunction("document.getElementById('result-section').style.display === 'block'", { timeout: 40000 });
-
-    const status = await page.$eval('#gen-status', el => el.textContent);
-    assert.ok(!status.includes('오류가 발생'), '오류가 났음: ' + status);
-    if (mode === 'partial') {
-      // 하나가 빠졌다고 통째로 버리면 안 된다. 받은 것은 보여 주고 빠진 것만 알린다.
-      assert.ok(status.includes(SECOND_TOPIC), '빠진 수행평가를 알려 주지 않음: ' + status);
-      const rows = await page.evaluate(() => Array.from(document.querySelectorAll('#result-list > div'))
-        .map(el => el.textContent));
-      assert.equal(rows.length, 3, '받은 것까지 버렸음: ' + rows.length);
-      const body = rows[0].replace('1번 김하늘', '').replace('복사', '').trim();
-      assert.equal(body.split('문장임.').length - 1, 1,
-        '빠진 수행평가 자리에 엉뚱한 문장이 들어감: ' + body);
-      assert.equal(state.calls, 1, '성공한 것은 하나여야 함. 실제: ' + state.calls);
-      console.log('  ' + mode + ': 통과');
-      return;
-    }
-    assert.ok(status.includes('3명분'), '결과 안내가 이상함: ' + status);
-    assert.equal(state.badBody, null,
-      'temperature·max_output_tokens 는 generation_config 안에 넣어야 한다. 보낸 바깥 칸: ' + state.badBody);
-    assert.ok(!state.wrongFallback, '새 주소가 되는데도 옛 주소로 넘어갔음');
-    // 목록에서 가장 새 판을 골라야 한다. 은퇴한 2.5 를 집으면 안 된다.
-    assert.ok(!state.modelsUsed.includes('gemini-2.5-flash'),
-      '은퇴한 모델을 골랐음: ' + state.modelsUsed.join(', '));
-    if (mode === 'busy') {
-      assert.equal(state.attempts, 6,
-        '수행평가 두 줄이면 붐빌 때 여섯 번 넣어 봐야 함(줄마다 튕김 2 + 성공 1). 실제: ' + state.attempts);
-    }
-    if (mode === 'retired') {
-      assert.ok(state.modelsUsed.includes(SUCCESSOR),
-        '구글이 알려 준 모델로 갈아타지 않았음: ' + state.modelsUsed.join(', '));
-    } else {
-      assert.equal(state.modelsUsed[0], 'gemini-3.8-flash',
-        '가장 새 모델을 고르지 않았음: ' + state.modelsUsed.join(', '));
-    }
-    assert.equal(state.calls, 2, '수행평가 두 줄이면 두 번 불러야 함. 실제: ' + state.calls);
-
-    // 키는 주소가 아니라 머리말로 가야 한다
-    assert.ok(state.keySeen.length > 0, '구글을 부른 적이 없음');
-    for (const call of state.keySeen) {
-      assert.ok(!call.url.includes('key='), '키가 주소에 실려 나감: ' + call.url);
-      assert.equal(call.header, 'AQ.AbFAKEKEYFORTEST', '키가 머리말에 없음: ' + call.url);
-    }
-    // 글을 다루지 못하는 모델은 고르지 않는다
-    assert.ok(state.keySeen.some(c => c.url.includes('gemini-3.8-flash') && !c.url.includes('image'))
-      || mode !== 'legacy', '그림 모델을 골랐음');
-
-    // 5) 결과가 이름에 붙었는가
-    const rows = await page.$$eval('#result-list > div', els => els.map(el => el.textContent));
-    assert.equal(rows.length, 3, '학생 수만큼 나오지 않음: ' + rows.length);
-    assert.ok(rows[0].includes('1번 김하늘'), '첫 줄에 이름이 없음: ' + rows[0]);
-    assert.ok(rows[2].includes('3번 이도윤'), '셋째 줄에 이름이 없음: ' + rows[2]);
-    const body0 = rows[0].replace('1번 김하늘', '').replace('복사', '').trim();
-    assert.equal(body0.split('문장임.').length - 1, 2, '수행평가 두 개가 이어 붙지 않음: ' + body0);
-    assert.ok((await page.$eval('#result-area', el => el.value)).includes('2번 박서준'),
-      '전체 복사 글에 이름이 없음');
-
-    // 6) 적어 둔 수행평가가 학기·과목마다 따로 남는가
-    await page.select('#semester-select', '2학기');
-    assert.equal(await page.$eval('#topics-input', el => el.value), '',
-      '2학기로 옮겼는데 1학기 내용이 남아 있음');
-    await page.select('#semester-select', '1학기');
-    assert.ok((await page.$eval('#topics-input', el => el.value)).includes('분수의 덧셈'),
-      '1학기로 돌아왔는데 적어 둔 것이 사라짐');
-
-    // 7) 행발로 옮기면 학기 칸이 닫히는가
-    await page.select('#area-select', 'behavior');
-    assert.ok(await page.$eval('#semester-group', el => getComputedStyle(el).display === 'none'),
-      '행발인데 학기 칸이 남아 있음');
-
-    assert.equal(state.pageErrors.length, 0, '스크립트 오류: ' + state.pageErrors.join(' | '));
-    console.log('  ' + mode + ': 통과');
-  } catch (err) {
-    console.log('  --- ' + mode + ' 에서 멈춤. 그때 화면 상태 ---');
-    for (const id of ['gen-status', 'key-status', 'roster-status']) {
-      try { console.log('  ' + id + ':', await page.$eval('#' + id, el => el.textContent)); } catch (_) {}
-    }
-    console.log('  구글 부른 횟수:', state.calls);
-    console.log('  스크립트 오류:', state.pageErrors.join(' | ') || '없음');
-    console.log('  콘솔 오류:', state.consoleErrors.join(' | ') || '없음');
-    throw err;
-  } finally {
-    await page.close();
-    await context.close();
-  }
-}
-
 (async () => {
-  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-  const port = server.address().port;
+  const recordPlans = new Map();
+  const h = await startHarness({
+    me: (user) => ({ signedIn: true, isTeacher: true, user: { id: user.id, email: 'teacher@school.test', name: '검증 교사', role: 'teacher' }, membership: null }),
+    extraRoutes(app, { pool, userOf }) {
+      const requireTeacher = async (req) => { const user = userOf(req); if (!user) throw new HttpError(401, 'AUTH_REQUIRED', '로그인'); return { id: user.id, email: 'teacher@school.test' }; };
+      const ai = createTeacherAi({ pool, requireTeacher, requireDatabase() {}, HttpError, fetchImpl, warn() {},
+        asyncRoute: (fn) => (req, res, next) => Promise.resolve(fn(req, res)).catch(next), secret: { value: 'harness', derived: false } });
+      app.use('/api/teacher-ai', (req, res, next) => ai.initialize().then(() => next(), next), ai.router);
+      app.get('/api/teacher/available-classes', (_req, res) => res.json({ classes: [{ id: 1, grade: 6, classNumber: 2, isMyTeaching: false }] }));
+      app.get('/api/teacher/groups', (_req, res) => res.json({ groups: [] }));
+      app.get('/api/teacher/class', (_req, res) => res.json({ classroom: { grade: 6, classNumber: 2, students: STUDENTS } }));
+      // 수행평가 이름은 학년이 함께 쓰는 서버 목록(record-plan)에 남는다. 흉내는 메모리에 둔다.
+      const recordKey = (q) => [q.year, q.grade, q.area, q.semester, q.subject].map(String).join('|');
+      app.get('/api/teacher/record-plan', (req, res) => res.json(recordPlans.get(recordKey(req.query)) || { items: '', updatedAt: null, updatedByName: '' }));
+      app.put('/api/teacher/record-plan', (req, res) => { recordPlans.set(recordKey(req.body), { items: req.body.items, updatedAt: new Date().toISOString(), updatedByName: '검증 교사' }); res.json({ ok: true, updatedAt: new Date().toISOString() }); });
+      app.get('/api/teacher/assessment-plans', (_req, res) => res.json({ items: [] }));
+    }
+  });
   let browser;
   try {
-    browser = await pp.launch({
-      executablePath: CHROME,
-      headless: true,
-      args: ['--no-first-run', '--no-default-browser-check']
-    });
-    console.log('생활기록부 화면');
-    for (const mode of ['new', 'legacy', 'retired', 'busy', 'partial']) {
-      await run(browser, port, mode);
-    }
-    console.log('모두 통과');
+    browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
+    const context = await browser.newContext({ viewport: { width: 1200, height: 900 } });
+    await context.addCookies([{ name: 'test_user', value: '1', url: h.base }]);
+    const page = await context.newPage();
+    const errors = []; page.on('pageerror', (e) => errors.push(e.message));
+    page.on('dialog', (d) => d.accept());
+    await page.goto(h.base + '/classtools/record-ai.html');
+    await page.locator('#sub-input').waitFor();
+    await page.locator('#roster-status').filter({ hasText: '3명' }).waitFor({ timeout: 10000 });
+    await page.locator('#sub-input').selectOption('수학');
+    await page.locator('#topics-input').fill('분수의 덧셈과 뺄셈\n' + FAILING_TOPIC);
+
+    // 키가 없으면 만들지 않고 AI 설정으로 눈길을 돌린다.
+    await page.locator('#generate-btn').click();
+    await page.waitForTimeout(500);
+    assert.equal(await page.locator('#result-section').isVisible(), false);
+    assert.equal(google.length, 0, '키가 없으면 구글에 가지 않는다');
+    const put = await page.evaluate(async (k) => (await fetch('/api/teacher-ai/key', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key: k }) })).status, VALID_KEY);
+    assert.equal(put, 200);
+    // 적은 수행평가는 0.8초 뒤에 학년 공유 목록으로 간다. 간 것을 보고 나서 다시 연다.
+    for (let i = 0; i < 30 && recordPlans.size === 0; i += 1) await page.waitForTimeout(200);
+    assert.equal(recordPlans.size, 1, '학년이 함께 쓰는 목록에 저장돼야 한다');
+    await page.reload();
+    await page.locator('#roster-status').filter({ hasText: '3명' }).waitFor({ timeout: 10000 });
+    await page.locator('#sub-input').selectOption('수학');
+    await page.locator('#plan-status').filter({ hasText: '검증 교사 선생님이' }).waitFor({ timeout: 10000 });
+    assert.equal(await page.locator('#topics-input').inputValue(), '분수의 덧셈과 뺄셈\n' + FAILING_TOPIC, '적어 둔 수행평가는 학년 목록에서 되살아난다');
+
+    await page.locator('#generate-btn').click();
+    await page.locator('#result-section').waitFor({ state: 'visible', timeout: 20000 });
+    await page.locator('#gen-status').filter({ hasText: '받지 못해 빠졌습니다' }).waitFor({ timeout: 20000 });
+    assert.match(await page.locator('#gen-status').innerText(), /「도형의 넓이 구하기」은\(는\) 받지 못해 빠졌습니다/);
+    const texts = await page.locator('#result-list textarea').evaluateAll((els) => els.map((e) => e.value));
+    assert.equal(texts.length, 3, '학생마다 한 칸');
+    for (const text of texts) assert.match(text, /^분수의 덧셈과 뺄셈 수행평가에서 (차근차근|꼼꼼하게|스스로) 해냄\.$/, '실패한 수행평가만 빠지고 나머지는 산다: ' + text);
+    assert.equal(new Set(texts).size, 3, '세 학생의 문장이 서로 다르다');
+    const labels = await page.locator('#result-list strong').evaluateAll((els) => els.map((e) => e.textContent));
+    assert.deepEqual(labels, ['1번 학생 하나', '2번 학생 둘', '3번 학생 셋']);
+    const prompts = google.filter((c) => typeof c.body?.input === 'string').map((c) => c.body.input);
+    assert.match(prompts[0], /2학기 수학 과목별 학기말 종합의견|1학기 수학 과목별 학기말 종합의견/);
+    assert.match(prompts[0], /학생 3명에게/);
+    assert.ok(google.every((c) => c.key === VALID_KEY), '구글에는 서버가 등록된 키로 간다');
+
+    // 「전체 복사」 글 머리에는 칸·학기·과목이 적힌다(크롬 확장이 나이스 화면과 대조한다).
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    await page.locator('#copy-btn').click();
+    // 윈도 클립보드는 줄 끝에 CR 을 붙인다.
+    const copied = (await page.evaluate(() => navigator.clipboard.readText())).replace(/\r\n/g, '\n');
+    assert.match(copied, /^칸: 과목별 학기말 종합의견\n학기: [12]학기\n과목: 수학\n\n1번 학생 하나\n분수의 덧셈과 뺄셈/);
+
+    // 다시 열어도 만든 문장이 그대로다(계정의 서버 저장 공간).
+    await page.reload();
+    await page.locator('#roster-status').filter({ hasText: '3명' }).waitFor({ timeout: 10000 });
+    await page.locator('#sub-input').selectOption('수학');
+    await page.locator('#result-section').waitFor({ state: 'visible', timeout: 10000 });
+    assert.deepEqual(await page.locator('#result-list textarea').evaluateAll((els) => els.map((e) => e.value)), texts);
+    assert.deepEqual(errors, []);
+    console.log(JSON.stringify({ ok: true, googleCalls: google.length }));
   } finally {
     if (browser) await browser.close();
-    server.close();
+    await h.close();
   }
-})().catch(e => { console.error('실패:', e.message); process.exit(1); });
+})().catch((error) => { console.error(error); process.exit(1); });
