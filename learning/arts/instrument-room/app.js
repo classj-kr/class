@@ -2583,7 +2583,7 @@
         renderChordPads();
         renderDrumPads();
         bindEvents();
-        selectFamily("korean");
+        selectFamily("keyboard");
         if (isTouchKeyboardDevice() && !state.screenCalibrated) window.requestAnimationFrame(openKeySizeDialog);
         animateVisual();
     }
