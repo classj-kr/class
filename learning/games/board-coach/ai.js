@@ -4,7 +4,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (R) {
   "use strict";
   const LEVELS = Object.freeze({
-    beginner: { name: "초급", reversi: 2, omok: 2, nodes: 2500, ms: 300, width: 8 },
+    beginner: { name: "초급", reversi: 1, omok: 1, nodes: 0, ms: 0, width: 5, practice: true },
     intermediate: { name: "중급", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
     advanced: { name: "상급", reversi: 6, omok: 4, nodes: 90000, ms: 1800, width: 12 }
   });
@@ -140,7 +140,7 @@
       const next = R.play(state, index);
       return { index, next, danger: R.legal(next, 3 - state.color).filter(i => corners.includes(i)).length, score: reversiValue(next, state.color, coaching) };
     });
-    // Every level follows these opening/midgame safeguards. In the endgame,
+    // Search opponents follow these opening/midgame safeguards. In the endgame,
     // search may trade a corner for a better final disc count.
     if (!coaching && state.board.filter(v => !v).length > 12) {
       const takeCorner = moves.filter(m => corners.includes(m.index));
@@ -180,9 +180,31 @@
     }
     return R.legal(state).map(index=>({index,score:solve(R.play(state,index))})).sort((a,b)=>b.score-a.score||a.index-b.index);
   }
+  function practiceMove(state, random=Math.random) {
+    const pick=items=>items[Math.min(items.length-1,Math.floor(random()*items.length))];
+    let candidates;
+    if(state.game==='omok') {
+      candidates=nearby(state.board).map(index=>({index,own:threats(state.board,index,state.color),other:threats(state.board,index,3-state.color)}));
+      const wins=candidates.filter(m=>m.own.win),blocks=candidates.filter(m=>m.other.win);
+      if(wins.length)candidates=wins;
+      // A new player notices some immediate fours, but does not reliably
+      // anticipate open threes, forks, or every defensive move.
+      else if(blocks.length&&random()<.55)candidates=blocks;
+      else if(random()>=.65)candidates=candidates.sort((a,b)=>b.own.score-a.own.score).slice(0,5);
+    } else {
+      candidates=R.legal(state).map(index=>({index,flips:R.flips(state.board,index,state.color).length}));
+      // Greedy disc counting is deliberately simpler than corner/mobility
+      // search. Keep all legal choices available, including risky corners.
+      if(random()>=.65)candidates=candidates.sort((a,b)=>b.flips-a.flips).slice(0,3);
+    }
+    if(!candidates.length)return null;
+    const {index}=pick(candidates);
+    return {index,depth:1,nodes:0,practice:true,reason:explain(state,index)};
+  }
   function choose(state, level = "beginner", options = {}) {
     if (state.ended) return null;
     const settings = {...(LEVELS[level] || LEVELS.beginner),...options};
+    if(settings.practice&&!settings.coaching)return practiceMove(state,options.random);
     const roots = state.game === "omok" ? omokRanked(state) : reversiRanked(state,settings.coaching);
     if (!roots.length) return null;
     const learned = state.game === "reversi" ? book.get(state.board.join("") + ":" + state.color) : undefined;

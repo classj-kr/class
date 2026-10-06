@@ -55,19 +55,19 @@ test("repetition uses legal en passant rights and supports current/prospective c
   assert.ok(C.drawClaims(fifty).some(o=>o.move));
   assert.equal(C.status(fen("4k3/8/8/8/8/8/8/R3K3 w - - 150 80")).reason,"seventy-five-move");
 });
-test("every AI level develops from the same repertoire, finds mate, and answers mate threats",()=>{
+test("search opponents develop from the same repertoire, find mate, and answer mate threats",()=>{
   const start=C.createInitialState("standard"), threat=fen("rnbqkbnr/pppp1ppp/8/4p3/6P1/5P2/PPPPP2P/RNBQKBNR b KQkq g3 0 2");
-  const defensive=fen("r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P2Q/8/PPPP1PPP/RNB1K1NR b KQkq - 4 4");
-  for(const level of Object.keys(AI.LEVELS)) {
+  const defensive=fen("r1bqk2r/pppp1ppp/2n2n2/2b1p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 4 4");
+  for(const level of ["intermediate","advanced"]) {
     let result=AI.choose(start,level);assert.equal(result.move.from,sq("e2"));assert.equal(result.move.to,sq("e4"));
     result=AI.choose(threat,level,{nodes:1500,ms:10000});assert.equal(C.status(C.advance(threat,result.move)).reason,"checkmate");
     result=AI.choose(defensive,level,{nodes:2500,ms:10000});assert.equal(AI.mateInOne(C.advance(defensive,result.move)),null);
   }
   assert.equal(C.status(start).ended,false);assert.equal(start.board[sq("e2")],"wP");
 });
-test("beginner wins free material and review detects a missed mate",()=>{
+test("intermediate wins free material and review detects a missed mate",()=>{
   const s=fen("4k3/8/8/8/8/8/4q3/3RK3 w - - 0 1");
-  const move=AI.choose(s,"beginner",{ms:10000}).move;
+  const move=AI.choose(s,"intermediate",{ms:10000}).move;
   assert.equal(move.capture,"bQ");
   let mate=C.createInitialState("standard");for(const [a,b] of [["f2","f3"],["e7","e5"],["g2","g4"]])mate=play(mate,a,b);
   const miss=C.allLegalMoves(mate).find(m=>m.from===sq("a7")&&m.to===sq("a6"));

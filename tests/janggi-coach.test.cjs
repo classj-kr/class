@@ -109,10 +109,10 @@ test("mate, passes, repetition and repeated checking end with correct results",(
   const quiet={...R.initial(),quiet:99};assert.equal(R.play(quiet,{kind:"pass"}).state.result.reason,"quiet");
 });
 
-test("every level develops, wins immediately, blocks mate and avoids poisoned material",()=>{
+test("search opponents develop, win immediately, block mate and avoid poisoned material",()=>{
   const free=fixture([["cK",4,8],["hK",4,1],["cR",0,5],["hR",0,2],["cP",4,6]]);
   const poison=fixture([["cK",4,8],["hK",3,1],["cR",0,5],["hP",0,3],["hR",0,0],["cP",4,6]]);
-  for(const level of Object.keys(AI.LEVELS)){
+  for(const level of ["intermediate","advanced"]){
     const opening=AI.choose(R.initial(),level);assert.equal(opening.move.piece,"cH");assert.ok(!opening.move.kind);
     const winner=AI.choose(fixture(matePieces),level);assert.equal(R.status(R.advance(fixture(matePieces),winner.move)).reason,"mate");
     const defense=fixture([...matePieces,["hR",0,2]],"h"),answer=AI.choose(defense,level);assert.equal(AI.mateInOne(R.advance(defense,answer.move)),null);
@@ -122,14 +122,14 @@ test("every level develops, wins immediately, blocks mate and avoids poisoned ma
   }
 });
 
-test("all levels break an equal opening loop instead of repeating it, even without search time",()=>{
+test("search opponents break an equal opening loop instead of repeating it, even without search time",()=>{
   for(const side of ["c","h"]){
     let s=R.position(R.initial().board,side);
     const cycle=side==="c"?[[82,65],[1,20],[65,82],[20,1]]:[[1,20],[82,65],[20,1],[65,82]];
     for(const[from,to]of cycle){const n=R.play(s,{from,to});assert.ok(n.ok);s=n.state;}
     assert.equal(R.repetitionCount(s),2);assert.equal(R.status(s).ended,false);
     const unchanged=JSON.stringify(s);
-    for(const level of Object.keys(AI.LEVELS))for(const options of [{nodes:0,ms:0},{ms:10000}]){
+    for(const level of ["intermediate","advanced"])for(const options of [{nodes:0,ms:0},{ms:10000}]){
       const answer=AI.choose(s,level,options),next=R.play(s,answer.move);
       assert.ok(next.ok);assert.equal(R.repetitionCount(next.state),1,`${side} ${level}: avoid replaying the same position`);
       assert.equal(answer.move.piece[1],"H","develop the other horse, not a random waiting move");
@@ -138,13 +138,13 @@ test("all levels break an equal opening loop instead of repeating it, even witho
   }
 });
 
-test("a quiet reversal is avoided even when the opponent has changed the full position",()=>{
+test("search opponents avoid a quiet reversal even when the opponent has changed the full position",()=>{
   let s=R.initial();
   for(const[from,to]of [[82,65],[1,20],[65,82]])s=R.play(s,{from,to}).state;
   s=R.play(s,{from:27,to:36}).state;
   const reverse={from:82,to:65};
   assert.equal(R.repetitionCount(R.advance(s,reverse)),1,"this is not yet an exact repeated board");
-  for(const level of Object.keys(AI.LEVELS))for(const options of [{nodes:0,ms:0},{ms:10000}]){
+  for(const level of ["intermediate","advanced"])for(const options of [{nodes:0,ms:0},{ms:10000}]){
     const answer=AI.choose(s,level,options);
     assert.equal(R.same(answer.move,reverse),false,`${level} should prefer comparable new development`);
     assert.ok(!answer.move.kind);

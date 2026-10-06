@@ -78,7 +78,7 @@
     render();
     if (kind === "hint") setReason("힌트를 생각하고 있어요", "잠깐만 기다려 주세요", "공격할 곳과 상대의 위협을 함께 살펴보고 있어요.");
     try {
-      worker = new Worker("ai-worker.js?v=5");
+      worker = new Worker("ai-worker.js?v=6");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;
