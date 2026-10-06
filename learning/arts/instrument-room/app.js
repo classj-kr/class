@@ -1484,11 +1484,11 @@
     }
 
     const DETAIL_SECTIONS = [
-        ["overview", "AT A GLANCE", "한눈에 보는 악기"],
-        ["mechanism", "HOW IT WORKS", "구조와 소리의 원리"],
-        ["technique", "HOW TO PLAY", "연주법과 표현"],
-        ["role", "IN THE MUSIC", "음악 속 역할"],
-        ["history", "CONTEXT", "역사와 다른 악기 비교"]
+        ["overview", "소개"],
+        ["mechanism", "구조와 소리"],
+        ["technique", "연주법"],
+        ["role", "음악 속 역할"],
+        ["history", "역사와 특징"]
     ];
 
     function instrumentDetails() {
@@ -1602,11 +1602,9 @@
         DETAIL_SECTIONS.forEach(function (sectionCopy) {
             const section = document.createElement("section");
             section.className = "detail-section";
-            const eyebrow = document.createElement("span");
             const title = document.createElement("h3");
-            eyebrow.textContent = sectionCopy[1];
-            title.textContent = sectionCopy[2];
-            section.append(eyebrow, title);
+            title.textContent = sectionCopy[1];
+            section.appendChild(title);
             String(entry.sections[sectionCopy[0]] || "").split(/\n\s*\n/).filter(Boolean).forEach(function (paragraph) {
                 const item = document.createElement("p");
                 item.textContent = paragraph;
