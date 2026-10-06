@@ -48,5 +48,8 @@
     const lines=(note.lines||[]).map(line=>line.map(point)).filter(line=>line.length>1&&line.every(Boolean));
     if (lines.length) board.insertAdjacentHTML('beforeend',`<svg class="threat-lines" viewBox="0 0 ${columns} ${cells.length/columns}" preserveAspectRatio="none" aria-hidden="true">${lines.map(line=>`<polyline points="${line.map(p=>`${p.x},${p.y}`).join(' ')}"/>`).join('')}</svg>`);
   }
-  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent };
+  function ready() {
+    window.BoardCoachBoot?.ready();
+  }
+  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent, ready };
 })();

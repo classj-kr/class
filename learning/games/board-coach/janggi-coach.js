@@ -177,5 +177,5 @@
   $("reviewList").addEventListener("click",event=>{const button=event.target.closest("[data-review]");if(button){stop();scene=history[Number(button.dataset.review)];reason("중요한 장면",AI.label(scene.move)+" 두기 전",scene.feedback?.text||scene.reason);render();BoardCoachUI.revealExplanation();}});
   $("liveBoard").addEventListener("click",()=>{scene=null;reason("대국 돌아보기","마지막 판","중요한 장면을 눌러 다시 살펴보세요.");render();});
   window.addEventListener("pagehide",stop);window.addEventListener("pageshow",event=>{if(event.persisted){render();resume();}});
-  render();$("setup").showModal();
+  render();BoardCoachUI.ready();$("setup").showModal();
 })();

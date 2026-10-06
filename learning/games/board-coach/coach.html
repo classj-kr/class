@@ -1,8 +1,17 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-coach-state="loading">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>AI와 배우기</title>
+  <style>
+    /* Keep the shared shell out of the first paint, even before external styles load. */
+    html:not([data-coach-state="ready"]) body > :not(#coachLoading) { visibility: hidden !important; }
+    #coachLoading { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 24px; background: #10151c; color: #eee6d2; font: 16px/1.65 system-ui, "Malgun Gothic", sans-serif; text-align: center; }
+    #coachLoading h1 { font-size: 26px; margin: 0 0 12px; }
+    #coachLoading p { margin: 0 0 20px; }
+    #coachLoading a { display: inline-block; min-height: 48px; padding: 12px; color: #f0d77c; }
+    #coachLoading [hidden], html[data-coach-state="ready"] #coachLoading { display: none; }
+  </style>
   <link rel="stylesheet" href="coach.css?v=8">
   <link rel="stylesheet" href="../chess/board.css?v=2">
   <link rel="stylesheet" href="../omok/board.css?v=1">
@@ -12,16 +21,42 @@
   <link rel="stylesheet" href="janggi-theme.css?v=4">
   <script src="../../../assets/game-motion.js?v=20261006-capture" defer></script>
   <script src="../chess/motion.js?v=2" defer></script>
-  <script src="coach-ui.js?v=3" defer></script>
-  <script src="rules.js?v=1" defer></script><script src="ai.js?v=6" defer></script><script src="coach.js?v=13" defer></script>
-  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=8" defer></script><script src="../chess/pieces.js?v=1" defer></script><script src="chess-pieces.js?v=2" defer></script><script src="chess-coach.js?v=11" defer></script>
-  <script src="../janggi/motion.js?v=2" defer></script><script src="janggi-rules.js?v=3" defer></script><script src="janggi-ai.js?v=13" defer></script><script src="janggi-coach.js?v=16" defer></script>
+  <script src="coach-ui.js?v=4" defer></script>
+  <script src="rules.js?v=1" defer></script><script src="ai.js?v=6" defer></script><script src="coach.js?v=14" defer></script>
+  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=8" defer></script><script src="../chess/pieces.js?v=1" defer></script><script src="chess-pieces.js?v=2" defer></script><script src="chess-coach.js?v=12" defer></script>
+  <script src="../janggi/motion.js?v=2" defer></script><script src="janggi-rules.js?v=3" defer></script><script src="janggi-ai.js?v=13" defer></script><script src="janggi-coach.js?v=17" defer></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
 <script src="../../../assets/sound/music-control.js?v=20261006-capture" data-sfx-controls defer></script>
 </head>
 <body class="board-coach">
-  <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">AI와 배우기</span><h1 id="title">리버시</h1></div><button id="newGame" type="button">새 대국</button></header>
+  <div id="coachLoading" role="status" aria-live="polite"><div>
+    <h1 id="coachLoadingTitle">AI와 배우기</h1>
+    <p id="coachLoadingMessage">대국판을 준비하고 있어요.</p>
+    <noscript><p>AI 대전을 하려면 브라우저의 자바스크립트를 켜 주세요.</p></noscript>
+    <a id="coachReload" href="" hidden>다시 불러오기</a><a id="coachBack" href="../../../">게임으로 돌아가기</a>
+  </div></div>
+  <script>
+    // This runs before deferred game scripts, so a slow download cannot show another game.
+    (() => {
+      const names = { reversi: "리버시", omok: "오목", chess: "체스", janggi: "장기" };
+      const requested = new URLSearchParams(location.search).get("game");
+      const game = Object.hasOwn(names, requested) ? requested : "reversi";
+      const root = document.documentElement;
+      root.dataset.coachGame = game;
+      document.title = `${names[game]} · AI와 배우기`;
+      document.getElementById("coachLoadingTitle").textContent = `${names[game]} AI 대전`;
+      document.getElementById("coachBack").href = `../${game}/${game}`;
+      window.BoardCoachBoot = { ready() { root.dataset.coachState = "ready"; } };
+      document.addEventListener("DOMContentLoaded", () => {
+        if (root.dataset.coachState === "ready") return;
+        root.dataset.coachState = "error";
+        document.getElementById("coachLoadingMessage").textContent = "대국판을 불러오지 못했어요. 다시 불러와 주세요.";
+        document.getElementById("coachReload").hidden = false;
+      }, { once: true });
+    })();
+  </script>
+  <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">AI와 배우기</span><h1 id="title">AI와 배우기</h1></div><button id="newGame" type="button">새 대국</button></header>
   <main class="layout">
     <section class="table panel" aria-label="학습 대국">
       <div class="matchbar"><strong id="turn" role="status">AI 수준을 골라 시작하세요.</strong><span id="score"></span></div>
