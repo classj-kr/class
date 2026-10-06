@@ -30,6 +30,9 @@
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); min-height: 44px; }
         .form-control:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
         .summary { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 14px 0 0; color: var(--muted); font-size: 0.92rem; }
+        .tabs { display: flex; gap: 6px; align-items: center; }
+        .tabs a { text-decoration: none; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); min-height: 40px; display: inline-flex; align-items: center; }
+        .tabs a.on { background: var(--brand); color: #fff; border-color: var(--brand); }
         .icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--brand); font-weight: 700; cursor: pointer; }
         .icon-btn:hover { background: var(--brand-soft); }
         .domain { margin-top: 22px; }
@@ -66,7 +69,11 @@
 <body>
     <header class="account-bar">
         <a class="home" href="/classtools/">← 교사 도구 홈으로</a>
-        <button type="button" class="icon-btn" id="source-btn" aria-label="자료 출처">i</button>
+        <nav class="tabs" aria-label="수행평가 계획 메뉴">
+            <a href="plan.html">계획 세우기</a>
+            <a class="on" href="index.html" aria-current="page">성취기준 찾아보기</a>
+            <button type="button" class="icon-btn" id="source-btn" aria-label="자료 출처">i</button>
+        </nav>
     </header>
     <main>
         <section class="card">

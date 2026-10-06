@@ -521,6 +521,7 @@ app.use('/api/learning-records', express.json({ limit: '512kb' }));
 // 교사용 AI 요청 글은 32kb 를 넘는다(생활기록부 한 반 분량).
 app.use('/api/teacher-ai', express.json({ limit: '256kb' }));
 app.use('/api/me/storage', express.json({ limit: '1100kb' }));
+app.use('/api/teacher/assessment-plans', express.json({ limit: '512kb' }));   // 교과 하나의 계획(항목 수십 개·단계별 평가기준)
 app.use(express.json({ limit: "32kb" }));
 app.get("/api/weather", kmaWeather.handler);
 app.use("/api", (_req, res, next) => {

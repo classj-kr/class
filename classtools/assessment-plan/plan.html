@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>수행평가 계획</title>
+    <style>
+        :root {
+            --ink: #18211d; --muted: #647069; --paper: #fffdf8; --canvas: #f3efe7; --line: #d8d2c6;
+            --brand: #246b55; --brand-dark: #18503f; --brand-soft: #e4f0ea; --shadow: 0 18px 50px rgba(41, 50, 45, 0.10); --danger: #b43c36;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; background: var(--canvas); color: var(--ink); font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif; font-size: 15px; line-height: 1.6; }
+        button, input, select, textarea { font: inherit; color: inherit; }
+        a { color: var(--brand); }
+        .account-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; flex-wrap: wrap; }
+        .account-bar a.home { text-decoration: none; font-weight: 600; }
+        .tabs { display: flex; gap: 6px; }
+        .tabs a { text-decoration: none; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); min-height: 40px; display: inline-flex; align-items: center; }
+        .tabs a.on { background: var(--brand); color: #fff; border-color: var(--brand); }
+        main { max-width: 1120px; margin: 0 auto; padding: 0 20px 80px; }
+        .card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow); margin-bottom: 18px; }
+        .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; align-items: end; }
+        .controls label { display: grid; gap: 4px; font-size: 0.9rem; color: var(--muted); font-weight: 600; }
+        .form-control { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; min-height: 44px; }
+        .form-control:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+        textarea.form-control { min-height: 64px; resize: vertical; line-height: 1.5; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 16px; min-height: 44px; border-radius: 10px; border: 1px solid var(--brand); background: var(--brand); color: #fff; cursor: pointer; font-weight: 600; }
+        .btn:hover { background: var(--brand-dark); }
+        .btn:disabled { background: var(--muted); border-color: var(--muted); cursor: not-allowed; }
+        .btn-outline { background: #fff; color: var(--brand); }
+        .btn-outline:hover { background: var(--brand-soft); }
+        .btn-small { min-height: 36px; padding: 5px 12px; font-size: 0.9rem; font-weight: 500; }
+        .btn-danger { color: var(--danger); border-color: var(--line); }
+        .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; }
+        .toolbar .status { margin-left: auto; }
+        .status { font-size: 0.88rem; color: var(--muted); }
+        .status.error { color: var(--danger); }
+        .item { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; box-shadow: var(--shadow); }
+        .item-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .item-head .no { font-weight: 700; color: var(--brand-dark); }
+        .item-head .spacer { flex: 1; }
+        .item-head button { min-height: 36px; padding: 4px 10px; border: 1px solid var(--line); background: #fff; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .field { display: grid; gap: 4px; }
+        .field > span { font-size: 0.88rem; color: var(--muted); font-weight: 600; }
+        /* 성취기준은 한 줄에 하나씩, 문장을 자르지 않고 다 보여 준다. */
+        .chips { display: grid; gap: 6px; min-height: 44px; padding: 8px; border: 1px dashed var(--line); border-radius: 10px; background: #fff; }
+        .chip { display: flex; align-items: flex-start; gap: 8px; background: var(--brand-soft); color: var(--brand-dark); border-radius: 10px; padding: 6px 6px 6px 12px; font-size: 0.9rem; line-height: 1.5; }
+        .chip span { flex: 1; min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+        .chip button { border: none; background: transparent; cursor: pointer; color: var(--brand-dark); padding: 0 6px; font-size: 1.1rem; line-height: 1.4; }
+        .chips .pick { justify-self: start; border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 4px 12px; cursor: pointer; min-height: 36px; }
+        .levels { margin-top: 12px; display: grid; gap: 8px; }
+        .levels-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .levels-head select { min-height: 40px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+        .level { display: grid; grid-template-columns: 9em 1fr; gap: 8px; align-items: start; }
+        .level input { min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; text-align: center; }
+        .level textarea { min-height: 56px; }
+        .empty { text-align: center; color: var(--muted); padding: 36px 0; }
+        dialog { border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; width: min(760px, 94vw); max-height: 88vh; }
+        dialog::backdrop { background: rgba(20, 24, 28, 0.45); }
+        dialog h2 { margin: 0 0 10px; font-size: 1.08rem; }
+        .picker-list { display: grid; gap: 6px; max-height: 52vh; overflow: auto; margin: 10px 0; }
+        .picker-list h3 { margin: 10px 0 4px; font-size: 0.95rem; color: var(--brand-dark); }
+        .picker-list label { display: grid; grid-template-columns: auto auto 1fr; gap: 10px; align-items: start; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; font-size: 0.93rem; }
+        .picker-list label input { margin-top: 4px; }
+        .code { font-family: "JetBrains Mono", "D2Coding", monospace; font-size: 0.84rem; background: var(--brand-soft); color: var(--brand-dark); border-radius: 6px; padding: 1px 7px; white-space: nowrap; align-self: start; }
+        .dialog-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+        .preview-item { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 0.93rem; display: grid; grid-template-columns: auto 1fr; gap: 10px; }
+        .preview-item small { color: var(--muted); display: block; }
+        .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; opacity: 0; transition: opacity 0.2s; pointer-events: none; font-size: 0.92rem; max-width: 90vw; }
+        .toast.show { opacity: 1; }
+        @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .level { grid-template-columns: 1fr; } .toolbar .status { margin-left: 0; width: 100%; } }
+    </style>
+</head>
+<body>
+    <header class="account-bar">
+        <a class="home" href="/classtools/">← 교사 도구 홈으로</a>
+        <nav class="tabs" aria-label="수행평가 계획 메뉴">
+            <a class="on" href="plan.html" aria-current="page">계획 세우기</a>
+            <a href="index.html">성취기준 찾아보기</a>
+        </nav>
+    </header>
+    <main>
+        <section class="card">
+            <div class="controls">
+                <label>학년도<select id="year-select" class="form-control"></select></label>
+                <label>학년<select id="grade-select" class="form-control"></select></label>
+                <label>학기<select id="semester-select" class="form-control"><option value="1">1학기</option><option value="2">2학기</option></select></label>
+                <label>교과<select id="subject-select" class="form-control"></select></label>
+            </div>
+            <div class="toolbar">
+                <button type="button" class="btn" id="add-item-btn">＋ 항목 추가</button>
+                <button type="button" class="btn btn-outline" id="import-btn">📄 계획서 파일로 채우기</button>
+                <input type="file" id="import-file" accept=".pdf,.png,.jpg,.jpeg,.webp,.hwpx,.docx,.txt" hidden>
+                <button type="button" class="btn btn-outline" id="send-record-btn">생기부 활동 주제로 보내기</button>
+                <span class="status" id="save-status"></span>
+            </div>
+            <p class="status" id="plan-note" style="margin: 8px 0 0;"></p>
+        </section>
+        <section id="items" aria-live="polite"></section>
+    </main>
+
+    <dialog id="picker-dialog" aria-labelledby="picker-title">
+        <h2 id="picker-title">성취기준 고르기</h2>
+        <input type="search" id="picker-search" class="form-control" placeholder="코드나 낱말로 찾기">
+        <div class="picker-list" id="picker-list"></div>
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-outline" id="picker-cancel">취소</button>
+            <button type="button" class="btn" id="picker-apply">담기</button>
+        </div>
+    </dialog>
+
+    <dialog id="import-dialog" aria-labelledby="import-title">
+        <h2 id="import-title">계획서에서 읽은 항목</h2>
+        <p class="status" id="import-meta"></p>
+        <div class="picker-list" id="import-list"></div>
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-outline" id="import-cancel">취소</button>
+            <button type="button" class="btn btn-outline" id="import-replace">계획 바꾸기</button>
+            <button type="button" class="btn" id="import-append">현재 계획에 덧붙이기</button>
+        </div>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
+    <script>
+        (async () => {
+            'use strict';
+            const $ = (id) => document.getElementById(id);
+            const yearSelect = $('year-select'), gradeSelect = $('grade-select'), semesterSelect = $('semester-select'), subjectSelect = $('subject-select');
+            const itemsRoot = $('items'), saveStatus = $('save-status'), planNote = $('plan-note'), toast = $('toast');
+            const LEVEL_LABELS = { 2: ['잘함', '노력요함'], 3: ['잘함', '보통', '노력요함'], 4: ['매우잘함', '잘함', '보통', '노력요함'], 5: ['매우잘함', '잘함', '보통', '노력요함', '매우노력요함'] };
+            let index = null;                 // 성취기준 자료 차례
+            const subjectCache = new Map();
+            let items = [];                   // 지금 보고 있는 계획의 항목들
+            let loadedKey = '';               // 어느 계획을 불러왔는지
+            let saveTimer = null, saving = false, dirty = false;
+            let toastTimer;
+
+            function notice(message) { toast.textContent = message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 2600); }
+            const bandOf = (grade) => grade <= 2 ? 'e12' : grade <= 4 ? 'e34' : grade <= 6 ? 'e56' : 'm';
+            const currentKey = () => ({ year: Number(yearSelect.value), grade: Number(gradeSelect.value), semester: Number(semesterSelect.value), subject: subjectSelect.value });
+            const keyString = (key) => [key.year, key.grade, key.semester, key.subject].join('|');
+
+            async function api(path, options) {
+                const res = await fetch(path, { credentials: 'same-origin', cache: 'no-store', ...options });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) { const error = new Error(data.message || '서버가 응답하지 않습니다 (' + res.status + ').'); error.code = data.error; throw error; }
+                return data;
+            }
+
+            // ── 준비: 학년도·학년·교과 ──────────────────────────────────
+            async function prepare() {
+                const me = await api('/api/auth/me');
+                if (!me.signedIn || !me.isTeacher) { location.replace('/classtools/'); return false; }
+                const thisYear = new Date().getFullYear();
+                yearSelect.replaceChildren(...[thisYear - 1, thisYear, thisYear + 1].map((y) => { const o = document.createElement('option'); o.value = y; o.textContent = y + '학년도'; return o; }));
+                yearSelect.value = String(thisYear);
+                let grades = [];
+                try { grades = ((await api('/api/teacher/available-classes')).classes || []).map((c) => Number(c.grade)).filter((g) => g >= 1 && g <= 6); } catch (_) { grades = []; }
+                gradeSelect.replaceChildren(...[1, 2, 3, 4, 5, 6].map((g) => { const o = document.createElement('option'); o.value = g; o.textContent = g + '학년'; return o; }));
+                gradeSelect.value = String(grades[0] || 3);
+                semesterSelect.value = new Date().getMonth() + 1 >= 8 || new Date().getMonth() + 1 <= 1 ? '2' : '1';
+                index = await (await fetch('data/index.json?v=20261006-1', { cache: 'no-cache' })).json();
+                fillSubjects();
+                return true;
+            }
+
+            function fillSubjects() {
+                const band = bandOf(Number(gradeSelect.value));
+                const names = [];
+                for (const subject of index.subjects) {
+                    if (!subject.bands[band]) continue;
+                    // 바슬즐처럼 한 자료에 세 교과가 든 것은 교과마다 따로 고른다.
+                    const parts = subject.name.includes('·') ? [...new Set(subject.bands[band].domains.map((d) => d.subjectName))] : [subject.name];
+                    for (const name of parts) names.push({ id: subject.id, name });
+                }
+                const previous = subjectSelect.value;
+                subjectSelect.replaceChildren(...names.map((n) => { const o = document.createElement('option'); o.value = n.name; o.dataset.file = n.id; o.textContent = n.name; return o; }));
+                if (names.some((n) => n.name === previous)) subjectSelect.value = previous;
+            }
+
+            async function standardsForCurrent() {
+                const option = subjectSelect.selectedOptions[0];
+                if (!option) return [];
+                const band = bandOf(Number(gradeSelect.value));
+                if (!subjectCache.has(option.dataset.file)) subjectCache.set(option.dataset.file, fetch('data/' + option.dataset.file + '.json?v=20261006-1', { cache: 'no-cache' }).then((r) => r.json()));
+                const data = await subjectCache.get(option.dataset.file);
+                const bandData = data.bands[band];
+                if (!bandData) return [];
+                return bandData.domains.filter((d) => data.name === option.value || d.subjectName === option.value)
+                    .map((d) => ({ name: d.name, standards: d.standards.map((s) => ({ code: s.code, text: s.text, domain: d.name })) }));
+            }
+
+            // ── 불러오기·저장 ────────────────────────────────────────────
+            async function loadPlan() {
+                const key = currentKey();
+                loadedKey = keyString(key);
+                saveStatus.textContent = '불러오는 중…'; saveStatus.classList.remove('error');
+                try {
+                    const data = await api('/api/teacher/assessment-plans?' + new URLSearchParams(key));
+                    if (keyString(key) !== loadedKey) return;
+                    items = data.items || [];
+                    dirty = false;
+                    saveStatus.textContent = data.updatedAt
+                        ? (data.updatedByName ? data.updatedByName + ' 선생님이 ' : '') + new Date(data.updatedAt).toLocaleString('ko-KR', { dateStyle: 'short', timeStyle: 'short' }) + '에 저장'
+                        : '아직 계획이 없습니다. 항목을 추가하거나 계획서 파일로 채우세요.';
+                } catch (error) {
+                    items = []; saveStatus.textContent = error.message; saveStatus.classList.add('error');
+                }
+                render();
+            }
+
+            function markDirty() {
+                dirty = true;
+                saveStatus.textContent = '저장 대기 중…'; saveStatus.classList.remove('error');
+                clearTimeout(saveTimer);
+                saveTimer = setTimeout(savePlan, 900);
+            }
+
+            async function savePlan() {
+                if (saving) { clearTimeout(saveTimer); saveTimer = setTimeout(savePlan, 500); return; }
+                saving = true;
+                const key = currentKey();
+                try {
+                    const data = await api('/api/teacher/assessment-plans', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...key, items }) });
+                    if (keyString(key) === loadedKey) { dirty = false; saveStatus.textContent = new Date(data.updatedAt).toLocaleTimeString('ko-KR', { timeStyle: 'short' }) + ' 저장됨 · 같은 학교 선생님이 함께 봅니다'; }
+                } catch (error) {
+                    saveStatus.textContent = '저장하지 못했습니다: ' + error.message; saveStatus.classList.add('error');
+                } finally { saving = false; }
+            }
+            window.addEventListener('pagehide', () => { if (dirty) { clearTimeout(saveTimer); try { navigator.sendBeacon && fetch('/api/teacher/assessment-plans', { method: 'PUT', keepalive: true, credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...currentKey(), items }) }); } catch (_) {} } });
+
+            // ── 항목 그리기 ──────────────────────────────────────────────
+            function newItem() { return { domain: '', standards: [], element: '', levels: 3, criteria: LEVEL_LABELS[3].map((label) => ({ label, text: '' })) }; }
+
+            function render() {
+                if (items.length === 0) { itemsRoot.replaceChildren(Object.assign(document.createElement('p'), { className: 'empty', textContent: '항목이 없습니다. 「항목 추가」를 누르거나 계획서 파일로 채우세요.' })); return; }
+                itemsRoot.replaceChildren(...items.map((item, i) => itemCard(item, i)));
+            }
+
+            function itemCard(item, i) {
+                const card = document.createElement('article'); card.className = 'item';
+                const head = document.createElement('div'); head.className = 'item-head';
+                head.append(Object.assign(document.createElement('span'), { className: 'no', textContent: (i + 1) + '번째 평가' }));
+                head.append(Object.assign(document.createElement('span'), { className: 'spacer' }));
+                for (const [label, action] of [['위로', () => move(i, -1)], ['아래로', () => move(i, 1)], ['삭제', () => remove(i)]]) {
+                    const b = document.createElement('button'); b.type = 'button'; b.textContent = label; b.addEventListener('click', action); head.append(b);
+                }
+                card.append(head);
+
+                const grid = document.createElement('div'); grid.className = 'grid';
+                grid.append(field('영역명', (() => {
+                    const input = document.createElement('input'); input.className = 'form-control'; input.value = item.domain; input.placeholder = '예: 듣기·말하기'; input.setAttribute('list', 'domain-list');
+                    input.addEventListener('input', () => { item.domain = input.value; markDirty(); });
+                    return input;
+                })()));
+                grid.append(field('평가요소', (() => {
+                    const ta = document.createElement('textarea'); ta.className = 'form-control'; ta.value = item.element; ta.placeholder = '예: 작품 속 인물과 면담하기';
+                    ta.addEventListener('input', () => { item.element = ta.value; markDirty(); });
+                    return ta;
+                })()));
+                card.append(grid);
+
+                const chips = document.createElement('div'); chips.className = 'chips';
+                for (const [k, s] of item.standards.entries()) {
+                    const chip = document.createElement('span'); chip.className = 'chip'; chip.title = s.text;
+                    chip.append(Object.assign(document.createElement('span'), { textContent: '[' + s.code + '] ' + s.text }));
+                    const x = document.createElement('button'); x.type = 'button'; x.setAttribute('aria-label', s.code + ' 빼기'); x.textContent = '×';
+                    x.addEventListener('click', () => { item.standards.splice(k, 1); markDirty(); render(); });
+                    chip.append(x); chips.append(chip);
+                }
+                const pick = document.createElement('button'); pick.type = 'button'; pick.className = 'pick'; pick.textContent = item.standards.length ? '＋ 더 고르기' : '성취기준 고르기';
+                pick.addEventListener('click', () => openPicker(item));
+                chips.append(pick);
+                card.append(field('성취기준', chips));
+
+                const levels = document.createElement('div'); levels.className = 'levels';
+                const lh = document.createElement('div'); lh.className = 'levels-head';
+                const levelSelect = document.createElement('select');
+                for (const n of [2, 3, 4, 5]) { const o = document.createElement('option'); o.value = n; o.textContent = n + '단계'; levelSelect.append(o); }
+                levelSelect.value = String(item.levels);
+                levelSelect.addEventListener('change', () => { setLevels(item, Number(levelSelect.value)); markDirty(); render(); });
+                const draft = document.createElement('button'); draft.type = 'button'; draft.className = 'btn btn-outline btn-small'; draft.textContent = '✨ 평가결과 문장 초안';
+                draft.addEventListener('click', () => draftCriteria(item, draft));
+                lh.append(Object.assign(document.createElement('span'), { className: 'status', textContent: '평가단계' }), levelSelect, draft);
+                levels.append(lh);
+                for (const c of item.criteria) {
+                    const row = document.createElement('div'); row.className = 'level';
+                    const label = document.createElement('input'); label.value = c.label; label.setAttribute('aria-label', '단계 이름');
+                    label.addEventListener('input', () => { c.label = label.value; markDirty(); });
+                    const ta = document.createElement('textarea'); ta.className = 'form-control'; ta.value = c.text; ta.placeholder = '이 단계의 평가결과 문장';
+                    ta.addEventListener('input', () => { c.text = ta.value; markDirty(); });
+                    row.append(label, ta); levels.append(row);
+                }
+                card.append(levels);
+                return card;
+            }
+
+            function field(labelText, control) { const wrap = document.createElement('label'); wrap.className = 'field'; wrap.append(Object.assign(document.createElement('span'), { textContent: labelText }), control); return wrap; }
+            function setLevels(item, n) {
+                const labels = LEVEL_LABELS[n];
+                item.levels = n;
+                item.criteria = labels.map((label, i) => ({ label, text: item.criteria[i] ? item.criteria[i].text : '' }));
+            }
+            function move(i, delta) { const j = i + delta; if (j < 0 || j >= items.length) return; [items[i], items[j]] = [items[j], items[i]]; markDirty(); render(); }
+            function remove(i) { if (!confirm((i + 1) + '번째 평가를 지울까요?')) return; items.splice(i, 1); markDirty(); render(); }
+
+            // ── 성취기준 고르기 ─────────────────────────────────────────
+            const pickerDialog = $('picker-dialog'), pickerList = $('picker-list'), pickerSearch = $('picker-search');
+            let pickerTarget = null, pickerGroups = [];
+            async function openPicker(item) {
+                pickerTarget = item;
+                pickerGroups = await standardsForCurrent();
+                pickerSearch.value = '';
+                renderPicker();
+                pickerDialog.showModal();
+            }
+            function renderPicker() {
+                const q = pickerSearch.value.trim();
+                const chosen = new Set(pickerTarget.standards.map((s) => s.code));
+                const blocks = [];
+                for (const group of pickerGroups) {
+                    const matched = group.standards.filter((s) => !q || s.code.includes(q) || s.text.includes(q));
+                    if (!matched.length) continue;
+                    blocks.push(Object.assign(document.createElement('h3'), { textContent: group.name }));
+                    for (const s of matched) {
+                        const label = document.createElement('label');
+                        const box = document.createElement('input'); box.type = 'checkbox'; box.value = s.code; box.checked = chosen.has(s.code);
+                        label.append(box, Object.assign(document.createElement('span'), { className: 'code', textContent: s.code }), Object.assign(document.createElement('span'), { textContent: s.text }));
+                        blocks.push(label);
+                    }
+                }
+                if (!blocks.length) blocks.push(Object.assign(document.createElement('p'), { className: 'empty', textContent: '맞는 성취기준이 없습니다.' }));
+                pickerList.replaceChildren(...blocks);
+            }
+            pickerSearch.addEventListener('input', renderPicker);
+            $('picker-cancel').addEventListener('click', () => pickerDialog.close());
+            $('picker-apply').addEventListener('click', () => {
+                const picked = new Set([...pickerList.querySelectorAll('input:checked')].map((b) => b.value));
+                const all = new Map(pickerGroups.flatMap((g) => g.standards).map((s) => [s.code, s]));
+                // 화면에 보이지 않는(찾기로 가려진) 것은 그대로 두고, 보이는 것만 체크 상태를 반영한다.
+                const visible = new Set([...pickerList.querySelectorAll('input')].map((b) => b.value));
+                pickerTarget.standards = pickerTarget.standards.filter((s) => !visible.has(s.code) || picked.has(s.code));
+                for (const code of picked) if (!pickerTarget.standards.some((s) => s.code === code)) { const s = all.get(code); pickerTarget.standards.push({ code: s.code, text: s.text }); }
+                if (!pickerTarget.domain && pickerTarget.standards[0]) pickerTarget.domain = all.get(pickerTarget.standards[0].code)?.domain || '';
+                pickerDialog.close(); markDirty(); render();
+            });
+
+            // ── 평가결과 문장 초안 ───────────────────────────────────────
+            async function draftCriteria(item, button) {
+                if (!item.standards.length && !item.element.trim()) { notice('성취기준이나 평가요소를 먼저 적어 주세요.'); return; }
+                try { await window.ClassroomAI.init(); } catch (error) { notice(error.message); return; }
+                if (!window.ClassroomAI.hasKey()) { notice('내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.'); return; }
+                button.disabled = true; button.textContent = '쓰는 중…';
+                try {
+                    const data = await api('/api/teacher-ai/draft-criteria', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: subjectSelect.value, grade: Number(gradeSelect.value), standards: item.standards, element: item.element, levels: item.levels, labels: item.criteria.map((c) => c.label) }) });
+                    item.criteria = item.criteria.map((c, i) => ({ label: c.label, text: data.criteria[i]?.text || c.text }));
+                    markDirty(); render(); notice('초안을 넣었습니다. 읽고 고쳐 주세요.');
+                } catch (error) { notice(error.message); }
+                finally { button.disabled = false; button.textContent = '✨ 평가결과 문장 초안'; }
+            }
+
+            // ── 계획서 파일로 채우기 ─────────────────────────────────────
+            const importDialog = $('import-dialog'), importList = $('import-list'), importMeta = $('import-meta'), importFile = $('import-file'), importBtn = $('import-btn');
+            let imported = [];
+            importBtn.addEventListener('click', async () => {
+                try { await window.ClassroomAI.init(); } catch (error) { notice(error.message); return; }
+                if (!window.ClassroomAI.hasKey()) { notice('내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.'); return; }
+                importFile.value = ''; importFile.click();
+            });
+            importFile.addEventListener('change', async () => {
+                const file = importFile.files && importFile.files[0];
+                if (!file) return;
+                if (file.size > 20 * 1024 * 1024) { notice('20MB가 넘는 파일은 올릴 수 없습니다.'); return; }
+                importBtn.disabled = true; planNote.textContent = file.name + ' 읽는 중… 제미나이가 항목을 옮깁니다.';
+                try {
+                    const query = new URLSearchParams({ subject: subjectSelect.value, grade: gradeSelect.value, semester: semesterSelect.value, levels: 3 });
+                    const data = await api('/api/teacher-ai/extract-plan?' + query, { method: 'POST', headers: { 'Content-Type': file.type || 'application/octet-stream', 'X-File-Name': encodeURIComponent(file.name) }, body: file });
+                    if (!data.items.length) throw new Error(data.note || '문서에서 평가 항목을 찾지 못했습니다.');
+                    imported = data.items;
+                    importMeta.textContent = data.items.length + '개 항목을 읽었습니다. 넣을 것만 고르세요.' + (data.note ? ' ' + data.note : '');
+                    importList.replaceChildren(...data.items.map((it, i) => {
+                        const label = document.createElement('label'); label.className = 'preview-item';
+                        const box = document.createElement('input'); box.type = 'checkbox'; box.checked = true; box.value = String(i);
+                        const body = document.createElement('div');
+                        body.append(Object.assign(document.createElement('strong'), { textContent: (it.domain ? it.domain + ' · ' : '') + (it.element || '(평가요소 없음)') }));
+                        body.append(Object.assign(document.createElement('small'), { textContent: it.standards.length ? it.standards.map((s) => '[' + s.code + '] ' + s.text).join('  ') : '성취기준을 못 찾음 — 고르기에서 담아 주세요' }));
+                        body.append(Object.assign(document.createElement('small'), { textContent: it.levels + '단계 · ' + it.criteria.filter((c) => c.text).length + '개 단계에 평가결과 있음' }));
+                        label.append(box, body); return label;
+                    }));
+                    importDialog.showModal(); planNote.textContent = '';
+                } catch (error) { planNote.textContent = error.message; }
+                finally { importBtn.disabled = false; }
+            });
+            function applyImport(mode) {
+                const picked = [...importList.querySelectorAll('input:checked')].map((b) => imported[Number(b.value)]);
+                if (!picked.length) { importDialog.close(); return; }
+                items = mode === 'replace' ? picked : items.concat(picked);
+                importDialog.close(); markDirty(); render(); notice(picked.length + '개 항목을 ' + (mode === 'replace' ? '계획에 넣었습니다.' : '덧붙였습니다.'));
+            }
+            $('import-append').addEventListener('click', () => applyImport('append'));
+            $('import-replace').addEventListener('click', () => applyImport('replace'));
+            $('import-cancel').addEventListener('click', () => importDialog.close());
+
+            // ── 생기부 활동 주제로 보내기 ────────────────────────────────
+            $('send-record-btn').addEventListener('click', async () => {
+                const lines = items.map((it) => it.element.trim()).filter(Boolean);
+                if (!lines.length) { notice('평가요소가 적힌 항목이 없습니다.'); return; }
+                if (!confirm('이 교과의 평가요소 ' + lines.length + '개를 생활기록부 「활동·특성」 목록으로 보낼까요? 기존 목록은 바뀝니다.')) return;
+                try {
+                    const key = currentKey();
+                    await api('/api/teacher/record-plan', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ year: key.year, grade: key.grade, area: 'subject', semester: key.semester + '학기', subject: key.subject, items: lines.join('\n') }) });
+                    notice('보냈습니다. 생활기록부 화면에서 바로 쓸 수 있습니다.');
+                } catch (error) { notice(error.message); }
+            });
+
+            // ── 묶기 ────────────────────────────────────────────────────
+            $('add-item-btn').addEventListener('click', () => { items.push(newItem()); markDirty(); render(); itemsRoot.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+            const domainList = document.createElement('datalist'); domainList.id = 'domain-list'; document.body.append(domainList);
+            async function refreshDomainList() { domainList.replaceChildren(...(await standardsForCurrent()).map((g) => Object.assign(document.createElement('option'), { value: g.name }))); }
+            async function switchPlan() { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadPlan(); refreshDomainList(); }
+            yearSelect.addEventListener('change', switchPlan);
+            gradeSelect.addEventListener('change', () => { fillSubjects(); switchPlan(); });
+            semesterSelect.addEventListener('change', switchPlan);
+            subjectSelect.addEventListener('change', switchPlan);
+            if (await prepare()) { await loadPlan(); refreshDomainList(); }
+        })().catch((error) => { document.getElementById('save-status').textContent = error.message; });
+    </script>
+</body>
+</html>
