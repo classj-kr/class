@@ -249,7 +249,7 @@ const CHAPTERS = [
                 "right": [
                     "누군가 날개 한 쌍을 가져와 엄지 공주의 등에 달아 주었지요. 엄지 공주는 처음으로 스스로 날아올랐습니다.",
                     "제비가 그 모습을 흐뭇하게 지켜보았지요. \"이제 가 볼게요.\"",
-                    "제비는 북쪽 하늘로 날아갔답니다."
+                    "제비는 봄이면 돌아가는 북쪽 하늘로 날아갔답니다. 해마다 들르겠다는 약속을 남기고요."
                 ]
             }
         ],
@@ -796,7 +796,7 @@ const EN = {
                     ],
                     right: [
                         "Somebody fastened a pair of wings to her back. For the first time she flew up under her own power.",
-                        "The swallow watched, well pleased. \"I shall be off now.\" And he flew away into the northern sky."
+                        "The swallow watched, well pleased. \"I shall be off now.\" And he flew away to the northern sky, where he goes back every spring, leaving a promise to call by every year."
                     ]
                 }
             ]

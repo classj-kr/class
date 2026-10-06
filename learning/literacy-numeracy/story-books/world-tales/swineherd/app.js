@@ -91,8 +91,8 @@ const CHAPTERS = [
                     "돼지들은 금세 왕자를 따랐지요. 먹이를 줄 때마다 꿀꿀, 꿀꿀! 하며 몰려왔습니다. 왕자는 그 소리가 싫지 않았지요."
                 ],
                 "right": [
-                    "해가 지면 왕자는 방으로 돌아와 촛불을 켜고 앉았습니다. 그러고는 밤마다 무언가를 만들었지요. 진흙을 반죽하고 작은 방울을 깎았습니다.",
-                    "며칠이 지나자 물건 하나가 완성되었지요. 왕자는 그것을 들고 빙그레 웃었습니다. \"공주님이 이걸 보면 무척 갖고 싶어 하시겠지.\""
+                    "해가 지면 왕자는 방에서 촛불을 켜고 밤마다 무언가를 만들었지요. 진흙을 반죽하고 작은 방울을 깎았습니다.",
+                    "며칠이 지나자 물건 하나가 완성되었지요. 왕자는 그것을 들고 빙그레 웃었습니다. \"진짜는 싫다 하셨으니 이런 장난감은 좋아하시겠지.\""
                 ]
             }
         ]
@@ -232,8 +232,8 @@ const CHAPTERS = [
                 "art": "08-ending.webp",
                 "emoji": "🚪",
                 "left": [
-                    "하필 임금님이 창밖을 내다보았습니다. 뒷마당에 웬 사람들이 잔뜩 모여 있었지요. 임금님은 안경을 고쳐 썼습니다.",
-                    "높은 창문에서 내려다보니 시녀들이 둘러선 안쪽이 훤히 보였지요. 공주가 돼지치기에게 입을 맞추고 있었습니다. 임금님은 얼굴이 새빨개져 슬리퍼를 신은 채 계단을 뛰어 내려갔지요."
+                    "하필 공주의 아버지 임금님이 창밖을 내다보았습니다. 뒷마당에 웬 사람들이 잔뜩 모여 있었지요.",
+                    "높은 창문에서 내려다보니 시녀들이 둘러선 안쪽이 훤히 보였지요. 공주가 돼지치기에게 입을 맞추고 있었습니다. 임금님은 새빨개진 얼굴로 슬리퍼를 신은 채 뛰어 내려갔지요."
                 ],
                 "right": [
                     "임금님이 뒷마당으로 달려와 소리쳤습니다. \"더러운 돼지우리에서 이게 무슨 짓이냐!\"",
@@ -645,7 +645,7 @@ const EN = {
                     right: [
                         "They came crowding round grunting whenever he brought food. The prince did not mind.",
                         "At night he lit a candle. He worked clay and carved little bells.",
-                        "After a few days, something was finished. He smiled. \"What will the princess say to this?\""
+                        "After a few days, something was finished. He smiled. \"She would not have the real ones. But a toy like this she will surely like.\""
                     ]
                 }
             ]
@@ -795,7 +795,7 @@ const EN = {
                     art: '08-ending.webp',
                     emoji: '⛈️',
                     left: [
-                        "Of all moments, the king looked out of his window. There was a crowd in the back yard. The king straightened his spectacles.",
+                        "Of all moments, the king, the princess's father, looked out of his window. There was a crowd in the back yard.",
                         "From his high window he could see inside the ring. The princess was kissing the swineherd!",
                         "His face went scarlet, and he ran down the stairs in his slippers."
                     ],
@@ -992,7 +992,7 @@ const EN = {
         ],
         '08-ending.webp': [
             { word: 'of all moments', meaning: '하필 그때', sentence: 'Of all moments, the king looked out.' },
-            { word: 'straighten', meaning: '고쳐 쓰다', sentence: 'The king straightened his spectacles.' },
+            { word: 'slippers', meaning: '슬리퍼', sentence: 'He ran down the stairs in his slippers.' },
             { word: 'scatter', meaning: '흩어지다', sentence: 'The maids scattered in fright.' },
             { word: 'bar', meaning: '빗장을 지르다', sentence: 'He had the gates shut and barred.' }
         ],

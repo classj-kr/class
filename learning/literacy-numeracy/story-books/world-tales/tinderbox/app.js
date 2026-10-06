@@ -115,10 +115,10 @@ const CHAPTERS = [
                     "노파의 얼굴이 굳어졌습니다."
                 ],
                 "right": [
-                    "\"그건 자네가 알 바 아니네. 어서 이리 내놓기나 하게.\"",
+                    "\"그건 자네가 알 바 아니네. 어서 내놓게.\"",
                     "병사는 통을 뒤로 감췄지요. 노파의 손이 부들부들 떨렸습니다. \"내놓게, 어서!\"",
-                    "병사도 버텼습니다. \"말해 주지 않으면 드릴 수 없습니다.\"",
-                    "두 사람은 한참을 실랑이했습니다."
+                    "병사도 버텼습니다. \"말해 주지 않으면 드릴 수 없습니다. 나쁜 데 쓰려는지 어떻게 압니까.\"",
+                    "둘은 한참 실랑이했습니다."
                 ]
             },
             {
@@ -204,7 +204,7 @@ const CHAPTERS = [
                 "right": [
                     "\"자네를 얼마나 찾았는지 아나! 자네가 그렇게 훌륭한 줄 알았지!\"",
                     "병사는 그 말을 듣고 속으로 웃었지요.",
-                    "그러던 어느 날 소문 하나를 들었습니다. 이 나라 공주가 구리 성에 갇혀 살아서 아무도 얼굴을 본 적이 없다는 이야기였지요."
+                    "어느 날 소문을 들었습니다. 공주가 보통 병사와 결혼할 거라는 점쟁이 말 때문에 구리 성에 갇혀 살아서, 아무도 얼굴을 본 적이 없다는 이야기였지요."
                 ]
             }
         ]
@@ -223,7 +223,7 @@ const CHAPTERS = [
                     "개가 창문을 훌쩍 뛰어넘었지요. 발소리가 지붕 위에서 우당탕 났습니다."
                 ],
                 "right": [
-                    "개는 지붕을 넘어 성으로 달려갔습니다. 그러고는 잠든 공주를 등에 태우고 돌아왔지요. 공주는 눈을 비비며 깨어나 병사와 밤새 이야기를 나누었습니다.",
+                    "개는 지붕을 넘어 성으로 달려갔습니다. 그러고는 잠든 공주를 등에 태우고 돌아왔지요. 공주는 잠이 덜 깬 채로 병사와 이야기를 나누었습니다.",
                     "새벽이 되자 개가 공주를 다시 데려다주었지요. 공주는 잠결에 겪은 일이라 꿈인 줄만 알았습니다."
                 ]
             },
@@ -271,7 +271,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "개 세 마리가 한꺼번에 나타났지요. 어찌나 크고 요란한지 사람들이 나자빠졌습니다.",
-                    "그런데 개들은 병사 곁에서 꼬리만 살랑살랑 흔들었지요. 다들 그만 웃음보를 터뜨렸습니다. 임금님도 껄껄 웃으며 병사를 풀어 주었지요.",
+                    "그런데 개들은 꼬리만 살랑살랑 흔들었지요. 임금님도 껄껄 웃었지요. \"이런 개를 부리는 사람을 벌줄 수야 없지.\" 병사는 풀려났습니다.",
                     "그날 병사는 벌 대신 잔치를 대접받았답니다."
                 ]
             }
@@ -715,10 +715,10 @@ const EN = {
                         "The old woman's face went hard."
                     ],
                     right: [
-                        "\"That is no business of yours. Hand it over and be quick.\"",
+                        "\"That is no business of yours. Hand it over.\"",
                         "The soldier put the box behind his back.",
                         "The old woman's hands began to shake. \"Give it to me, now!\"",
-                        "But the soldier stood firm. \"Not unless you tell me what it's for.\"",
+                        "But the soldier stood firm. \"Not unless you tell me what it's for. How do I know you don't mean to use it for something bad?\"",
                         "The two of them argued a long while."
                     ]
                 },
@@ -825,7 +825,7 @@ const EN = {
                         "\"We looked everywhere for you! We knew you were a fine fellow!\"",
                         "The soldier laughed to himself.",
                         "Then one day he heard some news.",
-                        "The princess lived shut up in a copper castle. No one had seen her face."
+                        "A fortune-teller had said the princess would marry a common soldier, so she lived shut up in a copper castle. No one had seen her face."
                     ]
                 }
             ]
@@ -847,7 +847,7 @@ const EN = {
                     right: [
                         "The dog ran over the roofs to the castle",
                         "and came back with the sleeping princess on his back.",
-                        "She woke up, rubbing her eyes, and talked with the soldier all night.",
+                        "Still half asleep, she talked with the soldier for a while.",
                         "At dawn the dog carried her back again.",
                         "She was half asleep, so she believed she had dreamed it."
                     ]
@@ -905,7 +905,7 @@ const EN = {
                     right: [
                         "All three dogs appeared at once, and people fell over backwards.",
                         "But the dogs just wagged their tails by the soldier.",
-                        "Everyone burst out laughing. The king laughed and set him free.",
+                        "Everyone burst out laughing. The king laughed too. \"I cannot punish a man who commands dogs like these.\" And he set the soldier free.",
                         "He got a feast instead of a punishment."
                     ]
                 }
@@ -1031,7 +1031,7 @@ const EN = {
             { word: 'dazzle', meaning: '눈부시게 하다', sentence: 'The daylight dazzled him.' },
             { word: 'I take it', meaning: '~이겠지', sentence: 'You have the tinderbox, I take it?' },
             { word: 'no business of yours', meaning: '알 바 아닌', sentence: 'That is no business of yours.' },
-            { word: 'hand over', meaning: '내놓다', sentence: 'Hand it over and be quick.' },
+            { word: 'hand over', meaning: '내놓다', sentence: 'Hand it over.' },
             { word: 'argue', meaning: '실랑이하다', sentence: 'The two of them argued a long while.' }
         ],
         '04-quarrel-2.webp': [
@@ -1181,12 +1181,12 @@ const WORDS_KO = {
         { w: "탑", k: "높다랗게 쌓아 올린 건물.", s: "세 번 치면 눈이 탑만 한 셋째 개가 왔습니다." },
         { w: "나르다", k: "물건을 옮겨 가져다주다.", s: "개들은 굴 속 궤짝에서 돈을 날라다 주었지요." },
         { w: "굴다", k: "그렇게 행동하다.", s: "다들 어제 만난 사이처럼 굴었지요." },
-        { w: "소문", k: "사람들 사이에 퍼져 도는 말.", s: "그러던 어느 날 소문 하나를 들었습니다." }
+        { w: "소문", k: "사람들 사이에 퍼져 도는 말.", s: "어느 날 소문을 들었습니다." }
     ],
     "07-flour.webp": [
         { w: "모시다", k: "윗사람을 받들어 데려가다.", s: "\"공주님을 잠깐만 모셔다 주게.\"" },
         { w: "훌쩍", k: "가볍게 뛰어넘는 모양.", s: "개가 창문을 훌쩍 뛰어넘었지요." },
-        { w: "밤새", k: "밤이 새도록 내내.", s: "공주는 눈을 비비며 깨어나 병사와 밤새 이야기를 나누었습니다." },
+        { w: "우당탕", k: "무엇이 세게 부딪히며 나는 큰 소리.", s: "발소리가 지붕 위에서 우당탕 났습니다." },
         { w: "잠결", k: "잠을 자면서 어렴풋이 아는 사이.", s: "공주는 잠결에 겪은 일이라 꿈인 줄만 알았습니다." }
     ],
     "07-flour-2.webp": [
@@ -1203,7 +1203,7 @@ const WORDS_KO = {
     ],
     "08-ending-2.webp": [
         { w: "요란하다", k: "소리가 크고 시끄럽다.", s: "어찌나 크고 요란한지 사람들이 나자빠졌습니다." },
-        { w: "껄껄", k: "크게 소리 내어 웃는 모양.", s: "임금님도 껄껄 웃으며 병사를 풀어 주었지요." },
+        { w: "껄껄", k: "크게 소리 내어 웃는 모양.", s: "임금님도 껄껄 웃었지요." },
         { w: "대접받다", k: "잘 차려 준 것을 받다.", s: "그날 병사는 벌 대신 잔치를 대접받았답니다." }
     ],
     "end.webp": [

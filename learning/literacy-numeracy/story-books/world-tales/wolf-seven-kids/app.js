@@ -206,7 +206,7 @@ const CHAPTERS = [
                     "엄마는 하나씩 꼭 안아 주었습니다. 그러고는 조용히 말했지요."
                 ],
                 "right": [
-                    "\"얘들아, 개울에 가서 돌을 주워 오너라.\"",
+                    "\"늑대가 다시는 못 오게 혼내 주자. 얘들아, 개울에 가서 돌을 주워 오너라.\"",
                     "일곱이 우르르 흩어져 개울가로 달려갔습니다. 동글동글한 돌을 골라 품에 안고 왔지요. 늑대는 그때까지도 쿨쿨 자고 있었습니다.",
                     "무슨 일이 벌어지는지 까맣게 몰랐지요."
                 ]
@@ -752,7 +752,7 @@ const EN = {
                         "She held each of them close. Then she said quietly,"
                     ],
                     right: [
-                        "\"Children, go to the brook and bring me some stones.\"",
+                        "\"Let's teach that wolf a lesson, so he never comes back. Children, go to the brook and bring me some stones.\"",
                         "Off the seven of them scattered to the water's edge.",
                         "They picked out good round stones and carried them back in their arms.",
                         "All that while the wolf slept on. He had not the faintest idea what was happening."

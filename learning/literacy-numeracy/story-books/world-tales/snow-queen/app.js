@@ -140,12 +140,12 @@ const CHAPTERS = [
                 "art": "05-robber.webp",
                 "emoji": "🗡️",
                 "left": [
-                    "게르다는 다시 길을 떠났습니다. 가는 길에 까마귀 한 마리가 나뭇가지에서 내려왔지요. \"북쪽으로 간 아이를 봤어.\"",
-                    "까마귀는 게르다를 어느 성으로 데려갔습니다. 그 성의 착한 공주가 게르다의 이야기를 듣고 따뜻한 장화와 금빛 마차를 내어 주었지요.",
-                    "게르다는 마차를 타고 북쪽으로 향했습니다. 그런데 어두운 숲길에서 도둑들을 만나고 말았지요."
+                    "게르다는 다시 길을 떠났습니다. 까마귀 한 마리가 내려왔지요. \"북쪽으로 간 아이를 봤어. 먼 길이니 우리 성 공주님께 도움을 청하자.\"",
+                    "착한 공주가 이야기를 듣고 따뜻한 장화와 금빛 마차를 내어 주었지요.",
+                    "게르다는 마차를 타고 북쪽으로 향했습니다."
                 ],
                 "right": [
-                    "도둑들이 여기저기서 우르르 몰려나와 게르다를 에워쌌지요. \"뭐가 있나 보자!\"",
+                    "그런데 숲길에서 도둑들이 우르르 몰려나와 게르다를 에워쌌지요. \"뭐가 있나 보자!\"",
                     "그때 한 아이가 앞으로 나섰습니다. 도둑 두목의 딸이었지요. \"이 아이는 내 거야!\"",
                     "도둑 소녀는 게르다를 제 방으로 데려갔지요."
                 ]
@@ -159,9 +159,9 @@ const CHAPTERS = [
                     "게르다는 카이 이야기를 들려주었습니다. 그러자 위쪽에서 비둘기들이 구구 울었지요. \"우리 그 아이 봤어요.\""
                 ],
                 "right": [
-                    "비둘기들이 말을 이었습니다. \"눈의 여왕 썰매에 앉아 있었어요. 북쪽 라플란드로 갔지요.\"",
-                    "구석에 매여 있던 순록이 고개를 번쩍 들었습니다. \"라플란드는 제 고향이에요.\"",
-                    "도둑 소녀는 한참 동안 아무 말이 없었지요. 그러더니 이튿날 새벽 게르다를 순록 등에 태우고, 칼로 밧줄을 싹둑 끊어 주었습니다."
+                    "비둘기들이 말을 이었습니다. \"눈의 여왕 썰매를 타고 북쪽 라플란드로 갔어요.\"",
+                    "매여 있던 순록이 고개를 번쩍 들었습니다. \"라플란드는 제 고향이에요.\"",
+                    "도둑 소녀는 게르다가 가엾어서 한참 말이 없었지요. 새벽에 게르다를 순록에 태우고 밧줄을 싹둑 끊어 주었습니다."
                 ]
             }
         ]
@@ -728,7 +728,7 @@ const EN = {
                     emoji: '🗝️',
                     left: [
                         "Gerda set out again. On the way a crow came down out of a tree.",
-                        "\"I saw a boy who went north.\"",
+                        "\"I saw a boy who went north. It's a long way — let's ask the princess at our castle for help.\"",
                         "The crow led her to a castle, and a kind princess gave her warm boots and a golden carriage.",
                         "So Gerda drove north.",
                         "But she had not gone far before she ran into robbers, who came swarming out and closed round her."
@@ -754,7 +754,7 @@ const EN = {
                     right: [
                         "\"He was in the Snow Queen's sleigh,\" said the pigeons. \"They went north, to Lapland.\"",
                         "The reindeer in the corner lifted his head. \"Lapland is my home.\"",
-                        "The robber girl said nothing for a long while.",
+                        "The robber girl said nothing for a long while. She had begun to feel sorry for Gerda.",
                         "Before dawn she lifted Gerda onto the reindeer and cut the rope with her knife."
                     ]
                 }
@@ -1116,15 +1116,15 @@ const WORDS_KO = {
         { w: "죄다", k: "남기지 않고 모두.", s: "뜰에 핀 장미도 죄다 감췄습니다." }
     ],
     "05-robber.webp": [
-        { w: "우르르", k: "여럿이 한꺼번에 몰리는 모습.", s: "도둑들이 여기저기서 우르르 몰려나와 게르다를 에워쌌지요." },
+        { w: "우르르", k: "여럿이 한꺼번에 몰리는 모습.", s: "그런데 숲길에서 도둑들이 우르르 몰려나와 게르다를 에워쌌지요." },
         { w: "두목", k: "무리를 이끄는 우두머리.", s: "도둑 두목의 딸이었지요." },
-        { w: "까마귀", k: "온몸이 새까맣고 까악까악 우는 새.", s: "가는 길에 까마귀 한 마리가 나뭇가지에서 내려왔지요." }
+        { w: "까마귀", k: "온몸이 새까맣고 까악까악 우는 새.", s: "까마귀 한 마리가 내려왔지요." }
     ],
     "05-robber-2.webp": [
         { w: "말을 잇다", k: "하던 말을 이어서 하다.", s: "비둘기들이 말을 이었습니다." },
-        { w: "번쩍", k: "갑자기 위로 높이 드는 모습.", s: "구석에 매여 있던 순록이 고개를 번쩍 들었습니다." },
+        { w: "번쩍", k: "갑자기 위로 높이 드는 모습.", s: "매여 있던 순록이 고개를 번쩍 들었습니다." },
         { w: "고향", k: "태어나서 자란 곳.", s: "\"라플란드는 제 고향이에요.\"" },
-        { w: "싹둑", k: "한 번에 잘라 내는 소리나 모습.", s: "그러더니 이튿날 새벽 게르다를 순록 등에 태우고, 칼로 밧줄을 싹둑 끊어 주었습니다." }
+        { w: "싹둑", k: "한 번에 잘라 내는 소리나 모습.", s: "새벽에 게르다를 순록에 태우고 밧줄을 싹둑 끊어 주었습니다." }
     ],
     "06-reindeer.webp": [
         { w: "털장갑", k: "안에 털을 대어 만든 따뜻한 장갑.", s: "그러고는 게르다에게 제 커다란 털장갑을 끼워 주었지요." },

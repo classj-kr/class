@@ -54,9 +54,9 @@ const CHAPTERS = [
                 "art": "02-swans-2.webp",
                 "emoji": "🦢",
                 "left": [
-                    "엘리사는 시골집에서 그 소식을 들었습니다. \"오빠들이 백조가 되었다니요?\"",
-                    "엘리사는 그날부터 잠을 이루지 못했지요. 몇 해가 흘러 열다섯 살이 되자 엘리사는 궁궐로 돌아갔습니다.",
-                    "왕비는 엘리사의 얼굴에 검은 즙을 발라 몰라보게 만들었지요. 임금님이 엘리사를 보고 고개를 저었습니다."
+                    "엘리사는 시골집에서 소식을 들었습니다. \"오빠들이 백조가 되었다니요?\"",
+                    "엘리사는 그날부터 잠을 이루지 못했지요. 약속대로 열다섯 살이 되자 궁궐로 돌아갔습니다.",
+                    "왕비는 엘리사 얼굴에 검은 즙을 발라 몰라보게 했지요. 임금님은 고개를 저었습니다."
                 ],
                 "right": [
                     "\"저런 아이는 내 딸이 아니다.\"",
@@ -231,7 +231,7 @@ const CHAPTERS = [
                 "left": [
                     "광장에는 사람들이 가득했습니다. 엘리사는 옷을 놓지 않았지요.",
                     "사람들이 저마다 손가락질을 했습니다.",
-                    "그때 하늘에서 소리가 났습니다. 사람들이 고개를 들었지요.",
+                    "그때 하늘에서 소리가 났습니다. 동생을 찾아 헤매던 오빠들이었지요. 사람들이 고개를 들었지요.",
                     "하얀 백조 열한 마리가 내려오고 있었습니다."
                 ],
                 "right": [
@@ -635,7 +635,7 @@ const EN = {
                     left: [
                         "Elisa heard the news at the house in the country. \"My brothers have been turned into swans?\"",
                         "From that day on she could not sleep.",
-                        "Years passed. When she turned fifteen, she went back to the palace.",
+                        "Years passed. When she turned fifteen, she went back to the palace, as had been promised.",
                         "But the queen rubbed dark juice on her face, so no one knew her. The king shook his head."
                     ],
                     right: [
@@ -833,7 +833,7 @@ const EN = {
                     left: [
                         "The square was full of people, and Elisa would not put the shirts down.",
                         "They pointed at her from every side.",
-                        "And then there was a sound in the sky.",
+                        "And then there was a sound in the sky. It was her brothers, who had been searching for her.",
                         "People looked up.",
                         "Eleven white swans were coming down."
                     ],
@@ -1096,7 +1096,7 @@ const WORDS_KO = {
     ],
     "02-swans-2.webp": [
         { w: "잠을 이루다", k: "잠이 들다.", s: "엘리사는 그날부터 잠을 이루지 못했지요." },
-        { w: "몰라보다", k: "알아보지 못하다.", s: "왕비는 엘리사의 얼굴에 검은 즙을 발라 몰라보게 만들었지요." },
+        { w: "몰라보다", k: "알아보지 못하다.", s: "왕비는 엘리사 얼굴에 검은 즙을 발라 몰라보게 했지요." },
         { w: "상관없다", k: "아무 문제가 되지 않다.", s: "아무리 멀어도 상관없었습니다." },
         { w: "켤레", k: "신발을 짝으로 세는 말.", s: "낡은 신 한 켤레와 마른 빵이 전부였지요." }
     ],

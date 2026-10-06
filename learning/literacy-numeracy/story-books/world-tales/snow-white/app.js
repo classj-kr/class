@@ -41,7 +41,7 @@ const CHAPTERS = [
                 "art": "02-forest.webp",
                 "emoji": "🌲",
                 "left": [
-                    "왕비가 사냥꾼을 불렀습니다. 문을 걸어 잠그고 말했지요. \"공주를 숲으로 데려가라. 다시는 돌아오지 못하게 해라.\"",
+                    "왕비가 사냥꾼을 불렀습니다. 문을 걸어 잠그고 말했지요. \"공주를 숲으로 데려가 해치거라. 다시는 돌아오지 못하게 해라.\"",
                     "사냥꾼은 아무 말도 못 했습니다. 이튿날 공주를 데리고 나섰지요."
                 ],
                 "right": [
@@ -108,9 +108,9 @@ const CHAPTERS = [
                 "art": "04-disguise.webp",
                 "emoji": "🧣",
                 "left": [
-                    "왕비가 다시 거울에 묻자 거울이 대답했습니다. \"백설공주가 숲에서 일곱 난쟁이와 지냅니다.\"",
-                    "사냥꾼에게 속은 것이었지요. 왕비는 이를 부득부득 갈았습니다.",
-                    "왕비는 얼굴에 잿가루를 문지르고 머리에 흰 가루를 뿌렸지요. 허리도 구부정하게 굽혔습니다. \"고운 허리끈 사세요오—\" 목소리까지 갈라지게 내 보았지요."
+                    "왕비가 다시 묻자 거울이 말했습니다. \"백설공주가 숲속 일곱 난쟁이와 삽니다.\"",
+                    "사냥꾼이 공주를 해쳤다고 거짓말을 한 것이지요. 왕비는 이를 부득부득 갈았습니다.",
+                    "왕비는 얼굴에 잿가루를 발랐지요. \"고운 허리끈 사세요오—\" 목소리도 갈라지게 냈지요."
                 ],
                 "right": [
                     "왕비는 장사꾼 할머니 차림으로 숲을 지나 난쟁이 집을 찾아갔습니다. 그러고는 창문을 두드렸지요. \"고운 허리끈 사세요!\"",
@@ -123,8 +123,8 @@ const CHAPTERS = [
                 "emoji": "🧣",
                 "left": [
                     "왕비가 끈을 꽉 조였습니다. 공주는 숨이 막혀 쓰러졌지요. 왕비는 웃으며 사라졌습니다.",
-                    "저녁에 난쟁이들이 돌아왔습니다. 쓰러진 공주를 보고 얼른 끈을 끊어 냈지요. 그러자 공주가 크게 숨을 쉬었습니다.",
-                    "난쟁이들이 나무랐습니다. \"그 할머니가 바로 왕비예요. 다시는 문을 열지 마요.\""
+                    "저녁에 돌아온 난쟁이들이 얼른 끈을 끊어 냈지요. 공주가 크게 숨을 쉬었습니다.",
+                    "난쟁이들이 나무랐습니다. \"그 할머니는 틀림없이 왕비예요. 다시는 문을 열지 마요.\""
                 ],
                 "right": [
                     "공주가 살아났다는 것을 거울에게 들은 왕비는 다른 할머니로 꾸미고 다시 찾아왔습니다. 이번에는 독 묻은 빗을 들고 왔지요.",
@@ -194,9 +194,9 @@ const CHAPTERS = [
                     "어느 날 말발굽 소리가 났지요. 낯선 왕자가 언덕에 올랐습니다."
                 ],
                 "right": [
-                    "왕자는 관 앞에 한참을 서 있었습니다. 그러다 난쟁이들에게 부탁했지요. \"이분을 성으로 모시고 싶습니다.\"",
+                    "왕자는 관 앞에 한참을 서 있었습니다. 잠든 듯한 공주에게서 눈을 뗄 수 없었지요. \"이분을 성으로 모시고 싶습니다.\"",
                     "난쟁이들이 고개를 저었지요. \"공주는 우리 곁을 떠나면 안 됩니다.\"",
-                    "왕자는 물러서지 않았습니다. 몇 번이고 간절히 부탁했지요. 결국 난쟁이들이 허락했습니다."
+                    "왕자는 몇 번이고 간절히 부탁했지요. 결국 난쟁이들이 허락했습니다."
                 ]
             }
         ]
@@ -223,9 +223,9 @@ const CHAPTERS = [
                 "art": "07-awake-2.webp",
                 "emoji": "👑",
                 "left": [
-                    "공주는 난쟁이들을 한 사람씩 안았습니다. \"그동안 고마웠어요. 이 집은 잊지 않을게요.\"",
+                    "공주는 난쟁이들을 차례로 안았습니다. \"그동안 고마웠어요. 이 집은 잊지 않을게요.\"",
                     "난쟁이들이 손을 흔들었지요. \"언제든 놀러 와요!\"",
-                    "공주는 왕자를 따라 성으로 가며 몇 번이나 뒤를 돌아보았습니다."
+                    "왕자가 함께 가자고 청하자 공주도 고개를 끄덕였지요. 공주는 왕자를 따라 성으로 가며 몇 번이나 뒤를 돌아보았지요."
                 ],
                 "right": [
                     "얼마 뒤 왕자의 성에서 결혼 잔치가 열렸습니다. 난쟁이 일곱도 초대받았지요.",
@@ -570,7 +570,7 @@ const EN = {
                     emoji: '🌲',
                     left: [
                         "The queen sent for the huntsman. She locked the door and spoke.",
-                        "\"Take the princess into the forest.\"",
+                        "\"Take the princess into the forest and get rid of her.\"",
                         "\"See that she never comes back.\"",
                         "The huntsman could not say a word.",
                         "The next day he set out with her."
@@ -646,8 +646,8 @@ const EN = {
                     emoji: '🧣',
                     left: [
                         "The queen asked her mirror again. It answered, \"Snow White lives in the forest with seven dwarfs.\"",
-                        "The huntsman had tricked her! The queen ground her teeth.",
-                        "She rubbed ashes into her face, dusted her hair white and bent her back into a stoop.",
+                        "The huntsman had lied about harming the princess! The queen ground her teeth.",
+                        "She rubbed ashes into her face.",
                         "\"Fi-ine sashes for sa-ale!\" she croaked."
                     ],
                     right: [
@@ -664,7 +664,7 @@ const EN = {
                     left: [
                         "The queen pulled it tight. Snow White could not breathe, and down she fell. The queen went away laughing.",
                         "In the evening the dwarfs found her and cut the sash away. Snow White drew a great breath.",
-                        "\"That old woman was the queen!\" they said. \"Never open the door to a stranger.\""
+                        "\"That old woman must have been the queen!\" they said. \"Never open the door to a stranger.\""
                     ],
                     right: [
                         "When the mirror said Snow White lived, the queen came back with a poisoned comb.",
@@ -742,7 +742,7 @@ const EN = {
                         "Then one day there were hoofbeats, and a prince from far away came up the hill."
                     ],
                     right: [
-                        "The prince stood by the coffin a long while.",
+                        "The prince stood by the coffin a long while. He could not take his eyes from her, lying there as if asleep.",
                         "Then he asked the dwarfs, \"Let me take her to my castle.\"",
                         "The dwarfs shook their heads. \"She must not leave us.\"",
                         "But the prince would not give way. He asked again and again.",
@@ -778,7 +778,7 @@ const EN = {
                     left: [
                         "Snow White put her arms round them one by one. \"Thank you for everything. I shall never forget this house.\"",
                         "The dwarfs waved to her. \"Come and see us any time!\"",
-                        "She went off with the prince, looking back again and again."
+                        "The prince asked her to come with him, and she nodded. She went off with the prince, looking back again and again."
                     ],
                     right: [
                         "Soon there was a wedding at the prince's castle, and all seven dwarfs were invited.",
@@ -896,7 +896,7 @@ const EN = {
             { word: 'crowd round', meaning: '우르르 몰려들다', sentence: 'And all seven came crowding round.' }
         ],
         '04-disguise.webp': [
-            { word: 'stoop', meaning: '구부정한 자세', sentence: "She bent her back into a stoop." },
+            { word: 'croak', meaning: '갈라진 소리로 말하다', sentence: '"Fi-ine sashes for sa-ale!" she croaked.' },
             { word: 'pedlar', meaning: '장사꾼', sentence: "Dressed as an old pedlar woman." },
             { word: 'sash', meaning: '허리끈', sentence: 'Fine sashes for sale!' }
         ],
@@ -997,7 +997,7 @@ const WORDS_KO = {
     ],
     "04-disguise.webp": [
         { w: "이를 갈다", k: "몹시 화가 나서 두고 보자고 벼르다.", s: "왕비는 이를 부득부득 갈았습니다." },
-        { w: "잿가루", k: "무엇이 타고 남은 고운 가루.", s: "왕비는 얼굴에 잿가루를 문지르고 머리에 흰 가루를 뿌렸지요." },
+        { w: "잿가루", k: "무엇이 타고 남은 고운 가루.", s: "왕비는 얼굴에 잿가루를 발랐지요." },
         { w: "차림", k: "옷을 입고 꾸민 모양새.", s: "왕비는 장사꾼 할머니 차림으로 숲을 지나 난쟁이 집을 찾아갔습니다." },
         { w: "비단실", k: "매끄럽고 반들거리는 고운 실.", s: "비단실로 짠 것이 색깔마다 하나씩 있었습니다." }
     ],

@@ -56,9 +56,9 @@ const CHAPTERS = [
                 "art": "02-decree-2.webp",
                 "emoji": "📜",
                 "left": [
-                    "첫 번째 왕자가 공주들의 방 앞에 앉았습니다. 문을 열어 두고 밤을 지키기로 했지요. 큰공주가 술 한 잔을 내왔습니다.",
+                    "첫 번째 왕자가 공주들의 방 앞에 앉았습니다. 지키는 사람이 안을 볼 수 있게 이번에는 문을 열어 두었지요. 큰공주가 술 한 잔을 내왔습니다.",
                     "\"밤이 기니 이거라도 드세요.\"",
-                    "왕자는 고맙게 받아 마셨지요. 달큼한 냄새가 났습니다. 왕자는 한 방울도 남기지 않았지요."
+                    "왕자는 고맙게 받아 마셨지요. 달큼한 냄새가 났습니다. 한 방울도 남기지 않았지요."
                 ],
                 "right": [
                     "그런데 얼마 안 가 눈이 스르르 감겼습니다. 왕자는 의자에 기대 곯아떨어졌지요.",
@@ -237,7 +237,7 @@ const CHAPTERS = [
                     "신발이 닳고 또 닳았습니다. 병사는 구석에서 그 모습을 지켜보았지요."
                 ],
                 "right": [
-                    "병사는 목이 말라 공주의 잔을 슬쩍 비우기도 했습니다. 바닥에 닳은 신발 조각이 흩어졌지요. 그래도 공주들은 멈추지 않았습니다.",
+                    "바닥에 닳은 신발 조각이 흩어졌지요. 그래도 공주들은 멈추지 않았습니다.",
                     "닭이 울 무렵에야 무도회가 끝났지요. 공주들은 다시 배를 타고 돌아왔습니다. 신발은 벌써 구멍이 나 있었지요."
                 ]
             }
@@ -259,7 +259,7 @@ const CHAPTERS = [
                 "right": [
                     "가는 곳을 하나하나 눈에 담았지요. 사흘째 아침이 되자 병사는 임금님 앞에 섰습니다.",
                     "\"공주님들은 밤마다 땅 밑에서 춤을 춥니다.\"",
-                    "임금님이 눈살을 찌푸렸습니다. \"밤마다 잠긴 방에서 말이냐? 거짓말할 생각 마라. 증거가 있느냐?\""
+                    "임금님이 눈살을 찌푸렸습니다. \"밤마다 지키는 사람이 있는데 말이냐? 거짓말할 생각 마라. 증거가 있느냐?\""
                 ]
             },
             {
@@ -633,7 +633,7 @@ const EN = {
                     emoji: '📜',
                     left: [
                         "The first prince sat down outside the princesses' room.",
-                        "He would keep watch with the door open.",
+                        "This time the door was left open, so the watcher could see inside.",
                         "The eldest princess brought him a cup of wine.",
                         "\"It is a long night. Do have this.\"",
                         "The prince drank it gratefully. It smelled sweet, and he did not leave a drop."
@@ -846,7 +846,6 @@ const EN = {
                         "The shoes wore down and wore down, and the soldier watched from a corner."
                     ],
                     right: [
-                        "The soldier was thirsty, so he quietly drank from a princess's cup.",
                         "Bits of worn shoe leather lay scattered on the floor.",
                         "Still the princesses did not stop.",
                         "The ball ended only near cockcrow.",
@@ -873,7 +872,7 @@ const EN = {
                         "He took in every place they went.",
                         "On the morning of the third day, he stood before the king.",
                         "\"Every night, the princesses dance underground.\"",
-                        "The king frowned. \"Out of a locked room, every night? Don't lie to me. Can you prove it?\""
+                        "The king frowned. \"With a watchman at the door every night? Don't lie to me. Can you prove it?\""
                     ]
                 },
                 {
@@ -990,7 +989,7 @@ const EN = {
             { word: 'bargain', meaning: '조건, 거래', sentence: 'It was not an easy bargain.' }
         ],
         '02-decree-2.webp': [
-            { word: 'keep watch', meaning: '밤을 지키다', sentence: 'He would keep watch with the door open.' },
+            { word: 'watcher', meaning: '지키는 사람', sentence: 'The door was left open, so the watcher could see inside.' },
             { word: 'gratefully', meaning: '고맙게', sentence: 'The prince drank it gratefully.' },
             { word: 'slump', meaning: '기대어 늘어지다', sentence: 'He slumped against his chair.' },
             { word: 'sleep like a log', meaning: '곯아떨어지다', sentence: 'And slept like a log.' },
@@ -1170,7 +1169,7 @@ const WORDS_KO = {
         { w: "뱃전", k: "배의 양쪽 가장자리.", s: "물결이 뱃전을 찰싹찰싹 때렸습니다." }
     ],
     "07-ball-2.webp": [
-        { w: "목이 마르다", k: "물을 마시고 싶어지다.", s: "병사는 목이 말라 공주의 잔을 슬쩍 비우기도 했습니다." },
+        { w: "신이 나다", k: "기분이 아주 좋아 들뜨다.", s: "공주들은 신이 나서 뛰어 들어갔지요." },
         { w: "흩어지다", k: "여기저기 퍼져 놓이다.", s: "바닥에 닳은 신발 조각이 흩어졌지요." },
         { w: "무도회", k: "사람들이 모여 춤을 추는 잔치.", s: "닭이 울 무렵에야 무도회가 끝났지요." }
     ],
