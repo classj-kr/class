@@ -22,6 +22,7 @@ const Clue = require("./clue");
 const Codenames = require("./codenames");
 const Dobble = require("./dobble");
 const Quizrace = require("./quizrace");
+const { createRhythmTraining } = require("./rhythm-training");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { createKmaWeather } = require("./kma-weather");
@@ -528,6 +529,17 @@ app.use("/api", (_req, res, next) => {
   res.setHeader("Cache-Control", "no-store");
   next();
 }, classroomPlatform.router);
+
+app.use('/api/rhythm-training', classroomPlatform.requireSiteAccess,
+  createRhythmTraining({ platform: classroomPlatform }).router);
+
+// Reuse notation under this activity's access grant, even when ear training is closed.
+for (const [alias, source] of [['notation.js', 'notation.js'], ['rhythm-notation.js', 'rhythm.js']]) {
+  app.get(`/learning/arts/music-theory/rhythm-training/${alias}`, (_req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.sendFile(path.join(SITE_ROOT, 'learning/arts/music-theory/ear-training', source));
+  });
+}
 
 for (const [route, file] of [
   ["/privacy", "privacy.html"],

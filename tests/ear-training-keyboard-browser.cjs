@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
   await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
   const browsers = [];
   try {
-    for (const engine of ['chromium','webkit']) {
+    for (const engine of (process.env.EAR_TEST_BROWSERS || 'chromium,webkit').split(',')) {
       const browser = await (engine === 'chromium' ? chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}) : webkit.launch({headless:true}));
       browsers.push(browser);
       const context = await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
