@@ -38,9 +38,18 @@ const fetchImpl = async (url, options = {}) => {
       const requireTeacher = async (req) => { const user = userOf(req); if (!user) throw new HttpError(401, 'AUTH_REQUIRED', '로그인'); return { id: user.id, email: 'teacher@school.test' }; };
       const asyncRoute = (fn) => (req, res, next) => Promise.resolve(fn(req, res)).catch(next);
       const ai = createTeacherAi({ pool, requireTeacher, requireDatabase() {}, HttpError, fetchImpl, warn() {}, asyncRoute, secret: { value: 'harness', derived: false } });
+      // 계정 1은 5학년 2반 담임, 계정 2는 6학년 영어 전담(교직원 명단의 담당 학년·과목).
+      const REGISTRATIONS = {
+        1: { id: 101, school_id: 10, school_name: '검증초', grade: 5, class_number: 2, teacher_name: '검증 교사' },
+        2: { id: 102, school_id: 10, school_name: '검증초', grade: null, class_number: null, teacher_name: '영어 전담' }
+      };
       const plans = createAssessmentPlans({ pool, requireTeacher, requireDatabase() {}, HttpError, asyncRoute,
-        async teacherRegistration() { return { school_id: 10, school_name: '검증초', grade: 5, class_number: 2, teacher_name: '검증 교사' }; } });
-      const ready = db.exec('CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY); INSERT INTO classroom_schools VALUES(10); ALTER TABLE classroom_users ADD COLUMN display_name TEXT; UPDATE classroom_users SET display_name = \'검증 교사\';')
+        async teacherRegistration(user) { return REGISTRATIONS[user.id] || null; } });
+      const ready = db.exec(`CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY); INSERT INTO classroom_schools VALUES(10);
+        ALTER TABLE classroom_users ADD COLUMN display_name TEXT; UPDATE classroom_users SET display_name = '검증 교사';
+        CREATE TABLE classroom_teachers(id BIGINT PRIMARY KEY, school_id BIGINT, teaching_scope JSONB);
+        INSERT INTO classroom_teachers VALUES (101, 10, NULL), (102, 10, '[{"grade":6,"subject":"영어"}]');
+        CREATE TABLE school_master_timetable(id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, subject_name TEXT, teacher_user_id BIGINT);`)
         .then(() => Promise.all([ai.initialize(), plans.initialize()]));
       app.use('/api/teacher-ai', (req, res, next) => ready.then(() => next(), next), ai.router);
       app.use('/api/teacher/assessment-plans', (req, res, next) => ready.then(() => next(), next), plans.router);
@@ -141,6 +150,40 @@ const fetchImpl = async (url, options = {}) => {
     // 삭제도 저장된다.
     await page.locator('.item').nth(2).locator('button', { hasText: '삭제' }).click();
     await waitSaved((list) => list.length === 2);
+
+    // 담임이 다른 학년을 열면 보기만: 칸이 잠기고 추가·채우기 단추가 사라진다. 서버도 저장을 거절한다.
+    assert.match(await page.locator('#grade-select option[value="6"]').innerText(), /보기만/);
+    assert.doesNotMatch(await page.locator('#grade-select option[value="5"]').innerText(), /보기만/);
+    await page.locator('#grade-select').selectOption('6');
+    await page.locator('#save-status').filter({ hasText: '보기만 할 수 있습니다' }).waitFor({ timeout: 10000 });
+    assert.equal(await page.locator('#add-item-btn').isVisible(), false);
+    assert.equal(await page.locator('#import-btn').isVisible(), false);
+    const refused = await page.evaluate(async (k) => (await fetch('/api/teacher/assessment-plans', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...k, grade: 6, items: [{ element: '몰래' }] }) })).status, key);
+    assert.equal(refused, 403, '서버가 다른 학년 저장을 거절한다');
+    await page.locator('#grade-select').selectOption('5');
+    await page.locator('.item').nth(1).waitFor();
+    assert.equal(await page.locator('#add-item-btn').isVisible(), true);
+
+    // 영어 전담(계정 2)은 6학년 영어부터 열리고, 그 학년의 다른 교과는 잠긴다.
+    const context2 = await browser.newContext({ viewport: { width: 1200, height: 900 } });
+    await context2.addCookies([{ name: 'test_user', value: '2', url: h.base }]);
+    const page2 = await context2.newPage();
+    page2.on('pageerror', (e) => errors.push(e.message));
+    await page2.goto(h.base + '/classtools/assessment-plan/plan.html');
+    await page2.locator('#subject-select option').first().waitFor({ state: 'attached' });
+    assert.equal(await page2.locator('#grade-select').inputValue(), '6');
+    assert.equal(await page2.locator('#subject-select').inputValue(), '영어');
+    await page2.locator('#save-status').filter({ hasText: '아직 계획이 없습니다. 항목을 추가하거나' }).waitFor({ timeout: 10000 });
+    assert.equal(await page2.locator('#add-item-btn').isVisible(), true);
+    assert.match(await page2.locator('#subject-select option[value="수학"]').innerText(), /보기만/);
+    await page2.locator('#grade-select').selectOption('5');
+    await page2.locator('#save-status').filter({ hasText: '보기만 할 수 있습니다' }).waitFor({ timeout: 10000 });
+    assert.equal(await page2.locator('#subject-select').inputValue(), '영어', '5학년에는 맡은 교과가 없으니 보던 교과를 보기만 한다');
+    await page2.locator('#subject-select').selectOption('국어');
+    await page2.locator('.item').nth(1).waitFor();
+    assert.equal(await page2.locator('.item').count(), 2, '담임이 적은 5학년 국어 계획을 읽는다');
+    assert.equal(await page2.locator('.item textarea').first().isDisabled(), true);
+    await context2.close();
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ ok: true, googleCalls: google.length }));
   } finally {

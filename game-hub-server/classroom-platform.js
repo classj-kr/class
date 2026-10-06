@@ -11,6 +11,7 @@ const { createLearningRecords } = require("./learning-records");
 const { createTeacherAi } = require("./teacher-ai");
 const { createUserStorage } = require("./user-storage");
 const { createAssessmentPlans } = require("./assessment-plans");
+const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
 const { createSchoolElection } = require("./school-election");
@@ -493,6 +494,9 @@ function createClassroomPlatform(options = {}) {
         ADD COLUMN IF NOT EXISTS subject_name TEXT`,
       `ALTER TABLE classroom_teachers
         ADD COLUMN IF NOT EXISTS room_name TEXT`,
+      // 전담이 맡은 (학년, 교과) 짝. 담당 학년·담당 과목 칸에서 읽어 둔다(teaching-scope.js).
+      `ALTER TABLE classroom_teachers
+        ADD COLUMN IF NOT EXISTS teaching_scope JSONB`,
       `ALTER TABLE classroom_teachers
         ALTER COLUMN password_hash DROP NOT NULL`,
       `CREATE UNIQUE INDEX IF NOT EXISTS classroom_teachers_email_idx
@@ -8171,7 +8175,7 @@ function createClassroomPlatform(options = {}) {
     const isAdmin = ["관리자", "교장", "교감"].includes(tp.rows[0].teacher_type);
 
     const teachersResult = await pool.query(
-      `SELECT id, teacher_name, teacher_type, google_email, grade, class_number, subject_name, room_name, active, user_id IS NOT NULL AS linked
+      `SELECT id, teacher_name, teacher_type, google_email, grade, class_number, subject_name, room_name, teaching_scope, active, user_id IS NOT NULL AS linked
        FROM classroom_teachers
        WHERE school_id = $1
        ORDER BY CASE WHEN teacher_type = '관리자' THEN 1 WHEN teacher_type = '담임' THEN 2 ELSE 3 END, grade, class_number, id`,
@@ -8179,17 +8183,23 @@ function createClassroomPlatform(options = {}) {
     );
 
     res.json({
-      teachers: teachersResult.rows.map(r => ({
-        id: r.id,
-        name: r.teacher_name,
-        type: r.teacher_type,
-        email: r.google_email,
-        grade: r.grade,
-        classNumber: r.class_number,
-        subjectName: r.subject_name,
-        roomName: r.room_name,
-        linked: r.linked
-      })),
+      teachers: teachersResult.rows.map(r => {
+        // 전담 줄은 학년 칸이 비어 있고, 맡은 학년·과목은 짝에서 글로 되돌려 보여 준다.
+        const scope = normalizePairs(r.teaching_scope);
+        const shown = scope.length ? formatTeachingScope(scope) : null;
+        return {
+          id: r.id,
+          name: r.teacher_name,
+          type: r.teacher_type,
+          email: r.google_email,
+          grade: r.grade ?? (shown && !r.class_number ? shown.gradeText : null),
+          classNumber: r.class_number,
+          subjectName: shown ? shown.subjectText : r.subject_name,
+          roomName: r.room_name,
+          teachingScope: scope,
+          linked: r.linked
+        };
+      }),
       isAdmin
     });
   }));
@@ -8209,15 +8219,23 @@ function createClassroomPlatform(options = {}) {
     const academicYear = Number(req.body?.year) || new Date().getFullYear();
     const teachers = Array.isArray(req.body?.teachers) ? req.body.teachers : [];
 
-    const cleanTeachers = teachers.map((t) => ({
-      type: String(t?.type || "담임").trim(),
-      name: String(t?.name || "").normalize("NFC").replace(/\s+/g, ""),
-      email: (t?.email && String(t.email).includes("@")) ? normalizeEmail(t.email) : null,
-      grade: t?.grade ? Number(t.grade) : null,
-      classNumber: t?.classNumber ? Number(t.classNumber) : null,
-      subjectName: t?.subjectName ? String(t.subjectName).trim().slice(0, 50) : null,
-      roomName: t?.roomName ? String(t.roomName).trim().slice(0, 50) : null
-    })).filter(t => t.name);
+    const cleanTeachers = teachers.map((t) => {
+      const classNumber = t?.classNumber ? Number(t.classNumber) : null;
+      const gradeText = String(t?.grade ?? "").trim();
+      // 담임은 학년 하나, 전담은 담당 학년 칸에 여러 학년("3,4,5,6")을 적고 과목과 짝을 짓는다.
+      const scope = parseTeachingScope(classNumber ? "" : gradeText, t?.subjectName);
+      return {
+        type: String(t?.type || "담임").trim(),
+        name: String(t?.name || "").normalize("NFC").replace(/\s+/g, ""),
+        email: (t?.email && String(t.email).includes("@")) ? normalizeEmail(t.email) : null,
+        grade: classNumber && gradeText ? Number(gradeText) : null,
+        gradeText,
+        classNumber,
+        subjectName: scope.subjects.length ? scope.subjects.join(", ").slice(0, 50) : (t?.subjectName ? String(t.subjectName).trim().slice(0, 50) : null),
+        teachingScope: scope.pairs,
+        roomName: t?.roomName ? String(t.roomName).trim().slice(0, 50) : null
+      };
+    }).filter(t => t.name);
 
     // 한 계정은 한 줄. 관리자 계정을 다른 교사 줄에 또 적으면 두 줄이 관리자 줄 하나로
     // 겹쳐 저장되고 그 교사 줄은 지워진다. 겸임은 관리자 줄에 학년·반을 적는 것이다.
@@ -8225,11 +8243,15 @@ function createClassroomPlatform(options = {}) {
     for (const t of cleanTeachers) {
       if (!t.name || t.name.length > 30) throw new HttpError(400, "INVALID_TEACHER_NAME", "성명을 확인해 주세요.");
       if (t.email && !t.email.includes("@")) throw new HttpError(400, "INVALID_TEACHER_EMAIL", `${t.name}의 이메일 주소를 확인해 주세요.`);
-      if ((t.grade && !t.classNumber) || (!t.grade && t.classNumber)) {
-        throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사의 학년과 반을 모두 입력하거나, 전담인 경우 둘 다 비워두세요.`);
+      if (t.classNumber && !(Number.isInteger(t.grade) && t.grade >= 1 && t.grade <= 12)) {
+        throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사의 반을 적었으면 학년도 하나만 적어 주세요.`);
+      }
+      // 반 없이 학년만 적은 줄은 전담의 담당 학년이다. 과목이 없으면 무엇을 맡는지 알 수 없다.
+      if (!t.classNumber && t.gradeText && t.teachingScope.length === 0) {
+        throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사는 반이 없으니 전담입니다. 담당 과목을 적거나(여러 학년은 "3,4,5,6"), 담임이면 반도 적어 주세요.`);
       }
       // 학년·반이 있으면 그 반 담임이 된다(userClassId 는 분류를 보지 않는다).
-      if (["행정실장", "일반직"].includes(t.type) && t.grade) {
+      if (["행정실장", "일반직"].includes(t.type) && (t.grade || t.gradeText)) {
         throw new HttpError(400, "STAFF_NO_CLASS", `'${t.name}' ${t.type}은 학년·반을 비워 두세요. 반을 맡으면 분류를 교·강사로 고릅니다.`);
       }
       if (t.email && seenEmails.has(t.email)) {
@@ -8307,16 +8329,16 @@ function createClassroomPlatform(options = {}) {
           await client.query(
             `UPDATE classroom_teachers
              SET teacher_name = $1, teacher_type = $2, google_email = $3, grade = $4, class_number = $5,
-                 subject_name = $6, room_name = $7, academic_year = $9, updated_at = NOW()
+                 subject_name = $6, room_name = $7, academic_year = $9, teaching_scope = $10::jsonb, updated_at = NOW()
              WHERE id = $8`,
-            [finalName, finalType, finalEmail, t.grade, t.classNumber, t.subjectName, t.roomName, existing.id, academicYear]
+            [finalName, finalType, finalEmail, t.grade, t.classNumber, t.subjectName, t.roomName, existing.id, academicYear, JSON.stringify(t.teachingScope)]
           );
         } else {
           await client.query(
             `INSERT INTO classroom_teachers
-               (school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year)
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-            [schoolId, t.name, t.grade, t.classNumber, t.type, t.email, t.subjectName, t.roomName, academicYear]
+               (school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year, teaching_scope)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::jsonb)`,
+            [schoolId, t.name, t.grade, t.classNumber, t.type, t.email, t.subjectName, t.roomName, academicYear, JSON.stringify(t.teachingScope)]
           );
         }
       }

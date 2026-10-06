@@ -762,13 +762,13 @@
                             <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#374151;font-weight:bold;cursor:not-allowed;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" readonly title="학교 관리자 구글 계정은 변경할 수 없습니다">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년" onchange="updateTeacherField(${idx}, 'grade', this.value)">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년 (전담은 3,4,5,6)" title="담임은 학년 하나. 전담은 맡은 학년을 쉼표로 여러 개" onchange="updateTeacherField(${idx}, 'grade', this.value)">
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.classNumber ?? '')}" placeholder="반" onchange="updateTeacherField(${idx}, 'classNumber', this.value)">
                         </td>
                         <td>
-                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
+                            <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악, 영어(5,6)" title="여러 과목은 쉼표로. 학년마다 다르면 과목 뒤 괄호에: 음악(3,4), 영어(5,6)" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
@@ -791,13 +791,13 @@
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" placeholder="구글 계정 이메일" onchange="updateTeacherField(${idx}, 'email', this.value)">
                     </td>
                     <td>
-                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년" onchange="updateTeacherField(${idx}, 'grade', this.value)">
+                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.grade ?? '')}" placeholder="학년 (전담은 3,4,5,6)" title="담임은 학년 하나. 전담은 맡은 학년을 쉼표로 여러 개" onchange="updateTeacherField(${idx}, 'grade', this.value)">
                     </td>
                     <td>
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.classNumber ?? '')}" placeholder="반" onchange="updateTeacherField(${idx}, 'classNumber', this.value)">
                     </td>
                     <td>
-                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
+                        <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.subjectName ?? '')}" placeholder="예: 음악, 영어(5,6)" title="여러 과목은 쉼표로. 학년마다 다르면 과목 뒤 괄호에: 음악(3,4), 영어(5,6)" onchange="updateTeacherField(${idx}, 'subjectName', this.value)">
                     </td>
                     <td>
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.roomName ?? '')}" placeholder="예: 음악실" onchange="updateTeacherField(${idx}, 'roomName', this.value)">
@@ -843,13 +843,19 @@
         if (btn) btn.disabled = true;
         setStatus("teacherRosterStatus", "교직원 명단 저장 중…");
         try {
-            // 학년/반 유효성 검증: 학년과 반 중 하나만 입력된 경우 차단
+            // 학년·반 검사. 반을 적었으면 학년 하나가 있어야 담임이고, 반 없이 학년만 적은 줄은
+            // 전담의 담당 학년(여러 개 가능)이라 과목이 함께 있어야 한다.
             for (const t of allTeachers) {
                 const hasG = Boolean(t.grade);
                 const hasC = Boolean(t.classNumber);
-                if (hasG !== hasC) {
-                    const nameStr = t.name || "선택한";
-                    setStatus("teacherRosterStatus", `⚠️ '${nameStr}' 교사의 학년과 반을 모두 입력하거나, 교과를 맡은 경우 둘 다 비워두세요.`, "error");
+                const nameStr = t.name || "선택한";
+                if (hasC && !/^\d+$/.test(String(t.grade || "").trim())) {
+                    setStatus("teacherRosterStatus", `⚠️ '${nameStr}' 교사의 반을 적었으면 학년도 하나만 적어 주세요.`, "error");
+                    if (btn) btn.disabled = false;
+                    return;
+                }
+                if (hasG && !hasC && !String(t.subjectName || "").trim()) {
+                    setStatus("teacherRosterStatus", `⚠️ '${nameStr}' 교사는 반이 없으니 전담입니다. 담당 과목을 적어 주세요(여러 학년은 "3,4,5,6"). 담임이면 반도 적어 주세요.`, "error");
                     if (btn) btn.disabled = false;
                     return;
                 }
@@ -862,8 +868,9 @@
             }
 
             const clean = allTeachers.map(t => {
-                const g = t.grade ? Number(t.grade) : null;
                 const c = t.classNumber ? Number(t.classNumber) : null;
+                // 담임은 학년 숫자 하나, 전담은 "3,4,5,6" 같은 글 그대로 보낸다(서버가 과목과 짝을 짓는다).
+                const g = c ? (t.grade ? Number(t.grade) : null) : (t.grade ? String(t.grade).trim() : null);
                 const calculatedType = (g && c) ? "담임" : "전담";
                 const cleanName = String(t.name || "").replace(/\s+/g, "");
                 const cleanEmail = t.email ? String(t.email).trim() : null;
@@ -921,7 +928,8 @@
             const name = parts[0].replace(/\s+/g, "");
             if (!name) return null;
             const email = (parts[1] && parts[1].includes("@")) ? cleanEmail(parts[1]) : "";
-            const grade = parts[2] ? Number(parts[2]) : (parts[1] && !parts[1].includes("@") ? Number(parts[1]) : null);
+            const gradeCell = parts[2] ? parts[2] : (parts[1] && !parts[1].includes("@") ? parts[1] : "");
+            const grade = !gradeCell ? null : (/^\d+$/.test(gradeCell) ? Number(gradeCell) : gradeCell);   // 전담은 "3,4,5" 그대로
             const classNumber = parts[3] ? Number(parts[3]) : (parts[2] && !parts[1]?.includes("@") ? Number(parts[2]) : null);
 
             return {

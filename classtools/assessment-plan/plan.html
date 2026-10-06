@@ -57,6 +57,9 @@
         .level input { min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; text-align: center; }
         .level textarea { min-height: 56px; }
         .empty { text-align: center; color: var(--muted); padding: 36px 0; }
+        /* 보기만 할 때: 잠긴 칸은 글씨는 그대로 읽히게, 단추만 흐리게 */
+        .read-only .item input:disabled, .read-only .item textarea:disabled, .read-only .item select:disabled { background: var(--canvas); color: var(--ink); opacity: 1; }
+        .read-only .item button:disabled { opacity: 0.35; cursor: not-allowed; }
         dialog { border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; width: min(760px, 94vw); max-height: 88vh; }
         dialog::backdrop { background: rgba(20, 24, 28, 0.45); }
         dialog h2 { margin: 0 0 10px; font-size: 1.08rem; }
@@ -157,18 +160,34 @@
                 const thisYear = new Date().getFullYear();
                 yearSelect.replaceChildren(...[thisYear - 1, thisYear, thisYear + 1].map((y) => { const o = document.createElement('option'); o.value = y; o.textContent = y + '학년도'; return o; }));
                 yearSelect.value = String(thisYear);
-                let grades = [];
-                try { grades = ((await api('/api/teacher/available-classes')).classes || []).map((c) => Number(c.grade)).filter((g) => g >= 1 && g <= 6); } catch (_) { grades = []; }
-                gradeSelect.replaceChildren(...[1, 2, 3, 4, 5, 6].map((g) => { const o = document.createElement('option'); o.value = g; o.textContent = g + '학년'; return o; }));
-                gradeSelect.value = String(grades[0] || 3);
+                await loadScope(thisYear);
+                gradeSelect.replaceChildren(...[1, 2, 3, 4, 5, 6].map((g) => { const o = document.createElement('option'); o.value = g; return o; }));
+                labelGrades();
+                // 담임은 자기 학년, 전담은 맡은 첫 학년부터 연다.
+                gradeSelect.value = String(scope.homeroomGrade || (scope.pairs[0] && scope.pairs[0].grade) || 3);
                 semesterSelect.value = new Date().getMonth() + 1 >= 8 || new Date().getMonth() + 1 <= 1 ? '2' : '1';
                 index = await (await fetch('data/index.json?v=20261006-1', { cache: 'no-cache' })).json();
                 fillSubjects();
                 return true;
             }
 
+            // 내가 고칠 수 있는 범위(나이스와 같다): 담임은 자기 학년 전 교과, 전담은 교직원 명단의 담당 학년·과목.
+            // 그 밖의 학년·교과는 보기만 한다.
+            let scope = { homeroomGrade: null, pairs: [] };
+            const sameSubject = (a, b) => String(a).replace(/\s+/g, '') === String(b).replace(/\s+/g, '');
+            async function loadScope(year) {
+                try { scope = await api('/api/teacher/assessment-plans/scope?year=' + year); } catch (_) { scope = { homeroomGrade: null, pairs: [] }; }
+                scope.pairs = Array.isArray(scope.pairs) ? scope.pairs : [];
+            }
+            const canEditGrade = (g) => scope.homeroomGrade === Number(g) || scope.pairs.some((p) => Number(p.grade) === Number(g));
+            const canEditSubject = (g, name) => scope.homeroomGrade === Number(g) || scope.pairs.some((p) => Number(p.grade) === Number(g) && sameSubject(p.subject, name));
+            function labelGrades() {
+                for (const o of gradeSelect.options) o.textContent = o.value + '학년' + (canEditGrade(o.value) ? '' : ' (보기만)');
+            }
+
             function fillSubjects() {
-                const band = bandOf(Number(gradeSelect.value));
+                const grade = Number(gradeSelect.value);
+                const band = bandOf(grade);
                 const names = [];
                 for (const subject of index.subjects) {
                     if (!subject.bands[band]) continue;
@@ -177,8 +196,11 @@
                     for (const name of parts) names.push({ id: subject.id, name });
                 }
                 const previous = subjectSelect.value;
-                subjectSelect.replaceChildren(...names.map((n) => { const o = document.createElement('option'); o.value = n.name; o.dataset.file = n.id; o.textContent = n.name; return o; }));
-                if (names.some((n) => n.name === previous)) subjectSelect.value = previous;
+                subjectSelect.replaceChildren(...names.map((n) => { const o = document.createElement('option'); o.value = n.name; o.dataset.file = n.id; o.textContent = n.name + (canEditSubject(grade, n.name) ? '' : ' (보기만)'); return o; }));
+                // 전담이면 이 학년에서 맡은 교과를 먼저 연다.
+                const mine = names.find((n) => canEditSubject(grade, n.name));
+                if (names.some((n) => n.name === previous) && (canEditSubject(grade, previous) || !mine)) subjectSelect.value = previous;
+                else if (mine) subjectSelect.value = mine.name;
             }
 
             async function standardsForCurrent() {
@@ -203,16 +225,33 @@
                     if (keyString(key) !== loadedKey) return;
                     items = data.items || [];
                     dirty = false;
-                    saveStatus.textContent = data.updatedAt
+                    readOnly = data.canEdit === false;
+                    const saved = data.updatedAt
                         ? (data.updatedByName ? data.updatedByName + ' 선생님이 ' : '') + new Date(data.updatedAt).toLocaleString('ko-KR', { dateStyle: 'short', timeStyle: 'short' }) + '에 저장'
-                        : '아직 계획이 없습니다. 항목을 추가하거나 계획서 파일로 채우세요.';
+                        : (readOnly ? '아직 계획이 없습니다.' : '아직 계획이 없습니다. 항목을 추가하거나 계획서 파일로 채우세요.');
+                    saveStatus.textContent = readOnly ? '보기만 할 수 있습니다 — 담임은 자기 학년, 전담은 맡은 교과만 고칩니다. ' + saved : saved;
                 } catch (error) {
-                    items = []; saveStatus.textContent = error.message; saveStatus.classList.add('error');
+                    items = []; readOnly = true; saveStatus.textContent = error.message; saveStatus.classList.add('error');
                 }
+                applyReadOnly();
                 render();
             }
 
+            // 보기만 할 때는 항목 추가·파일로 채우기를 감추고, 그려진 칸을 모두 잠근다(render 가 부른다).
+            let readOnly = false;
+            function applyReadOnly() {
+                // .btn 의 display 가 hidden 속성을 이기므로 style 로 감춘다.
+                $('add-item-btn').style.display = readOnly ? 'none' : '';
+                $('import-btn').style.display = readOnly ? 'none' : '';
+                document.body.classList.toggle('read-only', readOnly);
+            }
+            function lockRendered() {
+                if (!readOnly) return;
+                for (const el of itemsRoot.querySelectorAll('input, textarea, select, button')) el.disabled = true;
+            }
+
             function markDirty() {
+                if (readOnly) return;
                 dirty = true;
                 saveStatus.textContent = '저장 대기 중…'; saveStatus.classList.remove('error');
                 clearTimeout(saveTimer);
@@ -236,8 +275,9 @@
             function newItem() { return { domain: '', standards: [], element: '', levels: 3, criteria: LEVEL_LABELS[3].map((label) => ({ label, text: '' })) }; }
 
             function render() {
-                if (items.length === 0) { itemsRoot.replaceChildren(Object.assign(document.createElement('p'), { className: 'empty', textContent: '항목이 없습니다. 「항목 추가」를 누르거나 계획서 파일로 채우세요.' })); return; }
+                if (items.length === 0) { itemsRoot.replaceChildren(Object.assign(document.createElement('p'), { className: 'empty', textContent: readOnly ? '항목이 없습니다.' : '항목이 없습니다. 「항목 추가」를 누르거나 계획서 파일로 채우세요.' })); return; }
                 itemsRoot.replaceChildren(...items.map((item, i) => itemCard(item, i)));
+                lockRendered();
             }
 
             function itemCard(item, i) {
@@ -421,7 +461,8 @@
             const domainList = document.createElement('datalist'); domainList.id = 'domain-list'; document.body.append(domainList);
             async function refreshDomainList() { domainList.replaceChildren(...(await standardsForCurrent()).map((g) => Object.assign(document.createElement('option'), { value: g.name }))); }
             async function switchPlan() { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadPlan(); refreshDomainList(); }
-            yearSelect.addEventListener('change', switchPlan);
+            // 학년도가 바뀌면 그해 담당 범위도 다시 읽는다(전담 시간표는 학년도마다 다르다).
+            yearSelect.addEventListener('change', async () => { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadScope(Number(yearSelect.value)); labelGrades(); fillSubjects(); await loadPlan(); refreshDomainList(); });
             gradeSelect.addEventListener('change', () => { fillSubjects(); switchPlan(); });
             semesterSelect.addEventListener('change', switchPlan);
             subjectSelect.addEventListener('change', switchPlan);
