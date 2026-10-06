@@ -439,7 +439,7 @@ const QUIZ = [
         "choices": [
             "사과나무",
             "홀레 할머니",
-            "빵 가마"
+            "빵 화덕"
         ],
         "answer": 2
     },
@@ -475,7 +475,7 @@ const QUIZ = [
         "choices": [
             "빵을 꺼내 먹어 버렸다",
             "코를 막고 지나쳤다",
-            "가마 문을 닫아 버렸다"
+            "화덕 문을 닫아 버렸다"
         ],
         "answer": 1
     },
@@ -989,7 +989,7 @@ const EN = {
         ],
         '03-bread.webp': [
             { word: 'cinder', meaning: '숯덩이', sentence: 'I shall burn to a cinder!' },
-            { word: 'oven', meaning: '가마', sentence: 'Beside the road was an oven.' },
+            { word: 'oven', meaning: '화덕', sentence: 'Beside the road was an oven.' },
             { word: 'loaf', meaning: '빵 덩이', sentence: 'She lifted the loaves out one by one.' },
             { word: 'paddle', meaning: '주걱', sentence: 'The girl found a paddle.' },
             { word: 'billow', meaning: '확 올라오다', sentence: 'Hot steam came billowing out.' }
