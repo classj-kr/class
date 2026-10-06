@@ -224,6 +224,7 @@
             async function loadPlan() {
                 const key = currentKey();
                 loadedKey = keyString(key);
+                loadedKeyObj = key;
                 saveStatus.textContent = '불러오는 중…'; saveStatus.classList.remove('error');
                 try {
                     const data = await api('/api/teacher/assessment-plans?' + new URLSearchParams(key));
@@ -260,21 +261,43 @@
                 dirty = true;
                 saveStatus.textContent = '저장 대기 중…'; saveStatus.classList.remove('error');
                 clearTimeout(saveTimer);
-                saveTimer = setTimeout(savePlan, 900);
+                saveTimer = setTimeout(() => savePlan(), 900);
             }
 
-            async function savePlan() {
-                if (saving) { clearTimeout(saveTimer); saveTimer = setTimeout(savePlan, 500); return; }
+            // 저장은 늘 "불러온 계획의 열쇠(loadedKeyObj)"로 보낸다. 화면의 고르기 칸을 읽으면, 고친 뒤 바로
+            // 다른 교과로 옮겼을 때 앞 교과의 내용이 뒷 교과로 저장돼 버린다.
+            // 한 번에 하나만 보내고, 보내는 동안 더 고친 것이 있으면 끝난 뒤 이어서 보낸다. 보낸 내용과 지금
+            // 내용이 같을 때만 "고친 것 없음"으로 돌린다 — 그래야 저장 중에 고친 것이 버려지지 않는다.
+            let loadedKeyObj = null, pendingSave = false, savingPromise = null;
+            function savePlan() {
+                if (saving) { pendingSave = true; return savingPromise; }
+                if (!loadedKeyObj || readOnly || !dirty) return Promise.resolve();
+                const key = loadedKeyObj;
+                const body = JSON.stringify({ ...key, items });
                 saving = true;
-                const key = currentKey();
-                try {
-                    const data = await api('/api/teacher/assessment-plans', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...key, items }) });
-                    if (keyString(key) === loadedKey) { dirty = false; saveStatus.textContent = new Date(data.updatedAt).toLocaleTimeString('ko-KR', { timeStyle: 'short' }) + ' 저장됨 · 같은 학교 선생님이 함께 봅니다'; }
-                } catch (error) {
-                    saveStatus.textContent = '저장하지 못했습니다: ' + error.message; saveStatus.classList.add('error');
-                } finally { saving = false; }
+                savingPromise = (async () => {
+                    try {
+                        const data = await api('/api/teacher/assessment-plans', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body });
+                        if (loadedKeyObj === key && JSON.stringify({ ...key, items }) === body) {
+                            dirty = false;
+                            saveStatus.textContent = new Date(data.updatedAt).toLocaleTimeString('ko-KR', { timeStyle: 'short' }) + ' 저장됨 · 같은 학교 선생님이 함께 봅니다';
+                            saveStatus.classList.remove('error');
+                        }
+                    } catch (error) {
+                        if (loadedKeyObj === key) { saveStatus.textContent = '저장하지 못했습니다: ' + error.message; saveStatus.classList.add('error'); }
+                    } finally {
+                        saving = false;
+                        if (pendingSave) { pendingSave = false; await savePlan(); }
+                    }
+                })();
+                return savingPromise;
             }
-            window.addEventListener('pagehide', () => { if (dirty) { clearTimeout(saveTimer); try { navigator.sendBeacon && fetch('/api/teacher/assessment-plans', { method: 'PUT', keepalive: true, credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...currentKey(), items }) }); } catch (_) {} } });
+            // 쪽을 떠날 때 아직 안 보낸 것이 있으면 마지막으로 한 번 보낸다(열쇠는 역시 불러온 계획의 것).
+            window.addEventListener('pagehide', () => {
+                if (!dirty || !loadedKeyObj || readOnly) return;
+                clearTimeout(saveTimer);
+                try { fetch('/api/teacher/assessment-plans', { method: 'PUT', keepalive: true, credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...loadedKeyObj, items }) }); } catch (_) {}
+            });
 
             // ── 항목 그리기 ──────────────────────────────────────────────
             function newItem() { return { domain: '', standards: [], element: '', levels: 3, criteria: LEVEL_LABELS[3].map((label) => ({ label, text: '' })) }; }
@@ -510,9 +533,21 @@
             async function refreshDomainList() {
                 try { domainNames = (await standardsForCurrent()).map((g) => g.name); } catch (_) { domainNames = []; }
             }
-            async function switchPlan() { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await refreshDomainList(); await loadPlan(); }
+            // 다른 계획으로 옮기기 전에 고친 것을 먼저 보낸다. 못 보냈으면 그냥 버리지 않고 묻는다.
+            async function flushBeforeSwitch() {
+                clearTimeout(saveTimer);
+                if (!dirty) return true;
+                await savePlan();
+                if (!dirty) return true;
+                if (confirm('고친 내용을 저장하지 못했습니다. 그래도 다른 계획으로 옮길까요? 옮기면 고친 내용은 사라집니다.')) return true;
+                // 머물기로 했으면 고르기 칸을 불러온 계획으로 되돌린다.
+                yearSelect.value = String(loadedKeyObj.year); gradeSelect.value = String(loadedKeyObj.grade); semesterSelect.value = String(loadedKeyObj.semester);
+                fillSubjects(); subjectSelect.value = loadedKeyObj.subject;
+                return false;
+            }
+            async function switchPlan() { if (!await flushBeforeSwitch()) return; await refreshDomainList(); await loadPlan(); }
             // 학년도가 바뀌면 그해 담당 범위도 다시 읽는다(전담 시간표는 학년도마다 다르다).
-            yearSelect.addEventListener('change', async () => { if (dirty) { clearTimeout(saveTimer); await savePlan(); } await loadScope(Number(yearSelect.value)); labelGrades(); fillSubjects(); await refreshDomainList(); await loadPlan(); });
+            yearSelect.addEventListener('change', async () => { if (!await flushBeforeSwitch()) return; await loadScope(Number(yearSelect.value)); labelGrades(); fillSubjects(); await refreshDomainList(); await loadPlan(); });
             gradeSelect.addEventListener('change', () => { fillSubjects(); switchPlan(); });
             semesterSelect.addEventListener('change', switchPlan);
             subjectSelect.addEventListener('change', switchPlan);
