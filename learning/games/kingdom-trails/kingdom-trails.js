@@ -1,7 +1,6 @@
 "use strict";
 
 const GAME_ID = "kingdomtrails";
-const NAME_KEY = "classPlayerName";
 const SERVER_MESSAGE = Object.freeze({ STATE: "KINGDOMTRAILS_STATE", ERROR: "KINGDOMTRAILS_ERROR" });
 const SIDES = ["north", "east", "south", "west"];
 const DIRECTIONS = [{ x: 0, y: -1 }, { x: 1, y: 0 }, { x: 0, y: 1 }, { x: -1, y: 0 }];
@@ -22,7 +21,7 @@ let actionPending = false;
 let lastRevision = -1;
 let toastTimer = null;
 let resizeTimer = null;
-const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
+const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
 const MUSIC_TRACKS = Object.freeze([
   "/learning/games/kingdom-trails/assets/sound/kingdom-trails-table.m4a"

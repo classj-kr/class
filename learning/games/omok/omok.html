@@ -135,7 +135,6 @@
 "use strict";
 
 const GAME_ID="omok";
-const NAME_KEY="classPlayerName";
 const BOARD_SIZE=15;
 const TURN_TIME_MS=15000;
 const MESSAGE=Object.freeze({ACTION:"OMOK_ACTION",STATE:"OMOK_STATE",RETURN_LOBBY:"OMOK_RETURN_LOBBY"});
@@ -147,7 +146,7 @@ let gameState=null;
 let toastTimer=null;
 let hostTurnTimer=null;
 let localTurnDeadline=0;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function emptyBoard(){return Array(BOARD_SIZE*BOARD_SIZE).fill(0)}
 function boardIndex(row,col){return row*BOARD_SIZE+col}

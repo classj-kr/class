@@ -87,13 +87,13 @@ button,input{font:inherit}.hidden{display:none!important}.screen{min-height:100v
 <div id="toast" class="toast"></div>
 <script>
 "use strict";
-const GAME_ID="traverse",NAME_KEY="classPlayerName",BOARD_SIZE=10;
+const GAME_ID="traverse",BOARD_SIZE=10;
 const TURN_MS=30000,JUMP_GRACE_MS=10000;
 const SHAPES=["triangle","circle","diamond","square","square","diamond","circle","triangle"],SIDE_ORDER_4=["bottom","right","top","left"],PLAYER_COLORS=["#e4b94f","#62a8e5","#e76f67","#69bd84"];
 let lobby=null,myId=null,myRole="host",players={},started=false,state=null,selectedPieceId=null,legalOptions=[],lastAnimatedMoveSeq=0;
 let hostTurnTimer=null,clientTimerRaf=null;
 const $=id=>document.getElementById(id);
-function savedName(){return String(localStorage.getItem(NAME_KEY)||"").trim()}
+function savedName(){return String((window.CLASS_PLAYER_NAME || "")||"").trim()}
 function key(r,c){return `${r},${c}`}function inBounds(r,c){return r>=0&&r<10&&c>=0&&c<10}function isCorner(r,c){return (r===0||r===9)&&(c===0||c===9)}
 function sideCell(side,r,c){if(side==="top")return r===0;if(side==="bottom")return r===9;if(side==="left")return c===0;return c===9}
 function destinationSide(side){return {top:"bottom",bottom:"top",left:"right",right:"left"}[side]}

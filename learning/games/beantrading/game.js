@@ -11,7 +11,7 @@
   let practice = null, practiceStage = "", stageKey = "", clockOffset = 0, harvestField = 0;
   let composerOpen = false, quickOpen = false, quickWant = "", pendingOffer = null, pocket = "hand", detailKind = null;
   const botProposed = new Set();
-  const savedName = String(localStorage.getItem("classPlayerName") || "").trim();
+  const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
   const myId = () => practice ? "practice-me" : lobby?.snapshot().myId;
   const isHost = () => !!practice || lobby?.snapshot().role === "host";
   const me = () => state?.players.find(p => p.id === myId());

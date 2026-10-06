@@ -1244,10 +1244,9 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         return KOREAN_NAME_PATTERN.test(String(value || ""));
     }
 
-    const SAVED_PLAYER_NAME_KEY = "classPlayerName";
-
+    
     function getSavedPlayerName() {
-        const savedName = normalizeNickname(localStorage.getItem(SAVED_PLAYER_NAME_KEY) || "");
+        const savedName = normalizeNickname((window.CLASS_PLAYER_NAME || "") || "");
         return isValidNickname(savedName) ? savedName : "";
     }
 

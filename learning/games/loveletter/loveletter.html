@@ -277,7 +277,6 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 "use strict";
 
 const GAME_ID="loveletter";
-const NAME_KEY="classPlayerName";
 const LOVELETTER_MUSIC=Object.freeze([
   "/learning/games/loveletter/assets/sound/round-1.ogg",
   "/learning/games/loveletter/assets/sound/round-2.ogg",
@@ -296,7 +295,7 @@ const CARD_META=Object.freeze({
   8:{name:"공주",file:"princess.webp",count:1,effect:"이 카드를 내거나 어떤 이유로든 버리면 즉시 탈락합니다."}
 });
 const $=id=>document.getElementById(id);
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 let lobby=null;
 let gameState=null;
 let toastTimer=null;

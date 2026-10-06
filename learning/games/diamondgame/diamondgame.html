@@ -86,7 +86,7 @@ body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
 
 <script>
 "use strict";
-const GAME_ID="diamondgame",NAME_KEY="classPlayerName";
+const GAME_ID="diamondgame";
 const TURN_MS=30000,JUMP_GRACE_MS=10000;
 const MESSAGE=Object.freeze({ACTION:"DIAMOND_ACTION",STATE:"DIAMOND_STATE",RETURN_LOBBY:"DIAMOND_RETURN_LOBBY"});
 const BGM_TRACKS=["/learning/games/diamondgame/assets/sound/diamond-1.ogg","/learning/games/diamondgame/assets/sound/diamond-2.ogg","/learning/games/diamondgame/assets/sound/diamond-3.ogg"];
@@ -97,7 +97,7 @@ let lobby=null,state=null,players={},myId=null,myRole="host",selectedKey=null,le
 let toastTimer=null,bgmIndex=0;
 let hostTurnTimer=null,clientTimerRaf=null;
 let animatedMoveCount=0,moveAnimating=false,moveAnimationTimer=null;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function key(x,y){return `${x},${y}`}
 function buildCells(){const cells=[];for(let y=-8;y<=8;y++){const count=Math.abs(y)>=5?9-Math.abs(y):9+Math.abs(y);for(let i=0;i<count;i++)cells.push({x:-(count-1)+i*2,y})}return cells}

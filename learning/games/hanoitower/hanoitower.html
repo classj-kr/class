@@ -935,7 +935,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
     }
 
     function getSavedPlayerName() {
-        const saved = normalizeKoreanName(localStorage.getItem("classPlayerName") || "");
+        const saved = normalizeKoreanName((window.CLASS_PLAYER_NAME || "") || "");
         return isValidKoreanName(saved) ? saved : "";
     }
 

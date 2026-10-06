@@ -1923,6 +1923,23 @@ function createClassroomPlatform(options = {}) {
     return result.rowCount > 0;
   }
 
+  // 화면에 보일 이름. 명단에 있는 학생은 명단 이름, 교직원은 등록 이름, 그 밖의 계정은 구글 이름,
+  // 게스트는 입장할 때 적은 이름. 서버가 쪽(HTML)을 내줄 때 박아 넣어 브라우저가 이름을 저장하지 않게 한다.
+  async function displayNameFor(req) {
+    const user = await sessionUser(req);
+    if (!user) {
+      const guest = guestAccess(req);
+      return guest ? { name: guest.name, kind: "guest" } : { name: "", kind: "" };
+    }
+    if (pool && databaseReady) {
+      const membership = await studentMembership(user.id);
+      if (membership?.studentName) return { name: membership.studentName, kind: "student" };
+      const registration = await teacherRegistration(user);
+      if (registration?.teacher_name) return { name: registration.teacher_name, kind: "teacher" };
+    }
+    return { name: String(user.name || user.displayName || "").trim(), kind: user.role || "user" };
+  }
+
   const requireSiteAccess = asyncRoute(async (req, res, next) => {
     // mode and user are each resolved once per request and reused below --
     // this used to call getSiteAccessMode() and sessionUser() twice per
@@ -8709,6 +8726,7 @@ function createClassroomPlatform(options = {}) {
   return {
     router,
     initialize,
+    displayNameFor,
     configuration,
     requireSiteAccess,
     isContentGloballyDisabled,

@@ -1755,7 +1755,7 @@
 
             function clearPlayerIdentity() {
                 currentPlayerName = '';
-                localStorage.removeItem('classPlayerName');
+                try { localStorage.removeItem('classPlayerName'); } catch (_) {}
                 updatePlayerLearningLinks('');
             }
 
@@ -1763,7 +1763,7 @@
                 const playerName = normalizePlayerName(value);
                 if (!isValidPlayerName(playerName)) return '';
                 currentPlayerName = playerName;
-                localStorage.setItem('classPlayerName', playerName);
+                try { localStorage.removeItem('classPlayerName'); } catch (_) {} // 이름은 서버가 쪽마다 박아 넣는다(window.CLASS_PLAYER_NAME); 브라우저에는 두지 않는다
                 updatePlayerLearningLinks(playerName, membership);
                 return playerName;
             }
@@ -1886,7 +1886,7 @@
                 classMembership.textContent = `${membership.schoolName} · G${membership.grade}-${membership.classNumber} · No. ${membership.studentNumber}`;
                 hubContent.hidden = false;
                 currentPlayerName = playerName;
-                localStorage.setItem('classPlayerName', playerName);
+                try { localStorage.removeItem('classPlayerName'); } catch (_) {} // 이름은 서버가 쪽마다 박아 넣는다(window.CLASS_PLAYER_NAME); 브라우저에는 두지 않는다
                 updatePlayerLearningLinks(playerName, membership);
                 await loadClassContentAccess();
                 setStatus('');
@@ -2387,7 +2387,7 @@
                         body: JSON.stringify({ name, passcode }),
                     });
                     currentPlayerName = guest.name;
-                    localStorage.setItem('classPlayerName', guest.name);
+                    try { localStorage.removeItem('classPlayerName'); } catch (_) {}
                     updatePlayerLearningLinks(guest.name);
                     // A guest has no class membership, so the site-wide lock is
                     // the only content policy that applies. Load it before

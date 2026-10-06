@@ -275,9 +275,8 @@ body:has(#boardArea:not(.hidden)) #game>.panel:first-child{margin-bottom:8px;pad
 "use strict";
 
 const GAME_ID = "codenames";
-const NAME_KEY = "classPlayerName";
 const $ = id => document.getElementById(id);
-const savedName = String(localStorage.getItem(NAME_KEY) || "").trim();
+const savedName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
 let lobby = null;
 let state = null;

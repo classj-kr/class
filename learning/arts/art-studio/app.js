@@ -206,7 +206,7 @@
       this.lastMovePoint = null;
       this.alphaLock = false;
       this.eyedropperArmed = false;
-      this.playerName = String(localStorage.getItem("classPlayerName") || "").trim();
+      this.playerName = String((window.CLASS_PLAYER_NAME || "") || "").trim();
 
       this.canvasFrameEl = $("canvasFrame");
       this.canvasStageEl = document.querySelector(".canvas-stage");

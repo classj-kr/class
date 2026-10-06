@@ -1228,7 +1228,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
     let currentMusicVolume = 0.6;
     let musicStarted = false;
     let effectAudioContext = null;
-    const savedPlayerName = (localStorage.getItem("classPlayerName") || "").trim();
+    const savedPlayerName = ((window.CLASS_PLAYER_NAME || "") || "").trim();
     const playerName = /^[가-힣]{2,6}$/.test(savedPlayerName) ? savedPlayerName : "";
 
     const $ = (id) => document.getElementById(id);

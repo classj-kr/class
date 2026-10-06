@@ -184,7 +184,6 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 "use strict";
 
 const GAME_ID="reversi";
-const NAME_KEY="classPlayerName";
 const BOARD_SIZE=8;
 const TURN_TIME_MS=20000;
 const MESSAGE=Object.freeze({ACTION:"REVERSI_ACTION",STATE:"REVERSI_STATE",RETURN_LOBBY:"REVERSI_RETURN_LOBBY"});
@@ -196,7 +195,7 @@ let gameState=null;
 let toastTimer=null;
 let hostTurnTimer=null;
 let localTurnDeadline=0;
-const savedName=String(localStorage.getItem(NAME_KEY)||"").trim();
+const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
 function boardIndex(row,col){return row*BOARD_SIZE+col}
 function initialBoard(){

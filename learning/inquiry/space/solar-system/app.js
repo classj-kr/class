@@ -107,7 +107,7 @@
             pos: new THREE.Vector3(0, 25.0, 450), // Optimal hover altitude above planets (Y=25.0)
             heading: 0.0,
             keys: { forward: false, backward: false, left: false, right: false },
-            pilotName: (localStorage.getItem('classPlayerName') || '').trim()
+            pilotName: ((window.CLASS_PLAYER_NAME || "") || '').trim()
         };
         var ufoLobby = null;
         var ufoRoomRole = null;
@@ -2921,7 +2921,7 @@
             ufoLobby = window.ClassroomMultiplayerLobby.create({
                 gameId: 'solar-system-ufo-flight',
                 getPlayerName: function () {
-                    return (localStorage.getItem('classPlayerName') || '').trim();
+                    return ((window.CLASS_PLAYER_NAME || "") || '').trim();
                 },
                 initialMode: 'guest',
                 allowedPlayerCounts: Array.from({ length: 30 }, function (_, index) { return index + 1; }),

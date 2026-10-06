@@ -246,9 +246,25 @@ const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-nav
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261006-capture" defer></script>';
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20260926-reading-prose">';
 
+// 쪽마다 로그인(또는 게스트 입장)에서 나온 이름을 맨 앞에 박아 넣는다. 게임·학습 화면은 이 값을
+// 읽고, 브라우저 저장소에는 이름을 두지 않는다(2026-10-06).
+function siteIdentityTag(identity) {
+  const literal = (value) => JSON.stringify(String(value || "")).replace(/</g, "\\u003c");
+  return `<script data-site-identity="true">window.CLASS_PLAYER_NAME=${literal(identity.name)};window.CLASS_PLAYER_KIND=${literal(identity.kind)}</script>`;
+}
+
+function withSiteIdentity(htmlSource, identity) {
+  const tag = siteIdentityTag(identity);
+  const head = htmlSource.match(/<head[^>]*>/i);
+  if (head) return htmlSource.slice(0, head.index + head[0].length) + tag + htmlSource.slice(head.index + head[0].length);
+  return tag + htmlSource;
+}
+
 function sendSiteHtml(req, res, filepath, next) {
-  fs.readFile(filepath, "utf8", (error, htmlSource) => {
+  fs.readFile(filepath, "utf8", (error, source) => {
     if (error) return next(error);
+    classroomPlatform.displayNameFor(req).catch(() => ({ name: "", kind: "" })).then((identity) => {
+    const htmlSource = withSiteIdentity(source, identity);
 
     const htmlWithBackNavigation = htmlSource.includes("/assets/site-back-navigation.js")
       ? htmlSource
@@ -272,6 +288,7 @@ function sendSiteHtml(req, res, filepath, next) {
     res.type("html");
     if (req.method === "HEAD") return res.end();
     res.send(html);
+    }).catch(next);
   });
 }
 
