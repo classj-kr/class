@@ -16,7 +16,7 @@ function handlerBody(source, routeSignature) {
 
 test("GET /school/teachers returns each teacher's subject/room so the specialist-timetable picker has something to show", () => {
   const body = handlerBody(serverSource, `router.get("/school/teachers"`);
-  assert.match(body, /subject_name, room_name, teaching_scope/);
+  assert.match(body, /t\.subject_name, t\.room_name,\s*t\.teaching_scope/);
   // 전담은 맡은 학년·과목 짝을 글로 되돌려 보여 주고, 짝이 없으면 적힌 과목 그대로.
   assert.match(body, /subjectName: shown \? shown\.subjectText : r\.subject_name/);
   assert.match(body, /roomName: r\.room_name/);

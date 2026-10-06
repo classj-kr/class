@@ -12,7 +12,7 @@ const require = createRequire(import.meta.url);
 const { parseTeachingScope } = require("./teaching-scope.js");
 const {
   NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE,
-  pendingStudentName, pendingTeacherName, googleRosterName, fillPendingNamesFromGoogle
+  pendingStudentName, pendingTeacherName, googleRosterName, fillPendingNamesFromGoogle, namesLookDifferent
 } = require("./roster-names.js");
 
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
@@ -162,6 +162,17 @@ test("placeholder names: a student shows the account's local part, a teacher the
   assert.equal(pendingTeacherName("Hong@School.es.kr"), "hong@school.es.kr");
 });
 
+test("namesLookDifferent flags a linked account whose Google name looks like another person, but not decorated or reordered forms of the same name", () => {
+  for (const same of ["홍길동", "홍 길동", "길동 홍", "3101홍길동", "홍길동(6-3)", "6학년 3반 홍길동"]) {
+    assert.equal(namesLookDifferent("홍길동", same), false, same);
+  }
+  assert.equal(namesLookDifferent("Gildong Hong", "gildong hong"), false);
+  assert.equal(namesLookDifferent("홍길동", "김철수"), true);
+  assert.equal(namesLookDifferent("홍길동", "Hong Gildong"), true, "로마자 이름은 사람이 확인하도록 표시한다");
+  assert.equal(namesLookDifferent("홍길동", ""), false, "연동되지 않은 줄은 비교하지 않는다");
+  assert.equal(namesLookDifferent("", "홍길동"), false);
+});
+
 // ─── 전교생 명단 저장 + 첫 로그인 ────────────────────────────────────────
 
 test("PUT /school/students takes either a name or a Google account per row: name-only rows (no devices) save as before, account-only rows wait for sign-in", async () => {
@@ -296,9 +307,15 @@ test("the homeroom class roster route accepts a blank name only with a Google ac
   assert.match(body, /classroom_students\.name_source = 'google'/);
 });
 
-test("roster reads expose name_source so the editors can tell a placeholder from a real name", () => {
-  assert.match(handlerBody('router.get("/school/students"'), /s\.roster_name, s\.name_source,/);
-  assert.match(handlerBody('router.get("/school/teachers"'), /nameSource: r\.name_source \|\| ""/);
+test("roster reads expose name_source so the editors can tell a placeholder from a real name, and compare linked Google names", () => {
+  const studentsRead = handlerBody('router.get("/school/students"');
+  assert.match(studentsRead, /s\.roster_name, s\.name_source,/);
+  assert.match(studentsRead, /LEFT JOIN classroom_users u ON u\.id = s\.user_id/);
+  assert.match(studentsRead, /name_mismatch: namesLookDifferent\(s\.roster_name, s\.google_name\)/);
+  const teachersRead = handlerBody('router.get("/school/teachers"');
+  assert.match(teachersRead, /nameSource: r\.name_source \|\| ""/);
+  assert.match(teachersRead, /LEFT JOIN classroom_users u ON u\.id = t\.user_id/);
+  assert.match(teachersRead, /nameMismatch: namesLookDifferent\(r\.teacher_name, r\.google_name\)/);
   const classRoster = handlerBody('router.get("/teacher/class"');
   assert.equal((classRoster.match(/s\.roster_name, s\.name_source,/g) || []).length, 2);
   assert.match(classRoster, /nameSource: student\.name_source \|\| ""/);
@@ -314,6 +331,8 @@ test("the school roster editor sends pending rows back with an empty name so the
   assert.match(schoolRosterHtml, /if \(parts\[0\]\.includes\("@"\)\) parts = \["", \.\.\.parts\]/);
   assert.match(schoolRosterHtml, /name-chip pending/);
   assert.match(schoolRosterHtml, /name-chip google/);
+  // 연동된 구글 계정 이름이 적어 둔 성명과 다른 사람으로 보이면 학생·교직원 줄 모두에 표시한다.
+  assert.equal((schoolRosterHtml.match(/name-chip mismatch/g) || []).length, 2);
 });
 
 test("the homeroom class roster editor shows pending names as blank lines and only accepts a blank name with a Google account", () => {
