@@ -660,6 +660,7 @@
                         <span class="line-count" id="name-count">0행</span>
                     </div>
                     <textarea id="names" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="" aria-describedby="input-status"></textarea>
+                    <p class="field-help">학생 구글계정을 적으면 비워 둘 수 있음. 첫 로그인 때 구글 계정 이름이 들어옵니다.</p>
                 </div>
 
                 <div class="field">
@@ -792,6 +793,16 @@
                 return lines.map((line) => line.trim());
             }
 
+            // 성명 열은 빈 줄도 한 사람의 자리다(학생 구글계정을 적은 학생은 성명을 비울 수 있다).
+            // splitLines처럼 앞쪽 빈 줄을 지우면 이름이 한 줄씩 밀리므로 뒤쪽 빈 줄만 지운다.
+            function splitNameLines(value) {
+                const normalized = (value || "").replace(/\r\n?/g, "\n");
+                if (!normalized.trim()) return [];
+                const lines = normalized.split("\n").map((line) => line.trim());
+                while (lines.length && !lines[lines.length - 1]) lines.pop();
+                return lines;
+            }
+
             function normalizeGenderValue(val) {
                 const s = String(val || "").trim().toLowerCase();
                 if (s.includes("여") || s === "f" || s === "female" || s === "girl") return "여";
@@ -800,14 +811,18 @@
 
             function getRosterState() {
                 const numbers = splitLines(numbersInput.value);
-                const names = splitLines(namesInput.value);
+                const names = splitNameLines(namesInput.value);
+                // 뒤쪽 학생들의 성명이 비어 있으면 줄 수가 모자란다. 그 자리는 빈 성명으로 채운다.
+                while (names.length < numbers.length) names.push("");
                 const rawGenders = splitLines(gendersInput.value);
                 const genders = rawGenders;
                 const studentEmails = splitLines(studentEmailsInput.value);
                 const guardian1Emails = splitLines(guardian1EmailsInput.value);
                 const guardian2Emails = splitLines(guardian2EmailsInput.value);
 
-                const hasBlank = numbers.some((value) => !value) || names.some((value) => !value);
+                const hasBlank = numbers.some((value) => !value);
+                // 성명을 비운 학생은 학생 구글계정이 있어야 한다(첫 로그인 때 구글 이름이 들어온다).
+                const blankNamesWithoutAccount = numbers.filter((value, index) => value && !names[index] && !(studentEmails[index] || ""));
                 const duplicateNumbers = numbers.filter((value, index) => value && numbers.indexOf(value) !== index);
                 const invalidNumbers = numbers.filter((value) => value && !/^\d{1,3}$/.test(value));
                 const invalidNames = names.filter((value) => value && !/^[가-힣]{2,6}$/.test(value));
@@ -816,13 +831,14 @@
                 const isComplete = numbers.length > 0 &&
                     numbers.length === names.length &&
                     !hasBlank &&
+                    blankNamesWithoutAccount.length === 0 &&
                     duplicateNumbers.length === 0 &&
                     invalidNumbers.length === 0 &&
                     invalidNames.length === 0 &&
                     invalidGenders.length === 0 &&
                     !hasMismatchedGenders;
 
-                return { numbers, names, genders, studentEmails, guardian1Emails, guardian2Emails, hasBlank, duplicateNumbers, invalidNumbers, invalidNames, invalidGenders, hasMismatchedGenders,  invalidBirthdays: [], invalidBirthdayVisibility: [],  isComplete };
+                return { numbers, names, genders, studentEmails, guardian1Emails, guardian2Emails, hasBlank, blankNamesWithoutAccount, duplicateNumbers, invalidNumbers, invalidNames, invalidGenders, hasMismatchedGenders,  invalidBirthdays: [], invalidBirthdayVisibility: [],  isComplete };
             }
 
             function createRoster(numbers, names, genders, studentEmails, guardian1Emails, guardian2Emails) {
@@ -890,21 +906,15 @@
                 classNumberInput.value = String(classroom.classNumber);
                 teacherInput.value = classroom.teacherName;
                 numbersInput.value = classroom.students.map((student) => student.number).join("\n");
-                namesInput.value = classroom.students.map((student) => student.name).join("\n");
+                // 성명을 비워 둔 학생(pending)은 서버가 자리표시 이름을 두므로 칸은 비워서 보여 준다.
+                // 그대로 저장하면 다시 비운 채로 보내 자리표시가 실명으로 굳지 않는다.
+                namesInput.value = classroom.students.map((student) => student.nameSource === "pending" ? "" : student.name).join("\n");
                 gendersInput.value = classroom.students.map((student) => student.gender || "남").join("\n");
                 if (birthdatesInput) birthdatesInput.value = classroom.students.map((student) => student.birthdayVisible ? (student.birthdayMmdd || "공개 중") : "비공개").join("\n");
                 studentEmailsInput.value = classroom.students.map((student) => student.studentEmail || "").join("\n");
                 guardian1EmailsInput.value = classroom.students.map((student) => student.guardian1Email || "").join("\n");
                 guardian2EmailsInput.value = classroom.students.map((student) => student.guardian2Email || "").join("\n");
-                passwordsInput.value = classroom.students.map((student) => {
-                    const parts = [];
-                    parts.push(`학생:${student.studentLinked ? '✅' : '미접속'}`);
-                    if (student.guardian1Email) parts.push(`보1:${student.guardian1Linked ? '✅' : '미접속'}`);
-                    if (student.guardian2Email) parts.push(`보2:${student.guardian2Linked ? '✅' : '미접속'}`);
-                    return parts.join(" ");
-                }).join("\n");
-                displayedPasswordRows.clear();
-                classroom.students.forEach((student) => displayedPasswordRows.set(student.number, DISPLAY_DEFAULT_STUDENT_PASSWORD));
+                // 비밀번호 칸은 없어졌다. 그 칸을 채우던 줄이 남아 있으면 여기서 멈춰 명단이 안 떴다.
                 if (birthdatesInput) birthdatesInput.disabled = true;
                 
                 studentDeleteSelect.replaceChildren(new Option("삭제할 학생 선택", ""));
@@ -988,7 +998,7 @@
                 const hasMismatchedCounts = hasAnyInput && (state.numbers.length !== state.names.length || state.hasMismatchedGenders);
 
                 numbersInput.setAttribute("aria-invalid", String(hasMismatchedCounts || state.hasBlank || state.duplicateNumbers.length > 0 || state.invalidNumbers.length > 0));
-                namesInput.setAttribute("aria-invalid", String(hasMismatchedCounts || state.hasBlank || state.invalidNames.length > 0));
+                namesInput.setAttribute("aria-invalid", String(hasMismatchedCounts || state.hasBlank || state.blankNamesWithoutAccount.length > 0 || state.invalidNames.length > 0));
                 gendersInput.setAttribute("aria-invalid", String(state.hasMismatchedGenders || state.invalidGenders.length > 0));
                 birthdatesInput.setAttribute("aria-invalid", String(state.invalidBirthdays.length > 0));
                 saveButton.disabled = saving || !authorized || !state.isComplete || !isProfileComplete();
@@ -1007,6 +1017,11 @@
 
                 if (state.hasBlank) {
                     setStatus("중간의 빈 행을 제거해주세요.", "error");
+                    return;
+                }
+
+                if (state.blankNamesWithoutAccount.length > 0) {
+                    setStatus(`${state.blankNamesWithoutAccount.join(", ")}번의 성명이 비어 있습니다. 학생 구글계정을 적으면 성명을 비워 둘 수 있고, 첫 로그인 때 구글 계정 이름이 들어옵니다.`, "error");
                     return;
                 }
 
@@ -1200,7 +1215,9 @@
             const allTextareas = [numbersInput, namesInput, gendersInput, birthdatesInput, studentEmailsInput, guardian1EmailsInput, guardian2EmailsInput].filter(Boolean);
             let isSyncingScroll = false;
             
-            resetButtonsContainer.addEventListener("click", (e) => {
+            // 초기화 단추 칸은 이 화면에 없을 수 있다(renderResetButtons 도 같은 이유로 비켜 간다).
+            // 없는 요소에 리스너를 달면 여기서 멈춰 start()가 돌지 않아 명단이 안 떴다.
+            if (resetButtonsContainer) resetButtonsContainer.addEventListener("click", (e) => {
                 if (e.target.classList.contains("reset-btn")) {
                     const number = e.target.dataset.number;
                     const type = e.target.dataset.type;

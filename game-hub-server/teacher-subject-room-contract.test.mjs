@@ -30,7 +30,7 @@ test("PUT /school/teachers persists subjectName/roomName on both the update and 
   assert.match(body, /subject_name = \$6, room_name = \$7, academic_year = \$9, teaching_scope = \$10::jsonb/);
   assert.match(body, /t\.grade, t\.classNumber, t\.subjectName, t\.roomName, existing\.id, academicYear, JSON\.stringify\(t\.teachingScope\)/);
   assert.doesNotMatch(body, /isAdminRow \? null/);
-  assert.match(body, /\(school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year, teaching_scope\)/);
+  assert.match(body, /\(school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year, teaching_scope, name_source\)/);
   assert.doesNotMatch(body, /OAUTH_ONLY/);
 });
 

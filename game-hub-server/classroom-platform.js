@@ -14,6 +14,7 @@ const { createAssessmentPlans } = require("./assessment-plans");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
+const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle } = require("./roster-names");
 const { createSchoolElection } = require("./school-election");
 const { createSeating } = require("./seating");
 const { createStudentCharacterStyleResolver } = require("./student-character-style");
@@ -491,6 +492,8 @@ function createClassroomPlatform(options = {}) {
       `ALTER TABLE classroom_teachers
         ADD COLUMN IF NOT EXISTS teacher_type TEXT NOT NULL DEFAULT 'homeroom'`,
       `ALTER TABLE classroom_teachers
+        ADD COLUMN IF NOT EXISTS name_source TEXT`,
+      `ALTER TABLE classroom_teachers
         ADD COLUMN IF NOT EXISTS subject_name TEXT`,
       `ALTER TABLE classroom_teachers
         ADD COLUMN IF NOT EXISTS room_name TEXT`,
@@ -581,6 +584,9 @@ function createClassroomPlatform(options = {}) {
         ADD COLUMN IF NOT EXISTS guardian1_email TEXT`,
       `ALTER TABLE classroom_students
         ADD COLUMN IF NOT EXISTS guardian2_email TEXT`,
+      // 성명을 비워 두고 계정만 적은 줄(pending)과 첫 로그인 때 구글 이름으로 채운 줄(google).
+      `ALTER TABLE classroom_students
+        ADD COLUMN IF NOT EXISTS name_source TEXT`,
       `CREATE TABLE IF NOT EXISTS game_finisher_records (
         record_date DATE NOT NULL,
         game_id TEXT NOT NULL,
@@ -947,6 +953,8 @@ function createClassroomPlatform(options = {}) {
         ADD COLUMN IF NOT EXISTS birthday_mmdd TEXT`,
       `ALTER TABLE school_students
         ADD COLUMN IF NOT EXISTS birthday_visible BOOLEAN NOT NULL DEFAULT FALSE`,
+      `ALTER TABLE school_students
+        ADD COLUMN IF NOT EXISTS name_source TEXT`,
       `CREATE INDEX IF NOT EXISTS school_students_school_year_idx
         ON school_students (school_id, academic_year, grade, class_number)`,
       `CREATE INDEX IF NOT EXISTS school_students_email_idx
@@ -3081,6 +3089,14 @@ function createClassroomPlatform(options = {}) {
       );
     }
 
+    // 성명을 비워 두고 구글 계정만 적은 명단 줄은 첫 로그인 때 구글 계정 이름으로 채운다.
+    // 이름을 적지 못해도 로그인은 되어야 하므로, 실패는 기록만 하고 넘어간다(명단에서 직접 적으면 된다).
+    try {
+      await fillPendingNamesFromGoogle(pool, { email, payload, isStudent, isTeacher });
+    } catch (error) {
+      console.error("Roster name fill from Google profile failed:", error.message);
+    }
+
     const sessionToken = crypto.randomBytes(32).toString("base64url");
     await pool.query(
       `INSERT INTO classroom_sessions (token_hash, user_id, expires_at)
@@ -3906,7 +3922,7 @@ function createClassroomPlatform(options = {}) {
 
     const studentsResult = await pool.query(
       `SELECT * FROM (
-         SELECT s.student_number::TEXT AS student_number, s.roster_name, COALESCE(s.gender, '여') AS gender,
+         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source, COALESCE(s.gender, '여') AS gender,
                 NULL AS birthday_mmdd, TRUE AS birthday_visible,
                 s.avatar_key,
                 s.student_email, s.guardian1_email, s.guardian2_email,
@@ -3916,7 +3932,7 @@ function createClassroomPlatform(options = {}) {
          FROM school_students s
          WHERE s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
          UNION ALL
-         SELECT s.student_number::TEXT AS student_number, s.roster_name, COALESCE(s.gender, '남') AS gender,
+         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source, COALESCE(s.gender, '남') AS gender,
                 s.birthday_mmdd, s.birthday_visible,
                 s.avatar_key,
                 s.student_email, s.guardian1_email, s.guardian2_email,
@@ -3954,6 +3970,8 @@ function createClassroomPlatform(options = {}) {
         students: studentsResult.rows.map((student) => ({
           number: student.student_number,
           name: student.roster_name,
+          // pending: 성명을 비워 두어 첫 로그인을 기다림(자리표시 이름). google: 첫 로그인 때 구글 이름으로 채움.
+          nameSource: student.name_source || "",
           gender: student.gender === '여' ? '여' : '남',
           birthdayMmdd: student.birthday_visible === true ? (student.birthday_mmdd || "") : "",
           birthdayVisible: student.birthday_visible === true,
@@ -4028,8 +4046,9 @@ function createClassroomPlatform(options = {}) {
     if (cleanStudents.some((student) => !/^\d{1,3}$/.test(student.number))) {
       throw new HttpError(400, "INVALID_STUDENT_NUMBER", "Student numbers must contain digits only.");
     }
-    if (cleanStudents.some((student) => !/^[가-힣]{2,6}$/.test(student.name))) {
-      throw new HttpError(400, "INVALID_STUDENT_NAME", "Student names must be 2 to 6 Korean characters.");
+    // 성명은 한글 2~6자. 구글 계정을 적은 학생은 비워 둘 수 있고, 첫 로그인 때 구글 계정 이름이 들어온다.
+    if (cleanStudents.some((student) => student.name ? !/^[가-힣]{2,6}$/.test(student.name) : !student.studentEmail)) {
+      throw new HttpError(400, "INVALID_STUDENT_NAME", "Student names must be 2 to 6 Korean characters. A name may be left blank only when the student's Google account is entered.");
     }
     if (cleanStudents.some((student) => !["남", "여"].includes(student.gender))) {
       throw new HttpError(400, "INVALID_STUDENT_GENDER", "Student gender must be either 남 or 여.");
@@ -4171,12 +4190,18 @@ function createClassroomPlatform(options = {}) {
           avatarUsageCounts.set(avatarKey, Number(avatarUsageCounts.get(avatarKey) || 0) + 1);
         }
 
+        const rosterName = student.name || pendingStudentName(student.studentEmail);
+        const nameSource = student.name ? null : NAME_SOURCE_PENDING;
         await client.query(
           `INSERT INTO classroom_students
-            (class_id, student_number, roster_name, gender, birthday_mmdd, birthday_visible, birth_date, avatar_key, student_email, guardian1_email, guardian2_email)
-           VALUES ($1, $2, $3, $4, $5, $6, NULL, $7, $8, $9, $10)
+            (class_id, student_number, roster_name, gender, birthday_mmdd, birthday_visible, birth_date, avatar_key, student_email, guardian1_email, guardian2_email, name_source)
+           VALUES ($1, $2, $3, $4, $5, $6, NULL, $7, $8, $9, $10, $11)
            ON CONFLICT (class_id, student_number) DO UPDATE SET
              roster_name = EXCLUDED.roster_name,
+             name_source = CASE
+               WHEN EXCLUDED.name_source IS NULL AND classroom_students.name_source = 'google'
+                    AND classroom_students.roster_name = EXCLUDED.roster_name THEN 'google'
+               ELSE EXCLUDED.name_source END,
              gender = EXCLUDED.gender,
              birthday_mmdd = EXCLUDED.birthday_mmdd,
              birthday_visible = EXCLUDED.birthday_visible,
@@ -4186,9 +4211,9 @@ function createClassroomPlatform(options = {}) {
              guardian1_email = EXCLUDED.guardian1_email,
              guardian2_email = EXCLUDED.guardian2_email,
              updated_at = NOW()`,
-          [classroom.id, student.number, student.name, student.gender,
+          [classroom.id, student.number, rosterName, student.gender,
            existingPassword?.birthdayMmdd || null, existingPassword?.birthdayVisible || false, avatarKey,
-           student.studentEmail || null, student.guardian1Email || null, student.guardian2Email || null]
+           student.studentEmail || null, student.guardian1Email || null, student.guardian2Email || null, nameSource]
         );
       }
       await client.query("COMMIT");
@@ -7759,7 +7784,7 @@ function createClassroomPlatform(options = {}) {
     const year = Number(req.query.year) || new Date().getFullYear();
 
     const students = await pool.query(
-      `SELECT s.id, s.grade, s.class_number, s.student_number, s.roster_name,
+      `SELECT s.id, s.grade, s.class_number, s.student_number, s.roster_name, s.name_source,
               s.gender, s.student_email, s.guardian1_email, s.guardian2_email,
               s.custom_fields, s.user_id, s.created_at
        FROM school_students s
@@ -7847,7 +7872,12 @@ function createClassroomPlatform(options = {}) {
       guardian1Email: String(s.guardian1Email || "").trim().toLowerCase() || null,
       guardian2Email: String(s.guardian2Email || "").trim().toLowerCase() || null,
       customFields: (typeof s.customFields === 'object' && s.customFields !== null) ? s.customFields : {}
-    })).filter(s => s.studentNumber && s.rosterName);
+    })).filter(s => s.studentNumber && (s.rosterName || s.studentEmail))
+      // 성명을 비우고 구글 계정만 적은 학생은 첫 로그인 때 구글 계정 이름이 들어온다.
+      // 그때까지는 계정의 @ 앞부분을 자리표시 이름으로 두고 name_source 에 'pending'을 남긴다.
+      .map(s => s.rosterName
+        ? { ...s, nameSource: null }
+        : { ...s, rosterName: pendingStudentName(s.studentEmail), nameSource: NAME_SOURCE_PENDING });
 
     const seenKeys = new Set();
     for (const s of clean) {
@@ -7911,10 +7941,16 @@ function createClassroomPlatform(options = {}) {
 
         await client.query(
           `INSERT INTO school_students
-             (school_id, academic_year, grade, class_number, student_number, roster_name, gender, student_email, guardian1_email, guardian2_email, custom_fields, avatar_key)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+             (school_id, academic_year, grade, class_number, student_number, roster_name, gender, student_email, guardian1_email, guardian2_email, custom_fields, avatar_key, name_source)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
            ON CONFLICT (school_id, academic_year, grade, class_number, student_number) DO UPDATE SET
              roster_name = EXCLUDED.roster_name,
+             -- 구글에서 받아 적은 이름을 그대로 다시 저장하면 '구글에서 가져옴' 표시를 지키고,
+             -- 관리자가 고쳐 적으면 직접 적은 이름이 된다.
+             name_source = CASE
+               WHEN EXCLUDED.name_source IS NULL AND school_students.name_source = 'google'
+                    AND school_students.roster_name = EXCLUDED.roster_name THEN 'google'
+               ELSE EXCLUDED.name_source END,
              gender = EXCLUDED.gender,
              student_email = EXCLUDED.student_email,
              guardian1_email = EXCLUDED.guardian1_email,
@@ -7922,7 +7958,7 @@ function createClassroomPlatform(options = {}) {
              custom_fields = EXCLUDED.custom_fields,
              avatar_key = COALESCE(school_students.avatar_key, EXCLUDED.avatar_key),
              updated_at = NOW()`,
-          [schoolId, academicYear, s.grade, s.classNumber, s.studentNumber, s.rosterName, s.gender, s.studentEmail, s.guardian1Email, s.guardian2Email, JSON.stringify(s.customFields), avatarKey]
+          [schoolId, academicYear, s.grade, s.classNumber, s.studentNumber, s.rosterName, s.gender, s.studentEmail, s.guardian1Email, s.guardian2Email, JSON.stringify(s.customFields), avatarKey, s.nameSource]
         );
         // Auto-link student Google account
         if (s.studentEmail) {
@@ -8175,7 +8211,7 @@ function createClassroomPlatform(options = {}) {
     const isAdmin = ["관리자", "교장", "교감"].includes(tp.rows[0].teacher_type);
 
     const teachersResult = await pool.query(
-      `SELECT id, teacher_name, teacher_type, google_email, grade, class_number, subject_name, room_name, teaching_scope, active, user_id IS NOT NULL AS linked
+      `SELECT id, teacher_name, name_source, teacher_type, google_email, grade, class_number, subject_name, room_name, teaching_scope, active, user_id IS NOT NULL AS linked
        FROM classroom_teachers
        WHERE school_id = $1
        ORDER BY CASE WHEN teacher_type = '관리자' THEN 1 WHEN teacher_type = '담임' THEN 2 ELSE 3 END, grade, class_number, id`,
@@ -8190,6 +8226,8 @@ function createClassroomPlatform(options = {}) {
         return {
           id: r.id,
           name: r.teacher_name,
+          // pending: 성명을 비워 두어 첫 로그인을 기다림(자리표시로 계정을 적어 둠). google: 첫 로그인 때 구글 이름으로 채움.
+          nameSource: r.name_source || "",
           type: r.teacher_type,
           email: r.google_email,
           grade: r.grade ?? (shown && !r.class_number ? shown.gradeText : null),
@@ -8235,13 +8273,14 @@ function createClassroomPlatform(options = {}) {
         teachingScope: scope.pairs,
         roomName: t?.roomName ? String(t.roomName).trim().slice(0, 50) : null
       };
-    }).filter(t => t.name);
+    }).filter(t => t.name || t.email);
 
     // 한 계정은 한 줄. 관리자 계정을 다른 교사 줄에 또 적으면 두 줄이 관리자 줄 하나로
     // 겹쳐 저장되고 그 교사 줄은 지워진다. 겸임은 관리자 줄에 학년·반을 적는 것이다.
     const seenEmails = new Set();
     for (const t of cleanTeachers) {
-      if (!t.name || t.name.length > 30) throw new HttpError(400, "INVALID_TEACHER_NAME", "성명을 확인해 주세요.");
+      // 성명을 비운 줄은 구글 계정이 있는 것만 남았다(위 filter). 첫 로그인 때 구글 계정 이름이 들어온다.
+      if (t.name.length > 30) throw new HttpError(400, "INVALID_TEACHER_NAME", "성명을 확인해 주세요.");
       if (t.email && !t.email.includes("@")) throw new HttpError(400, "INVALID_TEACHER_EMAIL", `${t.name}의 이메일 주소를 확인해 주세요.`);
       if (t.classNumber && !(Number.isInteger(t.grade) && t.grade >= 1 && t.grade <= 12)) {
         throw new HttpError(400, "INVALID_GRADE_CLASS", `'${t.name}' 교사의 반을 적었으면 학년도 하나만 적어 주세요.`);
@@ -8275,14 +8314,14 @@ function createClassroomPlatform(options = {}) {
         let existing = null;
         if (t.email) {
           const exEmail = await client.query(
-            `SELECT id, teacher_type, teacher_name, google_email FROM classroom_teachers WHERE school_id = $1 AND LOWER(google_email) = LOWER($2)`,
+            `SELECT id, teacher_type, teacher_name, name_source, google_email FROM classroom_teachers WHERE school_id = $1 AND LOWER(google_email) = LOWER($2)`,
             [schoolId, t.email]
           );
           existing = exEmail.rows[0];
         }
-        if (!existing) {
+        if (!existing && t.name) {
           const exName = await client.query(
-            `SELECT id, teacher_type, teacher_name, google_email FROM classroom_teachers WHERE school_id = $1 AND teacher_name = $2`,
+            `SELECT id, teacher_type, teacher_name, name_source, google_email FROM classroom_teachers WHERE school_id = $1 AND teacher_name = $2`,
             [schoolId, t.name]
           );
           existing = exName.rows[0];
@@ -8295,7 +8334,13 @@ function createClassroomPlatform(options = {}) {
         if (isAdminRow && t.grade && isPlaceholderAdminName(t.name)) {
           throw new HttpError(400, "ADMIN_HOMEROOM_NEEDS_NAME", "학교 관리자가 담임을 맡으려면 관리자 줄의 성명을 실제 이름으로 바꿔 주세요.");
         }
-        plans.push({ t, existing, isAdminRow });
+        // 성명을 비운 줄은 계정을 자리표시 이름으로 두고 첫 로그인을 기다린다(pending).
+        // 구글에서 받아 적은 이름(google)을 그대로 다시 저장하면 그 표시를 지킨다.
+        const storedName = t.name || pendingTeacherName(t.email || existing?.google_email);
+        const nameSource = !t.name
+          ? NAME_SOURCE_PENDING
+          : (existing?.name_source === NAME_SOURCE_GOOGLE && existing.teacher_name === t.name ? NAME_SOURCE_GOOGLE : null);
+        plans.push({ t, existing, isAdminRow, storedName, nameSource });
       }
       const keptIds = plans.filter((p) => p.existing).map((p) => p.existing.id);
 
@@ -8318,27 +8363,27 @@ function createClassroomPlatform(options = {}) {
         );
       }
 
-      for (const { t, existing, isAdminRow } of plans) {
+      for (const { t, existing, isAdminRow, storedName, nameSource } of plans) {
         if (existing) {
           // 학교 관리자도 담임·교과를 겸할 수 있다. 관리자 줄에서 지키는 것은 계정(이메일)과
           // 직책뿐이다. 성명을 '학교 관리자' 그대로 두었으면 원래 적힌 모양을 살린다.
-          const finalName = isAdminRow && isPlaceholderAdminName(t.name) ? existing.teacher_name : t.name;
+          const finalName = isAdminRow && isPlaceholderAdminName(t.name) ? existing.teacher_name : storedName;
           const finalEmail = isAdminRow ? existing.google_email : t.email;
           const finalType = isAdminRow ? "관리자" : t.type;
 
           await client.query(
             `UPDATE classroom_teachers
              SET teacher_name = $1, teacher_type = $2, google_email = $3, grade = $4, class_number = $5,
-                 subject_name = $6, room_name = $7, academic_year = $9, teaching_scope = $10::jsonb, updated_at = NOW()
+                 subject_name = $6, room_name = $7, academic_year = $9, teaching_scope = $10::jsonb, name_source = $11, updated_at = NOW()
              WHERE id = $8`,
-            [finalName, finalType, finalEmail, t.grade, t.classNumber, t.subjectName, t.roomName, existing.id, academicYear, JSON.stringify(t.teachingScope)]
+            [finalName, finalType, finalEmail, t.grade, t.classNumber, t.subjectName, t.roomName, existing.id, academicYear, JSON.stringify(t.teachingScope), nameSource]
           );
         } else {
           await client.query(
             `INSERT INTO classroom_teachers
-               (school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year, teaching_scope)
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::jsonb)`,
-            [schoolId, t.name, t.grade, t.classNumber, t.type, t.email, t.subjectName, t.roomName, academicYear, JSON.stringify(t.teachingScope)]
+               (school_id, teacher_name, grade, class_number, teacher_type, google_email, subject_name, room_name, academic_year, teaching_scope, name_source)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::jsonb, $11)`,
+            [schoolId, storedName, t.grade, t.classNumber, t.type, t.email, t.subjectName, t.roomName, academicYear, JSON.stringify(t.teachingScope), nameSource]
           );
         }
       }

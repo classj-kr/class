@@ -6,6 +6,8 @@ import { createRequire } from "node:module";
 
 // 저장 코드가 전담의 담당 학년·과목을 짝으로 푸는 데 쓰는 진짜 함수.
 const { parseTeachingScope } = createRequire(import.meta.url)("./teaching-scope.js");
+// 성명을 비운 줄의 자리표시와 '구글에서 가져옴' 표시. 저장 코드가 이름 칸을 다룰 때 쓴다.
+const { pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE } = createRequire(import.meta.url)("./roster-names.js");
 
 // 학교 관리자가 담임·교과를 겸하는 흐름을 실제 저장 코드로 돌려 본다.
 // 라우트 본문을 그대로 떼어 PGlite 위에서 실행하므로, 순서가 틀려 고유 조건에
@@ -22,6 +24,7 @@ function routeBody(signature) {
 
 const saveTeachers = new AsyncFunction(
   "req", "res", "requireTeacher", "teacherRegistration", "HttpError", "normalizeEmail", "pool", "parseTeachingScope",
+  "pendingTeacherName", "NAME_SOURCE_PENDING", "NAME_SOURCE_GOOGLE",
   routeBody('router.put("/school/teachers"')
 );
 const setMasterEmail = new AsyncFunction(
@@ -51,6 +54,7 @@ const SCHEMA = `
     subject_name TEXT,
     room_name TEXT,
     teaching_scope JSONB,
+    name_source TEXT,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     UNIQUE (school_id, teacher_name)
   );
@@ -117,7 +121,8 @@ async function save(pool, list) {
     { body: { teachers: list, year: 2026 } }, res,
     async () => ({ id: 1 }),
     async () => ({ school_id: 1, teacher_type: "관리자" }),
-    HttpError, normalizeEmail, pool, parseTeachingScope
+    HttpError, normalizeEmail, pool, parseTeachingScope,
+    pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE
   );
   return res.body;
 }
