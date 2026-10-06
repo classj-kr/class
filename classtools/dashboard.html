@@ -1346,6 +1346,7 @@
 
     <script src="./avatar-assignment.js"></script>
     <script src="./dashboard-attendance-live.js"></script>
+    <script src="/assets/site-storage.js?v=20261006-1"></script>
     <script>
         // State & LocalStorage
         let schedules = [];
@@ -1355,7 +1356,11 @@
         let scheduleLoadVersion = 0;
         let activeScheduleClassId = null;
         let canEditSchedules = false;
-        let missingStudents = new Set(JSON.parse(localStorage.getItem("dashboardMissingStudents") || '[]'));
+        // 결원 학생·교시 준비물은 계정별 서버 저장 공간에 둔다(아래 loadDashboardSettingsFromDB 에서 받는다).
+        let dashboardStore = null;
+        const PREP_DAY_ITEM = { "월": "preps-mon", "화": "preps-tue", "수": "preps-wed", "목": "preps-thu", "금": "preps-fri" };
+        const prepItem = (day) => PREP_DAY_ITEM[day] || ("preps-" + day);
+        let missingStudents = new Set();
         let rosterStudents = [];
         let rosterLoadMessage = "";
 
@@ -1367,7 +1372,7 @@
             "목": [ {p:1, sub:"과학", place:"과학실", s:"09:00", e:"09:40"}, {p:2, sub:"과학", place:"과학실", s:"09:50", e:"10:30"}, {p:3, sub:"체육", place:"강당", s:"10:40", e:"11:20"}, {p:4, sub:"영어", place:"영어실", s:"11:30", e:"12:10"}, {p:5, sub:"수학", place:"교실", s:"13:10", e:"13:50"}, {p:6, sub:"실과", place:"실과실", s:"14:00", e:"14:40"} ],
             "금": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"수학", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"도덕", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"음악", place:"음악실", s:"11:30", e:"12:10"}, {p:5, sub:"실과", place:"실과실", s:"13:10", e:"13:50"}, {p:6, sub:"자율", place:"교실", s:"14:00", e:"14:40"} ]
         };
-        let customTimetable = JSON.parse(localStorage.getItem("dashboardTimetable") || JSON.stringify(defaultTimetable));
+        let customTimetable = JSON.parse(JSON.stringify(defaultTimetable));
         let selectedDayTab = "목";
 
         // Elements
@@ -1482,7 +1487,7 @@
             const currentMins = now.getHours() * 60 + now.getMinutes();
 
             // 요일별 저장된 그날만의 준비물 데이터
-            const savedPreps = JSON.parse(localStorage.getItem(`dashboardPreps_${dayName}`) || "{}");
+            const savedPreps = (dashboardStore && dashboardStore.get(prepItem(dayName))) || {};
 
             periods.forEach((item) => {
                 const div = document.createElement("div");
@@ -1546,9 +1551,10 @@
                     const badgeEl = document.getElementById(`prepBadge_${day}_${p}`);
                     if (badgeEl) badgeEl.style.display = isFilled ? "inline-block" : "none";
 
-                    const preps = JSON.parse(localStorage.getItem(`dashboardPreps_${day}`) || "{}");
+                    if (!dashboardStore) return;
+                    const preps = { ...(dashboardStore.get(prepItem(day)) || {}) };
                     preps[p] = val;
-                    localStorage.setItem(`dashboardPreps_${day}`, JSON.stringify(preps));
+                    dashboardStore.set(prepItem(day), preps);
                 });
             });
         }
@@ -1649,6 +1655,19 @@
         }
 
         async function loadDashboardSettingsFromDB() {
+            try {
+                dashboardStore = await SiteStorage.open("dashboard");
+                // 예전에 브라우저에 두던 것을 한 번 옮기고 지운다. 시간표·카드 순서는 서버 설정이 이미 맡는다.
+                dashboardStore.adopt([
+                    { localKey: "dashboardMissingStudents", item: "missing-students" },
+                    ...Object.entries(PREP_DAY_ITEM).map(([day, item]) => ({ localKey: `dashboardPreps_${day}`, item })),
+                    { localKey: "dashboardTimetable", item: "legacy-timetable", parse: () => undefined },
+                    { localKey: "dashboardCardOrder", item: "legacy-card-order", parse: () => undefined },
+                ]);
+                missingStudents = new Set(Array.isArray(dashboardStore.get("missing-students")) ? dashboardStore.get("missing-students") : []);
+                renderChecklist();
+                renderTimetable(selectedDayTab);
+            } catch (e) {}
             try {
                 const res = await fetch("/api/teacher/dashboard-settings", { credentials: "include" });
                 const data = await res.json().catch(() => ({}));
@@ -1948,7 +1967,7 @@
                     const nextMissing = !missingStudents.has(num);
                     if (nextMissing) missingStudents.add(num);
                     else missingStudents.delete(num);
-                    localStorage.setItem("dashboardMissingStudents", JSON.stringify(Array.from(missingStudents)));
+                    if (dashboardStore) dashboardStore.set("missing-students", Array.from(missingStudents));
                     chip.classList.toggle("missing", nextMissing);
                     chip.setAttribute("aria-pressed", String(nextMissing));
                     chip.setAttribute("aria-label", num + "번 " + (student.name || "")
@@ -2134,10 +2153,9 @@
             renderCalendar();
         }
 
+        // 예전에 브라우저에 두던 일정을 서버로 옮긴다. 옮기면 브라우저에서 지우므로 표시가 따로 필요 없다.
         async function migrateLocalSchedules() {
             if (!canEditSchedules || !activeScheduleClassId) return;
-            const migrationKey = `dashboardSchedulesMigrated_${activeScheduleClassId}`;
-            if (localStorage.getItem(migrationKey) === "1") return;
             let localSchedules = [];
             try {
                 const saved = JSON.parse(localStorage.getItem("dashboardSchedules") || "[]");
@@ -2145,6 +2163,10 @@
             } catch (_) {
                 localSchedules = [];
             }
+            try {
+                for (const key of Object.keys(localStorage)) if (key.startsWith("dashboardSchedulesMigrated_")) localStorage.removeItem(key);
+            } catch (_) {}
+            if (localSchedules.length === 0) return;
             for (const item of localSchedules) {
                 if (!item?.date || !item?.title) continue;
                 const data = await scheduleApi("/api/teacher/schedules", {
@@ -2154,7 +2176,6 @@
                 schedules.push(data.schedule);
             }
             localStorage.removeItem("dashboardSchedules");
-            localStorage.setItem(migrationKey, "1");
         }
 
         function renderSchedules() {
@@ -3078,13 +3099,7 @@
         const grid = document.getElementById("dashboardGrid");
         let draggedItem = null;
 
-        const savedOrder = JSON.parse(localStorage.getItem("dashboardCardOrder") || '[]');
-        if (savedOrder.length > 0) {
-            savedOrder.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) grid.appendChild(el);
-            });
-        }
+        // 카드 순서는 서버 설정(loadDashboardSettingsFromDB)에서 받아 적용한다.
 
         grid.addEventListener("dragstart", (e) => {
             const card = e.target.closest(".widget-card");
@@ -3101,8 +3116,7 @@
                 card.classList.remove("dragging");
                 draggedItem = null;
                 // Save order
-                const currentOrder = Array.from(grid.querySelectorAll(".widget-card")).map(c => c.id);
-                localStorage.setItem("dashboardCardOrder", JSON.stringify(currentOrder));
+                syncDashboardSettingsToDB();
             }
         });
 

@@ -1,4 +1,4 @@
-(function () {
+(async function () {
   'use strict';
   const $ = id => document.getElementById(id);
   const canvas = $('board'), ctx = canvas.getContext('2d');
@@ -7,16 +7,21 @@
   const groupId = new URLSearchParams(location.search).get('groupId');
   const group = groupId && /^\d+$/.test(groupId) ? groupId : '';
   const storageKey = 'classj-blackboard-v1' + (group ? '-group-' + group : '');
+  // 획과 도구 설정은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다.
+  const store = await SiteStorage.open('blackboard');
+  const boardItem = 'strokes' + (group ? '-group-' + group : '');
   if (group) $('backLink').search = '?groupId=' + group;
   let strokes = [], undo = [], redo = [], current = null, activePointer = null;
   let tool = 'pen', color = '#f4f5e9', frame = 0, toastTimer;
   const toolSettingsKey = 'classj-blackboard-tools-v1';
+  store.adopt([{ localKey: storageKey, item: boardItem }, { localKey: toolSettingsKey, item: 'tools' }]);
+  store.onError(() => notice('자동 저장하지 못했습니다. PNG로 저장해 주세요.'));
   const sizes = { pen: 8, eraser: 64 };
   let correction = true;
   const sizeRanges = { pen: { min: 2, max: 40, step: 1, label: '펜 굵기' }, eraser: { min: 16, max: 160, step: 4, label: '지우개 크기' } };
   let cursorPoint = null;
   try {
-    const savedSizes = JSON.parse(localStorage.getItem(toolSettingsKey) || '{}');
+    const savedSizes = store.get('tools') || {};
     if (typeof savedSizes?.correction === 'boolean') correction = savedSizes.correction;
     for (const name of ['pen', 'eraser']) {
       const value = savedSizes?.[name], range = sizeRanges[name];
@@ -25,7 +30,7 @@
   } catch (_) { /* Keep usable defaults if preferences are unavailable. */ }
   let view = { width: 1, height: 1, dpr: 1 };
   try {
-    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    const saved = store.get(boardItem) || [];
     if (Array.isArray(saved)) strokes = saved.filter(s => s && ['pen','eraser'].includes(s.tool) &&
       Number.isFinite(s.width) && s.width > 0 && /^#[0-9a-f]{6}$/i.test(s.color) &&
       Array.isArray(s.points) && s.points.every(p => Number.isFinite(p.x) && Number.isFinite(p.y)));
@@ -37,8 +42,7 @@
     toastTimer = setTimeout(() => $('toast').classList.remove('show'), 2600);
   }
   function persist() {
-    try { localStorage.setItem(storageKey, JSON.stringify(strokes)); }
-    catch (_) { notice('자동 저장하지 못했습니다. PNG로 저장해 주세요.'); }
+    store.set(boardItem, strokes);
     $('undoBtn').disabled = !undo.length && !strokes.length;
     $('redoBtn').disabled = !redo.length;
   }
@@ -264,8 +268,7 @@
     updateSizeControl();
   }
   function saveToolSettings() {
-    try { localStorage.setItem(toolSettingsKey, JSON.stringify({ ...sizes, correction })); }
-    catch (_) { notice('도구 설정은 현재 화면에서만 유지됩니다.'); }
+    store.set('tools', { ...sizes, correction });
   }
   function updateCorrectionControl() {
     $('correctionBtn').setAttribute('aria-pressed', correction);
