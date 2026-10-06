@@ -172,7 +172,24 @@ for (const poem of poems) {
     // 시 하나가 읽기 → 문제 → 작품 설명으로 이어지므로, 문제가 없으면 그 흐름이 끊긴다.
     assert.ok((questionCount.get(poem.id) || 0) >= 2,
         `시 ${poem.id}: 제 문제가 ${questionCount.get(poem.id) || 0}개뿐입니다. 두 개 이상이어야 합니다.`);
+    // 문제 펼침면은 왼쪽 둘·오른쪽 둘, 넷까지만 보여 준다. 다섯째부터는 화면에 아예 안 나온다.
+    assert.ok((questionCount.get(poem.id) || 0) <= 4,
+        `시 ${poem.id}: 제 문제가 ${questionCount.get(poem.id)}개입니다. 화면은 넷까지만 보여 주니 넷 이하로 줄여 주세요.`);
 }
+
+// ── 5. 안 읽고 찍히는 꼴이 아닌지 ─────────────────────────────────
+// 화면은 보기를 섞지 않으므로 자료의 정답 자리가 곧 화면의 정답 자리다. 한 자리에 몰리면 그 번호만 누르면 된다.
+// (2026-10-06 이전에는 551문제 전부 정답이 1번이었다.)
+const positionCount = [0, 0, 0, 0];
+for (const question of questions) positionCount[question.choices.indexOf(question.answer)]++;
+for (const [position, count] of positionCount.entries()) {
+    assert.ok(count <= questions.length * 0.4,
+        `정답이 ${position + 1}번 보기에 ${count}개(${Math.round(count / questions.length * 100)}%) 몰려 있습니다. 자리를 고르게 섞어 주세요.`);
+}
+// 정답만 유난히 길면 글자 수로 찍힌다. 정답이 가장 긴 보기인 문제가 절반을 넘으면 막는다(무작위면 보기 넷에 4분의 1).
+const longestAnswer = questions.filter((question) => question.answer.length > Math.max(...question.choices.filter((c) => c !== question.answer).map((c) => c.length))).length;
+assert.ok(longestAnswer <= questions.length * 0.5,
+    `정답이 가장 긴 보기인 문제가 ${longestAnswer}개(${Math.round(longestAnswer / questions.length * 100)}%)입니다. 오답 길이를 정답에 맞춰 주세요.`);
 
 const publicPoems = poems.filter((poem) => poem.rights === "public");
 const modernPoems = poems.filter((poem) => Array.isArray(poem.modern) && poem.modern.length > 0);
