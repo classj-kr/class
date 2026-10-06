@@ -82,6 +82,18 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await waitFor(page, savedStudents, 2);
     assert.equal(savedStudents[1].students.find((s) => s.studentNumber === '1').rosterName, '박민수');
 
+    // 반·번호만 있고 성명도 계정도 없는 줄은 저장하지 않고 알려 준다.
+    await page.locator('#rosterBody tr').nth(2).waitFor();
+    const emailInput = (row) => studentRows.nth(row).locator('input').nth(5);
+    await nameInput(2).fill('');
+    await nameInput(2).dispatchEvent('change');
+    await emailInput(2).fill('');
+    await emailInput(2).dispatchEvent('change');
+    await page.evaluate(() => window.saveRoster());
+    await page.locator('#rosterStatus').filter({ hasText: '3학년 1반 3번: 성명이나 학생 구글계정 중 하나는 적어 주세요' }).waitFor({ timeout: 5000 });
+    assert.equal(savedStudents.length, 2, '막힌 저장은 서버로 가지 않는다');
+    await page.reload();
+
     // 붙여넣기: 성명 열이 아예 없어도 학생구글계정 열이 있으면 받고, 그 줄은 대기로 미리 보인다.
     await page.locator('#rosterBody tr').nth(2).waitFor();
     await page.evaluate(() => window.togglePasteSection());
@@ -99,7 +111,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await page.evaluate(() => window.togglePasteSection());
     await page.locator('#pasteInput').fill('학년\t반\t번호\t성명\t성별\t학생구글계정\n3\t1\t1\t\t남\ts3101@school.test\n3\t1\t2\t김철수\t남\t\n3\t1\t3\t\t남\t');
     await page.evaluate(() => window.parsePaste());
-    await page.locator('#pasteStatus').filter({ hasText: '2명 파싱 완료' }).waitFor({ timeout: 5000 });
+    await page.locator('#pasteStatus').filter({ hasText: '2명 파싱 완료. 성명도 학생구글계정도 없는 1줄은 건너뛰었습니다' }).waitFor({ timeout: 5000 });
 
     // ── 교직원 명단 ──
     await page.locator('#tab-teachers').click();
@@ -144,14 +156,14 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     // 계정 없이 성명만 비우면 막는다.
     await page.locator('#student-emails').fill('');
     await page.locator('#student-emails').dispatchEvent('input');
-    await page.locator('#input-status').filter({ hasText: '1번의 성명이 비어 있습니다' }).waitFor({ timeout: 5000 });
+    await page.locator('#input-status').filter({ hasText: '1번: 성명이나 학생 구글계정 중 하나는 적어 주세요' }).waitFor({ timeout: 5000 });
     assert.equal(await page.locator('#save-button').isDisabled(), true);
     // 뒤쪽 학생의 성명이 비어 줄 수가 모자라도 같은 규칙이다: 계정이 없으면 막고, 있으면 통과한다.
     await page.locator('#student-emails').fill('s3101@school.test');
     await page.locator('#student-emails').dispatchEvent('input');
     await page.locator('#names').fill('박민수');
     await page.locator('#names').dispatchEvent('input');
-    await page.locator('#input-status').filter({ hasText: '2번의 성명이 비어 있습니다' }).waitFor({ timeout: 5000 });
+    await page.locator('#input-status').filter({ hasText: '2번: 성명이나 학생 구글계정 중 하나는 적어 주세요' }).waitFor({ timeout: 5000 });
     await page.locator('#student-emails').fill('s3101@school.test\ns3102@school.test');
     await page.locator('#student-emails').dispatchEvent('input');
     await page.locator('#input-status').filter({ hasText: '2명의 학생 명단이 준비되었습니다' }).waitFor({ timeout: 5000 });

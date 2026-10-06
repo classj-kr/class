@@ -660,7 +660,7 @@
                         <span class="line-count" id="name-count">0행</span>
                     </div>
                     <textarea id="names" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="" aria-describedby="input-status"></textarea>
-                    <p class="field-help">학생 구글계정을 적으면 비워 둘 수 있음. 첫 로그인 때 구글 계정 이름이 들어옵니다.</p>
+                    <p class="field-help">성명과 학생 구글계정 중 하나만 있어도 됨. 성명을 비우면 첫 로그인 때 구글 계정 이름이 들어옵니다.</p>
                 </div>
 
                 <div class="field">
@@ -1021,7 +1021,7 @@
                 }
 
                 if (state.blankNamesWithoutAccount.length > 0) {
-                    setStatus(`${state.blankNamesWithoutAccount.join(", ")}번의 성명이 비어 있습니다. 학생 구글계정을 적으면 성명을 비워 둘 수 있고, 첫 로그인 때 구글 계정 이름이 들어옵니다.`, "error");
+                    setStatus(`${state.blankNamesWithoutAccount.join(", ")}번: 성명이나 학생 구글계정 중 하나는 적어 주세요. 성명을 비우면 첫 로그인 때 구글 계정 이름이 들어옵니다.`, "error");
                     return;
                 }
 

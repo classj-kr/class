@@ -509,14 +509,14 @@
             <div class="paste-section" id="pasteSection" style="display:none;">
                 <p style="margin:0 0 10px;font-weight:800;font-size:13px;">엑셀에서 복사하여 붙여넣기</p>
                 <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">엑셀의 헤더 행을 포함하여 붙여넣으세요. 첫 줄을 헤더로 인식합니다.</p>
-                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">성명은 학생구글계정을 적으면 비워 둘 수 있습니다. 학생이 처음 로그인하면 구글 계정 이름이 명단에 들어오고, 명단에 <b>구글</b> 표시가 붙으니 실명과 다르면 고쳐 주세요.</p>
+                <p style="margin:0 0 10px;font-size:12px;color:var(--muted);">학년·반·번호는 꼭 있어야 하고, <b>성명과 학생구글계정은 둘 중 하나만</b> 있어도 됩니다. 기기 없이 명단만 쓰는 학년은 성명만 적으면 되고, 성명을 비운 학생은 처음 로그인할 때 구글 계정 이름이 명단에 들어옵니다(<b>구글</b> 표시가 붙으니 실명과 다르면 고쳐 주세요).</p>
                 <div class="paste-cols-hint" id="pasteColsHint">
                     <span class="col-chip required">학년</span>
                     <span class="col-chip required">반</span>
                     <span class="col-chip required">번호</span>
-                    <span class="col-chip required">성명</span>
+                    <span class="col-chip" title="학생구글계정이 있으면 비워도 됩니다">성명</span>
                     <span class="col-chip required">성별</span>
-                    <span class="col-chip">학생구글계정</span>
+                    <span class="col-chip" title="성명이 있으면 비워도 됩니다">학생구글계정</span>
                     <span class="col-chip">보호자1계정</span>
                     <span class="col-chip">보호자2계정</span>
                 </div>
@@ -538,7 +538,7 @@
                 <div class="card-desc" style="margin-bottom:8px;font-weight:bold;">
                     엑셀에서 아래 순서대로 탭(Tab) 구분된 데이터를 복사하여 붙여넣으세요:
                     <br><span style="color:var(--primary); font-size:12px;">성명 | 구글 계정 | 담당 학년 | 담당 반</span>
-                    <br><span style="font-weight:normal;font-size:12px;color:var(--muted);">성명은 구글 계정을 적으면 비워 둘 수 있습니다(줄을 계정부터 시작). 첫 로그인 때 구글 계정 이름이 들어옵니다.</span>
+                    <br><span style="font-weight:normal;font-size:12px;color:var(--muted);">성명과 구글 계정은 둘 중 하나만 적어도 됩니다(성명 없이 계정부터 시작해도 됨). 성명을 비우면 첫 로그인 때 구글 계정 이름이 들어옵니다.</span>
                 </div>
                 <textarea class="paste-input" id="teacherPasteInput" placeholder="예시:&#10;홍길동	hong@school.es.kr	1	1&#10;김철수	kim@school.es.kr&#10;이영희	lee@school.es.kr	6	2" rows="8"></textarea>
                 <div style="display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;">
@@ -883,6 +883,16 @@
                 }
             }
 
+            // 성명이나 구글 계정 중 하나는 있어야 한다. 아무것도 안 적은 빈 줄은 그냥 넘기고,
+            // 학년·반·과목 따위를 적어 둔 줄만 막는다.
+            const nameless = allTeachers.filter(t => !String(t.name || "").trim() && !String(t.email || "").trim()
+                && (t.grade || t.classNumber || t.subjectName || t.roomName));
+            if (nameless.length > 0) {
+                setStatus("teacherRosterStatus", `⚠️ 성명이나 구글 계정 중 하나는 적어 주세요 (${nameless.length}줄).`, "error");
+                if (btn) btn.disabled = false;
+                return;
+            }
+
             const clean = allTeachers.map(t => {
                 const c = t.classNumber ? Number(t.classNumber) : null;
                 // 담임은 학년 숫자 하나, 전담은 "3,4,5,6" 같은 글 그대로 보낸다(서버가 과목과 짝을 짓는다).
@@ -1159,7 +1169,7 @@
             `<span class="col-chip required">학년</span>`,
             `<span class="col-chip required">반</span>`,
             `<span class="col-chip required">번호</span>`,
-            `<span class="col-chip required">성명</span>`,
+            `<span class="col-chip" title="학생구글계정이 있으면 비워도 됩니다">성명</span>`,
             `<span class="col-chip required">성별</span>`,
         ];
         // 갈래마다 열 하나. 학교 설정에 등록한 갈래만 보여 준다.
@@ -1255,6 +1265,7 @@
             .filter(c => c.idx >= 0);
 
         const students = [];
+        let skippedNameless = 0;
         for (let i = 1; i < lines.length; i++) {
             const row = lines[i];
             const get = (idx) => idx >= 0 ? (row[idx] || "").trim() : "";
@@ -1263,8 +1274,9 @@
             const num = get(numI);
             const name = get(nameI).normalize("NFC");
             const studentEmail = cleanEmail(get(seI)) || null;
-            // 성명이 비어도 학생구글계정이 있으면 한 사람이다.
-            if (!num || (!name && !studentEmail)) continue;
+            if (!num) continue;
+            // 성명과 학생구글계정 중 하나는 있어야 한 사람이다. 둘 다 없는 줄은 건너뛰고 알려 준다.
+            if (!name && !studentEmail) { skippedNameless += 1; continue; }
 
             const customFields = {};
         [...categoryHeaders, ...legacyHeaders].forEach(c => {
@@ -1303,7 +1315,8 @@
         renderRosterTable();
 
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
-        setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료. 미리보기를 확인 후 저장 버튼을 눌러주세요.`, "ok");
+        const skippedNote = skippedNameless ? ` 성명도 학생구글계정도 없는 ${skippedNameless}줄은 건너뛰었습니다.` : "";
+        setStatus("pasteStatus", `✅ ${students.length}명 파싱 완료.${skippedNote} 미리보기를 확인 후 저장 버튼을 눌러주세요.`, "ok");
     };
 
     // 비어 있으면 통과. 값이 있으면 따옴표·공백 없는 name@domain.tld 모양이어야 한다.
@@ -1403,7 +1416,7 @@
         updateClassFilter();
         renderRosterTable();
         document.getElementById("saveRosterBtn").style.display = "inline-flex";
-        setStatus("rosterStatus", "새 학생 행이 추가되었습니다. 학년, 반, 번호, 성명을 입력 후 '💾 저장' 버튼을 누르세요. 학생 구글계정을 적으면 성명은 비워 둘 수 있습니다.");
+        setStatus("rosterStatus", "새 학생 행이 추가되었습니다. 학년, 반, 번호와 성명(또는 학생 구글계정)을 입력 후 '💾 저장' 버튼을 누르세요.");
     };
 
     window.saveRoster = async function() {
@@ -1412,7 +1425,7 @@
         btn.disabled = true;
         setStatus("rosterStatus", "저장 중…");
         try {
-            const studentsToSave = allStudents.map(s => ({
+            const rows = allStudents.map(s => ({
                 grade: Number(s.grade),
                 classNumber: Number(s.class_number || s.classNumber),
                 studentNumber: String(s.student_number || s.studentNumber || "").trim(),
@@ -1423,7 +1436,14 @@
                 guardian1Email: s.guardian1_email || s.guardian1Email || null,
                 guardian2Email: s.guardian2_email || s.guardian2Email || null,
                 customFields: s.custom_fields || s.customFields || {}
-            })).filter(s => s.grade && s.classNumber && s.studentNumber && (s.rosterName || s.studentEmail));
+            })).filter(s => s.grade && s.classNumber && s.studentNumber);
+
+            // 학년·반·번호가 있는 줄은 성명이나 학생 구글계정 중 하나는 있어야 한다.
+            const nameless = rows.filter(s => !s.rosterName && !s.studentEmail);
+            if (nameless.length > 0) {
+                throw new Error(`❌ ${nameless.map(s => `${s.grade}학년 ${s.classNumber}반 ${s.studentNumber}번`).join(", ")}: 성명이나 학생 구글계정 중 하나는 적어 주세요.`);
+            }
+            const studentsToSave = rows;
 
             // 중복 번호 검사 (같은 학년/반 내 동일 번호 방지)
             const keys = new Set();
