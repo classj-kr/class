@@ -161,5 +161,5 @@
   $("liveBoard").addEventListener("click", () => { reviewPosition = null; setReason("대국을 돌아보세요", "마지막 판", "중요한 장면을 다시 보거나 새 대국에 도전해 보세요."); render(); });
   window.addEventListener("pagehide", stopWork);
   window.addEventListener("pageshow", event => { if (event.persisted) { render(); continueComputer(); } });
-  render(); BoardCoachUI.ready(); $("setup").showModal();
+  render(); BoardCoachUI.ready(AI.LEVELS, game); $("setup").showModal();
 })();
