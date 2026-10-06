@@ -53,6 +53,13 @@
             if (!both) drawing += '<circle cx="' + (/rim|edge/.test(id) ? '8' : '20') + '" cy="24" r="3" fill="currentColor"/>';
             if (/mute/.test(id)) drawing += '<path d="m9 39 22-29" stroke-width="3"/>';
             if (/bounce|flam|ornament/.test(id)) drawing += '<path d="M6 44q4-5 8 0t8 0t8 0"/>';
+        } else if (/^buk-/.test(modelId) || modelId === "sogo") {
+            const hand = modelId === "buk-sori" && /-lh/.test(id);
+            tool = hand ? "왼손" : modelId === "buk-sori" && !/-rh/.test(id) ? "북" : "북채";
+            drawing = '<circle cx="23" cy="23" r="18"/><circle cx="23" cy="23" r="14" opacity=".5"/>';
+            if (modelId === "sogo") drawing += '<path d="M20 41v5h6v-5"/>';
+            drawing += hand ? HAND : '<path d="m42 37 17-30 4 2-17 30Z" fill="currentColor"/>';
+            if (/muted|damp/.test(id)) drawing += '<path d="m11 35 24-24" stroke-width="3"/>';
         } else if (/hat|crash|ride/.test(id)) {
             tool = id === "pedalhat" ? "발 페달" : id === "ridebell" ? "스틱 · 벨" : "스틱";
             drawing = '<ellipse cx="32" cy="21" rx="26" ry="7"/><path d="M24 20q8-12 16 0M32 13v29m-10 2 10-6 10 6"/>';

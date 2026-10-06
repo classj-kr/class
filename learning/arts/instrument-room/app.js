@@ -375,7 +375,7 @@
         { id: "buk-sori", room: "folk", name: "소리북", tag: "21 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-buk-sori.webp", badge: "21-HIT OGG", model: "소리북 · 판소리북", description: "가죽을 쇠못으로 고정한 소리북의 왼손·오른손·가장자리·복합 주법 21가지를 연주해요." },
         { id: "sogo", detailId: "sogo", room: "folk", name: "소고", tag: "17 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-sogo.webp", badge: "17-HIT OGG", model: "소고", description: "소고의 기본 타격·가장자리·강세·막음·여린 주법 17가지를 실제 원샷으로 연주해요." },
         { id: "kkwaenggwari", detailId: "kkwaenggwari", room: "folk", name: "꽹과리", tag: "9 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-kkwaenggwari.webp", badge: "9-HIT OGG", model: "꽹과리", description: "꽹과리의 열어치기·막기·가장자리·굴림 주법 9가지를 실제 원샷으로 연주해요." },
-        { id: "jing", detailId: "jing", room: "folk", name: "징", tag: "6 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-jing.webp", badge: "6-HIT OGG", model: "징", description: "징의 열어치기·느리거나 빠르게 막기·고스트·막아치기 주법 6가지를 실제 원샷으로 연주해요." },
+        { id: "jing", detailId: "jing", room: "folk", name: "징", tag: "6 ARTICULATIONS", engine: "drums", stage: "korean-percussion", art: "assets/instruments/korean-jing.webp", badge: "6-HIT OGG", model: "징", description: "징의 열어치기·느리거나 빠르게 막기·아주 여린 타격·막아치기 주법 6가지를 실제 원샷으로 연주해요." },
         { id: "pyeonjong", room: "court", name: "편종", tag: "COURT BELL CHIME", engine: "drums", stage: "metal", art: "assets/instruments/korean-pyeonjong.webp", pitched: true, toneMarkers: true, range: [60, 75], size: "전체 너비 약 210 cm", visualScale: .92, scalePercent: 82, badge: "16-NOTE OGG", model: "16 BRONZE BELLS", description: "편종 원음 C4–D♯5를 열여섯 건반으로 연주하고, 울린 종을 빛으로 확인해요." },
         { id: "pyeongyeong", room: "court", name: "편경", tag: "COURT STONE CHIME", engine: "drums", stage: "metal", art: "assets/instruments/korean-pyeongyeong.webp", pitched: true, toneMarkers: true, range: [72, 87], size: "전체 너비 약 210 cm", visualScale: .92, scalePercent: 82, badge: "16-NOTE OGG", model: "16 STONE CHIMES", description: "편경 원음 C5–D♯6을 열여섯 건반으로 연주합니다. 정면 크기는 같고 두께가 다르며 두꺼울수록 높은음이 나요." },
         { id: "ritual-signals", room: "court", name: "의식 신호 악기", tag: "박 · 축 · 어", engine: "drums", stage: "korean-station", station: "ritual", size: "제례악 지휘·신호 악기 구성", scalePercent: 70, badge: "COURT SIGNALS", model: "박 · 축 · 어", parts: [
@@ -2178,7 +2178,7 @@
                 if ((janggu && index === 0) || group.id === "core") button.classList.add("primary-pad");
                 button.dataset.drum = drum.id;
                 button.dataset.code = drum.code;
-                if (drum.sourceName) button.title = drum.sourceName;
+                if (drum.sourceName) button.title = drum.name;
                 button.style.setProperty("--pad-color", drum.color);
                 const visual = presentation.icon(modelId, drum);
                 button.setAttribute("aria-label", drum.name + (visual.tool ? " · " + visual.tool : "") + " · 키보드 " + drum.key);
