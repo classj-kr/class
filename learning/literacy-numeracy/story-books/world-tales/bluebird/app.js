@@ -21,7 +21,7 @@ const CHAPTERS = [
                 "emoji": "🎄",
                 "left": [
                     "미치르도 따라 일어나 창가로 왔지요. \"저기 좀 봐. 정말 근사한 파티다.\"",
-                    "창문 너머로 반짝이는 불빛이 새어 들어왔습니다. 맛있는 냄새도 함께 흘러들어 왔지요. 미치르가 침을 꿀꺽 삼켰습니다.",
+                    "창문 너머로 반짝이는 불빛이 새어 들어왔습니다. 맛있는 냄새도 함께 흘러들어 왔지요. 미치르가 침을 꿀꺽 삼켰습니다. 창가에 걸린 새장 속 잿빛 새는 늘 거기 있어서 눈에 들어오지도 않았지요.",
                     "오누이는 창가에 딱 붙어 눈을 떼지 못했습니다."
                 ],
                 "right": [
@@ -56,7 +56,7 @@ const CHAPTERS = [
                 "left": [
                     "그 순간 할머니의 모습이 스르르 바뀌었습니다. 머리에서 눈부신 빛이 쏟아지는 빛의 요정이었지요. 요정은 작은 초록 모자를 내밀었습니다.",
                     "모자 위에는 다이아몬드가 하나 박혀 있었지요. 오누이는 눈이 휘둥그레졌습니다.",
-                    "\"이 모자를 쓰고 다이아몬드를 돌리렴. 그러면 물건마다 숨어 있는 요정이 보인단다.\""
+                    "\"이 모자를 쓰고 다이아몬드를 돌리렴. 숨어 있던 것이 보이고, 다시 돌리면 눈앞의 것이 원래대로 돌아간단다.\""
                 ],
                 "right": [
                     "치르치르가 모자를 쓰고 다이아몬드를 조심스레 돌렸습니다. 그 순간 방 안이 환해졌지요.",
@@ -80,7 +80,7 @@ const CHAPTERS = [
                 "right": [
                     "설탕 단지에서는 설탕의 요정도 나타났습니다. 몸집이 저마다 달랐지요.",
                     "\"어머, 방이 요정들로 꽉 찼네!\" 미치르가 손뼉을 쳤습니다.",
-                    "좁은 방이 금세 북적북적해졌지요. 다들 저마다 떠드는 통에 정신이 없었습니다. 치레트만 구석에서 눈을 가늘게 떴지요."
+                    "좁은 방이 금세 북적북적해졌지요. 다들 저마다 떠드는 통에 정신이 없었습니다."
                 ]
             },
             {
@@ -93,7 +93,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "긴 여행이 그렇게 시작되었습니다. 문을 나서자 하늘에 별이 가득했지요. 앞길이 어떨지는 아무도 몰랐습니다.",
-                    "개 치로가 앞장서서 꼬리를 흔들었지요. 고양이 치레트만 뒤에서 딴생각을 했습니다."
+                    "개 치로가 앞장서서 꼬리를 흔들었지요. 고양이 치레트는 뒤에서 느릿느릿 따라왔습니다."
                 ]
             }
         ]
@@ -619,7 +619,7 @@ const EN = {
                     emoji: '🎄',
                     left: [
                         "Mytyl got up too and came to the window. \"Look at that. What a party!\"",
-                        "The bright light came in through the glass, and good smells came in with it. Mytyl swallowed hard.",
+                        "The bright light came in through the glass, and good smells came in with it. Mytyl swallowed hard. The grey bird in its cage by the window had always been there, so nobody gave it a look.",
                         "The two of them stood pressed to the glass and could not look away."
                     ],
                     right: [
@@ -654,7 +654,7 @@ const EN = {
                     left: [
                         "In that moment the old woman changed. Light poured out of her hair. She was the Fairy of Light!",
                         "She held out a small green hat with one diamond set into it. The children's eyes went wide.",
-                        "\"Put on this hat and turn the diamond. Then you will see what things really are.\""
+                        "\"Put on this hat and turn the diamond. You will see what was hidden, and when you turn it back, everything will be as it was.\""
                     ],
                     right: [
                         "Tyltyl put on the hat and carefully turned the diamond. In that instant the room went bright.",
@@ -680,7 +680,7 @@ const EN = {
                         "The Spirit of Sugar came out of the sugar bowl. The spirits were all different sizes.",
                         "\"Look, the room is full of spirits!\" cried Mytyl, clapping her hands.",
                         "They all talked at once, and no one could hear a thing.",
-                        "Only Tylette narrowed her eyes in the corner."
+                        "The little room was crowded in no time."
                     ]
                 },
                 {
@@ -694,7 +694,7 @@ const EN = {
                     right: [
                         "That was how the long journey began. Outside, the sky was thick with stars.",
                         "Nobody knew what lay ahead.",
-                        "Tylo the dog went in front, wagging his tail. Only Tylette the cat walked behind, thinking her own thoughts."
+                        "Tylo the dog went in front, wagging his tail. Tylette the cat came slowly along behind."
                     ]
                 }
             ]
@@ -1021,7 +1021,7 @@ const EN = {
             { word: 'ripple', meaning: '찰랑거리다', sentence: 'Water came rippling out of the water jar.' },
             { word: 'saucepan', meaning: '냄비', sentence: 'The clock and the saucepans came alive.' },
             { word: 'bounce', meaning: '통통 뛰다', sentence: 'The Spirit of Fire came bouncing out.' },
-            { word: 'narrow one’s eyes', meaning: '눈을 가늘게 뜨다', sentence: 'Only Tylette narrowed her eyes.' }
+            { word: 'crowded', meaning: '북적이는', sentence: 'The little room was crowded in no time.' }
         ],
         '03-elements-2.webp': [
             { word: 'come forward', meaning: '앞으로 나서다', sentence: 'The Fairy of Light came forward.' },
@@ -1157,7 +1157,7 @@ const WORDS_KO = {
     "03-elements-2.webp": [
         { w: "입을 모으다", k: "여럿이 똑같은 말을 하다.", s: "요정들이 입을 모아 외쳤습니다." },
         { w: "앞길", k: "앞으로 나아갈 길.", s: "앞길이 어떨지는 아무도 몰랐습니다." },
-        { w: "딴생각", k: "지금 할 일과 다른 엉뚱한 생각.", s: "고양이 치레트만 뒤에서 딴생각을 했습니다." }
+        { w: "느릿느릿", k: "아주 느리게 움직이는 모양.", s: "고양이 치레트는 뒤에서 느릿느릿 따라왔습니다." }
     ],
     "04-memory.webp": [
         { w: "희미하다", k: "또렷하지 않고 흐릿하다.", s: "한참을 걷자 희미한 안개 속에 커다란 나무가 나타났습니다." },

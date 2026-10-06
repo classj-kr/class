@@ -167,7 +167,7 @@ const CHAPTERS = [
                 "right": [
                     "모르지아나는 숨이 딱 멎었습니다. 그래도 목소리를 굵게 낮춰 대답했지요. \"아직이다. 기다려라!\"",
                     "그러자 항아리 속에서 대답이 들렸습니다. \"예, 알겠습니다.\"",
-                    "모르지아나는 항아리를 하나하나 지나가 보았지요. 가는 곳마다 똑같이 묻는 소리가 났습니다. 기름이 든 항아리는 딱 하나뿐이었지요."
+                    "다른 항아리에서도 똑같이 묻는 소리가 났습니다. 기름이 든 항아리는 딱 하나뿐이었지요. '밤에 뛰쳐나와 우리 식구를 해치려는 거구나.' 모르지아나는 입술을 깨물었지요."
                 ]
             }
         ]
@@ -709,7 +709,7 @@ const EN = {
                         "Morgiana's breath stopped. But she made her voice deep and answered as if she were the captain. \"Not yet. Wait.\"",
                         "\"Yes, captain,\" came the answer.",
                         "She went from jar to jar, and from each one came the same question.",
-                        "Only one of them held any oil at all."
+                        "Only one of them held any oil at all. 'They mean to leap out in the night and harm us all,' thought Morgiana, biting her lip."
                     ]
                 }
             ]

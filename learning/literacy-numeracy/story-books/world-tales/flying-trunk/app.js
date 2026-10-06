@@ -93,8 +93,7 @@ const CHAPTERS = [
                 "art": "03-tower-2.webp",
                 "emoji": "🕌",
                 "left": [
-                    "\"저기는 공주님이 계신 곳이오. 점쟁이가 이런 점괘를 냈다지 뭐요. 공주님이 사랑 때문에 마음 아플 거라고요.\"",
-                    "\"그래서 임금님이 공주님을 저 탑에 두셨답니다. 아무도 못 만나게 말이오.\""
+                    "\"저기는 공주님이 계신 곳이오. 점쟁이가 이런 점괘를 냈다지 뭐요. 공주님이 사랑 때문에 마음 아플 거라고요. 그래서 임금님이 공주님을 저 탑에 두셨답니다. 아무도 못 만나게 말이오.\""
                 ],
                 "right": [
                     "아들의 눈이 반짝 빛났습니다. 아들은 저도 모르게 중얼거렸지요. \"그럼 하늘로는 갈 수 있겠군.\"",
@@ -192,12 +191,12 @@ const CHAPTERS = [
                 "art": "06-parents-2.webp",
                 "emoji": "👑",
                 "left": [
-                    "그날 밤 공주는 찾아온 아들에게 이 말을 전했지요. 이튿날 저녁 아들은 궁궐로 갔습니다. 임금님과 왕비 둘레에 신하들이 빙 둘러섰지요.",
+                    "그날 밤 공주는 찾아온 아들에게 이 말을 전했지요. 이튿날 저녁 아들은 가방을 타고 궁궐 뜰에 내려앉았습니다. 신하들이 입을 딱 벌렸지요.",
                     "아들은 헛기침을 하고 아주 긴 이야기를 시작했습니다. 홀 안이 물을 끼얹은 듯 조용해졌지요.",
                     "이야기가 끝나자 왕비는 눈물을 훔쳤습니다. 임금님은 무릎을 탁 쳤지요."
                 ],
                 "right": [
-                    "임금님이 외쳤습니다. \"이런 재주는 처음 보오! 왕비, 이만한 사윗감이 어디 있겠소!\"",
+                    "임금님이 외쳤습니다. \"이런 재주는 처음 보오! 하늘에서 온 분이라면 점괘도 비켜 가겠지. 왕비, 이만한 사윗감이 어디 있겠소!\"",
                     "결혼 날짜가 그 자리에서 정해졌습니다. 공주는 얼굴이 발그레해졌지요. 온 나라가 잔치 준비로 들썩였습니다.",
                     "빵 굽는 냄새가 며칠이나 골목에 가득했지요."
                 ]
@@ -802,7 +801,7 @@ const EN = {
                     emoji: '👑',
                     left: [
                         "That night the princess told the son.",
-                        "The next evening he went to the palace.",
+                        "The next evening he flew down into the palace garden in his trunk, and the courtiers' mouths fell open.",
                         "The court stood round the king and queen.",
                         "The son cleared his throat and began a very long story.",
                         "The hall went as quiet as still water.",
@@ -810,7 +809,7 @@ const EN = {
                     ],
                     right: [
                         "The king slapped his knee. \"I have never seen such a gift!\"",
-                        "\"My queen, where could we find a better son-in-law?\"",
+                        "\"A man who came from the sky is surely beyond any prophecy. My queen, where could we find a better son-in-law?\"",
                         "The wedding day was fixed there and then.",
                         "The princess blushed, and the whole country got ready for the feast.",
                         "The smell of baking filled the streets for days."
@@ -1167,7 +1166,7 @@ const WORDS_KO = {
     ],
     "06-parents-2.webp": [
         { w: "헛기침", k: "말을 꺼내려고 일부러 하는 기침.", s: "아들은 헛기침을 하고 아주 긴 이야기를 시작했습니다." },
-        { w: "재주", k: "남보다 잘하는 솜씨.", s: "\"이런 재주는 처음 보오! 왕비, 이만한 사윗감이 어디 있겠소!\"" },
+        { w: "재주", k: "남보다 잘하는 솜씨.", s: "이런 재주는 처음 보오!" },
         { w: "발그레하다", k: "얼굴이 조금 붉어지다.", s: "공주는 얼굴이 발그레해졌지요." }
     ],
     "07-fireworks.webp": [

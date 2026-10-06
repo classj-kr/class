@@ -21,7 +21,7 @@ const CHAPTERS = [
                 "art": "01-stranger-2.webp",
                 "emoji": "🧿",
                 "left": [
-                    "그래도 아저씨는 돈을 아낌없이 썼습니다. 고기며 과일을 한 아름 사 오고, 알라딘에게 새 옷도 사 입혔지요.",
+                    "그래도 아저씨는 돈을 아낌없이 썼습니다. 고기며 과일을 한 아름 사 오고, 알라딘에게 새 옷도 사 입혔지요. 어머니도 그만 의심을 접었지요.",
                     "\"알라딘, 내일 나와 좋은 곳에 가자꾸나. 거기서라면 너도 큰 부자가 될 수 있단다.\"",
                     "알라딘은 너무 신이 나서 그날 밤 잠을 설쳤습니다."
                 ],
@@ -89,7 +89,7 @@ const CHAPTERS = [
                 "art": "03-genie-2.webp",
                 "emoji": "💨",
                 "left": [
-                    "알라딘은 그동안 있었던 일을 모두 이야기했습니다. 그런데 집에는 먹을 것이 하나도 없었지요.",
+                    "알라딘은 그동안 있었던 일을 모두 이야기했습니다. 어머니는 그런 무서운 요정은 다시 부르지 말자고 했지요. 그런데 집에는 먹을 것이 하나도 없었지요.",
                     "어머니가 알라딘이 가져온 램프를 집어 들었습니다. \"이거라도 깨끗이 닦아서 팔아 보자.\"",
                     "어머니가 천으로 램프를 문지르는 순간이었지요. 펑! 엄청난 연기가 솟아 방 안을 가득 채웠습니다."
                 ],
@@ -221,12 +221,12 @@ const CHAPTERS = [
                 "art": "07-desert-2.webp",
                 "emoji": "🐫",
                 "left": [
-                    "공주는 알라딘을 보자 울음을 터뜨렸습니다. \"어떻게 여기까지 오셨어요! 그 마법사가 램프를 가지고 있어요. 늘 품속에 넣고 다녀요.\"",
+                    "공주는 알라딘을 보자 울음을 터뜨렸습니다. \"어떻게 여기까지 오셨어요! 그 마법사가 램프를 가지고 있어요. 늘 품속에 넣고 다녀요. 저더러 자기 아내가 되라고 날마다 졸라요.\"",
                     "알라딘은 잠시 생각하다가 공주에게 작은 약봉지를 건넸지요. 반지의 지니에게 얻은, 잠이 오는 가루였습니다."
                 ],
                 "right": [
                     "\"내일 저녁 마법사를 식사에 부르세요. 그리고 마법사의 잔에 이 가루를 몰래 타세요.\"",
-                    "이튿날 저녁, 공주는 마법사에게 상냥하게 잔을 권했습니다. \"이제 마음을 바꿨어요. 여기서 살기로 했답니다.\"",
+                    "이튿날 저녁, 공주는 마법사에게 상냥하게 잔을 권했습니다. \"이제 마음을 바꿨어요. 당신과 여기서 살기로 했답니다.\"",
                     "마법사는 기뻐서 잔을 단숨에 들이켰지요. 그러고는 그 자리에서 쿨쿨 곯아떨어졌습니다."
                 ]
             }
@@ -575,7 +575,7 @@ const EN = {
                     art: '01-stranger-2.webp',
                     emoji: '🧿',
                     left: [
-                        "Still, the man paid for everything without blinking. He brought meat and fruit by the armful, and he bought Aladdin new clothes.",
+                        "Still, the man paid for everything without blinking. He brought meat and fruit by the armful, and he bought Aladdin new clothes. His mother let her doubts go.",
                         "\"Tomorrow let us go somewhere good,\" he said. \"There you could become a rich man.\"",
                         "Aladdin was so excited he hardly slept that night."
                     ],
@@ -646,7 +646,7 @@ const EN = {
                     art: '03-genie-2.webp',
                     emoji: '🪔',
                     left: [
-                        "Aladdin told his mother everything. But there was nothing in the house to eat.",
+                        "Aladdin told his mother everything. When she heard about the genie of the ring, she begged him never to call up such a fearful thing again. But there was nothing in the house to eat.",
                         "His mother fetched out the lamp Aladdin had brought back. \"Let's clean this and sell it, at least.\"",
                         "The moment she rubbed it with a cloth — Bang!",
                         "A great cloud of smoke went up and filled the room."
@@ -790,12 +790,12 @@ const EN = {
                     emoji: '🐪',
                     left: [
                         "The princess burst into tears at the sight of him.",
-                        "\"However did you get here?\" she cried. \"That magician has the lamp. He always carries it inside his coat.\"",
+                        "\"However did you get here?\" she cried. \"That magician has the lamp. He always carries it inside his coat. And every day he presses me to become his wife.\"",
                         "Aladdin thought for a moment. Then he gave her a small packet of sleeping powder from the genie of the ring."
                     ],
                     right: [
                         "\"Invite him to supper tomorrow,\" he whispered in her ear. \"Put this in his cup.\"",
-                        "The next evening the princess smiled and offered the magician a cup. \"I have changed my mind. I will stay here.\"",
+                        "The next evening the princess smiled and offered the magician a cup. \"I have changed my mind. I will stay here with you.\"",
                         "Pleased, the magician drank it straight down.",
                         "The sleeping draught worked, and he fell asleep."
                     ]
