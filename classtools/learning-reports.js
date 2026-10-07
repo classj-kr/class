@@ -32,6 +32,23 @@
     if (event.kind === 'answer') return event.correct === true ? ['correct', '✓ 정답'] : event.correct === false ? ['incorrect', '× 오답'] : ['unscored', '채점 없음'];
     return { read: ['reading', '읽기'], 'self-assessment': ['reflection', '자기점검'], hint: ['hint', '도움말'] }[event.kind] || ['unscored', '기록'];
   }
+  function firstAttemptRate(correct, total) {
+    const rate = node('span', null, `first-rate${total ? '' : ' no-attempts'}`);
+    rate.setAttribute('role', 'img');
+    if (!total) {
+      rate.setAttribute('aria-label', '첫 풀이 정답률: 채점된 첫 풀이 없음');
+      rate.title = '채점된 첫 풀이 없음';
+      rate.append(node('span', '—', 'rate-value'));
+      return rate;
+    }
+    const percent = Math.round(correct / total * 100);
+    const description = `첫 풀이 정답률 ${percent}%, ${total}문제 중 ${correct}문제 정답`;
+    rate.setAttribute('aria-label', description); rate.title = description;
+    const track = node('span', null, 'rate-track'), fill = node('span', null, 'rate-fill');
+    fill.style.width = `${correct / total * 100}%`; track.append(fill);
+    rate.append(node('span', `${percent}%`, 'rate-value'), track, node('span', `${correct}/${total}`, 'rate-count'));
+    return rate;
+  }
   const stamp = value => new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
   $('fromDate').value = $('toDate').value = LearningRecords.today();
   function status(text, error = false) { $('status').textContent = text; $('status').hidden = !text; $('status').classList.toggle('error', error); }
@@ -51,9 +68,12 @@
     $('summary').replaceChildren(...[
       [`${ids.size} / ${roster.length}`, '활동 학생'],
       [String(filtered.filter(s => s.status === 'completed' && inRange(s.completedAt)).length), '완료 활동'],
-      [`${right} / ${first}`, '처음 맞힘'],
+      [firstAttemptRate(right, first), '첫 풀이 정답률'],
       [String(filtered.reduce((sum, s) => sum + s.summary.retryCount, 0)), '재풀이']
-    ].map(([value, title]) => { const card = node('article'); card.append(node('p', title), node('strong', value)); return card; }));
+    ].map(([value, title]) => {
+      const card = node('article', null, typeof value === 'string' ? '' : 'rate-summary');
+      card.append(node('p', title), typeof value === 'string' ? node('strong', value) : value); return card;
+    }));
     $('studentTab').setAttribute('aria-pressed', String(mode === 'student')); $('areaTab').setAttribute('aria-pressed', String(mode === 'area'));
     $('areaFilter').hidden = mode !== 'area'; $('listTitle').textContent = mode === 'student' ? '학생' : '영역'; $('listCount').textContent = mode === 'student' ? `${roster.length}명` : '';
     const list = $('studentList'); list.replaceChildren();
@@ -91,9 +111,8 @@
       const badge = node('span', row.status === 'completed' ? '완료' : '진행 중', `badge ${row.status}`);
       const metrics = node('div', null, 'metrics'), s = row.summary;
       if (s.firstScored) {
-        metrics.append(node('span', `처음 맞힘 ${s.firstCorrect}/${s.firstScored}`, 'metric-correct'));
-        if (s.firstScored > s.firstCorrect) metrics.append(node('span', `첫 풀이 오답 ${s.firstScored - s.firstCorrect}`, 'metric-incorrect'));
-      }
+        metrics.append(firstAttemptRate(s.firstCorrect, s.firstScored));
+      } else if (!s.readCount && !s.selfAssessments) metrics.append(firstAttemptRate(0, 0));
       if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`, 'metric-retry'));
       if (s.readCount) metrics.append(node('span', `열어 본 부분 ${s.readCount}개`));
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
