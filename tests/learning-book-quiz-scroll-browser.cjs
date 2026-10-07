@@ -61,10 +61,12 @@ async function main() {
           await page.waitForFunction(() => !document.getElementById('book').inert);
           const after = await page.evaluate(() => {
             const el = window.__quizBox === 'window' ? document.scrollingElement : document.querySelector(window.__quizBox);
-            return { top: el ? el.scrollTop : null };
+            return { top: el ? el.scrollTop : null, max: el ? el.scrollHeight - el.clientHeight : null };
           });
           tested.scrolled++;
-          if (after.top == null || Math.abs(after.top - before.top) > 4) bad.push(`${book} @${viewport.width}: ${before.box} ${before.top} -> ${after.top}`);
+          // 다시 그린 쪽이 조금 짧아지면 맨 아래 자리도 그만큼 올라간다. 그때는 새 맨 아래에 있으면 된다.
+          const held = after.top != null && (Math.abs(after.top - before.top) <= 4 || (before.top >= before.max - 4 && after.top >= after.max - 4));
+          if (!held) bad.push(`${book} @${viewport.width}: ${before.box} ${before.top} -> ${after.top} (max ${before.max} -> ${after.max})`);
         }
         assert.deepEqual(errors, [], book + ' has no script errors');
       }
