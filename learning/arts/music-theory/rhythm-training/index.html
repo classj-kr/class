@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#111827">
     <title>리듬 트레이닝</title>
-    <link rel="stylesheet" href="styles.css?v=20261007-hit-miss">
+    <link rel="stylesheet" href="styles.css?v=20261008-minimal-copy">
     <script src="notation.js?v=20261006-vector-notation" defer></script>
     <script src="rhythm-notation.js?v=20261007-connected-score" defer></script>
     <script src="core.js?v=20261007-fair-judgment" defer></script>
-    <script src="app.js?v=20261007-fair-judgment" defer></script>
+    <script src="app.js?v=20261008-minimal-copy" defer></script>
 </head>
 <body data-sfx-clicks="none">
-<main class="shell">
+<main class="shell" aria-label="리듬 트레이닝">
     <header class="topbar">
         <a class="page-back" href="/" aria-label="메인으로 돌아가기">←</a>
-        <h1>리듬 트레이닝</h1>
         <nav aria-label="연습 방식"><button id="soloTab" class="selected" aria-pressed="true">혼자 연습</button><button id="classTab" aria-pressed="false">학급 순위전</button></nav>
     </header>
     <p id="notice" class="notice" role="status" hidden></p>
@@ -51,13 +50,12 @@
                 <button id="roomStop" class="secondary" hidden>이번 판 마치기</button>
                 <button id="leave" class="quiet">방 나가기</button>
             </section>
-            <p class="helper">스페이스바 또는 아래 패드를 한 번씩 눌러요.<br>쉼표에서는 기다려요.</p>
         </aside>
         <section class="play-area" aria-label="리듬 연습">
-            <div class="session-bar"><span id="phase">악보를 보고 두드려요</span><span id="barCount">8마디 · 4/4박자</span></div>
+            <div class="session-bar"><span id="phase"></span><span id="barCount">8마디 · 4/4박자</span></div>
             <div class="beat-dots" id="beats" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             <div id="score" class="score" aria-label="리듬 악보"></div>
-            <div class="feedback-row"><strong id="feedback" aria-live="polite">준비됐나요?</strong><span id="combo"></span></div>
+            <div class="feedback-row"><strong id="feedback" aria-live="polite"></strong><span id="combo"></span></div>
             <button id="pad" class="pad" aria-label="리듬 치기"><span>두드리기</span><kbd>SPACE</kbd><i id="tapEffects" class="tap-effects" aria-hidden="true"><i class="tap-ring"></i><i class="tap-ring echo"></i></i></button>
             <button id="stop" class="quiet stop" hidden>그만하기</button>
             <section id="result" class="result" hidden aria-label="연습 결과">
