@@ -273,6 +273,10 @@ test('browser: ordinary teacher can browse all seven tabs, filter, read incomple
 
 test('browser: administrator can save and edit a complete timetable; demotion closes editing on a rejected save', () => withSchool(async ({ db, openBrowser, call }) => {
   const { page, state } = await openBrowser(101);
+  await page.locator('[data-tab="bellSchedule"]').click();
+  await page.locator('.weekly-count-input[data-grade="5"]').first().waitFor();
+  assert.equal(await page.locator('.weekly-count-input[data-grade="5"]').first().isEnabled(), true);
+  assert.equal(await page.locator('.weekly-count-input[data-grade="1"]').first().isDisabled(), true, 'A grade without saved curriculum hours must stay locked even for administrators');
   await page.locator('[data-tab="timetable"]').click();
   await page.locator('#timetableMatrixBody').getByText('검증국어', { exact: true }).waitFor();
   assert.equal(await page.locator('#saveTimetableBtn').isVisible(), true);

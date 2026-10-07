@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyCurriculumPermissions(root = document) {
         document.body.dataset.curriculumAccess = curriculumCanEdit ? 'edit' : 'read';
         root.querySelectorAll('input, select, textarea').forEach(input => {
-            if (!viewControls.has(input.id)) input.disabled = !curriculumCanEdit;
+            if (!curriculumCanEdit && !viewControls.has(input.id)) input.disabled = true;
         });
         accessStatus.textContent = curriculumCanEdit
             ? '학교 관리자 · 교육과정 조회 및 편집'
