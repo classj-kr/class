@@ -148,8 +148,8 @@
     function fresh() {
         resetFeedback();
         chart = C.chart(config(), seed()); renderScore(); $('result').hidden = true;
-        $('feedback').textContent = '준비됐나요?'; $('combo').textContent = '';
-        $('phase').textContent = '악보를 보고 두드려요'; $('barCount').textContent = '8마디 · 4/4박자';
+        $('feedback').textContent = ''; $('combo').textContent = '';
+        $('phase').textContent = ''; $('barCount').textContent = '8마디 · 4/4박자';
     }
     function controls() {
         const busy = Boolean(run || starting);
@@ -186,7 +186,7 @@
             run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, nextClick: -4, nextTarget: 0, lastBeat: -99 };
             resetFeedback();
             streak = 0; renderScore(); $('result').hidden = true; $('combo').textContent = '';
-            $('feedback').textContent = '네 박 뒤에 시작해요';
+            $('feedback').textContent = '4';
             $('pad').focus({ preventScroll: true });
             if (innerWidth <= 620) document.querySelector('.play-area').scrollIntoView({ block: 'start' });
             raf = requestAnimationFrame(frame);
@@ -212,7 +212,7 @@
             [...$('beats').children].forEach((dot, i) => dot.classList.toggle('active', i === ((currentBeat % 4) + 4) % 4));
             run.lastBeat = currentBeat;
             if (time < 0) { $('phase').textContent = '준비 박자'; $('feedback').textContent = String(Math.min(4, -currentBeat)); }
-            else { $('phase').textContent = run.demo ? '리듬을 들어 보세요' : '악보에 맞춰 두드려요'; if (currentBeat === 0 && !run.taps.length) $('feedback').textContent = run.demo ? '듣는 중' : '시작!'; }
+            else { $('phase').textContent = run.demo ? '듣는 중' : '연주 중'; if (currentBeat === 0 && !run.taps.length) $('feedback').textContent = ''; }
         }
         if (!run.demo) expireMisses(time);
         if (time >= 0 && time < chart.duration) {
@@ -282,7 +282,7 @@
         $('score').querySelectorAll('.score-measure').forEach(node => node.classList.remove('active'));
         controls();
         $('phase').textContent = interrupted ? '연주를 멈췄어요' : ended.demo ? '듣기 완료' : '연습 완료';
-        $('feedback').textContent = interrupted ? '다시 도전해요' : ended.demo ? '이제 직접 두드려 보세요' : '연주 끝!';
+        $('feedback').textContent = ''; $('combo').textContent = '';
         if (!ended.demo && !interrupted) {
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;

@@ -6,6 +6,7 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* Input judgment is painted on contact; no tap audio or delayed click animation. */
+body:not(.playing) .feedback-row:has(#feedback:empty):has(#combo:empty){height:16px}
 .play-area{--hit-color:var(--mint)}
 .feedback-row strong{color:var(--hit-color);font-size:25px;font-weight:850;letter-spacing:-.5px}
 #combo{color:var(--hit-color);font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
