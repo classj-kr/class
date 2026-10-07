@@ -12,8 +12,10 @@ const { createTeacherAi } = require("./teacher-ai");
 const { createUserStorage } = require("./user-storage");
 const { createAssessmentPlans } = require("./assessment-plans");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
+const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 const { createLearningBoards } = require("./learning-boards");
 const { createVoting } = require("./voting");
+const { createRoomCodes } = require("./room-codes");
 const { NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE, pendingStudentName, pendingTeacherName, fillPendingNamesFromGoogle, namesLookDifferent } = require("./roster-names");
 const {
   SCHEMA_STATEMENTS: subjectGrantSchema, CLASS_CONTENT_OPEN_SQL, classLabel: subjectClassLabel,
@@ -303,6 +305,22 @@ function createClassroomPlatform(options = {}) {
       })
     : null;
   const googleClient = googleClientId ? new OAuth2Client(googleClientId) : null;
+  const roomCodes = createRoomCodes({
+    pool,
+    isActive: (entry) => options.isRoomCodeActive ? options.isRoomCodeActive(entry) : false,
+    async legacyTaken(code, db) {
+      if (options.isLegacyRoomCodeTaken && await options.isLegacyRoomCodeTaken(code)) return true;
+      if (!db) return false;
+      const result = await db.query(`SELECT 1 FROM (
+        SELECT room_code::text AS code FROM vote_rooms
+        UNION ALL SELECT room_code::text FROM school_elections
+        UNION ALL SELECT room_code::text FROM seating_rooms
+        UNION ALL SELECT code FROM learning_boards
+        UNION ALL SELECT room_code FROM multiplayer_room_snapshots WHERE expires_at > NOW()
+      ) occupied WHERE BTRIM(code)=$1 LIMIT 1`, [code]);
+      return result.rows.length > 0;
+    }
+  });
   const museumPresenceSecret = crypto.randomBytes(32);
   const guestAccessSecret = crypto.randomBytes(32);
   const router = express.Router();
@@ -528,14 +546,7 @@ function createClassroomPlatform(options = {}) {
       // than deleting the class row, so this column must allow NULL.
       `ALTER TABLE classroom_classes
         ALTER COLUMN teacher_user_id DROP NOT NULL`,
-      `UPDATE classroom_teachers t
-       SET academic_year = c.academic_year,
-           grade = c.grade,
-           class_number = c.class_number,
-           updated_at = NOW()
-       FROM classroom_classes c
-       WHERE t.user_id = c.teacher_user_id
-         AND (t.academic_year IS NULL OR t.grade IS NULL OR t.class_number IS NULL)`,
+      // 학급 행은 과거 기록도 포함한다. 명단에서 비운 담당 반을 여기서 복원하지 않는다.
       `CREATE TABLE IF NOT EXISTS classroom_students (
         id BIGSERIAL PRIMARY KEY,
         class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
@@ -591,6 +602,8 @@ function createClassroomPlatform(options = {}) {
       // 성명을 비워 두고 계정만 적은 줄(pending)과 첫 로그인 때 구글 이름으로 채운 줄(google).
       `ALTER TABLE classroom_students
         ADD COLUMN IF NOT EXISTS name_source TEXT`,
+      `ALTER TABLE classroom_students
+        ADD COLUMN IF NOT EXISTS roster_active BOOLEAN NOT NULL DEFAULT TRUE`,
       `CREATE TABLE IF NOT EXISTS game_finisher_records (
         record_date DATE NOT NULL,
         game_id TEXT NOT NULL,
@@ -1119,6 +1132,13 @@ function createClassroomPlatform(options = {}) {
         WHERE g.auto_homeroom IS NULL`,
       `ALTER TABLE teacher_groups ALTER COLUMN auto_homeroom SET DEFAULT FALSE`,
       `ALTER TABLE teacher_groups ALTER COLUMN auto_homeroom SET NOT NULL`,
+      // 삭제한 자동 담임 카드를 다음 조회에서 다시 만들지 않는다. 직접 가져오면 해제한다.
+      `CREATE TABLE IF NOT EXISTS teacher_group_dismissals (
+        school_id BIGINT NOT NULL REFERENCES classroom_schools(id) ON DELETE CASCADE,
+        teacher_user_id BIGINT NOT NULL REFERENCES classroom_users(id) ON DELETE CASCADE,
+        academic_year INTEGER NOT NULL, grade INTEGER NOT NULL, class_number INTEGER NOT NULL,
+        PRIMARY KEY (school_id, teacher_user_id, academic_year, grade, class_number)
+      )`,
       `CREATE TABLE IF NOT EXISTS teacher_group_students (
         group_id BIGINT NOT NULL REFERENCES teacher_groups(id) ON DELETE CASCADE,
         student_id BIGINT NOT NULL REFERENCES school_students(id) ON DELETE CASCADE,
@@ -1394,6 +1414,8 @@ function createClassroomPlatform(options = {}) {
       await voting.initialize();
       await schoolElection.initialize();
       await seating.initialize();
+      await roomCodes.initialize();
+      await pool.query(fs.readFileSync(path.join(__dirname, 'migrations', 'retire-class-race.sql'), 'utf8'));
       databaseReady = true;
       initializationError = null;
       console.log("Classroom database is ready.");
@@ -1520,7 +1542,7 @@ function createClassroomPlatform(options = {}) {
     if (!user || !pool || !databaseReady) return [];
     const result = await pool.query(
       `SELECT t.id, t.school_id, t.teacher_type, t.teacher_name, t.grade, t.class_number,
-              t.academic_year, t.user_id, sc.name AS school_name
+              t.academic_year, t.user_id, t.subject_name, t.room_name, sc.name AS school_name
        FROM classroom_teachers t
        JOIN classroom_schools sc ON sc.id = t.school_id
        WHERE t.active = TRUE AND sc.enabled = TRUE
@@ -1565,14 +1587,8 @@ function createClassroomPlatform(options = {}) {
 
   async function requireSchoolAdmin(req) {
     const user = await requireTeacher(req);
-    const result = await pool.query(
-      `SELECT t.school_id, t.teacher_type, sc.name as school_name
-       FROM classroom_teachers t
-       JOIN classroom_schools sc ON sc.id = t.school_id
-       WHERE t.user_id = $1 AND t.active = TRUE AND sc.enabled = TRUE`,
-      [user.id]
-    );
-    const profile = result.rows[0];
+    // 명단 화면과 같은 등록을 사용한다. 계정이 이메일로만 연결된 등록도 포함한다.
+    const profile = await teacherRegistration(user);
     if (!profile || !["관리자", "교장", "교감"].includes(profile.teacher_type)) {
       throw new HttpError(403, "SCHOOL_ADMIN_REQUIRED", "This page is for school administrators only.");
     }
@@ -1607,6 +1623,7 @@ function createClassroomPlatform(options = {}) {
 
   const learningBoards = createLearningBoards({
     pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute,
+    allocateRoomCode: (db) => roomCodes.allocate('board', db),
     failureLimiter: createAuthenticationFailureLimiter()
   });
   router.use("/boards", learningBoards.router);
@@ -1633,9 +1650,9 @@ function createClassroomPlatform(options = {}) {
   const assessmentPlans = createAssessmentPlans({ pool, requireTeacher, teacherRegistration, requireDatabase, HttpError, asyncRoute });
   router.use("/teacher/assessment-plans", assessmentPlans.router);
 
-  // 학급선거·전교선거·자리 고르기·학급 순위전은 같은 4자리 방번호를 나눠 쓴다. 서로의
-  // 번호를 피해서 만들고, 메인의 「방번호 입력」 한 곳에서 셋 다 찾아간다.
+  // 수업 활동은 같은 4자리 방번호를 쓰고 메인의 방번호 입구에서 연결한다.
   const voting = createVoting({
+    allocateRoomCode: (db) => roomCodes.allocate('vote', db),
     pool,
     sessionUser,
     guestAccess,
@@ -1643,7 +1660,6 @@ function createClassroomPlatform(options = {}) {
     requireTeacher,
     requireDatabase,
     teacherRegistration,
-    isLiveQuizRaceCode: options.isLiveQuizRaceCode,
     isReservedCode: async (code) => (await seating.hasRoomCode(code)) || (await schoolElection.hasRoomCode(code)),
     resolveRoomCode: (code) => seating.resolveCode(code),
     resolveSchoolElectionCode: (code) => schoolElection.resolveCode(code),
@@ -1652,6 +1668,7 @@ function createClassroomPlatform(options = {}) {
   });
 
   const seating = createSeating({
+    allocateRoomCode: (db) => roomCodes.allocate('seating', db),
     pool,
     sessionUser,
     guestAccess,
@@ -1659,7 +1676,7 @@ function createClassroomPlatform(options = {}) {
     requireDatabase,
     teacherRegistration,
     avatarUrl,
-    isReservedCode: async (code) => (await voting.hasQuizRaceCode(code)) || (await voting.hasRoomCode(code)) || (await schoolElection.hasRoomCode(code)),
+    isReservedCode: async (code) => (await voting.hasRoomCode(code)) || (await schoolElection.hasRoomCode(code)),
     HttpError,
     asyncRoute
   });
@@ -1667,7 +1684,8 @@ function createClassroomPlatform(options = {}) {
   router.use("/vote", voting.router);
   const schoolElection = createSchoolElection({
     pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration,
-    isReservedCode: async (code) => (await voting.hasQuizRaceCode(code)) || (await voting.hasRoomCode(code)) || (await seating.hasRoomCode(code)),
+    allocateRoomCode: (db) => roomCodes.allocate('school-election', db),
+    isReservedCode: async (code) => (await voting.hasRoomCode(code)) || (await seating.hasRoomCode(code)),
     HttpError, asyncRoute
   });
   router.use("/school-election", schoolElection.router);
@@ -1739,7 +1757,7 @@ function createClassroomPlatform(options = {}) {
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE s.user_id = $1
+         WHERE s.user_id = $1 AND s.roster_active = TRUE
          LIMIT 1`,
         [userId]
       );
@@ -1777,7 +1795,7 @@ function createClassroomPlatform(options = {}) {
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE LOWER(s.guardian1_email) = LOWER($1) OR LOWER(s.guardian2_email) = LOWER($1)
+         WHERE s.roster_active = TRUE AND (LOWER(s.guardian1_email) = LOWER($1) OR LOWER(s.guardian2_email) = LOWER($1))
          ORDER BY grade DESC, class_number ASC, student_number ASC`,
         [user.email]
       );
@@ -1803,16 +1821,8 @@ function createClassroomPlatform(options = {}) {
     // teacher), so a site admin who is also a registered homeroom teacher
     // would otherwise never resolve to their class here.
     if (!user) return null;
-    const tp = await pool.query(
-      `SELECT school_id, academic_year, grade, class_number, teacher_name
-       FROM classroom_teachers
-       WHERE (user_id = $1 OR (google_email IS NOT NULL AND LOWER(google_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1)))
-         AND (grade IS NOT NULL AND class_number IS NOT NULL)
-       LIMIT 1`,
-      [user.id]
-    );
-    const t = tp.rows[0];
-    if (t) {
+    const t = await teacherRegistration(user);
+    if (t?.grade && t?.class_number) {
       const year = t.academic_year || new Date().getFullYear();
       // teacher_user_id carries its own UNIQUE constraint separate from the
       // (school_id, academic_year, grade, class_number) one the INSERT below
@@ -1838,13 +1848,21 @@ function createClassroomPlatform(options = {}) {
       return clsRes.rows[0]?.id || null;
     }
 
+    // 담임 배정을 지운 교사는 옛 학급의 소유자로 남지 않는다. 학급 기록 자체는 보존한다.
+    await pool.query(
+      "UPDATE classroom_classes SET teacher_user_id = NULL, updated_at = NOW() WHERE teacher_user_id = $1",
+      [user.id]
+    );
+    if (t) return null;
+
     const res = await pool.query(
       `SELECT c.id
        FROM school_students s
-       JOIN classroom_classes c ON c.school_id = s.school_id AND c.grade = s.grade AND c.class_number = s.class_number
+       JOIN classroom_classes c ON c.school_id = s.school_id AND c.academic_year = s.academic_year
+         AND c.grade = s.grade AND c.class_number = s.class_number
        WHERE s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1))
        UNION ALL
-       SELECT class_id FROM classroom_students WHERE user_id = $1
+       SELECT class_id FROM classroom_students WHERE user_id = $1 AND roster_active = TRUE
        LIMIT 1`,
       [user.id]
     );
@@ -1943,7 +1961,7 @@ function createClassroomPlatform(options = {}) {
     return user?.role === "admin";
   }
 
-  // 학급 순위전처럼 교사만 여는 방을 웹소켓에서 가려내는 데 쓴다. 교실
+  // 리듬 활동처럼 교사만 여는 방을 웹소켓에서 가려내는 데 쓴다. 교실
   // 데이터베이스가 아예 없는 자리(개발·검사용 서버)에서는 막지 않는다. 가릴
   // 근거가 없는데 막으면 그 자리에서는 아무도 방을 열지 못한다.
   async function isTeacherRequest(req) {
@@ -2030,8 +2048,7 @@ function createClassroomPlatform(options = {}) {
           // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
           || requestPath === "/room" || requestPath.startsWith("/room/")
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
-          || requestPath === "/school-election" || requestPath.startsWith("/school-election/")
-          || requestPath === "/learning/class-race" || requestPath.startsWith("/learning/class-race/");
+          || requestPath === "/school-election" || requestPath.startsWith("/school-election/");
         if (classId && requestPath && !isAlwaysAllowed) {
           // 담임이 연 메뉴든 전담이 오늘 연 메뉴든 하나면 열린다.
           const enabled = await pool.query(CLASS_CONTENT_OPEN_SQL, [classId, requestPath, assetRootPath]);
@@ -2139,7 +2156,7 @@ function createClassroomPlatform(options = {}) {
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = LOWER($2))
+         WHERE s.roster_active = TRUE AND (s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = LOWER($2)))
          UNION ALL
          SELECT sc.id, sc.name, sc.office_code, sc.school_code, sc.location_name, 2
          FROM classroom_teachers t
@@ -2155,7 +2172,7 @@ function createClassroomPlatform(options = {}) {
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE LOWER(s.guardian1_email) = LOWER($2) OR LOWER(s.guardian2_email) = LOWER($2)
+         WHERE s.roster_active = TRUE AND (LOWER(s.guardian1_email) = LOWER($2) OR LOWER(s.guardian2_email) = LOWER($2))
        ) candidates
        ORDER BY priority, school_id
        LIMIT 1`,
@@ -3061,7 +3078,7 @@ function createClassroomPlatform(options = {}) {
     
     // Check Guardian (school_students OR classroom_students)
     const dbGuardianCheck = await pool.query(
-      `SELECT id FROM classroom_students WHERE LOWER(guardian1_email) = $1 OR LOWER(guardian2_email) = $1
+      `SELECT id FROM classroom_students WHERE roster_active = TRUE AND (LOWER(guardian1_email) = $1 OR LOWER(guardian2_email) = $1)
        UNION
        SELECT id FROM school_students WHERE LOWER(guardian1_email) = $1 OR LOWER(guardian2_email) = $1`,
       [email]
@@ -3073,7 +3090,7 @@ function createClassroomPlatform(options = {}) {
     // Check Student (school_students OR classroom_students)
     let studentIds = [];
     const dbStudentCheck = await pool.query(
-      `SELECT id FROM classroom_students WHERE LOWER(student_email) = $1
+      `SELECT id FROM classroom_students WHERE LOWER(student_email) = $1 AND roster_active = TRUE
        UNION
        SELECT id FROM school_students WHERE LOWER(student_email) = $1`,
       [email]
@@ -3581,9 +3598,10 @@ function createClassroomPlatform(options = {}) {
               sc.id AS school_id, sc.name AS school_name
        FROM classroom_teachers t
        JOIN classroom_schools sc ON sc.id = t.school_id
-       WHERE t.user_id = $1
-          OR ($2 <> '' AND t.google_email IS NOT NULL AND LOWER(t.google_email) = $2)
-       ORDER BY COALESCE(t.user_id = $1, FALSE) DESC, sc.name, t.id`,
+       WHERE t.active = TRUE AND sc.enabled = TRUE
+         AND (t.user_id = $1
+          OR ($2 <> '' AND t.google_email IS NOT NULL AND LOWER(t.google_email) = $2))
+       ORDER BY COALESCE(t.user_id = $1, FALSE) DESC, t.id`,
       [user.id, email]
     );
     // Link the row the first time it is matched by e-mail alone, so later
@@ -3699,7 +3717,7 @@ function createClassroomPlatform(options = {}) {
     const birthdaysResult = await pool.query(
       `SELECT id, roster_name, birthday_mmdd
        FROM classroom_students
-       WHERE class_id = $1 AND birthday_visible = TRUE AND birthday_mmdd IS NOT NULL`,
+       WHERE class_id = $1 AND roster_active = TRUE AND birthday_visible = TRUE AND birthday_mmdd IS NOT NULL`,
       [classId]
     );
     // Only the active homeroom teacher's opted-in month/day belongs in this class.
@@ -3847,11 +3865,7 @@ function createClassroomPlatform(options = {}) {
 
   router.get("/teacher/available-classes", asyncRoute(async (req, res) => {
     const teacher = await requireTeacher(req);
-    const teacherResult = await pool.query(
-      `SELECT school_id, teacher_type, subject_name, room_name FROM classroom_teachers WHERE user_id = $1`,
-      [teacher.id]
-    );
-    const teacherInfo = teacherResult.rows[0];
+    const teacherInfo = await teacherRegistration(teacher);
     if (!teacherInfo) return res.json({ classes: [] });
 
     // Ensures this teacher's own homeroom class exists in classroom_classes
@@ -3869,11 +3883,11 @@ function createClassroomPlatform(options = {}) {
                    WHERE ss.school_id = c.school_id AND ss.academic_year = c.academic_year
                      AND ss.grade = c.grade AND ss.class_number = c.class_number
                   UNION
-                  SELECT s.student_number::TEXT FROM classroom_students s WHERE s.class_id = c.id
+                  SELECT s.student_number::TEXT FROM classroom_students s WHERE s.class_id = c.id AND s.roster_active = TRUE
                 ) merged
               ) AS student_count
        FROM classroom_classes c
-       WHERE c.school_id = $1
+       WHERE c.school_id = $1 AND c.academic_year = $3
          AND (
            c.teacher_user_id = $2
            OR EXISTS (
@@ -3881,9 +3895,15 @@ function createClassroomPlatform(options = {}) {
              WHERE t.school_id = c.school_id AND t.teacher_user_id = $2
                AND t.academic_year = c.academic_year AND t.grade = c.grade AND t.class_number = c.class_number
            )
+           OR EXISTS (
+             SELECT 1 FROM teacher_groups g
+             WHERE g.teacher_user_id = $2 AND g.school_id = c.school_id AND g.academic_year = c.academic_year
+               AND g.group_type = 'homeroom' AND g.grade = c.grade AND g.class_number = c.class_number
+               AND (${GROUP_VISIBLE_SQL})
+           )
          )
        ORDER BY c.grade ASC, c.class_number ASC`,
-      [teacherInfo.school_id, teacher.id]
+      [teacherInfo.school_id, teacher.id, teacherInfo.academic_year || new Date().getFullYear()]
     );
 
     // 전담교사별 시간표(school_master_timetable.teacher_user_id)에 이 교사가
@@ -3891,8 +3911,8 @@ function createClassroomPlatform(options = {}) {
     const teachingResult = await pool.query(
       `SELECT DISTINCT academic_year, grade, class_number, subject_name
        FROM school_master_timetable
-       WHERE school_id = $1 AND teacher_user_id = $2`,
-      [teacherInfo.school_id, teacher.id]
+       WHERE school_id = $1 AND teacher_user_id = $2 AND academic_year = $3`,
+      [teacherInfo.school_id, teacher.id, teacherInfo.academic_year || new Date().getFullYear()]
     );
     const teachingMap = new Map();
     teachingResult.rows.forEach(r => {
@@ -3923,62 +3943,41 @@ function createClassroomPlatform(options = {}) {
 
   router.get("/teacher/class", asyncRoute(async (req, res) => {
     const teacher = await requireTeacher(req);
-
-    const teacherInfoResult = await pool.query(
-      `SELECT school_id, teacher_type, subject_name, room_name FROM classroom_teachers WHERE user_id = $1`,
-      [teacher.id]
-    );
-    const teacherInfo = teacherInfoResult.rows[0];
-    const isSubjectTeacher = teacherInfo?.teacher_type === '전담';
+    const teacherInfo = await teacherRegistration(teacher);
 
     // Homeroom teachers are provisioned into classroom_classes on demand from
     // classroom_teachers.grade/class_number, so a freshly assigned teacher
     // sees their real school_students roster on first load instead of an
     // empty classroom.
-    if (!isSubjectTeacher) await userClassId(teacher);
+    const ownClassId = await userClassId(teacher);
 
     let classroom = null;
     const requestedClassId = req.query.classId;
 
-    if (requestedClassId) {
+    if (requestedClassId || ownClassId) {
       const classResult = await pool.query(
         `SELECT c.*, sc.name AS school_name, sc.school_code, sc.office_code, sc.location_name
          FROM classroom_classes c
          JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE c.id = $1 AND c.school_id = $2`,
-        [requestedClassId, teacherInfo?.school_id]
+         WHERE c.id = $1 AND c.school_id = $2 AND c.academic_year = $4
+           AND (c.teacher_user_id = $3
+             OR EXISTS (
+               SELECT 1 FROM school_master_timetable t WHERE t.school_id = c.school_id AND t.academic_year = c.academic_year
+                 AND t.grade = c.grade AND t.class_number = c.class_number AND t.teacher_user_id = $3
+             )
+             OR EXISTS (
+               SELECT 1 FROM teacher_groups g WHERE g.school_id = c.school_id AND g.academic_year = c.academic_year
+                 AND g.group_type = 'homeroom' AND g.grade = c.grade AND g.class_number = c.class_number
+                 AND g.teacher_user_id = $3 AND (${GROUP_VISIBLE_SQL})
+             ))`,
+        [requestedClassId || ownClassId, teacherInfo?.school_id, teacher.id, teacherInfo?.academic_year || new Date().getFullYear()]
       );
       classroom = classResult.rows[0];
     }
 
-    if (!classroom) {
-      const classResult = await pool.query(
-        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.office_code, sc.location_name
-         FROM classroom_classes c
-         JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE c.teacher_user_id = $1
-         ORDER BY c.updated_at DESC
-         LIMIT 1`,
-        [teacher.id]
-      );
-      classroom = classResult.rows[0];
-    }
-
-    if (!classroom && isSubjectTeacher) {
-      // Fallback for subject teacher: grab first class in school
-      const firstClassResult = await pool.query(
-        `SELECT c.*, sc.name AS school_name, sc.school_code, sc.office_code, sc.location_name
-         FROM classroom_classes c
-         JOIN classroom_schools sc ON sc.id = c.school_id
-         WHERE c.school_id = $1
-         ORDER BY c.grade ASC, c.class_number ASC
-         LIMIT 1`,
-        [teacherInfo.school_id]
-      );
-      classroom = firstClassResult.rows[0];
-    }
-
-    if (!classroom) return res.json({ classroom: null, isReadOnly: isSubjectTeacher });
+    if (requestedClassId && !classroom) throw new HttpError(404, "CLASS_NOT_AVAILABLE", "현재 담당하거나 가져온 학급이 아닙니다. 학급 목록을 다시 확인해 주세요.");
+    if (!classroom) return res.json({ classroom: null, isReadOnly: true });
+    const isReadOnly = String(classroom.id) !== String(ownClassId);
 
     const studentsResult = await pool.query(
       `SELECT * FROM (
@@ -4001,6 +4000,7 @@ function createClassroomPlatform(options = {}) {
                 EXISTS(SELECT 1 FROM classroom_users u WHERE LOWER(u.email) = LOWER(s.guardian2_email)) AS guardian2_linked
          FROM classroom_students s
          WHERE s.class_id = $5
+           AND s.roster_active = TRUE
            AND NOT EXISTS (
              SELECT 1 FROM school_students ss
              WHERE ss.school_id = $1 AND ss.academic_year = $2 AND ss.grade = $3 AND ss.class_number = $4
@@ -4026,7 +4026,7 @@ function createClassroomPlatform(options = {}) {
         teacherType: teacherInfo?.teacher_type || 'homeroom',
         subjectName: teacherInfo?.subject_name || '',
         roomName: teacherInfo?.room_name || '',
-        isReadOnly: isSubjectTeacher,
+        isReadOnly,
         students: studentsResult.rows.map((student) => ({
           number: student.student_number,
           name: student.roster_name,
@@ -4269,6 +4269,7 @@ function createClassroomPlatform(options = {}) {
            VALUES ($1, $2, $3, $4, $5, $6, NULL, $7, $8, $9, $10, $11)
            ON CONFLICT (class_id, student_number) DO UPDATE SET
              roster_name = EXCLUDED.roster_name,
+             roster_active = TRUE,
              name_source = CASE
                WHEN EXCLUDED.name_source IS NULL AND classroom_students.name_source = 'google'
                     AND classroom_students.roster_name = EXCLUDED.roster_name THEN 'google'
@@ -5286,7 +5287,7 @@ function createClassroomPlatform(options = {}) {
        SELECT s.roster_name, s.student_email, s.guardian1_email, s.guardian2_email
        FROM classroom_students s
        JOIN classroom_classes c ON c.id = s.class_id
-       WHERE c.school_id = $1 AND c.grade = $2 AND c.class_number = $3 AND s.student_number = $4
+       WHERE c.school_id = $1 AND c.grade = $2 AND c.class_number = $3 AND s.student_number = $4 AND s.roster_active = TRUE
        LIMIT 1`,
       [schoolId, grade, classNumber, studentNumber]
     );
@@ -6212,13 +6213,13 @@ function createClassroomPlatform(options = {}) {
 
   async function classIdFromHomeroomGroup(user, info) {
     const groupRes = await pool.query(
-      `SELECT school_id, academic_year, grade, class_number
-       FROM teacher_groups
-       WHERE teacher_user_id = $1 AND group_type = 'homeroom'
-         AND grade IS NOT NULL AND class_number IS NOT NULL
-       ORDER BY academic_year DESC, sort_order, id
+      `SELECT g.school_id, g.academic_year, g.grade, g.class_number
+       FROM teacher_groups g
+       WHERE g.teacher_user_id = $1 AND g.group_type = 'homeroom' AND g.school_id = $2 AND g.academic_year = $3
+         AND g.grade IS NOT NULL AND g.class_number IS NOT NULL AND (${GROUP_VISIBLE_SQL})
+       ORDER BY g.sort_order, g.id
        LIMIT 1`,
-      [user.id]
+      [user.id, info?.school_id, info?.academic_year || new Date().getFullYear()]
     );
     return classIdForHomeroomGroup(groupRes.rows[0], user, info);
   }
@@ -6283,17 +6284,7 @@ function createClassroomPlatform(options = {}) {
     // 교사 등록은 user_id 로도, 관리자가 미리 적어 둔 구글 이메일로도 연결된다.
     // userClassId 와 같은 규칙으로 찾는다. 여기만 user_id 로 좁히면 이메일로 연결된
     // 담임에게 게시판은 보이는데 글쓰기 칸은 안 보이는 상태가 된다.
-    const teacherRes = await pool.query(
-      `SELECT t.school_id, t.teacher_type, t.teacher_name
-       FROM classroom_teachers t
-       WHERE t.active = TRUE
-         AND (t.user_id = $1
-              OR (t.google_email IS NOT NULL
-                  AND LOWER(t.google_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1)))
-       LIMIT 1`,
-      [user.id]
-    );
-    const info = teacherRes.rows[0];
+    const info = await teacherRegistration(user);
 
     if (!info || !CLASSBOARD_WIDE_SCOPE.has(info.teacher_type)) {
       let classId = await userClassId(user);
@@ -6435,9 +6426,9 @@ function createClassroomPlatform(options = {}) {
       const owned = await pool.query(
         `SELECT g.id, g.group_name, g.group_type, g.school_id, g.academic_year, g.grade, g.class_number
          FROM teacher_groups g
-         WHERE g.teacher_user_id = $1
+         WHERE g.teacher_user_id = $1 AND g.school_id = $2 AND g.academic_year = $3 AND (${GROUP_VISIBLE_SQL})
          ORDER BY g.sort_order, g.id`,
-        [user.id]
+        [user.id, scope.info?.school_id, scope.info?.academic_year || new Date().getFullYear()]
       );
 
       const rest = [];
@@ -6467,7 +6458,7 @@ function createClassroomPlatform(options = {}) {
          FROM teacher_groups g
          JOIN school_students ss
            ON ss.school_id = g.school_id AND ss.academic_year = g.academic_year
-         WHERE g.group_type <> 'homeroom'
+         WHERE g.group_type <> 'homeroom' AND (${GROUP_VISIBLE_SQL})
            AND (LOWER(ss.guardian1_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1)
                 OR LOWER(ss.guardian2_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1))
            AND (${GROUP_MEMBER_SQL})
@@ -6480,7 +6471,7 @@ function createClassroomPlatform(options = {}) {
          FROM teacher_groups g
          JOIN school_students ss
            ON ss.school_id = g.school_id AND ss.academic_year = g.academic_year
-         WHERE g.group_type <> 'homeroom'
+         WHERE g.group_type <> 'homeroom' AND (${GROUP_VISIBLE_SQL})
            AND (ss.user_id = $1
                 OR (ss.student_email IS NOT NULL
                     AND LOWER(ss.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1)))
@@ -6841,7 +6832,7 @@ function createClassroomPlatform(options = {}) {
         OR EXISTS (
           SELECT 1 FROM classroom_students s
           JOIN classroom_classes c ON c.id = s.class_id
-          WHERE c.school_id = $1::BIGINT
+          WHERE c.school_id = $1::BIGINT AND s.roster_active = TRUE
             AND (s.user_id = u.id
                  OR LOWER(s.student_email) = LOWER(u.email)
                  OR LOWER(s.guardian1_email) = LOWER(u.email)
@@ -6973,7 +6964,7 @@ function createClassroomPlatform(options = {}) {
          SELECT c.grade, c.class_number, s.student_number, s.roster_name AS name
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id, yr
-         WHERE c.school_id = $1 AND c.academic_year = yr.y
+         WHERE c.school_id = $1 AND c.academic_year = yr.y AND s.roster_active = TRUE
            AND NOT EXISTS (
              SELECT 1 FROM school_students ss
              WHERE ss.school_id = $1 AND ss.academic_year = yr.y
@@ -7040,7 +7031,7 @@ function createClassroomPlatform(options = {}) {
          SELECT c.grade, c.class_number, s.student_number, s.roster_name AS name
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
-         WHERE c.school_id = $1
+         WHERE c.school_id = $1 AND s.roster_active = TRUE
            AND NOT EXISTS (
              SELECT 1 FROM school_students ss
              WHERE ss.school_id = $1 AND ss.grade = c.grade AND ss.class_number = c.class_number
@@ -7543,6 +7534,22 @@ function createClassroomPlatform(options = {}) {
     res.json({ ok: true });
   }));
 
+  async function schoolTimetableTeacher(schoolId, teacherUserId) {
+    const result = await pool.query(
+      `SELECT t.grade, t.class_number, t.academic_year
+       FROM classroom_teachers t
+       JOIN classroom_users u ON u.id = t.user_id
+         OR (t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email))
+       WHERE t.school_id = $1 AND t.active = TRUE AND u.id = $2
+         AND t.teacher_type NOT IN ('일반직', '행정실장')`,
+      [schoolId, teacherUserId]
+    );
+    if (!result.rows[0]) {
+      throw new HttpError(400, "INVALID_TEACHER", "현재 학교 명단에 있는 교사를 선택하세요. 명단이 변경됐다면 교사 목록을 다시 열어 주세요.");
+    }
+    return result.rows[0];
+  }
+
   // 전담교사 한 명 = 그리드 하나. 담당 학년/반을 배정하면 school_master_timetable에
   // 바로 반영되므로 기초시간표 쪽에서 별도 동기화가 필요 없다. 같은 교사를 같은
   // 요일/교시에 다른 반에 또 배정하면 school_master_timetable_teacher_slot_idx가 막는다.
@@ -7553,20 +7560,29 @@ function createClassroomPlatform(options = {}) {
     // classroom_users(id)를 가리키는 외래 키다. 교사 표의 id를 내보내면 배정할 때
     // 외래 키 위반으로 500이 나거나, 번호가 우연히 겹치면 엉뚱한 사람에게 붙는다.
     const result = await pool.query(
-      `SELECT user_id, teacher_name, teacher_type, grade, class_number
-       FROM classroom_teachers
-       WHERE school_id = $1 AND active = TRUE AND user_id IS NOT NULL
-         AND teacher_type NOT IN ('관리자', '교장', '교감')
-       ORDER BY teacher_type, teacher_name`,
+      `SELECT t.id AS registration_id, u.id AS user_id, t.teacher_name, t.teacher_type,
+              t.grade, t.class_number, t.subject_name, t.teaching_scope, t.room_name, t.name_source
+       FROM classroom_teachers t
+       LEFT JOIN classroom_users u ON u.id = t.user_id
+         OR (t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email))
+       WHERE t.school_id = $1 AND t.active = TRUE
+         AND t.teacher_type NOT IN ('일반직', '행정실장')
+       ORDER BY CASE WHEN t.teacher_type = '관리자' THEN 1 WHEN t.teacher_type = '담임' THEN 2 ELSE 3 END,
+                t.grade, t.class_number, t.id`,
       [profile.school_id]
     );
     res.json({
       teachers: result.rows.map(row => ({
-        id: String(row.user_id),
+        id: row.user_id == null ? null : String(row.user_id),
+        registrationId: String(row.registration_id),
         name: row.teacher_name,
+        nameSource: row.name_source || "",
         type: row.teacher_type,
         homeroomGrade: row.grade,
-        homeroomClassNumber: row.class_number
+        homeroomClassNumber: row.class_number,
+        subjectName: row.subject_name,
+        teachingScope: normalizePairs(row.teaching_scope),
+        roomName: row.room_name
       }))
     });
   }));
@@ -7578,11 +7594,24 @@ function createClassroomPlatform(options = {}) {
     if (!Number.isInteger(teacherUserId) || teacherUserId < 1) {
       throw new HttpError(400, "INVALID_TEACHER", "교사를 선택하세요.");
     }
+    const registration = await schoolTimetableTeacher(profile.school_id, teacherUserId);
+    const homeroomThisYear = registration.academic_year == null || Number(registration.academic_year) === year;
     const result = await pool.query(
-      `SELECT grade, class_number, day_of_week, period, subject_name, room_name
-       FROM school_master_timetable
-       WHERE school_id = $1 AND academic_year = $2 AND teacher_user_id = $3`,
-      [profile.school_id, year, teacherUserId]
+      `SELECT m.grade, m.class_number, m.day_of_week, m.period, m.subject_name, m.room_name,
+              m.teacher_user_id IS NULL AS inherited
+       FROM school_master_timetable m
+       WHERE m.school_id = $1 AND m.academic_year = $2
+         AND (m.teacher_user_id = $3 OR (
+           m.teacher_user_id IS NULL AND m.grade = $4 AND m.class_number = $5
+           AND BTRIM(m.subject_name) NOT IN ('', '수업없음')
+           AND NOT EXISTS (
+             SELECT 1 FROM school_master_timetable assigned
+             WHERE assigned.school_id = m.school_id AND assigned.academic_year = m.academic_year
+               AND assigned.teacher_user_id = $3 AND assigned.day_of_week = m.day_of_week AND assigned.period = m.period
+           )
+         ))
+       ORDER BY m.day_of_week, m.period`,
+      [profile.school_id, year, teacherUserId, homeroomThisYear ? registration.grade : null, homeroomThisYear ? registration.class_number : null]
     );
     res.json({ timetable: result.rows });
   }));
@@ -7594,6 +7623,7 @@ function createClassroomPlatform(options = {}) {
     if (!Number.isInteger(teacherUserId) || teacherUserId < 1) {
       throw new HttpError(400, "INVALID_TEACHER", "교사를 선택하세요.");
     }
+    await schoolTimetableTeacher(profile.school_id, teacherUserId);
     const cells = Array.isArray(req.body?.cells) ? req.body.cells : [];
 
     for (const cell of cells) {
@@ -8109,6 +8139,19 @@ function createClassroomPlatform(options = {}) {
         );
       }
 
+      // 옛 학급 명단의 복사본은 보존하되, 전교 명단에서 빠진 번호는 현재 명단으로 읽지 않는다.
+      await client.query(
+        `UPDATE classroom_students legacy SET roster_active = EXISTS (
+           SELECT 1 FROM school_students current_roster
+           WHERE current_roster.school_id = c.school_id AND current_roster.academic_year = c.academic_year
+             AND current_roster.grade = c.grade AND current_roster.class_number = c.class_number
+             AND current_roster.student_number = legacy.student_number::TEXT
+         )
+         FROM classroom_classes c
+         WHERE legacy.class_id = c.id AND c.school_id = $1 AND c.academic_year = $2`,
+        [schoolId, academicYear]
+      );
+
       await client.query("COMMIT");
     } catch (err) {
       await client.query("ROLLBACK");
@@ -8310,9 +8353,10 @@ function createClassroomPlatform(options = {}) {
 
     const teachersResult = await pool.query(
       `SELECT t.id, t.teacher_name, t.name_source, t.teacher_type, t.google_email, t.grade, t.class_number, t.subject_name, t.room_name,
-              t.teaching_scope, t.active, t.user_id IS NOT NULL AS linked, u.display_name AS google_name
+              t.teaching_scope, t.active, u.id IS NOT NULL AS linked, u.display_name AS google_name
        FROM classroom_teachers t
        LEFT JOIN classroom_users u ON u.id = t.user_id
+         OR (t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email))
        WHERE t.school_id = $1
        ORDER BY CASE WHEN t.teacher_type = '관리자' THEN 1 WHEN t.teacher_type = '담임' THEN 2 ELSE 3 END, t.grade, t.class_number, t.id`,
       [schoolId]
@@ -8507,9 +8551,10 @@ function createClassroomPlatform(options = {}) {
                AND t.school_id = c.school_id
                AND t.grade = c.grade
                AND t.class_number = c.class_number
+               AND COALESCE(t.academic_year, $2) = c.academic_year
                AND t.active = TRUE
            )`,
-        [schoolId]
+        [schoolId, academicYear]
       );
 
       await client.query("COMMIT");
@@ -8600,20 +8645,19 @@ function createClassroomPlatform(options = {}) {
     // 학생이 실제로 있는데도 0명으로 보인다.
     const registration = await teacherRegistration(teacher);
     const homeroomName = registration && registration.grade && registration.class_number
+      && Number(registration.academic_year || new Date().getFullYear()) === year
       ? `${registration.grade}-${registration.class_number}`
       : null;
 
-    // 담임 배정이 바뀌면(6-4 → 6-2) 새 반 그룹은 만들어지지만 옛 반 그룹이
-    // 그대로 남아 '내 학급'에 두 반이 떴다. 저절로 만든 옛 그룹은 치운다.
-    await pool.query(
-      `DELETE FROM teacher_groups
-       WHERE teacher_user_id = $1 AND academic_year = $2
-         AND group_type = 'homeroom' AND auto_homeroom
-         AND ($3::text IS NULL OR group_name <> $3)`,
-      [teacher.id, year, homeroomName]
-    ).catch((error) => console.error("stale homeroom group cleanup failed:", error.message));
+    // 과거 그룹과 그 게시글은 남겨 두되, 아래 조회에서 현재 배정/원본 명단을 확인한다.
+    // 사용자가 직접 삭제한 담임 카드는 명단에 배정이 남아 있어도 다시 만들지 않는다.
+    const dismissed = homeroomName ? await pool.query(
+      `SELECT 1 FROM teacher_group_dismissals
+       WHERE school_id = $1 AND teacher_user_id = $2 AND academic_year = $3 AND grade = $4 AND class_number = $5`,
+      [registration.school_id, teacher.id, year, registration.grade, registration.class_number]
+    ) : { rowCount: 0 };
 
-    if (homeroomName) {
+    if (homeroomName && dismissed.rowCount === 0) {
       const tc = registration;
       const gName = homeroomName;
       // ON CONFLICT (teacher_user_id, academic_year, group_name) 을 쓰고 있었는데
@@ -8622,9 +8666,9 @@ function createClassroomPlatform(options = {}) {
       // 한 번도 만들어지지 않았다. 있는지 먼저 보고 없을 때만 넣는다.
       const already = await pool.query(
         `SELECT id FROM teacher_groups
-         WHERE teacher_user_id = $1 AND academic_year = $2 AND group_name = $3
+         WHERE teacher_user_id = $1 AND academic_year = $2 AND group_name = $3 AND school_id = $4 AND group_type = 'homeroom'
          LIMIT 1`,
-        [teacher.id, year, gName]
+        [teacher.id, year, gName, tc.school_id]
       );
       if (already.rowCount === 0) {
         await pool.query(
@@ -8633,9 +8677,8 @@ function createClassroomPlatform(options = {}) {
           [tc.school_id, teacher.id, year, gName, tc.grade, tc.class_number]
         ).catch((error) => console.error("homeroom group provisioning failed:", error.message));
       } else {
-        // 예전의 잘못된 조회로 다른 학교의 school_id를 물고 만들어진 줄이 이미
-        // 있을 수 있다 -- 있는지만 보고 넘어가면 그 잘못된 줄이 영영 고쳐지지
-        // 않는다. 정본(teacherRegistration) 값으로 매번 맞춰 둔다.
+        // 같은 학교·학년도의 담임 카드만 현재 배정과 맞춘다.
+        // 다른 학교의 옛 카드를 현재 학교로 옮겨 재사용하지 않는다.
         await pool.query(
           `UPDATE teacher_groups SET school_id = $1, grade = $2, class_number = $3, auto_homeroom = TRUE, updated_at = NOW()
            WHERE id = $4 AND (school_id IS DISTINCT FROM $1 OR grade IS DISTINCT FROM $2 OR class_number IS DISTINCT FROM $3
@@ -8674,9 +8717,10 @@ function createClassroomPlatform(options = {}) {
                 ) AS st_union
               ) AS student_count
        FROM teacher_groups g
-       WHERE g.teacher_user_id = $1 AND g.academic_year = $2
+       WHERE g.teacher_user_id = $1 AND g.academic_year = $2 AND g.school_id = $3
+         AND (${GROUP_VISIBLE_SQL})
        ORDER BY g.sort_order, g.id`,
-      [teacher.id, year]
+      [teacher.id, year, registration.school_id]
     );
 
     res.json({ groups: result.rows, year });
@@ -8707,12 +8751,20 @@ function createClassroomPlatform(options = {}) {
         "학생·학부모 명단에 있는 학급과 항목만 가져올 수 있습니다. 학교 관리자가 명단에 먼저 만들어야 합니다.");
     }
 
+    if (groupType === "homeroom") {
+      await pool.query(
+        `DELETE FROM teacher_group_dismissals
+         WHERE school_id = $1 AND teacher_user_id = $2 AND academic_year = $3 AND grade = $4 AND class_number = $5`,
+        [schoolId, teacher.id, year, grade, classNumber]
+      );
+    }
+
     // 같은 이름으로 두 번 누르면 같은 그룹이 둘 생긴다. 이미 있으면 그것을 준다.
     const already = await pool.query(
       `SELECT id FROM teacher_groups
-       WHERE teacher_user_id = $1 AND academic_year = $2 AND group_name = $3
+       WHERE teacher_user_id = $1 AND academic_year = $2 AND group_name = $3 AND school_id = $4 AND group_type = $5
        LIMIT 1`,
-      [teacher.id, year, canonicalName]
+      [teacher.id, year, canonicalName, schoolId, groupType]
     );
     if (already.rows[0]) {
       return res.json({ ok: true, groupId: String(already.rows[0].id), existed: true });
@@ -8730,11 +8782,29 @@ function createClassroomPlatform(options = {}) {
   router.delete("/teacher/groups/:groupId", asyncRoute(async (req, res) => {
     const teacher = await requireTeacher(req);
     const groupId = Number(req.params.groupId);
-    const result = await pool.query(
-      `DELETE FROM teacher_groups WHERE id = $1 AND teacher_user_id = $2 RETURNING id`,
-      [groupId, teacher.id]
-    );
-    if (result.rowCount === 0) throw new HttpError(404, "GROUP_NOT_FOUND", "그룹을 찾을 수 없습니다.");
+    const registration = await teacherRegistration(teacher);
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      const result = await client.query(
+        `DELETE FROM teacher_groups WHERE id = $1 AND teacher_user_id = $2 AND school_id = $3
+         RETURNING school_id, academic_year, group_type, grade, class_number`,
+        [groupId, teacher.id, registration.school_id]
+      );
+      const group = result.rows[0];
+      if (!group) throw new HttpError(404, "GROUP_NOT_FOUND", "그룹을 찾을 수 없습니다.");
+      if (group.group_type === "homeroom" && group.grade && group.class_number) {
+        await client.query(
+          `INSERT INTO teacher_group_dismissals (school_id, teacher_user_id, academic_year, grade, class_number)
+           VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING`,
+          [group.school_id, teacher.id, group.academic_year, group.grade, group.class_number]
+        );
+      }
+      await client.query("COMMIT");
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally { client.release(); }
     res.json({ ok: true });
   }));
 
@@ -8841,10 +8911,12 @@ function createClassroomPlatform(options = {}) {
   router.get("/teacher/groups/:groupId/students", asyncRoute(async (req, res) => {
     const teacher = await requireTeacher(req);
     const groupId = Number(req.params.groupId);
+    const registration = await teacherRegistration(teacher);
     const groupResult = await pool.query(
-      `SELECT id, school_id, academic_year, group_name, group_type, grade, class_number
-       FROM teacher_groups WHERE id = $1 AND teacher_user_id = $2`,
-      [groupId, teacher.id]
+      `SELECT g.id, g.school_id, g.academic_year, g.group_name, g.group_type, g.grade, g.class_number
+       FROM teacher_groups g WHERE g.id = $1 AND g.teacher_user_id = $2 AND g.school_id = $3
+         AND (${GROUP_VISIBLE_SQL})`,
+      [groupId, teacher.id, registration.school_id]
     );
     const group = groupResult.rows[0];
     if (!group) throw new HttpError(404, "GROUP_NOT_FOUND", "그룹을 찾을 수 없습니다.");
@@ -8901,6 +8973,7 @@ function createClassroomPlatform(options = {}) {
 
   return {
     router,
+    roomCodes,
     initialize,
     displayNameFor,
     configuration,

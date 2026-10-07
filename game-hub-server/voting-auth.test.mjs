@@ -64,7 +64,6 @@ async function fixture(t) {
       return user;
     },
     requireDatabase() {}, teacherRegistration: async () => null,
-    isLiveQuizRaceCode: (code) => code === "5678",
     resolveRoomCode: async (code) => code === "9012" ? { type: "seating", href: "/room/seat?room=9012" } : null,
     HttpError, asyncRoute: (handler) => (req, res, next) => Promise.resolve(handler(req, res, next)).catch(next)
   });
@@ -102,11 +101,11 @@ test("anonymous and existing guest sessions cannot read or submit any election",
   assert.deepEqual(participants, []);
 });
 
-test("shared room entry blocks guest voting but preserves race and seating entry", async (t) => {
+test("shared room entry blocks guest voting, preserves seating, and rejects absent rooms", async (t) => {
   const { call } = await fixture(t);
   assert.equal((await call("GET", "/resolve/1234", { guest: true })).status, 401);
   assert.equal((await call("GET", "/resolve/1234", { user: 21 })).body.type, "vote");
-  assert.equal((await call("GET", "/resolve/5678", { guest: true })).body.type, "quizrace");
+  assert.equal((await call("GET", "/resolve/5678", { guest: true })).status, 404);
   assert.equal((await call("GET", "/resolve/9012", { guest: true })).body.type, "seating");
   assert.equal((await call("GET", "/resolve/5678")).status, 401);
 });

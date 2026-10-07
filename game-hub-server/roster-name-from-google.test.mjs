@@ -64,6 +64,7 @@ const SCHEMA = `
   CREATE TABLE classroom_students (
     id BIGSERIAL PRIMARY KEY, class_id BIGINT NOT NULL, student_number TEXT NOT NULL,
     roster_name TEXT NOT NULL, student_email TEXT, name_source TEXT,
+    roster_active BOOLEAN NOT NULL DEFAULT TRUE,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     UNIQUE (class_id, student_number)
   );

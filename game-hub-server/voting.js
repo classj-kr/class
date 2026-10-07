@@ -2,7 +2,7 @@ const express = require("express");
 
 const ROOM_CODE_LENGTH = 4;
 
-function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isLiveQuizRaceCode, isReservedCode, resolveRoomCode, resolveSchoolElectionCode, HttpError, asyncRoute }) {
+function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeacher, requireDatabase, teacherRegistration, isReservedCode, resolveRoomCode, resolveSchoolElectionCode, allocateRoomCode, HttpError, asyncRoute }) {
   const router = express.Router();
 
   async function initialize() {
@@ -201,17 +201,6 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
     return result.rowCount > 0;
   }
 
-  async function hasQuizRaceCode(code) {
-    if (typeof isLiveQuizRaceCode === "function" && isLiveQuizRaceCode(code)) return true;
-    const result = await pool.query(
-      `SELECT 1 FROM multiplayer_room_snapshots
-       WHERE game_id = 'quizrace' AND room_code = $1 AND expires_at > NOW()
-       LIMIT 1`,
-      [code]
-    );
-    return result.rowCount > 0;
-  }
-
   async function serializeRoom(room, actor, includeResults) {
     const rows = await pool.query(
       `SELECT p.id position_id, p.title position_title, c.id candidate_id, c.name candidate_name,
@@ -281,7 +270,6 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
     }
     const code = cleanCode(req.params.code);
     if (code.length !== ROOM_CODE_LENGTH) throw new HttpError(400, "INVALID_ROOM_CODE", "방번호 4자리를 입력해 주세요.");
-    if (await hasQuizRaceCode(code)) return res.json({ type: "quizrace", href: `/learning/class-race/?room=${code}` });
     if (await hasRoomCode(code)) {
       await votingActor(req);
       return res.json({ type: "vote", href: `/vote/?room=${code}` });
@@ -330,8 +318,7 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
       await client.query("BEGIN");
       let room;
       for (let attempt = 0; attempt < 20 && !room; attempt += 1) {
-        const code = makeCode();
-        if (await hasQuizRaceCode(code)) continue;
+        const code = allocateRoomCode ? await allocateRoomCode(client) : makeCode();
         if (typeof isReservedCode === "function" && await isReservedCode(code)) continue;
         const inserted = await client.query(
           `INSERT INTO vote_rooms (room_code, title, school_id, creator_user_id, academic_year, grade, class_number) VALUES ($1,$2,$3,$4,$5,$6,$7)
@@ -448,7 +435,7 @@ function createVoting({ pool, sessionUser, guestAccess, requireUser, requireTeac
     res.json({ ok: true, code: result.rows[0].room_code.trim() });
   }));
 
-  return { router, initialize, hasRoomCode, hasQuizRaceCode };
+  return { router, initialize, hasRoomCode };
 }
 
 module.exports = { createVoting };

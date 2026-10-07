@@ -13,7 +13,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #18110b url("/learning/class-race/assets/images/class-race-bg.webp") center / cover fixed no-repeat;
+  background: #f5f0e8;
   color: var(--ink);
 }
 

@@ -315,8 +315,12 @@
             async function loadTeacherGroups() {
                 const mainGrid = document.getElementById('main-groups-grid');
                 try {
-                    const res = await api(`/api/teacher/groups?year=${portalYear}`).catch(() => ({ groups: [] }));
+                    const res = await api(`/api/teacher/groups?year=${portalYear}`);
                     const groups = res.groups || [];
+                    const savedGroupId = sessionStorage.getItem('active_group_id');
+                    if (savedGroupId && savedGroupId !== 'homeroom' && !groups.some(g => String(g.id) === savedGroupId)) {
+                        sessionStorage.removeItem('active_group_id');
+                    }
                     
                     const groupTypeIcons = {
                         homeroom: '🏫',
@@ -357,6 +361,8 @@
                         const savedActiveId = sessionStorage.getItem('active_group_id');
                         if (savedActiveId && Array.from(activeGroupSelect.options).some(o => o.value === savedActiveId)) {
                             activeGroupSelect.value = savedActiveId;
+                        } else {
+                            sessionStorage.removeItem('active_group_id');
                         }
                     }
 
@@ -375,7 +381,16 @@
                             <div class="tool-card group-add" onclick="handleCreateGroupClick()">+ 명단에서 가져오기</div>
                         `;
                     }
-                } catch (_) {}
+                } catch (error) {
+                    sessionStorage.removeItem('active_group_id');
+                    if (activeGroupSelect) activeGroupSelect.replaceChildren();
+                    if (mainGrid) {
+                        mainGrid.replaceChildren();
+                        const message = document.createElement('p');
+                        message.textContent = error.message || '학급·그룹 목록을 불러오지 못했습니다.';
+                        mainGrid.appendChild(message);
+                    }
+                }
             }
 
             window.openGroupDashboard = function(groupId) {
@@ -565,7 +580,7 @@
                         const classData = await api('/api/teacher/class').catch(() => null);
                         if (classData && classData.classroom) {
                             applyProfileData(classData.classroom);
-                            studentCountInfo.textContent = `학생 수: ${classData.classroom.students?.length || 0}명`;
+                            if (studentCountInfo) studentCountInfo.textContent = `학생 수: ${classData.classroom.students?.length || 0}명`;
                         } else {
                             applyProfileData({});
                         }
@@ -577,10 +592,10 @@
                     // 학급 학생 수 추가 업데이트
                     const classRes = await api('/api/teacher/class').catch(() => null);
                     if (classRes && classRes.classroom) {
-                        studentCountInfo.textContent = `등록된 학생 수: ${classRes.classroom.students?.length || 0}명`;
+                        if (studentCountInfo) studentCountInfo.textContent = `등록된 학생 수: ${classRes.classroom.students?.length || 0}명`;
                     }
                 } catch (error) {
-                    statusInfo.textContent = `⚠️ 정보 로드 중 오류: ${error.message}`;
+                    if (statusInfo) statusInfo.textContent = `⚠️ 정보 로드 중 오류: ${error.message}`;
                 }
             }
 

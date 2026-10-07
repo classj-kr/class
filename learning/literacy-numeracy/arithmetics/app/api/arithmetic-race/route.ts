@@ -1,6 +1,7 @@
 import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
 import { rankArrivedParticipants } from "../../../lib/arithmetic-race-ranking";
 import { raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
+import { requestRoomCode } from "../../../../../../shared/room-codes.cjs";
 
 function error(message: string, status = 400) {
   return Response.json({ error: message }, { status });
@@ -9,7 +10,7 @@ function error(message: string, status = 400) {
 function roomCode() {
   const values = new Uint32Array(1);
   crypto.getRandomValues(values);
-  return String(100000 + values[0] % 900000);
+  return String(1000 + values[0] % 9000);
 }
 
 function publicRace(race: RaceRow) {
@@ -45,7 +46,7 @@ export async function GET(request: Request) {
     const teacherToken = url.searchParams.get("hostToken") ?? url.searchParams.get("teacherToken") ?? "";
     const participantId = url.searchParams.get("participant") ?? "";
     const participantToken = url.searchParams.get("participantToken") ?? "";
-    if (!/^\d{6}$/.test(code)) return error("방 번호를 확인하세요.");
+    if (!/^\d{4}$|^\d{6}$/.test(code)) return error("방 번호를 확인하세요.");
     const store = await raceStore();
     const race = await store.race(code);
     if (!race) return error("없는 방입니다.", 404);
@@ -110,7 +111,7 @@ export async function POST(request: Request) {
       const participantToken = crypto.randomUUID();
       const now = Date.now();
       for (let attempt = 0; attempt < 8; attempt += 1) {
-        const code = roomCode();
+        const code = await requestRoomCode('arithmetic', roomCode);
         const opened = await store.openRace({
           room_code: code,
           teacher_token: hostToken,
@@ -141,7 +142,7 @@ export async function POST(request: Request) {
     if (action === "join") {
       const code = String(payload.roomCode ?? "").trim();
       const name = String(payload.name ?? "").trim().slice(0, 20);
-      if (!/^\d{6}$/.test(code)) return error("방 번호를 확인하세요.");
+      if (!/^\d{4}$|^\d{6}$/.test(code)) return error("방 번호를 확인하세요.");
       if (!name) return error("이름을 입력하세요.");
       const race = await store.race(code);
       if (!race) return error("없는 방입니다.", 404);

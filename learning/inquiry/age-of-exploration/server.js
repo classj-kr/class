@@ -4,6 +4,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const http = require('node:http');
 const crypto = require('node:crypto');
+const { requestRoomCode } = require('../../../shared/room-codes.cjs');
 const express = require('express');
 const { Server } = require('socket.io');
 const Terrain = require('./public/js/terrain.js');
@@ -478,6 +479,11 @@ app.use(express.static(path.join(__dirname, 'public'), {
   }
 }));
 app.get('/api/mission-catalog', (_req, res) => { res.setHeader('Cache-Control', 'no-store'); res.json(publicMissionCatalog()); });
+app.get('/api/room-entry/:code', (req, res) => {
+  const room = store.state?.rooms?.[req.params.code];
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendStatus(!/^\d{4}$/.test(req.params.code) || !room?.host?.tokenHash ? 404 : room.settings?.locked ? 409 : 204);
+});
 app.get('/health', (_req, res) => res.json({
   ok: true,
   version: 76,
@@ -2793,10 +2799,10 @@ io.on('connection', (socket) => {
     ack({ ok: true, settings });
   });
 
-  socket.on('createRoom', (payload, ack = () => {}) => {
+  socket.on('createRoom', async (payload, ack = () => {}) => {
     try {
       const roomType = payload?.roomType === 'free' ? 'free' : 'race';
-      const roomCode = generateClassCode();
+      const roomCode = await requestRoomCode('voyage', generateClassCode);
       const hostToken = crypto.randomBytes(18).toString('base64url');
       const roomState = store.room(roomCode);
       roomState.host = { tokenHash: hashHostToken(hostToken), createdAt: Date.now(), lastActiveAt: Date.now() };

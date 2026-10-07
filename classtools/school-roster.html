@@ -226,6 +226,17 @@
         #rosterBody select.roster-cell-input { height: 28px; min-height: 0; padding: 0 4px !important; }
         #rosterBody .delete-item-btn { min-height: 0; min-width: 0; height: 28px; width: 28px; padding: 0; }
         #rosterBody .linked-badge { flex: none; white-space: nowrap; }
+        .roster-name-cell {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+            min-width: 8em;
+        }
+        .roster-name-cell > input {
+            flex: 1 0 8em;
+            min-width: 8em;
+        }
         /* 성명 칸 옆 표시. 대기: 비워 두어 첫 로그인을 기다림. 구글: 첫 로그인 때 구글 이름으로 채움. */
         .name-chip { flex: none; white-space: nowrap; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 10px; cursor: help; }
         .name-chip.pending { background: #f3f4f6; color: #6b7280; }
@@ -472,9 +483,9 @@
             </div>
         </div>
         <div class="roster-toolbar tab-toolbar" data-tab="teachers">
-            <span class="card-desc toolbar-desc">교직원 통합 명단 (담임·교과·관리자 구분, 구글 계정 관리)</span>
+            <span class="card-desc toolbar-desc">교직원 통합 명단 (수정은 학교 관리자만 가능)</span>
             <span class="status-msg" id="teacherRosterStatus"></span>
-            <div class="toolbar-buttons" id="teacherAdminActions">
+            <div class="toolbar-buttons" id="teacherAdminActions" style="display:none;">
                 <button class="btn btn-secondary btn-sm" id="toggleTeacherPasteBtn" onclick="toggleTeacherPasteSection()">📥 붙여넣기로 입력</button>
                 <button class="btn btn-secondary btn-sm" id="addTeacherBtn" onclick="addTeacherRow()">+ 교직원 추가</button>
                 <button class="btn btn-primary btn-sm" id="saveTeacherRosterBtn" onclick="saveTeacherRoster()">💾 저장</button>
@@ -692,7 +703,11 @@
             headers: { "Content-Type": "application/json", ...(opts.headers || {}) }
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.message || "서버 오류가 발생했습니다.");
+        if (!res.ok) {
+            const error = new Error(data.message || "서버 오류가 발생했습니다.");
+            error.status = res.status;
+            throw error;
+        }
         return data;
     }
 
@@ -722,6 +737,22 @@
 
     // ─── 교직원 명단 ───────────────────────────────────────────
     let allTeachers = [];
+    // 이 명단의 응답으로 확인한 권한만 사용한다. 다른 탭의 응답이 편집을 열지 않는다.
+    let canEditTeacherRoster = false;
+    let teacherLoadVersion = 0;
+
+    function setTeacherRosterPermission(allowed) {
+        canEditTeacherRoster = allowed === true;
+        document.getElementById("teacherAdminActions").style.display = canEditTeacherRoster ? "flex" : "none";
+        document.getElementById("saveTeacherRosterBtn").disabled = !canEditTeacherRoster;
+        if (!canEditTeacherRoster) document.getElementById("teacherPasteSection").style.display = "none";
+    }
+
+    function requireTeacherRosterEdit() {
+        if (canEditTeacherRoster) return true;
+        setStatus("teacherRosterStatus", "🔒 교직원 명단은 조회만 가능합니다. 수정은 학교 관리자에게 요청하세요.");
+        return false;
+    }
 
     // 분류 칸. 'auto'(교·강사)는 저장할 때 학년·반이 있으면 담임, 없으면 전담이 된다.
     const TEACHER_KINDS = [["교장", "교장"], ["교감", "교감"], ["행정실장", "행정실장"], ["교무부장", "교무부장"], ["auto", "교·강사"], ["일반직", "일반직"]];
@@ -731,17 +762,21 @@
     const teacherKind = (t) => PICKED_KINDS.includes(t.role || t.type) ? (t.role || t.type) : "auto";
 
     async function loadTeachers() {
+        const version = ++teacherLoadVersion;
+        setTeacherRosterPermission(false);
+        renderTeacherRosterTable();
         setStatus("teacherRosterStatus", "교직원 명단 불러오는 중…");
         try {
             const data = await api("/api/school/teachers");
+            if (version !== teacherLoadVersion) return;
             allTeachers = data.teachers || [];
-            if (data.isAdmin !== undefined) isSchoolAdmin = Boolean(data.isAdmin);
-            
-            const actionsEl = document.getElementById("teacherAdminActions");
-            if (actionsEl) actionsEl.style.display = isSchoolAdmin ? "flex" : "none";
+            setTeacherRosterPermission(data.isAdmin);
             renderTeacherRosterTable();
-            setStatus("teacherRosterStatus", `총 ${allTeachers.length}명`);
+            setStatus("teacherRosterStatus", `총 ${allTeachers.length}명${canEditTeacherRoster ? "" : " · 조회 전용"}`);
         } catch (e) {
+            if (version !== teacherLoadVersion) return;
+            allTeachers = [];
+            renderTeacherRosterTable();
             setStatus("teacherRosterStatus", e.message, "error");
         }
     }
@@ -751,7 +786,7 @@
         if (!tbody) return;
 
         if (allTeachers.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="9" class="no-data">등록된 교직원이 없습니다. '📥 붙여넣기로 입력' 또는 '+ 교직원 추가'로 등록하세요.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="9" class="no-data">등록된 교직원이 없습니다.${canEditTeacherRoster ? " '📥 붙여넣기로 입력' 또는 '+ 교직원 추가'로 등록하세요." : ""}</td></tr>`;
             return;
         }
 
@@ -771,6 +806,20 @@
                 // 연동된 구글 계정의 이름이 적어 둔 성명과 다른 사람으로 보이면 알려 준다.
                 + (t.nameMismatch && t.googleName ? `<span class="name-chip mismatch" title="연동된 구글 계정 이름은 '${esc(t.googleName)}'입니다. 적어 둔 성명과 달라 보이니 확인해 주세요.">구글 이름 다름</span>` : "");
 
+            if (!canEditTeacherRoster) {
+                return `<tr>
+                    <td><div class="roster-name-cell"><span>${esc(nameValue || namePlaceholder)}</span>${nameChip}</div></td>
+                    <td>${esc(t.email || "")}</td>
+                    <td>${esc(t.grade ?? "")}</td>
+                    <td>${esc(t.classNumber ?? "")}</td>
+                    <td>${esc(t.subjectName || "")}</td>
+                    <td>${esc(t.roomName || "")}</td>
+                    <td>${esc(isAdminRow ? "학교 관리자" : t.type || "교·강사")}</td>
+                    <td style="text-align:center;">${linkedBadge}</td>
+                    <td style="text-align:center;color:var(--muted);">조회 전용</td>
+                </tr>`;
+            }
+
             if (isAdminRow) {
                 // 학교 관리자도 담임·교과를 겸할 수 있다. 잠그는 것은 구글 계정과 삭제뿐이다.
                 // 담임을 맡으면 성명이 학생 화면에 나오므로 실제 이름으로 바꿔 적는다.
@@ -778,7 +827,7 @@
                 return `
                     <tr style="background:rgba(254,243,199,0.2);">
                         <td>
-                            <div style="display:flex;align-items:center;gap:4px;"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
+                            <div class="roster-name-cell"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;font-weight:bold;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
                         </td>
                         <td>
                             <input class="roster-cell-input" style="width:100%;border:1px solid #e5e7eb;background:#f3f4f6;color:#374151;font-weight:bold;cursor:not-allowed;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" readonly title="학교 관리자 구글 계정은 변경할 수 없습니다">
@@ -807,7 +856,7 @@
             return `
                 <tr>
                     <td>
-                        <div style="display:flex;align-items:center;gap:4px;"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
+                        <div class="roster-name-cell"><input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(nameValue)}" placeholder="${namePlaceholder}" onchange="updateTeacherField(${idx}, 'name', this.value)">${nameChip}</div>
                     </td>
                     <td>
                         <input class="roster-cell-input" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:3px 6px;" value="${esc(t.email || '')}" placeholder="구글 계정 이메일" onchange="updateTeacherField(${idx}, 'email', this.value)">
@@ -841,6 +890,7 @@
     }
 
     window.updateTeacherField = function(idx, field, val) {
+        if (!requireTeacherRosterEdit()) return;
         if (!allTeachers[idx]) return;
         const cleanVal = field === 'name' ? val.replace(/\s+/g, "") : val.trim();
         allTeachers[idx][field] = cleanVal;
@@ -850,12 +900,14 @@
     };
 
     window.addTeacherRow = function() {
+        if (!requireTeacherRosterEdit()) return;
         allTeachers.push({ name: "", email: "", grade: "", classNumber: "", subjectName: "", roomName: "", linked: false });
         renderTeacherRosterTable();
         setStatus("teacherRosterStatus", "새 줄이 추가되었습니다. 내용을 작성 후 '💾 저장' 버튼을 누르세요.");
     };
 
     window.deleteTeacherRow = function(idx) {
+        if (!requireTeacherRosterEdit()) return;
         if (!confirm(`'${allTeachers[idx]?.name || '선택한'}' 교직원을 삭제하시겠습니까?`)) return;
         allTeachers.splice(idx, 1);
         renderTeacherRosterTable();
@@ -863,6 +915,7 @@
     };
 
     window.saveTeacherRoster = async function() {
+        if (!requireTeacherRosterEdit()) return;
         const btn = document.getElementById("saveTeacherRosterBtn");
         if (btn) btn.disabled = true;
         setStatus("teacherRosterStatus", "교직원 명단 저장 중…");
@@ -930,19 +983,26 @@
             setStatus("teacherRosterStatus", `✅ 교직원 명단 ${result.saved}명 저장 완료`, "ok");
             await loadTeachers();
         } catch (e) {
+            if (e.status === 401 || e.status === 403) {
+                ++teacherLoadVersion;
+                setTeacherRosterPermission(false);
+                renderTeacherRosterTable();
+            }
             setStatus("teacherRosterStatus", e.message, "error");
         } finally {
-            if (btn) btn.disabled = false;
+            if (btn) btn.disabled = !canEditTeacherRoster;
         }
     };
 
     window.toggleTeacherPasteSection = function() {
+        if (!requireTeacherRosterEdit()) return;
         const sec = document.getElementById("teacherPasteSection");
         if (!sec) return;
         sec.style.display = sec.style.display === "none" ? "block" : "none";
     };
 
     window.parseTeacherPaste = function() {
+        if (!requireTeacherRosterEdit()) return;
         const text = document.getElementById("teacherPasteInput").value.trim();
         if (!text) {
             setStatus("teacherPasteStatus", "붙여넣은 텍스트가 없습니다.", "error");
@@ -1148,7 +1208,7 @@
                 `<td>${cellInput("grade", s.grade, "36px", false, "", "학년")}</td>`,
                 `<td>${cellInput("class_number", s.class_number, "36px", false, "", "반")}</td>`,
                 `<td>${cellInput("student_number", s.student_number, "44px", false, "", "번호")}</td>`,
-                `<td><div style="display:flex;align-items:center;gap:4px;">${namePending && !isSchoolAdmin ? `<span style="color:#9ca3af;">(로그인 대기)</span>` : cellInput("roster_name", namePending ? "" : s.roster_name, "76px", false, "", namePending ? "로그인 때 채움" : "이름")}${nameChip}</div></td>`,
+                `<td><div class="roster-name-cell">${namePending && !isSchoolAdmin ? `<span style="color:#9ca3af;">(로그인 대기)</span>` : cellInput("roster_name", namePending ? "" : s.roster_name, "76px", false, "", namePending ? "로그인 때 채움" : "이름")}${nameChip}</div></td>`,
                 `<td>${cellInput("gender", s.gender, "36px", false, "", "남/여")}</td>`,
                 ...dynamicCols.map(col => `<td>${cellSelect(col, categoryValue(s, cf, col), originalIndex)}</td>`),
                 `<td><div style="display:flex;align-items:center;gap:6px;">${cellInput("student_email", s.student_email)}${linkedBadge}</div></td>`,

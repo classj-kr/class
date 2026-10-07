@@ -130,8 +130,10 @@ test("a subject teacher opens a menu for all their classes at once, even where t
   await withSchool(async ({ pool, query, musicTeacher, taught }) => {
     assert.equal(await isOpen(query, 1, "/learning/arts/music"), false, "담임이 열지 않은 메뉴는 잠겨 있다");
     const classes = await taught();
-    const { expiresAt } = await setSubjectGrant(pool, { ...musicTeacher, classes, contentPath: "/learning/arts/music", enabled: true, now: Date.parse("2026-10-06T02:00:00Z") });
-    assert.equal(expiresAt.toISOString(), "2026-10-06T15:00:00.000Z");
+    // 조회 SQL은 DB의 NOW()를 쓴다. 고정된 과거 날짜로 열면 시간이 지나면서 저절로 실패한다.
+    const now = Date.now();
+    const { expiresAt } = await setSubjectGrant(pool, { ...musicTeacher, classes, contentPath: "/learning/arts/music", enabled: true, now });
+    assert.equal(expiresAt.toISOString(), endOfTodayInSeoul(now).toISOString());
 
     for (const classId of [1, 2, 3]) {
       assert.equal(await isOpen(query, classId, "/learning/arts/music"), true, `class ${classId} opened`);

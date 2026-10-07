@@ -7,14 +7,12 @@ const platformSource = await readFile(new URL("./classroom-platform.js", import.
 const votingSource = await readFile(new URL("./voting.js", import.meta.url), "utf8");
 const homeSource = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const roomSource = await readFile(new URL("../room/app.js", import.meta.url), "utf8");
-const raceSource = await readFile(new URL("../learning/class-race/app.js", import.meta.url), "utf8");
 const voteAppSource = await readFile(new URL("../vote/app.js", import.meta.url), "utf8");
 
-test("the home room-number entrance routes both class race and vote rooms", () => {
-  assert.match(homeSource, /href="\/room\/"[^>]*>방번호 입력/);
+test("the home room-number entrance resolves activities centrally", () => {
+  assert.match(homeSource, /href="\/room\/"[^>]*>순위전 · 방번호 입력/);
   assert.match(roomSource, /code\.length !== 4/);
-  assert.match(roomSource, /api\/vote\/resolve/);
-  assert.match(raceSource, /URLSearchParams\(location\.search\).*get\("room"\)/s);
+  assert.match(roomSource, /api\/room-entry\/resolve/);
 });
 
 test("voting is mounted, initialized, and served behind site access", () => {
@@ -25,7 +23,6 @@ test("voting is mounted, initialized, and served behind site access", () => {
   assert.match(serverSource, /"room", "vote"/);
   assert.match(platformSource, /requestPath === "\/room" \|\| requestPath\.startsWith\("\/room\/"\)/);
   assert.match(platformSource, /requestPath === "\/vote" \|\| requestPath\.startsWith\("\/vote\/"\)/);
-  assert.match(platformSource, /requestPath === "\/learning\/class-race" \|\| requestPath\.startsWith\("\/learning\/class-race\/"\)/);
 });
 
 test("ballots require student membership and enforce one vote per position", () => {
@@ -35,7 +32,7 @@ test("ballots require student membership and enforce one vote per position", () 
   assert.match(votingSource, /ALREADY_VOTED/);
   assert.match(votingSource, /INCOMPLETE_BALLOT/);
   assert.match(votingSource, /ROOM_CODE_LENGTH = 4/);
-  assert.match(votingSource, /hasQuizRaceCode/);
+  assert.match(votingSource, /allocateRoomCode/);
   assert.match(votingSource, /router\.delete\("\/rooms\/:roomId"/);
   assert.match(votingSource, /DELETE FROM vote_rooms/);
   assert.match(votingSource, /creator_user_id=\$2/);
