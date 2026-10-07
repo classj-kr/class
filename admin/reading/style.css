@@ -52,7 +52,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   background: rgba(18, 29, 23, .95);
   box-shadow: var(--shadow);
 }
-.gate-card h1 { margin: 8px 0 12px; font-size: clamp(2rem, 7vw, 3.7rem); letter-spacing: -.055em; }
+.gate-card h1 { margin: 8px 0 12px; font-size: clamp(1.8rem, 3.4vw, 2.4rem); letter-spacing: -.04em; }
 .gate-card p:not(.eyebrow) { margin: 0 0 24px; color: var(--muted); line-height: 1.7; }
 
 .app { min-height: 100vh; }

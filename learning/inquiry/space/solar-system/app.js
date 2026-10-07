@@ -2924,8 +2924,8 @@
                     return ((window.CLASS_PLAYER_NAME || "") || '').trim();
                 },
                 initialMode: 'guest',
-                allowedPlayerCounts: Array.from({ length: 30 }, function (_, index) { return index + 1; }),
-                maxPlayers: 30,
+                allowedPlayerCounts: Array.from({ length: 40 }, function (_, index) { return index + 1; }),
+                maxPlayers: 40,
                 ids: {
                     missingScreen: 'ufoMissingName',
                     lobbyScreen: 'ufoLobbyScreen',

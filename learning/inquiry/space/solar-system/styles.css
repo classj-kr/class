@@ -1232,6 +1232,11 @@ body {
     margin-bottom: 10px;
 }
 
+/* The dialog already has its UFO Flight heading. */
+#ufoLobbyScreen .mp-ui-title {
+    display: none;
+}
+
 .ufo-room-tabs {
     margin-bottom: 8px;
 }

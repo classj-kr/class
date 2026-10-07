@@ -284,7 +284,7 @@ export const middleSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
   });
 
 export const highSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
-  { grade: "공수1", name: "다항식의 연산", title: "다항식의 연산", route: "/arithmetic/high-school/polynomial-add-subtract" },
+  { grade: "공수1", name: "다항식의 덧셈·뺄셈", title: "다항식의 덧셈·뺄셈", route: "/arithmetic/high-school/polynomial-add-subtract" },
   { grade: "공수1", name: "다항식의 나눗셈·조립제법", title: "다항식의 나눗셈·조립제법", route: "/arithmetic/high-school/polynomial-division-remainder" },
   { grade: "공수1", name: "항등식과 나머지정리", title: "항등식과 나머지정리", route: "/arithmetic/high-school/polynomial-identities-remainders" },
   { grade: "공수1", name: "세제곱의 합·차 인수분해", title: "세제곱의 합·차 인수분해", route: "/arithmetic/high-school/cubic-sum-difference-factorization" },
@@ -338,14 +338,14 @@ export const highSchoolWorksheetCatalog: ArithmeticWorksheet[] = [
   { grade: "미적2", name: "회전체의 부피", title: "회전체의 부피", route: "/arithmetic/high-school/solids-of-revolution" },
   { grade: "기하", name: "이차곡선의 방정식", title: "이차곡선의 방정식", route: "/arithmetic/high-school/conic-sections" },
   { grade: "기하", name: "이차곡선의 접선", title: "이차곡선의 접선", route: "/arithmetic/high-school/conic-transformations-tangents" },
-  { grade: "기하", name: "평면벡터의 연산", title: "평면벡터의 연산", route: "/arithmetic/high-school/plane-vectors" },
+  { grade: "기하", name: "평면벡터의 성분과 활용", title: "평면벡터의 성분과 활용", route: "/arithmetic/high-school/plane-vectors" },
   { grade: "기하", name: "벡터의 내적과 정사영", title: "벡터의 내적과 정사영", route: "/arithmetic/high-school/vector-projections" },
   { grade: "기하", name: "도형과 벡터", title: "도형과 벡터", route: "/arithmetic/high-school/vector-geometry" },
   { grade: "기하", name: "공간도형의 위치 관계와 정사영", title: "공간도형의 위치 관계와 정사영", route: "/arithmetic/high-school/space-geometry-projections" },
   { grade: "기하", name: "공간좌표", title: "공간좌표", route: "/arithmetic/high-school/space-coordinates" },
   { grade: "확통", name: "순열의 활용과 중복조합", title: "순열의 활용과 중복조합", route: "/arithmetic/high-school/combinations" },
   { grade: "확통", name: "이항정리", title: "이항정리", route: "/arithmetic/high-school/binomial-theorem" },
-  { grade: "확통", name: "확률의 계산", title: "확률의 계산", route: "/arithmetic/high-school/probability-rules" },
+  { grade: "확통", name: "확률의 성질과 조건부확률", title: "확률의 성질과 조건부확률", route: "/arithmetic/high-school/probability-rules" },
   { grade: "확통", name: "전체확률·베이즈 정리", title: "전체확률·베이즈 정리", route: "/arithmetic/high-school/probability-rules-advanced" },
   { grade: "확통", name: "이산확률분포와 이항분포", title: "이산확률분포와 이항분포", route: "/arithmetic/high-school/probability-distributions" },
   { grade: "확통", name: "정규분포의 계산", title: "정규분포의 계산", route: "/arithmetic/high-school/normal-distributions" },

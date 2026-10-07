@@ -40,16 +40,14 @@
         let extras = 0;
         const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
         for (const tap of clean) {
-            let best = -1, distance = window + .000001;
-            marks.forEach((mark, index) => {
-                const delta = Math.abs(tap - mark.time);
-                if (!mark.hit && delta <= distance) { best = index; distance = delta; }
-            });
+            // Match in score order. A slightly delayed sixteenth must not steal
+            // the next note just because that note is closer in absolute time.
+            const best = marks.findIndex(mark => !mark.hit && Math.abs(tap - mark.time) <= window + .000001);
             if (best < 0) { extras++; continue; }
             const mark = marks[best];
             mark.hit = true;
             mark.error = tap - mark.time;
-            mark.points = distance <= .05 ? 1 : 0;
+            mark.points = 1;
         }
         const hits = marks.filter(mark => mark.hit);
         const accuracy = Math.max(0, Math.round(1000 * (hits.reduce((sum, m) => sum + m.points, 0) - extras * .5) / marks.length) / 10);

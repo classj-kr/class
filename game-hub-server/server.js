@@ -414,6 +414,7 @@ for (const [oldFolder, tab] of [["korean-museum", "#heritage"], ["korea-travel-m
   app.use(`/learning/inquiry/${oldFolder}`, (_req, res) => res.redirect(301, `/learning/inquiry/korea-map/${tab}`));
 }
 const MAX_ROOM_PLAYERS = {
+  "solar-system-ufo-flight": 40,
   setgame: 4,
   nimgame: 2,
   janggi: 2,

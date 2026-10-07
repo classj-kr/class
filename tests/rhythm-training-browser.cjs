@@ -34,11 +34,11 @@ function mockAudio() {
     const origin = `http://127.0.0.1:${server.address().port}`, url = origin + '/learning/arts/music-theory/rhythm-training/';
     const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
     try {
-        for (const [width, height] of [[1366, 768], [1024, 768], [768, 1024], [390, 844]]) {
+        for (const [width, height] of [[1366, 620], [1024, 768], [768, 1024], [390, 844]]) {
             const page = await browser.newPage({ viewport: { width, height }, hasTouch: true });
             page.on('pageerror', error => errors.push(error.message));
             await page.goto(url); await page.locator('.rhythm-head').first().waitFor();
-            assert.equal(await page.locator('.score-measure').count(), 4);
+            assert.equal(await page.locator('.score-measure').count(), 8, 'all eight measures are available before playback');
             assert.equal(await page.locator('#score .rhythm-meter').count(), 2, 'one 4/4 signature for the whole score');
             const connected = await page.locator('.score-system').evaluateAll(systems => systems.every(system => {
                 const measures = [...system.querySelectorAll('.score-measure')];
@@ -55,17 +55,20 @@ function mockAudio() {
             await page.screenshot({ path: path.join(output, `chromium-${width}.png`), fullPage: true });
             // Exercise real Web Audio unlock on a user gesture, then stop.
             await page.click('#start'); await page.locator('#stop').waitFor({ state: 'visible' });
+            assert.ok(await page.locator('#score').evaluate(node => { const rect = node.getBoundingClientRect(); return rect.top >= 0 && rect.bottom <= innerHeight; }), 'all eight measures fit during play');
+            assert.ok(await page.locator('#pad').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), 'tap pad stays on screen during play');
             await page.locator('#pad').tap(); await page.click('#stop'); await page.close();
         }
         const solo = await browser.newPage(); await solo.addInitScript(mockAudio); await solo.goto(url);
         await solo.selectOption('#level', '0'); await solo.click('#start');
-        await solo.evaluate(() => { testAudio.time = 1 + .18 + 2.4; });
+        await solo.evaluate(() => { testAudio.time = 1 + .18 + 2.4; window.originalFifth = document.querySelector('.score-measure[data-bar="5"]'); });
         await solo.keyboard.down('Space');
         for (let i = 0; i < 10; i++) await solo.keyboard.down('Space');
         await solo.keyboard.up('Space');
         await solo.evaluate(() => { testAudio.time = 1 + .18 + 2.4 + 16 * .6 + .01; });
-        await solo.locator('.score-measure[data-bar="5"]').waitFor();
-        assert.equal(await solo.locator('#score .rhythm-meter').count(), 0, 'no repeated signature on the next page');
+        await solo.locator('.score-measure[data-bar="5"].active').waitFor({ state: 'attached' });
+        assert.equal(await solo.locator('#score .rhythm-meter').count(), 2, 'the same first time signature remains throughout playback');
+        assert.ok(await solo.evaluate(() => originalFifth.isConnected && originalFifth === document.querySelector('.score-measure[data-bar="5"]')), 'crossing into bar five never replaces the score');
         assert.equal(await solo.locator('#score .rhythm-bar.is-end').count(), 1, 'final barline only at the end of bar eight');
         assert.equal(await solo.locator('.score-measure[data-bar="5"].active .playhead').evaluate(line =>
             getComputedStyle(line).display !== 'none' && Number(line.getAttribute('x1')) > Number(line.dataset.onset)), true,
@@ -95,8 +98,8 @@ function mockAudio() {
             return state;
         }
         await contact(0, 0, 'perfect');
-        assert.equal((await contact(1, -.075, 'wrong')).combo, '');
-        assert.equal((await contact(2, .075, 'wrong')).combo, '');
+        assert.equal((await contact(1, -.18, 'wrong')).combo, '');
+        assert.equal((await contact(2, .18, 'wrong')).combo, '');
         assert.equal(await feedbackPage.locator('#timing').count(), 0);
         assert.equal(await feedbackPage.locator('#feedback').textContent(), '틀렸어요');
         await feedbackPage.evaluate(target => { testAudio.time = 1 + .18 + 2.4 + target + .145; }, targets[3]);
@@ -119,6 +122,28 @@ function mockAudio() {
         assert.equal(await feedbackPage.locator('#pad').getAttribute('data-judgment'), 'perfect');
         assert.equal(await feedbackPage.locator('#tapEffects').evaluate(node => node.getAnimations({ subtree: true }).length), 0);
         await feedbackPage.close();
+        const fair = await browser.newPage(); await fair.addInitScript(mockAudio);
+        await fair.addInitScript(() => { crypto.getRandomValues = values => { values.fill(123); return values; }; });
+        await fair.goto(url); await fair.selectOption('#level', '3'); await fair.click('#start');
+        await fair.waitForTimeout(220); // Ensure a simulated queued event still has a positive performance timestamp.
+        await fair.evaluate(() => {
+            const start = 1 + .18 + 2.4;
+            // The device's output clock trails the render clock by 120 ms.
+            testAudio.getOutputTimestamp = () => ({ contextTime: testAudio.time - .12, performanceTime: performance.now() });
+            RhythmTrainer.chart({ level: 3, bpm: 100 }, 123).targets.forEach((target, index) => {
+                const queueDelay = index === 0 ? .2 : 0;
+                testAudio.time = start + target + .12 + (index === 0 ? 0 : .08) + queueDelay;
+                const event = new PointerEvent('pointerdown', { isPrimary: true, button: 0, bubbles: true });
+                if (queueDelay) Object.defineProperty(event, 'timeStamp', { value: performance.now() - queueDelay * 1000 });
+                document.getElementById('pad').dispatchEvent(event);
+            });
+            testAudio.time = 40;
+        });
+        await fair.locator('#result').waitFor({ state: 'visible' });
+        assert.equal(await fair.locator('#accuracy').textContent(), '100%', 'output-clock compensation, queued input, and accepted 16th-note variation earn full credit');
+        assert.equal(await fair.locator('#misses').textContent(), '0');
+        assert.equal(await fair.locator('#extras').textContent(), '0');
+        await fair.close();
         console.log('Live feedback: correct/wrong/missed and combo update synchronously; no timing-direction gauge, taps silent, metronome preserved, reduced motion respected.');
         const teacherContext = await browser.newContext();
         await teacherContext.addCookies([{ name: 'testTeacher', value: '1', url: origin }]);
