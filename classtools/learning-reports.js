@@ -70,7 +70,7 @@
     return [...map.values()].sort((a, b) => Number(a.number) - Number(b.number));
   }
   function render() {
-    const all = data.sessions, filtered = mode === 'area' ? all.filter(s =>
+    const all = LearningRecords.recordRows(data.sessions), filtered = mode === 'area' ? all.filter(s =>
       (!$('activitySelect').value || s.activity === $('activitySelect').value) &&
       (!selected || selected === '전체' || s.domain === selected)) : all;
     const roster = students(), ids = new Set(filtered.map(s => s.userId));
@@ -127,6 +127,7 @@
       meta.append(node('span', row.domain, `domain-tag ${domainClass(row.domain)}`), node('span', `${showName ? `${row.studentNumber}번 ${row.studentName} · ` : ''}${stamp(row.updatedAt)}`));
       title.append(meta, node('h3', row.title));
       const badge = node('span', row.status === 'completed' ? '완료' : '진행 중', `badge ${row.status}`);
+      if (row.unit) badge.title = `${row.unit} · ${row.progress.total}문제 중 ${row.progress.current}문제 풀이`;
       const metrics = node('div', null, 'metrics'), s = row.summary;
       if (s.firstScored) {
         metrics.append(firstAttemptRate(s.firstCorrect, s.firstScored));
@@ -136,17 +137,16 @@
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
       if (s.hints) metrics.append(node('span', `도움말 ${s.hints}회`));
       if (!metrics.children.length) metrics.append(node('span', '응답 없음'));
-      const detail = node('button', '문항·응답 보기', 'detail-button'); detail.onclick = () => showDetail(row.id);
+      const detail = node('button', '문항·응답 보기', 'detail-button'); detail.onclick = () => showDetail(row);
       card.append(title, metrics, badge, detail); target.append(card);
     }
   }
-  async function showDetail(id) {
+  async function showDetail(record) {
     const current = ++detailGeneration, body = $('detailBody');
     $('detailTitle').textContent = '학습 응답'; body.replaceChildren(node('p', '응답을 불러오는 중…', 'empty')); $('detailDialog').showModal();
     try {
-      const { session } = await request(`/teacher/sessions/${id}`);
+      const { session } = await request(`/teacher/sessions/${record.id}${record.unit ? '?unit=' + encodeURIComponent(record.unit) : ''}`);
       if (current !== detailGeneration) return;
-      const record = data.sessions.find(row => row.id === id);
       $('detailTitle').textContent = `${record ? `${record.studentNumber}번 ${record.studentName} · ` : ''}${session.title}`;
       const toolbar = node('div', null, 'detail-toolbar'), filters = node('div', null, 'detail-filters');
       filters.setAttribute('role', 'group'); filters.setAttribute('aria-label', '응답 필터');

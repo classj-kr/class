@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="/learning/literacy-numeracy/graph-studio/vendor/katex.min.css">
   <link rel="stylesheet" href="learning-reports.css?v=20261007-student-status">
   <script src="/learning/literacy-numeracy/graph-studio/vendor/katex.min.js" defer></script>
-  <script src="/assets/learning-records.js?v=20261002-compact" defer></script>
-  <script src="learning-reports.js?v=20261007-student-status" defer></script>
+  <script src="/assets/learning-records.js?v=20261007-units" defer></script>
+  <script src="learning-reports.js?v=20261007-units" defer></script>
 </head>
 <body>
   <main class="report-shell">
@@ -25,7 +25,7 @@
       <aside><div class="aside-heading"><h2 id="listTitle">학생</h2><span id="listCount"></span></div><label class="area-filter" id="areaFilter" hidden>활동<select id="activitySelect"><option value="">전체 활동</option></select></label><div id="studentList" class="student-list"></div></aside>
       <section class="report-content" aria-label="학습 내역"><div id="reportHeading" class="report-heading"></div><div id="records"></div></section>
     </section>
-    <details class="report-help"><summary>집계 기준</summary><p>응답은 선택 기간, 진행·완료는 현재 상태 기준입니다. 전체 기간은 선택한 학급·학년도의 모든 기록입니다. 첫 풀이 정답률은 첫 풀이만 집계하며, 읽기·자기점검은 제외합니다. 날짜는 한국 시간 기준입니다.</p></details>
+    <details class="report-help"><summary>집계 기준</summary><p>응답은 선택 기간 기준입니다. 수학 OX는 단원별로 집계하며, 모든 문항에 답하면 정답 여부와 관계없이 완료입니다. 단원 진도·완료는 조회 종료일까지의 누적 기록, 다른 활동의 진행·완료는 현재 상태 기준입니다. 전체 기간은 선택한 학급·학년도의 모든 기록입니다. 첫 풀이 정답률은 첫 풀이만 집계하며, 읽기·자기점검은 제외합니다. 날짜는 한국 시간 기준입니다.</p></details>
   </main>
   <dialog id="detailDialog" aria-labelledby="detailTitle"><header><h2 id="detailTitle">학습 응답</h2><button id="closeDetail" type="button">닫기</button></header><div id="detailBody"></div></dialog>
 </body>
