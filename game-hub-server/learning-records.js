@@ -71,7 +71,9 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
   async function serialize(db, row, detail = false, range = null, providedEvents = null) {
     const args = [row.id];
     let filter = '';
-    if (range) { args.push(range.from, range.to); filter = " AND recorded_at >= $2::date AT TIME ZONE 'Asia/Seoul' AND recorded_at < ($3::date + 1) AT TIME ZONE 'Asia/Seoul'"; }
+    // Cast calendar dates to timestamp BEFORE AT TIME ZONE. A bare date takes
+    // PostgreSQL's timestamptz overload and shifts the day in UTC DB sessions.
+    if (range) { args.push(range.from, range.to); filter = " AND recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul' AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul'"; }
     const events = providedEvents || (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
     return {
       id: row.id, activity: row.activity, domain: activities.get(row.activity)?.domain,
@@ -141,8 +143,8 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const range = req.query.from || req.query.to ? dateRange(req.query) : null;
     const rows = (await pool.query(`SELECT * FROM learning_record_sessions WHERE user_id = $1
       AND ($2::text IS NULL OR activity = $2)
-      AND ($3::date IS NULL OR updated_at >= $3::date AT TIME ZONE 'Asia/Seoul')
-      AND ($4::date IS NULL OR started_at < ($4::date + 1) AT TIME ZONE 'Asia/Seoul')
+      AND ($3::date IS NULL OR updated_at >= $3::date::timestamp AT TIME ZONE 'Asia/Seoul')
+      AND ($4::date IS NULL OR started_at < ($4::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
       ORDER BY updated_at DESC, id LIMIT 51 OFFSET $5`, [user.id, req.query.activity || null, range?.from || null, range?.to || null, offset])).rows;
     const sessions = [];
     for (const row of rows.slice(0, 50)) sessions.push(await serialize(pool, row));
@@ -251,15 +253,15 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       AND ((grade = $3 AND class_number = $4) OR user_id = ANY($8::bigint[]))
       AND ($7::text IS NULL OR activity = $7)
       AND (EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id
-        AND e.recorded_at >= $5::date AT TIME ZONE 'Asia/Seoul' AND e.recorded_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
-        OR s.updated_at >= $5::date AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
+        AND e.recorded_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND e.recorded_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
+        OR s.updated_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
       ORDER BY updated_at DESC, id LIMIT 1001`, [...args, range.from, range.to, req.query.activity || null, studentIds])).rows;
     if (rows.length > 1000) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
     const eventGroups = new Map(rows.map(row => [row.id, []]));
     if (rows.length) {
       const events = (await pool.query(`SELECT session_id, kind, question_key, correct, attempt_number FROM learning_record_events
-        WHERE session_id=ANY($1::uuid[]) AND recorded_at >= $2::date AT TIME ZONE 'Asia/Seoul'
-        AND recorded_at < ($3::date + 1) AT TIME ZONE 'Asia/Seoul' ORDER BY id`, [rows.map(row => row.id), range.from, range.to])).rows;
+        WHERE session_id=ANY($1::uuid[]) AND recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul'
+        AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul' ORDER BY id`, [rows.map(row => row.id), range.from, range.to])).rows;
       for (const event of events) eventGroups.get(event.session_id).push(event);
     }
     const sessions = [];
