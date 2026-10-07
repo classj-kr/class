@@ -28,6 +28,11 @@ async function main() {
       { kind: 'read', questionKey: 'chapter-1', response: '1장 · 신기한 콩', snapshot: { title: '1장 · 신기한 콩' } },
       { kind: 'self-assessment', questionKey: 'reflection', response: '<img src=x onerror="window.injected=true">', snapshot: { prompt: '<script>window.injected=true</script>' } }
     ] });
+    for (const [activity, title, answers] of [['spelling', '맞춤법', [true, true]], ['sentence-building', '문장 고르기', [false, false, false]], ['proverbs', '속담', []]]) {
+      const opened = await request('/sessions', { activity, contentKey: 'rate-check', contentVersion: 'readability-test', title, href: `/learning/literacy-numeracy/${activity}/`, checkpoint: {} });
+      if (answers.length) await request(`/sessions/${opened.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(), checkpoint: {}, progress: { current: answers.length, total: answers.length },
+        events: answers.map((correct, index) => ({ kind: 'answer', questionKey: `q-${index}`, response: '답', correct, snapshot: { prompt: `문항 ${index + 1}` } })) });
+    }
     const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '3' }, viewport: { width: 1440, height: 1000 } });
     // Reports must render math even without access to an external CDN.
     await context.route('https://**', route => route.abort());
@@ -36,6 +41,29 @@ async function main() {
     await page.goto(h.base + '/classtools/learning-reports.html');
     await page.locator('.record-card').first().waitFor();
     const mathCard = page.locator('.record-card').filter({ hasText: '수학 기초 OX' });
+    assert.equal(await mathCard.locator('.rate-value').innerText(), '60%', 'successful retry does not inflate first-attempt accuracy');
+    assert.equal(await mathCard.locator('.rate-count').innerText(), '3/5');
+    assert.equal(await mathCard.locator('.rate-fill').evaluate(el => el.style.width), '60%');
+    const spellingCard = page.locator('.record-card').filter({ hasText: '맞춤법' });
+    assert.equal(await spellingCard.locator('.rate-value').innerText(), '100%');
+    const wrongCard = page.locator('.record-card').filter({ hasText: '문장 고르기' });
+    assert.equal(await wrongCard.locator('.rate-value').innerText(), '0%');
+    assert.equal(await wrongCard.locator('.rate-fill').evaluate(el => el.style.width), '0%');
+    const emptyCard = page.locator('.record-card').filter({ hasText: '속담' });
+    assert.equal(await emptyCard.locator('.rate-value').innerText(), '—');
+    assert.equal(await emptyCard.locator('.rate-track,.rate-count').count(), 0, 'no attempts is not zero accuracy');
+    assert.equal(await page.locator('.record-card').filter({ hasText: '잭과 콩나무' }).locator('.first-rate').count(), 0, 'reading and self-check are not given a score');
+    assert.equal(await page.locator('#summary .rate-value').innerText(), '50%', 'class accuracy uses summed first attempts, not averaged percentages');
+    assert.equal(await page.locator('#summary .rate-count').innerText(), '5/10');
+    fs.mkdirSync(output, { recursive: true });
+    await page.screenshot({ path: path.join(output, 'teacher-rates-desktop.png'), fullPage: true });
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px: no page overflow`);
+      assert.equal(await page.locator('.first-rate').evaluateAll(items => items.some(el => el.scrollWidth > el.clientWidth)), false, `${width}px: rate stays on one line`);
+    }
+    await page.screenshot({ path: path.join(output, 'teacher-rates-mobile.png'), fullPage: true });
+    await page.setViewportSize({ width: 1440, height: 1000 });
     await mathCard.locator('.detail-button').click();
     await page.locator('#detailBody .answer').first().waitFor();
     assert.equal(await page.locator('.answer.correct').count(), 4);
@@ -69,7 +97,7 @@ async function main() {
     assert.equal(await page.evaluate(() => window.injected), undefined);
     assert.equal(await page.locator('.answer.reflection').count(), 1);
     assert.deepEqual(errors, []);
-    console.log('PASS report readability: actual fractional OX records, local math rendering, result colors and labels, wrong/retry filters, reading/self-check, safe text, desktop/mobile dialog, Escape.');
+    console.log('PASS report readability: weighted first-attempt rates, retries excluded, 0%/100%/no attempts, 320px layout, actual fractional OX records, local math rendering, result colors, wrong/retry filters, safe text, desktop/mobile dialog.');
   } finally { await browser.close(); await h.close(); }
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });
