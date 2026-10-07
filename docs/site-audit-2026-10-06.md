@@ -1,5 +1,17 @@
 # ClassJ 사이트 검증 결과
 
+## 2026-10-07 추가 확인: 평가요소 없이 평가결과 AI 생성
+
+**놓친 이유:** 화면과 서버가 모두 ‘성취기준 또는 평가요소 중 하나만 있으면 허용’했다. 기존 검사는 정상 생성과 둘 다 빈 경우를 확인했지만, 사용자가 제보한 ‘성취기준은 선택하고 평가요소는 비운 경우’를 검사하지 않았다. 필수 입력 조건의 누락이며 이전 검증으로 이 동작까지 확인했다고 볼 수 없다.
+
+- **수정 전 재현:** 새 서버 검사에서 평가요소 누락 요청이 400 대신 200으로 성공했고, 새 브라우저 검사에서 초안 버튼이 활성 상태라 실패했다.
+- **수정:** 평가요소를 필수 입력으로 지정했다. 빈 값·공백·보이지 않는 공백 문자만 있으면 버튼을 비활성화하고 입력 안내를 표시한다. 강제로 클릭 이벤트를 보내도 생성 API를 호출하지 않는다. 서버도 문자열 여부와 내용을 확인해 `AI_ASSESSMENT_ELEMENT_REQUIRED` 400으로 거절하며, 이 검사는 생성 횟수 차감·키 조회·외부 AI 호출보다 먼저 수행한다.
+- **비동기 보호:** 키 확인 중 입력이 바뀌면 요청을 보내지 않는다. 생성 요청 후 평가요소·단계·기준·기존 문장·조회 계획이 바뀌면 늦은 응답을 적용하지 않는다. 다시 그린 버튼에서도 생성 중 중복 요청을 막는다.
+- **서버 검증:** `node --test game-hub-server/teacher-ai-plan.test.mjs game-hub-server/teacher-ai.test.mjs game-hub-server/teacher-ai-topics.test.mjs game-hub-server/assessment-plans.test.mjs` — **13개 통과, 실패 0개**. 선택한 성취기준 유무, 누락·null·공백·보이지 않는 문자·객체·배열·숫자·불리언을 검사했다. 잘못된 요청을 반복해도 외부 AI 호출이 0건이고 이후 정상 요청의 생성 한도를 소비하지 않음을 확인했다. 정상 입력의 초안 생성과 계획 저장·권한·파일 읽기 회귀 검사도 통과했다.
+- **브라우저 검증:** `node tests/assessment-plan-browser.cjs` 통과. 실제 HTML/JS와 API를 합성 PGlite DB에 연결해 Edge에서 실행했다. 입력 누락·강제 클릭·단계 변경 후에도 요청 0건, 정상 생성·저장, 키 확인 중 입력 삭제, 응답 지연 중 입력 삭제·화면 재생성·중복 클릭 차단을 확인했다. 외부 Google 응답만 모의 처리하여 실제 AI 비용은 발생하지 않았다.
+- **증거:** `outputs/assessment-element-server-before.log`, `outputs/assessment-element-browser-before.log`, `outputs/assessment-element-server-after.log`, `outputs/assessment-element-browser-after.log`. 전후 화면은 `outputs/assessment-element-required-2026-10-07/before.png`, `after.png`다. 운영 버전·DB 준비 상태 확인 결과는 `outputs/assessment-element-deploy-2026-10-07.json`에 별도로 기록한다.
+- **범위:** 운영 계정의 실제 평가 계획이나 AI 키는 사용하지 않았다. 이 결과는 해당 기능과 관련 회귀 검사에 한정되며, 사이트 전체의 검증 완료를 의미하지 않는다.
+
 ## 2026-10-07 추가 확인: 문의 접수 버튼의 문구·표시
 
 - **표현 정정:** 사용자 지적에 따라 받는 쪽의 표현인 ‘접수’를 요청자가 누르는 버튼에서 제거했다. 최종 버튼은 ‘요청 보내기’이며, ‘보내는 중…’, ‘요청을 보냈습니다.’, ‘아직 보낸 요청이 없습니다.’로 관련 안내도 맞췄다. 아래의 ‘요청 접수’는 최초 수정 당시 기록이다.

@@ -2,6 +2,8 @@
 // 학교가 함께 쓰는 계획(/api/teacher/assessment-plans)에 저장되는지, (가짜) 제미나이로 평가결과 문장
 // 초안과 계획서 파일 읽기가 되는지, 생기부 활동 목록으로 넘어가는지, 다시 열어도 남아 있는지를 본다.
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const { startHarness, HttpError } = require('./site-storage-harness.cjs');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const { createTeacherAi } = require('../game-hub-server/teacher-ai');
@@ -117,6 +119,24 @@ const fetchImpl = async (url, options = {}) => {
     assert.equal(put, 200);
     await page.reload();
     await page.locator('.item').first().waitFor();
+    const draftRequests = [];
+    page.on('request', request => { if (new URL(request.url()).pathname === '/api/teacher-ai/draft-criteria') draftRequests.push(request.postDataJSON()); });
+    const beforeInvalid = google.length;
+    const output = path.resolve(__dirname, '../outputs/assessment-element-required-2026-10-07');
+    fs.mkdirSync(output, { recursive: true });
+    for (const element of ['', '   ', '\t\n\u00a0', '\u200b\u2060']) {
+      await page.locator('.item textarea').first().fill(element);
+      if (element === '') await page.screenshot({ path: path.join(output, process.env.ASSESSMENT_BASELINE ? 'before.png' : 'after.png'), fullPage: true });
+      assert.equal(await page.locator('.item .levels-head .btn').isDisabled(), true, '성취기준만 있고 평가요소가 비면 AI 단추가 잠겨야 한다');
+      await page.locator('.item .levels-head .btn').dispatchEvent('click');
+      assert.equal(draftRequests.length, 0, '강제로 click 이벤트를 보내도 AI API를 부르지 않는다');
+      assert.equal(google.length, beforeInvalid, '평가요소가 없으면 외부 AI 호출은 0건이다');
+    }
+    await page.locator('.item .levels-head select').selectOption('3');
+    assert.equal(await page.locator('.item .levels-head .btn').isDisabled(), true, '다시 그려도 필수 입력 잠금이 유지된다');
+    await page.locator('.item .levels-head select').selectOption('4');
+    await page.locator('.item textarea').first().fill('경험을 시로 표현하기');
+    assert.equal(await page.locator('.item .levels-head .btn').isEnabled(), true);
     await page.locator('.item .levels-head .btn').click();
     await page.locator('#toast').filter({ hasText: '초안을 넣었습니다' }).waitFor({ timeout: 15000 });
     assert.deepEqual(await page.locator('.item .level textarea').evaluateAll((els) => els.map((e) => e.value.slice(0, 4))), ['초안 1', '초안 2', '초안 3', '초안 4']);
@@ -125,6 +145,57 @@ const fetchImpl = async (url, options = {}) => {
     assert.match(criteriaCall, /평가요소: 경험을 시로 표현하기/);
     assert.match(criteriaCall, /단계 4개\(매우잘함 \/ 잘함 \/ 보통 \/ 노력요함\)/);
     await waitSaved((list) => list[0]?.criteria?.[0]?.text?.startsWith('초안 1'));
+
+    // 키 확인을 기다리는 동안 평가요소를 지우면 생성 API까지 진행하지 않는다.
+    const criteriaValues = () => page.locator('.item .level textarea').evaluateAll(els => els.map(el => el.value));
+    const existingCriteria = await criteriaValues();
+    const beforeInitCalls = google.length, beforeInitRequests = draftRequests.length;
+    await page.evaluate(() => {
+      window.originalAiForTest = window.ClassroomAI;
+      window.ClassroomAI = { ...window.ClassroomAI, init: async () => {
+        await window.originalAiForTest.init();
+        await new Promise(resolve => { window.releaseAiInitForTest = resolve; });
+      } };
+    });
+    await page.locator('.item .levels-head .btn').click();
+    await page.waitForFunction(() => Boolean(window.releaseAiInitForTest));
+    await page.locator('.item textarea').first().fill('');
+    await page.evaluate(() => { window.ClassroomAI = window.originalAiForTest; window.releaseAiInitForTest(); });
+    await page.locator('#toast').filter({ hasText: '평가 내용이 바뀌어' }).waitFor();
+    assert.equal(draftRequests.length, beforeInitRequests);
+    assert.equal(google.length, beforeInitCalls);
+    assert.deepEqual(await criteriaValues(), existingCriteria);
+    assert.equal(await page.locator('.item .levels-head .btn').isDisabled(), true);
+    await page.locator('.item textarea').first().fill('경험을 시로 표현하기');
+
+    // 요청이 떠난 뒤 지워도 늦게 도착한 초안으로 기존 평가결과를 덮지 않는다.
+    let releaseDraft, responseReady;
+    const draftGate = new Promise(resolve => { releaseDraft = resolve; });
+    const draftResponseReady = new Promise(resolve => { responseReady = resolve; });
+    await page.route('**/api/teacher-ai/draft-criteria', async route => {
+      const response = await route.fetch();
+      const data = await response.json();
+      data.criteria = data.criteria.map(c => ({ ...c, text: '늦게 도착한 초안: ' + c.label }));
+      responseReady();
+      await draftGate;
+      await route.fulfill({ json: data });
+    });
+    const beforeFlightRequests = draftRequests.length;
+    await page.locator('.item .levels-head .btn').click();
+    await draftResponseReady;
+    const duringFlightCalls = google.length;
+    await page.locator('.item textarea').first().fill('');
+    await page.locator('.item .levels-head select').selectOption('4');
+    assert.equal(await page.locator('.item .levels-head .btn').isDisabled(), true, '생성 중 다시 그려진 단추도 잠겨야 한다');
+    await page.locator('.item .levels-head .btn').dispatchEvent('click');
+    assert.equal(draftRequests.length, beforeFlightRequests + 1, '다시 그린 뒤에도 중복 생성 요청은 보내지 않는다');
+    assert.equal(google.length, duringFlightCalls);
+    releaseDraft();
+    await page.waitForFunction(() => !document.querySelector('.item .levels-head .btn').textContent.includes('쓰는 중'));
+    await page.unroute('**/api/teacher-ai/draft-criteria');
+    assert.deepEqual(await criteriaValues(), existingCriteria, '평가요소를 지운 뒤 도착한 응답은 버린다');
+    assert.equal(await page.locator('.item .levels-head .btn').isDisabled(), true);
+    await page.locator('.item textarea').first().fill('경험을 시로 표현하기');
 
     // 계획서 파일을 올리면 읽은 항목을 골라 덧붙인다. 지어낸 코드는 빠진다.
     await page.locator('#import-file').setInputFiles({ name: '수행평가계획.txt', mimeType: 'text/plain', buffer: Buffer.from('5학년 국어 수행평가\n읽기: 글의 짜임\n쓰기: 주장하는 글', 'utf8') });
