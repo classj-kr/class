@@ -18,6 +18,9 @@ async function main() {
       else if (entry.name === 'index.html' && fs.readFileSync(file, 'utf8').includes('/assets/learning-book.js')) books.push('/' + path.relative(root, file).replaceAll('\\', '/'));
     }
   })(path.join(root, 'learning/literacy-numeracy/story-books'));
+  // 책 이름을 넘기면 그 책만 본다: node tests/learning-book-quiz-scroll-browser.cjs world-tales/bambi korea-tales/heungbujeon
+  const only = process.argv.slice(2);
+  if (only.length) books.splice(0, books.length, ...books.filter(b => only.some(o => b.includes('/' + o + '/'))));
   assert.ok(books.length > 0);
   const app = express(); app.use(express.static(root));
   const server = await new Promise(resolve => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
