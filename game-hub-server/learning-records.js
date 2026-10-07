@@ -3,7 +3,7 @@ const express = require('express');
 const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
+const { mathQuestions, isMathCourse, mathUnits, inRange } = require('./learning-record-units');
 const catalog = require('../assets/learning-record-catalog');
 const activities = new Map(catalog.map(row => [row.id, row]));
 const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
@@ -42,17 +42,12 @@ function summarize(events) {
 function createLearningRecords({ pool, requireUser, requireTeacher, requireDatabase, teacherRegistrations, HttpError, asyncRoute }) {
   const router = express.Router();
   const fail = (code, message, status = 400) => { throw new HttpError(status, code, message); };
-  let mathAnswers;
   function grade(activity, event) {
     if (event.kind !== 'answer') return { correct: null, source: 'none' };
     if (activity === 'math-ox') {
-      if (!mathAnswers) {
-        const context = { window: {} };
-        vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../learning/literacy-numeracy/math-ox/data.js'), 'utf8'), context, { timeout: 2000 });
-        mathAnswers = new Map(context.window.MATH_OX_DATA.map(q => [String(q.id), q.answer]));
-      }
-      if (!mathAnswers.has(event.questionKey) || !['O', 'X'].includes(event.response)) fail('INVALID_ANSWER', '문항과 답을 확인해 주세요.');
-      return { correct: mathAnswers.get(event.questionKey) === event.response, source: 'server' };
+      const question = mathQuestions().get(event.questionKey);
+      if (!question || !['O', 'X'].includes(event.response)) fail('INVALID_ANSWER', '문항과 답을 확인해 주세요.');
+      return { correct: question.answer === event.response, source: 'server' };
     }
     // Activity grading is retained as such; it is not a standardized diagnostic score.
     return { correct: typeof event.correct === 'boolean' ? event.correct : null,
@@ -73,8 +68,11 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     let filter = '';
     // Cast calendar dates to timestamp BEFORE AT TIME ZONE. A bare date takes
     // PostgreSQL's timestamptz overload and shifts the day in UTC DB sessions.
-    if (range) { args.push(range.from, range.to); filter = " AND recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul' AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul'"; }
-    const events = providedEvents || (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
+    const course = isMathCourse(row);
+    if (range && !range.all && !course) { args.push(range.from, range.to); filter = " AND recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul' AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul'"; }
+    const savedEvents = providedEvents || (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
+    const events = course ? savedEvents.filter(event => inRange(event, range)) : savedEvents;
+    const units = mathUnits(row, savedEvents, range, summarize);
     return {
       id: row.id, activity: row.activity, domain: activities.get(row.activity)?.domain,
       contentKey: row.content_key, contentVersion: row.content_version, title: row.title, href: row.href,
@@ -82,12 +80,22 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       progress: { current: row.progress_current, total: row.progress_total },
       startedAt: row.started_at, updatedAt: row.updated_at, completedAt: row.completed_at,
       summary: summarize(events),
+      ...(units ? { units } : {}),
       ...(detail ? { checkpoint: row.checkpoint, events: events.map(e => ({
         id: String(e.id), kind: e.kind, questionKey: e.question_key, response: e.response, snapshot: e.snapshot,
         correct: e.correct, scoringSource: e.scoring_source, attemptNumber: e.attempt_number,
         durationMs: e.duration_ms, recordedAt: e.recorded_at
       })) } : {})
     };
+  }
+  function unitDetail(session, unit) {
+    if (!unit) return session;
+    const record = session.units?.find(item => item.unit === unit);
+    if (!record) fail('NOT_FOUND', '단원 기록을 찾을 수 없어요.', 404);
+    return { ...session, ...record, events: session.events.filter(event => {
+      const question = mathQuestions().get(event.questionKey);
+      return event.kind === 'answer' && question?.subject === session.contentKey && question.unit === unit;
+    }) };
   }
   function dateRange(query) {
     const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
@@ -155,7 +163,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     if (!uuid.test(req.params.id)) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
     const row = (await pool.query('SELECT * FROM learning_record_sessions WHERE id = $1 AND user_id = $2', [req.params.id, user.id])).rows[0];
     if (!row) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
-    res.json({ session: await serialize(pool, row, true) });
+    res.json({ session: unitDetail(await serialize(pool, row, true), req.query.unit) });
   }));
   router.post('/sessions/:id/changes', asyncRoute(async (req, res) => {
     const { user, membership } = await student(req), b = req.body || {};
@@ -181,8 +189,9 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
         if (previous.payload_hash !== hash) fail('MUTATION_REUSED', '이미 사용한 저장 요청입니다.', 409);
         const session = await serialize(db, row, true); await db.query('COMMIT'); return res.json({ session });
       }
+      const course = isMathCourse(row);
       const reviewingBook = row.status === 'completed' && b.complete === true && ['korea-tales', 'world-tales', 'world-novels', 'poetry'].includes(row.activity);
-      if (row.revision !== b.revision || (row.status !== 'active' && !reviewingBook)) fail('RECORD_CONFLICT', '다른 화면에서 진도가 바뀌었어요. 저장된 기록을 다시 불러와 주세요.', 409);
+      if (row.revision !== b.revision || (row.status !== 'active' && !reviewingBook && !course)) fail('RECORD_CONFLICT', '다른 화면에서 진도가 바뀌었어요. 저장된 기록을 다시 불러와 주세요.', 409);
       for (const e of b.events) {
         const score = grade(row.activity, e);
         const attempt = (await db.query('SELECT COUNT(*)::int AS count FROM learning_record_events WHERE session_id = $1 AND question_key = $2 AND kind = $3', [row.id, e.questionKey, e.kind])).rows[0].count + 1;
@@ -192,7 +201,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       const updated = (await db.query(`UPDATE learning_record_sessions SET checkpoint = $2::jsonb, progress_current = $3,
         progress_total = $4, status = CASE WHEN $5 THEN 'completed' ELSE 'active' END,
         completed_at = CASE WHEN $5 THEN COALESCE(completed_at, NOW()) ELSE NULL END, revision = revision + 1, updated_at = NOW()
-        WHERE id = $1 RETURNING *`, [row.id, JSON.stringify(b.checkpoint), p.current, p.total, Boolean(b.complete)])).rows[0];
+        WHERE id = $1 RETURNING *`, [row.id, JSON.stringify(b.checkpoint), p.current, p.total, !course && Boolean(b.complete)])).rows[0];
       await db.query('INSERT INTO learning_record_mutations VALUES ($1,$2,$3)', [row.id, b.mutationId, hash]);
       const session = await serialize(db, updated, true); await db.query('COMMIT'); res.json({ session });
     } catch (error) { await db.query('ROLLBACK'); throw error; } finally { db.release(); }
@@ -268,9 +277,9 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const rows = found.slice(0, pageSize);
     const eventGroups = new Map(rows.map(row => [row.id, []]));
     if (rows.length) {
-      const events = (await pool.query(`SELECT session_id, kind, question_key, correct, attempt_number FROM learning_record_events
-        WHERE session_id=ANY($1::uuid[]) AND ($2::date IS NULL OR recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul'
-        AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul') ORDER BY id`, [rows.map(row => row.id), range.from, range.to])).rows;
+      const events = (await pool.query(`SELECT id, session_id, kind, question_key, correct, attempt_number, recorded_at FROM learning_record_events
+        WHERE session_id=ANY($1::uuid[]) AND ($2::date IS NULL OR session_id=ANY($4::uuid[]) OR recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul'
+        AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul') ORDER BY id`, [rows.map(row => row.id), range.from, range.to, rows.filter(isMathCourse).map(row => row.id)])).rows;
       for (const event of events) eventGroups.get(event.session_id).push(event);
     }
     const sessions = [];
@@ -291,7 +300,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       }
     }
     if (!readable) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
-    res.json({ session: await serialize(pool, row, true) });
+    res.json({ session: unitDetail(await serialize(pool, row, true), req.query.unit) });
   }));
   return { router, initialize };
 }

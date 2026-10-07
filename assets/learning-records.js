@@ -35,6 +35,9 @@
     if (summary.selfAssessments) parts.push(`스스로 점검 ${summary.selfAssessments}회`);
     return parts.join(' · ') || '응답 없음';
   }
+  // The same unit records feed the pupil's history and the teacher's report.
+  const recordRows = sessions => sessions.flatMap(session => session.units?.length
+    ? session.units.map(unit => ({ ...session, ...unit, units: undefined })) : [session]);
   function responseText(value) {
     if (value == null) return '—';
     if (typeof value !== 'object') return ({ known: '알고 있어요', unknown: '아직 어려워요', review: '다시 볼래요' }[value] || String(value));
@@ -117,6 +120,13 @@
       const s = this.session; if (!s) return;
       this.title.textContent = this.title.title = s.title;
       this.progress.replaceChildren(el('p', s.status === 'completed' ? '완료' : s.progress.total == null ? '진행 중' : `${s.progress.current} / ${s.progress.total}`));
+      if (s.units) {
+        const unit = s.units.find(row => row.unit === s.checkpoint?.unit);
+        if (unit) {
+          this.title.textContent = this.title.title = unit.title;
+          this.progress.textContent = `${unit.status === 'completed' ? '단원 완료 · ' : ''}${unit.progress.current} / ${unit.progress.total}`;
+        } else this.progress.textContent = `${s.units.filter(row => row.status === 'completed').length}개 단원 완료`;
+      }
       this.setStatus(this.preview ? '둘러보기 · 미저장' : '저장 완료');
     }
     async start({ contentKey, title, version = '1', checkpoint = {}, href = location.pathname }) {
@@ -173,14 +183,14 @@
           const data = await this.history(currentQuery + `&offset=${offset}`);
           if (!offset) list.replaceChildren();
           if (!data.sessions.length && !offset) list.append(el('p', this.preview ? '학생 로그인 필요' : '기록 없음', 'empty'));
-          for (const row of data.sessions) {
+          for (const row of recordRows(data.sessions)) {
             const card = el('article', null, 'row'), top = el('div', null, 'row-top'), label = el('div');
             label.append(el('p', date(row.updatedAt), 'muted'), el('h3', row.title));
             top.append(label, el('span', row.status === 'completed' ? '완료' : '진행 중', `badge ${row.status === 'completed' ? 'done' : ''}`));
             card.append(top, el('p', summaryLine(row.summary), 'muted'));
-            const actions = el('div', null, 'actions'), detail = el('button', '응답 보기'); detail.onclick = () => this.showDetail(row.id);
+            const actions = el('div', null, 'actions'), detail = el('button', '응답 보기'); detail.onclick = () => this.showDetail(row.id, row.unit);
             actions.append(detail);
-            if (row.status === 'active') { const link = el('a', '이어 하기'); const url = new URL(row.href, location.origin); url.searchParams.set('record', row.contentKey); link.href = url.pathname + url.search; actions.append(link); }
+            if (row.status === 'active' || row.unit) { const link = el('a', row.status === 'completed' ? '다시 보기' : '이어 하기'); const url = new URL(row.href, location.origin); url.searchParams.set('record', row.contentKey); if (row.unit) url.searchParams.set('unit', row.unit); link.href = url.pathname + url.search; actions.append(link); }
             card.append(actions); list.append(card);
           }
           if (data.nextOffset != null) { const more = el('button', '이전 기록 더 보기'); more.onclick = () => { more.remove(); fetchPage(data.nextOffset); }; list.append(more); }
@@ -190,10 +200,10 @@
       load.onclick = () => { currentQuery = `&from=${from.value}&to=${to.value}`; fetchPage(); };
       all.onclick = () => { currentQuery = ''; fetchPage(); }; load.click();
     }
-    async showDetail(id) {
+    async showDetail(id, unit) {
       const { body } = this.modal('학습 응답');
       try {
-        const { session } = await request(`/sessions/${id}`);
+        const { session } = await request(`/sessions/${id}${unit ? '?unit=' + encodeURIComponent(unit) : ''}`);
         body.append(el('h3', session.title), el('p', summaryLine(session.summary), 'muted'));
         for (const e of session.events) {
           const row = el('div', null, 'detail');
@@ -219,5 +229,5 @@
       const history = el('button', '학습 기록 보기', 'primary'); history.onclick = () => this.showHistory(); body.append(history);
     }
   }
-  window.LearningRecords = Object.freeze({ create: (activity, options) => new RecordClient(activity, options), request, summaryLine, responseText, today });
+  window.LearningRecords = Object.freeze({ create: (activity, options) => new RecordClient(activity, options), request, summaryLine, responseText, today, recordRows });
 })();
