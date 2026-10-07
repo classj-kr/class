@@ -157,7 +157,7 @@ async function main() {
     assert.equal(await page.locator('#records .record-card').count(), 23);
     await page.locator('#records .detail-button').first().click();
     await page.locator('#detailBody .answer').waitFor();
-    assert.match(await page.locator('#detailBody').innerText(), /응답: O/);
+    assert.equal(await page.locator('#detailBody .response-value').innerText(), 'O');
     await page.locator('#closeDetail').click();
     await page.getByRole('button', { name: '읽기', exact: true }).click();
     assert.equal(await page.locator('#records .record-card').count(), 23);
