@@ -45,11 +45,8 @@ test("PUT /school-admin/room-timetable rejects a double-booked room slot the sam
   assert.doesNotMatch(body, /teacher_user_id/);
 });
 
-test("GET /school-admin/specialist-teachers excludes admins and only returns linked, active teachers", () => {
-  const body = handlerBody(serverSource, `router.get("/school-admin/specialist-teachers"`);
-  assert.match(body, /active = TRUE AND user_id IS NOT NULL/);
-  assert.match(body, /teacher_type NOT IN \('관리자', '교장', '교감'\)/);
-});
+// 목록의 포함 대상·이메일 연결·명단 저장 반영은 school-timetable-data.test.mjs에서
+// 실제 SQL로 검증한다. 관리자 겸임과 미로그인 교사를 제외하던 과거 조건은 제거했다.
 
 test("schooladmin adds nav tabs for both new screens and wires them into switchTab", () => {
   assert.match(schoolAdminIndexSource, /data-tab="specialistTimetable"/);

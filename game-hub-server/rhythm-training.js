@@ -56,7 +56,7 @@ function createRhythmTraining({ platform, now = Date.now }) {
         prune();
         if (rooms.size >= 256) throw fail(503, '열린 방이 많아요. 잠시 후 다시 시도해 주세요.');
         let code;
-        do { code = String(crypto.randomInt(100000, 1000000)); } while (rooms.has(code));
+        do { code = platform.roomCodes ? await platform.roomCodes.allocate('rhythm') : String(crypto.randomInt(1000, 10000)); } while (rooms.has(code));
         const player = { id: crypto.randomUUID(), token: token(), host: true, name: '선생님' };
         const room = { code, players: [player], config: Core.settings(req.body), phase: 'lobby', round: null, updated: now() };
         rooms.set(code, room);
@@ -140,6 +140,6 @@ function createRhythmTraining({ platform, now = Date.now }) {
         if (res.headersSent) return next(error);
         res.status(error.status || 500).json({ message: error.status ? error.message : '연결에 문제가 생겼어요. 잠시 후 다시 시도해 주세요.' });
     });
-    return { router };
+    return { router, hasRoomCode(code) { prune(); return rooms.has(code); } };
 }
 module.exports = { createRhythmTraining };

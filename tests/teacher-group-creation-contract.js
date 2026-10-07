@@ -44,7 +44,7 @@ function answer(sql, params) {
     const uniq = new Map(hit.map((row) => [`${row.grade}-${row.class_number}`, row]));
     return { rows: [...uniq.values()], rowCount: uniq.size };
   }
-  if (text.includes("SELECT 1 FROM school_students")) {
+  if (text.trim().startsWith("SELECT 1 FROM school_students")) {
     const hit = studentRows.filter((row) => row.school_id === params[0] && row.academic_year === params[1]
       && row.grade === params[2] && row.class_number === params[3]);
     return { rows: hit.slice(0, 1), rowCount: Math.min(hit.length, 1) };
@@ -77,7 +77,7 @@ function answer(sql, params) {
     const auto = text.includes("auto_homeroom");
     inserted.push({ school_id: params[0], teacher_user_id: params[1], academic_year: params[2], group_name: params[3], group_type: auto ? "homeroom" : params[4], grade: auto ? params[4] : params[5], class_number: auto ? params[5] : params[6] });
     const row = inserted[inserted.length - 1];
-    groupRows.push({ id: inserted.length, group_name: row.group_name, group_type: row.group_type, grade: row.grade, class_number: row.class_number, academic_year: row.academic_year, sort_order: 0, student_count: 0, auto_homeroom: auto });
+    groupRows.push({ ...row, id: inserted.length, sort_order: 0, student_count: 0, auto_homeroom: auto });
     return { rows: [{ id: inserted.length }], rowCount: 1 };
   }
   if (text.includes("FROM teacher_groups") && text.includes("group_name = $3")) {
@@ -85,7 +85,10 @@ function answer(sql, params) {
     return { rows: hit.slice(0, 1), rowCount: Math.min(hit.length, 1) };
   }
   if (text.includes("FROM teacher_groups g")) {
-    const hit = groupRows.filter((row) => row.academic_year === params[1]);
+    const hit = groupRows.filter((row) => row.academic_year === params[1] && row.school_id === params[2]
+      && (row.group_type !== 'homeroom'
+        || (row.auto_homeroom ? teacherRows.some(t => t.active && t.school_id === row.school_id && t.grade === row.grade && t.class_number === row.class_number)
+          : studentRows.some(s => s.school_id === row.school_id && s.academic_year === row.academic_year && s.grade === row.grade && s.class_number === row.class_number))));
     return { rows: hit, rowCount: hit.length };
   }
   return { rows: [], rowCount: 0 };
@@ -161,7 +164,8 @@ app.use((error, _req, res, _next) => res.status(error.status || 500).json({ code
 
     // 4-1. 담임 배정을 6-4 → 6-2 로 바꾸면 저절로 만든 6-4 카드는 사라져야 한다.
     //      교사가 직접 가져온 학급(자동 표시 없음)은 남아야 한다.
-    groupRows.push({ id: 99, group_name: "6-1", group_type: "homeroom", grade: 6, class_number: 1, academic_year: THIS_YEAR, sort_order: 0, student_count: 0, auto_homeroom: false });
+    studentRows.push({ school_id: SCHOOL_ID, academic_year: THIS_YEAR, grade: 6, class_number: 1 });
+    groupRows.push({ id: 99, school_id: SCHOOL_ID, teacher_user_id: 7, group_name: "6-1", group_type: "homeroom", grade: 6, class_number: 1, academic_year: THIS_YEAR, sort_order: 0, student_count: 0, auto_homeroom: false });
     teacherRows = [{ user_id: 7, school_id: SCHOOL_ID, active: true, grade: 6, class_number: 2, academic_year: THIS_YEAR }];
     const switched = await (await get(`/api/teacher/groups?year=${THIS_YEAR}`)).json();
     const names = switched.groups.map((g) => g.group_name).sort().join(" ");

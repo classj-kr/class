@@ -30,6 +30,7 @@ const SCHEMA = `
   CREATE TABLE classroom_classes (id BIGSERIAL PRIMARY KEY, school_id BIGINT NOT NULL);
   CREATE TABLE classroom_students (
     id BIGSERIAL PRIMARY KEY, class_id BIGINT NOT NULL, user_id BIGINT,
+    roster_active BOOLEAN NOT NULL DEFAULT TRUE,
     student_email TEXT, guardian1_email TEXT, guardian2_email TEXT
   );
   CREATE TABLE school_students (
@@ -146,7 +147,7 @@ test("who sees the board is decided by the same rule that builds the board list"
 });
 
 test("the guardian view is decided before any teacher lookup", () => {
-  const scope = /async function classboardScope\(user, \{ asGuardian = false \} = \{\}\)[\s\S]*?const teacherRes/.exec(source);
+  const scope = /async function classboardScope\(user, \{ asGuardian = false \} = \{\}\)[\s\S]*?const info = await teacherRegistration/.exec(source);
   assert.ok(scope, "classboardScope must check asGuardian before looking up the teacher registration");
   assert.match(scope[0], /if \(children\.length > 0\) return guardianClassboardScope\(children\);/);
   assert.doesNotMatch(scope[0], /await userClassId\(/);

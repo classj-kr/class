@@ -1919,7 +1919,8 @@
                             : chordExample(entry)
         ));
         /* 근음을 옮겨도 오선과 건반 안에 머무는 차시에서만 근음을 고르게 한다. */
-        const pickable = exampleBlocks.length > 0
+        els.lessonKeys.hidden = course.id === "rhythm";
+        const pickable = !els.lessonKeys.hidden && exampleBlocks.length > 0
             && exampleBlocks.every(block => block.span <= 12);
         setExampleRoot(N.natural(4 * 7), false);
         els.lessonKeysLabel.textContent = label("Root", "근음");

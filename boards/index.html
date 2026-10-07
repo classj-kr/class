@@ -10,7 +10,7 @@
 <body>
   <main>
     <section id="entry" class="entry">
-      <form id="joinForm" class="panel join-panel"><label>방번호<input id="joinCode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6자리" required autocomplete="off"></label><div class="form-row"><label>번호<input id="joinNumber" type="number" min="1" max="60" required></label><label>이름 또는 별명<input id="joinName" maxlength="20" required autocomplete="off"></label></div><button class="primary full" type="submit">입장</button><p id="joinError" class="error" role="alert"></p></form>
+      <form id="joinForm" class="panel join-panel"><label>방번호<input id="joinCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="4자리" required autocomplete="off"></label><div class="form-row"><label>번호<input id="joinNumber" type="number" min="1" max="60" required></label><label>이름 또는 별명<input id="joinName" maxlength="20" required autocomplete="off"></label></div><button class="primary full" type="submit">입장</button><p id="joinError" class="error" role="alert"></p></form>
     </section>
 
     <section id="teacherHome" hidden>
@@ -48,7 +48,7 @@
   <dialog id="reviewDialog"><form id="reviewForm"><div class="dialog-head"><h2>수정 요청하기</h2><button type="button" data-close aria-label="닫기">✕</button></div><p id="reviewContent"></p><label>수정할 내용<textarea id="reviewFeedback" maxlength="500" rows="4" required></textarea></label><p class="form-error error" role="alert"></p><button type="submit" class="primary full">수정 요청</button></form></dialog>
 
   <dialog id="buildDialog"><form id="buildForm"><div class="dialog-head"><h2>승인 문제로 세트 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>문제 세트 제목<input id="setName" maxlength="80" required></label><p class="hint">승인 문항만 선택할 수 있습니다.</p><div id="approvedChoices"></div><p class="form-error error" role="alert"></p><button type="submit" class="primary full">세트 만들기</button></form></dialog>
-  <script src="app.js"></script>
+  <script src="app.js?v=20261007-four-digit"></script>
 </body>
 </html>
 

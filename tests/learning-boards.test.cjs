@@ -15,7 +15,8 @@ test('student authorship, teacher review, immutable approved sets, grading and a
   try {
     await request('/mine', 'GET', undefined, '', 401);
     const { board: b } = await make(); const route = '/' + b.id;
-    assert.match(b.code, /^\d{6}$/);
+    assert.match(b.code, /^\d{4}$/);
+    assert.equal((await h.roomCodes.lookup(b.code)).activity, 'board');
     await request(route, 'GET', undefined, '', 401);
     await request(route, 'PATCH', { closed: true }, other, 403);
     const alice = (await request('/join', 'POST', { code: b.code, number: 1, name: '하나' }, '')).cookie;
@@ -69,6 +70,7 @@ test('student authorship, teacher review, immutable approved sets, grading and a
     await request('/join', 'POST', { code: b.code, number: 3, name: '셋' }, '', 403);
     await request(route, 'GET', undefined, alice); // locks block new joins, not existing reads
     const rotated = await request(route + '/rotate-code', 'POST'); assert.notEqual(rotated.code, b.code);
+    assert.match(rotated.code, /^\d{4}$/);
     await request('/join', 'POST', { code: b.code, number: 3, name: '셋' }, '', 404);
     const qr = await fetch(h.base + '/api/boards' + route + '/qr', { headers: { Cookie: teacher } });
     assert.equal(qr.status, 200); assert.match(await qr.text(), /<svg/);
@@ -96,5 +98,24 @@ test('student authorship, teacher review, immutable approved sets, grading and a
       assert.ok(visible.posts.every(row => row.id !== p.id));
       await request(base + '/posts/' + p.id, 'DELETE', undefined, student, 403);
     }
+  } finally { await h.close(); }
+});
+
+test('existing six-digit board invitations survive restart and rotate to four digits', async () => {
+  const h = await createHarness();
+  async function request(path, body, teacher = true) {
+    const response = await fetch(h.base + '/api/boards' + path, { method: 'POST',
+      headers: { 'Content-Type': 'application/json', Cookie: teacher ? 'test_teacher=1' : '' }, body: JSON.stringify(body) });
+    assert.ok(response.ok, await response.clone().text());
+    return response.json();
+  }
+  try {
+    const { board } = await request('/', { title: '기존 게시판', layout: 'wall' });
+    await h.pool.query("UPDATE learning_boards SET code='123456' WHERE id=$1", [board.id]);
+    await h.initialize();
+    await request('/join', { code: '123456', number: 1, name: '학생' }, false);
+    const rotated = await request('/' + board.id + '/rotate-code', {});
+    assert.match(rotated.code, /^\d{4}$/);
+    await request('/join', { code: rotated.code, number: 2, name: '학생둘' }, false);
   } finally { await h.close(); }
 });

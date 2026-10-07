@@ -53,7 +53,9 @@
     history.replaceState(null, '', '?' + query);
   }
   $('joinCode').value = (params.get('code') || '').replace(/\D/g, '').slice(0, 6);
-  $('joinCode').addEventListener('input', () => { $('joinCode').value = $('joinCode').value.replace(/\D/g, '').slice(0, 6); });
+  // Existing invitation links remain usable; all newly issued codes have four digits.
+  if (/^\d{6}$/.test($('joinCode').value)) { $('joinCode').maxLength = 6; $('joinCode').pattern = '[0-9]{6}'; }
+  $('joinCode').addEventListener('input', () => { $('joinCode').value = $('joinCode').value.replace(/\D/g, '').slice(0, $('joinCode').maxLength); });
   handleForm('joinForm', async () => {
     const result = await api('/join', 'POST', { code: $('joinCode').value, number: Number($('joinNumber').value), name: $('joinName').value });
     navigateBoard(result.board.id);

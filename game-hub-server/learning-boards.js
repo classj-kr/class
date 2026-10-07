@@ -8,7 +8,7 @@ const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
 const MAX_POSTS = 200;
 
-function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter }) {
+function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode }) {
   const router = express.Router();
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   function text(value, max, required = false) {
@@ -39,6 +39,8 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query('BEGIN');
       await db.query("SELECT pg_advisory_xact_lock(hashtext('006-learning-boards'))");
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '006-learning-boards.sql'), 'utf8'));
+      await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
+      await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('COMMIT');
     } catch (error) { await db.query('ROLLBACK'); throw error; }
     finally { db.release(); }
@@ -121,7 +123,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       if (count.rows[0].count >= 50) fail(409, 'BOARD_LIMIT', '게시판는 50개까지 보관할 수 있어요. 사용하지 않는 게시판를 정리해 주세요.');
       let created;
       for (let attempt = 0; attempt < 20 && !created; attempt++) {
-        const code = String(crypto.randomInt(100000, 1000000));
+        const code = allocateRoomCode ? await allocateRoomCode(db) : String(crypto.randomInt(1000, 10000));
         created = (await db.query(`INSERT INTO learning_boards(id, owner_id, code, title, description, layout, columns, slots)
           VALUES($1,$2,$3,$4,$5,$6,$7::jsonb,$8) ON CONFLICT(code) DO NOTHING RETURNING *`,
         [id(), user.id, code, title, description, body.layout, JSON.stringify(labels), slots])).rows[0];
@@ -135,7 +137,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   router.post('/join', asyncRoute(async (req, res) => {
     failureLimiter.enforce(req, 'board-join');
     const code = text(req.body?.code, 6, true);
-    if (!/^\d{6}$/.test(code)) fail(400, 'INVALID_CODE', '방번호 6자리를 입력해 주세요.');
+    if (!/^\d{4}$|^\d{6}$/.test(code)) fail(400, 'INVALID_CODE', '방번호 4자리를 입력해 주세요.');
     const name = text(req.body?.name, 20, true);
     const number = integer(req.body?.number, 1, 60);
     const db = await pool.connect();
@@ -214,7 +216,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const result = await transaction(req, async (db, b) => {
       // Serialize code rotation and allocation through the same unique constraint.
       for (let attempt = 0; attempt < 20; attempt++) {
-        const code = String(crypto.randomInt(100000, 1000000));
+        const code = allocateRoomCode ? await allocateRoomCode(db) : String(crypto.randomInt(1000, 10000));
         if (code === b.code) continue;
         await db.query('SAVEPOINT rotate_code');
         try {

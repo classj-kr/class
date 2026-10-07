@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#172554">
   <title>방번호 입력</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261007-room-entry">
 </head>
 <body>
   <main class="shell">
@@ -14,13 +14,12 @@
       <h1 id="pageTitle">방번호 입력</h1>
       <form id="roomForm">
         <label class="sr-only" for="roomCode">방번호</label>
-        <input id="roomCode" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="방번호" autofocus>
+        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="one-time-code" placeholder="방번호 4자리" autofocus>
         <button type="submit">입장</button>
       </form>
-      <p>방번호 4자리 또는 게시판 번호 6자리를 입력하세요.</p>
       <p id="status" class="status" role="status"></p>
     </section>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js?v=20261007-unified-entry"></script>
 </body>
 </html>

@@ -17,8 +17,7 @@ test("learning menus use the four top-level domains", () => {
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
       .sort(),
-    // class-race 는 과목 영역이 아니라 여러 앱이 함께 쓰는 학급 순위전 방이다(2026-09).
-    ["arts", "class-race", "games", "inquiry", "literacy-numeracy"],
+    ["arts", "games", "inquiry", "literacy-numeracy"],
   );
 
   const menu = read("index.html");

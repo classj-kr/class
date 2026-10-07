@@ -30,7 +30,7 @@ test("GET /teacher/available-classes auto-provisions the requesting teacher's ow
 
 test("the teacher/class roster query never shows a student twice when they exist in both school_students and classroom_students", () => {
   const body = handlerBody(serverSource, `router.get("/teacher/class"`);
-  assert.match(body, /FROM classroom_students s\s+WHERE s\.class_id = \$5\s+AND NOT EXISTS/);
+  assert.match(body, /FROM classroom_students s\s+WHERE s\.class_id = \$5\s+AND s\.roster_active = TRUE\s+AND NOT EXISTS/);
 });
 
 test("userClassId provisions classroom_classes with the teacher's real name, not a placeholder label", () => {

@@ -33,7 +33,7 @@ function assertPlaceholderArity(sql, params) {
 // user 4: homeroom teacher whose class is recorded ONLY as a '담임 학급' group
 //         (no grade/class on classroom_teachers) -- the dashboard opens by groupId
 const TEACHERS = {
-  1: { school_id: 5, teacher_type: "homeroom", subject_name: null, teacher_name: "담임" },
+  1: { school_id: 5, teacher_type: "homeroom", subject_name: null, teacher_name: "담임", academic_year: 2026, grade: 3, class_number: 2 },
   2: { school_id: 5, teacher_type: "전담", subject_name: "음악", teacher_name: "음악쌤" },
   4: { school_id: 5, teacher_type: "homeroom", subject_name: null, teacher_name: "새담임" }
 };
@@ -74,7 +74,8 @@ function answer(sql, params) {
 
   // requireTeacher's registration probe
   if (text.includes("classroom_teachers t") && text.includes("sc.enabled = TRUE")) {
-    return { rows: TEACHERS[Number(params?.[0])] ? [{ ok: 1 }] : [] };
+    const registration = TEACHERS[Number(params?.[0])];
+    return { rows: registration ? [registration] : [] };
   }
   // classboardScope's teacher lookup (by user id or registered google email)
   if (text.includes("FROM classroom_teachers t") && text.includes("LOWER(t.google_email)")) {
@@ -84,7 +85,7 @@ function answer(sql, params) {
   // classIdFromHomeroomGroup: a homeroom assignment that lives only in teacher_groups
   // (the student membership predicate also mentions group_type = 'homeroom', so key
   //  on the teacher_user_id clause that only this lookup has)
-  if (text.includes("teacher_user_id = $1 AND group_type = 'homeroom'")) {
+  if (text.includes("g.teacher_user_id = $1 AND g.group_type = 'homeroom'")) {
     return { rows: Number(params?.[0]) === 4 ? homeroomGroupRows : [] };
   }
   if (text.includes("SELECT id FROM classroom_classes") && text.includes("academic_year = $2 AND grade = $3")) {

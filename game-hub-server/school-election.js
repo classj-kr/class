@@ -2,7 +2,7 @@ const crypto = require("crypto");
 const express = require("express");
 
 // Voters and ballots have no shared identifier. Ballots store no account or timestamp.
-function createSchoolElection({ pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration, isReservedCode, generateRoomCode, HttpError, asyncRoute }) {
+function createSchoolElection({ pool, sessionUser, requireTeacher, requireDatabase, teacherRegistration, isReservedCode, generateRoomCode, allocateRoomCode, HttpError, asyncRoute }) {
   const router = express.Router();
   const makeRoomCode = typeof generateRoomCode === "function"
     ? generateRoomCode
@@ -212,7 +212,7 @@ function createSchoolElection({ pool, sessionUser, requireTeacher, requireDataba
     const config = configuration(req.body || {});
     const election = await transaction(async (db) => {
       for (let attempt = 0; attempt < 20; attempt++) {
-        const code = String(makeRoomCode());
+        const code = allocateRoomCode ? await allocateRoomCode(db) : String(makeRoomCode());
         if (!/^\d{4}$/.test(code)) continue;
         if (typeof isReservedCode === "function" && await isReservedCode(code)) continue;
         const inserted = await db.query(

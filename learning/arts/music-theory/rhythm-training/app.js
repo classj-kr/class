@@ -295,7 +295,7 @@
     action('roomStop', async () => updateRoom(await roomApi('/stop', {})));
     action('leave', async () => { await roomApi('/leave', {}); credentials = null; room = null; pendingResult = null; saveRoom(); setMode('class'); fresh(); });
     action('copy', async () => {
-        const link = new URL(location.href); link.search = ''; link.searchParams.set('room', credentials.code);
+        const link = new URL('/room/', location.origin); link.searchParams.set('code', credentials.code);
         try { await navigator.clipboard.writeText(link.href); notice('초대 링크를 복사했어요.'); }
         catch (_) { notice('초대 주소: ' + link.href); }
     });
@@ -304,14 +304,20 @@
     $('name').value = window.CLASS_PLAYER_NAME || '';
     fresh();
     const code = new URLSearchParams(location.search).get('room');
-    if (code && /^\d{6}$/.test(code)) { $('code').value = code; setMode('class'); }
+    if (code && /^\d{4}$|^\d{6}$/.test(code)) { $('code').value = code; if(code.length===6){$('code').maxLength=6;$('code').pattern='[0-9]{6}';} setMode('class'); }
     try {
         const saved = JSON.parse(sessionStorage.getItem(storageKey));
-        if (saved?.token && /^\d{6}$/.test(saved.code)) {
+        if (saved?.token && /^\d{4}$|^\d{6}$/.test(saved.code) && (!code || saved.code === code)) {
             credentials = { token: saved.token, code: saved.code }; pendingResult = saved.pendingResult || null;
             setMode('class'); if (pendingResult) void submitResult(); void poll();
         }
     } catch (_) {}
+    const entryName = String(new URLSearchParams(location.search).get('name') || '').trim().slice(0, 20);
+    if (code && /^\d{4}$/.test(code) && entryName && !credentials) {
+        $('name').value = entryName; $('join').disabled = true;
+        void api('/rooms/' + code + '/join', { name: entryName }).then(acceptRoom)
+            .catch(error => notice(error.message)).finally(() => { $('join').disabled = false; });
+    }
     void api('/session').then(data => { $('create').hidden = !data.isTeacher; $('teacherHint').hidden = data.isTeacher; }).catch(() => {});
     setInterval(poll, 1200);
 })();

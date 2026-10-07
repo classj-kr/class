@@ -1753,18 +1753,27 @@
         }
 
         // 4. Student Roster Checklist & Birthday Check & Class Switcher
+        let rosterLoadVersion = 0;
         async function fetchRosterAndRenderChecklist(classId = null) {
+            const version = ++rosterLoadVersion;
+            activeScheduleClassId = null;
+            canEditSchedules = false;
             try {
                 const classSwitcherSelect = document.getElementById("classSwitcherSelect");
                 
                 // Fetch available classes for switcher
                 const availableRes = await fetch("/api/teacher/available-classes");
                 const availableData = await availableRes.json();
+                if (version !== rosterLoadVersion) return;
+                if (!availableRes.ok) throw new Error(availableData.message || "학급 목록을 불러오지 못했습니다.");
+                const prevVal = classSwitcherSelect?.value;
+                if (classSwitcherSelect) {
+                    classSwitcherSelect.replaceChildren();
+                    classSwitcherSelect.hidden = true;
+                }
                 
                 if (availableData.classes && availableData.classes.length > 0 && classSwitcherSelect) {
                     classSwitcherSelect.hidden = false;
-                    const prevVal = classSwitcherSelect.value;
-                    classSwitcherSelect.replaceChildren();
                     // 이 계정 자신의 담임 학급이 아직 정해지지 않은 상태(관리자 등)에서
                     // <select>가 아무것도 선택 안 된 채로 남으면 브라우저가 그냥 목록의
                     // 첫 번째 학급(다른 담임의 반)을 자동으로 보여준다 -- 마치 그게 내
@@ -1796,8 +1805,9 @@
                 const fetchUrl = classId ? `/api/teacher/class?classId=${classId}` : "/api/teacher/class";
                 const res = await fetch(fetchUrl);
                 const data = await res.json();
+                if (version !== rosterLoadVersion) return;
                 if (!res.ok) {
-                    console.error("/api/teacher/class failed:", res.status, data?.error, data?.message);
+                    throw new Error(data?.message || "학급 정보를 불러오지 못했습니다.");
                 }
                 if (data?.classroom) {
                     fetchRealtimeWeatherAndAirQuality(data.classroom.schoolName, data.classroom.locationName);
@@ -1819,11 +1829,14 @@
                     fetchRealtimeWeatherAndAirQuality();
                 }
             } catch (err) {
+                if (version !== rosterLoadVersion) return;
                 console.error("/api/teacher/class request threw:", err);
+                const select = document.getElementById("classSwitcherSelect");
+                if (select) { select.replaceChildren(); select.hidden = true; }
                 rosterStudents = [];
                 activeRosterClass = null;
                 loadMeals(null);
-                rosterLoadMessage = "담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.";
+                rosterLoadMessage = err.message || "담임 학급 정보를 불러오지 못했습니다. 학교 관리자에게 학급 배정을 확인해 주세요.";
                 fetchRealtimeWeatherAndAirQuality();
             }
             document.title = activeRosterClass?.grade && activeRosterClass?.classNumber
@@ -2118,6 +2131,15 @@
             schedulesLoading = true;
             scheduleLoadErrors = [];
             renderSchedules();
+            if (!classId) {
+                activeScheduleClassId = null;
+                canEditSchedules = false;
+                scheduleEditor.hidden = true;
+                schedulesLoading = false;
+                renderSchedules();
+                renderCalendar();
+                return;
+            }
             const query = classId ? "?classId=" + encodeURIComponent(classId) : "";
             const grade = activeRosterClass?.grade;
             const results = await Promise.allSettled([

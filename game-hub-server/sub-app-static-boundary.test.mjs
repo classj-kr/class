@@ -96,6 +96,6 @@ test("sub-app internals are not reachable by URL, however the path is spelled", 
     assert.deepEqual(await status(requestPath), { status: 302, location: "/" }, requestPath);
   }
   // Real pages under those folders are untouched.
-  assert.equal((await status("/learning/class-race/")).status, 200);
+  assert.equal((await status("/learning/class-race/")).status, 410);
   assert.equal((await status("/learning/inquiry/human-body/")).status, 200);
 });

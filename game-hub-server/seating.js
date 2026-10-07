@@ -122,7 +122,7 @@ function pickRejection({ layout, student, seatIndex, picks, existingPick }) {
 
 function createSeating({
   pool, sessionUser, guestAccess, requireTeacher, requireDatabase, teacherRegistration,
-  avatarUrl, isReservedCode, HttpError, asyncRoute
+  avatarUrl, isReservedCode, allocateRoomCode, HttpError, asyncRoute
 }) {
   const router = express.Router();
 
@@ -477,7 +477,7 @@ function createSeating({
       );
       let room = null;
       for (let attempt = 0; attempt < 20 && !room; attempt += 1) {
-        const code = makeCode();
+        const code = allocateRoomCode ? await allocateRoomCode(client) : makeCode();
         if (typeof isReservedCode === "function" && await isReservedCode(code)) continue;
         const inserted = await client.query(
           `INSERT INTO seating_rooms (room_code, school_id, class_id, academic_year, grade, class_number, creator_user_id, layout)

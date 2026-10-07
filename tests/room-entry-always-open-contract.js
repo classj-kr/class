@@ -1,4 +1,4 @@
-// 학급 순위전은 늘 열어 두는 버튼이다.
+// 방번호 입구은 늘 열어 두는 버튼이다.
 //
 // 반마다 공개 여부를 정하는 버튼도 아니고, 전체 사용 중지를 걸 버튼도 아니다.
 // 공개 설정 모드에서 눌러도 서버에 아무것도 보내지 않고, 잠금 표시도 붙지 않는다.
@@ -10,10 +10,10 @@ const path = require("node:path");
 const indexHtml = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
 
 // 1. 버튼에 표가 붙어 있어야 한다.
-const raceLink = indexHtml.match(/<a[^>]*href="learning\/class-race\/"[^>]*>/);
-assert.ok(raceLink, "학급 순위전 링크를 찾지 못했다.");
+const raceLink = indexHtml.match(/<a[^>]*href="\/room\/"[^>]*>/);
+assert.ok(raceLink, "방번호 입구 링크를 찾지 못했다.");
 assert.match(raceLink[0], /data-always-open="true"/,
-  "학급 순위전은 늘 열어 두는 버튼으로 표시해야 한다.");
+  "방번호 입구은 늘 열어 두는 버튼으로 표시해야 한다.");
 
 // 2. 잠금 표시를 그리는 곳에서 먼저 걸러야 한다.
 assert.match(indexHtml, /hubLinks\.forEach\(\(link\) => \{[\s\S]{0,400}?link\.dataset\.alwaysOpen === 'true'/,
@@ -42,4 +42,4 @@ for (const [marker, api] of [
   assert.ok(guardAt < apiAt, api + ' 로 저장하기 전에 늘 열어 두는 버튼을 걸러야 한다.');
 }
 
-console.log("Class race always open contract: OK");
+console.log("Room entry always open contract: OK");
