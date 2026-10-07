@@ -4,10 +4,10 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>문해·수리 학습 보고서</title>
   <link rel="stylesheet" href="/learning/literacy-numeracy/graph-studio/vendor/katex.min.css">
-  <link rel="stylesheet" href="learning-reports.css?v=20261007-first-rate">
+  <link rel="stylesheet" href="learning-reports.css?v=20261007-all-period">
   <script src="/learning/literacy-numeracy/graph-studio/vendor/katex.min.js" defer></script>
   <script src="/assets/learning-records.js?v=20261002-compact" defer></script>
-  <script src="learning-reports.js?v=20261007-first-rate" defer></script>
+  <script src="learning-reports.js?v=20261007-all-period" defer></script>
 </head>
 <body>
   <main class="report-shell">
@@ -16,7 +16,7 @@
       <a href="/classtools/" class="home">← 교사 도구</a>
       <label class="class-filter">학급<select id="classSelect"><option>학급을 불러오는 중</option></select></label>
       <label>시작일<input id="fromDate" type="date"></label><span class="date-dash">–</span><label>종료일<input id="toDate" type="date"></label>
-      <div class="quick"><button id="today" type="button">오늘</button><button id="week" type="button">최근 7일</button></div><button id="load" class="primary" type="button">조회</button>
+      <div class="quick" role="group" aria-label="조회 기간"><button id="today" type="button" aria-pressed="true">오늘</button><button id="twoDays" type="button" aria-pressed="false" title="어제와 오늘">최근 2일</button><button id="week" type="button" aria-pressed="false">최근 7일</button><button id="allPeriod" type="button" aria-pressed="false" title="선택한 학급·학년도의 모든 기록">전체</button></div><button id="load" class="primary" type="button">조회</button>
     </section>
     <p id="status" role="status" class="status">불러오는 중…</p>
     <section id="summary" class="summary" aria-label="기간 요약"></section>
@@ -25,7 +25,7 @@
       <aside><div class="aside-heading"><h2 id="listTitle">학생</h2><span id="listCount"></span></div><label class="area-filter" id="areaFilter" hidden>활동<select id="activitySelect"><option value="">전체 활동</option></select></label><div id="studentList" class="student-list"></div></aside>
       <section class="report-content" aria-label="학습 내역"><div id="reportHeading" class="report-heading"></div><div id="records"></div></section>
     </section>
-    <details class="report-help"><summary>집계 기준</summary><p>응답은 선택 기간, 진행·완료는 현재 상태 기준입니다. 처음 맞힘은 첫 풀이만 집계하며, 읽기·자기점검은 정답률에서 제외합니다. 날짜는 한국 시간 기준입니다.</p></details>
+    <details class="report-help"><summary>집계 기준</summary><p>응답은 선택 기간, 진행·완료는 현재 상태 기준입니다. 전체 기간은 선택한 학급·학년도의 모든 기록입니다. 첫 풀이 정답률은 첫 풀이만 집계하며, 읽기·자기점검은 제외합니다. 날짜는 한국 시간 기준입니다.</p></details>
   </main>
   <dialog id="detailDialog" aria-labelledby="detailTitle"><header><h2 id="detailTitle">학습 응답</h2><button id="closeDetail" type="button">닫기</button></header><div id="detailBody"></div></dialog>
 </body>

@@ -4,6 +4,7 @@
   const node = (tag, text, className) => { const el = document.createElement(tag); if (text != null) el.textContent = text; if (className) el.className = className; return el; };
   const request = LearningRecords.request;
   let catalog = [], data = { roster: [], sessions: [] }, mode = 'student', selected = null, generation = 0;
+  let allPeriod = false;
   let detailGeneration = 0;
   const domainClass = domain => ({ 읽기: 'reading', 문법: 'grammar', 어휘: 'words', 수리: 'math', 자기점검: 'reflection' }[domain] || '');
   function formattedText(value, className) {
@@ -51,6 +52,16 @@
   }
   const stamp = value => new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
   $('fromDate').value = $('toDate').value = LearningRecords.today();
+  const daysBefore = (date, days) => new Date(Date.parse(date) - days * 86400000).toISOString().slice(0, 10);
+  function updatePeriodButtons() {
+    const today = LearningRecords.today();
+    $('fromDate').disabled = $('toDate').disabled = allPeriod;
+    $('today').setAttribute('aria-pressed', String(!allPeriod && $('fromDate').value === today && $('toDate').value === today));
+    $('twoDays').setAttribute('aria-pressed', String(!allPeriod && $('fromDate').value === daysBefore(today, 1) && $('toDate').value === today));
+    $('week').setAttribute('aria-pressed', String(!allPeriod && $('fromDate').value === daysBefore(today, 6) && $('toDate').value === today));
+    $('allPeriod').setAttribute('aria-pressed', String(allPeriod));
+  }
+  updatePeriodButtons();
   function status(text, error = false) { $('status').textContent = text; $('status').hidden = !text; $('status').classList.toggle('error', error); }
   function students() {
     const map = new Map();
@@ -64,7 +75,7 @@
       (!selected || selected === '전체' || s.domain === selected)) : all;
     const roster = students(), ids = new Set(filtered.map(s => s.userId));
     const first = filtered.reduce((sum, s) => sum + s.summary.firstScored, 0), right = filtered.reduce((sum, s) => sum + s.summary.firstCorrect, 0);
-    const inRange = value => value && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) >= data.range?.from && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) <= data.range?.to;
+    const inRange = value => value && (data.range?.all || new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) >= data.range?.from && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) <= data.range?.to);
     $('summary').replaceChildren(...[
       [`${ids.size} / ${roster.length}`, '활동 학생'],
       [String(filtered.filter(s => s.status === 'completed' && inRange(s.completedAt)).length), '완료 활동'],
@@ -166,9 +177,21 @@
   }
   async function load() {
     const current = ++generation; $('load').disabled = true; status('불러오는 중…');
+    updatePeriodButtons();
+    const query = new URLSearchParams({ classId: $('classSelect').value });
+    if (allPeriod) query.set('period', 'all');
+    else { query.set('from', $('fromDate').value); query.set('to', $('toDate').value); }
     try {
-      const result = await request(`/teacher/report?classId=${encodeURIComponent($('classSelect').value)}&from=${$('fromDate').value}&to=${$('toDate').value}`);
-      if (current !== generation) return; data = result; render(); status('');
+      const sessions = [];
+      let result;
+      do {
+        result = await request(`/teacher/report?${query}`);
+        if (current !== generation) return;
+        sessions.push(...result.sessions);
+        if (result.nextCursor) { query.set('cursor', result.nextCursor); status(`불러오는 중… ${sessions.length}개 활동`); }
+      } while (result.nextCursor);
+      sessions.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt) || a.id.localeCompare(b.id));
+      data = { ...result, sessions }; render(); status('');
     } catch (error) { if (current === generation) { data = { roster: [], sessions: [] }; render(); status(error.message, true); } }
     finally { if (current === generation) $('load').disabled = false; }
   }
@@ -177,8 +200,11 @@
   $('studentTab').onclick = () => { mode = 'student'; selected = null; render(); };
   $('areaTab').onclick = () => { mode = 'area'; selected = '전체'; render(); };
   $('activitySelect').onchange = render; $('load').onclick = load; $('classSelect').onchange = () => { selected = null; load(); };
-  $('today').onclick = () => { $('fromDate').value = $('toDate').value = LearningRecords.today(); load(); };
-  $('week').onclick = () => { $('toDate').value = LearningRecords.today(); $('fromDate').value = new Date(Date.parse($('toDate').value) - 6 * 86400000).toISOString().slice(0, 10); load(); };
+  $('today').onclick = () => { allPeriod = false; $('fromDate').value = $('toDate').value = LearningRecords.today(); load(); };
+  $('twoDays').onclick = () => { allPeriod = false; $('toDate').value = LearningRecords.today(); $('fromDate').value = daysBefore($('toDate').value, 1); load(); };
+  $('week').onclick = () => { allPeriod = false; $('toDate').value = LearningRecords.today(); $('fromDate').value = daysBefore($('toDate').value, 6); load(); };
+  $('allPeriod').onclick = () => { allPeriod = true; load(); };
+  $('fromDate').oninput = $('toDate').oninput = updatePeriodButtons;
   try {
     const context = await request('/teacher/classes'); catalog = context.catalog;
     $('classSelect').replaceChildren(...context.classes.map(c => { const o = node('option', c.label); o.value = c.id; return o; }));

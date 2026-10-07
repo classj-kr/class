@@ -10,6 +10,7 @@ a{color:#315eac;text-decoration:none}h1,h2,h3,p{margin:0}h2{font-size:14px}h3{fo
 .filters{display:flex;align-items:end;gap:10px}.filters label,.area-filter{display:grid;gap:4px;font-size:12px;color:#5e7289}
 .filters input,.filters select,.area-filter select{border:1px solid #d5dfe9;border-radius:6px;padding:7px 8px;background:#fff;color:#294561;min-height:35px}
 .class-filter{flex:1;min-width:0}.class-filter select{width:100%;min-width:0}.date-dash{padding-bottom:8px;color:#889aac}.quick{display:flex;gap:5px}
+.quick button{white-space:nowrap}.quick button[aria-pressed=true]{color:#24549a;background:#eaf1ff;border-color:#a5bce0}.filters input:disabled{color:#8b97a6;background:#edf0f4;border-color:#dfe4eb}
 .primary{background:#285fc1;color:white;border-color:#285fc1}.primary:hover{background:#1f4c9c}
 .status{padding:8px 0;color:#647b94;font-size:12px}.status.error{color:#b34636}
 .summary{display:grid;grid-template-columns:repeat(4,1fr);margin:10px 0 6px;padding:7px 0;border-top:1px solid #dce3ea;border-bottom:1px solid #dce3ea}
