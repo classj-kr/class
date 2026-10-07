@@ -18,6 +18,8 @@ async function harness() {
     INSERT INTO school_students VALUES (1,10,2026,4,1,1,'가학생',NULL,'a@school.kr'),(2,20,2026,4,1,2,'나학생',2,'b@school.kr');
     INSERT INTO classroom_classes VALUES (100,10,2026,4,1),(200,20,2026,4,1);
     INSERT INTO classroom_students VALUES (50,100,3,'다학생',5);
+    ALTER TABLE classroom_students ADD COLUMN student_email TEXT;
+    ALTER TABLE classroom_students ADD COLUMN roster_active BOOLEAN NOT NULL DEFAULT TRUE;
   `);
   // A PGlite instance is one connection; serialize transactions for this harness.
   let queue = Promise.resolve();
@@ -25,7 +27,7 @@ async function harness() {
   const pool = { query, async connect() { const previous = queue; let release; queue = new Promise(r => release = r); await previous; return { query, release }; } };
   class HttpError extends Error { constructor(status, code, message) { super(message); Object.assign(this, { status, code }); } }
   const requireUser = async req => { const id = Number(req.headers['x-test-user']); const user = (await query('SELECT * FROM classroom_users WHERE id=$1', [id || 0])).rows[0]; if (!user) throw new HttpError(401, 'LOGIN_REQUIRED', '로그인 필요'); return user; };
-  const teacherRegistrations = async user => [3, 4].includes(Number(user.id)) ? [{ school_id: Number(user.id) === 3 ? 10 : 20, school_name: '테스트학교', teacher_type: '담임', academic_year: 2026, grade: 4, class_number: 1 }] : [];
+  const teacherRegistrations = async user => [3, 4, 10].includes(Number(user.id)) ? [{ school_id: Number(user.id) === 4 ? 20 : 10, school_name: '테스트학교', teacher_type: '담임', academic_year: 2026, grade: Number(user.id) === 10 ? 3 : 4, class_number: 1 }] : [];
   const feature = createLearningRecords({ pool, requireUser, requireTeacher: async req => { const u = await requireUser(req); if (!(await teacherRegistrations(u)).length) throw new HttpError(403, 'TEACHER_REQUIRED', '교사만 조회'); return u; },
     teacherRegistrations, requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next) });
   await feature.initialize(); await feature.initialize();
@@ -89,7 +91,89 @@ async function main() {
     assert.equal((await request(`/sessions/${oldActive.id}/changes`, { ...change, revision: oldActive.revision, mutationId: crypto.randomUUID() })).status, 409, 'previous class cannot receive new answers');
     assert.equal((await request(`/teacher/sessions/${newClass.id}`, null, 3)).status, 404, 'previous teacher cannot see new class activity');
     assert.equal((await request('/word-progress?activity=vocabulary', null, 0)).status, 401);
-    console.log('PASS common records: SQL, both rosters, account/class isolation, resume, idempotency, conflicts, retry semantics, KST dates, no-store.');
+    // Existing logins may have only an email on a newly imported legacy roster.
+    // Old roster copies must neither override the current class nor revive removed students.
+    await h.db.exec(`
+      INSERT INTO classroom_users VALUES (6,'emailonly@school.kr'),(7,'removed@school.kr'),(8,'current@school.kr');
+      INSERT INTO classroom_classes VALUES (90,10,2026,3,1);
+      INSERT INTO school_students VALUES (8,10,2026,4,1,8,'현재학생',8,'current@school.kr');
+      INSERT INTO classroom_students(id,class_id,student_number,roster_name,user_id,student_email,roster_active) VALUES
+        (60,100,6,'이메일학생',NULL,'EMAILONLY@school.kr',TRUE),
+        (61,100,7,'제외학생',7,'removed@school.kr',FALSE),
+        (62,90,8,'옛학급학생',8,'current@school.kr',FALSE);
+    `);
+    assert.equal((await request('/context', null, 6)).data.mode, 'student', 'email-linked legacy roster can save');
+    assert.equal((await request('/context', null, 7)).data.mode, 'preview', 'inactive roster is not a student membership');
+    assert.equal((await request('/sessions', start, 7)).status, 403, 'inactive roster cannot create records');
+    const mathStart = { ...start, activity: 'math-ox', contentKey: '초3', title: '수학 기초 OX · 초3', href: '/learning/literacy-numeracy/math-ox/', checkpoint: { answered: {} } };
+    const emailSession = (await request('/sessions', mathStart, 6)).data.session;
+    const currentSession = (await request('/sessions', mathStart, 8)).data.session;
+    assert.equal((await h.pool.query('SELECT grade FROM learning_record_sessions WHERE id=$1', [currentSession.id])).rows[0].grade, 4, 'inactive older class never receives the record');
+    await h.pool.query('UPDATE classroom_students SET roster_active=TRUE WHERE id=62');
+    assert.equal((await request('/sessions', mathStart, 8)).data.session.id, currentSession.id, 'current school roster wins even if an old copy is still active');
+    const mathContext = { window: {} };
+    require('node:vm').runInNewContext(require('node:fs').readFileSync(require('node:path').join(__dirname, '../learning/literacy-numeracy/math-ox/data.js'), 'utf8'), mathContext);
+    const question = mathContext.window.MATH_OX_DATA.find(q => q.subject === '초3');
+    result = await request(`/sessions/${emailSession.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(), checkpoint: {}, progress: { current: 1, total: 10 },
+      events: [{ kind: 'answer', questionKey: String(question.id), response: question.answer, snapshot: { prompt: question.prompt } }] }, 6);
+    assert.equal(result.status, 200);
+    result = await request('/teacher/report?classId=10:2026:4:1', null, 3);
+    assert.equal(result.status, 200);
+    assert.equal(result.data.sessions.find(s => s.id === emailSession.id).summary.firstCorrect, 1, 'OX answer appears in the current teacher report');
+    assert.ok(result.data.sessions.some(s => s.id === currentSession.id));
+    assert.ok(result.data.roster.some(s => s.user_id === '6'), 'email-only student appears once with the account identity');
+    assert.equal(result.data.roster.some(s => s.user_id === '7'), false, 'removed student is excluded from the current roster');
+    assert.equal((await request(`/teacher/sessions/${emailSession.id}`, null, 4)).status, 404, 'email matching does not cross school permissions');
+    // Every activity shares the same student identity and report query. Check
+    // reading and self-assessment events too, without requiring completion.
+    const activitySessions = [];
+    for (const activity of require('../assets/learning-record-catalog')) {
+      const opened = await request('/sessions', { ...start, activity: activity.id,
+        contentKey: `report-check-${activity.id}`, title: activity.label, href: activity.href, checkpoint: {} }, 8);
+      assert.equal(opened.status, 200, activity.id);
+      const kind = activity.domain === '읽기' ? 'read' : activity.domain === '자기점검' ? 'self-assessment' : 'answer';
+      const event = { kind, questionKey: activity.id === 'math-ox' ? String(question.id) : 'item-1',
+        response: activity.id === 'math-ox' ? question.answer : '응답', correct: true, snapshot: { title: activity.label } };
+      const saved = await request(`/sessions/${opened.data.session.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(),
+        checkpoint: {}, progress: { current: 1, total: 2 }, events: [event] }, 8);
+      assert.equal(saved.status, 200, activity.id);
+      activitySessions.push({ id: saved.data.session.id, activity: activity.id, kind });
+    }
+    result = await request('/teacher/report?classId=10:2026:4:1', null, 3);
+    assert.equal(result.status, 200);
+    for (const expected of activitySessions) {
+      const recorded = result.data.sessions.find(s => s.id === expected.id);
+      assert.ok(recorded, `${expected.activity} appears in the common teacher report`);
+      assert.equal(recorded.status, 'active');
+      const metric = expected.kind === 'read' ? 'readCount' : expected.kind === 'self-assessment' ? 'selfAssessments' : 'firstScored';
+      assert.equal(recorded.summary[metric], 1, expected.activity);
+      assert.equal((await request(`/teacher/sessions/${expected.id}`, null, 4)).status, 404);
+    }
+    // Existing records saved under an old class remain visible to the current
+    // teacher, without changing their events or rewriting their original scope.
+    const oldClassRecord = activitySessions.find(s => s.activity === 'world-tales');
+    await h.pool.query('UPDATE learning_record_sessions SET grade=3 WHERE id=$1', [oldClassRecord.id]);
+    result = await request('/teacher/report?classId=10:2026:4:1', null, 3);
+    assert.equal(result.data.sessions.find(s => s.id === oldClassRecord.id)?.summary.readCount, 1);
+    assert.equal((await request(`/teacher/sessions/${oldClassRecord.id}`, null, 3)).data.session.events.length, 1);
+    assert.equal((await h.pool.query('SELECT grade FROM learning_record_sessions WHERE id=$1', [oldClassRecord.id])).rows[0].grade, 3, 'reading does not rewrite saved records');
+    await h.db.exec(`INSERT INTO classroom_users VALUES (9,'otherclass@school.kr'),(10,'oldteacher@school.kr');
+      INSERT INTO school_students VALUES (9,10,2026,3,1,9,'다른반학생',9,'otherclass@school.kr');`);
+    const unrelated = (await request('/sessions', mathStart, 9)).data.session;
+    result = await request('/teacher/report?classId=10:2026:4:1', null, 3);
+    assert.equal(result.data.sessions.some(s => s.id === unrelated.id), false);
+    assert.equal((await request(`/teacher/sessions/${unrelated.id}`, null, 3)).status, 404, 'other pupils in the same school remain private');
+    const previousTeacher = await request('/teacher/report?classId=10:2026:3:1', null, 10);
+    assert.equal(previousTeacher.data.sessions.some(s => s.id === currentSession.id), false, 'stale active legacy membership grants no access to current-class work');
+    assert.equal((await request(`/teacher/sessions/${currentSession.id}`, null, 10)).status, 404);
+    for (const [activityId, column, value] of [['world-novels','school_id',20],['poetry','academic_year',2025]]) {
+      const outside = activitySessions.find(s => s.activity === activityId);
+      await h.pool.query(`UPDATE learning_record_sessions SET ${column}=$2 WHERE id=$1`, [outside.id, value]);
+      result = await request('/teacher/report?classId=10:2026:4:1', null, 3);
+      assert.equal(result.data.sessions.some(s => s.id === outside.id), false);
+      assert.equal((await request(`/teacher/sessions/${outside.id}`, null, 3)).status, 404, 'current membership cannot bypass school/year boundaries');
+    }
+    console.log('PASS common records: all 17 activities, existing old-class records, unfinished reading/answers/self-assessment, current/legacy/email-only rosters, strict account/class/school/year isolation, resume, idempotency, KST dates, no-store.');
   } finally { await h.close(); }
 }
 module.exports = { harness };

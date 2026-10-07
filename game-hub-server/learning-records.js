@@ -11,15 +11,17 @@ const object = value => value && typeof value === 'object' && !Array.isArray(val
 const text = (value, max = 160) => typeof value === 'string' && value.trim().length > 0 && value.length <= max;
 
 // One authenticated account, regardless of which roster table the school uses.
-const STUDENT_SQL = `SELECT s.school_id, s.academic_year, s.grade, s.class_number,
-  s.student_number::TEXT, s.roster_name AS student_name
+const STUDENT_SQL = `SELECT school_id, academic_year, grade, class_number, student_number, student_name
+  FROM (SELECT s.school_id, s.academic_year, s.grade, s.class_number,
+  s.student_number::TEXT, s.roster_name AS student_name, 0 AS roster_priority
   FROM school_students s JOIN classroom_schools sc ON sc.id = s.school_id AND sc.enabled = TRUE
   WHERE s.user_id = $1 OR (s.user_id IS NULL AND LOWER(s.student_email) = LOWER($2))
   UNION ALL SELECT c.school_id, c.academic_year, c.grade, c.class_number,
-  s.student_number::TEXT, s.roster_name AS student_name
+  s.student_number::TEXT, s.roster_name AS student_name, 1 AS roster_priority
   FROM classroom_students s JOIN classroom_classes c ON c.id = s.class_id
   JOIN classroom_schools sc ON sc.id = c.school_id AND sc.enabled = TRUE
-  WHERE s.user_id = $1 ORDER BY academic_year DESC, school_id, grade, class_number LIMIT 1`;
+  WHERE s.roster_active = TRUE AND (s.user_id = $1 OR (s.user_id IS NULL AND LOWER(s.student_email) = LOWER($2)))) memberships
+  ORDER BY academic_year DESC, roster_priority, school_id, grade, class_number LIMIT 1`;
 
 function summarize(events) {
   const answers = events.filter(e => e.kind === 'answer');
@@ -213,6 +215,27 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     }
     return result;
   }
+  async function rosterForScope(scope) {
+    return (await pool.query(`SELECT DISTINCT u.id::text AS user_id, s.student_number::text, s.roster_name AS student_name
+      FROM school_students s LEFT JOIN classroom_users u ON u.id = s.user_id OR (s.user_id IS NULL AND LOWER(u.email) = LOWER(s.student_email))
+      WHERE s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
+      UNION SELECT u.id::text, s.student_number::text, s.roster_name
+      FROM classroom_students s JOIN classroom_classes c ON c.id = s.class_id
+      LEFT JOIN classroom_users u ON u.id = s.user_id OR (s.user_id IS NULL AND LOWER(u.email) = LOWER(s.student_email))
+      WHERE c.school_id = $1 AND c.academic_year = $2 AND c.grade = $3 AND c.class_number = $4 AND s.roster_active = TRUE`,
+    [scope.school_id, scope.academic_year, scope.grade, scope.class_number])).rows;
+  }
+  async function currentStudentIds(scope, roster) {
+    const candidates = [...new Set((roster || await rosterForScope(scope)).map(row => row.user_id).filter(Boolean))];
+    if (!candidates.length) return [];
+    // Use the very same membership choice as saving. An active but stale legacy
+    // copy must not give a former teacher access to the pupil's new class work.
+    const membership = STUDENT_SQL.replace(/\$1\b/g, 'u.id').replace(/\$2\b/g, 'u.email');
+    return (await pool.query(`SELECT u.id::text AS user_id FROM classroom_users u
+      CROSS JOIN LATERAL (${membership}) m
+      WHERE u.id=ANY($5::bigint[]) AND m.school_id=$1 AND m.academic_year=$2 AND m.grade=$3 AND m.class_number=$4`,
+    [scope.school_id, scope.academic_year, scope.grade, scope.class_number, candidates])).rows.map(row => row.user_id);
+  }
   router.get('/teacher/classes', asyncRoute(async (req, res) => res.json({ classes: await scopes(req), catalog })));
   router.get('/teacher/report', asyncRoute(async (req, res) => {
     const scope = (await scopes(req)).find(s => s.id === req.query.classId);
@@ -220,18 +243,17 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const range = dateRange(req.query);
     if (req.query.activity && !activities.has(req.query.activity)) fail('INVALID_ACTIVITY', '활동을 확인해 주세요.');
     const args = [scope.school_id, scope.academic_year, scope.grade, scope.class_number];
-    const roster = (await pool.query(`SELECT DISTINCT u.id::text AS user_id, s.student_number::text, s.roster_name AS student_name
-      FROM school_students s LEFT JOIN classroom_users u ON u.id = s.user_id OR (s.user_id IS NULL AND LOWER(u.email) = LOWER(s.student_email))
-      WHERE s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
-      UNION SELECT u.id::text, s.student_number::text, s.roster_name
-      FROM classroom_students s JOIN classroom_classes c ON c.id = s.class_id LEFT JOIN classroom_users u ON u.id = s.user_id
-      WHERE c.school_id = $1 AND c.academic_year = $2 AND c.grade = $3 AND c.class_number = $4`, args)).rows;
-    const rows = (await pool.query(`SELECT * FROM learning_record_sessions s WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4
+    const roster = await rosterForScope(scope);
+    const studentIds = await currentStudentIds(scope, roster);
+    // Current pupils' records remain readable when an old roster copy supplied
+    // the stored class. The school and academic-year boundaries still apply.
+    const rows = (await pool.query(`SELECT * FROM learning_record_sessions s WHERE school_id = $1 AND academic_year = $2
+      AND ((grade = $3 AND class_number = $4) OR user_id = ANY($8::bigint[]))
       AND ($7::text IS NULL OR activity = $7)
       AND (EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id
         AND e.recorded_at >= $5::date AT TIME ZONE 'Asia/Seoul' AND e.recorded_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
         OR s.updated_at >= $5::date AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
-      ORDER BY updated_at DESC, id LIMIT 1001`, [...args, range.from, range.to, req.query.activity || null])).rows;
+      ORDER BY updated_at DESC, id LIMIT 1001`, [...args, range.from, range.to, req.query.activity || null, studentIds])).rows;
     if (rows.length > 1000) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
     const eventGroups = new Map(rows.map(row => [row.id, []]));
     if (rows.length) {
@@ -248,7 +270,16 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const allowed = await scopes(req);
     if (!uuid.test(req.params.id)) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
     const row = (await pool.query('SELECT * FROM learning_record_sessions WHERE id = $1', [req.params.id])).rows[0];
-    if (!row || !allowed.some(s => s.id === [row.school_id, row.academic_year, row.grade, row.class_number].join(':'))) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
+    if (!row) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
+    let readable = allowed.some(s => s.id === [row.school_id, row.academic_year, row.grade, row.class_number].join(':'));
+    if (!readable) {
+      for (const scope of allowed.filter(s => String(s.school_id) === String(row.school_id) && s.academic_year === row.academic_year)) {
+        if ((await currentStudentIds(scope)).includes(String(row.user_id))) {
+          readable = true; break;
+        }
+      }
+    }
+    if (!readable) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
     res.json({ session: await serialize(pool, row, true) });
   }));
   return { router, initialize };
