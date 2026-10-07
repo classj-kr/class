@@ -21,7 +21,7 @@ const CHAPTERS = [
                 "art": "01-warning-2.webp",
                 "emoji": "🐐",
                 "left": [
-                    "\"목소리가 걸걸하단다. 우리처럼 곱지 않아. 발도 새까맣지. 우리 발은 하얗잖니. 그 둘만 잘 보면 된단다.\"",
+                    "\"목소리가 걸걸하단다. 우리처럼 곱지 않아. 발도 털이 덥수룩한 갈색이지. 우리 발은 하얗잖니. 그 둘만 잘 보면 된단다.\"",
                     "일곱이 입을 모아 대답했습니다. \"네, 꼭 기억할게요!\"",
                     "막내는 방울을 딸랑 흔들며 고개를 끄덕였지요."
                 ],
@@ -84,7 +84,7 @@ const CHAPTERS = [
                 ],
                 "right": [
                     "\"그럼 발을 보여 주세요.\"",
-                    "늑대가 앞발을 창턱에 척 올렸지요. 털이 숯처럼 새까맸습니다. 일곱은 한꺼번에 뒷걸음질을 쳤지요.",
+                    "늑대가 앞발을 창턱에 척 올렸지요. 털이 덥수룩한 갈색 발이었습니다. 일곱은 한꺼번에 뒷걸음질을 쳤지요.",
                     "\"늑대다! 저리 가! 우리 엄마 발은 눈처럼 하얘요!\"",
                     "일곱이 소리를 지르자 늑대는 또 물러났지요."
                 ]
@@ -98,7 +98,7 @@ const CHAPTERS = [
                     "방앗간 주인이 눈을 끔뻑였습니다. \"늑대가 웬일로 이렇게 상냥하지?\" 늑대는 두 앞발을 공손히 내밀고 눈웃음까지 쳤지요."
                 ],
                 "right": [
-                    "주인은 피식 웃으며 밀가루를 한 바가지 퍼서 앞발에 척척 발라 주었습니다. 푸시시, 하얀 가루가 구름처럼 피어올랐지요. \"에취!\" 늑대는 재채기를 하면서도 싱글벙글했지요.",
+                    "제일 솜씨 좋다는 말에 주인은 그만 어깨가 으쓱해졌습니다. 그래서 밀가루를 한 바가지 퍼서 앞발에 척척 발라 주었지요. 하얀 가루가 구름처럼 피어올랐습니다. \"에취!\" 늑대는 재채기를 하면서도 싱글벙글했지요.",
                     "늑대는 세 번째로 오두막을 찾아왔습니다. 고운 목소리로 부르고 앞발을 창턱에 올렸지요. 눈처럼 하얀 발이었습니다.",
                     "\"우리 엄마 맞나 봐!\" 일곱은 그만 문을 활짝 열고 말았습니다."
                 ]
@@ -368,7 +368,7 @@ const AFTERWORD = {
             art: 'end.webp',
             left: [
                 "그림 형제는 이야기를 지어내지 않았습니다. 마을을 돌며 할머니들이 들려주는 것을 받아 적었지요.",
-                "늑대는 세 번 찾아왔습니다. 그때마다 들킨 데를 고쳐 왔지요. 목소리가 걸걸해서 들키자 분필을 삼켰고, 발이 까매서 들키자 밀가루를 묻혔습니다.",
+                "늑대는 세 번 찾아왔습니다. 그때마다 들킨 데를 고쳐 왔지요. 목소리가 걸걸해서 들키자 분필을 삼켰고, 발이 갈색이라 들키자 밀가루를 묻혔습니다.",
                 "속이는 쪽이 들킬 때마다 더 그럴듯해진 것입니다. 아기 염소들은 확인할 것을 다 확인했는데도 속았지요.",
                 "그런 늑대도 마지막에는 우물에 빠졌습니다. 누가 민 것이 아닙니다. 제 배가 무거워 스스로 넘어갔지요."
             ],
@@ -560,7 +560,7 @@ const EN = {
                     art: '01-warning-2.webp',
                     emoji: '🐐',
                     left: [
-                        "\"His voice is rough, not soft like ours. And his feet are black, but ours are white. Watch for those two things.\"",
+                        "\"His voice is rough, not soft like ours. And his feet are shaggy and brown, but ours are white. Watch for those two things.\"",
                         "All seven answered together, \"Yes, we'll remember!\"",
                         "The youngest nodded, and his bell went ting-a-ling."
                     ],
@@ -624,7 +624,7 @@ const EN = {
                     ],
                     right: [
                         "\"Then show us your feet.\"",
-                        "The wolf laid his front paws on the windowsill. The fur on them was as black as coal, and all seven jumped back at once.",
+                        "The wolf laid his front paws on the windowsill. They were shaggy and brown, and all seven jumped back at once.",
                         "\"It's the wolf! Go away! Our mother's feet are white as snow!\"",
                         "They shouted so loudly that the wolf backed off once more."
                     ]
@@ -638,11 +638,9 @@ const EN = {
                         "The miller blinked. \"Since when is a wolf so polite?\" The wolf held out both paws and smiled with his eyes."
                     ],
                     right: [
-                        "The miller chuckled, scooped up a bowl of flour and patted it on. Whoosh! White dust rose like a cloud. \"A-choo!\" sneezed the wolf, grinning all the same.",
+                        "The finest miller! The miller swelled with pride and patted a bowl of flour onto the paws. White dust rose like a cloud. \"A-choo!\" sneezed the wolf, grinning all the same.",
                         "The wolf came to the cottage a third time. He called in his soft voice and laid his paws on the sill.",
-                        "This time they were as white as snow.",
-                        "\"It really is Mother!\"",
-                        "And the seven threw the door wide open."
+                        "This time they were as white as snow. \"It really is Mother!\" And the seven threw the door wide open."
                     ]
                 }
             ]
@@ -853,7 +851,7 @@ const EN = {
                 art: 'end.webp',
                 left: [
                     "The Brothers Grimm did not make these stories up. They wrote down what old people in the villages told them.",
-                    "The wolf came three times, and each time he mended whatever had given him away. His voice was rough, so he swallowed chalk. His feet were black, so he floured them.",
+                    "The wolf came three times, and each time he mended whatever had given him away. His voice was rough, so he swallowed chalk. His feet were brown, so he floured them.",
                     "Every time the trickster is caught, he becomes harder to catch. The kids checked everything — and were fooled all the same.",
                     "Yet in the end the wolf fell into the well. His own heavy belly carried him over."
                 ],
@@ -894,7 +892,7 @@ const EN = {
         ],
         '03-disguise.webp': [
             { word: 'windowsill', meaning: '창턱', sentence: 'The wolf laid his front paws on the windowsill.' },
-            { word: 'coal', meaning: '숯, 석탄', sentence: 'The fur on them was as black as coal.' },
+            { word: 'shaggy', meaning: '털이 덥수룩한', sentence: 'They were shaggy and brown.' },
             { word: 'back off', meaning: '물러나다', sentence: 'The wolf backed off once more.' }
         ],
         '03-disguise-2.webp': [
@@ -989,7 +987,8 @@ const WORDS_KO = {
         { w: "영리하다", k: "머리가 좋고 똑똑하다.", s: "\"이런 영리한 것들 같으니!\"" },
         { w: "무릎을 치다", k: "좋은 생각이 떠올라 놀라다.", s: "그러다 무릎을 탁 쳤습니다." },
         { w: "통째로", k: "쪼개지 않고 온통 그대로.", s: "가게에서 분필을 사서 통째로 꿀꺽 삼켰지요." },
-        { w: "한결", k: "이전보다 훨씬 더.", s: "목소리가 한결 고와졌지요." }
+        { w: "한결", k: "이전보다 훨씬 더.", s: "목소리가 한결 고와졌지요." },
+        { w: "분필", k: "옛날 학교 교실 칠판에 글씨를 쓰던 하얀 막대. 돌가루를 굳혀 만들어서, 쓰면 하얀 가루가 묻어난다.", s: "가게에서 분필을 사서 통째로 꿀꺽 삼켰지요." }
     ],
     "03-disguise.webp": [
         { w: "제법", k: "생각보다 꽤.", s: "이번에는 목소리가 제법 고왔습니다." },
@@ -999,7 +998,7 @@ const WORDS_KO = {
     ],
     "03-disguise-2.webp": [
         { w: "애교", k: "귀엽고 상냥하게 굴어 남의 마음을 사려는 짓.", s: "그러고는 꼬리를 살랑살랑 흔들며 애교를 부렸지요." },
-        { w: "바가지", k: "물이나 가루를 퍼 담는 둥근 그릇.", s: "주인은 피식 웃으며 밀가루를 한 바가지 퍼서 앞발에 척척 발라 주었습니다." },
+        { w: "바가지", k: "물이나 가루를 퍼 담는 둥근 그릇.", s: "그래서 밀가루를 한 바가지 퍼서 앞발에 척척 발라 주었지요." },
         { w: "활짝", k: "문을 크게 벌리는 모양.", s: "일곱은 그만 문을 활짝 열고 말았습니다." }
     ],
     "04-hiding.webp": [
@@ -1051,7 +1050,7 @@ const WORDS_KO = {
     ],
     "end.webp": [
         { w: "들키다", k: "숨기던 것을 남이 알아 버리다.", s: "그때마다 들킨 데를 고쳐 왔지요." },
-        { w: "걸걸하다", k: "목소리가 굵고 거칠다.", s: "목소리가 걸걸해서 들키자 분필을 삼켰고, 발이 까매서 들키자 밀가루를 묻혔습니다." },
+        { w: "걸걸하다", k: "목소리가 굵고 거칠다.", s: "목소리가 걸걸해서 들키자 분필을 삼켰고, 발이 갈색이라 들키자 밀가루를 묻혔습니다." },
         { w: "그럴듯하다", k: "정말인 것처럼 보이다.", s: "속이는 쪽이 들킬 때마다 더 그럴듯해진 것입니다." },
         { w: "살아남다", k: "끝까지 목숨을 잃지 않고 남다.", s: "살아남은 것은 막내였습니다." }
     ]
