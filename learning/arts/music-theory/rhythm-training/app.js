@@ -2,10 +2,55 @@
     'use strict';
     const C = window.RhythmTrainer, $ = id => document.getElementById(id);
     const storageKey = 'rhythm-training-room-v1';
-    let audio, chart, run = null, raf = 0, pageIndex = -1, heads = [], lines = [], mode = 'solo';
+    let audio, chart, run = null, raf = 0, pageIndex = -1, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
     let room = null, credentials = null, pendingResult = null, polling = false, starting = false, loading = false;
     let lastRound = '', streak = 0, pressedTimer = 0;
     const nodes = new Set();
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const feedbackColors = { perfect: '#8ce4c4', miss: '#ffa0a6', wrong: '#ffa0a6' };
+    function resetFeedback() {
+        delete $('pad').dataset.judgment;
+        delete $('feedback').dataset.judgment;
+        document.querySelector('.play-area').style.removeProperty('--hit-color');
+        $('tapEffects').getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+    }
+    function burst(event, kind) {
+        const pad = $('pad'), effects = $('tapEffects');
+        const rect = pad.getBoundingClientRect();
+        const pointer = event?.type === 'pointerdown';
+        effects.style.left = (pointer ? event.clientX - rect.left : rect.width / 2) + 'px';
+        effects.style.top = (pointer ? event.clientY - rect.top : rect.height / 2) + 'px';
+        effects.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+        if (reducedMotion.matches) return;
+        effects.querySelectorAll('.tap-ring').forEach((ring, index) => {
+            if (index && kind !== 'perfect') return;
+            ring.animate([{ opacity: .8, transform: 'translate(-50%,-50%) scale(.35)' },
+                { opacity: 0, transform: 'translate(-50%,-50%) scale(2.5)' }],
+            { duration: 420, delay: index * 65, easing: 'cubic-bezier(.15,.6,.3,1)' });
+        });
+        effects.querySelectorAll('.tap-spark').forEach((spark, index) => {
+            const angle = index * Math.PI / 4, distance = kind === 'perfect' ? 75 : 46;
+            spark.animate([{ opacity: .95, transform: 'translate(-50%,-50%) scale(1)' },
+                { opacity: 0, transform: `translate(${Math.cos(angle) * distance}px,${Math.sin(angle) * distance}px) scale(.2)` }],
+            { duration: kind === 'perfect' ? 450 : 280, easing: 'ease-out' });
+        });
+    }
+    function feedback(kind, event) {
+        const messages = { perfect: '맞았어요!', miss: '놓쳤어요', wrong: '틀렸어요' };
+        $('feedback').textContent = messages[kind]; $('feedback').dataset.judgment = kind;
+        $('pad').dataset.judgment = kind;
+        document.querySelector('.play-area').style.setProperty('--hit-color', feedbackColors[kind]);
+        $('combo').textContent = streak > 1 ? `${streak} COMBO` : '';
+        if (!reducedMotion.matches) {
+            $('feedback').getAnimations().forEach(animation => animation.cancel());
+            $('feedback').animate([{ transform: 'scale(1.16)', opacity: .65 }, { transform: 'scale(1)', opacity: 1 }], { duration: 180, easing: 'ease-out' });
+            if (streak > 1) {
+                $('combo').getAnimations().forEach(animation => animation.cancel());
+                $('combo').animate([{ transform: 'translateY(5px) scale(1.15)' }, { transform: 'translateY(0) scale(1)' }], { duration: 180 });
+            }
+        }
+        if (kind !== 'miss') burst(event, kind);
+    }
     const config = () => C.settings({ level: $('level').value, bpm: $('bpm').value });
     const seed = () => crypto.getRandomValues(new Uint32Array(1))[0];
     const notice = message => { $('notice').textContent = message; $('notice').hidden = !message; };
@@ -57,24 +102,51 @@
     function renderScore(page = 0) {
         pageIndex = page; heads = []; lines = [];
         $('score').replaceChildren();
+        scoreColumns = $('score').clientWidth >= 720 ? 4 : 2;
+        const ns = 'http://www.w3.org/2000/svg';
+        let system, offset = 0;
         chart.bars.slice(page * 4, page * 4 + 4).forEach((bar, index) => {
-            const card = document.createElement('div'); card.className = 'bar';
-            const number = document.createElement('span'); number.className = 'bar-number'; number.textContent = `${page * 4 + index + 1}마디`;
-            const svg = RhythmNotation.render(bar, { meter: '4/4', label: `${page * 4 + index + 1}마디 리듬` });
-            svg.style.width = '100%';
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            const firstInLine = index % scoreColumns === 0;
+            if (firstInLine) {
+                system = document.createElementNS(ns, 'svg');
+                system.setAttribute('class', 'rhythm score-system');
+                system.setAttribute('role', 'img');
+                system.setAttribute('aria-label', `${page * 4 + index + 1}~${page * 4 + Math.min(index + scoreColumns, 4)}마디 리듬`);
+                $('score').append(system); offset = 0;
+            }
+            const first = page === 0 && index === 0, left = first ? 44 : 18;
+            const svg = RhythmNotation.render(bar, { meter: first ? '4/4' : null, left, beatWidth: 52, beatGap: 6 });
+            const width = svg.viewBox.baseVal.width;
+            if (!firstInLine) svg.querySelector('.rhythm-bar:not(.is-end)').remove();
+            const end = svg.querySelector('.is-end');
+            end.classList.remove('is-end');
+            if (page * 4 + index === chart.bars.length - 1) {
+                const thin = end.cloneNode(); thin.setAttribute('x1', width - 16); thin.setAttribute('x2', width - 16);
+                svg.append(thin); end.classList.add('is-end');
+            }
+            const measure = document.createElementNS(ns, 'g');
+            measure.setAttribute('class', 'score-measure');
+            measure.setAttribute('transform', `translate(${offset} 0)`);
+            measure.dataset.bar = String(page * 4 + index + 1);
+            const highlight = document.createElementNS(ns, 'rect');
+            for (const [key, value] of Object.entries({ class: 'measure-highlight', x: 10, y: 16, width: width - 21, height: 66 })) highlight.setAttribute(key, value);
+            measure.append(highlight, ...svg.childNodes);
+            const line = document.createElementNS(ns, 'line');
             line.setAttribute('class', 'playhead'); line.setAttribute('y1', '16'); line.setAttribute('y2', '82'); line.style.display = 'none';
-            svg.append(line); lines.push(line);
+            line.dataset.onset = String(left + 12);
+            measure.append(line); system.append(measure); lines.push(line);
+            offset += width - 21;
+            system.setAttribute('viewBox', `0 11 ${offset + 21} 75`);
             let beat = (page * 4 + index) * 4;
-            const noteHeads = [...svg.querySelectorAll('.rhythm-head')]; let headIndex = 0;
+            const noteHeads = [...measure.querySelectorAll('.rhythm-head')]; let headIndex = 0;
             bar.forEach(note => {
                 if (!note.rest) heads.push({ node: noteHeads[headIndex++], time: beat * 60 / chart.bpm });
                 beat += C.VALUES[note.v];
             });
-            card.append(number, svg); $('score').append(card);
         });
     }
     function fresh() {
+        resetFeedback();
         chart = C.chart(config(), seed()); renderScore(); $('result').hidden = true;
         $('feedback').textContent = '준비됐나요?'; $('combo').textContent = '';
         $('phase').textContent = '악보를 보고 두드려요'; $('barCount').textContent = '8마디 · 4/4박자';
@@ -111,7 +183,8 @@
         try {
             await unlock(); silence();
             const beat = 60 / chart.bpm, startAt = audio.currentTime + .18 + beat * 4;
-            run = { demo, roundId, startAt, taps: [], nextClick: -4, nextTarget: 0, lastBeat: -99 };
+            run = { demo, roundId, startAt, taps: [], result: C.judge(chart, []), nextMiss: 0, nextClick: -4, nextTarget: 0, lastBeat: -99 };
+            resetFeedback();
             streak = 0; renderScore(); $('result').hidden = true; $('combo').textContent = '';
             $('feedback').textContent = '네 박 뒤에 시작해요';
             $('pad').focus({ preventScroll: true });
@@ -139,15 +212,16 @@
             [...$('beats').children].forEach((dot, i) => dot.classList.toggle('active', i === ((currentBeat % 4) + 4) % 4));
             run.lastBeat = currentBeat;
             if (time < 0) { $('phase').textContent = '준비 박자'; $('feedback').textContent = String(Math.min(4, -currentBeat)); }
-            else { $('phase').textContent = run.demo ? '리듬을 들어 보세요' : '악보에 맞춰 두드려요'; if (currentBeat === 0) $('feedback').textContent = run.demo ? '듣는 중' : '시작!'; }
+            else { $('phase').textContent = run.demo ? '리듬을 들어 보세요' : '악보에 맞춰 두드려요'; if (currentBeat === 0 && !run.taps.length) $('feedback').textContent = run.demo ? '듣는 중' : '시작!'; }
         }
+        if (!run.demo) expireMisses(time);
         if (time >= 0 && time < chart.duration) {
             const bar = Math.floor(time / beat / 4), page = Math.floor(bar / 4);
             if (page !== pageIndex) renderScore(page);
             $('barCount').textContent = `${bar + 1} / 8마디`;
-            [...$('score').children].forEach((node, index) => node.classList.toggle('active', index === bar % 4));
+            $('score').querySelectorAll('.score-measure').forEach((node, index) => node.classList.toggle('active', index === bar % 4));
             lines.forEach((line, index) => { line.style.display = index === bar % 4 ? '' : 'none'; });
-            const within = time / beat % 4, x = 56 + within * 74 + Math.floor(within) * 10;
+            const within = time / beat % 4, x = Number(lines[bar % 4].dataset.onset) + within * 52 + Math.floor(within) * 6;
             lines[bar % 4].setAttribute('x1', String(x)); lines[bar % 4].setAttribute('x2', String(x));
             paintMarks(time);
         }
@@ -155,31 +229,41 @@
         raf = requestAnimationFrame(frame);
     }
     function paintMarks(time) {
-        const result = C.judge(chart, run.taps);
+        const result = run.result;
         for (const head of heads) {
             const mark = result.marks.find(m => Math.abs(m.time - head.time) < .001);
-            head.node?.classList.toggle('hit', run.demo ? time >= head.time : mark?.hit);
-            head.node?.classList.toggle('missed', !run.demo && !mark?.hit && time > head.time + .14);
+            head.node?.classList.toggle('hit', run.demo ? time >= head.time : mark?.points === 1);
+            head.node?.classList.toggle('missed', !run.demo && (mark?.hit && mark.points === 0 || !mark?.hit && time > head.time + C.hitWindow(chart)));
         }
     }
-    function tap() {
+    function expireMisses(time) {
+        let missed = false;
+        while (run.nextMiss < chart.targets.length && chart.targets[run.nextMiss] + C.hitWindow(chart) < time) {
+            if (!run.result.marks[run.nextMiss].hit) missed = true;
+            run.nextMiss++;
+        }
+        if (missed) { streak = 0; feedback('miss'); }
+    }
+    function tap(event) {
+        // Capture the audio-clock position before rendering. Input feedback is silent:
+        // speaker/Bluetooth output delay must not produce a second, late tapping beat.
+        const time = run ? heardTime() - run.startAt : 0;
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
-        if (audio?.state === 'running') sound(audio.currentTime, false, true);
-        else if (!run) void unlock().then(() => sound(audio.currentTime, false, true)).catch(error => notice(error.message));
-        if (!run || run.demo) return;
-        const time = heardTime() - run.startAt;
+        if (!run || run.demo) { burst(event); return; }
         if (time < -.14 || time > chart.duration + .14 || run.taps.length >= 512) return;
-        const before = C.judge(chart, run.taps);
+        expireMisses(time);
+        const before = run.result;
         run.taps.push(time);
         const after = C.judge(chart, run.taps);
+        run.result = after;
         if (after.hits > before.hits) {
             const mark = after.marks.find((m, i) => m.hit && !before.marks[i].hit);
             const previous = after.marks.slice(0, after.marks.indexOf(mark));
-            streak = previous.length && !previous[previous.length - 1].hit ? 1 : streak + 1;
-            $('feedback').textContent = mark.points === 1 ? '정확해요!' : mark.error < 0 ? '조금 빨라요' : '조금 늦어요';
-        } else { streak = 0; $('feedback').textContent = '악보의 치는 자리를 확인해요'; }
-        $('combo').textContent = streak > 1 ? `${streak}번 연속` : '';
+            streak = mark.points !== 1 ? 0 : previous.length && previous[previous.length - 1].points !== 1 ? 1 : streak + 1;
+            feedback(mark.points === 1 ? 'perfect' : 'wrong', event);
+        } else { streak = 0; feedback('wrong', event); }
+        paintMarks(time);
     }
     async function submitResult() {
         if (!pendingResult || !credentials) return;
@@ -191,16 +275,17 @@
     async function finish(interrupted) {
         if (!run) return;
         const ended = run; run = null; cancelAnimationFrame(raf); silence();
+        resetFeedback();
         [...$('beats').children].forEach(dot => dot.classList.remove('active'));
         lines.forEach(line => { line.style.display = 'none'; });
-        [...$('score').children].forEach(node => node.classList.remove('active'));
+        $('score').querySelectorAll('.score-measure').forEach(node => node.classList.remove('active'));
         controls();
         $('phase').textContent = interrupted ? '연주를 멈췄어요' : ended.demo ? '듣기 완료' : '연습 완료';
         $('feedback').textContent = interrupted ? '다시 도전해요' : ended.demo ? '이제 직접 두드려 보세요' : '연주 끝!';
         if (!ended.demo && !interrupted) {
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
-            $('misses').textContent = result.misses; $('extras').textContent = result.extras; $('result').hidden = false;
+            $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
         }
         if (ended.roundId && credentials) { pendingResult = { roundId: ended.roundId, taps: ended.taps, interrupted }; saveRoom(); await submitResult(); }
     }
@@ -275,13 +360,13 @@
     action('start', () => play()); action('retry', () => play()); action('listen', () => play(true));
     action('shuffle', fresh); action('stop', () => finish(true));
     for (const id of ['level', 'bpm']) $(id).addEventListener('input', () => { $('bpmValue').value = $('bpm').value; if (!room) fresh(); });
-    $('pad').addEventListener('pointerdown', event => { if (!event.isPrimary || event.button !== 0) return; event.preventDefault(); tap(); });
-    $('pad').addEventListener('click', event => { if (event.detail === 0) tap(); });
+    $('pad').addEventListener('pointerdown', event => { if (!event.isPrimary || event.button !== 0) return; event.preventDefault(); tap(event); });
+    $('pad').addEventListener('click', event => { if (event.detail === 0) tap(event); });
     document.addEventListener('keydown', event => {
         if (event.code !== 'Space' || event.altKey || event.ctrlKey || event.metaKey) return;
         if (event.target.closest('input,select,textarea,a,button:not(#pad),[contenteditable=true]')) return;
         event.preventDefault();
-        if (!event.repeat) tap();
+        if (!event.repeat) tap(event);
     });
     document.addEventListener('visibilitychange', () => { if (document.hidden && run) { void finish(true); notice('다른 화면으로 이동해 연주를 멈췄어요.'); } });
     $('joinForm').addEventListener('submit', async event => {
@@ -302,6 +387,7 @@
     const submitButton = document.createElement('button'); submitButton.id = 'submitRetry'; submitButton.className = 'secondary'; submitButton.hidden = true; submitButton.textContent = '결과 다시 보내기';
     $('ranking').before(submitButton); action('submitRetry', submitResult);
     $('name').value = window.CLASS_PLAYER_NAME || '';
+    for (let i = 0; i < 8; i++) { const spark = document.createElement('i'); spark.className = 'tap-spark'; $('tapEffects').append(spark); }
     fresh();
     const code = new URLSearchParams(location.search).get('room');
     if (code && /^\d{4}$|^\d{6}$/.test(code)) { $('code').value = code; if(code.length===6){$('code').maxLength=6;$('code').pattern='[0-9]{6}';} setMode('class'); }
@@ -319,5 +405,8 @@
             .catch(error => notice(error.message)).finally(() => { $('join').disabled = false; });
     }
     void api('/session').then(data => { $('create').hidden = !data.isTeacher; $('teacherHint').hidden = data.isTeacher; }).catch(() => {});
+    new ResizeObserver(() => {
+        if ($('score').clientWidth > 0 && ($('score').clientWidth >= 720 ? 4 : 2) !== scoreColumns) renderScore(Math.max(0, pageIndex));
+    }).observe($('score'));
     setInterval(poll, 1200);
 })();

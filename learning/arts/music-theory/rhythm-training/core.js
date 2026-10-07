@@ -33,8 +33,9 @@
         return { ...config, seed: Number(seed) >>> 0, bars, targets, duration: 32 * 60 / config.bpm };
     }
     // One onset is one tap. Release times and key-hold duration never enter scoring.
+    const hitWindow = chart => Math.min(.14, 60 / chart.bpm * .22);
     function judge(chart, taps) {
-        const window = Math.min(.14, 60 / chart.bpm * .22);
+        const window = hitWindow(chart);
         const marks = chart.targets.map(time => ({ time, hit: false, error: null, points: 0 }));
         let extras = 0;
         const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
@@ -48,13 +49,13 @@
             const mark = marks[best];
             mark.hit = true;
             mark.error = tap - mark.time;
-            mark.points = distance <= .05 ? 1 : distance <= .1 ? .7 : .4;
+            mark.points = distance <= .05 ? 1 : 0;
         }
         const hits = marks.filter(mark => mark.hit);
         const accuracy = Math.max(0, Math.round(1000 * (hits.reduce((sum, m) => sum + m.points, 0) - extras * .5) / marks.length) / 10);
         return { accuracy, perfect: hits.filter(m => m.points === 1).length, hits: hits.length,
-            misses: marks.length - hits.length, extras, marks,
+            misses: marks.length - hits.length, extras, wrong: extras + hits.filter(m => m.points === 0).length, marks,
             errorMs: hits.length ? Math.round(hits.reduce((sum, m) => sum + Math.abs(m.error), 0) * 1000 / hits.length) : null };
     }
-    return { LEVELS, VALUES, settings, chart, judge };
+    return { LEVELS, VALUES, settings, chart, judge, hitWindow };
 });

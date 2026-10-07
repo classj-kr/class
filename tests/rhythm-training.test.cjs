@@ -21,7 +21,8 @@ test('a long note has one onset; misses and extra taps reduce scores; rest attac
     assert.equal(Core.judge(c, [0, 1.2, 2.4]).accuracy, 100);
     assert.equal(Core.judge(c, [0, 0, 1.2, 2.4]).extras, 1);
     assert.equal(Core.judge(c, [0, .6, 1.2, 2.4]).accuracy, 83.3);
-    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).accuracy, 70);
+    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).accuracy, 0);
+    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).wrong, 3);
     assert.equal(Core.judge(c, [0]).misses, 2);
     assert.equal(Core.judge(c, [0, 1.2, 2.4, ...Array(20).fill(.6)]).accuracy, 0);
 });

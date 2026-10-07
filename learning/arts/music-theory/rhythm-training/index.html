@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#111827">
     <title>리듬 트레이닝</title>
-    <link rel="stylesheet" href="styles.css?v=20261006-1">
+    <link rel="stylesheet" href="styles.css?v=20261007-hit-miss">
     <script src="notation.js?v=20261006-vector-notation" defer></script>
-    <script src="rhythm-notation.js?v=20261006-beat-ties" defer></script>
-    <script src="core.js?v=20261006-1" defer></script>
-    <script src="app.js?v=20261007-four-digit" defer></script>
+    <script src="rhythm-notation.js?v=20261007-connected-score" defer></script>
+    <script src="core.js?v=20261007-hit-miss" defer></script>
+    <script src="app.js?v=20261007-hit-miss" defer></script>
 </head>
 <body data-sfx-clicks="none">
 <main class="shell">
@@ -58,11 +58,11 @@
             <div class="beat-dots" id="beats" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             <div id="score" class="score" aria-label="리듬 악보"></div>
             <div class="feedback-row"><strong id="feedback" aria-live="polite">준비됐나요?</strong><span id="combo"></span></div>
-            <button id="pad" class="pad" aria-label="리듬 치기"><span>두드리기</span><kbd>SPACE</kbd></button>
+            <button id="pad" class="pad" aria-label="리듬 치기"><span>두드리기</span><kbd>SPACE</kbd><i id="tapEffects" class="tap-effects" aria-hidden="true"><i class="tap-ring"></i><i class="tap-ring echo"></i></i></button>
             <button id="stop" class="quiet stop" hidden>그만하기</button>
             <section id="result" class="result" hidden aria-label="연습 결과">
                 <div><span>정확도</span><strong id="accuracy"></strong></div>
-                <dl><div><dt>정확하게</dt><dd id="perfect"></dd></div><div><dt>놓친 음</dt><dd id="misses"></dd></div><div><dt>더 누름</dt><dd id="extras"></dd></div></dl>
+                <dl><div><dt>맞음</dt><dd id="perfect"></dd></div><div><dt>놓침</dt><dd id="misses"></dd></div><div><dt>틀림</dt><dd id="extras"></dd></div></dl>
                 <button id="retry" class="secondary">같은 리듬 다시</button>
             </section>
             <section id="ranking" class="ranking" hidden>
