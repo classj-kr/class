@@ -10,7 +10,7 @@ const roomSource = await readFile(new URL("../room/app.js", import.meta.url), "u
 const voteAppSource = await readFile(new URL("../vote/app.js", import.meta.url), "utf8");
 
 test("the home room-number entrance resolves activities centrally", () => {
-  assert.match(homeSource, /href="\/room\/"[^>]*>순위전 · 방번호 입력/);
+  assert.match(homeSource, /href="\/room\/"[^>]*>방번호 입력/);
   assert.match(roomSource, /code\.length !== 4/);
   assert.match(roomSource, /api\/room-entry\/resolve/);
 });
