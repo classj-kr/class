@@ -19,11 +19,12 @@ app.use(express.static(root));
 const server = app.listen(0, '127.0.0.1');
 const errors = [];
 function mockAudio() {
+    window.testSoundStarts = 0;
     class AudioContext {
         constructor() { this.time = 1; this.state = 'running'; this.outputLatency = 0; this.destination = {}; window.testAudio = this; }
         get currentTime() { return this.time; }
         async resume() { this.state = 'running'; }
-        createOscillator() { return { frequency: { setValueAtTime() {} }, connect() {}, disconnect() {}, start() {}, stop() {} }; }
+        createOscillator() { return { frequency: { setValueAtTime() {} }, connect() {}, disconnect() {}, start() { window.testSoundStarts++; }, stop() {} }; }
         createGain() { return { gain: { setValueAtTime() {}, exponentialRampToValueAtTime() {} }, connect() {}, disconnect() {} }; }
     }
     window.AudioContext = AudioContext;
@@ -37,7 +38,18 @@ function mockAudio() {
             const page = await browser.newPage({ viewport: { width, height }, hasTouch: true });
             page.on('pageerror', error => errors.push(error.message));
             await page.goto(url); await page.locator('.rhythm-head').first().waitFor();
-            assert.equal(await page.locator('.bar').count(), 4);
+            assert.equal(await page.locator('.score-measure').count(), 4);
+            assert.equal(await page.locator('#score .rhythm-meter').count(), 2, 'one 4/4 signature for the whole score');
+            const connected = await page.locator('.score-system').evaluateAll(systems => systems.every(system => {
+                const measures = [...system.querySelectorAll('.score-measure')];
+                return measures.every((measure, index) => {
+                    if (!index) return true;
+                    const previous = measures[index - 1].querySelector('.rhythm-line').getBoundingClientRect();
+                    const current = measure.querySelector('.rhythm-line').getBoundingClientRect();
+                    return Math.abs(previous.right - current.left) < 2 && Math.abs(previous.top - current.top) < 1;
+                });
+            }));
+            assert.ok(connected, 'staff lines join across each measure without card gaps');
             assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
             if (width >= 768) assert.ok(await page.locator('#pad').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), 'pad fits school device');
             await page.screenshot({ path: path.join(output, `chromium-${width}.png`), fullPage: true });
@@ -51,15 +63,67 @@ function mockAudio() {
         await solo.keyboard.down('Space');
         for (let i = 0; i < 10; i++) await solo.keyboard.down('Space');
         await solo.keyboard.up('Space');
+        await solo.evaluate(() => { testAudio.time = 1 + .18 + 2.4 + 16 * .6 + .01; });
+        await solo.locator('.score-measure[data-bar="5"]').waitFor();
+        assert.equal(await solo.locator('#score .rhythm-meter').count(), 0, 'no repeated signature on the next page');
+        assert.equal(await solo.locator('#score .rhythm-bar.is-end').count(), 1, 'final barline only at the end of bar eight');
+        assert.equal(await solo.locator('.score-measure[data-bar="5"].active .playhead').evaluate(line =>
+            getComputedStyle(line).display !== 'none' && Number(line.getAttribute('x1')) > Number(line.dataset.onset)), true,
+        'the fifth measure playhead advances in its own coordinate system');
         await solo.evaluate(() => { testAudio.time = 30; });
         await solo.locator('#result').waitFor({ state: 'visible' });
         assert.equal(await solo.locator('#perfect').textContent(), '1', 'a held space triggers once');
         assert.equal(await solo.locator('#extras').textContent(), '0');
         await solo.close();
+        // Same-dispatch visual feedback: no audio voice, network response, key release or RAF is needed.
+        const feedbackPage = await browser.newPage({ viewport: { width: 1366, height: 768 } });
+        await feedbackPage.addInitScript(mockAudio);
+        await feedbackPage.addInitScript(() => { crypto.getRandomValues = values => { values.fill(123); return values; }; });
+        await feedbackPage.goto(url); await feedbackPage.selectOption('#level', '0'); await feedbackPage.click('#start');
+        const targets = await feedbackPage.evaluate(() => RhythmTrainer.chart({ level: 0, bpm: 100 }, 123).targets);
+        async function contact(index, error, expected) {
+            const state = await feedbackPage.evaluate(({ target, error }) => {
+                testAudio.time = 1 + .18 + 2.4 + target + error;
+                const before = testSoundStarts, pad = document.getElementById('pad'), box = pad.getBoundingClientRect(), began = performance.now();
+                pad.dispatchEvent(new PointerEvent('pointerdown', { isPrimary: true, button: 0, clientX: box.x + box.width / 2, clientY: box.y + box.height / 2, bubbles: true }));
+                return { kind: pad.dataset.judgment, combo: document.getElementById('combo').textContent,
+                    sounds: testSoundStarts - before, elapsed: performance.now() - began,
+                    animations: document.getElementById('tapEffects').getAnimations({ subtree: true }).length };
+            }, { target: targets[index], error });
+            assert.equal(state.kind, expected); assert.equal(state.sounds, 0, 'tapping never schedules a delayed input sound');
+            assert.ok(state.elapsed < 50, 'feedback commits within input dispatch: ' + state.elapsed);
+            return state;
+        }
+        await contact(0, 0, 'perfect');
+        assert.equal((await contact(1, -.075, 'wrong')).combo, '');
+        assert.equal((await contact(2, .075, 'wrong')).combo, '');
+        assert.equal(await feedbackPage.locator('#timing').count(), 0);
+        assert.equal(await feedbackPage.locator('#feedback').textContent(), '틀렸어요');
+        await feedbackPage.evaluate(target => { testAudio.time = 1 + .18 + 2.4 + target + .145; }, targets[3]);
+        await feedbackPage.waitForFunction(() => document.getElementById('pad').dataset.judgment === 'miss');
+        assert.equal(await feedbackPage.locator('#combo').textContent(), '');
+        assert.ok((await contact(4, 0, 'perfect')).animations > 0);
+        await contact(4, .01, 'wrong');
+        await contact(5, 0, 'perfect');
+        assert.equal((await contact(6, 0, 'perfect')).combo, '2 COMBO');
+        await feedbackPage.screenshot({ path: path.join(output, 'live-perfect.png') });
+        assert.ok(await feedbackPage.evaluate(() => testSoundStarts > 0), 'metronome still plays');
+        await feedbackPage.click('#stop');
+        await feedbackPage.emulateMedia({ reducedMotion: 'reduce' });
+        await feedbackPage.click('#start');
+        // A restarted round is relative to the current mock audio time.
+        await feedbackPage.evaluate(() => {
+            testAudio.time += .18 + 2.4;
+            document.getElementById('pad').dispatchEvent(new PointerEvent('pointerdown', { isPrimary: true, button: 0, bubbles: true }));
+        });
+        assert.equal(await feedbackPage.locator('#pad').getAttribute('data-judgment'), 'perfect');
+        assert.equal(await feedbackPage.locator('#tapEffects').evaluate(node => node.getAnimations({ subtree: true }).length), 0);
+        await feedbackPage.close();
+        console.log('Live feedback: correct/wrong/missed and combo update synchronously; no timing-direction gauge, taps silent, metronome preserved, reduced motion respected.');
         const teacherContext = await browser.newContext();
         await teacherContext.addCookies([{ name: 'testTeacher', value: '1', url: origin }]);
         const teacher = await teacherContext.newPage(); await teacher.goto(url); await teacher.click('#classTab'); await teacher.click('#create');
-        await teacher.locator('#roomCode').filter({ hasText: /\d{6}/ }).waitFor();
+        await teacher.locator('#roomCode').filter({ hasText: /^\d{4}$/ }).waitFor();
         const code = await teacher.locator('#roomCode').textContent();
         const student = await browser.newPage(); await student.addInitScript(mockAudio);
         student.on('pageerror', error => errors.push(error.message));
