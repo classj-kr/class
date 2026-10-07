@@ -6,64 +6,80 @@
     <meta name="theme-color" content="#10261d">
     <title>내 정보 설정</title>
     <style>
-        :root { color-scheme: dark; --bg:#0d1813; --panel:#14271e; --line:#315442; --ink:#f7f4ea; --muted:#aec0b6; --green:#70d99d; --soft:#1b3a2a; --amber:#ffd27a; }
-        * { box-sizing: border-box; }
-        body { margin:0; min-width:320px; min-height:100vh; padding:28px 20px; color:var(--ink); background:radial-gradient(circle at 20% 0,rgba(112,217,157,.11),transparent 30rem),var(--bg); font-family:Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif; }
-        main { width:min(720px,100%); margin:auto; }
-        .top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
-        .back { min-height:44px; display:inline-flex; align-items:center; padding:8px 12px; border-radius:10px; color:var(--green); font-weight:900; text-decoration:none; }
-        h1 { margin:0; font-size:clamp(2rem,7vw,3.3rem); letter-spacing:-.05em; }
-        .intro { margin:12px 0 24px; color:var(--muted); line-height:1.65; }
-        .card { margin-bottom:14px; padding:22px; border:1px solid var(--line); border-radius:18px; background:rgba(20,39,30,.95); }
+        :root { color-scheme:dark; --bg:#0c1713; --panel:#16271f; --inset:#101e18; --line:#345241; --ink:#f6f5ee; --muted:#adbcaf; --green:#84e0aa; --soft:#203c2b; --amber:#ffd27a; }
+        * { box-sizing:border-box; }
+        body { margin:0; min-width:320px; min-height:100vh; padding:32px 24px 72px; color:var(--ink); background:radial-gradient(circle at 50% -200px,rgba(95,165,119,.13),transparent 580px),var(--bg); font-family:Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif; line-height:1.5; }
+        main { width:min(940px,100%); margin:0 auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+        .top,.page-heading,#identityCard,#ai-settings { grid-column:1/-1; }
+        .top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+        .back,.privacy-link { min-height:40px; display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border:1px solid transparent; border-radius:10px; color:var(--muted); font-size:.9rem; font-weight:700; text-decoration:none; }
+        .back:hover,.privacy-link:hover { color:var(--ink); background:var(--soft); }
+        .privacy-link { border-color:var(--line); }
+        .page-heading { margin:0 0 10px; }
+        .eyebrow { margin:0 0 6px; color:var(--green); font-size:.75rem; font-weight:800; letter-spacing:.14em; }
+        h1 { margin:0; font-size:clamp(1.9rem,3.4vw,2.45rem); line-height:1.2; letter-spacing:-.045em; }
+        .intro { margin:8px 0 0; color:var(--muted); font-size:.95rem; }
+        .card { min-width:0; padding:26px; border:1px solid var(--line); border-radius:18px; background:var(--panel); box-shadow:0 12px 32px rgba(0,0,0,.12); align-self:start; }
+        .card h2 { display:flex; align-items:center; gap:10px; margin:0 0 20px; font-size:1.18rem; line-height:1.3; letter-spacing:-.025em; }
+        .card h2::before { content:""; width:4px; height:18px; flex:none; border-radius:4px; background:var(--green); }
         .identity { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-        .identity div { padding:14px; border-radius:12px; background:#0f1d17; }
+        .identity div { min-width:0; padding:15px 18px; border:1px solid #2b4336; border-radius:12px; background:var(--inset); }
         .identity span,.identity strong { display:block; }
-        .identity span { color:var(--muted); font-size:.8rem; }
-        label { display:block; margin:0 0 8px; font-weight:900; }
-        input, select { width:100%; min-height:52px; padding:12px 14px; border:1px solid var(--line); border-radius:11px; color:var(--ink); background:#0f1d17; font:inherit; font-size:1.1rem; }
+        .identity span { margin-bottom:4px; color:var(--muted); font-size:.78rem; }
+        .identity strong { font-size:1rem; overflow-wrap:anywhere; }
+        label { display:block; margin:0 0 8px; font-size:.9rem; font-weight:750; }
+        input,select { width:100%; min-height:46px; padding:10px 13px; border:1px solid var(--line); border-radius:10px; color:var(--ink); background:var(--inset); font:inherit; }
         select { cursor:pointer; }
-        .birthday-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-        .hint { color:var(--muted); font-size:.9rem; line-height:1.6; }
-        .choice { display:flex; align-items:flex-start; gap:12px; min-height:58px; padding:12px; border:1px solid var(--line); border-radius:12px; cursor:pointer; }
-        .choice input { width:24px; min-height:24px; margin:2px 0 0; accent-color:var(--green); }
+        :is(input,select,button,a):focus-visible { outline:2px solid var(--green); outline-offset:3px; }
+        .birthday-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+        .hint { color:var(--muted); font-size:.84rem; line-height:1.6; }
+        #birthdayHint { margin:9px 0 20px; }
+        .choice { display:flex; align-items:flex-start; gap:12px; padding:14px; border:1px solid var(--line); border-radius:12px; background:var(--inset); cursor:pointer; }
+        .choice:has(input:checked) { border-color:var(--green); background:var(--soft); }
+        .choice input { width:20px; min-height:20px; margin:1px 0 0; flex:none; accent-color:var(--green); }
         .choice strong,.choice small { display:block; }
-        .choice small { margin-top:4px; color:var(--muted); line-height:1.45; }
-        .preview { padding:14px; border-radius:12px; background:var(--soft); color:var(--green); font-weight:900; }
+        .choice strong { font-size:.9rem; }
+        .choice small { margin-top:5px; color:var(--muted); line-height:1.5; }
+        .preview { margin:14px 0 0; padding:12px 14px; border-radius:10px; background:var(--soft); color:var(--green); font-size:.87rem; font-weight:700; }
         .warning { color:var(--amber); }
-        .actions { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; }
-        button { min-height:48px; padding:10px 18px; border:1px solid var(--green); border-radius:11px; color:#082216; background:var(--green); font:inherit; font-weight:900; cursor:pointer; }
+        .actions { display:flex; align-items:center; justify-content:flex-end; gap:12px; margin-top:18px; }
+        button { min-height:44px; padding:9px 16px; border:1px solid var(--green); border-radius:10px; color:#092117; background:var(--green); font:inherit; font-size:.9rem; font-weight:800; cursor:pointer; }
+        button:hover:not(:disabled) { filter:brightness(1.08); }
         button:disabled { opacity:.55; cursor:wait; }
-        #status { min-height:26px; color:var(--muted); font-weight:800; }
-        
-        .privacy-link { min-height:44px; display:inline-flex; align-items:center; color:var(--green); }
-        .avatar-current { display:flex; align-items:center; gap:18px; padding:16px; border-radius:14px; background:#0f1d17; }
-        .avatar-current img { width:112px; height:112px; object-fit:contain; flex:none; }
+        #status { margin-right:auto; color:var(--muted); font-size:.84rem; font-weight:700; }
+        .avatar-current { display:flex; align-items:center; gap:16px; min-height:114px; padding:14px; border:1px solid #2b4336; border-radius:12px; background:var(--inset); }
+        .avatar-current img { width:84px; height:84px; object-fit:contain; flex:none; }
+        .avatar-placeholder { width:72px; height:72px; display:grid; place-items:center; flex:none; border-radius:18px; background:linear-gradient(145deg,#2c5940,#193b2a); color:var(--green); }
+        .avatar-placeholder svg { width:42px; height:42px; }
         .avatar-current strong,.avatar-current span { display:block; }
-        .avatar-current span { margin-top:6px; color:var(--muted); line-height:1.5; }
-        .avatar-picker { margin-top:16px; }
-        .avatar-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(78px,1fr)); gap:10px; margin-top:12px; }
-        .avatar-option { min-height:88px; padding:6px; border:2px solid transparent; border-radius:13px; background:#0f1d17; }
-        .avatar-option img { width:68px; height:68px; max-width:100%; object-fit:contain; pointer-events:none; }
+        .avatar-current strong { font-size:.98rem; }
+        .avatar-current span { margin-top:5px; color:var(--muted); font-size:.84rem; line-height:1.5; }
+        .avatar-picker { margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
+        #avatarCard:has(.avatar-picker:not([hidden])) { grid-column:1/-1; }
+        .avatar-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(76px,1fr)); gap:10px; margin-top:12px; }
+        .avatar-option { min-height:86px; padding:6px; border:2px solid transparent; border-radius:12px; background:var(--inset); }
+        .avatar-option img { width:66px; height:66px; max-width:100%; object-fit:contain; pointer-events:none; }
         .avatar-option[aria-pressed="true"] { border-color:var(--amber); background:#254733; }
         .secondary-button { color:var(--green); background:transparent; }
         .picker-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
-        #avatarStatus { min-height:26px; color:var(--muted); font-weight:800; }
+        #avatarStatus { color:var(--muted); font-size:.84rem; font-weight:700; }
         [hidden] { display:none !important; }
         .card a { color:var(--green); }
         .ai-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
         #aiStatus { min-height:26px; overflow-wrap:anywhere; }
-        @media(max-width:600px){.avatar-current{align-items:flex-start}.avatar-current img{width:92px;height:92px}.picker-actions{align-items:stretch;flex-direction:column}}
-        @media(max-width:600px){body{padding:18px 14px}.identity{grid-template-columns:1fr}.actions{align-items:stretch;flex-direction:column}button{width:100%}}
+        @media(max-width:720px) { body{padding:18px 14px 48px} main{grid-template-columns:1fr;gap:12px} .top,.page-heading,#identityCard,#ai-settings,#avatarCard:has(.avatar-picker:not([hidden])){grid-column:1} .top{margin-bottom:4px} .page-heading{margin-bottom:8px} .card{padding:20px} }
+        @media(max-width:480px) { .identity{grid-template-columns:1fr} .actions,.picker-actions{align-items:stretch;flex-direction:column} .actions button,.picker-actions button{width:100%} .avatar-current{align-items:flex-start} .avatar-current img{width:72px;height:72px} }
     </style>
 </head>
 <body><main>
     <div class="top"><a class="back" href="/">← 첫 화면</a><a class="privacy-link" href="/student-privacy">개인정보 안내</a></div>
-    <h1>내 정보 설정</h1>
-    <section class="card" aria-labelledby="identityTitle"><h2 id="identityTitle">내 학급</h2><div class="identity"><div><span id="identityRole">학생</span><strong id="studentName">확인 중…</strong></div><div><span id="affiliationLabel">학급</span><strong id="className">확인 중…</strong></div></div></section>
+    <header class="page-heading"><p class="eyebrow">MY ACCOUNT</p><h1>내 정보 설정</h1><p class="intro">프로필과 아바타, 생일 공개 범위를 관리하세요.</p></header>
+    <section id="identityCard" class="card" aria-labelledby="identityTitle"><h2 id="identityTitle">내 학급</h2><div class="identity"><div><span id="identityRole">학생</span><strong id="studentName">확인 중…</strong></div><div><span id="affiliationLabel">학급</span><strong id="className">확인 중…</strong></div></div></section>
     <section id="avatarCard" class="card" hidden aria-labelledby="avatarTitle">
         <h2 id="avatarTitle">&#45236; &#50500;&#48148;&#53440;</h2>
         <div class="avatar-current">
             <img id="currentAvatarImage" alt="&#54788;&#51116; &#50500;&#48148;&#53440;">
+            <div id="avatarPlaceholder" class="avatar-placeholder" aria-hidden="true" hidden><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="17" r="7" stroke="currentColor" stroke-width="2.5"/><path d="M10 40c1.5-8 7-12 14-12s12.5 4 14 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
             <div><strong id="currentAvatarName">&#50500;&#48148;&#53440; &#54869;&#51064; &#51473;&#8230;</strong><span id="avatarPolicy"></span></div>
         </div>
         <div class="actions"><span></span><button id="openAvatarPicker" class="secondary-button" type="button">&#50500;&#48148;&#53440; &#48148;&#44984;&#44592;</button></div>
@@ -140,6 +156,7 @@ function createAvatarButton(option){
 function renderAvatarGrid(container,options){container.replaceChildren(...options.map(createAvatarButton));updateAvatarSelection()}
 function renderAvatar(avatar){
     currentAvatarProfile=avatar||{key:'',url:'',options:[],canChange:false};selectedAvatarKey='';avatarPicker.hidden=true;allAvatars.hidden=true;toggleAllAvatars.textContent='\uc804\uccb4 \uc544\ubc14\ud0c0 \ubcf4\uae30';avatarStatus.textContent='';
+    document.querySelector('#avatarPlaceholder').hidden=Boolean(currentAvatarProfile.url);
     if(currentAvatarProfile.url){currentAvatarImage.src=currentAvatarProfile.url;currentAvatarImage.hidden=false;currentAvatarName.textContent=avatarDisplayName(currentAvatarProfile.key)}else{currentAvatarImage.removeAttribute('src');currentAvatarImage.hidden=true;currentAvatarName.textContent='\uc544\uc9c1 \ubc30\uc815\ub418\uc9c0 \uc54a\uc74c'}
     if(isTeacherProfile)avatarPolicy.textContent='원하는 아바타를 선택하고 언제든 바꿀 수 있습니다.';
     else if(!currentAvatarProfile.key)avatarPolicy.textContent='\ub2f4\uc784 \uc120\uc0dd\ub2d8\uc774 \uba85\ub2e8\uc744 \uc800\uc7a5\ud558\uba74 \uc544\ubc14\ud0c0\uac00 \uc790\ub3d9\uc73c\ub85c \ubc30\uc815\ub429\ub2c8\ub2e4.';

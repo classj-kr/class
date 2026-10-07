@@ -3,6 +3,9 @@
 .era-integrated button:disabled{opacity:.38;cursor:not-allowed}
 .actions a{background:#fff!important;color:var(--accent)!important}.actions a::before{background:#f03!important;color:#fff!important}
 
+/* Menu labels and titles share the room's sans-serif UI typography. */
+header h1,.section-head h2,.piece h3,#detail-content h2{font-family:inherit}
+
 /* Genre room backgrounds supplied for the music appreciation collection. */
 .genre-room{background-color:#211b17;background-position:center top;background-size:cover;background-repeat:no-repeat;background-attachment:fixed}.genre-classical{background-image:linear-gradient(rgba(25,15,10,.25),rgba(25,15,10,.42)),url("../assets/backgrounds/classical.webp")}.genre-korean{background-image:linear-gradient(rgba(24,14,8,.24),rgba(24,14,8,.42)),url("../assets/backgrounds/korean.webp")}.genre-pop{background-image:linear-gradient(rgba(10,14,37,.22),rgba(10,14,37,.4)),url("../assets/backgrounds/pop.webp")}.genre-jazz{background-image:linear-gradient(rgba(27,13,7,.22),rgba(27,13,7,.42)),url("../assets/backgrounds/jazz.webp")}.genre-room header{background:rgba(23,51,48,.94)}.genre-room .history,.genre-room #library,.genre-room .quiz{background:rgba(255,253,248,.94);box-shadow:0 10px 30px #0004;backdrop-filter:blur(4px)}
 @media(max-width:900px),(pointer:coarse){.genre-room{background-attachment:scroll}}

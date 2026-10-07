@@ -2,7 +2,7 @@
     'use strict';
     const C = window.RhythmTrainer, $ = id => document.getElementById(id);
     const storageKey = 'rhythm-training-room-v1';
-    let audio, chart, run = null, raf = 0, pageIndex = -1, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
+    let audio, chart, run = null, raf = 0, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
     let room = null, credentials = null, pendingResult = null, polling = false, starting = false, loading = false;
     let lastRound = '', streak = 0, pressedTimer = 0;
     const nodes = new Set();
@@ -93,41 +93,41 @@
         osc.connect(gain); gain.connect(audio.destination); osc.start(time); osc.stop(time + .06);
         nodes.add(osc); osc.onended = () => { nodes.delete(osc); osc.disconnect(); gain.disconnect(); };
     }
-    function heardTime() {
+    function heardTime(performanceTime = performance.now()) {
         const stamp = audio.getOutputTimestamp?.();
-        if (stamp?.performanceTime > 0 && stamp.contextTime > 0) return stamp.contextTime + (performance.now() - stamp.performanceTime) / 1000;
-        return audio.currentTime - (audio.outputLatency || 0);
+        if (stamp?.performanceTime > 0 && stamp.contextTime > 0) return stamp.contextTime + (performanceTime - stamp.performanceTime) / 1000;
+        return audio.currentTime - (audio.outputLatency || 0) - Math.max(0, performance.now() - performanceTime) / 1000;
     }
     function silence() { for (const node of nodes) { try { node.stop(); } catch (_) {} } nodes.clear(); }
-    function renderScore(page = 0) {
-        pageIndex = page; heads = []; lines = [];
+    function renderScore() {
+        heads = []; lines = [];
         $('score').replaceChildren();
-        scoreColumns = $('score').clientWidth >= 720 ? 4 : 2;
+        scoreColumns = $('score').clientWidth >= 620 ? 4 : 2;
         const ns = 'http://www.w3.org/2000/svg';
         let system, offset = 0;
-        chart.bars.slice(page * 4, page * 4 + 4).forEach((bar, index) => {
+        chart.bars.forEach((bar, index) => {
             const firstInLine = index % scoreColumns === 0;
             if (firstInLine) {
                 system = document.createElementNS(ns, 'svg');
                 system.setAttribute('class', 'rhythm score-system');
                 system.setAttribute('role', 'img');
-                system.setAttribute('aria-label', `${page * 4 + index + 1}~${page * 4 + Math.min(index + scoreColumns, 4)}마디 리듬`);
+                system.setAttribute('aria-label', `${index + 1}~${Math.min(index + scoreColumns, chart.bars.length)}마디 리듬`);
                 $('score').append(system); offset = 0;
             }
-            const first = page === 0 && index === 0, left = first ? 44 : 18;
+            const first = index === 0, left = first ? 44 : 18;
             const svg = RhythmNotation.render(bar, { meter: first ? '4/4' : null, left, beatWidth: 52, beatGap: 6 });
             const width = svg.viewBox.baseVal.width;
             if (!firstInLine) svg.querySelector('.rhythm-bar:not(.is-end)').remove();
             const end = svg.querySelector('.is-end');
             end.classList.remove('is-end');
-            if (page * 4 + index === chart.bars.length - 1) {
+            if (index === chart.bars.length - 1) {
                 const thin = end.cloneNode(); thin.setAttribute('x1', width - 16); thin.setAttribute('x2', width - 16);
                 svg.append(thin); end.classList.add('is-end');
             }
             const measure = document.createElementNS(ns, 'g');
             measure.setAttribute('class', 'score-measure');
             measure.setAttribute('transform', `translate(${offset} 0)`);
-            measure.dataset.bar = String(page * 4 + index + 1);
+            measure.dataset.bar = String(index + 1);
             const highlight = document.createElementNS(ns, 'rect');
             for (const [key, value] of Object.entries({ class: 'measure-highlight', x: 10, y: 16, width: width - 21, height: 66 })) highlight.setAttribute(key, value);
             measure.append(highlight, ...svg.childNodes);
@@ -137,7 +137,7 @@
             measure.append(line); system.append(measure); lines.push(line);
             offset += width - 21;
             system.setAttribute('viewBox', `0 11 ${offset + 21} 75`);
-            let beat = (page * 4 + index) * 4;
+            let beat = index * 4;
             const noteHeads = [...measure.querySelectorAll('.rhythm-head')]; let headIndex = 0;
             bar.forEach(note => {
                 if (!note.rest) heads.push({ node: noteHeads[headIndex++], time: beat * 60 / chart.bpm });
@@ -216,13 +216,12 @@
         }
         if (!run.demo) expireMisses(time);
         if (time >= 0 && time < chart.duration) {
-            const bar = Math.floor(time / beat / 4), page = Math.floor(bar / 4);
-            if (page !== pageIndex) renderScore(page);
+            const bar = Math.floor(time / beat / 4);
             $('barCount').textContent = `${bar + 1} / 8마디`;
-            $('score').querySelectorAll('.score-measure').forEach((node, index) => node.classList.toggle('active', index === bar % 4));
-            lines.forEach((line, index) => { line.style.display = index === bar % 4 ? '' : 'none'; });
-            const within = time / beat % 4, x = Number(lines[bar % 4].dataset.onset) + within * 52 + Math.floor(within) * 6;
-            lines[bar % 4].setAttribute('x1', String(x)); lines[bar % 4].setAttribute('x2', String(x));
+            $('score').querySelectorAll('.score-measure').forEach((node, index) => node.classList.toggle('active', index === bar));
+            lines.forEach((line, index) => { line.style.display = index === bar ? '' : 'none'; });
+            const within = time / beat % 4, x = Number(lines[bar].dataset.onset) + within * 52 + Math.floor(within) * 6;
+            lines[bar].setAttribute('x1', String(x)); lines[bar].setAttribute('x2', String(x));
             paintMarks(time);
         }
         if (time > chart.duration + .15) { void finish(false); return; }
@@ -247,7 +246,9 @@
     function tap(event) {
         // Capture the audio-clock position before rendering. Input feedback is silent:
         // speaker/Bluetooth output delay must not produce a second, late tapping beat.
-        const time = run ? heardTime() - run.startAt : 0;
+        const now = performance.now(), eventTime = Number(event?.timeStamp);
+        const inputTime = eventTime > 0 && eventTime <= now && now - eventTime < 1000 ? eventTime : now;
+        const time = run ? heardTime(inputTime) - run.startAt : 0;
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
         if (!run || run.demo) { burst(event); return; }
@@ -406,7 +407,7 @@
     }
     void api('/session').then(data => { $('create').hidden = !data.isTeacher; $('teacherHint').hidden = data.isTeacher; }).catch(() => {});
     new ResizeObserver(() => {
-        if ($('score').clientWidth > 0 && ($('score').clientWidth >= 720 ? 4 : 2) !== scoreColumns) renderScore(Math.max(0, pageIndex));
+        if ($('score').clientWidth > 0 && ($('score').clientWidth >= 620 ? 4 : 2) !== scoreColumns) renderScore();
     }).observe($('score'));
     setInterval(poll, 1200);
 })();

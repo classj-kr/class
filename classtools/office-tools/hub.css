@@ -6,23 +6,15 @@ a:focus-visible { outline: 3px solid #6c9fdf; outline-offset: 5px; }
 .office-hub { max-width: 1080px; margin: 0 auto; padding: 32px 28px 48px; }
 .back-link { display: inline-block; padding: 8px 0; color: #67727e; font-size: 14px; text-decoration: none; }
 .back-link:hover { color: #285d4d; text-decoration: underline; }
-.hub-header { margin: 32px 0 24px; }
-h1 { margin: 0; font-size: clamp(28px, 4vw, 36px); letter-spacing: -1px; }
-.tool-menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.tool-card { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 28px; border: 1px solid #dde2e6; border-radius: 14px; background: #fff; text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+.tool-menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+.tool-card { display: flex; align-items: center; gap: 16px; min-width: 0; padding: 24px; border: 1px solid #dde2e6; border-radius: 14px; background: #fff; text-decoration: none; transition: border-color .15s, box-shadow .15s; }
 .tool-card:hover { border-color: #7caa94; box-shadow: 0 6px 22px #285d4d0d; }
-.tool-icon { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 24px; border-radius: 12px; background: #edf4f0; color: #285d4d; font-size: 27px; font-weight: 700; }
+.tool-icon { display: grid; place-items: center; width: 52px; height: 52px; flex-shrink: 0; border-radius: 12px; background: #edf4f0; color: #285d4d; font-size: 27px; font-weight: 700; }
 .pdf-icon { font-size: 15px; letter-spacing: -.5px; }
-h2 { margin: 0 0 12px; font-size: 20px; }
-.tool-card p { margin: 0 0 28px; color: #67727e; font-size: 14px; line-height: 1.8; word-break: keep-all; }
-.tool-action { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 18px; border-top: 1px solid #edf0f2; color: #285d4d; font-size: 14px; font-weight: 700; }
-.tool-action span { font-size: 19px; }
-.privacy-note { margin: 24px 0 0; color: #67727e; font-size: 12px; line-height: 1.7; word-break: keep-all; }
+h2 { margin: 0; font-size: 18px; word-break: keep-all; }
 @media (max-width: 720px) {
   .office-hub { padding: 20px 20px 36px; }
-  .hub-header { margin: 24px 0 20px; }
   .tool-menu { grid-template-columns: 1fr; gap: 12px; }
   .tool-card { padding: 22px; }
-  .tool-icon { width: 44px; height: 44px; margin-bottom: 16px; }
-  .tool-card p { margin-bottom: 18px; }
+  .tool-icon { width: 44px; height: 44px; }
 }

@@ -21,10 +21,27 @@ test('a long note has one onset; misses and extra taps reduce scores; rest attac
     assert.equal(Core.judge(c, [0, 1.2, 2.4]).accuracy, 100);
     assert.equal(Core.judge(c, [0, 0, 1.2, 2.4]).extras, 1);
     assert.equal(Core.judge(c, [0, .6, 1.2, 2.4]).accuracy, 83.3);
-    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).accuracy, 0);
-    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).wrong, 3);
+    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).accuracy, 100);
+    assert.equal(Core.judge(c, [.06, 1.26, 2.46]).wrong, 0);
+    assert.equal(Core.judge(c, [.3, 1.5, 2.7]).accuracy, 0);
     assert.equal(Core.judge(c, [0]).misses, 2);
     assert.equal(Core.judge(c, [0, 1.2, 2.4, ...Array(20).fill(.6)]).accuracy, 0);
+});
+
+test('accepted timing variation earns full credit without stealing neighboring sixteenths', () => {
+    for (const bpm of [70, 100, 140]) for (let level = 0; level < 4; level++) for (let seed = 1; seed < 40; seed++) {
+        const chart = Core.chart({ bpm, level }, seed);
+        const margin = Core.hitWindow(chart) * .75;
+        for (const offset of [-margin, -.06, .06, margin]) {
+            const result = Core.judge(chart, chart.targets.map(time => time + offset));
+            assert.equal(result.accuracy, 100, JSON.stringify({ bpm, level, seed, offset }));
+            assert.equal(result.perfect, chart.targets.length);
+            assert.equal(result.wrong, 0);
+        }
+        const omitted = Core.judge(chart, chart.targets.slice(1));
+        assert.equal(omitted.misses, 1);
+        assert.equal(omitted.hits, chart.targets.length - 1);
+    }
 });
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
     let clock = 1000000, blocked = false, configured = true;
