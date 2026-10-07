@@ -53,16 +53,20 @@ const fetchImpl = async (url, options = {}) => {
     await context.addCookies([{ name: 'test_user', value: '1', url: h.base }]);
     const page = await context.newPage();
     const errors = []; page.on('pageerror', (e) => errors.push(e.message));
-    page.on('dialog', (d) => d.accept());
+    const dialogs = [];
+    page.on('dialog', (d) => { dialogs.push({ type: d.type(), message: d.message() }); return d.accept(); });
     await page.goto(h.base + '/classtools/record-ai.html');
     await page.locator('#sub-input').waitFor();
     await page.locator('#roster-status').filter({ hasText: '3명' }).waitFor({ timeout: 10000 });
     await page.locator('#sub-input').selectOption('수학');
     await page.locator('#topics-input').fill('분수의 덧셈과 뺄셈\n' + FAILING_TOPIC);
 
-    // 키가 없으면 만들지 않고 AI 설정으로 눈길을 돌린다.
-    await page.locator('#generate-btn').click();
-    await page.waitForTimeout(500);
+    // 상시 연결 카드는 없고, 실행할 때 키가 없으면 경고창만 보여 준다.
+    assert.equal(await page.locator('#key-card').count(), 0);
+    assert.deepEqual(dialogs, [], '화면을 열 때는 경고창을 띄우지 않는다');
+    await Promise.all([page.waitForEvent('dialog'), page.locator('#generate-btn').click()]);
+    assert.deepEqual(dialogs, [{ type: 'alert', message: 'API 키가 등록되어 있지 않습니다. 내 정보 → AI 설정에서 API 키를 등록해 주세요.' }]);
+    assert.equal(new URL(page.url()).pathname, '/classtools/record-ai.html', '작성 중인 화면을 강제로 이동하지 않는다');
     assert.equal(await page.locator('#result-section').isVisible(), false);
     assert.equal(google.length, 0, '키가 없으면 구글에 가지 않는다');
     const put = await page.evaluate(async (k) => (await fetch('/api/teacher-ai/key', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key: k }) })).status, VALID_KEY);

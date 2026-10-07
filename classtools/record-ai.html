@@ -408,12 +408,6 @@
     </header>
 
     <main>
-        <section class="card" id="key-card">
-            <h2 style="font-size:1rem; margin:0 0 8px;">AI 연결</h2>
-            <p id="key-status" class="status" role="status">AI 설정 확인 중…</p>
-            <a id="ai-settings-link" href="/classtools/profile#ai-settings" style="color:var(--brand);">내 정보에서 AI 설정 관리</a>
-        </section>
-
         <!-- 생성 양식 -->
         <section class="card">
             <!-- 고른 대상에 따라 아래의 기록할 칸과 과목이 정해진다. -->
@@ -549,7 +543,6 @@
             'use strict';
 
             const $ = (id) => document.getElementById(id);
-            const keyStatus = $('key-status');
             const areaSelect = $('area-select');
 
             // 쓸 수 있는 대상(담임 학급·전담 학급·동아리). applyArea 가 첫 그리기에서
@@ -855,22 +848,8 @@
                 };
             }
 
-            async function importReady() {
-                try {
-                    await window.ClassroomAI.init();
-                } catch (error) {
-                    importStatus.textContent = error.message;
-                    return false;
-                }
-                if (!window.ClassroomAI.hasKey()) {
-                    importStatus.textContent = '내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.';
-                    return false;
-                }
-                return true;
-            }
-
             importBtn.addEventListener('click', async () => {
-                if (!await importReady()) return;
+                if (!await ensureAiReady()) return;
                 importFile.value = '';
                 importFile.click();
             });
@@ -896,7 +875,7 @@
                 const file = e.dataTransfer.files && e.dataTransfer.files[0];
                 if (!file || !canDrop()) return;
                 if (!IMPORT_TYPES.test(file.name)) { importStatus.textContent = 'PDF·사진·hwpx·docx·txt 파일만 읽을 수 있습니다.'; return; }
-                if (!await importReady()) return;
+                if (!await ensureAiReady()) return;
                 importPlanFile(file);
             });
 
@@ -981,18 +960,16 @@
             // store 를 갖춘 뒤라야 적어 둔 것을 되살릴 수 있다.
             swapTopics();
 
-            async function refreshAiStatus() {
+            async function ensureAiReady() {
                 try {
                     await window.ClassroomAI.init();
-                    const hasKey = window.ClassroomAI.hasKey();
-                    keyStatus.textContent = hasKey ? '내 정보에 등록된 Gemini API 키를 사용합니다.'
-                        : '내 정보의 AI 설정에서 API 키를 등록해 주세요.';
-                    return hasKey;
-                } catch (error) { keyStatus.textContent = error.message; return false; }
+                    if (!window.ClassroomAI.hasKey()) {
+                        alert('API 키가 등록되어 있지 않습니다. 내 정보 → AI 설정에서 API 키를 등록해 주세요.');
+                        return false;
+                    }
+                    return true;
+                } catch (error) { alert(error.message); return false; }
             }
-            refreshAiStatus();
-            window.addEventListener('focus', refreshAiStatus);
-            window.addEventListener('storage', refreshAiStatus);
 
             // ── 명단 ───────────────────────────────────────────────────────
             // 이름은 이 브라우저 안에만 머문다. 구글로는 인원수만 나가고, 받아 온
@@ -1785,10 +1762,7 @@
             }
 
             generateBtn.addEventListener('click', async () => {
-                if (!await refreshAiStatus()) {
-                    $('ai-settings-link').focus();
-                    return;
-                }
+                if (!await ensureAiReady()) return;
                 const byTraits = areaSelect.value === 'behavior';
                 const picked = byTraits
                     ? traitStudents().map(student => ({ ...student, trait: traitOf(student.key) }))
