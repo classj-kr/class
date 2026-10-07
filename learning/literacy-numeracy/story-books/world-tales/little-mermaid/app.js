@@ -244,33 +244,29 @@ const CHAPTERS = [
                 "art": "08-air.webp",
                 "emoji": "☁️",
                 "left": [
-                    "인어공주는 바다로 몸을 던졌습니다. 몸이 스르르 물거품으로 풀려 갔지요.",
-                    "그런데 가라앉지 않았습니다. 오히려 깃털처럼 가벼워졌지요.",
-                    "몸이 위로, 위로 떠올랐지요. 햇살이 몸을 그대로 통과했습니다.",
-                    "\"여기가 어디지?\""
+                    "인어공주는 바다로 몸을 던졌습니다. 그 순간 첫 햇살이 물결 위로 쏟아졌지요.",
+                    "인어공주의 몸이 발끝부터 스르르 물거품으로 풀려 갔습니다. 작은 방울들이 반짝이며 흩어졌지요."
                 ],
                 "right": [
-                    "인어공주는 저도 모르게 소리를 냈지요. 목소리가 돌아와 있었던 것입니다.",
-                    "주위에 빛나는 아이들이 떠 있었지요. 바람처럼 가벼운 아이들이었습니다.",
-                    "아이들이 말했지요. \"우리는 바람의 아이들이야. 세상을 돌아다니며 사람들을 돕지. 너도 우리와 함께 가자!\""
+                    "아프지는 않았습니다. 몸이 깃털처럼 가벼워질 뿐이었지요. 인어공주는 눈을 감은 채 위로, 위로 떠올랐습니다.",
+                    "바다 밑 궁전도, 할머니도, 언니들도 이제는 다시 만날 수 없었습니다."
                 ]
             },
             {
                 "art": "08-air-2.webp",
                 "emoji": "☁️",
                 "left": [
-                    "인어공주는 아래를 내려다봤습니다. 저 밑으로 배가 보였지요.",
-                    "왕자가 갑판에 나와 주위를 두리번거리고 있었습니다. \"그 아가씨가 어디로 갔을까?\"",
-                    "인어공주는 바람이 되어 그 곁을 스쳤지요. 왕자의 머리카락이 살랑 흔들렸습니다."
+                    "저 아래로 배가 보였습니다. 왕자가 갑판에 나와 주위를 두리번거리고 있었지요. \"그 아가씨가 어디로 갔을까?\"",
+                    "인어공주는 왕자 곁으로 내려갔습니다. 하지만 왕자는 아무것도 보지 못했지요. 바다만 오래 바라볼 뿐이었습니다."
                 ],
                 "right": [
-                    "왕자는 바다를 오래 바라봤지요. 무언가 알 것도 같았습니다.",
-                    "인어공주는 하늘로 올라갔지요. 바람의 아이들과 나란히 말입니다.",
+                    "'당신을 구한 건 저였어요.' 그 말은 끝내 하지 못했습니다. 목소리가 없었으니까요.",
+                    "눈에 눈물이 맺혔습니다. 인어공주는 바람이 되어 왕자의 머리카락을 살짝 스치고 하늘로 올라갔지요.",
                     "그 뒤로 바닷바람이 불면 왕자는 말 없던 그 아가씨를 떠올렸답니다."
                 ]
             }
         ],
-        "moral": "누군가를 진심으로 아낀다는 것은 그 사람을 지켜 주는 마음이랍니다."
+        "moral": "인어공주는 자기가 물거품이 되더라도 왕자를 해치지 않았답니다."
     }
 ];
 
@@ -825,28 +821,24 @@ const EN = {
                     art: '08-air.webp',
                     emoji: '💨',
                     left: [
-                        "The little mermaid threw herself into the sea, and her body began to melt into foam.",
-                        "But she did not sink. Instead she grew light — light as a feather.",
-                        "She rose up and up, and the sunlight passed straight through her.",
-                        "\"Where am I?\""
+                        "The little mermaid threw herself into the sea. At that moment the first rays of the sun spilled over the waves.",
+                        "Her body began to melt into white foam, from her feet upward. Tiny bubbles sparkled and drifted away."
                     ],
                     right: [
-                        "The words came out before she knew it. Her voice had come back!",
-                        "All round her floated shining beings, as light as the wind itself.",
-                        "\"We are the children of the air,\" they said. \"We go about the world helping people. Come with us.\""
+                        "It did not hurt. She only grew lighter, light as a feather. With her eyes closed, she rose up and up.",
+                        "She would never see the palace under the sea again, nor her grandmother, nor her sisters."
                     ]
                 },
                 {
                     art: '08-air-2.webp',
                     emoji: '💨',
                     left: [
-                        "The little mermaid looked down. Far below lay the ship.",
-                        "The prince stood on deck, looking all about. \"Where can she have gone?\"",
-                        "She became the wind and brushed past him. His hair stirred a little."
+                        "Far below lay the ship. The prince stood on deck, looking all about. \"Where can she have gone?\"",
+                        "She drifted down beside him, but he saw nothing. He only gazed at the sea a long time."
                     ],
                     right: [
-                        "He gazed at the sea a long time, as if he half understood.",
-                        "She rose into the sky, side by side with the children of the air.",
+                        "'It was I who saved you.' She could never say it. She had no voice.",
+                        "A tear welled in her eye. As the wind, she brushed his hair lightly and rose into the sky.",
                         "Ever after, when the sea wind blew, the prince remembered the silent girl."
                     ]
                 }
@@ -1006,15 +998,14 @@ const EN = {
             { word: 'swallow', meaning: '삼키다', sentence: 'The water swallowed it.' }
         ],
         '08-air.webp': [
-            { word: 'sink', meaning: '가라앉다', sentence: 'But she did not sink.' },
-            { word: 'pass through', meaning: '통과하다', sentence: 'The sunlight passed straight through her.' },
-            { word: 'being', meaning: '존재', sentence: 'Beings as light as the wind itself.' },
-            { word: 'children of the air', meaning: '바람의 아이들', sentence: 'We are the children of the air.' }
+            { word: 'melt into', meaning: '녹아서 ~이 되다', sentence: 'Her body began to melt into white foam.' },
+            { word: 'drift away', meaning: '떠서 흩어져 가다', sentence: 'Tiny bubbles sparkled and drifted away.' },
+            { word: 'light as a feather', meaning: '깃털처럼 가벼운', sentence: 'She grew lighter, light as a feather.' }
         ],
         '08-air-2.webp': [
-            { word: 'brush past', meaning: '스치고 지나가다', sentence: 'She became the wind and brushed past him.' },
-            { word: 'stir', meaning: '살랑 흔들리다', sentence: "His hair stirred a little." },
-            { word: 'side by side', meaning: '나란히', sentence: 'Side by side with the children of the air.' },
+            { word: 'drift down', meaning: '살며시 내려가다', sentence: 'She drifted down beside him.' },
+            { word: 'well', meaning: '(눈물이) 맺히다', sentence: 'A tear welled in her eye.' },
+            { word: 'brush', meaning: '살짝 스치다', sentence: 'She brushed his hair lightly.' },
             { word: 'ever after', meaning: '그 뒤로 줄곧', sentence: "Ever after, when the sea wind blew, the prince remembered the silent girl." }
         ],
         'end.webp': [
@@ -1113,12 +1104,13 @@ const WORDS_KO = {
         { w: "물들다", k: "빛깔이 배어 그 색이 되다.", s: "동쪽 하늘이 붉게 물들기 시작했습니다." }
     ],
     "08-air.webp": [
-        { w: "스르르", k: "슬그머니 천천히.", s: "몸이 스르르 물거품으로 풀려 갔지요." },
-        { w: "오히려", k: "생각과 반대로.", s: "오히려 깃털처럼 가벼워졌지요." },
-        { w: "저도 모르게", k: "자기도 알지 못하는 사이에.", s: "인어공주는 저도 모르게 소리를 냈지요." }
+        { w: "스르르", k: "슬그머니 천천히.", s: "인어공주의 몸이 발끝부터 스르르 물거품으로 풀려 갔습니다." },
+        { w: "흩어지다", k: "한데 모여 있던 것이 여기저기로 퍼지다.", s: "작은 방울들이 반짝이며 흩어졌지요." },
+        { w: "깃털", k: "새의 몸을 덮은 가볍고 부드러운 털.", s: "몸이 깃털처럼 가벼워질 뿐이었지요." }
     ],
     "08-air-2.webp": [
-        { w: "두리번거리다", k: "무엇을 찾느라 고개를 이리저리 돌리다.", s: "왕자가 갑판에 나와 주위를 두리번거리고 있었습니다." },
+        { w: "두리번거리다", k: "무엇을 찾느라 고개를 이리저리 돌리다.", s: "왕자가 갑판에 나와 주위를 두리번거리고 있었지요." },
+        { w: "맺히다", k: "눈물이나 물방울이 동그랗게 생기다.", s: "눈에 눈물이 맺혔습니다." },
         { w: "떠올리다", k: "잊었던 일을 다시 생각해 내다.", s: "그 뒤로 바닷바람이 불면 왕자는 말 없던 그 아가씨를 떠올렸답니다." }
     ],
     "end.webp": [
