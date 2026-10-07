@@ -242,31 +242,40 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
   router.get('/teacher/report', asyncRoute(async (req, res) => {
     const scope = (await scopes(req)).find(s => s.id === req.query.classId);
     if (!scope) fail('CLASS_FORBIDDEN', '담당 학급의 기록만 볼 수 있어요.', 403);
-    const range = dateRange(req.query);
+    if (req.query.period && req.query.period !== 'all') fail('INVALID_DATES', '조회 기간을 확인해 주세요.');
+    const all = req.query.period === 'all';
+    const range = all ? { all: true, from: null, to: null } : dateRange(req.query);
+    const cursor = req.query.cursor || null;
+    if (cursor && (!all || !uuid.test(cursor))) fail('INVALID_PAGE', '조회 위치를 확인해 주세요.');
+    const pageSize = all ? 200 : 1000;
     if (req.query.activity && !activities.has(req.query.activity)) fail('INVALID_ACTIVITY', '활동을 확인해 주세요.');
     const args = [scope.school_id, scope.academic_year, scope.grade, scope.class_number];
     const roster = await rosterForScope(scope);
     const studentIds = await currentStudentIds(scope, roster);
     // Current pupils' records remain readable when an old roster copy supplied
     // the stored class. The school and academic-year boundaries still apply.
-    const rows = (await pool.query(`SELECT * FROM learning_record_sessions s WHERE school_id = $1 AND academic_year = $2
+    // Whole-period pages use immutable IDs so ongoing saves cannot move an
+    // existing session between pages. The client sorts the final list by date.
+    const found = (await pool.query(`SELECT * FROM learning_record_sessions s WHERE school_id = $1 AND academic_year = $2
       AND ((grade = $3 AND class_number = $4) OR user_id = ANY($8::bigint[]))
       AND ($7::text IS NULL OR activity = $7)
-      AND (EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id
+      AND ($9::uuid IS NULL OR s.id > $9::uuid)
+      AND ($5::date IS NULL OR EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id = s.id
         AND e.recorded_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND e.recorded_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
         OR s.updated_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
-      ORDER BY updated_at DESC, id LIMIT 1001`, [...args, range.from, range.to, req.query.activity || null, studentIds])).rows;
-    if (rows.length > 1000) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
+      ORDER BY ${all ? 's.id' : 's.updated_at DESC, s.id'} LIMIT ${pageSize + 1}`, [...args, range.from, range.to, req.query.activity || null, studentIds, cursor])).rows;
+    if (!all && found.length > pageSize) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
+    const rows = found.slice(0, pageSize);
     const eventGroups = new Map(rows.map(row => [row.id, []]));
     if (rows.length) {
       const events = (await pool.query(`SELECT session_id, kind, question_key, correct, attempt_number FROM learning_record_events
-        WHERE session_id=ANY($1::uuid[]) AND recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul'
-        AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul' ORDER BY id`, [rows.map(row => row.id), range.from, range.to])).rows;
+        WHERE session_id=ANY($1::uuid[]) AND ($2::date IS NULL OR recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul'
+        AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul') ORDER BY id`, [rows.map(row => row.id), range.from, range.to])).rows;
       for (const event of events) eventGroups.get(event.session_id).push(event);
     }
     const sessions = [];
     for (const row of rows) sessions.push({ ...(await serialize(pool, row, false, range, eventGroups.get(row.id))), userId: String(row.user_id), studentNumber: row.student_number, studentName: row.student_name });
-    res.json({ range, roster, sessions });
+    res.json({ range, roster, sessions, nextCursor: all && found.length > pageSize ? rows[rows.length - 1].id : null });
   }));
   router.get('/teacher/sessions/:id', asyncRoute(async (req, res) => {
     const allowed = await scopes(req);
