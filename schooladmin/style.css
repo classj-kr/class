@@ -429,8 +429,20 @@ body { background-color: var(--bg-color); color: var(--text-main); line-height: 
     justify-content: flex-end;
 }
 
+.curriculum-access-status { margin: 12px 24px; color: var(--text-muted); font-size: 0.9rem; }
+.app-main[hidden] { display: none !important; }
+body:not([data-curriculum-access="edit"]) :is(
+    #jumpToDiscretionaryBtn, #saveVacationDatesBtn, #refreshHolidaysBtn,
+    #addHolidayForm, #addAnnualScheduleForm, #saveCurriculumBtn, #saveBellBtn,
+    #saveWeeklyAllocationBtn, #saveTimetableBtn, .palette-container,
+    .delete-schedule-btn, .delete-holiday-btn, [data-curriculum-edit]
+) { display: none !important; }
+body[data-curriculum-access="read"] .timetable-cell { cursor: default; }
+body[data-curriculum-access="read"] :is(input, select):disabled { opacity: 1; color: var(--text-main); }
+
 /* @media print for Official Document Export */
 @media print {
+    .curriculum-access-status, .tab-content[hidden] { display: none !important; }
     .app-header, .tabs-nav, .grade-selector-wrap, .palette-container, .form-actions-row, .calendar-control-bar, button {
         display: none !important;
     }

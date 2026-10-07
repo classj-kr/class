@@ -1,4 +1,11 @@
+let curriculumCanEdit = false;
+let curriculumPermissionsChanged = () => {};
+
 async function api(path, options = {}) {
+    const isCurriculum = path.startsWith('/api/school-admin/');
+    if (isCurriculum && !['GET', 'HEAD'].includes((options.method || 'GET').toUpperCase()) && !curriculumCanEdit) {
+        throw Object.assign(new Error('조회 전용입니다. 변경은 학교 관리자에게 요청하세요.'), { status: 403 });
+    }
     const response = await fetch(path, {
         ...options,
         headers: {
@@ -8,6 +15,10 @@ async function api(path, options = {}) {
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
+        if (isCurriculum && (response.status === 401 || response.status === 403)) {
+            curriculumCanEdit = false;
+            curriculumPermissionsChanged();
+        }
         const error = new Error(data.message || '요청을 처리하지 못했습니다.');
         error.status = response.status;
         error.data = data;
@@ -23,6 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tabs
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
+    const accessStatus = document.getElementById('curriculumAccessStatus');
+    const appMain = document.querySelector('.app-main');
+    const viewControls = new Set(['annualYearSelect', 'curriculumGradeSelect', 'timetableGradeSelect',
+        'timetableClassSelect', 'specialistTeacherSelect', 'roomNameSelect', 'annualTimetableGradeSelect',
+        'annualTimetableClassSelect', 'rosterSearch']);
+
+    function applyCurriculumPermissions(root = document) {
+        document.body.dataset.curriculumAccess = curriculumCanEdit ? 'edit' : 'read';
+        root.querySelectorAll('input, select, textarea').forEach(input => {
+            if (!viewControls.has(input.id)) input.disabled = !curriculumCanEdit;
+        });
+        accessStatus.textContent = curriculumCanEdit
+            ? '학교 관리자 · 교육과정 조회 및 편집'
+            : '조회 전용 · 학년·학급별 내용을 확인하고 출력할 수 있습니다. 변경은 학교 관리자에게 요청하세요.';
+    }
+    curriculumPermissionsChanged = applyCurriculumPermissions;
     
     // Roster Tab
     const rosterSearch = document.getElementById('rosterSearch');
@@ -74,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveWeeklyAllocationBtn = document.getElementById('saveWeeklyAllocationBtn');
     let bellScheduleByGrade = {}; // { 1: {...}, 2: {...}, ... }
     let weeklyAllocationData = [];
-    let curriculumHoursTotals = {}; // { grade: totalWeeklyHours }
+    let curriculumHoursTotals = {}; // { grade: { weekly, annual } }
 
     // Curriculum Hours Tab
     const curriculumGradeSelect = document.getElementById('curriculumGradeSelect');
@@ -128,7 +155,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let timetableMatrixLocks = {};
 
     // --- Initialization ---
-    function init() {
+    async function init() {
+        signOutButton.addEventListener('click', () => {
+            if (window.google?.accounts?.id) window.google.accounts.id.disableAutoSelect();
+            api('/api/auth/signout', { method: 'POST' }).then(() => { location.href = '/'; });
+        });
+        tabButtons.forEach(button => { button.disabled = true; });
+        try {
+            const access = await api('/api/school-admin/curriculum-access');
+            curriculumCanEdit = access.canEdit === true;
+            applyCurriculumPermissions();
+            appMain.hidden = false;
+            tabButtons.forEach(button => { button.disabled = false; });
+        } catch (error) {
+            appMain.hidden = true;
+            accessStatus.textContent = error.status === 401 ? '교사 계정으로 로그인해 주세요.' : error.message;
+            return;
+        }
         if (annualDateInput) annualDateInput.value = formatDate(currentDate);
 
         // 학년도 드롭박스: 현재 학년도와 다음 학년도만 허용 (과거 학년도는 편집 대상 아님)
@@ -142,16 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             annualYearSelect.value = String(selectedAcademicYear);
         }
-
-        // Sign Out
-        signOutButton.addEventListener('click', () => {
-            if (window.google?.accounts?.id) {
-                window.google.accounts.id.disableAutoSelect();
-            }
-            api('/api/auth/signout', { method: 'POST' }).then(() => {
-                location.href = '/';
-            });
-        });
 
         // Tab Switching
         tabButtons.forEach(btn => {
@@ -293,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (holidaysCacheData.length === 0) {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td colspan="5">등록된 공휴일이 없습니다. "공휴일 새로고침"을 눌러 자동으로 가져오세요.</td>`;
+            tr.innerHTML = `<td colspan="5">등록된 공휴일이 없습니다.${curriculumCanEdit ? ' "공휴일 새로고침"을 눌러 자동으로 가져오세요.' : ''}</td>`;
             holidaysTableBody.appendChild(tr);
             return;
         }
@@ -307,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${escapeHtml(h.name)}</td>
                 <td>${sourceText}</td>
                 <td>${statusText}</td>
-                <td><button type="button" class="icon-button delete-holiday-btn" data-id="${h.id}" title="삭제/원복"><span class="material-symbols-outlined">delete</span></button></td>
+                <td>${curriculumCanEdit ? `<button type="button" class="icon-button delete-holiday-btn" data-id="${h.id}" title="삭제/원복"><span class="material-symbols-outlined">delete</span></button>` : '조회 전용'}</td>
             `;
             holidaysTableBody.appendChild(tr);
         });
@@ -399,10 +432,6 @@ document.addEventListener('DOMContentLoaded', () => {
             annualLoading.hidden = true;
             annualError.textContent = error.message || '학사일정을 불러오지 못했습니다.';
             annualError.hidden = false;
-
-            if (error.status === 401 || error.status === 403) {
-                setTimeout(() => location.href = '/', 2000);
-            }
         }
     }
 
@@ -652,6 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Click cell to fill form date
             cell.addEventListener('click', () => {
+                if (!curriculumCanEdit) return;
                 annualDateInput.value = dateKey;
                 if (annualDetailsInput) annualDetailsInput.focus();
             });
@@ -761,7 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td><span class="badge scope-${item.target_scope.toLowerCase()}">${targetText}</span></td>
                 <td>${escapeHtml(item.details || item.title || '재량휴업일')}</td>
                 <td>
-                    <button class="delete-schedule-btn text-button danger" data-id="${item.id}">삭제</button>
+                    ${curriculumCanEdit ? `<button class="delete-schedule-btn text-button danger" data-id="${item.id}">삭제</button>` : '조회 전용'}
                 </td>
             `;
             annualTableBody.appendChild(tr);
@@ -780,6 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function handleAddAnnualSchedule(e) {
         e.preventDefault();
+        if (!curriculumCanEdit) return;
         const date = annualDateInput.value;
         const details = annualDetailsInput.value.trim();
         const title = details || '재량휴업일';
@@ -810,6 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function deleteAnnualSchedule(scheduleId) {
+        if (!curriculumCanEdit) return;
         if (!confirm('정말 이 학사일정을 삭제하시겠습니까?')) return;
         try {
             await api(`/api/school-admin/annual-schedules/${scheduleId}`, { method: 'DELETE' });
@@ -935,7 +967,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (saved) {
                     return {
                         name: def.name,
-                        weekly: saved.weekly_hours,
+                        weekly: Number(saved.weekly_hours),
                         base: def.base,
                         adj: saved.annual_required_hours ? (saved.annual_required_hours - def.base) : 0,
                         category: def.category
@@ -1037,6 +1069,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </tr>
         `;
 
+        applyCurriculumPermissions(curriculumTableBody);
         // Live input listeners
         curriculumTableBody.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', () => {
@@ -1057,6 +1090,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function saveCurriculumHours() {
+        if (!curriculumCanEdit) return;
         const grade = curriculumGradeSelect.value;
         const rows = Array.from(curriculumTableBody.querySelectorAll('tr')).map(tr => {
             const wInput = tr.querySelector('.weekly-input');
@@ -1148,6 +1182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             label.innerHTML = `<input type="checkbox" name="bellGrade" value="${grade}" checked> ${grade}학년`;
             bellGradeCheckboxes.appendChild(label);
         }
+        applyCurriculumPermissions(bellGradeCheckboxes);
     }
 
     function getCheckedBellGrades() {
@@ -1196,6 +1231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         tbodyEl.innerHTML = rowsHtml;
+        applyCurriculumPermissions(tbodyEl);
 
         tbodyEl.querySelectorAll('tr').forEach(tr => {
             const startInput = tr.querySelector('.bell-start');
@@ -1259,7 +1295,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${formatTimeHHMM(s?.arrival_start) || '-'}</td>
                 <td>${formatTimeHHMM(dismissal) || '-'}</td>
                 <td>${lunchText}</td>
-                <td><button type="button" class="primary-button secondary load-bell-grade-btn" data-grade="${grade}" style="padding:4px 10px; height:32px;">불러와서 수정</button></td>
+                <td><button type="button" class="primary-button secondary load-bell-grade-btn" data-grade="${grade}" style="padding:4px 10px; height:32px;">${curriculumCanEdit ? '불러와서 수정' : '시정표 보기'}</button></td>
             `;
             bellSummaryTableBody.appendChild(tr);
         }
@@ -1402,6 +1438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        applyCurriculumPermissions(weeklyAllocationTableBody);
         weeklyAllocationTableBody.querySelectorAll('.weekly-count-input').forEach(inp => {
             inp.addEventListener('input', () => recomputeTotal(inp.dataset.grade));
         });
@@ -1573,7 +1610,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tbody.appendChild(tr);
         }
         tbody.querySelectorAll('.timetable-cell').forEach(cell => {
-            cell.addEventListener('click', () => onCellClick(Number(cell.dataset.day), Number(cell.dataset.period)));
+            cell.addEventListener('click', () => {
+                if (curriculumCanEdit) onCellClick(Number(cell.dataset.day), Number(cell.dataset.period));
+            });
         });
     }
 
@@ -1621,6 +1660,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleSpecialistCellClick(day, period) {
+        if (!curriculumCanEdit) return;
         const teacherId = specialistTeacherSelect.value;
         if (!teacherId) return;
         const key = `${day}_${period}`;
@@ -1742,6 +1782,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleRoomCellClick(day, period) {
+        if (!curriculumCanEdit) return;
         if (!currentRoomName) return;
         const key = `${day}_${period}`;
         const existing = roomTimetableData[key];
@@ -1796,7 +1837,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 기초시간표(요일×교시 과목배치)는 "시수편성 → 주간 수업 배당표"가 그 학년에 대해
     // 완전히 끝난 뒤에만 열린다 — 배당 합계가 시수편성 목표와 정확히 같아야 통과.
     function isWeeklyAllocationCompleteForGrade(grade) {
-        const target = curriculumHoursTotals[grade];
+        const target = curriculumHoursTotals[grade]?.weekly;
         if (target === undefined || target <= 0) return false;
         return getWeeklyAllocationTotal(grade) === target;
     }
@@ -1808,8 +1849,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         await Promise.all([fetchBellScheduleByGrade(), fetchWeeklyAllocationData(), fetchCurriculumHoursTotals()]);
 
-        if (!isWeeklyAllocationCompleteForGrade(grade)) {
-            const target = curriculumHoursTotals[grade];
+        if (curriculumCanEdit && !isWeeklyAllocationCompleteForGrade(grade)) {
+            const target = curriculumHoursTotals[grade]?.weekly;
             if (timetableLockedBanner) {
                 timetableLockedBanner.hidden = false;
                 timetableLockedBanner.textContent = target === undefined || target <= 0
@@ -1905,13 +1946,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Mon(1) to Fri(5)
             for (let day = 1; day <= 5; day++) {
                 const allocated = getAllocatedPeriodCount(grade, day);
-                const isInactive = allocated !== null && period > allocated;
+                const isInactive = curriculumCanEdit && allocated !== null && period > allocated;
                 const sub = timetableMatrixData[`${day}_${period}`] || '-';
                 const lock = timetableMatrixLocks[`${day}_${period}`];
                 const lockBadge = lock ? `<div style="font-size:0.68rem; color:var(--primary);">${lock.teacherUserId ? '🎯교과' : ''}${lock.teacherUserId && lock.roomName ? ' · ' : ''}${lock.roomName ? `🚪${escapeHtml(lock.roomName)}` : ''}</div>` : '';
                 const tagHtml = (sub !== '-' && sub !== '수업없음' ? `<span class="cell-subject-tag">${escapeHtml(sub)}</span>` : `<span style="color:var(--text-muted);">${sub}</span>`) + lockBadge;
                 const inactiveAttrs = isInactive ? ' style="opacity:0.3; pointer-events:none;" title="이 요일의 배당 교시수를 초과했습니다"' : '';
-                const lockAttrs = lock ? ' data-locked="true" title="교사별/특별실별 시간표에서 배정됨 - 클릭하면 지울 수 있습니다"' : '';
+                const lockAttrs = lock ? ` data-locked="true" title="교사별/특별실별 시간표에서 배정됨${curriculumCanEdit ? ' - 클릭하면 지울 수 있습니다' : ''}"` : '';
                 cellsHtml += `<td class="timetable-cell" data-day="${day}" data-period="${period}"${inactiveAttrs}${lockAttrs}>${tagHtml}</td>`;
             }
 
@@ -1924,6 +1965,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cell click handler
         timetableMatrixBody.querySelectorAll('.timetable-cell').forEach(cell => {
             cell.addEventListener('click', () => {
+                if (!curriculumCanEdit) return;
                 const day = cell.dataset.day;
                 const period = cell.dataset.period;
                 const key = `${day}_${period}`;
@@ -1938,6 +1980,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function clearLockedTimetableCell(day, period) {
+        if (!curriculumCanEdit) return;
         if (!confirm('이 시간은 교사별/특별실별 시간표에서 배정되었습니다. 여기서 지우면 그쪽 배정도 함께 사라집니다. 지울까요?')) return;
         const grade = timetableGradeSelect.value;
         const classNum = timetableClassSelect ? timetableClassSelect.value : 1;
@@ -1958,6 +2001,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function saveMasterTimetable() {
+        if (!curriculumCanEdit) return;
         const grade = timetableGradeSelect.value;
         const classNum = timetableClassSelect ? timetableClassSelect.value : 1;
         const cells = [];

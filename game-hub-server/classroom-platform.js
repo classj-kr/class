@@ -1595,6 +1595,14 @@ function createClassroomPlatform(options = {}) {
     return { user, profile };
   }
 
+  // 교육과정 조회는 현재 학교의 모든 교직원에게 열고, 변경은 requireSchoolAdmin으로 제한한다.
+  async function requireSchoolCurriculum(req) {
+    const user = await requireTeacher(req);
+    const profile = await teacherRegistration(user);
+    if (!profile) throw new HttpError(403, "TEACHER_REGISTRATION_REQUIRED", "학교 교직원 등록이 필요합니다.");
+    return { user, profile, canEdit: ["관리자", "교장", "교감"].includes(profile.teacher_type) };
+  }
+
   async function requireAdmin(req) {
     const user = await requireUser(req);
     if (user.role !== "admin") {
@@ -7049,8 +7057,13 @@ function createClassroomPlatform(options = {}) {
     });
   }));
 
+  router.get("/school-admin/curriculum-access", asyncRoute(async (req, res) => {
+    const { profile, canEdit } = await requireSchoolCurriculum(req);
+    res.json({ schoolName: profile.school_name, canEdit });
+  }));
+
   router.get("/school-admin/annual-schedules", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const result = await pool.query(
       `SELECT id, academic_year, event_date::TEXT AS event_date, title, category, target_scope, target_grades, event_type,
@@ -7139,7 +7152,7 @@ function createClassroomPlatform(options = {}) {
   }
 
   router.get("/school-admin/public-holidays", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile, canEdit } = await requireSchoolCurriculum(req);
     const year = Number(req.query.year || new Date().getFullYear());
 
     let cached = await pool.query(
@@ -7151,12 +7164,16 @@ function createClassroomPlatform(options = {}) {
     if (cached.rows.length === 0) {
       try {
         const holidays = await fetchNagerHolidays(year);
-        await upsertApiHolidays(profile.school_id, year, holidays);
-        cached = await pool.query(
-          `SELECT id, holiday_date::TEXT AS date, name, source, excluded
-           FROM school_public_holidays_cache WHERE school_id = $1 AND year = $2 ORDER BY holiday_date`,
-          [profile.school_id, year]
-        );
+        if (canEdit) {
+          await upsertApiHolidays(profile.school_id, year, holidays);
+          cached = await pool.query(
+            `SELECT id, holiday_date::TEXT AS date, name, source, excluded
+             FROM school_public_holidays_cache WHERE school_id = $1 AND year = $2 ORDER BY holiday_date`,
+            [profile.school_id, year]
+          );
+        } else {
+          cached = { rows: holidays.map(h => ({ ...h, id: null, source: "API", excluded: false })) };
+        }
       } catch (err) {
         console.error("Failed to fetch live public holidays:", err.message);
       }
@@ -7239,7 +7256,7 @@ function createClassroomPlatform(options = {}) {
   }
 
   router.get("/school-admin/curriculum-hours", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const grade = parseCurriculumGrade(req.query.grade || 1);
     const result = await pool.query(
@@ -7271,7 +7288,7 @@ function createClassroomPlatform(options = {}) {
   // Total weekly hours per grade (all subjects/changtae summed) — used to validate that
   // the weekly period allocation (시정표 탭) actually adds up to what curriculum hours requires.
   router.get("/school-admin/curriculum-hours-summary", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const result = await pool.query(
       `SELECT grade,
@@ -7326,7 +7343,7 @@ function createClassroomPlatform(options = {}) {
   // Stored per-grade (not a fixed 1~3/4~6 band) since schools vary: some run one
   // schedule for all grades, some split by band, some differ grade-by-grade.
   router.get("/school-admin/bell-schedule", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const result = await pool.query(
       `SELECT grade, arrival_start::TEXT AS arrival_start, arrival_end::TEXT AS arrival_end,
@@ -7394,7 +7411,7 @@ function createClassroomPlatform(options = {}) {
 
   // ── Weekly Period Allocation (학년별 주간 수업 배당표) APIs ──
   router.get("/school-admin/weekly-period-allocation", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const result = await pool.query(
       `SELECT grade, day_of_week, period_count
@@ -7479,7 +7496,7 @@ function createClassroomPlatform(options = {}) {
 
   // ── Master Timetable Grid APIs ──
   router.get("/school-admin/master-timetable", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const grade = Number(req.query.grade || 1);
     const classNum = Number(req.query.classNumber || 0);
@@ -7554,7 +7571,7 @@ function createClassroomPlatform(options = {}) {
   // 바로 반영되므로 기초시간표 쪽에서 별도 동기화가 필요 없다. 같은 교사를 같은
   // 요일/교시에 다른 반에 또 배정하면 school_master_timetable_teacher_slot_idx가 막는다.
   router.get("/school-admin/specialist-teachers", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     // id로 내보내는 값은 classroom_teachers.id가 아니라 user_id다. 이 목록에서 고른
     // 값이 그대로 school_master_timetable.teacher_user_id로 들어가는데, 그 칸은
     // classroom_users(id)를 가리키는 외래 키다. 교사 표의 id를 내보내면 배정할 때
@@ -7588,7 +7605,7 @@ function createClassroomPlatform(options = {}) {
   }));
 
   router.get("/school-admin/specialist-timetable", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const teacherUserId = Number(req.query.teacherUserId);
     if (!Number.isInteger(teacherUserId) || teacherUserId < 1) {
@@ -7680,7 +7697,7 @@ function createClassroomPlatform(options = {}) {
   // school_master_timetable_room_slot_idx가 막는다. teacher_user_id는 건드리지
   // 않으므로 전담교사가 이미 배정된 칸에 방만 추가로 지정할 수 있다.
   router.get("/school-admin/room-timetable", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const roomName = String(req.query.room || "").trim();
     if (!roomName) throw new HttpError(400, "INVALID_ROOM", "특별실 이름을 입력하세요.");
@@ -7696,7 +7713,7 @@ function createClassroomPlatform(options = {}) {
   // 학교 설정에 등록한 특별실만 내려준다. 시간표에 쓰인 이름을 섞어 주면 한 번 잘못
   // 친 이름이 목록에 눌러앉아 그게 진짜 특별실인 것처럼 보인다.
   router.get("/school-admin/rooms", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const result = await pool.query(
       `SELECT room_name FROM school_special_rooms WHERE school_id = $1 ORDER BY room_name`,
       [profile.school_id]
@@ -7760,7 +7777,7 @@ function createClassroomPlatform(options = {}) {
 
   // ── Vacation Settings APIs (DB Persistence) ──
   router.get("/school-admin/vacation-settings", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const result = await pool.query(
       `SELECT is_integrated, summer_start::TEXT AS summer_start, summer_end::TEXT AS summer_end,
@@ -7810,7 +7827,7 @@ function createClassroomPlatform(options = {}) {
 
   // ── Step 5: Annual 34-Week Timetable Synthesis API ──
   router.get("/school-admin/annual-timetable-34weeks", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const year = Number(req.query.academicYear || new Date().getFullYear());
     const grade = Number(req.query.grade || 5);
     const classNum = Number(req.query.classNumber || 1);
