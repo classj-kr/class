@@ -11,6 +11,7 @@ const { inspectLearningRecords } = require('../scripts/inspect-learning-records.
 
 async function main() {
   const db = new PGlite();
+  await db.exec("SET TIME ZONE 'UTC'");
   let queue = Promise.resolve(), browser, server;
   const lease = async () => {
     const previous = queue;

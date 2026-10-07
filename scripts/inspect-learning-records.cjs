@@ -22,15 +22,15 @@ async function inspectLearningRecords(db, scope) {
       SELECT COUNT(*) FILTER (WHERE kind='answer')::int AS answer_events,
         COUNT(*) FILTER (WHERE kind='read')::int AS read_events, COUNT(*)::int AS total_events
       FROM learning_record_events WHERE session_id=s.id
-        AND recorded_at >= $5::date AT TIME ZONE 'Asia/Seoul'
-        AND recorded_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul'
+        AND recorded_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul'
+        AND recorded_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul'
     ) e
     WHERE s.school_id=$1 AND s.academic_year=$2 AND ($7::text IS NULL OR s.activity=$7)
       AND ((s.grade=$3 AND s.class_number=$4) OR s.user_id IN (SELECT id FROM current_users))
       AND (EXISTS (SELECT 1 FROM learning_record_events e WHERE e.session_id=s.id
-        AND e.recorded_at >= $5::date AT TIME ZONE 'Asia/Seoul'
-        AND e.recorded_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
-        OR s.updated_at >= $5::date AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1) AT TIME ZONE 'Asia/Seoul')
+        AND e.recorded_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul'
+        AND e.recorded_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
+        OR s.updated_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul' AND s.updated_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')
   ) SELECT grade, class_number, COUNT(*)::int AS sessions,
       COUNT(DISTINCT user_id) FILTER (WHERE total_events>0)::int AS learners,
       SUM(answer_events)::int AS answer_events, SUM(read_events)::int AS read_events, SUM(total_events)::int AS total_events

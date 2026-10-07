@@ -7,6 +7,9 @@ const { createLearningRecords } = require('../game-hub-server/learning-records')
 
 async function harness() {
   const db = new PGlite();
+  // Windows supplies the local KST zone to PGlite by default. Use UTC so that
+  // date filters cannot accidentally depend on the database session time zone.
+  await db.exec("SET TIME ZONE 'UTC'");
   await db.exec(`
     CREATE TABLE classroom_users(id BIGINT PRIMARY KEY, email TEXT);
     CREATE TABLE classroom_schools(id BIGINT PRIMARY KEY, enabled BOOLEAN);
