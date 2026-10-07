@@ -142,6 +142,7 @@
             let index = null;                 // 성취기준 자료 차례
             const subjectCache = new Map();
             let items = [];                   // 지금 보고 있는 계획의 항목들
+            const draftingItems = new WeakSet(), draftControls = new WeakMap();
             let loadedKey = '';               // 어느 계획을 불러왔는지
             let saveTimer = null, saving = false, dirty = false;
             let toastTimer;
@@ -225,6 +226,7 @@
                 const key = currentKey();
                 loadedKey = keyString(key);
                 loadedKeyObj = key;
+                items.forEach(refreshDraftControl);
                 saveStatus.textContent = '불러오는 중…'; saveStatus.classList.remove('error');
                 try {
                     const data = await api('/api/teacher/assessment-plans?' + new URLSearchParams(key));
@@ -322,7 +324,7 @@
                 grid.append(field('영역명', domainControl(item)));
                 grid.append(field('평가요소', (() => {
                     const ta = document.createElement('textarea'); ta.className = 'form-control'; ta.value = item.element; ta.placeholder = '예: 작품 속 인물과 면담하기';
-                    ta.addEventListener('input', () => { item.element = ta.value; markDirty(); });
+                    ta.addEventListener('input', () => { item.element = ta.value; refreshDraftControl(item); markDirty(); });
                     return ta;
                 })()));
                 card.append(grid);
@@ -347,8 +349,11 @@
                 levelSelect.value = String(item.levels);
                 levelSelect.addEventListener('change', () => { setLevels(item, Number(levelSelect.value)); markDirty(); render(); });
                 const draft = document.createElement('button'); draft.type = 'button'; draft.className = 'btn btn-outline btn-small'; draft.textContent = '✨ 평가결과 문장 초안';
-                draft.addEventListener('click', () => draftCriteria(item, draft));
-                lh.append(Object.assign(document.createElement('span'), { className: 'status', textContent: '평가단계' }), levelSelect, draft);
+                const draftHint = document.createElement('span'); draftHint.className = 'status'; draftHint.textContent = '평가요소를 먼저 입력해 주세요.';
+                draftControls.set(item, { button: draft, hint: draftHint, planKey: loadedKeyObj });
+                refreshDraftControl(item);
+                draft.addEventListener('click', () => draftCriteria(item));
+                lh.append(Object.assign(document.createElement('span'), { className: 'status', textContent: '평가단계' }), levelSelect, draft, draftHint);
                 levels.append(lh);
                 for (const c of item.criteria) {
                     const row = document.createElement('div'); row.className = 'level';
@@ -436,17 +441,42 @@
             });
 
             // ── 평가결과 문장 초안 ───────────────────────────────────────
-            async function draftCriteria(item, button) {
-                if (!item.standards.length && !item.element.trim()) { notice('성취기준이나 평가요소를 먼저 적어 주세요.'); return; }
-                try { await window.ClassroomAI.init(); } catch (error) { notice(error.message); return; }
-                if (!window.ClassroomAI.hasKey()) { notice('내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.'); return; }
-                button.disabled = true; button.textContent = '쓰는 중…';
+            function assessmentElement(item) {
+                return typeof item.element === 'string' ? item.element.trim().slice(0, 400) : '';
+            }
+            function hasAssessmentElement(item) {
+                return Boolean(assessmentElement(item).replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, ''));
+            }
+            function refreshDraftControl(item) {
+                const controls = draftControls.get(item);
+                if (!controls) return;
+                const missing = !hasAssessmentElement(item);
+                controls.button.disabled = readOnly || controls.planKey !== loadedKeyObj || missing || draftingItems.has(item);
+                controls.button.textContent = draftingItems.has(item) ? '쓰는 중…' : '✨ 평가결과 문장 초안';
+                controls.button.title = missing ? '평가요소를 먼저 입력해 주세요.' : '';
+                controls.hint.hidden = readOnly || !missing;
+            }
+            function draftPayload(item) {
+                return JSON.stringify({ subject: subjectSelect.value, grade: Number(gradeSelect.value), standards: item.standards, element: assessmentElement(item), levels: item.levels, labels: item.criteria.map((c) => c.label) });
+            }
+            async function draftCriteria(item) {
+                if (readOnly || draftingItems.has(item) || !items.includes(item) || draftControls.get(item)?.planKey !== loadedKeyObj) return;
+                if (!hasAssessmentElement(item)) { notice('평가요소를 먼저 입력해 주세요.'); return; }
+                const key = loadedKeyObj, body = draftPayload(item), previousCriteria = JSON.stringify(item.criteria);
+                const stillCurrent = () => key === loadedKeyObj && !readOnly && items.includes(item)
+                    && hasAssessmentElement(item) && draftPayload(item) === body && JSON.stringify(item.criteria) === previousCriteria;
+                const changed = () => { if (key === loadedKeyObj) notice('평가 내용이 바뀌어 초안을 적용하지 않았습니다. 다시 요청해 주세요.'); };
+                draftingItems.add(item); refreshDraftControl(item);
                 try {
-                    const data = await api('/api/teacher-ai/draft-criteria', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: subjectSelect.value, grade: Number(gradeSelect.value), standards: item.standards, element: item.element, levels: item.levels, labels: item.criteria.map((c) => c.label) }) });
+                    await window.ClassroomAI.init();
+                    if (!stillCurrent()) { changed(); return; }
+                    if (!window.ClassroomAI.hasKey()) { notice('내 정보의 AI 설정에서 API 키를 먼저 등록해 주세요.'); return; }
+                    const data = await api('/api/teacher-ai/draft-criteria', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+                    if (!stillCurrent()) { changed(); return; }
                     item.criteria = item.criteria.map((c, i) => ({ label: c.label, text: data.criteria[i]?.text || c.text }));
                     markDirty(); render(); notice('초안을 넣었습니다. 읽고 고쳐 주세요.');
                 } catch (error) { notice(error.message); }
-                finally { button.disabled = false; button.textContent = '✨ 평가결과 문장 초안'; }
+                finally { draftingItems.delete(item); refreshDraftControl(item); }
             }
 
             // ── 계획서 파일로 채우기 ─────────────────────────────────────

@@ -505,8 +505,10 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     const labels = (Array.isArray(body.labels) && body.labels.length === levels ? body.labels : LEVEL_LABELS[levels]).map((label) => String(label || '').trim().slice(0, 20) || '단계');
     const standards = (Array.isArray(body.standards) ? body.standards : []).slice(0, 8)
       .map((s) => ({ code: String(s?.code || '').slice(0, 16), text: String(s?.text || '').slice(0, 600) })).filter((s) => s.text);
-    const element = String(body.element || '').slice(0, 400);
-    if (standards.length === 0 && !element) fail('AI_PLAN_CONTEXT_REQUIRED', '성취기준이나 평가요소를 먼저 적어 주세요.');
+    const element = typeof body.element === 'string' ? body.element.trim().slice(0, 400) : '';
+    if (!element.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, '')) {
+      fail('AI_ASSESSMENT_ELEMENT_REQUIRED', '평가요소를 먼저 적어 주세요.');
+    }
     countGenerate(user.id);
     const stored = await storedKey(user.id);
     if (!stored) fail('AI_KEY_REQUIRED', '내 정보의 AI 설정에서 API 키를 등록해 주세요.', 409);

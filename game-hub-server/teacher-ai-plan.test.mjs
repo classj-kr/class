@@ -113,6 +113,31 @@ test("계획서 파일은 나이스 틀의 항목이 되고, 성취기준 코드
   } finally { await s.close(); }
 });
 
+test("평가요소가 빠지면 성취기준이 있어도 AI 호출과 생성 횟수 차감 없이 거절한다", async () => {
+  const google = fakeGoogle();
+  const s = await startServer(google.fetchImpl);
+  try {
+    await s.registerKey("1");
+    const calls = google.seen.length;
+    const selected = [{ code: "6국01-04", text: "면담의 절차를 이해하고 상대와 매체를 고려하여 면담한다." }];
+    for (const standards of [selected, []]) {
+      for (const element of [undefined, null, "", "   ", "\t\n\u00a0", "\u200b\u2060", {}, [], 42, false]) {
+        const response = await s.draft("1", { subject: "국어", grade: 6, standards, element });
+        assert.equal(response.status, 400, JSON.stringify({ element, response }));
+        assert.equal(response.body.error, "AI_ASSESSMENT_ELEMENT_REQUIRED");
+        assert.equal(google.seen.length, calls, "입력 오류는 외부 AI에 전달하지 않는다");
+      }
+    }
+    assert.equal((await s.draft("2", { standards: selected, element: " " })).body.error, "AI_ASSESSMENT_ELEMENT_REQUIRED", "키 조회보다 평가요소 검증이 먼저다");
+    for (let i = 0; i < 121; i++) assert.equal((await s.draft("1", { standards: selected, element: "" })).status, 400);
+    assert.equal(google.seen.length, calls);
+    const valid = await s.draft("1", { standards: selected, element: "  작품 속 인물과 면담하기  ", levels: 3 });
+    assert.equal(valid.status, 200, "잘못된 입력은 정상 요청의 생성 횟수 제한을 소비하지 않는다");
+    assert.equal(google.seen.slice(calls).filter(call => call.body).length, 1, '정상 입력에서만 생성 요청을 한 번 보낸다');
+    assert.match(google.seen.at(-1).body.contents[0].parts[0].text, /평가요소: 작품 속 인물과 면담하기\n/);
+  } finally { await s.close(); }
+});
+
 test("성취기준·평가요소로 단계별 평가결과 문장 초안을 받는다", async () => {
   const google = fakeGoogle();
   const s = await startServer(google.fetchImpl);
@@ -131,10 +156,10 @@ test("성취기준·평가요소로 단계별 평가결과 문장 초안을 받�
     assert.match(sentText, /"-ㄴ다\/-는다"로 끝나는 보통 서술문/, "평가결과는 '…한다.' 꼴의 보통 문장");
     assert.doesNotMatch(sentText, /"…할 수 있다\."로 끝내고/);
 
-    // 단계 이름을 안 보내면 기본 이름, 평가요소만 있어도 된다, 둘 다 없으면 400.
+    // 단계 이름을 안 보내면 기본 이름. 평가요소는 반드시 있어야 한다.
     const two = await s.draft("1", { standards: [], element: "분수의 덧셈", levels: 2 });
     assert.deepEqual(two.body.criteria.map((c) => c.label), ["잘함", "노력요함"]);
-    assert.equal((await s.draft("1", { standards: [], element: "" })).body.error, "AI_PLAN_CONTEXT_REQUIRED");
+    assert.equal((await s.draft("1", { standards: [], element: "" })).body.error, "AI_ASSESSMENT_ELEMENT_REQUIRED");
     assert.equal((await s.draft("2", { standards, element: "x" })).status, 409);
     assert.equal((await s.draft("", { standards, element: "x" })).status, 401);
   } finally { await s.close(); }
