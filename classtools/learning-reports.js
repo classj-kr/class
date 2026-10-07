@@ -90,10 +90,17 @@
     const list = $('studentList'); list.replaceChildren();
     if (mode === 'student') {
       if (!roster.some(s => (s.id || `${s.number}:${s.name}`) === selected)) selected = roster[0]?.id || (roster[0] ? `${roster[0].number}:${roster[0].name}` : null);
+      const activityCounts = new Map();
+      for (const row of all) activityCounts.set(row.userId, (activityCounts.get(row.userId) || 0) + 1);
       for (const s of roster) {
-        const key = s.id || `${s.number}:${s.name}`, button = node('button'), name = node('span');
-        name.append(node('span', s.number, 'student-number'), document.createTextNode(s.name));
-        button.append(name, node('small', ids.has(s.id) ? `${all.filter(x => x.userId === s.id).length}개 활동` : '기록 없음'));
+        const key = s.id || `${s.number}:${s.name}`, count = activityCounts.get(s.id) || 0;
+        const button = node('button', null, `student-row ${count ? 'has-records' : 'no-records'}`), name = node('span', null, 'student-identity');
+        const dot = node('span', null, 'record-dot'); dot.setAttribute('aria-hidden', 'true');
+        name.append(dot, node('span', s.number, 'student-number'), node('span', s.name, 'student-name'));
+        const activityLabel = count ? `${count}개 활동` : '기록 없음';
+        button.append(name, node('small', activityLabel, 'student-activity'));
+        button.setAttribute('aria-label', `${s.number}번 ${s.name}, ${activityLabel}`);
+        button.title = `${s.number}번 ${s.name} · ${activityLabel}`;
         button.setAttribute('aria-pressed', String(selected === key)); button.onclick = () => { selected = key; render(); }; list.append(button);
       }
       const student = roster.find(s => (s.id || `${s.number}:${s.name}`) === selected);
