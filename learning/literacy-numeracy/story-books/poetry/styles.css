@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "KoPubWorld Batang";
+    src: url("../../arithmetics/public/fonts/KoPubWorld-Batang-Medium.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
 :root {
     --night: #1b0f10;
     --night-soft: #2a1512;
@@ -727,14 +735,14 @@ a {
     margin-top: 6px;
     font-family: "Noto Serif KR", "Apple SD Gothic Neo", Georgia, serif !important;
     font-weight: 500;
-    font-size: clamp(13.5px, 2.0cqh, 16px);
-    line-height: 1.75;
+    font-size: clamp(14px, 2.315cqh, 24px);
+    line-height: 1.85;
     color: var(--ink);
     word-break: keep-all;
 }
 
 .poem-stanza {
-    margin: 0 0 clamp(10px, 1.8cqh, 14px);
+    margin: 0 0 16px;
 }
 
 /* 오른쪽 페이지: 감상 요점 & 시어 */
@@ -849,11 +857,12 @@ a {
 
 .quiz-question {
     margin: 0 0 8px;
-    font-family: "Noto Serif KR", Georgia, serif !important;
-    font-weight: 700;
-    font-size: clamp(14px, 2.315cqh, 24px);
+    font-family: "KoPubWorld Batang", "Batang", "BatangChe", "Shin Myeongjo", "신명조", "Noto Serif KR", serif !important;
+    font-weight: 600;
+    font-size: clamp(13.5px, 2.1cqh, 20px);
     color: var(--ink);
-    line-height: 1.45;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
 }
 
 .quiz-choices {
@@ -868,10 +877,12 @@ a {
     background: #fffaf0;
     color: var(--ink);
     font: inherit;
-    font-family: "Noto Serif KR", Georgia, serif !important;
-    font-size: clamp(12px, 2.026cqh, 21px);
+    font-family: "KoPubWorld Batang", "Batang", "BatangChe", "Shin Myeongjo", "신명조", "Noto Serif KR", serif !important;
+    font-size: clamp(12.5px, 1.95cqh, 18px);
+    font-weight: 400;
     text-align: left;
-    line-height: 1.5;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
     cursor: pointer;
     transition: all 0.15s ease;
 }
