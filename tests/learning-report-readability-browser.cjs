@@ -1,0 +1,75 @@
+'use strict';
+const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
+const fs = require('node:fs');
+const path = require('node:path');
+const { chromium } = require('../game-hub-server/node_modules/playwright');
+const { harness } = require('./learning-records-integration.cjs');
+
+async function main() {
+  const h = await harness(), browser = await chromium.launch({ channel: 'msedge', headless: true });
+  const output = path.resolve(__dirname, '../output/learning-records-review');
+  const request = async (route, body) => {
+    const response = await fetch(h.base + '/api/learning-records' + route, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'x-test-user': '1' }, body: JSON.stringify(body)
+    });
+    const data = await response.json(); assert.equal(response.status, 200, JSON.stringify(data)); return data.session;
+  };
+  try {
+    const math = { window: {} };
+    require('node:vm').runInNewContext(fs.readFileSync(path.resolve(__dirname, '../learning/literacy-numeracy/math-ox/data.js'), 'utf8'), math);
+    const questions = math.window.MATH_OX_DATA.filter(q => q.subject === '초6' && /\\frac/.test(q.prompt)).slice(0, 5);
+    const session = await request('/sessions', { activity: 'math-ox', contentKey: '초6', contentVersion: 'readability-test', title: '수학 기초 OX · 초6', href: '/learning/literacy-numeracy/math-ox/', checkpoint: {} });
+    const events = questions.map((q, i) => ({ kind: 'answer', questionKey: String(q.id), response: i === 1 || i === 2 ? (q.answer === 'O' ? 'X' : 'O') : q.answer, snapshot: { prompt: q.prompt } }));
+    events.push({ ...events[1], response: questions[1].answer });
+    await request(`/sessions/${session.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(), checkpoint: {}, progress: { current: 5, total: 10 }, events });
+    const reading = await request('/sessions', { activity: 'world-tales', contentKey: 'jack-beanstalk', contentVersion: 'readability-test', title: '잭과 콩나무', href: '/learning/literacy-numeracy/story-books/world-tales/jack-beanstalk/', checkpoint: {} });
+    await request(`/sessions/${reading.id}/changes`, { revision: 0, mutationId: crypto.randomUUID(), checkpoint: {}, progress: { current: 1, total: 10 }, events: [
+      { kind: 'read', questionKey: 'chapter-1', response: '1장 · 신기한 콩', snapshot: { title: '1장 · 신기한 콩' } },
+      { kind: 'self-assessment', questionKey: 'reflection', response: '<img src=x onerror="window.injected=true">', snapshot: { prompt: '<script>window.injected=true</script>' } }
+    ] });
+    const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '3' }, viewport: { width: 1440, height: 1000 } });
+    // Reports must render math even without access to an external CDN.
+    await context.route('https://**', route => route.abort());
+    const page = await context.newPage(), errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.goto(h.base + '/classtools/learning-reports.html');
+    await page.locator('.record-card').first().waitFor();
+    const mathCard = page.locator('.record-card').filter({ hasText: '수학 기초 OX' });
+    await mathCard.locator('.detail-button').click();
+    await page.locator('#detailBody .answer').first().waitFor();
+    assert.equal(await page.locator('.answer.correct').count(), 4);
+    assert.equal(await page.locator('.answer.incorrect').count(), 2);
+    assert.equal(await page.locator('.answer .retry').count(), 1);
+    assert.equal(await page.locator('.answer .katex-error').count(), 0);
+    assert.ok(await page.locator('.answer .katex .mfrac').count() > 5, 'fractions are typeset');
+    const promptText = await page.locator('.answer-prompt').first().innerText();
+    assert.doesNotMatch(promptText, /\\frac|\\div|\$/);
+    assert.notEqual(await page.locator('.answer.correct .outcome').first().evaluate(el => getComputedStyle(el).backgroundColor), await page.locator('.answer.incorrect .outcome').first().evaluate(el => getComputedStyle(el).backgroundColor));
+    fs.mkdirSync(output, { recursive: true });
+    await page.screenshot({ path: path.join(output, 'teacher-answers-desktop.png') });
+    await page.getByRole('button', { name: '오답 2', exact: true }).click();
+    assert.equal(await page.locator('.answer').count(), 2);
+    assert.equal(await page.locator('.answer.correct').count(), 0);
+    await page.getByRole('button', { name: '재풀이 1', exact: true }).click();
+    assert.equal(await page.locator('.answer').count(), 1);
+    assert.match(await page.locator('.answer').innerText(), /2번째 풀이/);
+    await page.getByRole('button', { name: '전체 6', exact: true }).click();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.screenshot({ path: path.join(output, 'teacher-answers-mobile.png') });
+    assert.equal(await page.locator('#detailBody').evaluate(el => el.scrollWidth > el.clientWidth), false, 'no horizontal modal overflow');
+    await page.locator('#detailBody').evaluate(el => { el.scrollTop = el.scrollHeight; });
+    assert.ok(await page.locator('#closeDetail').isVisible(), 'close button stays visible while reading');
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('#detailDialog').isVisible(), false);
+    await page.locator('.record-card').filter({ hasText: '잭과 콩나무' }).locator('.detail-button').click();
+    await page.locator('.answer.reading').waitFor();
+    assert.equal(await page.locator('.answer.correct,.answer.incorrect').count(), 0, 'reading and self-check are not marked as right/wrong');
+    assert.equal(await page.locator('.answer img,.answer script').count(), 0, 'saved text is never interpreted as HTML');
+    assert.equal(await page.evaluate(() => window.injected), undefined);
+    assert.equal(await page.locator('.answer.reflection').count(), 1);
+    assert.deepEqual(errors, []);
+    console.log('PASS report readability: actual fractional OX records, local math rendering, result colors and labels, wrong/retry filters, reading/self-check, safe text, desktop/mobile dialog, Escape.');
+  } finally { await browser.close(); await h.close(); }
+}
+main().catch(error => { console.error(error); process.exitCode = 1; });

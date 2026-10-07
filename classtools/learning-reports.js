@@ -4,6 +4,34 @@
   const node = (tag, text, className) => { const el = document.createElement(tag); if (text != null) el.textContent = text; if (className) el.className = className; return el; };
   const request = LearningRecords.request;
   let catalog = [], data = { roster: [], sessions: [] }, mode = 'student', selected = null, generation = 0;
+  let detailGeneration = 0;
+  const domainClass = domain => ({ 읽기: 'reading', 문법: 'grammar', 어휘: 'words', 수리: 'math', 자기점검: 'reflection' }[domain] || '');
+  function formattedText(value, className) {
+    const target = node('span', null, className), source = String(value ?? '');
+    const formulas = /\$\$([\s\S]+?)\$\$|(?<!\\)\$([^$\n]+?)\$|\\\(([\s\S]+?)\\\)|\\\[([\s\S]+?)\\\]/g;
+    let cursor = 0;
+    for (const match of source.matchAll(formulas)) {
+      target.append(document.createTextNode(source.slice(cursor, match.index)));
+      const formula = node('span', match[0], 'formula');
+      try {
+        // Keep fraction digits as legible as the surrounding question text.
+        const math = (match[1] ?? match[2] ?? match[3] ?? match[4])
+          .replace(/(^|[^\w\\])(\d+)\/(\d+)(?!\w)/g, (_, prefix, numerator, denominator) => `${prefix}\\dfrac{${numerator}}{${denominator}}`)
+          .replace(/\\frac(?![a-zA-Z])/g, '\\dfrac');
+        window.katex?.render(math, formula, {
+          displayMode: match[1] != null || match[4] != null, throwOnError: true,
+          trust: false, strict: 'ignore', maxExpand: 200, maxSize: 10
+        });
+      } catch { formula.textContent = match[0]; }
+      target.append(formula); cursor = match.index + match[0].length;
+    }
+    target.append(document.createTextNode(source.slice(cursor)));
+    return target;
+  }
+  function outcome(event) {
+    if (event.kind === 'answer') return event.correct === true ? ['correct', '✓ 정답'] : event.correct === false ? ['incorrect', '× 오답'] : ['unscored', '채점 없음'];
+    return { read: ['reading', '읽기'], 'self-assessment': ['reflection', '자기점검'], hint: ['hint', '도움말'] }[event.kind] || ['unscored', '기록'];
+  }
   const stamp = value => new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
   $('fromDate').value = $('toDate').value = LearningRecords.today();
   function status(text, error = false) { $('status').textContent = text; $('status').hidden = !text; $('status').classList.toggle('error', error); }
@@ -57,11 +85,16 @@
     if (!rows.length) { target.append(node('p', '기록 없음', 'empty')); return; }
     for (const row of rows) {
       const card = node('article', null, 'record-card'), title = node('div', null, 'record-title');
-      title.append(node('p', `${showName ? `${row.studentNumber}번 ${row.studentName} · ` : ''}${row.domain} · ${stamp(row.updatedAt)}`, 'meta'), node('h3', row.title));
+      const meta = node('p', null, 'meta');
+      meta.append(node('span', row.domain, `domain-tag ${domainClass(row.domain)}`), node('span', `${showName ? `${row.studentNumber}번 ${row.studentName} · ` : ''}${stamp(row.updatedAt)}`));
+      title.append(meta, node('h3', row.title));
       const badge = node('span', row.status === 'completed' ? '완료' : '진행 중', `badge ${row.status}`);
       const metrics = node('div', null, 'metrics'), s = row.summary;
-      if (s.firstScored) metrics.append(node('span', `처음 맞힘 ${s.firstCorrect}/${s.firstScored}`));
-      if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`));
+      if (s.firstScored) {
+        metrics.append(node('span', `처음 맞힘 ${s.firstCorrect}/${s.firstScored}`, 'metric-correct'));
+        if (s.firstScored > s.firstCorrect) metrics.append(node('span', `첫 풀이 오답 ${s.firstScored - s.firstCorrect}`, 'metric-incorrect'));
+      }
+      if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`, 'metric-retry'));
       if (s.readCount) metrics.append(node('span', `열어 본 부분 ${s.readCount}개`));
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
       if (s.hints) metrics.append(node('span', `도움말 ${s.hints}회`));
@@ -71,17 +104,46 @@
     }
   }
   async function showDetail(id) {
-    const body = $('detailBody'); body.replaceChildren(node('p', '응답을 불러오는 중…')); $('detailDialog').showModal();
+    const current = ++detailGeneration, body = $('detailBody');
+    $('detailTitle').textContent = '학습 응답'; body.replaceChildren(node('p', '응답을 불러오는 중…', 'empty')); $('detailDialog').showModal();
     try {
-      const { session } = await request(`/teacher/sessions/${id}`); body.replaceChildren(node('h3', session.title), node('p', '전체 기간', 'detail-scope'));
-      for (const e of session.events) {
-        const block = node('article', null, 'answer');
-        block.append(node('small', stamp(e.recordedAt)), node('p', e.snapshot.prompt || e.snapshot.title || e.questionKey), node('p', `응답: ${LearningRecords.responseText(e.response)}`));
-        block.append(node('p', e.kind === 'answer' ? `${e.attemptNumber}번째 풀이 · ${e.correct === null ? '채점 없음' : e.correct ? '정답' : '오답'}` : ({ read: '열어 본 부분', 'self-assessment': '스스로 점검', hint: '도움말 확인' }[e.kind]), 'outcome'));
-        body.append(block);
+      const { session } = await request(`/teacher/sessions/${id}`);
+      if (current !== detailGeneration) return;
+      const record = data.sessions.find(row => row.id === id);
+      $('detailTitle').textContent = `${record ? `${record.studentNumber}번 ${record.studentName} · ` : ''}${session.title}`;
+      const toolbar = node('div', null, 'detail-toolbar'), filters = node('div', null, 'detail-filters');
+      filters.setAttribute('role', 'group'); filters.setAttribute('aria-label', '응답 필터');
+      toolbar.append(node('p', '전체 기간', 'detail-scope'), filters);
+      const list = node('div', null, 'answer-list'); list.setAttribute('aria-live', 'polite');
+      body.replaceChildren(toolbar, list); body.scrollTop = 0;
+      const groups = [['all', '전체', () => true], ['correct', '정답', e => e.kind === 'answer' && e.correct === true], ['incorrect', '오답', e => e.kind === 'answer' && e.correct === false], ['retry', '재풀이', e => e.kind === 'answer' && e.attemptNumber > 1]];
+      function renderAnswers(filter) {
+        list.replaceChildren();
+        for (const button of filters.children) button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+        const predicate = groups.find(([key]) => key === filter)[2];
+        session.events.forEach((e, index) => {
+          if (!predicate(e)) return;
+          const [style, label] = outcome(e), block = node('article', null, `answer ${style}`), meta = node('div', null, 'answer-meta');
+          const info = node('div', null, 'answer-info');
+          info.append(node('span', String(index + 1).padStart(2, '0'), 'answer-number'), node('span', label, `outcome ${style}`));
+          if (e.kind === 'answer') info.append(node('span', `${e.attemptNumber}번째 풀이`, e.attemptNumber > 1 ? 'attempt retry' : 'attempt'));
+          const time = node('time', stamp(e.recordedAt)); time.dateTime = e.recordedAt;
+          meta.append(info, time);
+          const prompt = node('p', null, 'answer-prompt'); prompt.append(formattedText(e.snapshot.prompt || e.snapshot.title || e.questionKey));
+          const response = node('div', null, 'answer-response');
+          response.append(node('span', e.kind === 'read' ? '열어 본 부분' : e.kind === 'hint' ? '도움말 확인' : '학생 응답:', 'response-label'), formattedText(LearningRecords.responseText(e.response), 'response-value'));
+          block.append(meta, prompt, response); list.append(block);
+        });
+        if (!list.children.length) list.append(node('p', filter === 'all' ? '응답 없음' : '해당 응답 없음', 'empty'));
       }
-      if (!session.events.length) body.append(node('p', '응답 없음', 'empty'));
-    } catch (error) { body.replaceChildren(node('p', error.message)); }
+      for (const [key, label, predicate] of groups) {
+        const count = session.events.filter(predicate).length;
+        if (key !== 'all' && !count) continue;
+        const button = node('button', `${label} ${count}`, key); button.type = 'button'; button.dataset.filter = key;
+        button.onclick = () => renderAnswers(key); filters.append(button);
+      }
+      renderAnswers('all');
+    } catch (error) { if (current === detailGeneration) body.replaceChildren(node('p', error.message, 'empty')); }
   }
   async function load() {
     const current = ++generation; $('load').disabled = true; status('불러오는 중…');
@@ -92,6 +154,7 @@
     finally { if (current === generation) $('load').disabled = false; }
   }
   $('closeDetail').onclick = () => $('detailDialog').close();
+  $('detailDialog').addEventListener('close', () => { detailGeneration++; });
   $('studentTab').onclick = () => { mode = 'student'; selected = null; render(); };
   $('areaTab').onclick = () => { mode = 'area'; selected = '전체'; render(); };
   $('activitySelect').onchange = render; $('load').onclick = load; $('classSelect').onchange = () => { selected = null; load(); };
