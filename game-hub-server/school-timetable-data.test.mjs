@@ -90,6 +90,7 @@ async function withSchool(run) {
       pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE,
       normalizeEmail: value => String(value || '').trim().toLowerCase(),
       requireSchoolAdmin: async () => ({ profile: { school_id: 1 }, user: { id: 101 } }),
+      requireSchoolCurriculum: async () => ({ profile: { school_id: 1 }, user: { id: 101 }, canEdit: true }),
       requireTeacher: async () => ({ id: 101 }),
       teacherRegistration: async () => ({ school_id: 1, teacher_type: '관리자' })
     };
@@ -200,6 +201,7 @@ test('browser renders real API/database results, unlinked guidance, roster chang
         }
         data = await get({ query: Object.fromEntries(url.searchParams) });
       }
+      else if (url.pathname.endsWith('/curriculum-access')) data = { canEdit: true };
       else if (url.pathname.endsWith('/vacation-settings')) data = { settings: {} };
       else if (url.pathname.endsWith('/annual-schedules')) data = { schedules: [] };
       else if (url.pathname.endsWith('/public-holidays')) data = { holidays: [], all: [] };

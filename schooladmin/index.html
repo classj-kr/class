@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>학교 관리자 및 교육과정 포털</title>
-    <link rel="stylesheet" href="style.css?v=20260921b">
+    <title>학사일정·교육과정</title>
+    <link rel="stylesheet" href="style.css?v=20261007-read">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 </head>
 <body>
@@ -22,7 +22,8 @@
         <button id="signOutButton" class="text-button">로그아웃</button>
     </nav>
 
-    <main class="app-main">
+    <p id="curriculumAccessStatus" class="curriculum-access-status" role="status">교육과정 조회 권한을 확인하는 중입니다.</p>
+    <main class="app-main" hidden>
         <!-- 1. Annual Schedules & 12-Month Calendar Tab -->
         <section id="annualTab" class="tab-content active">
             <!-- 190-Day Audit Summary Banner -->
@@ -294,7 +295,7 @@
 
             <div class="schedule-editor-panel margin-top">
                 <h3 style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-                    <span>⏰ 시정표 편집</span>
+                    <span>⏰ 시정표</span>
                     <label style="font-size:0.85rem; font-weight:normal; display:flex; align-items:center; gap:6px;">
                         점심 위치:
                         <select id="bellLunchAfterSelect" class="form-select" style="padding:4px 6px;"></select>
@@ -457,7 +458,7 @@
                         <tbody id="specialistTimetableMatrixBody"></tbody>
                     </table>
                 </div>
-                <p class="section-desc margin-top">빈 칸을 클릭해 학년·반·과목을 입력하면 배정됩니다. 직접 배정한 수업은 클릭해서 지울 수 있으며, ‘담임 수업’은 학급별 기초시간표에서 수정합니다.</p>
+                <p class="section-desc margin-top" data-curriculum-edit>빈 칸을 클릭해 학년·반·과목을 입력하면 배정됩니다. 직접 배정한 수업은 클릭해서 지울 수 있으며, ‘담임 수업’은 학급별 기초시간표에서 수정합니다.</p>
             </div>
         </section>
 
@@ -492,7 +493,7 @@
                         <tbody id="roomTimetableMatrixBody"></tbody>
                     </table>
                 </div>
-                <p class="section-desc margin-top">빈 칸을 클릭해 학년·반·과목을 입력하면 배정됩니다. 이미 배정된 칸을 클릭하면 지울 수 있습니다.</p>
+                <p class="section-desc margin-top" data-curriculum-edit>빈 칸을 클릭해 학년·반·과목을 입력하면 배정됩니다. 이미 배정된 칸을 클릭하면 지울 수 있습니다.</p>
             </div>
         </section>
 
@@ -586,6 +587,6 @@
         </section>
     </main>
 
-    <script src="app.js?v=20261007a"></script>
+    <script src="app.js?v=20261007-read"></script>
 </body>
 </html>
