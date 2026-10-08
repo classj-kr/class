@@ -54,7 +54,7 @@
       id: "2025-09-13", exam: "2025-09", no: 13, score: 4,
       units: ["m2-integ"], memo: "y축 대칭인 조각함수의 두 넓이",
       body: R`함수
-        \[f(x)=\begin{cases}-x^{2}-2x+6 &amp; (x<0)\\ -x^{2}+2x+6 &amp; (x\ge 0)\end{cases}\]
+        \[f(x)=\begin{cases}-x^{2}-2x+6 &amp; (x&lt;0)\\ -x^{2}+2x+6 &amp; (x\ge 0)\end{cases}\]
         의 그래프가 \(x\)축과 만나는 서로 다른 두 점을 \(\mathrm{P}\), \(\mathrm{Q}\)라 하고,
         상수 \(k\,(k>4)\)에 대하여 직선 \(x=k\)가 \(x\)축과 만나는 점을
         \(\mathrm{R}\)이라 하자. 곡선 \(y=f(x)\)와 선분 \(\mathrm{PQ}\)로 둘러싸인 부분의
@@ -99,7 +99,7 @@
       id: "2025-09-20", exam: "2025-09", no: 20, score: 4,
       units: ["m1-trig"], memo: "진폭이 다른 두 조각의 가로선 자르기",
       body: R`닫힌구간 \([0,\,2\pi]\)에서 정의된 함수
-        \[f(x)=\begin{cases}\sin x-1 &amp; (0\le x<\pi)\\ -\sqrt{2}\sin x-1 &amp; (\pi\le x\le 2\pi)\end{cases}\]
+        \[f(x)=\begin{cases}\sin x-1 &amp; (0\le x&lt;\pi)\\ -\sqrt{2}\sin x-1 &amp; (\pi\le x\le 2\pi)\end{cases}\]
         가 있다. \(0\le t\le 2\pi\)인 실수 \(t\)에 대하여 \(x\)에 대한 방정식
         \(f(x)=f(t)\)의 서로 다른 실근의 개수가 \(3\)이 되도록 하는
         모든 \(t\)의 값의 합은 \(\dfrac{q}{p}\pi\)이다. \(p+q\)의 값을 구하시오.
@@ -125,7 +125,7 @@
       body: R`양수 \(k\)에 대하여 \(a_{1}=k\)인 수열 \(\{a_{n}\}\)이 다음 조건을
         만족시킨다.`,
       note: [
-        R`(가) \(a_{2}\times a_{3}<0\)`,
+        R`(가) \(a_{2}\times a_{3}&lt;0\)`,
         R`(나) 모든 자연수 \(n\)에 대하여 \(\left(a_{n+1}-a_{n}+\dfrac{2}{3}k\right)\left(a_{n+1}+k\,a_{n}\right)=0\)이다.`
       ],
       bodyAfter: R`\(a_{5}=0\)이 되도록 하는 서로 다른 모든 양수 \(k\)에 대하여
@@ -201,7 +201,7 @@
       note: [
         R`모든 실수 \(x\)에 대하여 \(F'(x)=f(x)\)이고 \(F(x)\ge f(x)\)이다.`
       ],
-            bodyAfter: R`\(g\left(\dfrac{1}{4}\right)+g\left(\dfrac{3}{2}\) = pe+q\)일 때, \(100(p+q)\)의 값을 구하시오. (단, \(\displaystyle\lim_{x\to\infty}xe^{-x}=0\)이고, \(p\)와 \(q\)는 유리수이다.)`,
+            bodyAfter: R`\(g\left(\dfrac{1}{4}\right)+g\left(\dfrac{3}{2}\right)=pe+q\)일 때, \(100(p+q)\)의 값을 구하시오. (단, \(\displaystyle\lim_{x\to\infty}xe^{-x}=0\)이고, \(p\)와 \(q\)는 유리수이다.)`,
 short: true,
       answer: 25,
       help: R`\(F'(x)=f(x)\)이므로 \(F(x)\)는 \(f(x)\)의 부정적분이며, \(F(x)\ge f(x)\)는 차함수 \(H(x)=F(x)-f(x)\)의 최솟값이 0 이상이라는 조건입니다. \(H'(x)=f(x)-f'(x)=0\)이 되는 극소 후보점과 \(x=0\)에서의 연속성을 이용해 \(F(0)\)의 최솟값 \(g(k)\)를 구합니다. \(k=\frac{1}{4}\)과 \(k=\frac{3}{2}\)일 때 극값의 위치를 나누어 계산하면 \(100(p+q)=25\)를 얻습니다.`
