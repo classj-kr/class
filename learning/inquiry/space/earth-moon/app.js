@@ -93,6 +93,12 @@
             const SOLAR_OVERVIEW_CAMERA_POSITION = new THREE.Vector3(0, 190 + OVERVIEW_FRAMING_Y, 300);
             const SOLAR_OVERVIEW_TARGET = new THREE.Vector3(0, OVERVIEW_FRAMING_Y, 0);
             const EARTH_TRACK_CAMERA_OFFSET = new THREE.Vector3(0, 64, 112);
+            // Zooming in on the overview slides the orbit pivot from the
+            // Sun-centred framing to Earth, fully on Earth by this distance.
+            const OVERVIEW_ZOOM_DISTANCE = SOLAR_OVERVIEW_CAMERA_POSITION.distanceTo(SOLAR_OVERVIEW_TARGET);
+            const EARTH_FOCUS_ZOOM_DISTANCE = 130;
+            const overviewFocusTarget = new THREE.Vector3();
+            const overviewFocusShift = new THREE.Vector3();
             // Negative Z rotation makes the north end lean 23.44 degrees to screen-right.
             const EARTH_AXIAL_TILT_RAD = -23.44 * (Math.PI / 180);
 
@@ -1519,6 +1525,21 @@
                 });
             }
 
+            function updateOverviewZoomFocus() {
+                const distance = camera.position.distanceTo(controls.target);
+                const zoomProgress = THREE.MathUtils.clamp(
+                    (OVERVIEW_ZOOM_DISTANCE - distance) / (OVERVIEW_ZOOM_DISTANCE - EARTH_FOCUS_ZOOM_DISTANCE),
+                    0,
+                    1
+                );
+                const earthFocus = zoomProgress * zoomProgress * (3 - 2 * zoomProgress);
+                overviewFocusTarget.copy(SOLAR_OVERVIEW_TARGET).lerp(earthSystemGroup.position, earthFocus);
+                // Move the camera with the pivot so zoom distance and viewing angle stay put.
+                overviewFocusShift.subVectors(overviewFocusTarget, controls.target);
+                controls.target.add(overviewFocusShift);
+                camera.position.add(overviewFocusShift);
+            }
+
             function animate() {
                 requestAnimationFrame(animate);
 
@@ -1582,7 +1603,7 @@
                             targetPos.z + EARTH_TRACK_CAMERA_OFFSET.z
                         );
                     } else {
-                        controls.target.copy(SOLAR_OVERVIEW_TARGET); // Solar System Overview
+                        updateOverviewZoomFocus(); // Solar System Overview
                     }
                     controls.update();
                 }
@@ -1626,6 +1647,7 @@
                     container.classList.remove('earth-view-mode');
                     observerView.hidden = false;
                     camera.position.copy(SOLAR_OVERVIEW_CAMERA_POSITION);
+                    if (controls) controls.target.copy(SOLAR_OVERVIEW_TARGET);
                 } else {
                     viewMode = 'trackEarth';
                     this.textContent = '태양계 시선 (Solar System View)';
