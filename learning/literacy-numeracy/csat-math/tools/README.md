@@ -80,3 +80,7 @@ node check-math.mjs
 - 보기 개수와 답의 범위, 없는 그림 파일.
 
 KaTeX는 같은 저장소의 `learning/literacy-numeracy/arithmetics/node_modules`에서 빌려 쓴다.
+
+이것은 글을 KaTeX에 넣어 보기만 한다. 진짜 브라우저에서 화면과 같은 차례로 풀이까지 그려 보는 검사는
+저장소 맨 위에서 `node tests/csat-math-render-browser.cjs`(한 회차만이면 뒤에 `2025-09`)로 돌린다.
+문항을 고친 뒤에는 둘 다 0개여야 올린다.
