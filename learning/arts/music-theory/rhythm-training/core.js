@@ -34,12 +34,30 @@
     }
     // One onset is one tap. Release times and key-hold duration never enter scoring.
     const hitWindow = chart => Math.min(.14, 60 / chart.bpm * .22);
+    // Speakers, Bluetooth and keyboards add delay the browser cannot report, so a
+    // player tapping exactly with the metronome can be judged uniformly late.
+    // Remove that constant lag (up to one hit window) once enough notes establish it;
+    // only consistent timing benefits, scattered taps do not.
+    const LAG_STEP = .005, LAG_MIN_HITS = 4;
     function judge(chart, taps) {
+        const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
+        const maxLag = Math.floor(hitWindow(chart) / LAG_STEP) * LAG_STEP;
+        let best = match(chart, clean, 0);
+        for (let lag = -maxLag; lag <= maxLag + 1e-9; lag += LAG_STEP) {
+            const shifted = match(chart, clean, Math.round(lag * 1000) / 1000);
+            if (shifted.hits < LAG_MIN_HITS) continue;
+            if (shifted.accuracy > best.accuracy || shifted.accuracy === best.accuracy
+                && (shifted.errorSum < best.errorSum - 1e-9 || Math.abs(shifted.errorSum - best.errorSum) <= 1e-9 && Math.abs(shifted.lagMs) < Math.abs(best.lagMs))) best = shifted;
+        }
+        const { errorSum, ...result } = best;
+        return result;
+    }
+    function match(chart, clean, lag) {
         const window = hitWindow(chart);
         const marks = chart.targets.map(time => ({ time, hit: false, error: null, points: 0 }));
         let extras = 0;
-        const clean = taps.filter(Number.isFinite).slice().sort((a, b) => a - b);
-        for (const tap of clean) {
+        for (const raw of clean) {
+            const tap = raw - lag;
             // Match in score order. A slightly delayed sixteenth must not steal
             // the next note just because that note is closer in absolute time.
             const best = marks.findIndex(mark => !mark.hit && Math.abs(tap - mark.time) <= window + .000001);
@@ -50,10 +68,11 @@
             mark.points = 1;
         }
         const hits = marks.filter(mark => mark.hit);
+        const errorSum = hits.reduce((sum, m) => sum + Math.abs(m.error), 0);
         const accuracy = Math.max(0, Math.round(1000 * (hits.reduce((sum, m) => sum + m.points, 0) - extras * .5) / marks.length) / 10);
         return { accuracy, perfect: hits.filter(m => m.points === 1).length, hits: hits.length,
             misses: marks.length - hits.length, extras, wrong: extras + hits.filter(m => m.points === 0).length, marks,
-            errorMs: hits.length ? Math.round(hits.reduce((sum, m) => sum + Math.abs(m.error), 0) * 1000 / hits.length) : null };
+            errorMs: hits.length ? Math.round(errorSum * 1000 / hits.length) : null, lagMs: Math.round(lag * 1000), errorSum };
     }
     return { LEVELS, VALUES, settings, chart, judge, hitWindow };
 });

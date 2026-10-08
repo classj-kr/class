@@ -43,6 +43,17 @@ test('accepted timing variation earns full credit without stealing neighboring s
         assert.equal(omitted.hits, chart.targets.length - 1);
     }
 });
+test('a constant device delay is removed once enough notes establish it', () => {
+    for (const bpm of [70, 100, 140]) for (let level = 0; level < 4; level++) for (let seed = 1; seed < 40; seed++) {
+        const chart = Core.chart({ bpm, level }, seed);
+        const lag = Core.hitWindow(chart) * 1.4;
+        const late = Core.judge(chart, chart.targets.map((time, i) => time + lag + (i % 2 ? .02 : -.02)));
+        assert.equal(late.accuracy, 100, JSON.stringify({ bpm, level, seed }));
+        assert.ok(late.lagMs > 0);
+    }
+    const c = { bpm: 100, targets: [0, 1.2, 2.4], duration: 4.8 };
+    assert.equal(Core.judge(c, [.2, 1.4, 2.6]).accuracy, 0);
+});
 test('classroom lifecycle, permissions, server scoring, retries, stale rounds, stop and expiry', async t => {
     let clock = 1000000, blocked = false, configured = true;
     const app = express(); app.use(express.json());

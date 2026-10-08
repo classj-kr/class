@@ -1,7 +1,10 @@
 (() => {
     'use strict';
     const C = window.RhythmTrainer, $ = id => document.getElementById(id);
-    const storageKey = 'rhythm-training-room-v1';
+    const storageKey = 'rhythm-training-room-v1', lagKey = 'rhythm-training-lag-v1';
+    // Device delay learned from earlier rounds, applied to taps so feedback is right from the first note.
+    let deviceLag = 0;
+    try { deviceLag = Math.max(-.25, Math.min(.25, Number(localStorage.getItem(lagKey)) || 0)); } catch (_) {}
     let audio, chart, run = null, raf = 0, heads = [], lines = [], mode = 'solo', scoreColumns = 0;
     let room = null, credentials = null, pendingResult = null, polling = false, starting = false, loading = false;
     let lastRound = '', streak = 0, pressedTimer = 0;
@@ -248,7 +251,7 @@
         // speaker/Bluetooth output delay must not produce a second, late tapping beat.
         const now = performance.now(), eventTime = Number(event?.timeStamp);
         const inputTime = eventTime > 0 && eventTime <= now && now - eventTime < 1000 ? eventTime : now;
-        const time = run ? heardTime(inputTime) - run.startAt : 0;
+        const time = run ? heardTime(inputTime) - run.startAt - deviceLag : 0;
         $('pad').classList.add('pressed'); clearTimeout(pressedTimer);
         pressedTimer = setTimeout(() => $('pad').classList.remove('pressed'), 100);
         if (!run || run.demo) { burst(event); return; }
@@ -287,6 +290,10 @@
             const result = C.judge(chart, ended.taps);
             $('accuracy').textContent = result.accuracy + '%'; $('perfect').textContent = result.perfect;
             $('misses').textContent = result.misses; $('extras').textContent = result.wrong; $('result').hidden = false;
+            if (result.hits >= 8 && result.lagMs) {
+                deviceLag = Math.max(-.25, Math.min(.25, deviceLag + result.lagMs / 1000));
+                try { localStorage.setItem(lagKey, String(deviceLag)); } catch (_) {}
+            }
         }
         if (ended.roundId && credentials) { pendingResult = { roundId: ended.roundId, taps: ended.taps, interrupted }; saveRoom(); await submitResult(); }
     }
