@@ -64,3 +64,19 @@ python -c "import pymupdf; d=pymupdf.open('papers/2026-suneung-paper.pdf'); d[4]
 - 그림은 문제지에 그림 파일로 박혀 있다. `page.get_image_info()`로 자리를 찾아
   오려 내고 webp로 바꾼다. 모든 쪽에 있는 116×28 크기 그림은 "수학 영역" 머리글이니 거른다.
 - 옮긴 뒤에는 반드시 원본 문제지와 다시 대조한다. 숫자 하나가 틀리면 답이 없는 문제가 된다.
+
+## 6. 수식 검사
+
+```
+node check-math.mjs
+```
+
+모든 문항을 화면과 같은 차례(HTML로 읽고 → auto-render로 가르고 → KaTeX로 파싱)로 읽어
+깨지는 곳을 찾는다. 문항을 더하거나 고친 뒤에는 이것이 0개를 낼 때까지 고친다.
+
+- 그대로 쓴 `<`. `0<a<b`의 `<a`는 태그로 읽혀 그 뒤 문장이 통째로 사라진다.
+- KaTeX가 파싱하지 못하는 수식. `\left(`만 있고 `\right)`가 없는 것, `\\)`처럼 백슬래시가 둘인 것 등.
+- 닫는 기호를 잃어 수식 밖에 그대로 드러난 `\(`, `\dfrac`, `^{` 같은 TeX.
+- 보기 개수와 답의 범위, 없는 그림 파일.
+
+KaTeX는 같은 저장소의 `learning/literacy-numeracy/arithmetics/node_modules`에서 빌려 쓴다.

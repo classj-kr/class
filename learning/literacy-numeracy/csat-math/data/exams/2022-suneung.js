@@ -29,7 +29,7 @@
 {
       id: "2022-suneung-11", exam: "2022-suneung", no: 11, score: 4,
       units: ["m1-trig"], memo: "원점 대칭인 탄젠트 곡선과 정삼각형",
-      body: R`양수 \(a\)에 대하여 집합 \(\left\{x\ \middle|\ -\dfrac{a}{2}<x\le a,\ x\ne\dfrac{a}{2}\right\}\)에서
+      body: R`양수 \(a\)에 대하여 집합 \(\left\{x\ \middle|\ -\dfrac{a}{2}&lt;x\le a,\ x\ne\dfrac{a}{2}\right\}\)에서
         정의된 함수
         \[f(x)=\tan\frac{\pi x}{a}\]
         가 있다. 그림과 같이 함수 \(y=f(x)\)의 그래프 위의
@@ -57,7 +57,7 @@
 {
       id: "2022-suneung-13", exam: "2022-suneung", no: 13, score: 4,
       units: ["m1-explog"], memo: "밑만 다른 두 로그 점을 지나는 직선",
-      body: R`두 상수 \(a\), \(b\,(1<a<b)\)에 대하여 좌표평면 위의
+      body: R`두 상수 \(a\), \(b\,(1&lt;a&lt;b)\)에 대하여 좌표평면 위의
         두 점 \(\bigl(a,\,\log_{2}a\bigr)\), \(\bigl(b,\,\log_{2}b\bigr)\)를 지나는 직선의 \(y\)절편과
         두 점 \(\bigl(a,\,\log_{4}a\bigr)\), \(\bigl(b,\,\log_{4}b\bigr)\)를 지나는 직선의 \(y\)절편이 같다.
         함수 \(f(x)=a^{bx}+b^{ax}\)에 대하여 \(f(1)=40\)일 때, \(f(2)\)의 값은?`,
@@ -77,7 +77,7 @@
       note: [
         R`ㄱ. \(\displaystyle\int_{0}^{1}v(t)\,dt=0\)`,
         R`ㄴ. \(\bigl|x(t_{1})\bigr|>1\)인 \(t_{1}\)이 열린구간 \((0,\,1)\)에 존재한다.`,
-        R`ㄷ. \(0\le t\le 1\)인 모든 \(t\)에 대하여 \(\bigl|x(t)\bigr|<1\)이면 \(x(t_{2})=0\)인 \(t_{2}\)가 열린구간 \((0,\,1)\)에 존재한다.`
+        R`ㄷ. \(0\le t\le 1\)인 모든 \(t\)에 대하여 \(\bigl|x(t)\bigr|&lt;1\)이면 \(x(t_{2})=0\)인 \(t_{2}\)가 열린구간 \((0,\,1)\)에 존재한다.`
       ],
       choices: [R`ㄱ`, R`ㄱ, ㄴ`, R`ㄱ, ㄷ`, R`ㄴ, ㄷ`, R`ㄱ, ㄴ, ㄷ`],
       answer: 3,
@@ -193,15 +193,15 @@
 {
       id: "2022-suneung-calc-28", exam: "2022-suneung", no: 28, score: 4,
       units: ["calc-diff"], memo: "합성함수의 미분과 극소의 개수",
-      body: R`함수 \(f(x)=6\pi(x-1)^{2}\)에 대하여 함수 \(g(x)\)를 \[g(x)=3f(x)+4\cos f(x)\]라 하자. \(0<x<2\)에서 함수 \(g(x)\)가 극소가 되는 \(x\)의 개수는?`,
+      body: R`함수 \(f(x)=6\pi(x-1)^{2}\)에 대하여 함수 \(g(x)\)를 \[g(x)=3f(x)+4\cos f(x)\]라 하자. \(0&lt;x&lt;2\)에서 함수 \(g(x)\)가 극소가 되는 \(x\)의 개수는?`,
       choices: [R`\(6\)`, R`\(7\)`, R`\(8\)`, R`\(9\)`, R`\(10\)`],
       answer: 2,
-      help: R`\(g'(x)=f'(x)\{3-4\sin f(x)\}\)에서 도함수의 부호가 음에서 양으로 바뀌는 지점을 찾습니다. \(f(x)=t\)로 치환하여 \(t\)의 범위 \(0\le t<6\pi\)에서 \(\sin t=\frac{3}{4}\)의 근과 \(f'(x)=0\)인 \(x=1\) 주변의 부호 변화를 조사합니다.`
+      help: R`\(g'(x)=f'(x)\{3-4\sin f(x)\}\)에서 도함수의 부호가 음에서 양으로 바뀌는 지점을 찾습니다. \(f(x)=t\)로 치환하여 \(t\)의 범위 \(0\le t&lt;6\pi\)에서 \(\sin t=\frac{3}{4}\)의 근과 \(f'(x)=0\)인 \(x=1\) 주변의 부호 변화를 조사합니다.`
     },
 {
       id: "2022-suneung-calc-29", exam: "2022-suneung", no: 29, score: 4,
       units: ["calc-diff"], memo: "삼각함수의 극한과 정삼각형의 넓이",
-      body: R`그림과 같이 길이가 \(2\)인 선분 \(\mathrm{AB}\)를 지름으로 하는 반원이 있다. 호 \(\mathrm{AB}\) 위에 두 점 \(\mathrm{P}\), \(\mathrm{Q}\)를 \(\angle\mathrm{PAB}=\theta\), \(\angle\mathrm{QBA}=2\theta\)가 되도록 잡고, 두 선분 \(\mathrm{AP}\), \(\mathrm{BQ}\)의 교점을 \(\mathrm{R}\)라 하자. 선분 \(\mathrm{AB}\) 위의 점 \(\mathrm{S}\), 선분 \(\mathrm{BR}\) 위의 점 \(\mathrm{T}\), 선분 \(\mathrm{AR}\) 위의 점 \(\mathrm{U}\)를 선분 \(\mathrm{UT}\)가 선분 \(\mathrm{AB}\)에 평행하고 삼각형 \(\mathrm{STU}\)가 정삼각형이 되도록 잡는다. 두 선분 \(\mathrm{AR}\), \(\mathrm{QR}\)와 호 \(\mathrm{AQ}\)로 둘러싸인 부분의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{STU}\)의 넓이를 \(g(\theta)\)라 할 때, \[\lim_{\theta\to 0+}\dfrac{g(\theta)}{\theta\times f(\theta)}=\dfrac{q}{p}\sqrt{3}\]이다. \(p+q\)의 값을 구하시오. (단, \(0<\theta<\dfrac{\pi}{6}\)이고, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
+      body: R`그림과 같이 길이가 \(2\)인 선분 \(\mathrm{AB}\)를 지름으로 하는 반원이 있다. 호 \(\mathrm{AB}\) 위에 두 점 \(\mathrm{P}\), \(\mathrm{Q}\)를 \(\angle\mathrm{PAB}=\theta\), \(\angle\mathrm{QBA}=2\theta\)가 되도록 잡고, 두 선분 \(\mathrm{AP}\), \(\mathrm{BQ}\)의 교점을 \(\mathrm{R}\)라 하자. 선분 \(\mathrm{AB}\) 위의 점 \(\mathrm{S}\), 선분 \(\mathrm{BR}\) 위의 점 \(\mathrm{T}\), 선분 \(\mathrm{AR}\) 위의 점 \(\mathrm{U}\)를 선분 \(\mathrm{UT}\)가 선분 \(\mathrm{AB}\)에 평행하고 삼각형 \(\mathrm{STU}\)가 정삼각형이 되도록 잡는다. 두 선분 \(\mathrm{AR}\), \(\mathrm{QR}\)와 호 \(\mathrm{AQ}\)로 둘러싸인 부분의 넓이를 \(f(\theta)\), 삼각형 \(\mathrm{STU}\)의 넓이를 \(g(\theta)\)라 할 때, \[\lim_{\theta\to 0+}\dfrac{g(\theta)}{\theta\times f(\theta)}=\dfrac{q}{p}\sqrt{3}\]이다. \(p+q\)의 값을 구하시오. (단, \(0&lt;\theta&lt;\dfrac{\pi}{6}\)이고, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
       figure: "2022-suneung-calc-29.webp",
       short: true,
       answer: 11,

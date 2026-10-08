@@ -71,7 +71,7 @@
         \(\sin A:\sin C=8:5\)이고, 삼각형 \(\mathrm{ADE}\)와 삼각형 \(\mathrm{ABC}\)의 넓이의
         비가 \(9:35\)이다. 삼각형 \(\mathrm{ABC}\)의 외접원의 반지름의 길이가 \(7\)일 때,
         원 \(O\) 위의 점 \(\mathrm{P}\)에 대하여 삼각형 \(\mathrm{PBC}\)의 넓이의 최댓값은?
-        (단, \(\overline{\mathrm{AB}}<\overline{\mathrm{AC}}\))`,
+        (단, \(\overline{\mathrm{AB}}&lt;\overline{\mathrm{AC}}\))`,
       figure: "2025-suneung-14.webp",
       choices: [R`\(18+15\sqrt{3}\)`, R`\(24+20\sqrt{3}\)`, R`\(30+25\sqrt{3}\)`, R`\(36+30\sqrt{3}\)`, R`\(42+35\sqrt{3}\)`],
       answer: 4,
@@ -105,7 +105,7 @@
       bodyAfter: R`\(f\left(\dfrac{1}{k^{3}\times 5^{3k}}\right)\)의 값을 구하시오.`,
       short: true,
       answer: 36,
-      help: R`\(k\)는 \(k=5^{\,3-k}\)를 만족시키므로 \(k^{3}\times 5^{3k}=5^{\,9-3k}\times 5^{3k}=5^{9}\)이다. 곧 구하는 것은 \(f\left(5^{-9}\right)\)다. 그리고 \(x>k\)이면 \(f(x)<k\)이므로 \(k\)보다 작은 자리에서의 \(f\)는 주어진 식이 아니라 \(f\bigl(f(x)\bigr)=3x\)가 알려 준다.`
+      help: R`\(k\)는 \(k=5^{\,3-k}\)를 만족시키므로 \(k^{3}\times 5^{3k}=5^{\,9-3k}\times 5^{3k}=5^{9}\)이다. 곧 구하는 것은 \(f\left(5^{-9}\right)\)다. 그리고 \(x>k\)이면 \(f(x)&lt;k\)이므로 \(k\)보다 작은 자리에서의 \(f\)는 주어진 식이 아니라 \(f\bigl(f(x)\bigr)=3x\)가 알려 준다.`
     },
 {
       id: "2025-suneung-21", exam: "2025-suneung", no: 21, score: 4,
@@ -176,7 +176,7 @@
 이다. 양수 \(t\)에 대하여 곡선 \(y=f(x)\) 위의 점 \((t,\,f(t))\)에서의 접선과 곡선 \(y=f(x)\) 및 \(y\)축으로 둘러싸인 부분의 넓이를 \(g(t)\)라 하자. \(g(1)+g'(1)\)의 값은?`,
       choices: [R`\(\dfrac{1}{2}e+\dfrac{1}{2}\)`, R`\(\dfrac{1}{2}e+\dfrac{2}{3}\)`, R`\(\dfrac{1}{2}e+\dfrac{5}{6}\)`, R`\(\dfrac{2}{3}e+\dfrac{1}{2}\)`, R`\(\dfrac{2}{3}e+\dfrac{2}{3}\)`],
       answer: 2,
-      help: R`\(x&gt;0\)에서 \(f''(x)&lt;0\)이므로 접선이 곡선보다 항상 위쪽에 있어 \(g(t)=\int_{0}^{t} \left(f'(t)(x-t)+f(t)-f(x)\\right)dx\)로 세워집니다. \(g(t)\)를 \(t\)에 대해 미분하면 라이프니츠 규칙에 의해 \(g'(t)=-\frac{t^{2}}{2}f''(t)\)로 대폭 단순화됩니다. \(g(1)\)은 부분적분을 활용하여 \(f(1)\) 없이 \(\int_{0}^{1} x f'(x)dx\)만으로 깔끔하게 계산할 수 있습니다.`
+      help: R`\(x&gt;0\)에서 \(f''(x)&lt;0\)이므로 접선이 곡선보다 항상 위쪽에 있어 \(g(t)=\int_{0}^{t} \left(f'(t)(x-t)+f(t)-f(x)\right)dx\)로 세워집니다. \(g(t)\)를 \(t\)에 대해 미분하면 라이프니츠 규칙에 의해 \(g'(t)=-\frac{t^{2}}{2}f''(t)\)로 대폭 단순화됩니다. \(g(1)\)은 부분적분을 활용하여 \(f(1)\) 없이 \(\int_{0}^{1} x f'(x)dx\)만으로 깔끔하게 계산할 수 있습니다.`
     },
 {
       id: "2025-suneung-calc-29", exam: "2025-suneung", no: 29, score: 4,
@@ -205,7 +205,7 @@
 이다. \(p+q\)의 값을 구하시오. (단, \(p\)와 \(q\)는 서로소인 자연수이다.)`,
 short: true,
       answer: 17,
-      help: R`\(-1\le \sin\theta\le 1\)과 \(\sin\theta=\theta\)의 유일해 성질로부터 \(2\pi a+b=0\)이어야 하므로 \(b=-2\pi a\)이고 \(\sin(-2\pi a)=0\)에서 \(a=\frac{3}{2}, b=-3\pi\)가 결정됩니다. \(f'(x)\\)의 곱 형태에서 최솟값 \(4\pi\) 조건을 만족함을 검산하고, \(f(x)=-\sin(\frac{3}{2}x+\sin x)\)의 극대점들을 \(\frac{3}{2}x+\sin x\)의 값의 범위에서 찾아내면 \(n=3\)과 \(\alpha_{1}\)을 얻어 \(p+q=17\)이 나옵니다.`
+      help: R`\(-1\le \sin\theta\le 1\)과 \(\sin\theta=\theta\)의 유일해 성질로부터 \(2\pi a+b=0\)이어야 하므로 \(b=-2\pi a\)이고 \(\sin(-2\pi a)=0\)에서 \(a=\frac{3}{2}, b=-3\pi\)가 결정됩니다. \(f'(x)\)의 곱 형태에서 최솟값 \(4\pi\) 조건을 만족함을 검산하고, \(f(x)=-\sin(\frac{3}{2}x+\sin x)\)의 극대점들을 \(\frac{3}{2}x+\sin x\)의 값의 범위에서 찾아내면 \(n=3\)과 \(\alpha_{1}\)을 얻어 \(p+q=17\)이 나옵니다.`
     },
 {
       id: "2025-suneung-geom-28", exam: "2025-suneung", no: 28, score: 4,
