@@ -1,0 +1,37 @@
+{
+  "publisher": "디딤돌교육",
+  "subject": "수학",
+  "grade": 3,
+  "semester": 1,
+  "url": "https://www.didimdolclass.co.kr/curriculum/curriculum?grade=THIRD&period=FIRST_PERIOD",
+  "resource": "24497",
+  "scope": "name-unit-only",
+  "sourceFileName": "(디딤돌)초등수학_과정_중시_평가_기준안_3-1.hwp",
+  "sha256": "7ca977a5aa362b54dc54942e68f6cca497a8cae500bef4f0264f447e1144449c",
+  "assessments": [
+    {
+      "unit": "1. 덧셈과 뺄셈",
+      "title": "6차시: (세 자리 수)-(세 자리 수)를 알아볼까요(2)"
+    },
+    {
+      "unit": "2. 평면도형",
+      "title": "2~3차시: 선의 종류를 알아볼까요"
+    },
+    {
+      "unit": "3. 나눗셈",
+      "title": "5~6차시: 나눗셈의 몫을 구해 볼까요"
+    },
+    {
+      "unit": "4. 곱셈",
+      "title": "5차시: (몇십몇)×(몇)을 알아볼까요(3)"
+    },
+    {
+      "unit": "5. 길이와 시간",
+      "title": "4~5차시: 길이와 거리를 어림하고 재어 볼까요"
+    },
+    {
+      "unit": "6. 분수와 소수",
+      "title": "6차시: 분모가 같은 분수의 크기를 비교해 볼까요"
+    }
+  ]
+}

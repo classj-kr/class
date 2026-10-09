@@ -35,7 +35,7 @@ const server=http.createServer((req,res)=>{
     assert.equal(await p.locator('#lobbyScreen .mp-ui-header').count(),1);
     await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'entry.png')});
     const popupPromise=p.waitForEvent('popup');await p.locator('#rulesBtnLobby').click();const rules=await popupPromise;await rules.waitForLoadState();
-    assert.match(await rules.locator('main').innerText(),/4명, 경찰 1명·도둑 3명/);assert.match(await rules.locator('main').innerText(),/12초/);
+    assert.match(await rules.locator('main').innerText(),/4명, 경찰 1명·도둑 3명/);assert.match(await rules.locator('main').innerText(),/15초/);
     assert.match(await rules.locator('main').innerText(),/5회 체포/);
     await rules.setViewportSize({width:768,height:920});await rules.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'rules.png')});await rules.close();
     await p.locator('#practiceSetup summary').tap();await p.locator('#practiceBtn').tap();
@@ -164,6 +164,17 @@ const server=http.createServer((req,res)=>{
     await p.waitForFunction(()=>!chaseTestCapture.busy());
     await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'jailed.png')});
     assert.equal(await p.evaluate(()=>new Set(captureDrawn).size),3,'surprise, police salute and sheepish prisoner poses all rendered');
+    await p.evaluate(()=>ChaseEngine.command(chaseTestGame,chaseTestGame.players.find(p=>p.team==='police').id,{type:'MOVE',...ChaseWorld.nodes.jail}));
+    await p.waitForFunction(()=>chaseTestGame.players.find(p=>p.id==='me').escapeProtected,null,{timeout:20000});
+    await p.waitForTimeout(3300);
+    assert.equal(await p.locator('#captureText').innerText(),'1 / 5');assert.equal(await p.locator('#missionText').innerText(),'탈출 보호');assert(await p.locator('#dashBtn').isEnabled());
+    assert(await p.evaluate(()=>ChaseWorld.distance(chaseTestGame.players.find(p=>p.team==='police'),ChaseWorld.nodes.jail)<1));
+    await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'escape-protected.png')});
+    await p.keyboard.down('ArrowLeft');
+    await p.waitForFunction(()=>{const p=chaseTestGame.players.find(p=>p.id==='me');return !p.escapeProtected&&p.escapeUntil>chaseTestGame.elapsed;});await p.keyboard.up('ArrowLeft');
+    assert.match(await p.locator('#missionText').innerText(),/탈출 보호 [1-3]초/);
+    await p.waitForFunction(()=>chaseTestGame.players.find(p=>p.id==='me').escapeUntil<=chaseTestGame.elapsed);
+    console.log('PASS fifteen-second release, no stationary jail recapture, visible protection and keyboard escape grace');
     await p.locator('#soundBtn').tap();const mutedSounds=await p.evaluate(()=>captureSounds);
     await p.locator('#viewBtn').tap();await p.waitForTimeout(600);
     await p.evaluate(()=>{

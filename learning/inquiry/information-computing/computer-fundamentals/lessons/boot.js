@@ -34,7 +34,7 @@
     else files.push("foundation-compact.js", letterFile[id[0]] + ".js");
     if (withReview.includes(id)) files.push("reviews/" + id + ".js");
     const editionGroup = {a:"abc",b:"abc",c:"abc",d:"de",e:"de",f:"fg",g:"fg",h:"h",i:"ij",j:"ij"}[id[0]];
-    files.push("shell.js", "../textbook/edition-" + editionGroup + ".js", "../textbook/analogies.js", "../textbook/life-figures.js", "../textbook/edition.js");
+    files.push("shell.js", "../textbook/edition-" + editionGroup + ".js", "../textbook/analogies.js", "../textbook/life-figures.js", "../textbook/teaching-labs.js", "../textbook/investigation.js", "../textbook/edition.js");
 
     // 화면 뼈대를 다 읽은 뒤에 넣는다. 넣은 차례대로 실행된다.
     const load = () => {

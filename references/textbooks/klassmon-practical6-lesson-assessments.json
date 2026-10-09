@@ -1,0 +1,85 @@
+{
+  "book": "실과 6",
+  "publisher": "교학사",
+  "subject": "실과",
+  "grade": 6,
+  "semester": null,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=9c2a88bde6e845a8892d1a436f222c87&grade=6&term=2&subject=SC009",
+  "rows": [
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','99073214d960466d840f2c2f0642acb9');return;",
+      "title": "수행평가 — 5~6차시 / 가정일을 실천해 볼까요?",
+      "unit": "1 가정생활과 진로 설계"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','d5865bef33714113b0cc97faace150c3');return;",
+      "title": "수행평가 — 8~10차시 / 나에 대해 알아볼까요? / 진로 계획을 세우고 직업을 탐색해 볼까요?",
+      "unit": "1 가정생활과 진로 설계"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','5a73dac882bf437c83a631d6c12c91e3');return;",
+      "title": "수행평가 — 7차시 / 농업의 역할은 무엇일까요?",
+      "unit": "2 친환경 농업"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','f3499265908241a694eb5c3c4656e061');return;",
+      "title": "수행평가 — 8차시 / 농업 관련 직업에는 무엇이 있을까요?",
+      "unit": "2 친환경 농업"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','b64452e12a624b878e26dcb3475891d9');return;",
+      "title": "수행평가 — 3~4차시 / 건강과 환경을 고려하여 식품을 선택해 볼까요?",
+      "unit": "3 가정생활의 실천"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','ea1988613c6f4c6982a0a661f75ca396');return;",
+      "title": "수행평가 — 5차시 / 우리나라 밥상 차림을 알아볼까요?",
+      "unit": "3 가정생활의 실천"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','a9fb726f365e442fa4e29bade606916f');return;",
+      "title": "수행평가 — 11~16차시 / 생활용품을 만들어 볼까요?",
+      "unit": "3 가정생활의 실천"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','c742821a7b714fcfa4e2c67a75b17e98');return;",
+      "title": "수행평가 — 1~2차시 / 발명의 의미를 알아볼까요? / 생활 속에서 발명품 사례를 찾아볼까요?",
+      "unit": "4 발명과 지식 재산"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','04e72881620946ed9f10145782b743f2');return;",
+      "title": "수행평가 — 5~7차시 / 기술적 문제 해결 과정을 알아볼까요?",
+      "unit": "4 발명과 지식 재산"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','74f060e0f97f47b18f6d12518eb84d5d');return;",
+      "title": "수행평가 — 2~3차시 / 환경을 고려한 재활용과 재사용 방법은 무엇일까요?",
+      "unit": "5 생활 자원과 지속 가능한 선택"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','09ae33408577438fb005277ba371b0e2');return;",
+      "title": "수행평가 — 5~6차시 / 지속 가능한 의식주 생활을 계획하고 실천해 볼까요?",
+      "unit": "5 생활 자원과 지속 가능한 선택"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','3d879a9a052e4b1389762869cb05f4aa');return;",
+      "title": "수행평가 — 4~6차시 / 인공지능은 무엇이고 어떻게 만들어질까요?",
+      "unit": "6 인공지능과 로봇"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','5c09c4dd3f674b26ab5a7ac9d39d0b15');return;",
+      "title": "수행평가 — 10~11차시 / 로봇은 어떻게 작동할까요?",
+      "unit": "6 인공지능과 로봇"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','cd9bea1773cf4d318d595bbe91778794');return;",
+      "title": "수행평가 — 12차시 / 미래 로봇의 모습을 상상해 볼까요?",
+      "unit": "6 인공지능과 로봇"
+    },
+    {
+      "resourceId": "javascript:loginCheck_chasi('udkDownload','a5a8e19df50e47dfbd9bc4e9bbb4594a');return;",
+      "title": "수행평가 — 14~18차시 / 센서를 장착한 로봇을 만들고 작동해 볼까요?",
+      "unit": "6 인공지능과 로봇"
+    }
+  ]
+}

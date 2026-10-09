@@ -21,7 +21,9 @@ def tables(data):
   for t in root.findall('.//TableBody'):
    cells=[]
    for c in t.findall('./TableRow/TableCell'):
-    cells.append((int(c.get('row')),int(c.get('col')),int(c.get('rowspan')),int(c.get('colspan')),clean(' '.join(''.join(p.itertext()) for p in c.findall('./Paragraph')))))
+    value=clean(' '.join(''.join(p.itertext()) for p in c.findall('./Paragraph')))
+    if not value:value=clean(' '.join(c.itertext()))
+    cells.append((int(c.get('row')),int(c.get('col')),int(c.get('rowspan')),int(c.get('colspan')),value))
    yield cells
  elif data.startswith(b'PK'):
   with zipfile.ZipFile(io.BytesIO(data)) as z:
@@ -45,7 +47,7 @@ def extract(data):
   header={}
   for r,c,rs,cs,v in cells:
    h=re.sub(r'\s+','',v)
-   if h in ('단원','단원명','단원(주제)','관련단원'):header['unit']=(r,c)
+   if h in ('단원','단원명','단원(주제)','관련단원','단원명및성취기준','단원명(평가영역)'):header['unit']=(r,c)
    if h in ('평가요소','평가내용','평가주제','평가명','교육내용'):header['title']=(r,c)
   if not {'unit','title'}<=header.keys():continue
   ur,uc=header['unit'];tr,tc=header['title']

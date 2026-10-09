@@ -1,0 +1,37 @@
+{
+  "publisher": "디딤돌교육",
+  "subject": "수학",
+  "grade": 3,
+  "semester": 2,
+  "url": "https://www.didimdolclass.co.kr/curriculum/curriculum?grade=THIRD&period=SECOND_PERIOD",
+  "resource": "24498",
+  "scope": "name-unit-only",
+  "sourceFileName": "(디딤돌)초등수학_과정_중시_평가_기준안_3-2.hwp",
+  "sha256": "4cb106f2443291631ee0d0ecc0e9ead75d6d313a9e0830d27b8b8ea3ccbac064",
+  "assessments": [
+    {
+      "unit": "1. 곱셈",
+      "title": "4차시: (세 자리 수)×(한 자리 수)를 알아볼까요(3)"
+    },
+    {
+      "unit": "2. 원",
+      "title": "6차시: 여러 가지 크기의 원을 그려 볼까요"
+    },
+    {
+      "unit": "3. 나눗셈",
+      "title": "6차시: 나머지가 있는 나눗셈을 알아볼까요(1)"
+    },
+    {
+      "unit": "4. 들이와 무게",
+      "title": "3차시: 들이의 단위를 알아볼까요"
+    },
+    {
+      "unit": "5. 분수",
+      "title": "7차시: 분모가 같은 분수의 크기를 비교해 볼까요"
+    },
+    {
+      "unit": "6. 그림그래프",
+      "title": "5~6차시: 자료를 조사하여 그림그래프로 나타내어 볼까요"
+    }
+  ]
+}

@@ -6,15 +6,15 @@ const index=context.window.COMPUTER_LESSON_INDEX;
 const data={};for(const group of ["abc","de","fg","h","ij"]){const c={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,course,"textbook/edition-"+group+".js"),"utf8"),c);Object.assign(data,c.window.COMPUTER_EDITION_DATA);}
 assert.equal(index.length,36);assert.equal(Object.keys(data).length,35);
 const plans={
-a02:{click:['[data-a02-run]','[data-a02-presence=hardware]','[data-a02-run]'],observe:'[data-a02-lab]'},
+a02:{click:['[data-study-action=cell-1]','[data-study-action=piano]','[data-study-action=cell-1]','[data-study-action=sound]','[data-study-action=cell-1]'],observe:'.study-workbench .study-status'},
 a03:{click:['[data-a03-device=ipad]','[data-a03-run]','[data-a03-os=ipados]','[data-a03-app=ipad-sketch]','[data-a03-run]'],observe:'[data-a03-preview-title]',expect:'앱 실행 성공'},
 a04:{steps:[['value','[data-a04-slider]','2011'],['click','[data-a04-capture]'],['value','[data-a04-slider]','2014'],['click','[data-a04-capture]']],observe:'[data-a04-status]'},
 a05:{click:['[data-a05-record]','[data-a05-save=a]','[data-a05-rate="8"]','[data-a05-record]','[data-a05-save=b]'],observe:'[data-a05-comparison]',expect:'측정'},
 b01:{click:['#componentTab1','#componentTab3'],observe:'#componentPartPanel',expect:'SSD'},
 b02:{click:['[data-device-choice=tablet]','[data-mobile-part=camera]'],observe:'#editionLab',expect:'카메라'},
 b03:{click:['[data-port-connect]','[data-port-cable-choice=video]','[data-port-connect]'],observe:'[data-port-status]'},
-c01:{click:['[data-relay-permission]','[data-relay-run]'],wait:['[data-request-relay]','data-relay-state','blocked'],observe:'[data-relay-status]',expect:'권한'},
-c02:{click:['[data-os-choice=ios]','[data-os-open-location]'],observe:'#editionLab'},
+c01:{custom:'relay',observe:'[data-relay-status]',expect:'권한'},
+c02:{click:['[data-os-open-location]','[data-os-choice=ios]','[data-os-open-location]'],observe:'#editionLab'},
 c03:{click:['[data-program-action=run]','[data-program-action=new]','[data-program-action=background]'],observe:'[data-program-status]'},
 c04:{click:['[data-permission-toggle]','[data-settings-choice=update]','[data-update-check]'],observe:'[data-update-result]',expect:'확인 완료'},
 d01:{steps:[['type','[data-demo-text]',' 입력 위치 확인']],observe:'[data-demo-text]'},
@@ -22,7 +22,7 @@ d02:{custom:'gesture',click:['[data-gesture-choice=long]'],observe:'[data-gestur
 d03:{click:['[data-select-text=고양이]','[data-clipboard-action=copy]','[data-clipboard-action=paste]'],observe:'#editionLab'},
 e01:{click:['[data-path-choice=user]','[data-path-choice=pictures]','[data-path-choice=trip]','[data-path-choice=file]'],observe:'[data-path-output]',expect:'바다.jpg'},
 e02:{click:['[data-format-action=rename]','[data-format-action=convert]'],observe:'[data-app-result]',expect:'PNG'},
-e03:{click:['[data-file-operation=copy]','[data-file-operation=move]'],observe:'[data-file-operation-status]',expect:'이동'},
+e03:{custom:'files',observe:'.study-workbench .study-status'},
 e04:{click:['[data-reference-action=open]','[data-reference-action=change]','[data-reference-action=open]'],observe:'#editionLab'},
 e05:{click:['[data-storage-mode-choice=sync]','[data-storage-action]','[data-storage-action]','[data-storage-action]'],observe:'[data-storage-status]'},
 f01:{click:['[data-display-mode=same-resolution]','[data-ui-scale-choice="200"]'],observe:'#editionLab'},
@@ -38,7 +38,7 @@ h04:{click:['[data-stack-answer="3"]','[data-stack-start]'],repeat:['[data-stack
 h05:{click:['#transfer-tab-deploy'],repeat:['[data-transfer-panel=deploy] [data-transfer-action]',2],observe:'[data-transfer-panel=deploy]'},
 i01:{steps:[['value','[data-account-name]','student01'],['value','[data-account-secret]','cedar27'],['click','[data-account-next]'],['value','[data-account-code]','482169'],['click','[data-account-next]'],['click','[data-permission-attempt=grades]']],observe:'[data-permission-result]',expect:'거부'},
 i02:{click:['[data-evidence-choice=urgency]','[data-evidence-choice=secret]','[data-evidence-choice=link]','[data-evidence-check]'],observe:'#editionLab'},
-j01:{click:['[data-algo-location=downloads]','[data-file-source]','[data-algo-location=assignment]','[data-algo-move]','[data-algo-verify]'],observe:'[data-algo-status]'},
+j01:{custom:'algorithm',observe:'.study-workbench .study-status'},
 j02:{custom:'robot',observe:'[data-control-score]',expect:'3'},
 j03:{steps:[['click','[data-debug-run]'],['value','[data-debug-code]','/pictures/'],['click','[data-debug-run]'],['click','[data-debug-case=dog]'],['click','[data-debug-case=missing]']],observe:'[data-debug-lab]'}
 };
@@ -50,7 +50,8 @@ let browser;const results=[],failures=[];try{
  page.on("pageerror",e=>errors.push(e.message));page.on("response",r=>{if(r.status()>=400)errors.push(r.status()+" "+r.url());});
  const screenshot=async options=>{for(let attempt=0;;attempt++){try{return await page.screenshot(options);}catch(error){if(attempt>=2)throw error;await new Promise(resolve=>setTimeout(resolve,200));}}};
  const go=async view=>{await page.click('.edition-nav [data-page="'+view+'"]');await page.waitForFunction(v=>!document.getElementById("edition-"+v).hidden,{},view);};
- const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();return;}}throw Error("No enabled visible control: "+selector);};
+ const capture=async()=>{if(await page.$eval('#edition-lab',e=>!e.hidden)){await page.click('#studyCapture');}};
+ const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();if(await handle.evaluate(e=>!!e.closest('#editionLab'))){await new Promise(resolve=>setTimeout(resolve,40));await capture();}return;}}throw Error("No enabled visible control: "+selector);};
  const value=async(selector,text)=>page.$eval(selector,(el,text)=>{el.value=text;el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}));},text);
  const read=selector=>page.$eval(selector,e=>e.value??e.innerText);
  fs.mkdirSync(out,{recursive:true});
@@ -69,20 +70,41 @@ let browser;const results=[],failures=[];try{
   await go("lab");
   await click('[data-question="0"] input[value="0"]');await click('[data-question="0"] .edition-submit');
   assert.match(await read('[data-question="0"] .edition-feedback'),/실습/);
+  assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),'false','정답만 고른 것으로 실습을 통과하지 않는다');
+  await capture();
   const plan=plans[id],before=await read(plan.observe);
   for(const selector of plan.click||[])await click(selector);
   for(const [kind,selector,text] of plan.steps||[]){if(kind==="click")await click(selector);else if(kind==="type"){await page.focus(selector);await page.keyboard.press("End");await page.keyboard.type(text);}else await value(selector,text);}
   if(plan.repeat){for(let i=0;i<plan.repeat[1];i++){const enabled=await page.$eval(plan.repeat[0],e=>!e.disabled);if(!enabled)break;await click(plan.repeat[0]);}}
   if(plan.wait)await page.waitForFunction(([s,a,v])=>document.querySelector(s)?.getAttribute(a)===v,{},plan.wait);
+  if(plan.custom==='relay'){
+   await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='complete');await capture();
+   await click('[data-relay-permission]');await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='blocked');await capture();
+  }
+  if(plan.custom==='files'){
+   await value('#studyFileEditor','봄과 여름 관찰 기록');await click('[data-study-action=save-as]');
+   await page.select('#studyFileDestination','homework');await click('[data-study-action=move]');
+   assert.match(await read('[data-study-folder=documents]'),/봄 관찰 기록/);
+   assert.match(await read('[data-study-folder=homework]'),/봄과 여름 관찰 기록/);
+  }
+  if(plan.custom==='algorithm'){
+   await click('[data-study-action=case-negative]');await click('[data-study-action=run]');
+   assert.match(await read('.study-workbench .study-status'),/목표와 다릅니다/);
+   await page.select('#studyInitial','first');await page.select('#studyEmpty','message');
+   for(const sample of ['positive','negative','equal','single','empty']){await click('[data-study-action=case-'+sample+']');await click('[data-study-action=run]');assert.match(await read('.study-workbench .study-status'),/목표와 일치/);}
+  }
   if(plan.custom==="gesture"){await page.focus("[data-gesture-surface]");await page.keyboard.press("Enter");assert.equal(await page.$eval("[data-gesture-menu]",e=>e.hidden),false);await click("[data-gesture-menu-action=rename]");assert.equal(await page.$eval("[data-gesture-surface]",e=>e.dataset.menuAction),"rename");await page.focus("[data-gesture-menu-action=share]");await page.keyboard.press("Enter");assert.equal(await page.$eval("[data-gesture-surface]",e=>e.dataset.menuAction),"share");await page.focus("[data-gesture-menu-action=rename]");await page.keyboard.press("Enter");}
   if(plan.custom==="binary"){
+   await click('#binaryRecord');await click('[data-binary-bit="0"]');await click('#binaryRecord');
    await page.select("#binaryLength","2");
    for(const sequence of [[],[1],[0],[1]]){for(const bit of sequence)await click('[data-binary-bit="'+bit+'"]');await click("#binaryRecord");}
    assert.equal(await page.$$eval("#binaryRecords li",els=>els.map(x=>x.textContent).join(",")),"00,01,10,11");
    await click("#binaryRecord");assert.equal(await page.$$eval("#binaryRecords li",els=>els.length),4);
   }
-  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false||document.querySelector("[data-control-score]").textContent==="3");}}
+  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false);await capture();}}
+  await capture();
   const after=await read(plan.observe);assert.notEqual(after,before,"real lab observation must change");if(plan.expect)assert.ok(after.includes(plan.expect),"expected "+plan.expect+" in "+after);
+  assert.ok(await page.$$eval('#studyRecords li',els=>els.length>=2),'비교할 서로 다른 결과 두 개 이상 필요');
   if(id==="a03")assert.doesNotMatch(await read("#editionLab"),/API|펌웨어/);
   for(let i=0;i<qlist.length;i++){
    await go(i===0?"lab":i<3?"apply":"check");const selector='[data-question="'+i+'"]';
@@ -142,14 +164,15 @@ assert.equal(await read("#editionProgress"),"0 / 3");
   const status=await page.evaluate(async value=>(await fetch('/api/me/storage/computer-literacy/classj:textbook:e02:v1',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({value})})).status,legacy);
   assert.equal(status,200);
   await page.goto(base+"lessons/?lesson=e02#apply",{waitUntil:"networkidle0"});await page.waitForSelector("#edition");
-  assert.equal(await read("#editionProgress"),"2 / 3");
-  for(const i of [0,1,3,4])assert.equal(await page.$eval('[data-question="'+i+'"]',e=>e.dataset.solved),"true");
+  assert.equal(await read("#editionProgress"),"1 / 3");
+  for(const i of [1,3,4])assert.equal(await page.$eval('[data-question="'+i+'"]',e=>e.dataset.solved),"true");
+  assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),"false","새 실습 해석 문항은 이전 판의 정답을 물려받지 않는다");
   assert.equal(await page.$eval('[data-question="2"]',e=>e.dataset.solved),"false");
   assert.equal(await page.$$eval('[data-question="2"] input:checked',els=>els.length),0);
   await page.waitForFunction(async()=>{const data=await(await fetch('/api/me/storage/computer-literacy')).json();return data.items['classj:textbook:e02:v1']?.answers[2]?.revision===2;},{polling:100,timeout:10000});
   const migrated=(await h.items("computer-literacy"))["classj:textbook:e02:v1"];
   assert.equal(migrated.completed,false);assert.equal(migrated.answers[2].attempts,0);
-  for(const i of [0,1,3,4])assert.equal(migrated.answers[i].attempts,1);
+  for(const i of [1,3,4])assert.equal(migrated.answers[i].attempts,1);
  }
  fs.writeFileSync(path.join(out,selectedIds?"verification-"+selectedIds.join("-")+".json":"verification.json"),JSON.stringify({date:new Date().toISOString(),results,failures,firstLessonRoute:true,storageChecks:true},null,2));
  assert.deepEqual(failures,[]);console.log("Verified "+results.length+" chapters, retained A01 route, and storage recovery.");

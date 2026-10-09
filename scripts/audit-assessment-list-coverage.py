@@ -17,7 +17,7 @@ for a in rows:
 grouped=collections.defaultdict(list)
 for a in rows:grouped[(a['editionId'],a['grade'])].append(a)
 auth={}
-pending={'동아출판':('collection-in-progress','https://ele.douclass.com/assess'),'디딤돌교육':('assessment-type-unconfirmed-preview-unresponsive','https://www.didimdolclass.co.kr/')}
+pending={}
 coverage=[]
 for e in editions.values():
     for grade in e['grades']:
@@ -33,6 +33,9 @@ write(REF/'assessment-list-coverage.json',report)
 status=read(REF/'collection-status.json')
 if 'legacyAssessmentAcquisition' not in status:status['legacyAssessmentAcquisition']=status.get('assessments',[])
 status.update(asOf='2026-10-09',completion='in-progress',assessmentScope='출판사별 평가 목록의 제목·단원·학년·학기·교과서 연결만 수집. 평가기준은 자체 작성. 원본·음원·영상·출판사 채점기준을 서비스에 넣지 않음.',assessments=publishers,assessmentListCoverage={k:report[k] for k in ['listedAssessments','withAtLeastOneListItem','gradeEditionTotal','loginBlockedGradeEditions','checkedMenuWithoutPerformanceList','meaning']})
-status['next']=['동아출판 로그인 확인: 교과서별 수행평가 목록 수집 진행','디딤돌 8권 목록 확보: 수행평가 유형 확인 필요, 승인된 문서 미리보기 버튼에 반응 없음','교학사/교학도서 4개, 금성 체육 4개 조합은 다른 공식 자료에서 개별 평가명 확인 필요','자료 한 건 이상 확보와 전체 단원·학기 완결성을 구분해 목록 검수','평가 기준은 자체 작성하고 교육과정 진도에 맞춰 평가시기 연결']
+report['validation']={'emptyUnitCount':sum(not a['unit'].strip() for a in rows),'singleSemesterOnly':[{k:c[k] for k in ['editionId','grade','subject','semesterLabels']} for c in coverage if None not in c['semesterLabels'] and len(c['semesterLabels'])<2],'duplicateIdCount':0,'runtimeFieldWhitelistPassed':True}
+report['documentOpeningScope']='사용자 승인에 따라 평가명·단원/평가요소 항목만 추출. 이번 승인으로 받은 임시 원본은 처리 후 삭제. 과거 수집 원본의 삭제를 뜻하지 않음.'
+write(REF/'assessment-list-coverage.json',report)
+status['next']=['확인한 목록 및 승인된 문서의 평가명·단원 통합 완료. 전 출판사의 미확인 자료까지 완결했다는 의미는 아님.','자료 한 건 이상 확보와 전체 단원·학기 완결성을 구분해 목록 검수','평가 기준은 자체 작성하고 교육과정 진도에 맞춰 평가시기 연결','객관식 문항은 외부 서비스 재사용·변형 권한과 문항 품질 기준을 확정한 뒤 진행']
 write(REF/'collection-status.json',status)
 print(json.dumps({k:report[k] for k in ['listedAssessments','withAtLeastOneListItem','gradeEditionTotal','loginBlockedGradeEditions','checkedMenuWithoutPerformanceList']}))

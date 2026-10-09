@@ -1,0 +1,21 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-13 6차시.hwp",
+  "sha256": "9df68ebb7d4f9addeea18183ec62cf9bcb9f97b7730517fbb62853547ced8a17",
+  "assessments": [
+    {
+      "unit": "13. 작품과 나누는 대화",
+      "title": "미술 작품을 감상하고 미술 작품이나 미술가에 관한 질문을 만들고 자신의 느낌과 생각을 말할 수 있다."
+    },
+    {
+      "unit": "13. 작품과 나누는 대화",
+      "title": "미술 작품과 미술가에 관해 질문하고 답하는 활동에 관심과 흥미를 갖고 참여할 수 있다."
+    }
+  ]
+}

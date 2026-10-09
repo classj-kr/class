@@ -1,0 +1,17 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-11-5,6지도안.hwp",
+  "sha256": "2296e7decad4560e7825584101665f1d0ec821c60a22ea64dba69e3e9a54179f",
+  "assessments": [
+    {
+      "unit": "11. 빛으로 보는 세상",
+      "title": "빛의 원리를 활용한 작품을 계획하고 과정에 맞게 작품을 표현하고 감상하는 활동에 적극적으로 참여할 수 있다."
+    }
+  ]
+}

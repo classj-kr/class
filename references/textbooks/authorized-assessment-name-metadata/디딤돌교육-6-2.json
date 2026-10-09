@@ -1,0 +1,37 @@
+{
+  "publisher": "디딤돌교육",
+  "subject": "수학",
+  "grade": 6,
+  "semester": 2,
+  "url": "https://www.didimdolclass.co.kr/curriculum/curriculum?grade=SIXTH&period=SECOND_PERIOD",
+  "resource": "33885",
+  "scope": "name-unit-only",
+  "sourceFileName": "(디딤돌)초등수학_과정_중시_평가_기준안_6-2.hwp",
+  "sha256": "28a34e7ff1470128500bedba2309486a62f042c015a272df33f97fce8e70147e",
+  "assessments": [
+    {
+      "unit": "1. 분수의 나눗셈",
+      "title": "7~8차시: (분수)÷(분수)를 (분수)×(분수)로 나타내어 볼까요"
+    },
+    {
+      "unit": "2. 공간과 입체",
+      "title": "7차시: 쌓은 모양과 쌓기나무의 개수를 알아볼까요(3)"
+    },
+    {
+      "unit": "3. 소수의 나눗셈",
+      "title": "3차시: (소수)÷(소수)를 알아볼까요(2)"
+    },
+    {
+      "unit": "4. 비례식과 비례배분",
+      "title": "6차시: 비례식을 활용해 볼까요"
+    },
+    {
+      "unit": "5. 원의 넓이",
+      "title": "6~7차시: 원의 넓이를 구하는 방법을 알아볼까요"
+    },
+    {
+      "unit": "6. 원기둥, 원뿔, 구",
+      "title": "3~4차시: 원기둥의 전개도를 알아볼까요"
+    }
+  ]
+}

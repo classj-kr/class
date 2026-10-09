@@ -1,0 +1,37 @@
+{
+  "publisher": "디딤돌교육",
+  "subject": "수학",
+  "grade": 5,
+  "semester": 2,
+  "url": "https://www.didimdolclass.co.kr/curriculum/curriculum?grade=FIFTH&period=SECOND_PERIOD",
+  "resource": "33867",
+  "scope": "name-unit-only",
+  "sourceFileName": "(디딤돌)초등수학_과정_중시_평가_기준안_5-2.hwp",
+  "sha256": "770aec1930d2e941b3ef92994bdd20fdc59cfeae3c7cb6da200f6ecf3ba75339",
+  "assessments": [
+    {
+      "unit": "1. 수의 범위와 올림, 버림, 반올림",
+      "title": "8차시: 올림, 버림, 반올림을 활용하여 문제를 해결해 볼까요"
+    },
+    {
+      "unit": "2. 분수의 곱셈",
+      "title": "5차시: (자연수)×(분수)를 알아볼까요(2)"
+    },
+    {
+      "unit": "3. 합동과 대칭",
+      "title": "7~8차시: 점대칭도형의 성질을 알아볼까요"
+    },
+    {
+      "unit": "4. 소수의 곱셈",
+      "title": "6차시: (소수)×(소수)를 알아볼까요(1)"
+    },
+    {
+      "unit": "5. 직육면체와 정육면체",
+      "title": "6~7차시: 정육면체의 전개도를 알아볼까요"
+    },
+    {
+      "unit": "6. 평균과 가능성",
+      "title": "7차시: 일이 일어날 가능성을 수로 나타내어 볼까요"
+    }
+  ]
+}

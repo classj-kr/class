@@ -13,6 +13,9 @@ for p in sorted((REF/'kumsung-browser-assessments').glob('*.json')):
     e=matches[0]; count=0
     for a in d['rows']:
         if not re.search(r'수행\s*평가',a['title']) or re.search(r'정답|해설',a['title']):continue
+        if not a['unit'] and subject=='미술':
+            match=re.fullmatch(r'\[수행평가\]\s*'+str(grade)+r'-(\d+\.\s*.+)',a['title'])
+            if match:a={**a,'unit':match[1]}
         key=(e['id'],grade,a['unit'],a['title'])
         if key in rows:continue
         ident='kumsung-list-'+hashlib.sha256(json.dumps(key,ensure_ascii=False).encode()).hexdigest()[:20]

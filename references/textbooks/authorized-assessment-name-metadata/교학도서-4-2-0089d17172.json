@@ -1,0 +1,17 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-11-1,2지도안 (1).hwp",
+  "sha256": "848ba4b46f8a7716f71b455145ef57cd96824f1f7370241d64bc306391e9f6f5",
+  "assessments": [
+    {
+      "unit": "11. 빛으로 보는 세상",
+      "title": "빛과 그림자의 원리를 이해하며 작품에 활용된 빛의 특성과 아름다움을 알고 설명할 수 있다."
+    }
+  ]
+}
