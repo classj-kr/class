@@ -46,7 +46,7 @@
         const sfxScriptUrl = currentScript
             ? new URL("game-sfx.js", currentScript.src)
             : new URL("../../assets/sound/game-sfx.js", location.href);
-        sfxScriptUrl.searchParams.set("v", "20261009-sound-bus");
+        sfxScriptUrl.searchParams.set("v", "20261009-explosion-file");
         sfxScript.src = sfxScriptUrl.href;
         document.head.appendChild(sfxScript);
     }
@@ -283,7 +283,8 @@
         }
         if (!audio || applyingAudioState) return;
         applyingAudioState = true;
-        const targetVolume = musicVolume;
+        const trackGain = Number(audio.dataset.musicGain);
+        const targetVolume = musicVolume * (Number.isFinite(trackGain) && trackGain > 0 && trackGain <= 1 ? trackGain : 1);
         if (Math.abs(audio.volume - targetVolume) > 0.001) audio.volume = targetVolume;
         if (audio.muted !== musicMuted) audio.muted = musicMuted;
         audio.preload = "auto";

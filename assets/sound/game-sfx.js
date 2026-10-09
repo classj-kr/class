@@ -16,7 +16,7 @@
                 select: "click", back: "click", turn: "bell", timeout: "error"
     });
     const scriptUrl = document.currentScript?.src || new URL("/assets/sound/game-sfx.js", window.location.href).href;
-    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => !["click", "capture", "explosion"].includes(name)));
+    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => !["click", "capture"].includes(name)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
         new URL(`sfx/${name}.ogg`, scriptUrl).href
