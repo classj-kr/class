@@ -1008,7 +1008,7 @@ textarea,
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:border-box;padding:8px}
@@ -1225,7 +1225,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
     let blockedPlayersThisBoard = new Set();
     let resultRevealTimer = null;
     let winningScore = 3;
-    let audioCtx = null;
+
     let currentMusicVolume = 0.6;
     let musicStarted = false;
     const backgroundMusicTracks = [
@@ -2042,12 +2042,13 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
 
     // 사운드 이펙트 팩토리
     function initAudio() {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) audioCtx = new AudioContext();
+        window.ClassGameSfx?.unlock();
     }
 
     function playTapSound(selected = true, selectionOrder = 1) {
-        if (!audioCtx) return;
+        const bus = window.ClassGameSfx?.getAudioBus();
+        if (!bus) return;
+        const audioCtx = bus.context;
 
         if (audioCtx.state === "suspended") {
             audioCtx.resume().catch(() => {});
@@ -2069,7 +2070,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         master.gain.exponentialRampToValueAtTime(0.0001, now + (selected ? 0.28 : 0.18));
 
         highPass.connect(master);
-        master.connect(audioCtx.destination);
+        master.connect(bus.output);
 
         [
             { ratio: 1, type: "sine", gain: 1, delay: 0 },
@@ -2095,13 +2096,15 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
     }
 
     function playSuccessSound() {
-        if (!audioCtx) return;
+        const bus = window.ClassGameSfx?.getAudioBus();
+        if (!bus) return;
+        const audioCtx = bus.context;
         let osc1 = audioCtx.createOscillator();
         let osc2 = audioCtx.createOscillator();
         let gain = audioCtx.createGain();
         osc1.connect(gain);
         osc2.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(bus.output);
         osc1.frequency.setValueAtTime(523.25, audioCtx.currentTime); // Do
         osc2.frequency.setValueAtTime(659.25, audioCtx.currentTime); // Mi
         gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
@@ -2111,11 +2114,13 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
     }
 
     function playFailSound() {
-        if (!audioCtx) return;
+        const bus = window.ClassGameSfx?.getAudioBus();
+        if (!bus) return;
+        const audioCtx = bus.context;
         let osc = audioCtx.createOscillator();
         let gain = audioCtx.createGain();
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(bus.output);
         osc.frequency.setValueAtTime(120, audioCtx.currentTime);
         gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);

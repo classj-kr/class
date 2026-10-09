@@ -785,7 +785,7 @@ body{justify-content:flex-start;padding:8px}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
 <script src="../../../assets/network/finisher-board.js"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 /* Keep the original controls-above-towers layout; do not stretch the poles. */
@@ -1006,7 +1006,9 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
     }
 
     function playSound(diskSize) {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const bus = window.ClassGameSfx?.getAudioBus();
+        if (!bus) return;
+        const audioCtx = bus.context;
         const scale = [523.25, 493.88, 440.00, 392.00, 349.23, 329.63, 293.66, 261.63]; 
         const targetFreq = scale[(diskSize - 1) % 8] || 330;
 
@@ -1022,8 +1024,8 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
 
         bodyOsc.connect(bodyGain);
         strikeOsc.connect(strikeGain);
-        bodyGain.connect(audioCtx.destination);
-        strikeGain.connect(audioCtx.destination);
+        bodyGain.connect(bus.output);
+        strikeGain.connect(bus.output);
 
         const now = audioCtx.currentTime;
         bodyGain.gain.setValueAtTime(0, now);

@@ -129,7 +129,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 #gameScreen{height:100dvh;min-height:0;padding:8px}
@@ -275,29 +275,17 @@ const FRUIT_SFX={
  start:["/learning/games/fruitbell/assets/sound/sfx/round-start.ogg"],
  finish:["/learning/games/fruitbell/assets/sound/sfx/match-finish.ogg"]
 };
-const fruitSfxTemplates=new Map();
 const lastSfxVariant=new Map();
 
-function preloadFruitSfx(){
- Object.values(FRUIT_SFX).flat().forEach(src=>{
-   if(fruitSfxTemplates.has(src))return;
-   const audio=new Audio(src);
-   audio.preload="auto";
-   fruitSfxTemplates.set(src,audio);
- });
-}
 function playFruitSfx(name,{delay=0,gain=1}={}){
  const sources=FRUIT_SFX[name];
- if(!sources?.length||musicMuted)return;
+ if(!sources?.length)return;
  const play=()=>{
    let index=Math.floor(Math.random()*sources.length);
    if(sources.length>1&&index===lastSfxVariant.get(name))index=(index+1)%sources.length;
    lastSfxVariant.set(name,index);
-   const template=fruitSfxTemplates.get(sources[index])||new Audio(sources[index]);
-   fruitSfxTemplates.set(sources[index],template);
-   const sound=template.cloneNode(true);
-   sound.volume=Math.min(1,(musicLevel/5)*gain);
-   sound.play().catch(()=>{});
+   // Vorbis decoding peaks reach 1.18; leave headroom even at maximum volume.
+   window.ClassGameSfx?.playFile(sources[index],{gain:gain*.8});
  };
  if(delay>0)setTimeout(play,delay);else play();
 }
@@ -385,7 +373,6 @@ async function startMusic(){
    musicStarted=true;
    musicMuted=false;
    localStorage.setItem(MUSIC_MUTED_KEY,"false");
-   window.ClassGameSfx?.setMuted(false);
  }catch(e){}
  renderMusicControls();
 }
@@ -394,8 +381,6 @@ function setMusicLevel(level){
  musicMuted=false;
  localStorage.setItem(MUSIC_VOLUME_KEY,String(musicLevel));
  localStorage.setItem(MUSIC_MUTED_KEY,"false");
- window.ClassGameSfx?.setMuted(false);
- window.ClassGameSfx?.setVolume(musicLevel/5);
  if(bgm){
    bgm.volume=musicLevel/5;
    bgm.muted=false;
@@ -410,7 +395,6 @@ function toggleMusic(){
    bgm.pause();
    musicMuted=true;
    localStorage.setItem(MUSIC_MUTED_KEY,"true");
-   window.ClassGameSfx?.setMuted(true);
    renderMusicControls();
  }
 }
@@ -428,10 +412,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 document.addEventListener("pointerdown",()=>{
  if(!musicMuted&&!musicStarted)startMusic();
 },{once:true});
-window.addEventListener("classsfxready",()=>{
- window.ClassGameSfx?.setMuted(musicMuted);
- window.ClassGameSfx?.setVolume(musicLevel/5);
-});
+
 
 function setGameMode(mode){
  if(myRole!=="host"||started)return;

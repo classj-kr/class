@@ -982,7 +982,7 @@ body{align-items:center;padding:18px}
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game-screen:not(.hidden)){padding:8px;box-sizing:border-box;height:100dvh;min-height:0}
@@ -1227,7 +1227,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
     let toastTimer = null;
     let currentMusicVolume = 0.6;
     let musicStarted = false;
-    let effectAudioContext = null;
+
     const savedPlayerName = ((window.CLASS_PLAYER_NAME || "") || "").trim();
     const playerName = /^[가-힣]{2,6}$/.test(savedPlayerName) ? savedPlayerName : "";
 
@@ -1532,24 +1532,10 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
         });
     }
 
-    function getEffectAudioContext() {
-        if (!effectAudioContext) {
-            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-            if (AudioContextClass) {
-                effectAudioContext = new AudioContextClass();
-            }
-        }
-
-        if (effectAudioContext && effectAudioContext.state === "suspended") {
-            effectAudioContext.resume();
-        }
-
-        return effectAudioContext;
-    }
-
     function playCrystalTone(frequency, duration, delay = 0, volume = 0.055) {
-        const context = getEffectAudioContext();
-        if (!context) return;
+        const bus = window.ClassGameSfx?.getAudioBus();
+        if (!bus) return;
+        const context = bus.context;
 
         const oscillator = context.createOscillator();
         const gain = context.createGain();
@@ -1569,7 +1555,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
 
         oscillator.connect(filter);
         filter.connect(gain);
-        gain.connect(context.destination);
+        gain.connect(bus.output);
 
         oscillator.start(startTime);
         oscillator.stop(startTime + duration + 0.03);

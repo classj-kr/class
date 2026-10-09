@@ -10,13 +10,13 @@
     const DEFAULT_VOLUME = 0.65;
     const SOUND_NAMES = new Set([
         "click", "select", "back", "bell", "card", "stone", "success",
-        "error", "tick", "turn", "timeout", "capture"
+        "error", "tick", "turn", "timeout", "capture", "explosion"
     ]);
     const SYNTH_FALLBACKS = Object.freeze({
                 select: "click", back: "click", turn: "bell", timeout: "error"
     });
     const scriptUrl = document.currentScript?.src || new URL("/assets/sound/game-sfx.js", window.location.href).href;
-    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => name !== "click" && name !== "capture"));
+    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => !["click", "capture", "explosion"].includes(name)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
         new URL(`sfx/${name}.ogg`, scriptUrl).href
@@ -28,7 +28,8 @@
     const fileTemplates = new Map();
     const failedFiles = new Set();
     const activeFiles = new Set();
-    let muted = readStored(SFX_MUTED_KEY) === "1";
+    const fileGains = new WeakMap();
+    let muted = ["1", "true"].includes(readStored(SFX_MUTED_KEY));
     let volume = readInitialVolume();
     let lastInteractionAt = 0;
     let semanticSuppressedUntil = 0;
@@ -52,8 +53,9 @@
     }
 
     function readInitialVolume() {
-        const storedSfxVal = Number(readStored(SFX_VOLUME_KEY));
-        if (Number.isFinite(storedSfxVal) && storedSfxVal > 0 && storedSfxVal <= 1) {
+        const storedValue = readStored(SFX_VOLUME_KEY);
+        const storedSfxVal = Number(storedValue);
+        if (storedValue !== "" && Number.isFinite(storedSfxVal) && storedSfxVal >= 0 && storedSfxVal <= 1) {
             return storedSfxVal;
         }
         const storedSfx = readStored(SFX_LEVEL_KEY);
@@ -74,6 +76,7 @@
 
             const compressor = context.createDynamicsCompressor();
             output = context.createGain();
+            output.gain.value = muted ? 0 : volume;
             compressor.threshold.value = -16;
             compressor.knee.value = 8;
             compressor.ratio.value = 5;
@@ -89,7 +92,7 @@
 
     function updateOutputGain() {
         if (!output || !context) return;
-        const target = muted ? 0.0001 : Math.max(0.0001, Math.min(1, volume));
+        const target = muted ? 0 : volume;
         output.gain.cancelScheduledValues(context.currentTime);
         output.gain.setTargetAtTime(target, context.currentTime, 0.008);
     }
@@ -221,6 +224,30 @@
         tone(ctx, { start: now + 0.065, from: 1560, to: 1170, duration: 0.18, gain: 0.09 });
     }
 
+    // Brief impact, broad debris and a low rumble; no pitched sawtooth buzz.
+    function playExplosion(ctx) {
+        const now = ctx.currentTime;
+        const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * 0.95), ctx.sampleRate);
+        const samples = buffer.getChannelData(0);
+        for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+        for (const [from, to, duration, peak] of [[3600, 650, 0.24, 0.65], [480, 85, 0.88, 0.9]]) {
+            const source = ctx.createBufferSource();
+            const filter = ctx.createBiquadFilter();
+            const gain = makeGain(ctx, now, peak, 0.0001, duration);
+            source.buffer = buffer;
+            filter.type = "lowpass";
+            filter.Q.value = 0.55;
+            filter.frequency.setValueAtTime(from, now);
+            filter.frequency.exponentialRampToValueAtTime(to, now + duration);
+            source.connect(filter);
+            filter.connect(gain);
+            source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
+            source.start(now);
+            source.stop(now + duration + 0.01);
+        }
+        tone(ctx, { start: now, from: 95, to: 38, duration: 0.38, gain: 0.45, type: "sine" });
+    }
+
     function playSuccess(ctx) {
         const now = ctx.currentTime;
         [659.25, 830.61, 987.77].forEach((frequency, index) => {
@@ -252,6 +279,7 @@
         card: playCard,
         stone: playStone,
         capture: playCapture,
+        explosion: playExplosion,
         success: playSuccess,
         error: playError,
         tick: playTick
@@ -268,31 +296,46 @@
     }
 
     function playSynth(name) {
-        if (muted) return false;
+        if (muted || volume === 0) return false;
         const ctx = ensureContext();
         if (!ctx || !output) return false;
         players[SYNTH_FALLBACKS[name] || name](ctx);
         return true;
     }
 
-    function play(name = "click") {
-        const soundName = SOUND_NAMES.has(name) ? name : "click";
-        if (muted) return false;
-        if (soundName === "click") return playSynth(soundName);
-        if (soundName === "capture") return playSynth(soundName);
-        const template = getFileTemplate(soundName);
-        if (!template) return playSynth(soundName);
+    function playTemplate(template, gain = 1, onError = () => {}) {
         const audio = template.cloneNode();
-        audio.volume = volume;
+        const scale = Number.isFinite(gain) ? Math.max(0, Math.min(1, gain)) : 1;
+        fileGains.set(audio, scale);
+        audio.volume = volume * scale;
         activeFiles.add(audio);
         const clear = () => activeFiles.delete(audio);
         audio.addEventListener("ended", clear, { once: true });
-        audio.play().catch(() => {
+        audio.play().catch(error => {
             clear();
+            // Pausing during load and autoplay policy are not broken sound files.
+            if (error?.name === "AbortError" || error?.name === "NotAllowedError") return;
+            onError();
+        });
+        return true;
+    }
+
+    function play(name = "click") {
+        const soundName = SOUND_NAMES.has(name) ? name : "click";
+        if (muted || volume === 0) return false;
+        if (!FILE_SOUND_NAMES.has(soundName)) return playSynth(soundName);
+        const template = getFileTemplate(soundName);
+        if (!template) return playSynth(soundName);
+        return playTemplate(template, 1, () => {
             failedFiles.add(soundName);
             playSynth(soundName);
         });
-        return true;
+    }
+
+    function playFile(src, { gain = 1 } = {}) {
+        if (muted || volume === 0 || typeof Audio === "undefined") return false;
+        if (!fileTemplates.has(src)) fileTemplates.set(src, new Audio(src));
+        return playTemplate(fileTemplates.get(src), gain);
     }
 
     function unlock() {
@@ -311,7 +354,7 @@
     function setVolume(nextVolume) {
         const parsed = Number(nextVolume);
         if (Number.isFinite(parsed)) volume = Math.max(0, Math.min(1, parsed));
-        activeFiles.forEach(audio => { audio.volume = volume; });
+        activeFiles.forEach(audio => { audio.volume = volume * (fileGains.get(audio) ?? 1); });
         updateOutputGain();
     }
 
@@ -459,6 +502,13 @@
 
     window.ClassGameSfx = {
         play,
+        playFile,
+        // Custom game timbres share the same context, volume and mute envelope.
+        getAudioBus: () => {
+            if (muted || volume === 0) return null;
+            const ctx = ensureContext();
+            return ctx ? { context: ctx, output } : null;
+        },
         unlock,
         setMuted,
         setVolume,
