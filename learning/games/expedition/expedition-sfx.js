@@ -1,38 +1,16 @@
 (() => {
     "use strict";
 
-    // 공용 game-sfx.js 는 버튼 클릭음 모음이라 바위가 무너지는 소리가 없다.
-    // 여기서는 탐사대에서 실제로 벌어지는 일에 맞춰 직접 합성한다.
-    // 음량·음소거는 사이트 공용 설정을 그대로 따른다.
-    const SFX_VOLUME_KEY = "classSfxVolumeValue";
-    const SFX_LEVEL_KEY = "classSfxVolumeLevel";
-    const SFX_MUTED_KEY = "classSfxMuted";
-    const DEFAULT_VOLUME = 0.6;
-
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) return;
-
+    // 탐사 효과는 직접 합성하되 출력과 실시간 음소거는 공용 효과음 버스를 쓴다.
     let ctx = null;
     let master = null;
     let noiseBuffer = null;
 
-    function currentVolume() {
-        if (["1", "true"].includes(localStorage.getItem(SFX_MUTED_KEY))) return 0;
-        const stored = Number(localStorage.getItem(SFX_VOLUME_KEY));
-        if (Number.isFinite(stored) && stored > 0 && stored <= 1) return stored;
-        const level = Number(localStorage.getItem(SFX_LEVEL_KEY));
-        if (Number.isInteger(level) && level >= 1 && level <= 5) return level / 5;
-        return DEFAULT_VOLUME;
-    }
-
     function ensure() {
-        if (!ctx) {
-            try { ctx = new AudioContextClass(); } catch (_) { return null; }
-            master = ctx.createGain();
-            master.connect(ctx.destination);
-        }
-        if (ctx.state === "suspended") ctx.resume().catch(() => {});
-        master.gain.setValueAtTime(currentVolume(), ctx.currentTime);
+        const bus = window.ClassGameSfx?.getAudioBus();
+        if (!bus) return null;
+        ctx = bus.context;
+        master = bus.output;
         return ctx;
     }
 
@@ -157,7 +135,6 @@
     function play(name) {
         const recipe = RECIPES[name];
         if (!recipe) return false;
-        if (currentVolume() <= 0) return false;
         if (!ensure()) return false;
         try { recipe(ctx.currentTime + 0.005); } catch (_) { return false; }
         return true;

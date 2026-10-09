@@ -46,7 +46,7 @@
         const sfxScriptUrl = currentScript
             ? new URL("game-sfx.js", currentScript.src)
             : new URL("../../assets/sound/game-sfx.js", location.href);
-        sfxScriptUrl.searchParams.set("v", "20261006-capture");
+        sfxScriptUrl.searchParams.set("v", "20261009-sound-bus");
         sfxScript.src = sfxScriptUrl.href;
         document.head.appendChild(sfxScript);
     }
@@ -88,8 +88,9 @@
 
     // Load SFX State
     const savedSfxLevel = Number(soundStorage.getItem(SFX_LEVEL_KEY));
-    const savedSfxVolume = Number(soundStorage.getItem(SFX_VOLUME_KEY));
-    let sfxVolume = Number.isFinite(savedSfxVolume) && savedSfxVolume > 0 && savedSfxVolume <= 1
+    const savedSfxRaw = soundStorage.getItem(SFX_VOLUME_KEY);
+    const savedSfxVolume = Number(savedSfxRaw);
+    let sfxVolume = savedSfxRaw !== null && savedSfxRaw !== "" && Number.isFinite(savedSfxVolume) && savedSfxVolume >= 0 && savedSfxVolume <= 1
         ? savedSfxVolume
         : (Number.isInteger(savedSfxLevel) && savedSfxLevel >= 1 && savedSfxLevel <= 5
             ? savedSfxLevel / 5
@@ -239,8 +240,9 @@
         musicMuted = reloadedMusicMuted === null ? DEFAULT_MUSIC_MUTED : ["1", "true"].includes(reloadedMusicMuted);
 
         const storedSfxLevel = Number(soundStorage.getItem(SFX_LEVEL_KEY));
-        const storedSfxVolume = Number(soundStorage.getItem(SFX_VOLUME_KEY));
-        if (Number.isFinite(storedSfxVolume) && storedSfxVolume > 0 && storedSfxVolume <= 1) {
+        const storedSfxRaw = soundStorage.getItem(SFX_VOLUME_KEY);
+        const storedSfxVolume = Number(storedSfxRaw);
+        if (storedSfxRaw !== null && storedSfxRaw !== "" && Number.isFinite(storedSfxVolume) && storedSfxVolume >= 0 && storedSfxVolume <= 1) {
             sfxVolume = storedSfxVolume;
             sfxLevel = Math.max(1, Math.round(sfxVolume * 5));
         } else if (Number.isInteger(storedSfxLevel) && storedSfxLevel >= 1 && storedSfxLevel <= 5) {
