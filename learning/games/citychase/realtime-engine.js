@@ -9,7 +9,7 @@
   function event(g,text,team=null,detail={}){g.events.push({id:++g.eventId,text,team,time:g.elapsed,...detail});g.events=g.events.slice(-20);}
   function create(roster,random=Math.random){
     if(roster.length!==4)throw new Error('4명이 모이면 시작할 수 있습니다.');
-    const g={elapsed:0,phase:'playing',paused:false,score:0,captures:0,winner:null,endReason:null,players:[],targets:shuffle(W.shops.map(s=>s.id),random).slice(0,GOAL),shared:[],pings:[],events:[],eventId:0,botClock:0};
+    const g={elapsed:0,phase:'setup',paused:false,score:0,captures:0,winner:null,endReason:null,players:[],targets:[],shared:[],pings:[],events:[],eventId:0,botClock:0};
     g.players=roster.map((p,i)=>{const team=p.team||(i===1?'police':'thief'),base=W.nodes[team==='thief'?'hideout':'jail'];return{id:String(p.id),name:String(p.name||'참가자').slice(0,20),avatarKey:p.avatarKey||'',team,bot:!!p.bot,x:base.x,y:base.y,path:[],carrying:false,jailedUntil:0,immuneUntil:5,escapeProtected:false,escapeUntil:0,escapeGrace:0,dashUntil:0,dashReady:0,task:null,lastCommand:-1};});
     const sizes=teamSizes();
     if(g.players.filter(p=>p.team==='thief').length!==sizes.thief||g.players.filter(p=>p.team==='police').length!==sizes.police)throw new Error(`경찰 ${sizes.police}명·도둑 ${sizes.thief}명으로 시작합니다.`);
@@ -17,10 +17,12 @@
       const peers=g.players.filter(p=>p.team===team),base=W.nodes[team==='thief'?'hideout':'jail'],exit=W.nodes[team==='thief'?'s0':'g'];
       peers.forEach((p,i)=>{let remaining=i*58,from=base;for(const to of W.path(base,exit).slice(1)){const length=W.distance(from,to);if(remaining<=length){p.x=from.x+(to.x-from.x)*remaining/length;p.y=from.y+(to.y-from.y)*remaining/length;break;}remaining-=length;from=to;}});
     }
-    event(g,'추격전 시작!');return g;
+    const police=g.players.find(p=>p.team==='police');
+    if(police.bot)command(g,police.id,{type:'PLACE_GEMS',shops:shuffle(W.shops.map(s=>s.id),random).slice(0,GOAL)});
+    return g;
   }
   function clues(g,p){
-    if(g.score>=GOAL)return[];
+    if(g.phase==='setup'||g.score>=GOAL)return[];
     const target=g.targets[g.score],others=W.shops.map(s=>s.id).filter(id=>id!==target),offset=g.score%others.length;
     const ordered=others.slice(offset).concat(others.slice(0,offset));
     const groups=[[target,...ordered.slice(0,2)],[target,...ordered.slice(2,4)]];
@@ -37,10 +39,15 @@
   function command(g,id,message){
     const p=g.players.find(p=>p.id===id);if(!p||!message)return false;
     if(message.type==='STOP'){stop(p);return true;}
+    if(message.type==='PLACE_GEMS'){
+      const shops=message.shops;
+      if(g.phase!=='setup'||g.paused||p.team!=='police'||!Array.isArray(shops)||shops.length!==GOAL||new Set(shops).size!==GOAL||!shops.every(id=>W.shops.some(s=>s.id===id)))return false;
+      g.targets=[...shops];g.phase='playing';event(g,'추격전 시작!',null,{type:'start'});return true;
+    }
     if(g.phase!=='playing'||g.paused)return false;
     if(message.type==='SHARE'){
       let changed=false;for(const clue of clues(g,p))if(!g.shared.some(c=>c.key===clue.key&&c.team===p.team)){g.shared.push({...clue,team:p.team,by:p.name});changed=true;}
-      if(changed)event(g,`${p.name}님이 단서를 공유했습니다.`,p.team);return changed;
+      if(changed)event(g,`${p.name}님이 단서를 공유했습니다.`,p.team,{type:'share',playerId:p.id});return changed;
     }
     if(p.jailedUntil>g.elapsed)return false;
     if(message.type==='STEER'){
@@ -73,7 +80,7 @@
   }
   function advancePlayer(g,p,dt){
     if(p.jailedUntil>g.elapsed)return;
-    if(p.jailedUntil){release(g,p,3);event(g,`${p.name}님이 구금 구역에서 탈출했습니다.`);}
+    if(p.jailedUntil){release(g,p,3);event(g,`${p.name}님이 구금 구역에서 탈출했습니다.`,null,{type:'release',playerId:p.id});}
     let budget=(p.carrying?SPEED.carrying:SPEED[p.team])*(g.elapsed<p.dashUntil?1.7:1)*dt;
     if(p.steering?.until<=g.elapsed)stop(p);
     if(p.steering){S.advance(p,p.steering.nav,p.steering,budget);budget=0;}
@@ -85,12 +92,12 @@
     if(!p.task)return;p.task.progress+=dt;if(p.task.progress<p.task.duration)return;
     const task=p.task;p.task=null;
     if(task.type==='search'){
-      if(task.id===g.targets[g.score]&&!g.players.some(x=>x.carrying)){p.carrying=true;event(g,`${p.name}님이 보석을 찾았습니다! 비밀기지로 운반하세요.`);}
+      if(task.id===g.targets[g.score]&&!g.players.some(x=>x.carrying)){p.carrying=true;event(g,`${p.name}님이 보석을 찾았습니다! 비밀기지로 운반하세요.`,null,{type:'gemFound',playerId:p.id});}
       else event(g,`${W.shops.find(s=>s.id===task.id).name} 수색 완료 · 보석이 없습니다.`,p.team,{type:task.id!==g.targets[g.score]?'emptySearch':'search',shopId:task.id,round:g.score});
-    }else if(task.type==='bank'&&p.carrying){p.carrying=false;g.score++;g.shared=[];event(g,`보석 ${g.score}/${GOAL}개 확보! ${g.score<GOAL?'새 단서를 나눠 받았습니다.':''}`);if(g.score===GOAL){g.phase='ended';g.winner='thief';g.endReason='gems';}}
+    }else if(task.type==='bank'&&p.carrying){p.carrying=false;g.score++;g.shared=[];event(g,`보석 ${g.score}/${GOAL}개 확보! ${g.score<GOAL?'새 단서를 나눠 받았습니다.':''}`,null,{type:'bank',playerId:p.id});if(g.score===GOAL){g.phase='ended';g.winner='thief';g.endReason='gems';}}
     else if(task.type==='rescue'){
       for(const friend of g.players.filter(x=>x.team==='thief'&&x.jailedUntil>g.elapsed)){release(g,friend,5);move(g,friend,W.nodes.f);}
-      event(g,`${p.name}님이 갇힌 동료를 구출했습니다!`);
+      event(g,`${p.name}님이 갇힌 동료를 구출했습니다!`,null,{type:'rescue',playerId:p.id});
     }
   }
   function knownShops(g,p){

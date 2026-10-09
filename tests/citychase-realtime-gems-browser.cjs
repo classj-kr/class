@@ -25,6 +25,10 @@ fs.mkdirSync(out,{recursive:true});
     const code=(await host.locator('#roomCode').innerText()).trim();
     for(const p of pages.slice(1)){await p.locator('#joinCode').fill(code);await p.locator('#joinBtn').tap();}
     await host.waitForFunction(()=>!document.querySelector('#startBtn').disabled);await host.locator('#startBtn').tap();
+    await cop.locator('#placementPanel:not(.hidden)').waitFor();
+    for(const id of ['star','ediya','twosome'])await cop.locator(`#placementShops [data-shop="${id}"]`).tap();
+    await cop.locator('#placementConfirm').tap();
+    for(const p of pages)await p.waitForFunction(()=>gemAuditView?.phase==='playing');
     for(const p of pages){await p.waitForFunction(()=>window.gemAuditView?.players.length===4);await p.locator('#viewBtn').tap();}
     const ids=await Promise.all(pages.map(p=>p.evaluate(()=>gemAuditId)));
     const world=await host.evaluate(()=>({shops:ChaseWorld.shops,hideout:ChaseWorld.nodes.hideout,park:ChaseWorld.nodes.c}));
@@ -63,7 +67,7 @@ fs.mkdirSync(out,{recursive:true});
       assert.match(await p.locator('#interactBtn').innerText(),/수색.*%/);
       await p.waitForFunction(()=>!gemAuditView.players.find(p=>p.id===gemAuditId).task);
     }
-    const first=await target(),wrong=world.shops.find(s=>s.id!==first.id);
+    const first=await target(),wrong=world.shops.find(s=>s.id!==first.id);assert.equal(first.id,'star','clues lead to the police-selected first shop');
     assert.equal(await scout.locator('#interactBtn').isEnabled(),false,'search unavailable away from a door');
     await visit(scout,wrong);await search(scout);
     assert.equal((await state()).players.find(p=>p.id===ids[2]).carrying,false);
@@ -102,7 +106,7 @@ fs.mkdirSync(out,{recursive:true});
     console.log('PASS returning along roads and stopping in the hideout banks the recovered gem once');
 
     for(let score=1;score<3;score++){
-      const shop=await target();await visit(host,shop);await search(host);await sync({score,carrier:ids[0]});
+      const shop=await target();assert.equal(shop.id,['star','ediya','twosome'][score],'the police-selected order is preserved');await visit(host,shop);await search(host);await sync({score,carrier:ids[0]});
       await tapPoint(host,world.hideout);await sync({score:score+1});
       console.log('PASS gem',score+1,'new shared clues, travel, search, carry and bank');
     }

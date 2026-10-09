@@ -37,7 +37,7 @@
             h02:()=>Number(value('[data-request-lab]','requestStage'))>0,
             h04:()=>Number(value('[data-stack-lab]','stage'))>0,
             h05:()=>['public','student'].includes(value('[data-transfer-panel="deploy"]','transferStage')),
-            j02:()=>!!lab.querySelector('[data-loop-trace] [data-trace-state]')&&!lab.querySelector('[data-control-robot]')?.disabled,
+            j02:()=>!!lab.querySelector('[data-loop-trace] [data-trace-state]')&&(!lab.querySelector('[data-control-robot]')?.disabled||lab.querySelector('[data-control-score]')?.textContent==='3'),
             j03:()=>['error','retested','success'].includes(value('[data-debug-lab]','debugStage'))
         };
         return !rules[id]||rules[id]();

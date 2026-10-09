@@ -101,7 +101,7 @@ let browser;const results=[],failures=[];try{
    assert.equal(await page.$$eval("#binaryRecords li",els=>els.map(x=>x.textContent).join(",")),"00,01,10,11");
    await click("#binaryRecord");assert.equal(await page.$$eval("#binaryRecords li",els=>els.length),4);
   }
-  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false);await capture();}}
+  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false||document.querySelector('[data-control-score]').textContent==='3');await capture();}}
   await capture();
   const after=await read(plan.observe);assert.notEqual(after,before,"real lab observation must change");if(plan.expect)assert.ok(after.includes(plan.expect),"expected "+plan.expect+" in "+after);
   assert.ok(await page.$$eval('#studyRecords li',els=>els.length>=2),'비교할 서로 다른 결과 두 개 이상 필요');
