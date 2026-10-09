@@ -1,5 +1,5 @@
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path"),http=require("node:http"),vm=require("node:vm"),pp=require("puppeteer-core");
-const root=path.resolve(__dirname,".."),course="learning/inquiry/information-computing/computer-fundamentals",out=path.join(root,"docs/computer-edition");
+const root=path.resolve(__dirname,".."),course="learning/inquiry/information-computing/computer-fundamentals",out=path.resolve(root,process.env.EDITION_OUTPUT||"docs/computer-edition");
 const { startHarness } = require("./site-storage-harness.cjs");
 const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,course,"lessons/index-data.js"),"utf8"),context);
 const index=context.window.COMPUTER_LESSON_INDEX;
@@ -61,6 +61,11 @@ let browser;const results=[],failures=[];try{
   assert.equal(await read("#editionProgress"),"0 / 3");
   const qlist=[data[id].labCheck,...data[id].apply.fields,...data[id].checks];
   for(const q of qlist){assert.ok(q.options.length>=2);assert.equal(new Set(q.options.map(x=>x[0])).size,q.options.length);assert.ok(q.options.every(x=>x[0]&&x[1]));}
+  await go("apply");
+  assert.equal(await page.$$("#edition-apply .edition-evidence").then(rows=>rows.length),data[id].apply.rows.length?1:0,"선택지를 옮긴 뒤에는 빈 상황 표를 남기지 않는다");
+  const optionTexts=await page.$$eval("#edition-apply .edition-option span",els=>els.map(el=>el.textContent));
+  assert.ok(optionTexts.every(text=>!/^[A-Z]$/.test(text)),"선택지에는 기호만 표시하지 않는다");
+  assert.deepEqual([...optionTexts].sort(),Array.from(data[id].apply.fields,q=>Array.from(q.options,o=>o[0])).flat().sort(),"섞인 선지에서도 내용이 빠지지 않는다");
   await go("lab");
   await click('[data-question="0"] input[value="0"]');await click('[data-question="0"] .edition-submit');
   assert.match(await read('[data-question="0"] .edition-feedback'),/실습/);
@@ -99,6 +104,7 @@ let browser;const results=[],failures=[];try{
     record.layouts.push({view,...layout});if(id==="j02"&&view==="lab")assert.equal(await page.$eval(".program-flow .flow-branch",e=>getComputedStyle(e).transform),"none","branch text stays upright");assert.ok(layout.scrollWidth<=width+1,"overflow "+width+" "+view);
     if(width===1440&&view==="read"){await screenshot({path:path.join(out,id+"-read-1440.png"),fullPage:true});assert.ok(layout.top<160,"compact header");}
     if(width===390&&view==="lab")await screenshot({path:path.join(out,id+"-lab-390.png"),fullPage:true});
+    if((width===1440||width===390)&&view==="apply")await screenshot({path:path.join(out,id+"-apply-"+width+".png"),fullPage:true});
    }
   }
   await page.setViewport({width:1440,height:1000});
@@ -130,6 +136,21 @@ assert.equal(await read("#editionProgress"),"0 / 3");
  // 로그인하지 않은(게스트) 창: 읽기와 답하기는 되고, 어디에도 기록이 남지 않는다.
  const guestContext=await browser.createBrowserContext();const blocked=await guestContext.newPage();
  await blocked.goto(base+"lessons/?lesson=a02",{waitUntil:"networkidle0"});await blocked.waitForSelector("#edition");await blocked.click('.edition-nav [data-page="check"]');await blocked.waitForFunction(()=>!document.querySelector("#edition-check").hidden);await blocked.click('[data-question="3"] input[value="0"]');await blocked.click('[data-question="3"] .edition-submit');assert.equal(await blocked.$eval('[data-question="3"]',e=>e.dataset.solved),"true");assert.equal(await blocked.$eval(".edition-save-note",e=>e.hidden),false);assert.deepEqual(await blocked.evaluate(()=>Object.keys(localStorage).filter(k=>/computer-literacy|classj:textbook/.test(k))),[]);await guestContext.close();
+ // 새 개념을 묻는 문항은 예전 정답 기록으로 풀린 상태가 되면 안 된다. 나머지 기록은 보존한다.
+ if(entries.some(entry=>entry.id==="e02")&&!failures.length){
+  const legacy={version:1,labUsed:true,completed:true,answers:Array.from({length:5},()=>({selected:0,attempts:1,solved:true,firstCorrect:true}))};
+  const status=await page.evaluate(async value=>(await fetch('/api/me/storage/computer-literacy/classj:textbook:e02:v1',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({value})})).status,legacy);
+  assert.equal(status,200);
+  await page.goto(base+"lessons/?lesson=e02#apply",{waitUntil:"networkidle0"});await page.waitForSelector("#edition");
+  assert.equal(await read("#editionProgress"),"2 / 3");
+  for(const i of [0,1,3,4])assert.equal(await page.$eval('[data-question="'+i+'"]',e=>e.dataset.solved),"true");
+  assert.equal(await page.$eval('[data-question="2"]',e=>e.dataset.solved),"false");
+  assert.equal(await page.$$eval('[data-question="2"] input:checked',els=>els.length),0);
+  await page.waitForFunction(async()=>{const data=await(await fetch('/api/me/storage/computer-literacy')).json();return data.items['classj:textbook:e02:v1']?.answers[2]?.revision===2;},{polling:100,timeout:10000});
+  const migrated=(await h.items("computer-literacy"))["classj:textbook:e02:v1"];
+  assert.equal(migrated.completed,false);assert.equal(migrated.answers[2].attempts,0);
+  for(const i of [0,1,3,4])assert.equal(migrated.answers[i].attempts,1);
+ }
  fs.writeFileSync(path.join(out,selectedIds?"verification-"+selectedIds.join("-")+".json":"verification.json"),JSON.stringify({date:new Date().toISOString(),results,failures,firstLessonRoute:true,storageChecks:true},null,2));
  assert.deepEqual(failures,[]);console.log("Verified "+results.length+" chapters, retained A01 route, and storage recovery.");
 }finally{await browser?.close();await h.close();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

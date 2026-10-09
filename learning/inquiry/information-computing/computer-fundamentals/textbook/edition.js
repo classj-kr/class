@@ -9,13 +9,16 @@ const key = "classj:textbook:" + id + ":v1";
 const store = await SiteStorage.open("computer-literacy");
 store.adopt([{ localKey: key, item: key }]);
 const questions = [data.labCheck, ...data.apply.fields, ...data.checks];
-const fresh = () => ({version:1, labUsed:false, answers:questions.map(() => ({selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
+const fresh = () => ({version:1, labUsed:false, answers:questions.map(q => ({revision:q.revision||1, selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
 let progress = fresh();
+let questionsChanged = false;
 try {
  const saved = store.get(key) ?? null;
  if (saved?.version === 1 && Array.isArray(saved.answers) && saved.answers.length === questions.length) {
   progress.labUsed = saved.labUsed === true;
-  progress.answers = saved.answers.map((a,i) => ({
+  questionsChanged = saved.answers.some((a,i)=>(a?.revision||1)!==(questions[i].revision||1));
+  progress.answers = saved.answers.map((a,i) => (a?.revision||1)!==(questions[i].revision||1) ? fresh().answers[i] : ({
+   revision:questions[i].revision||1,
    selected: Number.isInteger(a?.selected) && a.selected >= 0 && a.selected < questions[i].options.length ? a.selected : null,
    attempts: Number.isInteger(a?.attempts) && a.attempts > 0 ? a.attempts : 0,
    solved: a?.solved === true && a.attempts > 0,
@@ -99,11 +102,13 @@ const recordLab=event=>{
 };
 ["click","input","change","pointerup","keydown"].forEach(event=>lab.addEventListener(event,recordLab));
 pages.apply.append(node("h2","","새 상황에 적용하기"),node("p","edition-scenario",data.apply.scenario));
+if(data.apply.rows.length){
 const table=node("table","edition-evidence");
 const caption=node("caption","","상황 기록");table.append(caption);
 const tbody=node("tbody");
 data.apply.rows.forEach(([label,evidence])=>{const tr=node("tr");const th=node("th","",label);th.scope="row";tr.append(th,node("td","",evidence));tbody.append(tr);});
 table.append(tbody);pages.apply.append(table);
+}
 pages.check.append(node("h2","","확인 문제"));
 const feedbacks=[];
 function orderFor(index,length){
@@ -231,4 +236,5 @@ function buildBinaryLab(mount){
 
 window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
 update();show(location.hash.slice(1));
+if(questionsChanged)save();
 })();
