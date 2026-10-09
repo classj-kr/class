@@ -1,0 +1,226 @@
+{
+  "book": "체육 3(송지환)",
+  "grade": "107003",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-1단원-10차시_수행 평가.hwp",
+          "resourceId": "CN030-467387",
+          "title": "수행 평가 - 1-1단원-10차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-1단원-2~4차시_수행 평가.hwp",
+          "resourceId": "CN030-467344",
+          "title": "수행 평가 - 1-1단원-2~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-1단원-7~8차시_수행 평가.hwp",
+          "resourceId": "CN030-467364",
+          "title": "수행 평가 - 1-1단원-7~8차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-2단원-1~2차시_수행 평가.hwp",
+          "resourceId": "CN030-467412",
+          "title": "수행 평가 - 1-2단원-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-2단원-5~6차시_수행 평가.hwp",
+          "resourceId": "CN030-467434",
+          "title": "수행 평가 - 1-2단원-5~6차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-2단원-9~10차시_수행 평가.hwp",
+          "resourceId": "CN030-467455",
+          "title": "수행 평가 - 1-2단원-9~10차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-1단원-11~12차시_수행 평가.hwp",
+          "resourceId": "CN030-467400",
+          "title": "수행 평가 - 1-1단원-11~12차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-1단원-5~6차시_수행 평가.hwp",
+          "resourceId": "CN030-467353",
+          "title": "수행 평가 - 1-1단원-5~6차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-1단원-9차시_수행 평가.hwp",
+          "resourceId": "CN030-467376",
+          "title": "수행 평가 - 1-1단원-9차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-2단원-3~4차시_수행 평가.hwp",
+          "resourceId": "CN030-467421",
+          "title": "수행 평가 - 1-2단원-3~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_1-2단원-7~8차시_수행 평가.hwp",
+          "resourceId": "CN030-467444",
+          "title": "수행 평가 - 1-2단원-7~8차시"
+        }
+      ],
+      "unit": "1.운동"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-1단원-11~12차시_수행 평가.hwp",
+          "resourceId": "CN030-467527",
+          "title": "수행 평가 - 2-1단원-11~12차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-1단원-5~6차시_수행 평가.hwp",
+          "resourceId": "CN030-467492",
+          "title": "수행 평가 - 2-1단원-5~6차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-1단원-9~10차시_수행 평가.hwp",
+          "resourceId": "CN030-467517",
+          "title": "수행 평가 - 2-1단원-9~10차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-2단원-12~13차시_수행 평가.hwp",
+          "resourceId": "CN030-467599",
+          "title": "수행 평가 - 2-2단원-12~13차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-2단원-5~6차시_수행 평가.hwp",
+          "resourceId": "CN030-467565",
+          "title": "수행 평가 - 2-2단원-5~6차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-2단원-9~11차시_수행 평가.hwp",
+          "resourceId": "CN030-467587",
+          "title": "수행 평가 - 2-2단원-9~11차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-16~18차시_수행 평가.hwp",
+          "resourceId": "CN030-467675",
+          "title": "수행 평가 - 2-3단원-16~18차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-25~28차시_수행 평가.hwp",
+          "resourceId": "CN030-467710",
+          "title": "수행 평가 - 2-3단원-25~28차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-7~9차시_수행 평가.hwp",
+          "resourceId": "CN030-467637",
+          "title": "수행 평가 - 2-3단원-7~9차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-13~15차시_수행 평가.hwp",
+          "resourceId": "CN030-467662",
+          "title": "수행 평가 - 2-3단원-13~15차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-1단원-2~4차시_수행 평가.hwp",
+          "resourceId": "CN030-467476",
+          "title": "수행 평가 - 2-1단원-2~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-1단원-7~8차시_수행 평가.hwp",
+          "resourceId": "CN030-467504",
+          "title": "수행 평가 - 2-1단원-7~8차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-2단원-1~2차시_수행 평가.hwp",
+          "resourceId": "CN030-467542",
+          "title": "수행 평가 - 2-2단원-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-2단원-3~4차시_수행 평가.hwp",
+          "resourceId": "CN030-467553",
+          "title": "수행 평가 - 2-2단원-3~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-2단원-7~8차시_수행 평가.hwp",
+          "resourceId": "CN030-467578",
+          "title": "수행 평가 - 2-2단원-7~8차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-10~12차시_수행 평가.hwp",
+          "resourceId": "CN030-467650",
+          "title": "수행 평가 - 2-3단원-10~12차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-19~21차시_수행 평가.hwp",
+          "resourceId": "CN030-467689",
+          "title": "수행 평가 - 2-3단원-19~21차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-4~6차시_수행 평가.hwp",
+          "resourceId": "CN030-467623",
+          "title": "수행 평가 - 2-3단원-4~6차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-1~3차시_수행 평가.hwp",
+          "resourceId": "CN030-467609",
+          "title": "수행 평가 - 2-3단원-1~3차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_2-3단원-22~24차시_수행 평가.hwp",
+          "resourceId": "CN030-467700",
+          "title": "수행 평가 - 2-3단원-22~24차시"
+        }
+      ],
+      "unit": "2.스포츠"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_3-1단원-2차시_수행 평가.hwp",
+          "resourceId": "CN030-448059",
+          "title": "수행 평가 - 3-1단원-2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_체육(송) 3_3-2단원-8~9차시_수행 평가.hwp",
+          "resourceId": "CN030-448118",
+          "title": "수행 평가 - 3-2단원-8~9차시"
+        }
+      ],
+      "unit": "3.표현"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106417&term=108001&grade=107003",
+  "observedAt": "2026-10-09T10:43:17.277Z"
+}

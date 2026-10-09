@@ -1,0 +1,55 @@
+{
+  "book": "수학 5-1",
+  "curriculum": "year-2022",
+  "grade": "5학년",
+  "rows": [
+    {
+      "context": "1 단원 1차시",
+      "resourceId": "10080992",
+      "title": "[과정중심평가 HWP]1_1차시_과정중심평가",
+      "unit": "1. 자연수의 혼합 계산"
+    },
+    {
+      "context": "2 단원 7~8차시",
+      "resourceId": "10076095",
+      "title": "[과정중심평가 HWP]2_7-8차시_과정중심평가",
+      "unit": "2. 약수와 배수"
+    },
+    {
+      "context": "2 단원 9차시",
+      "resourceId": "10076096",
+      "title": "[과정중심평가 HWP]2_9차시_과정중심평가",
+      "unit": "2. 약수와 배수"
+    },
+    {
+      "context": "3 단원 5차시",
+      "resourceId": "10076015",
+      "title": "[과정중심평가 HWP]3_5차시_과정중심평가",
+      "unit": "3. 약분과 통분"
+    },
+    {
+      "context": "4 단원 5차시",
+      "resourceId": "10077811",
+      "title": "[과정중심평가 HWP]4_5차시_과정중심평가",
+      "unit": "4. 대응 관계"
+    },
+    {
+      "context": "5 단원 10차시",
+      "resourceId": "10075397",
+      "title": "[과정중심평가 HWP]5_10차시_과정중심평가",
+      "unit": "5. 분수의 덧셈과 뺄셈"
+    },
+    {
+      "context": "6 단원 11~12차시",
+      "resourceId": "10081595",
+      "title": "[과정중심평가 HWP]6_11-12차시_과정중심평가",
+      "unit": "6. 다각형의 둘레와 넓이"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1624&gradeCode=05&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 5-1 (장혜원)",
+  "sourceId": "1624",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

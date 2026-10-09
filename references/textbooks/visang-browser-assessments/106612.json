@@ -1,0 +1,81 @@
+{
+  "book": "국어 5-2 ㉯",
+  "grade": "107005",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_매체_수행 평가(1회).hwp",
+          "resourceId": "CN030-619004",
+          "title": "수행 평가(1회) - 매체. 판단하며 이용해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_매체_수행 평가(2회).hwp",
+          "resourceId": "CN030-619005",
+          "title": "수행 평가(2회) - 매체. 판단하며 이용해요"
+        }
+      ],
+      "unit": "매체. 판단하며 이용해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_4_수행 평가(1회).hwp",
+          "resourceId": "CN030-619012",
+          "title": "수행 평가(1회) - 4.의견을 조정해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_4_수행 평가(2회).hwp",
+          "resourceId": "CN030-619013",
+          "title": "수행 평가(2회) - 4.의견을 조정해요"
+        }
+      ],
+      "unit": "4.의견을 조정해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_5_수행 평가(1회).hwp",
+          "resourceId": "CN030-619020",
+          "title": "수행 평가(1회) - 5.추론하며 읽어요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_5_수행 평가(2회).hwp",
+          "resourceId": "CN030-619021",
+          "title": "수행 평가(2회) - 5.추론하며 읽어요"
+        }
+      ],
+      "unit": "5.추론하며 읽어요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_6_수행 평가(1회).hwp",
+          "resourceId": "CN030-619028",
+          "title": "수행 평가(1회) - 6.작품을 감상해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_6_수행 평가(2회).hwp",
+          "resourceId": "CN030-619029",
+          "title": "수행 평가(2회) - 6.작품을 감상해요"
+        }
+      ],
+      "unit": "6.작품을 감상해요"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106612&term=108002&grade=107005",
+  "observedAt": "2026-10-09T10:43:55.645Z"
+}

@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-2_%ED%86%B5%ED%95%A9_%EC%A0%84%EC%B2%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-2_통합_전체_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 2,
+      "listedUnit": "[전체]1. 하루~4. 이야기",
+      "sourceManifest": "1-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-2_통합_전체_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "하루",
+          "title": "운동을 계획하고 실천하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "하루",
+          "title": "사람들은 어떻게 하루를 살아가는지 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "하루",
+          "title": "학교생활에서 내가 지킬 규칙과 약속을 정해서 실천하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "약속",
+          "title": "지구에서 사라져 가는 동물들 지키기",
+          "table": 1,
+          "sourceRow": 4
+        },
+        {
+          "unit": "약속",
+          "title": "신나는 전래 놀이 박람회 열기",
+          "table": 1,
+          "sourceRow": 8
+        },
+        {
+          "unit": "약속",
+          "title": "가정 폭력이 발생했을 때의 대처 방법 알기",
+          "table": 1,
+          "sourceRow": 12
+        },
+        {
+          "unit": "상상",
+          "title": "새로운 동물 또는 식물 만들기",
+          "table": 2,
+          "sourceRow": 4
+        },
+        {
+          "unit": "상상",
+          "title": "거인 나라에 간 상상하기",
+          "table": 2,
+          "sourceRow": 8
+        },
+        {
+          "unit": "상상",
+          "title": "언어 사용 안전 수칙 알기",
+          "table": 2,
+          "sourceRow": 12
+        },
+        {
+          "unit": "이야기",
+          "title": "친구들에게 들려줄 이야기 생각하기",
+          "table": 3,
+          "sourceRow": 4
+        },
+        {
+          "unit": "이야기",
+          "title": "기억에 남는 장면 만화로 나타내기",
+          "table": 3,
+          "sourceRow": 8
+        },
+        {
+          "unit": "이야기",
+          "title": "군중 밀집 장소의 안전 수칙 알기",
+          "table": 3,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

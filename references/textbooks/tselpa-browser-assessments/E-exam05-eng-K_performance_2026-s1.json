@@ -1,0 +1,328 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+  "groups": [
+    {
+      "title": "공통자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2709408');",
+          "resourceId": "2709408",
+          "title": "5학년_영어(김태은)_수행평가 계획표",
+          "downloadPath": "D:\\Downloads\\5학년_영어(김태은)_수행평가 계획표.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 1. I’m from Spain",
+      "lessons": [
+        {
+          "action": "downloadFile('2709409');",
+          "resourceId": "2709409",
+          "title": "5학년_영어(김태은)_Lesson 1_수행평가_2차시",
+          "downloadPath": null,
+          "status": "download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2709410');",
+          "resourceId": "2709410",
+          "title": "5학년_영어(김태은)_Lesson 1_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709411');",
+          "resourceId": "2709411",
+          "title": "5학년_영어(김태은)_Lesson 1_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 2. Do You Want Some Soup?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709412');",
+          "resourceId": "2709412",
+          "title": "5학년_영어(김태은)_Lesson 2_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709413');",
+          "resourceId": "2709413",
+          "title": "5학년_영어(김태은)_Lesson 2_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709414');",
+          "resourceId": "2709414",
+          "title": "5학년_영어(김태은)_Lesson 2_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 3. Can I Sit Here?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709415');",
+          "resourceId": "2709415",
+          "title": "5학년_영어(김태은)_Lesson 3_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709416');",
+          "resourceId": "2709416",
+          "title": "5학년_영어(김태은)_Lesson 3_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709417');",
+          "resourceId": "2709417",
+          "title": "5학년_영어(김태은)_Lesson 3_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 4. Whose Bottle Is This?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709418');",
+          "resourceId": "2709418",
+          "title": "5학년_영어(김태은)_Lesson 4_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709419');",
+          "resourceId": "2709419",
+          "title": "5학년_영어(김태은)_Lesson 4_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709420');",
+          "resourceId": "2709420",
+          "title": "5학년_영어(김태은)_Lesson 4_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 5. Let’s Go Camping",
+      "lessons": [
+        {
+          "action": "downloadFile('2709421');",
+          "resourceId": "2709421",
+          "title": "5학년_영어(김태은)_Lesson 5_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709422');",
+          "resourceId": "2709422",
+          "title": "5학년_영어(김태은)_Lesson 5_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709423');",
+          "resourceId": "2709423",
+          "title": "5학년_영어(김태은)_Lesson 5_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 6. What Time Do You Get Up?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709424');",
+          "resourceId": "2709424",
+          "title": "5학년_영어(김태은)_Lesson 6_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709425');",
+          "resourceId": "2709425",
+          "title": "5학년_영어(김태은)_Lesson 6_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709426');",
+          "resourceId": "2709426",
+          "title": "5학년_영어(김태은)_Lesson 6_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 7. I Went to the Beach",
+      "lessons": [
+        {
+          "action": "downloadFile('2709427');",
+          "resourceId": "2709427",
+          "title": "5학년_영어(김태은)_Lesson 7_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709428');",
+          "resourceId": "2709428",
+          "title": "5학년_영어(김태은)_Lesson 7_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709429');",
+          "resourceId": "2709429",
+          "title": "5학년_영어(김태은)_Lesson 7_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 8. My Favorite Subject Is Science",
+      "lessons": [
+        {
+          "action": "downloadFile('2709430');",
+          "resourceId": "2709430",
+          "title": "5학년_영어(김태은)_Lesson 8_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709431');",
+          "resourceId": "2709431",
+          "title": "5학년_영어(김태은)_Lesson 8_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709432');",
+          "resourceId": "2709432",
+          "title": "5학년_영어(김태은)_Lesson 8_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 9. What’s in the Bedroom?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709433');",
+          "resourceId": "2709433",
+          "title": "5학년_영어(김태은)_Lesson 9_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709434');",
+          "resourceId": "2709434",
+          "title": "5학년_영어(김태은)_Lesson 9_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709435');",
+          "resourceId": "2709435",
+          "title": "5학년_영어(김태은)_Lesson 9_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 10. Where Is the Bookstore?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709436');",
+          "resourceId": "2709436",
+          "title": "5학년_영어(김태은)_Lesson 10_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709437');",
+          "resourceId": "2709437",
+          "title": "5학년_영어(김태은)_Lesson 10_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709438');",
+          "resourceId": "2709438",
+          "title": "5학년_영어(김태은)_Lesson 10_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 11. I Want to Be a Cook",
+      "lessons": [
+        {
+          "action": "downloadFile('2709439');",
+          "resourceId": "2709439",
+          "title": "5학년_영어(김태은)_Lesson 11_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709440');",
+          "resourceId": "2709440",
+          "title": "5학년_영어(김태은)_Lesson 11_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709441');",
+          "resourceId": "2709441",
+          "title": "5학년_영어(김태은)_Lesson 11_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 12. I Will Join a Ski Camp",
+      "lessons": [
+        {
+          "action": "downloadFile('2709442');",
+          "resourceId": "2709442",
+          "title": "5학년_영어(김태은)_Lesson 12_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709443');",
+          "resourceId": "2709443",
+          "title": "5학년_영어(김태은)_Lesson 12_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709444');",
+          "resourceId": "2709444",
+          "title": "5학년_영어(김태은)_Lesson 12_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    }
+  ]
+}

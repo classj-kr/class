@@ -1,0 +1,232 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-math-H_2025&tab=E-exam03-math-H-performance_2025",
+  "groups": [
+    {
+      "title": "공통자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2588635');",
+          "resourceId": "2588635",
+          "title": "수학3-2(한)_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 곱셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2588642');",
+          "resourceId": "2588642",
+          "title": "수학(한)3-2_수행평가_1단원_0304차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_1단원_0304차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588643');",
+          "resourceId": "2588643",
+          "title": "수학(한)3-2_수행평가_1단원_0304차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_1단원_0304차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2588644');",
+          "resourceId": "2588644",
+          "title": "수학(한)3-2_수행평가_1단원_0506차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_1단원_0506차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588645');",
+          "resourceId": "2588645",
+          "title": "수학(한)3-2_수행평가_1단원_0708차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_1단원_0708차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588646');",
+          "resourceId": "2588646",
+          "title": "수학(한)3-2_수행평가_1단원_11차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_1단원_11차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2588657');",
+          "resourceId": "2588657",
+          "title": "수학(한)3-2_수행평가_2단원_0506차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_2단원_0506차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588658');",
+          "resourceId": "2588658",
+          "title": "수학(한)3-2_수행평가_2단원_0607차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_2단원_0607차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588659');",
+          "resourceId": "2588659",
+          "title": "수학(한)3-2_수행평가_2단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_2단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588660');",
+          "resourceId": "2588660",
+          "title": "수학(한)3-2_수행평가_2단원_0809차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_2단원_0809차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588661');",
+          "resourceId": "2588661",
+          "title": "수학(한)3-2_수행평가_2단원_0910차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_2단원_0910차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 원",
+      "lessons": [
+        {
+          "action": "downloadFile('2588680');",
+          "resourceId": "2588680",
+          "title": "수학(한)3-2_수행평가_3단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_3단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588681');",
+          "resourceId": "2588681",
+          "title": "수학(한)3-2_수행평가_3단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_3단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588683');",
+          "resourceId": "2588683",
+          "title": "수학(한)3-2_수행평가_3단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_3단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588684');",
+          "resourceId": "2588684",
+          "title": "수학(한)3-2_수행평가_3단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_3단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2596530');",
+          "resourceId": "2596530",
+          "title": "수학(한)3-2_수행평가_3단원_0405차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_3단원_0405차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2596531');",
+          "resourceId": "2596531",
+          "title": "수학(한)3-2_수행평가_3단원_09차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_3단원_09차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 분수",
+      "lessons": [
+        {
+          "action": "downloadFile('2588704');",
+          "resourceId": "2588704",
+          "title": "수학(한)3-2_수행평가_4단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_4단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588705');",
+          "resourceId": "2588705",
+          "title": "수학(한)3-2_수행평가_4단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_4단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2588706');",
+          "resourceId": "2588706",
+          "title": "수학(한)3-2_수행평가_4단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_4단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588707');",
+          "resourceId": "2588707",
+          "title": "수학(한)3-2_수행평가_4단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_4단원_07차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2588708');",
+          "resourceId": "2588708",
+          "title": "수학(한)3-2_수행평가_4단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_4단원_08차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 무게와 들이",
+      "lessons": [
+        {
+          "action": "downloadFile('2588711');",
+          "resourceId": "2588711",
+          "title": "수학(한)3-2_수행평가_5단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_5단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588712');",
+          "resourceId": "2588712",
+          "title": "수학(한)3-2_수행평가_5단원_03차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_5단원_03차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2588713');",
+          "resourceId": "2588713",
+          "title": "수학(한)3-2_수행평가_5단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_5단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588714');",
+          "resourceId": "2588714",
+          "title": "수학(한)3-2_수행평가_5단원_09차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_5단원_09차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588715');",
+          "resourceId": "2588715",
+          "title": "수학(한)3-2_수행평가_5단원_09차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_5단원_09차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 자료와 그림그래프",
+      "lessons": [
+        {
+          "action": "downloadFile('2588719');",
+          "resourceId": "2588719",
+          "title": "수학(한)3-2_수행평가_6단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_6단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588720');",
+          "resourceId": "2588720",
+          "title": "수학(한)3-2_수행평가_6단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_6단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588721');",
+          "resourceId": "2588721",
+          "title": "수학(한)3-2_수행평가_6단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_6단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2588722');",
+          "resourceId": "2588722",
+          "title": "수학(한)3-2_수행평가_6단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_6단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2588723');",
+          "resourceId": "2588723",
+          "title": "수학(한)3-2_수행평가_6단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)3-2_수행평가_6단원_06차시_1회.hwp"
+        }
+      ]
+    }
+  ]
+}

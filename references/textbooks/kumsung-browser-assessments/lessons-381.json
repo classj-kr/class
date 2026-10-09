@@ -1,0 +1,105 @@
+{
+  "rows": [
+    {
+      "lesson": "[3차시] 펼치기-의미 있는 것들을 담아(교과서 10쪽)",
+      "resourceId": "javascript:singleoFileDownload('92407','cfile','3772')",
+      "subunit": "1. 특별한 나를 찾아서",
+      "title": "[수행평가] 3-1. 특별한 나를 찾아서",
+      "unit": ""
+    },
+    {
+      "lesson": "[1차시] 열기-그림에 담긴 이야기(교과서 12쪽)",
+      "resourceId": "javascript:singleoFileDownload('92423','cfile','3778')",
+      "subunit": "2. 추억이 방울방울",
+      "title": "[수행평가] 3-2. 추억이 방울방울",
+      "unit": ""
+    },
+    {
+      "lesson": "[6차시] 담기-멋진 작품 시상식(교과서 21쪽)",
+      "resourceId": "javascript:singleoFileDownload('92452','cfile','3787')",
+      "subunit": "3. 내 마음에 쏙",
+      "title": "[수행평가] 3-3. 내 마음에 쏙",
+      "unit": ""
+    },
+    {
+      "lesson": "[2차시] 펼치기-보이지 않지만 느낄 수 있는 것(교과서 25쪽)",
+      "resourceId": "javascript:singleoFileDownload('92456','cfile','3790')",
+      "subunit": "4. 보이지 않는 것들",
+      "title": "[수행평가] 3-4. 보이지 않는 것들",
+      "unit": ""
+    },
+    {
+      "lesson": "[4~5차시] 펼치기-다양한 기법으로 수채화 그리기(교과서 30쪽)",
+      "resourceId": "javascript:singleoFileDownload('92479','cfile','3796')",
+      "subunit": "5. 물과 물감이 만나면",
+      "title": "[수행평가] 3-5. 물과 물감이 만나면",
+      "unit": ""
+    },
+    {
+      "lesson": "[4차시] 담기-미술 전시 관람은 이렇게!(교과서 34~35쪽)",
+      "resourceId": "javascript:singleoFileDownload('92491','cfile','3801')",
+      "subunit": "6. 함께 만드는 미술 작품",
+      "title": "[수행평가] 3-6. 함께 만드는 미술 작품",
+      "unit": ""
+    },
+    {
+      "lesson": "[3차시] 펼치기-먹으로 다양한 표현하기(교과서 38쪽)",
+      "resourceId": "javascript:singleoFileDownload('92502','cfile','3805')",
+      "subunit": "7. 먹으로 그린 그림",
+      "title": "[수행평가] 3-7. 먹으로 그린 그림",
+      "unit": ""
+    },
+    {
+      "lesson": "[2~3차시] 펼치기-그림 기호를 알아봐요(교과서 43쪽)",
+      "resourceId": "javascript:singleoFileDownload('92507','cfile','3809')",
+      "subunit": "8. 우리 마을이 보일지도",
+      "title": "[수행평가] 3-8. 우리 마을이 보일지도",
+      "unit": ""
+    },
+    {
+      "lesson": "[4~5차시] 펼치기-선과 형으로 동물 만들기(교과서 50쪽)",
+      "resourceId": "javascript:singleoFileDownload('92529','cfile','3912')",
+      "subunit": "9. 작품을 이루는 비밀",
+      "title": "[수행평가] 3-9. 작품을 이루는 비밀",
+      "unit": ""
+    },
+    {
+      "lesson": "[2~3차시] 펼치기-여러 나라의 도자기(교과서 53쪽)",
+      "resourceId": "javascript:singleoFileDownload('92532','cfile','3823')",
+      "subunit": "10. 삶이 담긴 도자기",
+      "title": "[수행평가] 3-10. 삶이 담긴 도자기",
+      "unit": ""
+    },
+    {
+      "lesson": "[2차시] 펼치기-함께 맞히는 그림자놀이(교과서 59쪽)",
+      "resourceId": "javascript:singleoFileDownload('92752','cfile','3829')",
+      "subunit": "11. 그림자 넌 누구",
+      "title": "[수행평가] 3-11. 그림자 넌 누구",
+      "unit": ""
+    },
+    {
+      "lesson": "[3~5차시] 펼치기-종이로 더 재미있게!(교과서 64쪽)",
+      "resourceId": "javascript:singleoFileDownload('92787','cfile','3835')",
+      "subunit": "12. 종이 연구소",
+      "title": "[수행평가] 3-12. 종이 연구소",
+      "unit": ""
+    },
+    {
+      "lesson": "[5~6차시] 담기-꼬리에 꼬리를 무는 물음표(교과서 69쪽)",
+      "resourceId": "javascript:singleoFileDownload('92813','cfile','3843')",
+      "subunit": "13. 물음표를 따라가며",
+      "title": "[수행평가] 3-13. 물음표를 따라가며",
+      "unit": ""
+    }
+  ],
+  "unitsChecked": [
+    "1. 햇살 같은 우리",
+    "2. 아름다운 세상에서",
+    "3. 알록달록 함께",
+    "4. 푸른 꿈을 꾸어요"
+  ],
+  "title": "미술 3(김정선)22개정",
+  "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001005&gradeCategory=C005003&bookId=381",
+  "sourceMenu": "lesson-resources",
+  "observedAt": "2026-10-09T10:50:47.293Z"
+}

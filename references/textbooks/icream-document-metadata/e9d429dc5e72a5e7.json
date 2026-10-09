@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EA%B3%84%EC%A0%88_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "2-2_통합_계절_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 2,
+      "semester": 2,
+      "listedUnit": "1. 계절",
+      "sourceManifest": "2-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "2-2_통합_계절_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "계절",
+          "title": "그림 속에서 계절을 느끼고 표현하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "계절",
+          "title": "계절별 날씨를 알고 일기 예보 작성하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "계절",
+          "title": "현장체험학습 안전 수칙을 알고 대처하는 방법 상황극으로 표현하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

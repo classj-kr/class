@@ -1,0 +1,51 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/4%ED%95%99%EB%85%84_%EC%9D%8C%EC%95%85_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "음악",
+  "fileName": "4학년_음악_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 4,
+      "semester": 1,
+      "listedUnit": "1. 마주 보고 웃어요 ~ 4. 추억을 기억해요",
+      "sourceManifest": "4-1.json"
+    },
+    {
+      "grade": 4,
+      "semester": 2,
+      "listedUnit": "1. 마주 보고 웃어요 ~ 4. 추억을 기억해요",
+      "sourceManifest": "4-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "4학년_음악_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 마주 보고 웃어요",
+          "title": "바른 자세와 주법으로 칼림바 연주하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "2. 생각을 나눠요",
+          "title": "노래의 일부 리듬을 바꾸어 악기로 표현하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "3. 흠뻑 빠져요",
+          "title": "대취타의 쓰임을 알고 악기 구별하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "4. 추억을 기억해요",
+          "title": "자진타령장단을 소고로 연주하며 노래 부르기",
+          "table": 0,
+          "sourceRow": 16
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

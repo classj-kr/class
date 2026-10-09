@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "id": "visang-online-2473",
+      "rows": 39,
+      "periods": 48,
+      "unitPeriods": [
+        {
+          "unit": "혼합물의 분리",
+          "periods": 10
+        },
+        {
+          "unit": "열과 우리 생활",
+          "periods": 13
+        },
+        {
+          "unit": "날씨와 우리 생활",
+          "periods": 13
+        },
+        {
+          "unit": "자원과 에너지",
+          "periods": 12
+        }
+      ],
+      "nonPeriodReadings": 4,
+      "pageMapping": "start-pages-observed-no-end-page-inference",
+      "status": "menu-numbering-contiguous-original-plan-comparison-pending"
+    },
+    {
+      "id": "visang-online-2477",
+      "rows": 34,
+      "periods": 48,
+      "unitPeriods": [
+        {
+          "unit": "계절의 변화",
+          "periods": 13
+        },
+        {
+          "unit": "물질의 연소",
+          "periods": 13
+        },
+        {
+          "unit": "전기의 이용",
+          "periods": 12
+        },
+        {
+          "unit": "과학과 나의 진로",
+          "periods": 10
+        }
+      ],
+      "nonPeriodReadings": 4,
+      "pageMapping": "start-pages-observed-no-end-page-inference",
+      "status": "menu-numbering-contiguous-original-plan-comparison-pending"
+    },
+    {
+      "id": "visang-online-2493",
+      "rows": 32,
+      "periods": 45,
+      "unitPeriods": [
+        {
+          "unit": "유적과 유물로 살펴본 옛사람들의 생활",
+          "periods": 18
+        },
+        {
+          "unit": "달라지는 시대, 변화하는 생활 모습",
+          "periods": 14
+        },
+        {
+          "unit": "식민 통치와 저항, 전쟁이 바꾼 사회와 생활",
+          "periods": 13
+        }
+      ],
+      "nonPeriodReadings": 0,
+      "pageMapping": "start-pages-observed-no-end-page-inference",
+      "status": "menu-numbering-contiguous-original-plan-comparison-pending"
+    },
+    {
+      "id": "visang-online-2495",
+      "rows": 35,
+      "periods": 45,
+      "unitPeriods": [
+        {
+          "unit": "세계의 자연환경",
+          "periods": 15
+        },
+        {
+          "unit": "시장경제와 국가 간 거래",
+          "periods": 17
+        },
+        {
+          "unit": "지구촌 사람들",
+          "periods": 13
+        }
+      ],
+      "nonPeriodReadings": 0,
+      "pageMapping": "start-pages-observed-no-end-page-inference",
+      "status": "menu-numbering-contiguous-original-plan-comparison-pending"
+    }
+  ]
+}

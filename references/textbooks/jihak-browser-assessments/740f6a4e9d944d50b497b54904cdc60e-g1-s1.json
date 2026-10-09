@@ -1,0 +1,51 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=1&term=1&textbookSeq=740f6a4e9d944d50b497b54904cdc60e&order=1&tabType=UD002",
+  "textbook": "탐험 1-1\n국정",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "526a2a4656954e78acf0cbcb640303c0",
+          "title": "교과 평어(통합교과 1-1)",
+          "downloadPath": "D:\\Downloads\\(1학년1학기) 통합교과 평어_지학사 (3).hwp"
+        },
+        {
+          "resourceId": "c399cd679ff543baa6e7e6103337fb7c",
+          "title": "수행평가 계획서(탐험 1-1)",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가계획서.hwp"
+        },
+        {
+          "resourceId": "4cd994df362547bf9b0d28be5b1956f2",
+          "title": "수행평가_탐험_1회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가(1회).hwp"
+        },
+        {
+          "resourceId": "a4874a65121843d993bb173a86ee3e17",
+          "title": "수행평가_탐험_2회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가(2회).hwp"
+        },
+        {
+          "resourceId": "7af3d6b8ad414c09835e1345d91c8322",
+          "title": "수행평가_탐험_3회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가(3회).hwp"
+        },
+        {
+          "resourceId": "eaa1196cac5e4cfca4e4232d979e18f1",
+          "title": "수행평가_탐험_4회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가(4회).hwp"
+        },
+        {
+          "resourceId": "6cddd1675fb945e68cf698ddaaeb5ecf",
+          "title": "수행평가_탐험_5회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가(5회).hwp"
+        },
+        {
+          "resourceId": "6b27390d85c1488390f21717ac4fc16d",
+          "title": "수행평가_탐험_6회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_탐험_수행평가(6회).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EB%AC%BC%EA%B1%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "2-2_통합_물건_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 2,
+      "semester": 2,
+      "listedUnit": "3. 물건",
+      "sourceManifest": "2-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "2-2_통합_물건_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "물건",
+          "title": "생활에 필요한 물건 분류하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "물건",
+          "title": "물건 캐릭터 만들기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "물건",
+          "title": "학용품 안전한 사용법 알고 다짐하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

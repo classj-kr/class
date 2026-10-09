@@ -2077,11 +2077,13 @@
       "subject": "과학",
       "status": "acquired",
       "plans": [
-        "vivasam-563647-3bfa30af28-1"
+        "vivasam-563647-3bfa30af28-1",
+        "visang-online-2473"
       ],
       "pendingPdfSources": [],
       "semesters": [
-        1
+        1,
+        2
       ],
       "hasUnassignedSemester": false
     },
@@ -2092,11 +2094,13 @@
       "subject": "과학",
       "status": "acquired",
       "plans": [
-        "vivasam-563678-c8c718b85b-1"
+        "vivasam-563678-c8c718b85b-1",
+        "visang-online-2477"
       ],
       "pendingPdfSources": [],
       "semesters": [
-        1
+        1,
+        2
       ],
       "hasUnassignedSemester": false
     },
@@ -2643,11 +2647,13 @@
       "subject": "사회",
       "status": "acquired",
       "plans": [
-        "vivasam-563321-85963846e8-1"
+        "vivasam-563321-85963846e8-1",
+        "visang-online-2493"
       ],
       "pendingPdfSources": [],
       "semesters": [
-        1
+        1,
+        2
       ],
       "hasUnassignedSemester": false
     },
@@ -2658,11 +2664,13 @@
       "subject": "사회",
       "status": "acquired",
       "plans": [
-        "vivasam-563358-1bd9e34fde-1"
+        "vivasam-563358-1bd9e34fde-1",
+        "visang-online-2495"
       ],
       "pendingPdfSources": [],
       "semesters": [
-        1
+        1,
+        2
       ],
       "hasUnassignedSemester": false
     },
@@ -2945,11 +2953,13 @@
       "subject": "수학",
       "status": "acquired",
       "plans": [
-        "vivasam-560350-37538bd0be-1"
+        "vivasam-560350-37538bd0be-1",
+        "visang-math52-guide"
       ],
       "pendingPdfSources": [],
       "semesters": [
-        1
+        1,
+        2
       ],
       "hasUnassignedSemester": false
     },
@@ -2960,11 +2970,13 @@
       "subject": "수학",
       "status": "acquired",
       "plans": [
-        "vivasam-560386-714c6f6e15-1"
+        "vivasam-560386-714c6f6e15-1",
+        "visang-math62-guide"
       ],
       "pendingPdfSources": [],
       "semesters": [
-        1
+        1,
+        2
       ],
       "hasUnassignedSemester": false
     },

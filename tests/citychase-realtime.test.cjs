@@ -220,3 +220,38 @@ test('a bot can search past a stationary police player at the shop entrance',()=
     assert.equal(thief.jailedUntil,0);assert.equal(g.captures,0);
   }
 });
+
+test('search requires a free thief at a door; movement cancels partial progress',()=>{
+  const g=game(),[thief,cop]=g.players,shop=W.shops.find(s=>s.id===g.targets[0]);
+  assert.equal(E.command(g,thief.id,{type:'SEARCH'}),false);
+  at(cop,shop.door);assert.equal(E.command(g,cop.id,{type:'SEARCH'}),false);
+  at(thief,shop.door);thief.jailedUntil=12;assert.equal(E.command(g,thief.id,{type:'SEARCH'}),false);thief.jailedUntil=0;
+  for(const action of [{type:'MOVE',...W.nodes.b},{type:'STEER',x:1,y:0}]){
+    at(thief,shop.door);assert(E.command(g,thief.id,{type:'SEARCH'}));run(g,.7);
+    assert.equal(thief.carrying,false);assert(E.command(g,thief.id,action));assert.equal(thief.task,null);
+    run(g,1.1);assert.equal(thief.carrying,false);assert.equal(g.score,0);
+  }
+});
+
+test('simultaneous searches award exactly one gem and cannot duplicate it while carrying',()=>{
+  const g=game(),[thief,,friend]=g.players,shop=W.shops.find(s=>s.id===g.targets[0]);
+  for(const p of [thief,friend]){at(p,shop.door);assert(E.command(g,p.id,{type:'SEARCH'}));}
+  run(g,1.7);assert.equal(g.players.filter(p=>p.carrying).length,1);assert.equal(g.score,0);
+  const carrier=g.players.find(p=>p.carrying),other=carrier===thief?friend:thief;
+  assert.equal(E.command(g,carrier.id,{type:'SEARCH'}),false);
+  assert(E.command(g,other.id,{type:'SEARCH'}));run(g,1.7);assert.equal(other.carrying,false);
+  assert.equal(g.players.filter(p=>p.carrying).length,1);assert.equal(g.score,0);
+});
+
+test('a captured gem can be searched again; interrupted banking never grants a point',()=>{
+  const g=game(),[thief,cop,friend]=g.players,shop=W.shops.find(s=>s.id===g.targets[0]);
+  at(thief,shop.door);E.command(g,thief.id,{type:'SEARCH'});run(g,1.7);assert(thief.carrying);
+  g.elapsed=6;at(cop,thief);thief.immuneUntil=0;E.tick(g,.05);
+  assert.equal(thief.carrying,false);assert.equal(g.score,0);assert.equal(g.targets[0],shop.id);
+  at(cop,W.nodes.a);at(friend,shop.door);friend.immuneUntil=1000;
+  assert(E.command(g,friend.id,{type:'SEARCH'}));run(g,1.7);assert(friend.carrying);
+  at(friend,W.nodes.hideout);run(g,.45);assert.equal(g.score,0);
+  E.command(g,friend.id,{type:'MOVE',...W.nodes.i});assert.equal(friend.task,null);run(g,1.1);assert.equal(g.score,0);
+  at(friend,W.nodes.hideout);run(g,1.1);assert.equal(g.score,1);assert.equal(friend.carrying,false);
+  run(g,1.5);assert.equal(g.score,1,'remaining still must not bank the same gem twice');
+});

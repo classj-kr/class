@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-1_%ED%86%B5%ED%95%A9_%EC%9A%B0%EB%A6%AC%EB%82%98%EB%9D%BC_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-1_통합_우리나라_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 1,
+      "listedUnit": "3. 우리나라",
+      "sourceManifest": "1-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-1_통합_우리나라_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "우리 나라",
+          "title": "태극기의 모습과 태극기에 담긴 의미를 알고, 소중히 여기려는 마음 가지기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "우리 나라",
+          "title": "우리나라 화폐에 그려진 위인이 누구인지 알고, 나만의 화폐를 만들어 소개하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "우리 나라",
+          "title": "우리나라를 대표하는 것을 떠올려 문제 만들기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

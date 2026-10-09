@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-ko-A_2025&tab=E-exam03-ko-A-performance_2025",
+  "groups": [
+    {
+      "title": "1. 경험과 관련지으며 이해해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2596046');",
+          "resourceId": "2596046",
+          "title": "국어3-2_01단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어3-2_01단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2596047');",
+          "resourceId": "2596047",
+          "title": "국어3-2_01단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어3-2_01단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 유창하게 읽고 발표해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2605205');",
+          "resourceId": "2605205",
+          "title": "국어3-2_02단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어3-2_02단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2605206');",
+          "resourceId": "2605206",
+          "title": "국어3-2_02단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어3-2_02단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 정확하게 글을 써요",
+      "lessons": [
+        {
+          "action": "downloadFile('2610362');",
+          "resourceId": "2610362",
+          "title": "국어3-2_03단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어3-2_03단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2610363');",
+          "resourceId": "2610363",
+          "title": "국어3-2_03단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어3-2_03단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

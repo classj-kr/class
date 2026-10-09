@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-09",
+  "samples": [
+    {
+      "documentId": "sports-assessment-1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU",
+      "grade": 3,
+      "sourceFile": "sports-1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU.hwp",
+      "sourceSha256": "b015fbacedf920f001e71c37e9e966268e6f445f160649950f5c4a86f0003415",
+      "previewFile": "sports-grade3-embedded-preview.bmp",
+      "previewSha256": "bfdbd644c189c791737493ff457f97325871fabb02732f2394017c0e042eb188",
+      "reviewedFields": [
+        "objective",
+        "standards",
+        "rubric"
+      ],
+      "result": "matched",
+      "scope": "embedded-first-page-preview-only"
+    },
+    {
+      "documentId": "sports-assessment-1XO5dkkh1HyL2EqYy8NUukigY3u2Pj8bG",
+      "grade": 4,
+      "sourceFile": "sports-1XO5dkkh1HyL2EqYy8NUukigY3u2Pj8bG.hwpx",
+      "sourceSha256": "d47025ecd902c8ed9a7fa78da5393c1aeb32e4b6d51856029d5af56e42d9ef02",
+      "previewFile": "sports-grade4-embedded-preview.png",
+      "previewSha256": "2965900096fb234ed8486be75f4a33ac94639fcd4ae6b6c86f673219c32f0f35",
+      "reviewedFields": [
+        "objective",
+        "standards",
+        "rubric"
+      ],
+      "result": "matched",
+      "scope": "embedded-first-page-preview-only"
+    },
+    {
+      "documentId": "sports-assessment-1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY",
+      "grade": 5,
+      "sourceFile": "sports-1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY.hwp",
+      "sourceSha256": "1a00c0177782c89a4df34a0c3f34ed13bbdfa97e5b59f26fb0cea71941c9a451",
+      "previewFile": "sports-grade5-embedded-preview.bmp",
+      "previewSha256": "62a92f4507ab40b2e8ce735d099908f0f7aa13ed7052a6639850a6dc2834d797",
+      "reviewedFields": [
+        "objective",
+        "standards",
+        "rubric"
+      ],
+      "result": "matched",
+      "scope": "embedded-first-page-preview-only"
+    },
+    {
+      "documentId": "sports-assessment-1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg",
+      "grade": 6,
+      "sourceFile": "sports-1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg.hwp",
+      "sourceSha256": "a9b4d58db35a9541ae8805ffa662e2e9f9f2d7ba5e4c725b803fa5cadb64d6ce",
+      "previewFile": "sports-grade6-embedded-preview.bmp",
+      "previewSha256": "609bf5eeb5ddbbf62469fef021507dba206eb12f0b071a043789de24b4fc9170",
+      "reviewedFields": [
+        "objective",
+        "standards",
+        "rubric"
+      ],
+      "result": "matched",
+      "scope": "embedded-first-page-preview-only"
+    }
+  ],
+  "limitation": "Only the four listed samples were visually reviewed; embedded previews may represent the last saved document state."
+}

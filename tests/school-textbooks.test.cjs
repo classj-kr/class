@@ -62,6 +62,55 @@ async function run(){
   assert.equal(new Set(allPlans.flatMap(p=>p.lessons.map(l=>l.id))).size,allPlans.reduce((n,p)=>n+p.lessons.length,0));
   for(const p of allPlans){assert.ok(catalog.editions.some(e=>e.id===p.editionId&&e.grades.includes(p.grade)&&e.subject===p.subject));assert.ok(p.lessons.every(l=>l.topic&&Number.isInteger(l.sourceRow)&&l.sourceRow>=1));}
   const donga=allPlans.filter(p=>p.publisher==='동아출판');
+  const achimContent=require('../references/textbooks/assessment-content-achim-2022.json').assessments;
+  const visangContent=require('../references/textbooks/assessment-content-visang-2022.json').assessments;
+  assert.equal(visangContent.length,81);
+  assert.equal(visangContent.reduce((n,a)=>n+a.stages.length,0),108);
+  for(const a of visangContent){
+    assert.ok(a.documentStandardCodes.length>0&&a.lessonIds.length>0);
+    const cache=require(path.resolve(__dirname,'../tmp/textbook-research/visang-assessments',a.id+'.json'));
+    for(const stage of a.stages){
+      assert.equal(stage.rubric.length,3);
+      for(const field of [stage.objective,...stage.rubric,...stage.rubric.map(r=>r.feedback)])assert.equal(field.sourceParagraphs.map(n=>cache[n-1]).join(' '),field.text);
+    }
+    assert.equal(require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks/raw',a.sourceFile))).digest('hex'),a.sha256);
+    const matched=allPlans.filter(p=>p.grade===a.grade&&p.editionId===a.editionId).flatMap(p=>p.lessons).filter(l=>l.semester===a.semester);
+    assert.ok(a.lessonIds.every(id=>matched.some(l=>l.id===id)));
+  }
+  assert.equal(achimContent.length,66);
+  for(const a of achimContent){
+    assert.equal(a.rubric.length,3);assert.ok(a.standardCodes.length>0);
+    assert.ok(a.rubric.every(r=>r.text&&r.sourceParagraphs.length));
+    const cache=require(path.resolve(__dirname,'../tmp/textbook-research/achim-assessments',a.id+'.json'));
+    for(const field of [a.standards,a.objective,a.method,...a.rubric])assert.equal(field.sourceParagraphs.map(n=>cache[n-1]).join(' '),field.text);
+    assert.equal(require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks/raw',a.sourceFile))).digest('hex'),a.sha256);
+    const matched=allPlans.filter(p=>p.grade===a.grade&&p.editionId===a.editionId).flatMap(p=>p.lessons);
+    assert.ok(a.lessonIds.every(id=>matched.some(l=>l.id===id)));
+    if(a.subject==='미술')assert.equal(a.linkedWorksheetIds.length,1);
+  }
+  const visangOnline=allPlans.filter(p=>p.id.startsWith('visang-online-'));
+  assert.equal(visangOnline.length,4);
+  for(const p of visangOnline){
+    const bytes=require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks',p.sourceFile));
+    assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),p.sha256);
+    const source=JSON.parse(bytes);
+    assert.equal(p.lessons.reduce((n,l)=>n+l.suggestedPeriods,0),p.subject==='과학'?48:45);
+    assert.equal(p.additionalResources.length,p.subject==='과학'?4:0);
+    for(const l of p.lessons){
+      assert.deepEqual(l.sourcePointer.split('/').slice(1).reduce((v,k)=>v[k],source),l.sourceCells);
+      assert.equal(String(new URL(l.sourceCells.bookUrl).searchParams.get('page')),l.pages);
+      assert.equal(l.pageMapping,'ebook-start-page-only');
+    }
+  }
+  for(const p of allPlans.filter(p=>p.format==='official-guide-semester-table')){
+    const source=require(path.resolve(__dirname,'../references/textbooks',p.sourceFile));
+    assert.equal(p.lessons.reduce((n,l)=>n+l.suggestedPeriods,0),source.expectedPeriods);
+    for(const l of p.lessons){
+      assert.deepEqual(l.sourcePointer.split('/').slice(1).reduce((v,k)=>v[k],source),l.sourceCells);
+      assert.equal(require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks/raw',l.originalSourceFile))).digest('hex'),l.originalSha256);
+      assert.deepEqual(l.standardCodes,[]); // Guide gives unit standards, not a lesson-specific mapping.
+    }
+  }
   const miraen=allPlans.filter(p=>p.publisher==='미래엔');
   assert.equal(miraen.length,42);
   assert.equal(new Set(miraen.map(p=>`${p.editionId}:${p.grade}`)).size,30);
@@ -183,6 +232,20 @@ async function run(){
     assert.ok(a.lessonIds.length>0);
     assert.ok(a.lessonIds.every(id=>artculture.some(p=>p.grade===a.grade&&p.editionId===a.editionId&&p.lessons.some(l=>l.id===id&&l.unitNumber===a.unitNumber))));
   }
+  const artRubrics=require('../references/textbooks/assessment-content-artculture-2022.json').assessments;
+  assert.equal(artRubrics.length,48);
+  assert.equal(artRubrics.reduce((n,a)=>n+a.stages.length,0),120);
+  for(const a of artRubrics){
+    assert.equal(require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks/raw',a.sourceFile))).digest('hex'),a.sha256);
+    assert.ok(a.standardCodes.length>0);
+    for(const stage of a.stages){
+      assert.deepEqual(stage.rubric.map(r=>r.level),['상','중','하']);
+      for(const field of [stage.objective,stage.elements,stage.method,...stage.rubric]){
+        assert.ok(field.text&&field.sourceRect.length===4&&field.sourceRect[0]>=0&&field.sourceRect[1]>=0);
+        assert.equal(field.sourcePage,1);
+      }
+    }
+  }
   assert.equal(klassmon.length,10);
   assert.ok(klassmon.every(p=>p.semester===null&&p.originalSha256.length===64&&p.scheduleCompleteness==='annual-file-comparison-pending'));
   for(const p of klassmon.filter(p=>p.subject==='체육')) assert.equal(p.lessons.reduce((n,l)=>n+l.suggestedPeriods,0),102);
@@ -275,13 +338,26 @@ async function run(){
   assert.equal(missing.length,1);assert.equal(missing[0].sourceRow,39);assert.equal(missing[0].suggestedPeriods,null);
   const assessments=require('../references/textbooks/assessment-index-sports-2022.json').assessments;
   assert.equal(assessments.length,122);
-  assert.equal(assessments.filter(a=>a.matchStatus==='needs-content-review').length,4);
+  assert.equal(assessments.filter(a=>a.matchStatus==='needs-content-review').length,1);
+  assert.equal(assessments.filter(a=>a.matchStatus.startsWith('body-reviewed-')).length,3);
   for(const a of assessments) for(const id of a.lessonIds) {
     const p=sports.find(p=>p.lessons.some(l=>l.id===id));
     const l=p.lessons.find(l=>l.id===id);
     assert.equal(p.grade,a.grade);assert.equal(p.editionId,a.editionId);
-    assert.equal(l.domain,a.domain);assert.equal(l.topic,a.title);
+    assert.equal(l.domain,a.domain);
+    if(a.matchStatus.startsWith('body-reviewed-')){
+      const review=require('../references/textbooks/sports-assessment-match-review.json').reviews.find(r=>r.id===a.id);
+      assert.ok(review.lessonIds.includes(id));assert.equal(review.evidence,a.matchEvidence);
+    }else assert.equal(l.topic,a.title);
     assert.ok(l.periodNumbers.some(n=>a.periodNumbers.includes(n)));
+  }
+  const sportsContent=require('../references/textbooks/assessment-content-sports-2022.json').assessments;
+  assert.equal(sportsContent.length,122);
+  for(const a of sportsContent){
+    assert.deepEqual(a.rubric.map(r=>r.level),['잘함','보통','노력 요함']);
+    assert.ok(a.standardCodes.length&&a.objective.text&&a.method.text&&a.elements.text);
+    assert.ok(a.rubric.every(r=>r.text&&r.sourceParagraphs.length));
+    assert.equal(require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks/raw',a.sourceFile))).digest('hex'),a.sha256);
   }
   const sportsEdition=data.editions.find(e=>e.publisher==='체육과건강');
   assert.equal(sportsEdition.plans.length,2);

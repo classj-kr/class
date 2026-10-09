@@ -1,0 +1,129 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/4-2_%EC%88%98%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "수학",
+  "fileName": "4-2_수학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 4,
+      "semester": 2,
+      "listedUnit": "1. 분수의 덧셈과 뺄셈 ~ 6. 다각형",
+      "sourceManifest": "4-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "4-2_수학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 분수의 덧셈과 뺄셈",
+          "title": "분모가 같은 진분수의 덧셈하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 분수의 덧셈과 뺄셈",
+          "title": "자연수와 분수의 뺄셈하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 분수의 덧셈과 뺄셈",
+          "title": "분수 부분끼리 뺄 수 없는 대분수의 뺄셈하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 삼각형",
+          "title": "삼각형을 변의 길이에 따라 분류하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 삼각형",
+          "title": "이등변삼각형의 변의 길이와 각의 크기 구하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 삼각형",
+          "title": "삼각형을 각의 크기에 따라 분류하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 소수의 덧셈과 뺄셈",
+          "title": "소수 두 자리 수를 쓰고 읽기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 소수의 덧셈과 뺄셈",
+          "title": "소수의 크기 비교하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 소수의 덧셈과 뺄셈",
+          "title": "소수의 덧셈과 뺄셈하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 사각형",
+          "title": "수직과 수선을 이해하고, 주어진 직선에 대한 수선 긋기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 사각형",
+          "title": "평행선 사이의 거리를 이해하고 재기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 사각형",
+          "title": "여러 가지 사각형의 성질을 이해하고 문제 해결하기",
+          "table": 0,
+          "sourceRow": 48
+        },
+        {
+          "unit": "5. 꺾은선그래프",
+          "title": "꺾은선그래프의 특징과 구성 요소 이해하기",
+          "table": 0,
+          "sourceRow": 52
+        },
+        {
+          "unit": "5. 꺾은선그래프",
+          "title": "꺾은선그래프로 나타내기",
+          "table": 0,
+          "sourceRow": 56
+        },
+        {
+          "unit": "5. 꺾은선그래프",
+          "title": "꺾은선그래프를 해석하고 앞으로의 자료 예측하기",
+          "table": 0,
+          "sourceRow": 60
+        },
+        {
+          "unit": "6. 다각형",
+          "title": "여러 가지 다각형에서 정다각형 찾기",
+          "table": 0,
+          "sourceRow": 64
+        },
+        {
+          "unit": "6. 다각형",
+          "title": "대각선의 뜻과 성질을 알고 대각선 긋기",
+          "table": 0,
+          "sourceRow": 68
+        },
+        {
+          "unit": "6. 다각형",
+          "title": "모양 조각으로 나만의 작품을 만들고 설명하기",
+          "table": 0,
+          "sourceRow": 72
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

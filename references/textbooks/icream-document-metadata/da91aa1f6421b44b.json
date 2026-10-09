@@ -1,0 +1,75 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/6_%EB%8F%84%EB%8D%95_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "도덕",
+  "fileName": "6_도덕_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 6,
+      "semester": 1,
+      "listedUnit": "1. 나는 꿈 요리사 ~ 8. 우리가 꿈꾸는 세상을 위하여",
+      "sourceManifest": "6-1.json"
+    },
+    {
+      "grade": 6,
+      "semester": 2,
+      "listedUnit": "1. 나는 꿈 요리사 ~ 8. 우리가 꿈꾸는 세상을 위하여",
+      "sourceManifest": "6-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "6_도덕_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 나는 꿈 요리사",
+          "title": "하고 싶은 일을 선택할 때 도덕적 고려의 필요성을 알고, 특기와 적성을 탐색하여 진로 계획 수립하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "2. 다름을 존중하는 우리",
+          "title": "편견 사례를 탐색하여 해결 방안을 찾고, 다양성 존중이 타인과의 올바른 관계 맺기에 중요함을 표현하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "3. 인공지능 로봇, 그리고 나",
+          "title": "인간과 인공지능 로봇 간의 관계를 파악하고, 인공지능 로봇과 도덕적인 관계를 맺기 위한 의지 함양하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "4. 인공지능과 함께하는 우리의 미래",
+          "title": "인공지능 편견 문제를 예방하기 위해 유의할 점을 알고, 미래 직업 활동에서 인공지능과 함께하기 위한 마음 다지기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "5. 통일 한반도의 어느 날",
+          "title": "통일 과정 또는 통일 후 발생할 수 있는 상황을 예상하고, 통일 한반도의 바람직한 모습 표현하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "6. 사랑, 우리를 넘어 세계로",
+          "title": "다른 나라 사람들이 처한 여러 가지 상황을 이해하고, 해결 방안을 탐구하며 인류애 기르기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "7. 우리 모두의 미래를 위한 선택",
+          "title": "지속가능한 삶의 의미를 이해하고, 미래 세대를 위한 실천 방안 찾기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "8. 우리가 꿈꾸는 세상을 위하여",
+          "title": "통일, 인류애, 지속가능한 삶을 위한 공모전 작품을 감상하며 미래를 위한 실천 방안 찾기",
+          "table": 0,
+          "sourceRow": 32
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

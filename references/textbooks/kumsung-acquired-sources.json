@@ -102,8 +102,9 @@
       "retrievedOn": "2026-10-09",
       "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/physicalEdu/3grade/",
       "plans": [],
-      "status": "grade-comparison-pending",
-      "issue": "Grade 3 and 4 links provide byte-identical annual plans."
+      "status": "duplicate-download-replaced-by-grade-labelled-guide",
+      "issue": "Grade 3 and 4 links provide byte-identical annual plans.",
+      "resolution": "kumsung-pe34-normalization-review.json"
     },
     {
       "id": "kumsung-physicalEdu-4-34a24267e0",
@@ -113,8 +114,9 @@
       "retrievedOn": "2026-10-09",
       "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/physicalEdu/4grade/",
       "plans": [],
-      "status": "grade-comparison-pending",
-      "issue": "Grade 3 and 4 links provide byte-identical annual plans."
+      "status": "duplicate-download-replaced-by-grade-labelled-guide",
+      "issue": "Grade 3 and 4 links provide byte-identical annual plans.",
+      "resolution": "kumsung-pe34-normalization-review.json"
     }
   ]
 }

@@ -1,0 +1,121 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+  "groups": [
+    {
+      "title": "5. 통일 한반도의 어느 날",
+      "lessons": [
+        {
+          "action": "downloadFile('2767838');",
+          "resourceId": "2767838",
+          "title": "도덕6-2_수행평가_5단원_1회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_5단원_1회 (1).hwp"
+        },
+        {
+          "action": "downloadFile('2767839');",
+          "resourceId": "2767839",
+          "title": "도덕6-2_수행평가_5단원_2회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_5단원_2회 (1).hwp"
+        },
+        {
+          "action": "downloadFile('2767840');",
+          "resourceId": "2767840",
+          "title": "도덕6-2_수행평가_5단원_3회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_5단원_3회 (1).hwp"
+        },
+        {
+          "action": "downloadFile('2769094');",
+          "resourceId": "2769094",
+          "title": "도덕6-2_평가자료(지도서)",
+          "downloadPath": null
+        }
+      ]
+    },
+    {
+      "title": "6. 사랑, 우리를 넘어 세계로",
+      "lessons": [
+        {
+          "action": "downloadFile('2767841');",
+          "resourceId": "2767841",
+          "title": "도덕6-2_수행평가_6단원_1회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_6단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2767842');",
+          "resourceId": "2767842",
+          "title": "도덕6-2_수행평가_6단원_2회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_6단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2767843');",
+          "resourceId": "2767843",
+          "title": "도덕6-2_수행평가_6단원_3회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_6단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2769095');",
+          "resourceId": "2769095",
+          "title": "도덕6-2_평가자료(지도서)",
+          "downloadPath": null
+        }
+      ]
+    },
+    {
+      "title": "7. 우리 모두의 미래를 위한 선택",
+      "lessons": [
+        {
+          "action": "downloadFile('2767844');",
+          "resourceId": "2767844",
+          "title": "도덕6-2_수행평가_7단원_1회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_7단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2767845');",
+          "resourceId": "2767845",
+          "title": "도덕6-2_수행평가_7단원_2회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_7단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2767846');",
+          "resourceId": "2767846",
+          "title": "도덕6-2_수행평가_7단원_3회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_7단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2769096');",
+          "resourceId": "2769096",
+          "title": "도덕6-2_평가자료(지도서)",
+          "downloadPath": null
+        }
+      ]
+    },
+    {
+      "title": "8. 우리가 꿈꾸는 세상을 위하여",
+      "lessons": [
+        {
+          "action": "downloadFile('2767847');",
+          "resourceId": "2767847",
+          "title": "도덕6-2_수행평가_8단원_1회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_8단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2767848');",
+          "resourceId": "2767848",
+          "title": "도덕6-2_수행평가_8단원_2회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_8단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2767849');",
+          "resourceId": "2767849",
+          "title": "도덕6-2_수행평가_8단원_3회",
+          "downloadPath": "D:\\Downloads\\도덕6-2_수행평가_8단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2769100');",
+          "resourceId": "2769100",
+          "title": "도덕6-2_평가자료(지도서)",
+          "downloadPath": null
+        }
+      ]
+    }
+  ]
+}

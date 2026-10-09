@@ -1,0 +1,3977 @@
+{
+  "schemaVersion": 1,
+  "meaning": "Files may include worksheets, plans, answer keys, rubrics, and format variants. Acquisition presence does not prove all units or both semesters are complete.",
+  "withAtLeastOneOriginal": 111,
+  "gradeEditionTotal": 272,
+  "sourceIndexes": [
+    {
+      "file": "assessment-index-achim-2022.json",
+      "records": 140
+    },
+    {
+      "file": "assessment-index-artculture-2022.json",
+      "records": 48
+    },
+    {
+      "file": "assessment-index-jihak-2022.json",
+      "records": 863
+    },
+    {
+      "file": "assessment-index-musiclife-2022.json",
+      "records": 56
+    },
+    {
+      "file": "assessment-index-sports-2022.json",
+      "records": 122
+    },
+    {
+      "file": "assessment-index-tselpa-2022.json",
+      "records": 1576
+    },
+    {
+      "file": "assessment-documents-visang-2022.json",
+      "records": 1178
+    }
+  ],
+  "coverage": [
+    {
+      "editionId": "tb-b7ff5672ecb44f29",
+      "publisher": null,
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 1,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b7ff5672ecb44f29",
+      "publisher": null,
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 2,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c1bf7609f4afbb2d",
+      "publisher": null,
+      "subject": "수학",
+      "leadAuthor": null,
+      "grade": 1,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 59,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c1bf7609f4afbb2d",
+      "publisher": null,
+      "subject": "수학",
+      "leadAuthor": null,
+      "grade": 2,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 62,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-12a375124faf801f",
+      "publisher": null,
+      "subject": "통합교과",
+      "leadAuthor": null,
+      "grade": 1,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 8,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-12a375124faf801f",
+      "publisher": null,
+      "subject": "통합교과",
+      "leadAuthor": null,
+      "grade": 2,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 8,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-027c18f5ce64fc5e",
+      "publisher": "동아출판",
+      "subject": "과학",
+      "leadAuthor": "장신호",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-027c18f5ce64fc5e",
+      "publisher": "동아출판",
+      "subject": "과학",
+      "leadAuthor": "장신호",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b12d06ae8294d8ee",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b12d06ae8294d8ee",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-60092a0aa9b67a52",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 144,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-60092a0aa9b67a52",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 140,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3232588fb5e83bbb",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3232588fb5e83bbb",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5f33ba2d2ee7d2ac",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5f33ba2d2ee7d2ac",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6259a522b329b1fa",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "이상원",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 25,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6259a522b329b1fa",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "이상원",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 26,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3a81d884bab758c2",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 26,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3a81d884bab758c2",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 27,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-8932f22f488bd441",
+      "publisher": null,
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 66,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json",
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-8932f22f488bd441",
+      "publisher": null,
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 66,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json",
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5793dff92a57b5be",
+      "publisher": null,
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5793dff92a57b5be",
+      "publisher": null,
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-09d08c98bfcda0b9",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-09d08c98bfcda0b9",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ef17df0b40793645",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ef17df0b40793645",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-fdd62952285d7737",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-fdd62952285d7737",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9d949ad52c6e1af7",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9d949ad52c6e1af7",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6af6261af960a5ab",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6af6261af960a5ab",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-43fbbdb4deb552ed",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-43fbbdb4deb552ed",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4aebeddff8910228",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-artculture-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4aebeddff8910228",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-artculture-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-358263466b89f58f",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 18,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 18,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-358263466b89f58f",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 18,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 18,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-2bd6c4146566bef1",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-2bd6c4146566bef1",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 48,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 48,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-228e49bc29a6e92b",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-228e49bc29a6e92b",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-cf31099855e85760",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-cf31099855e85760",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c4c01bf1f131cc87",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 22,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c4c01bf1f131cc87",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 30,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6750140d16fbf8a5",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6750140d16fbf8a5",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-939066fb897b434f",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-939066fb897b434f",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-656f1971f6fa9741",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 26,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-656f1971f6fa9741",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 30,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-25b1f61843243ddd",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 10,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-25b1f61843243ddd",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-98bd422834c6ea38",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 10,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-98bd422834c6ea38",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0ffb6c37769c7e72",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0ffb6c37769c7e72",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5a699afec30b7907",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5a699afec30b7907",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-70245a528f49efe7",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-70245a528f49efe7",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-949a9fff2c633502",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 217,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-949a9fff2c633502",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 204,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6c246ae6a2953805",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6c246ae6a2953805",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-bedbc367c02cdb81",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-bedbc367c02cdb81",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-221b1c0d7654c865",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 42,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-221b1c0d7654c865",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 42,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b42b3e279bbb4058",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 67,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b42b3e279bbb4058",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 64,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-340226475c3ea050",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 62,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-340226475c3ea050",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 60,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4d88b8ae860c5b94",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "윤여범",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4d88b8ae860c5b94",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "윤여범",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9278ce1db9831ed3",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9278ce1db9831ed3",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-efce8e073fed2067",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-efce8e073fed2067",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-de5666d512727144",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-de5666d512727144",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-e5d277fdf178ef3c",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-e5d277fdf178ef3c",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0c2d61f5562fda3e",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 1,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 1,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0c2d61f5562fda3e",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 1,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 1,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-295018729dd44080",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-295018729dd44080",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-38a328c0b86c51ee",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 35,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 35,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-38a328c0b86c51ee",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 62,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 62,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-08a3477275bddfb9",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-08a3477275bddfb9",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6dea03dd7193364d",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6dea03dd7193364d",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-acfe48faad69d0f1",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-acfe48faad69d0f1",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-83ac81bc96ac1535",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-83ac81bc96ac1535",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-aebb46993f46099a",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 28,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 28,
+      "sourceIndexes": [
+        "assessment-index-achim-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-aebb46993f46099a",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 26,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 26,
+      "sourceIndexes": [
+        "assessment-index-achim-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-55946ba4dea72534",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-55946ba4dea72534",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-14d2792b72b03514",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 20,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 20,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-14d2792b72b03514",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 21,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 21,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-00ef712240aede8a",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 1,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 1,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-00ef712240aede8a",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 1,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 1,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-15154338cb64e686",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-15154338cb64e686",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-aacd10a7bd09e15f",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-aacd10a7bd09e15f",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4669f454f2f01546",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4669f454f2f01546",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-a347567e387ea9b3",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-a347567e387ea9b3",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b9f946ee7127b6f2",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b9f946ee7127b6f2",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4e83e13a85853d0d",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4e83e13a85853d0d",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0cd7079bd7a7e76c",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 3,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0cd7079bd7a7e76c",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 4,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-1204fd9c821f9950",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 22,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 22,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-1204fd9c821f9950",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 24,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-bbe54a4ba3e1cff2",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-bbe54a4ba3e1cff2",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 14,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 14,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0de5499fda0fe900",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 3,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 33,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 33,
+      "sourceIndexes": [
+        "assessment-index-sports-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0de5499fda0fe900",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 4,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 32,
+      "sourceIndexes": [
+        "assessment-index-sports-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-7db496b411cdf1b4",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-7db496b411cdf1b4",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5492996c1e1fcd32",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 140,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5492996c1e1fcd32",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 122,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-cdec5f797a01b1b5",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-cdec5f797a01b1b5",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-85bef7a44a60678f",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-85bef7a44a60678f",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 16,
+      "identifiedSemesters": [
+        1
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d95a9ebcb23138ab",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 43,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d95a9ebcb23138ab",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 41,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-e2cfb3f073d113c7",
+      "publisher": null,
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 66,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json",
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-e2cfb3f073d113c7",
+      "publisher": null,
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 72,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json",
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9e320b00307ead54",
+      "publisher": null,
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9e320b00307ead54",
+      "publisher": null,
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-581d019eb8bc3f71",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-581d019eb8bc3f71",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-2607abcdfa6948d3",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-2607abcdfa6948d3",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-91088ff8a97a89a5",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-91088ff8a97a89a5",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d8bcb907dc871b65",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d8bcb907dc871b65",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6498c3269de3e705",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-6498c3269de3e705",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3ea8ff712a76cfa7",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3ea8ff712a76cfa7",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-da3b42f4e4cdf343",
+      "publisher": "아침나라",
+      "subject": "미술",
+      "leadAuthor": "정원일",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 26,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 26,
+      "sourceIndexes": [
+        "assessment-index-achim-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-da3b42f4e4cdf343",
+      "publisher": "아침나라",
+      "subject": "미술",
+      "leadAuthor": "정원일",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 26,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 26,
+      "sourceIndexes": [
+        "assessment-index-achim-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5d08ea9b4cb1d719",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-artculture-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-5d08ea9b4cb1d719",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-artculture-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-f0812c4bde095347",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 17,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 17,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-f0812c4bde095347",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 17,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 17,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-27e5d948d0a93ea2",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 24,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-27e5d948d0a93ea2",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 24,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 24,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d2623d7a0cddf13c",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d2623d7a0cddf13c",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-581ccacc6da81bdb",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-581ccacc6da81bdb",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d9462fc32338dca8",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 31,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d9462fc32338dca8",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3ee759a2e351fff7",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3ee759a2e351fff7",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-07dea2d6b4964749",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-07dea2d6b4964749",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-354773e9f00d041f",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 32,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-354773e9f00d041f",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 19,
+      "identifiedSemesters": [
+        1
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-e23e46c028c4c904",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 13,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-e23e46c028c4c904",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 13,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-8a63a1814bb6ea76",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 13,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-8a63a1814bb6ea76",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 13,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-724eda72ec3769b8",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-724eda72ec3769b8",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ff48bedb2fa611c4",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ff48bedb2fa611c4",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3b406499e00b4a29",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3b406499e00b4a29",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-356b1adeeeece7d3",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 48,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-356b1adeeeece7d3",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 48,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-documents-visang-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c328ce50b190a4dc",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c328ce50b190a4dc",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d946fc043d6c288b",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d946fc043d6c288b",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b2235ebaf292db5a",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 42,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b2235ebaf292db5a",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 21,
+      "identifiedSemesters": [
+        1
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-444407b517d8dfe3",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 62,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-444407b517d8dfe3",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 61,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d908b263d2003f36",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 62,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d908b263d2003f36",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 62,
+      "identifiedSemesters": [
+        1,
+        2
+      ],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-f577ef7b2b9ce50c",
+      "publisher": "교학사",
+      "subject": "실과",
+      "leadAuthor": "최지연",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-f577ef7b2b9ce50c",
+      "publisher": "교학사",
+      "subject": "실과",
+      "leadAuthor": "최지연",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-954df70797bbee08",
+      "publisher": "금성출판사",
+      "subject": "실과",
+      "leadAuthor": "류청산",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-954df70797bbee08",
+      "publisher": "금성출판사",
+      "subject": "실과",
+      "leadAuthor": "류청산",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-92bd61a5274fc1b2",
+      "publisher": "동아출판",
+      "subject": "실과",
+      "leadAuthor": "서우석",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-92bd61a5274fc1b2",
+      "publisher": "동아출판",
+      "subject": "실과",
+      "leadAuthor": "서우석",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-847ff983a931ed95",
+      "publisher": "미래엔",
+      "subject": "실과",
+      "leadAuthor": "이철현",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-847ff983a931ed95",
+      "publisher": "미래엔",
+      "subject": "실과",
+      "leadAuthor": "이철현",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0ab2c40ff162cb20",
+      "publisher": "비상교육",
+      "subject": "실과",
+      "leadAuthor": "송현순",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-0ab2c40ff162cb20",
+      "publisher": "비상교육",
+      "subject": "실과",
+      "leadAuthor": "송현순",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-79926ca720d86a07",
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "leadAuthor": "정영식",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-79926ca720d86a07",
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "leadAuthor": "정영식",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-bd00e49f7db84fbb",
+      "publisher": "와이비엠",
+      "subject": "실과",
+      "leadAuthor": "이상원",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-bd00e49f7db84fbb",
+      "publisher": "와이비엠",
+      "subject": "실과",
+      "leadAuthor": "이상원",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3e3326e566d1ba36",
+      "publisher": "지학사",
+      "subject": "실과",
+      "leadAuthor": "김차명",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 20,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 20,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3e3326e566d1ba36",
+      "publisher": "지학사",
+      "subject": "실과",
+      "leadAuthor": "김차명",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 21,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 21,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b9425f548a010db5",
+      "publisher": "천재교과서",
+      "subject": "실과",
+      "leadAuthor": "이춘식",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 7,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 7,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b9425f548a010db5",
+      "publisher": "천재교과서",
+      "subject": "실과",
+      "leadAuthor": "이춘식",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 7,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 7,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-301d010e57b36322",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "정은숙",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-301d010e57b36322",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "정은숙",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-895da9a48115407b",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-895da9a48115407b",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9113ce68e72cc020",
+      "publisher": "비상교육",
+      "subject": "영어",
+      "leadAuthor": "우길주",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-9113ce68e72cc020",
+      "publisher": "비상교육",
+      "subject": "영어",
+      "leadAuthor": "우길주",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-cfcdaff9ad30d27e",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-cfcdaff9ad30d27e",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-7b5f8b0c5bf22866",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-7b5f8b0c5bf22866",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4ff619bdfb99c735",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-4ff619bdfb99c735",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-1f7e4f30e4a532bf",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 1,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 1,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-1f7e4f30e4a532bf",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 1,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 1,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d91cfd905c4b02ad",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-d91cfd905c4b02ad",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3ca4e76f29377f3d",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 60,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 60,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3ca4e76f29377f3d",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 60,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 60,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-13df77d075e34e3c",
+      "publisher": "금성출판사",
+      "subject": "음악",
+      "leadAuthor": "김용희",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-13df77d075e34e3c",
+      "publisher": "금성출판사",
+      "subject": "음악",
+      "leadAuthor": "김용희",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-764368b1f626a109",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-764368b1f626a109",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3fa6b6303fc24201",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3fa6b6303fc24201",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-349cd1f0f46bed8e",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-349cd1f0f46bed8e",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-1effb249488b73de",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-1effb249488b73de",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ea9f50a85d46df47",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 18,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 18,
+      "sourceIndexes": [
+        "assessment-index-achim-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ea9f50a85d46df47",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 16,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 16,
+      "sourceIndexes": [
+        "assessment-index-achim-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-71c8f05ff27572db",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-71c8f05ff27572db",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-48723016b6416d13",
+      "publisher": "음악과생활",
+      "subject": "음악",
+      "leadAuthor": "박진홍",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 28,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 28,
+      "sourceIndexes": [
+        "assessment-index-musiclife-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-48723016b6416d13",
+      "publisher": "음악과생활",
+      "subject": "음악",
+      "leadAuthor": "박진홍",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 28,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 28,
+      "sourceIndexes": [
+        "assessment-index-musiclife-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-beeff83b5bc5bbc5",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 23,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 23,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-beeff83b5bc5bbc5",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 23,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 23,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b3e1bdfae990228d",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b3e1bdfae990228d",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 12,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 12,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-f0626af19964e229",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-f0626af19964e229",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b83713cc68c714ff",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b83713cc68c714ff",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ebd9c1c0f8208c75",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-ebd9c1c0f8208c75",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3e9ca44dba2d3921",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-3e9ca44dba2d3921",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b5d5f0c8c9087077",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-b5d5f0c8c9087077",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-94e66f4d8defda0e",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-94e66f4d8defda0e",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c4163dca14fc8feb",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 5,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-c4163dca14fc8feb",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 6,
+      "status": "no-indexed-original",
+      "indexedRecords": 0,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 0,
+      "sourceIndexes": [],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-db7245b717917323",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 40,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 40,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-db7245b717917323",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 39,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 39,
+      "sourceIndexes": [
+        "assessment-index-jihak-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-a99c3bb3ae84a78b",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 8,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 8,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-a99c3bb3ae84a78b",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 8,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 8,
+      "sourceIndexes": [
+        "assessment-index-tselpa-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-266461fcf7029ab0",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 5,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 30,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 30,
+      "sourceIndexes": [
+        "assessment-index-sports-2022.json"
+      ],
+      "completeness": "not-established"
+    },
+    {
+      "editionId": "tb-266461fcf7029ab0",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 6,
+      "status": "at-least-one-original-acquired",
+      "indexedRecords": 27,
+      "identifiedSemesters": [],
+      "annualOrUnspecifiedRecords": 27,
+      "sourceIndexes": [
+        "assessment-index-sports-2022.json"
+      ],
+      "completeness": "not-established"
+    }
+  ]
+}

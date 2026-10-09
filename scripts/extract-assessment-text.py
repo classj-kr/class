@@ -64,6 +64,10 @@ def run():
         extracted.append(record)
     target = ROOT/'references/textbooks/assessment-content-musiclife-2022.json'
     target.write_text(json.dumps({'schemaVersion':1,'assessments':extracted},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    for item in items:
+        item.update(contentStatus='structured-fields-extracted',contentFile='assessment-content-musiclife-2022.json')
+    (ROOT/'references/textbooks/assessment-index-musiclife-2022.json').write_text(
+        json.dumps({'schemaVersion':1,'assessments':items},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'extracted':len(items),'structuredRubrics':len(extracted)}))
 
 if __name__ == '__main__':

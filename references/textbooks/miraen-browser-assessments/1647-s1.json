@@ -1,0 +1,109 @@
+{
+  "book": "국어 6-1(나)",
+  "curriculum": "year-2022",
+  "grade": "6학년",
+  "rows": [
+    {
+      "context": "단원 3~4차시",
+      "resourceId": "10099805",
+      "title": "[수행평가 HWP] 매체_3~4차시_수행평가",
+      "unit": "매체. 매체 자료를 만들어요"
+    },
+    {
+      "context": "단원 5~6차시",
+      "resourceId": "10099806",
+      "title": "[수행평가 HWP] 매체_5~6차시_수행평가",
+      "unit": "매체. 매체 자료를 만들어요"
+    },
+    {
+      "context": "4-1 단원 2차시",
+      "resourceId": "10099687",
+      "title": "[수행평가 HWP] 4_2차시_수행평가",
+      "unit": "4. 상황에 맞게 표현해요"
+    },
+    {
+      "context": "4-1 단원 3차시",
+      "resourceId": "10099688",
+      "title": "[수행평가 HWP] 4_3차시_수행평가",
+      "unit": "4. 상황에 맞게 표현해요"
+    },
+    {
+      "context": "4-1 단원 4~5차시",
+      "resourceId": "10099689",
+      "title": "[수행평가 HWP] 4_4~5차시_수행평가",
+      "unit": "4. 상황에 맞게 표현해요"
+    },
+    {
+      "context": "4-2 단원 6~7차시",
+      "resourceId": "10099690",
+      "title": "[수행평가 HWP] 4_6~7차시_수행평가",
+      "unit": "4. 상황에 맞게 표현해요"
+    },
+    {
+      "context": "4-2 단원 8~10차시",
+      "resourceId": "10099691",
+      "title": "[수행평가 HWP] 4_8~10차시_수행평가",
+      "unit": "4. 상황에 맞게 표현해요"
+    },
+    {
+      "context": "5-1 단원 2~3차시",
+      "resourceId": "10102226",
+      "title": "[수행평가 HWP] 5_2~3차시_수행평가",
+      "unit": "5. 자신의 글쓰기 과정을 살펴봐요"
+    },
+    {
+      "context": "5-1 단원 4~5차시",
+      "resourceId": "10102227",
+      "title": "[수행평가 HWP] 5_4~5차시_수행평가",
+      "unit": "5. 자신의 글쓰기 과정을 살펴봐요"
+    },
+    {
+      "context": "5-1 단원 6~7차시",
+      "resourceId": "10102229",
+      "title": "[수행평가 HWP] 5_6~7차시_수행평가",
+      "unit": "5. 자신의 글쓰기 과정을 살펴봐요"
+    },
+    {
+      "context": "5-2 단원 8~9차시",
+      "resourceId": "10102230",
+      "title": "[수행평가 HWP] 5_8~9차시_수행평가",
+      "unit": "5. 자신의 글쓰기 과정을 살펴봐요"
+    },
+    {
+      "context": "5-2 단원 10~11차시",
+      "resourceId": "10102232",
+      "title": "[수행평가 HWP] 5_10~11차시_수행평가",
+      "unit": "5. 자신의 글쓰기 과정을 살펴봐요"
+    },
+    {
+      "context": "6-1 단원 2~3차시",
+      "resourceId": "10102234",
+      "title": "[수행평가 HWP] 6_2~3차시_수행평가",
+      "unit": "6. 비판적으로 읽어요"
+    },
+    {
+      "context": "6-1 단원 4~6차시",
+      "resourceId": "10102235",
+      "title": "[수행평가 HWP] 6_4~6차시_수행평가",
+      "unit": "6. 비판적으로 읽어요"
+    },
+    {
+      "context": "6-2 단원 7~8차시",
+      "resourceId": "10102236",
+      "title": "[수행평가 HWP] 6_7~8차시_수행평가",
+      "unit": "6. 비판적으로 읽어요"
+    },
+    {
+      "context": "6-2 단원 9~11차시",
+      "resourceId": "10102237",
+      "title": "[수행평가 HWP] 6_9~11차시_수행평가",
+      "unit": "6. 비판적으로 읽어요"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1647&gradeCode=06&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 6-1(나)",
+  "sourceId": "1647",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

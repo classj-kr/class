@@ -1,0 +1,133 @@
+{
+  "book": "국어 1-1 (나)",
+  "curriculum": "year-2022",
+  "grade": "1학년",
+  "rows": [
+    {
+      "context": "3-1 단원 2~3차시",
+      "resourceId": "10000923",
+      "title": "[수행평가 HWP] 3_2~3차시_수행평가",
+      "unit": "3. 낱말과 친해져요"
+    },
+    {
+      "context": "3-1 단원 4~5차시",
+      "resourceId": "10000924",
+      "title": "[수행평가 HWP] 3_4~5차시_수행평가",
+      "unit": "3. 낱말과 친해져요"
+    },
+    {
+      "context": "3-2 단원 6~7차시",
+      "resourceId": "10000925",
+      "title": "[수행평가 HWP] 3_6~7차시_수행평가",
+      "unit": "3. 낱말과 친해져요"
+    },
+    {
+      "context": "3-2 단원 8~9차시",
+      "resourceId": "10000927",
+      "title": "[수행평가 HWP] 3_8~9차시_수행평가",
+      "unit": "3. 낱말과 친해져요"
+    },
+    {
+      "context": "4-1 단원 3~4차시",
+      "resourceId": "10000928",
+      "title": "[수행평가 HWP] 4_3~4차시_수행평가",
+      "unit": "4. 여러 가지 낱말을 익혀요"
+    },
+    {
+      "context": "4-1 단원 5~6차시",
+      "resourceId": "10000930",
+      "title": "[수행평가 HWP] 4_5~6차시_수행평가",
+      "unit": "4. 여러 가지 낱말을 익혀요"
+    },
+    {
+      "context": "4-2 단원 7~8차시",
+      "resourceId": "10000932",
+      "title": "[수행평가 HWP] 4_7~8차시_수행평가",
+      "unit": "4. 여러 가지 낱말을 익혀요"
+    },
+    {
+      "context": "4-2 단원 9~10차시",
+      "resourceId": "10000933",
+      "title": "[수행평가 HWP] 4_9~10차시_수행평가",
+      "unit": "4. 여러 가지 낱말을 익혀요"
+    },
+    {
+      "context": "5-1 단원 2차시",
+      "resourceId": "10000934",
+      "title": "[수행평가 HWP] 5_2차시_수행평가",
+      "unit": "5. 반갑게 인사해요"
+    },
+    {
+      "context": "5-1 단원 3~4차시",
+      "resourceId": "10000935",
+      "title": "[수행평가 HWP] 5_3~4차시_수행평가",
+      "unit": "5. 반갑게 인사해요"
+    },
+    {
+      "context": "5-2 단원 5~6차시",
+      "resourceId": "10000936",
+      "title": "[수행평가 HWP] 5_5~6차시_수행평가",
+      "unit": "5. 반갑게 인사해요"
+    },
+    {
+      "context": "5-2 단원 7~8차시",
+      "resourceId": "10000937",
+      "title": "[수행평가 HWP] 5_7~8차시_수행평가",
+      "unit": "5. 반갑게 인사해요"
+    },
+    {
+      "context": "6-1 단원 2~3차시",
+      "resourceId": "10001385",
+      "title": "[수행평가 HWP] 6_2~3차시_수행평가",
+      "unit": "6. 또박또박 읽어요"
+    },
+    {
+      "context": "6-1 단원 4~5차시",
+      "resourceId": "10001386",
+      "title": "[수행평가 HWP] 6_4~5차시_수행평가",
+      "unit": "6. 또박또박 읽어요"
+    },
+    {
+      "context": "6-2 단원 6~7차시",
+      "resourceId": "10001387",
+      "title": "[수행평가 HWP] 6_6~7차시_수행평가",
+      "unit": "6. 또박또박 읽어요"
+    },
+    {
+      "context": "6-2 단원 8~9차시",
+      "resourceId": "10001388",
+      "title": "[수행평가 HWP] 6_8~9차시_수행평가",
+      "unit": "6. 또박또박 읽어요"
+    },
+    {
+      "context": "7-1 단원 3차시",
+      "resourceId": "10001389",
+      "title": "[수행평가 HWP] 7_3차시_수행평가",
+      "unit": "7. 알맞은 낱말을 찾아요"
+    },
+    {
+      "context": "7-1 단원 4~5차시",
+      "resourceId": "10001390",
+      "title": "[수행평가 HWP] 7_4~5차시_수행평가",
+      "unit": "7. 알맞은 낱말을 찾아요"
+    },
+    {
+      "context": "7-2 단원 6~8차시",
+      "resourceId": "10001391",
+      "title": "[수행평가 HWP] 7_6~8차시_수행평가",
+      "unit": "7. 알맞은 낱말을 찾아요"
+    },
+    {
+      "context": "7-2 단원 9~10차시",
+      "resourceId": "10001392",
+      "title": "[수행평가 HWP] 7_9~10차시_수행평가",
+      "unit": "7. 알맞은 낱말을 찾아요"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1374&gradeCode=01&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 1-1 (나)",
+  "sourceId": "1374",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

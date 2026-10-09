@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EB%A7%88%EC%9D%84_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "2-1_통합_마을_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 2,
+      "semester": 1,
+      "listedUnit": "3. 마을",
+      "sourceManifest": "2-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "2-1_통합_마을_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "마을",
+          "title": "마을 사람들이 하는 일 조사하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "마을",
+          "title": "마을 소식지 만들기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "마을",
+          "title": "마을 시설 이용 안전 수칙 알기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

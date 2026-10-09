@@ -1,0 +1,125 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+  "groups": [
+    {
+      "title": "1. 바르고 곧은 길",
+      "lessons": [
+        {
+          "action": "downloadFile('2413696');",
+          "resourceId": "2413696",
+          "title": "도덕_4-1_1단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_1단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413697');",
+          "resourceId": "2413697",
+          "title": "도덕_4-1_1단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_1단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2413698');",
+          "resourceId": "2413698",
+          "title": "도덕_4-1_1단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_1단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2748304');",
+          "resourceId": "2748304",
+          "title": "도덕_4-1_1단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    },
+    {
+      "title": "2. 도덕적인 나",
+      "lessons": [
+        {
+          "action": "downloadFile('2413699');",
+          "resourceId": "2413699",
+          "title": "도덕_4-1_2단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_2단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413700');",
+          "resourceId": "2413700",
+          "title": "도덕_4-1_2단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_2단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2413701');",
+          "resourceId": "2413701",
+          "title": "도덕_4-1_2단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_2단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2748305');",
+          "resourceId": "2748305",
+          "title": "도덕_4-1_2단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    },
+    {
+      "title": "3. 배려하는 우리",
+      "lessons": [
+        {
+          "action": "downloadFile('2413702');",
+          "resourceId": "2413702",
+          "title": "도덕_4-1_3단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_3단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413703');",
+          "resourceId": "2413703",
+          "title": "도덕_4-1_3단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_3단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2413704');",
+          "resourceId": "2413704",
+          "title": "도덕_4-1_3단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_3단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2758229');",
+          "resourceId": "2758229",
+          "title": "도덕_4-1_3단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    },
+    {
+      "title": "4. 도덕적인 생활을 위한 탐구",
+      "lessons": [
+        {
+          "action": "downloadFile('2413705');",
+          "resourceId": "2413705",
+          "title": "도덕_4-1_4단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_4단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413706');",
+          "resourceId": "2413706",
+          "title": "도덕_4-1_4단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_4단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2413707');",
+          "resourceId": "2413707",
+          "title": "도덕_4-1_4단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕_4-1_4단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2758230');",
+          "resourceId": "2758230",
+          "title": "도덕_4-1_4단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    }
+  ]
+}

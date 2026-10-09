@@ -1,0 +1,232 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-math-P_2026&tab=E-exam06-math-P_2026_01",
+  "groups": [
+    {
+      "title": "공통자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2728518');",
+          "resourceId": "2728518",
+          "title": "수학6-1(박)_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 분수의 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2728552');",
+          "resourceId": "2728552",
+          "title": "수학6-1(박)_수행평가_1단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_1단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728553');",
+          "resourceId": "2728553",
+          "title": "수학6-1(박)_수행평가_1단원_03차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_1단원_03차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728554');",
+          "resourceId": "2728554",
+          "title": "수학6-1(박)_수행평가_1단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_1단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728555');",
+          "resourceId": "2728555",
+          "title": "수학6-1(박)_수행평가_1단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_1단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728556');",
+          "resourceId": "2728556",
+          "title": "수학6-1(박)_수행평가_1단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_1단원_06차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 각기둥과 각뿔",
+      "lessons": [
+        {
+          "action": "downloadFile('2728557');",
+          "resourceId": "2728557",
+          "title": "수학6-1(박)_수행평가_2단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_2단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728558');",
+          "resourceId": "2728558",
+          "title": "수학6-1(박)_수행평가_2단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_2단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728559');",
+          "resourceId": "2728559",
+          "title": "수학6-1(박)_수행평가_2단원_05차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_2단원_05차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728560');",
+          "resourceId": "2728560",
+          "title": "수학6-1(박)_수행평가_2단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_2단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728561');",
+          "resourceId": "2728561",
+          "title": "수학6-1(박)_수행평가_2단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_2단원_07차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 소수의 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2728562');",
+          "resourceId": "2728562",
+          "title": "수학6-1(박)_수행평가_3단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_3단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728563');",
+          "resourceId": "2728563",
+          "title": "수학6-1(박)_수행평가_3단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_3단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728564');",
+          "resourceId": "2728564",
+          "title": "수학6-1(박)_수행평가_3단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_3단원_07차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728565');",
+          "resourceId": "2728565",
+          "title": "수학6-1(박)_수행평가_3단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_3단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728566');",
+          "resourceId": "2728566",
+          "title": "수학6-1(박)_수행평가_3단원_08차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_3단원_08차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 비와 비율",
+      "lessons": [
+        {
+          "action": "downloadFile('2728567');",
+          "resourceId": "2728567",
+          "title": "수학6-1(박)_수행평가_4단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_4단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728568');",
+          "resourceId": "2728568",
+          "title": "수학6-1(박)_수행평가_4단원_03차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_4단원_03차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728569');",
+          "resourceId": "2728569",
+          "title": "수학6-1(박)_수행평가_4단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_4단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728570');",
+          "resourceId": "2728570",
+          "title": "수학6-1(박)_수행평가_4단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_4단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728571');",
+          "resourceId": "2728571",
+          "title": "수학6-1(박)_수행평가_4단원_06차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_4단원_06차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 직육면체의 겉넓이와 부피",
+      "lessons": [
+        {
+          "action": "downloadFile('2728572');",
+          "resourceId": "2728572",
+          "title": "수학6-1(박)_수행평가_5단원_0203차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_5단원_0203차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728573');",
+          "resourceId": "2728573",
+          "title": "수학6-1(박)_수행평가_5단원_0203차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_5단원_0203차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728574');",
+          "resourceId": "2728574",
+          "title": "수학6-1(박)_수행평가_5단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_5단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728575');",
+          "resourceId": "2728575",
+          "title": "수학6-1(박)_수행평가_5단원_06차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_5단원_06차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728576');",
+          "resourceId": "2728576",
+          "title": "수학6-1(박)_수행평가_5단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_5단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728618');",
+          "resourceId": "2728618",
+          "title": "수학6-1(박)_수행평가_5단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_5단원_07차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 여러 가지 그래프",
+      "lessons": [
+        {
+          "action": "downloadFile('2728577');",
+          "resourceId": "2728577",
+          "title": "수학6-1(박)_수행평가_1단원_0203차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_6단원_0203차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728578');",
+          "resourceId": "2728578",
+          "title": "수학6-1(박)_수행평가_1단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_6단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728579');",
+          "resourceId": "2728579",
+          "title": "수학6-1(박)_수행평가_1단원_0506차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_6단원_0506차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2728580');",
+          "resourceId": "2728580",
+          "title": "수학6-1(박)_수행평가_1단원_0506차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_6단원_0506차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2728581');",
+          "resourceId": "2728581",
+          "title": "수학6-1(박)_수행평가_1단원_0809차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)6-1_수행평가_6단원_0809차시_1회.hwp"
+        }
+      ]
+    }
+  ]
+}

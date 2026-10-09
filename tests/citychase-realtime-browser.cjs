@@ -30,6 +30,7 @@ const server=http.createServer((req,res)=>{
   }
   try{
     const p=await open('가람');
+    await p.evaluate(()=>{window.shopTagPoints={};const fill=CanvasRenderingContext2D.prototype.fillText;CanvasRenderingContext2D.prototype.fillText=function(text,x,y,...rest){if(ChaseWorld.shops.some(s=>s.name===text)){const point=new DOMPoint(x,y).matrixTransform(this.getTransform()),d=Math.min(devicePixelRatio||1,2);shopTagPoints[text]={x:point.x/d,y:point.y/d,width:this.measureText(text).width*this.getTransform().a/d};}return fill.call(this,text,x,y,...rest);};});
     assert.equal(await p.locator('#practiceCount').count(),0);
     assert.equal(await p.locator('#lobbyScreen .mp-ui-header').count(),1);
     await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'entry.png')});
@@ -44,16 +45,27 @@ const server=http.createServer((req,res)=>{
     assert.equal(await p.locator('#captureText').innerText(),'0 / 5');
     await p.evaluate(()=>{chaseTestGame.players.forEach(p=>{p.bot=false;p.path=[];p.immuneUntil=1000;});});
     await p.locator('#viewBtn').tap();
-    for(const[name,w,h]of[['pc',1900,950],['chromebook',1366,650],['ipad-landscape',1024,668],['ipad-portrait',768,920]]){
+    for(const[name,w,h]of[['pc',1900,950],['chromebook',1366,650],['ipad-landscape',1024,668],['ipad-portrait',768,920],['phone',390,844]]){
       await p.setViewportSize({width:w,height:h});await p.waitForTimeout(600);
       assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth&&document.documentElement.scrollHeight<=innerHeight));
       for(const id of ['clueBtn','dashBtn','viewBtn','interactBtn']){const b=await p.locator('#'+id).boundingBox();assert(b.x>=0&&b.y>=0&&b.x+b.width<=w+.1&&b.y+b.height<=h+.1);assert(b.height>=44);}
       await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+name+'.png')});
-      await p.locator('#clueBtn').tap();if(await p.locator('#shareBtn').isEnabled())await p.locator('#shareBtn').tap();assert.match(await p.locator('#sharedClues').innerText(),/가람/);await p.locator('#closeClue').tap();
+      await p.evaluate(()=>{const g=chaseTestGame;for(const player of g.players)ChaseEngine.command(g,player.id,{type:'SHARE'});});
+      await p.locator('#clueBtn').tap();if(await p.locator('#shareBtn').isEnabled())await p.locator('#shareBtn').tap();assert.match(await p.locator('#sharedClues').innerText(),/가람/);
+      assert(await p.locator('#cluePanel').evaluate(el=>el.scrollHeight<=el.clientHeight+1),'all clues and seven destinations fit without scrolling');
+      assert.equal(await p.locator('#shopChoices button').count(),7);
+      for(const id of ['closeClue','shareBtn'])assert((await p.locator('#'+id).boundingBox()).height>=44);
+      const tags=await p.evaluate(()=>[...document.querySelectorAll('#privateClues .clueCandidates span')].map(e=>e.textContent));
+      assert.equal(tags.length,3);assert.deepEqual(tags.sort(),await p.evaluate(()=>chaseTestState.clues[0].candidates.map(id=>ChaseWorld.shops.find(s=>s.id===id).name).sort()));
+      await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+name+'-clues.png')});await p.locator('#closeClue').tap();
       console.log('PASS',name,'4 characters, touch controls, clue sharing, no page overflow');
     }
     // Keyboard and two-finger controls use the same authoritative road movement.
     await p.setViewportSize({width:1024,height:668});
+    await p.waitForTimeout(600);const tag=await p.evaluate(()=>shopTagPoints['투썸플레이트']);
+    await p.touchscreen.tap(tag.x+tag.width/2+5,tag.y);
+    await p.waitForFunction(()=>{const route=chaseTestGame.players[0].path,door=ChaseWorld.shops.find(s=>s.id==='twosome').door;return route.length&&ChaseWorld.distance(route.at(-1),door)<1;});
+    console.log('PASS tapping the edge of a displayed shop label walks to that shop entrance');
     async function place(x,y){await p.evaluate(({x,y})=>{const me=chaseTestGame.players[0];Object.assign(me,{x,y,path:[],steering:null,task:null,dashReady:0,dashUntil:0});},{x,y});await p.waitForTimeout(120);}
     const position=()=>p.evaluate(()=>({x:chaseTestGame.players[0].x,y:chaseTestGame.players[0].y}));
     async function stationary(){await p.waitForTimeout(100);const before=await position();await p.waitForTimeout(220);assert.deepEqual(await position(),before);}
@@ -102,7 +114,7 @@ const server=http.createServer((req,res)=>{
     await p.setViewportSize({width:1600,height:1000});await p.waitForTimeout(600);
     // Save a geometry overlay to inspect whether every painted street matches navigation.
     await p.evaluate(()=>{
-      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='navReview';svg.setAttribute('viewBox','0 0 1600 1000');svg.style='position:absolute;inset:0;width:100%;height:100%;pointer-events:none';
+      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='navReview';svg.setAttribute('viewBox','0 0 1600 1000');const scale=Math.min(innerWidth/1600,(innerHeight-64)/1000);svg.style=`position:absolute;left:${(innerWidth-1600*scale)/2}px;top:${(innerHeight-1000*scale)/2}px;width:${1600*scale}px;height:${1000*scale}px;pointer-events:none`;
       for(const e of ChaseWorld.edges){const a=ChaseWorld.nodes[e.a],b=ChaseWorld.nodes[e.b],l=document.createElementNS(svg.namespaceURI,'line');for(const[k,v]of Object.entries({x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'#e900d8','stroke-width':4}))l.setAttribute(k,v);svg.append(l);}
       for(const n of Object.values(ChaseWorld.nodes)){const t=document.createElementNS(svg.namespaceURI,'text');t.setAttribute('x',n.x);t.setAttribute('y',n.y);t.setAttribute('fill','#000');t.setAttribute('font-size','17');t.textContent=n.id;svg.append(t);}document.querySelector('#play').append(svg);
     });
@@ -153,14 +165,19 @@ const server=http.createServer((req,res)=>{
     await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'jailed.png')});
     assert.equal(await p.evaluate(()=>new Set(captureDrawn).size),3,'surprise, police salute and sheepish prisoner poses all rendered');
     await p.locator('#soundBtn').tap();const mutedSounds=await p.evaluate(()=>captureSounds);
+    await p.locator('#viewBtn').tap();await p.waitForTimeout(600);
     await p.evaluate(()=>{
+      window.edgeCaptions=[];const fill=CanvasRenderingContext2D.prototype.fillText;
+      CanvasRenderingContext2D.prototype.fillText=function(text,x,y,...rest){if(['앗!','잡았다!','퐁!'].includes(text)){const point=new DOMPoint(x,y).matrixTransform(this.getTransform());edgeCaptions.push({x:point.x/(devicePixelRatio||1),y:point.y/(devicePixelRatio||1)});}return fill.call(this,text,x,y,...rest);};
       const g=chaseTestGame,cop=g.players.find(p=>p.team==='police');
       g.captures=ChaseEngine.CAPTURE_GOAL-1;
-      const thief=g.players.find(p=>p.id==='me');Object.assign(thief,{jailedUntil:0,immuneUntil:0,x:ChaseWorld.nodes.p0.x,y:ChaseWorld.nodes.p0.y,path:[]});
-      cop.x=ChaseWorld.nodes.p0.x;cop.y=ChaseWorld.nodes.p0.y;
+      const thief=g.players.find(p=>p.id==='me');Object.assign(thief,{jailedUntil:0,immuneUntil:0,x:ChaseWorld.nodes.b.x,y:ChaseWorld.nodes.b.y,path:[]});
+      cop.x=ChaseWorld.nodes.b.x;cop.y=ChaseWorld.nodes.b.y;
     });
     await p.waitForFunction(()=>chaseTestState.phase==='ended');assert(await p.locator('#result').isHidden());
+    await p.waitForTimeout(260);await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'edge-capture.png')});
     await p.locator('#result:not(.hidden)').waitFor();assert.equal(await p.evaluate(()=>chaseTestCapture.busy()),false);
+    assert(await p.evaluate(()=>edgeCaptions.length>0&&edgeCaptions.every(p=>p.x>=44&&p.x<=innerWidth-44&&p.y>=76&&p.y<=innerHeight-86)),'capture captions stay inside the viewport at the top road');
     assert.equal(await p.locator('#captureText').innerText(),'5 / 5');assert.match(await p.locator('#resultText').innerText(),/누적 체포 달성/);
     assert.equal(await p.evaluate(()=>captureSounds),mutedSounds,'muted captures stay silent');
     console.log('PASS capture poses, dust effect, jail transition and final-capture result timing');

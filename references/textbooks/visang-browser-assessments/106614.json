@@ -1,0 +1,98 @@
+{
+  "book": "국어 6-2 ㉯",
+  "grade": "107006",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_매체_수행 평가(1회).hwp",
+          "resourceId": "CN030-619036",
+          "title": "수행 평가(1회) - 매체. 매체 이용 습관을 돌아봐요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_매체_수행 평가(2회).hwp",
+          "resourceId": "CN030-619037",
+          "title": "수행 평가(2회) - 매체. 매체 이용 습관을 돌아봐요"
+        }
+      ],
+      "unit": "매체. 매체 이용 습관을 돌아봐요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_4_수행 평가(1회).hwp",
+          "resourceId": "CN030-619044",
+          "title": "수행 평가(1회) - 4.소중한 우리말"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_4_수행 평가(2회).hwp",
+          "resourceId": "CN030-619045",
+          "title": "수행 평가(2회) - 4.소중한 우리말"
+        }
+      ],
+      "unit": "4.소중한 우리말"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_5_수행 평가(1회).hwp",
+          "resourceId": "CN030-619052",
+          "title": "수행 평가(1회) - 5.언어와 소통"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_5_수행 평가(2회).hwp",
+          "resourceId": "CN030-619053",
+          "title": "수행 평가(2회) - 5.언어와 소통"
+        }
+      ],
+      "unit": "5.언어와 소통"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_6_수행 평가(1회).hwp",
+          "resourceId": "CN030-619060",
+          "title": "수행 평가(1회) - 6.시와 이야기로 표현해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 6-2_6_수행 평가(2회).hwp",
+          "resourceId": "CN030-619061",
+          "title": "수행 평가(2회) - 6.시와 이야기로 표현해요"
+        }
+      ],
+      "unit": "6.시와 이야기로 표현해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_3_수행 평가(1회).hwp",
+          "resourceId": "CN030-611796",
+          "title": "수행 평가(1회) - 3.표준어와 방언을 알아봐요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-2_3_수행 평가(2회).hwp",
+          "resourceId": "CN030-611797",
+          "title": "수행 평가(2회) - 3.표준어와 방언을 알아봐요"
+        }
+      ],
+      "unit": "[보완] 표준어와 방언을 알아봐요"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106614&term=108002&grade=107006",
+  "observedAt": "2026-10-09T10:44:02.652Z"
+}

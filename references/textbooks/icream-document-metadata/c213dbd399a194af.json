@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-2_%ED%86%B5%ED%95%A9_%EC%83%81%EC%83%81_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-2_통합_상상_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 2,
+      "listedUnit": "3. 상상",
+      "sourceManifest": "1-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-2_통합_상상_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "상상",
+          "title": "새로운 동물 또는 식물 만들기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "상상",
+          "title": "거인 나라에 간 상상하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "상상",
+          "title": "언어 사용 안전 수칙 알기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

@@ -1,0 +1,111 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=6&term=2&textbookSeq=75d4bc5c949a48748105265e24654703&order=1&tabType=UD002",
+  "textbook": "사회 6-2\n이간용",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "1bb3db132451448c87b7599e828c9f2f",
+          "title": "수행평가 계획서",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "46aad31000fe4e408d13beda18515a15",
+          "title": "교과평어(사회과 6-2)",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 교과 평어(지학사).hwp"
+        },
+        {
+          "resourceId": "c7b0a9dee29244ac8238bc9af90a15d7",
+          "title": "교과평어(사회과 6-2)",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 교과 평어(지학사).xlsx"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "613f048e098e4d5b9bfe364fb5d4fec6",
+          "title": "수행평가_1단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 1단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "8fbd38da68134151910e237deb069b7e",
+          "title": "수행평가_1단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 1단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "7e4053f5d306435cac4d540dd1374965",
+          "title": "수행평가_1단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 1단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "83b0fefbc849411ea89dab6bd9345548",
+          "title": "수행평가_1단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 1단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "1 세계의 자연환경"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "383ac9f217064b839fd03dc51e43ffff",
+          "title": "수행평가_2단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 2단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "3502c117dbe24309bbe99cd76798af1d",
+          "title": "수행평가_2단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 2단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "916d2fef9e1744ce9709a660e450f195",
+          "title": "수행평가_2단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 2단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "f89c76d4e6ac43d68175bbbb742ad237",
+          "title": "수행평가_2단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 2단원(2)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "0c832bc827eb471cbabdb59a68d81b2b",
+          "title": "수행평가_2단원(3주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 2단원(3)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "51e427e4e28544de96875ed79ed3db5d",
+          "title": "수행평가_2단원(3주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 2단원(3)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "2 시장 경제와 국가 간 거래"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "a35fb59196c446249b19a0abf0d895a7",
+          "title": "수행평가_3단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 3단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "a0a4543d30c4483da06e6561356e718e",
+          "title": "수행평가_3단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 3단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "4e5d51d850034409862451f826d2fbc4",
+          "title": "수행평가_3단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 3단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "146f53faea4b4fd58302f11d14e0943d",
+          "title": "수행평가_3단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 6-2] 3단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "3 지구촌 사람들"
+    }
+  ]
+}

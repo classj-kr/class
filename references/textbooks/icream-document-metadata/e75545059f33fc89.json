@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-1_%ED%86%B5%ED%95%A9_%ED%95%99%EA%B5%90_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-1_통합_학교_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 1,
+      "listedUnit": "1. 학교",
+      "sourceManifest": "1-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-1_통합_학교_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "학교",
+          "title": "학교에서 물건을 안전하게 사용하는 방법 설명하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "학교",
+          "title": "학교 안에 있는 여러 곳의 이름과 그곳에서 하는 활동 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "학교",
+          "title": "학교생활에서 내가 지킬 규칙과 약속을 정해서 실천하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

@@ -1,0 +1,68 @@
+{
+  "book": "국어 5-1 ㉮",
+  "grade": "107005",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [],
+      "unit": "독서. 책을 읽고 함께 이야기해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-1_1_수행 평가(1회).hwp",
+          "resourceId": "CN030-565855",
+          "title": "수행 평가(1회) - 1.대화를 나누어요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-1_1_수행 평가(2회).hwp",
+          "resourceId": "CN030-565856",
+          "title": "수행 평가(2회) - 1.대화를 나누어요"
+        }
+      ],
+      "unit": "1.대화를 나누어요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-1_2_수행 평가(1회).hwp",
+          "resourceId": "CN030-565863",
+          "title": "수행 평가(1회) - 2.체험한 일을 글로 써요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-1_2_수행 평가(2회).hwp",
+          "resourceId": "CN030-565864",
+          "title": "수행 평가(2회) - 2.체험한 일을 글로 써요"
+        }
+      ],
+      "unit": "2.체험한 일을 글로 써요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-1_3_수행 평가(1회).hwp",
+          "resourceId": "CN030-565871",
+          "title": "수행 평가(1회) - 3.발표하고 질문해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 5-1_3_수행 평가(2회).hwp",
+          "resourceId": "CN030-565872",
+          "title": "수행 평가(2회) - 3.발표하고 질문해요"
+        }
+      ],
+      "unit": "3.발표하고 질문해요"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106597&term=108001&grade=107005",
+  "observedAt": "2026-10-09T10:43:40.853Z"
+}

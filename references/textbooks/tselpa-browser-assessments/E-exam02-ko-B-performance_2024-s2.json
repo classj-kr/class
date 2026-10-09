@@ -1,0 +1,73 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=2&exam=E-exam02-ko-B_2024&tab=E-exam02-ko-B-performance_2024",
+  "groups": [
+    {
+      "title": "5. 바른 말로 이야기 나누어요",
+      "lessons": [
+        {
+          "action": "downloadFile('2286461');",
+          "resourceId": "2286461",
+          "title": "국어2-2_05단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_05단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2286467');",
+          "resourceId": "2286467",
+          "title": "국어2-2_05단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_05단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 매체를 경험해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2286468');",
+          "resourceId": "2286468",
+          "title": "국어2-2_06단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_06단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2286469');",
+          "resourceId": "2286469",
+          "title": "국어2-2_06단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_06단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "7. 내 생각은 이래요",
+      "lessons": [
+        {
+          "action": "downloadFile('2294326');",
+          "resourceId": "2294326",
+          "title": "국어2-2_07단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_07단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2294327');",
+          "resourceId": "2294327",
+          "title": "국어2-2_07단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_07단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "8. 나도 작가",
+      "lessons": [
+        {
+          "action": "downloadFile('2294328');",
+          "resourceId": "2294328",
+          "title": "국어2-2_08단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_08단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2294329');",
+          "resourceId": "2294329",
+          "title": "국어2-2_08단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_08단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

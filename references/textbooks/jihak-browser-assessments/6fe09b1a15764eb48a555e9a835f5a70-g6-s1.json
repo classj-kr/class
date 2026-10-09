@@ -1,0 +1,146 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=6&term=1&textbookSeq=6fe09b1a15764eb48a555e9a835f5a70&order=1&tabType=UD002",
+  "textbook": "실과6\n김차명",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "9e3f399595e446e3b9617c03ddb67ad5",
+          "title": "수행평가 계획서",
+          "downloadPath": "D:\\Downloads\\[실과6] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "e4aece01d17e43538cdbb7c188b9733a",
+          "title": "실과과 평어(6학년)",
+          "downloadPath": "D:\\Downloads\\(2022개정_6학년)실과과 평어_지학사.hwp"
+        },
+        {
+          "resourceId": "ce2a6d51c88c4058977aafb5ea22fd24",
+          "title": "실과과 평어(6학년)",
+          "downloadPath": "D:\\Downloads\\(2022개정_6학년)실과과 평어_지학사.xlsx"
+        },
+        {
+          "resourceId": "e9b440ea87804d5984427baf0fa4c796",
+          "title": "실과 성취기준별 성취수준",
+          "downloadPath": "D:\\Downloads\\[지학사] 22개정_초등_실과_성취기준별 성취수준 (1).hwp"
+        },
+        {
+          "resourceId": "bfd77948597444f3b6f1989cd8ac954b",
+          "title": "실과 영역별 성취수준",
+          "downloadPath": "D:\\Downloads\\[지학사] 22개정_초등_실과_영역별 성취수준 (1).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "e3cd2d07c165438cab0fbfe48bb58001",
+          "title": "수행 평가지_1단원_1중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]1단원_1중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "9bc8c826714c4fe79c133e1e6a8b135c",
+          "title": "수행 평가지_1단원_2중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]1단원_2중단원_수행평가.hwp"
+        }
+      ],
+      "title": "1 가정생활과 진로 탐색"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "baf1887e6b0b40208042cf10cc2e7260",
+          "title": "수행 평가지_2단원_1중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]2단원_1중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "88a4cd61902e439c91ac4d80dd7c4159",
+          "title": "수행 평가지_2단원_2중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]2단원_2중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "f2ebc842592f4dc4b77112fe1d125de9",
+          "title": "수행 평가지_2단원_3중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]2단원_3중단원_수행평가.hwp"
+        }
+      ],
+      "title": "2 생활 자원과 지속가능한 삶"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "cd5ebd9b07444c2c83f27d636508f399",
+          "title": "수행 평가지_3단원_1중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]3단원_1중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "493a75f3cbea43e2ba51f62f023f3ebf",
+          "title": "수행 평가지_3단원_2중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]3단원_2중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "f65c02459b644bac8586ca31a0d81917",
+          "title": "수행 평가지_3단원_3중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]3단원_3중단원_수행평가.hwp"
+        }
+      ],
+      "title": "3 발명과 특허"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "ab727a93bbe44cf79a92efcc3d11362b",
+          "title": "수행 평가지_4단원_1중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]4단원_1중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "602b3c126f7b40cc932a45ec32ada836",
+          "title": "수행 평가지_4단원_2중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]4단원_2중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "21138e93768d4c70be7ba70eaad13966",
+          "title": "수행 평가지_4단원_3중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]4단원_3중단원_수행평가.hwp"
+        }
+      ],
+      "title": "4 지속가능한 농업과 우리의 미래"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "a79fee669f784ffea4a385f792118f62",
+          "title": "수행 평가지_5단원_1중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]5단원_1중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "2adb7f40ae2f4d52aa5a6c51d3728e63",
+          "title": "수행 평가지_5단원_2중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]5단원_2중단원_수행평가.hwp"
+        }
+      ],
+      "title": "5 바람직한 식생활"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "095200257f4147d482a23113762cc55d",
+          "title": "수행 평가지_6단원_1중단원",
+          "downloadPath": "D:\\Downloads\\[실과6] 6단원_1중단원_수행 평가지_교사용.hwp"
+        },
+        {
+          "resourceId": "8ae20006fbff4f2c84e83a387f814504",
+          "title": "수행 평가지_6단원_2중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]6단원_2중단원_수행평가.hwp"
+        },
+        {
+          "resourceId": "99e658652df844eb9f17ec20ebfc728f",
+          "title": "수행 평가지_6단원_3중단원",
+          "downloadPath": "D:\\Downloads\\[실과6]6단원_3중단원_수행평가.hwp"
+        }
+      ],
+      "title": "6 인공지능과 로봇의 세계"
+    }
+  ]
+}

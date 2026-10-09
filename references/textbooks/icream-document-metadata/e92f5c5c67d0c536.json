@@ -1,0 +1,75 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/3%ED%95%99%EB%85%84_%EB%8F%84%EB%8D%95_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "도덕",
+  "fileName": "3학년_도덕_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 3,
+      "semester": 1,
+      "listedUnit": "1. 나를 찾아 떠나는 여행~8. 더 나은 세상을 위한 탐구",
+      "sourceManifest": "3-1.json"
+    },
+    {
+      "grade": 3,
+      "semester": 2,
+      "listedUnit": "1. 나를 찾아 떠나는 여행~8. 더 나은 세상을 위한 탐구",
+      "sourceManifest": "3-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "3학년_도덕_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 나를 찾아 떠나는 여행",
+          "title": "자신의 감정을 자연스럽게 표현하며, 자기감정을 소중히 여기며 꾸준히 감정 일기 쓰기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "2. 성실하게 사는 삶",
+          "title": "성실한 생활의 사례를 탐색하며, 성실하게 살아가기 위한 자세와 태도를 다짐하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "3. 함께하는 우리 가족",
+          "title": "효·우애의 의미를 이해하고, 가족을 소중히 여기는 마음을 전하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "4. 인공지능 로봇 연구소에 가요!",
+          "title": "나와 같은 인공지능 로봇으로 나에 대해 탐구하고, 인공지능 로봇이 나를 대체할 수 없음을 알기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "5. 너와 나의 공감",
+          "title": "공감의 의미와 필요성을 알고, 다른 사람과 공감하는 방법을 탐구하여 실천하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "6. 함께 가는 공정의 길",
+          "title": "불공정의 사례를 제시하고, 공정한 규칙을 만들어 실천 의지 함양하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "7. 생명을 소중히 여기는 우리",
+          "title": "생명 경시 사례를 조사하고, 생명 존중 계획을 세워 실천하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "8. 더 나은 세상을 위한 탐구",
+          "title": "다른 생명에 공감하는 마음을 느끼며 다른 생명의 아픔에 공감하기 위한 방법을 실천하기",
+          "table": 0,
+          "sourceRow": 32
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

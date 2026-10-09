@@ -1,0 +1,5 @@
+blank.hwpx is the blank Skeleton.hwpx from python-hwpx (Apache-2.0).
+Copyright 2025-2026 airmang (Dr. Wily).
+Source: https://github.com/airmang/python-hwpx/blob/32a1b563c3edbf4cfa30366dc42d82cce5932634/src/hwpx/data/Skeleton.hwpx
+The exporter replaces all document content, package metadata and previews.
+No publisher assessment document is used as an export template.

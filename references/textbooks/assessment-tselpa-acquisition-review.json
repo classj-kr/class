@@ -1,0 +1,2035 @@
+{
+  "schemaVersion": 1,
+  "acquiredFiles": 1622,
+  "issues": [
+    {
+      "resourceId": "2391697",
+      "title": "3학년_1단원_수행평가_1차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2391699",
+      "title": "3학년_1단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391701",
+      "title": "3학년_1단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391703",
+      "title": "3학년_1단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391705",
+      "title": "3학년_2단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391708",
+      "title": "3학년_2단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391710",
+      "title": "3학년_2단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391713",
+      "title": "3학년_3단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391716",
+      "title": "3학년_3단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391718",
+      "title": "3학년_3단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391722",
+      "title": "3학년_4단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391725",
+      "title": "3학년_4단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391727",
+      "title": "3학년_4단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391730",
+      "title": "3학년_5단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391733",
+      "title": "3학년_5단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391735",
+      "title": "3학년_5단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391738",
+      "title": "3학년_6단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391741",
+      "title": "3학년_6단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391743",
+      "title": "3학년_6단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391746",
+      "title": "3학년_7단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391749",
+      "title": "3학년_7단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391751",
+      "title": "3학년_7단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391754",
+      "title": "3학년_8단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391757",
+      "title": "3학년_8단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391759",
+      "title": "3학년_8단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391762",
+      "title": "3학년_9단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391765",
+      "title": "3학년_9단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391767",
+      "title": "3학년_9단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391770",
+      "title": "3학년_10단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391773",
+      "title": "3학년_10단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391775",
+      "title": "3학년_10단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391778",
+      "title": "3학년_11단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391781",
+      "title": "3학년_11단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391783",
+      "title": "3학년_11단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391786",
+      "title": "3학년_12단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391789",
+      "title": "3학년_12단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2391791",
+      "title": "3학년_12단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-H_2025&tab=E-exam03-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400499",
+      "title": "3학년_영어(김태은)_Lesson 1_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2400500",
+      "title": "3학년_영어(김태은)_Lesson 1_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400501",
+      "title": "3학년_영어(김태은)_Lesson 2_수행평가_1차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400502",
+      "title": "3학년_영어(김태은)_Lesson 2_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400503",
+      "title": "3학년_영어(김태은)_Lesson 3_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400504",
+      "title": "3학년_영어(김태은)_Lesson 3_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400505",
+      "title": "3학년_영어(김태은)_Lesson 4_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400506",
+      "title": "3학년_영어(김태은)_Lesson 4_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400507",
+      "title": "3학년_영어(김태은)_Lesson 5_수행평가_1차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400508",
+      "title": "3학년_영어(김태은)_Lesson 5_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400509",
+      "title": "3학년_영어(김태은)_Lesson 6_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400510",
+      "title": "3학년_영어(김태은)_Lesson 6_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400511",
+      "title": "3학년_영어(김태은)_Lesson 7_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400512",
+      "title": "3학년_영어(김태은)_Lesson 7_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400513",
+      "title": "3학년_영어(김태은)_Lesson 8_수행평가_1차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400514",
+      "title": "3학년_영어(김태은)_Lesson 8_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400515",
+      "title": "3학년_영어(김태은)_Lesson 9_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400516",
+      "title": "3학년_영어(김태은)_Lesson 9_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400517",
+      "title": "3학년_영어(김태은)_Lesson 10_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400518",
+      "title": "3학년_영어(김태은)_Lesson 10_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400519",
+      "title": "3학년_영어(김태은)_Lesson 11_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400520",
+      "title": "3학년_영어(김태은)_Lesson 11_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-K_2025&tab=E-exam03-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2581434",
+      "title": "영어3(이)_Lesson 07_문항 개별 음원",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-eng-L_2025&tab=E-exam03-eng-L_performance_2025",
+      "reason": "previous-download-event-timeout"
+    },
+    {
+      "resourceId": "2748055",
+      "title": "도덕_3-1_1단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2748227",
+      "title": "도덕_3-1_2단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758076",
+      "title": "도덕_3-1_3단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758077",
+      "title": "도덕_3-1_4단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758612",
+      "title": "도덕_3-2_5단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758613",
+      "title": "도덕_3-2_6단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758769",
+      "title": "도덕_3-2_7단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758770",
+      "title": "도덕_3-2_8단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-ethics_2025&tab=E-exam03-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2389571",
+      "title": "수학(박)3-1_단원별수행평가_6단원_01",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2389572",
+      "title": "수학(박)3-1_단원별수행평가_6단원_02",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2389573",
+      "title": "수학(박)3-1_단원별수행평가_6단원_03",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2389579",
+      "title": "수학(박)3-1_단원별수행평가_6단원_04",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2389580",
+      "title": "수학(박)3-1_단원별수행평가_6단원_05",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2389581",
+      "title": "수학(박)3-1_단원별수행평가_6단원_06",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2389582",
+      "title": "수학(박)3-1_단원별수행평가_6단원_07",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2389583",
+      "title": "수학(박)3-1_단원별수행평가_6단원_08",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2418795",
+      "title": "음악(최)_3_연주_수행평가_3-1",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2418877",
+      "title": "음악(최)_3_연주_수행평가_3-2",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2418782",
+      "title": "음악(최)_3_감상_수행평가_3-1",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2418788",
+      "title": "음악(최)_3_감상_수행평가_3-2",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2418880",
+      "title": "음악(최)_3_창작_수행평가_3-1",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2418883",
+      "title": "음악(최)_3_창작_수행평가_3-2",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392457",
+      "title": "4학년_1단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2392460",
+      "title": "4학년_1단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392462",
+      "title": "4학년_1단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392464",
+      "title": "4학년_2단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392467",
+      "title": "4학년_2단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392469",
+      "title": "4학년_2단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392472",
+      "title": "4학년_3단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392475",
+      "title": "4학년_3단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392477",
+      "title": "4학년_3단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392480",
+      "title": "4학년_4단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392483",
+      "title": "4학년_4단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392485",
+      "title": "4학년_4단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392488",
+      "title": "4학년_5단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392491",
+      "title": "4학년_5단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392493",
+      "title": "4학년_5단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392496",
+      "title": "4학년_6단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392499",
+      "title": "4학년_6단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392501",
+      "title": "4학년_6단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392504",
+      "title": "4학년_7단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392507",
+      "title": "4학년_7단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392509",
+      "title": "4학년_7단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392512",
+      "title": "4학년_8단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392515",
+      "title": "4학년_8단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392517",
+      "title": "4학년_8단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392520",
+      "title": "4학년_9단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392523",
+      "title": "4학년_9단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392525",
+      "title": "4학년_9단원_수행평가_4차시_문제",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392528",
+      "title": "4학년_10단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392531",
+      "title": "4학년_10단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392533",
+      "title": "4학년_10단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392536",
+      "title": "4학년_11단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392539",
+      "title": "4학년_11단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392541",
+      "title": "4학년_11단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392544",
+      "title": "4학년_12단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392547",
+      "title": "4학년_12단원_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2392549",
+      "title": "4학년_12단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400937",
+      "title": "4학년_영어(김태은)_Lesson 1_수행평가_1차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2400938",
+      "title": "4학년_영어(김태은)_Lesson 1_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400939",
+      "title": "4학년_영어(김태은)_Lesson 2_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400940",
+      "title": "4학년_영어(김태은)_Lesson 2_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400941",
+      "title": "4학년_영어(김태은)_Lesson 3_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400942",
+      "title": "4학년_영어(김태은)_Lesson 3_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400943",
+      "title": "4학년_영어(김태은)_Lesson 4_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400944",
+      "title": "4학년_영어(김태은)_Lesson 4_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400945",
+      "title": "4학년_영어(김태은)_Lesson 5_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400946",
+      "title": "4학년_영어(김태은)_Lesson 5_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400947",
+      "title": "4학년_영어(김태은)_Lesson 6_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400948",
+      "title": "4학년_영어(김태은)_Lesson 6_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400949",
+      "title": "4학년_영어(김태은)_Lesson 7_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400950",
+      "title": "4학년_영어(김태은)_Lesson 7_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400951",
+      "title": "4학년_영어(김태은)_Lesson 8_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400952",
+      "title": "4학년_영어(김태은)_Lesson 8_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400953",
+      "title": "4학년_영어(김태은)_Lesson 9_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400954",
+      "title": "4학년_영어(김태은)_Lesson 9_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400955",
+      "title": "4학년_영어(김태은)_Lesson 10_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400956",
+      "title": "4학년_영어(김태은)_Lesson 10_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400957",
+      "title": "4학년_영어(김태은)_Lesson 11_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2400958",
+      "title": "4학년_영어(김태은)_Lesson 11_수행평가_3차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-K_2025&tab=E-exam04-eng-K_performance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2748304",
+      "title": "도덕_4-1_1단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2748305",
+      "title": "도덕_4-1_2단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758229",
+      "title": "도덕_4-1_3단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758230",
+      "title": "도덕_4-1_4단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758610",
+      "title": "도덕_4-2_5단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758611",
+      "title": "도덕_4-2_6단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758779",
+      "title": "도덕_4-2_7단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2758781",
+      "title": "도덕_4-2_8단원_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2419071",
+      "title": "음악(최)_4_연주_수행평가_4-1",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-music-K_2025&tab=E-exam04-music-K_perfomance_2025",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2419072",
+      "title": "음악(최)_4_연주_수행평가_4-2",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-music-K_2025&tab=E-exam04-music-K_perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2419067",
+      "title": "음악(최)_4_감상_수행평가_4-1",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-music-K_2025&tab=E-exam04-music-K_perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2419070",
+      "title": "음악(최)_4_감상_수행평가_4-2",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-music-K_2025&tab=E-exam04-music-K_perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2419140",
+      "title": "음악(최)_4_창작_수행평가_4-1",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-music-K_2025&tab=E-exam04-music-K_perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2419141",
+      "title": "음악(최)_4_창작_수행평가_4-2",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-music-K_2025&tab=E-exam04-music-K_perfomance_2025",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706617",
+      "title": "5학년_1단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2706618",
+      "title": "5학년_1단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706619",
+      "title": "5학년_1단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706620",
+      "title": "5학년_2단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706621",
+      "title": "5학년_2단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706622",
+      "title": "5학년_2단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706623",
+      "title": "5학년_3단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706624",
+      "title": "5학년_3단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706625",
+      "title": "5학년_3단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706626",
+      "title": "5학년_4단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706627",
+      "title": "5학년_4단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706628",
+      "title": "5학년_4단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706629",
+      "title": "5학년_5단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706630",
+      "title": "5학년_5단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706631",
+      "title": "5학년_5단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706632",
+      "title": "5학년_6단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706633",
+      "title": "5학년_6단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706634",
+      "title": "5학년_6단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706635",
+      "title": "5학년_7단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706636",
+      "title": "5학년_7단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706637",
+      "title": "5학년_7단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706638",
+      "title": "5학년_8단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706639",
+      "title": "5학년_8단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706640",
+      "title": "5학년_8단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706641",
+      "title": "5학년_9단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706642",
+      "title": "5학년_9단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706643",
+      "title": "5학년_9단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706644",
+      "title": "5학년_10단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706645",
+      "title": "5학년_10단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706646",
+      "title": "5학년_10단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706648",
+      "title": "5학년_11단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706649",
+      "title": "5학년_11단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706650",
+      "title": "5학년_11단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706651",
+      "title": "5학년_12단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706652",
+      "title": "5학년_12단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2706653",
+      "title": "5학년_12단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-H_2026&tab=E-exam05-eng-H_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709409",
+      "title": "5학년_영어(김태은)_Lesson 1_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2709410",
+      "title": "5학년_영어(김태은)_Lesson 1_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709411",
+      "title": "5학년_영어(김태은)_Lesson 1_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709412",
+      "title": "5학년_영어(김태은)_Lesson 2_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709413",
+      "title": "5학년_영어(김태은)_Lesson 2_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709414",
+      "title": "5학년_영어(김태은)_Lesson 2_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709415",
+      "title": "5학년_영어(김태은)_Lesson 3_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709416",
+      "title": "5학년_영어(김태은)_Lesson 3_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709417",
+      "title": "5학년_영어(김태은)_Lesson 3_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709418",
+      "title": "5학년_영어(김태은)_Lesson 4_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709419",
+      "title": "5학년_영어(김태은)_Lesson 4_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709420",
+      "title": "5학년_영어(김태은)_Lesson 4_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709421",
+      "title": "5학년_영어(김태은)_Lesson 5_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709422",
+      "title": "5학년_영어(김태은)_Lesson 5_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709423",
+      "title": "5학년_영어(김태은)_Lesson 5_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709424",
+      "title": "5학년_영어(김태은)_Lesson 6_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709425",
+      "title": "5학년_영어(김태은)_Lesson 6_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709426",
+      "title": "5학년_영어(김태은)_Lesson 6_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709427",
+      "title": "5학년_영어(김태은)_Lesson 7_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709428",
+      "title": "5학년_영어(김태은)_Lesson 7_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709429",
+      "title": "5학년_영어(김태은)_Lesson 7_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709430",
+      "title": "5학년_영어(김태은)_Lesson 8_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709431",
+      "title": "5학년_영어(김태은)_Lesson 8_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709432",
+      "title": "5학년_영어(김태은)_Lesson 8_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709433",
+      "title": "5학년_영어(김태은)_Lesson 9_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709434",
+      "title": "5학년_영어(김태은)_Lesson 9_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709435",
+      "title": "5학년_영어(김태은)_Lesson 9_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709436",
+      "title": "5학년_영어(김태은)_Lesson 10_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709437",
+      "title": "5학년_영어(김태은)_Lesson 10_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709438",
+      "title": "5학년_영어(김태은)_Lesson 10_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709439",
+      "title": "5학년_영어(김태은)_Lesson 11_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709440",
+      "title": "5학년_영어(김태은)_Lesson 11_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709441",
+      "title": "5학년_영어(김태은)_Lesson 11_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709442",
+      "title": "5학년_영어(김태은)_Lesson 12_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709443",
+      "title": "5학년_영어(김태은)_Lesson 12_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709444",
+      "title": "5학년_영어(김태은)_Lesson 12_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-K_2026&tab=E-exam05-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2707099",
+      "title": "영어5(이)_Lesson 01_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707124",
+      "title": "영어5(이)_Lesson 02_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707129",
+      "title": "영어5(이)_Lesson 03_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707134",
+      "title": "영어5(이)_Lesson 04_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707139",
+      "title": "영어5(이)_Lesson 05_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707145",
+      "title": "영어5(이)_Lesson 06_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707150",
+      "title": "영어5(이)_Lesson 07_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707155",
+      "title": "영어5(이)_Lesson 08_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707160",
+      "title": "영어5(이)_Lesson 09_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707165",
+      "title": "영어5(이)_Lesson 10_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707170",
+      "title": "영어5(이)_Lesson 11_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707179",
+      "title": "영어5(이)_Lesson 12_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-eng-L_2026&tab=E-exam05-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2719317",
+      "title": "도덕5-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2719331",
+      "title": "도덕5-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2719332",
+      "title": "도덕5-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2719337",
+      "title": "도덕5-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2768358",
+      "title": "도덕5-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2768359",
+      "title": "도덕5-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2768378",
+      "title": "도덕5-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2768380",
+      "title": "도덕5-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=5&exam=E-exam05-ethics_2026&tab=E-exam05-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2706654",
+      "title": "6학년_1단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706655",
+      "title": "6학년_1단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706656",
+      "title": "6학년_1단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706660",
+      "title": "6학년_2단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706661",
+      "title": "6학년_2단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706662",
+      "title": "6학년_2단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706663",
+      "title": "6학년_3단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706664",
+      "title": "6학년_3단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706665",
+      "title": "6학년_3단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706666",
+      "title": "6학년_4단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706667",
+      "title": "6학년_4단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706668",
+      "title": "6학년_4단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706669",
+      "title": "6학년_5단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706670",
+      "title": "6학년_5단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706671",
+      "title": "6학년_5단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706672",
+      "title": "6학년_6단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706673",
+      "title": "6학년_6단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706674",
+      "title": "6학년_6단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706675",
+      "title": "6학년_7단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706676",
+      "title": "6학년_7단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706677",
+      "title": "6학년_7단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706678",
+      "title": "6학년_8단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706679",
+      "title": "6학년_8단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706680",
+      "title": "6학년_8단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706682",
+      "title": "6학년_9단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706683",
+      "title": "6학년_9단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706684",
+      "title": "6학년_9단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706685",
+      "title": "6학년_10단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706686",
+      "title": "6학년_10단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706687",
+      "title": "6학년_10단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706688",
+      "title": "6학년_11단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706689",
+      "title": "6학년_11단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706690",
+      "title": "6학년_11단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706691",
+      "title": "6학년_12단원_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706692",
+      "title": "6학년_12단원_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2706693",
+      "title": "6학년_12단원_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-H_2026&tab=E-exam06-eng-H_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2709754",
+      "title": "6학년_영어(김태은)_Lesson 1_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "download-event-timeout"
+    },
+    {
+      "resourceId": "2709755",
+      "title": "6학년_영어(김태은)_Lesson 1_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709756",
+      "title": "6학년_영어(김태은)_Lesson 1_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709757",
+      "title": "6학년_영어(김태은)_Lesson 2_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709758",
+      "title": "6학년_영어(김태은)_Lesson 2_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709759",
+      "title": "6학년_영어(김태은)_Lesson 2_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709760",
+      "title": "6학년_영어(김태은)_Lesson 3_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709761",
+      "title": "6학년_영어(김태은)_Lesson 3_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709762",
+      "title": "6학년_영어(김태은)_Lesson 3_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709763",
+      "title": "6학년_영어(김태은)_Lesson 4_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709764",
+      "title": "6학년_영어(김태은)_Lesson 4_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709765",
+      "title": "6학년_영어(김태은)_Lesson 4_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709766",
+      "title": "6학년_영어(김태은)_Lesson 5_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709767",
+      "title": "6학년_영어(김태은)_Lesson 5_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709768",
+      "title": "6학년_영어(김태은)_Lesson 5_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709769",
+      "title": "6학년_영어(김태은)_Lesson 6_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709770",
+      "title": "6학년_영어(김태은)_Lesson 6_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709771",
+      "title": "6학년_영어(김태은)_Lesson 6_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709772",
+      "title": "6학년_영어(김태은)_Lesson 7_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709773",
+      "title": "6학년_영어(김태은)_Lesson 7_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709774",
+      "title": "6학년_영어(김태은)_Lesson 7_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709775",
+      "title": "6학년_영어(김태은)_Lesson 8_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709776",
+      "title": "6학년_영어(김태은)_Lesson 8_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709777",
+      "title": "6학년_영어(김태은)_Lesson 8_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709778",
+      "title": "6학년_영어(김태은)_Lesson 9_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709779",
+      "title": "6학년_영어(김태은)_Lesson 9_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709780",
+      "title": "6학년_영어(김태은)_Lesson 9_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709781",
+      "title": "6학년_영어(김태은)_Lesson 10_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709782",
+      "title": "6학년_영어(김태은)_Lesson 10_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709783",
+      "title": "6학년_영어(김태은)_Lesson 10_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709784",
+      "title": "6학년_영어(김태은)_Lesson 11_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709785",
+      "title": "6학년_영어(김태은)_Lesson 11_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709786",
+      "title": "6학년_영어(김태은)_Lesson 11_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709787",
+      "title": "6학년_영어(김태은)_Lesson 12_수행평가_2차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709788",
+      "title": "6학년_영어(김태은)_Lesson 12_수행평가_4차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2709789",
+      "title": "6학년_영어(김태은)_Lesson 12_수행평가_6차시",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+      "reason": "not-attempted-after-time-budget-or-failure"
+    },
+    {
+      "resourceId": "2707853",
+      "title": "영어6(이)_Lesson 01_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707858",
+      "title": "영어6(이)_Lesson 02_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707863",
+      "title": "영어6(이)_Lesson 03_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707868",
+      "title": "영어6(이)_Lesson 04_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707873",
+      "title": "영어6(이)_Lesson 05_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707880",
+      "title": "영어6(이)_Lesson 06_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707885",
+      "title": "영어6(이)_Lesson 07_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707890",
+      "title": "영어6(이)_Lesson 08_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707895",
+      "title": "영어6(이)_Lesson 09_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707900",
+      "title": "영어6(이)_Lesson 10_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707905",
+      "title": "영어6(이)_Lesson 11_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2707910",
+      "title": "영어6(이)_Lesson 12_5차시_듣기파일",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+      "reason": "folder-download-service-unresolved"
+    },
+    {
+      "resourceId": "2719346",
+      "title": "도덕6-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2719350",
+      "title": "도덕6-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2719359",
+      "title": "도덕6-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2719366",
+      "title": "도덕6-1_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "alternate-download-method-pending"
+    },
+    {
+      "resourceId": "2769094",
+      "title": "도덕6-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "download-path-missing"
+    },
+    {
+      "resourceId": "2769095",
+      "title": "도덕6-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "download-path-missing"
+    },
+    {
+      "resourceId": "2769096",
+      "title": "도덕6-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "download-path-missing"
+    },
+    {
+      "resourceId": "2769100",
+      "title": "도덕6-2_평가자료(지도서)",
+      "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-ethics_2026&tab=E-exam06-ethics-performance_2026",
+      "reason": "download-path-missing"
+    }
+  ],
+  "reviewStatus": "originals-validated-content-extraction-pending"
+}

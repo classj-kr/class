@@ -1,0 +1,317 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-eng-H_2025&tab=E-exam04-eng-H_performance_2025",
+  "groups": [
+    {
+      "title": "Lesson 1. My Name Is Amy",
+      "lessons": [
+        {
+          "action": "downloadFile('2392457');",
+          "resourceId": "2392457",
+          "title": "4학년_1단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2392460');",
+          "resourceId": "2392460",
+          "title": "4학년_1단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392462');",
+          "resourceId": "2392462",
+          "title": "4학년_1단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 2. I'm Happy",
+      "lessons": [
+        {
+          "action": "downloadFile('2392464');",
+          "resourceId": "2392464",
+          "title": "4학년_2단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392467');",
+          "resourceId": "2392467",
+          "title": "4학년_2단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392469');",
+          "resourceId": "2392469",
+          "title": "4학년_2단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 3. Don't Sit Here",
+      "lessons": [
+        {
+          "action": "downloadFile('2392472');",
+          "resourceId": "2392472",
+          "title": "4학년_3단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392475');",
+          "resourceId": "2392475",
+          "title": "4학년_3단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392477');",
+          "resourceId": "2392477",
+          "title": "4학년_3단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 4. Let's Play Basketball",
+      "lessons": [
+        {
+          "action": "downloadFile('2392480');",
+          "resourceId": "2392480",
+          "title": "4학년_4단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392483');",
+          "resourceId": "2392483",
+          "title": "4학년_4단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392485');",
+          "resourceId": "2392485",
+          "title": "4학년_4단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 5. I Want Chicken",
+      "lessons": [
+        {
+          "action": "downloadFile('2392488');",
+          "resourceId": "2392488",
+          "title": "4학년_5단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392491');",
+          "resourceId": "2392491",
+          "title": "4학년_5단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392493');",
+          "resourceId": "2392493",
+          "title": "4학년_5단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 6. Where's My Cap?",
+      "lessons": [
+        {
+          "action": "downloadFile('2392496');",
+          "resourceId": "2392496",
+          "title": "4학년_6단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392499');",
+          "resourceId": "2392499",
+          "title": "4학년_6단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392501');",
+          "resourceId": "2392501",
+          "title": "4학년_6단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 7. It's Wednesday",
+      "lessons": [
+        {
+          "action": "downloadFile('2392504');",
+          "resourceId": "2392504",
+          "title": "4학년_7단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392507');",
+          "resourceId": "2392507",
+          "title": "4학년_7단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392509');",
+          "resourceId": "2392509",
+          "title": "4학년_7단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 8. How Much Is It?",
+      "lessons": [
+        {
+          "action": "downloadFile('2392512');",
+          "resourceId": "2392512",
+          "title": "4학년_8단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392515');",
+          "resourceId": "2392515",
+          "title": "4학년_8단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392517');",
+          "resourceId": "2392517",
+          "title": "4학년_8단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 9. Is This Your Bag?",
+      "lessons": [
+        {
+          "action": "downloadFile('2392520');",
+          "resourceId": "2392520",
+          "title": "4학년_9단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392523');",
+          "resourceId": "2392523",
+          "title": "4학년_9단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392525');",
+          "resourceId": "2392525",
+          "title": "4학년_9단원_수행평가_4차시_문제",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 10. What Time Is It?",
+      "lessons": [
+        {
+          "action": "downloadFile('2392528');",
+          "resourceId": "2392528",
+          "title": "4학년_10단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392531');",
+          "resourceId": "2392531",
+          "title": "4학년_10단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392533');",
+          "resourceId": "2392533",
+          "title": "4학년_10단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 11. I'm Drawing a Picture",
+      "lessons": [
+        {
+          "action": "downloadFile('2392536');",
+          "resourceId": "2392536",
+          "title": "4학년_11단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392539');",
+          "resourceId": "2392539",
+          "title": "4학년_11단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392541');",
+          "resourceId": "2392541",
+          "title": "4학년_11단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 12. What Do You Do?",
+      "lessons": [
+        {
+          "action": "downloadFile('2392544');",
+          "resourceId": "2392544",
+          "title": "4학년_12단원_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392547');",
+          "resourceId": "2392547",
+          "title": "4학년_12단원_수행평가_3차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2392549');",
+          "resourceId": "2392549",
+          "title": "4학년_12단원_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    }
+  ]
+}

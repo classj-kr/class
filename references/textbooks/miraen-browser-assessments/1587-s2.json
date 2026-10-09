@@ -1,0 +1,55 @@
+{
+  "book": "사회 6-2",
+  "curriculum": "year-2022",
+  "grade": "6학년",
+  "rows": [
+    {
+      "context": "1-1 단원 공통자료",
+      "resourceId": "10106723",
+      "title": "수행평가",
+      "unit": "1. 세계의 자연환경"
+    },
+    {
+      "context": "1-2 단원 공통자료",
+      "resourceId": "10106724",
+      "title": "수행평가",
+      "unit": "1. 세계의 자연환경"
+    },
+    {
+      "context": "2-1 단원 공통자료",
+      "resourceId": "10107366",
+      "title": "수행평가",
+      "unit": "2. 시장경제와 국가 간 거래"
+    },
+    {
+      "context": "2-2 단원 공통자료",
+      "resourceId": "10107367",
+      "title": "수행평가",
+      "unit": "2. 시장경제와 국가 간 거래"
+    },
+    {
+      "context": "2-3 단원 공통자료",
+      "resourceId": "10107368",
+      "title": "수행평가",
+      "unit": "2. 시장경제와 국가 간 거래"
+    },
+    {
+      "context": "3-1 단원 공통자료",
+      "resourceId": "10106725",
+      "title": "수행평가",
+      "unit": "3. 지구촌 사람들"
+    },
+    {
+      "context": "3-2 단원 공통자료",
+      "resourceId": "10107115",
+      "title": "수행평가",
+      "unit": "3. 지구촌 사람들"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1587&gradeCode=06&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "사회 6-2 (전종한)",
+  "sourceId": "1587",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

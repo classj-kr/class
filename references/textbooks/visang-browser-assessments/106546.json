@@ -1,0 +1,207 @@
+{
+  "book": "수학 6-1(방정숙)",
+  "grade": "107006",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [],
+      "unit": "재미있게 6학년을 시작해요!"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_1_수행 평가(1회).hwp",
+          "resourceId": "CN030-585238",
+          "title": "수행 평가(1회) - 1.분수의 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_1_수행 평가(3회).hwp",
+          "resourceId": "CN030-585240",
+          "title": "수행 평가(3회) - 1.분수의 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_1_수행 평가(2회).hwp",
+          "resourceId": "CN030-585239",
+          "title": "수행 평가(2회) - 1.분수의 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_1_수행 평가(4회).hwp",
+          "resourceId": "CN030-585241",
+          "title": "수행 평가(4회) - 1.분수의 나눗셈"
+        }
+      ],
+      "unit": "1.분수의 나눗셈"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_2_수행 평가(1회).hwp",
+          "resourceId": "CN030-581319",
+          "title": "수행 평가(1회) - 2.각기둥과 각뿔"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_2_수행 평가(3회).hwp",
+          "resourceId": "CN030-581321",
+          "title": "수행 평가(3회) - 2.각기둥과 각뿔"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_2_수행 평가(2회).hwp",
+          "resourceId": "CN030-581320",
+          "title": "수행 평가(2회) - 2.각기둥과 각뿔"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_2_수행 평가(4회).hwp",
+          "resourceId": "CN030-584366",
+          "title": "수행 평가(4회) - 2.각기둥과 각뿔"
+        }
+      ],
+      "unit": "2.각기둥과 각뿔"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_3_수행 평가(1회).hwp",
+          "resourceId": "CN030-585273",
+          "title": "수행 평가(1회) - 3.소수의 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_3_수행 평가(3회).hwp",
+          "resourceId": "CN030-585275",
+          "title": "수행 평가(3회) - 3.소수의 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_3_수행 평가(2회).hwp",
+          "resourceId": "CN030-585274",
+          "title": "수행 평가(2회) - 3.소수의 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_3_수행 평가(4회).hwp",
+          "resourceId": "CN030-585276",
+          "title": "수행 평가(4회) - 3.소수의 나눗셈"
+        }
+      ],
+      "unit": "3.소수의 나눗셈"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_4_수행 평가(1회).hwp",
+          "resourceId": "CN030-584714",
+          "title": "수행 평가(1회) - 4.비와 비율"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_4_수행 평가(3회).hwp",
+          "resourceId": "CN030-584716",
+          "title": "수행 평가(3회) - 4.비와 비율"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_4_수행 평가(2회).hwp",
+          "resourceId": "CN030-584715",
+          "title": "수행 평가(2회) - 4.비와 비율"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_4_수행 평가(4회).hwp",
+          "resourceId": "CN030-584717",
+          "title": "수행 평가(4회) - 4.비와 비율"
+        }
+      ],
+      "unit": "4.비와 비율"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_5_수행 평가(1회).hwp",
+          "resourceId": "CN030-579665",
+          "title": "수행 평가(1회) - 5.여러 가지 그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_5_수행 평가(3회).hwp",
+          "resourceId": "CN030-579667",
+          "title": "수행 평가(3회) - 5.여러 가지 그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_5_수행 평가(2회).hwp",
+          "resourceId": "CN030-579666",
+          "title": "수행 평가(2회) - 5.여러 가지 그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_5_수행 평가(4회).hwp",
+          "resourceId": "CN030-584367",
+          "title": "수행 평가(4회) - 5.여러 가지 그래프"
+        }
+      ],
+      "unit": "5.여러 가지 그래프"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_6_수행 평가(1회).hwp",
+          "resourceId": "CN030-579668",
+          "title": "수행 평가(1회) - 6.직육면체의 겉넓이와 부피"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_6_수행 평가(3회).hwp",
+          "resourceId": "CN030-584980",
+          "title": "수행 평가(3회) - 6.직육면체의 겉넓이와 부피"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_6_수행 평가(5회).hwp",
+          "resourceId": "CN030-584982",
+          "title": "수행 평가(5회) - 6.직육면체의 겉넓이와 부피"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_6_수행 평가(2회).hwp",
+          "resourceId": "CN030-579669",
+          "title": "수행 평가(2회) - 6.직육면체의 겉넓이와 부피"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_6_수행 평가(4회).hwp",
+          "resourceId": "CN030-584981",
+          "title": "수행 평가(4회) - 6.직육면체의 겉넓이와 부피"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 6-1_6_수행 평가(6회).hwp",
+          "resourceId": "CN030-584983",
+          "title": "수행 평가(6회) - 6.직육면체의 겉넓이와 부피"
+        }
+      ],
+      "unit": "6.직육면체의 겉넓이와 부피"
+    },
+    {
+      "rows": [],
+      "unit": "나와 수학을 잇다!"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106546&term=108001&grade=107006",
+  "observedAt": "2026-10-09T10:44:20.022Z"
+}

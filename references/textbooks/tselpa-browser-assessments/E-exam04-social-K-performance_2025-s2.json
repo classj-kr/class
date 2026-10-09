@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-social-K_2025&tab=E-exam04-social-K-performance_2025",
+  "groups": [
+    {
+      "title": "1. 민주주의와 자치",
+      "lessons": [
+        {
+          "action": "downloadFile('2580926');",
+          "resourceId": "2580926",
+          "title": "사회4-2(김)_1단원_과정중심평가_1회",
+          "downloadPath": "D:\\Downloads\\사회4-2(김)_1단원_과정중심평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2580927');",
+          "resourceId": "2580927",
+          "title": "사회4-2(김)_1단원_과정중심평가_2회",
+          "downloadPath": "D:\\Downloads\\사회4-2(김)_1단원_과정중심평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 지역문제를 해결하고 지역을 알리는 노력",
+      "lessons": [
+        {
+          "action": "downloadFile('2580967');",
+          "resourceId": "2580967",
+          "title": "사회4-2(김)_2단원_과정중심평가_1회",
+          "downloadPath": "D:\\Downloads\\사회4-2(김)_2단원_과정중심평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2580968');",
+          "resourceId": "2580968",
+          "title": "사회4-2(김)_2단원_과정중심평가_2회",
+          "downloadPath": "D:\\Downloads\\사회4-2(김)_2단원_과정중심평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 다양한 환경과 삶의 모습",
+      "lessons": [
+        {
+          "action": "downloadFile('2576503');",
+          "resourceId": "2576503",
+          "title": "사회4-2(김)_3단원_과정중심평가_1회",
+          "downloadPath": "D:\\Downloads\\사회4-2(김)_3단원_과정중심평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2576505');",
+          "resourceId": "2576505",
+          "title": "사회4-2(김)_3단원_과정중심평가_2회",
+          "downloadPath": "D:\\Downloads\\사회4-2(김)_3단원_과정중심평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

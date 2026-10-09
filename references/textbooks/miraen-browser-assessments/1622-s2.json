@@ -1,0 +1,97 @@
+{
+  "book": "체육6",
+  "curriculum": "year-2022",
+  "grade": "6학년",
+  "rows": [
+    {
+      "context": "1-01 단원 2차시",
+      "resourceId": "10088207",
+      "title": "[수행평가]1-1_2차시",
+      "unit": "1. 운동 - 운동 체력과 안전"
+    },
+    {
+      "context": "1-01 단원 11~12차시",
+      "resourceId": "10088206",
+      "title": "[수행평가]1-1_11-12차시",
+      "unit": "1. 운동 - 운동 체력과 안전"
+    },
+    {
+      "context": "1-02 단원 1차시",
+      "resourceId": "10088208",
+      "title": "[수행평가]1-2_1차시",
+      "unit": "1. 운동 - 운동 체력과 안전"
+    },
+    {
+      "context": "1-02 단원 6~7차시",
+      "resourceId": "10088209",
+      "title": "[수행평가]1-2_6-7차시",
+      "unit": "1. 운동 - 운동 체력과 안전"
+    },
+    {
+      "context": "2-01 단원 3~4차시",
+      "resourceId": "10088211",
+      "title": "[수행평가]2-1_3-4차시",
+      "unit": "2. 스포츠 - 스포츠의 유형별 활동"
+    },
+    {
+      "context": "2-01 단원 16~17차시",
+      "resourceId": "10088210",
+      "title": "[수행평가]2-1_16-17차시",
+      "unit": "2. 스포츠 - 스포츠의 유형별 활동"
+    },
+    {
+      "context": "2-02 단원 6~7차시",
+      "resourceId": "10088213",
+      "title": "[수행평가]2-2_6-7차시",
+      "unit": "2. 스포츠 - 스포츠의 유형별 활동"
+    },
+    {
+      "context": "2-02 단원 17~18차시",
+      "resourceId": "10088212",
+      "title": "[수행평가]2-2_19-20차시",
+      "unit": "2. 스포츠 - 스포츠의 유형별 활동"
+    },
+    {
+      "context": "2-03 단원 2~3차시",
+      "resourceId": "10088214",
+      "title": "[수행평가]2-3_2-3차시",
+      "unit": "2. 스포츠 - 스포츠의 유형별 활동"
+    },
+    {
+      "context": "2-03 단원 4~5차시",
+      "resourceId": "10088215",
+      "title": "[수행평가]2-3_4-5차시",
+      "unit": "2. 스포츠 - 스포츠의 유형별 활동"
+    },
+    {
+      "context": "3-01 단원 2차시",
+      "resourceId": "10088216",
+      "title": "[수행평가]3-1_2차시",
+      "unit": "3. 표현 - 현대 표현과 전통 표현"
+    },
+    {
+      "context": "3-01 단원 3~4차시",
+      "resourceId": "10088217",
+      "title": "[수행평가]3-1_3-4차시",
+      "unit": "3. 표현 - 현대 표현과 전통 표현"
+    },
+    {
+      "context": "3-02 단원 1차시",
+      "resourceId": "10088218",
+      "title": "[수행평가]3-2_1차시",
+      "unit": "3. 표현 - 현대 표현과 전통 표현"
+    },
+    {
+      "context": "3-02 단원 2~3차시",
+      "resourceId": "10088219",
+      "title": "[수행평가]3-2_2-3차시",
+      "unit": "3. 표현 - 현대 표현과 전통 표현"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1622&gradeCode=06&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "체육6 (안양옥)",
+  "sourceId": "1622",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

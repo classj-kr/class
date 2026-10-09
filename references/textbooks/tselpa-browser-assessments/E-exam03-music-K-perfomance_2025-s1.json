@@ -1,0 +1,73 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-music-K_2025&tab=E-exam03-music-K-perfomance_2025",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2418774');",
+          "resourceId": "2418774",
+          "title": "음악(최)_3_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\음악(최)_3_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "연주",
+      "lessons": [
+        {
+          "action": "downloadFile('2418795');",
+          "resourceId": "2418795",
+          "title": "음악(최)_3_연주_수행평가_3-1",
+          "downloadPath": null,
+          "status": "download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2418877');",
+          "resourceId": "2418877",
+          "title": "음악(최)_3_연주_수행평가_3-2",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "감상",
+      "lessons": [
+        {
+          "action": "downloadFile('2418782');",
+          "resourceId": "2418782",
+          "title": "음악(최)_3_감상_수행평가_3-1",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2418788');",
+          "resourceId": "2418788",
+          "title": "음악(최)_3_감상_수행평가_3-2",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "창작",
+      "lessons": [
+        {
+          "action": "downloadFile('2418880');",
+          "resourceId": "2418880",
+          "title": "음악(최)_3_창작_수행평가_3-1",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2418883');",
+          "resourceId": "2418883",
+          "title": "음악(최)_3_창작_수행평가_3-2",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    }
+  ]
+}

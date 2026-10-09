@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/3-1_%EA%B3%BC%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "과학",
+  "fileName": "3-1_과학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 3,
+      "semester": 1,
+      "listedUnit": "1. 힘과 우리 생활~4. 생물의 한살이",
+      "sourceManifest": "3-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "3-1_과학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 힘과 우리 생활",
+          "title": "수평 잡기 활동을 통해 물체의 무게 비교하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 힘과 우리 생활",
+          "title": "용수철저울을 사용해 물체의 무게 비교하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 힘과 우리 생활",
+          "title": "도구를 이용해 물체를 들어 올릴 때 드는 힘의 크기 알아보기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 동물의 생활",
+          "title": "여러 가지 동물을 관찰하여 특징에 따라 분류하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 동물의 생활",
+          "title": "극지방이나 사막에 사는 동물의 생김새와 생활 방식 알아보기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 동물의 생활",
+          "title": "동물의 특징을 이용한 생활용품 설계하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 식물의 생활",
+          "title": "식물의 잎을 관찰하고 분류하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 식물의 생활",
+          "title": "물에 사는 식물의 생김새와 생활 방식 조사하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 식물의 생활",
+          "title": "식물의 특징을 이용한 생활용품 설계하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 생물의 한살이",
+          "title": "배추흰나비의 한살이를 관찰하고 글과 그림으로 표현하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 생물의 한살이",
+          "title": "식물이 자라는 데 필요한 조건을 알아보는 실험을 설계하여 수행하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 생물의 한살이",
+          "title": "생물에 따라 한살이의 유형이 다양함을 소개하는 자료를 만들어 공유하기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

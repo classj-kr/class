@@ -1,0 +1,84 @@
+{
+  "heading": "2학년 2학기",
+  "rows": [
+    {
+      "files": [
+        {
+          "fileName": "2-2_국어_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%EA%B5%AD%EC%96%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "국어",
+      "unit": "1. 장면을 상상하며 ~ 8. 나도 작가"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-2_수학_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%EC%88%98%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "수학",
+      "unit": "1. 네 자리 수 ~ 6. 규칙 찾기"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-2_통합_계절_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EA%B3%84%EC%A0%88_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "1. 계절"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-2_통합_인물_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EC%9D%B8%EB%AC%BC_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "2. 인물"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-2_통합_물건_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EB%AC%BC%EA%B1%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "3. 물건"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-2_통합_기억_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EA%B8%B0%EC%96%B5_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "4. 기억"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-2_통합_전체_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EC%A0%84%EC%B2%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "[전체]1. 계절~4. 기억"
+    }
+  ],
+  "url": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do",
+  "observedAt": "2026-10-09T11:00:27.651Z"
+}

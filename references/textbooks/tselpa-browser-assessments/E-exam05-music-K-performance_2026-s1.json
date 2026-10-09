@@ -1,0 +1,97 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-music-K_2026&tab=E-exam05-music-K-performance_2026",
+  "groups": [
+    {
+      "title": "1. 톡톡, 새롭게 출발해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2708416');",
+          "resourceId": "2708416",
+          "title": "음악5(최)_1단원_수행평가_연주",
+          "downloadPath": "D:\\Downloads\\음악5(최)_1단원_수행평가_연주.hwp"
+        },
+        {
+          "action": "downloadFile('2708418');",
+          "resourceId": "2708418",
+          "title": "음악5(최)_1단원_수행평가_감상",
+          "downloadPath": "D:\\Downloads\\음악5(최)_1단원_수행평가_감상.hwp"
+        },
+        {
+          "action": "downloadFile('2708419');",
+          "resourceId": "2708419",
+          "title": "음악5(최)_1단원_수행평가_창작",
+          "downloadPath": "D:\\Downloads\\음악5(최)_1단원_수행평가_창작.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 폴짝, 신나게 즐겨요",
+      "lessons": [
+        {
+          "action": "downloadFile('2708445');",
+          "resourceId": "2708445",
+          "title": "음악5(최)_2단원_수행평가_연주",
+          "downloadPath": "D:\\Downloads\\음악5(최)_2단원_수행평가_연주.hwp"
+        },
+        {
+          "action": "downloadFile('2708448');",
+          "resourceId": "2708448",
+          "title": "음악5(최)_2단원_수행평가_감상",
+          "downloadPath": "D:\\Downloads\\음악5(최)_2단원_수행평가_감상.hwp"
+        },
+        {
+          "action": "downloadFile('2708450');",
+          "resourceId": "2708450",
+          "title": "음악5(최)_2단원_수행평가_창작",
+          "downloadPath": "D:\\Downloads\\음악5(최)_2단원_수행평가_창작.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 쑥쑥, 함께 자라요",
+      "lessons": [
+        {
+          "action": "downloadFile('2708453');",
+          "resourceId": "2708453",
+          "title": "음악5(최)_3단원_수행평가_연주",
+          "downloadPath": "D:\\Downloads\\음악5(최)_3단원_수행평가_연주.hwp"
+        },
+        {
+          "action": "downloadFile('2708454');",
+          "resourceId": "2708454",
+          "title": "음악5(최)_3단원_수행평가_감상",
+          "downloadPath": "D:\\Downloads\\음악5(최)_3단원_수행평가_감상.hwp"
+        },
+        {
+          "action": "downloadFile('2708456');",
+          "resourceId": "2708456",
+          "title": "음악5(최)_3단원_수행평가_창작",
+          "downloadPath": "D:\\Downloads\\음악5(최)_3단원_수행평가_창작.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 활짝, 아름답게 펼쳐요",
+      "lessons": [
+        {
+          "action": "downloadFile('2708464');",
+          "resourceId": "2708464",
+          "title": "음악5(최)_4단원_수행평가_연주",
+          "downloadPath": "D:\\Downloads\\음악5(최)_4단원_수행평가_연주.hwp"
+        },
+        {
+          "action": "downloadFile('2708467');",
+          "resourceId": "2708467",
+          "title": "음악5(최)_4단원_수행평가_감상",
+          "downloadPath": "D:\\Downloads\\음악5(최)_4단원_수행평가_감상.hwp"
+        },
+        {
+          "action": "downloadFile('2708473');",
+          "resourceId": "2708473",
+          "title": "음악5(최)_4단원_수행평가_창작",
+          "downloadPath": "D:\\Downloads\\음악5(최)_4단원_수행평가_창작.hwp"
+        }
+      ]
+    }
+  ]
+}

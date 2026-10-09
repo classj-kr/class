@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-1_%ED%86%B5%ED%95%A9_%ED%83%90%ED%97%98_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-1_통합_탐험_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 1,
+      "listedUnit": "4. 탐험",
+      "sourceManifest": "1-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-1_통합_탐험_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "탐험",
+          "title": "탐험을 떠날 때 가져갈 물건을 생각하고, 그 물건의 용도 소개하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "탐험",
+          "title": "탐험할 세상의 모습을 소리로 표현하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "탐험",
+          "title": "또 다른 세계를 탐험할 탐험 계획서를 만들고 함께 가고 싶은 사람 초대하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

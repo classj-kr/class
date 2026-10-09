@@ -1,0 +1,84 @@
+{
+  "heading": "2학년 1학기",
+  "rows": [
+    {
+      "files": [
+        {
+          "fileName": "2-1_국어_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%EA%B5%AD%EC%96%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "국어",
+      "unit": "1. 만나서 반가워요! ~ 8. 다양한 작품을 감상해요"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-1_수학_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%EC%88%98%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "수학",
+      "unit": "1. 세 자리 수 ~ 6. 곱셈"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-1_통합_나_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EB%82%98_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "1. 나"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-1_통합_자연_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EC%9E%90%EC%97%B0_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "2. 자연"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-1_통합_마을_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EB%A7%88%EC%9D%84_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "3. 마을"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-1_통합_세계_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EC%84%B8%EA%B3%84_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "4. 세계"
+    },
+    {
+      "files": [
+        {
+          "fileName": "2-1_통합_전체_수행평가.hwp",
+          "label": "수행평가 계획서 및 수행평가지",
+          "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EC%A0%84%EC%B2%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp"
+        }
+      ],
+      "subject": "통합교과",
+      "unit": "[전체]1. 나~4. 세계"
+    }
+  ],
+  "url": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do",
+  "observedAt": "2026-10-09T11:00:25.801Z"
+}

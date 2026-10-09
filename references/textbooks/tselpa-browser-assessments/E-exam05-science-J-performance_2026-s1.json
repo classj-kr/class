@@ -1,0 +1,157 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-science-J_2026&tab=E-exam05-science-J-performance_2026",
+  "groups": [
+    {
+      "title": "1. 지층과 화석",
+      "lessons": [
+        {
+          "action": "downloadFile('2696732');",
+          "resourceId": "2696732",
+          "title": "과학(정)_5-1_1단원_2~4차시_수행평가(1)",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-1_2-4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2900898');",
+          "resourceId": "2900898",
+          "title": "과학(정)_5-1_1단원_2~4차시_수행평가(2)",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-1_2-4차시_수행평가(2).hwp"
+        },
+        {
+          "action": "downloadFile('2675662');",
+          "resourceId": "2675662",
+          "title": "과학(정)_5-1_1단원_5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-1_5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2675663');",
+          "resourceId": "2675663",
+          "title": "과학(정)_5-1_1단원_7~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-1_7-8차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2900899');",
+          "resourceId": "2900899",
+          "title": "과학(정)_5-1_1단원_9차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-1_9차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 빛의 성질",
+      "lessons": [
+        {
+          "action": "downloadFile('2696734');",
+          "resourceId": "2696734",
+          "title": "과학(정)_5-1_2단원_2~3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-2_2-3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2675667');",
+          "resourceId": "2675667",
+          "title": "과학(정)_5-1_2단원_4~5차시_수행평가(1)",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-2_4-5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2900962');",
+          "resourceId": "2900962",
+          "title": "과학(정)_5-1_2단원_4~5차시_수행평가(2)",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-2_4-5차시_수행평가(2).hwp"
+        },
+        {
+          "action": "downloadFile('2675668');",
+          "resourceId": "2675668",
+          "title": "과학(정)_5-1_2단원_8차시_수행평가(1)",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-2_8차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2900963');",
+          "resourceId": "2900963",
+          "title": "과학(정)_5-1_2단원_8차시_수행평가(2)",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-2_8차시_수행평가(2).hwp"
+        },
+        {
+          "action": "downloadFile('2696736');",
+          "resourceId": "2696736",
+          "title": "과학(정)_5-1_2단원_9~11차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-2_9-11차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 용해와 용액",
+      "lessons": [
+        {
+          "action": "downloadFile('2900977');",
+          "resourceId": "2900977",
+          "title": "과학(정)_5-1_3단원_2차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-3_2차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2675669');",
+          "resourceId": "2675669",
+          "title": "과학(정)_5-1_3단원_3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-3_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2675670');",
+          "resourceId": "2675670",
+          "title": "과학(정)_5-1_3단원_4~5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-3_4-5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2696737');",
+          "resourceId": "2696737",
+          "title": "과학(정)_5-1_3단원_6~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-3_6-8차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2900978');",
+          "resourceId": "2900978",
+          "title": "과학(정)_5-1_3단원_8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-3_8차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2696738');",
+          "resourceId": "2696738",
+          "title": "과학(정)_5-1_3단원_10~11차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-3_10-11차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 우리 몸의 구조와 기능",
+      "lessons": [
+        {
+          "action": "downloadFile('2675673');",
+          "resourceId": "2675673",
+          "title": "과학(정)_5-1_4단원_2~3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-4_2-3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2901017');",
+          "resourceId": "2901017",
+          "title": "과학(정)_5-1_4단원_4차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-4_4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2675674');",
+          "resourceId": "2675674",
+          "title": "과학(정)_5-1_4단원_6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-4_6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2901018');",
+          "resourceId": "2901018",
+          "title": "과학(정)_5-1_4단원_7차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-4_7차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2696740');",
+          "resourceId": "2696740",
+          "title": "과학(정)_5-1_4단원_9~11차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-1-4_9-11차시_수행평가.hwp"
+        }
+      ]
+    }
+  ]
+}

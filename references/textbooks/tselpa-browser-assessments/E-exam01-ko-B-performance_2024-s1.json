@@ -1,0 +1,90 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=1&exam=E-exam01-ko-B_2024&tab=E-exam01-ko-B-performance_2024",
+  "groups": [
+    {
+      "title": "3. 낱말과 친해져요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997093');",
+          "resourceId": "1997093",
+          "title": "국어1-1_03단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_03단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996981');",
+          "resourceId": "1996981",
+          "title": "국어1-1_03단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_03단원_수행평가_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 여러 가지 낱말을 익혀요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997094');",
+          "resourceId": "1997094",
+          "title": "국어1-1_04단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_04단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996982');",
+          "resourceId": "1996982",
+          "title": "국어1-1_04단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_04단원_수행평가_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 반갑게 인사해요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997095');",
+          "resourceId": "1997095",
+          "title": "국어1-1_05단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_05단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996983');",
+          "resourceId": "1996983",
+          "title": "국어1-1_05단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_05단원_수행평가_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 또박또박 읽어요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997096');",
+          "resourceId": "1997096",
+          "title": "국어1-1_06단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_06단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996984');",
+          "resourceId": "1996984",
+          "title": "국어1-1_06단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_06단원_수행평가_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "7. 알맞은 낱말을 찾아요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997097');",
+          "resourceId": "1997097",
+          "title": "국어1-1_07단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_07단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996985');",
+          "resourceId": "1996985",
+          "title": "국어1-1_07단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_07단원_수행평가_1회.hwp"
+        }
+      ]
+    }
+  ]
+}

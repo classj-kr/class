@@ -1,0 +1,287 @@
+{
+  "author": "강석진",
+  "grade": 5,
+  "groups": [
+    {
+      "lessons": [
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=12",
+          "period": "1 차시",
+          "subunit": null,
+          "topic": "혼합물의 분리"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=16",
+          "period": "2 차시",
+          "subunit": null,
+          "topic": "1. 혼합물을 알아볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=18",
+          "period": "3 차시",
+          "subunit": null,
+          "topic": "2. 알갱이의 크기가 다른 고체 혼합물은 어떻게 분리할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=20",
+          "period": "4 차시",
+          "subunit": null,
+          "topic": "3. 골고루 섞이지 않는 액체 혼합물은 어떻게 분리할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=22",
+          "period": "5~6 차시",
+          "subunit": null,
+          "topic": "4. 물에 용해되는 성질이 다른 고체 혼합물은 어떻게 분리할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=26",
+          "period": "7 차시",
+          "subunit": null,
+          "topic": "5. 혼합물의 분리를 이용한 장치에는 어떤 것이 있을까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=28",
+          "period": "8~9 차시",
+          "subunit": null,
+          "topic": "6. 혼합물의 분리를 이용한 장치를 소개해 보자!"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=30",
+          "period": "세상 속 과학 이야기",
+          "subunit": null,
+          "topic": "혼합물의 분리를 이용한 우리 조상의 지혜"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=32",
+          "period": "10 차시",
+          "subunit": null,
+          "topic": "스스로 정리해요"
+        }
+      ],
+      "unit": "혼합물의 분리"
+    },
+    {
+      "lessons": [
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=34",
+          "period": "1 차시",
+          "subunit": null,
+          "topic": "열과 우리 생활"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=38",
+          "period": "2 차시",
+          "subunit": null,
+          "topic": "1. 따뜻하고 차가운 정도를 어떻게 표현할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=40",
+          "period": "3 차시",
+          "subunit": null,
+          "topic": "2. 온도계를 사용하여 온도를 측정해 볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=42",
+          "period": "4 차시",
+          "subunit": null,
+          "topic": "3. 온도가 다른 두 물체가 접촉하면 온도는 각각 어떻게 변할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=44",
+          "period": "5 차시",
+          "subunit": null,
+          "topic": "4. 고체에서 열은 어떻게 이동할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=46",
+          "period": "6~7 차시",
+          "subunit": null,
+          "topic": "5. 액체와 기체에서 열은 어떻게 이동할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=50",
+          "period": "8 차시",
+          "subunit": null,
+          "topic": "6. 빛에 의한 열의 이동을 알아볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=52",
+          "period": "9 차시",
+          "subunit": null,
+          "topic": "7. 열의 이동 방식이 다양함을 설명해 볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=54",
+          "period": "10 차시",
+          "subunit": null,
+          "topic": "8. 일상생활에서 단열을 어떻게 이용할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=56",
+          "period": "11~12 차시",
+          "subunit": null,
+          "topic": "9. 온도를 오랫동안 일정하게 유지할 수 있는 장치를 만들어 보자!"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=58",
+          "period": "세상 속 과학 이야기",
+          "subunit": null,
+          "topic": "흰개미의 냉방 기술"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=60",
+          "period": "13 차시",
+          "subunit": null,
+          "topic": "스스로 정리해요"
+        }
+      ],
+      "unit": "열과 우리 생활"
+    },
+    {
+      "lessons": [
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=62",
+          "period": "1 차시",
+          "subunit": null,
+          "topic": "날씨와 우리 생활"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=66",
+          "period": "2 차시",
+          "subunit": null,
+          "topic": "1. 기상 요소를 알아볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=68",
+          "period": "3 차시",
+          "subunit": null,
+          "topic": "2. 기상 자료에서 규칙성을 찾아볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=70",
+          "period": "4 차시",
+          "subunit": null,
+          "topic": "3. 날씨는 우리 생활에 어떤 영향을 줄까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=72",
+          "period": "5~6 차시",
+          "subunit": null,
+          "topic": "4. 이슬과 안개는 어떻게 생길까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=74",
+          "period": "7 차시",
+          "subunit": null,
+          "topic": "5. 이슬, 안개, 구름을 비교해 볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=76",
+          "period": "8 차시",
+          "subunit": null,
+          "topic": "6. 고기압과 저기압을 알아볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=78",
+          "period": "9 차시",
+          "subunit": null,
+          "topic": "7. 바닷가에서 바람은 어떻게 불까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=82",
+          "period": "10 차시",
+          "subunit": null,
+          "topic": "8. 날씨의 특징을 기상 요소로 표현해 볼까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=84",
+          "period": "11~12 차시",
+          "subunit": null,
+          "topic": "9. 날씨 알림 띄움 창을 만들어 보자!"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=86",
+          "period": "세상 속 과학 이야기",
+          "subunit": null,
+          "topic": "인공지능(AI)을 활용한 일기 예보"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=88",
+          "period": "13 차시",
+          "subunit": null,
+          "topic": "스스로 정리해요"
+        }
+      ],
+      "unit": "날씨와 우리 생활"
+    },
+    {
+      "lessons": [
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=90",
+          "period": "1 차시",
+          "subunit": null,
+          "topic": "자원과 에너지"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=94",
+          "period": "2 차시",
+          "subunit": null,
+          "topic": "1. 우리는 생활에서 어떤 자원을 이용할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=96",
+          "period": "3 차시",
+          "subunit": null,
+          "topic": "2. 자원을 계속 쓰면 어떻게 될까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=98",
+          "period": "4~5 차시",
+          "subunit": null,
+          "topic": "3. 재생에너지에는 어떤 것이 있을까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=102",
+          "period": "6 차시",
+          "subunit": null,
+          "topic": "4. 에너지를 지속가능하게 이용하려면 어떻게 해야 할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=104",
+          "period": "7~8 차시",
+          "subunit": null,
+          "topic": "5. 자원과 에너지를 효율적으로 이용하려면 어떻게 해야 할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=108",
+          "period": "9 차시",
+          "subunit": null,
+          "topic": "6. 자원과 에너지를 생활 속에서 어떻게 효율적으로 이용할까요?"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=110",
+          "period": "10~11 차시",
+          "subunit": null,
+          "topic": "7. 자원과 에너지의 효율적 이용을 주제로 한 공익 광고를 만들어 공유해 보자!"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=112",
+          "period": "세상 속 과학 이야기",
+          "subunit": null,
+          "topic": "지속가능하게 에너지를 이용하는 에너지 자립 마을"
+        },
+        {
+          "bookUrl": "https://ibook.vivasam.com/CBS_iBook/2473/contents/index.html?skin=e-usb&page=114",
+          "period": "12 차시",
+          "subunit": null,
+          "topic": "스스로 정리해요"
+        }
+      ],
+      "unit": "자원과 에너지"
+    }
+  ],
+  "semester": 2,
+  "subject": "과학",
+  "url": "https://ibook.vivasam.com/CBS_iBook/2473/contents/intro/intro.html"
+}

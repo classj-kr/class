@@ -1,0 +1,217 @@
+{
+  "book": "과학 6-2(강석진)",
+  "grade": "107006",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_1_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610127",
+          "title": "수행 평가 플러스 - 1.계절의 변화"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_1_수행 평가.hwp",
+          "resourceId": "CN030-598158",
+          "title": "수행 평가 - 1.계절의 변화"
+        }
+      ],
+      "unit": "1.계절의 변화"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_2_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610128",
+          "title": "수행 평가 플러스 - 2.물질의 연소"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_2_수행 평가.hwp",
+          "resourceId": "CN030-598159",
+          "title": "수행 평가 - 2.물질의 연소"
+        }
+      ],
+      "unit": "2.물질의 연소"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_3_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610129",
+          "title": "수행 평가 플러스 - 3.전기의 이용"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_3_수행 평가.hwp",
+          "resourceId": "CN030-598160",
+          "title": "수행 평가 - 3.전기의 이용"
+        }
+      ],
+      "unit": "3.전기의 이용"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_4_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610130",
+          "title": "수행 평가 플러스 - 4.과학과 나의 진로"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 6-2_4_수행 평가.hwp",
+          "resourceId": "CN030-598161",
+          "title": "수행 평가 - 4.과학과 나의 진로"
+        }
+      ],
+      "unit": "4.과학과 나의 진로"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-1_2_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611120",
+          "title": "수행 평가 플러스 - 2.빛의 성질"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-1_2_수행 평가.hwp",
+          "resourceId": "CN030-576030",
+          "title": "수행 평가 - 2.빛의 성질"
+        }
+      ],
+      "unit": "[보완 6-2] 빛의 성질"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-1_4_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611122",
+          "title": "수행 평가 플러스 - 4.우리 몸의 구조와 기능"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-1_4_수행 평가.hwp",
+          "resourceId": "CN030-576032",
+          "title": "수행 평가 - 4.우리 몸의 구조와 기능"
+        }
+      ],
+      "unit": "[보완 6-2] 우리 몸의 구조와 기능"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_4_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610118",
+          "title": "수행 평가 플러스 - 4.자원과 에너지"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_4_수행 평가.hwp",
+          "resourceId": "CN030-598117",
+          "title": "수행 평가 - 4.자원과 에너지"
+        }
+      ],
+      "unit": "[보완 6-2] 자원과 에너지"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-1_1_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611061",
+          "title": "수행 평가 플러스 - 1.힘과 우리 생활"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-1_1_수행 평가.hwp",
+          "resourceId": "CN030-449011",
+          "title": "수행 평가 - 1.힘과 우리 생활"
+        }
+      ],
+      "unit": "[보완 6-1] 힘과 우리 생활"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_2_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611092",
+          "title": "수행 평가 플러스 - 2.지구와 바다"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_2_수행 평가.hwp",
+          "resourceId": "CN030-540432",
+          "title": "수행 평가 - 2.지구와 바다"
+        }
+      ],
+      "unit": "[보완 6-1] 지구와 바다"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_4_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611094",
+          "title": "수행 평가 플러스 - 4.감염병과 건강한 생활"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_4_수행 평가.hwp",
+          "resourceId": "CN030-540434",
+          "title": "수행 평가 - 4.감염병과 건강한 생활"
+        }
+      ],
+      "unit": "[보완 6-1] 감염병과 건강한 생활"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 4-2_1_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611103",
+          "title": "수행 평가 플러스 - 1.밤하늘 관찰"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 4-2_1_수행 평가.hwp",
+          "resourceId": "CN030-540608",
+          "title": "수행 평가 - 1.밤하늘 관찰"
+        }
+      ],
+      "unit": "[보완 6-1] 밤하늘 관찰"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 4-2_3_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611105",
+          "title": "수행 평가 플러스 - 3.여러 가지 기체"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 4-2_3_수행 평가.hwp",
+          "resourceId": "CN030-540610",
+          "title": "수행 평가 - 3.여러 가지 기체"
+        }
+      ],
+      "unit": "[보완 6-1] 여러 가지 기체"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106559&term=108002&grade=107006",
+  "observedAt": "2026-10-09T10:44:07.001Z"
+}

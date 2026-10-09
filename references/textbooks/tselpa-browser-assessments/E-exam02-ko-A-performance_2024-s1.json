@@ -1,0 +1,73 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=2&exam=E-exam02-ko-A_2024&tab=E-exam02-ko-A-performance_2024",
+  "groups": [
+    {
+      "title": "1. 만나서 반가워요!",
+      "lessons": [
+        {
+          "action": "downloadFile('1996986');",
+          "resourceId": "1996986",
+          "title": "국어2-1_01단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-1_01단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('1997098');",
+          "resourceId": "1997098",
+          "title": "국어2-1_01단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-1_01단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 말의 재미가 솔솔",
+      "lessons": [
+        {
+          "action": "downloadFile('1997099');",
+          "resourceId": "1997099",
+          "title": "국어2-1_02단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-1_02단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996987');",
+          "resourceId": "1996987",
+          "title": "국어2-1_02단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-1_02단원_수행평가_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 겪은 일을 나타내요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997100');",
+          "resourceId": "1997100",
+          "title": "국어2-1_03단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-1_03단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996988');",
+          "resourceId": "1996988",
+          "title": "국어2-1_03단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-1_03단원_수행평가_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 분위기를 살려 읽어요",
+      "lessons": [
+        {
+          "action": "downloadFile('1997101');",
+          "resourceId": "1997101",
+          "title": "국어2-1_04단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-1_04단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('1996989');",
+          "resourceId": "1996989",
+          "title": "국어2-1_04단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-1_04단원_수행평가_1회.hwp"
+        }
+      ]
+    }
+  ]
+}

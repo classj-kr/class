@@ -1,0 +1,129 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/4-1_%EC%88%98%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "수학",
+  "fileName": "4-1_수학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 4,
+      "semester": 1,
+      "listedUnit": "1. 큰 수 ~ 6. 규칙과 관계",
+      "sourceManifest": "4-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "4-1_수학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 큰 수",
+          "title": "다섯 자리 수를 쓰고 읽기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 큰 수",
+          "title": "천억 단위까지 수를 읽고 쓰기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 큰 수",
+          "title": "큰 수 뛰어 세기와 수의 크기 비교하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 각도",
+          "title": "각도기를 이용하여 주어진 각의 크기 재기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 각도",
+          "title": "직각과 비교하여 예각과 둔각 구별하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 각도",
+          "title": "사각형의 네 각의 크기의 합이 360°임을 알고, 360°가 되는 이유 설명하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 곱셈과 나눗셈",
+          "title": "(세 자리 수)×(몇십몇)의 계산 원리와 형식을 이해하고 계산하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 곱셈과 나눗셈",
+          "title": "(세 자리 수)÷(두 자리 수)의 계산 원리와 형식을 이해하고 계산하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 곱셈과 나눗셈",
+          "title": "어림셈을 활용하여 문제 해결하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 평면도형의 이동",
+          "title": "점을 밀고, 점을 움직인 방법 설명하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 평면도형의 이동",
+          "title": "평면도형을 뒤집기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 평면도형의 이동",
+          "title": "평면도형의 돌리기를 이용하여 규칙적인 무늬 꾸미기",
+          "table": 0,
+          "sourceRow": 48
+        },
+        {
+          "unit": "5. 막대그래프",
+          "title": "막대그래프를 보고 여러 가지 통계적 사실 알기",
+          "table": 0,
+          "sourceRow": 52
+        },
+        {
+          "unit": "5. 막대그래프",
+          "title": "자료를 조사하여 막대그래프로 나타내기",
+          "table": 0,
+          "sourceRow": 56
+        },
+        {
+          "unit": "5. 막대그래프",
+          "title": "막대그래프를 보고 알 수 있는 내용을 글로 완성하기",
+          "table": 0,
+          "sourceRow": 60
+        },
+        {
+          "unit": "6. 규칙과 관계",
+          "title": "도형의 배열에서 규칙 찾기",
+          "table": 0,
+          "sourceRow": 64
+        },
+        {
+          "unit": "6. 규칙과 관계",
+          "title": "계산식의 배열에서 규칙 찾기",
+          "table": 0,
+          "sourceRow": 68
+        },
+        {
+          "unit": "6. 규칙과 관계",
+          "title": "크기가 같은 두 양의 관계를 등호를 사용한 식으로 나타내기",
+          "table": 0,
+          "sourceRow": 72
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

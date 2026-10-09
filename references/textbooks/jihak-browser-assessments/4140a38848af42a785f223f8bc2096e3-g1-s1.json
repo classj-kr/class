@@ -1,0 +1,51 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=1&term=1&textbookSeq=4140a38848af42a785f223f8bc2096e3&order=1&tabType=UD002",
+  "textbook": "학교 1-1\n국정",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "8db97ec93da843bc8926d200a11e86bf",
+          "title": "교과 평어(통합교과 1-1)",
+          "downloadPath": "D:\\Downloads\\(1학년1학기) 통합교과 평어_지학사.hwp"
+        },
+        {
+          "resourceId": "282e5eed88ff41f6be39087f9340426b",
+          "title": "수행평가 계획서(학교 1-1)",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가계획서.hwp"
+        },
+        {
+          "resourceId": "a85d5611fe8544928b6552b9634cdeb8",
+          "title": "수행평가_학교_1회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가(1회).hwp"
+        },
+        {
+          "resourceId": "d4aeb29c898c421f8e968e7639b5e52c",
+          "title": "수행평가_학교_2회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가(2회).hwp"
+        },
+        {
+          "resourceId": "b91e1a495c214054b7d111c36afa07ee",
+          "title": "수행평가_학교_3회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가(3회).hwp"
+        },
+        {
+          "resourceId": "0200cf0d58fe45f48548277f70a6664e",
+          "title": "수행평가_학교_4회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가(4회).hwp"
+        },
+        {
+          "resourceId": "151f427ea63243c8a227d897c20e3dfb",
+          "title": "수행평가_학교_5회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가(5회).hwp"
+        },
+        {
+          "resourceId": "17c4e3fd32204e63ac939ab51b663f55",
+          "title": "수행평가_학교_6회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_학교_수행평가(6회).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    }
+  ]
+}

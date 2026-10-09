@@ -1,0 +1,127 @@
+{
+  "book": "국어 3-2(나)",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "단원 3~4차시",
+      "resourceId": "10062350",
+      "title": "[수행평가 HWP] 매체_3~4차시_수행평가",
+      "unit": "매체. 온라인 상황에서 글을 써요"
+    },
+    {
+      "context": "단원 5~6차시",
+      "resourceId": "10062351",
+      "title": "[수행평가 HWP] 매체_5~6차시_수행평가",
+      "unit": "매체. 온라인 상황에서 글을 써요"
+    },
+    {
+      "context": "4-1 단원 2차시",
+      "resourceId": "10062404",
+      "title": "[수행평가 HWP] 4_2차시_수행평가",
+      "unit": "4. 서로 존중하며 대화해요"
+    },
+    {
+      "context": "4-1 단원 3~4차시",
+      "resourceId": "10062405",
+      "title": "[수행평가 HWP] 4_3~4차시_수행평가",
+      "unit": "4. 서로 존중하며 대화해요"
+    },
+    {
+      "context": "4-1 단원 5~6차시",
+      "resourceId": "10062407",
+      "title": "[수행평가 HWP] 4_5~6차시_수행평가",
+      "unit": "4. 서로 존중하며 대화해요"
+    },
+    {
+      "context": "4-2 단원 7차시",
+      "resourceId": "10062409",
+      "title": "[수행평가 HWP] 4_7차시_수행평가",
+      "unit": "4. 서로 존중하며 대화해요"
+    },
+    {
+      "context": "4-2 단원 8~9차시",
+      "resourceId": "10062411",
+      "title": "[수행평가 HWP] 4_8~9차시_수행평가",
+      "unit": "4. 서로 존중하며 대화해요"
+    },
+    {
+      "context": "4-2 단원 10~11차시",
+      "resourceId": "10062412",
+      "title": "[수행평가 HWP] 4_10~11차시_수행평가",
+      "unit": "4. 서로 존중하며 대화해요"
+    },
+    {
+      "context": "5-1 단원 2~3차시",
+      "resourceId": "10064445",
+      "title": "[수행평가 HWP] 5_2~3차시_수행평가",
+      "unit": "5. 사전으로 여는 세상"
+    },
+    {
+      "context": "5-1 단원 4~5차시",
+      "resourceId": "10064446",
+      "title": "[수행평가 HWP] 5_4~5차시_수행평가",
+      "unit": "5. 사전으로 여는 세상"
+    },
+    {
+      "context": "5-1 단원 6~7차시",
+      "resourceId": "10064447",
+      "title": "[수행평가 HWP] 5_6~7차시_수행평가",
+      "unit": "5. 사전으로 여는 세상"
+    },
+    {
+      "context": "5-2 단원 8~9차시",
+      "resourceId": "10064448",
+      "title": "[수행평가 HWP] 5_8~9차시_수행평가",
+      "unit": "5. 사전으로 여는 세상"
+    },
+    {
+      "context": "5-2 단원 10~11차시",
+      "resourceId": "10064449",
+      "title": "[수행평가 HWP] 5_10~11차시_수행평가",
+      "unit": "5. 사전으로 여는 세상"
+    },
+    {
+      "context": "6-1 단원 2차시",
+      "resourceId": "10064614",
+      "title": "[수행평가 HWP] 6_2차시_수행평가",
+      "unit": "6. 감상과 표현의 즐거움"
+    },
+    {
+      "context": "6-1 단원 3~4차시",
+      "resourceId": "10064616",
+      "title": "[수행평가 HWP] 6_3~4차시_수행평가",
+      "unit": "6. 감상과 표현의 즐거움"
+    },
+    {
+      "context": "6-1 단원 5~6차시",
+      "resourceId": "10064618",
+      "title": "[수행평가 HWP] 6_5~6차시_수행평가",
+      "unit": "6. 감상과 표현의 즐거움"
+    },
+    {
+      "context": "6-2 단원 7~8차시",
+      "resourceId": "10064619",
+      "title": "[수행평가 HWP] 6_7~8차시_수행평가",
+      "unit": "6. 감상과 표현의 즐거움"
+    },
+    {
+      "context": "6-2 단원 9차시",
+      "resourceId": "10064620",
+      "title": "[수행평가 HWP] 6_9차시_수행평가",
+      "unit": "6. 감상과 표현의 즐거움"
+    },
+    {
+      "context": "6-2 단원 10~11차시",
+      "resourceId": "10064622",
+      "title": "[수행평가 HWP] 6_10~11차시_수행평가",
+      "unit": "6. 감상과 표현의 즐거움"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1577&gradeCode=03&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 3-2(나)",
+  "sourceId": "1577",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EB%82%98_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "2-1_통합_나_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 2,
+      "semester": 1,
+      "listedUnit": "1. 나",
+      "sourceManifest": "2-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "2-1_통합_나_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "나",
+          "title": "몸을 깨끗이 해야 하는 이유를 알고 다짐하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "나",
+          "title": "몸이 아플 때 대처하는 방법 설명하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "나",
+          "title": "내가 좋아하는 것을 표현하고 ‘나는 누구일까?’놀이 참여하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

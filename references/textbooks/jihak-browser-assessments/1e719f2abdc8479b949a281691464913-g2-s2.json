@@ -1,0 +1,51 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=2&term=2&textbookSeq=1e719f2abdc8479b949a281691464913&order=1&tabType=UD002",
+  "textbook": "인물 2-2\n국정",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "253ff2ec447646bab95e02df725b46f9",
+          "title": "교과 평어(통합교과 2-2)",
+          "downloadPath": "D:\\Downloads\\(2학년 2학기) 통합교과 평어_지학사 (1).hwp"
+        },
+        {
+          "resourceId": "0203cf08341e4b5ebc941c775bccfb5c",
+          "title": "수행평가 계획서(인물 2-2)",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가계획서.hwp"
+        },
+        {
+          "resourceId": "33f5126070fc4942b8e4cb5e80032e9e",
+          "title": "수행평가_인물_1회",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가(1회).hwp"
+        },
+        {
+          "resourceId": "9d141967bf3b4147bfc4e2030cb9083f",
+          "title": "수행평가_인물_2회",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가(2회).hwp"
+        },
+        {
+          "resourceId": "60a53d96ad4b49689888d1a2bde79cdd",
+          "title": "수행평가_인물_3회",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가(3회).hwp"
+        },
+        {
+          "resourceId": "dce6d611deaf4462a35d1943401bc5bf",
+          "title": "수행평가_인물_4회",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가(4회).hwp"
+        },
+        {
+          "resourceId": "2af4f84512a44f678aed4101d2229616",
+          "title": "수행평가_인물_5회",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가(5회).hwp"
+        },
+        {
+          "resourceId": "45039df5296e4902b1f26a0d07d565ab",
+          "title": "수행평가_인물_6회",
+          "downloadPath": "D:\\Downloads\\2-2_통합_인물_수행평가(6회).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/6%ED%95%99%EB%85%84_%EC%B2%B4%EC%9C%A1_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "체육",
+  "fileName": "6학년_체육_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 6,
+      "semester": 1,
+      "listedUnit": "1. 운동~3. 표현",
+      "sourceManifest": "6-1.json"
+    },
+    {
+      "grade": 6,
+      "semester": 2,
+      "listedUnit": "1. 운동~3. 표현",
+      "sourceManifest": "6-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "6학년_체육_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 운동",
+          "title": "협응성을 기를 수 있는 운동에 대해 알아보고, 활동에 참여한 나의 모습 되돌아보기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 운동",
+          "title": "운동 중이나 일상생활에서 발생할 수 있는 안전사고에 알맞은 대처 방법을 조사하여 발표하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "2. 스포츠",
+          "title": "스케이트를 타기 위한 기본자세와 기본 기능 알고 익히기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 스포츠",
+          "title": "친구와 소통하며 야구형 게임 하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 스포츠",
+          "title": "서핑의 기본자세와 기능을 익혀 서핑하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "3. 표현",
+          "title": "음악에 맞춰 여러 가지 줄넘기하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 표현",
+          "title": "민속무용 영상 발표회 열기",
+          "table": 0,
+          "sourceRow": 28
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

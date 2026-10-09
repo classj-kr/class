@@ -1,0 +1,49 @@
+{
+  "book": "수학 3-2",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "1 단원 4차시",
+      "resourceId": "10051492",
+      "title": "[과정중심평가 HWP]1_4차시_과정중심평가",
+      "unit": "1. 곱셈"
+    },
+    {
+      "context": "2 단원 9차시",
+      "resourceId": "10051318",
+      "title": "[과정중심평가 HWP]2_9차시_과정중심평가",
+      "unit": "2. 원"
+    },
+    {
+      "context": "3 단원 5차시",
+      "resourceId": "10050758",
+      "title": "[과정중심평가 HWP]3_5차시_과정중심평가",
+      "unit": "3. 나눗셈"
+    },
+    {
+      "context": "4 단원 1차시",
+      "resourceId": "10049951",
+      "title": "[과정중심평가 HWP]4_1차시_과정중심평가",
+      "unit": "4. 무게와 들이"
+    },
+    {
+      "context": "5 단원 9차시",
+      "resourceId": "10049801",
+      "title": "[과정중심평가 HWP]5_9차시_과정중심평가",
+      "unit": "5. 분수"
+    },
+    {
+      "context": "6 단원 6차시",
+      "resourceId": "10049917",
+      "title": "[과정중심평가 HWP]6_6차시_과정중심평가",
+      "unit": "6. 그림그래프"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1415&gradeCode=03&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 3-2 (장혜원)",
+  "sourceId": "1415",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

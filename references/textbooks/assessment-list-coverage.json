@@ -1,0 +1,4048 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-09",
+  "scope": "list-metadata-only",
+  "completion": "in-progress",
+  "listedAssessments": 6759,
+  "withAtLeastOneListItem": 202,
+  "gradeEditionTotal": 272,
+  "meaning": "한 항목 이상 확보한 학년·교과서 조합 수이며, 전 단원·양 학기 완결을 뜻하지 않음. 연간 교과서는 semester=null. 출판사가 수행평가로 명시하지 않은 단원평가는 수행평가로 간주하지 않음.",
+  "runtimeExcludes": [
+    "publisher-original-files",
+    "publisher-criteria-text",
+    "audio",
+    "video",
+    "source-page-links"
+  ],
+  "loginBlockedGradeEditions": 62,
+  "checkedMenuWithoutPerformanceList": 8,
+  "publishers": [
+    {
+      "publisher": "교학도서",
+      "gradeEditionTotal": 4,
+      "withListMetadata": 1,
+      "listedAssessments": 4,
+      "missing": [
+        {
+          "editionId": "tb-09d08c98bfcda0b9",
+          "grade": 4,
+          "subject": "미술",
+          "reason": "performance-list-not-present-in-checked-menu"
+        },
+        {
+          "editionId": "tb-581d019eb8bc3f71",
+          "grade": 5,
+          "subject": "미술",
+          "reason": "performance-list-not-present-in-checked-menu"
+        },
+        {
+          "editionId": "tb-581d019eb8bc3f71",
+          "grade": 6,
+          "subject": "미술",
+          "reason": "performance-list-not-present-in-checked-menu"
+        }
+      ]
+    },
+    {
+      "publisher": "교학사",
+      "gradeEditionTotal": 6,
+      "withListMetadata": 5,
+      "listedAssessments": 211,
+      "missing": [
+        {
+          "editionId": "tb-f577ef7b2b9ce50c",
+          "grade": 6,
+          "subject": "실과",
+          "reason": "performance-list-not-present-in-checked-menu"
+        }
+      ]
+    },
+    {
+      "publisher": "국정",
+      "gradeEditionTotal": 14,
+      "withListMetadata": 14,
+      "listedAssessments": 1272,
+      "missing": []
+    },
+    {
+      "publisher": "금성출판사",
+      "gradeEditionTotal": 12,
+      "withListMetadata": 8,
+      "listedAssessments": 101,
+      "missing": [
+        {
+          "editionId": "tb-aacd10a7bd09e15f",
+          "grade": 3,
+          "subject": "체육",
+          "reason": "performance-list-not-present-in-checked-menu"
+        },
+        {
+          "editionId": "tb-aacd10a7bd09e15f",
+          "grade": 4,
+          "subject": "체육",
+          "reason": "performance-list-not-present-in-checked-menu"
+        },
+        {
+          "editionId": "tb-b83713cc68c714ff",
+          "grade": 5,
+          "subject": "체육",
+          "reason": "performance-list-not-present-in-checked-menu"
+        },
+        {
+          "editionId": "tb-b83713cc68c714ff",
+          "grade": 6,
+          "subject": "체육",
+          "reason": "performance-list-not-present-in-checked-menu"
+        }
+      ]
+    },
+    {
+      "publisher": "동아출판",
+      "gradeEditionTotal": 28,
+      "withListMetadata": 0,
+      "listedAssessments": 0,
+      "missing": [
+        {
+          "editionId": "tb-027c18f5ce64fc5e",
+          "grade": 3,
+          "subject": "과학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-027c18f5ce64fc5e",
+          "grade": 4,
+          "subject": "과학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-fdd62952285d7737",
+          "grade": 3,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-fdd62952285d7737",
+          "grade": 4,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-228e49bc29a6e92b",
+          "grade": 3,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-228e49bc29a6e92b",
+          "grade": 4,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-0ffb6c37769c7e72",
+          "grade": 3,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-0ffb6c37769c7e72",
+          "grade": 4,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-4d88b8ae860c5b94",
+          "grade": 3,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-4d88b8ae860c5b94",
+          "grade": 4,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-08a3477275bddfb9",
+          "grade": 3,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-08a3477275bddfb9",
+          "grade": 4,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-4669f454f2f01546",
+          "grade": 3,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-4669f454f2f01546",
+          "grade": 4,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-91088ff8a97a89a5",
+          "grade": 5,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-91088ff8a97a89a5",
+          "grade": 6,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-d2623d7a0cddf13c",
+          "grade": 5,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-d2623d7a0cddf13c",
+          "grade": 6,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-724eda72ec3769b8",
+          "grade": 5,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-724eda72ec3769b8",
+          "grade": 6,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-92bd61a5274fc1b2",
+          "grade": 5,
+          "subject": "실과",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-92bd61a5274fc1b2",
+          "grade": 6,
+          "subject": "실과",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-301d010e57b36322",
+          "grade": 5,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-301d010e57b36322",
+          "grade": 6,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-764368b1f626a109",
+          "grade": 5,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-764368b1f626a109",
+          "grade": 6,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-ebd9c1c0f8208c75",
+          "grade": 5,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-ebd9c1c0f8208c75",
+          "grade": 6,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        }
+      ]
+    },
+    {
+      "publisher": "디딤돌교육",
+      "gradeEditionTotal": 4,
+      "withListMetadata": 0,
+      "listedAssessments": 0,
+      "missing": [
+        {
+          "editionId": "tb-5a699afec30b7907",
+          "grade": 3,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-5a699afec30b7907",
+          "grade": 4,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-ff48bedb2fa611c4",
+          "grade": 5,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-ff48bedb2fa611c4",
+          "grade": 6,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        }
+      ]
+    },
+    {
+      "publisher": "미래엔",
+      "gradeEditionTotal": 30,
+      "withListMetadata": 30,
+      "listedAssessments": 1144,
+      "missing": []
+    },
+    {
+      "publisher": "비상교육",
+      "gradeEditionTotal": 28,
+      "withListMetadata": 28,
+      "listedAssessments": 799,
+      "missing": []
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "gradeEditionTotal": 30,
+      "withListMetadata": 0,
+      "listedAssessments": 0,
+      "missing": [
+        {
+          "editionId": "tb-3232588fb5e83bbb",
+          "grade": 3,
+          "subject": "과학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-3232588fb5e83bbb",
+          "grade": 4,
+          "subject": "과학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-43fbbdb4deb552ed",
+          "grade": 3,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-43fbbdb4deb552ed",
+          "grade": 4,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-6750140d16fbf8a5",
+          "grade": 3,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-6750140d16fbf8a5",
+          "grade": 4,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-6c246ae6a2953805",
+          "grade": 3,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-6c246ae6a2953805",
+          "grade": 4,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-efce8e073fed2067",
+          "grade": 3,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-efce8e073fed2067",
+          "grade": 4,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-83ac81bc96ac1535",
+          "grade": 3,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-83ac81bc96ac1535",
+          "grade": 4,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-4e83e13a85853d0d",
+          "grade": 3,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-4e83e13a85853d0d",
+          "grade": 4,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-cdec5f797a01b1b5",
+          "grade": 5,
+          "subject": "과학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-cdec5f797a01b1b5",
+          "grade": 6,
+          "subject": "과학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-3ea8ff712a76cfa7",
+          "grade": 5,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-3ea8ff712a76cfa7",
+          "grade": 6,
+          "subject": "미술",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-3ee759a2e351fff7",
+          "grade": 5,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-3ee759a2e351fff7",
+          "grade": 6,
+          "subject": "사회",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-c328ce50b190a4dc",
+          "grade": 5,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-c328ce50b190a4dc",
+          "grade": 6,
+          "subject": "수학",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-79926ca720d86a07",
+          "grade": 5,
+          "subject": "실과",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-79926ca720d86a07",
+          "grade": 6,
+          "subject": "실과",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-cfcdaff9ad30d27e",
+          "grade": 5,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-cfcdaff9ad30d27e",
+          "grade": 6,
+          "subject": "영어",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-1effb249488b73de",
+          "grade": 5,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-1effb249488b73de",
+          "grade": 6,
+          "subject": "음악",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-94e66f4d8defda0e",
+          "grade": 5,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        },
+        {
+          "editionId": "tb-94e66f4d8defda0e",
+          "grade": 6,
+          "subject": "체육",
+          "reason": "teacher-login-required"
+        }
+      ]
+    },
+    {
+      "publisher": "아침나라",
+      "gradeEditionTotal": 6,
+      "withListMetadata": 6,
+      "listedAssessments": 66,
+      "missing": []
+    },
+    {
+      "publisher": "아트앤컬처",
+      "gradeEditionTotal": 4,
+      "withListMetadata": 4,
+      "listedAssessments": 48,
+      "missing": []
+    },
+    {
+      "publisher": "와이비엠",
+      "gradeEditionTotal": 26,
+      "withListMetadata": 26,
+      "listedAssessments": 829,
+      "missing": []
+    },
+    {
+      "publisher": "음악과생활",
+      "gradeEditionTotal": 2,
+      "withListMetadata": 2,
+      "listedAssessments": 56,
+      "missing": []
+    },
+    {
+      "publisher": "지학사",
+      "gradeEditionTotal": 26,
+      "withListMetadata": 26,
+      "listedAssessments": 591,
+      "missing": []
+    },
+    {
+      "publisher": "천재교과서",
+      "gradeEditionTotal": 44,
+      "withListMetadata": 44,
+      "listedAssessments": 1272,
+      "missing": []
+    },
+    {
+      "publisher": "천재교육",
+      "gradeEditionTotal": 4,
+      "withListMetadata": 4,
+      "listedAssessments": 245,
+      "missing": []
+    },
+    {
+      "publisher": "체육과건강",
+      "gradeEditionTotal": 4,
+      "withListMetadata": 4,
+      "listedAssessments": 121,
+      "missing": []
+    }
+  ],
+  "coverage": [
+    {
+      "editionId": "tb-b7ff5672ecb44f29",
+      "publisher": "국정",
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 1,
+      "listedAssessments": 95,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b7ff5672ecb44f29",
+      "publisher": "국정",
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 2,
+      "listedAssessments": 96,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-c1bf7609f4afbb2d",
+      "publisher": "국정",
+      "subject": "수학",
+      "leadAuthor": null,
+      "grade": 1,
+      "listedAssessments": 68,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-c1bf7609f4afbb2d",
+      "publisher": "국정",
+      "subject": "수학",
+      "leadAuthor": null,
+      "grade": 2,
+      "listedAssessments": 72,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-12a375124faf801f",
+      "publisher": "국정",
+      "subject": "통합교과",
+      "leadAuthor": null,
+      "grade": 1,
+      "listedAssessments": 66,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-12a375124faf801f",
+      "publisher": "국정",
+      "subject": "통합교과",
+      "leadAuthor": null,
+      "grade": 2,
+      "listedAssessments": 62,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-027c18f5ce64fc5e",
+      "publisher": "동아출판",
+      "subject": "과학",
+      "leadAuthor": "장신호",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-027c18f5ce64fc5e",
+      "publisher": "동아출판",
+      "subject": "과학",
+      "leadAuthor": "장신호",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-b12d06ae8294d8ee",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 3,
+      "listedAssessments": 98,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b12d06ae8294d8ee",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 4,
+      "listedAssessments": 91,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-60092a0aa9b67a52",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 3,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-60092a0aa9b67a52",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 4,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3232588fb5e83bbb",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-3232588fb5e83bbb",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-5f33ba2d2ee7d2ac",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 3,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5f33ba2d2ee7d2ac",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 4,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6259a522b329b1fa",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "이상원",
+      "grade": 3,
+      "listedAssessments": 25,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6259a522b329b1fa",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "이상원",
+      "grade": 4,
+      "listedAssessments": 26,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3a81d884bab758c2",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 3,
+      "listedAssessments": 26,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3a81d884bab758c2",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 4,
+      "listedAssessments": 27,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-8932f22f488bd441",
+      "publisher": "국정",
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 3,
+      "listedAssessments": 153,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-8932f22f488bd441",
+      "publisher": "국정",
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 4,
+      "listedAssessments": 152,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5793dff92a57b5be",
+      "publisher": "국정",
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 3,
+      "listedAssessments": 56,
+      "semesterLabels": [
+        null,
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5793dff92a57b5be",
+      "publisher": "국정",
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 4,
+      "listedAssessments": 56,
+      "semesterLabels": [
+        null,
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-09d08c98bfcda0b9",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 3,
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-09d08c98bfcda0b9",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-ef17df0b40793645",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 3,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-ef17df0b40793645",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 4,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-fdd62952285d7737",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-fdd62952285d7737",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-9d949ad52c6e1af7",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 3,
+      "listedAssessments": 26,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-9d949ad52c6e1af7",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 4,
+      "listedAssessments": 26,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6af6261af960a5ab",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 3,
+      "listedAssessments": 35,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6af6261af960a5ab",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 4,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-43fbbdb4deb552ed",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-43fbbdb4deb552ed",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-4aebeddff8910228",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 3,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-4aebeddff8910228",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 4,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-358263466b89f58f",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 3,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-358263466b89f58f",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 4,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-2bd6c4146566bef1",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 3,
+      "listedAssessments": 48,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-2bd6c4146566bef1",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 4,
+      "listedAssessments": 48,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-228e49bc29a6e92b",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-228e49bc29a6e92b",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-cf31099855e85760",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 3,
+      "listedAssessments": 7,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-cf31099855e85760",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 4,
+      "listedAssessments": 9,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-c4c01bf1f131cc87",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 3,
+      "listedAssessments": 10,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-c4c01bf1f131cc87",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 4,
+      "listedAssessments": 14,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6750140d16fbf8a5",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-6750140d16fbf8a5",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-939066fb897b434f",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 3,
+      "listedAssessments": 8,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-939066fb897b434f",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 4,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-656f1971f6fa9741",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 3,
+      "listedAssessments": 20,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-656f1971f6fa9741",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 4,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-25b1f61843243ddd",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 3,
+      "listedAssessments": 10,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-25b1f61843243ddd",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 4,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-98bd422834c6ea38",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 3,
+      "listedAssessments": 10,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-98bd422834c6ea38",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 4,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0ffb6c37769c7e72",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-0ffb6c37769c7e72",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-5a699afec30b7907",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.didimdolclass.co.kr/"
+    },
+    {
+      "editionId": "tb-5a699afec30b7907",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.didimdolclass.co.kr/"
+    },
+    {
+      "editionId": "tb-70245a528f49efe7",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 3,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-70245a528f49efe7",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 4,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-949a9fff2c633502",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 3,
+      "listedAssessments": 85,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-949a9fff2c633502",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 4,
+      "listedAssessments": 67,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6c246ae6a2953805",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-6c246ae6a2953805",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-bedbc367c02cdb81",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 3,
+      "listedAssessments": 52,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-bedbc367c02cdb81",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 4,
+      "listedAssessments": 55,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-221b1c0d7654c865",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 3,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-221b1c0d7654c865",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 4,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b42b3e279bbb4058",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 3,
+      "listedAssessments": 73,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b42b3e279bbb4058",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 4,
+      "listedAssessments": 63,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-340226475c3ea050",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 3,
+      "listedAssessments": 60,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-340226475c3ea050",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 4,
+      "listedAssessments": 58,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-4d88b8ae860c5b94",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "윤여범",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-4d88b8ae860c5b94",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "윤여범",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-9278ce1db9831ed3",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 3,
+      "listedAssessments": 68,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-9278ce1db9831ed3",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 4,
+      "listedAssessments": 72,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-efce8e073fed2067",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-efce8e073fed2067",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-de5666d512727144",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 3,
+      "listedAssessments": 70,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-de5666d512727144",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 4,
+      "listedAssessments": 78,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-e5d277fdf178ef3c",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 3,
+      "listedAssessments": 55,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-e5d277fdf178ef3c",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 4,
+      "listedAssessments": 28,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0c2d61f5562fda3e",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 3,
+      "listedAssessments": 22,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0c2d61f5562fda3e",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 4,
+      "listedAssessments": 22,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-295018729dd44080",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 3,
+      "listedAssessments": 37,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-295018729dd44080",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 4,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-38a328c0b86c51ee",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 3,
+      "listedAssessments": 50,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-38a328c0b86c51ee",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 4,
+      "listedAssessments": 51,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-08a3477275bddfb9",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-08a3477275bddfb9",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-6dea03dd7193364d",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 3,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6dea03dd7193364d",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 4,
+      "listedAssessments": 17,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-acfe48faad69d0f1",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 3,
+      "listedAssessments": 30,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-acfe48faad69d0f1",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 4,
+      "listedAssessments": 32,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-83ac81bc96ac1535",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-83ac81bc96ac1535",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-aebb46993f46099a",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 3,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-aebb46993f46099a",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 4,
+      "listedAssessments": 11,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-55946ba4dea72534",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 3,
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-55946ba4dea72534",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 4,
+      "listedAssessments": 9,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-14d2792b72b03514",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 3,
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-14d2792b72b03514",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 4,
+      "listedAssessments": 15,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-00ef712240aede8a",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 3,
+      "listedAssessments": 6,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-00ef712240aede8a",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 4,
+      "listedAssessments": 6,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-15154338cb64e686",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 3,
+      "listedAssessments": 55,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-15154338cb64e686",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 4,
+      "listedAssessments": 47,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-aacd10a7bd09e15f",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-aacd10a7bd09e15f",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-4669f454f2f01546",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-4669f454f2f01546",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-a347567e387ea9b3",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 3,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-a347567e387ea9b3",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 4,
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b9f946ee7127b6f2",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 3,
+      "listedAssessments": 33,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b9f946ee7127b6f2",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 4,
+      "listedAssessments": 30,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-4e83e13a85853d0d",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 3,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-4e83e13a85853d0d",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 4,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-0cd7079bd7a7e76c",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 3,
+      "listedAssessments": 38,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0cd7079bd7a7e76c",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 4,
+      "listedAssessments": 39,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-1204fd9c821f9950",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 3,
+      "listedAssessments": 17,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-1204fd9c821f9950",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 4,
+      "listedAssessments": 19,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-bbe54a4ba3e1cff2",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 3,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-bbe54a4ba3e1cff2",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 4,
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0de5499fda0fe900",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 3,
+      "listedAssessments": 33,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0de5499fda0fe900",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 4,
+      "listedAssessments": 31,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-7db496b411cdf1b4",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 5,
+      "listedAssessments": 124,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-7db496b411cdf1b4",
+      "publisher": "미래엔",
+      "subject": "과학",
+      "leadAuthor": "양일호",
+      "grade": 6,
+      "listedAssessments": 199,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5492996c1e1fcd32",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 5,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5492996c1e1fcd32",
+      "publisher": "비상교육",
+      "subject": "과학",
+      "leadAuthor": "강석진",
+      "grade": 6,
+      "listedAssessments": 41,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-cdec5f797a01b1b5",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-cdec5f797a01b1b5",
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "leadAuthor": "박일우",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-85bef7a44a60678f",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 5,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-85bef7a44a60678f",
+      "publisher": "지학사",
+      "subject": "과학",
+      "leadAuthor": "권치순",
+      "grade": 6,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d95a9ebcb23138ab",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 5,
+      "listedAssessments": 43,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d95a9ebcb23138ab",
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "leadAuthor": "정용재",
+      "grade": 6,
+      "listedAssessments": 41,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-e2cfb3f073d113c7",
+      "publisher": "국정",
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 5,
+      "listedAssessments": 136,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-e2cfb3f073d113c7",
+      "publisher": "국정",
+      "subject": "국어",
+      "leadAuthor": null,
+      "grade": 6,
+      "listedAssessments": 149,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-9e320b00307ead54",
+      "publisher": "국정",
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 5,
+      "listedAssessments": 56,
+      "semesterLabels": [
+        null,
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-9e320b00307ead54",
+      "publisher": "국정",
+      "subject": "도덕",
+      "leadAuthor": null,
+      "grade": 6,
+      "listedAssessments": 55,
+      "semesterLabels": [
+        null,
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-581d019eb8bc3f71",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-581d019eb8bc3f71",
+      "publisher": "교학도서",
+      "subject": "미술",
+      "leadAuthor": "김해경",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-2607abcdfa6948d3",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 5,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-2607abcdfa6948d3",
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "leadAuthor": "김정선",
+      "grade": 6,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-91088ff8a97a89a5",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-91088ff8a97a89a5",
+      "publisher": "동아출판",
+      "subject": "미술",
+      "leadAuthor": "김정희",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-d8bcb907dc871b65",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 5,
+      "listedAssessments": 26,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d8bcb907dc871b65",
+      "publisher": "미래엔",
+      "subject": "미술",
+      "leadAuthor": "류재만",
+      "grade": 6,
+      "listedAssessments": 22,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6498c3269de3e705",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 5,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-6498c3269de3e705",
+      "publisher": "비상교육",
+      "subject": "미술",
+      "leadAuthor": "이재영",
+      "grade": 6,
+      "listedAssessments": 31,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3ea8ff712a76cfa7",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-3ea8ff712a76cfa7",
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "leadAuthor": "손지현",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-da3b42f4e4cdf343",
+      "publisher": "아침나라",
+      "subject": "미술",
+      "leadAuthor": "정원일",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-da3b42f4e4cdf343",
+      "publisher": "아침나라",
+      "subject": "미술",
+      "leadAuthor": "정원일",
+      "grade": 6,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5d08ea9b4cb1d719",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 5,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-5d08ea9b4cb1d719",
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "leadAuthor": "정선화",
+      "grade": 6,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-f0812c4bde095347",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 5,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-f0812c4bde095347",
+      "publisher": "지학사",
+      "subject": "미술",
+      "leadAuthor": "송미영",
+      "grade": 6,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-27e5d948d0a93ea2",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 5,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-27e5d948d0a93ea2",
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "leadAuthor": "안금희",
+      "grade": 6,
+      "listedAssessments": 24,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d2623d7a0cddf13c",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-d2623d7a0cddf13c",
+      "publisher": "동아출판",
+      "subject": "사회",
+      "leadAuthor": "박영석",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-581ccacc6da81bdb",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 5,
+      "listedAssessments": 6,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-581ccacc6da81bdb",
+      "publisher": "미래엔",
+      "subject": "사회",
+      "leadAuthor": "전종한",
+      "grade": 6,
+      "listedAssessments": 6,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d9462fc32338dca8",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d9462fc32338dca8",
+      "publisher": "비상교육",
+      "subject": "사회",
+      "leadAuthor": "설규주",
+      "grade": 6,
+      "listedAssessments": 15,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3ee759a2e351fff7",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-3ee759a2e351fff7",
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "leadAuthor": "한춘희",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-07dea2d6b4964749",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-07dea2d6b4964749",
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "leadAuthor": "남상준",
+      "grade": 6,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-354773e9f00d041f",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 5,
+      "listedAssessments": 26,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-354773e9f00d041f",
+      "publisher": "지학사",
+      "subject": "사회",
+      "leadAuthor": "이간용",
+      "grade": 6,
+      "listedAssessments": 30,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-e23e46c028c4c904",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-e23e46c028c4c904",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "김정인",
+      "grade": 6,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-8a63a1814bb6ea76",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-8a63a1814bb6ea76",
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "leadAuthor": "박기범",
+      "grade": 6,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-724eda72ec3769b8",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-724eda72ec3769b8",
+      "publisher": "동아출판",
+      "subject": "수학",
+      "leadAuthor": "나귀수",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-ff48bedb2fa611c4",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.didimdolclass.co.kr/"
+    },
+    {
+      "editionId": "tb-ff48bedb2fa611c4",
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "leadAuthor": "최수일",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.didimdolclass.co.kr/"
+    },
+    {
+      "editionId": "tb-3b406499e00b4a29",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3b406499e00b4a29",
+      "publisher": "미래엔",
+      "subject": "수학",
+      "leadAuthor": "장혜원",
+      "grade": 6,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-356b1adeeeece7d3",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 5,
+      "listedAssessments": 48,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-356b1adeeeece7d3",
+      "publisher": "비상교육",
+      "subject": "수학",
+      "leadAuthor": "방정숙",
+      "grade": 6,
+      "listedAssessments": 46,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-c328ce50b190a4dc",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-c328ce50b190a4dc",
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "leadAuthor": "김성여",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-d946fc043d6c288b",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 5,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d946fc043d6c288b",
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "leadAuthor": "류희찬",
+      "grade": 6,
+      "listedAssessments": 43,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b2235ebaf292db5a",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 5,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b2235ebaf292db5a",
+      "publisher": "지학사",
+      "subject": "수학",
+      "leadAuthor": "강문봉",
+      "grade": 6,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-444407b517d8dfe3",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 5,
+      "listedAssessments": 60,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-444407b517d8dfe3",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "박만구",
+      "grade": 6,
+      "listedAssessments": 59,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d908b263d2003f36",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 5,
+      "listedAssessments": 60,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d908b263d2003f36",
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "leadAuthor": "한대희",
+      "grade": 6,
+      "listedAssessments": 60,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-f577ef7b2b9ce50c",
+      "publisher": "교학사",
+      "subject": "실과",
+      "leadAuthor": "최지연",
+      "grade": 5,
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-f577ef7b2b9ce50c",
+      "publisher": "교학사",
+      "subject": "실과",
+      "leadAuthor": "최지연",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-954df70797bbee08",
+      "publisher": "금성출판사",
+      "subject": "실과",
+      "leadAuthor": "류청산",
+      "grade": 5,
+      "listedAssessments": 5,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-954df70797bbee08",
+      "publisher": "금성출판사",
+      "subject": "실과",
+      "leadAuthor": "류청산",
+      "grade": 6,
+      "listedAssessments": 5,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-92bd61a5274fc1b2",
+      "publisher": "동아출판",
+      "subject": "실과",
+      "leadAuthor": "서우석",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-92bd61a5274fc1b2",
+      "publisher": "동아출판",
+      "subject": "실과",
+      "leadAuthor": "서우석",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-847ff983a931ed95",
+      "publisher": "미래엔",
+      "subject": "실과",
+      "leadAuthor": "이철현",
+      "grade": 5,
+      "listedAssessments": 21,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-847ff983a931ed95",
+      "publisher": "미래엔",
+      "subject": "실과",
+      "leadAuthor": "이철현",
+      "grade": 6,
+      "listedAssessments": 28,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0ab2c40ff162cb20",
+      "publisher": "비상교육",
+      "subject": "실과",
+      "leadAuthor": "송현순",
+      "grade": 5,
+      "listedAssessments": 5,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-0ab2c40ff162cb20",
+      "publisher": "비상교육",
+      "subject": "실과",
+      "leadAuthor": "송현순",
+      "grade": 6,
+      "listedAssessments": 5,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-79926ca720d86a07",
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "leadAuthor": "정영식",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-79926ca720d86a07",
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "leadAuthor": "정영식",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-bd00e49f7db84fbb",
+      "publisher": "와이비엠",
+      "subject": "실과",
+      "leadAuthor": "이상원",
+      "grade": 5,
+      "listedAssessments": 17,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-bd00e49f7db84fbb",
+      "publisher": "와이비엠",
+      "subject": "실과",
+      "leadAuthor": "이상원",
+      "grade": 6,
+      "listedAssessments": 18,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3e3326e566d1ba36",
+      "publisher": "지학사",
+      "subject": "실과",
+      "leadAuthor": "김차명",
+      "grade": 5,
+      "listedAssessments": 15,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3e3326e566d1ba36",
+      "publisher": "지학사",
+      "subject": "실과",
+      "leadAuthor": "김차명",
+      "grade": 6,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b9425f548a010db5",
+      "publisher": "천재교과서",
+      "subject": "실과",
+      "leadAuthor": "이춘식",
+      "grade": 5,
+      "listedAssessments": 6,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b9425f548a010db5",
+      "publisher": "천재교과서",
+      "subject": "실과",
+      "leadAuthor": "이춘식",
+      "grade": 6,
+      "listedAssessments": 6,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-301d010e57b36322",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "정은숙",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-301d010e57b36322",
+      "publisher": "동아출판",
+      "subject": "영어",
+      "leadAuthor": "정은숙",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-895da9a48115407b",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 5,
+      "listedAssessments": 72,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-895da9a48115407b",
+      "publisher": "미래엔",
+      "subject": "영어",
+      "leadAuthor": "강정진",
+      "grade": 6,
+      "listedAssessments": 72,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-9113ce68e72cc020",
+      "publisher": "비상교육",
+      "subject": "영어",
+      "leadAuthor": "우길주",
+      "grade": 5,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-9113ce68e72cc020",
+      "publisher": "비상교육",
+      "subject": "영어",
+      "leadAuthor": "우길주",
+      "grade": 6,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-cfcdaff9ad30d27e",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-cfcdaff9ad30d27e",
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "leadAuthor": "박유미",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-7b5f8b0c5bf22866",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 5,
+      "listedAssessments": 56,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-7b5f8b0c5bf22866",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "김혜리",
+      "grade": 6,
+      "listedAssessments": 56,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-4ff619bdfb99c735",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 5,
+      "listedAssessments": 10,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-4ff619bdfb99c735",
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "leadAuthor": "최희경",
+      "grade": 6,
+      "listedAssessments": 18,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-1f7e4f30e4a532bf",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 5,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-1f7e4f30e4a532bf",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "김태은",
+      "grade": 6,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d91cfd905c4b02ad",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 5,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-d91cfd905c4b02ad",
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "leadAuthor": "함순애",
+      "grade": 6,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3ca4e76f29377f3d",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 5,
+      "listedAssessments": 72,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3ca4e76f29377f3d",
+      "publisher": "천재교육",
+      "subject": "영어",
+      "leadAuthor": "이동환",
+      "grade": 6,
+      "listedAssessments": 72,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-13df77d075e34e3c",
+      "publisher": "금성출판사",
+      "subject": "음악",
+      "leadAuthor": "김용희",
+      "grade": 5,
+      "listedAssessments": 20,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-13df77d075e34e3c",
+      "publisher": "금성출판사",
+      "subject": "음악",
+      "leadAuthor": "김용희",
+      "grade": 6,
+      "listedAssessments": 20,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-764368b1f626a109",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-764368b1f626a109",
+      "publisher": "동아출판",
+      "subject": "음악",
+      "leadAuthor": "최미영",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-3fa6b6303fc24201",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 5,
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3fa6b6303fc24201",
+      "publisher": "미래엔",
+      "subject": "음악",
+      "leadAuthor": "조성기",
+      "grade": 6,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-349cd1f0f46bed8e",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 5,
+      "listedAssessments": 32,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-349cd1f0f46bed8e",
+      "publisher": "비상교육",
+      "subject": "음악",
+      "leadAuthor": "주대창",
+      "grade": 6,
+      "listedAssessments": 32,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-1effb249488b73de",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-1effb249488b73de",
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "leadAuthor": "조순이",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-ea9f50a85d46df47",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 5,
+      "listedAssessments": 9,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-ea9f50a85d46df47",
+      "publisher": "아침나라",
+      "subject": "음악",
+      "leadAuthor": "승윤희",
+      "grade": 6,
+      "listedAssessments": 8,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-71c8f05ff27572db",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 5,
+      "listedAssessments": 9,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-71c8f05ff27572db",
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "leadAuthor": "양소영",
+      "grade": 6,
+      "listedAssessments": 9,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-48723016b6416d13",
+      "publisher": "음악과생활",
+      "subject": "음악",
+      "leadAuthor": "박진홍",
+      "grade": 5,
+      "listedAssessments": 28,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-48723016b6416d13",
+      "publisher": "음악과생활",
+      "subject": "음악",
+      "leadAuthor": "박진홍",
+      "grade": 6,
+      "listedAssessments": 28,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-beeff83b5bc5bbc5",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 5,
+      "listedAssessments": 18,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-beeff83b5bc5bbc5",
+      "publisher": "지학사",
+      "subject": "음악",
+      "leadAuthor": "허정미",
+      "grade": 6,
+      "listedAssessments": 18,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b3e1bdfae990228d",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 5,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b3e1bdfae990228d",
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "leadAuthor": "최은아",
+      "grade": 6,
+      "listedAssessments": 12,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-f0626af19964e229",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 5,
+      "listedAssessments": 52,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-f0626af19964e229",
+      "publisher": "교학사",
+      "subject": "체육",
+      "leadAuthor": "김방출",
+      "grade": 6,
+      "listedAssessments": 43,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b83713cc68c714ff",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b83713cc68c714ff",
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "leadAuthor": "이제행",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "performance-list-not-present-in-checked-menu",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-ebd9c1c0f8208c75",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-ebd9c1c0f8208c75",
+      "publisher": "동아출판",
+      "subject": "체육",
+      "leadAuthor": "최의창",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://ele.douclass.com/assess"
+    },
+    {
+      "editionId": "tb-3e9ca44dba2d3921",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 5,
+      "listedAssessments": 16,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-3e9ca44dba2d3921",
+      "publisher": "미래엔",
+      "subject": "체육",
+      "leadAuthor": "안양옥",
+      "grade": 6,
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b5d5f0c8c9087077",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 5,
+      "listedAssessments": 28,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-b5d5f0c8c9087077",
+      "publisher": "비상교육",
+      "subject": "체육",
+      "leadAuthor": "송지환",
+      "grade": 6,
+      "listedAssessments": 23,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-94e66f4d8defda0e",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 5,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-94e66f4d8defda0e",
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "leadAuthor": "김명숙",
+      "grade": 6,
+      "listedAssessments": 0,
+      "semesterLabels": [],
+      "status": "teacher-login-required",
+      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+    },
+    {
+      "editionId": "tb-c4163dca14fc8feb",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 5,
+      "listedAssessments": 42,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-c4163dca14fc8feb",
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "leadAuthor": "이기청",
+      "grade": 6,
+      "listedAssessments": 42,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-db7245b717917323",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 5,
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-db7245b717917323",
+      "publisher": "지학사",
+      "subject": "체육",
+      "leadAuthor": "신기철",
+      "grade": 6,
+      "listedAssessments": 35,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-a99c3bb3ae84a78b",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 5,
+      "listedAssessments": 8,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-a99c3bb3ae84a78b",
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "leadAuthor": "고문수",
+      "grade": 6,
+      "listedAssessments": 8,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-266461fcf7029ab0",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 5,
+      "listedAssessments": 30,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    },
+    {
+      "editionId": "tb-266461fcf7029ab0",
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "leadAuthor": "김택천",
+      "grade": 6,
+      "listedAssessments": 27,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
+    }
+  ]
+}

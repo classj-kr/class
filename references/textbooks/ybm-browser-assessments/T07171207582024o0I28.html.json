@@ -1,0 +1,363 @@
+{
+  "book": "영어 4(최희경)",
+  "rows": [
+    {
+      "resourceId": null,
+      "title": "영어4_최_수행평가 계획(3,4단계)",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": "C202501150422505JsDA",
+      "title": "영어4_최_01_수행평가.hwp",
+      "unit": "Lesson 1 How Are You?"
+    },
+    {
+      "resourceId": "C20250124111111JuDlS",
+      "title": "영어4_최_01_수행평가 2.hwp",
+      "unit": "Lesson 1 How Are You?"
+    },
+    {
+      "resourceId": "C202502280333228kUzs",
+      "title": "영어4_최_01_수행평가 3.hwp",
+      "unit": "Lesson 1 How Are You?"
+    },
+    {
+      "resourceId": "C20250115042250tqGI4",
+      "title": "영어4_최_01_수행평가.pdf",
+      "unit": "Lesson 1 How Are You?"
+    },
+    {
+      "resourceId": "C20250124111149W9XQZ",
+      "title": "영어4_최_01_수행평가 2.pdf",
+      "unit": "Lesson 1 How Are You?"
+    },
+    {
+      "resourceId": "C20250228033348CJber",
+      "title": "영어4_최_01_수행평가 3.pdf",
+      "unit": "Lesson 1 How Are You?"
+    },
+    {
+      "resourceId": "C20250115042253iXRKr",
+      "title": "영어4_최_02_수행평가.hwp",
+      "unit": "Lesson 2 Who Is She?"
+    },
+    {
+      "resourceId": "C202501241113153qwN9",
+      "title": "영어4_최_02_수행평가 2.pdf",
+      "unit": "Lesson 2 Who Is She?"
+    },
+    {
+      "resourceId": "C20250227053325ERGpj",
+      "title": "영어4_최_02_수행평가 3.pdf",
+      "unit": "Lesson 2 Who Is She?"
+    },
+    {
+      "resourceId": "C20250115042253Ykjcb",
+      "title": "영어4_최_02_수행평가.pdf",
+      "unit": "Lesson 2 Who Is She?"
+    },
+    {
+      "resourceId": "C20250124111229MSAGU",
+      "title": "영어4_최_02_수행평가 2.hwp",
+      "unit": "Lesson 2 Who Is She?"
+    },
+    {
+      "resourceId": "C20250227053256WvuUq",
+      "title": "영어4_최_02_수행평가 3.hwp",
+      "unit": "Lesson 2 Who Is She?"
+    },
+    {
+      "resourceId": "C20250115042256ZM5k4",
+      "title": "영어4_최_03_수행평가.hwp",
+      "unit": "Lesson 3 What Time Is It?"
+    },
+    {
+      "resourceId": "C20250124111441WA8y0",
+      "title": "영어4_최_03_수행평가 2.pdf",
+      "unit": "Lesson 3 What Time Is It?"
+    },
+    {
+      "resourceId": "C20250228022834JwJ5X",
+      "title": "영어4_최_03_수행평가 3.pdf",
+      "unit": "Lesson 3 What Time Is It?"
+    },
+    {
+      "resourceId": "C202501150422561Eai0",
+      "title": "영어4_최_03_수행평가.pdf",
+      "unit": "Lesson 3 What Time Is It?"
+    },
+    {
+      "resourceId": "C20250124111402KCHgS",
+      "title": "영어4_최_03_수행평가 2.hwp",
+      "unit": "Lesson 3 What Time Is It?"
+    },
+    {
+      "resourceId": "C20250228022753dBwbT",
+      "title": "영어4_최_03_수행평가 3.hwp",
+      "unit": "Lesson 3 What Time Is It?"
+    },
+    {
+      "resourceId": "C20250228024125fJo9c",
+      "title": "영어4_최_04_수행평가 3.hwp",
+      "unit": "Lesson 4 Let's Play Soccer"
+    },
+    {
+      "resourceId": "C20250228024330OZeq9",
+      "title": "영어4_최_04_수행평가 3.pdf",
+      "unit": "Lesson 4 Let's Play Soccer"
+    },
+    {
+      "resourceId": "C20250115042301QPUHp",
+      "title": "영어4_최_05_수행평가.hwp",
+      "unit": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "resourceId": "C20250124111728DCmZG",
+      "title": "영어4_최_05_수행평가 2.pdf",
+      "unit": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "resourceId": "C202502280334407Mybn",
+      "title": "영어4_최_05_수행평가 3.pdf",
+      "unit": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "resourceId": "C20250115042301N4pv6",
+      "title": "영어4_최_05_수행평가.pdf",
+      "unit": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "resourceId": "C20250124111701u0qqI",
+      "title": "영어4_최_05_수행평가 2.hwp",
+      "unit": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "resourceId": "C20250228033415FShnB",
+      "title": "영어4_최_05_수행평가 3.hwp",
+      "unit": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "resourceId": "C20250117070740lMarD",
+      "title": "영어4_최_06_수행평가.hwp",
+      "unit": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "resourceId": "C2025030609565629TdF",
+      "title": "영어4_최_06_수행평가 2.hwp",
+      "unit": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "resourceId": "C20250228033506WqkAP",
+      "title": "영어4_최_06_수행평가 3.hwp",
+      "unit": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "resourceId": "C20250117070356iByoQ",
+      "title": "영어4_최_06_수행평가.pdf",
+      "unit": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "resourceId": "C202503060959257U3w2",
+      "title": "영어4_최_06_수행평가 2.pdf",
+      "unit": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "resourceId": "C20250228033530G8Mso",
+      "title": "영어4_최_06_수행평가 3.pdf",
+      "unit": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "resourceId": "C20250117071156Yj67M",
+      "title": "영어4_최_07_수행평가.hwp",
+      "unit": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "resourceId": "C202503060409418jqU1",
+      "title": "영어4_최_07_수행평가 2.pdf",
+      "unit": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "resourceId": "C20250227053431v72dp",
+      "title": "영어4_최_07_수행평가 3.pdf",
+      "unit": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "resourceId": "C20250117070916xBpcg",
+      "title": "영어4_최_07_수행평가.pdf",
+      "unit": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "resourceId": "C20250306040909aS8cV",
+      "title": "영어4_최_07_수행평가 2.hwp",
+      "unit": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "resourceId": "C20250227053407osUrM",
+      "title": "영어4_최_07_수행평가 3.hwp",
+      "unit": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "resourceId": "C20250117071347ULUzx",
+      "title": "영어4_최_08_수행평가.hwp",
+      "unit": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "resourceId": "C202503050528160Lr6e",
+      "title": "영어4_최_08_수행평가 2.hwp",
+      "unit": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "resourceId": "C20250228024200ZWOeh",
+      "title": "영어4_최_08_수행평가 3.hwp",
+      "unit": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "resourceId": "C202501170712415beXJ",
+      "title": "영어4_최_08_수행평가.pdf",
+      "unit": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "resourceId": "C202503050528382d9ZY",
+      "title": "영어4_최_08_수행평가 2.pdf",
+      "unit": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "resourceId": "C20250228024227C8Nbx",
+      "title": "영어4_최_08_수행평가 3.pdf",
+      "unit": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "resourceId": "C20250117071523T4an2",
+      "title": "영어4_최_09_수행평가.hwp",
+      "unit": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "resourceId": "C202503060931308TYcj",
+      "title": "영어4_최_09_수행평가 2.pdf",
+      "unit": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "resourceId": "C20250228035009EkFdS",
+      "title": "영어4_최_09_수행평가 3.pdf",
+      "unit": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "resourceId": "C20250117071432EZ7Wi",
+      "title": "영어4_최_09_수행평가.pdf",
+      "unit": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "resourceId": "C20250306093034bwKhu",
+      "title": "영어4_최_09_수행평가 2.hwp",
+      "unit": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "resourceId": "C20250228034729vTgJf",
+      "title": "영어4_최_09_수행평가 3.hwp",
+      "unit": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "resourceId": "C20250117071755bOPDV",
+      "title": "영어4_최_10_수행평가.hwp",
+      "unit": "Lesson 10 How Much Is It?"
+    },
+    {
+      "resourceId": "C20250306041029biIi7",
+      "title": "영어4_최_10_수행평가 2.hwp",
+      "unit": "Lesson 10 How Much Is It?"
+    },
+    {
+      "resourceId": "C20250227053649CHYxj",
+      "title": "영어4_최_10_수행평가 3.hwp",
+      "unit": "Lesson 10 How Much Is It?"
+    },
+    {
+      "resourceId": "C20250117071711yv0su",
+      "title": "영어4_최_10_수행평가.pdf",
+      "unit": "Lesson 10 How Much Is It?"
+    },
+    {
+      "resourceId": "C20250306041103FUvtc",
+      "title": "영어4_최_10_수행평가 2.pdf",
+      "unit": "Lesson 10 How Much Is It?"
+    },
+    {
+      "resourceId": "C20250227053714Hyzo5",
+      "title": "영어4_최_10_수행평가 3.pdf",
+      "unit": "Lesson 10 How Much Is It?"
+    }
+  ],
+  "url": "https://www.ybmcloud.com/evaluation/T07171207582024o0I28.html?siteType=E",
+  "observedAt": "2026-10-09",
+  "unitsChecked": [
+    {
+      "id": "R021102471920255BvPw",
+      "title": "준비 단원"
+    },
+    {
+      "id": "R082607040220249Guae",
+      "title": "Lesson 1 How Are You?"
+    },
+    {
+      "id": "R08260704022024wmNEg",
+      "title": "Lesson 2 Who Is She?"
+    },
+    {
+      "id": "R08260704022024VL5h2",
+      "title": "Special 1 그림 사전 완성하기, 우리는 손가락 가족"
+    },
+    {
+      "id": "R08260704022024SHdzh",
+      "title": "Lesson 3 What Time Is It?"
+    },
+    {
+      "id": "R08260704022024nI05R",
+      "title": "Lesson 4 Let's Play Soccer"
+    },
+    {
+      "id": "R0826070402202404tTb",
+      "title": "Special 2 그림 사전 완성하기, 운동회 시간표 정하기"
+    },
+    {
+      "id": "R08260704022024XIQy8",
+      "title": "Lesson 5 Where Is My Bag?"
+    },
+    {
+      "id": "R08260704022024drcV0",
+      "title": "Review 1 Phonics, 단어가 차곡차곡, 마법에 걸린 사다리 말판 놀이"
+    },
+    {
+      "id": "R082607040220241bNut",
+      "title": "Lesson 6 What Are You Doing?"
+    },
+    {
+      "id": "R08260704032024SjLuu",
+      "title": "Lesson 7 Is This Your Jacket?"
+    },
+    {
+      "id": "R08260704032024koCZh",
+      "title": "Special 3 그림 사전 완성하기, '말랑이의 하루' 만화 완성하기"
+    },
+    {
+      "id": "R08260704032024AkFL4",
+      "title": "Lesson 8 Do You Want Some Chicken?"
+    },
+    {
+      "id": "R08260704032024gJmU2",
+      "title": "Lesson 9 What Day Is It Today?"
+    },
+    {
+      "id": "R082607040320245Gkfg",
+      "title": "Special 4 그림 사전 완성하기, 주머니 책 만들기"
+    },
+    {
+      "id": "R08260704032024mmkHu",
+      "title": "Lesson 10 How Much Is It?"
+    },
+    {
+      "id": "R08260704032024o5BzS",
+      "title": "Review 2 Phonics, 단어가 차곡차곡, 별 모으기 말판 놀이"
+    }
+  ],
+  "performanceOnly": true
+}

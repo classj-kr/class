@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-2_%ED%86%B5%ED%95%A9_%EC%95%BD%EC%86%8D_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-2_통합_약속_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 2,
+      "listedUnit": "2. 약속",
+      "sourceManifest": "1-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-2_통합_약속_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "약속",
+          "title": "지구에서 사라져 가는 동물들 지키기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "약속",
+          "title": "신나는 전래 놀이 박람회 열기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "약속",
+          "title": "가정 폭력이 발생했을 때의 대처 방법 알기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

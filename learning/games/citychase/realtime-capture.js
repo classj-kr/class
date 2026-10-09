@@ -67,19 +67,26 @@
       ctx.beginPath();ctx.moveTo(-5,17);ctx.lineTo(0,23);ctx.lineTo(7,17);ctx.fill();
       ctx.fillStyle='#543922';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,0,1);ctx.restore();
     }
-    function draw(ctx,scale,now=clock()){
+    function draw(ctx,scale,now=clock(),viewport){
       for(const e of effects.values()){
         const age=now-e.began;if(age<0||age>=DURATION)continue;
         ctx.save();ctx.translate(e.x,e.y);ctx.scale(1/scale,1/scale);
+        function caption(text,y,fill,size=1){
+          // The effect stays at the capture point; its caption must remain readable at the map edges.
+          const px=viewport?e.x*scale+viewport.ox:0,py=viewport?e.y*scale+viewport.oy:0;
+          const dx=viewport?Math.max(64,Math.min(viewport.width-64,px))-px:0;
+          const cy=viewport?Math.max(96,Math.min(viewport.height-108,py+y))-py:y;
+          ctx.save();ctx.translate(dx,0);bubble(ctx,text,cy,fill,size);ctx.restore();
+        }
         if(reducedMotion()){
-          if(age<1100)bubble(ctx,'잡았다!',-90,'#fff0bb');
+          if(age<1100)caption('잡았다!',-90,'#fff0bb');
           ctx.restore();continue;
         }
         if(age<820){
           const burst=clamp(age/190);
           ctx.globalAlpha=1-clamp((age-650)/170);
           for(let i=0;i<3;i++){const angle=-2.8+i*.8+age/1200;star(ctx,Math.cos(angle)*(31+burst*10),-61+Math.sin(angle)*24,6,age/400+i);}
-          bubble(ctx,age<240?'앗!':'잡았다!',-112,'#fff0bb',.88+Math.sin(clamp(age/240)*Math.PI)*.18);
+          caption(age<240?'앗!':'잡았다!',-112,'#fff0bb',.88+Math.sin(clamp(age/240)*Math.PI)*.18);
         }
         if(e.droppedGem&&age>90&&age<740){
           const t=(age-90)/650;ctx.save();ctx.globalAlpha=1-t;ctx.translate(27+t*29,-30-Math.sin(t*Math.PI)*32);ctx.rotate(t*3);
@@ -92,7 +99,7 @@
             ctx.beginPath();ctx.ellipse(Math.cos(angle)*spread,-22+Math.sin(angle)*spread*.55,12+t*4,10+t*3,0,0,Math.PI*2);
             ctx.fillStyle=i%2?'#fff7e8':'#ebd6b2';ctx.fill();
           }
-          bubble(ctx,'퐁!',-55,'#fff9ee',.9+t*.2);
+          caption('퐁!',-55,'#fff9ee',.9+t*.2);
         }
         ctx.restore();
       }

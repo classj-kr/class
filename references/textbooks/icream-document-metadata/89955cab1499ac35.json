@@ -1,0 +1,170 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/6-2_%EA%B3%BC%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80(%EC%88%98%EC%97%85%EB%B3%B4%EC%99%84%ED%8F%AC%ED%95%A8).zip",
+  "subject": "과학",
+  "fileName": "6-2_과학_수행평가(수업보완포함).zip",
+  "contexts": [
+    {
+      "grade": 6,
+      "semester": 2,
+      "listedUnit": "1. 계절의 변화 ~ 4. 과학과 나의 진로(보완용 수행평가 포함)",
+      "sourceManifest": "6-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "6-2_과학_수행평가(수업보완).hwp",
+      "assessments": [
+        {
+          "unit": "계절의 변화",
+          "title": "하루 동안 태양 고도, 그림자 길이, 기온의 관계 알아보기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "계절의 변화",
+          "title": "계절 변화의 원인 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "빛의 성질",
+          "title": "빛을 렌즈와 물에 비추어 보기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "물질의 연소",
+          "title": "물질이 타려면 무엇이 필요한지 알아보기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "물질의 연소",
+          "title": "연소 생성물은 생태계에 어떤 피해를 주는지 조사하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "우리 몸의 구조와 기능",
+          "title": "우리 몸은 어떻게 움직이는지 알아보기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "우리 몸의 구조와 기능",
+          "title": "숨을 쉴 때 어떤 일이 일어나는지 알아보기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "자원과 에너지",
+          "title": "재생 에너지 조사하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "전기의 이용",
+          "title": "전기 회로의 특성 알아보기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "전기의 이용",
+          "title": "전자석의 성질 알아보기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "과학과 나의 진로",
+          "title": "미래 사회의 문제를 과학이 해결할 수 있는지 알아보기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "과학과 나의 진로",
+          "title": "직업과 관련된 과학적 요소 조사하기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    },
+    {
+      "member": "6-2_과학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 계절의 변화",
+          "title": "하루 동안 태양 고도, 그림자 길이, 기온의 관계 알아보기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 계절의 변화",
+          "title": "계절별 태양의 남중 고도와 낮의 길이의 관계 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 계절의 변화",
+          "title": "계절 변화의 원인 알아보기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 물질의 연소",
+          "title": "물질이 타려면 무엇이 필요한지 알아보기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 물질의 연소",
+          "title": "연소 후의 변화 알아보기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 물질의 연소",
+          "title": "연소 생성물은 생태계에 어떤 피해를 주는지 조사하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 전기의 이용",
+          "title": "전기 회로의 특성 알아보기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 전기의 이용",
+          "title": "전기 회로에 전지 한 개를 더 연결하면 어떻게 될지 알아보기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 전기의 이용",
+          "title": "전자석의 성질 알아보기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 과학과 나의 진로",
+          "title": "미래 사회의 문제를 과학이 해결할 수 있는지 알아보기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 과학과 나의 진로",
+          "title": "직업과 관련된 과학적 요소 조사하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 과학과 나의 진로",
+          "title": "나의 진로는 과학과 어떤 관련이 있는지 알아보기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

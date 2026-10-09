@@ -1,0 +1,446 @@
+{
+  "book": "체육 4(이기청)",
+  "rows": [
+    {
+      "resourceId": null,
+      "title": "YBM체육 4학년 평가 운영 계획",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": null,
+      "title": "YBM체육 4 평가지.zip",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": "C20250509055604EPmvd",
+      "title": "체육 4-1학기 평가 운영 계획(평가기준 4단계)",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": "C20250509055705C0rPs",
+      "title": "체육 4-2학기 평가 운영 계획(평가기준 4단계)",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": null,
+      "title": "YBM체육 4 활동지.zip",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": "C20250509055531o6u79",
+      "title": "체육 4-1학기 평가 운영 계획(평가기준 3단계)",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": "C202505090556389VTCv",
+      "title": "체육 4-2학기 평가 운영 계획(평가기준 3단계)",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": "C20250115033327k0AU2",
+      "title": "YBM체육 4_1_2~3차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033327JOOSw",
+      "title": "YBM체육 4_1_2~3차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033328ov425",
+      "title": "YBM체육 4_1_4~5차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033328pYd6x",
+      "title": "YBM체육 4_1_4~5차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033328Q9Prn",
+      "title": "YBM체육 4_1_6~7차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033328eFROO",
+      "title": "YBM체육 4_1_6~7차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033328AIOpS",
+      "title": "YBM체육 4_1_8~9차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033328gaEn9",
+      "title": "YBM체육 4_1_8~9차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033327U1ZP0",
+      "title": "YBM체육 4_1_10~11차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C202501150333278sLjB",
+      "title": "YBM체육 4_1_10~11차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033327nI9IR",
+      "title": "YBM체육 4_1_12~14차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033327OT7Fb",
+      "title": "YBM체육 4_1_12~14차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033327VXkvD",
+      "title": "YBM체육 4_1_15~17차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033327sry2a",
+      "title": "YBM체육 4_1_15~17차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C202501150333273hEZY",
+      "title": "YBM체육 4_1_18~20차시 활동지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C2025011503332793sj8",
+      "title": "YBM체육 4_1_18~20차시 평가지",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "C20250115033329DXsXN",
+      "title": "YBM체육 4_2_2차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328eocSk",
+      "title": "YBM체육 4_2_2차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329Wk4Hx",
+      "title": "YBM체육 4_2_3~4차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C202501150333290U6Q5",
+      "title": "YBM체육 4_2_3~4차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C202501150333298ctBA",
+      "title": "YBM체육 4_2_5~6차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C202501150333298F6Xv",
+      "title": "YBM체육 4_2_5~6차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329ZOhSs",
+      "title": "YBM체육 4_2_7~9차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329gMgwe",
+      "title": "YBM체육 4_2_7~9차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328u17L9",
+      "title": "YBM체육 4_2_10~11차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C2025011503332871kqy",
+      "title": "YBM체육 4_2_10~11차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328pudrO",
+      "title": "YBM체육 4_2_12~14차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328yqLKV",
+      "title": "YBM체육 4_2_12~14차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328rbsKP",
+      "title": "YBM체육 4_2_15~17차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328Eh7B6",
+      "title": "YBM체육 4_2_15~17차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328xuIiZ",
+      "title": "YBM체육 4_2_18~19차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328B8Ry0",
+      "title": "YBM체육 4_2_18~19차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328Qb2eb",
+      "title": "YBM체육 4_2_20차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328cHbVI",
+      "title": "YBM체육 4_2_20차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328v27gE",
+      "title": "YBM체육 4_2_21~22차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328UfISC",
+      "title": "YBM체육 4_2_21~22차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328zoijx",
+      "title": "YBM체육 4_2_23~25차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328sar27",
+      "title": "YBM체육 4_2_23~25차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328Jx3w1",
+      "title": "YBM체육 4_2_26~27차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328DxdOD",
+      "title": "YBM체육 4_2_26~27차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C2025011503332881Jlv",
+      "title": "YBM체육 4_2_28~30차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033328YrzOf",
+      "title": "YBM체육 4_2_28~30차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329mEG9W",
+      "title": "YBM체육 4_2_31~32차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329CjnKa",
+      "title": "YBM체육 4_2_31~32차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329guS96",
+      "title": "YBM체육 4_2_33~35차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329HGaub",
+      "title": "YBM체육 4_2_33~35차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C202501150333296wJOf",
+      "title": "YBM체육 4_2_36~37차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329Oul4O",
+      "title": "YBM체육 4_2_36~37차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329RwDE2",
+      "title": "YBM체육 4_2_38~40차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329MeyOp",
+      "title": "YBM체육 4_2_38~40차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329iBDqC",
+      "title": "YBM체육 4_2_41차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329KEj0u",
+      "title": "YBM체육 4_2_41차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329NlC0Q",
+      "title": "YBM체육 4_2_42~43차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329ws1qC",
+      "title": "YBM체육 4_2_42~43차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329hUKf5",
+      "title": "YBM체육 4_2_44~46차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329suynU",
+      "title": "YBM체육 4_2_44~46차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C202501150333297STWf",
+      "title": "YBM체육 4_2_47~49차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329tHr8L",
+      "title": "YBM체육 4_2_47~49차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329ARZTD",
+      "title": "YBM체육 4_2_50~53차시 활동지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033329pLyU1",
+      "title": "YBM체육 4_2_50~53차시 평가지",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "C20250115033330WeEHO",
+      "title": "YBM체육 4_3_2~3차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330ZVqjA",
+      "title": "YBM체육 4_3_2~3차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330HI5yC",
+      "title": "YBM체육 4_3_4~5차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330FBE0Y",
+      "title": "YBM체육 4_3_4~5차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C202501150333303iMca",
+      "title": "YBM체육 4_3_6~7차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330AHR6k",
+      "title": "YBM체육 4_3_6~7차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330rdlAw",
+      "title": "YBM체육 4_3_8~9차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330j0THt",
+      "title": "YBM체육 4_3_8~9차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330juavm",
+      "title": "YBM체육 4_3_10~11차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330XUC0E",
+      "title": "YBM체육 4_3_10~11차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330QAxTR",
+      "title": "YBM체육 4_3_12~14차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330ZfggS",
+      "title": "YBM체육 4_3_12~14차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330B0DqA",
+      "title": "YBM체육 4_3_15~16차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330tWVXM",
+      "title": "YBM체육 4_3_15~16차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330mbZYr",
+      "title": "YBM체육 4_3_17~20차시 활동지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20250115033330xTwHd",
+      "title": "YBM체육 4_3_17~20차시 평가지",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "C20241220022810rLXb7",
+      "title": "YBM체육 4_0_2 프로젝트_2) 평가지(6차시)",
+      "unit": "4. 프로젝트 학습"
+    }
+  ],
+  "url": "https://www.ybmcloud.com/evaluation/T07170144092024JtVQf.html?siteType=E",
+  "observedAt": "2026-10-09",
+  "unitsChecked": [
+    {
+      "id": "R08240523382024KlS8l",
+      "title": "1. 운동"
+    },
+    {
+      "id": "R08240523382024NO1aR",
+      "title": "2. 스포츠"
+    },
+    {
+      "id": "R08240523382024LoaeO",
+      "title": "3. 표현"
+    },
+    {
+      "id": "R08240523382024M0dNG",
+      "title": "4. 프로젝트 학습"
+    }
+  ],
+  "performanceOnly": false
+}

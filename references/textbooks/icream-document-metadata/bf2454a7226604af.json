@@ -1,0 +1,81 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/3-1_%EC%82%AC%ED%9A%8C_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "사회",
+  "fileName": "3-1_사회_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 3,
+      "semester": 1,
+      "listedUnit": "1. 우리가 사는 곳~2. 일상에서 만나는 과거",
+      "sourceManifest": "3-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "3-1_사회_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 우리가 사는 곳의 여러 장소",
+          "title": "우리가 사는 곳의 여러 장소를 기준에 따라 무리 짓기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 우리가 사는 곳의 여러 장소",
+          "title": "우리가 사는 곳에 있는 여러 장소를 표현하고 소개하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "2. 우리 생활에 도움을 주는 장소",
+          "title": "디지털 영상 지도에서 도움을 주는 장소 찾기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 우리 생활에 도움을 주는 장소",
+          "title": "살기 좋은 곳의 조건 토의하고 정리하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "1. 생활 속에서 만나는 시간의 흐름",
+          "title": "시간을 나타내는 말을 찾고 짧은 글쓰기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "1. 생활 속에서 만나는 시간의 흐름",
+          "title": "우리 학교의 변화 과정 조사하고 보고서 작성하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "2. 주변에서 만나는 과거의 모습",
+          "title": "오래된 물건 조사하고 조사 내용 정리하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "2. 주변에서 만나는 과거의 모습",
+          "title": "옛날 사람들의 생활 모습을 보여 주는 전시관 꾸미고 관람하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 우리 지역 사람들의 달라진 생활 모습",
+          "title": "지역에 전해 내려오는 옛이야기 소개하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "3. 우리 지역 사람들의 달라진 생활 모습",
+          "title": "인터넷을 활용하여 옛날 신문 기사를 살펴보고 지역 사람들의 옛 생활 모습을 찾아 정리하기",
+          "table": 0,
+          "sourceRow": 40
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

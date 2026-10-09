@@ -1,0 +1,29 @@
+{
+  "book": "2022 개정\n미술 3\n김해경\n내 교과서 등록",
+  "rows": [
+    {
+      "resourceId": "d3d79588456c46b5b2dab6c1a374644f",
+      "title": "3_1_수행평가_색으로 가득한 세상",
+      "unit": "1 반갑다, 미술!"
+    },
+    {
+      "resourceId": "7b84e7337f544e72949f2104c8f38270",
+      "title": "3_2_수행평가_상상 속으로",
+      "unit": "1 반갑다, 미술!"
+    },
+    {
+      "resourceId": "50faa79b776547cf85107c676b16c0ee",
+      "title": "3_3_수행평가_내가 사는 곳",
+      "unit": "1 반갑다, 미술!"
+    },
+    {
+      "resourceId": "3bf76aebd5d54c7594bb3dd7134b35a4",
+      "title": "3_4_수행평가_나는 어린이 사진가",
+      "unit": "1 반갑다, 미술!"
+    }
+  ],
+  "url": "https://klassmon.com/evaluation/performance.ez",
+  "grade": 3,
+  "semester": 1,
+  "observedAt": "2026-10-09"
+}

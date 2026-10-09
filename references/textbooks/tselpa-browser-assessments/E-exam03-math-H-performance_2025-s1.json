@@ -1,0 +1,220 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-H_2025&tab=E-exam03-math-H-performance_2025",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2411747');",
+          "resourceId": "2411747",
+          "title": "수학3-1(한)_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(한)3-1_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 덧셈과 뺄셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2411748');",
+          "resourceId": "2411748",
+          "title": "수학3-1(한)_단원별수행평가_1단원_3차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-1_3차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411749');",
+          "resourceId": "2411749",
+          "title": "수학3-1(한)_단원별수행평가_1단원_4~5차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-1_4-5차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411750');",
+          "resourceId": "2411750",
+          "title": "수학3-1(한)_단원별수행평가_1단원_7~8차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-1_7-8차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411751');",
+          "resourceId": "2411751",
+          "title": "수학3-1(한)_단원별수행평가_1단원_7~8차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-1_7-8차시_수행 평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 평면도형",
+      "lessons": [
+        {
+          "action": "downloadFile('2634871');",
+          "resourceId": "2634871",
+          "title": "수학3-1(한)_단원별수행평가_2단원_2차시",
+          "downloadPath": "D:\\Downloads\\3-1-2_2차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411752');",
+          "resourceId": "2411752",
+          "title": "수학3-1(한)_단원별수행평가_2단원_3차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-2_3차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411753');",
+          "resourceId": "2411753",
+          "title": "수학3-1(한)_단원별수행평가_2단원_4차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-2_4차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411754');",
+          "resourceId": "2411754",
+          "title": "수학3-1(한)_단원별수행평가_2단원_5차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-2_5차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411755');",
+          "resourceId": "2411755",
+          "title": "수학3-1(한)_단원별수행평가_2단원_7차시",
+          "downloadPath": "D:\\Downloads\\3-1-2_7차시_수행 평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2411756');",
+          "resourceId": "2411756",
+          "title": "수학3-1(한)_단원별수행평가_3단원_4차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-3_4차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411757');",
+          "resourceId": "2411757",
+          "title": "수학3-1(한)_단원별수행평가_3단원_5차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-3_5차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2779340');",
+          "resourceId": "2779340",
+          "title": "수학3-1(한)_단원별수행평가_3단원_5차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-3_5차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411758');",
+          "resourceId": "2411758",
+          "title": "수학3-1(한)_단원별수행평가_3단원_6~7차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-3_6-7차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411759');",
+          "resourceId": "2411759",
+          "title": "수학3-1(한)_단원별수행평가_3단원_6~7차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-3_6-7차시_수행 평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 곱셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2411760');",
+          "resourceId": "2411760",
+          "title": "수학3-1(한)_단원별수행평가_4단원_3차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-4_3차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411761');",
+          "resourceId": "2411761",
+          "title": "수학3-1(한)_단원별수행평가_4단원_3차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-4_3차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411762');",
+          "resourceId": "2411762",
+          "title": "수학3-1(한)_단원별수행평가_4단원_4~5차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-4_4-5차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411763');",
+          "resourceId": "2411763",
+          "title": "수학3-1(한)_단원별수행평가_4단원_6차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-4_6차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411764');",
+          "resourceId": "2411764",
+          "title": "수학3-1(한)_단원별수행평가_4단원_6차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-4_6차시_수행 평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 길이와 시간",
+      "lessons": [
+        {
+          "action": "downloadFile('2411765');",
+          "resourceId": "2411765",
+          "title": "수학3-1(한)_단원별수행평가_5단원_2차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-5_2차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411766');",
+          "resourceId": "2411766",
+          "title": "수학3-1(한)_단원별수행평가_5단원_3차시",
+          "downloadPath": "D:\\Downloads\\3-1-5_3차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411767');",
+          "resourceId": "2411767",
+          "title": "수학3-1(한)_단원별수행평가_5단원_6차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-5_6차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411768');",
+          "resourceId": "2411768",
+          "title": "수학3-1(한)_단원별수행평가_5단원_8차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-5_8차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411769');",
+          "resourceId": "2411769",
+          "title": "수학3-1(한)_단원별수행평가_5단원_8차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-5_8차시_수행 평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 분수와 소수",
+      "lessons": [
+        {
+          "action": "downloadFile('2411770');",
+          "resourceId": "2411770",
+          "title": "수학3-1(한)_단원별수행평가_6단원_3~4차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-6_3~4차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411771');",
+          "resourceId": "2411771",
+          "title": "수학3-1(한)_단원별수행평가_6단원_7차시",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-6_7차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411772');",
+          "resourceId": "2411772",
+          "title": "수학3-1(한)_단원별수행평가_6단원_8차시",
+          "downloadPath": "D:\\Downloads\\3-1-6_8차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411773');",
+          "resourceId": "2411773",
+          "title": "수학3-1(한)_단원별수행평가_6단원_10차시_01",
+          "downloadPath": "D:\\Downloads\\수학(한)_3-1-6_10차시_수행 평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411774');",
+          "resourceId": "2411774",
+          "title": "수학3-1(한)_단원별수행평가_6단원_10차시_02",
+          "downloadPath": "D:\\Downloads\\3-1-6_10차시_수행 평가.hwp"
+        }
+      ]
+    }
+  ]
+}

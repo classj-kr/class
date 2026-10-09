@@ -1,0 +1,68 @@
+{
+  "book": "국어 3-2 ㉮",
+  "grade": "107003",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [],
+      "unit": "독서. 계획대로 차근차근 읽어요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-2_1_수행 평가(1회).hwp",
+          "resourceId": "CN030-535858",
+          "title": "수행 평가(1회) - 1.경험과 관련지으며 이해해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-2_1_수행 평가(2회).hwp",
+          "resourceId": "CN030-535859",
+          "title": "수행 평가(2회) - 1.경험과 관련지으며 이해해요"
+        }
+      ],
+      "unit": "1.경험과 관련지으며 이해해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-2_2_수행 평가(1회).hwp",
+          "resourceId": "CN030-535866",
+          "title": "수행 평가(1회) - 2.유창하게 읽고 발표해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-2_2_수행 평가(2회).hwp",
+          "resourceId": "CN030-535867",
+          "title": "수행 평가(2회) - 2.유창하게 읽고 발표해요"
+        }
+      ],
+      "unit": "2.유창하게 읽고 발표해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-2_3_수행 평가(1회).hwp",
+          "resourceId": "CN030-535874",
+          "title": "수행 평가(1회) - 3.정확하게 글을 써요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-2_3_수행 평가(2회).hwp",
+          "resourceId": "CN030-535875",
+          "title": "수행 평가(2회) - 3.정확하게 글을 써요"
+        }
+      ],
+      "unit": "3.정확하게 글을 써요"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106584&term=108002&grade=107003",
+  "observedAt": "2026-10-09T10:43:18.571Z"
+}

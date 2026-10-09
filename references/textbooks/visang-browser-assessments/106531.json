@@ -1,0 +1,81 @@
+{
+  "book": "국어 3-1 ㉯",
+  "grade": "107003",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_매체_수행 평가(1회).hwp",
+          "resourceId": "CN030-498144",
+          "title": "수행 평가(1회) - 서로 배려하며 소통해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_매체_수행 평가(2회).hwp",
+          "resourceId": "CN030-498145",
+          "title": "수행 평가(2회) - 서로 배려하며 소통해요"
+        }
+      ],
+      "unit": "매체. 서로 배려하며 소통해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_4_수행 평가(1회).hwp",
+          "resourceId": "CN030-498152",
+          "title": "수행 평가(1회) - 4.중요한 내용을 찾아요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_4_수행 평가(2회).hwp",
+          "resourceId": "CN030-498153",
+          "title": "수행 평가(2회) - 4.중요한 내용을 찾아요"
+        }
+      ],
+      "unit": "4.중요한 내용을 찾아요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_5_수행 평가(1회).hwp",
+          "resourceId": "CN030-498160",
+          "title": "수행 평가(1회) - 5.인물에게 마음을 전해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_5_수행 평가(2회).hwp",
+          "resourceId": "CN030-498161",
+          "title": "수행 평가(2회) - 5.인물에게 마음을 전해요"
+        }
+      ],
+      "unit": "5.인물에게 마음을 전해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_6_수행 평가(1회).hwp",
+          "resourceId": "CN030-498168",
+          "title": "수행 평가(1회) - 6.자신 있게 읽고 써요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 3-1_6_수행 평가(2회).hwp",
+          "resourceId": "CN030-498169",
+          "title": "수행 평가(2회) - 6.자신 있게 읽고 써요"
+        }
+      ],
+      "unit": "6.자신 있게 읽고 써요"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106531&term=108001&grade=107003",
+  "observedAt": "2026-10-09T10:43:12.542Z"
+}

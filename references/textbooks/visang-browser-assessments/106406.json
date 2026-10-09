@@ -1,0 +1,81 @@
+{
+  "book": "과학 3-2(강석진)",
+  "grade": "107003",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_1_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611091",
+          "title": "수행 평가 플러스 - 1.물체와 물질"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_1_수행 평가.hwp",
+          "resourceId": "CN030-540431",
+          "title": "수행 평가 - 1.물체와 물질"
+        }
+      ],
+      "unit": "1.물체와 물질"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_2_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611092",
+          "title": "수행 평가 플러스 - 2.지구와 바다"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_2_수행 평가.hwp",
+          "resourceId": "CN030-540432",
+          "title": "수행 평가 - 2.지구와 바다"
+        }
+      ],
+      "unit": "2.지구와 바다"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_3_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611093",
+          "title": "수행 평가 플러스 - 3.소리의 성질"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_3_수행 평가.hwp",
+          "resourceId": "CN030-540433",
+          "title": "수행 평가 - 3.소리의 성질"
+        }
+      ],
+      "unit": "3.소리의 성질"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_4_수행 평가 플러스.hwp",
+          "resourceId": "CN030-611094",
+          "title": "수행 평가 플러스 - 4.감염병과 건강한 생활"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 3-2_4_수행 평가.hwp",
+          "resourceId": "CN030-540434",
+          "title": "수행 평가 - 4.감염병과 건강한 생활"
+        }
+      ],
+      "unit": "4.감염병과 건강한 생활"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106406&term=108002&grade=107003",
+  "observedAt": "2026-10-09T10:43:21.393Z"
+}

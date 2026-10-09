@@ -1,0 +1,81 @@
+{
+  "book": "과학 5-2(강석진)",
+  "grade": "107005",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_1_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610115",
+          "title": "수행 평가 플러스 - 1.혼합물의 분리"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_1_수행 평가.hwp",
+          "resourceId": "CN030-598114",
+          "title": "수행 평가 - 1.혼합물의 분리"
+        }
+      ],
+      "unit": "1.혼합물의 분리"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_2_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610116",
+          "title": "수행 평가 플러스 - 2.열과 우리 생활"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_2_수행 평가.hwp",
+          "resourceId": "CN030-598115",
+          "title": "수행 평가 - 2.열과 우리 생활"
+        }
+      ],
+      "unit": "2.열과 우리 생활"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_3_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610117",
+          "title": "수행 평가 플러스 - 3.날씨와 우리 생활"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_3_수행 평가.hwp",
+          "resourceId": "CN030-598116",
+          "title": "수행 평가 - 3.날씨와 우리 생활"
+        }
+      ],
+      "unit": "3.날씨와 우리 생활"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_4_수행 평가 플러스.hwp",
+          "resourceId": "CN030-610118",
+          "title": "수행 평가 플러스 - 4.자원과 에너지"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_과학(강) 5-2_4_수행 평가.hwp",
+          "resourceId": "CN030-598117",
+          "title": "수행 평가 - 4.자원과 에너지"
+        }
+      ],
+      "unit": "4.자원과 에너지"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106557&term=108002&grade=107005",
+  "observedAt": "2026-10-09T10:43:59.196Z"
+}

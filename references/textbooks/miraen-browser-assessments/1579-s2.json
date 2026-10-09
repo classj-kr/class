@@ -1,0 +1,103 @@
+{
+  "book": "국어 4-2(나)",
+  "curriculum": "year-2022",
+  "grade": "4학년",
+  "rows": [
+    {
+      "context": "단원 2~3차시",
+      "resourceId": "10062534",
+      "title": "[수행평가 HWP] 매체_2~3차시_수행평가",
+      "unit": "매체. 자료를 활용하여 발표해요"
+    },
+    {
+      "context": "4-1 단원 2~3차시",
+      "resourceId": "10062330",
+      "title": "[수행평가 HWP] 4_2~3차시_수행평가",
+      "unit": "4. 책 속의 길을 따라"
+    },
+    {
+      "context": "4-1 단원 4~6차시",
+      "resourceId": "10062331",
+      "title": "[수행평가 HWP] 4_4~6차시_수행평가",
+      "unit": "4. 책 속의 길을 따라"
+    },
+    {
+      "context": "4-2 단원 7~8차시",
+      "resourceId": "10062332",
+      "title": "[수행평가 HWP] 4_7~8차시_수행평가",
+      "unit": "4. 책 속의 길을 따라"
+    },
+    {
+      "context": "4-2 단원 9~10차시",
+      "resourceId": "10062333",
+      "title": "[수행평가 HWP] 4_9~10차시_수행평가",
+      "unit": "4. 책 속의 길을 따라"
+    },
+    {
+      "context": "4-2 단원 11~12차시",
+      "resourceId": "10062334",
+      "title": "[수행평가 HWP] 4_11~12차시_수행평가",
+      "unit": "4. 책 속의 길을 따라"
+    },
+    {
+      "context": "5-1 단원 2차시",
+      "resourceId": "10064603",
+      "title": "[수행평가 HWP] 5_2차시_수행평가",
+      "unit": "5. 오가는 마음"
+    },
+    {
+      "context": "5-1 단원 3~4차시",
+      "resourceId": "10064605",
+      "title": "[수행평가 HWP] 5_3~4차시_수행평가",
+      "unit": "5. 오가는 마음"
+    },
+    {
+      "context": "5-1 단원 5~6차시",
+      "resourceId": "10064608",
+      "title": "[수행평가 HWP] 5_5~6차시_수행평가",
+      "unit": "5. 오가는 마음"
+    },
+    {
+      "context": "5-2 단원 7~8차시",
+      "resourceId": "10064611",
+      "title": "[수행평가 HWP] 5_7~8차시_수행평가",
+      "unit": "5. 오가는 마음"
+    },
+    {
+      "context": "5-2 단원 9~10차시",
+      "resourceId": "10064613",
+      "title": "[수행평가 HWP] 5_9~10차시_수행평가",
+      "unit": "5. 오가는 마음"
+    },
+    {
+      "context": "6-1 단원 2~3차시",
+      "resourceId": "10064563",
+      "title": "[수행평가 HWP] 2_2~3차시_수행평가",
+      "unit": "6. 상상의 날개"
+    },
+    {
+      "context": "6-1 단원 4~5차시",
+      "resourceId": "10064564",
+      "title": "[수행평가 HWP] 2_4~5차시_수행평가",
+      "unit": "6. 상상의 날개"
+    },
+    {
+      "context": "6-2 단원 6~7차시",
+      "resourceId": "10064567",
+      "title": "[수행평가 HWP] 2_6~7차시_수행평가",
+      "unit": "6. 상상의 날개"
+    },
+    {
+      "context": "6-2 단원 8~10차시",
+      "resourceId": "10064569",
+      "title": "[수행평가 HWP] 2_8~10차시_수행평가",
+      "unit": "6. 상상의 날개"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1579&gradeCode=04&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 4-2(나)",
+  "sourceId": "1579",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

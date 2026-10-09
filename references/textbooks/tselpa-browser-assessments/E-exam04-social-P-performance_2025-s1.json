@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-social-P_2025&tab=E-exam04-social-P-performance_2025",
+  "groups": [
+    {
+      "title": "1. 지도로 만나는 우리 지역",
+      "lessons": [
+        {
+          "action": "downloadFile('2413002');",
+          "resourceId": "2413002",
+          "title": "사회4-1(박)_1단원_과정중심평가_1회",
+          "downloadPath": "D:\\Downloads\\사회4-1(박)_1단원_과정중심평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413003');",
+          "resourceId": "2413003",
+          "title": "사회4-1(박)_1단원_과정중심평가_2회",
+          "downloadPath": "D:\\Downloads\\사회4-1(박)_1단원_과정중심평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 우리 지역의 국가유산",
+      "lessons": [
+        {
+          "action": "downloadFile('2413004');",
+          "resourceId": "2413004",
+          "title": "사회4-1(박)_2단원_과정중심평가_1회",
+          "downloadPath": "D:\\Downloads\\사회4-1(박)_2단원_과정중심평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413005');",
+          "resourceId": "2413005",
+          "title": "사회4-1(박)_2단원_과정중심평가_2회",
+          "downloadPath": "D:\\Downloads\\사회4-1(박)_2단원_과정중심평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 경제활동과 지역 간 교류",
+      "lessons": [
+        {
+          "action": "downloadFile('2413006');",
+          "resourceId": "2413006",
+          "title": "사회4-1(박)_3단원_과정중심평가_1회",
+          "downloadPath": "D:\\Downloads\\사회4-1(박)_3단원_과정중심평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2413007');",
+          "resourceId": "2413007",
+          "title": "사회4-1(박)_3단원_과정중심평가_2회",
+          "downloadPath": "D:\\Downloads\\사회4-1(박)_3단원_과정중심평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

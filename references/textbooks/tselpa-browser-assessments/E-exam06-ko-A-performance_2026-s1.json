@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-ko-A_2026&tab=E-exam06-ko-A-performance_2026",
+  "groups": [
+    {
+      "title": "1. 자신의 삶과 관련지어 읽어요",
+      "lessons": [
+        {
+          "action": "downloadFile('2730553');",
+          "resourceId": "2730553",
+          "title": "국어6-1_01단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어6-1_01단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2730554');",
+          "resourceId": "2730554",
+          "title": "국어6-1_01단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어6-1_01단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 바르게 고쳐 써요",
+      "lessons": [
+        {
+          "action": "downloadFile('2730555');",
+          "resourceId": "2730555",
+          "title": "국어6-1_02단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어6-1_02단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2730556');",
+          "resourceId": "2730556",
+          "title": "국어6-1_02단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어6-1_02단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 절차를 지키며 토론해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2730557');",
+          "resourceId": "2730557",
+          "title": "국어6-1_03단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어6-1_03단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2730558');",
+          "resourceId": "2730558",
+          "title": "국어6-1_03단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어6-1_03단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

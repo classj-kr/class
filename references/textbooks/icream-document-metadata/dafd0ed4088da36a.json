@@ -1,0 +1,105 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/4%ED%95%99%EB%85%84_%EB%AF%B8%EC%88%A0_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "미술",
+  "fileName": "4학년_미술_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 4,
+      "semester": 1,
+      "listedUnit": "1. 이렇게 멋진~13. 우리가 함께한다면",
+      "sourceManifest": "4-1.json"
+    },
+    {
+      "grade": 4,
+      "semester": 2,
+      "listedUnit": "1. 이렇게 멋진~13. 우리가 함께한다면",
+      "sourceManifest": "4-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "4학년_미술_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 이렇게 멋진",
+          "title": "생활 속 미술의 역할 알고 분류하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "2. 보고 또 보고",
+          "title": "색의 특성을 살려 작품 표현하기",
+          "table": 0,
+          "sourceRow": 7
+        },
+        {
+          "unit": "3. 느낌이 보이게",
+          "title": "질감과 양감이 잘 느껴지는 작품 만들기",
+          "table": 0,
+          "sourceRow": 10
+        },
+        {
+          "unit": "4. 그날의 즐거움",
+          "title": "지점토로 즐거운 나 표현하기",
+          "table": 0,
+          "sourceRow": 13
+        },
+        {
+          "unit": "5. 비를 느껴요",
+          "title": "탐색한 비를 글과 그림으로 표현하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "6. 놀라운 변신",
+          "title": "종이 그릇 만들기",
+          "table": 0,
+          "sourceRow": 19
+        },
+        {
+          "unit": "7. 모두가 주인공",
+          "title": "작품을 감상하고 역할극으로 표현하기",
+          "table": 0,
+          "sourceRow": 22
+        },
+        {
+          "unit": "8. 순간을 잡아요",
+          "title": "사진을 찍고 나의 생각 적어 보기",
+          "table": 0,
+          "sourceRow": 25
+        },
+        {
+          "unit": "9. 빙글빙글 데굴데굴",
+          "title": "구슬이 굴러가는 장난감 만들기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "10. 꿈을 찍다",
+          "title": "볼록 판화를 찍는 방법과 표현 용구 알아보기",
+          "table": 0,
+          "sourceRow": 31
+        },
+        {
+          "unit": "11. 반듯반듯 우리글",
+          "title": "판본체의 기초 알고 글자 쓰기",
+          "table": 0,
+          "sourceRow": 34
+        },
+        {
+          "unit": "12. 열려라 상상",
+          "title": "물건에 생명 불어넣기",
+          "table": 0,
+          "sourceRow": 37
+        },
+        {
+          "unit": "13. 우리가 함께한다면",
+          "title": "우리 반 작품 전시회 열기",
+          "table": 0,
+          "sourceRow": 40
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

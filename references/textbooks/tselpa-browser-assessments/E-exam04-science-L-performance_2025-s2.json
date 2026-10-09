@@ -1,0 +1,103 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-science-L_2025&tab=E-exam04-science-L-performance_2025",
+  "groups": [
+    {
+      "title": "1. 밤하늘 관찰",
+      "lessons": [
+        {
+          "action": "downloadFile('2439548');",
+          "resourceId": "2439548",
+          "title": "과학(이)_4-2_1단원_2차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-1_2차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595307');",
+          "resourceId": "2595307",
+          "title": "과학(이)_4-2_1단원_5~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-1_5~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439549');",
+          "resourceId": "2439549",
+          "title": "과학(이)_4-2_1단원_8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-1_8차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 생물과 환경",
+      "lessons": [
+        {
+          "action": "downloadFile('2439550');",
+          "resourceId": "2439550",
+          "title": "과학(이)_4-2_2단원_2~3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-2_2~3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595308');",
+          "resourceId": "2595308",
+          "title": "과학(이)_4-2_2단원_5~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-2_5~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439551');",
+          "resourceId": "2439551",
+          "title": "과학(이)_4-2_2단원_7~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-2_7~8차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 여러 가지 기체",
+      "lessons": [
+        {
+          "action": "downloadFile('2439552');",
+          "resourceId": "2439552",
+          "title": "과학(이)_4-2_3단원_2차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-3_2차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439553');",
+          "resourceId": "2439553",
+          "title": "과학(이)_4-2_3단원_3~4차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-3_3~4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595309');",
+          "resourceId": "2595309",
+          "title": "과학(이)_4-2_3단원_5~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-3_5~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595310');",
+          "resourceId": "2595310",
+          "title": "과학(이)_4-2_3단원_7~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-3_7~8차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 기후 변화와 우리 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2595311');",
+          "resourceId": "2595311",
+          "title": "과학(이)_4-2_4단원_2~3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-4_2~3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439554');",
+          "resourceId": "2439554",
+          "title": "과학(이)_4-2_4단원_5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-4_5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439555');",
+          "resourceId": "2439555",
+          "title": "과학(이)_4-2_4단원_7~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_4-2-4_7~8차시_수행평가.hwp"
+        }
+      ]
+    }
+  ]
+}

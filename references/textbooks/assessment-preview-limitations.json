@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-09",
+  "observations": [
+    {
+      "publisher": "음악과생활",
+      "grades": [
+        5,
+        6
+      ],
+      "visible": "학생 수행 평가지 첫 장",
+      "rubricVisible": false
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 3,
+      "visible": "평가 요소와 성취기준 및 문제 첫 장",
+      "rubricVisible": false
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 3,
+      "visible": "문항 정보와 교수학습 평가 계획 첫 장",
+      "rubricVisible": false
+    }
+  ],
+  "result": "Rubric visual review remains pending for these publishers."
+}

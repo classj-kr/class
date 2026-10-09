@@ -1,0 +1,461 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2404487');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2404487",
+          "title": "수학(박)3-1_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 평면도형",
+      "lessons": [
+        {
+          "action": "downloadFile('2389093');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389093",
+          "title": "수학(박)3-1_단원별수행평가_1단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_1단원_0304차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389529');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389529",
+          "title": "수학(박)3-1_단원별수행평가_1단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_1단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389530');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389530",
+          "title": "수학(박)3-1_단원별수행평가_1단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_1단원_0607차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389534');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389534",
+          "title": "수학(박)3-1_단원별수행평가_1단원_04",
+          "downloadPath": "D:\\Downloads\\(3-1-1)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2389535');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389535",
+          "title": "수학(박)3-1_단원별수행평가_1단원_05",
+          "downloadPath": "D:\\Downloads\\(3-1-1)단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2389536');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389536",
+          "title": "수학(박)3-1_단원별수행평가_1단원_06",
+          "downloadPath": "D:\\Downloads\\(3-1-1)단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2389537');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389537",
+          "title": "수학(박)3-1_단원별수행평가_1단원_07",
+          "downloadPath": "D:\\Downloads\\(3-1-1)단원별수행평가_04.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 덧셈과 뺄셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2389538');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389538",
+          "title": "수학(박)3-1_단원별수행평가_2단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_2단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389539');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389539",
+          "title": "수학(박)3-1_단원별수행평가_2단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_2단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389540');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389540",
+          "title": "수학(박)3-1_단원별수행평가_2단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_2단원_0708차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389545');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389545",
+          "title": "수학(박)3-1_단원별수행평가_2단원_04",
+          "downloadPath": "D:\\Downloads\\(3-1-2)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2389546');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389546",
+          "title": "수학(박)3-1_단원별수행평가_2단원_05",
+          "downloadPath": "D:\\Downloads\\(3-1-2)단원별수행평가_02.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 길이와 시간",
+      "lessons": [
+        {
+          "action": "downloadFile('2389547');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389547",
+          "title": "수학(박)3-1_단원별수행평가_3단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_3단원_0203차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389548');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389548",
+          "title": "수학(박)3-1_단원별수행평가_3단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_3단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389549');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389549",
+          "title": "수학(박)3-1_단원별수행평가_3단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_3단원_0708차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389553');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389553",
+          "title": "수학(박)3-1_단원별수행평가_3단원_04",
+          "downloadPath": "D:\\Downloads\\(3-1-3)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2389554');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389554",
+          "title": "수학(박)3-1_단원별수행평가_3단원_05",
+          "downloadPath": "D:\\Downloads\\(3-1-3)단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2389555');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389555",
+          "title": "수학(박)3-1_단원별수행평가_3단원_06",
+          "downloadPath": "D:\\Downloads\\(3-1-3)단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2389556');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389556",
+          "title": "수학(박)3-1_단원별수행평가_3단원_07",
+          "downloadPath": "D:\\Downloads\\(3-1-3)단원별수행평가_04.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2389557');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389557",
+          "title": "수학(박)3-1_단원별수행평가_4단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_4단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389558');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389558",
+          "title": "수학(박)3-1_단원별수행평가_4단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_4단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389559');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389559",
+          "title": "수학(박)3-1_단원별수행평가_4단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_4단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389562');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389562",
+          "title": "수학(박)3-1_단원별수행평가_4단원_04",
+          "downloadPath": "D:\\Downloads\\(3-1-4)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2389563');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389563",
+          "title": "수학(박)3-1_단원별수행평가_4단원_05",
+          "downloadPath": "D:\\Downloads\\(3-1-4)단원별수행평가_02.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 곱셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2389564');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389564",
+          "title": "수학(박)3-1_단원별수행평가_5단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_5단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389565');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389565",
+          "title": "수학(박)3-1_단원별수행평가_5단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_5단원_0405차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389566');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389566",
+          "title": "수학(박)3-1_단원별수행평가_5단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)3-1_수행평가_5단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2389569');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389569",
+          "title": "수학(박)3-1_단원별수행평가_5단원_04",
+          "downloadPath": "D:\\Downloads\\(3-1-5)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2389570');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389570",
+          "title": "수학(박)3-1_단원별수행평가_5단원_05",
+          "downloadPath": "D:\\Downloads\\(3-1-5)단원별수행평가_02.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 분수와 소수",
+      "lessons": [
+        {
+          "action": "downloadFile('2389571');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389571",
+          "title": "수학(박)3-1_단원별수행평가_6단원_01",
+          "downloadPath": null,
+          "status": "previous-download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2389572');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389572",
+          "title": "수학(박)3-1_단원별수행평가_6단원_02",
+          "downloadPath": null,
+          "status": "previous-download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2389573');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389573",
+          "title": "수학(박)3-1_단원별수행평가_6단원_03",
+          "downloadPath": null,
+          "status": "download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2389579');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389579",
+          "title": "수학(박)3-1_단원별수행평가_6단원_04",
+          "downloadPath": "D:\\Downloads\\(3-1-6)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2389580');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389580",
+          "title": "수학(박)3-1_단원별수행평가_6단원_05",
+          "downloadPath": "D:\\Downloads\\(3-1-6)단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2389581');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389581",
+          "title": "수학(박)3-1_단원별수행평가_6단원_06",
+          "downloadPath": "D:\\Downloads\\(3-1-6)단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2389582');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389582",
+          "title": "수학(박)3-1_단원별수행평가_6단원_07",
+          "downloadPath": "D:\\Downloads\\(3-1-6)단원별수행평가_04.hwp"
+        },
+        {
+          "action": "downloadFile('2389583');",
+          "icons": [
+            "icon icon-hangle",
+            "icon icon-search",
+            "icon icon-download"
+          ],
+          "resourceId": "2389583",
+          "title": "수학(박)3-1_단원별수행평가_6단원_08",
+          "downloadPath": "D:\\Downloads\\(3-1-6)단원별수행평가_05.hwp"
+        }
+      ]
+    }
+  ]
+}

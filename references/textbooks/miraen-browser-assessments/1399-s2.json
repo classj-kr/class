@@ -1,0 +1,121 @@
+{
+  "book": "국어 1-2 (가)",
+  "curriculum": "year-2022",
+  "grade": "1학년",
+  "rows": [
+    {
+      "context": "1-1 단원 3~4차시",
+      "resourceId": "10002676",
+      "title": "[수행평가 HWP] 1_3~4차시_수행평가",
+      "unit": "1. 기분을 말해요"
+    },
+    {
+      "context": "1-1 단원 5~6차시",
+      "resourceId": "10002678",
+      "title": "[수행평가 HWP] 1_5~6차시_수행평가",
+      "unit": "1. 기분을 말해요"
+    },
+    {
+      "context": "1-2 단원 7~8차시",
+      "resourceId": "10002680",
+      "title": "[수행평가 HWP] 1_7~8차시_수행평가",
+      "unit": "1. 기분을 말해요"
+    },
+    {
+      "context": "1-2 단원 9~10차시",
+      "resourceId": "10002681",
+      "title": "[수행평가 HWP] 1_9~10차시_수행평가",
+      "unit": "1. 기분을 말해요"
+    },
+    {
+      "context": "2-1 단원 3~4차시",
+      "resourceId": "10003192",
+      "title": "[수행평가 HWP] 2_3~4차시_수행평가",
+      "unit": "2. 낱말을 정확하게 읽어요"
+    },
+    {
+      "context": "2-1 단원 5~6차시",
+      "resourceId": "10003193",
+      "title": "[수행평가 HWP] 2_5~6차시_수행평가",
+      "unit": "2. 낱말을 정확하게 읽어요"
+    },
+    {
+      "context": "2-1 단원 7~8차시",
+      "resourceId": "10003194",
+      "title": "[수행평가 HWP] 2_7~8차시_수행평가",
+      "unit": "2. 낱말을 정확하게 읽어요"
+    },
+    {
+      "context": "2-2 단원 9~10차시",
+      "resourceId": "10003195",
+      "title": "[수행평가 HWP] 2_9~10차시_수행평가",
+      "unit": "2. 낱말을 정확하게 읽어요"
+    },
+    {
+      "context": "2-2 단원 11~12차시",
+      "resourceId": "10003196",
+      "title": "[수행평가 HWP] 2_11~12차시_수행평가",
+      "unit": "2. 낱말을 정확하게 읽어요"
+    },
+    {
+      "context": "3-1 단원 2~3차시",
+      "resourceId": "10003197",
+      "title": "[수행평가 HWP] 3_2~3차시_수행평가",
+      "unit": "3. 그림일기를 써요"
+    },
+    {
+      "context": "3-1 단원 4~5차시",
+      "resourceId": "10003198",
+      "title": "[수행평가 HWP] 3_4~5차시_수행평가",
+      "unit": "3. 그림일기를 써요"
+    },
+    {
+      "context": "3-2 단원 6~7차시",
+      "resourceId": "10003199",
+      "title": "[수행평가 HWP] 3_6~7차시_수행평가",
+      "unit": "3. 그림일기를 써요"
+    },
+    {
+      "context": "3-2 단원 8~9차시",
+      "resourceId": "10003200",
+      "title": "[수행평가 HWP] 3_8~9차시_수행평가",
+      "unit": "3. 그림일기를 써요"
+    },
+    {
+      "context": "3-2 단원 10~11차시",
+      "resourceId": "10003201",
+      "title": "[수행평가 HWP] 3_10~11차시_수행평가",
+      "unit": "3. 그림일기를 써요"
+    },
+    {
+      "context": "4-1 단원 3~5차시",
+      "resourceId": "10003635",
+      "title": "[수행평가 HWP] 4_3~5차시_수행평가",
+      "unit": "4. 감동을 나누어요"
+    },
+    {
+      "context": "4-1 단원 6~7차시",
+      "resourceId": "10003636",
+      "title": "[수행평가 HWP] 4_6~7차시_수행평가",
+      "unit": "4. 감동을 나누어요"
+    },
+    {
+      "context": "4-2 단원 8~9차시",
+      "resourceId": "10003637",
+      "title": "[수행평가 HWP] 4_8~9차시_수행평가",
+      "unit": "4. 감동을 나누어요"
+    },
+    {
+      "context": "4-2 단원 10~11차시",
+      "resourceId": "10003638",
+      "title": "[수행평가 HWP] 4_10~11차시_수행평가",
+      "unit": "4. 감동을 나누어요"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1399&gradeCode=01&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 1-2 (가)",
+  "sourceId": "1399",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

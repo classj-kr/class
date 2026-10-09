@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=5&exam=E-exam05-ko-A_2026&tab=E-exam05-ko-A-performance_2026",
+  "groups": [
+    {
+      "title": "1. 대화를 나누어요",
+      "lessons": [
+        {
+          "action": "downloadFile('2731822');",
+          "resourceId": "2731822",
+          "title": "국어5-1_01단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어5-1_01단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2731823');",
+          "resourceId": "2731823",
+          "title": "국어5-1_01단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어5-1_01단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 체험한 일을 글로 써요",
+      "lessons": [
+        {
+          "action": "downloadFile('2731824');",
+          "resourceId": "2731824",
+          "title": "국어5-1_02단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어5-1_02단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2731825');",
+          "resourceId": "2731825",
+          "title": "국어5-1_02단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어5-1_02단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 발표하고 질문해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2750902');",
+          "resourceId": "2750902",
+          "title": "국어5-1_03단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어5-1_03단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2750903');",
+          "resourceId": "2750903",
+          "title": "국어5-1_03단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어5-1_03단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}
