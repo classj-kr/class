@@ -9,8 +9,8 @@ const plans={
 a02:{click:['[data-study-action=cell-1]','[data-study-action=piano]','[data-study-action=cell-1]','[data-study-action=sound]','[data-study-action=cell-1]'],observe:'.study-workbench .study-status'},
 a03:{click:['[data-a03-device=ipad]','[data-a03-run]','[data-a03-os=ipados]','[data-a03-app=ipad-sketch]','[data-a03-run]'],observe:'[data-a03-preview-title]',expect:'앱 실행 성공'},
 a04:{steps:[['value','[data-a04-slider]','2011'],['click','[data-a04-capture]'],['value','[data-a04-slider]','2014'],['click','[data-a04-capture]']],observe:'[data-a04-status]'},
-a05:{click:['[data-a05-record]','[data-a05-save=a]','[data-a05-rate="8"]','[data-a05-record]','[data-a05-save=b]'],observe:'[data-a05-comparison]',expect:'측정'},
-b01:{click:['#componentTab1','#componentTab3'],observe:'#componentPartPanel',expect:'SSD'},
+a05:{click:['[data-a05-record]','[data-a05-save=a]','[data-a05-rate="8"]','[data-a05-record]','[data-a05-save=b]','[data-a05-bits="3"]','[data-a05-record]','[data-a05-save=a]'],observe:'[data-a05-comparison]',expect:'비트 깊이'},
+b01:{custom:'memory',observe:'#studyMemoryStored',expect:'여름'},
 b02:{click:['[data-device-choice=tablet]','[data-mobile-part=camera]'],observe:'#editionLab',expect:'카메라'},
 b03:{click:['[data-port-connect]','[data-port-cable-choice=video]','[data-port-connect]'],observe:'[data-port-status]'},
 c01:{custom:'relay',observe:'[data-relay-status]',expect:'권한'},
@@ -33,10 +33,10 @@ g02:{steps:[['click','[data-bit-index="7"]'],['click','[data-unit-index="1"]'],[
 g03:{steps:[['value','[data-utf8-input]','가나'],['click','[data-utf8-run]'],['value','[data-compression-quality]','25'],['value','[data-transfer-speed]','4']],observe:'#editionLab'},
 h01:{click:['[data-network-link=internet]','[data-network-send]','[data-network-send]'],observe:'#editionLab'},
 h02:{repeat:['[data-request-action]',5],observe:'[data-request-status]'},
-h03:{click:['[data-browser-new-tab]','[data-browser-suggestion=달]'],observe:'#editionLab'},
+h03:{custom:'sources',observe:'[data-page-body]',expect:'2026년'},
 h04:{click:['[data-stack-answer="3"]','[data-stack-start]'],repeat:['[data-stack-next]',5],observe:'[data-stack-screen-score]'},
 h05:{click:['#transfer-tab-deploy'],repeat:['[data-transfer-panel=deploy] [data-transfer-action]',2],observe:'[data-transfer-panel=deploy]'},
-i01:{steps:[['value','[data-account-name]','student01'],['value','[data-account-secret]','cedar27'],['click','[data-account-next]'],['value','[data-account-code]','482169'],['click','[data-account-next]'],['click','[data-permission-attempt=grades]']],observe:'[data-permission-result]',expect:'거부'},
+i01:{steps:[['value','[data-account-name]','student01'],['value','[data-account-secret]','cedar27'],['click','[data-account-next]'],['value','[data-account-code]','482169'],['click','[data-account-next]'],['click','[data-permission-attempt=assignment]'],['click','[data-permission-attempt=edit]']],observe:'[data-permission-result]',expect:'거부'},
 i02:{click:['[data-evidence-choice=urgency]','[data-evidence-choice=secret]','[data-evidence-choice=link]','[data-evidence-check]'],observe:'#editionLab'},
 j01:{custom:'algorithm',observe:'.study-workbench .study-status'},
 j02:{custom:'robot',observe:'[data-control-score]',expect:'3'},
@@ -58,6 +58,8 @@ let browser;const results=[],failures=[];try{
  for(const entry of entries){const id=entry.id;errors=[];const record={id,layouts:[],fontChecks:[]};try{
   await page.setViewport({width:1440,height:1000});await page.goto(base+"lessons/?lesson="+id,{waitUntil:"networkidle0"});await page.waitForSelector("#edition");
   assert.equal(await read(".edition-header h1"),entry.number+"차시. "+entry.title);
+  assert.equal(await read('.edition-reading>h2'),data[id].case);
+  assert.equal(await page.$$('.study-analogy,.life-figure,.picture-analogy').then(x=>x.length),0,'retired illustration blocks must not appear');
   const key="classj:textbook:"+id+":v1";
   assert.equal(await read("#editionProgress"),"0 / 3");
   const qlist=[data[id].labCheck,...data[id].apply.fields,...data[id].checks];
@@ -86,6 +88,16 @@ let browser;const results=[],failures=[];try{
    await page.select('#studyFileDestination','homework');await click('[data-study-action=move]');
    assert.match(await read('[data-study-folder=documents]'),/봄 관찰 기록/);
    assert.match(await read('[data-study-folder=homework]'),/봄과 여름 관찰 기록/);
+  }
+  if(plan.custom==='memory'){
+   await click('[data-study-action=memory-open]');await value('#studyMemoryEditor','봄, 여름');await click('[data-study-action=memory-power]');await click('[data-study-action=memory-open]');
+   assert.equal(await read('#studyMemoryEditor'),'봄');
+   await value('#studyMemoryEditor','봄, 여름');await click('[data-study-action=memory-save]');await click('[data-study-action=memory-power]');await click('[data-study-action=memory-open]');
+   assert.equal(await read('#studyMemoryEditor'),'봄, 여름');
+  }
+  if(plan.custom==='sources'){
+   await click('[data-browser-suggestion=도서관]');await click('[data-result-card=libraryArchive]>button');
+   await click('[data-page-related-link]');
   }
   if(plan.custom==='algorithm'){
    await click('[data-study-action=case-negative]');await click('[data-study-action=run]');

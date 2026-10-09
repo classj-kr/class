@@ -200,10 +200,11 @@
             bitsCompared: false
         };
 
-        const notify = () => options.onState?.({
-            rateCompared: state.rateCompared,
-            bitsCompared: state.bitsCompared
-        });
+        const notify = () => {
+            root.dataset.rateCompared=String(state.rateCompared);
+            root.dataset.bitsCompared=String(state.bitsCompared);
+            options.onState?.({rateCompared:state.rateCompared,bitsCompared:state.bitsCompared});
+        };
         const setPressed = (buttons, key, value) => buttons.forEach((button) => {
             button.setAttribute("aria-pressed", String(Number(button.dataset[key]) === value));
         });

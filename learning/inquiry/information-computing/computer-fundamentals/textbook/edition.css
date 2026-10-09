@@ -85,8 +85,6 @@ body.computer-edition{display:flow-root;min-height:100vh}
 .study-table caption{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
 .study-table th,.study-table td{padding:12px;text-align:left;vertical-align:top;border:1px solid #cbd4c9;overflow-wrap:anywhere;word-break:keep-all}
 .study-table th{background:#edf2ec;font-weight:700}
-.study-analogy{margin:24px 0;border-top:1px solid #d3dad4;border-bottom:1px solid #d3dad4}
-.study-analogy>summary{padding:14px 4px;cursor:pointer;font-family:var(--edition-ui);font-size:15px;color:#315e49}
 .study-assignment,.study-notebook{max-width:900px;margin:18px 0 26px}
 .study-kind{font:13px var(--edition-ui);color:#446452}
 .study-assignment h3{font-size:1.2rem;line-height:1.6;margin:6px 0 14px}

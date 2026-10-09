@@ -44,12 +44,13 @@
     };
     const el = (tag, text, cls) => {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
     function mount({id,data,lab,before,after,saved,onChange,custom}) {
+        const revision=custom?.revision||2;
         const state = {
-            revision: 2,
+            revision,
             prediction: typeof saved?.prediction === 'string' ? saved.prediction.slice(0,600) : '',
             explanation: typeof saved?.explanation === 'string' ? saved.explanation.slice(0,1200) : '',
-            records: saved?.revision === 2 && Array.isArray(saved.records) ? [...new Set(saved.records.filter(r=>typeof r==='string'&&r.trim()).map(r=>r.slice(0,2000)))].slice(0,8) : [],
-            passed: saved?.revision === 2 && saved.passed === true
+            records: saved?.revision === revision && Array.isArray(saved.records) ? [...new Set(saved.records.filter(r=>typeof r==='string'&&r.trim()).map(r=>r.slice(0,2000)))].slice(0,8) : [],
+            passed: saved?.revision === revision && saved.passed === true
         };
         function snapshot() {
             if(custom)return custom.snapshot();

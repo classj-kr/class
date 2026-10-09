@@ -1,0 +1,19 @@
+.concept-explanation{margin:28px 0 32px;padding:24px 0;border-block:1px solid #b8c6bf;font-family:"KoPubWorld Batang","Batang",serif;color:#21302b}
+.concept-explanation h3{margin:0 0 12px!important;font-size:1.13rem;line-height:1.6}
+.concept-explanation p{font-size:1rem;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+.concept-explanation .explanation-intro{margin:0 0 18px}
+.explanation-figure{margin:0}
+.explanation-map{width:100%;border-collapse:collapse;table-layout:fixed;font-size:1rem;line-height:1.75}
+.explanation-map caption{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.explanation-map th{text-align:left;padding:10px 16px;border-bottom:2px solid #748c80;font-weight:700}
+.explanation-map th:first-child{color:#62503b;background:#f5f0e7}
+.explanation-map th:last-child{color:#214f3e;background:#edf3ee}
+.explanation-map td{vertical-align:top;text-align:left;padding:15px 16px;border-bottom:1px solid #dce3dd;word-break:keep-all;overflow-wrap:anywhere}
+.explanation-map td+td{border-left:1px solid #dce3dd}
+.explanation-map td strong{display:block;font-size:1rem;margin-bottom:4px;color:#243b30}
+.explanation-map td span{display:block;font-size:.92rem;color:#46554b}
+.explanation-figure figcaption{margin:18px 0 0;padding-left:14px;border-left:3px solid #527a64;font-size:1rem;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+.concept-explanation .explanation-boundary{margin:16px 0 0;font-size:.87rem;color:#58655c;line-height:1.8}
+.explanation-boundary strong{display:block;font-weight:700;margin-bottom:3px}
+@media(max-width:540px){.concept-explanation{margin:22px 0;padding:20px 0}.concept-explanation h3{font-size:1.05rem}.explanation-map th{padding:9px 8px;font-size:.9rem}.explanation-map td{padding:12px 8px}.explanation-map td strong{font-size:.93rem}.explanation-map td span{font-size:.86rem}.explanation-figure figcaption{padding-left:11px;font-size:.95rem}}
+@media print{.concept-explanation{break-inside:auto}.explanation-map tr{break-inside:avoid}.explanation-map th{background:transparent!important}}
