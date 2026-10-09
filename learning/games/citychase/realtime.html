@@ -4,15 +4,16 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#193a32"><title>술래잡기</title>
   <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261001-citychase-bg">
-  <link rel="stylesheet" href="realtime.css?v=20261009i">
+  <link rel="stylesheet" href="realtime.css?v=20261009m">
   <script src="../../../assets/network/game-network.js?v=20260821" defer></script>
   <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules" defer></script>
   <script src="realtime-world.js?v=20261009e" defer></script>
   <script src="realtime-steering.js?v=20261009c" defer></script>
-  <script src="realtime-engine.js?v=20261009j" defer></script>
+  <script src="realtime-engine.js?v=20261009m" defer></script>
   <script src="realtime-capture.js?v=20261009c" defer></script>
   <script src="realtime-controls.js?v=20261009c" defer></script>
-  <script src="realtime.js?v=20261009j" defer></script>
+  <script src="realtime-audio.js?v=20261009l" defer></script>
+  <script src="realtime.js?v=20261009n" defer></script>
 </head>
 <body>
   <main id="welcome" class="welcome">
@@ -31,7 +32,7 @@
       </details>
     </section>
   </main>
-  <section id="play" class="play hidden" aria-label="술래잡기">
+  <section id="play" class="play hidden" aria-label="술래잡기" data-sfx-feedback="none">
     <canvas id="town" aria-label="방향키·WASD 또는 이동 패드로 이동합니다. 골목을 눌러 목적지로 이동할 수도 있습니다."></canvas>
     <div class="topHud">
       <button id="exitBtn" class="icon" aria-label="게임 나가기">←</button>
@@ -40,10 +41,18 @@
       <time id="clock">3:00</time>
       <button id="viewBtn" class="icon" aria-label="전체 지도 보기">전체</button>
       <a id="rulesBtnGame" class="icon rulesLink" href="realtime-rules.html" target="_blank" rel="noopener" aria-label="게임 규칙">?</a>
-      <button id="soundBtn" class="icon" aria-label="소리 켜기" aria-pressed="false">♪</button>
+      <button id="soundBtn" class="icon" aria-label="소리 끄기" aria-pressed="true" data-sfx="none">🔊</button>
     </div>
     <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
     <div id="pauseNotice" class="pauseNotice hidden">방장이 돌아오면 추격전을 이어갑니다.</div>
+    <div id="placement" class="placement hidden">
+      <section id="placementPanel" class="panel hidden" role="dialog" aria-labelledby="placementTitle">
+        <div class="heading"><h2 id="placementTitle">보석 배치</h2><strong id="placementCount" aria-live="polite">0 / 3</strong></div>
+        <div id="placementShops" class="placementShops" aria-label="보석을 숨길 가게 3곳"></div>
+        <button id="placementConfirm" class="primary wide" disabled>배치 완료</button>
+      </section>
+      <p id="placementWaiting" class="panel hidden" role="status">경찰이 보석을 배치하고 있습니다.</p>
+    </div>
     <div id="movePad" class="movePad" role="group" aria-label="이동 패드 · 누른 방향으로 이동, 손을 떼면 정지">
       <span class="padUp" aria-hidden="true">▲</span><span class="padRight" aria-hidden="true">▶</span><span class="padDown" aria-hidden="true">▼</span><span class="padLeft" aria-hidden="true">◀</span><span class="stick" aria-hidden="true"></span>
     </div>

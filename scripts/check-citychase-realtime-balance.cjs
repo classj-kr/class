@@ -17,8 +17,8 @@ for(const profile of profiles){
   const rows=[];
   for(const [index,order] of orders.entries()){
     if(index%sample)continue;
-    const roster=Array.from({length:4},(_,i)=>({id:String(i),name:'Bot '+i,bot:i!==1||profile==='chase'}));
-    const g=E.create(roster,()=>.4);g.targets=[...order];
+    const roster=Array.from({length:4},(_,i)=>({id:String(i),name:'Bot '+i,bot:i!==1}));
+    const g=E.create(roster,()=>.4);E.command(g,'1',{type:'PLACE_GEMS',shops:order});g.players[1].bot=profile==='chase';
     if(profile==='return-to-jail'){
       g.elapsed=6;
       Object.assign(g.players[0],{x:W.nodes.p0.x,y:W.nodes.p0.y,immuneUntil:0});

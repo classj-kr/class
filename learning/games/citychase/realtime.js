@@ -5,29 +5,17 @@
   map.src='assets/realtime-town-final.png';idle.src='assets/realtime-idle.png';captureSprite.src='assets/realtime-capture.png';sprites.police.src='assets/realtime-police-run.png';sprites.thief.src='assets/realtime-thief-run.png';
   const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
   const captures=window.ChaseCapture.create({reducedMotion:()=>motionPreference.matches});
-  let game=null,view=null,previousView=null,received=0,myId='me',lobby=null,online=false,host=false,chosenTeam='thief',overview=false,pingMode=false,sound=false,audio=null;
+  const sounds=window.ChaseAudio.create({onEnabledChange(enabled){const button=$('soundBtn');button.textContent=enabled?'🔊':'🔇';button.setAttribute('aria-pressed',String(enabled));button.setAttribute('aria-label',enabled?'소리 끄기':'소리 켜기');}});
+  let game=null,view=null,previousView=null,received=0,myId='me',lobby=null,online=false,host=false,chosenTeam='thief',overview=false,pingMode=false;
   let width=innerWidth,height=innerHeight,camera={x:800,y:500,scale:1},lastFrame=0,lastTick=0,lastPublish=0,lastEvent=0,clueSignature='',toastTimer,captureVisible=false;
   const poses=new Map(),labels=[],actorBounds=[],shopHitAreas=[];
+  let placement=[];
   const lobbyTemplate=$('lobbyScreen').innerHTML;
   const controls=window.ChaseControls.create({pad:$('movePad'),enabled:()=>!!view&&view.phase==='playing'&&!view.paused&&me()?.jailedUntil<=view.elapsed&&$('cluePanel').classList.contains('hidden'),
     send,dash:()=>{if(!$('dashBtn').disabled)send({type:'DASH'});},interact});
   const profile={name:String(window.CLASS_PLAYER_NAME||'나')};
   function selectTeam(team){chosenTeam=team;document.querySelectorAll('.choices [data-team]').forEach(button=>{const selected=button.dataset.team===team;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));});}
   function notice(text,kind='notice'){$('notice').textContent=text;$('notice').classList.toggle('captureNotice',kind==='capture');$('notice').classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('notice').classList.add('hidden'),3800);}
-  function beep(kind='notice'){
-    if(!sound)return;
-    try{
-      audio ||= new(window.AudioContext||window.webkitAudioContext)();audio.resume();
-      const notes=kind==='capture'?[[0,880,420,.12,.045],[.13,330,145,.14,.035],[.27,520,220,.12,.025]]:[[0,660,880,.23,.035]];
-      for(const[delay,from,to,duration,volume]of notes){
-        const o=audio.createOscillator(),v=audio.createGain(),at=audio.currentTime+delay;
-        o.type=kind==='capture'?'triangle':'sine';o.connect(v);v.connect(audio.destination);
-        o.frequency.setValueAtTime(from,at);o.frequency.exponentialRampToValueAtTime(to,at+duration);
-        v.gain.setValueAtTime(.001,at);v.gain.linearRampToValueAtTime(volume,at+.012);v.gain.exponentialRampToValueAtTime(.001,at+duration);
-        o.start(at);o.stop(at+duration+.01);o.onended=()=>{o.disconnect();v.disconnect();};
-      }
-    }catch{}
-  }
   function me(){return view?.players.find(p=>p.id===myId);}
   function install(next){if(!next)return;previousView=view;view=next;received=performance.now();captures.observe(next,received);updateHud();}
   function publish(){
@@ -35,13 +23,14 @@
     if(online&&host)for(const player of game.players)if(player.id!==myId)lobby.sendServer({type:'GAME_MESSAGE',recipientId:player.id,payload:{type:'CHASE_STATE',state:E.snapshot(game,player.id)}});
   }
   function send(message){
-    if(!view||view.phase!=='playing')return;
+    if(!view||view.phase!=='playing'&&!(view.phase==='setup'&&message.type==='PLACE_GEMS'))return;
     if(!online||host){E.command(game,myId,message);publish();}
     else if(!lobby.send({type:'CHASE_INPUT',action:message}))notice('연결을 확인하고 다시 시도해 주세요.');
   }
   function startScreen(){
     $('welcome').classList.add('hidden');$('play').classList.remove('hidden');$('result').classList.add('hidden');$('cluePanel').classList.add('hidden');
-    overview=false;pingMode=false;lastEvent=0;clueSignature='';captures.reset();lastTick=performance.now();camera.x=me()?.x||800;camera.y=me()?.y||500;
+    clearTimeout(toastTimer);$('notice').classList.add('hidden');
+    overview=false;pingMode=false;placement=[];lastEvent=0;clueSignature='';captures.reset();sounds.reset();lastTick=performance.now();camera.x=me()?.x||800;camera.y=me()?.y||500;
     $('viewBtn').textContent='전체';$('viewBtn').setAttribute('aria-label','전체 지도 보기');$('pingBtn').setAttribute('aria-pressed','false');resize();
   }
   async function practice(){
@@ -50,11 +39,11 @@
     clearLobby();
     const sizes=E.teamSizes(),counts={thief:chosenTeam==='thief'?1:0,police:chosenTeam==='police'?1:0};
     for(let i=1;i<count;i++){const team=counts.thief<sizes.thief?'thief':'police';counts[team]++;roster.push({id:'bot-'+i,name:(team==='police'?'경찰':'도둑')+' '+counts[team],team,bot:true});}
-    game=E.create(roster);install(E.snapshot(game,myId));startScreen();publish();$('practiceBtn').disabled=false;
+    game=E.create(roster);view=E.snapshot(game,myId);previousView=null;startScreen();publish();$('practiceBtn').disabled=false;
   }
   function networkStart(snapshot){
     online=true;host=snapshot.role==='host';myId=String(snapshot.myId);
-    if(host){const roster=Object.entries(snapshot.players).map(([id,p])=>({id,name:p.name,avatarKey:p.avatarKey}));game=E.create(roster);install(E.snapshot(game,myId));}
+    if(host){const roster=Object.entries(snapshot.players).map(([id,p])=>({id,name:p.name,avatarKey:p.avatarKey}));game=E.create(roster);view=E.snapshot(game,myId);previousView=null;}
     else{game=null;view=null;previousView=null;}
     startScreen();if(host)publish();else lobby.send({type:'CHASE_READY'});
   }
@@ -80,10 +69,11 @@
   function reset(){
     controls.stop(true);
     game=null;view=null;previousView=null;online=false;host=false;clearLobby();
-    $('welcome').classList.remove('hidden');$('play').classList.add('hidden');poses.clear();captures.reset();mountLobby();
+    $('welcome').classList.remove('hidden');$('play').classList.add('hidden');poses.clear();captures.reset();sounds.reset();mountLobby();
   }
   function updateHud(){
     const player=me();if(!player)return;
+    renderPlacement();
     $('teamLabel').textContent=(player.team==='thief'?'도둑팀':'경찰팀')+' · '+player.name;
     $('teamLabel').parentElement.dataset.team=player.team;
     const jailed=player.jailedUntil>view.elapsed;
@@ -91,19 +81,34 @@
     const left=Math.max(0,Math.ceil(view.roundSeconds-view.elapsed));$('clock').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');$('clock').classList.toggle('urgent',left<=30);$('scoreText').textContent=view.score+' / '+view.goal;
     $('captureText').textContent=view.captures+' / '+view.captureGoal;
     const finished=view.phase!=='playing';
+    $('clueBtn').disabled=finished;$('pingBtn').disabled=finished;
     $('dashBtn').disabled=finished||jailed||player.dashReady>view.elapsed||view.paused;$('dashBtn').textContent=player.dashReady>view.elapsed?'질주 '+Math.ceil(player.dashReady-view.elapsed)+'초':'질주';
     const shop=W.shops.find(s=>W.distance(player,s.door)<45),rescue=player.team==='thief'&&W.distance(player,W.nodes.jail)<65&&view.players.some(p=>p.team==='thief'&&p.jailedUntil>view.elapsed);
     const button=$('interactBtn');button.disabled=finished||jailed||view.paused||!!player.task||(!rescue&&(!shop||player.team!=='thief'||player.carrying));button.dataset.action=rescue?'RESCUE':'SEARCH';
     button.textContent=player.task?(player.task.type==='bank'?'보석 보관':player.task.type==='rescue'?'구출':'수색')+' '+Math.ceil((1-player.task.progress/player.task.duration)*100)+'%':rescue?'동료 구출':player.team==='police'?'자동 체포':'가게 수색';
     $('pauseNotice').classList.toggle('hidden',!view.paused);
     controls.refresh();
-    const events=view.events.filter(e=>e.id>lastEvent);if(events.length){lastEvent=Math.max(...events.map(e=>e.id));const kind=events.some(e=>e.type==='capture')?'capture':'notice';notice(events.at(-1).text,kind);beep(kind);}
+    const events=view.events.filter(e=>e.id>lastEvent);if(events.length){lastEvent=Math.max(...events.map(e=>e.id));const kind=events.some(e=>e.type==='capture')?'capture':'notice';notice(events.at(-1).text,kind);}
+    sounds.observe(view,myId);
     const signature=JSON.stringify([view.score,view.clues,view.shared]);if(signature!==clueSignature){clueSignature=signature;renderClues();}
     if(view.phase==='ended'){
       $('result').classList.toggle('hidden',captures.busy());$('resultTitle').textContent=view.winner==='thief'?'도둑팀 승리':'경찰팀 승리';
       const reason={gems:'보석 모두 확보',captures:'누적 체포 달성',allCaught:'도둑 전원 체포',timeout:'시간 종료'}[view.endReason]||'';
       $('resultText').textContent=`${reason} · 보석 ${view.score}/${view.goal} · 체포 ${view.captures}/${view.captureGoal}`;
     }
+  }
+  function renderPlacement(){
+    const setup=view?.phase==='setup',police=me()?.team==='police',wasHidden=$('placementPanel').classList.contains('hidden');
+    $('play').classList.toggle('placing',setup);$('placement').classList.toggle('hidden',!setup);
+    $('placementPanel').classList.toggle('hidden',!setup||!police);$('placementWaiting').classList.toggle('hidden',!setup||police);
+    if(!setup)return;
+    $('placementCount').textContent=`${placement.length} / ${E.GOAL}`;$('placementConfirm').disabled=placement.length!==E.GOAL||view.paused;
+    for(const button of $('placementShops').children){
+      const order=placement.indexOf(button.dataset.shop),selected=order>=0;
+      button.setAttribute('aria-pressed',String(selected));button.querySelector('.placementNumber').textContent=selected?String(order+1):'';
+      button.disabled=view.paused||!selected&&placement.length===E.GOAL;
+    }
+    if(police&&wasHidden)$('placementShops').firstElementChild?.focus({preventScroll:true});
   }
   function renderClues(){
     $('clueRound').textContent=Math.min(view.score+1,view.goal);$('clueCount').textContent='공유 '+view.shared.length+'개';
@@ -154,8 +159,11 @@
     camera.scale=scale;
     const halfW=width/(2*scale),halfH=height/(2*scale);
     const aimX=overview?800:Math.max(halfW,Math.min(W.WIDTH-halfW,focus?.x||800));
-    const aimY=overview?500:Math.max(halfH-56/scale,Math.min(W.HEIGHT-halfH,(focus?.y||500)-20));
+    const aimY=overview?500:Math.max(halfH,Math.min(W.HEIGHT-halfH,(focus?.y||500)-20));
     camera.x+=(aimX-camera.x)*delta;camera.y+=(aimY-camera.y)*delta;
+    // Clamp the interpolated position too: resizing or returning from the
+    // overview must not reveal the canvas background beyond the map edges.
+    if(!overview){camera.x=Math.max(halfW,Math.min(W.WIDTH-halfW,camera.x));camera.y=Math.max(halfH,Math.min(W.HEIGHT-halfH,camera.y));}
     const ox=width/2-camera.x*scale,oy=height/2-camera.y*scale;
     labels.length=0;actorBounds.length=0;
     ctx.clearRect(0,0,width,height);ctx.fillStyle='#d4dcb9';ctx.fillRect(0,0,width,height);ctx.save();ctx.translate(ox,oy);ctx.scale(scale,scale);
@@ -197,13 +205,14 @@
       if(p.task){const w=45/scale;rounded(x-w/2,y+9/scale,w,6/scale,3/scale,'#fff');rounded(x-w/2,y+9/scale,w*Math.min(1,p.task.progress/p.task.duration),6/scale,3/scale,'#e3ac26');}
     }
     drawLabels(ox,oy,scale);captures.draw(ctx,scale,now,{ox,oy,width,height});ctx.restore();
-    if(view.phase==='ended'&&!captures.busy(now))$('result').classList.remove('hidden');
+    if(view.phase==='ended'&&!captures.busy(now)){$('result').classList.remove('hidden');sounds.finish(view,myId);}
   }
   function destination(event){return{x:(event.clientX-width/2)/camera.scale+camera.x,y:(event.clientY-height/2)/camera.scale+camera.y};}
   let press=null;
   canvas.addEventListener('pointerdown',event=>{press={x:event.clientX,y:event.clientY,id:event.pointerId};canvas.setPointerCapture(event.pointerId);});
   canvas.addEventListener('pointerup',event=>{
     if(!press||press.id!==event.pointerId)return;const travel=Math.hypot(event.clientX-press.x,event.clientY-press.y);press=null;if(travel>12)return;
+    if(view?.phase!=='playing')return;
     let point=destination(event);const tag=shopHitAreas.find(b=>event.clientX>=b.x&&event.clientX<=b.x+b.w&&event.clientY>=b.y&&event.clientY<=b.y+b.h);
     const shop=tag?W.shops.find(s=>s.id===tag.shopId):W.shops.find(s=>Math.abs(point.x-s.x)<72&&Math.abs(point.y-s.y)<80);if(shop)point=shop.door;
     if(pingMode){send({type:'PING',...point});pingMode=false;$('pingBtn').setAttribute('aria-pressed','false');}
@@ -212,7 +221,15 @@
   $('lobbyScreen').addEventListener('click',event=>{if(event.target.closest('#lobbyBack'))reset();else if(event.target.closest('#practiceBtn'))practice();else{const button=event.target.closest('.choices [data-team]');if(button)selectTeam(button.dataset.team);}});
   $('exitBtn').addEventListener('click',()=>{if(confirm('추격전을 나갈까요?'))reset();});$('againBtn').addEventListener('click',reset);
   window.addEventListener('sitebackrequest',event=>{if(!online&&view){event.preventDefault();reset();}});
-  $('rulesBtnGame').addEventListener('click',()=>controls.stop(true));$('soundBtn').addEventListener('click',()=>{sound=!sound;$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').setAttribute('aria-label',sound?'소리 끄기':'소리 켜기');beep();});
+  $('rulesBtnGame').addEventListener('click',()=>controls.stop(true));$('soundBtn').addEventListener('click',()=>{sounds.setEnabled(!sounds.isEnabled());if(sounds.isEnabled())sounds.play('share');});
+  for(const shop of W.shops){
+    const button=document.createElement('button'),name=document.createElement('span'),number=document.createElement('span');
+    button.dataset.shop=shop.id;button.setAttribute('aria-pressed','false');button.style.setProperty('--shop-color',shop.color);
+    name.textContent=shop.name;number.className='placementNumber';number.setAttribute('aria-hidden','true');button.append(name,number);
+    button.addEventListener('click',()=>{if(view?.phase!=='setup'||me()?.team!=='police')return;const index=placement.indexOf(shop.id);if(index>=0)placement.splice(index,1);else if(placement.length<E.GOAL)placement.push(shop.id);renderPlacement();});
+    $('placementShops').append(button);
+  }
+  $('placementConfirm').addEventListener('click',()=>send({type:'PLACE_GEMS',shops:[...placement]}));
   $('viewBtn').addEventListener('click',()=>{overview=!overview;$('viewBtn').textContent=overview?'내 위치':'전체';$('viewBtn').setAttribute('aria-label',overview?'내 위치 보기':'전체 지도 보기');});
   function interact(){if($('interactBtn').disabled)return;controls.stop();send({type:$('interactBtn').dataset.action});}
   function actionButton(button,action){

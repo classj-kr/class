@@ -24,7 +24,7 @@ const server=http.createServer((req,res)=>{
     await context.route('**/realtime-capture.js*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'learning/games/citychase/realtime-capture.js'),'utf8')+`
       const makeCapture=ChaseCapture.create;ChaseCapture.create=(...a)=>{
         const model=window.chaseTestCapture=makeCapture(...a),observe=model.observe;window.chaseReceivedCaptures=[];
-        model.observe=(state,...args)=>{for(const event of state.events.filter(e=>e.type==='capture'))if(!chaseReceivedCaptures.some(e=>e.id===event.id))chaseReceivedCaptures.push(event);return observe(state,...args);};return model;
+        model.observe=(state,...args)=>{window.chaseTestState=state;for(const event of state.events.filter(e=>e.type==='capture'))if(!chaseReceivedCaptures.some(e=>e.id===event.id))chaseReceivedCaptures.push(event);return observe(state,...args);};return model;
       };`}));
     const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(base+'/learning/games/citychase/realtime.html');return p;
   }
@@ -130,6 +130,20 @@ const server=http.createServer((req,res)=>{
     // Verify the two sprite atlases really contain transparency, not opaque square tiles.
     const alpha=await p.evaluate(async()=>{const out=[];for(const team of ['police','thief']){const img=new Image();img.src='assets/realtime-'+team+'-run.png';await img.decode();const c=document.createElement('canvas');c.width=c.height=1;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);out.push(ctx.getImageData(0,0,1,1).data[3]);}return out;});assert.deepEqual(alpha,[0,0]);
     await p.evaluate(()=>{chaseTestGame.elapsed=179.95;});await p.locator('#result:not(.hidden)').waitFor();await p.locator('#againBtn').tap();await p.locator('#practiceSetup summary').tap();await p.locator('[data-team=police]').tap();await p.locator('#practiceBtn').tap();assert.match(await p.locator('#teamLabel').innerText(),/경찰팀/);
+    await p.locator('#placementPanel:not(.hidden)').waitFor();assert(await p.locator('#placementConfirm').isDisabled());
+    assert(await p.locator('#notice').isHidden(),'the previous round result notice is cleared before placement');
+    for(const viewport of [{name:'chromebook',width:1366,height:650},{name:'ipad',width:1024,height:668},{name:'phone',width:390,height:844}]){
+      await p.setViewportSize({width:viewport.width,height:viewport.height});const panel=await p.locator('#placementPanel').boundingBox();
+      assert(panel.y>=0&&panel.y+panel.height<=viewport.height,'the entire placement panel fits the screen');
+      for(const button of await p.locator('#placementShops button').all())assert((await button.boundingBox()).height>=44);
+      await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+viewport.name+'-placement.png')});
+    }
+    await p.locator('#placementShops [data-shop="star"]').tap();await p.locator('#placementShops [data-shop="ediya"]').tap();assert(await p.locator('#placementConfirm').isDisabled());
+    await p.locator('#placementShops [data-shop="twosome"]').tap();assert(await p.locator('#placementConfirm').isEnabled());
+    await p.locator('#placementShops [data-shop="ediya"]').tap();assert(await p.locator('#placementConfirm').isDisabled());
+    await p.locator('#placementShops [data-shop="ediya"]').tap();await p.locator('#placementConfirm').tap();await p.waitForFunction(()=>chaseTestState.phase==='playing');
+    assert.deepEqual(await p.evaluate(()=>chaseTestGame.targets),['star','twosome','ediya']);
+    console.log('PASS police practice placement, touch-sized controls, compact panel, selection changes and chosen order');
     await p.evaluate(()=>window.dispatchEvent(new CustomEvent('sitebackrequest',{cancelable:true})));
     for(const team of ['thief','police']){
       assert.equal(await p.locator('#lobbyScreen .mp-ui-header').count(),1);await p.locator('#practiceSetup summary').tap();await p.locator('[data-team='+team+']').tap();await p.locator('#practiceBtn').tap();
@@ -146,7 +160,7 @@ const server=http.createServer((req,res)=>{
       const original=Audio.prototype.createOscillator;
       Audio.prototype.createOscillator=function(){captureSounds++;return original.call(this);};return true;
     });
-    await p.locator('#soundBtn').tap();const beforeCaptureSound=await p.evaluate(()=>captureSounds);
+    assert.equal(await p.locator('#soundBtn').getAttribute('aria-pressed'),'true');const beforeCaptureSound=await p.evaluate(()=>captureSounds);
     await p.evaluate(()=>{
       window.captureDrawn=[];const original=CanvasRenderingContext2D.prototype.drawImage;
       CanvasRenderingContext2D.prototype.drawImage=function(img,...args){if(img.src?.includes('realtime-capture.png'))captureDrawn.push(args[0]);return original.call(this,img,...args);};
@@ -175,8 +189,9 @@ const server=http.createServer((req,res)=>{
     assert.match(await p.locator('#missionText').innerText(),/탈출 보호 [1-3]초/);
     await p.waitForFunction(()=>chaseTestGame.players.find(p=>p.id==='me').escapeUntil<=chaseTestGame.elapsed);
     console.log('PASS fifteen-second release, no stationary jail recapture, visible protection and keyboard escape grace');
-    await p.locator('#soundBtn').tap();const mutedSounds=await p.evaluate(()=>captureSounds);
+    await p.locator('#soundBtn').tap();
     await p.locator('#viewBtn').tap();await p.waitForTimeout(600);
+    const mutedSounds=await p.evaluate(()=>captureSounds);
     await p.evaluate(()=>{
       window.edgeCaptions=[];const fill=CanvasRenderingContext2D.prototype.fillText;
       CanvasRenderingContext2D.prototype.fillText=function(text,x,y,...rest){if(['앗!','잡았다!','퐁!'].includes(text)){const point=new DOMPoint(x,y).matrixTransform(this.getTransform());edgeCaptions.push({x:point.x/(devicePixelRatio||1),y:point.y/(devicePixelRatio||1)});}return fill.call(this,text,x,y,...rest);};
@@ -201,6 +216,19 @@ const server=http.createServer((req,res)=>{
       await extra.waitForFunction(()=>document.querySelector('#joinStatus').textContent.includes('최대 4명'));await extra.context().close();
       console.log('PASS server rejects a fifth participant');
       await pages[0].waitForFunction(()=>!document.querySelector('#startBtn').disabled);await pages[0].locator('#startBtn').tap();
+      for(const [index,page] of pages.entries()){
+        await page.waitForFunction(()=>chaseTestState?.phase==='setup');assert.equal(await page.locator('#clock').innerText(),'3:00');
+        assert.equal(await page.locator('#placementPanel').isVisible(),index===1);assert.equal(await page.locator('#placementWaiting').isVisible(),index!==1);
+        assert.deepEqual(await page.evaluate(()=>chaseTestState.clues),[]);assert(await page.locator('#clueBtn').isDisabled());
+      }
+      await pages[0].waitForTimeout(500);for(const page of pages)assert.equal(await page.evaluate(()=>chaseTestState.elapsed),0);
+      await pages[1].locator('#placementPanel:not(.hidden)').waitFor();
+      for(const id of ['star','ediya','twosome'])await pages[1].locator(`#placementShops [data-shop="${id}"]`).tap();
+      for(const page of [pages[0],pages[2],pages[3]])assert.equal(await page.locator('#placementShops [aria-pressed=true]').count(),0);
+      await pages[1].locator('#placementConfirm').tap();
+      for(const page of pages)await page.waitForFunction(()=>chaseTestState?.phase==='playing');
+      assert.deepEqual(await pages[0].evaluate(()=>chaseTestGame.targets),['star','ediya','twosome']);
+      console.log('PASS actual server: only the guest police chooses secret locations; timer and clues start after confirmation');
       for(const page of pages){await page.locator('#play:not(.hidden)').waitFor();await page.waitForFunction(()=>document.querySelector('#teamLabel').textContent.length>0);}
       assert.match(await pages[0].locator('#teamLabel').innerText(),/하나/);assert.match(await pages[1].locator('#teamLabel').innerText(),/두리/);
       assert.equal(await pages[0].evaluate(()=>chaseTestGame.players.filter(p=>p.team==='police').length),1);
@@ -222,6 +250,12 @@ const server=http.createServer((req,res)=>{
       for(const page of pages)await page.waitForFunction(()=>chaseReceivedCaptures.length>0);
       for(const page of pages)assert.equal(await page.locator('#captureText').innerText(),'1 / 5');
       console.log('PASS capture event reaches all four players');
+      const jail=await pages[1].evaluate(()=>{const s=Math.min(innerWidth/1600,(innerHeight-64)/1000);return{x:innerWidth/2+(ChaseWorld.nodes.jail.x-800)*s,y:innerHeight/2+(ChaseWorld.nodes.jail.y-500)*s};});
+      await pages[1].touchscreen.tap(jail.x,jail.y);
+      for(const page of pages)await page.waitForFunction(()=>chaseTestState.players.find(p=>p.name==='하나').escapeProtected,null,{timeout:20000});
+      await pages[0].waitForTimeout(3300);
+      for(const page of pages){assert.equal(await page.locator('#captureText').innerText(),'1 / 5');assert(await page.evaluate(()=>chaseTestState.players.find(p=>p.name==='하나').escapeProtected));}
+      console.log('PASS actual server: all four clients retain release protection against a camping police player');
       console.log('PASS actual server: four clients start, private team clues, guest movement reaches host');
       for(const page of pages)await page.context().close();
     }

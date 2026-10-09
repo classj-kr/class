@@ -22,6 +22,7 @@ html.rulesDocument{height:auto;min-height:100%;overflow:auto}.rulesPage{height:a
 @media(max-width:560px){.welcome{padding-inline:12px}.rulesPage{padding:16px 12px}.rulesSheet{padding:22px 16px}.rulesSheet th,.rulesSheet td{padding:9px 6px;font-size:13px}.topHud{gap:4px}.mission{padding-inline:8px}.topHud time{min-width:65px;padding-inline:8px}}
 .rulesPage:has(site-back-navigation){padding-top:64px}
 .mission span:empty{display:none}
+.placement{position:absolute;inset:86px 12px 12px;display:grid;place-items:center;pointer-events:none}.placement>.panel{pointer-events:auto;width:min(430px,100%);padding:22px}.placement h2{font-size:22px;margin:0}.placement .heading{margin-bottom:16px}.placement #placementCount{font-variant-numeric:tabular-nums;color:#53715c}.placementShops{display:grid;grid-template-columns:1fr 1fr;gap:8px}.placementShops button{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:50px;padding:10px 12px;border-left:4px solid var(--shop-color)}.placementShops button[aria-pressed=true]{background:#fff0b4;border-color:#b28a2c}.placementNumber{display:grid;place-items:center;min-width:24px;height:24px;border-radius:50%;background:#e6eade;color:#405341}.placementShops button[aria-pressed=true] .placementNumber{background:#966b15;color:#fff}.placement #placementWaiting{width:auto;text-align:center;font-weight:750}.placing .bottomHud,.placing .movePad{display:none}
 .score{flex-direction:column;align-items:stretch;gap:2px;min-width:104px;padding:6px 12px}.scoreItem{display:flex;align-items:center;justify-content:space-between;gap:10px;line-height:1.2}.score .scoreItem span{display:inline;font-size:12px}.scoreItem strong{font-size:18px;font-variant-numeric:tabular-nums}.policeScore{color:#2e68a1}
 @media(max-width:560px){.score{min-width:86px;padding:6px 8px}.scoreItem{gap:5px}.score .scoreItem span{font-size:11px}.scoreItem strong{font-size:16px}}
 .cluePanel{width:min(600px,calc(100% - 32px));padding:16px;max-height:calc(100dvh - 170px)}
@@ -42,6 +43,7 @@ html.rulesDocument{height:auto;min-height:100%;overflow:auto}.rulesPage{height:a
   .topHud #exitBtn{grid-column:1;grid-row:1}.mission{grid-column:2;grid-row:1;padding:10px 8px}
   .score{grid-column:3;grid-row:1;margin:0}.topHud time{grid-column:4;grid-row:1}
   .topHud #viewBtn{grid-column:4;grid-row:2;justify-self:end}.topHud #rulesBtnGame{grid-column:3;grid-row:2;justify-self:end}
+  .topHud #soundBtn{display:block;grid-column:2;grid-row:2;justify-self:end}
   .bottomHud{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
   .bottomHud .clueToggle{min-width:0;margin:0;display:flex;align-items:center;justify-content:space-between;gap:4px}
   .bottomHud .clueToggle strong{font-size:14px}.bottomHud .clueToggle span{font-size:10px;margin:0}

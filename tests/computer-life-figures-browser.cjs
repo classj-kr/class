@@ -31,6 +31,7 @@ const server=http.createServer((req,res)=>{
    await page.setViewport({width:1440,height:1050});
    await page.goto('http://127.0.0.1:'+server.address().port+prefix+'lessons/?lesson='+id+'#read',{waitUntil:'networkidle0'});
    await page.waitForSelector('[data-life-figure="'+id+'"] svg');
+   await page.click('.study-analogy > summary');
    const states=await page.$$eval('[data-life-state]',els=>els.map(e=>e.dataset.lifeState));
    const rows=[],clipping=[],drawings=[];
    for(const width of [1440,768,390,320]){
