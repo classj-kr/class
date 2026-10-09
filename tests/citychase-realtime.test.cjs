@@ -267,6 +267,54 @@ test('bots and people use the same movement speeds, including carrying and dash'
   }
 });
 
+test('bot teammates search and bank all three gems while the first human thief stays idle',()=>{
+  const g=game(),human=g.players[0],origin={x:human.x,y:human.y};g.targets=['star','ediya','twosome'];
+  g.players[2].bot=true;g.players[3].bot=true;
+  const searchers=new Set(),carriers=new Set();
+  for(let i=0;i<3600&&g.phase==='playing';i++){
+    E.tick(g,.05);for(const p of g.players){if(p.task?.type==='search')searchers.add(p.id);if(p.carrying)carriers.add(p.id);}
+  }
+  assert.equal(g.score,3);assert.equal(g.winner,'thief');assert(searchers.size>0);assert(carriers.size>0);
+  assert([...searchers,...carriers].every(id=>g.players.find(p=>p.id===id).bot));
+  assert.deepEqual({x:human.x,y:human.y},origin);assert.equal(human.task,null);
+});
+test('the nearest eligible bot searches even when a human and an earlier bot are available',()=>{
+  const g=game(),shop=W.shops.find(s=>s.id===g.targets[0]);
+  g.players[2].bot=true;g.players[3].bot=true;at(g.players[0],shop.door);at(g.players[3],shop.door);
+  E.tick(g,.05);assert.equal(g.players[3].task?.type,'search');assert.equal(g.players[0].task,null);assert.notEqual(g.players[2].task?.type,'search');
+});
+test('bots leave a search already started by a human to that human',()=>{
+  const g=game(),shop=W.shops.find(s=>s.id===g.targets[0]);
+  for(const p of [g.players[0],g.players[2],g.players[3]])at(p,shop.door);
+  g.players[2].bot=true;g.players[3].bot=true;E.command(g,'0',{type:'SEARCH'});
+  run(g,1.7);assert(g.players[0].carrying);assert.equal(g.players.filter(p=>p.carrying).length,1);
+  assert(g.players.slice(2).every(p=>p.task?.type!=='search'));assert.equal(g.events.find(e=>e.type==='gemFound').playerId,'0');
+});
+test('an idle human near jail does not prevent a bot from rescuing a prisoner',()=>{
+  const g=game(),[human,cop,bot,prisoner]=g.players;g.elapsed=7;
+  at(cop,W.nodes.b);at(human,W.nodes.jail);at(bot,W.nodes.jail);at(prisoner,W.nodes.jail);
+  bot.bot=true;prisoner.jailedUntil=g.elapsed+15;
+  E.tick(g,.05);assert.equal(bot.task?.type,'rescue');assert.equal(human.task,null);
+  run(g,1.5);assert.equal(prisoner.jailedUntil,0);assert(prisoner.escapeProtected);assert(g.events.some(e=>e.type==='rescue'&&e.playerId===bot.id));
+});
+test('bots divide rescue and search duties; a rescued human does not take away the search duty',()=>{
+  const g=game(),[prisoner,cop,rescuer,seeker]=g.players;g.elapsed=7;
+  at(cop,W.nodes.b);at(prisoner,W.nodes.jail);at(rescuer,W.nodes.jail);at(seeker,W.shops.find(s=>s.id===g.targets[0]).door);
+  prisoner.jailedUntil=g.elapsed+15;rescuer.bot=true;seeker.bot=true;
+  E.tick(g,.05);assert.equal(rescuer.task?.type,'rescue');assert.equal(seeker.task?.type,'search');
+  run(g,1.7);assert.equal(prisoner.jailedUntil,0);assert(seeker.carrying);
+});
+test('equivalent bot teammates use the same decisions regardless of which team the human is on',()=>{
+  const outcomes=[];
+  for(const humanTeam of ['thief','police']){
+    const g=game(),[prisoner,cop,rescuer,seeker]=g.players;g.elapsed=7;
+    at(cop,W.nodes.b);at(prisoner,W.nodes.jail);at(rescuer,W.nodes.jail);at(seeker,W.shops.find(s=>s.id===g.targets[0]).door);
+    prisoner.jailedUntil=g.elapsed+15;prisoner.bot=humanTeam==='police';cop.bot=humanTeam==='thief';rescuer.bot=true;seeker.bot=true;
+    E.tick(g,.05);outcomes.push([rescuer,seeker].map(({x,y,path,task,dashUntil,dashReady})=>({x,y,path,task,dashUntil,dashReady})));
+  }
+  assert.deepEqual(outcomes[0],outcomes[1]);
+});
+
 test('five separate captures win, without double-counting jail time or ending at four',()=>{
   const g=game(),[thief,cop]=g.players;g.elapsed=6;
   g.players.forEach(p=>p.immuneUntil=1000);
