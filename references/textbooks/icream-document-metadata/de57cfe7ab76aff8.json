@@ -1,0 +1,51 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/6_%EC%9D%8C%EC%95%85_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "음악",
+  "fileName": "6_음악_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 6,
+      "semester": 1,
+      "listedUnit": "1. 우리, 푸르고 아름답다 ~ 4. 꿈, 정해지지 않아 무엇이든 될 수 있다",
+      "sourceManifest": "6-1.json"
+    },
+    {
+      "grade": 6,
+      "semester": 2,
+      "listedUnit": "1. 우리, 푸르고 아름답다 ~ 4. 꿈, 정해지지 않아 무엇이든 될 수 있다",
+      "sourceManifest": "6-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "6_음악_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 우리, 푸르고 아름답다.",
+          "title": "소리의 어울림을 느끼며 리코더로 부분 2중주 하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "2. 손, 함께 잡으면 멀리 갈 수 있다.",
+          "title": "박과 빠르기를 느끼며 음악 감상하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "3. 기쁨, 온 우주가 노래하고 춤춘다.",
+          "title": "소리의 어울림을 느끼며 단소 2중주 하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "4. 꿈, 정해지지 않아 무엇이든 될 수 있다.",
+          "title": "음악극 만들어 발표하기",
+          "table": 0,
+          "sourceRow": 16
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

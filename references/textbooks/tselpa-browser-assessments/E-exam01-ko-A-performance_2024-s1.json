@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=1&exam=E-exam01-ko-A_2024&tab=E-exam01-ko-A-performance_2024",
+  "groups": [
+    {
+      "title": "한글 놀이",
+      "lessons": [
+        {
+          "action": "downloadFile('1996978');",
+          "resourceId": "1996978",
+          "title": "국어1-1_한글놀이_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_한글놀이_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('1997090');",
+          "resourceId": "1997090",
+          "title": "국어1-1_한글놀이_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_한글놀이_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 글자를 만들어요",
+      "lessons": [
+        {
+          "action": "downloadFile('1996979');",
+          "resourceId": "1996979",
+          "title": "국어1-1_01단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_01단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('1997091');",
+          "resourceId": "1997091",
+          "title": "국어1-1_01단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_01단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 받침이 있는 글자를 읽어요",
+      "lessons": [
+        {
+          "action": "downloadFile('1996980');",
+          "resourceId": "1996980",
+          "title": "국어1-1_02단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어1-1_02단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('1997092');",
+          "resourceId": "1997092",
+          "title": "국어1-1_02단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어1-1_02단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

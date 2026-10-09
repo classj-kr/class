@@ -15,6 +15,8 @@ for item in status['pacing']:
     selected=[p for p in plans if p['publisher'] in names]
     item['normalizedPlans']=len(selected)
     item['structuredLessonRows']=sum(len(p['lessons']) for p in selected)
+    if item['publisher']=='비상교육':
+        item['remaining']='5·6학년 2학기 수학은 지도서 각 64시수, 사회·과학은 공개 전자책 목차 확보. 사회 각 45시수는 지도 계획 대조 필요. 과학 각 48시수, 별도 읽기 자료 8개는 시수에 합산하지 않음. 수행평가 추가 수집 필요'
     if item['publisher']=='미래엔' and selected:
         item.update(status='public-outline-normalized-original-download-certification-required',
                     coverage='검정 교과서 3~6학년 30개 학년·과목 조합, 42개 온라인 목록',
@@ -47,13 +49,77 @@ status['next']=['학년·교과서 조합의 최소 1개 자료 확보와 별도
                 '미래엔 교사 인증 후 원본 확보 및 천재 온라인 목차의 시수 누락·중복 대조',
                 '미수집 과목·학기 자료와 수행평가 원본 추가 수집',
                 '수행평가 성취기준·평가요소·방법·채점기준 추출 및 검수']
+if not any(i['publisher']=='비상교육' for i in status['assessments']):status['assessments'].append({'publisher':'비상교육'})
+if (REF/'assessment-index-tselpa-2022.json').exists() and not any(i['publisher']=='천재교과서·천재교육' for i in status['assessments']):
+    status['assessments'].append({'publisher':'천재교과서·천재교육'})
+if (REF/'assessment-index-jihak-2022.json').exists() and not any(i['publisher']=='지학사' for i in status['assessments']):
+    status['assessments'].append({'publisher':'지학사'})
 for item in status['assessments']:
+    if item['publisher']=='지학사':
+        ja=read(REF/'assessment-index-jihak-2022.json')['assessments']
+        item.update(status='originals-acquired-partial',downloadedSourceAssets=len(ja),
+                    index='references/textbooks/assessment-index-jihak-2022.json',
+                    rightsReview='references/textbooks/jihak-assessment-rights-review.json',
+                    remaining='교사 로그인 다운로드 확인, 다른 학년·학기 평가자료 수집 및 채점기준 변환 진행 중')
+        content_path=REF/'assessment-content-jihak-science-2022.json'
+        if content_path.exists():
+            jc=read(content_path)['assessments']
+            item.update(structuredDocuments=len(jc),structuredStages=sum(len(a['stages']) for a in jc),
+                        structuredRubricLevels=sum(len(s['levels']) for a in jc for s in a['stages']),
+                        content='references/textbooks/assessment-content-jihak-science-2022.json',
+                        rubricExtraction='Science HWP cells and merged spans validated; original performance levels and feedback preserved; visual review pending')
+    if item['publisher']=='천재교과서·천재교육':
+        ta=read(REF/'assessment-index-tselpa-2022.json')['assessments']
+        tr=read(REF/'assessment-tselpa-acquisition-review.json')
+        item.update(status='originals-acquired-partial',downloadedSourceAssets=len(ta),
+                    index='references/textbooks/assessment-index-tselpa-2022.json',
+                    unacquiredListedFiles=len(tr['issues']),remaining='학년·과목별 추가 수집, 영어·도덕 묶음 다운로드 재확인, 성취기준·채점기준 변환',
+                    rightsReview='references/textbooks/tselpa-download-review.json')
+        content_path=REF/'assessment-content-tselpa-science-2022.json'
+        if content_path.exists():
+            tc=read(content_path)['assessments']
+            item.update(structuredDocuments=len(tc),structuredRubricLevels=sum(len(a['rubric']) for a in tc),
+                        content='references/textbooks/assessment-content-tselpa-science-2022.json',
+                        rubricExtraction='Single-stage science rubric fields extracted; multi-question documents and visual review pending')
+    if item['publisher']=='비상교육':
+        vr=read(REF/'assessment-visang-extraction-review.json')
+        total=len(read(REF/'visang-public-bank-acquired.json')['sources'])+len(read(REF/'visang-public-archive-acquired.json')['sources'])
+        item.update(status='structured-rubrics-extracted-partial',downloadedSourceAssets=total,indexedAssessmentAssets=vr['indexedAssessmentAssets'],
+                    structuredDocuments=vr['structuredDocuments'],structuredStages=vr['structuredStages'],structuredRubricLevels=vr['structuredStages']*3,
+                    index='references/textbooks/assessment-index-visang-2022.json',content='references/textbooks/assessment-content-visang-2022.json',
+                    coverage='수학·과학·사회 3~6학년 양 학기 공개 전자책 자료실 및 전자저작물 ZIP',
+                    remaining='다른 과목 수행평가 수집, 수학 수식·도형 보존 변환, 평가 원본 시각 검수와 활동별 연결',
+                    countMeaning='원본 자산에 ZIP 묶음이 포함되어 개별 평가 과제 수와 다름')
+        document_index=REF/'assessment-documents-visang-2022.json'
+        if document_index.exists():
+            di=read(document_index)['summary']
+            item.update(individualAssessmentFiles=di['individualFiles'],zipMemberFiles=di['zipMemberFiles'],
+                        documentIndex='references/textbooks/assessment-documents-visang-2022.json')
+    if item['publisher']=='아침나라':
+        item.update(status='structured-rubrics-extracted',structuredDocuments=66,canonicalDocuments=96,
+                    structuredRubricLevels=198,content='references/textbooks/assessment-content-achim-2022.json',
+                    rubricExtraction='Music 40 and art 26 rubrics; music grade samples visually compared with PDF variants; art visual review pending',
+                    relatedWorksheets=26,assessmentPlans=4,
+                    remaining='미술 3~4학년 원본 추가 수집, 미술 활동별 연결 검수, 음악 3~4학년 3단원명 불일치 6건 원본 진도표 검수')
+    if item['publisher']=='체육과건강':
+        item['status']='structured-fields-extracted'
+        item['rubricExtraction']='122 structurally validated; original embedded first-page images visually checked for one sample per grade 3–6; remaining documents not visually reviewed'
+        item['structuredDocuments']=122
+        item['content']='references/textbooks/assessment-content-sports-2022.json'
+        item['bodyReviewedLessonMatches']=3
+        item['needsContentReview']=1
     if item['publisher']=='아트앤컬처':
         item['unitMetadataMatches']=48
         item['structuredDocuments']=48
         item['structuredStages']=120
         item['structuredRubricLevels']=360
         item['contentStatus']='structured-fields-extracted-layout-samples-reviewed'
+        item['status']='structured-fields-extracted'
+        item['rubricExtraction']='48 documents, 120 stages, 360 levels; visual samples checked for each grade'
+        item['content']='references/textbooks/assessment-content-artculture-2022.json'
         item['matchMeaning']='학년·단원 단위 연결이며 개별 활동과 평가 항목의 대응은 아직 검수하지 않음'
 (REF/'collection-status.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+# The current product uses list labels only; keep acquisition history separate.
+import subprocess,sys
+subprocess.run([sys.executable,str(ROOT/'scripts/audit-assessment-list-coverage.py')],check=True)
 print(json.dumps({k:status[k] for k in ['structuredPlans','structuredLessonRows','gradeEditionCoverage']}))

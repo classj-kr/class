@@ -1,0 +1,129 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/3-1_%EC%88%98%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "수학",
+  "fileName": "3-1_수학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 3,
+      "semester": 1,
+      "listedUnit": "1. 덧셈과 뺄셈~6. 분수와 소수",
+      "sourceManifest": "3-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "3-1_수학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 덧셈과 뺄셈",
+          "title": "받아올림이 여러 번 있는 세 자리 수 덧셈하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 덧셈과 뺄셈",
+          "title": "받아내림이 두 번 있는 세 자리 수 뺄셈하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 덧셈과 뺄셈",
+          "title": "세 자리 수 덧셈과 뺄셈 문제 해결하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 평면도형",
+          "title": "선분, 반직선, 직선 구별하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 평면도형",
+          "title": "직각삼각형 알고 그리기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 평면도형",
+          "title": "직사각형과 정사각형 알고 그리기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 나눗셈",
+          "title": "나눗셈식으로 나타내기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 나눗셈",
+          "title": "나눗셈식으로 나타내고 몫 구하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 나눗셈",
+          "title": "나눗셈의 몫을 곱셈구구로 구하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 곱셈",
+          "title": "올림이 없는 (몇십몇)×(몇) 계산하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 곱셈",
+          "title": "올림이 두 번 있는 (몇십몇)×(몇) 계산하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 곱셈",
+          "title": "(몇십몇)×(몇) 문제 상황 해결하기",
+          "table": 0,
+          "sourceRow": 48
+        },
+        {
+          "unit": "5. 길이와 시간",
+          "title": "길이의 단위 알고 다양하게 표현하기",
+          "table": 0,
+          "sourceRow": 52
+        },
+        {
+          "unit": "5. 길이와 시간",
+          "title": "초 단위까지 시각 읽고 시간 표현하기",
+          "table": 0,
+          "sourceRow": 56
+        },
+        {
+          "unit": "5. 길이와 시간",
+          "title": "시간의 덧셈과 뺄셈하기",
+          "table": 0,
+          "sourceRow": 60
+        },
+        {
+          "unit": "6. 분수와 소수",
+          "title": "분수 이해하고 나타내기",
+          "table": 0,
+          "sourceRow": 64
+        },
+        {
+          "unit": "6. 분수와 소수",
+          "title": "분모가 같은 분수, 단위 분수의 크기 비교하기",
+          "table": 0,
+          "sourceRow": 68
+        },
+        {
+          "unit": "6. 분수와 소수",
+          "title": "소수의 크기 비교하기",
+          "table": 0,
+          "sourceRow": 72
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

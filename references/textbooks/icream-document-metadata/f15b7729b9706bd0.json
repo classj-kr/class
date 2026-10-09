@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-2_%ED%86%B5%ED%95%A9_%ED%95%98%EB%A3%A8_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "1-2_통합_하루_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 2,
+      "listedUnit": "1. 하루",
+      "sourceManifest": "1-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-2_통합_하루_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "하루",
+          "title": "운동을 계획하고 실천하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "하루",
+          "title": "사람들은 어떻게 하루를 살아가는지 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "하루",
+          "title": "학교생활에서 내가 지킬 규칙과 약속을 정해서 실천하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

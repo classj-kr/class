@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "scope": "Music grade samples: PDF criteria visually compared with extracted HWP fields. Art HWP layout review remains pending.",
+  "samples": [
+    {"id": "achim-assessment-11749-2", "pdfVariantId": "achim-assessment-11749-1", "pdfPage": 2, "review": "objective, standards, method, materials and three rubric levels match"},
+    {"id": "achim-assessment-11866-1", "pdfVariantId": "achim-assessment-11866-2", "pdfPage": 2, "review": "objective, standards, method, materials and three rubric levels match"},
+    {"id": "achim-assessment-17604-2", "pdfVariantId": "achim-assessment-17604-1", "pdfPage": 2, "review": "objective, standards, method, materials and three rubric levels match"},
+    {"id": "achim-assessment-17701-2", "pdfVariantId": "achim-assessment-17701-1", "pdfPage": 1, "review": "different PDF layout and page order; objective, standards, method, materials and three rubric levels match"}
+  ]
+}

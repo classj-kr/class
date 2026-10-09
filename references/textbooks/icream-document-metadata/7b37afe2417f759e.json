@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-2_%ED%86%B5%ED%95%A9_%EA%B8%B0%EC%96%B5_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "2-2_통합_기억_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 2,
+      "semester": 2,
+      "listedUnit": "4. 기억",
+      "sourceManifest": "2-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "2-2_통합_기억_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "기억",
+          "title": "2학년 공부 골든벨 문제 만들고 참여하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "기억",
+          "title": "친구에게 칭찬 편지 쓰기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "기억",
+          "title": "3학년 공부 궁금한 점 탐색하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

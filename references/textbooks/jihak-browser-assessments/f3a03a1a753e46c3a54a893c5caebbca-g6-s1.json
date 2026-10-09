@@ -1,0 +1,221 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=6&term=1&textbookSeq=f3a03a1a753e46c3a54a893c5caebbca&order=1&tabType=UD002",
+  "textbook": "체육 6\n신기철",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "db3b75abb8954d49bdd7927f7a3e8752",
+          "title": "2022 개정 초등 체육 교육과정에 따른 성취수준(5~6학년군)",
+          "downloadPath": "D:\\Downloads\\2022 개정 초등 체육 교육과정에 따른 성취수준(5~6학년군) (1).pdf"
+        },
+        {
+          "resourceId": "31b874738d2549f0afa4d5adbc73dda8",
+          "title": "수행평가 계획서",
+          "downloadPath": "D:\\Downloads\\[체육6] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "37fb56db69b042439123c373f897cc23",
+          "title": "교과평어(한글)",
+          "downloadPath": "D:\\Downloads\\(2022개정_6학년)체육과 평어_지학사.hwp"
+        },
+        {
+          "resourceId": "857690878d994597adbdaf2dcc6cf3eb",
+          "title": "교과평어(엑셀)",
+          "downloadPath": "D:\\Downloads\\(2022개정_6학년)체육과 평어_지학사.xlsx"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "8c522c046fe8458eb09b0de53879479f",
+          "title": "1단원_(01)_2차시_운동 체력 알아보기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(01)_2차시_운동 체력 알아보기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "17d39083ea344608a2aa77e5e4797ab3",
+          "title": "1단원_(01)_3~4차시_순발력 기르기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(01)_3~4차시_순발력 기르기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "3553dc7a9b604d0a94726a1d63e8d82b",
+          "title": "1단원_(01)_5~6차시_민첩성 기르기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(01)_5~6차시_민첩성 기르기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "ccb3778337a5445c85cbb3c973aa8985",
+          "title": "1단원_(01)_7~8차시_평형성 기르기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(01)_7~8차시_평형성 기르기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "ef09bfa3042d4bd69dfc82b39ac181e7",
+          "title": "1단원_(01)_9~10차시_협응성 기르기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(01)_9~10차시_협응성 기르기_수행평가.hwp"
+        },
+        {
+          "resourceId": "178a4968feaa4c4db0ea37ae812e3ac2",
+          "title": "1단원_(01)_11차시_운동 체력을 기르기 위한 운동을 계획하고 실천하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(01)_11차시_운동 체력을 기르기 위한 운동을 계획하고 실천하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "546ba267b9444cd5987d2b4f8292ef27",
+          "title": "1단원_(02)_12차시_운동 기구·시설 안전사고 예방 및 대처 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(02)_12차시_운동 기구·시설 안전사고 예방 및 대처 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "59b20a7fe8114a6da2d7f65d41964174",
+          "title": "1단원_(02)_13차시_수상 활동 안전사고 예방 및 대처 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(02)_13차시_수상 활동 안전사고 예방 및 대처 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "89fc0373cdd045f4856611e03fed8eaf",
+          "title": "1단원_(02)_14차시_빙상·설상 활동 안전사고 예방 및 대처 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(02)_14차시_빙상·설상 활동 안전사고 예방 및 대처 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "7ab4a076850b4f59be6af218e71db671",
+          "title": "1단원_(02)_15~16차시_생활 안전사고 예방 및 대처 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(02)_15~16차시_생활 안전사고 예방 및 대처 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "29236c7305b94a9f86571193f66f17d3",
+          "title": "1단원_(02)_17차시_자연환경 변화 대처 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 1단원_(02)_17차시_자연환경 변화 대처 활동하기_수행 평가.hwp"
+        }
+      ],
+      "title": "1 운동"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "eb3eb90c5387453fa18d1334e32de11c",
+          "title": "2단원_(01)_2차시_제자리 멀리뛰기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_2차시_제자리 멀리뛰기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "3ec6415f24334e9daa5c84369da1f7ea",
+          "title": "2단원_(01)_3~4차시_도움닫기 하여 멀리뛰기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_3~4차시_도움닫기 하여 멀리뛰기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "ec930df56620402cbdfc3ac8d6213b9c",
+          "title": "2단원_(01)_5~6차시_가위뛰기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_5~6차시_가위뛰기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "c9aedc6cbe4b4cc0a313b011b8047a92",
+          "title": "2단원_(01)_7~8차시_배면뛰기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_7~8차시_배면뛰기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "3a90d9abc56248bf826193f9ceef08a3",
+          "title": "2단원_(01)_9~10차시_멀리 던지기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_9~10차시_멀리 던지기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "626d1549962349ea903fc1e33e6d4df2",
+          "title": "2단원_(01)_11~12차시_볼링형 게임",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_11~12차시_볼링형 게임_수행 평가.hwp"
+        },
+        {
+          "resourceId": "5281ebe978b74c38b93d02c8cd59af80",
+          "title": "2단원_(01)_13~14차시_플로어 컬링형 게임",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_13~14차시_플로어 컬링형 게임_수행 평가.hwp"
+        },
+        {
+          "resourceId": "8903da359b0e41ba994951318d2b9290",
+          "title": "2단원_(01)_15~16차시_다리 벌려 뜀틀 뛰어넘기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_15~16차시_다리 벌려 뜀틀 뛰어넘기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "c3548658e54f4971905ec08cee5d32d4",
+          "title": "2단원_(01)_17~18차시_뜀틀 위에서 앞구르기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_17~18차시_뜀틀 위에서 앞구르기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "8591af574dbd4adcb54917d618cf185c",
+          "title": "2단원_(01)_19~21차시_씨름 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(01)_19~21차시_씨름 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "9da07059e4a94e16ac21610460ccbeb2",
+          "title": "2단원_(02)_23~26차시_농구형 게임 하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(02)_23~26차시_농구형 게임 하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "0d667dee388643dcb9f54de1f3baf85a",
+          "title": "2단원_(02)_27~30차시_하키형 게임 하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(02)_27~30차시_하키형 게임 하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "3ef08359c6674c0789bb9f4b2cd10213",
+          "title": "2단원_(02)_31~34차시_티볼형 게임 하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(02)_31~34차시_티볼형 게임 하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "03345ce3d49a45f5aebd7ab38c40d7ee",
+          "title": "2단원_(02)_35~38차시_배드민턴형 게임 하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(02)_35~38차시_배드민턴형 게임 하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "91371e5d6613422db3987c0a8847f6ee",
+          "title": "2단원_(02)_39~42차시_족구형 게임 하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(02)_39~42차시_족구형 게임 하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "e80aab408a0242b0aa1f6a463d60ef5f",
+          "title": "2단원_(03)_44~46차시_골프형 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(03)_44~46차시_골프형 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "06d3e6a46a164faf832a495a8f17c4f2",
+          "title": "2단원_(03)_47~49차시_플라잉디스크형 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(03)_47~49차시_플라잉디스크형 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "b58973ffb2054d01912ac92bd5e3c772",
+          "title": "2단원_(03)_50~51차시_민속놀이하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(03)_50~51차시_민속놀이하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "2c2d1a20383c41fd9390fb17dec2e05d",
+          "title": "2단원_(03)_52~54차시_수상 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(03)_52~54차시_수상 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "fac045a50c1d4592adee2c60bfbff284",
+          "title": "2단원_(03)_55~57차시_설상 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 2단원_(03)_55~57차시_설상 활동하기_수행 평가.hwp"
+        }
+      ],
+      "title": "2 스포츠"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "932c6ff11c1a42cdb27bfa8869f45769",
+          "title": "3단원_(01)_2~6차시_창작체조 활동하기",
+          "downloadPath": "D:\\Downloads\\[체육 6] 3단원_(01)_2~6차시_창작체조 활동하기_수행 평가.hwp"
+        },
+        {
+          "resourceId": "6dbefc0ee27c48298904aae4bf038629",
+          "title": "3단원_(02)_7~8차시_티니클링",
+          "downloadPath": "D:\\Downloads\\[체육 6] 3단원_(02)_7~8차시_티니클링_수행 평가.hwp"
+        },
+        {
+          "resourceId": "0012daf1b8014eb9bdd81b62b4afd08c",
+          "title": "3단원_(02)_9~10차시_구스타프스콜",
+          "downloadPath": "D:\\Downloads\\[체육 6] 3단원_(02)_9~10차시_구스타프스콜_수행 평가.hwp"
+        },
+        {
+          "resourceId": "28ac63b813dc412fa6a6110a8ea19ee5",
+          "title": "3단원_(03)_13~14차시_스트리트댄스",
+          "downloadPath": "D:\\Downloads\\[체육 6] 3단원_(03)_13~14차시_스트리트댄스_수행 평가.hwp"
+        }
+      ],
+      "title": "3 표현"
+    }
+  ]
+}

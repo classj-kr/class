@@ -1,0 +1,81 @@
+{
+  "book": "국어 4-2 ㉯",
+  "grade": "107004",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_매체_수행 평가(1회).hwp",
+          "resourceId": "CN030-550554",
+          "title": "수행 평가(1회) - 매체. 자료를 활용하여 발표해요"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_매체_수행 평가(2회).hwp",
+          "resourceId": "CN030-550555",
+          "title": "수행 평가(2회) - 매체. 자료를 활용하여 발표해요"
+        }
+      ],
+      "unit": "매체. 자료를 활용하여 발표해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_4_수행 평가(1회).hwp",
+          "resourceId": "CN030-550562",
+          "title": "수행 평가(1회) - 4.책 속의 길을 따라"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_4_수행 평가(2회).hwp",
+          "resourceId": "CN030-550563",
+          "title": "수행 평가(2회) - 4.책 속의 길을 따라"
+        }
+      ],
+      "unit": "4.책 속의 길을 따라"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_5_수행 평가(1회).hwp",
+          "resourceId": "CN030-550570",
+          "title": "수행 평가(1회) - 5.오가는 마음"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_5_수행 평가(2회).hwp",
+          "resourceId": "CN030-550571",
+          "title": "수행 평가(2회) - 5.오가는 마음"
+        }
+      ],
+      "unit": "5.오가는 마음"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_6_수행 평가(1회).hwp",
+          "resourceId": "CN030-550578",
+          "title": "수행 평가(1회) - 6.상상의 날개"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_국어 4-2_6_수행 평가(2회).hwp",
+          "resourceId": "CN030-550579",
+          "title": "수행 평가(2회) - 6.상상의 날개"
+        }
+      ],
+      "unit": "6.상상의 날개"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106587&term=108002&grade=107004",
+  "observedAt": "2026-10-09T10:43:30.545Z"
+}

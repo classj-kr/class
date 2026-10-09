@@ -1,0 +1,111 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=5&term=2&textbookSeq=accf5416a01547ce9bf3f6e12961fd6e&order=1&tabType=UD002",
+  "textbook": "사회 5-2\n이간용",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "4fe23217545c4234910dc706e2293a2b",
+          "title": "수행평가 계획서",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "5eff48cad1b34b72a20242f85f97e18c",
+          "title": "교과평어(사회과 5-2)",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 교과 평어(지학사).hwp"
+        },
+        {
+          "resourceId": "037a50ef95ff4c6e87855ecdc7c8fec2",
+          "title": "교과평어(사회과 5-2)",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 교과 평어(지학사).xlsx"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "8dfeb89c29b5436eaac8a46d1f0d95a2",
+          "title": "수행평가_1단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 1단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "8eec514d6c01489996b6449344d4a942",
+          "title": "수행평가_1단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 1단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "f534fa0c2ce146509f4a11fb3a9f1195",
+          "title": "수행평가_1단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 1단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "1e7bd8e4d9e349b185e664b6b7479603",
+          "title": "수행평가_1단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 1단원(2)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "09d3888d57a54b7185645a7664aa5fce",
+          "title": "수행평가_1단원(3주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 1단원(3)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "3a8996445c754cf79ac264b37f6d4a62",
+          "title": "수행평가_1단원(3주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 1단원(3)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "1 유적과 유물로 살펴본 옛 사람들의 생활"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "d5c89107076e44c787639806ed43a160",
+          "title": "수행평가_2단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 2단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "b244200b38b048b8aacccc7635017a39",
+          "title": "수행평가_2단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 2단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "59541914c4a94cff8563a4949b17861f",
+          "title": "수행평가_2단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 2단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "6a88651b0acf4b5f93370917d64c6872",
+          "title": "수행평가_2단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 2단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "2 달라지는 시대, 변화하는 생활 모습"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "46a94019d68a4f36b5b529c8c8c20bc7",
+          "title": "수행평가_3단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 3단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "47fea836a6d44b3f96b012200d9862ff",
+          "title": "수행평가_3단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 3단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "e94b4c46d3c64e3f86730fd8425f0cf6",
+          "title": "수행평가_3단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 3단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "da583c62b5824190b55d464e336ee283",
+          "title": "수행평가_3단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 5-2] 3단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "3 식민 통치와 저항, 전쟁이 바꾼 사회와 생활"
+    }
+  ]
+}

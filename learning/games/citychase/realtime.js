@@ -7,7 +7,7 @@
   const captures=window.ChaseCapture.create({reducedMotion:()=>motionPreference.matches});
   let game=null,view=null,previousView=null,received=0,myId='me',lobby=null,online=false,host=false,chosenTeam='thief',overview=false,pingMode=false,sound=false,audio=null;
   let width=innerWidth,height=innerHeight,camera={x:800,y:500,scale:1},lastFrame=0,lastTick=0,lastPublish=0,lastEvent=0,clueSignature='',toastTimer,captureVisible=false;
-  const poses=new Map();
+  const poses=new Map(),labels=[],actorBounds=[],shopHitAreas=[];
   const lobbyTemplate=$('lobbyScreen').innerHTML;
   const controls=window.ChaseControls.create({pad:$('movePad'),enabled:()=>!!view&&view.phase==='playing'&&!view.paused&&me()?.jailedUntil<=view.elapsed&&$('cluePanel').classList.contains('hidden'),
     send,dash:()=>{if(!$('dashBtn').disabled)send({type:'DASH'});},interact});
@@ -42,7 +42,7 @@
   function startScreen(){
     $('welcome').classList.add('hidden');$('play').classList.remove('hidden');$('result').classList.add('hidden');$('cluePanel').classList.add('hidden');
     overview=false;pingMode=false;lastEvent=0;clueSignature='';captures.reset();lastTick=performance.now();camera.x=me()?.x||800;camera.y=me()?.y||500;
-    $('viewBtn').textContent='전체';$('pingBtn').setAttribute('aria-pressed','false');resize();
+    $('viewBtn').textContent='전체';$('viewBtn').setAttribute('aria-label','전체 지도 보기');$('pingBtn').setAttribute('aria-pressed','false');resize();
   }
   async function practice(){
     $('practiceBtn').disabled=true;online=false;host=true;myId='me';
@@ -87,14 +87,14 @@
     $('teamLabel').textContent=(player.team==='thief'?'도둑팀':'경찰팀')+' · '+player.name;
     $('teamLabel').parentElement.dataset.team=player.team;
     const jailed=player.jailedUntil>view.elapsed;
-    $('missionText').textContent=jailed?Math.ceil(player.jailedUntil-view.elapsed)+'초 후 탈출 · 동료가 구출할 수 있어요':player.team==='police'&&W.distance(player,W.nodes.hideout)<=E.SAFE_RADIUS?'비밀기지 보호구역 · 체포 불가':player.carrying?'보석 운반 중 · 왼쪽 아래 비밀기지로!':player.team==='thief'?'단서를 합쳐 보석을 찾으세요':`체포 ${view.captureGoal}회 또는 보석 운반 저지`;
+    $('missionText').textContent=jailed?'탈출 '+Math.ceil(player.jailedUntil-view.elapsed)+'초':player.team==='police'&&W.distance(player,W.nodes.hideout)<=E.SAFE_RADIUS?'보호구역 · 체포 불가':player.carrying?'보석 운반 중':'';
     const left=Math.max(0,Math.ceil(view.roundSeconds-view.elapsed));$('clock').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');$('clock').classList.toggle('urgent',left<=30);$('scoreText').textContent=view.score+' / '+view.goal;
     $('captureText').textContent=view.captures+' / '+view.captureGoal;
     const finished=view.phase!=='playing';
     $('dashBtn').disabled=finished||jailed||player.dashReady>view.elapsed||view.paused;$('dashBtn').textContent=player.dashReady>view.elapsed?'질주 '+Math.ceil(player.dashReady-view.elapsed)+'초':'질주';
     const shop=W.shops.find(s=>W.distance(player,s.door)<45),rescue=player.team==='thief'&&W.distance(player,W.nodes.jail)<65&&view.players.some(p=>p.team==='thief'&&p.jailedUntil>view.elapsed);
     const button=$('interactBtn');button.disabled=finished||jailed||view.paused||!!player.task||(!rescue&&(!shop||player.team!=='thief'||player.carrying));button.dataset.action=rescue?'RESCUE':'SEARCH';
-    button.textContent=player.task?(player.task.type==='bank'?'보석 보관':player.task.type==='rescue'?'구출':'수색')+' 중 '+Math.ceil((1-player.task.progress/player.task.duration)*100)+'%':rescue?'동료 구출':shop&&player.team==='thief'?'가게 수색':player.team==='police'?'다가가면 체포':'가게 앞에서 수색';
+    button.textContent=player.task?(player.task.type==='bank'?'보석 보관':player.task.type==='rescue'?'구출':'수색')+' '+Math.ceil((1-player.task.progress/player.task.duration)*100)+'%':rescue?'동료 구출':player.team==='police'?'자동 체포':'가게 수색';
     $('pauseNotice').classList.toggle('hidden',!view.paused);
     controls.refresh();
     const events=view.events.filter(e=>e.id>lastEvent);if(events.length){lastEvent=Math.max(...events.map(e=>e.id));const kind=events.some(e=>e.type==='capture')?'capture':'notice';notice(events.at(-1).text,kind);beep(kind);}
@@ -106,33 +106,64 @@
     }
   }
   function renderClues(){
-    $('clueRound').textContent=Math.min(view.score+1,view.goal);$('clueCount').textContent='공유된 단서 '+view.shared.length+'개';
+    $('clueRound').textContent=Math.min(view.score+1,view.goal);$('clueCount').textContent='공유 '+view.shared.length+'개';
     for(const[id,items]of[['privateClues',view.clues],['sharedClues',view.shared]]){
-      $(id).replaceChildren();if(!items.length){const p=document.createElement('p');p.className='small';p.textContent='아직 공유된 단서가 없습니다.';$(id).append(p);}
-      for(const item of items){const div=document.createElement('div');div.className='clue';div.textContent=item.text;if(item.by){const small=document.createElement('small');small.textContent=item.by+'의 단서';div.append(small);}$(id).append(div);}
+      $(id).replaceChildren();if(!items.length){const p=document.createElement('p');p.className='small';p.textContent='공유 없음';$(id).append(p);}
+      for(const item of items){
+        const div=document.createElement('div');div.className='clue';
+        if(item.by){const small=document.createElement('small');small.textContent=item.by+'의 단서';div.append(small);}
+        const candidates=document.createElement('div');candidates.className='clueCandidates';
+        for(const shopId of item.candidates){const shop=W.shops.find(s=>s.id===shopId),chip=document.createElement('span');chip.textContent=shop.name;chip.style.setProperty('--shop-color',shop.color);candidates.append(chip);}
+        div.append(candidates);$(id).append(div);
+      }
     }
-    $('shareBtn').disabled=view.clues.every(c=>view.shared.some(s=>s.key===c.key));$('shareBtn').textContent=$('shareBtn').disabled?'이미 팀에 공유된 단서':'팀원에게 단서 공유';
+    $('shareBtn').disabled=view.clues.every(c=>view.shared.some(s=>s.key===c.key));$('shareBtn').textContent=$('shareBtn').disabled?'공유 완료':'단서 공유';
   }
   function resize(){width=canvas.clientWidth||innerWidth;height=canvas.clientHeight||innerHeight;const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*d);canvas.height=Math.round(height*d);ctx.setTransform(d,0,0,d,0,0);}
   function rounded(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1.5;ctx.stroke();}}
-  function label(text,x,y,color='#294536',fill='#fff9e8',font=13){ctx.font=`800 ${font}px system-ui`;const size=ctx.measureText(text).width+16;rounded(x-size/2,y-12,size,25,7,fill,color);ctx.fillStyle=color;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,x,y+1);}
+  function label(text,x,y,color='#294536',fill='#fff9e8',font=13,kind='place',shopId=null){labels.push({text,x,y,color,fill,font:font*camera.scale,kind,shopId});}
+  function drawLabels(ox,oy,scale){
+    // Place readable screen-sized tags after the sprites, without moving the players.
+    ctx.save();ctx.translate(-ox/scale,-oy/scale);ctx.scale(1/scale,1/scale);
+    shopHitAreas.length=0;const occupied=actorBounds.map(b=>({x:b.x*scale+ox-b.w/2,y:b.y*scale+oy-b.h,w:b.w,h:b.h}));
+    const overlaps=(a,b)=>a.x<b.x+b.w+3&&a.x+a.w>b.x-3&&a.y<b.y+b.h+3&&a.y+a.h>b.y-3;
+    const priority={self:0,actor:1,place:2};labels.sort((a,b)=>priority[a.kind]-priority[b.kind]);
+    for(const tag of labels){
+      const x=tag.x*scale+ox,y=tag.y*scale+oy;
+      if(x<-30||x>width+30||y<-100||y>height+40||tag.kind==='place'&&(y<0||y>height))continue;
+      ctx.font=`800 ${tag.font}px system-ui`;const w=ctx.measureText(tag.text).width+16,h=Math.ceil(tag.font)+10;
+      const shifts=[[0,0],[0,-h-5],[0,h+5],[-w/2-12,0],[w/2+12,0],[0,-2*(h+5)],[0,2*(h+5)],[-w,0],[w,0],[0,3*(h+5)]];
+      let box,best=Infinity;
+      for(const[dx,dy]of shifts){
+        const candidate={x:Math.max(6,Math.min(width-w-6,x-w/2+dx)),y:Math.max(76,Math.min(height-86-h,y-h/2+dy)),w,h};
+        const collisions=occupied.filter(b=>overlaps(candidate,b)).length,cost=collisions*1000+Math.abs(candidate.x+w/2-x)+Math.abs(candidate.y+h/2-y);
+        if(cost<best){best=cost;box=candidate;}if(!collisions&&dx===0&&dy===0)break;
+      }
+      occupied.push(box);
+      if(tag.shopId)shopHitAreas.push({...box,shopId:tag.shopId});
+      if(Math.abs(box.x+w/2-x)>w*.4){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(box.x+w/2,box.y+h/2);ctx.strokeStyle=tag.color+'99';ctx.lineWidth=1.5;ctx.stroke();}
+      rounded(box.x,box.y,w,h,7,tag.fill,tag.color);ctx.fillStyle=tag.color;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(tag.text,box.x+w/2,box.y+h/2+.5);
+    }
+    ctx.restore();
+  }
   function draw(now){
     requestAnimationFrame(draw);if(!view||$('play').classList.contains('hidden'))return;
     const showingCapture=captures.busy(now);if(showingCapture!==captureVisible){captureVisible=showingCapture;$('play').classList.toggle('capturing',showingCapture);}
     const player=me(),focus=captures.cameraTarget(player,now),delta=Math.min(1,(now-lastFrame)/120);lastFrame=now;
-    const scale=overview?Math.min(width/W.WIDTH,height/W.HEIGHT):Math.max(width/W.WIDTH,height/W.HEIGHT)*1.12;
+    const scale=overview?Math.min(width/W.WIDTH,(height-64)/W.HEIGHT):Math.max(width/W.WIDTH,height/W.HEIGHT)*1.12;
     camera.scale=scale;
     const halfW=width/(2*scale),halfH=height/(2*scale);
     const aimX=overview?800:Math.max(halfW,Math.min(W.WIDTH-halfW,focus?.x||800));
-    const aimY=overview?500:Math.max(halfH,Math.min(W.HEIGHT-halfH,(focus?.y||500)-20));
+    const aimY=overview?500:Math.max(halfH-56/scale,Math.min(W.HEIGHT-halfH,(focus?.y||500)-20));
     camera.x+=(aimX-camera.x)*delta;camera.y+=(aimY-camera.y)*delta;
     const ox=width/2-camera.x*scale,oy=height/2-camera.y*scale;
+    labels.length=0;actorBounds.length=0;
     ctx.clearRect(0,0,width,height);ctx.fillStyle='#d4dcb9';ctx.fillRect(0,0,width,height);ctx.save();ctx.translate(ox,oy);ctx.scale(scale,scale);
     if(map.complete&&map.naturalWidth)ctx.drawImage(map,0,0,W.WIDTH,W.HEIGHT);
     ctx.beginPath();ctx.arc(W.nodes.hideout.x,W.nodes.hideout.y,E.SAFE_RADIUS,0,Math.PI*2);ctx.fillStyle='#40976b28';ctx.fill();ctx.strokeStyle='#fff6cc';ctx.lineWidth=2/scale;ctx.setLineDash([6/scale,5/scale]);ctx.stroke();ctx.setLineDash([]);
     // Only the current walking route is overlaid; scenery never creates collision blockers.
     if(player?.path.length){ctx.beginPath();ctx.moveTo(player.x,player.y);for(const p of player.path)ctx.lineTo(p.x,p.y);ctx.strokeStyle=player.team==='police'?'#227ce0cc':'#d55a46cc';ctx.lineWidth=4/scale;ctx.setLineDash([8/scale,8/scale]);ctx.stroke();ctx.setLineDash([]);const end=player.path.at(-1);ctx.beginPath();ctx.arc(end.x,end.y,12/scale,0,Math.PI*2);ctx.stroke();}
-    for(const shop of W.shops){label(shop.name,shop.x,shop.y+58,'#294536','#fff8e9f5',Math.max(14,14/scale));}
+    for(const shop of W.shops){label(shop.name,shop.x,shop.y+58,'#294536','#fff8e9f5',14/scale,'place',shop.id);}
     label('비밀기지 · 안전',W.nodes.hideout.x,W.nodes.hideout.y-25,'#32674b','#eff9dd',14/scale);label('구금 구역',W.nodes.jail.x,W.nodes.jail.y-25,'#2f639b','#eaf4ff',14/scale);
     for(const ping of view.pings){ctx.strokeStyle='#e9ae26';ctx.lineWidth=3/scale;ctx.beginPath();ctx.arc(ping.x,ping.y,(20+Math.sin(now/150)*4)/scale,0,Math.PI*2);ctx.stroke();label(ping.name+'의 표시',ping.x,ping.y-30/scale,'#755419','#fff0b8',12/scale);}
     const elapsed=Math.min(1,(now-received)/(host?50:100)),players=[...view.players].sort((a,b)=>(a.id===myId?1:b.id===myId?-1:a.y-b.y));
@@ -149,19 +180,20 @@
       if(mine){ctx.strokeStyle='#fff';ctx.lineWidth=3/scale;ctx.stroke();}
       const illustratedReaction=reaction&&captureSprite.complete&&captureSprite.naturalWidth;
       const atlas=illustratedReaction?captureSprite:moving?sprites[p.team]:idle;
-      const col=illustratedReaction?reaction.frame:moving?Math.floor(now/(p.dashUntil>view.elapsed?65:105))%4:(p.team==='police'?0:1),size=(reaction?.phase==='caught'?86:76)/scale;
+      const col=illustratedReaction?reaction.frame:moving?Math.floor(now/(p.dashUntil>view.elapsed?65:105))%4:(p.team==='police'?0:1),spritePixels=overview?Math.max(36,Math.min(68,scale*90)):reaction?.phase==='caught'?86:76,size=spritePixels/scale;
+      actorBounds.push({x,y,w:spritePixels*.6,h:spritePixels*.95});
       if(atlas.complete&&atlas.naturalWidth){
         const sw=atlas.naturalWidth/(illustratedReaction?3:moving?4:2),sh=atlas.naturalHeight/(illustratedReaction?1:4),bob=moving?Math.sin(now/65)*1.2/scale:0;
-        ctx.save();ctx.translate(x,y-(reaction?.jump||0)/scale);ctx.rotate(reaction?.rotation||0);ctx.scale(reaction?.sx??1,reaction?.sy??1);ctx.globalAlpha=reaction?.alpha??1;
+        ctx.save();ctx.translate(x,y-(reaction?.jump||0)*(overview?.5:1)/scale);ctx.rotate(reaction?.rotation||0);ctx.scale(reaction?.sx??1,reaction?.sy??1);ctx.globalAlpha=reaction?.alpha??1;
         ctx.drawImage(atlas,col*sw,illustratedReaction?0:pose.row*sh,sw,sh,-size/2,-size*(illustratedReaction?.92:moving?.91:.98)+bob,size,size);ctx.restore();
       }
       else{ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y-24/scale,16/scale,0,Math.PI*2);ctx.fill();}
-      label((mine&&p.name!=='나'?'나 · ':'')+p.name,x,y-79/scale,color,mine?'#fff2b6':'#fffdf4',12/scale);
-      if(p.carrying)label('◆ 보석',x+28/scale,y-39/scale,'#087b9c','#e1fcff',12/scale);
-      if(p.jailedUntil>view.elapsed&&reaction?.phase!=='caught'){captures.bars(ctx,x,y,scale);label('구금 '+Math.ceil(p.jailedUntil-view.elapsed)+'초',x,y+19/scale,'#5c6472','#eef0f4',11/scale);}
+      if(!['caught','salute'].includes(reaction?.phase))label((mine&&p.name!=='나'?'나 · ':'')+p.name,x,y-(spritePixels+12)/scale,color,mine?'#fff2b6':'#fffdf4',12/scale,mine?'self':'actor');
+      if(p.carrying)label('◆ 보석',x+28/scale,y-39/scale,'#087b9c','#e1fcff',12/scale,'actor');
+      if(p.jailedUntil>view.elapsed&&reaction?.phase!=='caught'){captures.bars(ctx,x,y,scale);label('구금 '+Math.ceil(p.jailedUntil-view.elapsed)+'초',x,y+19/scale,'#5c6472','#eef0f4',11/scale,'actor');}
       if(p.task){const w=45/scale;rounded(x-w/2,y+9/scale,w,6/scale,3/scale,'#fff');rounded(x-w/2,y+9/scale,w*Math.min(1,p.task.progress/p.task.duration),6/scale,3/scale,'#e3ac26');}
     }
-    captures.draw(ctx,scale,now);ctx.restore();
+    drawLabels(ox,oy,scale);captures.draw(ctx,scale,now,{ox,oy,width,height});ctx.restore();
     if(view.phase==='ended'&&!captures.busy(now))$('result').classList.remove('hidden');
   }
   function destination(event){return{x:(event.clientX-width/2)/camera.scale+camera.x,y:(event.clientY-height/2)/camera.scale+camera.y};}
@@ -169,7 +201,8 @@
   canvas.addEventListener('pointerdown',event=>{press={x:event.clientX,y:event.clientY,id:event.pointerId};canvas.setPointerCapture(event.pointerId);});
   canvas.addEventListener('pointerup',event=>{
     if(!press||press.id!==event.pointerId)return;const travel=Math.hypot(event.clientX-press.x,event.clientY-press.y);press=null;if(travel>12)return;
-    let point=destination(event);const shop=W.shops.find(s=>Math.abs(point.x-s.x)<72&&Math.abs(point.y-s.y)<80);if(shop)point=shop.door;
+    let point=destination(event);const tag=shopHitAreas.find(b=>event.clientX>=b.x&&event.clientX<=b.x+b.w&&event.clientY>=b.y&&event.clientY<=b.y+b.h);
+    const shop=tag?W.shops.find(s=>s.id===tag.shopId):W.shops.find(s=>Math.abs(point.x-s.x)<72&&Math.abs(point.y-s.y)<80);if(shop)point=shop.door;
     if(pingMode){send({type:'PING',...point});pingMode=false;$('pingBtn').setAttribute('aria-pressed','false');}
     else{controls.stop();send({type:'MOVE',...point});}
   });canvas.addEventListener('pointercancel',()=>{press=null;});
@@ -177,7 +210,7 @@
   $('exitBtn').addEventListener('click',()=>{if(confirm('추격전을 나갈까요?'))reset();});$('againBtn').addEventListener('click',reset);
   window.addEventListener('sitebackrequest',event=>{if(!online&&view){event.preventDefault();reset();}});
   $('rulesBtnGame').addEventListener('click',()=>controls.stop(true));$('soundBtn').addEventListener('click',()=>{sound=!sound;$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').setAttribute('aria-label',sound?'소리 끄기':'소리 켜기');beep();});
-  $('viewBtn').addEventListener('click',()=>{overview=!overview;$('viewBtn').textContent=overview?'내 위치':'전체';});
+  $('viewBtn').addEventListener('click',()=>{overview=!overview;$('viewBtn').textContent=overview?'내 위치':'전체';$('viewBtn').setAttribute('aria-label',overview?'내 위치 보기':'전체 지도 보기');});
   function interact(){if($('interactBtn').disabled)return;controls.stop();send({type:$('interactBtn').dataset.action});}
   function actionButton(button,action){
     // Secondary touches do not consistently synthesize click while a thumb is

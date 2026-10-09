@@ -1,0 +1,39 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/2-1_%ED%86%B5%ED%95%A9_%EC%9E%90%EC%97%B0_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "통합교과",
+  "fileName": "2-1_통합_자연_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 2,
+      "semester": 1,
+      "listedUnit": "2. 자연",
+      "sourceManifest": "2-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "2-1_통합_자연_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "자연",
+          "title": "식물이 자라는 과정 관찰하여 정리하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "자연",
+          "title": "도움을 주고받는 동식물 조사하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "자연",
+          "title": "자연과 함께 찍은 사진 소개하기",
+          "table": 0,
+          "sourceRow": 12
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

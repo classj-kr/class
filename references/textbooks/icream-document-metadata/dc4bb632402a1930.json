@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/5-1_%EA%B3%BC%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "과학",
+  "fileName": "5-1_과학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 5,
+      "semester": 1,
+      "listedUnit": "1. 지층과 화석 ~ 4. 우리 몸의 구조와 기능",
+      "sourceManifest": "5-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "5-1_과학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 지층과 화석",
+          "title": "지층이 어떻게 만들어지는지 알아보기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 지층과 화석",
+          "title": "지층은 어떤 암석으로 이루어져 있는지 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 지층과 화석",
+          "title": "여러 가지 화석을 관찰하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 빛의 성질",
+          "title": "물체를 보려면 무엇이 필요한지 알아보기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 빛의 성질",
+          "title": "빛을 렌즈와 물에 비추어 보기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 빛의 성질",
+          "title": "생활 속 거울과 렌즈를 찾기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 용해와 용액",
+          "title": "물에 녹은 물질은 어떻게 되는지 알아보기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 용해와 용액",
+          "title": "용액의 진하기를 비교하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 용해와 용액",
+          "title": "일상생활에서 이용하는 용액을 찾아보기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 우리 몸의 구조와 기능",
+          "title": "우리 몸은 어떻게 움직이는지 알아보기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 우리 몸의 구조와 기능",
+          "title": "숨을 쉴 때 어떤 일이 일어나는지 알아보기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 우리 몸의 구조와 기능",
+          "title": "몸의 여러 기관과 관련 있는 질병과 예방법 조사하기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

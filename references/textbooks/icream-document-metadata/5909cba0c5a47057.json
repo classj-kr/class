@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/5-2_%EA%B3%BC%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "과학",
+  "fileName": "5-2_과학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 5,
+      "semester": 2,
+      "listedUnit": "1. 혼합물의 분리 ~ 4. 자원과 에너지",
+      "sourceManifest": "5-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "5-2_과학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 혼합물의 분리",
+          "title": "알갱이의 크기가 다른 고체 혼합물 분리하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 혼합물의 분리",
+          "title": "섞여 있는 소금과 모래 분리하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 혼합물의 분리",
+          "title": "혼합물의 분리를 이용한 장치 조사하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 날씨와 우리 생활",
+          "title": "기상 요소 알아보기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 날씨와 우리 생활",
+          "title": "이슬, 안개, 구름 비교하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 날씨와 우리 생활",
+          "title": "바람이 부는 방향 알아보기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 열과 우리 생활",
+          "title": "온도가 다른 두 물체가 접촉할 때 두 물체의 온도 변화 알아보기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 열과 우리 생활",
+          "title": "열의 이동 방식 분류하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 열과 우리 생활",
+          "title": "단열을 이용하는 사례 조사하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 자원과 에너지",
+          "title": "자원의 종류와 유한성 조사하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 자원과 에너지",
+          "title": "재생 에너지 조사하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 자원과 에너지",
+          "title": "자원과 에너지를 효율적으로 사용하는 방법 조사하기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

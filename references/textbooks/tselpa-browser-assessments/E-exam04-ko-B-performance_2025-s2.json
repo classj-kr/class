@@ -1,0 +1,56 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-ko-B_2025&tab=E-exam04-ko-B-performance_2025",
+  "groups": [
+    {
+      "title": "4. 책 속의 길을 따라",
+      "lessons": [
+        {
+          "action": "downloadFile('2616102');",
+          "resourceId": "2616102",
+          "title": "국어4-2_04단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어4-2_04단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2616103');",
+          "resourceId": "2616103",
+          "title": "국어4-2_04단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어4-2_04단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 오가는 마음",
+      "lessons": [
+        {
+          "action": "downloadFile('2626407');",
+          "resourceId": "2626407",
+          "title": "국어4-2_05단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어4-2_05단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2626409');",
+          "resourceId": "2626409",
+          "title": "국어4-2_05단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어4-2_05단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 상상의 날개",
+      "lessons": [
+        {
+          "action": "downloadFile('2626412');",
+          "resourceId": "2626412",
+          "title": "국어4-2_06단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어4-2_06단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2626413');",
+          "resourceId": "2626413",
+          "title": "국어4-2_06단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어4-2_06단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

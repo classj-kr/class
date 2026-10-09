@@ -1,0 +1,97 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-science-L_2025&tab=E-exam03-science-L-performance_2025",
+  "groups": [
+    {
+      "title": "1. 물체와 물질",
+      "lessons": [
+        {
+          "action": "downloadFile('2439491');",
+          "resourceId": "2439491",
+          "title": "과학(이)_3-2_1단원_3~4차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-1_3~4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439492');",
+          "resourceId": "2439492",
+          "title": "과학(이)_3-2_1단원_5~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-1_5~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595291');",
+          "resourceId": "2595291",
+          "title": "과학(이)_3-2_1단원_7~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-1_7~8차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 지구와 바다",
+      "lessons": [
+        {
+          "action": "downloadFile('2439493');",
+          "resourceId": "2439493",
+          "title": "과학(이)_3-2_2단원_4~5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-2_4~5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595292');",
+          "resourceId": "2595292",
+          "title": "과학(이)_3-2_2단원_5~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-2_5~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439494');",
+          "resourceId": "2439494",
+          "title": "과학(이)_3-2_2단원_7차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-2_7차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 소리의 성질",
+      "lessons": [
+        {
+          "action": "downloadFile('2439495');",
+          "resourceId": "2439495",
+          "title": "과학(이)_3-2_3단원_3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-3_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595293');",
+          "resourceId": "2595293",
+          "title": "과학(이)_3-2_3단원_4~5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-3_4~5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439496');",
+          "resourceId": "2439496",
+          "title": "과학(이)_3-2_3단원_7~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-3_7~8차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 감염병과 건강한 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2439497');",
+          "resourceId": "2439497",
+          "title": "과학(이)_3-2_4단원_2~8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-4_2~8차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2439498');",
+          "resourceId": "2439498",
+          "title": "과학(이)_3-2_4단원_4~5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-4_4~5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2595294');",
+          "resourceId": "2595294",
+          "title": "과학(이)_3-2_4단원_8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(이)_3-2-4_8차시_수행평가.hwp"
+        }
+      ]
+    }
+  ]
+}

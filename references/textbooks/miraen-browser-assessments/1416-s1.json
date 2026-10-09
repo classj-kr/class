@@ -1,0 +1,49 @@
+{
+  "book": "수학 4-1",
+  "curriculum": "year-2022",
+  "grade": "4학년",
+  "rows": [
+    {
+      "context": "1 단원 1차시",
+      "resourceId": "10015231",
+      "title": "[과정중심평가 HWP]1_1차시_과정중심평가",
+      "unit": "1. 큰 수"
+    },
+    {
+      "context": "2 단원 9차시",
+      "resourceId": "10014981",
+      "title": "[과정중심평가 HWP]2_9차시_과정중심평가",
+      "unit": "2. 각도"
+    },
+    {
+      "context": "3 단원 3차시",
+      "resourceId": "10015394",
+      "title": "[과정중심평가 HWP]3_3차시_과정중심평가",
+      "unit": "3. 곱셈과 나눗셈"
+    },
+    {
+      "context": "4 단원 10차시",
+      "resourceId": "10014586",
+      "title": "[과정중심평가 HWP]4_10차시_과정중심평가",
+      "unit": "4. 평면도형의 이동"
+    },
+    {
+      "context": "5 단원 9차시",
+      "resourceId": "10014758",
+      "title": "[과정중심평가 HWP]5_9차시_과정중심평가",
+      "unit": "5. 분수의 덧셈과 뺄셈"
+    },
+    {
+      "context": "6 단원 7차시",
+      "resourceId": "10014778",
+      "title": "[과정중심평가 HWP]6_7차시_과정중심평가",
+      "unit": "6. 막대그래프"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1416&gradeCode=04&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 4-1 (장혜원)",
+  "sourceId": "1416",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

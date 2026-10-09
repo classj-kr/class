@@ -1,0 +1,76 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/6_%EC%88%98%EC%97%85%ED%8F%89%EA%B0%80%EA%B3%84%ED%9A%8D%EC%84%9C%EB%B0%8F%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80%EC%A7%80_L7~L12.zip",
+  "subject": "영어",
+  "fileName": "6_수업평가계획서및수행평가지_L7~L12.zip",
+  "contexts": [
+    {
+      "grade": 6,
+      "semester": 2,
+      "listedUnit": "7. What Season Do You Like? ~ 12. We Should Save the World",
+      "sourceManifest": "6-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/6학년_2학기_영어_수업 및 평가계획서.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L10/[수행평가]_6_L10-3_이해.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L10/[수행평가]_6_L10-5_표현.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L11/[수행평가]_6_L11-3_이해.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L11/[수행평가]_6_L11-5_표현.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L12/[수행평가]_6_L12-3_이해.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L12/[수행평가]_6_L12-5_통합.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L12/[수행평가]_6_L12-5_표현.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L7/[수행평가]_6_L7-3_이해.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L7/[수행평가]_6_L7-5_표현.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L8/[수행평가]_6_L8-3_이해.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L8/[수행평가]_6_L8-5_표현.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L9/[수행평가]_6_L9-3_이해.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L9/[수행평가]_6_L9-5_통합.hwp",
+      "assessments": []
+    },
+    {
+      "member": "6_수업평가계획서및수행평가지_L7~L12/L9/[수행평가]_6_L9-5_표현.hwp",
+      "assessments": []
+    }
+  ],
+  "status": "individual-file-labels-available"
+}

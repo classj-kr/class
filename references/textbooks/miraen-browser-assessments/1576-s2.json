@@ -1,0 +1,109 @@
+{
+  "book": "국어 3-2(가)",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "1-1 단원 2~3차시",
+      "resourceId": "10057538",
+      "title": "[수행평가 HWP] 1_2~3차시_수행평가",
+      "unit": "1. 경험과 관련지으며 이해해요"
+    },
+    {
+      "context": "1-1 단원 4~5차시",
+      "resourceId": "10057539",
+      "title": "[수행평가 HWP] 1_4~5차시_수행평가",
+      "unit": "1. 경험과 관련지으며 이해해요"
+    },
+    {
+      "context": "1-2 단원 6차시",
+      "resourceId": "10057550",
+      "title": "[수행평가 HWP] 1_6차시_수행평가",
+      "unit": "1. 경험과 관련지으며 이해해요"
+    },
+    {
+      "context": "1-2 단원 7~8차시",
+      "resourceId": "10057552",
+      "title": "[수행평가 HWP] 1_7~8차시_수행평가",
+      "unit": "1. 경험과 관련지으며 이해해요"
+    },
+    {
+      "context": "1-2 단원 9~10차시",
+      "resourceId": "10057553",
+      "title": "[수행평가 HWP] 1_9~10차시_수행평가",
+      "unit": "1. 경험과 관련지으며 이해해요"
+    },
+    {
+      "context": "2-1 단원 2차시",
+      "resourceId": "10059535",
+      "title": "[수행평가 HWP] 2_2차시_수행평가",
+      "unit": "2. 유창하게 읽고 발표해요"
+    },
+    {
+      "context": "2-1 단원 3~4차시",
+      "resourceId": "10059536",
+      "title": "[수행평가 HWP] 2_3~4차시_수행평가",
+      "unit": "2. 유창하게 읽고 발표해요"
+    },
+    {
+      "context": "2-1 단원 5~6차시",
+      "resourceId": "10059538",
+      "title": "[수행평가 HWP] 2_5~6차시_수행평가",
+      "unit": "2. 유창하게 읽고 발표해요"
+    },
+    {
+      "context": "2-2 단원 7차시",
+      "resourceId": "10059539",
+      "title": "[수행평가 HWP] 2_7차시_수행평가",
+      "unit": "2. 유창하게 읽고 발표해요"
+    },
+    {
+      "context": "2-2 단원 8~10차시",
+      "resourceId": "10059540",
+      "title": "[수행평가 HWP] 2_8~10차시_수행평가",
+      "unit": "2. 유창하게 읽고 발표해요"
+    },
+    {
+      "context": "3-1 단원 2차시",
+      "resourceId": "10062279",
+      "title": "[수행평가 HWP] 3_2차시_수행평가",
+      "unit": "3. 정확하게 글을  써요"
+    },
+    {
+      "context": "3-1 단원 3~4차시",
+      "resourceId": "10062282",
+      "title": "[수행평가 HWP] 3_3~4차시_수행평가",
+      "unit": "3. 정확하게 글을  써요"
+    },
+    {
+      "context": "3-1 단원 5~6차시",
+      "resourceId": "10062283",
+      "title": "[수행평가 HWP] 3_5~6차시_수행평가",
+      "unit": "3. 정확하게 글을  써요"
+    },
+    {
+      "context": "3-2 단원 7~8차시",
+      "resourceId": "10062284",
+      "title": "[수행평가 HWP] 3_7~8차시_수행평가",
+      "unit": "3. 정확하게 글을  써요"
+    },
+    {
+      "context": "3-2 단원 9차시",
+      "resourceId": "10062286",
+      "title": "[수행평가 HWP] 3_9차시_수행평가",
+      "unit": "3. 정확하게 글을  써요"
+    },
+    {
+      "context": "3-2 단원 10~11차시",
+      "resourceId": "10062288",
+      "title": "[수행평가 HWP] 3_10~11차시_수행평가",
+      "unit": "3. 정확하게 글을  써요"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1576&gradeCode=03&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 3-2(가)",
+  "sourceId": "1576",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

@@ -1,0 +1,111 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=3&term=2&textbookSeq=80ec068be2034a80992b63ee57d0ec75&order=2&tabType=UD002",
+  "textbook": "과학3-2\n권치순",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "9155b90f900c4848942dab6550447965",
+          "title": "수행 평가 계획서",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 수행평가계획서.hwp"
+        },
+        {
+          "resourceId": "6e89b9411eeb4fc183b1736a470bd40b",
+          "title": "교과 평어_과학 3-2",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 교과평어(지학사).hwp"
+        },
+        {
+          "resourceId": "ebe73e68d6384a7289f918a7121ac329",
+          "title": "교과 평어_과학 3-2",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 교과평어(지학사).xlsx"
+        },
+        {
+          "resourceId": "65c628f3fcd446ed8818c79271a024f1",
+          "title": "협력 학습 평가(양식)",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 협력학습평가(양식).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "9639b133ef1e43929d3fefb40d3147a8",
+          "title": "수행 평가_1단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 1단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "98400ca0ac644292aaf147cf49bd0b25",
+          "title": "수행 평가_1단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 1단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "b03eb4f6a9cf4d34a069a839bef35e8c",
+          "title": "수행 평가_1단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 1단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "1 물체와 물질"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "f59ab8ecf762400fa4e00e651086c349",
+          "title": "수행 평가_2단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 2단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "2c1f3891b5bd42f3ba0f881c3937a4f6",
+          "title": "수행 평가_2단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 2단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "05f6ce88efaf41c3a4e6094fd22fab6c",
+          "title": "수행 평가_2단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 2단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "2 지구와 바다"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "86b148509900470da88aeee80393c512",
+          "title": "수행 평가_3단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 3단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "bce36db315084a2c9c41df3ae933a71b",
+          "title": "수행 평가_3단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 3단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "77194df778f442a3a66e3bdcf210128b",
+          "title": "수행 평가_3단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 3단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "3 소리의 성질"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "d56aee7de03b403d9e48e8e70df60ae8",
+          "title": "수행 평가_4단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 4단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "ba46ace4ef794389a22474504b7918e2",
+          "title": "수행 평가_4단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 4단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "c8ba2eb03ed14fb68d719c9b212f1267",
+          "title": "수행 평가_4단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 4단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "4 감염병과 건강한 생활"
+    }
+  ]
+}

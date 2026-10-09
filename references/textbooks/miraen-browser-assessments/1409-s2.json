@@ -1,0 +1,421 @@
+{
+  "book": "영어3",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "Hello 단원 공통자료",
+      "resourceId": "10005224",
+      "title": "[평가자료] 3 Hello 수행평가 1회",
+      "unit": "Hello. ABC World"
+    },
+    {
+      "context": "Hello 단원 공통자료",
+      "resourceId": "10049362",
+      "title": "[평가자료] 3 Hello 수행평가 2회",
+      "unit": "Hello. ABC World"
+    },
+    {
+      "context": "Lesson 1 단원 공통자료",
+      "resourceId": "10003041",
+      "title": "[평가자료] 3-1 수행평가 1회",
+      "unit": "Lesson 1. Hi, I'm Olly"
+    },
+    {
+      "context": "Lesson 1 단원 공통자료",
+      "resourceId": "10049363",
+      "title": "[평가자료] 3-1 수행평가 2회",
+      "unit": "Lesson 1. Hi, I'm Olly"
+    },
+    {
+      "context": "Lesson 1 단원 공통자료",
+      "resourceId": "10091232",
+      "title": "[평가자료] 3-1 듣기 수행평가",
+      "unit": "Lesson 1. Hi, I'm Olly"
+    },
+    {
+      "context": "Lesson 1 단원 공통자료",
+      "resourceId": "10091233",
+      "title": "[평가자료] 3-1 말하기 수행평가",
+      "unit": "Lesson 1. Hi, I'm Olly"
+    },
+    {
+      "context": "Lesson 1 단원 공통자료",
+      "resourceId": "10091234",
+      "title": "[평가자료] 3-1 쓰기 수행평가",
+      "unit": "Lesson 1. Hi, I'm Olly"
+    },
+    {
+      "context": "Lesson 1 단원 공통자료",
+      "resourceId": "10091235",
+      "title": "[평가자료] 3-1 읽기 수행평가",
+      "unit": "Lesson 1. Hi, I'm Olly"
+    },
+    {
+      "context": "Lesson 2 단원 공통자료",
+      "resourceId": "10005260",
+      "title": "[평가자료] 3-2 수행평가 1회",
+      "unit": "Lesson 2. Sit Down, Please"
+    },
+    {
+      "context": "Lesson 2 단원 공통자료",
+      "resourceId": "10049512",
+      "title": "[평가자료] 3-2 수행평가 2회",
+      "unit": "Lesson 2. Sit Down, Please"
+    },
+    {
+      "context": "Lesson 2 단원 공통자료",
+      "resourceId": "10091236",
+      "title": "[평가자료] 3-2 듣기 수행평가",
+      "unit": "Lesson 2. Sit Down, Please"
+    },
+    {
+      "context": "Lesson 2 단원 공통자료",
+      "resourceId": "10091237",
+      "title": "[평가자료] 3-2 말하기 수행평가",
+      "unit": "Lesson 2. Sit Down, Please"
+    },
+    {
+      "context": "Lesson 2 단원 공통자료",
+      "resourceId": "10091238",
+      "title": "[평가자료] 3-2 쓰기 수행평가",
+      "unit": "Lesson 2. Sit Down, Please"
+    },
+    {
+      "context": "Lesson 2 단원 공통자료",
+      "resourceId": "10091239",
+      "title": "[평가자료] 3-2 읽기 수행평가",
+      "unit": "Lesson 2. Sit Down, Please"
+    },
+    {
+      "context": "Lesson 3 단원 공통자료",
+      "resourceId": "10005268",
+      "title": "[평가자료] 3-3 수행평가 1회",
+      "unit": "Lesson 3. What's This?"
+    },
+    {
+      "context": "Lesson 3 단원 공통자료",
+      "resourceId": "10049513",
+      "title": "[평가자료] 3-3 수행평가 2회",
+      "unit": "Lesson 3. What's This?"
+    },
+    {
+      "context": "Lesson 3 단원 공통자료",
+      "resourceId": "10091240",
+      "title": "[평가자료] 3-3 듣기 수행평가",
+      "unit": "Lesson 3. What's This?"
+    },
+    {
+      "context": "Lesson 3 단원 공통자료",
+      "resourceId": "10091241",
+      "title": "[평가자료] 3-3 말하기 수행평가",
+      "unit": "Lesson 3. What's This?"
+    },
+    {
+      "context": "Lesson 3 단원 공통자료",
+      "resourceId": "10091242",
+      "title": "[평가자료] 3-3 쓰기 수행평가",
+      "unit": "Lesson 3. What's This?"
+    },
+    {
+      "context": "Lesson 3 단원 공통자료",
+      "resourceId": "10091243",
+      "title": "[평가자료] 3-3 읽기 수행평가",
+      "unit": "Lesson 3. What's This?"
+    },
+    {
+      "context": "Lesson 4 단원 공통자료",
+      "resourceId": "10005276",
+      "title": "[평가자료] 3-4 수행평가 1회",
+      "unit": "Lesson 4. I Like Pizza"
+    },
+    {
+      "context": "Lesson 4 단원 공통자료",
+      "resourceId": "10049514",
+      "title": "[평가자료] 3-4 수행평가 2회",
+      "unit": "Lesson 4. I Like Pizza"
+    },
+    {
+      "context": "Lesson 4 단원 공통자료",
+      "resourceId": "10100832",
+      "title": "[평가자료] 3-4 듣기 수행평가",
+      "unit": "Lesson 4. I Like Pizza"
+    },
+    {
+      "context": "Lesson 4 단원 공통자료",
+      "resourceId": "10100833",
+      "title": "[평가자료] 3-4 말하기 수행평가",
+      "unit": "Lesson 4. I Like Pizza"
+    },
+    {
+      "context": "Lesson 4 단원 공통자료",
+      "resourceId": "10100834",
+      "title": "[평가자료] 3-4 쓰기 수행평가",
+      "unit": "Lesson 4. I Like Pizza"
+    },
+    {
+      "context": "Lesson 4 단원 공통자료",
+      "resourceId": "10100835",
+      "title": "[평가자료] 3-4 읽기 수행평가",
+      "unit": "Lesson 4. I Like Pizza"
+    },
+    {
+      "context": "Lesson 5 단원 공통자료",
+      "resourceId": "10005284",
+      "title": "[평가자료] 3-5 수행평가 1회",
+      "unit": "Lesson 5. Do You Have a Brush?"
+    },
+    {
+      "context": "Lesson 5 단원 공통자료",
+      "resourceId": "10049515",
+      "title": "[평가자료] 3-5 수행평가 2회",
+      "unit": "Lesson 5. Do You Have a Brush?"
+    },
+    {
+      "context": "Lesson 5 단원 공통자료",
+      "resourceId": "10102585",
+      "title": "[평가자료] 3-5 읽기수행평가",
+      "unit": "Lesson 5. Do You Have a Brush?"
+    },
+    {
+      "context": "Lesson 5 단원 공통자료",
+      "resourceId": "10102586",
+      "title": "[평가자료] 3-5 쓰기수행평가",
+      "unit": "Lesson 5. Do You Have a Brush?"
+    },
+    {
+      "context": "Lesson 5 단원 공통자료",
+      "resourceId": "10102587",
+      "title": "[평가자료] 3-5 말하기수행평가",
+      "unit": "Lesson 5. Do You Have a Brush?"
+    },
+    {
+      "context": "Lesson 5 단원 공통자료",
+      "resourceId": "10102588",
+      "title": "[평가자료] 3-5 듣기수행평가",
+      "unit": "Lesson 5. Do You Have a Brush?"
+    },
+    {
+      "context": "Lesson 6 단원 공통자료",
+      "resourceId": "10005292",
+      "title": "[평가자료] 3-6 수행평가 1회",
+      "unit": "Lesson 6. How Many Dogs?"
+    },
+    {
+      "context": "Lesson 6 단원 공통자료",
+      "resourceId": "10051668",
+      "title": "[평가자료] 3-6 수행평가 2회",
+      "unit": "Lesson 6. How Many Dogs?"
+    },
+    {
+      "context": "Lesson 6 단원 공통자료",
+      "resourceId": "10102581",
+      "title": "[평가자료] 3-6 읽기수행평가",
+      "unit": "Lesson 6. How Many Dogs?"
+    },
+    {
+      "context": "Lesson 6 단원 공통자료",
+      "resourceId": "10102582",
+      "title": "[평가자료] 3-6 쓰기수행평가",
+      "unit": "Lesson 6. How Many Dogs?"
+    },
+    {
+      "context": "Lesson 6 단원 공통자료",
+      "resourceId": "10102583",
+      "title": "[평가자료] 3-6 말하기수행평가",
+      "unit": "Lesson 6. How Many Dogs?"
+    },
+    {
+      "context": "Lesson 6 단원 공통자료",
+      "resourceId": "10102584",
+      "title": "[평가자료] 3-6 듣기수행평가",
+      "unit": "Lesson 6. How Many Dogs?"
+    },
+    {
+      "context": "Lesson 7 단원 공통자료",
+      "resourceId": "10005300",
+      "title": "[평가자료] 3-7 수행평가 1회",
+      "unit": "Lesson 7. How Old Are You?"
+    },
+    {
+      "context": "Lesson 7 단원 공통자료",
+      "resourceId": "10051669",
+      "title": "[평가자료] 3-7 수행평가 2회",
+      "unit": "Lesson 7. How Old Are You?"
+    },
+    {
+      "context": "Lesson 7 단원 공통자료",
+      "resourceId": "10106063",
+      "title": "[평가자료] 3-7 읽기 수행평가",
+      "unit": "Lesson 7. How Old Are You?"
+    },
+    {
+      "context": "Lesson 7 단원 공통자료",
+      "resourceId": "10106064",
+      "title": "[평가자료] 3-7 쓰기 수행평가",
+      "unit": "Lesson 7. How Old Are You?"
+    },
+    {
+      "context": "Lesson 7 단원 공통자료",
+      "resourceId": "10106065",
+      "title": "[평가자료] 3-7 말하기 수행평가",
+      "unit": "Lesson 7. How Old Are You?"
+    },
+    {
+      "context": "Lesson 7 단원 공통자료",
+      "resourceId": "10106066",
+      "title": "[평가자료] 3-7 듣기 수행평가",
+      "unit": "Lesson 7. How Old Are You?"
+    },
+    {
+      "context": "Lesson 8 단원 공통자료",
+      "resourceId": "10005308",
+      "title": "[평가자료] 3-8 수행평가 1회",
+      "unit": "Lesson 8. I'm Happy"
+    },
+    {
+      "context": "Lesson 8 단원 공통자료",
+      "resourceId": "10051670",
+      "title": "[평가자료] 3-8 수행평가 2회",
+      "unit": "Lesson 8. I'm Happy"
+    },
+    {
+      "context": "Lesson 8 단원 공통자료",
+      "resourceId": "10106059",
+      "title": "[평가자료] 3-8 읽기 수행평가",
+      "unit": "Lesson 8. I'm Happy"
+    },
+    {
+      "context": "Lesson 8 단원 공통자료",
+      "resourceId": "10106060",
+      "title": "[평가자료] 3-8 쓰기 수행평가",
+      "unit": "Lesson 8. I'm Happy"
+    },
+    {
+      "context": "Lesson 8 단원 공통자료",
+      "resourceId": "10106061",
+      "title": "[평가자료] 3-8 말하기 수행평가",
+      "unit": "Lesson 8. I'm Happy"
+    },
+    {
+      "context": "Lesson 8 단원 공통자료",
+      "resourceId": "10106062",
+      "title": "[평가자료] 3-8 듣기 수행평가",
+      "unit": "Lesson 8. I'm Happy"
+    },
+    {
+      "context": "Lesson 9 단원 공통자료",
+      "resourceId": "10005316",
+      "title": "[평가자료] 3-9 수행평가 1회",
+      "unit": "Lesson 9. I Can Swim"
+    },
+    {
+      "context": "Lesson 9 단원 공통자료",
+      "resourceId": "10051671",
+      "title": "[평가자료] 3-9 수행평가 2회",
+      "unit": "Lesson 9. I Can Swim"
+    },
+    {
+      "context": "Lesson 9 단원 공통자료",
+      "resourceId": "10106055",
+      "title": "[평가자료] 3-9 읽기 수행평가",
+      "unit": "Lesson 9. I Can Swim"
+    },
+    {
+      "context": "Lesson 9 단원 공통자료",
+      "resourceId": "10106056",
+      "title": "[평가자료] 3-9 쓰기 수행평가",
+      "unit": "Lesson 9. I Can Swim"
+    },
+    {
+      "context": "Lesson 9 단원 공통자료",
+      "resourceId": "10106057",
+      "title": "[평가자료] 3-9 말하기 수행평가",
+      "unit": "Lesson 9. I Can Swim"
+    },
+    {
+      "context": "Lesson 9 단원 공통자료",
+      "resourceId": "10106058",
+      "title": "[평가자료] 3-9 듣기 수행평가",
+      "unit": "Lesson 9. I Can Swim"
+    },
+    {
+      "context": "Lesson 10 단원 공통자료",
+      "resourceId": "10005244",
+      "title": "[평가자료] 3-10 수행평가 1회",
+      "unit": "Lesson 10. What Color Is It?"
+    },
+    {
+      "context": "Lesson 10 단원 공통자료",
+      "resourceId": "10051672",
+      "title": "[평가자료] 3-10 수행평가 2회",
+      "unit": "Lesson 10. What Color Is It?"
+    },
+    {
+      "context": "Lesson 10 단원 공통자료",
+      "resourceId": "10109402",
+      "title": "[평가자료] 3-10 듣기수행평가",
+      "unit": "Lesson 10. What Color Is It?"
+    },
+    {
+      "context": "Lesson 10 단원 공통자료",
+      "resourceId": "10109404",
+      "title": "[평가자료] 3-10 말하기수행평가",
+      "unit": "Lesson 10. What Color Is It?"
+    },
+    {
+      "context": "Lesson 10 단원 공통자료",
+      "resourceId": "10109406",
+      "title": "[평가자료] 3-10 읽기수행평가",
+      "unit": "Lesson 10. What Color Is It?"
+    },
+    {
+      "context": "Lesson 10 단원 공통자료",
+      "resourceId": "10109408",
+      "title": "[평가자료] 3-10 쓰기수행평가",
+      "unit": "Lesson 10. What Color Is It?"
+    },
+    {
+      "context": "Lesson 11 단원 공통자료",
+      "resourceId": "10005252",
+      "title": "[평가자료] 3-11 수행평가 1회",
+      "unit": "Lesson 11. It's Sunny"
+    },
+    {
+      "context": "Lesson 11 단원 공통자료",
+      "resourceId": "10051673",
+      "title": "[평가자료] 3-11 수행평가 2회",
+      "unit": "Lesson 11. It's Sunny"
+    },
+    {
+      "context": "Lesson 11 단원 공통자료",
+      "resourceId": "10109403",
+      "title": "[평가자료] 3-11 듣기수행평가",
+      "unit": "Lesson 11. It's Sunny"
+    },
+    {
+      "context": "Lesson 11 단원 공통자료",
+      "resourceId": "10109405",
+      "title": "[평가자료] 3-11 말하기수행평가",
+      "unit": "Lesson 11. It's Sunny"
+    },
+    {
+      "context": "Lesson 11 단원 공통자료",
+      "resourceId": "10109407",
+      "title": "[평가자료] 3-11 읽기수행평가",
+      "unit": "Lesson 11. It's Sunny"
+    },
+    {
+      "context": "Lesson 11 단원 공통자료",
+      "resourceId": "10109409",
+      "title": "[평가자료] 3-11 쓰기수행평가",
+      "unit": "Lesson 11. It's Sunny"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1409&gradeCode=03&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "영어3 (강정진)",
+  "sourceId": "1409",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

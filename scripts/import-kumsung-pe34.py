@@ -33,5 +33,11 @@ write(OUT/'pacing-kumsung-guide-2022.json',dict(schemaVersion=1,plans=plans))
 write(REF/'kumsung-pe34-normalization-review.json',dict(schemaVersion=1,sources=pages,
     duplicateDownloadFinding='Grade 3 and 4 HWPX downloads are identical and correspond to grade 4 themes. Both runtime plans use explicitly grade-labelled guide pages instead; guide and HWPX wording differences are preserved in originals.',
     reviews=[dict(grade=p['grade'],rows=len(p['lessons']),periods=102,semesterMapping='annual-month-order-preserved-no-inferred-semester') for p in plans]))
+manifest=read(REF/'kumsung-acquired-sources.json')
+for s in manifest['sources']:
+    if s.get('sha256')=='34a24267e0e09fa27e1028be5fbc002c1ee1960dd3c035fc5c6085157bddd3c3':
+        s['status']='duplicate-download-replaced-by-grade-labelled-guide'
+        s['resolution']='kumsung-pe34-normalization-review.json'
+write(REF/'kumsung-acquired-sources.json',manifest)
 subprocess.run(['node',str(ROOT/'scripts/build-textbook-coverage.cjs')],check=True)
 print([(p['grade'],len(p['lessons'])) for p in plans])

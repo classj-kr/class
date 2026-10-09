@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/3-2_%EA%B3%BC%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "과학",
+  "fileName": "3-2_과학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 3,
+      "semester": 2,
+      "listedUnit": "1. 물체와 물질~4. 감염병과 건강한 생활",
+      "sourceManifest": "3-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "3-2_과학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 물체와 물질",
+          "title": "물질의 성질 알아보기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 물체와 물질",
+          "title": "고체, 액체, 기체 상태의 성질 비교하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 물체와 물질",
+          "title": "쓰임새에 맞는 물질로 물체 설계하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 지구와 바다",
+          "title": "대기가 있음을 알아보기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 지구와 바다",
+          "title": "육지의 물과 바닷물의 특징 비교하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 지구와 바다",
+          "title": "같은 장소의 바닷가 모습 비교하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 소리의 성질",
+          "title": "소리가 나는 물체 관찰하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 소리의 성질",
+          "title": "높은 소리와 낮은 소리 비교하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 소리의 성질",
+          "title": "소리를 전달하는 물질 알아보기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 감염병과 건강한 생활",
+          "title": "감염병은 왜 위험한지 토의하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 감염병과 건강한 생활",
+          "title": "감염병에 걸릴 수 있는 생활 습관 표현하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 감염병과 건강한 생활",
+          "title": "건강을 지키는 감염병 예방 수칙 알아보기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

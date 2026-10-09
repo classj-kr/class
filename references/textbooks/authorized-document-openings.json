@@ -1,0 +1,46 @@
+[
+  {
+    "publisher": "금성출판사",
+    "subject": "체육",
+    "grade": 6,
+    "semester": 1,
+    "path": "D:/Downloads/6학년_1학기_수업평가및계획서.hwp",
+    "url": "https://thub.kumsung.co.kr/elementary/learning/detail.do?findTypeCategory=D006&category=A001003&gradeCategory=C005006&bookId=399"
+  },
+  {
+    "publisher": "금성출판사",
+    "subject": "체육",
+    "grade": 6,
+    "semester": 2,
+    "path": "D:\\Downloads\\6학년_2학기_수업평가및계획서.hwp",
+    "url": "https://thub.kumsung.co.kr/elementary/learning/detail.do?findTypeCategory=D006&category=A001003&gradeCategory=C005006&bookId=399",
+    "resource": "javascript:singleFileDownload(97129);"
+  },
+  {
+    "publisher": "금성출판사",
+    "subject": "체육",
+    "grade": 5,
+    "semester": 1,
+    "path": "D:\\Downloads\\5학년_1학기_수업평가및계획서.hwp",
+    "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001003&gradeCategory=C005005&bookId=398",
+    "resource": "javascript:singleFileDownload(97119);"
+  },
+  {
+    "publisher": "금성출판사",
+    "subject": "체육",
+    "grade": 5,
+    "semester": 2,
+    "path": "D:\\Downloads\\5학년_2학기_수업평가및계획서.hwp",
+    "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001003&gradeCategory=C005005&bookId=398",
+    "resource": "javascript:singleFileDownload(97120);"
+  },
+  {
+    "publisher": "디딤돌교육",
+    "subject": "수학",
+    "grade": 6,
+    "semester": 2,
+    "path": "D:\\Downloads\\(디딤돌)초등수학_과정_중시_평가_기준안_6-2.hwp",
+    "url": "https://www.didimdolclass.co.kr/curriculum/curriculum?grade=SIXTH&period=SECOND_PERIOD",
+    "resource": "33885"
+  }
+]

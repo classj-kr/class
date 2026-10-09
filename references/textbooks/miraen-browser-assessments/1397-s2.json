@@ -1,0 +1,109 @@
+{
+  "book": "국어 2-2 (가)",
+  "curriculum": "year-2022",
+  "grade": "2학년",
+  "rows": [
+    {
+      "context": "1-1 단원 3~4차시",
+      "resourceId": "10002683",
+      "title": "[수행평가 HWP] 1_3~4차시_수행평가",
+      "unit": "1. 장면을 상상하며"
+    },
+    {
+      "context": "1-1 단원 5~6차시",
+      "resourceId": "10002685",
+      "title": "[수행평가 HWP] 1_5~6차시_수행평가",
+      "unit": "1. 장면을 상상하며"
+    },
+    {
+      "context": "1-2 단원 7~8차시",
+      "resourceId": "10002686",
+      "title": "[수행평가 HWP] 1_7~8차시_수행평가",
+      "unit": "1. 장면을 상상하며"
+    },
+    {
+      "context": "1-2 단원 9~10차시",
+      "resourceId": "10002688",
+      "title": "[수행평가 HWP] 1_9~10차시_수행평가",
+      "unit": "1. 장면을 상상하며"
+    },
+    {
+      "context": "2-1 단원 3~4차시",
+      "resourceId": "10003202",
+      "title": "[수행평가 HWP] 2_3~4차시_수행평가",
+      "unit": "2. 서로 존중해요"
+    },
+    {
+      "context": "2-1 단원 5~6차시",
+      "resourceId": "10003203",
+      "title": "[수행평가 HWP] 2_5~6차시_수행평가",
+      "unit": "2. 서로 존중해요"
+    },
+    {
+      "context": "2-2 단원 7~8차시",
+      "resourceId": "10003204",
+      "title": "[수행평가 HWP] 2_7~8차시_수행평가",
+      "unit": "2. 서로 존중해요"
+    },
+    {
+      "context": "2-2 단원 9~10차시",
+      "resourceId": "10003205",
+      "title": "[수행평가 HWP] 2_9~10차시_수행평가",
+      "unit": "2. 서로 존중해요"
+    },
+    {
+      "context": "3-1 단원 3~4차시",
+      "resourceId": "10003206",
+      "title": "[수행평가 HWP] 3_3~4차시_수행평가",
+      "unit": "3. 내용을 살펴요"
+    },
+    {
+      "context": "3-1 단원 5~6차시",
+      "resourceId": "10003207",
+      "title": "[수행평가 HWP] 3_5~6차시_수행평가",
+      "unit": "3. 내용을 살펴요"
+    },
+    {
+      "context": "3-2 단원 7~8차시",
+      "resourceId": "10003208",
+      "title": "[수행평가 HWP] 3_7~8차시_수행평가",
+      "unit": "3. 내용을 살펴요"
+    },
+    {
+      "context": "3-2 단원 9~10차시",
+      "resourceId": "10003209",
+      "title": "[수행평가 HWP] 3_9~10차시_수행평가",
+      "unit": "3. 내용을 살펴요"
+    },
+    {
+      "context": "4-1 단원 3~4차시",
+      "resourceId": "10003648",
+      "title": "[수행평가 HWP] 4_3~4차시_수행평가",
+      "unit": "4. 마음을 전해요"
+    },
+    {
+      "context": "4-1 단원 5~6차시",
+      "resourceId": "10003649",
+      "title": "[수행평가 HWP] 4_5~6차시_수행평가",
+      "unit": "4. 마음을 전해요"
+    },
+    {
+      "context": "4-2 단원 7~8차시",
+      "resourceId": "10003650",
+      "title": "[수행평가 HWP] 4_7~8차시_수행평가",
+      "unit": "4. 마음을 전해요"
+    },
+    {
+      "context": "4-2 단원 9~10차시",
+      "resourceId": "10003651",
+      "title": "[수행평가 HWP] 4_9~10차시_수행평가",
+      "unit": "4. 마음을 전해요"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1397&gradeCode=02&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 2-2 (가)",
+  "sourceId": "1397",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

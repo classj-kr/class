@@ -7,6 +7,8 @@ const express = require('express');
 const fs = require('node:fs');
 const path = require('node:path');
 const { normalizePairs, coversPair, subjectKey } = require('./teaching-scope');
+const { resourcesFor, subjectsFor, textbookSubject, resolveTiming } = require('./assessment-resources');
+const { buildAssessmentHwpx } = require('./assessment-hwpx');
 
 const MAX_ITEMS = 60;
 const LEVEL_LABELS = {
@@ -20,7 +22,7 @@ const text = (value, max) => String(value == null ? '' : value).replace(/\r\n?/g
 function cleanItems(raw) {
   const list = Array.isArray(raw) ? raw.slice(0, MAX_ITEMS) : [];
   return list.map((item) => {
-    const levels = Math.min(5, Math.max(2, Number(item?.levels) || 3));
+    const levels = Math.min(5, Math.max(2, Math.trunc(Number(item?.levels)) || 3));
     const labels = LEVEL_LABELS[levels];
     const criteria = Array.isArray(item?.criteria) ? item.criteria : [];
     return {
@@ -31,7 +33,12 @@ function cleanItems(raw) {
         .filter((s) => s.code || s.text),
       element: text(item?.element, 400),
       levels,
-      criteria: labels.map((label, i) => ({ label: text(criteria[i]?.label, 20) || label, text: text(criteria[i]?.text, 800) }))
+      criteria: labels.map((label, i) => ({ label: text(criteria[i]?.label, 20) || label, text: text(criteria[i]?.text, 800) })),
+      ...(item?.assessmentId ? { assessmentId: text(item.assessmentId, 100), assessmentTitle: text(item.assessmentTitle, 300) } : {}),
+      ...(item?.method ? { method: text(item.method, 200) } : {}),
+      ...(item?.timingMode === 'manual' ? { timingMode: 'manual', timingText: text(item.timingText, 100) } : {}),
+      ...(item?.pacing?.editionId ? { pacing: { editionId: text(item.pacing.editionId, 100),
+        lessonIds: [...new Set((Array.isArray(item.pacing.lessonIds) ? item.pacing.lessonIds : []).map(id => text(id, 200)).filter(Boolean))].slice(0, 40) } } : {})
     };
   });
 }
@@ -54,6 +61,7 @@ function createAssessmentPlans({ pool, requireTeacher, teacherRegistration, requ
 
   async function initialize() {
     if (pool) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations/010-assessment-plans.sql'), 'utf8'));
+    if (pool) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations/012-assessment-pacing.sql'), 'utf8'));
   }
 
   async function registered(req) {
@@ -91,6 +99,71 @@ function createAssessmentPlans({ pool, requireTeacher, teacherRegistration, requ
     if (scope.homeroomGrade && Number(grade) === scope.homeroomGrade) return true;
     return coversPair(scope.pairs, grade, subject);
   }
+
+  async function selection(schoolId, key) {
+    return (await pool.query('SELECT edition_id FROM school_textbook_selections WHERE school_id=$1 AND academic_year=$2 AND grade=$3 AND subject_name=$4',
+      [schoolId, key.year, key.grade, textbookSubject(key.subject)])).rows[0]?.edition_id || '';
+  }
+  const elementaryKey = input => {
+    const key = planKey(input);
+    if (!key || key.grade > 6) fail('PLAN_KEY_INVALID', '초등 학년도·학년·학기·교과를 확인해 주세요.');
+    return key;
+  };
+  async function scheduleFor(schoolId, key) {
+    const row = (await pool.query('SELECT edition_id, entries, revision FROM assessment_pacing WHERE school_id=$1 AND academic_year=$2 AND grade=$3 AND semester=$4 AND subject_name=$5',
+      [schoolId,key.year,key.grade,key.semester,key.subject])).rows[0];
+    return row ? { editionId: row.edition_id, entries: row.entries, revision: row.revision } : { editionId:'',entries:[],revision:0 };
+  }
+  router.get('/resources', asyncRoute(async (req,res) => {
+    const { registration } = await registered(req), key = elementaryKey(req.query);
+    const editionId = await selection(registration.school_id, key);
+    res.setHeader('Cache-Control','no-store');
+    res.json({ ...resourcesFor(editionId,key.grade,key.semester,key.subject), schedule:await scheduleFor(registration.school_id,key) });
+  }));
+  router.put('/pacing', asyncRoute(async (req,res) => {
+    const { teacher, registration } = await registered(req), key = elementaryKey(req.body || {});
+    if (!canEdit(await teachingScope(teacher,registration,key.year),key.grade,key.subject)) fail('PLAN_READ_ONLY','담당 학년·교과의 진도표만 고칠 수 있습니다.',403);
+    const editionId = await selection(registration.school_id,key);
+    if (!editionId || editionId !== req.body.editionId) fail('TEXTBOOK_CHANGED','교과서 선택이 바뀌었습니다. 목록을 다시 불러오세요.',409);
+    const available = new Set(resourcesFor(editionId,key.grade,key.semester,key.subject).plans.flatMap(p=>p.lessons.map(l=>l.id)));
+    if (!Array.isArray(req.body.entries) || req.body.entries.length > 1000 || !Number.isInteger(req.body.revision) || req.body.revision < 0) fail('INVALID_PACING','진도표 입력을 확인해 주세요.');
+    const entries = req.body.entries.map(e=>({lessonId:text(e?.lessonId,200),timing:text(e?.timing,100)})).filter(e=>e.timing);
+    if (entries.some(e=>!available.has(e.lessonId)) || new Set(entries.map(e=>e.lessonId)).size !== entries.length) fail('INVALID_PACING','선택한 교과서·학기의 차시를 사용해 주세요.');
+    const result = await pool.query(`INSERT INTO assessment_pacing(school_id,academic_year,grade,semester,subject_name,edition_id,entries)
+      SELECT $1,$2,$3,$4,$5,$6,$7::jsonb WHERE $8=0
+      OR EXISTS(SELECT 1 FROM assessment_pacing WHERE school_id=$1 AND academic_year=$2 AND grade=$3 AND semester=$4 AND subject_name=$5 AND revision=$8)
+      ON CONFLICT(school_id,academic_year,grade,semester,subject_name) DO UPDATE SET edition_id=EXCLUDED.edition_id,entries=EXCLUDED.entries,revision=assessment_pacing.revision+1
+      WHERE assessment_pacing.revision=$8 RETURNING revision`,
+      [registration.school_id,key.year,key.grade,key.semester,key.subject,editionId,JSON.stringify(entries),req.body.revision]);
+    if (!result.rows.length) fail('PACING_CHANGED','다른 선생님이 진도표를 수정했습니다. 새로 불러온 뒤 다시 저장해 주세요.',409);
+    res.json({editionId,entries,revision:result.rows[0].revision});
+  }));
+  async function termPlan(req) {
+    const { registration } = await registered(req), key = elementaryKey({...req.query,subject:'전체'});
+    const [saved, dates, adopted] = await Promise.all([
+      pool.query('SELECT subject_name,items FROM assessment_plans WHERE school_id=$1 AND academic_year=$2 AND grade=$3 AND semester=$4',[registration.school_id,key.year,key.grade,key.semester]),
+      pool.query('SELECT subject_name,edition_id,entries FROM assessment_pacing WHERE school_id=$1 AND academic_year=$2 AND grade=$3 AND semester=$4',[registration.school_id,key.year,key.grade,key.semester]),
+      pool.query('SELECT subject_name,edition_id FROM school_textbook_selections WHERE school_id=$1 AND academic_year=$2 AND grade=$3',[registration.school_id,key.year,key.grade])
+    ]);
+    const subjects = subjectsFor(key.grade).map(subject => {
+      const editionId = adopted.rows.find(r=>r.subject_name===textbookSubject(subject))?.edition_id || '';
+      const schedule = dates.rows.find(r=>r.subject_name===subject);
+      const items = cleanItems(saved.rows.find(r=>r.subject_name===subject)?.items).map(item=>({...item,
+        resolvedTiming:resolveTiming(item,schedule && {editionId:schedule.edition_id,entries:schedule.entries},editionId)}));
+      return {subject,items,missing:items.length===0,incomplete:items.filter(i=>!i.domain || !i.element || !i.method || !i.standards.length || i.criteria.some(c=>!c.text)).length,
+        missingTiming:items.filter(i=>!i.resolvedTiming).length};
+    });
+    return {year:key.year,grade:key.grade,semester:key.semester,schoolName:registration.school_name || '',subjects};
+  }
+  router.get('/term',asyncRoute(async(req,res)=>{res.setHeader('Cache-Control','no-store');res.json(await termPlan(req));}));
+  router.get('/export.hwpx',asyncRoute(async(req,res)=>{
+    const plan = await termPlan(req);
+    const filename = `${plan.year}학년도 ${plan.grade}학년 ${plan.semester}학기 수행평가 계획.hwpx`;
+    res.setHeader('Cache-Control','no-store');
+    res.setHeader('Content-Type','application/hwp+zip');
+    res.setHeader('Content-Disposition',`attachment; filename="assessment-plan.hwpx"; filename*=UTF-8''${encodeURIComponent(filename)}`);
+    res.send(buildAssessmentHwpx(plan));
+  }));
 
   // 한 학년도·학년의 교과별 계획 유무. 화면 위쪽 교과 고르기에 "작성됨" 표시를 붙인다.
   router.get('/summary', asyncRoute(async (req, res) => {

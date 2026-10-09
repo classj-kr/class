@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/4-2_%EA%B3%BC%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "과학",
+  "fileName": "4-2_과학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 4,
+      "semester": 2,
+      "listedUnit": "1. 밤하늘 관찰~4. 기후변화와 우리 생활",
+      "sourceManifest": "4-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "4-2_과학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 밤하늘 관찰",
+          "title": "여러 날 동안 보이는 달의 모양 변화 알아보기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 밤하늘 관찰",
+          "title": "태양계 알아보기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 밤하늘 관찰",
+          "title": "북쪽 하늘의 별과 별자리 알아보기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 생물과 환경",
+          "title": "생물 요소 분류하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 생물과 환경",
+          "title": "생물의 먹고 먹히는 관계 알아보기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 생물과 환경",
+          "title": "인간의 활동이 생태계에 미치는 영향 조사하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 여러 가지 기체",
+          "title": "공기를 빼기 전과 뺀 후의 무게 비교하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 여러 가지 기체",
+          "title": "압력에 따른 기체의 부피 변화 알아보기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 여러 가지 기체",
+          "title": "여러 가지 기체를 캐릭터로 나타내기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 기후변화와 우리 생활",
+          "title": "우리가 기후변화에 주는 영향 알아보기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 기후변화와 우리 생활",
+          "title": "기후변화가 우리 생활과 환경에 주는 영향 알아보기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 기후변화와 우리 생활",
+          "title": "기후변화 대응 방법 소개하기",
+          "table": 0,
+          "sourceRow": 48
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

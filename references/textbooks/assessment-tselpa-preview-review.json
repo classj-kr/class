@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "samples": [
+    {
+      "id": "tselpa-assessment-2702949",
+      "previewFile": "tselpa-assessment-2702949.png",
+      "sha256": "2428d343a1064bdd5e7f0b62d852c29d1352125f3c49146a53362696354433b3",
+      "scope": "embedded-first-page-only",
+      "observed": "Worksheet title, questions and diagrams are visible; criteria are on later pages and have not been visually checked.",
+      "rubricVisualReview": "pending"
+    },
+    {
+      "id": "tselpa-assessment-2386506",
+      "previewFile": "tselpa-assessment-2386506.png",
+      "sha256": "b19cd11c807cf544c793609cce20af1f6508debfec226df78311053b48494c43",
+      "scope": "embedded-first-page-only",
+      "observed": "Worksheet title, questions and diagrams are visible; criteria are on later pages and have not been visually checked.",
+      "rubricVisualReview": "pending"
+    },
+    {
+      "id": "tselpa-assessment-2696732",
+      "previewFile": "tselpa-assessment-2696732.png",
+      "sha256": "ba36c0f42b1af40e668d35a562119bee93d6d867dc590a10c13452c99e1feb66",
+      "scope": "embedded-first-page-only",
+      "observed": "Worksheet title, questions and diagrams are visible; criteria are on later pages and have not been visually checked.",
+      "rubricVisualReview": "pending"
+    },
+    {
+      "id": "tselpa-assessment-2675686",
+      "previewFile": "tselpa-assessment-2675686.png",
+      "sha256": "fea178ed5a05b1523d8c8e20220eb112ed93fdea559a78d8c8d9ce07e89e0150",
+      "scope": "embedded-first-page-only",
+      "observed": "Worksheet title, questions and diagrams are visible; criteria are on later pages and have not been visually checked.",
+      "rubricVisualReview": "pending"
+    }
+  ]
+}

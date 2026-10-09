@@ -1,0 +1,33 @@
+{
+  "book": "사회 3-2(남상준)",
+  "rows": [
+    {
+      "resourceId": "C20250106093833PjNXq",
+      "title": "사회 3-2_수행 평가_2단원 1주제.hwp",
+      "unit": "2. 옛날과 오늘날의 생활 모습"
+    },
+    {
+      "resourceId": "C20250106093833FJvP3",
+      "title": "사회 3-2_수행 평가_2단원 2주제.hwp",
+      "unit": "2. 옛날과 오늘날의 생활 모습"
+    },
+    {
+      "resourceId": "C20250106093833sY9ET",
+      "title": "사회 3-2_수행 평가_2단원 3주제.hwp",
+      "unit": "2. 옛날과 오늘날의 생활 모습"
+    }
+  ],
+  "url": "https://www.ybmcloud.com/evaluation/T07170140212024yBFHx.html",
+  "observedAt": "2026-10-09",
+  "unitsChecked": [
+    {
+      "id": "R08240521332024or61f",
+      "title": "1. 사회 변화와 다양한 문화"
+    },
+    {
+      "id": "R08240521332024Gn2kY",
+      "title": "2. 옛날과 오늘날의 생활 모습"
+    }
+  ],
+  "filter": "all-assessment-titles"
+}

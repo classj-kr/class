@@ -1,0 +1,298 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=2&exam=E-exam02-math_2024&tab=E-exam02-math_2024_01",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2149930');",
+          "resourceId": "2149930",
+          "title": "수학2-2_수업및평가계획서",
+          "downloadPath": "D:\\Downloads\\수업 및 평가 계획서(2학년).hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 네 자리 수",
+      "lessons": [
+        {
+          "action": "downloadFile('2123214');",
+          "resourceId": "2123214",
+          "title": "수학2-2_수행평가_1단원 1회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2151991');",
+          "resourceId": "2151991",
+          "title": "수학2-2_수행평가_1단원 2회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2151990');",
+          "resourceId": "2151990",
+          "title": "수학2-2_수행평가_1단원 3회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2151989');",
+          "resourceId": "2151989",
+          "title": "수학2-2_수행평가_1단원 4회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_4회.hwp"
+        },
+        {
+          "action": "downloadFile('2151381');",
+          "resourceId": "2151381",
+          "title": "수학2-2_수행평가_1단원_05차시",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_05차시.hwp"
+        },
+        {
+          "action": "downloadFile('2151382');",
+          "resourceId": "2151382",
+          "title": "수학2-2_수행평가_1단원_06차시",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_06차시.hwp"
+        },
+        {
+          "action": "downloadFile('2151383');",
+          "resourceId": "2151383",
+          "title": "수학2-2_수행평가_1단원_07차시",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_1단원_07차시.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 곱셈구구",
+      "lessons": [
+        {
+          "action": "downloadFile('2156905');",
+          "resourceId": "2156905",
+          "title": "수학2-2_수행평가_2단원_1회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2156906');",
+          "resourceId": "2156906",
+          "title": "수학2-2_수행평가_2단원_2회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2156907');",
+          "resourceId": "2156907",
+          "title": "수학2-2_수행평가_2단원_3회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2156908');",
+          "resourceId": "2156908",
+          "title": "수학2-2_수행평가_2단원_4회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_4회.hwp"
+        },
+        {
+          "action": "downloadFile('2123215');",
+          "resourceId": "2123215",
+          "title": "수학2-2_수행평가_2단원_05차시",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_05차시.hwp"
+        },
+        {
+          "action": "downloadFile('2156890');",
+          "resourceId": "2156890",
+          "title": "수학2-2_수행평가_2단원_09차시",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_09차시.hwp"
+        },
+        {
+          "action": "downloadFile('2156891');",
+          "resourceId": "2156891",
+          "title": "수학2-2_수행평가_2단원_10차시",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_2단원_10차시.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 길이 재기",
+      "lessons": [
+        {
+          "action": "downloadFile('2206881');",
+          "resourceId": "2206881",
+          "title": "수학2-2_수행평가_3단원_1회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_3단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2206880');",
+          "resourceId": "2206880",
+          "title": "수학2-2_수행평가_3단원_2회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_3단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2206879');",
+          "resourceId": "2206879",
+          "title": "수학2-2_수행평가_3단원_3회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_3단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2206878');",
+          "resourceId": "2206878",
+          "title": "수학2-2_수행평가_3단원_4회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_3단원_4회.hwp"
+        },
+        {
+          "action": "downloadFile('2206877');",
+          "resourceId": "2206877",
+          "title": "수학2-2_수행평가_3단원_02차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2-3_02차시 수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2206876');",
+          "resourceId": "2206876",
+          "title": "수학2-2_수행평가_3단원_04차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2-3_04차시 수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2123216');",
+          "resourceId": "2123216",
+          "title": "수학2-2_수행평가_3단원_05차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2-3_05차시 수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 시각과 시간",
+      "lessons": [
+        {
+          "action": "downloadFile('2156909');",
+          "resourceId": "2156909",
+          "title": "수학2-2_수행평가_4단원_1회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_4단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2156910');",
+          "resourceId": "2156910",
+          "title": "수학2-2_수행평가_4단원_2회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_4단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2156911');",
+          "resourceId": "2156911",
+          "title": "수학2-2_수행평가_4단원_3회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_4단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2156912');",
+          "resourceId": "2156912",
+          "title": "수학2-2_수행평가_4단원_4회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_4단원_4회.hwp"
+        },
+        {
+          "action": "downloadFile('2597758');",
+          "resourceId": "2597758",
+          "title": "수학_2-2_수행평가_4단원_04차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_4단원_04차시.hwp"
+        },
+        {
+          "action": "downloadFile('2597759');",
+          "resourceId": "2597759",
+          "title": "수학_2-2_수행평가_4단원_06차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_4단원_06차시.hwp"
+        },
+        {
+          "action": "downloadFile('2597760');",
+          "resourceId": "2597760",
+          "title": "수학_2-2_수행평가_4단원_07차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_4단원_07차시.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 표와 그래프",
+      "lessons": [
+        {
+          "action": "downloadFile('2294023');",
+          "resourceId": "2294023",
+          "title": "수학2-2_수행평가_5단원_1회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_5단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2294022');",
+          "resourceId": "2294022",
+          "title": "수학2-2_수행평가_5단원_2회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_5단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2294021');",
+          "resourceId": "2294021",
+          "title": "수학2-2_수행평가_5단원_3회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_5단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2294020');",
+          "resourceId": "2294020",
+          "title": "수학2-2_수행평가_5단원_4회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_5단원_4회.hwp"
+        },
+        {
+          "action": "downloadFile('2294019');",
+          "resourceId": "2294019",
+          "title": "수학_2-2_수행평가_5단원_02차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_5단원_02차시.hwp"
+        },
+        {
+          "action": "downloadFile('2294018');",
+          "resourceId": "2294018",
+          "title": "수학_2-2_수행평가_5단원_05차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_5단원_05차시.hwp"
+        },
+        {
+          "action": "downloadFile('2123218');",
+          "resourceId": "2123218",
+          "title": "수학_2-2_수행평가_5단원_06차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_5단원_06차시.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 규칙 찾기",
+      "lessons": [
+        {
+          "action": "downloadFile('2156913');",
+          "resourceId": "2156913",
+          "title": "수학2-2_수행평가_6단원_1회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_6단원_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2156914');",
+          "resourceId": "2156914",
+          "title": "수학2-2_수행평가_6단원_2회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_6단원_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2156915');",
+          "resourceId": "2156915",
+          "title": "수학2-2_수행평가_6단원_3회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_6단원_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2156916');",
+          "resourceId": "2156916",
+          "title": "수학2-2_수행평가_6단원_4회",
+          "downloadPath": "D:\\Downloads\\수학2-2_수행평가_6단원_4회.hwp"
+        },
+        {
+          "action": "downloadFile('2597782');",
+          "resourceId": "2597782",
+          "title": "수학_2-2_수행평가_6단원_02차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_6단원_02차시.hwp"
+        },
+        {
+          "action": "downloadFile('2597783');",
+          "resourceId": "2597783",
+          "title": "수학_2-2_수행평가_6단원_05차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_6단원_05차시.hwp"
+        },
+        {
+          "action": "downloadFile('2597784');",
+          "resourceId": "2597784",
+          "title": "수학_2-2_수행평가_6단원_06차시",
+          "downloadPath": "D:\\Downloads\\수학_2-2_수행평가_6단원_06차시.hwp"
+        }
+      ]
+    }
+  ]
+}

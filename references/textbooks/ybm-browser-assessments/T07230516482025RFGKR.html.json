@@ -1,0 +1,91 @@
+{
+  "book": "음악 6(양소영)",
+  "rows": [
+    {
+      "resourceId": null,
+      "title": "수행 평가지(전체)",
+      "unit": "공통자료"
+    },
+    {
+      "resourceId": null,
+      "title": "수행 평가지(1단원)",
+      "unit": "1. 음악으로 시작하는 봄"
+    },
+    {
+      "resourceId": "C20251217054106PDn0P",
+      "title": "수행 평가지",
+      "unit": "1. 음악으로 시작하는 봄"
+    },
+    {
+      "resourceId": "C20251217054106ElhzA",
+      "title": "수행 평가지",
+      "unit": "1. 음악으로 시작하는 봄"
+    },
+    {
+      "resourceId": "C20251217054106LqTjI",
+      "title": "수행 평가지",
+      "unit": "1. 음악으로 시작하는 봄"
+    },
+    {
+      "resourceId": null,
+      "title": "수행 평가지(2단원)",
+      "unit": "2. 음악으로 자라나는 여름"
+    },
+    {
+      "resourceId": "C20251217054106Urtmq",
+      "title": "수행 평가지",
+      "unit": "2. 음악으로 자라나는 여름"
+    },
+    {
+      "resourceId": null,
+      "title": "수행 평가지(3단원)",
+      "unit": "3. 음악으로 열매 맺는 가을"
+    },
+    {
+      "resourceId": "C20251217054107Q7Qqc",
+      "title": "수행 평가지",
+      "unit": "3. 음악으로 열매 맺는 가을"
+    },
+    {
+      "resourceId": "C20251217054107lfY2D",
+      "title": "수행 평가지",
+      "unit": "3. 음악으로 열매 맺는 가을"
+    },
+    {
+      "resourceId": "C20251217054107pZtGz",
+      "title": "수행 평가지",
+      "unit": "3. 음악으로 열매 맺는 가을"
+    },
+    {
+      "resourceId": null,
+      "title": "수행 평가지(4단원)",
+      "unit": "4. 음악으로 하나 되는 겨울"
+    },
+    {
+      "resourceId": "C202512170541086vM4Q",
+      "title": "수행 평가지",
+      "unit": "4. 음악으로 하나 되는 겨울"
+    }
+  ],
+  "url": "https://www.ybmcloud.com/evaluation/T07230516482025RFGKR.html?siteType=E",
+  "observedAt": "2026-10-09",
+  "unitsChecked": [
+    {
+      "id": "R08190429452025ai0m5",
+      "title": "1. 음악으로 시작하는 봄"
+    },
+    {
+      "id": "R08190429452025VJajM",
+      "title": "2. 음악으로 자라나는 여름"
+    },
+    {
+      "id": "R081904294520257BLlP",
+      "title": "3. 음악으로 열매 맺는 가을"
+    },
+    {
+      "id": "R08190429452025pUt4H",
+      "title": "4. 음악으로 하나 되는 겨울"
+    }
+  ],
+  "filter": "all-assessment-titles"
+}

@@ -1,0 +1,105 @@
+{
+  "rows": [
+    {
+      "lesson": "[1차시] 열기-사진 속 우리(교과서 8쪽)",
+      "resourceId": "javascript:singleoFileDownload('92986','cfile','3845')",
+      "subunit": "1. 반짝반짝 빛나는 우리",
+      "title": "[수행평가] 4-1. 반짝반짝 빛나는 우리",
+      "unit": ""
+    },
+    {
+      "lesson": "[6차시] 담기-기록이 꾸준히 쌓여서(교과서 17쪽)",
+      "resourceId": "javascript:singleoFileDownload('93106','cfile','3854')",
+      "subunit": "2. 내가 그리고 싶은 대상",
+      "title": "[수행평가] 4-2. 내가 그리고 싶은 대상",
+      "unit": ""
+    },
+    {
+      "lesson": "[3차시] 펼치기-소재로 만드는 노래(교과서 20쪽)",
+      "resourceId": "javascript:singleoFileDownload('93127','cfile','3858')",
+      "subunit": "3. 그림 속 백 가지 소재",
+      "title": "[수행평가] 4-3. 그림 속 백 가지 소재",
+      "unit": ""
+    },
+    {
+      "lesson": "[2차시] 펼치기-감각을 선명히(교과서 25쪽)",
+      "resourceId": "javascript:singleoFileDownload('93156','cfile','3863')",
+      "subunit": "4. 감각으로 새롭게",
+      "title": "[수행평가] 4-4. 감각으로 새롭게",
+      "unit": ""
+    },
+    {
+      "lesson": "[4~5차시] 펼치기-상상 속 이상한 마을(교과서 30쪽)",
+      "resourceId": "javascript:singleoFileDownload('93214','cfile','3869')",
+      "subunit": "5. 변신의 마법사, 찰흙",
+      "title": "[수행평가] 4-5. 변신의 마법사, 찰흙",
+      "unit": ""
+    },
+    {
+      "lesson": "[5~6차시] 담기-우리 반 온라인 상영회(교과서 35쪽)",
+      "resourceId": "javascript:singleoFileDownload('93221','cfile','3875')",
+      "subunit": "6. 이야기가 살아 움직여요!",
+      "title": "[수행평가] 4-6. 이야기가 살아 움직여요!",
+      "unit": ""
+    },
+    {
+      "lesson": "[3차시] 펼치기-판본체로 ‘하얀 구름’ 쓰기(교과서 38쪽)",
+      "resourceId": "javascript:singleoFileDownload('93225','cfile','3879')",
+      "subunit": "7. 우리 글씨의 멋",
+      "title": "[수행평가] 4-7. 우리 글씨의 멋",
+      "unit": ""
+    },
+    {
+      "lesson": "[2차시] 펼치기-이미지를 읽어요(교과서 43쪽)",
+      "resourceId": "javascript:singleoFileDownload('93228','cfile','3883')",
+      "subunit": "8. 세상을 잇는 이미지",
+      "title": "[수행평가] 4-8. 세상을 잇는 이미지",
+      "unit": ""
+    },
+    {
+      "lesson": "[6차시] 담기-무엇으로 만들었을까?(교과서 49쪽)",
+      "resourceId": "javascript:singleoFileDownload('93357','cfile','3891')",
+      "subunit": "9. 재료가 달라지면",
+      "title": "[수행평가] 4-9. 재료가 달라지면",
+      "unit": ""
+    },
+    {
+      "lesson": "[3차시] 펼치기-대답하며 만들어 가는 작품 감상문 쓰기(교과서 52쪽)",
+      "resourceId": "javascript:singleoFileDownload('93376','cfile','3955')",
+      "subunit": "10. 질문하며 감상하며",
+      "title": "[수행평가] 4-10. 질문하며 감상하며",
+      "unit": ""
+    },
+    {
+      "lesson": "[6차시] 담기-과학자의 소리 번역(교과서 59쪽)",
+      "resourceId": "javascript:singleoFileDownload('93549','cfile','3901')",
+      "subunit": "11. 소리 번역가",
+      "title": "[수행평가] 4-11. 소리 번역가",
+      "unit": ""
+    },
+    {
+      "lesson": "[3~5차시] 펼치기-청소 로봇 만들기(교과서 62~63쪽)",
+      "resourceId": "javascript:singleoFileDownload('93570','cfile','3905')",
+      "subunit": "12. 우리 가까이에 있는 우주",
+      "title": "[수행평가] 4-12. 우리 가까이에 있는 우주",
+      "unit": ""
+    },
+    {
+      "lesson": "[5~6차시] 담기-골라 봐요 온라인 전시회(교과서 69쪽)",
+      "resourceId": "javascript:singleoFileDownload('93574','cfile','3910')",
+      "subunit": "13. 미술관에서 뭐 하지?",
+      "title": "[수행평가] 4-13. 미술관에서 뭐 하지",
+      "unit": ""
+    }
+  ],
+  "unitsChecked": [
+    "1. 햇살 같은 우리",
+    "2. 아름다운 세상에서",
+    "3. 알록달록 함께",
+    "4. 푸른 꿈을 꾸어요"
+  ],
+  "title": "미술 4(김정선)22개정",
+  "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001005&gradeCategory=C005004&bookId=382",
+  "sourceMenu": "lesson-resources",
+  "observedAt": "2026-10-09T10:50:46.686Z"
+}

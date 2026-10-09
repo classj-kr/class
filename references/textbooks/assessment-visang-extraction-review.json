@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "indexedAssessmentAssets": 824,
+  "structuredDocuments": 81,
+  "structuredStages": 108,
+  "reviewStatus": "structurally-validated-visual-review-pending",
+  "assetCountMeaning": "some acquired assets are ZIP bundles; asset count is not unique task count",
+  "emptyUnitMatches": [],
+  "standardMapping": "document-level-only"
+}

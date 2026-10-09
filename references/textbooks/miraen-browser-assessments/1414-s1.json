@@ -1,0 +1,49 @@
+{
+  "book": "수학 3-1",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "1 단원 11차시",
+      "resourceId": "10007021",
+      "title": "[과정중심평가 HWP]1_11차시_과정중심평가",
+      "unit": "1. 덧셈과 뺄셈"
+    },
+    {
+      "context": "2 단원 9차시",
+      "resourceId": "10015271",
+      "title": "[과정중심평가 HWP]2_9차시_과정중심평가",
+      "unit": "2. 평면도형"
+    },
+    {
+      "context": "3 단원 3차시",
+      "resourceId": "10014515",
+      "title": "[과정중심평가 HWP]3_3차시_과정중심평가",
+      "unit": "3. 나눗셈"
+    },
+    {
+      "context": "4 단원 6차시",
+      "resourceId": "10014294",
+      "title": "[과정중심평가 HWP]4_6차시_과정중심평가",
+      "unit": "4. 곱셈"
+    },
+    {
+      "context": "5 단원 1차시",
+      "resourceId": "10015060",
+      "title": "[과정중심평가 HWP]5_1차시_과정중심평가",
+      "unit": "5. 길이와 시간"
+    },
+    {
+      "context": "6 단원 12차시",
+      "resourceId": "10015280",
+      "title": "[과정중심평가 HWP]6_12차시_과정중심평가",
+      "unit": "6. 분수와 소수"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1414&gradeCode=03&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 3-1 (장혜원)",
+  "sourceId": "1414",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

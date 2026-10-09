@@ -1,0 +1,151 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=5&exam=E-exam05-science-J_2026&tab=E-exam05-science-J-performance_2026",
+  "groups": [
+    {
+      "title": "1. 혼합물의 분리",
+      "lessons": [
+        {
+          "action": "downloadFile('2876552');",
+          "resourceId": "2876552",
+          "title": "과학(정)_5-2_1단원_4차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-1_4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682038');",
+          "resourceId": "2682038",
+          "title": "과학(정)_5-2_1단원_5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-1_5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682039');",
+          "resourceId": "2682039",
+          "title": "과학(정)_5-2_1단원_6~7차시(1)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-1_6-7차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876551');",
+          "resourceId": "2876551",
+          "title": "과학(정)_5-2_1단원_6~7차시(2)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-1_6-7차시(2)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2808982');",
+          "resourceId": "2808982",
+          "title": "과학(정)_5-2_1단원_8~9차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-1_8-9차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 날씨와 우리 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2808989');",
+          "resourceId": "2808989",
+          "title": "과학(정)_5-2_2단원_4차시(1)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-2_4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876553');",
+          "resourceId": "2876553",
+          "title": "과학(정)_5-2_2단원_4차시(2)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-2_4차시(2)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682043');",
+          "resourceId": "2682043",
+          "title": "과학(정)_5-2_2단원_5~6차시(1)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-2_5-6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876554');",
+          "resourceId": "2876554",
+          "title": "과학(정)_5-2_2단원_5~6차시(2)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-2_5-6차시(2)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682044');",
+          "resourceId": "2682044",
+          "title": "과학(정)_5-2_2단원_8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-2_8차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 열과 우리 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2808998');",
+          "resourceId": "2808998",
+          "title": "과학(정)_5-2_3단원_3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-3_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682049');",
+          "resourceId": "2682049",
+          "title": "과학(정)_5-2_3단원_4차시(1)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-3_4차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876555');",
+          "resourceId": "2876555",
+          "title": "과학(정)_5-2_3단원_4차시(2)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-3_4차시(2)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682050');",
+          "resourceId": "2682050",
+          "title": "과학(정)_5-2_3단원_6~7차시(1)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-3_6-7차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876556');",
+          "resourceId": "2876556",
+          "title": "과학(정)_5-2_3단원_6~7차시(2)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-3_6-7차시(2)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2809004');",
+          "resourceId": "2809004",
+          "title": "과학(정)_5-2_3단원_11~12차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-3_11~12차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 자원과 에너지",
+      "lessons": [
+        {
+          "action": "downloadFile('2809008');",
+          "resourceId": "2809008",
+          "title": "과학(정)_5-2_4단원_3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-4_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682053');",
+          "resourceId": "2682053",
+          "title": "과학(정)_5-2_4단원_4~5차시(1)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-4_4-5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876557');",
+          "resourceId": "2876557",
+          "title": "과학(정)_5-2_4단원_4~5차시(2)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-4_4-5차시(2)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2876558');",
+          "resourceId": "2876558",
+          "title": "과학(정)_5-2_4단원_4~5차시(3)_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-4_4-5차시(3)_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2682054');",
+          "resourceId": "2682054",
+          "title": "과학(정)_5-2_4단원_6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_5-2-4_6차시_수행평가.hwp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "asOf": "2026-10-09T10:49:57.838Z",
+  "checks": [
+    {
+      "evaluationLabels": [
+        "평가 자료",
+        "4학년 평가자료",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "평가 자료"
+      ],
+      "performanceLabels": [
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가",
+        "수행평가"
+      ],
+      "title": "미술 4(김정선)22개정",
+      "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001005&gradeCategory=C005004&bookId=382"
+    },
+    {
+      "evaluationLabels": [
+        "평가 자료",
+        "초등체육 4학년 수업평가및계획서(1학기)",
+        "초등체육 4학년 수업평가및계획서(2학기)",
+        "평가자료(2)",
+        "단원평가(2)",
+        "평가자료(2)",
+        "단원평가(2)",
+        "평가자료(2)",
+        "단원평가(2)",
+        "평가 자료"
+      ],
+      "performanceLabels": [],
+      "title": "체육 4(이제행)22개정",
+      "url": "https://thub.kumsung.co.kr/elementary/learning/detail.do?findTypeCategory=D006&category=A001003&gradeCategory=C005004&bookId=380"
+    },
+    {
+      "evaluationLabels": [
+        "평가 자료",
+        "초등 체육 5학년 수업 평가 및 계획서(1학기)",
+        "초등 체육 5학년 수업 평가 및 계획서(2학기)",
+        "평가 자료"
+      ],
+      "performanceLabels": [],
+      "title": "체육 5(이제행)22개정",
+      "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001003&gradeCategory=C005005&bookId=398"
+    },
+    {
+      "evaluationLabels": [
+        "평가 자료",
+        "평가자료(2)",
+        "단원평가(2)",
+        "평가자료(2)",
+        "단원평가(2)",
+        "평가자료(2)",
+        "단원평가(2)",
+        "평가 자료"
+      ],
+      "performanceLabels": [],
+      "title": "체육 6(이제행)22개정",
+      "url": "https://thub.kumsung.co.kr/elementary/learning/detail.do?findTypeCategory=D006&category=A001003&gradeCategory=C005006&bookId=399"
+    }
+  ]
+}

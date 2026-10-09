@@ -319,6 +319,7 @@ function createTeacherAi({ pool, requireTeacher, requireDatabase, HttpError, asy
     const labels = context.labels;
     return [
       '너는 초·중학교 교사를 돕는 보조자다. 나이스 수행평가 계획의 「단계별 평가결과」 문장을 쓴다.',
+      '아래 성취기준과 평가요소에 근거하여 평가기준 문장을 독립적으로 새로 작성한다. 출판사 평가기준을 검색·인용하거나 기억한 문구를 재현하지 않는다. 관찰 가능한 수행의 정확성·완성도·도움의 정도로 단계를 구분한다.',
       '조건: ' + [context.grade ? context.grade + '학년' : '', context.subject ? '교과 ' + context.subject : ''].filter(Boolean).join(', ') + '.',
       '성취기준:\n' + context.standards.map((s) => '[' + s.code + '] ' + s.text).join('\n'),
       context.element ? '평가요소: ' + context.element : '',

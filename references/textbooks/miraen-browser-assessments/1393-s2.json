@@ -1,0 +1,49 @@
+{
+  "book": "수학 1-2",
+  "curriculum": "year-2022",
+  "grade": "1학년",
+  "rows": [
+    {
+      "context": "1 단원 공통자료",
+      "resourceId": "10002393",
+      "title": "수행 평가",
+      "unit": "1. 100까지의 수"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10002892",
+      "title": "수행 평가",
+      "unit": "2. 덧셈과 뺄셈(1)"
+    },
+    {
+      "context": "3 단원 공통자료",
+      "resourceId": "10003562",
+      "title": "수행 평가",
+      "unit": "3. 모양과 시각"
+    },
+    {
+      "context": "4 단원 공통자료",
+      "resourceId": "10003563",
+      "title": "수행 평가",
+      "unit": "4. 덧셈과 뺄셈(2)"
+    },
+    {
+      "context": "5 단원 공통자료",
+      "resourceId": "10004566",
+      "title": "수행 평가",
+      "unit": "5. 규칙 찾기"
+    },
+    {
+      "context": "6 단원 공통자료",
+      "resourceId": "10004567",
+      "title": "수행 평가",
+      "unit": "6. 덧셈과 뺄셈(3)"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1393&gradeCode=01&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 1-2",
+  "sourceId": "1393",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

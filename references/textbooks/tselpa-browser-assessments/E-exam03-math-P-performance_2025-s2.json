@@ -1,0 +1,262 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=3&exam=E-exam03-math-P_2025&tab=E-exam03-math-P-performance_2025",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2537262');",
+          "resourceId": "2537262",
+          "title": "수학(박)3-2_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2 수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 곱셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2537263');",
+          "resourceId": "2537263",
+          "title": "수학3-2(박)_수행평가_1단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_1단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537264');",
+          "resourceId": "2537264",
+          "title": "수학3-2(박)_수행평가_1단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_1단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537265');",
+          "resourceId": "2537265",
+          "title": "수학3-2(박)_수행평가_1단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_1단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537266');",
+          "resourceId": "2537266",
+          "title": "수학3-2(박)_수행평가_1단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_1단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537267');",
+          "resourceId": "2537267",
+          "title": "수학3-2(박)_수행평가_1단원_08차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_1단원_08차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2537268');",
+          "resourceId": "2537268",
+          "title": "수학3-2(박)_수행평가_2단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_2단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537269');",
+          "resourceId": "2537269",
+          "title": "수학3-2(박)_수행평가_2단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_2단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537270');",
+          "resourceId": "2537270",
+          "title": "수학3-2(박)_수행평가_2단원_10차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_2단원_10차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537271');",
+          "resourceId": "2537271",
+          "title": "수학3-2(박)_수행평가_2단원_12차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_2단원_12차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537272');",
+          "resourceId": "2537272",
+          "title": "수학3-2(박)_수행평가_2단원_13차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_2단원_13차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537273');",
+          "resourceId": "2537273",
+          "title": "수학3-2(박)_수행평가_2단원_13차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_2단원_13차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 원",
+      "lessons": [
+        {
+          "action": "downloadFile('2537274');",
+          "resourceId": "2537274",
+          "title": "수학3-2(박)_수행평가_3단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_3단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537275');",
+          "resourceId": "2537275",
+          "title": "수학3-2(박)_수행평가_3단원_03차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_3단원_03차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2537276');",
+          "resourceId": "2537276",
+          "title": "수학3-2(박)_수행평가_3단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_3단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537277');",
+          "resourceId": "2537277",
+          "title": "수학3-2(박)_수행평가_3단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_3단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537278');",
+          "resourceId": "2537278",
+          "title": "수학3-2(박)_수행평가_3단원_05차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_3단원_05차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 들이와 무게",
+      "lessons": [
+        {
+          "action": "downloadFile('2537279');",
+          "resourceId": "2537279",
+          "title": "수학3-2(박)_수행평가_4단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537280');",
+          "resourceId": "2537280",
+          "title": "수학3-2(박)_수행평가_4단원_03차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_03차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2537281');",
+          "resourceId": "2537281",
+          "title": "수학3-2(박)_수행평가_4단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537282');",
+          "resourceId": "2537282",
+          "title": "수학3-2(박)_수행평가_4단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537283');",
+          "resourceId": "2537283",
+          "title": "수학3-2(박)_수행평가_4단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537284');",
+          "resourceId": "2537284",
+          "title": "수학3-2(박)_수행평가_4단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_07차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2537285');",
+          "resourceId": "2537285",
+          "title": "수학3-2(박)_수행평가_4단원_07차시_3회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_07차시_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2537286');",
+          "resourceId": "2537286",
+          "title": "수학3-2(박)_수행평가_4단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537287');",
+          "resourceId": "2537287",
+          "title": "수학3-2(박)_수행평가_4단원_09차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_09차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537288');",
+          "resourceId": "2537288",
+          "title": "수학3-2(박)_수행평가_4단원_12차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_4단원_12차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 분수",
+      "lessons": [
+        {
+          "action": "downloadFile('2537289');",
+          "resourceId": "2537289",
+          "title": "수학3-2(박)_수행평가_5단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_5단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537290');",
+          "resourceId": "2537290",
+          "title": "수학3-2(박)_수행평가_5단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_5단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537291');",
+          "resourceId": "2537291",
+          "title": "수학3-2(박)_수행평가_5단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_5단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537292');",
+          "resourceId": "2537292",
+          "title": "수학3-2(박)_수행평가_5단원_06차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_5단원_06차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2537293');",
+          "resourceId": "2537293",
+          "title": "수학3-2(박)_수행평가_5단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_5단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537294');",
+          "resourceId": "2537294",
+          "title": "수학3-2(박)_수행평가_5단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_5단원_07차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 그림그래프",
+      "lessons": [
+        {
+          "action": "downloadFile('2537295');",
+          "resourceId": "2537295",
+          "title": "수학3-2(박)_수행평가_6단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_6단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537296');",
+          "resourceId": "2537296",
+          "title": "수학3-2(박)_수행평가_6단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_6단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537297');",
+          "resourceId": "2537297",
+          "title": "수학3-2(박)_수행평가_6단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_6단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2537298');",
+          "resourceId": "2537298",
+          "title": "수학3-2(박)_수행평가_6단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(박)3-2_수행평가_6단원_07차시_1회.hwp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-science-J_2025&tab=E-exam03-science-J-performance_2025",
+  "groups": [
+    {
+      "title": "1. 힘과 우리 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2702949');",
+          "resourceId": "2702949",
+          "title": "과학(정)_3-1_1단원_2차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-1_2차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2386471');",
+          "resourceId": "2386471",
+          "title": "과학(정)_3-1_1단원_5차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-1_5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2702950');",
+          "resourceId": "2702950",
+          "title": "과학(정)_3-1_1단원_7차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-1_7차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2386472');",
+          "resourceId": "2386472",
+          "title": "과학(정)_3-1_1단원_10~11차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-1_10~11차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 동물의 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2386473');",
+          "resourceId": "2386473",
+          "title": "과학(정)_3-1_2단원_3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-2_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2386474');",
+          "resourceId": "2386474",
+          "title": "과학(정)_3-1_2단원_5~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-2_5~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2702960');",
+          "resourceId": "2702960",
+          "title": "과학(정)_3-1_2단원_9~11차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-2_9~11차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 식물의 생활",
+      "lessons": [
+        {
+          "action": "downloadFile('2386475');",
+          "resourceId": "2386475",
+          "title": "과학(정)_3-1_3단원_3차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-3_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2702962');",
+          "resourceId": "2702962",
+          "title": "과학(정)_3-1_3단원_4~6차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-3_4~6차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2386476');",
+          "resourceId": "2386476",
+          "title": "과학(정)_3-1_3단원_9차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-3_9차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 생물의 한살이",
+      "lessons": [
+        {
+          "action": "downloadFile('2386477');",
+          "resourceId": "2386477",
+          "title": "과학(정)_3-1_4단원_2차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-4_2차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2386478');",
+          "resourceId": "2386478",
+          "title": "과학(정)_3-1_4단원_8차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-4_8차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2702963');",
+          "resourceId": "2702963",
+          "title": "과학(정)_3-1_4단원_10~11차시_수행평가",
+          "downloadPath": "D:\\Downloads\\과학(정)_3-1-4_10~11차시_수행평가.hwp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "book": "학교 1-1",
+  "curriculum": "year-2022",
+  "grade": "1학년",
+  "rows": [
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "204480",
+      "title": "수행 평가 1회",
+      "unit": "2. 함께 준비해요"
+    },
+    {
+      "context": "5 단원 공통자료",
+      "resourceId": "204481",
+      "title": "수행 평가 2회",
+      "unit": "5. 함께 배워요(주제)"
+    },
+    {
+      "context": "5 단원 공통자료",
+      "resourceId": "204482",
+      "title": "수행 평가 3회",
+      "unit": "5. 함께 배워요(주제)"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1386&gradeCode=01&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "학교 1-1",
+  "sourceId": "1386",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

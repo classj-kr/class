@@ -1,0 +1,91 @@
+{
+  "book": "국어 3-1(가)",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "1-1 단원 2~3차시",
+      "resourceId": "10011905",
+      "title": "[수행평가 HWP] 1_2~3차시_수행평가",
+      "unit": "1. 생생하게 표현해요"
+    },
+    {
+      "context": "1-1 단원 4~5차시",
+      "resourceId": "10011906",
+      "title": "[수행평가 HWP] 1_4~5차시_수행평가",
+      "unit": "1. 생생하게 표현해요"
+    },
+    {
+      "context": "1-2 단원 6차시",
+      "resourceId": "10011907",
+      "title": "[수행평가 HWP] 1_6차시_수행평가",
+      "unit": "1. 생생하게 표현해요"
+    },
+    {
+      "context": "1-2 단원 7~8차시",
+      "resourceId": "10011908",
+      "title": "[수행평가 HWP] 1_7~8차시_수행평가",
+      "unit": "1. 생생하게 표현해요"
+    },
+    {
+      "context": "1-2 단원 9~10차시",
+      "resourceId": "10011909",
+      "title": "[수행평가 HWP] 1_9~10차시_수행평가",
+      "unit": "1. 생생하게 표현해요"
+    },
+    {
+      "context": "2-1 단원 2~4차시",
+      "resourceId": "10029251",
+      "title": "[수행평가 HWP] 2_2~4차시_수행평가",
+      "unit": "2. 분명하고 유창하게"
+    },
+    {
+      "context": "2-1 단원 5~6차시",
+      "resourceId": "10029255",
+      "title": "[수행평가 HWP] 2_5~6차시_수행평가",
+      "unit": "2. 분명하고 유창하게"
+    },
+    {
+      "context": "2-2 단원 7~8차시",
+      "resourceId": "10029259",
+      "title": "[수행평가 HWP] 2_7~8차시_수행평가",
+      "unit": "2. 분명하고 유창하게"
+    },
+    {
+      "context": "2-2 단원 9~11차시",
+      "resourceId": "10029260",
+      "title": "[수행평가 HWP] 2_9~11차시_수행평가",
+      "unit": "2. 분명하고 유창하게"
+    },
+    {
+      "context": "3-1 단원 2~3차시",
+      "resourceId": "10052512",
+      "title": "[수행평가 HWP] 3_2~3차시_수행평가",
+      "unit": "3. 짜임새 있는 글, 재미와 감동이 있는 글"
+    },
+    {
+      "context": "3-1 단원 4~5차시",
+      "resourceId": "10052504",
+      "title": "[수행평가 HWP] 3_4~5차시_수행평가",
+      "unit": "3. 짜임새 있는 글, 재미와 감동이 있는 글"
+    },
+    {
+      "context": "3-2 단원 6~7차시",
+      "resourceId": "10052505",
+      "title": "[수행평가 HWP] 3_6~7차시_수행평가",
+      "unit": "3. 짜임새 있는 글, 재미와 감동이 있는 글"
+    },
+    {
+      "context": "3-2 단원 8~10차시",
+      "resourceId": "10052506",
+      "title": "[수행평가 HWP] 3_8~10차시_수행평가",
+      "unit": "3. 짜임새 있는 글, 재미와 감동이 있는 글"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1538&gradeCode=03&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 3-1(가)",
+  "sourceId": "1538",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

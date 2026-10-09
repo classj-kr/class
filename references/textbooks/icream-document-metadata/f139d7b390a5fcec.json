@@ -1,0 +1,129 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/5-1_%EC%88%98%ED%95%99_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "수학",
+  "fileName": "5-1_수학_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 5,
+      "semester": 1,
+      "listedUnit": "1. 자연수의 혼합 계산 ~ 6. 다각형의 둘레와 넓이",
+      "sourceManifest": "5-1.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "5-1_수학_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 자연수의 혼합 계산",
+          "title": "곱셈과 나눗셈이 섞여 있는 식 계산하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 자연수의 혼합 계산",
+          "title": "덧셈, 뺄셈, 곱셈이 섞여 있는 식 계산하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 자연수의 혼합 계산",
+          "title": "덧셈, 뺄셈, 곱셈, 나눗셈이 섞여 있는 식 계산하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 약수와 배수",
+          "title": "배수를 구하고, 약수와 배수의 관계 이해하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 약수와 배수",
+          "title": "공약수와 최대공약수를 이해하고 구하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 약수와 배수",
+          "title": "공배수와 최소공배수를 이해하고 구하기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 대응 관계",
+          "title": "두 양 사이의 대응 관계 알아보기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 대응 관계",
+          "title": "대응 관계를 식으로 나타내기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 대응 관계",
+          "title": "생활 속에서 대응 관계를 식으로 나타내기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 약분과 통분",
+          "title": "크기가 같은 분수 만들기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 약분과 통분",
+          "title": "분수를 약분, 통분하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 약분과 통분",
+          "title": "분모가 다른 분수의 크기 비교하기",
+          "table": 0,
+          "sourceRow": 48
+        },
+        {
+          "unit": "5. 분수의 덧셈과 뺄셈",
+          "title": "분모가 다른 분수의 덧셈하기",
+          "table": 0,
+          "sourceRow": 52
+        },
+        {
+          "unit": "5. 분수의 덧셈과 뺄셈",
+          "title": "진분수의 뺄셈하기",
+          "table": 0,
+          "sourceRow": 56
+        },
+        {
+          "unit": "5. 분수의 덧셈과 뺄셈",
+          "title": "대분수의 뺄셈하기",
+          "table": 0,
+          "sourceRow": 60
+        },
+        {
+          "unit": "6. 다각형의 둘레와 넓이",
+          "title": "사각형의 둘레 구하기",
+          "table": 0,
+          "sourceRow": 64
+        },
+        {
+          "unit": "6. 다각형의 둘레와 넓이",
+          "title": "직사각형과 정사각형의 넓이 구하기",
+          "table": 0,
+          "sourceRow": 68
+        },
+        {
+          "unit": "6. 다각형의 둘레와 넓이",
+          "title": "다각형의 넓이 구하기",
+          "table": 0,
+          "sourceRow": 72
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

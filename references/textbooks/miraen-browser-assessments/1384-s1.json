@@ -1,0 +1,31 @@
+{
+  "book": "자연 2-1",
+  "curriculum": "year-2022",
+  "grade": "2학년",
+  "rows": [
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10000950",
+      "title": "수행 평가 1회",
+      "unit": "2. 함께 골라요(주제)"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10000951",
+      "title": "수행 평가 2회",
+      "unit": "2. 함께 골라요(주제)"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10000952",
+      "title": "수행 평가 3회",
+      "unit": "2. 함께 골라요(주제)"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1384&gradeCode=02&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "자연 2-1",
+  "sourceId": "1384",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

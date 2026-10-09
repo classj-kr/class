@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "id": "visang-math52-guide",
+      "rows": 58,
+      "periods": 64,
+      "originals": {
+        "visang-math52-guide-export.pdf": "ddfa0ef0bdd74c0a8b429a0524489c9c5862fb55895df31931f7f28c689618ca",
+        "visang-math52-guide-p160-161.pdf": "657127b24c48f4e456e93ec915d208c47b0c29b1c8bbebf09d4dd3a778070315",
+        "visang-math52-guide-p162-163.pdf": "8fc9531d5a617bda4c2e6d69f6ce4c26b5ab41567baef994c4ded79b4faa7671"
+      },
+      "reviewStatus": "all-plan-pages-visually-transcribed",
+      "standardMapping": "unit-level-only",
+      "sourcePages": [
+        158,
+        159,
+        160,
+        161,
+        162,
+        163
+      ]
+    },
+    {
+      "id": "visang-math62-guide",
+      "rows": 59,
+      "periods": 64,
+      "originals": {
+        "visang-math62-guide-p160-161.pdf": "e3dfa6b53089253f80583f0191a7b0aa7a30a95959c6133549551cf2650589fa",
+        "visang-math62-guide-p162-163.pdf": "e359a8cefdd4f2d462907dcf71db11c63951c21dfea03b9bf9df34b310949505",
+        "visang-math62-guide-p164-165.pdf": "2af6b5902185950dda4411dd61077a5a62285677c2761ef39e53b84f746a5e8b"
+      },
+      "reviewStatus": "all-plan-pages-visually-transcribed",
+      "standardMapping": "unit-level-only",
+      "sourcePages": [
+        160,
+        161,
+        162,
+        163,
+        164,
+        165
+      ]
+    }
+  ]
+}

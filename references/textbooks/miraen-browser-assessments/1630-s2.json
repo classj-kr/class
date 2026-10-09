@@ -1,0 +1,49 @@
+{
+  "book": "수학 6-2",
+  "curriculum": "year-2022",
+  "grade": "6학년",
+  "rows": [
+    {
+      "context": "1 단원 4차시",
+      "resourceId": "10093796",
+      "title": "[과정중심평가 HWP]1_4차시_과정중심평가",
+      "unit": "1. 분수의 나눗셈"
+    },
+    {
+      "context": "2 단원 1차시",
+      "resourceId": "10095646",
+      "title": "[과정중심평가 HWP]2_1차시_과정중심평가",
+      "unit": "2. 공간과 입체"
+    },
+    {
+      "context": "3 단원 2~3차시",
+      "resourceId": "10095471",
+      "title": "[과정중심평가 HWP]3_10차시_과정중심평가",
+      "unit": "3. 소수의 나눗셈"
+    },
+    {
+      "context": "4 단원 6차시",
+      "resourceId": "10096518",
+      "title": "[과정중심평가 HWP]4_6차시_과정중심평가",
+      "unit": "4. 비례식과 비례배분"
+    },
+    {
+      "context": "5 단원 2~3차시",
+      "resourceId": "10095722",
+      "title": "[과정중심평가 HWP]5_2-3차시_과정중심평가",
+      "unit": "5. 원의 둘레와 넓이"
+    },
+    {
+      "context": "6 단원 9차시",
+      "resourceId": "10096175",
+      "title": "[과정중심평가 HWP]6_9차시_과정중심평가",
+      "unit": "6. 원기둥, 원뿔, 구"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1630&gradeCode=06&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 6-2 (장혜원)",
+  "sourceId": "1630",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

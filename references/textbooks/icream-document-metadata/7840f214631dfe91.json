@@ -1,0 +1,165 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/1-2_%EA%B5%AD%EC%96%B4_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "국어",
+  "fileName": "1-2_국어_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 1,
+      "semester": 2,
+      "listedUnit": "1. 기분을 말해요 ~ 8. 느끼고 표현해요",
+      "sourceManifest": "1-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "1-2_국어_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "기분을 말해요",
+          "title": "흉내 내는 말 알기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 기분을 말해요",
+          "title": "흉내 내는 말을 찾고, 그림에 어울리는 문장 쓰기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "1. 기분을 말해요",
+          "title": "듣는 사람을 생각하며 자신의 기분이 잘 드러나게 말하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 낱말을 정확하게 읽어요",
+          "title": "여러 가지 받침이 있는 글자의 짜임 알기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2. 낱말을 정확하게 읽어요",
+          "title": "겹받침이 있는 낱말 주의하여 읽고 쓰기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "2. 낱말을 정확하게 읽어요",
+          "title": "글을 읽고 글쓴이가 하고 싶은 말 찾기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "3. 그림일기를 써요",
+          "title": "친구들 앞에서 바른 자세로 우리 가족 소개하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "3. 그림일기를 써요",
+          "title": "기억에 남는 일 문장으로 말하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "3. 그림일기를 써요",
+          "title": "그림일기 쓰기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "4. 감동을 나누어요",
+          "title": "누가 무엇을 했는지 생각하며 듣고 답하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "4. 감동을 나누어요",
+          "title": "이야기를 읽고 일이 일어난 순서 정리하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "4. 감동을 나누어요",
+          "title": "만화 영화를 보고 감동적인 부분 나누기",
+          "table": 0,
+          "sourceRow": 48
+        },
+        {
+          "unit": "5. 생각을 키워요",
+          "title": "한글을 소중히 여기기",
+          "table": 0,
+          "sourceRow": 52
+        },
+        {
+          "unit": "5. 생각을 키워요",
+          "title": "글자를 바꾸어 의미가 다른 낱말 만들기",
+          "table": 0,
+          "sourceRow": 56
+        },
+        {
+          "unit": "5. 생각을 키워요",
+          "title": "글을 읽고 생각이나 느낌 말하기",
+          "table": 0,
+          "sourceRow": 60
+        },
+        {
+          "unit": "6. 문장을 읽고 써요",
+          "title": "생각을 문장으로 나타내기",
+          "table": 0,
+          "sourceRow": 64
+        },
+        {
+          "unit": "6. 문장을 읽고 써요",
+          "title": "이야기를 읽고 자신의 생각을 문장으로 나타내기",
+          "table": 0,
+          "sourceRow": 68
+        },
+        {
+          "unit": "6. 문장을 읽고 써요",
+          "title": "문장을 자연스럽게 띄어 읽기",
+          "table": 0,
+          "sourceRow": 72
+        },
+        {
+          "unit": "7. 무엇이 중요할까요",
+          "title": "글을 읽고 설명하는 내용을 찾아 정리하기",
+          "table": 0,
+          "sourceRow": 76
+        },
+        {
+          "unit": "7. 무엇이 중요할까요",
+          "title": "글을 읽고 알게 된 점 말하기",
+          "table": 0,
+          "sourceRow": 80
+        },
+        {
+          "unit": "7. 무엇이 중요할까요",
+          "title": "겪은 일에 대한 글을 쓰고 평가하기",
+          "table": 0,
+          "sourceRow": 84
+        },
+        {
+          "unit": "8. 느끼고 표현해요",
+          "title": "시를 읽고 장면 떠올리기",
+          "table": 0,
+          "sourceRow": 88
+        },
+        {
+          "unit": "8. 느끼고 표현해요",
+          "title": "인물의 모습과 행동 상상하기",
+          "table": 0,
+          "sourceRow": 92
+        },
+        {
+          "unit": "8. 느끼고 표현해요",
+          "title": "이야기를 읽고 생각이나 느낌 기록하기",
+          "table": 0,
+          "sourceRow": 96
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

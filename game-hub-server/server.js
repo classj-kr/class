@@ -474,7 +474,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   gemguild: "/learning/games/gemguild/gemguild",
   beantrading: "/learning/games/beantrading/beantrading",
   citychase: "/learning/games/citychase/citychase",
-  "citychase-realtime": "/learning/games/citychase/citychase",
+  "citychase-realtime": "/learning/games/citychase/realtime",
   kingdomtrails: "/learning/games/kingdom-trails/kingdom-trails",
   blokus: "/learning/games/blokus/blokus",
   honeycomb: "/learning/games/honeycomb/honeycomb",

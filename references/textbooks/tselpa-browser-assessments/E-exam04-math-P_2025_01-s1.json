@@ -1,0 +1,250 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=4&exam=E-exam04-math-P_2025&tab=E-exam04-math-P_2025_01",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2413646');",
+          "resourceId": "2413646",
+          "title": "수학4-1(박)_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(박)4-1_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 각도",
+      "lessons": [
+        {
+          "action": "downloadFile('2413647');",
+          "resourceId": "2413647",
+          "title": "수학4-1(박)_단원별수행평가_1단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-1_단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2413648');",
+          "resourceId": "2413648",
+          "title": "수학4-1(박)_단원별수행평가_1단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-1_단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2413649');",
+          "resourceId": "2413649",
+          "title": "수학4-1(박)_단원별수행평가_1단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-1_단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2413650');",
+          "resourceId": "2413650",
+          "title": "수학4-1(박)_단원별수행평가_1단원_04",
+          "downloadPath": "D:\\Downloads\\(4-1-1)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2413651');",
+          "resourceId": "2413651",
+          "title": "수학4-1(박)_단원별수행평가_1단원_05",
+          "downloadPath": "D:\\Downloads\\(4-1-1)단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2413652');",
+          "resourceId": "2413652",
+          "title": "수학4-1(박)_단원별수행평가_1단원_06",
+          "downloadPath": "D:\\Downloads\\(4-1-1)단원별수행평가_03.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 큰 수",
+      "lessons": [
+        {
+          "action": "downloadFile('2413653');",
+          "resourceId": "2413653",
+          "title": "수학4-1(박)_단원별수행평가_2단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-2_단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2413765');",
+          "resourceId": "2413765",
+          "title": "수학4-1(박)_단원별수행평가_2단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-2_단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2413766');",
+          "resourceId": "2413766",
+          "title": "수학4-1(박)_단원별수행평가_2단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-2_단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2413767');",
+          "resourceId": "2413767",
+          "title": "수학4-1(박)_단원별수행평가_2단원_04",
+          "downloadPath": "D:\\Downloads\\(4-1-2)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2413768');",
+          "resourceId": "2413768",
+          "title": "수학4-1(박)_단원별수행평가_2단원_05",
+          "downloadPath": "D:\\Downloads\\(4-1-2)단원별수행평가_02.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 평면도형의 이동",
+      "lessons": [
+        {
+          "action": "downloadFile('2416654');",
+          "resourceId": "2416654",
+          "title": "수학4-1(박)_단원별수행평가_3단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-3_단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416655');",
+          "resourceId": "2416655",
+          "title": "수학4-1(박)_단원별수행평가_3단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-3_단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2416656');",
+          "resourceId": "2416656",
+          "title": "수학4-1(박)_단원별수행평가_3단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-3_단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2416657');",
+          "resourceId": "2416657",
+          "title": "수학4-1(박)_단원별수행평가_3단원_04",
+          "downloadPath": "D:\\Downloads\\(4-1-3)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416658');",
+          "resourceId": "2416658",
+          "title": "수학4-1(박)_단원별수행평가_3단원_05",
+          "downloadPath": "D:\\Downloads\\(4-1-3)단원별수행평가_02.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 곱셈과 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2416659');",
+          "resourceId": "2416659",
+          "title": "수학4-1(박)_단원별수행평가_4단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-4_단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416660');",
+          "resourceId": "2416660",
+          "title": "수학4-1(박)_단원별수행평가_4단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-4_단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2416661');",
+          "resourceId": "2416661",
+          "title": "수학4-1(박)_단원별수행평가_4단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-4_단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2416662');",
+          "resourceId": "2416662",
+          "title": "수학4-1(박)_단원별수행평가_4단원_04",
+          "downloadPath": "D:\\Downloads\\(4-1-4)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416663');",
+          "resourceId": "2416663",
+          "title": "수학4-1(박)_단원별수행평가_4단원_05",
+          "downloadPath": "D:\\Downloads\\(4-1-4)단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2416664');",
+          "resourceId": "2416664",
+          "title": "수학4-1(박)_단원별수행평가_4단원_06",
+          "downloadPath": "D:\\Downloads\\(4-1-4)단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2416665');",
+          "resourceId": "2416665",
+          "title": "수학4-1(박)_단원별수행평가_4단원_07",
+          "downloadPath": "D:\\Downloads\\(4-1-4)단원별수행평가_04.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 규칙 찾기",
+      "lessons": [
+        {
+          "action": "downloadFile('2416666');",
+          "resourceId": "2416666",
+          "title": "수학4-1(박)_단원별수행평가_5단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-5_단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416667');",
+          "resourceId": "2416667",
+          "title": "수학4-1(박)_단원별수행평가_5단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-5_단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2416668');",
+          "resourceId": "2416668",
+          "title": "수학4-1(박)_단원별수행평가_5단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-5_단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2416669');",
+          "resourceId": "2416669",
+          "title": "수학4-1(박)_단원별수행평가_5단원_04",
+          "downloadPath": "D:\\Downloads\\(4-1-5)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416670');",
+          "resourceId": "2416670",
+          "title": "수학4-1(박)_단원별수행평가_5단원_05",
+          "downloadPath": "D:\\Downloads\\(4-1-5)단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2416671');",
+          "resourceId": "2416671",
+          "title": "수학4-1(박)_단원별수행평가_5단원_06",
+          "downloadPath": "D:\\Downloads\\(4-1-5)단원별수행평가_03.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 막대그래프",
+      "lessons": [
+        {
+          "action": "downloadFile('2416672');",
+          "resourceId": "2416672",
+          "title": "수학4-1(박)_단원별수행평가_6단원_01",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-6_단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416673');",
+          "resourceId": "2416673",
+          "title": "수학4-1(박)_단원별수행평가_6단원_02",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-6_단원별수행평가_02.hwp"
+        },
+        {
+          "action": "downloadFile('2416674');",
+          "resourceId": "2416674",
+          "title": "수학4-1(박)_단원별수행평가_6단원_03",
+          "downloadPath": "D:\\Downloads\\수학(박)_4-1-6_단원별수행평가_03.hwp"
+        },
+        {
+          "action": "downloadFile('2416675');",
+          "resourceId": "2416675",
+          "title": "수학4-1(박)_단원별수행평가_6단원_04",
+          "downloadPath": "D:\\Downloads\\(4-1-6)단원별수행평가_01.hwp"
+        },
+        {
+          "action": "downloadFile('2416676');",
+          "resourceId": "2416676",
+          "title": "수학4-1(박)_단원별수행평가_6단원_05",
+          "downloadPath": "D:\\Downloads\\(4-1-6)단원별수행평가_02.hwp"
+        }
+      ]
+    }
+  ]
+}

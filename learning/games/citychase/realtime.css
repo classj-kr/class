@@ -21,5 +21,35 @@ body:has(site-back-navigation) #exitBtn{visibility:hidden;pointer-events:none}
 html.rulesDocument{height:auto;min-height:100%;overflow:auto}.rulesPage{height:auto;min-height:100dvh;overflow:visible;background:#f1f0e7;padding:32px 20px;color:#213b35}.rulesSheet{max-width:820px;margin:0 auto;background:#fffdf6;border:1px solid #d6d6c9;border-radius:18px;padding:32px 40px}.rulesSheet header{border-bottom:1px solid #d6d6c9;padding-bottom:18px}.rulesSheet h1{font-size:30px;margin:0}.rulesSheet header p{margin:6px 0 0;color:#607369}.rulesSheet h2{font-size:21px;margin:30px 0 12px}.rulesSheet p,.rulesSheet li{font-size:16px;line-height:1.8}.rulesSheet ul,.rulesSheet ol{padding-left:24px}.rulesSheet li{margin:8px 0}.rulesSheet table{border-collapse:collapse;width:100%;font-size:15px}.rulesSheet th,.rulesSheet td{padding:12px 10px;border:1px solid #d6d6c9;line-height:1.6;text-align:left}.rulesSheet th{background:#eff3e9}.rulesSheet td{width:36%}
 @media(max-width:560px){.welcome{padding-inline:12px}.rulesPage{padding:16px 12px}.rulesSheet{padding:22px 16px}.rulesSheet th,.rulesSheet td{padding:9px 6px;font-size:13px}.topHud{gap:4px}.mission{padding-inline:8px}.topHud time{min-width:65px;padding-inline:8px}}
 .rulesPage:has(site-back-navigation){padding-top:64px}
+.mission span:empty{display:none}
 .score{flex-direction:column;align-items:stretch;gap:2px;min-width:104px;padding:6px 12px}.scoreItem{display:flex;align-items:center;justify-content:space-between;gap:10px;line-height:1.2}.score .scoreItem span{display:inline;font-size:12px}.scoreItem strong{font-size:18px;font-variant-numeric:tabular-nums}.policeScore{color:#2e68a1}
 @media(max-width:560px){.score{min-width:86px;padding:6px 8px}.scoreItem{gap:5px}.score .scoreItem span{font-size:11px}.scoreItem strong{font-size:16px}}
+.cluePanel{width:min(600px,calc(100% - 32px));padding:16px;max-height:calc(100dvh - 170px)}
+.clueColumns{display:grid;grid-template-columns:minmax(0,1fr) 178px;gap:18px}
+.cluePanel h3{margin:12px 0 7px;font-size:13px}
+.cluePanel .clue{padding:10px;margin:6px 0;line-height:1.4}
+.clue small{margin:0 0 7px;font-size:12px}
+.clueCandidates{display:flex;flex-wrap:wrap;gap:5px}
+.clueCandidates span{background:#fffdf4;border-left:3px solid var(--shop-color);border-radius:4px;padding:3px 6px;font-size:13px;white-space:nowrap}
+.cluePlaces .shopChoices{grid-template-columns:1fr;gap:5px}
+.cluePlaces button{font-size:14px;min-height:44px;padding:8px 10px}
+.cluePanel .wide{margin-top:4px}
+.topHud button{white-space:nowrap;flex-shrink:0}
+.mission{min-width:0}.mission strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
+@media(max-width:900px){.cluePanel{width:min(600px,calc(100% - 16px))}}
+@media(max-width:560px){
+  .topHud{display:grid;grid-template-columns:44px minmax(0,1fr) auto auto;align-items:center;gap:6px}
+  .topHud #exitBtn{grid-column:1;grid-row:1}.mission{grid-column:2;grid-row:1;padding:10px 8px}
+  .score{grid-column:3;grid-row:1;margin:0}.topHud time{grid-column:4;grid-row:1}
+  .topHud #viewBtn{grid-column:4;grid-row:2;justify-self:end}.topHud #rulesBtnGame{grid-column:3;grid-row:2;justify-self:end}
+  .bottomHud{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
+  .bottomHud .clueToggle{min-width:0;margin:0;display:flex;align-items:center;justify-content:space-between;gap:4px}
+  .bottomHud .clueToggle strong{font-size:14px}.bottomHud .clueToggle span{font-size:10px;margin:0}
+  .bottomHud button{min-width:0;min-height:46px;padding:8px 10px}
+  .bottomHud #pingBtn{font-size:14px}.bottomHud .primary{min-width:0}
+  .cluePanel{bottom:120px;padding:12px;max-height:calc(100dvh - 240px)}
+  .clueColumns{grid-template-columns:minmax(0,1fr) 120px;gap:10px}
+  .cluePanel .heading h2{font-size:17px}.cluePanel h3{font-size:11px}
+  .cluePanel .clue{padding:7px}.clueCandidates{gap:3px}.clueCandidates span{padding:2px 4px;font-size:12px}
+  .cluePlaces button{font-size:12px;padding:8px 4px}.notice{top:122px}
+}

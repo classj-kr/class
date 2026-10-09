@@ -1,0 +1,92 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=3&exam=E-exam03-physical-P_2025&tab=E-exam03-physical-P-performance_2025",
+  "groups": [
+    {
+      "title": "1. 운동",
+      "lessons": [
+        {
+          "action": "downloadFile('2411063');",
+          "resourceId": "2411063",
+          "title": "체육(고)_3학년_수행평가_1단원_3차시",
+          "downloadPath": "D:\\Downloads\\1단원_3차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411065');",
+          "resourceId": "2411065",
+          "title": "체육(고)_3학년_수행평가_1단원_4~5차시",
+          "downloadPath": "D:\\Downloads\\1단원_4~5차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411066');",
+          "resourceId": "2411066",
+          "title": "체육(고)_3학년_수행평가_1단원_15~16차시",
+          "downloadPath": "D:\\Downloads\\1단원_15~16차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411067');",
+          "resourceId": "2411067",
+          "title": "체육(고)_3학년_수행평가_1단원_17차시",
+          "downloadPath": "D:\\Downloads\\1단원_17차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 스포츠",
+      "lessons": [
+        {
+          "action": "downloadFile('2411095');",
+          "resourceId": "2411095",
+          "title": "체육(고)_3학년_수행평가_2단원_10~11차시",
+          "downloadPath": "D:\\Downloads\\2단원_10~11차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411096');",
+          "resourceId": "2411096",
+          "title": "체육(고)_3학년_수행평가_2단원_24~25차시",
+          "downloadPath": "D:\\Downloads\\2단원_24~25차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411097');",
+          "resourceId": "2411097",
+          "title": "체육(고)_3학년_수행평가_2단원_32~33차시",
+          "downloadPath": "D:\\Downloads\\2단원_32~33차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411098');",
+          "resourceId": "2411098",
+          "title": "체육(고)_3학년_수행평가_2단원_48~49차시",
+          "downloadPath": "D:\\Downloads\\2단원_48~49차시_수행평가.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 표현",
+      "lessons": [
+        {
+          "action": "downloadFile('2411099');",
+          "resourceId": "2411099",
+          "title": "체육(고)_3학년_수행평가_3단원_2차시",
+          "downloadPath": "D:\\Downloads\\3단원_2차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411104');",
+          "resourceId": "2411104",
+          "title": "체육(고)_3학년_수행평가_3단원_5~6차시",
+          "downloadPath": "D:\\Downloads\\3단원_5~6차시_수행평가 (1).hwp"
+        },
+        {
+          "action": "downloadFile('2411105');",
+          "resourceId": "2411105",
+          "title": "체육(고)_3학년_수행평가_3단원_8~9차시",
+          "downloadPath": "D:\\Downloads\\3단원_8~9차시_수행평가.hwp"
+        },
+        {
+          "action": "downloadFile('2411106');",
+          "resourceId": "2411106",
+          "title": "체육(고)_3학년_수행평가_3단원_13~14차시",
+          "downloadPath": "D:\\Downloads\\3단원_13~14차시_수행평가 (1).hwp"
+        }
+      ]
+    }
+  ]
+}

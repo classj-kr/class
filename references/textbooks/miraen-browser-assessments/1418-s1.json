@@ -1,0 +1,43 @@
+{
+  "book": "사회 3-1",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "1-1 단원 공통자료",
+      "resourceId": "10006844",
+      "title": "[수행평가] 1-1. 우리가 표현하는 여러 장소의 모습",
+      "unit": "1. 우리가 사는 곳"
+    },
+    {
+      "context": "1-2 단원 공통자료",
+      "resourceId": "10008854",
+      "title": "[수행평가] 1-2. 우리가 살기 좋은 곳의 모습",
+      "unit": "1. 우리가 사는 곳"
+    },
+    {
+      "context": "2-1 단원 공통자료",
+      "resourceId": "10009013",
+      "title": "[수행평가] 2-1. 일상에서 만나는 시간의 흐름",
+      "unit": "2. 일상에서 만나는 과거"
+    },
+    {
+      "context": "2-2 단원 공통자료",
+      "resourceId": "10009094",
+      "title": "[수행평가] 2-2. 일상에서 만나는 과거의 모습",
+      "unit": "2. 일상에서 만나는 과거"
+    },
+    {
+      "context": "2-3 단원 공통자료",
+      "resourceId": "10009395",
+      "title": "[수행평가] 2-3. 지역 사람들의 달라진 생활 모습",
+      "unit": "2. 일상에서 만나는 과거"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1418&gradeCode=03&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "사회 3-1 (전종한)",
+  "sourceId": "1418",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

@@ -1,0 +1,51 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=1&term=2&textbookSeq=b3b853320dfe46cf91843bddcd89adf8&order=1&tabType=UD002",
+  "textbook": "이야기 1-2\n국정",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "936b3a0c65504497b94a7f97ff2e61a3",
+          "title": "교과 평어(통합교과 1-2)",
+          "downloadPath": "D:\\Downloads\\(1학년 2학기) 통합교과 평어_지학사 (3).hwp"
+        },
+        {
+          "resourceId": "6106b5bda32b4f769ee3962db5a7ead6",
+          "title": "수행평가 계획서(이야기 1-2)",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가계획서.hwp"
+        },
+        {
+          "resourceId": "2e9463e1e06d4918b3d81b6cfc56c1d8",
+          "title": "수행평가_이야기_1회",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가(1회).hwp"
+        },
+        {
+          "resourceId": "5d771633618544e19e646a27501f16de",
+          "title": "수행평가_이야기_2회",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가(2회).hwp"
+        },
+        {
+          "resourceId": "81512f2d78c741f19cf576d4d27eaf63",
+          "title": "수행평가_이야기_3회",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가(3회).hwp"
+        },
+        {
+          "resourceId": "aa8a36c62d294b5a84e7aeccd061f797",
+          "title": "수행평가_이야기_4회",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가(4회).hwp"
+        },
+        {
+          "resourceId": "984f628838d04cd29bcaa17c31b59d8f",
+          "title": "수행평가_이야기_5회",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가(5회).hwp"
+        },
+        {
+          "resourceId": "1a5b069ccab847c2a92f3e6d215c47d8",
+          "title": "수행평가_이야기_6회",
+          "downloadPath": "D:\\Downloads\\1-2_통합_이야기_수행평가(6회).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    }
+  ]
+}

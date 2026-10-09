@@ -1,0 +1,209 @@
+{
+  "book": "미술 6(이재영)",
+  "grade": "107006",
+  "semester": "108002",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-1단원-1~2차시_수행 평가.hwp",
+          "resourceId": "CN030-565075",
+          "title": "수행평가 - 1단원-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-2단원-1~2차시_수행 평가.hwp",
+          "resourceId": "CN030-565104",
+          "title": "수행평가 - 2단원-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-3단원-1차시_수행 평가.hwp",
+          "resourceId": "CN030-565133",
+          "title": "수행평가 - 3단원-1차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-3단원-3~5차시_수행평가.hwp",
+          "resourceId": "CN030-565155",
+          "title": "수행평가 - 3단원-3~5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-4단원-2~3차시_수행 평가.hwp",
+          "resourceId": "CN030-565181",
+          "title": "수행평가 - 4단원-2~3차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-4단원-6차시_수행평가.hwp",
+          "resourceId": "CN030-565212",
+          "title": "수행평가 - 4단원-6차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-5단원-3차시_수행 평가.hwp",
+          "resourceId": "CN030-547838",
+          "title": "수행평가 - 5단원-3차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-창1단원-1~2차시_수행 평가.hwp",
+          "resourceId": "CN030-565226",
+          "title": "수행평가 - 창1-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-1단원-3~4차시_수행 평가.hwp",
+          "resourceId": "CN030-565086",
+          "title": "수행평가 - 1단원-3~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-2단원-3~4차시_수행 평가.hwp",
+          "resourceId": "CN030-565115",
+          "title": "수행평가 - 2단원-3~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-3단원-2차시_수행 평가.hwp",
+          "resourceId": "CN030-565143",
+          "title": "수행평가 - 3단원-2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-4단원-1차시_수행평가.hwp",
+          "resourceId": "CN030-565174",
+          "title": "수행평가 - 4단원-1차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-4단원-4~5차시_수행 평가.hwp",
+          "resourceId": "CN030-565199",
+          "title": "수행평가 - 4단원-4~5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-5단원-1~2차시_수행 평가.hwp",
+          "resourceId": "CN030-547829",
+          "title": "수행평가 - 5단원-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1-5단원-4~5차시_수행 평가.hwp",
+          "resourceId": "CN030-547847",
+          "title": "수행평가 - 5단원-4~5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_1_프1단원_수행평가.hwp",
+          "resourceId": "CN030-547989",
+          "title": "수행평가 - 프1단원-1~7차시"
+        }
+      ],
+      "unit": "Ⅰ.꿈으로 빛나는 미술"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-6단원-1~2차시_수행평가.hwp",
+          "resourceId": "CN030-586698",
+          "title": "수행평가 - 6단원-1~2차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-7단원-1~3차시_수행평가.hwp",
+          "resourceId": "CN030-586700",
+          "title": "수행평가 - 7단원-1~3차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-8단원-1차시_수행평가.hwp",
+          "resourceId": "CN030-586702",
+          "title": "수행평가 - 8단원-1차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-8단원-4~5차시_수행평가.hwp",
+          "resourceId": "CN030-586704",
+          "title": "수행평가 - 8단원-4~5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-9단원_2~3차시_수행평가.hwp",
+          "resourceId": "CN030-586706",
+          "title": "수행평가 - 9단원-2~3차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-10단원_1차시_수행평가.hwp",
+          "resourceId": "CN030-586708",
+          "title": "수행평가 - 10단원-1차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-10단원_5차시_수행평가.hwp",
+          "resourceId": "CN030-586710",
+          "title": "수행평가 - 10단원-5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-프2단원-1~7차시_수행평가.hwp",
+          "resourceId": "CN030-586712",
+          "title": "수행평가 - 프2단원-1~7차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-6단원-3~5차시_수행평가.hwp",
+          "resourceId": "CN030-586699",
+          "title": "수행평가 - 6단원-3~5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-7단원-4차시_수행평가.hwp",
+          "resourceId": "CN030-586701",
+          "title": "수행평가 - 7단원-4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-8단원-2~3차시_수행평가.hwp",
+          "resourceId": "CN030-586703",
+          "title": "수행평가 - 8단원-2~3차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-9단원_1차시_수행평가.hwp",
+          "resourceId": "CN030-586705",
+          "title": "수행평가 - 9단원-1차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-9단원_4~5차시_수행평가.hwp",
+          "resourceId": "CN030-586707",
+          "title": "수행평가 - 9단원-4~5차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-10단원_2~4차시_수행평가.hwp",
+          "resourceId": "CN030-586709",
+          "title": "수행평가 - 10단원-2~4차시"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_미술(이) 6_2-창2단원-1~2차시_수행평가.hwp",
+          "resourceId": "CN030-586711",
+          "title": "수행평가 - 창2단원-1~2차시"
+        }
+      ],
+      "unit": "Ⅱ.미술로 펼치는 세상"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106539&term=108002&grade=107006",
+  "observedAt": "2026-10-09T10:44:12.795Z"
+}

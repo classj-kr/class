@@ -1,0 +1,226 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=5&exam=E-exam05-math-H_2026&tab=E-exam05-math-H-performance_2026",
+  "groups": [
+    {
+      "title": "공통 자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2701773');",
+          "resourceId": "2701773",
+          "title": "수학5-2(한)_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 수의 범위와 어림하기",
+      "lessons": [
+        {
+          "action": "downloadFile('2701774');",
+          "resourceId": "2701774",
+          "title": "수학5-2(한)_수행평가_1단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_1단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873528');",
+          "resourceId": "2873528",
+          "title": "수학5-2(한)_수행평가_1단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_1단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2873529');",
+          "resourceId": "2873529",
+          "title": "수학5-2(한)_수행평가_1단원_0507차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_1단원_05-07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873530');",
+          "resourceId": "2873530",
+          "title": "수학5-2(한)_수행평가_1단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_1단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873531');",
+          "resourceId": "2873531",
+          "title": "수학5-2(한)_수행평가_1단원_08차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_1단원_08차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 분수의 곱셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2701775');",
+          "resourceId": "2701775",
+          "title": "수학5-2(한)_수행평가_2단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_2단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873532');",
+          "resourceId": "2873532",
+          "title": "수학5-2(한)_수행평가_2단원_03차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_2단원_03차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2873533');",
+          "resourceId": "2873533",
+          "title": "수학5-2(한)_수행평가_2단원_0405차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_2단원_04-05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873534');",
+          "resourceId": "2873534",
+          "title": "수학5-2(한)_수행평가_2단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_2단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873535');",
+          "resourceId": "2873535",
+          "title": "수학5-2(한)_수행평가_2단원_08차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_2단원_08차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 합동과 대칭",
+      "lessons": [
+        {
+          "action": "downloadFile('2701776');",
+          "resourceId": "2701776",
+          "title": "수학5-2(한)_수행평가_3단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_3단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873536');",
+          "resourceId": "2873536",
+          "title": "수학5-2(한)_수행평가_3단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_3단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873537');",
+          "resourceId": "2873537",
+          "title": "수학5-2(한)_수행평가_3단원_05차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_3단원_05차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2873538');",
+          "resourceId": "2873538",
+          "title": "수학5-2(한)_수행평가_3단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_3단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873539');",
+          "resourceId": "2873539",
+          "title": "수학5-2(한)_수행평가_3단원_07차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_3단원_07차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 소수의 곱셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2701777');",
+          "resourceId": "2701777",
+          "title": "수학5-2(한)_수행평가_4단원_0203차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_4단원_02-03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873540');",
+          "resourceId": "2873540",
+          "title": "수학5-2(한)_수행평가_4단원_0405차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_4단원_04-05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873541');",
+          "resourceId": "2873541",
+          "title": "수학5-2(한)_수행평가_4단원_0607차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_4단원_06-07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873542');",
+          "resourceId": "2873542",
+          "title": "수학5-2(한)_수행평가_4단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_4단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873543');",
+          "resourceId": "2873543",
+          "title": "수학5-2(한)_수행평가_4단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_4단원_07차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 직육면체",
+      "lessons": [
+        {
+          "action": "downloadFile('2701778');",
+          "resourceId": "2701778",
+          "title": "수학5-2(한)_수행평가_5단원_0203차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_5단원_02-03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873544');",
+          "resourceId": "2873544",
+          "title": "수학5-2(한)_수행평가_5단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_5단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873545');",
+          "resourceId": "2873545",
+          "title": "수학5-2(한)_수행평가_5단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_5단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873546');",
+          "resourceId": "2873546",
+          "title": "수학5-2(한)_수행평가_5단원_0607차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_5단원_06-07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873547');",
+          "resourceId": "2873547",
+          "title": "수학5-2(한)_수행평가_5단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_5단원_06차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 평균과 가능성",
+      "lessons": [
+        {
+          "action": "downloadFile('2701779');",
+          "resourceId": "2701779",
+          "title": "수학5-2(한)_수행평가_6단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_6단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873548');",
+          "resourceId": "2873548",
+          "title": "수학5-2(한)_수행평가_6단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_6단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2873549');",
+          "resourceId": "2873549",
+          "title": "수학5-2(한)_수행평가_6단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_6단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873550');",
+          "resourceId": "2873550",
+          "title": "수학5-2(한)_수행평가_6단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_6단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2873551');",
+          "resourceId": "2873551",
+          "title": "수학5-2(한)_수행평가_6단원_08차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)5-2_수행평가_6단원_08차시_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

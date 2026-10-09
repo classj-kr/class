@@ -1,0 +1,103 @@
+{
+  "book": "국어 5-1(나)",
+  "curriculum": "year-2022",
+  "grade": "5학년",
+  "rows": [
+    {
+      "context": "단원 3~4차시",
+      "resourceId": "10099511",
+      "title": "[수행평가 HWP] 매체_3~4차시_수행평가",
+      "unit": "매체. 필요한 정보를 찾아요"
+    },
+    {
+      "context": "단원 5~6차시",
+      "resourceId": "10099513",
+      "title": "[수행평가 HWP] 매체_5~6차시_수행평가",
+      "unit": "매체. 필요한 정보를 찾아요"
+    },
+    {
+      "context": "4-1 단원 2~4차시",
+      "resourceId": "10099504",
+      "title": "[수행평가 HWP] 4_2~4차시_수행평가",
+      "unit": "4. 대상을 설명해요"
+    },
+    {
+      "context": "4-1 단원 5~6차시",
+      "resourceId": "10099505",
+      "title": "[수행평가 HWP] 4_5~6차시_수행평가",
+      "unit": "4. 대상을 설명해요"
+    },
+    {
+      "context": "4-2 단원 7~8차시",
+      "resourceId": "10099506",
+      "title": "[수행평가 HWP] 4_7~8차시_수행평가",
+      "unit": "4. 대상을 설명해요"
+    },
+    {
+      "context": "4-2 단원 9~11차시",
+      "resourceId": "10099508",
+      "title": "[수행평가 HWP] 4_9~11차시_수행평가",
+      "unit": "4. 대상을 설명해요"
+    },
+    {
+      "context": "5-1 단원 2~3차시",
+      "resourceId": "10102166",
+      "title": "[수행평가 HWP] 5_2~3차시_수행평가",
+      "unit": "5. 의논하며 토의해요"
+    },
+    {
+      "context": "5-1 단원 4~6차시",
+      "resourceId": "10102168",
+      "title": "[수행평가 HWP] 5_4~6차시_수행평가",
+      "unit": "5. 의논하며 토의해요"
+    },
+    {
+      "context": "5-2 단원 7~8차시",
+      "resourceId": "10102169",
+      "title": "[수행평가 HWP] 5_7~8차시_수행평가",
+      "unit": "5. 의논하며 토의해요"
+    },
+    {
+      "context": "5-2 단원 9~11차시",
+      "resourceId": "10102170",
+      "title": "[수행평가 HWP] 5_9~11차시_수행평가",
+      "unit": "5. 의논하며 토의해요"
+    },
+    {
+      "context": "6-1 단원 2~3차시",
+      "resourceId": "10102172",
+      "title": "[수행평가 HWP] 6_2~3차시_수행평가",
+      "unit": "6. 작품을 즐겨요"
+    },
+    {
+      "context": "6-1 단원 4~5차시",
+      "resourceId": "10102174",
+      "title": "[수행평가 HWP] 6_4~5차시_수행평가",
+      "unit": "6. 작품을 즐겨요"
+    },
+    {
+      "context": "6-1 단원 6~7차시",
+      "resourceId": "10102173",
+      "title": "[수행평가 HWP] 6_6~7차시_수행평가",
+      "unit": "6. 작품을 즐겨요"
+    },
+    {
+      "context": "6-2 단원 8~9차시",
+      "resourceId": "10102175",
+      "title": "[수행평가 HWP] 6_8~9차시_수행평가",
+      "unit": "6. 작품을 즐겨요"
+    },
+    {
+      "context": "6-2 단원 10~11차시",
+      "resourceId": "10102176",
+      "title": "[수행평가 HWP] 6_10~11차시_수행평가",
+      "unit": "6. 작품을 즐겨요"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1645&gradeCode=05&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 5-1(나)",
+  "sourceId": "1645",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

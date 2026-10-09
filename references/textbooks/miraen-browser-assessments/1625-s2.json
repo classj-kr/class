@@ -1,0 +1,91 @@
+{
+  "book": "음악5",
+  "curriculum": "year-2022",
+  "grade": "5학년",
+  "rows": [
+    {
+      "context": "1 단원 1~2차시",
+      "resourceId": "10073739",
+      "title": "[수행평가 HWP] 5-1-1.고사리꺾자",
+      "unit": "1. 음악의 즐거움"
+    },
+    {
+      "context": "1 단원 7~8차시",
+      "resourceId": "10073740",
+      "title": "[수행평가 HWP] 5-1-4.리코더 높은음 연주하기",
+      "unit": "1. 음악의 즐거움"
+    },
+    {
+      "context": "1 단원 9~10차시",
+      "resourceId": "10073741",
+      "title": "[수행평가 HWP] 5-1-5.사계와 사계 2050",
+      "unit": "1. 음악의 즐거움"
+    },
+    {
+      "context": "1 단원 15~16차시",
+      "resourceId": "10073742",
+      "title": "[수행평가 HWP] 5-1-８.숲속의 소리 만들기",
+      "unit": "1. 음악의 즐거움"
+    },
+    {
+      "context": "2 단원 3~4차시",
+      "resourceId": "10073752",
+      "title": "[수행평가 HWP] 5-2-2.율명과 정간보",
+      "unit": "2. 음악의 아름다움"
+    },
+    {
+      "context": "2 단원 7~8차시",
+      "resourceId": "10073753",
+      "title": "[수행평가 HWP] 5-2-4.단소 오름길 ①",
+      "unit": "2. 음악의 아름다움"
+    },
+    {
+      "context": "2 단원 9~10차시",
+      "resourceId": "10073754",
+      "title": "[수행평가 HWP] 5-2-5.행성",
+      "unit": "2. 음악의 아름다움"
+    },
+    {
+      "context": "2 단원 15~16차시",
+      "resourceId": "10073755",
+      "title": "[수행평가 HWP] 5-2-8.컵타",
+      "unit": "2. 음악의 아름다움"
+    },
+    {
+      "context": "3 단원 5~6차시",
+      "resourceId": "10068303",
+      "title": "[수행평가 HWP] 5-3-3. 기차를 타고",
+      "unit": "3. 음악의 다양함"
+    },
+    {
+      "context": "3 단원 7~8차시",
+      "resourceId": "10068304",
+      "title": "[수행평가 HWP] 5-3-4. 단소 오름길 ②",
+      "unit": "3. 음악의 다양함"
+    },
+    {
+      "context": "3 단원 13~14차시",
+      "resourceId": "10068305",
+      "title": "[수행평가 HWP] 5-3-7. 생활 속 음악에 관심 갖기",
+      "unit": "3. 음악의 다양함"
+    },
+    {
+      "context": "3 단원 15~16차시",
+      "resourceId": "10068306",
+      "title": "[수행평가 HWP] 5-3-8. 나만의 민요 만들기",
+      "unit": "3. 음악의 다양함"
+    },
+    {
+      "context": "4 단원 1~2차시",
+      "resourceId": "10068327",
+      "title": "[수행평가 HWP] 5-4-1. 멸치 후리는 소리",
+      "unit": "4. 음악의 어울림"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1625&gradeCode=05&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "음악5 (조성기)",
+  "sourceId": "1625",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

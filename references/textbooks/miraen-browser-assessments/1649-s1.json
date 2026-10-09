@@ -1,0 +1,109 @@
+{
+  "book": "도덕 6",
+  "curriculum": "year-2022",
+  "grade": "6학년",
+  "rows": [
+    {
+      "context": "1 단원 공통자료",
+      "resourceId": "10075689",
+      "title": "[수행평가 HWP] 1_2차시_수행평가",
+      "unit": "1. 나는 꿈 요리사"
+    },
+    {
+      "context": "1 단원 공통자료",
+      "resourceId": "10075690",
+      "title": "[수행평가 HWP] 1_3차시_수행평가",
+      "unit": "1. 나는 꿈 요리사"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10092088",
+      "title": "[수행평가 HWP] 2_1차시_수행평가",
+      "unit": "2. 다름을 존중하는 우리"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10092094",
+      "title": "[수행평가 HWP] 2_3차시_수행평가",
+      "unit": "2. 다름을 존중하는 우리"
+    },
+    {
+      "context": "3 단원 공통자료",
+      "resourceId": "10098279",
+      "title": "[수행평가 HWP] 3_2차시_수행평가",
+      "unit": "3. 인공지능 로봇 그리고 나"
+    },
+    {
+      "context": "3 단원 공통자료",
+      "resourceId": "10098280",
+      "title": "[수행평가 HWP] 3_4차시_수행평가",
+      "unit": "3. 인공지능 로봇 그리고 나"
+    },
+    {
+      "context": "4 단원 공통자료",
+      "resourceId": "10098330",
+      "title": "[수행평가 HWP] 4_2차시_수행평가",
+      "unit": "4. 인공지능으로 일하는 미래"
+    },
+    {
+      "context": "4 단원 공통자료",
+      "resourceId": "10098331",
+      "title": "[수행평가 HWP] 4_4차시_수행평가",
+      "unit": "4. 인공지능으로 일하는 미래"
+    },
+    {
+      "context": "5 단원 공통자료",
+      "resourceId": "10102812",
+      "title": "[수행평가 HWP] 5_2차시_수행평가",
+      "unit": "5. 통일 한반도의 어느 날"
+    },
+    {
+      "context": "5 단원 공통자료",
+      "resourceId": "10102813",
+      "title": "[수행평가 HWP] 5_4차시_수행평가",
+      "unit": "5. 통일 한반도의 어느 날"
+    },
+    {
+      "context": "6 단원 공통자료",
+      "resourceId": "10103794",
+      "title": "[수행평가 HWP] 6_1차시_수행평가",
+      "unit": "6. 사랑, 우리를 넘어 세계로"
+    },
+    {
+      "context": "6 단원 공통자료",
+      "resourceId": "10103795",
+      "title": "[수행평가 HWP] 6_3차시_수행평가",
+      "unit": "6. 사랑, 우리를 넘어 세계로"
+    },
+    {
+      "context": "7 단원 공통자료",
+      "resourceId": "10104410",
+      "title": "[수행평가 HWP] 7_3차시_수행평가",
+      "unit": "7. 우리 모두의 미래를 위한 선택"
+    },
+    {
+      "context": "7 단원 공통자료",
+      "resourceId": "10104411",
+      "title": "[수행평가 HWP] 7_4차시_수행평가",
+      "unit": "7. 우리 모두의 미래를 위한 선택"
+    },
+    {
+      "context": "8 단원 공통자료",
+      "resourceId": "10105054",
+      "title": "[수행평가 HWP] 8_1차시_수행평가",
+      "unit": "8. 우리가 꿈꾸는 세상을 위하여"
+    },
+    {
+      "context": "8 단원 공통자료",
+      "resourceId": "10105055",
+      "title": "[수행평가 HWP] 8_4차시_수행평가",
+      "unit": "8. 우리가 꿈꾸는 세상을 위하여"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1649&gradeCode=06&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "도덕 6",
+  "sourceId": "1649",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

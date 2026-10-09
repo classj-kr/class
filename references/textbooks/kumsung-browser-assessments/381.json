@@ -1,0 +1,65 @@
+{
+  "title": "미술 3(김정선)22개정",
+  "url": "https://thub.kumsung.co.kr/elementary/evaluation/types.do?category=A001005&gradeCategory=C005003&bookId=381",
+  "rows": [
+    {
+      "resourceId": "88948",
+      "title": "단원 평가",
+      "unit": "1. 햇살 같은 우리"
+    },
+    {
+      "resourceId": "90861",
+      "title": "단원 평가 정답 및 해설",
+      "unit": "1. 햇살 같은 우리"
+    },
+    {
+      "resourceId": "90866",
+      "title": "단원 평가",
+      "unit": "2. 아름다운 세상에서"
+    },
+    {
+      "resourceId": "90867",
+      "title": "단원 평가 정답 및 해설",
+      "unit": "2. 아름다운 세상에서"
+    },
+    {
+      "resourceId": "90869",
+      "title": "단원 평가",
+      "unit": "3. 알록달록 함께"
+    },
+    {
+      "resourceId": "90870",
+      "title": "단원 평가 정답 및 해설",
+      "unit": "3. 알록달록 함께"
+    },
+    {
+      "resourceId": "90873",
+      "title": "단원 평가",
+      "unit": "4. 푸른 꿈을 꾸어요"
+    },
+    {
+      "resourceId": "90875",
+      "title": "단원 평가 정답 및 해설",
+      "unit": "4. 푸른 꿈을 꾸어요"
+    }
+  ],
+  "observedAt": "2026-10-09",
+  "unitsChecked": [
+    {
+      "id": "8304",
+      "title": "1. 햇살 같은 우리"
+    },
+    {
+      "id": "8308",
+      "title": "2. 아름다운 세상에서"
+    },
+    {
+      "id": "8313",
+      "title": "3. 알록달록 함께"
+    },
+    {
+      "id": "8317",
+      "title": "4. 푸른 꿈을 꾸어요"
+    }
+  ]
+}

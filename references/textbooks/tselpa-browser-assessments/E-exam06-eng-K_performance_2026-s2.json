@@ -1,0 +1,328 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-eng-K_2026&tab=E-exam06-eng-K_performance_2026",
+  "groups": [
+    {
+      "title": "공통자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2709753');",
+          "resourceId": "2709753",
+          "title": "6학년_영어(김태은)_수행평가 계획표",
+          "downloadPath": "D:\\Downloads\\6학년_영어(김태은)_수행평가 계획표.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 1. What Grade Are You In?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709754');",
+          "resourceId": "2709754",
+          "title": "6학년_영어(김태은)_Lesson 1_수행평가_2차시",
+          "downloadPath": null,
+          "status": "download-event-timeout"
+        },
+        {
+          "action": "downloadFile('2709755');",
+          "resourceId": "2709755",
+          "title": "6학년_영어(김태은)_Lesson 1_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709756');",
+          "resourceId": "2709756",
+          "title": "6학년_영어(김태은)_Lesson 1_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 2. I Have a Cold",
+      "lessons": [
+        {
+          "action": "downloadFile('2709757');",
+          "resourceId": "2709757",
+          "title": "6학년_영어(김태은)_Lesson 2_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709758');",
+          "resourceId": "2709758",
+          "title": "6학년_영어(김태은)_Lesson 2_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709759');",
+          "resourceId": "2709759",
+          "title": "6학년_영어(김태은)_Lesson 2_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 3. When Is Your Birthday?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709760');",
+          "resourceId": "2709760",
+          "title": "6학년_영어(김태은)_Lesson 3_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709761');",
+          "resourceId": "2709761",
+          "title": "6학년_영어(김태은)_Lesson 3_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709762');",
+          "resourceId": "2709762",
+          "title": "6학년_영어(김태은)_Lesson 3_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 4. She Has Short Curly Hair",
+      "lessons": [
+        {
+          "action": "downloadFile('2709763');",
+          "resourceId": "2709763",
+          "title": "6학년_영어(김태은)_Lesson 4_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709764');",
+          "resourceId": "2709764",
+          "title": "6학년_영어(김태은)_Lesson 4_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709765');",
+          "resourceId": "2709765",
+          "title": "6학년_영어(김태은)_Lesson 4_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 5. I’m Going to Meet My Friends",
+      "lessons": [
+        {
+          "action": "downloadFile('2709766');",
+          "resourceId": "2709766",
+          "title": "6학년_영어(김태은)_Lesson 5_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709767');",
+          "resourceId": "2709767",
+          "title": "6학년_영어(김태은)_Lesson 5_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709768');",
+          "resourceId": "2709768",
+          "title": "6학년_영어(김태은)_Lesson 5_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 6. Which Is Bigger?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709769');",
+          "resourceId": "2709769",
+          "title": "6학년_영어(김태은)_Lesson 6_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709770');",
+          "resourceId": "2709770",
+          "title": "6학년_영어(김태은)_Lesson 6_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709771');",
+          "resourceId": "2709771",
+          "title": "6학년_영어(김태은)_Lesson 6_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 7. I Think It’s Fun",
+      "lessons": [
+        {
+          "action": "downloadFile('2709772');",
+          "resourceId": "2709772",
+          "title": "6학년_영어(김태은)_Lesson 7_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709773');",
+          "resourceId": "2709773",
+          "title": "6학년_영어(김태은)_Lesson 7_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709774');",
+          "resourceId": "2709774",
+          "title": "6학년_영어(김태은)_Lesson 7_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 8. How Often Do You Exercise?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709775');",
+          "resourceId": "2709775",
+          "title": "6학년_영어(김태은)_Lesson 8_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709776');",
+          "resourceId": "2709776",
+          "title": "6학년_영어(김태은)_Lesson 8_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709777');",
+          "resourceId": "2709777",
+          "title": "6학년_영어(김태은)_Lesson 8_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 9. How Can I Get to the Market?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709778');",
+          "resourceId": "2709778",
+          "title": "6학년_영어(김태은)_Lesson 9_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709779');",
+          "resourceId": "2709779",
+          "title": "6학년_영어(김태은)_Lesson 9_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709780');",
+          "resourceId": "2709780",
+          "title": "6학년_영어(김태은)_Lesson 9_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 10. Who Painted the Picture?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709781');",
+          "resourceId": "2709781",
+          "title": "6학년_영어(김태은)_Lesson 10_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709782');",
+          "resourceId": "2709782",
+          "title": "6학년_영어(김태은)_Lesson 10_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709783');",
+          "resourceId": "2709783",
+          "title": "6학년_영어(김태은)_Lesson 10_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 11. Why Are You So Happy?",
+      "lessons": [
+        {
+          "action": "downloadFile('2709784');",
+          "resourceId": "2709784",
+          "title": "6학년_영어(김태은)_Lesson 11_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709785');",
+          "resourceId": "2709785",
+          "title": "6학년_영어(김태은)_Lesson 11_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709786');",
+          "resourceId": "2709786",
+          "title": "6학년_영어(김태은)_Lesson 11_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 12. We Should Save the Earth",
+      "lessons": [
+        {
+          "action": "downloadFile('2709787');",
+          "resourceId": "2709787",
+          "title": "6학년_영어(김태은)_Lesson 12_수행평가_2차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709788');",
+          "resourceId": "2709788",
+          "title": "6학년_영어(김태은)_Lesson 12_수행평가_4차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        },
+        {
+          "action": "downloadFile('2709789');",
+          "resourceId": "2709789",
+          "title": "6학년_영어(김태은)_Lesson 12_수행평가_6차시",
+          "downloadPath": null,
+          "status": "not-attempted-after-time-budget-or-failure"
+        }
+      ]
+    }
+  ]
+}

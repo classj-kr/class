@@ -1,0 +1,49 @@
+{
+  "book": "수학 2-2",
+  "curriculum": "year-2022",
+  "grade": "2학년",
+  "rows": [
+    {
+      "context": "1 단원 공통자료",
+      "resourceId": "10002437",
+      "title": "수행 평가",
+      "unit": "1. 네 자리 수"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10002898",
+      "title": "수행 평가",
+      "unit": "2. 곱셈구구"
+    },
+    {
+      "context": "3 단원 공통자료",
+      "resourceId": "10003565",
+      "title": "수행 평가",
+      "unit": "3. 길이 재기"
+    },
+    {
+      "context": "4 단원 공통자료",
+      "resourceId": "10003566",
+      "title": "수행 평가",
+      "unit": "4. 시각과 시간"
+    },
+    {
+      "context": "5 단원 공통자료",
+      "resourceId": "10004602",
+      "title": "수행 평가",
+      "unit": "5. 표와 그래프"
+    },
+    {
+      "context": "6 단원 공통자료",
+      "resourceId": "10004603",
+      "title": "수행 평가",
+      "unit": "6. 규칙 찾기"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1395&gradeCode=02&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "수학 2-2",
+  "sourceId": "1395",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

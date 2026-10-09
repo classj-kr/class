@@ -1,0 +1,51 @@
+{
+  "title": "체육 5(이제행)22개정",
+  "url": "https://thub.kumsung.co.kr/elementary/evaluation/types.do?category=A001003&gradeCategory=C005005&bookId=398",
+  "rows": [
+    {
+      "resourceId": "97146",
+      "title": "단원 평가",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "97147",
+      "title": "단원 평가 정답 및 해설",
+      "unit": "1. 운동"
+    },
+    {
+      "resourceId": "97539",
+      "title": "단원 평가",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "97540",
+      "title": "단원 평가 정답 및 해설",
+      "unit": "2. 스포츠"
+    },
+    {
+      "resourceId": "97552",
+      "title": "단원 평가",
+      "unit": "3. 표현"
+    },
+    {
+      "resourceId": "97553",
+      "title": "단원평가 정답 및 해설",
+      "unit": "3. 표현"
+    }
+  ],
+  "observedAt": "2026-10-09",
+  "unitsChecked": [
+    {
+      "id": "8678",
+      "title": "1. 운동"
+    },
+    {
+      "id": "8679",
+      "title": "2. 스포츠"
+    },
+    {
+      "id": "8680",
+      "title": "3. 표현"
+    }
+  ]
+}

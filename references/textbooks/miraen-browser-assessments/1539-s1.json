@@ -1,0 +1,115 @@
+{
+  "book": "국어 3-1(나)",
+  "curriculum": "year-2022",
+  "grade": "3학년",
+  "rows": [
+    {
+      "context": "단원 3~4차시",
+      "resourceId": "10052479",
+      "title": "[수행평가 HWP] 매체_3~4차시_수행평가",
+      "unit": "매체. 서로 배려하며 소통해요"
+    },
+    {
+      "context": "단원 5~6차시",
+      "resourceId": "10052494",
+      "title": "[수행평가 HWP] 매체_5~6차시_수행평가",
+      "unit": "매체. 서로 배려하며 소통해요"
+    },
+    {
+      "context": "단원 7~9차시",
+      "resourceId": "10052495",
+      "title": "[수행평가 HWP] 매체_7~9차시_수행평가",
+      "unit": "매체. 서로 배려하며 소통해요"
+    },
+    {
+      "context": "4-1 단원 2~3차시",
+      "resourceId": "10052496",
+      "title": "[수행평가 HWP] 4_2~3차시_수행평가",
+      "unit": "4. 중요한 내용을 찾아요"
+    },
+    {
+      "context": "4-1 단원 4~5차시",
+      "resourceId": "10052497",
+      "title": "[수행평가 HWP] 4_4~5차시_수행평가",
+      "unit": "4. 중요한 내용을 찾아요"
+    },
+    {
+      "context": "4-2 단원 6~7차시",
+      "resourceId": "10052498",
+      "title": "[수행평가 HWP] 4_6~7차시_수행평가",
+      "unit": "4. 중요한 내용을 찾아요"
+    },
+    {
+      "context": "4-2 단원 8~10차시",
+      "resourceId": "10052499",
+      "title": "[수행평가 HWP] 4_8~10차시_수행평가",
+      "unit": "4. 중요한 내용을 찾아요"
+    },
+    {
+      "context": "5-1 단원 2차시",
+      "resourceId": "10054098",
+      "title": "[수행평가 HWP] 5_2차시_수행평가",
+      "unit": "5. 인물에게 마음을 전해요"
+    },
+    {
+      "context": "5-1 단원 3~4차시",
+      "resourceId": "10054099",
+      "title": "[수행평가 HWP] 5_3~4차시_수행평가",
+      "unit": "5. 인물에게 마음을 전해요"
+    },
+    {
+      "context": "5-1 단원 5~6차시",
+      "resourceId": "10054100",
+      "title": "[수행평가 HWP] 5_5~6차시_수행평가",
+      "unit": "5. 인물에게 마음을 전해요"
+    },
+    {
+      "context": "5-2 단원 7~8차시",
+      "resourceId": "10054101",
+      "title": "[수행평가 HWP] 5_7~8차시_수행평가",
+      "unit": "5. 인물에게 마음을 전해요"
+    },
+    {
+      "context": "5-2 단원 9~11차시",
+      "resourceId": "10054102",
+      "title": "[수행평가 HWP] 5_9~11차시_수행평가",
+      "unit": "5. 인물에게 마음을 전해요"
+    },
+    {
+      "context": "6-1 단원 2차시",
+      "resourceId": "10054135",
+      "title": "[수행평가 HWP] 6_2차시_수행평가",
+      "unit": "6. 자신 있게 읽고 써요"
+    },
+    {
+      "context": "6-1 단원 3~4차시",
+      "resourceId": "10054136",
+      "title": "[수행평가 HWP] 6_3~4차시_수행평가",
+      "unit": "6. 자신 있게 읽고 써요"
+    },
+    {
+      "context": "6-1 단원 5~6차시",
+      "resourceId": "10054137",
+      "title": "[수행평가 HWP] 6_5~6차시_수행평가",
+      "unit": "6. 자신 있게 읽고 써요"
+    },
+    {
+      "context": "6-2 단원 7~8차시",
+      "resourceId": "10054138",
+      "title": "[수행평가 HWP] 6_7~8차시_수행평가",
+      "unit": "6. 자신 있게 읽고 써요"
+    },
+    {
+      "context": "6-2 단원 9~10차시",
+      "resourceId": "10054139",
+      "title": "[수행평가 HWP] 6_9~10차시_수행평가",
+      "unit": "6. 자신 있게 읽고 써요"
+    }
+  ],
+  "semester": "1학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1539&gradeCode=03&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "국어 3-1(나)",
+  "sourceId": "1539",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

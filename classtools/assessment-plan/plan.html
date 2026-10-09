@@ -97,6 +97,7 @@
                 <label>교과<select id="subject-select" class="form-control"></select></label>
             </div>
             <div class="toolbar">
+                <button type="button" class="btn" id="publisher-list-btn">교과서별 평가 목록</button>
                 <button type="button" class="btn" id="add-item-btn">＋ 항목 추가</button>
                 <button type="button" class="btn btn-outline" id="import-btn">📄 계획서 파일로 채우기</button>
                 <input type="file" id="import-file" accept=".pdf,.png,.jpg,.jpeg,.webp,.hwpx,.docx,.txt" hidden>
@@ -104,6 +105,12 @@
                 <span class="status" id="save-status"></span>
             </div>
             <p class="status" id="plan-note" style="margin: 8px 0 0;"></p>
+            <p class="status" id="textbook-note" role="status"></p>
+            <div class="toolbar">
+                <button type="button" class="btn btn-outline" id="pacing-dates-btn">진도표 날짜·주차</button>
+                <button type="button" class="btn btn-outline" id="draft-all-btn">빈 평가기준 초안 작성</button>
+                <button type="button" class="btn" id="export-term-btn">전 과목 HWPX 다운로드</button>
+            </div>
         </section>
         <section id="items" aria-live="polite"></section>
     </main>
@@ -132,6 +139,7 @@
     <div class="drop-hint" id="drop-hint" aria-hidden="true"><span>계획서 파일을 여기에 놓으면 이 계획을 채웁니다</span></div>
 
     <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
+    <script src="planning-extras.js?v=20261009-1"></script>
     <script>
         (async () => {
             'use strict';
@@ -243,6 +251,7 @@
                 }
                 applyReadOnly();
                 render();
+                await extras.load();
             }
 
             // 보기만 할 때는 항목 추가·파일로 채우기를 감추고, 그려진 칸을 모두 잠근다(render 가 부른다).
@@ -251,6 +260,9 @@
                 // .btn 의 display 가 hidden 속성을 이기므로 style 로 감춘다.
                 $('add-item-btn').style.display = readOnly ? 'none' : '';
                 $('import-btn').style.display = readOnly ? 'none' : '';
+                $('publisher-list-btn').disabled = readOnly;
+                $('pacing-dates-btn').disabled = readOnly;
+                $('draft-all-btn').disabled = readOnly;
                 document.body.classList.toggle('read-only', readOnly);
             }
             function lockRendered() {
@@ -328,6 +340,7 @@
                     return ta;
                 })()));
                 card.append(grid);
+                card.append(extras.itemFields(item));
 
                 const chips = document.createElement('div'); chips.className = 'chips';
                 for (const [k, s] of item.standards.entries()) {
@@ -581,6 +594,11 @@
             gradeSelect.addEventListener('change', () => { fillSubjects(); switchPlan(); });
             semesterSelect.addEventListener('change', switchPlan);
             subjectSelect.addEventListener('change', switchPlan);
+            const extras = window.createAssessmentPlanningExtras({
+                api, notice, field, newItem, render, markDirty, savePlan, draftCriteria,
+                state: () => ({ key: loadedKeyObj, items, readOnly, dirty }),
+                standards: async () => (await standardsForCurrent()).flatMap(g => g.standards)
+            });
             if (await prepare()) { await refreshDomainList(); await loadPlan(); }
         })().catch((error) => { document.getElementById('save-status').textContent = error.message; });
     </script>

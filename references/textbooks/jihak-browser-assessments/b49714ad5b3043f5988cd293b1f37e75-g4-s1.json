@@ -1,0 +1,101 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=4&term=1&textbookSeq=b49714ad5b3043f5988cd293b1f37e75&order=1&tabType=UD002",
+  "textbook": "사회4-1\n이간용",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "056dcb9d1ce64329be011525d407495d",
+          "title": "수행평가 계획서",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "3b64cb8bf79441d5ada6d9c940c948f6",
+          "title": "교과평어(사회과 4-1)",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 교과 평어(지학사).hwp"
+        },
+        {
+          "resourceId": "d20e85d247624505b314b2230f9a18b5",
+          "title": "교과평어(사회과 4-1)",
+          "downloadPath": "D:\\Downloads\\교과 평어_사회 4-1.xlsx"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "bf74e76ef31a4c54b51ac462cc36c769",
+          "title": "수행평가_1단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 1단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "f584e8d9b5a348d3b2603fb2c0e7a04e",
+          "title": "수행평가_1단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 1단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "94474c2f7a5548029b3a715f814158e3",
+          "title": "수행평가_1단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 1단원(2)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "30b38119bb03424893dc559c9d2026a3",
+          "title": "수행평가_1단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 1단원(2)_수행평가_1회.hwp"
+        }
+      ],
+      "title": "1 지도로 만나는 우리 지역"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "28c6fdf6b1d445899a0f9369d2862fa3",
+          "title": "수행평가_2단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 2단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "8d1d01cbe5e84de186e7d724552c73c4",
+          "title": "수행평가_2단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 2단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "d751a06d034c4470852431e8938dfb1c",
+          "title": "수행평가_2단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 2단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "de5a5ef7b3444806b3a77e0069b7a28c",
+          "title": "수행평가_2단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 2단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "2 우리 지역의 국가유산"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "f740a67a9c504a448c7988b424071716",
+          "title": "수행평가_3단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 3단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "0d954f7f6ec54f20b68d9a9376778f6c",
+          "title": "수행평가_3단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 3단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "445e07f83f254c05b9e49a52c94badc1",
+          "title": "수행평가_3단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 3단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "91cf0de58d904926bd0bb6743d17a61d",
+          "title": "수행평가_3단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-1] 3단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "3 경제활동과 지역 간 교류"
+    }
+  ]
+}

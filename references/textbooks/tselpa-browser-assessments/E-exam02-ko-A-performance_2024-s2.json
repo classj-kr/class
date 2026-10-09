@@ -1,0 +1,73 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=2&exam=E-exam02-ko-A_2024&tab=E-exam02-ko-A-performance_2024",
+  "groups": [
+    {
+      "title": "1. 장면을 상상하며",
+      "lessons": [
+        {
+          "action": "downloadFile('2133394');",
+          "resourceId": "2133394",
+          "title": "국어2-2_01단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_01단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2133397');",
+          "resourceId": "2133397",
+          "title": "국어2-2_01단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_01단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 서로 존중해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2186419');",
+          "resourceId": "2186419",
+          "title": "국어2-2_02단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_02단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2186422');",
+          "resourceId": "2186422",
+          "title": "국어2-2_02단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_02단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 내용을 살펴요",
+      "lessons": [
+        {
+          "action": "downloadFile('2186423');",
+          "resourceId": "2186423",
+          "title": "국어2-2_03단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_03단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2186426');",
+          "resourceId": "2186426",
+          "title": "국어2-2_03단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_03단원_수행평가_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 마음을 전해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2186429');",
+          "resourceId": "2186429",
+          "title": "국어2-2_04단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\국어2-2_04단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2186430');",
+          "resourceId": "2186430",
+          "title": "국어2-2_04단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\국어2-2_04단원_수행평가_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

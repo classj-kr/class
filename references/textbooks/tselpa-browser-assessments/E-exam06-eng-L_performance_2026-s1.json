@@ -1,0 +1,508 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=6&exam=E-exam06-eng-L_2026&tab=E-exam06-eng-L_performance_2026",
+  "groups": [
+    {
+      "title": "Lesson 1. I'm in the Sixth Grade",
+      "lessons": [
+        {
+          "action": "downloadFile('2707851');",
+          "resourceId": "2707851",
+          "title": "영어6(이)_Lesson 01_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson01_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707852');",
+          "resourceId": "2707852",
+          "title": "영어6(이)_Lesson 01_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson01_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707853');",
+          "resourceId": "2707853",
+          "title": "영어6(이)_Lesson 01_5차시_듣기파일",
+          "downloadPath": null
+        },
+        {
+          "action": "downloadFile('2707854');",
+          "resourceId": "2707854",
+          "title": "영어6(이)_Lesson 01_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson01_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707855');",
+          "resourceId": "2707855",
+          "title": "영어6(이)_Lesson 01_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson01_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722704');",
+          "resourceId": "2722704",
+          "title": "영어6(이)_Lesson 01_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 01_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 2.When Is the Dance Festival?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707856');",
+          "resourceId": "2707856",
+          "title": "영어6(이)_Lesson 02_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson02_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707857');",
+          "resourceId": "2707857",
+          "title": "영어6(이)_Lesson 02_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson02_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707858');",
+          "resourceId": "2707858",
+          "title": "영어6(이)_Lesson 02_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707859');",
+          "resourceId": "2707859",
+          "title": "영어6(이)_Lesson 02_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson02_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707860');",
+          "resourceId": "2707860",
+          "title": "영어6(이)_Lesson 02_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson02_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722706');",
+          "resourceId": "2722706",
+          "title": "영어6(이)_Lesson 02_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 02_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 3. How Can I Get to the Museum?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707861');",
+          "resourceId": "2707861",
+          "title": "영어6(이)_Lesson 03_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson03_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707862');",
+          "resourceId": "2707862",
+          "title": "영어6(이)_Lesson 03_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson03_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707863');",
+          "resourceId": "2707863",
+          "title": "영어6(이)_Lesson 03_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707864');",
+          "resourceId": "2707864",
+          "title": "영어6(이)_Lesson 03_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson03_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707865');",
+          "resourceId": "2707865",
+          "title": "영어6(이)_Lesson 03_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson03_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722707');",
+          "resourceId": "2722707",
+          "title": "영어6(이)_Lesson 03_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 03_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 4. I Have a Headache",
+      "lessons": [
+        {
+          "action": "downloadFile('2707866');",
+          "resourceId": "2707866",
+          "title": "영어6(이)_Lesson 04_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson04_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707867');",
+          "resourceId": "2707867",
+          "title": "영어6(이)_Lesson 04_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson04_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707868');",
+          "resourceId": "2707868",
+          "title": "영어6(이)_Lesson 04_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707869');",
+          "resourceId": "2707869",
+          "title": "영어6(이)_Lesson 04_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson04_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707870');",
+          "resourceId": "2707870",
+          "title": "영어6(이)_Lesson 04_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson04_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722708');",
+          "resourceId": "2722708",
+          "title": "영어6(이)_Lesson 04_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 04_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 5. I'm Going to Bake Cookies",
+      "lessons": [
+        {
+          "action": "downloadFile('2707871');",
+          "resourceId": "2707871",
+          "title": "영어6(이)_Lesson 05_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson05_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707872');",
+          "resourceId": "2707872",
+          "title": "영어6(이)_Lesson 05_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson05_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707873');",
+          "resourceId": "2707873",
+          "title": "영어6(이)_Lesson 05_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707874');",
+          "resourceId": "2707874",
+          "title": "영어6(이)_Lesson 05_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson05_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707875');",
+          "resourceId": "2707875",
+          "title": "영어6(이)_Lesson 05_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson05_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722709');",
+          "resourceId": "2722709",
+          "title": "영어6(이)_Lesson 05_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 05_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 6. How Often Do You Wash Your Hands?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707878');",
+          "resourceId": "2707878",
+          "title": "영어6(이)_Lesson 06_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson06_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707879');",
+          "resourceId": "2707879",
+          "title": "영어6(이)_Lesson 06_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson06_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707880');",
+          "resourceId": "2707880",
+          "title": "영어6(이)_Lesson 06_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707881');",
+          "resourceId": "2707881",
+          "title": "영어6(이)_Lesson 06_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson06_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707882');",
+          "resourceId": "2707882",
+          "title": "영어6(이)_Lesson 06_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson06_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722711');",
+          "resourceId": "2722711",
+          "title": "영어6(이)_Lesson 06_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 06_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 7. Jua Is Faster Than Sora",
+      "lessons": [
+        {
+          "action": "downloadFile('2707883');",
+          "resourceId": "2707883",
+          "title": "영어6(이)_Lesson 07_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson07_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707884');",
+          "resourceId": "2707884",
+          "title": "영어6(이)_Lesson 07_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson07_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707885');",
+          "resourceId": "2707885",
+          "title": "영어6(이)_Lesson 07_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707886');",
+          "resourceId": "2707886",
+          "title": "영어6(이)_Lesson 07_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson07_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707887');",
+          "resourceId": "2707887",
+          "title": "영어6(이)_Lesson 07_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson07_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722712');",
+          "resourceId": "2722712",
+          "title": "영어6(이)_Lesson 07_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 07_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 8. Who Drew This Painting?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707888');",
+          "resourceId": "2707888",
+          "title": "영어6(이)_Lesson 08_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson08_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707889');",
+          "resourceId": "2707889",
+          "title": "영어6(이)_Lesson 08_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson08_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707890');",
+          "resourceId": "2707890",
+          "title": "영어6(이)_Lesson 08_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707891');",
+          "resourceId": "2707891",
+          "title": "영어6(이)_Lesson 08_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson08_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707892');",
+          "resourceId": "2707892",
+          "title": "영어6(이)_Lesson 08_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson08_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722713');",
+          "resourceId": "2722713",
+          "title": "영어6(이)_Lesson 08_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 08_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 9. What Season Do You Like?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707893');",
+          "resourceId": "2707893",
+          "title": "영어6(이)_Lesson 09_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson09_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707894');",
+          "resourceId": "2707894",
+          "title": "영어6(이)_Lesson 09_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson09_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707895');",
+          "resourceId": "2707895",
+          "title": "영어6(이)_Lesson 09_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707896');",
+          "resourceId": "2707896",
+          "title": "영어6(이)_Lesson 09_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson09_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707897');",
+          "resourceId": "2707897",
+          "title": "영어6(이)_Lesson 09_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson09_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722714');",
+          "resourceId": "2722714",
+          "title": "영어6(이)_Lesson 09_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 09_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 10. Do You Know Anything About Hanok?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707898');",
+          "resourceId": "2707898",
+          "title": "영어6(이)_Lesson 10_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson10_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707899');",
+          "resourceId": "2707899",
+          "title": "영어6(이)_Lesson 10_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson10_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707900');",
+          "resourceId": "2707900",
+          "title": "영어6(이)_Lesson 10_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707901');",
+          "resourceId": "2707901",
+          "title": "영어6(이)_Lesson 10_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson10_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707902');",
+          "resourceId": "2707902",
+          "title": "영어6(이)_Lesson 10_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson10_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722715');",
+          "resourceId": "2722715",
+          "title": "영어6(이)_Lesson 10_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 10_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 11. We Should Save the Earth",
+      "lessons": [
+        {
+          "action": "downloadFile('2707903');",
+          "resourceId": "2707903",
+          "title": "영어6(이)_Lesson 11_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson11_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707904');",
+          "resourceId": "2707904",
+          "title": "영어6(이)_Lesson 11_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson11_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707905');",
+          "resourceId": "2707905",
+          "title": "영어6(이)_Lesson 11_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707906');",
+          "resourceId": "2707906",
+          "title": "영어6(이)_Lesson 11_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson11_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707907');",
+          "resourceId": "2707907",
+          "title": "영어6(이)_Lesson 11_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson11_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722716');",
+          "resourceId": "2722716",
+          "title": "영어6(이)_Lesson 11_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 11_수행평가_한글파일.hwp"
+        }
+      ]
+    },
+    {
+      "title": "Lesson 12. Will You Come to My Graduation?",
+      "lessons": [
+        {
+          "action": "downloadFile('2707908');",
+          "resourceId": "2707908",
+          "title": "영어6(이)_Lesson 12_5차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson12_5차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707909');",
+          "resourceId": "2707909",
+          "title": "영어6(이)_Lesson 12_5차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson12_5차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2707910');",
+          "resourceId": "2707910",
+          "title": "영어6(이)_Lesson 12_5차시_듣기파일",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        },
+        {
+          "action": "downloadFile('2707911');",
+          "resourceId": "2707911",
+          "title": "영어6(이)_Lesson 12_6차시_평가지",
+          "downloadPath": "D:\\Downloads\\Lesson12_6차시_평가지.pdf"
+        },
+        {
+          "action": "downloadFile('2707912');",
+          "resourceId": "2707912",
+          "title": "영어6(이)_Lesson 12_6차시_기준안",
+          "downloadPath": "D:\\Downloads\\Lesson12_6차시_기준안.pdf"
+        },
+        {
+          "action": "downloadFile('2722717');",
+          "resourceId": "2722717",
+          "title": "영어6(이)_Lesson 12_수행평가_한글파일",
+          "downloadPath": "D:\\Downloads\\영어6(이)_Lesson 12_수행평가_한글파일.hwp"
+        }
+      ]
+    }
+  ]
+}

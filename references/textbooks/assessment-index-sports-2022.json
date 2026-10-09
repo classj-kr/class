@@ -27,7 +27,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r37"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1w2oW7ZrzqGc_EdIGT3yGstlskw_8GLZG",
@@ -53,7 +54,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r36"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1YVbeg6vNPI32JxoLpUa89axPDBUyN7wi",
@@ -79,7 +81,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r35"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1CG9WZI5kJW9z8ml1gFSOFLRfSHbfIUs3",
@@ -105,7 +108,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r34"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-17c5DuuG4f0-6kZB-KIO4gPx8lQC3g_15",
@@ -131,7 +135,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r33"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1D-AGdfIx685ccs8PJGTh4MwFs6uN6GIi",
@@ -159,7 +164,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r20"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv",
@@ -178,12 +184,16 @@
       "sourceUrl": "https://drive.google.com/file/d/1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv/view?usp=drivesdk",
       "sourceFile": "sports-1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv.hwp",
       "sha256": "768d8fa904123a2bda55d567a30af0621eece2a66963d83cfa6daaa8a63a664d",
-      "lessonIds": [],
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r19"
+      ],
       "candidateLessonIds": [
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r19"
       ],
-      "matchStatus": "needs-content-review",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "matchStatus": "body-reviewed-title-variant",
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json",
+      "matchEvidence": "Body grade 4, expression rhythm subunit and period 4 agree. Task explicitly assesses expressing rhythm speed and strength. Assessment says 맞추어; annual plan says 따라."
     },
     {
       "id": "sports-assessment-11wyQyHZqXGXKPZ6455EW9sjS2K9hcLFE",
@@ -209,7 +219,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r18"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1NfBBRp09674iPhDMDKDChtEzVgyiFisu",
@@ -235,7 +246,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r17"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1DNCMEnVJrJDi33Va1TOw2q2MaWy9QU0y",
@@ -264,7 +276,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r40"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1uUOAClBH9Qp5W7GVS_kWHjvXsnhaI-CY",
@@ -293,7 +306,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r27"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1eIRybIwk2m720CCNWqYo5obyjxh87VHU",
@@ -322,7 +336,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r10"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1NWyRnvJIgAJbzGtMG3Z9ihKhccYJOfFc",
@@ -351,7 +366,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r28"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-16vd7VSy_2ZwiAb0dLAYZB2XGVn2Ptah7",
@@ -381,7 +397,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r14"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1BDpIOp6i0Xewdg7OI7ZTPrm3KA4pM6wt",
@@ -411,7 +428,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r13"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1BIVFOucTeFzUWEB8Ow-iA6qqEep7RVSI",
@@ -441,7 +459,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r12"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1yqOZgQaMoeVwNq5dTuHf67hJZaicFt5_",
@@ -471,7 +490,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r11"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1NLHdOIsKze8HOd1EMX2CBe0VBLCRFHWG",
@@ -502,7 +522,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r15"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA",
@@ -526,12 +547,16 @@
       "sourceUrl": "https://drive.google.com/file/d/1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA/view?usp=drivesdk",
       "sourceFile": "sports-1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA.hwp",
       "sha256": "91b6fdb3f306527443dc33f3ba886ed01ad6c6a796ad3aaf4e84198a4da6572a",
-      "lessonIds": [],
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r32"
+      ],
       "candidateLessonIds": [
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r32"
       ],
-      "matchStatus": "needs-content-review",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "matchStatus": "body-reviewed-title-variant",
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json",
+      "matchEvidence": "Body grade 4, technical sports subunit, periods 13–18 and sprinting task agree. Annual source title 전력을 달려요 is retained; assessment title 전력으로 달려요 is retained."
     },
     {
       "id": "sports-assessment-1APInyT25SQ91rg_1ERBleBReRk97CpF-",
@@ -558,7 +583,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r31"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-13tFeW6VR46pX5Qq7-0mf2P-21Ipfr4Hu",
@@ -587,7 +613,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r30"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1WwnVdOGutHOlQLEWI2BzA3DlT8epeVi1",
@@ -617,7 +644,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r29"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ew8wBYn0NeXAsWVuNdmPwgW5HQjHRLc0",
@@ -644,7 +672,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r24"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1s0ZaBv9VRZvWRxqZufdAOVpunPKVWo4K",
@@ -671,7 +700,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r23"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1DdzH9Gt9Ask2aReA6NADmJbVshlKHNB6",
@@ -698,7 +728,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r22"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1WMNDcbcYzUES01M-mHlXssFBKelb28yx",
@@ -725,7 +756,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r21"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1vNkhyILC8NPfvHlPi82ykelr5K_lfb1m",
@@ -750,7 +782,9 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r8"
       ],
       "matchStatus": "needs-content-review",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json",
+      "matchEvidence": "Filename indicates periods 12–13 and title 몸의 힘을 길러요. Body header instead says periods 6–7 with the same title, but the task describes planning and practicing fitness exercises. Conflicting original metadata prevents a definitive lesson assignment."
     },
     {
       "id": "sports-assessment-1zGApisQW3DKZeAoPgYDkuaU9YNH5FyaL",
@@ -777,7 +811,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r7"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-109_shWHDNBWYIuGEbJgig_bgFgQP4Xeu",
@@ -804,7 +839,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r6"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-10Z1l4s1suyrx-ltEZdrrpju3EPUwTrZh",
@@ -831,7 +867,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r5"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1Icr56MMnc06FWJ_qmDHKYWZBktoQNo40",
@@ -858,7 +895,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r4"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1hyeANtvgvpWjl6IMBVI04g7-UeVpFddO",
@@ -885,7 +923,8 @@
         "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r3"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU",
@@ -912,7 +951,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r36"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1lrAzjQd92IiNZXQiUHxsEi_wuVaPyTw9",
@@ -938,7 +978,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r28"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1g4tUIIWdjaYffGUfQZtzNt_oMtCGjS57",
@@ -964,7 +1005,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r27"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1G3_QumqJl_D0hU_a4MPezhSRIHQ_Jmt1",
@@ -991,7 +1033,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r35"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1L3wctMg7RW5-zjY5IYRn3vybgdyeo6QB",
@@ -1018,7 +1061,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r34"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1XAEfboIs_U1IE3sndhCwVha5MZZ9hmwK",
@@ -1045,7 +1089,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r30"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-13rIX-9MDBTQ-JCWyUDikAhMd-SnuXIho",
@@ -1071,7 +1116,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r29"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-170Qube0f1snK6W7FVIeWC2U8M2U9hsdS",
@@ -1098,7 +1144,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r26"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1p9suklJHkwRSUDzXKZQe19t3-daU79ri",
@@ -1129,7 +1176,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r9"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1PNknjDhmtTJlSqpvgIkLMt11kd4PvtpA",
@@ -1156,7 +1204,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r14"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1CkolimePTRdqxHd74GdbFYBXgfgM813h",
@@ -1183,7 +1232,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r13"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1NbcR-TOj-q5CRj7WBRinkjHxXQCTFNJi",
@@ -1209,7 +1259,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r12"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1pEIg-ar1r8GpQ0OBcnHugQhEFcFfotCm",
@@ -1237,7 +1288,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r22"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1S1HKMwvobUwGmOPsIzSjb29MM3HY50Ad",
@@ -1265,7 +1317,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r21"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1LroP2gxfbcXYtocT9dDamHweYUbU62PL",
@@ -1293,7 +1346,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r20"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1SJBV5vlFAuJNynB1gmTNYZS906DsLR-i",
@@ -1321,7 +1375,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r19"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1iXy4iZu2QBaZ17ZcX1NBGJKiVGXX6waz",
@@ -1349,7 +1404,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r18"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1uXFz3seGlm6y2JlIb6aXljXuejEumswL",
@@ -1377,7 +1433,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r17"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1A6vRR0RktvT_eHp3js19jYaAykYiOZgt",
@@ -1408,7 +1465,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r11"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1nFaUbxFivIgjnrrgYq-i8ZA6fIdmVDYK",
@@ -1439,7 +1497,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r10"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1zUjwmOqTUKIyaO5EOdxsh5rfmUBQxj0g",
@@ -1470,7 +1529,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r8"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1zodUQazGtI8_mt8f-CFVTCXTq65C0AWH",
@@ -1501,7 +1561,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r7"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ACNF-D9AdIpPLbgxUbQwKU88JPVciPt0",
@@ -1532,7 +1593,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r6"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1i_rkqwl9Kjr57Wre2ykSL5rs0_kYMdF9",
@@ -1559,7 +1621,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r41"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1jlldl08eZzHhFYu8KL-aGsmbGkEi6ZUS",
@@ -1586,7 +1649,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r40"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1AGZ_h5acIVs2xUT4bNYc4hQA9TSuIZ7y",
@@ -1613,7 +1677,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r39"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ep5LNVgYp9WaHawCt51PSkhbJW-K4OOi",
@@ -1640,7 +1705,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r16"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1LVn5C_AiTltrI2SMx9sP7Vjnt09USXL0",
@@ -1667,7 +1733,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r15"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1RBWD2Rx3QPfiJDfr87g1FbZ3tWVqjQsG",
@@ -1694,7 +1761,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r33"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1kq0208r6y7wcFHW7AN9C9EPrONf9HDZl",
@@ -1721,7 +1789,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r32"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1KUuJWwEtVLq1SkrSKDNuV6tIc6yrdkKY",
@@ -1748,7 +1817,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r31"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1MF4OlPYTUhUQLnLpmKzX24cBGEuwe-3j",
@@ -1775,7 +1845,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r4"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1e5lIN6HxSZLpUwRa5JR1_0eQnfNGIPMq",
@@ -1802,7 +1873,8 @@
         "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r3"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg",
@@ -1830,7 +1902,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r35"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1qKztW6c0qY2NrcJg2iPVEZnh9NSE0OR6",
@@ -1858,7 +1931,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r34"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1Gk_bpwwZvSew48UrafFf-x2nk7_6_YeS",
@@ -1887,7 +1961,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r33"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1qMqaBeMeXpgcWbR-b6UWFbDha_ujL_n9",
@@ -1915,7 +1990,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r32"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1t2qFHaTHkAVTrAvz-kpGSJDAO7cgv5Zr",
@@ -1943,7 +2019,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r28"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ETHS1umXeAo6fxjPTg6eFKZPlyg9WcMY",
@@ -1971,7 +2048,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r27"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1Pxm1s_49JGreinOAkiPrHF36fWHTxDAL",
@@ -1999,7 +2077,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r26"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1X53TVa78gwTe2PpjTm2j-YEtRFv2vHNn",
@@ -2027,7 +2106,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r25"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1WtxqKLD4dq81IqVxH841DD5xMGVaj6mf",
@@ -2058,7 +2138,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r24"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1T0MwieOSbCh3j3uui46EcgKOi7lXL0XC",
@@ -2089,7 +2170,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r23"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-10soBl4lGe-DBZdCMCpEg4O9xvoGf23mQ",
@@ -2120,7 +2202,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r22"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1Z8Hc5Y492hR_DeHAt9RIFneiv6HIp6xY",
@@ -2151,7 +2234,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r21"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1k2uYNctpDiybAd2MGu8JWYyDaeEhcZqL",
@@ -2182,7 +2266,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r20"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-13GgkK2Povgr2gEew60s0bikbgTS1x7DV",
@@ -2213,7 +2298,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r19"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1PBt416nosIHxFhgJOJCBW__PA-WshLMn",
@@ -2244,7 +2330,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r18"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1FERn3cE9dn0L7gwpmt_37o0yKtmYORa_",
@@ -2275,7 +2362,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r17"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1bENQnebyk3OzgpP7uQ-f6iUBuwMDS5QJ",
@@ -2301,7 +2389,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r12"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-12pgloab1Wn5MLPZvCfaxNa81V0VhYkzq",
@@ -2328,7 +2417,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r13"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1dc9tfVkLCeFV4RV-oGtTvPgaDdZGiZEP",
@@ -2355,7 +2445,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r11"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1R-mL6s0T366yAIDoaJJjft6JgizR85Hv",
@@ -2382,7 +2473,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r10"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-16jN2w0QM9DqtH3jpB9T1ofUZ9YWDzQQs",
@@ -2408,7 +2500,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r9"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1eWSy6nK3MhjqufvHp3oVk12kDw4ZGoZF",
@@ -2435,7 +2528,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r8"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-10WdlRt5gllbka3N7q43W3O-ZNYHMh5h1",
@@ -2462,7 +2556,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r7"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1eUhrKPN_PfA0Ua56hGoXLpCtvlLC_Mxd",
@@ -2489,7 +2584,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r6"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1wKeajeBwXeT_rwPY7V2PCgcHrqPHMMkG",
@@ -2516,7 +2612,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r5"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1PHuPDjttuXJgV_L0f7EHII6ys54KEMNn",
@@ -2543,7 +2640,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r4"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-11BJ6wPdFNrG5_MklKZJLeGmru5GQHvn1",
@@ -2569,7 +2667,8 @@
         "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r3"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY",
@@ -2596,7 +2695,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r38"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1VGa0Zzw4Eecs4wy6ikBQJ64Zj3eiTkfm",
@@ -2622,7 +2722,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r37"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1wCqT0P1WPAoejzibCWkkDzEQN0XjprAd",
@@ -2648,7 +2749,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r36"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-11wcZPdDflC2V4QqyNQkK5YEYXJCpzqvG",
@@ -2674,7 +2776,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r35"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1mCYCtSleGXsYJed-xTWpg5gjSsjQUnyq",
@@ -2701,7 +2804,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r34"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1GFOqG_RTMliUfYFFSEN8CS34wZz87-u2",
@@ -2728,7 +2832,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r33"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1afN5yEnjm-gQBKbM36crIP8_CZ3zYpXo",
@@ -2755,7 +2860,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r32"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1EPOV-H1KHmT55jxbR-yM7zoZY_O-YnOj",
@@ -2782,7 +2888,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r31"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1KswB68-iHk9S40Efdm_kQtnFGAfPRKDH",
@@ -2811,7 +2918,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r27"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1FTZIWCKbQJf7l4mScbVsZfi3c9K1RJDP",
@@ -2840,7 +2948,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r26"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1kGMC-Vj1bfjHY1HzneRHkjDxctumUP1_",
@@ -2869,7 +2978,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r25"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ctxLlhutuDiC7FomBFn6gE0_QAIixUy1",
@@ -2898,7 +3008,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r22"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1okxA0NqH9_6ENAGC0hcTTLsfISUYsAC0",
@@ -2928,7 +3039,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r24"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ElRgAhqTtTw2CnaKK1h5YML-8DDCw8vj",
@@ -2958,7 +3070,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r23"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1qGq5KxPJcRUXKeoGp-pC7ncYL5Cwm5l0",
@@ -2985,7 +3098,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r18"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1y8GTieI77c1ul3K2Zad0FDRUy3w2M5qd",
@@ -3016,7 +3130,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r17"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1MiMJM-QcZInBID2uyKgbfoww1XURWaVQ",
@@ -3054,7 +3169,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r16"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1IDpZCXmMLpDQvDCpd4uC4rAvx7r--011",
@@ -3083,7 +3199,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r21"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1UGJ6FXktEpfsQ7_1yylLrW27MKxaf6-1",
@@ -3113,7 +3230,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r20"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1nS2uyo68fYjEeAR1c8Oh448hiXzqqrQv",
@@ -3143,7 +3261,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r19"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1L2US_oJqoO8-S7zcPW6xqeVe1STCxuMe",
@@ -3170,7 +3289,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r12"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-",
@@ -3189,12 +3309,16 @@
       "sourceUrl": "https://drive.google.com/file/d/1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-/view?usp=drivesdk",
       "sourceFile": "sports-1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-.hwp",
       "sha256": "c8bec2cd5aca865e28a7d7031b1ffe779c2f7591074665766683b4f7443094db",
-      "lessonIds": [],
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r11"
+      ],
       "candidateLessonIds": [
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r11"
       ],
-      "matchStatus": "needs-content-review",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "matchStatus": "body-reviewed-title-punctuation",
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json",
+      "matchEvidence": "Body grade 5, healthy growth subunit and period 17 agree; title differs only by final punctuation."
     },
     {
       "id": "sports-assessment-19hs8F4Tg4ZXWobCs6c7gd9GkThXEhNoK",
@@ -3221,7 +3345,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r10"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-13AtSgThJqPlPaYyvgFqFdjZuXviuwpBP",
@@ -3247,7 +3372,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r9"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1Qrst91Fqz-F09JI1_8le56he2Oh0-xYt",
@@ -3275,7 +3401,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r8"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1KkqWOewef6OHgvv8hDlK_SX35WaEVl0U",
@@ -3302,7 +3429,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r7"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1bCwHEJWFR36xHich0LuZMo7nqjiue-AN",
@@ -3329,7 +3457,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r6"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1JZuxvMLM46AD0Q-CiVdl1miV9MslEXuu",
@@ -3356,7 +3485,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r5"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1VJvy3JAwF6lOgCDgq_maCRBmgm6aA_2S",
@@ -3383,7 +3513,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r4"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     },
     {
       "id": "sports-assessment-1ecCDlue7jHLU6-MyuKw295qYeZvdZK7m",
@@ -3409,7 +3540,8 @@
         "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r3"
       ],
       "matchStatus": "exact-title-domain-period",
-      "contentStatus": "original-acquired-not-yet-extracted"
+      "contentStatus": "structured-fields-extracted",
+      "contentFile": "assessment-content-sports-2022.json"
     }
   ],
   "note": "Original files are archived locally. Lesson matches require exact title, grade, domain and intersecting source periods; rubric extraction remains pending."

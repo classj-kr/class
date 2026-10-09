@@ -1,0 +1,106 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=6&term=1&textbookSeq=e7b187329f18484daff50a873de4ec20&order=1&tabType=UD002",
+  "textbook": "과학 6-1(학습 보완 자료)\n권치순",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "ef98994391b44932ac8b7c51d5408256",
+          "title": "수행 평가 계획서",
+          "downloadPath": "D:\\Downloads\\[과학 6-1 보완 단원] 수행평가계획서.hwp"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "4d621091b7294f2da4bc5c90788fc799",
+          "title": "수행 평가_1단원",
+          "downloadPath": "D:\\Downloads\\[과학 3-1] 1단원_수행평가(학습보완).hwp"
+        }
+      ],
+      "title": "1 힘과 우리 생활"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "c219b6f9a15d443d99ab5ebaab0cbc2a",
+          "title": "수행 평가_2단원",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 2단원_수행평가(학습보완).hwp"
+        }
+      ],
+      "title": "2 지구와 바다"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "b94fe71e616c423ca13ad59086320e50",
+          "title": "수행 평가_4단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 4단원_수행평가_1회(학습보완).hwp"
+        },
+        {
+          "resourceId": "ee006b82ec4e44dcb85f1f9830d600bb",
+          "title": "수행 평가_4단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 4단원_수행평가_2회(학습보완).hwp"
+        },
+        {
+          "resourceId": "8971aceaf39c40b0a7a9b188e97ee2e5",
+          "title": "수행 평가_4단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 3-2] 4단원_수행평가_3회(학습보완).hwp"
+        }
+      ],
+      "title": "4 감염병과 건강한 생활"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "d0bf62c282124cd8bdb8de380b2ce06d",
+          "title": "수행 평가_1단원",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 1단원_수행평가(학습보완).hwp"
+        }
+      ],
+      "title": "1 밤하늘 관찰"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "c6603fea7c824649b9b48194d11d00b5",
+          "title": "수행 평가_3단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 3단원_수행평가_1회(학습보완).hwp"
+        },
+        {
+          "resourceId": "4f04e631d2e34ada91e99637e20cb334",
+          "title": "수행 평가_3단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 3단원_수행평가_2회(학습보완).hwp"
+        },
+        {
+          "resourceId": "bc506e37f1be4c6ca54967f77617de44",
+          "title": "수행 평가_3단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 3단원_수행평가_3회(학습보완).hwp"
+        }
+      ],
+      "title": "3 여러 가지 기체"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "94552f3427b642ec92fa91bb411ace84",
+          "title": "수행 평가_4단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 4단원_수행평가_1회(학습보완).hwp"
+        },
+        {
+          "resourceId": "811a397d0c474f8fb01b5999758eb3de",
+          "title": "수행 평가_4단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 4단원_수행평가_2회(학습보완).hwp"
+        },
+        {
+          "resourceId": "3562fd1d72ca487a95b5b0c337291a4d",
+          "title": "수행 평가_4단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 4-2] 4단원_수행평가_3회(학습보완).hwp"
+        }
+      ],
+      "title": "4 기후변화와 우리 생활"
+    }
+  ]
+}

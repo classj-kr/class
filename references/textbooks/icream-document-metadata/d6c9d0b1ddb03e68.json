@@ -1,0 +1,93 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/3%ED%95%99%EB%85%84_%EC%B2%B4%EC%9C%A1_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "체육",
+  "fileName": "3학년_체육_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 3,
+      "semester": 1,
+      "listedUnit": "1. 운동~3. 스포츠",
+      "sourceManifest": "3-1.json"
+    },
+    {
+      "grade": 3,
+      "semester": 2,
+      "listedUnit": "1. 운동~3. 스포츠",
+      "sourceManifest": "3-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "3학년_체육_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1-1 체력을 기르는 기본 움직임",
+          "title": "체력을 기르는 움직임을 알고 실천하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1-1 체력을 기르는 기본 움직임",
+          "title": "체력에 알맞은 운동 계획 세우고 실천하기",
+          "table": 0,
+          "sourceRow": 7
+        },
+        {
+          "unit": "1-2건강 생활 습관",
+          "title": "바른 자세를 알고 실천하기",
+          "table": 0,
+          "sourceRow": 10
+        },
+        {
+          "unit": "1-2건강 생활 습관",
+          "title": "체중 및 체형 관리하기",
+          "table": 0,
+          "sourceRow": 13
+        },
+        {
+          "unit": "2-1 움직임 요소",
+          "title": "움직임 요소 알아보기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "2-1 움직임 요소",
+          "title": "움직임의 방향과 공간을 생각하며 ‘꼬리잡기’ 게임하기",
+          "table": 0,
+          "sourceRow": 19
+        },
+        {
+          "unit": "2-2 이동 움직임, 비이동 움직임",
+          "title": "균형 잡기 움직임 기술 찾기",
+          "table": 0,
+          "sourceRow": 25
+        },
+        {
+          "unit": "2-3 조작 움직임",
+          "title": "‘배고픈 바구니’ 게임을 해요",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "2-3 조작 움직임",
+          "title": "도구의 특성을 이해하고, 도구를 타고 움직이기",
+          "table": 0,
+          "sourceRow": 31
+        },
+        {
+          "unit": "3-1 기본 움직임 표현",
+          "title": "도구를 사용하여 표현해요",
+          "table": 0,
+          "sourceRow": 37
+        },
+        {
+          "unit": "3-2 움직임 요소의 변화",
+          "title": "공간을 생각하며 표현해요",
+          "table": 0,
+          "sourceRow": 43
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

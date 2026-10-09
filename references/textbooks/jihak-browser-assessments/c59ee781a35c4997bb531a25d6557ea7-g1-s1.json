@@ -1,0 +1,51 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=1&term=1&textbookSeq=c59ee781a35c4997bb531a25d6557ea7&order=1&tabType=UD002",
+  "textbook": "우리나라 1-1\n국정",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "56c2b862174b4d27ae3c1a03a9a653e2",
+          "title": "교과 평어(통합교과 1-1)",
+          "downloadPath": "D:\\Downloads\\(1학년1학기) 통합교과 평어_지학사 (2).hwp"
+        },
+        {
+          "resourceId": "7977b04f1f66482ca78a5f744fc08681",
+          "title": "수행평가 계획서(우리나라 1-1)",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가계획서.hwp"
+        },
+        {
+          "resourceId": "bf9a5bb7f48c4baea7be5918674f4a23",
+          "title": "수행평가_우리나라_1회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가(1회).hwp"
+        },
+        {
+          "resourceId": "8fc556b03bb44ddf95daca7876ea1a0c",
+          "title": "수행평가_우리나라_2회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가(2회).hwp"
+        },
+        {
+          "resourceId": "a2ccfc326c0440fd83b55f3ceeabc37e",
+          "title": "수행평가_우리나라_3회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가(3회).hwp"
+        },
+        {
+          "resourceId": "110eed666f8f4cceac04dbdf17c5c269",
+          "title": "수행평가_우리나라_4회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가(4회).hwp"
+        },
+        {
+          "resourceId": "e6830e702ad44ac1b067cd6fd35f771d",
+          "title": "수행평가_우리나라_5회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가(5회).hwp"
+        },
+        {
+          "resourceId": "ac0190bd3d494ab49a960fa0c61024ff",
+          "title": "수행평가_우리나라_6회",
+          "downloadPath": "D:\\Downloads\\1-1_통합_우리나라_수행평가(6회).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    }
+  ]
+}

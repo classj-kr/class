@@ -1,0 +1,111 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=6&term=2&textbookSeq=c410ce7bd707456ca0f2428856dd0c2a&order=1&tabType=UD002",
+  "textbook": "과학 6-2\n권치순",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "7db4d76abe7a469595013b4f1e55737c",
+          "title": "수행 평가 계획서",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "732e93d4d2594efb846e1c6cb536132c",
+          "title": "교과 평어_과학 6-2",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 교과평어(지학사).hwp"
+        },
+        {
+          "resourceId": "08e4502675e34a6a84b6b06111d015dc",
+          "title": "교과 평어_과학 6-2",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 교과 평어(지학사).xlsx"
+        },
+        {
+          "resourceId": "4035e98ea8054be7a9ac91bb2059d33a",
+          "title": "협력 학습 평가(양식)",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 협력학습평가(양식).hwp"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "2c129d83998a4f699205c9be5cdd106a",
+          "title": "수행 평가_1단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 1단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "a644e71f2be04fccae8e20b31b30b4c8",
+          "title": "수행 평가_1단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 1단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "be4d0f671499411883f8be553cadac21",
+          "title": "수행 평가_1단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 1단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "1 계절의 변화"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "0d65c3cb71a94aa09ca9c561c43e626a",
+          "title": "수행 평가_2단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 2단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "3459f9912a1d4e11b7414e104a9c4baa",
+          "title": "수행 평가_2단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 2단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "d864c088d6d0494f8e12dd6744b768fe",
+          "title": "수행 평가_2단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 2단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "2 물질의 연소"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "f604341ad5ce46098b288ba704211716",
+          "title": "수행 평가_3단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 3단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "1eb40f27d2724e51a8c89f5977e10ef8",
+          "title": "수행 평가_3단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 3단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "9ef5bacbe45a4736858952463020dff3",
+          "title": "수행 평가_3단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 3단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "3 전기의 이용"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "dc19f3c9283a4d618a915f8f9a90a8b1",
+          "title": "수행 평가_4단원_1회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 4단원_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "4add6b719ada42ab9658f535b27fca93",
+          "title": "수행 평가_4단원_2회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 4단원_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "e7cdb79933b14025959e2fdf42fbdd58",
+          "title": "수행 평가_4단원_3회",
+          "downloadPath": "D:\\Downloads\\[과학 6-2] 4단원_수행평가_3회.hwp"
+        }
+      ],
+      "title": "4 과학과 나의 진로"
+    }
+  ]
+}

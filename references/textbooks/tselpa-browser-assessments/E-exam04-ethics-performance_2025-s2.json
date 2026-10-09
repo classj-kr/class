@@ -1,0 +1,125 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=4&exam=E-exam04-ethics_2025&tab=E-exam04-ethics-performance_2025",
+  "groups": [
+    {
+      "title": "5. 바람직한 디지털 사회",
+      "lessons": [
+        {
+          "action": "downloadFile('2583480');",
+          "resourceId": "2583480",
+          "title": "도덕_4-2_5단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_5단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2583481');",
+          "resourceId": "2583481",
+          "title": "도덕_4-2_5단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_5단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2583482');",
+          "resourceId": "2583482",
+          "title": "도덕_4-2_5단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_5단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2758610');",
+          "resourceId": "2758610",
+          "title": "도덕_4-2_5단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    },
+    {
+      "title": "6. 통일로 가는 한 걸음",
+      "lessons": [
+        {
+          "action": "downloadFile('2583485');",
+          "resourceId": "2583485",
+          "title": "도덕_4-2_6단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_6단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2583486');",
+          "resourceId": "2583486",
+          "title": "도덕_4-2_6단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_6단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2583487');",
+          "resourceId": "2583487",
+          "title": "도덕_4-2_6단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_6단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2758611');",
+          "resourceId": "2758611",
+          "title": "도덕_4-2_6단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    },
+    {
+      "title": "7. 자연은 소중해요",
+      "lessons": [
+        {
+          "action": "downloadFile('2583491');",
+          "resourceId": "2583491",
+          "title": "도덕_4-2_7단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_7단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2583492');",
+          "resourceId": "2583492",
+          "title": "도덕_4-2_7단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_7단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2583493');",
+          "resourceId": "2583493",
+          "title": "도덕_4-2_7단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_7단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2758779');",
+          "resourceId": "2758779",
+          "title": "도덕_4-2_7단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    },
+    {
+      "title": "8. 비무장 지대, 평화와 생명의 땅을 지켜요!",
+      "lessons": [
+        {
+          "action": "downloadFile('2583497');",
+          "resourceId": "2583497",
+          "title": "도덕_4-2_8단원_수행평가_1회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_8단원_수행평가_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2583498');",
+          "resourceId": "2583498",
+          "title": "도덕_4-2_8단원_수행평가_2회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_8단원_수행평가_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2583499');",
+          "resourceId": "2583499",
+          "title": "도덕_4-2_8단원_수행평가_3회",
+          "downloadPath": "D:\\Downloads\\도덕4-2_8단원_수행평가_3회.hwp"
+        },
+        {
+          "action": "downloadFile('2758781');",
+          "resourceId": "2758781",
+          "title": "도덕_4-2_8단원_평가자료(지도서)",
+          "downloadPath": null,
+          "status": "alternate-download-method-pending"
+        }
+      ]
+    }
+  ]
+}

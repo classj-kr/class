@@ -1,0 +1,225 @@
+{
+  "book": "음악 5(주대창)",
+  "grade": "107005",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-1_수행평가.hwp",
+          "resourceId": "CN030-546886",
+          "title": "수행평가 - 1-1"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-3_수행평가.hwp",
+          "resourceId": "CN030-546888",
+          "title": "수행평가 - 1-3"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-5_수행평가.hwp",
+          "resourceId": "CN030-547864",
+          "title": "수행평가 - 1-5"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-7_수행평가.hwp",
+          "resourceId": "CN030-547865",
+          "title": "수행평가 - 1-7"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-2_수행평가.hwp",
+          "resourceId": "CN030-546887",
+          "title": "수행평가 - 1-2"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-4_수행평가.hwp",
+          "resourceId": "CN030-581807",
+          "title": "수행평가 - 1-4"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-6_수행평가.hwp",
+          "resourceId": "CN030-579054",
+          "title": "수행평가 - 1-6"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_1-8_수행평가.hwp",
+          "resourceId": "CN030-579055",
+          "title": "수행평가 - 1-8"
+        }
+      ],
+      "unit": "1.음악의 아름다움을 느껴요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-1_수행평가.hwp",
+          "resourceId": "CN030-579056",
+          "title": "수행평가 - 2-1"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-3_수행평가.hwp",
+          "resourceId": "CN030-582068",
+          "title": "수행평가 - 2-3"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-5_수행평가.hwp",
+          "resourceId": "CN030-582070",
+          "title": "수행평가 - 2-5"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-7_수행평가.hwp",
+          "resourceId": "CN030-582072",
+          "title": "수행평가 - 2-7"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-2_수행평가.hwp",
+          "resourceId": "CN030-579057",
+          "title": "수행평가 - 2-2"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-4_수행평가.hwp",
+          "resourceId": "CN030-582069",
+          "title": "수행평가 - 2-4"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-6_수행평가.hwp",
+          "resourceId": "CN030-582071",
+          "title": "수행평가 - 2-6"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_2-8_수행평가.hwp",
+          "resourceId": "CN030-582073",
+          "title": "수행평가 - 2-8"
+        }
+      ],
+      "unit": "2.음악과 친구가 되어요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-1_수행평가.hwp",
+          "resourceId": "CN030-590403",
+          "title": "수행평가 - 3-1"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-3_수행평가.hwp",
+          "resourceId": "CN030-590349",
+          "title": "수행평가 - 3-3"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-5_수행평가.hwp",
+          "resourceId": "CN030-590351",
+          "title": "수행평가 - 3-5"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-7_수행평가.hwp",
+          "resourceId": "CN030-590353",
+          "title": "수행평가 - 3-7"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-2_수행평가.hwp",
+          "resourceId": "CN030-590708",
+          "title": "수행평가 - 3-2"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-4_수행평가.hwp",
+          "resourceId": "CN030-590350",
+          "title": "수행평가 - 3-4"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-6_수행평가.hwp",
+          "resourceId": "CN030-590352",
+          "title": "수행평가 - 3-6"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_3-8_수행평가.hwp",
+          "resourceId": "CN030-590709",
+          "title": "수행평가 - 3-8"
+        }
+      ],
+      "unit": "3.음악의 즐거움을 함께해요"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-1_수행평가.hwp",
+          "resourceId": "CN030-589762",
+          "title": "수행평가 - 4-1"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-3_수행평가.hwp",
+          "resourceId": "CN030-589764",
+          "title": "수행평가 - 4-3"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-5_수행평가.hwp",
+          "resourceId": "CN030-590500",
+          "title": "수행평가 - 4-5"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-7_수행평가.hwp",
+          "resourceId": "CN030-590522",
+          "title": "수행평가 - 4-7"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-2_수행평가.hwp",
+          "resourceId": "CN030-589763",
+          "title": "수행평가 - 4-2"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-4_수행평가.hwp",
+          "resourceId": "CN030-589765",
+          "title": "수행평가 - 4-4"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-6_수행평가.hwp",
+          "resourceId": "CN030-590510",
+          "title": "수행평가 - 4-6"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_음악(주) 5_4-8_수행평가.hwp",
+          "resourceId": "CN030-590532",
+          "title": "수행평가 - 4-8"
+        }
+      ],
+      "unit": "4.음악의 행복을 나누어요"
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106536&term=108001&grade=107005",
+  "observedAt": "2026-10-09T10:43:46.041Z"
+}

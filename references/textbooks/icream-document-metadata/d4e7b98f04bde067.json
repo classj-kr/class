@@ -1,0 +1,111 @@
+{
+  "url": "https://download.i-scream.co.kr/datafiles/evaluation2/6%ED%95%99%EB%85%84_%EC%8B%A4%EA%B3%BC_%EC%88%98%ED%96%89%ED%8F%89%EA%B0%80.hwp",
+  "subject": "실과",
+  "fileName": "6학년_실과_수행평가.hwp",
+  "contexts": [
+    {
+      "grade": 6,
+      "semester": 1,
+      "listedUnit": "1. 가정생활과 진로~7. 로봇과 융합 기술",
+      "sourceManifest": "6-1.json"
+    },
+    {
+      "grade": 6,
+      "semester": 2,
+      "listedUnit": "1. 가정생활과 진로~7. 로봇과 융합 기술",
+      "sourceManifest": "6-2.json"
+    }
+  ],
+  "documents": [
+    {
+      "member": "6학년_실과_수행평가.hwp",
+      "assessments": [
+        {
+          "unit": "1. 가정생활과 진로",
+          "title": "건강한 가정생활을 위해 배려와 돌봄 실천하기",
+          "table": 0,
+          "sourceRow": 4
+        },
+        {
+          "unit": "1. 가정생활과 진로",
+          "title": "진로를 탐색할 때 바람직한 태도 형성하기",
+          "table": 0,
+          "sourceRow": 8
+        },
+        {
+          "unit": "2. 농업 활동과 미래",
+          "title": "텃밭 정원 식물 관찰 보고서 작성하기",
+          "table": 0,
+          "sourceRow": 12
+        },
+        {
+          "unit": "2. 농업 활동과 미래",
+          "title": "농업과 농촌의 다양한 역할과 가치 이해하기",
+          "table": 0,
+          "sourceRow": 16
+        },
+        {
+          "unit": "3. 지속가능한 선택",
+          "title": "생활자원을 올바르게 사용하고 처리하기",
+          "table": 0,
+          "sourceRow": 20
+        },
+        {
+          "unit": "3. 지속가능한 선택",
+          "title": "생태 지향적 삶을 이해하고 환경 기념일을 알리는 만화 그리기",
+          "table": 0,
+          "sourceRow": 24
+        },
+        {
+          "unit": "4. 발명과 특허",
+          "title": "적정 기술을 이용한 발명품 사례 조사하기",
+          "table": 0,
+          "sourceRow": 28
+        },
+        {
+          "unit": "4. 발명과 특허",
+          "title": "특허 정보 검색 및 활용하기",
+          "table": 0,
+          "sourceRow": 32
+        },
+        {
+          "unit": "5. 생활 속 인공지능",
+          "title": "아날로그 데이터와 디지털 데이터의 특징 설명하기",
+          "table": 0,
+          "sourceRow": 36
+        },
+        {
+          "unit": "5. 생활 속 인공지능",
+          "title": "인공지능이 사회에 미치는 영향 탐색하기",
+          "table": 0,
+          "sourceRow": 40
+        },
+        {
+          "unit": "6. 식생활과 의생활",
+          "title": "상차림 계획서 작성하기",
+          "table": 0,
+          "sourceRow": 44
+        },
+        {
+          "unit": "6. 식생활과 의생활",
+          "title": "의생활 용품을 만드는 과정 이해하기",
+          "table": 0,
+          "sourceRow": 48
+        },
+        {
+          "unit": "7. 로봇과 융합 기술",
+          "title": "컴퓨터를 활용해 생활 속 문제 해결하기",
+          "table": 0,
+          "sourceRow": 52
+        },
+        {
+          "unit": "7. 로봇과 융합 기술",
+          "title": "미래 로봇의 모습 상상하기",
+          "table": 0,
+          "sourceRow": 56
+        }
+      ]
+    }
+  ],
+  "status": "extracted"
+}

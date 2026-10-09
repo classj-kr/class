@@ -1,0 +1,31 @@
+{
+  "book": "기억 2-2",
+  "curriculum": "year-2022",
+  "grade": "2학년",
+  "rows": [
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10004312",
+      "title": "수행 평가 1회",
+      "unit": "2. 함께 골라요(주제)"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10004313",
+      "title": "수행 평가 2회",
+      "unit": "2. 함께 골라요(주제)"
+    },
+    {
+      "context": "2 단원 공통자료",
+      "resourceId": "10004314",
+      "title": "수행 평가 3회",
+      "unit": "2. 함께 골라요(주제)"
+    }
+  ],
+  "semester": "2학기",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1404&gradeCode=02&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002#",
+  "bookLabel": "기억 2-2",
+  "sourceId": "1404",
+  "observedAt": "2026-10-09",
+  "loadConfirmed": true
+}

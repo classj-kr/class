@@ -1,0 +1,226 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=E-exam06-math-H_2026&tab=E-exam06-math-H_2026_01",
+  "groups": [
+    {
+      "title": "공통자료",
+      "lessons": [
+        {
+          "action": "downloadFile('2874242');",
+          "resourceId": "2874242",
+          "title": "수학6-2(한)_수업 및 평가 계획서",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수업및평가계획서.hwp"
+        }
+      ]
+    },
+    {
+      "title": "1. 분수의 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2874417');",
+          "resourceId": "2874417",
+          "title": "수학6-2(한)_수행평가_1단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_1단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874418');",
+          "resourceId": "2874418",
+          "title": "수학6-2(한)_수행평가_1단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_1단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874419');",
+          "resourceId": "2874419",
+          "title": "수학6-2(한)_수행평가_1단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_1단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2874420');",
+          "resourceId": "2874420",
+          "title": "수학6-2(한)_수행평가_1단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_1단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874421');",
+          "resourceId": "2874421",
+          "title": "수학6-2(한)_수행평가_1단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_1단원_07차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "2. 소수의 나눗셈",
+      "lessons": [
+        {
+          "action": "downloadFile('2874422');",
+          "resourceId": "2874422",
+          "title": "수학6-2(한)_수행평가_2단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_2단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874423');",
+          "resourceId": "2874423",
+          "title": "수학6-2(한)_수행평가_2단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_2단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874424');",
+          "resourceId": "2874424",
+          "title": "수학6-2(한)_수행평가_2단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_2단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874425');",
+          "resourceId": "2874425",
+          "title": "수학6-2(한)_수행평가_2단원_06차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_2단원_06차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2874426');",
+          "resourceId": "2874426",
+          "title": "수학6-2(한)_수행평가_2단원_09차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_2단원_09차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "3. 공간과 입체",
+      "lessons": [
+        {
+          "action": "downloadFile('2874427');",
+          "resourceId": "2874427",
+          "title": "수학6-2(한)_수행평가_3단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_3단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874428');",
+          "resourceId": "2874428",
+          "title": "수학6-2(한)_수행평가_3단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_3단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874429');",
+          "resourceId": "2874429",
+          "title": "수학6-2(한)_수행평가_3단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_3단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874430');",
+          "resourceId": "2874430",
+          "title": "수학6-2(한)_수행평가_3단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_3단원_08차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874431');",
+          "resourceId": "2874431",
+          "title": "수학6-2(한)_수행평가_3단원_08차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_3단원_08차시_2회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "4. 비례식과 비례배분",
+      "lessons": [
+        {
+          "action": "downloadFile('2874432');",
+          "resourceId": "2874432",
+          "title": "수학6-2(한)_수행평가_4단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_4단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874433');",
+          "resourceId": "2874433",
+          "title": "수학6-2(한)_수행평가_4단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_4단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874434');",
+          "resourceId": "2874434",
+          "title": "수학6-2(한)_수행평가_4단원_05차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_4단원_05차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874435');",
+          "resourceId": "2874435",
+          "title": "수학6-2(한)_수행평가_4단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_4단원_07차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874436');",
+          "resourceId": "2874436",
+          "title": "수학6-2(한)_수행평가_4단원_08차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_4단원_08차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "5. 원의 넓이",
+      "lessons": [
+        {
+          "action": "downloadFile('2874446');",
+          "resourceId": "2874446",
+          "title": "수학6-2(한)_수행평가_5단원_03차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_5단원_03차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874447');",
+          "resourceId": "2874447",
+          "title": "수학6-2(한)_수행평가_5단원_04차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_5단원_04차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874448');",
+          "resourceId": "2874448",
+          "title": "수학6-2(한)_수행평가_5단원_04차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_5단원_04차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2874449');",
+          "resourceId": "2874449",
+          "title": "수학6-2(한)_수행평가_5단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_5단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874450');",
+          "resourceId": "2874450",
+          "title": "수학6-2(한)_수행평가_5단원_07차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_5단원_07차시_1회.hwp"
+        }
+      ]
+    },
+    {
+      "title": "6. 원기둥, 원뿔, 구",
+      "lessons": [
+        {
+          "action": "downloadFile('2874451');",
+          "resourceId": "2874451",
+          "title": "수학6-2(한)_수행평가_6단원_02차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_6단원_02차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874452');",
+          "resourceId": "2874452",
+          "title": "수학6-2(한)_수행평가_6단원_0304차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_6단원_0304차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874453');",
+          "resourceId": "2874453",
+          "title": "수학6-2(한)_수행평가_6단원_0304차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_6단원_0304차시_2회.hwp"
+        },
+        {
+          "action": "downloadFile('2874454');",
+          "resourceId": "2874454",
+          "title": "수학6-2(한)_수행평가_6단원_06차시_1회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_6단원_06차시_1회.hwp"
+        },
+        {
+          "action": "downloadFile('2874455');",
+          "resourceId": "2874455",
+          "title": "수학6-2(한)_수행평가_6단원_06차시_2회",
+          "downloadPath": "D:\\Downloads\\수학(한)6-2_수행평가_6단원_06차시_2회.hwp"
+        }
+      ]
+    }
+  ]
+}

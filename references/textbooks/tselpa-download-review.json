@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-09",
+  "status": "individual-download-confirmed-bulk-download-unresolved",
+  "sourceUrl": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=2&g=6&exam=&tab=E-exam06-ko-A-performance_2026",
+  "observations": [
+    "로그아웃 메뉴와 국어 6-2 수행평가 목록 표시 확인",
+    "2878458 수행평가 다운로드 및 미리보기 버튼을 눌렀으나 파일 또는 미리보기 창이 열리지 않음",
+    "진도표 2399119의 화면에 명시된 다운로드 경로에서도 빈 페이지 표시, 다운로드 이벤트와 신규 파일 없음"
+  ],
+  "attemptedResourceIds": [
+    "2878458",
+    "2399119"
+  ],
+  "downloadedFiles": null,
+  "rights": {
+    "source": "평가자료 목록 페이지의 T셀파 평가자료 무단 배포 주의사항",
+    "observedNotice": "T셀파 평가자료의 저작권은 ㈜천재교육, ㈜천재교과서에 있으며, 당사의 허락없이 무단으로 이를 유출하거나, 무단으로 타 사이트에 게재하는 경우 저작권법에 위배됩니다.",
+    "sitePublicationPermission": "not-established",
+    "handling": "수집 원본과 출처 기록은 비공개 보관. 이 문서는 사이트 게재 허락을 의미하지 않음."
+  },
+  "successfulMethod": "개별 다운로드 링크 키보드 활성화 + 브라우저 다운로드 이벤트 저장",
+  "latestObservation": "개별 HWP·PDF·ZIP 원본 1576개 저장 성공. 폴더 아이콘 자료 2392457은 hiddenFrame의 download_files.html로 연결되며, 해당 다운로드 페이지는 진행률 0%와 다운로드 이벤트 없음. ZIP 파일 형식 자체의 실패로 단정하지 않음.",
+  "acquiredCountSource": "assessment-tselpa-acquisition-review.json",
+  "folderDownloadReview": {
+    "resourceId": "2392457",
+    "pageUrl": "https://ele.tsherpa.co.kr/common/download_files.html?ids=2392457",
+    "visibleProgress": 0,
+    "downloadEvent": false,
+    "state": "download-service-stalled",
+    "underlyingCause": "not-established"
+  }
+}

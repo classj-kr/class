@@ -1,0 +1,160 @@
+{
+  "book": "영어 5(우길주)",
+  "grade": "107005",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5_수행평가.zip",
+          "resourceId": "CN030-564894",
+          "title": "수행평가 - 영어 (우) 5"
+        }
+      ],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-1_1_수행평가.zip",
+          "resourceId": "CN030-565048",
+          "title": "수행평가 - 5_1_1단원"
+        }
+      ],
+      "unit": "Lesson 1.Where Are You From?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-1_2_수행평가.zip",
+          "resourceId": "CN030-565049",
+          "title": "수행평가 - 5_1_2단원"
+        }
+      ],
+      "unit": "Lesson 2.Whose Umbrella Is This?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-1_3_수행평가.zip",
+          "resourceId": "CN030-565050",
+          "title": "수행평가 - 5_1_3단원"
+        }
+      ],
+      "unit": "Lesson 3.My Favorite Subject Is Art"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-1_4_수행평가.zip",
+          "resourceId": "CN030-565051",
+          "title": "수행평가 - 5_1_4단원"
+        }
+      ],
+      "unit": "Lesson 4.She Has Long Curly Hair"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-1_5_수행평가.zip",
+          "resourceId": "CN030-565052",
+          "title": "수행평가 - 5_1_5단원"
+        }
+      ],
+      "unit": "Lesson 5.Can I Take a Picture?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-1_6_수행평가.zip",
+          "resourceId": "CN030-565053",
+          "title": "수행평가 - 5_1_6단원"
+        }
+      ],
+      "unit": "Lesson 6.I Want to Grow Tomatoes"
+    },
+    {
+      "rows": [],
+      "unit": "Review 1."
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-2_7_수행평가.zip",
+          "resourceId": "CN030-591003",
+          "title": "수행평가 - 5_2_7단원"
+        }
+      ],
+      "unit": "Lesson 7.I Visited My Grandparents"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-2_8_수행평가.zip",
+          "resourceId": "CN030-591004",
+          "title": "수행평가 - 5_2_8단원"
+        }
+      ],
+      "unit": "Lesson 8.What Time Do You Get Up?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-2_9_수행평가.zip",
+          "resourceId": "CN030-591005",
+          "title": "수행평가 - 5_2_9단원"
+        }
+      ],
+      "unit": "Lesson 9.How Much Are These Socks?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-2_10_수행평가.zip",
+          "resourceId": "CN030-591006",
+          "title": "수행평가 - 5_2_10단원"
+        }
+      ],
+      "unit": "Lesson 10.Would You Like Some Spaghetti?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-2_11_수행평가.zip",
+          "resourceId": "CN030-591007",
+          "title": "수행평가 - 5_2_11단원"
+        }
+      ],
+      "unit": "Lesson 11.Where Is the Fun Park?"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_영어(우) 5-2_12_수행평가.zip",
+          "resourceId": "CN030-591008",
+          "title": "수행평가 - 5_2_12단원"
+        }
+      ],
+      "unit": "Lesson 12.What Will You Do This Winter?"
+    },
+    {
+      "rows": [],
+      "unit": "Review 2."
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106565&term=108001&grade=107005",
+  "observedAt": "2026-10-09T10:43:44.674Z"
+}

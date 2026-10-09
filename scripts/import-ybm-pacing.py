@@ -390,7 +390,7 @@ def run():
     report = {'reviewedOn': '2026-10-09', 'plans': [{k: p[k] for k in ('id', 'sourceId', 'grade', 'semester', 'subject')} |
              {'sourcePages': sorted({l['sourcePage'] for l in p['lessons']}), 'lessonRows': len(p['lessons'])} for p in plans],
              'remaining': [{'contentId': s['contentId'], 'subject': s['subject'], 'status': 'unreviewed-pages-remain'}
-                           for s in MANIFEST['sources'] if s['contentId'] not in parsers or s['contentId'] in ['C20250807032904RULhs','C20240816020127AMS2V']]}
+                           for s in MANIFEST['sources'] if s['contentId'] not in parsers or s['contentId']=='C20250807032904RULhs']}
     (ROOT / 'references/textbooks/ybm-normalization-review.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     subprocess.run(['node', str(ROOT / 'scripts/build-textbook-coverage.cjs')], check=True)
     print(json.dumps({'plans': len(plans), 'lessonRows': sum(len(p['lessons']) for p in plans)}))

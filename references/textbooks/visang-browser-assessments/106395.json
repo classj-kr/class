@@ -1,0 +1,279 @@
+{
+  "book": "수학 4-1(방정숙)",
+  "grade": "107004",
+  "semester": "108001",
+  "units": [
+    {
+      "rows": [],
+      "unit": "학기 자료 / 중간 평가 / 학기말 평가 / 교과평어"
+    },
+    {
+      "rows": [],
+      "unit": "4학년이 되었어요!"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_1_과정 중심 평가 문제.hwp",
+          "resourceId": "CN030-494216",
+          "title": "과정 중심 평가 문제 - 1.큰 수"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_1_수행 평가(2회).hwp",
+          "resourceId": "CN030-494218",
+          "title": "수행 평가(2회) - 1.큰 수"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_1_수행 평가(4회).hwp",
+          "resourceId": "CN030-494220",
+          "title": "수행 평가(4회) - 1.큰 수"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_1_수행 평가(1회).hwp",
+          "resourceId": "CN030-494217",
+          "title": "수행 평가(1회) - 1.큰 수"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_1_수행 평가(3회).hwp",
+          "resourceId": "CN030-494219",
+          "title": "수행 평가(3회) - 1.큰 수"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_1_수행 평가(5회).hwp",
+          "resourceId": "CN030-494221",
+          "title": "수행 평가(5회) - 1.큰 수"
+        }
+      ],
+      "unit": "1.큰 수"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_2_수행 평가(2회).hwp",
+          "resourceId": "CN030-593475",
+          "title": "수행 평가(2회) - 2.각도"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_2_수행 평가(4회).hwp",
+          "resourceId": "CN030-593477",
+          "title": "수행 평가(4회) - 2.각도"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_2_수행 평가(6회).hwp",
+          "resourceId": "CN030-593479",
+          "title": "수행 평가(6회) - 2.각도"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_2_수행 평가(1회).hwp",
+          "resourceId": "CN030-593474",
+          "title": "수행 평가(1회) - 2.각도"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_2_수행 평가(3회).hwp",
+          "resourceId": "CN030-593476",
+          "title": "수행 평가(3회) - 2.각도"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_2_수행 평가(5회).hwp",
+          "resourceId": "CN030-593478",
+          "title": "수행 평가(5회) - 2.각도"
+        }
+      ],
+      "unit": "2.각도"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(1회).hwp",
+          "resourceId": "CN030-593499",
+          "title": "수행 평가(1회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(3회).hwp",
+          "resourceId": "CN030-593501",
+          "title": "수행 평가(3회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(5회).hwp",
+          "resourceId": "CN030-593503",
+          "title": "수행 평가(5회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(7회).hwp",
+          "resourceId": "CN030-593505",
+          "title": "수행 평가(7회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(2회).hwp",
+          "resourceId": "CN030-593500",
+          "title": "수행 평가(2회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(4회).hwp",
+          "resourceId": "CN030-593502",
+          "title": "수행 평가(4회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(6회).hwp",
+          "resourceId": "CN030-593504",
+          "title": "수행 평가(6회) - 3.곱셈과 나눗셈"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_3_수행 평가(8회).hwp",
+          "resourceId": "CN030-593506",
+          "title": "수행 평가(8회) - 3.곱셈과 나눗셈"
+        }
+      ],
+      "unit": "3.곱셈과 나눗셈"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_4_과정 중심 평가 문제.hwp",
+          "resourceId": "CN030-494580",
+          "title": "과정 중심 평가 문제 - 4.삼각형"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_4_수행 평가(1회).hwp",
+          "resourceId": "CN030-494581",
+          "title": "수행 평가(1회) - 4.삼각형"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_4_수행 평가(3회).hwp",
+          "resourceId": "CN030-494583",
+          "title": "수행 평가(3회) - 4.삼각형"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_4_수행 평가(2회).hwp",
+          "resourceId": "CN030-494582",
+          "title": "수행 평가(2회) - 4.삼각형"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_4_수행 평가(4회).hwp",
+          "resourceId": "CN030-494584",
+          "title": "수행 평가(4회) - 4.삼각형"
+        }
+      ],
+      "unit": "4.삼각형"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_5_수행 평가(1회).hwp",
+          "resourceId": "CN030-593526",
+          "title": "수행 평가(1회) - 5.막대그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_5_수행 평가(3회).hwp",
+          "resourceId": "CN030-593528",
+          "title": "수행 평가(3회) - 5.막대그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_5_수행 평가(5회).hwp",
+          "resourceId": "CN030-593530",
+          "title": "수행 평가(5회) - 5.막대그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_5_수행 평가(2회).hwp",
+          "resourceId": "CN030-593527",
+          "title": "수행 평가(2회) - 5.막대그래프"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_5_수행 평가(4회).hwp",
+          "resourceId": "CN030-593529",
+          "title": "수행 평가(4회) - 5.막대그래프"
+        }
+      ],
+      "unit": "5.막대그래프"
+    },
+    {
+      "rows": [
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(1회).hwp",
+          "resourceId": "CN030-493942",
+          "title": "수행 평가(1회) - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(3회).hwp",
+          "resourceId": "CN030-493944",
+          "title": "수행 평가(3회) - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(5회).hwp",
+          "resourceId": "CN030-493946",
+          "title": "수행 평가(5회) - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(7회).hwp",
+          "resourceId": "CN030-493948",
+          "title": "수행 평가(7회) - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_과정 중심 평가 문제.hwp",
+          "resourceId": "CN030-493941",
+          "title": "과정 중심 평가 문제 - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(2회).hwp",
+          "resourceId": "CN030-493943",
+          "title": "수행 평가(2회) - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(4회).hwp",
+          "resourceId": "CN030-493945",
+          "title": "수행 평가(4회) - 6.관계와 규칙"
+        },
+        {
+          "assessmentType": "수행 평가",
+          "fileName": "[비상교육] 초등_수학(방) 4-1_6_수행 평가(6회).hwp",
+          "resourceId": "CN030-493947",
+          "title": "수행 평가(6회) - 6.관계와 규칙"
+        }
+      ],
+      "unit": "6.관계와 규칙"
+    },
+    {
+      "rows": [],
+      "unit": "4학년 1학기를 마무리해요."
+    }
+  ],
+  "url": "https://e.vivasam.com/evaluation/list?eduClsCode=2022&textbookCd=106395&term=108001&grade=107004",
+  "observedAt": "2026-10-09T10:43:38.283Z"
+}

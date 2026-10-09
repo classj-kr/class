@@ -1,0 +1,101 @@
+{
+  "url": "https://tsol.jihak.co.kr/evaluation/performance.ez?grade=4&term=2&textbookSeq=d317967beff7419db70f9ee7e93829e6&order=1&tabType=UD002",
+  "textbook": "사회4-2\n이간용",
+  "groups": [
+    {
+      "lessons": [
+        {
+          "resourceId": "cd267b7c736949769f2731345a8426b7",
+          "title": "수행평가 계획서",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 수행평가 계획서.hwp"
+        },
+        {
+          "resourceId": "7e0aef37e2eb42609df25c440e3dbfd0",
+          "title": "교과평어(사회과 4-2)",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 교과 평어(지학사).hwp"
+        },
+        {
+          "resourceId": "5940ac3e5a0f49c9b792c7d20cbd2346",
+          "title": "교과평어(사회과 4-2)",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 교과 평어(지학사).xlsx"
+        }
+      ],
+      "title": "공통 자료"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "31b356594b434cf5b4a15cb2addf6d2f",
+          "title": "수행평가_1단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 1단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "bd28f7eea4bd41c38592f54bf855d9d0",
+          "title": "수행평가_1단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 1단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "5b2803ce858240f3905e0562d45b1cde",
+          "title": "수행평가_1단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 1단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "7b900ecf0ba84f5db725d467e125208e",
+          "title": "수행평가_1단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 1단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "1 민주주의와 자치"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "ce89565f4619477b9735f27886bf1eff",
+          "title": "수행평가_2단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 2단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "e6f399e4bb66462ca61214d0e922c2a8",
+          "title": "수행평가_2단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 2단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "fe36fefcbe3048bd92087d8125505026",
+          "title": "수행평가_2단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 2단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "64d840666eee41a8aedf484b246967d6",
+          "title": "수행평가_2단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 2단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "2 지역문제를 해결하고 지역을 알리는 노력"
+    },
+    {
+      "lessons": [
+        {
+          "resourceId": "9ace8c49df964deb9323596def1d9d89",
+          "title": "수행평가_3단원(1주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 3단원(1)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "ba6c8b4246484155b3f308662372fe2c",
+          "title": "수행평가_3단원(1주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 3단원(1)_수행평가_2회.hwp"
+        },
+        {
+          "resourceId": "aece50fb49134612b685c523115fa861",
+          "title": "수행평가_3단원(2주제)_1회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 3단원(2)_수행평가_1회.hwp"
+        },
+        {
+          "resourceId": "58e577a58cf34547acc5e78670096f1d",
+          "title": "수행평가_3단원(2주제)_2회",
+          "downloadPath": "D:\\Downloads\\[사회 4-2] 3단원(2)_수행평가_2회.hwp"
+        }
+      ],
+      "title": "3 다양한 환경과 삶의 모습"
+    }
+  ]
+}
