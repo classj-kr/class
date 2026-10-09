@@ -1542,6 +1542,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
         boardCards.forEach((card, index) => {
             const cardEl = document.createElement("div");
             cardEl.className = "set-card";
+            cardEl.dataset.sfx = "none";
             cardEl.dataset.index = index;
             cardEl.dataset.cardId = card.id;
             cardEl.setAttribute("role", "button");

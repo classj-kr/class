@@ -266,7 +266,7 @@ const staticAssetOptions = {
 const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/index.html"].includes(location.pathname))document.documentElement.classList.add("site-back-pending")</script>'
   + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back,a.back-btn){visibility:hidden!important}</style>';
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>`;
-const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261006-capture" defer></script>';
+const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>';
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20260926-reading-prose">';
 
 // 쪽마다 로그인(또는 게스트 입장)에서 나온 이름을 맨 앞에 박아 넣는다. 게임·학습 화면은 이 값을
@@ -287,7 +287,14 @@ function sendSiteHtml(req, res, filepath, next) {
   fs.readFile(filepath, "utf8", (error, source) => {
     if (error) return next(error);
     classroomPlatform.displayNameFor(req).catch(() => ({ name: "", kind: "" })).then((identity) => {
-    const htmlSource = withSiteIdentity(source, identity);
+    // Refresh shared scripts even when an older page still names an old cache version.
+    const htmlSource = withSiteIdentity(source, identity).replace(
+      /(\/assets\/network\/multiplayer-lobby\.js)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261009-visible-timer"
+    ).replace(
+      /(\/assets\/sound\/(?:game-sfx|music-control)\.js)(?:\?[^"'<>\s]*)?/g,
+      "$1?v=20261009-explosion-file"
+    );
 
     const htmlWithBackNavigation = htmlSource.includes("/assets/site-back-navigation.js")
       ? htmlSource
