@@ -982,7 +982,7 @@ body{align-items:center;padding:18px}
 <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261009-sound-bus" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261009-explosion-file" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game-screen:not(.hidden)){padding:8px;box-sizing:border-box;height:100dvh;min-height:0}
@@ -1702,6 +1702,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
                 for (let index = 0; index < count; index++) {
                     const gem = document.createElement("button");
                     gem.type = "button";
+                    gem.dataset.sfx = "none";
                     gem.className = "gem";
                     gem.setAttribute("aria-label", `PILE ${rowIndex + 1}의 보석`);
 
@@ -1743,6 +1744,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
         for (let index = 0; index < state.coinTotal; index++) {
             const coin = document.createElement("button");
             coin.type = "button";
+            coin.dataset.sfx = "none";
             coin.className = "coin";
             coin.textContent = index + 1;
             coin.setAttribute("aria-label", `${index + 1}번 주화`);

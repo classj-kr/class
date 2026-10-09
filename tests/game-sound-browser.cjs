@@ -5,7 +5,7 @@ const assert = require("node:assert/strict");
 const { chromium } = require("../game-hub-server/node_modules/playwright");
 const root = path.resolve(__dirname, ".."), out = path.join(root, "outputs/sound-audit-2026-10-09");
 fs.mkdirSync(out, { recursive: true });
-const report = { synthesized: [], files: [], controls: [], events: [] };
+const report = { synthesized: [], files: [], controls: [], events: [], mixes: [] };
 const shared = fs.readFileSync(path.join(root, "assets/sound/game-sfx.js"), "utf8");
 const server = http.createServer((req, res) => {
     const url = new URL(req.url, "http://localhost");
@@ -52,7 +52,7 @@ async function main() {
             }, { source: shared, name });
             assert.ok(result.peak > 0.001 && result.peak < 1, JSON.stringify({ ...result, samples: null }));
             assert.equal(result.clipped, 0); assert.ok(result.lastAudibleSecond < 1.8);
-            if (result.samples) writeWav(path.join(out, "bomb77-explosion.wav"), result.samples);
+            if (result.samples) writeWav(path.join(out, "bomb77-explosion-fallback.wav"), result.samples);
             delete result.samples; report.synthesized.push(result); await page.close();
         }
         console.log("PASS 13 synthesized effects: actual signal, headroom and tail");
@@ -99,6 +99,43 @@ async function main() {
             assert.ok(result.peak > 0, url); assert.equal(result.nonfinite, 0, url);
             report.files.push(result);
             console.log(`decoded ${report.files.length}/${files.length} ${url}`);
+        }
+        await decoder.addScriptTag({ url: origin + '/learning/games/bomb77/music.js' });
+        const mixes = await decoder.evaluate(async () => {
+            const musicGain = Number(document.getElementById('bgm').dataset.musicGain);
+            const decode = async url => decodeCtx.decodeAudioData(await (await fetch(url)).arrayBuffer());
+            const effect = await decode('/assets/sound/sfx/explosion.ogg');
+            const results = [];
+            for (const name of ['stone-road-time.m4a', 'midnight-pulse.m4a']) {
+                const music = await decode('/learning/games/bomb77/assets/sound/' + name);
+                for (const [musicLevel, effectLevel] of [[0.3, 0.65], [1, 1]]) {
+                    let peak = 0, clipped = 0, weakestEffectDb = Infinity;
+                    for (let offset = 0; offset < music.duration - effect.duration; offset += 0.5) {
+                        let me = 0, se = 0;
+                        for (let c = 0; c < music.numberOfChannels; c++) {
+                            const m = music.getChannelData(c), s = effect.getChannelData(0);
+                            const start = Math.floor(offset * music.sampleRate);
+                            for (let i = 0; i < s.length; i++) {
+                                const a = m[start + i] * musicLevel * musicGain, b = s[i] * effectLevel, x = a + b;
+                                peak = Math.max(peak, Math.abs(x)); if (Math.abs(x) >= 1) clipped++;
+                                me += a*a; se += b*b;
+                            }
+                        }
+                        weakestEffectDb = Math.min(weakestEffectDb, 10 * Math.log10(se / Math.max(1e-15, me)));
+                    }
+                    results.push({ track: name, musicGain, musicLevel, effectLevel, peak, clipped, weakestEffectDb });
+                }
+                const sample = new Float32Array(8 * 48000);
+                const m = music.getChannelData(0), s = effect.getChannelData(0);
+                for (let i = 0; i < sample.length; i++) sample[i] = m[i + 15 * 48000] * 0.3 * musicGain;
+                for (const second of [2, 4, 6]) for (let i = 0; i < s.length; i++) sample[second * 48000 + i] += s[i] * 0.65;
+                results.push({ track: name, preview: Array.from(sample) });
+            }
+            return results;
+        });
+        for (const mix of mixes) {
+            if (mix.preview) writeWav(path.join(out, mix.track.replace('.m4a', '-mix.wav')), mix.preview);
+            else { report.mixes.push(mix); assert.equal(mix.clipped, 0, JSON.stringify(mix)); }
         }
         await decoder.close();
 
@@ -175,7 +212,21 @@ async function main() {
             }, calls);
             assert.ok(result.after > result.before, game); assert.equal(result.mutedCount, result.after, game); assert.equal(result.zeroCount, result.after, game);
             assert.equal(result.contexts, 1, game); assert.equal(result.directOutputs, 0, game);
-            report.controls.push({ game, ...result }); await page.close(); console.log(`PASS ${game} shared mute/volume/context`);
+            report.controls.push({ game, ...result });
+            if (game === 'nimgame') {
+                for (const mode of ['nim', 'coin']) {
+                    await page.evaluate(mode => {
+                        Object.assign(state, { mode, nimRows: [1, 3, 5], coinTotal: 12, coinTaken: 0, currentPlayer: 1, started: true, over: false });
+                        myRole = 'host'; selection = { row: null, count: 0 };
+                        showGameScreen(); renderStage(); ClassGameSfx.setMuted(false); ClassGameSfx.setVolume(0.65);
+                    }, mode);
+                    const before = await page.evaluate(() => oscillators);
+                    await page.locator(mode === 'nim' ? '.gem:not(:disabled)' : '.coin:not(:disabled)').last().click();
+                    assert.equal(await page.evaluate(before => oscillators - before, before), 3, 'Only three crystal partials, no extra click oscillator');
+                    report.events.push(`nimgame ${mode}: pointer selection has no generic click overlay`);
+                }
+            }
+            await page.close(); console.log(`PASS ${game} shared mute/volume/context`);
         }
 
         // Inject only access to the private functions; production state/render logic is unchanged.
