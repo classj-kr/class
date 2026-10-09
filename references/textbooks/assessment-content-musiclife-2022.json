@@ -1,0 +1,4491 @@
+{
+  "schemaVersion": 1,
+  "assessments": [
+    {
+      "id": "musiclife-assessment-1iugf13rdGin8D2zsPWcEoio4xeGzzkMN",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "아름다운 마침표",
+      "sourceUrl": "https://drive.google.com/file/d/1iugf13rdGin8D2zsPWcEoio4xeGzzkMN/view?usp=drivesdk",
+      "sourceFile": "musiclife-1iugf13rdGin8D2zsPWcEoio4xeGzzkMN.hwpx",
+      "sha256": "aabeb52f5593ba11017c5a7bab30e983c07fe31026ebafec1c36bceb7839323a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r31"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-04"
+      ],
+      "standards": {
+        "text": "[6음01-04] 간단한 형태의 연주를 준비하여 생활 속 음악 활동에 참여한다.",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "objective": {
+        "text": "자신이 경험한 음악 활동을 떠올려 설명하고, 역할을 나누어 음악회를 계획하고 참여할 수 있다.",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "materials": {
+        "text": "",
+        "sourceParagraphs": []
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "자신이 경험한 음악 활동을 돌아보고 삶에 끼친 영향을 자세히 말할 수 있으며, 음악회 계획과 준비 과정에 적극적이고 자발적인 태도로 참여한다.",
+          "sourceParagraphs": [
+            41
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "자신이 경험한 음악 활동을 떠올리고 삶에 끼친 영향을 말할 수 있으며, 음악회 계획과 준비 과정에 충실히 참여한다.",
+          "sourceParagraphs": [
+            43
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "자신이 경험한 음악 활동을 돌아보고 기억나는 것을 말할 수 있으며, 친구들의 도움을 받아 자신이 맡은 역할을 열심히 수행한다.",
+          "sourceParagraphs": [
+            45
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-16v-Z7-8wvtjugQZbumRfLf67ewQs-wZg",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다 함께 연주해요 ②",
+      "sourceUrl": "https://drive.google.com/file/d/16v-Z7-8wvtjugQZbumRfLf67ewQs-wZg/view?usp=drivesdk",
+      "sourceFile": "musiclife-16v-Z7-8wvtjugQZbumRfLf67ewQs-wZg.hwpx",
+      "sha256": "25fb08c726f9cf11eb66e045b9b888e6a464a8475392994b17d67936dd05079e",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r30"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          22
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          24
+        ]
+      },
+      "method": {
+        "text": "자기평가, 동료평가",
+        "sourceParagraphs": [
+          26
+        ]
+      },
+      "objective": {
+        "text": "소리의 어울림을 생각하며 기악 합주를 할 수 있다.",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "materials": {
+        "text": "연주할 수 있는 악기",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "소리의 어울림을 느끼기 위한 악기 연주 방법을 안다. 바른 자세와 주법으로 악상 기호를 잘 지키고 다른 소리에 귀기울여 연주할 수 있다. 친구들과 활발하게 소통하며 좋은 연주를 위해 노력한다.",
+          "sourceParagraphs": [
+            33
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "악보의 악상 기호를 이해하고 연주할 수 있다. 바른 자세와 주법으로 악상 기호를 지키며 여주할 수 있다. 친구들과 소통하며 다른 소리에 귀기울여 연주한다.",
+          "sourceParagraphs": [
+            35
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "여러 가지 악기의 연주법을 안다. 바른 자세와 주법으로 연주할 수 있다. 친구들과 소통하며 연주한다.",
+          "sourceParagraphs": [
+            37
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1--etWIdJisTB_UEOc_Fnz-2Cw2t1IY93",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "내가 만드는 민요",
+      "sourceUrl": "https://drive.google.com/file/d/1--etWIdJisTB_UEOc_Fnz-2Cw2t1IY93/view?usp=drivesdk",
+      "sourceFile": "musiclife-1--etWIdJisTB_UEOc_Fnz-2Cw2t1IY93.hwpx",
+      "sha256": "90712bdbd823f02b91bbc8796d09079ebb9adf0c747013dd0835da07a9615d36",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r29"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-02",
+        "6음03-03"
+      ],
+      "standards": {
+        "text": "[6음03-02] 기초적인 기보를 활용하여 간단한 조건에 따라 악곡의 일부를 바꾼다. [6음03-03] 음악의 요소를 활용하여 간단한 음악을 만든다.",
+        "sourceParagraphs": [
+          20,
+          21
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          23
+        ]
+      },
+      "method": {
+        "text": "동료 평가",
+        "sourceParagraphs": [
+          25
+        ]
+      },
+      "objective": {
+        "text": "육자배기토리의 각 음을 기호로 만들 수 있다.",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "materials": {
+        "text": "수행 평가지",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "주제에 어울리는 노랫말을 만들었으며 육자배기토리와 어울리는 가락을 만들었다.",
+          "sourceParagraphs": [
+            32
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "주제에 어울리는 노랫말을 만들었으나 가락은 육자배기토리와 어울리지 않는다. 가락은 육자배기토리와 어울리지만 노랫말은 주제와 어울리지 않는다.",
+          "sourceParagraphs": [
+            34,
+            35
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "노랫말과 가락 모두 어울리지 않는다",
+          "sourceParagraphs": [
+            37
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-17JGypDpT3ZZGa6Kc-inh1OoBOd3G2fL2",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "노래로 나의 마음을 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/17JGypDpT3ZZGa6Kc-inh1OoBOd3G2fL2/view?usp=drivesdk",
+      "sourceFile": "musiclife-17JGypDpT3ZZGa6Kc-inh1OoBOd3G2fL2.hwpx",
+      "sha256": "c07c052deb40d85ae27bd06a9425fc1f3427fe167959a74f6b69d826af60d019",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r28"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음03-01",
+        "6음03-04"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다. [6음03-04] 생활 주변의 상황이나 이야기를 활용하여 음악을 만들며 열린 태도를 갖는다.",
+        "sourceParagraphs": [
+          32,
+          33,
+          34
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "objective": {
+        "text": "나의 생활과 관련된 내용으로 간단한 음악극을 만들어 공유할 수 있다.",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "materials": {
+        "text": "반주 음원, 리듬 악기, 디지털 기기",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "나의 생활과 관련된 내용으로 간단한 음악극을 완성도 있게 만들어 친구들과 적극적으로 공유할 수 있다.",
+          "sourceParagraphs": [
+            45
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "나의 생활과 관련된 내용으로 간단한 음악극을 만들어 친구들과 대체적으로 공유할 수 있다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "나의 생활과 관련된 내용으로 간단한 음악극의 일부를 만들어 친구들과 공유할 수 있다.",
+          "sourceParagraphs": [
+            49
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1YA0f54TJMftWY4XcmtZ9DCMWJ_zDR1Ka",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "이어라 이어라 우리 민요 이어라",
+      "sourceUrl": "https://drive.google.com/file/d/1YA0f54TJMftWY4XcmtZ9DCMWJ_zDR1Ka/view?usp=drivesdk",
+      "sourceFile": "musiclife-1YA0f54TJMftWY4XcmtZ9DCMWJ_zDR1Ka.hwpx",
+      "sha256": "8692e2279f96245786063bcd6ca59c8e666574395d2405142f714ad0b6c8d3b9",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r27"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          45,
+          46
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          48
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          50
+        ]
+      },
+      "objective": {
+        "text": "여러 장단을 장구로 반주하며 한배의 변화를 느낄 수 있다.",
+        "sourceParagraphs": [
+          52
+        ]
+      },
+      "materials": {
+        "text": "수행 평가지",
+        "sourceParagraphs": [
+          54
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "모든 장단을 정확하게 작성하였다.",
+          "sourceParagraphs": [
+            57
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "총 5개의 장단 중 3~4개의 장단을 정확하게 작성하였다.",
+          "sourceParagraphs": [
+            59
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "총 5개의 장단 중 0~2개의 장단을 정확하게 작성하였다,",
+          "sourceParagraphs": [
+            61
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1UeHh0oS29aP3TgESenKVh2PoFgRniH1b",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다양한 문화권의 악기와 음악",
+      "sourceUrl": "https://drive.google.com/file/d/1UeHh0oS29aP3TgESenKVh2PoFgRniH1b/view?usp=drivesdk",
+      "sourceFile": "musiclife-1UeHh0oS29aP3TgESenKVh2PoFgRniH1b.hwpx",
+      "sha256": "550820b90b1fedd09baa2b04243b671f1992fca63e80f4748152ed8be152bab6",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r26"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-02",
+        "6음02-04"
+      ],
+      "standards": {
+        "text": "[6음02-02] 다양한 문화권의 음악을 듣고 음악적 특징과 음악의 간단한 구성을 인식한다. [6음02-04] 생활 속에서 음악을 찾아 들으며 아름다움을 느끼고 공감한다.",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "method": {
+        "text": "보고서 평가",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "objective": {
+        "text": "다른 나라의 악기로 연주한 음악을 감상하고 보고서를 작성할 수 있다.",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "materials": {
+        "text": "반주 음원",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "다른 나라의 악기로 연주한 음악을 감상하고 보고서를 정확하게 작성할 수 있다.",
+          "sourceParagraphs": [
+            41
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "다른 나라의 악기로 연주한 음악을 감상하고 보고서를 대체적으로 작성할 수 있다.",
+          "sourceParagraphs": [
+            43
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "다른 나라의 악기로 연주한 음악을 감상하고 보고서를 작성하기 위해 노력한다.",
+          "sourceParagraphs": [
+            45
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1Ri6oQjBoZCvDpQADd-WdwsaMmXZ6BN84",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "우리나라 대표 음악 무형유산",
+      "sourceUrl": "https://drive.google.com/file/d/1Ri6oQjBoZCvDpQADd-WdwsaMmXZ6BN84/view?usp=drivesdk",
+      "sourceFile": "musiclife-1Ri6oQjBoZCvDpQADd-WdwsaMmXZ6BN84.hwpx",
+      "sha256": "399a050c46614d7d56626f7610504451670ddb065dc4cc3c304df6e69b75a2f0",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r25"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-03",
+        "6음02-05"
+      ],
+      "standards": {
+        "text": "[6음02-03] 다양한 종류의 음악을 듣고 음악의 배경과 활용을 설명한다. [6음02-05] 우리나라 음악 국가유산을 찾아 듣고 국악의 가치를 인식한다.",
+        "sourceParagraphs": [
+          23,
+          24
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          26
+        ]
+      },
+      "method": {
+        "text": "교사 평가, 지필 평가",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "objective": {
+        "text": "종묘제례악의 편성과 주요 악기의 특징을 파악할 수 있다.",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "materials": {
+        "text": "음원 자료, 그림 도구",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "종묘제례악에 편성되는 주요 국악기 명칭을 정확히 쓰고, 구성원의 명칭과 역할을 구체적으로 설명할 수 있다.",
+          "sourceParagraphs": [
+            35
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "종묘제례악에 편성되는 주요 국악기 명칭을 대부분 쓰고, 구성원의 명칭과 역할을 이해하여 설명할 수 있다.",
+          "sourceParagraphs": [
+            37
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "종묘제례악에 편성되는 국악기 명칭을 일부 쓰고, 구성원의 명칭이나 역할을 일부 설명할 수 있다.",
+          "sourceParagraphs": [
+            39
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1GfTvO1VhSo5obHNWxVyn4M_YIXPIWSJA",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "음악극 만들기",
+      "sourceUrl": "https://drive.google.com/file/d/1GfTvO1VhSo5obHNWxVyn4M_YIXPIWSJA/view?usp=drivesdk",
+      "sourceFile": "musiclife-1GfTvO1VhSo5obHNWxVyn4M_YIXPIWSJA.hwp",
+      "sha256": "839ea2cef1d6267b9b43da176df42115b6834124d745dd3d69865a5e62cc4615",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r24"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-01",
+        "6음03-02"
+      ],
+      "standards": {
+        "text": "[6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다. [6음03-02] 기초적인 기보를 활용하여 간단한 조건에 따라 악곡의 일부를 바꾼다.",
+        "sourceParagraphs": [
+          37,
+          38
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 동료 평가",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "objective": {
+        "text": "계획을 세우고 역할을 나누어 음악극을 만들 수 있다.",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "materials": {
+        "text": "색연필",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "음악극의 이야기 구성과 음악의 활용이 창의적이며 적극적으로 참여할 수 있다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "음악과 이야기를 자연스럽게 연결하여 계획을 세우며 주어진 역할에 충실하게 임한다.",
+          "sourceParagraphs": [
+            51
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "음악극에 대한 이해가 보통이며 역할에 따른 참여가 소극적이다.",
+          "sourceParagraphs": [
+            53
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1x8gn_Yq1ZrhQY6YJ0Dq8B65A4HnRsy4J",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "오페라 이야기",
+      "sourceUrl": "https://drive.google.com/file/d/1x8gn_Yq1ZrhQY6YJ0Dq8B65A4HnRsy4J/view?usp=drivesdk",
+      "sourceFile": "musiclife-1x8gn_Yq1ZrhQY6YJ0Dq8B65A4HnRsy4J.hwp",
+      "sha256": "347363609bd8cc3b0b27a54a81059b07f82cabed40ba909988a083eaf7f11bb7",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r23"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-03"
+      ],
+      "standards": {
+        "text": "[6음02-03] 다양한 종류의 음악을 듣고 음악의 배경과 활용을 설명한다.",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "method": {
+        "text": "토의, 토론 평가",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "objective": {
+        "text": "오페라에서 이야기를 표현하기 위한 음악의 역할을 토의할 수 있다.",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "materials": {
+        "text": "필기도구",
+        "sourceParagraphs": [
+          43
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "오페라에서 음악과 이야기의 연관성을 명확하게 분석하고 조리 있게 발표할 수 있다.",
+          "sourceParagraphs": [
+            46
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "오페라의 주요 줄거리와 음악의 연결을 적절히 설명하고 감상 내용을 잘 정리할 수 있다.",
+          "sourceParagraphs": [
+            48
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "음악에 담긴 이야기에 관하여 이해할 수 있으나 오페라에 대한 전반적인 이해가 미흡하다.",
+          "sourceParagraphs": [
+            50
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1pKG4Tn-4Uj9C9B7RYU17zjE24B6LdGQ3",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "국악 합주하기",
+      "sourceUrl": "https://drive.google.com/file/d/1pKG4Tn-4Uj9C9B7RYU17zjE24B6LdGQ3/view?usp=drivesdk",
+      "sourceFile": "musiclife-1pKG4Tn-4Uj9C9B7RYU17zjE24B6LdGQ3.hwpx",
+      "sha256": "3a44ef089b959316c8b8058117ad8603b21f83abcf8b8cb099c7500cde395b37",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r22"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-03",
+        "6음01-04"
+      ],
+      "standards": {
+        "text": "[6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다. [6음01-04] 간단한 형태의 연주를 준비하여 생활 속 음악 활동에 참여한다.",
+        "sourceParagraphs": [
+          42,
+          43
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          45
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          47
+        ]
+      },
+      "objective": {
+        "text": "노랫말의 의미를 생각하며 '모두 다 꽃이야'를 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          49
+        ]
+      },
+      "materials": {
+        "text": "수행 평가지",
+        "sourceParagraphs": [
+          51
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "연주 자세와 소리의 어울림이 매우 좋다.",
+          "sourceParagraphs": [
+            54
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "연주 자세 혹은 소리의 어울림 중 한 요소는 보통이다.",
+          "sourceParagraphs": [
+            56
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "연주 자세와 소리의 어울림이 모두 보통이다.",
+          "sourceParagraphs": [
+            58
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1p3q69zuMHFqvfWkS52GyR8We0YHU0vvj",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "아름다운 목소리의 어울림",
+      "sourceUrl": "https://drive.google.com/file/d/1p3q69zuMHFqvfWkS52GyR8We0YHU0vvj/view?usp=drivesdk",
+      "sourceFile": "musiclife-1p3q69zuMHFqvfWkS52GyR8We0YHU0vvj.hwpx",
+      "sha256": "1f15bd9e48d8307f6bd1cc122b3471a732846d24c952910a4b6c0fac44fe53fc",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r21"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          35,
+          36
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "method": {
+        "text": "관찰 평가",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "objective": {
+        "text": "소리의 어울림을 생각하며 부분 2부 합창으로 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "materials": {
+        "text": "반주 음원",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "소리의 어울림을 생각하며 부분 2부 합창으로 유창하게 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "소리의 어울림을 생각하며 부분 2부 합창으로 대체적으로 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "소리의 어울림을 생각하며 부분 2부 합창으로 노래 부르기 위해 노력한다.",
+          "sourceParagraphs": [
+            51
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1PaqiRO1h3eDeG9l-rG7SDd07MDnG4eXK",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "생활 속 음악 찾기",
+      "sourceUrl": "https://drive.google.com/file/d/1PaqiRO1h3eDeG9l-rG7SDd07MDnG4eXK/view?usp=drivesdk",
+      "sourceFile": "musiclife-1PaqiRO1h3eDeG9l-rG7SDd07MDnG4eXK.hwp",
+      "sha256": "edb85d114b2b5a8ffdc3925497e7c399a9aa3b00398a45a4b877c6c4e445332b",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r20"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-03",
+        "6음02-04"
+      ],
+      "standards": {
+        "text": "[6음02-03] 다양한 종류의 음악을 듣고 음악의 배경과 활용을 설명한다. [6음02-04] 생활 속에서 음악을 찾아 들으며 아름다움을 느끼고 공감한다.",
+        "sourceParagraphs": [
+          30,
+          31
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "method": {
+        "text": "관찰 평가, 보고서 평가",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "objective": {
+        "text": "생활 속에서 활용되는 다양한 음악을 조사하여 보고서로 작성할 수 있다.",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "materials": {
+        "text": "보고서 양식 활동지, 필기도구",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "생활 속에서 활용되는 음악의 쓰임을 명확히 이해하고 사례를 3가지 이상 조사하여 정리할 수 있다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "생활 속에서 활용되는 음악의 쓰임을 대체로 이해하고 1~2가지 사례를 조사하여 정리할 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "생활 속에서 활용되는 음악에 대해 조사할 수 있으나 사례가 단편적이다.",
+          "sourceParagraphs": [
+            46
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1ek4N_KFsIvyxUduI1az9_OeMYd5mq2X3",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "장단 치며 쾌지나칭칭나네!",
+      "sourceUrl": "https://drive.google.com/file/d/1ek4N_KFsIvyxUduI1az9_OeMYd5mq2X3/view?usp=drivesdk",
+      "sourceFile": "musiclife-1ek4N_KFsIvyxUduI1az9_OeMYd5mq2X3.hwpx",
+      "sha256": "b19ae6a04c49484b07d04e787f2e9da03c7a7deb8faf6826b6c2238cb568e0a7",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r19"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          48
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          50
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          52
+        ]
+      },
+      "objective": {
+        "text": "정확한 자세와 주법으로 소금를 연주할 수 있다.",
+        "sourceParagraphs": [
+          54
+        ]
+      },
+      "materials": {
+        "text": "소금",
+        "sourceParagraphs": [
+          56
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "모든 장단을 정확하게 작성하였다.",
+          "sourceParagraphs": [
+            59
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "50% 이상의 장단을 정확하게 작성하였다.",
+          "sourceParagraphs": [
+            61
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "50% 이하의 장단을 정확하게 작성하였다.",
+          "sourceParagraphs": [
+            63
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1uwUzdk3oS-XR5iVfyHdG86_H056kJrun",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "다 함께 연주해요 ①",
+      "sourceUrl": "https://drive.google.com/file/d/1uwUzdk3oS-XR5iVfyHdG86_H056kJrun/view?usp=drivesdk",
+      "sourceFile": "musiclife-1uwUzdk3oS-XR5iVfyHdG86_H056kJrun.hwpx",
+      "sha256": "111350a6523a85622d5a7e834e8b401569e28e346b696c61718ae1e831819cb9",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r18"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          37,
+          38
+        ]
+      },
+      "domain": {
+        "text": "연주, 감상",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가, 동료 평가",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "objective": {
+        "text": "음악을 구성하는 요소를 이해하고 음악의 특징을 살려 소리의 어울림을 느끼며 기악 합주를 할 수 있다.",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "materials": {
+        "text": "",
+        "sourceParagraphs": []
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "악곡에 드러난 음악의 특징을 자세히 파악하며, 음악의 특징을 살리고 소리의 어울림을 느끼며 아름답게 연주한다.",
+          "sourceParagraphs": [
+            48
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "악곡에 드러난 음악의 특징을 파악할 수 있으며, 음악의 특징을 살리고 소리의 어울림을 느끼며 연주한다.",
+          "sourceParagraphs": [
+            50
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "악곡에 드러난 음악의 특징을 간단히 파악하며, 안내에 따라 자신이 맡은 악기에 집중하며 연주한다.",
+          "sourceParagraphs": [
+            52
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-16HvfgCTfuXENdRvl6_S-YZ39iMl4_-HY",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "이야기를 음악으로 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/16HvfgCTfuXENdRvl6_S-YZ39iMl4_-HY/view?usp=drivesdk",
+      "sourceFile": "musiclife-16HvfgCTfuXENdRvl6_S-YZ39iMl4_-HY.hwpx",
+      "sha256": "9434c9c44879e697765688a975ef34afca2e97d162a92897af9c044519bcd0cd",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r17"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01",
+        "6음03-03"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하며 구별한다. [6음03-03] 음악의 요소를 활용하여 간단한 음악을 만든다.",
+        "sourceParagraphs": [
+          24,
+          25
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "objective": {
+        "text": "음악 요소를 활용하여 간단한 음악을 만들 수 있다.",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "materials": {
+        "text": "악기 및 물건 등",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "여러 가지 음악 요소를 활용하여 간단한 음악을 만들 수 있다.",
+          "sourceParagraphs": [
+            36
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "몇 가지 음악 요소를 이해하고 간단한 음악을 만들 수 있다.",
+          "sourceParagraphs": [
+            38
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "음악 요소를 이해하고 간단한 음악을 만들기 위해 노력한다.",
+          "sourceParagraphs": [
+            40
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-15u8f-uood9Y59NZuIivCtUSQVhefNHCv",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "수심가토리",
+      "sourceUrl": "https://drive.google.com/file/d/15u8f-uood9Y59NZuIivCtUSQVhefNHCv/view?usp=drivesdk",
+      "sourceFile": "musiclife-15u8f-uood9Y59NZuIivCtUSQVhefNHCv.hwpx",
+      "sha256": "494168994dc6141878b6d8f516282384b16ec3b4c28e50cd54b4f6af9015c5f3",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r16"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 지필 평가",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "objective": {
+        "text": "수심가토리의 특징을 이해하고 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "materials": {
+        "text": "활동지",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "수심가토리의 특징을 이해하고, 능숙하게 설명한다.",
+          "sourceParagraphs": [
+            39
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "수심가토리의 특징을 대체로 이해하고 설명한다.",
+          "sourceParagraphs": [
+            41
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "수심가토리의 특징을 이해하고 설명한다.",
+          "sourceParagraphs": [
+            43
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1VbiB3JYLXSZNFS9Xc0OZ2Ae5VFMk3-yy",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "소금으로 연주하는 율명 ②",
+      "sourceUrl": "https://drive.google.com/file/d/1VbiB3JYLXSZNFS9Xc0OZ2Ae5VFMk3-yy/view?usp=drivesdk",
+      "sourceFile": "musiclife-1VbiB3JYLXSZNFS9Xc0OZ2Ae5VFMk3-yy.hwpx",
+      "sha256": "2d67bfbc18e761da3615fa759094b6023ed969d3997c934192945796bcb1835a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r15"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          54,
+          55
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          57
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 동료 평가",
+        "sourceParagraphs": [
+          59
+        ]
+      },
+      "objective": {
+        "text": "정확한 자세와 주법으로 소금을 연주할 수 있다.",
+        "sourceParagraphs": [
+          61
+        ]
+      },
+      "materials": {
+        "text": "소금",
+        "sourceParagraphs": [
+          63
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "자세가 매우 정확하며 연주법도 정확하다.",
+          "sourceParagraphs": [
+            66
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "자세는 정확하지만, 연주법은 정확하지 않다.",
+          "sourceParagraphs": [
+            68
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "자세와 연주법 모두 정확하지 않다.",
+          "sourceParagraphs": [
+            70
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1PNKa8yL0zN00uqQNUyHwYavJ6CdOZSGn",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "디지털 매체를 활용하여 음악 만들기",
+      "sourceUrl": "https://drive.google.com/file/d/1PNKa8yL0zN00uqQNUyHwYavJ6CdOZSGn/view?usp=drivesdk",
+      "sourceFile": "musiclife-1PNKa8yL0zN00uqQNUyHwYavJ6CdOZSGn.hwp",
+      "sha256": "4f55747500391779bd836ab4c3ac0e23cff315be3661f223d38a4d77614c1997",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r14"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-01"
+      ],
+      "standards": {
+        "text": "[6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다.",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          43
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 동료 평가",
+        "sourceParagraphs": [
+          45
+        ]
+      },
+      "objective": {
+        "text": "애플리케이션을 활용하여 새로운 음악을 만들 수 있다.",
+        "sourceParagraphs": [
+          47
+        ]
+      },
+      "materials": {
+        "text": "필기도구",
+        "sourceParagraphs": [
+          49
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "애플리케이션 기능을 활용하여 스스로 새로운 음악을 계획하여 만드는 능력이 뛰어나다.",
+          "sourceParagraphs": [
+            52
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "애플리케이션의 일부 기능을 활용하여 음악을 만든다.",
+          "sourceParagraphs": [
+            54
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "교사 또는 친구의 도움을 받아 애플리케이션을 활용한 음악을 만든다.",
+          "sourceParagraphs": [
+            56
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1kCcMehzpc96P7AoGXfBw0Mu-Q1VL0ocS",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "판소리",
+      "sourceUrl": "https://drive.google.com/file/d/1kCcMehzpc96P7AoGXfBw0Mu-Q1VL0ocS/view?usp=drivesdk",
+      "sourceFile": "musiclife-1kCcMehzpc96P7AoGXfBw0Mu-Q1VL0ocS.hwpx",
+      "sha256": "9d0e6b1553a1fb2cc0d38c683671640063f9b6d7b4eeb480dd48ef05e2ab9e17",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r13"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하여 구별한다.",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "domain": {
+        "text": "연주, 감상, 창작",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 교사 평가, 동료 평가",
+        "sourceParagraphs": [
+          43
+        ]
+      },
+      "objective": {
+        "text": "판소리의 구성 요소와 특징을 이해하고, 아니리를 바르게 표현할 수 있다.",
+        "sourceParagraphs": [
+          45
+        ]
+      },
+      "materials": {
+        "text": "음원 자료, 그림 도구",
+        "sourceParagraphs": [
+          47
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "판소리의 구성 요소를 정확히 설명하고, 아니리를 창의적으로 표현하며, 비교 감상에 대한 느낌을 풍부하게 말할 수 있다.",
+          "sourceParagraphs": [
+            50
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "판소리의 구성 요소를 이해하고, 아니리를 적절히 표현하며, 비교 감상에 대한 느낌을 말할 수 있다.",
+          "sourceParagraphs": [
+            52
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "판소리의 구성 요소를 일부 이해하고, 아니리를 간단히 표현하며, 비교 감상에 대한 느낌을 간단히 말할 수 있다.",
+          "sourceParagraphs": [
+            54
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1jDAj0RnNW-DSUwACU6Xwk209L_aZR-1f",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "음악으로 환경을 지켜요",
+      "sourceUrl": "https://drive.google.com/file/d/1jDAj0RnNW-DSUwACU6Xwk209L_aZR-1f/view?usp=drivesdk",
+      "sourceFile": "musiclife-1jDAj0RnNW-DSUwACU6Xwk209L_aZR-1f.hwpx",
+      "sha256": "8f6fdb0961e0002732f8e922a1dea16740c57ffea2a8279eea1323d07198b42f",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r12"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-04"
+      ],
+      "standards": {
+        "text": "[6음01-04] 간단한 형태의 연주를 준비하여 생활 속 음악 활동에 참여한다.",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "objective": {
+        "text": "음악 활동을 통하여 환경을 보호하고 지키려는 실천 의지를 다지고, 생활 주변 재료로 여러 가지 악기를 만들어 연주할 수 있다.",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "materials": {
+        "text": "생활 주변의 여러 가지 재활용품",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "다양한 소리 탐색을 통해 스스로 재활용 악기를 제작하여 반주를 만들고, 음악 활동과 관련하여 환경을 보호하려는 아이디어를 잘 내며, 실천 의지를 다진다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "소리 탐색을 활용하여 재활용 악기를 제작하고 연주할 수 있으며, 음악 활동과 관련하여 환경을 보호하려는 실천 의지를 다진다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "안내에 따라 재활용 악기를 제작하고 노래에 어울리는 리듬 반주를 연주할 수 있으며, 음악 활동과 관련하여 환경을 보호해야 하는 필요성을 인식한다.",
+          "sourceParagraphs": [
+            46
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1dr_MAqy95lXyVrCZsoAbbQSPA7rXci49",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "신나는 리듬 표현",
+      "sourceUrl": "https://drive.google.com/file/d/1dr_MAqy95lXyVrCZsoAbbQSPA7rXci49/view?usp=drivesdk",
+      "sourceFile": "musiclife-1dr_MAqy95lXyVrCZsoAbbQSPA7rXci49.hwpx",
+      "sha256": "a28329492452a15b3f56c0ebdb7d01f31d0742ac43cdb4357c65e26ea6ee70c6",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r10"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음03-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음03-02] 기초적인 기보를 활용하여 간단한 조건에 따라 악곡의 일부를 바꾼다.",
+        "sourceParagraphs": [
+          40,
+          41
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          43
+        ]
+      },
+      "method": {
+        "text": "동료 평가",
+        "sourceParagraphs": [
+          45
+        ]
+      },
+      "objective": {
+        "text": "리듬의 특징을 살려 랩과 리듬 반주로 표현할 수 있다.",
+        "sourceParagraphs": [
+          47
+        ]
+      },
+      "materials": {
+        "text": "반주 음원 자료",
+        "sourceParagraphs": [
+          49
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "리듬의 특징을 살려 랩과 리듬 반주로 다양한 리듬을 능숙하게 표현할 수 있다.",
+          "sourceParagraphs": [
+            52
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "리듬의 특징을 살려 랩과 리듬 반주로 다양한 리듬을 대체적으로 표현할 수 있다.",
+          "sourceParagraphs": [
+            54
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "리듬의 특징을 살려 랩과 리듬 반주로 다양한 리듬을 일부 표현할 수 있다.",
+          "sourceParagraphs": [
+            56
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1VPOw2YOPXemUGikGZtjmLS9_dTJ-KY3p",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음악에 생각을 담아요",
+      "sourceUrl": "https://drive.google.com/file/d/1VPOw2YOPXemUGikGZtjmLS9_dTJ-KY3p/view?usp=drivesdk",
+      "sourceFile": "musiclife-1VPOw2YOPXemUGikGZtjmLS9_dTJ-KY3p.hwpx",
+      "sha256": "34733afe304901df6d8e10f5ddac345c197fa65d79f453fe204b389dc3cdce27",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r8"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-03"
+      ],
+      "standards": {
+        "text": "[6음03-03] 음악의 요소를 활용하여 간단한 음악을 만든다.",
+        "sourceParagraphs": [
+          24
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          26
+        ]
+      },
+      "method": {
+        "text": "지필평가",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "objective": {
+        "text": "음악 요소를 활용하여 간단한 음악을 창작할 수 있다.",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "materials": {
+        "text": "연주할 수 있는 악기",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "음악을 창작하는데 필요한 음악 요소를 안다. 리듬꼴, 가락 등의 음악 요소를 활용하여 간단한 음악을 만들 수 있다. 음악을 창작하는 활동에 적극적으로 즐겁게 참여한다.",
+          "sourceParagraphs": [
+            35
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "여러 가지 음악 요소들이 음악 속에 있음을 안다. 가락을 활용하여 간단한 음악을 만들 수 있다. 음악을 창작하는 활동에 적극적으로 참여한다.",
+          "sourceParagraphs": [
+            37
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "악곡에서 음악 요소를 구별할 수 있다. 여러 가지 리듬꼴을 활용하여 간단한 음악을 만들 수 있다. 음악을 창작하는 활동에 즐겁게 참여한다.",
+          "sourceParagraphs": [
+            39
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-19Gcz4gTYd_ahB9Q9B50O3yTXNav1LB1g",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "AB 형식",
+      "sourceUrl": "https://drive.google.com/file/d/19Gcz4gTYd_ahB9Q9B50O3yTXNav1LB1g/view?usp=drivesdk",
+      "sourceFile": "musiclife-19Gcz4gTYd_ahB9Q9B50O3yTXNav1LB1g.hwpx",
+      "sha256": "8ec308c10f997ffdb9530861c90f496e15ea4a588aa0d613a1e9e28f0b01903a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r7"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          22,
+          23
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          25
+        ]
+      },
+      "method": {
+        "text": "관찰 평가",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "objective": {
+        "text": "AB 형식을 이해하고 설명할 수 있다.",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "materials": {
+        "text": "반주 음원 자료",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "AB 형식을 이해하고 정확하게 설명할 수 있다.",
+          "sourceParagraphs": [
+            34
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "AB 형식을 이해하고 대체적으로 설명할 수 있다.",
+          "sourceParagraphs": [
+            36
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "AB 형식을 이해하기 위해 노력한다.",
+          "sourceParagraphs": [
+            38
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1Vzbb7rusQ0d168Xz6JL9xhHgAjTLIdYL",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "현악기의 음색을 구별해요",
+      "sourceUrl": "https://drive.google.com/file/d/1Vzbb7rusQ0d168Xz6JL9xhHgAjTLIdYL/view?usp=drivesdk",
+      "sourceFile": "musiclife-1Vzbb7rusQ0d168Xz6JL9xhHgAjTLIdYL.hwp",
+      "sha256": "c04eb43e13ad95cdea3041850fc78c88e727de0e9fac572d0de3e203ded35b44",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r6"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하여 구별한다.",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "method": {
+        "text": "실음 지필 평가",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "objective": {
+        "text": "음악을 듣고 현악기의 종류와 음색을 구별할 수 있다.",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "materials": {
+        "text": "필기도구",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "현악기의 음색을 명확히 구별할 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "현악기 음색을 대체로 구별할 수 있다.",
+          "sourceParagraphs": [
+            46
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "현악기 음색은 인지할 수 있으나 이를 정확하게 구별하는 것에 어려움이 있다.",
+          "sourceParagraphs": [
+            48
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-17cJ4LBwYwoz7Eqg_FOju1u50VsYZqsZ3",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "육자배기토리",
+      "sourceUrl": "https://drive.google.com/file/d/17cJ4LBwYwoz7Eqg_FOju1u50VsYZqsZ3/view?usp=drivesdk",
+      "sourceFile": "musiclife-17cJ4LBwYwoz7Eqg_FOju1u50VsYZqsZ3.hwpx",
+      "sha256": "f764640f889080114894978e7f8fa71375a326763049366d623bdaa589cbcd9a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r5"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 지필 평가",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "objective": {
+        "text": "육자배기토리의 특징을 이해하고 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "materials": {
+        "text": "활동지",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "육자배기토리의 특징을 이해하고, 능숙하게 설명한다.",
+          "sourceParagraphs": [
+            39
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "육자배기토리의 특징을 대체로 이해하고 설명한다.",
+          "sourceParagraphs": [
+            41
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "육자배기토리의 특징을 이해하고 설명한다.",
+          "sourceParagraphs": [
+            43
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-184SGH7jMFe13uwCQzpkYTy2amJZgLhWs",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "따로 또 같이 연주해요",
+      "sourceUrl": "https://drive.google.com/file/d/184SGH7jMFe13uwCQzpkYTy2amJZgLhWs/view?usp=drivesdk",
+      "sourceFile": "musiclife-184SGH7jMFe13uwCQzpkYTy2amJZgLhWs.hwpx",
+      "sha256": "e3b2fa9728b87f3ecc8bd1980cc4731f2b57f34c5b786ba10acac99f3275610a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r4"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-03",
+        "6음03-01"
+      ],
+      "standards": {
+        "text": "[6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다. [6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다.",
+        "sourceParagraphs": [
+          34,
+          35
+        ]
+      },
+      "domain": {
+        "text": "연주, 창작",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가, 동료 평가",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "objective": {
+        "text": "소리의 어울림을 느끼며 기악 합주를 할 수 있으며, 리듬 반주를 만들어 함께 연주할 수 있다.",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "materials": {
+        "text": "리코더, 글로켄슈필, 멜로디언, 리듬 반주용 타악기 여러 개",
+        "sourceParagraphs": [
+          43,
+          44
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "소리의 어울림을 잘 살려 아름답게 연주할 수 있으며, 창의적인 리듬 반주를 만들어 함께 연주한다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "소리의 어울림을 느끼며 기악 합주를 할 수 있으며, 리듬 반주를 만들어 함께 연주한다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "소리의 어울림에 유의하며 기악 합주를 할 수 있으며, 리듬 반주를 간단하게 만들어 연주한다.",
+          "sourceParagraphs": [
+            51
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1tRZZK822wPPi9sIZ3Fz8wKy_5bjK3D-C",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음악의 느낌이 달라요",
+      "sourceUrl": "https://drive.google.com/file/d/1tRZZK822wPPi9sIZ3Fz8wKy_5bjK3D-C/view?usp=drivesdk",
+      "sourceFile": "musiclife-1tRZZK822wPPi9sIZ3Fz8wKy_5bjK3D-C.hwpx",
+      "sha256": "797933f56922694f93ea368dea9e2e96b919f711d8a2ee67509c67f2bf6b10c2",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r3"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음02-01] 음악을 듣고 음악의 요소를 감지하며 구별한다.",
+        "sourceParagraphs": [
+          31,
+          32
+        ]
+      },
+      "domain": {
+        "text": "연주, 감상",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 구술 평가",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "objective": {
+        "text": "단음계의 특징을 이해하고, 단음계의 느낌을 살려 여러 가지 방법으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "materials": {
+        "text": "가락 악기",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "단음계의 특징을 이해하고 구체적으로 설명할 수 있으며, 단음계의 느낌을 살려 여러 가지 방법으로 능숙하게 표현한다.",
+          "sourceParagraphs": [
+            43
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "단음계의 특징을 이해하고 설명할 수 있으며, 단음계의 느낌을 살려 여러 가지 방법으로 표현한다.",
+          "sourceParagraphs": [
+            45
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "단음계의 특징을 일부 이해하고 간단히 설명할 수 있으며, 단음계의 느낌에 유의하며 여러 가지 방법으로 표현한다.",
+          "sourceParagraphs": [
+            47
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1dibCW1dk3UdXsC4AWSvco2rZTFQ7i7VS",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "말붙임새를 만들어요",
+      "sourceUrl": "https://drive.google.com/file/d/1dibCW1dk3UdXsC4AWSvco2rZTFQ7i7VS/view?usp=drivesdk",
+      "sourceFile": "musiclife-1dibCW1dk3UdXsC4AWSvco2rZTFQ7i7VS.hwpx",
+      "sha256": "289d42ad1798429e67019a38b3c7573e2151a29decf6f0d55154513839033a2b",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r2"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하여 구별한다.",
+        "sourceParagraphs": [
+          19
+        ]
+      },
+      "domain": {
+        "text": "연주, 창작",
+        "sourceParagraphs": [
+          21
+        ]
+      },
+      "method": {
+        "text": "보고서 평가, 실기 평가",
+        "sourceParagraphs": [
+          23
+        ]
+      },
+      "objective": {
+        "text": "주어진 부분의 노랫말과 말붙임새를 바꾸어 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          25
+        ]
+      },
+      "materials": {
+        "text": "음원 자료, 활동지",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "장단을 파악하고 주제를 정하여 노랫말과 말붙임새를 바꾸어 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            30
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "주제를 정하여 노랫말과 말붙임새를 바꾸어 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            32
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "주제를 정하여 노랫말을 바꾸어 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            34
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1yhN5WnLpUzdDyEJMyJHRwtNtf6W2N0wR",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "음악 연주로 행사에 참여해요",
+      "sourceUrl": "https://drive.google.com/file/d/1yhN5WnLpUzdDyEJMyJHRwtNtf6W2N0wR/view?usp=drivesdk",
+      "sourceFile": "musiclife-1yhN5WnLpUzdDyEJMyJHRwtNtf6W2N0wR.hwp",
+      "sha256": "7312ee86a04a3c3cdc679287d4338d4730d4ee662a29e00c4c42b3eb4db26826",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r32"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-04"
+      ],
+      "standards": {
+        "text": "[6음01-04] 간단한 형태의 연주를 준비하여 생활 속 음악 활동에 참여한다.",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "method": {
+        "text": "보고서 평가",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "objective": {
+        "text": "음악 연주로 행사에 참여할 수 있다.",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "materials": {
+        "text": "보고서",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "생활 속에서 음악을 활용하여 참여할 수 있는 다양한 행사를 찾아 발표할 수 있다. 자신의 역할을 잘 알고 음악을 활용하여 행사에 적극적으로 참여한다. 음악을 활용할 수 있는 행사를 찾고 적극적으로 참여한다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "생활 속에서 음악을 활용하여 참여할 수 있는 행사를 이야기할 수 있다. 음악을 활용하여 행사에 열심히 참여한다. 음악을 활용하여 행사에 즐겁게 참여한다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "생활 속에서 음악을 활용하여 행사에 참여할 수 있음을 안다. 음악을 활용하여 행사에 참여한다. 음악을 활용하여 행사에 참여한다.",
+          "sourceParagraphs": [
+            51
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1rLxY9R6vFEYAicfQIuq5NZ5dmL161k2-",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다 함께 연주해요",
+      "sourceUrl": "https://drive.google.com/file/d/1rLxY9R6vFEYAicfQIuq5NZ5dmL161k2-/view?usp=drivesdk",
+      "sourceFile": "musiclife-1rLxY9R6vFEYAicfQIuq5NZ5dmL161k2-.hwp",
+      "sha256": "e4ded12e2bee7da1bfc723060f5953b42ba916ea743ebe4cc77c995302bb5cf9",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r31"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          33,
+          34
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "objective": {
+        "text": "• 바른 주법과 표현 기법으로 리코더를 연주할 수 있다. • 다양한 소리의 어울림을 느끼며 기악 합주를 할 수 있다.",
+        "sourceParagraphs": [
+          40,
+          41
+        ]
+      },
+      "materials": {
+        "text": "리코더, 글로켄슈필",
+        "sourceParagraphs": [
+          43
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "리코더의 높은음 운지와 서밍 주법을 정확히 이해하여 아름다운 소리로 연주할 수 있으며, 다양한 소리의 어울림을 생각하며 기악 합주에 적극적으로 참여한다.",
+          "sourceParagraphs": [
+            46
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "리코더의 높은음 운지와 서밍 주법에 유의하며 연주할 수 있으며, 다양한 소리의 어울림을 느끼며 기악 합주에 참여한다.",
+          "sourceParagraphs": [
+            48
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "리코더의 높은음 운지와 서밍 주법을 일부 표현하며 연주할 수 있으며, 다양한 소리의 어울림을 생각하며 기악 합주에 참여한다.",
+          "sourceParagraphs": [
+            50
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1Ji-Z5yzbyYncdLpGm_a_qcgWwZha9pCu",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "나만의 장단 만들기",
+      "sourceUrl": "https://drive.google.com/file/d/1Ji-Z5yzbyYncdLpGm_a_qcgWwZha9pCu/view?usp=drivesdk",
+      "sourceFile": "musiclife-1Ji-Z5yzbyYncdLpGm_a_qcgWwZha9pCu.hwp",
+      "sha256": "20f990182f207b21f520f92bb6bb6afd2ba67a5e6d5f1b944e6b9b4a83337070",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r30"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-01",
+        "6음03-03",
+        "6음03-04"
+      ],
+      "standards": {
+        "text": "[6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다. [6음03-03] 음악의 요소를 활용하여 간단한 음악을 만든다. [6음03-04] 생활 주변 상황이나 이야기를 활용하여 음악을 만들며 열린 태도를 갖는다.",
+        "sourceParagraphs": [
+          42,
+          43,
+          44
+        ]
+      },
+      "domain": {
+        "text": "연주, 창작",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "method": {
+        "text": "포트폴리오 평가, 자기 평가",
+        "sourceParagraphs": [
+          48
+        ]
+      },
+      "objective": {
+        "text": "자진모리장단의 장단꼴 변형 방법을 익혀 주사위로 나만의 장단을 만들어 표현할 수 있다.",
+        "sourceParagraphs": [
+          50
+        ]
+      },
+      "materials": {
+        "text": "종이 상자, 교사 및 학생용 장구",
+        "sourceParagraphs": [
+          52
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "자진모리장단의 규칙을 정확히 지켜 창의적으로 장단을 만들고, 이전에 배운 자진모리장단 노래를 스스로 찾아 부르며, 창작한 장단을 활용하여 자연스럽게 연주할 수 있다.",
+          "sourceParagraphs": [
+            55
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "자진모리장단의 규칙을 대체로 지켜 장단을 만들고, 이전에 배운 노래를 찾아 부르며, 창작한 장단으로 연주할 수 있다.",
+          "sourceParagraphs": [
+            57
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "자진모리장단의 규칙을 부분적으로 이해하여 장단을 만들고, 노래 찾기와 연주를 일부 수행할 수 있다.",
+          "sourceParagraphs": [
+            59
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1LBJbjgFupyzFUNRUS9CHVSUsDKNz_IVp",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "안전을 노래해요",
+      "sourceUrl": "https://drive.google.com/file/d/1LBJbjgFupyzFUNRUS9CHVSUsDKNz_IVp/view?usp=drivesdk",
+      "sourceFile": "musiclife-1LBJbjgFupyzFUNRUS9CHVSUsDKNz_IVp.hwp",
+      "sha256": "99250d09a14bfc453f9201f286ae5887666b77955247a8dee6b0822aeaa8c6f2",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r28"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음03-02"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음03-02] 기초적인 기보를 활용하여 간단한 조건에 따라 악곡의 일부를 바꾼다.",
+        "sourceParagraphs": [
+          32,
+          33
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "objective": {
+        "text": "안전한 생활을 주제로 악곡의 일부를 바꾸어 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "materials": {
+        "text": "반주 음원 자료",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "안전한 생활을 주제로 악곡의 리듬과 가락 일부를 바꾸어 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "안전한 생활을 주제로 악곡의 일부를 바꾸어 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            46
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "안전한 생활을 주제로 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            48
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1RliGiISiyXN7rFyUl3W83dp0jprG_AP_",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "한배의 변화",
+      "sourceUrl": "https://drive.google.com/file/d/1RliGiISiyXN7rFyUl3W83dp0jprG_AP_/view?usp=drivesdk",
+      "sourceFile": "musiclife-1RliGiISiyXN7rFyUl3W83dp0jprG_AP_.hwp",
+      "sha256": "40651186fde002772fd0475bb507a276724204eb4b45bfa7b0881127547b80b1",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r27"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하여 구별한다.",
+        "sourceParagraphs": [
+          19
+        ]
+      },
+      "domain": {
+        "text": "감상, 창작",
+        "sourceParagraphs": [
+          21
+        ]
+      },
+      "method": {
+        "text": "교사 평가, 포트폴리오 평가",
+        "sourceParagraphs": [
+          23
+        ]
+      },
+      "objective": {
+        "text": "산조를 통해 한배의 변화를 파악해 보고 느낀 점을 그림으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          25
+        ]
+      },
+      "materials": {
+        "text": "음원 자료, 그림 도구",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "산조 장단의 한배를 정확하게 구분하고, 그림으로 한배의 변화를 창의력 있게 표현할 수 있다.",
+          "sourceParagraphs": [
+            30
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "산조 장단의 한배를 구분하고, 그림으로 한배의 변화를 창의력 있게 표현할 수 있다.",
+          "sourceParagraphs": [
+            32
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "산조 장단의 한배를 구분하고, 그림으로 한배의 변화를 표현할 수 있다.",
+          "sourceParagraphs": [
+            34
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1qqhRgngRMK01RLlUG67ecOBmX9VzmsJP",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다양한 문화권의 춤 음악",
+      "sourceUrl": "https://drive.google.com/file/d/1qqhRgngRMK01RLlUG67ecOBmX9VzmsJP/view?usp=drivesdk",
+      "sourceFile": "musiclife-1qqhRgngRMK01RLlUG67ecOBmX9VzmsJP.hwp",
+      "sha256": "ff5f49bee086ebdd57d47ee3bcbd11ff34b362e16484cd5161e0e001664bb33c",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r26"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-02",
+        "6음02-03"
+      ],
+      "standards": {
+        "text": "[6음02-02] 다양한 문화권의 음악을 듣고 음악적 특징과 음악의 간단한 구성을 인식한다. [6음02-03] 다양한 종류의 음악을 듣고 음악의 배경과 활용을 설명한다.",
+        "sourceParagraphs": [
+          37,
+          38
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "method": {
+        "text": "자기 평가(보고서)",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "objective": {
+        "text": "다양한 문화권의 음악을 듣고 특징을 구별하여 보고서로 나타낼 수 있다.",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "materials": {
+        "text": "보고서 양식 활동지, 필기도구",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "문화권별로 다양한 춤 음악을 감상하고 특징을 명확히 구별하여 보고서로 나타낸다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "대부분의 춤 음악의 특징을 구별하여 보고서를 쓸 수 있다.",
+          "sourceParagraphs": [
+            51
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "일부 문화권의 춤 음악에 대해 이해하나 보고서로 정리하는 것이 미흡하다.",
+          "sourceParagraphs": [
+            53
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1FAgxpt6eShPP2Ojm_HKGsGnZiye60nEq",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "소중한 음악 무형유산",
+      "sourceUrl": "https://drive.google.com/file/d/1FAgxpt6eShPP2Ojm_HKGsGnZiye60nEq/view?usp=drivesdk",
+      "sourceFile": "musiclife-1FAgxpt6eShPP2Ojm_HKGsGnZiye60nEq.hwp",
+      "sha256": "700cd8f506c9974a334997a20251bd6d8b423b2c183b6cbf4ceeb5a7722bc755",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r25"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-03",
+        "6음02-05"
+      ],
+      "standards": {
+        "text": "[6음02-03] 다양한 종류의 음악을 듣고 음악의 배경과 활용을 설명한다. [6음02-05] 우리나라 음악 국가유산을 찾아 듣고 국악의 가치를 인식한다.",
+        "sourceParagraphs": [
+          19,
+          20
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          22
+        ]
+      },
+      "method": {
+        "text": "교사 평가, 보고서 평가",
+        "sourceParagraphs": [
+          24
+        ]
+      },
+      "objective": {
+        "text": "각 지역에서 전승되는 대표적인 음악 무형유산의 특징을 파악할 수 있다.",
+        "sourceParagraphs": [
+          26
+        ]
+      },
+      "materials": {
+        "text": "디지털 기기, 참고 자료",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "각 지역에서 전승되어 오는 대표적인 음악 무형유산의 종류와 특징을 모두 이야기할 수 있다.",
+          "sourceParagraphs": [
+            31
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "각 지역에서 전승되어 오는 대표적인 음악 무형유산의 종류와 특징을 대부분 이야기할 수 있다.",
+          "sourceParagraphs": [
+            33
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "각 지역에서 전승되어 오는 대표적인 음악 무형유산의 종류와 특징을 일부 이야기할 수 있다.",
+          "sourceParagraphs": [
+            35
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1z7Pv2vGKIvA_hDSeArgFHIwwDQtOcryU",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "음악으로 환경을 지켜요",
+      "sourceUrl": "https://drive.google.com/file/d/1z7Pv2vGKIvA_hDSeArgFHIwwDQtOcryU/view?usp=drivesdk",
+      "sourceFile": "musiclife-1z7Pv2vGKIvA_hDSeArgFHIwwDQtOcryU.hwp",
+      "sha256": "2ad7fd4a84240abc68189d8ab6449be7a48935a9337e00472647d5d01bdbdcfb",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r24"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-01",
+        "6음03-02"
+      ],
+      "standards": {
+        "text": "[6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다. [6음03-02] 기초적인 기보를 활용하여 간단한 조건에 따라 악곡의 일부를 바꾼다.",
+        "sourceParagraphs": [
+          33,
+          34
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "objective": {
+        "text": "환경을 지키고자 하는 마음을 담아 음악으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "materials": {
+        "text": "색연필",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "환경보호라는 주제를 창의적인 노랫말과 음악 영상으로 명확하게 잘 표현한다.",
+          "sourceParagraphs": [
+            45
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "환경보호 주제에 적합한 노랫말로 바꾸어 음악 영상을 표현한다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "환경보호 주제에 대해서는 잘 이해하고 있으나 표현이 다소 미흡하다.",
+          "sourceParagraphs": [
+            49
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1yCWte4eaONrdON7m5wD43YupNcppmFDC",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "음악의 활용",
+      "sourceUrl": "https://drive.google.com/file/d/1yCWte4eaONrdON7m5wD43YupNcppmFDC/view?usp=drivesdk",
+      "sourceFile": "musiclife-1yCWte4eaONrdON7m5wD43YupNcppmFDC.hwp",
+      "sha256": "5f0ad28112f67099e0797f5630b8835440ad04e3fe35cd2550b462b11af6dfb6",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r23"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-04",
+        "6음02-03"
+      ],
+      "standards": {
+        "text": "[6음02-03] 다양한 종류의 음악을 듣고 음악의 배경과 활용을 설명한다. [6음01-04] 간단한 형태의 연주를 준비하여 생활 속 음악 활동에 참여한다.",
+        "sourceParagraphs": [
+          25,
+          26
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          28
+        ]
+      },
+      "method": {
+        "text": "관찰 평가",
+        "sourceParagraphs": [
+          30
+        ]
+      },
+      "objective": {
+        "text": "좋아하는 음악을 생활 속에서 활용할 수 있다.",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "materials": {
+        "text": "가락 악기",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "좋아하는 음악을 생활 속에서 활용하는 방법을 알고 적극적으로 활용할 수 있다.",
+          "sourceParagraphs": [
+            37
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "좋아하는 음악을 생활 속에서 활용할 수 있다.",
+          "sourceParagraphs": [
+            39
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "좋아하는 음악을 생활 속에서 활용하기 위해 노력한다.",
+          "sourceParagraphs": [
+            41
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1loNhSd4wPKrlR1qlvTxhPtUxduxChsJV",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "단소로 연주하는 율명 ②",
+      "sourceUrl": "https://drive.google.com/file/d/1loNhSd4wPKrlR1qlvTxhPtUxduxChsJV/view?usp=drivesdk",
+      "sourceFile": "musiclife-1loNhSd4wPKrlR1qlvTxhPtUxduxChsJV.hwp",
+      "sha256": "e6424a68457b7aa411457dc54aefdaaf517bf9f714bd5e030304647ab1f9cfd0",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r22"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          54,
+          55
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          57
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 동료 평가",
+        "sourceParagraphs": [
+          59
+        ]
+      },
+      "objective": {
+        "text": "정확한 자세와 주법으로 단소를 연주할 수 있다.",
+        "sourceParagraphs": [
+          61
+        ]
+      },
+      "materials": {
+        "text": "단소",
+        "sourceParagraphs": [
+          63
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "자세가 매우 정확하며 연주법도 정확하다.",
+          "sourceParagraphs": [
+            66
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "자세는 정확하지만, 연주법은 정확하지 않다.",
+          "sourceParagraphs": [
+            68
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "자세와 연주법 모두 정확하지 않다.",
+          "sourceParagraphs": [
+            70
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1rNgOOk7V4kRGlm1ordvZuHb9X13EvWUC",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "악곡의 일부를 바꾸어 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/1rNgOOk7V4kRGlm1ordvZuHb9X13EvWUC/view?usp=drivesdk",
+      "sourceFile": "musiclife-1rNgOOk7V4kRGlm1ordvZuHb9X13EvWUC.hwp",
+      "sha256": "9da17cc07ee2a5bbad7d3c75cb9e24c39e85e747cc7134b68cbd158a2fe9f135",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r21"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-02"
+      ],
+      "standards": {
+        "text": "[6음03-02] 기초적인 기보를 활용하여 간단한 조건에 따라 악곡의 일부를 바꾼다.",
+        "sourceParagraphs": [
+          25
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "method": {
+        "text": "관찰 평가",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "objective": {
+        "text": "악곡의 일부를 바꿀 수 있다.",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "materials": {
+        "text": "디지털 매체, 리코더, 멜로디언, 실로폰",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "음악적 아이디어를 간단한 기보를 활용하여 효과적으로 표현할 수 있다. 노랫말, 리듬, 가락이 어울리게 악곡의 일부를 바꿀 수 있다. 음악적 아이디어를 표현하는 것에 흥미를 자기고 적극적으로 참여한다.",
+          "sourceParagraphs": [
+            36
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "음악적 아이디어를 간단한 기보를 활용하여 표현할 수 있다. 악곡의 일부를 생각에 따라 바꿀 수 있다. 친구들과 소통하며 즐겁게 창작 활동에 참여한다.",
+          "sourceParagraphs": [
+            38
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "기보 방법을 이해하고 악곡의 일부를 바꿀 수 있다. 다소 어색하지만 악곡의 일부를 바꿀 수 있다. 동료들과 협업하여 창작 활동에 참여한다.",
+          "sourceParagraphs": [
+            40
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1IYxRmMGSHtr9f74lKhBG1JNN4G8KVIby",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "중중모리장단",
+      "sourceUrl": "https://drive.google.com/file/d/1IYxRmMGSHtr9f74lKhBG1JNN4G8KVIby/view?usp=drivesdk",
+      "sourceFile": "musiclife-1IYxRmMGSHtr9f74lKhBG1JNN4G8KVIby.hwp",
+      "sha256": "b6f1d95a71d1a52c45ff5879ce15002de96fdbd9ef634ed47128f9b12ff2f512",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r20"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 지필 평가",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "objective": {
+        "text": "중중모리장단의 세를 살려 장구로 연주할 수 있다.",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "materials": {
+        "text": "장구, 장구채",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "바른 자세와 표현 기법으로 중중모리장단의 세를 살려 장구로 연주할 수 있다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "중중모리장단의 세를 살려 장구로 연주할 수 있다.",
+          "sourceParagraphs": [
+            51
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "중중모리장단을 장구로 연주할 수 있다.",
+          "sourceParagraphs": [
+            53
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1t1HxAnj8rsYd-xkF-uMeNErp_Qd9Jwsm",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "다 함께 공연해요",
+      "sourceUrl": "https://drive.google.com/file/d/1t1HxAnj8rsYd-xkF-uMeNErp_Qd9Jwsm/view?usp=drivesdk",
+      "sourceFile": "musiclife-1t1HxAnj8rsYd-xkF-uMeNErp_Qd9Jwsm.hwp",
+      "sha256": "034b776bf2693b2ca5b0cf6ada30bc1fefef3124c295ff655b03407078e7f29f",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r19"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-04"
+      ],
+      "standards": {
+        "text": "[6음01-04] 간단한 형태의 연주를 준비하며 생활 속 음악 활동에 참여한다.",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "method": {
+        "text": "자기 평가(연습 일지), 동료 평가",
+        "sourceParagraphs": [
+          48
+        ]
+      },
+      "objective": {
+        "text": "노래에 어울리는 소고춤 동작을 구성하고 간단한 공연을 준비할 수 있다.",
+        "sourceParagraphs": [
+          50
+        ]
+      },
+      "materials": {
+        "text": "필기구",
+        "sourceParagraphs": [
+          52
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "노래에 어울리는 소고춤 동작을 창의적으로 구성하며, 스스로 할 수 있는 역할을 찾아 공연 준비에 적극적으로 참여할 수 있다.",
+          "sourceParagraphs": [
+            55
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "노래에 어울리는 소고춤 동작을 잘 구성하며, 공연 준비에 성실하게 참여할 수 있다.",
+          "sourceParagraphs": [
+            57
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "노래에 어울리는 소고춤 동작을 잘 따라하며, 공연 준비와 실행에 참여할 수 있다.",
+          "sourceParagraphs": [
+            59
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-11YKz3jpCRnpcaR_UwJ1LDoLI2Z99Gaov",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "재미있는 리듬꼴을 만들어요",
+      "sourceUrl": "https://drive.google.com/file/d/11YKz3jpCRnpcaR_UwJ1LDoLI2Z99Gaov/view?usp=drivesdk",
+      "sourceFile": "musiclife-11YKz3jpCRnpcaR_UwJ1LDoLI2Z99Gaov.hwp",
+      "sha256": "3cd32585bb83dc7060e7e5ccf7aa84fc7796cffc66e17e11283857bfb985a534",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r18"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          35,
+          36
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "method": {
+        "text": "관찰 평가, 자기 평가",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "objective": {
+        "text": "당김음을 활용하여 노래에 어울리는 리듬꼴을 만들고, 반주를 할 수 있다.",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "materials": {
+        "text": "리듬 악기",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "당김음을 활용하여 노래에 어울리는 리듬꼴을 만들고, 반주를 할 수 있다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "당김음을 활용하여 리듬꼴을 만들고, 반주를 할 수 있다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "당김음을 활용하여 리듬꼴을 만들기 위해 노력한다.",
+          "sourceParagraphs": [
+            51
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1DrlGsQFrfa53wBLoeJLXqbm4amFptgZ8",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "국악기의 음색",
+      "sourceUrl": "https://drive.google.com/file/d/1DrlGsQFrfa53wBLoeJLXqbm4amFptgZ8/view?usp=drivesdk",
+      "sourceFile": "musiclife-1DrlGsQFrfa53wBLoeJLXqbm4amFptgZ8.hwp",
+      "sha256": "93f8f5e1e4b7f878997c7f45186c582db9edc7325e01590a5ec918420eeb5876",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r17"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하며 구별한다.",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "domain": {
+        "text": "연주, 창작",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "method": {
+        "text": "교사 평가, 관찰 평가, 보고서 평가",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "objective": {
+        "text": "여러 국악기의 음색을 파악하여 구별할 수 있다.",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "materials": {
+        "text": "지도서용 음원 자료, 태블릿PC",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "음악을 듣고 여러 국악기의 음색을 정확하게 구별하여 이야기할 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "음악을 듣고 여러 국악기의 음색을 구별하여 이야기할 수 있다.",
+          "sourceParagraphs": [
+            46
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "음악을 듣고 국악기의 음색을 이야기할 수 있다.",
+          "sourceParagraphs": [
+            48
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-14UMam7_gt7UnrKOZbl14rUdRO0Kkr21z",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "여름을 음악으로 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/14UMam7_gt7UnrKOZbl14rUdRO0Kkr21z/view?usp=drivesdk",
+      "sourceFile": "musiclife-14UMam7_gt7UnrKOZbl14rUdRO0Kkr21z.hwp",
+      "sha256": "8c0bea1e50b10611b5c17d9c37a2a6bac8588e33cea035a465aa969f9fc8f6fb",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r16"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-04",
+        "6음03-01"
+      ],
+      "standards": {
+        "text": "[6음02-04] 생활 속에서 음악을 찾아 들으며 아름다움을 느끼고 공감한다. [6음03-01] 느낌과 아이디어를 떠올려 여러 매체나 방법으로 자신감 있게 표현한다.",
+        "sourceParagraphs": [
+          20,
+          21
+        ]
+      },
+      "domain": {
+        "text": "감상, 창작",
+        "sourceParagraphs": [
+          23
+        ]
+      },
+      "method": {
+        "text": "관찰, 지필평가",
+        "sourceParagraphs": [
+          25
+        ]
+      },
+      "objective": {
+        "text": "여름을 주제로 음악을 만들어 연주할 수 잇다.",
+        "sourceParagraphs": [
+          27
+        ]
+      },
+      "materials": {
+        "text": "디지털 매체, 색칠 도구",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "여름에 어울리는 음악의 특징을 예를 들어 설명할 수 있다. 여름에 어울리는 그림 악보를 그리고 효과적으로 연주할 수 있다.",
+          "sourceParagraphs": [
+            32
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "여름에 어울리는 음악의 특징을 간단히 설명할 수 있다. 여름에 어울리는 그림 악보를 그리고 어울리게 연주할 수 있다.",
+          "sourceParagraphs": [
+            34
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "여름에 어울리는 음악을 찾을 수 있다. 여름에 어울리는 그림 악보를 그리고 연주할 수 있다.",
+          "sourceParagraphs": [
+            36
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1nwq-jBGqA_yeISj34ZjCeGNFH9EFHrWT",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "셈여림의 변화를 느껴요",
+      "sourceUrl": "https://drive.google.com/file/d/1nwq-jBGqA_yeISj34ZjCeGNFH9EFHrWT/view?usp=drivesdk",
+      "sourceFile": "musiclife-1nwq-jBGqA_yeISj34ZjCeGNFH9EFHrWT.hwp",
+      "sha256": "623d00a071bcdddfedbc7e950a6bf90dc33370ab9403f10b853f363f62181db2",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r15"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          32,
+          33
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "objective": {
+        "text": "셈여림의 변화를 살려 부분 2부 합창으로 부를 수 있다.",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "materials": {
+        "text": "색연필",
+        "sourceParagraphs": [
+          41
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "셈여림의 변화를 명확히 인식하고, 이를 살려 부분 2부 합창으로 즐겁게 부른다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "셈여림의 변화를 부분적으로 적용하여 부분 2부 합창으로 부른다.",
+          "sourceParagraphs": [
+            46
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "셈여림의 변화에 대한 이해가 보통이며, 성부를 나누어 부르는 활동이 다소 미흡하다.",
+          "sourceParagraphs": [
+            48
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1a3sM1lb8p7YHD-4WHkkQnEzKnHu94pP5",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "빠르기의 변화를 느껴요",
+      "sourceUrl": "https://drive.google.com/file/d/1a3sM1lb8p7YHD-4WHkkQnEzKnHu94pP5/view?usp=drivesdk",
+      "sourceFile": "musiclife-1a3sM1lb8p7YHD-4WHkkQnEzKnHu94pP5.hwp",
+      "sha256": "a1d44719d714810bf29b26d1befbad3af2f9060cd6da5226fa7cb7ea8a13ffd7",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r13"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하며 구별한다.",
+        "sourceParagraphs": [
+          32
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "objective": {
+        "text": "음악을 듣고 빠르기의 변화를 여러 가지 방법으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "materials": {
+        "text": "색연필",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "빠르기의 변화를 명확히 구별하고, 다양한 방법을 효과적으로 표현한다.",
+          "sourceParagraphs": [
+            43
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "빠르기의 변화를 대략적으로 구별하며, 1~2가지 방식으로 표현한다.",
+          "sourceParagraphs": [
+            45
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "빠르기 변화에 관한 이해가 미흡하며 표현이 다소 단편적이다.",
+          "sourceParagraphs": [
+            47
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1zB93gLpWpeND2_BR80sRfjJFz_Q2I0HA",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "사장조 음계와 주요 3화음",
+      "sourceUrl": "https://drive.google.com/file/d/1zB93gLpWpeND2_BR80sRfjJFz_Q2I0HA/view?usp=drivesdk",
+      "sourceFile": "musiclife-1zB93gLpWpeND2_BR80sRfjJFz_Q2I0HA.hwp",
+      "sha256": "ba24108a9bdf200efcd23acb2c92c41beb76c359ed822bbe6ca2c5852f59dc64",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r12"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02",
+        "6음01-03"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다. [6음01-03] 소리의 어울림을 생각하며 다양한 방법으로 함께 표현한다.",
+        "sourceParagraphs": [
+          39,
+          40
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "method": {
+        "text": "실기 평가, 자기 평가",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "objective": {
+        "text": "사장조의 주요 3화음을 이해하고, 소리의 어울림을 느끼며 부분 2부 합창과 화음 반주를 할 수 있다.",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "materials": {
+        "text": "가락 악기",
+        "sourceParagraphs": [
+          48
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "사장조의 주요 3화음을 정확하게 알고, 소리의 어울림을 느끼며 부분 2부 합창과 화음 반주를 정확하게 할 수 있다.",
+          "sourceParagraphs": [
+            51
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "사장조의 주요 3화음을 대체적으로 알고, 소리의 어울림을 느끼며 부분 2부 합창과 화음 반주를 일부 할 수 있다.",
+          "sourceParagraphs": [
+            53
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "사장조의 주요 3화음을 부분적으로 알고, 소리의 어울림을 느끼며 부분 2부 합창과 화음 반주를 일부 할 수 있다.",
+          "sourceParagraphs": [
+            55
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1_vQAi2HikmHdk7kfZOA1PBo5yzTnMBpv",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "메나리토리",
+      "sourceUrl": "https://drive.google.com/file/d/1_vQAi2HikmHdk7kfZOA1PBo5yzTnMBpv/view?usp=drivesdk",
+      "sourceFile": "musiclife-1_vQAi2HikmHdk7kfZOA1PBo5yzTnMBpv.hwp",
+      "sha256": "2b5d34fe31d5e4034a1de8fa8893559a0e84d847e624abe64ea23fd79a356bcc",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r11"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          30,
+          31
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 실기 평가",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "objective": {
+        "text": "메나리토리의 특징을 파악하여 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "materials": {
+        "text": "지도서용 음원 자료, 교사용 장구",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "메나리토리의 구성음과 특징을 이해하고 <돔소소리>를 정확하게 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "메나리토리의 구성음과 특징을 이해하고 <돔소소리>를 부를 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "<돔소소리>를 부를 수 있다.",
+          "sourceParagraphs": [
+            46
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1IFe9cYfoIqFeq_bBSO1P0jiNR0scsCiO",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "바장조 음계",
+      "sourceUrl": "https://drive.google.com/file/d/1IFe9cYfoIqFeq_bBSO1P0jiNR0scsCiO/view?usp=drivesdk",
+      "sourceFile": "musiclife-1IFe9cYfoIqFeq_bBSO1P0jiNR0scsCiO.hwp",
+      "sha256": "cb9ad630fd0651027beb177b63aee62424fa848624e737860087694fb866bec3",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r10"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "objective": {
+        "text": "바장조의 음계를 알고, 바장조의 계이름으로 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "materials": {
+        "text": "필기구",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "바장조의 음계를 정확하게 이해하고, 바장조의 계이름으로 능숙하게 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            40
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "바장조의 음계를 이해하고, 바장조의 계이름으로 대체적으로 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "바장조의 음계를 알고, 바장조의 계이름으로 노래의 일부를 부를 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-102ohqoZihG9BucA7k6xA_PVh14iDI3lz",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "단소로 연주하는 율명 ①",
+      "sourceUrl": "https://drive.google.com/file/d/102ohqoZihG9BucA7k6xA_PVh14iDI3lz/view?usp=drivesdk",
+      "sourceFile": "musiclife-102ohqoZihG9BucA7k6xA_PVh14iDI3lz.hwpx",
+      "sha256": "5143abe39f9b0e1b966f873ed5c2211e3c7426212ba3a9adae086fb05cfea340",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r9"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다.",
+        "sourceParagraphs": [
+          56
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          58
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 동료 평가",
+        "sourceParagraphs": [
+          60
+        ]
+      },
+      "objective": {
+        "text": "정확한 자세와 주법으로 단소를 연주할 수 있다.",
+        "sourceParagraphs": [
+          62
+        ]
+      },
+      "materials": {
+        "text": "단소",
+        "sourceParagraphs": [
+          64
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "자세가 매우 정확하며 연주법도 정확하다.",
+          "sourceParagraphs": [
+            67
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "자세는 정확하지만, 연주법은 정확하지 않다.",
+          "sourceParagraphs": [
+            69
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "자세와 연주법 모두 미흡하다.",
+          "sourceParagraphs": [
+            71
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1DeFhZQav-dz68f9j3iF4WVh23y8Nepdy",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음악 영상을 만들어요",
+      "sourceUrl": "https://drive.google.com/file/d/1DeFhZQav-dz68f9j3iF4WVh23y8Nepdy/view?usp=drivesdk",
+      "sourceFile": "musiclife-1DeFhZQav-dz68f9j3iF4WVh23y8Nepdy.hwp",
+      "sha256": "6187e7edb2c751f65617dcaac9e54c5ef3bcb47c3ab2e16c73405276d8416bdb",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r8"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음03-04"
+      ],
+      "standards": {
+        "text": "[6음03-04] 생활 주변 상황이나 이야기를 활용하여 음악을 만들며 열린 태도를 갖는다.",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "domain": {
+        "text": "창작",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "method": {
+        "text": "자기 평가",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "objective": {
+        "text": "음악 영상 만들기 계획을 수립하여 창의적으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "materials": {
+        "text": "색연필",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "음악 영상 만들기 계획이 논리적이며 표현이 풍부하다.",
+          "sourceParagraphs": [
+            40
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "노래 선정과 구성은 적절하나 표현이 다소 단조롭거나 전달이 약하다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "계획 수립이 미흡하며 음악 영상 내용이 단편적이다.",
+          "sourceParagraphs": [
+            44
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1F-94yhEjQ2RxDRk7NEO_XgRe-8lk0G73",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "aba 형식",
+      "sourceUrl": "https://drive.google.com/file/d/1F-94yhEjQ2RxDRk7NEO_XgRe-8lk0G73/view?usp=drivesdk",
+      "sourceFile": "musiclife-1F-94yhEjQ2RxDRk7NEO_XgRe-8lk0G73.hwp",
+      "sha256": "f8143b924689b394803e642f87ae6b97a532977c2380ec35bfeb6118a66cb0ee",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r7"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          34
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "objective": {
+        "text": "aba 형식을 이해하고 여러 가지 방법으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "materials": {
+        "text": "필기구",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "aba 형식을 명확히 이해하여 설명할 수 있고, 부분과 부분을 구별하여 창의적인 방법으로 표현한다.",
+          "sourceParagraphs": [
+            45
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "aba 형식을 이해하여 간단히 설명할 수 있고, 부분과 부분을 구별하여 여러 가지 방법으로 표현한다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "aba 형식을 이해하고 부분과 부분을 구별하여 1가지 방법으로 표현한다.",
+          "sourceParagraphs": [
+            49
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1BtZD55gECbUfqKglK-eCtP2w1bE5v3if",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "관악기의 음색을 구별해요",
+      "sourceUrl": "https://drive.google.com/file/d/1BtZD55gECbUfqKglK-eCtP2w1bE5v3if/view?usp=drivesdk",
+      "sourceFile": "musiclife-1BtZD55gECbUfqKglK-eCtP2w1bE5v3if.hwp",
+      "sha256": "cdb6b7f6387cc8698fdab7e06e86ff021a63f987801d77bb84d1764b1d431800",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r6"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음02-01"
+      ],
+      "standards": {
+        "text": "[6음02-01] 음악을 듣고 음악의 요소를 감지하여 구별한다.",
+        "sourceParagraphs": [
+          36
+        ]
+      },
+      "domain": {
+        "text": "감상",
+        "sourceParagraphs": [
+          38
+        ]
+      },
+      "method": {
+        "text": "관찰 평가, 자기평가",
+        "sourceParagraphs": [
+          40
+        ]
+      },
+      "objective": {
+        "text": "관악기의 종류와 음색을 구별하여 느낌을 여러 가지 방법으로 표현할 수 있다.",
+        "sourceParagraphs": [
+          42
+        ]
+      },
+      "materials": {
+        "text": "그림 도구",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "관악기의 음색을 명확히 구별하고, 다양한 방법을 활용해 느낌을 효과적으로 표현한다.",
+          "sourceParagraphs": [
+            47
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "대부분의 관악기 음색을 구별하며, 1~2가지 방식으로 느낌을 표현한다.",
+          "sourceParagraphs": [
+            49
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "일부 관악기 음색을 구별하며, 표현이 다소 단편적이거나 미흡하다.",
+          "sourceParagraphs": [
+            51
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1RRfaWPl0svYbFIlIOpgMVpKAuu1XSNju",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "굿거리장단",
+      "sourceUrl": "https://drive.google.com/file/d/1RRfaWPl0svYbFIlIOpgMVpKAuu1XSNju/view?usp=drivesdk",
+      "sourceFile": "musiclife-1RRfaWPl0svYbFIlIOpgMVpKAuu1XSNju.hwp",
+      "sha256": "82c44691215fab136f9ab55edf537d4dce6d52406c4f638001cf50d35b28f869",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r5"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-01",
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-01] 바른 주법과 표현 기법을 익혀 노래나 악기로 느낌을 담아 연주한다. [6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          41,
+          42
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          44
+        ]
+      },
+      "method": {
+        "text": "자기 평가, 지필 평가",
+        "sourceParagraphs": [
+          46
+        ]
+      },
+      "objective": {
+        "text": "굿거리장단의 세를 살려 장구로 연주할 수 있다.",
+        "sourceParagraphs": [
+          48
+        ]
+      },
+      "materials": {
+        "text": "장구, 장구채",
+        "sourceParagraphs": [
+          50
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "바른 자세와 표현 기법으로 굿거리장단의 세를 살려 장구로 연주할 수 있다.",
+          "sourceParagraphs": [
+            53
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "굿거리장단의 세를 살려 장구로 연주할 수 있다.",
+          "sourceParagraphs": [
+            55
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "굿거리장단을 장구로 연주할 수 있다.",
+          "sourceParagraphs": [
+            57
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-173gJrSADGg0-aNDrUmqtzq_qTmGjbI89",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "다장조 주요 3화음",
+      "sourceUrl": "https://drive.google.com/file/d/173gJrSADGg0-aNDrUmqtzq_qTmGjbI89/view?usp=drivesdk",
+      "sourceFile": "musiclife-173gJrSADGg0-aNDrUmqtzq_qTmGjbI89.hwp",
+      "sha256": "d5d1f35ec094e4e7ab4b265ec620648101a4009d90ddb8cd2cd905b46202c22c",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r4"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "objective": {
+        "text": "다장조의 주요 3화음을 이해하고, 여러 가지 방법으로 화음 반주를 연주할 수 있다.",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "materials": {
+        "text": "가락 악기",
+        "sourceParagraphs": [
+          39
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "다장조의 주요 3화음의 의미와 구성음을 명확하게 이해하고, 여러 가지 방법으로 능숙하게 화음 반주를 연주할 수 있다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "다장조의 주요 3화음의 의미와 구성음을 이해하고, 여러 가지 방법으로 화음 반주를 연주할 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "다장조의 주요 3화음의 의미와 구성음을 이해하고, 화음 반주를 일부 연주할 수 있다.",
+          "sourceParagraphs": [
+            46
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    },
+    {
+      "id": "musiclife-assessment-1tIIjIaPDGNWcYvQtsNidf5TIdysz7gee",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음이름과 계이름",
+      "sourceUrl": "https://drive.google.com/file/d/1tIIjIaPDGNWcYvQtsNidf5TIdysz7gee/view?usp=drivesdk",
+      "sourceFile": "musiclife-1tIIjIaPDGNWcYvQtsNidf5TIdysz7gee.hwp",
+      "sha256": "35ed4970872dda9163c14a220cfac34f664119ed717908f25dd5604b92f9d71a",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r3"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "structured-fields-extracted",
+      "standardCodes": [
+        "6음01-02"
+      ],
+      "standards": {
+        "text": "[6음01-02] 음악 요소를 살려 노래나 악기로 발표하고 과정을 돌아본다.",
+        "sourceParagraphs": [
+          29
+        ]
+      },
+      "domain": {
+        "text": "연주",
+        "sourceParagraphs": [
+          31
+        ]
+      },
+      "method": {
+        "text": "관찰 평가(실기), 자기 평가",
+        "sourceParagraphs": [
+          33
+        ]
+      },
+      "objective": {
+        "text": "음이름과 계이름의 뜻을 알고, 다장조의 계이름으로 노래 부를 수 있다.",
+        "sourceParagraphs": [
+          35
+        ]
+      },
+      "materials": {
+        "text": "필기구, 멜로디언",
+        "sourceParagraphs": [
+          37
+        ]
+      },
+      "rubric": [
+        {
+          "level": "매우 잘함",
+          "text": "음이름과 계이름의 뜻을 명확하게 이해하고, 다장조의 계이름으로 능숙하게 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            40
+          ]
+        },
+        {
+          "level": "잘함",
+          "text": "음이름과 계이름의 뜻을 이해하고, 다장조의 계이름으로 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            42
+          ]
+        },
+        {
+          "level": "보통",
+          "text": "음이름과 계이름의 뜻을 일부 이해하고, 다장조의 계이름으로 노래 부를 수 있다.",
+          "sourceParagraphs": [
+            44
+          ]
+        }
+      ],
+      "extraction": {
+        "method": "hwp-hwpx-paragraph-labels",
+        "paragraphNumbering": "one-based-nonempty-document-paragraphs",
+        "reviewStatus": "structurally-validated"
+      }
+    }
+  ]
+}

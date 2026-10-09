@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "id": "artculture-assessment-3-1",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-01",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-2",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-03",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-3",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-01",
+        "4미02-02"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-4",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미01-01",
+        "4미01-03",
+        "4미02-03"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-5",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미03-03",
+        "4미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-6",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-01",
+        "4미02-02"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-7",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-02",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-8",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미01-03",
+        "4미01-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-9",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-04",
+        "4미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-10",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-02",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-11",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-02",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-3-12",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미03-02",
+        "4미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-1",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미01-02",
+        "4미01-03",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-2",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-03",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-3",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-01",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-4",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-01",
+        "4미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-5",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-02",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-6",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미03-01",
+        "4미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-7",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미01-03",
+        "4미01-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-8",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-02",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-9",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-04",
+        "4미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-10",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-02",
+        "4미02-03"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-11",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미02-01",
+        "4미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-4-12",
+      "stages": 4,
+      "rubricLevels": 12,
+      "codes": [
+        "4미03-02",
+        "4미03-03",
+        "4미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-1",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미01-01",
+        "6미01-02"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-2",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-3",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-03",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-4",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-03",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-5",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미03-01",
+        "6미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-6",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-02"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-7",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미01-03",
+        "6미01-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-8",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-02"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-9",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-02",
+        "6미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-10",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-02",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-11",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-5-12",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미03-02",
+        "6미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-1",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미01-02",
+        "6미01-03"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-2",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-3",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-03"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-4",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-5",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-01",
+        "6미02-02"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-6",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미03-01",
+        "6미03-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-7",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미01-03",
+        "6미01-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-8",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-03",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-9",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-02",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-10",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-02",
+        "6미02-04"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-11",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미02-04",
+        "6미02-05"
+      ]
+    },
+    {
+      "id": "artculture-assessment-6-12",
+      "stages": 1,
+      "rubricLevels": 3,
+      "codes": [
+        "6미03-03",
+        "6미03-04"
+      ]
+    }
+  ]
+}

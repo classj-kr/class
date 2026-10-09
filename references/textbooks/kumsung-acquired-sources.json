@@ -1,0 +1,120 @@
+{
+  "sources": [
+    {
+      "id": "kumsung-music-5-48ba2bdc80",
+      "filename": "음악5_공통자료_연간지도계획_xlxs.xlsx",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/music/5grade/",
+      "publisher": "금성출판사",
+      "sha256": "48ba2bdc801dce483cd4d9238bd8858fc0e54ff5b782493231fe90b731ce3590",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-music-5-48ba2bdc80-5",
+        "kumsung-music-5-48ba2bdc80-6"
+      ]
+    },
+    {
+      "id": "kumsung-art-5-cbfeeb222e",
+      "filename": "미술5_공통자료_연간지도계획.Zip",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/art/5grade/",
+      "publisher": "금성출판사",
+      "sha256": "cbfeeb222e7c1ac56463febecf5bf0ba8cdee86c4edfaed576e1f68c02fdbe63",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-art-5-cbfeeb222e-5"
+      ],
+      "archiveMember": "[금성] 미술 5_연간 지도 계획.xlsx"
+    },
+    {
+      "id": "kumsung-art-6-0727610741",
+      "filename": "미술6_공통자료_연간지도계획.Zip",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/art/6grade/",
+      "publisher": "금성출판사",
+      "sha256": "0727610741a086eaa535280a2bc266c06ab4fce48e29f3e39e5c5f5c6209e5a7",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-art-6-0727610741-6"
+      ],
+      "archiveMember": "[금성] 미술 6_연간 지도 계획.xlsx"
+    },
+    {
+      "id": "kumsung-physicalEdu-5-6f1a846a8a",
+      "filename": "체육5_공통자료_연간지도계획.hwp",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/physicalEdu/5grade/",
+      "publisher": "금성출판사",
+      "sha256": "6f1a846a8af125297654405206343b36f09484663e43324db5d1b29c6f59a87b",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-physicalEdu-5-6f1a846a8a-5"
+      ]
+    },
+    {
+      "id": "kumsung-physicalEdu-6-594ef7dd07",
+      "filename": "체육6_공통자료_연간지도계획.hwp",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/physicalEdu/6grade/",
+      "publisher": "금성출판사",
+      "sha256": "594ef7dd074eecdb0dd7060c7a24937ecf08826609f24c885e09a014d067a034",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-physicalEdu-6-594ef7dd07-6"
+      ]
+    },
+    {
+      "id": "kumsung-practical-5-8ec43084ae",
+      "filename": "실과5_공통자료_연간지도계획.zip",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/practical/5grade/",
+      "publisher": "금성출판사",
+      "sha256": "8ec43084aec393e50d283dcfea2730d0acb1d34831c766d226ccf5bd60aee934",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-practical-5-8ec43084ae-5"
+      ],
+      "archiveMember": "실과_5학년_연간지도계획.xlsx"
+    },
+    {
+      "id": "kumsung-practical-6-b70064418c",
+      "filename": "실과6_공통자료_연간지도계획.zip",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/practical/6grade/",
+      "publisher": "금성출판사",
+      "sha256": "b70064418ca08c8ac7266476fabd99351a161a134e50427b0d805b4f5a6169be",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-practical-6-b70064418c-6"
+      ],
+      "archiveMember": "실과_6학년_연간지도계획.xlsx"
+    },
+    {
+      "id": "kumsung-art-3-4-1c253ec899",
+      "filename": "kumsung-art-3-4.pdf",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/art/3grade/",
+      "publisher": "금성출판사",
+      "sha256": "1c253ec899f3535e8f8405e8158d62da40a4e594d5c9a375501cf59f1b49b32a",
+      "retrievedOn": "2026-10-09",
+      "plans": [
+        "kumsung-art-3-4-1c253ec899-3",
+        "kumsung-art-3-4-1c253ec899-4"
+      ]
+    },
+    {
+      "id": "kumsung-physicalEdu-3-34a24267e0",
+      "filename": "공통_2022 개정 3~4학년 체육과 연간 지도 계획_3학년.hwpx",
+      "publisher": "금성출판사",
+      "sha256": "34a24267e0e09fa27e1028be5fbc002c1ee1960dd3c035fc5c6085157bddd3c3",
+      "retrievedOn": "2026-10-09",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/physicalEdu/3grade/",
+      "plans": [],
+      "status": "grade-comparison-pending",
+      "issue": "Grade 3 and 4 links provide byte-identical annual plans."
+    },
+    {
+      "id": "kumsung-physicalEdu-4-34a24267e0",
+      "filename": "공통_2022 개정 3~4학년 체육과 연간 지도 계획_4학년.hwpx",
+      "publisher": "금성출판사",
+      "sha256": "34a24267e0e09fa27e1028be5fbc002c1ee1960dd3c035fc5c6085157bddd3c3",
+      "retrievedOn": "2026-10-09",
+      "sourceUrl": "https://newtext2025.kumsung.co.kr/textbook/element/physicalEdu/4grade/",
+      "plans": [],
+      "status": "grade-comparison-pending",
+      "issue": "Grade 3 and 4 links provide byte-identical annual plans."
+    }
+  ]
+}

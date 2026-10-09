@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const curriculumTableFoot = document.getElementById('curriculumTableFoot');
     const curriculumPrevYearHeader = document.getElementById('curriculumPrevYearHeader');
     const saveCurriculumBtn = document.getElementById('saveCurriculumBtn');
+    const textbookPanel = window.createTextbookPanel({ api, canEdit: () => curriculumCanEdit });
 
     // Master Timetable Grid Tab
     const timetableGradeSelect = document.getElementById('timetableGradeSelect');
@@ -946,6 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadCurriculumHours() {
         if (!curriculumTableBody) return;
         const grade = Number(curriculumGradeSelect.value || 5);
+        textbookPanel.load(selectedAcademicYear, grade);
         const gradeDefaults = GRADE_SUBJECT_BASE_HOURS[grade] || GRADE_SUBJECT_BASE_HOURS[5];
 
         try {

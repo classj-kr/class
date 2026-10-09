@@ -474,3 +474,17 @@ body[data-curriculum-access="read"] :is(input, select):disabled { opacity: 1; co
         font-weight: bold !important;
     }
 }
+/* Textbook adoption is stored independently for every school/year/grade/subject. */
+.textbook-panel { padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; }
+.textbook-panel > p { color: #6b7280; margin: 10px 0 20px; }
+.textbook-list { display: grid; gap: 16px; }
+.textbook-subject { border-top: 1px solid #e5e7eb; padding-top: 16px; }
+.textbook-subject > label { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 12px; font-weight: 600; margin-right: 12px; }
+.textbook-subject select { min-width: 230px; max-width: 100%; }
+.textbook-status { margin: 8px 0; font-size: .875rem; color: #6b7280; }
+.textbook-status button { margin-left: 12px; }
+.textbook-preview details { margin: 8px 0; }
+.textbook-preview summary { cursor: pointer; overflow-wrap: anywhere; }
+.textbook-plan { overflow-x: auto; max-height: 420px; }
+.textbook-plan table { min-width: 700px; margin-top: 12px; }
+.textbook-plan td { white-space: pre-line; text-align: left; }

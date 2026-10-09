@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#193a32"><title>경찰과 도둑 · 실시간</title>
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261001-citychase-bg">
+  <link rel="stylesheet" href="realtime.css?v=20261009g">
+  <script src="../../../assets/network/game-network.js?v=20260821" defer></script>
+  <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules" defer></script>
+  <script src="realtime-world.js?v=20261009e" defer></script>
+  <script src="realtime-steering.js?v=20261009c" defer></script>
+  <script src="realtime-engine.js?v=20261009g" defer></script>
+  <script src="realtime-capture.js?v=20261009b" defer></script>
+  <script src="realtime-controls.js?v=20261009c" defer></script>
+  <script src="realtime.js?v=20261009g" defer></script>
+</head>
+<body>
+  <main id="welcome" class="welcome">
+    <section id="lobbyScreen" class="panel" data-multiplayer-lobby>
+      <header><h1 class="lobbyTitle">경찰과 도둑</h1><span id="savedName"></span><a id="rulesBtnLobby" class="rulesLink" href="realtime-rules.html" target="_blank" rel="noopener">게임 규칙</a></header>
+      <div class="mp-lobby-tabs"><button id="hostTab">방 만들기</button><button id="joinTab">참가하기</button></div>
+      <section id="hostPane" class="hidden"><strong id="roomCode"></strong><p id="hostStatus"></p></section>
+      <section id="joinPane"><div class="mp-lobby-row"><input id="joinCode" inputmode="numeric" maxlength="4" placeholder="방 번호" aria-label="방 번호"><button id="joinBtn" class="primary">참가</button></div><p id="joinStatus"></p></section>
+      <section><div id="lobbyPlayers"></div><p id="lobbyGuide"></p><button id="startBtn" class="primary" disabled>시작</button><button id="lobbyBack">방 나가기</button></section>
+      <details id="practiceSetup">
+        <summary>혼자 연습</summary>
+        <div class="practiceOptions">
+          <div class="choices" aria-label="연습할 팀"><button class="selected thief" data-team="thief" aria-pressed="true">도둑팀</button><button class="police" data-team="police" aria-pressed="false">경찰팀</button></div>
+          <button id="practiceBtn" class="primary">연습 시작</button>
+        </div>
+      </details>
+    </section>
+  </main>
+  <section id="play" class="play hidden" aria-label="실시간 추격전">
+    <canvas id="town" aria-label="방향키·WASD 또는 이동 패드로 이동합니다. 골목을 눌러 목적지로 이동할 수도 있습니다."></canvas>
+    <div class="topHud">
+      <button id="exitBtn" class="icon" aria-label="게임 나가기">←</button>
+      <div class="mission"><strong id="teamLabel"></strong><span id="missionText"></span></div>
+      <div class="score" aria-label="양 팀 진행 상황"><div class="scoreItem"><span>보석</span><strong id="scoreText">0 / 3</strong></div><div class="scoreItem policeScore"><span>체포</span><strong id="captureText">0 / 5</strong></div></div>
+      <time id="clock">3:00</time>
+      <button id="viewBtn" class="icon" aria-label="전체 지도 보기">전체</button>
+      <a id="rulesBtnGame" class="icon rulesLink" href="realtime-rules.html" target="_blank" rel="noopener" aria-label="게임 규칙">?</a>
+      <button id="soundBtn" class="icon" aria-label="소리 켜기" aria-pressed="false">♪</button>
+    </div>
+    <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
+    <div id="pauseNotice" class="pauseNotice hidden">방장이 돌아오면 추격전을 이어갑니다.</div>
+    <div id="movePad" class="movePad" role="group" aria-label="이동 패드 · 누른 방향으로 이동, 손을 떼면 정지">
+      <span class="padUp" aria-hidden="true">▲</span><span class="padRight" aria-hidden="true">▶</span><span class="padDown" aria-hidden="true">▼</span><span class="padLeft" aria-hidden="true">◀</span><span class="stick" aria-hidden="true"></span>
+    </div>
+    <div class="bottomHud">
+      <button id="clueBtn" class="clueToggle"><strong>내 단서</strong><span id="clueCount">팀원과 합쳐 보세요</span></button>
+      <button id="pingBtn" aria-pressed="false">팀 위치 표시</button>
+      <button id="interactBtn" class="interact" disabled>가게 앞에서 수색</button>
+      <button id="dashBtn" class="primary">질주 <kbd>Space</kbd></button>
+    </div>
+    <aside id="cluePanel" class="cluePanel panel hidden" aria-label="단서 수첩">
+      <div class="heading"><h2>보석 <span id="clueRound">1</span> · 단서 수첩</h2><button id="closeClue" class="icon" aria-label="단서 수첩 닫기">×</button></div>
+      <h3>나만 받은 단서</h3><div id="privateClues"></div><button id="shareBtn" class="primary wide">팀원에게 단서 공유</button>
+      <h3>팀원이 공유한 단서</h3><div id="sharedClues"></div>
+      <h3>장소 표시</h3><div id="shopChoices" class="shopChoices"></div>
+    </aside>
+    <div id="result" class="result hidden"><section class="panel"><span class="eyebrow">추격전 종료</span><h1 id="resultTitle"></h1><p id="resultText"></p><button id="againBtn" class="primary wide">다시 준비하기</button></section></div>
+  </section>
+</body></html>

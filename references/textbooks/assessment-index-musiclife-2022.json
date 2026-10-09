@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "assessments": [
+    {
+      "id": "musiclife-assessment-1iugf13rdGin8D2zsPWcEoio4xeGzzkMN",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "아름다운 마침표",
+      "sourceUrl": "https://drive.google.com/file/d/1iugf13rdGin8D2zsPWcEoio4xeGzzkMN/view?usp=drivesdk",
+      "sourceFile": "musiclife-1iugf13rdGin8D2zsPWcEoio4xeGzzkMN.hwpx",
+      "sha256": "aabeb52f5593ba11017c5a7bab30e983c07fe31026ebafec1c36bceb7839323a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r31"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-16v-Z7-8wvtjugQZbumRfLf67ewQs-wZg",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다 함께 연주해요 ②",
+      "sourceUrl": "https://drive.google.com/file/d/16v-Z7-8wvtjugQZbumRfLf67ewQs-wZg/view?usp=drivesdk",
+      "sourceFile": "musiclife-16v-Z7-8wvtjugQZbumRfLf67ewQs-wZg.hwpx",
+      "sha256": "25fb08c726f9cf11eb66e045b9b888e6a464a8475392994b17d67936dd05079e",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r30"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1--etWIdJisTB_UEOc_Fnz-2Cw2t1IY93",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "내가 만드는 민요",
+      "sourceUrl": "https://drive.google.com/file/d/1--etWIdJisTB_UEOc_Fnz-2Cw2t1IY93/view?usp=drivesdk",
+      "sourceFile": "musiclife-1--etWIdJisTB_UEOc_Fnz-2Cw2t1IY93.hwpx",
+      "sha256": "90712bdbd823f02b91bbc8796d09079ebb9adf0c747013dd0835da07a9615d36",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r29"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-17JGypDpT3ZZGa6Kc-inh1OoBOd3G2fL2",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "노래로 나의 마음을 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/17JGypDpT3ZZGa6Kc-inh1OoBOd3G2fL2/view?usp=drivesdk",
+      "sourceFile": "musiclife-17JGypDpT3ZZGa6Kc-inh1OoBOd3G2fL2.hwpx",
+      "sha256": "c07c052deb40d85ae27bd06a9425fc1f3427fe167959a74f6b69d826af60d019",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r28"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1YA0f54TJMftWY4XcmtZ9DCMWJ_zDR1Ka",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "이어라 이어라 우리 민요 이어라",
+      "sourceUrl": "https://drive.google.com/file/d/1YA0f54TJMftWY4XcmtZ9DCMWJ_zDR1Ka/view?usp=drivesdk",
+      "sourceFile": "musiclife-1YA0f54TJMftWY4XcmtZ9DCMWJ_zDR1Ka.hwpx",
+      "sha256": "8692e2279f96245786063bcd6ca59c8e666574395d2405142f714ad0b6c8d3b9",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r27"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1UeHh0oS29aP3TgESenKVh2PoFgRniH1b",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다양한 문화권의 악기와 음악",
+      "sourceUrl": "https://drive.google.com/file/d/1UeHh0oS29aP3TgESenKVh2PoFgRniH1b/view?usp=drivesdk",
+      "sourceFile": "musiclife-1UeHh0oS29aP3TgESenKVh2PoFgRniH1b.hwpx",
+      "sha256": "550820b90b1fedd09baa2b04243b671f1992fca63e80f4748152ed8be152bab6",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r26"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1Ri6oQjBoZCvDpQADd-WdwsaMmXZ6BN84",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "우리나라 대표 음악 무형유산",
+      "sourceUrl": "https://drive.google.com/file/d/1Ri6oQjBoZCvDpQADd-WdwsaMmXZ6BN84/view?usp=drivesdk",
+      "sourceFile": "musiclife-1Ri6oQjBoZCvDpQADd-WdwsaMmXZ6BN84.hwpx",
+      "sha256": "399a050c46614d7d56626f7610504451670ddb065dc4cc3c304df6e69b75a2f0",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r25"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1GfTvO1VhSo5obHNWxVyn4M_YIXPIWSJA",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "음악극 만들기",
+      "sourceUrl": "https://drive.google.com/file/d/1GfTvO1VhSo5obHNWxVyn4M_YIXPIWSJA/view?usp=drivesdk",
+      "sourceFile": "musiclife-1GfTvO1VhSo5obHNWxVyn4M_YIXPIWSJA.hwp",
+      "sha256": "839ea2cef1d6267b9b43da176df42115b6834124d745dd3d69865a5e62cc4615",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r24"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1x8gn_Yq1ZrhQY6YJ0Dq8B65A4HnRsy4J",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "오페라 이야기",
+      "sourceUrl": "https://drive.google.com/file/d/1x8gn_Yq1ZrhQY6YJ0Dq8B65A4HnRsy4J/view?usp=drivesdk",
+      "sourceFile": "musiclife-1x8gn_Yq1ZrhQY6YJ0Dq8B65A4HnRsy4J.hwp",
+      "sha256": "347363609bd8cc3b0b27a54a81059b07f82cabed40ba909988a083eaf7f11bb7",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r23"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1pKG4Tn-4Uj9C9B7RYU17zjE24B6LdGQ3",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "국악 합주하기",
+      "sourceUrl": "https://drive.google.com/file/d/1pKG4Tn-4Uj9C9B7RYU17zjE24B6LdGQ3/view?usp=drivesdk",
+      "sourceFile": "musiclife-1pKG4Tn-4Uj9C9B7RYU17zjE24B6LdGQ3.hwpx",
+      "sha256": "3a44ef089b959316c8b8058117ad8603b21f83abcf8b8cb099c7500cde395b37",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r22"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1p3q69zuMHFqvfWkS52GyR8We0YHU0vvj",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "아름다운 목소리의 어울림",
+      "sourceUrl": "https://drive.google.com/file/d/1p3q69zuMHFqvfWkS52GyR8We0YHU0vvj/view?usp=drivesdk",
+      "sourceFile": "musiclife-1p3q69zuMHFqvfWkS52GyR8We0YHU0vvj.hwpx",
+      "sha256": "1f15bd9e48d8307f6bd1cc122b3471a732846d24c952910a4b6c0fac44fe53fc",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r21"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1PaqiRO1h3eDeG9l-rG7SDd07MDnG4eXK",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "생활 속 음악 찾기",
+      "sourceUrl": "https://drive.google.com/file/d/1PaqiRO1h3eDeG9l-rG7SDd07MDnG4eXK/view?usp=drivesdk",
+      "sourceFile": "musiclife-1PaqiRO1h3eDeG9l-rG7SDd07MDnG4eXK.hwp",
+      "sha256": "edb85d114b2b5a8ffdc3925497e7c399a9aa3b00398a45a4b877c6c4e445332b",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r20"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1ek4N_KFsIvyxUduI1az9_OeMYd5mq2X3",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "장단 치며 쾌지나칭칭나네!",
+      "sourceUrl": "https://drive.google.com/file/d/1ek4N_KFsIvyxUduI1az9_OeMYd5mq2X3/view?usp=drivesdk",
+      "sourceFile": "musiclife-1ek4N_KFsIvyxUduI1az9_OeMYd5mq2X3.hwpx",
+      "sha256": "b19ae6a04c49484b07d04e787f2e9da03c7a7deb8faf6826b6c2238cb568e0a7",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r19"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1uwUzdk3oS-XR5iVfyHdG86_H056kJrun",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "다 함께 연주해요 ①",
+      "sourceUrl": "https://drive.google.com/file/d/1uwUzdk3oS-XR5iVfyHdG86_H056kJrun/view?usp=drivesdk",
+      "sourceFile": "musiclife-1uwUzdk3oS-XR5iVfyHdG86_H056kJrun.hwpx",
+      "sha256": "111350a6523a85622d5a7e834e8b401569e28e346b696c61718ae1e831819cb9",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r18"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-16HvfgCTfuXENdRvl6_S-YZ39iMl4_-HY",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "이야기를 음악으로 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/16HvfgCTfuXENdRvl6_S-YZ39iMl4_-HY/view?usp=drivesdk",
+      "sourceFile": "musiclife-16HvfgCTfuXENdRvl6_S-YZ39iMl4_-HY.hwpx",
+      "sha256": "9434c9c44879e697765688a975ef34afca2e97d162a92897af9c044519bcd0cd",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r17"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-15u8f-uood9Y59NZuIivCtUSQVhefNHCv",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "수심가토리",
+      "sourceUrl": "https://drive.google.com/file/d/15u8f-uood9Y59NZuIivCtUSQVhefNHCv/view?usp=drivesdk",
+      "sourceFile": "musiclife-15u8f-uood9Y59NZuIivCtUSQVhefNHCv.hwpx",
+      "sha256": "494168994dc6141878b6d8f516282384b16ec3b4c28e50cd54b4f6af9015c5f3",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r16"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1VbiB3JYLXSZNFS9Xc0OZ2Ae5VFMk3-yy",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "소금으로 연주하는 율명 ②",
+      "sourceUrl": "https://drive.google.com/file/d/1VbiB3JYLXSZNFS9Xc0OZ2Ae5VFMk3-yy/view?usp=drivesdk",
+      "sourceFile": "musiclife-1VbiB3JYLXSZNFS9Xc0OZ2Ae5VFMk3-yy.hwpx",
+      "sha256": "2d67bfbc18e761da3615fa759094b6023ed969d3997c934192945796bcb1835a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r15"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1PNKa8yL0zN00uqQNUyHwYavJ6CdOZSGn",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "디지털 매체를 활용하여 음악 만들기",
+      "sourceUrl": "https://drive.google.com/file/d/1PNKa8yL0zN00uqQNUyHwYavJ6CdOZSGn/view?usp=drivesdk",
+      "sourceFile": "musiclife-1PNKa8yL0zN00uqQNUyHwYavJ6CdOZSGn.hwp",
+      "sha256": "4f55747500391779bd836ab4c3ac0e23cff315be3661f223d38a4d77614c1997",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r14"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1kCcMehzpc96P7AoGXfBw0Mu-Q1VL0ocS",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "판소리",
+      "sourceUrl": "https://drive.google.com/file/d/1kCcMehzpc96P7AoGXfBw0Mu-Q1VL0ocS/view?usp=drivesdk",
+      "sourceFile": "musiclife-1kCcMehzpc96P7AoGXfBw0Mu-Q1VL0ocS.hwpx",
+      "sha256": "9d0e6b1553a1fb2cc0d38c683671640063f9b6d7b4eeb480dd48ef05e2ab9e17",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r13"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1jDAj0RnNW-DSUwACU6Xwk209L_aZR-1f",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "음악으로 환경을 지켜요",
+      "sourceUrl": "https://drive.google.com/file/d/1jDAj0RnNW-DSUwACU6Xwk209L_aZR-1f/view?usp=drivesdk",
+      "sourceFile": "musiclife-1jDAj0RnNW-DSUwACU6Xwk209L_aZR-1f.hwpx",
+      "sha256": "8f6fdb0961e0002732f8e922a1dea16740c57ffea2a8279eea1323d07198b42f",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r12"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1dr_MAqy95lXyVrCZsoAbbQSPA7rXci49",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "신나는 리듬 표현",
+      "sourceUrl": "https://drive.google.com/file/d/1dr_MAqy95lXyVrCZsoAbbQSPA7rXci49/view?usp=drivesdk",
+      "sourceFile": "musiclife-1dr_MAqy95lXyVrCZsoAbbQSPA7rXci49.hwpx",
+      "sha256": "a28329492452a15b3f56c0ebdb7d01f31d0742ac43cdb4357c65e26ea6ee70c6",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r10"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1VPOw2YOPXemUGikGZtjmLS9_dTJ-KY3p",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음악에 생각을 담아요",
+      "sourceUrl": "https://drive.google.com/file/d/1VPOw2YOPXemUGikGZtjmLS9_dTJ-KY3p/view?usp=drivesdk",
+      "sourceFile": "musiclife-1VPOw2YOPXemUGikGZtjmLS9_dTJ-KY3p.hwpx",
+      "sha256": "34733afe304901df6d8e10f5ddac345c197fa65d79f453fe204b389dc3cdce27",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r8"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-19Gcz4gTYd_ahB9Q9B50O3yTXNav1LB1g",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "AB 형식",
+      "sourceUrl": "https://drive.google.com/file/d/19Gcz4gTYd_ahB9Q9B50O3yTXNav1LB1g/view?usp=drivesdk",
+      "sourceFile": "musiclife-19Gcz4gTYd_ahB9Q9B50O3yTXNav1LB1g.hwpx",
+      "sha256": "8ec308c10f997ffdb9530861c90f496e15ea4a588aa0d613a1e9e28f0b01903a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r7"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1Vzbb7rusQ0d168Xz6JL9xhHgAjTLIdYL",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "현악기의 음색을 구별해요",
+      "sourceUrl": "https://drive.google.com/file/d/1Vzbb7rusQ0d168Xz6JL9xhHgAjTLIdYL/view?usp=drivesdk",
+      "sourceFile": "musiclife-1Vzbb7rusQ0d168Xz6JL9xhHgAjTLIdYL.hwp",
+      "sha256": "c04eb43e13ad95cdea3041850fc78c88e727de0e9fac572d0de3e203ded35b44",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r6"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-17cJ4LBwYwoz7Eqg_FOju1u50VsYZqsZ3",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "육자배기토리",
+      "sourceUrl": "https://drive.google.com/file/d/17cJ4LBwYwoz7Eqg_FOju1u50VsYZqsZ3/view?usp=drivesdk",
+      "sourceFile": "musiclife-17cJ4LBwYwoz7Eqg_FOju1u50VsYZqsZ3.hwpx",
+      "sha256": "f764640f889080114894978e7f8fa71375a326763049366d623bdaa589cbcd9a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r5"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-184SGH7jMFe13uwCQzpkYTy2amJZgLhWs",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "따로 또 같이 연주해요",
+      "sourceUrl": "https://drive.google.com/file/d/184SGH7jMFe13uwCQzpkYTy2amJZgLhWs/view?usp=drivesdk",
+      "sourceFile": "musiclife-184SGH7jMFe13uwCQzpkYTy2amJZgLhWs.hwpx",
+      "sha256": "e3b2fa9728b87f3ecc8bd1980cc4731f2b57f34c5b786ba10acac99f3275610a",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r4"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1tRZZK822wPPi9sIZ3Fz8wKy_5bjK3D-C",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음악의 느낌이 달라요",
+      "sourceUrl": "https://drive.google.com/file/d/1tRZZK822wPPi9sIZ3Fz8wKy_5bjK3D-C/view?usp=drivesdk",
+      "sourceFile": "musiclife-1tRZZK822wPPi9sIZ3Fz8wKy_5bjK3D-C.hwpx",
+      "sha256": "797933f56922694f93ea368dea9e2e96b919f711d8a2ee67509c67f2bf6b10c2",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r3"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1dibCW1dk3UdXsC4AWSvco2rZTFQ7i7VS",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "말붙임새를 만들어요",
+      "sourceUrl": "https://drive.google.com/file/d/1dibCW1dk3UdXsC4AWSvco2rZTFQ7i7VS/view?usp=drivesdk",
+      "sourceFile": "musiclife-1dibCW1dk3UdXsC4AWSvco2rZTFQ7i7VS.hwpx",
+      "sha256": "289d42ad1798429e67019a38b3c7573e2151a29decf6f0d55154513839033a2b",
+      "lessonIds": [
+        "musiclife-1grx7mRe46ZZOE5nZKxu1PUq95xK6HN7V-r2"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1yhN5WnLpUzdDyEJMyJHRwtNtf6W2N0wR",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "음악 연주로 행사에 참여해요",
+      "sourceUrl": "https://drive.google.com/file/d/1yhN5WnLpUzdDyEJMyJHRwtNtf6W2N0wR/view?usp=drivesdk",
+      "sourceFile": "musiclife-1yhN5WnLpUzdDyEJMyJHRwtNtf6W2N0wR.hwp",
+      "sha256": "7312ee86a04a3c3cdc679287d4338d4730d4ee662a29e00c4c42b3eb4db26826",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r32"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1rLxY9R6vFEYAicfQIuq5NZ5dmL161k2-",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다 함께 연주해요",
+      "sourceUrl": "https://drive.google.com/file/d/1rLxY9R6vFEYAicfQIuq5NZ5dmL161k2-/view?usp=drivesdk",
+      "sourceFile": "musiclife-1rLxY9R6vFEYAicfQIuq5NZ5dmL161k2-.hwp",
+      "sha256": "e4ded12e2bee7da1bfc723060f5953b42ba916ea743ebe4cc77c995302bb5cf9",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r31"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1Ji-Z5yzbyYncdLpGm_a_qcgWwZha9pCu",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "나만의 장단 만들기",
+      "sourceUrl": "https://drive.google.com/file/d/1Ji-Z5yzbyYncdLpGm_a_qcgWwZha9pCu/view?usp=drivesdk",
+      "sourceFile": "musiclife-1Ji-Z5yzbyYncdLpGm_a_qcgWwZha9pCu.hwp",
+      "sha256": "20f990182f207b21f520f92bb6bb6afd2ba67a5e6d5f1b944e6b9b4a83337070",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r30"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1LBJbjgFupyzFUNRUS9CHVSUsDKNz_IVp",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "안전을 노래해요",
+      "sourceUrl": "https://drive.google.com/file/d/1LBJbjgFupyzFUNRUS9CHVSUsDKNz_IVp/view?usp=drivesdk",
+      "sourceFile": "musiclife-1LBJbjgFupyzFUNRUS9CHVSUsDKNz_IVp.hwp",
+      "sha256": "99250d09a14bfc453f9201f286ae5887666b77955247a8dee6b0822aeaa8c6f2",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r28"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1RliGiISiyXN7rFyUl3W83dp0jprG_AP_",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "한배의 변화",
+      "sourceUrl": "https://drive.google.com/file/d/1RliGiISiyXN7rFyUl3W83dp0jprG_AP_/view?usp=drivesdk",
+      "sourceFile": "musiclife-1RliGiISiyXN7rFyUl3W83dp0jprG_AP_.hwp",
+      "sha256": "40651186fde002772fd0475bb507a276724204eb4b45bfa7b0881127547b80b1",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r27"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1qqhRgngRMK01RLlUG67ecOBmX9VzmsJP",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "4. 반짝반짝 음악 세상",
+      "title": "다양한 문화권의 춤 음악",
+      "sourceUrl": "https://drive.google.com/file/d/1qqhRgngRMK01RLlUG67ecOBmX9VzmsJP/view?usp=drivesdk",
+      "sourceFile": "musiclife-1qqhRgngRMK01RLlUG67ecOBmX9VzmsJP.hwp",
+      "sha256": "ff5f49bee086ebdd57d47ee3bcbd11ff34b362e16484cd5161e0e001664bb33c",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r26"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1FAgxpt6eShPP2Ojm_HKGsGnZiye60nEq",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "소중한 음악 무형유산",
+      "sourceUrl": "https://drive.google.com/file/d/1FAgxpt6eShPP2Ojm_HKGsGnZiye60nEq/view?usp=drivesdk",
+      "sourceFile": "musiclife-1FAgxpt6eShPP2Ojm_HKGsGnZiye60nEq.hwp",
+      "sha256": "700cd8f506c9974a334997a20251bd6d8b423b2c183b6cbf4ceeb5a7722bc755",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r25"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1z7Pv2vGKIvA_hDSeArgFHIwwDQtOcryU",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "음악으로 환경을 지켜요",
+      "sourceUrl": "https://drive.google.com/file/d/1z7Pv2vGKIvA_hDSeArgFHIwwDQtOcryU/view?usp=drivesdk",
+      "sourceFile": "musiclife-1z7Pv2vGKIvA_hDSeArgFHIwwDQtOcryU.hwp",
+      "sha256": "2ad7fd4a84240abc68189d8ab6449be7a48935a9337e00472647d5d01bdbdcfb",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r24"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1yCWte4eaONrdON7m5wD43YupNcppmFDC",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "음악의 활용",
+      "sourceUrl": "https://drive.google.com/file/d/1yCWte4eaONrdON7m5wD43YupNcppmFDC/view?usp=drivesdk",
+      "sourceFile": "musiclife-1yCWte4eaONrdON7m5wD43YupNcppmFDC.hwp",
+      "sha256": "5f0ad28112f67099e0797f5630b8835440ad04e3fe35cd2550b462b11af6dfb6",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r23"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1loNhSd4wPKrlR1qlvTxhPtUxduxChsJV",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "단소로 연주하는 율명 ②",
+      "sourceUrl": "https://drive.google.com/file/d/1loNhSd4wPKrlR1qlvTxhPtUxduxChsJV/view?usp=drivesdk",
+      "sourceFile": "musiclife-1loNhSd4wPKrlR1qlvTxhPtUxduxChsJV.hwp",
+      "sha256": "e6424a68457b7aa411457dc54aefdaaf517bf9f714bd5e030304647ab1f9cfd0",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r22"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1rNgOOk7V4kRGlm1ordvZuHb9X13EvWUC",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "악곡의 일부를 바꾸어 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/1rNgOOk7V4kRGlm1ordvZuHb9X13EvWUC/view?usp=drivesdk",
+      "sourceFile": "musiclife-1rNgOOk7V4kRGlm1ordvZuHb9X13EvWUC.hwp",
+      "sha256": "9da17cc07ee2a5bbad7d3c75cb9e24c39e85e747cc7134b68cbd158a2fe9f135",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r21"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1IYxRmMGSHtr9f74lKhBG1JNN4G8KVIby",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "중중모리장단",
+      "sourceUrl": "https://drive.google.com/file/d/1IYxRmMGSHtr9f74lKhBG1JNN4G8KVIby/view?usp=drivesdk",
+      "sourceFile": "musiclife-1IYxRmMGSHtr9f74lKhBG1JNN4G8KVIby.hwp",
+      "sha256": "b6f1d95a71d1a52c45ff5879ce15002de96fdbd9ef634ed47128f9b12ff2f512",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r20"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1t1HxAnj8rsYd-xkF-uMeNErp_Qd9Jwsm",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "다 함께 공연해요",
+      "sourceUrl": "https://drive.google.com/file/d/1t1HxAnj8rsYd-xkF-uMeNErp_Qd9Jwsm/view?usp=drivesdk",
+      "sourceFile": "musiclife-1t1HxAnj8rsYd-xkF-uMeNErp_Qd9Jwsm.hwp",
+      "sha256": "034b776bf2693b2ca5b0cf6ada30bc1fefef3124c295ff655b03407078e7f29f",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r19"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-11YKz3jpCRnpcaR_UwJ1LDoLI2Z99Gaov",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "3. 콩닥콩닥 음악 소리",
+      "title": "재미있는 리듬꼴을 만들어요",
+      "sourceUrl": "https://drive.google.com/file/d/11YKz3jpCRnpcaR_UwJ1LDoLI2Z99Gaov/view?usp=drivesdk",
+      "sourceFile": "musiclife-11YKz3jpCRnpcaR_UwJ1LDoLI2Z99Gaov.hwp",
+      "sha256": "3cd32585bb83dc7060e7e5ccf7aa84fc7796cffc66e17e11283857bfb985a534",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r18"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1DrlGsQFrfa53wBLoeJLXqbm4amFptgZ8",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "국악기의 음색",
+      "sourceUrl": "https://drive.google.com/file/d/1DrlGsQFrfa53wBLoeJLXqbm4amFptgZ8/view?usp=drivesdk",
+      "sourceFile": "musiclife-1DrlGsQFrfa53wBLoeJLXqbm4amFptgZ8.hwp",
+      "sha256": "93f8f5e1e4b7f878997c7f45186c582db9edc7325e01590a5ec918420eeb5876",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r17"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-14UMam7_gt7UnrKOZbl14rUdRO0Kkr21z",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "여름을 음악으로 표현해요",
+      "sourceUrl": "https://drive.google.com/file/d/14UMam7_gt7UnrKOZbl14rUdRO0Kkr21z/view?usp=drivesdk",
+      "sourceFile": "musiclife-14UMam7_gt7UnrKOZbl14rUdRO0Kkr21z.hwp",
+      "sha256": "8c0bea1e50b10611b5c17d9c37a2a6bac8588e33cea035a465aa969f9fc8f6fb",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r16"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1nwq-jBGqA_yeISj34ZjCeGNFH9EFHrWT",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "셈여림의 변화를 느껴요",
+      "sourceUrl": "https://drive.google.com/file/d/1nwq-jBGqA_yeISj34ZjCeGNFH9EFHrWT/view?usp=drivesdk",
+      "sourceFile": "musiclife-1nwq-jBGqA_yeISj34ZjCeGNFH9EFHrWT.hwp",
+      "sha256": "623d00a071bcdddfedbc7e950a6bf90dc33370ab9403f10b853f363f62181db2",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r15"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1a3sM1lb8p7YHD-4WHkkQnEzKnHu94pP5",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "빠르기의 변화를 느껴요",
+      "sourceUrl": "https://drive.google.com/file/d/1a3sM1lb8p7YHD-4WHkkQnEzKnHu94pP5/view?usp=drivesdk",
+      "sourceFile": "musiclife-1a3sM1lb8p7YHD-4WHkkQnEzKnHu94pP5.hwp",
+      "sha256": "a1d44719d714810bf29b26d1befbad3af2f9060cd6da5226fa7cb7ea8a13ffd7",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r13"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1zB93gLpWpeND2_BR80sRfjJFz_Q2I0HA",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "사장조 음계와 주요 3화음",
+      "sourceUrl": "https://drive.google.com/file/d/1zB93gLpWpeND2_BR80sRfjJFz_Q2I0HA/view?usp=drivesdk",
+      "sourceFile": "musiclife-1zB93gLpWpeND2_BR80sRfjJFz_Q2I0HA.hwp",
+      "sha256": "ba24108a9bdf200efcd23acb2c92c41beb76c359ed822bbe6ca2c5852f59dc64",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r12"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1_vQAi2HikmHdk7kfZOA1PBo5yzTnMBpv",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "메나리토리",
+      "sourceUrl": "https://drive.google.com/file/d/1_vQAi2HikmHdk7kfZOA1PBo5yzTnMBpv/view?usp=drivesdk",
+      "sourceFile": "musiclife-1_vQAi2HikmHdk7kfZOA1PBo5yzTnMBpv.hwp",
+      "sha256": "2b5d34fe31d5e4034a1de8fa8893559a0e84d847e624abe64ea23fd79a356bcc",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r11"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1IFe9cYfoIqFeq_bBSO1P0jiNR0scsCiO",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "2. 덩실덩실 음악 마을",
+      "title": "바장조 음계",
+      "sourceUrl": "https://drive.google.com/file/d/1IFe9cYfoIqFeq_bBSO1P0jiNR0scsCiO/view?usp=drivesdk",
+      "sourceFile": "musiclife-1IFe9cYfoIqFeq_bBSO1P0jiNR0scsCiO.hwp",
+      "sha256": "cb9ad630fd0651027beb177b63aee62424fa848624e737860087694fb866bec3",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r10"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-102ohqoZihG9BucA7k6xA_PVh14iDI3lz",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "단소로 연주하는 율명 ①",
+      "sourceUrl": "https://drive.google.com/file/d/102ohqoZihG9BucA7k6xA_PVh14iDI3lz/view?usp=drivesdk",
+      "sourceFile": "musiclife-102ohqoZihG9BucA7k6xA_PVh14iDI3lz.hwpx",
+      "sha256": "5143abe39f9b0e1b966f873ed5c2211e3c7426212ba3a9adae086fb05cfea340",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r9"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1DeFhZQav-dz68f9j3iF4WVh23y8Nepdy",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음악 영상을 만들어요",
+      "sourceUrl": "https://drive.google.com/file/d/1DeFhZQav-dz68f9j3iF4WVh23y8Nepdy/view?usp=drivesdk",
+      "sourceFile": "musiclife-1DeFhZQav-dz68f9j3iF4WVh23y8Nepdy.hwp",
+      "sha256": "6187e7edb2c751f65617dcaac9e54c5ef3bcb47c3ab2e16c73405276d8416bdb",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r8"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1F-94yhEjQ2RxDRk7NEO_XgRe-8lk0G73",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "aba 형식",
+      "sourceUrl": "https://drive.google.com/file/d/1F-94yhEjQ2RxDRk7NEO_XgRe-8lk0G73/view?usp=drivesdk",
+      "sourceFile": "musiclife-1F-94yhEjQ2RxDRk7NEO_XgRe-8lk0G73.hwp",
+      "sha256": "f8143b924689b394803e642f87ae6b97a532977c2380ec35bfeb6118a66cb0ee",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r7"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1BtZD55gECbUfqKglK-eCtP2w1bE5v3if",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "관악기의 음색을 구별해요",
+      "sourceUrl": "https://drive.google.com/file/d/1BtZD55gECbUfqKglK-eCtP2w1bE5v3if/view?usp=drivesdk",
+      "sourceFile": "musiclife-1BtZD55gECbUfqKglK-eCtP2w1bE5v3if.hwp",
+      "sha256": "cdb6b7f6387cc8698fdab7e06e86ff021a63f987801d77bb84d1764b1d431800",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r6"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1RRfaWPl0svYbFIlIOpgMVpKAuu1XSNju",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "굿거리장단",
+      "sourceUrl": "https://drive.google.com/file/d/1RRfaWPl0svYbFIlIOpgMVpKAuu1XSNju/view?usp=drivesdk",
+      "sourceFile": "musiclife-1RRfaWPl0svYbFIlIOpgMVpKAuu1XSNju.hwp",
+      "sha256": "82c44691215fab136f9ab55edf537d4dce6d52406c4f638001cf50d35b28f869",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r5"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-173gJrSADGg0-aNDrUmqtzq_qTmGjbI89",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "다장조 주요 3화음",
+      "sourceUrl": "https://drive.google.com/file/d/173gJrSADGg0-aNDrUmqtzq_qTmGjbI89/view?usp=drivesdk",
+      "sourceFile": "musiclife-173gJrSADGg0-aNDrUmqtzq_qTmGjbI89.hwp",
+      "sha256": "d5d1f35ec094e4e7ab4b265ec620648101a4009d90ddb8cd2cd905b46202c22c",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r4"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "musiclife-assessment-1tIIjIaPDGNWcYvQtsNidf5TIdysz7gee",
+      "publisher": "음악과생활",
+      "curriculum": "2022",
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "subject": "음악",
+      "unit": "1. 도란도란 음악 친구",
+      "title": "음이름과 계이름",
+      "sourceUrl": "https://drive.google.com/file/d/1tIIjIaPDGNWcYvQtsNidf5TIdysz7gee/view?usp=drivesdk",
+      "sourceFile": "musiclife-1tIIjIaPDGNWcYvQtsNidf5TIdysz7gee.hwp",
+      "sha256": "35ed4970872dda9163c14a220cfac34f664119ed717908f25dd5604b92f9d71a",
+      "lessonIds": [
+        "musiclife-1RYTPgSErS8-LdJrz_N1Symt61GOYNVrO-r3"
+      ],
+      "matchStatus": "exact-grade-unit-title",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    }
+  ]
+}

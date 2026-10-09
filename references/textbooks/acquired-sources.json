@@ -1,0 +1,1843 @@
+{
+  "sources": [
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-8209ac26a4",
+      "filename": "(과학)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "8209ac26a479155d7ce475c05f9cf547b6875b5b735a37cc85fbdad62898699f",
+      "bytes": 17400,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-8209ac26a4-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-e88b976990",
+      "filename": "(과학)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "e88b9769904328cfeeb4dec99d7f1c9881cfeeb4fce2c7893bd7878f7996887c",
+      "bytes": 17534,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-e88b976990-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-44972e617f",
+      "filename": "(과학)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "44972e617f346dd72b0aef30d137db72e36483ff25df2e84e371572219792ad7",
+      "bytes": 17318,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-44972e617f-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-156156a31d",
+      "filename": "(과학)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "156156a31dd309ea40c5d41ae1fdd438568b6ff1abbc58df85ddc1f01fd7f398",
+      "bytes": 17310,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-156156a31d-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-a1e574ce95",
+      "filename": "(과학)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "a1e574ce95f9b7de906488209333562895af6380948aa151199eab7ac339af8d",
+      "bytes": 17083,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-a1e574ce95-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-ad99ecbd80",
+      "filename": "(과학)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "ad99ecbd80bad671c5307ab3806f522143cc457c395596c87f95196abdd45eb4",
+      "bytes": 17073,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-ad99ecbd80-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-5aadaa46ec",
+      "filename": "(과학)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "5aadaa46ec06948dc0c2a256a90f2b94296130a9f7e1f4abd440d3c3414b310a",
+      "bytes": 18873,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-5aadaa46ec-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-0c55ead107",
+      "filename": "(과학)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "0c55ead107ada9edf2bf525ef25edbfa09b47af369b5c40ae8feefe463189473",
+      "bytes": 18112,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-0c55ead107-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-18d189e749",
+      "filename": "(미술)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "18d189e74966e4c91f502f9a7dc8613845e1b5849709299ba643e711493f19d9",
+      "bytes": 15763,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-18d189e749-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-415c57cccf",
+      "filename": "(미술)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "415c57cccfdbcb35672419086a06bb54a30129a80c31abdb95ac44e0975c6599",
+      "bytes": 15295,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-415c57cccf-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-3e45c80d4d",
+      "filename": "(미술)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "3e45c80d4d4a7a7e713397d475c03528a69995e60d6a65a8374e21f9ce28ed9f",
+      "bytes": 15584,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-3e45c80d4d-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-e4ed099e63",
+      "filename": "(미술)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "e4ed099e6378d53b041819adf0ffc9bab07347a141f75dce52dee1e487fa6e30",
+      "bytes": 15214,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-e4ed099e63-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26783",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26783",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26783-70f28a61f3",
+      "filename": "(미술)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "70f28a61f3f2201d83cd6e033c177c93d87f0d88b225b29aefb532b3540c6605",
+      "bytes": 15502,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26783-70f28a61f3-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26784",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26784",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26784-c43f303330",
+      "filename": "(미술)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "c43f3033305ba4dfbcb01b507fb5181da7b0dc49720d161ab56c717c12df4f1d",
+      "bytes": 14964,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26784-c43f303330-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26783",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26783",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26783-cd26b66036",
+      "filename": "(미술)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "cd26b660361f2be5c3e95f689160f9ffd16e5b37b8a2648fa4c84f98d07c2228",
+      "bytes": 15449,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26783-cd26b66036-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26784",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26784",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26784-17906b11a5",
+      "filename": "(미술)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "17906b11a57a1367e853d42c70edc350a11cea3307b4a642879b4bf8c62237b6",
+      "bytes": 15055,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26784-17906b11a5-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "458034",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "과학(강) 3-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458034-2bba1e8aed",
+      "filename": "(비상교육) 초등_과학(강) 3-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "2bba1e8aed25d89148f7030a80d73b4fa531d65e154b2a0a8bc1012f3c914c49",
+      "bytes": 15727,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458034-2bba1e8aed-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "458035",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "과학(강) 3-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458035-b6341ccbf0",
+      "filename": "(비상교육) 초등_과학(강) 3-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "b6341ccbf024aa889697e2a01fe2aaf9c9c9a2fe5b75ba04a9be184b83b9c322",
+      "bytes": 16888,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458035-b6341ccbf0-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "458063",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "과학(강) 4-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458063-0c31c17250",
+      "filename": "(비상교육) 초등_과학(강) 4-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "0c31c1725077a0fd270d0def2867543d3e0814c3cb7384512468b1917a6be074",
+      "bytes": 16938,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458063-0c31c17250-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "458064",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "과학(강) 4-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458064-246be58062",
+      "filename": "(비상교육) 초등_과학(강) 4-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "246be5806205d59d9d59579c0f127549a7a64882482b119a9fbe59c6a3bc2322",
+      "bytes": 16775,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458064-246be58062-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "563647",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "과학(강) 5-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-563647-3bfa30af28",
+      "filename": "(비상교육) 초등_과학(강) 5-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "3bfa30af28c3097c5d2d8014440e1fd86cb2f66561ed0c3b597e4f09a6659ced",
+      "bytes": 18207,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-563647-3bfa30af28-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "과학",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "563678",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "과학(강) 6-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-563678-c8c718b85b",
+      "filename": "(비상교육) 초등_과학(강) 6-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "c8c718b85b2f4e79740a833202744d4efd1da8214e5e6b0b71b785a8f24777fc",
+      "bytes": 18277,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-563678-c8c718b85b-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-60aee71696",
+      "filename": "(사회)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "60aee716961a0b7e30487127ed0ea98bfe80cb1f1e84783d55a4703440e9cbbc",
+      "bytes": 15775,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-60aee71696-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-b67febe3a9",
+      "filename": "(사회)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "b67febe3a9cc74724a8ed3278141224a3bae1acb6acb64c3b132dd3bedb5b72c",
+      "bytes": 17266,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-b67febe3a9-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-ec92897215",
+      "filename": "(사회)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "ec928972151b00c6a980809826f9780847aecd276a1e75e1176d0145e7e340b9",
+      "bytes": 15812,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-ec92897215-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-cc7114a898",
+      "filename": "(사회)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "cc7114a898e5a5f687c2a4fa615d1a0f7f1e4b5297a9122a2e1836531449278e",
+      "bytes": 15745,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-cc7114a898-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-617ed9b7dd",
+      "filename": "(사회)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "617ed9b7ddd353d8a1c30c9c5c206b07296929108ff5572c1dd0f20bcfc7842e",
+      "bytes": 15423,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-617ed9b7dd-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-ec18bc7781",
+      "filename": "(사회)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "ec18bc7781b07dcf9031e2df187079fd7838647ebb3e23c3b16734b39815eb3e",
+      "bytes": 15701,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-ec18bc7781-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-1f82d7a59d",
+      "filename": "(사회)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "1f82d7a59deb26efa179b6cf0864a5c2835b1977e682160886b74781fa233914",
+      "bytes": 15652,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-1f82d7a59d-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-b8afc1fa94",
+      "filename": "(사회)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "b8afc1fa94e8b212fe9578a21033e59528fb03e75475bf0ab3f179ba952fb0f8",
+      "bytes": 15395,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-b8afc1fa94-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-47ad609954",
+      "filename": "(수학)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "47ad609954d8c55415b5e11009552099e5c071d02bfcfe5f5dc5b81f57c27c66",
+      "bytes": 16794,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-47ad609954-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-2854067ac3",
+      "filename": "(수학)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "2854067ac30a825f11ff403ea798ab4ec76b100039cb462f1cce37fb430d24c3",
+      "bytes": 16866,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-2854067ac3-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-da2bb60202",
+      "filename": "(수학)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "da2bb6020210ce1ceec09cde9b8bdbe21ddcd6ecd2a38ad4d8677c3ed8c479c6",
+      "bytes": 16746,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-da2bb60202-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-e00352d32d",
+      "filename": "(수학)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "e00352d32d06707ea2243a1199c24add82f809c6fc22dc8e6b0d246afc005d02",
+      "bytes": 16666,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-e00352d32d-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-f67d5d450f",
+      "filename": "(수학)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "f67d5d450f6c72b41d8a4e7d99307717f2bec79712b1de945309603bd392dd02",
+      "bytes": 16859,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-f67d5d450f-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-0060d71e3b",
+      "filename": "(수학)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "0060d71e3b2ebfad370247c68ea1f55f9b60095a07a7d9944bb05e25d158c004",
+      "bytes": 16639,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-0060d71e3b-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-5547d2b109",
+      "filename": "(수학)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "5547d2b109af0576d53d7b7d58fd63db857d258b2027f2c074d359452ed82138",
+      "bytes": 17411,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-5547d2b109-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-8dcfaf6120",
+      "filename": "(수학)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "8dcfaf6120147ffeb3671386ab329408d1f8886c369deff00bb06125fb0e1fec",
+      "bytes": 16722,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-8dcfaf6120-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26783",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26783",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26783-3c9dfa067e",
+      "filename": "(실과)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "3c9dfa067ec94509ab9ea3457008d575f6b50f216c07e9bc2a6b5f68d84b7b7f",
+      "bytes": 13947,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26783-3c9dfa067e-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26784",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26784",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26784-87b4822170",
+      "filename": "(실과)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "87b482217078b88c2058128b3f7631c2b108eaf86e6cc62a2f58a3eb93afdf22",
+      "bytes": 15746,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26784-87b4822170-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26783",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26783",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26783-af3b5c07d4",
+      "filename": "(실과)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "af3b5c07d457a76c8af9821b743fb15a3b4ef6e3c385a11727aa15d5ff464427",
+      "bytes": 13304,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26783-af3b5c07d4-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26784",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26784",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26784-a489668420",
+      "filename": "(실과)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "a489668420cab34940b7467d0321edd5b82d1f031ec7030433b0e6ea60173273",
+      "bytes": 14813,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26784-a489668420-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-d95f569a77",
+      "filename": "(영어)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "d95f569a77ec0130bd4dbaf444966653e9405c09a53afdba7fc1f3cb3a3b67e5",
+      "bytes": 16215,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-d95f569a77-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-79ffa9212f",
+      "filename": "(영어)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "79ffa9212f4726212256a8af3014b647fc83c0673592b0d8403786ed74eaf8d0",
+      "bytes": 15934,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-79ffa9212f-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-6a10d0b744",
+      "filename": "(영어)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "6a10d0b7447ba5e34d76694d266bd10a60e977b675be9ff021f752b6dd98b494",
+      "bytes": 16245,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-6a10d0b744-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-cb93ce8cd1",
+      "filename": "(영어)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "cb93ce8cd177f3528a276eeb7e05107da61223d2f1b26e6f34f9d24916d2adf6",
+      "bytes": 16051,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-cb93ce8cd1-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-3f492bf393",
+      "filename": "(영어)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "3f492bf3939b4f69aa2d25ad2f5ca3d9e06c61dc2d2bf58f0a0235720d64ceb2",
+      "bytes": 17058,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-3f492bf393-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-90ed99df6f",
+      "filename": "(영어)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "90ed99df6f740cb2fae47925dde633086cfb1f11d9ab0676297d11c10b66cfa5",
+      "bytes": 16905,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-90ed99df6f-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-2839e7dfbe",
+      "filename": "(영어)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "2839e7dfbe2d9a5351240d4607dfffe555162fdf771cc810ffa534b616392853",
+      "bytes": 16629,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-2839e7dfbe-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-4275ff92f0",
+      "filename": "(영어)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "4275ff92f0f8f71bd5ff1ae57aa187894777a207cc3ec81e7c4e24667254fb76",
+      "bytes": 16494,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-4275ff92f0-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-c70fd66116",
+      "filename": "(음악)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "c70fd6611635c6e72d439b263ea5eada52f17e56c9f29d3fff6013018e16056e",
+      "bytes": 15743,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-c70fd66116-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-9fec272c1d",
+      "filename": "(음악)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "9fec272c1d70f7efad16d0979a22bcee073635c9e293c812b08fd5b483c19daf",
+      "bytes": 15616,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-9fec272c1d-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-778f20d1de",
+      "filename": "(음악)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "778f20d1decd4a13e2026e9f5fca6971eff9ce5044ac0dedf4a30cb3cc4790b7",
+      "bytes": 15814,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-778f20d1de-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-fa4db7e291",
+      "filename": "(음악)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "fa4db7e2913d84b30debab0bb16487b62b70ad84f26880d5720affeb89c6fde9",
+      "bytes": 15463,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-fa4db7e291-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-09c61d7f9b",
+      "filename": "(음악)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "09c61d7f9bb253fb2cbdb48080cce9052d40f9235add2d59fff0be9cffc22147",
+      "bytes": 15316,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-09c61d7f9b-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-fb0d3b76dd",
+      "filename": "(음악)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "fb0d3b76dde3fda435e46313842e6bd3a19de919aae9f1be1c7f4c7b3d0899d1",
+      "bytes": 15224,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-fb0d3b76dd-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26790",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26790",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26790-e073792d8d",
+      "filename": "(음악)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "e073792d8d97c206b460532a2c2babef39556bf9e7ef04bb66b0ddf15344844a",
+      "bytes": 15409,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26790-e073792d8d-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26791",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26791",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26791-8f55b1178c",
+      "filename": "(음악)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "8f55b1178cd13b4d9b2d0cc29d844293ad53ea1e17d6630cce12bee3898bb33d",
+      "bytes": 15203,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26791-8f55b1178c-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-dbda04abbb",
+      "filename": "(체육)3학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "dbda04abbb5a68d614ddb1c09a50571a30f77c4f5eee26b7e9e03c3ee1b8cbfb",
+      "bytes": 16865,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-dbda04abbb-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-6f52c06eee",
+      "filename": "(체육)3학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "6f52c06eeeadea9a0420338f952193d5f58a8953727e61cf06650f3968bb06dc",
+      "bytes": 16806,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-6f52c06eee-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "26579",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26579",
+      "sourceLabel": "2025학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26579-bf5aabc0c9",
+      "filename": "(체육)4학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "bf5aabc0c909de432756912e618e2afae0345f8917ce66af91e162ee351f4f7d",
+      "bytes": 16840,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26579-bf5aabc0c9-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "26580",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26580",
+      "sourceLabel": "2025학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26580-451652d0b6",
+      "filename": "(체육)4학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "451652d0b68b53676570c9b019faf52f05936dbd9ebc6686eb594bbe31a5bab8",
+      "bytes": 16823,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26580-451652d0b6-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "26783",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26783",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26783-c6c5f7f249",
+      "filename": "(체육)5학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "c6c5f7f2492104c81dec529e86a2ec2d8d2015dc4bd248e9c6e6de2988399e57",
+      "bytes": 16531,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26783-c6c5f7f249-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "26784",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26784",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26784-1e50ed9c2f",
+      "filename": "(체육)5학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "1e50ed9c2f1cf03907fda7e5a528d8047303c13203738afbb40cd6500419647f",
+      "bytes": 16453,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26784-1e50ed9c2f-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "26783",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26783",
+      "sourceLabel": "2026학년도 1학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26783-4ec09faf83",
+      "filename": "(체육)6학년 1학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "4ec09faf83b5e1a9aaf3489230840856fb51d10244741671fff25061a25c6ed0",
+      "bytes": 16464,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26783-4ec09faf83-1"
+      ]
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "grade": 6,
+      "semester": 2,
+      "sourceId": "26784",
+      "sourceUrl": "https://text.i-scream.co.kr/user/information/communityView.do?no=26784",
+      "sourceLabel": "2026학년도 2학기 공식 진도표",
+      "curriculumVerification": "publisher-2025-2026-edition",
+      "id": "iscream-26784-246f28d5b7",
+      "filename": "(체육)6학년 2학기_진도표(나이스 업로드용).xlsx",
+      "sha256": "246f28d5b73d2e52dcb1339db5ec3509641a6ccb3d14be7b0e5c6c8aa212ff6b",
+      "bytes": 16350,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "iscream-26784-246f28d5b7-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "미술",
+      "grade": 3,
+      "semester": null,
+      "sourceId": "458634",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "미술(이) 3",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458634-6e7bd5f2d6",
+      "filename": "[비상교육] 초등_미술(이) 3_진도표(나이스 업로드용).xlsx",
+      "sha256": "6e7bd5f2d688e1b1197f2328b23430623abea4637920b81a4340f53cd0162206",
+      "bytes": 16261,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458634-6e7bd5f2d6-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "미술",
+      "grade": 3,
+      "semester": null,
+      "sourceId": "459757",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "미술(이) 3",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-459757-260b590d66",
+      "filename": "[비상교육] 초등_미술(이) 3_진도표.xlsx",
+      "sha256": "260b590d6632dfb052a7bddf341e17018f566aa1f630eece2c7475ec0a676a03",
+      "bytes": 48088,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-459757-260b590d66-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "미술",
+      "grade": 4,
+      "semester": null,
+      "sourceId": "458652",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "미술(이) 4",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458652-df81154484",
+      "filename": "[비상교육] 초등_미술(이) 4_진도표(나이스업로드용).xlsx",
+      "sha256": "df81154484625e0880c6476e77ab40b994e97945e4871ce3fa43159444b29ede",
+      "bytes": 16374,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458652-df81154484-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "미술",
+      "grade": 4,
+      "semester": null,
+      "sourceId": "459759",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "미술(이) 4",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-459759-ef6a2fafa6",
+      "filename": "[비상교육] 초등_미술(이) 4_진도표.xlsx",
+      "sha256": "ef6a2fafa66d6999885bd7485e63a63a7d789b6813067e56c9f5b8ea51ed00d4",
+      "bytes": 34932,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-459759-ef6a2fafa6-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "미술",
+      "grade": 5,
+      "semester": null,
+      "sourceId": "564280",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "미술(이) 5",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564280-1aa069c9cc",
+      "filename": "[비상교육] 초등_미술(이) 5_진도표.xlsx",
+      "sha256": "1aa069c9ccfba33dc3f83cf57cc6c51f1b3d26a37410ce4ae297833cf2e0c028",
+      "bytes": 16640,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564280-1aa069c9cc-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "미술",
+      "grade": 6,
+      "semester": null,
+      "sourceId": "564253",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "미술(이) 6",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564253-6e7134e26b",
+      "filename": "[비상교육] 초등_미술(이) 6_진도표(나이스업로드용).xlsx",
+      "sha256": "6e7134e26b5c2033a5a073f83e05853a62786018c356f92d81e387357551092f",
+      "bytes": 15779,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564253-6e7134e26b-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "458541",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "사회(설) 3-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458541-d39898c277",
+      "filename": "[비상교육] 초등_사회(설) 3-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "d39898c277635ab36ee21a40bf74ed719479c9a6c22c6a510050d8e4e5b6101f",
+      "bytes": 19324,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458541-d39898c277-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "458542",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "사회(설) 3-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458542-aa5cbdc0ac",
+      "filename": "[비상교육] 초등_사회(설) 3-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "aa5cbdc0ac0644b3d2016dd152db557b21d6ee07f1c6f998f9032bfdda176139",
+      "bytes": 19336,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458542-aa5cbdc0ac-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "458579",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "사회(설) 4-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458579-e6a22138ae",
+      "filename": "[비상교육] 초등_사회(설) 4-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "e6a22138ae5e968369f71d74808c644b73ce51aaed9e59f1746f71ec488d0643",
+      "bytes": 23531,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458579-e6a22138ae-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "458580",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "사회(설) 4-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458580-6cdcc34001",
+      "filename": "[비상교육] 초등_사회(설) 4-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "6cdcc340018c635e4d927627fdc08ddf21702446818d24406d6e9668245b1a97",
+      "bytes": 19476,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458580-6cdcc34001-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "563321",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "사회(설) 5-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-563321-85963846e8",
+      "filename": "[비상교육] 초등_사회(설) 5-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "85963846e84e222cd4967bf35ebd7870eb43efbd1365fdf6cf299984be1ed0ea",
+      "bytes": 14738,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-563321-85963846e8-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "사회",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "563358",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "사회(설) 6-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-563358-1bd9e34fde",
+      "filename": "[비상교육] 초등_사회(설) 6-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "1bd9e34fde37468d29b154c32723e18b4dce43bdc0e05ef150dc46df9b18f779",
+      "bytes": 15085,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-563358-1bd9e34fde-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 1,
+      "semester": 1,
+      "sourceId": "432955",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학 1-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-432955-ccd6887003",
+      "filename": "[비상교육] 초등_수학 1-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "ccd6887003295212c622fe86cd2d5490d298de6247c6333bb73356e442883b6a",
+      "bytes": 25087,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-432955-ccd6887003-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 1,
+      "semester": 2,
+      "sourceId": "444475",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학 1-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-444475-40e20d0917",
+      "filename": "[비상교육] 초등_수학 1-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "40e20d09176a74822f2f108ef66838ed64e037c9ddea2c229ff420e90383a6c3",
+      "bytes": 27148,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-444475-40e20d0917-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 2,
+      "semester": 1,
+      "sourceId": "432961",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학 2-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-432961-3a11dc1523",
+      "filename": "[비상교육] 초등_수학 2-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "3a11dc1523fafd43ca53e9d1492f626e021558878cf36dfa6af640d8ed4365a2",
+      "bytes": 25205,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-432961-3a11dc1523-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 2,
+      "semester": 2,
+      "sourceId": "444482",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학 2-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-444482-07d22294b6",
+      "filename": "[비상교육] 초등_수학 2-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "07d22294b6568f46a7606b3fa808b4c6dd24762e7a03bd484754b6c63fa2b356",
+      "bytes": 27512,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-444482-07d22294b6-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "458914",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학(방) 3-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458914-a08bfc7100",
+      "filename": "[비상교육] 초등_수학(방) 3-1_진도표.xlsx",
+      "sha256": "a08bfc7100e71720b7fb93ba0d6ce10aa97044027de6f03fa2806f18e5c666be",
+      "bytes": 25090,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458914-a08bfc7100-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "521152",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학(방) 3-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-521152-23503c6b68",
+      "filename": "[비상교육] 초등_수학(방) 3-2_진도표.xlsx",
+      "sha256": "23503c6b685843474d941e713601b02d242c972e54b8cef8b78a73ad4dadb738",
+      "bytes": 25298,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-521152-23503c6b68-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "458941",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학(방) 4-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458941-d4419b641d",
+      "filename": "[비상교육] 초등_수학(방) 4-1_진도표.xlsx",
+      "sha256": "d4419b641d51973b70acf15633cea5443287e3755eddf11342ec1f108c5feb3f",
+      "bytes": 24354,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458941-d4419b641d-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "521181",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학(방) 4-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-521181-96a6968b94",
+      "filename": "[비상교육] 초등_수학(방) 4-2_진도표.xlsx",
+      "sha256": "96a6968b9453efcd344040904cf4875d2623b742500fa63c091c082145019b47",
+      "bytes": 24676,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-521181-96a6968b94-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 5,
+      "semester": 1,
+      "sourceId": "560350",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학(방) 5-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-560350-37538bd0be",
+      "filename": "[비상교육] 초등_수학(방) 5-1_진도표.xlsx",
+      "sha256": "37538bd0be21220ee0c5bb329bf00f7e0062fbba05713010370f2bc55b5f9412",
+      "bytes": 15566,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-560350-37538bd0be-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "수학",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "560386",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "수학(방) 6-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-560386-714c6f6e15",
+      "filename": "[비상교육] 초등_수학(방) 6-1_진도표.xlsx",
+      "sha256": "714c6f6e155c9ee2339a53dc5bd9401856da9f7cf4f74a18eed526c5e086f5d2",
+      "bytes": 15776,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-560386-714c6f6e15-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "실과",
+      "grade": 5,
+      "semester": 2,
+      "sourceId": "564366",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "실과(송) 5-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564366-9684a4789d",
+      "filename": "[비상교육] 초등_실과(송) 5-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "9684a4789dbc5ff780e86e835ce49cad024c932bdf3693e1ff11b3c7e2ef69b2",
+      "bytes": 14269,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564366-9684a4789d-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "실과",
+      "grade": 6,
+      "semester": 1,
+      "sourceId": "564381",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "실과(송) 6-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564381-4c6653cbef",
+      "filename": "[비상교육] 초등_실과(송) 6-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "4c6653cbef10032a4f766702c47243bdeb39e6c8d7e85a56e268a68c95c511a5",
+      "bytes": 14112,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564381-4c6653cbef-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "영어",
+      "grade": 5,
+      "semester": null,
+      "sourceId": "564872",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "영어(우) 5",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564872-4be8e6e6d9",
+      "filename": "[비상교육] 초등_영어(우) 5_진도표(나이스 업로드용).xlsx",
+      "sha256": "4be8e6e6d9dbe6368c5bcb96664bb12296c4755cf3b1954a546756d3c61b9185",
+      "bytes": 27215,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564872-4be8e6e6d9-1",
+        "vivasam-564872-4be8e6e6d9-2"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "영어",
+      "grade": 6,
+      "semester": null,
+      "sourceId": "564837",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "영어(우) 6",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564837-7efdba1a08",
+      "filename": "[비상교육] 초등_영어(우) 6_진도표(나이스 업로드용).xlsx",
+      "sha256": "7efdba1a08d5a80c6922ea6145a2bda839b1bfb331083395ef2c664403d90fea",
+      "bytes": 27128,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564837-7efdba1a08-1",
+        "vivasam-564837-7efdba1a08-2"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "음악",
+      "grade": 3,
+      "semester": 1,
+      "sourceId": "458882",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "음악(주) 3-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458882-2082b52426",
+      "filename": "[비상교육] 초등_음악(주) 3-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "2082b52426ce41df16290628e9b5c7e7c12344c56799d812c2568ba32d97cce0",
+      "bytes": 17563,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458882-2082b52426-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "음악",
+      "grade": 3,
+      "semester": 2,
+      "sourceId": "490050",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "음악(주) 3-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-490050-3dd9f7e1fc",
+      "filename": "[비상교육] 초등_음악(주) 3-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "3dd9f7e1fc8fb65198abf8e4534aad245754ac863b206931f4c3db3725f4bdb4",
+      "bytes": 17574,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-490050-3dd9f7e1fc-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "음악",
+      "grade": 4,
+      "semester": 1,
+      "sourceId": "458899",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "음악(주) 4-1",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458899-abf32ccda0",
+      "filename": "[비상교육] 초등_음악(주) 4-1_진도표(나이스 업로드용).xlsx",
+      "sha256": "abf32ccda0055f580a02e98af12110412248a4b68ec2e203d65984a4d0dea0b9",
+      "bytes": 17618,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458899-abf32ccda0-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "음악",
+      "grade": 4,
+      "semester": 2,
+      "sourceId": "490051",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "음악(주) 4-2",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-490051-22626b0654",
+      "filename": "[비상교육] 초등_음악(주) 4-2_진도표(나이스 업로드용).xlsx",
+      "sha256": "22626b06546615ee3dfbd3d87c685503c670fd099424b22e894e0ea4bcb7c861",
+      "bytes": 17521,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-490051-22626b0654-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "음악",
+      "grade": 5,
+      "semester": null,
+      "sourceId": "564469",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "음악(주) 5",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564469-4ad662ce34",
+      "filename": "[비상교육] 초등_음악(주) 5_진도표(나이스 업로드용).xlsx",
+      "sha256": "4ad662ce34fb4860b9b6c70adb9a011dec0378b62cc3e671f5c6b0af2f8cb17c",
+      "bytes": 19656,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564469-4ad662ce34-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "음악",
+      "grade": 6,
+      "semester": null,
+      "sourceId": "564487",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "음악(주) 6",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564487-063c090f0c",
+      "filename": "[비상교육] 초등_음악(주) 6_진도표(나이스 업로드용).xlsx",
+      "sha256": "063c090f0c10bedd952d1d5cfc03d6920113f7680d683bc629196ef73a32c9f3",
+      "bytes": 19521,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564487-063c090f0c-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "체육",
+      "grade": 3,
+      "semester": null,
+      "sourceId": "458434",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "체육(송) 3",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458434-e7bb912416",
+      "filename": "[비상교육] 초등_체육(송) 3_진도표(나이스 업로드용).xlsx",
+      "sha256": "e7bb912416457a25a8b7e573d496ee0ddf553a037683d78ed4c4b07a4aadabfe",
+      "bytes": 22021,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458434-e7bb912416-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "체육",
+      "grade": 4,
+      "semester": null,
+      "sourceId": "458419",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "체육(송) 4",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-458419-db53396656",
+      "filename": "[비상교육] 초등_체육(송) 4_진도표(나이스 업로드용).xlsx",
+      "sha256": "db53396656619d9060f22ff6a51329936b57d98260bde3f6de6e88ee3cf39254",
+      "bytes": 21991,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-458419-db53396656-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "체육",
+      "grade": 5,
+      "semester": null,
+      "sourceId": "564502",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "체육(송) 5",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564502-6ee9d2a7a8",
+      "filename": "[비상교육] 초등_체육(송) 5_진도표(나이스 업로드용).xlsx",
+      "sha256": "6ee9d2a7a82d567b519b78a2400acb8047e8c36206dbe3d2f9a6e351715ba44a",
+      "bytes": 28022,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564502-6ee9d2a7a8-1"
+      ]
+    },
+    {
+      "publisher": "비상교육",
+      "subject": "체육",
+      "grade": 6,
+      "semester": null,
+      "sourceId": "564525",
+      "sourceUrl": "https://e.vivasam.com/class/management/materials/list",
+      "sourceLabel": "체육(송) 6",
+      "curriculumVerification": "publisher-textbook-comparison-pending",
+      "id": "vivasam-564525-ee8ff5dc9c",
+      "filename": "[비상교육] 초등_체육(송) 6_진도표(나이스 업로드용).xlsx",
+      "sha256": "ee8ff5dc9c8f3b8143266368db7f4ff0bc6140282741587dea44bb60e16ae135",
+      "bytes": 27154,
+      "retrievedOn": "2026-10-08",
+      "plans": [
+        "vivasam-564525-ee8ff5dc9c-1"
+      ]
+    }
+  ],
+  "issues": []
+}

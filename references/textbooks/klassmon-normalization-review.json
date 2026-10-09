@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "sourceId": "2751639241ea4f97b5320f1911bfb239",
+      "grade": 3,
+      "subject": "체육",
+      "rows": 57,
+      "observedPeriods": 102,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=2751639241ea4f97b5320f1911bfb239&grade=3&term=1&subject=SC005",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "66b787998ba5423e8866f4afa3e91a08",
+      "grade": 3,
+      "subject": "미술",
+      "rows": 34,
+      "observedPeriods": 62,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=66b787998ba5423e8866f4afa3e91a08&grade=3&term=1&subject=SC004",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "d09a77ee18764338b32131e021c8b42a",
+      "grade": 4,
+      "subject": "미술",
+      "rows": 38,
+      "observedPeriods": 74,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=1&subject=SC004",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": [
+        "원문 9단원 첫 주제 “화의 다양한 모습 알아보기”, 13단원 첫 주제 “종이로 만든 작품 감상하기” 확인 필요. 원문 유지."
+      ]
+    },
+    {
+      "sourceId": "70e89f5820ee4b3987c9913e58541f8c",
+      "grade": 4,
+      "subject": "체육",
+      "rows": 47,
+      "observedPeriods": 102,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=70e89f5820ee4b3987c9913e58541f8c&grade=4&term=1&subject=SC005",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "343a9b5881e143b8a8f33dc5f6bc5b90",
+      "grade": 5,
+      "subject": "미술",
+      "rows": 41,
+      "observedPeriods": 68,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=343a9b5881e143b8a8f33dc5f6bc5b90&grade=5&term=1&subject=SC004",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": [
+        "원문 13단원 첫 주제 “감사는 방법” 오자 가능성. 원문 유지."
+      ]
+    },
+    {
+      "sourceId": "1b1b4b6ab9504e50a8434dde596c687f",
+      "grade": 5,
+      "subject": "체육",
+      "rows": 61,
+      "observedPeriods": 102,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=1b1b4b6ab9504e50a8434dde596c687f&grade=5&term=1&subject=SC005",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "d0ac56bc8ccf4f45929960dd350c549e",
+      "grade": 5,
+      "subject": "실과",
+      "rows": 36,
+      "observedPeriods": 66,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d0ac56bc8ccf4f45929960dd350c549e&grade=5&term=1&subject=SC009",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "9c2a88bde6e845a8892d1a436f222c87",
+      "grade": 6,
+      "subject": "실과",
+      "rows": 36,
+      "observedPeriods": 68,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=9c2a88bde6e845a8892d1a436f222c87&grade=6&term=1&subject=SC009",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "e8af803257c54483b36451e9f396cccd",
+      "grade": 6,
+      "subject": "미술",
+      "rows": 34,
+      "observedPeriods": 64,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=e8af803257c54483b36451e9f396cccd&grade=6&term=1&subject=SC004",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    },
+    {
+      "sourceId": "f3a06e42a64b43c7940f9f4042cd8b0f",
+      "grade": 6,
+      "subject": "체육",
+      "rows": 51,
+      "observedPeriods": 102,
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=f3a06e42a64b43c7940f9f4042cd8b0f&grade=6&term=1&subject=SC005",
+      "semesterStatus": "unassigned-online-outline-spans-whole-book",
+      "annualPlanComparison": "pending-download",
+      "issues": []
+    }
+  ]
+}

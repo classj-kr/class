@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-09",
+  "sourceFile": "artculture-annual-reviewed-transcription.tsv",
+  "sha256": "b7228e3911f6d2c1b38fac0fb15b07a9f6bcbc7336921513e38fef5fb8c4625a",
+  "evidence": [
+    {
+      "grade": 3,
+      "sourceUrl": "https://artandculture.kr/study/ebook3-2/",
+      "sourcePage": 50,
+      "rows": 27,
+      "allocatedPeriods": 68
+    },
+    {
+      "grade": 4,
+      "sourceUrl": "https://artandculture.kr/study/ebook3-2/",
+      "sourcePage": 51,
+      "rows": 27,
+      "allocatedPeriods": 68
+    },
+    {
+      "grade": 5,
+      "sourceUrl": "https://artandculture.kr/study/ebook6-2/",
+      "sourcePage": 50,
+      "rows": 27,
+      "allocatedPeriods": 68
+    },
+    {
+      "grade": 6,
+      "sourceUrl": "https://artandculture.kr/study/ebook6-2/",
+      "sourcePage": 51,
+      "rows": 26,
+      "allocatedPeriods": 68
+    }
+  ],
+  "rules": [
+    "Use the guide annual table allocations, not overlapping individual teaching-plan period labels.",
+    "No semester boundaries or cumulative period numbers are printed; both remain unassigned.",
+    "Include the opening two-period planning activity and the four-period project.",
+    "The project is assigned unitNumber 13 for linking to the publisher resource tab; the table labels it 프로젝트.",
+    "Private-use font glyphs were normalized against rendered table: 여행, 끌리는, 드로잉, 편집, comma and parentheses.",
+    "Downloaded page1x background JPG files omit overlaid text and are not complete source-table images."
+  ],
+  "teachingPlanConflicts": [
+    {
+      "grade": 3,
+      "units": [
+        4,
+        5,
+        7,
+        9,
+        13
+      ],
+      "issue": "overlap or inconsistent period labels in individual teaching plans"
+    },
+    {
+      "grade": 5,
+      "units": [
+        6
+      ],
+      "issue": "individual plan totals disagree: 4 versus 6; annual table allocates 4+2"
+    },
+    {
+      "grade": 6,
+      "units": [
+        10,
+        11,
+        12
+      ],
+      "issue": "individual plan overlaps or inconsistent totals; annual table allocates 6 per unit"
+    }
+  ],
+  "assessmentMatchCount": 48,
+  "assessmentMatchScope": "unit-level; rubric extraction pending"
+}

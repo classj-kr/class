@@ -49,6 +49,8 @@ __pycache__/
 /insert_*.js
 /update_*.js
 /references/*
+!/references/textbooks/
+/references/textbooks/raw/
 !/references/moe/
 /references/moe/*
 !/references/moe/2022-revised-curriculum/

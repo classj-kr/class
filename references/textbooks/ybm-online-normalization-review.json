@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "sourceId": "ess32n",
+      "rows": 35,
+      "periods": 48,
+      "pageMapping": "not-listed-in-lesson-popup",
+      "sourceStatus": "complete-ebook-menu-original-plan-comparison-pending"
+    },
+    {
+      "sourceId": "ess41n",
+      "rows": 42,
+      "periods": 48,
+      "pageMapping": "not-listed-in-lesson-popup",
+      "sourceStatus": "complete-ebook-menu-original-plan-comparison-pending"
+    },
+    {
+      "sourceId": "ess42n",
+      "rows": 40,
+      "periods": 48,
+      "pageMapping": "not-listed-in-lesson-popup",
+      "sourceStatus": "complete-ebook-menu-original-plan-comparison-pending"
+    }
+  ]
+}

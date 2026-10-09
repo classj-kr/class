@@ -1,0 +1,4230 @@
+{
+  "schemaVersion": 1,
+  "coverage": [
+    {
+      "editionId": "tb-b7ff5672ecb44f29",
+      "grade": 1,
+      "publisher": null,
+      "subject": "국어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri01-ko-A_2024-s1",
+        "tselpa-E-curri01-ko-A_2024-s2",
+        "tselpa-E-curri01-ko-B_2024-s1",
+        "tselpa-E-curri01-ko-B_2024-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b7ff5672ecb44f29",
+      "grade": 2,
+      "publisher": null,
+      "subject": "국어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri02-ko-A_2024-s1",
+        "tselpa-E-curri02-ko-A_2024-s2",
+        "tselpa-E-curri02-ko-B_2024-s1",
+        "tselpa-E-curri02-ko-B_2024-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c1bf7609f4afbb2d",
+      "grade": 1,
+      "publisher": null,
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri01-math_2024-s1",
+        "tselpa-E-curri01-math_2024-s2",
+        "vivasam-432955-ccd6887003-1",
+        "vivasam-444475-40e20d0917-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c1bf7609f4afbb2d",
+      "grade": 2,
+      "publisher": null,
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri02-math_2024-s1",
+        "tselpa-E-curri02-math_2024-s2",
+        "vivasam-432961-3a11dc1523-1",
+        "vivasam-444482-07d22294b6-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-12a375124faf801f",
+      "grade": 1,
+      "publisher": null,
+      "subject": "통합교과",
+      "status": "acquired",
+      "plans": [
+        "jihak-dee097c075b10f6a-1-2",
+        "jihak-129bff0b5da591e0-1-1",
+        "tselpa-E-curri01-ton-A_2024-s1",
+        "tselpa-E-curri01-ton-B_2024-s1",
+        "tselpa-E-curri01-ton-C_2024-s1",
+        "tselpa-E-curri01-ton-D_2024-s1",
+        "tselpa-E-curri01-ton-E_2024-s2",
+        "tselpa-E-curri01-ton-F_2024-s2",
+        "tselpa-E-curri01-ton-G_2024-s2",
+        "tselpa-E-curri01-ton-H_2024-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-12a375124faf801f",
+      "grade": 2,
+      "publisher": null,
+      "subject": "통합교과",
+      "status": "acquired",
+      "plans": [
+        "jihak-2ec31f184642056b-2-2",
+        "jihak-450ce7a66190d2bc-2-1",
+        "tselpa-E-curri02-ton-A_2024-s1",
+        "tselpa-E-curri02-ton-B_2024-s1",
+        "tselpa-E-curri02-ton-C_2024-s1",
+        "tselpa-E-curri02-ton-D_2024-s1",
+        "tselpa-E-curri02-ton-E_2024-s2",
+        "tselpa-E-curri02-ton-F_2024-s2",
+        "tselpa-E-curri02-ton-G_2024-s2",
+        "tselpa-E-curri02-ton-H_2024-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-027c18f5ce64fc5e",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "donga-103813-8458de6041-학습내용자료-3-1",
+        "donga-103353-84e6ecfb1b-학습내용자료-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-027c18f5ce64fc5e",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "donga-67327-a082018024-학습내용자료-4-1",
+        "donga-103962-b39f75c066-학습내용자료-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b12d06ae8294d8ee",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1422",
+        "miraen-1424"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b12d06ae8294d8ee",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1423",
+        "miraen-1425"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-60092a0aa9b67a52",
+      "grade": 3,
+      "publisher": "비상교육",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458034-2bba1e8aed-1",
+        "vivasam-458035-b6341ccbf0-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-60092a0aa9b67a52",
+      "grade": 4,
+      "publisher": "비상교육",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458063-0c31c17250-1",
+        "vivasam-458064-246be58062-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3232588fb5e83bbb",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-8209ac26a4-1",
+        "iscream-26580-e88b976990-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3232588fb5e83bbb",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-44972e617f-1",
+        "iscream-26580-156156a31d-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5f33ba2d2ee7d2ac",
+      "grade": 3,
+      "publisher": "지학사",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "jihak-c74c43f88c90e5f1-3-2",
+        "jihak-7527e492bd35c8a5-3-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5f33ba2d2ee7d2ac",
+      "grade": 4,
+      "publisher": "지학사",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "jihak-8d6abe78e0c80874-4-2",
+        "jihak-ac8a69f7065e1e46-4-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6259a522b329b1fa",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-science-L_2025-s1",
+        "tselpa-E-curri03-science-L_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6259a522b329b1fa",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-science-L_2025-s1",
+        "tselpa-E-curri04-science-L_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3a81d884bab758c2",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-science-J_2025-s1",
+        "tselpa-E-curri03-science-J_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3a81d884bab758c2",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-science-J_2025-s1",
+        "tselpa-E-curri04-science-J_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-8932f22f488bd441",
+      "grade": 3,
+      "publisher": null,
+      "subject": "국어",
+      "status": "acquired",
+      "plans": [
+        "jihak-2076edb250b68706-3-2",
+        "jihak-502ae71344e2e131-3-1",
+        "tselpa-E-curri03-ko-A_2025-s1",
+        "tselpa-E-curri03-ko-A_2025-s2",
+        "tselpa-E-curri03-ko-B_2025-s1",
+        "tselpa-E-curri03-ko-B_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-8932f22f488bd441",
+      "grade": 4,
+      "publisher": null,
+      "subject": "국어",
+      "status": "acquired",
+      "plans": [
+        "jihak-5f1bd87383a9b4bb-4-2",
+        "jihak-e13c3d9fc82e4d00-4-1",
+        "tselpa-E-curri04-ko-A_2025-s1",
+        "tselpa-E-curri04-ko-A_2025-s2",
+        "tselpa-E-curri04-ko-B_2025-s1",
+        "tselpa-E-curri04-ko-B_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5793dff92a57b5be",
+      "grade": 3,
+      "publisher": null,
+      "subject": "도덕",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-ethics_2025-s1",
+        "tselpa-E-curri03-ethics_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5793dff92a57b5be",
+      "grade": 4,
+      "publisher": null,
+      "subject": "도덕",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-ethics_2025-s1",
+        "tselpa-E-curri04-ethics_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-09d08c98bfcda0b9",
+      "grade": 3,
+      "publisher": "교학도서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "klassmon-66b787998ba5423e8866f4afa3e91a08"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-09d08c98bfcda0b9",
+      "grade": 4,
+      "publisher": "교학도서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "klassmon-d09a77ee18764338b32131e021c8b42a"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-ef17df0b40793645",
+      "grade": 3,
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "kumsung-art-3-4-1c253ec899-3"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-ef17df0b40793645",
+      "grade": 4,
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "kumsung-art-3-4-1c253ec899-4"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-fdd62952285d7737",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "donga-64371-dee5214dbc-3학년1학기-3-1",
+        "donga-64371-dee5214dbc-3학년2학기-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-fdd62952285d7737",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "donga-64371-dee5214dbc-4학년1학기-4-1",
+        "donga-64371-dee5214dbc-4학년2학기-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-9d949ad52c6e1af7",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "miraen-1426"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-9d949ad52c6e1af7",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "miraen-1427"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-6af6261af960a5ab",
+      "grade": 3,
+      "publisher": "비상교육",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458634-6e7bd5f2d6-1",
+        "vivasam-459757-260b590d66-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-6af6261af960a5ab",
+      "grade": 4,
+      "publisher": "비상교육",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458652-df81154484-1",
+        "vivasam-459759-ef6a2fafa6-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-43fbbdb4deb552ed",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-18d189e749-1",
+        "iscream-26580-415c57cccf-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-43fbbdb4deb552ed",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-3e45c80d4d-1",
+        "iscream-26580-e4ed099e63-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-4aebeddff8910228",
+      "grade": 3,
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "artculture-3-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-4aebeddff8910228",
+      "grade": 4,
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "artculture-4-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-358263466b89f58f",
+      "grade": 3,
+      "publisher": "지학사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "jihak-eb75b7475307c0ee-3-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-358263466b89f58f",
+      "grade": 4,
+      "publisher": "지학사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "jihak-09f45b023b87e34c-4-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-2bd6c4146566bef1",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-art-A_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-2bd6c4146566bef1",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-art-A_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-228e49bc29a6e92b",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "donga-105509-65ccead394-학습내용자료-3-1",
+        "donga-104694-3aa81d7eea"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-228e49bc29a6e92b",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "donga-103368-3cd9c262c2-학습내용자료-4-1",
+        "donga-103091-29b12ad070"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-cf31099855e85760",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "miraen-1418",
+        "miraen-1420"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-cf31099855e85760",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "miraen-1419",
+        "miraen-1421"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c4c01bf1f131cc87",
+      "grade": 3,
+      "publisher": "비상교육",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458541-d39898c277-1",
+        "vivasam-458542-aa5cbdc0ac-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c4c01bf1f131cc87",
+      "grade": 4,
+      "publisher": "비상교육",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458579-e6a22138ae-1",
+        "vivasam-458580-6cdcc34001-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6750140d16fbf8a5",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-60aee71696-1",
+        "iscream-26580-b67febe3a9-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6750140d16fbf8a5",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-ec92897215-1",
+        "iscream-26580-cc7114a898-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-939066fb897b434f",
+      "grade": 3,
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816020127AMS2V-3-1",
+        "ybm-online-ess32n"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-939066fb897b434f",
+      "grade": 4,
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "ybm-online-ess41n",
+        "ybm-online-ess42n"
+      ],
+      "pendingPdfSources": [
+        "C20240816020127AMS2V"
+      ],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-656f1971f6fa9741",
+      "grade": 3,
+      "publisher": "지학사",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "jihak-b75a0dbb16458de2-3-2",
+        "jihak-64c48113d3996801-3-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-656f1971f6fa9741",
+      "grade": 4,
+      "publisher": "지학사",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "jihak-20bc41486b37e638-4-2",
+        "jihak-20bc41486b37e638-4-1",
+        "jihak-9e4e069e5da67c2c-4-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-25b1f61843243ddd",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-social-K_2025-s1",
+        "tselpa-E-curri03-social-K_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-25b1f61843243ddd",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-social-K_2025-s1",
+        "tselpa-E-curri04-social-K_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-98bd422834c6ea38",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-social-P_2025-s1",
+        "tselpa-E-curri03-social-P_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-98bd422834c6ea38",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-social-P_2025-s1",
+        "tselpa-E-curri04-social-P_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-0ffb6c37769c7e72",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "donga-99875-c22a38432b-3-1진도표-3-1",
+        "donga-120750-9ae5e6d5c8-3-2진도표-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-0ffb6c37769c7e72",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "donga-103679-52abf3e6b0-4-1진도표-4-1",
+        "donga-120763-e39306868f-4-2진도표-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5a699afec30b7907",
+      "grade": 3,
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "didim-j31",
+        "didim-j32"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5a699afec30b7907",
+      "grade": 4,
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "didim-j41",
+        "didim-j42"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-70245a528f49efe7",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1414",
+        "miraen-1415"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-70245a528f49efe7",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1416",
+        "miraen-1417"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-949a9fff2c633502",
+      "grade": 3,
+      "publisher": "비상교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458914-a08bfc7100-1",
+        "vivasam-521152-23503c6b68-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-949a9fff2c633502",
+      "grade": 4,
+      "publisher": "비상교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458941-d4419b641d-1",
+        "vivasam-521181-96a6968b94-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6c246ae6a2953805",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-47ad609954-1",
+        "iscream-26580-2854067ac3-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6c246ae6a2953805",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-da2bb60202-1",
+        "iscream-26580-e00352d32d-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-bedbc367c02cdb81",
+      "grade": 3,
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816014628qL0rN-3-1",
+        "ybm-C20240816014628qL0rN-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-bedbc367c02cdb81",
+      "grade": 4,
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816014628qL0rN-4-1",
+        "ybm-C20240816014628qL0rN-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-221b1c0d7654c865",
+      "grade": 3,
+      "publisher": "지학사",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "jihak-30807bd17aabd596-3-2",
+        "jihak-7f7235861c5726b9-3-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-221b1c0d7654c865",
+      "grade": 4,
+      "publisher": "지학사",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "jihak-31a9f13083e80fc5-4-2",
+        "jihak-7e053fb54523b7fe-4-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b42b3e279bbb4058",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-math-P_2025-s1",
+        "tselpa-E-curri03-math-P_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b42b3e279bbb4058",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-math-P_2025-s1",
+        "tselpa-E-curri04-math-P_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-340226475c3ea050",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-math-H_2025-s1",
+        "tselpa-E-curri03-math-H_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-340226475c3ea050",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-math-H_2025-s1",
+        "tselpa-E-curri04-math-H_2025-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-4d88b8ae860c5b94",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "donga-68066-74e015183d-1학기-3-1",
+        "donga-68066-74e015183d-2학기-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-4d88b8ae860c5b94",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "donga-68079-737a5027a9-1학기-4-1",
+        "donga-68079-737a5027a9-2학기-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-9278ce1db9831ed3",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "miraen-1409"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-9278ce1db9831ed3",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "miraen-1410"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-efce8e073fed2067",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-d95f569a77-1",
+        "iscream-26580-79ffa9212f-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-efce8e073fed2067",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-6a10d0b744-1",
+        "iscream-26580-cb93ce8cd1-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-de5666d512727144",
+      "grade": 3,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816121044UDjce-3-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-de5666d512727144",
+      "grade": 4,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816121044UDjce-4-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-e5d277fdf178ef3c",
+      "grade": 3,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816122043uSZ0q-3-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-e5d277fdf178ef3c",
+      "grade": 4,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816122043uSZ0q-4-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-0c2d61f5562fda3e",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-eng-K_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-0c2d61f5562fda3e",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-eng-K_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-295018729dd44080",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-eng-H_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-295018729dd44080",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-eng-H_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-38a328c0b86c51ee",
+      "grade": 3,
+      "publisher": "천재교육",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-eng-L_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-38a328c0b86c51ee",
+      "grade": 4,
+      "publisher": "천재교육",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-eng-L_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-08a3477275bddfb9",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "donga-92600-8e9fc2f23e-학습내용자료-3-1",
+        "donga-92600-8e9fc2f23e-학습내용자료-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-08a3477275bddfb9",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "donga-92601-7ae9e06583-학습내용자료-4-1",
+        "donga-92601-7ae9e06583-학습내용자료-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-6dea03dd7193364d",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "miraen-1618"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-6dea03dd7193364d",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "miraen-1619"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-acfe48faad69d0f1",
+      "grade": 3,
+      "publisher": "비상교육",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458882-2082b52426-1",
+        "vivasam-490050-3dd9f7e1fc-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-acfe48faad69d0f1",
+      "grade": 4,
+      "publisher": "비상교육",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458899-abf32ccda0-1",
+        "vivasam-490051-22626b0654-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-83ac81bc96ac1535",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-c70fd66116-1",
+        "iscream-26580-9fec272c1d-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-83ac81bc96ac1535",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-778f20d1de-1",
+        "iscream-26580-fa4db7e291-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-aebb46993f46099a",
+      "grade": 3,
+      "publisher": "아침나라",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "achim-음악-3-1",
+        "achim-음악-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-aebb46993f46099a",
+      "grade": 4,
+      "publisher": "아침나라",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "achim-음악-4-1",
+        "achim-음악-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-55946ba4dea72534",
+      "grade": 3,
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816022554GR1qu-3-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-55946ba4dea72534",
+      "grade": 4,
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816022554GR1qu-4-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-14d2792b72b03514",
+      "grade": 3,
+      "publisher": "지학사",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "jihak-90c93d6b8fbf1fc0-3-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-14d2792b72b03514",
+      "grade": 4,
+      "publisher": "지학사",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "jihak-99606207576b80f7-4-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-00ef712240aede8a",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-music-C_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-00ef712240aede8a",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-music-C_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-15154338cb64e686",
+      "grade": 3,
+      "publisher": "교학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "klassmon-2751639241ea4f97b5320f1911bfb239"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-15154338cb64e686",
+      "grade": 4,
+      "publisher": "교학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "klassmon-70e89f5820ee4b3987c9913e58541f8c"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-aacd10a7bd09e15f",
+      "grade": 3,
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "kumsung-pe3-guide-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-aacd10a7bd09e15f",
+      "grade": 4,
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "kumsung-pe4-guide-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-4669f454f2f01546",
+      "grade": 3,
+      "publisher": "동아출판",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "donga-63530-11fab2db11-학습내용자료-3-1",
+        "donga-63530-11fab2db11-학습내용자료-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-4669f454f2f01546",
+      "grade": 4,
+      "publisher": "동아출판",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "donga-64816-3d3fadfdef-학습내용자료-4-1",
+        "donga-64816-3d3fadfdef-학습내용자료-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-a347567e387ea9b3",
+      "grade": 3,
+      "publisher": "미래엔",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "miraen-1428"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-a347567e387ea9b3",
+      "grade": 4,
+      "publisher": "미래엔",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "miraen-1429"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b9f946ee7127b6f2",
+      "grade": 3,
+      "publisher": "비상교육",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458434-e7bb912416-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b9f946ee7127b6f2",
+      "grade": 4,
+      "publisher": "비상교육",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "vivasam-458419-db53396656-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-4e83e13a85853d0d",
+      "grade": 3,
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-dbda04abbb-1",
+        "iscream-26580-6f52c06eee-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-4e83e13a85853d0d",
+      "grade": 4,
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "iscream-26579-bf5aabc0c9-1",
+        "iscream-26580-451652d0b6-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-0cd7079bd7a7e76c",
+      "grade": 3,
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816024016ZENyp-3-1",
+        "ybm-C20240816024016ZENyp-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-0cd7079bd7a7e76c",
+      "grade": 4,
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20240816024016ZENyp-4-1",
+        "ybm-C20240816024016ZENyp-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-1204fd9c821f9950",
+      "grade": 3,
+      "publisher": "지학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "jihak-a9aa23dfcfc6e57e-3-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-1204fd9c821f9950",
+      "grade": 4,
+      "publisher": "지학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "jihak-e150bdc117e3c60b-4-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-bbe54a4ba3e1cff2",
+      "grade": 3,
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri03-physical-G_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-bbe54a4ba3e1cff2",
+      "grade": 4,
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri04-physical-G_2025"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-0de5499fda0fe900",
+      "grade": 3,
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-3-1",
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-3-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-0de5499fda0fe900",
+      "grade": 4,
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-4-1",
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-4-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-7db496b411cdf1b4",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1612",
+        "miraen-1611"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-7db496b411cdf1b4",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1613",
+        "miraen-1614"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5492996c1e1fcd32",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-563647-3bfa30af28-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5492996c1e1fcd32",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-563678-c8c718b85b-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-cdec5f797a01b1b5",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-a1e574ce95-1",
+        "iscream-26791-ad99ecbd80-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-cdec5f797a01b1b5",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-5aadaa46ec-1",
+        "iscream-26791-0c55ead107-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-85bef7a44a60678f",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "jihak-75c7288986587fee-5-2",
+        "jihak-691c5a1bd579b909-5-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-85bef7a44a60678f",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "jihak-e0fead9a29a6366d-6-2",
+        "jihak-6a0dcf17c57dd944-6-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d95a9ebcb23138ab",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-science-J_2026-s1",
+        "tselpa-E-curri05-science-J_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d95a9ebcb23138ab",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "과학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-science-J_2026-s1",
+        "tselpa-E-curri06-science-J_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-e2cfb3f073d113c7",
+      "grade": 5,
+      "publisher": null,
+      "subject": "국어",
+      "status": "acquired",
+      "plans": [
+        "jihak-039a484705c9db6c-5-1",
+        "jihak-0a927277e38bc172-5-2",
+        "tselpa-E-curri05-ko-A_2026-s1",
+        "tselpa-E-curri05-ko-A_2026-s2",
+        "tselpa-E-curri05-ko-B_2026-s1",
+        "tselpa-E-curri05-ko-B_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-e2cfb3f073d113c7",
+      "grade": 6,
+      "publisher": null,
+      "subject": "국어",
+      "status": "acquired",
+      "plans": [
+        "jihak-132249afa417b127-6-1",
+        "jihak-cb1f019188e7d109-6-2",
+        "tselpa-E-curri06-ko-A_2026-s1",
+        "tselpa-E-curri06-ko-A_2026-s2",
+        "tselpa-E-curri06-ko-B_2026-s1",
+        "tselpa-E-curri06-ko-B_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-9e320b00307ead54",
+      "grade": 5,
+      "publisher": null,
+      "subject": "도덕",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-ethics_2026-s1",
+        "tselpa-E-curri05-ethics_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-9e320b00307ead54",
+      "grade": 6,
+      "publisher": null,
+      "subject": "도덕",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-ethics_2026-s1",
+        "tselpa-E-curri06-ethics_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-581d019eb8bc3f71",
+      "grade": 5,
+      "publisher": "교학도서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "klassmon-343a9b5881e143b8a8f33dc5f6bc5b90"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-581d019eb8bc3f71",
+      "grade": 6,
+      "publisher": "교학도서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "klassmon-e8af803257c54483b36451e9f396cccd"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-2607abcdfa6948d3",
+      "grade": 5,
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "kumsung-art-5-cbfeeb222e-5"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-2607abcdfa6948d3",
+      "grade": 6,
+      "publisher": "금성출판사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "kumsung-art-6-0727610741-6"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-91088ff8a97a89a5",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "donga-126432-26d2a68761-5학년1학기-5-1",
+        "donga-126432-26d2a68761-5학년2학기-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-91088ff8a97a89a5",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "donga-126432-26d2a68761-6학년1학기-6-1",
+        "donga-126432-26d2a68761-6학년2학기-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d8bcb907dc871b65",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "miraen-1615"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-d8bcb907dc871b65",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "miraen-1616"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-6498c3269de3e705",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564280-1aa069c9cc-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-6498c3269de3e705",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564253-6e7134e26b-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3ea8ff712a76cfa7",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "iscream-26783-70f28a61f3-1",
+        "iscream-26784-c43f303330-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3ea8ff712a76cfa7",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "iscream-26783-cd26b66036-1",
+        "iscream-26784-17906b11a5-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-da3b42f4e4cdf343",
+      "grade": 5,
+      "publisher": "아침나라",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "achim-미술-5-1",
+        "achim-미술-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-da3b42f4e4cdf343",
+      "grade": 6,
+      "publisher": "아침나라",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "achim-미술-6-1",
+        "achim-미술-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-5d08ea9b4cb1d719",
+      "grade": 5,
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "artculture-5-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-5d08ea9b4cb1d719",
+      "grade": 6,
+      "publisher": "아트앤컬처",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "artculture-6-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-f0812c4bde095347",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "jihak-b77e30d3509d4730-5-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-f0812c4bde095347",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "jihak-6b2566037334ba2e-6-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-27e5d948d0a93ea2",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-art-L_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-27e5d948d0a93ea2",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "미술",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-art-L_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-d2623d7a0cddf13c",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "donga-126884-3fd7269d5b-학습내용자료-5-1",
+        "donga-157584-12c71ef572-학습내용자료-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d2623d7a0cddf13c",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "donga-126933-7953b61667-학습내용자료-6-1",
+        "donga-157922-c9873586a1-학습내용자료-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-581ccacc6da81bdb",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "miraen-1585",
+        "miraen-1584"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-581ccacc6da81bdb",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "miraen-1586",
+        "miraen-1587"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d9462fc32338dca8",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "vivasam-563321-85963846e8-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d9462fc32338dca8",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "vivasam-563358-1bd9e34fde-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3ee759a2e351fff7",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-617ed9b7dd-1",
+        "iscream-26791-ec18bc7781-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3ee759a2e351fff7",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-1f82d7a59d-1",
+        "iscream-26791-b8afc1fa94-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-07dea2d6b4964749",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032904RULhs-5-1",
+        "ybm-C20250807032904RULhs-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-07dea2d6b4964749",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032904RULhs-6-1",
+        "ybm-C20250807032904RULhs-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-354773e9f00d041f",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "jihak-269d2afc5cd8d852-5-1",
+        "jihak-f21585c8e83901b3-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-354773e9f00d041f",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "jihak-c7375fe5dc652761-6-1",
+        "jihak-128a776072df91e7-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-e23e46c028c4c904",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-social-K_2026-s1",
+        "tselpa-E-curri05-social-K_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-e23e46c028c4c904",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-social-K_2026-s1",
+        "tselpa-E-curri06-social-K_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-8a63a1814bb6ea76",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-social-P_2026-s1",
+        "tselpa-E-curri05-social-P_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-8a63a1814bb6ea76",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "사회",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-social-P_2026-s1",
+        "tselpa-E-curri06-social-P_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-724eda72ec3769b8",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "donga-124966-e552d807e7-5-1진도표-5-1",
+        "donga-156591-a019c10460-5-2진도표-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-724eda72ec3769b8",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "donga-125090-caee887a47-6-1진도표-6-1",
+        "donga-156187-e00f855833-6-2진도표-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-ff48bedb2fa611c4",
+      "grade": 5,
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "didim-j51",
+        "didim-j52"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-ff48bedb2fa611c4",
+      "grade": 6,
+      "publisher": "디딤돌교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "didim-j61",
+        "didim-j62"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3b406499e00b4a29",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1626",
+        "miraen-1624"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3b406499e00b4a29",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "miraen-1629",
+        "miraen-1630"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-356b1adeeeece7d3",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-560350-37538bd0be-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-356b1adeeeece7d3",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "vivasam-560386-714c6f6e15-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c328ce50b190a4dc",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-f67d5d450f-1",
+        "iscream-26791-0060d71e3b-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c328ce50b190a4dc",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-5547d2b109-1",
+        "iscream-26791-8dcfaf6120-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d946fc043d6c288b",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032905hlklU-5-1",
+        "ybm-C20250807032905hlklU-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d946fc043d6c288b",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032905hlklU-6-1",
+        "ybm-C20250807032905hlklU-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b2235ebaf292db5a",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "jihak-145118c1febcefa5-5-1",
+        "jihak-e7e34c38654b03d9-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-b2235ebaf292db5a",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "jihak-a758247d18eefe36-6-1",
+        "jihak-a3282d3391a271a8-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-444407b517d8dfe3",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-math-P_2026-s1",
+        "tselpa-E-curri05-math-P_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-444407b517d8dfe3",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-math-P_2026-s1",
+        "tselpa-E-curri06-math-P_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d908b263d2003f36",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-math-H_2026-s1",
+        "tselpa-E-curri05-math-H_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-d908b263d2003f36",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "수학",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-math-H_2026-s1",
+        "tselpa-E-curri06-math-H_2026-s2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-f577ef7b2b9ce50c",
+      "grade": 5,
+      "publisher": "교학사",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "klassmon-d0ac56bc8ccf4f45929960dd350c549e"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-f577ef7b2b9ce50c",
+      "grade": 6,
+      "publisher": "교학사",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "klassmon-9c2a88bde6e845a8892d1a436f222c87"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-954df70797bbee08",
+      "grade": 5,
+      "publisher": "금성출판사",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "kumsung-practical-5-8ec43084ae-5"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-954df70797bbee08",
+      "grade": 6,
+      "publisher": "금성출판사",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "kumsung-practical-6-b70064418c-6"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-92bd61a5274fc1b2",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "donga-120313-a3da1e18ba"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-92bd61a5274fc1b2",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "donga-120476-a06529a76b"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-847ff983a931ed95",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "miraen-1617"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-847ff983a931ed95",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "miraen-1620"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-0ab2c40ff162cb20",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564366-9684a4789d-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-0ab2c40ff162cb20",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564381-4c6653cbef-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-79926ca720d86a07",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "iscream-26783-3c9dfa067e-1",
+        "iscream-26784-87b4822170-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-79926ca720d86a07",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "iscream-26783-af3b5c07d4-1",
+        "iscream-26784-a489668420-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-bd00e49f7db84fbb",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "ybm-C2025080703290511OI8-5-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-bd00e49f7db84fbb",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "ybm-C2025080703290511OI8-6-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3e3326e566d1ba36",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "jihak-95d3fe6e9ca49104-5-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3e3326e566d1ba36",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "jihak-9303f8545d023878-6-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b9425f548a010db5",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-practical-L_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b9425f548a010db5",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "실과",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-practical-L_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-301d010e57b36322",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "donga-128559-350d2695ad-1학기-5-1",
+        "donga-128559-350d2695ad-2학기-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-301d010e57b36322",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "donga-128561-9e1a207cad-1학기-6-1",
+        "donga-128561-9e1a207cad-2학기-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-895da9a48115407b",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "miraen-1588"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-895da9a48115407b",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "miraen-1589"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-9113ce68e72cc020",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564872-4be8e6e6d9-1",
+        "vivasam-564872-4be8e6e6d9-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-9113ce68e72cc020",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564837-7efdba1a08-1",
+        "vivasam-564837-7efdba1a08-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-cfcdaff9ad30d27e",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-3f492bf393-1",
+        "iscream-26791-90ed99df6f-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-cfcdaff9ad30d27e",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-2839e7dfbe-1",
+        "iscream-26791-4275ff92f0-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-7b5f8b0c5bf22866",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032906jLbXE-5-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-7b5f8b0c5bf22866",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032906jLbXE-6-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-4ff619bdfb99c735",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032906yzWN0-5-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-4ff619bdfb99c735",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032906yzWN0-6-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-1f7e4f30e4a532bf",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-eng-K_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-1f7e4f30e4a532bf",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-eng-K_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-d91cfd905c4b02ad",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-eng-H_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-d91cfd905c4b02ad",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-eng-H_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3ca4e76f29377f3d",
+      "grade": 5,
+      "publisher": "천재교육",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-eng-L_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3ca4e76f29377f3d",
+      "grade": 6,
+      "publisher": "천재교육",
+      "subject": "영어",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-eng-L_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-13df77d075e34e3c",
+      "grade": 5,
+      "publisher": "금성출판사",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "kumsung-music-5-48ba2bdc80-5"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-13df77d075e34e3c",
+      "grade": 6,
+      "publisher": "금성출판사",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "kumsung-music-5-48ba2bdc80-6"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-764368b1f626a109",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "donga-125407-56bcccee50-학습내용자료-5-1",
+        "donga-125407-56bcccee50-학습내용자료-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-764368b1f626a109",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "donga-125425-f034d32082-학습내용자료-6-1",
+        "donga-125425-f034d32082-학습내용자료-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3fa6b6303fc24201",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "miraen-1625"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3fa6b6303fc24201",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "miraen-1631"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-349cd1f0f46bed8e",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564469-4ad662ce34-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-349cd1f0f46bed8e",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564487-063c090f0c-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-1effb249488b73de",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-09c61d7f9b-1",
+        "iscream-26791-fb0d3b76dd-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-1effb249488b73de",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "iscream-26790-e073792d8d-1",
+        "iscream-26791-8f55b1178c-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-ea9f50a85d46df47",
+      "grade": 5,
+      "publisher": "아침나라",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "achim-음악-5-1",
+        "achim-음악-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-ea9f50a85d46df47",
+      "grade": 6,
+      "publisher": "아침나라",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "achim-음악-6-1",
+        "achim-음악-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-71c8f05ff27572db",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032906uqzmm-5-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-71c8f05ff27572db",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032906uqzmm-6-annual"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-48723016b6416d13",
+      "grade": 5,
+      "publisher": "음악과생활",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "musiclife-5-1",
+        "musiclife-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-48723016b6416d13",
+      "grade": 6,
+      "publisher": "음악과생활",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "musiclife-6-1",
+        "musiclife-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-beeff83b5bc5bbc5",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "jihak-5a27c60368ba8f08-5-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-beeff83b5bc5bbc5",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "jihak-1fa51450376a201a-6-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b3e1bdfae990228d",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-music-C_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b3e1bdfae990228d",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "음악",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-music-C_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-f0626af19964e229",
+      "grade": 5,
+      "publisher": "교학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "klassmon-1b1b4b6ab9504e50a8434dde596c687f"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-f0626af19964e229",
+      "grade": 6,
+      "publisher": "교학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "klassmon-f3a06e42a64b43c7940f9f4042cd8b0f"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b83713cc68c714ff",
+      "grade": 5,
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "kumsung-physicalEdu-5-6f1a846a8a-5"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b83713cc68c714ff",
+      "grade": 6,
+      "publisher": "금성출판사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "kumsung-physicalEdu-6-594ef7dd07-6"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-ebd9c1c0f8208c75",
+      "grade": 5,
+      "publisher": "동아출판",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "donga-124368-8adaa1da4d-학습내용자료-5-1",
+        "donga-124368-8adaa1da4d-학습내용자료-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-ebd9c1c0f8208c75",
+      "grade": 6,
+      "publisher": "동아출판",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "donga-124694-9d0e67f279-학습내용자료-6-1",
+        "donga-124694-9d0e67f279-학습내용자료-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-3e9ca44dba2d3921",
+      "grade": 5,
+      "publisher": "미래엔",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "miraen-1621"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-3e9ca44dba2d3921",
+      "grade": 6,
+      "publisher": "미래엔",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "miraen-1622"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b5d5f0c8c9087077",
+      "grade": 5,
+      "publisher": "비상교육",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564502-6ee9d2a7a8-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-b5d5f0c8c9087077",
+      "grade": 6,
+      "publisher": "비상교육",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "vivasam-564525-ee8ff5dc9c-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-94e66f4d8defda0e",
+      "grade": 5,
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "iscream-26783-c6c5f7f249-1",
+        "iscream-26784-1e50ed9c2f-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-94e66f4d8defda0e",
+      "grade": 6,
+      "publisher": "아이스크림미디어",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "iscream-26783-4ec09faf83-1",
+        "iscream-26784-246f28d5b7-1"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c4163dca14fc8feb",
+      "grade": 5,
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032907wIt5H-5-1",
+        "ybm-C20250807032907wIt5H-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-c4163dca14fc8feb",
+      "grade": 6,
+      "publisher": "와이비엠",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "ybm-C20250807032907wIt5H-6-1",
+        "ybm-C20250807032907wIt5H-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-db7245b717917323",
+      "grade": 5,
+      "publisher": "지학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "jihak-859ad27767e19c34-5-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-db7245b717917323",
+      "grade": 6,
+      "publisher": "지학사",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "jihak-1ca3467f2c36c648-6-0"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-a99c3bb3ae84a78b",
+      "grade": 5,
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri05-physical-P_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-a99c3bb3ae84a78b",
+      "grade": 6,
+      "publisher": "천재교과서",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "tselpa-E-curri06-physical-P_2026"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [],
+      "hasUnassignedSemester": true
+    },
+    {
+      "editionId": "tb-266461fcf7029ab0",
+      "grade": 5,
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-5-1",
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-5-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    },
+    {
+      "editionId": "tb-266461fcf7029ab0",
+      "grade": 6,
+      "publisher": "체육과건강",
+      "subject": "체육",
+      "status": "acquired",
+      "plans": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-6-1",
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-6-2"
+      ],
+      "pendingPdfSources": [],
+      "semesters": [
+        1,
+        2
+      ],
+      "hasUnassignedSemester": false
+    }
+  ]
+}
