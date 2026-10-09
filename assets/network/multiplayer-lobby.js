@@ -762,6 +762,11 @@
     function updateTimerWarnings() {
         document.querySelectorAll("#turnSeconds, #turn-seconds, #turnClock, #timerText, #timer-countdown").forEach(element => {
             if (element.querySelector("#turnSeconds, #turn-seconds, #timerText, #timer-countdown")) return;
+            if (!element.getClientRects().length || getComputedStyle(element).visibility === "hidden") {
+                element.classList.remove("class-timer-urgent");
+                timerWarningState.delete(element);
+                return;
+            }
             const seconds = timerSecondsFromText(element.textContent);
             const urgent = Number.isFinite(seconds) && seconds > 0 && seconds <= TIMER_WARNING_SECONDS;
             element.classList.toggle("class-timer-urgent", urgent);

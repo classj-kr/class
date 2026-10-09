@@ -4,6 +4,10 @@
 
 The shared `game-sfx.js` exposes 13 effects. Select, back, bell, card, stone, success, error, tick, turn, timeout and explosion normally use the 11 OGG files in `sfx/`, with synthesized loading-failure fallbacks. Click and capture are synthesized. Custom game tones use `getAudioBus()`; custom file effects use `playFile()` so both follow the shared effects controls.
 
+## Expanded verification, 2026-10-09
+
+See [the reproducible verification report](../../docs/sound-verification-2026-10-09.md) for the later pass: 50 game-action checks, 38 computer lesson checks, instrument playback and 105 drum signals, count-in/ear-training input checks, capture feedback, a fresh real three-player Bomb 77 match, and server HTML/asset checks. This pass found and fixed Pattern Trio's extra generic click and the shared countdown warning sounding while its timer was hidden. Historical exclusions below describe the earlier passes; the linked report states the current coverage and remaining listening limits.
+
 ## 2026-10-09 follow-up: file explosion and real gameplay
 
 Bomb 77 now uses a processed CC0 explosion asset, approximately 0.65 seconds long, rather than the synthesized replacement from the first pass. Source, license, original hash and processing are in [SFX-SOURCES.md](SFX-SOURCES.md). Four candidates were compared by onset, duration and envelope. Human listening approval remains open; the candidate choice is provisional on that dimension.

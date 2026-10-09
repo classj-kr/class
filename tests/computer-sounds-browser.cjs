@@ -1,25 +1,14 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const http = require('node:http');
+const { startHarness } = require('./site-storage-harness.cjs');
 const puppeteer = require('puppeteer-core');
 const root = path.resolve(__dirname, '..');
 const course = '/learning/inquiry/information-computing/computer-fundamentals/';
 const report = [];
-const server = http.createServer((req, res) => {
-    let file = path.resolve(root, '.' + new URL(req.url, 'http://localhost').pathname);
-    if (!file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }
-    if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
-    fs.readFile(file, (error, data) => {
-        if (error) { res.writeHead(404).end(); return; }
-        const type = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
-            '.css': 'text/css', '.webp': 'image/webp', '.woff2': 'font/woff2', '.ogg': 'audio/ogg' }[path.extname(file)];
-        res.writeHead(200, { 'Content-Type': type || 'application/octet-stream' }).end(data);
-    });
-});
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 (async () => {
-    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    const harness = await startHarness();
     let browser;
     try {
         browser = await puppeteer.launch({
@@ -27,6 +16,7 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
             headless: true, args: ['--no-first-run']
         });
         const page = await browser.newPage();
+        await page.setCookie({ name: "test_user", value: "1", url: harness.base });
         const errors = [];
         page.on('pageerror', error => errors.push(error.message));
         page.on('response', response => { if (response.status() >= 400) errors.push(response.status() + ' ' + response.url()); });
@@ -48,7 +38,7 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
                 return create.call(this);
             };
         });
-        const origin = 'http://127.0.0.1:' + server.address().port;
+        const origin = harness.base;
         async function open(url) {
             await page.goto(origin + course + url, { waitUntil: 'networkidle0' });
             await page.waitForFunction(() => Boolean(window.ClassGameSfx));
@@ -144,12 +134,12 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
         await page.reload({ waitUntil: 'networkidle0' });
         assert.deepEqual(await page.evaluate(() => soundAudit.files), [], 'A01 restored progress must be silent');
         assert.deepEqual(errors, []);
-        const dir = path.join(root, 'docs/computer-edition');
+        const dir = path.join(root, 'outputs/sound-review-2026-10-09/computer-lessons');
         fs.mkdirSync(dir, { recursive: true });
         fs.writeFileSync(path.join(dir, 'verification-sounds.json'), JSON.stringify({ passed: report.length, report, errors }, null, 2));
         console.log(JSON.stringify({ passed: report.length, actualOggPlayback: true, errors }, null, 2));
     } finally {
         await browser?.close();
-        await new Promise(resolve => server.close(resolve));
+        await harness.close();
     }
 })().catch(error => { console.error(error); process.exitCode = 1; });
