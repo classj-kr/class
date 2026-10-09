@@ -134,19 +134,26 @@
     const bots=g.players.filter(p=>p.bot),cops=g.players.filter(p=>p.team==='police'),options=avoidance(cops);
     for(const p of bots)command(g,p.id,{type:'SHARE'});
     const thieves=g.players.filter(p=>p.team==='thief'),free=thieves.filter(p=>p.jailedUntil<=g.elapsed),prisoners=thieves.filter(p=>p.jailedUntil>g.elapsed);
-    // A single available teammate tries a rescue only if there is time to finish.
-    const rescuer=prisoners.length?free.filter(p=>!p.carrying).map(p=>({p,route:bestRoute(p,[W.nodes.jail],options)})).filter(({route})=>W.pathLength(route.path)/SPEED.thief+1.4<Math.max(...prisoners.map(t=>t.jailedUntil-g.elapsed))).sort((a,b)=>a.route.cost-b.route.cost)[0]?.p:null;
+    const available=free.filter(p=>p.bot&&!p.carrying&&!p.task),carrier=free.find(p=>p.carrying);
+    // A human owns a duty only while actually performing it. Being first in
+    // the roster must not stop their bot teammates from searching or rescuing.
+    const rescueInProgress=free.find(p=>p.task?.type==='rescue');
+    const rescuePlan=!rescueInProgress&&prisoners.length&&cops.every(c=>W.distance(c,W.nodes.jail)>85)?available.map(p=>({p,route:bestRoute(p,[W.nodes.jail],options)})).filter(({route})=>W.pathLength(route.path)/SPEED.thief+1.4<Math.max(...prisoners.map(t=>t.jailedUntil-g.elapsed))).sort((a,b)=>a.route.cost-b.route.cost)[0]:null;
+    const rescuer=rescueInProgress||rescuePlan?.p;
+    const searchInProgress=free.find(p=>p.task?.type==='search');
+    const searchPlan=!carrier&&!searchInProgress?available.filter(p=>p!==rescuer).map(p=>({p,route:bestRoute(p,knownShops(g,p).flatMap(searchEntries),options)})).filter(plan=>plan.route).sort((a,b)=>a.route.cost-b.route.cost)[0]:null;
+    const searcher=searchInProgress||searchPlan?.p;
     for(const p of bots){
       if(p.jailedUntil>g.elapsed||p.task)continue;
       let target,path;
       const shops=knownShops(g,p);
       if(p.team==='thief'){
-        const danger=Math.min(...cops.map(c=>W.distance(c,p))),searcher=free[0],carrier=free.find(x=>x.carrying);
+        const danger=Math.min(...cops.map(c=>W.distance(c,p)));
         if(p.carrying){const route=bestRoute(p,bankEntries,options);target=route.target;path=route.path;}
-        else if(p===rescuer&&cops.every(c=>W.distance(c,W.nodes.jail)>85)){
-          target=W.nodes.jail;if(W.distance(p,target)<65){command(g,p.id,{type:'RESCUE'});continue;}
+        else if(p===rescuer){
+          target=W.nodes.jail;path=rescuePlan?.route.path;if(W.distance(p,target)<65){command(g,p.id,{type:'RESCUE'});continue;}
         }else if(p===searcher&&!carrier){
-          const route=bestRoute(p,shops.flatMap(searchEntries),options);target=route?.target;path=route?.path;
+          target=searchPlan?.route.target;path=searchPlan?.route.path;
           if(shops.some(s=>W.distance(p,s.door)<40)){command(g,p.id,{type:'SEARCH'});continue;}
         }else{
           // Judge the route as well as its endpoint, so fleeing never knowingly
