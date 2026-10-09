@@ -13,12 +13,18 @@ const fresh = () => ({version:1, labUsed:false, answers:questions.map(q => ({rev
 let progress = fresh();
 let investigation = null;
 let questionsChanged = false;
+let previousEdition = false;
 try {
  const saved = store.get(key) ?? null;
  if (saved?.version === 1 && Array.isArray(saved.answers) && saved.answers.length === questions.length) {
   progress.labUsed = saved.labUsed === true;
   progress.investigation = saved.investigation;
   questionsChanged = saved.answers.some((a,i)=>(a?.revision||1)!==(questions[i].revision||1));
+  if(questionsChanged&&saved.investigation?.revision!==2){
+   const archiveKey=key+":before-teaching-20261009";
+   if(!store.has(archiveKey))store.set(archiveKey,JSON.parse(JSON.stringify(saved)));
+   previousEdition=true;
+  }
   progress.answers = saved.answers.map((a,i) => (a?.revision||1)!==(questions[i].revision||1) ? fresh().answers[i] : ({
    revision:questions[i].revision||1,
    selected: Number.isInteger(a?.selected) && a.selected >= 0 && a.selected < questions[i].options.length ? a.selected : null,
@@ -74,6 +80,7 @@ function bilingual(text) {
 const reading=node("article","edition-reading");
 reading.append(node("h2","",data.case));
 if(data.goal)reading.append(node("p","study-goal",data.goal));
+if(previousEdition)reading.append(node("p","edition-note","설명과 실습이 개편된 차시입니다. 이전 판의 학습 기록은 보관하고, 바뀐 문항과 새 실습을 기록합니다."));
 const analogyType={b01:"workshop",e04:"bookmark"}[id];
 data.body.forEach((text,index)=>{if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));const p=node("p");p.append(bilingual(text));reading.append(p);});
 if(data.worked){
