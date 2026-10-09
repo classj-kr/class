@@ -9,6 +9,7 @@
     ];
     const audio = document.getElementById("bgm");
     if (!audio || !tracks.length) return;
+    if (new URLSearchParams(location.search).has("record")) document.body.dataset.musicPausedForReading = "true";
 
     const savedIndex = 0;
     let trackIndex = Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < tracks.length
@@ -18,7 +19,7 @@
     function selectTrack(index, shouldPlay = false) {
         trackIndex = (index + tracks.length) % tracks.length;
         audio.src = tracks[trackIndex];
-        if (shouldPlay) audio.play().catch(() => {});
+        if (shouldPlay && document.body.dataset.musicPausedForReading !== "true") audio.play().catch(() => {});
     }
 
     selectTrack(trackIndex);

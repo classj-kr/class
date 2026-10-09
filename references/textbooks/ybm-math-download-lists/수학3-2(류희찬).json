@@ -1,0 +1,4415 @@
+{
+  "book": "수학 3-2(류희찬)",
+  "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html",
+  "units": [
+    {
+      "id": "R082405202820245uw0Z",
+      "title": "011단원 곱셈"
+    },
+    {
+      "id": "R082405202820241ncVx",
+      "title": "022단원 원"
+    },
+    {
+      "id": "R08240520282024pjNRt",
+      "title": "033단원 나눗셈"
+    },
+    {
+      "id": "R08240520282024hI813",
+      "title": "044단원 분수"
+    },
+    {
+      "id": "R0824052028202414stk",
+      "title": "055단원 들이와 무게"
+    },
+    {
+      "id": "R08240520282024JXEKc",
+      "title": "066단원 그림그래프"
+    }
+  ],
+  "files": [
+    {
+      "bytesListed": "29148054",
+      "contentId": "C20250814094514OyjJF",
+      "name": "수학 3-2(류희찬)_공통자료_32_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU2025081409451474l5.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "10033664",
+      "contentId": "C20250811115030SoKIq",
+      "name": "수학 3-2(류희찬)_공통자료_수학3-2(류)_32_누적평가_문제",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0533a71f-cb75-4032-9c7e-da646de5945d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "9917533",
+      "contentId": "C20250814110939AA2SL",
+      "name": "수학 3-2(류희찬)_공통자료_32_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/57877680-9c3f-4488-9b47-56e1ec77c94f.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2374144",
+      "contentId": "C20250811115031ug7uJ",
+      "name": "수학 3-2(류희찬)_공통자료_수학3-2(류)_32_누적평가_풀이",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d0d2f020-0a22-4ae8-875a-925fbb06aac7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "516096",
+      "contentId": "C20250113050250e1Hyx",
+      "name": "수학 3-2(류희찬)_01_321_단원기본평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143708wB6x.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "468992",
+      "contentId": "C20250113050251oAP09",
+      "name": "수학 3-2(류희찬)_01_321_단원보충평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143744hbgY.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "337920",
+      "contentId": "C202501130502513nlbd",
+      "name": "수학 3-2(류희찬)_01_321_단원심화평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/93f53974-1260-4ec9-aff6-7755841d214f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "413184",
+      "contentId": "C202501130502518Cr1F",
+      "name": "수학 3-2(류희찬)_01_321_단원심화평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6423d512-f485-424b-8b87-f44bd75462a1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "109568",
+      "contentId": "C20250113050251mVH9v",
+      "name": "수학 3-2(류희찬)_01_321_서술형평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e62119ce-7c52-499d-8977-47ab0fc22fa0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "161280",
+      "contentId": "C20250113050251TY1lc",
+      "name": "수학 3-2(류희찬)_01_321_서술형평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/5c41d222-0b45-4dc0-ab92-b2090500fbc7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "556032",
+      "contentId": "C20250113050253mP2Dr",
+      "name": "수학 3-2(류희찬)_01_321_수행평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f0513554-5a15-45a2-ba0a-0b63b5e0652a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "857600",
+      "contentId": "C20250113050253GFK18",
+      "name": "수학 3-2(류희찬)_01_321_수행평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/1385d3a3-0b3a-4ae7-b85f-cb990e905e1c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1270272",
+      "contentId": "C20250113050253dkfXM",
+      "name": "수학 3-2(류희찬)_01_321_수행평가_3_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e0904452-0023-417c-82a3-b1b7289845fd.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "14573056",
+      "contentId": "C20260626095656Wm5t5",
+      "name": "수학 3-2(류희찬)_01_321_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626095656ktUs.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "4061184",
+      "contentId": "C2026062610224326J5L",
+      "name": "수학 3-2(류희찬)_01_321_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626102243ajpG.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "504320",
+      "contentId": "C20250113050250z0tQp",
+      "name": "수학 3-2(류희찬)_01_321_단원기본평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143726Pnsm.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "457728",
+      "contentId": "C2025011305025127DQu",
+      "name": "수학 3-2(류희찬)_01_321_단원보충평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143756qb5J.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "311808",
+      "contentId": "C202501130502510NpX8",
+      "name": "수학 3-2(류희찬)_01_321_단원심화평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e3dd19ac-92bd-4214-84d6-871dad48b9e3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "392192",
+      "contentId": "C20250113050251Q0RCG",
+      "name": "수학 3-2(류희찬)_01_321_단원심화평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/bcc7b0ab-546a-4a1d-abb8-82d74bc54564.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "84480",
+      "contentId": "C20250113050251YElfT",
+      "name": "수학 3-2(류희찬)_01_321_서술형평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/bee34bfb-9e58-4df1-b083-3f29f5ef3a8e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "715264",
+      "contentId": "C20250113050251lt6OK",
+      "name": "수학 3-2(류희찬)_01_321_서술형평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/68409bf6-87f6-498b-ab37-ac0d7045c9b9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "514560",
+      "contentId": "C20250113050253J40SW",
+      "name": "수학 3-2(류희찬)_01_321_수행평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e10e219f-349b-4c21-81d7-c5271d46e121.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "854528",
+      "contentId": "C20250113050253mvbdk",
+      "name": "수학 3-2(류희찬)_01_321_수행평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/269d4d1c-4869-460e-b255-45649caa2498.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1256448",
+      "contentId": "C20250113050253Wutkf",
+      "name": "수학 3-2(류희찬)_01_321_수행평가_3_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/32441c62-5831-427d-9229-82f79f653c11.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "16822784",
+      "contentId": "C20260626095521IYPCU",
+      "name": "수학 3-2(류희찬)_06_32_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626095521epF1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2896384",
+      "contentId": "C20260626102211JL8Nm",
+      "name": "수학 3-2(류희찬)_06_32_수학기초플러스 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626102211QtdO.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "461824",
+      "contentId": "C20250113050255bHUsS",
+      "name": "수학 3-2(류희찬)_01_1_321_진단평가_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/886c44d3-9ffd-44d6-aee0-7be8e65736df.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "453632",
+      "contentId": "C202501130502551jCtL",
+      "name": "수학 3-2(류희찬)_01_1_321_진단평가_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/7e00e6e9-ea17-498d-a0b3-dace55cb7eb1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "465920",
+      "contentId": "C20250113050255cNncC",
+      "name": "수학 3-2(류희찬)_01_2_321_형성평가_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d3095aae-725e-40ca-bf8c-bdec4c3fdf35.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "388096",
+      "contentId": "C20250113050255S9ubo",
+      "name": "수학 3-2(류희찬)_01_2_321_형성평가_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/179ac391-04f9-4490-ab4b-30e6f05fe8cb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1073982",
+      "contentId": "C20250813121459jHHek",
+      "name": "수학 3-2(류희찬)_01_2_321_수학익힘유사 문제(기본)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813121459yjAd.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1114522",
+      "contentId": "C20250813122234k3sTa",
+      "name": "수학 3-2(류희찬)_01_2_321_수학익힘유사 문제(보충)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813122234enCl.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1004145",
+      "contentId": "C20250813125701GWW2r",
+      "name": "수학 3-2(류희찬)_01_2_321_수학익힘유사 문제(심화)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813125701EuwA.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "741610",
+      "contentId": "C20250813013302SfzRn",
+      "name": "수학 3-2(류희찬)_01_2_321_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813133302VbP8.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "107520",
+      "contentId": "C20250113050253bU9v5",
+      "name": "수학 3-2(류희찬)_01_2_321_익힘평가상_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/fc95e66f-bae6-482a-b843-eb746fe5dad7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "97792",
+      "contentId": "C20250113050253DLngB",
+      "name": "수학 3-2(류희찬)_01_2_321_익힘평가상_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0ffef964-7860-4651-b34b-67315f028aff.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "117760",
+      "contentId": "C202501130502547tsrN",
+      "name": "수학 3-2(류희찬)_01_2_321_익힘평가하_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/02977862-4e33-4706-b3b3-e4625ec0228d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "115200",
+      "contentId": "C20250113050254kWVcJ",
+      "name": "수학 3-2(류희찬)_01_2_321_익힘평가하_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/bf95ca14-7b56-4ceb-b185-a3cd386668cc.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "373760",
+      "contentId": "C202501130502556vLTB",
+      "name": "수학 3-2(류희찬)_01_3_321_형성평가_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/82a9a777-9e22-4a68-98cf-8b39f90166ca.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "313344",
+      "contentId": "C20250113050255Np67g",
+      "name": "수학 3-2(류희찬)_01_3_321_형성평가_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/63b84c09-9b81-4c55-a8e5-bdec6a2d1094.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3209680",
+      "contentId": "C20250813121649kavbg",
+      "name": "수학 3-2(류희찬)_01_3_321_수학익힘유사 문제(기본)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813121649K8SY.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1059775",
+      "contentId": "C202508131226257nQ9t",
+      "name": "수학 3-2(류희찬)_01_3_321_수학익힘유사 문제(보충)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131226250SBl.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1047369",
+      "contentId": "C20250813125819rr1HW",
+      "name": "수학 3-2(류희찬)_01_3_321_수학익힘유사 문제(심화)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131258191zt3.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "110080",
+      "contentId": "C202501130502530HQEt",
+      "name": "수학 3-2(류희찬)_01_3_321_익힘평가상_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b2427de2-4bb0-45de-805d-acb1afefebb6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "96256",
+      "contentId": "C20250113050253599JW",
+      "name": "수학 3-2(류희찬)_01_3_321_익힘평가상_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4f059357-b55f-4f12-a793-ac9904d6624f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "122880",
+      "contentId": "C20250113050254oqmLw",
+      "name": "수학 3-2(류희찬)_01_3_321_익힘평가하_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/875f6609-19da-4cb4-ae36-20f211c431df.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "169984",
+      "contentId": "C20250113050254swVQ8",
+      "name": "수학 3-2(류희찬)_01_3_321_익힘평가하_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c55a22f6-ec67-4b74-80c9-f1313f8fb4d6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "98304",
+      "contentId": "C20250113050255Sty8i",
+      "name": "수학 3-2(류희찬)_01_4_321_형성평가_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/92ad46b1-7c68-4b9a-8a09-29447c298358.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "59904",
+      "contentId": "C20250113050256nWLXx",
+      "name": "수학 3-2(류희찬)_01_4_321_형성평가_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/db51ea50-09fd-433a-9cf2-9124cdeaea91.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3166144",
+      "contentId": "C20250813121733WMzlR",
+      "name": "수학 3-2(류희찬)_01_4_321_수학익힘유사 문제(기본)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813121733QAeY.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1104284",
+      "contentId": "C20250813122729ggiBa",
+      "name": "수학 3-2(류희찬)_01_4_321_수학익힘유사 문제(보충)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813122729MeXk.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1055715",
+      "contentId": "C20250813125907FDwkC",
+      "name": "수학 3-2(류희찬)_01_4_321_수학익힘유사 문제(심화)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131259072nU1.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "108032",
+      "contentId": "C20250113050253bLqC9",
+      "name": "수학 3-2(류희찬)_01_4_321_익힘평가상_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/22039cea-d484-40c5-acfd-7bb250262e87.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "97280",
+      "contentId": "C20250113050253oTMK7",
+      "name": "수학 3-2(류희찬)_01_4_321_익힘평가상_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d8c20fe2-97d6-4b59-93e2-fa82c5458c00.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "126464",
+      "contentId": "C20250113050254j1RfU",
+      "name": "수학 3-2(류희찬)_01_4_321_익힘평가하_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/57899b94-7c38-479f-9796-c3721e48c469.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "174080",
+      "contentId": "C20250113050254QAFlC",
+      "name": "수학 3-2(류희찬)_01_4_321_익힘평가하_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/002a3cf8-bcaa-4b2f-8e99-8e6ed1a3529e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "95744",
+      "contentId": "C20250113050256bobd5",
+      "name": "수학 3-2(류희찬)_01_5_321_형성평가_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b8de97fc-1154-42c0-a044-35d6a8d2efa3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "60928",
+      "contentId": "C20250113050256i8e6H",
+      "name": "수학 3-2(류희찬)_01_5_321_형성평가_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/fe589bee-25ff-4f71-9f7a-47c35de1d9e6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3299619",
+      "contentId": "C20250813121823VhmxT",
+      "name": "수학 3-2(류희찬)_01_5_321_수학익힘유사 문제(기본)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813121823nclg.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1027032",
+      "contentId": "C20250813122818SChxv",
+      "name": "수학 3-2(류희찬)_01_5_321_수학익힘유사 문제(보충)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813122818wlfq.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1033177",
+      "contentId": "C202508131259527hVPu",
+      "name": "수학 3-2(류희찬)_01_5_321_수학익힘유사 문제(심화)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813125952j7q1.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "110080",
+      "contentId": "C20250113050253QtpVB",
+      "name": "수학 3-2(류희찬)_01_5_321_익힘평가상_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cf518fb6-b141-464d-9c4d-5e58a8c49511.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "101376",
+      "contentId": "C20250113050253m3W2m",
+      "name": "수학 3-2(류희찬)_01_5_321_익힘평가상_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e4efef54-2655-4ca8-bf19-911d56425c4f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "125952",
+      "contentId": "C20250113050254Cy6s4",
+      "name": "수학 3-2(류희찬)_01_5_321_익힘평가하_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a60592a0-ff5d-406c-b24d-f02daf769b0c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "183296",
+      "contentId": "C20250113050254OqpWu",
+      "name": "수학 3-2(류희찬)_01_5_321_익힘평가하_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9239dd23-8781-4c53-94e3-1a059292c312.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "94720",
+      "contentId": "C20250113050256B1tFa",
+      "name": "수학 3-2(류희찬)_01_6_321_형성평가_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c4d4eb3a-6a17-4ecf-af54-98fbdc240d98.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "59904",
+      "contentId": "C20250113050256b6vrS",
+      "name": "수학 3-2(류희찬)_01_6_321_형성평가_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d51597e7-fd43-4b29-86cb-442705512ee7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3148557",
+      "contentId": "C20250813121906eY8Mk",
+      "name": "수학 3-2(류희찬)_01_6_321_수학익힘유사 문제(기본)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813121906rFRu.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1036534",
+      "contentId": "C20250813123127cC08f",
+      "name": "수학 3-2(류희찬)_01_6_321_수학익힘유사 문제(보충)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813123127VK7L.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "951396",
+      "contentId": "C20250813010036fdQ3D",
+      "name": "수학 3-2(류희찬)_01_6_321_수학익힘유사 문제(심화)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813130036hlQc.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "162816",
+      "contentId": "C20250113050253Gma2A",
+      "name": "수학 3-2(류희찬)_01_6_321_익힘평가상_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6f9552a1-080e-4058-9d0b-ff318b3bb690.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "160768",
+      "contentId": "C20250113050253Ye9A5",
+      "name": "수학 3-2(류희찬)_01_6_321_익힘평가상_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2bdf0c93-4d99-4c0b-8b49-95d4a2cf15a8.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "115712",
+      "contentId": "C20250113050254LS4Cg",
+      "name": "수학 3-2(류희찬)_01_6_321_익힘평가하_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0cb31dd9-2122-4828-9fd4-d7196a96a672.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "111616",
+      "contentId": "C20250113050254hoebe",
+      "name": "수학 3-2(류희찬)_01_6_321_익힘평가하_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e8eb7289-0481-413d-8ebb-c9ea677e4f63.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "102912",
+      "contentId": "C20250113050256aYrZH",
+      "name": "수학 3-2(류희찬)_01_7_321_형성평가_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2352fd33-3e9b-44a7-a523-2c7829736e21.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "60928",
+      "contentId": "C20250113050256oUcsF",
+      "name": "수학 3-2(류희찬)_01_7_321_형성평가_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/42205fee-7139-48a6-bcb7-089aed05002d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3373645",
+      "contentId": "C20250813121951oiwmA",
+      "name": "수학 3-2(류희찬)_01_7_321_수학익힘유사 문제(기본)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813121951mQcb.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1080871",
+      "contentId": "C20250813123246Qtb7u",
+      "name": "수학 3-2(류희찬)_01_7_321_수학익힘유사 문제(보충)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813123246xC4U.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "171520",
+      "contentId": "C202501130502530wChh",
+      "name": "수학 3-2(류희찬)_01_7_321_익힘평가상_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4e9aee79-ad1a-4dba-9f8f-f0b62c7b12f6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "167424",
+      "contentId": "C20250113050254Nw5pc",
+      "name": "수학 3-2(류희찬)_01_7_321_익힘평가상_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c45ed821-be44-4d4e-8744-4c39cabe5340.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "120320",
+      "contentId": "C20250113050254ARnii",
+      "name": "수학 3-2(류희찬)_01_7_321_익힘평가하_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/22bcb682-6513-460b-ac84-9285b7245bad.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "115200",
+      "contentId": "C20250113050254JfBIm",
+      "name": "수학 3-2(류희찬)_01_7_321_익힘평가하_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c243d002-785a-4633-aa78-97dfb4dc7faf.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "157184",
+      "contentId": "C202501130502561nViV",
+      "name": "수학 3-2(류희찬)_01_8_321_형성평가_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/530d7ed6-2a4a-47b1-8bce-b2c0eaab2062.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "59904",
+      "contentId": "C20250113050256OnDGs",
+      "name": "수학 3-2(류희찬)_01_8_321_형성평가_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8edc143e-fb31-4c70-ae62-88e4c05f13a4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3097422",
+      "contentId": "C20250813122045J4aqR",
+      "name": "수학 3-2(류희찬)_01_8_321_수학익힘유사 문제(기본)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813122045uTMb.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1008614",
+      "contentId": "C20250813123351AkYYl",
+      "name": "수학 3-2(류희찬)_01_8_321_수학익힘유사 문제(보충)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813123351Zqon.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "954080",
+      "contentId": "C20250813010231D6lv0",
+      "name": "수학 3-2(류희찬)_01_8_321_수학익힘유사 문제(심화)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813130231gTNe.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "108032",
+      "contentId": "C20250113050254qWkJQ",
+      "name": "수학 3-2(류희찬)_01_8_321_익힘평가상_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/559ea714-173a-42e2-bd9d-e6d1b7f7fa96.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "106496",
+      "contentId": "C20250113050254a4iMv",
+      "name": "수학 3-2(류희찬)_01_8_321_익힘평가상_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4d3dc43f-4623-4049-91de-59d207985993.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "124416",
+      "contentId": "C20250113050254o73KH",
+      "name": "수학 3-2(류희찬)_01_8_321_익힘평가하_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/5d82f5d5-861e-498f-ab62-b59c97cf75c4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "117248",
+      "contentId": "C202501130502547ztUh",
+      "name": "수학 3-2(류희찬)_01_8_321_익힘평가하_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/72c85766-8a39-4bb8-a3d1-28d95909e63d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "5215744",
+      "contentId": "C20250113050257Beh4P",
+      "name": "수학 3-2(류희찬)_02_322_단원기본평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143920R4Ah.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "4157440",
+      "contentId": "C20250113050257xnyw1",
+      "name": "수학 3-2(류희찬)_02_322_단원보충평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143957sUV9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1765376",
+      "contentId": "C20250113050257dznnl",
+      "name": "수학 3-2(류희찬)_02_322_단원심화평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/394b37a6-114e-49b9-8b6b-2cc4121c99b0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3341312",
+      "contentId": "C20250113050258mftGB",
+      "name": "수학 3-2(류희찬)_02_322_단원심화평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/445641c8-39bb-42e1-9768-5fe9c5a0a73d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1058304",
+      "contentId": "C20250113050258QjkL0",
+      "name": "수학 3-2(류희찬)_02_322_서술형평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e5210cf0-a59e-405c-a5b1-11fb46eb0ca5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1005056",
+      "contentId": "C2025011305025882JAe",
+      "name": "수학 3-2(류희찬)_02_322_서술형평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f6c8b2b8-007f-49a8-89fd-f4e7cebe26fd.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "422912",
+      "contentId": "C20250113050259x7jra",
+      "name": "수학 3-2(류희찬)_02_322_수행평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3336ab97-3568-4c9a-bf89-04b411bab8af.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "462848",
+      "contentId": "C20250113050259kqKoJ",
+      "name": "수학 3-2(류희찬)_02_322_수행평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/081e691d-a4a9-4496-9100-3e62319a5f53.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2374144",
+      "contentId": "C20250113050259KlydG",
+      "name": "수학 3-2(류희찬)_02_322_수행평가_3_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/35e3510f-3024-4e38-bcea-44775005dd99.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "17288192",
+      "contentId": "C202606261009599g1kZ",
+      "name": "수학 3-2(류희찬)_02_322_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU2026062610095907nL.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "7104000",
+      "contentId": "C202606261023070mCjK",
+      "name": "수학 3-2(류희찬)_02_322_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626102307K9hv.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "5064704",
+      "contentId": "C20250113050257wzurs",
+      "name": "수학 3-2(류희찬)_02_322_단원기본평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903143937Ookk.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "4353024",
+      "contentId": "C20250113050257RS6Ec",
+      "name": "수학 3-2(류희찬)_02_322_단원보충평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903144016CAAG.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1793536",
+      "contentId": "C20250113050258ItRDj",
+      "name": "수학 3-2(류희찬)_02_322_단원심화평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/5646d914-c17c-4cdd-a1dc-7249b9f892fb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3302400",
+      "contentId": "C202501130502589Uxjb",
+      "name": "수학 3-2(류희찬)_02_322_단원심화평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e01a9795-95b7-478d-a4a6-0e0628b06630.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1129984",
+      "contentId": "C20250113050258r622g",
+      "name": "수학 3-2(류희찬)_02_322_서술형평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/395c5a28-f76a-4dda-acec-09c1531ff0bb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "988672",
+      "contentId": "C20250113050258HsuX2",
+      "name": "수학 3-2(류희찬)_02_322_서술형평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/bc143861-7e0a-4d09-a265-8a40c52f27cb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "233472",
+      "contentId": "C20250113050259GuezV",
+      "name": "수학 3-2(류희찬)_02_322_수행평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/95e63228-3b56-4427-9caa-070eede83051.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "203264",
+      "contentId": "C20250113050259Q2bz3",
+      "name": "수학 3-2(류희찬)_02_322_수행평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a9962710-2ec6-49f3-8591-d78d1b49dbe3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2107904",
+      "contentId": "C20250113050259MQLxZ",
+      "name": "수학 3-2(류희찬)_02_322_수행평가_3_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/399816b3-d49f-4824-b504-249dc199f5e8.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "549888",
+      "contentId": "C20250113050301XxbQ5",
+      "name": "수학 3-2(류희찬)_02_1_322_진단평가_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/51c5733a-3678-4896-a7d9-7d89a898f184.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "546816",
+      "contentId": "C20250113050301QlW4L",
+      "name": "수학 3-2(류희찬)_02_1_322_진단평가_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4efc972e-0bf9-4866-bf11-f450f159bf8e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "485888",
+      "contentId": "C20250113050301Pj7Aq",
+      "name": "수학 3-2(류희찬)_02_2_322_형성평가_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f2bd7364-8416-40b5-8b5d-09ce5ef94e15.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "346624",
+      "contentId": "C20250113050301KCm4K",
+      "name": "수학 3-2(류희찬)_02_2_322_형성평가_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d6222845-fe17-4165-a2b2-bb32961c396c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3164935",
+      "contentId": "C20250813015157gbbcR",
+      "name": "수학 3-2(류희찬)_02_2_322_수학익힘유사 문제(기본)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135353SO32.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "705378",
+      "contentId": "C20250813015720OIUPr",
+      "name": "수학 3-2(류희찬)_02_2_322_수학익힘유사 문제(보충)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135720IzUK.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "582150",
+      "contentId": "C20250813020845KPjci",
+      "name": "수학 3-2(류희찬)_02_2_322_수학익힘유사 문제(심화)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131408452NrD.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1324218",
+      "contentId": "C20250813021521DBmLl",
+      "name": "수학 3-2(류희찬)_02_2_322_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813141521Z5Ju.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1050624",
+      "contentId": "C20250113050259J2hre",
+      "name": "수학 3-2(류희찬)_02_2_322_익힘평가상_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/72c850a8-1d4b-4b60-9fa7-e74cf7287f7a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1157632",
+      "contentId": "C20250113050259YlCp5",
+      "name": "수학 3-2(류희찬)_02_2_322_익힘평가상_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cc7f98b3-4395-4ff3-9d8b-229908fbdfbb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "444416",
+      "contentId": "C20250113050300udf8c",
+      "name": "수학 3-2(류희찬)_02_2_322_익힘평가하_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0e9c1ed1-108f-4a4c-9008-3658dfac12c9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "472576",
+      "contentId": "C202501130503004pT6z",
+      "name": "수학 3-2(류희찬)_02_2_322_익힘평가하_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0a076fc4-05c8-47a8-b4ec-52cc7f455df4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "644096",
+      "contentId": "C20250113050301oIwsR",
+      "name": "수학 3-2(류희찬)_02_3_322_형성평가_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e10aad79-5fdb-4c0b-9c90-a99c1288e60f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "635904",
+      "contentId": "C202501130503012YBhi",
+      "name": "수학 3-2(류희찬)_02_3_322_형성평가_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8221c2dd-301c-49f1-a639-559f70cab721.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3360356",
+      "contentId": "C20250813015342mhcFS",
+      "name": "수학 3-2(류희찬)_02_3_322_수학익힘유사 문제(기본)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135342xMK9.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1065958",
+      "contentId": "C202508130158304ZDmc",
+      "name": "수학 3-2(류희찬)_02_3_322_수학익힘유사 문제(보충)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135830YtCH.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "990147",
+      "contentId": "C20250813021246iQ7Gj",
+      "name": "수학 3-2(류희찬)_02_3_322_수학익힘유사 문제(심화)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813141246fAHG.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "325632",
+      "contentId": "C20250113050259OMQv6",
+      "name": "수학 3-2(류희찬)_02_3_322_익힘평가상_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/27cac90e-9704-4f1a-9f34-f65eca6573ee.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "317440",
+      "contentId": "C20250113050259eMacn",
+      "name": "수학 3-2(류희찬)_02_3_322_익힘평가상_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/130f1037-4431-49f2-8609-d0c6fab8b8e4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "499200",
+      "contentId": "C20250113050300HyK4g",
+      "name": "수학 3-2(류희찬)_02_3_322_익힘평가하_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/caee71e1-1c5f-4285-894a-d245d1d5967d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "558592",
+      "contentId": "C20250113050300pIgXO",
+      "name": "수학 3-2(류희찬)_02_3_322_익힘평가하_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/1c750643-f866-4192-aadd-0c422e7aef53.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1759744",
+      "contentId": "C202501130503019uTt5",
+      "name": "수학 3-2(류희찬)_02_4_322_형성평가_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cfb1bb2b-11e5-4fb3-a867-c309f3601154.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1590272",
+      "contentId": "C20250113050301ccHI4",
+      "name": "수학 3-2(류희찬)_02_4_322_형성평가_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8e7df2cf-debe-48e8-bf46-28f0bf38ddbf.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3492505",
+      "contentId": "C20250813015510ZIaM8",
+      "name": "수학 3-2(류희찬)_02_4_322_수학익힘유사 문제(기본)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135510mGYC.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1052668",
+      "contentId": "C202508130159310crZU",
+      "name": "수학 3-2(류희찬)_02_4_322_수학익힘유사 문제(보충)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135931znc8.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1021935",
+      "contentId": "C20250813021344CjhLz",
+      "name": "수학 3-2(류희찬)_02_4_322_수학익힘유사 문제(심화)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131413441KIn.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1509888",
+      "contentId": "C202501130502597af9E",
+      "name": "수학 3-2(류희찬)_02_4_322_익힘평가상_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b2d64ddb-7fa4-4653-bf8d-c181b5465c18.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1495040",
+      "contentId": "C202501130502594jczo",
+      "name": "수학 3-2(류희찬)_02_4_322_익힘평가상_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/86d3b4d7-29b3-4300-b682-9712c77b29e4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "265728",
+      "contentId": "C202501130503008nMtO",
+      "name": "수학 3-2(류희찬)_02_4_322_익힘평가하_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/fdc5914f-70a0-479f-bc82-d72a30e8476b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "267776",
+      "contentId": "C20250113050300GM9Hm",
+      "name": "수학 3-2(류희찬)_02_4_322_익힘평가하_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8848e763-3b55-485c-a06e-68bba84d8de5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2368512",
+      "contentId": "C20250113050302SCz72",
+      "name": "수학 3-2(류희찬)_02_5_322_형성평가_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/bb6e232d-317f-4a7a-868d-f4c9c974927b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2180608",
+      "contentId": "C20250113050302j95Sq",
+      "name": "수학 3-2(류희찬)_02_5_322_형성평가_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b36daa03-3a32-4331-9d9e-48646ab23319.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "4059980",
+      "contentId": "C20250813015629X9VxN",
+      "name": "수학 3-2(류희찬)_02_5_322_수학익힘유사 문제(기본)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813135629h1LD.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "585161",
+      "contentId": "C20250813020010vsnNY",
+      "name": "수학 3-2(류희찬)_02_5_322_수학익힘유사 문제(보충)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813140010JFoF.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "585216",
+      "contentId": "C20250813021433fGT4X",
+      "name": "수학 3-2(류희찬)_02_5_322_수학익힘유사 문제(심화)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131414336nkt.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1881088",
+      "contentId": "C20250113050300VyUM1",
+      "name": "수학 3-2(류희찬)_02_5_322_익힘평가상_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4e052d0a-717b-4e93-b1d5-d943c28b5312.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1989120",
+      "contentId": "C20250113050300P89ci",
+      "name": "수학 3-2(류희찬)_02_5_322_익힘평가상_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c13d3020-e038-4e73-b782-8c5e722479cf.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2126336",
+      "contentId": "C20250113050300RKVNj",
+      "name": "수학 3-2(류희찬)_02_5_322_익힘평가하_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f04aaa38-5f6d-432e-8cee-e835eb355135.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2138112",
+      "contentId": "C20250113050300O8twJ",
+      "name": "수학 3-2(류희찬)_02_5_322_익힘평가하_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ebb4e8df-2040-44b9-9e01-fecd075b3919.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "398848",
+      "contentId": "C20250113050303juCpE",
+      "name": "수학 3-2(류희찬)_03_323_단원기본평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903144046AmfD.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "702464",
+      "contentId": "C20250113050303MBoCL",
+      "name": "수학 3-2(류희찬)_03_323_단원보충평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU202609031441164nXS.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "621056",
+      "contentId": "C20250113050303G0oqN",
+      "name": "수학 3-2(류희찬)_03_323_단원심화평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9f3d308b-1d86-4368-b40e-4b0714543eb4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "157696",
+      "contentId": "C20250113050303B1EzV",
+      "name": "수학 3-2(류희찬)_03_323_단원심화평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4898a077-a5fe-4dd4-9767-f9d8f5f609ba.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "146432",
+      "contentId": "C202501130503034XRJm",
+      "name": "수학 3-2(류희찬)_03_323_서술형평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/5e108e1a-a97a-431a-93f1-0e0d8da56e62.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "537600",
+      "contentId": "C20250113050303LO6G5",
+      "name": "수학 3-2(류희찬)_03_323_서술형평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e5686755-99a9-455c-87fe-82856672e133.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "103424",
+      "contentId": "C202501130503057Ag1t",
+      "name": "수학 3-2(류희찬)_03_323_수행평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f0e4db37-6a68-4b46-826c-cbea604af600.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "95232",
+      "contentId": "C20250113050305A7FIL",
+      "name": "수학 3-2(류희찬)_03_323_수행평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ef6dccee-6bad-45b9-a1b8-98d1b0873fa9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "103936",
+      "contentId": "C20250113050305IMe4k",
+      "name": "수학 3-2(류희찬)_03_323_수행평가_3_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/990d7a4f-6c1d-4270-b298-e2af390c4214.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "15410688",
+      "contentId": "C20260626101137HENqn",
+      "name": "수학 3-2(류희찬)_03_323_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626101137UaYy.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "4739072",
+      "contentId": "C20260626102332O39lz",
+      "name": "수학 3-2(류희찬)_03_323_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU202606261023329Ucf.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "384512",
+      "contentId": "C20250113050303EymDk",
+      "name": "수학 3-2(류희찬)_03_323_단원기본평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903144103xojw.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "693248",
+      "contentId": "C202501130503035VhE9",
+      "name": "수학 3-2(류희찬)_03_323_단원보충평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260903144126Q1NG.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "612352",
+      "contentId": "C202501130503035dIC9",
+      "name": "수학 3-2(류희찬)_03_323_단원심화평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d1648182-4c31-4611-94a8-364d17abe4ea.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "83968",
+      "contentId": "C20250113050303gOUZo",
+      "name": "수학 3-2(류희찬)_03_323_단원심화평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3fefcb36-e671-4844-8047-bd74c12fcbc7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "79360",
+      "contentId": "C20250113050303yJrxo",
+      "name": "수학 3-2(류희찬)_03_323_서술형평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/62026ef3-4a8b-45a2-933b-50fbf4e1575d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "524800",
+      "contentId": "C20250113050303L4q09",
+      "name": "수학 3-2(류희찬)_03_323_서술형평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8735bb26-d473-4ad8-a1eb-1d515ea68013.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "90112",
+      "contentId": "C20250113050305akJNG",
+      "name": "수학 3-2(류희찬)_03_323_수행평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/71028910-bdb1-4c37-b57b-95717ff76d2c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "89088",
+      "contentId": "C20250113050305pFpt6",
+      "name": "수학 3-2(류희찬)_03_323_수행평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/17b5d86c-8f5d-4a16-8641-d5378ab2bcc7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "55808",
+      "contentId": "C20250113050305qAFX6",
+      "name": "수학 3-2(류희찬)_03_323_수행평가_3_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8010139e-2211-4d5c-9fbb-881fae04df40.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "129536",
+      "contentId": "C202501130503079q9oL",
+      "name": "수학 3-2(류희찬)_03_1_323_진단평가_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c24360f5-87d9-4923-a644-bd57a65213a4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "124928",
+      "contentId": "C20250113050307T8vx8",
+      "name": "수학 3-2(류희찬)_03_1_323_진단평가_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e7aa2c27-f15d-4c30-9021-134cf888c3bf.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "95744",
+      "contentId": "C20250113050307YRBVp",
+      "name": "수학 3-2(류희찬)_03_2_323_형성평가_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4aeb89ac-4ff7-4e42-bf59-07f8068e09f1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "91648",
+      "contentId": "C20250113050307HL9fH",
+      "name": "수학 3-2(류희찬)_03_2_323_형성평가_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/1509ded6-8363-4cb3-a78e-8fcb20bf95d4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3244883",
+      "contentId": "C20250813022930xScF3",
+      "name": "수학 3-2(류희찬)_03_2_323_수학익힘유사 문제(기본)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813142930t5xm.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "722663",
+      "contentId": "C20250813024016m8mRK",
+      "name": "수학 3-2(류희찬)_03_2_323_수학익힘유사 문제(보충)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144016FUfS.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2949968",
+      "contentId": "C202508140807400hf4B",
+      "name": "수학 3-2(류희찬)_03_2_323_수학익힘유사 문제(심화)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814080740k9TM.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "688553",
+      "contentId": "C20250814083404Kf1if",
+      "name": "수학 3-2(류희찬)_03_2_323_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814083404G9Gu.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "244224",
+      "contentId": "C20250113050305fTS3y",
+      "name": "수학 3-2(류희찬)_03_2_323_익힘평가상_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0faa5511-3420-4da1-a6b8-7f4832ea53a1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "238592",
+      "contentId": "C202501130503053cLaQ",
+      "name": "수학 3-2(류희찬)_03_2_323_익힘평가상_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/25bda80a-7a31-4467-9e9a-deca34df64d3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "361984",
+      "contentId": "C2025011305030535Cte",
+      "name": "수학 3-2(류희찬)_03_2_323_익힘평가하_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2f8c9f96-c877-46f2-8f73-6974d86348e2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "366080",
+      "contentId": "C202501130503057C3kW",
+      "name": "수학 3-2(류희찬)_03_2_323_익힘평가하_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/bf696337-d92b-4fa5-a933-52e8dd62b18e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "146944",
+      "contentId": "C20250113050307HyJUk",
+      "name": "수학 3-2(류희찬)_03_3_323_형성평가_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9a44dce5-5ce7-4aa9-99ff-d2f87f19d1a9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "96768",
+      "contentId": "C20250113050307HI0GF",
+      "name": "수학 3-2(류희찬)_03_3_323_형성평가_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/04ce1834-7fa6-445d-87e0-e3962c915fe1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3307117",
+      "contentId": "C20250813023042gumiy",
+      "name": "수학 3-2(류희찬)_03_3_323_수학익힘유사 문제(기본)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813143242l41C.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1040951",
+      "contentId": "C20250813024055mPSqJ",
+      "name": "수학 3-2(류희찬)_03_3_323_수학익힘유사 문제(보충)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144055fVVR.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "961092",
+      "contentId": "C20250814081504wUuvU",
+      "name": "수학 3-2(류희찬)_03_3_323_수학익힘유사 문제(심화)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814081504Yco8.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "244736",
+      "contentId": "C20250113050305thCMa",
+      "name": "수학 3-2(류희찬)_03_3_323_익힘평가상_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e8a79622-3fab-4430-982e-2061e98fa760.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "238592",
+      "contentId": "C20250113050305XbHxu",
+      "name": "수학 3-2(류희찬)_03_3_323_익힘평가상_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e80bec43-f865-4337-a8be-39f234968077.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "297984",
+      "contentId": "C202501130503061KxQU",
+      "name": "수학 3-2(류희찬)_03_3_323_익힘평가하_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a730cb58-bee0-4005-ad1d-db7d6402ce08.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "295424",
+      "contentId": "C20250113050306peWEe",
+      "name": "수학 3-2(류희찬)_03_3_323_익힘평가하_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4a5d63d4-1cbc-43a8-830b-53c402590b3e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "154112",
+      "contentId": "C20250113050307h0ZE4",
+      "name": "수학 3-2(류희찬)_03_4_323_형성평가_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/eab563dc-51e7-4a9e-991c-af98ca63a366.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "98304",
+      "contentId": "C20250113050307PwFVf",
+      "name": "수학 3-2(류희찬)_03_4_323_형성평가_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4c046a85-4a80-4312-bbfc-a072e8ba09c7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3201308",
+      "contentId": "C20250813023443U3Mew",
+      "name": "수학 3-2(류희찬)_03_4_323_수학익힘유사 문제(기본)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131434435Rom.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1042436",
+      "contentId": "C20250813024136k6GEk",
+      "name": "수학 3-2(류희찬)_03_4_323_수학익힘유사 문제(보충)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144136OlNK.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "945295",
+      "contentId": "C20250814081713zStXI",
+      "name": "수학 3-2(류희찬)_03_4_323_수학익힘유사 문제(심화)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814081713J1Q6.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "150528",
+      "contentId": "C20250113050305Euy6d",
+      "name": "수학 3-2(류희찬)_03_4_323_익힘평가상_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0e8a7db4-a921-4716-9db1-a36709b242c9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "96768",
+      "contentId": "C20250113050305tIOx0",
+      "name": "수학 3-2(류희찬)_03_4_323_익힘평가상_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/877aaf7a-7f9a-42ad-8df9-4e6d910468cb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "438784",
+      "contentId": "C20250113050306VRDsv",
+      "name": "수학 3-2(류희찬)_03_4_323_익힘평가하_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/27daf126-a6c7-4872-8d77-e4371f57d18e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "433152",
+      "contentId": "C20250113050306gkk0F",
+      "name": "수학 3-2(류희찬)_03_4_323_익힘평가하_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0eac7993-9ec8-40a6-8389-a3bdf949287a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "100352",
+      "contentId": "C20250113050307tr0Bm",
+      "name": "수학 3-2(류희찬)_03_5_323_형성평가_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/505faf4b-e58b-44b7-81a5-e8ef1cfe9fa5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "98304",
+      "contentId": "C2025011305030776MLq",
+      "name": "수학 3-2(류희찬)_03_5_323_형성평가_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0e75e10e-22a6-4e8a-97fe-51c6daf6e261.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3079229",
+      "contentId": "C20250813023546f6Vd7",
+      "name": "수학 3-2(류희찬)_03_5_323_수학익힘유사 문제(기본)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131435467X16.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1029154",
+      "contentId": "C20250813024217pAZtY",
+      "name": "수학 3-2(류희찬)_03_5_323_수학익힘유사 문제(보충)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144217nhk2.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "950456",
+      "contentId": "C20250814082944qzGrl",
+      "name": "수학 3-2(류희찬)_03_5_323_수학익힘유사 문제(심화)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814082944ESYn.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "163840",
+      "contentId": "C202501130503056JDzi",
+      "name": "수학 3-2(류희찬)_03_5_323_익힘평가상_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/50025aa4-d8d0-4046-bb73-273ee43a4db8.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "105984",
+      "contentId": "C20250113050305jzV4V",
+      "name": "수학 3-2(류희찬)_03_5_323_익힘평가상_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8c20748e-af93-4d0c-b73b-ed3fafb7dc00.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "293376",
+      "contentId": "C20250113050306cucnD",
+      "name": "수학 3-2(류희찬)_03_5_323_익힘평가하_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/93ff2842-bfe8-4430-bc5e-50e05aa52c99.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "289280",
+      "contentId": "C20250113050306KRhUX",
+      "name": "수학 3-2(류희찬)_03_5_323_익힘평가하_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/171dee4d-92e3-4a5b-a7f5-c153b5d24219.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "153088",
+      "contentId": "C20250113050307xy6ms",
+      "name": "수학 3-2(류희찬)_03_6_323_형성평가_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/296e4a16-7e10-4512-98e8-f77c540c23b3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "91136",
+      "contentId": "C202501130503078iEI4",
+      "name": "수학 3-2(류희찬)_03_6_323_형성평가_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/61fb240a-be60-4dd1-a51c-c5daf4fde31a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3195313",
+      "contentId": "C20250813023705EucXE",
+      "name": "수학 3-2(류희찬)_03_6_323_수학익힘유사 문제(기본)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813143705dEsx.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1015029",
+      "contentId": "C20250813024319XuEwD",
+      "name": "수학 3-2(류희찬)_03_6_323_수학익힘유사 문제(보충)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144319P6v5.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1016204",
+      "contentId": "C20250814083036GQeK8",
+      "name": "수학 3-2(류희찬)_03_6_323_수학익힘유사 문제(심화)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814083036iNGs.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "112640",
+      "contentId": "C20250113050305GdJQf",
+      "name": "수학 3-2(류희찬)_03_6_323_익힘평가상_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/00b0e215-4bd0-4442-9758-f52b6d26794a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "104960",
+      "contentId": "C20250113050305gB1DI",
+      "name": "수학 3-2(류희찬)_03_6_323_익힘평가상_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0478dddd-09a9-4683-a3e6-b38c47807857.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "380416",
+      "contentId": "C20250113050306z4d34",
+      "name": "수학 3-2(류희찬)_03_6_323_익힘평가하_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/90cee983-fda8-403f-ba00-c965ade819d4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "372736",
+      "contentId": "C20250113050306zRfPI",
+      "name": "수학 3-2(류희찬)_03_6_323_익힘평가하_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/fd1bfb56-47b4-4117-ad4b-cf7adc4ee81e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "244224",
+      "contentId": "C20250113050307OUfqz",
+      "name": "수학 3-2(류희찬)_03_7_323_형성평가_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/edb7cd53-22e8-474f-bcc5-37d0ff905f0f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "198144",
+      "contentId": "C20250113050307a0kje",
+      "name": "수학 3-2(류희찬)_03_7_323_형성평가_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8dd35498-4389-420d-a052-fe4d42864ff0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3228446",
+      "contentId": "C20250813023757Pdb5B",
+      "name": "수학 3-2(류희찬)_03_7_323_수학익힘유사 문제(기본)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508131437575YvZ.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1011650",
+      "contentId": "C20250813024407Cw9vv",
+      "name": "수학 3-2(류희찬)_03_7_323_수학익힘유사 문제(보충)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU2025081314440785gA.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1007789",
+      "contentId": "C20250814083113FslRM",
+      "name": "수학 3-2(류희찬)_03_7_323_수학익힘유사 문제(심화)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814083113Evne.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "163840",
+      "contentId": "C20250113050305tPthu",
+      "name": "수학 3-2(류희찬)_03_7_323_익힘평가상_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9ff730a8-da8a-47e7-8494-dbec18066dea.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "106496",
+      "contentId": "C20250113050305uAtIl",
+      "name": "수학 3-2(류희찬)_03_7_323_익힘평가상_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6fc84c67-1037-48bd-83ea-095eef37e181.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "177152",
+      "contentId": "C20250113050306Ohfaj",
+      "name": "수학 3-2(류희찬)_03_7_323_익힘평가하_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/607b7e4f-0911-472f-b431-2c1d492983fb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "117760",
+      "contentId": "C20250113050306XyZdp",
+      "name": "수학 3-2(류희찬)_03_7_323_익힘평가하_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/15e59c7f-a9a0-4737-87a2-87d53dfdbcd4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "103936",
+      "contentId": "C20250113050307dsTYX",
+      "name": "수학 3-2(류희찬)_03_8_323_형성평가_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a9d51079-c248-4856-aee7-4476c589e01e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "64512",
+      "contentId": "C20250113050307ydNdm",
+      "name": "수학 3-2(류희찬)_03_8_323_형성평가_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/192f7620-dc28-415d-aae1-dbd900411c9e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3097313",
+      "contentId": "C20250813023833AI02p",
+      "name": "수학 3-2(류희찬)_03_8_323_수학익힘유사 문제(기본)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813143833olly.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "927847",
+      "contentId": "C202508130244529zMfF",
+      "name": "수학 3-2(류희찬)_03_8_323_수학익힘유사 문제(보충)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144452hTWZ.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1011338",
+      "contentId": "C20250814083154xtJLy",
+      "name": "수학 3-2(류희찬)_03_8_323_수학익힘유사 문제(심화)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814083154UXut.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "114176",
+      "contentId": "C20250113050305jjRTh",
+      "name": "수학 3-2(류희찬)_03_8_323_익힘평가상_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/94c17f1d-248e-41ee-8c21-48cfd99202e3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "102400",
+      "contentId": "C20250113050305nYViT",
+      "name": "수학 3-2(류희찬)_03_8_323_익힘평가상_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/efc73796-5a5c-4155-b264-0809fd4e25d2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "172032",
+      "contentId": "C202501130503067tWAF",
+      "name": "수학 3-2(류희찬)_03_8_323_익힘평가하_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0bab715c-55ce-42aa-96f4-33cb0d03ca7e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "172032",
+      "contentId": "C202501130503069sdFG",
+      "name": "수학 3-2(류희찬)_03_8_323_익힘평가하_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3c69d9c6-a155-43fd-8d31-e854e38337f3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "115200",
+      "contentId": "C202501130503070Awu6",
+      "name": "수학 3-2(류희찬)_03_9_323_형성평가_09_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d170dea6-f47d-4202-8423-67d18f210682.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "67072",
+      "contentId": "C2025011305030736t9n",
+      "name": "수학 3-2(류희찬)_03_9_323_형성평가_09_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/72949905-127a-42be-af5e-a2fc7d788ee1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3163063",
+      "contentId": "C20250813023915VToj1",
+      "name": "수학 3-2(류희찬)_03_9_323_수학익힘유사 문제(기본)_09",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813143915gX71.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1005914",
+      "contentId": "C20250813024530Oy23I",
+      "name": "수학 3-2(류희찬)_03_9_323_수학익힘유사 문제(보충)_09",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250813144530VNSK.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1007271",
+      "contentId": "C20250814083310ZUFta",
+      "name": "수학 3-2(류희찬)_03_9_323_수학익힘유사 문제(심화)_09",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140833106F3a.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "111616",
+      "contentId": "C20250113050305Zxd9N",
+      "name": "수학 3-2(류희찬)_03_9_323_익힘평가상_09_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9fef17ab-ccf5-4e3c-8fc4-75902f0235b0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "107008",
+      "contentId": "C20250113050305BXXno",
+      "name": "수학 3-2(류희찬)_03_9_323_익힘평가상_09_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/295266be-8872-4b5c-884a-2a635fba90e2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "124416",
+      "contentId": "C20250113050306BBI1Q",
+      "name": "수학 3-2(류희찬)_03_9_323_익힘평가하_09_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b5fc49b5-fc73-483d-88f1-5333a72558dc.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "116224",
+      "contentId": "C20250113050306Szqaz",
+      "name": "수학 3-2(류희찬)_03_9_323_익힘평가하_09_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8c765877-0b64-4f6a-a3bc-c368b04289c3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1181696",
+      "contentId": "C20250113050308KFwj8",
+      "name": "수학 3-2(류희찬)_04_324_단원기본평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/dc39a5cd-8d09-47a8-ae18-7a029a9a8f68.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "832512",
+      "contentId": "C20250113050308MkVJK",
+      "name": "수학 3-2(류희찬)_04_324_단원기본평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/464d2bb6-0783-4fc0-b8c3-c506532723f1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1101312",
+      "contentId": "C20250113050309CsO0S",
+      "name": "수학 3-2(류희찬)_04_324_단원보충평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/43160f33-6860-4f85-965d-85cc4a42836b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1567232",
+      "contentId": "C20250113050309WOVyR",
+      "name": "수학 3-2(류희찬)_04_324_단원보충평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/46960818-9b3f-4999-9e03-e63c12f6c9ad.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "208896",
+      "contentId": "C20250113050309LLIqp",
+      "name": "수학 3-2(류희찬)_04_324_단원심화평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b51c086c-072c-4f9b-9523-a5e2ef7a3a4d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "228352",
+      "contentId": "C20250113050309LlH8r",
+      "name": "수학 3-2(류희찬)_04_324_단원심화평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/35fbbe9b-72a2-4fc2-9cd2-f83907ebb65b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "548352",
+      "contentId": "C20250113050309zORpD",
+      "name": "수학 3-2(류희찬)_04_324_서술형평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8efdb284-406c-49cd-95fb-7149a487f9e5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "181248",
+      "contentId": "C20250113050309t7Av8",
+      "name": "수학 3-2(류희찬)_04_324_서술형평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4cb77a24-0036-4fbf-8707-d8f61fbc124d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "657408",
+      "contentId": "C20250113050310Na62g",
+      "name": "수학 3-2(류희찬)_04_324_수행평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b4c57b0c-7a00-4acf-84bc-6ce9f2dc1cd7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "102400",
+      "contentId": "C20250113050310KrXA4",
+      "name": "수학 3-2(류희찬)_04_324_수행평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/89b369f7-f3c3-4841-b953-16344e37374c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "302080",
+      "contentId": "C20250113050310sm6Fa",
+      "name": "수학 3-2(류희찬)_04_324_수행평가_3_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c84c353b-00cd-427a-9502-5d9ce7d798b7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "13923328",
+      "contentId": "C2026062610121577XZx",
+      "name": "수학 3-2(류희찬)_04_324_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626101215M9Kw.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "4992000",
+      "contentId": "C20260626102403prpDV",
+      "name": "수학 3-2(류희찬)_04_324_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626102403tW4q.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1167360",
+      "contentId": "C2025011305030869W91",
+      "name": "수학 3-2(류희찬)_04_324_단원기본평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4d09351f-4c05-4908-bd2e-322a2af70c35.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "876032",
+      "contentId": "C20250113050309yNSMn",
+      "name": "수학 3-2(류희찬)_04_324_단원기본평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3102a8dd-98d0-4ea9-8424-8a5876effb8b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1089024",
+      "contentId": "C20250113050309l4OyL",
+      "name": "수학 3-2(류희찬)_04_324_단원보충평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4ac38403-2974-40a8-9627-8d4a23b15f1a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1556992",
+      "contentId": "C20250113050309IrWNu",
+      "name": "수학 3-2(류희찬)_04_324_단원보충평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e4d85040-9337-47ea-9d8c-acfb5d62155e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "235008",
+      "contentId": "C20250113050309qQx0Q",
+      "name": "수학 3-2(류희찬)_04_324_단원심화평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4c90fd22-36a4-491c-b13c-8d6c36d17121.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "142848",
+      "contentId": "C20250113050309Ko6qB",
+      "name": "수학 3-2(류희찬)_04_324_단원심화평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b888ae50-35d7-4070-b2e5-95e04ec5479a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "531968",
+      "contentId": "C20250113050309KKck4",
+      "name": "수학 3-2(류희찬)_04_324_서술형평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/36a37ca9-499c-4b3e-85c2-baf906e30954.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "167936",
+      "contentId": "C20250113050309D9JKV",
+      "name": "수학 3-2(류희찬)_04_324_서술형평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/33ef9eed-2457-4be0-8dce-96dfa21fa6e4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "651776",
+      "contentId": "C202501130503103oRIJ",
+      "name": "수학 3-2(류희찬)_04_324_수행평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/db1bd763-d8a1-47da-86b3-5f7b60df7c2d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "96768",
+      "contentId": "C20250113050310DWPCb",
+      "name": "수학 3-2(류희찬)_04_324_수행평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/03c1dc50-8185-4df5-9dd2-6ff9e6f01a74.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "235520",
+      "contentId": "C20250113050310MQ2sx",
+      "name": "수학 3-2(류희찬)_04_324_수행평가_3_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/1679a201-3263-4a59-bb67-48dc6d234a01.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "884736",
+      "contentId": "C20250113050312bUW5z",
+      "name": "수학 3-2(류희찬)_04_1_324_진단평가_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/eab7029e-285d-42a7-a94a-ee14ab12940a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "772608",
+      "contentId": "C20250113050312w1SB4",
+      "name": "수학 3-2(류희찬)_04_1_324_진단평가_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/30f77e34-a533-45b2-9776-ea11e0a195ee.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1089024",
+      "contentId": "C20250113050312o1DwH",
+      "name": "수학 3-2(류희찬)_04_2_324_형성평가_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b375425b-b47b-4f48-b5af-fe09d847d39c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1077248",
+      "contentId": "C20250113050312hBJib",
+      "name": "수학 3-2(류희찬)_04_2_324_형성평가_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cd8db550-b8f4-4dd9-ba42-af7899fca78e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3475283",
+      "contentId": "C20250814084258RRpL2",
+      "name": "수학 3-2(류희찬)_04_2_324_수학익힘유사 문제(기본)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814084258lqT3.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1125056",
+      "contentId": "C20250814084734STwU9",
+      "name": "수학 3-2(류희찬)_04_2_324_수학익힘유사 문제(보충)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814084734aS5T.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1099156",
+      "contentId": "C20250814085139fzZJ8",
+      "name": "수학 3-2(류희찬)_04_2_324_수학익힘유사 문제(심화)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085139WCRk.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "924754",
+      "contentId": "C20250814100832j72FG",
+      "name": "수학 3-2(류희찬)_04_2_324_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814100832CotC.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "383488",
+      "contentId": "C20250113050310hXpdR",
+      "name": "수학 3-2(류희찬)_04_2_324_익힘평가상_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/47362461-59e8-4d92-aa12-0426ea2c51af.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "373760",
+      "contentId": "C20250113050310sV1Ja",
+      "name": "수학 3-2(류희찬)_04_2_324_익힘평가상_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/97130831-363e-47ae-931b-34bdbc629515.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1068544",
+      "contentId": "C202501130503105wYsX",
+      "name": "수학 3-2(류희찬)_04_2_324_익힘평가하_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2657ce94-ae8a-4b25-9d98-fb8d32f8ba4b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1100288",
+      "contentId": "C20250113050310CAzmJ",
+      "name": "수학 3-2(류희찬)_04_2_324_익힘평가하_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4da58a91-45fd-4e90-9c2f-a89871777405.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1189376",
+      "contentId": "C20250113050312z4upe",
+      "name": "수학 3-2(류희찬)_04_3_324_형성평가_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c37bdd85-a298-4b18-afc7-c8b4614fb283.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1236480",
+      "contentId": "C20250113050312KXnKT",
+      "name": "수학 3-2(류희찬)_04_3_324_형성평가_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2eaff97c-71a6-42fd-a925-0092338e2b8e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3605267",
+      "contentId": "C20250814084446G0tBd",
+      "name": "수학 3-2(류희찬)_04_3_324_수학익힘유사 문제(기본)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140844467fe3.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1091348",
+      "contentId": "C20250814084811lvX0E",
+      "name": "수학 3-2(류희찬)_04_3_324_수학익힘유사 문제(보충)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814084811sZeC.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1109046",
+      "contentId": "C20250814085221wqoBs",
+      "name": "수학 3-2(류희찬)_04_3_324_수학익힘유사 문제(심화)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085221IH4e.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "305664",
+      "contentId": "C20250113050310SJ7fU",
+      "name": "수학 3-2(류희찬)_04_3_324_익힘평가상_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9c65230c-8087-4df1-9741-32281315478b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "287744",
+      "contentId": "C20250113050310XtQeI",
+      "name": "수학 3-2(류희찬)_04_3_324_익힘평가상_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f57e17dc-9b53-4494-9bc5-81a530421471.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "839680",
+      "contentId": "C20250113050311DVg3m",
+      "name": "수학 3-2(류희찬)_04_3_324_익힘평가하_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/76eac8db-4370-446d-bdfc-6c8c0e398a6a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "831488",
+      "contentId": "C20250113050311o6cUC",
+      "name": "수학 3-2(류희찬)_04_3_324_익힘평가하_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b3d41694-51db-4827-9416-f5f92a661ff7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "294400",
+      "contentId": "C20250113050312OAJq4",
+      "name": "수학 3-2(류희찬)_04_4_324_형성평가_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/37835378-7134-4bec-b3f9-37d1e857d4fb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "548864",
+      "contentId": "C20250113050312cDJzD",
+      "name": "수학 3-2(류희찬)_04_4_324_형성평가_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/82fb8e85-1982-44d9-bc5f-e7e8292cd967.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3086353",
+      "contentId": "C20250814084409me8gx",
+      "name": "수학 3-2(류희찬)_04_4_324_수학익힘유사 문제(기본)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814101810rAdp.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "960141",
+      "contentId": "C20250814084849Tfx4R",
+      "name": "수학 3-2(류희찬)_04_4_324_수학익힘유사 문제(보충)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140848496zk7.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "967480",
+      "contentId": "C20250814085302UMQdJ",
+      "name": "수학 3-2(류희찬)_04_4_324_수학익힘유사 문제(심화)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085302Sib6.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "313856",
+      "contentId": "C202501130503100FNwR",
+      "name": "수학 3-2(류희찬)_04_4_324_익힘평가상_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e50c718a-e2c1-4918-9528-70c02fd565e3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "302592",
+      "contentId": "C20250113050310E9ItF",
+      "name": "수학 3-2(류희찬)_04_4_324_익힘평가상_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cd239009-de09-4535-93fa-1e82df6df61c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "239616",
+      "contentId": "C20250113050311m67GG",
+      "name": "수학 3-2(류희찬)_04_4_324_익힘평가하_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ad7a7c6a-f4b4-4ca7-87ad-f50d0ae2b105.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "227840",
+      "contentId": "C20250113050311EKCGq",
+      "name": "수학 3-2(류희찬)_04_4_324_익힘평가하_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/075daa1f-904e-4d8b-9277-1d60b26ac490.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "264704",
+      "contentId": "C20250113050312k9u7A",
+      "name": "수학 3-2(류희찬)_04_5_324_형성평가_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8b2390d8-e5e3-40e3-bdec-5feb3777a300.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "258048",
+      "contentId": "C20250113050312o2Dtd",
+      "name": "수학 3-2(류희찬)_04_5_324_형성평가_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cd7d0347-2b8f-4fde-9ca1-7f4003879e45.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1933813",
+      "contentId": "C20250814084529Fczqz",
+      "name": "수학 3-2(류희찬)_04_5_324_수학익힘유사 문제(기본)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814084529J5JR.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1134115",
+      "contentId": "C20250814084928sTPAd",
+      "name": "수학 3-2(류희찬)_04_5_324_수학익힘유사 문제(보충)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814084928tKhG.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1040043",
+      "contentId": "C20250814085341u02St",
+      "name": "수학 3-2(류희찬)_04_5_324_수학익힘유사 문제(심화)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085341N5SB.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "169472",
+      "contentId": "C20250113050310YNVJg",
+      "name": "수학 3-2(류희찬)_04_5_324_익힘평가상_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8238a94f-5b84-4ae6-9a0a-4862cf0992ac.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "160256",
+      "contentId": "C20250113050310d71cL",
+      "name": "수학 3-2(류희찬)_04_5_324_익힘평가상_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6ce63f21-69bd-4566-8489-a7e9b34732c9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "171008",
+      "contentId": "C20250113050311cKr11",
+      "name": "수학 3-2(류희찬)_04_5_324_익힘평가하_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/66572fb0-97f8-43b4-b6e7-d9de5d106a58.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "276480",
+      "contentId": "C20250113050311w7W9R",
+      "name": "수학 3-2(류희찬)_04_5_324_익힘평가하_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d7ea845a-911f-496d-97e9-ca1c55728b83.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "332288",
+      "contentId": "C20250113050312bfFWB",
+      "name": "수학 3-2(류희찬)_04_6_324_형성평가_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/45781c7a-3b5f-4fff-b83e-0c183acd6db8.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "320512",
+      "contentId": "C20250113050312GHRC9",
+      "name": "수학 3-2(류희찬)_04_6_324_형성평가_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ab7cbbc9-7742-44ed-9af6-c805230438f5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3006854",
+      "contentId": "C202508140846090QTFR",
+      "name": "수학 3-2(류희찬)_04_6_324_수학익힘유사 문제(기본)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140846097La0.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "977845",
+      "contentId": "C202508140850069uBhY",
+      "name": "수학 3-2(류희찬)_04_6_324_수학익힘유사 문제(보충)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140850062oSr.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1062224",
+      "contentId": "C20250814085420jHvtA",
+      "name": "수학 3-2(류희찬)_04_6_324_수학익힘유사 문제(심화)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085420PI3b.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "169984",
+      "contentId": "C20250113050310DRDuD",
+      "name": "수학 3-2(류희찬)_04_6_324_익힘평가상_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/67c69b2a-cf57-4fbb-95d0-66cd3b78ff0e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "160768",
+      "contentId": "C20250113050310t4Ova",
+      "name": "수학 3-2(류희찬)_04_6_324_익힘평가상_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8faf44b4-6eb6-423b-8f9d-0ff1b7ef475e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "182784",
+      "contentId": "C20250113050311KMbHI",
+      "name": "수학 3-2(류희찬)_04_6_324_익힘평가하_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9085ca02-1d2d-4dbc-bbe3-0d932748bad2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "241664",
+      "contentId": "C20250113050311YlAX1",
+      "name": "수학 3-2(류희찬)_04_6_324_익힘평가하_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8ea567eb-a617-403b-932e-9331ac45a07a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "380416",
+      "contentId": "C20250113050312WGpj6",
+      "name": "수학 3-2(류희찬)_04_7_324_형성평가_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3e9f62d2-e6a2-401d-ac01-3071d8d42f58.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "386048",
+      "contentId": "C20250113050312hSsRM",
+      "name": "수학 3-2(류희찬)_04_7_324_형성평가_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/709e84ce-29b0-4367-aa0d-792b789a84e3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2988717",
+      "contentId": "C20250814084644XHmwI",
+      "name": "수학 3-2(류희찬)_04_7_324_수학익힘유사 문제(기본)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814084644HePy.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1010524",
+      "contentId": "C202508140850508VzCB",
+      "name": "수학 3-2(류희찬)_04_7_324_수학익힘유사 문제(보충)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085050vr9Z.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "960896",
+      "contentId": "C20250814085501FoNZS",
+      "name": "수학 3-2(류희찬)_04_7_324_수학익힘유사 문제(심화)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814085501vvmD.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "105984",
+      "contentId": "C20250113050310adoAq",
+      "name": "수학 3-2(류희찬)_04_7_324_익힘평가상_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/41dc1906-cfb3-495a-a170-664dab7cb665.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "97792",
+      "contentId": "C20250113050310n12YM",
+      "name": "수학 3-2(류희찬)_04_7_324_익힘평가상_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/383c8132-fc8e-4c0a-92af-f11b7e4b5fa2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "543744",
+      "contentId": "C20250113050311xpJoK",
+      "name": "수학 3-2(류희찬)_04_7_324_익힘평가하_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a2d86a05-a015-44e6-b058-ca49236dd9e3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "650240",
+      "contentId": "C202501130503113726D",
+      "name": "수학 3-2(류희찬)_04_7_324_익힘평가하_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2e3db271-6059-4baf-be8a-ba5f0f1e5f3a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "670208",
+      "contentId": "C20250113050313NEAXY",
+      "name": "수학 3-2(류희찬)_05_325_단원기본평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250711172606M7Sl.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1177600",
+      "contentId": "C20250113050313aM5ex",
+      "name": "수학 3-2(류희찬)_05_325_단원기본평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/62f790c2-cf18-4d70-b770-4aa28e0ee0cd.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "594432",
+      "contentId": "C20250113050314DYwZc",
+      "name": "수학 3-2(류희찬)_05_325_단원보충평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20251205145252a0xv.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1321472",
+      "contentId": "C202501130503143XFxX",
+      "name": "수학 3-2(류희찬)_05_325_단원보충평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ff67858d-d64c-4caa-b153-393e4daa1a26.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1295360",
+      "contentId": "C20250113050314zjHyf",
+      "name": "수학 3-2(류희찬)_05_325_단원심화평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/03367538-ae65-446e-bf64-33b33be239f6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "634368",
+      "contentId": "C20250113050314laWAX",
+      "name": "수학 3-2(류희찬)_05_325_단원심화평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e3d7ed5b-65fd-42a6-bddb-4ee7a8a8feb0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "490496",
+      "contentId": "C20250113050314uxHtG",
+      "name": "수학 3-2(류희찬)_05_325_서술형평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0569d3f7-e3c7-44cd-b053-8c13a02d681d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1968640",
+      "contentId": "C20250113050314OIXGZ",
+      "name": "수학 3-2(류희찬)_05_325_서술형평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2d712d56-b664-466b-ac74-6764bd230a00.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "156672",
+      "contentId": "C20250113050316yAICf",
+      "name": "수학 3-2(류희찬)_05_325_수행평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0e0ea681-7684-4b38-bf87-868367539800.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "100864",
+      "contentId": "C20250113050316xcpL5",
+      "name": "수학 3-2(류희찬)_05_325_수행평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6b48c38e-337e-4687-af16-5af89f9eaf5c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "99840",
+      "contentId": "C20250113050316pKJ9l",
+      "name": "수학 3-2(류희찬)_05_325_수행평가_3_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0d0f3ed6-05b3-4e85-b1df-27b22d1785bb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "18967552",
+      "contentId": "C20260626101244ubfab",
+      "name": "수학 3-2(류희찬)_05_325_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626101244aX1V.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "10966016",
+      "contentId": "C202606261024377ukzY",
+      "name": "수학 3-2(류희찬)_05_325_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU2026062610243794oR.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "597504",
+      "contentId": "C20250113050313BM9FG",
+      "name": "수학 3-2(류희찬)_05_325_단원기본평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2cc2246d-6077-4400-ad3b-7a6f45beb33c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1173504",
+      "contentId": "C20250113050313F7vCT",
+      "name": "수학 3-2(류희찬)_05_325_단원기본평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/95532824-35b6-48bd-b1d4-733be94d66c5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "584704",
+      "contentId": "C20250113050314m2Dxw",
+      "name": "수학 3-2(류희찬)_05_325_단원보충평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202512051453184beu.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1312768",
+      "contentId": "C20250113050314iA0wN",
+      "name": "수학 3-2(류희찬)_05_325_단원보충평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/239f0e27-8e4e-4d20-898b-a021dafbcb6f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1285632",
+      "contentId": "C202501130503145CAuT",
+      "name": "수학 3-2(류희찬)_05_325_단원심화평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c3dcbcbf-86f1-4151-89d0-d8c79251e839.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "623616",
+      "contentId": "C20250113050314Ughw5",
+      "name": "수학 3-2(류희찬)_05_325_단원심화평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a98550a6-78ed-4060-91f5-176d8dc3b28d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "414720",
+      "contentId": "C20250113050314Q4apy",
+      "name": "수학 3-2(류희찬)_05_325_서술형평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6e78e4b5-a7ae-4017-9203-3c020ee0ac72.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1935872",
+      "contentId": "C20250113050314YB7Vf",
+      "name": "수학 3-2(류희찬)_05_325_서술형평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b1174978-058d-4fe4-9b51-633b9707a24d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "53760",
+      "contentId": "C20250113050316EJ5WQ",
+      "name": "수학 3-2(류희찬)_05_325_수행평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ab474bc2-a45c-4ba8-9cf0-a0e47df65e4d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "52736",
+      "contentId": "C20250113050316fzO8I",
+      "name": "수학 3-2(류희찬)_05_325_수행평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/34e0c03d-74df-4c23-9a52-d97059e41bcb.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "52736",
+      "contentId": "C20250113050316oWxJs",
+      "name": "수학 3-2(류희찬)_05_325_수행평가_3_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4143ee13-9870-4e02-9686-63c3823d1821.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1619968",
+      "contentId": "C20250113050318d7SfM",
+      "name": "수학 3-2(류희찬)_05_1_325_진단평가_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ce39e798-cd4a-44e8-86f1-b757a041a7dc.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1616384",
+      "contentId": "C20250113050318encnl",
+      "name": "수학 3-2(류희찬)_05_1_325_진단평가_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f8d06428-5eb2-4c00-b159-cfd5db0b5467.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "822272",
+      "contentId": "C20250113050318Bzovc",
+      "name": "수학 3-2(류희찬)_05_2_325_형성평가_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0c4dba9b-6744-476e-aad5-655a4d7de755.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "724480",
+      "contentId": "C20250113050318aZKQI",
+      "name": "수학 3-2(류희찬)_05_2_325_형성평가_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a9f31856-083d-444d-afa6-6e5d0941f7d8.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3508599",
+      "contentId": "C20250814090048BuByy",
+      "name": "수학 3-2(류희찬)_05_2_325_수학익힘유사 문제(기본)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140900480RrQ.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "541448",
+      "contentId": "C20250814091031YIK6m",
+      "name": "수학 3-2(류희찬)_05_2_325_수학익힘유사 문제(보충)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140910319dhs.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "558625",
+      "contentId": "C20250814092223zueK1",
+      "name": "수학 3-2(류희찬)_05_2_325_수학익힘유사 문제(심화)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU2025081409222334Wg.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "729221",
+      "contentId": "C20250814092809qUFOu",
+      "name": "수학 3-2(류희찬)_05_2_325_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092809XYaB.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "534528",
+      "contentId": "C20250113050316vfnpb",
+      "name": "수학 3-2(류희찬)_05_2_325_익힘평가상_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cb324dab-d9ab-4df6-981a-5e71d6f63475.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "528384",
+      "contentId": "C20250113050316y1O3s",
+      "name": "수학 3-2(류희찬)_05_2_325_익힘평가상_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/6ba2f511-2b8e-46a5-b6bd-591a44390391.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "673792",
+      "contentId": "C202501130503160GhjA",
+      "name": "수학 3-2(류희찬)_05_2_325_익힘평가하_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/dfcae1d3-cc2b-4aef-b8d1-ece57bdddb0d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "635904",
+      "contentId": "C20250113050316Gr2be",
+      "name": "수학 3-2(류희찬)_05_2_325_익힘평가하_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a45999f5-e050-40e4-9338-c2b8d575e537.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "673792",
+      "contentId": "C20250113050318KZk7n",
+      "name": "수학 3-2(류희찬)_05_3_325_형성평가_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/92159831-e4e0-417c-91e7-08897739874d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "495104",
+      "contentId": "C20250113050318I3d8b",
+      "name": "수학 3-2(류희찬)_05_3_325_형성평가_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a3f86fd6-f99a-4758-a504-c81c9de2a1e7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3193030",
+      "contentId": "C20250814090127iQdpl",
+      "name": "수학 3-2(류희찬)_05_3_325_수학익힘유사 문제(기본)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090127kxbq.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1102150",
+      "contentId": "C202508140911422qTkb",
+      "name": "수학 3-2(류희찬)_05_3_325_수학익힘유사 문제(보충)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140911428Kh6.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1083174",
+      "contentId": "C20250814092322CASP1",
+      "name": "수학 3-2(류희찬)_05_3_325_수학익힘유사 문제(심화)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092322uhO9.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "714752",
+      "contentId": "C202501130503164YoLh",
+      "name": "수학 3-2(류희찬)_05_3_325_익힘평가상_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/84d5da4a-8693-455a-ad09-7d3ebe7a762b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "710656",
+      "contentId": "C202501130503164FmDv",
+      "name": "수학 3-2(류희찬)_05_3_325_익힘평가상_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/74eda23d-4d80-4065-8b20-ab57aacdded6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "819712",
+      "contentId": "C20250113050316tlMVZ",
+      "name": "수학 3-2(류희찬)_05_3_325_익힘평가하_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/720b7844-d530-423a-9472-4b5db43b7fc0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "815104",
+      "contentId": "C20250113050316ylfdq",
+      "name": "수학 3-2(류희찬)_05_3_325_익힘평가하_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a89e0869-62c8-41f1-a8d3-98b31bb923a6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "546816",
+      "contentId": "C20250113050318Q85UI",
+      "name": "수학 3-2(류희찬)_05_4_325_형성평가_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2aa43aba-44f3-4a87-a3e7-493d1e728253.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "479744",
+      "contentId": "C20250113050318tPFQn",
+      "name": "수학 3-2(류희찬)_05_4_325_형성평가_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/be31065f-6294-44a8-858f-2a15ea660fd6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3264081",
+      "contentId": "C20250814090207nwEF0",
+      "name": "수학 3-2(류희찬)_05_4_325_수학익힘유사 문제(기본)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090207sYr7.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1022596",
+      "contentId": "C202508140916460rtWD",
+      "name": "수학 3-2(류희찬)_05_4_325_수학익힘유사 문제(보충)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814091646Rsjs.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "965070",
+      "contentId": "C20250814092400d0xLW",
+      "name": "수학 3-2(류희찬)_05_4_325_수학익힘유사 문제(심화)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092400i3HR.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "482304",
+      "contentId": "C20250113050316wZJ4A",
+      "name": "수학 3-2(류희찬)_05_4_325_익힘평가상_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a08ddc73-69d2-44b4-87ae-34dabd3f90b0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "486400",
+      "contentId": "C20250113050316YUChq",
+      "name": "수학 3-2(류희찬)_05_4_325_익힘평가상_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/27e374f0-bdb4-4896-bef5-0055b10a875c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "690688",
+      "contentId": "C20250113050316gWsSE",
+      "name": "수학 3-2(류희찬)_05_4_325_익힘평가하_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2279a8b0-ca01-4aa2-8f7d-e6e62d3cb79d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "689664",
+      "contentId": "C20250113050316IHOqR",
+      "name": "수학 3-2(류희찬)_05_4_325_익힘평가하_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/68bb4a83-e72c-44d7-bf8c-0896a39413ef.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "559616",
+      "contentId": "C20250113050318HUVED",
+      "name": "수학 3-2(류희찬)_05_5_325_형성평가_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4190fc33-8737-4c64-a320-98836083cd05.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "499200",
+      "contentId": "C20250113050318O2bMe",
+      "name": "수학 3-2(류희찬)_05_5_325_형성평가_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8b08b905-f1ba-4055-a300-4fecb8e7dd0c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3164789",
+      "contentId": "C20250814090436oHMkV",
+      "name": "수학 3-2(류희찬)_05_5_325_수학익힘유사 문제(기본)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090436oamc.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1065040",
+      "contentId": "C20250814091732ZLF13",
+      "name": "수학 3-2(류희찬)_05_5_325_수학익힘유사 문제(보충)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814091732gbxV.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1042207",
+      "contentId": "C20250814092453ZLg0D",
+      "name": "수학 3-2(류희찬)_05_5_325_수학익힘유사 문제(심화)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092453VQmE.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "214528",
+      "contentId": "C20250113050316ZuhSt",
+      "name": "수학 3-2(류희찬)_05_5_325_익힘평가상_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250521105220LpnT.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "211456",
+      "contentId": "C20250113050316x6NqK",
+      "name": "수학 3-2(류희찬)_05_5_325_익힘평가상_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/a77c0e3f-81e9-46ec-a0aa-7c7cfa806858.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "232448",
+      "contentId": "C20250113050316Pym7f",
+      "name": "수학 3-2(류희찬)_05_5_325_익힘평가하_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0e56a5ad-40ef-4a9a-8b83-da93219b2237.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "227328",
+      "contentId": "C20250113050316C1AsY",
+      "name": "수학 3-2(류희찬)_05_5_325_익힘평가하_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/26dc35db-b813-4303-b72e-43d725add35e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2081792",
+      "contentId": "C20250113050318iMQ01",
+      "name": "수학 3-2(류희찬)_05_6_325_형성평가_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/7d942102-69a3-4d38-8419-90487d48d3f5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2075136",
+      "contentId": "C20250113050318fRNR7",
+      "name": "수학 3-2(류희찬)_05_6_325_형성평가_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b86b26d6-e346-473f-9913-469773219643.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3445056",
+      "contentId": "C20250814090709ZPiA8",
+      "name": "수학 3-2(류희찬)_05_6_325_수학익힘유사 문제(기본)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090709h2oS.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1121823",
+      "contentId": "C20250814091805Kxnvn",
+      "name": "수학 3-2(류희찬)_05_6_325_수학익힘유사 문제(보충)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140918059JUV.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1149562",
+      "contentId": "C20250814092529sVuEg",
+      "name": "수학 3-2(류희찬)_05_6_325_수학익힘유사 문제(심화)_06",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092529MBAw.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2958848",
+      "contentId": "C20250113050316ZlGJb",
+      "name": "수학 3-2(류희찬)_05_6_325_익힘평가상_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/624cd32a-2435-480c-992c-9161e9e7dd1c.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2951168",
+      "contentId": "C20250113050316pCKLr",
+      "name": "수학 3-2(류희찬)_05_6_325_익힘평가상_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2dbe9cb7-4cd3-4511-95e8-98640437498e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2732544",
+      "contentId": "C20250113050316E9LQy",
+      "name": "수학 3-2(류희찬)_05_6_325_익힘평가하_06_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4f0f45cf-3375-4899-9c5a-4269b506d987.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2701824",
+      "contentId": "C20250113050317xAKBt",
+      "name": "수학 3-2(류희찬)_05_6_325_익힘평가하_06_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/016cc008-0f33-45a4-be13-e373aa0dbf95.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "439296",
+      "contentId": "C20250113050318YpLCI",
+      "name": "수학 3-2(류희찬)_05_7_325_형성평가_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250910110923s0VS.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "316416",
+      "contentId": "C20250113050318HyQBm",
+      "name": "수학 3-2(류희찬)_05_7_325_형성평가_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250910110937OJi8.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3343247",
+      "contentId": "C20250814090800Yh1X4",
+      "name": "수학 3-2(류희찬)_05_7_325_수학익힘유사 문제(기본)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090800rULk.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1081542",
+      "contentId": "C20250814091949tZZ3H",
+      "name": "수학 3-2(류희찬)_05_7_325_수학익힘유사 문제(보충)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814091949dVk2.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1052230",
+      "contentId": "C20250814092610MRFj1",
+      "name": "수학 3-2(류희찬)_05_7_325_수학익힘유사 문제(심화)_07",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140926105uzn.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "110592",
+      "contentId": "C20250113050316xBpMl",
+      "name": "수학 3-2(류희찬)_05_7_325_익힘평가상_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/be59c0b1-2581-4c07-9861-db7a15dc3188.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "100352",
+      "contentId": "C20250113050316w3poA",
+      "name": "수학 3-2(류희찬)_05_7_325_익힘평가상_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/e3995c32-7712-4d92-aab2-2d3aab286014.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "735232",
+      "contentId": "C20250113050317L2VLn",
+      "name": "수학 3-2(류희찬)_05_7_325_익힘평가하_07_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/7d60f4e6-38e7-4c77-88ba-f8666b5fc1e9.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "728064",
+      "contentId": "C20250113050317Cr0K0",
+      "name": "수학 3-2(류희찬)_05_7_325_익힘평가하_07_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/55148347-26f9-417a-9e92-ee881a8a2961.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "247808",
+      "contentId": "C20250113050318fHmKd",
+      "name": "수학 3-2(류희찬)_05_8_325_형성평가_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9cbb6744-d4b6-4a64-9d82-36a20bda6235.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "195072",
+      "contentId": "C20250113050318hoOBs",
+      "name": "수학 3-2(류희찬)_05_8_325_형성평가_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ef88c822-c9dc-4694-9ee7-ef12e56b257a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3502031",
+      "contentId": "C202508140908571z0Bs",
+      "name": "수학 3-2(류희찬)_05_8_325_수학익힘유사 문제(기본)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090857Z9tt.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1079524",
+      "contentId": "C20250814092033oenSp",
+      "name": "수학 3-2(류희찬)_05_8_325_수학익힘유사 문제(보충)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092033NkSk.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "931059",
+      "contentId": "C20250814092651cj6Q6",
+      "name": "수학 3-2(류희찬)_05_8_325_수학익힘유사 문제(심화)_08",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092651UGPU.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "923136",
+      "contentId": "C20250113050316ans1q",
+      "name": "수학 3-2(류희찬)_05_8_325_익힘평가상_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0015a48c-6f89-4227-84cb-d1f87d4debc2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "906752",
+      "contentId": "C20250113050316lmtda",
+      "name": "수학 3-2(류희찬)_05_8_325_익힘평가상_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3e904675-23f0-46e5-a088-bf4bfd1c85b6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "618496",
+      "contentId": "C20250113050317wRDBm",
+      "name": "수학 3-2(류희찬)_05_8_325_익힘평가하_08_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0f282fff-8e34-4545-808b-85db1edb49b1.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "525312",
+      "contentId": "C20250113050317fQQMJ",
+      "name": "수학 3-2(류희찬)_05_8_325_익힘평가하_08_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2c962606-5266-4d62-b573-16a12d7f5007.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "103424",
+      "contentId": "C20250113050319ANhuB",
+      "name": "수학 3-2(류희찬)_05_9_325_형성평가_09_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f21f58af-af3e-49da-80eb-4463552a416f.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "61952",
+      "contentId": "C20250113050319NSePC",
+      "name": "수학 3-2(류희찬)_05_9_325_형성평가_09_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9922ef1a-3c4e-49db-b8aa-e7407bc147c4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3240288",
+      "contentId": "C20250814090940G5cz5",
+      "name": "수학 3-2(류희찬)_05_9_325_수학익힘유사 문제(기본)_09",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814090940XjmB.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1093770",
+      "contentId": "C20250814092142dsoz8",
+      "name": "수학 3-2(류희찬)_05_9_325_수학익힘유사 문제(보충)_09",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092142Fp8M.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1042673",
+      "contentId": "C20250814092724dFWg9",
+      "name": "수학 3-2(류희찬)_05_9_325_수학익힘유사 문제(심화)_09",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814092724lKgK.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "112128",
+      "contentId": "C2025011305031622A58",
+      "name": "수학 3-2(류희찬)_05_9_325_익힘평가상_09_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/c2af5cd0-20ff-441c-b03c-1df970c0ff6e.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "98816",
+      "contentId": "C20250113050316VqVJA",
+      "name": "수학 3-2(류희찬)_05_9_325_익힘평가상_09_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/253a43d3-ce60-48e2-a154-cb3c7873925b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "190976",
+      "contentId": "C20250113050317yxygK",
+      "name": "수학 3-2(류희찬)_05_9_325_익힘평가하_09_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/f7789066-777c-4092-8593-19b00d807cd3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2331648",
+      "contentId": "C20250113050319ManC0",
+      "name": "수학 3-2(류희찬)_06_326_단원기본평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/7838a537-23be-4950-a603-22cf55c96374.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2907648",
+      "contentId": "C20250113050319PAzYG",
+      "name": "수학 3-2(류희찬)_06_326_단원기본평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/88de886a-39aa-4b35-a75d-b9dd2b8c0de6.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3546624",
+      "contentId": "C20250113050319Mc0ea",
+      "name": "수학 3-2(류희찬)_06_326_단원보충평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/252b4995-7005-4f91-acba-4f0e0eef1834.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2710016",
+      "contentId": "C20250113050320gVKiL",
+      "name": "수학 3-2(류희찬)_06_326_단원보충평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cc21013f-b0a7-4096-be04-b7c08ca9cd9d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2813952",
+      "contentId": "C20250113050320XneMw",
+      "name": "수학 3-2(류희찬)_06_326_단원심화평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20251128084458tOdq.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3397632",
+      "contentId": "C20250113050320wKpNF",
+      "name": "수학 3-2(류희찬)_06_326_단원심화평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20251128084530W4zS.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1681408",
+      "contentId": "C202501130503201RWZr",
+      "name": "수학 3-2(류희찬)_06_326_서술형평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/1f9c9b22-e18f-4a1f-9512-4c2a1d522cfa.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1203712",
+      "contentId": "C20250113050320NK58H",
+      "name": "수학 3-2(류희찬)_06_326_서술형평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d3f88dc2-331b-4ae5-b904-9a6807022ae7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1717760",
+      "contentId": "C20250113050321EJsOx",
+      "name": "수학 3-2(류희찬)_06_326_수행평가_1_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8bbc5e30-4017-4d96-96a6-2e338d3a638b.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "870400",
+      "contentId": "C20250113050321Py5O1",
+      "name": "수학 3-2(류희찬)_06_326_수행평가_2_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/374b012c-1333-44db-af73-be0d26fb7a21.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2452992",
+      "contentId": "C20250113050321RicHe",
+      "name": "수학 3-2(류희찬)_06_326_수행평가_3_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/63ccc962-4650-4c06-9260-3013f8e82a98.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "12634112",
+      "contentId": "C20260626101337oJ9Zt",
+      "name": "수학 3-2(류희찬)_06_326_수학익힘유사",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626101337OZrw.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "5862912",
+      "contentId": "C202606261025169jNyW",
+      "name": "수학 3-2(류희찬)_06_326_수학기초플러스",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260626102516hsVQ.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1575424",
+      "contentId": "C202501130503197kCYp",
+      "name": "수학 3-2(류희찬)_06_326_단원기본평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/abb3f3d7-48a5-4de6-9f45-c40955e81ba7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2383872",
+      "contentId": "C20250113050319UHf2N",
+      "name": "수학 3-2(류희찬)_06_326_단원기본평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/45f71499-4464-4607-b7d0-cc4768ef6b26.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2816000",
+      "contentId": "C2025011305031988WHW",
+      "name": "수학 3-2(류희찬)_06_326_단원보충평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/2bd1f462-e28b-4412-b92f-4e6d522e87cc.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1940992",
+      "contentId": "C20250113050320Aw5PA",
+      "name": "수학 3-2(류희찬)_06_326_단원보충평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3ad5f349-af06-405f-9d00-fb7863ea6ea4.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2110976",
+      "contentId": "C20250113050320hu3H2",
+      "name": "수학 3-2(류희찬)_06_326_단원심화평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20251128084517O6ul.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2439680",
+      "contentId": "C20250113050320YI8Or",
+      "name": "수학 3-2(류희찬)_06_326_단원심화평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20251128084547FPa7.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1666560",
+      "contentId": "C20250113050320jHKRI",
+      "name": "수학 3-2(류희찬)_06_326_서술형평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9a43757c-63a0-4710-9e6b-edb6979919c0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1120256",
+      "contentId": "C20250113050320Tp3B3",
+      "name": "수학 3-2(류희찬)_06_326_서술형평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cf2a6540-0ead-4663-a684-e01fd2be8721.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "702464",
+      "contentId": "C202501130503215sBzx",
+      "name": "수학 3-2(류희찬)_06_326_수행평가_1_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b833c316-87a9-465e-8a31-837a4ee78f5d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "859648",
+      "contentId": "C20250113050321zeAdw",
+      "name": "수학 3-2(류희찬)_06_326_수행평가_2_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4c829917-8aca-438d-af2b-8869b2283d5d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2114560",
+      "contentId": "C20250113050321UREOn",
+      "name": "수학 3-2(류희찬)_06_326_수행평가_3_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/61e3b323-8836-41ca-ad7f-09a8e3607262.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3286016",
+      "contentId": "C20250113050323XNfRV",
+      "name": "수학 3-2(류희찬)_06_1_326_진단평가_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260212115258j7fH.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2994176",
+      "contentId": "C202501130503236eKpq",
+      "name": "수학 3-2(류희찬)_06_1_326_진단평가_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2026/CU20260212115313ILfs.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2066944",
+      "contentId": "C202501130503232oDxs",
+      "name": "수학 3-2(류희찬)_06_2_326_형성평가_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/7882e6a6-d06f-4d64-a224-c48ebf6073a3.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1384448",
+      "contentId": "C20250113050323tAzcX",
+      "name": "수학 3-2(류희찬)_06_2_326_형성평가_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/41ed0118-2f79-469a-92cb-b5013a73fb93.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3568594",
+      "contentId": "C20250814093020sZKYh",
+      "name": "수학 3-2(류희찬)_06_2_326_수학익힘유사 문제(기본)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093020o4eX.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1014697",
+      "contentId": "C20250814093518iWeu9",
+      "name": "수학 3-2(류희찬)_06_2_326_수학익힘유사 문제(보충)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140935181Z42.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1095184",
+      "contentId": "C20250814093941lBFF4",
+      "name": "수학 3-2(류희찬)_06_2_326_수학익힘유사 문제(심화)_02",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093941c7Bu.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "801680",
+      "contentId": "C202508140942590FWLl",
+      "name": "수학 3-2(류희찬)_06_2_326_수학익힘유사 정답",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140942591Tro.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1857536",
+      "contentId": "C20250113050321q7tAu",
+      "name": "수학 3-2(류희찬)_06_2_326_익힘평가상_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/20ccd1dc-e513-4e6e-8bb8-f60cebf940db.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1846784",
+      "contentId": "C20250113050321xCYge",
+      "name": "수학 3-2(류희찬)_06_2_326_익힘평가상_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ff176723-c7f8-49d5-8a42-c8fff740b6dd.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1902080",
+      "contentId": "C20250113050322GNEkR",
+      "name": "수학 3-2(류희찬)_06_2_326_익힘평가하_02_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/3bd532ed-d74e-470e-a005-0a7e87bd2a70.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1894400",
+      "contentId": "C20250113050322PpeX5",
+      "name": "수학 3-2(류희찬)_06_2_326_익힘평가하_02_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ea3dd985-4e27-4151-8fba-64348dc3c866.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2887168",
+      "contentId": "C20250113050323Mfbqb",
+      "name": "수학 3-2(류희찬)_06_3_326_형성평가_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d9f85951-4060-4989-a80b-b3c742163018.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1817600",
+      "contentId": "C20250113050323AKqDa",
+      "name": "수학 3-2(류희찬)_06_3_326_형성평가_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/8b53554d-366b-4a52-8023-c4ce33a5a1f2.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3374746",
+      "contentId": "C20250814093101cM4ab",
+      "name": "수학 3-2(류희찬)_06_3_326_수학익힘유사 문제(기본)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093101YS5W.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1019624",
+      "contentId": "C20250814093617DMtP7",
+      "name": "수학 3-2(류희찬)_06_3_326_수학익힘유사 문제(보충)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093617y6iH.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "958923",
+      "contentId": "C20250814094025FIVxh",
+      "name": "수학 3-2(류희찬)_06_3_326_수학익힘유사 문제(심화)_03",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814094025qPOo.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1637376",
+      "contentId": "C20250113050321XwLGE",
+      "name": "수학 3-2(류희찬)_06_3_326_익힘평가상_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/9cd672d7-b6d6-4695-8fd3-1309c06bf6f0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1068544",
+      "contentId": "C20250113050321glNVT",
+      "name": "수학 3-2(류희찬)_06_3_326_익힘평가상_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/23a2c3c6-ac76-4bc3-b60d-3e4a4a8e9919.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1468416",
+      "contentId": "C20250113050322jjMis",
+      "name": "수학 3-2(류희찬)_06_3_326_익힘평가하_03_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/b4749850-4fe4-461d-8a86-67bda51ced3a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "942592",
+      "contentId": "C202501130503220JyAJ",
+      "name": "수학 3-2(류희찬)_06_3_326_익힘평가하_03_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/56fd131b-8ac4-40cc-86d6-458fdac6ad28.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "900608",
+      "contentId": "C2025011305032303RwU",
+      "name": "수학 3-2(류희찬)_06_4_326_형성평가_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/0f892d20-373c-4842-a4d6-f767146c6021.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "882688",
+      "contentId": "C20250113050323QAzbU",
+      "name": "수학 3-2(류희찬)_06_4_326_형성평가_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/46a4a8e7-107a-41f3-b993-e8e4566368c5.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3277166",
+      "contentId": "C20250814093155M4FJ1",
+      "name": "수학 3-2(류희찬)_06_4_326_수학익힘유사 문제(기본)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093155ezod.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1099766",
+      "contentId": "C20250814093718pDxPo",
+      "name": "수학 3-2(류희찬)_06_4_326_수학익힘유사 문제(보충)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093718p4SQ.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1067061",
+      "contentId": "C20250814094137aQQLl",
+      "name": "수학 3-2(류희찬)_06_4_326_수학익힘유사 문제(심화)_04",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814094137Ne2B.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1708032",
+      "contentId": "C202501130503215M7uK",
+      "name": "수학 3-2(류희찬)_06_4_326_익힘평가상_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/295a8267-4e2f-4083-8a12-64447d4a9054.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1437184",
+      "contentId": "C20250113050321azmND",
+      "name": "수학 3-2(류희찬)_06_4_326_익힘평가상_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/4c31a0a0-7bb2-4407-bd30-2b10977388d0.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2331136",
+      "contentId": "C20250113050322i5pff",
+      "name": "수학 3-2(류희찬)_06_4_326_익힘평가하_04_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/cd49342b-0acb-454f-8dab-70b062f13964.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "2134528",
+      "contentId": "C20250113050322ty5iM",
+      "name": "수학 3-2(류희찬)_06_4_326_익힘평가하_04_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/ce9e6a5d-4976-4a0c-b81f-2a0ec1dae624.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "933376",
+      "contentId": "C20250113050323hMX86",
+      "name": "수학 3-2(류희찬)_06_5_326_형성평가_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/dd2762d6-c49c-4e64-b5cc-c534b657072a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "547328",
+      "contentId": "C20250113050323XDIEB",
+      "name": "수학 3-2(류희찬)_06_5_326_형성평가_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/453a36a3-7380-4f8d-9e16-da332c0e2e65.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "3026090",
+      "contentId": "C20250814093251269Or",
+      "name": "수학 3-2(류희찬)_06_5_326_수학익힘유사 문제(기본)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU202508140932513V6e.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1050770",
+      "contentId": "C20250814093852J4dWL",
+      "name": "수학 3-2(류희찬)_06_5_326_수학익힘유사 문제(보충)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814093852uJf0.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1058642",
+      "contentId": "C20250814094215RJdNS",
+      "name": "수학 3-2(류희찬)_06_5_326_수학익힘유사 문제(심화)_05",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/CONTENTS/UPLOAD/2025/CU20250814094215rTI0.pdf",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1579520",
+      "contentId": "C20250113050322HLbXL",
+      "name": "수학 3-2(류희찬)_06_5_326_익힘평가상_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/d683a6be-202d-4a7c-9425-6ab8f3456d1d.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1091584",
+      "contentId": "C20250113050322VyUHl",
+      "name": "수학 3-2(류희찬)_06_5_326_익힘평가상_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/1046ad8c-01a3-478e-8150-1dd7aebfdd0a.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1416192",
+      "contentId": "C20250113050322jcyyD",
+      "name": "수학 3-2(류희찬)_06_5_326_익힘평가하_05_교사용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/be1dd718-5c06-447f-a90d-c823fe89c962.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    },
+    {
+      "bytesListed": "1297408",
+      "contentId": "C20250113050322FcTFk",
+      "name": "수학 3-2(류희찬)_06_5_326_익힘평가하_05_학생용",
+      "url": "https://ymhcopau2891.edge.naverncp.com:443/BULKUPLOAD/2022_ycloud/e/728598e4-645b-40b7-a58d-e3fe57c2f345.hwp",
+      "publisher": "YBM",
+      "book": "수학 3-2(류희찬)",
+      "sourceUrl": "https://www.ybmcloud.com/evaluation/T07171209142024M35Wr.html"
+    }
+  ]
+}

@@ -35,7 +35,7 @@
   }
   async function practice(){
     $('practiceBtn').disabled=true;online=false;host=true;myId='me';
-    const count=4,roster=[{id:'me',name:profile.name,team:chosenTeam}];
+    const count=E.PLAYER_COUNT,roster=[{id:'me',name:profile.name,team:chosenTeam}];
     clearLobby();
     const sizes=E.teamSizes(),counts={thief:chosenTeam==='thief'?1:0,police:chosenTeam==='police'?1:0};
     for(let i=1;i<count;i++){const team=counts.thief<sizes.thief?'thief':'police';counts[team]++;roster.push({id:'bot-'+i,name:(team==='police'?'경찰':'도둑')+' '+counts[team],team,bot:true});}
@@ -49,7 +49,7 @@
   }
   function mountLobby(){
     if(lobby)return;
-    lobby=window.ClassroomMultiplayerLobby.create({gameId:'citychase-realtime',getPlayerName:()=>profile.name==='나'?'체험학생':profile.name,initialMode:'guest',allowedPlayerCounts:[4],maxPlayers:4,rulesButtonIds:['rulesBtnLobby'],preserveRulesUi:true,
+    lobby=window.ClassroomMultiplayerLobby.create({gameId:'citychase-realtime',getPlayerName:()=>profile.name==='나'?'체험학생':profile.name,initialMode:'guest',allowedPlayerCounts:[E.PLAYER_COUNT],maxPlayers:E.PLAYER_COUNT,rulesButtonIds:['rulesBtnLobby'],preserveRulesUi:true,
       onStarted:networkStart,onNotice:notice,
       onGameMessage(sender,payload){
         if(!online||!payload)return;
@@ -98,10 +98,12 @@
     }
   }
   function renderPlacement(){
-    const setup=view?.phase==='setup',police=me()?.team==='police',wasHidden=$('placementPanel').classList.contains('hidden');
+    const setup=view?.phase==='setup',police=me()?.id===view?.placementBy,wasHidden=$('placementPanel').classList.contains('hidden');
     $('play').classList.toggle('placing',setup);$('placement').classList.toggle('hidden',!setup);
     $('placementPanel').classList.toggle('hidden',!setup||!police);$('placementWaiting').classList.toggle('hidden',!setup||police);
     if(!setup)return;
+    const captain=view.players.find(p=>p.id===view.placementBy);
+    $('placementWaiting').textContent=(captain?.name||'경찰')+'님이 보석을 배치하고 있습니다.';
     $('placementCount').textContent=`${placement.length} / ${E.GOAL}`;$('placementConfirm').disabled=placement.length!==E.GOAL||view.paused;
     for(const button of $('placementShops').children){
       const order=placement.indexOf(button.dataset.shop),selected=order>=0;

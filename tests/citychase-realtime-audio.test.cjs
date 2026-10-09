@@ -13,7 +13,7 @@ function setup(saved){
   const sound=Audio.create({environment:env});
   return{sound,env,context,nodes,values,take(kind){assert.deepEqual(nodes.splice(0).map(n=>n.notes[0]),Audio.CUES[kind].map(n=>n[1]),kind);}};
 }
-const game=()=>{const g=E.create(Array.from({length:4},(_,i)=>({id:String(i),name:'학생 '+i})),()=>.4);E.command(g,'1',{type:'PLACE_GEMS',shops:W.shops.slice(0,3).map(s=>s.id)});return g;};
+const game=()=>{const g=E.create(Array.from({length:5},(_,i)=>({id:String(i),name:'학생 '+i})),()=>.4);E.command(g,'1',{type:'PLACE_GEMS',shops:W.shops.slice(0,3).map(s=>s.id)});return g;};
 const tick=(g,seconds)=>{for(let i=0;i<seconds*20;i++)E.tick(g,.05);};
 const place=(p,{x,y})=>Object.assign(p,{x,y,path:[],task:null,steering:null});
 

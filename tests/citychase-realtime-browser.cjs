@@ -18,9 +18,8 @@ const server=http.createServer((req,res)=>{
     const context=await browser.newContext({viewport,hasTouch:true});
     await context.addInitScript(name=>{Object.defineProperty(window,'CLASS_PLAYER_NAME',{get:()=>name,set:()=>{}});},name);
     await context.route('**/realtime-engine.js*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'learning/games/citychase/realtime-engine.js'),'utf8')+`
-      const originalCreate=ChaseEngine.create,originalSnapshot=ChaseEngine.snapshot;
-      ChaseEngine.create=(...a)=>{window.chaseTestGame=originalCreate(...a);chaseTestGame.players.forEach(p=>p.bot=false);return chaseTestGame;};
-      ChaseEngine.snapshot=(...a)=>{window.chaseTestState=originalSnapshot(...a);return chaseTestState;};`}));
+      const originalCreate=ChaseEngine.create;
+      ChaseEngine.create=(...a)=>{window.chaseTestGame=originalCreate(...a);chaseTestGame.players.forEach(p=>p.bot=false);return chaseTestGame;};`}));
     await context.route('**/realtime-capture.js*',r=>r.fulfill({contentType:'application/javascript',body:fs.readFileSync(path.join(root,'learning/games/citychase/realtime-capture.js'),'utf8')+`
       const makeCapture=ChaseCapture.create;ChaseCapture.create=(...a)=>{
         const model=window.chaseTestCapture=makeCapture(...a),observe=model.observe;window.chaseReceivedCaptures=[];
@@ -35,12 +34,12 @@ const server=http.createServer((req,res)=>{
     assert.equal(await p.locator('#lobbyScreen .mp-ui-header').count(),1);
     await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'entry.png')});
     const popupPromise=p.waitForEvent('popup');await p.locator('#rulesBtnLobby').click();const rules=await popupPromise;await rules.waitForLoadState();
-    assert.match(await rules.locator('main').innerText(),/4명, 경찰 1명·도둑 3명/);assert.match(await rules.locator('main').innerText(),/15초/);
+    assert.match(await rules.locator('main').innerText(),/5명, 경찰 2명·도둑 3명/);assert.match(await rules.locator('main').innerText(),/15초/);
     assert.match(await rules.locator('main').innerText(),/5회 체포/);
     await rules.setViewportSize({width:768,height:920});await rules.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+'rules.png')});await rules.close();
     await p.locator('#practiceSetup summary').tap();await p.locator('#practiceBtn').tap();
-    await p.waitForFunction(()=>window.chaseTestState?.players.length===4);
-    assert.equal(await p.evaluate(()=>chaseTestState.players.filter(p=>p.team==='police').length),1);
+    await p.waitForFunction(()=>window.chaseTestState?.players.length===5);
+    assert.equal(await p.evaluate(()=>chaseTestState.players.filter(p=>p.team==='police').length),2);
     assert.equal(await p.evaluate(()=>chaseTestState.players.filter(p=>p.team==='thief').length),3);
     assert.equal(await p.locator('#captureText').innerText(),'0 / 5');
     await p.evaluate(()=>{chaseTestGame.players.forEach(p=>{p.bot=false;p.path=[];p.immuneUntil=1000;});});
@@ -58,7 +57,7 @@ const server=http.createServer((req,res)=>{
       const tags=await p.evaluate(()=>[...document.querySelectorAll('#privateClues .clueCandidates span')].map(e=>e.textContent));
       assert.equal(tags.length,3);assert.deepEqual(tags.sort(),await p.evaluate(()=>chaseTestState.clues[0].candidates.map(id=>ChaseWorld.shops.find(s=>s.id===id).name).sort()));
       await p.screenshot({path:path.join(out,(safari?'webkit-':'chrome-')+name+'-clues.png')});await p.locator('#closeClue').tap();
-      console.log('PASS',name,'4 characters, touch controls, clue sharing, no page overflow');
+      console.log('PASS',name,'5 characters, touch controls, clue sharing, no page overflow');
     }
     // Keyboard and two-finger controls use the same authoritative road movement.
     await p.setViewportSize({width:1024,height:668});
@@ -147,8 +146,8 @@ const server=http.createServer((req,res)=>{
     await p.evaluate(()=>window.dispatchEvent(new CustomEvent('sitebackrequest',{cancelable:true})));
     for(const team of ['thief','police']){
       assert.equal(await p.locator('#lobbyScreen .mp-ui-header').count(),1);await p.locator('#practiceSetup summary').tap();await p.locator('[data-team='+team+']').tap();await p.locator('#practiceBtn').tap();
-      await p.waitForFunction(()=>chaseTestGame.players.length===4);
-      assert.equal(await p.evaluate(()=>chaseTestGame.players.filter(p=>p.team==='police').length),1);
+      await p.waitForFunction(()=>chaseTestGame.players.length===5);
+      assert.equal(await p.evaluate(()=>chaseTestGame.players.filter(p=>p.team==='police').length),2);
       assert.equal(await p.evaluate(()=>chaseTestGame.players.find(p=>p.id==='me').team),team);
       await p.evaluate(()=>window.dispatchEvent(new CustomEvent('sitebackrequest',{cancelable:true})));
     }
@@ -208,13 +207,16 @@ const server=http.createServer((req,res)=>{
     assert.equal(await p.evaluate(()=>captureSounds),mutedSounds,'muted captures stay silent');
     console.log('PASS capture poses, dust effect, jail transition and final-capture result timing');
     if(external&&!safari){
-      const pages=[];for(let i=0;i<4;i++)pages.push(await open(['하나','두리','세나','네오'][i]));
+      const pages=[];for(let i=0;i<5;i++)pages.push(await open(['하나','두리','세나','네오','다온'][i]));
       await pages[0].locator('#hostTab').tap();await pages[0].waitForFunction(()=>/^\d{4}$/.test(document.querySelector('#roomCode').textContent.trim()));
       const code=(await pages[0].locator('#roomCode').innerText()).trim();
-      for(const page of pages.slice(1)){await page.locator('#joinCode').fill(code);await page.locator('#joinBtn').tap();await page.waitForTimeout(180);}
+      for(const [index,page] of pages.slice(1).entries()){
+        await page.locator('#joinCode').fill(code);await page.locator('#joinBtn').tap();await page.waitForTimeout(180);
+        if(index===2)assert(await pages[0].locator('#startBtn').isDisabled(),'four participants must wait for the fifth');
+      }
       const extra=await open('추가학생');await extra.locator('#joinCode').fill(code);await extra.locator('#joinBtn').tap();
-      await extra.waitForFunction(()=>document.querySelector('#joinStatus').textContent.includes('최대 4명'));await extra.context().close();
-      console.log('PASS server rejects a fifth participant');
+      await extra.waitForFunction(()=>document.querySelector('#joinStatus').textContent.includes('최대 5명'));await extra.context().close();
+      console.log('PASS server rejects a sixth participant');
       await pages[0].waitForFunction(()=>!document.querySelector('#startBtn').disabled);await pages[0].locator('#startBtn').tap();
       for(const [index,page] of pages.entries()){
         await page.waitForFunction(()=>chaseTestState?.phase==='setup');assert.equal(await page.locator('#clock').innerText(),'3:00');
@@ -224,17 +226,22 @@ const server=http.createServer((req,res)=>{
       await pages[0].waitForTimeout(500);for(const page of pages)assert.equal(await page.evaluate(()=>chaseTestState.elapsed),0);
       await pages[1].locator('#placementPanel:not(.hidden)').waitFor();
       for(const id of ['star','ediya','twosome'])await pages[1].locator(`#placementShops [data-shop="${id}"]`).tap();
-      for(const page of [pages[0],pages[2],pages[3]])assert.equal(await page.locator('#placementShops [aria-pressed=true]').count(),0);
+      for(const page of [pages[0],pages[2],pages[3],pages[4]])assert.equal(await page.locator('#placementShops [aria-pressed=true]').count(),0);
       await pages[1].locator('#placementConfirm').tap();
       for(const page of pages)await page.waitForFunction(()=>chaseTestState?.phase==='playing');
       assert.deepEqual(await pages[0].evaluate(()=>chaseTestGame.targets),['star','ediya','twosome']);
       console.log('PASS actual server: only the guest police chooses secret locations; timer and clues start after confirmation');
       for(const page of pages){await page.locator('#play:not(.hidden)').waitFor();await page.waitForFunction(()=>document.querySelector('#teamLabel').textContent.length>0);}
       assert.match(await pages[0].locator('#teamLabel').innerText(),/하나/);assert.match(await pages[1].locator('#teamLabel').innerText(),/두리/);
-      assert.equal(await pages[0].evaluate(()=>chaseTestGame.players.filter(p=>p.team==='police').length),1);
+      assert.equal(await pages[0].evaluate(()=>chaseTestGame.players.filter(p=>p.team==='police').length),2);
       await pages[0].locator('#clueBtn').tap();await pages[0].locator('#shareBtn').tap();
       await pages[2].locator('#clueBtn').tap();await pages[2].waitForFunction(()=>document.querySelector('#sharedClues').textContent.includes('하나'));
       await pages[1].locator('#clueBtn').tap();assert(!(await pages[1].locator('#sharedClues').innerText()).includes('하나'));
+      await pages[1].locator('#shareBtn').tap();
+      await pages[4].locator('#clueBtn').tap();await pages[4].waitForFunction(()=>document.querySelector('#sharedClues').textContent.includes('두리'));
+      await pages[4].locator('#shareBtn').tap();await pages[1].waitForFunction(()=>chaseTestState.shared.length===2);
+      assert.equal(await pages[0].evaluate(()=>chaseTestState.shared.length),1,'police clues stay private from all thieves');
+      await pages[4].locator('#closeClue').tap();
       await pages[1].locator('#closeClue').tap();await pages[1].locator('#viewBtn').tap();await pages[1].waitForTimeout(650);await pages[1].touchscreen.tap(1070,400);
       await pages[0].waitForFunction(()=>chaseTestGame.players[1].path.length>0);
       await pages[0].evaluate(()=>{const g=chaseTestGame;g.players.forEach(p=>p.immuneUntil=1000);Object.assign(g.players[1],{x:500,y:60,path:[],steering:null,dashReady:0});});
@@ -249,14 +256,14 @@ const server=http.createServer((req,res)=>{
       });
       for(const page of pages)await page.waitForFunction(()=>chaseReceivedCaptures.length>0);
       for(const page of pages)assert.equal(await page.locator('#captureText').innerText(),'1 / 5');
-      console.log('PASS capture event reaches all four players');
+      console.log('PASS capture event reaches all five players');
       const jail=await pages[1].evaluate(()=>{const s=Math.min(innerWidth/1600,(innerHeight-64)/1000);return{x:innerWidth/2+(ChaseWorld.nodes.jail.x-800)*s,y:innerHeight/2+(ChaseWorld.nodes.jail.y-500)*s};});
       await pages[1].touchscreen.tap(jail.x,jail.y);
       for(const page of pages)await page.waitForFunction(()=>chaseTestState.players.find(p=>p.name==='하나').escapeProtected,null,{timeout:20000});
       await pages[0].waitForTimeout(3300);
       for(const page of pages){assert.equal(await page.locator('#captureText').innerText(),'1 / 5');assert(await page.evaluate(()=>chaseTestState.players.find(p=>p.name==='하나').escapeProtected));}
-      console.log('PASS actual server: all four clients retain release protection against a camping police player');
-      console.log('PASS actual server: four clients start, private team clues, guest movement reaches host');
+      console.log('PASS actual server: all five clients retain release protection against a camping police player');
+      console.log('PASS actual server: five clients start, private team clues, guest movement reaches host');
       for(const page of pages)await page.context().close();
     }
     assert.deepEqual(errors,[]);console.log('Screenshots:',out);

@@ -4,20 +4,20 @@ const W=require('../learning/games/citychase/realtime-world');
 const E=require('../learning/games/citychase/realtime-engine');
 const Capture=require('../learning/games/citychase/realtime-capture');
 const roster=n=>Array.from({length:n},(_,i)=>({id:String(i),name:'학생 '+i}));
-const game=()=>{const g=E.create(roster(4),()=>.4);E.command(g,'1',{type:'PLACE_GEMS',shops:W.shops.slice(0,3).map(s=>s.id)});return g;};
+const game=()=>{const g=E.create(roster(5),()=>.4);E.command(g,'1',{type:'PLACE_GEMS',shops:W.shops.slice(0,3).map(s=>s.id)});at(g.players[4],W.nodes.b);return g;};
 function run(g,seconds){for(let i=0;i<Math.ceil(seconds*20);i++)E.tick(g,.05);}
 function at(player,point){Object.assign(player,{x:point.x,y:point.y,path:[],task:null,steering:null});}
 
-test('only four students can start, with one police and three thieves',()=>{
-  const g=E.create(roster(4));assert.equal(g.players.filter(p=>p.team==='police').length,1);assert.equal(g.players.filter(p=>p.team==='thief').length,3);
-  for(const n of [0,1,2,3,5,6,7,8,9])assert.throws(()=>E.create(roster(n)));
-  assert.throws(()=>E.create(roster(4).map(p=>({...p,team:'thief'}))));
+test('only five students can start, with two police and three thieves',()=>{
+  const g=E.create(roster(5));assert.equal(g.players.filter(p=>p.team==='police').length,2);assert.equal(g.players.filter(p=>p.team==='thief').length,3);
+  for(const n of [0,1,2,3,4,6,7,8,9])assert.throws(()=>E.create(roster(n)));
+  assert.throws(()=>E.create(roster(5).map(p=>({...p,team:'thief'}))));
 });
 test('only the police can place exactly three distinct real shops before the round',()=>{
-  const g=E.create(roster(4)),shops=W.shops.slice(0,3).map(s=>s.id),before=g.players.map(p=>({x:p.x,y:p.y}));
+  const g=E.create(roster(5)),shops=W.shops.slice(0,3).map(s=>s.id),before=g.players.map(p=>({x:p.x,y:p.y}));
   assert.equal(g.phase,'setup');assert.deepEqual(g.targets,[]);assert.deepEqual(g.events,[]);
   for(const p of g.players){assert.deepEqual(E.snapshot(g,p.id).clues,[]);assert.equal(E.snapshot(g,p.id).targets,undefined);}
-  for(const id of ['0','2','3','unknown'])assert.equal(E.command(g,id,{type:'PLACE_GEMS',shops}),false);
+  for(const id of ['0','2','3','4','unknown'])assert.equal(E.command(g,id,{type:'PLACE_GEMS',shops}),false);
   for(const invalid of [undefined,null,{},[],shops.slice(0,2),[...shops,'back'],[shops[0],shops[0],shops[1]],[shops[0],shops[1],'unknown'],[shops[0],shops[1],{}]])assert.equal(E.command(g,'1',{type:'PLACE_GEMS',shops:invalid}),false);
   for(const type of ['MOVE','DASH','SEARCH','RESCUE','SHARE','PING','STEER'])assert.equal(E.command(g,'0',{type,x:1,y:0}),false);
   run(g,30);assert.equal(g.elapsed,0);assert.deepEqual(g.players.map(p=>({x:p.x,y:p.y})),before);
@@ -29,7 +29,7 @@ test('only the police can place exactly three distinct real shops before the rou
 test('every police placement gives the thieves valid clues without exposing the secret list',()=>{
   for(const a of W.shops)for(const b of W.shops)for(const c of W.shops){
     const shops=[a.id,b.id,c.id];if(new Set(shops).size!==3)continue;
-    const g=E.create(roster(4));assert(E.command(g,'1',{type:'PLACE_GEMS',shops}));
+    const g=E.create(roster(5));assert(E.command(g,'1',{type:'PLACE_GEMS',shops}));
     for(let round=0;round<3;round++){
       g.score=round;const first=E.snapshot(g,'0'),second=E.snapshot(g,'2');
       assert.equal(first.targets,undefined);assert.equal(second.targets,undefined);
@@ -38,9 +38,40 @@ test('every police placement gives the thieves valid clues without exposing the 
   }
 });
 test('only a bot police player places automatically; a human police player waits for their choice',()=>{
-  const practice=roster(4).map((p,i)=>({...p,bot:i!==0})),auto=E.create(practice,()=>.4);
+  const practice=roster(5).map((p,i)=>({...p,bot:i!==0})),auto=E.create(practice,()=>.4);
   assert.equal(auto.phase,'playing');assert.equal(new Set(auto.targets).size,3);assert.equal(auto.events.filter(e=>e.type==='start').length,1);
-  const human=E.create(roster(4).map((p,i)=>({...p,bot:i!==1})),()=>.4);assert.equal(human.phase,'setup');run(human,5);assert.equal(human.elapsed,0);
+  const human=E.create(roster(5).map((p,i)=>({...p,bot:i!==1})),()=>.4);assert.equal(human.phase,'setup');run(human,5);assert.equal(human.elapsed,0);
+});
+test('a human police teammate gets placement ahead of an earlier bot police',()=>{
+  const g=E.create(roster(5).map((p,i)=>({...p,bot:i!==4})),()=>.4);
+  assert.equal(g.phase,'setup');assert.equal(g.placementBy,'4');
+  assert.equal(E.command(g,'1',{type:'PLACE_GEMS',shops:['star','ediya','giga']}),false);
+  assert(E.command(g,'4',{type:'PLACE_GEMS',shops:['star','ediya','giga']}));
+  assert.equal(E.command(g,'1',{type:'PLACE_GEMS',shops:['back','mac','lotte']}),false);
+  assert.deepEqual(g.targets,['star','ediya','giga']);
+});
+test('two police reaching one thief count one capture; either officer can capture',()=>{
+  const g=game(),thief=g.players[0],cops=g.players.filter(p=>p.team==='police');g.elapsed=6;
+  at(thief,W.nodes.p0);for(const cop of cops)at(cop,W.nodes.p0);
+  E.tick(g,.05);assert.equal(g.captures,1);assert.equal(g.events.filter(e=>e.type==='capture').length,1);
+  at(cops[0],W.nodes.a);at(g.players[2],W.nodes.p0);E.tick(g,.05);
+  assert.equal(g.captures,2);assert.equal(g.events.filter(e=>e.type==='capture').at(-1).policeId,cops[1].id);
+});
+test('identical matches keep identical outcomes under timer jitter and different frame rates',()=>{
+  for(const shops of [['star','ediya','giga'],['lotte','back','mac'],['twosome','giga','star']]){
+    const results=[];
+    for(const intervals of [[.05],[.049],[.051],[1/60],[.016,.084,.049,.051]]){
+      const g=E.create(roster(5));E.command(g,'1',{type:'PLACE_GEMS',shops});g.players.forEach(p=>p.bot=true);
+      for(let i=0;g.phase==='playing'&&i<20000;i++)E.tick(g,intervals[i%intervals.length]);
+      assert.equal(g.phase,'ended');results.push(E.snapshot(g,'0'));
+    }
+    for(const result of results.slice(1))assert.deepEqual(result,results[0]);
+  }
+});
+test('invalid time input and paused fractions cannot corrupt or advance a round',()=>{
+  const g=game();for(const dt of [NaN,Infinity,-1,0])E.tick(g,dt);assert.equal(g.elapsed,0);
+  E.tick(g,.049);assert.equal(g.elapsed,0);g.paused=true;E.tick(g,1);g.paused=false;
+  E.tick(g,.001);assert.equal(g.elapsed,0);E.tick(g,.049);assert.equal(g.elapsed,.05);
 });
 test('all streets and destinations are connected, with multiple loops and no phantom crossings',()=>{
   assert(W.edges.length-Object.keys(W.nodes).length+1>=20);
@@ -105,7 +136,7 @@ test('automatic release, dash cooldown, paused clock and timeout work',()=>{
   g.elapsed=179.95;E.tick(g,.1);assert.equal(g.winner,'police');
 });
 test('a full bot match advances to a result with finite on-road positions',()=>{
-  const g=E.create(roster(4).map(p=>({...p,bot:true})),()=>.2);run(g,185);
+  const g=E.create(roster(5).map(p=>({...p,bot:true})),()=>.2);run(g,185);
   assert.equal(g.phase,'ended');assert(['police','thief'].includes(g.winner));
   for(const p of g.players){assert(Number.isFinite(p.x)&&Number.isFinite(p.y));assert(W.nearest(p).distance<.01);}
 });
@@ -247,10 +278,12 @@ test('a carrying bot uses another existing entrance when police camp at the hide
   let caught=false;for(let i=0;i<400&&!g.score;i++){E.tick(g,.05);caught ||= p.jailedUntil>g.elapsed;assert(W.nearest(p).distance<.001);}
   assert.equal(caught,false);assert.equal(g.score,1);assert(W.distance(p,W.nodes.hideout)<E.BANK_RADIUS);
 });
-test('the lone police player in a four-person game receives both clue pieces',()=>{
-  const g=game(),cop=g.players.find(p=>p.team==='police'),pieces=E.clues(g,cop);
-  assert.equal(pieces.length,2);assert.deepEqual(pieces[0].candidates.filter(id=>pieces[1].candidates.includes(id)),[g.targets[0]]);
-  E.command(g,cop.id,{type:'SHARE'});assert.equal(E.snapshot(g,cop.id).shared.length,2);assert.equal(E.snapshot(g,g.players[0].id).shared.length,0);
+test('two police receive complementary clues and share only within their team',()=>{
+  const g=game(),cops=g.players.filter(p=>p.team==='police'),pieces=cops.map(p=>E.clues(g,p));
+  assert(pieces.every(clues=>clues.length===1));assert.deepEqual(pieces[0][0].candidates.filter(id=>pieces[1][0].candidates.includes(id)),[g.targets[0]]);
+  for(const cop of cops)E.command(g,cop.id,{type:'SHARE'});
+  for(const cop of cops)assert.equal(E.snapshot(g,cop.id).shared.length,2);
+  assert.equal(E.snapshot(g,g.players[0].id).shared.length,0);
 });
 
 test('bots and people use the same movement speeds, including carrying and dash',()=>{

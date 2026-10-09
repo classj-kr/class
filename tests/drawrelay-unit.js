@@ -3,6 +3,7 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const vm = require("node:vm");
 const DrawRelay = require(path.resolve(__dirname, "..", "game-hub-server", "drawrelay"));
 
 function createPlayers(count) {
@@ -17,9 +18,24 @@ const threePlayer = createPlayers(3);
 assert.equal(DrawRelay.startGame(threePlayer).ok, false, "3인전은 시작할 수 없어야 합니다.");
 assert.match(DrawRelay.startGame(threePlayer).error, /4명부터 8명/);
 
+assert.deepEqual(Object.keys(DrawRelay.PACKS), ["proverbs", "history"]);
+for (const pack of Object.values(DrawRelay.PACKS)) {
+  assert.ok(pack.words.length >= 8, "8인전에도 서로 다른 제시어가 있어야 합니다.");
+  assert.equal(new Set(pack.words).size, pack.words.length, "꾸러미 안에 중복 제시어가 없어야 합니다.");
+}
+const proverbContext = { window: {} };
+for (const filename of ["proverbs-data.js", "proverbs-essential-additions.js"]) {
+  const source = fs.readFileSync(path.resolve(__dirname, "..", "learning", "literacy-numeracy", "proverbs", filename), "utf8");
+  vm.runInNewContext(source, proverbContext, { filename });
+}
+const sourceProverbs = new Set(proverbContext.window.PROVERB_BANKS.ko.map(item => item.proverb));
+for (const proverb of DrawRelay.PACKS.proverbs.words) {
+  assert.ok(sourceProverbs.has(proverb), `속담 앱에 없는 제시어: ${proverb}`);
+}
+
 const eightPlayer = createPlayers(8);
 assert.equal(DrawRelay.addPlayer(eightPlayer, "p9", "아홉").ok, false, "9번째 참가자는 입장할 수 없어야 합니다.");
-assert.equal(DrawRelay.startGame(eightPlayer, "society", () => 0.3).ok, true, "8인전까지 시작할 수 있어야 합니다.");
+assert.equal(DrawRelay.startGame(eightPlayer, "history", () => 0.3).ok, true, "역사 꾸러미로 8인전까지 시작할 수 있어야 합니다.");
 
 const game = createPlayers(4);
 assert.equal(DrawRelay.startGame(game, "science", () => 0.42, 1000).ok, true);
@@ -87,6 +103,9 @@ assert.match(html, /autoCreate:\s*false/);
 assert.match(html, /hostTab.+addEventListener.+click.+lobby\.createRoom\(\)/);
 assert.match(html, /minPlayers:\s*4/);
 assert.match(html, /maxPlayers:\s*8/);
+assert.match(html, /<option value="proverbs">속담<\/option>/);
+assert.match(html, /<option value="history">역사<\/option>/);
+assert.doesNotMatch(html, /<option value="(?:general|science|society)">/);
 assert.match(html, /id=["']drawingCanvas["']/);
 assert.match(html, /pointerdown/);
 assert.match(html, /SUBMIT_DRAWING/);
@@ -104,4 +123,4 @@ assert.match(server, /DRAWRELAY_ACTION/);
 assert.match(server, /DrawRelay\.stateFor/);
 assert.match(server, /scheduleDrawRelayDeadline/);
 
-console.log("drawrelay-unit: 4-8 players, private prompts, drawing sanitation, circulation and reveal ok");
+console.log("drawrelay-unit: two prompt packs, proverb source, 4-8 players and relay flow ok");

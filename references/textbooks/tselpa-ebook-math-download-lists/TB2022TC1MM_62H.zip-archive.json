@@ -1,0 +1,1320 @@
+{
+  "grade": "6",
+  "author": "수학(한대희)",
+  "sourceUrl": "https://ele.tsherpa.co.kr/curri/E-curri_list.html?semester=2&grade=6&curri=E-curri06-math-H_2026",
+  "url": "https://cdata2.tsherpa.co.kr/ebook/tsherpa/22/22ebook_E/TB2022TC1MM_62H/resource/index.html",
+  "zipUrl": "https://cdata.chunjae.co.kr/tsherpabigfile/popup/2022/E/TB2022TC1MM_62H.zip",
+  "archiveBytes": 3397402197,
+  "selected": [
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_10차시_단원 평가(기본).hwp",
+      "bytes": 871424,
+      "crc32": 1474814598
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_10차시_단원 평가(보충).hwp",
+      "bytes": 807424,
+      "crc32": 2801517323
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_10차시_단원 평가(심화).hwp",
+      "bytes": 877056,
+      "crc32": 826023075
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_10차시_서술형 평가.hwp",
+      "bytes": 514560,
+      "crc32": 2705094678
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_10차시_수업 자료_수학익힘.pdf",
+      "bytes": 295625,
+      "crc32": 252320003
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_10차시_학생용 자기 평가지.hwp",
+      "bytes": 775680,
+      "crc32": 36285326
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_1차시_수업 자료_수학익힘.pdf",
+      "bytes": 1243767,
+      "crc32": 3994713263
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_1차시_수업 자료_활동지.hwp",
+      "bytes": 1701888,
+      "crc32": 2172439948
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_1차시_진단 평가.hwp",
+      "bytes": 464384,
+      "crc32": 4286842827
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_1차시_학생용 자기 평가지.hwp",
+      "bytes": 775168,
+      "crc32": 2987846478
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_2차시_기초 학습지.hwp",
+      "bytes": 254976,
+      "crc32": 2591309477
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_2차시_수업 자료_수학익힘.pdf",
+      "bytes": 8661142,
+      "crc32": 885023416
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_2차시_수업 자료_활동지.hwp",
+      "bytes": 3236864,
+      "crc32": 4219148348
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_2차시_학생용 자기 평가지.hwp",
+      "bytes": 775680,
+      "crc32": 1016044002
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_2차시_형성 평가.hwp",
+      "bytes": 215552,
+      "crc32": 732206519
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_3차시_기초 학습지.hwp",
+      "bytes": 277504,
+      "crc32": 2004323840
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_3차시_수업 자료_수학익힘.pdf",
+      "bytes": 351216,
+      "crc32": 31319945
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_3차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 1418002919
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_3차시_형성 평가.hwp",
+      "bytes": 224256,
+      "crc32": 927104527
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_4차시_기초 학습지.hwp",
+      "bytes": 188416,
+      "crc32": 1819044666
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_4차시_수업 자료_수학익힘.pdf",
+      "bytes": 3002786,
+      "crc32": 1679015780
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_4차시_수행 평가.hwp",
+      "bytes": 499200,
+      "crc32": 2330928454
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_4차시_학생용 자기 평가지.hwp",
+      "bytes": 774144,
+      "crc32": 118270461
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_4차시_형성 평가.hwp",
+      "bytes": 229888,
+      "crc32": 333828495
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_5차시_기초 학습지.hwp",
+      "bytes": 187392,
+      "crc32": 1232803656
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_5차시_수업 자료_수학익힘.pdf",
+      "bytes": 355434,
+      "crc32": 498588074
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_5차시_수업 자료_활동지.hwp",
+      "bytes": 1633792,
+      "crc32": 2637635090
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_5차시_학생용 자기 평가지.hwp",
+      "bytes": 774144,
+      "crc32": 3997287661
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_5차시_형성 평가.hwp",
+      "bytes": 177152,
+      "crc32": 1544665048
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_6-7차시_수업 자료_수학익힘.pdf",
+      "bytes": 6879272,
+      "crc32": 981379713
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_6차시_기초 학습지.hwp",
+      "bytes": 364544,
+      "crc32": 3394644187
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_6차시_학생용 자기 평가지.hwp",
+      "bytes": 775168,
+      "crc32": 1765913041
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_6차시_형성 평가.hwp",
+      "bytes": 322048,
+      "crc32": 2705069087
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_7차시_기초 학습지.hwp",
+      "bytes": 526848,
+      "crc32": 3823797967
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_7차시_수행 평가.hwp",
+      "bytes": 692224,
+      "crc32": 2882592256
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_7차시_학생용 자기 평가지.hwp",
+      "bytes": 774144,
+      "crc32": 2116977616
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_7차시_형성 평가.hwp",
+      "bytes": 410624,
+      "crc32": 4141822849
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_8차시_학생용 동료 평가지.hwp",
+      "bytes": 789504,
+      "crc32": 3257250129
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_8차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 2686652706
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_9차시_학생용 동료 평가지.hwp",
+      "bytes": 786432,
+      "crc32": 1923591204
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-1/6-2-1_9차시_학생용 자기 평가지.hwp",
+      "bytes": 770560,
+      "crc32": 2180995629
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_10차시_수업 자료_활동지.hwp",
+      "bytes": 1046528,
+      "crc32": 3213995686
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_10차시_학생용 동료 평가지.hwp",
+      "bytes": 790016,
+      "crc32": 1110083930
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_10차시_학생용 자기 평가지.hwp",
+      "bytes": 773120,
+      "crc32": 3183173275
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_11차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 2038599472
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_12차시_단원 평가(기본).hwp",
+      "bytes": 790528,
+      "crc32": 3371407552
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_12차시_단원 평가(보충).hwp",
+      "bytes": 742400,
+      "crc32": 1574105559
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_12차시_단원 평가(심화).hwp",
+      "bytes": 829440,
+      "crc32": 548992113
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_12차시_서술형 평가.hwp",
+      "bytes": 624128,
+      "crc32": 4245079674
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_12차시_수업 자료_수학익힘.pdf",
+      "bytes": 178257,
+      "crc32": 1608133339
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_12차시_학생용 자기 평가지.hwp",
+      "bytes": 782336,
+      "crc32": 1482589835
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_1차시_수업 자료_수학익힘.pdf",
+      "bytes": 1101948,
+      "crc32": 735048042
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_1차시_수업 자료_활동지.hwp",
+      "bytes": 1706496,
+      "crc32": 591975183
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_1차시_진단 평가.hwp",
+      "bytes": 354816,
+      "crc32": 2946367256
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_1차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 191695683
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_2차시_기초 학습지.hwp",
+      "bytes": 307200,
+      "crc32": 3711670469
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_2차시_수업 자료_수학익힘.pdf",
+      "bytes": 6008462,
+      "crc32": 3223288264
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_2차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 1535589576
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_2차시_형성 평가.hwp",
+      "bytes": 164864,
+      "crc32": 3845362406
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_3차시_기초 학습지.hwp",
+      "bytes": 281600,
+      "crc32": 535002372
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_3차시_수업 자료_수학익힘.pdf",
+      "bytes": 231993,
+      "crc32": 3555451608
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_3차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 2658139122
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_3차시_형성 평가.hwp",
+      "bytes": 181760,
+      "crc32": 2509842993
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_4차시_기초 학습지.hwp",
+      "bytes": 284672,
+      "crc32": 3733349835
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_4차시_수업 자료_수학익힘.pdf",
+      "bytes": 462910,
+      "crc32": 1082081711
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_4차시_수업 자료_활동지.hwp",
+      "bytes": 2769408,
+      "crc32": 3124832059
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_4차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 2208587987
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_4차시_형성 평가.hwp",
+      "bytes": 182784,
+      "crc32": 3247381232
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_5차시_기초 학습지.hwp",
+      "bytes": 221696,
+      "crc32": 838287480
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_5차시_수업 자료_수학익힘.pdf",
+      "bytes": 257991,
+      "crc32": 77650096
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_5차시_수업 자료_활동지.hwp",
+      "bytes": 1857536,
+      "crc32": 3627986201
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_5차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 2667866756
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_5차시_형성 평가.hwp",
+      "bytes": 188416,
+      "crc32": 4280897603
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_6차시_기초 학습지.hwp",
+      "bytes": 281600,
+      "crc32": 739889579
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_6차시_수업 자료_수학익힘.pdf",
+      "bytes": 357939,
+      "crc32": 938832655
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_6차시_수행 평가.hwp",
+      "bytes": 415744,
+      "crc32": 194982044
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_6차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 3037264170
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_6차시_형성 평가.hwp",
+      "bytes": 181760,
+      "crc32": 3780285068
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_7차시_기초 학습지.hwp",
+      "bytes": 313856,
+      "crc32": 160953416
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_7차시_수업 자료_수학익힘.pdf",
+      "bytes": 4297347,
+      "crc32": 2707079361
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_7차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 2242803955
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_7차시_형성 평가.hwp",
+      "bytes": 155648,
+      "crc32": 2817431764
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_8차시_기초 학습지.hwp",
+      "bytes": 202752,
+      "crc32": 1608331211
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_8차시_수업 자료_수학익힘.pdf",
+      "bytes": 305596,
+      "crc32": 3413208294
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_8차시_학생용 자기 평가지.hwp",
+      "bytes": 773120,
+      "crc32": 677822857
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_8차시_형성 평가.hwp",
+      "bytes": 179200,
+      "crc32": 3559310149
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_9차시_기초 학습지.hwp",
+      "bytes": 220160,
+      "crc32": 1425946441
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_9차시_수업 자료_수학익힘.pdf",
+      "bytes": 522942,
+      "crc32": 885185263
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_9차시_수행 평가.hwp",
+      "bytes": 515584,
+      "crc32": 1930845871
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_9차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 266905981
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-2/6-2-2_9차시_형성 평가.hwp",
+      "bytes": 238592,
+      "crc32": 1009561872
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_10-11차시_학생용 동료 평가지.hwp",
+      "bytes": 790528,
+      "crc32": 1491282936
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_10-11차시_학생용 자기 평가지.hwp",
+      "bytes": 776704,
+      "crc32": 1197283691
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_12차시_단원 평가(기본).hwp",
+      "bytes": 2594304,
+      "crc32": 1465620100
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_12차시_단원 평가(보충).hwp",
+      "bytes": 2116096,
+      "crc32": 2256017815
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_12차시_단원 평가(심화).hwp",
+      "bytes": 3273216,
+      "crc32": 3199712535
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_12차시_서술형 평가.hwp",
+      "bytes": 1164288,
+      "crc32": 31448980
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_12차시_수업 자료_수학익힘.pdf",
+      "bytes": 374577,
+      "crc32": 680047769
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_12차시_학생용 자기 평가지.hwp",
+      "bytes": 783360,
+      "crc32": 2491409825
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_1차시_수업 자료_수학익힘.pdf",
+      "bytes": 1016248,
+      "crc32": 462271686
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_1차시_수업 자료_활동지.hwp",
+      "bytes": 1043456,
+      "crc32": 895441941
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_1차시_진단 평가.hwp",
+      "bytes": 1227776,
+      "crc32": 4122274218
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_1차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 253688282
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_2차시_기초 학습지.hwp",
+      "bytes": 733184,
+      "crc32": 3175859352
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_2차시_수업 자료_수학익힘.pdf",
+      "bytes": 1006713,
+      "crc32": 1856709507
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_2차시_학생용 자기 평가지.hwp",
+      "bytes": 774656,
+      "crc32": 590388172
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_2차시_형성 평가.hwp",
+      "bytes": 391680,
+      "crc32": 1352752799
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_3차시_기초 학습지.hwp",
+      "bytes": 1106432,
+      "crc32": 1509905359
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_3차시_수업 자료_수학익힘.pdf",
+      "bytes": 387706,
+      "crc32": 2704420556
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_3차시_학생용 자기 평가지.hwp",
+      "bytes": 778240,
+      "crc32": 3174334700
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_3차시_형성 평가.hwp",
+      "bytes": 973312,
+      "crc32": 475479890
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_4차시_기초 학습지.hwp",
+      "bytes": 907776,
+      "crc32": 2420185762
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_4차시_수업 자료_수학익힘.pdf",
+      "bytes": 262935,
+      "crc32": 2711463782
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_4차시_수행 평가.hwp",
+      "bytes": 1158144,
+      "crc32": 2933735390
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_4차시_학생용 자기 평가지.hwp",
+      "bytes": 774656,
+      "crc32": 1222411582
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_4차시_형성 평가.hwp",
+      "bytes": 496128,
+      "crc32": 2554377709
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_5차시_기초 학습지.hwp",
+      "bytes": 1043456,
+      "crc32": 2437886215
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_5차시_수업 자료_수학익힘.pdf",
+      "bytes": 272460,
+      "crc32": 4196781473
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_5차시_학생용 자기 평가지.hwp",
+      "bytes": 775168,
+      "crc32": 4164168297
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_5차시_형성 평가.hwp",
+      "bytes": 656384,
+      "crc32": 234929269
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_6차시_기초 학습지.hwp",
+      "bytes": 904704,
+      "crc32": 2018843896
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_6차시_수업 자료_수학익힘.pdf",
+      "bytes": 4108113,
+      "crc32": 3800970003
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_6차시_수업 자료_활동지.hwp",
+      "bytes": 3026432,
+      "crc32": 3292465401
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_6차시_학생용 자기 평가지.hwp",
+      "bytes": 778240,
+      "crc32": 2220695653
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_6차시_형성 평가.hwp",
+      "bytes": 737792,
+      "crc32": 4239568477
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_7차시_기초 학습지.hwp",
+      "bytes": 1181696,
+      "crc32": 3623213585
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_7차시_수업 자료_수학익힘.pdf",
+      "bytes": 362753,
+      "crc32": 2661274137
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_7차시_학생용 자기 평가지.hwp",
+      "bytes": 780288,
+      "crc32": 4113319743
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_7차시_형성 평가.hwp",
+      "bytes": 750592,
+      "crc32": 102688570
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_8차시_기초 학습지.hwp",
+      "bytes": 1106944,
+      "crc32": 3597244245
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_8차시_수업 자료_수학익힘.pdf",
+      "bytes": 272908,
+      "crc32": 4024664320
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_8차시_수업 자료_활동지.hwp",
+      "bytes": 5126656,
+      "crc32": 587443731
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_8차시_수행 평가.hwp",
+      "bytes": 887808,
+      "crc32": 2556423268
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_8차시_학생용 자기 평가지.hwp",
+      "bytes": 774144,
+      "crc32": 3715188569
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_8차시_형성 평가.hwp",
+      "bytes": 840704,
+      "crc32": 740016488
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_9차시_학생용 동료 평가지.hwp",
+      "bytes": 790016,
+      "crc32": 873491815
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-3/6-2-3_9차시_학생용 자기 평가지.hwp",
+      "bytes": 774656,
+      "crc32": 777848596
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_10차시_학생용 자기 평가지.hwp",
+      "bytes": 771072,
+      "crc32": 3180235314
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_11차시_단원 평가(기본).hwp",
+      "bytes": 848896,
+      "crc32": 3345275766
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_11차시_단원 평가(보충).hwp",
+      "bytes": 929280,
+      "crc32": 4224137288
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_11차시_단원 평가(심화).hwp",
+      "bytes": 803328,
+      "crc32": 40651055
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_11차시_서술형 평가.hwp",
+      "bytes": 463872,
+      "crc32": 4003350255
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_11차시_수업 자료_수학익힘.pdf",
+      "bytes": 307058,
+      "crc32": 3757039731
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_11차시_학생용 자기 평가지.hwp",
+      "bytes": 779264,
+      "crc32": 3919218552
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_1차시_수업 자료_수학익힘.pdf",
+      "bytes": 1082524,
+      "crc32": 4228801841
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_1차시_수업 자료_활동지.hwp",
+      "bytes": 1863680,
+      "crc32": 775643016
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_1차시_진단 평가.hwp",
+      "bytes": 732160,
+      "crc32": 750088321
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_1차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 4228349332
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_2차시_기초 학습지.hwp",
+      "bytes": 293888,
+      "crc32": 2116707287
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_2차시_수업 자료_수학익힘.pdf",
+      "bytes": 291798,
+      "crc32": 2681213805
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_2차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 1163491892
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_2차시_형성 평가.hwp",
+      "bytes": 173056,
+      "crc32": 994555311
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_3차시_기초 학습지.hwp",
+      "bytes": 289280,
+      "crc32": 1309201874
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_3차시_수업 자료_수학익힘.pdf",
+      "bytes": 515797,
+      "crc32": 4290213005
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_3차시_학생용 자기 평가지.hwp",
+      "bytes": 776192,
+      "crc32": 3773002351
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_3차시_형성 평가.hwp",
+      "bytes": 185856,
+      "crc32": 310854068
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_기초 학습지.hwp",
+      "bytes": 241664,
+      "crc32": 633500568
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_수업 자료_수학익힘.pdf",
+      "bytes": 4072712,
+      "crc32": 531524234
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_수업 자료_활동지.hwp",
+      "bytes": 2665984,
+      "crc32": 3415821212
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_수행 평가.hwp",
+      "bytes": 371712,
+      "crc32": 687646507
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_학생용 동료 평가지.hwp",
+      "bytes": 790016,
+      "crc32": 3176488986
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 595471229
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_4차시_형성 평가.hwp",
+      "bytes": 200704,
+      "crc32": 3557071347
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_5차시_기초 학습지.hwp",
+      "bytes": 294912,
+      "crc32": 860465808
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_5차시_수업 자료_수학익힘.pdf",
+      "bytes": 305988,
+      "crc32": 1092039266
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_5차시_학생용 자기 평가지.hwp",
+      "bytes": 773120,
+      "crc32": 2246706410
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_5차시_형성 평가.hwp",
+      "bytes": 323584,
+      "crc32": 717546722
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_6차시_기초 학습지.hwp",
+      "bytes": 395776,
+      "crc32": 93960240
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_6차시_수업 자료_수학익힘.pdf",
+      "bytes": 394405,
+      "crc32": 989171958
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_6차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 258818032
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_6차시_형성 평가.hwp",
+      "bytes": 193536,
+      "crc32": 181009746
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_7차시_기초 학습지.hwp",
+      "bytes": 213504,
+      "crc32": 2876971839
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_7차시_수업 자료_수학익힘.pdf",
+      "bytes": 2226204,
+      "crc32": 950714072
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_7차시_수행 평가.hwp",
+      "bytes": 350208,
+      "crc32": 3968798999
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_7차시_학생용 자기 평가지.hwp",
+      "bytes": 771072,
+      "crc32": 1304724449
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_7차시_형성 평가.hwp",
+      "bytes": 343552,
+      "crc32": 929990845
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_8차시_기초 학습지.hwp",
+      "bytes": 238080,
+      "crc32": 4063731922
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_8차시_수업 자료_수학익힘.pdf",
+      "bytes": 414980,
+      "crc32": 572033839
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_8차시_학생용 자기 평가지.hwp",
+      "bytes": 773632,
+      "crc32": 1631191463
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_8차시_형성 평가.hwp",
+      "bytes": 168960,
+      "crc32": 562333077
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_9차시_수업 자료_활동지.hwp",
+      "bytes": 906752,
+      "crc32": 1852876166
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_9차시_학생용 동료 평가지.hwp",
+      "bytes": 789504,
+      "crc32": 3070173920
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-4/6-2-4_9차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 349406384
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_10차시_단원 평가(기본).hwp",
+      "bytes": 1533952,
+      "crc32": 1184086871
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_10차시_단원 평가(보충).hwp",
+      "bytes": 1884672,
+      "crc32": 74309535
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_10차시_단원 평가(심화).hwp",
+      "bytes": 1480704,
+      "crc32": 4171411353
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_10차시_서술형 평가.hwp",
+      "bytes": 753152,
+      "crc32": 403176402
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_10차시_수업 자료_수학익힘.pdf",
+      "bytes": 208967,
+      "crc32": 2011122808
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_10차시_학생용 자기 평가지.hwp",
+      "bytes": 773632,
+      "crc32": 2355801007
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_1차시_수업 자료_수학익힘.pdf",
+      "bytes": 1167164,
+      "crc32": 4268847708
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_1차시_수업 자료_활동지.hwp",
+      "bytes": 1418752,
+      "crc32": 3000475878
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_1차시_진단 평가.hwp",
+      "bytes": 726528,
+      "crc32": 2923843567
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_1차시_학생용 자기 평가지.hwp",
+      "bytes": 774656,
+      "crc32": 1773288472
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_2차시_기초 학습지.hwp",
+      "bytes": 406528,
+      "crc32": 3582865462
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_2차시_수업 자료_수학익힘.pdf",
+      "bytes": 5954018,
+      "crc32": 2374678742
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_2차시_학생용 자기 평가지.hwp",
+      "bytes": 770560,
+      "crc32": 1813636344
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_2차시_형성 평가.hwp",
+      "bytes": 308224,
+      "crc32": 84933460
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_3차시_기초 학습지.hwp",
+      "bytes": 1053184,
+      "crc32": 2509496651
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_3차시_수업 자료_수학익힘.pdf",
+      "bytes": 320168,
+      "crc32": 2828647873
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_3차시_학생용 자기 평가지.hwp",
+      "bytes": 775680,
+      "crc32": 3212366521
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_3차시_형성 평가.hwp",
+      "bytes": 261120,
+      "crc32": 4244703243
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_4차시_기초 학습지.hwp",
+      "bytes": 525824,
+      "crc32": 4255230222
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_4차시_수업 자료_수학익힘.pdf",
+      "bytes": 303666,
+      "crc32": 580036723
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_4차시_수행 평가.hwp",
+      "bytes": 560640,
+      "crc32": 4243710462
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_4차시_학생용 자기 평가지.hwp",
+      "bytes": 776192,
+      "crc32": 1527799253
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_4차시_형성 평가.hwp",
+      "bytes": 410112,
+      "crc32": 2150175765
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_5차시_기초 학습지.hwp",
+      "bytes": 828416,
+      "crc32": 1380240611
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_5차시_수업 자료_수학익힘.pdf",
+      "bytes": 167416,
+      "crc32": 3855464221
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_5차시_수업 자료_활동지.hwp",
+      "bytes": 1463296,
+      "crc32": 321325736
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_5차시_학생용 자기 평가지.hwp",
+      "bytes": 773120,
+      "crc32": 1879265944
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_5차시_형성 평가.hwp",
+      "bytes": 415744,
+      "crc32": 1520703680
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_6차시_기초 학습지.hwp",
+      "bytes": 638464,
+      "crc32": 570532235
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_6차시_수업 자료_수학익힘.pdf",
+      "bytes": 470286,
+      "crc32": 1945888481
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_6차시_학생용 자기 평가지.hwp",
+      "bytes": 773632,
+      "crc32": 1596641188
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_6차시_형성 평가.hwp",
+      "bytes": 742912,
+      "crc32": 380840204
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_7차시_기초 학습지.hwp",
+      "bytes": 710656,
+      "crc32": 607778754
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_7차시_수업 자료_수학익힘.pdf",
+      "bytes": 195304,
+      "crc32": 3849978834
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_7차시_수행 평가.hwp",
+      "bytes": 990208,
+      "crc32": 3160337165
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_7차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 480902801
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_7차시_형성 평가.hwp",
+      "bytes": 483840,
+      "crc32": 379095176
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_8차시_수업 자료_활동지.hwp",
+      "bytes": 3081216,
+      "crc32": 3379038570
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_8차시_학생용 동료 평가지.hwp",
+      "bytes": 789504,
+      "crc32": 3065837464
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_8차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 2522538785
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_9차시_학생용 동료 평가지.hwp",
+      "bytes": 790016,
+      "crc32": 2830951791
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-5/6-2-5_9차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 3530454618
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_1차시_수업 자료_수학익힘.pdf",
+      "bytes": 1186309,
+      "crc32": 1668111310
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_1차시_수업 자료_활동지.hwp",
+      "bytes": 1029120,
+      "crc32": 1267423069
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_1차시_진단 평가.hwp",
+      "bytes": 866304,
+      "crc32": 170757841
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_1차시_학생용 자기 평가지.hwp",
+      "bytes": 772096,
+      "crc32": 1843068356
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_2차시_기초 학습지.hwp",
+      "bytes": 867328,
+      "crc32": 2724548659
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_2차시_수업 자료_수학익힘.pdf",
+      "bytes": 4061790,
+      "crc32": 3480611639
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_2차시_학생용 자기 평가지.hwp",
+      "bytes": 777728,
+      "crc32": 716634291
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_2차시_형성 평가.hwp",
+      "bytes": 876032,
+      "crc32": 321907985
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_3-4차시_기초 학습지.hwp",
+      "bytes": 635904,
+      "crc32": 1694925206
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_3-4차시_수업 자료_수학익힘.pdf",
+      "bytes": 181764,
+      "crc32": 3222274330
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_3-4차시_수행 평가.hwp",
+      "bytes": 744448,
+      "crc32": 2176044534
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_3-4차시_학생용 동료 평가지.hwp",
+      "bytes": 792064,
+      "crc32": 2456332424
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_3-4차시_학생용 자기 평가지.hwp",
+      "bytes": 773120,
+      "crc32": 1163495651
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_3-4차시_형성 평가.hwp",
+      "bytes": 572928,
+      "crc32": 3989474122
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_5차시_기초 학습지.hwp",
+      "bytes": 865280,
+      "crc32": 4184136547
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_5차시_수업 자료_수학익힘.pdf",
+      "bytes": 3174481,
+      "crc32": 2235978659
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_5차시_수업 자료_활동지.hwp",
+      "bytes": 1096192,
+      "crc32": 4253415025
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_5차시_학생용 자기 평가지.hwp",
+      "bytes": 775680,
+      "crc32": 2316937667
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_5차시_형성 평가.hwp",
+      "bytes": 976384,
+      "crc32": 922681564
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_6차시_기초 학습지.hwp",
+      "bytes": 1157120,
+      "crc32": 1229615977
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_6차시_수업 자료_수학익힘.pdf",
+      "bytes": 203395,
+      "crc32": 3844694958
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_6차시_수행 평가.hwp",
+      "bytes": 2327552,
+      "crc32": 2374323760
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_6차시_학생용 자기 평가지.hwp",
+      "bytes": 774144,
+      "crc32": 560641654
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_6차시_형성 평가.hwp",
+      "bytes": 1041408,
+      "crc32": 1553186518
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_7차시_수업 자료_활동지.hwp",
+      "bytes": 2961920,
+      "crc32": 2028391034
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_7차시_학생용 동료 평가지.hwp",
+      "bytes": 789504,
+      "crc32": 2512736791
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_7차시_학생용 자기 평가지.hwp",
+      "bytes": 772608,
+      "crc32": 571691407
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_8차시_학생용 동료 평가지.hwp",
+      "bytes": 792064,
+      "crc32": 2819921070
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_8차시_학생용 자기 평가지.hwp",
+      "bytes": 771584,
+      "crc32": 3841227366
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_9차시_단원 평가(기본).hwp",
+      "bytes": 2173952,
+      "crc32": 858588408
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_9차시_단원 평가(보충).hwp",
+      "bytes": 2240512,
+      "crc32": 262773234
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_9차시_단원 평가(심화).hwp",
+      "bytes": 1903616,
+      "crc32": 1003630207
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_9차시_서술형 평가.hwp",
+      "bytes": 766464,
+      "crc32": 563460423
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_9차시_수업 자료_수학익힘.pdf",
+      "bytes": 204765,
+      "crc32": 3239197852
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/6-2-6/6-2-6_9차시_학생용 자기 평가지.hwp",
+      "bytes": 779264,
+      "crc32": 599567812
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/공통자료_수학익힘 6-2.pdf",
+      "bytes": 44321168,
+      "crc32": 2970722973
+    },
+    {
+      "member": "수학 지도서 6-2/app/resource/data/공통자료_수학익힘 6-2_정답과 풀이.pdf",
+      "bytes": 41473522,
+      "crc32": 1036066947
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=2&exam=E-exam02-math_2024&tab=E-exam02-math_2024_03",
+  "groups": [
+    {
+      "id": "accordion-664453-body",
+      "title": "1. 세 자리 수",
+      "files": [
+        {
+          "action": "downloadFile('1997108');",
+          "resourceId": "1997108",
+          "title": "수학_2-1-1_단원평가(기본)_1회"
+        },
+        {
+          "action": "downloadFile('1997225');",
+          "resourceId": "1997225",
+          "title": "수학_2-1-1_단원평가(기본)_2회"
+        },
+        {
+          "action": "downloadFile('1997226');",
+          "resourceId": "1997226",
+          "title": "수학_2-1-1_단원평가(심화)_1회"
+        },
+        {
+          "action": "downloadFile('1997227');",
+          "resourceId": "1997227",
+          "title": "수학_2-1-1_단원평가(심화)_2회"
+        },
+        {
+          "action": "downloadFile('1996402');",
+          "resourceId": "1996402",
+          "title": "수학_2-1-1_단원평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664454-body",
+      "title": "2. 여러 가지 도형",
+      "files": [
+        {
+          "action": "downloadFile('1997235');",
+          "resourceId": "1997235",
+          "title": "수학_2-1-2_단원평가(기본)_1회"
+        },
+        {
+          "action": "downloadFile('1997236');",
+          "resourceId": "1997236",
+          "title": "수학_2-1-2_단원평가(기본)_2회"
+        },
+        {
+          "action": "downloadFile('1997237');",
+          "resourceId": "1997237",
+          "title": "수학_2-1-2_단원평가(심화)_1회"
+        },
+        {
+          "action": "downloadFile('1997238');",
+          "resourceId": "1997238",
+          "title": "수학_2-1-2_단원평가(심화)_2회"
+        },
+        {
+          "action": "downloadFile('2020424');",
+          "resourceId": "2020424",
+          "title": "수학_2-1-2_단원평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664455-body",
+      "title": "3. 덧셈과 뺄셈",
+      "files": [
+        {
+          "action": "downloadFile('2016652');",
+          "resourceId": "2016652",
+          "title": "수학_2-1-3_단원평가(기본)_1회"
+        },
+        {
+          "action": "downloadFile('2016651');",
+          "resourceId": "2016651",
+          "title": "수학_2-1-3_단원평가(기본)_2회"
+        },
+        {
+          "action": "downloadFile('2016650');",
+          "resourceId": "2016650",
+          "title": "수학_2-1-3_단원평가(심화)_1회"
+        },
+        {
+          "action": "downloadFile('2016649');",
+          "resourceId": "2016649",
+          "title": "수학_2-1-3_단원평가(심화)_2회"
+        },
+        {
+          "action": "downloadFile('2019738');",
+          "resourceId": "2019738",
+          "title": "수학_2-1-3_단원평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664456-body",
+      "title": "4. 길이 재기",
+      "files": [
+        {
+          "action": "downloadFile('2016664');",
+          "resourceId": "2016664",
+          "title": "수학_2-1-4_단원평가(기본)_1회"
+        },
+        {
+          "action": "downloadFile('2016663');",
+          "resourceId": "2016663",
+          "title": "수학_2-1-4_단원평가(기본)_2회"
+        },
+        {
+          "action": "downloadFile('2016662');",
+          "resourceId": "2016662",
+          "title": "수학_2-1-4_단원평가(심화)_1회"
+        },
+        {
+          "action": "downloadFile('2016661');",
+          "resourceId": "2016661",
+          "title": "수학_2-1-4_단원평가(심화)_2회"
+        },
+        {
+          "action": "downloadFile('2071743');",
+          "resourceId": "2071743",
+          "title": "수학_2-1-4_단원평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664457-body",
+      "title": "5. 분류하기",
+      "files": [
+        {
+          "action": "downloadFile('1996406');",
+          "resourceId": "1996406",
+          "title": "수학_2-1-5_단원평가(기본)_1회"
+        },
+        {
+          "action": "downloadFile('2071685');",
+          "resourceId": "2071685",
+          "title": "수학_2-1-5_단원평가(기본)_2회"
+        },
+        {
+          "action": "downloadFile('2071686');",
+          "resourceId": "2071686",
+          "title": "수학_2-1-5_단원평가(심화)_1회"
+        },
+        {
+          "action": "downloadFile('2071687');",
+          "resourceId": "2071687",
+          "title": "수학_2-1-5_단원평가(심화)_2회"
+        },
+        {
+          "action": "downloadFile('2071751');",
+          "resourceId": "2071751",
+          "title": "수학_2-1-5_단원평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664458-body",
+      "title": "6. 곱셈",
+      "files": [
+        {
+          "action": "downloadFile('2071962');",
+          "resourceId": "2071962",
+          "title": "수학_2-1-6_단원평가"
+        },
+        {
+          "action": "downloadFile('2071961');",
+          "resourceId": "2071961",
+          "title": "수학_2-1-6_단원평가(기본)_1회"
+        },
+        {
+          "action": "downloadFile('2071960');",
+          "resourceId": "2071960",
+          "title": "수학_2-1-6_단원평가(기본)_2회"
+        },
+        {
+          "action": "downloadFile('2071959');",
+          "resourceId": "2071959",
+          "title": "수학_2-1-6_단원평가(심화)_1회"
+        },
+        {
+          "action": "downloadFile('1996407');",
+          "resourceId": "1996407",
+          "title": "수학_2-1-6_단원평가(심화)_2회"
+        }
+      ]
+    }
+  ]
+}

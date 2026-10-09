@@ -1,4 +1,4 @@
-// Real four-client gem journey. The only instrumentation observes snapshots;
+// Real five-client gem journey. The only instrumentation observes snapshots;
 // positions, targets, inventory, clock and scores are never assigned by the test.
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 const {chromium,webkit}=require('../game-hub-server/node_modules/playwright');
@@ -7,7 +7,7 @@ const safari=process.argv.includes('--webkit'),out=path.join(os.tmpdir(),'citych
 fs.mkdirSync(out,{recursive:true});
 (async()=>{
   const browser=await(safari?webkit:chromium).launch(safari?{headless:true}:{channel:'msedge',headless:true});
-  const pages=[],errors=[],names=['보관담당','경찰','수색담당','단서담당'];
+  const pages=[],errors=[],names=['보관담당','경찰','수색담당','단서담당','경찰동료'];
   try{
     for(const name of names){
       const context=await browser.newContext({viewport:{width:1024,height:668},hasTouch:true});
@@ -29,7 +29,7 @@ fs.mkdirSync(out,{recursive:true});
     for(const id of ['star','ediya','twosome'])await cop.locator(`#placementShops [data-shop="${id}"]`).tap();
     await cop.locator('#placementConfirm').tap();
     for(const p of pages)await p.waitForFunction(()=>gemAuditView?.phase==='playing');
-    for(const p of pages){await p.waitForFunction(()=>window.gemAuditView?.players.length===4);await p.locator('#viewBtn').tap();}
+    for(const p of pages){await p.waitForFunction(()=>window.gemAuditView?.players.length===5);await p.locator('#viewBtn').tap();}
     const ids=await Promise.all(pages.map(p=>p.evaluate(()=>gemAuditId)));
     const world=await host.evaluate(()=>({shops:ChaseWorld.shops,hideout:ChaseWorld.nodes.hideout,park:ChaseWorld.nodes.c}));
     const state=()=>host.evaluate(()=>gemAuditView);
@@ -85,7 +85,7 @@ fs.mkdirSync(out,{recursive:true});
     await visit(scout,first);await search(scout);await sync({score:0,carrier:ids[2]});
     assert.equal(await scout.locator('#missionText').innerText(),'보석 운반 중');
     await scout.screenshot({path:path.join(out,(safari?'webkit':'chromium')+'-found.png')});
-    console.log('PASS actual shop search finds a gem; all four clients show its carrier, banked score stays zero');
+    console.log('PASS actual shop search finds a gem; all five clients show its carrier, banked score stays zero');
 
     // The police walks to the carrier: no teleport or invented capture event.
     await tapPoint(cop,first);
@@ -113,6 +113,6 @@ fs.mkdirSync(out,{recursive:true});
     await sync({winner:'thief',phase:'ended',endReason:'gems'});
     for(const p of pages){await p.locator('#result:not(.hidden)').waitFor();assert.equal(await p.locator('#resultTitle').innerText(),'도둑팀 승리');assert.equal(await p.locator('#scoreText').innerText(),'3 / 3');assert(await p.locator('#interactBtn').isDisabled());}
     await host.screenshot({path:path.join(out,(safari?'webkit':'chromium')+'-three-gems.png')});
-    assert.deepEqual(errors,[]);console.log('PASS all four clients agree on three deposited gems and thief victory; no console errors');console.log('Screenshots:',out);
+    assert.deepEqual(errors,[]);console.log('PASS all five clients agree on three deposited gems and thief victory; no console errors');console.log('Screenshots:',out);
   }finally{for(const p of pages)await p.context().close();await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
