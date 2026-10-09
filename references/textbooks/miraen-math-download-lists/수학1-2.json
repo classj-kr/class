@@ -1,0 +1,444 @@
+{
+  "book": "수학1-2",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1393&gradeCode=01&termCode=02&revisionCode=2022&tabType=referenceTab&sortCode=002",
+  "items": [
+    {
+      "disabled": false,
+      "i": 0,
+      "id": "FILE-lzj25fii-23A7uqmvMY",
+      "name": "미래엔_수학1-2_1단원_기초학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 1,
+      "id": "FILE-lzj2l82s-FKWeKuErq9",
+      "name": "미래엔_수학1-2_1단원_수행평가.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 2,
+      "id": "FILE-lzj2fto1-jRyJymJ418",
+      "name": "미래엔_수학1-2_1단원_단원평가_기본_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 3,
+      "id": "FILE-lzj2grej-mP089L8woK",
+      "name": "미래엔_수학1-2_1단원_단원평가_실력_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 4,
+      "id": "FILE-lzj2hlzd-8vshi0YgHg",
+      "name": "미래엔_수학1-2_1단원_단원평가_기본_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 5,
+      "id": "FILE-lzj2ijrb-iNztxSff2u",
+      "name": "미래엔_수학1-2_1단원_단원평가_실력_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 6,
+      "id": "FILE-lzj2so9x-BLvrqtNK7k",
+      "name": "미래엔_수학1-2_1단원_평가자료소스.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 7,
+      "id": "FILE-lzj27w66-T7b80x94fM",
+      "name": "미래엔_수학1-2_1단원_2차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 8,
+      "id": "FILE-lzj29uni-7Bqj4uRn3L",
+      "name": "미래엔_수학1-2_1단원_3~4차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 9,
+      "id": "FILE-lzj2awf4-0r587791L6",
+      "name": "미래엔_수학1-2_1단원_5차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 10,
+      "id": "FILE-lzj2bw68-o0Gkj94147",
+      "name": "미래엔_수학1-2_1단원_6차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 11,
+      "id": "FILE-lzj2cyjp-hdfGzz9a3H",
+      "name": "미래엔_수학1-2_1단원_7차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 12,
+      "id": "FILE-lzj2dzux-7m4vZqLVR8",
+      "name": "미래엔_수학1-2_1단원_8차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 13,
+      "id": "FILE-m0bmyl5t-kf7K1ZPQym",
+      "name": "미래엔_수학1-2_2단원_기초학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 14,
+      "id": "FILE-m0bn0rgd-nK4tn70zkV",
+      "name": "미래엔_수학1-2_2단원_수행평가.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 15,
+      "id": "FILE-m0bndiuj-y3tva0z9x5",
+      "name": "미래엔_수학1-2_2단원_단원평가_기본_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 16,
+      "id": "FILE-m0bnfibd-6pMd5bIksN",
+      "name": "미래엔_수학1-2_2단원_단원평가_실력_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 17,
+      "id": "FILE-m0bngjrt-WutM5620J7",
+      "name": "미래엔_수학1-2_2단원_단원평가_기본_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 18,
+      "id": "FILE-m0bnhhur-HHQFwg4X1H",
+      "name": "미래엔_수학1-2_2단원_단원평가_실력_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 19,
+      "id": "FILE-m0bn2ck5-MZsQ1FB59p",
+      "name": "미래엔_수학1-2_2단원_평가자료소스.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 20,
+      "id": "FILE-m0ymsn2f-gW3Mco98C9",
+      "name": "미래엔_수학1-2_2단원_2차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 21,
+      "id": "FILE-m0bqbqb4-VoZsjWWYB5",
+      "name": "미래엔_수학1-2_2단원_3차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 22,
+      "id": "FILE-m0bqoy8d-su1Ix6A920",
+      "name": "미래엔_수학1-2_2단원_4~5차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 23,
+      "id": "FILE-m0bqqt05-qd4hS5Pw44",
+      "name": "미래엔_수학1-2_2단원_6차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 24,
+      "id": "FILE-m0bqwdlc-51h0UZ494w",
+      "name": "미래엔_수학1-2_2단원_7~8차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 25,
+      "id": "FILE-m1ejwxz3-Cfh2X0180s",
+      "name": "미래엔_수학1-2_3단원_기초학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 26,
+      "id": "FILE-m1ek1em3-BW5k4mix0y",
+      "name": "미래엔_수학1-2_3단원_수행평가.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 27,
+      "id": "FILE-m1el3uqn-Xvlz11i1f7",
+      "name": "미래엔_수학1-2_3단원_단원평가_기본_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 28,
+      "id": "FILE-mno6pzmg-TG74M7nUIF",
+      "name": "미래엔_수학1-2_3단원_단원평가_실력_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 29,
+      "id": "FILE-m1el82lf-beHvRqfucd",
+      "name": "미래엔_수학1-2_3단원_단원평가_기본_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 30,
+      "id": "FILE-m1elaa5j-0RBs97NQKe",
+      "name": "미래엔_수학1-2_3단원_단원평가_실력_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 31,
+      "id": "FILE-m1ek61b6-zcC2S41f6v",
+      "name": "미래엔_수학1-2_3단원_평가자료소스.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 32,
+      "id": "FILE-m1ek3puf-oc92T3ZT6W",
+      "name": "미래엔_수학1-2_3단원_2차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 33,
+      "id": "FILE-m1ekbup4-PHrk32oWQh",
+      "name": "미래엔_수학1-2_3단원_3차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 34,
+      "id": "FILE-m1ekerfo-v9EBZvc91J",
+      "name": "미래엔_수학1-2_3단원_4차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 35,
+      "id": "FILE-m1ekhfc6-3J8l87i1Fr",
+      "name": "미래엔_수학1-2_3단원_5차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 36,
+      "id": "FILE-m1ekloju-gE2xD3w8iz",
+      "name": "미래엔_수학1-2_3단원_6~7차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 37,
+      "id": "FILE-m1ejy5lb-shY3rC4N7N",
+      "name": "미래엔_수학1-2_4단원_기초학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 38,
+      "id": "FILE-m1ek3b05-qabA5a8H1P",
+      "name": "미래엔_수학1-2_4단원_수행평가.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 39,
+      "id": "FILE-m1elccbs-i3jCE7ZrE4",
+      "name": "미래엔_수학1-2_4단원_단원평가_기본_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 40,
+      "id": "FILE-m1eldwjr-g6H7o1sDYG",
+      "name": "미래엔_수학1-2_4단원_단원평가_실력_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 41,
+      "id": "FILE-m1elff2s-NK4G1U3E4S",
+      "name": "미래엔_수학1-2_4단원_단원평가_기본_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 42,
+      "id": "FILE-m1elgvax-j5ckQ6a14v",
+      "name": "미래엔_수학1-2_4단원_단원평가_실력_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 43,
+      "id": "FILE-m1ek6r7b-bxhxYF4Y8S",
+      "name": "미래엔_수학1-2_4단원_평가자료소스.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 44,
+      "id": "FILE-m1ekoclr-22iW9YLOHd",
+      "name": "미래엔_수학1-2_4단원_2차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 45,
+      "id": "FILE-m1ekrk8o-ba8pTMwEJ6",
+      "name": "미래엔_수학1-2_4단원_3~4차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 46,
+      "id": "FILE-m1ektduq-05IhLqX0a9",
+      "name": "미래엔_수학1-2_4단원_5차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 47,
+      "id": "FILE-m1ekwry8-iFBHSQKMDW",
+      "name": "미래엔_수학1-2_4단원_6차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 48,
+      "id": "FILE-m1ekyvie-mEJ5178n17",
+      "name": "미래엔_수학1-2_4단원_7~8차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 49,
+      "id": "FILE-m1el0tk9-226h89NHMX",
+      "name": "미래엔_수학1-2_4단원_9차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 50,
+      "id": "FILE-m2intt0r-bRPnu1Hl6i",
+      "name": "미래엔_수학1-2_5단원_기초학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 51,
+      "id": "FILE-m2invmc3-dp7HHFzV34",
+      "name": "미래엔_수학1-2_5단원_수행평가.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 52,
+      "id": "FILE-m2iodxr0-a1T6a49x0e",
+      "name": "미래엔_수학1-2_5단원_단원평가_기본_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 53,
+      "id": "FILE-m2iogevr-K4w0663SnF",
+      "name": "미래엔_수학1-2_5단원_단원평가_기본_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 54,
+      "id": "FILE-m2iohpb0-I043amz0x8",
+      "name": "미래엔_수학1-2_5단원_단원평가_실력_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 55,
+      "id": "FILE-m2ioj0ml-QAhQ6ilyM2",
+      "name": "미래엔_수학1-2_5단원_단원평가_실력_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 56,
+      "id": "FILE-m2inxa7y-ZGlTvd8FNT",
+      "name": "미래엔_수학1-2_5단원_평가자료소스.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 57,
+      "id": "FILE-m2inx6oy-M9d8H7l8fZ",
+      "name": "미래엔_수학1-2_5단원_2차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 58,
+      "id": "FILE-m2inywim-eRS7YDehK6",
+      "name": "미래엔_수학1-2_5단원_3차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 59,
+      "id": "FILE-m2io0frb-DtXmxJE0kZ",
+      "name": "미래엔_수학1-2_5단원_4차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 60,
+      "id": "FILE-m2io1x7q-G0K2139Y8R",
+      "name": "미래엔_수학1-2_5단원_5차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 61,
+      "id": "FILE-m2io3foi-4xj1V2h7rM",
+      "name": "미래엔_수학1-2_5단원_6차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 62,
+      "id": "FILE-m2io4x8o-8TwW75Xl95",
+      "name": "미래엔_수학1-2_5단원_7차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 63,
+      "id": "FILE-m2inunfr-Eh8UKmx92x",
+      "name": "미래엔_수학1-2_6단원_기초학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 64,
+      "id": "FILE-m2inwj17-IVa0JRdoAZ",
+      "name": "미래엔_수학1-2_6단원_수행평가.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 65,
+      "id": "FILE-m2iokgkm-7784rgVs2D",
+      "name": "미래엔_수학1-2_6단원_단원평가_기본_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 66,
+      "id": "FILE-m2iolms5-8KxhE5R5I3",
+      "name": "미래엔_수학1-2_6단원_단원평가_기본_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 67,
+      "id": "FILE-m2ionlvl-cHVrVg1j1A",
+      "name": "미래엔_수학1-2_6단원_단원평가_실력_1회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 68,
+      "id": "FILE-m2iop7u6-W3U4522c41",
+      "name": "미래엔_수학1-2_6단원_단원평가_실력_2회.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 69,
+      "id": "FILE-m2inxz71-DCPwu67U7P",
+      "name": "미래엔_수학1-2_6단원_평가자료소스.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 70,
+      "id": "FILE-m2io6kls-MGHR4RGEzn",
+      "name": "미래엔_수학1-2_6단원_2~3차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 71,
+      "id": "FILE-m2io7rgz-m86jvM026n",
+      "name": "미래엔_수학1-2_6단원_4~5차시_차시학습지.hwp"
+    },
+    {
+      "disabled": false,
+      "i": 72,
+      "id": "FILE-m2io8yj3-Gtt9EB3j84",
+      "name": "미래엔_수학1-2_6단원_6~7차시_차시학습지.hwp"
+    }
+  ]
+}

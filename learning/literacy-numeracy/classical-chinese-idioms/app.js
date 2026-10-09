@@ -5,6 +5,12 @@
     const core = window.IdiomCore;
     const lessons = Array.isArray(window.IDIOM_LESSONS) ? window.IDIOM_LESSONS : [];
     const records=LearningRecords.create('classical-chinese-idioms',{label:'한자성어'});await records.ready;
+    const bgm = document.getElementById('bgm');
+    function setLessonMusicPaused(paused) {
+        document.body.dataset.musicPausedForReading = String(paused);
+        if (paused) bgm?.pause();
+        else if (bgm?.paused) bgm.play().catch(() => {});
+    }
     let recordMode='learn',recordBusy=false;
     const ILLUSTRATIONS = {
         gakjuguggeom: "assets/idioms-v2/gakjuguggeom.webp",
@@ -527,6 +533,7 @@ function renderLessonOverview() {
 
     async function openLesson(index, keepId = "") {
         if(recordBusy)return;recordBusy=true;elements.learningShell.inert=true;
+        setLessonMusicPaused(true);
         quizScope = "lesson";
         currentLessonIndex = Math.max(0, Math.min(index, lessons.length - 1));
         const lesson = lessons[currentLessonIndex];
@@ -550,6 +557,7 @@ function renderLessonOverview() {
 
     async function openAllQuiz() {
         if(recordBusy)return;recordBusy=true;elements.learningShell.inert=true;
+        setLessonMusicPaused(true);
         quizScope = "all";
         document.body.classList.add("lesson-active");
         elements.lessonOverview.hidden = true;
@@ -563,6 +571,7 @@ function renderLessonOverview() {
     }
     function showLessonOverview() {
         document.body.classList.remove("lesson-active");
+        setLessonMusicPaused(false);
         elements.learningShell.hidden = true;
         elements.lessonOverview.hidden = false;
         renderLessonOverview();
@@ -750,6 +759,6 @@ function renderLessonOverview() {
     }
     initialize();
     const resume=new URLSearchParams(location.search).get('record');
-    if(resume==='all')await openAllQuiz();else if(resume!==null && lessons[Number(resume)])await openLesson(Number(resume));
+    if(resume==='all')await openAllQuiz();else if(resume!==null && lessons[Number(resume)])await openLesson(Number(resume));else setLessonMusicPaused(false);
 })();
 

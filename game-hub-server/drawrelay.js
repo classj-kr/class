@@ -1,43 +1,26 @@
 "use strict";
 
 const PACKS = Object.freeze({
-  general: Object.freeze({
-    label: "생활·상황",
-    words: Object.freeze([
-      "우산 쓰고 뛰기", "눈사람 만들기", "자전거 타다 넘어지기", "생일 케이크 촛불 끄기",
-      "연날리기", "텐트 치기", "축구 골 넣기", "나무에 오른 고양이",
-      "낚시하기", "줄넘기", "풍선 놓치기", "모래성 쌓기",
-      "비눗방울 불기", "김밥 말기", "책상에서 졸기", "물웅덩이 뛰어넘기"
-    ])
-  }),
   proverbs: Object.freeze({
-    label: "국어·속담",
-    // 글로 뜻을 설명하지 않아도 한 장면으로 표현할 수 있는 속담만 사용합니다.
+    label: "속담",
+    // 속담 앱의 한국 속담 가운데 글자 없이 한 장면으로 표현할 수 있는 것만 사용합니다.
     words: Object.freeze([
-      "우물 안 개구리", "돌다리도 두들겨 보고 건너라", "원숭이도 나무에서 떨어진다", "백지장도 맞들면 낫다",
-      "등잔 밑이 어둡다", "누워서 떡 먹기", "도토리 키 재기", "하늘의 별 따기",
-      "수박 겉 핥기", "그림의 떡", "달걀로 바위 치기", "닭 쫓던 개 지붕 쳐다본다"
+      "돌다리도 두들겨 보고 건너라", "티끌 모아 태산", "원숭이도 나무에서 떨어진다",
+      "소 잃고 외양간 고친다", "우물 안 개구리", "고래 싸움에 새우 등 터진다",
+      "그림의 떡", "작은 고추가 맵다", "호랑이 굴에 가야 호랑이 새끼를 잡는다",
+      "남의 떡이 더 커 보인다", "닭 쫓던 개 지붕 쳐다본다", "사공이 많으면 배가 산으로 간다",
+      "하룻강아지 범 무서운 줄 모른다", "계란으로 바위 치기",
+      "누워서 떡 먹기", "도토리 키 재기", "수박 겉 핥기", "고양이 목에 방울 달기",
+      "내 코가 석 자", "뛰는 놈 위에 나는 놈 있다",
+      "바람 앞의 등불", "불난 집에 부채질한다", "쥐구멍에도 볕 들 날 있다",
+      "하늘의 별 따기", "호랑이 없는 골에 토끼가 왕 노릇 한다"
     ])
   }),
   history: Object.freeze({
-    label: "역사·문화",
+    label: "역사",
     words: Object.freeze([
-      "거북선", "첨성대", "고인돌", "신라 금관", "독립문", "한복", "기와집", "장승",
-      "탈춤", "청자 도자기", "봉수대 불빛", "조선 시대 가마", "서당에서 글 읽기", "활 쏘는 장수", "궁궐 대문", "전통 혼례"
-    ])
-  }),
-  science: Object.freeze({
-    label: "과학·자연",
-    words: Object.freeze([
-      "공룡", "화산 폭발", "로켓 발사", "우주인", "잠수함", "현미경", "풍력 발전기", "태풍",
-      "혜성", "해파리", "무지개", "벌집", "거미줄", "먹구름 속 번개", "북극곰", "열기구"
-    ])
-  }),
-  society: Object.freeze({
-    label: "사회·지리",
-    words: Object.freeze([
-      "지구본", "나침반", "지하철 노선도", "버스 정류장", "횡단보도", "재활용 분리수거", "전통시장", "등대",
-      "논에서 모내기", "소방차 출동", "투표함", "태극기 게양", "항구의 배", "기차역", "우체통", "학교 운동장"
+      "거북선", "첨성대", "고인돌", "석탑", "해시계", "초가집",
+      "맷돌", "짚신", "가마솥", "장구", "윷", "제기"
     ])
   })
 });
@@ -57,15 +40,15 @@ function cleanName(value, fallback = "플레이어") {
 }
 
 function cleanPack(value) {
-  const key = String(value || "general");
-  return Object.prototype.hasOwnProperty.call(PACKS, key) ? key : "general";
+  const key = String(value || "proverbs");
+  return Object.prototype.hasOwnProperty.call(PACKS, key) ? key : "proverbs";
 }
 
 function createGame(hostId, hostName) {
   return {
     phase: "lobby",
     players: [{ id: String(hostId), name: cleanName(hostName, "방장") }],
-    packId: "general",
+    packId: "proverbs",
     step: 0,
     actionType: null,
     deadline: 0,
@@ -118,7 +101,7 @@ function nextDeadline(actionType, now = Date.now()) {
   return Number(now) + (actionType === "draw" ? DRAW_SECONDS : GUESS_SECONDS) * 1000;
 }
 
-function startGame(game, packId = "general", random = Math.random, now = Date.now()) {
+function startGame(game, packId = "proverbs", random = Math.random, now = Date.now()) {
   if (game.phase !== "lobby") return { ok: false, error: "이미 시작한 게임입니다." };
   if (game.players.length < MIN_PLAYERS || game.players.length > MAX_PLAYERS) {
     return { ok: false, error: "그림 릴레이는 4명부터 8명까지 시작할 수 있습니다." };
@@ -281,7 +264,7 @@ function stateFor(game, viewerId) {
     phase: game.phase,
     players,
     packId: game.packId,
-    packLabel: PACKS[game.packId]?.label || PACKS.general.label,
+    packLabel: PACKS[game.packId]?.label || PACKS.proverbs.label,
     step: game.step,
     totalSteps: game.players.length,
     actionType: game.actionType,

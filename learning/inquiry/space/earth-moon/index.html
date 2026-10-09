@@ -8,7 +8,7 @@
     <script src="../solar-system/assets/vendor/three-r128/three.min.js"></script>
     <script src="../solar-system/assets/vendor/three-r128/OrbitControls.js"></script>
     <link rel="stylesheet" href="../quiz-board.css?v=quiz-topic-picker-20260906c">
-    <link rel="stylesheet" href="styles.css?v=20260920-no-eclipse-gap">
+    <link rel="stylesheet" href="styles.css?v=20261010-season-camera">
     <script src="../../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
     <script src="../topic-catalog.js?v=20260920-eclipse"></script>
     <link rel="stylesheet" href="../topic-page.css?v=20260920-no-eclipse-gap">
@@ -148,12 +148,6 @@
 
             <div class="em-simulator-panel" id="emSunPathSimulator" hidden>
                 <div class="em-sunpath-card">
-                    <div class="em-sunpath-heading">
-                        <div>
-                            <h2>계절별 태양의 남중 고도와 일주 경로</h2>
-                        </div>
-                    </div>
-
                     <div class="em-dual-view-grid">
                         <figure class="em-dual-view-panel">
                             <canvas id="emOrbitSeasonCanvas" role="img" aria-label="태양 주위를 공전하는 지구와 계절 위치"></canvas>
@@ -325,7 +319,8 @@
     <script src="eclipse-geometry.js?v=20260920-comparison"></script>
     <script src="eclipse-simulator.js?v=20261006-webp"></script>
     <script src="../quiz-board.js?v=20260920-eclipse"></script>
-    <script src="app.js?v=20261008-zoom-focus"></script>
+    <script src="seasonal-space-view.js?v=20261010-season-camera"></script>
+    <script src="app.js?v=20261010-season-camera"></script>
     <script src="../topic-page.js?v=20260920-stellar"></script>
 </body>
 </html>

@@ -1,0 +1,596 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=2&exam=E-exam02-math_2024&tab=E-exam02-math_2024_07",
+  "groups": [
+    {
+      "id": "accordion-982134-body",
+      "title": "1. 세 자리 수",
+      "files": [
+        {
+          "action": "downloadFile('2729702');",
+          "resourceId": "2729702",
+          "title": "수학2-1_형성평가_1단원_02차시_1회"
+        },
+        {
+          "action": "downloadFile('2729703');",
+          "resourceId": "2729703",
+          "title": "수학2-1_형성평가_1단원_02차시_2회"
+        },
+        {
+          "action": "downloadFile('2729704');",
+          "resourceId": "2729704",
+          "title": "수학2-1_형성평가_1단원_02차시_3회"
+        },
+        {
+          "action": "downloadFile('2729705');",
+          "resourceId": "2729705",
+          "title": "수학2-1_형성평가_1단원_03차시_1회"
+        },
+        {
+          "action": "downloadFile('2729706');",
+          "resourceId": "2729706",
+          "title": "수학2-1_형성평가_1단원_03차시_2회"
+        },
+        {
+          "action": "downloadFile('2729707');",
+          "resourceId": "2729707",
+          "title": "수학2-1_형성평가_1단원_03차시_3회"
+        },
+        {
+          "action": "downloadFile('2729708');",
+          "resourceId": "2729708",
+          "title": "수학2-1_형성평가_1단원_04차시_1회"
+        },
+        {
+          "action": "downloadFile('2729709');",
+          "resourceId": "2729709",
+          "title": "수학2-1_형성평가_1단원_04차시_2회"
+        },
+        {
+          "action": "downloadFile('2729710');",
+          "resourceId": "2729710",
+          "title": "수학2-1_형성평가_1단원_04차시_3회"
+        },
+        {
+          "action": "downloadFile('2729711');",
+          "resourceId": "2729711",
+          "title": "수학2-1_형성평가_1단원_05차시_1회"
+        },
+        {
+          "action": "downloadFile('2729712');",
+          "resourceId": "2729712",
+          "title": "수학2-1_형성평가_1단원_05차시_2회"
+        },
+        {
+          "action": "downloadFile('2729713');",
+          "resourceId": "2729713",
+          "title": "수학2-1_형성평가_1단원_05차시_3회"
+        },
+        {
+          "action": "downloadFile('2729714');",
+          "resourceId": "2729714",
+          "title": "수학2-1_형성평가_1단원_06차시_1회"
+        },
+        {
+          "action": "downloadFile('2729715');",
+          "resourceId": "2729715",
+          "title": "수학2-1_형성평가_1단원_06차시_2회"
+        },
+        {
+          "action": "downloadFile('2729716');",
+          "resourceId": "2729716",
+          "title": "수학2-1_형성평가_1단원_06차시_3회"
+        },
+        {
+          "action": "downloadFile('2729717');",
+          "resourceId": "2729717",
+          "title": "수학2-1_형성평가_1단원_07차시_1회"
+        },
+        {
+          "action": "downloadFile('2729718');",
+          "resourceId": "2729718",
+          "title": "수학2-1_형성평가_1단원_07차시_2회"
+        },
+        {
+          "action": "downloadFile('2729719');",
+          "resourceId": "2729719",
+          "title": "수학2-1_형성평가_1단원_07차시_3회"
+        }
+      ]
+    },
+    {
+      "id": "accordion-982135-body",
+      "title": "2. 여러 가지 도형",
+      "files": [
+        {
+          "action": "downloadFile('2729720');",
+          "resourceId": "2729720",
+          "title": "수학2-1_형성평가_2단원_02차시_1회"
+        },
+        {
+          "action": "downloadFile('2729721');",
+          "resourceId": "2729721",
+          "title": "수학2-1_형성평가_2단원_02차시_2회"
+        },
+        {
+          "action": "downloadFile('2729722');",
+          "resourceId": "2729722",
+          "title": "수학2-1_형성평가_2단원_02차시_3회"
+        },
+        {
+          "action": "downloadFile('2729723');",
+          "resourceId": "2729723",
+          "title": "수학2-1_형성평가_2단원_03차시_1회"
+        },
+        {
+          "action": "downloadFile('2729724');",
+          "resourceId": "2729724",
+          "title": "수학2-1_형성평가_2단원_03차시_2회"
+        },
+        {
+          "action": "downloadFile('2729725');",
+          "resourceId": "2729725",
+          "title": "수학2-1_형성평가_2단원_03차시_3회"
+        },
+        {
+          "action": "downloadFile('2729726');",
+          "resourceId": "2729726",
+          "title": "수학2-1_형성평가_2단원_04차시_1회"
+        },
+        {
+          "action": "downloadFile('2729727');",
+          "resourceId": "2729727",
+          "title": "수학2-1_형성평가_2단원_04차시_2회"
+        },
+        {
+          "action": "downloadFile('2729728');",
+          "resourceId": "2729728",
+          "title": "수학2-1_형성평가_2단원_04차시_3회"
+        },
+        {
+          "action": "downloadFile('2729729');",
+          "resourceId": "2729729",
+          "title": "수학2-1_형성평가_2단원_05차시_1회"
+        },
+        {
+          "action": "downloadFile('2729730');",
+          "resourceId": "2729730",
+          "title": "수학2-1_형성평가_2단원_05차시_2회"
+        },
+        {
+          "action": "downloadFile('2729731');",
+          "resourceId": "2729731",
+          "title": "수학2-1_형성평가_2단원_05차시_3회"
+        },
+        {
+          "action": "downloadFile('2729732');",
+          "resourceId": "2729732",
+          "title": "수학2-1_형성평가_2단원_06차시_1회"
+        },
+        {
+          "action": "downloadFile('2729733');",
+          "resourceId": "2729733",
+          "title": "수학2-1_형성평가_2단원_06차시_2회"
+        },
+        {
+          "action": "downloadFile('2729734');",
+          "resourceId": "2729734",
+          "title": "수학2-1_형성평가_2단원_06차시_3회"
+        },
+        {
+          "action": "downloadFile('2729735');",
+          "resourceId": "2729735",
+          "title": "수학2-1_형성평가_2단원_07차시_1회"
+        },
+        {
+          "action": "downloadFile('2729736');",
+          "resourceId": "2729736",
+          "title": "수학2-1_형성평가_2단원_07차시_2회"
+        },
+        {
+          "action": "downloadFile('2729737');",
+          "resourceId": "2729737",
+          "title": "수학2-1_형성평가_2단원_07차시_3회"
+        }
+      ]
+    },
+    {
+      "id": "accordion-982136-body",
+      "title": "3. 덧셈과 뺄셈",
+      "files": [
+        {
+          "action": "downloadFile('2729738');",
+          "resourceId": "2729738",
+          "title": "수학2-1_형성평가_3단원_02차시_1회"
+        },
+        {
+          "action": "downloadFile('2729739');",
+          "resourceId": "2729739",
+          "title": "수학2-1_형성평가_3단원_02차시_2회"
+        },
+        {
+          "action": "downloadFile('2729740');",
+          "resourceId": "2729740",
+          "title": "수학2-1_형성평가_3단원_02차시_3회"
+        },
+        {
+          "action": "downloadFile('2729741');",
+          "resourceId": "2729741",
+          "title": "수학2-1_형성평가_3단원_0304차시_1회"
+        },
+        {
+          "action": "downloadFile('2729742');",
+          "resourceId": "2729742",
+          "title": "수학2-1_형성평가_3단원_0304차시_2회"
+        },
+        {
+          "action": "downloadFile('2729743');",
+          "resourceId": "2729743",
+          "title": "수학2-1_형성평가_3단원_0304차시_3회"
+        },
+        {
+          "action": "downloadFile('2729744');",
+          "resourceId": "2729744",
+          "title": "수학2-1_형성평가_3단원_05차시_1회"
+        },
+        {
+          "action": "downloadFile('2729745');",
+          "resourceId": "2729745",
+          "title": "수학2-1_형성평가_3단원_05차시_2회"
+        },
+        {
+          "action": "downloadFile('2729746');",
+          "resourceId": "2729746",
+          "title": "수학2-1_형성평가_3단원_05차시_3회"
+        },
+        {
+          "action": "downloadFile('2729747');",
+          "resourceId": "2729747",
+          "title": "수학2-1_형성평가_3단원_06차시_1회"
+        },
+        {
+          "action": "downloadFile('2729748');",
+          "resourceId": "2729748",
+          "title": "수학2-1_형성평가_3단원_06차시_2회"
+        },
+        {
+          "action": "downloadFile('2729749');",
+          "resourceId": "2729749",
+          "title": "수학2-1_형성평가_3단원_06차시_3회"
+        },
+        {
+          "action": "downloadFile('2729750');",
+          "resourceId": "2729750",
+          "title": "수학2-1_형성평가_3단원_0708차시_1회"
+        },
+        {
+          "action": "downloadFile('2729751');",
+          "resourceId": "2729751",
+          "title": "수학2-1_형성평가_3단원_0708차시_2회"
+        },
+        {
+          "action": "downloadFile('2729752');",
+          "resourceId": "2729752",
+          "title": "수학2-1_형성평가_3단원_0708차시_3회"
+        },
+        {
+          "action": "downloadFile('2729753');",
+          "resourceId": "2729753",
+          "title": "수학2-1_형성평가_3단원_09차시_1회"
+        },
+        {
+          "action": "downloadFile('2729754');",
+          "resourceId": "2729754",
+          "title": "수학2-1_형성평가_3단원_09차시_2회"
+        },
+        {
+          "action": "downloadFile('2729755');",
+          "resourceId": "2729755",
+          "title": "수학2-1_형성평가_3단원_09차시_3회"
+        },
+        {
+          "action": "downloadFile('2729818');",
+          "resourceId": "2729818",
+          "title": "수학2-1_형성평가_3단원_10차시_1회"
+        },
+        {
+          "action": "downloadFile('2729819');",
+          "resourceId": "2729819",
+          "title": "수학2-1_형성평가_3단원_10차시_2회"
+        },
+        {
+          "action": "downloadFile('2729820');",
+          "resourceId": "2729820",
+          "title": "수학2-1_형성평가_3단원_10차시_3회"
+        },
+        {
+          "action": "downloadFile('2729821');",
+          "resourceId": "2729821",
+          "title": "수학2-1_형성평가_3단원_11차시_1회"
+        },
+        {
+          "action": "downloadFile('2729822');",
+          "resourceId": "2729822",
+          "title": "수학2-1_형성평가_3단원_11차시_2회"
+        },
+        {
+          "action": "downloadFile('2729823');",
+          "resourceId": "2729823",
+          "title": "수학2-1_형성평가_3단원_11차시_3회"
+        },
+        {
+          "action": "downloadFile('2747246');",
+          "resourceId": "2747246",
+          "title": "수학2-1_형성평가_3단원_12차시_1회"
+        },
+        {
+          "action": "downloadFile('2747247');",
+          "resourceId": "2747247",
+          "title": "수학2-1_형성평가_3단원_12차시_2회"
+        },
+        {
+          "action": "downloadFile('2747248');",
+          "resourceId": "2747248",
+          "title": "수학2-1_형성평가_3단원_12차시_3회"
+        }
+      ]
+    },
+    {
+      "id": "accordion-982137-body",
+      "title": "4. 길이 재기",
+      "files": [
+        {
+          "action": "downloadFile('2729756');",
+          "resourceId": "2729756",
+          "title": "수학2-1_형성평가_4단원_02차시_1회"
+        },
+        {
+          "action": "downloadFile('2729757');",
+          "resourceId": "2729757",
+          "title": "수학2-1_형성평가_4단원_02차시_2회"
+        },
+        {
+          "action": "downloadFile('2729758');",
+          "resourceId": "2729758",
+          "title": "수학2-1_형성평가_4단원_02차시_3회"
+        },
+        {
+          "action": "downloadFile('2729759');",
+          "resourceId": "2729759",
+          "title": "수학2-1_형성평가_4단원_03차시_1회"
+        },
+        {
+          "action": "downloadFile('2729760');",
+          "resourceId": "2729760",
+          "title": "수학2-1_형성평가_4단원_03차시_2회"
+        },
+        {
+          "action": "downloadFile('2729761');",
+          "resourceId": "2729761",
+          "title": "수학2-1_형성평가_4단원_03차시_3회"
+        },
+        {
+          "action": "downloadFile('2729762');",
+          "resourceId": "2729762",
+          "title": "수학2-1_형성평가_4단원_04차시_1회"
+        },
+        {
+          "action": "downloadFile('2729763');",
+          "resourceId": "2729763",
+          "title": "수학2-1_형성평가_4단원_04차시_2회"
+        },
+        {
+          "action": "downloadFile('2729764');",
+          "resourceId": "2729764",
+          "title": "수학2-1_형성평가_4단원_04차시_3회"
+        },
+        {
+          "action": "downloadFile('2729765');",
+          "resourceId": "2729765",
+          "title": "수학2-1_형성평가_4단원_05차시_1회"
+        },
+        {
+          "action": "downloadFile('2729766');",
+          "resourceId": "2729766",
+          "title": "수학2-1_형성평가_4단원_05차시_2회"
+        },
+        {
+          "action": "downloadFile('2729767');",
+          "resourceId": "2729767",
+          "title": "수학2-1_형성평가_4단원_05차시_3회"
+        },
+        {
+          "action": "downloadFile('2729768');",
+          "resourceId": "2729768",
+          "title": "수학2-1_형성평가_4단원_06차시_1회"
+        },
+        {
+          "action": "downloadFile('2729769');",
+          "resourceId": "2729769",
+          "title": "수학2-1_형성평가_4단원_06차시_2회"
+        },
+        {
+          "action": "downloadFile('2729770');",
+          "resourceId": "2729770",
+          "title": "수학2-1_형성평가_4단원_06차시_3회"
+        },
+        {
+          "action": "downloadFile('2729771');",
+          "resourceId": "2729771",
+          "title": "수학2-1_형성평가_4단원_07차시_1회"
+        },
+        {
+          "action": "downloadFile('2729772');",
+          "resourceId": "2729772",
+          "title": "수학2-1_형성평가_4단원_07차시_2회"
+        },
+        {
+          "action": "downloadFile('2729773');",
+          "resourceId": "2729773",
+          "title": "수학2-1_형성평가_4단원_07차시_3회"
+        }
+      ]
+    },
+    {
+      "id": "accordion-982138-body",
+      "title": "5. 분류하기",
+      "files": [
+        {
+          "action": "downloadFile('2729774');",
+          "resourceId": "2729774",
+          "title": "수학2-1_형성평가_5단원_02차시_1회"
+        },
+        {
+          "action": "downloadFile('2729775');",
+          "resourceId": "2729775",
+          "title": "수학2-1_형성평가_5단원_02차시_2회"
+        },
+        {
+          "action": "downloadFile('2729776');",
+          "resourceId": "2729776",
+          "title": "수학2-1_형성평가_5단원_02차시_3회"
+        },
+        {
+          "action": "downloadFile('2729777');",
+          "resourceId": "2729777",
+          "title": "수학2-1_형성평가_5단원_03차시_1회"
+        },
+        {
+          "action": "downloadFile('2729778');",
+          "resourceId": "2729778",
+          "title": "수학2-1_형성평가_5단원_03차시_2회"
+        },
+        {
+          "action": "downloadFile('2729779');",
+          "resourceId": "2729779",
+          "title": "수학2-1_형성평가_5단원_03차시_3회"
+        },
+        {
+          "action": "downloadFile('2729780');",
+          "resourceId": "2729780",
+          "title": "수학2-1_형성평가_5단원_04차시_1회"
+        },
+        {
+          "action": "downloadFile('2729781');",
+          "resourceId": "2729781",
+          "title": "수학2-1_형성평가_5단원_04차시_2회"
+        },
+        {
+          "action": "downloadFile('2729782');",
+          "resourceId": "2729782",
+          "title": "수학2-1_형성평가_5단원_04차시_3회"
+        },
+        {
+          "action": "downloadFile('2729783');",
+          "resourceId": "2729783",
+          "title": "수학2-1_형성평가_5단원_05차시_1회"
+        },
+        {
+          "action": "downloadFile('2729784');",
+          "resourceId": "2729784",
+          "title": "수학2-1_형성평가_5단원_05차시_2회"
+        },
+        {
+          "action": "downloadFile('2729785');",
+          "resourceId": "2729785",
+          "title": "수학2-1_형성평가_5단원_05차시_3회"
+        }
+      ]
+    },
+    {
+      "id": "accordion-982139-body",
+      "title": "6. 곱셈",
+      "files": [
+        {
+          "action": "downloadFile('2729792');",
+          "resourceId": "2729792",
+          "title": "수학2-1_형성평가_6단원_02차시_1회"
+        },
+        {
+          "action": "downloadFile('2729793');",
+          "resourceId": "2729793",
+          "title": "수학2-1_형성평가_6단원_02차시_2회"
+        },
+        {
+          "action": "downloadFile('2729794');",
+          "resourceId": "2729794",
+          "title": "수학2-1_형성평가_6단원_02차시_3회"
+        },
+        {
+          "action": "downloadFile('2729795');",
+          "resourceId": "2729795",
+          "title": "수학2-1_형성평가_6단원_03차시_1회"
+        },
+        {
+          "action": "downloadFile('2729796');",
+          "resourceId": "2729796",
+          "title": "수학2-1_형성평가_6단원_03차시_2회"
+        },
+        {
+          "action": "downloadFile('2729797');",
+          "resourceId": "2729797",
+          "title": "수학2-1_형성평가_6단원_03차시_3회"
+        },
+        {
+          "action": "downloadFile('2729798');",
+          "resourceId": "2729798",
+          "title": "수학2-1_형성평가_6단원_04차시_1회"
+        },
+        {
+          "action": "downloadFile('2729799');",
+          "resourceId": "2729799",
+          "title": "수학2-1_형성평가_6단원_04차시_2회"
+        },
+        {
+          "action": "downloadFile('2729800');",
+          "resourceId": "2729800",
+          "title": "수학2-1_형성평가_6단원_04차시_3회"
+        },
+        {
+          "action": "downloadFile('2729801');",
+          "resourceId": "2729801",
+          "title": "수학2-1_형성평가_6단원_05차시_1회"
+        },
+        {
+          "action": "downloadFile('2729802');",
+          "resourceId": "2729802",
+          "title": "수학2-1_형성평가_6단원_05차시_2회"
+        },
+        {
+          "action": "downloadFile('2729803');",
+          "resourceId": "2729803",
+          "title": "수학2-1_형성평가_6단원_05차시_3회"
+        },
+        {
+          "action": "downloadFile('2729804');",
+          "resourceId": "2729804",
+          "title": "수학2-1_형성평가_6단원_06차시_1회"
+        },
+        {
+          "action": "downloadFile('2729805');",
+          "resourceId": "2729805",
+          "title": "수학2-1_형성평가_6단원_06차시_2회"
+        },
+        {
+          "action": "downloadFile('2729806');",
+          "resourceId": "2729806",
+          "title": "수학2-1_형성평가_6단원_06차시_3회"
+        },
+        {
+          "action": "downloadFile('2729807');",
+          "resourceId": "2729807",
+          "title": "수학2-1_형성평가_6단원_07차시_1회"
+        },
+        {
+          "action": "downloadFile('2729808');",
+          "resourceId": "2729808",
+          "title": "수학2-1_형성평가_6단원_07차시_2회"
+        },
+        {
+          "action": "downloadFile('2729809');",
+          "resourceId": "2729809",
+          "title": "수학2-1_형성평가_6단원_07차시_3회"
+        }
+      ]
+    }
+  ]
+}

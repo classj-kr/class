@@ -1,0 +1,71 @@
+{
+  "url": "https://ele.tsherpa.co.kr/exam/E-exam-list.html?semester=1&g=2&exam=E-exam02-math_2024&tab=E-exam02-math_2024_02",
+  "groups": [
+    {
+      "id": "accordion-664446-body",
+      "title": "1. 세 자리 수",
+      "files": [
+        {
+          "action": "downloadFile('1996395');",
+          "resourceId": "1996395",
+          "title": "수학_2-1-1_진단평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664447-body",
+      "title": "2. 여러 가지 도형",
+      "files": [
+        {
+          "action": "downloadFile('2020404');",
+          "resourceId": "2020404",
+          "title": "수학_2-1-2_진단평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664448-body",
+      "title": "3. 덧셈과 뺄셈",
+      "files": [
+        {
+          "action": "downloadFile('2020405');",
+          "resourceId": "2020405",
+          "title": "수학_2-1-3_진단평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664449-body",
+      "title": "4. 길이 재기",
+      "files": [
+        {
+          "action": "downloadFile('2020406');",
+          "resourceId": "2020406",
+          "title": "수학_2-1-4_진단평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664450-body",
+      "title": "5. 분류하기",
+      "files": [
+        {
+          "action": "downloadFile('2020407');",
+          "resourceId": "2020407",
+          "title": "수학_2-1-5_진단평가"
+        }
+      ]
+    },
+    {
+      "id": "accordion-664451-body",
+      "title": "6. 곱셈",
+      "files": [
+        {
+          "action": "downloadFile('2020408');",
+          "resourceId": "2020408",
+          "title": "수학_2-1-6_진단평가"
+        }
+      ]
+    }
+  ]
+}

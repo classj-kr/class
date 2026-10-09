@@ -1,0 +1,766 @@
+{
+  "book": "수학 4-1",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1416&gradeCode=04&termCode=01&revisionCode=2022&tabType=referenceTab&sortCode=002",
+  "items": [
+    {
+      "i": 0,
+      "id": "FILE-mfq83rb8-54z6f8PKOi",
+      "name": "[기초학습지 HWP]1"
+    },
+    {
+      "i": 1,
+      "id": "MA0002274112",
+      "name": "undefined"
+    },
+    {
+      "i": 2,
+      "id": "MA0002274113",
+      "name": "undefined"
+    },
+    {
+      "i": 3,
+      "id": "MA0002274101",
+      "name": "undefined"
+    },
+    {
+      "i": 4,
+      "id": "MA0002274102",
+      "name": "undefined"
+    },
+    {
+      "i": 5,
+      "id": "MA0002274103",
+      "name": "undefined"
+    },
+    {
+      "i": 6,
+      "id": "MA0002274104",
+      "name": "undefined"
+    },
+    {
+      "i": 7,
+      "id": "MA0002274105",
+      "name": "undefined"
+    },
+    {
+      "i": 8,
+      "id": "MA0002274106",
+      "name": "undefined"
+    },
+    {
+      "i": 9,
+      "id": "MA0002274107",
+      "name": "undefined"
+    },
+    {
+      "i": 10,
+      "id": "MA0002274108",
+      "name": "undefined"
+    },
+    {
+      "i": 11,
+      "id": "MA0002274109",
+      "name": "undefined"
+    },
+    {
+      "i": 12,
+      "id": "MA0002274110",
+      "name": "undefined"
+    },
+    {
+      "i": 13,
+      "id": "MA0002274111",
+      "name": "undefined"
+    },
+    {
+      "i": 14,
+      "id": "MA2502064103",
+      "name": "undefined"
+    },
+    {
+      "i": 15,
+      "id": "MA2502064141",
+      "name": "undefined"
+    },
+    {
+      "i": 16,
+      "id": "MA2502064128",
+      "name": "undefined"
+    },
+    {
+      "i": 17,
+      "id": "MA2502064134",
+      "name": "undefined"
+    },
+    {
+      "i": 18,
+      "id": "MA2502064129",
+      "name": "undefined"
+    },
+    {
+      "i": 19,
+      "id": "MA2502064135",
+      "name": "undefined"
+    },
+    {
+      "i": 20,
+      "id": "MA2502064130",
+      "name": "undefined"
+    },
+    {
+      "i": 21,
+      "id": "MA2502064136",
+      "name": "undefined"
+    },
+    {
+      "i": 22,
+      "id": "MA2502064137",
+      "name": "undefined"
+    },
+    {
+      "i": 23,
+      "id": "MA2502064131",
+      "name": "undefined"
+    },
+    {
+      "i": 24,
+      "id": "MA2502064138",
+      "name": "undefined"
+    },
+    {
+      "i": 25,
+      "id": "MA2502064132",
+      "name": "undefined"
+    },
+    {
+      "i": 26,
+      "id": "MA2502064139",
+      "name": "undefined"
+    },
+    {
+      "i": 27,
+      "id": "MA2502064133",
+      "name": "undefined"
+    },
+    {
+      "i": 28,
+      "id": "MA2502064140",
+      "name": "undefined"
+    },
+    {
+      "i": 29,
+      "id": "FILE-mfq40f3l-jEQDzk1KKT",
+      "name": "미래엔_초등_수학4-1_기초학습지_2_기초학습지"
+    },
+    {
+      "i": 30,
+      "id": "MA0002274212",
+      "name": "undefined"
+    },
+    {
+      "i": 31,
+      "id": "MA0002274213",
+      "name": "undefined"
+    },
+    {
+      "i": 32,
+      "id": "MA0002274201",
+      "name": "undefined"
+    },
+    {
+      "i": 33,
+      "id": "MA0002274202",
+      "name": "undefined"
+    },
+    {
+      "i": 34,
+      "id": "MA0002274203",
+      "name": "undefined"
+    },
+    {
+      "i": 35,
+      "id": "MA0002274204",
+      "name": "undefined"
+    },
+    {
+      "i": 36,
+      "id": "MA0002274205",
+      "name": "undefined"
+    },
+    {
+      "i": 37,
+      "id": "MA0002274206",
+      "name": "undefined"
+    },
+    {
+      "i": 38,
+      "id": "MA0002274207",
+      "name": "undefined"
+    },
+    {
+      "i": 39,
+      "id": "MA0002274208",
+      "name": "undefined"
+    },
+    {
+      "i": 40,
+      "id": "MA0002274209",
+      "name": "undefined"
+    },
+    {
+      "i": 41,
+      "id": "MA0002274210",
+      "name": "undefined"
+    },
+    {
+      "i": 42,
+      "id": "MA0002274211",
+      "name": "undefined"
+    },
+    {
+      "i": 43,
+      "id": "FILE-m6sw2x7x-1ph7JX1zZY",
+      "name": "진단평가"
+    },
+    {
+      "i": 44,
+      "id": "FILE-m6sw40wr-tRqi08XiVF",
+      "name": "[형성평가 HWP]2_2차시_형성평가"
+    },
+    {
+      "i": 45,
+      "id": "FILE-m6sw4ya0-3ZEN5SU6kX",
+      "name": "[형성평가 HWP]2_3차시_형성평가"
+    },
+    {
+      "i": 46,
+      "id": "FILE-m6sw6e01-t7C1u3v8Tq",
+      "name": "[형성평가 HWP]2_4차시_형성평가"
+    },
+    {
+      "i": 47,
+      "id": "FILE-m9gqwsel-LL2Keh09l8",
+      "name": "[형성평가 HWP]2_5차시_형성평가"
+    },
+    {
+      "i": 48,
+      "id": "FILE-m6udl8s3-Hi45Q8Zjk0",
+      "name": "[형성평가 HWP]2_6차시_형성평가"
+    },
+    {
+      "i": 49,
+      "id": "FILE-m6sw8twe-qYbkY40uU5",
+      "name": "[형성평가 HWP]2_7차시_형성평가"
+    },
+    {
+      "i": 50,
+      "id": "FILE-m6sw9ocq-V75PIk6bM1",
+      "name": "[형성평가 HWP]2_8차시_형성평가"
+    },
+    {
+      "i": 51,
+      "id": "FILE-m6t00djv-bS75E7jW8t",
+      "name": "[과정중심평가 HWP]2_9차시_과정중심평가"
+    },
+    {
+      "i": 52,
+      "id": "FILE-mfq41rfo-jwGeWLsyDP",
+      "name": "[기초학습지 HWP]3"
+    },
+    {
+      "i": 53,
+      "id": "MA0002274312",
+      "name": "undefined"
+    },
+    {
+      "i": 54,
+      "id": "MA0002274313",
+      "name": "undefined"
+    },
+    {
+      "i": 55,
+      "id": "MA0002274301",
+      "name": "undefined"
+    },
+    {
+      "i": 56,
+      "id": "MA0002274302",
+      "name": "undefined"
+    },
+    {
+      "i": 57,
+      "id": "MA0002274303",
+      "name": "undefined"
+    },
+    {
+      "i": 58,
+      "id": "MA0002274304",
+      "name": "undefined"
+    },
+    {
+      "i": 59,
+      "id": "MA0002274305",
+      "name": "undefined"
+    },
+    {
+      "i": 60,
+      "id": "MA0002274306",
+      "name": "undefined"
+    },
+    {
+      "i": 61,
+      "id": "MA0002274307",
+      "name": "undefined"
+    },
+    {
+      "i": 62,
+      "id": "MA0002274308",
+      "name": "undefined"
+    },
+    {
+      "i": 63,
+      "id": "MA0002274309",
+      "name": "undefined"
+    },
+    {
+      "i": 64,
+      "id": "MA0002274310",
+      "name": "undefined"
+    },
+    {
+      "i": 65,
+      "id": "MA0002274311",
+      "name": "undefined"
+    },
+    {
+      "i": 66,
+      "id": "FILE-m6u2hp92-L3tgI6R78o",
+      "name": "진단평가"
+    },
+    {
+      "i": 67,
+      "id": "FILE-m6yoc0q6-qOTdYP2T9V",
+      "name": "[기초학습지 HWP]3_2차시_기초학습지"
+    },
+    {
+      "i": 68,
+      "id": "FILE-m6u2x245-Jfcuc1TR23",
+      "name": "[형성평가 HWP]3_2차시_형성평가"
+    },
+    {
+      "i": 69,
+      "id": "FILE-m6u28ksu-k97i3W94rv",
+      "name": "[기초학습지 HWP]3_3차시_기초학습지"
+    },
+    {
+      "i": 70,
+      "id": "FILE-m6u2yant-KT5Yin6M1I",
+      "name": "[형성평가 HWP]3_3차시_형성평가"
+    },
+    {
+      "i": 71,
+      "id": "FILE-m6u3q1uj-I7RN3vKcej",
+      "name": "[과정중심평가 HWP]3_3차시_과정중심평가"
+    },
+    {
+      "i": 72,
+      "id": "FILE-m6u2a3y8-hAmrIyWhfW",
+      "name": "[기초학습지 HWP]3_4차시_기초학습지"
+    },
+    {
+      "i": 73,
+      "id": "FILE-m6u2zdjp-E8uhAcpJVc",
+      "name": "[형성평가 HWP]3_4차시_형성평가"
+    },
+    {
+      "i": 74,
+      "id": "FILE-m6u2c9ab-qgPn8nNnxs",
+      "name": "[기초학습지 HWP]3_5차시_기초학습지"
+    },
+    {
+      "i": 75,
+      "id": "FILE-m6u30ocq-R42n7Q4un7",
+      "name": "[형성평가 HWP]3_5차시_형성평가"
+    },
+    {
+      "i": 76,
+      "id": "FILE-m6u2dhvk-a8P1zR5XWJ",
+      "name": "[기초학습지 HWP]3_6차시_기초학습지"
+    },
+    {
+      "i": 77,
+      "id": "FILE-m6u322o3-qd35c92i5e",
+      "name": "[형성평가 HWP]3_6차시_형성평가"
+    },
+    {
+      "i": 78,
+      "id": "FILE-m6u2enrt-Q8m5gn14dr",
+      "name": "[기초학습지 HWP]3_7차시_기초학습지"
+    },
+    {
+      "i": 79,
+      "id": "FILE-m6u33gi1-6xd86W3049",
+      "name": "[형성평가 HWP]3_7차시_형성평가"
+    },
+    {
+      "i": 80,
+      "id": "FILE-m6u34koe-74ZQ52R0dk",
+      "name": "[형성평가 HWP]3_8차시_형성평가"
+    },
+    {
+      "i": 81,
+      "id": "FILE-mfq5x9w4-K0y2o8vOXU",
+      "name": "[기초학습지 HWP]4"
+    },
+    {
+      "i": 82,
+      "id": "MA9902264401",
+      "name": "undefined"
+    },
+    {
+      "i": 83,
+      "id": "MA9902264402",
+      "name": "undefined"
+    },
+    {
+      "i": 84,
+      "id": "MA9902274401",
+      "name": "undefined"
+    },
+    {
+      "i": 85,
+      "id": "MA9902274402",
+      "name": "undefined"
+    },
+    {
+      "i": 86,
+      "id": "MA9902274403",
+      "name": "undefined"
+    },
+    {
+      "i": 87,
+      "id": "MA9902274404",
+      "name": "undefined"
+    },
+    {
+      "i": 88,
+      "id": "MA9902274405",
+      "name": "undefined"
+    },
+    {
+      "i": 89,
+      "id": "MA9902274406",
+      "name": "undefined"
+    },
+    {
+      "i": 90,
+      "id": "MA9902274407",
+      "name": "undefined"
+    },
+    {
+      "i": 91,
+      "id": "MA9902274408",
+      "name": "undefined"
+    },
+    {
+      "i": 92,
+      "id": "MA9902274409",
+      "name": "undefined"
+    },
+    {
+      "i": 93,
+      "id": "MA9902274410",
+      "name": "undefined"
+    },
+    {
+      "i": 94,
+      "id": "MA9902274411",
+      "name": "undefined"
+    },
+    {
+      "i": 95,
+      "id": "FILE-m6sx6fmo-g3TD98w48n",
+      "name": "진단평가"
+    },
+    {
+      "i": 96,
+      "id": "FILE-m6svxg1w-0DeM3jgbsX",
+      "name": "[형성평가 HWP]4_2차시_형성평가"
+    },
+    {
+      "i": 97,
+      "id": "FILE-m6svykua-gPXewQmW2f",
+      "name": "[형성평가 HWP]4_3차시_형성평가"
+    },
+    {
+      "i": 98,
+      "id": "FILE-m6svzh0t-47Kka83yAU",
+      "name": "[형성평가 HWP]4_4-5차시_형성평가"
+    },
+    {
+      "i": 99,
+      "id": "FILE-m6sw0hdw-v3T2peK9R6",
+      "name": "[형성평가 HWP]4_6차시_형성평가"
+    },
+    {
+      "i": 100,
+      "id": "FILE-m6sw1r86-6IbjTvyjH2",
+      "name": "[형성평가 HWP]4_7차시_형성평가"
+    },
+    {
+      "i": 101,
+      "id": "FILE-m6swgibq-jWf53CFhh1",
+      "name": "[과정중심평가 HWP]4_10차시_과정중심평가"
+    },
+    {
+      "i": 102,
+      "id": "FILE-mfupi0y7-Di2Ifpw24v",
+      "name": "[기초학습지 HWP]5"
+    },
+    {
+      "i": 103,
+      "id": "MA0002274501",
+      "name": "undefined"
+    },
+    {
+      "i": 104,
+      "id": "MA0002274502",
+      "name": "undefined"
+    },
+    {
+      "i": 105,
+      "id": "MA0002264510",
+      "name": "undefined"
+    },
+    {
+      "i": 106,
+      "id": "MA0002264511",
+      "name": "undefined"
+    },
+    {
+      "i": 107,
+      "id": "MA0002264501",
+      "name": "undefined"
+    },
+    {
+      "i": 108,
+      "id": "MA0002264502",
+      "name": "undefined"
+    },
+    {
+      "i": 109,
+      "id": "MA0002264503",
+      "name": "undefined"
+    },
+    {
+      "i": 110,
+      "id": "MA0002264504",
+      "name": "undefined"
+    },
+    {
+      "i": 111,
+      "id": "MA0002264505",
+      "name": "undefined"
+    },
+    {
+      "i": 112,
+      "id": "MA0002264506",
+      "name": "undefined"
+    },
+    {
+      "i": 113,
+      "id": "MA0002264507",
+      "name": "undefined"
+    },
+    {
+      "i": 114,
+      "id": "MA0002264508",
+      "name": "undefined"
+    },
+    {
+      "i": 115,
+      "id": "MA0002264509",
+      "name": "undefined"
+    },
+    {
+      "i": 116,
+      "id": "FILE-m6syemni-G04l3Zf2yQ",
+      "name": "진단평가"
+    },
+    {
+      "i": 117,
+      "id": "FILE-m6symkb1-CD243zT2O6",
+      "name": "[기초학습지 HWP]5_2차시_기초학습지"
+    },
+    {
+      "i": 118,
+      "id": "FILE-m6sydobp-qN5344M778",
+      "name": "[형성평가 HWP]5_2차시_형성평가"
+    },
+    {
+      "i": 119,
+      "id": "FILE-m6sylib1-0gbDLj8lt4",
+      "name": "[기초학습지 HWP]5_3차시_기초학습지"
+    },
+    {
+      "i": 120,
+      "id": "FILE-m6sycmxi-1LQgkW3y3s",
+      "name": "[형성평가 HWP]5_3차시_형성평가"
+    },
+    {
+      "i": 121,
+      "id": "FILE-m6sykbdj-UcetuzW1EV",
+      "name": "[기초학습지 HWP]5_4-5차시_기초학습지"
+    },
+    {
+      "i": 122,
+      "id": "FILE-m6sybbq4-v1p4wA8QIh",
+      "name": "[형성평가 HWP]5_4-5차시_형성평가"
+    },
+    {
+      "i": 123,
+      "id": "FILE-m6syj7v0-jROu5e7uiV",
+      "name": "[기초학습지 HWP]5_6차시_기초학습지"
+    },
+    {
+      "i": 124,
+      "id": "FILE-m6sya9kr-4L0QuGycA4",
+      "name": "[형성평가 HWP]5_6차시_형성평가"
+    },
+    {
+      "i": 125,
+      "id": "FILE-m6syi12y-R5cV3IFO6B",
+      "name": "[기초학습지 HWP]5_7차시_기초학습지"
+    },
+    {
+      "i": 126,
+      "id": "FILE-m6sy995w-C7X5335OPB",
+      "name": "[형성평가 HWP]5_7차시_형성평가"
+    },
+    {
+      "i": 127,
+      "id": "FILE-m6sygofj-8RFqiK4G9h",
+      "name": "[기초학습지 HWP]5_8차시_기초학습지"
+    },
+    {
+      "i": 128,
+      "id": "FILE-m6sy8azy-pyKyQamKX2",
+      "name": "[형성평가 HWP]5_8차시_형성평가"
+    },
+    {
+      "i": 129,
+      "id": "FILE-m6syfngn-KRU4U4pXzm",
+      "name": "[기초학습지 HWP]5_9차시_기초학습지"
+    },
+    {
+      "i": 130,
+      "id": "FILE-m6sy7boj-V536qP1nor",
+      "name": "[형성평가 HWP]5_9차시_형성평가"
+    },
+    {
+      "i": 131,
+      "id": "FILE-m6sy6cmy-b5ExupmDz0",
+      "name": "[과정중심평가 HWP]5_9차시_과정중심평가"
+    },
+    {
+      "i": 132,
+      "id": "FILE-mg0fatv9-Ba3cajk25V",
+      "name": "[기초학습지 HWP]6"
+    },
+    {
+      "i": 133,
+      "id": "MA0002274612",
+      "name": "undefined"
+    },
+    {
+      "i": 134,
+      "id": "MA0002274613",
+      "name": "undefined"
+    },
+    {
+      "i": 135,
+      "id": "MA0002274610",
+      "name": "undefined"
+    },
+    {
+      "i": 136,
+      "id": "MA0002274611",
+      "name": "undefined"
+    },
+    {
+      "i": 137,
+      "id": "MA0002274601",
+      "name": "undefined"
+    },
+    {
+      "i": 138,
+      "id": "MA0002274602",
+      "name": "undefined"
+    },
+    {
+      "i": 139,
+      "id": "MA0002274603",
+      "name": "undefined"
+    },
+    {
+      "i": 140,
+      "id": "MA0002274604",
+      "name": "undefined"
+    },
+    {
+      "i": 141,
+      "id": "MA0002274605",
+      "name": "undefined"
+    },
+    {
+      "i": 142,
+      "id": "MA0002274606",
+      "name": "undefined"
+    },
+    {
+      "i": 143,
+      "id": "MA0002274607",
+      "name": "undefined"
+    },
+    {
+      "i": 144,
+      "id": "MA0002274608",
+      "name": "undefined"
+    },
+    {
+      "i": 145,
+      "id": "MA0002274609",
+      "name": "undefined"
+    },
+    {
+      "i": 146,
+      "id": "FILE-m6syy222-P0Lbd5M2h8",
+      "name": "진단평가"
+    },
+    {
+      "i": 147,
+      "id": "FILE-m6syv952-EXo4jdrb87",
+      "name": "[형성평가 HWP]6_2차시_형성평가"
+    },
+    {
+      "i": 148,
+      "id": "FILE-m6sytp2c-bi7SNb3Vbc",
+      "name": "[형성평가 HWP]6_3차시_형성평가"
+    },
+    {
+      "i": 149,
+      "id": "FILE-m6sysbu7-c39txx3pK2",
+      "name": "[형성평가 HWP]6_4차시_형성평가"
+    },
+    {
+      "i": 150,
+      "id": "FILE-m6syr4on-TDq8S788lk",
+      "name": "[형성평가 HWP]6_5-6차시_형성평가"
+    },
+    {
+      "i": 151,
+      "id": "FILE-m6syotun-350RdIS88i",
+      "name": "[과정중심평가 HWP]6_7차시_과정중심평가"
+    }
+  ]
+}

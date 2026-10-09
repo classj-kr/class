@@ -437,7 +437,7 @@ const MAX_ROOM_PLAYERS = {
   gemguild: 4,
   beantrading: 5,
   citychase: 6,
-  "citychase-realtime": 4,
+  "citychase-realtime": 5,
   kingdomtrails: 4,
   blokus: 4,
   honeycomb: 6,
