@@ -192,7 +192,7 @@ test("all 36 lessons use an illustration, a task simulation, or direct manipulat
   }
   assert.match(conceptLabSource, /window\.COMPUTER_SETUP_CONCEPT_LABS/);
   assert.match(lessonSource, /window\.COMPUTER_SETUP_CONCEPT_LABS\?\.\(\)/);
-  assert.match(conceptLabSource, /value="혜성의 꼬리는 왜 생길까\?"/, "H03 needs a working default search query");
+  assert.match(conceptLabSource, /value="새봄도서관 휴관일"/, "H03 needs a default query matching the source-comparison task");
   assert.match(conceptLabSource, /혜성의 꼬리는 어떻게 생길까\?/, "H03 needs a reliable comet result");
   assert.match(conceptLabSource, /혜성은 빨리 달려서 꼬리가 뒤로 생긴다/, "H03 needs a contrasting unsupported result");
   assert.match(conceptLabSource, /data-browser-suggestion="혜성"/, "H03 needs visible supported-topic controls");
