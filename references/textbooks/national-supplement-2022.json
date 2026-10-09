@@ -1,0 +1,16 @@
+{
+  "source": "비바샘 교과 자료의 22 개정 국어·도덕 목록",
+  "retrievedOn": "2026-10-08",
+  "books": [
+    {"title":"국어5-1가","sourceId":"106597"},
+    {"title":"국어5-1나","sourceId":"106598"},
+    {"title":"국어5-2가","sourceId":"106611"},
+    {"title":"국어5-2나","sourceId":"106612"},
+    {"title":"국어6-1가","sourceId":"106599"},
+    {"title":"국어6-1나","sourceId":"106600"},
+    {"title":"국어6-2가","sourceId":"106613"},
+    {"title":"국어6-2나","sourceId":"106614"},
+    {"title":"도덕5","sourceId":"106601"},
+    {"title":"도덕6","sourceId":"106602"}
+  ]
+}

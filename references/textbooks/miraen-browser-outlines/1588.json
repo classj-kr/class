@@ -1,0 +1,226 @@
+{
+  "grade": 5,
+  "semester": null,
+  "subject": "영어",
+  "author": "강정진",
+  "url": "https://e.m-teacher.co.kr/pages/ele/textbook/textbookDetail.mrn?masterSeq=1588&gradeCode=05&termCode=02&revisionCode=2022&tabType=classTab&sortCode=001#",
+  "observedAt": "2026-10-09",
+  "groups": [
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 8~9p",
+        "[2차시] 둘째 시간|영어 10~11p"
+      ],
+      "number": "",
+      "subunitRowCounts": [],
+      "unit": "Hello"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 12~13p",
+        "[2차시] 둘째 시간|영어 14~15p",
+        "[3차시] 셋째 시간|영어 16~18p",
+        "[4차시] 넷째 시간|영어 19~21p",
+        "[5차시] 다섯째 시간|영어 22~23p",
+        "[6차시] 여섯째 시간|영어 24~25p"
+      ],
+      "number": "Lesson 1.",
+      "subunitRowCounts": [],
+      "unit": "I'm from Korea"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 26~27p",
+        "[2차시] 둘째 시간|영어 28~29p",
+        "[3차시] 셋째 시간|영어 30~32p",
+        "[4차시] 넷째 시간|영어 33~35p",
+        "[5차시] 다섯째 시간|영어 36~37p",
+        "[6차시] 여섯째 시간|영어 38~39p"
+      ],
+      "number": "Lesson 2.",
+      "subunitRowCounts": [],
+      "unit": "Can I Take a Picture?"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 40~41p",
+        "[2차시] 둘째 시간|영어 42~43p",
+        "[3차시] 셋째 시간|영어 44~46p",
+        "[4차시] 넷째 시간|영어 47~49p",
+        "[5차시] 다섯째 시간|영어 50~51p",
+        "[6차시] 여섯째 시간|영어 52~53p"
+      ],
+      "number": "Lesson 3.",
+      "subunitRowCounts": [],
+      "unit": "Whose Bottle Is This?"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 54~55p",
+        "[2차시] 둘째 시간|영어 55p"
+      ],
+      "number": "Link 1.",
+      "subunitRowCounts": [],
+      "unit": "(Lessons 1~3)"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 56~57p",
+        "[2차시] 둘째 시간|영어 58~59p",
+        "[3차시] 셋째 시간|영어 60~62p",
+        "[4차시] 넷째 시간|영어 63~65p",
+        "[5차시] 다섯째 시간|영어 66~67p",
+        "[6차시] 여섯째 시간|영어 68~69p"
+      ],
+      "number": "Lesson 4.",
+      "subunitRowCounts": [],
+      "unit": "My Favorite Subject Is P.E."
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 70~71p",
+        "[2차시] 둘째 시간|영어 72~73p",
+        "[3차시] 셋째 시간|영어 74~76p",
+        "[4차시] 넷째 시간|영어 77~79p",
+        "[5차시] 다섯째 시간|영어 80~81p",
+        "[6차시] 여섯째 시간|영어 82~83p"
+      ],
+      "number": "Lesson 5.",
+      "subunitRowCounts": [],
+      "unit": "What Would You Like?"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 84~85p",
+        "[2차시] 둘째 시간|영어 86~87p",
+        "[3차시] 셋째 시간|영어 88~90p",
+        "[4차시] 넷째 시간|영어 91~93p",
+        "[5차시] 다섯째 시간|영어 94~95p",
+        "[6차시] 여섯째 시간|영어 96~97p"
+      ],
+      "number": "Lesson 6.",
+      "subunitRowCounts": [],
+      "unit": "What Will You Do This Summer?"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 98~99p",
+        "[2차시] 둘째 시간|영어 99p"
+      ],
+      "number": "Link 2.",
+      "subunitRowCounts": [],
+      "unit": "(Lessons 4~6)"
+    },
+    {
+      "lessons": [],
+      "number": "",
+      "subunitRowCounts": [],
+      "unit": "Lessons 1~6 (1학기 복습)"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 100~101p",
+        "[2차시] 둘째 시간|영어 102~103p",
+        "[3차시] 셋째 시간|영어 104~106p",
+        "[4차시] 넷째 시간|영어 107~109p",
+        "[5차시] 다섯째 시간|영어 110~111p",
+        "[6차시] 여섯째 시간|영어 112~113p"
+      ],
+      "number": "Lesson 7.",
+      "subunitRowCounts": [],
+      "unit": "I Visited My Grandpa"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 114~115p",
+        "[2차시] 둘째 시간|영어 116~117p",
+        "[3차시] 셋째 시간|영어 118~120p",
+        "[4차시] 넷째 시간|영어 121~123p",
+        "[5차시] 다섯째 시간|영어 124~125p",
+        "[6차시] 여섯째 시간|영어 126~127p"
+      ],
+      "number": "Lesson 8.",
+      "subunitRowCounts": [],
+      "unit": "He Has Short Curly Hair"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 128~129p",
+        "[2차시] 둘째 시간|영어 130~131p",
+        "[3차시] 셋째 시간|영어 132~134p",
+        "[4차시] 넷째 시간|영어 135~137p",
+        "[5차시] 다섯째 시간|영어 138~139p",
+        "[6차시] 여섯째 시간|영어 140~141p"
+      ],
+      "number": "Lesson 9.",
+      "subunitRowCounts": [],
+      "unit": "There Is a Bed in the Bedroom"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 142~143p",
+        "[2차시] 둘째 시간|영어 143p"
+      ],
+      "number": "Link 3.",
+      "subunitRowCounts": [],
+      "unit": "(Lessons 7~9)"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 144~145p",
+        "[2차시] 둘째 시간|영어 146~147p",
+        "[3차시] 셋째 시간|영어 148~150p",
+        "[4차시] 넷째 시간|영어 151~153p",
+        "[5차시] 다섯째 시간|영어 154~155p",
+        "[6차시] 여섯째 시간|영어 156~157p"
+      ],
+      "number": "Lesson 10.",
+      "subunitRowCounts": [],
+      "unit": "I Get Up at 7"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 158~159p",
+        "[2차시] 둘째 시간|영어 160~161p",
+        "[3차시] 셋째 시간|영어 162~164p",
+        "[4차시] 넷째 시간|영어 165~167p",
+        "[5차시] 다섯째 시간|영어 168~169p",
+        "[6차시] 여섯째 시간|영어 170~171p"
+      ],
+      "number": "Lesson 11.",
+      "subunitRowCounts": [],
+      "unit": "Where Is the Restaurant?"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 172~173p",
+        "[2차시] 둘째 시간|영어 174~175p",
+        "[3차시] 셋째 시간|영어 176~178p",
+        "[4차시] 넷째 시간|영어 179~181p",
+        "[5차시] 다섯째 시간|영어 182~183p",
+        "[6차시] 여섯째 시간|영어 184~185p"
+      ],
+      "number": "Lesson 12.",
+      "subunitRowCounts": [],
+      "unit": "What Season Do You Like?"
+    },
+    {
+      "lessons": [
+        "[1차시] 첫째 시간|영어 186~187p",
+        "[2차시] 둘째 시간|영어 187p"
+      ],
+      "number": "Link 4.",
+      "subunitRowCounts": [],
+      "unit": "(Lessons 10~12)"
+    },
+    {
+      "lessons": [
+        "Activity1|영어 188p",
+        "Activity2|영어 189p"
+      ],
+      "number": "",
+      "subunitRowCounts": [],
+      "unit": "Goodbye"
+    }
+  ]
+}

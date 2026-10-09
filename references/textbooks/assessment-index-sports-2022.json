@@ -1,0 +1,3416 @@
+{
+  "schemaVersion": 1,
+  "assessments": [
+    {
+      "id": "sports-assessment-1XO5dkkh1HyL2EqYy8NUukigY3u2Pj8bG",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "도구 표현 작품을 발표하고 감상해요",
+      "periodText": "12~14",
+      "periodNumbers": [
+        12,
+        13,
+        14
+      ],
+      "sourceId": "1XO5dkkh1HyL2EqYy8NUukigY3u2Pj8bG",
+      "sourceUrl": "https://drive.google.com/file/d/1XO5dkkh1HyL2EqYy8NUukigY3u2Pj8bG/view?usp=drivesdk",
+      "sourceFile": "sports-1XO5dkkh1HyL2EqYy8NUukigY3u2Pj8bG.hwpx",
+      "sha256": "d47025ecd902c8ed9a7fa78da5393c1aeb32e4b6d51856029d5af56e42d9ef02",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r37"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r37"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1w2oW7ZrzqGc_EdIGT3yGstlskw_8GLZG",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "후프로 표현해요",
+      "periodText": "11",
+      "periodNumbers": [
+        11
+      ],
+      "sourceId": "1w2oW7ZrzqGc_EdIGT3yGstlskw_8GLZG",
+      "sourceUrl": "https://drive.google.com/file/d/1w2oW7ZrzqGc_EdIGT3yGstlskw_8GLZG/view?usp=drivesdk",
+      "sourceFile": "sports-1w2oW7ZrzqGc_EdIGT3yGstlskw_8GLZG.hwp",
+      "sha256": "41140c583127b2d67272d9224448945286312e00045db28bd5e60312f7453301",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r36"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r36"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1YVbeg6vNPI32JxoLpUa89axPDBUyN7wi",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "줄로 표현해요",
+      "periodText": "10",
+      "periodNumbers": [
+        10
+      ],
+      "sourceId": "1YVbeg6vNPI32JxoLpUa89axPDBUyN7wi",
+      "sourceUrl": "https://drive.google.com/file/d/1YVbeg6vNPI32JxoLpUa89axPDBUyN7wi/view?usp=drivesdk",
+      "sourceFile": "sports-1YVbeg6vNPI32JxoLpUa89axPDBUyN7wi.hwp",
+      "sha256": "7bfac8752eb0ab9838d1404a5d1c1a2994a3d0f709cc48da70ae5c2a2e13870c",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r35"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r35"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1CG9WZI5kJW9z8ml1gFSOFLRfSHbfIUs3",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "공으로 표현해요",
+      "periodText": "9",
+      "periodNumbers": [
+        9
+      ],
+      "sourceId": "1CG9WZI5kJW9z8ml1gFSOFLRfSHbfIUs3",
+      "sourceUrl": "https://drive.google.com/file/d/1CG9WZI5kJW9z8ml1gFSOFLRfSHbfIUs3/view?usp=drivesdk",
+      "sourceFile": "sports-1CG9WZI5kJW9z8ml1gFSOFLRfSHbfIUs3.hwp",
+      "sha256": "ec2c1b29da2ea54b9b359b718b1acecc6599454dcea6f4726ef281f02c5f0ef9",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r34"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r34"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-17c5DuuG4f0-6kZB-KIO4gPx8lQC3g_15",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "리본으로 표현해요",
+      "periodText": "8",
+      "periodNumbers": [
+        8
+      ],
+      "sourceId": "17c5DuuG4f0-6kZB-KIO4gPx8lQC3g_15",
+      "sourceUrl": "https://drive.google.com/file/d/17c5DuuG4f0-6kZB-KIO4gPx8lQC3g_15/view?usp=drivesdk",
+      "sourceFile": "sports-17c5DuuG4f0-6kZB-KIO4gPx8lQC3g_15.hwp",
+      "sha256": "306823129b65091c785d1a9063f238f8c15adc6522d0e4a668ccfb1b529a0c57",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r33"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r33"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1D-AGdfIx685ccs8PJGTh4MwFs6uN6GIi",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "리듬 표현 작품을 발표하고 감상해요",
+      "periodText": "5~7",
+      "periodNumbers": [
+        5,
+        6,
+        7
+      ],
+      "sourceId": "1D-AGdfIx685ccs8PJGTh4MwFs6uN6GIi",
+      "sourceUrl": "https://drive.google.com/file/d/1D-AGdfIx685ccs8PJGTh4MwFs6uN6GIi/view?usp=drivesdk",
+      "sourceFile": "sports-1D-AGdfIx685ccs8PJGTh4MwFs6uN6GIi.hwp",
+      "sha256": "e4477ffffa8c1e35966d283098906fbbb9420c80a3c3ce12c93851246b2b10d6",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r20"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r20"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "리듬의 빠르기와 강약에 맞추어 표현해요",
+      "periodText": "4",
+      "periodNumbers": [
+        4
+      ],
+      "sourceId": "1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv",
+      "sourceUrl": "https://drive.google.com/file/d/1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv/view?usp=drivesdk",
+      "sourceFile": "sports-1eqo8Ym8D8MpzbMuBc11rs7V57YvwBNJv.hwp",
+      "sha256": "768d8fa904123a2bda55d567a30af0621eece2a66963d83cfa6daaa8a63a664d",
+      "lessonIds": [],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r19"
+      ],
+      "matchStatus": "needs-content-review",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-11wyQyHZqXGXKPZ6455EW9sjS2K9hcLFE",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "리듬의 박자와 패턴에 맞추어 표현해요",
+      "periodText": "3",
+      "periodNumbers": [
+        3
+      ],
+      "sourceId": "11wyQyHZqXGXKPZ6455EW9sjS2K9hcLFE",
+      "sourceUrl": "https://drive.google.com/file/d/11wyQyHZqXGXKPZ6455EW9sjS2K9hcLFE/view?usp=drivesdk",
+      "sourceFile": "sports-11wyQyHZqXGXKPZ6455EW9sjS2K9hcLFE.hwp",
+      "sha256": "fe398899c22539db588c3c664be3cf95a2391c8929c308f2f45ae072956f6145",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r18"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r18"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1NfBBRp09674iPhDMDKDChtEzVgyiFisu",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "생활 속에서 리듬을 찾아요",
+      "periodText": "2",
+      "periodNumbers": [
+        2
+      ],
+      "sourceId": "1NfBBRp09674iPhDMDKDChtEzVgyiFisu",
+      "sourceUrl": "https://drive.google.com/file/d/1NfBBRp09674iPhDMDKDChtEzVgyiFisu/view?usp=drivesdk",
+      "sourceFile": "sports-1NfBBRp09674iPhDMDKDChtEzVgyiFisu.hwp",
+      "sha256": "6deb8ad399e64c6d24d164a6d612913ff7add1af12973fe0c2c1af0a640cfa98",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r17"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r17"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1DNCMEnVJrJDi33Va1TOw2q2MaWy9QU0y",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "스키를 타고 버티며 이동해요",
+      "periodText": "57~60",
+      "periodNumbers": [
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceId": "1DNCMEnVJrJDi33Va1TOw2q2MaWy9QU0y",
+      "sourceUrl": "https://drive.google.com/file/d/1DNCMEnVJrJDi33Va1TOw2q2MaWy9QU0y/view?usp=drivesdk",
+      "sourceFile": "sports-1DNCMEnVJrJDi33Va1TOw2q2MaWy9QU0y.hwp",
+      "sha256": "0401065b37e4482ddca715bfcd8770a53827075683037ed2c569bd61dad93790",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r40"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r40"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1uUOAClBH9Qp5W7GVS_kWHjvXsnhaI-CY",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "인라인스케이트를 타고 균형을 잡으며 이동해요",
+      "periodText": "49~52",
+      "periodNumbers": [
+        49,
+        50,
+        51,
+        52
+      ],
+      "sourceId": "1uUOAClBH9Qp5W7GVS_kWHjvXsnhaI-CY",
+      "sourceUrl": "https://drive.google.com/file/d/1uUOAClBH9Qp5W7GVS_kWHjvXsnhaI-CY/view?usp=drivesdk",
+      "sourceFile": "sports-1uUOAClBH9Qp5W7GVS_kWHjvXsnhaI-CY.hwp",
+      "sha256": "7a84f0a2f71e9ff0d1a99120448fb4c75666de68b19f382fa8b3a76e8ec1fa36",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r27"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r27"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1eIRybIwk2m720CCNWqYo5obyjxh87VHU",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "자전거를 타고 균형을 잡으며 이동해요",
+      "periodText": "45~48",
+      "periodNumbers": [
+        45,
+        46,
+        47,
+        48
+      ],
+      "sourceId": "1eIRybIwk2m720CCNWqYo5obyjxh87VHU",
+      "sourceUrl": "https://drive.google.com/file/d/1eIRybIwk2m720CCNWqYo5obyjxh87VHU/view?usp=drivesdk",
+      "sourceFile": "sports-1eIRybIwk2m720CCNWqYo5obyjxh87VHU.hwp",
+      "sha256": "bad1e4a44d78e287b854535291d71efa0290b8cc362d1932e0352e55fa2794c5",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r10"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r10"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1NWyRnvJIgAJbzGtMG3Z9ihKhccYJOfFc",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "홀드를 잡고 올라요",
+      "periodText": "53~56",
+      "periodNumbers": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "sourceId": "1NWyRnvJIgAJbzGtMG3Z9ihKhccYJOfFc",
+      "sourceUrl": "https://drive.google.com/file/d/1NWyRnvJIgAJbzGtMG3Z9ihKhccYJOfFc/view?usp=drivesdk",
+      "sourceFile": "sports-1NWyRnvJIgAJbzGtMG3Z9ihKhccYJOfFc.hwp",
+      "sha256": "4696f0b785e5b54c6098540277fbc4bb45cf783b122afa45c76e67948bb0aa84",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r28"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r28"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-16vd7VSy_2ZwiAb0dLAYZB2XGVn2Ptah7",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "공 치기와 받기를 해요",
+      "periodText": "40~44",
+      "periodNumbers": [
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "sourceId": "16vd7VSy_2ZwiAb0dLAYZB2XGVn2Ptah7",
+      "sourceUrl": "https://drive.google.com/file/d/16vd7VSy_2ZwiAb0dLAYZB2XGVn2Ptah7/view?usp=drivesdk",
+      "sourceFile": "sports-16vd7VSy_2ZwiAb0dLAYZB2XGVn2Ptah7.hwp",
+      "sha256": "eb963627fa4dee58f4b34af96db2f2c324b75ca92706801c71817f25be556eb6",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r14"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r14"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1BDpIOp6i0Xewdg7OI7ZTPrm3KA4pM6wt",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "공 차기와 멈추기를 해요",
+      "periodText": "35~39",
+      "periodNumbers": [
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "sourceId": "1BDpIOp6i0Xewdg7OI7ZTPrm3KA4pM6wt",
+      "sourceUrl": "https://drive.google.com/file/d/1BDpIOp6i0Xewdg7OI7ZTPrm3KA4pM6wt/view?usp=drivesdk",
+      "sourceFile": "sports-1BDpIOp6i0Xewdg7OI7ZTPrm3KA4pM6wt.hwp",
+      "sha256": "42872f4a2bc656ec712f0526f0c8ebc955ddf83b382185f485a9c225daf0a381",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r13"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r13"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1BIVFOucTeFzUWEB8Ow-iA6qqEep7RVSI",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "공 던지기와 잡기를 해요",
+      "periodText": "30~34",
+      "periodNumbers": [
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "sourceId": "1BIVFOucTeFzUWEB8Ow-iA6qqEep7RVSI",
+      "sourceUrl": "https://drive.google.com/file/d/1BIVFOucTeFzUWEB8Ow-iA6qqEep7RVSI/view?usp=drivesdk",
+      "sourceFile": "sports-1BIVFOucTeFzUWEB8Ow-iA6qqEep7RVSI.hwp",
+      "sha256": "401ff98ce9419fae5fc79fb645b0d07b9779898722f5eaf5032fac68fcbdc086",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r12"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r12"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1yqOZgQaMoeVwNq5dTuHf67hJZaicFt5_",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "공 몰기를 해요",
+      "periodText": "25~29",
+      "periodNumbers": [
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "sourceId": "1yqOZgQaMoeVwNq5dTuHf67hJZaicFt5_",
+      "sourceUrl": "https://drive.google.com/file/d/1yqOZgQaMoeVwNq5dTuHf67hJZaicFt5_/view?usp=drivesdk",
+      "sourceFile": "sports-1yqOZgQaMoeVwNq5dTuHf67hJZaicFt5_.hwp",
+      "sha256": "f00f20c1cbaec36f6095908b31a23e753197702fd8f0d3ea80fb22865172b553",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r11"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r11"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1NLHdOIsKze8HOd1EMX2CBe0VBLCRFHWG",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "물에서 헤엄쳐요",
+      "periodText": "19~24",
+      "periodNumbers": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sourceId": "1NLHdOIsKze8HOd1EMX2CBe0VBLCRFHWG",
+      "sourceUrl": "https://drive.google.com/file/d/1NLHdOIsKze8HOd1EMX2CBe0VBLCRFHWG/view?usp=drivesdk",
+      "sourceFile": "sports-1NLHdOIsKze8HOd1EMX2CBe0VBLCRFHWG.hwp",
+      "sha256": "c01785061eed4defca90fe74e140e4389f63e61d21b0df68105cbe762db1d814",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r15"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r15"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "전력으로 달려요",
+      "periodText": "13~18",
+      "periodNumbers": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "sourceId": "1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA",
+      "sourceUrl": "https://drive.google.com/file/d/1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA/view?usp=drivesdk",
+      "sourceFile": "sports-1YlPr3IZTFNMz7DEeol4irlt0F6_1xlnA.hwp",
+      "sha256": "91b6fdb3f306527443dc33f3ba886ed01ad6c6a796ad3aaf4e84198a4da6572a",
+      "lessonIds": [],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r32"
+      ],
+      "matchStatus": "needs-content-review",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1APInyT25SQ91rg_1ERBleBReRk97CpF-",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "매트에서 정확한 동작을 해요",
+      "periodText": "11~12",
+      "periodNumbers": [
+        11,
+        12
+      ],
+      "sourceId": "1APInyT25SQ91rg_1ERBleBReRk97CpF-",
+      "sourceUrl": "https://drive.google.com/file/d/1APInyT25SQ91rg_1ERBleBReRk97CpF-/view?usp=drivesdk",
+      "sourceFile": "sports-1APInyT25SQ91rg_1ERBleBReRk97CpF-.hwp",
+      "sha256": "c049a900b8ddbe49cd366e33e0a8270ce72334adb7dcc7a7717fc41974b711cd",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r31"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r31"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-13tFeW6VR46pX5Qq7-0mf2P-21Ipfr4Hu",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "손을 짚고 옆으로 돌아요",
+      "periodText": "7~10",
+      "periodNumbers": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "sourceId": "13tFeW6VR46pX5Qq7-0mf2P-21Ipfr4Hu",
+      "sourceUrl": "https://drive.google.com/file/d/13tFeW6VR46pX5Qq7-0mf2P-21Ipfr4Hu/view?usp=drivesdk",
+      "sourceFile": "sports-13tFeW6VR46pX5Qq7-0mf2P-21Ipfr4Hu.hwp",
+      "sha256": "18d28cd960cff35f7554070bc99dbdceacf067915a3725c1fdb78cdb75392908",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r30"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r30"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1WwnVdOGutHOlQLEWI2BzA3DlT8epeVi1",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "앞뒤로 굴러요",
+      "periodText": "2~6",
+      "periodNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "sourceId": "1WwnVdOGutHOlQLEWI2BzA3DlT8epeVi1",
+      "sourceUrl": "https://drive.google.com/file/d/1WwnVdOGutHOlQLEWI2BzA3DlT8epeVi1/view?usp=drivesdk",
+      "sourceFile": "sports-1WwnVdOGutHOlQLEWI2BzA3DlT8epeVi1.hwp",
+      "sha256": "69ea10e2b2360cd7b76fc16cdd8669c371d282289b75ae7ca8b6c0c6082756ec",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r29"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r29"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ew8wBYn0NeXAsWVuNdmPwgW5HQjHRLc0",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "일상생활 속에서 운동 습관을 길러요",
+      "periodText": "20~21",
+      "periodNumbers": [
+        20,
+        21
+      ],
+      "sourceId": "1ew8wBYn0NeXAsWVuNdmPwgW5HQjHRLc0",
+      "sourceUrl": "https://drive.google.com/file/d/1ew8wBYn0NeXAsWVuNdmPwgW5HQjHRLc0/view?usp=drivesdk",
+      "sourceFile": "sports-1ew8wBYn0NeXAsWVuNdmPwgW5HQjHRLc0.hwp",
+      "sha256": "724ee4903e1794008afd2a487e7adc002219791b56aa87c1f797b6fb6755375e",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r24"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r24"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1s0ZaBv9VRZvWRxqZufdAOVpunPKVWo4K",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "줄넘기로 운동 습관을 길러요",
+      "periodText": "18~19",
+      "periodNumbers": [
+        18,
+        19
+      ],
+      "sourceId": "1s0ZaBv9VRZvWRxqZufdAOVpunPKVWo4K",
+      "sourceUrl": "https://drive.google.com/file/d/1s0ZaBv9VRZvWRxqZufdAOVpunPKVWo4K/view?usp=drivesdk",
+      "sourceFile": "sports-1s0ZaBv9VRZvWRxqZufdAOVpunPKVWo4K.hwp",
+      "sha256": "5f936869a4d7b724c375beb6963ae306d9e75f837892ca66b83ad95f076e79f3",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r23"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r23"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1DdzH9Gt9Ask2aReA6NADmJbVshlKHNB6",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "맨손 체조로 운동 습관을 길러요",
+      "periodText": "16~17",
+      "periodNumbers": [
+        16,
+        17
+      ],
+      "sourceId": "1DdzH9Gt9Ask2aReA6NADmJbVshlKHNB6",
+      "sourceUrl": "https://drive.google.com/file/d/1DdzH9Gt9Ask2aReA6NADmJbVshlKHNB6/view?usp=drivesdk",
+      "sourceFile": "sports-1DdzH9Gt9Ask2aReA6NADmJbVshlKHNB6.hwp",
+      "sha256": "5ec4a0694c50baa909c232f0c7fafbf2b1fa4e0b24c6c9b681a3b4a0d9744111",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r22"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r22"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1WMNDcbcYzUES01M-mHlXssFBKelb28yx",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "운동 습관을 길러 건강을 지켜요",
+      "periodText": "14~15",
+      "periodNumbers": [
+        14,
+        15
+      ],
+      "sourceId": "1WMNDcbcYzUES01M-mHlXssFBKelb28yx",
+      "sourceUrl": "https://drive.google.com/file/d/1WMNDcbcYzUES01M-mHlXssFBKelb28yx/view?usp=drivesdk",
+      "sourceFile": "sports-1WMNDcbcYzUES01M-mHlXssFBKelb28yx.hwp",
+      "sha256": "89f1c463c070c8e9f2102b344dd31bcccd967c8d89feccd1d30c69117ae8b744",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r21"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r21"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1vNkhyILC8NPfvHlPi82ykelr5K_lfb1m",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "몸의 힘을 길러요",
+      "periodText": "12~13",
+      "periodNumbers": [
+        12,
+        13
+      ],
+      "sourceId": "1vNkhyILC8NPfvHlPi82ykelr5K_lfb1m",
+      "sourceUrl": "https://drive.google.com/file/d/1vNkhyILC8NPfvHlPi82ykelr5K_lfb1m/view?usp=drivesdk",
+      "sourceFile": "sports-1vNkhyILC8NPfvHlPi82ykelr5K_lfb1m.hwp",
+      "sha256": "eab9dfb8e5e2382c1aa2dacd7d0ad3d0c516c06ac47b4a9bc4a59f7b99eb815c",
+      "lessonIds": [],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r8"
+      ],
+      "matchStatus": "needs-content-review",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1zGApisQW3DKZeAoPgYDkuaU9YNH5FyaL",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "순간적으로 강한 힘을 내요",
+      "periodText": "10~11",
+      "periodNumbers": [
+        10,
+        11
+      ],
+      "sourceId": "1zGApisQW3DKZeAoPgYDkuaU9YNH5FyaL",
+      "sourceUrl": "https://drive.google.com/file/d/1zGApisQW3DKZeAoPgYDkuaU9YNH5FyaL/view?usp=drivesdk",
+      "sourceFile": "sports-1zGApisQW3DKZeAoPgYDkuaU9YNH5FyaL.hwp",
+      "sha256": "5db31447ff9fb5a4c00fae19826cafe80bf8185ffe93156c18f01e4af10c1b44",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r7"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r7"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-109_shWHDNBWYIuGEbJgig_bgFgQP4Xeu",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "몸을 유연하게 만들어요",
+      "periodText": "8~9",
+      "periodNumbers": [
+        8,
+        9
+      ],
+      "sourceId": "109_shWHDNBWYIuGEbJgig_bgFgQP4Xeu",
+      "sourceUrl": "https://drive.google.com/file/d/109_shWHDNBWYIuGEbJgig_bgFgQP4Xeu/view?usp=drivesdk",
+      "sourceFile": "sports-109_shWHDNBWYIuGEbJgig_bgFgQP4Xeu.hwp",
+      "sha256": "93a2792f873399db1c1a76345fab73d9a8a614320a9c58f3765f7786ab3e88a9",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r6"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r6"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-10Z1l4s1suyrx-ltEZdrrpju3EPUwTrZh",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "몸의 힘을 길러요",
+      "periodText": "6~7",
+      "periodNumbers": [
+        6,
+        7
+      ],
+      "sourceId": "10Z1l4s1suyrx-ltEZdrrpju3EPUwTrZh",
+      "sourceUrl": "https://drive.google.com/file/d/10Z1l4s1suyrx-ltEZdrrpju3EPUwTrZh/view?usp=drivesdk",
+      "sourceFile": "sports-10Z1l4s1suyrx-ltEZdrrpju3EPUwTrZh.hwp",
+      "sha256": "291e641a0cb3b695d0e6ad2ee1bac8a06fe56911d96578747838e58d2958eca9",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r5"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r5"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1Icr56MMnc06FWJ_qmDHKYWZBktoQNo40",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "운동을 오래 할 수 있는 힘을 길러요",
+      "periodText": "4~5",
+      "periodNumbers": [
+        4,
+        5
+      ],
+      "sourceId": "1Icr56MMnc06FWJ_qmDHKYWZBktoQNo40",
+      "sourceUrl": "https://drive.google.com/file/d/1Icr56MMnc06FWJ_qmDHKYWZBktoQNo40/view?usp=drivesdk",
+      "sourceFile": "sports-1Icr56MMnc06FWJ_qmDHKYWZBktoQNo40.hwp",
+      "sha256": "40bf1cb958d34f52bdb708a3a78ff7da8742d6ca1e34e7dc6386ab673e3b0fcf",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r4"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r4"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1hyeANtvgvpWjl6IMBVI04g7-UeVpFddO",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 4,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "체격과 체력을 알아요",
+      "periodText": "2~3",
+      "periodNumbers": [
+        2,
+        3
+      ],
+      "sourceId": "1hyeANtvgvpWjl6IMBVI04g7-UeVpFddO",
+      "sourceUrl": "https://drive.google.com/file/d/1hyeANtvgvpWjl6IMBVI04g7-UeVpFddO/view?usp=drivesdk",
+      "sourceFile": "sports-1hyeANtvgvpWjl6IMBVI04g7-UeVpFddO.hwp",
+      "sha256": "da3b1bf04aa6b0c9309410e79c66355f5292c96d81ecceb602ffd6e3b7add0e3",
+      "lessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r3"
+      ],
+      "candidateLessonIds": [
+        "sports-1uezX66n_VYuhcqLLsMINOo7J9BSy2ies-r3"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "친구들과 함께 대상이나 생각을 표현하고 감상해요",
+      "periodText": "13~14",
+      "periodNumbers": [
+        13,
+        14
+      ],
+      "sourceId": "1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU",
+      "sourceUrl": "https://drive.google.com/file/d/1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU/view?usp=drivesdk",
+      "sourceFile": "sports-1b7wQE_IALLxTU4KT0oJCKF1uZ44LuLZU.hwp",
+      "sha256": "b015fbacedf920f001e71c37e9e966268e6f445f160649950f5c4a86f0003415",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r36"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r36"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1lrAzjQd92IiNZXQiUHxsEi_wuVaPyTw9",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "비이동 움직임을 표현해요",
+      "periodText": "5",
+      "periodNumbers": [
+        5
+      ],
+      "sourceId": "1lrAzjQd92IiNZXQiUHxsEi_wuVaPyTw9",
+      "sourceUrl": "https://drive.google.com/file/d/1lrAzjQd92IiNZXQiUHxsEi_wuVaPyTw9/view?usp=drivesdk",
+      "sourceFile": "sports-1lrAzjQd92IiNZXQiUHxsEi_wuVaPyTw9.hwp",
+      "sha256": "d5895b0cb5fd7e59581d92f590ccd3e2a3694f77cbb6c091138cbefcd28b8d9f",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r28"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r28"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1g4tUIIWdjaYffGUfQZtzNt_oMtCGjS57",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "이동 움직임을 표현해요",
+      "periodText": "4",
+      "periodNumbers": [
+        4
+      ],
+      "sourceId": "1g4tUIIWdjaYffGUfQZtzNt_oMtCGjS57",
+      "sourceUrl": "https://drive.google.com/file/d/1g4tUIIWdjaYffGUfQZtzNt_oMtCGjS57/view?usp=drivesdk",
+      "sourceFile": "sports-1g4tUIIWdjaYffGUfQZtzNt_oMtCGjS57.hwp",
+      "sha256": "8e0a7fb503d4fe680e23858746d6cd448a3bc00fde72d44f90d746b425c0ee9e",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r27"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r27"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1G3_QumqJl_D0hU_a4MPezhSRIHQ_Jmt1",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "느낌과 생각을 몸으로 표현해요",
+      "periodText": "11~12",
+      "periodNumbers": [
+        11,
+        12
+      ],
+      "sourceId": "1G3_QumqJl_D0hU_a4MPezhSRIHQ_Jmt1",
+      "sourceUrl": "https://drive.google.com/file/d/1G3_QumqJl_D0hU_a4MPezhSRIHQ_Jmt1/view?usp=drivesdk",
+      "sourceFile": "sports-1G3_QumqJl_D0hU_a4MPezhSRIHQ_Jmt1.hwp",
+      "sha256": "1189d9253b7acb3a6d3242d51f08ca0894d3e503ab37bf571370d6e3abb22b46",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r35"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r35"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1L3wctMg7RW5-zjY5IYRn3vybgdyeo6QB",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "대상의 특징을 살려 몸으로 표현해요",
+      "periodText": "9~10",
+      "periodNumbers": [
+        9,
+        10
+      ],
+      "sourceId": "1L3wctMg7RW5-zjY5IYRn3vybgdyeo6QB",
+      "sourceUrl": "https://drive.google.com/file/d/1L3wctMg7RW5-zjY5IYRn3vybgdyeo6QB/view?usp=drivesdk",
+      "sourceFile": "sports-1L3wctMg7RW5-zjY5IYRn3vybgdyeo6QB.hwp",
+      "sha256": "cd9474c5db974057393a9d0d1fc2780525f816f4fadfa9c84af8d19fcc98505d",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r34"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r34"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1XAEfboIs_U1IE3sndhCwVha5MZZ9hmwK",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "움직임 창작 표현 무대에 초대해요",
+      "periodText": "7~8",
+      "periodNumbers": [
+        7,
+        8
+      ],
+      "sourceId": "1XAEfboIs_U1IE3sndhCwVha5MZZ9hmwK",
+      "sourceUrl": "https://drive.google.com/file/d/1XAEfboIs_U1IE3sndhCwVha5MZZ9hmwK/view?usp=drivesdk",
+      "sourceFile": "sports-1XAEfboIs_U1IE3sndhCwVha5MZZ9hmwK.hwp",
+      "sha256": "fdb9a293c7db796863eb2ac838f13f41e871f30aff8ad5bd7c81b47f7d06bd1c",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r30"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r30"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-13rIX-9MDBTQ-JCWyUDikAhMd-SnuXIho",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "조작 움직임을 표현해요",
+      "periodText": "6",
+      "periodNumbers": [
+        6
+      ],
+      "sourceId": "13rIX-9MDBTQ-JCWyUDikAhMd-SnuXIho",
+      "sourceUrl": "https://drive.google.com/file/d/13rIX-9MDBTQ-JCWyUDikAhMd-SnuXIho/view?usp=drivesdk",
+      "sourceFile": "sports-13rIX-9MDBTQ-JCWyUDikAhMd-SnuXIho.hwp",
+      "sha256": "fbe74e03cdc39c92a27955773b2ef055d57545f748dce38767277d075412cc68",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r29"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r29"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-170Qube0f1snK6W7FVIeWC2U8M2U9hsdS",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "3 표현",
+      "title": "다양한 방법의 움직임을 알아요",
+      "periodText": "2~3",
+      "periodNumbers": [
+        2,
+        3
+      ],
+      "sourceId": "170Qube0f1snK6W7FVIeWC2U8M2U9hsdS",
+      "sourceUrl": "https://drive.google.com/file/d/170Qube0f1snK6W7FVIeWC2U8M2U9hsdS/view?usp=drivesdk",
+      "sourceFile": "sports-170Qube0f1snK6W7FVIeWC2U8M2U9hsdS.hwp",
+      "sha256": "7bc348fc970aa8be88b881bb52636dcef76dd5d9203ebbc089093a29dfdf0032",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r26"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r26"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1p9suklJHkwRSUDzXKZQe19t3-daU79ri",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "균형 잡기를 해요",
+      "periodText": "20~25",
+      "periodNumbers": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "sourceId": "1p9suklJHkwRSUDzXKZQe19t3-daU79ri",
+      "sourceUrl": "https://drive.google.com/file/d/1p9suklJHkwRSUDzXKZQe19t3-daU79ri/view?usp=drivesdk",
+      "sourceFile": "sports-1p9suklJHkwRSUDzXKZQe19t3-daU79ri.hwp",
+      "sha256": "7798f7cfc74bc9390b4a73c08a4aea7a92f0516a6258771285bbb4874593bdab",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r9"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r9"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1PNknjDhmtTJlSqpvgIkLMt11kd4PvtpA",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "물에서 다양한 게임을 해요",
+      "periodText": "59~60",
+      "periodNumbers": [
+        59,
+        60
+      ],
+      "sourceId": "1PNknjDhmtTJlSqpvgIkLMt11kd4PvtpA",
+      "sourceUrl": "https://drive.google.com/file/d/1PNknjDhmtTJlSqpvgIkLMt11kd4PvtpA/view?usp=drivesdk",
+      "sourceFile": "sports-1PNknjDhmtTJlSqpvgIkLMt11kd4PvtpA.hwp",
+      "sha256": "3c49c0f6dd214d48cb5dc0f86ccffc1cf277e60704c77ca9f15f135703eb0a3d",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r14"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r14"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1CkolimePTRdqxHd74GdbFYBXgfgM813h",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "물과 친해져요",
+      "periodText": "57~58",
+      "periodNumbers": [
+        57,
+        58
+      ],
+      "sourceId": "1CkolimePTRdqxHd74GdbFYBXgfgM813h",
+      "sourceUrl": "https://drive.google.com/file/d/1CkolimePTRdqxHd74GdbFYBXgfgM813h/view?usp=drivesdk",
+      "sourceFile": "sports-1CkolimePTRdqxHd74GdbFYBXgfgM813h.hwp",
+      "sha256": "048e16951bac4fd081535426cca862305887b4d7619f04eb024fc0dab8ea56cc",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r13"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r13"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1NbcR-TOj-q5CRj7WBRinkjHxXQCTFNJi",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "물에서 안전하게 활동해요",
+      "periodText": "56",
+      "periodNumbers": [
+        56
+      ],
+      "sourceId": "1NbcR-TOj-q5CRj7WBRinkjHxXQCTFNJi",
+      "sourceUrl": "https://drive.google.com/file/d/1NbcR-TOj-q5CRj7WBRinkjHxXQCTFNJi/view?usp=drivesdk",
+      "sourceFile": "sports-1NbcR-TOj-q5CRj7WBRinkjHxXQCTFNJi.hwp",
+      "sha256": "a11290565a241ccdf5872d0e0d7a93ca8c0e3259885c6faa18cecbae79d32bb6",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r12"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r12"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1pEIg-ar1r8GpQ0OBcnHugQhEFcFfotCm",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "몰기를 해요",
+      "periodText": "53~55",
+      "periodNumbers": [
+        53,
+        54,
+        55
+      ],
+      "sourceId": "1pEIg-ar1r8GpQ0OBcnHugQhEFcFfotCm",
+      "sourceUrl": "https://drive.google.com/file/d/1pEIg-ar1r8GpQ0OBcnHugQhEFcFfotCm/view?usp=drivesdk",
+      "sourceFile": "sports-1pEIg-ar1r8GpQ0OBcnHugQhEFcFfotCm.hwp",
+      "sha256": "c022e75c69291207633956c136f9f19a576b4247ca05d7773657109125cd7fee",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r22"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r22"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1S1HKMwvobUwGmOPsIzSjb29MM3HY50Ad",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "튀기기를 해요",
+      "periodText": "50~52",
+      "periodNumbers": [
+        50,
+        51,
+        52
+      ],
+      "sourceId": "1S1HKMwvobUwGmOPsIzSjb29MM3HY50Ad",
+      "sourceUrl": "https://drive.google.com/file/d/1S1HKMwvobUwGmOPsIzSjb29MM3HY50Ad/view?usp=drivesdk",
+      "sourceFile": "sports-1S1HKMwvobUwGmOPsIzSjb29MM3HY50Ad.hwp",
+      "sha256": "1d886119d21858f0581ace11b4bd98b9e37f2aac5ab2d9cd0b57fff2a3db807c",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r21"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r21"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1LroP2gxfbcXYtocT9dDamHweYUbU62PL",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "치기를 해요",
+      "periodText": "47~49",
+      "periodNumbers": [
+        47,
+        48,
+        49
+      ],
+      "sourceId": "1LroP2gxfbcXYtocT9dDamHweYUbU62PL",
+      "sourceUrl": "https://drive.google.com/file/d/1LroP2gxfbcXYtocT9dDamHweYUbU62PL/view?usp=drivesdk",
+      "sourceFile": "sports-1LroP2gxfbcXYtocT9dDamHweYUbU62PL.hwp",
+      "sha256": "555c14d8a9677a5a32abd8ff6f3672cc43f8a29ede659a76c541a9147cdac064",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r20"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r20"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1SJBV5vlFAuJNynB1gmTNYZS906DsLR-i",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "굴리기를 해요",
+      "periodText": "44~46",
+      "periodNumbers": [
+        44,
+        45,
+        46
+      ],
+      "sourceId": "1SJBV5vlFAuJNynB1gmTNYZS906DsLR-i",
+      "sourceUrl": "https://drive.google.com/file/d/1SJBV5vlFAuJNynB1gmTNYZS906DsLR-i/view?usp=drivesdk",
+      "sourceFile": "sports-1SJBV5vlFAuJNynB1gmTNYZS906DsLR-i.hwp",
+      "sha256": "2d3edc6c0bb3e5ae7da106805c5ef380e14df7f7d2705ab0227e6d84241696d0",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r19"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r19"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1iXy4iZu2QBaZ17ZcX1NBGJKiVGXX6waz",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "차기를 해요",
+      "periodText": "41~43",
+      "periodNumbers": [
+        41,
+        42,
+        43
+      ],
+      "sourceId": "1iXy4iZu2QBaZ17ZcX1NBGJKiVGXX6waz",
+      "sourceUrl": "https://drive.google.com/file/d/1iXy4iZu2QBaZ17ZcX1NBGJKiVGXX6waz/view?usp=drivesdk",
+      "sourceFile": "sports-1iXy4iZu2QBaZ17ZcX1NBGJKiVGXX6waz.hwp",
+      "sha256": "5171bd4e1e850390a011f2ae5c7bba64e7d0f5821b8a230139e7f29eaf74d5ab",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r18"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r18"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1uXFz3seGlm6y2JlIb6aXljXuejEumswL",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "던지기를 해요",
+      "periodText": "38~40",
+      "periodNumbers": [
+        38,
+        39,
+        40
+      ],
+      "sourceId": "1uXFz3seGlm6y2JlIb6aXljXuejEumswL",
+      "sourceUrl": "https://drive.google.com/file/d/1uXFz3seGlm6y2JlIb6aXljXuejEumswL/view?usp=drivesdk",
+      "sourceFile": "sports-1uXFz3seGlm6y2JlIb6aXljXuejEumswL.hwp",
+      "sha256": "0229c58b1e81be29c0843a240c3a4e533d767d6a324d05986168a57c84abb6da",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r17"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r17"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1A6vRR0RktvT_eHp3js19jYaAykYiOZgt",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "회전 움직임을 해요",
+      "periodText": "32~37",
+      "periodNumbers": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "sourceId": "1A6vRR0RktvT_eHp3js19jYaAykYiOZgt",
+      "sourceUrl": "https://drive.google.com/file/d/1A6vRR0RktvT_eHp3js19jYaAykYiOZgt/view?usp=drivesdk",
+      "sourceFile": "sports-1A6vRR0RktvT_eHp3js19jYaAykYiOZgt.hwp",
+      "sha256": "d40dc3c03514f521878f7df7fcbe0cfb77d87f1eabc2f515957a0c53c0c08453",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r11"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r11"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1nFaUbxFivIgjnrrgYq-i8ZA6fIdmVDYK",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "구부리기를 해요",
+      "periodText": "26~31",
+      "periodNumbers": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "sourceId": "1nFaUbxFivIgjnrrgYq-i8ZA6fIdmVDYK",
+      "sourceUrl": "https://drive.google.com/file/d/1nFaUbxFivIgjnrrgYq-i8ZA6fIdmVDYK/view?usp=drivesdk",
+      "sourceFile": "sports-1nFaUbxFivIgjnrrgYq-i8ZA6fIdmVDYK.hwp",
+      "sha256": "a9468913bb3e7bcccedf65bf7585627afd35e1da0dc563dbc6726ae6e4fe4b04",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r10"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r10"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1zUjwmOqTUKIyaO5EOdxsh5rfmUBQxj0g",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "구르기를 해요",
+      "periodText": "14~19",
+      "periodNumbers": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "sourceId": "1zUjwmOqTUKIyaO5EOdxsh5rfmUBQxj0g",
+      "sourceUrl": "https://drive.google.com/file/d/1zUjwmOqTUKIyaO5EOdxsh5rfmUBQxj0g/view?usp=drivesdk",
+      "sourceFile": "sports-1zUjwmOqTUKIyaO5EOdxsh5rfmUBQxj0g.hwp",
+      "sha256": "3901cbf2cbd18333e579768c4613b860245758047223d4d101f5252dbbb8a3aa",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r8"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r8"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1zodUQazGtI8_mt8f-CFVTCXTq65C0AWH",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "뛰기를 해요",
+      "periodText": "8~13",
+      "periodNumbers": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "sourceId": "1zodUQazGtI8_mt8f-CFVTCXTq65C0AWH",
+      "sourceUrl": "https://drive.google.com/file/d/1zodUQazGtI8_mt8f-CFVTCXTq65C0AWH/view?usp=drivesdk",
+      "sourceFile": "sports-1zodUQazGtI8_mt8f-CFVTCXTq65C0AWH.hwp",
+      "sha256": "828b00706ce35932b8e157dae092f74e1608871d722a99e5234e1f213f03c264",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r7"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r7"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ACNF-D9AdIpPLbgxUbQwKU88JPVciPt0",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "2 스포츠",
+      "title": "방향 전환 달리기를 해요",
+      "periodText": "2~7",
+      "periodNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sourceId": "1ACNF-D9AdIpPLbgxUbQwKU88JPVciPt0",
+      "sourceUrl": "https://drive.google.com/file/d/1ACNF-D9AdIpPLbgxUbQwKU88JPVciPt0/view?usp=drivesdk",
+      "sourceFile": "sports-1ACNF-D9AdIpPLbgxUbQwKU88JPVciPt0.hwp",
+      "sha256": "addfd7256dea4169ff9cedbe260c0ebf7b076fecedc29226372ebfabcaa1b233",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r6"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r6"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1i_rkqwl9Kjr57Wre2ykSL5rs0_kYMdF9",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "건강한 식습관을 실천해요",
+      "periodText": "20~21",
+      "periodNumbers": [
+        20,
+        21
+      ],
+      "sourceId": "1i_rkqwl9Kjr57Wre2ykSL5rs0_kYMdF9",
+      "sourceUrl": "https://drive.google.com/file/d/1i_rkqwl9Kjr57Wre2ykSL5rs0_kYMdF9/view?usp=drivesdk",
+      "sourceFile": "sports-1i_rkqwl9Kjr57Wre2ykSL5rs0_kYMdF9.hwp",
+      "sha256": "ee050013d4d9b6e091c0403732b2c8758cdf98dfaf51f9f4dfef7cb153c9d877",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r41"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r41"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1jlldl08eZzHhFYu8KL-aGsmbGkEi6ZUS",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "몸을 깨끗이 해요",
+      "periodText": "18~19",
+      "periodNumbers": [
+        18,
+        19
+      ],
+      "sourceId": "1jlldl08eZzHhFYu8KL-aGsmbGkEi6ZUS",
+      "sourceUrl": "https://drive.google.com/file/d/1jlldl08eZzHhFYu8KL-aGsmbGkEi6ZUS/view?usp=drivesdk",
+      "sourceFile": "sports-1jlldl08eZzHhFYu8KL-aGsmbGkEi6ZUS.hwp",
+      "sha256": "99bebbaaaf8d4e6367669d53b5aa609c06333f38d68e9377c7e6d191a7293e4a",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r40"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r40"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1AGZ_h5acIVs2xUT4bNYc4hQA9TSuIZ7y",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "비만을 바르게 알고 예방해요",
+      "periodText": "16~17",
+      "periodNumbers": [
+        16,
+        17
+      ],
+      "sourceId": "1AGZ_h5acIVs2xUT4bNYc4hQA9TSuIZ7y",
+      "sourceUrl": "https://drive.google.com/file/d/1AGZ_h5acIVs2xUT4bNYc4hQA9TSuIZ7y/view?usp=drivesdk",
+      "sourceFile": "sports-1AGZ_h5acIVs2xUT4bNYc4hQA9TSuIZ7y.hwp",
+      "sha256": "4b415868cdbcc435c471fe72aaa32e256a356578db1117acbb9125005ada8b0e",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r39"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r39"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ep5LNVgYp9WaHawCt51PSkhbJW-K4OOi",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "바른 자세로 생활해요",
+      "periodText": "14~15",
+      "periodNumbers": [
+        14,
+        15
+      ],
+      "sourceId": "1ep5LNVgYp9WaHawCt51PSkhbJW-K4OOi",
+      "sourceUrl": "https://drive.google.com/file/d/1ep5LNVgYp9WaHawCt51PSkhbJW-K4OOi/view?usp=drivesdk",
+      "sourceFile": "sports-1ep5LNVgYp9WaHawCt51PSkhbJW-K4OOi.hwp",
+      "sha256": "d59fdd15a81d5f8c3fca7602f9d78662cf8f5839997ffacb34e7e410eb120e5d",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r16"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r16"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1LVn5C_AiTltrI2SMx9sP7Vjnt09USXL0",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "건강한 생활 습관으로 건강을 지켜요",
+      "periodText": "12~13",
+      "periodNumbers": [
+        12,
+        13
+      ],
+      "sourceId": "1LVn5C_AiTltrI2SMx9sP7Vjnt09USXL0",
+      "sourceUrl": "https://drive.google.com/file/d/1LVn5C_AiTltrI2SMx9sP7Vjnt09USXL0/view?usp=drivesdk",
+      "sourceFile": "sports-1LVn5C_AiTltrI2SMx9sP7Vjnt09USXL0.hwp",
+      "sha256": "3a90537b14b20efcc753a5aa2e117d5dedecc51c77c56d0db0f99d0dc881bf81",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r15"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r15"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1RBWD2Rx3QPfiJDfr87g1FbZ3tWVqjQsG",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "재미있는 게임으로 체력을 길러요",
+      "periodText": "10~11",
+      "periodNumbers": [
+        10,
+        11
+      ],
+      "sourceId": "1RBWD2Rx3QPfiJDfr87g1FbZ3tWVqjQsG",
+      "sourceUrl": "https://drive.google.com/file/d/1RBWD2Rx3QPfiJDfr87g1FbZ3tWVqjQsG/view?usp=drivesdk",
+      "sourceFile": "sports-1RBWD2Rx3QPfiJDfr87g1FbZ3tWVqjQsG.hwp",
+      "sha256": "b9868e6e0b0739a960c92dfa5d0f9b309bc8f44bdefa306c9d5ec344ec88a7c7",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r33"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r33"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1kq0208r6y7wcFHW7AN9C9EPrONf9HDZl",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "버티기와 굽히기 운동으로 체력을 길러요",
+      "periodText": "8~9",
+      "periodNumbers": [
+        8,
+        9
+      ],
+      "sourceId": "1kq0208r6y7wcFHW7AN9C9EPrONf9HDZl",
+      "sourceUrl": "https://drive.google.com/file/d/1kq0208r6y7wcFHW7AN9C9EPrONf9HDZl/view?usp=drivesdk",
+      "sourceFile": "sports-1kq0208r6y7wcFHW7AN9C9EPrONf9HDZl.hwp",
+      "sha256": "4fe296bc1acb5b91aec5cd04986d2c8f6d45776b8aa35825f515996c9711df67",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r32"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r32"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1KUuJWwEtVLq1SkrSKDNuV6tIc6yrdkKY",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "걷기와 달리기 운동으로 체력을 길러요",
+      "periodText": "6~7",
+      "periodNumbers": [
+        6,
+        7
+      ],
+      "sourceId": "1KUuJWwEtVLq1SkrSKDNuV6tIc6yrdkKY",
+      "sourceUrl": "https://drive.google.com/file/d/1KUuJWwEtVLq1SkrSKDNuV6tIc6yrdkKY/view?usp=drivesdk",
+      "sourceFile": "sports-1KUuJWwEtVLq1SkrSKDNuV6tIc6yrdkKY.hwp",
+      "sha256": "c6453443353ae818b40957353226d2feb5d7e28815ec59dac662e73787cf39b9",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r31"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r31"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1MF4OlPYTUhUQLnLpmKzX24cBGEuwe-3j",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "운동의 단계에 따라 운동해요",
+      "periodText": "4~5",
+      "periodNumbers": [
+        4,
+        5
+      ],
+      "sourceId": "1MF4OlPYTUhUQLnLpmKzX24cBGEuwe-3j",
+      "sourceUrl": "https://drive.google.com/file/d/1MF4OlPYTUhUQLnLpmKzX24cBGEuwe-3j/view?usp=drivesdk",
+      "sourceFile": "sports-1MF4OlPYTUhUQLnLpmKzX24cBGEuwe-3j.hwp",
+      "sha256": "6cd939ec8ae195d89735f49f1d1f03ad307969be6a7862d2239a22714c596ede",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r4"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r4"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1e5lIN6HxSZLpUwRa5JR1_0eQnfNGIPMq",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 3,
+      "editionId": "tb-0de5499fda0fe900",
+      "domain": "1 운동",
+      "title": "운동으로 체력을 기르면 튼튼해져요",
+      "periodText": "2~3",
+      "periodNumbers": [
+        2,
+        3
+      ],
+      "sourceId": "1e5lIN6HxSZLpUwRa5JR1_0eQnfNGIPMq",
+      "sourceUrl": "https://drive.google.com/file/d/1e5lIN6HxSZLpUwRa5JR1_0eQnfNGIPMq/view?usp=drivesdk",
+      "sourceFile": "sports-1e5lIN6HxSZLpUwRa5JR1_0eQnfNGIPMq.hwp",
+      "sha256": "6714554312883a8fd1778b93c104640b5770a648693ab3758bb972e43329ca94",
+      "lessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r3"
+      ],
+      "candidateLessonIds": [
+        "sports-1Efeixh7JxX3wwWgjlR-K9VQdXaz0_sR9-r3"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "스트리트댄스를 추어요",
+      "periodText": "12~14",
+      "periodNumbers": [
+        12,
+        13,
+        14
+      ],
+      "sourceId": "1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg",
+      "sourceUrl": "https://drive.google.com/file/d/1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg/view?usp=drivesdk",
+      "sourceFile": "sports-1AH7BWg3wutQ39upOn7W4eEvtj5_OIobg.hwp",
+      "sha256": "a9b4d58db35a9541ae8805ffa662e2e9f9f2d7ba5e4c725b803fa5cadb64d6ce",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r35"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r35"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1qKztW6c0qY2NrcJg2iPVEZnh9NSE0OR6",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "라인댄스를 추어요",
+      "periodText": "9~11",
+      "periodNumbers": [
+        9,
+        10,
+        11
+      ],
+      "sourceId": "1qKztW6c0qY2NrcJg2iPVEZnh9NSE0OR6",
+      "sourceUrl": "https://drive.google.com/file/d/1qKztW6c0qY2NrcJg2iPVEZnh9NSE0OR6/view?usp=drivesdk",
+      "sourceFile": "sports-1qKztW6c0qY2NrcJg2iPVEZnh9NSE0OR6.hwp",
+      "sha256": "0dbade8bddcf21fe3e52249b8cab90a653da67b424debef16a4bee08a7de2568",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r34"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r34"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1Gk_bpwwZvSew48UrafFf-x2nk7_6_YeS",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "음악줄넘기를 해요",
+      "periodText": "5~8",
+      "periodNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "sourceId": "1Gk_bpwwZvSew48UrafFf-x2nk7_6_YeS",
+      "sourceUrl": "https://drive.google.com/file/d/1Gk_bpwwZvSew48UrafFf-x2nk7_6_YeS/view?usp=drivesdk",
+      "sourceFile": "sports-1Gk_bpwwZvSew48UrafFf-x2nk7_6_YeS.hwp",
+      "sha256": "719aa1340acbef3c3c83d62f5a549ead165bacca3f1643c426118ccaf13a2ff3",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r33"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r33"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1qMqaBeMeXpgcWbR-b6UWFbDha_ujL_n9",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "창작체조를 해요",
+      "periodText": "2~4",
+      "periodNumbers": [
+        2,
+        3,
+        4
+      ],
+      "sourceId": "1qMqaBeMeXpgcWbR-b6UWFbDha_ujL_n9",
+      "sourceUrl": "https://drive.google.com/file/d/1qMqaBeMeXpgcWbR-b6UWFbDha_ujL_n9/view?usp=drivesdk",
+      "sourceFile": "sports-1qMqaBeMeXpgcWbR-b6UWFbDha_ujL_n9.hwp",
+      "sha256": "6d66f7ffef4c0f2bf47e5f4fcbc6ee663e71fe948977ca6ef1cad76b93b3ff31",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r32"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r32"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1t2qFHaTHkAVTrAvz-kpGSJDAO7cgv5Zr",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "설상 활동을 해요",
+      "periodText": "59~61",
+      "periodNumbers": [
+        59,
+        60,
+        61
+      ],
+      "sourceId": "1t2qFHaTHkAVTrAvz-kpGSJDAO7cgv5Zr",
+      "sourceUrl": "https://drive.google.com/file/d/1t2qFHaTHkAVTrAvz-kpGSJDAO7cgv5Zr/view?usp=drivesdk",
+      "sourceFile": "sports-1t2qFHaTHkAVTrAvz-kpGSJDAO7cgv5Zr.hwp",
+      "sha256": "e7c9b11cc45670af7d20081a9f213d1190ae6833030970f90c66c889bc4c2237",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r28"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r28"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ETHS1umXeAo6fxjPTg6eFKZPlyg9WcMY",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "수상 활동을 해요",
+      "periodText": "56~58",
+      "periodNumbers": [
+        56,
+        57,
+        58
+      ],
+      "sourceId": "1ETHS1umXeAo6fxjPTg6eFKZPlyg9WcMY",
+      "sourceUrl": "https://drive.google.com/file/d/1ETHS1umXeAo6fxjPTg6eFKZPlyg9WcMY/view?usp=drivesdk",
+      "sourceFile": "sports-1ETHS1umXeAo6fxjPTg6eFKZPlyg9WcMY.hwp",
+      "sha256": "6fcb3eaedbe86a3a5f5a1b93ce6817cc7633453df00152199ae0af764ad13125",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r27"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r27"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1Pxm1s_49JGreinOAkiPrHF36fWHTxDAL",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "캠핑 활동을 해요",
+      "periodText": "53~55",
+      "periodNumbers": [
+        53,
+        54,
+        55
+      ],
+      "sourceId": "1Pxm1s_49JGreinOAkiPrHF36fWHTxDAL",
+      "sourceUrl": "https://drive.google.com/file/d/1Pxm1s_49JGreinOAkiPrHF36fWHTxDAL/view?usp=drivesdk",
+      "sourceFile": "sports-1Pxm1s_49JGreinOAkiPrHF36fWHTxDAL.hwp",
+      "sha256": "0ed14f5033a1b286a92f6b665d9c3a204c3cac32510f6f25f005897fcc7f4495",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r26"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r26"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1X53TVa78gwTe2PpjTm2j-YEtRFv2vHNn",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "등산 활동을 해요",
+      "periodText": "50~52",
+      "periodNumbers": [
+        50,
+        51,
+        52
+      ],
+      "sourceId": "1X53TVa78gwTe2PpjTm2j-YEtRFv2vHNn",
+      "sourceUrl": "https://drive.google.com/file/d/1X53TVa78gwTe2PpjTm2j-YEtRFv2vHNn/view?usp=drivesdk",
+      "sourceFile": "sports-1X53TVa78gwTe2PpjTm2j-YEtRFv2vHNn.hwp",
+      "sha256": "e9c3fd68eac4de4d9510865fd1442d6bf03477b1cd471d4fb1810841c4728bf7",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r25"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r25"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1WtxqKLD4dq81IqVxH841DD5xMGVaj6mf",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "족구형 게임을 해요",
+      "periodText": "44~49",
+      "periodNumbers": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "sourceId": "1WtxqKLD4dq81IqVxH841DD5xMGVaj6mf",
+      "sourceUrl": "https://drive.google.com/file/d/1WtxqKLD4dq81IqVxH841DD5xMGVaj6mf/view?usp=drivesdk",
+      "sourceFile": "sports-1WtxqKLD4dq81IqVxH841DD5xMGVaj6mf.hwp",
+      "sha256": "e1a444270a979add22e183f4642682dec987fd8cfb0da925142726364d3c0462",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r24"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r24"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1T0MwieOSbCh3j3uui46EcgKOi7lXL0XC",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "배드민턴형 게임을 해요",
+      "periodText": "38~43",
+      "periodNumbers": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "sourceId": "1T0MwieOSbCh3j3uui46EcgKOi7lXL0XC",
+      "sourceUrl": "https://drive.google.com/file/d/1T0MwieOSbCh3j3uui46EcgKOi7lXL0XC/view?usp=drivesdk",
+      "sourceFile": "sports-1T0MwieOSbCh3j3uui46EcgKOi7lXL0XC.hwp",
+      "sha256": "d5f69f676dc00dada8bbfc62e7848ef32c89cf3cf343ab37cd82e238220ba0a2",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r23"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r23"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-10soBl4lGe-DBZdCMCpEg4O9xvoGf23mQ",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "배구형 게임을 해요",
+      "periodText": "32~37",
+      "periodNumbers": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "sourceId": "10soBl4lGe-DBZdCMCpEg4O9xvoGf23mQ",
+      "sourceUrl": "https://drive.google.com/file/d/10soBl4lGe-DBZdCMCpEg4O9xvoGf23mQ/view?usp=drivesdk",
+      "sourceFile": "sports-10soBl4lGe-DBZdCMCpEg4O9xvoGf23mQ.hwp",
+      "sha256": "3b1c6b9c1c22afe72000bef5d7a4640336b4af813a5bbff37f1f2697162c3826",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r22"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r22"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1Z8Hc5Y492hR_DeHAt9RIFneiv6HIp6xY",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "씨름 활동을 해요",
+      "periodText": "26~31",
+      "periodNumbers": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "sourceId": "1Z8Hc5Y492hR_DeHAt9RIFneiv6HIp6xY",
+      "sourceUrl": "https://drive.google.com/file/d/1Z8Hc5Y492hR_DeHAt9RIFneiv6HIp6xY/view?usp=drivesdk",
+      "sourceFile": "sports-1Z8Hc5Y492hR_DeHAt9RIFneiv6HIp6xY.hwp",
+      "sha256": "296aefd24865f36c7ad10fef14fe3c1163743849fffaa3fa369836dd58cd3c9b",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r21"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r21"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1k2uYNctpDiybAd2MGu8JWYyDaeEhcZqL",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "태권도 활동을 해요",
+      "periodText": "20~25",
+      "periodNumbers": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "sourceId": "1k2uYNctpDiybAd2MGu8JWYyDaeEhcZqL",
+      "sourceUrl": "https://drive.google.com/file/d/1k2uYNctpDiybAd2MGu8JWYyDaeEhcZqL/view?usp=drivesdk",
+      "sourceFile": "sports-1k2uYNctpDiybAd2MGu8JWYyDaeEhcZqL.hwp",
+      "sha256": "0c31248019e6e289b6c8f2bacc3be30a7df8653dabcc921fe095b157dc4c4f1b",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r20"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r20"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-13GgkK2Povgr2gEew60s0bikbgTS1x7DV",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "평균대 활동을 해요",
+      "periodText": "14~19",
+      "periodNumbers": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "sourceId": "13GgkK2Povgr2gEew60s0bikbgTS1x7DV",
+      "sourceUrl": "https://drive.google.com/file/d/13GgkK2Povgr2gEew60s0bikbgTS1x7DV/view?usp=drivesdk",
+      "sourceFile": "sports-13GgkK2Povgr2gEew60s0bikbgTS1x7DV.hwp",
+      "sha256": "08badb85cf8f079fc65c845ca5d398aa24cc66a511a7de16c6dfd67030fcc5a6",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r19"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r19"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1PBt416nosIHxFhgJOJCBW__PA-WshLMn",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "뜀틀 활동을 해요",
+      "periodText": "8~13",
+      "periodNumbers": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "sourceId": "1PBt416nosIHxFhgJOJCBW__PA-WshLMn",
+      "sourceUrl": "https://drive.google.com/file/d/1PBt416nosIHxFhgJOJCBW__PA-WshLMn/view?usp=drivesdk",
+      "sourceFile": "sports-1PBt416nosIHxFhgJOJCBW__PA-WshLMn.hwp",
+      "sha256": "b000c5ccf871bbaa33017beec5be08af081156c249d74fa45a0f85297034705e",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r18"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r18"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1FERn3cE9dn0L7gwpmt_37o0yKtmYORa_",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "매트 활동을 해요",
+      "periodText": "2~7",
+      "periodNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sourceId": "1FERn3cE9dn0L7gwpmt_37o0yKtmYORa_",
+      "sourceUrl": "https://drive.google.com/file/d/1FERn3cE9dn0L7gwpmt_37o0yKtmYORa_/view?usp=drivesdk",
+      "sourceFile": "sports-1FERn3cE9dn0L7gwpmt_37o0yKtmYORa_.hwp",
+      "sha256": "550cb89932f211c3f98e5111fe54ba748ff362a5e0fd1be12839d497a4a7f06b",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r17"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r17"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1bENQnebyk3OzgpP7uQ-f6iUBuwMDS5QJ",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "안전한 생활을 실천해요",
+      "periodText": "18",
+      "periodNumbers": [
+        18
+      ],
+      "sourceId": "1bENQnebyk3OzgpP7uQ-f6iUBuwMDS5QJ",
+      "sourceUrl": "https://drive.google.com/file/d/1bENQnebyk3OzgpP7uQ-f6iUBuwMDS5QJ/view?usp=drivesdk",
+      "sourceFile": "sports-1bENQnebyk3OzgpP7uQ-f6iUBuwMDS5QJ.hwp",
+      "sha256": "5703c2cfad9295585b346100beff701dd7b36b6f024e32482f3a399390a012e1",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r12"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r12"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-12pgloab1Wn5MLPZvCfaxNa81V0VhYkzq",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "자연환경 변화에 침착하게 대처해요",
+      "periodText": "19~20",
+      "periodNumbers": [
+        19,
+        20
+      ],
+      "sourceId": "12pgloab1Wn5MLPZvCfaxNa81V0VhYkzq",
+      "sourceUrl": "https://drive.google.com/file/d/12pgloab1Wn5MLPZvCfaxNa81V0VhYkzq/view?usp=drivesdk",
+      "sourceFile": "sports-12pgloab1Wn5MLPZvCfaxNa81V0VhYkzq.hwp",
+      "sha256": "d82c9f48b83843c233f36c268a23ddbda78038124b3f921dfdb7173a47fca4d1",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r13"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r13"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1dc9tfVkLCeFV4RV-oGtTvPgaDdZGiZEP",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "안전사고에 침착하게 대처해요",
+      "periodText": "16~17",
+      "periodNumbers": [
+        16,
+        17
+      ],
+      "sourceId": "1dc9tfVkLCeFV4RV-oGtTvPgaDdZGiZEP",
+      "sourceUrl": "https://drive.google.com/file/d/1dc9tfVkLCeFV4RV-oGtTvPgaDdZGiZEP/view?usp=drivesdk",
+      "sourceFile": "sports-1dc9tfVkLCeFV4RV-oGtTvPgaDdZGiZEP.hwp",
+      "sha256": "84d41fae536667ec83a752e961226a70d483589dbab9682d4fbdfd82cb6fc40a",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r11"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r11"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1R-mL6s0T366yAIDoaJJjft6JgizR85Hv",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "수상 활동과 빙상 활동을 안전하게 해요",
+      "periodText": "14~15",
+      "periodNumbers": [
+        14,
+        15
+      ],
+      "sourceId": "1R-mL6s0T366yAIDoaJJjft6JgizR85Hv",
+      "sourceUrl": "https://drive.google.com/file/d/1R-mL6s0T366yAIDoaJJjft6JgizR85Hv/view?usp=drivesdk",
+      "sourceFile": "sports-1R-mL6s0T366yAIDoaJJjft6JgizR85Hv.hwp",
+      "sha256": "6745ce78c2ed4ba32c71010f801e0908daf21d6f4013b2296d3f038c95d0c71e",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r10"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r10"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-16jN2w0QM9DqtH3jpB9T1ofUZ9YWDzQQs",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "운동장과 체육관에서 안전하게 운동해요",
+      "periodText": "13",
+      "periodNumbers": [
+        13
+      ],
+      "sourceId": "16jN2w0QM9DqtH3jpB9T1ofUZ9YWDzQQs",
+      "sourceUrl": "https://drive.google.com/file/d/16jN2w0QM9DqtH3jpB9T1ofUZ9YWDzQQs/view?usp=drivesdk",
+      "sourceFile": "sports-16jN2w0QM9DqtH3jpB9T1ofUZ9YWDzQQs.hwp",
+      "sha256": "48f615b06e8f56a84de56a5ccc72392a9c9de8db9962b458b53b1a4df52c6290",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r9"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r9"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1eWSy6nK3MhjqufvHp3oVk12kDw4ZGoZF",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "자기 주도적으로 운동 체력을 길러요",
+      "periodText": "11~12",
+      "periodNumbers": [
+        11,
+        12
+      ],
+      "sourceId": "1eWSy6nK3MhjqufvHp3oVk12kDw4ZGoZF",
+      "sourceUrl": "https://drive.google.com/file/d/1eWSy6nK3MhjqufvHp3oVk12kDw4ZGoZF/view?usp=drivesdk",
+      "sourceFile": "sports-1eWSy6nK3MhjqufvHp3oVk12kDw4ZGoZF.hwp",
+      "sha256": "67cbebee97b7ef2e8cb579c8cb9ec378c13bc0e3f6ed92feb8066b8f3c6b7ee1",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r8"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r8"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-10WdlRt5gllbka3N7q43W3O-ZNYHMh5h1",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "평형성과 협응성을 길러요",
+      "periodText": "9~10",
+      "periodNumbers": [
+        9,
+        10
+      ],
+      "sourceId": "10WdlRt5gllbka3N7q43W3O-ZNYHMh5h1",
+      "sourceUrl": "https://drive.google.com/file/d/10WdlRt5gllbka3N7q43W3O-ZNYHMh5h1/view?usp=drivesdk",
+      "sourceFile": "sports-10WdlRt5gllbka3N7q43W3O-ZNYHMh5h1.hwp",
+      "sha256": "61dd5c4c16adc349b7a1996f18ca6afdb6c28ff2a2043149660184d5014fb1f3",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r7"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r7"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1eUhrKPN_PfA0Ua56hGoXLpCtvlLC_Mxd",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "민첩성을 길러요",
+      "periodText": "7~8",
+      "periodNumbers": [
+        7,
+        8
+      ],
+      "sourceId": "1eUhrKPN_PfA0Ua56hGoXLpCtvlLC_Mxd",
+      "sourceUrl": "https://drive.google.com/file/d/1eUhrKPN_PfA0Ua56hGoXLpCtvlLC_Mxd/view?usp=drivesdk",
+      "sourceFile": "sports-1eUhrKPN_PfA0Ua56hGoXLpCtvlLC_Mxd.hwp",
+      "sha256": "3a9ffd2b8d334597aa7a5bf3cbcde505637a684c3111f7f750e54229bc1341b5",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r6"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r6"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1wKeajeBwXeT_rwPY7V2PCgcHrqPHMMkG",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "순발력을 길러요",
+      "periodText": "5~6",
+      "periodNumbers": [
+        5,
+        6
+      ],
+      "sourceId": "1wKeajeBwXeT_rwPY7V2PCgcHrqPHMMkG",
+      "sourceUrl": "https://drive.google.com/file/d/1wKeajeBwXeT_rwPY7V2PCgcHrqPHMMkG/view?usp=drivesdk",
+      "sourceFile": "sports-1wKeajeBwXeT_rwPY7V2PCgcHrqPHMMkG.hwp",
+      "sha256": "2aceb79c20636b33a11bfb41d6bb519e0e12f884cc0db215d4343739f82e2190",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r5"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r5"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1PHuPDjttuXJgV_L0f7EHII6ys54KEMNn",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "운동 체력을 측정하고 운동 계획을 세워요",
+      "periodText": "3~4",
+      "periodNumbers": [
+        3,
+        4
+      ],
+      "sourceId": "1PHuPDjttuXJgV_L0f7EHII6ys54KEMNn",
+      "sourceUrl": "https://drive.google.com/file/d/1PHuPDjttuXJgV_L0f7EHII6ys54KEMNn/view?usp=drivesdk",
+      "sourceFile": "sports-1PHuPDjttuXJgV_L0f7EHII6ys54KEMNn.hwp",
+      "sha256": "d20516c6e82bbf78d9755710ee64afc4218b417cc4bfa719310fdb5e9664f6de",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r4"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r4"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-11BJ6wPdFNrG5_MklKZJLeGmru5GQHvn1",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 6,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "운동 체력을 이해해요",
+      "periodText": "2",
+      "periodNumbers": [
+        2
+      ],
+      "sourceId": "11BJ6wPdFNrG5_MklKZJLeGmru5GQHvn1",
+      "sourceUrl": "https://drive.google.com/file/d/11BJ6wPdFNrG5_MklKZJLeGmru5GQHvn1/view?usp=drivesdk",
+      "sourceFile": "sports-11BJ6wPdFNrG5_MklKZJLeGmru5GQHvn1.hwp",
+      "sha256": "dd657dedcbf2feadd67c306a4ecf3f341ae4a6a685c1e51ba65bb4f6240e82db",
+      "lessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r3"
+      ],
+      "candidateLessonIds": [
+        "sports-1GjHaoqtx4vBwTfKYt8Ld2q4Xu_UIyAhm-r3"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "외국 전통 표현 작품을 발표하고 감상해요",
+      "periodText": "13~14",
+      "periodNumbers": [
+        13,
+        14
+      ],
+      "sourceId": "1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY",
+      "sourceUrl": "https://drive.google.com/file/d/1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY/view?usp=drivesdk",
+      "sourceFile": "sports-1oNswB8gbTYYtCMsmfC7ZEPS6MHyWpWoY.hwp",
+      "sha256": "1a00c0177782c89a4df34a0c3f34ed13bbdfa97e5b59f26fb0cea71941c9a451",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r38"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r38"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1VGa0Zzw4Eecs4wy6ikBQJ64Zj3eiTkfm",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "재빠른 몸짓으로 티니클링을 추어요",
+      "periodText": "12",
+      "periodNumbers": [
+        12
+      ],
+      "sourceId": "1VGa0Zzw4Eecs4wy6ikBQJ64Zj3eiTkfm",
+      "sourceUrl": "https://drive.google.com/file/d/1VGa0Zzw4Eecs4wy6ikBQJ64Zj3eiTkfm/view?usp=drivesdk",
+      "sourceFile": "sports-1VGa0Zzw4Eecs4wy6ikBQJ64Zj3eiTkfm.hwp",
+      "sha256": "617108918fc99ba866be57710f9e3b69836c8ac850a007e65a262b2d4760d16a",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r37"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r37"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1wCqT0P1WPAoejzibCWkkDzEQN0XjprAd",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "승리를 축하하며 구스타프스콜을 추어요",
+      "periodText": "11",
+      "periodNumbers": [
+        11
+      ],
+      "sourceId": "1wCqT0P1WPAoejzibCWkkDzEQN0XjprAd",
+      "sourceUrl": "https://drive.google.com/file/d/1wCqT0P1WPAoejzibCWkkDzEQN0XjprAd/view?usp=drivesdk",
+      "sourceFile": "sports-1wCqT0P1WPAoejzibCWkkDzEQN0XjprAd.hwp",
+      "sha256": "ede9e0883800059bdc6c722adbb25b1e011c4a65b4c3fcc52e6dcba66683d97e",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r36"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r36"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-11wcZPdDflC2V4QqyNQkK5YEYXJCpzqvG",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "손을 맞잡고 마임을 추어요",
+      "periodText": "10",
+      "periodNumbers": [
+        10
+      ],
+      "sourceId": "11wcZPdDflC2V4QqyNQkK5YEYXJCpzqvG",
+      "sourceUrl": "https://drive.google.com/file/d/11wcZPdDflC2V4QqyNQkK5YEYXJCpzqvG/view?usp=drivesdk",
+      "sourceFile": "sports-11wcZPdDflC2V4QqyNQkK5YEYXJCpzqvG.hwp",
+      "sha256": "bd364623dff155387fafe533848c83ded4fa9e017b1ccaf5db546e93ddf19019",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r35"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r35"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1mCYCtSleGXsYJed-xTWpg5gjSsjQUnyq",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "우리나라 전통 표현 작품을 발표하고 감상해요",
+      "periodText": "8~9",
+      "periodNumbers": [
+        8,
+        9
+      ],
+      "sourceId": "1mCYCtSleGXsYJed-xTWpg5gjSsjQUnyq",
+      "sourceUrl": "https://drive.google.com/file/d/1mCYCtSleGXsYJed-xTWpg5gjSsjQUnyq/view?usp=drivesdk",
+      "sourceFile": "sports-1mCYCtSleGXsYJed-xTWpg5gjSsjQUnyq.hwp",
+      "sha256": "489cf45c7d9c1147aecf247436586e713a0b166c5c1a90b3ba4a068fa872926e",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r34"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r34"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1GFOqG_RTMliUfYFFSEN8CS34wZz87-u2",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "신명 나게 소고춤을 추어요",
+      "periodText": "6~7",
+      "periodNumbers": [
+        6,
+        7
+      ],
+      "sourceId": "1GFOqG_RTMliUfYFFSEN8CS34wZz87-u2",
+      "sourceUrl": "https://drive.google.com/file/d/1GFOqG_RTMliUfYFFSEN8CS34wZz87-u2/view?usp=drivesdk",
+      "sourceFile": "sports-1GFOqG_RTMliUfYFFSEN8CS34wZz87-u2.hwp",
+      "sha256": "f1128ae707e15890b9d48eb9455c4e7f107f75f0a22ca0136c78834946001840",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r33"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r33"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1afN5yEnjm-gQBKbM36crIP8_CZ3zYpXo",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "빙빙 돌며 강강술래를 추어요",
+      "periodText": "4~5",
+      "periodNumbers": [
+        4,
+        5
+      ],
+      "sourceId": "1afN5yEnjm-gQBKbM36crIP8_CZ3zYpXo",
+      "sourceUrl": "https://drive.google.com/file/d/1afN5yEnjm-gQBKbM36crIP8_CZ3zYpXo/view?usp=drivesdk",
+      "sourceFile": "sports-1afN5yEnjm-gQBKbM36crIP8_CZ3zYpXo.hwp",
+      "sha256": "3c3d396e490e22d0cddc617d1b8feb1385f60640101716144c58528fe2747d22",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r32"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r32"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1EPOV-H1KHmT55jxbR-yM7zoZY_O-YnOj",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "3 표현",
+      "title": "덩실덩실 탈춤을 추어요",
+      "periodText": "2~3",
+      "periodNumbers": [
+        2,
+        3
+      ],
+      "sourceId": "1EPOV-H1KHmT55jxbR-yM7zoZY_O-YnOj",
+      "sourceUrl": "https://drive.google.com/file/d/1EPOV-H1KHmT55jxbR-yM7zoZY_O-YnOj/view?usp=drivesdk",
+      "sourceFile": "sports-1EPOV-H1KHmT55jxbR-yM7zoZY_O-YnOj.hwp",
+      "sha256": "f3816629885ee78d13effb12e1fe80d69e925a5fae802c76dfd27be39b77eb87",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r31"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r31"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1KswB68-iHk9S40Efdm_kQtnFGAfPRKDH",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "자전거타기형 활동을 해요",
+      "periodText": "59~62",
+      "periodNumbers": [
+        59,
+        60,
+        61,
+        62
+      ],
+      "sourceId": "1KswB68-iHk9S40Efdm_kQtnFGAfPRKDH",
+      "sourceUrl": "https://drive.google.com/file/d/1KswB68-iHk9S40Efdm_kQtnFGAfPRKDH/view?usp=drivesdk",
+      "sourceFile": "sports-1KswB68-iHk9S40Efdm_kQtnFGAfPRKDH.hwp",
+      "sha256": "cc0a769a942937011da4c2e716d81b3ea8d363c7e868b06e099677fab6c44778",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r27"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r27"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1FTZIWCKbQJf7l4mScbVsZfi3c9K1RJDP",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "골프형 활동을 해요",
+      "periodText": "55~58",
+      "periodNumbers": [
+        55,
+        56,
+        57,
+        58
+      ],
+      "sourceId": "1FTZIWCKbQJf7l4mScbVsZfi3c9K1RJDP",
+      "sourceUrl": "https://drive.google.com/file/d/1FTZIWCKbQJf7l4mScbVsZfi3c9K1RJDP/view?usp=drivesdk",
+      "sourceFile": "sports-1FTZIWCKbQJf7l4mScbVsZfi3c9K1RJDP.hwp",
+      "sha256": "f7e2d8f4be9ac4df9f80f1a9ac37fc5b7f5f4a9ea9b69193fafcefea414fa98e",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r26"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r26"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1kGMC-Vj1bfjHY1HzneRHkjDxctumUP1_",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "플라잉디스크형 활동을 해요",
+      "periodText": "51~54",
+      "periodNumbers": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "sourceId": "1kGMC-Vj1bfjHY1HzneRHkjDxctumUP1_",
+      "sourceUrl": "https://drive.google.com/file/d/1kGMC-Vj1bfjHY1HzneRHkjDxctumUP1_/view?usp=drivesdk",
+      "sourceFile": "sports-1kGMC-Vj1bfjHY1HzneRHkjDxctumUP1_.hwp",
+      "sha256": "8a7fb4dbc53b521113a08ab326f62c83d32cf477f0b26920a3e3e9125bef3dad",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r25"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r25"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ctxLlhutuDiC7FomBFn6gE0_QAIixUy1",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "주먹 야구형 게임을 해요",
+      "periodText": "37~40",
+      "periodNumbers": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "sourceId": "1ctxLlhutuDiC7FomBFn6gE0_QAIixUy1",
+      "sourceUrl": "https://drive.google.com/file/d/1ctxLlhutuDiC7FomBFn6gE0_QAIixUy1/view?usp=drivesdk",
+      "sourceFile": "sports-1ctxLlhutuDiC7FomBFn6gE0_QAIixUy1.hwp",
+      "sha256": "152934a117018fdca315b85db52deb7aefc9633ec047454d58d1374e4926fecf",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r22"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r22"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1okxA0NqH9_6ENAGC0hcTTLsfISUYsAC0",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "티볼형 게임을 해요",
+      "periodText": "46~50",
+      "periodNumbers": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "sourceId": "1okxA0NqH9_6ENAGC0hcTTLsfISUYsAC0",
+      "sourceUrl": "https://drive.google.com/file/d/1okxA0NqH9_6ENAGC0hcTTLsfISUYsAC0/view?usp=drivesdk",
+      "sourceFile": "sports-1okxA0NqH9_6ENAGC0hcTTLsfISUYsAC0.hwp",
+      "sha256": "fb4f919a9056bd222aa58376ba8f478ea6c116665704cd10d2e0f5edaf990816",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r24"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r24"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ElRgAhqTtTw2CnaKK1h5YML-8DDCw8vj",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "발야구형 게임을 해요",
+      "periodText": "41~45",
+      "periodNumbers": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "sourceId": "1ElRgAhqTtTw2CnaKK1h5YML-8DDCw8vj",
+      "sourceUrl": "https://drive.google.com/file/d/1ElRgAhqTtTw2CnaKK1h5YML-8DDCw8vj/view?usp=drivesdk",
+      "sourceFile": "sports-1ElRgAhqTtTw2CnaKK1h5YML-8DDCw8vj.hwp",
+      "sha256": "4bd90e5a8ecaaec5024218e2ea8e6bdd8e0cde89f8e7ed9fb1eb52e9a8ea4e9e",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r23"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r23"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1qGq5KxPJcRUXKeoGp-pC7ncYL5Cwm5l0",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "표적 활동을 해요",
+      "periodText": "21~22",
+      "periodNumbers": [
+        21,
+        22
+      ],
+      "sourceId": "1qGq5KxPJcRUXKeoGp-pC7ncYL5Cwm5l0",
+      "sourceUrl": "https://drive.google.com/file/d/1qGq5KxPJcRUXKeoGp-pC7ncYL5Cwm5l0/view?usp=drivesdk",
+      "sourceFile": "sports-1qGq5KxPJcRUXKeoGp-pC7ncYL5Cwm5l0.hwp",
+      "sha256": "86836b42c1bf5f96ecdeb91efdc98cf072029d90605194cedbdff1d6d5080b8b",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r18"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r18"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1y8GTieI77c1ul3K2Zad0FDRUy3w2M5qd",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "경영 활동을 해요",
+      "periodText": "15~20",
+      "periodNumbers": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "sourceId": "1y8GTieI77c1ul3K2Zad0FDRUy3w2M5qd",
+      "sourceUrl": "https://drive.google.com/file/d/1y8GTieI77c1ul3K2Zad0FDRUy3w2M5qd/view?usp=drivesdk",
+      "sourceFile": "sports-1y8GTieI77c1ul3K2Zad0FDRUy3w2M5qd.hwp",
+      "sha256": "e0f188bfc9e89d099f781d1d6e6d4e690087f42685266943e9278cfd6846e349",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r17"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r17"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1MiMJM-QcZInBID2uyKgbfoww1XURWaVQ",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "육상 활동을 해요",
+      "periodText": "2~14",
+      "periodNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "sourceId": "1MiMJM-QcZInBID2uyKgbfoww1XURWaVQ",
+      "sourceUrl": "https://drive.google.com/file/d/1MiMJM-QcZInBID2uyKgbfoww1XURWaVQ/view?usp=drivesdk",
+      "sourceFile": "sports-1MiMJM-QcZInBID2uyKgbfoww1XURWaVQ.hwp",
+      "sha256": "702feeab2f54bb380597248cc6fc3f2d06ad1798e1f66a128006259a06e122c6",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r16"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r16"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1IDpZCXmMLpDQvDCpd4uC4rAvx7r--011",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "하키형 게임을 해요",
+      "periodText": "33~36",
+      "periodNumbers": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceId": "1IDpZCXmMLpDQvDCpd4uC4rAvx7r--011",
+      "sourceUrl": "https://drive.google.com/file/d/1IDpZCXmMLpDQvDCpd4uC4rAvx7r--011/view?usp=drivesdk",
+      "sourceFile": "sports-1IDpZCXmMLpDQvDCpd4uC4rAvx7r--011.hwp",
+      "sha256": "4a0118373aa831dba9480d2b8016209887eabcc3cf44b456907f10854ddf4064",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r21"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r21"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1UGJ6FXktEpfsQ7_1yylLrW27MKxaf6-1",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "농구형 게임을 해요",
+      "periodText": "28~32",
+      "periodNumbers": [
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "sourceId": "1UGJ6FXktEpfsQ7_1yylLrW27MKxaf6-1",
+      "sourceUrl": "https://drive.google.com/file/d/1UGJ6FXktEpfsQ7_1yylLrW27MKxaf6-1/view?usp=drivesdk",
+      "sourceFile": "sports-1UGJ6FXktEpfsQ7_1yylLrW27MKxaf6-1.hwp",
+      "sha256": "904ca2615ea822c4b792ef15979351a1c2ab40652ba44434ab35ca6146f6adae",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r20"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r20"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1nS2uyo68fYjEeAR1c8Oh448hiXzqqrQv",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "2 스포츠",
+      "title": "축구형 게임을 해요",
+      "periodText": "23~27",
+      "periodNumbers": [
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "sourceId": "1nS2uyo68fYjEeAR1c8Oh448hiXzqqrQv",
+      "sourceUrl": "https://drive.google.com/file/d/1nS2uyo68fYjEeAR1c8Oh448hiXzqqrQv/view?usp=drivesdk",
+      "sourceFile": "sports-1nS2uyo68fYjEeAR1c8Oh448hiXzqqrQv.hwp",
+      "sha256": "37a2349d52eb3d79bc5c13f0246e08bd6fe600c4033a688737153a47085e8b0b",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r19"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r19"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1L2US_oJqoO8-S7zcPW6xqeVe1STCxuMe",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "성장과 발달을 해치는 생활 방식을 멀리해요",
+      "periodText": "18~19",
+      "periodNumbers": [
+        18,
+        19
+      ],
+      "sourceId": "1L2US_oJqoO8-S7zcPW6xqeVe1STCxuMe",
+      "sourceUrl": "https://drive.google.com/file/d/1L2US_oJqoO8-S7zcPW6xqeVe1STCxuMe/view?usp=drivesdk",
+      "sourceFile": "sports-1L2US_oJqoO8-S7zcPW6xqeVe1STCxuMe.hwp",
+      "sha256": "19ca4c0cfada1caabbcda9690e1d23a9b160948df6a52d4ff91356a3a3576f75",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r12"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r12"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "마음을 이해하고 친구와 좋은 관계를 맺어요",
+      "periodText": "17",
+      "periodNumbers": [
+        17
+      ],
+      "sourceId": "1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-",
+      "sourceUrl": "https://drive.google.com/file/d/1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-/view?usp=drivesdk",
+      "sourceFile": "sports-1VifDVrVlMgicJwe1BcAEhcqAJkhGo0A-.hwp",
+      "sha256": "c8bec2cd5aca865e28a7d7031b1ffe779c2f7591074665766683b4f7443094db",
+      "lessonIds": [],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r11"
+      ],
+      "matchStatus": "needs-content-review",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-19hs8F4Tg4ZXWobCs6c7gd9GkThXEhNoK",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "소중한 성, 함께 지켜요",
+      "periodText": "15~16",
+      "periodNumbers": [
+        15,
+        16
+      ],
+      "sourceId": "19hs8F4Tg4ZXWobCs6c7gd9GkThXEhNoK",
+      "sourceUrl": "https://drive.google.com/file/d/19hs8F4Tg4ZXWobCs6c7gd9GkThXEhNoK/view?usp=drivesdk",
+      "sourceFile": "sports-19hs8F4Tg4ZXWobCs6c7gd9GkThXEhNoK.hwp",
+      "sha256": "024598af61173c8c2768307cc9fa7dca31ff6b80e55fc4278ecc6fd15ccbf511",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r10"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r10"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-13AtSgThJqPlPaYyvgFqFdjZuXviuwpBP",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "몸과 마음의 변화를 이해해요",
+      "periodText": "14",
+      "periodNumbers": [
+        14
+      ],
+      "sourceId": "13AtSgThJqPlPaYyvgFqFdjZuXviuwpBP",
+      "sourceUrl": "https://drive.google.com/file/d/13AtSgThJqPlPaYyvgFqFdjZuXviuwpBP/view?usp=drivesdk",
+      "sourceFile": "sports-13AtSgThJqPlPaYyvgFqFdjZuXviuwpBP.hwp",
+      "sha256": "8705dfafea005966ae678f08a3d7b40de57b45b4fa0c74073d8cd5df9693396b",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r9"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r9"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1Qrst91Fqz-F09JI1_8le56he2Oh0-xYt",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "자기 주도적으로 건강 체력을 길러요",
+      "periodText": "11~13",
+      "periodNumbers": [
+        11,
+        12,
+        13
+      ],
+      "sourceId": "1Qrst91Fqz-F09JI1_8le56he2Oh0-xYt",
+      "sourceUrl": "https://drive.google.com/file/d/1Qrst91Fqz-F09JI1_8le56he2Oh0-xYt/view?usp=drivesdk",
+      "sourceFile": "sports-1Qrst91Fqz-F09JI1_8le56he2Oh0-xYt.hwp",
+      "sha256": "d81e027fe0b1f103dfc4ee92959bf277492bf1d11cadcbe9fe2d6a6d176e2fcd",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r8"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r8"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1KkqWOewef6OHgvv8hDlK_SX35WaEVl0U",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "유연성을 길러요",
+      "periodText": "9~10",
+      "periodNumbers": [
+        9,
+        10
+      ],
+      "sourceId": "1KkqWOewef6OHgvv8hDlK_SX35WaEVl0U",
+      "sourceUrl": "https://drive.google.com/file/d/1KkqWOewef6OHgvv8hDlK_SX35WaEVl0U/view?usp=drivesdk",
+      "sourceFile": "sports-1KkqWOewef6OHgvv8hDlK_SX35WaEVl0U.hwp",
+      "sha256": "0a87ed84b639c76f7b224d3a366df4ba7d30873de0145529a162d9b6c368d413",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r7"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r7"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1bCwHEJWFR36xHich0LuZMo7nqjiue-AN",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "심폐지구력을 길러요",
+      "periodText": "7~8",
+      "periodNumbers": [
+        7,
+        8
+      ],
+      "sourceId": "1bCwHEJWFR36xHich0LuZMo7nqjiue-AN",
+      "sourceUrl": "https://drive.google.com/file/d/1bCwHEJWFR36xHich0LuZMo7nqjiue-AN/view?usp=drivesdk",
+      "sourceFile": "sports-1bCwHEJWFR36xHich0LuZMo7nqjiue-AN.hwp",
+      "sha256": "4d2728f6df99ddfccdafe9129ffc9fab01aaa8248ca2f5c038769ee8a0c783ea",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r6"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r6"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1JZuxvMLM46AD0Q-CiVdl1miV9MslEXuu",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "근력과 근지구력을 길러요",
+      "periodText": "5~6",
+      "periodNumbers": [
+        5,
+        6
+      ],
+      "sourceId": "1JZuxvMLM46AD0Q-CiVdl1miV9MslEXuu",
+      "sourceUrl": "https://drive.google.com/file/d/1JZuxvMLM46AD0Q-CiVdl1miV9MslEXuu/view?usp=drivesdk",
+      "sourceFile": "sports-1JZuxvMLM46AD0Q-CiVdl1miV9MslEXuu.hwp",
+      "sha256": "cc096e2fa716f2992eb50ca4460aa34427908e696ae1be1b51d754ec09a2b32a",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r5"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r5"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1VJvy3JAwF6lOgCDgq_maCRBmgm6aA_2S",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "건강 체력을 측정하고 운동 계획을 세워요",
+      "periodText": "3~4",
+      "periodNumbers": [
+        3,
+        4
+      ],
+      "sourceId": "1VJvy3JAwF6lOgCDgq_maCRBmgm6aA_2S",
+      "sourceUrl": "https://drive.google.com/file/d/1VJvy3JAwF6lOgCDgq_maCRBmgm6aA_2S/view?usp=drivesdk",
+      "sourceFile": "sports-1VJvy3JAwF6lOgCDgq_maCRBmgm6aA_2S.hwp",
+      "sha256": "f2c5ca2ca86ca1595b6dae351e22aa66420b46c5aa2d32c6d0014c2a62a4832b",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r4"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r4"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    },
+    {
+      "id": "sports-assessment-1ecCDlue7jHLU6-MyuKw295qYeZvdZK7m",
+      "publisher": "체육과건강",
+      "curriculum": "2022",
+      "subject": "체육",
+      "grade": 5,
+      "editionId": "tb-266461fcf7029ab0",
+      "domain": "1 운동",
+      "title": "건강 체력을 이해해요",
+      "periodText": "2",
+      "periodNumbers": [
+        2
+      ],
+      "sourceId": "1ecCDlue7jHLU6-MyuKw295qYeZvdZK7m",
+      "sourceUrl": "https://drive.google.com/file/d/1ecCDlue7jHLU6-MyuKw295qYeZvdZK7m/view?usp=drivesdk",
+      "sourceFile": "sports-1ecCDlue7jHLU6-MyuKw295qYeZvdZK7m.hwp",
+      "sha256": "3ea5f2ac1ce7f3d77eb65ffdd7bfe35d3f039126d61fa64698fad006f82b242a",
+      "lessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r3"
+      ],
+      "candidateLessonIds": [
+        "sports-1ZjLagOzUL9xbbJLwaTwbLckDO0BKY-FW-r3"
+      ],
+      "matchStatus": "exact-title-domain-period",
+      "contentStatus": "original-acquired-not-yet-extracted"
+    }
+  ],
+  "note": "Original files are archived locally. Lesson matches require exact title, grade, domain and intersecting source periods; rubric extraction remains pending."
+}

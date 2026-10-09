@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "book": "j31",
+      "rows": 57,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 3
+    },
+    {
+      "book": "j32",
+      "rows": 60,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 0
+    },
+    {
+      "book": "j41",
+      "rows": 58,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 0
+    },
+    {
+      "book": "j42",
+      "rows": 59,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 0
+    },
+    {
+      "book": "j51",
+      "rows": 57,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 6
+    },
+    {
+      "book": "j52",
+      "rows": 59,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 0
+    },
+    {
+      "book": "j61",
+      "rows": 57,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 0
+    },
+    {
+      "book": "j62",
+      "rows": 57,
+      "periods": 64,
+      "withheldUnits": [],
+      "correctedTopics": 0
+    }
+  ],
+  "rules": [
+    "Preserve unit period numbering; do not assign cumulative periods.",
+    "Unit standards are stored separately; no lesson-level alignment is inferred.",
+    "Source pages locate guide images, not student textbook pages.",
+    "3-1 unit 1 corrections use guide page 133; 5-1 unit 5 corrections use guide page 290. Original annual-table text is preserved."
+  ]
+}

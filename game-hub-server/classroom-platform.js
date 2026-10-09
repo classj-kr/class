@@ -11,6 +11,7 @@ const { createLearningRecords } = require("./learning-records");
 const { createTeacherAi } = require("./teacher-ai");
 const { createUserStorage } = require("./user-storage");
 const { createAssessmentPlans } = require("./assessment-plans");
+const { createSchoolTextbooks } = require("./school-textbooks");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 const { createLearningBoards } = require("./learning-boards");
@@ -1411,6 +1412,7 @@ function createClassroomPlatform(options = {}) {
       await teacherAi.initialize();
       await userStorage.initialize();
       await assessmentPlans.initialize();
+      await schoolTextbooks.initialize();
       await voting.initialize();
       await schoolElection.initialize();
       await seating.initialize();
@@ -1657,6 +1659,8 @@ function createClassroomPlatform(options = {}) {
   // 수행평가 계획(교과별 영역·성취기준·평가요소·단계별 평가기준). 같은 학교 교사가 함께 고친다.
   const assessmentPlans = createAssessmentPlans({ pool, requireTeacher, teacherRegistration, requireDatabase, HttpError, asyncRoute });
   router.use("/teacher/assessment-plans", assessmentPlans.router);
+  const schoolTextbooks = createSchoolTextbooks({ pool, requireSchoolCurriculum, requireSchoolAdmin, HttpError, asyncRoute });
+  router.use("/school-admin/textbooks", schoolTextbooks.router);
 
   // 수업 활동은 같은 4자리 방번호를 쓰고 메인의 방번호 입구에서 연결한다.
   const voting = createVoting({

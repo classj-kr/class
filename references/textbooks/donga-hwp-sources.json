@@ -1,0 +1,58 @@
+{
+  "sources": [
+    {
+      "id": "donga-120313-a3da1e18ba",
+      "sourceId": "120313",
+      "sourceUrl": "https://ele.douclass.com/curriculum",
+      "publisher": "동아출판",
+      "filename": "(동아출판) 22개정_초등_실과 연간 교수・학습 계획_5학년.hwp",
+      "sha256": "a3da1e18ba1095b5012c876dc3e1e58d967a86c397e084e9897771e578c90d6e",
+      "retrievedOn": "2026-10-09",
+      "curriculumVerification": "publisher-2022-filter",
+      "plans": [
+        "donga-120313-a3da1e18ba"
+      ]
+    },
+    {
+      "id": "donga-120476-a06529a76b",
+      "sourceId": "120476",
+      "sourceUrl": "https://ele.douclass.com/curriculum",
+      "publisher": "동아출판",
+      "filename": "(동아출판) 22개정_초등_실과 연간 교수・학습 계획_6학년.hwp",
+      "sha256": "a06529a76b4bdcc2b35b9c3cb0b3972025cc8227476c425704b88445b5a065f2",
+      "retrievedOn": "2026-10-09",
+      "curriculumVerification": "publisher-2022-filter",
+      "plans": [
+        "donga-120476-a06529a76b"
+      ]
+    },
+    {
+      "id": "donga-104694-3aa81d7eea",
+      "sourceId": "104694",
+      "sourceUrl": "https://ele.douclass.com/curriculum",
+      "publisher": "동아출판",
+      "filename": "(동아출판) 사회과 3학년 2학기 교과 진도 운영 계획.zip",
+      "sha256": "3aa81d7eea30f1790e7320e68d521f9caeb00df38f0d0ddee6bb9657478e3e51",
+      "retrievedOn": "2026-10-09",
+      "curriculumVerification": "publisher-2022-filter",
+      "archiveMember": "(동아출판) 22개정_초등_사회 3-2_교과 진도 운영 계획.hwp",
+      "plans": [
+        "donga-104694-3aa81d7eea"
+      ]
+    },
+    {
+      "id": "donga-103091-29b12ad070",
+      "sourceId": "103091",
+      "sourceUrl": "https://ele.douclass.com/curriculum",
+      "publisher": "동아출판",
+      "filename": "(동아출판) 사회과 4학년 2학기 교과 진도 운영 계획.zip",
+      "sha256": "29b12ad070b427e007f27a72ca88a6c2409201d2efd3dd9f37170505f05a54b4",
+      "retrievedOn": "2026-10-09",
+      "curriculumVerification": "publisher-2022-filter",
+      "archiveMember": "(동아출판) 22개정_초등_사회 4-2_교과 진도 운영 계획.hwp",
+      "plans": [
+        "donga-103091-29b12ad070"
+      ]
+    }
+  ]
+}

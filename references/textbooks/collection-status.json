@@ -1,0 +1,231 @@
+{
+  "asOf": "2026-10-09",
+  "scope": "2022 개정 초등학교 1~6학년 기본 교과의 교과서 목록과 교육과정 편성용 단원·차시 데이터",
+  "completion": "in-progress",
+  "catalog": {
+    "ktrfSourceRecords": 579,
+    "nationalSupplementRecords": 10,
+    "selectableEditionsByGradeBand": 136,
+    "normalizedVolumes": 526,
+    "commercialPublishers": 16,
+    "excluded": "사회과 부도 및 별도 인정 과목은 원본 목록을 보존하되 주교과서 선택에서는 제외"
+  },
+  "pacing": [
+    {
+      "publisher": "비상교육",
+      "downloadedFiles": 42,
+      "format": "xlsx",
+      "status": "extracted",
+      "remaining": "개정판 대조 및 자료실에 없는 학기·국정 과목 추가 수집",
+      "normalizedPlans": 44,
+      "structuredLessonRows": 1740
+    },
+    {
+      "publisher": "아이스크림미디어",
+      "downloadedFiles": 60,
+      "format": "xlsx",
+      "status": "extracted",
+      "coverage": "3~4학년 7과목, 5~6학년 8과목의 1·2학기",
+      "normalizedPlans": 60,
+      "structuredLessonRows": 2642
+    },
+    {
+      "publisher": "와이비엠",
+      "downloadedFiles": 15,
+      "format": "pdf",
+      "pages": 98,
+      "status": "partially-normalized",
+      "remaining": "사회 3~4학년 네 학기 각 48시수 확보(3-1 연간 PDF, 나머지 공개 전자책 목차). 전자책 목차의 교과서 쪽수 미표기는 null 유지. 사회 5~6 원본 후반 중복 페이지 추가 대조 및 수행평가 수집 필요",
+      "normalizedPlans": 38,
+      "structuredLessonRows": 1341
+    },
+    {
+      "publisher": "미래엔",
+      "status": "public-outline-normalized-original-download-certification-required",
+      "sourceUrl": "https://e.m-teacher.co.kr/pages/ele/Main.mrn",
+      "remaining": "원본 진도표는 교사 인증 필요. 공개 차시 1965행 변환. 영어 시수 미표기 12행, 사회 4-1 49시수·미술 5학년 66시수는 연간표 대조 필요. 국정 과목 및 수행평가 추가 수집",
+      "normalizedPlans": 42,
+      "structuredLessonRows": 1965,
+      "coverage": "검정 교과서 3~6학년 30개 학년·과목 조합, 42개 온라인 목록"
+    },
+    {
+      "publisher": "동아출판",
+      "acquiredDocuments": 36,
+      "format": "xlsx,hwp,zip",
+      "status": "normalized",
+      "coverage": "2022 개정 검정 교과서 3~6학년 28개 학년·과목 조합. 실과는 연간 계획, 나머지는 1·2학기 자료",
+      "normalizedPlans": 54,
+      "structuredLessonRows": 1911
+    },
+    {
+      "publisher": "지학사",
+      "acquiredDocuments": 58,
+      "downloadedArchives": 5,
+      "format": "xlsx,hwp",
+      "status": "normalized-pacing",
+      "remaining": "나이스 자료 50개 파일에서 51개 계획 변환. 과학전담 확인표 8개는 보조 자료로 보존",
+      "normalizedPlans": 51,
+      "structuredLessonRows": 4032
+    },
+    {
+      "publisher": "금성출판사",
+      "acquiredSources": 10,
+      "format": "xlsx,hwp,hwpx,pdf,zip",
+      "status": "partially-normalized",
+      "remaining": "체육 3~4학년 중복 다운로드 파일 문제는 학년이 명시된 공식 지도서 60~63쪽으로 대체해 각 102시수 확보. 나머지 미수집 과목·학기 및 수행평가 수집 계속",
+      "normalizedPlans": 12,
+      "structuredLessonRows": 466
+    },
+    {
+      "publisher": "천재교과서·천재교육",
+      "status": "public-outline-normalized-original-plan-comparison-pending",
+      "sourceUrl": "https://ele.tsherpa.co.kr/curri/E-curri_list.html?semester=2&grade=3&curri=",
+      "normalizedPlans": 122,
+      "structuredLessonRows": 5120,
+      "remaining": "122개 계획·5120행 변환. 시수 미표기·원문 중복 593행은 null 유지. 박만구 수학 5-1 중복 3차시와 사회 4-2 1단원 표기 대조 필요. 원본 진도표·수행평가 수집 계속",
+      "acquiredPublicTextbookPages": 156,
+      "acquiredPublicUnitPages": 1109,
+      "coverage": "검정 3~6학년 모든 저자판과 국정 1~6학년 공개 수업 목록. 동일 연간 목차 26개 중복 제거"
+    },
+    {
+      "publisher": "체육과건강",
+      "sourceUrl": "https://www.sports.ne.kr/guide/edu_elementary.php",
+      "downloadedFiles": 4,
+      "format": "xlsx",
+      "status": "normalized-pacing",
+      "normalizedPlans": 8,
+      "structuredLessonRows": 158,
+      "remaining": "4학년 원본 39행 차시 누락은 null 유지. 수행평가지 본문·채점기준 추출은 별도 대기"
+    },
+    {
+      "publisher": "아침나라",
+      "sourceUrl": "https://www.achimnara.kr/school?gtRevisionYear=2022&gtIdx=143",
+      "status": "normalized-pacing",
+      "remaining": "수행평가 원본 확보·목록화 완료. 본문·평가요소·채점기준 추출 및 검수 필요",
+      "normalizedPlans": 12,
+      "structuredLessonRows": 236,
+      "downloadedSources": 76,
+      "coverage": "음악 3~6학년 및 미술 5~6학년의 1·2학기"
+    },
+    {
+      "publisher": "교학사·교학도서",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=2751639241ea4f97b5320f1911bfb239&grade=3&term=1&subject=SC005",
+      "status": "official-online-outline-normalized",
+      "remaining": "공식 온라인 차시 435행 확보. 연간 파일 다운로드 대조와 원문 오자 검수 필요. 학기 구분은 null 유지",
+      "normalizedPlans": 10,
+      "structuredLessonRows": 435,
+      "acquiredPublicHtmlFiles": 10,
+      "coverage": "교학사 체육 3~6·실과 5~6, 교학도서 미술 3~6"
+    },
+    {
+      "publisher": "아트앤컬처",
+      "sourceUrl": "https://artandculture.kr/study/art3.php",
+      "status": "official-annual-table-normalized",
+      "remaining": "지도서 연간표로 3~6학년 각 68시수 변환. 개별 수업안 시수 충돌 기록. 수행평가 48개 단원 연결 및 120개 평가 단계·360개 상중하 기준 추출. 학년별 표본 시각 검수, 개별 활동 대응 검수 대기",
+      "normalizedPlans": 4,
+      "structuredLessonRows": 107,
+      "downloadedTeachingPlans": 104
+    },
+    {
+      "publisher": "디딤돌",
+      "status": "normalized-pacing-with-source-corrections",
+      "acquiredPageImages": 32,
+      "coverage": "수학 3~6학년 양 학기 지도 계획",
+      "normalizedPlans": 8,
+      "structuredLessonRows": 464,
+      "remaining": "3~6학년 양 학기 각 64시수 변환. 3-1·5-1 원문 오류 9개 제목은 단원 지도 계획 133·290쪽으로 보정. 교사용 자료실 수행평가 추가 수집 필요"
+    },
+    {
+      "publisher": "음악과생활",
+      "downloadedSources": 62,
+      "status": "normalized-pacing",
+      "normalizedPlans": 4,
+      "structuredLessonRows": 62,
+      "coverage": "음악 5~6학년 1·2학기",
+      "remaining": "수행평가지 56개 성취기준·평가방법·목표·3단계 평가기준 추출. 연간 계획 PDF와 대조하여 원본 오류 2건 보정 근거 보존"
+    }
+  ],
+  "structuredLessonRows": 20679,
+  "storage": {
+    "catalog": "game-hub-server/data/textbooks/catalog-2022.json",
+    "pacing": "game-hub-server/data/textbooks/pacing-{publisher}-2022.json",
+    "coverage": "game-hub-server/data/textbooks/pacing-coverage.json",
+    "localOriginals": "references/textbooks/raw (git excluded)",
+    "schoolSelectionKey": [
+      "school_id",
+      "academic_year",
+      "grade",
+      "subject_name"
+    ],
+    "editionKey": [
+      "curriculum",
+      "subject",
+      "gradeBand",
+      "publisher",
+      "leadAuthor"
+    ],
+    "nationalRule": "국정 도서의 인쇄·발행사 차이를 선택 가능한 다른 교육내용으로 취급하지 않음"
+  },
+  "localImplementation": {
+    "screen": "schooladmin 시수편성 탭 하단 교과서 선택",
+    "api": "/api/school-admin/textbooks",
+    "migration": "011-school-textbooks.sql",
+    "deployment": "not-deployed",
+    "verification": "PGlite API and provenance tests passed 2026-10-09, including grade/year/school isolation, mixed-grade workbooks, annual semester zero, and shared time allocations"
+  },
+  "next": [
+    "학년·교과서 조합의 최소 1개 자료 확보와 별도로 전체 학기·연간 차시 완결성 점검",
+    "미래엔 교사 인증 후 원본 확보 및 천재 온라인 목차의 시수 누락·중복 대조",
+    "미수집 과목·학기 자료와 수행평가 원본 추가 수집",
+    "수행평가 성취기준·평가요소·방법·채점기준 추출 및 검수"
+  ],
+  "structuredPlans": 469,
+  "gradeEditionCoverage": {
+    "withAtLeastOnePlan": 272,
+    "total": 272,
+    "meaning": "자료가 1개 이상 연결된 학년별 교과서 조합 수이며, 전체 학기 수집 완료율이 아님"
+  },
+  "assessments": [
+    {
+      "publisher": "체육과건강",
+      "downloadedAssessmentFiles": 122,
+      "downloadedStandardsOrEvaluationPlans": 4,
+      "exactLessonMetadataMatches": 118,
+      "needsContentReview": 4,
+      "status": "originals-acquired-metadata-indexed",
+      "rubricExtraction": "pending",
+      "index": "references/textbooks/assessment-index-sports-2022.json"
+    },
+    {
+      "publisher": "아침나라",
+      "downloadedSources": 56,
+      "indexedOriginalFiles": 140,
+      "countMeaning": "PDF·HWP 대체 형식을 포함한 파일 수이며 서로 다른 평가 과제 수가 아님",
+      "status": "originals-acquired-metadata-indexed",
+      "rubricExtraction": "pending",
+      "index": "references/textbooks/assessment-index-achim-2022.json"
+    },
+    {
+      "publisher": "아트앤컬처",
+      "downloadedAssessmentFiles": 48,
+      "status": "originals-acquired-metadata-indexed",
+      "rubricExtraction": "pending",
+      "index": "references/textbooks/assessment-index-artculture-2022.json",
+      "unitMetadataMatches": 48,
+      "matchMeaning": "학년·단원 단위 연결이며 개별 활동과 평가 항목의 대응은 아직 검수하지 않음",
+      "structuredDocuments": 48,
+      "structuredStages": 120,
+      "structuredRubricLevels": 360,
+      "contentStatus": "structured-fields-extracted-layout-samples-reviewed"
+    },
+    {
+      "publisher": "음악과생활",
+      "downloadedAssessmentFiles": 56,
+      "exactLessonMetadataMatches": 56,
+      "status": "structured-fields-extracted",
+      "rubricExtraction": "56 structurally validated; visual sample review pending",
+      "index": "references/textbooks/assessment-index-musiclife-2022.json",
+      "content": "references/textbooks/assessment-content-musiclife-2022.json"
+    }
+  ]
+}

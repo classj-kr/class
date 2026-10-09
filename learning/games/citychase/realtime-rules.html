@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko" class="rulesDocument">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>경찰과 도둑 · 게임 규칙</title>
+  <link rel="stylesheet" href="realtime.css?v=20261009g">
+</head>
+<body class="rulesPage">
+  <main class="rulesSheet">
+    <header><h1>경찰과 도둑</h1><p>게임 규칙 · 실시간</p></header>
+    <section><h2>인원과 승리 조건</h2>
+      <p><strong>4명, 경찰 1명·도둑 3명</strong>으로 플레이합니다. 제한 시간은 <strong>3분</strong>입니다.</p>
+      <ul><li><strong>도둑팀:</strong> 가게에서 보석을 찾아 비밀기지에 3개를 보관하면 승리합니다.</li><li><strong>경찰팀:</strong> 누적 <strong>5회 체포</strong>하면 승리합니다. 도둑을 동시에 모두 체포하거나, 제한 시간이 끝날 때까지 보석 3개 확보를 막아도 승리합니다. 풀려난 도둑을 다시 잡으면 체포 횟수가 올라갑니다.</li></ul>
+      <p>친구와 할 때는 한 명이 방을 만들고 나머지는 방 번호로 참가합니다. 4명이 모이면 방장이 시작합니다. 혼자 연습에서는 나머지 세 자리를 봇이 채웁니다.</p>
+    </section>
+    <section><h2>이동과 질주</h2>
+      <table><thead><tr><th>동작</th><th>키보드·마우스</th><th>터치</th></tr></thead><tbody>
+        <tr><th>방향 이동</th><td>방향키 또는 WASD</td><td>왼쪽 이동 패드</td></tr>
+        <tr><th>목적지 이동</th><td>길·가게 클릭</td><td>길·가게 터치</td></tr>
+        <tr><th>질주</th><td>Space 또는 질주 버튼</td><td>질주 버튼</td></tr>
+        <tr><th>수색·구출</th><td>E 또는 해당 버튼</td><td>해당 버튼</td></tr>
+      </tbody></table>
+      <p>방향키나 패드에서 손을 떼면 멈춥니다. 갈림길 전에 방향을 눌러 두면 그쪽 길로 꺾고, 반대 방향을 누르면 돌아섭니다. 길·가게를 눌렀을 때는 목적지까지 자동으로 이동합니다.</p>
+      <p>질주는 <strong>8초마다</strong> 사용할 수 있습니다. 이동 패드를 누른 채 다른 손가락으로 질주할 수 있습니다. 경찰은 도둑보다 조금 빠르고, 보석을 운반하는 도둑은 더 느려집니다. 연습 봇과 실제 참가자는 같은 속도와 규칙으로 움직입니다.</p>
+    </section>
+    <section><h2>단서 공유와 추리</h2>
+      <ol><li><strong>내 단서</strong>를 열어 보석이 있을 만한 가게를 확인합니다.</li><li><strong>팀원에게 단서 공유</strong>를 눌러 서로 다른 단서를 합칩니다. 여러 단서에 공통으로 남는 가게가 보석이 있는 곳입니다.</li><li>도둑은 그 가게를 수색하고, 경찰은 그곳으로 향하는 도둑을 추격합니다.</li></ol>
+      <p>공유한 단서와 지도 표시는 우리 팀만 볼 수 있습니다. 수첩에서 가게를 누르면 팀 지도에 표시하며 그곳으로 이동합니다. 보석을 기지에 보관하면 다음 보석의 새 단서를 받습니다.</p>
+    </section>
+    <section><h2>수색과 보석 보관</h2>
+      <p>도둑은 가게 입구에 서서 <strong>가게 수색</strong>을 누릅니다. 수색에는 1.6초가 걸리며 움직이면 취소됩니다. 보석은 한 번에 한 명이 운반합니다.</p>
+      <p>보석을 찾았다면 왼쪽 아래 <strong>비밀기지</strong>로 돌아가 멈추세요. 1초 후 보관되며 확보 개수가 올라갑니다. 점선으로 표시한 보호구역 안에서는 체포되지 않습니다. 경찰이 그 안에 서 있어도 도둑을 잡거나 몸으로 길을 막을 수 없습니다.</p>
+    </section>
+    <section><h2>체포와 동료 구출</h2>
+      <p>경찰이 도둑에게 가까이 다가가면 자동으로 체포합니다. 체포된 도둑은 운반 중인 보석을 잃고 구금 구역으로 이동합니다. 잃은 보석은 같은 가게에서 다시 찾을 수 있습니다.</p>
+      <ul><li><strong>자동 탈출:</strong> 체포된 뒤 12초가 지나면 풀려납니다.</li><li><strong>동료 구출:</strong> 다른 도둑이 구금 구역 앞에서 <strong>동료 구출</strong>을 누르고 1.4초 동안 멈춰 있으면 갇힌 동료를 모두 구합니다.</li><li><strong>잠깐의 보호:</strong> 시작 후 5초, 자동 탈출 후 3초, 동료 구출 후 5초 동안은 다시 체포되지 않습니다.</li><li>구금 중에도 단서를 공유할 수 있습니다.</li></ul>
+    </section>
+  </main>
+</body></html>

@@ -1,0 +1,105 @@
+{
+  "retrievedOn": "2026-10-09",
+  "sources": [
+    {
+      "sourceId": "2751639241ea4f97b5320f1911bfb239",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=2751639241ea4f97b5320f1911bfb239&grade=3&term=1&subject=SC005",
+      "sourceFile": "klassmon-2751639241ea4f97b5320f1911bfb239.html",
+      "sha256": "624e5a0a2c04b4d7afbe457ec247ea12f06c981645a5a389b16c23b9d2909fad",
+      "bytes": 563312,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 57
+    },
+    {
+      "sourceId": "66b787998ba5423e8866f4afa3e91a08",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=66b787998ba5423e8866f4afa3e91a08&grade=3&term=1&subject=SC004",
+      "sourceFile": "klassmon-66b787998ba5423e8866f4afa3e91a08.html",
+      "sha256": "cf95efbb49592c00eaaf04dd856805742eba0a91f92652a99bc68405b9dc1602",
+      "bytes": 376598,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 34
+    },
+    {
+      "sourceId": "d09a77ee18764338b32131e021c8b42a",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=1&subject=SC004",
+      "sourceFile": "klassmon-d09a77ee18764338b32131e021c8b42a.html",
+      "sha256": "c25d1464a5d1c40d312dd6ec8157aa6b012c980f2024f0d3fbf27933f1b4fee8",
+      "bytes": 380967,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 38
+    },
+    {
+      "sourceId": "70e89f5820ee4b3987c9913e58541f8c",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=70e89f5820ee4b3987c9913e58541f8c&grade=4&term=1&subject=SC005",
+      "sourceFile": "klassmon-70e89f5820ee4b3987c9913e58541f8c.html",
+      "sha256": "6517e11aae2018db0e143d9c5bb5bcc7522b36fd6d2c5e368da5d5a859bbbf1f",
+      "bytes": 515844,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 47
+    },
+    {
+      "sourceId": "343a9b5881e143b8a8f33dc5f6bc5b90",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=343a9b5881e143b8a8f33dc5f6bc5b90&grade=5&term=1&subject=SC004",
+      "sourceFile": "klassmon-343a9b5881e143b8a8f33dc5f6bc5b90.html",
+      "sha256": "631d27d8c5062b1dd588a8a0b34940e1dd43c9d8da95542bf0086f5413496949",
+      "bytes": 388297,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 41
+    },
+    {
+      "sourceId": "1b1b4b6ab9504e50a8434dde596c687f",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=1b1b4b6ab9504e50a8434dde596c687f&grade=5&term=1&subject=SC005",
+      "sourceFile": "klassmon-1b1b4b6ab9504e50a8434dde596c687f.html",
+      "sha256": "8089b076e87825b763e54960f7a28a38cb5f3aa6c06752370b2b3914acc69ea3",
+      "bytes": 555580,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 61
+    },
+    {
+      "sourceId": "d0ac56bc8ccf4f45929960dd350c549e",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d0ac56bc8ccf4f45929960dd350c549e&grade=5&term=1&subject=SC009",
+      "sourceFile": "klassmon-d0ac56bc8ccf4f45929960dd350c549e.html",
+      "sha256": "a1865f57cdcfb56fca6aa5158e9f5453de95cd88cffcc93ab43baec485c18430",
+      "bytes": 433136,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 36
+    },
+    {
+      "sourceId": "9c2a88bde6e845a8892d1a436f222c87",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=9c2a88bde6e845a8892d1a436f222c87&grade=6&term=1&subject=SC009",
+      "sourceFile": "klassmon-9c2a88bde6e845a8892d1a436f222c87.html",
+      "sha256": "a071492517cbdaffc3173eb2edbb4b80dbf0469d61fc4e9db565f6044cabb1fb",
+      "bytes": 428080,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 36
+    },
+    {
+      "sourceId": "e8af803257c54483b36451e9f396cccd",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=e8af803257c54483b36451e9f396cccd&grade=6&term=1&subject=SC004",
+      "sourceFile": "klassmon-e8af803257c54483b36451e9f396cccd.html",
+      "sha256": "fca3318efb828e0359194afeb939b0d4f226dfccecacb82b77d08e4031c230c0",
+      "bytes": 361997,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 34
+    },
+    {
+      "sourceId": "f3a06e42a64b43c7940f9f4042cd8b0f",
+      "sourceUrl": "https://klassmon.com/textbook/chasi.ez?textbookSeq=f3a06e42a64b43c7940f9f4042cd8b0f&grade=6&term=1&subject=SC005",
+      "sourceFile": "klassmon-f3a06e42a64b43c7940f9f4042cd8b0f.html",
+      "sha256": "43eb4fcd946b1ef0febd8a1e97235fb577bc64e6d833b335834a93cd32961ea4",
+      "bytes": 507162,
+      "curriculum": "2022",
+      "validation": "public-html-matches-browser-outline",
+      "rows": 51
+    }
+  ]
+}

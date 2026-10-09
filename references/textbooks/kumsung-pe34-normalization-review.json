@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "60": {
+      "file": "kumsung-pe34-guide-p60.png",
+      "sha256": "a30dea364615c876c46ddae05d2d0878cf9521d97fb37314b41970d6c4bf1390",
+      "url": "https://file.kumsung.co.kr/text/ebook/2022re/micro2025/ele_phy3_guide/webview/epub/OEBPS/content/images/page00062/backgnd.png"
+    },
+    "61": {
+      "file": "kumsung-pe34-guide-p61.png",
+      "sha256": "92a9f5e3db8ad7e742e6f31e8f9192b18ea31db07a10517d2a0f08f8e97cb901",
+      "url": "https://file.kumsung.co.kr/text/ebook/2022re/micro2025/ele_phy3_guide/webview/epub/OEBPS/content/images/page00063/backgnd.png"
+    },
+    "62": {
+      "file": "kumsung-pe34-guide-p62.png",
+      "sha256": "c98820abdef8bcd48e7964e160d43fe2080f0b1ccc5f053567295650fb471751",
+      "url": "https://file.kumsung.co.kr/text/ebook/2022re/micro2025/ele_phy3_guide/webview/epub/OEBPS/content/images/page00064/backgnd.png"
+    },
+    "63": {
+      "file": "kumsung-pe34-guide-p63.png",
+      "sha256": "1daa157ec60be29abd2e9413c9f6ddaf137eadb93995cf1463837aadc761cb13",
+      "url": "https://file.kumsung.co.kr/text/ebook/2022re/micro2025/ele_phy3_guide/webview/epub/OEBPS/content/images/page00065/backgnd.png"
+    }
+  },
+  "duplicateDownloadFinding": "Grade 3 and 4 HWPX downloads are identical and correspond to grade 4 themes. Both runtime plans use explicitly grade-labelled guide pages instead; guide and HWPX wording differences are preserved in originals.",
+  "reviews": [
+    {
+      "grade": 3,
+      "rows": 52,
+      "periods": 102,
+      "semesterMapping": "annual-month-order-preserved-no-inferred-semester"
+    },
+    {
+      "grade": 4,
+      "rows": 52,
+      "periods": 102,
+      "semesterMapping": "annual-month-order-preserved-no-inferred-semester"
+    }
+  ]
+}
