@@ -187,5 +187,38 @@
         mount.replaceChildren(root);
         return {snapshot:()=>last,complete:()=>rule()==='first/greater/message'&&Object.values(samples).every(([,s])=>runs.some(r=>r.input===s.replaceAll(' ','')&&r.correct)),hint:'첫 수로 시작하고 더 클 때 갱신하며 빈 입력을 따로 처리하도록 고친 뒤, 양수·음수·같은 수·한 수·빈 입력을 모두 시험하세요.'};
     }
-    window.COMPUTER_TEACHING_LABS = {mount(id,mount){return ({a02:hardware,e03:files,j01:algorithm})[id]?.(mount)||null;}};
+    function memory(mount) {
+        let disk='봄', ram=null, last='', lost=false, kept=false, awaitingSavedOpen=false;
+        const root=el('section',undefined,'study-workbench');
+        const editor=el('textarea');editor.id='studyMemoryEditor';editor.rows=2;editor.maxLength=100;editor.disabled=true;
+        const label=el('label','RAM에서 작업 중인 문서');label.htmlFor=editor.id;
+        const stored=el('output');stored.id='studyMemoryStored';
+        const status=el('p','먼저 파일을 열고 내용을 고쳐 보세요.','study-status');status.setAttribute('role','status');
+        const controls=el('div',undefined,'study-controls');
+        const save=button('파일에 저장',()=>{disk=ram;render('저장: RAM의 현재 내용을 SSD 파일에 기록했습니다.');},'memory-save');
+        const open=button('SSD 파일 열기',()=>{ram=disk;editor.value=ram;editor.disabled=false;if(awaitingSavedOpen){kept=true;awaitingSavedOpen=false;}render('열기: SSD의 파일을 읽어 RAM에 작업 내용을 준비했습니다.');},'memory-open');
+        const power=button('전원 끄기·다시 켜기',()=>{
+            if(ram!==null){if(ram!==disk)lost=true;else if(disk!=='봄')awaitingSavedOpen=true;}
+            ram=null;editor.value='';editor.disabled=true;render('전원 다시 켜기: RAM의 작업 내용은 사라지고 SSD 파일은 남았습니다. 파일을 다시 열어 확인하세요.');
+        },'memory-power');
+        controls.append(open,save,power,button('처음 상태로',()=>{disk='봄';ram=null;lost=false;kept=false;awaitingSavedOpen=false;last='';editor.value='';editor.disabled=true;render('처음 상태입니다. SSD 파일을 열어 시작하세요.',false);},'memory-reset'));
+        function render(message,record=true){stored.textContent='SSD에 저장된 문서: '+disk;save.disabled=ram===null;status.textContent=message;if(record)last=message+'\nRAM: '+(ram===null?'작업 없음':ram)+'\nSSD: '+disk;}
+        editor.addEventListener('input',()=>{ram=editor.value;render('수정: RAM의 작업 내용이 바뀌었습니다. SSD 파일과 비교하세요.');});
+        root.append(el('h3','작업 중인 내용과 저장된 파일 비교'),el('p','이 모형은 자동 저장을 사용하지 않습니다. 화면 아래의 부품 그림에서 실제 RAM과 SSD의 위치도 확인할 수 있습니다.'),label,editor,stored,controls,status);
+        mount.prepend(root);render('SSD에는 ‘봄’이 저장되어 있습니다. 파일을 열어 시작하세요.',false);
+        return {revision:3,snapshot:()=>last,complete:()=>lost&&kept,hint:'저장하지 않은 수정이 전원을 끈 뒤 사라지는 경우와, 저장한 수정이 전원을 끈 뒤 다시 열리는 경우를 모두 확인하세요.'};
+    }
+    function observedModel(id,lab){
+        const read=selector=>[...lab.querySelectorAll(selector)].filter(n=>n.getClientRects().length).map(n=>n.innerText).join('\n');
+        const dataset=(selector,key)=>lab.querySelector(selector)?.dataset[key];
+        const specs={
+            a04:{snapshot:()=>dataset('[data-a04-lab]','a04Recorded')==='true'?read('[data-a04-record]'):'',complete:()=>dataset('[data-a04-lab]','a04PairFound')==='true',hint:'서로 다른 실제 온도가 같은 숫자로 기록되는 두 결과를 찾으세요.'},
+            a05:{snapshot:()=>dataset('[data-a05-lab]','a05Recorded')==='true'?read('[data-a05-status], [data-a05-comparison]'):'',complete:()=>dataset('[data-a05-lab]','rateCompared')==='true'&&dataset('[data-a05-lab]','bitsCompared')==='true',hint:'측정 횟수만 바꾼 A·B 비교와, 비트 깊이만 바꾼 A·B 비교를 모두 수행하세요.'},
+            h03:{snapshot:()=>dataset('[data-browser-lab]','browserPage')==='page'?read('[data-page-title], [data-page-publisher], [data-page-date], [data-page-body]'):'',complete:()=>{const seen=(dataset('[data-browser-lab]','visitedSources')||'').split(',');return seen.includes('libraryCurrent')&&seen.includes('libraryArchive');},hint:'‘도서관’을 검색하고 새봄도서관의 2026년 공지와 2025년 공지를 모두 열어 날짜와 내용을 비교하세요.'},
+            i01:{snapshot:()=>dataset('[data-account-lab]','accountStage')==='3'&&['allowed','blocked'].includes(dataset('[data-account-lab]','accountAccess'))?read('[data-account-status], [data-permission-result]'):'',complete:()=>dataset('[data-account-lab]','readTried')==='true'&&dataset('[data-account-lab]','editTried')==='true',hint:'같은 계정으로 같은 발표 자료의 읽기와 수정을 각각 요청하고 결과를 비교하세요.'},
+            j03:{snapshot:()=>['error','retested','success'].includes(dataset('[data-debug-lab]','debugStage'))?read('[data-debug-output], [data-debug-case-result]'):'',complete:()=>dataset('[data-debug-lab]','debugStage')==='success',hint:'원래 오류를 고친 뒤 다른 정상 파일과 존재하지 않는 파일까지 시험하세요.'}
+        };
+        return specs[id]?{revision:3,...specs[id]}:null;
+    }
+    window.COMPUTER_TEACHING_LABS = {mount(id,mount){return ({a02:hardware,b01:memory,e03:files,j01:algorithm})[id]?.(mount)||observedModel(id,mount);}};
 })();

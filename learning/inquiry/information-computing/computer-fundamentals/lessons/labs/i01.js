@@ -27,10 +27,11 @@
                     </section>
                     <section class="permission-panel account-stage-three">
                         <h3>3. 학생 계정의 권한 확인 <small>Authorization</small></h3>
-                        <p>로그인이 끝났다고 모든 기능을 쓸 수 있는 것은 아닙니다. 두 기능을 직접 요청해 보세요.</p>
+                        <p>현재 계정에는 발표 자료의 읽기 권한이 있습니다. 같은 자료를 읽을 때와 수정할 때의 결과를 비교하세요.</p>
                         <div class="permission-attempts">
-                            <button type="button" data-permission-attempt="assignment">내 과제 열기 <small>Open My Assignment</small></button>
-                            <button type="button" data-permission-attempt="grades">다른 학생 점수 바꾸기 <small>Edit Another Student's Grade</small></button>
+                            <button type="button" data-permission-attempt="assignment">발표 자료 읽기 <small>Read Presentation</small></button>
+                            <button type="button" data-permission-attempt="edit">발표 자료 수정 <small>Edit Presentation</small></button>
+                            <button type="button" data-permission-attempt="grades">개인 기록 읽기 <small>Read Private Record</small></button>
                         </div>
                         <div class="permission-result" data-permission-result role="status" aria-live="polite"><b>요청 전</b><span>서버가 학생 계정에 정해진 권한을 아직 확인하지 않았습니다.</span></div>
                         <section class="account-profile-demo" aria-label="계정과 프로필 비교">
@@ -97,6 +98,7 @@
             secretInput.value = "";
             codeInput.value = "";
             lab.dataset.accountAccess = "idle";
+            lab.dataset.readTried='false';lab.dataset.editTried='false';
             permissionResult.innerHTML = "<b>요청 전</b><span>서버가 학생 계정에 정해진 권한을 아직 확인하지 않았습니다.</span>";
             lab.querySelectorAll("[data-permission-attempt]").forEach((button) => button.setAttribute("aria-pressed", "false"));
             profileName.textContent = "민준";
@@ -133,14 +135,17 @@
         });
         lab.querySelectorAll("[data-permission-attempt]").forEach((button) => button.addEventListener("click", () => {
             const allowed = button.dataset.permissionAttempt === "assignment";
+            const editing=button.dataset.permissionAttempt==='edit';
+            if(allowed)lab.dataset.readTried='true';
+            if(editing)lab.dataset.editTried='true';
             lab.dataset.accountAccess = allowed ? "allowed" : "blocked";
             lab.querySelectorAll("[data-permission-attempt]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
             permissionResult.innerHTML = allowed
-                ? "<b>허용됨 · 200 OK</b><span>학생 역할에 ‘내 과제 읽기’ 권한이 있어 서버가 과제 데이터를 보냅니다.</span>"
-                : "<b>거부됨 · 403 Forbidden</b><span>로그인은 되었지만 ‘다른 학생 점수 수정’ 권한은 없어 서버가 요청을 막습니다.</span>";
+                ? "<b>읽기 허용 · 200 OK</b><span>발표 자료를 읽을 권한이 있어 내용을 받았습니다. 수정 권한이 있다는 뜻은 아닙니다.</span>"
+                : editing?"<b>수정 거부 · 403 Forbidden</b><span>같은 발표 자료이지만 수정 권한이 없어 요청이 거부됐습니다. 계정과 인증 상태는 읽기 요청 때와 같습니다.</span>":"<b>접근 거부 · 403 Forbidden</b><span>개인 기록을 읽을 권한이 없어 요청이 거부됐습니다. 인증 상태는 유지됩니다.</span>";
             setStatus(allowed
                 ? "<b>인증과 권한은 다릅니다.</b>　사용자가 누구인지 확인한 뒤에도, 요청한 일을 해도 되는지 다시 검사했습니다."
-                : "<b>권한 거부는 로그인 실패가 아닙니다.</b>　학생 계정으로 확인되었지만 이 기능은 교사 역할에만 허용됩니다.");
+                : "<b>인증 성공 · 요청한 권한 없음.</b>　사용자는 확인했지만 해당 자료의 요청한 행동은 허용되지 않았습니다.");
         }));
         profileChange.addEventListener("click", () => {
             const changed = profileChange.getAttribute("aria-pressed") !== "true";

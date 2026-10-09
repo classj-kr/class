@@ -88,6 +88,7 @@ report = {
                                  'failures': [row for row in visang_supplements if row.get('status') != 'downloaded'],
                                  'categories': dict(Counter(row['category'] for row in visang_supplement_saved))},
     'miraenBooks': books,
+    'tselpaAssessmentPending': read('math-tselpa-pending-coverage.json', {}),
     'ybm': {'listedUniqueFiles': len(ybm_expected), 'savedFiles': len(ybm_saved),
             'remainingFiles': len(ybm_expected - ybm_saved),
             'failedFiles': sum(row.get('publisher') == 'YBM' for row in direct_failures)},

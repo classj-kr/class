@@ -92,6 +92,7 @@
         });
 
         const renderRecords = () => {
+            root.dataset.a04PairFound=String(pairFound());
             records.forEach((output, index) => {
                 const entry = state.captures[index];
                 output.textContent = entry

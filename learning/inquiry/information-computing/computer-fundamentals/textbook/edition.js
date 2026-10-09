@@ -20,6 +20,11 @@ try {
   progress.labUsed = saved.labUsed === true;
   progress.investigation = saved.investigation;
   questionsChanged = saved.answers.some((a,i)=>(a?.revision||1)!==(questions[i].revision||1));
+  if(questionsChanged){
+   const archiveKey=key+":before-review-20261010";
+   if(!store.has(archiveKey))store.set(archiveKey,JSON.parse(JSON.stringify(saved)));
+   previousEdition=true;
+  }
   if(questionsChanged&&saved.investigation?.revision!==2){
    const archiveKey=key+":before-teaching-20261009";
    if(!store.has(archiveKey))store.set(archiveKey,JSON.parse(JSON.stringify(saved)));
@@ -81,8 +86,12 @@ const reading=node("article","edition-reading");
 reading.append(node("h2","",data.case));
 if(data.goal)reading.append(node("p","study-goal",data.goal));
 if(previousEdition)reading.append(node("p","edition-note","설명과 실습이 개편된 차시입니다. 이전 판의 학습 기록은 보관하고, 바뀐 문항과 새 실습을 기록합니다."));
-const analogyType={b01:"workshop",e04:"bookmark"}[id];
-data.body.forEach((text,index)=>{if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));const p=node("p");p.append(bilingual(text));reading.append(p);});
+data.body.forEach((text,index)=>{
+ if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));
+ const p=node("p");p.append(bilingual(text));reading.append(p);
+ // 첫 개념 설명에 이어 비유와 실제 개념의 대응 관계를 함께 읽는다.
+ if(index===1)window.COMPUTER_EXPLANATIONS?.render(reading,id);
+});
 if(data.worked){
  const example=node("section","study-worked");example.append(node("h3","",data.worked.title));
  const table=node("table","study-table");const caption=node("caption","",data.worked.title);table.append(caption);
@@ -90,10 +99,6 @@ if(data.worked){
  const body=node("tbody");data.worked.rows.forEach(values=>{const tr=node("tr");values.forEach(text=>tr.append(node("td","",text)));body.append(tr);});table.append(body);
  example.append(table,node("p","",data.worked.explanation));reading.append(example);
 }
-const analogy=node("details","study-analogy");analogy.append(node("summary","","그림·비유로 다시 살펴보기"));
-if(analogyType)window.COMPUTER_PICTURE_ANALOGIES?.render(analogy,analogyType);
-else window.COMPUTER_LIFE_FIGURES?.render(analogy,id);
-reading.append(analogy);
 const glossary=node("dl","edition-glossary");
 data.terms.forEach(([ko,en,definition])=>{
  const row=node("div"); const dt=node("dt","",ko);dt.append(node("span","",en));row.append(dt,node("dd","",definition));glossary.append(row);
