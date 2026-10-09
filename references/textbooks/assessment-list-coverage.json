@@ -3,8 +3,8 @@
   "asOf": "2026-10-09",
   "scope": "list-metadata-only",
   "completion": "in-progress",
-  "listedAssessments": 6759,
-  "withAtLeastOneListItem": 202,
+  "listedAssessments": 8620,
+  "withAtLeastOneListItem": 272,
   "gradeEditionTotal": 272,
   "meaning": "한 항목 이상 확보한 학년·교과서 조합 수이며, 전 단원·양 학기 완결을 뜻하지 않음. 연간 교과서는 semester=null. 출판사가 수행평가로 명시하지 않은 단원평가는 수행평가로 간주하지 않음.",
   "runtimeExcludes": [
@@ -14,295 +14,50 @@
     "video",
     "source-page-links"
   ],
-  "loginBlockedGradeEditions": 62,
-  "checkedMenuWithoutPerformanceList": 8,
+  "loginBlockedGradeEditions": 0,
+  "checkedMenuWithoutPerformanceList": 0,
   "publishers": [
     {
       "publisher": "교학도서",
       "gradeEditionTotal": 4,
-      "withListMetadata": 1,
-      "listedAssessments": 4,
-      "missing": [
-        {
-          "editionId": "tb-09d08c98bfcda0b9",
-          "grade": 4,
-          "subject": "미술",
-          "reason": "performance-list-not-present-in-checked-menu"
-        },
-        {
-          "editionId": "tb-581d019eb8bc3f71",
-          "grade": 5,
-          "subject": "미술",
-          "reason": "performance-list-not-present-in-checked-menu"
-        },
-        {
-          "editionId": "tb-581d019eb8bc3f71",
-          "grade": 6,
-          "subject": "미술",
-          "reason": "performance-list-not-present-in-checked-menu"
-        }
-      ]
+      "withListMetadata": 4,
+      "listedAssessments": 115,
+      "missing": []
     },
     {
       "publisher": "교학사",
       "gradeEditionTotal": 6,
-      "withListMetadata": 5,
-      "listedAssessments": 211,
-      "missing": [
-        {
-          "editionId": "tb-f577ef7b2b9ce50c",
-          "grade": 6,
-          "subject": "실과",
-          "reason": "performance-list-not-present-in-checked-menu"
-        }
-      ]
+      "withListMetadata": 6,
+      "listedAssessments": 226,
+      "missing": []
     },
     {
       "publisher": "국정",
       "gradeEditionTotal": 14,
       "withListMetadata": 14,
-      "listedAssessments": 1272,
+      "listedAssessments": 1627,
       "missing": []
     },
     {
       "publisher": "금성출판사",
       "gradeEditionTotal": 12,
-      "withListMetadata": 8,
-      "listedAssessments": 101,
-      "missing": [
-        {
-          "editionId": "tb-aacd10a7bd09e15f",
-          "grade": 3,
-          "subject": "체육",
-          "reason": "performance-list-not-present-in-checked-menu"
-        },
-        {
-          "editionId": "tb-aacd10a7bd09e15f",
-          "grade": 4,
-          "subject": "체육",
-          "reason": "performance-list-not-present-in-checked-menu"
-        },
-        {
-          "editionId": "tb-b83713cc68c714ff",
-          "grade": 5,
-          "subject": "체육",
-          "reason": "performance-list-not-present-in-checked-menu"
-        },
-        {
-          "editionId": "tb-b83713cc68c714ff",
-          "grade": 6,
-          "subject": "체육",
-          "reason": "performance-list-not-present-in-checked-menu"
-        }
-      ]
+      "withListMetadata": 12,
+      "listedAssessments": 127,
+      "missing": []
     },
     {
       "publisher": "동아출판",
       "gradeEditionTotal": 28,
-      "withListMetadata": 0,
-      "listedAssessments": 0,
-      "missing": [
-        {
-          "editionId": "tb-027c18f5ce64fc5e",
-          "grade": 3,
-          "subject": "과학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-027c18f5ce64fc5e",
-          "grade": 4,
-          "subject": "과학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-fdd62952285d7737",
-          "grade": 3,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-fdd62952285d7737",
-          "grade": 4,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-228e49bc29a6e92b",
-          "grade": 3,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-228e49bc29a6e92b",
-          "grade": 4,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-0ffb6c37769c7e72",
-          "grade": 3,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-0ffb6c37769c7e72",
-          "grade": 4,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-4d88b8ae860c5b94",
-          "grade": 3,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-4d88b8ae860c5b94",
-          "grade": 4,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-08a3477275bddfb9",
-          "grade": 3,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-08a3477275bddfb9",
-          "grade": 4,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-4669f454f2f01546",
-          "grade": 3,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-4669f454f2f01546",
-          "grade": 4,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-91088ff8a97a89a5",
-          "grade": 5,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-91088ff8a97a89a5",
-          "grade": 6,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-d2623d7a0cddf13c",
-          "grade": 5,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-d2623d7a0cddf13c",
-          "grade": 6,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-724eda72ec3769b8",
-          "grade": 5,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-724eda72ec3769b8",
-          "grade": 6,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-92bd61a5274fc1b2",
-          "grade": 5,
-          "subject": "실과",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-92bd61a5274fc1b2",
-          "grade": 6,
-          "subject": "실과",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-301d010e57b36322",
-          "grade": 5,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-301d010e57b36322",
-          "grade": 6,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-764368b1f626a109",
-          "grade": 5,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-764368b1f626a109",
-          "grade": 6,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-ebd9c1c0f8208c75",
-          "grade": 5,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-ebd9c1c0f8208c75",
-          "grade": 6,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        }
-      ]
+      "withListMetadata": 28,
+      "listedAssessments": 709,
+      "missing": []
     },
     {
       "publisher": "디딤돌교육",
       "gradeEditionTotal": 4,
-      "withListMetadata": 0,
-      "listedAssessments": 0,
-      "missing": [
-        {
-          "editionId": "tb-5a699afec30b7907",
-          "grade": 3,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-5a699afec30b7907",
-          "grade": 4,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-ff48bedb2fa611c4",
-          "grade": 5,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-ff48bedb2fa611c4",
-          "grade": 6,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        }
-      ]
+      "withListMetadata": 4,
+      "listedAssessments": 48,
+      "missing": []
     },
     {
       "publisher": "미래엔",
@@ -321,190 +76,9 @@
     {
       "publisher": "아이스크림미디어",
       "gradeEditionTotal": 30,
-      "withListMetadata": 0,
-      "listedAssessments": 0,
-      "missing": [
-        {
-          "editionId": "tb-3232588fb5e83bbb",
-          "grade": 3,
-          "subject": "과학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-3232588fb5e83bbb",
-          "grade": 4,
-          "subject": "과학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-43fbbdb4deb552ed",
-          "grade": 3,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-43fbbdb4deb552ed",
-          "grade": 4,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-6750140d16fbf8a5",
-          "grade": 3,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-6750140d16fbf8a5",
-          "grade": 4,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-6c246ae6a2953805",
-          "grade": 3,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-6c246ae6a2953805",
-          "grade": 4,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-efce8e073fed2067",
-          "grade": 3,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-efce8e073fed2067",
-          "grade": 4,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-83ac81bc96ac1535",
-          "grade": 3,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-83ac81bc96ac1535",
-          "grade": 4,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-4e83e13a85853d0d",
-          "grade": 3,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-4e83e13a85853d0d",
-          "grade": 4,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-cdec5f797a01b1b5",
-          "grade": 5,
-          "subject": "과학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-cdec5f797a01b1b5",
-          "grade": 6,
-          "subject": "과학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-3ea8ff712a76cfa7",
-          "grade": 5,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-3ea8ff712a76cfa7",
-          "grade": 6,
-          "subject": "미술",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-3ee759a2e351fff7",
-          "grade": 5,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-3ee759a2e351fff7",
-          "grade": 6,
-          "subject": "사회",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-c328ce50b190a4dc",
-          "grade": 5,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-c328ce50b190a4dc",
-          "grade": 6,
-          "subject": "수학",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-79926ca720d86a07",
-          "grade": 5,
-          "subject": "실과",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-79926ca720d86a07",
-          "grade": 6,
-          "subject": "실과",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-cfcdaff9ad30d27e",
-          "grade": 5,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-cfcdaff9ad30d27e",
-          "grade": 6,
-          "subject": "영어",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-1effb249488b73de",
-          "grade": 5,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-1effb249488b73de",
-          "grade": 6,
-          "subject": "음악",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-94e66f4d8defda0e",
-          "grade": 5,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        },
-        {
-          "editionId": "tb-94e66f4d8defda0e",
-          "grade": 6,
-          "subject": "체육",
-          "reason": "teacher-login-required"
-        }
-      ]
+      "withListMetadata": 30,
+      "listedAssessments": 597,
+      "missing": []
     },
     {
       "publisher": "아침나라",
@@ -570,7 +144,7 @@
       "subject": "국어",
       "leadAuthor": null,
       "grade": 1,
-      "listedAssessments": 95,
+      "listedAssessments": 133,
       "semesterLabels": [
         1,
         2
@@ -584,7 +158,7 @@
       "subject": "국어",
       "leadAuthor": null,
       "grade": 2,
-      "listedAssessments": 96,
+      "listedAssessments": 136,
       "semesterLabels": [
         1,
         2
@@ -598,7 +172,7 @@
       "subject": "수학",
       "leadAuthor": null,
       "grade": 1,
-      "listedAssessments": 68,
+      "listedAssessments": 101,
       "semesterLabels": [
         1,
         2
@@ -612,7 +186,7 @@
       "subject": "수학",
       "leadAuthor": null,
       "grade": 2,
-      "listedAssessments": 72,
+      "listedAssessments": 108,
       "semesterLabels": [
         1,
         2
@@ -626,7 +200,7 @@
       "subject": "통합교과",
       "leadAuthor": null,
       "grade": 1,
-      "listedAssessments": 66,
+      "listedAssessments": 90,
       "semesterLabels": [
         1,
         2
@@ -640,7 +214,7 @@
       "subject": "통합교과",
       "leadAuthor": null,
       "grade": 2,
-      "listedAssessments": 62,
+      "listedAssessments": 86,
       "semesterLabels": [
         1,
         2
@@ -654,10 +228,13 @@
       "subject": "과학",
       "leadAuthor": "장신호",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-027c18f5ce64fc5e",
@@ -665,10 +242,13 @@
       "subject": "과학",
       "leadAuthor": "장신호",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-b12d06ae8294d8ee",
@@ -732,10 +312,13 @@
       "subject": "과학",
       "leadAuthor": "박일우",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-3232588fb5e83bbb",
@@ -743,10 +326,13 @@
       "subject": "과학",
       "leadAuthor": "박일우",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-5f33ba2d2ee7d2ac",
@@ -838,7 +424,7 @@
       "subject": "국어",
       "leadAuthor": null,
       "grade": 3,
-      "listedAssessments": 153,
+      "listedAssessments": 185,
       "semesterLabels": [
         1,
         2
@@ -852,7 +438,7 @@
       "subject": "국어",
       "leadAuthor": null,
       "grade": 4,
-      "listedAssessments": 152,
+      "listedAssessments": 184,
       "semesterLabels": [
         1,
         2
@@ -866,7 +452,7 @@
       "subject": "도덕",
       "leadAuthor": null,
       "grade": 3,
-      "listedAssessments": 56,
+      "listedAssessments": 64,
       "semesterLabels": [
         null,
         1,
@@ -881,7 +467,7 @@
       "subject": "도덕",
       "leadAuthor": null,
       "grade": 4,
-      "listedAssessments": 56,
+      "listedAssessments": 64,
       "semesterLabels": [
         null,
         1,
@@ -909,9 +495,12 @@
       "subject": "미술",
       "leadAuthor": "김해경",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -946,10 +535,12 @@
       "subject": "미술",
       "leadAuthor": "김정희",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 42,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-fdd62952285d7737",
@@ -957,10 +548,12 @@
       "subject": "미술",
       "leadAuthor": "김정희",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 45,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-9d949ad52c6e1af7",
@@ -1020,10 +613,12 @@
       "subject": "미술",
       "leadAuthor": "손지현",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-43fbbdb4deb552ed",
@@ -1031,10 +626,12 @@
       "subject": "미술",
       "leadAuthor": "손지현",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-4aebeddff8910228",
@@ -1120,10 +717,13 @@
       "subject": "사회",
       "leadAuthor": "박영석",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 18,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-228e49bc29a6e92b",
@@ -1131,10 +731,13 @@
       "subject": "사회",
       "leadAuthor": "박영석",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-cf31099855e85760",
@@ -1198,10 +801,13 @@
       "subject": "사회",
       "leadAuthor": "한춘희",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 20,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-6750140d16fbf8a5",
@@ -1209,10 +815,13 @@
       "subject": "사회",
       "leadAuthor": "한춘희",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-939066fb897b434f",
@@ -1332,10 +941,13 @@
       "subject": "수학",
       "leadAuthor": "나귀수",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-0ffb6c37769c7e72",
@@ -1343,10 +955,13 @@
       "subject": "수학",
       "leadAuthor": "나귀수",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-5a699afec30b7907",
@@ -1354,10 +969,13 @@
       "subject": "수학",
       "leadAuthor": "최수일",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.didimdolclass.co.kr/"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-5a699afec30b7907",
@@ -1365,10 +983,13 @@
       "subject": "수학",
       "leadAuthor": "최수일",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.didimdolclass.co.kr/"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-70245a528f49efe7",
@@ -1432,10 +1053,13 @@
       "subject": "수학",
       "leadAuthor": "김성여",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-6c246ae6a2953805",
@@ -1443,10 +1067,13 @@
       "subject": "수학",
       "leadAuthor": "김성여",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-bedbc367c02cdb81",
@@ -1566,10 +1193,12 @@
       "subject": "영어",
       "leadAuthor": "윤여범",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-4d88b8ae860c5b94",
@@ -1577,10 +1206,12 @@
       "subject": "영어",
       "leadAuthor": "윤여범",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 22,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-9278ce1db9831ed3",
@@ -1614,10 +1245,13 @@
       "subject": "영어",
       "leadAuthor": "박유미",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-efce8e073fed2067",
@@ -1625,10 +1259,13 @@
       "subject": "영어",
       "leadAuthor": "박유미",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-de5666d512727144",
@@ -1766,10 +1403,12 @@
       "subject": "음악",
       "leadAuthor": "최미영",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-08a3477275bddfb9",
@@ -1777,10 +1416,12 @@
       "subject": "음악",
       "leadAuthor": "최미영",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-6dea03dd7193364d",
@@ -1840,10 +1481,12 @@
       "subject": "음악",
       "leadAuthor": "조순이",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-83ac81bc96ac1535",
@@ -1851,10 +1494,12 @@
       "subject": "음악",
       "leadAuthor": "조순이",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-aebb46993f46099a",
@@ -1992,9 +1637,12 @@
       "subject": "체육",
       "leadAuthor": "이제행",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 7,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -2003,9 +1651,12 @@
       "subject": "체육",
       "leadAuthor": "이제행",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 7,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -2014,10 +1665,12 @@
       "subject": "체육",
       "leadAuthor": "최의창",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-4669f454f2f01546",
@@ -2025,10 +1678,12 @@
       "subject": "체육",
       "leadAuthor": "최의창",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-a347567e387ea9b3",
@@ -2088,10 +1743,12 @@
       "subject": "체육",
       "leadAuthor": "김명숙",
       "grade": 3,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 11,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-4e83e13a85853d0d",
@@ -2099,10 +1756,12 @@
       "subject": "체육",
       "leadAuthor": "김명숙",
       "grade": 4,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-0cd7079bd7a7e76c",
@@ -2270,10 +1929,13 @@
       "subject": "과학",
       "leadAuthor": "박일우",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-cdec5f797a01b1b5",
@@ -2281,10 +1943,13 @@
       "subject": "과학",
       "leadAuthor": "박일우",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-85bef7a44a60678f",
@@ -2348,7 +2013,7 @@
       "subject": "국어",
       "leadAuthor": null,
       "grade": 5,
-      "listedAssessments": 136,
+      "listedAssessments": 168,
       "semesterLabels": [
         1,
         2
@@ -2362,7 +2027,7 @@
       "subject": "국어",
       "leadAuthor": null,
       "grade": 6,
-      "listedAssessments": 149,
+      "listedAssessments": 181,
       "semesterLabels": [
         1,
         2
@@ -2376,7 +2041,7 @@
       "subject": "도덕",
       "leadAuthor": null,
       "grade": 5,
-      "listedAssessments": 56,
+      "listedAssessments": 64,
       "semesterLabels": [
         null,
         1,
@@ -2391,7 +2056,7 @@
       "subject": "도덕",
       "leadAuthor": null,
       "grade": 6,
-      "listedAssessments": 55,
+      "listedAssessments": 63,
       "semesterLabels": [
         null,
         1,
@@ -2406,9 +2071,11 @@
       "subject": "미술",
       "leadAuthor": "김해경",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 44,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -2417,9 +2084,11 @@
       "subject": "미술",
       "leadAuthor": "김해경",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 43,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -2454,10 +2123,12 @@
       "subject": "미술",
       "leadAuthor": "김정희",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 51,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-91088ff8a97a89a5",
@@ -2465,10 +2136,12 @@
       "subject": "미술",
       "leadAuthor": "김정희",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 48,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-d8bcb907dc871b65",
@@ -2528,10 +2201,12 @@
       "subject": "미술",
       "leadAuthor": "손지현",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-3ea8ff712a76cfa7",
@@ -2539,10 +2214,12 @@
       "subject": "미술",
       "leadAuthor": "손지현",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 13,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-da3b42f4e4cdf343",
@@ -2654,10 +2331,13 @@
       "subject": "사회",
       "leadAuthor": "박영석",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-d2623d7a0cddf13c",
@@ -2665,10 +2345,13 @@
       "subject": "사회",
       "leadAuthor": "박영석",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 26,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-581ccacc6da81bdb",
@@ -2732,10 +2415,13 @@
       "subject": "사회",
       "leadAuthor": "한춘희",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 24,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-3ee759a2e351fff7",
@@ -2743,10 +2429,13 @@
       "subject": "사회",
       "leadAuthor": "한춘희",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 26,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-07dea2d6b4964749",
@@ -2866,10 +2555,13 @@
       "subject": "수학",
       "leadAuthor": "나귀수",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-724eda72ec3769b8",
@@ -2877,10 +2569,13 @@
       "subject": "수학",
       "leadAuthor": "나귀수",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-ff48bedb2fa611c4",
@@ -2888,10 +2583,13 @@
       "subject": "수학",
       "leadAuthor": "최수일",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.didimdolclass.co.kr/"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-ff48bedb2fa611c4",
@@ -2899,10 +2597,13 @@
       "subject": "수학",
       "leadAuthor": "최수일",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.didimdolclass.co.kr/"
+      "listedAssessments": 12,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-3b406499e00b4a29",
@@ -2966,10 +2667,13 @@
       "subject": "수학",
       "leadAuthor": "김성여",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-c328ce50b190a4dc",
@@ -2977,10 +2681,13 @@
       "subject": "수학",
       "leadAuthor": "김성여",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-d946fc043d6c288b",
@@ -3113,9 +2820,11 @@
       "subject": "실과",
       "leadAuthor": "최지연",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 15,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -3150,10 +2859,12 @@
       "subject": "실과",
       "leadAuthor": "서우석",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 29,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-92bd61a5274fc1b2",
@@ -3161,10 +2872,12 @@
       "subject": "실과",
       "leadAuthor": "서우석",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 27,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-847ff983a931ed95",
@@ -3224,10 +2937,12 @@
       "subject": "실과",
       "leadAuthor": "정영식",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-79926ca720d86a07",
@@ -3235,10 +2950,12 @@
       "subject": "실과",
       "leadAuthor": "정영식",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 14,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-bd00e49f7db84fbb",
@@ -3324,10 +3041,12 @@
       "subject": "영어",
       "leadAuthor": "정은숙",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-301d010e57b36322",
@@ -3335,10 +3054,12 @@
       "subject": "영어",
       "leadAuthor": "정은숙",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 36,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-895da9a48115407b",
@@ -3398,10 +3119,13 @@
       "subject": "영어",
       "leadAuthor": "박유미",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 28,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-cfcdaff9ad30d27e",
@@ -3409,10 +3133,13 @@
       "subject": "영어",
       "leadAuthor": "박유미",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 28,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-7b5f8b0c5bf22866",
@@ -3576,10 +3303,12 @@
       "subject": "음악",
       "leadAuthor": "최미영",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-764368b1f626a109",
@@ -3587,10 +3316,12 @@
       "subject": "음악",
       "leadAuthor": "최미영",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-3fa6b6303fc24201",
@@ -3650,10 +3381,12 @@
       "subject": "음악",
       "leadAuthor": "조순이",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-1effb249488b73de",
@@ -3661,10 +3394,12 @@
       "subject": "음악",
       "leadAuthor": "조순이",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 4,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-ea9f50a85d46df47",
@@ -3828,9 +3563,12 @@
       "subject": "체육",
       "leadAuthor": "이제행",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 6,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -3839,9 +3577,12 @@
       "subject": "체육",
       "leadAuthor": "이제행",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "performance-list-not-present-in-checked-menu",
+      "listedAssessments": 6,
+      "semesterLabels": [
+        1,
+        2
+      ],
+      "status": "has-list-metadata",
       "nextSource": null
     },
     {
@@ -3850,10 +3591,12 @@
       "subject": "체육",
       "leadAuthor": "최의창",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 59,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-ebd9c1c0f8208c75",
@@ -3861,10 +3604,12 @@
       "subject": "체육",
       "leadAuthor": "최의창",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://ele.douclass.com/assess"
+      "listedAssessments": 58,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-3e9ca44dba2d3921",
@@ -3924,10 +3669,12 @@
       "subject": "체육",
       "leadAuthor": "김명숙",
       "grade": 5,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 7,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-94e66f4d8defda0e",
@@ -3935,10 +3682,12 @@
       "subject": "체육",
       "leadAuthor": "김명숙",
       "grade": 6,
-      "listedAssessments": 0,
-      "semesterLabels": [],
-      "status": "teacher-login-required",
-      "nextSource": "https://www.i-scream.co.kr/user/evaluation/evaluationList.do"
+      "listedAssessments": 7,
+      "semesterLabels": [
+        null
+      ],
+      "status": "has-list-metadata",
+      "nextSource": null
     },
     {
       "editionId": "tb-c4163dca14fc8feb",
@@ -4044,5 +3793,12 @@
       "status": "has-list-metadata",
       "nextSource": null
     }
-  ]
+  ],
+  "validation": {
+    "emptyUnitCount": 0,
+    "singleSemesterOnly": [],
+    "duplicateIdCount": 0,
+    "runtimeFieldWhitelistPassed": true
+  },
+  "documentOpeningScope": "사용자 승인에 따라 평가명·단원/평가요소 항목만 추출. 이번 승인으로 받은 임시 원본은 처리 후 삭제. 과거 수집 원본의 삭제를 뜻하지 않음."
 }

@@ -1,0 +1,37 @@
+{
+  "publisher": "금성출판사",
+  "subject": "체육",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://thub.kumsung.co.kr/elementary/learning/types.do?category=A001003&gradeCategory=C005004&bookId=380",
+  "resource": "javascript:singleFileDownload(96988);",
+  "scope": "name-unit-only",
+  "sourceFileName": "4학년_2학기_수업평가및계획서.hwp",
+  "sha256": "51c48833aca975942c9f7def0d6431d54b1227c6b97ef31d16d83a81128931ae",
+  "assessments": [
+    {
+      "unit": "운동",
+      "title": "건강한 마음으로 생활하기",
+      "table": 0,
+      "sourceRow": 2
+    },
+    {
+      "unit": "스포츠",
+      "title": "손으로 공을 치고 받기",
+      "table": 0,
+      "sourceRow": 3
+    },
+    {
+      "unit": "스포츠",
+      "title": "타고 버티기",
+      "table": 0,
+      "sourceRow": 4
+    },
+    {
+      "unit": "표현",
+      "title": "박자를 몸으로 표현하기",
+      "table": 0,
+      "sourceRow": 5
+    }
+  ]
+}

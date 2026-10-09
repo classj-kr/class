@@ -16,7 +16,7 @@ for path in sorted((REF/'icream-document-metadata').glob('*.json')):
  units=list(dict.fromkeys(l['unit'] for p in ep for l in p['lessons']))
  count=0
  for document in d['documents']:
-  if '보완' in document['member']:continue
+  if '보완' in Path(document['member']).name:continue
   items=document.get('assessments',[])
   # English plan uses goal prose, not names: retain actual performance-file labels.
   if subject=='영어' and '[수행평가]' in document['member']:

@@ -1,0 +1,17 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-8 경험을 떠올리며(1~2차시).hwp",
+  "sha256": "c468c432d4654231ac09d658b56c925fb587056954bf8c031086902d3c9e26db",
+  "assessments": [
+    {
+      "unit": "8. 경험을 떠올리며",
+      "title": "다양한 경험을 떠올리고 작품으로 표현하고 싶은 것을 찾아 제작 계획을 세울 수 있다."
+    }
+  ]
+}

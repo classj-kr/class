@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="2022 개정 교육과정 영어 단어 3,000개 학습">
     <title>교육부 지정 단어</title>
-    <link rel="stylesheet" href="styles.css?v=20260928a">
+    <link rel="stylesheet" href="styles.css?v=20261009a">
     <script src="vocabulary-core.js?v=20260803a" defer></script>
     <script src="/assets/learning-records.js?v=20261002"></script>
-    <script src="app.js?v=20260928b" defer></script>
+    <script src="app.js?v=20261009a" defer></script>
 </head>
 <body>
     <main>
@@ -38,30 +38,6 @@
             </button>
 
             <button id="viewAllWordsButton" class="all-words-button" type="button"><span>3,000개 단어 모두 보기</span><small>A · 레벨&nbsp;&nbsp; B · 영어 단어&nbsp;&nbsp; C · 한글 뜻</small></button>
-
-            <div class="game-launch-grid">
-                <button id="gameStartButton" class="game-launch-card" type="button" hidden>
-                    <span class="game-launch-mark" aria-hidden="true">4</span>
-                    <span class="game-launch-copy">
-                        <strong>그림 고르기</strong>
-                        <span>시간 안에 알맞은 그림을 고르세요 · <b id="gameWordCount">0</b>개 단어</span>
-                    </span>
-                    <span class="game-launch-action">시작</span>
-                </button>
-
-                <button id="spellingGameStartButton" class="game-launch-card spelling-launch-card" type="button" hidden>
-                    <span class="game-launch-mark" aria-hidden="true">A</span>
-                    <span class="game-launch-copy">
-                        <strong>철자 완성하기</strong>
-                        <span>뜻을 보고 단어를 완성하세요 · <b id="spellingWordCount">0</b>개 단어</span>
-                    </span>
-                    <span class="game-launch-action">시작</span>
-                </button>
-
-                <button id="spellingReviewButton" class="spelling-review-button" type="button" hidden>
-                    Try <b id="spellingStoredWrongCount">0</b> missed words again
-                </button>
-            </div>
 
             <div id="stageGroups" class="stage-groups" aria-live="polite"></div>
         </section>
@@ -105,6 +81,8 @@
                     <h1 id="studyTitle">Level 1</h1>
                 </div>
                 <div class="toolbar-actions">
+                    <button id="spellingGameStartButton" class="start-lesson-quiz-button" type="button">철자 완성하기</button>
+                    <button id="spellingReviewButton" class="text-button" type="button" hidden>철자 오답 <b id="spellingStoredWrongCount">0</b>개 복습</button>
                     <button id="lessonQuizStartButton" class="start-lesson-quiz-button" type="button">20문제 풀기</button>
                     <button id="shuffleButton" class="shuffle-toggle" type="button" role="switch" aria-checked="false">
                         <span>순서 섞기</span><span class="toggle-track" aria-hidden="true"><i></i></span>
@@ -277,7 +255,7 @@
 
         <section id="spellingScreen" class="game-screen spelling-screen" hidden aria-labelledby="spellingTitle">
             <div class="game-toolbar">
-                <button id="backFromSpelling" class="text-button" type="button">← 레벨</button>
+                <button id="backFromSpelling" class="text-button" type="button">← 차시 학습</button>
                 <div>
                     <p id="spellingModeLabel" class="study-stage">뜻을 보고 영어 단어를 완성해요.</p>
                     <h1 id="spellingTitle">철자 완성하기</h1>
@@ -285,7 +263,7 @@
                 <button id="spellingResetButton" class="text-button" type="button">점수 초기화</button>
             </div>
 
-            <label class="spelling-level-picker" for="spellingLevelSelect">
+            <label class="spelling-level-picker" hidden for="spellingLevelSelect">
                 <span>단어 레벨</span>
                 <select id="spellingLevelSelect" aria-label="철자 레벨 선택">
                     <option value="0">전체 3,000단어</option>

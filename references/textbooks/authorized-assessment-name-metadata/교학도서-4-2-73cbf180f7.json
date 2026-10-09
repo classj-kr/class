@@ -1,0 +1,17 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-9-5,6지도안.hwp",
+  "sha256": "75a4486fe9229485671d0f22caf14c9ff0b386b5c7a96c2fc8907dacab145171",
+  "assessments": [
+    {
+      "unit": "9.찍어서 표현해요.",
+      "title": "판화의 표현 과정을 떠올리며 판화기법을 활용한 다양한 작품을 감상할 수 있다."
+    }
+  ]
+}

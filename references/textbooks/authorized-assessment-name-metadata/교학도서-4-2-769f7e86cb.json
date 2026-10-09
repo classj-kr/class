@@ -1,0 +1,17 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-9-1,2지도안.hwp",
+  "sha256": "2ca177098bda3819e39db149d684f1298021481fff549bfc23fffd011ed75814",
+  "assessments": [
+    {
+      "unit": "9.찍어서 표현해요.",
+      "title": "판화의 표현 재료와 용구의 특성을 이해하고 사용 방법을 알고 원하는 주제로 표현할 수 있다."
+    }
+  ]
+}

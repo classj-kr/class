@@ -1,0 +1,17 @@
+{
+  "publisher": "교학도서",
+  "subject": "미술",
+  "grade": 4,
+  "semester": 2,
+  "url": "https://klassmon.com/textbook/chasi.ez?textbookSeq=d09a77ee18764338b32131e021c8b42a&grade=4&term=2&subject=SC004",
+  "sourceKind": "lesson-plan",
+  "scope": "name-unit-only",
+  "sourceFileName": "4-12 바스락바스락 종이 놀이(3-4차시).hwp",
+  "sha256": "d11a2c2aa7329a5ce03e25e08bd4d32ea5578fb3bacd5cb8e97fed69d74f73e4",
+  "assessments": [
+    {
+      "unit": "12. 바스락바스락 종이 놀이",
+      "title": "일상에서의 종이의 활용과 특성, 표현 방법을 알고 이를 활용해 작품을 제작할 수 있다."
+    }
+  ]
+}

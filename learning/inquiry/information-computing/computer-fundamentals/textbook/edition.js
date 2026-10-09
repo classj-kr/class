@@ -11,11 +11,13 @@ store.adopt([{ localKey: key, item: key }]);
 const questions = [data.labCheck, ...data.apply.fields, ...data.checks];
 const fresh = () => ({version:1, labUsed:false, answers:questions.map(q => ({revision:q.revision||1, selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
 let progress = fresh();
+let investigation = null;
 let questionsChanged = false;
 try {
  const saved = store.get(key) ?? null;
  if (saved?.version === 1 && Array.isArray(saved.answers) && saved.answers.length === questions.length) {
   progress.labUsed = saved.labUsed === true;
+  progress.investigation = saved.investigation;
   questionsChanged = saved.answers.some((a,i)=>(a?.revision||1)!==(questions[i].revision||1));
   progress.answers = saved.answers.map((a,i) => (a?.revision||1)!==(questions[i].revision||1) ? fresh().answers[i] : ({
    revision:questions[i].revision||1,
@@ -71,10 +73,20 @@ function bilingual(text) {
 }
 const reading=node("article","edition-reading");
 reading.append(node("h2","",data.case));
+if(data.goal)reading.append(node("p","study-goal",data.goal));
 const analogyType={b01:"workshop",e04:"bookmark"}[id];
-if(analogyType)window.COMPUTER_PICTURE_ANALOGIES?.render(reading,analogyType);
-else window.COMPUTER_LIFE_FIGURES?.render(reading,id);
 data.body.forEach((text,index)=>{if(data.sections?.[index])reading.append(node("h3","",data.sections[index]));const p=node("p");p.append(bilingual(text));reading.append(p);});
+if(data.worked){
+ const example=node("section","study-worked");example.append(node("h3","",data.worked.title));
+ const table=node("table","study-table");const caption=node("caption","",data.worked.title);table.append(caption);
+ const head=node("thead"),row=node("tr");data.worked.headers.forEach(text=>{const th=node("th","",text);th.scope="col";row.append(th);});head.append(row);table.append(head);
+ const body=node("tbody");data.worked.rows.forEach(values=>{const tr=node("tr");values.forEach(text=>tr.append(node("td","",text)));body.append(tr);});table.append(body);
+ example.append(table,node("p","",data.worked.explanation));reading.append(example);
+}
+const analogy=node("details","study-analogy");analogy.append(node("summary","","그림·비유로 다시 살펴보기"));
+if(analogyType)window.COMPUTER_PICTURE_ANALOGIES?.render(analogy,analogyType);
+else window.COMPUTER_LIFE_FIGURES?.render(analogy,id);
+reading.append(analogy);
 const glossary=node("dl","edition-glossary");
 data.terms.forEach(([ko,en,definition])=>{
  const row=node("div"); const dt=node("dt","",ko);dt.append(node("span","",en));row.append(dt,node("dd","",definition));glossary.append(row);
@@ -85,22 +97,25 @@ function nextButton(page,target,text){
  const wrap=node("div","edition-page-end");const button=node("button","",text);button.type="button";button.addEventListener("click",()=>location.hash=target);wrap.append(button);page.append(wrap);
 }
 nextButton(pages.read,"lab","실습으로");
-pages.lab.append(node("h2","","실습"),node("p","edition-task",data.lab));
+pages.lab.append(node("h2","",data.inquiry?.kind||"실습"));
+const investigationBefore=node("div");pages.lab.append(investigationBefore);
+if(!data.inquiry)pages.lab.append(node("p","edition-task",data.lab));
 const lab=node("div","edition-lab");lab.id="editionLab";
 ["conceptParts","conceptVisual","conceptDiagram"].forEach(name=>{
  const existing=document.getElementById(name);
  if(existing?.childNodes.length)lab.append(existing);
 });
 if(id==="g01")buildBinaryLab(lab);
+const teachingLab=window.COMPUTER_TEACHING_LABS?.mount(id,lab);
 pages.lab.append(lab);
 const labNote=node("p","edition-note","화면 속 기기와 기록은 실습 모형입니다. 실습 조작 상태는 다시 열면 초기화되고, 답 확인 기록은 "+(store.persistent?"내 계정에 저장됩니다.":"로그인했을 때만 저장됩니다."));
 pages.lab.append(labNote);
 if(!store.persistent){notice.hidden=false;notice.textContent="로그인하지 않아 답 확인 기록이 남지 않습니다. 실습과 답 확인은 계속할 수 있습니다.";}
-const recordLab=event=>{
- if(!event.target.closest("button,input,select,[role=button],[draggable=true],canvas"))return;
- if(!progress.labUsed){progress.labUsed=true;save();}
-};
-["click","input","change","pointerup","keydown"].forEach(event=>lab.addEventListener(event,recordLab));
+if(data.inquiry){
+ investigation=window.COMPUTER_INVESTIGATION.mount({id,data:data.inquiry,lab,before:investigationBefore,after:pages.lab,saved:progress.investigation,custom:teachingLab,onChange(state){progress.investigation=state;progress.labUsed=investigation.ready();save();update();}});
+ progress.investigation=investigation.state;
+ progress.labUsed=investigation.ready();
+}
 pages.apply.append(node("h2","","새 상황에 적용하기"),node("p","edition-scenario",data.apply.scenario));
 if(data.apply.rows.length){
 const table=node("table","edition-evidence");
@@ -139,7 +154,7 @@ function question(q,index,parent,label){
   event.preventDefault();
   const a=progress.answers[index];
   if(a.selected===null){feedback.textContent="답을 하나 선택하세요.";return;}
-  if(index===0&&!progress.labUsed){feedback.textContent="위 실습에서 조건을 바꾸거나 실행한 뒤 답을 확인하세요.";return;}
+  if(index===0&&!(investigation?.ready()??progress.labUsed)){feedback.textContent=investigation?.hint()||"실습 결과를 먼저 확인하세요.";return;}
   const correct=a.selected===q.answer;
   if(a.attempts===0)a.firstCorrect=correct;
   a.attempts++;

@@ -91,7 +91,7 @@ test('capture events retain the original location, victim and captor for every c
   assert(event);assert.equal(event.thiefId,thief.id);assert.equal(event.policeId,cop.id);assert(event.droppedGem);
   assert.equal(event.x,W.nodes.p0.x);assert.equal(event.y,W.nodes.p0.y);
   assert.equal(thief.x,W.nodes.jail.x);assert.equal(thief.y,W.nodes.jail.y);
-  assert.equal(thief.jailedUntil,g.elapsed+12,'presentation must not lengthen imprisonment');
+  assert.equal(thief.jailedUntil,g.elapsed+15,'capture gives the agreed fifteen-second jail term');
   assert.deepEqual(E.snapshot(g,cop.id).events.find(e=>e.type==='capture'),event);
   assert.deepEqual(E.snapshot(g,thief.id).events.find(e=>e.type==='capture'),event);
 });
@@ -168,6 +168,49 @@ test('police standing inside the hideout cannot capture, block movement or stop 
   run(g,1.1);assert.equal(g.score,1);assert.equal(p.jailedUntil,0);
   E.command(g,p.id,{type:'MOVE',...W.nodes.i});run(g,.15);assert(W.distance(p,W.nodes.hideout)>1,'characters are not physical roadblocks');assert.equal(p.jailedUntil,0);
   at(p,{x:W.nodes.hideout.x+E.SAFE_RADIUS+1,y:W.nodes.hideout.y});at(cop,p);E.tick(g,.05);assert(p.jailedUntil>g.elapsed,'the protection ends at the displayed boundary');
+});
+
+test('following one prisoner to jail cannot farm five captures from their automatic releases',()=>{
+  const g=game(),[thief,cop]=g.players;g.elapsed=6;
+  at(thief,W.nodes.p0);at(cop,W.nodes.p0);E.tick(g,.05);assert.equal(g.captures,1);
+  assert(E.command(g,cop.id,{type:'MOVE',...W.nodes.jail}));run(g,90);
+  assert(W.distance(cop,W.nodes.jail)<.001);assert.equal(thief.jailedUntil,0);
+  assert.equal(g.captures,1);assert.equal(g.phase,'playing');assert(thief.escapeProtected);
+  for(const viewer of g.players){const visible=E.snapshot(g,viewer.id).players.find(p=>p.id===thief.id);assert(visible.escapeProtected);assert.equal(visible.escapeUntil,0);}
+});
+
+test('automatic escape protection lasts until leaving jail, then expires without resetting on return',()=>{
+  const g=game(),[thief,cop]=g.players;g.elapsed=6;
+  at(thief,W.nodes.p0);at(cop,W.nodes.p0);E.tick(g,.05);at(cop,W.nodes.jail);run(g,18);
+  assert(thief.escapeProtected);assert.equal(g.captures,1);
+  assert(E.command(g,thief.id,{type:'MOVE',...W.nodes.f}));run(g,2);
+  assert(thief.escapeProtected,'the nearby road must not spend the escape grace');
+  assert(E.command(g,thief.id,{type:'MOVE',...W.nodes.g}));
+  for(let n=0;n<100&&thief.escapeProtected;n++){at(cop,thief);E.tick(g,.05);}
+  assert.equal(thief.escapeProtected,false);assert.equal(g.captures,1);
+  assert(Math.abs(thief.escapeUntil-g.elapsed-3)<.001);assert(thief.immuneUntil>=thief.escapeUntil);
+  E.command(g,thief.id,{type:'STOP'});at(cop,thief);const expires=thief.escapeUntil;run(g,2.8);assert.equal(g.captures,1);
+  at(thief,W.nodes.jail);at(cop,W.nodes.jail);E.tick(g,.05);
+  assert.equal(thief.escapeUntil,expires);assert.equal(thief.escapeProtected,false);
+  run(g,.3);assert.equal(g.captures,2);assert(thief.jailedUntil>g.elapsed);assert.equal(thief.escapeUntil,0);
+});
+
+test('rescued thieves retain five seconds of protection after leaving the jail area',()=>{
+  const g=game(),[thief,cop,friend]=g.players;g.elapsed=6;
+  at(thief,W.nodes.p0);at(cop,W.nodes.p0);E.tick(g,.05);
+  at(friend,W.nodes.jail);friend.immuneUntil=1000;E.command(g,friend.id,{type:'RESCUE'});run(g,1.5);
+  at(cop,W.nodes.jail);run(g,7);assert(thief.escapeProtected);assert.equal(g.captures,1);
+  E.command(g,thief.id,{type:'MOVE',...W.nodes.g});
+  for(let n=0;n<100&&thief.escapeProtected;n++){at(cop,thief);E.tick(g,.05);}
+  assert.equal(thief.escapeProtected,false);assert(Math.abs(thief.escapeUntil-g.elapsed-5)<.001);
+  E.command(g,thief.id,{type:'STOP'});at(cop,thief);run(g,4.8);assert.equal(g.captures,1);
+  run(g,.3);assert.equal(g.captures,2);assert(thief.jailedUntil>g.elapsed);
+});
+
+test('walking into the jail without having escaped does not grant immunity',()=>{
+  const g=game(),[thief,cop]=g.players;g.elapsed=6;
+  at(thief,W.nodes.jail);at(cop,W.nodes.jail);E.tick(g,.05);
+  assert.equal(g.captures,1);assert(thief.jailedUntil>g.elapsed);assert.equal(thief.escapeProtected,false);
 });
 test('a carrying bot uses another existing entrance when police camp at the hideout approach',()=>{
   const g=game(),p=g.players[0],cops=g.players.filter(p=>p.team==='police');g.elapsed=6;

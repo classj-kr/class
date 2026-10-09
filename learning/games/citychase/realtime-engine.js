@@ -1,6 +1,6 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./realtime-world'),require('./realtime-steering'));else root.ChaseEngine=factory(root.ChaseWorld,root.ChaseSteering);})(globalThis,function(W,S){
   'use strict';
-  const ROUND_SECONDS=180,GOAL=3,CAPTURE_GOAL=5,SAFE_RADIUS=55,BANK_RADIUS=45;
+  const ROUND_SECONDS=180,GOAL=3,CAPTURE_GOAL=5,SAFE_RADIUS=55,BANK_RADIUS=45,ESCAPE_RADIUS=100,JAIL_SECONDS=15;
   const SPEED=Object.freeze({police:132,thief:128,carrying:108});
   const teamSizes=()=>({police:1,thief:3});
   const safe=p=>W.distance(p,W.nodes.hideout)<=SAFE_RADIUS;
@@ -10,7 +10,7 @@
   function create(roster,random=Math.random){
     if(roster.length!==4)throw new Error('4명이 모이면 시작할 수 있습니다.');
     const g={elapsed:0,phase:'playing',paused:false,score:0,captures:0,winner:null,endReason:null,players:[],targets:shuffle(W.shops.map(s=>s.id),random).slice(0,GOAL),shared:[],pings:[],events:[],eventId:0,botClock:0};
-    g.players=roster.map((p,i)=>{const team=p.team||(i===1?'police':'thief'),base=W.nodes[team==='thief'?'hideout':'jail'];return{id:String(p.id),name:String(p.name||'참가자').slice(0,20),avatarKey:p.avatarKey||'',team,bot:!!p.bot,x:base.x,y:base.y,path:[],carrying:false,jailedUntil:0,immuneUntil:5,dashUntil:0,dashReady:0,task:null,lastCommand:-1};});
+    g.players=roster.map((p,i)=>{const team=p.team||(i===1?'police':'thief'),base=W.nodes[team==='thief'?'hideout':'jail'];return{id:String(p.id),name:String(p.name||'참가자').slice(0,20),avatarKey:p.avatarKey||'',team,bot:!!p.bot,x:base.x,y:base.y,path:[],carrying:false,jailedUntil:0,immuneUntil:5,escapeProtected:false,escapeUntil:0,escapeGrace:0,dashUntil:0,dashReady:0,task:null,lastCommand:-1};});
     const sizes=teamSizes();
     if(g.players.filter(p=>p.team==='thief').length!==sizes.thief||g.players.filter(p=>p.team==='police').length!==sizes.police)throw new Error(`경찰 ${sizes.police}명·도둑 ${sizes.thief}명으로 시작합니다.`);
     for(const team of ['thief','police']){
@@ -68,13 +68,19 @@
     }
     return false;
   }
+  function release(g,p,grace){
+    p.jailedUntil=0;p.escapeProtected=true;p.escapeUntil=0;p.escapeGrace=grace;p.immuneUntil=g.elapsed+grace;
+  }
   function advancePlayer(g,p,dt){
     if(p.jailedUntil>g.elapsed)return;
-    if(p.jailedUntil){p.jailedUntil=0;p.immuneUntil=g.elapsed+3;event(g,`${p.name}님이 구금 구역에서 탈출했습니다.`);}
+    if(p.jailedUntil){release(g,p,3);event(g,`${p.name}님이 구금 구역에서 탈출했습니다.`);}
     let budget=(p.carrying?SPEED.carrying:SPEED[p.team])*(g.elapsed<p.dashUntil?1.7:1)*dt;
     if(p.steering?.until<=g.elapsed)stop(p);
     if(p.steering){S.advance(p,p.steering.nav,p.steering,budget);budget=0;}
     while(budget>0&&p.path.length){const target=p.path[0],d=W.distance(p,target);if(d<=budget){p.x=target.x;p.y=target.y;p.path.shift();budget-=d;}else{p.x+=(target.x-p.x)*budget/d;p.y+=(target.y-p.y)*budget/d;budget=0;}}
+    // The grace timer starts outside the jail, never while a released player is
+    // still trying to leave. Returning later does not renew this protection.
+    if(p.escapeProtected&&W.distance(p,W.nodes.jail)>ESCAPE_RADIUS){p.escapeProtected=false;p.escapeUntil=g.elapsed+p.escapeGrace;p.immuneUntil=Math.max(p.immuneUntil,p.escapeUntil);}
     if(p.team==='thief'&&p.carrying&&!p.path.length&&!p.steering&&W.distance(p,W.nodes.hideout)<BANK_RADIUS&&!p.task)p.task={type:'bank',progress:0,duration:1};
     if(!p.task)return;p.task.progress+=dt;if(p.task.progress<p.task.duration)return;
     const task=p.task;p.task=null;
@@ -83,7 +89,7 @@
       else event(g,`${W.shops.find(s=>s.id===task.id).name} 수색 완료 · 보석이 없습니다.`,p.team,{type:task.id!==g.targets[g.score]?'emptySearch':'search',shopId:task.id,round:g.score});
     }else if(task.type==='bank'&&p.carrying){p.carrying=false;g.score++;g.shared=[];event(g,`보석 ${g.score}/${GOAL}개 확보! ${g.score<GOAL?'새 단서를 나눠 받았습니다.':''}`);if(g.score===GOAL){g.phase='ended';g.winner='thief';g.endReason='gems';}}
     else if(task.type==='rescue'){
-      for(const friend of g.players.filter(x=>x.team==='thief'&&x.jailedUntil>g.elapsed)){friend.jailedUntil=0;friend.immuneUntil=g.elapsed+5;move(g,friend,W.nodes.f);}
+      for(const friend of g.players.filter(x=>x.team==='thief'&&x.jailedUntil>g.elapsed)){release(g,friend,5);move(g,friend,W.nodes.f);}
       event(g,`${p.name}님이 갇힌 동료를 구출했습니다!`);
     }
   }
@@ -162,11 +168,11 @@
     if(g.elapsed>=g.botClock){bots(g);g.botClock=g.elapsed+.85;}
     for(const p of g.players)advancePlayer(g,p,dt);
     if(g.phase==='ended')return;
-    for(const thief of g.players.filter(p=>p.team==='thief'&&p.jailedUntil<=g.elapsed&&p.immuneUntil<=g.elapsed&&!safe(p))){
+    for(const thief of g.players.filter(p=>p.team==='thief'&&p.jailedUntil<=g.elapsed&&!p.escapeProtected&&p.immuneUntil<=g.elapsed&&!safe(p))){
       const police=g.players.find(p=>p.team==='police'&&W.distance(p,thief)<30);
       if(police){
         const detail={type:'capture',thiefId:thief.id,policeId:police.id,x:thief.x,y:thief.y,droppedGem:thief.carrying};
-        thief.carrying=false;thief.task=null;stop(thief);thief.x=W.nodes.jail.x;thief.y=W.nodes.jail.y;thief.jailedUntil=g.elapsed+12;
+        thief.carrying=false;thief.task=null;thief.escapeProtected=false;thief.escapeUntil=0;thief.escapeGrace=0;stop(thief);thief.x=W.nodes.jail.x;thief.y=W.nodes.jail.y;thief.jailedUntil=g.elapsed+JAIL_SECONDS;
         g.captures++;
         event(g,`${police.name}님이 ${thief.name}님을 체포했습니다! 체포 ${g.captures}/${CAPTURE_GOAL}회`,null,detail);
         if(g.captures>=CAPTURE_GOAL)break;
@@ -181,8 +187,8 @@
   function snapshot(g,id){
     const me=g.players.find(p=>p.id===id);if(!me)return null;
     return{elapsed:g.elapsed,phase:g.phase,paused:g.paused,score:g.score,captures:g.captures,winner:g.winner,endReason:g.endReason,goal:GOAL,captureGoal:CAPTURE_GOAL,roundSeconds:ROUND_SECONDS,
-      players:g.players.map(({id,name,avatarKey,team,bot,x,y,carrying,jailedUntil,immuneUntil,dashUntil,dashReady,task,path})=>({id,name,avatarKey,team,bot,x,y,carrying,jailedUntil,immuneUntil,dashUntil,dashReady,task:task?{...task}:null,path:team===me.team?path:[]})),
+      players:g.players.map(({id,name,avatarKey,team,bot,x,y,carrying,jailedUntil,immuneUntil,escapeProtected,escapeUntil,dashUntil,dashReady,task,path})=>({id,name,avatarKey,team,bot,x,y,carrying,jailedUntil,immuneUntil,escapeProtected,escapeUntil,dashUntil,dashReady,task:task?{...task}:null,path:team===me.team?path:[]})),
       clues:clues(g,me),shared:g.shared.filter(c=>c.team===me.team),pings:g.pings.filter(p=>p.team===me.team),events:g.events.filter(e=>!e.team||e.team===me.team)};
   }
-  return{create,command,tick,snapshot,clues,teamSizes,ROUND_SECONDS,GOAL,CAPTURE_GOAL,SPEED,SAFE_RADIUS,BANK_RADIUS};
+  return{create,command,tick,snapshot,clues,teamSizes,ROUND_SECONDS,GOAL,CAPTURE_GOAL,SPEED,SAFE_RADIUS,BANK_RADIUS,ESCAPE_RADIUS,JAIL_SECONDS};
 });

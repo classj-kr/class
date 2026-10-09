@@ -87,7 +87,7 @@
     $('teamLabel').textContent=(player.team==='thief'?'도둑팀':'경찰팀')+' · '+player.name;
     $('teamLabel').parentElement.dataset.team=player.team;
     const jailed=player.jailedUntil>view.elapsed;
-    $('missionText').textContent=jailed?'탈출 '+Math.ceil(player.jailedUntil-view.elapsed)+'초':player.team==='police'&&W.distance(player,W.nodes.hideout)<=E.SAFE_RADIUS?'보호구역 · 체포 불가':player.carrying?'보석 운반 중':'';
+    $('missionText').textContent=jailed?'탈출 '+Math.ceil(player.jailedUntil-view.elapsed)+'초':player.escapeProtected?'탈출 보호':player.escapeUntil>view.elapsed?'탈출 보호 '+Math.ceil(player.escapeUntil-view.elapsed)+'초':player.team==='police'&&W.distance(player,W.nodes.hideout)<=E.SAFE_RADIUS?'보호구역 · 체포 불가':player.carrying?'보석 운반 중':'';
     const left=Math.max(0,Math.ceil(view.roundSeconds-view.elapsed));$('clock').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');$('clock').classList.toggle('urgent',left<=30);$('scoreText').textContent=view.score+' / '+view.goal;
     $('captureText').textContent=view.captures+' / '+view.captureGoal;
     const finished=view.phase!=='playing';
@@ -178,6 +178,8 @@
       const color=p.team==='police'?'#277ed1':'#d55c47',mine=p.id===myId;
       ctx.beginPath();ctx.ellipse(x,y,19/scale,8/scale,0,0,Math.PI*2);ctx.fillStyle=color+'aa';ctx.fill();
       if(mine){ctx.strokeStyle='#fff';ctx.lineWidth=3/scale;ctx.stroke();}
+      const escapeProtected=p.escapeProtected||p.escapeUntil>view.elapsed;
+      if(escapeProtected){ctx.beginPath();ctx.ellipse(x,y,25/scale,11/scale,0,0,Math.PI*2);ctx.strokeStyle='#9ceff5';ctx.lineWidth=3/scale;ctx.stroke();}
       const illustratedReaction=reaction&&captureSprite.complete&&captureSprite.naturalWidth;
       const atlas=illustratedReaction?captureSprite:moving?sprites[p.team]:idle;
       const col=illustratedReaction?reaction.frame:moving?Math.floor(now/(p.dashUntil>view.elapsed?65:105))%4:(p.team==='police'?0:1),spritePixels=overview?Math.max(36,Math.min(68,scale*90)):reaction?.phase==='caught'?86:76,size=spritePixels/scale;
@@ -190,6 +192,7 @@
       else{ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y-24/scale,16/scale,0,Math.PI*2);ctx.fill();}
       if(!['caught','salute'].includes(reaction?.phase))label((mine&&p.name!=='나'?'나 · ':'')+p.name,x,y-(spritePixels+12)/scale,color,mine?'#fff2b6':'#fffdf4',12/scale,mine?'self':'actor');
       if(p.carrying)label('◆ 보석',x+28/scale,y-39/scale,'#087b9c','#e1fcff',12/scale,'actor');
+      if(escapeProtected)label('탈출 보호',x,y+19/scale,'#19647b','#e1fcff',11/scale,'actor');
       if(p.jailedUntil>view.elapsed&&reaction?.phase!=='caught'){captures.bars(ctx,x,y,scale);label('구금 '+Math.ceil(p.jailedUntil-view.elapsed)+'초',x,y+19/scale,'#5c6472','#eef0f4',11/scale,'actor');}
       if(p.task){const w=45/scale;rounded(x-w/2,y+9/scale,w,6/scale,3/scale,'#fff');rounded(x-w/2,y+9/scale,w*Math.min(1,p.task.progress/p.task.duration),6/scale,3/scale,'#e3ac26');}
     }
