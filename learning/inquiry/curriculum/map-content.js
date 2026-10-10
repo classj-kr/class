@@ -103,15 +103,20 @@
         if(kind==='world'&&id==='seasons')return level==='high'?'고등 지구과학Ⅱ(이진우, 2015), 천체의 남중 고도':'초등 과학 6-2(양일호), 계절의 변화 연계';
         return source[kind][level];
     }
+    function subject(kind,id,level){
+        if(kind==='world'&&['winds','currents','seawater','enso','earthquakes','plate-motion'].includes(id))return level==='high'?'지구시스템과학':'과학';
+        if(kind==='world'&&id==='seasons')return level==='high'?'행성우주과학':'과학';
+        return level==='high'?(kind==='world'?'세계시민과 지리':'한국지리 탐구'):'사회';
+    }
     window.SchoolMaps={
         available(kind,id,level){return level!=='elementary'||!!(kind==='world'?primaryWorld:primaryKorea)[id];},
         profile(kind,lesson,level){
             const low=(kind==='world'?primaryWorld:primaryKorea)[lesson.id];
             const high=(kind==='world'?highWorld:highKorea)[lesson.id];
             const core=lesson.core||lesson.steps;
-            if(level==='elementary'&&low)return {source:reference(kind,lesson.id,level),concepts:[low[0]],question:low[1],answer:low[2]};
-            if(level==='high'&&high)return {source:reference(kind,lesson.id,level),concepts:[...core,high[0]],question:high[1],answer:high[2]};
-            return {source:reference(kind,lesson.id,'middle'),concepts:core,question:lesson.task||'그림의 위치와 과정을 근거로 이 지형이나 현상의 특징을 설명하세요.',answer:lesson.evidence||core.join(' ')};
+            if(level==='elementary'&&low)return {subject:subject(kind,lesson.id,level),source:reference(kind,lesson.id,level),concepts:[low[0]],question:low[1],answer:low[2]};
+            if(level==='high'&&high)return {subject:subject(kind,lesson.id,level),source:reference(kind,lesson.id,level),concepts:[...core,high[0]],question:high[1],answer:high[2]};
+            return {subject:subject(kind,lesson.id,level),source:reference(kind,lesson.id,'middle'),concepts:core,question:lesson.task||'그림의 위치와 과정을 근거로 이 지형이나 현상의 특징을 설명하세요.',answer:lesson.evidence||core.join(' ')};
         }
     };
 })();

@@ -4,6 +4,7 @@
 .school-level button:focus-visible,.school-question summary:focus-visible { outline:2px solid #facc15; outline-offset:3px; }
 .school-concepts,.school-question { margin:12px 0; padding:14px; border:1px solid #354d66; border-radius:10px; background:#111f31; color:#dfebf6; text-align:left; }
 .school-concepts p,.school-question p { margin:8px 0; font-size:14px; line-height:1.8; word-break:keep-all; }
+.school-subject,.school-concepts .school-subject { margin:0 0 8px; color:#9fc5d5; font-size:12px; font-weight:600; line-height:1.5; }
 .school-concepts h2 { margin:0 0 10px; color:#8be2df; font-size:17px; line-height:1.5; }
 .school-lesson { display:grid; gap:12px; }
 .school-lesson .school-concepts { margin:0; }
@@ -37,6 +38,7 @@
 .korea-school-nav .theme-tab:disabled { opacity:.4; cursor:not-allowed; }
 .study-panel .school-concepts,.study-panel .school-question { background:#f3f7f4; color:#233d3e; border-color:#bfceca; }
 .study-panel .school-question h3,.study-panel .school-question summary { color:#35666a; }
+.study-panel .school-subject { color:#35666a; }
 .study-panel .school-question details p { color:#674c28; }
 .lesson-practice[hidden],#quickPractice[hidden],.concept-trap[hidden] { display:none!important; }
 #quizContainer[hidden] { display:none!important; }

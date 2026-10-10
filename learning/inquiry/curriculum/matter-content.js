@@ -1,7 +1,8 @@
 (function(){
     const D=window.SchoolContent=window.SchoolContent||{};
     const source={elementary:'미래엔 과학 3-2·4-1(양일호), 물질의 상태·물의 상태 변화',middle:'미래엔 과학 1·2(김태일, 2022), 물질의 상태·기체·물질의 구성',high:'천재교과서 화학·물질과 에너지(임희준, 2022), 고등 선택과목'};
-    function put(id,l,c,q,a){(D['matter-'+id]||={})[l]={source:source[l],concepts:c,question:q,answer:a};}
+    const advancedSubjects={states:'물질과 에너지',phase:'물질과 에너지',gas:'물질과 에너지',solution:'물질과 에너지',equilibrium:'화학 반응의 세계',acid:'화학 반응의 세계',redox:'화학 반응의 세계'};
+    function put(id,l,c,q,a){(D['matter-'+id]||={})[l]={subject:l==='high'?(advancedSubjects[id]||'화학'):'과학',source:source[l],concepts:c,question:q,answer:a};}
     put('states','elementary',['고체는 모양과 부피가 일정하고, 액체는 담는 그릇에 따라 모양이 달라집니다. 기체는 그릇 전체로 퍼져 모양과 부피가 달라질 수 있습니다.','그릇의 너비를 바꾸면서 세 물질의 모습이 어떻게 달라지는지 비교하세요.'],'같은 양의 물을 넓은 그릇으로 옮기면 모양과 부피는 각각 어떻게 되나요?','모양은 그릇에 맞게 달라지지만, 흘리거나 증발하지 않았다면 물의 부피는 같습니다.');
     put('phase','elementary',['얼음은 녹아 물이 되고, 물은 얼어 얼음이 됩니다. 물이 수증기로 변하거나 수증기가 물로 변할 수도 있습니다.','냉동실의 얼음과 차가운 컵 겉에 맺힌 물방울이 생기는 과정을 서로 비교하세요.'],'차가운 컵 겉의 물방울은 컵 안의 물이 새어 나온 것일까요? 어떤 상태 변화가 일어난 것인가요?','공기 중 수증기가 차가운 컵 표면에서 물로 응결한 것입니다. 컵 속 물이 밖으로 새어 나온 것이 아닙니다.');
     const middle={

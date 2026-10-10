@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    const names = { elementary: '초등', middle: '중등', high: '고등' };
+    const names = { elementary: '초', middle: '중', high: '고' };
     const params = new URLSearchParams(location.search);
     let level = names[params.get('school')] ? params.get('school') : 'middle';
     const listeners = new Set();
@@ -25,9 +25,10 @@
     }
     function profile(key) { return window.SchoolContent?.[key]?.[level] || null; }
     function concepts(p) {
-        if (p.sections?.length) return `<div class="school-lesson">${p.sections.map(section=>`<section class="school-concepts"><h2>${esc(section.title)}</h2>${section.paragraphs.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`).join('')}</div>`;
+        const subject=p.subject?`<p class="school-subject">${esc(p.subject)}</p>`:'';
+        if (p.sections?.length) return `<div class="school-lesson">${subject}${p.sections.map(section=>`<section class="school-concepts"><h2>${esc(section.title)}</h2>${section.paragraphs.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`).join('')}</div>`;
         if (!p.concepts?.length) return '';
-        return `<section class="school-concepts" aria-label="핵심 개념">${p.concepts.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`;
+        return `<section class="school-concepts" aria-label="핵심 개념">${subject}${p.concepts.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`;
     }
     function question(p) {
         return `<section class="school-question"><h3>생각해 보기</h3><p>${esc(p.question)}</p><details><summary>풀이 확인</summary><p>${esc(p.answer)}</p></details></section>`;

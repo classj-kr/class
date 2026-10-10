@@ -8,6 +8,8 @@
         const header=document.querySelector('.sim-header');
         new ResizeObserver(()=>document.documentElement.style.setProperty('--body-header-height',header.offsetHeight+'px')).observe(header);
         const title=document.getElementById('organTitle'), desc=document.getElementById('organDesc');
+        const subject=document.createElement('p');subject.className='school-subject';
+        if(desc)desc.before(subject);
         const quiz=document.getElementById('quizContainer');
         let exercise;
         if(quiz){exercise=document.createElement('div');exercise.className='school-body-exercise';quiz.before(exercise);}
@@ -52,6 +54,7 @@
         }
         function render(){
             const p=S.profile('body-'+app);
+            subject.textContent=p.subject||'';subject.hidden=!p.subject;
             const concept=document.getElementById('conceptList');
             if(concept)concept.innerHTML=p.concepts.map(t=>'<li>'+S.esc(t)+'</li>').join('');
             const trap=document.getElementById('examTrapList');
