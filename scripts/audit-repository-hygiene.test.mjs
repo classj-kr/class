@@ -20,6 +20,7 @@ test("repository audit distinguishes local residue from runtime assets and linke
     put("learning/task/lesson.zip");
     put("learning/task/index.html", '<a href="lesson.zip" download>Download</a>');
     put("learning/task/data/climate.png");
+    put("learning/task/sound.wav");
     put("learning/literacy-numeracy/arithmetics/package.json", "{}");
     put("learning/literacy-numeracy/arithmetics/.openai/hosting.json", "{}");
     put("learning/task/node_modules/library/package.json", "{}");
@@ -30,6 +31,7 @@ test("repository audit distinguishes local residue from runtime assets and linke
       "learning/duplicate/.git",
       "learning/duplicate/package.json",
       "learning/task/original.jpg",
+      "learning/task/sound.wav",
       "learning/task/tools/scratch",
       "learning/task/unused.zip",
     ].sort());

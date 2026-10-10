@@ -248,7 +248,7 @@
     };
     const normalized = aliases[sound] || sound;
     const fileName = normalized.replaceAll("_", "-").replace(/^-/, "end-");
-    return `assets/sounds/phonemes/${fileName}.wav`;
+    return `assets/sounds/phonemes/${fileName}.ogg`;
   }
 
   function phonemePlan(sound) {
