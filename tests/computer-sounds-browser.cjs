@@ -82,7 +82,7 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
         await expectSound('H05: adjacent application question wrong', ['error'], () => submit(2));
         await expectSound('H05: navigation and retained summary do not grade', [], () => page.click('[data-page="lab"]'), false);
         await choice(0, 0);
-        await expectSound('H05: unmet lab prerequisite has no grade sound', [], () => submit(0));
+        await expectSound('H05: answer before lab interaction plays success', ['success'], () => submit(0));
         const labButton = await page.$('#editionLab button');
         assert.ok(labButton, 'H05 lab has an interactive control');
         await labButton.click();

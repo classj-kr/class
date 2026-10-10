@@ -43,7 +43,7 @@
         // Heliocentric 3D Engine
         (function() {
             const container = document.getElementById('emCanvasContainer');
-            const spacePane = document.getElementById('emMoonSpacePane');
+            const spacePane = document.getElementById('emMoonStage');
             const canvas = document.getElementById('em3DCanvas');
             const seasonLabelsOverlay = document.getElementById('emSeasonLabelsOverlay');
             const observerView = document.getElementById('emMoonMyView');

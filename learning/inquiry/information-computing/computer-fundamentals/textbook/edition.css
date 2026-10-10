@@ -76,7 +76,7 @@ body.computer-edition{display:flow-root;min-height:100vh}
 .edition-lab .program-flow .flow-branch{transform:none;font-size:inherit;text-align:left;line-height:inherit;min-height:83px}
 .edition-header h1{min-width:0;overflow-wrap:anywhere}
 
-/* Explanation, worked evidence, and student observations share the reading hierarchy. */
+/* Reading examples and hands-on activities. */
 .study-component-reference{margin:24px 0;border-block:1px solid #cbd4c9;padding:12px 0}
 .study-component-reference>summary{cursor:pointer;font-size:1rem;min-height:32px}
 .study-component-reference[open]>summary{margin-bottom:16px}
@@ -89,32 +89,22 @@ body.computer-edition{display:flow-root;min-height:100vh}
 .study-table caption{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
 .study-table th,.study-table td{padding:12px;text-align:left;vertical-align:top;border:1px solid #cbd4c9;overflow-wrap:anywhere;word-break:keep-all}
 .study-table th{background:#edf2ec;font-weight:700}
-.study-assignment,.study-notebook{max-width:900px;margin:18px 0 26px}
-.study-kind{font:13px var(--edition-ui);color:#446452}
-.study-assignment h3{font-size:1.2rem;line-height:1.6;margin:6px 0 14px}
-.study-assignment ol{margin:0 0 20px;padding-left:24px}
-.study-assignment li{padding:6px 0 10px 5px}
-.study-assignment li p{margin:3px 0!important}
-.study-assignment small{display:block;color:#526157;font-size:14px;line-height:1.7}
-.study-assignment label,.study-notebook label,.study-workbench>label{display:block;margin:14px 0 6px;font-size:15px;font-weight:700}
-.study-assignment textarea,.study-notebook textarea,.study-workbench textarea,.study-workbench>input,.study-workbench>select{display:block;width:100%;max-width:100%;padding:11px;border:1px solid #9dae9f;background:white;color:#21302b;border-radius:4px;font:16px/1.65 var(--edition-reading);resize:vertical}
-.study-notebook{padding:22px 0;border-top:1px solid #bdcbbb;border-bottom:1px solid #bdcbbb}
-.study-notebook h3{margin-bottom:8px}
+.study-steps{max-width:900px;margin:14px 0 24px;padding-left:24px}
+.study-steps li{padding:4px 0 6px 4px}
+.study-workbench>label{display:block;margin:14px 0 6px;font-size:15px;font-weight:700}
+.study-workbench textarea,.study-workbench>input,.study-workbench>select{display:block;width:100%;max-width:100%;padding:11px;border:1px solid #9dae9f;background:white;color:#21302b;border-radius:4px;font:16px/1.65 var(--edition-reading);resize:vertical}
 .study-workbench{padding:22px;border:1px solid #bdcbbb;background:#fffefa;max-width:100%;min-width:0}
 .study-workbench h3{font-size:1.15rem;line-height:1.6;margin-bottom:12px}
 .study-workbench h4{font-size:15px;margin:18px 0 8px}
 .study-workbench>p{font-size:15px}
 .study-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0}
-.study-workbench button,.study-notebook button{min-height:44px;padding:9px 13px;border:1px solid #8da591;background:#f3f6ef;color:#174b3a;border-radius:4px;cursor:pointer;font:14px/1.5 var(--edition-ui);overflow-wrap:anywhere}
+.study-workbench button{min-height:44px;padding:9px 13px;border:1px solid #8da591;background:#f3f6ef;color:#174b3a;border-radius:4px;cursor:pointer;font:14px/1.5 var(--edition-ui);overflow-wrap:anywhere}
 .study-workbench button[aria-pressed=true]{background:#245c46;color:white;border-color:#245c46}
-.study-workbench button:disabled,.study-notebook button:disabled{opacity:.55;cursor:default}
-.study-controls>span{font:13px var(--edition-ui);color:#526157}
+.study-workbench button:disabled{opacity:.55;cursor:default}
 .study-status{padding:12px 14px;background:#eef3eb;border-left:3px solid #638872;font-size:15px;line-height:1.7;margin:16px 0!important;overflow-wrap:anywhere;white-space:pre-line}
 .study-status:empty{display:none}
-.study-trace,.study-records{padding-left:24px;font-size:14px;line-height:1.7}
+.study-trace{padding-left:24px;font-size:14px;line-height:1.7}
 .study-trace li{margin:8px 0;overflow-wrap:anywhere}
-.study-records li{padding:12px 0;border-bottom:1px solid #dbe2d7;overflow-wrap:anywhere}
-.study-records p{margin:5px 0!important;white-space:pre-line;font-size:14px}
 .study-touch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:420px;margin:18px auto}
 .study-touch-grid button{position:relative;min-height:74px;background:#fff;font-size:18px}
 .study-touch-grid button.has-dot::after{content:'';display:block;width:15px;height:15px;margin:3px auto;background:#3570b9;border-radius:50%}
@@ -130,4 +120,4 @@ body.computer-edition{display:flow-root;min-height:100vh}
 .study-algorithm-settings{display:grid;gap:12px;margin:18px 0}
 .study-algorithm-settings label{font:15px/1.7 var(--edition-ui)}
 .study-algorithm-settings select{display:block;width:100%;min-width:0;min-height:44px;padding:8px;border:1px solid #9dae9f;background:white;font:15px var(--edition-ui);color:#21302b}
-@media(max-width:600px){.study-workbench{padding:14px 10px}.study-folders{grid-template-columns:1fr}.study-table th,.study-table td{padding:8px 6px;font-size:13px}.study-assignment li{padding-left:0}.study-controls>button{max-width:100%}.study-records{padding-left:19px}}
+@media(max-width:600px){.study-workbench{padding:14px 10px}.study-folders{grid-template-columns:1fr}.study-table th,.study-table td{padding:8px 6px;font-size:13px}.study-steps li{padding-left:0}.study-controls>button{max-width:100%}}

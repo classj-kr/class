@@ -40,7 +40,7 @@
         root.innerHTML=`<section class="ss-evolution"><div class="ss-section-head"><h2>질량에 따른 진화 경로</h2><button type="button" data-ss-hide aria-pressed="false">명칭 가리기</button></div>
         <div class="ss-birth">${step('nebula','성운')}<span class="ss-cause">중력 수축 →</span>${step('protostar','원시별')}<span class="ss-cause">중심의 수소 핵융합 시작 →</span><strong>주계열성</strong></div>
         <div class="ss-routes">${route(false)}${route(true)}</div>
-        <p class="ss-note">대표적인 진화 경로 · 그림의 크기와 간격은 실제 크기·시간 비율이 아님</p></section>
+        </section>
         <div class="ss-reading">
         <section><h2>주계열성은 왜 안정될까</h2>${diagram('balance')}<p><b>A 중력</b>은 안쪽으로, <b>B 압력에 의한 힘</b>은 바깥쪽으로 작용해 평형을 이룬다.</p><p>중심의 <b>수소 → 헬륨 핵융합</b>이 에너지원이다. 태양도 현재 이 단계다.</p></section>
         <section><h2>팽창하면 표면도 뜨거워질까</h2>${diagram('expansion')}<p>A → B: <b>반지름 증가 · 표면 온도 감소</b>. 중심부와 표면의 온도 변화를 구분한다.</p><p>표면이 식어도 면적이 크게 늘면 전체 광도는 커질 수 있다.</p></section>

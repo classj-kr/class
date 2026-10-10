@@ -160,6 +160,16 @@ document.addEventListener('DOMContentLoaded', () => {
         CH4:{ formula:'CH₄', shape:'정사면체형', angle:'약 109.5°', polar:'무극성', center:'C', outer:'H', pairs:4, lone:0, positions:[[0,-145,0],[-130,62,55],[130,62,55],[0,62,-140]], en:'대칭적인 구조에서 결합 쌍극자가 상쇄' },
         BF3:{ formula:'BF₃', shape:'평면 삼각형', angle:'120°', polar:'무극성', center:'B', outer:'F', pairs:3, lone:0, positions:[[0,-145,0],[-126,73,0],[126,73,0]], en:'B는 옥텟을 채우지 않는 대표적 예외' }
     };
+    // Both molecular views use the same validated 3D coordinates.
+    ['H2O','NH3','CH4','BF3','CO2'].forEach(key=>{
+        const spec=bonds[key],model=window.MOLECULE_MODELS_3D[spec.formula];
+        const center=model.atoms.find(atom=>atom.symbol===spec.center);
+        spec.positions=model.atoms.filter(atom=>atom!==center).map(atom=>{
+            const vector=[atom.x-center.x,atom.y-center.y,atom.z-center.z];
+            const scale=150/Math.hypot(...vector);
+            return vector.map(v=>v*scale);
+        });
+    });
     function drawBond() {
         const type=values.compound, lewis=values.view==='lewis';
         if(type==='NaCl'||type==='metal') {

@@ -8,10 +8,10 @@
     <script src="../solar-system/assets/vendor/three-r128/three.min.js"></script>
     <script src="../solar-system/assets/vendor/three-r128/OrbitControls.js"></script>
     <link rel="stylesheet" href="../quiz-board.css?v=quiz-topic-picker-20260906c">
-    <link rel="stylesheet" href="styles.css?v=20261010-model-review3">
+    <link rel="stylesheet" href="styles.css?v=20261010-layout3">
     <script src="../../../../assets/sound/music-control.js?v=20260910-click-cache-1" defer></script>
     <script src="../topic-catalog.js?v=20260920-eclipse"></script>
-    <link rel="stylesheet" href="../topic-page.css?v=20261010-model-review">
+    <link rel="stylesheet" href="../topic-page.css?v=20261010-layout3">
     <link rel="stylesheet" href="eclipse-simulator.css?v=20260920-comparison">
 </head>
 <body>
@@ -47,6 +47,7 @@
             <div class="sim-viewport-card">
                 <div class="solar-canvas-wrapper" id="emCanvasContainer" style="height: 520px; position: relative;">
                     <div class="em-moon-space-pane" id="emMoonSpacePane">
+                    <div id="emMoonStage">
                     <canvas id="em3DCanvas"></canvas>
                     <div id="emSeasonLabelsOverlay" class="em-season-labels-overlay" aria-hidden="false"></div>
                     
@@ -58,7 +59,7 @@
                             <span id="emTimePeriodNote" class="em-time-period-note">(자정)</span>
                         </time>
                     </div>
-
+                    </div>
                     <!-- Lunar Phase Controls -->
                     <div class="em-observer-panel em-phase-panel" aria-label="달의 위상 선택">
                         <div class="em-phase-selector">
@@ -317,10 +318,10 @@
 
     <!-- Heliocentric 3D Earth-Moon Physics Simulation Engine -->
     <script src="eclipse-geometry.js?v=20260920-comparison"></script>
-    <script src="eclipse-simulator.js?v=20261006-webp"></script>
+    <script src="eclipse-simulator.js?v=20261010-layout3"></script>
     <script src="../quiz-board.js?v=20260920-eclipse"></script>
     <script src="seasonal-space-view.js?v=20261010-season-camera"></script>
-    <script src="app.js?v=20261010-model-review3"></script>
-    <script src="../topic-page.js?v=20261010-model-review"></script>
+    <script src="app.js?v=20261010-layout3"></script>
+    <script src="../topic-page.js?v=20261010-layout3"></script>
 </body>
 </html>

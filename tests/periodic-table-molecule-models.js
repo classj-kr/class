@@ -53,7 +53,7 @@ for (const formula of supportedFormulas) {
     for (const bond of model.bonds) {
         assert.ok(ids.has(bond.from), `${formula}: missing bond atom ${bond.from}`);
         assert.ok(ids.has(bond.to), `${formula}: missing bond atom ${bond.to}`);
-        assert.ok(["single", "double", "triple", "ionic"].includes(bond.type), `${formula}: invalid bond type`);
+        assert.ok(["single", "double", "triple", "ionic", "resonance"].includes(bond.type), `${formula}: invalid bond type`);
     }
 }
 
@@ -114,7 +114,7 @@ assert.match(pageSource, /id="modalElectronConfig"/);
 assert.match(pageSource, /id="modalShellCount"/);
 assert.match(pageSource, /id="modalValenceElectrons"/);
 assert.ok(
-    pageSource.indexOf('src="molecule-models.js"') < pageSource.indexOf('src="app.js"'),
+    pageSource.search(/src="molecule-models\.js(?:\?[^\"]*)?"/) < pageSource.search(/src="app\.js(?:\?[^\"]*)?"/),
     "3D model data must load before the app"
 );
 

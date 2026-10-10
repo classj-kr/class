@@ -9,6 +9,7 @@
 }
 .space-topic-page [hidden] { display: none !important; }
 .space-topic-page .view-container { margin-top: 0; padding-top: 0; }
+.space-topic-page #tab-sim { width:100%; margin-left:0; }
 .space-topic-page .nav-tab { white-space: nowrap; }
 .topic-concepts { max-width: 1200px; margin: 0 auto; padding: 28px 20px 48px; }
 .topic-concept-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
@@ -36,6 +37,27 @@
 .topic-concept-section-content { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .topic-concept-section-content article { border: 0; }
 @media (max-width: 760px) { .topic-concept-section-content { grid-template-columns: 1fr; } }
+
+@media (max-width: 760px) {
+    .space-topic-page #tab-sim .sim-viewport-card { height:auto; min-height:0; overflow:visible; }
+    .space-topic-page #tab-sim .sim-mode-container { height:auto !important; }
+    .space-topic-page #mode-zodiac { min-height:0 !important; }
+    .space-topic-page #mode-zodiac > div { flex:none !important; }
+    .space-topic-page #zodiac3dContainer { height:360px !important; }
+    .space-topic-page #zodiacSkySvg { height:300px !important; }
+    .space-topic-page #zodiacStoryCard { position:static !important; margin:8px; }
+    .space-topic-page #mode-diurnal { min-height:480px !important; }
+    .space-topic-page #mode-compare { flex-direction:column; padding:42px 8px 8px !important; }
+    .space-topic-page #mode-compare > div { flex:none !important; }
+    .space-topic-page #mode-3ddepth { overflow:visible !important; }
+    .space-topic-page #celestial3dContainer { display:flex; flex-direction:column; height:auto !important; }
+    .space-topic-page #celestial3dCanvas { height:380px !important; flex:0 0 380px; }
+    .space-topic-page #celestial3dContainer > div { position:static !important; margin:8px; max-width:none !important; width:auto !important; flex-wrap:wrap; }
+    .space-topic-page #celestial3dContainer > div > div { flex-wrap:wrap; }
+    .space-topic-page #tab-sim .sim-controls-panel { position:relative; inset:auto; width:auto; max-width:none; margin:8px; flex-wrap:wrap; }
+    .space-topic-page #controls-zodiac,.space-topic-page #controls-diurnal { flex-wrap:wrap; }
+    .space-topic-page #controls-diurnal .control-rows { min-width:230px; }
+}
 
 .space-topic-page .viewport-header-bar:has(#simModeSwitcher) { right: auto; border-bottom: 0 !important; padding-right: 0 !important; }
 /* Subject quizzes begin with their filters or first question, without a title strip. */

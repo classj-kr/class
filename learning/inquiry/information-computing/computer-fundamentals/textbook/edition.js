@@ -9,15 +9,14 @@ const key = "classj:textbook:" + id + ":v1";
 const store = await SiteStorage.open("computer-literacy");
 store.adopt([{ localKey: key, item: key }]);
 const questions = [data.labCheck, ...data.apply.fields, ...data.checks];
-const fresh = () => ({version:1, labUsed:false, answers:questions.map(q => ({revision:q.revision||1, selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
+const fresh = () => ({version:1, answers:questions.map(q => ({revision:q.revision||1, selected:null, attempts:0, solved:false, firstCorrect:false})), completed:false});
 let progress = fresh();
-let investigation = null;
 let questionsChanged = false;
 let previousEdition = false;
 try {
  const saved = store.get(key) ?? null;
  if (saved?.version === 1 && Array.isArray(saved.answers) && saved.answers.length === questions.length) {
-  progress.labUsed = saved.labUsed === true;
+  // Preserve earlier student writing without displaying it or using it to block answers.
   progress.investigation = saved.investigation;
   questionsChanged = saved.answers.some((a,i)=>(a?.revision||1)!==(questions[i].revision||1));
   if(questionsChanged){
@@ -109,25 +108,23 @@ function nextButton(page,target,text){
  const wrap=node("div","edition-page-end");const button=node("button","",text);button.type="button";button.addEventListener("click",()=>location.hash=target);wrap.append(button);page.append(wrap);
 }
 nextButton(pages.read,"lab","실습으로");
-pages.lab.append(node("h2","",data.inquiry?.kind||"실습"));
-const investigationBefore=node("div");pages.lab.append(investigationBefore);
-if(!data.inquiry)pages.lab.append(node("p","edition-task",data.lab));
+pages.lab.append(node("h2","","실습"));
+if(data.labSteps?.length){
+ const steps=node("ol","study-steps");
+ data.labSteps.forEach(text=>steps.append(node("li","",text)));
+ pages.lab.append(steps);
+}else pages.lab.append(node("p","edition-task",data.lab));
 const lab=node("div","edition-lab");lab.id="editionLab";
 ["conceptParts","conceptVisual","conceptDiagram"].forEach(name=>{
  const existing=document.getElementById(name);
  if(existing?.childNodes.length)lab.append(existing);
 });
 if(id==="g01")buildBinaryLab(lab);
-const teachingLab=window.COMPUTER_TEACHING_LABS?.mount(id,lab);
+window.COMPUTER_TEACHING_LABS?.mount(id,lab);
 pages.lab.append(lab);
 const labNote=node("p","edition-note","화면 속 기기와 기록은 실습 모형입니다. 실습 조작 상태는 다시 열면 초기화되고, 답 확인 기록은 "+(store.persistent?"내 계정에 저장됩니다.":"로그인했을 때만 저장됩니다."));
 pages.lab.append(labNote);
 if(!store.persistent){notice.hidden=false;notice.textContent="로그인하지 않아 답 확인 기록이 남지 않습니다. 실습과 답 확인은 계속할 수 있습니다.";}
-if(data.inquiry){
- investigation=window.COMPUTER_INVESTIGATION.mount({id,data:data.inquiry,lab,before:investigationBefore,after:pages.lab,saved:progress.investigation,custom:teachingLab,onChange(state){progress.investigation=state;progress.labUsed=investigation.ready();save();update();}});
- progress.investigation=investigation.state;
- progress.labUsed=investigation.ready();
-}
 pages.apply.append(node("h2","","새 상황에 적용하기"),node("p","edition-scenario",data.apply.scenario));
 if(data.apply.rows.length){
 const table=node("table","edition-evidence");
@@ -166,7 +163,6 @@ function question(q,index,parent,label){
   event.preventDefault();
   const a=progress.answers[index];
   if(a.selected===null){feedback.textContent="답을 하나 선택하세요.";return;}
-  if(index===0&&!(investigation?.ready()??progress.labUsed)){feedback.textContent=investigation?.hint()||"실습 결과를 먼저 확인하세요.";return;}
   const correct=a.selected===q.answer;
   if(a.attempts===0)a.firstCorrect=correct;
   a.attempts++;
@@ -199,7 +195,7 @@ const next=(window.COMPUTER_LESSON_INDEX||[])[index+1];
 const link=node("a","edition-next",next?"다음 차시 →":"차시 목록 →");link.href=next?"?lesson="+next.id:"../";footer.append(link);
 pages.check.append(footer);
 function completedGroups(){
- return [progress.labUsed&&progress.answers[0].solved,progress.answers.slice(1,3).every(a=>a.solved),progress.answers.slice(3).every(a=>a.solved)];
+ return [progress.answers[0].solved,progress.answers.slice(1,3).every(a=>a.solved),progress.answers.slice(3).every(a=>a.solved)];
 }
 function save(){
  progress.completed=completedGroups().every(Boolean);
