@@ -4,7 +4,7 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const {chromium}=require(path.resolve(__dirname,'../../../../game-hub-server/node_modules/playwright'));
 const root=path.resolve(__dirname,'../../../..'),globe=path.resolve(__dirname,'..');
-const reference=path.resolve(process.argv[2]||path.join(root,'tmp/terrain-source-preview/tiles'));
+const reference=path.resolve(process.argv[2]||path.join(root,'references/geography/terrain-source-preview/tiles'));
 const output=path.join(globe,'tiles-colored');
 const mime={'.mjs':'text/javascript','.webp':'image/webp'};
 const server=http.createServer((req,res)=>{

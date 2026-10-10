@@ -1,0 +1,188 @@
+[
+  {
+    "title": "수학 1-1",
+    "name": "수학 1-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 초등_수학 1-1 PDF (1).pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30048/483?arch_id=24401"
+  },
+  {
+    "title": "수학 1-2",
+    "url": "https://ele.douclass.com/textbooks/30048/603",
+    "grade": "1",
+    "term": "2",
+    "name": "수학 1-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 초등_수학 1-2 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30048/603?arch_id=24404"
+  },
+  {
+    "title": "수학 2-1",
+    "url": "https://ele.douclass.com/textbooks/30049/484",
+    "grade": "2",
+    "term": "1",
+    "name": "수학 2-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 초등_수학 2-1 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30049/484?arch_id=24407"
+  },
+  {
+    "title": "수학 2-2",
+    "url": "https://ele.douclass.com/textbooks/30049/613",
+    "grade": "2",
+    "term": "2",
+    "name": "수학 2-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 초등_수학 2-2 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30049/613?arch_id=24410"
+  },
+  {
+    "title": "수학 3-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30050/500",
+    "grade": "3",
+    "term": "1",
+    "name": "수학 3-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_수학 3-1 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30050/500?arch_id=12574"
+  },
+  {
+    "title": "사회 3-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30050/508",
+    "grade": "3",
+    "term": "1",
+    "name": "사회 교과서 3-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_사회 3-1_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30050/508?arch_id=12879"
+  },
+  {
+    "title": "사회 3-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30050/509",
+    "grade": "3",
+    "term": "2",
+    "name": "사회 교과서 3-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_사회 3-2_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30050/509?arch_id=28737"
+  },
+  {
+    "title": "수학 5-2 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30052/505",
+    "grade": "5",
+    "term": "2",
+    "name": "수학 5-2 PDF",
+    "path": "D:/Downloads/(동아출판) 초등_수학 5-2 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30052/505?arch_id=37073"
+  },
+  {
+    "title": "사회 5-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30052/625",
+    "grade": "5",
+    "term": "2",
+    "name": "사회 교과서 5-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 사회 5-2 교과서 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30052/625?arch_id=37253"
+  },
+  {
+    "title": "수학 6-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30053/506",
+    "grade": "6",
+    "term": "1",
+    "name": "수학 6-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 초등_수학 6-1 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30053/506?arch_id=32847"
+  },
+  {
+    "title": "사회 6-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30053/626",
+    "grade": "6",
+    "term": "1",
+    "name": "사회 교과서 6-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_사회 6-1_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30053/626?arch_id=33638"
+  },
+  {
+    "title": "사회 6-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30053/627",
+    "grade": "6",
+    "term": "2",
+    "name": "사회 교과서 6-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_사회 6-2_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30053/627?arch_id=37326"
+  },
+  {
+    "title": "수학 4-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30051/502",
+    "grade": "4",
+    "term": "1",
+    "name": "수학 4-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_수학 4-1 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30051/502?arch_id=12723"
+  },
+  {
+    "title": "사회 4-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30051/510",
+    "grade": "4",
+    "term": "1",
+    "name": "사회 교과서 4-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_사회 4-1_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30051/510?arch_id=12953"
+  },
+  {
+    "title": "수학 4-2 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30051/596",
+    "grade": "4",
+    "term": "2",
+    "name": "수학 4-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_수학 4-2 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30051/596?arch_id=14700"
+  },
+  {
+    "title": "사회 4-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30051/511",
+    "grade": "4",
+    "term": "2",
+    "name": "사회 교과서 4-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_사회 4-2_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30051/511?arch_id=12996"
+  },
+  {
+    "title": "수학 5-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30052/504",
+    "grade": "5",
+    "term": "1",
+    "name": "수학 5-1 PDF",
+    "path": "D:\\Downloads\\(동아출판) 초등_수학 5-1 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30052/504?arch_id=32756"
+  },
+  {
+    "title": "과학 4-1 (장신호)",
+    "url": "https://ele.douclass.com/textbooks/30051/514",
+    "grade": "4",
+    "term": "1",
+    "name": "과학 4-1 PDF",
+    "path": "D:\\Downloads\\[동아출판] 22개정_초등_과학 4-1 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30051/514?arch_id=28832"
+  },
+  {
+    "title": "과학 4-2 (장신호)",
+    "url": "https://ele.douclass.com/textbooks/30051/515",
+    "grade": "4",
+    "term": "2",
+    "name": "과학 4-2 PDF",
+    "path": "D:\\Downloads\\(동아출판) 22개정_초등_과학 4-2 PDF.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30051/515?arch_id=28874"
+  },
+  {
+    "title": "사회 5-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30052/624",
+    "grade": "5",
+    "term": "1",
+    "name": "사회 교과서 5-1 PDF",
+    "path": "D:/Downloads/(동아출판) 22개정_초등_사회 5-1_교과서.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30052/624"
+  },
+  {
+    "title": "사회과 부도 (정동연)",
+    "url": "https://ele.douclass.com/textbooks/30052/745",
+    "grade": "5",
+    "term": "1",
+    "name": "사회과 부도 교과서_전체",
+    "path": "D:/Downloads/(동아출판) 22개정_초등_사회과 부도_본문.pdf",
+    "sourceUrl": "https://ele.douclass.com/textbooks/30052/745"
+  }
+]

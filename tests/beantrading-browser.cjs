@@ -5,7 +5,7 @@ const path = require("node:path");
 const { chromium } = require("../game-hub-server/node_modules/playwright");
 const base = process.env.BEAN_TEST_URL || "http://127.0.0.1:8936";
 const url = `${base}/learning/games/beantrading/beantrading`;
-const output = path.resolve(__dirname, "../tmp/beantrading");
+const output = path.resolve(__dirname, "../outputs/qa/beantrading");
 fs.mkdirSync(output, { recursive: true });
 const errors = [];
 async function attach(page) {

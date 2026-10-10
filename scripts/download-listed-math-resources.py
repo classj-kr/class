@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / 'references/textbooks'
-DEST = ROOT / 'tmp/textbook-research/math-downloads'
+DEST = ROOT / 'references/textbooks/수집작업/math-downloads'
 QUEUE = REF / 'math-download-queue.json'
 RECEIPTS = REF / 'math-direct-download-receipts.json'
 DEST.mkdir(parents=True, exist_ok=True)

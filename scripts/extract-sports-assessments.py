@@ -10,7 +10,7 @@ def key(s):return re.sub(r'\s+','',s)
 def run():
     index=json.loads((REF/'assessment-index-sports-2022.json').read_text(encoding='utf-8'));out=[];issues=[]
     reviews={r['id']:r for r in json.loads((REF/'sports-assessment-match-review.json').read_text(encoding='utf-8'))['reviews']}
-    cache=ROOT/'tmp/textbook-research/assessment-text';cache.mkdir(parents=True,exist_ok=True)
+    cache=ROOT/'references/textbooks/수집작업/assessment-text';cache.mkdir(parents=True,exist_ok=True)
     labels=['평가 과제','관련 성취 기준','평가 유형','평가 대상','준비물','평가 관점','성취 수준','잘함','보통','노력 요함','평가상의 유의점','예시 답안']
     for item in index['assessments']:
         if item['id'] in reviews:

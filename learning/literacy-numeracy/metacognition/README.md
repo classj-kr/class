@@ -66,7 +66,7 @@ node tests/metacognition-browser.cjs
 첫 명령은 결과 시나리오, 모든 학년 문항, 서버 계약, 기존 정답 키 호환성, 로컬 PostgreSQL의 마이그레이션과 저장을 검사한다.
 두 번째는 로컬 서버와 브라우저로 모든 학년 풀이, 만점/전부 오답/찍기/전부 모름/일부 모름,
 답 변경, 이어 풀기, 복습 필터, 모바일 가로 넘침, HTML·JSON 내려받기와 인쇄 가독성을 검사한다.
-Windows는 설치된 Edge를 사용한다. 브라우저 검사 결과물은 output/metacognition-review-20260930에 저장한다.
+Windows는 설치된 Edge를 사용한다. 브라우저 검사 결과물은 outputs/metacognition-review-20260930에 저장한다.
 기존 verify-shuffle.js와 verify-export.js 진입점도 같은 브라우저 검사를 호출한다.
 
 ## 저장과 내려받기

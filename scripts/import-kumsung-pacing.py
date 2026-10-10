@@ -13,7 +13,7 @@ import openpyxl
 import pdfplumber
 
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'tmp/textbook-research/python-packages'))
+sys.path.insert(0,str(ROOT/'references/textbooks/수집작업/python-packages'))
 from hwp5.xmlmodel import Hwp5File
 OUT=ROOT/'game-hub-server/data/textbooks'
 RAW=ROOT/'references/textbooks/raw'

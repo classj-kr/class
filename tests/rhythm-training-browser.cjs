@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const express = require('../game-hub-server/node_modules/express');
 const { chromium, webkit } = require('../game-hub-server/node_modules/playwright');
 const { createRhythmTraining } = require('../game-hub-server/rhythm-training');
-const root = path.resolve(__dirname, '..'), output = path.join(root, 'tmp', 'rhythm-training');
+const root = path.resolve(__dirname, '..'), output = path.join(root, "outputs/qa/rhythm-training");
 fs.mkdirSync(output, { recursive: true });
 let serverClock = Date.now();
 const app = express(); app.use(express.json());

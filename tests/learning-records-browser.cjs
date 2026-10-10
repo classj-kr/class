@@ -6,7 +6,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 const { harness } = require('./learning-records-integration.cjs');
 async function main() {
   const h = await harness(), browser = await chromium.launch({ channel: 'msedge', headless: true });
-  const errors = [], output = path.resolve(__dirname, '../output/learning-records-review'); fs.mkdirSync(output, { recursive: true });
+  const errors = [], output = path.resolve(__dirname, '../outputs/learning-records-review'); fs.mkdirSync(output, { recursive: true });
   const context = async user => { const c = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': String(user) }, viewport: { width: 1440, height: 1000 } }); await c.route('https://**', route => route.abort()); return c; };
   try {
     await h.db.exec(`INSERT INTO classroom_classes VALUES (90,10,2026,3,1);

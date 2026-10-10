@@ -8,7 +8,7 @@ const { WebSocket } = require('../game-hub-server/node_modules/ws');
 const root = path.resolve(__dirname, '..');
 const port = 24000 + Math.floor(Math.random() * 5000);
 const base = `http://127.0.0.1:${port}`;
-const out = path.join(root, 'tmp/ufo-lobby-check');
+const out = path.join(root, 'outputs/qa/ufo-lobby-check');
 fs.mkdirSync(out, {recursive:true});
 const hub = spawn(process.execPath, ['server.js'], {
   cwd:path.join(root,'game-hub-server'), windowsHide:true,

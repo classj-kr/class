@@ -1,10 +1,10 @@
-// Read-only source inventory. Writes findings under output/, never student data.
+// Read-only source inventory. Writes findings under outputs/, never student data.
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const base = 'learning/literacy-numeracy/';
-const output = path.join(root, 'output', 'learning-report-audit-20261001');
+const output = path.join(root, 'outputs', 'learning-report-audit-20261001');
 const rows = [
   ['story-books/korea-tales', '한국 전래 동화', '읽기', 'memory', '페이지·문제 응답은 화면 메모리, 언어 설정은 기기 저장', '작품·언어·읽던 위치와 문항별 시도 기록이 필요', ['story-books/korea-tales/heungbujeon/app.js']],
   ['story-books/world-tales', '세계 명작 동화', '읽기', 'memory', '페이지·퀴즈 상태는 화면 메모리, 언어 설정은 기기 저장', '작품·언어·읽던 위치와 문항별 시도 기록이 필요', ['story-books/world-tales/red-hood/app.js']],

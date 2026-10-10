@@ -19,7 +19,7 @@ for source in manifest['sources']:
         'downloadUrl':'https://www.ybmcloud.com/prcenter_contents/'+source['contentId']+'/download',
         'sha256':hashlib.sha256(file.read_bytes()).hexdigest(),'bytes':file.stat().st_size,'pageCount':len(pages),
         'status':'tables-extracted-needs-review'})
-    (output/(source['contentId']+'.json')).write_text(json.dumps({'source':source,'pages':pages},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (outputs/(source['contentId']+'.json')).write_text(json.dumps({'source':source,'pages':pages},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 manifest['status']='tables-extracted-needs-review'
 manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'files':len(manifest['sources']),'pages':sum(s['pageCount'] for s in manifest['sources'])}))

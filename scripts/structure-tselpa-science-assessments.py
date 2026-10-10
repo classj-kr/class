@@ -1,7 +1,7 @@
 """Extract single-stage science rubrics with explicit original paragraph evidence."""
 import json,re
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks';CACHE=ROOT/'tmp/textbook-research/tselpa-assessment-text'
+ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks';CACHE=ROOT/'references/textbooks/수집작업/tselpa-assessment-text'
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 def write(p,d):p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def run():

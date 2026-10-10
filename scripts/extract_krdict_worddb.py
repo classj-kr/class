@@ -1,7 +1,7 @@
-"""기초사전 XML에서 한자어 낱말집을 뽑아 tmp/worddb.json에 적는다.
+"""기초사전 XML에서 한자어 낱말집을 뽑아 references/dictionaries/worddb.json에 적는다.
 
 한 낱말마다 한자 표기·뜻풀이·예문을 모아 두어, 차시를 만들 때 예문을 골라 쓴다.
-원본(tmp/korean-dict-nikl-sparse)은 크기가 커서 저장소에 두지 않는다.
+원본(references/dictionaries/korean-dict-nikl-sparse)은 크기가 커서 저장소에 두지 않는다.
 """
 import glob
 import io
@@ -36,9 +36,9 @@ def plain(value):
 
 
 def main():
-    sources = sorted(glob.glob(os.path.join(ROOT, 'tmp/korean-dict-nikl-sparse/krdict/*.xml')))
+    sources = sorted(glob.glob(os.path.join(ROOT, 'references/dictionaries/korean-dict-nikl-sparse/krdict/*.xml')))
     if not sources:
-        raise SystemExit('tmp/korean-dict-nikl-sparse/krdict/*.xml 이 없습니다.')
+        raise SystemExit('references/dictionaries/korean-dict-nikl-sparse/krdict/*.xml 이 없습니다.')
     words = {}
     for path in sources:
         text = open(path, encoding='utf-8').read()
@@ -63,7 +63,7 @@ def main():
                 'def': plain(definition.group(1)) if definition else '',
                 'ex': examples[:4],
             })
-    out = os.path.join(ROOT, 'tmp/worddb.json')
+    out = os.path.join(ROOT, 'references/dictionaries/worddb.json')
     with open(out, 'w', encoding='utf-8') as stream:
         json.dump(words, stream, ensure_ascii=False)
     withExample = sum(1 for records in words.values() for record in records if record['ex'])

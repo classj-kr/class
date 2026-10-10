@@ -6,7 +6,7 @@ const { createHarness } = require('./learning-boards-harness.cjs');
 
 (async () => {
   const h = await createHarness();
-  const output = path.resolve(__dirname, '../output/learning-boards-review'); fs.mkdirSync(output, { recursive: true });
+  const output = path.resolve(__dirname, '../outputs/learning-boards-review'); fs.mkdirSync(output, { recursive: true });
   let browser;
   try {
     browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });

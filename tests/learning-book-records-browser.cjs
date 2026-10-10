@@ -35,7 +35,7 @@ async function main() {
         assert.deepEqual(layout.before, layout.original, book + ' keeps the original book layout at ' + viewport.width);
         assert.ok(Math.abs(layout.before.x + layout.before.width / 2 - viewport.width / 2) < 2, book + ' stays centered');
         if (book.includes('jack-beanstalk') || book.includes('monte-cristo')) {
-          await page.screenshot({ path: path.resolve('output/learning-records-review', book.split('/')[1] + (viewport.width === 390 ? '-mobile.png' : '-desktop.png')) });
+          await page.screenshot({ path: path.resolve('outputs/learning-records-review', book.split('/')[1] + (viewport.width === 390 ? '-mobile.png' : '-desktop.png')) });
         }
       }
       await page.setViewportSize({ width: 1400, height: 1000 });

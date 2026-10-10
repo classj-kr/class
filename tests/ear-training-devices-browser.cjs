@@ -5,7 +5,7 @@ const path = require('node:path');
 const http = require('node:http');
 const {chromium, webkit} = require('playwright');
 const root = path.resolve(__dirname, '..');
-const output = path.join(root, 'tmp', 'ear-training-devices');
+const output = path.join(root, "outputs/qa/ear-training-devices");
 fs.mkdirSync(output, {recursive:true});
 const server = http.createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;

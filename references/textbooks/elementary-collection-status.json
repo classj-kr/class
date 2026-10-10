@@ -1,0 +1,30 @@
+{
+  "scope": "2022 개정 초등 국어·수학·사회·과학. 국정 교과서 및 미래엔·동아·천재 제공 목록 기준. 부교재 전체 완비를 뜻하지 않음.",
+  "bodySets": 104,
+  "atlasTitles": 2,
+  "pdfFiles": 564,
+  "bytes": 32054361422,
+  "pending": [
+    {
+      "publisher": "천재",
+      "title": "사회과 부도(김정인)_5-6_2022",
+      "reason": "로그인 확인 후 공식 교과서 다운로드를 실행했으나 파일 다운로드가 시작되지 않음. 공개 묶음 링크도 제공되지 않음.",
+      "sourceUrl": "https://ele.tsherpa.co.kr/curri/E-curri_list.html?semester=1&grade=5&curri=E-curri05-social-K-budo_2026"
+    },
+    {
+      "publisher": "천재",
+      "title": "사회과 부도(박기범)_5-6_2022",
+      "reason": "로그인 확인 후 공식 교과서 다운로드를 실행했으나 파일 다운로드가 시작되지 않음. 공개 묶음 링크도 제공되지 않음.",
+      "sourceUrl": "https://ele.tsherpa.co.kr/curri/E-curri_list.html?semester=1&grade=5&curri=E-curri05-social-P-budo_2026"
+    }
+  ],
+  "notes": [
+    "본문은 전체 PDF 또는 출판사가 제공한 단원별 PDF 묶음으로 저장함. 표지·판권·정답·부록 완전성은 단원 파일 제공 범위에 따름.",
+    "국어 가·나를 한 학년·학기 자료 묶음으로 계산함. 국정 1~2학년 수학은 동아 제공본을 저장함.",
+    "수학익힘·실험관찰·교과서 활동 자료는 함께 확보된 파일만 포함. 국어활동 등 부교재 전체 수집은 별도 대상.",
+    "PDF 헤더·파일 크기·페이지 구조를 검사함. 전체 페이지의 육안 검수는 수행하지 않음."
+  ],
+  "checkedAt": "2026-10-10",
+  "folder": "E:\\webprojects\\class\\references\\textbooks\\초등",
+  "htmlPreview": "앱 브라우저의 file: URL 정책으로 미리보기 불가. 파일 존재 및 모든 PDF 연결 대상 경로 확인 완료."
+}

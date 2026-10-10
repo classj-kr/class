@@ -8,6 +8,7 @@
 node_modules/
 .pnpm-store/
 .npm-cache/
+/tools/.cache/
 dist/
 .vinext/
 .next/
@@ -18,6 +19,9 @@ __pycache__/
 *.py[cod]
 
 # Locally generated reports and previews
+/.tmp/
+/output/
+/.render-assets/
 /outputs/
 /tmp/
 /game-hub-server/.runtime/
@@ -51,6 +55,12 @@ __pycache__/
 /references/*
 !/references/textbooks/
 /references/textbooks/raw/
+# Collected originals, working copies and download receipts stay local.
+/references/textbooks/초등/
+/references/textbooks/중고등/
+/references/textbooks/수학/
+/references/textbooks/수집작업/
+/references/textbooks/수집기록/
 !/references/moe/
 /references/moe/*
 !/references/moe/2022-revised-curriculum/

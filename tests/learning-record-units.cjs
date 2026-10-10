@@ -106,9 +106,9 @@ async function main() {
     await teacherPage.locator('#closeDetail').click();
     await teacherPage.setViewportSize({ width: 390, height: 844 });
     assert.equal(await teacherPage.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    await teacherPage.screenshot({ path: 'output/learning-records-review/teacher-unit-completion-mobile.png', fullPage: true });
+    await teacherPage.screenshot({ path: 'outputs/learning-records-review/teacher-unit-completion-mobile.png', fullPage: true });
     await teacherPage.setViewportSize({ width: 1440, height: 1000 });
-    await teacherPage.screenshot({ path: 'output/learning-records-review/teacher-unit-completion.png', fullPage: true });
+    await teacherPage.screenshot({ path: 'outputs/learning-records-review/teacher-unit-completion.png', fullPage: true });
     assert.deepEqual(errors, []);
     console.log('PASS unit completion: old 9/9 wrong answers complete, cumulative KST progress/daily scores, no future completion, retry retention, next unit, student/teacher detail isolation, access controls, cross-device restore, no local storage, mobile layout.');
   } finally { if (browser) await browser.close(); await h.close(); }

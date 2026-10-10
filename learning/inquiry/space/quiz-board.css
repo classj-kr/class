@@ -189,6 +189,11 @@
     flex-direction: column;
     gap: 8px;
 }
+.quiz-data-table { width:100%; border-collapse:collapse; margin:12px 0 18px; color:#dfebf6; font-size:14px; }
+.quiz-data-table caption { text-align:left; margin-bottom:8px; color:#9bc3d8; }
+.quiz-data-table th,.quiz-data-table td { border:1px solid #466078; padding:10px; text-align:center; line-height:1.5; }
+.quiz-data-table th { background:#1b3347; }
+.quiz-card input:focus-visible { outline:2px solid #facc15; outline-offset:4px; }
 
 .quiz-card label {
     display: flex;
@@ -264,6 +269,10 @@
 
 .quiz-card[data-state="correct"] .answer-result { color: #6ee7b7; }
 .quiz-card[data-state="incorrect"] .answer-result { color: #fca5a5; }
+.quiz-card[data-state] label[data-correct="true"] { border-color:#6ee7b7; background:rgba(110,231,183,.09); }
+.quiz-card[data-state="incorrect"] label:has(input:checked) { border-color:#fca5a5; color:#fecaca; background:rgba(252,165,165,.09); }
+.quiz-card[data-state] label { cursor:default; }
+.answer-button:disabled { cursor:default; opacity:.65; }
 
 /* 더 보기 */
 .quiz-more {

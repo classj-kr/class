@@ -1,7 +1,7 @@
 """Extract local Achimnara originals; retain source variants and review boundaries."""
 import hashlib,importlib.util,json,re,zipfile
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks';TMP=ROOT/'tmp/textbook-research/achim-assessments'
+ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks';TMP=ROOT/'references/textbooks/수집작업/achim-assessments'
 TMP.mkdir(parents=True,exist_ok=True)
 spec=importlib.util.spec_from_file_location('hwp_text',ROOT/'scripts/extract-assessment-text.py')
 helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)

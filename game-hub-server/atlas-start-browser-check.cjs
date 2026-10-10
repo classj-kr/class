@@ -21,7 +21,7 @@ const assert=require('node:assert/strict');
    assert.deepEqual(state,{spots:0,wind:'none',currents:'none',grid:'none'});
   }
   await page.goto('http://127.0.0.1:5179/learning/inquiry/globe/#currents');await blank();
-  await page.waitForTimeout(900);await page.screenshot({path:'tmp/atlas-blank-desktop.png'});
+  await page.waitForTimeout(900);await page.screenshot({path:'outputs/work/atlas-blank-desktop.png'});
   await page.locator('[data-lesson="currents"]').evaluate(b=>b.closest('details').open=true);
   await page.locator('[data-lesson="currents"]').click();
   await page.waitForFunction(()=>__startMap.getLayoutProperty('wind-flow','visibility')==='visible');
@@ -31,7 +31,7 @@ const assert=require('node:assert/strict');
   await page.setViewportSize({width:390,height:844});
   await page.reload();await blank();await page.waitForTimeout(500);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-  await page.screenshot({path:'tmp/atlas-blank-mobile.png'});
+  await page.screenshot({path:'outputs/work/atlas-blank-mobile.png'});
   await page.getByRole('button',{name:'평면지도',exact:true}).click();
   await page.waitForTimeout(1200);assert.equal(await page.locator('#lessonPanel').isVisible(),false);
   assert.deepEqual(errors,[]);console.log('Blank entry, old hash, saved layers, selection, reload, mobile and projection checks passed.');

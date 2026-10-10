@@ -3,7 +3,7 @@ import sys,io,json,urllib.request,xml.etree.ElementTree as ET,logging
 logging.disable(logging.CRITICAL)
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'tmp/textbook-research/python-packages'))
+sys.path.insert(0,str(ROOT/'references/textbooks/수집작업/python-packages'))
 from hwp5.xmlmodel import Hwp5File
 from hwp5.storage.ole import OleStorage
 m=json.loads((ROOT/'references/textbooks/icream-browser-assessments/6-2.json').read_text(encoding='utf-8'))

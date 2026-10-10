@@ -11,17 +11,20 @@ test("Render artifact pruning removes development files but keeps runtime conten
     const developmentFile = path.join(root, "tools", "generator.bin");
     const sourceFile = path.join(root, "learning", "inquiry", "information-computing", "computer-fundamentals", "assets", "source", "original.png");
     const runtimeFile = path.join(root, "learning", "inquiry", "information-computing", "computer-fundamentals", "assets", "lesson.webp");
-    for (const file of [developmentFile, sourceFile, runtimeFile]) {
+    const localArtifacts = ["output", "outputs", "tmp", "scratch", "research"]
+      .map(directory => path.join(root, directory, "local-only.bin"));
+    for (const file of [developmentFile, sourceFile, runtimeFile, ...localArtifacts]) {
       mkdirSync(path.dirname(file), { recursive: true });
       writeFileSync(file, "1234567890");
     }
 
     const result = pruneRenderArtifact(root);
-    assert.equal(result.removedBytes, 20);
-    assert.equal(result.removedTargets, 2);
+    assert.equal(result.removedBytes, 70);
+    assert.equal(result.removedTargets, 7);
     assert.equal(existsSync(developmentFile), false);
     assert.equal(existsSync(sourceFile), false);
     assert.equal(existsSync(runtimeFile), true);
+    for (const file of localArtifacts) assert.equal(existsSync(file), false);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

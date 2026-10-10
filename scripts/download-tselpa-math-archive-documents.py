@@ -15,7 +15,7 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'references/textbooks'
-DEST = ROOT / 'tmp/textbook-research/math-downloads'
+DEST = ROOT / 'references/textbooks/수집작업/math-downloads'
 RECEIPTS = BASE / 'math-tselpa-archive-download-receipts.json'
 DEST.mkdir(parents=True, exist_ok=True)
 sources = json.loads((BASE / 'tselpa-ebook-math-zip-sources.json').read_text(encoding='utf8'))

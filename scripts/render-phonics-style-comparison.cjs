@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 (async () => {
-  const spec = JSON.parse(fs.readFileSync('output/phonics-full-audit/art-v4-bounds.json', 'utf8'));
+  const spec = JSON.parse(fs.readFileSync('outputs/phonics-full-audit/art-v4-bounds.json', 'utf8'));
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage({ viewport: { width: 720, height: 1500 } });
@@ -40,7 +40,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
       }
       document.body.replaceChildren(gallery);
     }, spec);
-    await page.locator('#style-review').screenshot({path:path.resolve('output/phonics-picture-review/style-comparison-v4.png')});
+    await page.locator('#style-review').screenshot({path:path.resolve('outputs/phonics-picture-review/style-comparison-v4.png')});
     console.log('Saved reference / previous / replacement comparison using the production image renderer.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

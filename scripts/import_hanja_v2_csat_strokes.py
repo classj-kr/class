@@ -4,8 +4,8 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_DIR = ROOT / 'scripts'
-KVG_DIR = ROOT / 'tmp' / 'kanjivg' / 'kanji'
-MMH_GRAPHICS = ROOT / 'tmp' / 'makemeahanzi' / 'graphics.txt'
+KVG_DIR = ROOT / 'references/dictionaries/kanjivg' / 'kanji'
+MMH_GRAPHICS = ROOT / 'references/dictionaries/makemeahanzi' / 'graphics.txt'
 STROKE_PATH = SCRIPT_DIR / 'hanja-strokes.json'
 LESSON_PATH = SCRIPT_DIR / 'hanja-v2-lessons-06.json'
 CANDIDATE_PATH = SCRIPT_DIR / 'hanja-csat-expansion-candidates.json'

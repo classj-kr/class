@@ -76,7 +76,7 @@ async function main() {
     assert.equal(await page.locator('#summary .rate-count').innerText(), '2/3');
     assert.equal(await page.locator('#summary article').nth(1).locator('strong').innerText(), '2', 'all-period completed total includes old completions');
     assert.match(await page.locator('.record-card').first().innerText(), /오늘 속담/, 'all-period output remains newest first');
-    const output = path.resolve(__dirname, '../output/learning-records-review'); fs.mkdirSync(output, { recursive: true });
+    const output = path.resolve(__dirname, '../outputs/learning-records-review'); fs.mkdirSync(output, { recursive: true });
     await page.screenshot({ path: path.join(output, 'teacher-periods-desktop.png'), fullPage: true });
     for (const width of [320, 390]) {
       await page.setViewportSize({ width, height: 844 });

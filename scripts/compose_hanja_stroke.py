@@ -12,7 +12,7 @@ from xml.etree import ElementTree as ET
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KVG = os.path.join(ROOT, 'tmp/kanjivg/kanji')
+KVG = os.path.join(ROOT, 'references/dictionaries/kanjivg/kanji')
 
 NUMBER = re.compile(r'-?\d*\.?\d+')
 COMMAND = re.compile(r'([MmLlHhVvCcSsQqTtAaZz])')

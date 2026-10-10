@@ -24,6 +24,10 @@ export const RENDER_PRUNE_TARGETS = Object.freeze([
   "docs",
   // Review screenshots and audit pages written by local tooling; nothing serves them.
   "output",
+  "outputs",
+  "tmp",
+  "scratch",
+  "research",
   "pisa-reference.jpg",
   "references",
   "scratch_all_poems_text.txt",

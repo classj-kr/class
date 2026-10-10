@@ -4,7 +4,7 @@ const path = require('node:path');
 const http = require('node:http');
 const puppeteer = require('puppeteer-core');
 const root = path.resolve(__dirname, '..');
-const output = path.join(root, 'tmp/seasonal-space-review');
+const output = path.join(root, 'outputs/qa/seasonal-space-review');
 fs.mkdirSync(output, { recursive: true });
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css', '.webp': 'image/webp' };
 // Observe real camera/scene state without adding a debug API to production.

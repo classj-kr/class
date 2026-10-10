@@ -6,7 +6,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 const express = require('../game-hub-server/node_modules/express');
 const root = path.resolve(__dirname, '..');
 const area = '/learning/literacy-numeracy/metacognition/';
-const output = path.join(root, 'output', 'metacognition-review-20260930');
+const output = path.join(root, 'outputs', 'metacognition-review-20260930');
 const sets = [
   { page: 'index.html', items: require('..' + area + 'items.js').METACOG_ITEMS, version: 'metacog-v3' },
   ...Array.from({ length: 7 }, (_, i) => {

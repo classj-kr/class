@@ -6,7 +6,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 // python -m http.server 8765 --bind 127.0.0.1
 
 (async () => {
-  const output = path.resolve(__dirname, '../output/phonics-picture-review');
+  const output = path.resolve(__dirname, '../outputs/phonics-picture-review');
   fs.mkdirSync(output, { recursive: true });
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {

@@ -9,7 +9,7 @@
 - **비동기 보호:** 키 확인 중 입력이 바뀌면 요청을 보내지 않는다. 생성 요청 후 평가요소·단계·기준·기존 문장·조회 계획이 바뀌면 늦은 응답을 적용하지 않는다. 다시 그린 버튼에서도 생성 중 중복 요청을 막는다.
 - **서버 검증:** `node --test game-hub-server/teacher-ai-plan.test.mjs game-hub-server/teacher-ai.test.mjs game-hub-server/teacher-ai-topics.test.mjs game-hub-server/assessment-plans.test.mjs` — **13개 통과, 실패 0개**. 선택한 성취기준 유무, 누락·null·공백·보이지 않는 문자·객체·배열·숫자·불리언을 검사했다. 잘못된 요청을 반복해도 외부 AI 호출이 0건이고 이후 정상 요청의 생성 한도를 소비하지 않음을 확인했다. 정상 입력의 초안 생성과 계획 저장·권한·파일 읽기 회귀 검사도 통과했다.
 - **브라우저 검증:** `node tests/assessment-plan-browser.cjs` 통과. 실제 HTML/JS와 API를 합성 PGlite DB에 연결해 Edge에서 실행했다. 입력 누락·강제 클릭·단계 변경 후에도 요청 0건, 정상 생성·저장, 키 확인 중 입력 삭제, 응답 지연 중 입력 삭제·화면 재생성·중복 클릭 차단을 확인했다. 외부 Google 응답만 모의 처리하여 실제 AI 비용은 발생하지 않았다.
-- **증거:** `outputs/assessment-element-server-before.log`, `outputs/assessment-element-browser-before.log`, `outputs/assessment-element-server-after.log`, `outputs/assessment-element-browser-after.log`. 전후 화면은 `outputs/assessment-element-required-2026-10-07/before.png`, `after.png`다. 운영 버전·DB 준비 상태 확인 결과는 `outputs/assessment-element-deploy-2026-10-07.json`에 별도로 기록한다.
+- **증거:** `outputs/logs/assessment-element-server-before.log`, `outputs/logs/assessment-element-browser-before.log`, `outputs/logs/assessment-element-server-after.log`, `outputs/logs/assessment-element-browser-after.log`. 전후 화면은 `outputs/assessment-element-required-2026-10-07/before.png`, `after.png`다. 운영 버전·DB 준비 상태 확인 결과는 `outputs/reports/assessment-element-deploy-2026-10-07.json`에 별도로 기록한다.
 - **범위:** 운영 계정의 실제 평가 계획이나 AI 키는 사용하지 않았다. 이 결과는 해당 기능과 관련 회귀 검사에 한정되며, 사이트 전체의 검증 완료를 의미하지 않는다.
 
 ## 2026-10-07 추가 확인: 문의 접수 버튼의 문구·표시
@@ -19,7 +19,7 @@
 - **수정:** 문구를 ‘요청 접수’로 정리하고, 본문 글꼴·16px 크기·600 굵기·48px 이상 높이·일정한 여백을 적용했다. PC에서는 오른쪽 정렬, 작은 화면에서는 폼 너비에 맞췄다. 키보드 초점과 접수 중 비활성 상태도 표시한다. 변경은 문의 화면에만 적용했고 접수 JavaScript는 변경하지 않았다.
 - **화면 확인:** 합성 로그인 응답으로 1200·390·320px에서 실제 HTML/CSS를 렌더링했다. 가로 넘침·브라우저 오류가 없고 버튼 높이는 약 48px였다. 실제 문의는 전송하지 않았다. 증거는 `outputs/support-button-2026-10-07/`의 화면과 `review.json`이다.
 - **기존 검사 한계:** `tests/privacy-guardian-contract.js`는 문의 페이지에서 비밀번호·주민등록번호 안내문을 찾는 검사에 실패했다. 해당 문구는 수정 전 HEAD에도 없었다. 버튼의 접수 스크립트가 동일함을 별도로 확인했으며, 이 기존 실패를 검사 통과로 계산하지 않았다.
-- **배포 증거:** `outputs/support-button-deploy-2026-10-07.json`에 운영 버전 반영 결과를 기록한다.
+- **배포 증거:** `outputs/reports/support-button-deploy-2026-10-07.json`에 운영 버전 반영 결과를 기록한다.
 
 ## 2026-10-07 추가 확인: 구글 이름 표시로 늘어나는 명단 행 높이
 
@@ -28,7 +28,7 @@
 - **수정:** 이름의 최소 폭은 유지하고 표시를 한 줄에 배치했다. 성명 열이 필요한 폭을 확보하며, 좁은 화면에서는 기존 표의 가로 스크롤을 사용한다. 이름 영역에 최소 높이를 두어 조회 화면에서 계정 연동 배지 유무로 생기던 작은 높이 차이도 없앴다.
 - **재현:** 관리자 학생 명단에서 일반 행은 약 33px, 구글 표시 행은 54px, 구글+불일치 표시 행은 76px였다. 수정 후 모두 약 33px다. 일반 교사 조회 행도 약 25px로 일정하다. 마지막 행의 테두리 유무에 따른 0.5px 차이는 허용했다.
 - **검증:** `node tests/school-roster-names-browser.cjs` 통과. 관리자·일반 교사 × 학생·교직원 명단 × 1920·1365·1024·768·390px의 **20개 화면**에서 이름 잘림·표시 겹침·성명 열 침범·표시 줄바꿈 0건, 학생 행 높이 불일치 0건을 확인했다. 일반 이름, 구글 이름, 긴 이름, 불일치 표시, 표시 두 개, 로그인 대기, 실제 계정 연동 배지를 포함한 합성 데이터다. 기존 `school-roster-blank-name-browser.cjs`의 이름·표시·저장 검사도 통과했다.
-- **증거:** `outputs/school-roster-row-spacing-2026-10-07/`의 `before.json`, `after.json`, 역할·탭·너비별 전후 화면. 로그는 `outputs/school-roster-row-spacing-before.log`, `school-roster-row-spacing-after.log`, `school-roster-row-spacing-blank-name.log`다. 운영 배포 확인은 `outputs/school-roster-row-spacing-deploy-2026-10-07.json`에 기록한다.
+- **증거:** `outputs/school-roster-row-spacing-2026-10-07/`의 `before.json`, `after.json`, 역할·탭·너비별 전후 화면. 로그는 `outputs/logs/school-roster-row-spacing-before.log`, `school-roster-row-spacing-after.log`, `school-roster-row-spacing-blank-name.log`다. 운영 배포 확인은 `outputs/reports/school-roster-row-spacing-deploy-2026-10-07.json`에 기록한다.
 
 ## 2026-10-07 추가 확인: 일반 교사의 교육과정 조회 차단
 
@@ -41,10 +41,10 @@
 - **함께 확인한 결함:** PostgreSQL의 문자열 시수를 숫자로 변환하지 않아 합계가 이어 붙는 문제, 기초시간표 편집 조건에서 `{ weekly, annual }` 객체를 숫자와 비교해 편성을 마쳐도 열리지 않는 문제를 수정했다.
 - **검증:** `school-curriculum-permissions.test.mjs` 8개와 관련 회귀 검사를 합쳐 **34개 통과, 실패 0개**. 실제 라우트·권한 함수·SQL을 두 학교의 합성 PGlite DB에 연결하고 실제 HTML/JS를 Edge에서 실행했다. 일반 교사의 7개 탭 조회·필터·인쇄, 변경 요청 403, 다른 학교 차단, 비활성 등록 차단, 관리자 저장 후 교사 조회, 관리자 권한 회수, DB 변경 0건을 확인했다. 수정 전 일반 교사 조회 검사는 `SCHOOL_ADMIN_REQUIRED` 403으로 실패했다.
 - **재실행:** `node --test game-hub-server/school-curriculum-permissions.test.mjs`. 기존 시간표 데이터 검사도 새 조회 권한에 맞췄다.
-- **증거:** `outputs/school-curriculum-before.log`, `outputs/school-curriculum-after.log`, `outputs/school-curriculum-final.log`, `outputs/school-curriculum-readonly-2026-10-07/teacher-annual.png`. 운영 반영 확인은 `outputs/school-curriculum-deploy-2026-10-07.json`에 별도 기록한다.
+- **증거:** `outputs/logs/school-curriculum-before.log`, `outputs/logs/school-curriculum-after.log`, `outputs/logs/school-curriculum-final.log`, `outputs/school-curriculum-readonly-2026-10-07/teacher-annual.png`. 운영 반영 확인은 `outputs/reports/school-curriculum-deploy-2026-10-07.json`에 별도 기록한다.
 - **검사 범위:** 운영 교사 계정으로 로그인하거나 실제 학교 DB를 변경하지 않았다. 합성 계정에서의 기능 검증과 운영 배포 버전·공개 응답 검증을 구분한다.
 
-아래 추가 확인 항목들의 ‘운영 배포하지 않았다’는 각 수정 당시의 기록이다. 이후 사용자 요청에 따라 `72c80b7a90eb6ce40fdaddbc3b14c4a3603ac58c`로 묶어 배포했고, 운영 `/health`의 동일 커밋과 DB 준비 상태를 확인했다. 당시 배포 증거는 `outputs/deploy-2026-10-07-verification.json`이다.
+아래 추가 확인 항목들의 ‘운영 배포하지 않았다’는 각 수정 당시의 기록이다. 이후 사용자 요청에 따라 `72c80b7a90eb6ce40fdaddbc3b14c4a3603ac58c`로 묶어 배포했고, 운영 `/health`의 동일 커밋과 DB 준비 상태를 확인했다. 당시 배포 증거는 `outputs/reports/deploy-2026-10-07-verification.json`이다.
 
 ## 2026-10-07 추가 확인: 일반 교사의 전체 교직원 명단 편집 화면
 
@@ -57,7 +57,7 @@
 - **허용·차단 범위:** 학교 관리자·교장·교감의 정상 저장과 다른 학교 데이터 보존을 확인했다. 미로그인·미등록·비활성 교사·비활성 학교는 조회와 저장을 거절했다. 이메일로만 연결된 등록도 실제 직책을 따르며, 관리자 권한을 내린 뒤의 저장은 거절했다. 세션 신원은 테스트 값이며 실제 Google 로그인이나 운영 계정은 사용하지 않았다.
 - **검증:** 새 서버 검사 4개와 브라우저 검사 6개 통과. 브라우저는 일반 교사 조회, 직접 함수 호출 차단, 관리자 편집·추가·삭제·붙여넣기·저장, 조회 지연·실패·누락된 권한·다른 탭 권한 혼입, 응답 순서 역전, 저장 시 권한 박탈을 포함한다. 서버 관련 회귀 검사까지 45개 통과, 별도 게시판 권한 계약 검사 통과. 관리자 이름 표시도 5개 너비·10개 화면에서 잘림 0개다.
 - **검사 파일:** `tests/school-roster-permissions-browser.cjs`, `game-hub-server/school-roster-permissions.test.mjs`. 각각 `node --test <파일 경로>`로 실행한다.
-- **증거:** `outputs/school-roster-permissions-before.log`, `school-roster-permissions-browser.log`, `school-roster-permissions-api.log`, `school-roster-permissions-regression.log`, `school-roster-permissions-fields.log`, `school-roster-permissions-classboard.log`, `school-roster-permissions-names.log`. 화면은 `outputs/school-roster-permissions-2026-10-07/ordinary-before.png`, `ordinary-after.png`, `admin-after.png`.
+- **증거:** `outputs/logs/school-roster-permissions-before.log`, `school-roster-permissions-browser.log`, `school-roster-permissions-api.log`, `school-roster-permissions-regression.log`, `school-roster-permissions-fields.log`, `school-roster-permissions-classboard.log`, `school-roster-permissions-names.log`. 화면은 `outputs/school-roster-permissions-2026-10-07/ordinary-before.png`, `ordinary-after.png`, `admin-after.png`.
 
 **적용 범위:** 로컬 코드와 격리된 합성 DB·브라우저에서 확인했다. 운영 배포는 하지 않았고, 현재 운영 서버가 일반 교사의 저장을 거절하는지 또는 기존 데이터가 실제로 변경됐는지는 확인하지 않았다. 로컬 서버의 403 결과로 운영 서버까지 안전하다고 판단할 수 없다.
 
@@ -80,7 +80,7 @@
 - 실제 교사 첫 화면은 합성 DB의 실제 API 응답을 연결한 Edge에서 검사했다. 대시보드는 실제 DOM과 실제 명단/일정 로더를 실행하되 날씨·음성 등의 별도 초기화는 제외했다.
 - 관련 10개 테스트 파일을 함께 실행해 **91개 통과, 실패 0개**. 명단 저장, 관리자 겸임, 시간표, 출결, 수업 메뉴 권한, 알림 대상을 포함한다. 별도 `tests/teacher-group-creation-contract.js`, `tests/classboard-permissions-contract.js`도 통과했다.
 - 테스트용 DB 스키마와 모의 등록 응답을 현재 구조에 맞췄다. 수업 메뉴 권한 검사 하나는 고정된 과거 시각으로 열고 실제 DB의 현재 시각으로 조회해 날짜가 지나면 실패하던 문제를 수정했다. 이 변경은 제품의 만료 시간 계산을 바꾸지 않는다.
-- 로그: `outputs/classroom-lifecycle-before.log`(초기 재현), `outputs/classroom-lifecycle-after.log`(최종 전용 검사), `outputs/classroom-lifecycle-regression.log`(91개), `outputs/classroom-lifecycle-group-contract.log`, `outputs/classroom-lifecycle-classboard.log`.
+- 로그: `outputs/logs/classroom-lifecycle-before.log`(초기 재현), `outputs/logs/classroom-lifecycle-after.log`(최종 전용 검사), `outputs/logs/classroom-lifecycle-regression.log`(91개), `outputs/logs/classroom-lifecycle-group-contract.log`, `outputs/logs/classroom-lifecycle-classboard.log`.
 - 화면: `outputs/classroom-lifecycle-2026-10-07/portal-after.png`.
 - 재현: `node --test game-hub-server/classroom-lifecycle.test.mjs`.
 
@@ -101,7 +101,7 @@
 - **검증:** 새 통합 검사 `game-hub-server/school-timetable-data.test.mjs` 7개 통과. 실제 명단 저장 후 이름·담당 반·과목의 반영, 계정 ID와 명단 행 ID의 구분, 관리자 겸임, 이메일 연결, 미로그인 안내, 학교·학년도 분리, 잘못된 배정 거절, 중복 배정 방지, 브라우저 선택 전환·오류 처리를 확인했다. 초기 재현에서는 6개 중 5개가 실패했고 수정 후 통과했다. 추가 권한 검사를 포함한 최종 수는 7개다.
 - **기존 회귀 검사:** `school-admin-dual-role`, `roster-name-from-google`, `school-admin-permission-gate-contract`, `teacher-subject-room-contract`, `specialist-room-timetable-contract`의 47개 통과. 관리자와 미로그인 교사를 반드시 제외하라고 요구하던 오래된 문자열 검사는 제거하고 실제 DB 동작 검사로 대체했다.
 - **재현 명령:** `node --test game-hub-server/school-timetable-data.test.mjs`.
-- **증거:** `outputs/school-timetable-data-baseline.log`, `outputs/school-timetable-data-after.log`, `outputs/school-timetable-data-regression.log`, `outputs/school-timetable-data-2026-10-07/homeroom.png`, `specialist.png`.
+- **증거:** `outputs/logs/school-timetable-data-baseline.log`, `outputs/logs/school-timetable-data-after.log`, `outputs/logs/school-timetable-data-regression.log`, `outputs/school-timetable-data-2026-10-07/homeroom.png`, `specialist.png`.
 - **범위와 남은 제한:** 운영 배포·운영 DB 수정은 하지 않았다. 사용자의 실명·이메일은 테스트에 사용하지 않았다. 한 번도 로그인하지 않아 계정 자체가 없는 교사는 목록에는 표시되지만 직접 시간표를 배정하려면 먼저 로그인해야 한다. 현재 시간표 저장 구조가 계정 ID를 참조하는 제약은 유지했다. 운영 계정의 실제 데이터 불일치가 모두 해결됐다는 보장은 아니다.
 
 ## 2026-10-07 추가 확인: 명단의 성명 잘림

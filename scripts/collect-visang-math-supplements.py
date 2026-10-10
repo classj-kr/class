@@ -9,7 +9,7 @@ import importlib.util
 
 ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / 'references/textbooks'
-DEST = ROOT / 'tmp/textbook-research/math-downloads'
+DEST = ROOT / 'references/textbooks/수집작업/math-downloads'
 spec = importlib.util.spec_from_file_location('visang_archives', ROOT / 'scripts/collect-visang-public-archives.py')
 archive_tools = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(archive_tools)

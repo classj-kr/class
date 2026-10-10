@@ -6,7 +6,7 @@ const path = require('node:path');
 const puppeteer = require('puppeteer-core');
 const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(process.env.COUNTIN_SOURCE || path.join(root,'learning/arts/music-theory/ear-training/piano-engine.js'),'utf8');
-const output = path.join(root,'tmp','ear-training-countin');
+const output = path.join(root,"outputs/qa/ear-training-countin");
 fs.mkdirSync(output,{recursive:true});
 
 function saveWav(samples, sampleRate, file) {

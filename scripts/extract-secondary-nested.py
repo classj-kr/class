@@ -3,7 +3,7 @@ import hashlib, json, re, zlib
 from pathlib import Path
 from zipfile import ZipFile
 
-BASE=Path(__file__).resolve().parents[1]/'tmp/중고등자료_수집'
+BASE=Path(__file__).resolve().parents[1]/'references/textbooks/중고등'
 EXT={'.pdf','.hwp','.hwpx','.doc','.docx','.jpg','.jpeg','.png','.svg'}
 results=[]
 for source in sorted(BASE.rglob('*.zip')):

@@ -6,7 +6,7 @@
     const listeners = new Set();
     const esc = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     function set(next) {
-        if (!names[next]) return;
+        if (!names[next] || next === level) return;
         level = next;
         document.documentElement.dataset.schoolLevel = level;
         const url = new URL(location.href); url.searchParams.set('school', level);
@@ -25,7 +25,9 @@
     }
     function profile(key) { return window.SchoolContent?.[key]?.[level] || null; }
     function concepts(p) {
-        return `<section class="school-concepts"><p class="school-source">${esc(names[level])} · ${esc(p.source)}</p>${p.concepts.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`;
+        if (p.sections?.length) return `<div class="school-lesson">${p.sections.map(section=>`<section class="school-concepts"><h2>${esc(section.title)}</h2>${section.paragraphs.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`).join('')}</div>`;
+        if (!p.concepts?.length) return '';
+        return `<section class="school-concepts" aria-label="핵심 개념">${p.concepts.map(t=>`<p>${esc(t)}</p>`).join('')}</section>`;
     }
     function question(p) {
         return `<section class="school-question"><h3>생각해 보기</h3><p>${esc(p.question)}</p><details><summary>풀이 확인</summary><p>${esc(p.answer)}</p></details></section>`;
