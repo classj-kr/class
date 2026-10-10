@@ -11,6 +11,16 @@ def read(p): return json.loads(p.read_text(encoding='utf-8-sig'))
 
 saved = ROOT / 'references/textbooks/elementary-douclass-saved.json'
 rows = read(saved) if saved.exists() else []
+didim_manifest = ROOT/'references/textbooks/elementary-didim-textbook-downloads.json'
+if didim_manifest.exists():
+    grouped = collections.defaultdict(list)
+    for row in read(didim_manifest):
+        grouped[row['book']].append(row)
+    for title, items in grouped.items():
+        folder = OUT/'디딤돌'/'수학'/clean(title+'_2022')
+        folder.mkdir(parents=True, exist_ok=True)
+        receipt = {'source': {'publisher':'디딤돌','subject':'수학','title':title+'_2022','sourceUrl':items[0]['sourcePage']}, 'status':'complete' if len(items)==2 else 'partial', 'files':[dict(i,status='verified',member=i['title']) for i in items]}
+        (folder/'수집기록.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2),encoding='utf8')
 for title, name, filename in [
     ('수학 3-2 (나귀수)', '수학 3-2 PDF', '(동아출판) 22개정_초등_수학 3-2 PDF.pdf'),
     ('수학 6-2 (나귀수)', '수학 6-2 PDF', '(동아출판) 초등_수학 6-2 PDF.pdf'),
@@ -66,7 +76,7 @@ for p in sorted(OUT.rglob('*수집기록.json')):
             receipt={'source':dict(publisher=receipt['publisher'],subject=receipt['subject'],title=receipt['book'],sourceUrl=receipt['sourceUrl']),'status':'complete','files':[receipt]}
         else:continue
     s=receipt['source']; files=receipt.get('files',[])
-    if s['publisher']=='천재' and s['subject']=='사회과부도':
+    if s['publisher']=='천재' and s['subject']=='사회과부도' and not files:
         atlas_title=re.sub(r'_[56]-[12]_2022$', '_5-6_2022', s['title'])
         if any(b['title']==atlas_title for b in books):continue
         s=dict(s,title=atlas_title)
@@ -87,7 +97,7 @@ for p in sorted(OUT.rglob('*수집기록.json')):
     books.append(book)
 cachepath.write_text(json.dumps(pdfs,ensure_ascii=False,indent=2),encoding='utf8')
 (OUT/'교과서목록.json').write_text(json.dumps(books,ensure_ascii=False,indent=2),encoding='utf8')
-coverage={'scope':'2022 개정 초등 국어·수학·사회·과학. 국정 교과서 및 미래엔·동아·천재 제공 목록 기준. 부교재 전체 완비를 뜻하지 않음.',
+coverage={'scope':'2022 개정 초등 국어·수학·사회·과학. 국정 교과서 및 미래엔·동아·천재·디딤돌 제공 목록 기준. 부교재 전체 완비를 뜻하지 않음.',
     'bodySets':sum(b['subject']!='사회과부도' and b['collectionStatus']=='complete' for b in books),
     'atlasTitles':sum(b['subject']=='사회과부도' and b['collectionStatus']=='complete' for b in books),
     'pdfFiles':len(pdfs),'bytes':sum(f['bytes'] for f in pdfs),
