@@ -256,6 +256,8 @@
     function render() {
         if (!layer || layer.hidden) return;
         var c = current();
+        var heat = document.getElementById('heatBtn');
+        if (heat) heat.hidden = c.reagent !== 'benedict';
         paintTubes(c);
         paintCurve(c);
         placeTags();
@@ -304,13 +306,12 @@
         }
     }
 
-    /** 효소 활성: 잘 맞는 pH 에서 가장 높고, 60℃ 를 넘으면 단백질이 굳어 0 이 된다 */
+    /** Qualitative comparison of fresh samples; not a measured enzyme activity curve. */
     function activity(enzymeKey, ph, temp) {
         var opt = ENZYMES[enzymeKey].optPh;
         var byPh = Math.exp(-Math.pow(ph - opt, 2) / (2 * 1.3 * 1.3));
-        var byTemp;
-        if (temp >= 60) byTemp = 0;                       // 열에 굳으면 되돌아오지 않는다
-        else byTemp = Math.exp(-Math.pow(temp - 37, 2) / (2 * 12 * 12));
+        var spread = temp > 37 ? 8 : 18;
+        var byTemp = Math.exp(-Math.pow(temp - 37, 2) / (2 * spread * spread));
         return byPh * byTemp;
     }
 
@@ -329,16 +330,16 @@
         marker.setAttribute('cx', mx.toFixed(1));
         marker.setAttribute('cy', (210 - act * 175).toFixed(1));
 
-        headline.textContent = e.name + ' · 알맞은 산성도 pH ' + e.optPh;
+        headline.textContent = e.name + ' · 모형의 최적 pH ' + e.optPh;
         var pct = Math.round(act * 100);
         var msg;
-        if (c.temp >= 60) msg = '지금 ' + c.temp + '℃ — 열에 굳어 일하지 못합니다 (활성 0%)';
-        else msg = '지금 pH ' + c.ph + ' · ' + c.temp + '℃ — 활성 ' + pct + '% · ' + e.from + ' ➔ ' + e.to;
+        if (c.temp >= 60) msg = '지금 ' + c.temp + '℃ — 고온에서 활성이 크게 낮아지는 예시입니다. 실제 변성 조건은 효소와 시간에 따라 다릅니다.';
+        else msg = '지금 pH ' + c.ph + ' · ' + c.temp + '℃ — 모형 상대 활성 ' + pct + ' · ' + e.from + ' ➔ ' + e.to;
         summary.textContent = msg;
         summary.style.color = pct > 60 ? '#86efac' : (pct > 25 ? '#fbbf24' : '#fca5a5');
 
         var stat = document.getElementById('statEnzymeActivity');
-        if (stat) stat.textContent = pct + ' %';
+        if (stat) stat.textContent = pct + ' (상대값)';
 
         markNutrient(c, e);
     }

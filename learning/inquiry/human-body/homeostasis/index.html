@@ -2,10 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>항상성 · 체온과 혈당 조절 | 인체 모형</title>
-    <link rel="stylesheet" href="../styles.css?v=20260920-body-review">
-    <link rel="stylesheet" href="styles.css?v=20260920-body-review">
+    <link rel="stylesheet" href="../styles.css?v=20261010-model-review10">
+    <link rel="stylesheet" href="styles.css?v=20261010-model-review10">
+    <link rel="stylesheet" href="../shared/model-study.css?v=20261010-model-review10">
 </head>
 <body>
 
@@ -63,7 +64,7 @@
                 <div id="tabPanel_focus" class="sidebar-tab-panel">
                     
                     <!-- Real-Time Blood Glucose Curve -->
-                    <div class="feedback-card">
+                    <div class="feedback-card" data-for-scene="glucose">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:12px; font-weight:700; color:#34d399;">
                             <span>혈당량 변화 (기준 100 mg/dL)</span>
                             <span id="glucoseVal" style="color:#10b981; font-weight:800;">100 mg/dL</span>
@@ -72,10 +73,10 @@
                         
                         <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:8px; font-size:11px;">
                             <div style="padding:4px 8px; background:rgba(16,185,129,0.1); border-radius:4px;">
-                                <span style="color:#94a3b8;">인슐린:</span> <strong id="insulinVal" style="color:#34d399;">36 μU/mL</strong>
+                                <span style="color:#94a3b8;">인슐린:</span> <strong id="insulinVal" style="color:#34d399;">36 (상대값)</strong>
                             </div>
                             <div style="padding:4px 8px; background:rgba(245,158,11,0.1); border-radius:4px;">
-                                <span style="color:#94a3b8;">글루카곤:</span> <strong id="glucagonVal" style="color:#fbbf24;">60 pg/mL</strong>
+                                <span style="color:#94a3b8;">글루카곤:</span> <strong id="glucagonVal" style="color:#fbbf24;">60 (상대값)</strong>
                             </div>
                         </div>
                     </div>
@@ -144,11 +145,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../shared/engine-core.js?v=20260920-body-review"></script>
-    <script src="../shared/diagram-labels.js?v=20260920-body-review"></script>
-    <script src="../shared/exam-data.js?v=20260918-quiz"></script>
-    <script src="app.js?v=20260920-body-review"></script>
-    <script src="skin-response.js?v=20260920-body-review"></script>
-    <script src="glucose-flow.js?v=20260920-body-review"></script>
+    <script src="../shared/engine-core.js?v=20261010-model-review10"></script>
+    <script src="../shared/diagram-labels.js?v=20261010-model-review10"></script>
+    <script src="../shared/exam-data.js?v=20261010-model-review10"></script>
+    <script src="app.js?v=20261010-model-review10"></script>
+    <script src="skin-response.js?v=20261010-model-review10"></script>
+    <script src="glucose-flow.js?v=20261010-model-review10"></script>
+    <script src="../shared/model-study.js?v=20261010-model-review10"></script>
 </body>
 </html>

@@ -204,8 +204,9 @@
         controls.append(open,save,power,button('처음 상태로',()=>{disk='봄';ram=null;lost=false;kept=false;awaitingSavedOpen=false;last='';editor.value='';editor.disabled=true;render('처음 상태입니다. SSD 파일을 열어 시작하세요.',false);},'memory-reset'));
         function render(message,record=true){stored.textContent='SSD에 저장된 문서: '+disk;save.disabled=ram===null;status.textContent=message;if(record)last=message+'\nRAM: '+(ram===null?'작업 없음':ram)+'\nSSD: '+disk;}
         editor.addEventListener('input',()=>{ram=editor.value;render('수정: RAM의 작업 내용이 바뀌었습니다. SSD 파일과 비교하세요.');});
-        root.append(el('h3','작업 중인 내용과 저장된 파일 비교'),el('p','이 모형은 자동 저장을 사용하지 않습니다. 화면 아래의 부품 그림에서 실제 RAM과 SSD의 위치도 확인할 수 있습니다.'),label,editor,stored,controls,status);
-        mount.prepend(root);render('SSD에는 ‘봄’이 저장되어 있습니다. 파일을 열어 시작하세요.',false);
+        root.append(el('h3','작업 중인 내용과 저장된 파일 비교'),el('p','이 모형은 자동 저장을 사용하지 않습니다. 파일을 고친 뒤 RAM의 작업 내용과 SSD에 보관된 내용을 비교하세요.'),label,editor,stored,controls,status);
+        const reference=el('details',undefined,'study-component-reference');reference.append(el('summary','실제 부품의 위치와 사진'));reference.append(...mount.childNodes);
+        mount.replaceChildren(root,reference);render('SSD에는 ‘봄’이 저장되어 있습니다. 파일을 열어 시작하세요.',false);
         return {revision:3,snapshot:()=>last,complete:()=>lost&&kept,hint:'저장하지 않은 수정이 전원을 끈 뒤 사라지는 경우와, 저장한 수정이 전원을 끈 뒤 다시 열리는 경우를 모두 확인하세요.'};
     }
     function observedModel(id,lab){

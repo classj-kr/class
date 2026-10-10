@@ -1,0 +1,61 @@
+/* Separate navigation, model and explanation: no controls floating over anatomy. */
+.sim-header {
+    position: relative; inset: auto; min-height: 60px; height: 60px;
+    padding: 8px 14px; background: #101827; border-bottom: 1px solid #29354a;
+    pointer-events: auto; gap: 16px;
+}
+.sim-title-group { display: block !important; }
+.sim-title { font-size: 16px; color: #eaf2ff; -webkit-text-fill-color: currentColor; background: none; }
+.sim-header-left { flex: 0 1 auto; min-width: 0; }
+.sim-header-right { display: flex; gap: 8px; overflow-x: auto; min-width: 0; }
+.sim-header-right > button { flex-shrink: 0; white-space: nowrap; }
+.sim-app-container { height: calc(100% - 60px); grid-template-columns: minmax(0,1fr) 350px; }
+.sim-stage-area .scene-switcher {
+    position: absolute; top: 8px; left: 12px; transform: none;
+    max-width: calc(100% - 24px); padding: 4px; border-radius: 10px;
+    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin;
+    scrollbar-color: #526780 #101827; z-index: 30;
+}
+.sim-stage-area .scene-btn { min-height: 36px; flex-shrink: 0; }
+.body-diagram-label { min-height: 32px; border: 1px solid #65758c; background: #101a2be8; color: #e3edf8; border-radius: 7px; }
+.body-diagram-label[aria-pressed="true"] { color: #1c1600 !important; background: #facc15 !important; border-color: #fff0a3 !important; box-shadow: 0 0 0 2px #a17c14; font-weight: 800; }
+svg [role="button"]:focus-visible { outline: 2px dashed #facc15; outline-offset: 5px; }
+.model-reading { padding: 13px; margin-bottom: 14px; border: 1px solid #3c536d; border-radius: 10px; background: #142337; }
+.model-reading summary { font-size: 14px; font-weight: 750; cursor: pointer; color: #bfe6ff; }
+.model-reading p { margin-top: 8px; font-size: 13px; line-height: 1.7; color: #d8e6f4; user-select: text; }
+.model-reading small { display: block; margin-top: 8px; color: #99abc0; line-height: 1.6; }
+.model-selected-detail[hidden] { display: none !important; }
+.model-scene-step { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 10px; }
+.model-scene-step button { background: #203851; color: #e2edf7; border: 1px solid #54718d; border-radius: 6px; padding: 6px 10px; min-height: 36px; cursor: pointer; }
+.model-scene-step button:disabled { opacity: .4; cursor: default; }
+.model-scene-step span { font-size: 12px; color: #b4c7da; }
+.centers-row { grid-template-columns: 100px 60px minmax(30px,1fr) 85px; }
+.sim-slider { min-width: 60px; }
+.model-band-buttons { display: flex; gap: 8px; margin-top: 10px; }
+.model-band-buttons button { flex: 1; padding: 8px; color: #eaf2ff; background: #243c57; border: 1px solid #69829c; border-radius: 6px; cursor: pointer; }
+.model-band-buttons button[aria-pressed="true"],.joint-tag[aria-pressed="true"],.skin-tag[aria-pressed="true"] { color: #1c1600 !important; background: #facc15 !important; border-color: #facc15; }
+.tract-flow-status { flex: 0 0 auto; padding: 7px 14px; text-align: center; color: #e0c697; font-size: 12px; }
+.body-diagram-label.on,.body-diagram-label.picked,.joint-tag.picked,.skin-tag.picked { animation: none !important; }
+@media (max-width: 1100px) and (min-width: 901px) {
+    .sim-app-container { grid-template-columns: minmax(0,1fr) 310px; }
+    .sim-title { font-size: 14px; }
+}
+@media (max-width: 900px) {
+    .sim-header { height: auto; min-height: 60px; flex-wrap: wrap; gap: 6px; }
+    .sim-header-right { max-width: 100%; }
+    html, body { overflow-y: auto; height: auto; min-height: 100%; }
+    .sim-app-container { height: auto; grid-template-columns: minmax(0,1fr); grid-template-rows: 560px auto; overflow: visible; }
+    .sim-sidebar { max-height: none; overflow: visible; }
+    .sidebar-body { overflow: visible; }
+    .sim-stage-area .scene-switcher { position: absolute; top: 8px; }
+}
+@media (max-width: 600px) {
+    .sim-title { font-size: 13px; }
+    .sim-app-container { grid-template-rows: 520px auto; }
+    .sim-stage-area > [class$="-viewport"] { overflow: auto; }
+    .sim-stage-area :is(.stomach-layer,.villus-layer,.enzyme-lab-layer,.nephron-layer,.ear-layer,.pupil-layer,.skin-layer,.glucose-layer,.defense-layer,.antibody-layer) {
+        top: 54px; height: 450px; min-width: 650px;
+    }
+    .sim-stage-area :is(.excretion-map-layer,.urine-layer,.joint-layer) { top:54px; height:450px; min-width:0; }
+    .body-diagram-label { font-size: 12px; }
+}

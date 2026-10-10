@@ -2,10 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>면역계 · 몸의 방어 작용 | 인체 모형</title>
-    <link rel="stylesheet" href="../styles.css?v=20260920-body-review">
-    <link rel="stylesheet" href="styles.css?v=20260920-body-review">
+    <link rel="stylesheet" href="../styles.css?v=20261010-model-review10">
+    <link rel="stylesheet" href="styles.css?v=20261010-model-review10">
+    <link rel="stylesheet" href="../shared/model-study.css?v=20261010-model-review10">
 </head>
 <body>
 
@@ -64,7 +65,8 @@
                 <div id="tabPanel_focus" class="sidebar-tab-panel">
                     
                     <!-- Live Telemetry Card -->
-                    <div class="immune-telemetry-card">
+                    <!-- Legacy counters belonged to the removed particle simulation, not this diagram. -->
+                    <div class="immune-telemetry-card" hidden>
                         <div style="font-size:12px; font-weight:800; color:#c084fc; margin-bottom:8px;">
                             <span>면역 방어 현황</span>
                         </div>
@@ -121,7 +123,7 @@
                                 <span>🦠 1차 침입 (항원이 처음 들어옴)</span>
                             </button>
                             <button id="secondaryInfectBtn" class="sim-btn" type="button" style="width:100%; font-size:12px; background:rgba(236, 72, 153, 0.15); border:1px solid #ec4899; color:#f472b6;">
-                                <span>⚡ 2차 감염 유발 (면역 기억 발동)</span>
+                                <span>⚡ 같은 항원에 2차 노출</span>
                             </button>
                         </div>
                     </div>
@@ -201,11 +203,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../shared/engine-core.js?v=20260920-body-review"></script>
-    <script src="../shared/diagram-labels.js?v=20260920-body-review"></script>
-    <script src="../shared/exam-data.js?v=20260918-quiz"></script>
-    <script src="app.js?v=20260920-body-review"></script>
-    <script src="antibody-graph.js?v=20260920-body-review"></script>
-    <script src="defense-flow.js?v=20260920-body-review"></script>
+    <script src="../shared/engine-core.js?v=20261010-model-review10"></script>
+    <script src="../shared/diagram-labels.js?v=20261010-model-review10"></script>
+    <script src="../shared/exam-data.js?v=20261010-model-review10"></script>
+    <script src="app.js?v=20261010-model-review10"></script>
+    <script src="antibody-graph.js?v=20261010-model-review10"></script>
+    <script src="defense-flow.js?v=20261010-model-review10"></script>
+    <script src="../shared/model-study.js?v=20261010-model-review10"></script>
 </body>
 </html>

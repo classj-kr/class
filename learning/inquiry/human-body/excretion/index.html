@@ -2,10 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>배설계 · 콩팥과 네프론 | 인체 모형</title>
-    <link rel="stylesheet" href="../styles.css?v=20260920-body-review">
-    <link rel="stylesheet" href="styles.css?v=20260920-body-review">
+    <link rel="stylesheet" href="../styles.css?v=20261010-model-review10">
+    <link rel="stylesheet" href="styles.css?v=20261010-model-review10">
+    <link rel="stylesheet" href="../shared/model-study.css?v=20261010-model-review10">
 </head>
 <body>
 
@@ -92,9 +93,9 @@
                     <div class="meter-card" data-for-scene="urine,nephron">
                         <div style="display:flex; flex-direction:column; gap:10px; margin-top:6px;">
                             <div class="sim-slider-wrapper">
-                                <span class="sim-slider-label">혈압 (사구체 여과압)</span>
+                                <span class="sim-slider-label">혈류 속도 (모형 설정)</span>
                                 <input id="bpSlider" class="sim-slider" type="range" min="80" max="160" value="120" step="5">
-                                <span id="bpVal" class="sim-slider-value">120 mmHg</span>
+                                <span id="bpVal" class="sim-slider-value">120 (상대값)</span>
                             </div>
                             <div class="sim-slider-wrapper">
                                 <span class="sim-slider-label">수분 섭취량 (오줌 농도)</span>
@@ -140,7 +141,7 @@
                                     <td>0.1</td>
                                     <td>0.1</td>
                                     <td class="safe-highlight">0</td>
-                                    <td>100% 능동수송 재흡수</td>
+                                    <td>정상 상태에서 거의 모두 재흡수</td>
                                 </tr>
                                 <tr>
                                     <td><strong>요소</strong></td>
@@ -178,12 +179,13 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../shared/engine-core.js?v=20260920-body-review"></script>
-    <script src="../shared/diagram-labels.js?v=20260920-body-review"></script>
-    <script src="../shared/exam-data.js?v=20260918-quiz"></script>
-    <script src="app.js?v=20260920-body-review"></script>
-    <script src="nephron-flow.js?v=20260920-body-review"></script>
-    <script src="urine-path.js?v=20260920-body-review"></script>
-    <script src="excretion-map.js?v=20260920-body-review"></script>
+    <script src="../shared/engine-core.js?v=20261010-model-review10"></script>
+    <script src="../shared/diagram-labels.js?v=20261010-model-review10"></script>
+    <script src="../shared/exam-data.js?v=20261010-model-review10"></script>
+    <script src="app.js?v=20261010-model-review10"></script>
+    <script src="nephron-flow.js?v=20261010-model-review10"></script>
+    <script src="urine-path.js?v=20261010-model-review10"></script>
+    <script src="excretion-map.js?v=20261010-model-review10"></script>
+    <script src="../shared/model-study.js?v=20261010-model-review10"></script>
 </body>
 </html>

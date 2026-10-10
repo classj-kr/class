@@ -10,7 +10,7 @@
  *   중간뇌 - 동공 반사, 눈동자 움직임
  *   연수   - 재채기·기침·하품·침 분비, 심장 뛰기·숨쉬기
  *   척수   - 무릎 반사, 뜨거운 것에서 손 떼기
- *   대뇌를 거치면 느리고, 거치지 않으면 빠르다.
+ *   신호 처리 경로를 비교한다. 서로 다른 반응의 실제 지연 시간을 순위 매기지 않는다.
  */
 
 (function () {
@@ -31,27 +31,27 @@
     var SVG_URL = '../assets/images/reflex-centers.svg';
     var KEY = 'response';
 
-    // 시간은 이 방 오른쪽 표에 쓰던 값과 같게 맞춘다
+    // 중추별 처리 경로를 비교하는 개념 모형
     var CASES = [
         {
-            key: 'cerebrum', name: '손 들기', center: '대뇌', ms: 250, color: '#a855f7',
+            key: 'cerebrum', name: '손 들기', center: '대뇌', color: '#a855f7',
             flow: 'flowCerebrum', lit: ['cerebrum', 'handExample'], conscious: true,
-            note: '선생님이 부르면 <b>생각한 뒤</b> 손을 듭니다. 대뇌까지 갔다 오므로 넷 가운데 <b>가장 느립니다</b>. 이것만 <b>무조건 반사가 아닙니다</b>.'
+            note: '선생님이 부르면 <b>대뇌에서 판단한 뒤</b> 손을 듭니다. 이 예는 <b>의식적 반응</b>입니다. 반응 시간은 자극과 과제에 따라 달라지므로 서로 다른 반응의 속도를 이 그림으로 순위 매길 수 없습니다.'
         },
         {
-            key: 'midbrain', name: '동공 반사', center: '중간뇌', ms: 35, color: '#f59e0b',
+            key: 'midbrain', name: '동공 반사', center: '중간뇌', color: '#f59e0b',
             flow: 'flowMidbrain', lit: ['midbrain', 'eyeExample'],
             note: '밝은 곳에서 <b>동공이 저절로 작아집니다</b>. 중추는 <b>중간뇌</b>입니다. 눈동자를 움직이는 것도 중간뇌가 맡습니다.'
         },
         {
-            key: 'medulla', name: '재채기·기침', center: '연수', ms: 40, color: '#34d399',
+            key: 'medulla', name: '재채기·기침', center: '연수', color: '#34d399',
             flow: 'flowMedulla', lit: ['medulla', 'sneezeExample'],
             note: '코가 간지러우면 <b>저절로</b> 재채기가 납니다. 중추는 <b>연수</b>입니다. 기침·하품·침 분비, 그리고 <b>심장 뛰기와 숨쉬기</b>도 연수가 맡습니다.'
         },
         {
-            key: 'spinal', name: '무릎 반사', center: '척수', ms: 30, color: '#38bdf8',
+            key: 'spinal', name: '무릎 반사', center: '척수', color: '#38bdf8',
             flow: 'flowSpinal', lit: ['spinalCord', 'kneeExample'],
-            note: '무릎을 치면 다리가 <b>저절로</b> 올라갑니다. 중추는 <b>척수</b>입니다. 뜨거운 것에서 손을 떼는 것도 척수 반사입니다. 넷 가운데 <b>가장 빠릅니다</b>.'
+            note: '무릎 아래 힘줄을 가볍게 두드리면 다리가 <b>저절로</b> 펴집니다. 이 반사의 중추는 <b>척수</b>입니다. 뜨거운 것에서 손을 떼는 반사도 척수에서 처리하지만 신경 경로는 다릅니다.'
         }
     ];
 
@@ -67,10 +67,10 @@
     ];
 
     var DETAIL = {
-        cerebrum: ['대뇌', '보고 듣고 생각해서 <strong>명령을 내리는</strong> 곳입니다. 여기를 거치는 움직임은 <strong>마음먹고 하는 움직임</strong>이라 느립니다.'],
+        cerebrum: ['대뇌', '감각 정보를 해석하고 판단하여 <strong>의식적인 움직임</strong>을 조절합니다. 이 장면에서는 이름을 듣고 손을 드는 과정을 나타냅니다.'],
         midbrain: ['중간뇌', '<strong>동공 반사</strong>와 눈동자 움직임의 중추입니다. 밝기에 따라 동공 크기를 저절로 바꿉니다.'],
         medulla: ['연수', '<strong>재채기·기침·하품·침 분비</strong>의 중추입니다. <strong>심장 뛰기와 숨쉬기</strong>도 맡고 있어, 다치면 목숨이 위험합니다.'],
-        spinalCord: ['척수', '<strong>무릎 반사</strong>와 뜨거운 것에서 손 떼기의 중추입니다. 대뇌를 거치지 않아 <strong>가장 빠릅니다</strong>.'],
+        spinalCord: ['척수', '<strong>무릎 반사</strong>와 뜨거운 것에서 손 떼기의 중추입니다. 대뇌의 의식적 판단을 기다리지 않고 반응을 일으킵니다. 감각 정보는 뇌에도 전달됩니다.'],
         handExample: ['손 들기', '이름을 부르면 <strong>생각한 뒤</strong> 손을 듭니다. 대뇌가 맡는 <strong>의식적 반응</strong>입니다.'],
         eyeExample: ['동공 반사', '밝으면 동공이 작아지고 어두우면 커집니다. 마음대로 못 하는 <strong>무조건 반사</strong>이고 중추는 <strong>중간뇌</strong>입니다.'],
         sneezeExample: ['재채기·기침', '코나 목에 무엇이 닿으면 저절로 나옵니다. 중추는 <strong>연수</strong>입니다.'],
@@ -79,13 +79,17 @@
 
     var wrap, layer, svg, labelBox, leaderGroup, dotGroup, capBox, raceBar;
     var startedAt = 0, racing = false;
-    var SHOW_MS = 2600;                 // 화면에서 보여 줄 시간 (실제 시간은 따로 적는다)
+    var SHOW_MS = 2600;                 // 관찰용 재생 시간
 
     function init() {
         wrap = document.querySelector('.nervous-viewport');
         if (!wrap) return;
         buildLayer();
         bindSceneButtons();
+        var trigger = document.getElementById('actionTriggerBtn');
+        if (trigger) trigger.addEventListener('click', function () {
+            if (layer && !layer.hidden) start();
+        });
         requestAnimationFrame(loop);
     }
 
@@ -130,7 +134,7 @@
                         '<span class="centers-name" style="color:' + c.color + '">' + c.name + '</span>' +
                         '<span class="centers-center">' + c.center + '</span>' +
                         '<span class="centers-bar"><i style="background:' + c.color + '"></i></span>' +
-                        '<span class="centers-ms">' + c.ms + ' ms</span>' +
+                        '<span class="centers-ms">' + (c.conscious ? '의식적 반응' : '반사') + '</span>' +
                         '</div>';
                 }).join('');
 
@@ -233,15 +237,14 @@
 
     function render() {
         if (!dotGroup) return;
-        var slowest = CASES[0].ms;                       // 대뇌가 가장 느리다
         var elapsed = racing ? (nowMs() - startedAt) : SHOW_MS;
         if (elapsed >= SHOW_MS) { elapsed = SHOW_MS; racing = false; }
 
         while (dotGroup.firstChild) dotGroup.removeChild(dotGroup.firstChild);
 
         CASES.forEach(function (c) {
-            // 실제 걸리는 시간에 비례해 빠르기를 다르게 한다
-            var need = SHOW_MS * (c.ms / slowest);
+            // Same illustrative duration: this diagram compares routes, not measured latency.
+            var need = SHOW_MS;
             var f = Math.min(1, elapsed / need);
             var p = svg.querySelector('#' + c.flow);
             if (!p) return;
@@ -282,9 +285,8 @@
         if (!capBox) return;
         if (!c) {
             capBox.innerHTML =
-                '<span class="centers-lead">신호가 중추까지 갔다 오는 데 걸리는 시간</span>' +
-                '<span class="centers-note">아래 줄을 눌러 보세요. <b>대뇌를 거치는 것만 느리고</b>, ' +
-                '나머지 셋은 대뇌를 거치지 않아 훨씬 빠릅니다. 대뇌를 거치지 않는 것을 <b>무조건 반사</b>라 합니다.</span>';
+                '<span class="centers-lead">반응을 조절하는 중추와 신호 경로</span>' +
+                '<span class="centers-note">아래 줄을 눌러 중추를 비교하세요. 의식적 반응은 대뇌의 판단을 거치고, 반사는 의식적 판단을 기다리지 않습니다. <b>움직이는 속도는 관찰용이며 실제 반응 시간이 아닙니다.</b></span>';
             return;
         }
         capBox.innerHTML =

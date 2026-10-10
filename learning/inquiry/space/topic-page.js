@@ -128,8 +128,9 @@
         }
         window.addEventListener('hashchange', fromHash);
         fromHash();
-        // Floating controls do not reserve a title row above the content.
-        document.documentElement.style.setProperty('--space-header-height', '0px');
+        // Navigation must not cover dates, observation status or model controls.
+        document.documentElement.style.setProperty('--space-header-height', '58px');
+        window.dispatchEvent(new Event('resize'));
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();

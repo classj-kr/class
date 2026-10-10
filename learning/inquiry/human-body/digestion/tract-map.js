@@ -32,19 +32,24 @@
     // 이 장면을 통째로 맡게 되었으므로 여기로 옮겼다. 한 군데에만 둔다.
     var PARTS = [
         {
+            id:'mouth',text:'입',ax:200,ay:68,
+            enzyme:'침 (아밀레이스)',ph:'약한 산성~중성',product:'녹말 분해 시작',
+            desc:'이가 음식물을 잘게 부수고 침과 섞습니다. 침 속 <strong>아밀레이스가 녹말의 소화를 시작</strong>합니다. 씹기와 효소 작용을 구분해 보세요.'
+        },
+        {
             id: 'esophagus', text: '식도', ax: 120, ay: 150,
             enzyme: '소화 효소 없음', ph: '중성', product: '음식물을 위로 보냄',
             desc: '소화 효소가 <strong>나오지 않습니다</strong>. 근육이 <strong>꿈틀 운동</strong>으로 음식물을 위까지 밀어 보냅니다. 그래서 누워서 먹어도 내려갑니다.'
         },
         {
             id: 'stomach', text: '위', ax: 600, ay: 264,
-            enzyme: '위액 (펩신 + 염산)', ph: 'pH 2.0 (강한 산성)', product: '단백질 ➔ 펩톤',
+            enzyme: '펩신 · 위액의 염산은 효소가 아님', ph: '강한 산성 (식사 등에 따라 변함)', product: '단백질 ➔ 작은 펩타이드',
             desc: '염산이 강한 산성을 만들고 그 속에서 <strong>펩신이 단백질을 잘게 자릅니다</strong>. 염산은 세균도 죽입니다.'
         },
         {
             id: 'liver', text: '간', ax: 108, ay: 262,
             enzyme: '쓸개즙을 만듦 (효소는 없음)', ph: '약염기성', product: '지방을 잘게 흩음',
-            desc: '<strong>소화 효소는 만들지 않습니다.</strong> 쓸개즙을 만들어 지방 덩어리를 잘게 흩어 놓아 라이페이스가 일하기 쉽게 합니다. 흡수한 영양소도 간문맥을 지나 <strong>먼저 이곳으로</strong> 옵니다.'
+            desc: '간이 만든 쓸개즙은 지방을 작은 방울로 흩어 <strong>지방 소화 효소가 작용할 표면적</strong>을 넓힙니다. 쓸개즙에는 소화 효소가 없습니다. 소장에서 흡수된 포도당·아미노산은 간문맥으로 간에 가며, 대부분의 지방은 먼저 림프관으로 갑니다.'
         },
         {
             id: 'gallbladder', text: '쓸개', ax: 108, ay: 352,
@@ -53,23 +58,28 @@
         },
         {
             id: 'pancreas', text: '이자', ax: 600, ay: 376,
-            enzyme: '이자액 (아밀레이스 · 트립신 · 라이페이스)', ph: 'pH 8.0 (약염기성)', product: '세 영양소를 모두 분해',
-            desc: '<strong>세 가지 효소를 모두 내는 유일한 곳</strong>입니다. 녹말·단백질·지방을 한꺼번에 맡습니다. 이자액은 쓸개즙과 함께 <strong>소장 앞쪽(십이지장)</strong>으로 들어가 위에서 온 산성 음식물을 중화합니다.'
+            enzyme: '이자액 (아밀레이스 · 트립신 · 라이페이스)', ph: '약염기성 이자액', product: '탄수화물·단백질·지방 소화에 관여',
+            desc: '이자액에는 <strong>탄수화물·단백질·지방을 분해하는 여러 효소</strong>가 들어 있습니다. 이자액은 십이지장으로 분비되며, 탄산수소 이온이 위에서 온 산성 내용물을 중화하는 데 기여합니다. 음식물 자체는 이자를 지나지 않습니다.'
         },
         {
             id: 'duodenum', text: '십이지장', ax: 108, ay: 440,
-            enzyme: '쓸개즙 + 이자액이 들어오는 곳', ph: 'pH 8.0', product: '산성 음식물을 중화',
+            enzyme: '쓸개즙 + 이자액이 들어오는 곳', ph: '위의 산성 내용물이 중화됨', product: '소장 소화 시작',
             desc: '위에서 내려온 산성 음식물이 <strong>쓸개즙과 이자액을 만나 중화되는</strong> 소장의 첫 토막입니다. 두 관이 여기로 들어옵니다.'
         },
         {
             id: 'smallIntestine', text: '소장', ax: 600, ay: 540,
-            enzyme: '장액 + 이자액', ph: 'pH 8.0', product: '마지막 분해와 흡수',
+            enzyme: '이자액과 소장 효소', ph: '부위·내용물에 따라 달라짐', product: '마지막 분해와 흡수',
             desc: '영양소가 <strong>마지막으로 분해되고 융털로 흡수되는</strong> 곳입니다. 안쪽에 주름과 융털이 있어 닿는 넓이가 넓습니다.'
         },
         {
             id: 'largeIntestine', text: '대장', ax: 108, ay: 610,
             enzyme: '소화 효소 없음', ph: '중성', product: '물을 흡수',
             desc: '<strong>소화 효소가 없습니다.</strong> 남은 찌꺼기에서 물을 빨아들여 똥을 만듭니다.'
+        },
+        {
+            id:'rectum',text:'곧창자 (직장)',ax:150,ay:728,
+            enzyme:'없음',ph:'—',product:'대변을 일시적으로 저장',
+            desc:'대장의 마지막 부분입니다. 대변을 잠시 저장했다가 항문을 통해 내보냅니다. 소화되지 않은 찌꺼기의 배출과 콩팥의 배설을 구분해 보세요.'
         },
         {
             id: 'anus', text: '항문', ax: 560, ay: 790,
@@ -406,7 +416,7 @@
                 if (typeof SimEngine !== 'undefined' && SimEngine.isolateSvgIds) {
                     markup = SimEngine.isolateSvgIds(markup, 'tractfig');
                 }
-                layer.innerHTML = '<div class="tract-stage">' + markup + '<div class="tract-labels"></div></div>';
+                layer.innerHTML = '<div class="tract-stage">' + markup + '<div class="tract-labels"></div></div><div class="tract-flow-status" aria-live="polite">주황색 입자는 음식물의 이동 · 노란 테두리는 선택한 기관</div>';
                 svg = layer.querySelector('svg');
                 labelBox = layer.querySelector('.tract-labels');
                 if (!svg) return;
@@ -424,6 +434,7 @@
                 bolus.setAttribute('stroke', '#78350f');
                 bolus.setAttribute('stroke-width', 2);
                 bolus.setAttribute('opacity', 0);
+                bolus.style.pointerEvents='none';
                 svg.appendChild(bolus);
 
                 initParticles(svg);
@@ -512,14 +523,12 @@
                 bolus.setAttribute('fill', look.fill);
                 bolus.setAttribute('r', look.r.toFixed(1));
 
-                if (swallowing && live) maybeSpawn(dt, leg.organ, bx, by);
-
-                // 지금 지나는 기관을 은은하게 밝힌다. 입에는 이름표가 없고,
-                // 곧창자는 이름표가 따로 없어 대장 이름표가 대신 밝는다.
-                var glowOrgan = leg.organ === 'rectum' ? 'largeIntestine' : (leg.organ === 'mouth' ? null : leg.organ);
-                if (glowOrgan && glowOrgan !== lastGlowOrgan && typeof SimEngine !== 'undefined' && SimEngine.litPart) {
-                    SimEngine.litPart(svg, PARTS.map(function (x) { return x.id; }), glowOrgan);
-                    lastGlowOrgan = glowOrgan;
+                // Keep the user's selected organ stable while the food marker travels.
+                // Nutrient absorption is shown in the villus scene; no flying dots to the liver.
+                if(leg.organ!==lastGlowOrgan){
+                    var current=PARTS.filter(function(p){return p.id===leg.organ;})[0];
+                    layer.querySelector('.tract-flow-status').textContent='음식물 이동: '+(current?current.text:leg.organ)+' · 노란 테두리는 선택한 기관';
+                    lastGlowOrgan=leg.organ;
                 }
             } else {
                 bolus.setAttribute('opacity', 0);

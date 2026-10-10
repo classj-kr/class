@@ -35,7 +35,7 @@
     var MODES = {
         sound: { name: '🔊 소리 듣기', color: '#a78bfa', flows: ['flowSound', 'flowNerve'],
             lit: ['pinna', 'earCanal', 'eardrum', 'malleus', 'incus', 'stapes', 'cochlea', 'auditoryNerve'],
-            note: '소리는 <b>귓바퀴 ➔ 외이도 ➔ 고막 ➔ 귀뼈 셋 ➔ 달팽이관 ➔ 청각 신경</b> 차례로 갑니다. 소리를 느끼는 곳은 <b>달팽이관</b>입니다.' },
+            note: '소리는 <b>귓바퀴 ➔ 외이도 ➔ 고막 ➔ 귀뼈 셋 ➔ 달팽이관 ➔ 청각 신경</b> 차례로 갑니다. 달팽이관에서 진동이 신경 신호로 바뀌고, 대뇌에서 소리로 인식합니다.' },
         rotate: { name: '🔄 몸의 회전 느끼기', color: '#38bdf8', flows: ['flowRotate'],
             lit: ['semicircular'],
             note: '<b>반고리관</b>이 몸의 <b>회전</b>을 느낍니다. 고리가 <b>셋</b>이고 서로 직각으로 엇갈려 있어 어느 쪽으로 돌아도 알아챕니다. 빙글빙글 돌고 나서 어지러운 것이 이 때문입니다.' },
@@ -69,7 +69,7 @@
         eustachian: ['귀인두관', '가운데귀와 목구멍을 잇는 관입니다. 고막 <strong>안팎의 압력을 같게</strong> 맞춥니다. 비행기에서 귀가 먹먹할 때 침을 삼키면 뚫리는 그 관입니다.'],
         semicircular: ['반고리관', '몸의 <strong>회전</strong>을 느낍니다. 고리가 <strong>셋</strong>이고 서로 직각으로 엇갈려 있습니다. 소리와는 상관이 없습니다.'],
         vestibule: ['전정기관', '몸의 <strong>기울기</strong>를 느낍니다. 주머니 속 작은 돌이 쏠리면서 알아챕니다. 소리와는 상관이 없습니다.'],
-        cochlea: ['달팽이관', '<strong>소리를 느끼는</strong> 곳입니다. 달팽이 껍데기처럼 감겨 있고, 속의 감각 세포가 떨림을 신호로 바꿉니다.'],
+        cochlea: ['달팽이관', '<strong>소리의 진동을 신경 신호로 바꾸는</strong> 곳입니다. 달팽이 껍데기처럼 감겨 있고, 속의 감각 세포가 떨림을 신호로 바꿉니다.'],
         auditoryNerve: ['청각 신경', '달팽이관이 만든 신호를 <strong>대뇌</strong>로 보냅니다. 대뇌에 닿아야 비로소 소리로 들립니다.']
     };
 

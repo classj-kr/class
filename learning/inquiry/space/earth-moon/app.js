@@ -95,10 +95,21 @@
             const EARTH_TRACK_CAMERA_OFFSET = new THREE.Vector3(0, 64, 112);
             // Zooming in on the overview slides the orbit pivot from the
             // Sun-centred framing to Earth, fully on Earth by this distance.
-            const OVERVIEW_ZOOM_DISTANCE = SOLAR_OVERVIEW_CAMERA_POSITION.distanceTo(SOLAR_OVERVIEW_TARGET);
+            let OVERVIEW_ZOOM_DISTANCE = SOLAR_OVERVIEW_CAMERA_POSITION.distanceTo(SOLAR_OVERVIEW_TARGET);
             const EARTH_FOCUS_ZOOM_DISTANCE = 130;
             const overviewFocusTarget = new THREE.Vector3();
             const overviewFocusShift = new THREE.Vector3();
+            function fitOverviewFraming(force) {
+                const atOverview = force || (viewMode === 'solarOverview' && controls && camera.position.distanceTo(controls.target) >= OVERVIEW_ZOOM_DISTANCE * .98);
+                const scale = Math.max(1, 1.5 / camera.aspect);
+                SOLAR_OVERVIEW_CAMERA_POSITION.copy(SOLAR_OVERVIEW_TARGET).add(new THREE.Vector3(0,190,300).multiplyScalar(scale));
+                OVERVIEW_ZOOM_DISTANCE = SOLAR_OVERVIEW_CAMERA_POSITION.distanceTo(SOLAR_OVERVIEW_TARGET);
+                if (controls) controls.maxDistance = Math.max(450, OVERVIEW_ZOOM_DISTANCE * 1.3);
+                if (atOverview) {
+                    camera.position.copy(SOLAR_OVERVIEW_CAMERA_POSITION);
+                    if (controls) controls.target.copy(SOLAR_OVERVIEW_TARGET);
+                }
+            }
             // Negative Z rotation makes the north end lean 23.44 degrees to screen-right.
             const EARTH_AXIAL_TILT_RAD = -23.44 * (Math.PI / 180);
 
@@ -126,11 +137,11 @@
             const phases = [
                 { angleDeg: 0, name: "🌑 삭 (New Moon)", info: "남중: 정오 (12:00) | 관측 불가 (태양과 함께 이동)", calendar: "음력 1일 경 (삭)" },
                 { angleDeg: 45, name: "🌒 초승달 (Waxing Crescent)", info: "남중: 오후 3시 (15:00) | 초저녁 서쪽 관측", calendar: "음력 3~4일 경 (초승)" },
-                { angleDeg: 90, name: "🌓 상현달 (First Quarter)", info: "남중: 오후 6시 (18:00) | 초저녁 서쪽 관측", calendar: "음력 7~8일 경 (상현)" },
+                { angleDeg: 90, name: "🌓 상현달 (First Quarter)", info: "가장 높음: 해 질 무렵 (약 18시) | 해 질 무렵 높이 보이고 자정 무렵 짐", calendar: "음력 7~8일 경 (상현)" },
                 { angleDeg: 135, name: "🌔 팽대달 (Waxing Gibbous)", info: "남중: 밤 9시 (21:00) | 저녁~한밤중 관측", calendar: "음력 10~11일 경" },
                 { angleDeg: 180, name: "🌕 망 / 보름달 (Full Moon)", info: "남중: 자정 (00:00) | 밤새도록 관측 가능", calendar: "음력 15일 경 (망)" },
                 { angleDeg: 225, name: "🌖 팽대달 (Waning Gibbous)", info: "남중: 새벽 3시 (03:00) | 한밤중~새벽 관측", calendar: "음력 18~19일 경" },
-                { angleDeg: 270, name: "🌗 하현달 (Third Quarter)", info: "남중: 새벽 6시 (06:00) | 새벽 동쪽 관측", calendar: "음력 22~23일 경 (하현)" },
+                { angleDeg: 270, name: "🌗 하현달 (Third Quarter)", info: "가장 높음: 해 뜰 무렵 (약 6시) | 자정 무렵 떠서 해 뜰 무렵 높이 보임", calendar: "음력 22~23일 경 (하현)" },
                 { angleDeg: 315, name: "🌘 그믐달 (Waning Crescent)", info: "남중: 오전 9시 (09:00) | 새벽녘 동쪽 관측", calendar: "음력 27~28일 경 (그믐)" }
             ];
 
@@ -142,7 +153,7 @@
                 camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 1500);
                 // Start far enough back to keep the Sun, Earth and the Moon's
                 // complete orbit visible on the first visit.
-                camera.position.copy(SOLAR_OVERVIEW_CAMERA_POSITION);
+                fitOverviewFraming(true);
 
                 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
                 renderer.setSize(w, h);
@@ -154,7 +165,7 @@
                     controls.enableDamping = true;
                     controls.dampingFactor = 0.05;
                     controls.target.copy(SOLAR_OVERVIEW_TARGET);
-                    controls.maxDistance = 450;
+                    controls.maxDistance = Math.max(450, OVERVIEW_ZOOM_DISTANCE * 1.3);
                     controls.minDistance = 20;
                 }
 
@@ -319,6 +330,7 @@
                     const nw = spacePane.clientWidth || 900;
                     const nh = spacePane.clientHeight || 520;
                     camera.aspect = nw / nh;
+                    fitOverviewFraming(false);
                     camera.updateProjectionMatrix();
                     renderer.setSize(nw, nh);
                     drawMoonObserverSky();
@@ -1027,8 +1039,17 @@
 
                 const dayIndex = Math.max(0, Math.min(CALENDAR_DAYS_PER_YEAR - 1, Number(moonDaySlider.value) - 1));
                 const hour = Math.max(0, Math.min(23, Number(moonTimeSlider.value)));
-                elapsedSimulationHours = dayIndex * 24 + hour;
+                setSimulationHours(dayIndex * 24 + hour);
+                isPlaying = false;
+                const playButton = document.getElementById('emPlayBtn');
+                if (playButton) playButton.textContent = '▶ 재생';
+                updateDynamicSunRays();
+                updatePhasesUI();
+                updateSimulationClock();
+            }
 
+            function setSimulationHours(hours) {
+                elapsedSimulationHours = hours;
                 const yearProgress = elapsedSimulationHours / HOURS_PER_YEAR;
                 earthOrbitAngle = normalizeRadians(JANUARY_FIRST_ORBIT_ANGLE + yearProgress * Math.PI * 2);
                 moonRelAngle = normalizeRadians(yearProgress * Math.PI * 2 * LUNAR_SYNODIC_CYCLES_PER_YEAR);
@@ -1038,12 +1059,6 @@
                     + yearProgress * Math.PI * 2 * EARTH_ROTATIONS_PER_YEAR
                 );
 
-                isPlaying = false;
-                const playButton = document.getElementById('emPlayBtn');
-                if (playButton) playButton.textContent = '▶ 재생';
-                updateDynamicSunRays();
-                updatePhasesUI();
-                updateSimulationClock();
             }
 
             function equatorialFromEcliptic(longitude) {
@@ -1347,7 +1362,7 @@
                 const shortPhaseName = pData.name.split(' (')[0];
                 document.getElementById('moonPhaseTitle').textContent = pData.name;
                 document.getElementById('moonObsInfo').innerHTML =
-                    pData.info.replace(' | ', '<br>관측 방향: ');
+                    pData.info.replace(' | ', '<br>') + '<br><small>중위도의 대표적인 관측 시각 · 계절에 따라 달라짐</small>';
                 document.getElementById('emOrbitProgressText').textContent =
                     `음력 약 ${lunarDay}일 · ${shortPhaseName}`;
 
@@ -1561,7 +1576,6 @@
                     if (earthOrbitAngle >= Math.PI * 2) earthOrbitAngle -= Math.PI * 2;
                     if (moonRelAngle >= Math.PI * 2) moonRelAngle -= Math.PI * 2;
                     if (earthSpinAngle >= Math.PI * 2) earthSpinAngle %= Math.PI * 2;
-                    if (elapsedSimulationHours >= HOURS_PER_YEAR) elapsedSimulationHours %= HOURS_PER_YEAR;
                 }
 
                 // 1. Move Earth-Moon System counter-clockwise as seen from the north
@@ -1665,7 +1679,8 @@
             chips.forEach(chip => {
                 chip.onclick = function() {
                     const deg = parseFloat(this.dataset.angle);
-                    moonRelAngle = deg * (Math.PI / 180);
+                    const lunarCycle = Math.floor(elapsedSimulationHours / (24 * SYNODIC_MONTH_DAYS));
+                    setSimulationHours((lunarCycle + deg / 360) * SYNODIC_MONTH_DAYS * 24);
                     isPlaying = false;
                     document.getElementById('emPlayBtn').textContent = '▶ 재생';
 
@@ -1678,6 +1693,7 @@
                     }
                     updateDynamicSunRays();
                     updatePhasesUI();
+                    updateSimulationClock();
 
                     if (renderer && scene && camera) {
                         renderer.render(scene, camera);

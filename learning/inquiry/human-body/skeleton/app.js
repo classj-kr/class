@@ -24,6 +24,15 @@
 
     // Sarcomere Length State
     var sarcomereLength = 2.24; // 2.00 ~ 2.80 μm (A대 1.60 + 액틴 한쪽 1.00 기준)
+    var selectedBand=-1;
+
+    function selectBand(key){
+        selectedBand=Number(key);
+        var info=hotspots.sarcomere[selectedBand];if(!info)return;
+        if(organTitleEl)organTitleEl.textContent=info.title;
+        if(organDescEl)organDescEl.innerHTML=info.desc;
+        document.querySelectorAll('[data-band]').forEach(function(b){b.setAttribute('aria-pressed',String(Number(b.dataset.band)===selectedBand));});
+    }
 
     // Hotspots per Scene
     var hotspots = {
@@ -113,6 +122,13 @@
     }
 
     function updatePhysics(dt) {
+        if(currentSceneKey==='sarcomere'){
+            if(isFlexing){sarcomereLength=Math.max(2,sarcomereLength-dt*.35);if(sarcomereLength===2)isFlexing=false;}
+            if(isExtending){sarcomereLength=Math.min(2.8,sarcomereLength+dt*.35);if(sarcomereLength===2.8)isExtending=false;}
+            document.getElementById('sarcomereSlider').value=sarcomereLength.toFixed(2);
+            document.getElementById('sarcomereValue').textContent=sarcomereLength.toFixed(2)+' μm';
+            return;
+        }
         if (isFlexing) {
             jointAngle -= dt * 70;
             if (jointAngle <= 40) {
@@ -132,7 +148,7 @@
         var isBicepsContracted = jointAngle < 100;
 
         // Map joint angle to sarcomere length (170° = 2.80um relaxed, 40° = 1.60um contracted)
-        sarcomereLength = 2.00 + ((jointAngle - 30) / 150) * 0.80;
+        // Joint angle and microscopic sarcomere length are independent model controls.
 
         if (angleValEl) angleValEl.textContent = Math.round(jointAngle) + '°';
         if (romGaugeEl) romGaugeEl.textContent = Math.round(jointAngle) + '°';
@@ -219,8 +235,10 @@
         var cy = dy + guard + Math.max(0, (avail - blockH) / 2) + laneUp + 18;
 
         // Sarcomere parameters: A-band is strictly 1.60um constant
-        var aBandWidth = 240 * (dw / 800);
-        var zDistance = (sarcomereLength / 2.20) * 320 * (dw / 800);
+        var dimensions=BodyModelMath.sarcomere(sarcomereLength,150*(dw/800));
+        var aBandWidth = dimensions.pixels.a;
+        var zDistance = dimensions.pixels.z;
+        canvas.dataset.sarcomere=JSON.stringify(dimensions);
         var leftZ = cx - zDistance / 2;
         var rightZ = cx + zDistance / 2;
 
@@ -234,7 +252,7 @@
         // cy±38 이면 딱 감싼다. 전에는 cy±52 로 그려 위아래로 삐져나와,
         // 「구간」이 아니라 웬 직사각형 상자처럼 보였다.
         var BAND_H = 38;
-        var actinReach = 145 * (dw / 800);
+        var actinReach = dimensions.pixels.actin;
         var hLeft = leftZ + actinReach, hRight = rightZ - actinReach;
 
         function band(x, w, rgb) {
@@ -256,6 +274,15 @@
         if (hRight > hLeft) band(hLeft, hRight - hLeft, '250, 204, 21');
         band(leftZ, (cx - aBandWidth / 2) - leftZ, '56, 189, 248');
         band(cx + aBandWidth / 2, rightZ - (cx + aBandWidth / 2), '56, 189, 248');
+        if(selectedBand>=0){
+            ctx.save();ctx.strokeStyle='#facc15';ctx.fillStyle='rgba(250,204,21,.13)';ctx.lineWidth=3;
+            var regions=selectedBand===0?[[leftZ-10,20],[rightZ-10,20]]:
+                selectedBand===1?[[cx-aBandWidth/2,aBandWidth]]:
+                selectedBand===2?[[hLeft,Math.max(2,hRight-hLeft)]]:
+                [[leftZ,cx-aBandWidth/2-leftZ],[cx+aBandWidth/2,rightZ-cx-aBandWidth/2]];
+            regions.forEach(function(r){ctx.fillRect(r[0],cy-44,r[1],88);ctx.strokeRect(r[0],cy-44,r[1],88);});
+            ctx.restore();
+        }
 
         // ── 1. Z선 (Z-disc: α-액티닌 지그재그 골격 격자) ─────────
         [leftZ, rightZ].forEach(function (zx) {
@@ -361,7 +388,7 @@
         }
 
         // ── 4. 가는 액틴 필라멘트 (Z선에 고정되어 중앙으로 미끄러져 들어감) ─
-        var actinLen = 145 * (dw / 800);
+        var actinLen = dimensions.pixels.actin;
         var actinLevels = [-32, 32];
 
         actinLevels.forEach(function (ayOff) {
@@ -429,8 +456,8 @@
 
         // ── 6. 하단 실시간 길이 재기 HUD 카드 ───────────────────
         var aBand = 1.60;
-        var hZone = Math.max(0, sarcomereLength - 2.00);
-        var iBand = Math.max(0, (sarcomereLength - aBand) / 2);
+        var hZone = dimensions.h;
+        var iBand = dimensions.iHalf;
 
         var hudW = Math.min(460, dw - 40);
         var hudH = 66;
@@ -638,6 +665,9 @@
                 sceneBtns.forEach(function (b) { b.classList.remove('active'); });
                 btn.classList.add('active');
                 currentSceneKey = btn.dataset.scene;
+                isFlexing=false;isExtending=false;
+                if(flexBtn)flexBtn.textContent=currentSceneKey==='sarcomere'?'근절 수축':'팔 굽히기 (이두근 수축)';
+                if(extendBtn)extendBtn.textContent=currentSceneKey==='sarcomere'?'근절 이완':'팔 펴기 (삼두근 수축)';
                 renderQuizSkeleton();
 
                 if (skeletonHudText) {
@@ -681,6 +711,9 @@
                 isExtending = false;
             });
         }
+        var lengthSlider=document.getElementById('sarcomereSlider');
+        if(lengthSlider)lengthSlider.addEventListener('input',function(){sarcomereLength=Number(this.value);isFlexing=false;isExtending=false;document.getElementById('sarcomereValue').textContent=sarcomereLength.toFixed(2)+' μm';});
+        document.querySelectorAll('[data-band]').forEach(function(b){b.addEventListener('click',function(){selectBand(b.dataset.band);});});
 
         if (canvas) {
             canvas.addEventListener('pointerdown', function (event) {
@@ -701,6 +734,7 @@
                     if (clickX >= tb.x && clickX <= tb.x + tb.w && clickY >= tb.y && clickY <= tb.y + tb.h) {
                         var spotTag = hotspots[currentSceneKey] && hotspots[currentSceneKey][tb.key];
                         if (spotTag) {
+                            if(currentSceneKey==='sarcomere')selectBand(tb.key);
                             if (organTitleEl) organTitleEl.textContent = spotTag.title;
                             if (organDescEl) organDescEl.innerHTML = spotTag.desc;
                             if (organDetailCard) {
