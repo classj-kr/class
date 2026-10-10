@@ -11,6 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { pruneRenderArtifact } from "./render-prune.mjs";
+import { installDependencies } from "./render-dependency-cache.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ARITHMETIC_DIR = path.resolve(SCRIPT_DIR, "../learning/literacy-numeracy/arithmetics");
@@ -105,15 +106,20 @@ function saveArithmeticBuild(inputHash) {
 }
 
 function main() {
-  runNpm("Installing arithmetic runtime", [
-    "--node-options=--max-old-space-size=384",
-    "--prefix",
-    "../learning/literacy-numeracy/arithmetics",
-    "ci",
-    "--include=dev",
-    "--no-audit",
-    "--no-fund",
-  ]);
+  installDependencies({
+    directory: ARITHMETIC_DIR,
+    label: "Installing arithmetic runtime",
+    run: runNpm,
+    args: [
+      "--node-options=--max-old-space-size=384",
+      "--prefix",
+      "../learning/literacy-numeracy/arithmetics",
+      "ci",
+      "--include=dev",
+      "--no-audit",
+      "--no-fund",
+    ],
+  });
 
   const inputHash = hashBuildInputs(ARITHMETIC_DIR);
   if (!restoreArithmeticBuild(inputHash)) {
@@ -127,14 +133,19 @@ function main() {
     saveArithmeticBuild(inputHash);
   }
 
-  runNpm("Installing World Voyage runtime", [
-    "--prefix",
-    WORLD_VOYAGE_DIR,
-    "ci",
-    "--omit=dev",
-    "--no-audit",
-    "--no-fund",
-  ]);
+  installDependencies({
+    directory: path.resolve(SCRIPT_DIR, WORLD_VOYAGE_DIR),
+    label: "Installing World Voyage runtime",
+    run: runNpm,
+    args: [
+      "--prefix",
+      WORLD_VOYAGE_DIR,
+      "ci",
+      "--omit=dev",
+      "--no-audit",
+      "--no-fund",
+    ],
+  });
 
   if (process.env.RENDER === "true") {
     const { removedBytes, removedTargets, removed } = pruneRenderArtifact();
