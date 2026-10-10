@@ -1,0 +1,59 @@
+.school-level { display:inline-flex; flex:0 0 auto; gap:3px; padding:3px; background:#101e30; border:1px solid #48617a; border-radius:9px; }
+.school-level button { min-width:46px; min-height:32px; padding:4px 8px; border:0; border-radius:6px; background:transparent; color:#c3d3e3; font:inherit; font-size:13px; font-weight:700; line-height:1.3; cursor:pointer; white-space:nowrap; }
+.school-level button[aria-pressed="true"] { color:#06252c; background:#74dfdb; }
+.school-level button:focus-visible,.school-question summary:focus-visible { outline:2px solid #facc15; outline-offset:3px; }
+.school-concepts,.school-question { margin:12px 0; padding:14px; border:1px solid #354d66; border-radius:10px; background:#111f31; color:#dfebf6; text-align:left; }
+.school-concepts p,.school-question p { margin:8px 0; font-size:14px; line-height:1.8; word-break:keep-all; }
+.school-concepts .school-source { color:#91b9c9; font-size:12px; }
+.school-question h3 { color:#8be2df; font-size:15px; margin:0 0 8px; }
+.school-question summary { color:#9cdae8; cursor:pointer; padding:10px 0; }
+.school-question details[open] { border-top:1px solid #35546a; margin-top:12px; }
+.school-question details p { color:#e5d3a8; }
+.school-detail { color:#dfebf6; font-size:14px; line-height:1.8; margin:8px 0; }
+.school-original-detail summary { cursor:pointer; color:#9fc5d5; padding:8px 0; font-size:12px; }
+.sim-header:has(.school-level) { height:auto; min-height:60px; flex-wrap:wrap; }
+.sim-header:has(.school-level) .sim-header-left { flex:1; }
+.body-school-source { margin:0 0 10px; color:#9db7cb; font-size:12px; line-height:1.6; }
+.sim-app-container { height:calc(100% - var(--body-header-height,60px)); }
+.space-topic-page .top-header:has(.school-level) { height:auto; min-height:58px; display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
+.school-space-content { max-width:880px; margin:0 auto 20px; }
+.space-topic-page #tab-topic-concepts > [hidden],.space-topic-page #tab-quiz > [hidden] { display:none!important; }
+.matter-nav button:disabled { display:none; }
+.matter-nav [hidden],.nav-tab[hidden],.school-level[hidden] { display:none!important; }
+.school-matter-content [hidden],.model-check[hidden],#modelFacts[hidden],.model-key[hidden] { display:none!important; }
+.school-matter-content .school-concepts { margin:0 0 12px; }
+.top-header:has(.school-level) { gap:8px; flex-wrap:wrap; }
+.atlas-header .school-level { margin-left:8px; }
+.atlas:has(.school-level) { --top:60px; }
+.atlas .atlas-header:has(.school-level) { display:flex; position:fixed; inset:0 0 auto; height:60px; align-items:center; padding:0 14px; gap:8px; z-index:10; background:#0b1522; }
+.atlas .atlas-header:has(.school-level) .projection-toggle { position:static; transform:none; margin-left:auto; }
+.atlas .atlas-header:has(.school-level) #catalogToggle { position:static; }
+.atlas:has(.school-level) .view-controls { top:72px; }
+.atlas:has(.school-level) .map-caption { top:72px; }
+.atlas .school-concepts,.atlas .school-question { padding:12px; }
+.korea-school-nav { grid-column:1; grid-row:1; min-width:0; display:flex; flex-direction:column; background:#eef3ef; }
+.korea-school-nav > .school-level { align-self:flex-start; margin:4px 12px 8px 58px; }
+.korea-school-nav .theme-tab:disabled { opacity:.4; cursor:not-allowed; }
+.study-panel .school-concepts,.study-panel .school-question { background:#f3f7f4; color:#233d3e; border-color:#bfceca; }
+.study-panel .school-source,.study-panel .school-question h3,.study-panel .school-question summary { color:#35666a; }
+.study-panel .school-question details p { color:#674c28; }
+.lesson-practice[hidden],#quickPractice[hidden],.concept-trap[hidden] { display:none!important; }
+#quizContainer[hidden] { display:none!important; }
+html[data-school-level="elementary"] .star-properties .sp-grid > section:nth-child(2),
+html[data-school-level="elementary"] .star-properties .sp-grid > section:nth-child(3),
+html[data-school-level="elementary"] .star-properties .sp-grid > section:first-child > p,
+html[data-school-level="elementary"] .star-properties .sp-grid > section:first-child > small,
+html[data-school-level="elementary"] .star-properties [data-sp-distance] svg text:last-of-type,
+html[data-school-level="elementary"] .star-properties [data-sp-brightness],
+html[data-school-level="elementary"] .star-properties .sp-distinction { display:none; }
+@media(max-width:410px) { .atlas-header { gap:5px; padding:0 6px; } .atlas-header .school-level { margin-left:0; } .atlas-header .school-level button { min-width:36px; padding:4px; } .atlas-header .projection-toggle button { padding:0 7px; } }
+@media(max-width:900px) { .sim-app-container { height:auto; } }
+@media(max-width:600px) { .school-level button { min-width:42px; } .school-concepts,.school-question { padding:12px; } }
+@media(max-width:700px) {
+    .sim-header:has(.school-level) { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; padding:10px 12px; }
+    .sim-header:has(.school-level) .sim-header-left { grid-column:1; grid-row:1; min-width:0; gap:8px; }
+    .sim-header:has(.school-level) .nav-back-btn { flex-shrink:0; }
+    .sim-header:has(.school-level) .sim-title { font-size:15px; word-break:keep-all; }
+    .sim-header:has(.school-level) .school-level { grid-column:2; grid-row:1; }
+    .sim-header:has(.school-level) .sim-header-right { grid-column:1/-1; grid-row:2; display:flex; flex-wrap:wrap; justify-content:flex-start; gap:8px; }
+}
