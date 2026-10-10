@@ -29,6 +29,7 @@
     var heatWaves = [], glandFill;
     var titleText, orderText, verdictBox, verdictText, lossBar, lossText, makeBar, makeText;
     var t0 = 0;
+    var PART_IDS={'표피':'skinEpidermis','진피':'skinDermis','피하 지방':'skinFat','땀샘':'skinGland','피부 혈관':'skinVessel'};
 
     function init() {
         wrap = document.querySelector('.homeostasis-viewport');
@@ -107,6 +108,12 @@
 
         drawSkin();
         drawPanel();
+        Object.keys(PART_IDS).forEach(function(name){
+            var part=svg.querySelector('#'+PART_IDS[name]);if(!part)return;
+            part.style.cursor='pointer';part.setAttribute('role','button');part.setAttribute('tabindex','0');part.setAttribute('aria-label',name);
+            part.addEventListener('click',function(){showDetail(name);});
+            part.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();showDetail(name);}});
+        });
     }
 
     function drawSkin() {
@@ -116,9 +123,9 @@
         titleText = tag(330, 44, '', 'head');
 
         // 피부 세 겹
-        g.appendChild(el('rect', { x: 60, y: 120, width: 560, height: 52, fill: '#fcd9b6', stroke: '#e7b98d', 'stroke-width': 2 }));
-        g.appendChild(el('rect', { x: 60, y: 172, width: 560, height: 176, fill: '#f6c3a0', stroke: '#e7b98d', 'stroke-width': 2 }));
-        g.appendChild(el('rect', { x: 60, y: 348, width: 560, height: 96, fill: '#fde68a', stroke: '#e7b98d', 'stroke-width': 2, opacity: 0.75 }));
+        g.appendChild(el('rect', { id:'skinEpidermis', x: 60, y: 120, width: 560, height: 52, fill: '#fcd9b6', stroke: '#e7b98d', 'stroke-width': 2 }));
+        g.appendChild(el('rect', { id:'skinDermis', x: 60, y: 172, width: 560, height: 176, fill: '#f6c3a0', stroke: '#e7b98d', 'stroke-width': 2 }));
+        g.appendChild(el('rect', { id:'skinFat', x: 60, y: 348, width: 560, height: 96, fill: '#fde68a', stroke: '#e7b98d', 'stroke-width': 2, opacity: 0.75 }));
 
         tag(96, 152, '표피', 'skin', 'start');
         tag(96, 196, '진피', 'skin', 'start');
@@ -133,6 +140,7 @@
             g.appendChild(muscle);
             hairs.push(hair);
             hairMuscles.push(muscle);
+            g.appendChild(el('ellipse',{cx:x+12,cy:276,rx:8,ry:13,fill:'#a86b43',stroke:'#78350f','stroke-width':1}));
         });
 
         // 피부 표면에서 서서히 퍼지는 열
@@ -145,13 +153,14 @@
 
         // 피부 혈관 (굵기가 바뀐다)
         vesselGlow = el('path', { fill: 'none', stroke: '#ef4444', 'stroke-linecap': 'round', opacity: 0.25 });
-        vessel = el('path', { fill: 'none', stroke: '#dc2626', 'stroke-linecap': 'round' });
+        vessel = el('path', { id:'skinVessel', fill: 'none', stroke: '#dc2626', 'stroke-linecap': 'round' });
         g.appendChild(vesselGlow);
         g.appendChild(vessel);
         g.appendChild(tagBox(560, 300, '피부 혈관', '#ef4444'));
 
         // 땀샘
         glandFill = el('path', {
+            id:'skinGland',
             d: 'M300 344 C278 345 266 323 275 305 C286 285 312 282 326 297 C340 314 325 335 308 329 C292 322 295 303 308 304 C324 305 330 290 330 274 L330 120',
             fill: 'none', stroke: '#38bdf8', 'stroke-width': 7, 'stroke-linecap': 'round'
         });
@@ -188,14 +197,14 @@
         g.appendChild(orderText);
 
         // 열을 내보내는 양
-        tag(680, 322, '내보내는 열', '', 'start');
+        tag(680, 322, '열 방출 반응 (상대값)', '', 'start');
         g.appendChild(el('rect', { x: 0, y: 334, width: 260, height: 22, rx: 7, fill: 'rgba(148,163,184,0.18)' }));
         lossBar = el('rect', { x: 0, y: 334, width: 120, height: 22, rx: 7, fill: '#f97316' });
         g.appendChild(lossBar);
         lossText = tag(680, 376, '', 'warm', 'start');
 
         // 열을 만드는 양
-        tag(680, 412, '만들어 내는 열', '', 'start');
+        tag(680, 412, '열 발생 반응 (상대값)', '', 'start');
         g.appendChild(el('rect', { x: 0, y: 424, width: 260, height: 22, rx: 7, fill: 'rgba(148,163,184,0.18)' }));
         makeBar = el('rect', { x: 0, y: 424, width: 120, height: 22, rx: 7, fill: '#facc15' });
         g.appendChild(makeBar);
@@ -264,17 +273,18 @@
         hairs.forEach(function (hair, i) {
             var x = hair._x;
             var lean = cold ? 0 : 26;             // 추우면 곧게 서고, 더우면 눕는다
-            hair.setAttribute('x1', x);
-            hair.setAttribute('y1', 120);
+            hair.setAttribute('x1', x+12);
+            hair.setAttribute('y1', 276);
             hair.setAttribute('x2', x + lean);
             hair.setAttribute('y2', cold ? 44 : 78);
             hair.setAttribute('opacity', 0.95);
 
             var m = hairMuscles[i];
-            m.setAttribute('x1', x);
-            m.setAttribute('y1', 168);
-            m.setAttribute('x2', x - (cold ? 4 : 18));
-            m.setAttribute('y2', 206);
+            m.setAttribute('x1', x-28);
+            m.setAttribute('y1', 178);
+            var tipY=cold?44:78;
+            m.setAttribute('x2', x+12+(lean-12)*(276-236)/(276-tipY));
+            m.setAttribute('y2', 236);
             m.setAttribute('stroke-width', cold ? 6 : 3);
             m.setAttribute('opacity', cold ? 1 : 0.45);
         });
@@ -313,12 +323,12 @@
         var make = cold ? 0.9 : (hot ? 0.3 : 0.5);
         lossBar.setAttribute('width', (loss * 260).toFixed(0));
         makeBar.setAttribute('width', (make * 260).toFixed(0));
-        lossText.textContent = hot ? '혈관이 넓어져 열을 많이 내보냅니다' : (cold ? '혈관이 좁아져 열을 덜 내보냅니다' : '보통');
+        lossText.textContent = env>=36.5 ? '주변이 더 뜨거우면 땀의 증발이 중요합니다' : (hot ? '혈관 확장과 땀 증발로 열 방출을 늘립니다' : (cold ? '혈관 수축으로 열 손실을 줄입니다' : '보통'));
         makeText.textContent = cold ? '떨어서 열을 많이 만듭니다' : (hot ? '열을 적게 만듭니다' : '보통');
 
         /* 한 줄 결론 */
         var line;
-        if (hot) line = '더움 ➔ 간뇌 시상하부 ➔ 피부 혈관 확장 · 땀 분비 ➔ 열을 많이 내보내 체온이 내려갑니다';
+        if (hot) line = env>=36.5 ? '몸보다 더운 공기는 열을 줄 수도 있습니다. 땀이 증발하면 열을 빼앗지만 습도 등이 높으면 냉각이 어려워집니다.' : '더움 ➔ 간뇌 시상하부 ➔ 피부 혈관 확장 · 땀 분비 ➔ 열 방출을 늘려 체온 상승을 억제합니다';
         else if (cold) line = '추움 ➔ 간뇌 시상하부 ➔ 피부 혈관 수축 · 몸 떨림 ➔ 열을 덜 내보내고 더 만들어 체온이 올라갑니다';
         else line = '손잡이로 바깥 기온을 바꿔 보세요. 피부 혈관과 땀, 털이 어떻게 달라지는지 보입니다.';
         verdictText.textContent = line;
@@ -338,14 +348,14 @@
      */
     var DETAIL = {
         '표피': ['표피',
-            '피부의 <strong>가장 바깥층</strong>입니다. 죽은 세포가 쌓여 있어 몸속 물이 함부로 빠져나가지 못하게 막고, ' +
+            '피부의 <strong>가장 바깥층</strong>입니다. 표면의 각질층이 수분 손실을 줄이고, ' +
             '세균이 들어오는 것도 막습니다. <strong>몸의 첫 번째 방어벽</strong>입니다.'],
         '진피': ['진피',
             '표피 <strong>아래층</strong>입니다. <strong>땀샘·피부 혈관·감각점·털세움근</strong>이 모두 여기에 있습니다. ' +
             '체온 조절이 실제로 일어나는 층입니다.'],
         '피하 지방': ['피하 지방',
             '진피 아래의 <strong>기름층</strong>입니다. 열이 밖으로 달아나지 못하게 막는 <strong>이불</strong> 노릇을 합니다. ' +
-            '추운 곳에 사는 동물일수록 두껍습니다.'],
+            '충격을 완화하고 에너지를 저장하는 역할도 합니다.'],
         '땀샘': ['땀샘',
             '더울 때 <strong>땀을 내보냅니다</strong>. 땀이 마르면서 몸의 열을 가져가기 때문에 체온이 내려갑니다. ' +
             '추울 때는 땀이 거의 안 납니다. 시키는 곳은 <strong>간뇌 시상하부</strong>입니다.'],
@@ -358,13 +368,14 @@
     function showDetail(name) {
         var d = DETAIL[name];
         if (!d) return;
+        SimEngine.litPart(svg,Object.keys(PART_IDS).map(function(n){return PART_IDS[n];}),PART_IDS[name]);
+        tagLayer.querySelectorAll('[data-part]').forEach(function(t){
+            var on=t.dataset.part===PART_IDS[name];t.classList.toggle('picked',on);t.setAttribute('aria-pressed',String(on));
+        });
         var t = document.getElementById('organTitle');
         var p = document.getElementById('organDesc');
         if (t) t.textContent = d[0];
         if (p) p.innerHTML = d[1];
-        if (tagLayer) {
-            tagLayer.querySelectorAll('.skin-tag.picked').forEach(function (x) { x.classList.remove('picked'); });
-        }
         if (typeof SimEngine !== 'undefined' && SimEngine.SoundFX) SimEngine.SoundFX.playClick();
     }
 
@@ -375,6 +386,8 @@
         e.dataset.anchor = anchor || 'middle';
         if (DETAIL[str]) {
             e.classList.add('clickable');
+            e.dataset.part=PART_IDS[str];e.setAttribute('role','button');e.tabIndex=0;
+            e.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();showDetail(str);}});
             e.addEventListener('click', function () {
                 showDetail(str);
                 e.classList.add('picked');

@@ -1231,10 +1231,10 @@
                 actionBtnText.textContent = isSympathetic ? '🌿 부교감신경으로 전환' : '⚡ 교감신경으로 전환';
                 actionTriggerBtn.style.background = isSympathetic ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #ef4444, #dc2626)';
             } else if (currentSceneKey === 'response') {
-                actionBtnText.textContent = '반응 속도 재 보기';
+                actionBtnText.textContent = '신호 경로 다시 보기';
                 actionTriggerBtn.style.background = 'linear-gradient(135deg, #a855f7, #7e22ce)';
             } else {
-                actionBtnText.textContent = '반응 속도 재 보기';
+                actionBtnText.textContent = '신호 경로 다시 보기';
                 actionTriggerBtn.style.background = 'linear-gradient(135deg, #a855f7, #7e22ce)';
             }
         }
@@ -1422,7 +1422,7 @@
         if (sceneKey === 'brain') {
             hudInstructionEl.innerHTML = '화면 속 뇌 부위(<strong>대뇌, 소뇌, 간뇌, 중간뇌, 연수, 척수</strong>)를 눌러 핵심 기능을 탐색하세요.';
         } else if (sceneKey === 'response') {
-            hudInstructionEl.innerHTML = '오른쪽 위 <strong>[반응 속도 재 보기]</strong>를 눌러 대뇌 반응과 척수·연수·중간뇌 반사의 속도를 비교하세요.';
+            hudInstructionEl.innerHTML = '오른쪽 위 <strong>[신호 경로 다시 보기]</strong>를 눌러 대뇌 반응과 척수·연수·중간뇌 반사의 속도를 비교하세요.';
         } else if (sceneKey === 'autonomic') {
             hudInstructionEl.innerHTML = '오른쪽 갈피에서 <strong>[교감신경]</strong>과 <strong>[부교감신경]</strong>을 바꿔 눌러 온몸 장기의 길항 작용을 관찰하세요.';
         } else if (sceneKey === 'synapse') {

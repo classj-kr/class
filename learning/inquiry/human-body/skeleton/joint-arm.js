@@ -35,10 +35,10 @@
 
     var LABELS = [
         { id: 'humerus', text: '위팔뼈 (상완골)', ax: 292, ay: 128, sx: 452, sy: 152 },
-        { id: 'triceps', text: '삼두근 (길항근)', ax: 232, ay: 300, sx: 440, sy: 260 },
+        { id: 'triceps', text: '위팔 세갈래근 (팔 펴기)', ax: 232, ay: 300, sx: 440, sy: 260 },
         { id: 'joint', text: '팔꿈치 관절 (연골 · 윤활액)', ax: 238, ay: 452, sx: 470, sy: 370 },
-        { id: 'forearm', text: '노뼈 (앞) · 자뼈 (뒤)', ax: 248, ay: 604, sx: 450, sy: 520 },
-        { id: 'biceps', text: '이두근 (주동근)', ax: 768, ay: 210, sx: 505, sy: 260 },
+        { id: 'forearm', text: '아래팔뼈 (노뼈 · 자뼈)', ax: 248, ay: 604, sx: 450, sy: 520 },
+        { id: 'biceps', text: '위팔 두갈래근 (팔 굽히기)', ax: 768, ay: 210, sx: 505, sy: 260 },
         { id: 'tendon', text: '힘줄 — 근육과 뼈를 잇는다', ax: 784, ay: 350, sx: 520, sy: 420 }
     ];
 
@@ -285,9 +285,12 @@
 
         tricepsObj = createMuscleObject(muscleGroup);
         bicepsObj = createMuscleObject(muscleGroup);
+        tricepsObj.group.id='triceps';bicepsObj.group.id='biceps';
+        var tendons=el('g',{id:'tendon'});muscleGroup.appendChild(tendons);
+        tendons.appendChild(tricepsObj.tendonGroup);tendons.appendChild(bicepsObj.tendonGroup);
 
         // 팔꿈치 관절 윤활액 및 연골 인디케이터
-        var jointG = el('g', { id: 'elbowJointVisual' });
+        var jointG = el('g', { id: 'joint' });
         svg.appendChild(jointG);
         jointG.appendChild(el('circle', { cx: ELBOW.x, cy: ELBOW.y, r: 18, fill: '#fbbf24', opacity: 0.24 }));
         jointG.appendChild(el('circle', { cx: ELBOW.x, cy: ELBOW.y, r: 8, fill: '#fbbf24', stroke: '#ffffff', 'stroke-width': 1.5 }));
@@ -562,6 +565,7 @@
             tag.tabIndex = 0;
             tag.setAttribute('role', 'button');
             function selectPart() {
+                SimEngine.litPart(svg,LABELS.map(function(l){return l.id;}),item.id);
                 var details = {
                     humerus: '어깨에서 팔꿈치까지 이어지는 위팔의 뼈입니다.',
                     triceps: '팔을 펼 때 수축하고, 굽힐 때 이완하는 근육입니다.',
@@ -572,12 +576,19 @@
                 };
                 document.getElementById('organTitle').textContent = item.text;
                 document.getElementById('organDesc').textContent = details[item.id];
-                labelBox.querySelectorAll('.joint-tag').forEach(function (t) { t.classList.toggle('picked', t === tag); });
+                labelBox.querySelectorAll('.joint-tag').forEach(function (t) {
+                    t.classList.toggle('picked', t === tag);t.setAttribute('aria-pressed',String(t===tag));
+                });
             }
             tag.addEventListener('click', selectPart);
             tag.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPart(); }
             });
+            var part=svg.querySelector('#'+item.id);
+            if(part){part.style.cursor='pointer';part.setAttribute('role','button');part.setAttribute('tabindex','0');part.setAttribute('aria-label',item.text);
+                part.addEventListener('click',selectPart);
+                part.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectPart();}});
+            }
             labelBox.appendChild(tag);
             item._tag = tag;
         });

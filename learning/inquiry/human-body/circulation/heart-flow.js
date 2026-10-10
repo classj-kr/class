@@ -133,9 +133,9 @@
             var legendText = layer.querySelector('.heart-flow-legend-arterial-text');
             if (legendDot) legendDot.style.background = color;
             if (legendText) {
-                if (o2 >= 95) legendText.textContent = '동맥혈 (산소 풍부 ➔ 선홍색)';
+                if (o2 >= 95) legendText.textContent = '산소가 많은 혈액 (밝은 붉은색)';
                 else if (o2 >= 90) legendText.textContent = '동맥혈 (산소 부족 ➔ 암적색)';
-                else legendText.textContent = '동맥혈 (저산소증 ➔ 암자색·청색증)';
+                else legendText.textContent = '산소가 적은 혈액 (어두운 붉은색)';
             }
         }
     }

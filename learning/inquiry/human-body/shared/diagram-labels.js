@@ -88,6 +88,11 @@
             function select(){if(options.select)options.select(item);}
             tag.addEventListener('click',select);
             tag.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();select();}});
+            var target=svg.querySelector('#'+item.id);
+            target.setAttribute('role','button');target.setAttribute('tabindex','0');
+            target.setAttribute('aria-label',tag.textContent);
+            // Labels can be re-created on resize; one keyboard listener per organ.
+            target.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();select();}};
             box.appendChild(tag);
             var line=document.createElementNS(NS,'line');
             line.setAttribute('stroke','#a8becd');line.setAttribute('stroke-width','1.2');
@@ -97,9 +102,21 @@
             g.appendChild(line);g.appendChild(dot);
             view.records.push({item:item,tag:tag,line:line,dot:dot});
         });
+        selectPart(svg,svg.dataset.selectedPart||'');
         update(view);
     }
-    var api={render:render,arrange:arrange};
+    function selectPart(svg,id) {
+        views.filter(function(v){return v.svg===svg;}).forEach(function(view){
+            view.records.forEach(function(r){
+                var on=r.item.id===id;
+                r.tag.classList.toggle('on',on);
+                r.tag.setAttribute('aria-pressed',String(on));
+                var target=svg.querySelector('#'+r.item.id);
+                if(target)target.setAttribute('aria-pressed',String(on));
+            });
+        });
+    }
+    var api={render:render,arrange:arrange,select:selectPart};
     if(typeof module!=='undefined'&&module.exports)module.exports=api;
     else {
         root.BodyDiagramLabels=api;

@@ -116,6 +116,7 @@
             ];
 
             let zScene, zCamera, zRenderer, zControls;
+            const zPanels = [];
             let zEarth, zEarthTiltReference, zEarthSpinGroup, zEarthGlobe, zSun, zOrbitPath;
             let zMidLine, zSunLine, zMidText, zSunText;
             let zObserverMarker;
@@ -287,7 +288,9 @@
                 zSeasonPickTargets = [];
 
                 zCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 2000);
-                zCamera.position.set(0, 300, 450);
+                zCamera.position.set(0, 500, 750);
+                zCamera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, zCamera.aspect)) * 180 / Math.PI;
+                zCamera.updateProjectionMatrix();
 
                 zRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
                 zRenderer.setSize(width, height);
@@ -298,7 +301,7 @@
                 zControls.dampingFactor = 0.05;
                 zControls.maxPolarAngle = Math.PI / 2 - 0.05; // Prevent camera going below ground
                 zControls.minDistance = 200;
-                zControls.maxDistance = 800;
+                zControls.maxDistance = 1600;
 
                 // Lighting
                 zScene.add(new THREE.AmbientLight(0xffffff, 0.4));
@@ -554,7 +557,7 @@
 
                     plane.position.set(px, 40, pz);
                     plane.lookAt(0, 40, 0); // Front face points to center
-
+                    zPanels.push(plane);
                     zScene.add(plane);
                 });
 
@@ -569,7 +572,9 @@
                     if (zRenderer && zCamera && container) {
                         const w = container.clientWidth;
                         const h = container.clientHeight;
+                        if (!w || !h) return;
                         zCamera.aspect = w / h;
+                        zCamera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, zCamera.aspect)) * 180 / Math.PI;
                         zCamera.updateProjectionMatrix();
                         zRenderer.setSize(w, h);
                     }
@@ -800,6 +805,7 @@
                     updateZodiacUI();
                 }
                 if (zControls) zControls.update();
+                if (zCamera) zPanels.forEach(panel => panel.quaternion.copy(zCamera.quaternion));
                 if (zRenderer && zScene && zCamera) {
                     zRenderer.render(zScene, zCamera);
                 }
@@ -818,8 +824,9 @@
                     } else {
                         // resize
                         const container = document.getElementById('zodiac3dContainer');
-                        if(container) {
+                        if(container && container.clientWidth && container.clientHeight) {
                             zCamera.aspect = container.clientWidth / container.clientHeight;
+                            zCamera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, zCamera.aspect)) * 180 / Math.PI;
                             zCamera.updateProjectionMatrix();
                             zRenderer.setSize(container.clientWidth, container.clientHeight);
                         }
@@ -829,6 +836,11 @@
 
             // Initial ini
             window.resetZodiacOrbit = function resetZodiacOrbit() {
+                if (zCamera && zControls) {
+                    zControls.target.set(0, 0, 0);
+                    zCamera.position.set(0, 500, 750);
+                    zControls.update();
+                }
                 window.currentZodiacMonth = 5;
                 window.currentZodiacTime = 24;
                 window.zodiacPlaying = false;

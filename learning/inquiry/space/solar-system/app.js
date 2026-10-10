@@ -488,10 +488,10 @@
 
             scene = new THREE.Scene();
             // Standard far plane for Log Scale, extended for True Scale 2D Map
-            camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 2500000);
+            camera = new THREE.PerspectiveCamera(2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, w / h)) * 180 / Math.PI, w / h, 0.1, 2500000);
             
             // Initial Camera Position
-            camera.position.set(0, 1500, 2000);
+            camera.position.set(0, 2580, 3440);
             camera.lookAt(0, 0, 0);
 
             try {
@@ -2366,6 +2366,7 @@
             var w = canvasContainer.clientWidth || 900;
             var h = canvasContainer.clientHeight || 540;
             camera.aspect = w / h;
+            camera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, camera.aspect)) * 180 / Math.PI;
             camera.updateProjectionMatrix();
             renderer.setSize(w, h);
             renderCosmicScaleCanvases();
@@ -2611,7 +2612,7 @@
                 progressVal.textContent = '음력 3~4일 경 (초승)';
             } else if (normAngle >= 1.22 && normAngle < 1.92) {
                 phaseName.textContent = '🌓 상현달 (First Quarter)';
-                timeInfo.textContent = '남중 시각: 오후 6시 (18:00) | 초저녁 서쪽 하늘 관측';
+                timeInfo.textContent = '남중: 약 18시 | 한국에서 해 질 무렵 남쪽, 자정 무렵 짐';
                 progressVal.textContent = '음력 7~8일 경 (상현)';
             } else if (normAngle >= 1.92 && normAngle < 2.79) {
                 phaseName.textContent = '🌔 차오르는 달 (Waxing Gibbous)';
@@ -2627,7 +2628,7 @@
                 progressVal.textContent = '음력 18~19일 경';
             } else if (normAngle >= 4.36 && normAngle < 5.06) {
                 phaseName.textContent = '🌗 하현달 (Third Quarter)';
-                timeInfo.textContent = '남중 시각: 새벽 6시 (06:00) | 새벽 동쪽 하늘 관측';
+                timeInfo.textContent = '남중: 약 6시 | 한국에서 해 뜰 무렵 남쪽, 정오 무렵 짐';
                 progressVal.textContent = '음력 22~23일 경 (하현)';
             } else {
                 phaseName.textContent = '🌘 그믐달 (Waning Crescent)';
@@ -2742,7 +2743,7 @@
                 setUfoTimeAuthority(true);
                 if (camera && controls) {
                     controls.target.set(0, 0, 0);
-                    camera.position.set(0, 1500, 2000);
+                    camera.position.set(0, 2580, 3440);
                     controls.update();
                 }
             }
@@ -3139,7 +3140,7 @@
                         }
                         if (camera && controls) {
                             controls.maxDistance = GALAXY_VIEW.max3DDistance;
-                            camera.position.set(0, 1500, 2000); 
+                            camera.position.set(0, 2580, 3440); 
                             controls.target.set(0, 0, 0);
                             controls.update();
                         }
@@ -3157,7 +3158,8 @@
             if (resetCamBtn) {
                 resetCamBtn.addEventListener('click', function () {
                     if (camera && controls) {
-                        camera.position.set(0, 1500, 2500); // 100% Scale Default view
+                        if (state.simMode === '2d') camera.position.set(0, 1500000, 0);
+                        else camera.position.set(0, 2580, 3440);
                         controls.target.set(0, 0, 0);
                         controls.update();
                     }

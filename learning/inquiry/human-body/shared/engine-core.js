@@ -506,31 +506,15 @@
      * ids     : 이 장면에서 고를 수 있는 조각 이름들
      * activeId: 지금 고른 것 (없으면 모두 되돌린다)
      */
-    // 고른 조각의 테두리가 천천히 숨 쉬게 한다.
-    // 멈춰 있는 테두리보다 어디를 골랐는지 훨씬 잘 보인다.
-    // 눈이 피로하지 않게 느리게(1.6초 한 번) 그리고 은은하게 (굵기 4~6, 진하기 1~0.5).
-    // rAF 가 아니라 SVG 자체 움직임(SMIL)이라 화면이 멈춰 있어도 돈다.
+    // Highlight both filled organs and organs drawn as wide strokes (e.g. intestine).
+    // Store inline declarations, not computed colours: restoring them must preserve CSS,
+    // gradients, and simulation-driven SVG attributes. No independent animation while paused.
     var GLOW_MARK = 'engineGlow';
+    var selectionPaint = new WeakMap();
 
     function clearGlow(sh) {
         [].slice.call(sh.querySelectorAll('animate')).forEach(function (a) {
             if (a.getAttribute('data-' + GLOW_MARK) !== null) a.remove();
-        });
-    }
-
-    function addGlow(sh) {
-        var NS = 'http://www.w3.org/2000/svg';
-        [['stroke-width', '4;6;4'], ['stroke-opacity', '1;0.5;1']].forEach(function (pair) {
-            var a = document.createElementNS(NS, 'animate');
-            a.setAttribute('attributeName', pair[0]);
-            a.setAttribute('values', pair[1]);
-            a.setAttribute('dur', '1.6s');
-            a.setAttribute('repeatCount', 'indefinite');
-            a.setAttribute('calcMode', 'spline');
-            a.setAttribute('keyTimes', '0;0.5;1');
-            a.setAttribute('keySplines', '0.4 0 0.6 1;0.4 0 0.6 1');
-            a.setAttribute('data-' + GLOW_MARK, '1');
-            sh.appendChild(a);
         });
     }
 
@@ -607,22 +591,11 @@
             var active = bar && bar.querySelector('.scene-btn.active');
             if (!active) return;
             var stage = document.querySelector('.sim-stage-area');
-            var back = document.querySelector('.nav-back-btn');
-            var actions = document.querySelector('.sim-header-right');
             var area = stage.getBoundingClientRect();
-            var left = back ? back.getBoundingClientRect().right - area.left + 12 : 12;
-            var right = actions && actions.getBoundingClientRect().width ?
-                actions.getBoundingClientRect().left - area.left - 12 : area.width - 12;
-            // Measure the actual controls: scene-specific actions have different widths.
-            if (window.innerWidth > 900 && right - left >= 120) {
-                bar.style.left = left + 'px';
-                bar.style.top = '9px';
-                bar.style.maxWidth = (right - left) + 'px';
-            } else {
-                bar.style.left = '12px';
-                bar.style.top = '54px';
-                bar.style.maxWidth = Math.max(120, area.width - 24) + 'px';
-            }
+            // Scene navigation has its own row. Playback controls never cover it.
+            bar.style.left = '12px';
+            bar.style.top = '8px';
+            bar.style.maxWidth = Math.max(120, area.width - 24) + 'px';
             if (active.offsetLeft < bar.scrollLeft) bar.scrollLeft = active.offsetLeft - 6;
             if (active.offsetLeft + active.offsetWidth > bar.scrollLeft + bar.clientWidth)
                 bar.scrollLeft = active.offsetLeft + active.offsetWidth - bar.clientWidth + 6;
@@ -650,39 +623,54 @@
             navObserver.observe(document.querySelector('.sim-stage-area'));
         }
         apply();
-        requestAnimationFrame(revealScene);
+        requestAnimationFrame(function(){apply();revealScene();});
+        // Some apps create their first scene after the shared engine initialises.
+        var sceneBar=document.querySelector('.scene-switcher');
+        if(sceneBar && window.MutationObserver){
+            new MutationObserver(function(){apply();revealScene();}).observe(sceneBar,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+        }
     }
 
     function litPart(svgEl, ids, activeId) {
         if (!svgEl || !ids) return;
-        ids.forEach(function (id) {
-            var e = svgEl.querySelector('#' + id);
-            if (!e) return;
-            var shapes = e.matches('path,circle,ellipse,rect,polygon,polyline')
-                ? [e] : [].slice.call(e.querySelectorAll('path,circle,ellipse,rect,polygon,polyline'));
-            var on = (id === activeId);
-            shapes.forEach(function (sh) {
-                // 속성이 아니라 실제로 칠해진 색을 본다. 어떤 도식은 fill 을 CSS 로 준다.
-                // (귀 그림의 귓바퀴가 그랬는데, 속성만 보고 건너뛰어 불이 안 켜졌다.)
-                var f = getComputedStyle(sh).fill;
-                if (!f || f === 'none' || /rgba\(0, 0, 0, 0\)/.test(f)) return;
-                if (sh.dataset.baseStroke === undefined) {
-                    sh.dataset.baseStroke = sh.getAttribute('stroke') || '';
-                    sh.dataset.baseWidth = sh.getAttribute('stroke-width') || '';
-                }
-                clearGlow(sh);
-                if (on) {
-                    sh.setAttribute('stroke', '#facc15');
-                    sh.setAttribute('stroke-width', 4);
-                    addGlow(sh);
-                } else {
-                    if (sh.dataset.baseStroke) sh.setAttribute('stroke', sh.dataset.baseStroke);
-                    else sh.removeAttribute('stroke');
-                    if (sh.dataset.baseWidth) sh.setAttribute('stroke-width', sh.dataset.baseWidth);
-                    else sh.removeAttribute('stroke-width');
-                }
+        // Clear first, then select. Parent/child organ IDs must not undo one another.
+        (selectionPaint.get(svgEl) || []).forEach(function (record) {
+            Object.keys(record.styles).forEach(function (name) {
+                var saved = record.styles[name];
+                if (saved.value) record.el.style.setProperty(name, saved.value, saved.priority);
+                else record.el.style.removeProperty(name);
             });
+            record.el.removeAttribute('data-body-highlight');
         });
+        var records = [];
+        var selected = ids.indexOf(activeId) >= 0 && svgEl.querySelector('#' + activeId);
+        if (selected) {
+            var selector = 'path,circle,ellipse,rect,polygon,polyline,line';
+            var shapes = selected.matches(selector) ? [selected] : [].slice.call(selected.querySelectorAll(selector));
+            shapes.forEach(function (sh) {
+                if (sh.closest('defs,clipPath,mask,[data-diagram-leaders]')) return;
+                var paint = getComputedStyle(sh);
+                if (paint.fill === 'none' && paint.stroke === 'none') return;
+                var width = Math.max(4, parseFloat(paint.strokeWidth) || 0);
+                var styles = {};
+                ['stroke', 'stroke-width', 'stroke-opacity', 'filter'].forEach(function (name) {
+                    styles[name] = {value: sh.style.getPropertyValue(name), priority: sh.style.getPropertyPriority(name)};
+                });
+                records.push({el: sh, styles: styles});
+                clearGlow(sh);
+                sh.style.setProperty('stroke', '#facc15', 'important');
+                // A vessel may change width during a simulation; keep its dynamic width.
+                if ((parseFloat(paint.strokeWidth) || 0) < 4) sh.style.setProperty('stroke-width', String(width), 'important');
+                sh.style.setProperty('stroke-opacity', '1', 'important');
+                sh.style.setProperty('filter', 'drop-shadow(0 0 3px #facc15)', 'important');
+                sh.setAttribute('data-body-highlight', 'true');
+            });
+        }
+        selectionPaint.set(svgEl, records);
+        svgEl.dataset.selectedPart = selected ? activeId : '';
+        if (typeof BodyDiagramLabels !== 'undefined' && BodyDiagramLabels.select) {
+            BodyDiagramLabels.select(svgEl, selected ? activeId : '');
+        }
     }
 
     return {

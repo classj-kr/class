@@ -195,6 +195,12 @@
 
         var ew = ecgCanvas.clientWidth;
         var eh = ecgCanvas.clientHeight;
+        if (!ew || !eh) return;
+        // The ECG card starts hidden in the blood scene. Size it on first display.
+        if (ecgCanvas.width !== Math.round(ew*dpr) || ecgCanvas.height !== Math.round(eh*dpr)) {
+            ecgCanvas.width=Math.round(ew*dpr); ecgCanvas.height=Math.round(eh*dpr);
+            ecgCtx.setTransform(dpr,0,0,dpr,0,0);
+        }
 
         var cycle = (ecgTimer % 120) / 120; // 0 ~ 1
         var val = 0;
