@@ -21,7 +21,7 @@ async function main(){
  s=(await request('/sessions/'+s.id)).session;assert.equal(s.events.length,2);assert.equal(s.events[1].attemptNumber,2);
  await p.getByRole('button',{name:'이번 학습 마치기',exact:true}).click();await p.getByRole('heading',{name:'학습 결과',exact:true}).waitFor();
  assert.deepEqual(await p.evaluate(()=>Object.keys(localStorage)),[]);assert.deepEqual(errors,[]);
- await p.screenshot({path:'output/learning-records-review/arithmetic-records.png',fullPage:false});
+ await p.screenshot({path:'outputs/learning-records-review/arithmetic-records.png',fullPage:false});
  console.log('Checking fraction fields and Set restoration');
  await p.goto('http://localhost:4176/arithmetic/grade-3-fraction-2');await saved();
  await p.locator('input:not([type=hidden])').first().fill('2');await p.getByRole('button',{name:'전체 채점',exact:true}).click();await saved();

@@ -4,7 +4,7 @@ from pathlib import Path
 from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / 'tmp/중고등자료_수집'
+BASE = ROOT / 'references/textbooks/중고등'
 BASE.mkdir(parents=True, exist_ok=True)
 
 def request(url, start=None, end=None, method=None):

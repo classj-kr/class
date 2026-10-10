@@ -5,6 +5,7 @@
     "use strict";
 
     var CHUNK_SIZE = 15;
+    var boards = [];
 
     function shuffle(list) {
         for (var i = list.length - 1; i > 0; i--) {
@@ -23,11 +24,14 @@
     function buildCard(item, number, namePrefix) {
         var correctIndex = correctIndexOf(item);
         var options = shuffle(item.opts.map(function (text, index) {
-            return { text: text, correct: index === correctIndex };
+            return { id: 'option-' + (index + 1), text: text, correct: index === correctIndex };
         }));
 
         var card = document.createElement('article');
         card.className = 'quiz-card';
+        card.dataset.questionId = item.id;
+        card.dataset.questionRevision = String(item.revision || 1);
+        card.dataset.schoolLevel = window.SchoolLevel?.value || new URLSearchParams(location.search).get('school') || 'middle';
 
         var head = document.createElement('div');
         head.className = 'quiz-card-head';
@@ -43,7 +47,18 @@
 
         var question = document.createElement('h3');
         question.textContent = item.q;
+        question.id = namePrefix + '-' + item.id;
         card.appendChild(question);
+        if (item.table) {
+            var table = document.createElement('table');
+            table.className = 'quiz-data-table';
+            var caption = table.createCaption(); caption.textContent = item.table.caption;
+            var headRow = table.createTHead().insertRow();
+            item.table.headers.forEach(function (text) { var th = document.createElement('th'); th.scope = 'col'; th.textContent = text; headRow.appendChild(th); });
+            var body = table.createTBody();
+            item.table.rows.forEach(function (values) { var row = body.insertRow(); values.forEach(function (text) { row.insertCell().textContent = text; }); });
+            card.appendChild(table);
+        }
         if (item.diagram) {
             var renderer = item.diagram.startsWith('properties-') ? window.StarProperties : item.diagram.startsWith('stellar-') ? window.StellarStudy : window.EclipseLab;
             var figure = renderer && renderer.questionFigure(item.diagram);
@@ -52,13 +67,15 @@
 
         var optionsWrap = document.createElement('div');
         optionsWrap.className = 'quiz-options';
+        optionsWrap.setAttribute('role', 'radiogroup');
+        optionsWrap.setAttribute('aria-labelledby', question.id);
         options.forEach(function (opt, optIndex) {
             var label = document.createElement('label');
             if (opt.correct) label.dataset.correct = 'true';
             var input = document.createElement('input');
             input.type = 'radio';
             input.name = namePrefix + '-q' + number;
-            input.value = String(optIndex);
+            input.value = opt.id;
             label.appendChild(input);
             label.appendChild(document.createTextNode(' ' + opt.text));
             optionsWrap.appendChild(label);
@@ -68,11 +85,12 @@
         var checkBtn = document.createElement('button');
         checkBtn.type = 'button';
         checkBtn.className = 'answer-button';
-        checkBtn.textContent = '정답 확인';
+        checkBtn.textContent = '채점하기';
         card.appendChild(checkBtn);
 
         var resultEl = document.createElement('p');
         resultEl.className = 'answer-result';
+        resultEl.setAttribute('role', 'status');
         card.appendChild(resultEl);
 
         var expEl = document.createElement('p');
@@ -89,25 +107,22 @@
                 return;
             }
             var correct = selected.closest('label').dataset.correct === 'true';
+            card.dataset.selectedOptionId = selected.value;
             card.dataset.state = correct ? 'correct' : 'incorrect';
-            if (correct) {
-                resultEl.textContent = '정답입니다.';
-                expEl.hidden = false;
-                Array.prototype.forEach.call(optionsWrap.querySelectorAll('input'), function (input) {
-                    input.disabled = true;
-                });
-                checkBtn.disabled = true;
-            } else {
-                resultEl.textContent = '다시 생각하고 다른 답을 골라보세요.';
-                selected.checked = false;
-                selected.disabled = true;
-            }
+            expEl.hidden = false;
+            resultEl.textContent = correct ? '정답입니다.' : '오답입니다. 정답: ' + item.opts[correctIndex];
+            Array.prototype.forEach.call(optionsWrap.querySelectorAll('input'), function (input) {
+                input.disabled = true;
+            });
+            checkBtn.disabled = true;
+            checkBtn.textContent = '채점 완료';
         });
 
         return card;
     }
 
     function mount(config) {
+        var baseConfig = config;
         if (window.SpaceTopics) config = window.SpaceTopics.scopeQuiz(config, window.SpaceTopics.current(window.location));
         var questions = config.questions || [];
         var topics = config.topics || [];
@@ -292,7 +307,25 @@
                 updateMoreButton(items.length);
             });
         }
+        function setSchool(level) {
+            var topic = window.SpaceTopics?.current(window.location);
+            var profile = topic && window.SchoolContent?.['space-' + topic.id]?.[level];
+            var filtered = Object.assign({}, baseConfig, { questions: baseConfig.questions.filter(function (item) { return item.schoolLevels?.includes(level); }) });
+            var scoped = window.SpaceTopics ? window.SpaceTopics.scopeQuiz(filtered, topic) : filtered;
+            if (profile?.questions) {
+                scoped.questions = profile.questions;
+                scoped.topics = [{ name: topic.title, subs: [{ name: topic.title, cats: [...new Set(profile.questions.map(function (item) { return item.cat; }))] }] }];
+            }
+            questions = scoped.questions || [];
+            topics = scoped.topics || [];
+            state.topic = topic ? topics[0]?.name || 'all' : null;
+            state.sub = null; state.limit = chunkSize;
+            if (el.total) el.total.textContent = questions.length + '문제';
+            if (el.tabs && topic) el.tabs.closest('.quiz-picker-row').hidden = topics.length <= 1;
+            buildTopicTabs(); buildSubChips(); render();
+        }
+        boards.push({ setSchool: setSchool });
     }
 
-    window.SpaceQuizBoard = { mount: mount };
+    window.SpaceQuizBoard = { mount: mount, setSchool: function (level) { boards.forEach(function (board) { board.setSchool(level); }); } };
 })();

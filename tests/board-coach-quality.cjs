@@ -10,7 +10,7 @@ const extended=process.argv.includes("--extended"),resume=process.argv.includes(
 const selectedPairs=pairOption?[Number(pairOption.slice(7))]:extended?[0,1]:[0,1,2];
 assert.ok(games.every(game=>["reversi","omok","chess","janggi"].includes(game)),"unknown game");
 assert.ok(selectedPairs.every(pair=>[0,1,2].includes(pair)),"unknown level pair");
-const output=path.resolve(__dirname,"../tmp/board-coach-quality",extended?"extended":"");fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,"../outputs/qa/board-coach-quality",extended?"extended":"");fs.mkdirSync(output,{recursive:true});
 const pairs=[["beginner","intermediate"],["intermediate","advanced"],["beginner","advanced"]];
 function starting(game,pair,variant=0){
   if(game==="chess"){

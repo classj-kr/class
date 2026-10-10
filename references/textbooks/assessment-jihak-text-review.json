@@ -10673,6 +10673,6 @@
     }
   ],
   "reviewStatus": "text-extraction-only-not-structured-rubrics",
-  "cacheDirectory": "tmp/textbook-research/jihak-assessment-text",
+  "cacheDirectory": "references/textbooks/수집작업/jihak-assessment-text",
   "limitations": "Text extraction does not establish visual accuracy or permission to republish."
 }

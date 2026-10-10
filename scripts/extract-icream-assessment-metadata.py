@@ -6,7 +6,7 @@ Only cells under explicitly identified unit and assessment-title headers survive
 import concurrent.futures,hashlib,io,json,logging,re,sys,urllib.request,xml.etree.ElementTree as ET,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'tmp/textbook-research/python-packages'))
+sys.path.insert(0,str(ROOT/'references/textbooks/수집작업/python-packages'))
 from hwp5.xmlmodel import Hwp5File
 from hwp5.storage.ole import OleStorage
 logging.disable(logging.CRITICAL)

@@ -17,8 +17,8 @@
 원본 ZIP을 내려받은 뒤(임시 폴더 경로는 예시):
 
 ```powershell
-python learning/inquiry/globe/tools/build-color-reference.py --archive tmp/terrain-source-preview/HYP_LR_SR_W_DR.zip --output tmp/terrain-source-preview/tiles
-node learning/inquiry/globe/tools/build-colored-tiles.cjs tmp/terrain-source-preview/tiles
+python learning/inquiry/globe/tools/build-color-reference.py --archive references/geography/terrain-source-preview/HYP_LR_SR_W_DR.zip --output references/geography/terrain-source-preview/tiles
+node learning/inquiry/globe/tools/build-colored-tiles.cjs references/geography/terrain-source-preview/tiles
 ```
 
 Python은 Pillow와 NumPy, Node는 `game-hub-server/node_modules/playwright`와 Chromium이 필요하다. Chromium 경로는 `CHROME_PATH`로 지정할 수 있다. 타일 변경 시 app.js의 TILE_VERSION과 두 HTML 진입점의 app.js 버전을 함께 갱신한다.

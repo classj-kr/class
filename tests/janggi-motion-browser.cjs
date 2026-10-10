@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
 const R=require('../learning/games/board-coach/janggi-rules.js');
-const root=path.resolve(__dirname,'..'),output=path.join(root,'tmp/janggi-motion');
+const root=path.resolve(__dirname,'..'),output=path.join(root,'outputs/qa/janggi-motion');
 const types={K:'king',R:'rook',C:'cannon',H:'horse',E:'elephant',A:'guard',P:'soldier'};
 const fixtures=[
   {name:'horse',pieces:[['cH',1,9]],from:82,to:65,frames:3,duration:280},

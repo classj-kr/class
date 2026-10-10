@@ -34,6 +34,6 @@ Entry: `learning/inquiry/periodic-table/index.html` → 모형 탐구.
 
 `node tests/matter-models.cjs`
 
-계산 검증과 실제 Chromium 검증을 함께 수행한다. Puppeteer Core와 로컬 Chrome을 사용하며 필요하면 `SCIENCE_BROWSER`로 실행 파일을 지정한다. 검사 중 외부 요청은 차단하고 임시 로컬 서버와 브라우저는 종료한다. 화면 캡처는 `tmp/matter-models`에 저장한다.
+계산 검증과 실제 Chromium 검증을 함께 수행한다. Puppeteer Core와 로컬 Chrome을 사용하며 필요하면 `SCIENCE_BROWSER`로 실행 파일을 지정한다. 검사 중 외부 요청은 차단하고 임시 로컬 서버와 브라우저는 종료한다. 화면 캡처는 `outputs/qa/matter-models`에 저장한다.
 
 검사 범위: 기체 관계식, 양성자·중성자·전자·전하, 전자 배치 총수·훈트·파울리, 1s 평균 반지름과 마디, 원자 수 보존, 평형 속도, 중화 pH, 13개 주제, 모든 오비탈 및 결합 선택, 조건 조작, 일시 정지, 정답 재시도, 기존 탭 전환, 모바일 가로 넘침.

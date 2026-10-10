@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / 'tmp/중고등자료_수집'
+BASE = ROOT / 'references/textbooks/중고등'
 MANIFESTS = [ROOT/'references/textbooks'/n for n in (
     'secondary-tselpa-high-korean-archives.json', 'secondary-tselpa-more-archives.json',
     'secondary-miraen-mid-archives.json', 'secondary-miraen-mid-more.json',

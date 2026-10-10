@@ -2,7 +2,7 @@
 import concurrent.futures, hashlib, json, re, sys, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-BASE=ROOT/'tmp/중고등자료_수집'
+BASE=ROOT/'references/textbooks/중고등'
 def collect(s):
     folder=BASE/s['publisher']/s['level']/s['subject']/s['category']
     folder.mkdir(parents=True,exist_ok=True)

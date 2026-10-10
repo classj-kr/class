@@ -112,7 +112,7 @@ test('교과서별 목록·진도 시기·학년학기 전체 HWPX: 학교 격�
     for(const expected of ['가 초등학교','국어','영어','관찰·서술','4월 2주','수행평가 계획 미작성'])assert.ok(content.includes(expected),expected);
     assert.doesNotMatch(content,/다른 학기 비공개 표식|https:\/\/|\.mp3/);
     assert.equal(bytes.readUInt32LE(14),crc32(Buffer.from('application/hwp+zip')));
-    require('node:fs').mkdirSync('../tmp/assessment-export',{recursive:true});require('node:fs').writeFileSync('../tmp/assessment-export/전과목-검증.hwpx',bytes);
+    require('node:fs').mkdirSync('../references/textbooks/수집작업/assessment-export',{recursive:true});require('node:fs').writeFileSync('../references/textbooks/수집작업/assessment-export/전과목-검증.hwpx',bytes);
     assert.equal((await fetch(s.base+'/export.hwpx?year=2026&grade=5&semester=1')).status,401);
     await s.call('PUT','/pacing','1',{...pacing,revision:1,entries:[{lessonId,timing:'4월 3주'}]});
     const updated=(await s.call('GET','/term?year=2026&grade=5&semester=1','1')).body;

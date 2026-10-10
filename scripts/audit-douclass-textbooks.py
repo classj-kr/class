@@ -1,14 +1,16 @@
 import hashlib
 import io
 import json
+import logging
 import re
 import zipfile
 from pathlib import Path
 from pypdf import PdfReader
+logging.getLogger('pypdf').setLevel(logging.CRITICAL)
 
 ROOT = Path(__file__).resolve().parents[1]
-rows = json.loads((ROOT / 'tmp/douclass-textbook-downloads.json').read_text(encoding='utf-8-sig'))
-courses = json.loads((ROOT / 'tmp/douclass-course-audit.json').read_text(encoding='utf-8-sig'))
+rows = json.loads((ROOT / 'references/textbooks/수집기록/기존작업/douclass-textbook-downloads.json').read_text(encoding='utf-8-sig'))
+courses = json.loads((ROOT / 'references/textbooks/수집기록/기존작업/douclass-course-audit.json').read_text(encoding='utf-8-sig'))
 books = json.loads((ROOT / 'references/textbooks/secondary-douclass-book-menu.json').read_text(encoding='utf-8-sig'))
 results = []
 documents = []
@@ -69,9 +71,11 @@ for book in {b['url']: b for b in books}.values():
     expected = audit.get('labels', []) if audit else []
     missing = [t for t in expected if t not in covered]
     status = 'complete' if expected and not missing else ('unvisited' if not audit else 'incomplete')
-    coverage.append({**book, 'status': status, 'expectedMaterials': len(expected), 'savedMaterials': len(covered), 'missing': missing, 'siteStatus': audit.get('status') if audit else None})
+    if status == 'complete' and audit.get('availabilityNote'):
+        status = 'sample-only' if audit.get('status') == 'sample-only' else 'available-only'
+    coverage.append({**book, 'status': status, 'expectedMaterials': len(expected), 'savedMaterials': len(covered), 'missing': missing, 'siteStatus': audit.get('status') if audit else None, 'availabilityNote': audit.get('availabilityNote') if audit else None})
 
 summary = {'downloadFiles': len(rows), 'downloadBytes': sum(r['bytes'] for r in rows), 'verifiedDownloads': sum(r['status'] == 'verified' for r in results), 'failedDownloads': sum(r['status'] == 'failed' for r in results), 'pdfDocuments': len(documents), 'pdfPages': sum(d['pages'] for d in documents), 'listedCourses': len(coverage), 'completeCourses': sum(c['status'] == 'complete' for c in coverage), 'incompleteCourses': [c for c in coverage if c['status'] != 'complete']}
-(ROOT / 'tmp/두클래스_교과서_검증.json').write_text(json.dumps({'summary': summary, 'files': results, 'courses': coverage}, ensure_ascii=False, indent=2), encoding='utf-8')
+(ROOT / 'references/textbooks/수집기록/기존작업/두클래스_교과서_검증.json').write_text(json.dumps({'summary': summary, 'files': results, 'courses': coverage}, ensure_ascii=False, indent=2), encoding='utf-8')
 (ROOT / 'references/textbooks/secondary-douclass-textbooks-all.json').write_text(json.dumps(documents, ensure_ascii=False, indent=2), encoding='utf-8')
 print(json.dumps(summary, ensure_ascii=False, indent=2), flush=True)

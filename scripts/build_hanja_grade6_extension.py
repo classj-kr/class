@@ -8,12 +8,12 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tmp" / "pydeps"))
+sys.path.insert(0, str(ROOT / 'tools/.cache/pydeps'))
 from wordfreq import get_frequency_dict
 
 GRADE_PATH = ROOT / "scripts" / "hanja-grade6-300.json"
-GRADE_DATA_PATH = ROOT / "tmp" / "hanja-grade-dataset" / "hanja.csv"
-DICT_PATH = ROOT / "tmp" / "kengdic" / "kengdic.tsv"
+GRADE_DATA_PATH = ROOT / 'references/dictionaries/hanja-grade-dataset' / "hanja.csv"
+DICT_PATH = ROOT / 'references/dictionaries/kengdic' / "kengdic.tsv"
 LESSON_PATHS = [ROOT / "scripts" / f"hanja-v2-lessons-{number:02d}.json" for number in range(1, 5)]
 OUT_PATH = ROOT / "scripts" / "hanja-grade6-extension-candidates.json"
 

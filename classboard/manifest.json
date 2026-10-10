@@ -9,7 +9,7 @@
   "theme_color": "#f4f6f8",
   "icons": [
     {
-      "src": "/favicon.webp",
+      "src": "/assets/icons/favicon.webp",
       "sizes": "192x192 512x512",
       "type": "image/webp",
       "purpose": "any maskable"

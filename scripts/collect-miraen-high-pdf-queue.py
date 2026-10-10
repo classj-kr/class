@@ -7,8 +7,8 @@ spec = importlib.util.spec_from_file_location('publisher_files', ROOT/'scripts/c
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 manifest = ROOT/'references/textbooks/secondary-miraen-high-pdfs.json'
-finished = ROOT/'tmp/miraen-high-pdf-manifest-finished.json'
-results = ROOT/'tmp/miraen-high-pdf-queue-results.json'
+finished = ROOT/'references/textbooks/수집기록/기존작업/miraen-high-pdf-manifest-finished.json'
+results = ROOT/'references/textbooks/수집기록/기존작업/miraen-high-pdf-queue-results.json'
 seen, pending, rows = set(), {}, []
 with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
     while True:

@@ -53,7 +53,7 @@ async function run() {
         const errors=[];page.on('pageerror',e=>errors.push(e.message));
         await page.goto(`http://127.0.0.1:${server.address().port}/`,{waitUntil:'networkidle0'});
         await page.waitForSelector('#modelStage canvas');
-        const shots=path.resolve(__dirname,'../tmp/matter-models');fs.mkdirSync(shots,{recursive:true});
+        const shots=path.resolve(__dirname,'../outputs/qa/matter-models');fs.mkdirSync(shots,{recursive:true});
         await page.screenshot({path:path.join(shots,'states-desktop.png'),fullPage:true});
         const ids=await page.$$eval('[data-model]',els=>els.map(el=>el.dataset.model));assert.equal(ids.length,13);
         const input=async(key,value)=>page.$eval('#control-'+key,(el,v)=>{el.value=String(v);el.dispatchEvent(new Event('input',{bubbles:true}));},value);

@@ -7,7 +7,7 @@ const C=require('../learning/games/chess/chess-rules.js'),CA=require('../learnin
 const J=require('../learning/games/board-coach/janggi-rules.js'),JA=require('../learning/games/board-coach/janggi-ai.js');
 const game=process.argv[2],limit=Number(process.argv[3]||160),resume=process.argv.includes('--resume');
 assert.ok(['chess','janggi','omok','reversi'].includes(game));
-const output=path.resolve(__dirname,'../tmp/hint-audit');fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,'../outputs/qa/hint-audit');fs.mkdirSync(output,{recursive:true});
 const initial=()=>game==='chess'?C.createInitialState('standard'):game==='janggi'?J.initial():R.initial(game);
 const status=s=>game==='chess'?C.status(s):game==='janggi'?J.status(s):s;
 const side=s=>s.turn??s.color;

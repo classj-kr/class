@@ -1,7 +1,7 @@
 """Index acquired public assessment assets and extract explicitly labelled criteria."""
 import hashlib,importlib.util,json,re
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks';TMP=ROOT/'tmp/textbook-research/visang-assessments';TMP.mkdir(exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks';TMP=ROOT/'references/textbooks/수집작업/visang-assessments';TMP.mkdir(exist_ok=True)
 spec=importlib.util.spec_from_file_location('hwp_text',ROOT/'scripts/extract-assessment-text.py');helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 def write(p,d):p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

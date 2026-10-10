@@ -7,7 +7,7 @@ manifest=ROOT/'references/textbooks/secondary-miraen-high-textbooks-all.json'
 a=json.loads(manifest.read_text(encoding='utf8'))
 chapters=json.loads((ROOT/'references/textbooks/secondary-miraen-high-textbooks-chapters.json').read_text(encoding='utf8'))
 jobs=[]
-for p in (ROOT/'tmp').glob('miraen-body-archive-*.json'):
+for p in (ROOT/'references/textbooks/수집기록/기존작업').glob('miraen-body-archive-*.json'):
  d=json.loads(p.read_text(encoding='utf8')); b=d['book']; category=b['title']+'_2015/교과서'
  selected=[r for r in d['members'] if re.search(r'/(?:01\s*)?교과서/',r['name']) and r['name'].lower().endswith('.pdf')]
  selected=list({(Path(r['name']).name,r['crc32']):r for r in selected}.values())

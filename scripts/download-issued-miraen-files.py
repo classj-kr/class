@@ -10,8 +10,8 @@ from pathlib import Path
 from urllib.parse import urlsplit, unquote
 
 root = Path(__file__).resolve().parents[1]
-inbox = root / 'tmp/miraen-issued'
-dest = root / 'tmp/textbook-research/math-downloads'
+inbox = root / 'references/textbooks/수집기록/miraen-issued'
+dest = root / 'references/textbooks/수집작업/math-downloads'
 receipts = root / 'references/textbooks/math-miraen-download-receipts.json'
 inbox.mkdir(parents=True, exist_ok=True)
 dest.mkdir(parents=True, exist_ok=True)

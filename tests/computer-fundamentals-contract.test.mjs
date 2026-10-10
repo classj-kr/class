@@ -77,10 +77,10 @@ test("the information and computing menu keeps both course links", () => {
   assert.match(portal, /learning\/inquiry\/information-computing\/computer-fundamentals\//);
   assert.match(portal, /learning\/inquiry\/information-computing\/typing\//);
   assert.doesNotMatch(portal, /learning\/basics\/typing\//);
-  assert.match(portal, /rel="icon" href="favicon\.webp"/);
-  assert.match(coursePage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/favicon\.webp"/);
-  assert.match(lessonPage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/favicon\.webp"/);
-  assert.ok(exists("favicon.webp"));
+  assert.match(portal, /rel="icon" href="assets\/icons\/favicon\.webp"/);
+  assert.match(coursePage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/assets\/icons\/favicon\.webp"/);
+  assert.match(lessonPage, /rel="icon" href="\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/assets\/icons\/favicon\.webp"/);
+  assert.ok(exists("assets/icons/favicon.webp"));
 });
 
 test("typing practice returns to its own menu before leaving the page", () => {

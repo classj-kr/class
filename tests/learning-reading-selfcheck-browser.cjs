@@ -21,7 +21,7 @@ async function main(){const h=await harness(),b=await chromium.launch({channel:'
      },selector);
      assert.deepEqual(layout.before,layout.original,'poetry '+selector+' keeps its original layout at '+viewport.width);
      assert.equal(await p.locator('learning-records .strip, learning-records button').count(),0,'no record controls in poetry');
-     if(screenshot)await p.screenshot({path:'output/learning-records-review/poetry-'+screenshot+(viewport.width===390?'-mobile.png':'-desktop.png')});
+     if(screenshot)await p.screenshot({path:'outputs/learning-records-review/poetry-'+screenshot+(viewport.width===390?'-mobile.png':'-desktop.png')});
    }
    await p.setViewportSize({width:1400,height:1000});
  };

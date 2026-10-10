@@ -3,7 +3,7 @@ const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("n
 const {chromium}=require("../game-hub-server/node_modules/playwright");
 const rules=require("../learning/games/board-coach/janggi-rules.js");
 const base=process.env.BOARD_COACH_TEST_URL||"http://127.0.0.1:8936",url=base+"/learning/games/board-coach/coach?game=janggi";
-const output=path.resolve(__dirname,"../tmp/janggi-coach");fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(__dirname,"../outputs/qa/janggi-coach");fs.mkdirSync(output,{recursive:true});
 const at=(p,x,y)=>p.locator(`[data-square='${y*9+x}']`),errors=[];
 async function ready(page){await page.waitForFunction(()=>document.getElementById("turn").textContent.startsWith("내 차례")||!document.getElementById("reviewPanel").classList.contains("hidden"),null,{timeout:25000});}
 async function move(page,x,y,tx,ty){await at(page,x,y).click();await at(page,tx,ty).click();}

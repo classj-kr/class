@@ -52,7 +52,7 @@ async function waitForServer() {
     // 3. Test Favicon Cache-Control headers
     // 3-1. 이름에 버전이 박힌 아이콘은 내용이 바뀌지 않으므로 오래 둔다. 첫 화면이 부르는 이름을 그대로 쓴다.
     const indexHtml = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
-    const versionedIcon = (indexHtml.match(/<link rel="icon" href="(\/favicon-[0-9]{8}(?:-v[0-9]+)?[.]webp)"/) || [])[1];
+    const versionedIcon = (indexHtml.match(/<link rel="icon" href="(\/assets\/icons\/favicon-[0-9]{8}(?:-v[0-9]+)?[.]webp)"/) || [])[1];
     assert.ok(versionedIcon, "index.html should link a versioned favicon");
     const versionedIconResponse = await fetch(`http://127.0.0.1:${port}${versionedIcon}`);
     assert.equal(versionedIconResponse.status, 200, versionedIcon);

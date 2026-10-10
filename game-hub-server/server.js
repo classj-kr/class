@@ -26,6 +26,7 @@ const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { createKmaWeather } = require("./kma-weather");
+const { registerSiteIcons } = require("./site-icons");
 const {
   clientMatchesToken,
   restoreRoom,
@@ -322,6 +323,7 @@ function sendSiteHtml(req, res, filepath, next) {
   });
 }
 
+registerSiteIcons(app, SITE_ROOT);
 app.use("/assets/avatars", express.static(path.join(SITE_ROOT, "classtools", "assets", "avatars"), staticAssetOptions));
 app.use("/assets", express.static(path.join(SITE_ROOT, "assets"), staticAssetOptions));
 app.get("/robots.txt", (_req, res) => {
@@ -332,43 +334,6 @@ app.get("/sitemap.xml", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("application/xml").sendFile(path.join(SITE_ROOT, "sitemap.xml"));
 });
-app.get("/favicon.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "no-cache, must-revalidate");
-  res.sendFile(path.join(SITE_ROOT, "favicon.webp"));
-});
-app.get("/favicon-20260824.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824.webp"));
-});
-app.get("/favicon-20260824-v2.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v2.webp"));
-});
-app.get("/favicon-20260824-v3.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v3.webp"));
-});
-app.get("/favicon-20260824-v5.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v5.webp"));
-});
-app.get("/favicon-20260824-v6.webp", (_req, res) => {
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  res.sendFile(path.join(SITE_ROOT, "favicon-20260824-v6.webp"));
-});
-for (const legacyFavicon of ["/favicon.ico", "/favicon-20260824.ico", "/favicon-20260824-v2.ico", "/favicon-20260824-v3.ico", "/favicon-20260824-v5.ico", "/favicon-20260824-v6.ico", "/favicon.png"]) {
-  app.get(legacyFavicon, (_req, res) => {
-    res.setHeader("Cache-Control", "no-cache, must-revalidate");
-    res.redirect(302, "/favicon.webp");
-  });
-}
-// index.html 과 학부모 화면이 부르는 크기별 아이콘. 버전 물음표 없이도 불리므로 하루만 둔다.
-for (const sizedIcon of ["favicon-32x32.webp", "favicon-48x48.webp", "favicon-192x192.webp", "apple-touch-icon.webp"]) {
-  app.get(`/${sizedIcon}`, (_req, res) => {
-    res.setHeader("Cache-Control", "public, max-age=86400");
-    res.sendFile(path.join(SITE_ROOT, sizedIcon));
-  });
-}
 app.get("/naverc953171c2ff3a730580e7ed2be00700d.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
   res.type("text/plain").send("naver-site-verification: naverc953171c2ff3a730580e7ed2be00700d.html\n");

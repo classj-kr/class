@@ -4,7 +4,9 @@
 .school-level button:focus-visible,.school-question summary:focus-visible { outline:2px solid #facc15; outline-offset:3px; }
 .school-concepts,.school-question { margin:12px 0; padding:14px; border:1px solid #354d66; border-radius:10px; background:#111f31; color:#dfebf6; text-align:left; }
 .school-concepts p,.school-question p { margin:8px 0; font-size:14px; line-height:1.8; word-break:keep-all; }
-.school-concepts .school-source { color:#91b9c9; font-size:12px; }
+.school-concepts h2 { margin:0 0 10px; color:#8be2df; font-size:17px; line-height:1.5; }
+.school-lesson { display:grid; gap:12px; }
+.school-lesson .school-concepts { margin:0; }
 .school-question h3 { color:#8be2df; font-size:15px; margin:0 0 8px; }
 .school-question summary { color:#9cdae8; cursor:pointer; padding:10px 0; }
 .school-question details[open] { border-top:1px solid #35546a; margin-top:12px; }
@@ -13,7 +15,6 @@
 .school-original-detail summary { cursor:pointer; color:#9fc5d5; padding:8px 0; font-size:12px; }
 .sim-header:has(.school-level) { height:auto; min-height:60px; flex-wrap:wrap; }
 .sim-header:has(.school-level) .sim-header-left { flex:1; }
-.body-school-source { margin:0 0 10px; color:#9db7cb; font-size:12px; line-height:1.6; }
 .sim-app-container { height:calc(100% - var(--body-header-height,60px)); }
 .space-topic-page .top-header:has(.school-level) { height:auto; min-height:58px; display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
 .school-space-content { max-width:880px; margin:0 auto 20px; }
@@ -35,7 +36,7 @@
 .korea-school-nav > .school-level { align-self:flex-start; margin:4px 12px 8px 58px; }
 .korea-school-nav .theme-tab:disabled { opacity:.4; cursor:not-allowed; }
 .study-panel .school-concepts,.study-panel .school-question { background:#f3f7f4; color:#233d3e; border-color:#bfceca; }
-.study-panel .school-source,.study-panel .school-question h3,.study-panel .school-question summary { color:#35666a; }
+.study-panel .school-question h3,.study-panel .school-question summary { color:#35666a; }
 .study-panel .school-question details p { color:#674c28; }
 .lesson-practice[hidden],#quickPractice[hidden],.concept-trap[hidden] { display:none!important; }
 #quizContainer[hidden] { display:none!important; }

@@ -8,7 +8,7 @@ const { harness } = require('./learning-records-integration.cjs');
 
 async function main() {
   const h = await harness(), browser = await chromium.launch({ channel: 'msedge', headless: true });
-  const output = path.resolve(__dirname, '../output/learning-records-review');
+  const output = path.resolve(__dirname, '../outputs/learning-records-review');
   const request = async (route, body) => {
     const response = await fetch(h.base + '/api/learning-records' + route, {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'x-test-user': '1' }, body: JSON.stringify(body)

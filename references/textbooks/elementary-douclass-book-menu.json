@@ -1,0 +1,314 @@
+[
+  {
+    "title": "국어 1-1 (가)",
+    "url": "https://ele.douclass.com/textbooks/30048/479",
+    "grade": "1",
+    "term": "1"
+  },
+  {
+    "title": "국어 1-1 (나)",
+    "url": "https://ele.douclass.com/textbooks/30048/481",
+    "grade": "1",
+    "term": "1"
+  },
+  {
+    "title": "수학 1-1",
+    "url": "https://ele.douclass.com/textbooks/30048/483",
+    "grade": "1",
+    "term": "1"
+  },
+  {
+    "title": "국어 1-2 (가)",
+    "url": "https://ele.douclass.com/textbooks/30048/599",
+    "grade": "1",
+    "term": "2"
+  },
+  {
+    "title": "국어 1-2 (나)",
+    "url": "https://ele.douclass.com/textbooks/30048/600",
+    "grade": "1",
+    "term": "2"
+  },
+  {
+    "title": "수학 1-2",
+    "url": "https://ele.douclass.com/textbooks/30048/603",
+    "grade": "1",
+    "term": "2"
+  },
+  {
+    "title": "국어 2-1 (가)",
+    "url": "https://ele.douclass.com/textbooks/30049/480",
+    "grade": "2",
+    "term": "1"
+  },
+  {
+    "title": "국어 2-1 (나)",
+    "url": "https://ele.douclass.com/textbooks/30049/482",
+    "grade": "2",
+    "term": "1"
+  },
+  {
+    "title": "수학 2-1",
+    "url": "https://ele.douclass.com/textbooks/30049/484",
+    "grade": "2",
+    "term": "1"
+  },
+  {
+    "title": "국어 2-2 (가)",
+    "url": "https://ele.douclass.com/textbooks/30049/601",
+    "grade": "2",
+    "term": "2"
+  },
+  {
+    "title": "국어 2-2 (나)",
+    "url": "https://ele.douclass.com/textbooks/30049/602",
+    "grade": "2",
+    "term": "2"
+  },
+  {
+    "title": "수학 2-2",
+    "url": "https://ele.douclass.com/textbooks/30049/613",
+    "grade": "2",
+    "term": "2"
+  },
+  {
+    "title": "국어 3-1 (가)",
+    "url": "https://ele.douclass.com/textbooks/30050/653",
+    "grade": "3",
+    "term": "1"
+  },
+  {
+    "title": "국어 3-1 (나)",
+    "url": "https://ele.douclass.com/textbooks/30050/654",
+    "grade": "3",
+    "term": "1"
+  },
+  {
+    "title": "수학 3-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30050/500",
+    "grade": "3",
+    "term": "1"
+  },
+  {
+    "title": "사회 3-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30050/508",
+    "grade": "3",
+    "term": "1"
+  },
+  {
+    "title": "과학 3-1 (장신호)",
+    "url": "https://ele.douclass.com/textbooks/30050/512",
+    "grade": "3",
+    "term": "1"
+  },
+  {
+    "title": "국어 3-2 (가)",
+    "url": "https://ele.douclass.com/textbooks/30050/740",
+    "grade": "3",
+    "term": "2"
+  },
+  {
+    "title": "국어 3-2 (나)",
+    "url": "https://ele.douclass.com/textbooks/30050/741",
+    "grade": "3",
+    "term": "2"
+  },
+  {
+    "title": "수학 3-2 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30050/501",
+    "grade": "3",
+    "term": "2"
+  },
+  {
+    "title": "사회 3-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30050/509",
+    "grade": "3",
+    "term": "2"
+  },
+  {
+    "title": "과학 3-2 (장신호)",
+    "url": "https://ele.douclass.com/textbooks/30050/513",
+    "grade": "3",
+    "term": "2"
+  },
+  {
+    "title": "국어 4-1 (가)",
+    "url": "https://ele.douclass.com/textbooks/30051/655",
+    "grade": "4",
+    "term": "1"
+  },
+  {
+    "title": "국어 4-1 (나)",
+    "url": "https://ele.douclass.com/textbooks/30051/656",
+    "grade": "4",
+    "term": "1"
+  },
+  {
+    "title": "수학 4-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30051/502",
+    "grade": "4",
+    "term": "1"
+  },
+  {
+    "title": "사회 4-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30051/510",
+    "grade": "4",
+    "term": "1"
+  },
+  {
+    "title": "과학 4-1 (장신호)",
+    "url": "https://ele.douclass.com/textbooks/30051/514",
+    "grade": "4",
+    "term": "1"
+  },
+  {
+    "title": "국어 4-2 (가)",
+    "url": "https://ele.douclass.com/textbooks/30051/742",
+    "grade": "4",
+    "term": "2"
+  },
+  {
+    "title": "국어 4-2 (나)",
+    "url": "https://ele.douclass.com/textbooks/30051/743",
+    "grade": "4",
+    "term": "2"
+  },
+  {
+    "title": "수학 4-2 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30051/596",
+    "grade": "4",
+    "term": "2"
+  },
+  {
+    "title": "사회 4-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30051/511",
+    "grade": "4",
+    "term": "2"
+  },
+  {
+    "title": "과학 4-2 (장신호)",
+    "url": "https://ele.douclass.com/textbooks/30051/515",
+    "grade": "4",
+    "term": "2"
+  },
+  {
+    "title": "국어 5-1 (가)",
+    "url": "https://ele.douclass.com/textbooks/30052/791",
+    "grade": "5",
+    "term": "1"
+  },
+  {
+    "title": "국어 5-1 (나)",
+    "url": "https://ele.douclass.com/textbooks/30052/792",
+    "grade": "5",
+    "term": "1"
+  },
+  {
+    "title": "수학 5-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30052/504",
+    "grade": "5",
+    "term": "1"
+  },
+  {
+    "title": "사회 5-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30052/624",
+    "grade": "5",
+    "term": "1"
+  },
+  {
+    "title": "사회과 부도 (정동연)",
+    "url": "https://ele.douclass.com/textbooks/30052/745",
+    "grade": "5",
+    "term": "1"
+  },
+  {
+    "title": "국어 5-2 (가)",
+    "url": "https://ele.douclass.com/textbooks/30052/921",
+    "grade": "5",
+    "term": "2"
+  },
+  {
+    "title": "국어 5-2 (나)",
+    "url": "https://ele.douclass.com/textbooks/30052/918",
+    "grade": "5",
+    "term": "2"
+  },
+  {
+    "title": "수학 5-2 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30052/505",
+    "grade": "5",
+    "term": "2"
+  },
+  {
+    "title": "사회 5-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30052/625",
+    "grade": "5",
+    "term": "2"
+  },
+  {
+    "title": "사회과 부도 (정동연)",
+    "url": "https://ele.douclass.com/textbooks/30052/745",
+    "grade": "5",
+    "term": "2"
+  },
+  {
+    "title": "국어 6-1 (가)",
+    "url": "https://ele.douclass.com/textbooks/30053/793",
+    "grade": "6",
+    "term": "1"
+  },
+  {
+    "title": "국어 6-1 (나)",
+    "url": "https://ele.douclass.com/textbooks/30053/794",
+    "grade": "6",
+    "term": "1"
+  },
+  {
+    "title": "수학 6-1 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30053/506",
+    "grade": "6",
+    "term": "1"
+  },
+  {
+    "title": "사회 6-1 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30053/626",
+    "grade": "6",
+    "term": "1"
+  },
+  {
+    "title": "사회과 부도 (정동연)",
+    "url": "https://ele.douclass.com/textbooks/30053/745",
+    "grade": "6",
+    "term": "1"
+  },
+  {
+    "title": "국어 6-2 (가)",
+    "url": "https://ele.douclass.com/textbooks/30053/919",
+    "grade": "6",
+    "term": "2"
+  },
+  {
+    "title": "국어 6-2 (나)",
+    "url": "https://ele.douclass.com/textbooks/30053/920",
+    "grade": "6",
+    "term": "2"
+  },
+  {
+    "title": "수학 6-2 (나귀수)",
+    "url": "https://ele.douclass.com/textbooks/30053/507",
+    "grade": "6",
+    "term": "2"
+  },
+  {
+    "title": "사회 6-2 (박영석)",
+    "url": "https://ele.douclass.com/textbooks/30053/627",
+    "grade": "6",
+    "term": "2"
+  },
+  {
+    "title": "사회과 부도 (정동연)",
+    "url": "https://ele.douclass.com/textbooks/30053/745",
+    "grade": "6",
+    "term": "2"
+  }
+]

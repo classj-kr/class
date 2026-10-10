@@ -1,9 +1,9 @@
 // PWA Service Worker for 가정통신문 & 출결 알림
-const CACHE_NAME = 'notice-forms-v3';
+const CACHE_NAME = 'notice-forms-v4';
 const ASSETS_TO_CACHE = [
   '/notice/index.html',
   '/notice/manifest.json',
-  '/favicon.webp'
+  '/assets/icons/favicon.webp'
 ];
 
 self.addEventListener('install', (event) => {
@@ -43,8 +43,8 @@ self.addEventListener('push', (event) => {
   }
   const options = {
     body: data.body,
-    icon: '/favicon.webp',
-    badge: '/favicon.webp',
+    icon: '/assets/icons/favicon.webp',
+    badge: '/assets/icons/favicon.webp',
     vibrate: [100, 50, 100],
     data: { url: data.url || '/notice/index.html' }
   };

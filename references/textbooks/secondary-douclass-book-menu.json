@@ -190,13 +190,6 @@
   },
   {
     "revision": "2015 개정",
-    "title": "역사 1 (노대환)",
-    "url": "",
-    "school": "중학",
-    "subject": "역사"
-  },
-  {
-    "revision": "2015 개정",
     "title": "역사 2 (노대환)",
     "url": "",
     "school": "중학",
@@ -600,5 +593,26 @@
     "url": "https://mh.douclass.com/textbooks/danwon/0_149",
     "school": "고등",
     "subject": "과학"
+  },
+  {
+    "school": "고등",
+    "subject": "사회",
+    "revision": "2022 개정",
+    "title": "한국사 1 (노대환)",
+    "url": "https://mh.douclass.com/textbooks/danwon/0_569"
+  },
+  {
+    "school": "고등",
+    "subject": "사회",
+    "revision": "2022 개정",
+    "title": "한국사 2 (노대환)",
+    "url": "https://mh.douclass.com/textbooks/danwon/0_570"
+  },
+  {
+    "school": "고등",
+    "subject": "사회",
+    "revision": "2015 개정",
+    "title": "한국사 (2015)",
+    "url": "https://download.douclass.com/SAMPLE_CON/HIGH/DIGIT/KHE/data_textbook.html"
   }
 ]

@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 (async () => {
-  const output = path.resolve('output/phonics-full-audit');
+  const output = path.resolve('outputs/phonics-full-audit');
   const proposed = JSON.parse(fs.readFileSync(path.join(output, 'proposed-bounds.json'), 'utf8'));
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {

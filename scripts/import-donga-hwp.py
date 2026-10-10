@@ -1,6 +1,6 @@
 """Read downloaded HWP tables using pyhwp, preserving their explicit cell spans.
 
-Optional extraction dependencies: pip install --target tmp/textbook-research/python-packages pyhwp
+Optional extraction dependencies: pip install --target references/textbooks/수집작업/python-packages pyhwp
 Only document data is read; embedded scripts are never executed.
 """
 import hashlib
@@ -15,7 +15,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT/'tmp/textbook-research/python-packages'))
+sys.path.insert(0, str(ROOT/'references/textbooks/수집작업/python-packages'))
 from hwp5.xmlmodel import Hwp5File
 OUT = ROOT/'game-hub-server/data/textbooks'
 RAW = ROOT/'references/textbooks/raw'

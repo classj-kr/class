@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
-const root=path.resolve(__dirname,'..'),output=path.join(root,'tmp/capture-feedback');
+const root=path.resolve(__dirname,'..'),output=path.join(root,'outputs/qa/capture-feedback');
 
 async function main(){
   const server=http.createServer((req,res)=>{

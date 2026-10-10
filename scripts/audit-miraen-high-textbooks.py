@@ -4,7 +4,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-BASE=ROOT/'tmp/중고등자료_수집/미래엔/고등'
+BASE=ROOT/'references/textbooks/중고등/미래엔/고등'
 p=argparse.ArgumentParser()
 p.add_argument('--hash',action='store_true')
 args=p.parse_args()
@@ -51,5 +51,5 @@ for row in rows:
     group['expected']+=1
     group['verified']+=row['status']=='verified'
 summary={'courses':len(groups),'coursesComplete':sum(g['expected']==g['verified'] for g in groups.values()),'expectedFiles':len(rows),'statuses':dict(Counter(r['status'] for r in rows)),'bytes':sum(r.get('bytes',0) for r in rows),'hashChecked':args.hash,'coursesBySubject':dict(Counter(g['subject'] for g in groups.values())),'groups':groups,'files':rows}
-(ROOT/'tmp/미래엔_고등_교과서_검증.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf8')
+(ROOT/'references/textbooks/수집기록/기존작업/미래엔_고등_교과서_검증.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf8')
 print(json.dumps({k:v for k,v in summary.items() if k not in {'groups','files'}},ensure_ascii=False))

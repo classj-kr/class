@@ -1,5 +1,5 @@
 /* Rebuild the elementary catalog from the public KTRF search result saved as HTML.
- * Usage: node scripts/build-textbook-catalog.cjs tmp/textbook-research/elementary-all.html
+ * Usage: node scripts/build-textbook-catalog.cjs references/textbooks/수집작업/elementary-all.html
  */
 const fs = require('node:fs');
 const path = require('node:path');

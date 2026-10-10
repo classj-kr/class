@@ -6,7 +6,7 @@ from PIL import Image
 from scipy.ndimage import label, find_objects, uniform_filter1d
 
 root = Path('learning/literacy-numeracy/phonics')
-bank = json.loads(Path('output/phonics-full-audit/word-bank.json').read_text(encoding='utf-8'))
+bank = json.loads(Path('outputs/phonics-full-audit/word-bank.json').read_text(encoding='utf-8'))
 atlases = {}
 for item in bank.values():
     pic = item['picture']
@@ -54,5 +54,5 @@ for file, (cols, rows) in atlases.items():
                 box = [x0, y0, x1, y1]
             boxes.append(box)
     result[Path(file).name] = {'size': [width, height], 'boxes': boxes}
-Path('output/phonics-full-audit/proposed-bounds.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
+Path('outputs/phonics-full-audit/proposed-bounds.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
 print(f'Analyzed {len(result)} atlases. Bounds require visual review.')

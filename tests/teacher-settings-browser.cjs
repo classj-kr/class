@@ -4,7 +4,7 @@ const path = require('node:path');
 const express = require('../game-hub-server/node_modules/express');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..');
-const output = path.join(root, 'output', 'teacher-settings-review');
+const output = path.join(root, 'outputs', 'teacher-settings-review');
 const avatarKeys = fs.readdirSync(path.join(root, 'classtools/assets/avatars')).filter(key => key.endsWith('.webp')).slice(0, 16);
 const avatar = key => ({ key, url: key ? '/assets/avatars/' + key : '', canChange: true,
     changePeriodLabel: '2학기', options: avatarKeys.map(key => ({ key, url: '/assets/avatars/' + key, available: true })) });

@@ -68,7 +68,7 @@ async function run(){
   assert.equal(visangContent.reduce((n,a)=>n+a.stages.length,0),108);
   for(const a of visangContent){
     assert.ok(a.documentStandardCodes.length>0&&a.lessonIds.length>0);
-    const cache=require(path.resolve(__dirname,'../tmp/textbook-research/visang-assessments',a.id+'.json'));
+    const cache=require(path.resolve(__dirname,'../references/textbooks/수집작업/visang-assessments',a.id+'.json'));
     for(const stage of a.stages){
       assert.equal(stage.rubric.length,3);
       for(const field of [stage.objective,...stage.rubric,...stage.rubric.map(r=>r.feedback)])assert.equal(field.sourceParagraphs.map(n=>cache[n-1]).join(' '),field.text);
@@ -81,7 +81,7 @@ async function run(){
   for(const a of achimContent){
     assert.equal(a.rubric.length,3);assert.ok(a.standardCodes.length>0);
     assert.ok(a.rubric.every(r=>r.text&&r.sourceParagraphs.length));
-    const cache=require(path.resolve(__dirname,'../tmp/textbook-research/achim-assessments',a.id+'.json'));
+    const cache=require(path.resolve(__dirname,'../references/textbooks/수집작업/achim-assessments',a.id+'.json'));
     for(const field of [a.standards,a.objective,a.method,...a.rubric])assert.equal(field.sourceParagraphs.map(n=>cache[n-1]).join(' '),field.text);
     assert.equal(require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync(path.resolve(__dirname,'../references/textbooks/raw',a.sourceFile))).digest('hex'),a.sha256);
     const matched=allPlans.filter(p=>p.grade===a.grade&&p.editionId===a.editionId).flatMap(p=>p.lessons);

@@ -1,7 +1,7 @@
 """고등 사회·과학 글에서 한자어를 세어, 지금 가르치는 글자로 몇 낱말이 읽히는지 잰다.
 
 재료
-  tmp/korean-dict-nikl-sparse/krdict/*.xml  국립국어원 한국어기초사전 (한글 표제어 ↔ 원어 한자)
+  references/dictionaries/korean-dict-nikl-sparse/krdict/*.xml  국립국어원 한국어기초사전 (한글 표제어 ↔ 원어 한자)
   learning/inquiry/<과목 앱>                실제로 아이가 읽는 교과 글
 내놓는 것
   scripts/hanja-subject-word-weights.json   낱말 → {한자 표기, 과목별로 고른 무게}
@@ -19,7 +19,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 잣대의 뼈대: 2022 개정 교육과정 성취기준·성취수준 원문 (fetch_curriculum_standards.py로 받는다)
-CURRICULUM_DIR = 'tmp/curriculum'
+CURRICULUM_DIR = 'references/moe/local-source'
 # 보조: 아이가 실제로 읽는 이 사이트의 교과 글
 SUBJECT_DIRS = ['science-lab', 'periodic-table', 'human-body', 'space',
                 'korean-history', 'korea-geography', 'world-geography', 'age-of-exploration']
@@ -42,7 +42,7 @@ ORIGIN = re.compile(r'<feat att="origin" val="([^"]*)"')
 def load_dictionary():
     """한글 표제어 → 한자 표기 후보들."""
     words = defaultdict(set)
-    for path in sorted(glob.glob(os.path.join(ROOT, 'tmp/korean-dict-nikl-sparse/krdict/*.xml'))):
+    for path in sorted(glob.glob(os.path.join(ROOT, 'references/dictionaries/korean-dict-nikl-sparse/krdict/*.xml'))):
         text = open(path, encoding='utf-8').read()
         for match in ENTRY.finditer(text):
             entry = match.group(0)

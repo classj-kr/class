@@ -2,7 +2,7 @@
 import argparse,hashlib,importlib.util,json,re,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks'
-OUT=ROOT/'tmp/textbook-research/tselpa-assessment-text';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'references/textbooks/수집작업/tselpa-assessment-text';OUT.mkdir(parents=True,exist_ok=True)
 spec=importlib.util.spec_from_file_location('hwp_text',ROOT/'scripts/extract-assessment-text.py')
 helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
 
@@ -12,7 +12,7 @@ def clean(t):return re.sub(r'\s+',' ',t.replace('\x00',' ')).strip()
 
 def run():
     parser=argparse.ArgumentParser();parser.add_argument('--provider',choices=['tselpa','jihak'],default='tselpa');provider=parser.parse_args().provider
-    out=ROOT/f'tmp/textbook-research/{provider}-assessment-text';out.mkdir(parents=True,exist_ok=True)
+    out=ROOT/f'references/textbooks/수집작업/{provider}-assessment-text';out.mkdir(parents=True,exist_ok=True)
     reports=[]
     for item in read(REF/f'assessment-index-{provider}-2022.json')['assessments']:
         p=REF/'raw'/item['sourceFile'];cache=out/(item['id']+'.json')
@@ -48,7 +48,7 @@ def run():
         reports.append(dict(id=item['id'],sourceFile=item['sourceFile'],sha256=item['sha256'],status=result['status'],method=result.get('method'),
                             paragraphCount=len(result.get('paragraphs',[])),pageCount=len(result.get('pages',[])),memberCount=len(result.get('members',[]))))
     write(REF/f'assessment-{provider}-text-review.json',dict(schemaVersion=1,documents=reports,reviewStatus='text-extraction-only-not-structured-rubrics',
-        cacheDirectory=f'tmp/textbook-research/{provider}-assessment-text',limitations='Text extraction does not establish visual accuracy or permission to republish.'))
+        cacheDirectory=f'references/textbooks/수집작업/{provider}-assessment-text',limitations='Text extraction does not establish visual accuracy or permission to republish.'))
     from collections import Counter
     print(json.dumps(dict(documents=len(reports),statuses=dict(Counter(r['status'] for r in reports))),ensure_ascii=False))
 if __name__=='__main__':run()

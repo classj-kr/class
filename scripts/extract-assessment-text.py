@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT/'tmp/textbook-research/python-packages'))
+sys.path.insert(0, str(ROOT/'references/textbooks/수집작업/python-packages'))
 logging.getLogger('hwp5').setLevel(logging.ERROR)
 
 def paragraphs(path):
@@ -31,14 +31,14 @@ def paragraphs(path):
             for p in root.findall('.//Paragraph')]
 
 def run():
-    output = ROOT/'tmp/textbook-research/assessment-text'
+    output = ROOT/'references/textbooks/수집작업/assessment-text'
     output.mkdir(parents=True, exist_ok=True)
     items = json.loads((ROOT/'references/textbooks/assessment-index-musiclife-2022.json').read_text(encoding='utf-8'))['assessments']
     extracted = []
     for item in items:
         lines = [re.sub(r'\s+', ' ', p).strip() for p in paragraphs(ROOT/'references/textbooks/raw'/item['sourceFile'])]
         lines = [p for p in lines if p]
-        (output/(item['id']+'.json')).write_text(json.dumps(lines, ensure_ascii=False, indent=2), encoding='utf-8')
+        (outputs/(item['id']+'.json')).write_text(json.dumps(lines, ensure_ascii=False, indent=2), encoding='utf-8')
         labels = ['성취기준','평가 영역','평가 유형','평가 목표','준비물','평가 기준','매우 잘함','잘함','보통']
         assert all(lines.count(label) == 1 for label in labels), item['id']
         positions = [lines.index(label) for label in labels]

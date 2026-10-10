@@ -2,9 +2,9 @@
 import hashlib,io,json,re,sys,xml.etree.ElementTree as ET
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];REF=ROOT/'references/textbooks'
-sys.path.insert(0,str(ROOT/'tmp/textbook-research/python-packages'))
+sys.path.insert(0,str(ROOT/'references/textbooks/수집작업/python-packages'))
 from hwp5.xmlmodel import Hwp5File
-CACHE=ROOT/'tmp/textbook-research/jihak-assessment-tables';CACHE.mkdir(parents=True,exist_ok=True)
+CACHE=ROOT/'references/textbooks/수집작업/jihak-assessment-tables';CACHE.mkdir(parents=True,exist_ok=True)
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 def write(p,d):p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def clean(t):return re.sub(r'\s+',' ',t).strip()
@@ -47,7 +47,7 @@ def run():
                 stages[-1]['levels'].append(dict(level=level,criterion=criterion,feedback=feedback,
                     sourceCells={name:dict(tableId=table['tableId'],row=grid[row,col]['row'],col=grid[row,col]['col'],rowspan=grid[row,col]['rowspan'],colspan=grid[row,col]['colspan'])
                                  for col,name in enumerate(['stage','level','criterion','feedback'])}))
-        text_path=ROOT/'tmp/textbook-research/jihak-assessment-text'/(item['id']+'.json')
+        text_path=ROOT/'references/textbooks/수집작업/jihak-assessment-text'/(item['id']+'.json')
         lines=read(text_path).get('paragraphs',[]) if text_path.exists() else []
         standard_entries=[dict(text=lines[i+1],sourceParagraph=i+2) for i,t in enumerate(lines[:-1]) if t=='성취기준']
         codes=sorted(set(re.findall(r'\[([46]과\d{2}-\d{2})\]',' '.join(v['text'] for v in standard_entries))))

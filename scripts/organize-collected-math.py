@@ -13,7 +13,7 @@ from zipfile import ZipFile, is_zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / 'references/textbooks'
-OUT = ROOT / 'tmp/수학자료_정리본'
+OUT = ROOT / 'references/textbooks/수학'
 OUT.mkdir(parents=True, exist_ok=True)
 rows, errors, aliases = [], [], []
 seen, destinations = {}, {}
