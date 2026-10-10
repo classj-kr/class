@@ -20,11 +20,21 @@ class/
 ├─ scripts/                    운영 데이터 생성 스크립트
 ├─ tests/                      포털 계약 테스트
 ├─ tools/                      배포와 무관한 분석 도구
+├─ references/                 수집 원본·교과서·지도·이미지 학습 자료
+├─ outputs/                    검수·보고서·내보내기 등 로컬 산출물
+├─ docs/                       프로젝트 문서와 연구 근거 자료
+├─ sites/                      별도 웹앱 프로젝트(math-ox-review)
 └─ render.yaml                 운영 서버 배포 설정
 ```
 
 `/arithmetic`와 `/hanguksa`는 별도 프로젝트가 아니라 포털의 하위 기능입니다.
 통합 서버가 각 앱을 실행하고 같은 사이트 경로로 연결합니다.
+
+수집 원본은 `references/`에, 임시 산출물은 `outputs/`에 모읍니다.
+교과서는 `references/textbooks/`, 지도 원본은 `references/geography/`,
+이미지 학습 자료는 `references/image-training/`을 사용합니다.
+로컬 연구 문서는 `docs/research/`, 과거 수정 스크립트는 `scripts/archive/`에 보관합니다.
+이 로컬 자료와 `tools/.cache/`는 운영 배포 대상에 포함하지 않습니다.
 
 ## 게시판
 
