@@ -7,6 +7,16 @@ services:
     startCommand: npm --prefix game-hub-server start
     healthCheckPath: /health
     autoDeployTrigger: commit
+    # Development-only edits do not need a running-site deployment.
+    buildFilter:
+      ignoredPaths:
+        - docs/**
+        - references/**
+        - outputs/**
+        - tests/**
+        - tools/**
+        - .codex-remote-attachments/**
+        - README.md
     envVars:
       - key: NODE_VERSION
         value: 22
