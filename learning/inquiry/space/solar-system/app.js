@@ -73,7 +73,7 @@
             deepSpaceStart: 300000,
             deepSpaceEnd: 1100000,
             max3DDistance: 1500000,
-            max2DDistance: 1500000
+            max2DDistance: 3200000
         };
 
         function reportSimulationError(error) {
@@ -488,7 +488,7 @@
 
             scene = new THREE.Scene();
             // Standard far plane for Log Scale, extended for True Scale 2D Map
-            camera = new THREE.PerspectiveCamera(2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, w / h)) * 180 / Math.PI, w / h, 0.1, 2500000);
+            camera = new THREE.PerspectiveCamera(2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, w / h)) * 180 / Math.PI, w / h, 0.1, 5000000);
             
             // Initial Camera Position
             camera.position.set(0, 2580, 3440);
@@ -1277,7 +1277,7 @@
                 div.style.pointerEvents = 'none';
                 lc.appendChild(div);
 
-                mapLabels.push({ obj: marker, el: div });
+                mapLabels.push({ obj: marker, el: div, priority: 2 });
                 return marker;
             }
 
@@ -1389,7 +1389,7 @@
                 sunDiv.style.transform = 'translate(-50%, -50%)';
                 sunDiv.style.pointerEvents = 'none';
                 lc.appendChild(sunDiv);
-                mapLabels.push({ obj: sunMesh, el: sunDiv });
+                mapLabels.push({ obj: sunMesh, el: sunDiv, priority: 0 });
             }
             scene.add(sunMesh);
 
@@ -1473,7 +1473,11 @@
                 if (state.simMode === '2d') {
                     planetMesh.visible = false;
                     var pl = createPlanetLabel(key, data);
-                    mapLabels.push({ obj: planetMesh, el: pl });
+                    var dot = document.createElement('span');
+                    dot.className = 'au-position-dot';
+                    dot.setAttribute('aria-hidden', 'true');
+                    lc.appendChild(dot);
+                    mapLabels.push({ obj: planetMesh, el: pl, dot: dot, priority: 1 });
                     createOrbitLabel(key, data, semiMajor, semiMinor, focusOffset, pivot);
                 }
                 planetMesh.userData = { key: key, data: data, semiMajor: semiMajor, semiMinor: semiMinor, focusOffset: focusOffset, ecc: ecc };
@@ -2342,22 +2346,28 @@
 
             if (state.simMode !== '2d' || !camera || !renderer) return;
 
-            mapLabels.forEach(function(item) {
+            var labelBounds = [];
+            mapLabels.slice().sort(function(a,b){return a.priority-b.priority;}).forEach(function(item) {
                 vec.setFromMatrixPosition(item.obj.matrixWorld);
                 vec.project(camera);
-                
-                // Check if behind camera
-                if (vec.z > 1.0) {
-                    item.el.style.display = 'none';
-                    return;
+                var x = vec.x * hw + hw;
+                var y = -vec.y * hh + hh;
+                var inView = vec.z >= -1 && vec.z <= 1 && x >= 0 && x <= 2*hw && y >= 0 && y <= 2*hh;
+                if (item.dot) {
+                    item.dot.style.display = inView ? 'block' : 'none';
+                    item.dot.style.left = x + 'px'; item.dot.style.top = y + 'px';
                 }
-                
-                var x = (vec.x * hw) + hw;
-                var y = -(vec.y * hh) + hh;
-                
-                item.el.style.display = 'block';
-                item.el.style.left = x + 'px';
-                item.el.style.top = y + 'px';
+                item.el.style.display = inView ? 'block' : 'none';
+                if (!inView) return;
+                var w = item.width || (item.width = item.el.offsetWidth);
+                var h = item.height || (item.height = item.el.offsetHeight);
+                var box = {left:x-w/2-3, right:x+w/2+3, top:y-h/2-3, bottom:y+h/2+3};
+                var collision = box.left < 0 || box.right > 2*hw || box.top < 0 || box.bottom > 2*hh || labelBounds.some(function(b){
+                    return box.left < b.right && box.right > b.left && box.top < b.bottom && box.bottom > b.top;
+                });
+                item.el.style.visibility = collision ? 'hidden' : 'visible';
+                item.el.style.left = x + 'px'; item.el.style.top = y + 'px';
+                if (!collision) labelBounds.push(box);
             });
         }
 
@@ -3084,6 +3094,8 @@
                     isExpanded = !isExpanded;
                     auCardContent.style.display = isExpanded ? 'block' : 'none';
                     auCardToggleBtn.textContent = isExpanded ? '➖' : '➕';
+                    auCardToggleBtn.setAttribute('aria-expanded', String(isExpanded));
+                    auCardToggleBtn.setAttribute('aria-label', isExpanded ? '거리 설명 접기' : '거리 설명 펼치기');
                 });
             }
 
@@ -3115,7 +3127,7 @@
                         }
                         if (camera && controls) {
                             controls.maxDistance = GALAXY_VIEW.max2DDistance;
-                            camera.position.set(0, 1500000, 0); // Zoomed way out top-down
+                            camera.position.set(0, 3200000, 0); // Zoomed way out top-down
                             controls.target.set(0, 0, 0);
                             controls.update();
                         }
@@ -3158,7 +3170,7 @@
             if (resetCamBtn) {
                 resetCamBtn.addEventListener('click', function () {
                     if (camera && controls) {
-                        if (state.simMode === '2d') camera.position.set(0, 1500000, 0);
+                        if (state.simMode === '2d') camera.position.set(0, 3200000, 0);
                         else camera.position.set(0, 2580, 3440);
                         controls.target.set(0, 0, 0);
                         controls.update();

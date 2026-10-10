@@ -1039,7 +1039,7 @@
 
                 const dayIndex = Math.max(0, Math.min(CALENDAR_DAYS_PER_YEAR - 1, Number(moonDaySlider.value) - 1));
                 const hour = Math.max(0, Math.min(23, Number(moonTimeSlider.value)));
-                setSimulationHours(dayIndex * 24 + hour);
+                setSimulationHours(Math.floor(elapsedSimulationHours / HOURS_PER_YEAR) * HOURS_PER_YEAR + dayIndex * 24 + hour);
                 isPlaying = false;
                 const playButton = document.getElementById('emPlayBtn');
                 if (playButton) playButton.textContent = '▶ 재생';

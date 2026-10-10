@@ -23,6 +23,16 @@ export function createAtlas(api){
     <button id="lessonReopen" hidden>학습 카드 열기</button><div class="map-caption" id="mapCaption" aria-live="polite"></div><div class="atlas-legend" id="atlasLegend" hidden></div><div class="map-tools" id="mapTools"></div>
     <dialog class="atlas-quiz" id="atlasQuiz" aria-label="확인 문제"><button class="quiz-close" aria-label="문제 닫기">×</button><div id="quizBody"></div></dialog>`);
   const $=id=>document.getElementById(id);
+  const school=window.SchoolLevel, schoolMaps=window.SchoolMaps;
+  const allowed=l=>!school||(schoolMaps.available('world',l.id,school.value)&&(school.value!=='middle'||l.level!=='high'));
+  school?.mount(document.querySelector('.atlas-header'));
+  school?.subscribe(()=>{
+    if($('atlasQuiz').open)$('atlasQuiz').close();
+    $('wrongPractice').hidden=school.value==='elementary';
+    renderCatalog();
+    if(current)choose(allowed(current)?current.id:LESSONS.find(allowed).id);
+  });
+  $('wrongPractice').hidden=school?.value==='elementary';
   $('layersPane').append($('layerBar'));
   if($('seasonSwitch'))$('mapTools').append($('seasonSwitch'));
   $('catalogToggle').onclick=()=>setCatalog(!document.body.classList.contains('catalog-open'));
@@ -44,7 +54,7 @@ export function createAtlas(api){
   $('lessonReopen').onclick=()=>{document.body.classList.remove('lesson-closed');$('lessonReopen').hidden=true;api.map.resize();};
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){setCatalog(false);}});
   function caption(text){$('mapCaption').textContent=text;}
-  function matched(){return LESSONS.filter(l=>(!query||[l.title,...l.core,l.trap,...l.standards].join(' ').toLowerCase().includes(query)));}
+  function matched(){return LESSONS.filter(l=>allowed(l)&&(!query||[l.title,...l.core,l.trap,...l.standards].join(' ').toLowerCase().includes(query)));}
   function renderCatalog(){
     const list=matched();
     const wasOpen=new Set([...$('topicList').querySelectorAll('details[open]')].map(d=>d.dataset.group));
@@ -55,7 +65,7 @@ export function createAtlas(api){
     $('topicList').querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>choose(b.dataset.lesson));
   }
   async function choose(id){
-    const lesson=LESSONS.find(l=>l.id===id);if(!lesson)return;
+    const lesson=LESSONS.find(l=>l.id===id);if(!lesson||!allowed(lesson))return;
     current=lesson;const version=++revision;
     setCatalog(false);
     document.body.classList.remove('lesson-closed');$('lessonReopen').hidden=true;
@@ -69,10 +79,12 @@ export function createAtlas(api){
     catch{if(version===revision){$('atlasLegend').textContent='지도를 불러오지 못했습니다. 주제를 다시 선택해 주세요.';}}
   }
   function renderLesson(l){
-    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${l.core.map(c=>`<p>${c}</p>`).join('')}${l.trap?`<p>${l.trap}</p>`:''}</div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
+    const grade=school&&schoolMaps.profile('world',l,school.value);
+    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${grade?school.concepts(grade):l.core.map(c=>`<p>${c}</p>`).join('')}${grade?school.question(grade):''}${l.trap&&school?.value!=='elementary'?`<p>${l.trap}</p>`:''}</div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
     $('lessonPanel').querySelector('.lesson-close').onclick=()=>{document.body.classList.add('lesson-closed');$('lessonReopen').hidden=false;api.map.resize();};
     $('lessonPanel').querySelectorAll('[data-spot]').forEach(b=>b.onclick=()=>focusSpot(Number(b.dataset.spot)));
     if(l.visual)renderVisual($('lessonVisual'),l.visual);
+    $('lessonPractice').hidden=school?.value==='elementary';
     $('lessonPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>q.lesson===l.id));
   }
   function focusSpot(index){

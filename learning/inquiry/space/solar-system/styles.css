@@ -1293,3 +1293,12 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* Keep the scale explanation outside the interactive sky. */
+#tab-sim .viewport-header-bar { top:8px; }
+#auInfoCard { flex:0 0 auto; margin:8px 12px 0; padding:10px 14px; border:1px solid #225e58; border-radius:10px; background:#10252c; color:#d3e8e6; font-size:13px; line-height:1.65; }
+.au-card-heading { display:flex; align-items:center; justify-content:space-between; color:#5eead4; }
+#auCardToggleBtn { background:none; color:inherit; border:0; min-width:36px; min-height:30px; cursor:pointer; }
+@media(max-width:760px) { #tab-sim .solar-canvas-wrapper { flex:0 0 360px; min-height:360px; } }
+
+.au-position-dot { position:absolute; width:3px; height:3px; border-radius:50%; background:#7dd3fc; transform:translate(-50%,-50%); pointer-events:none; }
