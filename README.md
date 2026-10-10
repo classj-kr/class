@@ -43,11 +43,12 @@ class/
 이미지 학습 자료는 `references/image-training/`을 사용합니다.
 수능 문제지 원본은 `references/exams/`, 동화 스캔 원본은
 `references/story-books/`, 사용하지 않는 그림 원본은 `references/game-art/`에 둡니다.
+음원 원본은 `references/audio/`에 보존하고, 파닉스 재생 파일은 OGG를 사용합니다.
 로컬 연구 문서는 `docs/research/`, 과거 수정 스크립트는 `scripts/archive/`에 보관합니다.
 이 로컬 자료와 `tools/.cache/`는 운영 배포 대상에 포함하지 않습니다.
 
 구조 점검은 `npm run audit:repository`로 실행합니다. 중복 배포 프로젝트,
-서비스 폴더의 임시 파일·대용량 PNG/JPG, Git에 남은 로컬 첨부파일을 찾아냅니다.
+서비스 폴더의 임시 파일·WAV·대용량 PNG/JPG, Git에 남은 로컬 첨부파일을 찾아냅니다.
 수학 OX와 파닉스는 `learning/literacy-numeracy/`의 운영본만 유지합니다.
 `npm run audit:links`는 HTML·CSS의 정적 연결을 웹 주소 기준으로 검사합니다.
 앱 폴더 이동, 안내 페이지, 세계 항해 프록시와 서버 별칭을 반영하며,

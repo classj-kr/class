@@ -34,6 +34,9 @@ export function auditRepository({ root = ROOT, trackedFiles } = {}) {
         continue;
       }
       scannedFiles += 1;
+      if (/\.wav$/i.test(entry.name)) {
+        report(relative, "서비스용 WAV: OGG 변환 후 원본은 references/audio/에 보존");
+      }
       if (entry.name === "package.json" && !RUNTIME_PACKAGES.has(relative)) {
         report(relative, "통합 서버가 빌드하지 않는 별도 프로젝트: 사용 여부 확인 필요");
       }
