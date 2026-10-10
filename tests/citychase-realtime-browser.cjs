@@ -162,7 +162,7 @@ const server=http.createServer((req,res)=>{
     assert.equal(await p.locator('#soundBtn').getAttribute('aria-pressed'),'true');const beforeCaptureSound=await p.evaluate(()=>captureSounds);
     await p.evaluate(()=>{
       window.captureDrawn=[];const original=CanvasRenderingContext2D.prototype.drawImage;
-      CanvasRenderingContext2D.prototype.drawImage=function(img,...args){if(img.src?.includes('realtime-capture.png'))captureDrawn.push(args[0]);return original.call(this,img,...args);};
+      CanvasRenderingContext2D.prototype.drawImage=function(img,...args){if(img.src?.includes('realtime-capture.webp'))captureDrawn.push(args[0]);return original.call(this,img,...args);};
       const g=chaseTestGame;g.elapsed=7;g.players.forEach(p=>{p.path=[];p.immuneUntil=1000;});
       const me=g.players.find(p=>p.id==='me'),cop=g.players.find(p=>p.team==='police');
       Object.assign(me,{...ChaseWorld.nodes.p0,id:'me',immuneUntil:0,carrying:true});Object.assign(cop,{x:me.x+16,y:me.y});

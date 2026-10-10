@@ -2,7 +2,7 @@
   'use strict';
   const W=window.ChaseWorld,E=window.ChaseEngine,$=id=>document.getElementById(id);
   const canvas=$('town'),ctx=canvas.getContext('2d'),map=new Image(),idle=new Image(),captureSprite=new Image(),sprites={police:new Image(),thief:new Image()};
-  map.src='assets/realtime-town-final.png';idle.src='assets/realtime-idle.png';captureSprite.src='assets/realtime-capture.png';sprites.police.src='assets/realtime-police-run.png';sprites.thief.src='assets/realtime-thief-run.png';
+  map.src='assets/realtime-town-final.webp';idle.src='assets/realtime-idle.webp';captureSprite.src='assets/realtime-capture.webp';sprites.police.src='assets/realtime-police-run.webp';sprites.thief.src='assets/realtime-thief-run.webp';
   const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
   const captures=window.ChaseCapture.create({reducedMotion:()=>motionPreference.matches});
   const sounds=window.ChaseAudio.create({onEnabledChange(enabled){const button=$('soundBtn');button.textContent=enabled?'🔊':'🔇';button.setAttribute('aria-pressed',String(enabled));button.setAttribute('aria-label',enabled?'소리 끄기':'소리 켜기');}});

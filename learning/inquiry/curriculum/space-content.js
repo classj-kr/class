@@ -1,7 +1,7 @@
 (function(){
     const D=window.SchoolContent=window.SchoolContent||{};
     const refs=['미래엔 과학 4-2·6-1·6-2(양일호), 밤하늘·지구의 운동·계절의 변화','미래엔 과학 1(김태일, 2022), 태양계','천재교과서 행성우주과학(오필석, 2022), 고등 선택과목'];
-    function add(id,rows){D['space-'+id]=Object.fromEntries(['elementary','middle','high'].map((l,i)=>[l,{source:refs[i],concepts:rows[i][0],question:rows[i][1],answer:rows[i][2]}]));}
+    function add(id,rows){D['space-'+id]=Object.fromEntries(['elementary','middle','high'].map((l,i)=>[l,{subject:l!=='high'?'과학':['star-properties','stellar-life'].includes(id)?'지구과학':'행성우주과학',source:refs[i],concepts:rows[i][0],question:rows[i][1],answer:rows[i][2]}]));}
     add('solar-system',[
         [['태양계에는 스스로 빛을 내는 태양과 태양 주위를 도는 행성 등이 있습니다. 행성은 태양 빛을 반사하여 보입니다.','태양에서 가까운 순서는 수성·금성·지구·화성·목성·토성·천왕성·해왕성입니다. 행성을 눌러 크기와 모습을 비교하세요.'],'지구보다 태양 가까이에 있는 행성과 멀리 있는 행성을 각각 두 개씩 찾아보세요. 달은 어느 천체 주위를 도나요?','가까운 행성은 수성과 금성, 먼 행성은 화성·목성·토성·천왕성·해왕성 중 두 개입니다. 달은 지구 주위를 도는 위성입니다.'],
         [['지구형 행성은 비교적 작고 밀도가 크며 단단한 표면이 있습니다. 목성형 행성은 비교적 크고 평균 밀도가 작으며 고리와 여러 위성이 있습니다.','행성들은 태양 주위를 공전합니다. 평균 거리가 멀수록 공전 주기가 대체로 길어지는 경향을 관찰할 수 있습니다.'],'수성·지구·목성·토성을 두 무리로 나누고, 크기 이외에 분류 근거를 두 가지 설명하세요.','수성·지구는 지구형, 목성·토성은 목성형입니다. 평균 밀도와 주요 구성 성분, 단단한 표면·고리·위성의 특징 등을 근거로 비교할 수 있습니다.'],

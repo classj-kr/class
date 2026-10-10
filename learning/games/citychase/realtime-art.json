@@ -3,23 +3,23 @@
   "reference": "assets/lobby-city.webp",
   "assets": [
     {
-      "file": "assets/realtime-capture.png",
+      "file": "assets/realtime-capture.webp",
       "prompt": "Use case: illustration-story. Asset: transparent game sprite atlas for a funny capture sequence in a friendly school cops-and-robbers game. The attached atlas is the exact identity, clothing, proportion and warm storybook ink/shading reference; preserve its blue-uniform policeman and cream-and-black striped, black-cap masked thief. New atlas: exactly THREE equal SQUARE cells in ONE horizontal row, aspect ratio 3:1, real transparent alpha, full body centered in each cell, characters about 84 percent cell height with feet at 92 percent. Cell 1: thief faces front, eyes wide and mouth a small surprised O, BOTH open hands raised beside his head in comic surrender, bent knees, a playful startled hop, no suffering. Cell 2: policeman faces front, broad satisfied grin, chest proud, one hand saluting beside his cap and the other on his hip, both feet planted. Cell 3: thief faces front, sheepish pout, shoulders slumped, BOTH hands resting on cheeks, body crouched slightly in embarrassment, cute and funny. Maintain recognizable exact clothes and matching scale across cells; reserve generous transparent padding around hands and hat. No weapons, cuffs, violence, bars, scenery, ground, shadows, effects, labels, letters, grid borders or cropped limbs. The three poses must be independent isolated cutouts in a precisely regular three-column sprite strip."
     },
     {
-      "file": "assets/realtime-town-final.png",
+      "file": "assets/realtime-town-final.webp",
       "promptBrief": "Warm, amusing storybook village matching the existing police-and-thieves lobby. An open neighborhood with seven distinct shops, a fountain plaza, irregular connected alleys, multiple loops and a wooden bridge. Preserve clear playable roads. Place couples, citizens, children, dogs, cats and ducks entirely inside courtyards, gardens, lawns and seating areas, including their props and shadows. No mountain-like forest wall; no labels baked into the image."
     },
     {
-      "file": "assets/realtime-police-run.png",
+      "file": "assets/realtime-police-run.webp",
       "promptBrief": "Friendly storybook policeman matching the lobby illustration: blue uniform, cap and gold badge. Transparent 4-column by 4-row running sprite atlas. Rows face down, left, right, up; columns are successive running poses. Consistent scale, full body, evenly aligned square cells and foot anchors. No text, scenery, grid lines or baked shadow."
     },
     {
-      "file": "assets/realtime-thief-run.png",
+      "file": "assets/realtime-thief-run.webp",
       "promptBrief": "Friendly storybook thief matching the lobby illustration: black cap and eye mask, cream-and-black striped shirt. Transparent 4-column by 4-row running sprite atlas. Rows face down, left, right, up; columns are successive running poses. Consistent scale, full body, evenly aligned square cells and foot anchors. No text, scenery, grid lines or baked shadow."
     },
     {
-      "file": "assets/realtime-idle.png",
+      "file": "assets/realtime-idle.webp",
       "prompt": "Use case: illustration-story. Asset: production game sprite atlas for the two reference characters STOPPED and STANDING. References 1 and 2 define the exact police and thief appearance, clothes, warm storybook linework, proportions, and scale; preserve both identities. Create one transparent PNG atlas, exactly TWO columns and FOUR rows, eight equally sized square cells, overall portrait ratio 1:2. LEFT column always the blue-uniform friendly policeman; RIGHT column always the striped-shirt black-mask friendly thief. Row 1: front/down facing. Row 2: strict left side facing. Row 3: strict right side facing. Row 4: back/up facing. ALL EIGHT poses are relaxed STANDING with both feet planted, arms lowered, no running, no raised knee. Each character centered horizontally in its cell, entire head and feet visible, feet at 91% of each cell height, uniform body height 85% of each cell. Strong clear silhouette to read at 65px. Genuine alpha background, no scenery, ground, checkerboard, cell lines, text, props, cropping or decorative marks. Precisely aligned regular 2-column by 4-row sprite sheet."
     }
   ]
