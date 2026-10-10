@@ -6,7 +6,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 
-// The World Voyage, arithmetic and phonics apps keep their own server code,
+// The World Voyage and arithmetic apps keep their own server code,
 // dependencies and (for World Voyage) a classroom save file inside /learning,
 // which express.static serves wholesale. Only their public/ folders may be
 // reachable by URL; everything else must 404 however the path is spelled.
@@ -69,6 +69,10 @@ test("sub-app internals are not reachable by URL, however the path is spelled", 
     "/learning/literacy-numeracy/arithmetics/package.json",
     "/learning/literacy-numeracy/arithmetics/app/layout.tsx",
     "/learning/literacy-numeracy/phonics-site/package.json",
+    "/learning/literacy-numeracy/csat-math/tools/check-math.mjs",
+    "/learning/literacy-numeracy/csat-math/%74ools/README.md",
+    "/learning/literacy-numeracy/story-books/korea-tales/_tools/README.md",
+    "/LEARNING/literacy-numeracy/csat-math/TOOLS/check-math.mjs",
   ]) {
     assert.equal((await status(requestPath)).status, 404, requestPath);
   }

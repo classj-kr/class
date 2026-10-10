@@ -5,14 +5,15 @@ const express = require('../game-hub-server/node_modules/express');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'outputs', 'teacher-settings-review');
-const avatarKeys = fs.readdirSync(path.join(root, 'classtools/assets/avatars')).filter(key => key.endsWith('.webp')).slice(0, 16);
+const avatarKeys = fs.readdirSync(path.join(root, 'apps/classtools/assets/avatars')).filter(key => key.endsWith('.webp')).slice(0, 16);
 const avatar = key => ({ key, url: key ? '/assets/avatars/' + key : '', canChange: true,
     changePeriodLabel: '2학기', options: avatarKeys.map(key => ({ key, url: '/assets/avatars/' + key, available: true })) });
 
 async function main() {
     fs.mkdirSync(output, { recursive: true });
     const app = express();
-    app.use('/assets/avatars', express.static(path.join(root, 'classtools/assets/avatars')));
+    app.use('/assets/avatars', express.static(path.join(root, 'apps/classtools/assets/avatars')));
+    app.use(express.static(path.join(root, 'apps'), { extensions: ['html'] }));
     app.use(express.static(root, { extensions: ['html'] }));
     const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });
     const base = `http://127.0.0.1:${server.address().port}`;

@@ -27,6 +27,7 @@ const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { createKmaWeather } = require("./kma-weather");
 const { registerSiteIcons } = require("./site-icons");
+const { APP_DIRECTORIES, SITE_PAGES, resolveSitePath } = require("./site-paths");
 const {
   clientMatchesToken,
   restoreRoom,
@@ -324,7 +325,7 @@ function sendSiteHtml(req, res, filepath, next) {
 }
 
 registerSiteIcons(app, SITE_ROOT);
-app.use("/assets/avatars", express.static(path.join(SITE_ROOT, "classtools", "assets", "avatars"), staticAssetOptions));
+app.use("/assets/avatars", express.static(path.join(SITE_ROOT, "apps", "classtools", "assets", "avatars"), staticAssetOptions));
 app.use("/assets", express.static(path.join(SITE_ROOT, "assets"), staticAssetOptions));
 app.get("/robots.txt", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");
@@ -549,14 +550,10 @@ for (const [alias, source] of [['notation.js', 'notation.js'], ['rhythm-notation
   });
 }
 
-for (const [route, file] of [
-  ["/privacy", "privacy.html"],
-  ["/school-setup", "school-setup.html"],
-  ["/student-privacy", "student-privacy.html"],
-  ["/support", "support.html"],
-  ["/terms", "terms.html"],
-]) {
-  app.get(route, (req, res, next) => sendSiteHtml(req, res, path.join(SITE_ROOT, file), next));
+for (const file of SITE_PAGES) {
+  const route = `/${file.slice(0, -'.html'.length)}`;
+  app.get(route, (req, res, next) => sendSiteHtml(req, res, resolveSitePath(SITE_ROOT, `/${file}`), next));
+  app.get(`/${file}`, (req, res) => res.redirect(308, `${route}${req.url.slice(file.length + 1)}`));
 }
 
 for (const [friendlyPath, legacyPath, file] of [
@@ -586,6 +583,11 @@ app.use((req, res, next) => {
     return res.status(400).send("잘못된 주소입니다.");
   }
   const normalized = path.posix.normalize(pathname.replace(/\\/g, "/")).toLowerCase();
+  // Preparation scripts and review artifacts belong to local tooling, not lessons.
+  if (normalized.startsWith("/learning/") && normalized.split("/").some(part =>
+    ["tools", "_tools", "_check", "scratch", "node_modules"].includes(part))) {
+    return res.sendStatus(404);
+  }
   if ((req.method === "GET" || req.method === "HEAD") && LEARNING_GROUP_ROOTS.has(normalized.replace(/\/$/, ""))) {
     return res.redirect(302, "/");
   }
@@ -596,7 +598,7 @@ app.use((req, res, next) => {
   res.sendStatus(404);
 });
 
-const CLEAN_HTML_ROOTS = ["/admin", "/boards", "/classboard", "/parent", "/schooladmin", "/classtools", "/learning", "/notice", "/teacher", "/room", "/vote", "/school-election"];
+const CLEAN_HTML_ROOTS = [...APP_DIRECTORIES.map(directory => `/${directory}`), "/learning"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
 
@@ -623,7 +625,8 @@ app.use((req, res, next) => {
   }
 
   if (!path.extname(pathname) && !pathname.endsWith("/")) {
-    const dirCandidate = path.resolve(SITE_ROOT, `.${pathname}`);
+    const dirCandidate = resolveSitePath(SITE_ROOT, pathname);
+    if (!dirCandidate) return res.sendStatus(400);
     if (dirCandidate.startsWith(`${SITE_ROOT}${path.sep}`) && fs.existsSync(dirCandidate) && fs.statSync(dirCandidate).isDirectory()) {
       const query = req.originalUrl.includes("?") ? req.originalUrl.slice(req.originalUrl.indexOf("?")) : "";
       return res.redirect(308, `${pathname}/${query}`);
@@ -631,7 +634,8 @@ app.use((req, res, next) => {
   }
 
   if (pathname.endsWith("/")) {
-    const indexCandidate = path.resolve(SITE_ROOT, `.${pathname}index.html`);
+    const indexCandidate = resolveSitePath(SITE_ROOT, `${pathname}index.html`);
+    if (!indexCandidate) return res.sendStatus(400);
     if (!indexCandidate.startsWith(`${SITE_ROOT}${path.sep}`)) return res.sendStatus(400);
     return fs.stat(indexCandidate, (error, stats) => {
       if (error || !stats.isFile()) return next();
@@ -640,7 +644,8 @@ app.use((req, res, next) => {
   }
 
   if (path.extname(pathname)) return next();
-  const candidate = path.resolve(SITE_ROOT, `.${pathname}.html`);
+  const candidate = resolveSitePath(SITE_ROOT, `${pathname}.html`);
+  if (!candidate) return res.sendStatus(400);
   if (!candidate.startsWith(`${SITE_ROOT}${path.sep}`)) return res.sendStatus(400);
   fs.stat(candidate, (error, stats) => {
     if (error || !stats.isFile()) return next();
@@ -648,8 +653,8 @@ app.use((req, res, next) => {
   });
 });
 
-for (const directory of ["admin", "boards", "classboard", "parent", "classtools", "css", "js", "learning", "notice", "schooladmin", "teacher", "room", "vote", "school-election"]) {
-  app.use(`/${directory}`, express.static(path.join(SITE_ROOT, directory), staticAssetOptions));
+for (const directory of [...APP_DIRECTORIES, "css", "js", "learning"]) {
+  app.use(`/${directory}`, express.static(resolveSitePath(SITE_ROOT, `/${directory}`), staticAssetOptions));
 }
 
 const museumClasses = new Map();

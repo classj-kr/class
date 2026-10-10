@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "audit:repository": "node scripts/audit-repository-hygiene.mjs",
+    "audit:links": "node scripts/audit-site-links.mjs",
     "test:coach-quality": "node --test tests/board-coach-quality.test.cjs tests/board-coach-hints.test.cjs",
     "test:coach-opponent": "node --test tests/board-coach-opponent.test.cjs",
     "test:coach-feedback:ui": "node tests/board-coach-feedback-browser.cjs --regression",

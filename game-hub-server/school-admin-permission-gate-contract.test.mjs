@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const dashboardSource = await readFile(new URL("../classtools/dashboard.html", import.meta.url), "utf8");
+const dashboardSource = await readFile(new URL("../apps/classtools/dashboard.html", import.meta.url), "utf8");
 
 function handlerBody(source, routeSignature) {
   const start = source.indexOf(routeSignature);

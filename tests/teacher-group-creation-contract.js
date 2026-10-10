@@ -219,7 +219,7 @@ app.use((error, _req, res, _next) => res.status(error.status || 500).json({ code
     assert.equal(inserted.length, 2, "같은 그룹이 둘 생기면 안 된다.");
 
     // 6. 화면 쪽: 학년도를 함께 보내고, 못 받아 왔으면 까닭을 보여 준다.
-    const portal = fs.readFileSync(path.join(root, "classtools", "index.html"), "utf8");
+    const portal = fs.readFileSync(path.join(root, "apps/classtools", "index.html"), "utf8");
     assert.match(portal, /available-groups\?year=\$\{portalYear\}/,
       "교사 포털이 보는 학년도를 함께 보내야 한다. 안 보내면 명단과 다른 해를 볼 수 있다.");
     assert.doesNotMatch(portal, /available-groups'\)\.catch\(\(\) => null\)/,

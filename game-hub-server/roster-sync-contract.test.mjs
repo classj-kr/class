@@ -3,11 +3,11 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const dashboardSource = await readFile(new URL("../classtools/dashboard.html", import.meta.url), "utf8");
-const seatingSource = await readFile(new URL("../classtools/seating.html", import.meta.url), "utf8");
-const indexSource = await readFile(new URL("../classtools/index.html", import.meta.url), "utf8");
-const adminIndexSource = await readFile(new URL("../admin/index.html", import.meta.url), "utf8");
-const recordAiSource = await readFile(new URL("../classtools/record-ai.html", import.meta.url), "utf8");
+const dashboardSource = await readFile(new URL("../apps/classtools/dashboard.html", import.meta.url), "utf8");
+const seatingSource = await readFile(new URL("../apps/classtools/seating.html", import.meta.url), "utf8");
+const indexSource = await readFile(new URL("../apps/classtools/index.html", import.meta.url), "utf8");
+const adminIndexSource = await readFile(new URL("../apps/admin/index.html", import.meta.url), "utf8");
+const recordAiSource = await readFile(new URL("../apps/classtools/record-ai.html", import.meta.url), "utf8");
 
 function handlerBody(source, routeSignature) {
   const start = source.indexOf(routeSignature);

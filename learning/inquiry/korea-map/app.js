@@ -1018,8 +1018,11 @@
     return questions.filter((question) => question.topic === currentTheme);
   }
 
-  function allQuestions() {
-    return questions.concat(...Object.values(themes).filter((theme) => theme.buildQuestions).map((theme) => theme.buildQuestions("all")));
+  function allQuestions(allSchools=false) {
+    const schools=allSchools?['elementary','middle','high']:[window.SchoolLevel?.value||'middle'];
+    const lessonQuestions=schools.flatMap(school=>dataset.lessons.filter(l=>window.SchoolMaps.available('korea',l.id,school)).flatMap(l=>window.MapPractice.pool('korea',l,questions,school)));
+    const bank=allSchools?questions.concat(lessonQuestions):lessonQuestions;
+    return [...new Map(bank.concat(...Object.values(themes).filter((theme) => theme.buildQuestions).map((theme) => theme.buildQuestions("all"))).map(q=>[q.id,q])).values()];
   }
 
   function updatePracticeButton() {
@@ -1057,6 +1060,8 @@
     const question = session.questions[session.index];
     if (!question) return;
     session.answered = false;
+    const card=$('#practiceDialog');card.dataset.questionId=question.id;card.dataset.schoolLevel=window.SchoolLevel?.value||'middle';
+    delete card.dataset.selectedOptionId;delete card.dataset.state;
     ["#questionDiagram", "#questionGraph", ".question-body", ".question-copy"].forEach(id=>$(id).scrollTop=0);
     const theme = themes[question.topic] || {};
     $("#questionProgress").textContent = `${session.index + 1} / ${session.questions.length}`;
@@ -1268,6 +1273,9 @@
     const firstTry = !session.answers[session.index];
     if (firstTry) {
       session.answers[session.index] = { selectedIndex, correct };
+      const detail={questionId:question.id,questionRevision:question.revision||1,schoolLevel:window.SchoolLevel?.value||'middle',selectedOptionId:question.optionIds[selectedIndex],correctOptionId:question.optionIds[question.answer],correct};
+      $('#practiceDialog').dataset.selectedOptionId=detail.selectedOptionId;$('#practiceDialog').dataset.state=correct?'correct':'incorrect';
+      $('#practiceDialog').dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail}));
       recordAnswer(question, correct);
     }
     const buttons = $$("#answerOptions .answer-button");
@@ -1382,9 +1390,10 @@
 
   // 보기 순서를 섞는다. 지도 위 A~E 고르기는 글자 순서를 그대로 둔다.
   function shuffleQuestionOptions(question) {
-    if (question.marks) return { ...question };
-    const shuffled = shuffle(question.options.map((text, index) => ({ text, correct: index === question.answer })));
-    return { ...question, options: shuffled.map((option) => option.text), answer: shuffled.findIndex((option) => option.correct) };
+    const optionIds=question.optionIds||question.options.map((_,i)=>'option-'+(i+1));
+    if (question.marks) return { ...question,optionIds };
+    const shuffled = shuffle(question.options.map((text, index) => ({ text,id:optionIds[index], correct: index === question.answer })));
+    return { ...question, options: shuffled.map((option) => option.text),optionIds:shuffled.map(option=>option.id), answer: shuffled.findIndex((option) => option.correct) };
   }
 
   // ───────────── 기록 ─────────────
@@ -1441,8 +1450,9 @@
 
   function fillRecord() {
     const progress = readProgress();
+    const bank=allQuestions(true);
     const rows = THEME_ORDER.filter((key) => themes[key] && themes[key].practice !== false).map((key) => {
-      const ids = themes[key].questionIds ? themes[key].questionIds() : questions.filter((question) => question.topic === key).map((question) => question.id);
+      const ids = themes[key].questionIds ? themes[key].questionIds() : bank.filter((question) => question.topic === key).map((question) => question.id);
       const stats = ids.reduce((acc, id) => {
         const item = progress.items[id];
         if (!item) return acc;
@@ -1461,6 +1471,6 @@
       tr.innerHTML = `<th scope="row">${row.label}</th><td>${row.n}</td><td>${row.c}</td><td>${rate}<small> · 문제은행 ${row.bank}개 중 ${row.seen}개 봄</small></td>`;
       return tr;
     }));
-    $("#retryWrong").disabled = wrongTotal === 0;
+    $("#retryWrong").disabled = !poolFor('review').length;
   }
 })();

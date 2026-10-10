@@ -9,7 +9,7 @@ const MAX_PLAYERS = 8;
 const DECK_ORDER = 7; // 소수 n → 카드 n^2+n+1장, 카드당 그림 n+1개
 const SYMBOLS_PER_CARD = DECK_ORDER + 1; // 8
 const TOTAL_CARDS = DECK_ORDER * DECK_ORDER + DECK_ORDER + 1; // 57
-const AVATAR_DIRECTORY = path.join(__dirname, "..", "classtools", "assets", "avatars");
+const AVATAR_DIRECTORY = path.join(__dirname, "..", "apps", "classtools", "assets", "avatars");
 
 // 유한 사영평면(order가 소수인 경우) 구성으로 도블 덱을 만든다: 카드 수 = 기호 수 = n^2+n+1,
 // 카드당 기호 n+1개, 임의의 두 카드는 정확히 기호 하나만 공유한다. 공개된 수학 구성이라

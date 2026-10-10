@@ -1,13 +1,14 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { APP_DIRECTORIES } from './site-paths.js';
 
 const serverSource = await readFile(new URL("./server.js", import.meta.url), "utf8");
 const platformSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const votingSource = await readFile(new URL("./voting.js", import.meta.url), "utf8");
 const homeSource = await readFile(new URL("../index.html", import.meta.url), "utf8");
-const roomSource = await readFile(new URL("../room/app.js", import.meta.url), "utf8");
-const voteAppSource = await readFile(new URL("../vote/app.js", import.meta.url), "utf8");
+const roomSource = await readFile(new URL("../apps/room/app.js", import.meta.url), "utf8");
+const voteAppSource = await readFile(new URL("../apps/vote/app.js", import.meta.url), "utf8");
 
 test("the home room-number entrance resolves activities centrally", () => {
   assert.match(homeSource, /href="\/room\/"[^>]*>방번호 입력/);
@@ -20,7 +21,7 @@ test("voting is mounted, initialized, and served behind site access", () => {
   assert.match(platformSource, /await voting\.initialize\(\)/);
   assert.match(platformSource, /router\.use\("\/vote", voting\.router\)/);
   assert.match(serverSource, /"\/room", "\/vote"/);
-  assert.match(serverSource, /"room", "vote"/);
+  assert.ok(APP_DIRECTORIES.includes('room') && APP_DIRECTORIES.includes('vote'));
   assert.match(platformSource, /requestPath === "\/room" \|\| requestPath\.startsWith\("\/room\/"\)/);
   assert.match(platformSource, /requestPath === "\/vote" \|\| requestPath\.startsWith\("\/vote\/"\)/);
 });

@@ -56,7 +56,7 @@ const EDUCATION_AUTHORITIES = Object.freeze([
   { name: "경상남도교육청", institutionCode: "EDU-S10", officeCode: "S10", locationName: "경상남도" },
   { name: "제주특별자치도교육청", institutionCode: "EDU-T10", officeCode: "T10", locationName: "제주특별자치도" }
 ]);
-const AVATAR_DIRECTORY = path.join(__dirname, "..", "classtools", "assets", "avatars");
+const AVATAR_DIRECTORY = path.join(__dirname, "..", "apps", "classtools", "assets", "avatars");
 const AVATAR_KEYS = Object.freeze(
   fs.readdirSync(AVATAR_DIRECTORY)
     .filter((name) => name.toLowerCase().endsWith(".webp"))

@@ -4,7 +4,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.join(__dirname, "..");
-const adminPath = path.join(root, "admin", "index.html");
+const adminPath = path.join(root, "apps/admin", "index.html");
 const adminHtml = fs.readFileSync(adminPath, "utf8");
 const adminScript = adminHtml.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");

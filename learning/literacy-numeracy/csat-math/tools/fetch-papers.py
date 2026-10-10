@@ -1,4 +1,6 @@
 import re, json, os, urllib.request, ssl
+from source_paths import PAPERS_DIR
+PAPERS_DIR.mkdir(parents=True, exist_ok=True)
 ctx=ssl.create_default_context(); ctx.check_hostname=False; ctx.verify_mode=ssl.CERT_NONE
 rows=json.load(open("board-rows.json",encoding="utf-8"))
 want=[]
@@ -18,7 +20,7 @@ for r in rows:
         want.append((f"{year}-{tag}-{kind}.pdf", f["seq"]))
 print("받을 파일", len(want))
 for name,seq in want:
-    p=os.path.join("papers",name)
+    p=PAPERS_DIR / name
     if os.path.exists(p) and os.path.getsize(p)>50000: print("있음", name); continue
     req=urllib.request.Request("https://www.suneung.re.kr/boardCnts/fileDown.do?fileSeq="+seq, headers={"User-Agent":"Mozilla/5.0"})
     d=urllib.request.urlopen(req,context=ctx,timeout=60).read()

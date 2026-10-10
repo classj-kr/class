@@ -13,6 +13,7 @@ dist/
 .vinext/
 .next/
 .wrangler/
+*.tsbuildinfo
 
 # Python caches
 __pycache__/
@@ -32,6 +33,7 @@ __pycache__/
 
 # Former standalone deployment metadata kept only as a local backup.
 /learning/basics/arithmetics/.sites-git-backup/
+/learning/literacy-numeracy/arithmetics/.sites-git-backup/
 
 # Deployment artifacts
 .deploy-worktree/
@@ -54,14 +56,8 @@ __pycache__/
 /insert_*.js
 /update_*.js
 /references/*
-!/references/textbooks/
-/references/textbooks/raw/
-# Collected originals, working copies and download receipts stay local.
-/references/textbooks/초등/
-/references/textbooks/중고등/
-/references/textbooks/수학/
-/references/textbooks/수집작업/
-/references/textbooks/수집기록/
+# All textbook collections, extracted information and receipts stay local.
+/references/textbooks/
 !/references/moe/
 /references/moe/*
 !/references/moe/2022-revised-curriculum/

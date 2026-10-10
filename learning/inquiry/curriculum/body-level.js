@@ -59,8 +59,9 @@
             if(concept)concept.innerHTML=p.concepts.map(t=>'<li>'+S.esc(t)+'</li>').join('');
             const trap=document.getElementById('examTrapList');
             if(trap)trap.innerHTML=S.concepts(p);
-            if(exercise)exercise.innerHTML=S.question(p);
-            if(quiz)quiz.hidden=S.value!=='high';
+            const topic=app==='skeleton'&&quiz?.dataset.quizFor==='muscle'&&S.value==='high'?'muscle':app;
+            if(exercise)S.practice(exercise,window.BodyPractice.forLevel(topic,S.value),topic+':'+S.value);
+            if(quiz)quiz.hidden=true;
             ['organEnzyme','organPH','organProduct'].forEach(id=>{const item=document.getElementById(id)?.closest('.meter-stat-item');if(item)item.hidden=S.value==='elementary';});
             selected();
         }

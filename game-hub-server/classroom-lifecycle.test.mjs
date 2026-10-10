@@ -198,7 +198,7 @@ test('real portal clears removed cards and saved selection; dashboard state clea
       '/api/teacher/groups': api.groups
     };
     if (routes[url.pathname]) return route.fulfill({ json: await routes[url.pathname](req) });
-    if (url.pathname === '/classtools/') return route.fulfill({ contentType: 'text/html', body: await readFile(new URL('../classtools/index.html', import.meta.url), 'utf8') });
+    if (url.pathname === '/classtools/') return route.fulfill({ contentType: 'text/html', body: await readFile(new URL('../apps/classtools/index.html', import.meta.url), 'utf8') });
     if (url.pathname === '/assets/device-game.css') return route.fulfill({ contentType: 'text/css', body: await readFile(new URL('../assets/device-game.css', import.meta.url), 'utf8') });
     return route.fulfill({ status: 404 });
   });
@@ -217,7 +217,7 @@ test('real portal clears removed cards and saved selection; dashboard state clea
     await page.screenshot({ path: fileURLToPath(new URL('portal-after.png', output)) });
 
     // Exercise the actual dashboard loader against its real DOM, without unrelated weather/audio startup.
-    const dashboard = await readFile(new URL('../classtools/dashboard.html', import.meta.url), 'utf8');
+    const dashboard = await readFile(new URL('../apps/classtools/dashboard.html', import.meta.url), 'utf8');
     await page.setContent(dashboard.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ''));
     const rosterLoader = dashboard.slice(dashboard.indexOf('async function fetchRosterAndRenderChecklist('), dashboard.indexOf('const classSwitcherSelectEl'));
     const scheduleLoader = dashboard.slice(dashboard.indexOf('async function loadSchedules('), dashboard.indexOf('// 예전에 브라우저에 두던 일정을 서버로 옮긴다.'));

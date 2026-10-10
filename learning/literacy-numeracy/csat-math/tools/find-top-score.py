@@ -1,9 +1,10 @@
 import pymupdf, re, json, glob, os, sys
+from source_paths import PAPERS_DIR
 sys.stdout.reconfigure(encoding="utf-8")
 PUA=re.compile(r"[\ue000-\uf8ff]")
 SEL=("확률과 통계","미적분","기하")
 out={}
-for path in sorted(glob.glob("papers/*-paper.pdf")):
+for path in sorted(PAPERS_DIR.glob("*-paper.pdf")):
     key=os.path.basename(path).replace("-paper.pdf","")
     doc=pymupdf.open(path)
     pages=[re.sub(r"\s+"," ", PUA.sub("#", p.get_text())) for p in doc]

@@ -48,7 +48,7 @@ app.get("/preview/as/:id",(req,res)=>{res.cookie("preview_user",String(Number(re
 app.get("/",(_req,res)=>res.type("html").send('<h1>전교선거 로컬 미리보기 · 가상 데이터</h1><a href="/preview/as/10">교사 화면</a><p><a href="/preview/as/21">학생 21 화면</a></p><p><a href="/preview/as/22">학생 22 화면</a></p><a href="/room/">방번호 입장</a>'));
 app.use("/api/school-election",election.router);app.use("/api/vote",voting.router);
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
-for(const directory of ["school-election","vote","room","classtools"])app.use("/"+directory,express.static(path.join(root,directory)));
+for(const directory of ["school-election","vote","room","classtools"])app.use("/"+directory,express.static(path.join(root,"apps",directory)));
 app.use((error,_req,res,_next)=>res.status(error.status||500).json({error:error.code,message:error.message}));
 const server=app.listen(Number(process.env.SCHOOL_ELECTION_PREVIEW_PORT || 4179),"127.0.0.1",()=>console.log("Synthetic election preview: http://127.0.0.1:"+server.address().port+"/preview/as/10"));
 process.on("SIGINT",()=>server.close(async()=>{await db.close();process.exit(0);}));

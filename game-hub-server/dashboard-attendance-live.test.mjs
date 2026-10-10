@@ -5,8 +5,8 @@ import { readFile } from "node:fs/promises";
 import { chromium } from "playwright";
 
 test("parent arrival updates badges and sounds once; initial/reconnected snapshots, approvals and idle time stay quiet", { timeout: 30000 }, async () => {
-  const html = await readFile(new URL("../classtools/dashboard.html",import.meta.url),"utf8");
-  const live = await readFile(new URL("../classtools/dashboard-attendance-live.js",import.meta.url),"utf8");
+  const html = await readFile(new URL("../apps/classtools/dashboard.html",import.meta.url),"utf8");
+  const live = await readFile(new URL("../apps/classtools/dashboard-attendance-live.js",import.meta.url),"utf8");
   const css = html.match(/<style>([\s\S]*?)<\/style>/)[1];
   const widgetStart=html.indexOf('<section class="widget-card" id="widget-checklist"');
   const widget=html.slice(widgetStart,html.indexOf("</section>",widgetStart)+10);

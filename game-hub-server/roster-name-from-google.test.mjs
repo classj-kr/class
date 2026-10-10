@@ -16,8 +16,8 @@ const {
 } = require("./roster-names.js");
 
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const schoolRosterHtml = await readFile(new URL("../classtools/school-roster.html", import.meta.url), "utf8");
-const classRosterHtml = await readFile(new URL("../classtools/roster.html", import.meta.url), "utf8");
+const schoolRosterHtml = await readFile(new URL("../apps/classtools/school-roster.html", import.meta.url), "utf8");
+const classRosterHtml = await readFile(new URL("../apps/classtools/roster.html", import.meta.url), "utf8");
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 
 function routeBody(signature) {

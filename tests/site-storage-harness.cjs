@@ -33,13 +33,15 @@ async function startHarness({ extraRoutes, me } = {}) {
   // 서버가 쪽마다 박아 넣는 이름을 흉내 낸다.
   app.use((req, res, next) => {
     if (!/\.html$|\/$/.test(req.path)) return next();
-    const file = path.resolve(__dirname, '..', '.' + (req.path.endsWith('/') ? req.path + 'index.html' : req.path));
+    const file = require('../game-hub-server/site-paths').resolveSitePath(path.resolve(__dirname, '..'), req.path.endsWith('/') ? req.path + 'index.html' : req.path);
+    if (!file) return res.sendStatus(400);
     require('node:fs').readFile(file, 'utf8', (error, html) => {
       if (error) return next();
       const name = userOf(req) ? '검증 학생' : '';
       res.type('html').send(html.replace(/<head[^>]*>/i, (m) => `${m}<script>window.CLASS_PLAYER_NAME=${JSON.stringify(name)};window.CLASS_PLAYER_KIND=${JSON.stringify(name ? 'student' : '')}</script>`));
     });
   });
+  app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise((resolve) => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
   const base = `http://127.0.0.1:${server.address().port}`;
