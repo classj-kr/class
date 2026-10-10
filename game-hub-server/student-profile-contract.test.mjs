@@ -5,6 +5,12 @@ import test from "node:test";
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const pageSource = await readFile(new URL("../apps/classtools/profile.html", import.meta.url), "utf8");
 
+// Comments in implementation code are not controls or copy shown to students.
+function screenMarkup(source) {
+  return source.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
+}
+
 test("student profile changes are scoped to the signed-in student", () => {
   assert.match(serverSource, /router\.patch\("\/student\/profile"/);
   assert.match(serverSource, /WHERE user_id = \$1/);
@@ -36,7 +42,7 @@ test("teacher roster cannot overwrite the student's own birthday choice, and the
   const rosterSource = await readFile(new URL("../apps/classtools/roster.html", import.meta.url), "utf8");
   assert.match(rosterSource, /id="birthdates" disabled/);
   assert.doesNotMatch(rosterSource, /id="passwords"/);
-  assert.doesNotMatch(rosterSource, /비밀번호/);
+  assert.doesNotMatch(screenMarkup(rosterSource), /비밀번호|<input\b[^>]*type=["']password["']/i);
   assert.match(serverSource, /existingPassword\?\.birthdayMmdd \|\| null/);
   assert.doesNotMatch(serverSource, /student\.birthdayMmdd \|\| null, student\.birthdayVisible/);
 });
@@ -50,5 +56,5 @@ test("teacher student deletion removes the full roster record and revokes linked
   assert.match(serverSource, /removedStudentsResult/);
   assert.match(rosterSource, /id="student-delete-select"/);
   assert.match(rosterSource, /계정 연결, 생일, 공개 설정가 함께 삭제/);
-  assert.doesNotMatch(rosterSource, /비밀번호/);
+  assert.doesNotMatch(screenMarkup(rosterSource), /비밀번호|<input\b[^>]*type=["']password["']/i);
 });

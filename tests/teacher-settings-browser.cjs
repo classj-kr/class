@@ -21,13 +21,14 @@ async function main() {
     try {
         browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
         const context = await browser.newContext({ viewport: { width: 1100, height: 850 } });
-        let role = 'teacher', email = 'teacher@example.kr', googleCalls = 0, generationCalls = 0, profileWrites = 0;
+        let role = 'teacher', email = 'teacher@example.kr', googleCalls = 0, generationCalls = 0, profileWrites = 0, connectionChecks = 0;
+        const accountKeys = new Map();
         let profile = { birthdayMmdd: '', birthdayVisible: false, avatar: avatar('') };
         const errors = [];
         await context.route('**/api/**', async route => {
             const url = new URL(route.request().url());
             const method = route.request().method();
-            const body = method === 'PATCH' ? route.request().postDataJSON() : {};
+            const body = ['PATCH', 'PUT', 'POST'].includes(method) ? route.request().postDataJSON() : {};
             let data = {};
             if (url.pathname === '/api/auth/me') data = { signedIn: true, isTeacher: role === 'teacher',
                 user: { name: role === 'teacher' ? '김교사' : '김학생', role, email }, membership: role === 'student' ? { classId: '100' } : null };
@@ -40,14 +41,24 @@ async function main() {
             } else if (url.pathname === '/api/teacher/available-classes') data = { classes: [{ id: '100', academicYear: 2026, grade: 4, classNumber: 1 }] };
             else if (url.pathname === '/api/teacher/class') data = { classroom: { grade: 4, classNumber: 1, students: [{ number: '1', name: '김학생' }, { number: '2', name: '이학생' }] } };
             else if (url.pathname === '/api/teacher/groups') data = { groups: [] };
+            else if (url.pathname === '/api/teacher-ai/key') {
+                if (method === 'PUT') accountKeys.set(email, body.key);
+                if (method === 'DELETE') accountKeys.delete(email);
+                data = { registered: accountKeys.has(email), last4: (accountKeys.get(email) || '').slice(-4) };
+            } else if (url.pathname === '/api/teacher-ai/check') {
+                connectionChecks++;
+                assert.ok(accountKeys.has(email) || body.key);
+                data = { ok: true };
+            } else if (url.pathname === '/api/teacher-ai/generate') {
+                assert.ok(accountKeys.has(email));
+                generationCalls++;
+                data = { text: '1. 활동 내용을 이해하고 설명함.\n2. 문제를 해결하고 풀이를 확인함.' };
+            }
             await route.fulfill({ json: data });
         });
         await context.route('https://generativelanguage.googleapis.com/**', async route => {
             googleCalls++;
-            assert.equal(route.request().headers()['x-goog-api-key'], 'fake-legacy-key');
-            assert.ok(!route.request().url().includes('fake-legacy-key'));
-            if (route.request().method() === 'GET') await route.fulfill({ json: { models: [{ name: 'models/gemini-test-flash' }] } });
-            else { generationCalls++; await route.fulfill({ json: { output_text: '1. 활동 내용을 이해하고 설명함.\n2. 문제를 해결하고 풀이를 확인함.' } }); }
+            await route.abort(); // The browser must only call the account-scoped server API.
         });
         const page = await context.newPage();
         page.on('pageerror', error => errors.push(error.message));
@@ -82,22 +93,26 @@ async function main() {
         // Previously saved keys work from a feature directly; no settings visit
         // or import action is required.
         await page.goto(base + '/classtools/record-ai');
-        await page.waitForFunction(() => document.querySelector('#key-status').textContent.includes('등록된'));
+        await page.waitForFunction(() => Boolean(window.ClassroomAI));
+        assert.equal(await page.evaluate(async () => { await ClassroomAI.init(); return ClassroomAI.hasKey(); }), true);
         await page.goto(base + '/classtools/profile');
         await page.waitForFunction(() => !document.querySelector('#saveAiKey').disabled);
         assert.equal(await page.locator('#importAiKey').count(), 0);
-        assert.equal(await page.locator('#geminiKey').inputValue(), 'fake-legacy-key');
+        assert.equal(await page.locator('#geminiKey').inputValue(), '');
+        assert.match(await page.locator('#geminiKey').getAttribute('placeholder'), /등록된 키/);
+        assert.equal(accountKeys.get(email), 'fake-legacy-key');
         assert.equal(await page.evaluate(() => localStorage.getItem('gemini_api_key')), null);
         assert.equal(googleCalls, 0, 'recognizing saved keys never sends Google a request');
         await page.locator('#checkAiKey').click();
         await page.waitForFunction(() => document.querySelector('#aiStatus').textContent.includes('연결을 확인했습니다'));
+        assert.equal(connectionChecks, 1);
         assert.equal(generationCalls, 0, 'connection check does not generate text');
         await page.screenshot({ path: path.join(output, 'teacher-desktop.png'), fullPage: true });
         await page.setViewportSize({ width: 390, height: 844 });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
         await page.screenshot({ path: path.join(output, 'teacher-mobile.png'), fullPage: true });
         await page.goto(base + '/classtools/record-ai');
-        await page.waitForFunction(() => document.querySelector('#key-status').textContent.includes('등록된'));
+        await page.waitForFunction(() => Boolean(window.ClassroomAI));
         assert.equal(await page.locator('#api-key-input').count(), 0);
         await page.locator('#sub-input').selectOption({ label: '수학' });
         await page.locator('#topics-input').fill('분수의 덧셈 계산하기');
@@ -114,14 +129,17 @@ async function main() {
         await page.evaluate(() => localStorage.setItem('gemini_api_key', 'older-key'));
         await page.reload();
         await page.waitForFunction(() => !document.querySelector('#saveAiKey').disabled);
-        assert.equal(await page.locator('#geminiKey').inputValue(), 'teacher-one-key', 'existing common setting takes priority');
+        assert.equal(await page.locator('#geminiKey').inputValue(), '', 'server never returns the saved key');
+        assert.equal(accountKeys.get(email), 'teacher-one-key', 'existing server setting takes priority');
         assert.equal(await page.evaluate(() => localStorage.getItem('gemini_api_key')), null);
         email = 'other@example.kr'; await page.reload();
         await page.waitForFunction(() => !document.querySelector('#saveAiKey').disabled);
         assert.equal(await page.locator('#geminiKey').inputValue(), '', 'other teacher cannot inherit saved key');
+        assert.equal(await page.evaluate(() => ClassroomAI.hasKey()), false);
         email = 'teacher@example.kr'; await page.reload();
         await page.waitForFunction(() => !document.querySelector('#saveAiKey').disabled);
-        assert.equal(await page.locator('#geminiKey').inputValue(), 'teacher-one-key');
+        assert.equal(await page.locator('#geminiKey').inputValue(), '');
+        assert.equal(await page.evaluate(() => ClassroomAI.hasKey()), true);
         role = 'student'; email = 'child@example.kr'; await page.reload();
         await page.locator('#profileForm').waitFor();
         assert.equal(await page.locator('#ai-settings').isVisible(), false);
@@ -129,6 +147,7 @@ async function main() {
         assert.match(await page.locator('#avatarPolicy').textContent(), /1회/);
         await page.screenshot({ path: path.join(output, 'student-mobile.png'), fullPage: true });
         assert.deepEqual(errors, []);
+        assert.equal(googleCalls, 0, 'AI requests and API keys never go directly from the browser to Google');
         console.log('PASS desktop/mobile teacher profile, birthday persistence, avatar change, automatic saved-key compatibility, AI check/delete, record generation, account isolation and student regression');
         await context.close();
     } finally { if (browser) await browser.close(); await new Promise(resolve => server.close(resolve)); }
