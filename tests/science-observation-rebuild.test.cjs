@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
@@ -69,8 +70,8 @@ test('rebuilt observations: real media, apparatus, state changes and tablet layo
     if(seen.has(slug))assert.notEqual(visual,seen.get(slug),key+' must change visibly');seen.set(slug,visual);
     if(screenshots){
      const filename=device.name+'-'+slug+'-'+Object.values(state).join('-');
-     await panel.screenshot({path:path.join(screenshots,filename+'.png')});
-     if(device.name==='chromebook')await panel.locator('.supplement-visual').screenshot({path:path.join(screenshots,filename+'-visual.png')});
+     await screenshotWebp(panel, {path:path.join(screenshots,filename+'.webp')});
+     if(device.name==='chromebook')await screenshotWebp(panel.locator('.supplement-visual'), {path:path.join(screenshots,filename+'-visual.webp')});
     }
    }
    assert.deepEqual(errors,[],device.name);

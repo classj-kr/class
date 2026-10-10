@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 // Local browser regression tests. Requires Playwright (or NODE_PATH to its bundled install).
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -173,11 +174,11 @@ test('six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile
       await click('.quiz-heading');
       if (app === 'lever-balance') { await click('[data-method="lever"]'); await click('#checkBtn'); }
       if (app === 'reflex-nerve') { await click('[data-path="pupil"]'); await click('#checkBtn'); for (let i = 0; i < 4; i++) await click('#nextBtn'); }
-      if (shotDir) await page.screenshot({ path: path.join(shotDir, `${app}-desktop.png`), fullPage: true });
+      if (shotDir) await screenshotWebp(page, { path: path.join(shotDir, `${app}-desktop.webp`), fullPage: true });
       await page.setViewportSize({ width: 390, height: 844 });
       const geometry = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, width: window.innerWidth }));
       assert.ok(geometry.scroll <= geometry.width + 1, `${app} mobile overflow: ${JSON.stringify(geometry)}`);
-      if (shotDir) await page.screenshot({ path: path.join(shotDir, `${app}-mobile.png`), fullPage: true });
+      if (shotDir) await screenshotWebp(page, { path: path.join(shotDir, `${app}-mobile.webp`), fullPage: true });
       console.log(`${app}: interactions, four quizzes, 390px layout passed`);
     }
     assert.deepEqual(errors, [], 'browser runtime errors');

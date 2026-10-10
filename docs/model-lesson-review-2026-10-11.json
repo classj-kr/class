@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-11",
+  "scope": "Human-body, space and matter lesson expansion and duplicate title-row removal",
+  "topics": 31,
+  "schoolProfiles": 75,
+  "sourcesReviewedThisPass": [
+    {
+      "file": "references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_4_과학PDF__c08e6d87.pdf",
+      "sha256": "f1ee840a52fb48f6010f21b06a626f2977904bc581ae5ae9e2f522d71b1cbdf4",
+      "textReferencePdfPages": [
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17
+      ],
+      "relatedTopics": [
+        "body-digestion",
+        "body-circulation",
+        "body-respiration",
+        "body-excretion",
+        "body-skeleton"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/중학/과학/과학2 (김태일)_2022/미래엔_과학2_교과서__92b9a0d7e8.pdf",
+      "sha256": "188d7481881a226ef57332104d036abdd97fc317be2688f73271fe3e88972672",
+      "textReferencePdfPages": [
+        213,
+        214,
+        216,
+        218,
+        220,
+        224,
+        226,
+        228,
+        230
+      ],
+      "relatedTopics": [
+        "body-digestion",
+        "body-circulation",
+        "body-respiration",
+        "body-excretion"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/고등/과학/생명과학 (오현선)_2022/교과서/생명과학 (오현선)_2022_[생명과학] 교과서.pdf",
+      "sha256": "f0744f7198a25194cf28b937e3f1f4e1cf6775c2db05db68e37afb2ccfc42ff3",
+      "textReferencePdfPages": [
+        34,
+        35,
+        36,
+        37,
+        110,
+        112,
+        114,
+        122,
+        124,
+        126
+      ],
+      "relatedTopics": [
+        "body-digestion",
+        "body-circulation",
+        "body-respiration",
+        "body-excretion",
+        "body-homeostasis",
+        "body-immune"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/고등/과학/화학 (정대홍)_2022/교과서/화학 (정대홍)_2022_교과서 PDF.pdf",
+      "sha256": "30a3f3db685ed5a211251c1947fa3c3ef8b8f4bd673bb025709eba5e8a3a9702",
+      "textReferencePdfPages": [
+        6,
+        7,
+        100,
+        102,
+        103,
+        104,
+        140,
+        141
+      ],
+      "relatedTopics": [
+        "matter-equilibrium",
+        "matter-solution",
+        "matter-acid"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/고등/과학/물질과 에너지 (정대홍)_2022/교과서/물질과 에너지 (정대홍)_2022_교과서 PDF.pdf",
+      "sha256": "965f45ec469d480f879cf981d00ef6f835ea7104b7cd71cefa3a0a769ace3a3e",
+      "textReferencePdfPages": [
+        6,
+        15,
+        16,
+        17,
+        49,
+        50,
+        51
+      ],
+      "relatedTopics": [
+        "matter-gas",
+        "matter-states",
+        "matter-solution"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/고등/과학/화학 반응의 세계 (정대홍)_2022/교과서/화학 반응의 세계 (정대홍)_2022_교과서 PDF.pdf",
+      "sha256": "e98773284ca0549e12222323b6bf1390b7185ebf8dfc5e255d10a8d25377cb22",
+      "textReferencePdfPages": [
+        6,
+        45
+      ],
+      "relatedTopics": [
+        "matter-redox"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/고등/과학/지구과학 (김연귀)_2022/교과서/지구과학 (김연귀)_2022_[지구과학] 교과서.pdf",
+      "sha256": "b01d77c896a31d938f20362bcb27dc6e5af43e30e43526a82904655f0cdac020",
+      "textReferencePdfPages": [
+        9,
+        146,
+        149,
+        150,
+        152,
+        154,
+        155
+      ],
+      "relatedTopics": [
+        "space-star-properties",
+        "space-stellar-life"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    },
+    {
+      "file": "references/textbooks/중고등/미래엔/고등/과학/행성우주과학 (김연귀)_2022/교과서/행성우주과학 (김연귀)_2022_[행성우주과학] 교과서.pdf",
+      "sha256": "cd2d1ced86d442d11909f7c93463a4b05a9e2f11366b4e650d72582ce1f6e77f",
+      "textReferencePdfPages": [
+        8,
+        24,
+        60
+      ],
+      "relatedTopics": [
+        "space-solar-system"
+      ],
+      "method": "consulted extracted text excerpts on these reference pages; not a complete page/figure audit"
+    }
+  ],
+  "verification": [
+    "75 school profiles rendered through the browser",
+    "8 body headers removed; matter duplicate stage title row removed",
+    "18 pure Node tests passed",
+    "eclipse geometry, stellar transition and matter numerical invariant checks passed"
+  ],
+  "remainingAuditScope": [
+    "Full scene-by-scene scientific and interaction audit is not complete.",
+    "Legacy supplementary content still includes 2015 reference metadata; a complete 2022 curriculum mapping has not been certified.",
+    "Separate science-lab experiment audit is not covered by this report."
+  ],
+  "newPublisherTextReproduction": false
+}

@@ -3,8 +3,9 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
+const screenshotWebp = require('./science-screenshot.cjs');
 const root = path.resolve(__dirname, '../learning/inquiry/science-lab');
-const output = path.resolve(__dirname, '../docs/science-lab-audit-2026-09-21/observation-fixes');
+const output = path.resolve(process.env.SCIENCE_TEST_ARTIFACTS || path.resolve(__dirname, '../docs/science-lab-audit-2026-09-21'), 'observation-fixes');
 
 for (const engine of ['chromium', 'webkit']) test(engine + ': specimen anatomy, growth wording and 27 parameter combinations', {timeout:120000}, async () => {
   fs.mkdirSync(output, {recursive:true});
@@ -24,7 +25,7 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': specimen anatomy, 
     page.on('console',m=>{if(m.type()==='error'&&/<(?:path|rect|circle|ellipse|line|g|svg)>|SVG|attribute (?:d|transform)/i.test(m.text()))errors.push(m.text());});
     await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
     const go=slug=>page.goto('http://127.0.0.1:'+server.address().port+'/'+slug+'/');
-    const shot=async(name,selector)=>page.locator(selector).screenshot({path:path.join(output,engine+'-'+name+'.png')});
+    const shot=async(name,selector)=>screenshotWebp(page.locator(selector),path.join(output,engine+'-'+name+'.webp'));
     await go('microscope');
     await page.waitForFunction(()=>!!window.__scopeModel);
     const lensCases=await page.evaluate(()=>{
@@ -42,6 +43,9 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': specimen anatomy, 
     assert.equal(await pair.locator('path.guard-cell').count(),2);
     assert.equal(await pair.locator('.pore').count(),1);
     assert.equal(await pair.locator('.chloroplast').count(),8);
+    assert.match(await page.locator('#graphGroup').textContent(),/시야 너비 ÷ 표본 한 개의 크기/);
+    assert.doesNotMatch(await page.locator('#dataNote').textContent(),/이 세포|세포 크기/);
+    assert.match(await page.locator('#dataNote').textContent(),/빈틈없이 나란히/);
     await shot('guard-cells','.experiment-layout');
     for(const width of [768,820,1024,1366]){
       await page.setViewportSize({width,height:900});
@@ -79,13 +83,16 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': specimen anatomy, 
     for(const sample of ['mushroom','mold','algae','paramecium','bacteria']){
       await page.locator('[data-supplement-choice="sample"][data-value="'+sample+'"]').tap();
       await page.locator('[data-supplement-choice="focus"][data-value="detail"]').tap();
-      if(sample==='paramecium'){assert.equal(await page.locator('.sample-cilium').count(),36);assert.equal(await page.locator('.sample-oral-groove').count(),1);}
+      if(sample==='paramecium'){
+        const hairs=await page.locator('.supplement-visual>svg line').evaluateAll(es=>es.map(e=>['x1','y1','x2','y2'].map(a=>Number(e.getAttribute(a)))));
+        assert(hairs.length>=20,'cilia surround the body');
+        for(const [x1,y1,x2,y2]of hairs)assert(Math.hypot(x2-230,y2-145)>Math.hypot(x1-230,y1-145),'cilia extend outside the body');
+      }
       if(sample==='algae'){
-        assert.equal(await page.locator('[data-spiral="front"]').count(),4);assert.equal(await page.locator('[data-spiral="back"]').count(),4);
-        const ribbons=await page.locator('[data-algal-cell]').evaluateAll(es=>es.map(e=>{const b=e.getBBox();return{cell:Number(e.dataset.algalCell),left:b.x,right:b.x+b.width};}));
-        for(const ribbon of ribbons){assert(ribbon.left>62+ribbon.cell*84);assert(ribbon.right<62+(ribbon.cell+1)*84,'chloroplast stays within its own cell');}
-        const bounds=await page.locator('[data-observation="spirogyra"]').evaluate(e=>{const b=e.getBBox();return{x:b.x,y:b.y,w:b.width,h:b.height};});
-        assert(bounds.x>=0&&bounds.x+bounds.w<=460&&bounds.y>=0&&bounds.y+bounds.h<=300);
+        // The current lesson uses a credited micrograph instead of drawn ribbons.
+        await page.waitForFunction(()=>[...document.querySelectorAll('.supplement-photo-frame img')].some(i=>i.complete&&i.naturalWidth>=800));
+        assert.match(await page.locator('.supplement-photo-frame img').first().getAttribute('alt'),/나선/);
+        assert.match(await page.locator('.supplement-sources').textContent(),/CC BY-SA 3.0/);
       }
       await shot('sample-'+sample,'.curriculum-supplement');
     }

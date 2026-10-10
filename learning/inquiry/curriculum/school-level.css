@@ -1,13 +1,19 @@
+@import url('../../../assets/exam-typography.css?v=20261011-school-questions');
+
 .school-level { display:inline-flex; flex:0 0 auto; gap:3px; padding:3px; background:#101e30; border:1px solid #48617a; border-radius:9px; }
 .school-level button { min-width:46px; min-height:32px; padding:4px 8px; border:0; border-radius:6px; background:transparent; color:#c3d3e3; font:inherit; font-size:13px; font-weight:700; line-height:1.3; cursor:pointer; white-space:nowrap; }
 .school-level button[aria-pressed="true"] { color:#06252c; background:#74dfdb; }
 .school-level button:focus-visible,.school-question summary:focus-visible { outline:2px solid #facc15; outline-offset:3px; }
 .school-concepts,.school-question { margin:12px 0; padding:14px; border:1px solid #354d66; border-radius:10px; background:#111f31; color:#dfebf6; text-align:left; }
-.school-concepts p,.school-question p { margin:8px 0; font-size:14px; line-height:1.8; word-break:keep-all; }
+.school-concepts p,.school-question p { margin:12px 0; font-size:16px; line-height:1.85; word-break:keep-all; overflow-wrap:anywhere; }
 .school-subject,.school-concepts .school-subject { margin:0 0 8px; color:#9fc5d5; font-size:12px; font-weight:600; line-height:1.5; }
 .school-concepts h2 { margin:0 0 10px; color:#8be2df; font-size:17px; line-height:1.5; }
 .school-lesson { display:grid; gap:12px; }
 .school-lesson .school-concepts { margin:0; }
+.body-lesson .school-concepts { padding:0; border:0; background:none; }
+.body-lesson .school-concepts + .school-concepts { padding-top:16px; border-top:1px solid #354d66; }
+.body-lesson .school-concepts h2 { font-size:16px; }
+.body-lesson .school-subject { font-size:13px; }
 .school-question h3 { color:#8be2df; font-size:15px; margin:0 0 8px; }
 .school-options { display:grid; gap:8px; margin:16px 0; }
 .school-options button,.school-next { font:inherit; color:#e2eef6; background:#192e43; border:1px solid #4b647d; border-radius:8px; padding:12px; text-align:left; line-height:1.6; cursor:pointer; }
@@ -43,6 +49,11 @@
 .matter-nav [hidden],.nav-tab[hidden],.school-level[hidden] { display:none!important; }
 .school-matter-content [hidden],.model-check[hidden],#modelFacts[hidden],.model-key[hidden] { display:none!important; }
 .school-matter-content .school-concepts { margin:0 0 12px; }
+.matter-main > .school-matter-content { margin-top:18px; }
+.matter-main > .school-matter-content .school-lesson { grid-template-columns:repeat(2,minmax(0,1fr)); }
+html[data-school-level="elementary"] .model-layout { grid-template-areas:"stage" "controls"; grid-template-columns:minmax(0,1fr); }
+html[data-school-level="elementary"] .model-inspector { display:none; }
+@media(max-width:800px) { .matter-main > .school-matter-content .school-lesson { grid-template-columns:minmax(0,1fr); } }
 .top-header:has(.school-level) { gap:8px; flex-wrap:wrap; }
 .atlas-header .school-level { margin-left:8px; }
 .atlas:has(.school-level) { --top:60px; }

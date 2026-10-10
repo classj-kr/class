@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), http = require('node:http');
@@ -19,7 +20,7 @@ for (const engine of ['chromium', 'webkit']) test(`${engine}: six refined scenes
         await page.route('**/*', r => new URL(r.request().url()).hostname === '127.0.0.1' ? r.continue() : r.abort());
         page.on('pageerror', e => errors.push(e.message));
         const open = slug => page.goto('http://127.0.0.1:' + server.address().port + '/' + slug + '/');
-        const snap = name => page.locator('.experiment-layout').first().screenshot({path:path.join(output, 'verified-' + name + '-' + engine + '.png')});
+        const snap = name =>screenshotWebp(page.locator('.experiment-layout').first(), {path:path.join(output, 'verified-' + name + '-' + engine + '.webp')});
         async function layout() {
             for (const width of [1366,1024,820,768]) {
                 await page.setViewportSize({width,height:width>=1024?768:1024});

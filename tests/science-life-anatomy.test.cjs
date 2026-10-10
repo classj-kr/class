@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -86,7 +87,7 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': life anatomy, forw
         }
         for (let i = 1; i < positions.length; i++) for (let j = 0; j < positions[i].length; j++) assert(positions[i][j] >= positions[i - 1][j] - .001, 'a segment moved backwards');
         for (const x of positions.at(-1)) assert(Math.abs(x - 16) < .01, 'the animal stops at the leaf edge instead of jumping back');
-        await page.locator('.life-focus').screenshot({ path: path.join(out, 'butterfly-1-end-' + engine + '.png') });
+        await screenshotWebp(page.locator('.life-focus'), { path: path.join(out, 'butterfly-1-end-' + engine + '.webp') });
       }
       if (animal === 'frog') {
         assert.equal(await part('fore-leg').count(), 2);
@@ -101,11 +102,11 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': life anatomy, forw
           assert(widths.every(w => w >= .819), 'wings become too narrow to observe');
         }
         await seek(900);
-        await page.locator('.life-focus').screenshot({ path: path.join(out, 'butterfly-3-narrow-' + engine + '.png') });
+        await screenshotWebp(page.locator('.life-focus'), { path: path.join(out, 'butterfly-3-narrow-' + engine + '.webp') });
       }
       await seek(0);
-      await page.locator('.life-focus').screenshot({ path: path.join(out, animal + '-' + step + '-' + engine + '.png') });
-      await page.locator('.main-svg').screenshot({ path: path.join(out, animal + '-' + step + '-specimen-' + engine + '.png') });
+      await screenshotWebp(page.locator('.life-focus'), { path: path.join(out, animal + '-' + step + '-' + engine + '.webp') });
+      await screenshotWebp(page.locator('.main-svg'), { path: path.join(out, animal + '-' + step + '-specimen-' + engine + '.webp') });
       for (const width of [1366, 1024, 820, 768]) {
         await page.setViewportSize({ width, height: width >= 1024 ? 768 : 1024 });
         for (const time of [0, 900, 5200, 11000]) {
@@ -128,10 +129,10 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': life anatomy, forw
     const sharp = require('sharp');
     const sheetCases = cases.filter(([animal, step]) => !(animal === 'mantis' && step === 1));
     const layers = await Promise.all(sheetCases.map(async ([animal, step], i) => ({
-      input: await sharp(path.join(out, animal + '-' + step + '-specimen-' + engine + '.png')).resize(320, 320).png().toBuffer(),
+      input: await sharp(path.join(out, animal + '-' + step + '-specimen-' + engine + '.webp')).resize(320, 320).webp({lossless:true}).toBuffer(),
       left: (i % 3) * 320, top: Math.floor(i / 3) * 320,
     })));
-    await sharp({ create: { width: 960, height: 640, channels: 3, background: '#ffffff' } }).composite(layers).jpeg({ quality: 85 }).toFile(path.join(out, 'review-' + engine + '.jpg'));
+    await sharp({ create: { width: 960, height: 640, channels: 3, background: '#ffffff' } }).composite(layers).webp({lossless:true}).toFile(path.join(out, 'review-' + engine + '.webp'));
     assert.deepEqual(errors, []);
     console.log(engine + ': 7 corrected stages; 28 layouts × 4 motion phases; anatomy anchors, digits, forward-only crawling and SVG paints passed');
   } finally {

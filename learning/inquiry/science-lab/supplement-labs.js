@@ -91,7 +91,7 @@
  Object.assign(specs,window.scienceCoreExtensions?.({line,label,rect,jar,field},specs)||{});
  const path=location.pathname.split('/').filter(Boolean);const slug=path.at(-1)==='index.html'?path.at(-2):path.at(-1),spec=specs[slug];
  if(!spec)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=6',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=de68f18f7234',document.currentScript.src);document.head.append(css);
  const assetBase=new URL('.',document.currentScript.src);
  const section=document.createElement('section');section.className='panel curriculum-supplement';section.setAttribute('aria-label',spec.title);
  const h=document.createElement('h2');h.textContent=spec.title;const controls=document.createElement('div');controls.className='supplement-controls';

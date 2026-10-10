@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dayOutput.textContent = `약 ${day.toFixed(1)}일`;
         phaseBadge.textContent = phaseName(E);
+        stageCaption.textContent = `삭 이후 약 ${day.toFixed(1)}일, ${phaseName(E)}입니다. 밝게 보이는 부분은 약 ${Math.round(k * 100)}%입니다.`;
 
         // Orbital position: at E=0 the Moon sits between Earth and Sun, at
         // E=180 it is on the far side. The Sun lies toward -x, so measuring
@@ -136,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         }
 
-        stageCaption.textContent = `음력 약 ${day.toFixed(1)}일, ${phaseName(E)}입니다. 밝게 보이는 부분은 약 ${Math.round(k * 100)}%입니다.`;
         if (k < 0.06) {
             explanation.textContent = '달이 태양과 같은 쪽에 있어 햇빛 받는 면이 지구 반대쪽을 향합니다. 그래서 거의 보이지 않습니다.';
         } else if (k >= 0.9) {

@@ -19,12 +19,23 @@
 .sim-stage-area .scene-btn { min-height: 36px; flex-shrink: 0; }
 .body-diagram-label { min-height: 32px; border: 1px solid #65758c; background: #101a2be8; color: #e3edf8; border-radius: 7px; }
 .body-diagram-label[aria-pressed="true"] { color: #1c1600 !important; background: #facc15 !important; border-color: #fff0a3 !important; box-shadow: 0 0 0 2px #a17c14; font-weight: 800; }
-svg [role="button"]:focus-visible { outline: 2px dashed #facc15; outline-offset: 5px; }
+.sim-stage-area svg [role="button"]:focus { outline: none; }
+/* Focus follows the organ's name, never the rectangular SVG bounding box. */
+:is(.body-diagram-label,.joint-tag,.skin-tag).model-organ-focus,
+:is(.body-diagram-label,.joint-tag,.skin-tag):focus-visible {
+    outline: 2px solid #67e8f9; outline-offset: 3px;
+}
+.sim-stage-area svg .model-organ-focus { filter: drop-shadow(0 0 3px #67e8f9); }
 .model-reading { padding: 13px; margin-bottom: 14px; border: 1px solid #3c536d; border-radius: 10px; background: #142337; }
 .model-reading summary { font-size: 14px; font-weight: 750; cursor: pointer; color: #bfe6ff; }
-.model-reading p { margin-top: 8px; font-size: 13px; line-height: 1.7; color: #d8e6f4; user-select: text; }
+.model-reading p { margin-top: 8px; font-size: 15px; line-height: 1.8; color: #d8e6f4; user-select: text; }
 .model-reading small { display: block; margin-top: 8px; color: #99abc0; line-height: 1.6; }
 .model-selected-detail[hidden] { display: none !important; }
+.scene-switcher[hidden],.model-scene-step[hidden] { display:none!important; }
+html[data-school-level="elementary"] .circulation-viewport [data-scene="blood"],
+html[data-school-level="elementary"] .sim-sidebar [data-tab="blood"],
+html[data-school-level="elementary"] .ecg-card,
+html[data-school-level="elementary"] .circulation-slider-item:has(#o2Slider) { display:none!important; }
 .model-scene-step { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 10px; }
 .model-scene-step button { background: #203851; color: #e2edf7; border: 1px solid #54718d; border-radius: 6px; padding: 6px 10px; min-height: 36px; cursor: pointer; }
 .model-scene-step button:disabled { opacity: .4; cursor: default; }
@@ -36,6 +47,21 @@ svg [role="button"]:focus-visible { outline: 2px dashed #facc15; outline-offset:
 .model-band-buttons button[aria-pressed="true"],.joint-tag[aria-pressed="true"],.skin-tag[aria-pressed="true"] { color: #1c1600 !important; background: #facc15 !important; border-color: #facc15; }
 .tract-flow-status { flex: 0 0 auto; padding: 7px 14px; text-align: center; color: #e0c697; font-size: 12px; }
 .body-diagram-label.on,.body-diagram-label.picked,.joint-tag.picked,.skin-tag.picked { animation: none !important; }
+/* Navigation uses the top of the sidebar; the model has no title-only row. */
+.model-compact-layout .sim-app-container {
+    height: 100%; grid-template-rows: auto minmax(0,1fr);
+}
+.model-compact-layout .sim-stage-area { grid-column: 1; grid-row: 1 / 3; }
+.model-navigation {
+    grid-column: 2; grid-row: 1; display: flex; align-items: center;
+    justify-content: space-between; gap: 8px; padding: 8px 14px;
+    background: #101827; border-left: 1px solid var(--border-subtle);
+}
+.model-compact-layout .sim-sidebar { grid-column: 2; grid-row: 2; min-height: 0; overflow: hidden; }
+.model-compact-layout .sim-header-right {
+    flex-wrap: wrap; overflow: visible; max-width: none; margin-bottom: 12px;
+}
+.model-compact-layout .sim-header-right:not(:has(> :not([hidden]))) { display: none; }
 @media (max-width: 1100px) and (min-width: 901px) {
     .sim-app-container { grid-template-columns: minmax(0,1fr) 310px; }
     .sim-title { font-size: 14px; }
@@ -48,6 +74,10 @@ svg [role="button"]:focus-visible { outline: 2px dashed #facc15; outline-offset:
     .sim-sidebar { max-height: none; overflow: visible; }
     .sidebar-body { overflow: visible; }
     .sim-stage-area .scene-switcher { position: absolute; top: 8px; }
+    .model-compact-layout .sim-app-container { height: auto; grid-template-rows: auto 560px auto; }
+    .model-navigation { grid-column: 1; grid-row: 1; border-left: 0; padding: 4px 12px; }
+    .model-compact-layout .sim-stage-area { grid-column: 1; grid-row: 2; }
+    .model-compact-layout .sim-sidebar { grid-column: 1; grid-row: 3; overflow: visible; }
 }
 @media (max-width: 600px) {
     .sim-title { font-size: 13px; }
@@ -58,4 +88,5 @@ svg [role="button"]:focus-visible { outline: 2px dashed #facc15; outline-offset:
     }
     .sim-stage-area :is(.excretion-map-layer,.urine-layer,.joint-layer) { top:54px; height:450px; min-width:0; }
     .body-diagram-label { font-size: 12px; }
+    .model-compact-layout .sim-app-container { grid-template-rows: auto 520px auto; }
 }

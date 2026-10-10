@@ -4,13 +4,15 @@
         const segments=location.pathname.split('/').filter(Boolean);
         const app=segments[segments.length-1]==='index.html'?segments[segments.length-2]:segments[segments.length-1];
         if (!S || !S.profile('body-'+app)) return;
-        S.mount(document.querySelector('.sim-header'));
+        S.mount(document.querySelector('.model-navigation')||document.querySelector('.sim-header'));
         const header=document.querySelector('.sim-header');
-        new ResizeObserver(()=>document.documentElement.style.setProperty('--body-header-height',header.offsetHeight+'px')).observe(header);
+        if(header&&!header.hidden)new ResizeObserver(()=>document.documentElement.style.setProperty('--body-header-height',header.offsetHeight+'px')).observe(header);
         const title=document.getElementById('organTitle'), desc=document.getElementById('organDesc');
         const subject=document.createElement('p');subject.className='school-subject';
         if(desc)desc.before(subject);
         const quiz=document.getElementById('quizContainer');
+        const oldConcept=document.getElementById('conceptList');
+        if(oldConcept){const lesson=document.createElement('div');lesson.id='conceptList';lesson.className='body-lesson';oldConcept.replaceWith(lesson);}
         let exercise;
         if(quiz){exercise=document.createElement('div');exercise.className='school-body-exercise';quiz.before(exercise);}
         const simple = [
@@ -48,7 +50,7 @@
             const name=title.textContent.replace(/^[^가-힣A-Za-z]+/,'').trim();
             const match=simple.find(row=>name===row[0] || name===row[0]+' (소화 기관)');
             const index={elementary:1,middle:2,high:3}[S.value];
-            const copy=match?.[index];
+            const copy=(app==='excretion'&&window.ExcretionLearning?.detail(name))||match?.[index];
             text.hidden=!copy;desc.hidden=!!copy;
             text.textContent=copy||'';
         }
@@ -56,7 +58,7 @@
             const p=S.profile('body-'+app);
             subject.textContent=p.subject||'';subject.hidden=!p.subject;
             const concept=document.getElementById('conceptList');
-            if(concept)concept.innerHTML=p.concepts.map(t=>'<li>'+S.esc(t)+'</li>').join('');
+            if(concept)concept.innerHTML=S.concepts(p);
             const trap=document.getElementById('examTrapList');
             if(trap)trap.innerHTML=S.concepts(p);
             const topic=app==='skeleton'&&quiz?.dataset.quizFor==='muscle'&&S.value==='high'?'muscle':app;

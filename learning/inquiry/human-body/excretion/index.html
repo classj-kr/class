@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>배설계 · 콩팥과 네프론 | 인체 모형</title>
     <link rel="stylesheet" href="../styles.css?v=20261010-model-review10">
-    <link rel="stylesheet" href="styles.css?v=20261010-model-review10">
-    <link rel="stylesheet" href="../shared/model-study.css?v=20261010-model-review10">
-    <link rel="stylesheet" href="../../curriculum/school-level.css?v=20261010-objective2">
+    <link rel="stylesheet" href="styles.css?v=20261011-levels1">
+    <link rel="stylesheet" href="../shared/model-study.css?v=20261011-textbook1">
+    <link rel="stylesheet" href="../../curriculum/school-level.css?v=20261011-textbook1">
 </head>
-<body>
+<body class="excretion-page">
 
     <!-- Header Navigation -->
     <header class="sim-header">
@@ -77,23 +77,23 @@
                         <div class="bladder-progress-bar">
                             <div id="bladderProgress" class="bladder-progress-fill"></div>
                         </div>
-                        <div class="bladder-gauge-header" style="margin-top:8px;">
+                        <div class="bladder-gauge-header excretion-color-detail" style="margin-top:8px;">
                             <span>오줌 색 (농도)</span>
                             <span id="urineText">보통</span>
                         </div>
-                        <div id="urineSwatch" class="urine-swatch"></div>
+                        <div id="urineSwatch" class="urine-swatch excretion-color-detail"></div>
                     </div>
 
                     <div id="organDetailCard" class="meter-card" style="border-color: #38bdf8; background: rgba(56, 189, 248, 0.08);">
                         <div class="meter-card-title">
                             <span id="organTitle" style="color:#38bdf8; font-size:15px;">전신 배설계</span>
                         </div>
-                        <p id="organDesc" style="font-size:13px; color:#f1f5f9; line-height:1.5;">그림 위의 이름표를 눌러 자세한 설명을 보세요.</p>
+                        <p id="organDesc" style="font-size:15px; color:#f1f5f9; line-height:1.5;">그림 위의 이름표를 눌러 자세한 설명을 보세요.</p>
                     </div>
 
                     <div class="meter-card" data-for-scene="urine,nephron">
                         <div style="display:flex; flex-direction:column; gap:10px; margin-top:6px;">
-                            <div class="sim-slider-wrapper">
+                            <div class="sim-slider-wrapper excretion-high-control">
                                 <span class="sim-slider-label">혈류 속도 (모형 설정)</span>
                                 <input id="bpSlider" class="sim-slider" type="range" min="80" max="160" value="120" step="5">
                                 <span id="bpVal" class="sim-slider-value">120 (상대값)</span>
@@ -103,7 +103,7 @@
                                 <input id="hydrationSlider" class="sim-slider" type="range" min="10" max="100" value="50" step="5">
                                 <span id="hydrationVal" class="sim-slider-value">50 %</span>
                             </div>
-                            <div class="sim-slider-wrapper">
+                            <div class="sim-slider-wrapper excretion-high-control">
                                 <span class="sim-slider-label">항이뇨 호르몬 (ADH)</span>
                                 <input id="adhSlider" class="sim-slider" type="range" min="0" max="100" value="50" step="5">
                                 <span id="adhVal" class="sim-slider-value">50 %</span>
@@ -116,52 +116,8 @@
                     </div>
                 </div>
 
-                <!-- Tab 2: Concentration Comparison Table (2022 Exam Critical) -->
                 <div id="tabPanel_table" class="sidebar-tab-panel" style="display:none;">
-                    <div class="meter-card">
-                        <table class="concentration-table">
-                            <thead>
-                                <tr>
-                                    <th>성분</th>
-                                    <th>혈장(%)</th>
-                                    <th>원뇨(%)</th>
-                                    <th>오줌(%)</th>
-                                    <th>판정</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>단백질</strong></td>
-                                    <td>7.5</td>
-                                    <td class="trap-highlight">0</td>
-                                    <td class="safe-highlight">0</td>
-                                    <td>여과 안 됨 (크기 큼)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>포도당</strong></td>
-                                    <td>0.1</td>
-                                    <td>0.1</td>
-                                    <td class="safe-highlight">0</td>
-                                    <td>정상 상태에서 거의 모두 재흡수</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>요소</strong></td>
-                                    <td>0.03</td>
-                                    <td>0.03</td>
-                                    <td class="trap-highlight">2.00</td>
-                                    <td>물 흡수로 <strong>67배 농축</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>무기염류</strong></td>
-                                    <td>0.9</td>
-                                    <td>0.9</td>
-                                    <td>1.2</td>
-                                    <td>필요량만 재흡수</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p style="font-size:11px; color:#94a3b8; margin-top:8px; line-height:1.4;">⚠️ <strong>눈여겨볼 점:</strong> 건강한 사람의 오줌에서 포도당이나 단백질이 검출되면 신장 이상(당뇨병, 사구체신염)을 의심할 수 있습니다.</p>
-                    </div>
+                    <section id="excretionComparison" class="meter-card" aria-live="polite"></section>
                 </div>
 
                 <!-- Tab 3: Exam Traps -->
@@ -184,13 +140,15 @@
     <script src="../shared/diagram-labels.js?v=20261010-model-review10"></script>
     <script src="../shared/exam-data.js?v=20261010-model-review10"></script>
     <script src="app.js?v=20261010-model-review10"></script>
-    <script src="nephron-flow.js?v=20261010-model-review10"></script>
+    <script src="nephron-flow.js?v=20261011-levels1"></script>
     <script src="urine-path.js?v=20261010-model-review10"></script>
-    <script src="excretion-map.js?v=20261010-model-review10"></script>
-    <script src="../shared/model-study.js?v=20261010-model-review10"></script>
+    <script src="excretion-map.js?v=20261011-levels1"></script>
+    <script src="../shared/model-study.js?v=20261011-textbook1"></script>
     <script src="../../curriculum/school-level.js?v=20261010-objective2"></script>
+    <script src="school-content.js?v=20261011-levels1"></script>
     <script src="../../curriculum/body-content.js?v=20261010-subject1"></script>
+    <script src="../../curriculum/body-lessons.js?v=20261011-textbook1"></script>
     <script src="../../curriculum/body-practice.js?v=20261010-objective3"></script>
-    <script src="../../curriculum/body-level.js?v=20261010-objective1"></script>
+    <script src="../../curriculum/body-level.js?v=20261011-textbook1"></script>
 </body>
 </html>

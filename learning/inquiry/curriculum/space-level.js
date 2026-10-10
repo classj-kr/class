@@ -11,7 +11,7 @@
         function render(){
             const p=S.profile('space-'+topic.id);
             main.innerHTML=S.concepts(p);
-            oldConcept.forEach(n=>n.hidden=!!p.sections || S.value!=='high'&&!n.classList.contains('star-properties'));
+            oldConcept.forEach(n=>n.hidden=!(n.classList.contains('star-properties') || n.classList.contains('stellar-study')&&S.value!=='elementary'));
             window.SpaceQuizBoard?.setSchool(S.value);
         }
         const size=()=>document.documentElement.style.setProperty('--space-header-height',header.offsetHeight+'px');

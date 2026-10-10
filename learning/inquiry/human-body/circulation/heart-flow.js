@@ -60,6 +60,7 @@
     ];
 
     var DETAIL = {
+        heartOutline: ['심장','심장은 오므라들고 펴지는 움직임으로 혈액을 혈관으로 밀어 보냅니다. 폐와 온몸을 지난 혈액은 다시 심장으로 돌아옵니다.'],
         rightAtrium: ['우심방', '온몸을 돌고 온 <strong>정맥혈</strong>이 대정맥을 타고 들어오는 방입니다. 받은 피를 아래 우심실로 내려보냅니다.'],
         rightVentricle: ['우심실', '정맥혈을 <strong>폐동맥</strong>으로 밀어내 폐로 보냅니다. 폐까지만 보내면 되므로 벽이 좌심실보다 얇습니다.'],
         leftAtrium: ['좌심방', '폐에서 산소를 채우고 온 <strong>동맥혈</strong>이 폐정맥을 타고 들어옵니다.'],
@@ -298,12 +299,19 @@
     }
 
     function showDetail(id) {
+        if(window.SchoolLevel?.value==='elementary'){
+            if(/Atrium|Ventricle|valve|septum/.test(id))id='heartOutline';
+        }
         // 누른 조각에 노란 테를 두른다. 글자만 바뀌면 겹쳐 있는 조각 가운데
         // 어느 것을 골랐는지 알 수 없다.
         if (typeof SimEngine !== 'undefined' && SimEngine.litPart) {
             SimEngine.litPart(svg, Object.keys(DETAIL), id);
         }
         var d = DETAIL[id];
+        if(window.SchoolLevel?.value==='elementary'){
+            var simple={lungs:['폐','혈액은 폐에서 산소를 받아들이고 이산화 탄소를 내놓습니다. 산소를 받은 혈액은 심장으로 돌아간 뒤 온몸으로 이동합니다.'],bodyCapillaries:['온몸','혈액이 산소와 영양소를 몸의 여러 곳으로 운반하고, 몸에서 생긴 이산화 탄소와 노폐물을 받아 다른 기관으로 옮깁니다.'],vesselVenaCava:['온몸에서 심장으로','온몸을 지난 혈액이 이 혈관을 통해 심장으로 돌아옵니다.'],vesselAorta:['심장에서 온몸으로','심장이 밀어 낸 혈액이 이 혈관을 통해 온몸으로 갑니다.'],vesselPulmonaryArtery:['심장에서 폐로','심장에서 나온 혈액이 폐로 가서 산소를 받아들입니다.'],vesselPulmonaryVein:['폐에서 심장으로','폐에서 산소를 받은 혈액이 심장으로 돌아옵니다.']};
+            d=simple[id]||d;
+        }
         if (!d) return;
         var t = document.getElementById('organTitle');
         var p = document.getElementById('organDesc');
@@ -318,7 +326,23 @@
 
     /** 이름표는 그림 속 조각의 자리를 재서 붙인다. 그림이 바뀌어도 따라간다. */
     function placeLabels() {
-        BodyDiagramLabels.render(svg, labelBox, LABELS, {
+        var elementary=window.SchoolLevel?.value==='elementary';
+        var items=elementary?[
+            {id:'heartOutline',text:'심장',sx:500,sy:480,ax:855,ay:480},
+            {id:'lungs',text:'폐',fx:.5,fy:.1},
+            {id:'bodyCapillaries',text:'온몸',fx:.5,fy:.5},
+            {id:'vesselVenaCava',text:'온몸에서 심장으로',fx:.164,fy:.45},
+            {id:'vesselAorta',text:'심장에서 온몸으로',fx:.852,fy:.45},
+            {id:'vesselPulmonaryArtery',text:'심장에서 폐로',fx:.81,fy:.28},
+            {id:'vesselPulmonaryVein',text:'폐에서 심장으로',fx:.58,fy:.32}
+        ]:LABELS;
+        Object.keys(DETAIL).forEach(function(id){
+            var node=svg?.querySelector('#'+id);if(!node)return;
+            if(!items.some(function(item){return item.id===id;})){
+                node.removeAttribute('tabindex');node.removeAttribute('role');node.removeAttribute('aria-label');
+            }
+        });
+        BodyDiagramLabels.render(svg, labelBox, items, {
             className: 'heart-flow-tag',
             select: function (item) { showDetail(item.id); }
         });

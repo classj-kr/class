@@ -1,0 +1,74 @@
+{
+  "slug": "redox",
+  "engine": "chromium",
+  "modes": [
+    "cell",
+    "elec"
+  ],
+  "cases": 21,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__redoxModel",
+      "methods": [
+        "FARADAY",
+        "MOLAR_VOL",
+        "E_BENCH",
+        "METALS",
+        "BATHS",
+        "state",
+        "analyseCell",
+        "analyseElec",
+        "analyse",
+        "render",
+        "check",
+        "setMode",
+        "set"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "cell",
+      "results": [
+        {
+          "choice": "a",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "b",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "elec",
+      "results": [
+        {
+          "choice": "more",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "near",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "less",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

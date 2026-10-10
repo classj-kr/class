@@ -95,6 +95,8 @@ for p in sorted(OUT.rglob('*수집기록.json')):
         entry=dict(check,filename=path.name,relativePath=path.relative_to(OUT).as_posix(),member=f.get('member',path.name))
         book['files'].append(entry);pdfs.append(check)
     books.append(book)
+completed={(b['publisher'],b['subject'],b['title']) for b in books if b['collectionStatus']=='complete'}
+books=[b for b in books if b['collectionStatus']=='complete' or (b['publisher'],b['subject'],b['title']) not in completed]
 cachepath.write_text(json.dumps(pdfs,ensure_ascii=False,indent=2),encoding='utf8')
 (OUT/'교과서목록.json').write_text(json.dumps(books,ensure_ascii=False,indent=2),encoding='utf8')
 coverage={'scope':'2022 개정 초등 국어·수학·사회·과학. 국정 교과서 및 미래엔·동아·천재·디딤돌 제공 목록 기준. 부교재 전체 완비를 뜻하지 않음.',

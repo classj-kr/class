@@ -1,0 +1,103 @@
+{
+  "slug": "galaxy-hubble",
+  "engine": "chromium",
+  "modes": [
+    "classify",
+    "redshift",
+    "hubble"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__galaxyModel",
+      "methods": [
+        "ARMS",
+        "BULGES",
+        "BARS",
+        "OBJECTS",
+        "SAMPLES",
+        "SCALES",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "classify",
+      "results": [
+        {
+          "choice": "e",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "s",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "sb",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "irr",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "redshift",
+      "results": [
+        {
+          "choice": "slow",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "fast",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "hubble",
+      "results": [
+        {
+          "choice": "ok",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

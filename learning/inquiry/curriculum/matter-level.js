@@ -5,7 +5,7 @@
         S.mount(document.querySelector('.top-header'));
         const explanation=document.createElement('div'), exercise=document.createElement('div');
         explanation.className='school-matter-content';exercise.className='school-matter-content';
-        document.querySelector('.model-inspector').prepend(explanation);
+        document.querySelector('.model-layout').after(explanation);
         const legacy=document.querySelector('.model-check');legacy.after(exercise);
         function current(){return root.querySelector('[data-model][aria-pressed="true"]')?.dataset.model;}
         function render(){
@@ -31,6 +31,7 @@
             });
             if(!S.profile('matter-'+current()))root.querySelector('[data-model]:not(:disabled)').click();
             document.querySelectorAll('.nav-tab:not([data-tab="models"])').forEach(b=>b.hidden=S.value==='elementary');
+            document.querySelector('.top-header .nav-tabs').hidden=S.value==='elementary';
             if(S.value==='elementary')document.getElementById('tabModelsBtn').click();
             render();
         }

@@ -1,0 +1,98 @@
+{
+  "slug": "motor-magnet",
+  "engine": "chromium",
+  "modes": [
+    "motor",
+    "material",
+    "curie"
+  ],
+  "cases": 23,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__motorModel",
+      "methods": [
+        "CURRENTS",
+        "TURNS",
+        "COMMS",
+        "MATERIALS",
+        "FERROS",
+        "HEATS",
+        "state",
+        "analyse",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "motor",
+      "results": [
+        {
+          "choice": "spin",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "wobble",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "still",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "material",
+      "results": [
+        {
+          "choice": "strong",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "weak",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "repel",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "curie",
+      "results": [
+        {
+          "choice": "strong",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "weak",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

@@ -2,21 +2,23 @@
 :root { color-scheme: dark; }
 body { margin: 0; background: #030712; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', 'Segoe UI', sans-serif; }
 body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: linear-gradient(180deg,rgba(3,7,18,.65),rgba(3,7,18,.88)),url('assets/images/space-hub-bg.webp') center/cover; }
-.hub-container { width: min(1280px,100%); margin: 0 auto; padding: 16px 40px 40px; }
+.hub-container { width: min(1280px,100%); margin: 0 auto; padding: 32px 40px 40px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.topic-group { margin: 0 0 24px; }
-.topic-group:first-of-type h2 { padding-left: 40px; }
-.topic-group h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; font-size: 17px; font-weight: 700; color: var(--accent); }
-.topic-group h2::after { content: ''; height: 1px; flex: 1; background: #26334a; }
-.hub-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
-.hub-card { display: flex; align-items: center; gap: 13px; min-height: 78px; padding: 14px 16px; border: 1px solid #2d3a50; border-radius: 14px; background: rgba(12,22,41,.91); color: inherit; text-decoration: none; transition: background .15s,border-color .15s,transform .15s; }
+.topic-group { margin: 0 0 28px; }
+.topic-group:last-child { margin-bottom: 0; }
+.topic-group h2:not(.visually-hidden) { display: flex; align-items: center; gap: 16px; margin: 0 0 12px; font-size: 17px; line-height: 24px; font-weight: 700; color: var(--accent); }
+.topic-group h2:not(.visually-hidden)::after { content: ''; height: 1px; flex: 1; background: #2d3a50; }
+.hub-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-rows: 1fr; gap: 12px; }
+.topic-group-solar .hub-grid { grid-template-columns: 1fr; }
+.hub-card { display: grid; grid-template-columns: 40px minmax(0,1fr) 20px; align-items: center; gap: 14px; min-height: 88px; padding: 18px 20px; border: 1px solid #34425a; border-radius: 14px; background: rgba(12,22,41,.94); color: inherit; text-decoration: none; transition: background .15s,border-color .15s,transform .15s; }
+.topic-group-solar .hub-card { border-color: #685635; background: linear-gradient(100deg,rgba(51,39,20,.95),rgba(12,22,41,.94) 65%); }
+.topic-group-solar .card-copy strong { color: #fde68a; }
 .hub-card:hover { border-color: var(--accent); background: #142238; transform: translateY(-2px); }
 .hub-card:focus-visible { outline: 2px solid var(--accent,#67e8f9); outline-offset: 4px; }
-.card-icon { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 42px; font-size: 24px; }
+.card-icon { display: grid; place-items: center; width: 40px; height: 40px; font-size: 26px; line-height: 1; }
 .card-copy { min-width: 0; }
-.card-copy strong { font-size: 15px; line-height: 1.5; word-break: keep-all; }
-.card-arrow { color: #61758f; margin-left: auto; font-size: 17px; }
-@media(max-width:1100px) { .hub-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
-@media(max-width:760px) { .hub-container { padding: 14px 20px 30px; } .hub-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-@media(max-width:480px) { .hub-container { padding: 14px 16px 24px; } .hub-grid { grid-template-columns: 1fr; gap: 9px; } .hub-card { min-height: 68px; padding: 12px 14px; } .topic-group { margin-bottom: 18px; } }
+.card-copy strong { display: block; font-size: 16px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+.card-arrow { color: #91a4bf; text-align: right; font-size: 18px; }
+@media(max-width:1000px) { .hub-container { padding: 24px; } .hub-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .topic-group-earth .hub-card:last-child { grid-column: 1 / -1; } }
+@media(max-width:620px) { .hub-container { padding: 20px 16px 28px; } .hub-grid { grid-template-columns: 1fr; gap: 10px; } .hub-card { min-height: 76px; padding: 14px 16px; gap: 12px; } .topic-group { margin-bottom: 24px; } }
 @media(prefers-reduced-motion:reduce) { .hub-card { transition: none; } }
