@@ -385,7 +385,7 @@ const asGroupOnlyHomeroom = () => { sessionRows = [{ id: 4, email: "new@x.kr", r
 
     // 14. 명단 화면이 보내는 유형도 그 목록 안에 있어야 한다.
     const rosterHtml = fs.readFileSync(
-      path.join(__dirname, "..", "classtools", "school-roster.html"), "utf8");
+      path.join(__dirname, "..", "apps", "classtools", "school-roster.html"), "utf8");
     const typeSelect = rosterHtml.match(/id="newGroupType"[\s\S]*?<\/select>/)[0];
     const offered = [...typeSelect.matchAll(/value="([a-z]+)"/g)].map(m => m[1]);
     assert.ok(offered.length > 0, "The roster must offer group types to pick from.");
@@ -402,7 +402,7 @@ const asGroupOnlyHomeroom = () => { sessionRows = [{ id: 4, email: "new@x.kr", r
     // 명단의 열이 다르므로, 그 학교에 실제로 있는 열에서 목록을 만든다.
     // 다만 서버로 보내는 갈래 이름은 데이터베이스가 받는 것이어야 한다.
     const hubHtml = fs.readFileSync(
-      path.join(__dirname, "..", "classtools", "index.html"), "utf8");
+      path.join(__dirname, "..", "apps", "classtools", "index.html"), "utf8");
     const hubSelect = hubHtml.match(/id="modal-group-type"[\s\S]*?<\/select>/)[0];
     assert.doesNotMatch(hubSelect, /<option/,
       "교실 도구가 갈래를 박아 두면 그 학교에 없는 열이 목록에 뜬다.");

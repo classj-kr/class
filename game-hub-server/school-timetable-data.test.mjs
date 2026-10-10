@@ -210,7 +210,7 @@ test('browser renders real API/database results, unlinked guidance, roster chang
     }
     const file = { '/schooladmin/': 'index.html', '/schooladmin/app.js': 'app.js', '/schooladmin/style.css': 'style.css' }[url.pathname];
     if (!file) return route.fulfill({ status: 404 });
-    return route.fulfill({ body: await readFile(new URL(`../schooladmin/${file}`, import.meta.url)), contentType: file.endsWith('.js') ? 'text/javascript' : file.endsWith('.css') ? 'text/css' : 'text/html' });
+    return route.fulfill({ body: await readFile(new URL(`../apps/schooladmin/${file}`, import.meta.url)), contentType: file.endsWith('.js') ? 'text/javascript' : file.endsWith('.css') ? 'text/css' : 'text/html' });
   });
   try {
     await page.goto(`${base}/schooladmin/`);

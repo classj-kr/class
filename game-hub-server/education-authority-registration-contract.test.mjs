@@ -4,7 +4,7 @@ import test from "node:test";
 import platform from "./classroom-platform.js";
 
 const { EDUCATION_AUTHORITIES, searchEducationAuthorities } = platform;
-const adminHtml = fs.readFileSync(new URL("../admin/index.html", import.meta.url), "utf8");
+const adminHtml = fs.readFileSync(new URL("../apps/admin/index.html", import.meta.url), "utf8");
 const serverSource = fs.readFileSync(new URL("./classroom-platform.js", import.meta.url), "utf8");
 
 test("the directory contains the Ministry of Education and all 17 official metropolitan/provincial education offices", () => {

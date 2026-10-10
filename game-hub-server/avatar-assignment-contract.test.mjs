@@ -9,8 +9,8 @@ import { createRequire } from "node:module";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const serverSource = fs.readFileSync(path.join(here, "classroom-platform.js"), "utf8");
 const hubServerSource = fs.readFileSync(path.join(here, "server.js"), "utf8");
-const profileSource = fs.readFileSync(path.join(here, "..", "classtools", "profile.html"), "utf8");
-const avatarDirectory = path.join(here, "..", "classtools", "assets", "avatars");
+const profileSource = fs.readFileSync(path.join(here, "..", "apps", "classtools", "profile.html"), "utf8");
+const avatarDirectory = path.join(here, "..", "apps", "classtools", "assets", "avatars");
 const avatarFiles = fs.readdirSync(avatarDirectory).filter((name) => name.endsWith(".webp")).sort();
 const nodeRequire = createRequire(import.meta.url);
 const sandbox = {

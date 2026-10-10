@@ -10,7 +10,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
   fs.mkdirSync(output, { recursive: true });
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
-    for (const site of ['phonics', 'phonics-site/public/phonics']) {
+    for (const site of ['phonics']) {
       const page = await browser.newPage({ viewport: { width: 1123, height: 850 } });
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
@@ -52,7 +52,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
       assert.equal(model.fan.pictureMeaning, '부채');
       // The full bat wing extends beyond the old 2/6 right grid boundary.
       assert.ok(model.bat.picture.crop[0] + model.bat.picture.crop[2] > 2 / 6);
-      const name = site.startsWith('phonics-site') ? 'standalone' : 'main';
+      const name = 'main';
       await page.locator('#stageList [data-lesson="' + model.bLesson + '"]').click();
       let sawBat = false;
       for (let round = 0; round < 8; round++) {

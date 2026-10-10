@@ -9,7 +9,7 @@ const pp = require('puppeteer-core');
 const ROOT = path.join(__dirname, '..');
 const PAGE = fs.readFileSync(path.join(ROOT, 'learning/games/dobble/dobble.html'), 'utf8');
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-const AVATARS = fs.readdirSync(path.join(ROOT, 'classtools/assets/avatars')).filter(f => f.endsWith('.webp'));
+const AVATARS = fs.readdirSync(path.join(ROOT, 'apps/classtools/assets/avatars')).filter(f => f.endsWith('.webp'));
 const CENTER = AVATARS.slice(0, 8);
 const MINE = [AVATARS[0]].concat(AVATARS.slice(20, 27));
 
@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
   }
   // 아바타 그림은 진짜로 내어 준다. 눈으로도 확인해야 하니까.
   if (req.url.startsWith('/assets/avatars/')) {
-    const file = path.join(ROOT, 'classtools/assets/avatars', decodeURIComponent(req.url.split('/').pop()));
+    const file = path.join(ROOT, 'apps/classtools/assets/avatars', decodeURIComponent(req.url.split('/').pop()));
     if (fs.existsSync(file)) {
       res.writeHead(200, { 'Content-Type': 'image/webp' });
       return res.end(fs.readFileSync(file));

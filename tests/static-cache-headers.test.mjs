@@ -86,7 +86,41 @@ async function waitForServer() {
     assert.equal(jsResponse.status, 200);
     assert.equal(jsResponse.headers.get("cache-control"), "public, max-age=86400");
 
-    console.log("Static Cache Headers Test: OK");
+    // Relocated apps still serve their legacy public URLs and clean HTML paths.
+    for (const directory of ['boards', 'classboard', 'parent']) {
+      const redirect = await fetch(`http://127.0.0.1:${port}/${directory}?check=1`, { redirect: 'manual' });
+      assert.equal(redirect.status, 308, directory);
+      assert.equal(redirect.headers.get('location'), `/${directory}/?check=1`);
+      const page = await fetch(`http://127.0.0.1:${port}/${directory}/`);
+      assert.equal(page.status, 200, directory);
+      assert.match(await page.text(), /<html/i);
+      const oldHtml = await fetch(`http://127.0.0.1:${port}/${directory}/index.html`, { redirect: 'manual' });
+      assert.equal(oldHtml.headers.get('location'), `/${directory}/`);
+    }
+    const boardsScript = await fetch(`http://127.0.0.1:${port}/boards/app.js`);
+    assert.equal(boardsScript.status, 200);
+    assert.equal(await boardsScript.text(), fs.readFileSync(path.join(__dirname, '../apps/boards/app.js'), 'utf8'));
+    const avatarName = fs.readdirSync(path.join(__dirname, '../apps/classtools/assets/avatars')).find(name => name.endsWith('.webp'));
+    const avatarResponse = await fetch(`http://127.0.0.1:${port}/assets/avatars/${avatarName}`);
+    assert.equal(avatarResponse.status, 200);
+    assert.equal(avatarResponse.headers.get('content-type'), 'image/webp');
+
+    for (const file of ['privacy.html', 'school-setup.html', 'student-privacy.html', 'support.html', 'terms.html']) {
+      const route = `/${file.slice(0, -5)}`;
+      const page = await fetch(`http://127.0.0.1:${port}${route}`);
+      assert.equal(page.status, 200, route);
+      assert.match(await page.text(), /<html/i);
+      const legacy = await fetch(`http://127.0.0.1:${port}/${file}?check=1`, { redirect: 'manual' });
+      assert.equal(legacy.status, 308, file);
+      assert.equal(legacy.headers.get('location'), `${route}?check=1`);
+    }
+    for (const file of ['naver5fab431f6334045f5b69668ad71fc3c8.html', 'naverc953171c2ff3a730580e7ed2be00700d.html']) {
+      const verification = await fetch(`http://127.0.0.1:${port}/${file}`);
+      assert.equal(verification.status, 200, file);
+      assert.equal((await verification.text()).trim(), `naver-site-verification: ${file}`);
+    }
+
+    console.log("Static Cache Headers, Legacy App URLs and Site Pages Test: OK");
   } finally {
     child.kill();
   }

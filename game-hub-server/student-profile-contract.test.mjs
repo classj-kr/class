@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const pageSource = await readFile(new URL("../classtools/profile.html", import.meta.url), "utf8");
+const pageSource = await readFile(new URL("../apps/classtools/profile.html", import.meta.url), "utf8");
 
 test("student profile changes are scoped to the signed-in student", () => {
   assert.match(serverSource, /router\.patch\("\/student\/profile"/);
@@ -33,7 +33,7 @@ test("student profile screen offers birthday as month/day dropdowns instead of a
 });
 
 test("teacher roster cannot overwrite the student's own birthday choice, and the roster screen has no password field to overwrite either", async () => {
-  const rosterSource = await readFile(new URL("../classtools/roster.html", import.meta.url), "utf8");
+  const rosterSource = await readFile(new URL("../apps/classtools/roster.html", import.meta.url), "utf8");
   assert.match(rosterSource, /id="birthdates" disabled/);
   assert.doesNotMatch(rosterSource, /id="passwords"/);
   assert.doesNotMatch(rosterSource, /비밀번호/);
@@ -42,7 +42,7 @@ test("teacher roster cannot overwrite the student's own birthday choice, and the
 });
 
 test("teacher student deletion removes the full roster record and revokes linked access", async () => {
-  const rosterSource = await readFile(new URL("../classtools/roster.html", import.meta.url), "utf8");
+  const rosterSource = await readFile(new URL("../apps/classtools/roster.html", import.meta.url), "utf8");
   assert.match(serverSource, /router\.delete\("\/teacher\/class\/students\/:studentNumber"/);
   assert.match(serverSource, /DELETE FROM classroom_sessions WHERE user_id = \$1/);
   assert.match(serverSource, /UPDATE classroom_users\s+SET role = NULL/);

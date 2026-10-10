@@ -49,7 +49,7 @@ services:
         - assets/**/*.webp
         - assets/**/*.woff
         - assets/**/*.woff2
-        - classtools/assets/avatars/**
+        - apps/classtools/assets/avatars/**
         - learning/**/*.avif
         - learning/**/*.bin
         - learning/**/*.geojson

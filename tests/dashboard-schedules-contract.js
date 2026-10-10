@@ -4,7 +4,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const root = path.join(__dirname, "..");
-const html = fs.readFileSync(path.join(root, "classtools", "dashboard.html"), "utf8");
+const html = fs.readFileSync(path.join(root, "apps/classtools", "dashboard.html"), "utf8");
 const platform = fs.readFileSync(path.join(root, "game-hub-server", "classroom-platform.js"), "utf8");
 const script = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 

@@ -17,6 +17,12 @@ assert.equal(C.latex(C.compile('x^2^3').ast),'x^{2^{3}}');
 assert.match(html, /vendor\/katex.min.css/);
 assert.match(html, /vendor\/katex.min.js/);
 assert.match(html, /graph-core.js/);
+const css = fs.readFileSync('learning/literacy-numeracy/graph-studio/vendor/katex.min.css', 'utf8');
+const fonts = [...css.matchAll(/url\((fonts\/[^)]+)\)/g)].map(match => match[1]);
+assert.equal(fonts.length, 20);
+for (const font of fonts) {
+  assert.ok(fs.existsSync('learning/literacy-numeracy/graph-studio/vendor/' + font), font);
+}
 console.log('graph board math typography passed');
 
 assert.equal(C.latex(C.compile('1e-8^2').ast),'\\left(1\\times 10^{-8}\\right)^{2}');

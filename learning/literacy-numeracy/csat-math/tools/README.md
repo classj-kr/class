@@ -18,7 +18,9 @@ python list-papers.py
 python fetch-papers.py
 ```
 
-2022~2027학년도 수학 문제지와 정답표를 `papers/`에 받는다. 홀수형만 받는다.
+2022~2027학년도 수학 문제지와 정답표를 저장소 루트의
+`references/exams/csat-math/papers/`에 받는다. 홀수형만 받는다.
+다운로드·정답 추출 도구는 `source_paths.py`의 공통 경로를 사용한다.
 2022학년도 수능처럼 이름만 `.pdf`이고 속은 압축 파일인 것이 있어, 받은 뒤
 `PK\x03\x04`로 시작하면 풀어서 홀수형만 남겨야 한다.
 
@@ -54,7 +56,7 @@ python read-answers.py
 문자로 깨진다. 쪽을 그림으로 만들어 눈으로 읽고 옮겨야 한다.
 
 ```
-python -c "import pymupdf; d=pymupdf.open('papers/2026-suneung-paper.pdf'); d[4].get_pixmap(dpi=150).save('p05.png')"
+python -c "import pymupdf; from source_paths import PAPERS_DIR, REPOSITORY_ROOT; out=REPOSITORY_ROOT/'outputs/work/csat-math-review'; out.mkdir(parents=True,exist_ok=True); d=pymupdf.open(PAPERS_DIR/'2026-suneung-paper.pdf'); d[4].get_pixmap(dpi=150).save(out/'p05.png')"
 ```
 
 옮길 때 지킬 것
@@ -80,6 +82,9 @@ node check-math.mjs
 - 보기 개수와 답의 범위, 없는 그림 파일.
 
 KaTeX는 같은 저장소의 `learning/literacy-numeracy/arithmetics/node_modules`에서 빌려 쓴다.
+
+예전 임시 추출·검수 작업은 `outputs/work/csat-math-scratch/`로 옮겼다.
+보존한 과거 작업 파일이며 현재 수집 파이프라인에서는 실행하지 않는다.
 
 이것은 글을 KaTeX에 넣어 보기만 한다. 진짜 브라우저에서 화면과 같은 차례로 풀이까지 그려 보는 검사는
 저장소 맨 위에서 `node tests/csat-math-render-browser.cjs`(한 회차만이면 뒤에 `2025-09`)로 돌린다.

@@ -3,11 +3,11 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const serverSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
-const dashboardSource = await readFile(new URL("../classtools/dashboard.html", import.meta.url), "utf8");
+const dashboardSource = await readFile(new URL("../apps/classtools/dashboard.html", import.meta.url), "utf8");
 // The schoolwide attendance board used to be a tab inside schooladmin/app.js;
 // it now lives in its own page, linked from classtools/index.html.
-const attendanceDashboardSource = await readFile(new URL("../classtools/attendance-dashboard.html", import.meta.url), "utf8");
-const noticeIndexSource = await readFile(new URL("../notice/index.html", import.meta.url), "utf8");
+const attendanceDashboardSource = await readFile(new URL("../apps/classtools/attendance-dashboard.html", import.meta.url), "utf8");
+const noticeIndexSource = await readFile(new URL("../apps/notice/index.html", import.meta.url), "utf8");
 
 function handlerBody(source, routeSignature) {
   const start = source.indexOf(routeSignature);

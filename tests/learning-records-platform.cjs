@@ -80,6 +80,7 @@ async function main() {
     app.use(express.json({ limit: '32kb' }));
     app.use('/api', platform.router);
     app.use(['/learning','/classtools'], platform.requireSiteAccess);
+    app.use(express.static(path.resolve(__dirname, '..', 'apps')));
     app.use(express.static(path.resolve(__dirname, '..')));
     server = await new Promise(resolve => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
     const base = `http://127.0.0.1:${server.address().port}`;

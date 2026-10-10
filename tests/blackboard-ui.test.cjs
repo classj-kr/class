@@ -5,7 +5,7 @@ const fs = require('node:fs/promises');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 let browser;
-const url = pathToFileURL(path.resolve(__dirname, '../classtools/blackboard.html')).href;
+const url = pathToFileURL(path.resolve(__dirname, '../apps/classtools/blackboard.html')).href;
 const output = path.resolve(__dirname, '../outputs/blackboard');
 test.before(async () => {
   browser = await chromium.launch({headless:true, ...(process.platform === 'win32' ? {channel:'msedge'} : {})});

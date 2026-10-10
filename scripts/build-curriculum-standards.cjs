@@ -1,13 +1,13 @@
 'use strict';
 // 2022 개정 교육과정 원문(references/moe/2022-revised-curriculum/extracted)에서 성취기준을 뽑아
-// 수행평가 계획 메뉴가 쓰는 자료(classtools/assessment-plan/data/*.json)를 만든다.
+// 수행평가 계획 메뉴가 쓰는 자료(apps/classtools/assessment-plan/data/*.json)를 만든다.
 // 글은 고시 원문 그대로 옮기고 바꿔 쓰지 않는다. 다시 만들려면: node scripts/build-curriculum-standards.cjs
 const fs = require('node:fs');
 const path = require('node:path');
 
 const ROOT = path.resolve(__dirname, '..');
 const SOURCE_DIR = path.join(ROOT, 'references/moe/2022-revised-curriculum/extracted');
-const OUT_DIR = path.join(ROOT, 'classtools/assessment-plan/data');
+const OUT_DIR = path.join(ROOT, 'apps/classtools/assessment-plan/data');
 const SOURCE_NOTE = '교육부 고시 제2022-33호 초·중등학교 교육과정(2022-12-22) — https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0';
 
 // 코드 글자 → 과목. 파일 이름은 영어로 두어 주소에 한글이 들어가지 않게 한다.

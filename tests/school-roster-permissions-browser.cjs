@@ -19,7 +19,7 @@ before(async () => {
   server = http.createServer((req, res) => {
     if (req.url === '/classtools/school-roster') {
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-      res.end(fs.readFileSync(path.resolve(__dirname, '../classtools/school-roster.html')));
+      res.end(fs.readFileSync(path.resolve(__dirname, '../apps/classtools/school-roster.html')));
     } else res.writeHead(404).end();
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));

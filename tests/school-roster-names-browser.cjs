@@ -9,7 +9,7 @@ const output = path.resolve(__dirname, '../outputs/school-roster-row-spacing-202
 const baseline = process.argv.includes('--baseline');
 const html = baseline
   ? execFileSync('git', ['show', 'HEAD:classtools/school-roster.html'], { cwd: path.resolve(__dirname, '..') })
-  : fs.readFileSync(path.resolve(__dirname, '../classtools/school-roster.html'));
+  : fs.readFileSync(path.resolve(__dirname, '../apps/classtools/school-roster.html'));
 const teachers = [
   { name: '가상관리자', type: '관리자', nameSource: '', nameMismatch: true, googleName: '관리용 계정' },
   { name: '홍길동', type: '담임', nameSource: '', nameMismatch: false },

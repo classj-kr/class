@@ -17,7 +17,7 @@ const GENERATE_LIMIT_PER_MINUTE = 120;
 const KEY_PATTERN = /^[A-Za-z0-9._-]{20,200}$/;
 const MAX_PLAN_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_TOPICS = 40;
-const STANDARDS_DIR = path.join(__dirname, '..', 'classtools', 'assessment-plan', 'data');
+const STANDARDS_DIR = path.join(__dirname, '..', 'apps', 'classtools', 'assessment-plan', 'data');
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

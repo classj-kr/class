@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 
-const htmlPath = path.join(__dirname, "..", "classtools", "roaster.html");
+const htmlPath = path.join(__dirname, "..", "apps", "classtools", "roaster.html");
 const html = fs.readFileSync(htmlPath, "utf8");
 const script = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
 

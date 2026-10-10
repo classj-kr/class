@@ -10,8 +10,9 @@
         function current(){return root.querySelector('[data-model][aria-pressed="true"]')?.dataset.model;}
         function render(){
             const p=S.profile('matter-'+current());if(!p)return;
-            explanation.innerHTML=S.concepts(p);exercise.innerHTML=S.question(p);
-            legacy.hidden=S.value!=='high';
+            explanation.innerHTML=S.concepts(p);
+            S.practice(exercise,window.MatterPractice.forLevel(current(),S.value),current()+':'+S.value);
+            legacy.hidden=true;
             document.getElementById('modelFacts').hidden=S.value==='elementary';
             document.querySelector('.model-key').hidden=S.value!=='high';
         }

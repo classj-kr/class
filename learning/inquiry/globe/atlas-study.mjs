@@ -28,11 +28,11 @@ export function createAtlas(api){
   school?.mount(document.querySelector('.atlas-header'));
   school?.subscribe(()=>{
     if($('atlasQuiz').open)$('atlasQuiz').close();
-    $('wrongPractice').hidden=school.value==='elementary';
+    $('wrongPractice').hidden=false;
     renderCatalog();
     if(current)choose(allowed(current)?current.id:LESSONS.find(allowed).id);
   });
-  $('wrongPractice').hidden=school?.value==='elementary';
+  $('wrongPractice').hidden=false;
   $('layersPane').append($('layerBar'));
   if($('seasonSwitch'))$('mapTools').append($('seasonSwitch'));
   $('catalogToggle').onclick=()=>setCatalog(!document.body.classList.contains('catalog-open'));
@@ -48,7 +48,7 @@ export function createAtlas(api){
     try{await api.setView(b.dataset.view);buttons.forEach(o=>o.setAttribute('aria-pressed',String(o===b)));caption('');}
     finally{buttons.forEach(o=>o.disabled=false);}
   });
-  $('wrongPractice').onclick=()=>startQuiz(QUESTIONS,true);
+  $('wrongPractice').onclick=()=>startQuiz(LESSONS.filter(allowed).flatMap(questionsFor),true);
   $('atlasQuiz').querySelector('.quiz-close').onclick=()=>$('atlasQuiz').close();
   $('atlasQuiz').addEventListener('close',()=>{quiz=null;});
   $('lessonReopen').onclick=()=>{document.body.classList.remove('lesson-closed');$('lessonReopen').hidden=true;api.map.resize();};
@@ -80,12 +80,12 @@ export function createAtlas(api){
   }
   function renderLesson(l){
     const grade=school&&schoolMaps.profile('world',l,school.value);
-    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${grade?school.concepts(grade):l.core.map(c=>`<p>${c}</p>`).join('')}${grade?school.question(grade):''}${l.trap&&school?.value!=='elementary'?`<p>${l.trap}</p>`:''}</div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
+    $('lessonPanel').innerHTML=`<div class="lesson-heading"><button class="lesson-close" aria-label="학습 카드 닫기">×</button><h1>${l.title}</h1></div><div class="lesson-scroll"><div class="spot-list" role="group" aria-label="지도에서 비교할 곳">${l.spots.map((s,i)=>`<button data-spot="${i}"><span>${i+1}</span>${s.name}</button>`).join('')}</div><p id="spotDetail" class="spot-detail" aria-live="polite"></p>${l.visual?'<div id="lessonVisual" class="lesson-visual"></div>':''}<div class="lesson-description">${grade?school.concepts(grade):l.core.map(c=>`<p>${c}</p>`).join('')}${l.trap&&school?.value!=='elementary'?`<p>${l.trap}</p>`:''}</div></div><footer class="lesson-footer"><button id="lessonPractice">문제 풀기</button></footer>`;
     $('lessonPanel').querySelector('.lesson-close').onclick=()=>{document.body.classList.add('lesson-closed');$('lessonReopen').hidden=false;api.map.resize();};
     $('lessonPanel').querySelectorAll('[data-spot]').forEach(b=>b.onclick=()=>focusSpot(Number(b.dataset.spot)));
     if(l.visual)renderVisual($('lessonVisual'),l.visual);
-    $('lessonPractice').hidden=school?.value==='elementary';
-    $('lessonPractice').onclick=()=>startQuiz(QUESTIONS.filter(q=>q.lesson===l.id));
+    $('lessonPractice').hidden=false;
+    $('lessonPractice').onclick=()=>startQuiz(questionsFor(l));
   }
   function focusSpot(index){
     const s=current.spots[index];if(!s||!loaded)return;
@@ -102,6 +102,7 @@ export function createAtlas(api){
     box.innerHTML=`<strong>${{density:'국가·지역별 평균 인구밀도',climate:'주요 기후 지역',plates:'판 경계'}[id]}</strong><div>${rows.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')}</div><small>${{density:'2023 · 명/육지 km² · World Bank',climate:'Peel 외(2007)',plates:'USGS · 경계선 모형 · 실제 이동 속도 아님'}[id]}</small>`;
   }
   function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+  function questionsFor(l){return window.MapPractice.pool('world',l,QUESTIONS,school?.value||'middle');}
   async function startQuiz(pool,review=false){
     await storeReady;
     quiz={items:selectPracticeQuestions(pool,progress,{reviewOnly:review}),at:0,answers:[],solved:[],review};
@@ -112,6 +113,8 @@ export function createAtlas(api){
     const q=quiz.items[quiz.at],l=LESSONS.find(l=>l.id===q.lesson);
     const options=shuffle(q.options.map((text,index)=>({text,index})));
     $('quizBody').dataset.questionId=q.id;
+    $('quizBody').dataset.schoolLevel=school?.value||'middle';
+    delete $('quizBody').dataset.selectedOptionId;delete $('quizBody').dataset.state;
     $('quizBody').innerHTML=`<p class="quiz-meta">${quiz.review?'오답 다시 보기':'확인 문제'} · ${quiz.at+1} / ${quiz.items.length}</p><progress value="${quiz.at}" max="${quiz.items.length}" aria-label="문제 진행"></progress><p class="quiz-topic">${l.title}</p><h2 id="questionTitle">${q.prompt}</h2>${questionDataHTML(q)}${q.visual?'<div id="quizVisual" class="lesson-visual"></div>':''}<div class="quiz-options" role="group" aria-labelledby="questionTitle">${options.map((o,i)=>`<button data-answer="${o.index}"><span>${i+1}</span>${o.text}</button>`).join('')}</div><div id="answerFeedback" aria-live="polite"></div><button id="nextQuestion" class="primary-button" hidden>${quiz.at+1===quiz.items.length?'결과 보기':'다음 문제'}</button>`;
     if(q.visual){
       renderVisual($('quizVisual'),q.visual);
@@ -125,6 +128,9 @@ export function createAtlas(api){
       // Record the first attempt so a corrected mistake remains available for review.
       if(quiz.answers[quiz.at]===undefined){
         quiz.answers[quiz.at]=correct;
+        const detail=school.answerDetail(q,Number(b.dataset.answer));
+        $('quizBody').dataset.selectedOptionId=detail.selectedOptionId;$('quizBody').dataset.state=correct?'correct':'incorrect';
+        $('quizBody').dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail}));
         progress=updateProgress(progress,q.id,correct);
         if(store)store.set('progress',progress);
       }

@@ -36,14 +36,14 @@ test("learning menus use the four top-level domains", () => {
   }
   assert.doesNotMatch(menu, /href="learning\/literacy-numeracy\/graph-studio\/"/);
 
-  const teacherMenu = read("classtools/index.html");
+  const teacherMenu = read("apps/classtools/index.html");
   assert.match(teacherMenu, /href="\/learning\/literacy-numeracy\/graph-studio\/"/);
   assert.match(teacherMenu, /<h3 class="tool-name">그래프 그리기<\/h3>/);
   // 학급 대시보드는 따로 둔 카드가 아니라 「내 학급 · 그룹」 카드에서 그룹별로 연다.
   assert.match(teacherMenu, /id="main-groups-grid"/);
   assert.match(teacherMenu, /class="tool-card group-card" onclick="openGroupDashboard\(/);
   assert.match(teacherMenu, /window\.openGroupDashboard = function[\s\S]{0,200}\/classtools\/dashboard\.html\?groupId=/);
-  assert.equal(fs.existsSync(path.join(root, "classtools/dashboard.html")), true);
+  assert.equal(fs.existsSync(path.join(root, "apps/classtools/dashboard.html")), true);
   assert.doesNotMatch(teacherMenu, /<h3 class="tool-name">학급 대시보드<\/h3>/);
   assert.doesNotMatch(teacherMenu, /스마트 학급 대시보드|href="seating"|교실 자리 배치/);
   // 카드에는 이름만 둔다. 설명 줄과 화살표는 없고, 그림 글자는 읽어 주지 않게 가린다.
@@ -82,8 +82,8 @@ test("music appreciation pages use owned backgrounds without promotional copy", 
   const koreanIndex = read("learning/arts/korean-music/index.html");
   const koreanBackground = read("learning/arts/korean-music/background.css");
 
-  assert.match(classicalIndex, /href="background\.css"/);
-  assert.match(koreanIndex, /href="background\.css"/);
+  assert.match(classicalIndex, /href="background\.css(?:\?[^"\s]+)?"/);
+  assert.match(koreanIndex, /href="background\.css(?:\?[^"\s]+)?"/);
   assert.match(classicalBackground, /assets\/images\/background\.webp/);
   assert.match(koreanBackground, /assets\/images\/background\.webp/);
   assert.doesNotMatch(classicalIndex, /문제은행|300문|3<\/b>\s*난이도|QUESTION BANK/);

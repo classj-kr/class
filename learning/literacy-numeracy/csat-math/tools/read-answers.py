@@ -1,9 +1,10 @@
 import pymupdf, re, json, glob, os, sys
+from source_paths import PAPERS_DIR
 sys.stdout.reconfigure(encoding="utf-8")
 CIRC="①②③④⑤"
 idx=json.load(open("four-point-index.json",encoding="utf-8"))
 out={}; bad=[]
-for path in sorted(glob.glob("papers/*-answers.pdf")):
+for path in sorted(PAPERS_DIR.glob("*-answers.pdf")):
     key=os.path.basename(path).replace("-answers.pdf","")
     doc=pymupdf.open(path)
     t=re.sub(r"\s+"," ", doc[0].get_text())

@@ -2,6 +2,7 @@ const express = require('../game-hub-server/node_modules/express');
 const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite');
 const { createLearningBoards } = require('../game-hub-server/learning-boards');
 const { createRoomCodes } = require('../game-hub-server/room-codes');
+const { createRoomEntry } = require('../game-hub-server/room-entry');
 const path = require('node:path');
 
 class HttpError extends Error {
@@ -44,8 +45,10 @@ async function createHarness() {
   await feature.initialize();
   await feature.initialize(); // repeat boot is safe
   const app = express(); app.use(express.json({ limit: '32kb' }));
+  app.use('/api/room-entry', createRoomEntry({ roomCodes }));
   app.use('/api/boards', feature.router);
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
+  app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });
   return { db, pool, roomCodes, initialize: feature.initialize, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise(resolve => server.close(resolve)); await db.close(); } };

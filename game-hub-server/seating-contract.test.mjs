@@ -10,9 +10,9 @@ const serverSource = await readFile(new URL("./server.js", import.meta.url), "ut
 const platformSource = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const votingSource = await readFile(new URL("./voting.js", import.meta.url), "utf8");
 const seatingSource = await readFile(new URL("./seating.js", import.meta.url), "utf8");
-const teacherPage = await readFile(new URL("../classtools/seating.html", import.meta.url), "utf8");
-const studentPage = await readFile(new URL("../room/seat.html", import.meta.url), "utf8");
-const studentApp = await readFile(new URL("../room/seat.js", import.meta.url), "utf8");
+const teacherPage = await readFile(new URL("../apps/classtools/seating.html", import.meta.url), "utf8");
+const studentPage = await readFile(new URL("../apps/room/seat.html", import.meta.url), "utf8");
+const studentApp = await readFile(new URL("../apps/room/seat.js", import.meta.url), "utf8");
 
 test("seating rooms are mounted, initialized, and reachable from the room-number entrance", () => {
   assert.match(platformSource, /createSeating/);

@@ -9,6 +9,25 @@
 .school-lesson { display:grid; gap:12px; }
 .school-lesson .school-concepts { margin:0; }
 .school-question h3 { color:#8be2df; font-size:15px; margin:0 0 8px; }
+.school-options { display:grid; gap:8px; margin:16px 0; }
+.school-options button,.school-next { font:inherit; color:#e2eef6; background:#192e43; border:1px solid #4b647d; border-radius:8px; padding:12px; text-align:left; line-height:1.6; cursor:pointer; }
+.school-options button { display:flex; align-items:baseline; gap:10px; }
+.school-options button span { flex:none; color:#b7cadd; }
+.school-options button:hover:not(:disabled) { background:#28475f; }
+.school-options button:focus-visible,.school-next:focus-visible { outline:3px solid #74dfdb; outline-offset:2px; }
+.school-options button:disabled { opacity:1; cursor:default; }
+.school-options button.correct { border:2px solid #74dfb4; background:#153d36; }
+.school-options button.incorrect { border:2px solid #f29f9f; background:#4d2730; }
+.school-feedback { line-height:1.8; }
+.school-feedback strong { color:#e8e7ba; }
+.school-next { margin-top:12px; background:#254b5a; }
+.school-next[hidden] { display:none; }
+.school-question .practice-counter { color:#a8c6d8; font-size:12px; }
+.school-table { overflow-x:auto; margin:12px 0; }
+.school-table table { border-collapse:collapse; width:100%; font-size:13px; line-height:1.5; }
+.school-table caption { text-align:left; color:#b7cadd; padding-bottom:6px; }
+.school-table th,.school-table td { text-align:left; border:1px solid #405872; padding:8px; }
+.school-table th { background:#203a50; }
 .school-question summary { color:#9cdae8; cursor:pointer; padding:10px 0; }
 .school-question details[open] { border-top:1px solid #35546a; margin-top:12px; }
 .school-question details p { color:#e5d3a8; }

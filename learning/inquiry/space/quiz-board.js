@@ -100,6 +100,7 @@
         card.appendChild(expEl);
 
         checkBtn.addEventListener('click', function () {
+            if(checkBtn.disabled)return;
             var selected = optionsWrap.querySelector('input:checked');
             if (!selected) {
                 delete card.dataset.state;
@@ -116,6 +117,7 @@
             });
             checkBtn.disabled = true;
             checkBtn.textContent = '채점 완료';
+            card.dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail:{questionId:item.id,questionRevision:item.revision||1,schoolLevel:card.dataset.schoolLevel,selectedOptionId:selected.value,correctOptionId:'option-'+(correctIndex+1),correct:correct}}));
         });
 
         return card;

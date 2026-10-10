@@ -18,7 +18,7 @@ async function harness(){
  await feature.initialize(); await feature.initialize();
  const app=express();app.use(express.json());app.use('/api/school-admin/textbooks',feature.router);
  app.get('/preview',(_req,res)=>res.type('html').send(`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/schooladmin/style.css"><title>교과서 선택 검증</title><body data-curriculum-access="edit"><main class="tab-content"><h1>학교 교육과정 · 교과서</h1><label>학년 <select id="grade"><option>3</option><option>4</option><option selected>5</option><option>6</option></select></label><div id="textbookPanel" class="textbook-panel margin-top"></div></main><script src="/schooladmin/textbooks.js"></script><script>const panel=createTextbookPanel({canEdit:()=>true,api:async(p,o={})=>{const r=await fetch(p,{...o,headers:{'Content-Type':'application/json'}});const d=await r.json();if(!r.ok)throw Object.assign(new Error(d.message),{status:r.status});return d;}});panel.load(2026,5);document.getElementById('grade').onchange=e=>panel.load(2026,Number(e.target.value));</script></body></html>`));
- app.use('/schooladmin',express.static(path.resolve(__dirname,'../schooladmin')));
+ app.use('/schooladmin',express.static(path.resolve(__dirname,'../apps/schooladmin')));
  app.use((error,_req,res,_next)=>res.status(error.status||500).json({message:error.message,code:error.code}));
  const server=await new Promise(resolve=>{const s=app.listen(0,'127.0.0.1',()=>resolve(s));});
  return {base:`http://127.0.0.1:${server.address().port}`,async close(){await new Promise(r=>server.close(r));await db.close();}};
