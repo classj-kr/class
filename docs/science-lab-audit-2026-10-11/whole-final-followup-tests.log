@@ -1,0 +1,35 @@
+chromium: 28 control layouts and six current question data resources passed
+✔ chromium: readable tablet controls and current exam-bank cache (5000.4842ms)
+webkit: 28 control layouts and six current question data resources passed
+✔ webkit: readable tablet controls and current exam-bank cache (6247.2515ms)
+chromium 20/104
+chromium 40/104
+chromium 60/104
+chromium 80/104
+chromium 100/104
+{"engine":"chromium","apps":104,"predictions":100,"quizzes":416,"rebuilt":30,"failures":[]}
+✔ chromium: every app clears obsolete predictions and quiz verdicts (4667.6784ms)
+webkit 20/104
+webkit 40/104
+webkit 60/104
+webkit 80/104
+webkit 100/104
+{"engine":"webkit","apps":104,"predictions":100,"quizzes":416,"rebuilt":30,"failures":[]}
+✔ webkit: every app clears obsolete predictions and quiz verdicts (6179.137ms)
+129 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (83.0816ms)
+✔ every science lab JavaScript file parses (57.5652ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8812ms)
+✔ all science entry pages and dynamic resources carry their current content hash (138.0131ms)
+✔ all ten optical diagrams satisfy imaging equations and ray intersections (0.6479ms)
+✔ a changed child invalidates its dynamic loader and HTML entry; rerun is stable (4.9759ms)
+✔ chromium: corrected observations, charge conservation and complete electrical apparatus (9916.9422ms)
+✔ webkit: corrected observations, charge conservation and complete electrical apparatus (12252.6332ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33519.1594

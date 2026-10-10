@@ -136,7 +136,7 @@
             .then(function (markup) {
                 layer.innerHTML =
                     '<div class="nephron-head"><span id="nephronHead"></span></div>' +
-                    '<div class="nephron-stage">' + markup + '<div class="nephron-labels"></div></div>' +
+                    '<div class="nephron-diagram"><div class="nephron-stage">' + markup + '<div class="nephron-labels"></div></div></div>' +
                     '<div class="nephron-table"></div>';
                 svg = layer.querySelector('svg');
                 labelBox = layer.querySelector('.nephron-labels');
@@ -383,7 +383,7 @@
                 u.textContent = '없음 (정상)';
                 u.className = 'c-urine no';
             } else if (s.reabsorb === 'adh') {
-                rb.textContent = '대부분 · ADH가 많으면 증가';
+                rb.textContent = window.SchoolLevel?.value === 'high' ? '대부분 · ADH가 많으면 증가' : '많은 양이 재흡수됨';
                 rb.className = 'c-reab yes';
                 u.textContent = st.adh >= 65 ? '감소 (다른 조건이 같을 때)' : st.adh <= 35 ? '증가 (다른 조건이 같을 때)' : '일부 배출';
                 u.className = 'c-urine warn';

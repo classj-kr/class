@@ -71,12 +71,16 @@
         }
     ];
 
-    var wrap, layer, svg, labelBox, leaderGroup;
+    var wrap, layer, svg, labelBox, leaderGroup, selectedItem;
 
     function init() {
         wrap = document.querySelector('.excretion-viewport');
         if (!wrap) return;
         buildLayer();
+        if(window.SchoolLevel)window.SchoolLevel.subscribe(function(){
+            placeLabels();
+            if(selectedItem)show(selectedItem);
+        });
         requestAnimationFrame(loop);
     }
 
@@ -136,6 +140,12 @@
     }
 
     function show(item) {
+        item=PARTS.find(function(part){return part.id===item.id;})||item;
+        selectedItem=item;
+        if(window.ExcretionLearning){
+            item=window.ExcretionLearning.part(item);
+            if(!item)item=window.ExcretionLearning.part(PARTS[0]);
+        }
         // 누른 조각에 노란 테를 두른다
         if (typeof SimEngine !== 'undefined' && SimEngine.litPart) {
             SimEngine.litPart(svg, PARTS.map(function (x) { return x.id; }), item.id);
@@ -153,7 +163,15 @@
     }
 
     function placeLabels() {
-        BodyDiagramLabels.render(svg, labelBox, PARTS, {
+        var parts=window.ExcretionLearning?PARTS.map(window.ExcretionLearning.part).filter(Boolean):PARTS;
+        if(svg)PARTS.forEach(function(item){
+            if(parts.some(function(part){return part.id===item.id;}))return;
+            var target=svg.querySelector('#'+item.id);
+            if(!target)return;
+            ['role','tabindex','aria-label','aria-pressed'].forEach(function(name){target.removeAttribute(name);});
+            target.onkeydown=null;
+        });
+        BodyDiagramLabels.render(svg, labelBox, parts, {
             leaders: leaderGroup,
             className: 'excretion-map-tag',
             select: function (item) { show(item); }

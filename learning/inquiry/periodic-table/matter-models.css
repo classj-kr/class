@@ -86,6 +86,8 @@ body[data-active-tab="models"] .top-header { background:#0d1721; border-color:#2
 
 /* One compact heading row; no hero, slogans, model count, or duplicate title. */
 body[data-active-tab="models"] .top-header { padding:4px 16px; gap:8px; }
+body[data-active-tab="models"] .top-header .nav-tabs[hidden] { display:none; }
+html[data-school-level="elementary"] body[data-active-tab="models"] .top-header { flex-direction:row; justify-content:space-between; align-items:center; }
 .model-stage-top { min-height:52px; flex-wrap:wrap; gap:8px; padding:8px 14px; }
 .model-stage-top h1 { margin:0; font-size:20px; font-weight:650; line-height:1.4; }
 .model-actions { display:flex; gap:8px; margin-left:auto; }
@@ -150,6 +152,9 @@ body[data-active-tab="models"] .top-header { padding:4px 16px; gap:8px; }
 /* Controls sit immediately under the model; the reading column spans both. */
 .model-layout { grid-template-areas:"stage inspector" "controls inspector"; align-items:start; }
 .model-stage-panel { grid-area:stage; }
+#modelTitle[hidden] { display:none; }
+.matter-nav > .model-actions { display:flex; gap:8px; margin:0 0 12px; }
+.matter-nav > .model-actions button { width:auto; min-height:36px; padding:6px 10px; font-size:14px!important; border:1px solid #416168; color:#d4e7ee; background:#192e3b; }
 .model-controls { grid-area:controls; margin-top:0; }
 .model-inspector { grid-area:inspector; }
 .model-check { margin-top:16px; }
@@ -163,4 +168,5 @@ body[data-active-tab="models"] .top-header { padding:4px 16px; gap:8px; }
 .model-stage-panel:has(canvas[data-portrait="true"]) .model-stage-top::after { content:none; }
 @media(max-width:800px) {
     .model-answers button { flex:0 0 auto; min-height:52px; }
+    .matter-nav > .model-actions { flex:none; margin:0; align-items:center; }
 }

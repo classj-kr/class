@@ -2,7 +2,7 @@
 (() => {
  const slug=location.pathname.split('/').filter(Boolean).filter(x=>x!=='index.html').at(-1);
  if(!['measurement','wave-transfer'].includes(slug))return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('digital-inquiry.css?v=1',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('digital-inquiry.css?v=3fedf1e7aef4',document.currentScript.src);document.head.append(css);
  const panel=document.createElement('section');panel.className='panel digital-inquiry';
  const isMeasure=slug==='measurement';
  panel.innerHTML=`<h2>${isMeasure?'직접 측정하고 비교하기':'소리 파형 분석'}</h2>

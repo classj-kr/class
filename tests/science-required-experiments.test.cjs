@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const lab=path.resolve(__dirname,'../learning/inquiry/science-lab'),models=require(path.join(lab,'required-experiments.js')).requiredExperimentModels(),map=require(path.join(lab,'curriculum-map.js'));
 const all=Object.values(models).flat(),find=id=>all.find(s=>s.id===id),view=(id,s={})=>find(id).view({...find(id).initial,...s});
@@ -43,7 +44,7 @@ test('new experiments: controls, records, all answers, reset and Chromebook/iPad
    }
    await page.locator('[data-reset]').click();assert.deepEqual(await page.evaluate(()=>window.__requiredExperiments.getState()),spec.initial);assert.equal(await page.locator('.required-history tr').count(),0);
    for(const width of [1366,1024,820,768]){await page.setViewportSize({width,height:width>=1024?768:1024});const result=await page.locator('.required-experiments').evaluate(panel=>{const svg=panel.querySelector('svg'),b=svg.getBoundingClientRect(),bad=[...svg.querySelectorAll('text')].filter(t=>{const a=t.getBoundingClientRect();return a.left<b.left-2||a.right>b.right+2||a.top<b.top-2||a.bottom>b.bottom+2;}).map(t=>t.textContent);return{overflow:document.documentElement.scrollWidth>innerWidth+1,bad};});assert.deepEqual(result,{overflow:false,bad:[]},slug+' '+spec.id+' '+width);
-    if(process.env.SCIENCE_CAPTURE&&width===1024){const dir=path.resolve(lab,'../../../docs/science-lab-audit-2026-09-20/required-gap-screenshots');fs.mkdirSync(dir,{recursive:true});await page.locator('.required-experiments').screenshot({path:path.join(dir,spec.id+'-1024.png')});}
+    if(process.env.SCIENCE_CAPTURE&&width===1024){const dir=path.resolve(lab,'../../../docs/science-lab-audit-2026-09-20/required-gap-screenshots');fs.mkdirSync(dir,{recursive:true});await screenshotWebp(page.locator('.required-experiments'), {path:path.join(dir,spec.id+'-1024.webp')});}
    }
   }
   if(specs.length>1){

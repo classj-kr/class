@@ -7,11 +7,11 @@
     <title>과학 실험실</title>
     <meta name="description" content="검정말이 내는 기포 수로 빛의 세기·이산화탄소·온도가 광합성량에 미치는 영향과 제한 요인을 찾는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="photo-visual.css?v=5">
-    <link rel="stylesheet" href="quiz.css?v=3">
-    <link rel="stylesheet" href="../exam-scope.css?v=1">
-    <link rel="stylesheet" href="../lab-ui.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
+    <link rel="stylesheet" href="photo-visual.css?v=0f6fcc2d01d5">
+    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
+    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
+    <link rel="stylesheet" href="../lab-ui.css?v=6c6a92a9805f">
 <link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
 </head>
 <body>
@@ -34,7 +34,7 @@
         <div class="experiment-layout">
             <section class="panel control-panel" aria-labelledby="control-title">
                 <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard">같은 장치에서 기포 수로 광합성의 상대적인 정도를 비교합니다</p>
+                <p class="water-standard">물과 식물의 양이 같은 모형입니다. 기포 수는 상대적 비교를 위한 가상 값이며 실제 측정값이 아닙니다.</p>
 
                 <div class="range-heading">
                     <label for="lightRange">빛의 세기</label>
@@ -63,6 +63,8 @@
                         <button type="button" data-prediction="light">빛의 세기</button>
                         <button type="button" data-prediction="co2">이산화탄소</button>
                         <button type="button" data-prediction="temp">온도</button>
+                        <button type="button" data-prediction="multiple">여러 요인이 함께 제한</button>
+                        <button type="button" data-prediction="none">없음 · 모형의 최대</button>
                     </div>
                 </fieldset>
 
@@ -109,7 +111,7 @@
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
                 <p><strong>광합성</strong> 빛에너지로 이산화탄소와 물을 이용해 양분을 만들고 산소를 내놓습니다.</p>
-                <p><strong>제한 요인</strong> 여러 조건 가운데 가장 부족한 것이 광합성량을 결정합니다. 그것을 늘려야만 광합성이 늘어납니다.</p>
+                <p><strong>제한 요인</strong> 이 모형에서는 가장 작은 상한이 광합성량을 결정합니다. 여러 조건이 같은 상한으로 제한하면 함께 조절해야 합니다.</p>
                 <p><strong>온도</strong> 광합성은 효소가 하는 일이라, 너무 높으면 효소가 망가져 오히려 급격히 줄어듭니다.</p>
             </div>
         </section>
@@ -118,7 +120,7 @@
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-                    <h3>빛이 매우 약할 때 이산화탄소만 늘리면 광합성량은?</h3>
+                    <h3>다른 조건은 충분하고 빛만 광합성을 제한할 때, 이산화탄소만 늘리면 광합성량은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q1" value="a"> 크게 늘어난다</label>
                         <label><input type="radio" name="q1" value="b"> 오히려 줄어든다</label>
@@ -131,16 +133,16 @@
                 </article>
 
                 <article class="quiz-card" data-answer="b">
-                    <h3>물이 충분한 이 모형에서 빛을 계속 세게 해도 광합성량이 더 늘지 않는 까닭은?</h3>
+                    <h3>물이 충분하고 온도가 광합성을 제한하는 이 모형에서, 빛만 더 세게 해도 광합성량이 늘지 않는 까닭은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q2" value="a"> 빛이 식물을 태우기 때문</label>
-                        <label><input type="radio" name="q2" value="b"> 이산화탄소나 온도 같은 다른 요인이 제한하기 때문</label>
+                        <label><input type="radio" name="q2" value="b"> 온도가 광합성량을 제한하기 때문</label>
                         <label><input type="radio" name="q2" value="c"> 물이 부족하기 때문</label>
                         <label><input type="radio" name="q2" value="d"> 산소가 너무 많아지기 때문</label>
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>빛이 충분해지면 더 이상 빛이 제한 요인이 아니고, 이산화탄소나 온도가 광합성량을 결정하게 됩니다.</p>
+                    <p class="answer-explanation" hidden>제시된 조건에서는 온도가 광합성량을 제한합니다. 빛만 늘려서는 온도에 따른 한계를 바꿀 수 없습니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="b">
@@ -171,9 +173,9 @@
             </div>
         </details>
     </main>
-    <script src="app.js?v=c027e8626c39"></script>
+    <script src="app.js?v=5a6baf835f9c"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=9afa691b654c"></script>
+    <script src="../exam-scope.js?v=7e39dbac06b5"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>

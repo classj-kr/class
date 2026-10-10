@@ -559,16 +559,16 @@
             var desc = document.getElementById('bpmStateDesc');
             if (desc) {
                 if (v < 60) {
-                    desc.textContent = '수면 / 깊은 휴식 (서맥 경향)';
+                    desc.textContent = '느린 박동에서 혈액의 이동을 관찰하세요.';
                     desc.style.color = '#38bdf8';
                 } else if (v <= 85) {
-                    desc.textContent = '안정 시 정상 (표준 60~80)';
+                    desc.textContent = '한 번 뛸 때와 여러 번 뛸 때의 흐름을 비교하세요.';
                     desc.style.color = '#22c55e';
                 } else if (v <= 105) {
-                    desc.textContent = '가벼운 활동 / 계단 오르기';
+                    desc.textContent = '박동이 빨라지면 같은 시간 동안 더 자주 혈액을 밀어 냅니다.';
                     desc.style.color = '#eab308';
                 } else {
-                    desc.textContent = '격렬한 운동 (달리기, 줄넘기)';
+                    desc.textContent = '빠른 박동과 느린 박동에서 순환의 차이를 비교하세요.';
                     desc.style.color = '#ef4444';
                 }
             }

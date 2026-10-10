@@ -44,10 +44,50 @@
             sarcomere:['근절이 짧아질 때 필라멘트의 길이와 겹침을 구분합니다.','수축 전후의 A대, I대, H대와 Z선 간격을 비교하세요.']
         }
     };
+    function compactNavigation(){
+        var header=document.querySelector('.sim-header');
+        var layout=document.querySelector('.sim-app-container');
+        var sidebar=document.querySelector('.sidebar-body');
+        if(!header||!layout||!sidebar)return;
+        var navigation=document.createElement('nav');
+        navigation.className='model-navigation';
+        navigation.setAttribute('aria-label','학습 화면');
+        var back=header.querySelector('.nav-back-btn');
+        if(back)navigation.appendChild(back);
+        layout.insertBefore(navigation,layout.firstChild);
+        var actions=header.querySelector('.sim-header-right');
+        if(actions)sidebar.insertBefore(actions,sidebar.firstChild);
+        var title=header.querySelector('.sim-title');
+        var stage=layout.querySelector('.sim-stage-area');
+        if(title&&stage)stage.setAttribute('aria-label',title.textContent);
+        header.remove();
+        document.body.classList.add('model-compact-layout');
+    }
+    function bindOrganFocus(){
+        function clear(){
+            document.querySelectorAll('.model-organ-focus').forEach(function(node){node.classList.remove('model-organ-focus');});
+        }
+        function update(){
+            clear();
+            var part=document.activeElement;
+            if(!part||!part.matches('.sim-stage-area svg [role="button"]:focus-visible')||part.closest('[hidden]'))return;
+            var labels=[].slice.call(part.closest('.sim-stage-area').querySelectorAll('.body-diagram-label,.joint-tag,.skin-tag'));
+            var label=labels.find(function(node){
+                return (node.dataset.for===part.id||node.dataset.part===part.id)&&node.getClientRects().length&&!node.closest('[hidden]');
+            });
+            (label||part).classList.add('model-organ-focus');
+        }
+        document.addEventListener('focus',update,true);
+        document.addEventListener('focusout',clear);
+        document.addEventListener('keydown',update,true);
+        window.addEventListener('resize',function(){requestAnimationFrame(update);});
+    }
     function init(){
         var app=location.pathname.split('/').filter(Boolean).slice(-1)[0];
         if(app==='index.html') app=location.pathname.split('/').slice(-2)[0];
         if(!guides[app])return;
+        compactNavigation();
+        bindOrganFocus();
         var host=document.getElementById('organDetailCard')||document.getElementById('organFocusCard');
         if(!host)host=document.querySelector('.sidebar-tab-panel');
         if(!host)return;
@@ -55,30 +95,37 @@
         card.innerHTML='<summary>관찰하기</summary><p class="model-purpose"></p><p class="model-task"></p><div class="model-scene-step"><button type="button" data-step="-1">← 이전</button><span></span><button type="button" data-step="1">다음 →</button></div>';
         var sidebarBody=document.querySelector('.sidebar-body');
         if(sidebarBody){
-            sidebarBody.insertBefore(card,sidebarBody.firstChild);
+            var actions=sidebarBody.querySelector('.sim-header-right');
+            if(actions)actions.after(card);else sidebarBody.insertBefore(card,sidebarBody.firstChild);
             if(host.id==='organDetailCard'||host.id==='organFocusCard'){
                 sidebarBody.insertBefore(host,card.nextSibling);
                 host.classList.add('model-selected-detail');
                 host.hidden=true;
             }
         }else host.parentNode.insertBefore(card,host);
+        function sceneButtons(){
+            return [].slice.call(document.querySelectorAll('.scene-btn')).filter(function(b){return !b.hidden;});
+        }
         function update(){
-            var buttons=[].slice.call(document.querySelectorAll('.scene-btn'));
+            var buttons=sceneButtons();
             var index=buttons.findIndex(function(b){return b.classList.contains('active');});
             if(index<0)return;
+            var switcher=document.querySelector('.scene-switcher');
+            if(switcher)switcher.hidden=buttons.length===1;
             var key=buttons[index].dataset.scene;
             var aliases={main:app==='skeleton'?'joint':'alveoli',path:'exchange',micro:'sarcomere',macro:'joint',gas:'alveoli',two:'exchange',twoplaces:'exchange',breath:'motion',arm:'joint',sensory:'eye'};
-            var g=guides[app][key]||guides[app][aliases[key]];
+            var g=(app==='excretion'&&window.ExcretionLearning&&window.ExcretionLearning.guide(key))||(app==='circulation'&&window.CirculationLearning&&window.CirculationLearning.guide(key))||guides[app][key]||guides[app][aliases[key]];
             if(!g){card.hidden=true;return;}
             card.hidden=false;
             ['.model-purpose','.model-task'].forEach(function(s,i){card.querySelector(s).textContent=g[i];});
             card.querySelector('.model-scene-step span').textContent=(index+1)+' / '+buttons.length+' 장면';
+            card.querySelector('.model-scene-step').hidden=buttons.length===1;
             card.querySelector('[data-step="-1"]').disabled=index===0;
             card.querySelector('[data-step="1"]').disabled=index===buttons.length-1;
         }
         card.addEventListener('click',function(e){
             var step=e.target.closest('[data-step]');if(!step)return;
-            var buttons=[].slice.call(document.querySelectorAll('.scene-btn'));
+            var buttons=sceneButtons();
             var i=buttons.findIndex(function(b){return b.classList.contains('active');});
             var next=buttons[i+Number(step.dataset.step)];if(next)next.click();
         });
@@ -92,6 +139,7 @@
         document.addEventListener('keydown',function(e){
             if((e.key==='Enter'||e.key===' ')&&e.target.closest('.body-diagram-label,svg [role="button"],.joint-tag,.skin-tag'))host.hidden=false;
         },true);
+        if(window.SchoolLevel)window.SchoolLevel.subscribe(function(){requestAnimationFrame(update);});
         requestAnimationFrame(update);
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();

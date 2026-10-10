@@ -1,11 +1,13 @@
 """Verify downloaded original assessments and unpack official document bundles."""
-import hashlib, json, re, sys, io
+import hashlib, json, re, sys, io, zlib
 from pathlib import Path
 from zipfile import ZipFile
 from collections import Counter
 
 ROOT = Path(__file__).resolve().parents[1] / 'references/textbooks'
 OUT = ROOT / '초등평가'
+archive_report=ROOT/'수집기록/압축정리결과.json'
+unpacked={str(Path(r['archive']).resolve()).casefold():r for r in json.loads(archive_report.read_text(encoding='utf-8-sig')) if r.get('archiveDisposition')=='recycle_bin'} if archive_report.exists() else {}
 DOCS = {'.pdf', '.hwp', '.hwpx', '.doc', '.docx', '.xlsx', '.pptx', '.zip'}
 def dump(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding='utf-8')
@@ -43,6 +45,14 @@ expanded = []
 failures = []
 for row in rows:
     try:
+        recycled=unpacked.get(str(Path(row['path']).resolve()).casefold())
+        if recycled and not Path(row['path']).exists():
+            for item in recycled['files']:
+                child=Path(item['path']);data=child.read_bytes()
+                assert len(data)==item['bytes'] and zlib.crc32(data)&0xffffffff==item['crc32'], 'extracted file CRC mismatch'
+                assert signature(child,data), 'invalid extracted document signature'
+                expanded.append({**row,**item,'sha256':hashlib.sha256(data).hexdigest(),'parentArchive':row['path'],'parentArchiveDisposition':'recycle_bin'})
+            continue
         verify(row)
         if Path(row['path']).suffix.lower() != '.zip' or row['provider'] not in {'디딤돌', '두클래스'}: continue
         parent = Path(row['path']); folder = parent.parent / (parent.stem + '_내용')
@@ -62,7 +72,7 @@ for row in rows:
                 if not dest.exists(): dest.write_bytes(data)
                 expanded.append({**row,'path':str(dest),'member':name,'parentArchive':str(parent),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'crc32':info.CRC})
     except Exception as exc: failures.append({'path':row['path'],'error':str(exc)})
-all_rows = list({r['path']:r for r in rows + expanded}.values())
+all_rows = list({r['path']:r for r in rows + expanded if Path(r['path']).is_file()}.values())
 summary = {'files':len(all_rows),'uniqueContents':len({r['sha256'] for r in all_rows}),'bytes':sum(r['bytes'] for r in all_rows),'providerSubject':dict(Counter(r['provider']+'/'+r['subject'] for r in all_rows)), 'failures':failures, 'note':'Counts are files, including original ZIP bundles and their extracted documents; not question counts or a claim of complete publisher question banks.'}
 dump(OUT/'전체_파일목록.json', all_rows)
 dump(OUT/'파일검증_결과.json', summary)

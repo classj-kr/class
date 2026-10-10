@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<g clip-path="url(#rampClip)">${body}</g>`;
         out += `<text class="part-label" x="20" y="20">h ${a.h} m · θ ${a.deg}° · μ ${a.mu.toFixed(2)} · 빗면 길이 ${a.slope.toFixed(2)} m</text>`;
         if (a.stuck) {
-            out += `<text class="warn-text" x="20" y="196">μ ${a.mu.toFixed(2)}가 tan ${a.deg}° = ${a.tan.toFixed(2)}보다 커서 수레가 미끄러지지 않습니다</text>`;
+            out += `<text class="warn-text figure-caption" x="20" y="196">μ ${a.mu.toFixed(2)}가 tan ${a.deg}° = ${a.tan.toFixed(2)}보다 커서 수레가 미끄러지지 않습니다</text>`;
         } else {
-            out += `<text class="read-text" x="20" y="196">지금 속력 ${st.v.toFixed(2)} m/s · 위치 ${st.pe.toFixed(1)} J · 운동 ${st.ke.toFixed(1)} J · 열 ${st.heat.toFixed(1)} J</text>`;
+            out += `<text class="read-text figure-caption" x="20" y="196">지금 속력 ${st.v.toFixed(2)} m/s · 위치 ${st.pe.toFixed(1)} J · 운동 ${st.ke.toFixed(1)} J · 열 ${st.heat.toFixed(1)} J</text>`;
         }
         out += `<text class="note-text" x="20" y="210">세 값을 더하면 언제나 ${a.total.toFixed(1)} J 입니다</text>`;
         mainGroup.innerHTML = out;

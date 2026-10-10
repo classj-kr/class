@@ -29,7 +29,8 @@ assert.deepEqual(unresolved,[],'A common-course activity has no grade-compatible
 const experiments=rows.filter(r=>r.text.includes('실험'));assert.equal(experiments.length,29);assert(experiments.every(r=>!outside[r.id]));
 const path='docs/science-lab-audit-2026-09-20/common-experiment-census.md';
 const esc=s=>String(s).replaceAll('|','\\|').replace(/\s+/g,' ');
-const text='# 공통과목 실험 최종 대조 — 2026-09-20\n\n'
+const text='# 초3~중3·통합과학1·2 활동 연결표 — 2026-09-20\n\n'
+ +'**2026-10-11 범위 정정:** 이 표는 고교 공통과목인 과학탐구실험1·2를 포함하지 않는다. 104개 앱으로 초·중·고 필수실험 전체를 구현했다는 근거로 사용할 수 없다. ‘실험’ 29개는 문장에 해당 단어가 있는 항목 수이며, 별도 활동 분류도 교육과정에서 제외한다는 뜻이 아니다. [전체 261개 활동의 재집계와 미연결 목록](<E:/webprojects/class/docs/science-lab-audit-2026-10-11/activity-coverage.md>)을 함께 확인한다.\n\n'
  +'## 판정 범위\n\n초3~중3 과학과 고1 통합과학1·2의 원문 탐구 활동 **134개 전부**를 대조했다. 그중 원문에 ‘실험’이 명시된 **29개는 모두 해당 학년군 앱에 대응 구현이 있다.** 실험이라는 단어가 없는 관찰·측정·모형 활동도 표에서 누락하지 않았다.\n\n'
  +'134개 중 **118개는 학년군에 맞는 부분 구현·모형·직접 측정 연결**, **16개는 조사·토의·야외 관측 등의 별도 활동**이다. 이 숫자는 필수 실험 개수나 성취기준 전체 충족률이 아니다. 원문 탐구 활동을 모두 법정 필수 실험으로 간주하지 않았다.\n\n'
  +'이번 보완: 기존 추가 패널 18개에서 **24개**로 확장(스펙트럼·개체군·검출 원리·동족 원소 실험 설계·중1 열전도·초4 태양계 모형 추가). 길이·시간 직접 측정, 합성 신호/마이크 파형 분석, 기록 내려받기도 제공한다. 전자석은 초6 circuit-bulbs, 전구/저항 직렬·병렬은 중2 ohms-law, 태양 고도·그림자는 초6 seasons에 있다.\n\n'

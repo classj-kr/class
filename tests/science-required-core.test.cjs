@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {test}=require('node:test');
 const base=path.resolve(__dirname,'../learning/inquiry/science-lab');
@@ -25,7 +26,7 @@ test('independent science invariants: controls, conservation, optics, division a
  assert.doesNotMatch(view('acid-base',{material:'protein',stage:'after'}).text,/기포가 생/);
  assert.match(view('state-change',{kind:'condensation',stage:'after'}).text,/공기 중의 수증기/);
  for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','far']){
-  const r=view('refraction',{optic,distance});const expected=['concaveMirror','convexLens'].includes(optic)&&distance==='far';assert.equal(r.text.includes('거꾸로'),expected,optic+distance);
+  const r=view('refraction',{optic,distance});const expected=['concaveMirror','convexLens'].includes(optic)&&distance==='far';assert.equal(r.text.includes('거꾸로 된'),expected,optic+distance);
  }
  for(const kind of ['melt','boil'])for(const sample of ['A','B']){const a=view('density-buoyancy',{kind,sample,amount:'one',step:'during'}),b=view('density-buoyancy',{kind,sample,amount:'two',step:'during'});assert.equal(a.text,b.text);assert.match(a.text,/온도가 .*일정한 구간/);}
  const numberOfParticles=r=>(r.svg.match(/<circle /g)||[]).length;
@@ -62,7 +63,7 @@ test('all required observation controls, wrong/correct answers and resets work i
       if(/NaN|undefined/.test(section.textContent))errors.push('Invalid number');n++;
      }section.querySelector('.supplement-reset').click();return{errors,n,state:window.__scienceSupplement.getState(),overflow:document.documentElement.scrollWidth>innerWidth+1};},cases);
     assert.deepEqual(checks.errors,[],slug);assert.equal(checks.overflow,false,slug);for(const[key,value]of Object.entries(spec.initial))assert.equal(checks.state[key],value,slug+' reset '+key);assert.deepEqual(errors,[],slug);total+=checks.n;
-    if(process.env.SCIENCE_CAPTURE){const dir=path.resolve(base,'../../../docs/science-lab-audit-2026-09-20/required-core-screenshots');fs.mkdirSync(dir,{recursive:true});await page.locator('.curriculum-supplement').screenshot({path:path.join(dir,slug+'-mobile.png')});}
+    if(process.env.SCIENCE_CAPTURE){const dir=path.resolve(base,'../../../docs/science-lab-audit-2026-09-20/required-core-screenshots');fs.mkdirSync(dir,{recursive:true});await screenshotWebp(page.locator('.curriculum-supplement'), {path:path.join(dir,slug+'-mobile.webp')});}
     console.log(slug+': '+checks.n+' browser states, all 3 answers + reset verified');
    }finally{await page.close();}
   }

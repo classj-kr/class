@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab');
 for(const engine of ['chromium','webkit'])test(`${engine}: real animation frames keep observations and grades synchronized`,{timeout:180000},async()=>{
@@ -15,7 +16,7 @@ for(const engine of ['chromium','webkit'])test(`${engine}: real animation frames
  await open('mass-ratio');await click('[data-mode="heat"]');await click('#runBtn');const initialTemp=await text('#valueA');await page.clock.runFor(5200);assert.notEqual(await text('#valueA'),initialTemp);assert.equal(await text('#valueA'),await page.evaluate(()=>__massModel.tempAt(__massModel.elapsed()).toFixed(1)+' ℃'));
  await open('apparent-motion');await click('#playBtn');await page.clock.runFor(1600);assert.match(await text('#elementaryExplanation'),/시간 동안/);await click('[data-prediction="ccw"]');assert.equal(await text('#playBtn'),'시간 흘려보내기');assert.equal(await page.locator('#resultContent').isVisible(),false);await click('#playBtn');assert.equal(await page.locator('#resultContent').isVisible(),true);
  await open('flame-ions');await click('[data-mode="ion"]');assert.deepEqual(await page.locator('.lead').evaluateAll(es=>es.map(e=>({fill:getComputedStyle(e).fill,stroke:getComputedStyle(e).stroke}))),[{fill:'none',stroke:'rgb(220, 38, 38)'},{fill:'none',stroke:'rgb(37, 99, 235)'}]);const contacts=await page.evaluate(()=>{const s=document.querySelector('.strip'),x=+s.getAttribute('x'),right=x+(+s.getAttribute('width'));return [...document.querySelectorAll('.clip')].map(e=>{const a=+e.getAttribute('x'),b=a+(+e.getAttribute('width'));return (a<=x&&b>=x)||(a<=right&&b>=right);});});assert.deepEqual(contacts,[true,true]);
- const out=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20/full-inspection');await page.locator('.experiment-layout').screenshot({path:path.join(out,'repaired-ions-'+engine+'.png')});
+ const out=path.resolve(__dirname,'../docs/science-lab-audit-2026-09-20/full-inspection');await screenshotWebp(page.locator('.experiment-layout'), {path:path.join(out,'repaired-ions-'+engine+'.webp')});
  await open('night-sky');await click('[data-mode="moon"]');assert.equal(await page.locator('[data-phase-key]').count(),1);assert.ok(await page.locator('[data-phase-key]').evaluate(e=>{const b=e.getBBox();return b.y+b.height<36;}));
  // Bespoke canvas UI: all three datasets, touch coordinate conversion, wrong
  // and right answers, and invalidation when a distance changes.
@@ -23,8 +24,8 @@ for(const engine of ['chromium','webkit'])test(`${engine}: real animation frames
   const canvas=page.locator('#epicenterCanvas');await canvas.scrollIntoViewIfNeeded();const b=await canvas.boundingBox();await page.touchscreen.tap(b.x+b.width*.025,b.y+b.height*.025);await click('#checkBtn');assert.equal(await page.locator('#resultPanel').getAttribute('data-state'),'incorrect');
   await page.touchscreen.tap(b.x+b.width*point.x/400,b.y+b.height*point.y/320);await click('#checkBtn');assert.equal(await page.locator('#resultPanel').getAttribute('data-state'),'correct');
   await page.locator('[data-distance="A"]').fill('100');await page.locator('[data-distance="A"]').dispatchEvent('input');assert.equal(await page.locator('#resultPanel').getAttribute('data-state'),null);await click('#newDataBtn');
- }await page.screenshot({path:path.join(out,'special-earthquake-'+engine+'.png'),fullPage:true});
- for(const slug of ['cell-structure','neutralization-common']){await open(slug);assert.ok(await page.locator('.curriculum-supplement').count()||await page.locator('[data-science-supplement]').count()||await page.locator('.supplement-lab').count(),'supplement loaded: '+slug);await page.screenshot({path:path.join(out,'special-'+slug+'-'+engine+'.png'),fullPage:true});}
+ }await screenshotWebp(page, {path:path.join(out,'special-earthquake-'+engine+'.webp'),fullPage:true});
+ for(const slug of ['cell-structure','neutralization-common']){await open(slug);assert.ok(await page.locator('.curriculum-supplement').count()||await page.locator('[data-science-supplement]').count()||await page.locator('.supplement-lab').count(),'supplement loaded: '+slug);await screenshotWebp(page, {path:path.join(out,'special-'+slug+'-'+engine+'.webp'),fullPage:true});}
 
 
  await open('density-buoyancy');await click('[data-fluid="oil"]');await range('massRange',240);await range('volRange',240);await page.clock.runFor(32);assert.ok(!(await text('#stageReadout')).includes('0.37'),'obsolete force label must be removed');await click('[data-mode="gas"]');await page.clock.runFor(32);assert.ok(!(await text('#stageReadout')).includes('바닥'),'gas mode cannot retain buoyancy force');

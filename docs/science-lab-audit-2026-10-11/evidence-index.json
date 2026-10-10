@@ -1,0 +1,2834 @@
+{
+  "summary": {
+    "date": "2026-10-11",
+    "apps": 104,
+    "originalQuestions": 416,
+    "examQuestions": 241,
+    "sources": 49,
+    "pdfs": 35,
+    "assessmentDocuments": 14,
+    "pdfPages": 1800,
+    "reviewedSources": 25,
+    "reviewRecords": 29,
+    "appsWithSelectedSourceReview": 28
+  },
+  "sources": [
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_1_과학PDF__72b24991.pdf",
+      "sha256": "102ce624dacf58583a074b93416ad689b5c680e4279f908ef2af4ce91123149b",
+      "kind": "pdf",
+      "pages": 30,
+      "status": "selected-passages-reviewed",
+      "id": "102ce624dacf5858"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_2_과학PDF__0a5f024b.pdf",
+      "sha256": "7b7d21ce70cbc1125bf75d863ad08cbdb1079d5d8f966c41954b35c539b729a3",
+      "kind": "pdf",
+      "pages": 30,
+      "status": "indexed-only",
+      "id": "7b7d21ce70cbc112"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_3_과학PDF__bbdba105.pdf",
+      "sha256": "6ffbf49bb850d9e538ce93f6b72465c13396516da643804c50efaf09af94e442",
+      "kind": "pdf",
+      "pages": 28,
+      "status": "indexed-only",
+      "id": "6ffbf49bb850d9e5"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_4_과학PDF__e4c0de92.pdf",
+      "sha256": "9c826e4094692239560885790b18f3ec4d067ff8791ea534efa2c16866125a52",
+      "kind": "pdf",
+      "pages": 32,
+      "status": "selected-passages-reviewed",
+      "id": "9c826e4094692239"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_1_과학PDF__e41d925a.pdf",
+      "sha256": "c153993ac24e81899b0a798aa21b1701c4b72c6096745b35296323c505781d29",
+      "kind": "pdf",
+      "pages": 28,
+      "status": "indexed-only",
+      "id": "c153993ac24e8189"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_2_과학PDF__809d629a.pdf",
+      "sha256": "5ef9a29031472d43948cc7416241f3b12134146d733ae01f8db890fe7d5b9346",
+      "kind": "pdf",
+      "pages": 28,
+      "status": "indexed-only",
+      "id": "5ef9a29031472d43"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_3_과학PDF__103896da.pdf",
+      "sha256": "ea4b521d6469fb4a13b2b8173de3ed7d5f16bf53f1df549de764ccea29dbdc7f",
+      "kind": "pdf",
+      "pages": 32,
+      "status": "selected-passages-reviewed",
+      "id": "ea4b521d6469fb4a"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_4_과학PDF__46a1971f.pdf",
+      "sha256": "98fd4b1d24cbec645625c29399f5e66b7e8637e25176acc1610201379199130d",
+      "kind": "pdf",
+      "pages": 27,
+      "status": "indexed-only",
+      "id": "98fd4b1d24cbec64"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_1_과학PDF__7941a7fb.pdf",
+      "sha256": "2763b8cf014a4bb8508c90643be3e2a5ff3a16e325de7df263ec04baa88ab32a",
+      "kind": "pdf",
+      "pages": 26,
+      "status": "selected-passages-reviewed",
+      "id": "2763b8cf014a4bb8"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_2_과학PDF__62791d95.pdf",
+      "sha256": "bb7e6bd6ea4817159f44e74ce34a3cbc9209881577cf0828c716db738ed6b109",
+      "kind": "pdf",
+      "pages": 31,
+      "status": "selected-passages-reviewed",
+      "id": "bb7e6bd6ea481715"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_3_과학PDF__40cd3d78.pdf",
+      "sha256": "295e8a991fecc12f0e16baac492c746f74621776337d4c239fd2150eb522118e",
+      "kind": "pdf",
+      "pages": 36,
+      "status": "indexed-only",
+      "id": "295e8a991fecc12f"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_4_과학PDF__cab2d478.pdf",
+      "sha256": "c84377a276e7c9d407992e4a2385771278b8a4213507f9c370f03baa90795b85",
+      "kind": "pdf",
+      "pages": 24,
+      "status": "selected-passages-reviewed",
+      "id": "c84377a276e7c9d4"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_1_과학PDF__ff3815ab.pdf",
+      "sha256": "37365b86c62b2aed8303a5bd16792dbf9eb4109c6715b0249cf2d1f5a33cfa1e",
+      "kind": "pdf",
+      "pages": 32,
+      "status": "indexed-only",
+      "id": "37365b86c62b2aed"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_2_과학PDF__fc340e2b.pdf",
+      "sha256": "da56bed7636da8a9326c42732a4d962499261383a296766791a777228538b458",
+      "kind": "pdf",
+      "pages": 32,
+      "status": "indexed-only",
+      "id": "da56bed7636da8a9"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_3_과학PDF__0b7560be.pdf",
+      "sha256": "150c2bc4fec5ce83cfe26d2ec590fa57a7c421a303f5219b6163a04e7e57c455",
+      "kind": "pdf",
+      "pages": 27,
+      "status": "selected-passages-reviewed",
+      "id": "150c2bc4fec5ce83"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_4_과학PDF__89b485e0.pdf",
+      "sha256": "5aed1d35619c99c63a79d4a8fc9e9de957ae96d38182e031563451150cfba2a2",
+      "kind": "pdf",
+      "pages": 28,
+      "status": "indexed-only",
+      "id": "5aed1d35619c99c6"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_1_과학PDF__b4d0d2f6.pdf",
+      "sha256": "4f9126e5e524fa8893eb8c5c1b260763e04d5b7aba480f651cfcb03f6a4ad801",
+      "kind": "pdf",
+      "pages": 30,
+      "status": "selected-passages-reviewed",
+      "id": "4f9126e5e524fa88"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_2_과학PDF__5185856a.pdf",
+      "sha256": "12e3528e738c74732c019388e0011365d94184bbce2630dd2eb6bd61c4c35778",
+      "kind": "pdf",
+      "pages": 36,
+      "status": "selected-passages-reviewed",
+      "id": "12e3528e738c7473"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_3_과학PDF__46b51dd0.pdf",
+      "sha256": "ab3d40fbf44d14ba8b7e1db05e12d5099f209649fd8d48e968d6409180ab268d",
+      "kind": "pdf",
+      "pages": 29,
+      "status": "selected-passages-reviewed",
+      "id": "ab3d40fbf44d14ba"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_4_과학PDF__c08e6d87.pdf",
+      "sha256": "f1ee840a52fb48f6010f21b06a626f2977904bc581ae5ae9e2f522d71b1cbdf4",
+      "kind": "pdf",
+      "pages": 34,
+      "status": "selected-passages-reviewed",
+      "id": "f1ee840a52fb48f6"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_1_과학PDF__187ef07f.pdf",
+      "sha256": "76bca86cc0dd75f5a5c45eda515a42d3213d9263d64dc3e3d1f9f6f652849477",
+      "kind": "pdf",
+      "pages": 28,
+      "status": "selected-passages-reviewed",
+      "id": "76bca86cc0dd75f5"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_2_과학PDF__13274fc6.pdf",
+      "sha256": "fec1f079908511c87cc5c76e80d9ba32b299d295d6a2b3197db62514ecffb7f4",
+      "kind": "pdf",
+      "pages": 34,
+      "status": "selected-passages-reviewed",
+      "id": "fec1f079908511c8"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_3_과학PDF__afd1e270.pdf",
+      "sha256": "d0b758ce42256f7ebfa9747040640b1166c86416071a0970182c68dcc508d33a",
+      "kind": "pdf",
+      "pages": 34,
+      "status": "selected-passages-reviewed",
+      "id": "d0b758ce42256f7e"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_4_과학PDF__28b31b62.pdf",
+      "sha256": "4ed38cddf04a3b4237b60b1688fa2900654b3e7393971d9cd720715612d65079",
+      "kind": "pdf",
+      "pages": 30,
+      "status": "indexed-only",
+      "id": "4ed38cddf04a3b42"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_1_과학PDF__96e52fde.pdf",
+      "sha256": "9cf443300eb93c19e3e770ce21b4de2b7dd5da6cf7e6083d01391c3b6c759ab6",
+      "kind": "pdf",
+      "pages": 28,
+      "status": "selected-passages-reviewed",
+      "id": "9cf443300eb93c19"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_2_과학PDF__48bba1f2.pdf",
+      "sha256": "280217a87c1f9146b04b569f2b351f593f169815d839f6a47ac14b501a303173",
+      "kind": "pdf",
+      "pages": 32,
+      "status": "indexed-only",
+      "id": "280217a87c1f9146"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_3_과학PDF__1e3abda1.pdf",
+      "sha256": "89316af3de563d4c912e504b8eefb358d85170e901f64814dd087970c90d45a0",
+      "kind": "pdf",
+      "pages": 26,
+      "status": "selected-passages-reviewed",
+      "id": "89316af3de563d4c"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_4_과학PDF__364dd547.pdf",
+      "sha256": "9db0e24e1df898a44d821977eb3a5be2a751b718381270852e3e6c0d71fbdbce",
+      "kind": "pdf",
+      "pages": 32,
+      "status": "indexed-only",
+      "id": "9db0e24e1df898a4"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_1_과학PDF__76063c75.pdf",
+      "sha256": "ce9b5e52ba306df87d110849f081962815b7981dc3d4dca66b81a281da2c86eb",
+      "kind": "pdf",
+      "pages": 30,
+      "status": "selected-passages-reviewed",
+      "id": "ce9b5e52ba306df8"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_2_과학PDF__34aab417.pdf",
+      "sha256": "29025dcd9922793674fec4e92c3d39f5cd44d285b117197672295a5851106610",
+      "kind": "pdf",
+      "pages": 29,
+      "status": "selected-passages-reviewed",
+      "id": "29025dcd99227936"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_3_과학PDF__4e34e2a9.pdf",
+      "sha256": "563555452e4a2364ccef28bdcd8300ef21dd82c4427fac6ac8e63edae226009f",
+      "kind": "pdf",
+      "pages": 31,
+      "status": "indexed-only",
+      "id": "563555452e4a2364"
+    },
+    {
+      "path": "references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_4_과학PDF__2e7a81ef.pdf",
+      "sha256": "255e9630ddc411b078eb7a3e27a1420074fe2a415f258070aa914cb603fd4d89",
+      "kind": "pdf",
+      "pages": 36,
+      "status": "indexed-only",
+      "id": "255e9630ddc411b0"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/고등/과학/통합과학1 (오현선)_2022개정/미래엔_통합과학1_교과서__1fd5981485.pdf",
+      "sha256": "5ce1f1f1cc94030e9236cb3c15bb85ffc29c16c7b938811e4c1cb71e2ee3b866",
+      "kind": "pdf",
+      "pages": 184,
+      "status": "indexed-only",
+      "id": "5ce1f1f1cc94030e"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1 (김태일)_2022/미래엔_과학1_교과서__ad9173d70a.pdf",
+      "sha256": "35761c2651ee0156db672b9d49fb95fc9843a8a7e5a9d038cfbddeed5b2473c2",
+      "kind": "pdf",
+      "pages": 298,
+      "status": "indexed-only",
+      "id": "35761c2651ee0156"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2 (김태일)_2022/미래엔_과학2_교과서__92b9a0d7e8.pdf",
+      "sha256": "188d7481881a226ef57332104d036abdd97fc317be2688f73271fe3e88972672",
+      "kind": "pdf",
+      "pages": 348,
+      "status": "selected-passages-reviewed",
+      "id": "188d7481881a226e"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅰ 단원_[단원 평가] Ⅰ. 과학과 인류의 지속가능한 삶_자동 채점__10012648.hwp",
+      "sha256": "d3851cbb38af5a39c0727ab6c69c66386ee015ce671121ae95cb27369a214752",
+      "kind": "hwp",
+      "paragraphs": 153,
+      "status": "indexed-only",
+      "id": "d3851cbb38af5a39"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅱ 단원_[단원 평가] Ⅱ. 생물의 구성과 다양성_자동 채점__10012018.hwp",
+      "sha256": "75f161484e5ed6f81fba6f68b8996f98f6db0ba59a4bddf156ca346b0fa31baa",
+      "kind": "hwp",
+      "paragraphs": 336,
+      "status": "selected-passages-reviewed",
+      "id": "75f161484e5ed6f8"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅲ 단원_[단원 평가] Ⅲ. 열_자동 채점__10011740.hwp",
+      "sha256": "645672143dcd9960f259006e4b7c354c4da250bfa273657d236bb4917133588c",
+      "kind": "hwp",
+      "paragraphs": 323,
+      "status": "selected-passages-reviewed",
+      "id": "645672143dcd9960"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅳ 단원_[단원 평가] Ⅳ. 물질의 상태 변화_자동 채점__10012320.hwp",
+      "sha256": "378bb023a8aa633d8107b7bab0efc90da4eacedc6666ccc17db43b2351fff164",
+      "kind": "hwp",
+      "paragraphs": 328,
+      "status": "indexed-only",
+      "id": "378bb023a8aa633d"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅴ 단원_[단원 평가] Ⅴ. 힘의 작용_자동 채점__10011802.hwp",
+      "sha256": "e26dcf7ca11306bfab6304325e8343705610da628358669aef0c4c1be0e44d29",
+      "kind": "hwp",
+      "paragraphs": 378,
+      "status": "indexed-only",
+      "id": "e26dcf7ca11306bf"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅵ 단원_[단원 평가] Ⅵ. 기체의 성질_자동 채점__10012378.hwp",
+      "sha256": "37247ebae43f0effa2dcb8a60099204ad04cce3646132d9eb2ef14c500fd5eef",
+      "kind": "hwp",
+      "paragraphs": 314,
+      "status": "selected-passages-reviewed",
+      "id": "37247ebae43f0eff"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1_김태일_2022_평가자료/Ⅶ 단원_[단원 평가] Ⅶ. 태양계_자동 채점__10012996.hwp",
+      "sha256": "fe7c98085d6d14966c2ae600e24f682f4b9d160f11b30dd1919c742822b12826",
+      "kind": "hwp",
+      "paragraphs": 356,
+      "status": "indexed-only",
+      "id": "fe7c98085d6d1496"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅰ 단원_[단원 평가] Ⅰ. 물질의 특성_자동 채점__10078182.hwp",
+      "sha256": "8ee60cd2052a825ded96d12174f6ae16b9930a7559c4d731857a7ccb41c99cf5",
+      "kind": "hwp",
+      "paragraphs": 302,
+      "status": "selected-passages-reviewed",
+      "id": "8ee60cd2052a825d"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅱ 단원_[단원 평가] Ⅱ. 지권의 변화_자동 채점__10081150.hwp",
+      "sha256": "ff248cb950e42b18f7e39220fba3a6d885754395e87cb52657447ec051923017",
+      "kind": "hwp",
+      "paragraphs": 350,
+      "status": "indexed-only",
+      "id": "ff248cb950e42b18"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅳ 단원_[단원 평가] Ⅳ. 물질의 구성_자동 채점__10078416.hwp",
+      "sha256": "be6644af25018a93dc3128374aaee4b24e4b60610245639171769b5f48cbbffb",
+      "kind": "hwp",
+      "paragraphs": 358,
+      "status": "indexed-only",
+      "id": "be6644af25018a93"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅴ 단원_[단원 평가] Ⅴ. 식물과 에너지_자동 채점__10077515.hwp",
+      "sha256": "c53289034ff7bbc57ab5b14178b3f4a161d28a86de04f27729b39e154d5eafbe",
+      "kind": "hwp",
+      "paragraphs": 338,
+      "status": "selected-passages-reviewed",
+      "id": "c53289034ff7bbc5"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅵ 단원_[단원 평가] Ⅵ. 동물과 에너지_자동 채점__10077909.hwp",
+      "sha256": "917457c7b9467f0c28bbbbecb55d18e8bc4774404de34249d5f6ec4e40ee1baf",
+      "kind": "hwp",
+      "paragraphs": 314,
+      "status": "indexed-only",
+      "id": "917457c7b9467f0c"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅶ 단원_[단원 평가] Ⅶ. 전기와 자기_자동 채점__10076362.hwp",
+      "sha256": "64da39ebcd807478b04c4ce17bdacb9db835b68caffb7f2ef5a349ea0dd6fd7f",
+      "kind": "hwp",
+      "paragraphs": 321,
+      "status": "selected-passages-reviewed",
+      "id": "64da39ebcd807478"
+    },
+    {
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학2_김태일_2022_평가자료/Ⅷ 단원_[단원 평가] Ⅷ. 별과 우주_자동 채점__10081258.hwp",
+      "sha256": "b234eca094df5d4e4ffae5b4ba5a7e5c1ae3c0c854f93185e7074f648db5af9c",
+      "kind": "hwp",
+      "paragraphs": 391,
+      "status": "indexed-only",
+      "id": "b234eca094df5d4e"
+    }
+  ],
+  "review": [
+    {
+      "id": "188d7481881a226e",
+      "locators": [
+        106,
+        107,
+        108,
+        109,
+        338
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "refraction"
+      ],
+      "principle": "거울·렌즈의 가까운 물체와 먼 물체 조건 및 상의 크기·방향을 본문과 단원평가 해설로 대조했다. 앱의 두 대표 위치는 초점 안쪽과 2배 초점 거리 바깥쪽이다. 관찰 장치·광선이 없던 그림을 보강하고 광선 교점을 독립 검사했다.",
+      "method": "본문·평가 해설 발췌 대조; 도식 수학 검사"
+    },
+    {
+      "id": "188d7481881a226e",
+      "locators": [
+        246,
+        247,
+        264,
+        265,
+        342
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "ohms-law"
+      ],
+      "principle": "접촉 없이 음대전체를 가까이하면 전자는 먼 쪽으로 이동한다. 코일은 전원·도선에 연결하고 전류 방향과 세기를 바꾸어 자기장을 비교한다. 앱의 양이온 고정·전자 재배치와 전원 연결을 교정했다. 나침반을 놓고 자기장 전체를 관찰하는 원문 활동은 앱의 두 극 비교만으로 충족되지 않는다.",
+      "method": "본문·탐구 절차·평가 해설 발췌 대조"
+    },
+    {
+      "id": "188d7481881a226e",
+      "locators": [
+        147,
+        148,
+        149
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "flame-ions"
+      ],
+      "principle": "헬륨·네온 등 18족 원소는 상온에서 기체이며 다른 물질과 잘 반응하지 않는다. 액체처럼 보이던 앱 그림을 기체 모식도로 교정했다. 교과서의 성질 조사·정보 그림 제작·공유 활동까지 제공하는 것은 아니다.",
+      "method": "본문·탐구 절차 발췌 대조"
+    },
+    {
+      "id": "188d7481881a226e",
+      "locators": [
+        294,
+        295
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "stars-universe"
+      ],
+      "principle": "우리은하의 위쪽 모습은 중심 막대와 나선팔, 옆모습은 중심부가 볼록한 원반이다. 앱은 위에서 본 모습에 원반·타원만 그려 막대와 나선팔 관찰이 부족하다. 별 분포 모형을 제작·촬영하는 원문 탐구도 별도이다.",
+      "method": "본문·탐구 절차 발췌 대조; 미해결 표현 문제 기록"
+    },
+    {
+      "id": "12e3528e738c7473",
+      "locators": [
+        12,
+        18
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "light-shadow",
+        "refraction"
+      ],
+      "principle": "빛의 직진과 서로 다른 물질의 경계에서의 굴절; 수직 입사와 비스듬한 입사를 구별한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "ea4b521d6469fb4a",
+      "locators": [
+        7,
+        13
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "sound-vibration"
+      ],
+      "principle": "소리 나는 물체의 떨림과 소리의 높낮이를 구별한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "102ce624dacf5858",
+      "locators": [
+        11,
+        19
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "lever-balance",
+        "weight-compare"
+      ],
+      "principle": "무게 비교에서는 받침점까지 거리를 같게 한다. 같은 물체를 직접 들 때와 지레로 들 때를 비교한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "2763b8cf014a4bb8",
+      "locators": [
+        11
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "magnets"
+      ],
+      "principle": "같은 극과 다른 극을 마주 보게 하여 자석 사이의 힘을 비교한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "bb7e6bd6ea481715",
+      "locators": [
+        10
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "state-change"
+      ],
+      "principle": "물을 잃지 않고 얼리면 무게는 보존되고 부피는 증가한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "150c2bc4fec5ce83",
+      "locators": [
+        5,
+        8
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "gases"
+      ],
+      "principle": "공기를 넣거나 뺄 때의 무게와 온도에 따른 기체 부피를 별도로 비교한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "f1ee840a52fb48f6",
+      "locators": [
+        5,
+        15
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "body-organs"
+      ],
+      "principle": "뼈와 근육의 역할, 콩팥·오줌관·방광·요도의 구분을 확인한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "4f9126e5e524fa88",
+      "locators": [
+        8
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "rock-layers"
+      ],
+      "principle": "차례로 쌓인 퇴적물에서 먼저 쌓인 것이 아래에 놓인다. 앱은 뒤집히지 않은 지층이라는 조건을 명시한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "d0b758ce42256f7e",
+      "locators": [
+        13,
+        17
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "weather-watch"
+      ],
+      "principle": "차가운 집기병의 겉면에서 생기는 이슬과 주변에 대한 기압의 높고 낮음을 구별한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "ce9b5e52ba306df8",
+      "locators": [
+        8,
+        13
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "seasons"
+      ],
+      "principle": "태양 고도·그림자·기온 관계와 자전축 기울기·공전에 의한 계절 변화를 구별한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "fec1f079908511c8",
+      "locators": [
+        12,
+        14
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "heat-transfer"
+      ],
+      "principle": "접촉한 두 물체의 열은 높은 온도에서 낮은 온도로 이동하고 고체의 전도는 연결된 경로를 따른다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "188d7481881a226e",
+      "locators": [
+        176,
+        177,
+        178
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "photosynthesis"
+      ],
+      "principle": "한 변인의 효과를 확인할 때 다른 조건을 통제한다. 빛·CO₂의 증가와 포화, 온도 상승 후 감소를 구별한다. 최대·공동 제한 판정과 정답 선택지를 수정했다.",
+      "method": "본문·그림 대조 및 수정"
+    },
+    {
+      "id": "c53289034ff7bbc5",
+      "locators": [
+        90,
+        92,
+        305,
+        306
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "photosynthesis"
+      ],
+      "principle": "수집 객관식·서술형 혼합 평가자료의 6번과 풀이: 빛과 CO₂가 충분해도 과도한 온도로 광합성이 감소할 수 있다. 숫자는 추출 문단 번호다.",
+      "method": "문항 조건·해설 대조"
+    },
+    {
+      "id": "89316af3de563d4c",
+      "locators": [
+        5,
+        13
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "microscope"
+      ],
+      "principle": "낮은 배율부터 시작하고 선택한 대물렌즈를 가운데로 돌린다. 기공은 잎의 구멍이며 세포 두 개와 구멍을 구별해 그린다. PDF 5쪽(책 60쪽) 그림 대조.",
+      "method": "본문·그림 대조 및 수정"
+    },
+    {
+      "id": "37247ebae43f0eff",
+      "locators": [
+        59,
+        62,
+        78,
+        81,
+        117
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "diffusion",
+        "density-buoyancy"
+      ],
+      "principle": "기체 압력·부피 문항은 온도와 기체 양을 일정하게 한다. 부피 변화가 입자 수 변화를 뜻하지 않는다. 숫자는 추출 문단 번호다.",
+      "method": "문항 조건 대조"
+    },
+    {
+      "id": "ab3d40fbf44d14ba",
+      "locators": [
+        11
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "solubility"
+      ],
+      "principle": "온도에 따른 용해량 비교는 물의 양과 용질을 같게 해야 한다. 교과서는 붕산, 앱은 소금을 사용하므로 실험 재료와 수치를 동일하다고 해석하지 않는다.",
+      "method": "발췌 대조; 재료 차이 기록"
+    },
+    {
+      "id": "9cf443300eb93c19",
+      "locators": [
+        5
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "acid-base"
+      ],
+      "principle": "푸른 리트머스와 붉은 리트머스의 변화를 함께 관찰해 용액을 분류한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "29025dcd99227936",
+      "locators": [
+        10
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "burning-conditions"
+      ],
+      "principle": "산소가 부족하면 탈 물질이 남아 있어도 연소가 지속되지 않는다. 산소가 완전히 없어질 때까지 타는 것으로 설명하지 않는다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "c84377a276e7c9d4",
+      "locators": [
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "microbes"
+      ],
+      "principle": "곰팡이·버섯의 균사와 균류 분류를 대조했다. 별도로 성장량의 수치·문구 모순과 가상 분열 시간의 일반화를 교정했다.",
+      "method": "발췌 대조 및 수치·문구 수정"
+    },
+    {
+      "id": "9c826e4094692239",
+      "locators": [
+        15
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "seed-germination"
+      ],
+      "principle": "씨가 싹트는 조건은 다르게 할 조건과 같게 할 조건을 구별해 실험한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "76bca86cc0dd75f5",
+      "locators": [
+        5
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "mixture-separation"
+      ],
+      "principle": "혼합물에서는 섞인 물질의 성질 차이를 이용한다. 혼합물이 생기는 과정과 분리 완료 여부를 구별한다.",
+      "method": "발췌 대조"
+    },
+    {
+      "id": "645672143dcd9960",
+      "locators": [
+        280,
+        284,
+        290
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "specific-heat",
+        "heat-transfer"
+      ],
+      "principle": "전도와 같은 열 이동 방식, 같은 열을 가했을 때 비열에 따른 온도 변화를 구별한다. 앱의 비열 문항은 같은 질량 조건을 명시한다.",
+      "method": "해설 발췌 대조"
+    },
+    {
+      "id": "64da39ebcd807478",
+      "locators": [
+        312
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "ohms-law"
+      ],
+      "principle": "저항의 병렬연결에서 가지가 늘어나면 합성 저항은 감소하고 전체 전류는 증가한다.",
+      "method": "해설 발췌·독립 전류식 대조"
+    },
+    {
+      "id": "75f161484e5ed6f8",
+      "locators": [
+        279
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "cell-structure"
+      ],
+      "principle": "핵의 기능은 유전물질과 세포 생명활동의 조절에 연결된다.",
+      "method": "해설 발췌 대조"
+    },
+    {
+      "id": "8ee60cd2052a825d",
+      "locators": [
+        253,
+        291
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "density-buoyancy"
+      ],
+      "principle": "밀도와 양을 구별하고 물체·액체의 상대적인 밀도로 뜨고 가라앉는 것을 설명한다.",
+      "method": "해설 발췌 대조"
+    }
+  ],
+  "apps": [
+    {
+      "slug": "light-shadow",
+      "title": "빛의 직진·반사·굴절과 그림자",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과02-01",
+        "6과02-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과02-01",
+        "6과02-02",
+        "6과02-03"
+      ],
+      "reviewedEvidence": [
+        "12e3528e738c7473"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "refraction",
+      "title": "거울·렌즈와 빛의 반사·굴절",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과10-01",
+        "9과10-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과10-01",
+        "9과10-02",
+        "9과10-03",
+        "9과10-04",
+        "9과10-03@color"
+      ],
+      "reviewedEvidence": [
+        "188d7481881a226e",
+        "12e3528e738c7473"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "lens-image",
+      "title": "렌즈와 상",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리03-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "photoelectric",
+      "title": "광전 효과와 물질파",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리03-03",
+        "12물리03-04",
+        "12전자02-04",
+        "12전자03-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "sound-vibration",
+      "title": "소리와 진동",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과07-01",
+        "4과07-02",
+        "4과07-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과07-01",
+        "4과07-02",
+        "4과07-03"
+      ],
+      "reviewedEvidence": [
+        "ea4b521d6469fb4a"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "wave-transfer",
+      "title": "파동과 소리 파형 분석",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과10-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과10-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "interference",
+      "title": "파동의 간섭과 정상파",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리03-01",
+        "12역학03-04",
+        "12역학03-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "lever-balance",
+      "title": "힘의 작용과 지레",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과01-01",
+        "4과01-03",
+        "4과01-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과01-01",
+        "4과01-02",
+        "4과01-03",
+        "4과01-04"
+      ],
+      "reviewedEvidence": [
+        "102ce624dacf5858"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "speed",
+      "title": "빠르기 비교와 속력",
+      "grades": [
+        "초6"
+      ],
+      "standards": [
+        "6과10-01",
+        "6과10-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과10-01",
+        "6과10-02",
+        "6과10-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "force-motion",
+      "title": "힘의 평형·탄성력·부력 측정",
+      "grades": [
+        "중1"
+      ],
+      "standards": [
+        "9과05-01",
+        "9과05-02",
+        "9과05-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과05-01",
+        "9과05-02",
+        "9과05-03",
+        "9과05-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "motion-energy",
+      "title": "자유 낙하·빗면과 에너지",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과19-01",
+        "9과19-02",
+        "9과19-03",
+        "9과19-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과19-01",
+        "9과19-02",
+        "9과19-03",
+        "9과19-04",
+        "9과19-01@motion"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "gravity-motion",
+      "title": "중력과 운동 — 낙하·충격",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과1-03-03",
+        "10통과1-03-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과1-03-03",
+        "10통과1-03-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "torque",
+      "title": "돌림힘과 평형",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리01-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "collision",
+      "title": "운동량 보존과 충돌",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리01-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "magnets",
+      "title": "자석의 힘과 나침반",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과09-01",
+        "4과09-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과09-01",
+        "4과09-02",
+        "4과09-03"
+      ],
+      "reviewedEvidence": [
+        "2763b8cf014a4bb8"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "circuit-bulbs",
+      "title": "전기 회로와 전자석",
+      "grades": [
+        "초6"
+      ],
+      "standards": [
+        "6과15-01",
+        "6과15-02",
+        "6과15-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과15-01",
+        "6과15-02",
+        "6과15-03",
+        "6과15-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "ohms-law",
+      "title": "전기 회로·정전기·코일",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과14-01",
+        "9과14-02",
+        "9과14-03",
+        "9과14-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과14-01",
+        "9과14-02",
+        "9과14-03",
+        "9과14-04",
+        "9과14-03@bulbs"
+      ],
+      "reviewedEvidence": [
+        "188d7481881a226e",
+        "64da39ebcd807478"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "electric-field",
+      "title": "전기장·전위·축전기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12전자01-01",
+        "12전자01-06"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "induction",
+      "title": "전자기 유도와 직류 회로",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리02-06",
+        "12물리02-02",
+        "12전자01-05",
+        "12전자01-06"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "title": "다이오드와 특수 상대성 이론",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리03-05",
+        "12물리03-06"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "motor-magnet",
+      "title": "전동기와 자성체",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리02-04",
+        "12물리02-05",
+        "12전자01-03",
+        "12전자01-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "heat-transfer",
+      "title": "열의 이동과 에너지 절약",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과07-01",
+        "6과07-02",
+        "6과07-03",
+        "6과07-04",
+        "6과08-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과07-01",
+        "6과07-02",
+        "6과07-03",
+        "6과07-04",
+        "6과08-01",
+        "6과08-02",
+        "6과08-03"
+      ],
+      "reviewedEvidence": [
+        "fec1f079908511c8",
+        "645672143dcd9960"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "specific-heat",
+      "title": "비열과 열팽창",
+      "grades": [
+        "중1"
+      ],
+      "standards": [
+        "9과03-02",
+        "9과03-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과03-01",
+        "9과03-02",
+        "9과03-03"
+      ],
+      "reviewedEvidence": [
+        "645672143dcd9960"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "energy-heat",
+      "title": "역학적 에너지와 열",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리01-04",
+        "12물리01-05",
+        "12역학02-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "heat-engine",
+      "title": "열기관의 효율과 열펌프",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12역학02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "energy-conversion",
+      "title": "발전과 에너지 전환",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과2-02-05",
+        "10통과2-02-06"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과2-02-05",
+        "10통과2-02-06"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "weight-compare",
+      "title": "물체의 무게와 세 가지 상태",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과01-03",
+        "4과05-01",
+        "4과05-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과01-03",
+        "4과05-01",
+        "4과05-02",
+        "4과05-03"
+      ],
+      "reviewedEvidence": [
+        "102ce624dacf5858"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "density-buoyancy",
+      "title": "밀도·부력·기체 압력",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과08-01",
+        "9과05-02",
+        "9과06-01",
+        "9과06-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과08-01"
+      ],
+      "reviewedEvidence": [
+        "37247ebae43f0eff",
+        "8ee60cd2052a825d"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "measurement",
+      "title": "길이·시간과 디지털 측정",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10과탐1-01-02",
+        "10통과1-01-01",
+        "10통과1-01-02",
+        "10통과1-01-03",
+        "10통과1-01-04",
+        "10통과2-03-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과1-01-01",
+        "10통과1-01-02",
+        "10통과1-01-03",
+        "10통과1-01-04",
+        "10통과2-03-01",
+        "10통과2-03-02",
+        "10통과2-03-03",
+        "10통과2-03-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "mixture-separation",
+      "title": "물질 분류와 혼합물 분리",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과05-01",
+        "6과05-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과05-01",
+        "6과05-02",
+        "6과05-03"
+      ],
+      "reviewedEvidence": [
+        "76bca86cc0dd75f5"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "separation-methods",
+      "title": "거름·증류·크로마토그래피",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과08-02",
+        "9과08-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과08-01",
+        "9과08-02",
+        "9과08-03",
+        "9과08-03@sequence"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "state-change",
+      "title": "물의 상태 변화",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과10-01",
+        "4과10-02",
+        "4과10-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과10-01",
+        "4과10-02",
+        "4과10-03"
+      ],
+      "reviewedEvidence": [
+        "bb7e6bd6ea481715"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "gases",
+      "title": "기체의 성질과 부피 변화",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과15-01",
+        "4과15-02",
+        "4과15-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과15-01",
+        "4과15-02",
+        "4과15-03",
+        "4과15-04"
+      ],
+      "reviewedEvidence": [
+        "150c2bc4fec5ce83"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "diffusion",
+      "title": "입자 운동·상태 변화·기체",
+      "grades": [
+        "중1"
+      ],
+      "standards": [
+        "9과04-01",
+        "9과04-02",
+        "9과04-03",
+        "9과04-04",
+        "9과06-01",
+        "9과06-02",
+        "9과06-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과04-01",
+        "9과04-02",
+        "9과04-03",
+        "9과04-04",
+        "9과06-01",
+        "9과06-02",
+        "9과06-03",
+        "9과04-04@heating",
+        "9과04-04@cooling"
+      ],
+      "reviewedEvidence": [
+        "37247ebae43f0eff"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "solubility",
+      "title": "용해량과 용액 진하기",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과03-01",
+        "6과03-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과03-01",
+        "6과03-02",
+        "6과03-03",
+        "6과03-01@table"
+      ],
+      "reviewedEvidence": [
+        "ab3d40fbf44d14ba"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "solubility-curve",
+      "title": "용해도 곡선 읽기",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과08-01",
+        "9과08-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과08-01",
+        "9과08-03",
+        "9과08-03@sequence"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "recrystallise",
+      "title": "냉각과 결정 석출량",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과08-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과08-03",
+        "9과08-03@sequence"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "flame-ions",
+      "title": "원소의 성질과 이온",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과11-01",
+        "9과11-04",
+        "9과11-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과11-01",
+        "9과11-02",
+        "9과11-03",
+        "9과11-04"
+      ],
+      "reviewedEvidence": [
+        "188d7481881a226e"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "periodic-bonding",
+      "title": "주기율표와 화학 결합",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과1-02-03",
+        "10통과1-02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과1-02-01",
+        "10통과1-02-02",
+        "10통과1-02-03",
+        "10통과1-02-04",
+        "10통과1-02-05",
+        "10통과1-02-06"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "molecule-shape",
+      "title": "분자 구조와 극성",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12화학02-02",
+        "12화학02-03",
+        "12화학02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "acid-base",
+      "title": "용액의 성질과 지시약",
+      "grades": [
+        "초6"
+      ],
+      "standards": [
+        "6과09-01",
+        "6과09-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과09-01",
+        "6과09-02",
+        "6과09-03",
+        "6과09-04"
+      ],
+      "reviewedEvidence": [
+        "9cf443300eb93c19"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "neutralization",
+      "title": "산·염기의 성질과 중화",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12화학04-01",
+        "12화학04-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "titration",
+      "title": "중화 적정",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12반응01-03",
+        "12반응01-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "mass-ratio",
+      "title": "화학 반응의 질량·부피 관계",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과16-02",
+        "9과16-03",
+        "9과16-04",
+        "9과16-06",
+        "9과16-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과16-01",
+        "9과16-02",
+        "9과16-03",
+        "9과16-04",
+        "9과16-05",
+        "9과16-06",
+        "9과16-06@cooling-device"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "mole",
+      "title": "몰과 양적 관계·몰 농도",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12화학01-02",
+        "12화학01-03",
+        "12화학04-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "rate-equilibrium",
+      "title": "반응 열·속도·평형",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12화학03-01",
+        "12화학03-02",
+        "12화학03-04",
+        "12물에04-03",
+        "12물에04-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "burning-conditions",
+      "title": "연소와 물질의 변화",
+      "grades": [
+        "초6"
+      ],
+      "standards": [
+        "6과14-01",
+        "6과14-02",
+        "6과14-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과14-01",
+        "6과14-02",
+        "6과14-03",
+        "6과14-04"
+      ],
+      "reviewedEvidence": [
+        "29025dcd99227936"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "combustion",
+      "title": "금속의 산화와 질량 보존",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과16-01",
+        "9과16-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과16-01",
+        "9과16-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "redox",
+      "title": "산화·환원과 전기 분해",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12반응02-01",
+        "12반응02-03",
+        "12반응02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "living-things",
+      "title": "동물과 식물, 사는 곳과 몸",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과02-01",
+        "4과02-02",
+        "4과03-01",
+        "4과03-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과02-01",
+        "4과02-02",
+        "4과02-03",
+        "4과03-01",
+        "4과03-02",
+        "4과03-03",
+        "4과03-01@leaves"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "microbes",
+      "title": "균류·원생생물·세균 관찰",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과12-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과12-01",
+        "4과12-02",
+        "4과12-03"
+      ],
+      "reviewedEvidence": [
+        "c84377a276e7c9d4"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "microscope",
+      "title": "현미경과 세포 관찰",
+      "grades": [
+        "초6"
+      ],
+      "standards": [
+        "6과11-01",
+        "6과11-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과11-01",
+        "6과11-02",
+        "6과11-03"
+      ],
+      "reviewedEvidence": [
+        "89316af3de563d4c"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "cell-osmosis",
+      "title": "세포막 수송과 삼투",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12세포01-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "cell-membrane",
+      "title": "세포막·DNA·효소와 검출 원리",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과1-02-05",
+        "10통과1-03-05",
+        "10통과2-03-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과1-02-05",
+        "10통과1-03-05",
+        "10통과2-03-01"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "cell-division",
+      "title": "체세포 분열과 감수 분열",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12생과03-01",
+        "12생과03-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "seed-germination",
+      "title": "씨의 발아와 식물의 자람",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과04-02",
+        "4과04-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과04-02",
+        "4과04-03"
+      ],
+      "reviewedEvidence": [
+        "9c826e4094692239"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "photosynthesis",
+      "title": "광합성",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과12-01",
+        "9과12-02",
+        "9과12-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과12-01",
+        "9과12-02",
+        "9과12-03",
+        "9과12-01@products"
+      ],
+      "reviewedEvidence": [
+        "188d7481881a226e",
+        "c53289034ff7bbc5"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "energy-metabolism",
+      "title": "광합성과 세포 호흡",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12세포02-02",
+        "12세포03-02",
+        "12세포03-03",
+        "12세포03-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "body-organs",
+      "title": "우리 몸의 기관",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과04-01",
+        "6과04-02",
+        "6과04-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과04-01",
+        "6과04-02",
+        "6과04-03"
+      ],
+      "reviewedEvidence": [
+        "f1ee840a52fb48f6"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "body-systems",
+      "title": "소화·순환·호흡·배설",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과13-02",
+        "9과13-03",
+        "9과13-04",
+        "9과13-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과13-01",
+        "9과13-02",
+        "9과13-03",
+        "9과13-04",
+        "9과13-05"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "nutrient-detection",
+      "title": "영양소 검출 실험",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과13-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과13-01"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "homeostasis",
+      "title": "항상성 — 혈당과 체온",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12생과02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "immune",
+      "title": "면역·백신·혈액형 판정",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12생과02-05",
+        "12생과02-06",
+        "12생과02-07"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "enzyme",
+      "title": "효소 반응과 조건",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12세포02-03",
+        "12세포02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "senses",
+      "title": "감각 기관과 맹점 확인",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과20-01",
+        "9과20-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과20-01",
+        "9과20-02",
+        "9과20-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "reflex-nerve",
+      "title": "자극의 전달과 반사",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과20-01",
+        "9과20-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과20-01",
+        "9과20-02"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "neuron",
+      "title": "흥분 전도와 시냅스",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12생과02-01",
+        "12생과02-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "pea-genetics",
+      "title": "세포분열과 멘델 유전",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과21-04",
+        "9과21-01",
+        "9과21-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과21-01",
+        "9과21-02",
+        "9과21-03",
+        "9과21-04",
+        "9과21-05",
+        "9과21-05@pedigree"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "dna-gel",
+      "title": "DNA 추출과 유전 자료 분석",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12유전01-05",
+        "12유전03-03",
+        "12유전03-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "natural-selection",
+      "title": "자연 선택 — 부리와 털 색",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과2-01-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과2-01-01",
+        "10통과2-01-02",
+        "10통과2-01-03",
+        "10통과2-01-04",
+        "10통과2-01-05",
+        "10통과2-01-03@oxygen",
+        "10통과2-01-04@neutralization"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "phylogeny",
+      "title": "생물의 분류와 계통수",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12생과03-04",
+        "12생과03-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "life-cycle",
+      "title": "동물의 한살이와 먹이 관계",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과04-01",
+        "4과04-03",
+        "4과14-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과04-01",
+        "4과04-02",
+        "4과04-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "living-environment",
+      "title": "강낭콩·먹이 관계와 기후변화",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과04-02",
+        "4과14-01",
+        "4과14-02",
+        "4과14-03",
+        "4과16-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과14-01",
+        "4과14-02",
+        "4과14-03",
+        "4과16-01",
+        "4과16-02",
+        "4과16-03",
+        "4과14-01@decomposer"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "population",
+      "title": "개체군 성장과 방형구 조사",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12생과01-07"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "rock-layers",
+      "title": "지층·퇴적암·화석",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과01-01",
+        "6과01-02",
+        "6과01-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과01-01",
+        "6과01-02",
+        "6과01-03"
+      ],
+      "reviewedEvidence": [
+        "4f9126e5e524fa88"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "minerals-rocks",
+      "title": "광물과 암석 분류",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과09-02",
+        "9과09-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과09-01",
+        "9과09-02",
+        "9과09-03",
+        "9과09-04",
+        "9과09-05"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "geologic-time",
+      "title": "지질 시대와 생물 다양성",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과2-01-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과2-01-01"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "rock-age",
+      "title": "지질 구조와 절대 연령",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구02-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "metamorphism",
+      "title": "변성 작용과 변성암",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "volcano-model",
+      "title": "땅의 변화·화산과 화성암",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과11-01",
+        "4과11-02",
+        "4과11-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과11-01",
+        "4과11-02",
+        "4과11-03",
+        "4과11-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "magma",
+      "title": "마그마의 점성과 화산 분출",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구02-03",
+        "12지시01-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "plate-tectonics",
+      "title": "지진과 판의 이동",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과09-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과09-05"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "earthquake",
+      "title": "지진파와 진앙",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지시01-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "earth-system",
+      "title": "지구 시스템·개체군과 열수지",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과1-03-01",
+        "10통과2-02-02",
+        "10통과2-02-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과1-03-01",
+        "10통과1-03-02",
+        "10통과1-03-03",
+        "10통과1-03-04",
+        "10통과1-03-05",
+        "10통과1-03-06",
+        "10통과2-02-01",
+        "10통과2-02-02",
+        "10통과2-02-03",
+        "10통과2-02-04",
+        "10통과2-02-05",
+        "10통과2-02-06",
+        "10통과1-03-06@information",
+        "10통과2-02-03@balance"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "weather-watch",
+      "title": "기온·바람·구름 관측",
+      "grades": [
+        "초5"
+      ],
+      "standards": [
+        "6과06-01",
+        "6과06-02",
+        "6과06-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과06-01",
+        "6과06-02",
+        "6과06-03"
+      ],
+      "reviewedEvidence": [
+        "d0b758ce42256f7e"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "weather-front",
+      "title": "전선과 구름 생성",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과17-03",
+        "9과17-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과17-01",
+        "9과17-02",
+        "9과17-03",
+        "9과17-04",
+        "9과17-01@atmosphere",
+        "9과17-03@humidity"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "air-stability",
+      "title": "기상 자료와 대기 안정도",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지시03-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "typhoon",
+      "title": "태풍과 엘니뇨",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구01-04",
+        "12지구01-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "land-sea",
+      "title": "육지와 바다, 바닷물과 민물",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과06-01",
+        "4과06-02",
+        "4과06-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과06-01",
+        "4과06-02",
+        "4과06-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "water-cycle",
+      "title": "증발·응결과 물의 순환",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과10-02",
+        "4과10-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과10-02",
+        "4과10-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "seawater",
+      "title": "수온 분포와 염분",
+      "grades": [
+        "중3"
+      ],
+      "standards": [
+        "9과18-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과18-01",
+        "9과18-02",
+        "9과18-03",
+        "9과18-02@profile"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "ocean-circulation",
+      "title": "대기 대순환과 해수의 순환",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지시02-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "ocean-layers",
+      "title": "해수의 수온·염분·밀도",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구01-01",
+        "12지구01-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "night-sky",
+      "title": "달의 모양과 북극성 찾기",
+      "grades": [
+        "초4"
+      ],
+      "standards": [
+        "4과13-01",
+        "4과13-02",
+        "4과13-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과13-01",
+        "4과13-02",
+        "4과13-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "seasons",
+      "title": "태양 고도·계절과 지구의 운동",
+      "grades": [
+        "초6"
+      ],
+      "standards": [
+        "6과12-01",
+        "6과12-02",
+        "6과12-03",
+        "6과13-01",
+        "6과13-02",
+        "6과13-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "6과12-01",
+        "6과12-02",
+        "6과12-03",
+        "6과13-01",
+        "6과13-02",
+        "6과13-03",
+        "6과13-01@day",
+        "6과13-02@season"
+      ],
+      "reviewedEvidence": [
+        "ce9b5e52ba306df8"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "moon-phases",
+      "title": "달의 모양 변화",
+      "grades": [
+        "중1"
+      ],
+      "standards": [
+        "9과07-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과07-01",
+        "9과07-02",
+        "9과07-03",
+        "9과07-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "apparent-motion",
+      "title": "달과 별의 겉보기 운동",
+      "grades": [
+        "중1"
+      ],
+      "standards": [
+        "9과07-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과07-03"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "planet-motion",
+      "title": "행성의 겉보기 운동과 식",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구03-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "stars-universe",
+      "title": "별의 밝기와 우주 팽창",
+      "grades": [
+        "중2"
+      ],
+      "standards": [
+        "9과15-01",
+        "9과15-02",
+        "9과15-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과15-01",
+        "9과15-02",
+        "9과15-03",
+        "9과15-04"
+      ],
+      "reviewedEvidence": [
+        "188d7481881a226e"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "star-elements",
+      "title": "원소의 기원과 스펙트럼",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과1-02-01",
+        "10통과1-02-02",
+        "10통과2-02-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과1-02-01",
+        "10통과1-02-02",
+        "10통과2-02-04"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "stars",
+      "title": "별의 스펙트럼과 HR도",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구03-02",
+        "12지구03-03",
+        "12행우02-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "galaxy-hubble",
+      "title": "은하의 분류와 허블 법칙",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12지구03-04",
+        "12지구03-05",
+        "12행우03-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "cell-structure",
+      "title": "동물·식물 세포 관찰",
+      "grades": [
+        "중1"
+      ],
+      "standards": [
+        "9과02-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "9과02-01",
+        "9과02-02",
+        "9과02-03",
+        "9과02-04",
+        "9과02-05"
+      ],
+      "reviewedEvidence": [
+        "75f161484e5ed6f8"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "neutralization-common",
+      "title": "중화 반응과 온도 변화",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10통과2-01-04",
+        "10통과2-01-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "10통과2-01-04",
+        "10통과2-01-05",
+        "10통과2-01-04@neutralization"
+      ],
+      "reviewedEvidence": [],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    }
+  ]
+}

@@ -269,7 +269,7 @@ const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/inde
   + '<style>.site-back-pending :is(a.back,a.back-button,a.back-link,a.home,a.home-link,a.counting-back,a.catalog-back,a.back-btn){visibility:hidden!important}</style>';
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20260926-empty-header" defer></script>`;
 const SITE_SFX_SCRIPT_TAG = '<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer></script>';
-const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20260926-reading-prose">';
+const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261011-school-questions">';
 
 // 쪽마다 로그인(또는 게스트 입장)에서 나온 이름을 맨 앞에 박아 넣는다. 게임·학습 화면은 이 값을
 // 읽고, 브라우저 저장소에는 이름을 두지 않는다(2026-10-06).

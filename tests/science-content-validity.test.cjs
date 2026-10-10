@@ -1,3 +1,4 @@
+const screenshotWebp=require('./science-screenshot.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const phase=require('../learning/inquiry/science-lab/state-change/phase-model.js');
 test('water phases: coexistence, mass balance and latent heat plateaus',()=>{
@@ -19,10 +20,10 @@ for(const engine of ['chromium','webkit'])test(engine+': corrected phase grades 
         const before=await page.locator('#iceClipRect').getAttribute('height');await page.clock.runFor(10000);assert.equal(await page.locator('#iceClipRect').getAttribute('height'),before,'no spontaneous phase oscillation');
         assert.equal(await page.locator('#beaker').getAttribute('data-phase'),expected);
     }
-    await page.evaluate(()=>{__phaseModel.setTemperature(0);__phaseModel.setProgress(50);});await page.locator('.experiment-layout').screenshot({path:path.join(out,'phase-coexist-'+engine+'.png')});
+    await page.evaluate(()=>{__phaseModel.setTemperature(0);__phaseModel.setProgress(50);});await screenshotWebp(page.locator('.experiment-layout'), {path:path.join(out,'phase-coexist-'+engine+'.webp')});
     for(const width of [1366,1024,820,768]){await page.setViewportSize({width,height:1024});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);}
     await page.goto('http://127.0.0.1:'+server.address().port+'/life-cycle/');
     for(const animal of ['butterfly','mantis','frog','chick']){await page.evaluate(a=>{__lifeModel.setAnimal(a);__lifeModel.check();},animal);const s=await page.evaluate(()=>({a:__lifeModel.analyse(),text:document.getElementById('graphGroup').textContent,explanation:document.getElementById('elementaryExplanation').textContent}));assert.ok(s.a.chain.every(x=>!Object.hasOwn(x,'count')));assert.ok(!/쯤|필요한 수|열 배쯤/.test(s.text));assert.ok(!/쓰여 사라지므로/.test(s.explanation));assert.equal(await page.locator('[data-food-direction]').count(),s.a.chain.length-1);}
-    await page.locator('.experiment-layout').screenshot({path:path.join(out,'food-chain-'+engine+'.png')});assert.deepEqual(errors,[]);
+    await screenshotWebp(page.locator('.experiment-layout'), {path:path.join(out,'food-chain-'+engine+'.webp')});assert.deepEqual(errors,[]);
     }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });
