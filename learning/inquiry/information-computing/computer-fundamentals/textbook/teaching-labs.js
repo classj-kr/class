@@ -15,7 +15,6 @@
     };
     function hardware(mount) {
         let mode = 'draw', audible = true, audio, sequence = 0;
-        const events = [];
         const root = el('section', undefined, 'study-workbench');
         root.setAttribute('aria-label', '같은 입력과 다른 프로그램 비교');
         const controls = el('div', undefined, 'study-controls');
@@ -59,9 +58,6 @@
                 let result;
                 if (program === 'draw') { cell.classList.add('has-dot'); result = `${index + 1}번 칸에 파란 점을 그림`; }
                 else result = `${notes[index]} 선택 · ${enabled ? await play(index) : '출력 꺼짐: 소리 신호를 보내지 않음'}`;
-                const record = { program, cell: index + 1, audible: enabled, result };
-                events.push(record);
-                if (events.length > 60) events.shift();
                 trace.prepend(el('li', `입력 ${index + 1}번 → ${program === 'draw' ? '그림' : '피아노'} 명령 → ${result}`));
                 while (trace.children.length > 6) trace.lastChild.remove();
                 if (run === sequence) status.textContent = result;
@@ -71,14 +67,10 @@
         }
         root.append(el('h3', '입력 화면은 그대로, 실행 규칙은 바꾸기'), el('p', '두 프로그램은 아래의 같은 9개 칸을 사용합니다. 그림 프로그램은 점을 남기고, 피아노 프로그램은 칸에 해당하는 음을 고릅니다. 소리 출력 스위치는 이 모형의 음소거이며 실제 스피커 연결을 바꾸지는 않습니다.'), controls, grid, status, el('h4', '실제로 실행한 기록'), trace);
         mount.replaceChildren(root); renderControls();
-        return {
-            snapshot: () => events.length ? `같은 입력 화면 · ${trace.firstChild.textContent}` : '',
-            complete: () => events.some(a => a.program === 'draw' && events.some(b => b.program === 'piano' && b.cell === a.cell)) && events.some(a => a.program === 'piano' && !a.audible),
-            hint: '두 프로그램에서 같은 칸을 누르고, 소리 출력을 끈 피아노에서도 입력을 시험하세요.'
-        };
+
     }
     function files(mount) {
-        let items, selected, buffer, nextId, actions = 0;
+        let items, selected, buffer, nextId;
         const root = el('section', undefined, 'study-workbench');
         const folders = el('div', undefined, 'study-folders');
         const editorLabel = el('label', '선택한 파일의 작업 내용');
@@ -94,7 +86,7 @@
         const trace = el('ol', undefined, 'study-trace');
         const active = () => items.find(f => f.id === selected);
         const describe = f => `${f.name} [${({documents:'문서',homework:'과제',trash:'휴지통'})[f.folder]}] 내용: ${f.content}`;
-        function log(message) { actions++; status.textContent = message; trace.prepend(el('li', message)); while (trace.children.length > 6) trace.lastChild.remove(); }
+        function log(message) { status.textContent = message; trace.prepend(el('li', message)); while (trace.children.length > 6) trace.lastChild.remove(); }
         function render() {
             folders.replaceChildren();
             for (const [key, title] of [['documents','문서'],['homework','과제'],['trash','휴지통']]) {
@@ -116,7 +108,7 @@
             }
             editor.disabled = active()?.folder === 'trash';
         }
-        function fresh() { items = [{id:1,name:'보고서_원본.txt',content:'봄 관찰 기록',folder:'documents'}]; selected = 1; buffer = items[0].content; nextId = 2; actions = 0; editor.value = buffer; trace.replaceChildren(); status.textContent = '원본은 문서 폴더에 있습니다. 원본을 남기고 내용을 고친 별도 파일을 과제 폴더에 준비하세요.'; render(); }
+        function fresh() { items = [{id:1,name:'보고서_원본.txt',content:'봄 관찰 기록',folder:'documents'}]; selected = 1; buffer = items[0].content; nextId = 2; editor.value = buffer; trace.replaceChildren(); status.textContent = '원본은 문서 폴더에 있습니다. 원본을 남기고 내용을 고친 별도 파일을 과제 폴더에 준비하세요.'; render(); }
         function newFile(content, folder) {
             const title = name.value.trim();
             if (!title) { status.textContent = '새 파일 이름을 입력하세요.'; return null; }
@@ -134,11 +126,7 @@
         );
         root.append(el('h3', '원본을 지키며 수정본 준비하기'), el('p', '이 모형의 파일만 바뀝니다. 실제 기기의 파일은 다루지 않습니다. 편집한 내용은 저장할 때 파일에 기록되며 복사는 현재 저장된 내용을 사용합니다.'), folders, editorLabel, editor, nameLabel, name, destinationLabel, destination, controls, status, el('h4', '작업 기록'), trace);
         mount.replaceChildren(root); fresh();
-        return {
-            snapshot: () => actions ? items.map(describe).join('\n') : '',
-            complete: () => items.length === 2 && items.some(f => f.id === 1 && f.folder === 'documents' && f.content === '봄 관찰 기록') && items.some(f => f.id !== 1 && f.folder === 'homework' && f.content.trim() && f.content !== '봄 관찰 기록'),
-            hint: '원본 내용은 문서 폴더에 그대로 두고, 내용을 바꾼 별도 파일 하나를 과제 폴더에 준비하세요.'
-        };
+
     }
     function algorithm(mount) {
         const root = el('section', undefined, 'study-workbench');
@@ -157,7 +145,7 @@
         const body=el('tbody');table.append(body);
         const status=el('p','입력과 규칙을 정하고 실행하세요. 결과뿐 아니라 중간 값을 읽어 보세요.','study-status');status.setAttribute('role','status');
         const history=el('ul',undefined,'study-trace');
-        let runs=[],last='',signature='';
+        let signature='';
         const rule=()=>[initial.value,compare.value,empty.value].join('/');
         function run(){
             const raw=input.value.trim(),parts=raw?raw.split(',').map(s=>s.trim()):[];
@@ -175,20 +163,18 @@
                 }
             }
             const expected=values.length?Math.max(...values):'입력 없음',correct=current===expected;
-            const key=rule();if(signature!==key){runs=[];signature=key;history.replaceChildren();}
-            const record={input:values.join(','),correct};runs.push(record);
-            last=`입력 [${values.join(', ')}] · 초기값 ${initial.selectedOptions[0].textContent} · ${compare.selectedOptions[0].textContent} · 결과 ${current} · 목표 ${expected}`;
+            const key=rule();if(signature!==key){signature=key;history.replaceChildren();}
+            const last=`입력 [${values.join(', ')}] · 초기값 ${initial.selectedOptions[0].textContent} · ${compare.selectedOptions[0].textContent} · 결과 ${current} · 목표 ${expected}`;
             status.textContent=last+(correct?' — 목표와 일치합니다.':' — 목표와 다릅니다. 표에서 처음 관계가 어긋난 곳을 찾으세요.');
             history.prepend(el('li',`[${values.join(', ')||'빈 입력'}] → ${current} (${correct?'일치':'불일치'})`));
             while(history.children.length>10)history.lastChild.remove();
         }
-        [initial,compare,empty].forEach(s=>s.addEventListener('change',()=>{last='';runs=[];signature='';body.replaceChildren();history.replaceChildren();status.textContent='규칙을 바꾸었습니다. 같은 입력으로 다시 시험한 뒤 다른 입력도 확인하세요.';}));
+        [initial,compare,empty].forEach(s=>s.addEventListener('change',()=>{signature='';body.replaceChildren();history.replaceChildren();status.textContent='규칙을 바꾸었습니다. 같은 입력으로 다시 시험한 뒤 다른 입력도 확인하세요.';}));
         root.append(el('h3','최댓값을 찾는 절차 만들기'),el('p','실행기는 선택한 규칙을 그대로 따릅니다. 잘못된 규칙도 실행됩니다. 빈 목록에는 최댓값이 없으므로 이 과제의 목표는 ‘입력 없음’을 표시하는 것입니다.'),settings,inputLabel,input,cases,button('절차 실행',run,'run'),table,status,el('h4','현재 규칙으로 시험한 입력'),history);
         mount.replaceChildren(root);
-        return {snapshot:()=>last,complete:()=>rule()==='first/greater/message'&&Object.values(samples).every(([,s])=>runs.some(r=>r.input===s.replaceAll(' ','')&&r.correct)),hint:'첫 수로 시작하고 더 클 때 갱신하며 빈 입력을 따로 처리하도록 고친 뒤, 양수·음수·같은 수·한 수·빈 입력을 모두 시험하세요.'};
     }
     function memory(mount) {
-        let disk='봄', ram=null, last='', lost=false, kept=false, awaitingSavedOpen=false;
+        let disk='봄', ram=null;
         const root=el('section',undefined,'study-workbench');
         const editor=el('textarea');editor.id='studyMemoryEditor';editor.rows=2;editor.maxLength=100;editor.disabled=true;
         const label=el('label','RAM에서 작업 중인 문서');label.htmlFor=editor.id;
@@ -196,30 +182,16 @@
         const status=el('p','먼저 파일을 열고 내용을 고쳐 보세요.','study-status');status.setAttribute('role','status');
         const controls=el('div',undefined,'study-controls');
         const save=button('파일에 저장',()=>{disk=ram;render('저장: RAM의 현재 내용을 SSD 파일에 기록했습니다.');},'memory-save');
-        const open=button('SSD 파일 열기',()=>{ram=disk;editor.value=ram;editor.disabled=false;if(awaitingSavedOpen){kept=true;awaitingSavedOpen=false;}render('열기: SSD의 파일을 읽어 RAM에 작업 내용을 준비했습니다.');},'memory-open');
+        const open=button('SSD 파일 열기',()=>{ram=disk;editor.value=ram;editor.disabled=false;render('열기: SSD의 파일을 읽어 RAM에 작업 내용을 준비했습니다.');},'memory-open');
         const power=button('전원 끄기·다시 켜기',()=>{
-            if(ram!==null){if(ram!==disk)lost=true;else if(disk!=='봄')awaitingSavedOpen=true;}
             ram=null;editor.value='';editor.disabled=true;render('전원 다시 켜기: RAM의 작업 내용은 사라지고 SSD 파일은 남았습니다. 파일을 다시 열어 확인하세요.');
         },'memory-power');
-        controls.append(open,save,power,button('처음 상태로',()=>{disk='봄';ram=null;lost=false;kept=false;awaitingSavedOpen=false;last='';editor.value='';editor.disabled=true;render('처음 상태입니다. SSD 파일을 열어 시작하세요.',false);},'memory-reset'));
-        function render(message,record=true){stored.textContent='SSD에 저장된 문서: '+disk;save.disabled=ram===null;status.textContent=message;if(record)last=message+'\nRAM: '+(ram===null?'작업 없음':ram)+'\nSSD: '+disk;}
+        controls.append(open,save,power,button('처음 상태로',()=>{disk='봄';ram=null;editor.value='';editor.disabled=true;render('처음 상태입니다. SSD 파일을 열어 시작하세요.');},'memory-reset'));
+        function render(message){stored.textContent='SSD에 저장된 문서: '+disk;save.disabled=ram===null;status.textContent=message;}
         editor.addEventListener('input',()=>{ram=editor.value;render('수정: RAM의 작업 내용이 바뀌었습니다. SSD 파일과 비교하세요.');});
         root.append(el('h3','작업 중인 내용과 저장된 파일 비교'),el('p','이 모형은 자동 저장을 사용하지 않습니다. 파일을 고친 뒤 RAM의 작업 내용과 SSD에 보관된 내용을 비교하세요.'),label,editor,stored,controls,status);
         const reference=el('details',undefined,'study-component-reference');reference.append(el('summary','실제 부품의 위치와 사진'));reference.append(...mount.childNodes);
-        mount.replaceChildren(root,reference);render('SSD에는 ‘봄’이 저장되어 있습니다. 파일을 열어 시작하세요.',false);
-        return {revision:3,snapshot:()=>last,complete:()=>lost&&kept,hint:'저장하지 않은 수정이 전원을 끈 뒤 사라지는 경우와, 저장한 수정이 전원을 끈 뒤 다시 열리는 경우를 모두 확인하세요.'};
+        mount.replaceChildren(root,reference);render('SSD에는 ‘봄’이 저장되어 있습니다. 파일을 열어 시작하세요.');
     }
-    function observedModel(id,lab){
-        const read=selector=>[...lab.querySelectorAll(selector)].filter(n=>n.getClientRects().length).map(n=>n.innerText).join('\n');
-        const dataset=(selector,key)=>lab.querySelector(selector)?.dataset[key];
-        const specs={
-            a04:{snapshot:()=>dataset('[data-a04-lab]','a04Recorded')==='true'?read('[data-a04-record]'):'',complete:()=>dataset('[data-a04-lab]','a04PairFound')==='true',hint:'서로 다른 실제 온도가 같은 숫자로 기록되는 두 결과를 찾으세요.'},
-            a05:{snapshot:()=>dataset('[data-a05-lab]','a05Recorded')==='true'?read('[data-a05-status], [data-a05-comparison]'):'',complete:()=>dataset('[data-a05-lab]','rateCompared')==='true'&&dataset('[data-a05-lab]','bitsCompared')==='true',hint:'측정 횟수만 바꾼 A·B 비교와, 비트 깊이만 바꾼 A·B 비교를 모두 수행하세요.'},
-            h03:{snapshot:()=>dataset('[data-browser-lab]','browserPage')==='page'?read('[data-page-title], [data-page-publisher], [data-page-date], [data-page-body]'):'',complete:()=>{const seen=(dataset('[data-browser-lab]','visitedSources')||'').split(',');return seen.includes('libraryCurrent')&&seen.includes('libraryArchive');},hint:'‘도서관’을 검색하고 새봄도서관의 2026년 공지와 2025년 공지를 모두 열어 날짜와 내용을 비교하세요.'},
-            i01:{snapshot:()=>dataset('[data-account-lab]','accountStage')==='3'&&['allowed','blocked'].includes(dataset('[data-account-lab]','accountAccess'))?read('[data-account-status], [data-permission-result]'):'',complete:()=>dataset('[data-account-lab]','readTried')==='true'&&dataset('[data-account-lab]','editTried')==='true',hint:'같은 계정으로 같은 발표 자료의 읽기와 수정을 각각 요청하고 결과를 비교하세요.'},
-            j03:{snapshot:()=>['error','retested','success'].includes(dataset('[data-debug-lab]','debugStage'))?read('[data-debug-output], [data-debug-case-result]'):'',complete:()=>dataset('[data-debug-lab]','debugStage')==='success',hint:'원래 오류를 고친 뒤 다른 정상 파일과 존재하지 않는 파일까지 시험하세요.'}
-        };
-        return specs[id]?{revision:3,...specs[id]}:null;
-    }
-    window.COMPUTER_TEACHING_LABS = {mount(id,mount){return ({a02:hardware,b01:memory,e03:files,j01:algorithm})[id]?.(mount)||observedModel(id,mount);}};
+    window.COMPUTER_TEACHING_LABS = {mount(id,mount){({a02:hardware,b01:memory,e03:files,j01:algorithm})[id]?.(mount);}};
 })();

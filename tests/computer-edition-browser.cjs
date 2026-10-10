@@ -50,8 +50,7 @@ let browser;const results=[],failures=[];try{
  page.on("pageerror",e=>errors.push(e.message));page.on("response",r=>{if(r.status()>=400)errors.push(r.status()+" "+r.url());});
  const screenshot=async options=>{for(let attempt=0;;attempt++){try{return await page.screenshot(options);}catch(error){if(attempt>=2)throw error;await new Promise(resolve=>setTimeout(resolve,200));}}};
  const go=async view=>{await page.click('.edition-nav [data-page="'+view+'"]');await page.waitForFunction(v=>!document.getElementById("edition-"+v).hidden,{},view);};
- const capture=async()=>{if(await page.$eval('#edition-lab',e=>!e.hidden)){await page.click('#studyCapture');}};
- const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();if(await handle.evaluate(e=>!!e.closest('#editionLab'))){await new Promise(resolve=>setTimeout(resolve,40));await capture();}return;}}throw Error("No enabled visible control: "+selector);};
+ const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();if(await handle.evaluate(e=>!!e.closest('#editionLab'))){await new Promise(resolve=>setTimeout(resolve,40));}return;}}throw Error("No enabled visible control: "+selector);};
  const value=async(selector,text)=>page.$eval(selector,(el,text)=>{el.value=text;el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}));},text);
  const read=selector=>page.$eval(selector,e=>e.value??e.innerText);
  fs.mkdirSync(out,{recursive:true});
@@ -70,18 +69,21 @@ let browser;const results=[],failures=[];try{
   assert.ok(optionTexts.every(text=>!/^[A-Z]$/.test(text)),"선택지에는 기호만 표시하지 않는다");
   assert.deepEqual([...optionTexts].sort(),Array.from(data[id].apply.fields,q=>Array.from(q.options,o=>o[0])).flat().sort(),"섞인 선지에서도 내용이 빠지지 않는다");
   await go("lab");
+  assert.equal(await page.$$('.study-notebook,#studyCapture,#studyPrediction,#studyExplanation').then(x=>x.length),0,'공통 관찰 기록과 서술 입력란은 없어야 한다');
+  await click('[data-question="0"] input[value="1"]');await click('[data-question="0"] .edition-submit');
+  assert.ok((await read('[data-question="0"] .edition-feedback')).includes(qlist[0].options[1][1]));
   await click('[data-question="0"] input[value="0"]');await click('[data-question="0"] .edition-submit');
-  assert.match(await read('[data-question="0"] .edition-feedback'),/실습/);
-  assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),'false','정답만 고른 것으로 실습을 통과하지 않는다');
-  await capture();
+  assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),'true','실습 전에도 답과 해설을 확인할 수 있다');
+  assert.ok((await read('[data-question="0"] .edition-feedback')).includes(qlist[0].options[0][1]));
+  
   const plan=plans[id],before=await read(plan.observe);
   for(const selector of plan.click||[])await click(selector);
   for(const [kind,selector,text] of plan.steps||[]){if(kind==="click")await click(selector);else if(kind==="type"){await page.focus(selector);await page.keyboard.press("End");await page.keyboard.type(text);}else await value(selector,text);}
   if(plan.repeat){for(let i=0;i<plan.repeat[1];i++){const enabled=await page.$eval(plan.repeat[0],e=>!e.disabled);if(!enabled)break;await click(plan.repeat[0]);}}
   if(plan.wait)await page.waitForFunction(([s,a,v])=>document.querySelector(s)?.getAttribute(a)===v,{},plan.wait);
   if(plan.custom==='relay'){
-   await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='complete');await capture();
-   await click('[data-relay-permission]');await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='blocked');await capture();
+   await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='complete');
+   await click('[data-relay-permission]');await click('[data-relay-run]');await page.waitForFunction(()=>document.querySelector('[data-request-relay]').dataset.relayState==='blocked');
   }
   if(plan.custom==='files'){
    await value('#studyFileEditor','봄과 여름 관찰 기록');await click('[data-study-action=save-as]');
@@ -113,10 +115,9 @@ let browser;const results=[],failures=[];try{
    assert.equal(await page.$$eval("#binaryRecords li",els=>els.map(x=>x.textContent).join(",")),"00,01,10,11");
    await click("#binaryRecord");assert.equal(await page.$$eval("#binaryRecords li",els=>els.length),4);
   }
-  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false||document.querySelector('[data-control-score]').textContent==='3');await capture();}}
-  await capture();
+  if(plan.custom==="robot"){for(const moves of [[1,1],[-1,-1],[1]]){for(const n of moves)await click('[data-control-move="'+n+'"]');await click("[data-control-robot]");await page.waitForFunction(()=>document.querySelector("[data-control-robot]").disabled===false||document.querySelector('[data-control-score]').textContent==='3');}}
+  
   const after=await read(plan.observe);assert.notEqual(after,before,"real lab observation must change");if(plan.expect)assert.ok(after.includes(plan.expect),"expected "+plan.expect+" in "+after);
-  assert.ok(await page.$$eval('#studyRecords li',els=>els.length>=2),'비교할 서로 다른 결과 두 개 이상 필요');
   if(id==="a03")assert.doesNotMatch(await read("#editionLab"),/API|펌웨어/);
   for(let i=0;i<qlist.length;i++){
    await go(i===0?"lab":i<3?"apply":"check");const selector='[data-question="'+i+'"]';
@@ -149,7 +150,7 @@ let browser;const results=[],failures=[];try{
    const {fonts}=await cdp.send("CSS.getPlatformFontsForNode",{nodeId});assert.ok(fonts.some(f=>f.isCustomFont&&/KoPub/.test(f.familyName)),"actual KoPub font "+selector);record.fontChecks.push(selector);
   }
   await cdp.detach();assert.deepEqual(errors,[]);record.passed=true;console.log("PASS "+id);
- }catch(e){record.passed=false;record.error=e.message;record.errors=[...errors];failures.push({id,error:e.message});console.log("FAIL "+id+": "+e.message);}results.push(record);}
+ }catch(e){record.passed=false;record.error=e.message;record.errors=[...errors];failures.push({id,error:e.message});console.log("FAIL "+id+": "+e.stack);}results.push(record);}
  // The canonical first-lesson URL must open the finished first chapter.
  await page.goto(base+"lessons/?lesson=a01",{waitUntil:"networkidle0"});assert.ok(page.url().includes("/textbook/a01.html"));await page.waitForSelector("#progressText");
  if(!failures.length){await page.goto(base,{waitUntil:"networkidle0"});assert.equal(await page.$$eval(".lesson-link-list li.is-complete",els=>els.length),entries.length);}

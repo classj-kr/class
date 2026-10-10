@@ -1194,11 +1194,12 @@
                 if (!container || !canvas) return;
 
                 const width = container.clientWidth > 0 ? container.clientWidth : (container.parentElement.clientWidth > 0 ? container.parentElement.clientWidth : 900);
-                const height = container.clientHeight > 0 ? container.clientHeight : 580;
+                const height = canvas.clientHeight > 0 ? canvas.clientHeight : 580;
 
                 if (isInitialized) {
                     if (renderer && camera) {
                         camera.aspect = width / height;
+                        camera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, camera.aspect)) * 180 / Math.PI;
                         camera.updateProjectionMatrix();
                         renderer.setSize(width, height);
                     }
@@ -1212,6 +1213,8 @@
                 // Camera
                 camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
                 camera.position.set(0, 6, 48);
+                camera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, camera.aspect)) * 180 / Math.PI;
+                camera.updateProjectionMatrix();
 
                 // Renderer
                 renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
