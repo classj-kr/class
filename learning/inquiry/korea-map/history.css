@@ -126,6 +126,10 @@
 .history-practice-dialog .school-question { margin:0; padding:0; border:0; background:transparent; color:#213f44; }
 .history-practice-dialog .school-question h3 { color:#213f44; font-size:19px; line-height:1.8; }
 .history-practice-dialog .school-options button { background:#fff; color:#213f44; border-color:#a8c0bd; font-size:17px; min-height:48px; }
+.history-practice-dialog .school-options button:hover:not(:disabled) { background:#e5efea; }
+.history-practice-dialog .school-options button span { color:#476466; }
+.history-practice-dialog .school-question .practice-counter { color:#526f70; font-size:14px; }
+.history-practice-dialog .school-feedback strong { color:#3d563e; }
 .history-practice-dialog .school-options button.incorrect { background:#fff0ec; border-color:#be6c5b; }
 .history-practice-dialog .school-options button.correct { background:#e1f3e8; border-color:#277754; }
 .history-practice-dialog .school-feedback { color:#45543e; font-size:17px; line-height:1.8; }

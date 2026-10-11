@@ -1,0 +1,186 @@
+{
+  "atlas": [
+    {
+      "mode": "초",
+      "mapId": "prehistoric-sites",
+      "description": 144,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "초",
+      "mapId": "hanyang-capital",
+      "description": 145,
+      "marks": 3,
+      "overflow": false,
+      "question": true,
+      "scale": 1
+    },
+    {
+      "mode": "초",
+      "mapId": "byeongja-war",
+      "description": 142,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "초",
+      "mapId": "liberation-division",
+      "description": 137,
+      "marks": 3,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "초",
+      "mapId": "democracy-movements",
+      "description": 155,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "중",
+      "mapId": "prehistoric-sites",
+      "description": 124,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "중",
+      "mapId": "hanyang-capital",
+      "description": 115,
+      "marks": 3,
+      "overflow": false,
+      "question": true,
+      "scale": 1
+    },
+    {
+      "mode": "중",
+      "mapId": "byeongja-war",
+      "description": 124,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "중",
+      "mapId": "liberation-division",
+      "description": 131,
+      "marks": 3,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "중",
+      "mapId": "democracy-movements",
+      "description": 143,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "고",
+      "mapId": "prehistoric-sites",
+      "description": 263,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "고",
+      "mapId": "hanyang-capital",
+      "description": 253,
+      "marks": 3,
+      "overflow": false,
+      "question": true,
+      "scale": 1
+    },
+    {
+      "mode": "고",
+      "mapId": "byeongja-war",
+      "description": 262,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "고",
+      "mapId": "liberation-division",
+      "description": 260,
+      "marks": 3,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    },
+    {
+      "mode": "고",
+      "mapId": "democracy-movements",
+      "description": 286,
+      "marks": 4,
+      "overflow": false,
+      "question": true,
+      "scale": 0
+    }
+  ],
+  "body": [
+    {
+      "topic": "digestion",
+      "active": "torso",
+      "bodyHidden": false,
+      "overflow": false,
+      "scenes": [
+        "torso"
+      ]
+    },
+    {
+      "topic": "circulation",
+      "active": "heart",
+      "bodyHidden": false,
+      "overflow": false,
+      "scenes": [
+        "heart"
+      ]
+    },
+    {
+      "topic": "respiration",
+      "active": "breath",
+      "bodyHidden": false,
+      "overflow": false,
+      "scenes": [
+        "breath"
+      ]
+    },
+    {
+      "topic": "excretion",
+      "active": "torso",
+      "bodyHidden": false,
+      "overflow": false,
+      "scenes": [
+        "torso"
+      ]
+    },
+    {
+      "topic": "skeleton",
+      "active": "joint",
+      "bodyHidden": false,
+      "overflow": false,
+      "scenes": [
+        "joint"
+      ]
+    }
+  ]
+}

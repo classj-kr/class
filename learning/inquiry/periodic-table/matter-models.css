@@ -164,9 +164,13 @@ html[data-school-level="elementary"] body[data-active-tab="models"] .top-header 
 
 /* The orbital is rotated by touch, so its complete canvas must fit the viewport. */
 .model-stage canvas[data-orbital="true"] { min-width:0; width:100%; }
+.model-stage svg[data-primary="true"] { min-width:0; width:100%; aspect-ratio:auto; }
 .model-stage-panel:has(canvas[data-orbital="true"]) .model-stage-top::after,
 .model-stage-panel:has(canvas[data-portrait="true"]) .model-stage-top::after { content:none; }
 @media(max-width:800px) {
     .model-answers button { flex:0 0 auto; min-height:52px; }
     .matter-nav > .model-actions { flex:none; margin:0; align-items:center; }
+    html[data-school-level="elementary"] .matter-nav { flex-wrap:wrap; overflow:visible; }
+    html[data-school-level="elementary"] .matter-nav > button { flex:1 0 140px; }
+    html[data-school-level="elementary"] body[data-active-tab="models"] .model-layout { grid-template-areas:"controls" "stage"; }
 }

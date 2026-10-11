@@ -62,3 +62,4 @@ module.exports=[
    {id:'infection-prevention@route-transfer',topic:'새 접촉 경로',question:'A에만 표시가 있고, 첫 차례에는 C와 D만 접촉했습니다. 이 놀이 규칙에서 새로 표시가 생기는 사람은?',choices:['C와 D','접촉한 적 없는 B','없음'],answer:2,why:'표시가 없는 두 사람끼리 접촉한 상황입니다. A에서 출발한 접촉 경로가 아직 이들에게 이어지지 않았습니다.',checks:['infection-prevention#q2']}
   ]}
 ];
+module.exports.push(...require('./science-physics-experiments.cjs'));
