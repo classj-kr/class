@@ -29,7 +29,8 @@
   const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
   const named = (c, p, name) => G.point(p) + G.text(G.beyond(c, p, 0.45), name);
   const centre = (c, name) => G.point(c) + (name ? G.text([c[0] - 0.36, c[1] + 0.44], name) : '');
-  const tag = (p, q, value) => G.text(G.beside(p, q, mid(p, q), 0.45), value);
+  // 선분 옆에 적는 길이: 글자 폭만큼 더 비켜 적어 비스듬한 선분에 겹치지 않게 한다
+  const tag = (p, q, value) => { const dx = q[0] - p[0], dy = q[1] - p[1], size = Math.hypot(dx, dy) || 1; return G.text(G.beside(p, q, mid(p, q), 0.2 + String(value).length * 0.165 * Math.abs(dy / size) + 0.3 * Math.abs(dx / size)), value); };
   const draw = (cols, rows, parts, label, scale) => G.board(cols, rows, parts, { grid: false, scale: scale || 1.1, label });
   // 한 줄로 놓인 같은 원 n개. gap: 이웃한 중심 사이의 거리(맞닿으면 지름, 중심을 지나게 겹치면 반지름)
   function rowOf(n, size, gap) {
