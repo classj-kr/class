@@ -401,4 +401,24 @@
       });
     })
   ]);
+
+  // 덧문서(꼴 목록을 만들 때 잘려 빠졌던 문서 뒷부분)에서 보탠 꼴. 나머지는 이미 있는 유형과 같은 문제였다
+  // (뺀 뒤 나누기 → h-rest, 잘못 나눈 것 바로잡기·어떤 수를 구해 다시 나누기 → h-wrong, 합친 뒤 나누기 → h-sum). 간격을 두고 나무 심기는 경우 따지기라 뺐다.
+  B.addTypes('3-1-3', 'quot', [
+    T('quot-bundles', '묶음과 낱개로 준 수 나누기', '덧문서', (d) => {
+      const [a, b, q] = fact(d, ([x]) => x > 20 && x % 10 !== 0), tens = Math.floor(a / 10), ones = a % 10;
+      return N(`누름 못이 10개씩 ${tens}묶음과 낱개 ${ones}개 있다. 그림 한 장을 붙이는 데 누름 못이 ${b}개 필요할 때, 그림을 몇 장 붙일 수 있는가?`, q, {
+        unit: '장', explain: `누름 못은 모두 ${a}개이다. ${expr(a, '/', b, '=', q)}`, facts: { calc: [[`(10*${tens}+${ones})/${b}`, 0]] }
+      });
+    })
+  ]);
+  B.addTypes('3-1-3', 'hard', [
+    H('h-both-sides', '두 몫 사이에 들어갈 수', '덧문서', (d) => {
+      const low = d.int(2, 6), b1 = d.int(2, 9), b2 = d.until(() => d.int(2, 9), (v) => v !== b1), a1 = low * b1, a2 = (low + 2) * b2;
+      return N('두 식의 □ 안에 공통으로 들어갈 수 있는 수는?', low + 1, {
+        figure: lines([`${a1} ÷ ${b1} &lt; □`, `□ &lt; ${a2} ÷ ${b2}`]), explain: `${expr(a1, '/', b1, '=', low)}이므로 □는 ${low}보다 크고, ${expr(a2, '/', b2, '=', low + 2)}이므로 □는 ${low + 2}보다 작다. ${low}보다 크고 ${low + 2}보다 작은 수는 ${low + 1}이다.`,
+        facts: { calc: [[`${a1}/${b1}+1`, 0], [`${a2}/${b2}-1`, 0]], unseen: [1] }
+      });
+    })
+  ]);
 })(typeof window !== 'undefined' ? window : globalThis);
