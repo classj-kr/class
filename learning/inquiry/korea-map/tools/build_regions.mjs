@@ -9,6 +9,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -92,14 +93,23 @@ function sigunguLabels() {
     const city = name.match(/^(.+?시)\s*.+구$/u);
     const label = city ? city[1] : name;
     if (!/(시|군)$/u.test(label)) continue;
-    const group = groups.get(label) || { lat: 0, lng: 0, count: 0 };
+    // 동명이군(강원·경남 고성군)은 서로 다른 행정구역이다.
+    const key = code.slice(0, 2) + ':' + label;
+    const group = groups.get(key) || { name: label, lat: 0, lng: 0, count: 0 };
     group.lat += lat; group.lng += lng; group.count += 1;
-    groups.set(label, group);
+    groups.set(key, group);
   }
-  return [...groups.entries()].map(([name, group]) => [name, Math.round((group.lat / group.count) * 1000) / 1000, Math.round((group.lng / group.count) * 1000) / 1000]);
+  return [...groups.values()].map(group => [group.name, Math.round((group.lat / group.count) * 1000) / 1000, Math.round((group.lng / group.count) * 1000) / 1000]);
 }
 
-const north = (await northGeojson()).features.map((feature) => {
+const out = path.join(ROOT, "data/regions.js");
+function existingNorth() {
+  const context = {window: {}};
+  vm.runInNewContext(fs.readFileSync(out, 'utf8'), context);
+  return context.window.KOREA_REGIONS.north;
+}
+// 시·군 이름표만 고칠 때에는 검토된 북한 경계를 다시 내려받지 않는다.
+const north = process.argv.includes('--labels-only') ? existingNorth() : (await northGeojson()).features.map((feature) => {
   const polygons = feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
   const rings = polygons.map((polygon) => simplify(toLatLng(polygon[0]))).filter((ring) => ring.length >= 4);
   const name = NORTH_NAMES[feature.properties.shapeName];
@@ -107,7 +117,6 @@ const north = (await northGeojson()).features.map((feature) => {
   return { name, center: centerOf(rings), rings };
 });
 const counties = sigunguLabels();
-const out = path.join(ROOT, "data/regions.js");
 fs.writeFileSync(out, [
   "// tools/build_regions.mjs 로 만든 파일. 직접 고치지 말 것.",
   "// north: 북한 도 경계(geoBoundaries, CC BY 4.0), counties: 남한 시·군 이름표 [이름, 위도, 경도](통계청 SGIS 기반).",

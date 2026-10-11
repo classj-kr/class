@@ -230,7 +230,7 @@
 
     function legendMarkup() {
         return '<div class="heart-flow-legend">' +
-            '<span><i style="background:' + VENOUS + '"></i>정맥혈 (산소 적음)</span>' +
+            '<span><i style="background:' + VENOUS + '"></i>산소가 적은 혈액</span>' +
             '<span><i class="heart-flow-legend-arterial" style="background:' + ARTERIAL + '"></i><span class="heart-flow-legend-arterial-text">동맥혈 (산소 풍부)</span></span>' +
             '</div>';
     }
@@ -327,6 +327,10 @@
     /** 이름표는 그림 속 조각의 자리를 재서 붙인다. 그림이 바뀌어도 따라간다. */
     function placeLabels() {
         var elementary=window.SchoolLevel?.value==='elementary';
+        var pulmonaryButton=layer?.querySelector('[data-mode="pulmonary"]');
+        var systemicButton=layer?.querySelector('[data-mode="systemic"]');
+        if(pulmonaryButton)pulmonaryButton.textContent=elementary?'심장 ↔ 폐':'폐순환만';
+        if(systemicButton)systemicButton.textContent=elementary?'심장 ↔ 온몸':'체순환만';
         var items=elementary?[
             {id:'heartOutline',text:'심장',sx:500,sy:480,ax:855,ay:480},
             {id:'lungs',text:'폐',fx:.5,fy:.1},

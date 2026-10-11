@@ -30,18 +30,21 @@
 .atlas :is(.spot-detail, .visual-caption, .info-photo figcaption) { line-height: 1.85; }
 
 /* Answer choices are reading content even though they are buttons. */
-.atlas #quizBody { font-size: 19px; line-height: 1.85; }
+.atlas #quizBody { font-size: 18px; line-height: 1.7; }
 .atlas #quizBody :is(button, .quiz-meta, .quiz-topic) { font-family: var(--interface-font); }
 .atlas #quizBody .quiz-options button {
   font-family: var(--reading-font);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.85;
+  line-height: 1.6;
+  padding: 9px 12px;
 }
-.atlas #questionTitle { font-size: 22px; font-weight: 400; line-height: 1.75; }
-.atlas #answerFeedback { font-size: 19px; line-height: 1.9; }
+.atlas #questionTitle { font-size: 20px; font-weight: 400; line-height: 1.65; }
+.atlas #answerFeedback { font-size: 18px; line-height: 1.75; }
+.atlas #answerFeedback:empty { display:none; }
 .atlas .result-topics { font-size: 16px; }
-.atlas .question-table { font-size: 14px; line-height: 1.8; }
+.atlas .question-table { font-size: 16px; line-height: 1.6; }
+.atlas .question-table caption { font-size: 13px; }
 .atlas :is(.question-grid svg, .lesson-visual svg) { font-family: var(--reading-font); }
 
 @media (max-width: 860px) {
@@ -69,7 +72,7 @@
   max-height:calc(100dvh - 84px);
   backdrop-filter:none;
 }
-.atlas .atlas-quiz { width:min(760px,calc(100vw - 28px)); }
+.atlas .atlas-quiz { width:min(900px,calc(100vw - 24px)); max-width:calc(100vw - 24px); }
 .atlas :is(.info-text,.info-where,.info-title,.lesson-heading h1,.lesson-description p,.core-list li,#questionTitle,#answerFeedback p,.result-topics) { color:#202124; }
 .atlas :is(.info-kind,.info-photo figcaption,.lesson-meta,.lesson-sources,.quiz-meta,.quiz-topic) { color:#54616a; }
 .atlas :is(.info-close,.lesson-close,.quiz-close) { background:#f7f5ef; color:#234c4d; border-color:#aab8b2; }

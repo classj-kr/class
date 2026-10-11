@@ -97,5 +97,5 @@
     });
   }
   add(rows);
-  window.HistoryQuestions={add,forLevel:(scene,level)=>bank[scene]?.[level]||[]};
+  window.HistoryQuestions={add,replaceLevel(scene,level,items){(bank[scene]||={})[level]=items;},forLevel:(scene,level)=>bank[scene]?.[level]||[]};
 })();

@@ -1,8 +1,9 @@
 """Repair digitization seams in the three reviewed textbook colour maps.
 
-Work in SOURCE PIXELS, before map registration. Only gaps within three pixels
-of both adjoining colour masks are eligible. Unknown/outside areas are never
-assigned wholesale. Shared edges are simplified and rounded ONCE, then used
+Work in SOURCE PIXELS, before map registration. Automatic seams are restricted
+to three pixels from both colour masks; reviewed annotation exceptions have
+explicit pixel coordinates in history-reference-control.json. Unknown/outside
+areas are never assigned wholesale. Shared edges are rounded ONCE, then used
 by both countries; smoothing polygons independently would recreate gaps.
 """
 import math

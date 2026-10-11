@@ -1079,10 +1079,15 @@
     $("#nextQuestion").disabled = true;
     $("#nextQuestion").textContent = session.index === session.questions.length - 1 ? "결과 보기" : "다음 문제";
     $("#showHint").disabled = !question.hint;
+    $("#showHint").hidden = !question.hint;
     $("#showHint").textContent = "단서 보기";
     const caption = $("#questionMapCaption");
     caption.classList.remove("is-hint");
     renderAnswerOptions(question);
+    const hasMap = question.showMap !== false;
+    $(".question-map-wrap").hidden = !hasMap;
+    $(".question-body").classList.toggle("without-map", !hasMap);
+    if (!hasMap) return;
 
     const diagram = dataset.lessons.find(l => l.id === question.diagram);
     $("#questionDiagram").hidden = !diagram;
@@ -1322,6 +1327,7 @@
   }
 
   function showAnswerLocation(question) {
+    if (question.showMap === false) return;
     if (question.diagram) {
       window.KoreaVisuals.render($("#questionDiagram"), dataset.lessons.find(l=>l.id===question.diagram), { quiz:true, revealed:true, evidence:question.explanation, area:question.evidenceArea });
       $("#questionMapCaption").textContent = "개념 이름과 정답 근거를 같은 그림에서 확인하세요.";

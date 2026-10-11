@@ -724,59 +724,59 @@
   },
   "coastalRegistration": {
     "goguryeo-fifth": {
-      "method": "Nearest existing region fills only unpainted coastal land; inland borders retained.",
+      "method": "Continuous Voronoi partition of unpainted coastal land; original inland borders retained.",
       "maximumMercatorMetres": 32000,
-      "stepMercatorMetres": 1000,
+      "boundarySampleMercatorMetres": 1000,
       "coastalLandAddedMercatorKm2": 28201.916,
       "remainingEligibleMercatorKm2": 0.0,
       "regions": [
         {
-          "addedMercatorKm2": 21339.712
+          "addedMercatorKm2": 21338.536
         },
         {
-          "addedMercatorKm2": 4133.793
+          "addedMercatorKm2": 4122.459
         },
         {
-          "addedMercatorKm2": 420.071
+          "addedMercatorKm2": 419.597
         },
         {
-          "addedMercatorKm2": 2308.34
+          "addedMercatorKm2": 2321.323
         }
       ]
     },
     "silla-sixth": {
-      "method": "Nearest existing region fills only unpainted coastal land; inland borders retained.",
+      "method": "Continuous Voronoi partition of unpainted coastal land; original inland borders retained.",
       "maximumMercatorMetres": 32000,
-      "stepMercatorMetres": 1000,
+      "boundarySampleMercatorMetres": 1000,
       "coastalLandAddedMercatorKm2": 10459.524,
       "remainingEligibleMercatorKm2": 0.0,
       "regions": [
         {
-          "addedMercatorKm2": 4971.044
+          "addedMercatorKm2": 4944.888
         },
         {
-          "addedMercatorKm2": 5488.481
+          "addedMercatorKm2": 5514.636
         }
       ]
     },
     "baekje-fourth": {
-      "method": "Nearest existing region fills only unpainted coastal land; inland borders retained.",
+      "method": "Continuous Voronoi partition of unpainted coastal land; original inland borders retained.",
       "maximumMercatorMetres": 32000,
-      "stepMercatorMetres": 1000,
+      "boundarySampleMercatorMetres": 1000,
       "coastalLandAddedMercatorKm2": 41602.509,
       "remainingEligibleMercatorKm2": 0.0,
       "regions": [
         {
-          "addedMercatorKm2": 31496.368
+          "addedMercatorKm2": 31484.43
         },
         {
-          "addedMercatorKm2": 2752.404
+          "addedMercatorKm2": 2733.097
         },
         {
-          "addedMercatorKm2": 5747.682
+          "addedMercatorKm2": 5741.388
         },
         {
-          "addedMercatorKm2": 1606.056
+          "addedMercatorKm2": 1643.594
         }
       ]
     }
@@ -802,23 +802,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 32.6497,
-            "visibleArea": 17.9003
+            "area": 32.649,
+            "visibleArea": 17.8995
           },
           {
             "name": "백제",
-            "area": 5.072,
-            "visibleArea": 5.072
+            "area": 5.0708,
+            "visibleArea": 5.0708
           },
           {
             "name": "신라",
-            "area": 3.2328,
-            "visibleArea": 3.2328
+            "area": 3.2324,
+            "visibleArea": 3.2324
           },
           {
             "name": "가야",
-            "area": 0.8191,
-            "visibleArea": 0.8191
+            "area": 0.8216,
+            "visibleArea": 0.8216
           }
         ]
       }
@@ -829,23 +829,23 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 36.7146,
-            "visibleArea": 36.7146
+            "area": 36.7145,
+            "visibleArea": 36.7145
           },
           {
             "name": "백제",
-            "area": 2.146,
-            "visibleArea": 2.146
+            "area": 2.1453,
+            "visibleArea": 2.1453
           },
           {
             "name": "신라",
-            "area": 2.898,
-            "visibleArea": 2.898
+            "area": 2.8979,
+            "visibleArea": 2.8979
           },
           {
             "name": "가야",
-            "area": 1.5557,
-            "visibleArea": 1.5557
+            "area": 1.5565,
+            "visibleArea": 1.5565
           }
         ]
       }
@@ -856,22 +856,22 @@
         "regions": [
           {
             "name": "고구려",
-            "area": 36.7146,
-            "visibleArea": 1.2811
+            "area": 36.7145,
+            "visibleArea": 1.281
           },
           {
             "name": "백제",
-            "area": 2.146,
+            "area": 2.1453,
             "visibleArea": 0.9304
           },
           {
             "name": "신라",
-            "area": 2.898,
+            "area": 2.8979,
             "visibleArea": 0.1196
           },
           {
             "name": "가야",
-            "area": 1.5557,
+            "area": 1.5565,
             "visibleArea": 0.0363
           }
         ]
@@ -886,13 +886,13 @@
           },
           {
             "name": "백제",
-            "area": 2.763,
-            "visibleArea": 0.9519
+            "area": 2.7613,
+            "visibleArea": 0.9512
           },
           {
             "name": "신라",
-            "area": 9.5517,
-            "visibleArea": 1.3985
+            "area": 9.5534,
+            "visibleArea": 1.3993
           },
           {
             "name": "진흥왕 때 진출했다가 이후 상실한 북방",
@@ -913,13 +913,13 @@
           },
           {
             "name": "백제",
-            "area": 2.763,
-            "visibleArea": 2.763
+            "area": 2.7613,
+            "visibleArea": 2.7613
           },
           {
             "name": "신라",
-            "area": 9.5517,
-            "visibleArea": 9.5517
+            "area": 9.5534,
+            "visibleArea": 9.5534
           },
           {
             "name": "진흥왕 때 진출했다가 이후 상실한 북방",
@@ -940,13 +940,13 @@
           },
           {
             "name": "백제",
-            "area": 2.763,
-            "visibleArea": 2.7266
+            "area": 2.7613,
+            "visibleArea": 2.7249
           },
           {
             "name": "신라",
-            "area": 8.2752,
-            "visibleArea": 8.2752
+            "area": 8.2769,
+            "visibleArea": 8.2769
           }
         ]
       },

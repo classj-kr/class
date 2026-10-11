@@ -68,14 +68,6 @@
     fit(api);
   }
 
-  function sourceLink(label, url) {
-    const node = el("a", "", label);
-    node.href = url;
-    node.target = "_blank";
-    node.rel = "noopener noreferrer";
-    return node;
-  }
-
   function panel(api) {
     panelApi = api;
     panelHost = el("section", "history-panel");
@@ -198,46 +190,18 @@
       list.append(li);
     });
     places.append(list, button("지도 전체 보기", null, () => fit(panelApi)));
-    // Keep provenance available without placing editorial notes in the lesson.
-    const resourceDialog = el("dialog", "history-resource-dialog");
-    resourceDialog.setAttribute("aria-labelledby", "historyResourceTitle");
-    const resourceHeading = el("header", "history-resource-heading");
-    const resourceTitle = el("h3", "", "자료 정보");
-    resourceTitle.id = "historyResourceTitle";
-    const closeResource = button("닫기", "자료 정보 닫기", () => resourceDialog.close());
-    resourceHeading.append(resourceTitle, closeResource);
-    const sources = el("div", "history-sources");
-    sources.append(sourceLink("역사 자료 ↗", scene.source));
-    if (scene.mapSource) sources.append(sourceLink(`영역선 원본 · ${scene.mapSource[0]} ↗`, scene.mapSource[1]));
-    (state.sources || []).forEach(([label, url]) => {
-      if (url !== scene.source && url !== scene.mapSource?.[1]) sources.append(sourceLink(`${label} ↗`, url));
-    });
-    if (scene.exam) sources.append(sourceLink(`관련 기출 · ${scene.exam[0]} ↗`, scene.exam[1]));
-    const notes = [...new Set([scene.note, state.note].filter(Boolean))];
-    if (notes.length) {
-      sources.append(el("h4", "", "지도 참고"));
-      notes.forEach(note => sources.append(el("p", "", note)));
-    }
-    resourceDialog.append(resourceHeading, sources);
-    const resourceButton = button("자료 정보", null, () => {
-      resourceDialog.showModal();
-      closeResource.focus();
-    });
-    resourceButton.classList.add("history-resource-trigger");
-    resourceButton.setAttribute("aria-haspopup", "dialog");
-    resourceDialog.addEventListener("close", () => resourceButton.focus({ preventScroll: true }));
     const quiz = scene.id === "korean-war" && window.KoreaHistoryOrder
       ? button("지도 순서 문제", null, () => window.KoreaHistoryOrder.open()) : null;
     if (quiz) quiz.classList.add("history-order-launch");
     const study = grade ? [explanation] : [cues, trap];
     if(window.HistoryQuestions?.forLevel(scene.id,school()).length) {
-      const practice=button('확인 문제',null,()=>window.KoreaHistoryPractice.open(scene));
+      const practice=button('확인 문제',null,()=>window.KoreaHistoryPractice.open(scene,panelApi));
       practice.classList.add('history-practice-launch');practice.setAttribute('aria-haspopup','dialog');
       study.push(practice);
     }
     if (state.lesson) study.push(cues);
     if (scene.distribution && window.KoreaHistoryBronze) study.push(window.KoreaHistoryBronze.panel());
-    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places, resourceButton, resourceDialog);
+    content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places);
   }
 
   function draw(map, group) {

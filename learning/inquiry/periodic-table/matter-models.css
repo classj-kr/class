@@ -162,6 +162,9 @@ html[data-school-level="elementary"] body[data-active-tab="models"] .top-header 
 .matter-nav .matter-reading-actions button { width:auto; flex:1; justify-content:center; background:#214d51; border:1px solid #5d8585; color:#eefbfa; font-size:15px!important; padding:8px; }
 .matter-reading-dialog { width:min(780px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); margin:auto; padding:0 22px 22px; border:1px solid #c9cec8; border-radius:14px; background:var(--reading-paper,#f7f5ef); color:var(--reading-ink,#202124); box-sizing:border-box; }
 .matter-reading-dialog::backdrop { background:#020914b3; }
+html:has(.matter-reading-dialog[open]), body:has(>.matter-reading-dialog[open]) { overflow:hidden!important; }
+.matter-reading-dialog .school-concepts { padding:0; border:0; background:transparent; }
+.matter-reading-dialog .school-concepts + .school-concepts { padding-top:18px; border-top:1px solid #c9cec8; }
 .matter-reading-dialog>header { position:sticky; top:0; z-index:1; display:flex; align-items:center; gap:12px; padding:16px 0; background:var(--reading-paper,#f7f5ef); border-bottom:1px solid #c9cec8; margin-bottom:16px; }
 .matter-reading-dialog>header h2 { margin:0; font:600 20px sans-serif; }
 .matter-reading-dialog>header button { margin-left:auto; padding:8px 14px; border:1px solid #9cafab; border-radius:6px; background:#e7ede7; color:#234c4d; cursor:pointer; }
@@ -192,6 +195,11 @@ html[data-school-level="elementary"] body[data-active-tab="models"] .top-header 
 .model-stage-panel:has(canvas[data-orbital="true"]) .model-stage-top::after,
 .model-stage-panel:has(canvas[data-portrait="true"]) .model-stage-top::after { content:none; }
 @media(max-width:800px) {
+    .matter-reading-dialog { width:calc(100vw - 24px); max-width:calc(100vw - 24px); padding:0 14px 18px; }
+    .matter-reading-dialog .lesson-visual[data-visual="states-structure"] .lv-compare { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+    .matter-reading-dialog .lesson-visual[data-visual="states-structure"] .lv-compare>div { padding:8px 4px; }
+    .matter-reading-dialog .lesson-visual[data-visual="states-structure"] .lv-compare h4 { text-align:center; margin-bottom:6px; }
+    .matter-reading-dialog .lesson-visual[data-visual="states-structure"] .lv-note { font-size:16px; line-height:1.55; margin-top:8px; }
     .model-answers button { flex:0 0 auto; min-height:52px; }
     .matter-nav > .model-actions { flex:none; margin:0; align-items:center; }
     html[data-school-level="elementary"] .matter-nav { flex-wrap:wrap; overflow:visible; }
