@@ -14,8 +14,10 @@ from scipy.ndimage import map_coordinates
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-BREAKS = [200, 1000, 2000, 3000]
-COLORS = np.array([[202,230,237], [143,197,219], [85,154,196], [47,112,167], [30,76,130]], dtype=np.uint8)
+# Three display classes keep the broad shelf/deep-basin contrast legible.
+# These are map display thresholds, not three named geomorphic landforms.
+BREAKS = [200, 2000]
+COLORS = np.array([[202,230,237], [85,154,196], [30,76,130]], dtype=np.uint8)
 URL = 'https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip'
 
 def sea_mask(rgb):

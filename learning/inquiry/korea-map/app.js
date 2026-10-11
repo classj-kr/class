@@ -125,7 +125,7 @@
     };
     map.on("resize", updateNavigationLimits);
     updateNavigationLimits();
-    const seaUrl = 'bathymetry/{z}/{x}/{y}.webp?v=20261012-1';
+    const seaUrl = 'bathymetry/{z}/{x}/{y}.webp?v=20261012-3bands';
     [
       [L.TileLayer, { minNativeZoom: 3, maxNativeZoom: 6 }],
       [L.TileLayer, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }],
@@ -506,8 +506,8 @@
       }
       if (item.type === 'depth') {
         node.className = 'key-item key-depth';
-        node.setAttribute('aria-label', '바다 수심: 0–200, 200–1000, 1000–2000, 2000–3000, 3000m 이상');
-        node.innerHTML = '<span class="relief-label">수심</span><span class="depth-scale"><span class="depth-bar" aria-hidden="true"></span><span class="depth-ticks"><span>0</span><span>200</span><span>1000</span><span>2000</span><span>3000+</span></span><span class="depth-unit">m</span></span>';
+        node.setAttribute('aria-label', '바다 수심: 200m 미만, 200–2000m, 2000m 이상');
+        node.innerHTML = '<span class="relief-label">수심(m)</span><span class="depth-scale" aria-hidden="true"><span class="depth-bar"></span><span class="depth-ticks"><span>200 미만</span><span>200–2,000</span><span>2,000 이상</span></span></span>';
         return node;
       }
       node.className = "key-item";
