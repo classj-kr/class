@@ -1126,12 +1126,10 @@ function showPanel(item) {
     panelImage.alt = photo.caption?.replace(/^사진 속 · /, "") || item.name;
     panelCaption.textContent = photo.caption || "";
     panelPhotoSource.href = photo.page;
-    panelPhotoSource.title = `사진 출처 · ${photo.author} · ${photo.license}`;
     panelPhotoSource.setAttribute("aria-label", `${panelImage.alt} — 사진 원본 보기. ${photo.author}, ${photo.license}`);
   } else {
     panelImage.removeAttribute("src");
     panelPhotoSource.removeAttribute("href");
-    panelPhotoSource.removeAttribute("title");
     panelPhotoSource.removeAttribute("aria-label");
   }
   panel.scrollTop = 0;
