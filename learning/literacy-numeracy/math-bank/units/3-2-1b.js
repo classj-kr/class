@@ -114,6 +114,25 @@
         return N(`공책 ${a * b + rest}권을 학생 ${a}명에게 ${b}권씩 나누어 주었다. 남은 공책은 몇 권인가?`, rest, {
           unit: '권', explain: `나누어 준 공책은 ${times(a, b)}(권)이다. ${expr(a * b + rest, '-', a * b, '=', rest)}`, facts: { calc: [[`${a * b + rest}-${a}*${b}`, 0]] }
         });
+      }, { standard: SOLVE }),
+      H('h-sum', '문장제: 두 곱의 합', '두 곱의 합(기본 ①58 ②72 ③61, 심화 단원평가 여러 출판사)', (d) => {
+        // 12개씩 24상자와 15개씩 16상자
+        const [[a, b], [c, e]] = d.until(() => [pair22(d, (x, y) => x <= 29 && y <= 39), pair22(d, (x, y) => x <= 29 && y <= 39)], ([p, q]) => p[0] !== q[0] && p[1] !== q[1] && p[0] * p[1] + q[0] * q[1] <= 990);
+        return N(`사과는 한 상자에 ${a}개씩 ${b}상자 있고, 배는 한 상자에 ${c}개씩 ${e}상자 있다. 사과와 배는 모두 몇 개인가?`, a * b + c * e, {
+          unit: '개', explain: `사과는 ${times(a, b)}(개), 배는 ${times(c, e)}(개)이다. ${expr(a * b, '+', c * e, '=', a * b + c * e)}`, facts: { calc: [[`${a}*${b}+${c}*${e}`, 0]] }
+        });
+      }, { standard: SOLVE }),
+      H('h-addmul', '문장제: 더한 뒤 곱하기', '더한 뒤 곱하기(기본 ①59 ②75)', (d) => {
+        const [m, w, each] = d.until(() => [d.int(11, 19), d.int(11, 19), d.int(12, 28)], ([x, y, z]) => x !== y && z % 10 !== 0 && (x + y) % 10 !== 0 && (x + y) * z <= 990);
+        return N(`남학생 ${m}명과 여학생 ${w}명에게 색종이를 ${each}장씩 나누어 주려고 한다. 필요한 색종이는 모두 몇 장인가?`, (m + w) * each, {
+          unit: '장', explain: `학생은 모두 ${expr(m, '+', w, '=', m + w)}(명)이다. ${times(m + w, each)}`, facts: { calc: [[`(${m}+${w})*${each}`, 0]] }
+        });
+      }, { standard: SOLVE }),
+      H('h-keep', '문장제: 나누어 주고 남은 수로 처음 수 구하기', '곱하고 남은 것 더하기(기본 ①62 ②70)', (d) => {
+        const [n, each, rest] = d.until(() => [d.int(13, 29), d.int(12, 26), d.int(3, 11)], ([x, y, z]) => x % 10 !== 0 && y % 10 !== 0 && z < y && x * y + z <= 990);
+        return N(`구슬을 ${n}명에게 ${each}개씩 나누어 주었더니 ${rest}개가 남았다. 처음에 있던 구슬은 몇 개인가?`, n * each + rest, {
+          unit: '개', explain: `나누어 준 구슬은 ${times(n, each)}(개)이다. ${expr(n * each, '+', rest, '=', n * each + rest)}`, facts: { calc: [[`${n}*${each}+${rest}`, 0]] }
+        });
       }, { standard: SOLVE })
     ]
   });

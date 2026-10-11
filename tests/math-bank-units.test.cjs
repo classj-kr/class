@@ -251,6 +251,11 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       if (f.wrongProduct !== undefined) { assert.notEqual(f.wrongProduct, a * b, '틀린 답이 정답과 같다: ' + label); assert.ok(f.wrongProduct > 0, label); }
       if (f.carry3) assert.ok((a % 10) * b >= 10, '일의 자리에서 올림이 없다: ' + label);
     }
+    if (f.rule === 'fewCarries' || f.rule === 'manyCarries') {
+      // (두 자리 수)×(두 자리 수): 일의 자리 숫자를 곱할 때 올림이 일어나는 횟수(곱하는 수의 일의 자리, 십의 자리)
+      const [a, b] = f.mulAny, n = ((a % 10) * (b % 10) >= 10 ? 1 : 0) + ((a % 10) * Math.trunc(b / 10) >= 10 ? 1 : 0);
+      assert.ok(a >= 11 && a <= 99 && b >= 11 && b <= 99 && (f.rule === 'manyCarries' ? n === 2 : n <= 1), '올림 횟수가 이름과 다르다: ' + label);
+    }
     if (GRADE3_MUL.has(at.unit.id)) {
       const whole = strip([item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<span class="mb-box">[^<]*<\/span>/g, '□'));
       for (const m of whole.matchAll(/(\d+) × (\d+)/g)) { assert.ok(inGrade3(Number(m[1]), Number(m[2])), `3학년 범위를 넘는 곱셈 ${m[0]} — ${label}`); muls += 1; }
@@ -581,6 +586,23 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.deepEqual(local(item.inputs.map((i) => i.answer)), [Math.trunc(x / right), x % right], label); tally('wrongDivide');
     }
     if (f.restTalk) { const { a, b, saidQ, saidR } = f.restTalk; assert.ok(saidQ * b + saidR === a && saidR >= b && saidQ >= 1, label); tally('restTalk'); }
+    if (f.tensEstimate) {
+      // 두 수를 각각 가장 가까운 몇십으로 어림해 곱한다(끝자리가 5인 수는 내지 않는다).
+      const [a, b] = f.tensEstimate, ra = Math.round(a / 10) * 10, rb = Math.round(b / 10) * 10;
+      assert.ok(a % 10 !== 5 && b % 10 !== 5 && a % 10 !== 0 && b % 10 !== 0, label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [ra, rb, ra * rb], label); tally('tensEstimate');
+    }
+    if (f.twoCards) {
+      // 수 카드 넷으로 만드는 두 자리 수를 모두 만들어 가장 큰 수와 가장 작은 수를 찾는다.
+      const all = []; f.twoCards.forEach((x, i) => f.twoCards.forEach((y, j) => { if (i !== j && x !== 0) all.push(x * 10 + y); }));
+      assert.equal(new Set(f.twoCards).size, 4, label);
+      assert.equal(answerAt(item, 0), Math.max(...all) * Math.min(...all), label); assert.ok(Math.max(...all) <= 99 && Math.min(...all) >= 10, label); tally('twoCards');
+    }
+    if (f.bigCards) {
+      const { digits, by } = f.bigCards, all = threeDigit(digits);
+      assert.equal(new Set(digits).size, 3, label); assert.ok(by >= 2 && by <= 9, label);
+      assert.equal(answerAt(item, 0), Math.max(...all) * by, label); tally('bigCards');
+    }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
