@@ -585,6 +585,7 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.ok(r >= 1 && r < wrong && right !== wrong && right >= 2 && right <= 9 && wrong <= 9 && x <= 999, label);
       assert.deepEqual(local(item.inputs.map((i) => i.answer)), [Math.trunc(x / right), x % right], label); tally('wrongDivide');
     }
+    if (f.enough) { const { a, b, n, fits } = f.enough; assert.ok(a !== n * b && (a <= n * b) === fits && Math.abs(a - n * b) <= 15 && (n * b) % 100 === 0, label); tally('enough'); }
     if (f.restTalk) { const { a, b, saidQ, saidR } = f.restTalk; assert.ok(saidQ * b + saidR === a && saidR >= b && saidQ >= 1, label); tally('restTalk'); }
     if (f.tensEstimate) {
       // 두 수를 각각 가장 가까운 몇십으로 어림해 곱한다(끝자리가 5인 수는 내지 않는다).

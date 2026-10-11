@@ -53,7 +53,7 @@
   const rowsOf = (a, b) => longDivision(b, a).rows.map((row) => row.value);
 
   B.addUnit({
-    id: '3-2-2', grade: 3, semester: 2, no: 2, title: '나눗셈', version: 1,
+    id: '3-2-2', grade: 3, semester: 2, no: 2, title: '나눗셈', version: 2,
     groups: [
       {
         id: 'tens', title: '(몇십)÷(몇)', standard: CALC,
@@ -248,6 +248,14 @@
               figure: tagged(rows.map(([x, y]) => expr(x, '/', y))), explain: `${shown(a, b)}이다. ${said(rows)}`, facts: { choose: { exprs: rows.map(([x, y]) => `${x}%${y}`), rule: 'equals', target: r } }
             });
           }),
+          T('rest-fix', '잘못 계산한 세로셈 바로잡기', '①54 ②83 ③67 심58', (d) => {
+            // 47÷6 을 몫 6, 나머지 11로 계산한 세로셈
+            const [a, b] = rest1(d, (x, y, q) => q >= 3), q = Math.floor(a / b), r = a % b;
+            return M('나눗셈을 잘못 계산한 것이다. 바르게 계산한 몫과 나머지는?', both(a, b), {
+              figure: divSteps(b, a, { steps: true, given: { quot: q - 1, rows: [{ value: b * (q - 1), end: 1, sub: true }, { value: r + b, end: 1, sub: false }] } }),
+              explain: `나머지 ${josa(r + b, '이/가')} 나누는 수 ${b}보다 크므로 더 나눌 수 있다. ${shown(a, b)}`, facts: { divide: [a, b], restTalk: { a, b, saidQ: q - 1, saidR: r + b } }
+            });
+          }),
           T('rest-word', '문장제: 몫과 나머지', '①23 ②25 ③33 심20', (d) => {
             const [a, b] = rest1(d);
             return M(`풍선 ${a}개를 한 명에게 ${b}개씩 나누어 주려고 한다. 몇 명에게 줄 수 있고, 몇 개가 남는가?`, [{ answer: Math.floor(a / b), unit: '명' }, { answer: a % b, unit: '개' }], { explain: shown(a, b), facts: { divide: [a, b] } });
@@ -318,6 +326,25 @@
               facts: { choose: { exprs: list.map(String), rule: 'nearest', target: a }, nearHundred: [a, h] }
             });
           }),
+          T('est-both', '어림한 몫과 실제 몫', '①67 ②51 ③42', (d) => {
+            // 398÷4: 어림하면 약 100, 실제로는 99…2
+            const [h, b] = d.until(() => [d.int(2, 8) * 100, d.int(3, 9)], ([x, y]) => x % y === 0), a = d.until(() => h + d.pick([-9, -8, -7, -6, -5, -4, -3, 3, 4, 5, 6, 7, 8, 9]), (v) => v % b !== 0);
+            return M(`${a} ÷ ${b}의 몫을 어림한 값과 실제로 계산한 값을 구하려고 한다. ㉠, ㉡, ㉢에 알맞은 수는?`, labelled([h / b, Math.floor(a / b), a % b]), {
+              figure: lines([`${josa(a, '을/를')} 몇백으로 어림하여 계산하면 몫은 약 ${box(LABELS[0])}이다.`, `실제로 계산하면 몫은 ${box(LABELS[1])}, 나머지는 ${box(LABELS[2])}이다.`]),
+              explain: `${josa(a, '을/를')} 약 ${josa(h, '으로/로')} 어림하면 ${shown(h, b)}이다. 실제로 계산하면 ${shown(a, b)}이다.`,
+              facts: { calc: [[E(h, '/', b), 0], [`(${a}-${a}%${b})/${b}`, 1], [`${a}%${b}`, 2]], unseen: [h], nearHundred: [a, h] }
+            });
+          }),
+          T('est-enough', '어림셈으로 충분한지 판단하기', '①69 심32', (d) => {
+            // 6개씩 담는 상자 50개와 귤 298개: 300÷6=50
+            const [n, b] = d.until(() => [d.int(2, 9) * 10, d.int(3, 9)], ([x, y]) => (x * y) % 100 === 0 && x * y <= 800), h = n * b, a = h + d.pick([-8, -7, -6, -5, 5, 6, 7, 8]), fits = a <= h;
+            const size = fits ? '작으므로' : '크므로';
+            const rows = d.shuffle([[`${h} ÷ ${b} = ${n}이고 ${josa(a, '은/는')} ${h}보다 ${size} 모두 담을 수 있다.`, fits], [`${h} ÷ ${b} = ${n}이고 ${josa(a, '은/는')} ${h}보다 ${size} 상자가 모자란다.`, !fits], [`${josa(a, '은/는')} ${josa(h, '과/와')} 다르므로 어림셈으로는 알 수 없다.`, false]]);
+            return C(`귤을 한 상자에 ${b}개씩 담으려고 한다. 상자 ${n}개에 귤 ${a}개를 모두 담을 수 있는지 어림셈으로 알아본 것으로 옳은 것은?`, rows.map(([text]) => text), rows.findIndex(([, ok]) => ok), {
+              explain: `상자 ${n}개에는 ${b} × ${n} = ${h}(개)까지 담을 수 있다. 귤 ${a}개는 ${h}개보다 ${fits ? '적으므로 모두 담을 수 있다' : '많으므로 상자가 모자란다'}.`,
+              facts: { truth: rows.map(([, ok]) => ok), want: true, enough: { a, b, n, fits } }
+            });
+          }, { standard: SOLVE }),
           T('est-about', '문장제: 어림하여 약 몇', '①68 심31', (d) => {
             const [h, b] = d.until(() => [d.int(2, 9) * 100, d.int(2, 9)], ([x, y]) => x % y === 0 && x / y !== 100), a = h + d.pick([-8, -7, -6, -5, -4, 4, 5, 6, 7, 8]);
             return N(`밤 ${a}개를 ${b}상자에 똑같이 나누어 담으려고 한다. ${josa(a, '을/를')} 몇백으로 어림하여 계산하면 한 상자에 약 몇 개씩 담게 되는가?`, h / b, {

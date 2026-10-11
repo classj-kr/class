@@ -144,8 +144,9 @@
   }
   // 나눗셈의 세로셈. 나누는 수 ) 나누어지는 수 를 적는다. o.steps 이면 몫과 계산 과정도 적는다.
   // 빈칸: o.quot(몫을 가리는 이름표), o.rows({ 줄 번호: 이름표 } — 과정의 줄은 0부터 센다). 이름표가 '' 이면 빈 네모.
+  // o.given({ quot, rows }): 잘못 계산한 세로셈처럼 과정을 그대로 정해 줄 때 쓴다.
   function divSteps(divisor, dividend, options) {
-    const o = options || {}, digits = String(dividend).split(''), n = digits.length, work = longDivision(divisor, dividend);
+    const o = options || {}, digits = String(dividend).split(''), n = digits.length, work = o.given || longDivision(divisor, dividend);
     // 수 하나를 끝 칸(end)에 맞춰 적은 줄. label 이 주어지면 그 수 자리에 빈칸을 둔다.
     const line = (text, end, label, cls) => {
       const len = String(text).length, from = end - len + 1;
@@ -157,7 +158,7 @@
       }
       return out + '</tr>';
     };
-    const quotient = work.quot.filter((q) => q !== null).join(''), hidden = o.rows || {};
+    const quotient = o.given ? String(o.given.quot) : work.quot.filter((q) => q !== null).join(''), hidden = o.rows || {};
     let out = o.steps ? line(quotient, n - 1, o.quot, 'mb-ld-quot') : '';
     out += '<tr class="mb-ld-top"><td>' + divisor + '</td><td class="mb-ld-hook"></td>' + digits.map((digit) => '<td>' + digit + '</td>').join('') + '</tr>';
     if (o.steps) work.rows.forEach((row, k) => { out += line(row.value, row.end, hidden[k], row.sub ? 'mb-ld-sub' : ''); });
