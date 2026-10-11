@@ -79,7 +79,7 @@ const URL_PATH = '/learning/literacy-numeracy/math-bank/';
     assert.match(await page.locator('.mb-item').first().locator('.mb-result').innerText(), new RegExp('답: ' + round.items[0].answers[0]));
     await solve(page, round.items[1]);
     await solve(page, round.items[2]);
-    assert.match(await page.locator('.mb-item').nth(1).locator('.mb-result').innerText(), /맞았어요/);
+    assert.match(await page.locator('.mb-item').nth(1).locator('.mb-result').innerText(), /정답/);
     assert.equal(await page.locator('.mb-item').nth(1).locator('input').isDisabled(), true, '답한 문항은 잠긴다');
 
     // 새로 고침 해도 같은 문제와 답한 것이 그대로다(씨앗과 답이 서버에 있다).
@@ -95,7 +95,7 @@ const URL_PATH = '/learning/literacy-numeracy/math-bank/';
     // 나머지를 다 풀면 결과가 나오고 판이 끝난다.
     for (const item of round.items.slice(3)) await solve(page, item);
     await page.locator('#finish:not([hidden])').waitFor();
-    assert.match(await page.locator('#finish').innerText(), new RegExp(round.items.length + '문제 가운데 ' + (round.items.length - 1) + '문제를 맞혔어요'));
+    assert.match(await page.locator('#finish').innerText(), new RegExp(round.items.length + '문항 중 ' + (round.items.length - 1) + '문항 정답'));
     assert.equal(await page.locator('#finish button', { hasText: '실력 문제 풀기' }).count(), 0, '실력이 없는 묶음에는 단추가 없다');
     assert.equal((await roundOf(page, 'add0', '기본')).status, 'completed');
     if (SHOTS) await page.screenshot({ path: path.join(OUT, '3-finished.png'), fullPage: true });
@@ -129,7 +129,7 @@ const URL_PATH = '/learning/literacy-numeracy/math-bank/';
     await page.locator('.mb-column .mb-box').first().waitFor();
     round = await roundOf(page, 'add1', '실력');
     for (const item of round.items) await solve(page, item);
-    assert.match(await page.locator('#finish').innerText(), /2문제 가운데 2문제를 맞혔어요/);
+    assert.match(await page.locator('#finish').innerText(), /2문항 중 2문항 정답/);
     if (SHOTS) await page.screenshot({ path: path.join(OUT, '4-hard.png'), fullPage: true });
 
     // ── 손님(둘러보기): 저장 없이도 풀린다 ──
