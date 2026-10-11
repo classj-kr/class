@@ -19,6 +19,7 @@
 .history-territory-dates:empty { display: none; }
 .history-territory-dates [aria-pressed="true"] { background: #e5eddb; border-color: #7a9369; color: #304c29; }
 .history-line-key::before { content: ""; display: inline-block; width: 20px; border-top: 2px var(--history-line-style, dashed) var(--history-line-color, #9e3b36); margin-right: 6px; }
+.history-route-key::before { content: "➜"; border: 0; color: var(--history-line-color); font-size: 19px; line-height: 12px; }
 .history-scene-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 10px; padding: 4px 0 8px; border-bottom: 1px solid var(--line); }
 .history-period { margin: 0; color: #536564; font-size: var(--history-ui-size); font-weight: 400; line-height: 1.6; }
 .history-scene-heading h3 { margin: 0; font-size: var(--history-title-size); font-weight: 600; line-height: 1.6; letter-spacing: 0; word-break: keep-all; }

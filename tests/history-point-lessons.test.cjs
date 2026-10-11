@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.join(__dirname,'../learning/inquiry/korea-map');
 const context={window:{}};
 vm.createContext(context);
-for(const name of ['history-data','history-bronze','history-school','history-additions','history-atlas','history-territories','history-war','history-point-lessons']) {
+for(const name of ['history-data','history-bronze','history-school','history-additions','history-atlas','history-territories','history-war','history-imjin','history-point-lessons']) {
   vm.runInContext(fs.readFileSync(path.join(root,'data',name+'.js'),'utf8'),context);
 }
 const {KOREA_HISTORY,KOREA_HISTORY_TERRITORIES,HistoryPointLessons,KoreaHistorySchool}=context.window;
@@ -30,7 +30,7 @@ test('every offered point has its own explanation, including filtered primary po
       }
     }
   }
-  assert.equal(baseCount,143);assert.equal(variantCount,18);
+  assert.equal(baseCount,143);assert.equal(variantCount,38);
 });
 test('a war point changes its explanation with the selected date',()=>{
   const before=HistoryPointLessons.get('korean-war',{label:'서울'},'high','1950');

@@ -259,7 +259,7 @@
   special.stepsLabel = '북쪽에서 남쪽으로 위치 비교';
   window.HistoryPointLessons = {
     get(sceneId, mark, level, stateId) {
-      const row = lessons[sceneId + '@' + stateId]?.[mark.label] || lessons[sceneId]?.[mark.label];
+      const row = mark.lesson || lessons[sceneId + '@' + stateId]?.[mark.label] || lessons[sceneId]?.[mark.lessonKey || mark.label];
       if (!row) return null;
       return { ...row, paragraphs: level === 'elementary' ? [row.basic] : [row.basic, row.connection] };
     }
