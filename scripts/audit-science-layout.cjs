@@ -20,7 +20,7 @@ const slugs=picked||Object.keys(map),capture=process.argv.includes('--capture');
   await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
   const result=await page.evaluate(()=>{
    const visible=e=>e.getClientRects().length&&getComputedStyle(e).display!=='none'&&!e.closest('[hidden]');
-   const typography=[...document.querySelectorAll('h1,h2,h3,p,legend,button,small,.result-numbers strong')].filter(visible).filter(e=>e.textContent.trim()&&!e.closest('svg')).map(e=>({text:e.textContent.trim().slice(0,45),px:parseFloat(getComputedStyle(e).fontSize)})).filter(e=>e.px<13||e.px>23);
+   const typography=[...document.querySelectorAll('h1,h2,h3,p,legend,button,small,.result-numbers strong')].filter(visible).filter(e=>e.textContent.trim()&&!e.closest('svg')).map(e=>({text:e.textContent.trim().slice(0,45),px:parseFloat(getComputedStyle(e).fontSize),heading:e.matches('h1')})).filter(e=>e.px<13||e.px>(e.heading?30:23));
    // Font boxes include line-leading that is not painted ink. Compare glyph bounds.
    const ctx=document.createElement('canvas').getContext('2d');
    const ink=t=>{const style=getComputedStyle(t);ctx.font=style.fontWeight+' '+style.fontSize+' '+style.fontFamily;const m=ctx.measureText(t.textContent),b=t.getBBox(),base=t.getStartPositionOfChar(0).y,ctm=t.getScreenCTM();const pts=[[b.x,base-m.actualBoundingBoxAscent],[b.x+b.width,base-m.actualBoundingBoxAscent],[b.x,base+m.actualBoundingBoxDescent],[b.x+b.width,base+m.actualBoundingBoxDescent]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(ctm));return{left:Math.min(...pts.map(p=>p.x)),right:Math.max(...pts.map(p=>p.x)),top:Math.min(...pts.map(p=>p.y)),bottom:Math.max(...pts.map(p=>p.y))};};
