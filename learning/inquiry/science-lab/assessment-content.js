@@ -34,5 +34,7 @@
  ]};
  const extra=typeof module!=='undefined'?require('./experiment-questions.js'):root.scienceExperimentQuestions;
  if(extra){Object.assign(misconceptions,extra.misconceptions);Object.assign(followups,extra.followups);}
+ const quality=typeof module!=='undefined'?require('./question-quality-content.js'):root.scienceQualityContent;
+ if(quality){Object.assign(misconceptions,quality.misconceptions);Object.assign(followups,quality.followups);}
  const api={misconceptions,followups};if(typeof module!=='undefined')module.exports=api;else{root.scienceMisconceptions=misconceptions;root.scienceFollowups=followups;}
 })(typeof window==='undefined'?globalThis:window);

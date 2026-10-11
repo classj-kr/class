@@ -38,6 +38,7 @@ fixes.push(
  ['population','환경 저항 전체를 밀도에 따른 경쟁만으로 정의','로지스틱 모형의 밀도 의존 항과 실제 환경 저항의 가뭄·혹한 등을 구별']
 );
 const questionReview=read('question-review.json');
+const questionQuality=read('question-quality-review.json'),restoredRegistry=require('./science-restored-experiments.cjs');
 const newTools=require('./science-activity-tools.cjs');
 const coverage=read('activity-coverage.json'),census=read('textbook-activity-census.json');
 const toolLog=fs.readFileSync(path.join(base,'activity-tools-final.log'),'utf8');
@@ -51,13 +52,15 @@ const activityTests=Object.fromEntries(['tests','pass','fail'].map(k=>[k,Number(
 const supplemental=fs.existsSync(path.join(base,'observation-repairs/inventory-chromium.json'))?read('observation-repairs/inventory-chromium.json'):null;
 const byApp=Object.fromEntries(Object.keys(map).map(slug=>[slug,{slug,title:map[slug].title,grades:map[slug].grades,inspection:apps.reports.find(r=>r.slug===slug),panelShots:panels.shots.filter(s=>s.slug===slug).map(s=>s.file),sourceReview:evidence.apps.find(a=>a.slug===slug)?.reviewedEvidence||[],fix:fixes.find(f=>f[0]===slug)?.slice(1)||null,open:[]} ]));
 const result={scope:'2022 only; execution, visual inspection and bounded source review kept separate',apps:Object.keys(byApp).length,requiredExperimentTotal:null,appCountPolicy:'Observed app count, not an experiment total, target, limit or coverage denominator',modes:apps.modes,controlCases:apps.cases,controlRecord:appFile,panelScreenshots:panels.screenshots,tests,activityTests,toolTests,activityCoverage:coverage.total,textbookCandidates:census.summary,questionReview:questionReview.counts,newTools,fixes,gaps,evidenceSummary:evidence.summary,byApp};
+result.questionQualityReview=questionQuality.counts;
 write(path.join(base,'whole-review.json'),JSON.stringify(result,null,2)+'\n');
 const link=(label,file)=>`[${label}](<${path.join(base,file).split(path.sep).join('/')}>)`;
 const n=v=>Number(v).toLocaleString('en-US');
 const e=evidence.summary;
 const lines=[
  '# 과학실험실 전체 검토 결과','',
- '현재 추가: 원소 카드 배열·백조목 플라스크·뉴턴의 프리즘·분무/접촉/손 씻기를 학생용 실험과 객관식 문항으로 복원했다. [새 실험의 원문·구현·검증 범위](restored-experiments.md)를 확인한다. 아래 이전 전수 로그의 앱 수와 새 구현을 구분한다. 필수실험 총수는 아직 미확정이다.','',
+ `현재 ${Object.keys(map).length}개 앱이다. 기존 앱 외 원문 절차를 대조해 복원한 ${restoredRegistry.length}개 경로에는 스피커·무선 전력·자기 제동·박막·편광·전자 슬릿·기체 동정·설탕물·열량계·완충액·염의 가수 분해·콩 호흡 등이 포함된다. [원문·구현·검증 범위](restored-experiments.md)를 확인한다. 아래 이전 전수 로그의 앱 수와 새 구현을 구분한다. 필수실험 총수는 아직 미확정이다.`,'',
+ `객관식 ${questionQuality.counts.baseAndBank}개를 재검토하여 기본 ${questionQuality.counts.rewrittenBase}개·문제은행 ${questionQuality.counts.rewrittenBank}개·추가 확인 ${questionQuality.counts.rewrittenTransfer}개를 재작성했다. [보기·조건·오답 피드백 수정과 검증](question-quality-review.md)을 확인한다.`,'',
  '현재 학생 동선은 실험 → 객관식 응답 → 응답별 해설과 재확인으로 수정했다. 별도 문제 목록·활동지로 나가는 첫 화면 버튼을 제거했다. 현재 변경의 범위·검사는 [학생 동선 및 채점 교정](assessment-repair.md)을 확인한다. 이전 화면·실행 로그는 당시 버전의 기록이다.','',
  `**앱 수는 필수실험 총수가 아니다. 교육과정 활동 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개는 대응 구현이 확인되지 않았고, 연결된 ${coverage.total.linked}개에도 부분 모형이 포함된다. 전체 포함으로 승인할 수 없다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 페이지를 철회해 제공 중인 실험 수에서 제외했다. 261은 모든 출판사의 모든 실험을 합친 확정 총수도 아니다.`,'',
  '## 검토 범위와 결과','',
@@ -102,7 +105,7 @@ const lines=[
 write(path.join(base,'whole-review.md'),lines.join('\n'));
 write(path.join(base,'README.md'),[
  '# 과학실험 앱 검증 — 2026-10-11','',
- '현재 변경: 원소 카드 배열·백조목 플라스크·뉴턴의 프리즘·분무/접촉/손 씻기를 실험과 객관식 문항으로 복원했다. [현재 추가 구현과 원문 근거](restored-experiments.md), [전체 앱 재검사](restored-four-tests.log), [마지막 화면 보완 재검사](restored-four-final.log)를 우선 확인한다. 기존 앱 수를 실험의 목표·상한으로 세지 않는다. 필수실험 총수는 미확정이다. 아래 기존 실행·화면 로그는 해당 시점의 증거다.','',
+ `현재 ${Object.keys(map).length}개 앱과 복원 실험 ${restoredRegistry.length}개 경로의 [원문 근거](restored-experiments.md), [문항 ${questionQuality.counts.rewrittenBase+questionQuality.counts.rewrittenBank}개와 추가 확인 ${questionQuality.counts.rewrittenTransfer}개 재작성](question-quality-review.md), [전체 앱 재검사](question-quality-runtime.log), [최종 보완 재검사](question-quality-final.log)를 우선 확인한다. 기존 앱 수를 실험의 목표·상한으로 세지 않는다. 필수실험 총수는 미확정이다. 아래 기존 실행·화면 로그는 해당 시점의 증거다.`,'',
  `**필수실험 전체 포함 상태가 아니다. 앱 수와 실험 수는 다르며, 교육과정 탐구 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개에는 대응 구현이 확인되지 않았다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 실험 수에서 제외했다. 연결된 ${coverage.total.linked}개는 활동 전체 완료 수가 아니다. ${link('누락 활동과 집계 기준','activity-coverage.md')}.`,'',
  `104개 앱·${apps.modes}개 모드·${n(apps.cases)}개 조작 사례와 보충·추가 탐구를 검토하여 24개 앱의 확인 결함을 수정했다. 남겨 두었던 연소 검출·단열·소리·우리은하 관찰 표현 4건도 보강했다. ${link('앱별 문제·수정·검증 결과','whole-review.md')}.`,'',
  `경로·수집 기록으로 2022를 확인한 ${n(e.sourcePaths)}개 경로에서 중복을 제외한 ${n(e.sources)}개 문서를 색인화했다. ${n(e.extractedSources)}개 텍스트를 추출했고 ${e.extractionErrors}개는 오류로 남겼다. 이전에 누락했던 연도 없는 파일도 수집 기록 근거로 포함했다. ${e.apps}개 앱에 대한 ${e.reviewRecords}건 발췌 대조와 새 도구 ${e.activityReviewRecords}개의 근거를 기록했다. 657문항을 모두 읽어 76개를 수정했다. 발췌 대조가 문서 전체의 검토 완료를 뜻하지는 않는다. ${link('원문 위치와 검토 범위','source-comparison.md')}.`,'',

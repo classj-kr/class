@@ -10,7 +10,7 @@
     "completedActivityVerdicts": 0,
     "receiptClassifiedSources": 2287,
     "manuallyReviewedCandidates": 7,
-    "sourceReviewedExperimentUnits": 8,
+    "sourceReviewedExperimentUnits": 24,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -215,6 +215,283 @@
             "implementation": "로션 전후 관찰에 포함; 여섯 손 씻기 동작 수행은 미구현"
           }
         ]
+      },
+      {
+        "id": "speaker-lab-speaker-lab",
+        "sourceId": "6969a20462cfe732",
+        "pages": [
+          5,
+          6
+        ],
+        "title": "종이컵 스피커 만들기",
+        "slug": "speaker-lab",
+        "mode": "speaker-lab",
+        "conditions": [
+          "종이컵 자석·코일·피복 제거·오디오 연결",
+          "전류와 진동판의 운동 관찰"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "제작 절차를 재현한 단면 모형이다. 진동은 느리게 확대하며 실제 종이컵의 공명·효율·재료별 음량은 계산하지 않는다. 듣기 기능은 선택한 주파수의 참고음이며 제작품의 녹음이 아니다."
+      },
+      {
+        "id": "wireless-power-wireless-power",
+        "sourceId": "22578837da73a2b3",
+        "pages": [
+          5,
+          6
+        ],
+        "title": "두 코일의 무선 전력 전달",
+        "slug": "wireless-power",
+        "mode": "wireless-power",
+        "conditions": [
+          "송신·수신 코일과 발광 다이오드 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "10 kHz 교류와 이상적인 결합 계수를 사용한 모형이다. 발광 여부는 모형의 문턱 전압으로 판단한다. 실제 충전 회로의 공진·정류·충전 제어는 구현하지 않으며 직류 전환 순간의 과도 현상도 별도이다."
+      },
+      {
+        "id": "magnetic-brake-magnetic-brake",
+        "sourceId": "000c068a0397ecb8",
+        "pages": [
+          32
+        ],
+        "title": "구리판 사이의 자기 브레이크",
+        "slug": "magnetic-brake",
+        "mode": "magnetic-brake",
+        "conditions": [
+          "구리판 사이 자석과 알루미늄 조각의 낙하 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "자석의 감속을 속도에 비례하는 저항력으로 근사한다. 형상·틈·자석 세기에 따른 실제 낙하 시간은 예측하지 않는다. 알루미늄 조각은 외부 자기장이 없는 비교 물체로 취급한다."
+      },
+      {
+        "id": "transistor-speaker-transistor-speaker",
+        "sourceId": "000c068a0397ecb8",
+        "pages": [
+          39
+        ],
+        "title": "트랜지스터로 소리 증폭하기",
+        "slug": "transistor-speaker",
+        "mode": "transistor-speaker",
+        "conditions": [
+          "직접 연결과 전지·트랜지스터 회로의 출력 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "교과서의 회로 제작 목적에 맞춘 기능 모형이다. 전압 이득 10과 전원에 따른 출력 제한을 가정하며 실제 C1815 바이어스·부품값으로 계산한 회로 시뮬레이터는 아니다."
+      },
+      {
+        "id": "soap-film-soap-film",
+        "sourceId": "428056f4452acd59",
+        "pages": [
+          6,
+          7
+        ],
+        "title": "세워 둔 비누막의 간섭",
+        "slug": "soap-film",
+        "mode": "soap-film",
+        "conditions": [
+          "수직 비누막의 반사 무늬와 두 경계의 반사광 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "수직 입사와 막 굴절률 1.33의 두 광선 근사다. 배수 과정은 가정한 두께 변화이며 실제 시간별 두께나 정확한 백색광 색상을 예측하지 않는다."
+      },
+      {
+        "id": "polarization-polarization",
+        "sourceId": "428056f4452acd59",
+        "pages": [
+          21,
+          22
+        ],
+        "title": "편광판으로 광원 조사하기",
+        "slug": "polarization",
+        "mode": "polarization",
+        "conditions": [
+          "광원 변경·편광판 전후·회전 각도에 따른 상대 세기 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "A·B는 서로 다른 방향의 선편광, C는 무편광, D는 원편광인 이상 광원이다. 실제 제품별 디스플레이 측정값이 아니다. 한 장의 편광판과 세기만으로 무편광과 원편광을 구별할 수 없음을 포함한다."
+      },
+      {
+        "id": "electron-slits-electron-slits",
+        "sourceId": "110fa0ab76336b3c",
+        "pages": [
+          5,
+          6
+        ],
+        "title": "한 전자씩 보내는 이중 슬릿",
+        "slug": "electron-slits",
+        "mode": "electron-slits",
+        "conditions": [
+          "한 전자씩 방출과 여러 전자 누적의 비교",
+          "슬릿 수·간격·경로 측정에 따른 검출 분포 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "단색 전자의 원거리 확률 분포를 사용하는 모형이다. 검출 전 특정 궤적을 그리지 않는다. 경로 측정은 완전한 결어긋남으로 단순화하며 수치 눈금은 실제 장치 길이가 아니다."
+      },
+      {
+        "id": "gas-identification-gas-identification",
+        "sourceId": "f0a490bc4a299711",
+        "pages": [
+          5,
+          6
+        ],
+        "title": "기체의 질량과 부피로 종류 찾기",
+        "slug": "gas-identification",
+        "mode": "gas-identification",
+        "conditions": [
+          "질량 전후 측정·수상 치환·압력 보정·몰 질량 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "25 ℃, 101.3 kPa의 이상 기체 모형이며 수증기압 3.17 kPa를 사용한다. 기체의 물에 대한 용해·누출·실제 기체 오차는 구현하지 않는다. 특히 이산화 탄소의 실제 수상 치환에서는 용해 영향을 별도로 고려해야 한다."
+      },
+      {
+        "id": "sugar-phase-heat",
+        "sourceId": "dd8c8169d8e6fbec",
+        "pages": [
+          5,
+          6
+        ],
+        "title": "물과 0.2·0.4·0.6 m 설탕물의 끓는점 비교",
+        "slug": "sugar-phase",
+        "mode": "heat",
+        "conditions": [
+          "물과 0.2·0.4·0.6 m 설탕물의 끓는점 비교",
+          "물과 설탕물의 어는점 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "1기압 묽은 비전해질 용액의 근사다. 끓는점 오름 상수 0.512, 어는점 내림 상수 1.86 K·kg/mol을 사용한다. 과냉각은 생략하고 상변화가 진행되며 남은 용액의 농도가 증가하는 방향을 반영한다."
+      },
+      {
+        "id": "sugar-phase-cool",
+        "sourceId": "dd8c8169d8e6fbec",
+        "pages": [
+          5,
+          6
+        ],
+        "title": "물과 설탕물의 어는점 비교",
+        "slug": "sugar-phase",
+        "mode": "cool",
+        "conditions": [
+          "물과 0.2·0.4·0.6 m 설탕물의 끓는점 비교",
+          "물과 설탕물의 어는점 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "1기압 묽은 비전해질 용액의 근사다. 끓는점 오름 상수 0.512, 어는점 내림 상수 1.86 K·kg/mol을 사용한다. 과냉각은 생략하고 상변화가 진행되며 남은 용액의 농도가 증가하는 방향을 반영한다."
+      },
+      {
+        "id": "hess-calorimetry-hess-calorimetry",
+        "sourceId": "31afcde4eb7f7e27",
+        "pages": [
+          3,
+          4
+        ],
+        "title": "두 경로로 확인하는 헤스 법칙",
+        "slug": "hess-calorimetry",
+        "mode": "hess-calorimetry",
+        "conditions": [
+          "용해 → 실온 냉각 → 중화",
+          "물·염산에 고체 직접 투입"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "같은 시작·끝 상태의 이상 열량계 모형이다. 용해·중화 엔탈피 −44.5·−57.3 kJ/mol과 용액 비열 4.2 J/(g·℃)를 가정하며 열손실·희석열·열량계 열용량은 생략한다."
+      },
+      {
+        "id": "buffer-solution-buffer-solution",
+        "sourceId": "ae885f31c6b75cd2",
+        "pages": [
+          1,
+          2
+        ],
+        "title": "물과 완충 용액의 pH 비교",
+        "slug": "buffer-solution",
+        "mode": "buffer-solution",
+        "conditions": [
+          "A·D 기준, B·E 산 첨가, C·F 염기 첨가 및 전극 세척"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "각 10 mL, 초기 pH 7의 이상적인 인산 완충계 한 평형을 사용한다. pKa 7.21, 총농도 0.1 M, 한 방울 0.05 mL로 가정한다. 실제 완충액의 조성·활동도·다단 해리는 생략한다."
+      },
+      {
+        "id": "salt-hydrolysis-salt-hydrolysis",
+        "sourceId": "e0f6072944407ce9",
+        "pages": [
+          4
+        ],
+        "title": "염 수용액의 액성 확인",
+        "slug": "salt-hydrolysis",
+        "mode": "salt-hydrolysis",
+        "conditions": [
+          "NH₄Cl·NaCN의 액성 예측과 pH 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "25 ℃의 가상 시료에서 물의 자동 이온화까지 포함하여 전하 균형을 계산한다. 활동도와 실제 전극 오차는 생략한다. 제공된 교과서의 HCN 상수 표기 Kb는 문맥상 Ka로 해석하고 6.2×10⁻¹⁰을 사용했다."
+      },
+      {
+        "id": "bean-respiration-sensors",
+        "sourceId": "88b3398d0063221f",
+        "pages": [
+          3
+        ],
+        "title": "같은 양의 마른 콩·발아 콩에서 500초 CO₂·온도 비교",
+        "slug": "bean-respiration",
+        "mode": "sensors",
+        "conditions": [
+          "같은 양의 마른 콩·발아 콩에서 500초 CO₂·온도 비교",
+          "발아 콩+물, 발아 콩+KOH, 마른 콩+KOH의 잉크 비교",
+          "발아 콩·삶은 콩의 보온병 온도 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "같은 초기 조건에서 호흡의 방향과 대조군 역할을 비교하는 정성 모형이다. 표시한 센서 값·변화율·잉크 이동은 측정 자료가 아니다. 호흡계는 온도·압력 일정, 호흡 지수 1, CO₂ 완전 흡수를 가정한다."
+      },
+      {
+        "id": "bean-respiration-respirometer",
+        "sourceId": "88b3398d0063221f",
+        "pages": [
+          4
+        ],
+        "title": "발아 콩+물, 발아 콩+KOH, 마른 콩+KOH의 잉크 비교",
+        "slug": "bean-respiration",
+        "mode": "respirometer",
+        "conditions": [
+          "같은 양의 마른 콩·발아 콩에서 500초 CO₂·온도 비교",
+          "발아 콩+물, 발아 콩+KOH, 마른 콩+KOH의 잉크 비교",
+          "발아 콩·삶은 콩의 보온병 온도 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "같은 초기 조건에서 호흡의 방향과 대조군 역할을 비교하는 정성 모형이다. 표시한 센서 값·변화율·잉크 이동은 측정 자료가 아니다. 호흡계는 온도·압력 일정, 호흡 지수 1, CO₂ 완전 흡수를 가정한다."
+      },
+      {
+        "id": "bean-respiration-heat",
+        "sourceId": "88b3398d0063221f",
+        "pages": [
+          4
+        ],
+        "title": "발아 콩·삶은 콩의 보온병 온도 비교",
+        "slug": "bean-respiration",
+        "mode": "heat",
+        "conditions": [
+          "같은 양의 마른 콩·발아 콩에서 500초 CO₂·온도 비교",
+          "발아 콩+물, 발아 콩+KOH, 마른 콩+KOH의 잉크 비교",
+          "발아 콩·삶은 콩의 보온병 온도 비교"
+        ],
+        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
+        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
+        "boundary": "같은 초기 조건에서 호흡의 방향과 대조군 역할을 비교하는 정성 모형이다. 표시한 센서 값·변화율·잉크 이동은 측정 자료가 아니다. 호흡계는 온도·압력 일정, 호흡 지수 1, CO₂ 완전 흡수를 가정한다."
       }
     ],
     "candidates": {

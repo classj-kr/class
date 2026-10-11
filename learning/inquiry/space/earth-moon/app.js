@@ -1317,7 +1317,8 @@
                     observerSkyLunarClock.textContent = '음력 ' + lunar.month + '월 ' + lunar.day + '일 ' + lunar.hour + '시';
                 }
                 if (observerSkyPhase) {
-                    observerSkyPhase.textContent = lunar.phase;
+                    observerSkyPhase.textContent = window.SchoolLevel?.value === 'elementary'
+                        ? lunar.phase.replace('삭', '달이 거의 보이지 않음').replace(/망\s*\/\s*보름달/g, '보름달') : lunar.phase;
                 }
                 if (observerSkyCaption) {
                     if (polarView) {
@@ -1332,7 +1333,7 @@
                 if (observerSkyStatus) {
                     const sunState = sunPosition.altitude > 0 ? '태양은 지평선 위' : '태양은 지평선 아래';
                     const moonState = elongationDegrees <= 8
-                        ? '달은 태양과 같은 방향이라 관측 불가'
+                        ? (window.SchoolLevel?.value === 'elementary' ? '달을 보기 어려움' : '달은 태양과 같은 방향이라 관측 불가')
                         : (moonPosition.altitude > 0 ? '달은 지평선 위' : '달은 지평선 아래');
                     observerSkyStatus.textContent = sunState + ' · ' + moonState;
                 }
@@ -1359,7 +1360,9 @@
                 const synodicMonthDays = 29.530588;
                 const lunarAgeDays = (a / (Math.PI * 2)) * synodicMonthDays;
                 const lunarDay = Math.min(30, Math.floor(lunarAgeDays) + 1);
-                const shortPhaseName = pData.name.split(' (')[0];
+                const phaseName = pData.name.split(' (')[0];
+                const shortPhaseName = window.SchoolLevel?.value === 'elementary'
+                    ? phaseName.replace('삭', '달이 거의 보이지 않음').replace(/망\s*\/\s*보름달/g, '보름달') : phaseName;
                 document.getElementById('moonPhaseTitle').textContent = pData.name;
                 document.getElementById('moonObsInfo').innerHTML =
                     pData.info.replace(' | ', '<br>') + '<br><small>중위도의 대표적인 관측 시각 · 계절에 따라 달라짐</small>';

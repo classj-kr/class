@@ -81,11 +81,11 @@
    const temps=mode==='sensors'?[r.dry.temperature,r.germinating.temperature]:[r.living,r.boiled],labels=mode==='sensors'?['마른 콩','발아 중인 콩']:['발아 중인 콩','삶은 콩'];
    labels.forEach((label,i)=>{const x=160+320*i;b+=beaker(x,90,label,'#e9f1f0',95)+beanDots(x,175,mode==='sensors'?i===1:i===0)+rect(x-72,108,12,106,'#d5dfdf')+rect(x+60,108,12,106,'#d5dfdf')+thermometer(x+25,53,temps[i])+text(x,35,temps[i].toFixed(2)+' ℃',23);if(mode==='sensors')b+=text(x,283,(i?r.germinating.co2:r.dry.co2).toFixed(0)+' ppm CO₂',20);});
    const trace=(x,w,fn,min,max,color)=>{let d='';for(let t=0;t<=state.time;t+=5)d+=(d?'L':'M')+(x+w*t/500).toFixed(1)+' '+(425-(fn(t)-min)/(max-min)*90).toFixed(1);return path(d,color,2.5);};
-   const co2=mode==='sensors';b+=text(164,320,co2?'CO₂ / ppm':'온도 / ℃',16)+text(475,320,'온도 / ℃',16);
-   for(const x of [50,365])b+=line(x,335,x,425,'#8ba7b5',1)+line(x,425,x+225,425,'#8ba7b5',1)+text(x+110,449,mode==='heat'?'0 → 20분':'0 → 500초',14);
-   b+=text(28,342,co2?'1300':'27',13)+text(28,425,co2?'400':'25',13)+text(340,342,'27',13)+text(340,425,'25',13);
-   b+=trace(50,225,t=>co2?M.beans(mode,t).dry.co2:M.beans(mode,t).living,co2?400:25,co2?1300:27,'#298b9c')+trace(50,225,t=>co2?M.beans(mode,t).germinating.co2:M.beans(mode,t).boiled,co2?400:25,co2?1300:27,'#c67636');
-   b+=trace(365,225,t=>co2?M.beans(mode,t).dry.temperature:M.beans(mode,t).living,25,27,'#298b9c')+trace(365,225,t=>co2?M.beans(mode,t).germinating.temperature:M.beans(mode,t).boiled,25,27,'#c67636');
+   const co2=mode==='sensors',plotWidth=co2?225:540;b+=text(co2?164:320,320,co2?'CO₂ / ppm':'온도 / ℃',16);
+   for(const x of co2?[50,365]:[50])b+=line(x,335,x,425,'#8ba7b5',1)+line(x,425,x+plotWidth,425,'#8ba7b5',1)+text(x+plotWidth/2,449,co2?'0 → 500초':'0 → 20분',14);
+   b+=text(28,342,co2?'1300':'27',13)+text(28,425,co2?'400':'25',13);
+   b+=trace(50,plotWidth,t=>co2?M.beans(mode,t).dry.co2:M.beans(mode,t).living,co2?400:25,co2?1300:27,'#298b9c')+trace(50,plotWidth,t=>co2?M.beans(mode,t).germinating.co2:M.beans(mode,t).boiled,co2?400:25,co2?1300:27,'#c67636');
+   if(co2)b+=text(475,320,'온도 / ℃',16)+text(340,342,'27',13)+text(340,425,'25',13)+trace(365,225,t=>M.beans(mode,t).dry.temperature,25,27,'#298b9c')+trace(365,225,t=>M.beans(mode,t).germinating.temperature,25,27,'#c67636');
    b+=text(320,475,`파랑: ${labels[0]} · 주황: ${labels[1]}`,16);
    svg(b,'같은 양의 콩을 담은 단열 용기와 센서의 시간별 변화',495);readout.innerHTML=metric('경과 시간',time)+metric(labels[0],temps[0].toFixed(2)+' ℃')+metric(labels[1],temps[1].toFixed(2)+' ℃');
   }

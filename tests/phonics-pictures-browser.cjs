@@ -61,9 +61,9 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
         const bat = page.locator('.sound-choice[data-word="bat"]');
         if (await bat.count()) {
           sawBat = true;
-          assert.match(await bat.innerText(), /그림: 박쥐/);
-          assert.match(await bat.innerText(), /다른 뜻: 야구 방망이/);
-          assert.match(await bat.getAttribute('aria-label'), /그림: 박쥐, 다른 뜻: 야구 방망이/);
+          assert.equal(await bat.locator('.sound-choice-meaning').innerText(), '박쥐');
+          assert.doesNotMatch(await bat.innerText(), /그림:|다른 뜻:|야구 방망이/);
+          assert.equal(await bat.getAttribute('aria-label'), 'bat, 박쥐');
           await page.screenshot({ path: path.join(output, name + '-desktop.png'), fullPage: true });
           await page.setViewportSize({ width: 390, height: 844 });
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);

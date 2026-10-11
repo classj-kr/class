@@ -1,9 +1,10 @@
 const screenshotWebp=require('./science-screenshot.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),bank=require(path.join(root,'exam-bank.js')),map=require(path.join(root,'curriculum-map.js'));
-test('all 194 editorial revisions match the bank and retain distinct misconception choices',()=>{
+test('bank editorial revisions match their latest reviewed wording and retain distinct choices',()=>{
  const changes=require('../scripts/science-exam-choice-review.cjs').split('\n');assert.equal(changes.length,194);
- for(const line of changes){const [id,...fields]=line.split('|'),q=bank.questions.find(q=>q.id===id);assert(q,id);assert.equal(new Set(q.choices).size,3,id);for(const text of fields.length===2?fields:fields.slice(1,4))assert(q.choices.includes(text),id);if(fields.length===5){assert.equal(q.question,fields[0]);assert.equal(q.why,fields[4]);}}
+ const latest=require('../scripts/science-question-quality.cjs');
+ for(const line of changes){const [id,...fields]=line.split('|'),q=bank.questions.find(q=>q.id===id);assert(q,id);assert.equal(new Set(q.choices).size,3,id);const revision=latest.find(e=>e.id===id);if(revision){assert.equal(q.question,revision.question);assert.equal(q.choices[q.answer],revision.correct);assert.deepEqual(q.choices.filter((_,i)=>i!==q.answer).sort(),revision.wrong.slice().sort());assert.equal(q.why,revision.why);}else{for(const text of fields.length===2?fields:fields.slice(1,4))assert(q.choices.includes(text),id);if(fields.length===5){assert.equal(q.question,fields[0]);assert.equal(q.why,fields[4]);}}}
  const counts=[0,0,0];bank.questions.forEach(q=>counts[q.answer]++);assert(counts.every(n=>n>50));assert(bank.questions.slice(3,20).some((q,i)=>q.answer!==bank.questions[i].answer),'answer positions must not repeat every three items');
  const wrong=bank.questions.flatMap(q=>q.choices.filter((_,i)=>i!==q.answer)).join('\n');assert(!/힘은 물체의 색만|모든 물체가 녹아서|태양이 밤마다 폭발|모든 생물을 한 종류|기체는 물질이 아니다/.test(wrong));
  for(const slug of Object.keys(map)){const html=fs.readFileSync(path.join(root,slug,'index.html'),'utf8');assert.equal((html.match(/href="[^" ]*science-reading.css/g)||[]).length,1,slug);}

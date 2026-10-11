@@ -65,6 +65,7 @@ html[data-school-level="elementary"] .model-inspector { display:none; }
 .atlas .atlas-header:has(.school-level) #catalogToggle { position:fixed; left:52px; }
 .atlas:has(.school-level) .map-caption { top:64px; }
 .atlas .catalog-tabs { padding-left:48px; }
+.atlas #lessonReopen { top:auto; bottom:16px; right:16px; }
 @media(min-width:861px) and (max-width:1150px) {
     .atlas .atlas-header:has(.school-level) .projection-toggle { top:60px; right:calc(var(--lesson) + 60px); }
     .atlas:has(.school-level) .map-caption { top:110px; }
