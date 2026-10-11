@@ -1,0 +1,19 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9422ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.9134ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1256ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (53.5042ms)
+chromium: 150 apps / 154 course routes / 616 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (16973.544ms)
+webkit: 150 apps / 154 course routes / 616 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (27490.4807ms)
+✔ meter topology, Kirchhoff relations and measurements keep their physical conditions (2.7702ms)
+✔ chromium: move meters, reject wrong connections, compare six readings and separate course diagnosis (8192.2448ms)
+✔ webkit: move meters, reject wrong connections, compare six readings and separate course diagnosis (10702.9666ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44668.0784

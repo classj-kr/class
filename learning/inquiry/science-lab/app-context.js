@@ -9,7 +9,8 @@
  const header=document.querySelector('.page-header'),back=header.querySelector('a');
  back.href='../?school='+school;back.textContent='← '+label+' 과학 실험';
  header.querySelector('.grade-tags').replaceChildren(...[label,...context.subjects].map(text=>{const span=document.createElement('span');span.textContent=text;return span;}));
- document.title=label+' '+app.title;
+ document.title=label+' '+(context.title||app.title);
+ if(context.title&&header.querySelector('h1'))header.querySelector('h1').textContent=context.title;
  const intro=document.querySelector('.intro');if(intro)intro.textContent=context.intro;
  for(const [i,card]of [...document.querySelectorAll('.quiz-card')].entries()){
   card.dataset.questionId=slug+'#q'+(i+1);

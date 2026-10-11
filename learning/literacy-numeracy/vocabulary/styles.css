@@ -18,6 +18,7 @@
     --green: #48725a;
     --blue: #456c85;
     --navy: #263f51;
+    --reading-serif: "Times New Roman", "Noto Serif KR", "Batang", "바탕", "AppleMyungjo", serif;
     --shadow: 0 24px 60px rgba(55, 42, 25, .14);
 }
 
@@ -334,7 +335,7 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
     text-align: left;
 }
 .detail-label { display: block; margin-bottom: 5px; color: var(--blue); font: 800 12px/1 Georgia, serif; letter-spacing: 1.3px; text-transform: uppercase; }
-.example-text { display: block; color: var(--navy); font: 600 clamp(17px, 2.1vw, 20px)/1.45 "Klee One Learning", "Klee One", cursive; }
+.example-text { display: block; color: var(--navy); font: 400 clamp(19px, 2.1vw, 22px)/1.6 var(--reading-serif); }
 .example-ko { display: block; margin-top: 4px; color: #44524c; font-size: 15px; font-weight: 700; line-height: 1.45; }
 .related-block { display: block; min-height: 42px; margin-top: 8px; text-align: left; }
 .related-words { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -352,14 +353,14 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .detail-toggle-word { flex: 1; font: 700 15px/1 "Klee One Learning", "Klee One", cursive; color: var(--blue); }
 .detail-toggle-icon { font-size: 16px; color: var(--muted); transition: transform .18s ease; }
 .detail-toggle[aria-expanded="true"] .detail-toggle-icon { transform: rotate(180deg); }
-.detail-body { padding: 4px 16px 16px; border-top: 1px dashed var(--line); text-align: left; }
+.detail-body { padding: 4px 16px 16px; border-top: 1px dashed var(--line); text-align: left; font-family: var(--reading-serif); }
 .detail-section { margin-top: 14px; }
 .detail-section h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; color: var(--red-dark); font-size: 15px; font-weight: 900; }
 .detail-section h3::after { content: ""; flex: 1; height: 1px; background: rgba(158,65,50,.22); }
 .detail-section ul { margin: 0; padding-left: 18px; }
-.detail-section li { margin: 5px 0; color: var(--ink); font-size: 15px; line-height: 1.55; }
+.detail-section li { margin: 7px 0; color: var(--ink); font-size: 17px; line-height: 1.75; }
 .detail-section li b { color: var(--navy); font-weight: 900; }
-.detail-en { font-family: "Klee One Learning", "Klee One", cursive; font-weight: 600; color: var(--navy); }
+.detail-en { font-family: var(--reading-serif); font-weight: 400; color: var(--navy); }
 .detail-ko { color: #44524c; font-weight: 700; }
 .detail-ko::before { content: " / "; color: var(--muted); font-weight: 400; }
 .detail-tag { display: inline-block; margin-right: 6px; padding: 1px 7px; border-radius: 999px; background: rgba(69,108,133,.12); color: var(--blue); font-size: 12px; font-weight: 800; vertical-align: 1px; }
@@ -692,7 +693,7 @@ body:has(#levelScreen:not([hidden])) main { padding-bottom: 14px; }
     .flashcard { min-height: 410px; padding: 30px 20px 34px; }
     .word-text { font-size: clamp(38px, 12vw, 54px); }
     .meaning-text { font-size: clamp(20px, 5.5vw, 26px); }
-    .example-text { font-size: 17px; }
+    .example-text { font-size: 19px; }
     .example-ko { font-size: 15px; }
     .utility-actions { grid-template-columns: 1fr 1fr; }
     .example-block { padding: 14px 16px; }
@@ -724,3 +725,7 @@ body:has(#levelScreen:not([hidden])) main { padding-bottom: 14px; }
     *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }
     .dashboard-heading { align-items: flex-start; }
+
+.english-speech { cursor: pointer; }
+.english-speech:hover { text-decoration: underline; text-underline-offset: 3px; }
+.english-speech:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 3px; }

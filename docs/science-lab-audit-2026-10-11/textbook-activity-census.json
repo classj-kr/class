@@ -11,8 +11,8 @@
     "receiptClassifiedSources": 2287,
     "experimentWorkbookPDFs": 98,
     "supplementalDocuments": 28,
-    "manuallyReviewedCandidates": 25,
-    "sourceReviewedExperimentUnits": 56,
+    "manuallyReviewedCandidates": 29,
+    "sourceReviewedExperimentUnits": 59,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -1254,6 +1254,153 @@
           }
         ],
         "boundary": "원본 제공자가 계산한 360개 배치를 비교하는 재생 실험이며 브라우저에서 새 도킹 계산을 수행하지 않는다. 원문 전체 표적 10종·화합물 102종 중 3종·6종만 제공한다. 점수는 원본 UI가 상대 에너지로 제시하며 단위를 명시하지 않아 kcal/mol 또는 실측 자유 에너지로 부르지 않는다. 원본 배치 순서는 시간에 따른 분자 운동이나 최적화 궤적이 아니다. PDB 원자 좌표 중 단백질 Cα 골격만 표시하고, 원래 결정화 리간드·물은 제외한다. 계산 점수의 우열로 실제 표적 저해·약효·안전성을 확정하지 않는다."
+      },
+      {
+        "id": "air-sampling",
+        "sourceId": "f3119695e8a726b3",
+        "pages": [
+          13,
+          14
+        ],
+        "title": "공기질 센서로 미세먼지 비교",
+        "slug": "air-sampling",
+        "conditions": [
+          "PM2.5·PM10의 포함 관계",
+          "영점 필터와 주변 공기 흡입 구분",
+          "포집 질량/공기 부피의 농도 계산",
+          "시각·높이·시간을 맞춘 장소 비교"
+        ],
+        "verdict": "기재한 원문 관찰·측정 절차의 가상 연습 구현; 실제 현장 수행 완료 아님",
+        "publisherDeduplication": "기재한 출판사·쪽수의 공통 관찰 절차를 묶으며 전수 대조 완료로 판정하지 않음",
+        "publisherVariants": [
+          {
+            "sourceId": "23ca16e557768da0",
+            "pages": [
+              45,
+              46,
+              47,
+              48
+            ],
+            "difference": "과학탐구실험2: 측정 물질·장소·시간 간격·기상 조건 설계와 시간별 자료 비교",
+            "implementation": "측정 항목·장소·시각·높이·시간 통제의 공통 절차로 묶음. 체육관 시간별 예시 수치는 가상 장소의 실측값으로 재사용하지 않으며 공개 자료와 비교·플랫폼 공유는 완료 판정 제외"
+          }
+        ],
+        "boundary": "실제 학교·대기 관측 자료가 아니다. 작성한 입경별 입자 분포와 밀도 1 g/cm³의 구형 입자를 이용한 가상 측정이다. 해당 가정에서 기하학적 입경과 공기역학적 입경을 같게 둔다. 실제 광학 센서의 광산란 역산·입구 효율·습도·입자 조성·교정 오차는 재현하지 않는다. 필터 영점 확인은 측정 준비 절차이며 실제 센서의 정확도 교정을 완료한 것으로 판정하지 않는다. 건강 위험·법적 대기질 등급을 산출하지 않는다. 원문의 현장 측정과 공개 지역 자료 비교는 실측값이 없는 이 가상 장치에서 완료 판정하지 않는다.",
+        "methodSources": [
+          {
+            "url": "https://www.epa.gov/air-sensor-toolbox/air-sensor-collocation",
+            "basis": "센서 비교는 같은 시공간과 조건을 맞춰 수행하며 영점 확인만으로 실제 측정기의 정확도를 보증하지 않음"
+          },
+          {
+            "url": "https://www.epa.gov/air-sensor-toolbox/air-sensor-performance-targets-and-testing-protocols",
+            "basis": "PM의 공기역학적 입경 구분과 실제 센서 검증의 필요성"
+          }
+        ]
+      },
+      {
+        "id": "local-biodiversity",
+        "sourceId": "f3119695e8a726b3",
+        "pages": [
+          7,
+          8
+        ],
+        "title": "주변 식물 관찰과 동정",
+        "slug": "local-biodiversity",
+        "conditions": [
+          "관찰 구역·시각·시간 설정",
+          "다섯 참조 식물의 줄기·잎·꽃차례 관찰",
+          "표본 위치당 한 번의 동정",
+          "관찰 표본 수와 종 수 구별"
+        ],
+        "verdict": "기재한 원문 관찰·측정 절차의 가상 연습 구현; 실제 현장 수행 완료 아님",
+        "publisherDeduplication": "기재한 출판사·쪽수의 공통 관찰 절차를 묶으며 전수 대조 완료로 판정하지 않음",
+        "publisherVariants": [
+          {
+            "sourceId": "23ca16e557768da0",
+            "pages": [
+              28,
+              29
+            ],
+            "difference": "과학탐구실험2: 지역·기간·방법을 정해 현장 촬영·이름 확인 후 중복 종을 정리",
+            "implementation": "조건 설정·특징 관찰·동정·중복 집계 방지의 공통 절차로 묶음; 실제 사진 촬영·여러 검색 결과 대조·지도 공유는 별도"
+          },
+          {
+            "sourceId": "d7367226ffe975c8",
+            "pages": [
+              50,
+              51
+            ],
+            "difference": "기후변화와 환경생태: 주변 생물 다섯 종류 이상 관찰·촬영 후 생태지도 제작",
+            "implementation": "다섯 비교 표본의 관찰·동정 절차를 가상으로 연습하며 지도 게시·발표 과제는 제외"
+          }
+        ],
+        "boundary": "직접 현장 관찰·사진을 가상으로 연습하는 작성된 표본 배치이며 실제 학교·지역의 생물 분포가 아니다. 10분·20분당 6·12곳은 조작용 관찰 노력 설정이며 일반적인 발견률이 아니다. 다섯 비교 표본을 구분하는 축약 특징표이며 모든 한국 식물을 동정하는 검색표가 아니다. 클론 식물의 유전적 개체 수를 세지 않으며 관찰 위치 수만 집계한다. 종 수는 생물다양성의 한 측면으로만 비교한다. 원문 현장 관찰·촬영·기후변화의 인과 관계 조사 완료로 판정하지 않는다.",
+        "methodSources": [
+          {
+            "url": "https://efloras.org/florataxon.aspx?flora_id=5&taxon_id=200012344",
+            "basis": "토끼풀: 작은 잎·흰 꽃차례"
+          },
+          {
+            "url": "https://efloras.org/florataxon.aspx?flora_id=2&taxon_id=200022046",
+            "basis": "질경이: 뿌리잎과 잎맥·이삭꽃차례"
+          },
+          {
+            "url": "https://efloras.org/florataxon.aspx?flora_id=2&taxon_id=200026279",
+            "basis": "강아지풀: 선형 잎·원기둥 꽃차례와 까끄라기"
+          },
+          {
+            "url": "https://www.efloras.org/florataxon.aspx?flora_id=1&taxon_id=200005235",
+            "basis": "은행나무: 부채꼴 잎·차상맥"
+          },
+          {
+            "url": "https://efloras.org/florataxon.aspx?flora_id=1&taxon_id=200013722",
+            "basis": "무궁화: 목질 줄기·대개 세 갈래 잎·꽃잎 5장"
+          }
+        ]
+      },
+      {
+        "id": "circuit-meter-comparison",
+        "sourceId": "88f46daabd2095a9",
+        "pages": [
+          92,
+          93
+        ],
+        "title": "직렬·병렬 회로의 전압·전류 측정",
+        "slug": "ohms-law",
+        "mode": "high-elective",
+        "conditions": [
+          "200 Ω·100 Ω의 직렬/병렬 연결",
+          "전류계 직렬·전압계 병렬의 구분",
+          "각 저항과 전체의 전압·전류 측정",
+          "같은 전압·저항에서 전체 전류 비교"
+        ],
+        "verdict": "기재한 원문 절차와 가상 계기 연결·측정 대조; 실제 기기 내부 저항·실측 오차 재현 아님",
+        "publisherDeduplication": "한 출판사의 직렬·병렬 비교를 하나의 실험으로 묶음; 전체 출판사 대조 완료 아님",
+        "boundary": "이상적인 전원·전선·계기와 일정한 저항을 가정한 가상 측정이다. 실물 계기 내부 저항·발열·접촉 불량·측정 오차는 재현하지 않는다. 잘못된 전류계 병렬 연결은 전원 연결을 막으며 실제 단락 전류 수치를 제시하지 않는다. 저항 세 개의 심화 활동과 실물 수행은 완료로 판정하지 않는다.",
+        "assessmentSources": [
+          {
+            "sourceId": "4ef92810be46d5e5",
+            "pages": [
+              2,
+              4
+            ],
+            "questions": [
+              "06",
+              "09"
+            ],
+            "basis": "저항 연결에 따른 전체 저항·전류·소비 전력의 관계와 제곱 관계 해설 대조. 앱의 수치와 선택지는 새로 작성함"
+          },
+          {
+            "sourceId": "5bf05ec779f4ca2e",
+            "answerSourceId": "febcd18e8c2ea1b1",
+            "questions": [
+              "01",
+              "02",
+              "03"
+            ],
+            "basis": "병렬 전류 합, 직렬 전압 분배, 같은 전압에서 저항별 소비 전력의 개념·해설 대조. HWP에서 추출되지 않은 도형·수식·값은 복원하거나 추정하지 않음"
+          }
+        ]
       }
     ],
     "candidates": {
@@ -1404,6 +1551,28 @@
         "verdict": "기재한 원문 절차 대조 · 자료 조작과 결과 해석 구현; 경계는 개별 검토 기록에 보존",
         "experiments": [
           "protein-interaction"
+        ]
+      },
+      "book-86781258f8193a5b": {
+        "verdict": "구역·조건·관찰 절차 대조; 실측 자료를 가상 자료로 대체한 완료 주장 제외",
+        "experiments": [
+          "air-sampling"
+        ]
+      },
+      "book-7ce6ec3ff3dcce09": {
+        "verdict": "구역·조건·관찰 절차 대조; 실측 자료를 가상 자료로 대체한 완료 주장 제외",
+        "experiments": [
+          "local-biodiversity"
+        ]
+      },
+      "book-d1eac30bb9cbf45e": {
+        "verdict": "반응 선택·시연을 기존 중화 실험으로 연습; 대본 작성과 발표는 독립 실험에서 제외",
+        "experiments": []
+      },
+      "book-737bf233a2816645": {
+        "verdict": "원문 두 쪽의 계기 위치·측정값 비교를 고(선택) 물리학 경로로 구현; 중학교 경로와 조작·평가 분리",
+        "experiments": [
+          "circuit-meter-comparison"
         ]
       }
     },
@@ -19928,7 +20097,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-737bf233a2816645",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 두 쪽의 계기 위치·측정값 비교를 고(선택) 물리학 경로로 구현; 중학교 경로와 조작·평가 분리",
+      "manualExperimentIds": [
+        "circuit-meter-comparison"
+      ]
     },
     {
       "sourceId": "88f46daabd2095a9",
@@ -32888,7 +33060,8 @@
       "samePageTools": [
         "10과탐1-02#4"
       ],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "반응 선택·시연을 기존 중화 실험으로 연습; 대본 작성과 발표는 독립 실험에서 제외",
+      "manualExperimentIds": []
     },
     {
       "sourceId": "28177f9b69b984c7",
@@ -32927,7 +33100,10 @@
       "samePageTools": [
         "10과탐2-01#2"
       ],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "구역·조건·관찰 절차 대조; 실측 자료를 가상 자료로 대체한 완료 주장 제외",
+      "manualExperimentIds": [
+        "local-biodiversity"
+      ]
     },
     {
       "sourceId": "f3119695e8a726b3",
@@ -32964,7 +33140,10 @@
       "samePageTools": [
         "10과탐2-01#5"
       ],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "구역·조건·관찰 절차 대조; 실측 자료를 가상 자료로 대체한 완료 주장 제외",
+      "manualExperimentIds": [
+        "air-sampling"
+      ]
     },
     {
       "sourceId": "bb3048667d79ef51",

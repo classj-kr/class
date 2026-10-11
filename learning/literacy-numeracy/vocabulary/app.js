@@ -300,6 +300,7 @@
             english.lang = "en";
             const wordLabel = document.createElement("span");
             wordLabel.textContent = word.word;
+            enableEnglishSpeech(wordLabel);
             const pronunciationButton = document.createElement("button");
             pronunciationButton.type = "button";
             pronunciationButton.className = "sheet-speak-button";
@@ -488,6 +489,45 @@
         return section;
     }
 
+    function enableEnglishSpeech(node, getText = () => node.textContent) {
+        node.classList.add("english-speech");
+        node.setAttribute("role", "button");
+        node.tabIndex = 0;
+        node.title = "영어 듣기";
+        const play = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            speakText(getText());
+        };
+        node.addEventListener("click", play);
+        node.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") play(event);
+        });
+    }
+
+    function enableDetailEnglishSpeech(root) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+            const pattern = /[A-Za-z]+(?:[0-9A-Za-z .,!?;:'’‘“”()\-]*[A-Za-z0-9.!?])?/g;
+            const matches = [...node.textContent.matchAll(pattern)];
+            if (!matches.length) return;
+            const fragment = document.createDocumentFragment();
+            let offset = 0;
+            matches.forEach((match) => {
+                fragment.append(document.createTextNode(node.textContent.slice(offset, match.index)));
+                const english = document.createElement("span");
+                english.textContent = match[0];
+                enableEnglishSpeech(english);
+                fragment.append(english);
+                offset = match.index + match[0].length;
+            });
+            fragment.append(document.createTextNode(node.textContent.slice(offset)));
+            node.replaceWith(fragment);
+        });
+    }
+
     function appendPair(li, en, ko) {
         if (en) {
             const enNode = document.createElement("span");
@@ -537,6 +577,7 @@
             if (section.querySelector("h3").textContent === "다른 쉬운 표현") section.classList.add("detail-easy");
         });
         sections.forEach((section) => fragment.append(section));
+        enableDetailEnglishSpeech(fragment);
         return fragment;
     }
 
@@ -608,6 +649,7 @@
             chip.className = "related-word";
             const label = document.createElement("strong");
             label.textContent = relatedWord.word;
+            enableEnglishSpeech(label);
             const meaning = document.createElement("span");
             meaning.className = "related-meaning";
             meaning.textContent = relatedWord.meaning;
@@ -1319,6 +1361,8 @@
         elements.viewAllWordsButton.addEventListener("click", openBandList);
         elements.backFromBandList.addEventListener("click", backFromBandList);
         elements.bandSearchInput.addEventListener("input", () => renderBandList(elements.bandSearchInput.value));
+        enableEnglishSpeech(elements.wordText, () => currentWord()?.word);
+        enableEnglishSpeech(elements.exampleText, () => currentWord()?.example?.en);
         elements.flashcard.addEventListener("click", toggleMeaning);
         elements.detailToggle.addEventListener("click", toggleDetailPanel);
         elements.previousButton.addEventListener("click", () => moveCard(-1));

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 공기질 센서로 미세먼지 비교</title><meta name="description" content="2022 교육과정 · 공기질 센서로 미세먼지 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../air-sampling-lab.css?v=4408e029a228"><link rel="stylesheet" href="../lab-ui.css?v=1919c35bf2ab"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>공기질 센서로 미세먼지 비교</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험2</span></div></header><p class="intro">미세먼지를 측정할 장소와 조건을 정하세요. 센서의 영점을 확인하고 두 장소의 가상 측정 결과를 비교하세요.</p>
+<section class="air-sampling-lab" aria-label="공기질 센서 실험">
+<header class="air-lab-heading"><span>공기 속 입자 · 조건을 맞춘 비교</span><h2>어디의 공기를 비교할까요?</h2></header>
+<div class="air-lab-layout"><aside class="air-controls">
+<h3>측정 조건</h3>
+<label>측정 장소<select id="airSite"><option value="gate">A 구역 · 학교 정문</option><option value="garden">B 구역 · 화단 옆</option><option value="classroom">C 구역 · 교실</option></select></label>
+<label>측정 항목<select id="airPollutant"><option value="pm25">초미세먼지 · PM2.5</option><option value="pm10">미세먼지 · PM10</option></select></label>
+<label>측정 시각<select id="airPeriod"><option value="morning">오전 9시</option><option value="noon">오후 1시</option></select></label>
+<label>흡입구 높이<select id="airHeight"><option value="breathing">지면에서 1.5 m</option><option value="low">지면에서 0.3 m</option></select></label>
+<label>한 번의 측정 시간<select id="airSeconds"><option value="60">60초</option><option value="120">120초</option><option value="180">180초</option></select></label>
+<fieldset><legend>흡입구</legend><label><input type="radio" name="airInlet" value="open" checked> 주변 공기 흡입</label><label><input type="radio" name="airInlet" value="filter">영점 확인용 필터 연결</label></fieldset>
+<button id="airZero">센서 영점 확인</button><p id="airZeroStatus" class="air-hint">필터를 연결한 뒤 영점을 확인하세요.</p>
+<div class="air-actions"><button id="airMeasureA" class="primary">A 측정</button><button id="airMeasureB">B 측정</button></div><button id="airStop" hidden>측정 중지</button>
+</aside>
+<div class="air-observation"><div class="air-scene-head"><h3>공기 흡입과 입자 검출</h3><span id="airInletBadge">주변 공기 흡입</span></div>
+<div id="airApparatus" class="air-apparatus"></div>
+<div class="air-live"><div><span>측정 시간</span><strong id="airElapsed">0 / 60초</strong></div><div><span>흡입한 공기</span><strong id="airVolume">0.00 L</strong></div><div><span id="airValueLabel">PM2.5</span><strong id="airValue">— µg/m³</strong></div></div>
+<p id="airStatus" class="status" role="status">영점 확인 후 필터를 빼고 측정하세요.</p>
+<div class="air-size-key"><b>검출할 입자 크기</b><div id="airSizes"></div><p>PM2.5는 지름 2.5 µm 이하, PM10은 10 µm 이하 입자를 비교합니다.</p></div>
+</div></div>
+<section class="air-comparison"><h3>두 장소의 결과</h3><div class="air-result-grid"><article id="airResultA"><h3>측정 A</h3><p>아직 측정하지 않았습니다.</p></article><article id="airResultB"><h3>측정 B</h3><p>아직 측정하지 않았습니다.</p></article></div><div id="airGraph"></div><p id="airComparison" class="status">조건을 같게 맞춰 두 장소를 측정하세요.</p><button id="resetExperiment">실험 처음부터</button></section>
+</section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>정문과 화단의 PM2.5 농도를 비교하려 한다. 장소의 영향만 알아보기에 가장 알맞은 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 정문 오전·1.5 m / 화단 오후·1.5 m</label>
+<label><input type="radio" name="q1" value="b"> 정문 오전·1.5 m / 화단 오전·1.5 m</label>
+<label><input type="radio" name="q1" value="c"> 정문 오전·0.3 m / 화단 오전·1.5 m</label>
+<label><input type="radio" name="q1" value="d"> 정문 PM2.5·60초 / 화단 PM10·60초</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>장소 이외의 측정 시각·높이·항목·측정 시간을 같게 맞춥니다. 다른 조건도 바꾸면 장소 때문에 차이가 났다고 분리해 해석하기 어렵습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>같은 공기를 60초와 120초 동안 측정했다. 유량은 일정하고 120초 때 포집한 질량과 공기 부피가 각각 두 배였다. 질량 농도의 비는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 60초 : 120초 = 1 : 2</label>
+<label><input type="radio" name="q2" value="b"> 60초 : 120초 = 2 : 1</label>
+<label><input type="radio" name="q2" value="c"> 60초 : 120초 = 1 : 1</label>
+<label><input type="radio" name="q2" value="d"> 60초 : 120초 = 1 : 4</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>질량 농도는 포집한 입자 질량을 흡입한 공기 부피로 나눈 값입니다. 분자와 분모가 함께 두 배이면 농도는 같습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 공기의 입자를 같은 방법으로 측정했다. PM2.5가 18 µg/m³, PM10이 31 µg/m³이다. 지름 2.5 µm 초과 10 µm 이하 입자의 질량 농도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 13 µg/m³</label>
+<label><input type="radio" name="q3" value="b"> 18 µg/m³</label>
+<label><input type="radio" name="q3" value="c"> 31 µg/m³</label>
+<label><input type="radio" name="q3" value="d"> 49 µg/m³</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>PM10에는 PM2.5도 포함됩니다. 같은 조건의 측정이라면 두 범위의 차이는 31−18=13 µg/m³입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>영점 확인용 필터를 연결한 상태에서 0을 확인했다. 그대로 학교 정문에서 측정해도 0이 나왔다. 가장 먼저 확인할 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 정문과 화단의 건물 높이 차이</label>
+<label><input type="radio" name="q4" value="b"> 오전과 오후의 자동차 수 차이</label>
+<label><input type="radio" name="q4" value="c"> 60초와 120초의 포집 질량 차이</label>
+<label><input type="radio" name="q4" value="d"> 주변 공기가 흡입구로 들어오는지</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>필터를 연결하면 주변 입자가 제거된 공기를 측정합니다. 영점 확인 후 필터를 빼야 주변 공기의 입자를 비교할 수 있습니다.</p>
+</article></details></main><script src="../air-sampling-model.js?v=cf9a7fbe2f06"></script><script src="../air-sampling-lab.js?v=8ad20748b014"></script><script src="../curriculum-map.js?v=6356b85c9f40"></script><script src="../exam-scope.js?v=bfaefaaa93c9"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

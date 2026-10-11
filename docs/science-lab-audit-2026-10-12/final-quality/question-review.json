@@ -1,0 +1,1196 @@
+{
+  "date": "2026-10-12",
+  "scope": "Explicit re-reading of these 33 stems, choices, numerical relations and explanations; no claim of empirical student calibration or whole textbook census completion",
+  "questions": [
+    {
+      "id": "ohms-law#q5",
+      "slug": "ohms-law",
+      "sha256": "4807595a1866e8a151ffcdc95db45770813ef901d93fff0344ceb6b762fda5d6",
+      "after": {
+        "id": "ohms-law#q5",
+        "slug": "ohms-law",
+        "question": "200 Ω과 100 Ω을 직렬로 연결하고 전체에 6.0 V를 걸었다. 200 Ω에 걸리는 전압과 흐르는 전류는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2.0 V · 20 mA"
+          },
+          {
+            "id": "b",
+            "text": "4.0 V · 40 mA"
+          },
+          {
+            "id": "c",
+            "text": "4.0 V · 20 mA"
+          },
+          {
+            "id": "d",
+            "text": "6.0 V · 30 mA"
+          }
+        ],
+        "answer": "c",
+        "why": "전체 저항은 300 Ω이므로 전류는 6/300=0.020 A입니다. 200 Ω의 전압은 0.020×200=4.0 V입니다."
+      }
+    },
+    {
+      "id": "ohms-law#q6",
+      "slug": "ohms-law",
+      "sha256": "9817826e749f77b12de614a2d1ab831f7373aeaf2e2d3557e04cb4dcae619be5",
+      "after": {
+        "id": "ohms-law#q6",
+        "slug": "ohms-law",
+        "question": "6.0 V 전원에 200 Ω과 100 Ω을 병렬로 연결했다. 200 Ω의 전류와 전체 전류는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "30 mA · 90 mA"
+          },
+          {
+            "id": "b",
+            "text": "30 mA · 30 mA"
+          },
+          {
+            "id": "c",
+            "text": "20 mA · 20 mA"
+          },
+          {
+            "id": "d",
+            "text": "60 mA · 90 mA"
+          }
+        ],
+        "answer": "a",
+        "why": "각 저항에는 6.0 V가 걸립니다. 가지 전류는 각각 30 mA와 60 mA이며 전체는 90 mA입니다."
+      }
+    },
+    {
+      "id": "ohms-law#q7",
+      "slug": "ohms-law",
+      "sha256": "3de83d3083435cffd37b2108ceea5239ef45460d31bcc9f2e76c816d7e02eb4c",
+      "after": {
+        "id": "ohms-law#q7",
+        "slug": "ohms-law",
+        "question": "전류계 모드의 계기를 200 Ω 저항 양 끝에 병렬로 연결하려 한다. 회로를 닫기 전에 어떻게 바꾸어야 하는가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "계기를 그대로 두고 전원 전압만 높인다"
+          },
+          {
+            "id": "b",
+            "text": "계기를 그대로 두고 다른 저항값만 높인다"
+          },
+          {
+            "id": "c",
+            "text": "계기를 떼어 저항과 직렬로 연결한다"
+          },
+          {
+            "id": "d",
+            "text": "계기를 떼어 전원 양 끝에 병렬로 연결한다"
+          }
+        ],
+        "answer": "c",
+        "why": "전류계는 측정할 전류가 지나가는 길에 직렬로 넣습니다. 내부 저항이 작은 전류계를 병렬로 연결하면 저항을 우회하는 경로가 생깁니다."
+      }
+    },
+    {
+      "id": "ohms-law#q8",
+      "slug": "ohms-law",
+      "sha256": "0aa1ce60822173b4ccfa8297cd506b32d0e3d76fd33783559d1227da2810b3d2",
+      "after": {
+        "id": "ohms-law#q8",
+        "slug": "ohms-law",
+        "question": "두 저항을 직렬로 연결했다. 전류는 15 mA, 각 저항의 전압은 3.0 V와 1.5 V였다. 두 저항을 같은 4.5 V 전원에 병렬로 바꾸면 전체 전류는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "15.0 mA"
+          },
+          {
+            "id": "b",
+            "text": "22.5 mA"
+          },
+          {
+            "id": "c",
+            "text": "45.0 mA"
+          },
+          {
+            "id": "d",
+            "text": "67.5 mA"
+          }
+        ],
+        "answer": "d",
+        "why": "R₁=3.0/0.015=200 Ω, R₂=1.5/0.015=100 Ω입니다. 병렬에서는 22.5 mA와 45.0 mA가 흘러 합계 67.5 mA입니다."
+      }
+    },
+    {
+      "id": "volcano-model#q4",
+      "slug": "volcano-model",
+      "sha256": "6773657ca38de1b84200cf79b6bc5e30d0a07b5f3fe034848d87fd368118a8b0",
+      "after": {
+        "id": "volcano-model#q4",
+        "slug": "volcano-model",
+        "question": "화산 모형의 액체가 기체 거품에 밀려 밖으로 흘러나왔다. 이 모형에서 직접 비교할 수 있는 실제 화산의 현상은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "암석이 고온에서 녹기 시작함"
+          },
+          {
+            "id": "b",
+            "text": "식은 용암이 결정으로 굳어짐"
+          },
+          {
+            "id": "c",
+            "text": "기체가 물질을 밖으로 밀어냄"
+          }
+        ],
+        "answer": "c",
+        "why": "기체가 액체를 밖으로 밀어내므로 화산에서 기체가 물질을 밀어내는 현상과 비교할 수 있습니다. 암석이 녹거나 용암이 식어 굳는 과정과는 다릅니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q1",
+      "slug": "telescope-observation",
+      "sha256": "dd631e3ed21d8f8ac573d5de971e63a24273581c1ee0eb813f97c8683de2b3b0",
+      "after": {
+        "id": "telescope-observation#q1",
+        "slug": "telescope-observation",
+        "question": "삼각대를 세웠다. 경통을 고정하려 했으나 연결할 부분이 없다. 교과서 절차에서 빠진 단계는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "가대와 균형추 설치"
+          },
+          {
+            "id": "b",
+            "text": "접안렌즈 초점 조절"
+          },
+          {
+            "id": "c",
+            "text": "파인더 십자선 정렬"
+          },
+          {
+            "id": "d",
+            "text": "관측 대상의 위치 기록"
+          }
+        ],
+        "answer": "a",
+        "why": "가대를 삼각대에 고정하고 균형추를 설치한 다음 경통을 가대에 고정합니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q2",
+      "slug": "telescope-observation",
+      "sha256": "1fe2ea0c139599a11e4be50cc4afe085c85968518767e594876563b3a805e5ec",
+      "after": {
+        "id": "telescope-observation#q2",
+        "slug": "telescope-observation",
+        "question": "중심을 일치시킨 파인더와 접안렌즈를 사용했다. 대상이 파인더 가장자리에만 보일 때 먼저 할 조작은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "접안렌즈 배율을 더 높인다"
+          },
+          {
+            "id": "b",
+            "text": "파인더에서 대상을 중심에 둔다"
+          },
+          {
+            "id": "c",
+            "text": "접안부 초점을 조금씩 바꾼다"
+          },
+          {
+            "id": "d",
+            "text": "균형추를 안쪽으로 조금 민다"
+          }
+        ],
+        "answer": "b",
+        "why": "접안렌즈의 시야가 더 좁으므로 파인더에서 대상을 중심으로 옮긴 뒤 확인합니다. 배율 증가나 초점 변화로 방향 오차를 해결할 수 없습니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q3",
+      "slug": "telescope-observation",
+      "sha256": "48f9c30aff1507a36802547ef4351c61292d500961eda3c88a774dbc6dafee5b",
+      "after": {
+        "id": "telescope-observation#q3",
+        "slug": "telescope-observation",
+        "question": "달이 접안렌즈 시야 중앙에 들어왔지만 윤곽이 흐릿하다. 장치가 안정되어 있고 하늘은 맑다. 먼저 할 조작은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "경통을 좌우로 조금 회전한다"
+          },
+          {
+            "id": "b",
+            "text": "접안렌즈를 고배율로 교체한다"
+          },
+          {
+            "id": "c",
+            "text": "초점 손잡이를 조금씩 돌린다"
+          },
+          {
+            "id": "d",
+            "text": "파인더의 조절 나사를 돌린다"
+          }
+        ],
+        "answer": "c",
+        "why": "대상이 시야 중앙에 있는데 퍼져 보일 때는 초점을 조금씩 조절하여 선명도를 비교합니다. 초점이 맞지 않은 채 확대하거나 방향만 바꾸어서는 해결되지 않습니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q4",
+      "slug": "telescope-observation",
+      "sha256": "d111f9e32e6d0748de0a9d4b6eeae70d4b251b412f8a8a756d46d516917088db",
+      "after": {
+        "id": "telescope-observation#q4",
+        "slug": "telescope-observation",
+        "question": "같은 장소에서 같은 배율로 두 망원경을 비교했다. 대물렌즈 지름 120 mm인 B에서 60 mm인 A보다 어두운 별이 더 많이 보였다. 가장 직접적인 설명은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "B의 접안렌즈 배율이 더 높다"
+          },
+          {
+            "id": "b",
+            "text": "B가 한 번에 보는 하늘이 더 넓다"
+          },
+          {
+            "id": "c",
+            "text": "B의 대물렌즈 초점 거리가 더 길다"
+          },
+          {
+            "id": "d",
+            "text": "B의 대물렌즈가 빛을 더 많이 모은다"
+          }
+        ],
+        "answer": "d",
+        "why": "배율은 같게 통제했습니다. 더 큰 대물렌즈는 빛을 더 많이 모으므로 어두운 별의 관측에 유리합니다. 배율과 집광력을 구별해야 합니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q5",
+      "slug": "telescope-observation",
+      "sha256": "07638410ea15ad45c537bdf99c8c75edb06faa036c8b40464fa47f56c76f9b56",
+      "after": {
+        "id": "telescope-observation#q5",
+        "slug": "telescope-observation",
+        "question": "초점 거리 600 mm인 망원경에 20 mm, 6 mm 접안렌즈를 차례로 사용했다. 배율은 경통 초점 거리를 접안렌즈 초점 거리로 나눈 값이다. 두 배율은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "30배, 100배"
+          },
+          {
+            "id": "b",
+            "text": "100배, 30배"
+          },
+          {
+            "id": "c",
+            "text": "120배, 36배"
+          },
+          {
+            "id": "d",
+            "text": "600배, 600배"
+          }
+        ],
+        "answer": "a",
+        "why": "600/20=30, 600/6=100입니다. 접안렌즈 초점 거리가 짧을수록 배율이 높아집니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q6",
+      "slug": "telescope-observation",
+      "sha256": "214f689ca65d21c4bb6d8b650f33525d6d850a55fd98e6156fb4148344df05c4",
+      "after": {
+        "id": "telescope-observation#q6",
+        "slug": "telescope-observation",
+        "question": "건물의 꼭대기는 고도 15°이고, 토성은 같은 방향의 고도 10°에 있다. 맑은 밤에 고배율로 바꾸어도 토성이 보이지 않았다. 조건을 바르게 해석한 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "토성이 건물보다 5° 위에 있다"
+          },
+          {
+            "id": "b",
+            "text": "토성이 건물보다 5° 아래에 있다"
+          },
+          {
+            "id": "c",
+            "text": "토성이 건물보다 25° 위에 있다"
+          },
+          {
+            "id": "d",
+            "text": "토성이 건물보다 25° 아래에 있다"
+          }
+        ],
+        "answer": "b",
+        "why": "같은 방향에서 10°−15°=−5°이므로 토성은 건물 꼭대기보다 5° 아래에 가려져 있습니다. 접안렌즈 배율을 바꾸어도 장애물을 투과하지 못합니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q7",
+      "slug": "telescope-observation",
+      "sha256": "1b31530e1579981c6f056654d69fd9ea2738011bdcb76ab6195d77bf0369521d",
+      "after": {
+        "id": "telescope-observation#q7",
+        "slug": "telescope-observation",
+        "question": "망원경에서 A는 초승 모양의 밝은 면, B는 본체를 둘러싼 고리가 보였다. 이 실습의 금성·목성·토성 중 대응은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A 목성 · B 금성"
+          },
+          {
+            "id": "b",
+            "text": "A 토성 · B 목성"
+          },
+          {
+            "id": "c",
+            "text": "A 금성 · B 토성"
+          },
+          {
+            "id": "d",
+            "text": "A 금성 · B 목성"
+          }
+        ],
+        "answer": "c",
+        "why": "금성은 위상을, 토성은 고리를 비교할 수 있습니다. 목성의 줄무늬·주변 위성과 고리를 구별합니다."
+      }
+    },
+    {
+      "id": "telescope-observation#q8",
+      "slug": "telescope-observation",
+      "sha256": "1c8aa2086c00216ae14b6b0fe47af3f4fa9f73ef07126b79d16c8d8ea263af2a",
+      "after": {
+        "id": "telescope-observation#q8",
+        "slug": "telescope-observation",
+        "question": "목성 옆에 나란히 보이는 밝은 점들이 목성에 대해 움직이는지 알아보려 한다. 어느 비교가 가장 적절한가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "같은 시각에 배율을 바꾸어 점들의 간격 비교"
+          },
+          {
+            "id": "b",
+            "text": "같은 시각에 초점을 바꾸어 점들의 선명도 비교"
+          },
+          {
+            "id": "c",
+            "text": "다른 날짜에 화면 가장자리에서 점까지 거리 비교"
+          },
+          {
+            "id": "d",
+            "text": "다른 날짜에 목성 중심에서 점까지 상대 위치 비교"
+          }
+        ],
+        "answer": "d",
+        "why": "시간에 따른 움직임은 여러 시점에서 같은 기준에 대한 위치로 비교해야 합니다. 화면 가장자리는 관측 방향에 따라 달라지므로 목성 중심을 기준으로 삼습니다."
+      }
+    },
+    {
+      "id": "rotating-annulus#q1",
+      "slug": "rotating-annulus",
+      "sha256": "f63ec272808c7144054fb673c804a59b6e69b4c19d8cd2675f6f94825c6cba7c",
+      "after": {
+        "id": "rotating-annulus#q1",
+        "slug": "rotating-annulus",
+        "question": "안쪽 원통은 얼음물, 바깥쪽은 가열한 물이다. 중간 원통에서 흐름을 관찰한다. 안쪽→중간→바깥쪽의 대응은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "극 지역 → 중위도 → 열대 지역"
+          },
+          {
+            "id": "b",
+            "text": "열대 지역 → 중위도 → 극 지역"
+          },
+          {
+            "id": "c",
+            "text": "중위도 → 극 지역 → 열대 지역"
+          },
+          {
+            "id": "d",
+            "text": "극 지역 → 열대 지역 → 중위도"
+          }
+        ],
+        "answer": "a",
+        "why": "온도가 낮은 안쪽은 극 지역, 두 경계 사이의 물은 중위도, 온도가 높은 바깥쪽은 열대 지역에 대응합니다."
+      }
+    },
+    {
+      "id": "rotating-annulus#q2",
+      "slug": "rotating-annulus",
+      "sha256": "2e0f52274b0e9900d92f3102300999c85a68ee70fa4ce565949a85f3ff1c73ee",
+      "after": {
+        "id": "rotating-annulus#q2",
+        "slug": "rotating-annulus",
+        "question": "회전하지 않을 때와 회전할 때 흐름이 달라지는지 조사한다. 나머지 조건은 같게 할 때 알맞은 두 실험은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A 온도차 없음·정지 / B 온도차 있음·회전"
+          },
+          {
+            "id": "b",
+            "text": "A 온도차 있음·정지 / B 같은 온도차·회전"
+          },
+          {
+            "id": "c",
+            "text": "A 온도차 있음·회전 / B 온도차 없음·같은 회전"
+          },
+          {
+            "id": "d",
+            "text": "A 온도차 있음·정지 / B 같은 온도차·정지"
+          }
+        ],
+        "answer": "b",
+        "why": "안팎 온도차·물의 양·관찰 위치를 같게 두고 회전 여부만 바꿔야 회전 효과를 비교할 수 있습니다."
+      }
+    },
+    {
+      "id": "rotating-annulus#q3",
+      "slug": "rotating-annulus",
+      "sha256": "27909b367a21c600305b144c364369aab36eadea22f89badf19fae462b219299",
+      "after": {
+        "id": "rotating-annulus#q3",
+        "slug": "rotating-annulus",
+        "question": "수조가 정지한 상태에서 안쪽을 냉각하고 바깥쪽을 가열했다. 옆면에서 본 중간 원통 물의 대표 순환은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "표면 안→밖 · 바닥 안→밖"
+          },
+          {
+            "id": "b",
+            "text": "표면 밖→안 · 바닥 밖→안"
+          },
+          {
+            "id": "c",
+            "text": "표면 밖→안 · 바닥 안→밖"
+          },
+          {
+            "id": "d",
+            "text": "표면 안→밖 · 바닥 밖→안"
+          }
+        ],
+        "answer": "c",
+        "why": "차가운 안쪽 벽 부근의 물은 내려가 바닥을 따라 바깥쪽으로 흐르고, 바깥쪽에서 올라온 물은 표면을 따라 안쪽으로 흐릅니다."
+      }
+    },
+    {
+      "id": "rotating-annulus#q4",
+      "slug": "rotating-annulus",
+      "sha256": "7d37b5b45e2daa337434ce13f3a21fd8e1f0498b7dc0dc58173963cca3ffbac3",
+      "after": {
+        "id": "rotating-annulus#q4",
+        "slug": "rotating-annulus",
+        "question": "수조의 굽이치는 흐름을 실제 중위도 편서풍 파동과 비교한다. 평평한 수조가 직접 재현하지 못한 조건은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "안팎의 온도 차에 의한 에너지 차이"
+          },
+          {
+            "id": "b",
+            "text": "따뜻한 쪽과 찬 쪽 사이의 물 이동"
+          },
+          {
+            "id": "c",
+            "text": "회전하는 좌표에서 나타나는 전향 효과"
+          },
+          {
+            "id": "d",
+            "text": "지구에서 위도에 따라 달라지는 전향력"
+          }
+        ],
+        "answer": "d",
+        "why": "회전 수조에는 회전에 의한 효과와 안팎 온도차가 있지만, 평평한 바닥에서 위도별 전향력 변화까지 재현하지 않습니다. 파동 모양이 비슷해도 발생 원리를 같다고 단정할 수 없습니다."
+      }
+    },
+    {
+      "id": "sunspot-observation#q1",
+      "slug": "sunspot-observation",
+      "sha256": "a82f846e6ed3c9a8ba769dbc5e7c0dbbf5e5a4502a8a603e535326744a042725",
+      "after": {
+        "id": "sunspot-observation#q1",
+        "slug": "sunspot-observation",
+        "question": "첫 영상의 A는 남위 18°의 흑점이다. 4일 뒤 후보 B는 남위 19°, 후보 C는 북위 18°이다. 주변 모양도 B가 비슷하다. 이동량을 구할 때 우선 대응할 대상은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "B · 남북 위치와 주변 모양이 이어진다"
+          },
+          {
+            "id": "b",
+            "text": "C · 위도 숫자의 크기가 A와 같다"
+          },
+          {
+            "id": "c",
+            "text": "B와 C · 경과 시간이 서로 같다"
+          },
+          {
+            "id": "d",
+            "text": "B와 C의 중간 · 위치 오차를 줄인다"
+          }
+        ],
+        "answer": "a",
+        "why": "위도의 부호와 주변 흑점의 배열을 함께 살펴 같은 대상을 추적해야 합니다. 숫자의 크기만 같은 북반구 흑점이나 두 대상의 중간을 대응점으로 삼을 수 없습니다."
+      }
+    },
+    {
+      "id": "sunspot-observation#q2",
+      "slug": "sunspot-observation",
+      "sha256": "1865cfdfdeb6f230cb8e9195917df90404975e81da6a9c678d6f9d0cbb9d22d2",
+      "after": {
+        "id": "sunspot-observation#q2",
+        "slug": "sunspot-observation",
+        "question": "같은 흑점이 4일 동안 동경 28°에서 서경 26°로 이동했다. 이 자료에서 구한 겉보기 자전 주기는 약 얼마인가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "6.7일"
+          },
+          {
+            "id": "b",
+            "text": "26.7일"
+          },
+          {
+            "id": "c",
+            "text": "48.0일"
+          },
+          {
+            "id": "d",
+            "text": "720일"
+          }
+        ],
+        "answer": "b",
+        "why": "중앙 자오선을 사이에 두고 이동했으므로 각거리는 28°+26°=54°입니다. 360°÷54°×4일≈26.7일입니다."
+      }
+    },
+    {
+      "id": "sunspot-observation#q3",
+      "slug": "sunspot-observation",
+      "sha256": "e38df068d7acc2d9a2954111aa9739b17d01769a8e1deb61f6f2d45a29eadef9",
+      "after": {
+        "id": "sunspot-observation#q3",
+        "slug": "sunspot-observation",
+        "question": "흑점 A는 원반 중심 부근, B는 가장자리 부근에 있다. 두 흑점이 같은 경도만큼 이동했는데 화면의 이동 길이는 다르다. 비교 방법으로 알맞은 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "화면 이동 길이만 비교한다"
+          },
+          {
+            "id": "b",
+            "text": "화면 이동 길이를 태양 지름으로 나눈다"
+          },
+          {
+            "id": "c",
+            "text": "날짜별 격자로 경도 차이를 비교한다"
+          },
+          {
+            "id": "d",
+            "text": "화면 이동 길이에 같은 배율을 곱한다"
+          }
+        ],
+        "answer": "c",
+        "why": "둥근 태양 표면을 평면으로 볼 때 가장자리에서 동서 방향 길이가 압축됩니다. 날짜별 격자를 이용해 표면의 경도 차이를 비교합니다."
+      }
+    },
+    {
+      "id": "sunspot-observation#q4",
+      "slug": "sunspot-observation",
+      "sha256": "359564b6cc5d71e812f24b8fc900ba6ddebffff0b952d6afb5153efd3dc03b6a",
+      "after": {
+        "id": "sunspot-observation#q4",
+        "slug": "sunspot-observation",
+        "question": "남위 18° 부근의 흑점 3개에서 약 27일을 얻었다. 이 자료만으로 판단할 수 있는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "태양의 모든 위도가 약 27일 주기로 돈다"
+          },
+          {
+            "id": "b",
+            "text": "북위 60°도 남위 18°와 같은 주기로 돈다"
+          },
+          {
+            "id": "c",
+            "text": "위도가 높아질수록 주기가 짧아진다"
+          },
+          {
+            "id": "d",
+            "text": "관측한 위도 부근의 겉보기 주기는 약 27일이다"
+          }
+        ],
+        "answer": "d",
+        "why": "측정한 흑점의 위도 범위가 좁으므로 그 범위의 결과를 해석할 수 있습니다. 위도에 따른 관계를 확인하려면 다른 위도의 흑점과 여러 시기의 자료가 필요합니다."
+      }
+    },
+    {
+      "id": "protein-interaction#q1",
+      "slug": "protein-interaction",
+      "sha256": "2bce187ee7809e79be3ad94f913466558755a7dd0fc3404943f2c14ee9c73845",
+      "after": {
+        "id": "protein-interaction#q1",
+        "slug": "protein-interaction",
+        "question": "아세틸콜린에스터레이스에서 후보별 최저 상대 에너지가 미노사이클린 −8.0, 이마티닙 −7.8, 아픽사반 −7.2, 이부프로펜 −5.9였다. 가장 낮은 값을 보인 후보는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "미노사이클린"
+          },
+          {
+            "id": "b",
+            "text": "이마티닙"
+          },
+          {
+            "id": "c",
+            "text": "아픽사반"
+          },
+          {
+            "id": "d",
+            "text": "이부프로펜"
+          }
+        ],
+        "answer": "a",
+        "why": "음수에서는 절댓값이 클수록 값이 더 작습니다. 이 네 후보의 이 계산 조건에서는 −8.0이 가장 낮습니다."
+      }
+    },
+    {
+      "id": "protein-interaction#q2",
+      "slug": "protein-interaction",
+      "sha256": "0985133d422e661dab24398d2b435188d09128c0e99aa8460a3a2f4b94123708",
+      "after": {
+        "id": "protein-interaction#q2",
+        "slug": "protein-interaction",
+        "question": "미노사이클린/이마티닙의 점수는 표적 A에서 −8.0/−7.8, 표적 B에서 −7.3/−8.3이었다. 각 표적에서 더 낮은 후보의 대응은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A 이마티닙 · B 미노사이클린"
+          },
+          {
+            "id": "b",
+            "text": "A 미노사이클린 · B 이마티닙"
+          },
+          {
+            "id": "c",
+            "text": "A 미노사이클린 · B 미노사이클린"
+          },
+          {
+            "id": "d",
+            "text": "A 이마티닙 · B 이마티닙"
+          }
+        ],
+        "answer": "b",
+        "why": "A에서는 −8.0인 미노사이클린, B에서는 −8.3인 이마티닙이 더 낮습니다. 한 표적에서 얻은 후보 순위를 다른 표적에 그대로 적용할 수 없습니다."
+      }
+    },
+    {
+      "id": "protein-interaction#q3",
+      "slug": "protein-interaction",
+      "sha256": "95352af3a4ae6531d0596766a1223709f55fdc7b7b82e58f7d7ab4c67fcd9a1f",
+      "after": {
+        "id": "protein-interaction#q3",
+        "slug": "protein-interaction",
+        "question": "같은 후보의 배치 1·2·3에서 상대 에너지가 −4.2, −6.1, −5.5였다. 세 배치 중 가장 낮은 값을 대표값으로 비교한다면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "배치 1 · −4.2"
+          },
+          {
+            "id": "b",
+            "text": "배치 3 · −5.5"
+          },
+          {
+            "id": "c",
+            "text": "배치 2 · −6.1"
+          },
+          {
+            "id": "d",
+            "text": "세 배치 평균 · −5.3"
+          }
+        ],
+        "answer": "c",
+        "why": "이 비교 기준은 세 배치의 평균이 아니라 가장 낮은 값입니다. 따라서 배치 2의 −6.1을 선택합니다."
+      }
+    },
+    {
+      "id": "protein-interaction#q4",
+      "slug": "protein-interaction",
+      "sha256": "d9b6a8efc96638881c484cdb82d054212839a6ca9eccea4ecf7d1b1644d935a1",
+      "after": {
+        "id": "protein-interaction#q4",
+        "slug": "protein-interaction",
+        "question": "같은 표적에서 후보 X의 도킹 에너지가 Y보다 낮았다. 이 결과만으로 뒷받침되는 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X의 세포 내 저해 효과가 Y보다 크다"
+          },
+          {
+            "id": "b",
+            "text": "X의 사람 대상 치료 효과가 Y보다 크다"
+          },
+          {
+            "id": "c",
+            "text": "X의 다른 단백질 결합이 Y보다 적다"
+          },
+          {
+            "id": "d",
+            "text": "X의 이 계산 조건 점수가 Y보다 낮다"
+          }
+        ],
+        "answer": "d",
+        "why": "도킹 결과는 설정한 계산 조건에서의 배치와 점수를 비교합니다. 세포 내 효과, 사람의 치료 효과, 다른 단백질에 대한 선택성은 각각 추가 자료가 필요합니다."
+      }
+    },
+    {
+      "id": "air-sampling#q1",
+      "slug": "air-sampling",
+      "sha256": "20af2fbb89bfe182b1f2ad33c1fbc9b820314ad511db3315749ca61c23542109",
+      "after": {
+        "id": "air-sampling#q1",
+        "slug": "air-sampling",
+        "question": "정문과 화단의 PM2.5 농도를 비교하려 한다. 장소의 영향만 알아보기에 가장 알맞은 조건은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "정문 오전·1.5 m / 화단 오후·1.5 m"
+          },
+          {
+            "id": "b",
+            "text": "정문 오전·1.5 m / 화단 오전·1.5 m"
+          },
+          {
+            "id": "c",
+            "text": "정문 오전·0.3 m / 화단 오전·1.5 m"
+          },
+          {
+            "id": "d",
+            "text": "정문 PM2.5·60초 / 화단 PM10·60초"
+          }
+        ],
+        "answer": "b",
+        "why": "장소 이외의 측정 시각·높이·항목·측정 시간을 같게 맞춥니다. 다른 조건도 바꾸면 장소 때문에 차이가 났다고 분리해 해석하기 어렵습니다."
+      }
+    },
+    {
+      "id": "air-sampling#q2",
+      "slug": "air-sampling",
+      "sha256": "f064f0a6d9f334cadd6dc5230d8bf783ea17b6202732ea9a0ea0b0c09407fe24",
+      "after": {
+        "id": "air-sampling#q2",
+        "slug": "air-sampling",
+        "question": "같은 공기를 60초와 120초 동안 측정했다. 유량은 일정하고 120초 때 포집한 질량과 공기 부피가 각각 두 배였다. 질량 농도의 비는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "60초 : 120초 = 1 : 2"
+          },
+          {
+            "id": "b",
+            "text": "60초 : 120초 = 2 : 1"
+          },
+          {
+            "id": "c",
+            "text": "60초 : 120초 = 1 : 1"
+          },
+          {
+            "id": "d",
+            "text": "60초 : 120초 = 1 : 4"
+          }
+        ],
+        "answer": "c",
+        "why": "질량 농도는 포집한 입자 질량을 흡입한 공기 부피로 나눈 값입니다. 분자와 분모가 함께 두 배이면 농도는 같습니다."
+      }
+    },
+    {
+      "id": "air-sampling#q3",
+      "slug": "air-sampling",
+      "sha256": "89ef10c798cb670f644102d5cb85fc04916e560f37cb470bed35974f743257ef",
+      "after": {
+        "id": "air-sampling#q3",
+        "slug": "air-sampling",
+        "question": "같은 공기의 입자를 같은 방법으로 측정했다. PM2.5가 18 µg/m³, PM10이 31 µg/m³이다. 지름 2.5 µm 초과 10 µm 이하 입자의 질량 농도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "13 µg/m³"
+          },
+          {
+            "id": "b",
+            "text": "18 µg/m³"
+          },
+          {
+            "id": "c",
+            "text": "31 µg/m³"
+          },
+          {
+            "id": "d",
+            "text": "49 µg/m³"
+          }
+        ],
+        "answer": "a",
+        "why": "PM10에는 PM2.5도 포함됩니다. 같은 조건의 측정이라면 두 범위의 차이는 31−18=13 µg/m³입니다."
+      }
+    },
+    {
+      "id": "air-sampling#q4",
+      "slug": "air-sampling",
+      "sha256": "a85d1122ef102deb42ae3df08f268d05b7765ca072a34ac888946c419b63be99",
+      "after": {
+        "id": "air-sampling#q4",
+        "slug": "air-sampling",
+        "question": "영점 확인용 필터를 연결한 상태에서 0을 확인했다. 그대로 학교 정문에서 측정해도 0이 나왔다. 가장 먼저 확인할 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "정문과 화단의 건물 높이 차이"
+          },
+          {
+            "id": "b",
+            "text": "오전과 오후의 자동차 수 차이"
+          },
+          {
+            "id": "c",
+            "text": "60초와 120초의 포집 질량 차이"
+          },
+          {
+            "id": "d",
+            "text": "주변 공기가 흡입구로 들어오는지"
+          }
+        ],
+        "answer": "d",
+        "why": "필터를 연결하면 주변 입자가 제거된 공기를 측정합니다. 영점 확인 후 필터를 빼야 주변 공기의 입자를 비교할 수 있습니다."
+      }
+    },
+    {
+      "id": "local-biodiversity#q1",
+      "slug": "local-biodiversity",
+      "sha256": "48433c2c15a9ec4bfb9bcf48796ea78dd24cb2e42a10d376671a9bf9f7374d9e",
+      "after": {
+        "id": "local-biodiversity#q1",
+        "slug": "local-biodiversity",
+        "question": "같은 조건에서 A는 토끼풀 8곳·질경이 2곳·강아지풀 2곳, B는 각 4곳씩 관찰했다. 종별 관찰 수가 비슷할수록 고른 분포라고 할 때, 종 수와 분포의 비교는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "종 수는 둘 다 3종 · A의 분포가 더 고름"
+          },
+          {
+            "id": "b",
+            "text": "종 수는 둘 다 3종 · B의 분포가 더 고름"
+          },
+          {
+            "id": "c",
+            "text": "종 수는 둘 다 12종 · A의 분포가 더 고름"
+          },
+          {
+            "id": "d",
+            "text": "종 수는 둘 다 12종 · B의 분포가 더 고름"
+          }
+        ],
+        "answer": "b",
+        "why": "서로 다른 식물은 두 구역 모두 세 종류입니다. B는 세 종류를 4곳씩 관찰했으므로 A의 8·2·2보다 고르게 관찰되었습니다. 표본 수·종 수·종별 분포는 구별해야 합니다."
+      }
+    },
+    {
+      "id": "local-biodiversity#q2",
+      "slug": "local-biodiversity",
+      "sha256": "d5bcc6f5f97d35d1ed946364856cb807ed3a5138e693ced830e1d640606577d6",
+      "after": {
+        "id": "local-biodiversity#q2",
+        "slug": "local-biodiversity",
+        "question": "화단은 20분 동안 12곳, 잔디밭은 10분 동안 6곳을 관찰했다. 화단에서 더 많은 종류를 찾았다. 다시 비교할 방법은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "잔디밭을 같은 시각 조건에서 20분·12곳 관찰"
+          },
+          {
+            "id": "b",
+            "text": "화단의 결과에서 같은 종의 표본을 절반 삭제"
+          },
+          {
+            "id": "c",
+            "text": "잔디밭의 종 수를 두 배하여 화단과 비교"
+          },
+          {
+            "id": "d",
+            "text": "화단의 꽃 있는 표본만 남겨 잔디밭과 비교"
+          }
+        ],
+        "answer": "a",
+        "why": "관찰 시간이 길고 살펴본 곳이 많으면 더 많은 종류를 발견할 수 있습니다. 관찰 노력을 맞춘 자료로 비교해야 하며 종 수를 단순히 두 배 할 수는 없습니다."
+      }
+    },
+    {
+      "id": "local-biodiversity#q3",
+      "slug": "local-biodiversity",
+      "sha256": "ee011430ea4f03000b71144acced7f9a49cc8a348ee2d66e7f0332f70d43a2e0",
+      "after": {
+        "id": "local-biodiversity#q3",
+        "slug": "local-biodiversity",
+        "question": "나무의 잎이 부채꼴이고 잎맥이 반복하여 둘로 갈라졌다. 다섯 비교 표본 중 이 특징에 해당하는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "무궁화"
+          },
+          {
+            "id": "b",
+            "text": "질경이"
+          },
+          {
+            "id": "c",
+            "text": "은행나무"
+          },
+          {
+            "id": "d",
+            "text": "토끼풀"
+          }
+        ],
+        "answer": "c",
+        "why": "은행나무의 부채꼴 잎과 둘씩 갈라지는 잎맥을 함께 확인합니다. 잎의 녹색이나 크기 하나만으로 종류를 정하지 않습니다."
+      }
+    },
+    {
+      "id": "local-biodiversity#q4",
+      "slug": "local-biodiversity",
+      "sha256": "c0ff6cc1af4b6fdd9e86fccf43b2d2511aa4936e3430dfc2b69bc9ff14293051",
+      "after": {
+        "id": "local-biodiversity#q4",
+        "slug": "local-biodiversity",
+        "question": "지난 관찰에서 질경이를 찾았으나 이번에는 찾지 못했다. 시기와 관찰 범위가 달랐다. 다음 조사에서 먼저 할 일은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "지난 표본을 목록에서 지워 개체 수 감소 계산"
+          },
+          {
+            "id": "b",
+            "text": "관찰 범위와 시기를 맞추어 여러 번 재조사"
+          },
+          {
+            "id": "c",
+            "text": "이번에 찾은 다른 식물을 모두 외래종으로 분류"
+          },
+          {
+            "id": "d",
+            "text": "질경이가 없는 까닭을 기후변화 하나로 확정"
+          }
+        ],
+        "answer": "b",
+        "why": "관찰 범위·시기·발견 가능성 때문에 보이지 않을 수도 있습니다. 조건을 맞춘 반복 관찰 없이 소멸이나 한 가지 원인을 확정할 수 없습니다."
+      }
+    }
+  ],
+  "checks": {
+    "circuit": "Independent series/parallel Ohm, node current and power conservation; mA/A conversion and wrong meter topology",
+    "telescope": "Assembly, aligned field, focus, aperture, magnification, angular obstruction and relative-motion inference",
+    "annulus": "Temperature-gradient analogy, one-variable comparison, surface/bottom flow and constant Coriolis parameter boundary",
+    "sunspot": "Identity, signed longitude difference, projected length versus angular displacement and bounded latitude inference",
+    "docking": "Signed score ordering, target-specific ranking, minimum pose and no efficacy extrapolation",
+    "air": "Mass/volume concentration, PM subset, controlled conditions and inlet/zero distinction",
+    "biodiversity": "Observed position count versus richness/evenness, equal effort, combined traits and absence versus extinction",
+    "volcano": "Gas-driven ejection only; no melting or crystallization inference"
+  },
+  "sources": [
+    {
+      "slug": "telescope-observation",
+      "source": {
+        "id": "81ce1d0e81902b80",
+        "pages": [
+          234,
+          235,
+          236,
+          237
+        ],
+        "printedPages": [
+          234,
+          235,
+          236,
+          237
+        ]
+      },
+      "assessmentSources": [
+        {
+          "sourceId": "19245e6b38accf50",
+          "pages": [
+            515,
+            516,
+            517
+          ],
+          "basis": "설치·균형·관측 환경, 파인더와 접안렌즈의 역할, 배율과 집광력 오개념"
+        },
+        {
+          "sourceId": "6497f56a86f76b52",
+          "pages": [
+            411,
+            415,
+            426
+          ],
+          "basis": "파인더→접안렌즈 순서, 부품별 역할, 파인더 정렬, 저배율→고배율 관측"
+        },
+        {
+          "sourceId": "7393fdc9fdd2d6fa",
+          "pages": [
+            372,
+            454,
+            455
+          ],
+          "basis": "파인더 중심과 접안렌즈 관찰 절차, 현장 관측과 모의 관측 구분"
+        }
+      ],
+      "boundary": "교과서의 관측 절차를 연습하는 가상 장치이다. 위치·고도·위상과 위성 배치는 대표 사례이며 현재 천문 예보나 촬영 자료가 아니다. 현장 설치·실제 천체 관측·촬영은 별도다. 600 mm 경통·50° 겉보기 시야를 가정하며 천체 특징 확대 그림은 실제 시야와 별도이다."
+    },
+    {
+      "slug": "rotating-annulus",
+      "source": {
+        "id": "5b0ce08b8c0b10eb",
+        "pages": [
+          32
+        ],
+        "printedPages": [
+          110
+        ]
+      },
+      "assessmentSources": [
+        {
+          "sourceId": "d8e0d7966df3a400",
+          "pages": [
+            201,
+            314,
+            315
+          ],
+          "basis": "각 원통의 대응, 정지/회전 비교, 회전 세기별 흐름, 위도에 따른 전향력의 한계"
+        }
+      ],
+      "boundary": "교과서의 관찰 결과를 설명하는 정성 운동 모형이다. 유체 방정식의 수치해가 아니며 회전수·온도·발달 시간·파동 개수의 정량 예측을 제공하지 않는다. 화면은 수조와 함께 도는 좌표에서 안정화된 대표 흐름을 보여 준다. 잉크는 상층 흐름의 표지로 한정하며 확산·침강 전체를 재현하지 않는다. 평평한 수조에는 위도에 따른 전향력 변화가 없어 실제 대기 로스비파와 발생 원리가 같다고 판정하지 않는다. 현장 가열·유체 관찰은 별도이다."
+    },
+    {
+      "slug": "sunspot-observation",
+      "source": {
+        "id": "83a281f014c6a235",
+        "pages": [
+          5,
+          6,
+          7
+        ],
+        "printedPages": [
+          53,
+          54,
+          55
+        ]
+      },
+      "assessmentSources": [
+        {
+          "sourceId": "83a281f014c6a235",
+          "pages": [
+            6,
+            7
+          ],
+          "basis": "위성 영상 겹침, 위도별 동일 흑점 대응, 각거리·경과 시간으로 주기 계산, 위도별 관측 범위"
+        }
+      ],
+      "boundary": "위성 영상 분석을 구현한다. 망원경의 태양 필터 부착·현장 정렬·스마트폰 촬영은 이 활동으로 완료 판정하지 않는다. 보관된 browse 영상의 픽셀로 어림 측정하며 정밀 FITS 분석이 아니다. 원반 경계 맞춤, 북쪽 방향, 관측자 위도와 거리를 반영한다. 주기는 지구 부근 관측자에 대한 겉보기 주기로 항성 자전 주기와 다르다. 흑점의 생성·소멸과 형태 변화, 가장자리 오차 때문에 소수 측정값만으로 전 위도 차등 자전을 확정하지 않는다."
+    },
+    {
+      "slug": "protein-interaction",
+      "source": {
+        "id": "7bad326c8e3be2fd",
+        "pages": [
+          111
+        ],
+        "printedPages": [
+          111
+        ]
+      },
+      "assessmentSources": [
+        {
+          "sourceId": "7bad326c8e3be2fd",
+          "pages": [
+            111
+          ],
+          "basis": "표적 선택, 후보 화합물의 에너지 비교, 신약 탐색과 실제 약효의 구별"
+        }
+      ],
+      "boundary": "원본 제공자가 계산한 360개 배치를 비교하는 재생 실험이며 브라우저에서 새 도킹 계산을 수행하지 않는다. 원문 전체 표적 10종·화합물 102종 중 3종·6종만 제공한다. 점수는 원본 UI가 상대 에너지로 제시하며 단위를 명시하지 않아 kcal/mol 또는 실측 자유 에너지로 부르지 않는다. 원본 배치 순서는 시간에 따른 분자 운동이나 최적화 궤적이 아니다. PDB 원자 좌표 중 단백질 Cα 골격만 표시하고, 원래 결정화 리간드·물은 제외한다. 계산 점수의 우열로 실제 표적 저해·약효·안전성을 확정하지 않는다."
+    },
+    {
+      "slug": "air-sampling",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          13,
+          14
+        ],
+        "printedPages": [
+          20,
+          21
+        ]
+      },
+      "assessmentSources": [],
+      "boundary": "실제 학교·대기 관측 자료가 아니다. 작성한 입경별 입자 분포와 밀도 1 g/cm³의 구형 입자를 이용한 가상 측정이다. 해당 가정에서 기하학적 입경과 공기역학적 입경을 같게 둔다. 실제 광학 센서의 광산란 역산·입구 효율·습도·입자 조성·교정 오차는 재현하지 않는다. 필터 영점 확인은 측정 준비 절차이며 실제 센서의 정확도 교정을 완료한 것으로 판정하지 않는다. 건강 위험·법적 대기질 등급을 산출하지 않는다. 원문의 현장 측정과 공개 지역 자료 비교는 실측값이 없는 이 가상 장치에서 완료 판정하지 않는다."
+    },
+    {
+      "slug": "local-biodiversity",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          7,
+          8
+        ],
+        "printedPages": [
+          14,
+          15
+        ]
+      },
+      "assessmentSources": [],
+      "boundary": "직접 현장 관찰·사진을 가상으로 연습하는 작성된 표본 배치이며 실제 학교·지역의 생물 분포가 아니다. 10분·20분당 6·12곳은 조작용 관찰 노력 설정이며 일반적인 발견률이 아니다. 다섯 비교 표본을 구분하는 축약 특징표이며 모든 한국 식물을 동정하는 검색표가 아니다. 클론 식물의 유전적 개체 수를 세지 않으며 관찰 위치 수만 집계한다. 종 수는 생물다양성의 한 측면으로만 비교한다. 원문 현장 관찰·촬영·기후변화의 인과 관계 조사 완료로 판정하지 않는다."
+    },
+    {
+      "slug": "ohms-law",
+      "source": {
+        "id": "88f46daabd2095a9",
+        "pages": [
+          92,
+          93
+        ],
+        "printedPages": [
+          92,
+          93
+        ]
+      },
+      "assessmentSources": [
+        {
+          "sourceId": "4ef92810be46d5e5",
+          "pages": [
+            2,
+            4
+          ],
+          "questions": [
+            "06",
+            "09"
+          ],
+          "basis": "저항 연결에 따른 전체 저항·전류·소비 전력의 관계와 제곱 관계 해설 대조. 앱의 수치와 선택지는 새로 작성함"
+        },
+        {
+          "sourceId": "5bf05ec779f4ca2e",
+          "answerSourceId": "febcd18e8c2ea1b1",
+          "questions": [
+            "01",
+            "02",
+            "03"
+          ],
+          "basis": "병렬 전류 합, 직렬 전압 분배, 같은 전압에서 저항별 소비 전력의 개념·해설 대조. HWP에서 추출되지 않은 도형·수식·값은 복원하거나 추정하지 않음"
+        }
+      ],
+      "boundary": "이상적인 전원·전선·계기와 일정한 저항을 가정한 가상 측정이다. 실물 계기 내부 저항·발열·접촉 불량·측정 오차는 재현하지 않는다. 잘못된 전류계 병렬 연결은 전원 연결을 막으며 실제 단락 전류 수치를 제시하지 않는다. 저항 세 개의 심화 활동과 실물 수행은 완료로 판정하지 않는다."
+    }
+  ]
+}

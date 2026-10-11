@@ -23,6 +23,7 @@ test('fresh transfer answer is distinguished from correcting the same item',()=>
 });
 test('all supplied existing questions and new transfer items have valid assessment feedback',()=>{
  const authored=Object.fromEntries(require('../scripts/science-restored-experiments.cjs').map(r=>[r.slug,r.questions.length]));
+ for(const [slug,app]of Object.entries(map))if(app.courseContexts)authored[slug]=new Set(Object.values(app.courseContexts).flatMap(c=>c.questionNumbers)).size;
  const reviewed=require('../scripts/review-science-questions.cjs').read();assert.equal(reviewed.length,Object.keys(map).reduce((n,slug)=>n+(authored[slug]||4),0)+bank.questions.length);
  for(const q of reviewed){const s=api.session(q.id,[q]);for(const c of q.choices){const r=s.submit(q.id,c.id);assert.equal(r.correct,String(c.id)===String(q.answer));const text=api.feedback(q,r);if(r.correct)assert(text.includes(q.why));else assert.equal(text,'다시 생각하고 다른 답을 골라보세요.','wrong answers must not reveal the key or explanation');}}
  for(const [slug,items]of Object.entries(content.followups)){assert(map[slug]);for(const item of items){assert(item.id);assert.equal(new Set(item.choices).size,item.choices.length);assert(item.answer>=0&&item.answer<item.choices.length);assert(item.why.length>20);}}
@@ -59,6 +60,6 @@ for(const engine of ['chromium','webkit'])test(engine+': all registered apps pre
  }
  await page.close();}));
  const page=await browser.newPage();await page.goto(origin+'/');assert.equal(await page.locator('a[href*="exam-review"],a[href*="activity-workbench"]').count(),0);
- await page.goto(origin+'/activity-workbench.html?activity=4%EA%B3%BC08%231');await page.waitForURL(origin+'/');assert.equal(await page.locator('#hypothesis,#conclusion,#record,#records').count(),0);await page.close();assert.equal(count,slugs.reduce((n,slug)=>n+(authoredCounts[slug]||4),0));assert.deepEqual(errors,[]);console.log(engine+': '+slugs.length+' apps / '+routes.length+' course routes / '+count+' first errors retained through correction and reload');
+ await page.goto(origin+'/activity-workbench.html?activity=4%EA%B3%BC08%231');await page.waitForURL(origin+'/');assert.equal(await page.locator('#hypothesis,#conclusion,#record,#records').count(),0);await page.close();assert.equal(count,routes.reduce((n,{slug,school})=>n+(school?map[slug].courseContexts[school].questionNumbers.length:authoredCounts[slug]||4),0));assert.deepEqual(errors,[]);console.log(engine+': '+slugs.length+' apps / '+routes.length+' course routes / '+count+' first errors retained through correction and reload');
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });

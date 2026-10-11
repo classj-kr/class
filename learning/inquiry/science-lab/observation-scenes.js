@@ -12,18 +12,18 @@
   else if(s.test==='cobalt'){
    svg+=jar(135,83)+fuel(175,139,s.fuel)+(burning?flame(175,139,s.fuel):'')+
     `<rect data-reagent="cobalt" x="142" y="100" width="15" height="32" fill="${after?'#d980a4':'#8aa5df'}"/>`+
-    path('M157 115 H278')+text('통 안쪽에 붙인 종이',338,107,13)+text(after?'푸른색 → 붉은색':'푸른색 염화 코발트 종이',338,135,12)+
+    path('M157 115 H278')+text('염화 코발트 종이',338,107,13)+text(after?'푸른색 → 붉은색':'푸른색',338,135,12)+
     (after?[165,189,205].map((x,i)=>`<circle data-water-drop cx="${x}" cy="${94+i*7}" r="3" fill="#6fadd0"/>`).join(''):'')+
-    text(stage===0?'종이를 붙인 통과 연료 준비':burning?'타는 연료를 통으로 덮음':'불꽃이 꺼진 뒤 종이 색 관찰',230,263);
+    text(stage===0?'통과 연료 준비':burning?'타는 연료 덮기':'식은 뒤 색 관찰',230,263);
   }else{
-   svg+=jar(65,83)+fuel(105,139,s.fuel)+(stage?flame(105,139,s.fuel):'')+text('집기병으로 덮어 모음',105,260,12);
+   svg+=jar(65,83)+fuel(105,139,s.fuel)+(stage?flame(105,139,s.fuel):'')+text('집기병',105,260,12);
    if(after){
     svg+=path('M177 151 h53 m-8 -6 8 6 -8 6','#aa8148',3)+jar(300,83,true)+
      '<rect data-reagent="lime" x="302" y="159" width="76" height="30" fill="#eeeede"/>'+
-     path('M295 80 H385','#6b8a96',4)+text('① 입구를 막아 세움',337,222,12)+text('② 석회수를 넣고 흔듦',337,244,12)+text('맑음 → 뿌옇게 됨',337,266,12);
+     path('M295 80 H385','#6b8a96',4)+text('① 입구 막기',337,222,12)+text('② 석회수 넣기',337,244,12)+text('맑음 → 뿌옇게',337,266,12);
     // Left drawing is the earlier collection step, not a flame burning inside a sealed test vessel.
     svg+=text('앞 단계',105,62,12);
-   }else svg+=jar(300,83,true)+'<rect x="302" y="159" width="76" height="30" fill="#bfe2ec"/>'+text('따로 준비한 맑은 석회수',337,260,12);
+   }else svg+=jar(300,83,true)+'<rect x="302" y="159" width="76" height="30" fill="#bfe2ec"/>'+text('맑은 석회수',337,260,12);
   }
   return{svg:`<g data-observation-scene="combustion" data-stage="${stage}">${svg}</g>`,after,burning};
  }

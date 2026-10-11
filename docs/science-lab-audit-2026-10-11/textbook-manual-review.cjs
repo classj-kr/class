@@ -56,4 +56,17 @@ for(const [name,candidate,conditions]of [
  experiments.push({id:r.slug,sourceId:r.source.id,pages:name==='sunspot'?[6,7]:r.source.pages,title:r.title,slug:r.slug,conditions,verdict:name==='sunspot'?'기재한 위성 영상 측정 절차 대조 · 직접 망원경 관측·촬영 완료 아님':'기재한 교과서 지정 도구의 실제 계산 자료 대조 · 새로운 도킹 계산·실물 약효 검증 아님',publisherDeduplication:'기재한 판본·쪽만 검토; 다른 출판사의 유사 활동 전수 대조 전',assessmentSources:r.assessmentSources,boundary:r.boundary});
  candidates[candidate]={verdict:'기재한 원문 절차 대조 · 자료 조작과 결과 해석 구현; 경계는 개별 검토 기록에 보존',experiments:[r.slug]};
 }
+for(const [name,candidate,conditions]of [
+ ['air-sampling','book-86781258f8193a5b',['PM2.5·PM10의 포함 관계','영점 필터와 주변 공기 흡입 구분','포집 질량/공기 부피의 농도 계산','시각·높이·시간을 맞춘 장소 비교']],
+ ['biodiversity','book-7ce6ec3ff3dcce09',['관찰 구역·시각·시간 설정','다섯 참조 식물의 줄기·잎·꽃차례 관찰','표본 위치당 한 번의 동정','관찰 표본 수와 종 수 구별']]
+]){
+ const r=require('../../scripts/science-'+name+'-experiment.cjs');
+ experiments.push({id:r.slug,sourceId:r.source.id,pages:r.source.pages,title:r.title,slug:r.slug,conditions,verdict:'기재한 원문 관찰·측정 절차의 가상 연습 구현; 실제 현장 수행 완료 아님',publisherDeduplication:'기재한 출판사·쪽수의 공통 관찰 절차를 묶으며 전수 대조 완료로 판정하지 않음',publisherVariants:r.publisherVariants||[],boundary:r.boundary,methodSources:r.methodSources});
+ candidates[candidate]={verdict:'구역·조건·관찰 절차 대조; 실측 자료를 가상 자료로 대체한 완료 주장 제외',experiments:[r.slug]};
+}
+candidates['book-d1eac30bb9cbf45e']={verdict:'반응 선택·시연을 기존 중화 실험으로 연습; 대본 작성과 발표는 독립 실험에서 제외',experiments:[]};
+const circuit=require('../../scripts/science-circuit-course.cjs');
+experiments.push({id:'circuit-meter-comparison',sourceId:circuit.source.id,pages:circuit.source.pages,title:circuit.title,slug:circuit.slug,mode:'high-elective',conditions:['200 Ω·100 Ω의 직렬/병렬 연결','전류계 직렬·전압계 병렬의 구분','각 저항과 전체의 전압·전류 측정','같은 전압·저항에서 전체 전류 비교'],verdict:'기재한 원문 절차와 가상 계기 연결·측정 대조; 실제 기기 내부 저항·실측 오차 재현 아님',publisherDeduplication:'한 출판사의 직렬·병렬 비교를 하나의 실험으로 묶음; 전체 출판사 대조 완료 아님',boundary:circuit.boundary});
+candidates['book-737bf233a2816645']={verdict:'원문 두 쪽의 계기 위치·측정값 비교를 고(선택) 물리학 경로로 구현; 중학교 경로와 조작·평가 분리',experiments:['circuit-meter-comparison']};
+experiments.find(e=>e.id==='circuit-meter-comparison').assessmentSources=circuit.assessmentSources;
 module.exports={basis:'같은 목적·조작 조건·관찰 결과를 대조하여 실험을 구분한다. 조건별 결과를 각각 새 실험으로 부풀리지 않는다. 출판사별 중복 검토와 교과서 전수 대조 전 전체 실험 수는 미확정이다.',experiments,candidates,missedByHeadingExtractor:['pasteur-broth','contact-game']};

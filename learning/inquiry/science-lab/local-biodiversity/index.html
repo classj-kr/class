@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 주변 식물 관찰과 동정</title><meta name="description" content="2022 교육과정 · 주변 식물 관찰과 동정의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../local-biodiversity-lab.css?v=29069d226bf8"><link rel="stylesheet" href="../lab-ui.css?v=1919c35bf2ab"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>주변 식물 관찰과 동정</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험2</span></div></header><p class="intro">두 구역의 식물을 관찰하세요. 잎과 줄기, 꽃차례를 확대해 종류를 찾고, 같은 조건에서 관찰한 종 수를 비교하세요.</p>
+<section class="biodiversity-lab" aria-label="주변 생물 관찰">
+<header class="bio-heading"><span>식물 관찰 · 특징으로 동정하기</span><h2>같은 수를 보아도, 종 수가 같을까요?</h2><p>화단과 잔디밭을 가상으로 관찰합니다. 다섯 종류의 비교 표본에서 특징을 찾아보세요.</p></header>
+<div class="bio-conditions"><label>관찰 구역<select id="bioArea"><option value="garden">화단 · A 구역</option><option value="lawn">잔디밭 · B 구역</option></select></label><label>관찰 시각<select id="bioPeriod"><option value="morning">오전 10시</option><option value="afternoon">오후 2시</option></select></label><label>관찰 시간<select id="bioEffort"><option value="12">20분 · 12곳</option><option value="6">10분 · 6곳</option></select></label></div>
+<p id="bioProgress" class="bio-progress"></p><div class="bio-workspace"><section class="bio-field"><h3>관찰할 식물을 고르세요</h3><div id="bioSpecimens" class="bio-specimens"></div></section>
+<section class="bio-inspector"><h3 id="bioSpecimenTitle">표본 01</h3><div class="bio-views" role="group" aria-label="관찰 부위"><button data-bio-view="whole" aria-pressed="true">전체</button><button data-bio-view="leaf" aria-pressed="false">잎 확대</button><button data-bio-view="flower" aria-pressed="false">꽃 확대</button></div><div id="bioDrawing"></div><p id="bioObservation" class="bio-observation"></p>
+<div class="bio-key"><h3>관찰한 특징으로 찾기</h3><label>줄기의 특징<select id="bioGrowth"><option value="">비교할 특징 선택</option><option value="herb">풀 · 목질 줄기 없음</option><option value="woody">나무 · 목질 줄기 있음</option></select></label><label>잎의 특징<select id="bioLeaf"><option value="">비교할 특징 선택</option><option value="three">잎자루 끝의 작은 잎 3장</option><option value="basal">땅 가까이 모인 넓은 잎</option><option value="linear">가늘고 긴 잎</option><option value="fan">부채꼴 잎</option><option value="lobed">갈래와 톱니가 있는 잎</option></select></label><div id="bioCandidates"></div><p id="bioFeedback" role="status">확대한 모습과 특징을 대조하세요.</p></div></section></div>
+<section class="bio-results"><h3>두 구역의 관찰 결과</h3><p>관찰한 표본의 수와 서로 다른 종류의 수를 따로 비교하세요.</p><div id="bioResults" class="bio-result-grid"></div><p id="bioCompare" class="status"></p><button id="resetExperiment">관찰 처음부터</button></section></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>같은 조건에서 A는 토끼풀 8곳·질경이 2곳·강아지풀 2곳, B는 각 4곳씩 관찰했다. 종별 관찰 수가 비슷할수록 고른 분포라고 할 때, 종 수와 분포의 비교는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 종 수는 둘 다 3종 · A의 분포가 더 고름</label>
+<label><input type="radio" name="q1" value="b"> 종 수는 둘 다 3종 · B의 분포가 더 고름</label>
+<label><input type="radio" name="q1" value="c"> 종 수는 둘 다 12종 · A의 분포가 더 고름</label>
+<label><input type="radio" name="q1" value="d"> 종 수는 둘 다 12종 · B의 분포가 더 고름</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>서로 다른 식물은 두 구역 모두 세 종류입니다. B는 세 종류를 4곳씩 관찰했으므로 A의 8·2·2보다 고르게 관찰되었습니다. 표본 수·종 수·종별 분포는 구별해야 합니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>화단은 20분 동안 12곳, 잔디밭은 10분 동안 6곳을 관찰했다. 화단에서 더 많은 종류를 찾았다. 다시 비교할 방법은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 잔디밭을 같은 시각 조건에서 20분·12곳 관찰</label>
+<label><input type="radio" name="q2" value="b"> 화단의 결과에서 같은 종의 표본을 절반 삭제</label>
+<label><input type="radio" name="q2" value="c"> 잔디밭의 종 수를 두 배하여 화단과 비교</label>
+<label><input type="radio" name="q2" value="d"> 화단의 꽃 있는 표본만 남겨 잔디밭과 비교</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>관찰 시간이 길고 살펴본 곳이 많으면 더 많은 종류를 발견할 수 있습니다. 관찰 노력을 맞춘 자료로 비교해야 하며 종 수를 단순히 두 배 할 수는 없습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>나무의 잎이 부채꼴이고 잎맥이 반복하여 둘로 갈라졌다. 다섯 비교 표본 중 이 특징에 해당하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 무궁화</label>
+<label><input type="radio" name="q3" value="b"> 질경이</label>
+<label><input type="radio" name="q3" value="c"> 은행나무</label>
+<label><input type="radio" name="q3" value="d"> 토끼풀</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>은행나무의 부채꼴 잎과 둘씩 갈라지는 잎맥을 함께 확인합니다. 잎의 녹색이나 크기 하나만으로 종류를 정하지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>지난 관찰에서 질경이를 찾았으나 이번에는 찾지 못했다. 시기와 관찰 범위가 달랐다. 다음 조사에서 먼저 할 일은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 지난 표본을 목록에서 지워 개체 수 감소 계산</label>
+<label><input type="radio" name="q4" value="b"> 관찰 범위와 시기를 맞추어 여러 번 재조사</label>
+<label><input type="radio" name="q4" value="c"> 이번에 찾은 다른 식물을 모두 외래종으로 분류</label>
+<label><input type="radio" name="q4" value="d"> 질경이가 없는 까닭을 기후변화 하나로 확정</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>관찰 범위·시기·발견 가능성 때문에 보이지 않을 수도 있습니다. 조건을 맞춘 반복 관찰 없이 소멸이나 한 가지 원인을 확정할 수 없습니다.</p>
+</article></details></main><script src="../curriculum-map.js?v=6356b85c9f40"></script><script src="../app-context.js?v=e709427ff17a"></script><script src="../local-biodiversity-model.js?v=28ca5a5f3b9f"></script><script src="../local-biodiversity-art.js?v=ba5c32601463"></script><script src="../local-biodiversity-lab.js?v=23b3ab77e623"></script><script src="../exam-scope.js?v=bfaefaaa93c9"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if(window.scienceAppContext?.school==='high-elective')return;
     const wiringButtons = [...document.querySelectorAll('[data-wiring]')];
     const predictionButtons = [...document.querySelectorAll('[data-prediction]')];
     const voltRange = document.getElementById('voltRange');

@@ -12,13 +12,15 @@
   for(let lat=-60;lat<=60;lat+=15)line(ctx,Array.from({length:181},(_,i)=>api.project(lat,i-90,frame)));
   for(let lon=-75;lon<=75;lon+=15)line(ctx,Array.from({length:181},(_,i)=>api.project(i-90,lon,frame)));
   ctx.strokeStyle='#e7f1f9b0';ctx.lineWidth=2;line(ctx,Array.from({length:181},(_,i)=>api.project(0,i-90,frame)));line(ctx,Array.from({length:181},(_,i)=>api.project(i-90,0,frame)));
-  ctx.font=(14*1024/ctx.canvas.getBoundingClientRect().width)+'px system-ui';ctx.textAlign='center';ctx.fillStyle='#e8f4fa';ctx.shadowColor='#000';ctx.shadowBlur=5;
-  for(const lat of [-60,-30,0,30,60]){const p=api.project(lat,0,frame);if(p)ctx.fillText((lat>0?'+':'')+lat+'°',p.x+25,p.y-7);}
-  for(const lon of [-60,-30,30,60]){const p=api.project(0,lon,frame);if(p)ctx.fillText((lon<0?'동 ':'서 ')+Math.abs(lon)+'°',p.x,p.y+25);}
+  const scale=1024/ctx.canvas.getBoundingClientRect().width;
+  ctx.font=(14*scale)+'px system-ui';ctx.textAlign='center';ctx.fillStyle='#152c40';ctx.strokeStyle='#fff5dd';ctx.lineWidth=3*scale;ctx.lineJoin='round';
+  const label=(text,x,y)=>{ctx.strokeText(text,x,y);ctx.fillText(text,x,y);};
+  for(const lat of [-60,-30,0,30,60]){const p=api.project(lat,0,frame);if(p)label((lat>0?'+':'')+lat+'°',p.x+25,p.y-7);}
+  for(const lon of [-60,-30,30,60]){const p=api.project(0,lon,frame);if(p)label((lon<0?'동 ':'서 ')+Math.abs(lon)+'°',p.x,p.y+25);}
   ctx.restore();
  }
  function marker(ctx,p,label,color){ctx.save();ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.7;ctx.shadowBlur=5;ctx.shadowColor='#061018';ctx.beginPath();ctx.arc(p.x,p.y,13,0,Math.PI*2);ctx.moveTo(p.x-20,p.y);ctx.lineTo(p.x-6,p.y);ctx.moveTo(p.x+6,p.y);ctx.lineTo(p.x+20,p.y);ctx.moveTo(p.x,p.y-20);ctx.lineTo(p.x,p.y-6);ctx.moveTo(p.x,p.y+6);ctx.lineTo(p.x,p.y+20);ctx.stroke();ctx.font='bold '+(14*1024/ctx.canvas.getBoundingClientRect().width)+'px system-ui';ctx.fillText(label,p.x+23,p.y-15);ctx.restore();}
- function magnify(side){const c=$('sunMagnify'+(side?'B':'A')),ctx=c.getContext('2d'),p=points[selected][side]||cursor[side];ctx.fillStyle='#0c1823';ctx.fillRect(0,0,c.width,c.height);if(!ready)return;ctx.imageSmoothingEnabled=false;ctx.drawImage(images[side?2:0],p.x-100,p.y-40,200,80,0,0,600,240);ctx.strokeStyle=colors[selected];ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(300,120,9,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#fff';ctx.shadowColor='#000';ctx.shadowBlur=5;ctx.font=(14/Math.min(c.clientWidth/600,c.clientHeight/240))+'px system-ui';ctx.fillText('선택한 주변 · 3배',14,26);ctx.shadowBlur=0;}
+ function magnify(side){const c=$('sunMagnify'+(side?'B':'A')),ctx=c.getContext('2d'),p=points[selected][side]||cursor[side];ctx.fillStyle='#0c1823';ctx.fillRect(0,0,c.width,c.height);if(!ready)return;ctx.imageSmoothingEnabled=false;ctx.drawImage(images[side?2:0],p.x-100,p.y-40,200,80,0,0,600,240);ctx.strokeStyle=colors[selected];ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(300,120,9,0,Math.PI*2);ctx.stroke();const scale=1/Math.min(c.clientWidth/600,c.clientHeight/240);ctx.font=(14*scale)+'px system-ui';ctx.fillStyle='#152c40';ctx.strokeStyle='#fff5dd';ctx.lineJoin='round';ctx.lineWidth=3*scale;ctx.strokeText('선택한 주변 · 3배',14,26);ctx.fillText('선택한 주변 · 3배',14,26);}
  function draw(){
   if(!ready)return;
   canvases.forEach((canvas,side)=>{const ctx=canvas.getContext('2d'),idx=side?2:view==='sequence'?date:0;ctx.globalAlpha=1;ctx.drawImage(images[idx],0,0);
@@ -33,7 +35,7 @@
   for(let i=0;i<=4;i++){const v=max*i/4,y=bottom-(bottom-top)*i/4;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke();ctx.fillText(v.toFixed(0),15,y+4);}
   ctx.textAlign='center';for(let l=-60;l<=60;l+=30){const x=left+(l+60)/120*(right-left);ctx.fillText(l===0?'적도':(l<0?'남 ':'북 ')+Math.abs(l)+'°',x,bottom+22);}ctx.textAlign='left';
   results.forEach((r,i)=>{if(!r.valid)return;const x=left+(r.lat+60)/120*(right-left),y=bottom-r.period/max*(bottom-top);ctx.fillStyle='#15566b';ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();ctx.font='bold 14px system-ui';ctx.fillText('ABCDE'[i],x+7,y-7);});
-  if(!results.some(r=>r.valid)){ctx.fillStyle='#7d939f';ctx.font='14px system-ui';ctx.textAlign='center';ctx.fillText('두 날짜에서 흑점 위치를 선택하세요.',(left+right)/2,135);}
+  if(!results.some(r=>r.valid)){ctx.fillStyle='#526873';ctx.font='14px system-ui';ctx.textAlign='center';ctx.fillText('두 날짜에서 흑점 위치를 선택하세요.',(left+right)/2,135);}
   c.setAttribute('aria-label',results.filter(r=>r.valid).length+'개 흑점의 위도와 겉보기 주기');
  }
  function readings(){

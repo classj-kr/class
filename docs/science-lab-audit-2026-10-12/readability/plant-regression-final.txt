@@ -1,0 +1,10 @@
+✔ chromium: plant procedures, responsive figures and nine first-response diagnostics (6761.5425ms)
+✔ webkit: plant procedures, responsive figures and nine first-response diagnostics (16490.2671ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23351.2204

@@ -17,7 +17,7 @@ function render(map) {
     const app=map[slug], scope=app.courseContexts?.[p.context]||app;
     const more = (p.related||[]).filter(r=>r.course!==p.area||r.area!==p.category);
     const detail = more.length ? `<small class="course-label">함께 연결: ${more.map(r=>esc(r.course)+' · '+esc(r.area)).join(' / ')}</small>` : '';
-    return `<a class="level-entry available" data-level="${p.school.startsWith('high-')?'high':p.school}" data-school="${p.school}" data-grades="${scope.grades.join(' ')}" data-standards="${scope.codes.join(' ')}" href="${slug}/${p.context?'?school='+p.context:''}"><b>${p.school.startsWith('high-')?(p.school==='high-common'?'공통':'선택'):app.grade}</b><span>${esc(app.title)}${detail}</span></a>`;
+    return `<a class="level-entry available" data-level="${p.school.startsWith('high-')?'high':p.school}" data-school="${p.school}" data-grades="${scope.grades.join(' ')}" data-standards="${scope.codes.join(' ')}" href="${slug}/${p.context?'?school='+p.context:''}"><b>${p.school.startsWith('high-')?(p.school==='high-common'?'공통':'선택'):app.grade}</b><span>${esc(scope.title||app.title)}${detail}</span></a>`;
   }
   function cell(slugs, school) {
     return `<div class="level-cell ${school}" data-school="${school}"><span class="cell-label" aria-hidden="true">${schoolLabels[school]}</span>\n${slugs.map(slug=>card(slug)).join('\n')}${emptyMessage(slugs.length)}</div>`;

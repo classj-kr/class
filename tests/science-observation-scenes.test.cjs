@@ -5,7 +5,7 @@ test('combustion separates collection and reagent observation, with a relevant c
  const model=required['burning-conditions'].find(x=>x.id==='combustion-products');
  for(const fuel of ['candle','alcohol'])for(const reagent of ['cobalt','lime']){
   for(const step of ['0','1']){const result=model.view({fuel,test:reagent,step});assert.equal(result.metrics.waterDetected,false);assert.equal(result.metrics.carbonDioxideDetected,false);assert.doesNotMatch(result.readings[0][1],/붉은색|뿌옇게/);}
-  const result=model.view({fuel,test:reagent,step:'2'});assert.equal(result.metrics.water,true);assert.equal(result.metrics[reagent==='cobalt'?'waterDetected':'carbonDioxideDetected'],true);assert.match(result.svg,reagent==='cobalt'?/통 안쪽에 붙인 종이/:/입구를 막아 세움/);assert.match(result.readings[0][1],reagent==='cobalt'?/붉은색/:/뿌옇게/);
+  const result=model.view({fuel,test:reagent,step:'2'});assert.equal(result.metrics.water,true);assert.equal(result.metrics[reagent==='cobalt'?'waterDetected':'carbonDioxideDetected'],true);assert.match(result.svg,reagent==='cobalt'?/염화 코발트 종이/:/입구 막기/);assert.match(result.readings[0][1],reagent==='cobalt'?/붉은색/:/뿌옇게/);
  }
  const common=model.view({fuel:'candle',test:'common',step:'2'});assert.match(common.check.choices[common.check.answer],/빛과 열/);
 });

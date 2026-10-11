@@ -12,7 +12,7 @@ test('root comparison preserves initial marks, controls, symmetry and qualitativ
   if(a===b)assert.equal(drop('a'),drop('b'));
   else assert.equal(drop('a')>drop('b'),a==='intact');
   assert.equal(after.metrics.comparable,a!==b&&level==='same');
-  assert.match(after.note,/실제/);
+  assert.match(after.note,/흡수가 전혀 없다고 단정하지/);
   assert(!after.svg.includes('NaN'));assert.equal((after.svg.match(/data-water=/g)||[]).length,2);
  }
  const forward=view(root,{stage:'after'}),reversed=view(root,{a:'cut',b:'intact',stage:'after'});

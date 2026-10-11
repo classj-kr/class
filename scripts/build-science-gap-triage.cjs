@@ -21,8 +21,9 @@ const rows=remaining.map(r=>{const [,method,next]=plans.candidates.find(p=>p[0]=
 const excluded=coverage.rows.filter(r=>r.labScope.status==='excluded').map(r=>({id:r.id,title:r.text,sourceLine:r.line,reason:r.labScope.reason,sourceCandidate:procedureById[r.id]?.source||tools[r.id]?.source||null}));
 const counts={};for(const r of rows)counts[r.method]=(counts[r.method]||0)+1;
 const workGroups=plans.experimentGroups.map(g=>({...g,mandatoryStatus:'unconfirmed',implementationStatus:'review',sourceActivities:g.activities.map(id=>({id,source:procedureById[id].source})),relatedAppEvidence:g.relatedApps.map(slug=>({slug,path:'learning/inquiry/science-lab/'+slug+'/index.html',sha256:require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'../learning/inquiry/science-lab',slug,'index.html'))).digest('hex')}))}));
+const resolvedGroups=plans.resolvedGroups.map(g=>({...g,implementationStatus:'virtual-practice',mandatoryStatus:'unconfirmed',sourceActivities:g.activities.map(id=>({id,source:procedureById[id].source})),boundary:g.remaining}));
 const workSummary=plans.summary;
-const result={scope:scope.policy,requiredExperimentTotal:null,apps:coverage.apps,remainingCandidates:rows.length,excludedNonExperiments:excluded.length,retiredApps:scope.retiredApps,methodCounts:counts,procedureReview:procedureReview.summary,workSummary,workGroups,referenceActivities:plans.referenceActivities,unresolvedActivities:plans.unresolvedActivities,rows,excluded};
+const result={scope:scope.policy,requiredExperimentTotal:null,apps:coverage.apps,remainingCandidates:rows.length,excludedNonExperiments:excluded.length,retiredApps:scope.retiredApps,methodCounts:counts,procedureReview:procedureReview.summary,workSummary,workGroups,resolvedGroups,referenceActivities:plans.referenceActivities,unresolvedActivities:plans.unresolvedActivities,rows,excluded};
 const ref=r=>`[${r.id}](../../${coverage.basis}#L${r.sourceLine})`;
 const md=['# 실험 범위 정리와 남은 검토 후보','',scope.policy,'',
  '**교육과정에 있는 모든 탐구활동을 실험으로 구현하지 않는다. 아래 제외 항목은 교육과정에서 삭제한 것이 아니라 사용자가 요청한 실험실의 범위 밖으로 분리한 것이다.**','',
@@ -34,6 +35,9 @@ const md=['# 실험 범위 정리와 남은 검토 후보','',scope.policy,'',
  '## 직접 실험·관측·측정의 공통 절차 검토','',
  '과목별 학습 범위는 보존하되 같은 장치·절차마다 페이지를 복제하지 않는다. 기존 앱 연결은 재사용 검토 근거이며 해당 활동의 구현 완료 판정이 아니다. 과학마술은 특정 반응을 의무 지정한 활동이 아니므로 별도 앱을 만들지 않는다.','',
  '| 검토 묶음 | 원문 활동 | 처리 | 공통 절차 | 남은 차이 |','|---|---|---|---|---|',...workGroups.map(g=>`| ${g.title} | ${g.activities.map(id=>ref(rows.find(r=>r.id===id))).join(', ')} | ${g.approach}${g.relatedApps.length?' · '+g.relatedApps.map(slug=>`[${slug}](../../learning/inquiry/science-lab/${slug}/index.html)`).join(', '):''} | ${g.sharedProcedure} | ${g.remaining} |`),'',
+ '## 원문 절차를 연결한 가상 실험','',
+ '실제 현장 수행·실측 자료 제출 완료와 구분한다. 필수실험 총수 확정이나 수집 교과서 전수 대조 완료를 뜻하지 않는다.','',
+ '| 활동 묶음 | 원문 활동 | 구현 | 해석 경계 |','|---|---|---|---|',...resolvedGroups.map(g=>`| ${g.title} | ${g.activities.join(', ')} | ${g.relatedApps.map(slug=>`[${slug}](../../learning/inquiry/science-lab/${slug}/index.html)`).join(', ')} | ${g.remaining} |`),'',
  '## 자료 해석 참고 — 독립 실험 구현 목록에서 제외','',
  '| 원문 활동 | 내용 | 자료 조건 |','|---|---|---|',...rows.filter(r=>r.queue==='reference-only').map(r=>`| ${ref(r)} | ${r.title} | ${r.next} |`),'',
  '## 원문 확인 대기 — 구현 목록에 넣지 않음','',

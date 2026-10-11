@@ -55,6 +55,7 @@ for(const engine of ['chromium','webkit'])test(engine+': apparatus states, label
     }
     for(const width of [320,390,1100]){
      await page.setViewportSize({width,height:900});
+     await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
      const layout=await page.locator('.required-experiments').evaluate(p=>{
       const bad=[];
       for(const svg of p.querySelectorAll('svg')){const box=svg.getBoundingClientRect();for(const t of svg.querySelectorAll('text')){const b=t.getBoundingClientRect();if(b.left<box.left-2||b.right>box.right+2||b.top<box.top-2||b.bottom>box.bottom+2)bad.push(t.textContent);}}

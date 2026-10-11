@@ -29,10 +29,12 @@ test('source references and unresolved procedures cannot become independent expe
  for(const id of plan.unresolvedActivities)assert.equal(byId[id].kind,'unresolved',id);
  const groups=plan.experimentGroups;
  for(const id of ['9과07#1','12행우01#2']){assert(!groups.some(g=>g.activities.includes(id)));assert(coverage.rows.find(r=>r.id===id).slugs.includes('telescope-observation'));}
- assert.equal(groups.find(g=>g.activities.includes('10과탐2-01#2')),groups.find(g=>g.activities.includes('12기환01#1')));
+ assert.equal(plan.resolvedGroups.find(g=>g.activities.includes('10과탐2-01#2')),plan.resolvedGroups.find(g=>g.activities.includes('12기환01#1')));
+ for(const group of plan.resolvedGroups)for(const id of group.activities){assert(!queue.some(r=>r[0]===id));assert(coverage.rows.find(r=>r.id===id).slugs.some(slug=>group.relatedApps.includes(slug)));}
  const audit=require('../docs/science-lab-audit-2026-10-11/gap-triage.json');
  assert.equal(audit.requiredExperimentTotal,null);
  assert.equal(audit.workSummary.newAppCount,null);
+ assert.equal(audit.resolvedGroups.length,3);for(const g of audit.resolvedGroups){assert.equal(g.implementationStatus,'virtual-practice');assert.equal(g.mandatoryStatus,'unconfirmed');assert.match(g.boundary,/완료/);}
  for(const group of audit.workGroups){assert.equal(group.implementationStatus,'review');assert.equal(group.mandatoryStatus,'unconfirmed');}
  for(const row of audit.rows.filter(r=>r.queue!=='experiment-review'))assert.equal(row.workGroup,null);
 });

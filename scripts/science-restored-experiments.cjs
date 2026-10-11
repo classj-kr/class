@@ -76,6 +76,8 @@ module.exports.push(require('./science-telescope-experiment.cjs'));
 module.exports.push(require('./science-annulus-experiment.cjs'));
 module.exports.push(require('./science-sunspot-experiment.cjs'));
 module.exports.push(require('./science-docking-experiment.cjs'));
+module.exports.push(require('./science-air-sampling-experiment.cjs'));
+module.exports.push(require('./science-biodiversity-experiment.cjs'));
 const quality=require('./science-question-quality.cjs'),revision=require('./science-question-revision-utils.cjs');
 for(const row of module.exports){
  row.questions=row.questions.map((q,i)=>{const e=quality.find(e=>e.id===row.slug+'#q'+(i+1));if(!e)return q;const next=revision.revise(q,e);next.feedback=Object.fromEntries(Object.entries(next.feedback).map(([i,v])=>['abcd'[Number(i)],v]));return next;});

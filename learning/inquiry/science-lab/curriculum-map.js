@@ -255,19 +255,76 @@ const scienceCurriculum = {
   "ohms-law": {
     "grade": "중2",
     "grades": [
-      "중2"
+      "중2",
+      "고2",
+      "고3"
     ],
     "level": "middle",
     "title": "전기 회로·정전기·코일",
     "subjects": [
-      "과학"
+      "과학",
+      "물리학"
     ],
     "codes": [
       "9과14-01",
       "9과14-02",
       "9과14-03",
-      "9과14-04"
-    ]
+      "9과14-04",
+      "12물리02-02"
+    ],
+    "diagnostic": true,
+    "defaultContext": "middle",
+    "courseContexts": {
+      "middle": {
+        "subjects": [
+          "과학"
+        ],
+        "codes": [
+          "9과14-01",
+          "9과14-02",
+          "9과14-03",
+          "9과14-04"
+        ],
+        "grades": [
+          "중2"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "followupIds": [],
+        "intro": ""
+      },
+      "high-elective": {
+        "title": "직렬·병렬 회로의 전압·전류 측정",
+        "subjects": [
+          "물리학"
+        ],
+        "codes": [
+          "12물리02-02"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "ohms-law@meter-series",
+          "ohms-law@meter-parallel",
+          "ohms-law@meter-power"
+        ],
+        "standaloneApparatus": true,
+        "intro": "각 저항과 전체 회로의 전압·전류를 측정하여 비교하세요."
+      }
+    }
   },
   "electric-field": {
     "grade": "고2~3",
@@ -2554,6 +2611,90 @@ const scienceCurriculum = {
           "protein-interaction@poses"
         ],
         "intro": "표적 단백질을 고르고 여러 화합물의 결합 배치와 에너지를 비교해 보세요."
+      }
+    }
+  },
+  "air-sampling": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "공기질 센서로 미세먼지 비교",
+    "subjects": [
+      "과학탐구실험2"
+    ],
+    "codes": [
+      "10과탐2-01-02"
+    ],
+    "diagnostic": true
+  },
+  "local-biodiversity": {
+    "grade": "고1",
+    "grades": [
+      "고1",
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "주변 식물 관찰과 동정",
+    "subjects": [
+      "과학탐구실험2",
+      "기후변화와 환경생태"
+    ],
+    "codes": [
+      "10과탐2-01-02",
+      "12기환01-03"
+    ],
+    "diagnostic": true,
+    "defaultContext": "high-common",
+    "courseContexts": {
+      "high-common": {
+        "subjects": [
+          "과학탐구실험2"
+        ],
+        "codes": [
+          "10과탐2-01-02"
+        ],
+        "grades": [
+          "고1"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "local-biodiversity@effort",
+          "local-biodiversity@absence"
+        ],
+        "intro": "구역과 관찰 시각·시간을 정하세요. 식물의 특징을 확대해 종류를 찾고 두 구역에서 관찰한 종 수를 비교하세요."
+      },
+      "high-elective": {
+        "subjects": [
+          "기후변화와 환경생태"
+        ],
+        "codes": [
+          "12기환01-03"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "local-biodiversity@effort",
+          "local-biodiversity@absence"
+        ],
+        "intro": "화단의 다섯 종류 식물을 관찰하고 특징으로 동정하세요. 같은 조건에서 잔디밭과 비교하고, 관찰 자료로 판단할 수 있는 범위를 구별하세요."
       }
     }
   }

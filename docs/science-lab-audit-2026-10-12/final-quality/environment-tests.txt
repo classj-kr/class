@@ -1,0 +1,12 @@
+✔ particle mass, sampled volume, size inclusion and completed comparisons are independently consistent (1.3638ms)
+✔ specimen locations are not species, repeated identification is idempotent and comparison requires equal effort (0.5963ms)
+✔ chromium: observation, repeated identification, sensor preparation, interruption, diagnosis and tablet layouts (20740.0581ms)
+✔ webkit: observation, repeated identification, sensor preparation, interruption, diagnosis and tablet layouts (27317.1479ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 48123.6405
