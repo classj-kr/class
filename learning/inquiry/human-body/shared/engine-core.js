@@ -278,31 +278,32 @@
 
         var optBtns = containerEl.querySelectorAll('.sim-quiz-opt-btn');
         var expEl = containerEl.querySelector('.sim-quiz-explanation');
+        var firstSelected = null;
 
         optBtns.forEach(function (btn) {
             btn.addEventListener('click', function () {
+                if (btn.disabled) return;
                 var selectedIdx = parseInt(btn.dataset.optIdx, 10);
                 var isCorrect = (selectedIdx === quizData.answer);
-                
+                if (firstSelected === null) firstSelected = selectedIdx;
+                expEl.style.display = 'block';
+                if (!isCorrect) {
+                    btn.disabled = true;
+                    btn.classList.add('wrong');
+                    expEl.textContent = '다시 생각하고 다른 답을 골라보세요.';
+                    SoundFX.playClick();
+                    return;
+                }
                 optBtns.forEach(function (b, bIdx) {
                     b.disabled = true;
                     if (bIdx === quizData.answer) {
                         b.classList.add('correct');
-                    } else if (bIdx === selectedIdx && !isCorrect) {
-                        b.classList.add('wrong');
                     }
                 });
-
-                expEl.style.display = 'block';
-                expEl.innerHTML = '<strong>' + (isCorrect ? '✅ 정답입니다!' : '❌ 오답입니다.') + '</strong> ' + quizData.explanation;
-                
-                if (isCorrect) {
-                    SoundFX.playCorrect();
-                } else {
-                    SoundFX.playClick();
-                }
-
-                if (onAnswerCallback) onAnswerCallback(isCorrect, selectedIdx);
+                expEl.innerHTML = '<strong>' + (firstSelected === quizData.answer ? '정답입니다.' : '정답입니다. 첫 응답은 오답으로 기록됩니다.') + '</strong> ' + quizData.explanation;
+                SoundFX.playCorrect();
+                // Advance only after solving; the callback retains the first response.
+                if (onAnswerCallback) onAnswerCallback(firstSelected === quizData.answer, firstSelected);
             });
         });
     }

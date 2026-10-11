@@ -8,6 +8,8 @@ import importlib.util
 import json
 import re
 import sys
+import zipfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 try:
     import pymupdf
@@ -21,6 +23,39 @@ OUT.mkdir(parents=True, exist_ok=True)
 spec = importlib.util.spec_from_file_location('assessment_text', ROOT / 'scripts/extract-assessment-text.py')
 extractor = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(extractor)
+
+def fallback_paragraphs(path):
+    """Recover plain body text, without pretending to recover figures/layout."""
+    if zipfile.is_zipfile(path):
+        with zipfile.ZipFile(path) as archive:
+            names = sorted(n for n in archive.namelist() if re.fullmatch(r'Contents/section\d+\.xml', n))
+            if not names:
+                raise ValueError('ZIP does not contain HWPX section XML')
+            roots = [ET.fromstring(archive.read(n)) for n in names]
+        lines = [''.join(t.text or '' for t in paragraph.iter() if t.tag.rsplit('}', 1)[-1] == 't')
+                 for xml in roots for paragraph in xml.iter()
+                 if paragraph.tag.rsplit('}', 1)[-1] == 'p'
+                 and not any(c.tag.rsplit('}', 1)[-1] == 'tbl' for c in paragraph.iter())]
+        return lines, 'hwpx-section-xml-detected-by-content'
+    from hwp5.recordstream import Hwp5File
+    from hwp5.tagids import HWPTAG_PARA_TEXT
+    from hwp5.binmodel.tagid51_para_text import ParaTextChunks
+    document = Hwp5File(str(path))
+    lines = []
+    try:
+        for section in document.bodytext.sections:
+            for record in section.records():
+                if record['tagid'] == HWPTAG_PARA_TEXT:
+                    chunks = ParaTextChunks.parse_chunks(record['payload'])
+                    lines.append(''.join(chunk if isinstance(chunk, str) else
+                                         '\t' if chunk.get('code') == 9 else
+                                         '\n' if chunk.get('code') in (10, 13) else ' '
+                                         for _, chunk in chunks))
+    finally:
+        document.close()
+    if not any(line.strip() for line in lines):
+        raise ValueError('No paragraph text recovered from body records')
+    return lines, 'hwp-body-paragraph-records-without-docinfo-or-layout'
 
 base = ROOT / 'references/textbooks'
 pdfs = sorted(p for p in (base / '초등/미래엔/과학').rglob('*.pdf')
@@ -83,7 +118,12 @@ for p in pdfs + hwps:
                     item['pages'] = [{'pdfPage': i + 1, 'text': page.extract_text() or ''}
                                      for i, page in enumerate(reader.pages)]
             else:
-                item['paragraphs'] = extractor.paragraphs(p)
+                try:
+                    item['paragraphs'] = extractor.paragraphs(p)
+                    item['extractionMethod'] = 'hwp-hwpx-xmlmodel'
+                except Exception as primary_error:
+                    item['paragraphs'], item['extractionMethod'] = fallback_paragraphs(p)
+                    item['primaryParserError'] = str(primary_error)
         except Exception as exc:
             item['error'] = str(exc)
         target.write_text(json.dumps(item, ensure_ascii=False, indent=2), encoding='utf-8')

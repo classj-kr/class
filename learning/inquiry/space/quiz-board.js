@@ -99,25 +99,35 @@
         expEl.textContent = item.exp;
         card.appendChild(expEl);
 
+        var firstAnswer = null;
         checkBtn.addEventListener('click', function () {
             if(checkBtn.disabled)return;
             var selected = optionsWrap.querySelector('input:checked');
-            if (!selected) {
-                delete card.dataset.state;
+            if (!selected || selected.disabled) {
                 resultEl.textContent = '답을 먼저 선택하세요.';
                 return;
             }
             var correct = selected.closest('label').dataset.correct === 'true';
-            card.dataset.selectedOptionId = selected.value;
+            if (!firstAnswer) {
+                firstAnswer = {questionId:item.id,questionRevision:item.revision||1,schoolLevel:card.dataset.schoolLevel,selectedOptionId:selected.value,correctOptionId:'option-'+(correctIndex+1),correct:correct};
+                card.dataset.selectedOptionId = selected.value;
+                card.dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail:firstAnswer}));
+            }
             card.dataset.state = correct ? 'correct' : 'incorrect';
+            if (!correct) {
+                selected.disabled = true;
+                selected.closest('label').dataset.incorrect = 'true';
+                selected.checked = false;
+                resultEl.textContent = '다시 생각하고 다른 답을 골라보세요.';
+                return;
+            }
             expEl.hidden = false;
-            resultEl.textContent = correct ? '정답입니다.' : '오답입니다. 정답: ' + item.opts[correctIndex];
+            resultEl.textContent = firstAnswer.correct ? '정답입니다.' : '정답입니다. 첫 응답은 오답으로 기록됩니다.';
             Array.prototype.forEach.call(optionsWrap.querySelectorAll('input'), function (input) {
                 input.disabled = true;
             });
             checkBtn.disabled = true;
             checkBtn.textContent = '채점 완료';
-            card.dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail:{questionId:item.id,questionRevision:item.revision||1,schoolLevel:card.dataset.schoolLevel,selectedOptionId:selected.value,correctOptionId:'option-'+(correctIndex+1),correct:correct}}));
         });
 
         return card;

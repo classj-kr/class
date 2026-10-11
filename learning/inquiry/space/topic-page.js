@@ -82,7 +82,7 @@
             window.EclipseLab.mount(observation);
         }
         const hasObservation = topic.app === 'solar-system' || Boolean(topic.mode);
-        // Keep the model and its explanation in the same study view.
+        // Reading opens over the study view without reducing the model's width.
         const study = document.createElement('section');
         study.id = 'topic-study';
         study.className = 'tab-pane topic-study-layout';
@@ -96,7 +96,60 @@
             observation.style.display = 'block';
             study.append(observation);
         }
-        study.append(concepts);
+        let explanation, explainButton;
+        if (hasObservation) {
+            explanation = document.createElement('dialog');
+            explanation.id = 'topic-explanation';
+            explanation.className = 'topic-explanation';
+            explanation.setAttribute('aria-labelledby', 'topic-explanation-title');
+            const dialogHeader = document.createElement('div');
+            dialogHeader.className = 'topic-explanation-header';
+            const dialogTitle = document.createElement('h2');
+            dialogTitle.id = 'topic-explanation-title';
+            dialogTitle.textContent = topic.title;
+            const dialogSubject = document.createElement('span');
+            dialogSubject.className = 'topic-explanation-subject';
+            const dialogHeading = document.createElement('div');
+            dialogHeading.className = 'topic-explanation-heading';
+            dialogHeading.append(dialogTitle, dialogSubject);
+            const closeButton = document.createElement('button');
+            closeButton.type = 'button';
+            closeButton.className = 'topic-explanation-close';
+            closeButton.textContent = '닫기 ×';
+            closeButton.setAttribute('aria-label', '설명 닫기');
+            dialogHeader.append(dialogHeading, closeButton);
+            const reading = document.createElement('div');
+            reading.className = 'topic-explanation-body';
+            reading.append(concepts);
+            explanation.append(dialogHeader, reading);
+            document.body.append(explanation);
+            explainButton = document.createElement('button');
+            explainButton.type = 'button';
+            explainButton.className = 'topic-explain-button';
+            explainButton.textContent = '설명 보기';
+            explainButton.setAttribute('aria-haspopup', 'dialog');
+            explainButton.setAttribute('aria-controls', explanation.id);
+            explainButton.setAttribute('aria-expanded', 'false');
+            header.append(explainButton);
+            explainButton.addEventListener('click', () => {
+                explanation.showModal();
+                explainButton.setAttribute('aria-expanded', 'true');
+                document.body.classList.add('topic-explanation-open');
+                closeButton.focus();
+                window.dispatchEvent(new Event('resize'));
+            });
+            closeButton.addEventListener('click', () => explanation.close());
+            explanation.addEventListener('click', event => {
+                if (event.target !== explanation) return;
+                const box = explanation.getBoundingClientRect();
+                if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) explanation.close();
+            });
+            explanation.addEventListener('close', () => {
+                explainButton.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('topic-explanation-open');
+                explainButton.focus();
+            });
+        } else study.append(concepts);
         main.append(study);
         if (topic.app === 'constellations' && topic.mode && topic.mode !== 'stellar') {
             const button = document.querySelector('[data-sim-mode="' + topic.mode + '"]');
@@ -119,6 +172,8 @@
         function show(view, save) {
             if (view === 'concept') view = 'observe';
             const selected = view === 'quiz' ? document.getElementById('tab-quiz') : study;
+            if (explanation?.open) explanation.close();
+            if (explainButton) explainButton.hidden = view === 'quiz';
             main.querySelectorAll(':scope > .tab-pane').forEach(pane => {
                 pane.classList.toggle('active', pane === selected);
                 pane.style.display = pane === selected ? (pane === study ? 'grid' : 'block') : 'none';
@@ -146,7 +201,7 @@
         window.addEventListener('hashchange', fromHash);
         fromHash();
         // Navigation must not cover dates, observation status or model controls.
-        document.documentElement.style.setProperty('--space-header-height', '58px');
+        document.documentElement.style.setProperty('--space-header-height', '0px');
         window.dispatchEvent(new Event('resize'));
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

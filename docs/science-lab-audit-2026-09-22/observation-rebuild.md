@@ -48,8 +48,8 @@ HTML 105개의 변경은 공통 로더의 새 캐시 해시 반영이다.
 
 ## 확인 자료
 
-- [수정 전 대표 화면](visual-candidates/review.jpg)
-- [수정 후 대표 화면](rebuilt/review.jpg)
-- [추가 과정·확대 화면](rebuilt/detail-review.jpg)
+- [수정 전 대표 화면](visual-candidates/review.webp)
+- [수정 후 대표 화면](rebuilt/review.webp)
+- [추가 과정·확대 화면](rebuilt/detail-review.webp)
 - [새 회귀 테스트](../../tests/science-observation-rebuild.test.cjs)
 - [사진 출처·라이선스](../../learning/inquiry/science-lab/assets/observations/README.md)

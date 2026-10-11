@@ -42,8 +42,12 @@
   $('record').disabled=false;
   if(extensions?.specs[active.tool]){
    const spec=extensions.specs[active.tool];
-   const controls=spec.controls.map(c=>c.type==='select'?select(c.key,c.label,c.options):'<label>'+esc(c.label)+(c.type==='textarea'?'<textarea rows="5" data-control="'+c.key+'">'+esc(book.state[c.key])+'</textarea>':'<input type="'+c.type+'" data-control="'+c.key+'" value="'+esc(book.state[c.key])+'"'+(c.type==='number'?' min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" required':'')+'>')+'</label>').join('');
-   $('lab').innerHTML='<section class="procedure"><h3>준비와 탐구 순서</h3><ol>'+spec.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol></section><div class="controls extended">'+controls+'</div><p class="note">좁은 화면에서는 실험 그림을 가로로 밀어 볼 수 있습니다.</p><div class="scene" id="scene" tabindex="0"></div><p id="observation" role="status"></p><div id="measurements"></div><p class="note" id="modelNote"></p>';
+   const controls=spec.controls.map(c=>{
+    const control=c.type==='select'?select(c.key,c.label,c.options):'<label>'+esc(c.label)+(c.type==='textarea'?'<textarea rows="5" data-control="'+c.key+'">'+esc(book.state[c.key])+'</textarea>':'<input type="'+c.type+'" data-control="'+c.key+'" value="'+esc(book.state[c.key])+'"'+(c.type==='number'?' min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" required':'')+'>')+'</label>';
+    return spec.controlFigure?.(c,book.state)?'<div class="comparison-card"><div data-control-figure="'+esc(c.key)+'"></div>'+control+'</div>':control;
+   }).join('');
+   const scene='<p class="note">좁은 화면에서는 실험 그림을 가로로 밀어 볼 수 있습니다.</p><div class="scene" id="scene" tabindex="0"></div>';
+   $('lab').innerHTML='<section class="procedure"><h3>준비와 탐구 순서</h3><ol>'+spec.steps.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol></section>'+(spec.sceneFirst?scene:'')+'<div class="controls extended">'+controls+'</div>'+(spec.sceneFirst?'':scene)+'<p id="observation" role="status"></p><div id="measurements"></div><p class="note" id="modelNote"></p>';
    $('lab').querySelectorAll('[data-control]').forEach(el=>el.addEventListener('input',()=>{const c=spec.controls.find(c=>c.key===el.dataset.control);book.state[c.key]=c.type==='number'?Number(el.value):el.value;draw();}));draw();return;
   }
   if(active.tool==='periodic'){
@@ -75,7 +79,9 @@
   return `${{dispersion:'흰빛 분산',single:'단색광 재통과',combine:'여러 색 합성'}[s.stage]}${s.stage==='single'?' · '+['빨강','초록','파랑'][+s.color]:s.stage==='combine'?' · 스크린 위치 '+s.screen:''}`;
  }
  function draw(){
-  let result;try{if([...$('lab').querySelectorAll('input[type="number"]')].some(el=>!el.validity.valid))throw Error('숫자 입력 범위를 확인하세요.');result=current();$('record').disabled=false;}catch(e){$('scene').innerHTML='';$('measurements').innerHTML='';$('modelNote').textContent='';$('observation').textContent=e.message;$('record').disabled=true;return;}$('scene').innerHTML=result.svg;$('observation').textContent=result.summary;$('modelNote').textContent=result.note;
+  const spec=extensions?.specs[active.tool];
+  if(spec?.controlFigure)$('lab').querySelectorAll('[data-control-figure]').forEach(el=>{const c=spec.controls.find(c=>c.key===el.dataset.controlFigure);el.innerHTML=spec.controlFigure(c,book.state);});
+  let result;try{if([...$('lab').querySelectorAll('input[type="number"]')].some(el=>!el.validity.valid))throw Error('숫자 입력 범위를 확인하세요.');result=current();$('record').disabled=result.recordable===false;}catch(e){$('scene').innerHTML='';$('measurements').innerHTML='';$('modelNote').textContent='';$('observation').textContent=e.message;$('record').disabled=true;return;}$('scene').innerHTML=result.svg;$('observation').textContent=result.summary;$('modelNote').textContent=result.note;
   if(result.headers){$('measurements').innerHTML='<div class="table-scroll"><table><caption>현재 조건의 관찰·분석</caption><thead><tr>'+result.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+result.rows.map(r=>'<tr>'+r.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
   if(active.tool==='prism'){
    $('screenValue').textContent=book.state.screen;$('lab').querySelector('[data-control="color"]').disabled=book.state.stage!=='single';$('lab').querySelector('[data-control="screen"]').disabled=book.state.stage!=='combine';

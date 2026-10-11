@@ -1,9 +1,9 @@
-✔ data parsing rejects missing cells; regression retains known slope and intercept (0.784ms)
-✔ independent physical limiting cases and analytical results (12.381ms)
-✔ standard genetic code and biological model boundary cases (0.421ms)
-✔ every activity model supports declared numeric endpoints without non-finite output (12.5238ms)
-✔ chromium: registered tools, edit, persist and invalid data (18761.5172ms)
-✔ webkit: registered tools, edit, persist and invalid data (29558.1294ms)
+✔ data parsing rejects missing cells; regression retains known slope and intercept (0.7701ms)
+✔ independent physical limiting cases and analytical results (12.391ms)
+✔ standard genetic code and biological model boundary cases (0.4333ms)
+✔ every activity model supports declared numeric endpoints without non-finite output (13.3064ms)
+✔ chromium: registered tools, edit, persist and invalid data (26759.6737ms)
+✔ webkit: registered tools, edit, persist and invalid data (41432.2358ms)
 ℹ tests 6
 ℹ suites 0
 ℹ pass 6
@@ -11,4 +11,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 48449.4943
+ℹ duration_ms 68336.5419

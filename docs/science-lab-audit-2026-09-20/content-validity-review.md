@@ -80,7 +80,7 @@
 - [Chrome 전체 실행 결과](content-validity/full-inspection/summary-chromium.json), [WebKit 전체 실행 결과](content-validity/full-inspection/summary-webkit.json): 일반 검사와 원시 경고를 보존했다. 후속 문구·CSS 수정은 위 표의 대상별 회귀 검사로 다시 확인했다.
 - [Chrome 독립 회귀 결과](content-validity/independent-regressions-chromium.json), [WebKit 독립 회귀 결과](content-validity/independent-regressions-webkit.json).
 - [현재 소스 명세](current-manifest.json): 마지막 수정 뒤 새로 생성하고 일치 검사를 수행했다.
-- 대표 최종 캡처: [물의 공존 상태](content-validity/phase-coexist-webkit.png), [먹이 관계](content-validity/food-chain-webkit.png), [바닷물 질량](content-validity/evaporation-balance-webkit.png), [재결정 경계 조건](content-validity/recrystallization-no-crystal-webkit.png), [배설 경로](content-validity/urinary-path-webkit.png), [뷰렛 반응](content-validity/biuret-blue-control-webkit.png).
+- 대표 최종 캡처: [물의 공존 상태](content-validity/phase-coexist-webkit-png.webp), [먹이 관계](content-validity/food-chain-webkit-png.webp), [바닷물 질량](content-validity/evaporation-balance-webkit-png.webp), [재결정 경계 조건](content-validity/recrystallization-no-crystal-webkit.webp), [배설 경로](content-validity/urinary-path-webkit-png.webp), [뷰렛 반응](content-validity/biuret-blue-control-webkit.webp).
 
 과학적 설명을 확인한 보조 자료:
 

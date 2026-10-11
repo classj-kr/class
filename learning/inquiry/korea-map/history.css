@@ -4,7 +4,8 @@
 .history-hatch { height: 12px; border-radius: 2px; background: repeating-linear-gradient(125deg, transparent 0 3px, #54674977 3px 5px), var(--swatch); }
 .history-panel, .history-order-dialog { --history-body-size: 15px; --history-title-size: 16px; --history-ui-size: 13px; }
 .history-panel { max-width: 680px; margin: 0 auto; padding: 4px 2px 18px; }
-.history-eras { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.history-eras { display: flex; gap: 6px; padding: 2px 1px 8px; overflow-x: auto; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+.history-eras .history-button { flex-shrink: 0; }
 .history-button { min-height: 44px; border: 1px solid #d8d9cd; border-radius: 8px; background: #fffdf7; color: #445553; padding: 8px 11px; font-size: var(--history-ui-size); font-weight: 500; }
 .history-button:hover:not(:disabled) { background: #f3ecd9; border-color: #b8a778; }
 .history-button:focus-visible, .history-select:focus-visible { outline: 3px solid #ba7e24; outline-offset: 3px; }
@@ -21,6 +22,9 @@
 .history-scene-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 10px; padding: 4px 0 8px; border-bottom: 1px solid var(--line); }
 .history-period { margin: 0; color: #536564; font-size: var(--history-ui-size); font-weight: 400; line-height: 1.6; }
 .history-scene-heading h3 { margin: 0; font-size: var(--history-title-size); font-weight: 600; line-height: 1.6; letter-spacing: 0; word-break: keep-all; }
+.history-subject { margin-left: auto; color: #536564; font-size: 12px; white-space: nowrap; }
+.history-explanation { font-family: var(--reading-font); font-size: 17px; line-height: 1.85; word-break: keep-all; overflow-wrap: anywhere; }
+.history-explanation p { margin: 16px 0; }
 .history-cues { margin: 16px 0 0; }
 .history-cues > div { padding: 11px 0; border-bottom: 1px solid #e7e6de; }
 .history-cues dt { margin-bottom: 5px; color: #345b5f; font-family: var(--reading-font); font-size: var(--history-body-size); font-weight: 400; line-height: 1.75; }

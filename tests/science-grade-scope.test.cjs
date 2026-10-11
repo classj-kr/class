@@ -157,7 +157,7 @@ test('six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile
         assert.equal(await card.locator('.answer-explanation').isVisible(), false);
         await card.locator(`input[value="${answer}"]`).check(); await card.locator('.answer-button').click();
         assert.equal(await card.getAttribute('data-state'), 'correct');
-        assert.equal(await card.locator('.answer-explanation').isVisible(), true);
+        assert((await card.locator('.answer-result').innerText()).includes((await card.locator('.answer-explanation').textContent()).trim()));
       }
       if (['lever-balance', 'reflex-nerve'].includes(app)) {
         await click('#resetBtn');

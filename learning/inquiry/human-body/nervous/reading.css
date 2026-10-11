@@ -1,0 +1,32 @@
+/* Screen-sized labels stay legible independently of the diagram's SVG scale. */
+.model-compact-layout .sim-app-container { grid-template-columns: minmax(0, 1fr) 400px; }
+.sim-sidebar :is(.sensory-card, .meter-card) :is(p, li, ul),
+.sim-sidebar :is(#organDesc, #autonomicStateDesc, .school-detail) {
+    font-size: 17px !important;
+    line-height: 1.75 !important;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+.sensory-card > div { font-size: 18px !important; margin-bottom: 10px !important; }
+.sensory-card li + li { margin-top: 10px; }
+.sim-sidebar :is(.sim-slider-label, .sim-slider-value, .autonomic-table) { font-size: 16px; }
+.sim-slider-wrapper { flex-wrap: wrap; }
+.sim-slider-label { min-width: 90px; }
+.sim-slider-value { white-space: normal; overflow-wrap: anywhere; }
+.sim-stage-area :is(.body-diagram-label, .pupil-tag, .eye-optics-tag, .brain-tag,
+    .reflex-tag, .ear-tag, .centers-tag, .autonomic-tag) { font-size: 16px; line-height: 1.5; }
+.sim-stage-area .pupil-tag.head { font-size: 18px; }
+.pupil-tag.pin { padding: 4px 10px; border: 1px solid; border-radius: 8px; background: #080e1ef0; }
+.sim-stage-area :is(.reflex-caption, .ear-caption, .autonomic-caption,
+    .eye-optics-detail, .eye-optics-caption span, .centers-note) { font-size: 16px; line-height: 1.65; }
+.sim-stage-area .scene-btn { font-size: 15px; min-height: 42px; }
+.sidebar-tab-btn { font-size: 15px; min-height: 44px; }
+.brain-pill-btn, .autonomic-tab-btn { font-size: 16px; min-height: 42px; }
+@media (max-width: 1100px) {
+    html, body { height: auto; overflow-y: auto; }
+    .model-compact-layout .sim-app-container { height: auto; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 680px auto; overflow: visible; }
+    .model-navigation { grid-column: 1; grid-row: 1; }
+    .model-compact-layout .sim-stage-area { grid-column: 1; grid-row: 2; }
+    .model-compact-layout .sim-sidebar { grid-column: 1; grid-row: 3; overflow: visible; max-height: none; }
+    .sidebar-body { overflow: visible; }
+}

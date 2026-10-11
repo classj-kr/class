@@ -14,14 +14,14 @@ test('activity models: controls, counterexamples, ordering and numerical optics'
  assert.deepEqual(model.prism({stage:'combine',color:0,screen:0}).values.result,['흰빛']);
  assert.equal(model.prism({stage:'combine',color:0,screen:1}).values.atFocus,false);
 });
-for(const engine of ['chromium','webkit'])test(engine+': new activities, persistence, mobile layout and dating evidence',{timeout:180000},async()=>{
+for(const engine of ['chromium','webkit'])test(engine+': internal draft-model harness and dating evidence',{timeout:180000},async()=>{
  const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),out=path.resolve(process.env.SCIENCE_TEST_ARTIFACTS||'tmp/science-activity-workbench');fs.mkdirSync(out,{recursive:true});
- const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!file.startsWith(root+path.sep))return res.writeHead(403).end();if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css'}[path.extname(file)]||'application/octet-stream');res.end(b);});});
+ const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!file.startsWith(root+path.sep))return res.writeHead(403).end();if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file.endsWith("__model-harness.html")?path.join(__dirname,"fixtures/activity-model-harness.html"):file,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css'}[path.extname(file)]||'application/octet-stream');res.end(b);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
  try{
   browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});
   const page=await browser.newPage({viewport:{width:1024,height:900},hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
-  const url=`http://127.0.0.1:${server.address().port}`,open=async id=>{await page.goto(url+'/activity-workbench.html?activity='+encodeURIComponent(id));await page.waitForSelector('#lab');};
+  const url=`http://127.0.0.1:${server.address().port}`,open=async id=>{await page.goto(url+'/__model-harness.html?activity='+encodeURIComponent(id));await page.waitForSelector('#lab');};
   const capture=async name=>{for(const width of [390,768,1024]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,name+' overflow');await webp(page.locator('#workbench'),path.join(out,`${name}-${engine}-${width}.webp`));}};
   await open('10과탐1-01#3');for(const e of model.elements)await page.locator(`[data-slot="${e.slot}"]`).selectOption(e.symbol);
   await page.locator('#arrangementCheck').click();assert.match(await page.locator('#arrangementResult').textContent(),/10곳/);

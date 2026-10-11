@@ -1,0 +1,23 @@
+[
+  {
+    "questionId": "school-retry",
+    "questionRevision": 1,
+    "schoolLevel": "middle",
+    "selectedOptionId": "option-1",
+    "correctOptionId": "option-2",
+    "correct": false
+  },
+  {
+    "questionId": "space-retry",
+    "questionRevision": 1,
+    "schoolLevel": "middle",
+    "selectedOptionId": "option-1",
+    "correctOptionId": "option-2",
+    "correct": false
+  },
+  {
+    "kind": "body-first-answer",
+    "correct": false,
+    "selected": 0
+  }
+]

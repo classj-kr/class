@@ -1,6 +1,8 @@
 {
   "scope": "2022 only; execution, visual inspection and bounded source review kept separate",
   "apps": 104,
+  "requiredExperimentTotal": null,
+  "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
   "modes": 182,
   "controlCases": 1414,
   "controlRecord": "final-all-controls/summary-chromium.json",
@@ -14,6 +16,27 @@
     "tests": 3,
     "pass": 3,
     "fail": 0
+  },
+  "toolTests": {
+    "tests": 13,
+    "pass": 13,
+    "fail": 0
+  },
+  "activityCoverage": {
+    "activities": 261,
+    "linked": 176,
+    "unlinked": 85
+  },
+  "textbookCandidates": {
+    "scope": "2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님",
+    "indexedUniqueSources": 3582,
+    "textbookPDFs": 269,
+    "activitySheets": 408,
+    "titleCandidates": 3041,
+    "activitySheetCandidates": 408,
+    "primaryDocumentsWithoutCandidates": 20,
+    "completedActivityVerdicts": 0,
+    "receiptClassifiedSources": 2287
   },
   "questionReview": {
     "original": 416,
@@ -33,7 +56,9 @@
         ],
         "label": "동아출판 2022 과학탐구실험1 · 1단원 PDF 11~12쪽"
       },
-      "remaining": "일부 원소와 빈칸을 이용한 배열·예측 활동. 역사적 주기율표 전체 및 모둠 토론은 별도."
+      "remaining": "일부 원소와 빈칸을 이용한 배열·예측 활동. 역사적 주기율표 전체 및 모둠 토론은 별도.",
+      "kind": "모형",
+      "studentAvailable": false
     },
     "10과탐1-02#1": {
       "tool": "pasteur",
@@ -47,7 +72,9 @@
         ],
         "label": "동아출판 2022 과학탐구실험1 · 2단원 PDF 8~10쪽"
       },
-      "remaining": "변인 비교·가상 관찰·기록. 실물 장치 제작, 실제 배양 관찰과 폐기는 별도."
+      "remaining": "변인 비교·가상 관찰·기록. 실물 장치 제작, 실제 배양 관찰과 폐기는 별도.",
+      "kind": "모형",
+      "studentAvailable": false
     },
     "10과탐1-02#2": {
       "tool": "prism",
@@ -60,7 +87,851 @@
         ],
         "label": "동아출판 2022 과학탐구실험1 · 2단원 PDF 5~6쪽"
       },
-      "remaining": "분산·단색광 재통과·빛 합성의 모형. 실제 광학 장치 정렬·스크린 관찰은 별도."
+      "remaining": "분산·단색광 재통과·빛 합성의 모형. 실제 광학 장치 정렬·스크린 관찰은 별도.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "4과08#1": {
+      "tool": "infection",
+      "title": "감염 전파와 손 씻기 비교",
+      "source": {
+        "id": "98fd4b1d24cbec64",
+        "pages": [
+          11,
+          12,
+          17,
+          18
+        ],
+        "label": "미래엔 2022 과학 3-2 · 4단원 · PDF 11, 12, 17, 18쪽"
+      },
+      "remaining": "분무·접촉·형광 로션의 모형 비교. 감염 확률을 계산하는 도구가 아니다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "10과탐1-02#3": {
+      "tool": "climate",
+      "title": "기후 관측 자료와 추세선",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          11,
+          12,
+          13
+        ],
+        "label": "동아출판 2022 과학탐구실험1 · 2단원 · PDF 11, 12, 13쪽"
+      },
+      "remaining": "관측값 직접 입력과 추세 분석. 기본 예시는 가상 자료이며 실제 자료 수집·지역 비교를 별도로 수행한다.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "10과탐1-02#5": {
+      "tool": "antibiotic",
+      "title": "천연 항생 물질의 대조군·반복 측정",
+      "source": {
+        "id": "28177f9b69b984c7",
+        "pages": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "label": "동아출판 2022 과학탐구실험1 · 3단원 · PDF 5, 6, 7, 8쪽"
+      },
+      "remaining": "입력한 억제 띠 폭의 반복 측정 비교. 실제 재료의 효과를 자동 판정하지 않는다.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "10과탐2-01#3": {
+      "tool": "acceleration",
+      "title": "운동의 가속도 자료 비교",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 과학탐구실험2 · 1단원 · PDF 5, 6쪽"
+      },
+      "remaining": "앱에서 얻은 가속도 기록을 입력·분석. 실제 기기 고정·측정은 별도이다.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "10과탐2-01#5": {
+      "tool": "sensor",
+      "title": "학교 주변 센서 측정과 비교",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          13,
+          14
+        ],
+        "label": "동아출판 2022 과학탐구실험2 · 1단원 · PDF 13, 14쪽"
+      },
+      "remaining": "센서 기록의 입력·시각화·분석. 센서 보정과 실제 현장 측정을 수행해야 한다.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "12물리02#2": {
+      "tool": "speaker",
+      "title": "코일·자석·진동판 스피커",
+      "source": {
+        "id": "6969a20462cfe732",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 물리학 · Ⅱ-05 · PDF 5, 6쪽"
+      },
+      "remaining": "신호·자기력·진동 방향을 비교하는 모형. 실제 재료 조립과 음압 측정은 별도이다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12물리02#3": {
+      "tool": "wireless",
+      "title": "두 코일의 무선 전력 전달",
+      "source": {
+        "id": "22578837da73a2b3",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 물리학 · Ⅱ-06 · PDF 5, 6쪽"
+      },
+      "remaining": "교류·직류·거리·각도별 유도 기전력 비교. 실제 충전기 제작·정류·보호 회로는 별도이다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12전자01#1": {
+      "tool": "magnetic-brake",
+      "title": "도체판과 자석의 자기 브레이크",
+      "source": {
+        "id": "000c068a0397ecb8",
+        "pages": [
+          32
+        ],
+        "label": "동아출판 2022 전자기와 양자 · Ⅰ단원 · PDF 32쪽"
+      },
+      "remaining": "자석·물체·판을 바꾼 낙하 비교. 제동 계수는 원리 설명용 가정이다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12전자02#1": {
+      "tool": "soap-film",
+      "title": "비누막의 두께와 반사 간섭",
+      "source": {
+        "id": "428056f4452acd59",
+        "pages": [
+          7
+        ],
+        "label": "동아출판 2022 전자기와 양자 · Ⅱ단원 · PDF 7쪽"
+      },
+      "remaining": "수직 단색광의 두 광선 간섭 모형. 실제 막 제작·관찰은 별도이다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12전자02#2": {
+      "tool": "polarization",
+      "title": "편광판 회전과 통과광 세기",
+      "source": {
+        "id": "428056f4452acd59",
+        "pages": [
+          21,
+          22
+        ],
+        "label": "동아출판 2022 전자기와 양자 · Ⅱ단원 · PDF 21, 22쪽"
+      },
+      "remaining": "선편광·원편광·비편광을 비교한다. 실제 디스플레이 종류를 임의로 단정하지 않는다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12물에01#1": {
+      "tool": "gas-identity",
+      "title": "수상 치환과 기체 몰질량",
+      "source": {
+        "id": "f0a490bc4a299711",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 물질과 에너지 · Ⅰ-01 · PDF 5, 6쪽"
+      },
+      "remaining": "물기둥·수증기압 보정과 후보 비교. 실제 기체 수집·질량 측정은 별도이다.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "12물에02#1": {
+      "tool": "sugar-phase",
+      "title": "설탕물의 끓는점·어는점",
+      "source": {
+        "id": "dd8c8169d8e6fbec",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 물질과 에너지 · Ⅱ-02 · PDF 5, 6쪽"
+      },
+      "remaining": "몰랄 농도·필요한 설탕 질량·상변화 시작점 계산. 실제 시간별 센서 측정은 별도이다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12물에03#2": {
+      "tool": "hess",
+      "title": "중화 반응으로 헤스 법칙 확인",
+      "source": {
+        "id": "31afcde4eb7f7e27",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 2022 물질과 에너지 · Ⅲ-02 · PDF 3, 4쪽"
+      },
+      "remaining": "세 경로의 온도 입력·반응 엔탈피·차이 분석. 실제 열량계 실험은 별도이다.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "12반응01#4": {
+      "tool": "buffer",
+      "title": "물과 완충 용액의 pH 변화",
+      "source": {
+        "id": "ae885f31c6b75cd2",
+        "pages": [
+          1,
+          2
+        ],
+        "label": "동아출판 2022 화학 반응의 세계 · 완충 작용 · PDF 1, 2쪽"
+      },
+      "remaining": "산·염기 첨가량과 완충 성분량 비교. 실제 용액의 조성을 대신하지 않는 이상 용액 모형이다.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12전자01#2": {
+      "tool": "amplifier",
+      "title": "트랜지스터 증폭과 클리핑",
+      "source": {
+        "id": "000c068a0397ecb8",
+        "pages": [
+          39
+        ],
+        "label": "동아출판 2022 전자기와 양자 · Ⅰ단원 · PDF 39쪽"
+      },
+      "remaining": "공통 이미터의 전달 특성·전원·파형 비교. 실제 회로 조립과 음압 측정은 별도.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12전자03#1": {
+      "tool": "electron-slits",
+      "title": "단일 전자 검출과 이중 슬릿",
+      "source": {
+        "id": "110fa0ab76336b3c",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 전자기와 양자 · Ⅲ단원 · PDF 5, 6쪽"
+      },
+      "remaining": "검출점의 누적·간섭·경로 구별을 비교하는 원거리 확률 모형.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12유전01#1": {
+      "tool": "pedigree",
+      "title": "X 염색체 열성 유전의 가계도",
+      "source": {
+        "id": "cb057c78a9819273",
+        "pages": [
+          6
+        ],
+        "label": "동아출판 2022 생물의 유전 · Ⅰ-01 · PDF 6쪽"
+      },
+      "remaining": "가상 부모의 유전자형과 가능한 자녀 조합. 복잡한 가계도의 역추론은 추가 자료가 필요.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12유전01#3": {
+      "tool": "dna-replication",
+      "title": "DNA 반보존적 복제 단계",
+      "source": {
+        "id": "de0c1acaeaa2453a",
+        "pages": [
+          8,
+          9
+        ],
+        "label": "동아출판 2022 생물의 유전 · Ⅰ-03 · PDF 8, 9쪽"
+      },
+      "remaining": "상보·역평행·두 딸 DNA의 부모/새 가닥 구성. 복제분기점·절편·효소 상세 과정은 별도.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12유전02#1": {
+      "tool": "translation",
+      "title": "코돈을 읽으며 단백질 합성하기",
+      "source": {
+        "id": "3efaa8d5b5bd911f",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 생물의 유전 · Ⅱ-01 · PDF 5, 6쪽"
+      },
+      "remaining": "표준 코돈·개시·종결과 서열 변화 비교. 실제 세포의 개시 위치 선택·번역 속도는 포함하지 않음.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12지시02#1": {
+      "tool": "water-waves",
+      "title": "해파와 물 입자의 운동",
+      "source": {
+        "id": "b5e30308f3b900f9",
+        "pages": [
+          13
+        ],
+        "label": "동아출판 2022 지구시스템과학 · Ⅱ단원 · PDF 13쪽"
+      },
+      "remaining": "선형 해파의 파장·수심·속력·궤도 비교. 실제 수조 발생 실험은 별도.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12지시02#2": {
+      "tool": "tides",
+      "title": "조석 자료의 고조 간격 분석",
+      "source": {
+        "id": "b5e30308f3b900f9",
+        "pages": [
+          21
+        ],
+        "label": "동아출판 2022 지구시스템과학 · Ⅱ단원 · PDF 21쪽"
+      },
+      "remaining": "관측 자료 직접 입력·고조 탐색·간격 분석. 기본값은 가상 자료이며 최신 예보를 대신하지 않음.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "12지시03#4": {
+      "tool": "rotating-tank",
+      "title": "회전 수조의 온도 차와 파동",
+      "source": {
+        "id": "5b0ce08b8c0b10eb",
+        "pages": [
+          32
+        ],
+        "label": "동아출판 2022 지구시스템과학 · Ⅲ단원 · PDF 32쪽"
+      },
+      "remaining": "회전·온도 차의 정성 비교 도식. 유체 수치 예측이나 실물 관찰 완료를 뜻하지 않음.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12행우01#3": {
+      "tool": "habitable-zone",
+      "title": "별의 온도·반지름과 생명가능지대",
+      "source": {
+        "id": "35d817a99ea28582",
+        "pages": [
+          32
+        ],
+        "label": "동아출판 2022 행성우주과학 · Ⅰ단원 · PDF 32쪽"
+      },
+      "remaining": "광도·복사량에 따른 거리 비교. 고정 경계 복사량의 모형이며 실제 행성의 기후·생명 존재는 별도.",
+      "kind": "모형",
+      "studentAvailable": false
+    },
+    "12행우02#1": {
+      "tool": "sunspots",
+      "title": "흑점 이동과 태양 자전주기",
+      "source": {
+        "id": "83a281f014c6a235",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 행성우주과학 · Ⅱ단원 · PDF 5, 6쪽"
+      },
+      "remaining": "보정 경도·시간에서 회합/항성 주기 계산. 실제 영상의 흑점 추적·투영 보정은 별도.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "12행우03#1": {
+      "tool": "cluster-distance",
+      "title": "주계열 맞추기와 성단 거리",
+      "source": {
+        "id": "483ae860103368b0",
+        "pages": [
+          6
+        ],
+        "label": "동아출판 2022 행성우주과학 · Ⅲ단원 · PDF 6쪽"
+      },
+      "remaining": "같은 색지수의 표준·성단 등급 입력과 맞춤. 자료 선택·적색화 보정은 별도.",
+      "kind": "계산·자료 분석",
+      "studentAvailable": false
+    },
+    "9과02#2": {
+      "tool": "biodiversity-web",
+      "title": "생물다양성 관계망 보전 놀이",
+      "kind": "모형",
+      "source": {
+        "id": "3f7e3699924e680f",
+        "pages": [
+          33
+        ],
+        "label": "동아출판 중학 과학1 · 2022 · PDF 33쪽"
+      },
+      "remaining": "작은 관계망에서 종 소실과 보전 방안을 비교. 실타래 모둠 활동은 별도.",
+      "studentAvailable": false
+    },
+    "10과탐2-02#1": {
+      "tool": "microcontroller",
+      "title": "센서 입력과 마이크로컨트롤러 제어",
+      "kind": "자료 분석",
+      "source": {
+        "id": "bb3048667d79ef51",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "입력 자료의 제어 규칙 시험. 실제 보드 연결·측정·코드 실행은 별도.",
+      "studentAvailable": false
+    },
+    "10과탐2-01#2": {
+      "tool": "field-atlas",
+      "title": "주변 생물 관찰 지도와 기록",
+      "kind": "조사 기록",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 7, 8, 9, 10쪽"
+      },
+      "remaining": "위치·개체수·동정 근거 기록과 집계. 외래종 영향 논증과 현장 관찰은 별도.",
+      "studentAvailable": false
+    },
+    "12역학03#2": {
+      "tool": "doppler",
+      "title": "도플러 효과의 예상값과 측정값 비교",
+      "kind": "자료 분석",
+      "source": {
+        "id": "55ff1f88dea3080a",
+        "pages": [
+          17
+        ],
+        "label": "동아출판 역학과 에너지 · 2022 · PDF 17쪽"
+      },
+      "remaining": "관측 진동수 계산·측정값 비교. 실제 음원 생성·마이크 측정은 별도.",
+      "studentAvailable": false
+    },
+    "12반응01#3": {
+      "tool": "salt-ph",
+      "title": "염 수용액의 가수 분해와 pH",
+      "kind": "모형",
+      "source": {
+        "id": "e0f6072944407ce9",
+        "pages": [
+          4
+        ],
+        "label": "동아출판 화학 반응의 세계 · 2022 · PDF 4쪽"
+      },
+      "remaining": "액성 예상과 입력 측정값 비교. 실제 시약 준비·측정은 별도.",
+      "studentAvailable": false
+    },
+    "12세포02#2": {
+      "tool": "bean-respiration",
+      "title": "발아 중인 콩의 호흡 자료 비교",
+      "kind": "자료 분석",
+      "source": {
+        "id": "88b3398d0063221f",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 세포와 물질대사 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "같은 시간의 두 시료 CO₂·온도 자료 분석. 실제 밀폐 장치·센서 관찰은 별도.",
+      "studentAvailable": false
+    },
+    "12세포01#3": {
+      "tool": "centrifuge",
+      "title": "간이 원심분리기의 균형과 회전 설계",
+      "kind": "설계 보조",
+      "source": {
+        "id": "fbf365923abce545",
+        "pages": [
+          28,
+          29
+        ],
+        "label": "미래엔 세포와 물질대사 · 2022 · PDF 28, 29쪽"
+      },
+      "remaining": "회전 가속도와 균형 비교. 실물 기구 제작·시금치 파쇄액 분리 관찰은 별도.",
+      "studentAvailable": false
+    },
+    "12역학02#1": {
+      "tool": "insulation",
+      "title": "단열재의 보온·보냉 측정 비교",
+      "kind": "자료 분석",
+      "source": {
+        "id": "a09d07688dc197a9",
+        "pages": [
+          6
+        ],
+        "label": "동아출판 역학과 에너지 · 2022 · PDF 6쪽"
+      },
+      "remaining": "시간별 실측 자료의 비교. 용기 제작·보온/보냉 반복 측정은 별도.",
+      "studentAvailable": false
+    },
+    "12물에01#2": {
+      "tool": "hydride-boiling",
+      "title": "수소 화합물의 끓는점과 분자 간 힘",
+      "kind": "자료 분석",
+      "source": {
+        "id": "1be99a8dde753097",
+        "pages": [
+          5
+        ],
+        "label": "동아출판 물질과 에너지 · 2022 · PDF 5쪽"
+      },
+      "remaining": "14·15족 자료와 조사한 2주기 값을 비교. 조사값의 출처·기압 확인 필요.",
+      "studentAvailable": false
+    },
+    "12물에03#1": {
+      "tool": "fuel-energy",
+      "title": "연료의 질량·부피당 발열량 비교",
+      "kind": "자료 분석",
+      "source": {
+        "id": "22f354e573a49af4",
+        "pages": [
+          5
+        ],
+        "label": "동아출판 물질과 에너지 · 2022 · PDF 5쪽"
+      },
+      "remaining": "교과서 반응 엔탈피 자료의 단위 변환·비교. 전환 장치 효율과 생산·저장 비용은 별도.",
+      "studentAvailable": false
+    },
+    "12반응03#1": {
+      "tool": "organic-groups",
+      "title": "탄소 화합물의 구조식과 작용기",
+      "kind": "모형",
+      "source": {
+        "id": "d395204181f8b5da",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 화학 반응의 세계 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "대표 구조의 작용기·식 비교. 임의 분자 조립 및 입체 모형은 별도.",
+      "studentAvailable": false
+    },
+    "12반응03#2": {
+      "tool": "silver-mirror",
+      "title": "은거울 반응과 작용기 변화",
+      "kind": "모형",
+      "source": {
+        "id": "d395204181f8b5da",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 화학 반응의 세계 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "시료별 정성 반응과 산화·환원 비교. 실물 시약 관찰은 별도.",
+      "studentAvailable": false
+    },
+    "12반응03#3": {
+      "tool": "nylon-interface",
+      "title": "계면 중합과 나일론 합성",
+      "kind": "모형",
+      "source": {
+        "id": "0dad0a95c5350609",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 화학 반응의 세계 · 2022 · PDF 5, 6쪽"
+      },
+      "remaining": "계면·고분자·부산물의 단계 모형. 실제 합성·섬유 관찰은 별도.",
+      "studentAvailable": false
+    },
+    "12행우02#3": {
+      "tool": "mass-luminosity",
+      "title": "쌍성 자료의 질량–광도 관계",
+      "kind": "자료 분석",
+      "source": {
+        "id": "83a281f014c6a235",
+        "pages": [
+          22
+        ],
+        "label": "동아출판 행성우주과학 · 2022 · PDF 22쪽"
+      },
+      "remaining": "같은 대역의 등급 변환·로그 회귀. 실제 쌍성 자료를 직접 입력해야 함.",
+      "studentAvailable": false
+    },
+    "12행우03#2": {
+      "tool": "cepheid-distance",
+      "title": "세페이드 거리와 구상 성단 분포",
+      "kind": "자료 분석",
+      "source": {
+        "id": "483ae860103368b0",
+        "pages": [
+          8,
+          9
+        ],
+        "label": "동아출판 행성우주과학 · 2022 · PDF 8, 9쪽"
+      },
+      "remaining": "주기-등급 계산과 좌표 투영. 관측 곡선의 주기 측정·실제 계수/좌표 수집은 별도.",
+      "studentAvailable": false
+    },
+    "12세포02#1": {
+      "tool": "calorimetry-balance",
+      "title": "하루 에너지 섭취·소비 조사",
+      "kind": "조사 기록",
+      "source": {
+        "id": "88b3398d0063221f",
+        "pages": [
+          6
+        ],
+        "label": "동아출판 세포와 물질대사 · 2022 · PDF 6쪽"
+      },
+      "remaining": "항목별 양·에너지·출처 기록과 합계 비교. 실제 섭취·활동 조사는 별도.",
+      "studentAvailable": false
+    },
+    "4과11#2": {
+      "tool": "earthquake-case",
+      "title": "지진 피해 사례와 대처 조사",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "295e8a991fecc12f",
+        "pages": [
+          20
+        ],
+        "label": "미래엔 과학4-1 · 2022 · PDF 20쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "6과16#1": {
+      "tool": "science-career",
+      "title": "진로 속 과학적 요소 조사",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "93e187516a26ca28",
+        "pages": [
+          13
+        ],
+        "label": "천재교육 과학6-2 · 2022 · PDF 13쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "9과01#1": {
+      "tool": "inquiry-plan",
+      "title": "문제 발견과 탐구 계획서",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "348d649ab4184852",
+        "pages": [
+          1,
+          2
+        ],
+        "label": "동아출판 중학 과학1 · 2022 · PDF 1, 2쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "9과15#3": {
+      "tool": "space-plan",
+      "title": "우주 탐사 성과와 탐사 계획",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "ee0ca1f85b082fef",
+        "pages": [
+          22
+        ],
+        "label": "동아출판 중학 과학2 · 2022 · PDF 22쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "10통과2-03#3": {
+      "tool": "robot-design",
+      "title": "생활 속 로봇 분석과 개선 설계",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "7edd546b32175655",
+        "pages": [
+          12
+        ],
+        "label": "동아출판 통합과학2 · 2022 · PDF 12쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "10과탐1-02#4": {
+      "tool": "science-magic",
+      "title": "화학 변화 과학마술 대본과 시연 기록",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "28177f9b69b984c7",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 과학탐구실험1 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "10과탐2-01#1": {
+      "tool": "scientific-claim",
+      "title": "과학적 주장과 유사과학 비평",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "f3119695e8a726b3",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "10과탐2-02#2": {
+      "tool": "sensor-invention",
+      "title": "센서 발명품 설계와 시제품 발표",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "bb3048667d79ef51",
+        "pages": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 9, 10, 11, 12쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "10과탐2-02#3": {
+      "tool": "space-development",
+      "title": "우주 개발 사례와 발전 방향 평가",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "471c52d672d197ef",
+        "pages": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "label": "동아출판 과학탐구실험2 · 2022 · PDF 7, 8, 9, 10쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "12지구02#2": {
+      "tool": "paleoclimate-compare",
+      "title": "고기후 연구 방법 비교표",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "5cd391fde1912cc3",
+        "pages": [
+          18
+        ],
+        "label": "동아출판 지구과학 · 2022 · PDF 18쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "12지구02#4": {
+      "tool": "geosite-investigation",
+      "title": "지질 명소의 관찰과 형성 과정",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "5cd391fde1912cc3",
+        "pages": [
+          46
+        ],
+        "label": "동아출판 지구과학 · 2022 · PDF 46쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "12반응02#3": {
+      "tool": "future-battery",
+      "title": "지속가능한 미래 전지 설계",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "b9398e96ee86c188",
+        "pages": [
+          5
+        ],
+        "label": "동아출판 화학 반응의 세계 · 2022 · PDF 5쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "12지시01#2": {
+      "tool": "plate-history",
+      "title": "관측 기기와 판 구조론의 역사",
+      "kind": "조사·설계 활동지",
+      "source": {
+        "id": "c50c90b0d29a7655",
+        "pages": [
+          20
+        ],
+        "label": "동아출판 지구시스템과학 · 2022 · PDF 20쪽"
+      },
+      "remaining": "교과서 단계별 조사·설계·검토 내용을 작성하고 저장하는 도구. 실제 조사·토의·제작·시연의 완료 판정은 별도.",
+      "studentAvailable": false
+    },
+    "12생과03#1": {
+      "tool": "karyotype",
+      "title": "염색체 카드의 특징 비교와 핵형 분석",
+      "kind": "짝짓기 모형",
+      "source": {
+        "id": "588b1a480be9f824",
+        "pages": [
+          3,
+          4
+        ],
+        "label": "동아출판 생명과학 · 2022 · PDF 3, 4쪽"
+      },
+      "remaining": "23개 기준과 카드의 직접 짝짓기·중복 확인·두 핵형 비교. 단순화한 기호 모형이며 실제 염색체 사진·구조 이상 판독을 제공하지 않는다.",
+      "studentAvailable": false
+    },
+    "9과07#2": {
+      "tool": "planet-classification",
+      "title": "태양계 행성 자료의 분류 기준 비교",
+      "kind": "자료 분석",
+      "source": {
+        "id": "81ce1d0e81902b80",
+        "pages": [
+          230,
+          231,
+          232,
+          233
+        ],
+        "label": "천재교과서 중학 과학1(임성숙) · 2022 · PDF 230, 231, 232, 233쪽"
+      },
+      "remaining": "입력 자료·반지름 경곗값·고리 유무로 두 집단을 만들고 기준을 비교한다. 태양·왜소행성·소행성 등 다른 천체의 관측, 질량·구성 물질 조사는 별도이다.",
+      "studentAvailable": false
+    },
+    "12역학01#1": {
+      "tool": "ride-acceleration",
+      "title": "놀이 기구의 세 축 가속도 분석",
+      "kind": "자료 분석",
+      "source": {
+        "id": "e7caa9f0f741ad37",
+        "pages": [
+          17
+        ],
+        "label": "T셀파 수집 역학과 에너지(최혁준) · 2022 · PDF 17쪽"
+      },
+      "remaining": "시간·세 축 자료 입력, 구간·축·벡터 크기 비교. 기기 측정, 자세 보정·운동 장면과 시각의 대응은 직접 수행한다.",
+      "studentAvailable": false
     }
   },
   "fixes": [
@@ -191,19 +1062,22 @@
     "apps": 104,
     "originalQuestions": 416,
     "examQuestions": 241,
-    "sourcePaths": 1934,
-    "duplicatePaths": 380,
-    "sources": 1554,
-    "extractedSources": 1544,
-    "extractionErrors": 10,
-    "documentsWithoutText": 10,
-    "blankPdfPages": 422,
-    "pdfs": 402,
-    "assessmentDocuments": 1152,
-    "pdfPages": 20597,
+    "sourcePaths": 4008,
+    "duplicatePaths": 426,
+    "sources": 3582,
+    "extractedSources": 3581,
+    "extractionErrors": 1,
+    "documentsWithoutText": 4,
+    "blankPdfPages": 591,
+    "pdfs": 524,
+    "assessmentDocuments": 3058,
+    "pdfPages": 37818,
     "reviewedSources": 82,
     "reviewRecords": 110,
-    "appsWithSelectedSourceReview": 104
+    "appsWithSelectedSourceReview": 104,
+    "receiptClassifiedSources": 2287,
+    "activityReviewRecords": 60,
+    "activityReviewSources": 45
   },
   "byApp": {
     "light-shadow": {
