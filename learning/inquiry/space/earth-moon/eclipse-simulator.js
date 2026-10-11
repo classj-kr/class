@@ -29,9 +29,14 @@
     function mount(pane) {
         if(pane.eclipseCleanup) pane.eclipseCleanup();
         pane.classList.add('eclipse-lab');
+        let school = window.SchoolLevel?.value || 'middle';
         const presets={solar:[['개기',0],['부분',25],['식 없음',86]],lunar:[['개기',0],['부분',65],['반영',125],['식 없음',215]]};
         const titles={solar:{total:'개기일식',partial:'부분일식',annular:'금환일식',none:'일식 없음'},lunar:{total:'개기월식',partial:'부분월식',penumbral:'반영월식',none:'월식 없음'}};
         const reasons={solar:{total:'달의 본그림자 안 · 태양 전체가 가려짐',partial:'달의 반그림자 안 · 태양 일부가 가려짐',annular:'달이 작게 보여 태양 가장자리가 남음',none:'달의 그림자 밖 · 태양이 가려지지 않음'},lunar:{total:'달 전체가 지구의 본그림자 안 · 어두운 붉은 달',partial:'달의 일부가 지구의 본그림자 안',penumbral:'지구의 반그림자만 통과 · 약간 어두워짐',none:'지구의 그림자 밖 · 밝은 보름달'}};
+        const simpleTitles={solar:{total:'모두 가려짐',partial:'일부 가려짐',annular:'가장자리가 보임',none:'가려지지 않음'},lunar:{total:'달 전체가 어두워짐',partial:'달 일부가 어두워짐',penumbral:'조금 어두워짐',none:'밝은 달'}};
+        const simpleReasons={solar:{total:'달이 태양 앞을 가리고 있어요.',partial:'달이 태양의 한쪽을 가리고 있어요.',annular:'달 바깥으로 태양의 가장자리가 보여요.',none:'이 위치에서는 달이 태양을 가리지 않아요.'},lunar:{total:'달 전체가 지구의 그림자에 들어갔어요.',partial:'달 일부가 지구의 그림자에 들어갔어요.',penumbral:'태양빛이 조금 가려져 달이 살짝 어두워요.',none:'달이 그림자 밖에서 태양빛을 받아요.'}};
+        const resultTitle=(mode,type)=>school==='elementary'?simpleTitles[mode][type]:school==='middle'&&type==='penumbral'?'달이 조금 어두워짐':titles[mode][type];
+        const resultReason=(mode,type)=>school==='high'?reasons[mode][type]:simpleReasons[mode][type];
         const card=mode=>`<section class="ecl-observation" data-ecl-card="${mode}" aria-label="${mode==='solar'?'일식':'월식'} 관측">
             <header class="ecl-card-heading"><h2>${mode==='solar'?'일식 <span>삭</span>':'월식 <span>보름</span>'}</h2><span>${mode==='solar'?'태양 → 달 → 지구':'태양 → 지구 → 달'}</span></header>
             <div class="ecl-sky"><canvas class="ecl-view" data-ecl-view="${mode}" width="720" height="360" role="img"></canvas><div class="ecl-sky-caption">${mode==='solar'?'낮인 지역의 관측자에게 보이는 태양':'밤인 지역에서 보이는 달'}</div></div>
@@ -40,7 +45,7 @@
         </section>`;
         pane.innerHTML=`<div class="ecl-content">
             <div class="ecl-controls"><span class="ecl-time-note">서로 다른 시점의 위치 비교</span><div class="ecl-options"><label><input type="checkbox" data-ecl-rays checked> 빛의 경로</label><label><input type="checkbox" data-ecl-labels checked> 명칭</label></div></div>
-            <div class="ecl-diagram-panel"><svg class="ecl-diagram" viewBox="0 0 1120 400" role="img" data-ecl-diagram aria-label="태양은 왼쪽, 지구는 가운데. 지구 왼쪽의 달은 일식 때, 오른쪽의 달은 월식 때 위치이며 서로 다른 시점입니다."></svg></div>
+            <div class="ecl-diagram-panel"><svg class="ecl-diagram" viewBox="-100 0 1220 420" role="img" data-ecl-diagram aria-label="태양은 왼쪽, 지구는 가운데. 지구 왼쪽의 달은 일식 때, 오른쪽의 달은 월식 때 위치이며 서로 다른 시점입니다."></svg></div>
             <div class="ecl-comparison">${card('solar')}${card('lunar')}</div>
             <details class="ecl-more"><summary>본그림자·반그림자</summary><div class="ecl-info-grid"><p><b>본그림자</b> · 직접 오는 태양빛이 모두 가려지는 공간.<br><b>반그림자</b> · 태양빛의 일부만 가려지는 공간.</p><p>왼쪽 달은 일식 때, 오른쪽 달은 월식 때의 위치입니다. 달의 이동에 따라 지구 그림자에 들어가는 부분을 비교하세요.</p><p><b>매달 식이 생기지 않는 이유</b><br>달의 공전 궤도면이 지구의 공전 궤도면에 약 5° 기울어져 있어, 삭·보름이어도 대부분 그림자가 빗나갑니다.</p><p><b>금환일식과 반영월식</b><br>달이 작게 보이면 태양의 가장자리가 남는 금환일식이 생깁니다. 이 모형의 달 크기는 개기일식이 가능한 경우로 고정했습니다. 반영월식은 반그림자만 통과하며 부분월식과 다릅니다.</p></div></details>
         </div>`;
@@ -51,7 +56,7 @@
         const model=G.COMPARISON;
         const solarGeo=shadowGeometry(model.sun,model.newMoon,model.earth.x);
         const lunarGeo=shadowGeometry(model.sun,model.earth,1120);
-        const cones=(geo,extra='')=>`<g ${extra}><polygon points="${geo.pen}" class="ecl-penumbra"/><polygon points="${geo.umb}" class="ecl-umbra"/></g>`;
+        const cones=(geo,extra='')=>`<g ${extra}>${school==='elementary'?'':`<polygon points="${geo.pen}" class="ecl-penumbra"/>`}<polygon points="${geo.umb}" class="ecl-umbra"/></g>`;
         const texture=(body,file,id,crop)=>`<g clip-path="url(#${id})"><image href="${file}" x="${body.x-body.r*crop[0]}" y="${body.y-body.r*crop[1]}" width="${body.r*crop[2]}" height="${body.r*crop[2]}" preserveAspectRatio="none"/></g>`;
         const stars=Array.from({length:65},(_,i)=>{const x=(i*179.37+39)%1120,y=(i*97.71+18)%400;return `<circle cx="${fmt(x)}" cy="${fmt(y)}" r="${i%7===0?1:.5}" fill="#b8cbe4" opacity="${i%3===0?.32:.13}"/>`;}).join('');
         function drawModel(solar,lunar) {
@@ -73,9 +78,9 @@
             ${svgCircle(model.newMoon,'#adb6c1')}${texture(model.newMoon,MOON_IMAGE,'eclNewMoonClip',[1.025,1,2.05])}${svgCircle(model.newMoon,'url(#eclNight)')}
             ${svgCircle(fullMoon,'#cad0d7')}${texture(fullMoon,MOON_IMAGE,'eclFullMoonClip',[1.025,1,2.05])}<g clip-path="url(#eclFullMoonClip)"><polygon points="${lunarGeo.pen}" fill="#080b1d" opacity=".15"/><polygon points="${lunarGeo.umb}" fill="#87391e" opacity=".72"/></g>${svgCircle(fullMoon,'url(#eclSphere)')}
             ${observerMarkup(solar.observer,model.earth,.72)}${observerMarkup(nightObserver,model.earth,.72)}</g>
-            ${labels.checked?`<g class="ecl-labels">${svgText(80,95,'태양','class="ecl-sun-label"')}${svgText(650,137,'지구')}${svgText(475,185,'일식 때 달','class="ecl-solar-label"')}${svgText(475,206,'삭','class="ecl-sub-label"')}${svgText(fullMoon.x,moonLabelY,'월식 때 달','class="ecl-lunar-label"')}${svgText(fullMoon.x,moonLabelY+21,'보름','class="ecl-sub-label"')}${svgText(620,369,'낮','class="ecl-observer-label"')}${svgText(690,369,'밤','class="ecl-observer-label"')}
-            <path d="M 550 312 L 591 250 M 515 352 L 535 280 M 1025 249 L 990 260 M 1025 355 L 982 348" class="ecl-label-leader"/>
-            ${svgText(548,332,'본그림자','class="ecl-shadow-name"')}${svgText(510,374,'반그림자','class="ecl-shadow-name"')}${svgText(1040,242,'본그림자','class="ecl-shadow-name"')}${svgText(1040,376,'반그림자','class="ecl-shadow-name"')}</g>`:''}`;
+            ${labels.checked?`<g class="ecl-labels">${svgText(80,95,'태양','class="ecl-sun-label"')}${svgText(650,137,'지구')}${svgText(475,185,'일식 때 달','class="ecl-solar-label"')}${school==='elementary'?'':svgText(475,206,'삭','class="ecl-sub-label"')}${svgText(fullMoon.x,moonLabelY,'월식 때 달','class="ecl-lunar-label"')}${school==='elementary'?'':svgText(fullMoon.x,moonLabelY+21,'보름','class="ecl-sub-label"')}${svgText(620,369,'낮','class="ecl-observer-label"')}${svgText(690,369,'밤','class="ecl-observer-label"')}
+            <path d="M 550 312 L 591 250 M 1025 249 L 990 260" class="ecl-label-leader"/>
+            ${school==='high'?`<path d="M 515 352 L 535 280 M 1025 355 L 982 348" class="ecl-label-leader"/>${svgText(548,332,'본그림자','class="ecl-shadow-name"')}${svgText(510,374,'반그림자','class="ecl-shadow-name"')}${svgText(1040,242,'본그림자','class="ecl-shadow-name"')}${svgText(1040,376,'반그림자','class="ecl-shadow-name"')}`:`${svgText(548,332,'달의 그림자','class="ecl-shadow-name"')}${svgText(1040,242,'지구의 그림자','class="ecl-shadow-name"')}`}</g>`:''}`;
         }
         function paintSky(mode,result) {
             const canvas=refs[mode].canvas,ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
@@ -116,7 +121,7 @@
                 ctx.globalCompositeOperation='multiply';const red=ctx.createRadialGradient(cx,shadowY,0,cx,shadowY,result.umbra*scale);red.addColorStop(0,'#ad4827');red.addColorStop(.68,'#c56842');red.addColorStop(1,'#d98a59');ctx.fillStyle=red;ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.restore();
                 const limb=ctx.createRadialGradient(cx-r*.12,cy-r*.12,r*.4,cx,cy,r);limb.addColorStop(0,'rgba(0,0,0,0)');limb.addColorStop(1,'rgba(0,0,0,.3)');ctx.fillStyle=limb;ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.restore();
             }
-            canvas.setAttribute('aria-label',(mode==='solar'?'지구 관측자에게 보이는 태양: ':'지구에서 보이는 달: ')+titles[mode][result.type]);
+            canvas.setAttribute('aria-label',(mode==='solar'?'지구 관측자에게 보이는 태양: ':'지구에서 보이는 달: ')+resultTitle(mode,result.type));
         }
         function draw() {
             const results={solar:G.comparisonSolar(-state.solar),lunar:G.comparisonLunar(-state.lunar)};
@@ -124,8 +129,10 @@
             drawModel(results.solar,results.lunar);
             for(const mode of ['solar','lunar']){
                 const ref=refs[mode],result=results[mode];
-                if(ref.result.textContent!==titles[mode][result.type]){ref.result.textContent=titles[mode][result.type];ref.reason.textContent=reasons[mode][result.type];}
-                ref.card.dataset.state=result.type;ref.slider.value=state[mode];ref.slider.setAttribute('aria-valuetext',titles[mode][result.type]);
+                const title=resultTitle(mode,result.type),reason=resultReason(mode,result.type);
+                if(ref.result.textContent!==title)ref.result.textContent=title;
+                if(ref.reason.textContent!==reason)ref.reason.textContent=reason;
+                ref.card.dataset.state=result.type;ref.slider.value=state[mode];ref.slider.setAttribute('aria-valuetext',title);
                 ref.card.querySelectorAll('[data-ecl-preset]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.value)===Math.round(state[mode]))));
                 paintSky(mode,result);
             }
@@ -136,10 +143,26 @@
         pane.addEventListener('input',event=>{const mode=event.target.dataset.eclSlider;if(mode){state[mode]=Number(event.target.value);setPlaying(mode,false);draw();}});
         pane.addEventListener('click',event=>{const preset=event.target.closest('[data-ecl-preset]');if(preset){const mode=preset.dataset.eclPreset;state[mode]=Number(preset.dataset.value);setPlaying(mode,false);draw();}const play=event.target.closest('[data-ecl-play]');if(play){const mode=play.dataset.eclPlay;setPlaying(mode,!playing[mode]);if(!frame&&(playing.solar||playing.lunar)){lastTime=performance.now();frame=requestAnimationFrame(tick);}}});
         rays.addEventListener('change',draw);labels.addEventListener('change',draw);
+        function setSchool() {
+            school=window.SchoolLevel?.value || school;
+            pane.dataset.eclipseSchool=school;
+            pane.querySelector('.ecl-more').hidden=school!=='high';
+            rays.closest('label').hidden=school==='elementary';
+            rays.checked=school==='high';
+            for(const mode of ['solar','lunar']) {
+                refs[mode].card.querySelector('h2 span').textContent=school==='elementary'?'':mode==='solar'?'삭':'보름';
+                refs[mode].card.querySelectorAll('[data-ecl-preset]').forEach((button,i)=>{
+                    button.hidden=mode==='lunar'&&i===2&&school!=='high';
+                    button.textContent=school==='elementary'?(mode==='solar'?['모두 가림','일부 가림','가림 없음']:['전체 어두움','일부 어두움','조금 어두움','밝은 달'])[i]:presets[mode][i][0];
+                });
+            }
+            draw();
+        }
+        const unsubscribe=window.SchoolLevel?.subscribe(setSchool);
         const pause=()=>{if(document.hidden||document.body.dataset.topicView!=='observe'){setPlaying('solar',false);setPlaying('lunar',false);cancelAnimationFrame(frame);frame=0;}};
         document.addEventListener('visibilitychange',pause);const visibility=new MutationObserver(pause);visibility.observe(document.body,{attributes:true,attributeFilter:['data-topic-view']});
-        pane.eclipseCleanup=()=>{cancelAnimationFrame(frame);visibility.disconnect();document.removeEventListener('visibilitychange',pause);moonImage.onload=null;};
-        draw();
+        pane.eclipseCleanup=()=>{cancelAnimationFrame(frame);visibility.disconnect();document.removeEventListener('visibilitychange',pause);moonImage.onload=null;unsubscribe?.();};
+        setSchool();
     }
     function questionFigure(kind) {
         if (kind !== 'solar-observers') return null;

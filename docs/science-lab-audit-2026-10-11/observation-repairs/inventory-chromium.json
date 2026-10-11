@@ -1,0 +1,996 @@
+{
+  "engine": "chromium",
+  "apps": 4,
+  "supplements": 4,
+  "experiments": 4,
+  "screenshots": 41,
+  "errors": [],
+  "findings": [],
+  "reports": [
+    {
+      "slug": "burning-conditions",
+      "errors": [],
+      "findings": [],
+      "supplement": true,
+      "experiments": 2
+    },
+    {
+      "slug": "heat-transfer",
+      "errors": [],
+      "findings": [],
+      "supplement": true,
+      "experiments": 1
+    },
+    {
+      "slug": "sound-vibration",
+      "errors": [],
+      "findings": [],
+      "supplement": true,
+      "experiments": 1
+    },
+    {
+      "slug": "stars-universe",
+      "errors": [],
+      "findings": [],
+      "supplement": true,
+      "experiments": 0
+    }
+  ],
+  "shots": [
+    {
+      "slug": "burning-conditions",
+      "id": "combustion-products",
+      "variant": "changed",
+      "file": "burning-conditions-combustion-products-changed-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "양초와 알코올의 연소 뒤 생긴 기체를 접촉시킨 석회수가 뿌옇게 됩니다. 이산화 탄소가 생겼음을 확인합니다.",
+      "observationVisible": true,
+      "drawings": 7,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "ice",
+        "stage": "after"
+      },
+      "controlLabels": [
+        "연소 공통 현상과 생성물 검출",
+        "알코올",
+        "석회수",
+        "연소 뒤 확인"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "combustion-products",
+      "variant": "initial",
+      "file": "burning-conditions-combustion-products-initial-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "같은 검출 도구의 처음 모습을 먼저 확인합니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "ice",
+        "stage": "after"
+      },
+      "controlLabels": [
+        "연소 공통 현상과 생성물 검출",
+        "양초",
+        "염화 코발트 종이",
+        "연소 전"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "mix-change",
+      "variant": "changed",
+      "file": "burning-conditions-mix-change-changed-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "물에 소금이 녹아도 물을 증발시키면 소금을 다시 얻습니다. 소금이 보이지 않는 것만으로 새 물질이 되었다고 판단하지 않습니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "ice",
+        "stage": "after"
+      },
+      "controlLabels": [
+        "서로 다른 물질 섞기",
+        "물과 소금",
+        "변화 뒤"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "mix-change",
+      "variant": "initial",
+      "file": "burning-conditions-mix-change-initial-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "섞기 전의 모습과 섞은 뒤의 변화를 비교합니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "ice",
+        "stage": "after"
+      },
+      "controlLabels": [
+        "서로 다른 물질 섞기",
+        "식초와 탄산수소 나트륨",
+        "처음"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-combined-last",
+      "file": "burning-conditions-supplement-only-combined-last-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "얼음이 녹아 물이 되어도 물이라는 물질 자체는 달라지지 않습니다. 상태가 달라진 변화입니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "ice",
+        "stage": "after"
+      },
+      "controlLabels": [
+        "얼음 녹이기",
+        "변화 뒤"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-initial",
+      "file": "burning-conditions-supplement-only-initial-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "처음 물질의 모양과 성질을 관찰합니다. 변화한 뒤에도 같은 물질인지 비교합니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "paper",
+        "stage": "before"
+      },
+      "controlLabels": [
+        "종이 자르기",
+        "처음"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-kind-burn",
+      "file": "burning-conditions-supplement-only-kind-burn-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "처음 물질의 모양과 성질을 관찰합니다. 변화한 뒤에도 같은 물질인지 비교합니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "burn",
+        "stage": "before"
+      },
+      "controlLabels": [
+        "종이 태운 결과",
+        "처음"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-kind-ice",
+      "file": "burning-conditions-supplement-only-kind-ice-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "처음 물질의 모양과 성질을 관찰합니다. 변화한 뒤에도 같은 물질인지 비교합니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "ice",
+        "stage": "before"
+      },
+      "controlLabels": [
+        "얼음 녹이기",
+        "처음"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-kind-paper",
+      "file": "burning-conditions-supplement-only-kind-paper-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "처음 물질의 모양과 성질을 관찰합니다. 변화한 뒤에도 같은 물질인지 비교합니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "paper",
+        "stage": "before"
+      },
+      "controlLabels": [
+        "종이 자르기",
+        "처음"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-stage-after",
+      "file": "burning-conditions-supplement-only-stage-after-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "종이를 잘라도 종이라는 물질의 성질은 그대로이고 크기와 모양이 달라집니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "paper",
+        "stage": "after"
+      },
+      "controlLabels": [
+        "종이 자르기",
+        "변화 뒤"
+      ]
+    },
+    {
+      "slug": "burning-conditions",
+      "id": "supplement",
+      "variant": "only-stage-before",
+      "file": "burning-conditions-supplement-only-stage-before-chromium.webp",
+      "title": "물질의 성질이 달라지는 변화 비교",
+      "text": "처음 물질의 모양과 성질을 관찰합니다. 변화한 뒤에도 같은 물질인지 비교합니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "paper",
+        "stage": "before"
+      },
+      "controlLabels": [
+        "종이 자르기",
+        "처음"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "efficient-house",
+      "variant": "changed",
+      "file": "heat-transfer-efficient-house-changed-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "처음 실내 온도는 두 집 모두 35 ℃입니다. 기준 집은 단열재 없이 창문을 닫았습니다. 벽이나 창문 조건 중 하나만 바꾸어 온도가 얼마나 유지되는지 비교하세요.",
+      "observationVisible": true,
+      "drawings": 6,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "insulation",
+        "stage": "after",
+        "hot": "80",
+        "cold": "40",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "에너지를 아끼는 집 비교",
+        "단열재 있음",
+        "열림",
+        "20분"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "efficient-house",
+      "variant": "initial",
+      "file": "heat-transfer-efficient-house-initial-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "처음 실내 온도는 두 집 모두 35 ℃입니다. 기준 집은 단열재 없이 창문을 닫았습니다. 벽이나 창문 조건 중 하나만 바꾸어 온도가 얼마나 유지되는지 비교하세요.",
+      "observationVisible": true,
+      "drawings": 6,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "insulation",
+        "stage": "after",
+        "hot": "80",
+        "cold": "40",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "에너지를 아끼는 집 비교",
+        "단열재 있음",
+        "닫힘",
+        "10분"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-cold-20",
+      "file": "heat-transfer-supplement-only-cold-20-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "80 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-cold-40",
+      "file": "heat-transfer-supplement-only-cold-40-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "80",
+        "cold": "40",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "80 ℃",
+        "40 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-combined-last",
+      "file": "heat-transfer-supplement-only-combined-last-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "15분 뒤 단열재로 감싼 물은 65.8 ℃, 감싸지 않은 물은 41.0 ℃입니다. 둘 다 식지만 단열재가 있으면 온도가 더 천천히 내려갑니다.",
+      "observationVisible": true,
+      "drawings": 10,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "insulation",
+        "stage": "after",
+        "hot": "80",
+        "cold": "40",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "단열 비교",
+        "변화 뒤",
+        "15분"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-hot-60",
+      "file": "heat-transfer-supplement-only-hot-60-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "60",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "60 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-hot-80",
+      "file": "heat-transfer-supplement-only-hot-80-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "80 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-initial",
+      "file": "heat-transfer-supplement-only-initial-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "80 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-kind-contact",
+      "file": "heat-transfer-supplement-only-kind-contact-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "80 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-kind-convection",
+      "file": "heat-transfer-supplement-only-kind-convection-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "물의 아래쪽을 가열하기 전과 후를 비교합니다. 색과 화살표는 물의 움직임을 보기 쉽게 한 표시입니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "convection",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "물의 대류",
+        "처음"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-kind-insulation",
+      "file": "heat-transfer-supplement-only-kind-insulation-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "처음에는 두 용기의 온도가 같습니다. 단열재 유무만 다르게 하고, 같은 시간이 지난 뒤 온도를 비교하세요.",
+      "observationVisible": true,
+      "drawings": 10,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "insulation",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "단열 비교",
+        "처음",
+        "15분"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-kind-radiation",
+      "file": "heat-transfer-supplement-only-kind-radiation-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "빛을 비추기 전의 물체 온도를 기록하고, 빛을 받은 뒤와 비교합니다.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "radiation",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "빛에 의한 열 이동",
+        "처음"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-stage-after",
+      "file": "heat-transfer-supplement-only-stage-after-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "따뜻한 물의 온도는 내려가고 차가운 물의 온도는 올라갑니다. 열이 온도가 높은 쪽에서 낮은 쪽으로 이동하기 때문입니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "after",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "변화 뒤",
+        "80 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "heat-transfer",
+      "id": "supplement",
+      "variant": "only-stage-before",
+      "file": "heat-transfer-supplement-only-stage-before-chromium.webp",
+      "title": "접촉·대류·복사와 단열",
+      "text": "온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.",
+      "observationVisible": true,
+      "drawings": 4,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "contact",
+        "stage": "before",
+        "hot": "80",
+        "cold": "20",
+        "minutes": "15"
+      },
+      "controlLabels": [
+        "두 물체의 접촉",
+        "처음",
+        "80 ℃",
+        "20 ℃"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "supplement",
+      "variant": "only-combined-last",
+      "file": "sound-vibration-supplement-only-combined-last-chromium.webp",
+      "title": "소리의 전달과 소음 줄이기",
+      "text": "창문을 열면 바깥 소리가 더 잘 전달될 수 있습니다. 소리의 높낮이는 그대로 두고 전달되는 크기만 비교합니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "noise",
+        "condition": "off"
+      },
+      "controlLabels": [
+        "같은 소리의 소음 줄이기",
+        "창문을 열음"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "supplement",
+      "variant": "only-condition-off",
+      "file": "sound-vibration-supplement-only-condition-off-chromium.webp",
+      "title": "소리의 전달과 소음 줄이기",
+      "text": "실이 느슨하면 진동이 잘 전달되지 않아 듣는 소리가 약해질 수 있습니다. 컵·실과 말하는 소리의 크기를 같게 합니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "string",
+        "condition": "off"
+      },
+      "controlLabels": [
+        "실 전화기",
+        "실을 느슨하게"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "supplement",
+      "variant": "only-condition-on",
+      "file": "sound-vibration-supplement-only-condition-on-chromium.webp",
+      "title": "소리의 전달과 소음 줄이기",
+      "text": "실이 팽팽하면 컵의 진동이 실을 통해 더 잘 전달됩니다. 실을 느슨하게 한 경우와 비교해 보세요.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "string",
+        "condition": "on"
+      },
+      "controlLabels": [
+        "실 전화기",
+        "실을 팽팽하게"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "supplement",
+      "variant": "only-initial",
+      "file": "sound-vibration-supplement-only-initial-chromium.webp",
+      "title": "소리의 전달과 소음 줄이기",
+      "text": "실이 팽팽하면 컵의 진동이 실을 통해 더 잘 전달됩니다. 실을 느슨하게 한 경우와 비교해 보세요.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "string",
+        "condition": "on"
+      },
+      "controlLabels": [
+        "실 전화기",
+        "실을 팽팽하게"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "supplement",
+      "variant": "only-kind-noise",
+      "file": "sound-vibration-supplement-only-kind-noise-chromium.webp",
+      "title": "소리의 전달과 소음 줄이기",
+      "text": "창문을 닫으면 소리의 전달을 줄일 수 있습니다. 창문을 열었을 때와 같은 듣는 위치에서 비교하세요.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "noise",
+        "condition": "on"
+      },
+      "controlLabels": [
+        "같은 소리의 소음 줄이기",
+        "창문을 닫음"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "supplement",
+      "variant": "only-kind-string",
+      "file": "sound-vibration-supplement-only-kind-string-chromium.webp",
+      "title": "소리의 전달과 소음 줄이기",
+      "text": "실이 팽팽하면 컵의 진동이 실을 통해 더 잘 전달됩니다. 실을 느슨하게 한 경우와 비교해 보세요.",
+      "observationVisible": true,
+      "drawings": 2,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "string",
+        "condition": "on"
+      },
+      "controlLabels": [
+        "실 전화기",
+        "실을 팽팽하게"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "tuning-fork",
+      "variant": "changed",
+      "file": "sound-vibration-tuning-fork-changed-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "소리 나는 소리굽쇠는 떨립니다. 물 표면이나 가벼운 공에 닿게 하면 물방울이나 공의 움직임으로 작은 떨림을 확인할 수 있습니다.",
+      "observationVisible": true,
+      "drawings": 3,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "noise",
+        "condition": "off"
+      },
+      "controlLabels": [
+        "소리굽쇠의 떨림 확인",
+        "친 뒤",
+        "가벼운 공"
+      ]
+    },
+    {
+      "slug": "sound-vibration",
+      "id": "tuning-fork",
+      "variant": "initial",
+      "file": "sound-vibration-tuning-fork-initial-chromium.webp",
+      "title": "실험과 관찰 기록",
+      "text": "소리굽쇠를 치기 전에는 물이나 공에 같은 변화가 나타나지 않습니다. 전후를 비교하세요.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "noise",
+        "condition": "off"
+      },
+      "controlLabels": [
+        "소리굽쇠의 떨림 확인",
+        "치기 전",
+        "없음"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-combined-last",
+      "file": "stars-universe-supplement-only-combined-last-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "우리은하는 중심부가 두드러진 원반 모양의 막대 나선 은하이며, 태양계는 중심에서 떨어진 원반에 있습니다. 원반의 지름은 대략 10만 광년 규모입니다.",
+      "observationVisible": true,
+      "drawings": 10,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "galaxy",
+        "distance": "near",
+        "position": "right",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "우리은하·성운·성단",
+        "우리은하"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-distance-far",
+      "file": "stars-universe-supplement-only-distance-far-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "지구가 공전하여 관측 위치가 달라지면 가까운 별은 먼 배경 별에 대해 위치가 달라 보입니다. 같은 관측 간격에서 가까운 별일수록 이 변화가 큽니다. 연주 시차는 6개월 간격 최대 각도 차이의 절반입니다.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "parallax",
+        "distance": "far",
+        "position": "left",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "연주 시차",
+        "더 먼 별",
+        "처음 위치"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-distance-near",
+      "file": "stars-universe-supplement-only-distance-near-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "지구가 공전하여 관측 위치가 달라지면 가까운 별은 먼 배경 별에 대해 위치가 달라 보입니다. 같은 관측 간격에서 가까운 별일수록 이 변화가 큽니다. 연주 시차는 6개월 간격 최대 각도 차이의 절반입니다.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "parallax",
+        "distance": "near",
+        "position": "left",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "연주 시차",
+        "가까운 별",
+        "처음 위치"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-initial",
+      "file": "stars-universe-supplement-only-initial-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "지구가 공전하여 관측 위치가 달라지면 가까운 별은 먼 배경 별에 대해 위치가 달라 보입니다. 같은 관측 간격에서 가까운 별일수록 이 변화가 큽니다. 연주 시차는 6개월 간격 최대 각도 차이의 절반입니다.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "parallax",
+        "distance": "near",
+        "position": "left",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "연주 시차",
+        "가까운 별",
+        "처음 위치"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-kind-galaxy",
+      "file": "stars-universe-supplement-only-kind-galaxy-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "우리은하는 중심부가 두드러진 원반 모양의 막대 나선 은하이며, 태양계는 중심에서 떨어진 원반에 있습니다. 원반의 지름은 대략 10만 광년 규모입니다.",
+      "observationVisible": true,
+      "drawings": 10,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "galaxy",
+        "distance": "near",
+        "position": "left",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "우리은하·성운·성단",
+        "우리은하"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-kind-parallax",
+      "file": "stars-universe-supplement-only-kind-parallax-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "지구가 공전하여 관측 위치가 달라지면 가까운 별은 먼 배경 별에 대해 위치가 달라 보입니다. 같은 관측 간격에서 가까운 별일수록 이 변화가 큽니다. 연주 시차는 6개월 간격 최대 각도 차이의 절반입니다.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "parallax",
+        "distance": "near",
+        "position": "left",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "연주 시차",
+        "가까운 별",
+        "처음 위치"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-position-left",
+      "file": "stars-universe-supplement-only-position-left-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "지구가 공전하여 관측 위치가 달라지면 가까운 별은 먼 배경 별에 대해 위치가 달라 보입니다. 같은 관측 간격에서 가까운 별일수록 이 변화가 큽니다. 연주 시차는 6개월 간격 최대 각도 차이의 절반입니다.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "parallax",
+        "distance": "near",
+        "position": "left",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "연주 시차",
+        "가까운 별",
+        "처음 위치"
+      ]
+    },
+    {
+      "slug": "stars-universe",
+      "id": "supplement",
+      "variant": "only-position-right",
+      "file": "stars-universe-supplement-only-position-right-chromium.webp",
+      "title": "연주 시차와 우리은하 관찰",
+      "text": "지구가 공전하여 관측 위치가 달라지면 가까운 별은 먼 배경 별에 대해 위치가 달라 보입니다. 같은 관측 간격에서 가까운 별일수록 이 변화가 큽니다. 연주 시차는 6개월 간격 최대 각도 차이의 절반입니다.",
+      "observationVisible": true,
+      "drawings": 1,
+      "photos": [],
+      "clippedLabels": [],
+      "overflow": false,
+      "state": {
+        "kind": "parallax",
+        "distance": "near",
+        "position": "right",
+        "object": "galaxy"
+      },
+      "controlLabels": [
+        "연주 시차",
+        "가까운 별",
+        "6개월 뒤 반대쪽"
+      ]
+    }
+  ]
+}

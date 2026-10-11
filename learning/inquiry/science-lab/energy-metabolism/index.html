@@ -82,10 +82,10 @@
                     </fieldset>
 
                     <fieldset class="pick-field">
-                        <legend>세포질 NADH 셔틀</legend>
+                        <legend>세포질 NADH의 전자 전달</legend>
                         <div class="pick-buttons cols2">
-                            <button type="button" data-shuttle="malate">말산·아스파르트산<small>NADH로 전달</small></button>
-                            <button type="button" data-shuttle="g3p">글리세롤 인산<small>FADH₂로 전달</small></button>
+                            <button type="button" data-shuttle="malate">말산·아스파르트산<small>NADH 경로</small></button>
+                            <button type="button" data-shuttle="g3p">글리세롤 인산<small>FAD 경로</small></button>
                         </div>
                     </fieldset>
                 </div>
@@ -183,11 +183,11 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>기질 수준 인산화로 4개, 전자전달계에서 26~28개가 만들어집니다. 세포질의 NADH를 어느 셔틀로 들여보내느냐에 따라 30개나 32개가 됩니다.</p>
+                    <p class="answer-explanation" hidden>이 모형에서는 기질 수준 인산화로 4개, 산화적 인산화로 약 26~28개가 만들어집니다. 세포질 NADH의 전자를 전달하는 셔틀에 따라 총 ATP 수를 약 30개 또는 32개로 계산합니다. 실제 합성량은 세포의 조건에 따라 달라집니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>발효가 ATP를 아주 조금밖에 못 만드는 까닭은?</h3>
+                    <h3>젖산 발효에서 포도당 1분자당 순생성 ATP가 적은 까닭은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q4" value="a"> 포도당이 끝까지 분해되지 않아 에너지가 젖산에 남아서</label>
                         <label><input type="radio" name="q4" value="b"> 해당 과정이 일어나지 않아서</label>
@@ -196,14 +196,14 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>발효에서도 해당 과정은 그대로 일어납니다. 다만 산소가 없어 전자전달계를 돌리지 못하므로 피루브산을 젖산으로 바꿔 NAD⁺를 재생할 뿐이고, 에너지 대부분은 젖산 속에 그대로 남습니다.</p>
+                    <p class="answer-explanation" hidden>해당 과정에서 ATP 2개가 순생성되고, 피루브산을 젖산으로 바꾸면서 NAD⁺를 재생합니다. 전자 전달계의 산화적 인산화로 추가 ATP를 얻지 않고 많은 화학 에너지가 젖산에 남습니다. 모든 발효가 젖산을 만든다는 뜻은 아닙니다.</p>
                 </article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=81ae3cc4a482"></script>
+    <script src="app.js?v=5c578b374255"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=7e39dbac06b5"></script>
+    <script src="../exam-scope.js?v=f560e240ce7f"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>

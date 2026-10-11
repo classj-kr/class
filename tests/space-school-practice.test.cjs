@@ -7,8 +7,20 @@ const context = { window: {} };
 for (const file of ['space-content', 'space-practice']) {
     vm.runInNewContext(fs.readFileSync(`learning/inquiry/curriculum/${file}.js`, 'utf8'), context);
 }
+vm.runInNewContext(fs.readFileSync('learning/inquiry/space/earth-moon/eclipse-school.js', 'utf8'), context);
 const levels = ['elementary', 'middle', 'high'];
 const catalog = context.window.SchoolContent;
+test('eclipse lessons and assessments keep detailed shadow terminology out of elementary and middle modes', () => {
+    for (const level of ['elementary', 'middle']) {
+        const profile = catalog['space-eclipses'][level];
+        const shown = JSON.stringify([profile.concepts, profile.sections, profile.questions]);
+        assert.doesNotMatch(shown, /본그림자|반그림자|반영월식|시직경|교점/);
+        assert.ok(profile.questions.length >= 3);
+    }
+    assert.equal(catalog['space-eclipses'].elementary.curriculumScope, 'extension');
+    assert.doesNotMatch(JSON.stringify(catalog['space-eclipses'].elementary.sections), /삭|공전 궤도/);
+    assert.equal(catalog['space-eclipses'].middle.subject, '과학 1');
+});
 const banks = {};
 for (const app of ['solar-system', 'constellations', 'earth-moon']) {
     const source = fs.readFileSync(`learning/inquiry/space/${app}/app.js`, 'utf8');

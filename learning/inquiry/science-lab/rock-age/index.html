@@ -81,7 +81,8 @@
                     <div class="prediction-buttons three">
                         <button type="button" data-prediction="p1">절반 이상</button>
                         <button type="button" data-prediction="p2">절반 이하</button>
-                        <button type="button" data-prediction="p3">거의 없음</button>
+                        <button type="button" data-prediction="p3">3% 미만</button>
+                        <button type="button" data-prediction="p4" hidden>시료 근거 부족</button>
                     </div>
                 </fieldset>
 
@@ -124,9 +125,9 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>반감기</strong> 방사성 원소가 절반으로 줄어드는 데 걸리는 시간입니다. 일반적인 지질학적 온도·압력 조건에서 거의 일정하기 때문에, 이것이 믿을 만한 시계가 됩니다. 모원소와 딸원소의 비만 재면 몇 번의 반감기가 지났는지 알 수 있습니다.</p>
-                <p><strong>쓸 수 있는 범위</strong> 반감기보다 훨씬 짧은 시간이 지났다면 딸원소가 너무 적어 재기 어렵고, 반감기의 열 배가 넘게 지났다면 모원소가 거의 남지 않아 역시 재기 어렵습니다. 그래서 비교적 최근의 생물 유래 유기물에는 ¹⁴C를, 오래된 암석에는 ⁴⁰K나 ²³⁸U를 씁니다.</p>
-                <p><strong>상대 연령의 한계</strong> 누중·관입·부정합으로 앞뒤 순서는 알 수 있지만, 서로 만나지 않는 두 구조의 순서는 알 수 없고 몇 년 전인지는 더더욱 알 수 없습니다. 절대 연령이 있어야 비로소 순서에 숫자가 붙습니다.</p>
+                <p><strong>반감기</strong> 방사성 원소가 절반으로 줄어드는 데 걸리는 시간입니다. 일반적인 지질학적 온도·압력 조건에서 거의 일정하기 때문에, 이것이 믿을 만한 시계가 됩니다. 초기 딸원소와 외부 출입, 붕괴 분기 등의 조건을 확인한 뒤 모·자원소 또는 기준 동위원소의 비율을 이용합니다.</p>
+                <p><strong>쓸 수 있는 범위</strong> 적합한 시료와 동위원소, 보존 상태와 장비의 감도를 함께 확인합니다. 화면의 모원소 0.1~99.9% 구간은 감도 비교용 가정이며 실제 측정 가능 연대를 정하는 보편적 기준이 아닙니다. 탄소-14는 비교적 최근의 유기물에 쓰고, K–Ar법이나 U–Pb법은 적절한 광물을 선택합니다.</p>
+                <p><strong>상대 연령의 한계</strong> 누중·관입·부정합 등의 관계로 사건의 선후를 제한합니다. 직접 만나지 않아도 공통 지층과의 관계로 순서를 추론할 수 있지만, 근거가 부족하면 미정으로 남겨야 합니다. 광물의 형성 연대와 퇴적·단층 운동 시점을 곧바로 같게 보지 않습니다.</p>
             </div>
         </section>
 
@@ -162,34 +163,34 @@
                 <article class="quiz-card" data-answer="a">
                     <h3>2억 년 된 암석의 나이를 ¹⁴C로 잴 수 없는 까닭은?</h3>
                     <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="a"> 반감기가 너무 짧아 모원소가 남아 있지 않아서</label>
+                        <label><input type="radio" name="q3" value="a"> 반감기가 너무 짧아 남은 ¹⁴C를 유효하게 측정하기 어려워서</label>
                         <label><input type="radio" name="q3" value="b"> 반감기가 너무 길어서</label>
                         <label><input type="radio" name="q3" value="c"> 암석에는 탄소가 없어서</label>
                         <label><input type="radio" name="q3" value="d"> 딸원소가 너무 많아서</label>
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>¹⁴C의 반감기는 5730년입니다. 2억 년이면 반감기가 3만 번 넘게 지난 셈이라 모원소가 하나도 남지 않아 잴 것이 없습니다.</p>
+                    <p class="answer-explanation" hidden>¹⁴C의 반감기는 약 5730년으로 2억 년에 비해 매우 짧습니다. 유효한 측정 범위를 크게 벗어나며, 보통 암석의 생성 연대에는 적합한 다른 방사성 동위원소계를 선택합니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>서로 만나지 않는 단층과 관입암의 선후를 알려면?</h3>
+                    <h3>그림에서 직접 교차하지 않는 단층과 관입암의 선후가 아직 정해지지 않았다. 필요한 추가 근거는?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q4" value="a"> 누중의 법칙을 쓴다</label>
                         <label><input type="radio" name="q4" value="b"> 더 큰 쪽이 오래된 것이다</label>
                         <label><input type="radio" name="q4" value="c"> 더 아래 있는 쪽이 오래된 것이다</label>
-                        <label><input type="radio" name="q4" value="d"> 절대 연령을 재어 비교한다</label>
+                        <label><input type="radio" name="q4" value="d"> 다른 지층과의 절단 관계, 관련 암석의 연대 등 독립적인 증거</label>
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>상대 연령은 서로 자르거나 얹혀 있을 때만 순서를 말해 줍니다. 만나지 않는 두 구조는 방사성 동위 원소로 각각의 나이를 재어야 비교할 수 있습니다.</p>
+                    <p class="answer-explanation" hidden>직접 교차하지 않아도 공통 지층을 자르는 관계 등 추가 증거로 순서를 제한할 수 있습니다. 관입암은 적절한 광물의 방사성 연대를 사용할 수 있지만 단층 운동 시점을 아무 시료로나 직접 측정할 수는 없습니다.</p>
                 </article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=eba9263b1867"></script>
+    <script src="app.js?v=13b637a7216f"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=7e39dbac06b5"></script>
+    <script src="../exam-scope.js?v=f560e240ce7f"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>

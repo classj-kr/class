@@ -315,9 +315,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${TX}" y="52">퀴리 온도 ${fmtN(f.Tc)} ℃ (${fmtN(f.Tc + 273)} K)</text>`;
         out += `<text class="trait-text" x="${TX}" y="70">가열 온도 ${T} ℃ (${T + 273} K)</text>`;
         out += `<text class="trait-text" x="${TX}" y="88">T/Tc = ${fmtN((T + 273) / (f.Tc + 273), 2)}</text>`;
-        out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="110">자기화 M/M₀ = ${fmtN(ratio, 2)}</text>`;
+        out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="110">자발 자기화 M/M₀ = ${fmtN(ratio, 2)}</text>`;
         out += `<text class="small-label" x="${TX}" y="130">${T >= f.Tc ? '퀴리 온도 위 — 자기 구역 사라짐' : 'M/M₀ ≈ (1 − T/Tc)^⅓ (대략)'}</text>`;
-        out += `<text class="small-label" x="${TX}" y="144">${T >= f.Tc ? '상자성체처럼 아주 약하게만 끌림' : `끌리는 힘은 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %`}</text>`;
+        out += `<text class="small-label" x="${TX}" y="144">${T >= f.Tc ? '상자성체처럼 아주 약하게만 끌림' : `자발 자기화는 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %`}</text>`;
         const VERD = { strong: '세게 붙음', weak: '약하게 붙음', none: '안 붙음' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${T} ℃의 ${f.label}: M/M₀ = ${fmtN(ratio, 2)} — ${VERD[a.verdict]}` : `${f.label} · ${T} ℃로 달구고 자석 대기`}</text>`;
         out += `<text class="note-text" x="20" y="208">노란 화살은 자기 구역의 방향. 자기화 곡선은 퀴리 온도 근처의 어림식이고, 식으면 다시 강자성체가 됩니다</text>`;
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function graphCurie(a) {
         const X0 = 60, X1 = 420, Y0 = 150, Y1 = 40, TM = 1300, xOf = T => X0 + T / TM * (X1 - X0), yOf = r => Y0 - clamp(r, 0, 1) * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">온도에 따른 자기화 M/M₀ — 퀴리 온도에서 0이 됩니다</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">온도에 따른 자발 자기화 M/M₀ — 퀴리 온도에서 0이 됩니다</text>`;
         [0, 200, 400, 600, 800, 1000, 1200].forEach(T => { out += `<line class="grid-line" x1="${xOf(T).toFixed(1)}" y1="${Y1}" x2="${xOf(T).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(T).toFixed(1)}" y="${Y0 + 14}" text-anchor="${T === 0 ? 'start' : 'middle'}">${T} ℃</text>`; });
         [0, 0.5, 1].forEach(r => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(r).toFixed(1)}" x2="${X1}" y2="${yOf(r).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(r) + 3.5).toFixed(1)}" text-anchor="end">${r}</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="small-label" style="fill:${cols[k]}" x="${(xOf(f.Tc) + (k === 'co' ? -6 : 6)).toFixed(1)}" y="${Y1 + 12 + { fe: 0, ni: 14, co: 28 }[k]}" text-anchor="${k === 'co' ? 'end' : 'start'}">${f.label} ${f.Tc} ℃</text>`;
         });
         out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(a.T).toFixed(1)}" cy="${yOf(a.ratio).toFixed(1)}" r="4.5"/>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">온도 — 뜨거워질수록 열운동이 정렬을 흐트러뜨려 자기화가 줄어듭니다</text>`;
+        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">온도 — 뜨거워질수록 열운동이 정렬을 흐트러뜨려 자발 자기화가 줄어듭니다</text>`;
         return out;
     }
 
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ strong: '세게 끌림', weak: '아주 약하게 끌림', repel: '아주 약하게 밀림' }[a.verdict]}</span></div>`;
         }
         return `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${a.T + 273} K, ${a.f.label}의 퀴리 온도 ${fmtN(a.f.Tc)} ℃ = ${fmtN(a.f.Tc + 273)} K → T/Tc = ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)}</span></div>` +
-            `<div class="data-row"><span class="data-name">자기화</span><span class="data-val">${a.T >= a.f.Tc ? '퀴리 온도 위라 0 (자기 구역 없음)' : `(1 − ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)})^⅓ = ${fmtN(a.ratio, 2)} (실온 ${fmtN(Math.pow(1 - 293 / (a.f.Tc + 273), 1 / 3), 2)})`}</span></div>` +
+            `<div class="data-row"><span class="data-name">자기화</span><span class="data-val">${a.T >= a.f.Tc ? '자발 자기화 0 · 외부 장에 대한 상자성 반응은 남음' : `(1 − ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)})^⅓ = ${fmtN(a.ratio, 2)} (실온 ${fmtN(Math.pow(1 - 293 / (a.f.Tc + 273), 1 / 3), 2)})`}</span></div>` +
             `<div class="data-row"><span class="data-name">자석에</span><span class="data-val">${a.verdict === 'strong' ? '자기 구역이 정렬해 세게 붙음' : a.verdict === 'weak' ? '정렬이 많이 흐트러져 약하게 붙음' : '상자성체처럼 아주 약하게만 끌려 붙지 않음'}</span></div>` +
             `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ strong: '세게 붙음', weak: '약하게 붙음', none: '안 붙음' }[a.verdict]}</span></div>`;
     }
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = a.kind === 'motor' ? `${TURNS[state.turns].label} · ${CURRENTS[state.current].label} · 정류자 ${COMMS[state.comm].label}` : a.kind === 'material' ? `${a.m.label} · ${a.m.hint}` : `${a.f.label} · ${a.T} ℃`;
         methodHint.textContent = a.kind === 'motor' ? '돌림힘은 감은 수 × 전류 × 넓이 × 자기장, 정류자가 반 바퀴마다 전류를 뒤집습니다'
             : a.kind === 'material' ? '강자성체는 세게 끌리고, 상자성체는 아주 약하게 끌리고, 반자성체는 아주 약하게 밀립니다'
-                : '퀴리 온도를 넘으면 열운동이 자기 구역을 흐트러뜨려 자성을 잃습니다';
+                : '퀴리 온도 위에서는 강자성 질서가 사라지고 약한 상자성 반응이 남습니다';
         dataNote.innerHTML = noteFor(a);
         return a;
     }
@@ -416,10 +416,10 @@ document.addEventListener('DOMContentLoaded', () => {
             else s = `${m.label}는 반자성체라 자기장을 걸면 반대 방향으로 자기화됩니다. 자화율 ${fmtN(m.chi * 1e6, Math.abs(m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶으로 힘은 ${fmtF(F)}, 곧 자석에서 밀려나며 저울 눈금이 ${fmtN(-F / 9.8 * 1000, 2)} g 무거워집니다. 물도 반자성체라 아주 센 자석(16 T) 위에서는 물이 많은 개구리가 떠오릅니다.`;
         } else {
             const { f, T, ratio } = a;
-            labelA.textContent = '자기화 M/M₀'; valueA.textContent = fmtN(ratio, 2);
+            labelA.textContent = '자발 자기화 M/M₀'; valueA.textContent = fmtN(ratio, 2);
             labelB.textContent = '퀴리 온도'; valueB.textContent = `${fmtN(f.Tc)} ℃`;
             s = `${f.label}의 퀴리 온도는 ${fmtN(f.Tc)} ℃입니다. ${T} ℃로 달구면 T/Tc = ${fmtN((T + 273) / (f.Tc + 273), 2)}이고, `;
-            if (a.verdict === 'none') s += `퀴리 온도를 넘어 열운동이 원자 자석의 정렬을 완전히 흐트러뜨려 자기 구역이 사라집니다. 자석을 대도 상자성체처럼 아주 약하게만 끌려 붙지 않습니다. 식혀서 퀴리 온도 아래로 내려오면 자기 구역이 다시 생겨 강자성체로 돌아옵니다.`;
+            if (a.verdict === 'none') s += `퀴리 온도를 넘어 열운동이 원자 자석의 정렬을 완전히 흐트러뜨려 자기 구역이 사라집니다. 자석을 대도 약한 상자성 반응은 남습니다. 그림은 이 작은 반응을 생략한 모형이며, 실제 붙는지는 장의 세기·기울기와 지지 조건에 달려 있습니다. 식혀서 퀴리 온도 아래로 내려오면 자기 구역이 다시 생겨 강자성체로 돌아옵니다.`;
             else if (a.verdict === 'weak') s += `퀴리 온도에 가까워 자기화가 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %로 줄었습니다. 자기 구역은 남아 있지만 열운동에 많이 흐트러져 자석에 약하게만 붙고, 조금 더 데우면 떨어집니다.`;
             else s += `아직 퀴리 온도에서 멀어 자기화가 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %로 자기 구역이 잘 정렬합니다. 자석을 대면 세게 붙습니다.${T > 20 ? ` ${T} ℃로 달궈도 ${f.label}의 자성은 아직 남아 있습니다.` : ''}`;
         }

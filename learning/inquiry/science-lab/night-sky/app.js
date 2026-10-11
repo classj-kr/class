@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // angle east of the sun sets both its shape and where it sits at night.
     const SYNODIC = 29.53;
     const DAYS = [
-        { day: 1, label: '초하루 (1일)', name: '삭 — 보이지 않음' },
-        { day: 3, label: '초사흘 (3일)', name: '초승달' },
-        { day: 7.5, label: '7~8일', name: '상현달' },
-        { day: 15, label: '보름 (15일)', name: '보름달' },
-        { day: 22.5, label: '22~23일', name: '하현달' },
-        { day: 27, label: '27일', name: '그믐달' },
+        { day: 0, label: '삭', name: '보이지 않음' },
+        { day: 3, label: '초승달', name: '삭 이후 약 3일' },
+        { day: SYNODIC / 4, label: '상현달', name: '오른쪽 반이 밝음' },
+        { day: SYNODIC / 2, label: '보름달', name: '앞면 전체가 밝음' },
+        { day: SYNODIC * 3 / 4, label: '하현달', name: '왼쪽 반이 밝음' },
+        { day: 27, label: '그믐달', name: '삭 이후 약 27일' },
     ];
     const NIGHT_START = 18, NIGHT_END = 30;        // 6 pm to 6 am
     const ASK_HOUR = 19;                            // the prediction asks about 7 pm
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const state = {
         mode: 'moon',
-        day: 15,
+        day: SYNODIC / 2,
         season: 'spring',
         progress: 0, prediction: null,
     };
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildControls() {
         if (state.mode === 'moon') {
-            controlArea.innerHTML = pickRow('음력 날짜', 'day', DAYS.map(d => ({ value: String(d.day), label: d.label, hint: d.name })), state.day, 3);
+            controlArea.innerHTML = pickRow('달의 대표 모습', 'day', DAYS.map(d => ({ value: String(d.day), label: d.label, hint: d.name })), state.day, 3);
         } else {
             controlArea.innerHTML = '<p>북두칠성의 국자 끝 두 별을 이용해 북극성을 찾아보세요.</p>';
         }
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="sky-text" x="24" y="66">${!canSee ? '해 가까이 있어 보이지 않음' : Math.abs(ha) < 90 ? `${WHERE[where(ha)]} · 높이 ${Math.round(60 * Math.cos(ha * D2R))}°` : '지평선 아래'}</text>`;
         // The phase key is outside the sky: it is not a second Moon in the west.
         out += `<g data-phase-key><text class="phase-name" style="fill:#334155" x="405" y="27" text-anchor="end">모양: ${a.info.name}</text>${moonShape(430, 24, 9, a.e)}</g>`;
-        out += `<text class="verdict-text" style="fill:#0f172a" x="20" y="16">음력 ${a.info.label} · ${a.info.name} → 저녁 7시에 ${WHERE[a.verdict]}</text>`;
+        out += `<text class="verdict-text" style="fill:#0f172a" x="20" y="16">${a.info.label} · ${a.info.name} → 저녁 7시에 ${WHERE[a.verdict]}</text>`;
         out += `<text class="note-text" x="20" y="208">${a.rise ? `${hourText(a.rise)}에 떠서 ` : a.visibleAtStart ? '해 질 때 이미 떠 있어 ' : ''}${a.set ? `${hourText(a.set)}에 짐` : a.seen > 0 ? '새벽까지 보임' : '이 밤에는 보이지 않음'} · 밤새 보인 시간 ${a.seen.toFixed(1)}시간</text>`;
         return out;
     }
@@ -257,13 +257,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ------------------------------------------------------------ graphs */
     // a month of moons, the chosen day ringed
     function graphMoon(a) {
-        let out = `<text class="axis-title" x="20" y="20">한 달 동안 달의 모양 (음력 날짜)</text>`;
+        let out = `<text class="axis-title" x="20" y="20">한 달 동안 달의 모양 · 삭 이후 경과일</text>`;
         out += `<rect class="sky" x="12" y="28" width="436" height="152" rx="10"/>`;
-        for (let d = 1; d <= 30; d += 1) {
-            const col = (d - 1) % 10, row = Math.floor((d - 1) / 10);
+        for (let d = 0; d < 30; d += 1) {
+            const col = d % 10, row = Math.floor(d / 10);
             const cx = 39 + col * 42.4, cy = 52 + row * 46;
             const e = elongation(d);
-            const chosen = Math.abs(d - state.day) < 0.6 || (state.day === 7.5 && (d === 7 || d === 8)) || (state.day === 22.5 && (d === 22 || d === 23));
+            const chosen = Math.abs(d - state.day) < 0.6;
             if (chosen) out += `<circle fill="none" stroke="#38bdf8" stroke-width="2" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="16"/>`;
             out += moonShape(cx, cy, 11, e);
             out += `<text class="moon-day-text" x="${cx.toFixed(1)}" y="${(cy + 22).toFixed(1)}" text-anchor="middle">${d}</text>`;
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'moon') {
             const hour = moonHour(state.progress);
             const ha = moonHA(state.day, hour);
-            return `<div class="data-row"><span class="data-name">음력</span><span class="data-val">${a.info.label} · ${a.info.name}</span></div>` +
+            return `<div class="data-row"><span class="data-name">달의 모습</span><span class="data-val">${a.info.label} · ${a.info.name}</span></div>` +
                 `<div class="data-row"><span class="data-name">밝은 부분</span><span class="data-val">달의 ${Math.round(a.lit * 100)} %${a.e < 180 && a.lit > 0.01 && a.lit < 0.99 ? ' · 오른쪽이 밝음 (커지는 중)' : a.lit > 0.01 && a.lit < 0.99 ? ' · 왼쪽이 밝음 (작아지는 중)' : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${hourText(hour)} · ${a.lit < MIN_LIT ? '보이지 않음' : Math.abs(ha) < 90 ? WHERE[where(ha)] : '지평선 아래'}</span></div>` +
                 `<div class="data-row"><span class="data-name">저녁 7시</span><span class="data-val">${WHERE[a.verdict]}</span></div>` +
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const a = analyse();
         renderMain(a);
         graphGroup.innerHTML = a.kind === 'moon' ? graphMoon(a) : graphStars(a);
-        stageBadge.textContent = a.kind === 'moon' ? `음력 ${a.info.label}` : '북극성 찾기';
+        stageBadge.textContent = a.kind === 'moon' ? `${a.info.label}` : '북극성 찾기';
         methodHint.textContent = state.mode === 'moon'
             ? '달의 모양은 약 한 달을 주기로 초승달 → 상현달 → 보름달 → 하현달 → 그믐달로 바뀝니다'
             : '북두칠성의 국자 끝 두 별을 이어 북극성을 찾아보세요';
@@ -338,13 +338,13 @@ document.addEventListener('DOMContentLoaded', () => {
             predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             let s = '';
-            if (state.day === 1) s = `초하루의 달은 해와 같은 쪽에 있어 해와 함께 뜨고 집니다. 밤에는 지평선 아래에 있고, 낮에도 밝은 쪽이 해를 향해 있어 보이지 않습니다.`;
+            if (state.day === 0) s = `삭일 때 달은 해와 같은 쪽에 있어 해와 함께 뜨고 집니다. 밤에는 지평선 아래에 있고, 낮에도 밝은 쪽이 해를 향해 있어 보이지 않습니다.`;
             else if (state.day === 3) s = `초승달은 해보다 조금 늦게 지므로 해가 진 뒤 서쪽 하늘에 낮게 잠깐 보이고, ${hourText(a.set)}쯤 집니다. 오른쪽 아래가 가늘게 밝습니다.`;
-            else if (state.day === 7.5) s = `상현달은 해가 질 무렵 남쪽 하늘 높이 있어 저녁 내내 잘 보이다가 ${hourText(a.set)}쯤 서쪽으로 집니다. 오른쪽 반이 밝습니다.`;
-            else if (state.day === 15) s = `보름달은 해가 질 때 동쪽에서 떠서 한밤에 남쪽 하늘 가장 높이 있고 새벽에 서쪽으로 집니다. 해와 반대쪽에 있어 밤새 ${a.seen.toFixed(1)}시간 동안 보입니다.`;
-            else if (state.day === 22.5) s = `하현달은 ${hourText(a.rise)}쯤에야 동쪽에서 떠서 새벽에 남쪽 하늘에 있습니다. 저녁에는 아직 뜨지 않아 보이지 않고, 왼쪽 반이 밝습니다.`;
+            else if (state.day === SYNODIC / 4) s = `상현달은 해가 질 무렵 남쪽 하늘 높이 있어 저녁 내내 잘 보이다가 ${hourText(a.set)}쯤 서쪽으로 집니다. 오른쪽 반이 밝습니다.`;
+            else if (state.day === SYNODIC / 2) s = `보름달은 해가 질 때 동쪽에서 떠서 한밤에 남쪽 하늘 가장 높이 있고 새벽에 서쪽으로 집니다. 해와 반대쪽에 있어 밤새 ${a.seen.toFixed(1)}시간 동안 보입니다.`;
+            else if (state.day === SYNODIC * 3 / 4) s = `하현달은 ${hourText(a.rise)}쯤에야 동쪽에서 떠서 새벽에 남쪽 하늘에 있습니다. 저녁에는 아직 뜨지 않아 보이지 않고, 왼쪽 반이 밝습니다.`;
             else s = `그믐달은 해보다 조금 먼저 뜨므로 ${hourText(a.rise)}쯤 동쪽 하늘에 가늘게 보이다가 곧 해가 떠 사라집니다. 저녁에는 보이지 않습니다.`;
-            explanation.textContent = s;
+            explanation.textContent = s + " 이 시각은 대표적인 모형값입니다. 실제 출몰 시각과 보이는 방향은 날짜·계절·관측 장소에 따라 달라집니다.";
             return;
         }
         labelA.textContent = '저녁 9시'; labelB.textContent = '새벽 3시';
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkBtn.addEventListener('click', startRun);
     resetBtn.addEventListener('click', () => {
         stopRun();
-        Object.assign(state, { day: 15, season: 'spring', progress: 0, prediction: null });
+        Object.assign(state, { day: SYNODIC / 2, season: 'spring', progress: 0, prediction: null });
         modeButtons.find(b => b.dataset.mode === 'moon').click();
     });
 

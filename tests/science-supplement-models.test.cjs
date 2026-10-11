@@ -5,7 +5,7 @@ const {test}=require('node:test');
 const base='learning/inquiry/science-lab/';
 function models(){
  const ctx={window:{},location:{pathname:'/none/'}};
- vm.createContext(ctx);vm.runInContext(fs.readFileSync(base+'supplement-extra.js','utf8'),ctx);
+ vm.createContext(ctx);vm.runInContext(fs.readFileSync(base+'observation-scenes.js','utf8'),ctx);vm.runInContext(fs.readFileSync(base+'supplement-extra.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(base+'optics-comparison.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(base+'supplement-core.js','utf8'),ctx);
  // Expose the pure model registry in a test-only VM; production stays unmodified.

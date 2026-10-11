@@ -1,0 +1,13 @@
+{
+  "states": 22491,
+  "counts": {
+    "multiple": 92,
+    "light": 4409,
+    "co2": 3257,
+    "temp": 14656,
+    "none": 77
+  },
+  "problems": [],
+  "answers": 35,
+  "errors": []
+}

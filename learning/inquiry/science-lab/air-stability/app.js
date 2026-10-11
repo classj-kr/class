@@ -64,7 +64,7 @@ function envAt(z) { return state.temp - state.lapse * z; }
 // The lifted parcel, unbounded by the ridge, which is what the diagram plots.
 function liftedAt(z) {
     const c = crossing();
-    return z <= c.lcl ? c.T0 - GD * z : c.tLcl - GM * (z - c.lcl);
+    return z <= c.lcl ? c.T0 - GD * z : c.T0 - GD * c.lcl - GM * (z - c.lcl);
 }
 // Level of free convection: where a saturated parcel first becomes warmer than
 // its surroundings and can keep going on its own.
@@ -77,7 +77,7 @@ function freeConvection() {
     return null;
 }
 
-function verdict() { return state.lapse < GM ? 'p1' : (state.lapse < GD ? 'p2' : 'p3'); }
+function verdict() { if(Math.abs(state.lapse-GM)<1e-9||Math.abs(state.lapse-GD)<1e-9)return 'p4'; return state.lapse < GM ? 'p1' : (state.lapse < GD ? 'p2' : 'p3'); }
 
 function analyse() {
     const c = crossing();
@@ -293,7 +293,7 @@ function render() {
     updateReadout();
 }
 
-const WORDS = { p1: '절대 안정', p2: '조건부 불안정', p3: '절대 불안정' };
+const WORDS = { p1: '절대 안정', p2: '조건부 불안정', p3: '절대 불안정', p4: '단열감률과 같은 경계' };
 
 function updateReadout() {
     const a = analyse();
@@ -307,7 +307,7 @@ function updateReadout() {
         ['넘은 뒤 습도 변화', `${Math.round(a.rh0)}% → ${Math.round(a.rhLee)}%`, false],
         ['버린 물의 양', a.cloudy ? `${fmt(a.rain, 2)} g/kg` : '없음', false],
         ['대기 안정도', `${WORDS[a.verdict]} · 환경 감률 ${fmt(state.lapse, 1)} ℃/km`, a.verdict !== 'p3'],
-        ['자유 대류 고도', state.lapse >= GD ? '지표부터 이미 떠오름'
+        ['자유 대류 고도', state.lapse > GD ? '지표부터 이미 떠오름'
             : (a.lfc === null ? '4 km 안에는 없음' : `${Math.round(a.lfc * 1000)} m`), false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
@@ -339,14 +339,16 @@ function explain(a) {
         s += `결국 오를 때 덜 식고 내릴 때 다 데워진 만큼인 (9.8 − 5.0) × ${fmt(a.H - a.lcl, 2)} km = ${fmt(a.warming, 1)} ℃가 고스란히 남습니다. 습도는 ${Math.round(a.rh0)}%에서 ${Math.round(a.rhLee)}%로 떨어졌고, 이것이 푄 현상입니다. `;
     } else {
         s += `그런데 산이 ${state.height} m밖에 되지 않아 공기가 응결 고도까지 올라가지 못합니다. 구름도 비도 없이 그냥 넘어갑니다. `;
-        s += `오를 때도 내릴 때도 똑같이 9.8 ℃/km이고 오른 높이와 내린 높이가 같으므로, 기온은 정확히 ${fmt(a.tLee, 1)} ℃로 제자리에 돌아옵니다. 푄 현상은 비를 버려야만 일어난다는 뜻입니다. `;
+        s += `오를 때도 내릴 때도 똑같이 9.8 ℃/km이고 오른 높이와 내린 높이가 같으므로, 기온은 정확히 ${fmt(a.tLee, 1)} ℃로 제자리에 돌아옵니다. 이 모형에서는 같은 공기가 같은 높이로 돌아오고 다른 열 교환이 없어서 온도가 같습니다. 실제 푄은 강수 없이도 나타날 수 있습니다. `;
     }
 
     s += `한편 주위 공기의 기온은 1 km마다 ${fmt(state.lapse, 1)} ℃씩 낮아지고 있습니다. `;
     if (v === 'p1') {
         s += `이 값은 습윤 단열 감률 5.0보다도 작습니다. 구름이 생기든 안 생기든 올라간 공기는 주위보다 차가워져 다시 가라앉으므로, 어떤 공기도 스스로 오르지 못하는 절대 안정 상태입니다.`;
+    } else if (v === 'p4') {
+        s += Math.abs(state.lapse-GM)<1e-9 ? '환경 감률이 습윤 단열 감률과 같습니다. 포화 공기는 중립이고 불포화 공기는 안정합니다. 이 경계를 조건부 불안정으로 판정하지 않습니다.' : '환경 감률이 건조 단열 감률과 같습니다. 불포화 공기는 중립이고 포화 공기는 불안정합니다. 절대 불안정의 경계와 구별합니다.';
     } else if (v === 'p2') {
-        s += `이 값은 습윤 단열 감률 5.0과 건조 단열 감률 9.8 사이에 있습니다. 마른 공기는 올라가도 주위보다 차가워져 제자리로 돌아오지만, 일단 구름이 생겨 습윤 단열로 바뀌면 주위보다 따뜻해져 스스로 오를 수 있습니다. 그래서 조건부 불안정이라고 합니다`;
+        s += `이 값은 습윤 단열 감률 5.0과 건조 단열 감률 9.8 사이에 있습니다. 마른 공기는 올라가도 주위보다 차가워져 제자리로 돌아오지만, 구름이 생긴 뒤에도 충분히 더 상승하여 주위보다 따뜻해지는 높이에 도달해야 스스로 오를 수 있습니다. 그래서 조건부 불안정이라고 합니다`;
         s += a.lfc !== null ? `. 실제로 ${Math.round(a.lfc * 1000)} m를 넘어서면 공기가 주위보다 따뜻해져 스스로 솟구칩니다.` : `. 다만 지금 조건에서는 4 km 안에서 주위보다 따뜻해지는 높이가 없어 아직 스스로 오르지는 못합니다.`;
     } else {
         s += `이 값은 건조 단열 감률 9.8보다도 큽니다. 마른 공기조차 올라가면 주위보다 따뜻해져 계속 솟구치므로 절대 불안정입니다. 이때는 지표에서부터 이미 떠오르고 있어 따로 자유 대류 고도를 따질 것이 없고, 이런 날에는 적란운이 크게 발달합니다.`;

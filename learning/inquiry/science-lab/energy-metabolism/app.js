@@ -67,7 +67,7 @@ function atpPlan(o2, shuttle) {
     if (!o2) {
         const stages = [
             { name: '해당 과정', short: '해당', where: '세포질', atp: 2, made: 'NADH 2', note: '포도당 1개가 피루브산 2개로 쪼개집니다' },
-            { name: '젖산 발효', short: '젖산 발효', where: '세포질', atp: 0, made: 'NADH 2 소모', note: 'NADH로 피루브산을 젖산으로 되돌려 해당 과정을 계속 돌립니다' },
+            { name: '젖산 발효', short: '젖산 발효', where: '세포질', atp: 0, made: 'NADH 2 소모', note: '피루브산을 젖산으로 환원하면서 NAD⁺를 재생하여 해당 과정을 유지합니다' },
         ];
         return { stages, total: 2, sub: 2, etc: 0, cyto: 0, weights: [0.55, 0.45] };
     }
@@ -77,7 +77,7 @@ function atpPlan(o2, shuttle) {
         { name: '해당 과정', short: '해당', where: '세포질', atp: 2, made: 'NADH 2', note: '포도당 1개가 피루브산 2개로 쪼개집니다' },
         { name: '피루브산 산화', short: '피루브산', where: '미토콘드리아 기질', atp: 0, made: 'NADH 2', note: '피루브산이 아세틸 CoA가 되며 CO₂ 2개가 나옵니다' },
         { name: 'TCA 회로', short: 'TCA', where: '미토콘드리아 기질', atp: 2, made: 'NADH 6 · FADH₂ 2', note: '남은 탄소가 모두 CO₂ 4개로 빠져나갑니다' },
-        { name: '산화적 인산화', short: '전자전달', where: '미토콘드리아 내막', atp: etc, made: '물 생성', note: '모아 둔 NADH와 FADH₂가 여기서 한꺼번에 ATP가 됩니다' },
+        { name: '산화적 인산화', short: '전자전달', where: '미토콘드리아 내막', atp: etc, made: '물 생성', note: '전자 전달로 만든 H⁺ 농도 기울기를 이용해 ATP를 합성합니다' },
     ];
     return { stages, total: 4 + etc, sub: 4, etc, cyto, weights: [0.24, 0.12, 0.29, 0.35] };
 }
@@ -420,7 +420,7 @@ function updateReadout() {
         const rows = [
             ['기질 수준 인산화', `${plan.sub}개`, false],
             ['산화적 인산화', `${plan.etc}개`, plan.etc > 0],
-            ['세포질 NADH 몫', state.o2 ? `${plan.cyto}개 (${state.shuttle === 'malate' ? 'NADH로 전달' : 'FADH₂로 전달'})` : '해당 과정 유지에 씀', false],
+            ['세포질 NADH 몫', state.o2 ? `${plan.cyto}개 (${state.shuttle === 'malate' ? 'NADH 경로의 전자' : 'FAD 경로의 전자'})` : '해당 과정 유지에 씀', false],
             ['젖산에 남은 에너지', state.o2 ? '없음 — 끝까지 분해함' : `${fmt(leftover * 100, 1)}%`, false],
             ['이 잎이 1시간에 벌어들이는 ATP', net > 0
                 ? `${fmt(net * 3600 / 6 * plan.total / 1000, 1)} mmol/m²`
@@ -470,10 +470,10 @@ function explain(a) {
         const plan = atpPlan(state.o2, state.shuttle);
         let s = '';
         if (state.o2) {
-            s = `해당 과정과 TCA 회로에서 직접 만드는 ATP는 ${plan.sub}개뿐이고, 나머지 ${plan.etc}개는 모아 둔 NADH와 FADH₂가 전자전달계를 지나며 만들어집니다. NADH 하나는 2.5개, FADH₂ 하나는 1.5개 몫입니다. `;
+            s = `해당 과정과 TCA 회로에서 직접 만드는 ATP는 ${plan.sub}개뿐이고, 나머지 약 ${plan.etc}개는 NADH와 FADH₂의 전자가 전달되면서 형성된 H⁺ 농도 기울기를 이용해 합성됩니다. 이 모형은 NADH당 약 2.5개, FADH₂당 약 1.5개의 ATP를 가정합니다. `;
             s += state.shuttle === 'malate'
-                ? `세포질에서 만든 NADH 2개를 말산·아스파르트산 셔틀로 들여보내면 미토콘드리아 안에서도 NADH로 남아 5개 몫을 하므로 모두 32개가 됩니다.`
-                : `세포질에서 만든 NADH 2개를 글리세롤 인산 셔틀로 들여보내면 FADH₂로 바뀌어 3개 몫밖에 못 하므로 모두 30개가 됩니다. 셔틀 하나 차이로 ATP 2개가 갈립니다.`;
+                ? `말산·아스파르트산 셔틀은 세포질 NADH의 전자를 미토콘드리아 기질의 NAD⁺에 전달합니다. NADH 자체가 내막을 통과하는 것은 아닙니다. 이 모형에서는 세포질 NADH 2개에 해당하는 전자로 ATP 약 5개를 만들어 합계 약 32개입니다.`
+                : `글리세롤 인산 셔틀은 세포질 NADH의 전자를 FAD를 이용하는 경로로 전달합니다. NADH 자체가 FADH₂로 바뀌는 것은 아닙니다. 이 모형에서는 세포질 NADH 2개에 해당하는 전자로 ATP 약 3개를 만들어 합계 약 30개입니다.`;
             s += ` 포도당 1분자에 든 2870 kJ 가운데 ATP에 담기는 몫은 ${fmt(plan.total * ATP_KJ, 0)} kJ, 곧 ${fmt(plan.total * ATP_KJ / GLUCOSE_KJ * 100, 1)}%이고 나머지는 열로 흩어집니다.`;
         } else {
             s = `산소가 없으면 전자전달계가 멈춥니다. NADH의 산화가 막혀 NAD⁺가 부족해지면 해당 과정이 지속되지 못하므로, 세포는 피루브산을 젖산으로 바꾸면서 NADH를 산화하여 NAD⁺를 재생하고 해당 과정만 겨우 돌립니다. 그래서 남는 ATP는 ${plan.total}개뿐입니다. `;

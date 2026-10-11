@@ -1,0 +1,67 @@
+{
+  "slug": "stars",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__starModel",
+      "methods": [
+        "state",
+        "analyse",
+        "tick",
+        "render",
+        "luminosity",
+        "peakNm",
+        "absMag",
+        "distancePc",
+        "appMag",
+        "spectralClass",
+        "planck",
+        "sliderToTemp",
+        "sliderToRadius",
+        "tempToSlider",
+        "radiusToSlider",
+        "STARS",
+        "T_SUN",
+        "M_SUN",
+        "WIEN_NM",
+        "SIGMA",
+        "R_SUN_M",
+        "L_SUN_W",
+        "setStar",
+        "setTemp",
+        "setRadius",
+        "check",
+        "runToEnd"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "p1",
+          "visible": true,
+          "text": "예상이 맞았습니다 — 주계열."
+        },
+        {
+          "choice": "p2",
+          "visible": true,
+          "text": "예상은 거성였지만 결과는 주계열입니다."
+        },
+        {
+          "choice": "p3",
+          "visible": true,
+          "text": "예상은 백색왜성였지만 결과는 주계열입니다."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "solubility-curve",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 13,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__curveModel",
+      "methods": [
+        "SOLUTES",
+        "TEMPS",
+        "WATER_G",
+        "solubility",
+        "analyse",
+        "setSolute",
+        "setAdded",
+        "setTemp",
+        "setCool",
+        "added",
+        "temp",
+        "coolTemp",
+        "render"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "all",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "left",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}
