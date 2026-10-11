@@ -1,0 +1,53 @@
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.4949ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.7247ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2919ms)
+✖ chromium: source-specific controls, full question flow and mobile scenes (3330.064ms)
+✖ webkit: source-specific controls, full question flow and mobile scenes (5494.351ms)
+147 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (98.4768ms)
+✔ every science lab JavaScript file parses (69.1528ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.925ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8886.1524
+
+✖ failing tests:
+
+test at tests\science-restored-experiments.test.cjs:39:43
+✖ chromium: source-specific controls, full question flow and mobile scenes (3330.064ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(await page.locator('#selectedColor option[value="6"]').isDisabled())
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-restored-experiments.test.cjs:49:120)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\science-restored-experiments.test.cjs:39:43
+✖ webkit: source-specific controls, full question flow and mobile scenes (5494.351ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(await page.locator('#selectedColor option[value="6"]').isDisabled())
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-restored-experiments.test.cjs:49:120)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

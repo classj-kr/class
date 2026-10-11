@@ -30,6 +30,8 @@
         redox:[['산화는 전자를 잃는 과정, 환원은 전자를 얻는 과정입니다. 산화제는 자신이 환원되고 환원제는 자신이 산화됩니다.','한 반응에서 잃은 전자 수와 얻은 전자 수가 같아야 전하가 보존됩니다.'],'Zn+Cu²⁺→Zn²⁺+Cu에서 산화제·환원제를 구하고, Zn 0.25 mol이 반응할 때 이동하는 전자의 몰수를 구하세요.','산화제는 Cu²⁺, 환원제는 Zn입니다. Zn 1 mol이 전자 2 mol을 내놓으므로 0.25 mol은 전자 0.50 mol을 전달합니다.']
     };
     Object.entries(high).forEach(([id,row])=>put(id,'high',...row));
-    D['matter-reaction'].middle.source='미래엔 과학 3(김성진, 2015), 화학 반응의 규칙';
-    for(const id of ['orbital','config'])D['matter-'+id].high.source='고등 화학Ⅰ(최미화, 2015), 현대 원자 모형·전자 배치 연계 심화';
+    D['matter-reaction'].middle.source='2022 과학 3, 화학 반응의 규칙성 [9과16-01~04]';
+    for(const id of ['orbital','config'])D['matter-'+id].high.source='2022 고급 화학, 오비탈과 전자 배치 [12고화01-01~02]';
+    for(const id of ['orbital','config'])D['matter-'+id].high.subject='고급 화학';
+    D['matter-reaction'].middle.subject='과학 3';
 })();

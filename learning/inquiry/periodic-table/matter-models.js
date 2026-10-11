@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'states': return select('focus','관찰 범위',[['all','세 상태 비교'],['solid','고체 확대'],['liquid','액체 확대'],['gas','기체 확대']])+range('warmth','입자 운동 세기',10,90,1,'')+range('width','용기 너비',55,95,1,'%');
             case 'phase': return select('direction','열의 이동',[['heat','가열 · 열 흡수'],['cool','냉각 · 열 방출']])+range('progress','변화 진행',0,100,1,'%');
             case 'gas': return range('volume','부피 V',1,4,0.1,' L')+range('temperature','절대 온도 T',200,600,10,' K')+range('amount','기체의 양 n',0.05,0.3,0.01,' mol');
-            case 'atom': return select('isotope','원자 선택',C.atoms.map((a,i)=>[i,a.label]))+select('ion','전하 상태',[['neutral','중성 원자'],['ion','대표 이온']]);
+            case 'atom': return select('isotope','원자 선택',C.atoms.flatMap((a,i)=>window.SchoolLevel?.value==='middle' ? (C.atoms.findIndex(b=>b.z===a.z)===i?[[i,a.label.replace(/^[^ ·]+ · /,'')]]:[]) : [[i,a.label]]))+select('ion','전하 상태',[['neutral','중성 원자'],['ion','대표 이온']]);
             case 'orbital': return select('orbital','오비탈',C.orbitals.map((o,i)=>[i,o.id]))+select('phase','점구름 색',[['density','확률 밀도'],['sign','파동 함수의 부호']])+select('slice','관찰 영역',[['all','전체 공간'],['slice','중앙 단면 (z ≈ 0)']]);
             case 'config': return select('z','중성 원자',window.ELEMENTS_DATA.filter(e=>e.number<=20||e.number===24||e.number===29).map(e=>[e.number,`${e.number} · ${e.symbol} ${e.name}`]));
             case 'bond': return select('compound','물질 선택',[['H2','H₂ · 수소'],['CO2','CO₂ · 이산화 탄소'],['H2O','H₂O · 물'],['NH3','NH₃ · 암모니아'],['CH4','CH₄ · 메테인'],['BF3','BF₃ · 삼플루오린화 붕소'],['NaCl','NaCl · 염화 나트륨'],['metal','금속 결합']])+select('view','표현 방식',[['shape','공간 구조'],['lewis','전자쌍 / 전하 표시']]);
@@ -124,13 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function drawAtom() {
         const a=C.atomCounts(Number(values.isotope),values.ion==='ion');
+        const middle=window.SchoolLevel?.value==='middle';
         const ionSelect=$('control-ion'); ionSelect.disabled=a.ion===null;
         if(a.ion===null&&values.ion!=='neutral'){values.ion='neutral';ionSelect.value='neutral';}
         let s='';const cx=365,cy=220;
         a.shells.forEach((count,i)=>{const r=83+i*42;s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${['#76bfef','#ba9fea','#f4c481','#62d7c4'][i]}66" stroke-width="2"/>`;for(let j=0;j<count;j++){const angle=j/count*Math.PI*2-Math.PI/2;s+=sphere(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r,6,['#76bfef','#ba9fea','#f4c481','#62d7c4'][i]);}});
-        s+=sphere(cx,cy,49,'blue')+text(cx,cy+8,a.symbol,30,'#0b2736')+text(cx,cy+27,`${a.protons}p · ${a.neutrons}n`,12,'#0b2736');
-        s+=text(650,135,`${a.a}`,29,'#d9e9ef')+text(650,177,`${a.z}`,29,'#8da8ba')+text(706,159,a.symbol,48,'#e4f5f5')+text(746,130,a.charge?`${Math.abs(a.charge)===1?'':Math.abs(a.charge)}${a.charge>0?'+':'−'}`:'',23,'#f3c58c');
+        s+=sphere(cx,cy,49,'blue')+text(cx,cy+8,a.symbol,30,'#0b2736')+text(cx,cy+27,middle?`원자핵 +${a.protons}`:`${a.protons}p · ${a.neutrons}n`,12,'#0b2736');
+        s+=(middle?'':text(650,135,`${a.a}`,29,'#d9e9ef')+text(650,177,`${a.z}`,29,'#8da8ba'))+text(706,159,a.symbol,48,'#e4f5f5')+text(746,130,a.charge?`${Math.abs(a.charge)===1?'':Math.abs(a.charge)}${a.charge>0?'+':'−'}`:'',23,'#f3c58c');
         stageSVG(s,'원자핵과 전자껍질의 개념 모형');
+        if(middle){
+            info([['원자핵의 전하',`+${a.protons}`,'이온이 되어도 원자핵은 그대로'],['전자 수',`${a.electrons}개`,'전자는 음전하를 띰'],['전체 전하',a.charge>0?`+${a.charge}`:String(a.charge),a.charge===0?'중성 원자':a.charge>0?'전자를 잃은 양이온':'전자를 얻은 음이온']], '원자가 전자를 잃으면 양이온, 얻으면 음이온이 됩니다.', '',swatch('#76bfef','전자'));
+            return;
+        }
         info([['양성자 / 중성자',`${a.protons} / ${a.neutrons}`,`질량수 A = ${a.a}`],['전자 수 / 전하',`${a.electrons}개 / ${a.charge>0?'+':''}${a.charge}`,`전하 = 양성자 수 − 전자 수`],['전자껍질별 전자 수',a.shells.join(' · ')||'전자 없음']], '동위 원소는 양성자 수가 같고 중성자 수가 다릅니다. 이온은 전자를 얻거나 잃으며, 원자핵은 바뀌지 않습니다.', '전자 수를 세기 위한 보어식 껍질 모형입니다. 원과 점의 위치는 실제 전자 궤도·크기 비율이 아닙니다. 공간적 확률 분포는 오비탈 모형에서 관찰하세요.',swatch('#76bfef','1껍질')+swatch('#ba9fea','2껍질')+swatch('#f4c481','3껍질'));
     }
     function drawOrbital() {
@@ -264,4 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
     new MutationObserver(()=>{if(visible())start();else stop();}).observe(document.getElementById('tab-models'),{attributes:true,attributeFilter:['class']});
     document.addEventListener('visibilitychange',()=>{if(visible())start();else stop();});
     changeModel(active);
+    window.SchoolLevel?.subscribe(()=>{
+        const label=root.querySelector('[data-model="atom"] > span:last-child');
+        label.textContent=window.SchoolLevel.value==='middle'?'원자와 이온':'원자·동위 원소·이온';
+        if(active==='atom')changeModel(active);
+    });
+    if(window.SchoolLevel?.value==='middle')root.querySelector('[data-model="atom"] > span:last-child').textContent='원자와 이온';
 });

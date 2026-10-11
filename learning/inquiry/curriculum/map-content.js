@@ -100,12 +100,12 @@
         if(kind==='world'&&['winds','currents','seawater','enso','earthquakes','plate-motion'].includes(id)){
             return level==='high'?'고등 지구과학 연계: 대기·해양·지권의 변화':'중학 과학 연계: 대기·해양·지권';
         }
-        if(kind==='world'&&id==='seasons')return level==='high'?'고등 지구과학Ⅱ(이진우, 2015), 천체의 남중 고도':'초등 과학 6-2(양일호), 계절의 변화 연계';
+        if(kind==='world'&&id==='seasons')return level==='high'?'2022 고등 고급 지구과학, 천체의 위치 변화 [12고지03-01]':'초등 과학 6-2(양일호), 계절의 변화 연계';
         return source[kind][level];
     }
     function subject(kind,id,level){
         if(kind==='world'&&['winds','currents','seawater','enso','earthquakes','plate-motion'].includes(id))return level==='high'?'지구시스템과학':'과학';
-        if(kind==='world'&&id==='seasons')return level==='high'?'행성우주과학':'과학';
+        if(kind==='world'&&id==='seasons')return level==='high'?'고급 지구과학':'과학';
         return level==='high'?(kind==='world'?'세계시민과 지리':'한국지리 탐구'):'사회';
     }
     window.SchoolMaps={

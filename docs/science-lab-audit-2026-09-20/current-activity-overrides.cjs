@@ -65,3 +65,5 @@ module.exports=`
 for(const r of require('./required-gap-review.cjs'))for(const id of r.activities){const entry={id,slugs:[r.slug],status:r.status,note:r.note};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(entry);else module.exports[i]=entry;}
 
 for(const r of require('./digital-inquiry-review.cjs')){const i=module.exports.findIndex(x=>x.id===r.id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+
+for(const app of require('../../scripts/science-restored-experiments.cjs'))for(const id of app.activities){const r={id,slugs:[app.slug],status:'모의활동',note:app.current+' '+app.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}

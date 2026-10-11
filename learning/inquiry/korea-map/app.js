@@ -203,6 +203,7 @@
     if (map === mainMap) {
       map.options.themeMinZoom = theme && theme.minZoom !== undefined ? theme.minZoom : 5;
       map.options.zoomSnap = theme && theme.historical ? 0.25 : 1;
+      map.setMaxZoom(theme?.maxZoom || 12);
       setNavigationMinimum(map, map.options.themeMinZoom);
     }
     const bounds = theme && theme.bounds ? L.latLngBounds(theme.bounds) : KOREA_BOUNDS;

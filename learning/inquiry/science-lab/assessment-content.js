@@ -32,5 +32,7 @@
   {id:'lens-image@screen-transfer',topic:'물체 위치와 스크린 관찰',question:'초점 거리가 10 cm인 얇은 볼록 렌즈에서 물체까지의 거리를 30 cm로 했다. 상에 대한 설명으로 옳은 것은?',choices:['바로 선 확대 허상이므로 스크린에 맺히지 않는다','거꾸로 선 축소 실상이므로 스크린에 맺힌다','물체가 멀어져 어떤 상도 생기지 않는다'],answer:1,why:'물체가 2f보다 바깥에 있으므로 f와 2f 사이에 거꾸로 선 축소 실상이 생깁니다. 렌즈 식으로 상거리는 15 cm이고 배율의 크기는 0.5입니다.',checks:['lens-image#q1','lens-image#q2']},
   {id:'lens-image@virtual-transfer',topic:'두 렌즈의 허상 비교',question:'가까운 물체가 바로 서 보였다. 볼록 렌즈의 초점 안쪽과 오목 렌즈를 구별할 관찰 결과는?',choices:['볼록 렌즈는 확대, 오목 렌즈는 축소되어 보인다','두 렌즈 모두 언제나 같은 크기로 보인다','볼록 렌즈는 축소, 오목 렌즈는 확대되어 보인다'],answer:0,why:'볼록 렌즈의 초점 안쪽에서는 확대된 바로 선 허상, 오목 렌즈에서는 축소된 바로 선 허상이 생깁니다.',checks:['lens-image#q2','lens-image#q3']}
  ]};
+ const extra=typeof module!=='undefined'?require('./experiment-questions.js'):root.scienceExperimentQuestions;
+ if(extra){Object.assign(misconceptions,extra.misconceptions);Object.assign(followups,extra.followups);}
  const api={misconceptions,followups};if(typeof module!=='undefined')module.exports=api;else{root.scienceMisconceptions=misconceptions;root.scienceFollowups=followups;}
 })(typeof window==='undefined'?globalThis:window);

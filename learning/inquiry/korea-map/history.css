@@ -118,3 +118,15 @@
   .history-map-caption { padding: 7px 9px; }
   .history-map-caption span { font-size: 12px; }
 }
+.history-practice-launch { width:100%; background:#143f47; color:#fff; margin:8px 0 16px; min-height:44px; }
+.history-practice-dialog { width:min(760px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); box-sizing:border-box; overflow:auto; border:1px solid #b9c8c5; border-radius:14px; padding:20px; background:#f9fbf7; color:#213f44; }
+.history-practice-dialog::backdrop { background:#0a2029aa; }
+.history-practice-dialog > header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; }
+.history-practice-dialog h2 { font-size:18px; margin:0; }
+.history-practice-dialog .school-question { margin:0; padding:0; border:0; background:transparent; color:#213f44; }
+.history-practice-dialog .school-question h3 { color:#213f44; font-size:19px; line-height:1.8; }
+.history-practice-dialog .school-options button { background:#fff; color:#213f44; border-color:#a8c0bd; font-size:17px; min-height:48px; }
+.history-practice-dialog .school-options button.incorrect { background:#fff0ec; border-color:#be6c5b; }
+.history-practice-dialog .school-options button.correct { background:#e1f3e8; border-color:#277754; }
+.history-practice-dialog .school-feedback { color:#45543e; font-size:17px; line-height:1.8; }
+.history-practice-dialog .practice-counter { color:#536f71; }

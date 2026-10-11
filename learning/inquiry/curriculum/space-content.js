@@ -52,14 +52,14 @@
         [['일식은 삭, 월식은 보름 무렵에 일어날 수 있습니다. 하지만 달의 공전 궤도면이 기울어져 매번 식이 일어나지는 않습니다.','관측자가 본그림자에 있으면 개기일식, 반그림자에 있으면 부분일식을 볼 수 있습니다. 월식은 달이 지구 그림자에 얼마나 들어갔는지로 구별합니다.'],'보름달이 뜰 때마다 월식이 일어나지 않는 이유를 설명하세요.','달의 공전 궤도면과 지구 공전 궤도면이 기울어져 있어, 대부분의 보름에는 달이 지구 그림자의 위나 아래를 지나가기 때문입니다.'],
         [['달과 태양의 시직경은 거리 변화에 따라 달라집니다. 달의 시직경이 태양보다 작으면 정렬되어도 금환일식이 될 수 있습니다.','식의 종류는 천체의 실제 크기뿐 아니라 각거리·시직경·관측 위치에 의해 결정됩니다.'],'달이 평소보다 지구에서 멀어져 시직경이 작아졌을 때, 중심이 정확히 겹쳐도 태양 둘레가 남는 일식이 가능한 이유를 설명하세요.','달의 시직경이 태양보다 작으면 태양 원반을 완전히 덮을 수 없어 둘레가 고리처럼 남는 금환일식이 가능합니다. 달의 실제 크기가 바뀐 것이 아니라 거리가 달라진 것입니다.']
     ]);
-    for(const id of ['star-properties','stellar-life'])D['space-'+id].middle.source='미래엔 과학 3(김성진, 2015), 별의 특성 연계';
+    for(const id of ['star-properties','stellar-life'])D['space-'+id].middle.source='2022 과학 2, 별과 우주 [9과15-01~02]';
     // 2022 개정 과학 2, 별과 우주: 별의 밝기와 등급(284~287쪽), 색과 표면 온도(288~289쪽).
     D['space-star-properties'].middle.subject='과학 2';
     D['space-star-properties'].middle.source='미래엔 과학 2(김태일, 2022), 별과 우주 284~289쪽';
-    for(const id of ['north-sky','celestial-sphere','sun-path'])D['space-'+id].high.source='미래엔 지구과학Ⅱ(이진우, 2015), 천체의 위치 변화와 좌표계';
+    for(const id of ['north-sky','celestial-sphere','sun-path'])D['space-'+id].high.source='2022 고급 지구과학, 시간계와 구면좌표계 [12고지03-01]';
     for(const id of ['zodiac','star-motion'])D['space-'+id].high.source='지구의 자전·공전 연계 심화: 항성일과 태양일';
     D['space-earth-motion'].high.source='태양계 연계 심화: 달의 항성 주기와 삭망월';
-    D['space-stellar-life'].high.source='미래엔 지구과학Ⅰ(이진우, 2015), 별과 외계 행성계';
+    D['space-stellar-life'].high.source='2022 지구과학, 별의 진화 [12지구03-03]';
     D['space-celestial-sphere'].middle.source='태양계 연계 심화: 관측 위도와 천구';
     for(const id of ['celestial-sphere','stellar-life','eclipses'])D['space-'+id].elementary.source='초등 밤하늘·지구와 달 연계 관찰';
 })();

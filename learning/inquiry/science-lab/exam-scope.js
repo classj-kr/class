@@ -5,8 +5,12 @@
  const assessment=document.createElement('script');assessment.src=new URL('science-assessment.js?v=c7899ac6b7d7',assessmentBase);
  const loadReview=()=>{const review=document.createElement('script');review.src=new URL('exam-review.js?v=2b7bfaaacadc',assessmentBase);document.body.append(review);};
  assessment.onload=()=>{if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadReview,{once:true});else loadReview();};
- const assessmentContent=document.createElement('script');assessmentContent.src=new URL('assessment-content.js?v=729bf873aa7a',assessmentBase);
- assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);document.body.append(assessmentContent);
+ const assessmentContent=document.createElement('script');assessmentContent.src=new URL('assessment-content.js?v=51433a14d4cb',assessmentBase);
+ assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);
+ if(['pasteur','newton-prism','infection-prevention','mendeleev'].includes(slug)){
+  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=2803cad74973',assessmentBase);
+  questions.onload=questions.onerror=()=>document.body.append(assessmentContent);document.body.append(questions);
+ }else document.body.append(assessmentContent);
  // Load observation panels without injecting an administrative scope banner.
  const base=document.currentScript.src;const extra=document.createElement('script');extra.src=new URL('supplement-extra.js?v=c2779312d820',base);
  const mount=()=>{const supplement=document.createElement('script');supplement.src=new URL('supplement-labs.js?v=c0d59fb6cf8d',base);document.body.append(supplement);if(['measurement','wave-transfer'].includes(slug)){const digital=document.createElement('script');digital.src=new URL('digital-inquiry.js?v=591ce18e900c',base);document.body.append(digital);}};

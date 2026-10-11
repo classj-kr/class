@@ -2,7 +2,7 @@
 
 초3~중3·고1 공통과목의 개념·자료 해석 확인 문제 241개와 기존 30개 문항 정정은 [시험 대비 점검 결과](exam-readiness.md)를 확인한다. 아래 표는 실험 앱의 부분 연결이며, 별도 확인 문제의 제공 여부와 구분한다.
 
-기본·심화 구분 없이 학년과 고교 수강 과목으로 편성했다. 기존 102개 앱과 필수 관찰용 신규 2개 앱을 대상으로 했다. 교육과정 학년군은 학교별 진도와 다를 수 있으므로 학교의 시험 범위가 우선이다.
+기본·심화 구분 없이 학년과 고교 수강 과목으로 편성했다. 현재 앱 수는 구현 현황일 뿐 필수실험의 목표나 총수가 아니다. 누락 확인 후 추가한 실험도 포함하여 이 표를 갱신한다. 교육과정 학년군은 학교별 진도와 다를 수 있으므로 학교의 시험 범위가 우선이다.
 
 **연결은 일부 내용의 대응이며 단원·성취기준 전체 충족률이 아니다. 모의 관찰, 설명 그림, 실제 실험·측정·설계 활동을 구분한다.**
 
@@ -37,8 +37,8 @@
 | 4과07-02 · [원문 1057행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1057>) | 큰 소리와 작은 소리, 높은 소리와 낮은 소리를 구분하고, 세기와 높낮이가 다른 소리를 낼 수 있다. | [초3 소리와 진동](<E:/webprojects/class/learning/inquiry/science-lab/sound-vibration/index.html>) |
 | 4과07-03 · [원문 1059행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1059>) | 여러 가지 물질을 통하여 소리가 전달되는 것을 관찰하고, 소음을 줄이는 방법을 찾아 일상생활에서 실천할 수 있다. | [초3 소리와 진동](<E:/webprojects/class/learning/inquiry/science-lab/sound-vibration/index.html>) |
 | 4과08-01 · [원문 1085행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1085>) | 생활 속 감염병의 사례를 알고, 다양한 질병과 그 위험성에 대해 토의할 수 있다. | 직접 연결 없음 |
-| 4과08-02 · [원문 1087행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1087>) | 감염병으로부터 안전한 사회에 관심을 가지고, 여러 감염 과정을 통해 생활 습관과 감염병 유행과의 연관성을 설명할 수 있다. | 직접 연결 없음 |
-| 4과08-03 · [원문 1089행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1089>) | 건강한 생활을 위해 필요한 감염병 예방 수칙을 공유하고, 생활 속에서 실천할 수 있다. | 직접 연결 없음 |
+| 4과08-02 · [원문 1087행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1087>) | 감염병으로부터 안전한 사회에 관심을 가지고, 여러 감염 과정을 통해 생활 습관과 감염병 유행과의 연관성을 설명할 수 있다. | [초3 물방울·접촉 전파와 손 씻기](<E:/webprojects/class/learning/inquiry/science-lab/infection-prevention/index.html>) |
+| 4과08-03 · [원문 1089행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1089>) | 건강한 생활을 위해 필요한 감염병 예방 수칙을 공유하고, 생활 속에서 실천할 수 있다. | [초3 물방울·접촉 전파와 손 씻기](<E:/webprojects/class/learning/inquiry/science-lab/infection-prevention/index.html>) |
 | 4과09-01 · [원문 1113행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1113>) | 자석과 여러 가지 물체를 가까이했을 때 나타나는 현상을 관찰하고, 자석과 자석에 붙는 물체 사이에 작용하는 힘의 특징을 말할 수 있다. | [초4 자석의 힘과 나침반](<E:/webprojects/class/learning/inquiry/science-lab/magnets/index.html>) |
 | 4과09-02 · [원문 1115행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1115>) | 자석과 자석을 가까이했을 때 나타나는 현상을 관찰하여 그 특징을 자석의 극과 관련지어 설명할 수 있다. | [초4 자석의 힘과 나침반](<E:/webprojects/class/learning/inquiry/science-lab/magnets/index.html>) |
 | 4과09-03 · [원문 1117행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:1117>) | 자석을 이용하여 일상생활을 편리하게 하는 장치를 설계할 수 있다. | 직접 연결 없음 |
@@ -235,10 +235,10 @@
 | 10통과2-03-03 · [원문 3155행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3155>) | 인공지능 로봇, 사물인터넷 등과 같이 과학기술의 발전을 인간 삶과 환경 개선에 활용하는 사례를 찾고, 이러한 과학기술의 발전이 미래 사회에 미치는 유용성과 한계를 예측할 수 있다. | 직접 연결 없음 |
 | 10통과2-03-04 · [원문 3157행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3157>) | 과학기술의 발전 과정에서 발생할 수 있는 과학 관련 사회적 쟁점(SSI)과 과학기술 이용에서 과학 윤리의 중요성에 대해 논증할 수 있다. | 직접 연결 없음 |
 | 10과탐1-01-01 · [원문 3417행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3417>) | 과학사에서 패러다임의 전환을 가져온 결정적 실험을 따라 해보고, 과학의 발전 과정에 관해 설명할 수 있다. | 직접 연결 없음 |
-| 10과탐1-01-02 · [원문 3419행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3419>) | 과학사의 다양한 사례들로부터 과학의 본성을 추론할 수 있다. | [고1 길이·시간과 디지털 측정](<E:/webprojects/class/learning/inquiry/science-lab/measurement/index.html>) |
+| 10과탐1-01-02 · [원문 3419행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3419>) | 과학사의 다양한 사례들로부터 과학의 본성을 추론할 수 있다. | [고1 길이·시간과 디지털 측정](<E:/webprojects/class/learning/inquiry/science-lab/measurement/index.html>)<br>[고1 멘델레예프의 원소 카드 배열](<E:/webprojects/class/learning/inquiry/science-lab/mendeleev/index.html>) |
 | 10과탐1-02-01 · [원문 3445행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3445>) | 직접적인 관찰을 통한 탐구를 수행하고, 귀납적 탐구 방법을 설명할 수 있다. | 직접 연결 없음 |
-| 10과탐1-02-02 · [원문 3447행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3447>) | 가설 설정을 포함한 과학사의 대표적인 탐구실험을 수행하고, 연역적 탐구 방법의 특징을 예증할 수 있다. | 직접 연결 없음 |
-| 10과탐1-02-03 · [원문 3449행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3449>) | 탐구 수행에서 얻은 정성적 혹은 정량적 데이터를 분석하고 그 결과를 다양하게 표상하고 소통할 수 있다. | 직접 연결 없음 |
+| 10과탐1-02-02 · [원문 3447행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3447>) | 가설 설정을 포함한 과학사의 대표적인 탐구실험을 수행하고, 연역적 탐구 방법의 특징을 예증할 수 있다. | [고1 파스퇴르의 백조목 플라스크](<E:/webprojects/class/learning/inquiry/science-lab/pasteur/index.html>)<br>[고1 뉴턴의 프리즘 실험](<E:/webprojects/class/learning/inquiry/science-lab/newton-prism/index.html>) |
+| 10과탐1-02-03 · [원문 3449행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3449>) | 탐구 수행에서 얻은 정성적 혹은 정량적 데이터를 분석하고 그 결과를 다양하게 표상하고 소통할 수 있다. | [고1 파스퇴르의 백조목 플라스크](<E:/webprojects/class/learning/inquiry/science-lab/pasteur/index.html>)<br>[고1 뉴턴의 프리즘 실험](<E:/webprojects/class/learning/inquiry/science-lab/newton-prism/index.html>) |
 | 10과탐1-02-04 · [원문 3451행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3451>) | 흥미와 호기심을 갖고 과학 탐구에 참여하고, 분야 간 협동 연구 등을 통해 협력적 탐구 활동을 수행하며, 도출한 결과를 증거에 근거하여 해석하고 평가할 수 있다. | 직접 연결 없음 |
 | 10과탐2-01-01 · [원문 3551행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3551>) | 영화, 건축, 요리, 스포츠, 미디어 등 생활 속의 과학 원리를 실험 등을 통해 탐구하고, 과학 원리를 활용한 놀이 체험을 통해 과학의 즐거움과 유용성을 느낄 수 있다. | 직접 연결 없음 |
 | 10과탐2-01-02 · [원문 3553행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:3553>) | 사회적 이슈나 생활 속에서 과학 탐구 문제를 발견하고, 이를 해결하기 위한 과학 탐구 활동을 계획하고 수행할 수 있다. | 직접 연결 없음 |

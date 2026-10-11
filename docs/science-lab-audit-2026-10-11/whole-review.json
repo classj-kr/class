@@ -1,6 +1,6 @@
 {
   "scope": "2022 only; execution, visual inspection and bounded source review kept separate",
-  "apps": 104,
+  "apps": 107,
   "requiredExperimentTotal": null,
   "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
   "modes": 182,
@@ -24,8 +24,8 @@
   },
   "activityCoverage": {
     "activities": 261,
-    "linked": 176,
-    "unlinked": 85
+    "linked": 179,
+    "unlinked": 82
   },
   "textbookCandidates": {
     "scope": "2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님",
@@ -36,7 +36,11 @@
     "activitySheetCandidates": 408,
     "primaryDocumentsWithoutCandidates": 20,
     "completedActivityVerdicts": 0,
-    "receiptClassifiedSources": 2287
+    "receiptClassifiedSources": 2287,
+    "manuallyReviewedCandidates": 6,
+    "sourceReviewedExperimentUnits": 7,
+    "manualAdditionsOutsideHeadingExtraction": 2,
+    "requiredExperimentTotal": null
   },
   "questionReview": {
     "original": 416,
@@ -1059,8 +1063,8 @@
   "gaps": [],
   "evidenceSummary": {
     "date": "2026-10-11",
-    "apps": 104,
-    "originalQuestions": 416,
+    "apps": 107,
+    "originalQuestions": 428,
     "examQuestions": 241,
     "sourcePaths": 4008,
     "duplicatePaths": 426,
@@ -1072,9 +1076,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 82,
-    "reviewRecords": 110,
-    "appsWithSelectedSourceReview": 104,
+    "reviewedSources": 86,
+    "reviewRecords": 115,
+    "appsWithSelectedSourceReview": 107,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -10277,6 +10281,47 @@
       ],
       "sourceReview": [
         "6c1efd591f7852b2"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "pasteur": {
+      "slug": "pasteur",
+      "title": "파스퇴르의 백조목 플라스크",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "43ac53e9e01adbcc"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "newton-prism": {
+      "slug": "newton-prism",
+      "title": "뉴턴의 프리즘 실험",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "43ac53e9e01adbcc"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "infection-prevention": {
+      "slug": "infection-prevention",
+      "title": "물방울·접촉 전파와 손 씻기",
+      "grades": [
+        "초3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "98fd4b1d24cbec64",
+        "6ed679a59c21c7a0",
+        "c645186ae5280481"
       ],
       "fix": null,
       "open": []

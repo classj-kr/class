@@ -1661,6 +1661,65 @@ const scienceCurriculum = {
       "10통과2-01-04",
       "10통과2-01-05"
     ]
+  },
+  "pasteur": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "파스퇴르의 백조목 플라스크",
+    "subjects": [
+      "과학탐구실험1"
+    ],
+    "codes": [
+      "10과탐1-02-02",
+      "10과탐1-02-03"
+    ]
+  },
+  "newton-prism": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "뉴턴의 프리즘 실험",
+    "subjects": [
+      "과학탐구실험1"
+    ],
+    "codes": [
+      "10과탐1-02-02",
+      "10과탐1-02-03"
+    ]
+  },
+  "infection-prevention": {
+    "grade": "초3",
+    "grades": [
+      "초3"
+    ],
+    "level": "elementary",
+    "title": "물방울·접촉 전파와 손 씻기",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "4과08-02",
+      "4과08-03"
+    ]
+  },
+  "mendeleev": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "멘델레예프의 원소 카드 배열",
+    "subjects": [
+      "과학탐구실험1"
+    ],
+    "codes": [
+      "10과탐1-01-02"
+    ]
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

@@ -60,4 +60,6 @@
     // Upper meridian transit can be north of the zenith; not every transit is a southern culmination.
     const sphere=window.SchoolContent['space-celestial-sphere'].high;
     sphere.concepts[0]='천체가 위쪽 자오선을 통과할 때의 고도는 90°−|위도−적위|로 구할 수 있습니다. 천체의 적위가 관측 위도보다 크면 북쪽 하늘에서 가장 높아질 수 있습니다.';
+    for (const topic of ['north-sky','celestial-sphere','sun-path']) window.SchoolContent['space-'+topic].high.subject='고급 지구과학';
+    window.SchoolContent['space-eclipses'].high.subject='지구과학';
 })();

@@ -95,5 +95,6 @@
         const p = window.SchoolContent['body-' + topic][level];
         p.sections = [{title: '구조와 기능', paragraphs: p.concepts}, {title: row[0], paragraphs: row.slice(1)}];
         if (level === 'middle' && ['digestion','circulation','respiration','excretion'].includes(topic)) p.subject = '과학 2';
+        if (level === 'middle' && ['nervous','homeostasis'].includes(topic)) p.subject = '과학 3';
     }
 })();

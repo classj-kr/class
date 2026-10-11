@@ -1,8 +1,8 @@
 {
   "summary": {
     "date": "2026-10-11",
-    "apps": 104,
-    "originalQuestions": 416,
+    "apps": 108,
+    "originalQuestions": 432,
     "examQuestions": 241,
     "sourcePaths": 4008,
     "duplicatePaths": 426,
@@ -14,9 +14,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 82,
-    "reviewRecords": 110,
-    "appsWithSelectedSourceReview": 104,
+    "reviewedSources": 89,
+    "reviewRecords": 120,
+    "appsWithSelectedSourceReview": 108,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -206,7 +206,7 @@
       "sha256": "ee3ee343af97cac21fe6570717c93b2b28e42acde1104f1bd3cbdab2881badb8",
       "kind": "pdf",
       "pages": 84,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "receipt": "references/textbooks/중고등/T셀파/고등/과학/과학탐구실험1(신영준)/수집기록.json",
         "source": {
@@ -3096,7 +3096,7 @@
       "sha256": "43ac53e9e01adbcc06a79019df3fedf3e37e360b77afa5734a53d74e80cacffb",
       "kind": "pdf",
       "pages": 20,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -5087,7 +5087,7 @@
       "sha256": "764c91a83f8bf462f03490744239f67817ab1a9f02907bf811c13d8e9b118665",
       "kind": "pdf",
       "pages": 78,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -6359,7 +6359,7 @@
       "sha256": "98fd4b1d24cbec645625c29399f5e66b7e8637e25176acc1610201379199130d",
       "kind": "pdf",
       "pages": 27,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "receipt": "references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/수집기록.json",
         "source": {
@@ -10755,7 +10755,7 @@
       "sha256": "7ef50ee5847f660e88d7229a71b0c4240294f193bab795ec909218f55b9eebe5",
       "kind": "pdf",
       "pages": 33,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "receipt": "references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/수집기록.json",
         "source": {
@@ -56545,7 +56545,7 @@
       "sha256": "6ed679a59c21c7a0e5f4a5c78fc302652a023946a3f2b73c78e6230d85f05135",
       "kind": "hwp",
       "paragraphs": 162,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -56587,7 +56587,7 @@
       "sha256": "c645186ae52804811c3aed7d2063dc4eb3a056e5b0a16657fa008de22b4fd6a4",
       "kind": "hwp",
       "paragraphs": 194,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -71089,6 +71089,150 @@
       ],
       "principle": "허블-르메트르 법칙에서 먼 은하의 후퇴 속도는 거리에 비례한다. 앱의 선형 적합과 우주론적 적색편이의 구분을 대조했다. 선택한 가상 자료의 H값·역수는 정밀 우주 나이 결정값이 아니다.",
       "method": "본문 발췌·허블 관계와 자료 성격 대조"
+    },
+    {
+      "id": "764c91a83f8bf462",
+      "locators": [
+        27,
+        28,
+        75,
+        77
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "mendeleev"
+      ],
+      "principle": "멘델레예프 원소 카드 19개의 원자량·화학식·반응성을 이용한 배열과 빈칸 예측",
+      "method": "27~28쪽 절차·정리와 75·77쪽 카드 원문 및 그림 대조. 활동용 수치·임의 기호를 유지하고 자유 서술 대신 배열 조작·객관식 추론 제공. 정렬과 세로줄 화학적 유사성을 각각 검사"
+    },
+    {
+      "id": "ee3ee343af97cac2",
+      "locators": [
+        21,
+        22,
+        79
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "mendeleev"
+      ],
+      "principle": "원소의 성질로 기호를 찾는 카드와 역사적/현대 주기율표 비교",
+      "method": "해당 쪽 텍스트 대조. 천재 17장과 미래엔 19장은 카드 구성이 다르므로 전자를 구현 완료로 간주하지 않음. 현재 미래엔 카드 배열만 제공"
+    },
+    {
+      "id": "43ac53e9e01adbcc",
+      "locators": [
+        5,
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "newton-prism"
+      ],
+      "principle": "슬릿·분산·선택한 단색광 재통과·반원 모양 유리·스크린 위치를 바꾸는 합성",
+      "method": "PDF 두 쪽의 원문과 장치 그림을 직접 확인. 첫 프리즘은 스넬 법칙과 경계 교점을 독립 검사. 합성은 이상 모형이며 정량 측정 주장은 하지 않음"
+    },
+    {
+      "id": "ee3ee343af97cac2",
+      "locators": [
+        47,
+        48,
+        49
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "newton-prism"
+      ],
+      "principle": "빛 분해·물을 담은 둥근 컵으로 빛 모으기·빨강만 두 번째 프리즘에 통과",
+      "method": "세 쪽 절차와 48쪽 물컵 장치 그림 대조. 같은 세 탐구의 도구 변형으로 묶고 독립 실험 수를 추가하지 않음. 컵의 빛 모으기는 이상 모형"
+    },
+    {
+      "id": "764c91a83f8bf462",
+      "locators": [
+        45,
+        46,
+        65,
+        71
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "newton-prism"
+      ],
+      "principle": "백열전구·볼록 렌즈, 평가 07번의 RGB LED 스펙트럼 비교",
+      "method": "45~46쪽 절차, 46·65쪽 장치 그림 및 71쪽 07번 해설 대조. 광원 선택과 렌즈 변형 및 새 객관식 문항 반영. 세 슬릿·고정 두 번째 프리즘의 동일 입사 조건 비교는 현재 미구현으로 명시. 08번 해설의 같은/다른 경로 문구는 모순되어 그대로 복제하지 않음"
+    },
+    {
+      "id": "43ac53e9e01adbcc",
+      "locators": [
+        8,
+        9,
+        10
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "pasteur"
+      ],
+      "principle": "역사적 배양액 실험의 공기 출입·먼지 유입·목 절단·기울임. 교과서 재연의 우유 100 mL와 4일 관찰은 구별",
+      "method": "PDF 33쪽 그림과 34~35쪽 절차 대조. 역사적 배양액 모형만 구현했으며 우유 실물 재연은 완료로 세지 않음"
+    },
+    {
+      "id": "98fd4b1d24cbec64",
+      "locators": [
+        11,
+        12,
+        17,
+        18
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "infection-prevention"
+      ],
+      "principle": "같은 세기로 두 번 분무·50 cm 간격·새 도화지, 접촉 놀이 네 차례, 같은 시간 30초 물/비누 세척·형광 로션",
+      "method": "텍스트와 분무·손 씻기 원문 그림 대조. 접촉은 한 차례 한 사람 한 번으로 단순화. 실측 수치나 감염 진단으로 제공하지 않음"
+    },
+    {
+      "id": "7ef50ee5847f660e",
+      "locators": [
+        17,
+        18
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "infection-prevention"
+      ],
+      "principle": "형광 로션·자외선 관찰의 비누 손 씻기 전후 비교",
+      "method": "두 쪽 텍스트 절차 대조. 미래엔의 같은 시간 물/비누 비교와 같은 목적의 활동으로 묶되 천재에는 물 세척 대조가 명시되지 않은 차이를 기록. 손 씻기 여섯 동작의 수행은 구현 완료로 판정하지 않음"
+    },
+    {
+      "id": "6ed679a59c21c7a0",
+      "locators": [
+        116,
+        139,
+        160
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "infection-prevention"
+      ],
+      "principle": "평가자료의 침방울·접촉 경로와 정답 해설",
+      "method": "형성평가 본문·정답·해설을 읽고 접촉 경로를 묻는 객관식과 새 경로 전이 문항을 새로 작성"
+    },
+    {
+      "id": "c645186ae5280481",
+      "locators": [
+        175,
+        182,
+        184,
+        190,
+        192,
+        193
+      ],
+      "locatorType": "extracted paragraph (figures/formulas may be absent)",
+      "apps": [
+        "infection-prevention"
+      ],
+      "principle": "동일한 30초 동안 물/비누 세척 뒤 남은 형광 로션 비교",
+      "method": "평가자료의 심화 문항과 채점 기준 대조. 로션 제거 관찰을 실제 미생물 전멸로 확대 해석하는 오답을 구분"
     }
   ],
   "activityReviews": [
@@ -71935,8 +72079,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "6과02-01",
-        "6과02-02",
-        "6과02-03"
+        "6과02-02"
       ],
       "reviewedEvidence": [
         "12e3528e738c7473"
@@ -71956,10 +72099,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "9과10-01",
-        "9과10-02",
-        "9과10-03",
-        "9과10-04",
-        "9과10-03@color"
+        "9과10-02"
       ],
       "reviewedEvidence": [
         "188d7481881a226e",
@@ -72077,7 +72217,6 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "4과01-01",
-        "4과01-02",
         "4과01-03",
         "4과01-04"
       ],
@@ -72099,8 +72238,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "6과10-01",
-        "6과10-02",
-        "6과10-03"
+        "6과10-02"
       ],
       "reviewedEvidence": [
         "280217a87c1f9146"
@@ -72122,8 +72260,7 @@
       "linkedExamQuestions": [
         "9과05-01",
         "9과05-02",
-        "9과05-03",
-        "9과05-04"
+        "9과05-03"
       ],
       "reviewedEvidence": [
         "35761c2651ee0156"
@@ -72222,8 +72359,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "4과09-01",
-        "4과09-02",
-        "4과09-03"
+        "4과09-02"
       ],
       "reviewedEvidence": [
         "2763b8cf014a4bb8"
@@ -72245,8 +72381,7 @@
       "linkedExamQuestions": [
         "6과15-01",
         "6과15-02",
-        "6과15-03",
-        "6과15-04"
+        "6과15-03"
       ],
       "reviewedEvidence": [
         "563555452e4a2364"
@@ -72375,8 +72510,6 @@
         "6과07-02",
         "6과07-03",
         "6과07-04",
-        "6과08-01",
-        "6과08-02",
         "6과08-03"
       ],
       "reviewedEvidence": [
@@ -72397,7 +72530,6 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과03-01",
         "9과03-02",
         "9과03-03"
       ],
@@ -72477,8 +72609,7 @@
       "linkedExamQuestions": [
         "4과01-03",
         "4과05-01",
-        "4과05-02",
-        "4과05-03"
+        "4과05-02"
       ],
       "reviewedEvidence": [
         "102ce624dacf5858"
@@ -72527,10 +72658,7 @@
         "10통과1-01-02",
         "10통과1-01-03",
         "10통과1-01-04",
-        "10통과2-03-01",
-        "10통과2-03-02",
-        "10통과2-03-03",
-        "10통과2-03-04"
+        "10통과2-03-02"
       ],
       "reviewedEvidence": [
         "7edd546b32175655"
@@ -72550,8 +72678,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "6과05-01",
-        "6과05-02",
-        "6과05-03"
+        "6과05-02"
       ],
       "reviewedEvidence": [
         "76bca86cc0dd75f5"
@@ -72570,7 +72697,6 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과08-01",
         "9과08-02",
         "9과08-03",
         "9과08-03@sequence"
@@ -72617,8 +72743,7 @@
       "linkedExamQuestions": [
         "4과15-01",
         "4과15-02",
-        "4과15-03",
-        "4과15-04"
+        "4과15-03"
       ],
       "reviewedEvidence": [
         "150c2bc4fec5ce83"
@@ -72671,7 +72796,6 @@
       "linkedExamQuestions": [
         "6과03-01",
         "6과03-02",
-        "6과03-03",
         "6과03-01@table"
       ],
       "reviewedEvidence": [
@@ -72733,7 +72857,6 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "9과11-01",
-        "9과11-02",
         "9과11-03",
         "9과11-04"
       ],
@@ -72754,12 +72877,8 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "10통과1-02-01",
-        "10통과1-02-02",
         "10통과1-02-03",
-        "10통과1-02-04",
-        "10통과1-02-05",
-        "10통과1-02-06"
+        "10통과1-02-04"
       ],
       "reviewedEvidence": [
         "28c7a55d8867b0c9"
@@ -72798,9 +72917,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "6과09-01",
-        "6과09-02",
-        "6과09-03",
-        "6과09-04"
+        "6과09-02"
       ],
       "reviewedEvidence": [
         "9cf443300eb93c19"
@@ -72858,7 +72975,6 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과16-01",
         "9과16-02",
         "9과16-03",
         "9과16-04",
@@ -72926,8 +73042,7 @@
       "linkedExamQuestions": [
         "6과14-01",
         "6과14-02",
-        "6과14-03",
-        "6과14-04"
+        "6과14-03"
       ],
       "reviewedEvidence": [
         "29025dcd99227936"
@@ -72989,10 +73104,8 @@
       "linkedExamQuestions": [
         "4과02-01",
         "4과02-02",
-        "4과02-03",
         "4과03-01",
         "4과03-02",
-        "4과03-03",
         "4과03-01@leaves"
       ],
       "reviewedEvidence": [
@@ -73011,9 +73124,7 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "4과12-01",
-        "4과12-02",
-        "4과12-03"
+        "4과12-01"
       ],
       "reviewedEvidence": [
         "c84377a276e7c9d4"
@@ -73033,8 +73144,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "6과11-01",
-        "6과11-02",
-        "6과11-03"
+        "6과11-02"
       ],
       "reviewedEvidence": [
         "89316af3de563d4c"
@@ -73199,7 +73309,6 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과13-01",
         "9과13-02",
         "9과13-03",
         "9과13-04",
@@ -73295,8 +73404,7 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "9과20-01",
-        "9과20-02",
-        "9과20-03"
+        "9과20-02"
       ],
       "reviewedEvidence": [
         "30573990e5feb933"
@@ -73356,10 +73464,7 @@
       "linkedExamQuestions": [
         "9과21-01",
         "9과21-02",
-        "9과21-03",
-        "9과21-04",
-        "9과21-05",
-        "9과21-05@pedigree"
+        "9과21-04"
       ],
       "reviewedEvidence": [
         "ada6483ae9f3eafd"
@@ -73396,13 +73501,7 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "10통과2-01-01",
-        "10통과2-01-02",
-        "10통과2-01-03",
-        "10통과2-01-04",
-        "10통과2-01-05",
-        "10통과2-01-03@oxygen",
-        "10통과2-01-04@neutralization"
+        "10통과2-01-02"
       ],
       "reviewedEvidence": [
         "815225711f615d25"
@@ -73441,7 +73540,6 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "4과04-01",
-        "4과04-02",
         "4과04-03"
       ],
       "reviewedEvidence": [
@@ -73467,9 +73565,7 @@
         "4과14-01",
         "4과14-02",
         "4과14-03",
-        "4과16-01",
         "4과16-02",
-        "4과16-03",
         "4과14-01@decomposer"
       ],
       "reviewedEvidence": [
@@ -73528,11 +73624,8 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과09-01",
         "9과09-02",
-        "9과09-03",
-        "9과09-04",
-        "9과09-05"
+        "9과09-03"
       ],
       "reviewedEvidence": [
         "188d7481881a226e"
@@ -73606,8 +73699,7 @@
       "linkedExamQuestions": [
         "4과11-01",
         "4과11-02",
-        "4과11-03",
-        "4과11-04"
+        "4과11-03"
       ],
       "reviewedEvidence": [
         "295e8a991fecc12f"
@@ -73681,18 +73773,8 @@
       "originalQuestions": 4,
       "linkedExamQuestions": [
         "10통과1-03-01",
-        "10통과1-03-02",
-        "10통과1-03-03",
-        "10통과1-03-04",
-        "10통과1-03-05",
-        "10통과1-03-06",
-        "10통과2-02-01",
         "10통과2-02-02",
         "10통과2-02-03",
-        "10통과2-02-04",
-        "10통과2-02-05",
-        "10통과2-02-06",
-        "10통과1-03-06@information",
         "10통과2-02-03@balance"
       ],
       "reviewedEvidence": [
@@ -73734,11 +73816,8 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과17-01",
-        "9과17-02",
         "9과17-03",
         "9과17-04",
-        "9과17-01@atmosphere",
         "9과17-03@humidity"
       ],
       "reviewedEvidence": [
@@ -73834,9 +73913,7 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과18-01",
         "9과18-02",
-        "9과18-03",
         "9과18-02@profile"
       ],
       "reviewedEvidence": [
@@ -73943,9 +74020,6 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과07-01",
-        "9과07-02",
-        "9과07-03",
         "9과07-04"
       ],
       "reviewedEvidence": [
@@ -74003,8 +74077,7 @@
       "linkedExamQuestions": [
         "9과15-01",
         "9과15-02",
-        "9과15-03",
-        "9과15-04"
+        "9과15-03"
       ],
       "reviewedEvidence": [
         "188d7481881a226e"
@@ -74082,11 +74155,7 @@
       ],
       "originalQuestions": 4,
       "linkedExamQuestions": [
-        "9과02-01",
-        "9과02-02",
-        "9과02-03",
-        "9과02-04",
-        "9과02-05"
+        "9과02-01"
       ],
       "reviewedEvidence": [
         "75f161484e5ed6f8"
@@ -74111,6 +74180,82 @@
       ],
       "reviewedEvidence": [
         "6c1efd591f7852b2"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "pasteur",
+      "title": "파스퇴르의 백조목 플라스크",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10과탐1-02-02",
+        "10과탐1-02-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "43ac53e9e01adbcc"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "newton-prism",
+      "title": "뉴턴의 프리즘 실험",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10과탐1-02-02",
+        "10과탐1-02-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "43ac53e9e01adbcc",
+        "ee3ee343af97cac2",
+        "764c91a83f8bf462"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "infection-prevention",
+      "title": "물방울·접촉 전파와 손 씻기",
+      "grades": [
+        "초3"
+      ],
+      "standards": [
+        "4과08-02",
+        "4과08-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [
+        "4과08-02",
+        "4과08-03"
+      ],
+      "reviewedEvidence": [
+        "98fd4b1d24cbec64",
+        "7ef50ee5847f660e",
+        "6ed679a59c21c7a0",
+        "c645186ae5280481"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "mendeleev",
+      "title": "멘델레예프의 원소 카드 배열",
+      "grades": [
+        "고1"
+      ],
+      "standards": [
+        "10과탐1-01-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "764c91a83f8bf462",
+        "ee3ee343af97cac2"
       ],
       "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
     }
