@@ -53,7 +53,7 @@
   const rowsOf = (a, b) => longDivision(b, a).rows.map((row) => row.value);
 
   B.addUnit({
-    id: '3-2-2', grade: 3, semester: 2, no: 2, title: '나눗셈', version: 2,
+    id: '3-2-2', grade: 3, semester: 2, no: 2, title: '나눗셈', version: 3,
     groups: [
       {
         id: 'tens', title: '(몇십)÷(몇)', standard: CALC,
