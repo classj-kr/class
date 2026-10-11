@@ -627,6 +627,11 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.ok(quotients.every(Number.isInteger) && quotients[0] !== quotients[1], label);
       assert.equal(new Set(f.limit.options).size, f.limit.options.length, label); assert.equal(item.choice.answer, f.limit.options.indexOf(least), label); tally('limit');
     }
+    if (f.tileOdd) {
+      // 그림 셋 가운데 둘은 (나눈 수, 색칠한 수)가 같고 하나만 다르다.
+      const keys = f.tileOdd.map(String), lone = keys.filter((k) => keys.filter((other) => other === k).length === 1);
+      assert.equal(lone.length, 1, label); assert.equal(new Set(keys).size, 2, label); assert.equal(item.choice.answer, keys.indexOf(lone[0]), label); tally('tileOdd');
+    }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
@@ -740,6 +745,11 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       else assert.deepEqual(item.inputs.map((i) => i.answer), want, label);
       if (f.pieceRead === 'more') assert.ok(f.target > shaded && f.target < n, label);
       tally('pieceRead');
+    }
+    if (f.pieceCount) {
+      // 똑같이 나눈 조각의 수: 그림 설명의 조각 수가 답이다.
+      const shapes = piecesIn(item.figure);
+      assert.equal(shapes.length, 1, label); assert.ok(shapes[0].equal, label); assert.equal(answerAt(item, 0), shapes[0].n, label); tally('pieceCount');
     }
     if (f.tilePick) {
       // 보기 그림 넷 가운데 「똑같이 n조각, 색칠 k조각」인 것은 하나뿐이다.

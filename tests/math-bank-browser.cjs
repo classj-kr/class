@@ -1,16 +1,24 @@
 // 「수학 문제」를 실제 브라우저로 돌린다. 학생으로 한 회차를 풀며 채점·저장·이어 풀기·다시 풀기를 보고,
 // 손님(둘러보기)으로도 풀리는지, 모든 회차가 휴대폰 너비에서 가로로 넘치지 않는지 본다.
 //   node tests/math-bank-browser.cjs          통과하면 {"ok":true}
-//   node tests/math-bank-browser.cjs --shots  outputs/math-bank-review 에 화면 사진을 남긴다(모든 회차)
+//   node tests/math-bank-browser.cjs --shots  outputs/math-bank-review 에 화면 사진을 무손실 WebP로 남긴다(모든 회차)
 'use strict';
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { spawnSync } = require('node:child_process');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
 const { harness } = require('./learning-records-integration.cjs');
 
 const SHOTS = process.argv.includes('--shots');
 const OUT = path.resolve(__dirname, '../outputs/math-bank-review');
+// 화면 사진은 무손실 WebP로 남긴다. 브라우저는 PNG로만 찍으므로 메모리에서 바꾸어 저장하고, 화소가 같은지 확인한다.
+const TO_WEBP = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGBA');im.save(sys.argv[1],format='WEBP',lossless=True);out=Image.open(sys.argv[1]).convert('RGBA');assert im.size==out.size and im.tobytes()==out.tobytes()";
+async function shot(page, name) {
+  const png = await page.screenshot({ fullPage: true });
+  const result = spawnSync(process.env.PYTHON || 'python', ['-c', TO_WEBP, path.join(OUT, name + '.webp')], { input: png });
+  assert.equal(result.status, 0, 'WebP 저장 실패: ' + String(result.stderr));
+}
 const URL_PATH = '/learning/literacy-numeracy/math-bank/';
 const UNIT = '3-1-1';
 
@@ -66,7 +74,7 @@ const UNIT = '3-1-1';
     assert.ok(plan.every((group) => group.rounds.length >= 1), '빈 묶음이 없다');
     assert.ok(plan.some((group) => group.rounds.some((r) => r.level === '실력')), '실력 문제가 있다');
     assert.equal(await page.locator('#unitSelect').inputValue(), UNIT);
-    if (SHOTS) await page.screenshot({ path: path.join(OUT, '0-groups.png'), fullPage: true });
+    if (SHOTS) await shot(page, '0-groups');
 
     const first = plan[0], firstKey = `${UNIT}:${first.id}:기본:1`;
     await page.locator('.mb-group').first().locator('.mb-level').first().click();
@@ -104,7 +112,7 @@ const UNIT = '3-1-1';
     await page.locator('#finish:not([hidden])').waitFor();
     assert.match(await page.locator('#finish').innerText(), new RegExp(items.length + '문항 중 ' + (items.length - 1) + '문항 정답'));
     assert.deepEqual(await statusOf(page, firstKey), ['completed']);
-    if (SHOTS) await page.screenshot({ path: path.join(OUT, '0-finished.png'), fullPage: true });
+    if (SHOTS) await shot(page, '0-finished');
 
     // 다시 풀기: 같은 문제가 빈 채로 다시 열리고 새 기록이 생긴다.
     await page.locator('#finish button', { hasText: '다시 풀기' }).click();
@@ -180,7 +188,7 @@ const UNIT = '3-1-1';
             });
             const tag = `${unitId} ${groups[gi].id} ${groups[gi].rounds[li].level} ${groups[gi].rounds[li].no}회 (${name})`;
             assert.deepEqual(report, { page: 0, wide: [], flat: [] }, '넘치거나 찌그러진 그림: ' + tag);
-            if (SHOTS) await view.page.screenshot({ path: path.join(OUT, `${name}-${unitId}-${gi + 1}${groups[gi].id}-${groups[gi].rounds[li].level}${groups[gi].rounds[li].no}.png`), fullPage: true });
+            if (SHOTS) await shot(view.page, `${name}-${unitId}-${gi + 1}${groups[gi].id}-${groups[gi].rounds[li].level}${groups[gi].rounds[li].no}`);
             await view.page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
             await view.page.locator('.mb-group').first().waitFor();
           }
