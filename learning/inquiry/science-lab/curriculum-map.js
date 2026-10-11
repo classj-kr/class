@@ -835,7 +835,7 @@ const scienceCurriculum = {
       "초6"
     ],
     "level": "elementary",
-    "title": "현미경과 세포 관찰",
+    "title": "현미경·식물의 구조와 기능",
     "subjects": [
       "과학"
     ],

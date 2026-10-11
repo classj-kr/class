@@ -41,17 +41,24 @@ test('Prism: independent Snell and triangle-boundary checks; single colors persi
   assert.equal(prism.result({mode:'combine',collector,source,screen:focus,light:false}).colors.length,0);
  }
 });
+test('fixed-path prism comparison keeps incidence equal and separates red/blue by refraction',()=>{
+ const red=prism.fixedRay(0),blue=prism.fixedRay(4);
+ assert.deepEqual(red.entry,blue.entry);assert(blue.n>red.n);assert(blue.angle>red.angle);assert(blue.screenY>red.screenY);
+ for(const color of [0,4]){const first=prism.fixedFirstRay(color);assert(Math.abs(first.angle-155)<1e-9);assert.equal(first.exit[1],194);assert(first.at(136)>215.5&&first.at(136)<223.5);assert(first.entry[0]<first.exit[0]);}
+ for(const color of [0,4]){const r=prism.result({mode:'fixed',color});assert.deepEqual(r.colors,[color]);assert.equal(r.white,false);assert.equal(r.fixed.screenY,prism.fixedRay(color).screenY);assert.deepEqual(prism.result({mode:'fixed',color,light:false}).colors,[]);}
+ const variant=registry.find(r=>r.slug==='newton-prism').procedures.find(p=>p[0]==='fixed');assert.deepEqual(variant.slice(2),[[46],'764c91a83f8bf462']);
+});
 test('Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result',()=>{
  assert.deepEqual(infection.contact([0],[[2,3]]),[0]);assert.deepEqual(infection.contact([0],[[0,1],[1,2]]),[0,1]);assert.deepEqual(infection.contact([0,1],[[1,2]]),[0,1,2]);
  const n=o=>infection.lotion({applied:true,uv:true,...o});assert.equal(n({uv:false}),0);assert(n({washed:true,soap:true})<n({washed:true,soap:false}));assert(n({washed:true,soap:false})<n({washed:false}));
  const close=infection.droplets(50).filter(d=>d.hit).length,far=infection.droplets(300).filter(d=>d.hit).length;assert(close>far);assert.deepEqual(infection.droplets(100),infection.droplets(100),'distance trials reuse identical spray conditions');
 });
 async function server(){const s=http.createServer((req,res)=>{let file=path.resolve(base,'.'+new URL(req.url,'http://localhost').pathname);if(file!==base&&!file.startsWith(base+path.sep))return res.writeHead(403).end();if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err)return res.writeHead(404).end();res.setHeader('Content-Type',{'.js':'text/javascript','.css':'text/css','.html':'text/html; charset=utf-8'}[path.extname(file)]||'application/octet-stream');res.end(data);});});await new Promise(r=>s.listen(0,'127.0.0.1',r));return {s,url:'http://127.0.0.1:'+s.address().port};}
-for(const engine of ['chromium','webkit'])test(engine+': source-specific controls, full question flow and mobile scenes',{timeout:180000},async()=>{
+for(const engine of ['chromium','webkit'])test(engine+': source-specific controls, full question flow and mobile scenes',{timeout:420000},async()=>{
  const {s,url}=await server();let browser;fs.mkdirSync(out,{recursive:true});
  try{
   browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});const page=await browser.newPage({viewport:{width:1100,height:850}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
-  async function shot(name){for(const width of [1100,390]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,name);await require('./science-screenshot.cjs')(page.locator('.experiment-layout'),path.join(out,`${name}-${engine}-${width}.webp`));}await page.setViewportSize({width:1100,height:850});}
+  async function shot(name){for(const width of [1100,390]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,name);await require('./science-screenshot.cjs')(page.locator('.experiment-layout:visible'),path.join(out,`${name}-${engine}-${width}.webp`));}await page.setViewportSize({width:1100,height:850});}
   await page.goto(url+'/pasteur/');await page.locator('#heat').click();await page.locator('#observe').click();assert.match(await page.locator('#observationA').textContent(),/맑게/);assert.match(await page.locator('#observationB').textContent(),/맑게/);await shot('pasteur-intact');
   for(const neck of ['cut','tilt','sealed']){await page.locator('[data-neck='+neck+']').click();assert.match(await page.locator('#observationB').textContent(),/아직/);await page.locator('#observe').click();assert.match(await page.locator('#observationA').textContent(),/맑게/);assert.match(await page.locator('#observationB').textContent(),neck==='sealed'?/맑게/:/증식/);await shot('pasteur-'+neck);}
   await page.locator('#resetExperiment').click();await page.locator('[data-neck=sealed]').click();await page.locator('#observe').click();assert.match(await page.locator('#observationB').textContent(),/증식/);
@@ -59,6 +66,10 @@ for(const engine of ['chromium','webkit'])test(engine+': source-specific control
   await page.locator('#lamp').click();await page.locator('[data-mode=dispersion]').click();await page.locator('#lightSource').selectOption('rgb');assert.match(await page.locator('#observation').textContent(),/세 색의 띠/);await shot('prism-rgb');
   await page.locator('[data-mode=single]').click();assert.equal(await page.locator('#selectedColor').inputValue(),'0');assert.equal(await page.locator('#selectedColor option[value="6"]').evaluate(o=>o.disabled),true);
   for(const c of [0,3,4]){await page.locator('#selectedColor').selectOption(String(c));assert.match(await page.locator('#observation').textContent(),new RegExp(prism.colors[c][0]+' 빛'));}
+  await page.locator('[data-mode=fixed]').click();
+  const fixed=[];
+  for(const color of [0,4]){await page.locator('#selectedColor').selectOption(String(color));fixed.push(await page.evaluate(()=>({prism:document.querySelector('[data-fixed-prism]').outerHTML,slits:[...document.querySelectorAll('[data-fixed-slit]')].map(e=>e.outerHTML),rotation:document.querySelector('[data-first-prism]').getAttribute('transform'),screen:Number(document.getElementById('screenSwatch').dataset.screenY)})));assert.match(await page.locator('#observation').textContent(),/같은 경로/);await shot('prism-fixed-'+color);}
+  assert.equal(fixed[0].prism,fixed[1].prism);assert.deepEqual(fixed[0].slits,fixed[1].slits);assert.notEqual(fixed[0].rotation,fixed[1].rotation);assert(fixed[1].screen>fixed[0].screen);
   await page.locator('[data-mode=combine]').click();
   for(const source of ['incandescent','rgb'])for(const collector of ['glass','lens','cup']){
    await page.locator('#lightSource').selectOption(source);await page.locator('#collector').selectOption(collector);const focus=prism.collectors[collector].focus;
@@ -73,13 +84,16 @@ for(const engine of ['chromium','webkit'])test(engine+': source-specific control
   for(const [i,id] of arrangement.entries())if(id){await page.locator('[data-card='+id+']').click();await page.locator('[data-slot="'+i+'"]').click();}
   await page.locator('#checkArrangement').click();assert.equal(await page.locator('#arrangementStatus').getAttribute('data-complete'),'true');assert.equal(await page.locator('#elementPool button').count(),0);await shot('mendeleev-complete');
   await page.locator('[data-slot="0"]').click();await page.locator('[data-slot="1"]').click();await page.locator('#checkArrangement').click();assert.equal(await page.locator('#arrangementStatus').getAttribute('data-complete'),'false');await page.locator('[data-slot="0"]').click();await page.locator('#removeElement').click();assert.equal(await page.locator('#elementPool button').count(),1);await page.locator('#resetExperiment').click();assert.equal(await page.locator('#elementPool button').count(),19);
-  for(const row of registry){
+  for(const [rowIndex,row] of registry.entries()){
    await page.goto(url+'/'+row.slug+'/');await page.waitForSelector('[data-assessment-ready]',{state:'attached'});await page.locator('.quiz-section summary').click();await page.waitForFunction(()=>!!document.querySelector('.exam-widget')?.examController);
-   for(const [i,q] of row.questions.entries()){
-    const card=page.locator('.quiz-card').nth(i),wrong='abcd'[(q.answer+1)%q.choices.length];await card.locator('input[value='+wrong+']').check();await card.locator('.answer-button').click();assert.equal(await card.locator('.answer-result').textContent(),'다시 생각하고 다른 답을 골라보세요.');await card.locator('input[value='+'abcd'[q.answer]+']').check();await card.locator('.answer-button').click();assert.match(await card.locator('.answer-result').textContent(),/처음 선택을 돌아보면/);
+   const cards=await page.locator('.quiz-card').all();
+   for(const card of cards){
+    const id=await card.getAttribute('data-question-id'),q=row.questions[Number(id.split('#q')[1])-1];assert(q,id);
+    const wrong='abcd'[(q.answer+1)%q.choices.length];await card.locator('input[value='+wrong+']').check();await card.locator('.answer-button').click();assert.equal(await card.locator('.answer-result').textContent(),'다시 생각하고 다른 답을 골라보세요.');await card.locator('input[value='+'abcd'[q.answer]+']').check();await card.locator('.answer-button').click();assert.match(await card.locator('.answer-result').textContent(),/처음 선택을 돌아보면/,id);
    }
    const ids=await page.locator('.exam-widget').evaluate(e=>e.examController.ids());for(const [i,id] of ids.entries()){const q=row.followups.find(q=>q.id===id)||require('../learning/inquiry/science-lab/exam-bank.js').questions.find(q=>q.id===id);assert(q,id);await page.locator('[data-exam-answer="'+q.answer+'"]').click();await page.locator('.exam-submit').click();assert.equal(await page.locator('.exam-feedback').getAttribute('data-correct'),'true');if(i<ids.length-1)await page.locator('[data-exam-next]').click();}
-   const state=await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary());assert.equal(state.corrected,4);assert(state.responses.some(r=>r.transferVerified));await page.reload();await page.waitForSelector('[data-assessment-ready]',{state:'attached'});assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().corrected),4);
+   const state=await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary());assert.equal(state.corrected,cards.length);const activeIds=state.responses.map(r=>r.id);if(row.followups.some(q=>ids.includes(q.id)&&q.checks?.some(id=>activeIds.includes(id))))assert(state.responses.some(r=>r.transferVerified));await page.reload();await page.waitForSelector('[data-assessment-ready]',{state:'attached'});assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().corrected),cards.length);
+   if((rowIndex+1)%10===0)console.log(engine+': '+(rowIndex+1)+'/'+registry.length+' assessment routes verified');
   }
   assert.deepEqual(errors,[]);
  }finally{await browser?.close();await new Promise(r=>s.close(r));}

@@ -800,7 +800,7 @@
       }
     },
     "microscope#q4": {
-      "concept": "현미경과 세포 관찰 · 4번",
+      "concept": "현미경·식물의 구조와 기능 · 4번",
       "feedback": {
         "a": "첫 선택에서는 “세포막”로 판단했습니다.",
         "b": "첫 선택에서는 “핵막”로 판단했습니다.",
@@ -2174,21 +2174,21 @@
       }
     },
     "microscope#q1": {
-      "concept": "현미경과 세포 관찰 · 1번",
+      "concept": "현미경·식물의 구조와 기능 · 1번",
       "feedback": {
         "a": "첫 선택에서는 “조직”로 판단했습니다.",
         "c": "첫 선택에서는 “기관”로 판단했습니다."
       }
     },
     "microscope#q2": {
-      "concept": "현미경과 세포 관찰 · 2번",
+      "concept": "현미경·식물의 구조와 기능 · 2번",
       "feedback": {
         "a": "첫 선택에서는 “작은 부분을 더 크게 볼 수 있음”로 판단했습니다.",
         "c": "첫 선택에서는 “더 많은 구조를 세밀하게 구별함”로 판단했습니다."
       }
     },
     "microscope#q3": {
-      "concept": "현미경과 세포 관찰 · 3번",
+      "concept": "현미경·식물의 구조와 기능 · 3번",
       "feedback": {
         "b": "첫 선택에서는 “조리개를 더 닫음”로 판단했습니다.",
         "c": "첫 선택에서는 “미동 나사만 돌림”로 판단했습니다."
@@ -2578,6 +2578,36 @@
           "1": "첫 선택에서는 “3 : 2”로 판단했습니다.",
           "2": "첫 선택에서는 “1 : 3”로 판단했습니다."
         }
+      },
+      {
+        "id": "mendeleev@identify-evidence",
+        "topic": "두 화합물로 원소 찾기",
+        "question": "원자량 16.0인 기체 카드에는 주요 화합물이 CO₂와 H₂O로 적혀 있다. 두 화합물에 공통으로 들어 있는 원소를 찾은 것은?",
+        "choices": [
+          "C — 탄소",
+          "H — 수소",
+          "O — 산소"
+        ],
+        "answer": 2,
+        "why": "두 화합물 모두에 들어 있는 원소는 O입니다. C는 H₂O에, H는 CO₂에 들어 있지 않습니다. 원자량과 기체라는 조건도 함께 확인합니다.",
+        "checks": [
+          "mendeleev#q1"
+        ]
+      },
+      {
+        "id": "mendeleev@hydrogen-comparison",
+        "topic": "위치와 성질의 구별",
+        "question": "17장 카드의 배열판에서 H는 Li·Na·K 위에 놓였다. H 카드는 기체·비금속이고 나머지는 고체·금속이다. 이 자료에 맞는 해석은?",
+        "choices": [
+          "같은 세로줄에 있으므로 H도 금속이다",
+          "H는 그 위치에 놓이지만 알칼리 금속은 아니다",
+          "금속이 아니므로 H는 주기율표에서 제외한다"
+        ],
+        "answer": 1,
+        "why": "배열판의 위치만으로 모든 성질이 같다고 판단할 수 없습니다. 수소는 현대 주기율표의 1족 위치에 표시되지만 알칼리 금속으로 분류하지 않습니다.",
+        "checks": [
+          "mendeleev#q1"
+        ]
       }
     ],
     "pasteur": [
@@ -2681,6 +2711,18 @@
           "0": "첫 선택에서는 “전구는 세 대역 · LED는 연속 띠”로 판단했습니다.",
           "2": "첫 선택에서는 “전구와 LED 모두 같은 연속 띠”로 판단했습니다."
         }
+      },
+      {
+        "id": "newton-prism@fixed-path",
+        "topic": "입사 조건을 같게 하는 이유",
+        "question": "슬릿 1·2·3과 두 번째 프리즘을 고정하고 첫 프리즘으로 고르는 색만 바꾸었다. 이렇게 비교하는 까닭은?",
+        "choices": [
+          "입사 경로를 같게 하여 색에 따른 굴절 차이를 비교한다",
+          "굴절 경로를 같게 하여 색에 따른 밝기 차이를 비교한다",
+          "빛의 밝기를 같게 하여 색에 따른 진행 속도를 비교한다"
+        ],
+        "answer": 0,
+        "why": "입사 경로가 달라지면 입사각에 의한 차이와 색에 따른 굴절 차이가 함께 나타납니다. 같은 경로로 넣으면 색에 따른 차이를 비교할 수 있습니다."
       }
     ],
     "infection-prevention": [
@@ -3274,6 +3316,945 @@
           "0": "첫 선택에서는 “용기만 크게 바꾸어 비교”로 판단했습니다.",
           "2": "첫 선택에서는 “발아 콩만 더 오래 측정”로 판단했습니다."
         }
+      }
+    ],
+    "insulation-lab": [
+      {
+        "id": "insulation-lab@cold",
+        "topic": "조건을 바꾸어 확인",
+        "question": "실온 25 ℃에서 찬물이 5→13→17.8 ℃로 같은 시간 간격마다 변한다. 다음 예상 온도는?",
+        "choices": [
+          "20.68 ℃",
+          "22.6 ℃",
+          "25.8 ℃",
+          "17.8 ℃"
+        ],
+        "answer": 0,
+        "why": "실온과의 차이가 매번 0.6배이므로 25−(25−17.8)×0.6입니다.",
+        "checks": [
+          "insulation-lab#q1",
+          "insulation-lab#q3"
+        ]
+      },
+      {
+        "id": "insulation-lab@fair",
+        "topic": "조건을 바꾸어 확인",
+        "question": "A 50 mL·단열층 1 cm, B 100 mL·단열층 3 cm를 비교했다. 재료 종류만의 효과를 보려면?",
+        "choices": [
+          "물의 양만 통제",
+          "층 두께만 통제",
+          "물의 양과 층 두께 통제",
+          "측정 시간만 통제"
+        ],
+        "answer": 2,
+        "why": "물의 열용량과 단열층의 열저항이 모두 달랐습니다.",
+        "checks": [
+          "insulation-lab#q2",
+          "insulation-lab#q4"
+        ]
+      }
+    ],
+    "doppler-lab": [
+      {
+        "id": "doppler-lab@inverse",
+        "topic": "조건을 바꾸어 확인",
+        "question": "음속 330 m/s, 500 Hz 음원이 멀어질 때 수신값이 450 Hz이다. 음원의 속력은?",
+        "choices": [
+          "30.0 m/s",
+          "33.0 m/s",
+          "36.7 m/s",
+          "66.0 m/s"
+        ],
+        "answer": 2,
+        "why": "450=500×330/(330+v)를 풀면 v≈36.7 m/s입니다.",
+        "checks": [
+          "doppler-lab#q2",
+          "doppler-lab#q3"
+        ]
+      },
+      {
+        "id": "doppler-lab@same-ratio",
+        "topic": "조건을 바꾸어 확인",
+        "question": "접근 속력과 음속을 유지한 채 음원 진동수를 두 배로 했다. 수신 진동수 / 음원 진동수의 비는?",
+        "choices": [
+          "절반",
+          "같음",
+          "두 배",
+          "네 배"
+        ],
+        "answer": 1,
+        "why": "비 c/(c−v)는 속력 조건만으로 결정됩니다.",
+        "checks": [
+          "doppler-lab#q1",
+          "doppler-lab#q4"
+        ]
+      }
+    ],
+    "ride-acceleration": [
+      {
+        "id": "ride-acceleration@double",
+        "topic": "조건을 바꾸어 확인",
+        "question": "원 궤도 반지름을 유지하며 속력을 3→6 m/s로 늘렸다. 구심 가속도의 비는?",
+        "choices": [
+          "1/4",
+          "1/2",
+          "2",
+          "4"
+        ],
+        "answer": 3,
+        "why": "같은 반지름에서는 가속도가 v²에 비례합니다. 속력이 6/3=2배이므로 가속도는 2²=4배입니다.",
+        "checks": [
+          "ride-acceleration#q2"
+        ]
+      },
+      {
+        "id": "ride-acceleration@descending",
+        "topic": "조건을 바꾸어 확인",
+        "question": "아래로 가던 승강기가 멈추기 위해 감속한다. 가속도와 원시 센서 크기는?",
+        "choices": [
+          "위쪽·9.8보다 큼",
+          "위쪽·9.8보다 작음",
+          "아래쪽·9.8보다 큼",
+          "아래쪽·9.8보다 작음"
+        ],
+        "answer": 0,
+        "why": "속도와 반대인 위쪽으로 가속하므로 더 큰 지지력이 필요합니다.",
+        "checks": [
+          "ride-acceleration#q3",
+          "ride-acceleration#q4"
+        ]
+      },
+      {
+        "id": "ride-acceleration@swing-support",
+        "topic": "조건을 바꾸어 확인",
+        "question": "그네가 최저점을 지날 때 위쪽 원시 z값은 12.0 m/s²였다. g=9.8 m/s²일 때 운동 가속도는?",
+        "choices": [
+          "위쪽 2.2",
+          "아래쪽 2.2",
+          "위쪽 12.0",
+          "아래쪽 21.8"
+        ],
+        "answer": 0,
+        "why": "원시값에서 중력에 해당하는 9.8을 빼면 위쪽 2.2 m/s²입니다. 최저점의 구심 가속도와 같은 방향입니다.",
+        "checks": [
+          "ride-acceleration#q5"
+        ]
+      },
+      {
+        "id": "ride-acceleration@mount-sign",
+        "topic": "조건을 바꾸어 확인",
+        "question": "같은 순간 센서를 장치 기준 방향에서 180° 돌려 부착했다. 중력 보정 x값이 −4 m/s²였다면, 돌리기 전 x값은?",
+        "choices": [
+          "−8",
+          "−4",
+          "0",
+          "+4"
+        ],
+        "answer": 3,
+        "why": "운동을 그대로 두고 x축 방향을 뒤집었으므로 같은 벡터의 x성분은 부호만 바뀝니다.",
+        "checks": [
+          "ride-acceleration#q8"
+        ]
+      }
+    ],
+    "dna-replication": [
+      {
+        "id": "dna-replication@new-template",
+        "topic": "조건을 바꾸어 확인",
+        "question": "주형이 왼쪽 5′—AGTC—3′ 오른쪽이다. 새 DNA를 5′→3′ 순서로 적으면?",
+        "choices": [
+          "TCAG",
+          "GACT",
+          "AGTC",
+          "CTGA"
+        ],
+        "answer": 1,
+        "why": "맞은편에 3′—TCAG—5′가 놓이므로 오른쪽부터 읽어 GACT입니다.",
+        "checks": [
+          "dna-replication#q1",
+          "dna-replication#q2"
+        ]
+      },
+      {
+        "id": "dna-replication@third",
+        "topic": "조건을 바꾸어 확인",
+        "question": "부모 두 가닥에만 표지한 DNA가 세 차례 복제되었다. 표지 가닥이 있는 DNA의 비율은?",
+        "choices": [
+          "1/8",
+          "1/4",
+          "1/2",
+          "1"
+        ],
+        "answer": 1,
+        "why": "전체는 8개, 표지 가닥을 포함한 DNA는 여전히 2개입니다.",
+        "checks": [
+          "dna-replication#q3",
+          "dna-replication#q4"
+        ]
+      }
+    ],
+    "protein-synthesis": [
+      {
+        "id": "protein-synthesis@stop",
+        "topic": "조건을 바꾸어 확인",
+        "question": "AUG–GAA–UAG–UUU에서 UAG는 종결코돈이다. 생성 사슬의 아미노산 수는?",
+        "choices": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "answer": 1,
+        "why": "AUG와 GAA만 아미노산을 지정하고 UAG에서 끝납니다.",
+        "checks": [
+          "protein-synthesis#q2",
+          "protein-synthesis#q3"
+        ]
+      },
+      {
+        "id": "protein-synthesis@three",
+        "topic": "조건을 바꾸어 확인",
+        "question": "AUG 다음에 GGC 세 염기를 삽입했다. GGC는 글라이신을 지정한다. 뒤쪽 원래 코돈들의 읽는 틀은?",
+        "choices": [
+          "한 염기 밀림",
+          "두 염기 밀림",
+          "유지됨",
+          "모두 역전됨"
+        ],
+        "answer": 2,
+        "why": "세 염기 삽입은 한 아미노산을 더하지만 뒤의 코돈 경계는 유지합니다.",
+        "checks": [
+          "protein-synthesis#q1",
+          "protein-synthesis#q4"
+        ]
+      }
+    ],
+    "pedigree-lab": [
+      {
+        "id": "pedigree-lab@daughter",
+        "topic": "조건을 바꾸어 확인",
+        "question": "XᴿXʳ 어머니와 XʳY 아버지의 딸 중 형질이 나타날 확률은?",
+        "choices": [
+          "0",
+          "1/4",
+          "1/2",
+          "1"
+        ],
+        "answer": 2,
+        "why": "딸은 아버지의 Xʳ을 받고 어머니에게서도 Xʳ을 받을 확률이 1/2입니다.",
+        "checks": [
+          "pedigree-lab#q1",
+          "pedigree-lab#q4"
+        ]
+      },
+      {
+        "id": "pedigree-lab@all",
+        "topic": "조건을 바꾸어 확인",
+        "question": "XᴿXʳ 어머니와 XʳY 아버지의 전체 자녀 중 형질이 나타날 확률은?",
+        "choices": [
+          "1/4",
+          "1/2",
+          "3/4",
+          "1"
+        ],
+        "answer": 1,
+        "why": "아들 절반과 딸 절반에 형질이 나타나므로 전체도 절반입니다.",
+        "checks": [
+          "pedigree-lab#q2",
+          "pedigree-lab#q3"
+        ]
+      }
+    ],
+    "karyotype-lab": [
+      {
+        "id": "karyotype-lab@sex",
+        "topic": "조건을 바꾸어 확인",
+        "question": "상염색체 44개와 X 하나만 보인다. 전체 수와 상염색체 수는?",
+        "choices": [
+          "45·43",
+          "45·44",
+          "46·44",
+          "46·45"
+        ],
+        "answer": 1,
+        "why": "성염색체 하나가 줄어도 상염색체 44개는 그대로입니다.",
+        "checks": [
+          "karyotype-lab#q1",
+          "karyotype-lab#q3"
+        ]
+      },
+      {
+        "id": "karyotype-lab@sequence",
+        "topic": "조건을 바꾸어 확인",
+        "question": "핵형이 같은 두 시료에서 어떤 유전자의 염기 하나가 다르다. 두 결과는?",
+        "choices": [
+          "함께 성립할 수 있다",
+          "반드시 핵형도 달라야 한다",
+          "반드시 염색체 수도 달라야 한다",
+          "반드시 동원체도 옮겨야 한다"
+        ],
+        "answer": 0,
+        "why": "한 염기의 차이는 일반적인 핵형 영상에서 보이는 변화가 아닙니다.",
+        "checks": [
+          "karyotype-lab#q2",
+          "karyotype-lab#q4"
+        ]
+      }
+    ],
+    "antibiotic-disc": [
+      {
+        "id": "antibiotic-disc@radius",
+        "topic": "조건을 바꾸어 확인",
+        "question": "디스크 반지름 3 mm, 바깥 경계 반지름 9 mm이다. 한쪽 억제 폭은?",
+        "choices": [
+          "3 mm",
+          "6 mm",
+          "9 mm",
+          "12 mm"
+        ],
+        "answer": 1,
+        "why": "같은 중심에서 잰 두 반지름의 차이입니다.",
+        "checks": [
+          "antibiotic-disc#q1",
+          "antibiotic-disc#q3"
+        ]
+      },
+      {
+        "id": "antibiotic-disc@dose",
+        "topic": "조건을 바꾸어 확인",
+        "question": "A는 10 μL, B는 20 μL를 사용해 B의 억제 폭이 컸다. 추출액 종류만 비교할 재실험은?",
+        "choices": [
+          "A와 B의 투입량을 맞춘다",
+          "B의 투입량만 더 늘린다",
+          "물 대조군만 제거한다",
+          "A의 배양 시간만 늘린다"
+        ],
+        "answer": 0,
+        "why": "종류와 투입량이 함께 달라 두 효과를 분리하지 못했습니다.",
+        "checks": [
+          "antibiotic-disc#q2",
+          "antibiotic-disc#q4"
+        ]
+      }
+    ],
+    "water-wave-tank": [
+      {
+        "id": "water-wave-tank@deep",
+        "topic": "새 조건에서 확인",
+        "question": "충분히 깊은 바다에서 파장이 25→100 m로 바뀌었다. 위상 속력은 몇 배인가?",
+        "choices": [
+          "1/2",
+          "1",
+          "2",
+          "4"
+        ],
+        "answer": 2,
+        "why": "심해파의 c≈√(gL/2π)에서 파장이 네 배이면 속력은 두 배입니다.",
+        "checks": [
+          "water-wave-tank#q2",
+          "water-wave-tank#q3"
+        ]
+      },
+      {
+        "id": "water-wave-tank@bottom",
+        "topic": "새 조건에서 확인",
+        "question": "천해파 모형의 바닥에 가까운 물 입자의 궤도는?",
+        "choices": [
+          "수직으로 긴 타원",
+          "거의 수평인 왕복",
+          "표면보다 큰 원",
+          "한 방향 직선 이동"
+        ],
+        "answer": 1,
+        "why": "바닥에서 수직 운동이 제한되어 납작해지고 바닥에서는 수평 왕복이 됩니다.",
+        "checks": [
+          "water-wave-tank#q1",
+          "water-wave-tank#q4"
+        ]
+      }
+    ],
+    "silver-mirror": [
+      {
+        "id": "silver-mirror@electrons",
+        "topic": "새 조건에서 확인",
+        "question": "Ag⁺ 2개가 Ag 2개로 바뀌는 데 필요한 전자는?",
+        "choices": [
+          "1개 받음",
+          "2개 받음",
+          "1개 내놓음",
+          "2개 내놓음"
+        ],
+        "answer": 1,
+        "why": "은 이온 하나가 전자 하나를 받아 전하 0의 은 원자가 됩니다.",
+        "checks": [
+          "silver-mirror#q1",
+          "silver-mirror#q3"
+        ]
+      },
+      {
+        "id": "silver-mirror@control",
+        "topic": "새 조건에서 확인",
+        "question": "물 대조군에서도 은거울이 생겨 시료 혼입을 의심했다. 이를 확인할 재실험은?",
+        "choices": [
+          "같은 용기에 포도당의 양만 늘린다",
+          "같은 용기에서 굴리는 횟수만 줄인다",
+          "새 용기·새 시약으로 물 대조를 반복한다",
+          "물 대조를 빼고 포도당 시료만 반복한다"
+        ],
+        "answer": 2,
+        "why": "혼입이나 오염을 확인하려면 이를 제거한 용기·시약에서 대조 결과가 재현되는지 확인합니다.",
+        "checks": [
+          "silver-mirror#q2",
+          "silver-mirror#q4"
+        ]
+      }
+    ],
+    "nylon-interface": [
+      {
+        "id": "nylon-interface@eight",
+        "topic": "새 조건에서 확인",
+        "question": "다이아민 4개와 산 염화물 4개를 번갈아 하나의 사슬로 연결했다. 생성 HCl 수는?",
+        "choices": [
+          "4",
+          "7",
+          "8",
+          "16"
+        ],
+        "answer": 1,
+        "why": "단위체 8개의 선형 사슬에는 연결 7개가 있습니다.",
+        "checks": [
+          "nylon-interface#q2",
+          "nylon-interface#q3"
+        ]
+      },
+      {
+        "id": "nylon-interface@pull",
+        "topic": "새 조건에서 확인",
+        "question": "같은 장치에서 너무 빨리 감으면 얇아지다가 끊어졌다. 가장 직접적으로 비교할 다음 조건은?",
+        "choices": [
+          "당기는 속력을 낮춘다",
+          "계면의 두 용액을 제거한다",
+          "유리 막대의 색만 바꾼다",
+          "두 단위체를 한 종류로 바꾼다"
+        ],
+        "answer": 0,
+        "why": "막이 공급되는 속도와 당기는 속도의 관계를 비교합니다. 정량 임계값은 실제 조건에 따라 다릅니다.",
+        "checks": [
+          "nylon-interface#q1",
+          "nylon-interface#q4"
+        ]
+      }
+    ],
+    "stellar-mass-data": [
+      {
+        "id": "stellar-mass-data@five",
+        "topic": "다른 자료에 적용",
+        "question": "같은 기준에서 B의 절대등급이 A보다 5 크다. L_B/L_A는?",
+        "choices": [
+          "0.01",
+          "0.2",
+          "5",
+          "100"
+        ],
+        "answer": 0,
+        "why": "5등급 어두운 별의 광도는 10^(−0.4×5)=0.01배입니다.",
+        "checks": [
+          "stellar-mass-data#q1"
+        ]
+      },
+      {
+        "id": "stellar-mass-data@inverse",
+        "topic": "다른 자료에 적용",
+        "question": "이 표본에서 L/L☉=2(M/M☉)³이다. L=16L☉인 별의 추정 질량은?",
+        "choices": [
+          "2M☉",
+          "4M☉",
+          "8M☉",
+          "16M☉"
+        ],
+        "answer": 0,
+        "why": "16=2M³에서 M³=8이므로 태양질량의 2배입니다. 절편에 해당하는 계수도 반영합니다.",
+        "checks": [
+          "stellar-mass-data#q2",
+          "stellar-mass-data#q3"
+        ]
+      }
+    ],
+    "cluster-fitting": [
+      {
+        "id": "cluster-fitting@ratio",
+        "topic": "다른 자료에 적용",
+        "question": "성단 A의 거리지수는 3.0, B는 8.0이다. 같은 보정 조건에서 거리 B/A는?",
+        "choices": [
+          "2",
+          "5",
+          "10",
+          "100"
+        ],
+        "answer": 2,
+        "why": "거리지수 차이 5.0은 거리 비 10^(5/5)=10배입니다.",
+        "checks": [
+          "cluster-fitting#q2",
+          "cluster-fitting#q4"
+        ]
+      },
+      {
+        "id": "cluster-fitting@match",
+        "topic": "다른 자료에 적용",
+        "question": "표준 곡선을 이동할 때 바꿔야 하는 값은? 소광·적색화는 무시한다.",
+        "choices": [
+          "색지수만",
+          "등급만",
+          "색지수와 등급 모두",
+          "곡선의 기울기만"
+        ],
+        "answer": 1,
+        "why": "거리만 달라지면 밝기는 변하지만 색지수는 그대로라는 조건이므로 등급 축 방향으로 옮깁니다.",
+        "checks": [
+          "cluster-fitting#q1",
+          "cluster-fitting#q3"
+        ]
+      }
+    ],
+    "habitable-orbits": [
+      {
+        "id": "habitable-orbits@cooler",
+        "topic": "다른 자료에 적용",
+        "question": "반지름을 유지한 채 온도가 6000 K에서 3000 K로 낮아졌다. 같은 경계의 지대 거리 비는?",
+        "choices": [
+          "1/16",
+          "1/4",
+          "1/2",
+          "2"
+        ],
+        "answer": 1,
+        "why": "광도는 온도의 네제곱으로 1/16배, 경계 거리는 그 제곱근인 1/4배입니다.",
+        "checks": [
+          "habitable-orbits#q1",
+          "habitable-orbits#q2"
+        ]
+      },
+      {
+        "id": "habitable-orbits@flux",
+        "topic": "다른 자료에 적용",
+        "question": "L=4L☉인 별에서 궤도가 2 AU에서 4 AU로 커졌다. 행성이 받는 복사량 비는?",
+        "choices": [
+          "1/4",
+          "1/2",
+          "2",
+          "4"
+        ],
+        "answer": 0,
+        "why": "광도는 유지되고 거리가 2배이므로 단위 면적당 복사량은 1/4배입니다.",
+        "checks": [
+          "habitable-orbits#q1",
+          "habitable-orbits#q3"
+        ]
+      }
+    ],
+    "centrifuge-design": [
+      {
+        "id": "centrifuge-design@rotor",
+        "topic": "다른 자료에 적용",
+        "question": "같은 rpm에서 시료의 회전 반지름이 3 cm에서 6 cm로 바뀌었다. 가속도 비는?",
+        "choices": [
+          "1/2",
+          "같음",
+          "2",
+          "4"
+        ],
+        "answer": 2,
+        "why": "각속도가 같으면 가속도 ω²r은 회전 반지름에 비례하므로 2배입니다.",
+        "checks": [
+          "centrifuge-design#q2",
+          "centrifuge-design#q4"
+        ]
+      },
+      {
+        "id": "centrifuge-design@tube",
+        "topic": "다른 자료에 적용",
+        "question": "서로 마주 보는 용기 A와 B의 빈 질량이 2 g, 3 g이다. A에 시료 2 g을 넣었다. 같은 반지름에서 B에 넣을 균형용 액체 질량은?",
+        "choices": [
+          "1 g",
+          "2 g",
+          "3 g",
+          "4 g"
+        ],
+        "answer": 0,
+        "why": "용기와 시료를 합친 A의 질량은 4 g이므로 B에도 총 4 g이 필요합니다. 따라서 액체는 1 g입니다.",
+        "checks": [
+          "centrifuge-design#q1",
+          "centrifuge-design#q3"
+        ]
+      }
+    ],
+    "organic-builder": [
+      {
+        "id": "organic-builder@methane",
+        "topic": "다른 자료에 적용",
+        "question": "메테인 CH₄에서 H 하나를 떼고 O–H를 붙였다. 생성 모형의 분자식은?",
+        "choices": [
+          "CH₂O",
+          "CH₄O",
+          "CH₂O₂",
+          "CH₆O"
+        ],
+        "answer": 1,
+        "why": "기존 H 하나를 제거했지만 O에 붙은 H 하나가 추가되어 H 수는 4로 유지됩니다.",
+        "checks": [
+          "organic-builder#q1",
+          "organic-builder#q2"
+        ]
+      },
+      {
+        "id": "organic-builder@acid",
+        "topic": "다른 자료에 적용",
+        "question": "폼알데하이드 HCHO에서 C의 H 하나를 O–H로 바꿨다. 달라진 원자 수는?",
+        "choices": [
+          "H 두 개 증가",
+          "O 한 개 증가",
+          "C 한 개 증가",
+          "H 두 개 감소"
+        ],
+        "answer": 1,
+        "why": "수소 하나가 나가고 새 O에 수소 하나가 붙으므로 H 수는 같습니다. 산소만 한 개 늘어 HCOOH가 됩니다.",
+        "checks": [
+          "organic-builder#q1",
+          "organic-builder#q3"
+        ]
+      }
+    ],
+    "dna-structure": [
+      {
+        "id": "dna-structure@fraction",
+        "topic": "새 조건에 적용",
+        "question": "이중가닥 DNA에서 전체 염기의 30%가 A이다. G의 비율은?",
+        "choices": [
+          "10%",
+          "20%",
+          "30%",
+          "40%"
+        ],
+        "answer": 1,
+        "why": "T도 30%이므로 G와 C가 남은 40%를 반씩 차지합니다.",
+        "checks": [
+          "dna-structure#q1",
+          "dna-structure#q2"
+        ]
+      },
+      {
+        "id": "dna-structure@replace",
+        "topic": "새 조건에 적용",
+        "question": "8쌍 DNA에서 A–T 한 쌍을 G–C 한 쌍으로 바꿨다. 뉴클레오타이드 수와 수소 결합 수의 변화는?",
+        "choices": [
+          "같음·1개 증가",
+          "같음·1개 감소",
+          "2개 증가·1개 증가",
+          "2개 감소·1개 감소"
+        ],
+        "answer": 0,
+        "why": "염기쌍 수는 같고 한 쌍의 수소 결합만 2개에서 3개로 늘어납니다.",
+        "checks": [
+          "dna-structure#q2",
+          "dna-structure#q3"
+        ]
+      }
+    ],
+    "protein-folding": [
+      {
+        "id": "protein-folding@three",
+        "topic": "새 조건에 적용",
+        "question": "아미노산 60개가 세 개의 선형 사슬에 나뉘어 있다. 사슬 사이의 펩타이드 결합은 없다. 총 펩타이드 결합 수는?",
+        "choices": [
+          "57개",
+          "59개",
+          "60개",
+          "63개"
+        ],
+        "answer": 0,
+        "why": "각 사슬마다 결합 수가 잔기 수보다 하나씩 적으므로 60−3=57개입니다.",
+        "checks": [
+          "protein-folding#q1",
+          "protein-folding#q3"
+        ]
+      },
+      {
+        "id": "protein-folding@cut",
+        "topic": "새 조건에 적용",
+        "question": "30개 잔기의 선형 사슬에서 펩타이드 결합 하나를 가수분해했다. 생성된 사슬 수와 남은 펩타이드 결합 수는?",
+        "choices": [
+          "1개·28개",
+          "2개·28개",
+          "2개·29개",
+          "1개·30개"
+        ],
+        "answer": 1,
+        "why": "원래 결합 29개 중 하나가 끊어져 두 사슬과 28개 결합이 남습니다. 접힘만 푸는 것과 다릅니다.",
+        "checks": [
+          "protein-folding#q1",
+          "protein-folding#q2"
+        ]
+      }
+    ],
+    "organelle-builder": [
+      {
+        "id": "organelle-builder@cross",
+        "topic": "새 조건에 적용",
+        "question": "소기관 밖에서 출발해 엽록체 스트로마를 거쳐 타이라코이드 내부로 들어간다. 서로 다른 막을 몇 번 통과하는가?",
+        "choices": [
+          "1번",
+          "2번",
+          "3번",
+          "4번"
+        ],
+        "answer": 2,
+        "why": "외막, 내막, 타이라코이드 막을 순서대로 통과합니다.",
+        "checks": [
+          "organelle-builder#q1",
+          "organelle-builder#q3"
+        ]
+      },
+      {
+        "id": "organelle-builder@artificial",
+        "topic": "새 조건에 적용",
+        "question": "전자전달이 멈췄지만 미토콘드리아 막사이공간에 H⁺가 많은 상태가 유지된다. 내막과 ATP 합성효소가 정상이라면?",
+        "choices": [
+          "바탕질로 이동하며 일시적으로 ATP 합성",
+          "바탕질에서 나가며 일시적으로 ATP 합성",
+          "전자전달 중단 즉시 모든 합성 불가능",
+          "기울기를 소모하지 않고 계속 ATP 합성"
+        ],
+        "answer": 0,
+        "why": "미리 만들어진 기울기도 ATP 합성을 구동합니다. 기울기가 소모되면 이를 다시 만들 에너지가 필요합니다.",
+        "checks": [
+          "organelle-builder#q2",
+          "organelle-builder#q4"
+        ]
+      }
+    ],
+    "hydride-boiling": [
+      {
+        "id": "hydride-boiling@ranking",
+        "topic": "새 조건에 적용",
+        "question": "끓는점이 NH₃ −33°C, AsH₃ −63°C, SbH₃ −17°C이다. 낮은 것부터 배열하면?",
+        "choices": [
+          "NH₃ < AsH₃ < SbH₃",
+          "AsH₃ < NH₃ < SbH₃",
+          "SbH₃ < NH₃ < AsH₃",
+          "AsH₃ < SbH₃ < NH₃"
+        ],
+        "answer": 1,
+        "why": "음수의 크기를 비교하면 −63 < −33 < −17입니다. 수소 결합이 있다고 모든 분자보다 끓는점이 높은 것은 아닙니다.",
+        "checks": [
+          "hydride-boiling#q1",
+          "hydride-boiling#q3",
+          "hydride-boiling#q4"
+        ]
+      },
+      {
+        "id": "hydride-boiling@both",
+        "topic": "새 조건에 적용",
+        "question": "액체 NH₃ 분자 사이에 작용하는 힘을 고르면?",
+        "choices": [
+          "수소 결합만 존재",
+          "분산력과 수소 결합 모두 존재",
+          "분산력만 존재",
+          "N–H 공유 결합만 존재"
+        ],
+        "answer": 1,
+        "why": "수소 결합이 작용하는 분자에도 분산력이 작용합니다. 분자 내 N–H와 구별합니다.",
+        "checks": [
+          "hydride-boiling#q2",
+          "hydride-boiling#q3"
+        ]
+      }
+    ],
+    "fuel-comparison": [
+      {
+        "id": "fuel-comparison@mass",
+        "topic": "새 조건에 적용",
+        "question": "방출열이 50 kJ/g인 가상 연료로 유용한 에너지 1000 kJ를 얻는다. 효율 40%일 때 필요한 질량은?",
+        "choices": [
+          "8 g",
+          "20 g",
+          "50 g",
+          "125 g"
+        ],
+        "answer": 2,
+        "why": "유용한 에너지는 1 g당 50×0.4=20 kJ이므로 1000/20=50 g입니다.",
+        "checks": [
+          "fuel-comparison#q2",
+          "fuel-comparison#q4"
+        ]
+      },
+      {
+        "id": "fuel-comparison@carbon",
+        "topic": "새 조건에 적용",
+        "question": "수소를 태울 때 직접 발생하는 CO₂가 0이었다. 추가 자료 없이 확정할 수 있는 것은?",
+        "choices": [
+          "연소 단계의 직접 CO₂가 0",
+          "생산 단계의 CO₂도 0",
+          "압축·운송 에너지도 0",
+          "전체 수명주기의 CO₂가 0"
+        ],
+        "answer": 0,
+        "why": "연소 반응의 자료로 생산·운송까지 판단할 수 없습니다. 비교의 경계를 구분합니다.",
+        "checks": [
+          "fuel-comparison#q3",
+          "fuel-comparison#q4"
+        ]
+      }
+    ],
+    "mcu-sampling": [
+      {
+        "id": "mcu-sampling@rate",
+        "topic": "새 측정 조건",
+        "question": "1분 동안 20 Hz로 읽은 값의 개수는? 처음 시각을 포함하고 끝 60초는 제외한다.",
+        "choices": [
+          "3개",
+          "60개",
+          "1200개",
+          "3600개"
+        ],
+        "answer": 2,
+        "why": "초당 20개를 60초 동안 읽으므로 1200개입니다.",
+        "checks": [
+          "mcu-sampling#q1",
+          "mcu-sampling#q2"
+        ]
+      },
+      {
+        "id": "mcu-sampling@period",
+        "topic": "새 측정 조건",
+        "question": "같은 센서에서 조건 A의 주기가 1.0초, B는 0.6초였다. 분당 반복 횟수 B−A는?",
+        "choices": [
+          "24회",
+          "40회",
+          "60회",
+          "100회"
+        ],
+        "answer": 1,
+        "why": "A는 60회/분, B는 100회/분이므로 차이는 40회/분입니다. 합성 신호의 주기 비교이며 건강 진단이 아닙니다.",
+        "checks": [
+          "mcu-sampling#q1",
+          "mcu-sampling#q3"
+        ]
+      }
+    ],
+    "smart-pot": [
+      {
+        "id": "smart-pot@raw",
+        "topic": "새 측정 조건",
+        "question": "같은 센서에서 원시값이 700에서 450으로 낮아졌다. 건조 850·젖음 350 기준을 유지하면 상대 수분 척도는?",
+        "choices": [
+          "30→80",
+          "70→45",
+          "80→30",
+          "45→70"
+        ],
+        "answer": 0,
+        "why": "각각 (850−700)/500×100=30, (850−450)/500×100=80입니다.",
+        "checks": [
+          "smart-pot#q1"
+        ]
+      },
+      {
+        "id": "smart-pot@threshold",
+        "topic": "새 측정 조건",
+        "question": "한 기준 40에서 켜고 끄는 장치에 39, 41, 39, 41이 입력되었다. 이 변화로 반복되는 현상은?",
+        "choices": [
+          "켜짐·꺼짐이 번갈아 발생",
+          "꺼진 상태만 계속 유지",
+          "켜진 상태만 계속 유지",
+          "입력 자료가 모두 사라짐"
+        ],
+        "answer": 0,
+        "why": "40 미만에서 켜고 40 이상에서 끄므로 출력이 번갈아 바뀝니다. 켜짐·꺼짐 기준을 나누는 설계와 비교합니다.",
+        "checks": [
+          "smart-pot#q2",
+          "smart-pot#q4"
+        ]
+      }
+    ],
+    "microscope": [
+      {
+        "id": "microscope@root-result",
+        "topic": "뿌리 유무와 물의 감소",
+        "concept": "물 높이의 감소와 뿌리의 흡수",
+        "question": "같은 크기의 고추 모종 A는 뿌리를 잘랐고 B는 그대로 두었다. 처음 물 높이·빛·관찰 시간을 같게 했을 때 교과서 실험에서 예상되는 결과는?",
+        "choices": [
+          "A의 물이 B보다 많이 줄어든다",
+          "B의 물이 A보다 많이 줄어든다",
+          "A와 B의 물이 같은 만큼 줄어든다"
+        ],
+        "answer": 1,
+        "why": "뿌리를 그대로 둔 B에서 물이 더 많이 줄어드는 결과를 뿌리의 물 흡수와 연결할 수 있습니다. 왼쪽·오른쪽의 위치 대신 뿌리 조건을 확인해야 합니다.",
+        "feedback": {
+          "0": "뿌리를 자른 쪽이 더 많이 흡수한다고 판단했습니다. 줄기 절단과 온전한 뿌리의 기능을 구별해 보세요.",
+          "2": "처음 물 높이가 같으면 나중에도 같다고 판단했습니다. 뿌리 유무라는 다른 조건이 있습니다."
+        }
+      },
+      {
+        "id": "microscope@root-baseline",
+        "topic": "처음 조건이 다른 실험",
+        "concept": "마지막 수면과 감소량의 구별",
+        "question": "뿌리가 있는 A는 처음부터 물이 적었고, 뿌리를 자른 B는 처음부터 물이 많았다. 3일 뒤 A의 수면이 더 낮았다. 이 기록만으로 타당한 판단은?",
+        "choices": [
+          "A의 뿌리가 물을 더 많이 흡수했다고 확정한다",
+          "B의 뿌리를 자르면 물 흡수가 멈춘다고 확정한다",
+          "처음 높이가 달라 마지막 높이만으로 비교하기 어렵다"
+        ],
+        "answer": 2,
+        "why": "비교하려는 것은 물의 감소입니다. 처음 높이를 같게 하고 나머지 조건도 통제해야 마지막 수면 차이를 해석하기 쉽습니다.",
+        "checks": [
+          "microscope@root-result"
+        ]
+      },
+      {
+        "id": "microscope@root-control",
+        "topic": "비교 조건 설계",
+        "concept": "뿌리 유무만 다르게 하기",
+        "question": "뿌리의 흡수 기능을 비교하려 한다. 크기와 잎 수가 비슷한 고추 모종 두 개를 준비했을 때 알맞은 비교 조건은?",
+        "choices": [
+          "물·빛·시간 같게, 뿌리 유무 다르게",
+          "뿌리·빛·시간 같게, 물의 양 다르게",
+          "뿌리·물·시간 같게, 빛의 양 다르게"
+        ],
+        "answer": 0,
+        "why": "물·빛·시간은 같게 하고 알아보려는 뿌리 유무를 다르게 해야 그 영향을 비교할 수 있습니다."
+      },
+      {
+        "id": "microscope@leaf-water",
+        "topic": "봉지 속 물방울 해석",
+        "concept": "증산과 응결의 연결",
+        "question": "같은 조건에서 잎이 있는 모종의 마른 봉지에 물방울이 맺혔고, 잎을 제거한 쪽에서는 거의 보이지 않았다. 이 차이를 설명하는 과정은?",
+        "choices": [
+          "뿌리의 물 → 잎에서 수증기로 배출 → 봉지에서 응결",
+          "뿌리의 물 → 잎에서 액체 방울로 배출 → 봉지에 붙음",
+          "플라스크의 물 → 물방울로 증발 → 봉지를 통과"
+        ],
+        "answer": 0,
+        "why": "잎을 통해 수증기 상태로 빠져나온 물이 봉지 안쪽에서 응결하면 눈에 보이는 물방울이 됩니다. 수증기와 물방울은 상태가 다릅니다.",
+        "feedback": {
+          "1": "눈에 보이는 봉지의 물방울을 잎에서 처음 나올 때의 상태와 같다고 판단했습니다.",
+          "2": "증발을 액체 물방울의 이동으로 판단했습니다. 증발은 액체가 기체로 변하는 과정입니다."
+        }
+      },
+      {
+        "id": "microscope@leaf-indicator",
+        "topic": "검출 도구의 처음 상태",
+        "concept": "대조 전후와 검출의 유효성",
+        "question": "염화코발트 종이는 물이 닿으면 푸른색에서 붉은색으로 변한다. 잎에 붙이기 전부터 붉은 종이가 이틀 뒤에도 붉었다. 타당한 판단은?",
+        "choices": [
+          "잎에서 나온 물을 색 변화로 확인했다",
+          "종이의 전후 색만으로는 확인할 수 없다",
+          "잎에서 물이 나오지 않음을 확인했다"
+        ],
+        "answer": 1,
+        "why": "처음부터 붉었으므로 이틀 동안의 색 변화가 확인되지 않았습니다. 마른 푸른색 종이로 시작해 전후를 비교해야 합니다.",
+        "checks": [
+          "microscope@leaf-water"
+        ]
       }
     ]
   }

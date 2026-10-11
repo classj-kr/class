@@ -2,16 +2,19 @@
 
 **전체 교과서 탐구 구현 완료로 판정하지 않는다. 104개 앱이나 교육과정의 261개 항목으로 출판사별 교과서 탐구를 모두 포함했다고 주장할 수 없다.**
 
-원문 절차를 직접 확인한 실험 단위 48개는 별도 수동 목록에 기록했다. 제목 추출이 놓친 파스퇴르·접촉 놀이도 추가했고, 상위 표제·수행 기능 라벨은 독립 실험 수에 더하지 않는다. 출판사별 중복 검토 전이므로 전체 총수는 미확정이다.
+원문 절차를 직접 확인한 실험 단위 51개는 별도 수동 목록에 기록했다. 제목 추출이 놓친 파스퇴르·접촉 놀이도 추가했고, 상위 표제·수행 기능 라벨은 독립 실험 수에 더하지 않는다. 출판사별 중복 검토 전이므로 전체 총수는 미확정이다.
 
 - 원소 카드 19장 배열과 빈칸 원소 예측: 764c91a83f8bf462 PDF 27, 28, 75, 77쪽 → mendeleev. 가상 실험이며 실물 수행 완료 판정 아님.
-- 백조목 플라스크의 배양액 비교: 43ac53e9e01adbcc PDF 8쪽 → pasteur. 실물 우유 재연은 별도 미구현. 가상 실험이며 실물 수행 완료 판정 아님.
+- 백조목 플라스크의 배양액 비교: 43ac53e9e01adbcc PDF 8쪽 → pasteur. 별도 미구현 절차: 우유 100 mL를 이용한 4일 실물 재연은 이 정성 배양액 모형과 구별. 가상 실험이며 실물 수행 완료 판정 아님.
 - 백색광 분산: 43ac53e9e01adbcc PDF 5쪽 → newton-prism / dispersion. 가상 실험이며 실물 수행 완료 판정 아님.
 - 한 색의 빛을 두 번째 프리즘에 통과시키기: 43ac53e9e01adbcc PDF 5쪽 → newton-prism / single. 가상 실험이며 실물 수행 완료 판정 아님.
 - 반원 모양 유리와 스크린 위치를 바꾸어 빛 합성: 43ac53e9e01adbcc PDF 6쪽 → newton-prism / combine. 가상 실험이며 실물 수행 완료 판정 아님.
 - 분무기와 새 도화지의 거리 비교: 98fd4b1d24cbec64 PDF 11, 12쪽 → infection-prevention / spray. 가상 실험이며 실물 수행 완료 판정 아님.
 - 접촉 붙임딱지의 네 차례 전파: 98fd4b1d24cbec64 PDF 12쪽 → infection-prevention / contact. 가상 실험이며 실물 수행 완료 판정 아님.
 - 형광 로션·물/비누 30초 손 씻기 비교: 98fd4b1d24cbec64 PDF 17, 18쪽 → infection-prevention / wash. 가상 실험이며 실물 수행 완료 판정 아님.
+- 뿌리 유무에 따른 물 흡수 비교: 89316af3de563d4c PDF 7쪽 → microscope / root-uptake. 가상 실험이며 실물 수행 완료 판정 아님.
+- 잎 유무와 봉지 안쪽 물방울 비교: d544b624a4fe52c2 PDF 10쪽 → microscope / leaf-transpiration. 가상 실험이며 실물 수행 완료 판정 아님.
+- 잎 뒷면의 염화코발트 종이로 물 검출: 89316af3de563d4c PDF 14쪽 → microscope / leaf-water-indicator. 가상 실험이며 실물 수행 완료 판정 아님.
 - 종이컵 스피커 만들기: 6969a20462cfe732 PDF 5, 6쪽 → speaker-lab / speaker-lab. 가상 실험이며 실물 수행 완료 판정 아님.
 - 두 코일의 무선 전력 전달: 22578837da73a2b3 PDF 5, 6쪽 → wireless-power / wireless-power. 가상 실험이며 실물 수행 완료 판정 아님.
 - 구리판 사이의 자기 브레이크: 000c068a0397ecb8 PDF 32쪽 → magnetic-brake / magnetic-brake. 가상 실험이며 실물 수행 완료 판정 아님.
@@ -58,8 +61,8 @@
 - 같은 쪽의 기존 도구는 검토 참고 링크이며 활동 충족 판정이 아니다.
 - 교육과정의 261개 활동과 이 교과서 제목 후보는 집계 단위가 다르다.
 
-색인 3582개 자료에서 교과서 PDF 269개와 탐구 활동지 408개를 분리했다. 파일명에 연도가 없더라도 2022 수집 기록으로 확인된 고유 자료 2287개가 전체 색인에 포함된다.
-PDF 제목 후보 3041건, 활동지 파일 후보 408건이다. 제목 후보가 없는 교과서 PDF 20개도 제외하지 않고 아래 문서 목록에 남겼다. 이 숫자는 필수실험 수가 아니다.
+색인 3582개 자료에서 교과서·실험관찰 PDF 400개(실험관찰 98개 포함)와 탐구 활동지 409개를 분리했다. 파일명에 연도가 없더라도 2022 수집 기록으로 확인된 고유 자료 2287개가 전체 색인에 포함된다.
+PDF 제목 후보 4474건, 활동지 파일 후보 408건이다. 제목 후보가 없는 교과서·실험관찰 PDF 34개도 제외하지 않고 아래 문서 목록에 남겼다. 이 숫자는 필수실험 수가 아니다.
 
 ## 문서별 추출·검토 범위
 
@@ -270,70 +273,201 @@ PDF 제목 후보 3041건, 활동지 파일 후보 408건이다. 제목 후보�
 | [미래엔_과학1_교사용교과서__5dc10b5933.pdf](<E:/webprojects/class/references/textbooks/중고등/미래엔/중학/과학/과학1 (김태일)_2022/미래엔_과학1_교사용교과서__5dc10b5933.pdf>) | 교사용 교과서 PDF | 298 | 153 | 후보 제목과 실제 활동 단계 대조 |
 | [미래엔_과학2_교과서__92b9a0d7e8.pdf](<E:/webprojects/class/references/textbooks/중고등/미래엔/중학/과학/과학2 (김태일)_2022/미래엔_과학2_교과서__92b9a0d7e8.pdf>) | 교과서 PDF | 348 | 67 | 후보 제목과 실제 활동 단계 대조 |
 | [미래엔_과학2_교사용교과서__700647aaef.pdf](<E:/webprojects/class/references/textbooks/중고등/미래엔/중학/과학/과학2 (김태일)_2022/미래엔_과학2_교사용교과서__700647aaef.pdf>) | 교사용 교과서 PDF | 348 | 138 | 후보 제목과 실제 활동 단계 대조 |
+| [과학 3-1 PDF.pdf](<E:/webprojects/class/references/textbooks/초등/동아/과학/과학 3-1 (장신호)_2022/과학 3-1 PDF.pdf>) | 교과서 PDF | 114 | 23 | 후보 제목과 실제 활동 단계 대조 |
+| [과학 3-2 PDF.pdf](<E:/webprojects/class/references/textbooks/초등/동아/과학/과학 3-2 (장신호)_2022/과학 3-2 PDF.pdf>) | 교과서 PDF | 114 | 22 | 후보 제목과 실제 활동 단계 대조 |
+| [과학 4-1 PDF.pdf](<E:/webprojects/class/references/textbooks/초등/동아/과학/과학 4-1 (장신호)_2022/과학 4-1 PDF.pdf>) | 교과서 PDF | 112 | 21 | 후보 제목과 실제 활동 단계 대조 |
+| [과학 4-2 PDF.pdf](<E:/webprojects/class/references/textbooks/초등/동아/과학/과학 4-2 (장신호)_2022/과학 4-2 PDF.pdf>) | 교과서 PDF | 104 | 22 | 후보 제목과 실제 활동 단계 대조 |
 | [31_1_과학PDF__72b24991.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_1_과학PDF__72b24991.pdf>) | 교과서 PDF | 30 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [31_1_실험관찰PDF__38df86d2.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_1_실험관찰PDF__38df86d2.pdf>) | 실험관찰 PDF | 18 | 10 | 후보 제목과 실제 활동 단계 대조 |
 | [31_2_과학PDF__0a5f024b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_2_과학PDF__0a5f024b.pdf>) | 교과서 PDF | 30 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [31_2_실험관찰PDF__68353a04.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_2_실험관찰PDF__68353a04.pdf>) | 실험관찰 PDF | 20 | 6 | 후보 제목과 실제 활동 단계 대조 |
 | [31_3_과학PDF__bbdba105.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_3_과학PDF__bbdba105.pdf>) | 교과서 PDF | 28 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [31_3_실험관찰PDF__08af50e3.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_3_실험관찰PDF__08af50e3.pdf>) | 실험관찰 PDF | 20 | 7 | 후보 제목과 실제 활동 단계 대조 |
 | [31_4_과학PDF__e4c0de92.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_4_과학PDF__e4c0de92.pdf>) | 교과서 PDF | 32 | 9 | 후보 제목과 실제 활동 단계 대조 |
+| [31_4_실험관찰PDF__b957c5d5.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_4_실험관찰PDF__b957c5d5.pdf>) | 실험관찰 PDF | 18 | 10 | 후보 제목과 실제 활동 단계 대조 |
 | [32_1_과학PDF__e41d925a.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_1_과학PDF__e41d925a.pdf>) | 교과서 PDF | 28 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [32_1_실험관찰PDF__d4381ef2.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_1_실험관찰PDF__d4381ef2.pdf>) | 실험관찰 PDF | 14 | 6 | 후보 제목과 실제 활동 단계 대조 |
 | [32_2_과학PDF__809d629a.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_2_과학PDF__809d629a.pdf>) | 교과서 PDF | 28 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [32_2_실험관찰PDF__0137bfee.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_2_실험관찰PDF__0137bfee.pdf>) | 실험관찰 PDF | 14 | 6 | 후보 제목과 실제 활동 단계 대조 |
 | [32_3_과학PDF__103896da.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_3_과학PDF__103896da.pdf>) | 교과서 PDF | 32 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [32_3_실험관찰PDF__67c2e164.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_3_실험관찰PDF__67c2e164.pdf>) | 실험관찰 PDF | 24 | 9 | 후보 제목과 실제 활동 단계 대조 |
 | [32_4_과학PDF__46a1971f.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_4_과학PDF__46a1971f.pdf>) | 교과서 PDF | 27 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [32_4_실험관찰PDF__d121ec63.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 3-2 (양일호)_2022/32_4_실험관찰PDF__d121ec63.pdf>) | 실험관찰 PDF | 18 | 12 | 후보 제목과 실제 활동 단계 대조 |
 | [41_1_과학PDF__7941a7fb.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_1_과학PDF__7941a7fb.pdf>) | 교과서 PDF | 26 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [41_1_실험관찰PDF__dc37cfa6.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_1_실험관찰PDF__dc37cfa6.pdf>) | 실험관찰 PDF | 16 | 7 | 후보 제목과 실제 활동 단계 대조 |
 | [41_2_과학PDF__62791d95.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_2_과학PDF__62791d95.pdf>) | 교과서 PDF | 31 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [41_2_실험관찰PDF__c71de66b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_2_실험관찰PDF__c71de66b.pdf>) | 실험관찰 PDF | 18 | 11 | 후보 제목과 실제 활동 단계 대조 |
 | [41_3_과학PDF__40cd3d78.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_3_과학PDF__40cd3d78.pdf>) | 교과서 PDF | 36 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [41_3_실험관찰PDF__66ccc186.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_3_실험관찰PDF__66ccc186.pdf>) | 실험관찰 PDF | 22 | 10 | 후보 제목과 실제 활동 단계 대조 |
 | [41_4_과학PDF__cab2d478.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_4_과학PDF__cab2d478.pdf>) | 교과서 PDF | 24 | 11 | 후보 제목과 실제 활동 단계 대조 |
+| [41_4_실험관찰PDF__22a54986.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_4_실험관찰PDF__22a54986.pdf>) | 실험관찰 PDF | 14 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [41_생물의 한살이_실험관찰PDF_결손__338a691c.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_생물의 한살이_실험관찰PDF_결손__338a691c.pdf>) | 실험관찰 PDF | 18 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [41_식물의생활_실험관찰PDF_결손__5b8fcd6e.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_식물의생활_실험관찰PDF_결손__5b8fcd6e.pdf>) | 실험관찰 PDF | 20 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [41_힘과우리생활_실험관찰PDF_결손__cb65720b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_힘과우리생활_실험관찰PDF_결손__cb65720b.pdf>) | 실험관찰 PDF | 18 | 10 | 후보 제목과 실제 활동 단계 대조 |
 | [42_1_과학PDF__ff3815ab.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_1_과학PDF__ff3815ab.pdf>) | 교과서 PDF | 32 | 4 | 후보 제목과 실제 활동 단계 대조 |
+| [42_1_실험관찰PDF__e6f5b3ca.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_1_실험관찰PDF__e6f5b3ca.pdf>) | 실험관찰 PDF | 18 | 5 | 후보 제목과 실제 활동 단계 대조 |
 | [42_2_과학PDF__fc340e2b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_2_과학PDF__fc340e2b.pdf>) | 교과서 PDF | 32 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [42_2_실험관찰PDF__7ac8984e.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_2_실험관찰PDF__7ac8984e.pdf>) | 실험관찰 PDF | 18 | 13 | 후보 제목과 실제 활동 단계 대조 |
 | [42_3_과학PDF__0b7560be.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_3_과학PDF__0b7560be.pdf>) | 교과서 PDF | 27 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [42_3_실험관찰PDF__2d1f28c4.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_3_실험관찰PDF__2d1f28c4.pdf>) | 실험관찰 PDF | 14 | 8 | 후보 제목과 실제 활동 단계 대조 |
 | [42_4_과학PDF__89b485e0.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_4_과학PDF__89b485e0.pdf>) | 교과서 PDF | 28 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [42_4_실험관찰PDF__ec75d4d9.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_4_실험관찰PDF__ec75d4d9.pdf>) | 실험관찰 PDF | 14 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [42_감염병과건강한생활_실험관찰PDF_결손__42bcc2cc.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_감염병과건강한생활_실험관찰PDF_결손__42bcc2cc.pdf>) | 실험관찰 PDF | 18 | 12 | 후보 제목과 실제 활동 단계 대조 |
+| [42_지구와바다_실험관찰PDF_결손__925cae9b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 4-2 (양일호)_2022/42_지구와바다_실험관찰PDF_결손__925cae9b.pdf>) | 실험관찰 PDF | 14 | 6 | 후보 제목과 실제 활동 단계 대조 |
 | [51_1_과학PDF__b4d0d2f6.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_1_과학PDF__b4d0d2f6.pdf>) | 교과서 PDF | 30 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [51_1_실험관찰PDF__9d83f415.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_1_실험관찰PDF__9d83f415.pdf>) | 실험관찰 PDF | 18 | 13 | 후보 제목과 실제 활동 단계 대조 |
 | [51_2_과학PDF__5185856a.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_2_과학PDF__5185856a.pdf>) | 교과서 PDF | 36 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [51_2_실험관찰PDF__5f4f16e7.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_2_실험관찰PDF__5f4f16e7.pdf>) | 실험관찰 PDF | 24 | 15 | 후보 제목과 실제 활동 단계 대조 |
 | [51_3_과학PDF__46b51dd0.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_3_과학PDF__46b51dd0.pdf>) | 교과서 PDF | 29 | 9 | 후보 제목과 실제 활동 단계 대조 |
+| [51_3_실험관찰PDF__eaf7ffec.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_3_실험관찰PDF__eaf7ffec.pdf>) | 실험관찰 PDF | 16 | 14 | 후보 제목과 실제 활동 단계 대조 |
 | [51_4_과학PDF__c08e6d87.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_4_과학PDF__c08e6d87.pdf>) | 교과서 PDF | 34 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [51_4_실험관찰PDF__7c296daa.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-1 (양일호)_2022/51_4_실험관찰PDF__7c296daa.pdf>) | 실험관찰 PDF | 20 | 11 | 후보 제목과 실제 활동 단계 대조 |
 | [52_1_과학PDF__187ef07f.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_1_과학PDF__187ef07f.pdf>) | 교과서 PDF | 28 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [52_1_실험관찰PDF__1b650f95.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_1_실험관찰PDF__1b650f95.pdf>) | 실험관찰 PDF | 14 | 10 | 후보 제목과 실제 활동 단계 대조 |
 | [52_2_과학PDF__13274fc6.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_2_과학PDF__13274fc6.pdf>) | 교과서 PDF | 34 | 14 | 후보 제목과 실제 활동 단계 대조 |
+| [52_2_실험관찰PDF__17003137.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_2_실험관찰PDF__17003137.pdf>) | 실험관찰 PDF | 24 | 14 | 후보 제목과 실제 활동 단계 대조 |
 | [52_3_과학PDF__afd1e270.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_3_과학PDF__afd1e270.pdf>) | 교과서 PDF | 34 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [52_3_실험관찰PDF__784156ba.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_3_실험관찰PDF__784156ba.pdf>) | 실험관찰 PDF | 20 | 14 | 후보 제목과 실제 활동 단계 대조 |
 | [52_4_과학PDF__28b31b62.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_4_과학PDF__28b31b62.pdf>) | 교과서 PDF | 30 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [52_4_실험관찰PDF__0bb362ce.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 5-2 (양일호)_2022/52_4_실험관찰PDF__0bb362ce.pdf>) | 실험관찰 PDF | 16 | 12 | 후보 제목과 실제 활동 단계 대조 |
 | [61_1_과학PDF__96e52fde.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_1_과학PDF__96e52fde.pdf>) | 교과서 PDF | 28 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [61_1_실험관찰PDF__00acc818.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_1_실험관찰PDF__00acc818.pdf>) | 실험관찰 PDF | 18 | 7 | 후보 제목과 실제 활동 단계 대조 |
 | [61_2_과학PDF__48bba1f2.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_2_과학PDF__48bba1f2.pdf>) | 교과서 PDF | 32 | 13 | 후보 제목과 실제 활동 단계 대조 |
+| [61_2_실험관찰PDF__05301355.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_2_실험관찰PDF__05301355.pdf>) | 실험관찰 PDF | 22 | 15 | 후보 제목과 실제 활동 단계 대조 |
 | [61_3_과학PDF__1e3abda1.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_3_과학PDF__1e3abda1.pdf>) | 교과서 PDF | 26 | 14 | 후보 제목과 실제 활동 단계 대조 |
+| [61_3_실험관찰PDF__90d390fe.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_3_실험관찰PDF__90d390fe.pdf>) | 실험관찰 PDF | 20 | 18 | 후보 제목과 실제 활동 단계 대조 |
 | [61_4_과학PDF__364dd547.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_4_과학PDF__364dd547.pdf>) | 교과서 PDF | 32 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [61_4_실험관찰PDF__ac032b4e.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_4_실험관찰PDF__ac032b4e.pdf>) | 실험관찰 PDF | 22 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [61_감염병과건강한생활_과학PDF_결손__d63a8b8b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_감염병과건강한생활_과학PDF_결손__d63a8b8b.pdf>) | 교과서 PDF | 26 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [61_감염병과건강한생활_실험관찰PDF_결손__b6bc2514.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_감염병과건강한생활_실험관찰PDF_결손__b6bc2514.pdf>) | 실험관찰 PDF | 18 | 12 | 후보 제목과 실제 활동 단계 대조 |
+| [61_기후변화와우리생활_과학PDF_결손__dfc80ab8.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_기후변화와우리생활_과학PDF_결손__dfc80ab8.pdf>) | 교과서 PDF | 30 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [61_기후변화와우리생활_실험관찰PDF_결손__56a6106c.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_기후변화와우리생활_실험관찰PDF_결손__56a6106c.pdf>) | 실험관찰 PDF | 20 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [61_밤하늘관찰_과학PDF_결손__dfda53e8.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_밤하늘관찰_과학PDF_결손__dfda53e8.pdf>) | 교과서 PDF | 4 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [61_밤하늘관찰_실험관찰PDF_결손__0fdb989b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_밤하늘관찰_실험관찰PDF_결손__0fdb989b.pdf>) | 실험관찰 PDF | 2 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [61_여러가지기체_과학PDF_결손__328a1a86.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_여러가지기체_과학PDF_결손__328a1a86.pdf>) | 교과서 PDF | 24 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [61_여러가지기체_실험관찰PDF_결손__e5b4ad84.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_여러가지기체_실험관찰PDF_결손__e5b4ad84.pdf>) | 실험관찰 PDF | 12 | 4 | 후보 제목과 실제 활동 단계 대조 |
+| [61_지구와바다_과학PDF_결손__731b0c40.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_지구와바다_과학PDF_결손__731b0c40.pdf>) | 교과서 PDF | 12 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [61_지구와바다_실험관찰PDF_결손__5f000fe7.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_지구와바다_실험관찰PDF_결손__5f000fe7.pdf>) | 실험관찰 PDF | 7 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [61_힘과우리생활_과학PDF_결손__e84f6047.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_힘과우리생활_과학PDF_결손__e84f6047.pdf>) | 교과서 PDF | 16 | 4 | 후보 제목과 실제 활동 단계 대조 |
+| [61_힘과우리생활_실험관찰PDF_결손__1bbabf10.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-1 (양일호)_2022/61_힘과우리생활_실험관찰PDF_결손__1bbabf10.pdf>) | 실험관찰 PDF | 9 | 6 | 후보 제목과 실제 활동 단계 대조 |
 | [62_1_과학PDF__76063c75.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_1_과학PDF__76063c75.pdf>) | 교과서 PDF | 30 | 3 | 후보 제목과 실제 활동 단계 대조 |
+| [62_1_실험관찰PDF__aafb2e26.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_1_실험관찰PDF__aafb2e26.pdf>) | 실험관찰 PDF | 18 | 5 | 후보 제목과 실제 활동 단계 대조 |
 | [62_2_과학PDF__34aab417.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_2_과학PDF__34aab417.pdf>) | 교과서 PDF | 29 | 9 | 후보 제목과 실제 활동 단계 대조 |
+| [62_2_실험관찰PDF__0bd5907c.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_2_실험관찰PDF__0bd5907c.pdf>) | 실험관찰 PDF | 18 | 10 | 후보 제목과 실제 활동 단계 대조 |
 | [62_3_과학PDF__4e34e2a9.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_3_과학PDF__4e34e2a9.pdf>) | 교과서 PDF | 31 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [62_3_실험관찰PDF__90c3e46f.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_3_실험관찰PDF__90c3e46f.pdf>) | 실험관찰 PDF | 26 | 13 | 후보 제목과 실제 활동 단계 대조 |
 | [62_4_과학PDF__2e7a81ef.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_4_과학PDF__2e7a81ef.pdf>) | 교과서 PDF | 36 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [62_4_실험관찰PDF__d26e1d12.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_4_실험관찰PDF__d26e1d12.pdf>) | 실험관찰 PDF | 14 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [62_빛의성질_과학PDF_결손__edef823d.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_빛의성질_과학PDF_결손__edef823d.pdf>) | 교과서 PDF | 18 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [62_빛의성질_실험관찰PDF_결손__b944d02e.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_빛의성질_실험관찰PDF_결손__b944d02e.pdf>) | 실험관찰 PDF | 14 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [62_우리몸의구조와기능_과학PDF_결손__67cf4261.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_우리몸의구조와기능_과학PDF_결손__67cf4261.pdf>) | 교과서 PDF | 30 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [62_우리몸의구조와기능_실험관찰PDF_결손__b1e8d2d3.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_우리몸의구조와기능_실험관찰PDF_결손__b1e8d2d3.pdf>) | 실험관찰 PDF | 20 | 11 | 후보 제목과 실제 활동 단계 대조 |
+| [62_자원과에너지_과학PDF_결손__92d6734b.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_자원과에너지_과학PDF_결손__92d6734b.pdf>) | 교과서 PDF | 26 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [62_자원과에너지_실험관찰PDF_결손__3f3e0d21.pdf](<E:/webprojects/class/references/textbooks/초등/미래엔/과학/과학 6-2 (양일호)_2022/62_자원과에너지_실험관찰PDF_결손__3f3e0d21.pdf>) | 실험관찰 PDF | 16 | 12 | 후보 제목과 실제 활동 단계 대조 |
+| [0단원_과학__26f9f771.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/0단원_과학__26f9f771.pdf>) | 교과서 PDF | 7 | 0 | 이미지·제목·범위 확인 |
+| [0단원_실험관찰__ac506d73.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/0단원_실험관찰__ac506d73.pdf>) | 실험관찰 PDF | 4 | 0 | 이미지·제목·범위 확인 |
+| [1단원_과학__a2be7c3e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/1단원_과학__a2be7c3e.pdf>) | 교과서 PDF | 26 | 0 | 이미지·제목·범위 확인 |
+| [1단원_실험관찰__1028cfe5.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/1단원_실험관찰__1028cfe5.pdf>) | 실험관찰 PDF | 18 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_과학__5ec0ebc8.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/2단원_과학__5ec0ebc8.pdf>) | 교과서 PDF | 24 | 0 | 이미지·제목·범위 확인 |
+| [2단원_실험관찰__a215f73f.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/2단원_실험관찰__a215f73f.pdf>) | 실험관찰 PDF | 12 | 4 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_과학__6a05cebe.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/3단원_과학__6a05cebe.pdf>) | 교과서 PDF | 26 | 0 | 이미지·제목·범위 확인 |
+| [3단원_실험관찰__e0623bda.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/3단원_실험관찰__e0623bda.pdf>) | 실험관찰 PDF | 14 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_과학__2a4f85bd.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/4단원_과학__2a4f85bd.pdf>) | 교과서 PDF | 26 | 0 | 이미지·제목·범위 확인 |
+| [4단원_실험관찰__5d4abe33.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-1_2022/4단원_실험관찰__5d4abe33.pdf>) | 실험관찰 PDF | 16 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [0단원_과학__30f1a7aa.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/0단원_과학__30f1a7aa.pdf>) | 교과서 PDF | 7 | 0 | 이미지·제목·범위 확인 |
+| [1단원_과학__f687581a.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/1단원_과학__f687581a.pdf>) | 교과서 PDF | 26 | 0 | 이미지·제목·범위 확인 |
+| [1단원_실험관찰__58cca60e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/1단원_실험관찰__58cca60e.pdf>) | 실험관찰 PDF | 14 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_과학__5a9178f1.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/2단원_과학__5a9178f1.pdf>) | 교과서 PDF | 28 | 3 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰__22dbe5f8.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/2단원_실험관찰__22dbe5f8.pdf>) | 실험관찰 PDF | 16 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_과학__89c59f89.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/3단원_과학__89c59f89.pdf>) | 교과서 PDF | 24 | 0 | 이미지·제목·범위 확인 |
+| [3단원_실험관찰__4123570d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/3단원_실험관찰__4123570d.pdf>) | 실험관찰 PDF | 16 | 4 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_과학__6c2e4d13.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/4단원_과학__6c2e4d13.pdf>) | 교과서 PDF | 22 | 3 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰__45a78e71.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_3-2_2022/4단원_실험관찰__45a78e71.pdf>) | 실험관찰 PDF | 14 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [0단원_과학__b452c0b0.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/0단원_과학__b452c0b0.pdf>) | 교과서 PDF | 7 | 0 | 이미지·제목·범위 확인 |
+| [0단원_실험관찰__c350cf19.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/0단원_실험관찰__c350cf19.pdf>) | 실험관찰 PDF | 4 | 0 | 이미지·제목·범위 확인 |
+| [1단원_과학__5f1ac053.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/1단원_과학__5f1ac053.pdf>) | 교과서 PDF | 26 | 2 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰__51375f9d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/1단원_실험관찰__51375f9d.pdf>) | 실험관찰 PDF | 18 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_과학__b5e0b10a.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/2단원_과학__b5e0b10a.pdf>) | 교과서 PDF | 24 | 0 | 이미지·제목·범위 확인 |
+| [2단원_실험관찰__ef1752b9.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/2단원_실험관찰__ef1752b9.pdf>) | 실험관찰 PDF | 14 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_과학__efbc8349.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/3단원_과학__efbc8349.pdf>) | 교과서 PDF | 28 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰__4cc11c4a.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/3단원_실험관찰__4cc11c4a.pdf>) | 실험관찰 PDF | 18 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_과학__9b2eb7cb.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/4단원_과학__9b2eb7cb.pdf>) | 교과서 PDF | 20 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰__5069260d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-1_2022/4단원_실험관찰__5069260d.pdf>) | 실험관찰 PDF | 14 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [0단원_과학__6f17ee68.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/0단원_과학__6f17ee68.pdf>) | 교과서 PDF | 7 | 2 | 후보 제목과 실제 활동 단계 대조 |
+| [0단원_실험관찰__63074b7e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/0단원_실험관찰__63074b7e.pdf>) | 실험관찰 PDF | 6 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_과학__3326f49e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/1단원_과학__3326f49e.pdf>) | 교과서 PDF | 22 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰__fab01527.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/1단원_실험관찰__fab01527.pdf>) | 실험관찰 PDF | 12 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_과학__9d4954cd.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/2단원_과학__9d4954cd.pdf>) | 교과서 PDF | 24 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰__b12db9d9.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/2단원_실험관찰__b12db9d9.pdf>) | 실험관찰 PDF | 16 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_과학__53ec3037.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/3단원_과학__53ec3037.pdf>) | 교과서 PDF | 22 | 0 | 이미지·제목·범위 확인 |
+| [3단원_실험관찰__c26b1b5f.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/3단원_실험관찰__c26b1b5f.pdf>) | 실험관찰 PDF | 12 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [4-2실험관찰_꾸러미__510d75f4.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/4-2실험관찰_꾸러미__510d75f4.pdf>) | 실험관찰 PDF | 28 | 0 | 이미지·제목·범위 확인 |
+| [4단원_과학__ea91564d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/4단원_과학__ea91564d.pdf>) | 교과서 PDF | 28 | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰__c82a876b.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(이상원)_4-2_2022/4단원_실험관찰__c82a876b.pdf>) | 실험관찰 PDF | 14 | 7 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__4aaa6993.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/1단원_과학PDF__4aaa6993.pdf>) | 교과서 PDF | 28 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__e4e326e2.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/1단원_실험관찰PDF__e4e326e2.pdf>) | 실험관찰 PDF | 18 | 25 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__1c97b3b0.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/2단원_과학PDF__1c97b3b0.pdf>) | 교과서 PDF | 28 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__fdf162cf.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/2단원_실험관찰PDF__fdf162cf.pdf>) | 실험관찰 PDF | 20 | 24 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__b413793e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/3단원_과학PDF__b413793e.pdf>) | 교과서 PDF | 28 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__8994da14.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/3단원_실험관찰PDF__8994da14.pdf>) | 실험관찰 PDF | 20 | 20 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__df9ccaae.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/4단원_과학PDF__df9ccaae.pdf>) | 교과서 PDF | 27 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__f7cd05a7.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-1_2022/4단원_실험관찰PDF__f7cd05a7.pdf>) | 실험관찰 PDF | 19 | 21 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__0a1f3ab4.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/1단원_과학PDF__0a1f3ab4.pdf>) | 교과서 PDF | 32 | 11 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__7b4f88b6.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/1단원_실험관찰PDF__7b4f88b6.pdf>) | 실험관찰 PDF | 22 | 26 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__c8bc61e4.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/2단원_과학PDF__c8bc61e4.pdf>) | 교과서 PDF | 27 | 4 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__79cf278f.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/2단원_실험관찰PDF__79cf278f.pdf>) | 실험관찰 PDF | 26 | 23 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__2912c5af.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/3단원_과학PDF__2912c5af.pdf>) | 교과서 PDF | 27 | 3 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__e65f4f77.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/3단원_실험관찰PDF__e65f4f77.pdf>) | 실험관찰 PDF | 20 | 22 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__ba567a5f.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/4단원_과학PDF__ba567a5f.pdf>) | 교과서 PDF | 33 | 3 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__a81c71c3.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_3-2_2022/4단원_실험관찰PDF__a81c71c3.pdf>) | 실험관찰 PDF | 27 | 18 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__a2d946c6.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/1단원_과학PDF__a2d946c6.pdf>) | 교과서 PDF | 26 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__98679e7e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/1단원_실험관찰PDF__98679e7e.pdf>) | 실험관찰 PDF | 20 | 17 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__09f27a2c.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/2단원_과학PDF__09f27a2c.pdf>) | 교과서 PDF | 26 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__183632dd.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/2단원_실험관찰PDF__183632dd.pdf>) | 실험관찰 PDF | 26 | 20 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__4231815c.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/3단원_과학PDF__4231815c.pdf>) | 교과서 PDF | 32 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__9abdafa1.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/3단원_실험관찰PDF__9abdafa1.pdf>) | 실험관찰 PDF | 26 | 27 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__729fd5f8.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/4단원_과학PDF__729fd5f8.pdf>) | 교과서 PDF | 27 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__04e8f89d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-1_2022/4단원_실험관찰PDF__04e8f89d.pdf>) | 실험관찰 PDF | 19 | 19 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__75c9c188.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/1단원_과학PDF__75c9c188.pdf>) | 교과서 PDF | 26 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__ce7bf74e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/1단원_실험관찰PDF__ce7bf74e.pdf>) | 실험관찰 PDF | 28 | 28 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__242aef31.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/2단원_과학PDF__242aef31.pdf>) | 교과서 PDF | 24 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__9eb2453f.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/2단원_실험관찰PDF__9eb2453f.pdf>) | 실험관찰 PDF | 20 | 26 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__56448440.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/3단원_과학PDF__56448440.pdf>) | 교과서 PDF | 30 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__52c25eef.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/3단원_실험관찰PDF__52c25eef.pdf>) | 실험관찰 PDF | 20 | 12 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__56e6bc8f.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/4단원_과학PDF__56e6bc8f.pdf>) | 교과서 PDF | 25 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__d2d77849.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_4-2_2022/4단원_실험관찰PDF__d2d77849.pdf>) | 실험관찰 PDF | 23 | 25 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__74b68a81.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/1단원_과학PDF__74b68a81.pdf>) | 교과서 PDF | 32 | 5 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__631f39b6.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/1단원_실험관찰PDF__631f39b6.pdf>) | 실험관찰 PDF | 14 | 20 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__483ff64d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/2단원_과학PDF__483ff64d.pdf>) | 교과서 PDF | 30 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__0cecab20.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/2단원_실험관찰PDF__0cecab20.pdf>) | 실험관찰 PDF | 14 | 26 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__b323779e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/3단원_과학PDF__b323779e.pdf>) | 교과서 PDF | 34 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__dc4df0c5.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/3단원_실험관찰PDF__dc4df0c5.pdf>) | 실험관찰 PDF | 14 | 30 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__b5517032.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/4단원_과학PDF__b5517032.pdf>) | 교과서 PDF | 32 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__8085dd0d.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-1_2022/4단원_실험관찰PDF__8085dd0d.pdf>) | 실험관찰 PDF | 31 | 29 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__75d322cd.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/1단원_과학PDF__75d322cd.pdf>) | 교과서 PDF | 28 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__7b5c4850.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/1단원_실험관찰PDF__7b5c4850.pdf>) | 실험관찰 PDF | 18 | 20 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__ebff982a.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/2단원_과학PDF__ebff982a.pdf>) | 교과서 PDF | 34 | 12 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__faa695a7.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/2단원_실험관찰PDF__faa695a7.pdf>) | 실험관찰 PDF | 16 | 27 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__691df3c8.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/3단원_과학PDF__691df3c8.pdf>) | 교과서 PDF | 30 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__e1ab6565.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/3단원_실험관찰PDF__e1ab6565.pdf>) | 실험관찰 PDF | 24 | 28 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__1ca1aa19.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/4단원_과학PDF__1ca1aa19.pdf>) | 교과서 PDF | 27 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__a65a1513.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_5-2_2022/4단원_실험관찰PDF__a65a1513.pdf>) | 실험관찰 PDF | 25 | 28 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__61357be1.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/1단원_과학PDF__61357be1.pdf>) | 교과서 PDF | 32 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__d01c3fa8.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/1단원_실험관찰PDF__d01c3fa8.pdf>) | 실험관찰 PDF | 24 | 31 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__34c21308.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/2단원_과학PDF__34c21308.pdf>) | 교과서 PDF | 30 | 9 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__65188a8e.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/2단원_실험관찰PDF__65188a8e.pdf>) | 실험관찰 PDF | 22 | 21 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__578b3763.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/3단원_과학PDF__578b3763.pdf>) | 교과서 PDF | 26 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__553005e5.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/3단원_실험관찰PDF__553005e5.pdf>) | 실험관찰 PDF | 16 | 32 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__389bfac9.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/4단원_과학PDF__389bfac9.pdf>) | 교과서 PDF | 35 | 10 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__b4fa9898.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-1_2022/4단원_실험관찰PDF__b4fa9898.pdf>) | 실험관찰 PDF | 25 | 30 | 후보 제목과 실제 활동 단계 대조 |
 | [1단원_과학PDF__338379fb.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/1단원_과학PDF__338379fb.pdf>) | 교과서 PDF | 34 | 7 | 후보 제목과 실제 활동 단계 대조 |
+| [1단원_실험관찰PDF__d3230176.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/1단원_실험관찰PDF__d3230176.pdf>) | 실험관찰 PDF | 20 | 22 | 후보 제목과 실제 활동 단계 대조 |
 | [2단원_과학PDF__d201e456.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/2단원_과학PDF__d201e456.pdf>) | 교과서 PDF | 30 | 11 | 후보 제목과 실제 활동 단계 대조 |
+| [2단원_실험관찰PDF__98b2a18b.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/2단원_실험관찰PDF__98b2a18b.pdf>) | 실험관찰 PDF | 16 | 24 | 후보 제목과 실제 활동 단계 대조 |
 | [3단원_과학PDF__9be104ae.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/3단원_과학PDF__9be104ae.pdf>) | 교과서 PDF | 32 | 8 | 후보 제목과 실제 활동 단계 대조 |
+| [3단원_실험관찰PDF__9740a044.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/3단원_실험관찰PDF__9740a044.pdf>) | 실험관찰 PDF | 26 | 25 | 후보 제목과 실제 활동 단계 대조 |
 | [4단원_과학PDF__5273c333.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/4단원_과학PDF__5273c333.pdf>) | 교과서 PDF | 29 | 6 | 후보 제목과 실제 활동 단계 대조 |
+| [4단원_실험관찰PDF__a5e6a523.pdf](<E:/webprojects/class/references/textbooks/초등/천재/과학/과학(정용재)_6-2_2022/4단원_실험관찰PDF__a5e6a523.pdf>) | 실험관찰 PDF | 16 | 14 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_I-01.세계 여러 문명의 발명품을 조사하여 비교하기(교)__1a22c73990.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/과학의역사와문화(조헌국)/탐구활동지_I-01.세계 여러 문명의 발명품을 조사하여 비교하기(교)__1a22c73990.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_I-01.세계 여러 문명의 발명품을 조사하여 비교하기(학)__65c7be4416.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/과학의역사와문화(조헌국)/탐구활동지_I-01.세계 여러 문명의 발명품을 조사하여 비교하기(학)__65c7be4416.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_I-01.온라인으로 박물관 체험하기(교)__c0d51408d1.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/과학의역사와문화(조헌국)/탐구활동지_I-01.온라인으로 박물관 체험하기(교)__c0d51408d1.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
@@ -691,6 +825,7 @@ PDF 제목 후보 3041건, 활동지 파일 후보 408건이다. 제목 후보�
 | [탐구활동지_Ⅱ-02. 해파의 발생 및 전파 모의 실험(학)__82c9a2bc85.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/탐구활동지_Ⅱ-02. 해파의 발생 및 전파 모의 실험(학)__82c9a2bc85.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_Ⅱ-03. 실시간 자료를 이용한 각 지역의 조석 현상 패턴 추론하기(교)__562297702f.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/탐구활동지_Ⅱ-03. 실시간 자료를 이용한 각 지역의 조석 현상 패턴 추론하기(교)__562297702f.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_Ⅱ-03. 실시간 자료를 이용한 각 지역의 조석 현상 패턴 추론하기(학)__d0ba641546.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/지구시스템과학(오필석)/탐구활동지_Ⅱ-03. 실시간 자료를 이용한 각 지역의 조석 현상 패턴 추론하기(학)__d0ba641546.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
+| [탐구활동지_Ⅲ_1_02_114p 화학 평형에서 평형 농도 사이의 규칙성 찾기(학)__46c7c7c07e.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/화학(임희준)/탐구활동지_Ⅲ_1_02_114p 화학 평형에서 평형 농도 사이의 규칙성 찾기(학)__46c7c7c07e.hwp>) | 탐구 활동지 | — | 0 | 추출 오류 |
 | [탐구활동지_Ⅰ_1_02_18p 화학이 현대 과학 기술 사회의 발전에 기여한 사례 조사하기(교)__11da18df69.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/화학(임희준)/탐구활동지_Ⅰ_1_02_18p 화학이 현대 과학 기술 사회의 발전에 기여한 사례 조사하기(교)__11da18df69.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_Ⅰ_1_02_18p 화학이 현대 과학 기술 사회의 발전에 기여한 사례 조사하기(학)__66c7d521d5.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/화학(임희준)/탐구활동지_Ⅰ_1_02_18p 화학이 현대 과학 기술 사회의 발전에 기여한 사례 조사하기(학)__66c7d521d5.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
 | [탐구활동지_Ⅰ_2_01_34p 몰질량을 탐색하고 질량 측정하기(교)__d8ce93cb8e.hwp](<E:/webprojects/class/references/textbooks/중고등/T셀파/고등/과학/화학(임희준)/탐구활동지_Ⅰ_2_01_34p 몰질량을 탐색하고 질량 측정하기(교)__d8ce93cb8e.hwp>) | 탐구 활동지 | — | 1 | 후보 제목과 실제 활동 단계 대조 |
