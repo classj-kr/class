@@ -68,7 +68,9 @@
 
   // ── 우리말 토씨 ──────────────────────────────────────────────
   // 수를 읽었을 때 끝소리에 받침이 있는가(0: 십·백·천, 1 일, 3 삼, 6 육, 7 칠, 8 팔)
-  const numberBatchim = (n) => [true, true, false, true, false, false, true, true, true, false][Math.abs(n) % 10];
+  // 몇 조로 끝나는 수(3000000000000 = 삼조)는 받침이 없다. 십·백·천·만·억으로 끝나는 수는 받침이 있다.
+  const endsInJo = (n) => Math.abs(n) >= 1e12 && Math.abs(n) % 1e12 === 0;
+  const numberBatchim = (n) => !endsInJo(n) && [true, true, false, true, false, false, true, true, true, false][Math.abs(n) % 10];
   const numberRieul = (n) => [false, true, false, false, false, false, false, true, true, false][Math.abs(n) % 10];
   const lastSound = (word) => { const code = String(word).charCodeAt(String(word).length - 1) - 0xAC00; return code >= 0 && code <= 11171 ? code % 28 : 0; };
   const wordBatchim = (word) => lastSound(word) !== 0;
@@ -87,6 +89,21 @@
     return who + (wordBatchim(who) ? '이' + without : without);
   }
   const NAMES = ['지우', '서연', '민재', '하린', '도현', '수아', '은호', '채원', '시우', '나은'];
+
+  // ── 큰 수(만·억·조) ──────────────────────────────────────────
+  // 네 자리씩 끊은 묶음 [일, 만, 억, 조]
+  const BIG_UNITS = ['', '만', '억', '조'];
+  const groupsOf = (n) => [n % 1e4, Math.floor(n / 1e4) % 1e4, Math.floor(n / 1e8) % 1e4, Math.floor(n / 1e12)];
+  // 끊어 쓰기: cut(302560000) → '3억 256만'
+  const cut = (n) => groupsOf(n).map((g, i) => (g ? g + BIG_UNITS[i] : '')).reverse().filter(Boolean).join(' ') || '0';
+  // 읽기: say(302560000) → '삼억 이백오십육만'. 만 단위로 띄어 읽는다. 1만은 '만', 1억·1조는 '일억'·'일조'.
+  function say(n) {
+    const DIGITS = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'], PLACES = ['천', '백', '십', ''];
+    const four = (g) => String(g).padStart(4, '0').split('').map((ch, i) => (ch === '0' ? '' : (ch === '1' && i < 3 ? '' : DIGITS[Number(ch)]) + PLACES[i])).join('');
+    return groupsOf(n).map((g, i) => (g ? (g === 1 && i === 1 ? '' : four(g)) + BIG_UNITS[i] : '')).reverse().filter(Boolean).join(' ');
+  }
+  // 수를 다르게 적은 글(끊어 쓴 글·읽은 글) 뒤에 토씨를 붙인다: named(3e12, '3조', '은/는') → '3조는'
+  const named = (n, shown, pair) => shown + josa(say(n), pair).slice(say(n).length);
 
   // ── 그림과 식 ────────────────────────────────────────────────
   const esc = (text) => String(text).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -540,7 +557,8 @@
     if (item.choice) return Number(response) === item.choice.answer;
     const given = (Array.isArray(response) ? response : [response]).map(cleanNumber);
     if (given.length !== item.inputs.length || !given.every((text, i) => (item.inputs[i].decimal ? /^\d+(\.\d)?$/ : /^\d+$/).test(text))) return false;
-    const want = item.inputs.map((input) => Math.round(input.answer * 10)), got = given.map((text) => Math.round(Number(text) * 10));
+    // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 10배 하면 어긋난다). 소수 칸만 10배 하여 견준다.
+    const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 10) : input.answer)), got = given.map((text, i) => (item.inputs[i].decimal ? Math.round(Number(text) * 10) : Number(text)));
     if (item.unordered) { want.sort((a, b) => a - b); got.sort((a, b) => a - b); }
     return want.every((value, i) => value === got[i]);
   }
@@ -548,6 +566,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

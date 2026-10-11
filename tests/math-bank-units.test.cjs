@@ -75,6 +75,8 @@ function everyItem(visit, extra = true) {
   }
 }
 const where = (item, at) => `${at.unit.id} ${at.group.id} ${item.key} (seed ${at.seed}): ${strip(item.text)} ${strip(item.figure)}`;
+// 답이 네 자리를 넘는 단원(4학년 1학기 큰 수). 9000조를 넘는 수는 자바스크립트가 정확히 못 담으니 쓰지 않는다.
+const BIG_NUMBER_UNITS = new Set(['4-1-1']);
 const answerAt = (item, i) => item.inputs[i].answer;
 
 test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
@@ -87,7 +89,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     for (const part of [item.text, item.figure, item.explain]) assert.doesNotMatch(String(part || ''), /undefined|NaN|null|\[object/, label);
     // 잘못 붙은 토씨: 받침 없는 수 뒤의 을·은·이·과, 받침 있는 수 뒤의 를·는·가·와 를 수 읽기로 따진다.
     for (const m of whole.matchAll(/(\d+)(을|를|은|는|이|가|과|와)(?=[\s,.])/g)) {
-      const batchim = [true, true, false, true, false, false, true, true, true, false][Number(m[1]) % 10];
+      // 몇 조로 끝나는 수(삼조)만 0으로 끝나도 받침이 없다.
+      const batchim = !(Number(m[1]) >= 1e12 && Number(m[1]) % 1e12 === 0) && [true, true, false, true, false, false, true, true, true, false][Number(m[1]) % 10];
       assert.equal('을은이과'.includes(m[2]), batchim, `토씨 "${m[0]}" — ${label}`);
     }
     // 낱말 뒤 토씨가 겹쳐 붙은 것(사과을, 배추은 …)
@@ -109,7 +112,7 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       // 소수 칸(decimal)은 소수 첫째 자리까지인 수이고 자연수가 아니다. 나머지 칸은 자연수.
       for (const input of item.inputs) {
         if (input.decimal) assert.ok(Math.abs(input.answer * 10 - Math.round(input.answer * 10)) < 1e-9 && !Number.isInteger(input.answer) && input.answer > 0 && input.answer < 100, label);
-        else assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= 9999, label);
+        else assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= (BIG_NUMBER_UNITS.has(at.unit.id) ? 9e15 : 9999), label);
       }
       // 분수 답: 분자·분모 두 칸, 1보다 작은 분수, 더 줄일 수 없는 분수(같은 크기의 다른 분수가 답이 되지 않게).
       if (item.fraction) {
@@ -199,7 +202,9 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       // 나눗셈 세로셈(표)은 숫자가 칸마다 떨어져 있으니 표의 설명 글도 함께 읽는다.
       const seen = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 ').replace(/<table[^>]*aria-label="([^"]*)"[^>]*>/g, ' $1 | '));
       const shown = new Set((seen.match(/\d+/g) || []).concat(seen.match(/\d+\.\d+/g) || [], seen.replace(/(\d) (?=\d)/g, '$1').match(/\d+/g) || []));
-      for (const text of recomputed) for (const n of text.match(/\d+(?:\.\d+)?/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)) || (timed && (n === '3600' || n === '60')), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
+      // 읽은 말·끊어 쓴 말로 적힌 큰 수는 facts.big.shown 에 [적힌 글, 값]으로 밝힌다(「큰 수」 검사가 그 글을 다시 읽어 값과 맞춰 본다).
+      const worded = new Set(((f.big && f.big.shown) || []).map(([, value]) => String(value)));
+      for (const text of recomputed) for (const n of text.match(/\d+(?:\.\d+)?/g)) assert.ok(shown.has(n) || worded.has(n) || (f.unseen || []).includes(Number(n)) || (timed && (n === '3600' || n === '60')), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
     }
     if (f.pair) {
       const [a, op, b] = f.pair;
@@ -1204,8 +1209,112 @@ test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 �
   assert.ok(Object.keys(counts).length >= 20, '검사한 갈래: ' + Object.keys(counts).join(', '));
 });
 
+// ── 큰 수(4학년 1학기) ─────────────────────────────────────────
+// 읽은 말·끊어 쓴 말을 엔진과 따로 다시 읽는다: '삼억 이백오십육만' → 302560000, '3억 256만' → 302560000, '302560000' → 그대로.
+function valueOf(text) {
+  const DIG = { 일: 1, 이: 2, 삼: 3, 사: 4, 오: 5, 육: 6, 칠: 7, 팔: 8, 구: 9 }, SMALL = { 십: 10, 백: 100, 천: 1000 }, BIG = { 만: 1e4, 억: 1e8, 조: 1e12 };
+  let total = 0, group = 0, digit = 0, number = '';
+  const flush = () => { if (number) { group += Number(number); number = ''; } };
+  for (const ch of strip(text).replace(/[\s,]/g, '')) {
+    if (/\d/.test(ch)) number += ch;
+    else if (DIG[ch]) digit = DIG[ch];
+    else if (SMALL[ch]) { group += (digit || 1) * SMALL[ch]; digit = 0; }
+    else if (BIG[ch]) { flush(); group += digit; total += (group || 1) * BIG[ch]; group = 0; digit = 0; }
+    else assert.fail('수로 읽을 수 없는 글: ' + text);
+  }
+  flush();
+  return total + group + digit;
+}
+// 수 카드를 모두 한 번씩(twice 면 두 번씩) 써서 만들 수 있는 수 전부. 맨 앞에 0은 오지 못한다.
+function cardNumbers(digits, twice) {
+  const pool = twice ? digits.concat(digits) : digits.slice(), out = new Set();
+  const walk = (left, made) => {
+    if (!left.length) { out.add(Number(made)); return; }
+    const tried = new Set();
+    left.forEach((d, i) => { if (tried.has(d) || (made === '' && d === 0)) return; tried.add(d); walk(left.slice(0, i).concat(left.slice(i + 1)), made + d); });
+  };
+  walk(pool, '');
+  return [...out].sort((x, y) => x - y);
+}
+
+test('큰 수: 읽은 말·끊어 쓴 말을 다시 읽고, □·수 카드는 모든 경우를 따진다', () => {
+  const counts = {};
+  // 큰 수 단원의 근거는 facts.big 아래에 모아 적는다(다른 단원의 facts 이름과 섞이지 않게).
+  // 같은 물음을 수의 크기만 바꿔 여러 차시에서 묻는다(다섯 자리 수, 천만까지, 억, 조). facts.rule 에 그 이름을 달고 facts.big.size 에 수를 밝힌다.
+  const SIZE = { five: [1e4, 1e5], tenman: [1e5, 1e8], eok: [1e8, 1e12], jo: [1e12, 9e15] };
+  const boxes = (html) => strip(String(html || '').replace(/<span class="mb-box">[^<]*<\/span>/g, '□')).replace(/\s/g, '');
+  everyItem((item, at) => {
+    const f = item.facts || {}, g = f.big || {}, label = where(item, at);
+    const tally = (name) => { counts[name] = (counts[name] || 0) + 1; };
+    const visible = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | '));
+    if (BIG_NUMBER_UNITS.has(at.unit.id)) for (const m of visible.matchAll(/\d{17,}/g)) assert.fail('수가 너무 길다: ' + m[0] + ' — ' + label);
+    if (g.shown) {
+      for (const [text, value] of g.shown) { assert.equal(valueOf(text), value, `적힌 글 「${text}」의 값 — ${label}`); assert.ok(visible.includes(strip(text)), `「${text}」가 문제에 없다 — ${label}`); assert.ok(value < 9e15, label); }
+      tally('shown');
+    }
+    if (g.size) { const range = SIZE[f.rule]; assert.ok(range && g.size >= range[0] && g.size < range[1], `수의 크기가 「${f.rule}」에 안 맞는다: ${g.size} — ${label}`); assert.ok(visible.replace(/\s/g, '').includes(String(g.size)) || (g.shown || []).some(([, v]) => v === g.size), label); tally('size'); }
+    // 읽은 말·끊어 쓴 말을 수로 쓴 답
+    if (g.written) { for (const [text, i] of g.written) { assert.equal(valueOf(text), answerAt(item, i), label); assert.ok(visible.includes(strip(text)), label); } tally('written'); }
+    // 수를 적은 보기 가운데 그 수와 값이 같은 것이 하나뿐이고 그것이 답이다(읽기 고르기, 끊어 쓰기 고르기, 수로 쓰기 고르기).
+    if (g.names) {
+      assert.equal(valueOf(g.names.given), g.names.value, label); assert.ok(visible.includes(strip(g.names.given)), label);
+      const hits = item.choice.options.map((option) => valueOf(option) === g.names.value);
+      assert.equal(hits.filter(Boolean).length, 1, '값이 같은 보기가 하나가 아니다: ' + label); assert.equal(item.choice.answer, hits.indexOf(true), label); tally('names');
+    }
+    // 나타내는 수가 다른 하나: 식(odd) 또는 보기 글(oddNames)의 값이 하나만 다르고 그것이 답이다.
+    if (g.odd || g.oddNames) {
+      const values = g.odd ? g.odd.map(evaluate) : item.choice.options.map(valueOf), alone = values.map((v) => values.filter((w) => w === v).length === 1);
+      assert.ok(values.length >= 3 && values.length === item.choice.options.length, label); assert.equal(alone.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, alone.indexOf(true), label); tally('odd');
+    }
+    // □가 하나 든 수와 다른 수의 크기 비교: □에 0~9를 넣어 보고 되는 숫자의 수(count)·가장 큰 것(max)·가장 작은 것(min)을 다시 구한다.
+    if (g.boxed) {
+      const { left, right, op, ask } = g.boxed, fits = [];
+      assert.ok(boxes(item.text + ' ' + (item.figure || '')).includes(left) && boxes(item.text + ' ' + (item.figure || '')).includes(right), '□가 든 수가 문제에 없다: ' + label);
+      for (let d = 0; d <= 9; d += 1) { const l = Number(left.replace('□', d)), r = Number(right.replace('□', d)); assert.notEqual(l, r, label); if (op === '>' ? l > r : l < r) fits.push(d); }
+      assert.ok((op === '>' || op === '<') && fits.length >= 1 && fits.length <= 9, label);
+      assert.equal(answerAt(item, 0), ask === 'count' ? fits.length : ask === 'max' ? Math.max(...fits) : Math.min(...fits), label); assert.ok(['count', 'max', 'min'].includes(ask), label); tally('boxed');
+    }
+    // □가 든 두 수: □마다 0~9를 따로 넣어 보아 언제나 큰지, 언제나 작은지, 넣는 숫자에 따라 다른지 가린다.
+    if (g.boxedPair) {
+      const { left, right, signs } = g.boxedPair; let more = 0, less = 0;
+      assert.ok(boxes(item.text + ' ' + (item.figure || '')).includes(left) && boxes(item.text + ' ' + (item.figure || '')).includes(right), label);
+      for (let a = 0; a <= 9; a += 1) for (let b = 0; b <= 9; b += 1) { const l = Number(left.replace('□', a)), r = Number(right.replace('□', b)); if (l > r) more += 1; else if (l < r) less += 1; }
+      assert.equal(signs[item.choice.answer], more === 100 ? '>' : less === 100 ? '<' : '?', label); assert.equal(signs.length, item.choice.options.length, label); tally('boxedPair');
+    }
+    // 수 카드로 만드는 수: 만들 수 있는 수를 모두 만들어 조건에 맞는 것을 다시 고른다.
+    if (g.cardsMake) {
+      const { digits, rule, fixed, target, twice } = g.cardsMake;
+      const all = cardNumbers(digits, twice).filter((n) => (fixed || []).every(([power, d]) => Math.floor(n / power) % 10 === d));
+      assert.ok(all.length >= 2, label);
+      for (const d of digits) assert.ok(visible.includes(String(d)), label);
+      let want;
+      if (rule === 'max') want = all[all.length - 1]; else if (rule === 'min') want = all[0]; else if (rule === 'secondMax') want = all[all.length - 2]; else if (rule === 'secondMin') want = all[1];
+      else if (rule === 'maxBelow') want = Math.max(...all.filter((n) => n < target)); else if (rule === 'minAbove') want = Math.min(...all.filter((n) => n > target));
+      else if (rule === 'nearest') { const gaps = all.map((n) => Math.abs(n - target)), best = Math.min(...gaps); assert.equal(gaps.filter((g) => g === best).length, 1, label); want = all[gaps.indexOf(best)]; }
+      else assert.fail('모르는 규칙 ' + rule);
+      assert.ok(Number.isFinite(want), label);
+      if (item.choice) assert.equal(valueOf(item.choice.options[item.choice.answer]), want, label); else assert.equal(answerAt(item, 0), want, label);
+      tally('cardsMake');
+    }
+    // 수로 쓸 때 0의 개수
+    if (g.zeros) { for (const [text, i] of g.zeros) { assert.equal(String(valueOf(text)).split('0').length - 1, answerAt(item, i), label); assert.ok(visible.includes(strip(text)), label); } tally('zeros'); }
+    // 기준보다 큰(작은) 것의 수
+    if (g.countIf) {
+      const { values, test: kind, target, i } = g.countIf;
+      assert.ok(values.every((v) => v !== target) && (kind === 'above' || kind === 'below'), label);
+      assert.equal(answerAt(item, i), values.filter((v) => (kind === 'above' ? v > target : v < target)).length, label); tally('countIf');
+    }
+  });
+  if (B.units().some((unit) => BIG_NUMBER_UNITS.has(unit.id))) {
+    for (const name of ['shown', 'size', 'written', 'names', 'odd', 'boxed', 'cardsMake', 'zeros']) assert.ok((counts[name] || 0) >= 30, name + ' 문항이 거의 검사되지 않았다');
+  }
+});
+
 test('토씨 붙이기', () => {
-  const { josa, name } = B.kit;
+  const { josa, name, say, cut, named } = B.kit;
+  assert.deepEqual([josa(3000000000000, '은/는'), josa(30000, '은/는'), josa(300000000, '을/를'), josa(2000000000000, '으로/로'), josa(20000, '으로/로')], ['3000000000000는', '30000은', '300000000을', '2000000000000로', '20000으로']);
+  assert.deepEqual([say(10000), say(12345), say(100000000), say(302560000), say(1000000000000), say(40300000000000), say(1111)], ['만', '만 이천삼백사십오', '일억', '삼억 이백오십육만', '일조', '사십조 삼천억', '천백십일']);
+  assert.deepEqual([cut(302560000), cut(40300000000012), named(3000000000000, '3조', '은/는'), named(302560000, '3억 256만', '을/를'), named(50000, '5만', '으로/로')], ['3억 256만', '40조 3000억 12', '3조는', '3억 256만을', '5만으로']);
   assert.deepEqual([josa(352, '을/를'), josa(350, '을/를'), josa(201, '을/를'), josa(476, '이/가'), josa(209, '은/는'), josa(390, '은/는')], ['352를', '350을', '201을', '476이', '209는', '390은']);
   assert.deepEqual([josa(300, '으로/로'), josa(201, '으로/로'), josa(203, '으로/로'), josa('물감', '과/와'), josa('가위', '과/와')], ['300으로', '201로', '203으로', '물감과', '가위와']);
   assert.deepEqual([name('서연', '은/는'), name('지우', '은/는'), name('서연', '이/가'), name('지우', '이/가'), name('서연', '과/와'), name('지우', '과/와')], ['서연이는', '지우는', '서연이가', '지우가', '서연이와', '지우와']);

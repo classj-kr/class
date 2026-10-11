@@ -20,7 +20,7 @@
   const SIGNS = ['&gt;', '=', '&lt;'];
 
   B.addUnit({
-    id: '3-1-3', grade: 3, semester: 1, no: 3, title: '나눗셈', version: 5,
+    id: '3-1-3', grade: 3, semester: 1, no: 3, title: '나눗셈', version: 6,
     groups: [
       {
         id: 'share', title: '똑같이 나누기', standard: MEAN,

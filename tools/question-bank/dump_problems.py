@@ -13,6 +13,8 @@
         여러 폴더에서 가져올 때는 + 로 잇는다
     python tools/question-bank/dump_problems.py 3-1-1 all --only 3-1-2:박만구 --name 보충
         다른 단원 폴더에 있는 한 저자의 문서만 모은다(수준을 가르지 않고 → 보충문서_모음.txt)
+    python tools/question-bank/dump_problems.py 3-2-4 all --tails [--without … --also …]
+        옛 규칙(2026-10-12까지)이 문제까지 잘라 냈던 뒷부분만 모은다(→ 덧문서_모음.txt)
 
 정답·해설이 시작되는 곳에서 자르고, 같은 내용의 문서(학생용·교사용, 재수록)는 한 번만 싣는다.
 이 파일을 처음부터 끝까지 읽어 "서로 다른 문제 꼴" 목록(기본꼴_N.md, 심화꼴.md)을 만든다. 숫자나 말만 다른 문제는 한 꼴이다.
@@ -37,6 +39,27 @@ def clean(text):
     text = re.sub(r'\n\s*\n+', '\n', text)
     # 세로셈처럼 한 글자씩 끊긴 줄은 한 줄로 붙인다.
     return re.sub(r'(?m)^(\S)\n(?=\S(\n|$))', r'\1 ', text)
+
+
+STRONG_END = re.compile(r'\n문항 ?\n?번호|\n정답과 풀이|\n정답 및 풀이')
+BARE_END = re.compile(r'\n정답\s*\n|\n풀이\n')
+ASKS = re.compile(r'시오|세요|입니까|일까요|인가요|써넣|구해')
+
+
+def cut_at(text):
+    """정답·해설이 시작되는 자리. 「풀이」「정답」만 있는 줄은 서술형 문항의 답 칸일 수 있으니, 그 뒤에 묻는 말이 셋 넘게 남아 있으면 자르지 않는다."""
+    cuts = [m.start() for m in STRONG_END.finditer(text)]
+    for m in BARE_END.finditer(text):
+        if len(ASKS.findall(text[m.end():])) < 3:
+            cuts.append(m.start())
+            break
+    return min(cuts) if cuts else len(text)
+
+
+def old_cut_at(text):
+    """2026-10-12까지 쓰던 규칙: 「풀이」「정답」 줄이 처음 나오는 곳에서 잘랐다(단원평가 가운데의 서술형 답 칸에서 뒤 문항이 잘려 나갔다)."""
+    cuts = [m.start() for m in re.finditer(r'\n문항 ?\n?번호|\n정답\s*\n|\n정답과 풀이|\n정답 및 풀이|\n풀이\n', text)]
+    return min(cuts) if cuts else len(text)
 
 
 def main(argv):
@@ -64,7 +87,7 @@ def main(argv):
         other, author = option('--only').split(':')
         rows = [row for row in listed(other) if author in row['author']]
     seen, count, size, bodies = set(), 0, 0, []
-    target = os.path.join(base, (option('--name') or ('심화' if which == 'hard' else '기본')) + '문서_모음.txt')
+    target = os.path.join(base, (option('--name') or ('덧' if '--tails' in argv else '심화' if which == 'hard' else '기본')) + '문서_모음.txt')
     with io.open(target, 'w', encoding='utf-8') as out:
         for row in rows:
             label = row['file'] + ' ' + row['kind']
@@ -72,9 +95,11 @@ def main(argv):
                 continue
             with io.open(row['txt'], encoding='utf-8') as handle:
                 text = clean(handle.read())
-            cuts = [m.start() for m in re.finditer(r'\n문항 ?\n?번호|\n정답\s*\n|\n정답과 풀이|\n정답 및 풀이|\n풀이\n', text)]
             # 도형 단원처럼 그림이 빠지면 정답·풀이가 그림 속 조건을 알려 준다. 그럴 때는 --keep-answers 로 자르지 않는다.
-            body = text[:min(cuts)] if cuts and '--keep-answers' not in argv else text
+            body = text[:cut_at(text)] if '--keep-answers' not in argv else text
+            if '--tails' in argv:
+                # 옛 규칙이 문제까지 잘라 냈던 뒷부분만 모은다(덧문서_모음.txt). 이미 꼴 목록을 만든 단원을 보탤 때 쓴다.
+                body = body[old_cut_at(text):] if len(body) - old_cut_at(text) > 200 else ''
             key = re.sub(r'\s+', '', body)[60:360]
             if len(body) < 80 or key in seen:
                 continue
