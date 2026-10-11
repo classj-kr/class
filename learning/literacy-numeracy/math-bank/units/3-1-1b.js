@@ -94,7 +94,7 @@
         const [one, two] = d.shuffle(NAMES).slice(0, 2);
         const [a, b, c] = d.until(() => [three(d, 210, 520), three(d, 130, 420), three(d, 250, 760)], ([p, q, r]) => p + q <= 999 && r >= Math.max(p, q) + 20 && p + q - r >= 60 && SUB.none(borrowPlaces(p + q, r)) && plain(p + q));
         return N(`${name(one, '과/와')} ${name(two, '은/는')} 수영장에서 만나기로 하였다. ${name(one, '은/는')} 집에서 출발하여 놀이터에 들렀다가 수영장으로 가고, ${name(two, '은/는')} 같은 집에서 바로 수영장으로 간다. 두 사람이 가는 거리의 차는 몇 m인가?`, a + b - c, {
-          unit: 'm', figure: route([['집', 0, 100], ['놀이터', 50, 0, false], ['수영장', 100, 100]], [[0, 1, a + 'm'], [1, 2, b + 'm'], [0, 2, c + 'm', 10]], 66),
+          unit: 'm', figure: route([['집', 0, 100], ['놀이터', 50, 0, false], ['수영장', 100, 100]], [[0, 1, a + ' m'], [1, 2, b + ' m'], [0, 2, c + ' m', 10]], 66),
           explain: `놀이터에 들렀다 가는 거리는 ${shown(a, '+', b)}(m)이다. ` + shown(a + b, '-', c),
           facts: { calc: [[`${a}+${b}-${c}`, 0]] }
         });
@@ -110,8 +110,8 @@
       H('h-tape', '겹치게 이어 붙인 길이', 'YBM 수학익힘유사 문제(심화) 06 · YBM 단원심화평가 · 디딤돌 단원평가(심화)', (d) => {
         // 443 cm 리본 2개를 108 cm만큼 겹치게
         const [a, k] = d.until(() => [three(d, 310, 480), three(d, 105, 190)], ([p, q]) => count(borrowPlaces(p + p, q)) >= 1);
-        return N(`길이가 ${a}cm인 종이띠 2장을 ${k}cm만큼 겹치게 이어 붙였다. 이어 붙인 종이띠의 전체 길이는 몇 cm인가?`, a + a - k, {
-          unit: 'cm', figure: tapes(a + 'cm', a + 'cm', k + 'cm'),
+        return N(`길이가 ${a} cm인 종이띠 2장을 ${k} cm만큼 겹치게 이어 붙였다. 이어 붙인 종이띠의 전체 길이는 몇 cm인가?`, a + a - k, {
+          unit: 'cm', figure: tapes(a + ' cm', a + ' cm', k + ' cm'),
           explain: `종이띠 2장의 길이의 합은 ${shown(a, '+', a)}(cm)이다. 겹친 부분은 한 번만 세어야 하므로 ${shown(a + a, '-', k)}`,
           facts: { calc: [[`${a}+${a}-${k}`, 0]] }
         });

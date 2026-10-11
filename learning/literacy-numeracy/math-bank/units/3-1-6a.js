@@ -149,8 +149,8 @@
           }),
           T('same-word', '문장제: 분모가 같은 분수의 비교', '①71 ②64 ③61', (d) => {
             const n = d.int(7, 12), ks = d.shuffle(Array.from({ length: n - 2 }, (_, i) => i + 2)).slice(0, 3), colors = ['빨간색', '파란색', '노란색'];
-            return C(`색 테이프의 길이가 빨간색은 ${frac(ks[0], n)}m, 파란색은 ${frac(ks[1], n)}m, 노란색은 ${frac(ks[2], n)}m이다. 가장 긴 색 테이프는?`, colors, ks.indexOf(Math.max(...ks)), {
-              explain: `분모가 같으므로 분자가 가장 큰 ${frac(Math.max(...ks), n)}m가 가장 길다.`, facts: { choose: { exprs: ks.map((k) => `${k}/${n}`), rule: 'max' } }
+            return C(`색 테이프의 길이가 빨간색은 ${frac(ks[0], n)} m, 파란색은 ${frac(ks[1], n)} m, 노란색은 ${frac(ks[2], n)} m이다. 가장 긴 색 테이프는?`, colors, ks.indexOf(Math.max(...ks)), {
+              explain: `분모가 같으므로 분자가 가장 큰 ${frac(Math.max(...ks), n)} m가 가장 길다.`, facts: { choose: { exprs: ks.map((k) => `${k}/${n}`), rule: 'max' } }
             });
           })
         ]
@@ -220,16 +220,16 @@
             return D(`${josa(w, '과/와')} 0.${k}만큼인 수는?`, w + k / 10, { explain: `${josa(w, '과/와')} 0.${k}만큼인 수는 ${w}.${k}이다.`, facts: { calc: [[`${w}+0.${k}`, 0]] } });
           }),
           T('deci-mm', 'cm와 mm를 소수로 나타내기', '①55 ②56 ③46', (d) => {
-            // 5cm 8mm=□cm, 93mm=□cm
+            // 5 cm 8 mm=□cm, 93 mm=□cm
             const c = d.int(2, 14), m = d.int(1, 9), v = d.until(() => d.int(13, 98), (x) => x % 10 !== 0 && Math.floor(x / 10) !== c);
             return M('㉠, ㉡에 알맞은 소수는?', [{ label: LABELS[0], answer: c + m / 10, decimal: true }, { label: LABELS[1], answer: v / 10, decimal: true }], {
-              figure: lines([`${c}cm ${m}mm = ${box(LABELS[0])}cm`, `${v}mm = ${box(LABELS[1])}cm`]), explain: `1mm는 0.1cm이다. ${c}cm ${m}mm는 ${c}.${m}cm이고, ${v}mm는 ${Math.floor(v / 10)}.${v % 10}cm이다.`,
+              figure: lines([`${c} cm ${m} mm = ${box(LABELS[0])} cm`, `${v} mm = ${box(LABELS[1])} cm`]), explain: `1 mm는 0.1 cm이다. ${c} cm ${m} mm는 ${c}.${m} cm이고, ${v} mm는 ${Math.floor(v / 10)}.${v % 10} cm이다.`,
               facts: { calc: [[`${c}+${m}/10`, 0], [`${v}/10`, 1]], unseen: [10] }
             });
           }),
           T('deci-ruler', '자 그림에서 길이를 소수로 읽기', '①54 ②57 ③47', (d) => {
             const to = d.until(() => d.int(23, 48), (v) => v % 10 !== 0 && v % 10 !== 5);
-            return D('물건의 길이를 소수로 나타내면 몇 cm인가?', to / 10, { unit: 'cm', figure: ruler(0, to, Math.floor(to / 10) + 1), explain: `물건의 길이는 ${Math.floor(to / 10)}cm ${to % 10}mm이다. 1mm는 0.1cm이므로 ${Math.floor(to / 10)}.${to % 10}cm이다.`, facts: { ruler: 'decimal' } });
+            return D('물건의 길이를 소수로 나타내면 몇 cm인가?', to / 10, { unit: 'cm', figure: ruler(0, to, Math.floor(to / 10) + 1), explain: `물건의 길이는 ${Math.floor(to / 10)} cm ${to % 10} mm이다. 1 mm는 0.1 cm이므로 ${Math.floor(to / 10)}.${to % 10} cm이다.`, facts: { ruler: 'decimal' } });
           }),
           T('deci-other', '나타내는 수가 다른 것 찾기', '①50 ②55 ③43', (d) => {
             // ㉠ 0.1이 82개인 수 ㉡ 8.2 ㉢ 8과 0.2만큼인 수 ㉣ 2.8
@@ -273,11 +273,11 @@
             });
           }),
           T('dcomp-word', '문장제: 분수와 소수로 나타낸 양의 비교', '①63·75 ②72 ③66', (d) => {
-            // 공원 0.7km, 학교 5/10km, 도서관 8/10km → 가까운 곳부터
+            // 공원 0.7 km, 학교 5/10 km, 도서관 8/10 km → 가까운 곳부터
             const places = d.shuffle(['수영장', '박물관', '기차역', '우체국', '놀이공원']).slice(0, 3), ks = d.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 3);
-            const said = ks.map((k, i) => (i === 0 ? `0.${k}km` : `${frac(k, 10)}km`)), pick = orderChoice(d, ks, places, false);
+            const said = ks.map((k, i) => (i === 0 ? `0.${k} km` : `${frac(k, 10)} km`)), pick = orderChoice(d, ks, places, false);
             return C(`집에서 ${places[0]}까지의 거리는 ${said[0]}, ${places[1]}까지의 거리는 ${said[1]}, ${places[2]}까지의 거리는 ${said[2]}이다. 집에서 가까운 곳부터 차례대로 나열한 것은?`, pick.options, pick.answer, {
-              explain: `분수를 소수로 나타내면 ${ks.map((k, i) => `${places[i]} 0.${k}km`).join(', ')}이다.`, facts: { choose: { exprs: ks.map((k, i) => (i === 0 ? `0.${k}` : `${k}/10`)), rule: 'ascending', orders: pick.list } }
+              explain: `분수를 소수로 나타내면 ${ks.map((k, i) => `${places[i]} 0.${k} km`).join(', ')}이다.`, facts: { choose: { exprs: ks.map((k, i) => (i === 0 ? `0.${k}` : `${k}/10`)), rule: 'ascending', orders: pick.list } }
             });
           }),
           T('dcomp-cards', '수 카드로 가장 큰 소수 만들기', '①65 ②63 ③60', (d) => {

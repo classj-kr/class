@@ -8,8 +8,8 @@
 //    (가장 긴 것과 가장 짧은 것의 차는 길이로만, 걸린 시간 둘을 견주는 꼴은 뺄셈으로만, 「몇 초 뒤」와 「초바늘이 몇 바퀴 돈 뒤」는 앞의 것으로만).
 //  - 서술형(틀린 까닭 쓰기, 계산 방법 설명하기, 「초」를 넣어 문장 짓기)은 싣지 않는다.
 //  - 아래는 뺐다.
-//      뒤 단원·뒤 학년 것이 있어야 풀리는 것: 길이를 소수로 나타내기, 400m씩 여러 바퀴·1100m를 4번((세 자리 수)×(한 자리 수)),
-//        한 걸음 50cm로 30m 가기(큰 수의 나눗셈), 1km를 1000m로 받아내리는 km·m 뺄셈, 오후 7시를 19시로 바꾸어야 하는 계산
+//      뒤 단원·뒤 학년 것이 있어야 풀리는 것: 길이를 소수로 나타내기, 400 m씩 여러 바퀴·1100 m를 4번((세 자리 수)×(한 자리 수)),
+//        한 걸음 50 cm로 30 m 가기(큰 수의 나눗셈), 1 km를 1000 m로 받아내리는 km·m 뺄셈, 오후 7시를 19시로 바꾸어야 하는 계산
 //      길이·시간 계산보다 조건 풀이가 어려움의 대부분인 것: 빨라지거나 늦어지는 시계, 교시 시간표, 쓰이지 않는 시각이 섞인 글,
 //        한 시간 안에 드는 활동 고르기, 가장 짧은 두 길 고르기, 격자 지도의 가장 빠른 길,
 //        단위가 다른 빈칸의 수끼리 더하기(cm의 수와 mm의 수를 뜻 없이 더함)
@@ -61,40 +61,40 @@
       }, { standard: SECOND }),
       H('h-zero', '0이 아닌 눈금에서 잰 길이', '천재 단원평가 심화 — 끝 눈금을 그대로 읽는 것, 눈금 숫자를 세는 것, 시작 눈금을 더하는 것을 보기에 넣는다', (d) => {
         const from = 20, length = d.until(() => d.int(23, 38), (v) => v % 10 !== 0 && v % 10 !== 5), to = from + length;
-        const say = (mm) => `${Math.floor(mm / 10)}cm ${mm % 10}mm`;
+        const say = (mm) => `${Math.floor(mm / 10)} cm ${mm % 10} mm`;
         // 바른 길이, 끝 눈금 그대로, 눈금 숫자를 센 것(하나 더 많다), 시작 눈금을 더한 것
         const list = d.shuffle([length, to, length + 10, to + from]);
         return C('연필의 길이는?', list.map(say), list.indexOf(length), {
-          figure: ruler(from, to, Math.floor(to / 10) + 1), explain: `연필의 왼쪽 끝이 눈금 ${from / 10}에 있다. 오른쪽 끝 ${say(to)}에서 ${from / 10}cm를 빼면 ${say(length)}이다.`,
+          figure: ruler(from, to, Math.floor(to / 10) + 1), explain: `연필의 왼쪽 끝이 눈금 ${from / 10}에 있다. 오른쪽 끝 ${say(to)}에서 ${from / 10} cm를 빼면 ${say(length)}이다.`,
           facts: { rulerPick: list }
         });
       }, { standard: MEASURE }),
       H('h-gap', '가장 긴 것과 가장 짧은 것의 차', 'YBM 수학익힘 심화', (d) => {
-        // 215mm, 21cm 3mm, 236mm, 22cm 7mm … 가운데 가장 긴 것과 가장 짧은 것의 차
+        // 215 mm, 21 cm 3 mm, 236 mm, 22 cm 7 mm … 가운데 가장 긴 것과 가장 짧은 것의 차
         const base = d.int(13, 26) * 10;
         const list = d.until(() => [base + d.int(-18, 28), base + d.int(-18, 28), base + d.int(-18, 28), base + d.int(-18, 28)], (v) => new Set(v).size === 4 && v.every((x) => x % 10 !== 0) && new Set(v.map((x) => Math.floor(x / 10))).size >= 3);
-        const said = list.map((v, i) => (i % 2 === 0 ? `${v}mm` : `${Math.floor(v / 10)}cm ${v % 10}mm`)), big = Math.max(...list), small = Math.min(...list);
+        const said = list.map((v, i) => (i % 2 === 0 ? `${v} mm` : `${Math.floor(v / 10)} cm ${v % 10} mm`)), big = Math.max(...list), small = Math.min(...list);
         return N('네 사람의 발 길이이다. 가장 긴 것과 가장 짧은 것의 차는 몇 mm인가?', big - small, {
-          unit: 'mm', figure: tagged(said), explain: `mm로 나타내면 ${list.map((v) => v + 'mm').join(', ')}이다. 가장 긴 것은 ${big}mm, 가장 짧은 것은 ${small}mm이므로 차는 ${big - small}mm이다.`,
+          unit: 'mm', figure: tagged(said), explain: `mm로 나타내면 ${list.map((v) => v + ' mm').join(', ')}이다. 가장 긴 것은 ${big} mm, 가장 짧은 것은 ${small} mm이므로 차는 ${big - small} mm이다.`,
           facts: { pairs: { numbers: list, want: 'maxDiff' } }
         });
       }, { standard: UNIT }),
       H('h-lap', '같은 거리를 두 번 간 거리', '천재 수학익힘 · YBM 수학익힘 심화', (d) => {
-        // 한 바퀴가 860m인 공원을 2바퀴 → 1km 720m
+        // 한 바퀴가 860 m인 공원을 2바퀴 → 1 km 720 m
         const a = d.until(() => d.int(52, 97) * 10, (v) => v % 100 !== 0 && (v * 2) % 1000 !== 0), total = a * 2;
-        return M(`한 바퀴가 ${a}m인 호수 산책로를 2바퀴 걸었다. 걸은 거리는 모두 몇 km 몇 m인가?`, [{ answer: Math.floor(total / 1000), unit: 'km' }, { answer: total % 1000, unit: 'm' }], {
-          explain: `${a}m + ${a}m = ${total}m이다. 1000m는 1km이므로 ${Math.floor(total / 1000)}km ${total % 1000}m이다.`, facts: { unit: [{ expr: `${a}+${a}`, base: 1000, at: [0, 1] }] }
+        return M(`한 바퀴가 ${a} m인 호수 산책로를 2바퀴 걸었다. 걸은 거리는 모두 몇 km 몇 m인가?`, [{ answer: Math.floor(total / 1000), unit: 'km' }, { answer: total % 1000, unit: 'm' }], {
+          explain: `${a} m + ${a} m = ${total} m이다. 1000 m는 1 km이므로 ${Math.floor(total / 1000)} km ${total % 1000} m이다.`, facts: { unit: [{ expr: `${a}+${a}`, base: 1000, at: [0, 1] }] }
         });
       }, { standard: UNIT }),
       H('h-routes', '구간 거리를 더해 견주기', 'YBM 서술형평가 · 아이스크림 단원평가 심화', (d) => {
-        // 500m+800m 와 1km+200m → 누가 얼마나 더
+        // 500 m+800 m 와 1 km+200 m → 누가 얼마나 더
         const [one, two] = d.shuffle(NAMES).slice(0, 2);
         const [a, b, c] = d.until(() => [d.int(4, 9) * 100, d.int(4, 9) * 100, d.int(1, 8) * 100], ([x, y, z]) => x !== y && z !== x && z !== y && x + y >= 1100 && x + y !== 1000 + z && Math.abs(x + y - 1000 - z) <= 400);
         const flip = d.bool(), values = flip ? [1000 + c, a + b] : [a + b, 1000 + c], winner = values[0] > values[1] ? 0 : 1, gap = Math.abs(values[0] - values[1]);
-        const parts = flip ? [`1km를 걸은 뒤 ${c}m를 더 걸었고`, `${a}m를 걸은 뒤 ${b}m를 더 걸었다`] : [`${a}m를 걸은 뒤 ${b}m를 더 걸었고`, `1km를 걸은 뒤 ${c}m를 더 걸었다`];
+        const parts = flip ? [`1 km를 걸은 뒤 ${c} m를 더 걸었고`, `${a} m를 걸은 뒤 ${b} m를 더 걸었다`] : [`${a} m를 걸은 뒤 ${b} m를 더 걸었고`, `1 km를 걸은 뒤 ${c} m를 더 걸었다`];
         const list = d.shuffle([[winner, gap], [1 - winner, gap], [winner, gap + 100], [1 - winner, gap + 100]]);
-        return C(`${name(one, '은/는')} ${parts[0]}, ${name(two, '은/는')} ${parts[1]}. 누가 몇 m 더 많이 걸었는가?`, list.map(([who, n]) => `${[one, two][who]}, ${n}m`), list.findIndex(([who, n]) => who === winner && n === gap), {
-          explain: `${name(one, '은/는')} ${values[0]}m, ${name(two, '은/는')} ${values[1]}m를 걸었다. ${name([one, two][winner], '이/가')} ${gap}m 더 많이 걸었다.`,
+        return C(`${name(one, '은/는')} ${parts[0]}, ${name(two, '은/는')} ${parts[1]}. 누가 몇 m 더 많이 걸었는가?`, list.map(([who, n]) => `${[one, two][who]}, ${n} m`), list.findIndex(([who, n]) => who === winner && n === gap), {
+          explain: `${name(one, '은/는')} ${values[0]} m, ${name(two, '은/는')} ${values[1]} m를 걸었다. ${name([one, two][winner], '이/가')} ${gap} m 더 많이 걸었다.`,
           facts: { who: { values, options: list, exprs: flip ? [`1*1000+${c}`, `${a}+${b}`] : [`${a}+${b}`, `1*1000+${c}`] }, unseen: [1000] }
         });
       }, { standard: UNIT }),

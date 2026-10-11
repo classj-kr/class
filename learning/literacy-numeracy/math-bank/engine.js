@@ -123,6 +123,10 @@
     return '<div class="mb-column' + (notes ? ' mb-column-noted' : '') + '" role="img" aria-label="세로셈">' + row(top) + row(bottom, SIGN[sign]) + '<div class="mb-rule"></div>'
       + steps.map((list, i) => row(list, '', notes && notes[i])).join('') + '<div class="mb-rule"></div>' + row(result) + '</div>';
   }
+  // 나눗셈의 세로셈 틀: 나누는 수 ) 나누어지는 수. 몫은 그 위에 적는 것이라 자리를 비워 둔다.
+  function divColumn(divisor, dividend) {
+    return '<div class="mb-divcol" role="img" aria-label="나눗셈 세로셈 ' + dividend + ' 나누기 ' + divisor + '"><span class="mb-divisor">' + divisor + '</span><span class="mb-dividend">' + String(dividend).split('').join(' ') + '</span></div>';
+  }
   // 차례로 계산하는 칸: 수 → (+a) → 수 → (−b) → 수. 조각은 수·box()·'+267'·'÷9' 같은 글이다.
   function chain(parts) {
     return '<div class="mb-chain">' + parts.map((part) => (/^[+\-−×÷]/.test(String(part)) ? '<span class="mb-step">' + String(part).replace('-', '−') + '</span>' : '<span class="mb-node">' + part + '</span>')).join('') + '</div>';
@@ -221,9 +225,9 @@
     const u = 250 / (spans * 10), x = (i) => 18 + i * u, y = 32, width = 36 + spans * 10 * u, k = (at - from * 1000) / 100;
     let out = '<line class="mb-axis" x1="' + x(0) + '" y1="' + y + '" x2="' + x(spans * 10) + '" y2="' + y + '"/>';
     for (let i = 0; i <= spans * 10; i += 1) out += '<line class="mb-axis" x1="' + x(i) + '" y1="' + (y - (i % 10 === 0 ? 6 : 3.5)) + '" x2="' + x(i) + '" y2="' + (y + (i % 10 === 0 ? 6 : 3.5)) + '"/>';
-    for (let i = 0; i <= spans; i += 1) out += '<text class="mb-km-label" x="' + x(i * 10) + '" y="' + (y + 20) + '" text-anchor="middle">' + (from + i) + 'km</text>';
+    for (let i = 0; i <= spans; i += 1) out += '<text class="mb-km-label" x="' + x(i * 10) + '" y="' + (y + 20) + '" text-anchor="middle">' + (from + i) + ' km</text>';
     out += '<path class="mb-pointer" d="M' + x(k) + ' ' + (y - 8) + 'l-4.5 -9h9z"/>';
-    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: 1km를 10칸으로 똑같이 나누었다. 화살표는 ' + (from + Math.floor(k / 10)) + 'km에서 작은 눈금 ' + (k % 10) + '칸 더 간 곳">' + out + '</svg>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: 1 km를 10칸으로 똑같이 나누었다. 화살표는 ' + (from + Math.floor(k / 10)) + ' km에서 작은 눈금 ' + (k % 10) + '칸 더 간 곳">' + out + '</svg>';
   }
   // 시간의 세로셈. 줄마다 칸 글(예: ['3시', '25분', '30초'])을 받는다. result 를 주면 결과 줄도 적는다(빈칸 섞어 쓰기).
   function timeColumn(first, sign, second, result) {
@@ -436,6 +440,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, timeColumn, chars, blocks, counters, ruler, kmLine, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, divColumn, timeColumn, chars, blocks, counters, ruler, kmLine, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
