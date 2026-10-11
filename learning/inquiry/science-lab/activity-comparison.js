@@ -51,7 +51,7 @@
   const lines=String(raw).trim().split(/\r?\n/).filter(l=>l.trim());if(lines.length<2||lines.length>30)throw Error('천체 자료를 2~30행 입력하세요.');
   const seen=new Set();return lines.map((line,i)=>{const a=line.split(/[,\t;]/).map(x=>x.trim());if(a.length!==3||!a[0]||a[0].length>20||!a[1]||!Number.isFinite(Number(a[1]))||Number(a[1])<=0||Number(a[1])>100||!['있음','없음'].includes(a[2]))throw Error(`${i+1}행은 이름,반지름(지구=1),고리(있음/없음) 순서로 입력하세요. 반지름 범위는 0 초과~100입니다.`);if(seen.has(a[0]))throw Error('천체 이름이 중복되어 있습니다.');seen.add(a[0]);return{name:a[0],radius:Number(a[1]),ring:a[2]==='있음'};});
  }
- add('planet-classification',[area('data','천체 이름,반지름(지구=1),고리(있음/없음)',planetDemo),choice('criterion','내가 정한 두 집단의 분류 기준','radius',[['radius','반지름 경곗값'],['ring','고리의 유무']]),num('threshold','반지름 경곗값 (지구=1)',2,.1,20,.1),text('provenance','자료 출처·확인 날짜','천재교과서 2022 과학1(임성숙) PDF 232~233쪽의 반올림값'),area('reason','분류한 두 집단의 공통점과 다른 기준으로 비교한 결과')],[
+ add('planet-classification',[area('data','천체 이름,반지름(지구=1),고리(있음/없음)',planetDemo),choice('criterion','내가 정한 두 집단의 분류 기준','radius',[['radius','반지름 경곗값'],['ring','고리의 유무']]),num('threshold','반지름 경곗값 (지구=1)',2,.1,20,.1),text('provenance','자료 출처·확인 날짜','교과서 표의 반올림값'),area('reason','분류한 두 집단의 공통점과 다른 기준으로 비교한 결과')],[
   '천체의 특징을 조사하고 반지름·고리 자료와 출처를 입력합니다. 반지름은 지구를 1로 한 같은 단위를 사용합니다.',
   '분류 기준과 경곗값을 직접 정해 두 집단을 만들고, 기준을 바꾸었을 때 소속이 달라지는 천체를 찾습니다.',
   '두 집단의 공통점과 구성 물질·질량 등 추가 자료를 비교하여, 이 분류가 지구형·목성형 구분과 같은지 설명합니다.'
