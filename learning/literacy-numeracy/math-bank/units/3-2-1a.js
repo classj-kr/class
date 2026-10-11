@@ -40,7 +40,7 @@
   const anyPair = (d) => (d.bool() ? pair3(d, (n) => n >= 1) : pair22(d));
 
   B.addUnit({
-    id: '3-2-1', grade: 3, semester: 2, no: 1, title: '곱셈', version: 2,
+    id: '3-2-1', grade: 3, semester: 2, no: 1, title: '곱셈', version: 3,
     groups: [
       {
         id: 'h3a', title: '올림이 없는 (세 자리 수)×(한 자리 수)', standard: CALC,
