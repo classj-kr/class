@@ -96,10 +96,9 @@ button { cursor: pointer; }
 .leaflet-container:not(.show-bathymetry) .korea-bathymetry { visibility: hidden; }
 .relief-label { font-size: 12px; white-space: nowrap; }
 .key-depth { gap: 7px; }
-.depth-scale { position: relative; display: grid; gap: 2px; width: 190px; padding-right: 12px; }
-.depth-bar { height: 9px; border-radius: 3px; background: linear-gradient(90deg,#cae6ed 0 20%,#8fc5db 20% 40%,#559ac4 40% 60%,#2f70a7 60% 80%,#1e4c82 80%); }
-.depth-ticks { display: grid; grid-template-columns: repeat(5,1fr); font-size: 9px; font-weight: 500; line-height: 1.2; }
-.depth-unit { position: absolute; bottom: 0; right: 0; font-size: 9px; }
+.depth-scale { display: grid; gap: 3px; width: 180px; }
+.depth-bar { height: 9px; border-radius: 3px; background: linear-gradient(90deg,#cae6ed 0 33.333%,#559ac4 33.333% 66.667%,#1e4c82 66.667%); }
+.depth-ticks { display: grid; grid-template-columns: repeat(3,1fr); text-align: center; font-size: 10px; font-weight: 500; line-height: 1.2; white-space: nowrap; }
 @media (max-width: 600px) {
   .map-key { max-width:calc(100% - 24px); gap:4px; padding:6px; }
   .key-item { padding:2px 5px; min-height:25px; }

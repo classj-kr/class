@@ -4,19 +4,15 @@
   "sourceSha256": "e4c4d8a98aba483012ebafd304942d09e4b880e1e596016573493c1b9536ddb3",
   "depthBreaksMetres": [
     200,
-    1000,
-    2000,
-    3000
+    2000
   ],
   "colors": [
     "#cae6ed",
-    "#8fc5db",
     "#559ac4",
-    "#2f70a7",
     "#1e4c82"
   ],
   "tiles": 2756,
-  "bytes": 790312,
+  "bytes": 610538,
   "seaPixels": 67762417,
   "sampleElevationMetres": {
     "황해 중앙": -80,

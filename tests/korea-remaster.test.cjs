@@ -50,11 +50,13 @@ test('independent calculation of case-study denominators and units',()=>{
 test('bathymetry uses source-derived ordered bands and keeps every tile in WebP',()=>{
   const data=JSON.parse(fs.readFileSync(path.join(root,'korea-map/data/bathymetry.json'),'utf8'));
   assert.match(JSON.stringify(data),/ETOPO1/);
+  assert.deepEqual(data.depthBreaksMetres,[200,2000]);
   const dir=path.join(root,'korea-map/bathymetry');
   const files=fs.readdirSync(dir,{recursive:true}).filter(f=>fs.statSync(path.join(dir,f)).isFile());
   assert.equal(files.length,2756);assert.ok(files.every(f=>f.endsWith('.webp')));
   const css=fs.readFileSync(path.join(root,'korea-map/styles.css'),'utf8');
-  for(const color of ['#cae6ed','#8fc5db','#559ac4','#2f70a7','#1e4c82'])assert.ok(css.includes(color));
+  assert.deepEqual(data.colors,['#cae6ed','#559ac4','#1e4c82']);
+  for(const color of data.colors)assert.ok(css.includes(color));
 });
 test('all 18 climate charts match the KMA 1991–2020 source extract, including annual statistics',()=>{
   const cw={};const cc=vm.createContext({window:cw});
