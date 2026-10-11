@@ -1,12 +1,13 @@
-"""지구본 바탕 그림에 산 빛깔과 사막 점무늬를 덧입힌다.
+"""지구본 바탕 그림에 산 빛깔과 그늘을 덧입힌다.
 
     python tools/build_relief_tiles.py --base <지금 조각 폴더> --etopo <ETOPO1_Ice_g_geotiff.tif> --koppen <world_koppen 폴더>
 
-바탕 그림(숲·초원·툰드라·사막·얼음의 색, 강줄기, 잔주름)은 지우지 않는다. 그 위에 두 가지만 얹는다.
+바탕 그림(숲·초원·툰드라·사막·얼음의 색, 강줄기, 잔주름)은 지우지 않는다. 그 위에 산만 얹는다.
 
-- 산: 둘레 낮은 땅보다 솟을수록 갈색 쪽으로 물들이고(아주 높으면 잿빛), 북서쪽 빛으로 그늘을 넣는다.
+- 둘레 낮은 땅보다 솟을수록 갈색 쪽으로 물들이고(아주 높으면 잿빛), 북서쪽 빛으로 그늘을 넣는다.
   물들일 때는 둘레 평균색의 비율만 곱하므로 픽셀 하나하나의 밝고 어두움은 그대로 남는다.
-- 사막: Peel(2007) 쾨펜 구분의 사막 기후(BWh·BWk) 칸에 모래 점무늬. 사막 안의 바위산은 점 없이 갈색.
+- 사막은 바탕 그림 그대로다. Peel(2007) 쾨펜 구분의 사막 기후(BWh·BWk) 칸에서는 평평한 고원을 물들이지 않아
+  모래색이 남고, 그 안의 바위산만 갈색이 된다. (모래 점무늬를 얹어 봤으나 지저분해서 뺐다, 2026-10-11)
 
 높이는 ETOPO1 얼음 표면(1분 격자). 물·얼음·만년설은 바탕 그림 그대로 둔다.
 """
@@ -29,7 +30,7 @@ MAX_Z = 5
 SIZE = TILE * 2 ** MAX_Z
 HALO = 160  # 둘레 낮은 땅을 찾는 창(REGION)과 그 뒤 흐림이 조각 줄 경계에서 끊기지 않을 만큼
 EARTH = 40075016.686
-VERSION = "20261011-relief"
+VERSION = "20261011-relief2"
 
 # 산 빛깔: 높이(m) → 물들일 색. 낮은 산은 밝은 갈색, 높을수록 짙어지다 잿빛·흰빛으로.
 MOUNTAIN = [
@@ -47,10 +48,6 @@ TINT_BY_RISE = [(80, 0), (250, .3), (500, .5), (900, .66), (1600, .78)]
 # 솟지 않았어도 높은 땅(고원)은 조금 물든다. 사막 고원은 모래색 그대로 둔다.
 TINT_BY_HEIGHT = [(400, 0), (1000, .14), (2000, .28), (3500, .45), (5000, .6)]
 TUNDRA_TINT = .5  # 툰드라에서는 덜 물들여 잿빛을 남긴다
-DOT_DARKEN = .3  # 점 한가운데를 이만큼 어둡게. 바탕색을 덮지 않고 짙게만 하므로 모래·바위 무늬가 비친다
-# 세계가 한눈에 들어오는 낮은 단에서는 점이 땅에 견주어 너무 커서 얼룩처럼 보인다. 확대할수록 또렷해지게 한다.
-DOT_BY_ZOOM = {0: 0, 1: .3, 2: .55, 3: .8, 4: 1, 5: 1}
-DOT_PERIOD = 6  # 점 하나가 차지하는 칸(픽셀). 점은 단마다 그 단의 그림 전체에 찍고 나서 조각으로 자른다.
 DESERT_CLASSES = (4, 5)  # Peel(2007) 번호: 4 BWh, 5 BWk
 TUNDRA_CLASSES = (29,)  # ET
 ICE_CAP_CLASSES = (30,)  # EF
@@ -179,7 +176,7 @@ def blur(image, sigma):
 
 
 def render_band(row, base_root, etopo, koppen):
-    """5단 한 줄(512 × 16,384)의 점무늬 없는 그림과 점 찍을 정도(0~255)."""
+    """5단 한 줄(512 × 16,384)."""
     ys = np.arange(row * TILE - HALO, (row + 1) * TILE + HALO) + .5
     xs = np.arange(-HALO, SIZE + HALO) + .5
     lat = np.degrees(np.arctan(np.sinh(np.pi * (1 - 2 * np.clip(ys, .5, SIZE - .5) / SIZE))))
@@ -231,8 +228,7 @@ def render_band(row, base_root, etopo, koppen):
     # 사막의 밝은 모래와 색이 겹치므로 사막 기후 칸에서는 아주 높은 곳만 눈으로 본다.
     bright = smoothstep(142, 176, base.min(axis=-1)) * smoothstep(34, 20, -blue)
     snow = bright * np.maximum(1 - desert, smoothstep(2500, 3500, smooth))
-    solid = np.maximum(water, ice_cap)  # 점도 찍지 않는 곳
-    keep = np.maximum(solid, snow)
+    keep = np.maximum(np.maximum(water, ice_cap), snow)
 
     # 산 빛깔: 솟은 만큼 + 높은 만큼(사막 고원은 빼고). 툰드라에서는 덜
     curve = lambda value, stops: np.interp(value, [s[0] for s in stops], [s[1] for s in stops]).astype(np.float32)
@@ -246,40 +242,7 @@ def render_band(row, base_root, etopo, koppen):
     shade = 1 + (shade - 1) * (1 - keep)
     out = base * gain * shade[..., None]
 
-    inner = (slice(HALO, -HALO), slice(HALO, -HALO))
-    dots = desert * (1 - solid) * (1 - snow * (1 - desert)) * (1 - smoothstep(.2, .5, tint))
-    return np.clip(out[inner] + .5, 0, 255).astype(np.uint8), np.clip(dots[inner] * 255 + .5, 0, 255).astype(np.uint8)
-
-
-def stipple(image, strength, zoom):
-    """사막 정도에 비례해 모래 점을 찍는다. 칸마다 한 점, 자리는 칸 안에서 흩뜨린다."""
-    rows, columns = image.shape[0] // DOT_PERIOD, image.shape[1] // DOT_PERIOD
-    rng = np.random.default_rng(zoom)
-    depth = DOT_DARKEN * DOT_BY_ZOOM[zoom]
-    if not depth:
-        return image.copy()
-    margin = 1  # 점이 3×3이라 칸 밖으로 나가지 않는다
-    offset_y = rng.integers(margin, DOT_PERIOD - margin, (rows, columns))
-    offset_x = rng.integers(margin, DOT_PERIOD - margin, (rows, columns))
-    chance = rng.random((rows, columns), dtype=np.float32)
-    kernel = np.array([[.1, .45, .1], [.45, 1, .45], [.1, .45, .1]], dtype=np.float32)
-    result = image.copy()
-    step = 256  # 칸 256줄씩: 큰 단에서 메모리를 아낀다. 점이 칸을 넘지 않으니 끊어도 결과가 같다.
-    for first in range(0, rows, step):
-        cells = slice(first, min(first + step, rows))
-        top = first * DOT_PERIOD
-        part = result[top:cells.stop * DOT_PERIOD]
-        y = (np.arange(cells.stop - first)[:, None] * DOT_PERIOD + offset_y[cells]).ravel()
-        x = (np.arange(columns)[None, :] * DOT_PERIOD + offset_x[cells]).ravel()
-        level = strength[top + y, x].astype(np.float32) / 255
-        chosen = chance[cells].ravel() < level
-        if not chosen.any():
-            continue
-        points = np.zeros(part.shape[:2], dtype=np.float32)
-        points[y[chosen], x[chosen]] = level[chosen]
-        darken = np.clip(cv2.filter2D(points, -1, kernel, borderType=cv2.BORDER_CONSTANT), 0, 1)[..., None] * depth
-        part[:] = np.clip(part * (1 - darken) + .5, 0, 255).astype(np.uint8)
-    return result
+    return np.clip(out[HALO:-HALO, HALO:-HALO] + .5, 0, 255).astype(np.uint8)
 
 
 def main():
@@ -295,37 +258,33 @@ def main():
     etopo = read_etopo(args.etopo)
     koppen = read_arc_grid(args.koppen)
     image = np.empty((SIZE, SIZE, 3), dtype=np.uint8)
-    desert = np.empty((SIZE, SIZE), dtype=np.uint8)
     for row in range(2 ** MAX_Z):
         band = slice(row * TILE, (row + 1) * TILE)
-        image[band], desert[band] = render_band(row, args.base, etopo, koppen)
+        image[band] = render_band(row, args.base, etopo, koppen)
         print(f"5단 {row + 1}/{2 ** MAX_Z}줄", flush=True)
     del etopo
 
     count = 0
     for zoom in range(MAX_Z, -1, -1):
-        dotted = stipple(image, desert, zoom)
         for x in range(2 ** zoom):
             folder = args.output / str(zoom) / str(x)
             folder.mkdir(parents=True, exist_ok=True)
             for y in range(2 ** zoom):
-                tile = dotted[y * TILE:(y + 1) * TILE, x * TILE:(x + 1) * TILE]
+                tile = image[y * TILE:(y + 1) * TILE, x * TILE:(x + 1) * TILE]
                 Image.fromarray(tile).save(folder / f"{y}.webp", "WEBP", quality=args.quality, method=4)
                 count += 1
         print(f"{zoom}단 조각 {4 ** zoom}장", flush=True)
         if zoom:
-            half = (image.shape[1] // 2, image.shape[0] // 2)
-            image = cv2.resize(image, half, interpolation=cv2.INTER_AREA)
-            desert = cv2.resize(desert, half, interpolation=cv2.INTER_AREA)
+            image = cv2.resize(image, (image.shape[1] // 2, image.shape[0] // 2), interpolation=cv2.INTER_AREA)
     manifest = {
         "version": VERSION, "count": count, "tileSize": TILE, "minZoom": 0, "maxZoom": MAX_Z,
         "format": "WebP", "quality": args.quality,
         "baseSource": "2026-09-27 tiles-colored (Natural Earth III texture with the 85% colour correction)",
         "heightSource": "NOAA ETOPO1 Ice Surface, grid-registered, 1 arc-minute (public domain)",
         "heightUrl": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip",
-        "desertSource": "Peel, Finlayson & McMahon (2007) Koppen-Geiger 0.1 degree raster, classes BWh and BWk (CC BY-NC-SA 2.5)",
+        "climateSource": "Peel, Finlayson & McMahon (2007) Koppen-Geiger 0.1 degree raster: desert, tundra and ice-cap cells (CC BY-NC-SA 2.5)",
         "method": "Base picture kept. Mountains tinted brown by their rise above the surrounding lowland with north-west hillshade; "
-                  "desert climate cells stippled. Water, ice and snow untouched.",
+                  "flat desert plateaus keep their sand colour. Water, ice and snow untouched.",
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print("끝.", count, "장")

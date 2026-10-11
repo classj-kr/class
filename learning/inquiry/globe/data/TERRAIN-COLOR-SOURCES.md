@@ -6,13 +6,13 @@
 
 ## 무엇을 그렸나
 
-바탕 그림(숲·초원·툰드라·사막·얼음의 색, 강줄기, 잔주름, 만년설)은 그대로 두고 두 가지만 덧입혔다.
+바탕 그림(숲·초원·툰드라·사막·얼음의 색, 강줄기, 잔주름, 만년설)은 그대로 두고 산만 덧입혔다.
 
 - **산**: 둘레 낮은 땅(둘레 120km쯤에서 가장 낮은 높이)보다 솟은 만큼 갈색 쪽으로 물들이고, 북서쪽 빛의 그늘을 넣는다. 넓고 평평한 고원은 조금만 물든다. 둘레 평균색의 비율만 곱하므로 픽셀마다의 밝고 어두움은 남는다.
-- **사막**: 쾨펜 구분의 사막 기후(BWh·BWk) 칸에 모래 점무늬. 사막 안의 바위산은 점 없이 갈색. 점은 단마다 따로 찍고, 세계가 한눈에 보이는 낮은 단에서는 옅게 한다(0단 없음, 1단 30%, 2단 55%, 3단 80%).
+- **사막**: 바탕 그림 그대로다. 쾨펜 구분의 사막 기후(BWh·BWk) 칸에서는 평평한 고원을 물들이지 않아 모래색이 남고, 그 안의 바위산만 갈색이 된다. 처음에는 모래 점무늬도 얹었으나 지저분해서 같은 날 뺐다(사용자 결정). 사막과 산은 색(밝은 모래색 / 갈색)과 그늘 주름으로 갈린다.
 - **손대지 않는 곳**: 물, 얼음(빙설 기후 칸과 남위 60도 아래), 밝고 누런 기가 적은 픽셀(만년설). 높이를 0으로 넣어 돌리면 결과가 바탕과 픽셀까지 같다.
 
-색만 보고 정확한 높이나 사막의 경계선을 읽을 수는 없다. 스텝(BSh·BSk)은 사막이 아니라 점을 찍지 않는다.
+색만 보고 정확한 높이나 사막의 경계선을 읽을 수는 없다.
 
 ## 자료
 
@@ -20,7 +20,7 @@
 |---|---|---|
 | 바탕 | 2026-09-27판 `tiles-colored`(Natural Earth III 그림에 Natural Earth HYP_LR_SR_W_DR 색을 85% 옮긴 것). 커밋 `0fafc5cf0`의 `learning/inquiry/globe/tiles-colored`에서 꺼낸다 | Public domain |
 | 높이 | NOAA ETOPO1 Ice Surface, 격자 등록본, 1분 격자. https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip (308MB) | Public domain. 인용: Amante & Eakins (2009), doi:10.7289/V5C8276M |
-| 사막·툰드라·빙설 칸 | Peel, Finlayson & McMahon (2007) 쾨펜-가이거 0.1° 래스터(`ATLAS-SOURCES.md`의 기후 원본과 같은 파일) | CC BY-NC-SA 2.5. 이 조각은 그 파생물이다 |
+| 사막·툰드라·빙설 칸(물들이는 세기를 가르는 데만 씀) | Peel, Finlayson & McMahon (2007) 쾨펜-가이거 0.1° 래스터(`ATLAS-SOURCES.md`의 기후 원본과 같은 파일) | CC BY-NC-SA 2.5. 이 조각은 그 파생물이다 |
 
 원래 `tiles/`(Natural Earth III)는 그대로 둔다.
 
@@ -38,7 +38,7 @@ python learning/inquiry/globe/tools/build_relief_tiles.py `
 
 Pillow, NumPy, OpenCV, tifffile이 필요하다. 쾨펜 원본은 ArcInfo 격자인데 도구가 직접 읽는다(rasterio 불필요). 조각을 바꾸면 `app.js`의 `TILE_VERSION`(= `manifest.json`의 version)과 두 진입 화면(`globe/index.html`, `world-geography/index.html`)의 `app.js?v=`를 함께 올린다.
 
-세기를 바꾸는 값은 도구 맨 위에 있다: `TINT_BY_RISE`(산 빛깔), `MOUNTAIN`(산 색), `DOT_DARKEN`·`DOT_BY_ZOOM`·`DOT_PERIOD`(점무늬).
+세기를 바꾸는 값은 도구 맨 위에 있다: `TINT_BY_RISE`·`TINT_BY_HEIGHT`(산 빛깔의 세기), `MOUNTAIN`(산 색).
 
 ## 확인한 것 (2026-10-11)
 
