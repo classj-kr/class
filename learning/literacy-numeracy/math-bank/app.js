@@ -70,7 +70,7 @@
         const done = finished[roundKey(group.id, level)];
         const button = el('button', 'mb-level' + (level === '실력' ? ' is-hard' : '') + (done ? ' is-done' : ''), level + (done ? '<small>' + done.right + ' / ' + done.total + '</small>' : ''));
         button.type = 'button';
-        button.setAttribute('aria-label', group.title + ' ' + level + (done ? ', 지난번 ' + done.total + '문제 가운데 ' + done.right + '문제 맞힘' : ''));
+        button.setAttribute('aria-label', group.title + ' ' + level + (done ? ', 지난번 ' + done.total + '문항 중 ' + done.right + '문항 정답' : ''));
         button.addEventListener('click', () => openRound(group.id, level));
         levels.append(button);
       }
@@ -171,7 +171,7 @@
     const result = card.querySelector('.mb-result');
     result.hidden = false;
     result.className = 'mb-result ' + (ok ? 'is-right' : 'is-wrong');
-    result.innerHTML = ok ? '<strong>맞았어요.</strong>' : '<strong>답: ' + answerText(item) + '</strong>' + (item.explain ? '<br>' + item.explain : '');
+    result.innerHTML = ok ? '<strong>정답</strong>' : '<strong>답: ' + answerText(item) + '</strong>' + (item.explain ? '<br>' + item.explain : '');
   }
 
   async function answer(item, card, response) {
@@ -210,7 +210,7 @@
     again.addEventListener('click', () => openRound(group.id, level));
     const back = el('button', 'mb-plain', '다른 묶음 고르기'); back.type = 'button';
     back.addEventListener('click', showGroups);
-    finish.replaceChildren(el('p', null, total + '문제 가운데 ' + right + '문제를 맞혔어요.'), again);
+    finish.replaceChildren(el('p', null, total + '문항 중 ' + right + '문항 정답'), again);
     if (level === '기본' && B.typesOf(group, '실력').length) {
       const hard = el('button', 'mb-plain', '실력 문제 풀기'); hard.type = 'button';
       hard.addEventListener('click', () => openRound(group.id, '실력'));

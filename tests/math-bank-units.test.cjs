@@ -49,6 +49,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.equal('을은이과'.includes(m[2]), batchim, `토씨 "${m[0]}" — ${label}`);
     }
     assert.ok(/^\d수\d\d-\d\d$/.test(item.standard), label);
+    // 말투는 수능 문체: "~세요 / ~습니다 / ~인가요" 를 쓰지 않는다.
+    assert.doesNotMatch(strip(item.text + ' ' + (item.figure || '') + ' ' + (item.explain || '')), /세요|습니다|입니다|인가요|나요\?|해요|예요|어요/, '말투: ' + label);
     if (item.choice) {
       assert.ok(item.choice.options.length >= 3 && Number.isInteger(item.choice.answer) && item.choice.answer >= 0 && item.choice.answer < item.choice.options.length, label);
       assert.equal(new Set(item.choice.options.map(strip)).size, item.choice.options.length, '보기가 겹친다: ' + label);

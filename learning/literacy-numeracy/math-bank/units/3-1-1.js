@@ -2,6 +2,7 @@
 // 묶음은 배우는 차례(교과서의 차시가 아니라 내용 덩어리)이고, 묶음마다 기본과 실력 두 수준이 있다.
 // 웬만한 문제는 기본에 두고, 여러 단계를 거치거나 조건이 얽힌 문제만 실력에 둔다.
 // 문항은 모두 새로 쓴 것이다. 수는 씨앗에서 뽑으므로 풀 때마다 달라진다.
+// 말투는 수능 문체다: 지시는 "~을 구하시오.", 고르기는 "~은?", 상황은 "~이다 / ~했다". "~세요 / ~습니다"는 쓰지 않는다.
 (function (root) {
   'use strict';
   const B = root.MathBank;
@@ -32,41 +33,41 @@
   const shown = (a, op, b) => expr(a, op, b, '=', result(a, op, b));
 
   // ── 여러 유형이 함께 쓰는 꼴 ──────────────────────────────────
-  const rowItem = (a, op, b) => ({ text: '계산해 보세요.', figure: expr(a, op, b, '=', box()), inputs: [{ answer: result(a, op, b) }], explain: shown(a, op, b), facts: { op, a, b } });
-  const colItem = (a, op, b) => ({ text: '세로로 계산해 보세요.', figure: column(chars(a), op, chars(b)), inputs: [{ answer: result(a, op, b) }], explain: shown(a, op, b), facts: { op, a, b } });
+  const rowItem = (a, op, b) => ({ text: '다음을 계산하시오.', figure: expr(a, op, b, '=', box()), inputs: [{ answer: result(a, op, b) }], explain: shown(a, op, b), facts: { op, a, b } });
+  const colItem = (a, op, b) => ({ text: '다음을 계산하시오.', figure: column(chars(a), op, chars(b)), inputs: [{ answer: result(a, op, b) }], explain: shown(a, op, b), facts: { op, a, b } });
   const wordItem = (text, unit, a, op, b) => ({ text, inputs: [{ answer: result(a, op, b), unit }], explain: shown(a, op, b), facts: { op, a, b } });
 
   // 문장제: 모두 얼마(덧셈)
   function sumStory(d, a, b) {
     const who = d.pick(NAMES);
     return d.pick([
-      () => wordItem(`텃밭에서 방울토마토를 지난주에 ${a}개, 이번 주에 ${b}개 땄습니다. 두 주 동안 딴 방울토마토는 모두 몇 개인가요?`, '개', a, '+', b),
-      () => wordItem(`${name(who, '은/는')} 줄넘기를 아침에 ${a}번, 저녁에 ${b}번 했습니다. ${name(who, '이/가')} 하루 동안 한 줄넘기는 모두 몇 번인가요?`, '번', a, '+', b),
-      () => wordItem(`${name(who, '은/는')} 어제 ${a}걸음, 오늘 ${b}걸음 걸었습니다. 이틀 동안 걸은 걸음은 모두 몇 걸음인가요?`, '걸음', a, '+', b),
-      () => wordItem(`과학관에 오전에 ${a}명, 오후에 ${b}명이 들어왔습니다. 하루 동안 과학관에 들어온 사람은 모두 몇 명인가요?`, '명', a, '+', b),
-      () => wordItem(`빨간 리본은 ${a}cm, 노란 리본은 ${b}cm입니다. 두 리본을 겹치지 않게 이어 붙이면 길이는 모두 몇 cm인가요?`, 'cm', a, '+', b),
-      () => wordItem(`우리 반은 헌 종이를 ${a}장, 옆 반은 ${b}장 모았습니다. 두 반이 모은 헌 종이는 모두 몇 장인가요?`, '장', a, '+', b)
+      () => wordItem(`텃밭에서 방울토마토를 지난주에 ${a}개, 이번 주에 ${b}개 땄다. 두 주 동안 딴 방울토마토는 모두 몇 개인가?`, '개', a, '+', b),
+      () => wordItem(`${name(who, '은/는')} 줄넘기를 아침에 ${a}번, 저녁에 ${b}번 했다. ${name(who, '이/가')} 하루 동안 한 줄넘기는 모두 몇 번인가?`, '번', a, '+', b),
+      () => wordItem(`${name(who, '은/는')} 어제 ${a}걸음, 오늘 ${b}걸음 걸었다. 이틀 동안 걸은 걸음은 모두 몇 걸음인가?`, '걸음', a, '+', b),
+      () => wordItem(`과학관에 오전에 ${a}명, 오후에 ${b}명이 들어왔다. 하루 동안 과학관에 들어온 사람은 모두 몇 명인가?`, '명', a, '+', b),
+      () => wordItem(`빨간 리본은 ${a}cm, 노란 리본은 ${b}cm이다. 두 리본을 겹치지 않게 이어 붙였을 때, 전체 길이는 몇 cm인가?`, 'cm', a, '+', b),
+      () => wordItem(`우리 반은 헌 종이를 ${a}장, 옆 반은 ${b}장 모았다. 두 반이 모은 헌 종이는 모두 몇 장인가?`, '장', a, '+', b)
     ])();
   }
   // 문장제: 남은 것(뺄셈)
   function restStory(d, a, b) {
     const who = d.pick(NAMES);
     return d.pick([
-      () => wordItem(`빵집에서 아침에 빵을 ${a}개 구웠습니다. 그 가운데 ${b}개를 팔았다면 남은 빵은 몇 개인가요?`, '개', a, '-', b),
-      () => wordItem(`미술실 서랍에 색종이가 ${a}장 들어 있습니다. 만들기 시간에 ${b}장을 꺼내 썼다면 서랍에 남은 색종이는 몇 장인가요?`, '장', a, '-', b),
-      () => wordItem(`${name(who, '이/가')} 맞추는 퍼즐은 모두 ${a}조각입니다. 지금까지 ${b}조각을 맞추었다면 더 맞추어야 하는 퍼즐은 몇 조각인가요?`, '조각', a, '-', b),
-      () => wordItem(`집에서 공원까지는 ${a}m입니다. 집에서 출발해 ${b}m를 걸어왔다면 공원까지 남은 거리는 몇 m인가요?`, 'm', a, '-', b),
-      () => wordItem(`주차장에 자리가 ${a}칸 있습니다. 차가 ${b}대 서 있다면 비어 있는 자리는 몇 칸인가요?`, '칸', a, '-', b)
+      () => wordItem(`빵집에서 아침에 빵을 ${a}개 구웠다. 그중 ${b}개를 팔았을 때, 남은 빵은 몇 개인가?`, '개', a, '-', b),
+      () => wordItem(`미술실 서랍에 색종이가 ${a}장 들어 있다. 만들기 시간에 ${b}장을 꺼내 썼을 때, 서랍에 남은 색종이는 몇 장인가?`, '장', a, '-', b),
+      () => wordItem(`${name(who, '이/가')} 맞추는 퍼즐은 모두 ${a}조각이다. 지금까지 ${b}조각을 맞추었을 때, 더 맞추어야 하는 퍼즐은 몇 조각인가?`, '조각', a, '-', b),
+      () => wordItem(`집에서 공원까지의 거리는 ${a}m이다. 집에서 출발하여 ${b}m를 걸어왔을 때, 공원까지 남은 거리는 몇 m인가?`, 'm', a, '-', b),
+      () => wordItem(`주차장에 자리가 ${a}칸 있다. 차가 ${b}대 서 있을 때, 비어 있는 자리는 몇 칸인가?`, '칸', a, '-', b)
     ])();
   }
   // 문장제: 얼마나 더(비교 뺄셈)
   function moreStory(d, a, b) {
     const [one, two] = d.shuffle(NAMES).slice(0, 2);
     return d.pick([
-      () => wordItem(`운동장에 3학년이 ${a}명, 4학년이 ${b}명 모였습니다. 3학년은 4학년보다 몇 명 더 많은가요?`, '명', a, '-', b),
-      () => wordItem(`${name(one, '은/는')} 구슬을 ${a}개, ${name(two, '은/는')} ${b}개 모았습니다. ${name(one, '이/가')} 모은 구슬은 ${name(two, '이/가')} 모은 구슬보다 몇 개 더 많은가요?`, '개', a, '-', b),
-      () => wordItem(`산책길 가 길은 ${a}m, 나 길은 ${b}m입니다. 가 길은 나 길보다 몇 m 더 긴가요?`, 'm', a, '-', b),
-      () => wordItem(`사과나무에서 사과를 ${a}개, 배나무에서 배를 ${b}개 땄습니다. 사과는 배보다 몇 개 더 많이 땄나요?`, '개', a, '-', b)
+      () => wordItem(`운동장에 3학년이 ${a}명, 4학년이 ${b}명 모였다. 3학년은 4학년보다 몇 명 더 많은가?`, '명', a, '-', b),
+      () => wordItem(`${name(one, '은/는')} 구슬을 ${a}개, ${name(two, '은/는')} ${b}개 모았다. ${name(one, '이/가')} 모은 구슬은 ${name(two, '이/가')} 모은 구슬보다 몇 개 더 많은가?`, '개', a, '-', b),
+      () => wordItem(`산책길 가 길은 ${a}m, 나 길은 ${b}m이다. 가 길은 나 길보다 몇 m 더 긴가?`, 'm', a, '-', b),
+      () => wordItem(`사과나무에서 사과를 ${a}개, 배나무에서 배를 ${b}개 땄다. 사과는 배보다 몇 개 더 많은가?`, '개', a, '-', b)
     ])();
   }
 
@@ -85,7 +86,7 @@
     });
     const names = inputs.map((input) => input.label);
     return {
-      text: (names.length === 2 ? names.join('과 ') : names.join(', ')) + '에 알맞은 숫자를 구해 보세요.',
+      text: names.join(', ') + '에 알맞은 숫자를 구하시오.',
       figure: column(rows[0], op, rows[1], rows[2]),
       inputs, explain: shown(a, op, b), facts: { op, a, b, masks }
     };
@@ -104,10 +105,10 @@
     const big = Number(down.join(''));
     const small = up[0] === 0 ? Number('' + up[1] + up[0] + up[2]) : Number(up.join(''));
     return {
-      text: `수 카드 세 장을 한 번씩만 써서 세 자리 수를 만듭니다. 가장 큰 수와 가장 작은 수를 만들어 ${op === '+' ? '두 수를 더하면' : '큰 수에서 작은 수를 빼면'} 얼마인가요?`,
+      text: `수 카드 세 장을 한 번씩만 사용하여 세 자리 수를 만든다. 가장 큰 수와 가장 작은 수를 각각 만들 때, 두 수의 ${op === '+' ? '합을' : '차를'} 구하시오.`,
       figure: cards(digits),
       inputs: [{ answer: result(big, op, small) }],
-      explain: `가장 큰 수는 ${big}, 가장 작은 수는 ${small}입니다. ` + shown(big, op, small),
+      explain: `가장 큰 수는 ${big}, 가장 작은 수는 ${small}이다. ` + shown(big, op, small),
       facts: { op, a: big, b: small, digits }
     };
   }
@@ -128,7 +129,7 @@
             id: 'add0-blocks', level: '기본', title: '수 모형 보고 더하기',
             make: (d) => {
               const [a, b] = addPair(d, (c, x, y) => ADD.none(c) && x + y < 700);
-              return { text: '수 모형 가와 나가 나타내는 두 수를 더하면 얼마인가요?', figure: blocks(a, '가') + blocks(b, '나'), inputs: [{ answer: a + b }], explain: shown(a, '+', b), facts: { op: '+', a, b } };
+              return { text: '수 모형 가, 나가 나타내는 두 수의 합을 구하시오.', figure: blocks(a, '가') + blocks(b, '나'), inputs: [{ answer: a + b }], explain: shown(a, '+', b), facts: { op: '+', a, b } };
             }
           },
           {
@@ -138,7 +139,7 @@
               const A = chars(a).map(Number), Bd = chars(b).map(Number);
               const parts = [[A[0] * 100, Bd[0] * 100], [A[1] * 10, Bd[1] * 10], [A[2], Bd[2]]];
               return {
-                text: `${a} + ${josa(b, '을/를')} 같은 자리끼리 나누어 더하려고 합니다. ㉠, ㉡, ㉢, ㉣에 알맞은 수를 구해 보세요.`,
+                text: `${a} + ${josa(b, '을/를')} 같은 자리끼리 나누어 계산한다. ㉠, ㉡, ㉢, ㉣에 알맞은 수를 구하시오.`,
                 figure: '<div class="mb-lines">'
                   + ['백의 자리', '십의 자리', '일의 자리'].map((label, i) => `<div><span class="mb-tag">${label}</span>${expr(parts[i][0], '+', parts[i][1], '=', box(LABELS[i]))}</div>`).join('')
                   + `<div><span class="mb-tag">모두</span>${expr(a, '+', b, '=', box(LABELS[3]))}</div></div>`,
@@ -159,7 +160,7 @@
             id: 'add1-blocks', level: '기본', title: '수 모형 보고 더하기',
             make: (d) => {
               const [a, b] = addPair(d, (c, x, y) => ADD.ones(c) && x + y < 700);
-              return { text: '수 모형 가와 나가 나타내는 두 수를 더하면 얼마인가요?', figure: blocks(a, '가') + blocks(b, '나'), inputs: [{ answer: a + b }], explain: shown(a, '+', b), facts: { op: '+', a, b } };
+              return { text: '수 모형 가, 나가 나타내는 두 수의 합을 구하시오.', figure: blocks(a, '가') + blocks(b, '나'), inputs: [{ answer: a + b }], explain: shown(a, '+', b), facts: { op: '+', a, b } };
             }
           },
           {
@@ -169,7 +170,7 @@
               const [c, e] = d.until(() => addPair(d, ADD.once), ([x, y]) => Math.abs(x + y - (a + b)) <= 40 && x !== a && x !== b);
               const left = a + b, right = c + e;
               return {
-                text: '두 덧셈의 계산 결과를 비교하여 ○ 안에 알맞은 기호를 골라 보세요.',
+                text: '두 계산 결과의 크기를 비교할 때, ○ 안에 알맞은 것은?',
                 figure: `<div class="mb-versus">${expr(a, '+', b)}<span class="mb-ring"></span>${expr(c, '+', e)}</div>`,
                 choice: { options: ['&gt;', '=', '&lt;'], answer: left > right ? 0 : left === right ? 1 : 2 },
                 explain: `${shown(a, '+', b)}, ${shown(c, '+', e)}`,
@@ -195,7 +196,7 @@
               });
               const sums = pairs.map(([x, y]) => x + y);
               return {
-                text: '계산 결과가 가장 큰 것을 골라 보세요.',
+                text: '계산 결과가 가장 큰 것은?',
                 figure: '<div class="mb-lines">' + pairs.map(([x, y], i) => `<div><span class="mb-tag">${LABELS[i]}</span>${expr(x, '+', y)}</div>`).join('') + '</div>',
                 choice: { options: LABELS.slice(0, 3), answer: sums.indexOf(Math.max(...sums)) },
                 explain: pairs.map(([x, y], i) => `${LABELS[i]} ${shown(x, '+', y)}`).join(', '),
@@ -217,7 +218,7 @@
             id: 'sub0-blocks', level: '기본', title: '수 모형 보고 빼기',
             make: (d) => {
               const [a, b] = subPair(d, (bw, x) => SUB.none(bw) && x < 700);
-              return { text: `수 모형이 나타내는 수에서 ${josa(b, '을/를')} 빼면 얼마인가요?`, figure: blocks(a), inputs: [{ answer: a - b }], explain: shown(a, '-', b), facts: { op: '-', a, b } };
+              return { text: `수 모형이 나타내는 수에서 ${josa(b, '을/를')} 뺀 값을 구하시오.`, figure: blocks(a), inputs: [{ answer: a - b }], explain: shown(a, '-', b), facts: { op: '-', a, b } };
             }
           },
           {
@@ -225,7 +226,7 @@
             make: (d) => {
               const [a, b] = subPair(d, SUB.none);
               const pair = d.shuffle([a, b]);
-              return { text: '큰 수에서 작은 수를 빼면 얼마인가요?', figure: `<div class="mb-numbers"><span>${pair[0]}</span><span>${pair[1]}</span></div>`, inputs: [{ answer: a - b }], explain: shown(a, '-', b), facts: { op: '-', a, b } };
+              return { text: '두 수 중 큰 수에서 작은 수를 뺀 값을 구하시오.', figure: `<div class="mb-numbers"><span>${pair[0]}</span><span>${pair[1]}</span></div>`, inputs: [{ answer: a - b }], explain: shown(a, '-', b), facts: { op: '-', a, b } };
             }
           },
           { id: 'sub0-word', level: '기본', title: '문장제(남은 것)', make: (d) => { const [a, b] = subPair(d, SUB.none); return restStory(d, a, b); } }
@@ -243,7 +244,7 @@
               const [c, e] = d.until(() => subPair(d, SUB.once), ([x, y]) => Math.abs(x - y - (a - b)) <= 40 && x !== a);
               const left = a - b, right = c - e;
               return {
-                text: '두 뺄셈의 계산 결과를 비교하여 ○ 안에 알맞은 기호를 골라 보세요.',
+                text: '두 계산 결과의 크기를 비교할 때, ○ 안에 알맞은 것은?',
                 figure: `<div class="mb-versus">${expr(a, '-', b)}<span class="mb-ring"></span>${expr(c, '-', e)}</div>`,
                 choice: { options: ['&gt;', '=', '&lt;'], answer: left > right ? 0 : left === right ? 1 : 2 },
                 explain: `${shown(a, '-', b)}, ${shown(c, '-', e)}`,
@@ -267,7 +268,7 @@
               // 받아내림을 하지 않고 자리마다 큰 숫자에서 작은 숫자를 뺀 잘못된 답
               const wrong = chars(a).map((ch, i) => Math.abs(Number(ch) - Number(chars(b)[i]))).join('');
               return {
-                text: '아래 계산은 받아내림을 하지 않아 틀렸습니다. 바르게 계산하면 얼마인가요?',
+                text: '다음은 받아내림을 하지 않아 잘못 계산한 것이다. 바르게 계산한 값을 구하시오.',
                 figure: column(chars(a), '-', chars(b), wrong.split('')),
                 inputs: [{ answer: a - b }], explain: shown(a, '-', b), facts: { op: '-', a, b, wrong: Number(wrong) }
               };
@@ -283,10 +284,10 @@
                 const [a, c] = subPair(d, (bw, x, y) => SUB.twice(bw) && x - y >= 150);
                 const limit = a - c;
                 return {
-                  text: '□ 안에 들어갈 수 있는 세 자리 수 가운데 가장 큰 수를 구해 보세요.',
+                  text: '□ 안에 들어갈 수 있는 세 자리 수 중 가장 큰 수를 구하시오.',
                   figure: expr(a, '-', box(), '<i>&gt;</i>', c),
                   inputs: [{ answer: limit - 1 }],
-                  explain: `${shown(a, '-', c)}이므로 □는 ${limit}보다 작아야 합니다. 가장 큰 수는 ${limit - 1}입니다.`,
+                  explain: `${shown(a, '-', c)}이므로 □는 ${limit}보다 작아야 한다. 따라서 가장 큰 수는 ${limit - 1}이다.`,
                   facts: { range: 'a-x>c', a, c }
                 };
               }
@@ -294,10 +295,10 @@
               const [c, a] = subPair(d, (bw, x, y) => SUB.twice(bw) && x - y >= 150);
               const limit = c - a;
               return {
-                text: '□ 안에 들어갈 수 있는 세 자리 수 가운데 가장 큰 수를 구해 보세요.',
+                text: '□ 안에 들어갈 수 있는 세 자리 수 중 가장 큰 수를 구하시오.',
                 figure: expr(a, '+', box(), '<i>&lt;</i>', c),
                 inputs: [{ answer: limit - 1 }],
-                explain: `${shown(c, '-', a)}이므로 □는 ${limit}보다 작아야 합니다. 가장 큰 수는 ${limit - 1}입니다.`,
+                explain: `${shown(c, '-', a)}이므로 □는 ${limit}보다 작아야 한다. 따라서 가장 큰 수는 ${limit - 1}이다.`,
                 facts: { range: 'a+x<c', a, c }
               };
             }
@@ -312,10 +313,10 @@
             make: (d) => {
               const a = nearHundred(d, 2, 5), b = d.until(() => nearHundred(d, 1, 4), (x) => toHundred(x) !== toHundred(a));
               return {
-                text: `${a} + ${josa(b, '을/를')} 어림셈으로 구하려고 합니다. ㉠, ㉡, ㉢에 알맞은 수를 구해 보세요.`,
+                text: `${a} + ${josa(b, '을/를')} 어림셈으로 구하려고 한다. ㉠, ㉡, ㉢에 알맞은 수를 구하시오.`,
                 figure: `<div class="mb-lines"><div>${josa(a, '은/는')} 약 ${box(LABELS[0])}</div><div>${josa(b, '은/는')} 약 ${box(LABELS[1])}</div><div>두 수의 합은 약 ${box(LABELS[2])}</div></div>`,
                 inputs: [{ label: LABELS[0], answer: toHundred(a) }, { label: LABELS[1], answer: toHundred(b) }, { label: LABELS[2], answer: toHundred(a) + toHundred(b) }],
-                explain: `${josa(a, '은/는')} ${toHundred(a)}에, ${josa(b, '은/는')} ${toHundred(b)}에 가깝습니다. ` + expr(toHundred(a), '+', toHundred(b), '=', toHundred(a) + toHundred(b)),
+                explain: `${josa(a, '은/는')} ${toHundred(a)}에, ${josa(b, '은/는')} ${toHundred(b)}에 가깝다. ` + expr(toHundred(a), '+', toHundred(b), '=', toHundred(a) + toHundred(b)),
                 facts: { estimate: '+', a, b }
               };
             }
@@ -325,10 +326,10 @@
             make: (d) => {
               const a = nearHundred(d, 5, 9), b = nearHundred(d, 1, 3);
               return {
-                text: `${a} − ${josa(b, '을/를')} 어림셈으로 구하려고 합니다. ㉠, ㉡, ㉢에 알맞은 수를 구해 보세요.`,
+                text: `${a} − ${josa(b, '을/를')} 어림셈으로 구하려고 한다. ㉠, ㉡, ㉢에 알맞은 수를 구하시오.`,
                 figure: `<div class="mb-lines"><div>${josa(a, '은/는')} 약 ${box(LABELS[0])}</div><div>${josa(b, '은/는')} 약 ${box(LABELS[1])}</div><div>두 수의 차는 약 ${box(LABELS[2])}</div></div>`,
                 inputs: [{ label: LABELS[0], answer: toHundred(a) }, { label: LABELS[1], answer: toHundred(b) }, { label: LABELS[2], answer: toHundred(a) - toHundred(b) }],
-                explain: `${josa(a, '은/는')} ${toHundred(a)}에, ${josa(b, '은/는')} ${toHundred(b)}에 가깝습니다. ` + expr(toHundred(a), '-', toHundred(b), '=', toHundred(a) - toHundred(b)),
+                explain: `${josa(a, '은/는')} ${toHundred(a)}에, ${josa(b, '은/는')} ${toHundred(b)}에 가깝다. ` + expr(toHundred(a), '-', toHundred(b), '=', toHundred(a) - toHundred(b)),
                 facts: { estimate: '-', a, b }
               };
             }
@@ -342,10 +343,10 @@
               const shift = d.int(0, 2);   // 정답이 놓일 자리
               const options = [0, 1, 2].map((i) => right + (i - shift) * 100);
               return {
-                text: '계산 결과는 약 얼마인가요? 어림셈으로 구해 알맞은 것을 골라 보세요.',
+                text: '다음 계산 결과를 어림셈으로 구한 값은?',
                 figure: expr(a, op, b),
                 choice: { options: options.map((v) => '약 ' + v), answer: shift },
-                explain: `${josa(a, '은/는')} 약 ${toHundred(a)}, ${josa(b, '은/는')} 약 ${toHundred(b)}입니다. ` + expr(toHundred(a), op, toHundred(b), '=', right),
+                explain: `${josa(a, '은/는')} 약 ${toHundred(a)}, ${josa(b, '은/는')} 약 ${toHundred(b)}이다. ` + expr(toHundred(a), op, toHundred(b), '=', right),
                 facts: { estimate: op, a, b, options }
               };
             }
@@ -353,14 +354,14 @@
           {
             id: 'est-word', level: '기본', title: '문장제(약 얼마)',
             make: (d) => {
-              const a = nearHundred(d, 2, 5), b = nearHundred(d, 1, 4);
+              const a = nearHundred(d, 2, 5), b = d.until(() => nearHundred(d, 1, 4), (x) => x !== a);
               const sum = toHundred(a) + toHundred(b);
               const made = d.pick([
-                [`공연장에 어른이 ${a}명, 어린이가 ${b}명 들어왔습니다. 들어온 사람은 약 몇 명인지 어림셈으로 구해 보세요.`, '명'],
-                [`농장에서 오전에 달걀을 ${a}개, 오후에 ${b}개 거두었습니다. 하루 동안 거둔 달걀은 약 몇 개인지 어림셈으로 구해 보세요.`, '개'],
-                [`첫째 날에 ${a}m, 둘째 날에 ${b}m를 헤엄쳤습니다. 이틀 동안 헤엄친 거리는 약 몇 m인지 어림셈으로 구해 보세요.`, 'm']
+                [`공연장에 어른이 ${a}명, 어린이가 ${b}명 들어왔다. 들어온 사람은 약 몇 명인지 어림셈으로 구하시오.`, '명'],
+                [`농장에서 오전에 달걀을 ${a}개, 오후에 ${b}개 거두었다. 하루 동안 거둔 달걀은 약 몇 개인지 어림셈으로 구하시오.`, '개'],
+                [`첫째 날에 ${a}m, 둘째 날에 ${b}m를 헤엄쳤다. 이틀 동안 헤엄친 거리는 약 몇 m인지 어림셈으로 구하시오.`, 'm']
               ]);
-              return { text: made[0], inputs: [{ answer: sum, unit: made[1], lead: '약' }], explain: `${josa(a, '은/는')} 약 ${toHundred(a)}, ${josa(b, '은/는')} 약 ${toHundred(b)}입니다. ` + expr(toHundred(a), '+', toHundred(b), '=', sum), facts: { estimate: '+', a, b } };
+              return { text: made[0], inputs: [{ answer: sum, unit: made[1], lead: '약' }], explain: `${josa(a, '은/는')} 약 ${toHundred(a)}, ${josa(b, '은/는')} 약 ${toHundred(b)}이다. ` + expr(toHundred(a), '+', toHundred(b), '=', sum), facts: { estimate: '+', a, b } };
             }
           },
           {
@@ -376,10 +377,10 @@
               const of = (kind) => list.find((row) => row.kind === kind);
               const pairs = d.shuffle([[0, 1], [0, 2], [1, 3], [2, 3]]);   // 싼 것 둘만 1000원 안쪽이다
               return {
-                text: '1000원으로 서로 다른 물건 두 가지를 사려고 합니다. 살 수 있는 것을 골라 보세요.',
+                text: '1000원으로 서로 다른 물건 두 가지를 사려고 한다. 살 수 있는 것은?',
                 figure: '<div class="mb-prices">' + list.map((row) => `<span><b>${row.name}</b>${row.price}원</span>`).join('') + '</div>',
                 choice: { options: pairs.map(([x, y]) => `${of(x).name}, ${of(y).name}`), answer: pairs.findIndex(([x, y]) => x === 0 && y === 1) },
-                explain: `${josa(of(0).name, '과/와')} ${of(1).name}의 값을 더하면 ${expr(of(0).price, '+', of(1).price, '=', cheap[0] + cheap[1])}(원)이라 1000원으로 살 수 있습니다. 다른 짝은 모두 1000원을 넘습니다.`,
+                explain: `${josa(of(0).name, '과/와')} ${of(1).name}의 값을 더하면 ${expr(of(0).price, '+', of(1).price, '=', cheap[0] + cheap[1])}(원)이므로 1000원으로 살 수 있다. 다른 짝은 모두 1000원을 넘는다.`,
                 facts: { budget: 1000, prices: list.map((row) => row.price), pairs: pairs.map(([x, y]) => [of(x).price, of(y).price]) }
               };
             }
@@ -408,7 +409,7 @@
                 'a-x=c': [expr(a, '-', box(), '=', c), b, shown(a, '-', c)],
                 'x-b=c': [expr(box(), '-', b, '=', c), a, shown(c, '+', b)]
               }[form];
-              return { text: '□에 들어갈 수는 얼마인가요?', figure: made[0], inputs: [{ answer: made[1] }], explain: made[2], facts: { inverse: form, a, b, c } };
+              return { text: '□ 안에 알맞은 수를 구하시오.', figure: made[0], inputs: [{ answer: made[1] }], explain: made[2], facts: { inverse: form, a, b, c } };
             }
           },
           {
@@ -422,10 +423,10 @@
               });
               const big = Math.max(...three), small = Math.min(...three);
               return {
-                text: `세 수 가운데 가장 큰 수와 가장 작은 수를 골라 ${op === '+' ? '두 수를 더하면' : '큰 수에서 작은 수를 빼면'} 얼마인가요?`,
+                text: `세 수 중 가장 큰 수와 가장 작은 수의 ${op === '+' ? '합을' : '차를'} 구하시오.`,
                 figure: '<div class="mb-numbers">' + three.map((v) => `<span>${v}</span>`).join('') + '</div>',
                 inputs: [{ answer: result(big, op, small) }],
-                explain: `가장 큰 수는 ${big}, 가장 작은 수는 ${small}입니다. ` + shown(big, op, small),
+                explain: `가장 큰 수는 ${big}, 가장 작은 수는 ${small}이다. ` + shown(big, op, small),
                 facts: { op, a: big, b: small, three }
               };
             }
@@ -442,7 +443,7 @@
               const order = d.shuffle(rows);
               const values = order.map(([op, [x, y]]) => result(x, op, y));
               return {
-                text: '계산 결과가 가장 큰 것을 골라 보세요.',
+                text: '계산 결과가 가장 큰 것은?',
                 figure: '<div class="mb-lines">' + order.map(([op, [x, y]], i) => `<div><span class="mb-tag">${LABELS[i]}</span>${expr(x, op, y)}</div>`).join('') + '</div>',
                 choice: { options: LABELS.slice(0, 3), answer: values.indexOf(Math.max(...values)) },
                 explain: order.map(([op, [x, y]], i) => `${LABELS[i]} ${shown(x, op, y)}`).join(', '),
@@ -463,12 +464,12 @@
             make: (d, n) => {
               if (n === 0) {
                 // 더해야 하는데 뺐다: x − b = c  →  x = c + b, 바른 값 x + b
-                const [x, b] = subPair(d, (bw, p, q) => count(bw) >= 1 && p + q <= 1500 && q >= 120);
+                const [x, b] = subPair(d, (bw, p, q) => count(bw) >= 1 && p + q <= 1500 && q >= 120 && p - q >= 100);
                 const c = x - b;
                 return {
-                  text: `어떤 수에 ${josa(b, '을/를')} 더하려다가 실수로 빼서 ${josa(c, '이/가')} 나왔습니다. 처음에 하려던 계산의 답은 얼마인가요?`,
+                  text: `어떤 수에 ${josa(b, '을/를')} 더하려다 잘못하여 뺐더니 ${josa(c, '이/가')} 되었다. 바르게 계산한 값을 구하시오.`,
                   inputs: [{ answer: x + b }],
-                  explain: `어떤 수는 ${expr(c, '+', b, '=', x)}입니다. 바르게 계산하면 ${shown(x, '+', b)}입니다.`,
+                  explain: `어떤 수는 ${expr(c, '+', b, '=', x)}이다. 바르게 계산하면 ${shown(x, '+', b)}이다.`,
                   facts: { wrong: 'sub-for-add', x, b, c }
                 };
               }
@@ -476,9 +477,9 @@
               const [x, b] = subPair(d, (bw, p, q) => count(bw) >= 1 && p + q <= 999 && p - q >= 50 && q >= 120);
               const c = x + b;
               return {
-                text: `어떤 수에서 ${josa(b, '을/를')} 빼려다가 실수로 더해서 ${josa(c, '이/가')} 나왔습니다. 처음에 하려던 계산의 답은 얼마인가요?`,
+                text: `어떤 수에서 ${josa(b, '을/를')} 빼려다 잘못하여 더했더니 ${josa(c, '이/가')} 되었다. 바르게 계산한 값을 구하시오.`,
                 inputs: [{ answer: x - b }],
-                explain: `어떤 수는 ${expr(c, '-', b, '=', x)}입니다. 바르게 계산하면 ${shown(x, '-', b)}입니다.`,
+                explain: `어떤 수는 ${expr(c, '-', b, '=', x)}이다. 바르게 계산하면 ${shown(x, '-', b)}이다.`,
                 facts: { wrong: 'add-for-sub', x, b, c }
               };
             }
@@ -490,9 +491,9 @@
               const rest = d.int(105, 990 - (a + b) > 105 ? Math.min(398, 990 - (a + b)) : 105);
               const total = a + b + rest;
               const made = d.pick([
-                [`체육 창고에 공이 모두 ${total}개 있습니다. 그 가운데 축구공이 ${a}개, 농구공이 ${b}개이고 나머지는 배구공입니다. 배구공은 몇 개인가요?`, '개'],
-                [`도서실에 책이 모두 ${total}권 있습니다. 그 가운데 동화책이 ${a}권, 과학책이 ${b}권이고 나머지는 만화책입니다. 만화책은 몇 권인가요?`, '권'],
-                [`꽃밭에 꽃이 모두 ${total}송이 피었습니다. 그 가운데 튤립이 ${a}송이, 수선화가 ${b}송이이고 나머지는 팬지입니다. 팬지는 몇 송이인가요?`, '송이']
+                [`체육 창고에 공이 모두 ${total}개 있다. 그중 축구공이 ${a}개, 농구공이 ${b}개이고 나머지는 배구공이다. 배구공은 몇 개인가?`, '개'],
+                [`도서실에 책이 모두 ${total}권 있다. 그중 동화책이 ${a}권, 과학책이 ${b}권이고 나머지는 만화책이다. 만화책은 몇 권인가?`, '권'],
+                [`꽃밭에 꽃이 모두 ${total}송이 피었다. 그중 튤립이 ${a}송이, 수선화가 ${b}송이이고 나머지는 팬지이다. 팬지는 몇 송이인가?`, '송이']
               ]);
               return {
                 text: made[0], inputs: [{ answer: rest, unit: made[1] }],
@@ -515,7 +516,7 @@
               const shownList = d.shuffle(four);
               const pairs = d.shuffle([[four[0], four[1]], [four[0], four[2]], [four[1], four[3]], [four[2], four[3]]]);
               return {
-                text: `네 수 가운데 두 수를 골라 더했더니 ${josa(target, '이/가')} 되었습니다. 더한 두 수를 골라 보세요.`,
+                text: `네 수 중 두 수를 골라 더하였더니 ${josa(target, '이/가')} 되었다. 더한 두 수는?`,
                 figure: '<div class="mb-numbers">' + shownList.map((v) => `<span>${v}</span>`).join('') + '</div>',
                 choice: { options: pairs.map(([x, y]) => `${x}, ${y}`), answer: pairs.findIndex(([x, y]) => x === four[0] && y === four[1]) },
                 explain: shown(four[0], '+', four[1]),
@@ -529,7 +530,7 @@
               const [a, b] = addPair(d, (c, x, y) => count(c) >= 1 && x + y <= 999);
               const c = d.until(() => d.int(110, a + b - 20), (v) => plain(v) && count(borrowPlaces(a + b, v)) >= 1);
               return {
-                text: '앞에서부터 차례대로 계산해 보세요.',
+                text: '다음을 계산하시오.',
                 figure: expr(a, '+', b, '-', c, '=', box()),
                 inputs: [{ answer: a + b - c }],
                 explain: `${shown(a, '+', b)}, ${shown(a + b, '-', c)}`,
