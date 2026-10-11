@@ -9,7 +9,7 @@ const data=p=>JSON.parse(read('learning/inquiry/globe/data/'+p));
 test('32 lessons are scoped, linked to existing standards and attached to real map locations',()=>{
   const standards=['07-social-studies','09-science'].map(n=>read('references/moe/2022-revised-curriculum/extracted/'+n+'.txt')).join('\n');
   assert.equal(GROUPS.length,8);assert.equal(LESSONS.length,32);assert.equal(new Set(LESSONS.map(l=>l.id)).size,32);
-  const layers=new Set(['mountain','plateau','plain','basin','desert','river','lake','peninsula','island','other','peak','sea','current','wind','country','grid']);
+  const layers=new Set(['mountain','plateau','plain','basin','desert','river','lake','peninsula','island','other','peak','sea','current','wind','country','grid','plate','quake','volcano']);
   for(const g of GROUPS)assert.equal(LESSONS.filter(l=>l.group===g.id).length,4);
   for(const l of LESSONS){
     assert.ok(LEVELS[l.level]);assert.ok(l.core.length>=3&&typeof l.trap==='string'&&l.task);
