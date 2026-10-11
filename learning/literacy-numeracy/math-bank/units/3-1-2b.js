@@ -49,12 +49,12 @@
           { text: `점 ㄴ은 각 ㄱㄴ${near}의 꼭짓점이다.`, claim: ['vertex', `ㄱㄴ${near}`, 'ㄴ'] },
           { text: `각 ㄱㄴ${near}과 각 ㄱㄴ${far}은 똑같은 도형이다.`, claim: ['sameAngle', `ㄱㄴ${near}`, `ㄱㄴ${far}`] },
           { text: `각 ㄱㄴ${read}의 두 변은 반직선 ㄱㄴ, 반직선 ㄴ${read}이다.`, claim: ['sides', `ㄱㄴ${read}`, ['ㄱㄴ', 'ㄴ' + read]] },
-          { text: `반직선 ㄴ${near}과 반직선 ㄴ${far}은 똑같은 도형이다.`, claim: ['sameRay', 'ㄴ' + near, 'ㄴ' + far] }
+          { text: `반직선 ㄴ${near}과 반직선 ㄴ${far}은 같다.`, claim: ['sameRay', 'ㄴ' + near, 'ㄴ' + far] }
         ]);
         const wrong = rows.findIndex((row) => row.claim[0] === 'sides');
         return C('그림에 대한 설명으로 옳지 않은 것은?', rows.map((row) => row.text), wrong, {
           figure: G.board(6, 4, [G.rays(V, [A, F], ['ㄴ', 'ㄱ', far]), G.point(N1), G.text([N1[0] - 0.1, N1[1] + (flip ? -0.55 : 0.55)], near)], { grid: false, scale: 1.25 }),
-          explain: `각의 변은 각의 꼭짓점에서 시작하는 반직선이다. 반직선 ㄱㄴ은 점 ㄱ에서 시작하므로 각의 변이 아니다. 각 ㄱㄴ${read}의 두 변은 반직선 ㄴㄱ, 반직선 ㄴ${read}이다. 점 ${near}과 점 ${far}은 점 ㄴ에서 시작하는 한 반직선 위에 있으므로 반직선 ㄴ${near}과 반직선 ㄴ${far}은 똑같은 도형이고, 각 ㄱㄴ${near}과 각 ㄱㄴ${far}도 똑같은 도형이다.`,
+          explain: `각의 변은 각의 꼭짓점에서 시작하는 반직선이다. 반직선 ㄱㄴ은 점 ㄱ에서 시작하므로 각의 변이 아니다. 각 ㄱㄴ${read}의 두 변은 반직선 ㄴㄱ, 반직선 ㄴ${read}이다. 점 ${near}과 점 ${far}은 점 ㄴ에서 시작하는 한 반직선 위에 있으므로 반직선 ㄴ${near}과 반직선 ㄴ${far}은 같고, 각 ㄱㄴ${near}과 각 ㄱㄴ${far}도 똑같은 도형이다.`,
           facts: { angleTalk: { vertex: 'ㄴ', sides: [['ㄱ'], [near, far]], claims: rows.map((row) => row.claim) } }
         });
       }, { standard: ANGLE }),
