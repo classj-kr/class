@@ -103,6 +103,13 @@ html:has(.history-point-dialog[open]), body:has(.history-point-dialog[open]) { o
 .history-country small { display: block; font-size: 12px; line-height: 18px; font-weight: 700; }
 .history-arrow { display: block; width: 22px; height: 22px; font: 700 23px/22px system-ui, sans-serif; text-shadow: 0 0 2px white; }
 .history-point-wrap, .history-label-wrap, .history-country-wrap, .history-arrow-wrap { background: transparent; border: 0; }
+.history-context-wrap { background: transparent; border: 0; pointer-events: none; }
+.history-context-label { display: block; text-align: center; white-space: nowrap; color: #40523c; font: 650 14px/24px Pretendard, system-ui, sans-serif; text-shadow: 0 0 3px #fffdf5, 0 0 5px #fffdf5, 1px 1px 2px #fffdf5; }
+.history-context-label.mountain::before { content: '▲ '; font-size: 11px; }
+.history-context-label.water { color: #276780; }
+.history-context-label.gate { color: #766247; font-size: 12px; }
+.history-local-relief { image-rendering: auto; }
+#map.history-map:has(.history-local-relief) .leaflet-bottom.leaflet-left { bottom: 60px; }
 .history-order-launch { margin-top: 12px; background: #174b55; border-color: #174b55; color: #fff; }
 .history-order-launch:hover:not(:disabled) { background: #27616b; color: #fff; }
 .history-order-dialog { width: min(1100px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 22px; overflow-y: auto; border: 1px solid #cbd3cb; border-radius: 12px; background: #fffdfa; }
@@ -143,6 +150,11 @@ html:has(.history-point-dialog[open]), body:has(.history-point-dialog[open]) { o
 @media (max-width: 600px) {
   .history-map-caption { padding: 7px 9px; }
   .history-map-caption span { font-size: 12px; }
+  .history-context-label.gate { display: none; }
+  #map.history-map:has(.history-local-relief) .leaflet-top.leaflet-left { display: flex; align-items: flex-start; }
+  #map.history-map:has(.history-local-relief) .leaflet-control-zoom { display: flex; }
+  #map.history-map:has(.history-local-relief) .leaflet-control-zoom a { border-bottom: 0; border-radius: 0; }
+  #map.history-map:has(.history-local-relief) .leaflet-control-zoom-in { border-right: 1px solid #ccc; }
 }
 .history-practice-launch { width:100%; background:#143f47; color:#fff; margin:8px 0 16px; min-height:44px; }
 .history-practice-dialog { width:min(760px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); box-sizing:border-box; overflow:auto; border:1px solid #b9c8c5; border-radius:14px; padding:20px; background:#f9fbf7; color:#213f44; }

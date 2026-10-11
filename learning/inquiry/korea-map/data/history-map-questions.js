@@ -166,7 +166,7 @@
       const padY=Math.max((scene.bounds[3]-scene.bounds[1])*.08,(Math.max(...ys)-Math.min(...ys))*.2);
       const bounds=[Math.min(...xs)-padX,Math.min(...ys)-padY,Math.max(...xs)+padX,Math.max(...ys)+padY];
       return {id:`history-${sceneId}-high-${String(index+1).padStart(2,'0')}`,revision:sceneId==='goguryeo-fifth'&&index===1?3:2,question:r[1],options:r[2],answer:r[3],explanation:r[4],
-        map:{points,bounds,localDetail:!!scene.localDetail,maxZoom:scene.localDetail?15:11,alt:`문제 지도. 북쪽이 위이며 ${points.map(p=>'('+p.label+')').join(', ')} 지점이 표시되어 있습니다.`,routes:(r[5]||[]).map(i=>scene.routes[i].coords)}};
+        map:{points,bounds:scene.localDetail?scene.bounds:bounds,localMap:scene.id,localDetail:!!scene.localDetail,maxZoom:scene.localDetail?15:11,alt:`문제 지도. 북쪽이 위이며 ${points.map(p=>'('+p.label+')').join(', ')} 지점이 표시되어 있습니다.`,routes:(r[5]||[]).map(i=>scene.routes[i].coords)}};
     });
     window.HistoryQuestions.replaceLevel(sceneId,'high',questions);
   }
