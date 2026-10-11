@@ -387,7 +387,7 @@
     // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
     $("#labelToggle").hidden = !!theme.provinceNames || !!theme.historical;
     $("#historyMapCaption").hidden = !theme.historical;
-    $("#progressButton").hidden = !!theme.historical;
+    $("#progressButton").hidden = !!theme.historical || !readProgress().total;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -947,6 +947,38 @@
   }
 
   const demTiles = new Map();
+  let seafloorData;
+  function loadSeafloor() {
+    if (!seafloorData) seafloorData = new Promise(resolve => {
+      const image = new Image();
+      image.crossOrigin = 'anonymous';
+      image.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = image.width; canvas.height = image.height;
+          const context = canvas.getContext('2d', {willReadFrequently:true});
+          context.drawImage(image, 0, 0);
+          resolve(context.getImageData(0, 0, image.width, image.height));
+        } catch { seafloorData = null; resolve(null); }
+      };
+      image.onerror = () => { seafloorData = null; resolve(null); };
+      image.src = 'data/seafloor-elevation.webp?v=20261012-1';
+    });
+    return seafloorData;
+  }
+  async function seaElevationAt(latlng) {
+    // ETOPO1 region: 105–150°E, 20–50°N, one-minute grid points.
+    if (latlng.lng < 105 || latlng.lng > 150 || latlng.lat < 20 || latlng.lat > 50) return NaN;
+    const tile = await loadSeafloor();
+    if (!tile) return NaN;
+    const fx = (latlng.lng-105)*60, fy = (50-latlng.lat)*60;
+    const x = Math.floor(fx), y = Math.floor(fy), dx = fx-x, dy = fy-y;
+    const at = (px,py) => {
+      const i = (Math.min(py,tile.height-1)*tile.width+Math.min(px,tile.width-1))*4;
+      return tile.data[i]*256+tile.data[i+1]-32768;
+    };
+    return (at(x,y)*(1-dx)+at(x+1,y)*dx)*(1-dy)+(at(x,y+1)*(1-dx)+at(x+1,y+1)*dx)*dy;
+  }
   function demTile(z, x, y) {
     const key = `${z}/${x}/${y}`;
     if (!demTiles.has(key)) {
@@ -978,11 +1010,12 @@
     const y = Math.floor(fy);
     if (z === 10 && !hasSparseTile(10, x, y)) return elevationAt(latlng, 9);
     const tile = await demTile(z, x, y);
-    if (!tile) return z === 6 ? 0 : elevationAt(latlng, z > 8 ? z - 1 : 6);
+    if (!tile) return z === 6 ? NaN : elevationAt(latlng, z > 8 ? z - 1 : 6);
     const px = Math.min(tile.width - 1, Math.floor((fx - x) * tile.width));
     const py = Math.min(tile.height - 1, Math.floor((fy - y) * tile.height));
     const i = (py * tile.width + px) * 4;
-    return tile.data[i] * 256 + tile.data[i + 1] + tile.data[i + 2] / 256 - 32768;
+    const height = tile.data[i] * 256 + tile.data[i + 1] + tile.data[i + 2] / 256 - 32768;
+    return height < 0 ? seaElevationAt(latlng) : height;
   }
 
   async function drawProfile(a, b) {
@@ -994,21 +1027,29 @@
       return elevationAt(L.latLng(a.lat + (b.lat - a.lat) * t, a.lng + (b.lng - a.lng) * t), zoom);
     }));
     if (profile.points[0] !== a || profile.points[1] !== b) return; // 그 사이 다른 점을 찍었다
+    if (heights.some(h => !Number.isFinite(h))) {
+      $('#profileHint').textContent = '이 구간의 높이·수심 자료를 불러오지 못했습니다. 두 지점을 다시 선택해 주세요.';
+      $('#profileChart').classList.remove('drawn');
+      return;
+    }
 
     const svg = $("#profileChart");
     svg.classList.add("drawn");
     const width = svg.clientWidth || 700;
     const height = 170;
     const margin = { left: 46, right: 12, top: 18, bottom: 22 };
-    const top = Math.max(100, ...heights);
-    const step = [100, 200, 500, 1000].find((s) => top / s <= 5) || 1000;
+    const top = Math.max(0, ...heights), bottom = Math.min(0, ...heights);
+    const range = Math.max(100, top-bottom);
+    const step = [100, 200, 500, 1000, 2000].find((s) => range / s <= 5) || 5000;
     const yMax = Math.ceil(top / step) * step;
+    const yMin = Math.min(yMax-step, Math.floor(bottom / step) * step);
     const sx = (i) => margin.left + (i / count) * (width - margin.left - margin.right);
-    const sy = (h) => margin.top + (1 - Math.max(0, h) / yMax) * (height - margin.top - margin.bottom);
+    const sy = (h) => margin.top + (yMax-h)/(yMax-yMin) * (height - margin.top - margin.bottom);
     const base = sy(0);
 
     const parts = [];
-    for (let h = 0; h <= yMax; h += step) {
+    if (bottom < 0) parts.push(`<rect class="sea" x="${margin.left}" y="${base}" width="${width-margin.left-margin.right}" height="${sy(yMin)-base}"/>`);
+    for (let h = yMin; h <= yMax; h += step) {
       parts.push(`<line class="axis" x1="${margin.left}" x2="${width - margin.right}" y1="${sy(h)}" y2="${sy(h)}"/>`);
       parts.push(`<text x="${margin.left - 6}" y="${sy(h) + 4}" text-anchor="end">${h.toLocaleString("en-US")}</text>`);
     }
@@ -1017,20 +1058,20 @@
       const x = margin.left + (km / total) * (width - margin.left - margin.right);
       parts.push(`<text x="${x}" y="${height - 5}" text-anchor="middle">${km}${km === 0 ? "" : "km"}</text>`);
     }
-    // 바다 구간은 파랗게
-    heights.forEach((h, i) => {
-      if (h <= 0 && i < count) parts.push(`<rect class="sea" x="${sx(i)}" y="${base - 4}" width="${sx(i + 1) - sx(i) + 0.5}" height="4"/>`);
-    });
     const line = heights.map((h, i) => `${sx(i).toFixed(1)},${sy(h).toFixed(1)}`).join(" ");
-    parts.push(`<polygon class="ground" points="${sx(0)},${base} ${line} ${sx(count)},${base}"/>`);
+    parts.push(`<polygon class="ground" points="${sx(0)},${sy(yMin)} ${line} ${sx(count)},${sy(yMin)}"/>`);
+    parts.push(`<line class="sea-level" x1="${margin.left}" x2="${width-margin.right}" y1="${base}" y2="${base}"/>`);
     const peak = heights.indexOf(Math.max(...heights));
     if (heights[peak] > 0) {
       parts.push(`<text x="${sx(peak)}" y="${sy(heights[peak]) - 5}" text-anchor="middle">${Math.round(heights[peak]).toLocaleString("en-US")}m</text>`);
     }
+    const deepest = heights.indexOf(Math.min(...heights));
+    if (heights[deepest] < -100) parts.push(`<text x="${Math.max(margin.left+35,Math.min(width-margin.right-35,sx(deepest)))}" y="${Math.min(height-margin.bottom-4,sy(heights[deepest])-5)}" text-anchor="middle">${Math.round(heights[deepest]).toLocaleString('en-US')}m</text>`);
     parts.push(`<text class="end" x="${margin.left}" y="12">A</text>`);
     parts.push(`<text class="end" x="${width - margin.right}" y="12" text-anchor="end">B</text>`);
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     svg.innerHTML = parts.join("");
+    $('#profileHint').textContent = bottom < 0 ? '해수면 0m · 해저는 음수로 표시' : '';
   }
 
   function element(tag, className, text) {
@@ -1480,6 +1521,7 @@
 
   function renderProgress() {
     const progress = readProgress();
+    $("#progressButton").hidden = !progress.total || !!themes[currentTheme]?.historical;
     $("#progressScore").textContent = `${progress.correct} / ${progress.total}`;
   }
 
