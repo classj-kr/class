@@ -175,6 +175,14 @@
           figure: tagged([`${span(a)} + ${span(b)}`, `${span(c)} + ${span(e)}`]) + '<div class="mb-versus"><span class="mb-expr">㉠</span><span class="mb-ring"></span><span class="mb-expr">㉡</span></div>',
           explain: `㉠은 ${span(hms(x))}, ㉡은 ${span(hms(y))}이다.`, facts: { choose: { exprs: [`${S(a)}+${S(b)}`, `${S(c)}+${S(e)}`], rule: 'compare' }, clockExprs: true }
         });
+      }),
+      H('h-clock', '날마다 빨라지는 시계', '빨리 가는 시계(기본 ②56 ③69)', (d) => {
+        // 하루에 25초씩 빨라지는 시계: 6일 뒤에는 150초 = 2분 30초 빠르다
+        const fast = d.pick([15, 20, 25, 35, 40, 45]), days = d.until(() => d.int(3, 7), (v) => (fast * v) % 60 !== 0 && fast * v > 60), gain = fast * days, hour = d.int(8, 11);
+        return M(`하루에 ${fast}초씩 빨라지는 시계를 오늘 오전 ${hour}시에 정확히 맞추었다. ${days}일 후 오전 ${hour}시에 이 시계가 가리키는 시각은 오전 몇 시 몇 분 몇 초인가?`, [{ answer: hour, unit: '시' }, { answer: Math.floor(gain / 60), unit: '분' }, { answer: gain % 60, unit: '초' }], {
+          explain: `${days}일 동안 ${fast} × ${days} = ${gain}(초) 빨라진다. ${gain}초는 ${Math.floor(gain / 60)}분 ${gain % 60}초이므로 이 시계는 오전 ${hour}시 ${Math.floor(gain / 60)}분 ${gain % 60}초를 가리킨다.`,
+          facts: { clock: [{ expr: `${hour}*3600+${fast}*${days}`, parts: 'hms', at: 0 }] }
+        });
       })
     ]
   });

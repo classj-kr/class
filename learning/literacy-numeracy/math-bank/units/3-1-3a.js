@@ -20,7 +20,7 @@
   const SIGNS = ['&gt;', '=', '&lt;'];
 
   B.addUnit({
-    id: '3-1-3', grade: 3, semester: 1, no: 3, title: '나눗셈', version: 4,
+    id: '3-1-3', grade: 3, semester: 1, no: 3, title: '나눗셈', version: 5,
     groups: [
       {
         id: 'share', title: '똑같이 나누기', standard: MEAN,
@@ -52,6 +52,14 @@
               figure: expr(a, '/', b, '=', q), explain: `${expr(a, '/', b, '=', q)}에서 ${josa(a, '은/는')} 나누어지는 수, ${josa(b, '은/는')} 나누는 수, ${josa(q, '은/는')} 몫이다.`, facts: { truth: list.map((o) => o !== bad), want: false }
             });
           }),
+          T('share-read', '나눗셈식 읽기', '①18 ②14 ③1', (d) => {
+            // 차례를 바꾸어 읽은 것, 다른 계산으로 읽은 것을 보기에 넣는다
+            const [a, b, q] = fact(d, ([, y, z]) => y !== z);
+            const rows = d.shuffle([[`${a} 나누기 ${josa(b, '은/는')} ${josa(q, '과/와')} 같다.`, true], [`${b} 나누기 ${josa(a, '은/는')} ${josa(q, '과/와')} 같다.`, false], [`${a} 빼기 ${josa(b, '은/는')} ${josa(q, '과/와')} 같다.`, false], [`${a} 곱하기 ${josa(b, '은/는')} ${josa(q, '과/와')} 같다.`, false]]);
+            return C(`${a} ÷ ${b} = ${josa(q, '을/를')} 바르게 읽은 것은?`, rows.map(([text]) => text), rows.findIndex(([, ok]) => ok), {
+              explain: `÷는 나누기, =는 같다고 읽는다. 나누어지는 수 ${josa(a, '을/를')} 먼저 읽는다.`, facts: { truth: rows.map(([, ok]) => ok), want: true }
+            });
+          }),
           T('share-expr', '상황에 맞는 식', '②20 ③6', (d) => {
             const [a, b, q] = fact(d, ([, y, z]) => y !== z);
             const list = d.shuffle([['/', true], ['-', false], ['+', false], ['*', false]]);
@@ -77,6 +85,15 @@
             return M('뺄셈식을 나눗셈식으로 나타낼 때, ㉠, ㉡에 알맞은 수는?', [{ label: LABELS[0], answer: k }, { label: LABELS[1], answer: n }], {
               figure: lines(['<span class="mb-expr">' + minus.join(' <i>−</i> ') + ' <i>=</i> 0</span>', expr(a, '/', box(LABELS[0]), '=', box(LABELS[1]))]),
               explain: `${a}에서 ${josa(k, '을/를')} ${n}번 빼면 0이 된다. ` + expr(a, '/', k, '=', n), facts: { minus: { a, k, n } }
+            });
+          }),
+          T('group-back', '나눗셈식을 뺄셈식으로', '①10 ②12', (d) => {
+            // 24÷8=3 → 24-8-8-8=0. 한 번 덜 뺀 식, 한 번만 뺀 식, 몫씩 덜어 낸 식을 보기에 넣는다
+            const [a, k, n] = fact(d, ([, y, z]) => y >= 3 && y <= 6 && z >= 3 && z <= 6 && y !== z);
+            const forms = d.shuffle([[k, n], [k, n - 1], [k, 1], [n, k]]);
+            const write = ([sub, times]) => [a].concat(Array.from({ length: times }, () => sub)).join(' − ') + ' = ' + (a - sub * times);
+            return C(`${a} ÷ ${k} = ${josa(n, '을/를')} 뺄셈식으로 바르게 나타낸 것은?`, forms.map(write), forms.findIndex(([sub, times]) => sub === k && times === n), {
+              explain: `${a} ÷ ${k} = ${josa(n, '은/는')} ${a}에서 ${josa(k, '을/를')} ${n}번 빼면 0이 된다는 뜻이다.`, facts: { minusForms: { a, k, n, forms } }
             });
           }),
           T('group-word', '문장제: 묶음의 수', '①12 ②8 ③14', (d) => {
@@ -116,6 +133,22 @@
               explain: `${c}개씩 ${r}줄이다. ${expr(c, '*', r, '=', a)}, ${expr(a, '/', c, '=', r)}`, facts: { calc: [[E(a, '/', c), 0], [E(c, '*', r), 1]] }
             });
           }),
+          T('relate-back', '나눗셈식을 곱셈식으로', '①24 ②24 ③22', (d) => {
+            // 56÷7=8 → 7×8=56, 8×7=56
+            const [a, b, q] = fact(d, ([, y, z]) => y !== z);
+            return M(`나눗셈식 ${a} ÷ ${b} = ${josa(q, '을/를')} 곱셈식 2개로 나타내었다. ㉠, ㉡에 알맞은 수는?`, [{ label: LABELS[0], answer: q }, { label: LABELS[1], answer: b }], {
+              figure: lines([expr(b, '*', box(LABELS[0]), '=', a), expr(q, '*', box(LABELS[1]), '=', a)]),
+              explain: `${expr(a, '/', b, '=', q)}이므로 ${expr(b, '*', q, '=', a)}, ${expr(q, '*', b, '=', a)}이다.`, facts: { calc: [[E(a, '/', b), 0], [E(a, '/', q), 1]] }
+            });
+          }),
+          T('relate-pick', '여러 수에서 세 수를 골라 나눗셈식 만들기', '②32 ③28', (d) => {
+            // 다섯 수 가운데 곱셈식·나눗셈식이 되는 세 수는 한 가지뿐이다
+            const works = (list) => { let n = 0; list.forEach((x, i) => list.forEach((y, j) => list.forEach((z, k) => { if (i < j && k !== i && k !== j && x * y === z) n += 1; }))); return n; };
+            const [list, a] = d.until(() => { const [p, b, q] = fact(d, ([, y, z]) => y !== z); return [d.shuffle([p, b, q, p + d.pick([-3, -2, -1, 1, 2, 3]), d.int(2, 9)]), p]; }, ([five]) => new Set(five).size === 5 && works(five) === 1);
+            return N('수 카드 5장 중에서 3장을 골라 나눗셈식 □ ÷ □ = □를 만들려고 한다. 나누어지는 수가 되는 수는?', a, {
+              figure: cards(list), explain: `곱셈구구를 이용하여 두 수의 곱이 다른 한 수가 되는 세 수를 찾는다. 나누어지는 수는 세 수 중 가장 큰 ${a}이다.`, facts: { pickTriple: list }
+            });
+          }),
           T('relate-cards', '세 수로 곱셈식과 나눗셈식 만들기', '②32 ③28', (d) => {
             // 수 카드 넷 가운데 셋으로 식을 만들면 하나가 남는다.
             const [a, b, q] = fact(d, ([, y, z]) => y < z);
@@ -144,6 +177,15 @@
             return C(`${a} ÷ ${b}의 몫을 구하는 데 필요한 곱셈식은?`, list.map(([x, y]) => expr(x, '*', y, '=', x * y)), list.findIndex(([x, y]) => x === b && y === q), {
               explain: `${josa(b, '과/와')} 곱하여 ${josa(a, '이/가')} 되는 수를 찾는다. ${expr(b, '*', q, '=', a)}이므로 몫은 ${q}이다.`,
               facts: { times: { a, b, options: list } }
+            });
+          }),
+          T('quot-table', '정해진 단의 곱셈구구로 몫을 구할 수 있는 나눗셈', '②43 ③41', (d) => {
+            // 7단: 56÷8 은 7×8=56 으로 구할 수 있다
+            const b = d.int(3, 9), inTable = ([x]) => x % b === 0 && x / b <= 9;
+            const rows = d.until(() => [fact(d), fact(d), fact(d), fact(d)], (list) => new Set(list.map(([x]) => x)).size === 4 && list.filter(inTable).length === 1 && list.find(inTable)[1] !== b);
+            const hit = rows.find(inTable);
+            return C(`${b}단 곱셈구구를 이용하여 몫을 구할 수 있는 나눗셈은?`, rows.map(([x, y]) => expr(x, '/', y)), rows.indexOf(hit), {
+              explain: `${expr(b, '*', hit[0] / b, '=', hit[0])}이므로 ${expr(hit[0], '/', hit[1], '=', hit[2])}이다.`, facts: { tablePick: { b, rows: rows.map(([x, y]) => [x, y]) } }
             });
           }),
           T('quot-compare', '몫의 크기 비교', '①42 ②47 ③48', (d) => {

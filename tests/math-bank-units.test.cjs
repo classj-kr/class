@@ -603,6 +603,30 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.equal(new Set(digits).size, 3, label); assert.ok(by >= 2 && by <= 9, label);
       assert.equal(answerAt(item, 0), Math.max(...all) * by, label); tally('bigCards');
     }
+    if (f.minusForms) {
+      // 나눗셈식 a÷k=n 을 뺄셈식으로: k를 n번 빼어 0이 되는 식은 하나뿐이다.
+      const { a, k, n, forms } = f.minusForms, good = forms.map(([sub, times]) => sub === k && times === n);
+      assert.ok(a === k * n && k !== n, label); assert.equal(new Set(forms.map(String)).size, forms.length, label);
+      assert.ok(forms.every(([sub, times]) => a - sub * times >= 0), label);
+      assert.equal(good.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, good.indexOf(true), label); tally('minusForms');
+    }
+    if (f.pickTriple) {
+      // 다섯 수에서 두 수의 곱이 다른 한 수가 되는 세 수는 한 가지뿐이고, 그 곱이 답이다.
+      const list = f.pickTriple, found = [];
+      list.forEach((x, i) => list.forEach((y, j) => list.forEach((z, k) => { if (i < j && k !== i && k !== j && x * y === z) found.push(z); })));
+      assert.equal(new Set(list).size, 5, label); assert.equal(found.length, 1, label); assert.equal(answerAt(item, 0), found[0], label); tally('pickTriple');
+    }
+    if (f.tablePick) {
+      // b단 곱셈구구에 나누어지는 수가 들어 있는 나눗셈은 하나뿐이다.
+      const hit = f.tablePick.rows.map(([x]) => x % f.tablePick.b === 0 && x / f.tablePick.b <= 9);
+      assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('tablePick');
+    }
+    if (f.limit) {
+      // 두 재료로 만들 수 있는 수는 두 몫 가운데 작은 쪽이다.
+      const quotients = f.limit.pairs.map(([x, y]) => x / y), least = Math.min(...quotients);
+      assert.ok(quotients.every(Number.isInteger) && quotients[0] !== quotients[1], label);
+      assert.equal(new Set(f.limit.options).size, f.limit.options.length, label); assert.equal(item.choice.answer, f.limit.options.indexOf(least), label); tally('limit');
+    }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
@@ -660,6 +684,11 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       const { op, a, b } = f.timeRule;
       for (const part of [a[1], a[2], b[1], b[2]]) assert.ok(part >= 1 && part <= 59, label);
       assert.ok(op === '+' ? a[2] + b[2] >= 60 : a[2] < b[2], '받아올림·받아내림이 없다: ' + label); tally('timeRule');
+    }
+    if (f.timePlain) {
+      // 받아올림·받아내림이 없는 시간 셈: 분끼리, 초끼리 셈해도 60을 넘거나 모자라지 않는다.
+      const { op, a, b } = f.timePlain;
+      assert.ok(op === '+' ? a[1] + b[1] < 60 && a[2] + b[2] < 60 : a[1] >= b[1] && a[2] >= b[2] && a[0] > b[0], '받아올림·받아내림이 있다: ' + label); tally('timePlain');
     }
     if (f.timeMasks) {
       // 빈칸이 있는 시간 셈: 빈칸(null)에 모든 수를 넣어 보아도 맞는 경우는 하나뿐이다. 답은 윗줄부터, 왼쪽부터.
