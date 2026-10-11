@@ -1,0 +1,65 @@
+/* Reading surfaces share a paper palette; model canvases keep their own colors. */
+:root {
+    --reading-paper:#f7f5ef;
+    --reading-ink:#202124;
+    --reading-muted:#54616a;
+    --reading-line:#c9cec8;
+    --reading-accent:#205f60;
+    --reading-size:19px;
+}
+body :is(.school-concepts,.school-question,.body-lesson,.model-reading,.model-selected-detail,.topic-explanation) {
+    background:var(--reading-paper);
+    color:var(--reading-ink);
+    border-color:var(--reading-line);
+    color-scheme:light;
+}
+body :is(.school-concepts,.school-question,.body-lesson,.model-reading,.model-selected-detail,.topic-explanation) :is(p,li) {
+    color:var(--reading-ink);
+    font-size:var(--reading-size);
+    line-height:1.85;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+}
+body :is(.school-concepts,.school-question,.body-lesson,.model-reading,.model-selected-detail) :is(h2,h3,summary) {
+    color:var(--reading-accent);
+    line-height:1.65;
+}
+body .school-question h3 { font-size:20px; }
+body .school-options button {
+    color:var(--reading-ink);
+    background:#fffefb;
+    border-color:#aab8b2;
+    font-size:var(--reading-size);
+    line-height:1.75;
+}
+body .school-options button span { color:var(--reading-muted); }
+body .school-options button:hover:not(:disabled) { color:var(--reading-ink); background:#e7eeea; }
+body .school-options button.correct { color:#184b37; background:#e0efe5; border-color:#32734f; }
+body .school-options button.incorrect { color:#722d2b; background:#f6e4e0; border-color:#ad534c; }
+body .school-feedback,body .school-feedback strong { color:var(--reading-accent); }
+body .school-question :is(.practice-counter,.school-subject),body .school-concepts .school-subject { color:var(--reading-muted); font-size:14px; }
+body .school-question details p { color:var(--reading-ink); }
+body .school-next { background:#205f60; color:#fff; border-color:#205f60; }
+body .school-table :is(th,td) { color:var(--reading-ink); border-color:var(--reading-line); }
+body .school-table th { background:#e7ebe5; }
+body .school-table caption { color:var(--reading-muted); }
+body .school-options button:focus-visible,body .school-next:focus-visible { outline-color:#205f60; }
+body .body-lesson { padding:18px; border-radius:10px; }
+body .body-lesson .school-concepts { background:transparent; }
+body .body-lesson .school-concepts + .school-concepts { border-color:var(--reading-line); }
+body .model-reading summary { font-size:17px; }
+body .model-reading small,body .model-scene-step span { color:var(--reading-muted); }
+body .model-scene-step button { background:#e8eeea; color:#234c4d; border-color:#9cafab; }
+body .model-selected-detail :is(h3,p,li,span) { color:var(--reading-ink)!important; }
+body .model-selected-detail p { font-size:var(--reading-size)!important; line-height:1.85!important; }
+body .topic-explanation :is(.topic-explanation-header,.school-concepts + .school-concepts) { border-color:var(--reading-line); }
+body .topic-explanation :is(.topic-explanation-header h2,.school-concepts h2) { color:var(--reading-accent); }
+body .topic-explanation .school-concepts { background:transparent; }
+body .topic-explanation .school-concepts p { font-size:20px; color:var(--reading-ink); line-height:1.85; }
+body .topic-explanation-subject { color:var(--reading-muted); }
+body .topic-explanation-close { color:#234c4d; background:#e7ede7; border-color:#9cafab; }
+body .topic-explanation-close:focus-visible { outline-color:#205f60; }
+@media(max-width:600px) {
+    :root { --reading-size:18px; }
+    body .topic-explanation .school-concepts p { font-size:18px; }
+}

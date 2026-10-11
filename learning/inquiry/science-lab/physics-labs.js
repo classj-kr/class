@@ -24,7 +24,7 @@
  function stopSound(){if(oscillator){oscillator.stop();oscillator.disconnect();oscillator=null;}clearTimeout(audioTimer);pressed('referenceSound',false,'참고음 끄기','참고음 듣기');}
  async function sound(){if(oscillator){stopSound();return;}if(!M.speaker(state).connected){setStatus('스피커를 조립하고 신호를 먼저 보내세요.');return;}try{audio||=new(window.AudioContext||window.webkitAudioContext)();await audio.resume();oscillator=audio.createOscillator();gain=audio.createGain();gain.gain.value=.035;oscillator.frequency.value=state.frequency;oscillator.connect(gain).connect(audio.destination);oscillator.start();pressed('referenceSound',true,'참고음 끄기','참고음 듣기');audioTimer=setTimeout(stopSound,5000);}catch{setStatus('이 브라우저에서는 참고음을 재생할 수 없습니다. 진동은 화면에서 관찰할 수 있습니다.');}}
  function drawSpeaker(){
-  const r=M.speaker(state,elapsed*5),dx=r.displacement;
+  const r=M.speaker(state,elapsed*5*state.frequency/220),dx=r.displacement;
   let b=text(135,45,'종이컵 · 고정')+text(450,45,'종이컵 · 진동판');
   b+=path('M120 110L270 80L270 250L120 220Z','#6593a2',5)+path(`M270 80L${450+dx} 110L${450+dx} 220L270 250Z`,'#6593a2',5);
   if(state.magnet)b+=rect(115,137,70,28,'#c85b51')+rect(115,165,70,28,'#467cab')+text(148,158,'N','white',18)+text(148,187,'S','white',18);
@@ -84,8 +84,8 @@
   b+='<g clip-path="url(#filmClip)">';for(let i=0;i<110;i++)b+=rect(57,59+i*2,223,2.3,state.formed?M.filmColor(M.filmThickness(i/109,elapsed),state.light):'#d7e5eb');b+='</g>';
   b+=`<circle cx="168" cy="169" r="112" fill="none" stroke="#c4904e" stroke-width="7"/>`+line(168,283,168,323,'#c4904e',9)+line(48,y,287,y,'white',2,'stroke-dasharray="5 5"')+text(168,34,'수직으로 세운 막');
   b+=text(462,34,'두 반사광의 경로')+rect(451,75,39,165,'#b1d7e7')+line(451,75,451,240,'#4485a0',2)+line(490,75,490,240,'#4485a0',2);
-  if(state.formed){b+=path('M330 88L451 124L339 160','#d9a132',3,'marker-end="url(#arrow)"')+path('M451 124L490 155L451 185L340 220','#ca6854',3,'marker-end="url(#arrow)"');}
-  b+=text(372,76,'입사광',undefined,16)+text(359,181,'앞면 반사',undefined,16)+text(385,245,'뒷면 반사',undefined,16)+text(540,132,'공기',undefined,16)+text(469,280,'막 두께 확대',undefined,16);
+  if(state.formed){b+=path('M350 90L451 150L350 210','#d9a132',3,'marker-end="url(#arrow)"')+path('M451 150L490 166.4L451 182.8L350 242.8','#ca6854',3,'marker-end="url(#arrow)"');}
+  b+=text(372,76,'입사광',undefined,16)+text(359,230,'앞면 반사',undefined,16)+text(385,266,'뒷면 반사',undefined,16)+text(540,132,'공기',undefined,16)+text(469,305,'빛길을 벌려 표시',undefined,16);
   svg(b,'수직 비누막의 반사 무늬와 앞면·뒷면에서 반사되는 두 빛');
   readout.innerHTML=metric('경과 시간',elapsed.toFixed(1)+' s')+metric('선택 높이의 두께',state.formed?Math.round(d)+' nm':'막 없음')+metric('반사 상대 세기',state.formed&&state.light!=='white'?Math.round(100*M.filmIntensity(d,{red:650,green:530,blue:460}[state.light]))+'%':'색과 무늬 비교');
   setStatus(!state.formed?'틀을 비눗물에 담갔다 세워 막을 만드세요.':'점선 높이의 두께와 반사 무늬를 비교하세요. 관찰 위치 또는 빛의 색을 바꾸면 두 반사광의 간섭 조건이 달라집니다.');
@@ -107,7 +107,7 @@
  }
  function drawElectrons(){
   let b=rect(32,81,82,60,'#426b7c','rx="8"')+text(73,118,'전자총','white',18)+line(124,110,260,110,'#83a1b2',2,'stroke-dasharray="5 5"');
-  b+=rect(265,34,14,162,'#577a8b')+rect(262,78,20,11,'#edf6fa');if(state.slits==='two')b+=rect(262,131,20,11,'#edf6fa');
+  b+=rect(265,34,14,162,'#577a8b')+rect(262,105-(state.slits==='two'?state.spacing*13:0),20,11,'#edf6fa');if(state.slits==='two')b+=rect(262,105+state.spacing*13,20,11,'#edf6fa');
   b+=text(270,228,state.slits==='two'?'두 슬릿':'한 슬릿',undefined,18)+text(456,37,'검출판 · 정면 확대',undefined,18);
   b+=rect(332,51,286,176,'#102d3d','rx="5"');
   for(const p of hits)b+=`<circle cx="${475+p.x*27}" cy="${59+p.y*160}" r="1.3" fill="#78e6cc"/>`;
@@ -118,7 +118,7 @@
   readout.innerHTML=metric('누적 검출',hits.length+'개')+metric('통과 경로',state.pathKnown?'측정함':'측정하지 않음')+metric('방출',running?'한 개씩 연속':'대기');
   setStatus(hits.length===0?'한 전자를 보내 점 하나를 확인하고, 더 많은 전자를 누적해 보세요.':hits.length<30?'점 하나는 전자 하나의 도착입니다. 아직 전체 분포를 판단하기에는 점이 적습니다.':state.pathKnown?'경로를 측정한 조건입니다. 측정하지 않은 조건과 새 검출판에서 비교하세요.':'같은 조건에서 도착 점을 계속 누적하고 있습니다. 띠 사이와 띠 안의 도착 횟수를 비교하세요.');
   pressed('runElectrons',running,'연속 방출 멈추기','한 개씩 연속 보내기');
-  $('singleElectron').disabled=$('manyElectrons').disabled=hits.length>=10000;
+  $('singleElectron').disabled=$('manyElectrons').disabled=hits.length>=10000;$('spacing').disabled=state.slits==='one';
  }
  const draws={'speaker-lab':drawSpeaker,'wireless-power':drawWireless,'magnetic-brake':drawBrake,'transistor-speaker':drawAmplifier,'soap-film':drawFilm,polarization:drawPolarization,'electron-slits':drawElectrons};
  function draw(){draws[slug]();}

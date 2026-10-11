@@ -8,7 +8,7 @@
  const assessmentContent=document.createElement('script');assessmentContent.src=new URL('assessment-content.js?v=51433a14d4cb',assessmentBase);
  assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);
  if(m.diagnostic){
-  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=ff929130ae8d',assessmentBase);
+  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=77f33bba1fd5',assessmentBase);
   questions.onload=questions.onerror=()=>document.body.append(assessmentContent);document.body.append(questions);
  }else document.body.append(assessmentContent);
  // Load observation panels without injecting an administrative scope banner.

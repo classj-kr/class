@@ -21,7 +21,7 @@
   let temperature=mode==='heat'?Math.min(bound,20+rate*t):Math.max(bound,20-rate*t);
   const transformed=t>onset?Math.min(.25,(t-onset)*.001):0;
   if(transformed)temperature=mode==='heat'?100+.512*m/(1-transformed):-1.86*m/(1-transformed);
-  return {mass,bound,temperature,onset,phase:t<onset?'liquid':mode==='heat'?'boiling':'freezing',transformed};
+  return {mass,bound:bound||0,temperature:temperature||0,onset,phase:t<onset?'liquid':mode==='heat'?'boiling':'freezing',transformed};
  }
  function hess(kind){const dh={dissolve:-44.5,neutralize:-57.3,direct:-101.8}[kind],mass=kind==='dissolve'?104:204,q=-dh*.1,delta=q*1000/(mass*4.2);return {dh,q,mass,delta,temperature:25+delta};}
  function beans(mode,t){

@@ -10,3 +10,8 @@ module.exports=[
  ['6ed679a59c21c7a0',[116,139,160],['infection-prevention'],'평가자료의 침방울·접촉 경로와 정답 해설','형성평가 본문·정답·해설을 읽고 접촉 경로를 묻는 객관식과 새 경로 전이 문항을 새로 작성'],
  ['c645186ae5280481',[175,182,184,190,192,193],['infection-prevention'],'동일한 30초 동안 물/비누 세척 뒤 남은 형광 로션 비교','평가자료의 심화 문항과 채점 기준 대조. 로션 제거 관찰을 실제 미생물 전멸로 확대 해석하는 오답을 구분']
 ];
+// Bounded review of these pages, not approval of all textbook content.
+for(const r of [...require('../../scripts/science-physics-experiments.cjs'),...require('../../scripts/science-chemistry-experiments.cjs')])module.exports.push([
+ r.source.id,r.source.pages,[r.slug],r.current,
+ '해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. '+r.boundary
+]);

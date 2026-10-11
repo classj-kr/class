@@ -26,4 +26,9 @@ const candidates={
  'book-057e669ab8d637cd':{verdict:'원문 절차 확인',experiments:['lotion-wash']},
  'book-3fc061438127ec31':{verdict:'수행 기능 라벨 · 독립 실험 아님',experiments:[]}
 };
+const additions=[...require('../../scripts/science-physics-experiments.cjs'),...require('../../scripts/science-chemistry-experiments.cjs')];
+for(const r of additions){
+ const units=r.slug==='sugar-phase'?r.procedures:r.slug==='bean-respiration'?r.procedures:[[r.slug,r.title,r.source.pages]];
+ for(const [mode,title,pages]of units)experiments.push({id:r.slug+'-'+mode,sourceId:r.source.id,pages,title,slug:r.slug,mode,conditions:r.procedures.map(p=>p[1]),verdict:'기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님',publisherDeduplication:'해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전',boundary:r.boundary});
+}
 module.exports={basis:'같은 목적·조작 조건·관찰 결과를 대조하여 실험을 구분한다. 조건별 결과를 각각 새 실험으로 부풀리지 않는다. 출판사별 중복 검토와 교과서 전수 대조 전 전체 실험 수는 미확정이다.',experiments,candidates,missedByHeadingExtractor:['pasteur-broth','contact-game']};
