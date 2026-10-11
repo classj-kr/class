@@ -130,7 +130,8 @@
     } else {
       const form = el('form', 'mb-answer'); form.noValidate = true;
       item.inputs.forEach((input) => {
-        const field = el('label', 'mb-field' + (input.answer < 10 && item.inputs.length > 1 ? ' is-short' : ''));
+        // 칸 너비는 칸의 개수로만 정한다. 정답의 자릿수에 맞추면 칸 너비가 답의 크기를 알려 준다.
+        const field = el('label', 'mb-field' + (item.inputs.length > 1 ? ' is-short' : ''));
         if (input.label) field.append(el('span', null, input.label));
         if (input.lead) field.append(el('span', null, input.lead));
         const box = document.createElement('input');

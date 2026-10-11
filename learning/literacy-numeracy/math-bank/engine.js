@@ -205,6 +205,32 @@
     }
     return '<svg class="mb-counters" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.5) + '" role="img" aria-label="한 줄에 ' + a + '(10이 ' + tens + '개, 1이 ' + ones + '개)씩 ' + rows + '줄">' + out + '</svg>';
   }
+  // 자(작은 눈금 한 칸이 1mm)와 그 위에 놓인 물건. from·to 는 물건 두 끝이 놓인 곳(mm), cm 는 자에 적는 마지막 수.
+  function ruler(from, to, cm) {
+    const u = 4.6, x = (mm) => 11 + mm * u, width = 22 + cm * 10 * u, top = 27;
+    let out = '<rect class="mb-ruler-body" x="4" y="' + top + '" width="' + (width - 8) + '" height="33" rx="2.5"/>';
+    for (let mm = 0; mm <= cm * 10; mm += 1) out += '<line class="mb-ruler-tick" x1="' + x(mm) + '" y1="' + top + '" x2="' + x(mm) + '" y2="' + (top + (mm % 10 === 0 ? 13 : mm % 5 === 0 ? 9.5 : 6)) + '"/>';
+    for (let c = 0; c <= cm; c += 1) out += '<text class="mb-ruler-number" x="' + x(c * 10) + '" y="' + (top + 26) + '" text-anchor="middle">' + c + '</text>';
+    out += '<line class="mb-ruler-guide" x1="' + x(from) + '" y1="6" x2="' + x(from) + '" y2="' + top + '"/><line class="mb-ruler-guide" x1="' + x(to) + '" y1="6" x2="' + x(to) + '" y2="' + top + '"/>';
+    out += '<rect class="mb-ruler-thing" x="' + x(from) + '" y="9" width="' + (to - from) * u + '" height="12" rx="2"/>';
+    const place = (mm) => '눈금 ' + Math.floor(mm / 10) + (mm % 10 ? '에서 작은 눈금 ' + (mm % 10) + '칸 더 간 곳' : '');
+    return '<svg class="mb-ruler" viewBox="0 0 ' + width + ' 66" width="' + Math.round(width * 1.35) + '" role="img" aria-label="자 위에 놓인 물건: 왼쪽 끝은 ' + place(from) + ', 오른쪽 끝은 ' + place(to) + '">' + out + '</svg>';
+  }
+  // 1km 를 열 칸으로 똑같이 나눈 수직선. from: 왼쪽 끝(km), spans: 그리는 km 수, at: 화살표가 가리키는 곳(m).
+  function kmLine(from, spans, at) {
+    const u = 250 / (spans * 10), x = (i) => 18 + i * u, y = 32, width = 36 + spans * 10 * u, k = (at - from * 1000) / 100;
+    let out = '<line class="mb-axis" x1="' + x(0) + '" y1="' + y + '" x2="' + x(spans * 10) + '" y2="' + y + '"/>';
+    for (let i = 0; i <= spans * 10; i += 1) out += '<line class="mb-axis" x1="' + x(i) + '" y1="' + (y - (i % 10 === 0 ? 6 : 3.5)) + '" x2="' + x(i) + '" y2="' + (y + (i % 10 === 0 ? 6 : 3.5)) + '"/>';
+    for (let i = 0; i <= spans; i += 1) out += '<text class="mb-km-label" x="' + x(i * 10) + '" y="' + (y + 20) + '" text-anchor="middle">' + (from + i) + 'km</text>';
+    out += '<path class="mb-pointer" d="M' + x(k) + ' ' + (y - 8) + 'l-4.5 -9h9z"/>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: 1km를 10칸으로 똑같이 나누었다. 화살표는 ' + (from + Math.floor(k / 10)) + 'km에서 작은 눈금 ' + (k % 10) + '칸 더 간 곳">' + out + '</svg>';
+  }
+  // 시간의 세로셈. 줄마다 칸 글(예: ['3시', '25분', '30초'])을 받는다. result 를 주면 결과 줄도 적는다(빈칸 섞어 쓰기).
+  function timeColumn(first, sign, second, result) {
+    const width = Math.max(first.length, second.length, result ? result.length : 0);
+    const row = (cells, mark, cls) => '<tr' + (cls ? ' class="' + cls + '"' : '') + '><th>' + (mark || '') + '</th>' + '<td></td>'.repeat(width - cells.length) + cells.map((cell) => '<td>' + cell + '</td>').join('') + '</tr>';
+    return '<table class="mb-timecol"><tbody>' + row(first) + row(second, SIGN[sign]) + row(result || Array.from({ length: width }, () => ''), '', 'mb-timecol-result') + '</tbody></table>';
+  }
   const chars = (n) => String(n).split('');
   // 수 모형: 백 모형(판)·십 모형(막대)·일 모형(낱개)
   // removed 를 주면 그만큼(자리마다 뒤쪽부터)을 덜어 낸 것으로 그린다(옅은 색 + 빗금). 받아내림이 없는 수만 쓴다.
@@ -357,6 +383,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, columnSteps, chars, blocks, counters, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, columnSteps, timeColumn, chars, blocks, counters, ruler, kmLine, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
