@@ -1,9 +1,46 @@
 (function () {
   'use strict';
-  let dialog, opener, questionMap, mapLayers, resizeObserver, placeLabels;
+  let dialog, opener, questionMap, mapLayers, resizeObserver, placeLabels, activeMapSpec;
   function releaseMap() {
     resizeObserver?.disconnect();resizeObserver=null;
-    questionMap?.remove();questionMap=null;mapLayers=null;placeLabels=null;
+    questionMap?.remove();questionMap=null;mapLayers=null;placeLabels=null;activeMapSpec=null;
+  }
+  function drawReading(q, host) {
+    if (!q) return;
+    const options = host.querySelector('.school-options');
+    if (!options) return;
+    if (q.materials?.length) {
+      const material = document.createElement('div');
+      material.className = 'history-question-material';
+      material.setAttribute('role', 'group');
+      material.setAttribute('aria-label', '문제 자료');
+      q.materials.forEach(text => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = text;
+        material.append(paragraph);
+      });
+      options.before(material);
+    }
+    if (q.claims?.length) {
+      const box = document.createElement('section');
+      box.className = 'history-question-claims';
+      const title = document.createElement('h4');
+      title.textContent = '보기';
+      const list = document.createElement('ol');
+      const labels = ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ'];
+      q.claims.forEach((text, index) => {
+        const item = document.createElement('li');
+        const label = document.createElement('span');
+        label.textContent = labels[index] + '.';
+        const content = document.createElement('span');
+        content.textContent = text;
+        item.append(label, content);
+        list.append(item);
+      });
+      box.append(title, list);
+      options.before(box);
+      options.classList.add('history-combination-options');
+    }
   }
   function drawQuestion(q, container, api) {
     if(!q?.map){container.hidden=true;return;}
@@ -16,12 +53,19 @@
       const north=L.control({position:'topright'});
       north.onAdd=()=>{const node=document.createElement('span');node.className='history-question-north';node.textContent='↑ 북';return node;};
       north.addTo(questionMap);
-      resizeObserver=new ResizeObserver(()=>questionMap?.invalidateSize({pan:false}));
+      resizeObserver=new ResizeObserver(()=>{
+        if(!questionMap||!activeMapSpec)return;
+        questionMap.invalidateSize({pan:false});
+        const b=activeMapSpec.bounds;
+        questionMap.fitBounds([[b[1],b[0]],[b[3],b[2]]],{padding:[30,30],animate:false,maxZoom:activeMapSpec.maxZoom||8});
+        placeLabels?.();
+      });
       resizeObserver.observe(container);
     }
     if(placeLabels)questionMap.off('zoomend moveend',placeLabels);
     mapLayers.clearLayers();
     const spec=q.map;
+    activeMapSpec=spec;
     questionMap.setMaxZoom(spec.maxZoom||12);
     if(spec.localDetail)window.KoreaHistoryLocalMap.draw(questionMap,mapLayers,spec.localMap);
     const lineStyle={color:'#265e75',weight:3,opacity:.9,interactive:false};
@@ -68,9 +112,23 @@
     body.append(map,host);dialog.append(heading,body);document.body.append(dialog);
     dialog.showModal();
     S.practice(host,items,`history:${scene.id}:${S.value}`,{onQuestion:q=>{
+      drawReading(q,host);
       drawQuestion(q,map,api);
       dialog.classList.toggle('has-question-map',!!q?.map);
       host.scrollTop=0;
+      dialog.scrollTop=0;
+      if (q) {
+        const prompt=host.querySelector('h3');
+        prompt.tabIndex=-1;
+        // The shared next-button handler focuses a choice after this callback.
+        // Restore the prompt so a long stimulus is not skipped on the next item.
+        requestAnimationFrame(()=>{
+          if(dialog.open&&prompt.isConnected){
+            prompt.focus({preventScroll:true});
+            host.scrollTop=0;dialog.scrollTop=0;
+          }
+        });
+      }
     }});
     dialog.addEventListener('close',()=>{releaseMap();if(opener?.isConnected)opener.focus({preventScroll:true});});
     close.focus();
