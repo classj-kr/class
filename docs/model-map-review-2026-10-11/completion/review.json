@@ -170,5 +170,11 @@
     "pupilControls": "pupil-check.json",
     "population": "population-source.json",
     "screenshots": "같은 디렉터리의 무손실 WebP"
-  }
+  },
+  "followUpReview": "../final/review.json",
+  "followUpResolved": [
+    "물질 팝업의 390×844 실제 모바일 화면 재검증 완료",
+    "역사 경계 위상·틈·계단 및 고등 문제 개편 검증 완료",
+    "운영 서버 배포와 인증된 운영 브라우저 동작 확인 완료"
+  ]
 }
