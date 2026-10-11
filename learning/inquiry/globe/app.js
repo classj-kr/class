@@ -18,7 +18,7 @@ const flowTracks = [...windModel.tracks, ...currentModel.tracks];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let flowSeconds = 0;
 const BASE = new URL(".", import.meta.url).href;
-const TILE_VERSION = "20261012-sea";
+const TILE_VERSION = "20261012-sea3";
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
 const DATA_VERSION = "20260920-39";
