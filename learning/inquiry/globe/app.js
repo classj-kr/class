@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20261012-sea";
+import { createAtlas } from "./atlas-study.mjs?v=20261012-tectonics1";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 import { createAxisView } from "./axis-view.mjs?v=20260920-31";
@@ -469,7 +469,7 @@ function buildStyle() {
         source: "quakes",
         layout: { visibility: "none" },
         paint: {
-          "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 1.5, 3, 2.3, 5, 3.6],
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 1.2, 3, 2.3, 5, 3.6],
           "circle-color": ["match", ["get", "depth"], 2, DEPTH_KEY[2][0], 1, DEPTH_KEY[1][0], DEPTH_KEY[0][0]],
           "circle-opacity": 0.9,
           "circle-stroke-color": "rgba(30, 14, 8, 0.55)",
@@ -484,7 +484,7 @@ function buildStyle() {
           visibility: "none",
           "text-field": "▲",
           "text-font": LABEL_FONT,
-          "text-size": ["interpolate", ["linear"], ["zoom"], 0, 7, 3, 9.5, 5, 13],
+          "text-size": ["interpolate", ["linear"], ["zoom"], 0, 5.5, 2, 7, 3.5, 10, 5, 13],
           "text-allow-overlap": true,
           "text-ignore-placement": true,
         },
