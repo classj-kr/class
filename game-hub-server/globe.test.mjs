@@ -46,6 +46,10 @@ for (let z = 0; z <= 5; z += 1) {
 
 const context = { window: {} };
 vm.runInNewContext(read('data/globe-data.js'), context);
+// 판 구조론 이름표와 선은 따로 만든 파일이 같은 이름표 묶음에 보탠다(두 진입 화면이 모두 읽어야 한다).
+vm.runInNewContext(read('data/tectonics-labels.js'), context);
+for (const page of [html, fs.readFileSync(new URL('../world-geography/index.html', root), 'utf8')]) assert.match(page, /tectonics-labels\.js\?v=/);
+const tectonicShapes = context.window.GLOBE_TECTONICS.shapes;
 const { labels, borders } = context.window.GLOBE_DATA;
 assert.ok(borders.features.length > 100, 'Country borders must be present.');
 // 강: 줄기(선)마다 이름표(점)가 하나 이상 있어야 한다.
@@ -53,7 +57,7 @@ const { rivers } = context.window.GLOBE_DATA;
 for (const river of rivers.features) {
   assert.ok(labels.features.some((f) => f.properties.kind === 'river' && f.properties.name === river.properties.name), `${river.properties.name} needs a name label.`);
 }
-const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'lake', 'peninsula', 'cape', 'island', 'other', 'peak', 'sea', 'strait', 'country', 'current', 'wind', 'belt']);
+const kinds = new Set(['mountain', 'plateau', 'plain', 'basin', 'desert', 'river', 'lake', 'peninsula', 'cape', 'island', 'other', 'peak', 'sea', 'strait', 'country', 'current', 'wind', 'belt', 'plate', 'ridge', 'trench', 'fault', 'hotspot', 'orogen']);
 const names = new Set();
 for (const feature of labels.features) {
   const { name, kind, tier, key } = feature.properties;
@@ -124,6 +128,17 @@ for (const current of currents.features) {
 const shapes = JSON.parse(read('data/shapes.json'));
 const labelKeys = new Set(labels.features.map((f) => f.properties.key));
 for (const key of Object.keys(shapes)) assert.ok(labelKeys.has(key), `${key}: shape without a label.`);
+for (const [key, shape] of Object.entries(tectonicShapes)) {
+  assert.ok(labelKeys.has(key), `${key}: shape without a label.`);
+  for (const part of shape.coordinates) for (let i = 1; i < part.length; i += 1) assert.ok(Math.abs(part[i][0] - part[i - 1][0]) < 180, `${key} must be split at the date line.`);
+}
+// 수능에서 이름으로 묻는 판 구조 요소
+for (const key of ['plate:태평양판', 'plate:유라시아판', 'ridge:대서양 중앙 해령', 'trench:마리아나 해구', 'trench:페루·칠레 해구', 'fault:산안드레아스 단층', 'hotspot:하와이 열점', 'orogen:환태평양 조산대']) {
+  assert.ok(labelKeys.has(key), `Missing ${key}.`);
+}
+const points = JSON.parse(read('data/tectonics-points.json'));
+assert.ok(points.quakes.length > 5000 && points.quakes.every((q) => [0, 1, 2].includes(q[2])), 'Earthquakes need a depth class.');
+assert.ok(points.quakes.some((q) => q[2] === 2) && points.volcanoes.length > 1000);
 for (const key of ['country:대한민국', 'peninsula:한반도', 'sea:태평양', 'island:갈라파고스 제도', 'lake:바이칼호', 'mountain:태백산맥']) {
   assert.ok(shapes[key], `${key} needs a shape to light up.`);
 }

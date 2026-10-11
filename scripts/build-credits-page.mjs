@@ -58,6 +58,8 @@ const sections = [
     `기후 구분: ${link('https://doi.org/10.5194/hess-11-1633-2007', 'Peel, Finlayson &amp; McMahon (2007)').replace('&amp;amp;', '&amp;')}, CC BY-NC-SA 2.5`,
     `인구밀도: ${link('https://data.worldbank.org/indicator/EN.POP.DNST', 'World Bank EN.POP.DNST')}, 2023년, CC BY 4.0`,
     `판 경계: ${link('https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer', 'USGS 판 경계 지도')} (Bird, 2003 등)`,
+    `지진 분포: ${link('https://earthquake.usgs.gov/earthquakes/search/', 'USGS 지진 목록')} (규모 6 이상, 1970~2025년, 퍼블릭 도메인)`,
+    `화산 분포: ${link('https://www.ngdc.noaa.gov/hazel/view/hazards/volcano/loc-search', 'NOAA NCEI 화산 위치 자료')} (퍼블릭 도메인)`,
     `한강 물줄기: © ${link('https://www.openstreetmap.org/copyright', 'OpenStreetMap')} 기여자, ODbL`,
     `지도 그리기: MapLibre GL JS (BSD-3-Clause)`,
     `장소 사진: 위키미디어 공용의 자유 이용 사진`,

@@ -21,7 +21,7 @@ const BASE = new URL(".", import.meta.url).href;
 const TILE_VERSION = "20261012-sea4";
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
-const DATA_VERSION = "20260920-39";
+const DATA_VERSION = "20261012-tectonics1";
 const HOME = { center: [127.5, 30], lat: 30 };
 // 켜고 끄는 항목이 늘면 판을 올린다(옛 저장값에는 새 항목이 없어 꺼진 채로 보이므로).
 const SETTINGS_KEY = "classj-globe-layers-v3";
@@ -54,7 +54,18 @@ const BACKDROPS = [
   { id: "country", label: "나라", color: "#f5f5f5", light: "#ffe066" },
   { id: "grid", label: "위선·경선", color: "#ffd166", light: "#ffd166" },
 ];
-const CHIPS = [...KINDS, ...BACKDROPS];
+// 판 구조론: 판 경계선과 그 이름표(판·해령·해구·변환 단층·열점·조산대), 지진·화산 분포. 점 자료는 단추를 처음 켤 때 받는다.
+const TECTONICS = [
+  { id: "plate", label: "판 경계·판 이름", color: "#ffd39b", light: "#ffb347", members: ["plate", "ridge", "trench", "fault", "hotspot", "orogen"] },
+  { id: "quake", label: "지진 분포", color: "#ffe066", light: "#ffe066", members: [] },
+  { id: "volcano", label: "화산 분포", color: "#ff7b6b", light: "#ff7b6b", members: [] },
+];
+const TECTONIC_LAYERS = [["tectonic-lines", "plate"], ["quake-dots", "quake"], ["volcano-marks", "volcano"]];
+// 판 경계 색은 차시의 판 경계 범례와 같다. 지진은 진원 깊이로 가른다(천발 70km 미만 · 중발 70~300km · 심발 300km 이상).
+const BOUNDARY_KEY = [["#ffad78", "수렴 경계"], ["#65dfd5", "발산 경계"], ["#caadff", "보존 경계"]];
+const DEPTH_KEY = [["#ffe066", "천발 지진(70km보다 얕음)"], ["#ff9f43", "중발 지진(70~300km)"], ["#ff4d6d", "심발 지진(300km보다 깊음)"]];
+const TECTONICS_VERSION = "20261012-1";
+const CHIPS = [...KINDS, ...BACKDROPS, ...TECTONICS];
 const membersOf = (chip) => chip.members || [chip.id];
 const chipOfKind = new Map(CHIPS.flatMap((chip) => membersOf(chip).map((kind) => [kind, chip])));
 
@@ -63,6 +74,7 @@ const KIND_NAME = {
   mountain: "산맥·산지", peak: "높은 산", plateau: "고원", plain: "평원", basin: "분지", desert: "사막",
   peninsula: "반도", cape: "곶", other: "지형", river: "강", lake: "호수", island: "섬", sea: "바다",
   strait: "해협", country: "나라", grid: "위선·경선", wind: "바람", belt: "기압대",
+  plate: "판", ridge: "해령 · 발산 경계", trench: "해구 · 수렴 경계", fault: "변환 단층 · 보존 경계", hotspot: "열점", orogen: "조산대",
 };
 const WARM = { line: "#ff5a45", flow: "#ffd0c8", text: "#ffb4a6" };
 const COLD = { line: "#2f8fff", flow: "#cfe8ff", text: "#a8d8ff" };
@@ -73,7 +85,7 @@ const WATER_KINDS = ["sea", "strait", "river", "lake", "current"];
 // 계절풍은 철을 골라 본다(늘 부는 바람은 always).
 const SEASONS = [["summer", "여름"], ["winter", "겨울"]];
 // 점 하나를 가리키는 이름표: 점 오른쪽에 이름을 적는다.
-const POINT_KINDS = ["peak", "cape"];
+const POINT_KINDS = ["peak", "cape", "hotspot"];
 // 위선·경선 이름 가운데 누르면 설명이 뜨는 것
 const GRID_SPECIAL = new Set(["적도", "북회귀선", "남회귀선", "북극권", "남극권", "본초 자오선", "날짜 변경선"]);
 
@@ -190,9 +202,9 @@ function buildStyle() {
       "text-font": LABEL_FONT,
       "text-size": ["match", ["get", "kind"],
         "country", ["match", ["get", "tier"], 1, 15, 14],
-        "sea", 13, ["peak", "cape", "strait", "current", "wind", "belt"], 12.5,
+        "sea", 13, ["peak", "cape", "strait", "current", "wind", "belt", "ridge", "trench", "fault", "hotspot"], 12.5,
         ["match", ["get", "tier"], 1, 15, 2, 14, 13]],
-      "text-letter-spacing": ["match", ["get", "kind"], "sea", 0.12, "country", 0.06, 0.02],
+      "text-letter-spacing": ["match", ["get", "kind"], ["sea", "plate"], 0.12, "country", 0.06, 0.02],
       "text-max-width": ["case", isPoint, 20, 7],
       "text-anchor": ["case", isPoint, "left", "center"],
       "text-offset": ["case", isPoint, ["literal", [-0.45, 0]], ["literal", [0, 0]]],
@@ -314,6 +326,9 @@ function buildStyle() {
       grid: { type: "geojson", data: buildGrid() },
       gridLabels: { type: "geojson", data: noShape },
       highlight: { type: "geojson", data: noShape },
+      tectonicLines: { type: "geojson", data: noShape },
+      quakes: { type: "geojson", data: noShape },
+      volcanoes: { type: "geojson", data: noShape },
     },
     layers: [
       { id: "space", type: "background", paint: { "background-color": "#0a4f8c" } },
@@ -437,6 +452,43 @@ function buildStyle() {
         source: "borders",
         layout: { visibility: visibility("country"), "line-join": "round" },
         paint: { "line-color": "#c266ff", "line-width": 1.3 },
+      },
+      {
+        id: "tectonic-lines",
+        type: "line",
+        source: "tectonicLines",
+        layout: { visibility: "none", "line-join": "round" },
+        paint: {
+          "line-color": ["match", ["get", "LABEL"], "Convergent Boundary", BOUNDARY_KEY[0][0], "Divergent Boundary", BOUNDARY_KEY[1][0], "Transform Boundary", BOUNDARY_KEY[2][0], "#b6bdc6"],
+          "line-width": ["interpolate", ["linear"], ["zoom"], 0, 1.4, 4, 2.4],
+        },
+      },
+      {
+        id: "quake-dots",
+        type: "circle",
+        source: "quakes",
+        layout: { visibility: "none" },
+        paint: {
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 1.5, 3, 2.3, 5, 3.6],
+          "circle-color": ["match", ["get", "depth"], 2, DEPTH_KEY[2][0], 1, DEPTH_KEY[1][0], DEPTH_KEY[0][0]],
+          "circle-opacity": 0.9,
+          "circle-stroke-color": "rgba(30, 14, 8, 0.55)",
+          "circle-stroke-width": 0.4,
+        },
+      },
+      {
+        id: "volcano-marks",
+        type: "symbol",
+        source: "volcanoes",
+        layout: {
+          visibility: "none",
+          "text-field": "▲",
+          "text-font": LABEL_FONT,
+          "text-size": ["interpolate", ["linear"], ["zoom"], 0, 7, 3, 9.5, 5, 13],
+          "text-allow-overlap": true,
+          "text-ignore-placement": true,
+        },
+        paint: { "text-color": "#ff7b6b", "text-halo-color": "rgba(40, 8, 8, 0.85)", "text-halo-width": 0.9 },
       },
       {
         id: "highlight-glow",
@@ -735,7 +787,7 @@ function fitWholeGlobe(animate) {
 function labelText(withFlags) {
   const plain = ["case",
     ["==", ["get", "kind"], "peak"], ["concat", "▲ ", ["get", "name"]],
-    ["==", ["get", "kind"], "cape"], ["concat", "● ", ["get", "name"]],
+    ["in", ["get", "kind"], ["literal", ["cape", "hotspot"]]], ["concat", "● ", ["get", "name"]],
     ["get", "name"]];
   if (!withFlags) return ["format", plain, {}];
   return [
@@ -805,6 +857,9 @@ function applyLayerFilters() {
     map.setFilter(id, id === "wind-flow" ? ["all", ["==", ["get", "kind"], "wind"], seasonFilter()] : seasonFilter());
   }
   for (const id of ["belts-fill", "belts-edge"]) map.setLayoutProperty(id, "visibility", visibility("wind"));
+  for (const [id, chip] of TECTONIC_LAYERS) map.setLayoutProperty(id, "visibility", visibility(chip));
+  if (TECTONICS.some((chip) => enabled.has(chip.id))) loadTectonics();
+  refreshTectonicLegend();
   const switchBox = document.getElementById("seasonSwitch");
   if (switchBox) switchBox.hidden = !enabled.has("wind");
   refreshFlowTextures();
@@ -816,6 +871,57 @@ function applyLayerFilters() {
 }
 
 const isShown = (kind) => enabled.has(chipOfKind.get(kind)?.id ?? kind);
+
+// 판 경계선과 지진·화산 점은 단추를 처음 켤 때 한 번 받는다.
+let tectonicsLoading = null;
+function loadTectonics() {
+  tectonicsLoading ||= Promise.all([
+    fetch(`${BASE}data/atlas-plates.json?v=20260920-24`).then((response) => response.json()),
+    fetch(`${BASE}data/tectonics-points.json?v=${TECTONICS_VERSION}`).then((response) => response.json()),
+  ]).then(([lines, points]) => {
+    const dots = (list, properties) => ({
+      type: "FeatureCollection",
+      features: list.map((at) => ({ type: "Feature", properties: properties(at), geometry: { type: "Point", coordinates: [at[0], at[1]] } })),
+    });
+    map.getSource("tectonicLines").setData(lines);
+    map.getSource("quakes").setData(dots(points.quakes, (at) => ({ depth: at[2] })));
+    map.getSource("volcanoes").setData(dots(points.volcanoes, () => ({})));
+  }).catch(() => {
+    tectonicsLoading = null;
+  });
+  return tectonicsLoading;
+}
+
+// 켜 둔 판 구조 표시의 색 풀이를 지도 아래쪽에 띄운다. 차시의 범례가 떠 있으면 그 위로 올린다.
+function refreshTectonicLegend() {
+  let box = document.getElementById("layerLegend");
+  const keys = (rows) => `<div>${rows.map(([color, text]) => `<span><i style="background:${color}"></i>${text}</span>`).join("")}</div>`;
+  const parts = [
+    enabled.has("plate") ? `<strong>판 경계</strong>${keys(BOUNDARY_KEY)}` : "",
+    enabled.has("quake") ? `<strong>지진이 일어난 깊이</strong>${keys(DEPTH_KEY)}` : "",
+    enabled.has("volcano") ? `<div><span><b style="color:#ff7b6b">▲</b>화산</span></div>` : "",
+  ].filter(Boolean);
+  if (!parts.length) {
+    if (box) box.hidden = true;
+    return;
+  }
+  if (!box) {
+    box = document.createElement("div");
+    box.id = "layerLegend";
+    box.className = "atlas-legend";
+    box.style.pointerEvents = "none";
+    document.body.append(box);
+    const lessonLegend = document.getElementById("atlasLegend");
+    if (lessonLegend) new MutationObserver(refreshTectonicLegend).observe(lessonLegend, { attributes: true, attributeFilter: ["hidden"] });
+  }
+  if (box.dataset.parts !== parts.join("")) {
+    box.dataset.parts = parts.join("");
+    box.innerHTML = parts.join("");
+  }
+  box.hidden = false;
+  const lessonLegend = document.getElementById("atlasLegend");
+  box.style.marginBottom = lessonLegend && !lessonLegend.hidden ? `${lessonLegend.offsetHeight + 10}px` : "";
+}
 
 function renderLayerBar() {
   const bar = document.getElementById("layerBar");
@@ -836,7 +942,7 @@ function renderLayerBar() {
     });
     return button;
   };
-  for (const [title, ids] of [["지형과 물", KINDS], ["바다·대기·위치", BACKDROPS]]) {
+  for (const [title, ids] of [["지형과 물", KINDS], ["바다·대기·위치", BACKDROPS], ["판 구조와 지진·화산", TECTONICS]]) {
     const group = document.createElement("details");
     group.open = true;
     const summary = document.createElement("summary");
@@ -915,7 +1021,7 @@ function loadExtras() {
     fetch(`${BASE}data/shapes.json?v=${DATA_VERSION}`).then((response) => response.json()),
     fetch(`${BASE}data/info.json?v=${DATA_VERSION}`).then((response) => (response.ok ? response.json() : {})).catch(() => ({})),
   ]).then(([shapeData, infoData]) => {
-    shapes = shapeData;
+    shapes = { ...shapeData, ...window.GLOBE_TECTONICS?.shapes };
     info = infoData;
   }).catch(() => {
     extrasLoading = null;
