@@ -5,12 +5,28 @@
         S.mount(document.querySelector('.top-header'));
         const explanation=document.createElement('div'), exercise=document.createElement('div');
         explanation.className='school-matter-content';exercise.className='school-matter-content';
-        document.querySelector('.model-layout').after(explanation);
-        const legacy=document.querySelector('.model-check');legacy.after(exercise);
+        const legacy=document.querySelector('.model-check');
+        const dialog=document.createElement('dialog');dialog.className='matter-reading-dialog';
+        dialog.setAttribute('aria-labelledby','matterReadingTitle');
+        dialog.innerHTML='<header><h2 id="matterReadingTitle"></h2><span class="matter-reading-subject"></span><button type="button" aria-label="학습 창 닫기">닫기</button></header>';
+        const readingTitle=dialog.querySelector('h2'),subject=dialog.querySelector('.matter-reading-subject');
+        dialog.append(explanation,exercise);document.body.append(dialog);
+        dialog.querySelector('button').addEventListener('click',()=>dialog.close());
+        dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+        const readingActions=document.createElement('div');readingActions.className='matter-reading-actions';
+        for(const [label,mode] of [['설명 보기','lesson'],['확인 문제','practice']]){
+            const button=document.createElement('button');button.type='button';button.textContent=label;
+            button.setAttribute('aria-haspopup','dialog');
+            button.addEventListener('click',()=>{
+                explanation.hidden=mode!=='lesson';exercise.hidden=mode!=='practice';
+                readingTitle.textContent=mode==='lesson'?'설명':'확인 문제';dialog.showModal();dialog.scrollTop=0;
+            });readingActions.append(button);
+        }
+        document.querySelector('.matter-nav .model-actions').after(readingActions);
         function current(){return root.querySelector('[data-model][aria-pressed="true"]')?.dataset.model;}
         function render(){
             const p=S.profile('matter-'+current());if(!p)return;
-            explanation.innerHTML=S.concepts(p);
+            explanation.innerHTML=S.concepts({...p,subject:''});subject.textContent=p.subject||'';
             S.practice(exercise,window.MatterPractice.forLevel(current(),S.value),current()+':'+S.value);
             legacy.hidden=true;
             document.getElementById('modelFacts').hidden=S.value==='elementary';

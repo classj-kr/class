@@ -23,7 +23,7 @@ assert.equal(sections.length,112);assert.equal(standards.length,473);
 assert.deepEqual(review.map(r=>r.slug).sort(),appSlugs,'Each app needs an individual review; no fixed app-count target');
 const directories=fs.readdirSync(path.join(root,lab),{withFileTypes:true}).filter(d=>d.isDirectory()&&fs.existsSync(path.join(root,lab,d.name,'index.html'))).map(d=>d.name).sort();
 assert.deepEqual(directories,Object.keys(map).sort());
-for(const [slug,m]of Object.entries(map)){assert(m.codes.length);for(const c of m.codes)assert(codes.has(c),slug+':'+c);const a=inventory.apps.find(a=>a.slug===slug);assert.equal(a.grade,m.grade);assert.equal(a.title,m.title);}
+for(const [slug,m]of Object.entries(map)){assert(m.codes.length);for(const c of m.codes)assert(codes.has(c),slug+':'+c);const a=inventory.apps.find(a=>a.slug===slug);assert.equal(a.grade,m.grade);assert.equal(a.title,m.title);assert.equal(a.catalogLabel,m.level==='high'?(m.codes.every(c=>c.startsWith('10'))?'공통':'선택'):m.grade);}
 const byCode=c=>Object.keys(map).filter(slug=>map[slug].codes.includes(c));
 const activityMap=new Map(oldActivities.map(r=>[r.id,{...r,slugs:[...r.slugs]}]));for(const r of overrides)activityMap.set(r.id,r);
 const activities=sections.flatMap(s=>s.activities.map((a,i)=>{

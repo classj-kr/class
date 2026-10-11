@@ -36,6 +36,9 @@
             });
             const heading=document.querySelector('.em-phase-selector-title');
             if(heading)heading.textContent=level==='elementary'?'달의 모양 비교':'달의 위상 선택';
+            document.querySelector('[aria-label="달의 위상 선택"], [aria-label="달의 모양 비교"]')?.setAttribute('aria-label',level==='elementary'?'달의 모양 비교':'달의 위상 선택');
+            document.getElementById('moonPhaseCanvas')?.setAttribute('aria-label',level==='elementary'?'달의 모양과 달 표면의 무늬':'현재 달의 위상과 실제 달 앞면 무늬');
+            document.getElementById('emSpeedSlider')?.setAttribute('aria-label','시간 흐름 속도 조절');
             if(level==='elementary')document.querySelector('.em-moon-location-btn[data-observer-location="korea"]')?.click();
         }
         S.subscribe(update);update(S.value);

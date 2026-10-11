@@ -7,6 +7,7 @@ const reference = 'references/moe/2022-revised-curriculum/extracted/09-science.t
 const read = p => fs.readFileSync(path.join(root,p),'utf8');
 const clean = s => s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 const catalog = read(`${lab}/index.html`);
+const curriculumMap = require(path.join(root,lab,'curriculum-map.js'));
 const apps = [...catalog.matchAll(/<a class="level-entry available"[^>]*href="([^"/]+)\/"[^>]*><b>([^<]+)<\/b><span>([\s\S]*?)<\/span><\/a>/g)].map(m=>{
   const slug=m[1], html=read(`${lab}/${slug}/index.html`);
   const files=fs.readdirSync(path.join(root,lab,slug)).filter(n=>/\.(html|js)$/.test(n)).map(n=>{
@@ -19,7 +20,7 @@ const apps = [...catalog.matchAll(/<a class="level-entry available"[^>]*href="([
       if(/[가-힣]/.test(line) && !/font-family|aria-hidden/.test(line)) evidence.push({file:f.name,line:i+1,text:clean(line)});
     });
   }
-  return {slug,grade:m[2],title:clean(m[3].split('<small')[0]),catalogLine:catalog.slice(0,m.index).split('\n').length,
+  return {slug,grade:curriculumMap[slug].grade,catalogLabel:m[2],school:m[0].match(/data-school="([^"]+)"/)?.[1],title:clean(m[3].split('<small')[0]),catalogLine:catalog.slice(0,m.index).split('\n').length,
     description:html.match(/<meta name="description" content="([^"]*)"/)?.[1],
     controls:[...html.matchAll(/<(?:legend|label|li|h3)\b[^>]*>([\s\S]*?)<\/(?:legend|label|li|h3)>/g)].map(m=>clean(m[1])),files,evidence};
 });
