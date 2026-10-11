@@ -180,7 +180,59 @@
     return [origin, [origin[0] + base, origin[1]], toward(origin, side, left)];
   }
 
+  // ── 평면도형의 이동 ──────────────────────────────────────────
+  // 모눈판(가로 cols, 세로 rows) 위의 점들을 뒤집는다. way: 'side'(왼쪽·오른쪽으로 뒤집기), 'updown'(위·아래로 뒤집기)
+  const flip = (points, cols, rows, way) => points.map((p) => (way === 'side' ? [cols - p[0], p[1]] : [p[0], rows - p[1]]));
+  // 정사각형 모눈판(한 변 size) 위의 점들을 시계 방향으로 90° × quarters 만큼 돌린다(시계 반대 방향은 음수).
+  function turn(points, size, quarters) {
+    let out = points;
+    for (let k = 0; k < ((quarters % 4) + 4) % 4; k += 1) out = out.map((p) => [size - p[1], p[0]]);
+    return out;
+  }
+  // 꼭짓점이 놓인 자리가 모두 같은가(꼭짓점의 차례·시작점은 달라도 된다). 움직인 뒤에도 처음과 같은 모양인지 볼 때 쓴다.
+  const samePoints = (a, b) => { const key = (list) => list.map((p) => fmt(p[0]) + ',' + fmt(p[1])).sort().join(' '); return key(a) === key(b); };
+  // 그린 것(parts)을 통째로 뒤집거나 돌려 그린다(글자처럼 점으로 나타내기 어려운 것). way: 'side', 'updown', 1·2·3(시계 방향으로 90° × n)
+  function moved(parts, cols, rows, way) {
+    const cx = at(cols / 2), cy = at(rows / 2);
+    const how = way === 'side' ? 'translate(' + fmt(cx * 2) + ' 0) scale(-1 1)' : way === 'updown' ? 'translate(0 ' + fmt(cy * 2) + ') scale(1 -1)' : 'rotate(' + (way * 90) + ' ' + fmt(cx) + ' ' + fmt(cy) + ')';
+    return '<g transform="' + how + '">' + (Array.isArray(parts) ? parts.join('') : parts) + '</g>';
+  }
+  // 디지털 숫자(일곱 획). 획 이름: a 위, b 오른쪽 위, c 오른쪽 아래, d 아래, e 왼쪽 아래, f 왼쪽 위, g 가운데
+  const SEGMENTS = { 0: 'abcdef', 1: 'bc', 2: 'abdeg', 3: 'abcdg', 4: 'bcfg', 5: 'acdfg', 6: 'acdefg', 7: 'abc', 8: 'abcdefg', 9: 'abcdfg' };
+  const SEG_SIDE = { a: 'a', b: 'f', c: 'e', d: 'd', e: 'c', f: 'b', g: 'g' }, SEG_UPDOWN = { a: 'd', b: 'c', c: 'b', d: 'a', e: 'f', f: 'e', g: 'g' };
+  const segSwap = (segs, table) => segs.split('').map((c) => table[c]).sort().join('');
+  // 숫자 한 자리의 획을 뒤집거나 반 바퀴 돌린다. way: 'side', 'updown', 'half'(180° 돌리기)
+  const segMove = (segs, way) => (way === 'side' ? segSwap(segs, SEG_SIDE) : way === 'updown' ? segSwap(segs, SEG_UPDOWN) : segSwap(segSwap(segs, SEG_SIDE), SEG_UPDOWN));
+  // 켜진 획이 나타내는 숫자(숫자가 아니면 null). 뒤집어 왼쪽으로 간 1도 1로 읽는다.
+  function segRead(segs) {
+    const key = segs.split('').sort().join('');
+    if (key === 'ef') return 1;
+    const hit = Object.keys(SEGMENTS).find((d) => SEGMENTS[d] === key);
+    return hit == null ? null : Number(hit);
+  }
+  // 디지털 숫자로 쓴 수(글 '205')를 뒤집거나 반 바퀴 돌렸을 때의 획 묶음. 옆으로 뒤집기와 반 바퀴 돌리기는 자리의 차례도 거꾸로 된다.
+  function segNumber(digits, way) {
+    const cells = String(digits).split('').map((d) => (way ? segMove(SEGMENTS[d], way) : SEGMENTS[d]));
+    return way === 'side' || way === 'half' ? cells.reverse() : cells;
+  }
+  // 획 묶음을 수(글)로 읽는다. 숫자가 아닌 자리가 있으면 null. 맨 앞의 0도 그대로 둔다('081').
+  const segText = (cells) => { const read = cells.map(segRead); return read.some((d) => d == null) ? null : read.join(''); };
+  // 디지털 숫자 그림. cells: 수(글 '205') 또는 segNumber 가 준 획 묶음. options: scale, label(그림 설명), card: false(테두리 없이)
+  function segDigits(cells, options) {
+    const o = options || {}, list = typeof cells === 'string' ? segNumber(cells) : cells, w = 26, h = 46, gap = 12, pad = Math.max(10, Math.ceil((66 - list.length * w - (list.length - 1) * gap) / 2));
+    const width = pad * 2 + list.length * w + (list.length - 1) * gap, height = 20 + h;
+    const bar = (x1, y1, x2, y2) => '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" style="stroke:#1e293b;stroke-width:5;stroke-linecap:round"/>';
+    let out = o.card === false ? '' : '<rect x="1" y="1" width="' + (width - 2) + '" height="' + (height - 2) + '" rx="6" style="fill:#fff;stroke:#94a3b8;stroke-width:1.5"/>';
+    list.forEach((segs, i) => {
+      const x = pad + i * (w + gap), y = 10, m = y + h / 2, r = x + w, b = y + h, e = 4;
+      const where = { a: [x + e, y, r - e, y], b: [r, y + e, r, m - e], c: [r, m + e, r, b - e], d: [x + e, b, r - e, b], e: [x, m + e, x, b - e], f: [x, y + e, x, m - e], g: [x + e, m, r - e, m] };
+      segs.split('').forEach((s) => { out += bar.apply(null, where[s]); });
+    });
+    return '<svg class="mb-geo" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * (o.scale || 1)) + '" role="img" aria-label="' + (o.label || '디지털 숫자') + '">' + out + '</svg>';
+  }
+
   B.kit.geo = { sub, dot, cross, len2, isRight, rightAt, rightAngles, isRectangle, isSquare, isRightTriangle, nearRight, looksRight,
     board, polygon, polyline, line, circle, point, text, beyond, beside, outward, vertexLabels, rightMark, straight, curve, rays, tile, tiles, clock,
-    toward, bearing, arc, squareMark, angle, protractor, angleOf, cornerArc, triangle };
+    toward, bearing, arc, squareMark, angle, protractor, angleOf, cornerArc, triangle,
+    flip, turn, samePoints, moved, SEGMENTS, segMove, segRead, segNumber, segText, segDigits };
 })(typeof window !== 'undefined' ? window : globalThis);
