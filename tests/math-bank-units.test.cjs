@@ -671,6 +671,46 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.ok(spots.size < f.pins.centers.length, label); assert.equal(answerAt(item, 0), spots.size, label); tally('pins');
     }
     if (f.designs) { assert.equal(new Set(f.designs.shown).size, 3, label); assert.equal(item.choice.answer, f.designs.shown.indexOf(f.designs.want), label); tally('designs'); }
+    if (f.picto) {
+      // 그림그래프: 그림 설명에 적힌 그림의 종류와 개수로 줄마다 수를 다시 읽는다(그림이 없는 줄은 null).
+      const m = item.figure.match(/aria-label="그림그래프: ([^"]*)"/);
+      assert.ok(m, '그림그래프가 없다: ' + label);
+      const read = m[1].split(' / ').map((row) => (row.includes('그림 없음') ? null : [...row.matchAll(/(\d+)짜리 (\d+)개/g)].reduce((sum, x) => sum + Number(x[1]) * Number(x[2]), 0)));
+      assert.deepEqual(read, f.picto.shown, label);
+      // 작은 그림이 큰 그림 하나만큼 모여 있으면 안 된다(큰 그림으로 바꾸어 그려야 한다).
+      for (const row of m[1].split(' / ')) { const parts = [...row.matchAll(/(\d+)짜리 (\d+)개/g)].map((x) => [Number(x[1]), Number(x[2])]); parts.forEach(([unit, n], i) => { if (i > 0) assert.ok(unit * n < parts[i - 1][0], '바꾸어 그려야 하는 그림: ' + label); }); }
+      tally('picto');
+    }
+    if (f.rank) {
+      // 여러 수 가운데 n번째로 큰 수의 자리(수는 모두 다르다)
+      const { values, nth } = f.rank, sorted = values.slice().sort((x, y) => y - x);
+      assert.equal(new Set(values).size, values.length, label); assert.equal(item.choice.answer, values.indexOf(sorted[nth - 1]), label); tally('rank');
+    }
+    if (f.tallyOf) {
+      // 낱낱의 자료를 세어 표로: 목록에서 그 낱말의 수를 다시 센다.
+      assert.equal(answerAt(item, 0), f.tallyOf.list.filter((word) => word === f.tallyOf.target).length, label); tally('tallyOf');
+    }
+    if (f.scale) {
+      // 그림의 단위 고르기: 작은 단위는 모든 수를 나누어떨어지게 하는 가장 큰 10·100…이고, 큰 단위는 그 10배이다.
+      const { values, options } = f.scale, small = [1000, 100, 10, 1].find((u) => values.every((v) => v % u === 0)), hit = options.map(([big, low]) => low === small && big === small * 10);
+      assert.ok(Math.max(...values) >= small * 10, label); assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('scale');
+    }
+    if (f.mismatch) {
+      // 표와 그림그래프가 다른 줄은 하나뿐이다.
+      const hit = f.mismatch.table.map((v, i) => v !== f.mismatch.drawn[i]);
+      assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('mismatch');
+    }
+    if (f.pictoTalk) {
+      // 그림그래프를 두고 한 말: 수로 다시 따진다.
+      const { values, claims } = f.pictoTalk, order = values.slice().sort((x, y) => y - x);
+      const truth = claims.map(([what, i, x]) => ({ value: () => values[i] === x, more: () => values[i] > values[x], most: () => values[i] === order[0], least: () => values[i] === order[order.length - 1], total: () => values.reduce((s, v) => s + v, 0) === i }[what]()));
+      assert.deepEqual(truth, f.truth, label); tally('pictoTalk');
+    }
+    if (f.symbolTrap) {
+      // 그림의 수가 가장 많은 줄이 수가 가장 큰 줄은 아니다.
+      const { values, symbols } = f.symbolTrap;
+      assert.notEqual(values.indexOf(Math.max(...values)), symbols.indexOf(Math.max(...symbols)), label); tally('symbolTrap');
+    }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);

@@ -9,6 +9,8 @@
         단원 차례가 다른 교과서: 그 저자를 빼고, 내용이 맞는 다른 단원 폴더에서 그 저자의 문서를 가져온다
     python tools/question-bank/dump_problems.py 3-2-2 hard --without 류희찬,최수일,장혜원,강문봉 --also 3-2-3:류희찬,최수일,장혜원,강문봉
         저자는 쉼표로 여럿 적을 수 있다
+    python tools/question-bank/dump_problems.py 4-1-4 basic --without 강문봉,김성여 --also 4-2-2:강문봉,김성여+4-2-1:박만구
+        여러 폴더에서 가져올 때는 + 로 잇는다
     python tools/question-bank/dump_problems.py 3-1-1 all --only 3-1-2:박만구 --name 보충
         다른 단원 폴더에 있는 한 저자의 문서만 모은다(수준을 가르지 않고 → 보충문서_모음.txt)
 
@@ -54,8 +56,9 @@ def main(argv):
     # 저자는 쉼표로 여럿 적을 수 있다(3-2는 나눗셈·원, 분수·들이와 무게가 책마다 뒤바뀐다).
     without = [name for name in option('--without').split(',') if name]
     rows = [row for row in listed(unit) if not any(name in row['author'] for name in without)]
-    if option('--also'):
-        other, authors = option('--also').split(':')
+    # --also 는 「폴더:저자,저자」를 + 로 이어 여러 폴더에서 가져올 수 있다(4학년 삼각형은 책에 따라 4-1·4-2의 서로 다른 단원에 있다).
+    for spec in [part for part in option('--also').split('+') if part]:
+        other, authors = spec.split(':')
         rows += [row for row in listed(other) if any(name in row['author'] for name in authors.split(','))]
     if option('--only'):
         other, author = option('--only').split(':')
