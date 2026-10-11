@@ -11,8 +11,8 @@
 //      5학년 「다각형의 둘레와 넓이」에 해당하는 것: 정사각형을 이어 붙인 직사각형의 네 변의 길이의 합, 크기가 다른 정사각형을
 //        이어 붙인 도형에서 선분의 길이 구하기, 네 변의 길이의 합(둘레)이 조건으로 나오는 문제 모두
 //      중학교 2학년 「경우의 수」에 해당하는 것: 크고 작은 각·직각삼각형·직사각형·정사각형의 수, 점을 이어 그을 수 있는 선분의 수
-//      4학년 「사각형」의 포함 관계: 자른 조각 가운데 직사각형과 정사각형 세기(정사각형을 직사각형에 넣어 세어야 한다),
-//        한 도형의 이름이 될 수 있는 것 모두 고르기
+//      (정사각형을 직사각형으로 세는 것은 4학년 것이 아니다. 「네 각이 모두 직각인 사각형」이라는 3학년의 뜻을 그대로 대면 된다.
+//       다만 「조각 중 직사각형은 몇 개, 그중 정사각형은 몇 개」는 「그중」이 답을 흘려서 모눈종이 꼴 하나만 싣는다.)
 //      5학년 「약수와 배수」 유형: 직사각형 종이로 만들 수 있는 가장 큰 정사각형
 //      뒤 단원 것이 있어야 풀리는 것(나눗셈은 3단원): 네 변의 길이의 합으로 한 변 구하기, 네 변의 합이 같은 직사각형과 정사각형,
 //        네 변의 합과 한 변으로 직사각형의 다른 변 구하기, 철사로 만들 수 있는 정사각형의 수, 종이에서 잘라 낼 수 있는 정사각형의 수
@@ -20,6 +20,9 @@
 //      도형의 뜻보다 경우 따지기·퍼즐이 어려움의 대부분인 것: 점 다섯 개로 그을 수 있는 선분·각의 수, 한 줄 위 세 점의 반직선,
 //        점 종이에 그릴 수 있는 정사각형의 가짓수, 표시가 하나씩 들어가게 나누기, 여러 번 접어 자르기, 「~이 아닌 ~」 말 잇기,
 //        글자·칠교 모양에서 직각 세기(획이 만나는 곳을 세는 기준이 자료마다 다르다)
+// 실력 문항의 잣대(2026-10-12 사용자가 보여 준 두 문제): 어려움은 이 단원에서 배운 뜻을 정확히 아는가에서 나와야 한다.
+//   반직선은 시작점부터 읽는다 → 각의 변을 반직선으로 읽기, 네 각이 직각이면 직사각형이다 → 정사각형과 비스듬한 도형까지 세기.
+//   계산 단계를 늘리거나 뒤 학년 내용을 끌어와 어렵게 만들지 않는다.
 // 묻는 말: 수나 값을 물을 때는 "~은?/~는?", 양을 물을 때는 "몇 ~인가?" 로 맺는다.
 (function (root) {
   'use strict';
@@ -34,6 +37,48 @@
   B.addGroup('3-1-2', {
     id: 'hard', title: '실력 문제', standard: QUAD,
     types: [
+      H('h-sides', '각의 변을 반직선으로 읽기', '각 그림에 붙은 설명 가리기(기본 자료 9문서) — 변의 이름을 시작점부터 읽는지까지 따진다', (d) => {
+        // 각의 변은 꼭짓점에서 시작하는 반직선이다. 반직선 ㄹㅁ은 점 ㄹ에서 시작하므로 각 ㄹㅁㅂ의 변이 아니다.
+        const left = ['ㄱ', 'ㄴ', 'ㄷ'], right = ['ㄹ', 'ㅁ', 'ㅂ'], [bad, good] = d.bool() ? [left, right] : [right, left], end = d.pick([0, 2]);
+        const sides = (angle, wrongEnd) => [0, 2].map((i) => (i === wrongEnd ? angle[i] + angle[1] : angle[1] + angle[i]));
+        const rows = d.shuffle([
+          { text: `각 ${good.join('')}과 각 ${good.slice().reverse().join('')}은 같은 각이다.`, ok: true },
+          { text: `점 ${bad[1]}은 각 ${bad.join('')}의 꼭짓점이다.`, ok: true },
+          { text: `각 ${good.join('')}의 변은 반직선 ${sides(good, -1)[0]}과 반직선 ${sides(good, -1)[1]}이다.`, ok: true, angle: good.join(''), rays: sides(good, -1) },
+          { text: `각 ${bad.join('')}의 변은 반직선 ${sides(bad, end)[0]}과 반직선 ${sides(bad, end)[1]}이다.`, ok: false, angle: bad.join(''), rays: sides(bad, end) }
+        ]);
+        return C('그림에 대한 설명으로 옳지 않은 것은?', rows.map((row) => row.text), rows.findIndex((row) => !row.ok), {
+          figure: G.board(11, 4, [G.rays([0.6, 2], [[3.6, 0.5], [3.6, 3.5]], ['ㄴ', 'ㄱ', 'ㄷ']), G.rays([10.4, 2], [[7.4, 0.5], [7.4, 3.5]], ['ㅁ', 'ㄹ', 'ㅂ'])], { grid: false }),
+          explain: `각의 변은 각의 꼭짓점에서 시작하는 반직선이다. 각 ${bad.join('')}의 변은 반직선 ${bad[1]}${bad[0]}과 반직선 ${bad[1]}${bad[2]}이다.`,
+          facts: { truth: rows.map((row) => row.ok), want: false, rayClaims: rows.map((row, i) => (row.rays ? { angle: row.angle, rays: row.rays, at: i } : null)).filter(Boolean) }
+        });
+      }, { standard: ANGLE }),
+      H('h-corner', '한 꼭짓점에 모인 각 가운데 직각 가리기', '도형의 성질을 말한 문장 가리기(심화 자료 여러 출판사) — 각을 정확히 읽어야 가릴 수 있게', (d) => {
+        // 직사각형 ㄱㄴㄷㄹ에 선분 ㄱㄷ을 그었다. 각 ㄴㄱㄹ은 직각이지만 각 ㄴㄱㄷ은 직각이 아니다.
+        const w = d.pick([5, 6]), points = { ㄱ: [0.5, 0.5], ㄴ: [0.5, 3.5], ㄷ: [0.5 + w, 3.5], ㄹ: [0.5 + w, 0.5] };
+        const rows = d.shuffle([{ kind: 'triangle', names: d.pick(['ㄱㄴㄷ', 'ㄱㄷㄹ']) }, { kind: 'angle', names: d.pick(['ㄱㄴㄷ', 'ㄱㄹㄷ']) }, { kind: 'angle', names: d.pick(['ㄴㄱㄹ', 'ㄴㄷㄹ']) }, { kind: 'angle', names: d.pick(['ㄴㄱㄷ', 'ㄱㄷㄴ', 'ㄹㄱㄷ', 'ㄱㄷㄹ']), bad: true }]);
+        const say = (row) => (row.kind === 'triangle' ? `삼각형 ${row.names}은 직각삼각형이다.` : `각 ${row.names}은 직각이다.`), bad = rows.find((row) => row.bad);
+        return C('직사각형 ㄱㄴㄷㄹ에 선분 ㄱㄷ을 그었다. 그림에 대한 설명으로 옳지 않은 것은?', rows.map(say), rows.indexOf(bad), {
+          figure: G.board(w + 1, 4, [G.polygon(['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ'].map((n) => points[n]), 'mb-poly is-plain'), G.line(points.ㄱ, points.ㄷ),
+            G.text([0.1, 0.2], 'ㄱ'), G.text([0.1, 3.8], 'ㄴ'), G.text([w + 0.9, 3.8], 'ㄷ'), G.text([w + 0.9, 0.2], 'ㄹ')], { grid: false, scale: 1.3 }),
+          explain: `각 ${bad.names}은 선분 ㄱㄷ이 직사각형의 한 각을 둘로 나눈 것 가운데 하나이므로 직각이 아니다. 직각인 것은 직사각형의 네 각 ㄴㄱㄹ, ㄱㄴㄷ, ㄴㄷㄹ, ㄱㄹㄷ이다.`,
+          facts: { cornerClaims: { points, rows: rows.map((row) => [row.kind, row.names]) } }
+        });
+      }, { standard: RTRI }),
+      H('h-rect-count', '모눈종이에 그린 도형 가운데 직사각형 세기', '직사각형 찾기(기본 자료 모든 출판사) — 정사각형과 비스듬히 놓인 도형까지 뜻으로 가려야 하게', (d) => {
+        // 정사각형, 세로로 긴 것, 가로로 긴 것, 비스듬한 정사각형, 비스듬한 직사각형 / 평행사변형 모양, 사다리꼴 모양, 네 변이 같지만 직각이 아닌 것
+        const RECT = [[[0, 1], [2, 1], [2, 3], [0, 3]], [[0, 0], [1, 0], [1, 4], [0, 4]], [[0, 1], [3, 1], [3, 3], [0, 3]], [[0, 2], [2, 0], [4, 2], [2, 4]], [[1, 0], [4, 3], [3, 4], [0, 1]]];
+        const OTHER = [[[0, 1], [3, 1], [4, 3], [1, 3]], [[1, 1], [3, 1], [4, 3], [0, 3]], [[0, 2], [2, 1], [4, 2], [2, 3]]];
+        const count = d.int(2, 4);
+        const picks = d.until(() => d.shuffle(d.shuffle(RECT).slice(0, count).concat(d.shuffle(OTHER).slice(0, 4 - count))), (list) => list.includes(RECT[0]) || list.includes(RECT[3]));
+        // 휴대폰에서도 모눈이 또렷하게 두 줄로 놓는다(한 줄에 두 개).
+        const placed = picks.map((shape, i) => shape.map(([px, py]) => [px + (i % 2) * 5, py + Math.floor(i / 2) * 5]));
+        return N('모눈종이에 그린 사각형 4개 중 직사각형은 모두 몇 개인가?', count, {
+          unit: '개', figure: G.board(9, 9, placed.map((shape) => G.polygon(shape, 'mb-poly is-plain')), { grid: 'lines' }),
+          explain: `네 각이 모두 직각인 사각형이 직사각형이다. 정사각형도 네 각이 모두 직각이므로 직사각형이고, 비스듬히 놓여 있어도 네 각이 모두 직각이면 직사각형이다. 직사각형은 ${count}개이다.`,
+          facts: { rectCount: placed }
+        });
+      }, { standard: QUAD }),
       H('h-time', '조건에 맞는 시각', 'YBM·디딤돌·지학사 단원평가 심화', (d) => {
         // 긴바늘이 12, 두 바늘이 직각, 6시와 12시 사이 → 9시
         const answer = d.pick([3, 9]), lo = answer === 3 ? d.int(1, 2) : d.int(4, 8), hi = answer === 3 ? d.int(4, 8) : d.int(10, 12);

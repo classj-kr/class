@@ -723,6 +723,26 @@ test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 �
       assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); tally('lineName');
     }
     if (f.segments) { assert.equal(answerAt(item, 0), f.segments.closed ? f.segments.points.length : f.segments.points.length - 1, label); tally('segments'); }
+    if (f.rayClaims) {
+      // 각의 변은 꼭짓점(가운데 글자)에서 시작해 양 끝 점을 지나는 두 반직선이다.
+      for (const claim of f.rayClaims) {
+        const [p, v, q] = claim.angle.split(''), ok = claim.rays.every((ray) => ray[0] === v && (ray[1] === p || ray[1] === q)) && claim.rays[0] !== claim.rays[1];
+        assert.equal(ok, f.truth[claim.at], label);
+      }
+      assert.equal(f.rayClaims.filter((claim) => !f.truth[claim.at]).length, 1, label); tally('rayClaims');
+    }
+    if (f.cornerClaims) {
+      // 「각 XYZ은 직각이다」「삼각형 XYZ은 직각삼각형이다」를 좌표로 따진다. 틀린 말은 하나이고, 그 각은 직각처럼 보이지도 않는다.
+      const P = f.cornerClaims.points, truth = f.cornerClaims.rows.map(([kind, names]) => { const pts = names.split('').map((n) => P[n]); return kind === 'triangle' ? isRightTri(pts) : rightAngle(pts[1], pts[0], pts[2]); });
+      assert.equal(truth.filter((ok) => !ok).length, 1, label); assert.equal(item.choice.answer, truth.indexOf(false), label);
+      const [, names] = f.cornerClaims.rows[truth.indexOf(false)], pts = names.split('').map((n) => P[n]);
+      assert.ok(!almostRight(pts[1], pts[0], pts[2]), '직각처럼 보이는 각: ' + label); tally('cornerClaims');
+    }
+    if (f.rectCount) {
+      // 모눈종이의 사각형 가운데 네 각이 모두 직각인 것을 센다. 정사각형이 꼭 섞여 있고, 직각처럼 보이는 각은 없다.
+      assert.equal(f.rectCount.length, 4, label); assert.equal(answerAt(item, 0), f.rectCount.filter(isRect).length, label);
+      assert.ok(f.rectCount.some(isSq), '정사각형이 없다: ' + label); assert.ok(!f.rectCount.some(hasAlmostRight), label); tally('rectCount');
+    }
     if (f.truth) { assert.equal(f.truth.filter((t) => t === f.want).length, 1, label); assert.equal(item.choice.answer, f.truth.indexOf(f.want), label); tally('truth'); }
     if (f.sets) {
       let flags = f.sets.flags;
