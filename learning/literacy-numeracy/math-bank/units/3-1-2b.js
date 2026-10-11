@@ -42,19 +42,19 @@
         // 함정: 멀리 찍힌 점으로 읽은 각이 더 커 보인다. 변의 이름을 끝 점부터 읽은 것도 섞는다.
         const [near, far] = d.shuffle(['ㄷ', 'ㄹ']), flip = d.bool(), Y = (y) => (flip ? 4 - y : y);
         const V = [0.7, Y(2.3)], A = [0.7 + 3 * 0.8, Y(2.3 - 1.9 * 0.8)], N1 = [0.7 + 4.6 * 0.42, Y(2.3 + 1.1 * 0.42)], F = [0.7 + 4.6, Y(2.3 + 1.1)];
-        // 함정 둘: ① 점이 다르면 다른 각이라고 여기면 「같은 각이다」를 틀렸다고 고른다.
+        // 함정 둘: ① 점이 다르면 다른 각이라고 여기면 「같은 도형이다」를 틀렸다고 고른다(「같은 각」이라고 쓰지 않는다 — 사용자 지시).
         //          ② 변을 각의 이름을 읽는 차례대로(ㄱㄴ, ㄴㄷ) 적어 놓아 맞는 말처럼 보인다(반직선 ㄱㄴ은 점 ㄱ에서 시작한다).
         const read = d.pick([near, far]);
         const rows = d.shuffle([
           { text: `점 ㄴ은 각 ㄱㄴ${near}의 꼭짓점이다.`, claim: ['vertex', `ㄱㄴ${near}`, 'ㄴ'] },
-          { text: `각 ㄱㄴ${near}과 각 ㄱㄴ${far}은 같은 각이다.`, claim: ['sameAngle', `ㄱㄴ${near}`, `ㄱㄴ${far}`] },
+          { text: `각 ㄱㄴ${near}과 각 ㄱㄴ${far}은 같은 도형이다.`, claim: ['sameAngle', `ㄱㄴ${near}`, `ㄱㄴ${far}`] },
           { text: `각 ㄱㄴ${read}의 두 변은 반직선 ㄱㄴ, 반직선 ㄴ${read}이다.`, claim: ['sides', `ㄱㄴ${read}`, ['ㄱㄴ', 'ㄴ' + read]] },
-          { text: `반직선 ㄴ${near}과 반직선 ㄴ${far}은 같은 반직선이다.`, claim: ['sameRay', 'ㄴ' + near, 'ㄴ' + far] }
+          { text: `반직선 ㄴ${near}과 반직선 ㄴ${far}은 같은 도형이다.`, claim: ['sameRay', 'ㄴ' + near, 'ㄴ' + far] }
         ]);
         const wrong = rows.findIndex((row) => row.claim[0] === 'sides');
         return C('그림에 대한 설명으로 옳지 않은 것은?', rows.map((row) => row.text), wrong, {
           figure: G.board(6, 4, [G.rays(V, [A, F], ['ㄴ', 'ㄱ', far]), G.point(N1), G.text([N1[0] - 0.1, N1[1] + (flip ? -0.55 : 0.55)], near)], { grid: false, scale: 1.25 }),
-          explain: `각의 변은 각의 꼭짓점에서 시작하는 반직선이다. 반직선 ㄱㄴ은 점 ㄱ에서 시작하므로 각의 변이 아니다. 각 ㄱㄴ${read}의 두 변은 반직선 ㄴㄱ, 반직선 ㄴ${read}이다. 점 ${near}과 점 ${far}은 같은 반직선 위에 있으므로 각 ㄱㄴ${near}과 각 ㄱㄴ${far}은 같은 각이다.`,
+          explain: `각의 변은 각의 꼭짓점에서 시작하는 반직선이다. 반직선 ㄱㄴ은 점 ㄱ에서 시작하므로 각의 변이 아니다. 각 ㄱㄴ${read}의 두 변은 반직선 ㄴㄱ, 반직선 ㄴ${read}이다. 점 ${near}과 점 ${far}은 점 ㄴ에서 시작하는 한 반직선 위에 있으므로 반직선 ㄴ${near}과 반직선 ㄴ${far}은 같은 도형이고, 각 ㄱㄴ${near}과 각 ㄱㄴ${far}도 같은 도형이다.`,
           facts: { angleTalk: { vertex: 'ㄴ', sides: [['ㄱ'], [near, far]], claims: rows.map((row) => row.claim) } }
         });
       }, { standard: ANGLE }),
