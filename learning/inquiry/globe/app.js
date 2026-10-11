@@ -18,7 +18,7 @@ const flowTracks = [...windModel.tracks, ...currentModel.tracks];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let flowSeconds = 0;
 const BASE = new URL(".", import.meta.url).href;
-const TILE_VERSION = "20260927-color85";
+const TILE_VERSION = "20261011-relief";
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
 const DATA_VERSION = "20260920-39";
@@ -116,7 +116,6 @@ const map = new maplibregl.Map({
 });
 map.touchZoomRotate.disableRotation();
 map.keyboard.disableRotation();
-map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "바탕 그림·지명: Natural Earth · 한강: © OpenStreetMap 기여자 · 사진: 위키미디어 공용" }), "top-right");
 
 renderLayerBar();
 renderSeasonSwitch();
@@ -147,8 +146,6 @@ const atlas = createAtlas({ map, clear: clearSelection, select, setView: setView
 axisView = createAxisView({ map, host: document.getElementById("mapTools"), getZoom: wholeGlobeZoom, reducedMotion });
 map.on("load", () => {
   ready = true;
-  // 출처 표시는 접힌 채(ⓘ)로 시작해 이름표를 가리지 않게 한다.
-  document.querySelector(".maplibregl-ctrl-attrib")?.classList.remove("maplibregl-compact-show");
   addArrowImages();
   installFlowImages(map);
   fitWholeGlobe(false);

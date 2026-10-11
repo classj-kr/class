@@ -32,7 +32,9 @@ assert.match(app, /keyboard\.disableRotation\(\)/);
 // 실제 표시하는 보정 지도 조각은 0~5단이 빠짐없이 있어야 한다.
 assert.ok(app.includes('tiles-colored/'));
 const terrainManifest = JSON.parse(read('tiles-colored/manifest.json'));
-assert.equal(terrainManifest.strength, 85);
+assert.ok(app.includes(`TILE_VERSION = "${terrainManifest.version}"`), 'TILE_VERSION must match the tile manifest.');
+// 화면에 출처 단추·출처 줄을 두지 않는다(학습에 방해). 출처는 data/*-SOURCES.md에 적는다.
+assert.doesNotMatch(app, /AttributionControl\(/);
 assert.equal(terrainManifest.count, 1365);
 for (let z = 0; z <= 5; z += 1) {
   for (let x = 0; x < 2 ** z; x += 1) {
