@@ -4381,6 +4381,41 @@
       ],
       "changed": "fixed three slits and second prism, first-prism alignment, identical incoming direction, red/blue outgoing deflection comparison",
       "boundary": "model geometry and refractive indices; screen inset magnifies displacement, not measured physical values"
+    },
+    {
+      "slug": "microscope",
+      "mode": "stem-dye-transport",
+      "sources": [
+        [
+          "89316af3de563d4c",
+          [
+            9
+          ]
+        ],
+        [
+          "d544b624a4fe52c2",
+          [
+            5,
+            6
+          ]
+        ],
+        [
+          "4020707022bbe8dd",
+          [
+            11
+          ]
+        ],
+        [
+          "0c762181d67d630e",
+          [
+            5,
+            6,
+            13
+          ]
+        ]
+      ],
+      "changed": "plain versus red-dye lily, before versus about four hours, upper/lower stem and transverse/longitudinal sections",
+      "boundary": "qualitative channels and flower tint; no measured flow rate or real dissection"
     }
   ],
   "assessmentEvidence": [
@@ -4398,6 +4433,13 @@
         65
       ],
       "part": "assessment item 08, reason to fix three slits and second prism"
+    },
+    {
+      "id": "0c762181d67d630e",
+      "pages": [
+        13
+      ],
+      "part": "Chunjae grade-6 workbook assessment of red-water lily stem cross section"
     }
   ],
   "authoredQuestions": [
@@ -4553,13 +4595,90 @@
           "mendeleev#q1"
         ]
       }
+    },
+    {
+      "id": "microscope@stem-control",
+      "sha256": "6141e63655ebb2df1cd25d4023fd1a9f5e95e1ea2ec211bd0eec91295e2c8169",
+      "question": {
+        "id": "microscope@stem-control",
+        "topic": "백합 물 이동의 대조 조건",
+        "concept": "색소 물과 맹물의 비교",
+        "question": "백합의 줄기를 통한 물 이동을 색소로 알아보려 한다. 두 백합의 크기와 관찰 시간을 같게 한다면 물 조건은 어떻게 정할까?",
+        "choices": [
+          "둘 다 색소 물에 두고 자르는 위치만 바꾼다",
+          "한쪽은 맹물, 다른 쪽은 색소 물에 둔다",
+          "한쪽은 색소 물, 다른 쪽은 물 없이 둔다"
+        ],
+        "answer": 1,
+        "why": "맹물에 둔 백합은 대조 대상입니다. 물의 유무나 관찰 시간을 바꾸면 색소 물의 영향을 분리하기 어렵습니다."
+      }
+    },
+    {
+      "id": "microscope@stem-section",
+      "sha256": "9527d9e15758bee6606a2fa185f85b37b1128d6561222f8378fef1892309b4a8",
+      "question": {
+        "id": "microscope@stem-section",
+        "topic": "줄기 단면의 색소 위치",
+        "concept": "줄기 속 물 이동 통로",
+        "question": "같은 시간 뒤 맹물에 둔 백합은 색이 유지되고, 붉은 물에 둔 백합의 줄기 가로 단면에는 작은 붉은 점이 여러 개 보였다. 이 관찰이 지지하는 것은?",
+        "choices": [
+          "붉은 물이 줄기 표면 전체를 따라 올라갔다",
+          "붉은 물이 줄기 속 일부 통로를 따라 올라갔다",
+          "붉은 물이 꽃잎에서 만들어져 줄기로 내려왔다"
+        ],
+        "answer": 1,
+        "why": "가로 단면의 부분적인 붉은 점은 물이 이동한 줄기 속 통로와 관련됩니다. 줄기 전체가 균일하게 붉어진 것은 아닙니다.",
+        "checks": [
+          "microscope@stem-control"
+        ]
+      }
+    },
+    {
+      "id": "microscope@stem-longitudinal",
+      "sha256": "40c5550aef60a34f95b9d2db20ce785bd31bffdf19afa1f3038f1a0dc4ff5fe1",
+      "question": {
+        "id": "microscope@stem-longitudinal",
+        "topic": "가로·세로 단면 연결",
+        "concept": "같은 이동 통로의 서로 다른 단면",
+        "question": "붉은 물에 둔 백합 줄기의 가로 단면에 붉은 점이 보였다. 같은 줄기를 세로로 길게 잘랐을 때 그 부분에 대응하는 관찰은?",
+        "choices": [
+          "붉은 선이 길이 방향으로 이어진다",
+          "붉은 점만 가로 방향으로 이어진다",
+          "줄기 밖에만 붉은 층이 생긴다"
+        ],
+        "answer": 0,
+        "why": "길이 방향으로 이어지는 이동 통로는 가로로 자르면 점, 세로로 자르면 선처럼 관찰됩니다.",
+        "checks": [
+          "microscope@stem-section"
+        ]
+      }
+    },
+    {
+      "id": "microscope@stem-interpret",
+      "sha256": "8bfdcc47b5505a3910363e9ff014311259ed67b2bc0accd71bc6708f4cdc1091",
+      "question": {
+        "id": "microscope@stem-interpret",
+        "topic": "꽃과 줄기 변화의 해석",
+        "concept": "줄기의 물 운반 기능",
+        "question": "약 4시간 뒤 색소 물에 둔 백합 꽃잎이 붉어지고 줄기 위쪽 단면에도 붉은 부분이 보였다. 관찰만으로 타당한 결론은?",
+        "choices": [
+          "뿌리가 없는 백합은 물을 이동시킬 수 없다",
+          "줄기가 색소 물을 꽃 쪽으로 이동시켰다",
+          "꽃잎이 붉은 물을 만들어 줄기로 보냈다"
+        ],
+        "answer": 1,
+        "why": "꽃과 위쪽 줄기의 붉은 부분은 줄기를 통한 물의 이동을 뒷받침합니다. 이동 속도나 물의 양은 이 관찰로 측정하지 않았습니다.",
+        "checks": [
+          "microscope@stem-longitudinal"
+        ]
+      }
     }
   ],
   "verification": {
     "sourceClassifierAndPlantModels": "6 tests passed",
     "requiredPanels": {
-      "conditions": 262,
-      "answerChecks": 786,
+      "conditions": 294,
+      "answerChecks": 882,
       "status": "passed Chromium"
     },
     "plantBrowser": {
@@ -4567,14 +4686,14 @@
         "chromium",
         "webkit"
       ],
-      "procedures": 3,
-      "questions": 5,
+      "procedures": 4,
+      "questions": 9,
       "widths": [
         1100,
         820,
         390
       ],
-      "firstResponseAfterReload": "passed"
+      "firstResponseAfterReload": "passed Chromium and WebKit"
     },
     "prismBrowser": {
       "engines": [

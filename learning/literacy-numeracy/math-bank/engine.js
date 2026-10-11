@@ -232,8 +232,8 @@
     let out = '';
     if (o.loop === 'rows') for (let r = 0; r < rows; r += 1) out += '<rect class="mb-loop" x="' + (pad - 5) + '" y="' + (pad - 3 + r * gap) + '" width="' + ((cols - 1) * gap + 24) + '" height="20" rx="10"/>';
     if (o.loop === 'cols') for (let c = 0; c < cols; c += 1) out += '<rect class="mb-loop" x="' + (pad - 3 + c * gap) + '" y="' + (pad - 5) + '" width="20" height="' + ((rows - 1) * gap + 24) + '" rx="10"/>';
-    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) if (!o.count || r * cols + c < o.count) out += '<circle class="mb-thing" cx="' + (pad + 7 + c * gap) + '" cy="' + (pad + 7 + r * gap) + '" r="6"/>';
-    const said = o.count ? '물건 ' + o.count + '개' : '물건 ' + rows * cols + '개' + (o.loop === 'rows' ? ', ' + cols + '개씩 ' + rows + '묶음' : o.loop === 'cols' ? ', ' + rows + '개씩 ' + cols + '묶음' : ', ' + cols + '개씩 ' + rows + '줄');
+    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) if (!o.count || r * cols + c < o.count) out += '<circle class="mb-thing' + ((o.loop === 'rows' ? r : c) < (o.on || 0) ? ' is-on' : '') + '" cx="' + (pad + 7 + c * gap) + '" cy="' + (pad + 7 + r * gap) + '" r="6"/>';
+    const said = o.count ? '물건 ' + o.count + '개' : '물건 ' + rows * cols + '개' + (o.loop === 'rows' ? ', ' + cols + '개씩 ' + rows + '묶음' : o.loop === 'cols' ? ', ' + rows + '개씩 ' + cols + '묶음' : ', ' + cols + '개씩 ' + rows + '줄') + (o.on ? ', 그 가운데 ' + o.on + '묶음을 색칠' : '');
     return '<svg class="mb-dots" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.25) + '" role="img" aria-label="' + said + '">' + out + '</svg>';
   }
   // 수직선에서 0부터 step 씩 뛰어 max 까지 간다. 뛴 자리마다 수를 적는다.
@@ -294,6 +294,17 @@
   }
   // 분수. 화면에는 가로줄로 보이고, 글로 옮기면 3/4 가 되게 빗금을 숨겨 둔다.
   const frac = (n, d) => '<span class="mb-frac"><span>' + n + '</span><span class="mb-frac-bar">/</span><span>' + d + '</span></span>';
+  // 대분수: 자연수와 진분수를 붙여 적는다.
+  const mixed = (whole, n, d) => '<span class="mb-mixed">' + whole + frac(n, d) + '</span>';
+  // 0부터 spans 까지의 수직선. 1을 parts 칸으로 똑같이 나누고 at(0에서 센 작은 눈금의 수)에 화살표를 둔다.
+  function partLine(spans, parts, at) {
+    const total = spans * parts, u = Math.min(24, 252 / total), x = (i) => 16 + i * u, y = 30, width = 32 + total * u;
+    let out = '<line class="mb-axis" x1="' + x(0) + '" y1="' + y + '" x2="' + x(total) + '" y2="' + y + '"/>';
+    for (let i = 0; i <= total; i += 1) out += '<line class="mb-axis" x1="' + x(i) + '" y1="' + (y - (i % parts === 0 ? 6 : 3.5)) + '" x2="' + x(i) + '" y2="' + (y + (i % parts === 0 ? 6 : 3.5)) + '"/>';
+    for (let i = 0; i <= spans; i += 1) out += '<text class="mb-km-label" x="' + x(i * parts) + '" y="' + (y + 20) + '" text-anchor="middle">' + i + '</text>';
+    out += '<path class="mb-pointer" d="M' + x(at) + ' ' + (y - 8) + 'l-4.5 -9h9z"/>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 56" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: 0부터 ' + spans + '까지, 1을 똑같이 ' + parts + '칸으로 나누었다. 화살표는 0에서 작은 눈금 ' + at + '칸 간 곳">' + out + '</svg>';
+  }
   // 나눈 도형. kind: 'bar'(띠) | 'circle'(원) | 'grid'(가로 cols 칸씩 여러 줄), n: 조각 수.
   // options: shaded 색칠한 조각 수(앞에서부터), uneven 크기가 다르게 나눔, cols 격자의 가로 칸 수, size 그림 너비.
   function pieces(kind, n, options) {
@@ -497,6 +508,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

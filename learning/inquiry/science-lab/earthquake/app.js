@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const xFor = distance => plot.left + ((distance / 240) * (plot.right - plot.left));
         const yFor = seconds => plot.bottom - ((seconds / 80) * (plot.bottom - plot.top));
 
-        travelTimeContext.font = '700 12.5px system-ui';
+        travelTimeContext.font = '700 14px system-ui';
         travelTimeContext.lineWidth = 1;
         for (let distance = 0; distance <= 240; distance += 40) {
             const x = xFor(distance);
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             travelTimeContext.arc(x, sY, 3, 0, Math.PI * 2);
             travelTimeContext.fillStyle = item.color;
             travelTimeContext.fill();
-            travelTimeContext.font = '800 12.5px system-ui';
+            travelTimeContext.font = '800 14px system-ui';
             travelTimeContext.textAlign = 'left';
             const label = `${item.id} ${item.difference}초`;
             const labelWidth = travelTimeContext.measureText(label).width;
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         travelTimeContext.fillStyle = '#334155';
-        travelTimeContext.font = '700 12.5px system-ui';
+        travelTimeContext.font = '700 14px system-ui';
         travelTimeContext.textAlign = 'center';
         travelTimeContext.fillText('진앙 거리(km)', (plot.left + plot.right) / 2, height - 6);
         travelTimeContext.save();
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             context.fillStyle = item.color;
             context.fill();
             context.fillStyle = '#0f172a';
-            context.font = '800 13px system-ui';
+            context.font = '800 14px system-ui';
             context.fillText(`${item.id} 관측소`, stationX + 11, stationY - 10);
         });
 
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             context.lineTo(x, y + 14);
             context.stroke();
             context.fillStyle = '#0f172a';
-            context.font = '900 13px system-ui';
+            context.font = '900 14px system-ui';
             context.fillText('내 예측', x + 15, y - 10);
         }
 
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
             context.lineTo(x - 9, y + 9);
             context.stroke();
             context.fillStyle = '#ffaaa4';
-            context.font = '900 13px system-ui';
+            context.font = '900 14px system-ui';
             context.fillText('진앙', x + 13, y + 4);
         }
     }

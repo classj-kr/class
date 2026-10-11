@@ -711,6 +711,17 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       const { values, symbols } = f.symbolTrap;
       assert.notEqual(values.indexOf(Math.max(...values)), symbols.indexOf(Math.max(...symbols)), label); tally('symbolTrap');
     }
+    if (f.partOf) {
+      // 부분은 전체의 얼마: 전체를 group 개씩 묶으면 total/group 묶음, 부분은 part/group 묶음이다.
+      const { total, group, part } = f.partOf;
+      assert.ok(total % group === 0 && part % group === 0 && part > 0 && part < total, label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [part / group, total / group], label); tally('partOf');
+    }
+    if (f.fracKinds) {
+      // 분수 여럿 가운데 진분수(분자 < 분모)·가분수(분자 >= 분모)의 수
+      const { list, want } = f.fracKinds, hit = list.filter(([n, d]) => (want === 'proper' ? n < d : n >= d)).length;
+      assert.ok(want === 'proper' || want === 'improper', label); assert.ok(hit >= 1 && hit < list.length, label); assert.equal(answerAt(item, 0), hit, label); tally('fracKinds');
+    }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
@@ -814,6 +825,13 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
     }
     // ── 분수와 소수 ──
     const piecesIn = (html) => [...String(html || '').matchAll(/aria-label="(?:원|사각형)을 (똑같이|크기가 다르게) (\d+)조각으로 나누고 (\d+)조각을 색칠"/g)].map((m) => ({ equal: m[1] === '똑같이', n: Number(m[2]), shaded: Number(m[3]) }));
+    if (f.mixedPieces) {
+      // 색칠한 그림 여럿으로 나타낸 수: 조각 수는 모두 같고, 색칠한 조각을 모두 세어 가분수의 분자와 대분수를 다시 읽는다.
+      const shapes = piecesIn(item.figure), n = shapes[0].n, total = shapes.reduce((s, x) => s + x.shaded, 0);
+      assert.ok(shapes.length >= 2 && shapes.every((x) => x.equal && x.n === n) && total > n && total % n !== 0, label);
+      const want = { mixed: [Math.trunc(total / n), total % n], both: [Math.trunc(total / n), total % n, total], improper: [total] }[f.mixedPieces];
+      assert.deepEqual(item.inputs.map((i) => i.answer), want, label); tally('mixedPieces');
+    }
     if (f.pieceRead) {
       // 색칠한 그림 하나: 그림 설명의 조각 수와 색칠한 수로 답을 다시 읽는다.
       const shapes = piecesIn(item.figure);

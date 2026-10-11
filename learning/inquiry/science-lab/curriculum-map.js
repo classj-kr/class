@@ -2358,6 +2358,204 @@ const scienceCurriculum = {
       "10과탐2-02-01"
     ],
     "diagnostic": true
+  },
+  "telescope-observation": {
+    "grade": "중1",
+    "grades": [
+      "중1",
+      "고2",
+      "고3"
+    ],
+    "level": "middle",
+    "title": "천체 망원경으로 달·행성 관측",
+    "subjects": [
+      "과학",
+      "행성우주과학"
+    ],
+    "codes": [
+      "9과07-01",
+      "12행우01-04"
+    ],
+    "diagnostic": true,
+    "defaultContext": "middle",
+    "courseContexts": {
+      "middle": {
+        "subjects": [
+          "과학"
+        ],
+        "codes": [
+          "9과07-01"
+        ],
+        "grades": [
+          "중1"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "telescope-observation@narrow",
+          "telescope-observation@blocked"
+        ],
+        "intro": "망원경을 설치하고 파인더로 달과 행성을 찾으세요. 접안렌즈의 초점을 맞춘 뒤 맨눈과 보이는 특징을 비교하세요."
+      },
+      "high-elective": {
+        "subjects": [
+          "행성우주과학"
+        ],
+        "codes": [
+          "12행우01-04"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "telescope-observation@power",
+          "telescope-observation@inference"
+        ],
+        "intro": "관측 조건을 선택하고 망원경으로 금성·목성·토성을 찾아보세요. 배율과 초점을 바꾸며 보이는 특징과 해석의 범위를 비교하세요."
+      }
+    }
+  },
+  "rotating-annulus": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "회전 수조의 온도차와 흐름",
+    "subjects": [
+      "지구시스템과학"
+    ],
+    "codes": [
+      "12지시03-06"
+    ],
+    "diagnostic": true,
+    "defaultContext": "high-elective",
+    "courseContexts": {
+      "high-elective": {
+        "subjects": [
+          "지구시스템과학"
+        ],
+        "codes": [
+          "12지시03-06"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "rotating-annulus@control",
+          "rotating-annulus@tracer"
+        ],
+        "intro": "안쪽을 차게, 바깥쪽을 따뜻하게 한 수조에서 회전 여부와 세기만 바꾸어 표지의 움직임을 비교하세요."
+      }
+    }
+  },
+  "sunspot-observation": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "태양 흑점의 이동과 자전",
+    "subjects": [
+      "행성우주과학"
+    ],
+    "codes": [
+      "12행우02-01"
+    ],
+    "diagnostic": true,
+    "defaultContext": "high-elective",
+    "courseContexts": {
+      "high-elective": {
+        "subjects": [
+          "행성우주과학"
+        ],
+        "codes": [
+          "12행우02-01"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "sunspot-observation@latitude",
+          "sunspot-observation@period"
+        ],
+        "intro": "서로 다른 날의 태양 영상에서 같은 흑점을 찾아 이동량을 재어 보세요."
+      }
+    }
+  },
+  "protein-interaction": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "단백질과 화합물의 상호작용",
+    "subjects": [
+      "생물의 유전"
+    ],
+    "codes": [
+      "12유전03-03"
+    ],
+    "diagnostic": true,
+    "defaultContext": "high-elective",
+    "courseContexts": {
+      "high-elective": {
+        "subjects": [
+          "생물의 유전"
+        ],
+        "codes": [
+          "12유전03-03"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "protein-interaction@target",
+          "protein-interaction@poses"
+        ],
+        "intro": "표적 단백질을 고르고 여러 화합물의 결합 배치와 에너지를 비교해 보세요."
+      }
+    }
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

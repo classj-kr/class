@@ -28,7 +28,7 @@ test('source references and unresolved procedures cannot become independent expe
  for(const id of plan.referenceActivities)assert.equal(byId[id].kind,'data-analysis',id);
  for(const id of plan.unresolvedActivities)assert.equal(byId[id].kind,'unresolved',id);
  const groups=plan.experimentGroups;
- assert.equal(groups.find(g=>g.activities.includes('9과07#1')),groups.find(g=>g.activities.includes('12행우01#2')));
+ for(const id of ['9과07#1','12행우01#2']){assert(!groups.some(g=>g.activities.includes(id)));assert(coverage.rows.find(r=>r.id===id).slugs.includes('telescope-observation'));}
  assert.equal(groups.find(g=>g.activities.includes('10과탐2-01#2')),groups.find(g=>g.activities.includes('12기환01#1')));
  const audit=require('../docs/science-lab-audit-2026-10-11/gap-triage.json');
  assert.equal(audit.requiredExperimentTotal,null);

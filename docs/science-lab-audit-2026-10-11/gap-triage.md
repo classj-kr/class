@@ -4,9 +4,9 @@
 
 **교육과정에 있는 모든 탐구활동을 실험으로 구현하지 않는다. 아래 제외 항목은 교육과정에서 삭제한 것이 아니라 사용자가 요청한 실험실의 범위 밖으로 분리한 것이다.**
 
-첫 정리에서 미연결 비실험 과제 24개를 뺐고, 남은 21개 원문 절차 대조에서 5개를 추가 제외했다. 전체 제외 기록은 32개다. 남은 15개는 실험·측정·관찰 9개, 관측 자료 해석 5개, 해당 교과서 절차 미확인 1개로 구분한다. 필수실험 확정 수가 아니다. [21개 후보의 원문 쪽·절차·판정](remaining-procedure-review.md).
+첫 정리에서 미연결 비실험 과제 24개를 뺐고, 남은 21개 원문 절차 대조에서 5개를 추가 제외했다. 전체 제외 기록은 32개다. 남은 10개는 실험·측정·관찰 4개, 관측 자료 해석 5개, 해당 교과서 절차 미확인 1개로 구분한다. 필수실험 확정 수가 아니다. [21개 후보의 원문 쪽·절차·판정](remaining-procedure-review.md).
 
-**미연결 15개를 신규 실험 목록으로 사용하지 않는다.** 실험·측정·관찰 9개 활동은 공통 절차를 묶은 7개 검토 묶음으로 정리했다. 자료 해석 5개는 참고 목록, 원문 미확인 1개는 근거 확인 목록으로 분리했다. 검토 묶음의 수는 새 앱 수나 필수실험 수가 아니다.
+**미연결 10개를 신규 실험 목록으로 사용하지 않는다.** 실험·측정·관찰 4개 활동은 공통 절차를 묶은 3개 검토 묶음으로 정리했다. 자료 해석 5개는 참고 목록, 원문 미확인 1개는 근거 확인 목록으로 분리했다. 검토 묶음의 수는 새 앱 수나 필수실험 수가 아니다.
 
 생활 기록 계산인 ‘하루 에너지 섭취·소비 비교’ 앱(energy-budget)을 학생용 경로·목록·문항에서 철회했다. 미래엔 세포와 물질대사 PDF 60~61쪽(인쇄 58~59쪽)은 조사·자료 분석으로 명시한다. 이전 HTML은 retired-non-experiments/energy-budget/index.html에 보존한다. 원본 교과서·평가자료는 유지한다.
 
@@ -53,13 +53,9 @@
 
 | 검토 묶음 | 원문 활동 | 처리 | 공통 절차 | 남은 차이 |
 |---|---|---|---|---|
-| 망원경으로 달·행성 관측 | [9과07#1](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L2045), [12행우01#2](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7903) | 공통 관측 절차를 함께 검토 · [night-sky](../../learning/inquiry/science-lab/night-sky/index.html), [planet-motion](../../learning/inquiry/science-lab/planet-motion/index.html) | 관측 시기·장소와 대상 선택, 망원경 설치, 대상의 특징 비교 | 중학교의 맨눈 비교와 고교의 행성 관측 범위는 각각 유지한다. 기존 앱은 하늘·궤도 모형으로 망원경 설치와 관측 절차를 제공하지 않는다. |
 | 주변 생물 관찰·동정 | [10과탐2-01#2](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3561), [12기환01#1](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L8647) | 공통 관찰 절차를 함께 검토 · [living-things](../../learning/inquiry/science-lab/living-things/index.html) | 학교·지역의 생물 관찰, 촬영, 특징에 따른 동정 | 공통과목의 구역·기간별 비교와 선택과목의 다섯 종류 이상 관찰 조건은 각각 유지한다. 초등 생물 카드 분류만으로 현장 관찰을 충족하지 않는다. |
 | 화학 반응 시연 | [10과탐1-02#4](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3461) | 기존 화학 실험에서 활용 범위 검토 · [neutralization-common](../../learning/inquiry/science-lab/neutralization-common/index.html), [redox](../../learning/inquiry/science-lab/redox/index.html) | 교과서가 제시한 산·염기, 산화·환원 등의 반응에서 하나를 골라 시연 | 특정 반응을 의무 지정한 활동이 아니다. 과학마술 전용 앱은 만들지 않고, 선택한 반응의 조건과 결과를 기존 실험에서 확인한다. 대본·발표 활동의 완료로 세지 않는다. |
 | 주변 오염물질 측정 | [10과탐2-01#5](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3567) | 측정 절차 검토 · [mcu-sampling](../../learning/inquiry/science-lab/mcu-sampling/index.html) | 오염물질·측정 장소·장치 선택, 현장 측정과 지역 자료 비교 | 기존 맥파·소음 센서 모형은 오염물질 측정 절차의 대체가 아니다. 물질별 센서와 측정 자료의 근거가 필요하다. |
-| 단백질·화합물 상호작용 | [12유전03#1](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7253) | 가상 실험 근거 검토 · [protein-folding](../../learning/inquiry/science-lab/protein-folding/index.html) | 표적 단백질과 후보 물질의 상호작용 결과 비교 | 기존 단백질 접기 앱에는 표적·후보 물질별 에너지 비교가 없다. 교과서 지정 가상 실험의 결과 근거를 확인해야 하며 임의 점수를 만들지 않는다. |
-| 회전 수조의 온도차·유체 관찰 | [12지시03#4](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7615) | 장치·유체 실험 검토 | 안팎 온도차와 회전 여부에 따른 중간 원통의 유체 비교 | 입자 이동 관찰을 포함한 장치 모형이 필요하다. 철회된 정성 도식과 기존 태풍 설명 모형으로 완료 처리하지 않는다. |
-| 태양 광구 관측과 흑점 이동 | [12행우02#1](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7945) | 관측 절차 검토 | 광구 관측과 시간·위도별 흑점 위치 측정 | 직접 관측 단계와 위성 영상 자료 해석 단계를 구별한다. 철회된 주기 계산기는 영상에서 위치를 측정하는 실험이 아니다. |
 
 ## 자료 해석 참고 — 독립 실험 구현 목록에서 제외
 
