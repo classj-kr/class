@@ -14,6 +14,7 @@
 //      분수·소수의 뜻보다 조건 풀이가 어려움의 대부분인 것: 하루 중 시간을 분수로(시각 셈이 숨어 있음), 접은 횟수로 조각 수 구하기,
 //        조건 셋에 맞는 분수(짝수 조건), 두 조건 묶음의 개수 견주기, 수 카드로 만든 소수를 모두 늘어놓아 세기·몇 번째로 작은 수,
 //        분모와 분자의 합으로 찾는 분수, 빈칸에 들어갈 수끼리 더하기(뜻 없는 덧셈)
+// 실력 문항의 잣대(2026-10-12): 어려움은 이 단원에서 배운 뜻을 정확히 아는가에서 나와야 한다. 맨 앞의 문항들이 그런 문항이다.
 // 묻는 말: 수나 값을 물을 때는 "~은?/~는?", 양을 물을 때는 "몇 ~인가?" 로 맺는다.
 (function (root) {
   'use strict';
@@ -29,6 +30,34 @@
   B.addGroup('3-1-6', {
     id: 'hard', title: '실력 문제', standard: FCOMPARE,
     types: [
+      H('h-frac-say', '분수에 대한 설명 가리기', '분수 설명의 참·거짓·비교식의 옳고 그름(심화 자료) — 분모가 같은 분수와 단위분수의 견주는 법을 함께 가리게', (d) => {
+        const n = d.int(4, 9), k = d.int(2, n - 1), [a, b] = d.until(() => [d.int(2, 9), d.int(2, 9)], ([x, y]) => x < y), m = d.int(6, 11), [p, q] = d.until(() => [d.int(1, m - 1), d.int(1, m - 1)], ([x, y]) => x > y);
+        const slip = d.bool();     // 단위분수 비교를 틀리게 할지, 분모가 같은 분수 비교를 틀리게 할지
+        const unit = slip ? [b, a] : [a, b], same = slip ? [p, q] : [q, p];
+        const rows = d.shuffle([
+          { text: `${fj(1, n, '은/는')} 전체를 똑같이 ${josa(n, '으로/로')} 나눈 것 중의 1이다.`, ok: true },
+          { text: `${fj(k, n, '은/는')} ${frac(1, n)}이 ${k}개인 수이다.`, ok: true },
+          { text: `${fj(1, unit[0], '은/는')} ${frac(1, unit[1])}보다 크다.`, ok: !slip, big: `1/${unit[0]}`, small: `1/${unit[1]}` },
+          { text: `${fj(same[0], m, '은/는')} ${frac(same[1], m)}보다 크다.`, ok: slip, big: `${same[0]}/${m}`, small: `${same[1]}/${m}` }
+        ]);
+        return C('분수에 대한 설명으로 옳지 않은 것은?', rows.map((row) => row.text), rows.findIndex((row) => !row.ok), {
+          explain: '단위분수는 분모가 작을수록 크고, 분모가 같은 분수는 분자가 클수록 크다.',
+          facts: { truth: rows.map((row) => row.ok), want: false, biggerClaims: rows.map((row, i) => (row.big ? [row.big, row.small, i] : null)).filter(Boolean) }
+        });
+      }),
+      H('h-deci-say', '소수에 대한 설명 가리기', '소수 설명의 옳고 그름·소수를 두고 바르게 말한 친구(기본 자료)', (d) => {
+        const k = d.int(2, 9), [w, j] = d.until(() => [d.int(1, 8), d.int(1, 9)], ([x, y]) => x !== y), p = d.until(() => d.int(2, 9), (v) => v !== k), slip = d.bool();
+        const rows = d.shuffle([
+          { text: '0.1이 10개이면 1이다.', ok: true },
+          { text: `0.${k}${tail(k, '은/는')} ${frac(1, 10)}이 ${k}개인 수이다.`, ok: true },
+          { text: `${w}.${j}${tail(j, '은/는')} 0.1이 ${slip ? j * 10 + w : w * 10 + j}개인 수이다.`, ok: !slip },
+          { text: slip ? `${fj(p, 10, '과/와')} 0.${p}${tail(p, '은/는')} 크기가 같다.` : `0.${p}${tail(p, '은/는')} ${frac(p, 10)}보다 크다.`, ok: slip }
+        ]);
+        return C('소수에 대한 설명으로 옳지 않은 것은?', rows.map((row) => row.text), rows.findIndex((row) => !row.ok), {
+          explain: slip ? `${w}.${j}${tail(j, '은/는')} 0.1이 ${w * 10 + j}개인 수이다.` : `${fj(p, 10, '과/와')} 0.${p}${tail(p, '은/는')} 크기가 같다.`,
+          facts: { truth: rows.map((row) => row.ok), want: false, tenthFacts: { w, j, said: slip ? j * 10 + w : w * 10 + j, slip } }
+        });
+      }, { standard: DECIMAL }),
       H('h-nolines', '나눈 선이 없는 그림의 분수', '천재 단원평가 심화 · 천재 수학독해', (d) => {
         // 한 칸만 색칠되어 있고 나머지에는 선이 없다 → 전체를 똑같이 6으로 나눈 것 중의 1
         const [rows, cols] = d.until(() => [d.int(2, 3), d.int(2, 4)], ([r, c]) => r * c >= 6);

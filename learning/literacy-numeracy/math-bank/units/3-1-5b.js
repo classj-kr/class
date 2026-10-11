@@ -13,6 +13,7 @@
 //      길이·시간 계산보다 조건 풀이가 어려움의 대부분인 것: 빨라지거나 늦어지는 시계, 교시 시간표, 쓰이지 않는 시각이 섞인 글,
 //        한 시간 안에 드는 활동 고르기, 가장 짧은 두 길 고르기, 격자 지도의 가장 빠른 길,
 //        단위가 다른 빈칸의 수끼리 더하기(cm의 수와 mm의 수를 뜻 없이 더함)
+// 실력 문항의 잣대(2026-10-12): 어려움은 이 단원에서 배운 뜻을 정확히 아는가에서 나와야 한다. 맨 앞의 문항들이 그런 문항이다.
 // 묻는 말: 수나 값을 물을 때는 "~은?/~는?", 양을 물을 때는 "몇 ~인가?" 로 맺는다.
 (function (root) {
   'use strict';
@@ -32,6 +33,32 @@
   B.addGroup('3-1-5', {
     id: 'hard', title: '실력 문제', standard: TIME,
     types: [
+      H('h-kind', '계산 결과가 시각인 것', '시간의 덧셈과 뺄셈(기본 자료) — 시각에 시간을 더하면 시각, 시각에서 시각을 빼면 시간임을 가리게', (d) => {
+        const hm = (h, m, hour) => `${h}${hour} ${m}분`, clockAt = () => [d.int(1, 5), d.int(11, 28)], long = () => [d.int(1, 3), d.int(11, 28)];
+        const a = clockAt(), s1 = long(), b = [d.int(7, 11), d.int(31, 55)], c = clockAt(), s2 = [d.int(2, 4), d.int(31, 55)], s3 = long(), s4 = [d.int(4, 6), d.int(31, 55)], s5 = long();
+        const rows = d.shuffle([
+          { text: `${hm(a[0], a[1], '시')} + ${hm(s1[0], s1[1], '시간')}`, kinds: ['at', '+', 'span'] },
+          { text: `${hm(b[0], b[1], '시')} − ${hm(c[0], c[1], '시')}`, kinds: ['at', '-', 'at'] },
+          { text: `${hm(s2[0], s2[1], '시간')} + ${hm(s3[0], s3[1], '시간')}`, kinds: ['span', '+', 'span'] },
+          { text: `${hm(s4[0], s4[1], '시간')} − ${hm(s5[0], s5[1], '시간')}`, kinds: ['span', '-', 'span'] }
+        ]);
+        return C('계산 결과가 시각인 것은?', rows.map((row) => row.text), rows.findIndex((row) => row.kinds.join('') === 'at+span'), {
+          explain: '시각에 시간을 더하면 시각이 된다. 시각에서 시각을 빼거나, 시간끼리 더하고 빼면 시간이 된다.', facts: { timeKinds: rows.map((row) => row.kinds) }
+        });
+      }),
+      H('h-second-say', '초에 대한 설명 가리기', '초에 관한 설명 중 틀린 것(기본 자료)', (d) => {
+        const m = d.int(1, 4), s = d.int(11, 48), k = d.until(() => d.int(2, 11), (v) => v !== 6), slip = d.bool();
+        const rows = d.shuffle([
+          { text: '초바늘이 작은 눈금 한 칸을 가는 데 걸리는 시간은 1초이다.', ok: true },
+          { text: '초바늘이 시계를 한 바퀴 도는 동안 긴바늘은 작은 눈금 한 칸을 간다.', ok: true },
+          { text: `${m}분 ${s}초는 ${slip ? m * 100 + s : m * 60 + s}초이다.`, ok: !slip },
+          { text: `초바늘이 숫자 ${josa(k, '을/를')} 가리키면 ${slip ? k * 5 : k}초를 나타낸다.`, ok: slip }
+        ]);
+        return C('초에 대한 설명으로 옳지 않은 것은?', rows.map((row) => row.text), rows.findIndex((row) => !row.ok), {
+          explain: slip ? `1분은 60초이므로 ${m}분 ${s}초는 ${m * 60 + s}초이다.` : `초바늘이 숫자 ${josa(k, '을/를')} 가리키면 ${k * 5}초를 나타낸다. 숫자 한 칸은 5초이다.`,
+          facts: { truth: rows.map((row) => row.ok), want: false, secFacts: { m, s, k, slip } }
+        });
+      }, { standard: SECOND }),
       H('h-zero', '0이 아닌 눈금에서 잰 길이', '천재 단원평가 심화', (d) => {
         // 왼쪽 끝을 눈금 2에 맞추고 잰 길이
         const from = d.int(1, 2) * 10, length = d.until(() => d.int(23, 38), (v) => v % 10 !== 0 && v % 10 !== 5), to = from + length;
