@@ -1,0 +1,258 @@
+{
+  "scope": "Authored questions reviewed against listed textbook procedures and available assessment explanations; browser tests are not independent content review",
+  "questions": [
+    {
+      "id": "pasteur#q1",
+      "sha256": "79edda9cb54fc514cd843ac063341af841426c4680488ca0b5ce6a462628b1cf",
+      "slug": "pasteur"
+    },
+    {
+      "id": "pasteur#q2",
+      "sha256": "34e0a7f67bccf37887d931e20b7d46d08ff23213e475e06727d68a8ab5fbaa11",
+      "slug": "pasteur"
+    },
+    {
+      "id": "pasteur#q3",
+      "sha256": "000e076a5d45cbf5efd11405be22d08d4ba25c8ffaf0a47d5b3f7bea11d5cf10",
+      "slug": "pasteur"
+    },
+    {
+      "id": "pasteur#q4",
+      "sha256": "2fd10f5ddba2a216f000c577e9760b55cec8d44e7404bb78165c73b1b50d89e8",
+      "slug": "pasteur"
+    },
+    {
+      "id": "newton-prism#q1",
+      "sha256": "e59fe84f891c94ef492b3d5e7aadb02c04cff41ef7a39ddc737320c169d33240",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "newton-prism#q2",
+      "sha256": "c55e6d82c0f74b0cd9d7fc30145e26356e7f73c5fad282f9d81bb127f50b33c9",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "newton-prism#q3",
+      "sha256": "1de3391ce67cb393ab5207e956b86608b45aba23d570cc8c0d95aea321770f37",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "newton-prism#q4",
+      "sha256": "b41b7d4937001fcd69b9e2cb8acb4563f22e679ad50076cb565626f8a9c222d5",
+      "slug": "newton-prism"
+    },
+    {
+      "id": "infection-prevention#q1",
+      "sha256": "e4a8e973ed87d57db19bbfe6bc1ed93bb8205f0ded143f812230c05618b21256",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "infection-prevention#q2",
+      "sha256": "82e5f9a464b21a0852fd444b39d772af77bb4d734ef65816bb20ec7d658b9979",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "infection-prevention#q3",
+      "sha256": "5a89a37f4813df8ef118149f6efd6089fb28f28e3afaa2071f4c05f4fbc05cf7",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "infection-prevention#q4",
+      "sha256": "375d0127ecbf00e3f9b61be34b47b4246216b60a912b385c6c53517dce95e1bb",
+      "slug": "infection-prevention"
+    },
+    {
+      "id": "mendeleev#q1",
+      "sha256": "9d67789b29882fc00ee89adb86e6045e7944cdfea9b33b3877cd485c931d49f6",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "mendeleev#q2",
+      "sha256": "12efb541480c22d6bba5d7c6fb0f021b124c072398134b94d0d9c54fe01d85e0",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "mendeleev#q3",
+      "sha256": "c97b6c110a5e5fc027d9634b428933abff87af19ebf9f5663b6180140cbbe810",
+      "slug": "mendeleev"
+    },
+    {
+      "id": "mendeleev#q4",
+      "sha256": "3c0e591d1299d8191c27cf471809f65e4f7140cca97809b6ce54eb63e4eed5e5",
+      "slug": "mendeleev"
+    }
+  ],
+  "followups": [
+    {
+      "id": "mendeleev@formula-transfer",
+      "sha256": "e1fed36d79ef0a1063064283db66131782c44065032f9446470a33c05316af43"
+    },
+    {
+      "id": "mendeleev@evidence-transfer",
+      "sha256": "714afc63aa446cb965aed972ee799061db523c79c85d75aa40be16a31ef9cea1"
+    },
+    {
+      "id": "pasteur@sealed-transfer",
+      "sha256": "36e397777457eea75b796fda7b282785d11d8ac165739656d599ec81919a39df"
+    },
+    {
+      "id": "pasteur@air-transfer",
+      "sha256": "838034853a230f82581993b93b25c516ac5385e2dc25635fb2632c02c9c76f8c"
+    },
+    {
+      "id": "newton-prism@green-transfer",
+      "sha256": "6851003dce2e40e2c5cd7cc020087546209747c3e9c11e899a244f692b39d28a"
+    },
+    {
+      "id": "newton-prism@screen-transfer",
+      "sha256": "0bfcea3af3dd59c0748d42c958fee556377a63faac3db877507983eae863f9fb"
+    },
+    {
+      "id": "newton-prism@source-transfer",
+      "sha256": "866543d06576a45af211d38ec18f52e70dc5ed471a7b0646da761182e3240ee6"
+    },
+    {
+      "id": "infection-prevention@control-transfer",
+      "sha256": "74c45a720d5fe7d4a13f4e14f2df6388e92e9d03334980763659ba10a01d6fec"
+    },
+    {
+      "id": "infection-prevention@route-transfer",
+      "sha256": "9344ea3f9fd6aa6f1153706dcc1ef82181263a798c5349c9f8bf37167e93b085"
+    }
+  ],
+  "sources": [
+    {
+      "slug": "mendeleev",
+      "source": {
+        "id": "764c91a83f8bf462",
+        "pages": [
+          27,
+          28,
+          75,
+          77
+        ],
+        "printedPages": [
+          27,
+          28,
+          75,
+          77
+        ]
+      },
+      "variantSources": [
+        {
+          "id": "ee3ee343af97cac2",
+          "pages": [
+            21,
+            22,
+            79
+          ],
+          "part": "성질에서 원소 기호를 찾는 17장 카드와 현대 주기율표 비교: 다른 카드 구성이므로 현재 19장 활동과 구별"
+        }
+      ],
+      "assessmentSources": [
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            31,
+            70
+          ],
+          "part": "PDF 31쪽 07·08번과 70쪽 해설: 원자량과 화학식에 따른 배열, 빈칸의 의미. 기본·전이 문항의 판단 근거 대조"
+        }
+      ],
+      "boundary": "미래엔의 임의 기호와 활동용 원자량을 사용하는 부분 배열이다. 현대 주기율표 전체나 모든 출판사의 카드 활동을 완료한 것이 아니다. 천재 17장 카드에서 성질만으로 원소 기호를 찾는 절차 및 모둠별 자유 배열·토론은 미구현이다."
+    },
+    {
+      "slug": "pasteur",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          8,
+          9,
+          10
+        ],
+        "printedPages": [
+          33,
+          34,
+          35
+        ]
+      },
+      "variantSources": [],
+      "assessmentSources": [],
+      "boundary": "교과서의 역사적 배양액 실험을 정성적으로 재현한다. 우유 100 mL·끓인 뒤 4일 관찰의 실제 재연, 미생물 배양 속도와 냄새 측정은 제공하지 않는다."
+    },
+    {
+      "slug": "newton-prism",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          5,
+          6
+        ],
+        "printedPages": [
+          30,
+          31
+        ]
+      },
+      "variantSources": [
+        {
+          "id": "ee3ee343af97cac2",
+          "pages": [
+            47,
+            48,
+            49
+          ],
+          "part": "백색광 분산·물을 채운 둥근 컵의 합성·빨간 빛 재통과"
+        },
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            45,
+            46
+          ],
+          "part": "백열전구·볼록 렌즈의 합성 및 고정된 두 번째 프리즘 변형 절차"
+        }
+      ],
+      "assessmentSources": [
+        {
+          "id": "764c91a83f8bf462",
+          "pages": [
+            65,
+            71
+          ],
+          "part": "PDF 65쪽 07번과 71쪽 정답: 백열전구와 RGB LED의 스펙트럼 비교"
+        }
+      ],
+      "boundary": "대표 색 광선과 이상적인 합성 위치를 쓰는 모식도. 실제 광원별 방출 스펙트럼·색수차·정량 분광 측정은 제공하지 않는다. 선택한 색에 맞추어 두 번째 프리즘이 이동하므로 미래엔의 세 슬릿·고정 두 번째 프리즘으로 동일 입사 조건을 유지하는 색별 굴절 비교는 구현 완료로 판정하지 않는다."
+    },
+    {
+      "slug": "infection-prevention",
+      "source": {
+        "id": "98fd4b1d24cbec64",
+        "pages": [
+          11,
+          12,
+          17,
+          18
+        ],
+        "printedPages": [
+          94,
+          95,
+          100,
+          101
+        ]
+      },
+      "variantSources": [],
+      "assessmentSources": [
+        {
+          "id": "6ed679a59c21c7a0",
+          "part": "형성평가 기본·보충·심화와 정답·해설"
+        },
+        {
+          "id": "c645186ae5280481",
+          "part": "형성평가 심화 손 씻기 비교와 정답·해설"
+        }
+      ],
+      "boundary": "물방울과 형광 로션의 정성 모형이다. 모형 자국은 실측값·감염 확률·예방 효과의 수치가 아니다. 접촉 놀이는 한 차례에 각 사람 한 번의 접촉으로 단순화했다."
+    }
+  ]
+}

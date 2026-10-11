@@ -114,7 +114,7 @@
             if(switcher)switcher.hidden=buttons.length===1;
             var key=buttons[index].dataset.scene;
             var aliases={main:app==='skeleton'?'joint':'alveoli',path:'exchange',micro:'sarcomere',macro:'joint',gas:'alveoli',two:'exchange',twoplaces:'exchange',breath:'motion',arm:'joint',sensory:'eye'};
-            var g=(app==='excretion'&&window.ExcretionLearning&&window.ExcretionLearning.guide(key))||(app==='circulation'&&window.CirculationLearning&&window.CirculationLearning.guide(key))||guides[app][key]||guides[app][aliases[key]];
+            var g=(app==='respiration'&&window.RespirationLearning&&window.RespirationLearning.guide(key))||(app==='excretion'&&window.ExcretionLearning&&window.ExcretionLearning.guide(key))||(app==='circulation'&&window.CirculationLearning&&window.CirculationLearning.guide(key))||guides[app][key]||guides[app][aliases[key]];
             if(!g){card.hidden=true;return;}
             card.hidden=false;
             ['.model-purpose','.model-task'].forEach(function(s,i){card.querySelector(s).textContent=g[i];});

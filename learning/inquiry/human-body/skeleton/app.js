@@ -666,8 +666,8 @@
                 btn.classList.add('active');
                 currentSceneKey = btn.dataset.scene;
                 isFlexing=false;isExtending=false;
-                if(flexBtn)flexBtn.textContent=currentSceneKey==='sarcomere'?'근절 수축':'팔 굽히기 (이두근 수축)';
-                if(extendBtn)extendBtn.textContent=currentSceneKey==='sarcomere'?'근절 이완':'팔 펴기 (삼두근 수축)';
+                if(flexBtn)flexBtn.textContent=currentSceneKey==='sarcomere'?'근절 수축':'팔 굽히기';
+                if(extendBtn)extendBtn.textContent=currentSceneKey==='sarcomere'?'근절 이완':'팔 펴기';
                 renderQuizSkeleton();
 
                 if (skeletonHudText) {

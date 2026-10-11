@@ -5,7 +5,8 @@
     const topics = {
         nervous: ['middle', 'high'],
         homeostasis: ['middle', 'high'],
-        immune: ['middle', 'high']
+        immune: ['high'],
+        skeleton: ['elementary']
     };
     const elementaryNames = {
         digestion: '소화기관', circulation: '순환기관', respiration: '호흡기관',
@@ -14,7 +15,20 @@
     function supports(topic, level) {
         return (topics[topic] || levels).includes(level);
     }
-    window.BodyAvailability = { supports };
+    // 2022 [6과04], [9과13], [9과20]. Detailed immune pathways are [12생과02].
+    const sceneScope = {
+        digestion: { elementary: ['torso'] },
+        circulation: { elementary: ['heart'] },
+        respiration: { elementary: ['breath'] },
+        excretion: { elementary: ['torso'] },
+        nervous: { middle: ['brain', 'reflex', 'sensory', 'ear'] },
+        skeleton: { elementary: ['joint'] }
+    };
+    function sceneSupports(topic, scene, level) {
+        const allowed = sceneScope[topic]?.[level];
+        return supports(topic, level) && (!allowed || allowed.includes(scene));
+    }
+    window.BodyAvailability = { supports, sceneSupports };
     const parts = location.pathname.split('/').filter(Boolean);
     if (parts.at(-1) === 'index.html') parts.pop();
     const topic = parts.at(-1);
@@ -37,6 +51,16 @@
         if (isHub) school.mount(document.querySelector('.hub-school-level'));
         function update(level) {
             if (!route(level)) return;
+            if (!isHub) {
+                const buttons = [...document.querySelectorAll('.scene-btn')];
+                buttons.forEach(button => {
+                    button.hidden = !sceneSupports(topic, button.dataset.scene, level);
+                    button.disabled = button.hidden;
+                });
+                if (buttons.some(button => button.classList.contains('active') && button.hidden)) {
+                    buttons.find(button => !button.hidden)?.click();
+                }
+            }
             if (isHub) document.querySelectorAll('.hub-card').forEach(card => {
                 const destination = new URL(card.getAttribute('href'), location.href);
                 const cardTopic = destination.pathname.split('/').filter(Boolean).at(-1);
@@ -53,6 +77,8 @@
         }
         school.subscribe(update);
         update(school.value);
+        const bar = document.querySelector('.scene-switcher');
+        if (bar) new MutationObserver(() => update(school.value)).observe(bar, {childList:true});
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
     else init();

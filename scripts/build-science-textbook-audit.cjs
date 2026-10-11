@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..'),out='docs/science-lab-audit-2026-10-11';
 const all=process.argv.includes('--all');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'tmp/science-audit-2026-10-11/'+(all?'manifest-all.json':'manifest.json')),'utf8'));
-const reviews=['source-review.cjs',...(all?['source-review-expanded.cjs','source-review-life-earth.cjs']:[])].flatMap(f=>require('../'+out+'/'+f));
+const reviews=['source-review.cjs',...(all?['source-review-expanded.cjs','source-review-life-earth.cjs','source-review-restored.cjs']:[])].flatMap(f=>require('../'+out+'/'+f));
 const map=require('../learning/inquiry/science-lab/curriculum-map.js');
 const bank=require('../learning/inquiry/science-lab/exam-bank.js');
 const activityTools=require('./science-activity-tools.cjs');

@@ -34,11 +34,11 @@
     var bicepsObj = {}, tricepsObj = {};
 
     var LABELS = [
-        { id: 'humerus', text: '위팔뼈 (상완골)', ax: 292, ay: 128, sx: 452, sy: 152 },
-        { id: 'triceps', text: '위팔 세갈래근 (팔 펴기)', ax: 232, ay: 300, sx: 440, sy: 260 },
-        { id: 'joint', text: '팔꿈치 관절 (연골 · 윤활액)', ax: 238, ay: 452, sx: 470, sy: 370 },
-        { id: 'forearm', text: '아래팔뼈 (노뼈 · 자뼈)', ax: 248, ay: 604, sx: 450, sy: 520 },
-        { id: 'biceps', text: '위팔 두갈래근 (팔 굽히기)', ax: 768, ay: 210, sx: 505, sy: 260 },
+        { id: 'humerus', text: '위팔뼈', ax: 292, ay: 128, sx: 452, sy: 152 },
+        { id: 'triceps', text: '위팔 뒤쪽 근육', ax: 232, ay: 300, sx: 440, sy: 260 },
+        { id: 'joint', text: '팔꿈치 관절', ax: 238, ay: 452, sx: 470, sy: 370 },
+        { id: 'forearm', text: '아래팔뼈', ax: 248, ay: 604, sx: 450, sy: 520 },
+        { id: 'biceps', text: '위팔 앞쪽 근육', ax: 768, ay: 210, sx: 505, sy: 260 },
         { id: 'tendon', text: '힘줄 — 근육과 뼈를 잇는다', ax: 784, ay: 350, sx: 520, sy: 420 }
     ];
 
@@ -569,8 +569,8 @@
                 var details = {
                     humerus: '어깨에서 팔꿈치까지 이어지는 위팔의 뼈입니다.',
                     triceps: '팔을 펼 때 수축하고, 굽힐 때 이완하는 근육입니다.',
-                    joint: '팔꿈치에서 뼈가 만납니다. 연골과 윤활액이 마찰을 줄입니다.',
-                    forearm: '아래팔에는 노뼈와 자뼈 두 개가 있습니다.',
+                    joint: '위팔뼈와 아래팔뼈가 만나는 곳입니다. 이곳을 중심으로 팔을 굽히고 펼 수 있습니다.',
+                    forearm: '팔꿈치에서 손목까지 이어지는 두 개의 뼈입니다.',
                     biceps: '팔을 굽힐 때 수축하고, 펼 때 이완하는 근육입니다.',
                     tendon: '근육의 힘을 뼈로 전달하는 연결 조직입니다.'
                 };

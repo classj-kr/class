@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const base=path.resolve(__dirname,'../docs/science-lab-audit-2026-10-11');
 const read=p=>JSON.parse(fs.readFileSync(path.join(base,p),'utf8'));
+const write=(file,text)=>{if(!fs.existsSync(file)||fs.readFileSync(file,'utf8')!==text)fs.writeFileSync(file,text);};
 const appFile=fs.existsSync(path.join(base,'final-all-controls/summary-chromium.json'))?'final-all-controls/summary-chromium.json':'whole-app-visual/summary-chromium.json';
 const apps=read(appFile),panels=read('whole-panel-visual/inventory-chromium.json'),evidence=read('evidence-index.json');
 const map=require('../learning/inquiry/science-lab/curriculum-map.js');
@@ -50,19 +51,20 @@ const activityTests=Object.fromEntries(['tests','pass','fail'].map(k=>[k,Number(
 const supplemental=fs.existsSync(path.join(base,'observation-repairs/inventory-chromium.json'))?read('observation-repairs/inventory-chromium.json'):null;
 const byApp=Object.fromEntries(Object.keys(map).map(slug=>[slug,{slug,title:map[slug].title,grades:map[slug].grades,inspection:apps.reports.find(r=>r.slug===slug),panelShots:panels.shots.filter(s=>s.slug===slug).map(s=>s.file),sourceReview:evidence.apps.find(a=>a.slug===slug)?.reviewedEvidence||[],fix:fixes.find(f=>f[0]===slug)?.slice(1)||null,open:[]} ]));
 const result={scope:'2022 only; execution, visual inspection and bounded source review kept separate',apps:Object.keys(byApp).length,requiredExperimentTotal:null,appCountPolicy:'Observed app count, not an experiment total, target, limit or coverage denominator',modes:apps.modes,controlCases:apps.cases,controlRecord:appFile,panelScreenshots:panels.screenshots,tests,activityTests,toolTests,activityCoverage:coverage.total,textbookCandidates:census.summary,questionReview:questionReview.counts,newTools,fixes,gaps,evidenceSummary:evidence.summary,byApp};
-fs.writeFileSync(path.join(base,'whole-review.json'),JSON.stringify(result,null,2)+'\n');
+write(path.join(base,'whole-review.json'),JSON.stringify(result,null,2)+'\n');
 const link=(label,file)=>`[${label}](<${path.join(base,file).split(path.sep).join('/')}>)`;
 const n=v=>Number(v).toLocaleString('en-US');
 const e=evidence.summary;
 const lines=[
  '# 과학실험실 전체 검토 결과','',
+ '현재 추가: 원소 카드 배열·백조목 플라스크·뉴턴의 프리즘·분무/접촉/손 씻기를 학생용 실험과 객관식 문항으로 복원했다. [새 실험의 원문·구현·검증 범위](restored-experiments.md)를 확인한다. 아래 이전 전수 로그의 앱 수와 새 구현을 구분한다. 필수실험 총수는 아직 미확정이다.','',
  '현재 학생 동선은 실험 → 객관식 응답 → 응답별 해설과 재확인으로 수정했다. 별도 문제 목록·활동지로 나가는 첫 화면 버튼을 제거했다. 현재 변경의 범위·검사는 [학생 동선 및 채점 교정](assessment-repair.md)을 확인한다. 이전 화면·실행 로그는 당시 버전의 기록이다.','',
- `**104는 앱 수이며 필수실험 총수가 아니다. 교육과정 활동 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개는 대응 구현이 확인되지 않았고, 연결된 ${coverage.total.linked}개에도 부분 모형이 포함된다. 전체 포함으로 승인할 수 없다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 페이지를 철회해 제공 중인 실험 수에서 제외했다. 261은 모든 출판사의 모든 실험을 합친 확정 총수도 아니다.`,'',
+ `**앱 수는 필수실험 총수가 아니다. 교육과정 활동 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개는 대응 구현이 확인되지 않았고, 연결된 ${coverage.total.linked}개에도 부분 모형이 포함된다. 전체 포함으로 승인할 수 없다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 페이지를 철회해 제공 중인 실험 수에서 제외했다. 261은 모든 출판사의 모든 실험을 합친 확정 총수도 아니다.`,'',
  '## 검토 범위와 결과','',
  `- 전체 104개 앱, ${apps.modes}개 모드, ${n(apps.cases)}개 조작 사례를 검사했다. 범주별 버튼·선택지와 수치 범위의 최솟값·중간값·최댓값이며, 모든 변수의 전체 조합은 아니다. 최종 재실행 기록은 ${link('전체 조작 검사',appFile)}이다.`,
  `- 첫 전체 화면 검토는 기본 모드 182장(21쪽)과 보충 36개 앱 경로·추가 실험 25개 패널의 ${panels.screenshots}장(39쪽)을 대상으로 했다. 화면 모음을 직접 보고 발견 항목을 원본 크기와 코드로 확인했다. 수정된 네 관찰 패널은 ${supplemental?.screenshots||0}장으로 다시 캡처했다.`,
  '- 24개 앱의 확인된 계산·채점·장치·그림·설명 결함을 교정했다. 처음 남겨 둔 연소 검출·단열·소리·우리은하 표현 4건은 이번 수정으로 해소했다. 이것이 모든 과학 내용에 결함이 없다는 인증을 뜻하지는 않는다.',
- `- 경로 또는 수집 기록으로 2022 판본을 확인한 ${n(e.sourcePaths)}개 자료에서 SHA-256 중복 ${n(e.duplicatePaths)}개를 제외한 ${n(e.sources)}개 자료(PDF ${n(e.pdfs)}개, HWP ${n(e.assessmentDocuments)}개)를 색인화했다. ${n(e.extractedSources)}개는 텍스트 추출, ${e.extractionErrors}개는 추출 오류로 기록했다. ${e.reviewedSources}개 자료의 ${e.reviewRecords}건 발췌를 104개 앱의 해당 원리·조건·표현과 대조했고, 추가 도구 ${e.activityReviewRecords}개의 근거 페이지·지원 범위를 별도로 기록했다. ${link('근거 대조표','source-comparison.md')}.`,
+ `- 경로 또는 수집 기록으로 2022 판본을 확인한 ${n(e.sourcePaths)}개 자료에서 SHA-256 중복 ${n(e.duplicatePaths)}개를 제외한 ${n(e.sources)}개 자료(PDF ${n(e.pdfs)}개, HWP ${n(e.assessmentDocuments)}개)를 색인화했다. ${n(e.extractedSources)}개는 텍스트 추출, ${e.extractionErrors}개는 추출 오류로 기록했다. ${e.reviewedSources}개 자료의 ${e.reviewRecords}건 발췌를 ${e.apps}개 앱의 해당 원리·조건·표현과 대조했고, 추가 도구 ${e.activityReviewRecords}개의 근거 페이지·지원 범위를 별도로 기록했다. ${link('근거 대조표','source-comparison.md')}.`,
  `- PDF ${n(e.pdfPages)}쪽 중 텍스트가 비어 있는 쪽은 ${e.blankPdfPages}쪽이며, 텍스트가 전혀 없는 문서는 ${e.documentsWithoutText}개다. 텍스트 미추출 문서에는 추출 오류가 포함된다. 빈 쪽·이미지·수식은 텍스트 추출만으로 검증할 수 없다. 추출 성공은 전체 문서의 육안 검토 완료가 아니다.`,
  '- 기존 416문항·문제은행 241문항, 총 657문항의 문제·보기·정답·해설을 모두 직접 읽고 76개 문항의 조건·보기·해설을 수정했다. 정답 유일성, 계산, 적용 조건과 일반화 범위를 검토했다. 각 문항마다 독립 원문 정답표를 확보했다는 뜻은 아니다. 변경 내역과 내용 해시는 '+link('객관식 내용 검토','question-review.md')+'에 있다.',
  `- 이전 색인은 파일명에 연도가 없는 자료를 누락했다. 수집 기록의 2022 원본 URL로 판본을 확인하도록 수정했다. 현재 ${n(e.receiptClassifiedSources)}개 고유 자료에 수집 기록 근거가 있으며, 추출 도구에서 이 근거를 보존한다. 교과서 PDF ${census.summary.textbookPDFs}개와 탐구 활동지 ${census.summary.activitySheets}개를 별도로 분류했다. ${link('교과서 탐구 대조 대기표','textbook-activity-census.md')}. 제목 후보와 활동지 파일은 중복·단계 범위 검토 전이므로 필수실험 수로 세지 않는다.`,
@@ -82,33 +84,33 @@ const lines=[
  'Chromium에서는 실제 AudioContext로 비교음을 재생했다. 이 Windows WebKit 실행 환경의 오디오 장치 초기화가 불가능한 경우에는 재생 불가 안내, 버튼 복구와 파형 대체를 확인하며 실제 소리 재생 성공으로 계산하지 않는다.',
  '첫 전수 실행의 예측 경고 34건은 세 앱의 내부 verdict와 yes/no UI를 잘못 비교한 검사기 오탐이었다. 검사기를 교정하고 최종 전체 실행으로 재확인했다. 초기 기록과 중간 실패 로그는 이력을 위해 보존했다.',
  '`-end-` 캡처는 조건 순회 후의 화면이며 모든 애니메이션의 종료 시점을 뜻하지 않는다. 애니메이션 결과 동기화는 별도 회귀 검사로 확인한다.',
- '과학실험실의 래스터 자산 8개는 모두 WebP다. 신규·수정 캡처도 무손실 WebP로 저장한다. SVG 도식은 SVG를 유지한다. 공유 자산의 콘텐츠 해시를 로더와 104개 앱 HTML까지 갱신했다. 사용자 첨부 문제가 캐시 때문에 발생했다고 단정하지 않는다.','',
+ '과학실험실의 래스터 자산 8개는 모두 WebP다. 신규·수정 캡처도 무손실 WebP로 저장한다. SVG 도식은 SVG를 유지한다. 공유 자산의 콘텐츠 해시를 로더와 현재 앱 HTML까지 갱신했다. 사용자 첨부 문제가 캐시 때문에 발생했다고 단정하지 않는다.','',
  '## 필수 활동의 누락','',
- `원문 112단원·473성취기준·261탐구활동을 앱 연결표에서 역방향으로 확인했다. 고교 과학탐구실험1·2의 16활동 중 학생용 연결은 3개이며, 철회한 활동지 시안은 포함하지 않는다. 전체 미연결 ${coverage.total.unlinked}개 목록과 부분 구현의 범위는 ${link('활동 대조표','activity-coverage.md')}에 있다.`,
+ `원문 112단원·473성취기준·261탐구활동을 앱 연결표에서 역방향으로 확인했다. 고교 과학탐구실험1·2의 16활동 중 학생용 연결은 ${coverage.summary.find(s=>s.group==='고교 과학탐구실험1·2').linked}개이며, 철회한 활동지 시안은 포함하지 않는다. 전체 미연결 ${coverage.total.unlinked}개 목록과 부분 구현의 범위는 ${link('활동 대조표','activity-coverage.md')}에 있다.`,
  '실제 표본·센서 측정·장치 제작·장기 관측·자료 조사는 설명 그림이나 모형 클릭만으로 이수했다고 판정하지 않는다. 가설·결론 입력과 저장·다운로드를 요구하던 별도 활동지 페이지는 철회했다. 기존 코드는 내부 모형 검증용으로 보존하며 학생용 실험 제공으로 세지 않는다. 새 도구의 종류와 남는 범위를 source-comparison.md에 명시했다. 교과서 후보 전체를 개별 실험 단위로 검토·구현한 상태는 아니다.',
- '104개 모두에 발췌 대조 기록이 생겼지만 각각의 모든 모드·문항·현실 실험 절차를 원문으로 완전 검증한 상태는 아니다. 남는 검토 범위를 숨기거나 관련 단원 앱 수를 교육과정 충족률로 바꾸지 않는다.','',
+ `${e.apps}개 앱 모두에 발췌 대조 기록이 있지만 각각의 모든 모드·문항·현실 실험 절차를 원문으로 완전 검증한 상태는 아니다. 남는 검토 범위를 숨기거나 관련 단원 앱 수를 교육과정 충족률로 바꾸지 않는다.`,'',
  '## 검사 자료','',
  '- '+link('앱별 실행·수정·원문 연결 구조화 기록','whole-review.json'),
  '- '+link('원문 해시·문서별 추출 상태·발췌 기록','evidence-index.json'),
  '- '+link('출판사 발췌 대조','source-comparison.md'),
  '- '+link('2022 수집 경로 집계','source-scope-inventory.json'),
  '- '+link('수정 관찰 패널 캡처','observation-repairs/inventory-chromium.json'),
- '- '+link('최종 전체 테스트','content-tests.log'),'','## 104개 앱의 검토 범위','',
+ '- '+link('이전 전수 테스트','content-tests.log'),'','## 앱별 검토 범위','',
  '| 앱 | 학년 | 모드 / 조작 사례 | 첫 추가 패널 화면 | 원문 발췌 대조 | 확인 결함 |','|---|---|---:|---:|---|---|',
- ...Object.values(byApp).map(a=>`| ${a.slug} · ${a.title} | ${a.grades.join('·')} | ${a.inspection.modes.length} / ${a.inspection.cases} | ${a.panelShots.length} | ${a.sourceReview.length}개 자료의 일부 원리 | ${a.fix?'수정·재검사':'전수 실행·화면 검토; 전체 과학 내용 승인 아님'} |`),''
+ ...Object.values(byApp).map(a=>`| ${a.slug} · ${a.title} | ${a.grades.join('·')} | ${a.inspection?a.inspection.modes.length+' / '+a.inspection.cases:'새 실험 별도 검사'} | ${a.panelShots.length} | ${a.sourceReview.length}개 자료의 일부 원리 | ${a.inspection?(a.fix?'수정·재검사':'기존 전수 실행·화면 검토; 전체 과학 내용 승인 아님'):'restored-experiments.md의 원문·조작·문항 검사; 전체 교과서 완료 아님'} |`),''
 ];
-fs.writeFileSync(path.join(base,'whole-review.md'),lines.join('\n'));
-fs.writeFileSync(path.join(base,'README.md'),[
+write(path.join(base,'whole-review.md'),lines.join('\n'));
+write(path.join(base,'README.md'),[
  '# 과학실험 앱 검증 — 2026-10-11','',
- '현재 변경: 별도 활동지 동선을 철회하고 기존 앱의 객관식 채점에서 첫 응답과 재도전을 구분한다. 앱 수를 개별 실험 수나 구현 목표로 세지 않는다. [현재 채점·학생 동선 교정](assessment-repair.md)과 [현재 검사 로그](assessment-final-recheck.log)를 우선 확인한다. 아래 기존 실행·화면 로그는 해당 시점의 증거다.','',
- `**필수실험 전체 포함 상태가 아니다. 104는 앱 수이며, 교육과정 탐구 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개에는 대응 구현이 확인되지 않았다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 실험 수에서 제외했다. 연결된 ${coverage.total.linked}개는 활동 전체 완료 수가 아니다. ${link('누락 활동과 집계 기준','activity-coverage.md')}.`,'',
+ '현재 변경: 원소 카드 배열·백조목 플라스크·뉴턴의 프리즘·분무/접촉/손 씻기를 실험과 객관식 문항으로 복원했다. [현재 추가 구현과 원문 근거](restored-experiments.md), [전체 앱 재검사](restored-four-tests.log), [마지막 화면 보완 재검사](restored-four-final.log)를 우선 확인한다. 기존 앱 수를 실험의 목표·상한으로 세지 않는다. 필수실험 총수는 미확정이다. 아래 기존 실행·화면 로그는 해당 시점의 증거다.','',
+ `**필수실험 전체 포함 상태가 아니다. 앱 수와 실험 수는 다르며, 교육과정 탐구 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개에는 대응 구현이 확인되지 않았다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 실험 수에서 제외했다. 연결된 ${coverage.total.linked}개는 활동 전체 완료 수가 아니다. ${link('누락 활동과 집계 기준','activity-coverage.md')}.`,'',
  `104개 앱·${apps.modes}개 모드·${n(apps.cases)}개 조작 사례와 보충·추가 탐구를 검토하여 24개 앱의 확인 결함을 수정했다. 남겨 두었던 연소 검출·단열·소리·우리은하 관찰 표현 4건도 보강했다. ${link('앱별 문제·수정·검증 결과','whole-review.md')}.`,'',
- `경로·수집 기록으로 2022를 확인한 ${n(e.sourcePaths)}개 경로에서 중복을 제외한 ${n(e.sources)}개 문서를 색인화했다. ${n(e.extractedSources)}개 텍스트를 추출했고 ${e.extractionErrors}개는 오류로 남겼다. 이전에 누락했던 연도 없는 파일도 수집 기록 근거로 포함했다. 104개 앱에 대한 ${e.reviewRecords}건 발췌 대조와 새 도구 ${e.activityReviewRecords}개의 근거를 기록했다. 657문항을 모두 읽어 76개를 수정했다. 발췌 대조가 문서 전체의 검토 완료를 뜻하지는 않는다. ${link('원문 위치와 검토 범위','source-comparison.md')}.`,'',
+ `경로·수집 기록으로 2022를 확인한 ${n(e.sourcePaths)}개 경로에서 중복을 제외한 ${n(e.sources)}개 문서를 색인화했다. ${n(e.extractedSources)}개 텍스트를 추출했고 ${e.extractionErrors}개는 오류로 남겼다. 이전에 누락했던 연도 없는 파일도 수집 기록 근거로 포함했다. ${e.apps}개 앱에 대한 ${e.reviewRecords}건 발췌 대조와 새 도구 ${e.activityReviewRecords}개의 근거를 기록했다. 657문항을 모두 읽어 76개를 수정했다. 발췌 대조가 문서 전체의 검토 완료를 뜻하지는 않는다. ${link('원문 위치와 검토 범위','source-comparison.md')}.`,'',
  `최종 전체 테스트: ${tests.tests===null?'실행 중':`${tests.tests}개 중 ${tests.passed}개 통과·${tests.failed}개 실패`}. ${link('실행 로그','content-tests.log')}. 기존 중간 로그는 당시 결과이며 최종 결과와 구별한다.`,'',
  `철회 전 활동지 시안 기록: ${toolTests.tests}개 검사 중 ${toolTests.pass}개 통과·${toolTests.fail}개 실패. ${link('계산·입력·브라우저·저장 검사','activity-tools-final.log')}.`,'',
  '과학실험실의 래스터 자산 8개와 이번 캡처는 WebP다. SVG 모형은 유지했다. 2015 교육과정은 제외했다.','',
  '- '+link('657문항 내용 검토와 76개 수정','question-review.md'),
- '- '+link('전체 104개 앱 검토표','whole-review.md'),
+ '- '+link('기존 앱과 새 실험의 검토표','whole-review.md'),
  '- '+link('구조화된 검토 기록','whole-review.json'),
  '- '+link('2022 탐구활동 261개 연결·누락','activity-coverage.md'),
  '- '+link('수집 교과서 탐구 대조 대기표','textbook-activity-census.md'),

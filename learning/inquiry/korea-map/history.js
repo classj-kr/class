@@ -52,6 +52,7 @@
 
   function fit(api) {
     api.map.invalidateSize({ pan: false });
+    api.map.setMaxZoom(Math.max(12, scenes[selected].maxZoom || 12));
     api.map.fitBounds(bounds(scenes[selected]), { padding: [18, 18], animate: false, maxZoom: scenes[selected].maxZoom || 10 });
   }
 
@@ -229,6 +230,11 @@
       ? button("지도 순서 문제", null, () => window.KoreaHistoryOrder.open()) : null;
     if (quiz) quiz.classList.add("history-order-launch");
     const study = grade ? [explanation] : [cues, trap];
+    if(window.HistoryQuestions?.forLevel(scene.id,school()).length) {
+      const practice=button('확인 문제',null,()=>window.KoreaHistoryPractice.open(scene));
+      practice.classList.add('history-practice-launch');practice.setAttribute('aria-haspopup','dialog');
+      study.push(practice);
+    }
     if (state.lesson) study.push(cues);
     if (scene.distribution && window.KoreaHistoryBronze) study.push(window.KoreaHistoryBronze.panel());
     content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places, resourceButton, resourceDialog);
@@ -242,8 +248,16 @@
     // Keep these vector renderers in the scene group so cleanup is self-contained.
     const zoneRenderer = L.svg({pane:"themeZones"}).addTo(group);
     const lineRenderer = L.svg({pane:"themeLines"}).addTo(group);
+    // A close-range place map exceeds the relief tiles' native resolution.
+    // Preserve geographic positions, north orientation and a metric scale.
+    if (scene.localDetail) {
+      const backdrop = L.rectangle([[-85,-180],[85,180]], {renderer:zoneRenderer,pane:'themeZones',stroke:false,fillColor:'#eef3e9',fillOpacity:1,interactive:false}).addTo(group);
+      const scale = L.control.scale({position:'bottomleft',imperial:false,maxWidth:140}).addTo(map);
+      backdrop.on('remove',()=>scale.remove());
+    }
     const caption = document.querySelector("#historyMapCaption");
     caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", state.stageTitle || scene.title));
+    if (scene.localDetail) caption.append(el('small','history-north','↑ 북'));
     const legend = document.querySelector("#mapKey");
     legend.hidden = !!state.locationOnly;
     legend.replaceChildren(...(state.legend || []).map(item => {
@@ -354,6 +368,7 @@
     label: "역사", historical: true, minZoom: 3, practice: false,
     points: [], features: [], principles: [], legend: [],
     get bounds() { return bounds(scenes[selected]); },
+    get maxZoom() { return Math.max(12, scenes[selected].maxZoom || 12); },
     panel, draw
   };
 })();

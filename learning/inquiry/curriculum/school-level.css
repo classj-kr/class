@@ -47,6 +47,8 @@
 .space-topic-page #tab-topic-concepts > [hidden],.space-topic-page #tab-quiz > [hidden] { display:none!important; }
 .matter-nav button:disabled { display:none; }
 .matter-nav [hidden],.nav-tab[hidden],.school-level[hidden] { display:none!important; }
+.scene-btn[hidden],.hub-card[hidden] { display:none!important; }
+.space-school-picker { display:flex; justify-content:flex-end; margin-bottom:12px; }
 .school-matter-content [hidden],.model-check[hidden],#modelFacts[hidden],.model-key[hidden] { display:none!important; }
 .school-matter-content .school-concepts { margin:0 0 12px; }
 .matter-main > .school-matter-content { margin-top:18px; }
