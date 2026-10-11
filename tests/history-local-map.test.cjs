@@ -14,6 +14,8 @@ test('every close-range history map and its question have geographic context',()
     assert.ok(data.wall.length>100);assert.deepEqual(data.wall[0],data.wall.at(-1));
     assert.ok(data.streams.some(line=>line.length>20));
     assert.ok(fs.existsSync(path.join(root,data.relief.src.split('?')[0])));
+    const reliefMeta=JSON.parse(fs.readFileSync(path.join(root,'history/hanyang/relief.json'),'utf8'));
+    assert.deepEqual(Array.from(data.relief.bounds),reliefMeta.bounds);
     const [w,s,e,n]=data.relief.bounds;
     assert.ok(scene.bounds[0]>w&&scene.bounds[1]>s&&scene.bounds[2]<e&&scene.bounds[3]<n);
     for(const q of context.window.HistoryQuestions.forLevel(scene.id,'high')){
