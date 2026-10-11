@@ -601,6 +601,47 @@
     const key = o.second && o.legend ? '<div class="mb-lines" style="font-size:0.9rem"><div>' + o.legend.map((name, k) => '<span style="margin-right:14px"><span style="display:inline-block;width:12px;height:12px;margin-right:4px;vertical-align:-1px;background:' + fills[k] + ';border:1px solid #1e3a8a"></span>' + name + '</span>').join('') + '</div></div>' : '';
     return '<svg class="mb-numberline" viewBox="0 0 ' + Math.ceil(width) + ' ' + Math.ceil(height) + '" width="' + Math.ceil(width) + '" role="img" aria-label="' + said + '">' + out + '</svg>' + key;
   }
+  // 꺾은선그래프. names: 가로에 적는 것(월, 요일, 시각 …), values: 점의 값(null 이면 점을 찍지 않는다).
+  // options: step(세로 눈금 한 칸의 크기), major(수를 적는 굵은 눈금 사이의 칸 수), top(맨 위 눈금), from(물결선 위 첫 눈금 — 0과 from 사이를 물결선으로 줄인다),
+  //          unit(세로 단위), title(가로에 적는 것의 이름), second(둘째 꺾은선의 값), legend([첫째 이름, 둘째 이름])
+  function lineChart(names, values, options) {
+    const o = options || {}, step = o.step || 1, major = o.major || 5, unit = o.unit || '', from = o.from || 0, series = o.second ? [values, o.second] : [values];
+    const all = series.reduce((list, one) => list.concat(one), []).filter((v) => v != null), biggest = Math.max.apply(null, all);
+    const top = o.top || from + Math.ceil((biggest - from) / (step * major)) * step * major, ticks = (top - from) / step, n = names.length;
+    const word = 'style="font-size:11px;font-weight:600"', inks = ['#1d4ed8', '#c2410c'];
+    const label = (x, y, anchor, value) => '<text class="mb-axis-label" ' + word + ' x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="' + anchor + '">' + value + '</text>';
+    const rule = (x1, y1, x2, y2, strong, axis) => '<line class="' + (axis ? 'mb-axis' : 'mb-gridline') + '"' + (strong ? ' style="stroke:#8fa3b8"' : '') + ' x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>';
+    const H = Math.min(12, 168 / ticks), W = Math.min(44, 244 / n), left = 12 + Math.max(2, String(top).length) * 7, topPad = 24, gap = from ? 20 : 0;
+    const y = (v) => topPad + (top - v) / step * H, x = (i) => left + W * (i + 0.5), cut = topPad + ticks * H, base = cut + gap, right = left + W * n;
+    const width = right + 12, height = base + (o.title ? 40 : 24);
+    let out = '';
+    for (let t = 0; t <= ticks; t += 1) out += rule(left, y(from + t * step), right, y(from + t * step), t % major === 0);
+    for (let i = 0; i < n; i += 1) out += rule(x(i), topPad, x(i), base);
+    out += rule(right, topPad, right, base);
+    for (let t = 0; t <= ticks; t += major) out += label(left - 5, y(from + t * step) + 4, 'end', from + t * step);
+    if (from) {
+      // 물결선: 0과 첫 눈금 사이를 줄였다는 표시
+      let wave = 'M' + left.toFixed(1) + ' ' + (cut + 10).toFixed(1);
+      const waves = Math.max(1, Math.round((right - left) / 12)), half = (right - left) / waves / 2;
+      for (let w = 0; w < waves; w += 1) wave += ' q' + (half / 2).toFixed(2) + ' -5 ' + half.toFixed(2) + ' 0 t' + half.toFixed(2) + ' 0';
+      out += '<path d="' + wave + '" style="fill:none;stroke:#475569;stroke-width:1.2"/>' + label(left - 5, base + 4, 'end', 0);
+    }
+    if (unit) out += label(left - 4, topPad - 10, 'end', '(' + unit + ')');
+    names.forEach((name, i) => { out += label(x(i), base + 15, 'middle', name); });
+    out += rule(left, topPad, left, base, false, true) + rule(left, base, right, base, false, true);
+    if (o.title) out += label(right, base + 32, 'end', o.title);
+    series.forEach((list, k) => {
+      let path = '', pen = false;
+      list.forEach((v, i) => { if (v == null) { pen = false; return; } path += (pen ? ' L' : ' M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1); pen = true; });
+      out += '<path d="' + path.trim() + '" style="fill:none;stroke:' + inks[k] + ';stroke-width:1.8' + (k ? ';stroke-dasharray:5 3' : '') + '"/>';
+      list.forEach((v, i) => { if (v != null) out += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="2.8" style="fill:' + inks[k] + '"/>'; });
+    });
+    const amount = (v) => v + (/^[A-Za-z°]/.test(unit) ? ' ' : '') + unit;
+    const told = (list) => names.map((name, i) => name + ' ' + (list[i] == null ? '점 없음' : amount(list[i]))).join(', ');
+    const said = '꺾은선그래프: 세로 눈금 한 칸은 ' + amount(step) + '. ' + (from ? '물결선으로 0과 ' + from + ' 사이를 줄였다. ' : '') + (o.second ? (o.legend ? o.legend[0] : '첫째') + ' — ' + told(values) + ' / ' + (o.legend ? o.legend[1] : '둘째') + ' — ' + told(o.second) : told(values));
+    const key = o.second && o.legend ? '<div class="mb-lines" style="font-size:0.9rem"><div>' + o.legend.map((name, k) => '<span style="margin-right:14px"><span style="display:inline-block;width:24px;margin-right:4px;vertical-align:middle;border-top:2.5px ' + (k ? 'dashed ' : 'solid ') + inks[k] + '"></span>' + name + '</span>').join('') + '</div></div>' : '';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + Math.ceil(width) + ' ' + Math.ceil(height) + '" width="' + Math.ceil(width) + '" role="img" aria-label="' + said + '">' + out + '</svg>' + key;
+  }
   // 답 맞추기. 수는 쉼표·빈칸을 떼고 견준다. unordered 인 문항은 답의 차례를 따지지 않는다.
   const cleanNumber = (text) => String(text == null ? '' : text).replace(/[,\s]/g, '');
   // 소수 칸(decimal)은 소수 셋째 자리까지 적은 수를 받는다(0.50처럼 끝에 0을 적어도 같은 수로 본다). 나머지 칸은 자연수만 받는다.
@@ -617,6 +658,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, barChart, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, barChart, lineChart, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
