@@ -14,9 +14,8 @@ test('all high questions have valid map references, distinct options and version
   const seen=new Set();let count=0;
   for(const scene of KOREA_HISTORY.scenes)for(const q of HistoryQuestions.forLevel(scene.id,'high')){
     count++;assert.ok(!seen.has(q.id));seen.add(q.id);
-    const changed=q.id.endsWith('-02')||['history-hanyang-capital-high-01','history-liberation-division-high-01'].includes(q.id);
-    const distinctPair=['independence-bases','silla-trade','ssangseong','imjin','donghak'].some(id=>q.id===`history-${id}-high-02`);
-    assert.equal(q.revision,distinctPair?5:changed?4:2);assert.equal(new Set(q.options).size,5);
+    const changed=q.id.endsWith('-02')||['gojoseon-distribution','balhae','hanyang-capital','march-first','provisional-government','liberation-army','liberation-division','democracy-movements'].some(id=>q.id===`history-${id}-high-01`);
+    assert.equal(q.revision,changed?6:2);assert.equal(new Set(q.options).size,5);
     assert.ok(q.answer>=0&&q.answer<q.options.length);
     assert.ok(q.explanation.length>50);
     assert.ok(q.map.points.length>=2);
@@ -38,32 +37,29 @@ test('Balhae tasks require route endpoints and capital locations',()=>{
   assert.deepEqual(Array.from(routes.map.points,p=>Array.from(p.xy)),[[126.9,41.8],[130.57,42.86],[120.75,37.82],[136.0556,35.6455]]);
   assert.match(routes.options[routes.answer],/발해관/);
   assert.match(routes.options[routes.answer],/고구려 계승/);
-  assert.match(capital.claims.join(' '),/당과 우호/);
+  assert.match(capital.options[capital.answer],/당과 우호/);
   assert.match(capital.explanation,/문왕/);
 });
 
 test('Goguryeo evidence question connects the Chungju stele to its map location',()=>{
   const q=HistoryQuestions.forLevel('goguryeo-fifth','high')[1];
   const scene=KOREA_HISTORY.scenes.find(s=>s.id==='goguryeo-fifth');
-  assert.equal(q.revision,4);
+  assert.equal(q.revision,6);
   assert.deepEqual(Array.from(q.map.points[2].xy),Array.from(scene.marks[4].xy));
   assert.match(q.materials.join(' '),/매금/);
-  assert.match(q.claims.join(' '),/남한강/);
+  assert.match(q.options[q.answer],/남한강/);
   assert.match(q.explanation,/충주 고구려비/);
 });
 
-test('every second question has a readable stimulus and a unique objective answer',()=>{
+test('concise questions retain map references without requiring redundant prose',()=>{
   for(const scene of KOREA_HISTORY.scenes){
     const q=HistoryQuestions.forLevel(scene.id,'high')[1];
-    assert.ok(q.materials?.length||q.table?.rows.length,q.id);
-    if(q.claims){
-      assert.equal(q.claims.length,4,q.id);
-      const rationale=q.explanation.match(/^([ㄱ-ㄹ])·([ㄱ-ㄹ])이 옳습니다/);
-      assert.ok(rationale,q.id);
-      assert.equal(q.options[q.answer],`${rationale[1]}, ${rationale[2]}`,q.id);
-      for(const option of q.options)assert.match(option,/^[ㄱ-ㄹ], [ㄱ-ㄹ]$/,q.id);
-    }
-    if(q.table)for(const row of q.table.rows)assert.equal(row.length,q.table.headers.length,q.id);
+    const visible=[q.question,...q.options,...(q.materials||[])].join('');
+    assert.match(visible,/\([가-마]\)/,q.id);
+    assert.doesNotMatch(q.explanation,/^[ㄱ-ㄹ]·[ㄱ-ㄹ]이 옳습니다/,q.id);
+    // A stray source marker means shortening left a reference without its clue.
+    for(const symbol of ['㉠','㉡','㉢'])if(q.question.includes(symbol)||q.options.some(o=>o.includes(symbol)))assert.ok(q.materials?.some(m=>m.includes(symbol)),q.id+':'+symbol);
+    assert.ok(visible.length<=240,q.id+' reading burden');
   }
 });
 
@@ -72,5 +68,5 @@ test('Hanyang questions distinguish nineteenth-century policy from spatial inter
   assert.match(policy.materials.join(' '),/당백전/);
   assert.match(policy.options[policy.answer],/호포제/);
   assert.match(orientation.materials.join(' '),/남쪽/);
-  assert.equal(orientation.options[orientation.answer],'ㄴ, ㄹ');
+  assert.equal(orientation.options[orientation.answer],'(나) 종묘 — (다) 사직단');
 });
