@@ -550,6 +550,55 @@
     if (!rounds || round < 1 || round > rounds) return [];
     return items.filter((_, i) => i % rounds === round - 1);
   }
+  // 막대그래프(4학년). names: 항목, values: 값(null 이면 막대를 그리지 않는다).
+  // options: step(눈금 한 칸의 크기, 기본 1), major(수를 적는 굵은 눈금 사이의 칸 수, 기본 5), top(맨 끝 눈금의 값), unit('명'),
+  //          title(항목 쪽 이름: '운동'), flip(가로 막대), second(둘째 막대의 값들)와 legend([첫째 이름, 둘째 이름]).
+  // 그림 설명(aria-label)에 눈금 한 칸의 크기와 항목마다의 값을 적는다(검사가 그 글로 식의 수를 맞춰 본다).
+  function barChart(names, values, options) {
+    const o = options || {}, step = o.step || 1, major = o.major || 5, unit = o.unit || '', series = o.second ? [values, o.second] : [values];
+    const biggest = Math.max.apply(null, series.reduce((all, list) => all.concat(list), []).filter((v) => v != null));
+    const top = o.top || Math.ceil(biggest / (step * major)) * step * major, ticks = top / step, n = names.length;
+    const word = 'style="font-size:11px;font-weight:600"', fills = ['#93c5fd', '#fdba74'];
+    const bar = (x, y, w, h, k) => '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '" style="fill:' + fills[k] + ';stroke:#1e3a8a;stroke-width:1"/>';
+    const label = (x, y, anchor, value) => '<text class="mb-axis-label" ' + word + ' x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="' + anchor + '">' + value + '</text>';
+    const rule = (x1, y1, x2, y2, strong, axis) => '<line class="' + (axis ? 'mb-axis' : 'mb-gridline') + '"' + (strong ? ' style="stroke:#8fa3b8"' : '') + ' x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>';
+    let out = '', width, height;
+    if (!o.flip) {
+      const H = Math.min(12, 168 / ticks), W = Math.min(48, 244 / n), left = 34, topPad = 24, y = (v) => topPad + (top - v) / step * H, base = topPad + ticks * H;
+      width = left + n * W + 12; height = base + (o.title ? 40 : 24);
+      for (let t = 0; t <= ticks; t += 1) out += rule(left, y(t * step), left + n * W, y(t * step), t % major === 0);
+      for (let i = 0; i <= n; i += 1) out += rule(left + i * W, topPad, left + i * W, base);
+      for (let t = 0; t <= ticks; t += major) out += label(left - 5, y(t * step) + 4, 'end', t * step);
+      if (unit) out += label(left - 4, topPad - 10, 'end', '(' + unit + ')');
+      series.forEach((list, k) => list.forEach((v, i) => {
+        if (v == null) return;
+        const bw = W * (series.length > 1 ? 0.3 : 0.5);
+        out += bar(left + i * W + (series.length > 1 ? W * 0.2 + k * bw : W * 0.25), y(v), bw, base - y(v), k);
+      }));
+      names.forEach((name, i) => { out += label(left + i * W + W / 2, base + 15, 'middle', name); });
+      out += rule(left, topPad, left, base, false, true) + rule(left, base, left + n * W, base, false, true);
+      if (o.title) out += label(left + n * W, base + 32, 'end', o.title);
+    } else {
+      const longest = Math.max.apply(null, names.map((name) => String(name).length)), left = 14 + longest * 11, W = Math.min(13, (268 - left) / ticks), H = 26, topPad = o.title ? 22 : 8, x = (v) => left + v / step * W, base = topPad + n * H;
+      width = left + ticks * W + 30; height = base + 24;
+      for (let t = 0; t <= ticks; t += 1) out += rule(x(t * step), topPad, x(t * step), base, t % major === 0);
+      for (let i = 0; i <= n; i += 1) out += rule(left, topPad + i * H, x(top), topPad + i * H);
+      for (let t = 0; t <= ticks; t += major) out += label(x(t * step), base + 14, 'middle', t * step);
+      if (unit) out += label(x(top) + 6, base + 14, 'start', '(' + unit + ')');
+      series.forEach((list, k) => list.forEach((v, i) => {
+        if (v == null) return;
+        const bh = H * (series.length > 1 ? 0.3 : 0.5);
+        out += bar(left, topPad + i * H + (series.length > 1 ? H * 0.2 + k * bh : H * 0.25), x(v) - left, bh, k);
+      }));
+      names.forEach((name, i) => { out += label(left - 6, topPad + i * H + H / 2 + 4, 'end', name); });
+      out += rule(left, topPad, left, base, false, true) + rule(left, base, x(top), base, false, true);
+      if (o.title) out += label(left - 6, topPad - 8, 'end', o.title);
+    }
+    const told = (list) => names.map((name, i) => name + ' ' + (list[i] == null ? '막대 없음' : list[i] + unit)).join(', ');
+    const said = '막대그래프: ' + (o.flip ? '가로' : '세로') + ' 눈금 한 칸은 ' + step + unit + '. ' + (o.second ? (o.legend ? o.legend[0] : '첫째') + ' — ' + told(values) + ' / ' + (o.legend ? o.legend[1] : '둘째') + ' — ' + told(o.second) : told(values));
+    const key = o.second && o.legend ? '<div class="mb-lines" style="font-size:0.9rem"><div>' + o.legend.map((name, k) => '<span style="margin-right:14px"><span style="display:inline-block;width:12px;height:12px;margin-right:4px;vertical-align:-1px;background:' + fills[k] + ';border:1px solid #1e3a8a"></span>' + name + '</span>').join('') + '</div></div>' : '';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + Math.ceil(width) + ' ' + Math.ceil(height) + '" width="' + Math.ceil(width) + '" role="img" aria-label="' + said + '">' + out + '</svg>' + key;
+  }
   // 답 맞추기. 수는 쉼표·빈칸을 떼고 견준다. unordered 인 문항은 답의 차례를 따지지 않는다.
   const cleanNumber = (text) => String(text == null ? '' : text).replace(/[,\s]/g, '');
   // 소수 칸(decimal)은 소수 첫째 자리까지 적은 수를 받는다. 나머지 칸은 자연수만 받는다.
@@ -566,6 +615,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, barChart, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
