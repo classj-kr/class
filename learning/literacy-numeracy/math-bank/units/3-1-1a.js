@@ -14,7 +14,7 @@
 (function (root) {
   'use strict';
   const B = root.MathBank;
-  const { carryPlaces, borrowPlaces, count, plain, josa, name, nick, NAMES, LABELS, box, expr, column, chars, blocks, cards, chain, route, shapes, lines, tagged, numbers, N, M, C, E, addPair, subPair, pairNear, ADD, SUB, result, shown } = B.kit;
+  const { carryPlaces, borrowPlaces, count, plain, josa, name, nick, NAMES, LABELS, box, expr, column, columnSteps, chars, blocks, cards, chain, route, bar, shapes, lines, tagged, numbers, N, M, C, E, addPair, subPair, pairNear, ADD, SUB, result, shown } = B.kit;
   const CALC = '4수01-03', EST = '4수01-08';
   const T = (id, title, ref, make, more) => Object.assign({ id, level: '기본', title, source: '수집본 기본 자료(통합 목록 ' + ref + '번)', make }, more || {});
   const three = (d, lo, hi) => d.until(() => d.int(lo, hi), plain);
@@ -62,7 +62,7 @@
   const roundish = (d, lo, hi) => d.until(() => d.int(lo, hi) * 100 + d.int(-45, 45), (v) => v >= 105 && plain(v) && Math.abs(v - toHundred(v)) >= 8);
 
   B.addUnit({
-    id: '3-1-1', grade: 3, semester: 1, no: 1, title: '덧셈과 뺄셈', version: 4,
+    id: '3-1-1', grade: 3, semester: 1, no: 1, title: '덧셈과 뺄셈', version: 5,
     groups: [
       {
         id: 'add0', title: '받아올림이 없는 덧셈', standard: CALC,
@@ -160,6 +160,15 @@
             return C(`${a} + ${josa(b, '과/와')} 계산 결과가 같은 것은?`, list.map(([x, y]) => expr(x, '+', y)), list.findIndex(([x, y]) => x + y === a + b), {
               explain: `한 수를 10만큼 줄이고 다른 수를 10만큼 늘리면 합은 같다. ${shown(a, '+', b)}, ${shown(a - 10, '+', b + 10)}`,
               facts: { choose: { exprs: list.map(([x, y]) => E(x, '+', y)), rule: 'equals', target: a + b }, pair: [a, '+', b], rule: true }
+            });
+          }),
+          T('add2-partial', '자리별 합을 줄마다 적는 세로셈', '22', (d) => {
+            // 467+258: 15, 110, 600 을 차례로 적고 더한다
+            const [a, b] = addPair(d, ADD.twice), A = digits(a), Bd = digits(b), ones = A[2] + Bd[2], tens = (A[1] + Bd[1]) * 10, hundreds = (A[0] + Bd[0]) * 100;
+            return M(`${a} + ${josa(b, '을/를')} 다음과 같이 계산하였다. ㉠, ㉡, ㉢에 알맞은 수는?`, [{ label: LABELS[0], answer: tens }, { label: LABELS[1], answer: hundreds }, { label: LABELS[2], answer: a + b }], {
+              figure: columnSteps(chars(a), '+', chars(b), [chars(ones), box(LABELS[0]), box(LABELS[1])], box(LABELS[2]), [`← ${A[2]} + ${Bd[2]}`, `← ${A[1] * 10} + ${Bd[1] * 10}`, `← ${A[0] * 100} + ${Bd[0] * 100}`]),
+              explain: `일의 자리끼리 ${shown(A[2], '+', Bd[2])}, 십의 자리끼리 ${shown(A[1] * 10, '+', Bd[1] * 10)}, 백의 자리끼리 ${shown(A[0] * 100, '+', Bd[0] * 100)}이다. 세 값을 더하면 ${a + b}이다.`,
+              facts: { calc: [[`${A[1] * 10}+${Bd[1] * 10}`, 0], [`${A[0] * 100}+${Bd[0] * 100}`, 1], [E(a, '+', b), 2]], pair: [a, '+', b] }
             });
           }),
           T('add2-fix', '잘못 계산한 덧셈 바로잡기', '40', (d) => {
@@ -433,6 +442,13 @@
       {
         id: 'mix', title: '덧셈과 뺄셈', standard: CALC,
         types: [
+          T('mix-bar', '띠 그림의 빈칸', '9', (d) => {
+            // 전체 652 가운데 한 부분이 285일 때 나머지 부분
+            const [a, b] = subPair(d, SUB.any);
+            return N('띠 그림에서 □ 안에 알맞은 수는?', a - b, {
+              figure: bar(a, b, '□', Math.min(0.7, Math.max(0.3, b / a))), explain: `전체에서 한 부분을 빼면 나머지 부분이다. ${shown(a, '-', b)}`, facts: { calc: [[E(a, '-', b), 0]], pair: [a, '-', b] }
+            });
+          }),
           T('mix-chain', '이어서 계산하기', '5', (d) => {
             // 358 → +276 → -188
             const [a, b] = addPair(d, (c, x, y) => ADD.any(c) && x + y <= 999 && x + y >= 340), c = d.until(() => three(d, 120, a + b - 105), (v) => SUB.any(borrowPlaces(a + b, v)));
