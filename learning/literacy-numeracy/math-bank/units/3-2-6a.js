@@ -35,7 +35,7 @@
   const FRUITS = ['사과', '포도', '딸기', '수박'], SPORTS = ['축구', '농구', '수영', '줄넘기'];
 
   B.addUnit({
-    id: '3-2-6', grade: 3, semester: 2, no: 6, title: '그림그래프', version: 2,
+    id: '3-2-6', grade: 3, semester: 2, no: 6, title: '그림그래프', version: 3,
     groups: [
       {
         id: 'table', title: '자료를 표로 정리하고 표 읽기', standard: DATA,
