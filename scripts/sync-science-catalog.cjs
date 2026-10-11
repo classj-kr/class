@@ -21,13 +21,11 @@ function cache(s,dir){s=s.replace(/(href=")([^"?]*science-reading\.css)(?:\?[^" 
  if(/^(?:https?:)?\/\//.test(url))return all;const target=path.resolve(dir,url);if(!fs.existsSync(target))throw Error('Missing script '+target);
  return start+url+'?v='+hash(target===path.resolve(lab+'curriculum-map.js')?mapText:fs.readFileSync(target,'utf8'))+end;
 });}
-edit(lab+'index.html',s=>cache(s.replace(/<a class="level-entry available"[^>]*href="([^"/]+)\/"[^>]*>[\s\S]*?<\/a>/g,(all,slug)=>{
- const m=map[slug];if(!m)throw Error('Unknown '+slug);
- return `<a class="level-entry available" data-level="${m.level}" data-grades="${m.grades.join(' ')}" data-standards="${m.codes.join(' ')}" href="${slug}/"><b>${m.grade}</b><span>${m.title}${m.level==='high'?`<small class="course-label">${m.subjects.join(' · ')}</small>`:''}</span></a>`;
-}),lab));
+// The catalog builder owns school/course classification and all card markup.
 for(const [slug,m]of Object.entries(map))edit(lab+slug+'/index.html',s=>{
  if(titles[slug])s=s.replace(/<h1>.*?<\/h1>/,`<h1>${m.title}</h1>`);
  return cache(s,lab+slug);
 });
 edit(lab+'exam-review.html',s=>cache(s,lab));
 apply();
+if(process.argv.includes('--apply'))require('./build-science-catalog.cjs').build({map});

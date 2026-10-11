@@ -31,7 +31,8 @@ test('every catalog app loads, every question has a working correct answer, mobi
     const catalogPage=await browser.newPage({viewport:{width:390,height:844}});
     await catalogPage.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
     await catalogPage.goto(`http://127.0.0.1:${server.address().port}/`);
-    for(const grade of ['전체','초3','초4','초5','초6','중1','중2','중3','고1','고2','고3']){
+    for(const grade of ['초3','초4','초5','초6','중1','중2','중3']){
+      await catalogPage.locator(`[data-school-filter="${grade.startsWith('초')?'elementary':'middle'}"]`).click();
       await catalogPage.locator(`[data-grade="${grade}"]`).click();
       const state=await catalogPage.evaluate(grade=>{
         const visible=[...document.querySelectorAll('.level-entry')].filter(e=>!e.hidden);
@@ -43,10 +44,10 @@ test('every catalog app loads, every question has a working correct answer, mobi
     assert.equal(await catalogPage.locator('#courseSelect,#gradeCount,.placement-note,.grade-navigation h1').count(),0);
     await catalogPage.goto(`http://127.0.0.1:${server.address().port}/?grade=고1&course=세포와%20물질대사`);
     assert.equal(new URL(catalogPage.url()).searchParams.has('course'),false);
-    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.grades.includes('고1')).length);
+    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.codes.every(c=>c.startsWith('10'))).length);
     assert.equal(await catalogPage.locator('.level-entry:not([hidden])').count(),highOneCount);
     assert(highOneCount>0);
-    if(process.env.SCIENCE_CAPTURE){await catalogPage.locator('[data-grade="초6"]').click();fs.mkdirSync(path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots'),{recursive:true});await screenshotWebp(catalogPage, {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/catalog-mobile.webp'),fullPage:true});}
+    if(process.env.SCIENCE_CAPTURE){await catalogPage.locator('[data-school-filter="elementary"]').click();await catalogPage.locator('[data-grade="초6"]').click();fs.mkdirSync(path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots'),{recursive:true});await screenshotWebp(catalogPage, {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/catalog-mobile.webp'),fullPage:true});}
     await catalogPage.close();
     for (const slug of slugs) {
       const page = await browser.newPage({ viewport: { width: 1365, height: 980 } });
