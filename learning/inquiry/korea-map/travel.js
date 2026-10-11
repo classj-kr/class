@@ -176,12 +176,10 @@
 
   function renderPhoto(place) {
     const image = $("placePhoto");
-    const credit = $("placeCredit");
     const photo = photos[place.id];
     image.hidden = true;
     image.classList.remove("is-portrait");
     image.removeAttribute("src");
-    credit.replaceChildren();
     $("placePhotoFallback").textContent = place.emoji;
     $("placePhotoFallback").hidden = false;
     if (!photo) return;
@@ -192,13 +190,6 @@
     };
     image.alt = `${place.name} 사진`;
     image.src = photo.src;
-    const source = document.createElement("a");
-    source.href = photo.page;
-    source.target = "_blank";
-    source.rel = "noopener noreferrer";
-    source.textContent = photo.author ? `사진: ${photo.author}` : "사진 출처";
-    credit.append(source);
-    if (photo.license) credit.append(` · ${photo.license}`);
   }
 
   // 우리 학교에서 가는 자동차 길(서버가 계산). 학교 이름은 받아도 보여 주지 않는다.

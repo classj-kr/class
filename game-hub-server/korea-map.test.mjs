@@ -56,7 +56,8 @@ assert.match(html, /<h1 class="visually-hidden" id="conceptTitle"><\/h1>/);
 assert.match(styles, /\.theme-tabs \{[^}]*padding: 6px 12px 6px 58px/);
 assert.doesNotMatch(sources.heritage + sources.travel, /summary:|title: "(유물·유적으로 보는 한국사|전국 체험학습 장소)"/);
 assert.doesNotMatch(sources.heritage, /삼국 시대"|통일 신라·발해/);
-assert.match(html, /id="creditText" hidden>지도 자료: Copernicus DEM[^<]*OpenStreetMap[^<]*geoBoundaries/);
+// 학습 화면에는 출처 단추·출처 줄을 두지 않는다(학생들이 자꾸 묻는다). 출처는 사이트 자료 출처 쪽에 모은다.
+assert.doesNotMatch(html, /creditText|creditButton|placeCredit/);
 assert.match(app, /attributionControl: false/);
 assert.doesNotMatch(html, /conceptKicker|section-kicker/);
 assert.doesNotMatch(styles, /\.section-kicker/);
