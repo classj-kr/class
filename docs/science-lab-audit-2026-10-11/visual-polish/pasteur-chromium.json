@@ -1,0 +1,18 @@
+{
+  "slug": "pasteur",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 5,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

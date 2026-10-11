@@ -173,7 +173,116 @@
   svg+=txt(112,323,'20 ℃',17)+txt(402,323,'80 ℃',17);
   return frame(id,svg,'같은 크기의 막대를 한쪽 끝에서 가열',[['고정된 색상 척도','20~80 ℃를 모든 재료·시점에 똑같이 적용합니다.'],['색상의 의미','모형 온도를 나타내는 가상 열화상입니다. 재료 자체가 이 색으로 변하는 것은 아닙니다.'],['수치의 의미','위치별 비교용 계산값이며 실제 카메라 측정값이 아닙니다.']]);
  }
- const renderers={'compound-conductivity':conductivity,spring,buoyancy,'mix-change':mixing,'group-design':groupDesign,'tuning-fork':tuningFork,'dew-fog':dew,'wind-chamber':wind,'photosynthesis-co2':photosynthesis,'heating-device':heating,'thermal-image':thermal};
+ function erosion(s,v){
+  const id='erosion',after=+s.step>0,steep=s.slope==='steep',top=steep?140:191;
+  let svg=bench()+rect(30,305,400,38,'#b8cbd4',8)+path('M33 307H427','#ebf3f6',4);
+  svg+=`<path d="M44 ${top}H143L306 298H418V326H44Z" fill="#c8aa84" stroke="#a58965" stroke-width="2"/>`;
+  svg+=`<path d="M44 ${top}H143L306 298H418" fill="none" stroke="#e6d1ad" stroke-width="8"/>`;
+  if(after){svg+=path(`M92 ${top-3}H139Q207 ${top+55} 303 294Q346 304 412 297`,'#83b9cc',s.water==='large'?12:6);for(let i=0;i<v.metrics.moved;i++)svg+=circle(316+(i%7)*12,294-Math.floor(i/7)*6,3,'#93724e');}
+  for(let i=0;i<v.metrics.remaining;i++)svg+=circle(63+(i%6)*13,top+14+Math.floor(i/6)*10,2.5,'#94724a');
+  svg+=`<g transform="translate(50 ${top-85})"><path d="M0 0H48L41 49H7Z" fill="url(#erosion-glass)" stroke="#7394a5" stroke-width="2"/>${path('M10 17H39','#8bbbc9',3)}</g>`;
+  if(after)svg+=path(`M76 ${top-31}v25`,blue,3,'stroke-dasharray="3 7" class="apparatus-flow"');
+  svg+=txt(94,top-100,'물을 붓는 곳',19)+txt(226,top+14,'침식',18,muted)+txt(353,275,'퇴적',18,muted);
+  return frame(id,svg,after?'물을 흘린 뒤의 흙받이':'같은 흙을 담은 투명한 받침',[['흙 언덕','경사와 물의 양을 한 가지씩 바꾸어 비교합니다.'],['흙 알갱이','옮겨진 알갱이는 아래쪽에 모입니다. 전체 모형 알갱이 수는 같습니다.'],['물의 흐름','언덕의 높은 곳에서 낮은 곳으로 흐릅니다. 표시한 굵기는 물의 양을 구별하는 기호입니다.']]);
+ }
+ function seaLevel(s,v){
+  const id='sea',after=+s.step>0,land=s.ice==='land',level=251-v.metrics.rise;
+  let svg=bench()+beaker(id,32,83,396,259,0);
+  svg+=`<path d="M251 335V188H320L407 335Z" fill="#c2ad8c" stroke="#9e8b6d" stroke-width="2"/>`;
+  svg+=rect(309,224,37,39,'#e6c99e',3)+`<path d="M302 225L327 203L353 225Z" fill="#a87854"/>`+rect(320,241,11,22,'#657b80',1);
+  svg+=`<path d="M43 ${level}H260L347 ${level}L407 335H53Q43 335 43 325Z" fill="#a7d1e2" fill-opacity=".6"/>`+path(`M44 ${level}H260`,blue,2);
+  svg+=path('M44 251H411','#7596a3',1.5,'stroke-dasharray="5 5"');
+  if(!after){const x=land?261:129,y=land?148:229;svg+=`<path d="M${x} ${y+5}l20 -5 32 8 -4 30 -44 -1Z" fill="#e6f6fc" stroke="#87b8cd" stroke-width="2"/>`+path(`M${x+20} ${y}l7 30`, '#afcfde',1);}
+  svg+=txt(129,77,land?'육지 위 얼음':'떠 있는 얼음',22)+txt(121,301,'처음 수면',17,muted)+path('M121 281V254',muted,1.5);
+  return frame(id,svg,after?'얼음이 녹은 뒤 처음 수면과 비교':'얼음이 녹기 전의 수면 표시',[['점선','처음 수면입니다. 모든 조건에서 같은 기준을 사용합니다.'],['물에 더해진 물',land?'육지 위에 있던 얼음이 녹아 물에 합쳐집니다.':'떠 있는 얼음은 처음부터 물을 밀어내고 있었습니다.'],['해안 모형','처음 수면 표시와 낮은 해안의 위치를 비교합니다. 실제 침수 규모를 나타내지 않습니다.']]);
+ }
+ function house(s,v){
+  const id='house';let svg=bench();
+  for(const [x,label,temp,insulated,open]of [[29,'기준 집',v.metrics.reference,false,false],[249,'선택한 집',v.metrics.temp,s.wall==='insulated',s.window==='open']]){
+   svg+=txt(x+91,49,label,23)+`<path d="M${x} 145L${x+91} 85L${x+182} 145" fill="#7e939d" stroke="#4d6978" stroke-width="3"/>`+rect(x+10,146,162,182,'#e8e0d3',4,'stroke="#a7a395" stroke-width="2"');
+   if(insulated)svg+=path(`M${x+16} 321V151H${x+166}V321`,'#afc6aa',9);
+   svg+=rect(x+39,175,104,70,'#f6f9f9',3,'stroke="#7897a5" stroke-width="3"')+rect(x+44,180,94,60,'#d4e8ed',1);
+   svg+=path(`M${x+91} 177V245 M${x+40} 210H${x+143}`,'#8faab5',2);
+   if(open)svg+=`<path d="M${x+93} 178l35 11v39l-35 16Z" fill="#fff" fill-opacity=".9" stroke="#718e9d" stroke-width="2"/>`+arrow(x+102,216,x+176,200,orange,2);
+   svg+=rect(x+42,265,98,39,'#fff',5,'stroke="#d1dce0"')+txt(x+91,292,temp.toFixed(1)+' ℃',21);
+  }
+  return frame(id,svg,'같은 크기·같은 처음 온도의 두 모형 집',[['기준 집','단열재 없이 창문을 닫았습니다.'],['연두색 벽 단면','선택한 집의 단열재입니다. 단열재는 열의 이동을 늦춥니다.'],['온도 표시','같은 시간이 지난 뒤의 모형값입니다. 창문을 열면 공기를 통한 열 교환도 커집니다.']]);
+ }
+ function combustionProducts(s,v){
+  // Preserve the independently checked reagent scene and its observation markers.
+  const result=frame('combustion',`<g transform="translate(0 35) scale(1 1.08)">${v.svg}</g>`,'연소 전 · 중 · 후에 같은 검출 도구 비교',[
+   ['연소 장치',s.fuel==='candle'?'양초의 연소를 비교합니다.':'알코올의 연소를 비교합니다.'],
+   ['검출 도구',s.test==='cobalt'?'염화 코발트 종이로 물을 확인합니다.':s.test==='lime'?'석회수의 혼탁으로 이산화 탄소를 확인합니다.':'빛과 열이 나오는 공통 현상을 관찰합니다.'],
+   ['판독 시점','연소 중의 현상과 연소 뒤 검출 결과를 구별합니다.']]);
+  return result;
+ }
+ function pushCompare(s,v){
+  const id='push',x=v.metrics.moved?278:112;
+  let svg=bench()+rect(26,293,408,43,'#e2dbcf',7)+path('M32 295H428','#b2a690',2)+rect(112,197,90,94,'none',3,'stroke="#b2c4cb" stroke-width="2" stroke-dasharray="6 5"');
+  svg+=`<g class="${v.metrics.moved?'apparatus-slide':''}" style="--apparatus-travel:${112-x}px">`+rect(x,199,90,94,'#c6a477',4,'stroke="#957650" stroke-width="2"')+`<path d="M${x} 199l17 -16h90l-17 16Z" fill="#dfc9a7" stroke="#a88a64"/>`+`<path d="M${x+90} 199l17 -16v92l-17 18Z" fill="#ac8b60" stroke="#957650"/>`+rect(x+34,201,22,90,'#e0c7a5',0)+arrow(x-76,245,x-10,245,orange,s.push==='large'?7:3)+'</g>';
+  svg+=txt(159,156,'처음 위치',20,muted)+txt(230,86,s.load==='heavy'?'무거운 상자':'가벼운 상자',25)+txt(230,122,s.push==='large'?'세게 밀기':'약하게 밀기',19,orange);
+  return frame(id,svg,v.metrics.moved?'같은 바닥 위에서 상자가 움직임':'이 조건에서는 상자가 아직 움직이지 않음',[['점선 상자','움직이기 전의 위치입니다.'],['주황 화살표','같은 방향으로 미는 힘입니다. 두께로 약하게·세게를 구별합니다.'],['비교 조건','상자의 모양과 바닥은 같습니다. 이동 거리는 정량적인 측정값이 아닙니다.']]);
+ }
+ function altitude(s,v){
+  const id='altitude',base=92,y=293,scale=100,h=+s.height*scale,end=base+v.metrics.shadow*scale,a=+s.angle*Math.PI/180;
+  let svg=bench()+rect(26,y,408,36,'#ece6d8',4)+path(`M26 ${y}H434`,'#a9a28e',2)+path(`M${base} ${y}H${end}`,'#7c817a',7)+path(`M${base} ${y}V${y-h}`,'#6e8591',6)+circle(base,y-h,3,'#aec3cc');
+  svg+=path(`M${end} ${y}L${base-40} ${y-h-40*Math.tan(a)}`,'#d3a14a',2)+arrow(base-20,y-h-20*Math.tan(a),base+24,y-h+24*Math.tan(a),'#d3a14a',2);
+  svg+=path(`M${end-35} ${y}A35 35 0 0 1 ${end-35*Math.cos(a)} ${y-35*Math.sin(a)}`,orange,2)+txt(end-54*Math.cos(a/2),y-54*Math.sin(a/2)-5,s.angle+'°',18,orange);
+  svg+=path(`M${base+13} ${y}v-13h-13`,'#859496',1.5)+txt(52,y-h/2,+s.height+' m',16,muted)+txt((base+end)/2,y+30,v.metrics.shadow.toFixed(2)+' m',17)+txt(230,49,'막대와 그림자로 만든 직각삼각형',22);
+  return frame(id,svg,'평평한 바닥에 세운 수직 막대와 그림자',[['회색 막대','높이를 고정한 수직 막대입니다.'],['바닥 위 진한 선','태양 반대쪽에 생긴 그림자입니다.'],['고도 각도','그림자 끝에서 막대 끝을 이은 선과 바닥이 이루는 각입니다. 그림의 가로·세로 배율이 같습니다.']]);
+ }
+ function dna(s,v){
+  const colors={A:'#d6a354',T:'#568fa6',G:'#a17daf',C:'#599b85'},pair={A:'T',T:'A',G:'C',C:'G'};let svg='';
+  svg+=path('M107 72V316 M353 72V316','#91a9b5',6);
+  for(let i=0;i<4;i++){const y=102+i*61,a=s.sequence[i],b=s.partner[i],ok=pair[a]===b;svg+=circle(107,y,9,'#e6edf0','stroke="#809ba8" stroke-width="2"')+circle(353,y,9,'#e6edf0','stroke="#809ba8" stroke-width="2"')+rect(124,y-18,88,36,colors[a],6)+rect(248,y-18,88,36,colors[b],6)+txt(168,y+6,a,21,'#fff')+txt(292,y+6,b,21,'#fff');
+   if(ok)for(let n=0;n<(a==='A'||a==='T'?2:3);n++)svg+=path(`M218 ${y-5+n*5}H242`,'#78919c',1.5,'stroke-dasharray="3 3"');else svg+=txt(230,y+7,'×',25,'#a95243');
+  }
+  svg+=txt(107,42,'첫째 가닥',21)+txt(353,42,'짝 가닥',21)+txt(230,355,'당·인산 골격과 염기쌍',20,muted);
+  return frame('dna',svg,'염기쌍을 비교하기 위해 펼친 DNA 일부',[['바깥쪽 두 줄','당과 인산이 이어진 골격을 단순화했습니다.'],['가운데 염기쌍','A–T, G–C가 상보적으로 짝을 이룹니다. 점선은 수소 결합을 나타냅니다.'],['갈색 × 표시','고른 두 염기가 상보적인 짝이 아닙니다. 실제로 안정하게 결합한 모양이 아닙니다.']]);
+ }
+ function diagnostic(s,v){
+  // The original curves and C/T bands have functional state markers used by tests.
+  return frame('diagnostic',`<g transform="translate(0 38)">${v.svg}</g>`,s.method==='nucleic'?'유전 물질 검출의 반응 신호 모형':'항원 검출의 작동 대조와 표적 신호',[['작동 대조','검사가 정상적으로 작동했는지 먼저 확인합니다.'],['표적 신호','표적이 충분한 가상 시료와 없는 시료를 비교합니다.'],['현재 판독',!v.metrics.valid?'작동 대조 실패 · 결과 무효':v.metrics.detected?'모형 시료에서 표적 검출':'모형 시료에서 표적 미검출']]);
+ }
+ function energyBudget(s,v){
+  const m=v.metrics;let svg=rect(24,33,412,286,'#f3f7fa',15)+ellipse(230,255,178,59,'#a9cedf')+`<path d="M83 253q45 -27 66 2t68 -4q47 -19 101 8l-20 25q-73 38-159 1Z" fill="#8db6a6"/>`+path('M53 222Q230 112 407 222','#a9c2d1',6);
+  svg+=arrow(112,61,112,223,'#bc883a',8)+arrow(129,124,192,62,'#c6a86b',4)+arrow(321,232,321,65,'#b87765',m.outgoing/10);
+  svg+=txt(113,45,'100',23,'#926725')+txt(207,92,'반사 30',16,'#9a773c')+txt(338,47,String(m.outgoing),23,'#9e5a4c')+txt(88,294,'흡수 70',17)+txt(230,356,'순 유입 '+m.net+' 단위',23);
+  return frame('energy',svg,'대기권 밖에서 비교하는 지구 전체의 에너지 출입',[['들어오는 에너지','입사 에너지 100 중 30을 반사하고 70을 흡수합니다.'],['우주로 방출하는 에너지','온실효과가 강해진 직후와 온도가 오른 뒤의 새 평형을 구별합니다.'],['그림의 경계','지표와 대기의 내부 교환은 생략했습니다. 화살표는 정규화한 에너지 출입이며 실제 관측값이 아닙니다.']]);
+ }
+ function population(s,v){
+  const m=v.metrics,x=i=>60+i*28,y=n=>306-n*2.5;let svg='';
+  for(let n=0;n<=80;n+=20)svg+=path(`M60 ${y(n)}H396`,'#dfe8ec',1)+txt(41,y(n)+5,n,14,muted);
+  svg+=path('M60 88V306H399','#78919e',2)+txt(60,63,'개체 수',18,muted)+txt(230,366,'시간 (모형 시점)',18,muted);
+  for(let i=0;i<=12;i+=3)svg+=txt(x(i),332,i,16,muted);
+  let limit='M60 '+y(m.capacities[0]);for(let i=1;i<m.capacities.length;i++)limit+=`H${x(i)}V${y(m.capacities[i])}`;
+  svg+=path(limit,'#b29168',2,'stroke-dasharray="5 5"');
+  svg+=path(m.values.map((n,i)=>(i?'L':'M')+x(i)+' '+y(n)).join(' '),blue,3);
+  m.values.forEach((n,i)=>svg+=circle(x(i),y(n),3.3,'#fff','stroke="'+blue+'" stroke-width="2"'));
+  return frame('population',svg,'처음 개체 수와 환경 조건에 따른 변화',[['파란 선과 점','시간이 지날 때의 모형 개체 수입니다.'],['갈색 점선','먹이와 공간에 따른 환경 수용 한계입니다.'],['중간 환경 변화',s.event==='loss'?'5시점부터 서식 공간이 줄어듭니다.':'같은 먹이·공간 조건을 유지합니다.']]);
+ }
+ function emission(s,v){
+  const m=v.metrics,x=n=>47+(n-450)/250*366,color=n=>n<500?'#71c9e5':n<600?'#efc06c':'#f18c79';let svg='';
+  for(const [title,top,lines]of [['관찰 광원',77,m.lines],['비교 기준',218,m.reference]]){svg+=txt(45,top-20,title,21,ink,'start')+rect(33,top,393,59,'#142b3b',7);for(const n of lines)svg+=path(`M${x(n)} ${top+7}v45`,color(n),4)+path(`M${x(n)} ${top+8}v43`,color(n),10,'opacity=".1"');}
+  for(let n=450;n<=700;n+=50){svg+=path(`M${x(n)} 281v7`,'#8ea5b0',1)+txt(x(n),311,n,16,muted);}
+  svg+=txt(230,351,'파장 (nm)',19,muted);
+  return frame('emission',svg,'같은 파장 눈금에 나란히 놓은 두 스펙트럼',[['세로로 밝은 선','선이 나타나는 파장 위치를 비교합니다.'],['혼합 광원','수소와 헬륨의 선택된 선이 함께 나타납니다.'],['표시 범위','450~700 nm에서 각 원소의 두 선만 골랐습니다. 선의 상대적인 밝기와 전체 선 목록은 생략했습니다.']]);
+ }
+ function planets(s,v){
+  const names=v.metrics.names,colors={'수성':'#aaa69d','금성':'#d8b37d','지구':'#619db6','화성':'#c68165','목성':'#bd9f82','토성':'#ceba83','천왕성':'#88bdc6','해왕성':'#6088b7'};let svg=txt(230,40,'태양에서 가까운 순서',23)+circle(39,86,16,'#deb360')+arrow(70,86,416,86,'#9daeb7',2);
+  names.forEach((name,i)=>{const x=70+i%4*107,y=158+Math.floor(i/4)*144,r=['목성','토성'].includes(name)?25:19;svg+=circle(x,y,r,colors[name],'stroke="#fff" stroke-width="1.5"')+ellipse(x-6,y-6,r*.4,r*.7,'#fff','opacity=".12" transform="rotate(30 '+x+' '+y+')"');
+   if(name==='지구')svg+=`<path d="M${x-10} ${y-12}l12 5 -6 8 -9 -2 7 -5 M${x+2} ${y+2}l10 2 -4 9 -7 -3Z" fill="#a1c6a8"/>`;
+   if(name==='목성')svg+=path(`M${x-22} ${y-8}q22 7 44 0 M${x-22} ${y+9}q22 -4 44 0`,'#d9bea1',5);
+   if(name==='토성')svg+=ellipse(x,y,39,10,'none','stroke="#aa996e" stroke-width="4" transform="rotate(-18 '+x+' '+y+')"');
+   svg+=txt(x,y+52,(i+1)+'. '+name,18);
+  });
+  return frame('planets',svg,'가까운 네 행성 다음에 바깥쪽 네 행성',[['읽는 순서','윗줄 왼쪽부터 1~4번, 아랫줄 왼쪽부터 5~8번입니다.'],['표면의 특징','지구의 바다와 육지, 목성의 띠, 토성의 고리를 구별했습니다.'],['모형의 비율','크기·거리·색은 비교를 돕는 표현입니다. 실제 비율이나 현재 행성 위치가 아닙니다.']]);
+ }
+ function plantTypes(s,v){
+  // Keep alive/dead roots and seed-grown individuals from the scientific scene.
+  return frame('plant-types',`<g transform="translate(0 38) scale(1 1.12)">${v.svg}</g>`,'같은 개체를 첫해부터 다음 해까지 관찰',[['한해살이의 처음 개체',v.metrics.annualAlive?'같은 개체가 자라고 있습니다.':'처음 개체의 한살이가 끝났습니다.'],['여러해살이의 처음 개체','살아남은 땅속 부분을 통해 같은 개체가 이어집니다.'],['새 씨앗과 새 개체',v.metrics.newAnnual?'씨앗에서 난 새 개체입니다. 처음 개체가 되살아난 것이 아닙니다.':'새 씨앗에서 난 개체는 아직 없습니다.']]);
+ }
+ const renderers={'compound-conductivity':conductivity,spring,buoyancy,'mix-change':mixing,'group-design':groupDesign,'tuning-fork':tuningFork,'dew-fog':dew,'wind-chamber':wind,'photosynthesis-co2':photosynthesis,'heating-device':heating,'thermal-image':thermal,erosion,'sea-level':seaLevel,'efficient-house':house,'combustion-products':combustionProducts,'push-compare':pushCompare,'altitude-meter':altitude,'dna-model':dna,'diagnostic-principle':diagnostic,'energy-budget':energyBudget,'population-change':population,'emission-spectrum':emission,'planet-model':planets,'plant-life-types':plantTypes};
  const api={render:(id,s,v)=>renderers[id]?.(s,v),ids:Object.keys(renderers)};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  if(root)root.scienceApparatusScenes=api;

@@ -29,7 +29,7 @@ test('conductivity compares the five textbook samples and distinguishes a lifted
 for(const engine of ['chromium','webkit'])test(engine+': apparatus states, labels, fallback panels and responsive drawings',{timeout:180000},async()=>{
  const server=http.createServer((req,res)=>{let file=path.resolve(root,'.'+new URL(req.url,'http://local').pathname);if(!file.startsWith(root+path.sep))return res.writeHead(403).end();if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css'}[path.extname(file)]||'application/octet-stream');res.end(b);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
- const out=path.resolve('docs/science-lab-audit-2026-10-11/apparatus-visual-review');fs.mkdirSync(out,{recursive:true});
+ const out=path.resolve(process.env.SCIENCE_APPARATUS_CAPTURE_DIR||'docs/science-lab-audit-2026-10-11/apparatus-visual-review');fs.mkdirSync(out,{recursive:true});
  const shots=[];
  try{
   browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});

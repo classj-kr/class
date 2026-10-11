@@ -74,7 +74,7 @@ if(typeof window!=='undefined')(()=>{
  window.requiredExperimentModels=requiredExperimentModels;
  const parts=location.pathname.split('/').filter(Boolean),slug=parts.at(-1)==='index.html'?parts.at(-2):parts.at(-1),specs=requiredExperimentModels()[slug];
  if(specs){
-  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('required-experiments.css?v=a4d3e768dc73',document.currentScript.src);document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('required-experiments.css?v=ddedd4e629af',document.currentScript.src);document.head.append(css);
   const panel=document.createElement('section');panel.id='required-experiments';panel.className='panel required-experiments';panel.setAttribute('aria-label','실험으로 확인하기');
   panel.innerHTML='<h2>실험으로 확인하기</h2><nav class="required-tabs" aria-label="실험 선택"></nav><div class="required-layout"><div class="required-controls"></div><div><div class="required-visuals"><figure class="apparatus-main"><svg class="required-figure" viewBox="0 0 460 310" role="img"></svg><figcaption class="apparatus-caption"></figcaption></figure><div class="apparatus-explanation" hidden></div></div><div class="apparatus-key" hidden></div><p class="required-observation" aria-live="polite"></p><dl class="required-readings"></dl></div></div><div class="required-actions"><button type="button" data-reset>처음으로</button></div><div class="required-check"></div><p class="required-note"></p>';
   const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(panel);else document.querySelector('main').append(panel);
