@@ -38,7 +38,7 @@
   const near = (d, center, spread) => d.until(() => { const list = factorings(center + d.int(-spread, spread)).filter(([x]) => x % 10 !== 0); return list.length ? d.pick(list) : null; }, Boolean);
 
   B.addUnit({
-    id: '3-1-4', grade: 3, semester: 1, no: 4, title: '곱셈', version: 4,
+    id: '3-1-4', grade: 3, semester: 1, no: 4, title: '곱셈', version: 5,
     groups: [
       {
         id: 'tens', title: '(몇십)×(몇)', standard: CALC,
