@@ -215,6 +215,15 @@
     zeroTens: (b, a) => count(b) === 2 && Math.floor(a / 10) % 10 === 0,
     any: (b) => count(b) >= 1
   };
+  // 계산 결과가 lo~hi 에 드는 식(세 자리 수 둘, 받아올림·받아내림이 한 번은 있다). 결과가 몰려 있어야 하는 견주기 문항에 쓴다.
+  function pairNear(d, op, lo, hi, rule) {
+    return d.until(() => {
+      const v = d.int(lo, hi);
+      if (op === '+') { const a = d.int(100, v - 100); return [a, v - a]; }
+      const b = d.int(100, 999 - v); return [v + b, b];
+    }, ([a, b]) => a >= 100 && b >= 100 && a <= 999 && b <= 999 && plain(a) && plain(b) && a !== b
+      && count(op === '+' ? carryPlaces(a, b) : borrowPlaces(a, b)) >= 1 && (!rule || rule(a, b)));
+  }
   const result = (a, op, b) => (op === '+' ? a + b : a - b);
   const shown = (a, op, b) => expr(a, op, b, '=', result(a, op, b));
 
@@ -240,6 +249,8 @@
   function findGroup(unit, groupId) { return unit.groups.find((g) => g.id === groupId) || null; }
   // 이미 등록한 단원의 묶음에 유형을 더한다(기본과 실력을 다른 파일에 나누어 쓸 때).
   function addTypes(unitId, groupId, types) { findGroup(findUnit(unitId), groupId).types.push(...types); }
+  // 이미 등록한 단원 끝에 묶음을 더한다(실력 문항을 한 묶음으로 모아 둘 때).
+  function addGroup(unitId, group) { findUnit(unitId).groups.push(group); }
   const LEVELS = ['기본', '실력'];
   const typesOf = (group, level) => group.types.filter((type) => type.level === level);
 
@@ -283,8 +294,8 @@
   }
 
   root.MathBank = {
-    Dice, addUnit, addTypes, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
+    Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, chars, blocks, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, N, M, C, E, nick, addPair, subPair, ADD, SUB, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, chars, blocks, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

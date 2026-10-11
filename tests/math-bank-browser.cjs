@@ -63,7 +63,8 @@ const UNIT = '3-1-1';
     const plan = await outline(page);
     assert.equal(await page.locator('.mb-group').count(), plan.length);
     for (let g = 0; g < plan.length; g += 1) assert.equal(await page.locator('.mb-group').nth(g).locator('.mb-level').count(), plan[g].rounds.length, `묶음 ${g + 1}의 단추 수`);
-    assert.ok(plan.every((group) => group.rounds.some((r) => r.level === '기본') && group.rounds.some((r) => r.level === '실력')), '묶음마다 기본과 실력이 있다');
+    assert.ok(plan.every((group) => group.rounds.length >= 1), '빈 묶음이 없다');
+    assert.ok(plan.some((group) => group.rounds.some((r) => r.level === '실력')), '실력 문제가 있다');
     assert.equal(await page.locator('#unitSelect').inputValue(), UNIT);
     if (SHOTS) await page.screenshot({ path: path.join(OUT, '0-groups.png'), fullPage: true });
 
@@ -145,10 +146,11 @@ const UNIT = '3-1-1';
     // ── 손님(둘러보기): 저장 없이도 풀린다 ──
     const guest = await open(0);
     await guest.page.goto(h.base + URL_PATH);
-    await guest.page.locator('.mb-group').nth(6).locator('.mb-level.is-hard').first().click();
+    const hardAt = plan.findIndex((group) => group.rounds.some((r) => r.level === '실력'));
+    await guest.page.locator('.mb-group').nth(hardAt).locator('.mb-level.is-hard').first().click();
     await guest.page.locator('.mb-item').first().waitFor();
     await guest.page.locator('learning-records .status').filter({ hasText: '둘러보기' }).waitFor();
-    const guestItems = await itemsOf(guest.page, plan[6].id, '실력', 1);
+    const guestItems = await itemsOf(guest.page, plan[hardAt].id, '실력', 1);
     const guestCard = guest.page.locator(`.mb-item[data-key="${guestItems[0].key}"]`);
     if (guestItems[0].choice !== null) await guestCard.locator('.mb-choice').first().click();
     else { const boxes = guestCard.locator('.mb-field input'); for (let i = 0; i < guestItems[0].answers.length; i += 1) await boxes.nth(i).fill(String(guestItems[0].answers[i])); await guestCard.locator('.mb-primary').click(); }
