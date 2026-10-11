@@ -138,6 +138,17 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     sub2: (a, b) => borrows(a, b) === 2
   };
   const TABLE_DIVISION = new Set(['3-1-3']);
+  // 3학년 1학기 곱셈은 (두 자리 수)×(한 자리 수)까지다. 묶음 이름대로 올림이 일어나는지도 본다.
+  const SMALL_MUL = new Set(['3-1-4']);
+  const ups = (a, b) => { const ones = (a % 10) * b, tens = Math.trunc(a / 10) * b + Math.trunc(ones / 10); return [ones >= 10, tens >= 10]; };
+  const MUL_RULE = {
+    tens: (a) => a % 10 === 0,
+    plain: (a, b) => a % 10 !== 0 && !ups(a, b)[0] && !ups(a, b)[1],
+    upper: (a, b) => a % 10 !== 0 && !ups(a, b)[0] && ups(a, b)[1],
+    ones: (a, b) => ups(a, b)[0] && !ups(a, b)[1],
+    both: (a, b) => ups(a, b)[0] && ups(a, b)[1]
+  };
+  let muls = 0;
   // 앞의 두 단원은 수가 그림(세로셈 칸·수 모형·길 그림) 안에 들어 있어 글만 읽어서는 맞춰 볼 수 없다.
   const NUMBERS_IN_DRAWINGS = new Set(['3-1-1', '3-1-2']);
   let checked = 0, divisions = 0;
@@ -146,10 +157,13 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     for (const [text, i] of f.calc || []) { assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`); assert.ok(evaluate(text) > 0, label); checked += 1; }
     // 답을 다시 셈하는 식의 수는 문제에 적힌 수여야 한다(글과 식이 따로 놀면 답을 맞춰 본 것이 아니다).
     // 글에 숫자로 적히지 않는 수(일주일의 7 따위)는 facts.unseen 에 밝혀 둔다.
-    if (f.calc && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
-      // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다.
-      const shown = new Set(strip((item.text + ' ' + (item.figure || '')).replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 ')).match(/\d+/g) || []);
-      for (const [text] of f.calc) for (const n of text.match(/\d+/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
+    // 고르기·견주기 문항의 식(choose.exprs, who.exprs)도 같은 잣대로 본다.
+    const recomputed = (f.calc || []).map(([text]) => text).concat((f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || []);
+    if (recomputed.length && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
+      // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다. 세로셈은 숫자가 칸마다 떨어져 있으니 붙여 읽은 것도 함께 본다.
+      const seen = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 '));
+      const shown = new Set((seen.match(/\d+/g) || []).concat(seen.replace(/(\d) (?=\d)/g, '$1').match(/\d+/g) || []));
+      for (const text of recomputed) for (const n of text.match(/\d+/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
     }
     if (f.pair) {
       const [a, op, b] = f.pair;
@@ -160,6 +174,19 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       if (f.carryValue) { const c = carries(a, b).at; assert.equal(answerAt(item, 0), f.carryValue, label); assert.equal(c[f.carryValue === 10 ? 0 : 1], 1, label); }
     }
     if (f.parts) f.parts.forEach(([text, i]) => assert.equal(answerAt(item, i), evaluate(text), label));
+    if (f.mul) {
+      const [a, b] = f.mul;
+      assert.ok(a >= 10 && a <= 99 && b >= 2 && b <= 9, label);
+      if (MUL_RULE[at.group.id]) assert.ok(MUL_RULE[at.group.id](a, b), '묶음 조건에 안 맞는 곱셈: ' + label);
+      if (f.wrongValue !== undefined) { assert.notEqual(f.wrongValue, a * b, '틀린 답이 정답과 같다: ' + label); assert.ok(f.wrongValue > 0, label); }
+    }
+    if (SMALL_MUL.has(at.unit.id)) {
+      const whole = strip([item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<span class="mb-box">[^<]*<\/span>/g, '□'));
+      for (const m of whole.matchAll(/(\d+) × (\d+)/g)) {
+        const x = Number(m[1]), y = Number(m[2]);
+        assert.ok(Math.min(x, y) <= 9 && Math.max(x, y) <= 99 && x >= 1 && y >= 1, `(두 자리 수)×(한 자리 수)를 넘는 곱셈 ${m[0]} — ${label}`); muls += 1;
+      }
+    }
     // 3학년 1학기 나눗셈은 곱셈구구 범위뿐이다: 글·그림·풀이에 적힌 나눗셈은 모두 나머지가 없고 나누는 수와 몫이 2~9.
     if (TABLE_DIVISION.has(at.unit.id)) {
       // 빈칸은 □ 로 남겨 두어야 빈칸 뒤의 수가 앞 식에 붙어 읽히지 않는다.
@@ -172,6 +199,7 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
   });
   assert.ok(checked > 1000);
   assert.ok(divisions > 1000, '나눗셈 검사 수: ' + divisions);
+  assert.ok(muls > 1500, '곱셈 검사 수: ' + muls);
 });
 
 test('가려진 숫자: 가린 자리를 모든 숫자로 바꿔 보아도 맞는 경우는 하나뿐이다', () => {
@@ -242,6 +270,12 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
         assert.equal(same.length, 1, label);
         assert.deepEqual(f.choose.pairsShown[item.choice.answer].slice().sort(), [same[0][0][1], same[0][1][1]].sort(), label);
         assert.equal(f.choose.pairsShown.filter((p) => values[p[0]] === values[p[1]]).length, 1, label);
+      } else if (rule === 'onlyAbove' || rule === 'onlyBelow') {
+        // 기준 수보다 큰(작은) 것은 하나뿐이고, 기준 수와 같은 값은 없다.
+        const hit = values.map((v) => (rule === 'onlyAbove' ? v > f.choose.target : v < f.choose.target));
+        assert.ok(values.every((v) => v !== f.choose.target), label);
+        assert.equal(hit.filter(Boolean).length, 1, label);
+        assert.equal(item.choice.answer, hit.indexOf(true), label);
       } else if (rule === 'odd') {
         // 값이 나머지와 다른 하나 찾기: 하나만 다르고 나머지는 모두 같다.
         const lone = values.filter((v) => values.filter((w) => w === v).length === 1);
@@ -400,6 +434,7 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.equal(answerAt(item, 0), calc(h * 100 + t * 10 + o, op, b), label); tally('places');
     }
     if (f.who) {
+      if (f.who.exprs) assert.deepEqual(f.who.values, f.who.exprs.map(evaluate), label);
       const [x, y] = f.who.values, winner = x > y ? 0 : 1, gap = Math.abs(x - y);
       assert.notEqual(x, y, label);
       const hits = f.who.options.filter(([who, n]) => who === winner && n === gap);
@@ -461,6 +496,47 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.equal(hits.length, 1, label);
       assert.deepEqual(Array.from(options[item.choice.answer]), Array.from(hits[0]), label);
       assert.ok(options.every(([x, y]) => x >= 2 && x <= 9 && y >= 2 && y <= 9), label); tally('times');
+    }
+    if (f.repeatAdd) {
+      // 같은 수를 거듭 더한 식 → 곱셈식: 그림의 덧셈식에 a 가 n 번 적혀 있다.
+      const { a, n } = f.repeatAdd;
+      assert.deepEqual(strip(item.figure).split('=')[0].split('+').map((s) => s.trim()), Array.from({ length: n }, () => String(a)), label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [n, a * n], label); assert.ok(n >= 2, label); tally('repeatAdd');
+    }
+    if (f.carry) {
+      // 일의 자리 곱에서 올림한 수와 그 수가 나타내는 값
+      const [a, b] = f.carry, up = Math.trunc(((a % 10) * b) / 10);
+      assert.ok(up >= 1, label); assert.deepEqual(item.inputs.map((i) => i.answer), [up, up * 10], label); tally('carry');
+    }
+    if (f.mulEnds) {
+      const big = Math.max(...f.mulEnds), small = Math.min(...f.mulEnds);
+      assert.equal(new Set(f.mulEnds).size, f.mulEnds.length, label);
+      assert.ok(big >= 10 && big <= 99 && small >= 2 && small <= 9, label);
+      assert.equal(answerAt(item, 0), big * small, label); tally('mulEnds');
+    }
+    if (f.mulEstimate) {
+      // 가까운 몇십으로 어림: 일의 자리가 5 이면 어느 쪽인지 갈리므로 쓰지 않는다.
+      const [a, b] = f.mulEstimate, about = Math.round(a / 10) * 10;
+      assert.ok(a % 10 !== 5 && a % 10 !== 0 && about >= 10, label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [about, about * b], label); tally('mulEstimate');
+    }
+    if (f.mulMasks) {
+      // 숫자가 가려진 곱셈: 가린 자리(?)에 모든 숫자를 넣어 보아도 맞는 경우는 하나뿐이다. 답은 위에서 아래, 왼쪽에서 오른쪽 차례.
+      const frame = f.mulMasks.a + '|' + f.mulMasks.b + '|' + f.mulMasks.p, holes = [...frame].filter((ch) => ch === '?').length, found = [];
+      for (let code = 0; code < 10 ** holes; code += 1) {
+        const fill = String(code).padStart(holes, '0').split(''); let k = 0;
+        const [a, b, p] = frame.replace(/\?/g, () => fill[k++]).split('|');
+        if (a[0] === '0' || p[0] === '0') continue;
+        if (Number(a) * Number(b) === Number(p)) found.push(fill.map(Number));
+      }
+      assert.equal(found.length, 1, '가려진 곱셈의 답이 하나가 아니다: ' + label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), found[0], label); tally('mulMasks');
+    }
+    if (f.mulCards) {
+      // 수 카드 세 장으로 만드는 (몇십몇)×(몇)의 가장 큰 곱
+      const [p, q, r] = f.mulCards, all = [[p, q, r], [p, r, q], [q, p, r], [q, r, p], [r, p, q], [r, q, p]].map(([x, y, z]) => (x * 10 + y) * z);
+      assert.equal(new Set(f.mulCards).size, 3, label); assert.ok(f.mulCards.every((v) => v >= 1 && v <= 9), label);
+      assert.equal(answerAt(item, 0), Math.max(...all), label); tally('mulCards');
     }
     if (f.divEnds) {
       const big = Math.max(...f.divEnds), small = Math.min(...f.divEnds);

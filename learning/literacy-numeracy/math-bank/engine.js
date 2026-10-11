@@ -57,6 +57,11 @@
     }
     return out;
   }
+  // 곱셈 (몇십몇)×(몇)에서 올림이 일어나는 자리 [일의 자리 계산, 십의 자리 계산]
+  function mulCarries(a, b) {
+    const ones = (a % 10) * b, tens = Math.floor(a / 10) * b + Math.floor(ones / 10);
+    return [ones >= 10, tens >= 10];
+  }
   const count = (flags) => flags.filter(Boolean).length;
   // 계산 연습에 쓰기 어색한 수(몇백, 같은 숫자 셋)를 거른다.
   const plain = (n) => n % 100 !== 0 && !/^(\d)\1\1$/.test(String(n));
@@ -104,6 +109,19 @@
       + '<div class="mb-rule"></div>'
       + '<div class="mb-row"><span class="mb-sign"></span>' + (result ? cells(result) : '<span class="mb-cell mb-wide">' + box() + '</span>') + '</div>'
       + '</div>';
+  }
+  // 곱셈 세로셈에서 자리별 곱을 따로 적는 꼴: 줄을 긋고 자리별 곱(steps)을 적은 뒤 줄을 한 번 더 긋고 결과를 적는다.
+  // notes: 자리별 곱 줄 오른쪽에 붙이는 짧은 글(어느 곱인지).
+  function columnSteps(top, sign, bottom, steps, result, notes) {
+    // 줄이 글자 배열이 아니라 글 하나이면(빈칸 하나) 그 줄 전체를 넓은 칸 하나로 적는다.
+    const size = (row) => (Array.isArray(row) ? row.length : 1);
+    const width = Math.max(top.length, bottom.length, size(result), Math.max.apply(null, steps.map(size)));
+    const cells = (list) => (Array.isArray(list)
+      ? '<span class="mb-cell"></span>'.repeat(width - list.length) + list.map((ch) => '<span class="mb-cell">' + ch + '</span>').join('')
+      : '<span class="mb-cell mb-wide mb-wide-short">' + list + '</span>');
+    const row = (list, mark, note) => '<div class="mb-row"><span class="mb-sign">' + (mark || '') + '</span>' + cells(list) + (notes ? '<span class="mb-note">' + (note || '') + '</span>' : '') + '</div>';
+    return '<div class="mb-column' + (notes ? ' mb-column-noted' : '') + '" role="img" aria-label="세로셈">' + row(top) + row(bottom, SIGN[sign]) + '<div class="mb-rule"></div>'
+      + steps.map((list, i) => row(list, '', notes && notes[i])).join('') + '<div class="mb-rule"></div>' + row(result) + '</div>';
   }
   // 차례로 계산하는 칸: 수 → (+a) → 수 → (−b) → 수. 조각은 수·box()·'+267'·'÷9' 같은 글이다.
   function chain(parts) {
@@ -165,13 +183,27 @@
     return '<svg class="mb-dots" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.25) + '" role="img" aria-label="' + said + '">' + out + '</svg>';
   }
   // 수직선에서 0부터 step 씩 뛰어 max 까지 간다. 뛴 자리마다 수를 적는다.
-  function numberLine(max, step) {
-    const unit = Math.min(13, 300 / max), x = (v) => 14 + v * unit, y = 34, width = 28 + max * unit;
+  // options.tick: 작은 눈금 간격(기본 1), options.hideEnd: 끝 수를 적지 않는다(그 수를 물을 때), options.length: 선의 길이(기본 300).
+  function numberLine(max, step, options) {
+    const o = options || {}, tick = o.tick || 1;
+    const unit = Math.min(13, (o.length || 300) / max), x = (v) => 14 + v * unit, y = 34, width = 28 + max * unit;
     let out = '<line class="mb-axis" x1="' + x(0) + '" y1="' + y + '" x2="' + x(max) + '" y2="' + y + '"/>';
-    for (let v = 0; v <= max; v += 1) out += '<line class="mb-axis" x1="' + x(v) + '" y1="' + (y - (v % step === 0 ? 5 : 3)) + '" x2="' + x(v) + '" y2="' + (y + (v % step === 0 ? 5 : 3)) + '"/>';
-    for (let v = 0; v <= max; v += step) out += '<text class="mb-axis-label" x="' + x(v) + '" y="' + (y + 17) + '" text-anchor="middle">' + v + '</text>';
+    for (let v = 0; v <= max; v += tick) out += '<line class="mb-axis" x1="' + x(v) + '" y1="' + (y - (v % step === 0 ? 5 : 3)) + '" x2="' + x(v) + '" y2="' + (y + (v % step === 0 ? 5 : 3)) + '"/>';
+    for (let v = 0; v <= max; v += step) if (!(o.hideEnd && v === max)) out += '<text class="mb-axis-label" x="' + x(v) + '" y="' + (y + 17) + '" text-anchor="middle">' + v + '</text>';
     for (let v = 0; v + step <= max; v += step) out += '<path class="mb-jump" d="M' + x(v) + ' ' + (y - 6) + 'Q' + x(v + step / 2) + ' ' + (y - 30) + ' ' + x(v + step) + ' ' + (y - 6) + '"/>';
-    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.15) + '" role="img" aria-label="수직선: 0부터 ' + step + '씩 뛰어 ' + max + '까지">' + out + '</svg>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.15) + '" role="img" aria-label="수직선: 0부터 ' + step + '씩 ' + (max / step) + '번 뛰어 ' + max + '까지">' + out + '</svg>';
+  }
+  // 10짜리·1짜리 동그라미로 나타낸 수를 여러 줄 놓은 그림(곱셈): a 를 rows 줄.
+  function counters(a, rows) {
+    const tens = Math.floor(a / 10), ones = a % 10, step = 17, gap = tens && ones ? 10 : 0, pad = 10;
+    const width = pad * 2 + (tens + ones) * step + gap - 3, height = pad * 2 + rows * step - 3;
+    let out = '';
+    for (let r = 0; r < rows; r += 1) {
+      const y = pad + 7 + r * step;
+      for (let i = 0; i < tens; i += 1) { const x = pad + 7 + i * step; out += '<circle class="mb-chip-ten" cx="' + x + '" cy="' + y + '" r="7"/><text class="mb-chip-text" x="' + x + '" y="' + (y + 2.6) + '" text-anchor="middle">10</text>'; }
+      for (let i = 0; i < ones; i += 1) { const x = pad + 7 + tens * step + gap + i * step; out += '<circle class="mb-chip-one" cx="' + x + '" cy="' + y + '" r="7"/><text class="mb-chip-text" x="' + x + '" y="' + (y + 2.6) + '" text-anchor="middle">1</text>'; }
+    }
+    return '<svg class="mb-counters" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.5) + '" role="img" aria-label="한 줄에 ' + a + '(10이 ' + tens + '개, 1이 ' + ones + '개)씩 ' + rows + '줄">' + out + '</svg>';
   }
   const chars = (n) => String(n).split('');
   // 수 모형: 백 모형(판)·십 모형(막대)·일 모형(낱개)
@@ -243,7 +275,17 @@
     }, ([a, b]) => a >= 100 && b >= 100 && a <= 999 && b <= 999 && plain(a) && plain(b) && a !== b
       && count(op === '+' ? carryPlaces(a, b) : borrowPlaces(a, b)) >= 1 && (!rule || rule(a, b)));
   }
-  const result = (a, op, b) => (op === '+' ? a + b : a - b);
+  // (두 자리 수)×(한 자리 수)를 조건에 맞게 뽑는다. rule 은 올림 자리 배열과 두 수를 받는다.
+  const mulPair = (d, rule) => d.until(() => [d.int(10, 99), d.int(2, 9)], ([a, b]) => rule(mulCarries(a, b), a, b));
+  const MUL = {
+    tens: (c, a) => a % 10 === 0,                      // (몇십)×(몇)
+    none: (c, a) => a % 10 !== 0 && !c[0] && !c[1],    // 올림이 없다
+    upper: (c, a) => a % 10 !== 0 && !c[0] && c[1],    // 십의 자리에서 올림
+    ones: (c) => c[0] && !c[1],                        // 일의 자리에서 올림
+    both: (c) => c[0] && c[1],                         // 올림이 두 번
+    any: (c, a) => a % 10 !== 0
+  };
+  const result = (a, op, b) => (op === '+' ? a + b : op === '-' ? a - b : op === '*' ? a * b : a / b);
   const shown = (a, op, b) => expr(a, op, b, '=', result(a, op, b));
 
   // ── 문항 꼴 세 가지: 수 하나(N), 수 여럿(M), 고르기(C) ───────
@@ -315,6 +357,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, chars, blocks, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, columnSteps, chars, blocks, counters, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
