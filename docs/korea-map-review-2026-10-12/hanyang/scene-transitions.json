@@ -1,0 +1,261 @@
+[
+  {
+    "brokenOverlays": [],
+    "id": "prehistoric-sites",
+    "local": 0,
+    "markers": 4,
+    "tiles": 23
+  },
+  {
+    "brokenOverlays": [],
+    "id": "gojoseon-distribution",
+    "local": 0,
+    "markers": 3,
+    "tiles": 20
+  },
+  {
+    "brokenOverlays": [],
+    "id": "early-states",
+    "local": 0,
+    "markers": 7,
+    "tiles": 30
+  },
+  {
+    "brokenOverlays": [],
+    "id": "gaya-federation",
+    "local": 0,
+    "markers": 3,
+    "tiles": 22
+  },
+  {
+    "brokenOverlays": [],
+    "id": "baekje-fourth",
+    "local": 0,
+    "markers": 3,
+    "tiles": 12
+  },
+  {
+    "brokenOverlays": [],
+    "id": "goguryeo-fifth",
+    "local": 0,
+    "markers": 5,
+    "tiles": 20
+  },
+  {
+    "brokenOverlays": [],
+    "id": "baekje-capitals",
+    "local": 0,
+    "markers": 3,
+    "tiles": 14
+  },
+  {
+    "brokenOverlays": [],
+    "id": "silla-sixth",
+    "local": 0,
+    "markers": 7,
+    "tiles": 12
+  },
+  {
+    "brokenOverlays": [],
+    "id": "unification",
+    "local": 0,
+    "markers": 6,
+    "tiles": 9
+  },
+  {
+    "brokenOverlays": [],
+    "id": "balhae",
+    "local": 0,
+    "markers": 8,
+    "tiles": 24
+  },
+  {
+    "id": "silla-trade",
+    "local": 0,
+    "localWall": 0,
+    "markers": 5,
+    "scale": 0
+  },
+  {
+    "id": "later-three",
+    "local": 0,
+    "localWall": 0,
+    "markers": 4,
+    "scale": 0
+  },
+  {
+    "id": "gangdong",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "gwiju",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "nine-forts",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "sambyeolcho",
+    "local": 0,
+    "localWall": 0,
+    "markers": 3,
+    "scale": 0
+  },
+  {
+    "id": "ssangseong",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "hanyang-capital",
+    "local": 1,
+    "localWall": 1,
+    "markers": 3,
+    "scale": 1
+  },
+  {
+    "id": "four-six",
+    "local": 0,
+    "localWall": 0,
+    "markers": 4,
+    "scale": 0
+  },
+  {
+    "id": "imjin",
+    "local": 0,
+    "localWall": 0,
+    "markers": 8,
+    "scale": 0
+  },
+  {
+    "id": "byeongja-war",
+    "local": 0,
+    "localWall": 0,
+    "markers": 4,
+    "scale": 0
+  },
+  {
+    "id": "foreign-incursions",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "ports",
+    "local": 0,
+    "localWall": 0,
+    "markers": 3,
+    "scale": 0
+  },
+  {
+    "id": "donghak",
+    "local": 0,
+    "localWall": 0,
+    "markers": 6,
+    "scale": 0
+  },
+  {
+    "id": "an-jung-geun",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "independence-bases",
+    "local": 0,
+    "localWall": 0,
+    "markers": 3,
+    "scale": 0
+  },
+  {
+    "id": "march-first",
+    "local": 0,
+    "localWall": 0,
+    "markers": 5,
+    "scale": 0
+  },
+  {
+    "id": "provisional-government",
+    "local": 0,
+    "localWall": 0,
+    "markers": 1,
+    "scale": 0
+  },
+  {
+    "id": "provisional-route",
+    "local": 0,
+    "localWall": 0,
+    "markers": 8,
+    "scale": 0
+  },
+  {
+    "id": "bongo-cheongsan",
+    "local": 0,
+    "localWall": 0,
+    "markers": 5,
+    "scale": 0
+  },
+  {
+    "id": "patriotic-corps",
+    "local": 0,
+    "localWall": 0,
+    "markers": 2,
+    "scale": 0
+  },
+  {
+    "id": "allied-operations",
+    "local": 0,
+    "localWall": 0,
+    "markers": 4,
+    "scale": 0
+  },
+  {
+    "id": "korean-volunteer-corps",
+    "local": 0,
+    "localWall": 0,
+    "markers": 1,
+    "scale": 0
+  },
+  {
+    "id": "liberation-army",
+    "local": 0,
+    "localWall": 0,
+    "markers": 1,
+    "scale": 0
+  },
+  {
+    "id": "liberation-division",
+    "local": 0,
+    "localWall": 0,
+    "markers": 3,
+    "scale": 0
+  },
+  {
+    "id": "korean-war",
+    "local": 0,
+    "localWall": 0,
+    "markers": 3,
+    "scale": 0
+  },
+  {
+    "id": "democracy-movements",
+    "local": 0,
+    "localWall": 0,
+    "markers": 4,
+    "scale": 0
+  }
+]

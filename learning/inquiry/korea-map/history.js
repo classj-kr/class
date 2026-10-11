@@ -227,19 +227,15 @@
     // Keep these vector renderers in the scene group so cleanup is self-contained.
     const zoneRenderer = L.svg({pane:"themeZones"}).addTo(group);
     const lineRenderer = L.svg({pane:"themeLines"}).addTo(group);
-    // A close-range place map exceeds the relief tiles' native resolution.
-    // Preserve geographic positions, north orientation and a metric scale.
-    if (scene.localDetail) {
-      const backdrop = L.rectangle([[-85,-180],[85,180]], {renderer:zoneRenderer,pane:'themeZones',stroke:false,fillColor:'#eef3e9',fillOpacity:1,interactive:false}).addTo(group);
-      const scale = L.control.scale({position:'bottomleft',imperial:false,maxWidth:140}).addTo(map);
-      backdrop.on('remove',()=>scale.remove());
-    }
+    const contextLabels = scene.localDetail
+      ? window.KoreaHistoryLocalMap.draw(map, group, scene.id) : [];
     const caption = document.querySelector("#historyMapCaption");
     caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", state.stageTitle || scene.title));
     if (scene.localDetail) caption.append(el('small','history-north','↑ 북'));
     const legend = document.querySelector("#mapKey");
-    legend.hidden = !!state.locationOnly;
-    legend.replaceChildren(...(state.legend || []).map(item => {
+    legend.hidden = !!state.locationOnly && !scene.localDetail;
+    const localLegend = scene.localDetail ? [{label:'한양도성',color:'#80633f'},{label:'개천(청계천)',color:'#4e9cb7'}] : null;
+    legend.replaceChildren(...(localLegend || state.legend || []).map(item => {
       const row = el("span", "key-item");
       const swatch = el("span", `key-swatch${item.pattern ? " history-hatch" : ""}`);
       swatch.style.setProperty("--swatch", item.color || "#739851");
@@ -311,11 +307,16 @@
         const p = map.latLngToContainerPoint(latLng(label.xy));
         occupied.push({ x: p.x - 50, y: p.y - 25, w: 100, h: label.name.length > 6 ? 50 : 30 });
       });
+      contextLabels.forEach(label => {
+        const p = map.latLngToContainerPoint(latLng(label.xy));
+        occupied.push({ x: p.x - 56, y: p.y - 12, w: 112, h: 24 });
+      });
       const overlaps = (a, b) => a.x < b.x + b.w + 4 && a.x + a.w + 4 > b.x && a.y < b.y + b.h + 3 && a.y + a.h + 3 > b.y;
       scene.marks.forEach((mark, index) => {
         const p = pins[index];
         if (p.x < 0 || p.x > size.x || p.y < 0 || p.y > size.y) return;
-        const labelText = `${index + 1} ${mark.label}`;
+        const displayName = scene.localDetail && size.x < 520 ? mark.label.split(' · ')[0] : mark.label;
+        const labelText = `${index + 1} ${displayName}`;
         const width = Math.min(174, Math.max(65, labelText.length * 12 + 16));
         const height = labelText.length * 12 + 16 > width ? 44 : 27;
         let best;

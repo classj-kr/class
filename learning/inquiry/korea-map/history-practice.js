@@ -23,7 +23,7 @@
     mapLayers.clearLayers();
     const spec=q.map;
     questionMap.setMaxZoom(spec.maxZoom||12);
-    if(spec.localDetail)L.rectangle([[-85,-180],[85,180]],{stroke:false,fillColor:'#eef3e9',fillOpacity:1,interactive:false}).addTo(mapLayers);
+    if(spec.localDetail)window.KoreaHistoryLocalMap.draw(questionMap,mapLayers,spec.localMap);
     const lineStyle={color:'#265e75',weight:3,opacity:.9,interactive:false};
     (spec.routes||[]).forEach(route=>L.polyline(route.map(xy=>[xy[1],xy[0]]),lineStyle).addTo(mapLayers));
     const markers=L.layerGroup().addTo(mapLayers);
