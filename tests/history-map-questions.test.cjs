@@ -15,7 +15,8 @@ test('all high questions have valid map references, distinct options and version
   for(const scene of KOREA_HISTORY.scenes)for(const q of HistoryQuestions.forLevel(scene.id,'high')){
     count++;assert.ok(!seen.has(q.id));seen.add(q.id);
     const changed=q.id.endsWith('-02')||['history-hanyang-capital-high-01','history-liberation-division-high-01'].includes(q.id);
-    assert.equal(q.revision,q.id==='history-independence-bases-high-02'?5:changed?4:2);assert.equal(new Set(q.options).size,5);
+    const distinctPair=['independence-bases','silla-trade','ssangseong','imjin','donghak'].some(id=>q.id===`history-${id}-high-02`);
+    assert.equal(q.revision,distinctPair?5:changed?4:2);assert.equal(new Set(q.options).size,5);
     assert.ok(q.answer>=0&&q.answer<q.options.length);
     assert.ok(q.explanation.length>50);
     assert.ok(q.map.points.length>=2);
