@@ -36,7 +36,7 @@
   const shapesOf = (w, n, den) => '<div class="mb-lines"><div>' + Array.from({ length: w + 1 }, (_, i) => pieces('circle', den, { shaded: i < w ? den : n, scale: 1.05 })).join(' ') + '</div></div>';
 
   B.addUnit({
-    id: '3-2-4', grade: 3, semester: 2, no: 4, title: '분수', version: 1,
+    id: '3-2-4', grade: 3, semester: 2, no: 4, title: '분수', version: 2,
     groups: [
       {
         id: 'part', title: '부분은 전체의 얼마인지 분수로 나타내기', standard: PART,
