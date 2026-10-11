@@ -99,7 +99,7 @@ export function createAtlas(api){
   function renderLegend(id){
     const box=$('atlasLegend');box.hidden=!id;if(!id)return;box.setAttribute('aria-busy','true');
     const rows=id==='density'?DENSITY_LEGEND:id==='climate'?CLIMATE_LEGEND:[['#ffad78','수렴'],['#65dfd5','발산'],['#caadff','보존'],['#b6bdc6','기타']];
-    box.innerHTML=`<strong>${{density:'국가·지역별 평균 인구밀도',climate:'주요 기후 지역',plates:'판 경계'}[id]}</strong><div>${rows.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')}</div><small>${{density:'2023 · 명/육지 km² · World Bank',climate:'Peel 외(2007)',plates:'USGS · 경계선 모형 · 실제 이동 속도 아님'}[id]}</small>`;
+    box.innerHTML=`<strong>${{density:'국가·지역별 평균 인구밀도',climate:'주요 기후 지역',plates:'판 경계'}[id]}</strong><div>${rows.map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join('')}</div>${id==='density'?'<small>2023년 · 육지 1km²에 사는 사람 수(명)</small>':''}`;
   }
   function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
   function questionsFor(l){return window.MapPractice.pool('world',l,QUESTIONS,school?.value||'middle');}
