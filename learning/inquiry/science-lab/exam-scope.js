@@ -7,8 +7,8 @@
  assessment.onload=()=>{if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadReview,{once:true});else loadReview();};
  const assessmentContent=document.createElement('script');assessmentContent.src=new URL('assessment-content.js?v=51433a14d4cb',assessmentBase);
  assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);
- if(['pasteur','newton-prism','infection-prevention','mendeleev'].includes(slug)){
-  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=2803cad74973',assessmentBase);
+ if(m.diagnostic){
+  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=ff929130ae8d',assessmentBase);
   questions.onload=questions.onerror=()=>document.body.append(assessmentContent);document.body.append(questions);
  }else document.body.append(assessmentContent);
  // Load observation panels without injecting an administrative scope banner.

@@ -96,40 +96,56 @@ document.addEventListener('DOMContentLoaded', () => {
         for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++) {const a=particles[i],b=particles[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),r=a.r+b.r;if(d>0&&d<r){const nx=dx/d,ny=dy/d,overlap=(r-d)/2;a.x-=nx*overlap;a.y-=ny*overlap;b.x+=nx*overlap;b.y+=ny*overlap;const relative=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;if(relative>0){a.vx-=relative*nx;a.vy-=relative*ny;b.vx+=relative*nx;b.vy+=relative*ny;}}}
     }
     function drawPrimaryStates() {
+        const narrow=matchMedia('(max-width:600px)').matches;
         const w=values.width*1.9, bottom=305;
         let s='';
         ['고체 · 돌','액체 · 물','기체 · 공기'].forEach((name,i)=>{
             const cx=135+i*265,x=cx-w/2;
+            s+=`<g transform="translate(${narrow?15-i*265:0},${narrow?i*375:0})">`;
             s+=text(cx,55,name,25,'#e6f2f5');
-            if(i===1)s+=`<rect x="${x+2}" y="${bottom-16000/w}" width="${w-4}" height="${16000/w}" fill="#389ecc99"/>`;
+            if(i===1)s+=`<rect x="${x+2}" y="${bottom-16000/(w-4)}" width="${w-4}" height="${16000/(w-4)}" fill="#389ecc99"/>`;
             s+=`<path d="M${x} 100 V${bottom} H${x+w} V100" fill="none" stroke="#8baebd" stroke-width="3"/>`;
             if(i===0)s+=`<path d="M${cx-42} 291 Q${cx-48} 247 ${cx-13} 245 Q${cx+32} 236 ${cx+42} 272 Q${cx+47} 299 ${cx+12} 302 L${cx-23} 302 Z" fill="#a1aeb9" stroke="#d3dfe5" stroke-width="2"/>`;
             if(i===2)s+=text(cx,211,'눈에 보이지 않음',19,'#b8d5e3');
             s+=text(cx,350,['모양과 부피가 유지됨','모양이 바뀌고 부피는 유지됨','그릇 전체를 채움'][i],18,'#b7d6df');
+            s+='</g>';
         });
-        s+=text(400,408,'그릇의 너비를 바꾸며 모양과 차지하는 공간을 비교하세요.',20,'#6bdad6');
+        s+=narrow?text(150,1145,'그릇의 너비를 바꾸어',20,'#6bdad6')+text(150,1175,'세 물질을 비교하세요.',20,'#6bdad6'):text(400,408,'그릇의 너비를 바꾸며 모양과 차지하는 공간을 비교하세요.',20,'#6bdad6');
         stageSVG(s,'그릇의 너비에 따른 돌, 물, 공기의 모습 비교');
+        primaryView(narrow?'0 0 300 1200':'0 0 800 440');
         info([], '', '', '');
     }
     function drawPrimaryPhase() {
+        const narrow=matchMedia('(max-width:600px)').matches;
         const p=values.direction==='heat'?values.progress:100-values.progress;
         const segment=p<25?0:p<40?1:p<65?2:p<85?3:4;
         const names=['얼음 · 고체','물 · 액체','수증기 · 기체'];
         let s='';
         names.forEach((name,i)=>{
             const x=35+i*265,lit=i===0?segment<=1:i===1?segment>=1&&segment<=3:segment>=3;
+            s+=`<g transform="translate(${narrow?10-i*265:0},${narrow?i*315:0})">`;
             s+=`<rect x="${x}" y="75" width="210" height="265" rx="18" fill="${lit?'#173c4b':'#10222e'}" stroke="${lit?'#65d9d1':'#304b5c'}" stroke-width="${lit?3:1}"/>`;
             s+=text(x+105,118,name,23,lit?'#e4fbff':'#99b6c5');
             if(i===0)s+=`<path d="M${x+60} 190 l60 -20 30 25 v65 l-60 20 -30 -25 Z M${x+60} 190 l30 25 60 -20 M${x+90} 215 v65" fill="#b5e9f877" stroke="#b8e9f6" stroke-width="2"/>`;
             if(i===1)s+=`<path d="M${x+49} 175 V285 H${x+161} V175" fill="none" stroke="#accdd8" stroke-width="3"/><path d="M${x+51} 230 Q${x+81} 222 ${x+111} 230 T${x+159} 230 V283 H${x+51} Z" fill="#389eccaa"/>`;
             if(i===2)s+=text(x+105,217,'눈에 보이지 않음',18,'#c5e0e9')+text(x+105,255,'주변으로 퍼짐',18,'#c5e0e9');
+            s+='</g>';
         });
-        s+=text(268,216,values.direction==='heat'?'→':'←',26,'#ffd28a')+text(533,216,values.direction==='heat'?'→':'←',26,'#ffd28a');
+        s+=narrow?text(150,371,values.direction==='heat'?'↓':'↑',26,'#ffd28a')+text(150,686,values.direction==='heat'?'↓':'↑',26,'#ffd28a'):text(268,216,values.direction==='heat'?'→':'←',26,'#ffd28a')+text(533,216,values.direction==='heat'?'→':'←',26,'#ffd28a');
         const heating=['얼음을 데웁니다','얼음이 녹아 물이 됩니다','물을 데웁니다','물이 끓어 수증기가 됩니다','수증기는 기체 상태의 물입니다'];
         const cooling=['물이 얼어 얼음이 되었습니다','물이 얼어 얼음이 됩니다','물이 식습니다','수증기가 물로 변합니다','수증기가 차가워집니다'];
-        s+=text(400,400,(values.direction==='heat'?heating:cooling)[segment],24,'#f4d290');
+        const caption=(values.direction==='heat'?heating:cooling)[segment];
+        if(narrow){
+            const split=caption.lastIndexOf(' ',Math.ceil(caption.length/2));
+            s+=text(150,1010,caption.slice(0,split),21,'#f4d290')+text(150,1040,caption.slice(split+1),21,'#f4d290');
+        }else s+=text(400,400,caption,24,'#f4d290');
         stageSVG(s,'가열하거나 차갑게 할 때 물의 상태 변화');
+        primaryView(narrow?'0 0 300 1070':'0 0 800 440');
         info([], '', '', '');
+    }
+    function primaryView(viewBox){
+        const diagram=$('modelStage').querySelector('svg');
+        diagram.dataset.primary='true';diagram.setAttribute('viewBox',viewBox);
     }
     function drawStates() {
         if(window.SchoolLevel?.value==='elementary'){drawPrimaryStates();return;}
@@ -318,11 +334,14 @@ document.addEventListener('DOMContentLoaded', () => {
     $('modelAnswers').addEventListener('click',e=>{const button=e.target.closest('[data-answer]');if(!button||button.disabled)return;const m=modules.find(m=>m.id===active);if(Number(button.dataset.answer)===m.answer){button.classList.add('answer-correct');$('modelFeedback').textContent=`정답입니다. ${m.why}`;$('modelAnswers').querySelectorAll('button').forEach(b=>b.disabled=true);}else{button.classList.add('answer-wrong');button.disabled=true;$('modelFeedback').textContent='모형에서 변하는 것과 유지되는 것을 확인하고 다시 골라보세요.';}});
     new MutationObserver(()=>{if(visible())start();else stop();}).observe(document.getElementById('tab-models'),{attributes:true,attributeFilter:['class']});
     document.addEventListener('visibilitychange',()=>{if(visible())start();else stop();});
+    const primaryMedia=matchMedia('(max-width:600px)');
+    primaryMedia.addEventListener('change',()=>{if(window.SchoolLevel?.value==='elementary')render();});
     changeModel(active);
     function updateSchoolModels(){
         const label=root.querySelector('[data-model="atom"] > span:last-child');
         label.textContent=window.SchoolLevel.value==='middle'?'원자와 이온':'원자·동위 원소·이온';
         root.querySelector('[data-model="reaction"] > span:last-child').textContent=window.SchoolLevel.value==='middle'?'화학 반응과 질량 보존':'반응식·몰비·질량 보존';
+        root.querySelector('[data-model="phase"] > span:last-child').textContent=window.SchoolLevel.value==='elementary'?'물의 상태 변화':'상태 변화와 열에너지';
         root.querySelector('.matter-nav h2').textContent=window.SchoolLevel.value==='elementary'?'물질의 상태':'물질을 입자로 보기';
         changeModel(active);
     }

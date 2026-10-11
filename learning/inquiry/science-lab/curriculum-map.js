@@ -1675,7 +1675,8 @@ const scienceCurriculum = {
     "codes": [
       "10과탐1-02-02",
       "10과탐1-02-03"
-    ]
+    ],
+    "diagnostic": true
   },
   "newton-prism": {
     "grade": "고1",
@@ -1690,7 +1691,8 @@ const scienceCurriculum = {
     "codes": [
       "10과탐1-02-02",
       "10과탐1-02-03"
-    ]
+    ],
+    "diagnostic": true
   },
   "infection-prevention": {
     "grade": "초3",
@@ -1705,7 +1707,8 @@ const scienceCurriculum = {
     "codes": [
       "4과08-02",
       "4과08-03"
-    ]
+    ],
+    "diagnostic": true
   },
   "mendeleev": {
     "grade": "고1",
@@ -1719,7 +1722,120 @@ const scienceCurriculum = {
     ],
     "codes": [
       "10과탐1-01-02"
-    ]
+    ],
+    "diagnostic": true
+  },
+  "speaker-lab": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "종이컵 스피커 만들기",
+    "subjects": [
+      "물리학"
+    ],
+    "codes": [
+      "12물리02-05"
+    ],
+    "diagnostic": true
+  },
+  "wireless-power": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "두 코일의 무선 전력 전달",
+    "subjects": [
+      "물리학"
+    ],
+    "codes": [
+      "12물리02-06"
+    ],
+    "diagnostic": true
+  },
+  "magnetic-brake": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "구리판 사이의 자기 브레이크",
+    "subjects": [
+      "전자기와 양자"
+    ],
+    "codes": [
+      "12전자01-05"
+    ],
+    "diagnostic": true
+  },
+  "transistor-speaker": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "트랜지스터로 소리 증폭하기",
+    "subjects": [
+      "전자기와 양자"
+    ],
+    "codes": [
+      "12전자01-07"
+    ],
+    "diagnostic": true
+  },
+  "soap-film": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "세워 둔 비누막의 간섭",
+    "subjects": [
+      "전자기와 양자"
+    ],
+    "codes": [
+      "12전자02-01"
+    ],
+    "diagnostic": true
+  },
+  "polarization": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "편광판으로 광원 조사하기",
+    "subjects": [
+      "전자기와 양자"
+    ],
+    "codes": [
+      "12전자02-03"
+    ],
+    "diagnostic": true
+  },
+  "electron-slits": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "한 전자씩 보내는 이중 슬릿",
+    "subjects": [
+      "전자기와 양자"
+    ],
+    "codes": [
+      "12전자03-01"
+    ],
+    "diagnostic": true
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;
