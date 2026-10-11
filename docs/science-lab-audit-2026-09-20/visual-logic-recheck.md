@@ -48,12 +48,12 @@
 
 ## 화면 증거
 
-- [변경 전 전체 기본 화면](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/baseline/sheet-01.png>) — sheet-01~09 및 end-sheet-01~09.
+- [변경 전 전체 기본 화면](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/baseline/sheet-01.webp>) — sheet-01~09 및 end-sheet-01~09.
 - [기존 보완 패널 전후 목록](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/supplements/inventory.json>) — 118캡처. before/after-sheet-01~05.
-- [동물 14단계 비교](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/animal-stages-contact.png>).
-- [새 한살이 화면](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/life-cycle-chromium.png>).
-- [새 필수 식물 비교](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/plant-life-types-chromium.png>).
-- [체를 함께 통과한 무리](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/mixture-shared-fraction-chromium.png>) / [소금 회수 전](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/mixture-salt-solution-chromium.png>).
+- [동물 14단계 비교](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/animal-stages-contact.webp>).
+- [새 한살이 화면](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/life-cycle-chromium-png.webp>).
+- [새 필수 식물 비교](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/plant-life-types-chromium.webp>).
+- [체를 함께 통과한 무리](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/mixture-shared-fraction-chromium-png.webp>) / [소금 회수 전](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/verified/mixture-salt-solution-chromium-png.webp>).
 - [최종 Chrome 검사 원본](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/final/summary-chromium.json>) / [WebKit 원본](<E:/webprojects/class/docs/science-lab-audit-2026-09-20/visual-recheck/final/summary-webkit.json>).
 
 생물 그림의 형태는 특히 배추흰나비의 알 표면 줄무늬, 애벌레의 마디·다리·줄무늬, 각진 번데기의 고정 실, 성충의 흰 날개/검은 무늬를 구분하도록 제작했다. [UF/IFAS 배추흰나비 형태 자료](https://ask.ifas.ufl.edu/publication/IN283)와 대조한 교육용 확대 그림이며 실물 사진이나 실제 크기 비례도가 아니다.

@@ -269,9 +269,9 @@
 
 .quiz-card[data-state="correct"] .answer-result { color: #6ee7b7; }
 .quiz-card[data-state="incorrect"] .answer-result { color: #fca5a5; }
-.quiz-card[data-state] label[data-correct="true"] { border-color:#6ee7b7; background:rgba(110,231,183,.09); }
-.quiz-card[data-state="incorrect"] label:has(input:checked) { border-color:#fca5a5; color:#fecaca; background:rgba(252,165,165,.09); }
-.quiz-card[data-state] label { cursor:default; }
+.quiz-card[data-state="correct"] label[data-correct="true"] { border-color:#6ee7b7; background:rgba(110,231,183,.09); }
+.quiz-card label[data-incorrect="true"] { border-color:#fca5a5; color:#fecaca; background:rgba(252,165,165,.09); }
+.quiz-card[data-state="correct"] label, .quiz-card label[data-incorrect="true"] { cursor:default; }
 .answer-button:disabled { cursor:default; opacity:.65; }
 
 /* 더 보기 */

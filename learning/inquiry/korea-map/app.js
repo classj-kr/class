@@ -1277,6 +1277,7 @@
       $('#practiceDialog').dataset.selectedOptionId=detail.selectedOptionId;$('#practiceDialog').dataset.state=correct?'correct':'incorrect';
       $('#practiceDialog').dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail}));
       recordAnswer(question, correct);
+      study.refresh();
     }
     const buttons = $$("#answerOptions .answer-button");
     if (!correct) {
@@ -1301,7 +1302,6 @@
     $("#showHint").disabled = true;
     $("#questionProgressBar").style.width = `${((session.index + 1) / session.questions.length) * 100}%`;
     showAnswerLocation(question);
-    study.refresh();
     $("#nextQuestion").focus();
   }
 

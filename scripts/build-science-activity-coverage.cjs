@@ -11,7 +11,8 @@ const groupFor=code=>groups[/^4과/.test(code)?0:/^6과/.test(code)?1:/^9과/.te
 const rows=inventory.sections.flatMap(s=>s.activities.map((a,i)=>{
  const id=s.standards[0].code.slice(0,-3)+'#'+(i+1),review=reviews.get(id),slugs=review?.slugs||[];
  for(const slug of slugs)assert(map[slug],id+': unknown app');
- return{id,group:groupFor(id),unit:s.title,line:a.line,text:a.text.replace(/^•\s*/,''),slugs,tool:tools[id]?.tool||null,status:tools[id]?(tools[id].kind||'모형')+' 도구(범위 명시)':slugs.length?review.status:'연결 없음',note:tools[id]?.remaining||review?.note||'현재 활동 연결표에 대응 구현의 근거가 없다. 전체 저장소에 기능이 없다는 단정은 아니다.'};
+ const available=tools[id]?.studentAvailable!==false&&tools[id];
+ return{id,group:groupFor(id),unit:s.title,line:a.line,text:a.text.replace(/^•\s*/,''),slugs,tool:available?.tool||null,draftTool:tools[id]?.studentAvailable===false?tools[id].tool:null,status:available?(available.kind||'모형')+' 도구(범위 명시)':slugs.length?review.status:tools[id]?'학생용 재구현 필요':'연결 없음',note:available?.remaining||(tools[id]?'기존 활동지 페이지를 학생 동선에서 철회했다. 실험과 객관식 평가로 재구현하기 전까지 연결 수에서 제외한다. ': '')+(review?.note||'현재 활동 연결표에 대응 구현의 근거가 없다. 전체 저장소에 기능이 없다는 단정은 아니다.')};
 }));
 // Independently enumerate all bullet entries inside the source's activity blocks.
 let active=false;const sourceLines=[];
@@ -30,7 +31,7 @@ const esc=s=>String(s).replaceAll('|','\\|').replace(/\s+/g,' ');
 const lines=[
  '# 필수실험 포함 여부 재점검 — 2026-10-11','',
  '**전체 포함으로 판정할 수 없다. 104는 앱 수이고, 아래 261은 2022 개정 과학과 원문의 `<탐구 활동>` 항목 수다. 서로 다른 단위다.**','',
- `기존 연결 기록을 교육과정 활동 단위로 다시 집계했다. 전용 탐구·분석 도구 ${Object.keys(tools).length}개 활동을 포함해 ${total.linked}개에 연결이 있고, ${total.unlinked}개는 대응 구현을 확인하지 못했다. 연결에는 부분 구현·모형·타학년 연결이 포함된다. 연결 수는 활동 이수나 모든 절차의 완료 수가 아니다.`,'',
+ `학생용 활동지 페이지를 철회하고 해당 ${Object.keys(tools).length}개 시안을 제공 중인 실험 수에서 제외했다. 현재 ${total.linked}개에 관련 앱 연결이 있고, ${total.unlinked}개는 대응 구현을 확인하지 못했다. 연결에는 부분 구현·모형·타학년 연결이 포함된다. 연결 수는 활동 이수나 모든 절차의 완료 수가 아니다.`,'',
  '| 범위 | 명시된 탐구활동 | 관련 앱·탐구 도구 연결 | 연결 없음 |','|---|---:|---:|---:|',
  ...summary.map(g=>`| ${g.group} | ${g.activities} | ${g.linked} | ${g.unlinked} |`),
  `| 합계 | ${total.activities} | ${total.linked} | ${total.unlinked} |`,'',

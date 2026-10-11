@@ -1,0 +1,30 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.0724ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7625ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1039ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (48.5012ms)
+chromium: 104 apps / 416 first errors retained through correction and reload
+✔ chromium: all 104 apps preserve first responses and integrate diagnostics (11908.7113ms)
+webkit: 104 apps / 416 first errors retained through correction and reload
+✔ webkit: all 104 apps preserve first responses and integrate diagnostics (16645.0499ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.3958ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (62818.4304ms)
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (23496.1986ms)
+140 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (91.4193ms)
+✔ every science lab JavaScript file parses (64.668ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9156ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 63098.0927

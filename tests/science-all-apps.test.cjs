@@ -10,7 +10,9 @@ const catalog = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const slugs = [...catalog.matchAll(/href="([^"/]+)\/"/g)].map(m => m[1]);
 
 test('every catalog app loads, every question has a working correct answer, mobile layout', { timeout: 900000 }, async () => {
-  assert.equal(new Set(slugs).size, 104);
+  const registered = Object.keys(require(path.join(root, 'curriculum-map.js'))).sort();
+  assert(registered.length > 0, 'The app catalog must not be empty');
+  assert.deepEqual([...slugs].sort(), registered, 'Test every registered app exactly once, without a fixed app-count target');
   const server = http.createServer((req, res) => {
     let file = path.resolve(root, '.' + new URL(req.url, 'http://localhost').pathname);
     if (file !== root && !file.startsWith(root + path.sep)) { res.writeHead(403); res.end(); return; }
@@ -99,7 +101,7 @@ test('every catalog app loads, every question has a working correct answer, mobi
             const feedback = card.querySelector('.answer-result')?.textContent || '';
             if (!/맞|정답/.test(feedback)) errors.push(`q${index + 1}: correct answer feedback ${feedback}`);
             const explanation = card.querySelector('.answer-explanation');
-            if (explanation?.hidden) errors.push(`q${index + 1}: correct explanation hidden`);
+            if (explanation && !feedback.includes(explanation.textContent.trim()) && explanation.hidden) errors.push(`q${index + 1}: correct explanation missing`);
           }
           const ids = [...document.querySelectorAll('[id]')].map(e => e.id);
           const duplicateIds = ids.filter((id, i) => ids.indexOf(id) !== i);

@@ -5,6 +5,7 @@
   const numbers = ["①", "②", "③", "④", "⑤"];
   let current = 0;
   let answers = [];
+  const attempts = new Map(), solved = new Set();
   const el = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -62,7 +63,8 @@
     function render(focus = false) {
       const question = data.questions[current];
       const picked = answers[current];
-      const answered = picked !== undefined;
+      const answered = solved.has(current);
+      const tried = attempts.get(current) || new Set();
       const progress = el("span", "bronze-progress", `${current + 1} / ${data.questions.length}`);
       const prompt = el("h4", "bronze-prompt", question.prompt);
       prompt.id = "bronzeQuestion";
@@ -73,12 +75,14 @@
       question.options.forEach((option, index) => {
         const button = el("button", "bronze-choice", `${numbers[index]} ${option}`);
         button.type = "button";
-        button.disabled = answered;
+        button.disabled = answered || tried.has(index);
         if (answered && index === question.answer) button.classList.add("is-correct");
-        if (answered && index === picked && picked !== question.answer) button.classList.add("is-wrong");
+        if (tried.has(index) && index !== question.answer) button.classList.add("is-wrong");
         button.addEventListener("click", () => {
-          if (answers[current] !== undefined) return;
-          answers[current] = index;
+          if (button.disabled) return;
+          if (answers[current] === undefined) answers[current] = index;
+          tried.add(index); attempts.set(current, tried);
+          if (index === question.answer) solved.add(current);
           render();
           const feedback = quiz.querySelector(".bronze-feedback");
           feedback.focus({preventScroll:true});
@@ -87,19 +91,23 @@
         choices.append(button);
       });
       quiz.replaceChildren(progress, prompt, choices);
-      if (answered) {
+      if (tried.size) {
         const feedback = el("div", "bronze-feedback");
         feedback.tabIndex = -1;
         feedback.setAttribute("role", "status");
-        feedback.append(el("strong", "", `${picked === question.answer ? "정답입니다." : "다시 살펴보세요."} 정답 ${numbers[question.answer]} ${question.options[question.answer]}`));
-        if (picked !== question.answer) feedback.append(el("p", "", question.distractors[picked]));
+        if (!answered) {
+          feedback.textContent = "다시 생각하고 다른 답을 골라보세요.";
+          quiz.append(feedback);
+          return;
+        }
+        feedback.append(el("strong", "", picked === question.answer ? "정답입니다." : "정답입니다. 첫 응답은 오답으로 기록됩니다."));
         feedback.append(el("p", "", question.explanation));
         const last = current === data.questions.length - 1;
-        if (last) feedback.append(el("p", "bronze-score", `${data.questions.length}문제 중 ${answers.filter((answer, i) => answer === data.questions[i].answer).length}문제 정답`));
+        if (last) feedback.append(el("p", "bronze-score", `첫 응답에서 ${data.questions.length}문제 중 ${answers.filter((answer, i) => answer === data.questions[i].answer).length}문제 정답`));
         const next = el("button", "history-button bronze-next", last ? "다시 풀기" : "다음 문제");
         next.type = "button";
         next.addEventListener("click", () => {
-          if (last) { answers = []; current = 0; } else current++;
+          if (last) { answers = []; attempts.clear(); solved.clear(); current = 0; } else current++;
           render(true);
         });
         quiz.append(feedback, next);

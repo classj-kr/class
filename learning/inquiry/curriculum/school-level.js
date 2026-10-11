@@ -49,20 +49,30 @@
             const table=q.table?`<div class="school-table"><table><caption>${esc(q.table.caption)}</caption><thead><tr>${q.table.headers.map(h=>`<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${q.table.rows.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
             host.innerHTML=`<section class="school-question school-practice" data-question-id="${esc(q.id)}" data-question-revision="${q.revision||1}" data-school-level="${schoolLevel}"><p class="practice-counter">확인 문제 · ${at+1} / ${items.length}</p><h3>${esc(q.question)}</h3>${table}<div class="school-options" role="group" aria-label="보기">${options.map((o,i)=>`<button type="button" data-option="${o.index}" data-option-id="option-${o.index+1}"><span>${i+1}</span>${esc(o.text)}</button>`).join('')}</div><div class="school-feedback" role="status"></div><button type="button" class="school-next" hidden>${at+1===items.length?'결과 보기':'다음 문제'}</button></section>`;
             const card=host.firstElementChild,feedback=host.querySelector('.school-feedback'),next=host.querySelector('.school-next');
-            let answered=false;
+            let answered=false,firstAnswer=null;
             host.querySelectorAll('[data-option]').forEach(button=>button.addEventListener('click',()=>{
-                if(answered)return;answered=true;
+                if(answered||button.disabled)return;
                 const selected=Number(button.dataset.option),detail=answerDetail(q,selected,schoolLevel);
-                answers.push(detail);card.dataset.selectedOptionId=detail.selectedOptionId;card.dataset.state=detail.correct?'correct':'incorrect';
-                host.querySelectorAll('[data-option]').forEach(b=>{b.disabled=true;b.classList.toggle('correct',Number(b.dataset.option)===q.answer);b.classList.toggle('incorrect',b===button&&!detail.correct);});
-                feedback.innerHTML=`<strong>${detail.correct?'정답입니다.':'오답입니다. 정답: '+esc(q.options[q.answer])}</strong><p>${esc(q.explanation)}</p>`;
+                if(!firstAnswer){
+                    firstAnswer=detail;answers.push(detail);card.dataset.selectedOptionId=detail.selectedOptionId;
+                    host.dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail}));
+                }
+                card.dataset.state=detail.correct?'correct':'incorrect';
+                button.disabled=true;
+                if(!detail.correct){
+                    button.classList.add('incorrect');
+                    feedback.textContent='다시 생각하고 다른 답을 골라보세요.';
+                    return;
+                }
+                answered=true;button.classList.add('correct');
+                host.querySelectorAll('[data-option]').forEach(b=>{b.disabled=true;});
+                feedback.innerHTML=`<strong>${firstAnswer.correct?'정답입니다.':'정답입니다. 첫 응답은 오답으로 기록됩니다.'}</strong><p>${esc(q.explanation)}</p>`;
                 next.hidden=false;
-                host.dispatchEvent(new CustomEvent('learning:answer',{bubbles:true,detail}));
             }));
             next.addEventListener('click',()=>{
                 if(!answered)return;
                 if(++at<items.length){show();host.querySelector('[data-option]')?.focus();return;}
-                host.innerHTML=`<section class="school-question"><h3>학습 확인</h3><p>${items.length}문제 중 ${answers.filter(a=>a.correct).length}문제를 맞혔어요.</p><button type="button" class="school-next">다시 풀기</button></section>`;
+                host.innerHTML=`<section class="school-question"><h3>학습 확인</h3><p>첫 응답에서 ${items.length}문제 중 ${answers.filter(a=>a.correct).length}문제를 맞혔어요.</p><button type="button" class="school-next">다시 풀기</button></section>`;
                 host.querySelector('button').onclick=()=>{at=0;answers.length=0;show();};
             });
         }

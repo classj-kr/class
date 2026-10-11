@@ -264,15 +264,15 @@
     /** 그림 위 딱지: 테두리 상자는 그림에, 글씨는 이름표로 */
     function tag(x, y, str, color) {
         var g = el('g');
-        g.appendChild(el('rect', { x: x - 70, y: y - 14, width: 140, height: 26, rx: 8, fill: 'rgba(6,10,24,0.86)', stroke: color, 'stroke-width': 1.4 }));
         g._text = htmlTag(x, y, str, 'pin');
+        g._text.style.borderColor = color;
         return g;
     }
 
     function setTagText(g, str, color) {
         if (!g || !g._text) return;
         g._text.textContent = str;
-        g.firstChild.setAttribute('stroke', color);
+        g._text.style.borderColor = color;
     }
 
     /* ── 이름표 (HTML) ───────────────────────────────────── */

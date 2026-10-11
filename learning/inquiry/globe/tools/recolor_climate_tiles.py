@@ -44,7 +44,7 @@ def main():
             directory = destination / 'climate-tiles' / str(zoom) / str(x)
             directory.mkdir(parents=True, exist_ok=True)
             for y in range(2 ** zoom):
-                image.crop((x * 256, y * 256, (x + 1) * 256, (y + 1) * 256)).save(directory / f'{y}.png', optimize=True)
+                image.crop((x * 256, y * 256, (x + 1) * 256, (y + 1) * 256)).save(directory / f'{y}.webp', lossless=True, exact=True)
                 count += 1
         if zoom:
             image = image.resize((image.width // 2, image.height // 2), Image.Resampling.LANCZOS)

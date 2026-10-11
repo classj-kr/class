@@ -3,3 +3,4 @@
 #records table{table-layout:fixed}#records th:first-child{width:48px}#records th:last-child{width:70px}#records td{overflow-wrap:anywhere}#records td button{padding:5px} @media(max-width:600px){#records table{min-width:540px}}
 
 .controls.extended{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.controls.extended label:has(textarea){grid-column:1/-1}.procedure{font-size:.92rem;margin:10px 0}.procedure li{margin:8px 0}#measurements td{overflow-wrap:anywhere}
+.comparison-card{border:1px solid #bdd0d7;border-radius:10px;padding:12px;background:#f7fafb;min-width:0}.comparison-card svg{display:block;width:100%;max-height:160px}.comparison-card label{font-size:.84rem}.comparison-card select{width:100%}

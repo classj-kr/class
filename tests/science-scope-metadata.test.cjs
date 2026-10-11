@@ -5,7 +5,12 @@ const read=p=>fs.readFileSync(p,'utf8').replace(/\r\n/g,'\n');
 const map=require(path.join(base,'curriculum-map.js'));
 test('all app grades, standards, quizzes and local script cache versions agree',()=>{
  const curriculum=read(path.resolve(base,'../../../references/moe/2022-revised-curriculum/extracted/09-science.txt'));
- const catalog=read(path.join(base,'index.html'));assert.equal(Object.keys(map).length,104);
+ const catalog=read(path.join(base,'index.html'));
+ const registered=Object.keys(map).sort();assert(registered.length>0);
+ const catalogSlugs=[...catalog.matchAll(/<a class="level-entry available"[^>]*href="([^"/]+)\/"/g)].map(m=>m[1]).sort();
+ const directories=fs.readdirSync(base,{withFileTypes:true}).filter(d=>d.isDirectory()&&fs.existsSync(path.join(base,d.name,'index.html'))).map(d=>d.name).sort();
+ assert.deepEqual(catalogSlugs,registered,'Catalog entries must match the actual app registry');
+ assert.deepEqual(directories,registered,'No app directory may be omitted from the registry');
  for(const[slug,m]of Object.entries(map)){
   const html=read(path.join(base,slug,'index.html'));
   assert.equal((html.match(/class="quiz-card"/g)||[]).length,4,slug);

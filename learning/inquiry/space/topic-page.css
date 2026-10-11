@@ -2,13 +2,15 @@
 .topic-back:focus-visible { outline: 2px solid #67e8f9; outline-offset: 3px; }
 body.space-topic-page { height:auto; min-height:100dvh; }
 .space-topic-page .nav-tabs { background: rgba(15, 23, 42, .92); }
-.space-topic-page .top-header { position:sticky; top:0; z-index:2000; width:100%; height:58px; padding:6px 72px 6px 54px; background:#0f172a; border-bottom:1px solid #29364d; }
+body.space-topic-page .top-header,
+body.space-topic-page .top-header:has(.school-level) { position:fixed; top:8px; left:56px; right:auto; z-index:2000; width:max-content; max-width:calc(100% - 124px); height:auto; min-height:0; padding:0; display:flex; align-items:center; justify-content:flex-start; gap:6px; flex-wrap:wrap; background:none; border:0; box-shadow:none; pointer-events:none; }
+body.space-topic-page .top-header > * { pointer-events:auto; }
 .space-topic-page .nav-tabs { max-width:100%; overflow-x:auto; flex-wrap:nowrap; }
 @media (max-width: 760px) {
     .space-topic-page .nav-tab { padding: 8px; font-size: 13px; gap: 4px; }
 }
 .space-topic-page [hidden] { display: none !important; }
-.space-topic-page .view-container { margin-top: 0; padding-top: 0; }
+.space-topic-page .view-container { margin:0; padding:0; width:100%; max-width:none; }
 .space-topic-page #tab-sim { width:100%; margin-left:0; }
 .space-topic-page .nav-tab { white-space: nowrap; }
 .topic-concepts { max-width: 1200px; margin: 0 auto; padding: 28px 20px 48px; }
@@ -60,19 +62,60 @@ body.space-topic-page { height:auto; min-height:100dvh; }
 }
 
 .space-topic-page .viewport-header-bar:has(#simModeSwitcher) { right: auto; border-bottom: 0 !important; padding-right: 0 !important; }
-/* Explanations stay beside the active model, then follow it on small screens. */
-.space-topic-page #topic-study { max-width:1800px; margin:0 auto; padding:12px; grid-template-columns:minmax(0,1fr) 340px; gap:18px; align-items:start; }
-.space-topic-page .topic-study-layout > .topic-observation-panel { width:100%; min-width:0; margin:0; padding:0; position:sticky; top:calc(var(--space-header-height,58px) + 8px); }
+/* Observation uses the whole stage. Detailed reading is an optional dialog. */
+.space-topic-page #topic-study { max-width:none; margin:0 auto; padding:4px; grid-template-columns:minmax(0,1fr); gap:0; align-items:start; }
+.space-topic-page .topic-study-layout > .topic-observation-panel { width:100%; min-width:0; margin:0; padding:0; position:relative; }
 .space-topic-page .topic-study-layout > #tab-topic-concepts { width:100%; min-width:0; max-width:none; margin:0; padding:0; }
 .topic-reading-panel .school-space-content { margin:0; }
-.topic-study-layout > .topic-supplement { grid-column:1/-1; min-width:0; }
 .topic-observation-panel .sim-mode-container > div { min-width:0; }
+.space-topic-page .em-sunpath-controls { flex-wrap:wrap; }
+.space-topic-page .em-sunpath-chip-row,
+.space-topic-page .em-sunpath-slider-row { flex-wrap:wrap; min-width:0; }
+.space-topic-page .em-moon-sky-readout { right:68px; }
+.space-topic-page .ecl-controls { padding-left:500px; padding-right:70px; }
+.space-topic-page .sl-modes { padding-left:500px; padding-right:64px; min-height:46px; align-items:center; }
+@media(min-width:761px) {
+    .space-topic-page #tab-sim .sim-viewport-card { height:calc(100dvh - 8px); }
+}
 .space-topic-page .topic-study-layout > #tab-stellar { padding:0; }
-.topic-study-layout[data-has-observation="false"] { grid-template-columns:minmax(0,1fr)!important; max-width:1200px!important; }
+.topic-study-layout[data-has-observation="false"] { grid-template-columns:minmax(0,1fr)!important; max-width:1200px!important; padding-top:64px!important; }
 @media(max-width:1400px) {
-    .space-topic-page #topic-study { grid-template-columns:minmax(0,1fr); padding:8px; gap:16px; }
-    .space-topic-page .topic-study-layout > .topic-observation-panel { position:static; }
+    .space-topic-page #topic-study { padding:4px; }
     .topic-reading-panel .school-space-content { max-width:880px; margin:0 auto; }
+}
+.topic-explain-button { flex:0 0 auto; border:1px solid #6b9bad; background:#153243; color:#e4faff; padding:9px 14px; border-radius:8px; font:700 15px var(--font-main, sans-serif); cursor:pointer; }
+.topic-explain-button:hover { background:#224b60; }
+.topic-explain-button:focus-visible,.topic-explanation-close:focus-visible { outline:3px solid #67e8f9; outline-offset:3px; }
+.topic-explanation { position:fixed; inset:0; margin:auto; width:min(820px,calc(100% - 32px)); max-width:none; max-height:calc(100dvh - 40px); padding:0; border:1px solid #50718c; border-radius:16px; background:#0e1a2c; color:#e5edf6; box-shadow:0 24px 100px #0009; overflow:hidden; }
+.topic-explanation[open] { display:flex; flex-direction:column; }
+.topic-explanation::backdrop { background:#030811b8; }
+.topic-explanation-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 24px; border-bottom:1px solid #344a62; flex-shrink:0; }
+.topic-explanation-header h2 { font-size:20px; margin:0; color:#eaf6ff; }
+.topic-explanation-heading { display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 12px; min-width:0; }
+.topic-explanation-subject { display:inline; font-size:13px; color:#9cbdce; font-weight:600; white-space:nowrap; }
+.school-concepts h2 > .topic-explanation-subject { margin-left:12px; }
+.topic-explanation-close { flex-shrink:0; padding:8px 14px; min-height:44px; border:1px solid #607c97; border-radius:8px; background:#1d334b; color:#fff; font:700 16px var(--font-main,sans-serif); cursor:pointer; }
+.topic-explanation-body { padding:22px 28px 28px; overflow:auto; overscroll-behavior:contain; min-height:0; }
+.topic-explanation #tab-topic-concepts { padding:0; margin:0; max-width:none; width:100%; }
+.topic-explanation .school-space-content { margin:0; max-width:none; }
+.topic-explanation .school-concepts { background:none; border:0; border-radius:0; padding:0 0 20px; }
+.topic-explanation .school-concepts + .school-concepts { border-top:1px solid #344a62; padding-top:22px; }
+.topic-explanation .school-concepts h2 { font-size:20px; margin-bottom:14px; }
+.topic-explanation .school-concepts p { font-size:18px; line-height:1.9; word-break:keep-all; overflow-wrap:anywhere; }
+.topic-explanation .school-subject { font-size:15px; margin:0 0 18px; }
+body.topic-explanation-open { overflow:hidden; }
+@media(max-width:760px) {
+    body.space-topic-page .top-header:has(.school-level) { max-width:calc(100% - 114px); gap:4px; }
+    .space-topic-page .ecl-controls,
+    .space-topic-page .sl-modes { padding:96px 8px 8px; min-height:0; }
+    .space-topic-page #tab-sim .em-simulation-clock { top:auto; bottom:12px; right:12px; }
+    .space-topic-page .em-moon-sky-readout { right:14px; }
+    .topic-explain-button { padding:8px 10px; font-size:14px; }
+    .topic-explanation { width:calc(100% - 16px); max-height:calc(100dvh - 16px); }
+    .topic-explanation-header { padding:12px 16px; }
+    .topic-explanation-body { padding:18px; }
+    .topic-explanation-header h2,.topic-explanation .school-concepts h2 { font-size:19px; }
+    .topic-explanation .school-concepts p { font-size:17px; }
 }
 /* Subject quizzes begin with their filters or first question, without a title strip. */
 .space-topic-page .tab-pane#tab-quiz { padding-top: 56px; }
@@ -81,6 +124,3 @@ body.space-topic-page { height:auto; min-height:100dvh; }
 .space-topic-page #tab-quiz .quiz-guide:empty,
 .space-topic-page #tab-quiz .quiz-picker:not(:has(.quiz-picker-row:not([hidden]))) { display: none; }
 .space-topic-page #tab-quiz .quiz-picker-row[hidden] + .quiz-picker-row { border-top: 0; }
-@media (min-width: 1500px) {
-    .space-topic-page .tab-pane#tab-quiz { padding-top: 8px; }
-}

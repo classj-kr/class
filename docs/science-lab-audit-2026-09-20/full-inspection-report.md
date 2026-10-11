@@ -177,7 +177,7 @@
 
 - 전체 실행 결과: [Chrome](final-inspection/summary-chromium.json), [WebKit](final-inspection/summary-webkit.json).
 - 최종 화면 배치: [728개 검사 결과](full-layout-final.json).
-- 실행 후 직접 시각 검토: verified-inspection/end-sheet-01.png ~ end-sheet-15.png. 이 이미지는 후속 공통 설명 잔존 수정 직전의 결함 발견 증거다. final-inspection 이미지가 후속 수정 결과다.
+- 실행 후 직접 시각 검토: verified-inspection/end-sheet-01.webp ~ end-sheet-15.webp. 이 이미지는 후속 공통 설명 잔존 수정 직전의 결함 발견 증거다. final-inspection 이미지가 후속 수정 결과다.
 - 회귀검사: tests/science-live-results.test.cjs, tests/science-prediction-lifecycle.test.cjs, tests/science-circuit-behavior.test.cjs, tests/science-required-core.test.cjs, tests/science-school-devices.test.cjs.
 - references/moe/2022-revised-curriculum 원본은 변경/삭제하지 않았다. 교육과정 참조 계약 및 앱 메타데이터 검사를 통과했다.
 - 과학적 정확성의 독립 검증은 위에 적은 회귀/불변량 범위다. 104개 모든 수식, 모든 원문 성취기준, 모든 상태 조합을 독립 검증했다는 주장으로 확장하지 않는다.

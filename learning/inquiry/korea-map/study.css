@@ -23,7 +23,6 @@
 .comparison-cell p:empty { display: none; }
 .comparison-cell small { color: #617377; font-size: 12px; line-height: 1.5; }
 .reading-steps { margin-top: 14px; }
-.practice-heading h3 { margin: 0; font-size: 14px; color: #294b54; }
 .reading-steps ol { list-style: none; counter-reset: reading; padding: 0; margin: 8px 0; display: grid; gap: 5px; }
 .reading-steps li { position: relative; padding-left: 30px; font-size: 13px; color: #36535b; line-height: 1.6; counter-increment: reading; }
 .reading-steps li::before { content: counter(reading); position: absolute; left: 0; top: 0; width: 21px; height: 21px; border-radius: 6px; background: #e1ebe6; color: #28565c; display: grid; place-items: center; font-weight: 800; font-size: 11px; }
@@ -35,16 +34,13 @@
 .lesson-locations b { color: #9a582f; margin-right: 4px; }
 .lesson-locations button[aria-pressed="true"] { border-color: #176c78; background: #dcece8; }
 
-.lesson-practice { margin-top: 20px; padding: 16px; border: 1px solid #ceddd6; border-radius: 12px; background: #ebf0e9; }
-.practice-heading { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 12px; }
-.practice-heading span { color: #62776d; font-size: 11px; }
-.practice-levels { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; margin-bottom: 10px; }
-.practice-levels button { padding: 7px 2px; min-height: 40px; border: 1px solid transparent; border-radius: 7px; color: #496365; background: transparent; font-size: 12px; }
-.practice-levels button[aria-pressed="true"] { background: white; color: #134854; border-color: #c5d5ce; box-shadow: 0 2px 5px #193e4610; font-weight: 800; }
-.practice-levels small { margin-left: 2px; opacity: .7; }
-.lesson-practice > .primary-button { width: 100%; min-height: 46px; }
-.lesson-review { display: block; width: 100%; min-height: 38px; margin-top: 5px; background: transparent; border: 0; color: #335e68; font-size: 12px; }
-.lesson-review:disabled { opacity: .45; cursor: default; }
+.lesson-tools { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; margin:2px 0 12px; }
+.lesson-practice { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:8px; margin-left:auto; }
+.practice-progress { color:#526b6b; font-size:13px; white-space:nowrap; }
+.lesson-practice > .primary-button { width:auto; min-height:40px; padding:8px 14px; font-size:14px; }
+.lesson-practice button span { margin-left:6px; font-size:12px; opacity:.85; }
+.lesson-review { min-height:40px; padding:8px 12px; border:1px solid #b6ccc5; border-radius:8px; background:#fffefa; color:#335e68; font-size:13px; }
+.lesson-tools [hidden] { display:none!important; }
 .study-reference > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; color: #5a7278; font-size: 12px; border-top: 1px solid #d7dedb; }
 .study-reference > summary::before { content: '+'; font-size: 18px; margin-right: 9px; }
 .study-reference[open] > summary::before { content: '−'; }
@@ -67,9 +63,6 @@ button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px
 
 
 
-.visual-actions { display: flex; gap: 5px; align-items: center; flex-shrink: 0; margin-left: auto; }
-.quick-practice { min-height: 40px; padding: 8px 12px; border: 1px solid #176c78; color: #fff; background: #176c78; border-radius: 8px; font-size: 12px; font-weight: 800; }
-.lesson-navigation .visual-actions button { min-height: 44px; }
 @container (min-width: 720px) {
   #lessonDiagram { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 10px; align-items: start; }
   #lessonDiagram .visual-comparison { grid-template-columns: 1fr; margin-top: 0; }
@@ -90,3 +83,10 @@ button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px
 .concept-table tbody th { font-weight: 500; background: #f8faf9; }
 .concept-table .table-evidence { background: #e5efe3; box-shadow: inset 3px 0 #24844c; }
 @media (max-width: 480px) { .concept-table { font-size: 14px; } .concept-table th, .concept-table td { padding: 13px 7px; } .concept-table caption { font-size: 16px; } }
+.korea-school-nav .theme-tabs { flex: 1; min-width: 0; }
+body .korea-school-nav { flex-direction: row; align-items: center; }
+body .korea-school-nav > .school-level { flex-shrink: 0; align-self: center; margin: 4px 10px 4px 2px; }
+@media (max-width: 1050px) {
+  .app-shell { grid-template-columns: minmax(0, 1fr); }
+  .study-layout { min-width: 0; }
+}
