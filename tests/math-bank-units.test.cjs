@@ -749,6 +749,22 @@ test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 �
       }
       assert.equal(f.rayClaims.filter((claim) => !f.truth[claim.at]).length, 1, label); tally('rayClaims');
     }
+    if (f.angleTalk) {
+      // 한 변 위에 점이 여럿 있는 각: 점이 어느 변 위에 있는지로 설명의 참·거짓을 다시 따진다. 틀린 설명은 하나뿐이다.
+      const { vertex, sides, claims } = f.angleTalk, sideOf = (point) => sides.findIndex((list) => list.includes(point));
+      const isAngle = (name) => name[1] === vertex && sideOf(name[0]) >= 0 && sideOf(name[2]) >= 0 && sideOf(name[0]) !== sideOf(name[2]);
+      const sameAngle = (x, y) => isAngle(x) && isAngle(y) && [sideOf(x[0]), sideOf(x[2])].sort().join() === [sideOf(y[0]), sideOf(y[2])].sort().join();
+      const isRay = (ray) => ray[0] === vertex && sideOf(ray[1]) >= 0;
+      const truth = claims.map(([kind, x, y]) => ({
+        vertex: () => isAngle(x) && y === vertex,
+        sameAngle: () => sameAngle(x, y),
+        sides: () => isAngle(x) && y.every(isRay) && [sideOf(y[0][1]), sideOf(y[1][1])].sort().join() === [sideOf(x[0]), sideOf(x[2])].sort().join(),
+        bigger: () => !sameAngle(x, y) && false,
+        sameRay: () => isRay(x) && isRay(y) && sideOf(x[1]) === sideOf(y[1])
+      }[kind])());
+      assert.equal(truth.filter((ok) => !ok).length, 1, label); assert.equal(item.choice.answer, truth.indexOf(false), label);
+      assert.ok(sides.some((list) => list.length >= 2), '한 변 위에 점이 둘 있어야 함정이 된다: ' + label); tally('angleTalk');
+    }
     if (f.cornerClaims) {
       // 「각 XYZ은 직각이다」「삼각형 XYZ은 직각삼각형이다」를 좌표로 따진다. 틀린 말은 하나이고, 그 각은 직각처럼 보이지도 않는다.
       const P = f.cornerClaims.points, truth = f.cornerClaims.rows.map(([kind, names]) => { const pts = names.split('').map((n) => P[n]); return kind === 'triangle' ? isRightTri(pts) : rightAngle(pts[1], pts[0], pts[2]); });
