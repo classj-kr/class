@@ -160,3 +160,30 @@ button, input, select { font: inherit; color: inherit; }
   .mb-node { min-width: 3em; padding: 5px 7px; font-size: 1.1rem; }
   .mb-step { min-width: 3.9em; padding: 0 5px 12px; }
 }
+
+/* 도형 그림(geometry.js) */
+.mb-geo { max-width: 100%; height: auto; }
+.mb-grid { fill: #9aa5b1; }
+.mb-gridline { stroke: #c9d6e4; stroke-width: 0.8; }
+.mb-poly { fill: #fff8e1; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+.mb-poly.is-plain { fill: none; }
+.mb-line { stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+.mb-line.is-thin { stroke-width: 1.1; }
+.mb-dot { fill: var(--ink); }
+.mb-label { font-size: 13px; fill: var(--ink); font-weight: 600; }
+.mb-label.is-small { font-size: 11px; fill: var(--brand-dark); }
+.mb-mark { fill: none; stroke: var(--wrong); stroke-width: 1.2; }
+.mb-tiles { display: flex; flex-wrap: wrap; gap: 10px 12px; }
+.mb-tile { margin: 0; display: grid; justify-items: center; gap: 2px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 10px; background: #fff; max-width: 100%; }
+.mb-tile figcaption { font-weight: 700; color: var(--brand-dark); justify-self: start; line-height: 1.2; }
+.mb-clock { max-width: 100%; height: auto; }
+.mb-clock-face { fill: #fff; stroke: var(--ink); stroke-width: 1.6; }
+.mb-tick { stroke: var(--ink); stroke-width: 1.2; }
+.mb-clock-number { font-size: 9px; fill: var(--ink); font-weight: 600; }
+.mb-hand-hour { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.mb-hand-minute { stroke: var(--brand-dark); stroke-width: 2; stroke-linecap: round; }
+.mb-clock-pin { fill: var(--ink); }
+.mb-line.is-cut { stroke: #5b6770; stroke-width: 1.2; stroke-dasharray: 4 3; }
+.mb-label.is-length { font-size: 12px; fill: var(--brand-dark); font-weight: 700; }
+.mb-conditions { margin: 0; padding: 8px 14px 8px 30px; border-left: 4px solid var(--brand); background: var(--canvas); border-radius: 4px 10px 10px 4px; }
+.mb-conditions li { margin: 2px 0; word-break: keep-all; }
