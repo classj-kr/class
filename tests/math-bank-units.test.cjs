@@ -633,6 +633,44 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       const keys = f.tileOdd.map(String), lone = keys.filter((k) => keys.filter((other) => other === k).length === 1);
       assert.equal(lone.length, 1, label); assert.equal(new Set(keys).size, 2, label); assert.equal(item.choice.answer, keys.indexOf(lone[0]), label); tally('tileOdd');
     }
+    if (f.circlePoints) {
+      // 원 안의 점 가운데 원의 중심에 놓인 점은 하나뿐이다.
+      const { center, points } = f.circlePoints, hit = points.map(({ p }) => Math.hypot(p[0] - center[0], p[1] - center[1]) < 1e-6);
+      assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('circlePoints');
+    }
+    if (f.circleSegs || f.circleTalk) {
+      // 원과 선분: 좌표로 반지름(중심과 원 위의 점), 지름(원 위의 두 점, 길이가 반지름의 2배)을 다시 가린다.
+      const { center, r } = f.circleSegs || f.circleTalk, dist = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]), near = (x, y) => Math.abs(x - y) < 1e-6;
+      const kind = (p, q) => { const dp = dist(p, center), dq = dist(q, center); if ((near(dp, 0) && near(dq, r)) || (near(dq, 0) && near(dp, r))) return 'radius'; if (near(dp, r) && near(dq, r)) return near(dist(p, q), 2 * r) ? 'diameter' : 'chord'; return 'other'; };
+      if (f.circleSegs) {
+        const { segs, want } = f.circleSegs, lens = segs.map((g) => dist(g.p, g.q));
+        const hit = want === 'longest' ? lens.map((v) => near(v, Math.max(...lens))) : segs.map((g) => kind(g.p, g.q) === want);
+        assert.ok(['radius', 'diameter', 'longest'].includes(want), label);
+        assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label);
+        if (want === 'longest') assert.equal(kind(segs[hit.indexOf(true)].p, segs[hit.indexOf(true)].q), 'diameter', label);
+        tally('circleSegs');
+      } else {
+        const { points, claims } = f.circleTalk, seg = (name) => [points[name[0]], points[name[1]]];
+        const truth = claims.map(([what, x, y]) => ({ radius: () => kind(...seg(x)) === 'radius', notDiameter: () => kind(...seg(x)) !== 'diameter', same: () => near(dist(...seg(x)), dist(...seg(y))) }[what]()));
+        assert.deepEqual(truth, f.truth, label); tally('circleTalk');
+      }
+    }
+    if (f.farthest) {
+      // 누름 못에서 가장 먼 구멍은 하나뿐이다.
+      const far = f.farthest.holes.map((x) => Math.abs(x - f.farthest.pin)), hit = far.map((v) => v === Math.max(...far));
+      assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('farthest');
+    }
+    if (f.sequence) {
+      // 차례 늘어놓기: 적힌 줄(ranks: 그 줄이 몇째 단계인가)을 단계 차례로 읽은 것이 답이다.
+      const { ranks, options } = f.sequence, right = ranks.map((_, step) => ranks.indexOf(step)).join();
+      assert.equal(options.filter((o) => o.join() === right).length, 1, label); assert.equal(options[item.choice.answer].join(), right, label); tally('sequence');
+    }
+    if (f.pins) {
+      // 컴퍼스의 침을 꽂을 곳: 서로 다른 원의 중심의 수(원의 수보다 적어야 함정이 된다).
+      const spots = new Set(f.pins.centers.map((c) => c.map((v) => v.toFixed(3)).join()));
+      assert.ok(spots.size < f.pins.centers.length, label); assert.equal(answerAt(item, 0), spots.size, label); tally('pins');
+    }
+    if (f.designs) { assert.equal(new Set(f.designs.shown).size, 3, label); assert.equal(item.choice.answer, f.designs.shown.indexOf(f.designs.want), label); tally('designs'); }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
