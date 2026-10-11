@@ -1241,7 +1241,7 @@
     ],
     "imjin": [
       {
-        "date": "1592년 · 전쟁 전 국가 영역",
+        "date": "1592년 · 임진왜란 발발",
         "regions": [
           {
             "name": "조선",
@@ -1250,8 +1250,8 @@
           },
           {
             "name": "명",
-            "area": 917.1639,
-            "visibleArea": 0.1303
+            "area": 346.0197,
+            "visibleArea": 0.0002
           },
           {
             "name": "일본",
@@ -1742,5 +1742,12 @@
         150.908
       ]
     }
+  },
+  "lateMing": {
+    "source": "https://littrup.sites.ku.dk/files/2015/05/Kin-ter.pdf",
+    "title": "F. W. Mote, Imperial China 900–1800 (1999), p. 640, The 15 Provinces of Ming China about 1580; Leif Littrup teaching compilation, PDF p. 5",
+    "registrationMaxKm": 46.27,
+    "registrationRmsKm": 25.37,
+    "referenceFile": "tools/ming-1580-reference.json"
   }
 }
