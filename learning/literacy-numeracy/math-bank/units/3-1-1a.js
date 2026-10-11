@@ -62,7 +62,7 @@
   const roundish = (d, lo, hi) => d.until(() => d.int(lo, hi) * 100 + d.int(-45, 45), (v) => v >= 105 && plain(v) && Math.abs(v - toHundred(v)) >= 8);
 
   B.addUnit({
-    id: '3-1-1', grade: 3, semester: 1, no: 1, title: '덧셈과 뺄셈', version: 3,
+    id: '3-1-1', grade: 3, semester: 1, no: 1, title: '덧셈과 뺄셈', version: 4,
     groups: [
       {
         id: 'add0', title: '받아올림이 없는 덧셈', standard: CALC,

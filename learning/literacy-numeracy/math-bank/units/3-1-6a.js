@@ -32,7 +32,7 @@
   };
 
   B.addUnit({
-    id: '3-1-6', grade: 3, semester: 1, no: 6, title: '분수와 소수', version: 1,
+    id: '3-1-6', grade: 3, semester: 1, no: 6, title: '분수와 소수', version: 2,
     groups: [
       {
         id: 'equal', title: '똑같이 나누기', standard: WHOLE,

@@ -641,6 +641,24 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.ok(m, label); assert.equal(answerAt(item, 0), Number(m[1]) * Number(m[2]), label); tally('onePiece');
     }
     if (f.mapSteps) { assert.equal(item.choice.answer, f.mapSteps - 1, label); tally('mapSteps'); }
+    if (f.divMeans) { const [a, b, q] = f.divMeans; assert.ok(a === b * q && b !== q && a - b !== q, label); tally('divMeans'); }
+    if (f.timeKinds) {
+      // 시각 ± 시간 = 시각, 시각 − 시각 = 시간, 시간 ± 시간 = 시간. 결과가 시각인 것은 하나뿐이다.
+      const clocky = f.timeKinds.map(([x, , y]) => (x === 'at') !== (y === 'at'));
+      assert.ok(f.timeKinds.every(([x, op, y]) => !(x === 'at' && y === 'at' && op === '+') && !(x === 'span' && y === 'at')), label);
+      assert.equal(clocky.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, clocky.indexOf(true), label); tally('timeKinds');
+    }
+    if (f.secFacts) {
+      const { m, s, k } = f.secFacts, whole = strip(item.choice.options.join(' | '));
+      const said = Number(whole.match(new RegExp(m + '분 ' + s + '초는 (\\d+)초이다'))[1]), hand = Number(whole.match(/가리키면 (\d+)초를 나타낸다/)[1]);
+      assert.equal((said === m * 60 + s) !== (hand === k * 5), true, '틀린 설명이 하나가 아니다: ' + label);
+      assert.equal(f.truth[item.choice.answer], false, label); tally('secFacts');
+    }
+    if (f.biggerClaims) {
+      for (const [big, small, at] of f.biggerClaims) assert.equal(evaluate(big) > evaluate(small), f.truth[at], label);
+      assert.equal(f.biggerClaims.filter(([, , at]) => !f.truth[at]).length, 1, label); tally('biggerClaims');
+    }
+    if (f.tenthFacts) { const { w, j, said, slip } = f.tenthFacts; assert.equal(said === w * 10 + j, !slip, label); assert.ok(w !== j, label); tally('tenthFacts'); }
     if (f.repeatAdd) {
       // 같은 수를 거듭 더한 식 → 곱셈식: 그림의 덧셈식에 a 가 n 번 적혀 있다.
       const { a, n } = f.repeatAdd;
