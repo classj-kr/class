@@ -1,7 +1,7 @@
 {
   "summary": {
     "date": "2026-10-11",
-    "apps": 145,
+    "apps": 144,
     "originalQuestions": 580,
     "examQuestions": 241,
     "sourcePaths": 4008,
@@ -14,9 +14,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 125,
+    "reviewedSources": 126,
     "reviewRecords": 167,
-    "appsWithSelectedSourceReview": 145,
+    "appsWithSelectedSourceReview": 144,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -1534,7 +1534,7 @@
       "sha256": "e7caa9f0f741ad375b18099aeab6c52415e631d5901ae880c6a49a78f5987e49",
       "kind": "pdf",
       "pages": 140,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "receipt": "references/textbooks/중고등/T셀파/고등/과학/역학과에너지(최혁준)/수집기록.json",
         "source": {
@@ -1597,7 +1597,7 @@
       "sha256": "a97d3120332ca071849477d1345e3058dbbae91a2ffc867e57d73d878c911aee",
       "kind": "pdf",
       "pages": 6,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "receipt": "references/textbooks/중고등/T셀파/고등/과학/역학과에너지(최혁준)/수집기록.json",
         "source": {
@@ -30244,7 +30244,7 @@
       "sha256": "7da2123dab6864acce5279a69b0b9a6d392ac857d423285acd3d54cdd03ff943",
       "kind": "hwp",
       "paragraphs": 516,
-      "status": "selected-passages-reviewed",
+      "status": "indexed-only",
       "revisionEvidence": {
         "receipt": "references/textbooks/중고등/T셀파/고등/과학/세포와물질대사(이준규)/수집기록.json",
         "source": {
@@ -70391,8 +70391,8 @@
       "apps": [
         "periodic-bonding"
       ],
-      "principle": "고체 염화 나트륨과 수용액의 차이는 이온 이동 가능 여부이다. 설탕과의 전도성 비교를 대조했다. 실제 시약·전도성 측정기를 이용한 정량 측정은 아니다.",
-      "method": "탐구 절차·전도성 조건 대조"
+      "principle": "PDF 13쪽(인쇄 68쪽)의 6홈판·전기 전도성 측정기·두 전극·증류수 대조군을 그림과 대조했다. 고체 염화 나트륨·설탕 및 두 수용액을 구별하며 시료를 바꿀 때 증류수로 헹군 전극이라는 조건을 명시했다. 고체 이온의 고정과 수용액 이온의 이동, 시료 미접촉과 전도 표시 꺼짐을 구별한다. 정량 전도도와 실제 측정 수행은 포함하지 않는다.",
+      "method": "탐구 절차·장치 사진·전도성 조건 대조; apparatus-visual-review/conductivity-source-13.webp"
     },
     {
       "id": "49908c3f40025eda",
@@ -71436,8 +71436,35 @@
       "apps": [
         "ride-acceleration"
       ],
-      "principle": "등속 직선·수평 원운동·상승하는 승강기의 시간별 위치와 속도·가속도 벡터를 비교한다. 중력 영향을 제외한 운동 가속도와 이상적인 휴대전화 가속도 센서 크기를 구분한다.",
-      "method": "기재한 교과서 쪽의 절차·도식과 새 모형·객관식의 적용 범위를 대조했다. 장치·분자 방향·가계도·핵형 그림은 gap-source-pages의 WebP로 확인했다. 실제 휴대전화 센서 수집이나 현장 놀이기구 탑승은 포함하지 않는 이상 운동 모형이다. 센서 크기는 수평 원운동에서 √(g²+a²), 승강기에서 |g+a_z|이며 회전·기울기·진동 오차는 생략한다."
+      "principle": "그네·시소·미끄럼틀과 원운동·등속 직선·승강기를 비교하세요. 센서의 부착 방향과 시소의 부착 위치를 정하고 가상 센서로 측정한 뒤, 그래프의 시각별 값을 운동 모습과 비교합니다.",
+      "method": "기재한 교과서 쪽의 절차·도식과 새 모형·객관식의 적용 범위를 대조했다. 장치·분자 방향·가계도·핵형 그림은 gap-source-pages의 WebP로 확인했다. 계산한 가상 센서값이며 실제 기기에서 수집한 자료가 아닙니다. 그네는 마찰 없는 진자, 시소는 설정한 각도·주기로 구동하는 막대, 미끄럼틀은 마찰 없는 경사면입니다. 경사면 끝의 충돌은 제외합니다. 원시 센서는 지지 효과를 포함하고, 중력 보정값은 장치 축으로 읽은 운동 가속도입니다. 기기 잡음·진동은 생략합니다."
+    },
+    {
+      "id": "e7caa9f0f741ad37",
+      "locators": [
+        17
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "ride-acceleration"
+      ],
+      "principle": "그네·시소·미끄럼틀의 부착 위치·측정 방향과 시간별 가속도 비교",
+      "method": "지정 PDF 쪽의 절차와 장치 그림을 ride-source-pages의 WebP로 확인했다. 가상 측정 구현이며 현장 센서 수집 완료는 아니다."
+    },
+    {
+      "id": "a97d3120332ca071",
+      "locators": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "ride-acceleration"
+      ],
+      "principle": "04번 경사면의 힘 분해, 11~15번 원운동·진자의 가속도와 해설",
+      "method": "PDF 1·3·4·5쪽 문항·그림·해설을 WebP로 대조했다. 축의 부호와 가속도 크기를 구별하고 수치·조건을 바꾼 새 문항을 작성했다."
     },
     {
       "id": "de0c1acaeaa2453a",
@@ -71770,35 +71797,6 @@
       "method": "지정 문단의 문제·해설 개념을 대조하고 새 조건의 문항을 작성했다. 추출 과정에서 빠진 수식·그림은 추정하여 복원하지 않았다."
     },
     {
-      "id": "fbf365923abce545",
-      "locators": [
-        59,
-        60,
-        61
-      ],
-      "locatorType": "PDF page",
-      "apps": [
-        "energy-budget"
-      ],
-      "principle": "가상 식품 표시의 기준량과 먹은 양을 바꾸고, 가상 인물의 활동을 합계 24시간으로 구성한다. 같은 단위로 계산한 에너지 출입과 활동별 소비량을 비교한다.",
-      "method": "기재한 교과서 본문·활동 절차를 대조했다. structure-source-pages에 보존한 DNA·단백질 부록, 막 단면, 활동 계수와 연료 표 그림도 확인했다. 활동별 계수는 미래엔 2022 교과서 59쪽의 kcal/(kg·h) 값이며 기초대사를 포함하고 소화·흡수 에너지는 제외한다. 식품 표시는 단위 환산용 가상 자료다. 가상 인물의 24시간 자료를 분석하며 학생 개인의 체중·식단을 수집하거나 섭취 목표·건강 진단을 제공하지 않는다."
-    },
-    {
-      "id": "7da2123dab6864ac",
-      "locators": [
-        154,
-        168,
-        449,
-        452
-      ],
-      "locatorType": "extracted paragraph (figures/formulas may be absent)",
-      "apps": [
-        "energy-budget"
-      ],
-      "principle": "09·10번 섭취·소비 비교와 기초대사·활동대사 구별",
-      "method": "지정 문단의 문제·해설 개념을 대조하고 새 조건의 문항을 작성했다. 추출 과정에서 빠진 수식·그림은 추정하여 복원하지 않았다."
-    },
-    {
       "id": "1be99a8dde753097",
       "locators": [
         5,
@@ -71893,6 +71891,10 @@
   "activityReviews": [
     {
       "activityId": "10과탐1-01#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "periodic",
       "title": "멘델레예프의 주기율표 만들기",
       "kind": "모형",
@@ -71907,6 +71909,10 @@
     },
     {
       "activityId": "10과탐1-02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "pasteur",
       "title": "파스퇴르의 백조목 플라스크",
       "kind": "모형",
@@ -71922,6 +71928,10 @@
     },
     {
       "activityId": "10과탐1-02#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "prism",
       "title": "뉴턴의 프리즘 실험",
       "kind": "모형",
@@ -71936,6 +71946,10 @@
     },
     {
       "activityId": "4과08#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "infection",
       "title": "감염 전파와 손 씻기 비교",
       "kind": "모형",
@@ -71952,6 +71966,10 @@
     },
     {
       "activityId": "10과탐1-02#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "climate",
       "title": "기후 관측 자료와 추세선",
       "kind": "계산·자료 분석",
@@ -71967,6 +71985,10 @@
     },
     {
       "activityId": "10과탐1-02#5",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "antibiotic",
       "title": "천연 항생 물질의 대조군·반복 측정",
       "kind": "계산·자료 분석",
@@ -71983,6 +72005,10 @@
     },
     {
       "activityId": "10과탐2-01#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "acceleration",
       "title": "운동의 가속도 자료 비교",
       "kind": "계산·자료 분석",
@@ -71997,6 +72023,10 @@
     },
     {
       "activityId": "10과탐2-01#5",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "sensor",
       "title": "학교 주변 센서 측정과 비교",
       "kind": "계산·자료 분석",
@@ -72011,6 +72041,10 @@
     },
     {
       "activityId": "12물리02#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "speaker",
       "title": "코일·자석·진동판 스피커",
       "kind": "모형",
@@ -72025,6 +72059,10 @@
     },
     {
       "activityId": "12물리02#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "wireless",
       "title": "두 코일의 무선 전력 전달",
       "kind": "모형",
@@ -72039,6 +72077,10 @@
     },
     {
       "activityId": "12전자01#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "magnetic-brake",
       "title": "도체판과 자석의 자기 브레이크",
       "kind": "모형",
@@ -72052,6 +72094,10 @@
     },
     {
       "activityId": "12전자02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "soap-film",
       "title": "비누막의 두께와 반사 간섭",
       "kind": "모형",
@@ -72065,6 +72111,10 @@
     },
     {
       "activityId": "12전자02#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "polarization",
       "title": "편광판 회전과 통과광 세기",
       "kind": "모형",
@@ -72079,6 +72129,10 @@
     },
     {
       "activityId": "12물에01#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "gas-identity",
       "title": "수상 치환과 기체 몰질량",
       "kind": "계산·자료 분석",
@@ -72093,6 +72147,10 @@
     },
     {
       "activityId": "12물에02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "sugar-phase",
       "title": "설탕물의 끓는점·어는점",
       "kind": "모형",
@@ -72107,6 +72165,10 @@
     },
     {
       "activityId": "12물에03#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "hess",
       "title": "중화 반응으로 헤스 법칙 확인",
       "kind": "계산·자료 분석",
@@ -72121,6 +72183,10 @@
     },
     {
       "activityId": "12반응01#4",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "buffer",
       "title": "물과 완충 용액의 pH 변화",
       "kind": "모형",
@@ -72135,6 +72201,10 @@
     },
     {
       "activityId": "12전자01#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "amplifier",
       "title": "트랜지스터 증폭과 클리핑",
       "kind": "모형",
@@ -72148,6 +72218,10 @@
     },
     {
       "activityId": "12전자03#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "electron-slits",
       "title": "단일 전자 검출과 이중 슬릿",
       "kind": "모형",
@@ -72162,6 +72236,10 @@
     },
     {
       "activityId": "12유전01#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "pedigree",
       "title": "X 염색체 열성 유전의 가계도",
       "kind": "모형",
@@ -72175,6 +72253,10 @@
     },
     {
       "activityId": "12유전01#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "dna-replication",
       "title": "DNA 반보존적 복제 단계",
       "kind": "모형",
@@ -72189,6 +72271,10 @@
     },
     {
       "activityId": "12유전02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "translation",
       "title": "코돈을 읽으며 단백질 합성하기",
       "kind": "모형",
@@ -72203,6 +72289,10 @@
     },
     {
       "activityId": "12지시02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "water-waves",
       "title": "해파와 물 입자의 운동",
       "kind": "모형",
@@ -72216,6 +72306,10 @@
     },
     {
       "activityId": "12지시02#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "tides",
       "title": "조석 자료의 고조 간격 분석",
       "kind": "계산·자료 분석",
@@ -72229,6 +72323,10 @@
     },
     {
       "activityId": "12지시03#4",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "rotating-tank",
       "title": "회전 수조의 온도 차와 파동",
       "kind": "모형",
@@ -72242,6 +72340,10 @@
     },
     {
       "activityId": "12행우01#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "habitable-zone",
       "title": "별의 온도·반지름과 생명가능지대",
       "kind": "모형",
@@ -72255,6 +72357,10 @@
     },
     {
       "activityId": "12행우02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "sunspots",
       "title": "흑점 이동과 태양 자전주기",
       "kind": "계산·자료 분석",
@@ -72269,6 +72375,10 @@
     },
     {
       "activityId": "12행우03#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "cluster-distance",
       "title": "주계열 맞추기와 성단 거리",
       "kind": "계산·자료 분석",
@@ -72282,6 +72392,10 @@
     },
     {
       "activityId": "9과02#2",
+      "labScope": {
+        "status": "excluded",
+        "reason": "보전 방안을 다루는 모둠 놀이"
+      },
       "tool": "biodiversity-web",
       "title": "생물다양성 관계망 보전 놀이",
       "kind": "모형",
@@ -72295,6 +72409,10 @@
     },
     {
       "activityId": "10과탐2-02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "microcontroller",
       "title": "센서 입력과 마이크로컨트롤러 제어",
       "kind": "자료 분석",
@@ -72309,6 +72427,10 @@
     },
     {
       "activityId": "10과탐2-01#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "field-atlas",
       "title": "주변 생물 관찰 지도와 기록",
       "kind": "조사 기록",
@@ -72325,6 +72447,10 @@
     },
     {
       "activityId": "12역학03#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "doppler",
       "title": "도플러 효과의 예상값과 측정값 비교",
       "kind": "자료 분석",
@@ -72338,6 +72464,10 @@
     },
     {
       "activityId": "12반응01#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "salt-ph",
       "title": "염 수용액의 가수 분해와 pH",
       "kind": "모형",
@@ -72351,6 +72481,10 @@
     },
     {
       "activityId": "12세포02#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "bean-respiration",
       "title": "발아 중인 콩의 호흡 자료 비교",
       "kind": "자료 분석",
@@ -72365,6 +72499,10 @@
     },
     {
       "activityId": "12세포01#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "centrifuge",
       "title": "간이 원심분리기의 균형과 회전 설계",
       "kind": "설계 보조",
@@ -72379,6 +72517,10 @@
     },
     {
       "activityId": "12역학02#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "insulation",
       "title": "단열재의 보온·보냉 측정 비교",
       "kind": "자료 분석",
@@ -72392,6 +72534,10 @@
     },
     {
       "activityId": "12물에01#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "hydride-boiling",
       "title": "수소 화합물의 끓는점과 분자 간 힘",
       "kind": "자료 분석",
@@ -72405,6 +72551,10 @@
     },
     {
       "activityId": "12물에03#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "fuel-energy",
       "title": "연료의 질량·부피당 발열량 비교",
       "kind": "자료 분석",
@@ -72418,6 +72568,10 @@
     },
     {
       "activityId": "12반응03#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "organic-groups",
       "title": "탄소 화합물의 구조식과 작용기",
       "kind": "모형",
@@ -72432,6 +72586,10 @@
     },
     {
       "activityId": "12반응03#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "silver-mirror",
       "title": "은거울 반응과 작용기 변화",
       "kind": "모형",
@@ -72446,6 +72604,10 @@
     },
     {
       "activityId": "12반응03#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "nylon-interface",
       "title": "계면 중합과 나일론 합성",
       "kind": "모형",
@@ -72460,6 +72622,10 @@
     },
     {
       "activityId": "12행우02#3",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "mass-luminosity",
       "title": "쌍성 자료의 질량–광도 관계",
       "kind": "자료 분석",
@@ -72473,6 +72639,10 @@
     },
     {
       "activityId": "12행우03#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "cepheid-distance",
       "title": "세페이드 거리와 구상 성단 분포",
       "kind": "자료 분석",
@@ -72487,6 +72657,10 @@
     },
     {
       "activityId": "12세포02#1",
+      "labScope": {
+        "status": "excluded",
+        "reason": "식사·생활 기록의 조사와 계산"
+      },
       "tool": "calorimetry-balance",
       "title": "하루 에너지 섭취·소비 조사",
       "kind": "조사 기록",
@@ -72500,6 +72674,10 @@
     },
     {
       "activityId": "4과11#2",
+      "labScope": {
+        "status": "excluded",
+        "reason": "재난 사례 조사와 대처 방안"
+      },
       "tool": "earthquake-case",
       "title": "지진 피해 사례와 대처 조사",
       "kind": "조사·설계 활동지",
@@ -72513,6 +72691,10 @@
     },
     {
       "activityId": "6과16#1",
+      "labScope": {
+        "status": "excluded",
+        "reason": "진로 조사와 공유"
+      },
       "tool": "science-career",
       "title": "진로 속 과학적 요소 조사",
       "kind": "조사·설계 활동지",
@@ -72526,6 +72708,10 @@
     },
     {
       "activityId": "9과01#1",
+      "labScope": {
+        "status": "excluded",
+        "reason": "특정 실험 수행이 없는 일반 계획서 작성"
+      },
       "tool": "inquiry-plan",
       "title": "문제 발견과 탐구 계획서",
       "kind": "조사·설계 활동지",
@@ -72540,6 +72726,10 @@
     },
     {
       "activityId": "9과15#3",
+      "labScope": {
+        "status": "excluded",
+        "reason": "탐사 계획서 작성"
+      },
       "tool": "space-plan",
       "title": "우주 탐사 성과와 탐사 계획",
       "kind": "조사·설계 활동지",
@@ -72553,6 +72743,10 @@
     },
     {
       "activityId": "10통과2-03#3",
+      "labScope": {
+        "status": "excluded",
+        "reason": "생활 로봇 조사와 개선안 제안"
+      },
       "tool": "robot-design",
       "title": "생활 속 로봇 분석과 개선 설계",
       "kind": "조사·설계 활동지",
@@ -72566,6 +72760,10 @@
     },
     {
       "activityId": "10과탐1-02#4",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "science-magic",
       "title": "화학 변화 과학마술 대본과 시연 기록",
       "kind": "조사·설계 활동지",
@@ -72580,6 +72778,10 @@
     },
     {
       "activityId": "10과탐2-01#1",
+      "labScope": {
+        "status": "excluded",
+        "reason": "미디어 주장 비평"
+      },
       "tool": "scientific-claim",
       "title": "과학적 주장과 유사과학 비평",
       "kind": "조사·설계 활동지",
@@ -72594,6 +72796,10 @@
     },
     {
       "activityId": "10과탐2-02#2",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "sensor-invention",
       "title": "센서 발명품 설계와 시제품 발표",
       "kind": "조사·설계 활동지",
@@ -72610,6 +72816,10 @@
     },
     {
       "activityId": "10과탐2-02#3",
+      "labScope": {
+        "status": "excluded",
+        "reason": "우주개발 사례 조사와 평가"
+      },
       "tool": "space-development",
       "title": "우주 개발 사례와 발전 방향 평가",
       "kind": "조사·설계 활동지",
@@ -72626,6 +72836,10 @@
     },
     {
       "activityId": "12지구02#2",
+      "labScope": {
+        "status": "excluded",
+        "reason": "연구 방법 조사와 평가"
+      },
       "tool": "paleoclimate-compare",
       "title": "고기후 연구 방법 비교표",
       "kind": "조사·설계 활동지",
@@ -72639,6 +72853,10 @@
     },
     {
       "activityId": "12지구02#4",
+      "labScope": {
+        "status": "excluded",
+        "reason": "확인한 교과서는 웹 자료 조사·지질 명소 소개 콘텐츠 제작. 암석 표본 관찰·분류 실험은 유지"
+      },
       "tool": "geosite-investigation",
       "title": "지질 명소의 관찰과 형성 과정",
       "kind": "조사·설계 활동지",
@@ -72652,6 +72870,10 @@
     },
     {
       "activityId": "12반응02#3",
+      "labScope": {
+        "status": "excluded",
+        "reason": "전지 사례 조사·토의·설계안 작성; 전극·전해질 실험은 유지"
+      },
       "tool": "future-battery",
       "title": "지속가능한 미래 전지 설계",
       "kind": "조사·설계 활동지",
@@ -72665,6 +72887,10 @@
     },
     {
       "activityId": "12지시01#2",
+      "labScope": {
+        "status": "excluded",
+        "reason": "과학사 조사"
+      },
       "tool": "plate-history",
       "title": "관측 기기와 판 구조론의 역사",
       "kind": "조사·설계 활동지",
@@ -72678,6 +72904,10 @@
     },
     {
       "activityId": "12생과03#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "karyotype",
       "title": "염색체 카드의 특징 비교와 핵형 분석",
       "kind": "짝짓기 모형",
@@ -72692,6 +72922,10 @@
     },
     {
       "activityId": "9과07#2",
+      "labScope": {
+        "status": "excluded",
+        "reason": "행성 정보 검색·카드 작성·분류 발표. 독립 실험 앱에서 제외하며 실제 망원경 관측은 유지"
+      },
       "tool": "planet-classification",
       "title": "태양계 행성 자료의 분류 기준 비교",
       "kind": "자료 분석",
@@ -72708,6 +72942,10 @@
     },
     {
       "activityId": "12역학01#1",
+      "labScope": {
+        "status": "review",
+        "reason": "실험·관찰·측정 절차 및 교과서 근거 대조 대상. 필수실험 확정 판정 아님."
+      },
       "tool": "ride-acceleration",
       "title": "놀이 기구의 세 축 가속도 분석",
       "kind": "자료 분석",
@@ -75177,12 +75415,67 @@
       ],
       "standards": [
         "10과탐2-01-01",
-        "10과탐2-01-02"
+        "10과탐2-01-02",
+        "12역학01-01",
+        "12역학01-03"
       ],
-      "originalQuestions": 4,
+      "courseContexts": {
+        "high-common": {
+          "subjects": [
+            "과학탐구실험2"
+          ],
+          "codes": [
+            "10과탐2-01-01",
+            "10과탐2-01-02"
+          ],
+          "grades": [
+            "고1"
+          ],
+          "defaultMotion": "circle",
+          "questionNumbers": [
+            1,
+            3,
+            4,
+            8
+          ],
+          "followupIds": [
+            "ride-acceleration@descending",
+            "ride-acceleration@mount-sign"
+          ],
+          "intro": "운동 모습과 가상 센서값을 비교하세요. 센서의 방향을 바꾸고, 원시값과 중력 보정값이 어떻게 다른지 확인해 보세요."
+        },
+        "high-elective": {
+          "subjects": [
+            "역학과 에너지"
+          ],
+          "codes": [
+            "12역학01-01",
+            "12역학01-03"
+          ],
+          "grades": [
+            "고2",
+            "고3"
+          ],
+          "defaultMotion": "swing",
+          "questionNumbers": [
+            2,
+            5,
+            6,
+            7
+          ],
+          "followupIds": [
+            "ride-acceleration@double",
+            "ride-acceleration@swing-support"
+          ],
+          "intro": "그네·시소·미끄럼틀의 운동을 가상 센서로 측정하세요. 부착 위치·방향과 운동 조건을 바꾸고, 힘과 가속도의 관계로 그래프를 해석해 보세요."
+        }
+      },
+      "originalQuestions": 8,
       "linkedExamQuestions": [],
       "reviewedEvidence": [
-        "f3119695e8a726b3"
+        "f3119695e8a726b3",
+        "e7caa9f0f741ad37",
+        "a97d3120332ca071"
       ],
       "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
     },
@@ -75467,24 +75760,6 @@
       "reviewedEvidence": [
         "fbf365923abce545",
         "5449a6b6cb158a69"
-      ],
-      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
-    },
-    {
-      "slug": "energy-budget",
-      "title": "자료로 비교하는 하루의 에너지 출입",
-      "grades": [
-        "고2",
-        "고3"
-      ],
-      "standards": [
-        "12세포02-01"
-      ],
-      "originalQuestions": 4,
-      "linkedExamQuestions": [],
-      "reviewedEvidence": [
-        "fbf365923abce545",
-        "7da2123dab6864ac"
       ],
       "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
     },

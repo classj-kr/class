@@ -9,7 +9,10 @@ function synchronize(base=root,write=false){
   if(visiting.has(file))throw Error('Asset dependency cycle: '+file);
   visiting.add(file);const original=fs.readFileSync(file,'utf8');let text=original;
   const version=(url)=>{const relative=url.split('?')[0];if(/^(?:https?:|\/\/|data:)/.test(relative))return url;const child=path.resolve(path.dirname(file),relative);if(!fs.existsSync(child)||!fs.statSync(child).isFile())throw Error('Missing asset: '+file+' -> '+url);const source=child.startsWith(base+path.sep)&&/\.(?:js|css)$/.test(child)?visit(child):fs.readFileSync(child,'utf8');return relative+'?v='+digest(source);};
-  if(file.endsWith('.js'))text=text.replace(/(['"])([.\w/-]+\.(?:js|css)\?v=[\w.-]+)\1/g,(_,quote,url)=>quote+version(url)+quote);
+  if(file.endsWith('.js')){
+   text=text.replace(/(['"])([.\w/-]+\.(?:js|css)\?v=[\w.-]+)\1/g,(_,quote,url)=>quote+version(url)+quote);
+   text=text.replace(/\bnew URL\(\s*(['"])([.\w/-]+\.(?:js|css))\1\s*,/g,(_,quote,url)=>'new URL('+quote+version(url)+quote+',');
+  }
   if(file.endsWith('.html'))text=text.replace(/((?:src|href)=["'])([^"']+\.(?:js|css)(?:\?v=[\w.-]+)?)(["'])/g,(_,prefix,url,suffix)=>prefix+version(url)+suffix);
   visiting.delete(file);cache.set(file,text);if(text!==original){changed.push(path.relative(base,file).replaceAll('\\','/'));if(write)fs.writeFileSync(file,text);}return text;
  }

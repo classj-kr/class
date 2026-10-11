@@ -50,11 +50,23 @@ function requiredExperimentModels(){
  add('seasons',{id:'altitude-meter',title:'그림자로 태양 고도 재기',codes:['6과13-01'],activity:'6과13#1',line:1727,initial:{angle:'30',height:'1'},fields:[f('angle','모형 태양의 높이',[[20,'낮게'],[30,'조금 높게'],[45,'중간'],[60,'높게'],[75,'매우 높게']]),f('height','수직 막대 높이',[[.5,'0.5 m'],[1,'1.0 m']])],view(s){const a=+s.angle,h=+s.height,shadow=h/Math.tan(a*Math.PI/180),scale=100,base=105,ground=240,end=base+shadow*scale;let svg=l(35,ground,425,ground)+l(base,ground,base,ground-h*scale,'#597684',5)+l(base,ground,end,ground,'#ae8454',7)+l(base,ground-h*scale,end,ground,'#e4ac47',2)+t(h.toFixed(1)+' m',base-40,ground-h*scale/2)+t(shadow.toFixed(2)+' m',(base+end)/2,270)+t(a+'°',end-28,228);
   return{svg,metrics:{angle:a,height:h,shadow},readings:[['모형 고도',a+'°'],['막대 높이',h.toFixed(1)+' m'],['그림자 길이',shadow.toFixed(2)+' m']],text:'평평한 바닥에 막대를 수직으로 세우고 그림자 끝을 표시합니다. 같은 막대에서 그림자가 짧아질수록 태양 고도가 높습니다. 높이와 그림자를 기록해 삼각형으로 나타내면 각도기로 고도를 읽을 수 있습니다.',note:'그림자 길이로 재는 장치의 모형입니다. 태양을 직접 보거나 렌즈로 바라보지 않습니다. 화면의 수치를 실제 관측값으로 제출하지 않습니다.',check:q('같은 막대에서 그림자가 가장 짧을 때는?',['태양 고도가 가장 높을 때','태양 고도가 가장 낮을 때','막대가 수평일 때'],0,'막대를 수직으로 세운 같은 조건에서 태양이 높을수록 그림자가 짧습니다.')};}});
  add('senses',{id:'blind-spot',title:'화면으로 맹점 확인',codes:['9과20-01'],activity:'9과20#1',line:2471,initial:{eye:'right',gap:'140',seen:'unchecked'},fields:[f('eye','뜬 눈',[['right','오른눈'],['left','왼눈']]),f('gap','두 표시 사이 간격',[[90,'좁게'],[140,'중간'],[190,'넓게']]),f('seen','내가 관찰한 결과',[['unchecked','아직 확인 전'],['visible','점이 보임'],['hidden','점이 안 보임']])],view(s){const right=s.eye==='right',cross=right?230- +s.gap/2:230+ +s.gap/2,dot=right?230+ +s.gap/2:230- +s.gap/2;return{svg:r(15,30,430,240,'#fff')+l(cross-10,150,cross+10,150,'#172b39',3)+l(cross,140,cross,160,'#172b39',3)+c(dot,150,8,'#172b39'),metrics:{cross,dot,gap:+s.gap},readings:[['고정해서 볼 표시','십자(+)'],['관찰할 표시','옆의 검은 점'],['내 관찰',{unchecked:'아직 확인 전',visible:'점이 보임',hidden:'점이 안 보임'}[s.seen]]],text:(right?'왼눈':'오른눈')+'을 가볍게 가리고, 뜬 눈으로 십자만 계속 봅니다. 편안한 범위에서 화면과의 거리를 천천히 바꿔 옆의 점이 안 보이는 위치가 있는지 관찰하세요. 화면은 점을 자동으로 숨기지 않습니다.',note:'눈을 누르지 말고 불편하면 중단합니다. 화면 크기·거리·개인차에 따라 관찰 위치가 달라집니다. 의료 검사나 시력 판정이 아닙니다.',check:q('한 위치에서 점이 안 보이는 까닭과 관련된 것은?',['시각 신경이 나가는 곳에는 시각 세포가 없다','화면이 점을 자동으로 지운다','점에서 빛이 전혀 나오지 않는다'],0,'맹점에는 빛을 받아들이는 시각 세포가 없어 그곳에 맺힌 자극을 느끼지 못합니다.')};}});
- add('periodic-bonding',{id:'compound-conductivity',title:'화합물의 전기 전도성 비교',codes:['10통과1-02-04'],activity:'10통과1-02#4',line:2907,initial:{sample:'salt',state:'solution'},fields:[f('sample','비교 시료',[['salt','염화 나트륨'],['sugar','설탕']]),f('state','시료의 상태',[['solid','고체'],['solution','물에 녹임']])],view(s){const conducts=s.sample==='salt'&&s.state==='solution';let svg='<path data-conductivity-wire d="M175 205 V75 H205 M235 75 H285 V205" fill="none" stroke="#657b86" stroke-width="3"/>'+r(140,120,180,125,'#eaf3f6')+r(145,165,170,73,s.state==='solution'?'#a9d5e8':'#eee6d5')+l(175,120,175,205)+l(285,120,285,205)+l(205,53,205,97)+l(235,62,235,88)+c(285,105,18,conducts?'#f3cb64':'#dbe3e8')+t('전지',220,35)+t('+',190,65)+t('−',250,65);return{svg,metrics:{conducts},readings:[['모형 전구',conducts?'켜짐':'켜지지 않음']],text:conducts?'염화 나트륨 수용액에서는 이온이 이동할 수 있어 전류가 흐릅니다.':'고체 염화 나트륨에서는 이온이 자유롭게 이동하지 못합니다. 설탕은 물에 녹아도 이온으로 나뉘지 않아 이 비교에서 전류가 거의 흐르지 않습니다.',note:'같은 장치·같은 조건의 정성 모형입니다. 모든 공유 결합 물질의 수용액이 전류를 흘리지 않는다는 뜻은 아닙니다. 실제 가정용 전원을 연결하지 않습니다.',check:q('염화 나트륨 수용액에 전류가 흐르는 까닭은?',['이온이 이동할 수 있어서','물에 녹으면 모든 물질이 금속이 되어서','고체 모양이 남아 있어서'],0,'전하를 띤 입자가 이동할 수 있는지 비교합니다.')};}});
+ add('periodic-bonding',{id:'compound-conductivity',title:'화합물의 전기 전도성 비교',codes:['10통과1-02-04'],activity:'10통과1-02#4',line:2907,
+  initial:{sample:'salt-solution',probe:'immersed'},
+  fields:[f('sample','6홈판에서 비교할 시료',[['water','A · 증류수'],['salt-solid','B · 고체 염화 나트륨'],['sugar-solid','C · 고체 설탕'],['salt-solution','D · 염화 나트륨 수용액'],['sugar-solution','E · 설탕 수용액']]),f('probe','전극 위치',[['immersed','선택한 시료에 넣기'],['raised','시료에서 들어 올리기']])],
+  view(s){
+   const measured=s.probe==='immersed',conducts=measured&&s.sample==='salt-solution';
+   const explanations={water:'증류수에서는 전류가 매우 작아 이 모형 측정기의 전도 표시가 켜지지 않습니다.', 'salt-solid':'고체 염화 나트륨에는 이온이 있지만 자유롭게 이동하지 못하여 전도 표시가 켜지지 않습니다.', 'sugar-solid':'고체 설탕에는 이 비교에서 전류를 운반할 자유롭게 이동하는 이온이 없습니다.', 'salt-solution':'염화 나트륨 수용액의 이온은 자유롭게 이동할 수 있어 전도 표시가 켜집니다.', 'sugar-solution':'설탕은 물에 녹아도 분자 상태로 존재하며 이온으로 나뉘지 않아 전도 표시가 켜지지 않습니다.'};
+   return{svg:'',metrics:{conducts,measured},readings:[['전극 상태',measured?'시료와 접촉':'시료에서 분리'],['전도성 측정기',!measured?'측정 대기':conducts?'표시 켜짐':'표시 꺼짐']],text:measured?explanations[s.sample]:'전극이 시료에 닿지 않았습니다. 표시등이 꺼진 것만으로 시료의 전도성을 판단하지 말고 전극을 넣어 비교하세요.',note:'2022 교과서의 6홈판·전기 전도성 측정기를 나타낸 정성 모형입니다. 시료를 바꾸면 증류수로 헹군 전극을 사용한 조건으로 비교합니다. 표시등은 정량 전도도 값이 아니며, 모든 공유 결합 물질의 수용액이 전류를 흘리지 않는다는 뜻은 아닙니다.',check:q('같은 장치에서 염화 나트륨은 고체일 때 표시가 꺼지고 물에 녹인 뒤 켜졌다. 이를 설명하는 입자 상태는?',['고체에도 이온이 있고, 수용액에서는 이온이 이동한다','고체에는 이온이 없고, 수용액에서 이온이 생긴다','두 상태 모두 이온이 이동하며 수용액에서만 전자를 만든다'],0,'고체의 이온은 제자리에 묶여 있고, 수용액에서는 이온이 이동해 전류를 운반합니다.')};
+  }
+ });
  const more=typeof module!=='undefined'?require('./required-experiments-more.js').requiredMoreModels:window.requiredMoreModels;
  more?.({add,t,r,l,c,f,q,step,modelNote});
  const final=typeof module!=='undefined'?require('./required-experiments-final.js').requiredFinalModels:window.requiredFinalModels;
  final?.({add,t,r,l,c,f,q,step,modelNote});
+ const apparatus=typeof module!=='undefined'?require('./apparatus-scenes.js'):window.scienceApparatusScenes;
+ for(const spec of Object.values(specs).flat())if(apparatus?.ids.includes(spec.id)){
+  const view=spec.view;spec.view=state=>{const result=view(state),figure=apparatus.render(spec.id,state,result);return{...result,svg:figure.svg,figure};};
+ }
  return specs;
 }
 if(typeof module!=='undefined')module.exports={requiredExperimentModels};
@@ -62,24 +74,27 @@ if(typeof window!=='undefined')(()=>{
  window.requiredExperimentModels=requiredExperimentModels;
  const parts=location.pathname.split('/').filter(Boolean),slug=parts.at(-1)==='index.html'?parts.at(-2):parts.at(-1),specs=requiredExperimentModels()[slug];
  if(specs){
-  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('required-experiments.css?v=265d52b60564',document.currentScript.src);document.head.append(css);
-  const panel=document.createElement('section');panel.className='panel required-experiments';panel.setAttribute('aria-label','실험과 관찰 기록');
-  panel.innerHTML='<h2>실험과 관찰 기록</h2><nav class="required-tabs" aria-label="실험 선택"></nav><div class="required-layout"><div class="required-controls"></div><div><svg class="required-figure" viewBox="0 0 460 310" role="img"></svg><p class="required-observation" aria-live="polite"></p><dl class="required-readings"></dl></div></div><div class="required-actions"><button type="button" data-record>관찰 기록</button><button type="button" data-reset>처음으로</button></div><div class="required-history"></div><div class="required-check"></div><p class="required-note"></p>';
+  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('required-experiments.css?v=a4d3e768dc73',document.currentScript.src);document.head.append(css);
+  const panel=document.createElement('section');panel.id='required-experiments';panel.className='panel required-experiments';panel.setAttribute('aria-label','실험으로 확인하기');
+  panel.innerHTML='<h2>실험으로 확인하기</h2><nav class="required-tabs" aria-label="실험 선택"></nav><div class="required-layout"><div class="required-controls"></div><div><div class="required-visuals"><figure class="apparatus-main"><svg class="required-figure" viewBox="0 0 460 310" role="img"></svg><figcaption class="apparatus-caption"></figcaption></figure><div class="apparatus-explanation" hidden></div></div><div class="apparatus-key" hidden></div><p class="required-observation" aria-live="polite"></p><dl class="required-readings"></dl></div></div><div class="required-actions"><button type="button" data-reset>처음으로</button></div><div class="required-check"></div><p class="required-note"></p>';
   const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(panel);else document.querySelector('main').append(panel);
-  const saved=specs.map(s=>({state:{...s.initial},records:[]}));
-  let selected=0,state={...saved[0].state},records=saved[0].records,last;
+  const saved=specs.map(s=>({state:{...s.initial}}));
+  let selected=0,state={...saved[0].state},last;
   const at=s=>panel.querySelector(s),el=(tag,txt)=>{const e=document.createElement(tag);e.textContent=txt;return e;};
-  at('.required-tabs').replaceChildren(...specs.map((v,i)=>{const b=el('button',v.title);b.type='button';b.dataset.experiment=v.id;b.setAttribute('aria-pressed',String(i===selected));b.onclick=()=>{saved[selected]={state:{...state},records};selected=i;state={...saved[i].state};records=saved[i].records;render();at(`[data-experiment="${v.id}"]`).focus({preventScroll:true});};return b;}));
+  at('.required-tabs').replaceChildren(...specs.map((v,i)=>{const b=el('button',v.title);b.type='button';b.dataset.experiment=v.id;b.setAttribute('aria-pressed',String(i===selected));b.onclick=()=>{saved[selected]={state:{...state}};selected=i;state={...saved[i].state};render();at(`[data-experiment="${v.id}"]`).focus({preventScroll:true});};return b;}));
   function render(){const spec=specs[selected];
    at('.required-tabs').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===selected)));
    at('.required-controls').replaceChildren(...spec.fields.map(f=>{const label=el('label',f.title),select=document.createElement('select');select.dataset.requiredField=f.key;select.setAttribute('aria-label',f.title);for(const o of f.items){const option=el('option',o.text);option.value=o.value;select.append(option);}select.value=state[f.key];select.onchange=()=>{state[f.key]=select.value;render();at(`[data-required-field="${f.key}"]`).focus({preventScroll:true});};label.append(select);return label;}));
-   last=spec.view(state);at('svg').innerHTML=last.svg;at('svg').setAttribute('aria-label',spec.title);at('.required-observation').textContent=last.text;at('.required-note').textContent=last.note;
+   last=spec.view(state);panel.toggleAttribute('data-apparatus',!!last.figure);
+   at('svg').innerHTML=last.svg;at('svg').setAttribute('viewBox',last.figure?.viewBox||'0 0 460 310');at('svg').setAttribute('aria-label',last.figure?.caption||spec.title);
+   at('.apparatus-caption').textContent=last.figure?.caption||'';at('.apparatus-caption').hidden=!last.figure;
+   at('.apparatus-explanation').innerHTML=last.figure?.detail||'';at('.apparatus-explanation').hidden=!last.figure?.detail;
+   at('.apparatus-key').innerHTML=last.figure?.legend||'';at('.apparatus-key').hidden=!last.figure?.legend;
+   at('.required-observation').textContent=last.text;at('.required-note').textContent=last.note;
    at('.required-readings').replaceChildren(...last.readings.flatMap(([name,value])=>[el('dt',name),el('dd',value)]));
-   at('.required-history').replaceChildren();if(records.length){const table=document.createElement('table'),head=document.createElement('tr');for(const x of ['조건','관찰 기록'])head.append(el('th',x));table.append(head);for(const row of records){const tr=document.createElement('tr');tr.append(el('td',row.condition),el('td',row.readings));table.append(tr);}at('.required-history').append(table);}
    const check=at('.required-check');check.replaceChildren(el('h3',last.check.question));const feedback=el('p','');feedback.setAttribute('aria-live','polite');last.check.choices.forEach((choice,i)=>{const b=el('button',choice);b.type='button';b.dataset.requiredAnswer=String(i);b.onclick=()=>{const correct=i===last.check.answer;feedback.textContent=(correct?'정답입니다. ':'다시 생각해 보세요. ')+last.check.why;feedback.dataset.correct=String(correct);};check.append(b);});check.append(feedback);
   }
-  at('[data-record]').onclick=()=>{const spec=specs[selected];records.push({condition:spec.fields.map(f=>f.title+': '+f.items.find(o=>o.value===state[f.key]).text).join(' · '),readings:last.readings.map(([a,b])=>a+': '+b).join(' · ')});render();};
-  at('[data-reset]').onclick=()=>{state={...specs[selected].initial};records=[];render();};render();
-  window.__requiredExperiments={getState:()=>({...state}),getId:()=>specs[selected].id,getRecords:()=>records.map(r=>({...r}))};
+  at('[data-reset]').onclick=()=>{state={...specs[selected].initial};render();};render();
+  window.__requiredExperiments={getState:()=>({...state}),getId:()=>specs[selected].id};
  }
 })();

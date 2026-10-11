@@ -8,8 +8,9 @@ const read = p => fs.readFileSync(path.join(root,p),'utf8');
 const clean = s => s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 const catalog = read(`${lab}/index.html`);
 const curriculumMap = require(path.join(root,lab,'curriculum-map.js'));
-const apps = [...catalog.matchAll(/<a class="level-entry available"[^>]*href="([^"/]+)\/"[^>]*><b>([^<]+)<\/b><span>([\s\S]*?)<\/span><\/a>/g)].map(m=>{
-  const slug=m[1], html=read(`${lab}/${slug}/index.html`);
+const catalogEntries = [...catalog.matchAll(/<a class="level-entry available"[^>]*href="([^"/]+)\/(?:\?school=([^"&]+))?"[^>]*><b>([^<]+)<\/b><span>([\s\S]*?)<\/span><\/a>/g)].map(m=>({slug:m[1],context:m[2]||null,label:m[3],title:clean(m[4].split('<small')[0]),school:m[0].match(/data-school="([^"]+)"/)?.[1],line:catalog.slice(0,m.index).split('\n').length}));
+const apps = catalogEntries.filter((e,i)=>catalogEntries.findIndex(p=>p.slug===e.slug)===i).map(m=>{
+  const slug=m.slug, html=read(`${lab}/${slug}/index.html`);
   const files=fs.readdirSync(path.join(root,lab,slug)).filter(n=>/\.(html|js)$/.test(n)).map(n=>{
     const name=`${lab}/${slug}/${n}`,text=read(name);
     return {name,sha256:crypto.createHash('sha256').update(text).digest('hex'),lines:text.split(/\r?\n/).length};
@@ -20,7 +21,7 @@ const apps = [...catalog.matchAll(/<a class="level-entry available"[^>]*href="([
       if(/[가-힣]/.test(line) && !/font-family|aria-hidden/.test(line)) evidence.push({file:f.name,line:i+1,text:clean(line)});
     });
   }
-  return {slug,grade:curriculumMap[slug].grade,catalogLabel:m[2],school:m[0].match(/data-school="([^"]+)"/)?.[1],title:clean(m[3].split('<small')[0]),catalogLine:catalog.slice(0,m.index).split('\n').length,
+  return {slug,grade:curriculumMap[slug].grade,catalogLabel:m.label,school:m.school,title:m.title,catalogLine:m.line,contexts:catalogEntries.filter(e=>e.slug===slug),
     description:html.match(/<meta name="description" content="([^"]*)"/)?.[1],
     controls:[...html.matchAll(/<(?:legend|label|li|h3)\b[^>]*>([\s\S]*?)<\/(?:legend|label|li|h3)>/g)].map(m=>clean(m[1])),files,evidence};
 });
@@ -35,7 +36,7 @@ read(reference).split(/\r?\n/).forEach((line,i)=>{
  if(phase==='activities'&&/^•/.test(line))current.activities.push({text:line,line:i+1});
  if(phase==='guidance'&&line.trim())current.guidance.push({text:line,line:i+1});
 });
-const data={scope:lab,reference,apps,sections:sections.filter(s=>s.standards.length)};
+const data={scope:lab,reference,apps,catalogEntries,sections:sections.filter(s=>s.standards.length)};
 if(require.main===module){
 if(process.argv[2]==='apps'){
  const start=Number(process.argv[3]||0),end=Number(process.argv[4]||apps.length);

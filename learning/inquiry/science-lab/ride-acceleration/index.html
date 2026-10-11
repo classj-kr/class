@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 놀이기구 운동과 가속도 센서</title><meta name="description" content="2022 교육과정 · 놀이기구 운동과 가속도 센서의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css"><link rel="stylesheet" href="../science-reading.css"><link rel="stylesheet" href="../inquiry-labs.css"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>놀이기구 운동과 가속도 센서</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험2</span></div></header><p class="intro">등속 직선·수평 원운동·상승하는 승강기의 시간별 위치와 속도·가속도 벡터를 비교한다. 중력 영향을 제외한 운동 가속도와 이상적인 휴대전화 가속도 센서 크기를 구분한다.</p><section class="experiment-layout inquiry-lab" data-inquiry="ride-acceleration"><h2>조건을 바꾸고 관찰하기</h2><div class="control-panel"><label>운동<select id="motion"><option value="circle">수평 등속 원운동</option><option value="straight">등속 직선 운동</option><option value="elevator">승강기 상승·정지</option></select></label><label for="speed">설정 속력 <output id="speedValue">4 m/s</output><input id="speed" type="range" min="1" max="8" step="0.5" value="4" data-unit="m/s"></label><label for="radius">원 궤도 반지름 <output id="radiusValue">4 m</output><input id="radius" type="range" min="2" max="12" step="1" value="4" data-unit="m"></label><label for="time">시각 <output id="timeValue">0 초</output><input id="time" type="range" min="0" max="12" step="0.1" value="0" data-unit="초"></label><button id="play">움직임 재생</button><button id="step">0.5초 진행</button></div><div id="inquiryScene" class="inquiry-scene"></div><div id="inquiryReadout" class="inquiry-readout" aria-live="polite"></div><div id="inquiryExtra"></div><p id="inquiryStatus" class="status" role="status"></p><div class="toolbar"><button id="resetExperiment">실험 처음부터</button></div><p class="model-note">실제 휴대전화 센서 수집이나 현장 놀이기구 탑승은 포함하지 않는 이상 운동 모형이다. 센서 크기는 수평 원운동에서 √(g²+a²), 승강기에서 |g+a_z|이며 회전·기울기·진동 오차는 생략한다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 놀이기구 운동과 가속도 센서</title><meta name="description" content="2022 교육과정 · 놀이기구 운동과 가속도 센서의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../inquiry-labs.css?v=f6cb60487942"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>놀이기구 운동과 가속도 센서</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험2</span></div></header><p class="intro">그네·시소·미끄럼틀과 원운동·등속 직선·승강기를 비교하세요. 센서의 부착 방향과 시소의 부착 위치를 정하고 가상 센서로 측정한 뒤, 그래프의 시각별 값을 운동 모습과 비교합니다.</p><section class="experiment-layout inquiry-lab" data-inquiry="ride-acceleration"><h2>조건을 바꾸고 관찰하기</h2><div class="control-panel"><label>운동<select id="motion"><option value="circle">수평 등속 원운동</option><option value="straight">등속 직선 운동</option><option value="elevator">승강기 상승·정지</option><option value="swing">그네</option><option value="seesaw">시소</option><option value="slide">미끄럼틀</option></select></label><div data-motions="circle straight elevator"><label for="speed">설정 속력 <output id="speedValue">4 m/s</output><input id="speed" type="range" min="1" max="8" step="0.5" value="4" data-unit="m/s"></label></div><div data-motions="circle"><label for="radius">원 궤도 반지름 <output id="radiusValue">4 m</output><input id="radius" type="range" min="2" max="12" step="1" value="4" data-unit="m"></label></div><div data-motions="swing"><label for="length">그네 줄 길이 <output id="lengthValue">3 m</output><input id="length" type="range" min="1" max="5" step="0.5" value="3" data-unit="m"></label></div><div data-motions="swing seesaw"><label for="angle">최대 기울기 <output id="angleValue">30 °</output><input id="angle" type="range" min="5" max="45" step="5" value="30" data-unit="°"></label></div><div data-motions="seesaw"><label for="position">회전축에서 센서까지 <output id="positionValue">1.5 m</output><input id="position" type="range" min="0" max="2" step="0.25" value="1.5" data-unit="m"></label><label for="period">왕복 주기 <output id="periodValue">4 초</output><input id="period" type="range" min="2" max="6" step="0.5" value="4" data-unit="초"></label></div><div data-motions="slide"><label for="slope">경사각 <output id="slopeValue">30 °</output><input id="slope" type="range" min="10" max="45" step="5" value="30" data-unit="°"></label></div><div data-motions="swing seesaw slide elevator straight"><label>센서 부착 방향<select id="mount"><option value="0">장치 기준 방향</option><option value="90">90° 돌려 부착</option><option value="180">180° 돌려 부착</option></select></label></div><label>센서값 종류<select id="sensorMode"><option value="raw">원시 센서값</option><option value="linear">중력 보정값</option></select></label><label>읽을 방향<select id="axis"><option value="x">기기 x축</option><option value="z">기기 z축</option><option value="magnitude">3축 합성 크기</option></select></label><label>측정 간격<select id="interval"><option value="0.1">0.1초</option><option value="0.5">0.5초</option><option value="1">1초</option></select></label><div class="toolbar"><button id="measureRide">가상 센서로 측정</button></div><p id="measurementSummary" class="instruction" aria-live="polite"></p><label for="time">관찰 시각 <output id="timeValue">0 초</output><input id="time" type="range" min="0" max="12" step="0.01" value="0" data-unit="초"></label><button id="play">움직임 재생</button><button id="step">0.5초 진행</button></div><div id="inquiryScene" class="inquiry-scene"></div><div id="inquiryReadout" class="inquiry-readout" aria-live="polite"></div><div id="inquiryExtra"></div><p id="inquiryStatus" class="status" role="status"></p><div class="toolbar"><button id="resetExperiment">실험 처음부터</button></div><p class="model-note">계산한 가상 센서값이며 실제 기기에서 수집한 자료가 아닙니다. 그네는 마찰 없는 진자, 시소는 설정한 각도·주기로 구동하는 막대, 미끄럼틀은 마찰 없는 경사면입니다. 경사면 끝의 충돌은 제외합니다. 원시 센서는 지지 효과를 포함하고, 중력 보정값은 장치 축으로 읽은 운동 가속도입니다. 기기 잡음·진동은 생략합니다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>8문제</span></summary><article class="quiz-card" data-answer="b">
 <h3>수평 원 궤도를 일정한 속력으로 돈다. 1/4바퀴 뒤의 속도와 가속도에 대한 해석은?</h3>
 <div class="quiz-options">
 <label><input type="radio" name="q1" value="a"> 속도가 같고 가속도는 0</label>
@@ -46,4 +46,52 @@
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
 <p class="answer-explanation" hidden>정지한 물체의 좌표상 가속도는 0입니다. 원시 센서는 바닥이 받치는 효과를 포함하므로 중력 보정값과 구분합니다.</p>
-</article></details></main><script src="../inquiry-models.js"></script><script src="../inquiry-labs.js"></script><script src="../curriculum-map.js"></script><script src="../exam-scope.js"></script></body></html>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>줄 길이 3 m인 그네가 최저점을 3 m/s로 지난다. 센서 z축이 위쪽일 때 운동 가속도와 원시 z값은? (g=9.8 m/s²)</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q5" value="a"> 0 · 9.8</label>
+<label><input type="radio" name="q5" value="b"> 3.0 · 3.0</label>
+<label><input type="radio" name="q5" value="c"> 3.0 · 12.8</label>
+<label><input type="radio" name="q5" value="d"> 12.8 · 3.0</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>최저점의 운동 가속도는 위쪽으로 v²/L=3 m/s²입니다. 원시 z값은 지지 효과를 포함하여 9.8+3=12.8 m/s²입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>같은 시소의 회전축에서 0.5 m와 1.5 m 떨어진 곳에 센서를 고정했다. 같은 순간 두 지점의 운동 가속도 크기 비(먼 곳/가까운 곳)는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q6" value="a"> 1</label>
+<label><input type="radio" name="q6" value="b"> 3</label>
+<label><input type="radio" name="q6" value="c"> 9</label>
+<label><input type="radio" name="q6" value="d"> 1/3</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 각속도·각가속도에서 접선·구심 가속도는 모두 축까지 거리 r에 비례하므로 비는 3입니다. 원시 센서의 합성 크기에는 이 비례를 그대로 적용하지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>마찰 없는 30° 경사면에서 아래쪽을 기기 +x축으로 잡았다. g=9.8 m/s²일 때 원시 x값과 중력 보정 x값은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q7" value="a"> 4.9 · 4.9</label>
+<label><input type="radio" name="q7" value="b"> 4.9 · 0</label>
+<label><input type="radio" name="q7" value="c"> 0 · 0</label>
+<label><input type="radio" name="q7" value="d"> 0 · 4.9</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>운동 가속도는 경사면 아래쪽으로 g sin30°=4.9입니다. 원시 센서는 중력 외의 접촉 힘을 읽으므로 마찰 없는 접선 방향은 0입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 운동에서 센서를 x-z면으로 180° 돌렸다. 원시 x값이 +3에서 −3 m/s²로 바뀌었다. 3축 합성 크기는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q8" value="a"> 같음</label>
+<label><input type="radio" name="q8" value="b"> 부호가 반대</label>
+<label><input type="radio" name="q8" value="c"> 2배</label>
+<label><input type="radio" name="q8" value="d"> 0</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>부착 방향이 바뀌면 축 성분의 부호가 바뀌지만 벡터의 합성 크기는 유지됩니다.</p>
+</article></details></main><script src="../curriculum-map.js?v=13a4a6b3ffc5"></script><script src="../app-context.js?v=4b71cb235403"></script><script src="../inquiry-models.js?v=291c80edd0fb"></script><script src="../ride-models.js?v=0a05538982ce"></script><script src="../ride-lab.js?v=3a24e01a13fb"></script><script src="../exam-scope.js?v=e1af33571a77"></script></body></html>

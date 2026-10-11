@@ -1,9 +1,11 @@
-// 수학 문제은행의 문항을 씨앗 수백 개로 만들어, 답과 조건을 엔진과 다른 길로 다시 셈해 맞춰 본다.
+// 수학 문제은행의 문항을 엔진과 다른 길로 다시 셈해 답과 조건을 맞춰 본다.
 //   node --test tests/math-bank-units.test.cjs
-// 문항은 저장된 글이 아니라 만들어 내는 것이라, 한 번 눈으로 본 것으로는 모자라다. 여기서는
+// 은행에 실린 문항(유형마다 하나)은 물론이고, 유형을 만드는 코드가 어떤 수에서도 옳은지 보려고
+// 유형마다 씨앗 수십 개로 더 만들어 같은 검사를 한다. 여기서는
 //  - 답이 맞는가(식을 따로 계산), 답이 하나뿐인가(가려진 숫자·□ 범위·고르기 문항은 모든 경우를 따져 본다)
 //  - 묶음 이름대로인가(받아올림·받아내림 횟수)
-//  - 글이 멀쩡한가(undefined·NaN, 잘못 붙은 토씨)
+//  - 글이 멀쩡한가(undefined·NaN, 잘못 붙은 토씨, 말투)
+//  - 같은 문제가 두 번 실리지 않았는가
 // 를 본다.
 const test = require('node:test');
 const assert = require('node:assert/strict');
@@ -19,22 +21,43 @@ for (const file of ['engine.js', ...fs.readdirSync(path.join(APP, 'units')).filt
   vm.runInContext(fs.readFileSync(path.join(APP, file), 'utf8'), context, { filename: file });
 }
 const B = context.MathBank;
-const SEEDS = Array.from({ length: 160 }, (_, i) => i * 7919 + 13);
+const EXTRA_SEEDS = Array.from({ length: 60 }, (_, i) => i * 7919 + 13);
 
-// 엔진과 따로 쓴 셈
+// ── 엔진과 따로 쓴 셈 ──────────────────────────────────────────
 function carries(a, b) { let n = 0, c = 0; const at = []; for (let i = 0; i < 3; i += 1) { c = (a % 10) + (b % 10) + c >= 10 ? 1 : 0; n += c; at.push(c); a = Math.trunc(a / 10); b = Math.trunc(b / 10); } return { n, at }; }
 function borrows(a, b) { let n = 0, c = 0; for (let i = 0; i < 3; i += 1) { c = (a % 10) - (b % 10) - c < 0 ? 1 : 0; n += c; a = Math.trunc(a / 10); b = Math.trunc(b / 10); } return n; }
 const calc = (a, op, b) => (op === '+' ? a + b : a - b);
+// 식 글("345+278-(120-15)")을 셈한다. 숫자와 + - * ( ) 만 받는다.
+function evaluate(text) {
+  assert.match(text, /^[\d+\-*() ]+$/, '식이 아니다: ' + text);
+  return Function('"use strict"; return (' + text + ');')();
+}
 const strip = (html) => String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
 const pairsOf = (list) => { const out = []; for (let i = 0; i < list.length; i += 1) for (let j = i + 1; j < list.length; j += 1) out.push([list[i], list[j]]); return out; };
+const hundred = (n) => Math.round(n / 100) * 100;
+// 수 카드에서 세 장을 골라 만들 수 있는 세 자리 수 전부
+function threeDigit(digits) {
+  const out = new Set();
+  for (let i = 0; i < digits.length; i += 1) for (let j = 0; j < digits.length; j += 1) for (let k = 0; k < digits.length; k += 1) {
+    if (i !== j && j !== k && i !== k && digits[i] !== 0) out.add(digits[i] * 100 + digits[j] * 10 + digits[k]);
+  }
+  return [...out].sort((x, y) => x - y);
+}
 
-function everyItem(visit) {
+// ── 문항 모으기 ────────────────────────────────────────────────
+// 은행에 실린 문항과, 같은 유형을 다른 씨앗으로 더 만든 문항을 차례로 넘긴다.
+function everyItem(visit, extra = true) {
   for (const unit of B.units()) for (const group of unit.groups) for (const level of B.LEVELS) {
-    if (B.typesOf(group, level).length === 0) continue;
-    for (const seed of SEEDS) for (const item of B.makeRound(unit, group.id, level, seed)) visit(item, { unit, group, level, seed });
+    for (const item of B.bankOf(unit, group.id, level)) visit(item, { unit, group, level, seed: 'bank' });
+    if (!extra) continue;
+    for (const type of B.typesOf(group, level)) for (let n = 0; n < (type.count || 1); n += 1) for (const seed of EXTRA_SEEDS) {
+      const made = type.make(new B.Dice(seed + n * 101), n);
+      visit(Object.assign({ key: type.id + '#' + (n + 1), typeId: type.id, level: type.level, standard: type.standard || group.standard }, made), { unit, group, level, seed });
+    }
   }
 }
 const where = (item, at) => `${at.unit.id} ${at.group.id} ${item.key} (seed ${at.seed}): ${strip(item.text)} ${strip(item.figure)}`;
+const answerAt = (item, i) => item.inputs[i].answer;
 
 test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
   let made = 0;
@@ -42,17 +65,21 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     made += 1;
     const label = where(item, at);
     assert.ok(typeof item.text === 'string' && strip(item.text).length >= 6, label);
+    const whole = strip(item.text + ' ' + (item.figure || '') + ' ' + (item.explain || '') + ' ' + (item.choice ? item.choice.options.join(' ') : ''));
     for (const part of [item.text, item.figure, item.explain]) assert.doesNotMatch(String(part || ''), /undefined|NaN|null|\[object/, label);
     // 잘못 붙은 토씨: 받침 없는 수 뒤의 을·은·이·과, 받침 있는 수 뒤의 를·는·가·와 를 수 읽기로 따진다.
-    for (const m of strip(item.text + ' ' + (item.figure || '') + ' ' + (item.explain || '')).matchAll(/(\d+)(을|를|은|는|이|가|과|와)(?=[\s,.])/g)) {
+    for (const m of whole.matchAll(/(\d+)(을|를|은|는|이|가|과|와)(?=[\s,.])/g)) {
       const batchim = [true, true, false, true, false, false, true, true, true, false][Number(m[1]) % 10];
       assert.equal('을은이과'.includes(m[2]), batchim, `토씨 "${m[0]}" — ${label}`);
     }
+    // 낱말 뒤 토씨가 겹쳐 붙은 것(사과을, 배추은 …)
+    assert.doesNotMatch(whole, /[가-힣](?<![각을를])(을를|를을|은는|는은|이가|가이)(?=[\s,.])/, label);
     assert.ok(/^\d수\d\d-\d\d$/.test(item.standard), label);
     // 말투는 수능 문체: "~세요 / ~습니다 / ~인가요" 를 쓰지 않는다.
-    assert.doesNotMatch(strip(item.text + ' ' + (item.figure || '') + ' ' + (item.explain || '')), /세요|습니다|입니다|인가요|나요\?|해요|예요|어요/, '말투: ' + label);
+    assert.doesNotMatch(whole, /세요|습니다|입니다|인가요|나요\?|해요|예요|어요|까요/, '말투: ' + label);
+    assert.ok(item.explain && strip(item.explain).length > 3, '풀이가 없다: ' + label);
     if (item.choice) {
-      assert.ok(item.choice.options.length >= 3 && Number.isInteger(item.choice.answer) && item.choice.answer >= 0 && item.choice.answer < item.choice.options.length, label);
+      assert.ok(item.choice.options.length >= 2 && Number.isInteger(item.choice.answer) && item.choice.answer >= 0 && item.choice.answer < item.choice.options.length, label);
       assert.equal(new Set(item.choice.options.map(strip)).size, item.choice.options.length, '보기가 겹친다: ' + label);
       assert.equal(B.isCorrect(item, item.choice.answer), true, label);
       assert.equal(B.isCorrect(item, (item.choice.answer + 1) % item.choice.options.length), false, label);
@@ -63,29 +90,39 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.equal(B.isCorrect(item, answers), true, label);
       assert.equal(B.isCorrect(item, answers.map((v, i) => (i === 0 ? String(Number(v) + 1) : v))), false, label);
       assert.equal(B.isCorrect(item, answers.map(() => '')), false, label);
+      if (item.unordered) assert.equal(B.isCorrect(item, answers.slice().reverse()), true, label);
     }
+    // 검사할 거리가 하나도 없는 문항은 답을 믿을 수 없다.
+    assert.ok(Object.keys(item.facts || {}).length > 0, '다시 셈할 근거(facts)가 없다: ' + label);
   });
-  assert.ok(made > 10000, '문항 수: ' + made);
+  assert.ok(made > 2000, '문항 수: ' + made);
 });
 
-test('같은 씨앗이면 같은 문항, 다른 씨앗이면 다른 수', () => {
-  const unit = B.findUnit('3-1-1');
-  const a = JSON.stringify(B.makeRound(unit, 'mix', '기본', 4242));
-  assert.equal(JSON.stringify(B.makeRound(unit, 'mix', '기본', 4242)), a);
-  assert.notEqual(JSON.stringify(B.makeRound(unit, 'mix', '기본', 4243)), a);
-  // 한 판 안에서 같은 식이 되풀이되지 않는다.
-  for (const seed of SEEDS.slice(0, 40)) for (const group of unit.groups) {
-    const seen = new Set();
-    for (const item of B.makeRound(unit, group.id, '기본', seed)) {
-      if (!item.facts || !item.facts.op || item.facts.masks) continue;
-      const key = item.facts.a + item.facts.op + item.facts.b;
-      assert.ok(!seen.has(key), `${group.id} seed ${seed}: ${key} 가 두 번 나왔다`);
-      seen.add(key);
+test('은행: 같은 문제가 두 번 실리지 않고, 회차가 문항을 빠짐없이 나눈다', () => {
+  for (const unit of B.units()) {
+    const seen = new Map(), keys = new Set();
+    for (const group of unit.groups) for (const level of B.LEVELS) {
+      const bank = B.bankOf(unit, group.id, level), rounds = B.roundCount(unit, group.id, level);
+      const dealt = [];
+      for (let no = 1; no <= rounds; no += 1) {
+        const items = B.makeRound(unit, group.id, level, no);
+        assert.ok(items.length >= 1 && items.length <= 16, `${unit.id} ${group.id} ${level} ${no}회: ${items.length}문항`);
+        dealt.push(...items.map((item) => item.key));
+      }
+      assert.deepEqual(dealt.slice().sort(), bank.map((item) => item.key).sort(), `${unit.id} ${group.id} ${level}`);
+      assert.deepEqual(B.makeRound(unit, group.id, level, rounds + 1), []);
+      for (const item of bank) {
+        assert.ok(!keys.has(item.key), '열쇠가 겹친다: ' + item.key); keys.add(item.key);
+        // 수를 지우고 본 글이 같으면 수만 다른 같은 문제다. 계산 문제(가로셈·세로셈)는 묶음이 다르면 조건이 다르므로 묶음 이름을 붙여 본다.
+        const shape = strip(item.text + ' ' + (item.figure || '')).replace(/\d+/g, '#') + (item.facts && item.facts.rule ? ' @' + group.id : '');
+        assert.ok(!seen.has(shape), `같은 꼴이 두 번: ${item.key} 와 ${seen.get(shape)} — ${shape}`);
+        seen.set(shape, item.key);
+      }
     }
   }
 });
 
-test('계산 문항: 답이 맞고, 묶음 이름대로 받아올림·받아내림이 일어난다', () => {
+test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받아올림·받아내림이 일어난다', () => {
   const RULE = {
     add0: (a, b) => carries(a, b).n === 0,
     add1: (a, b) => carries(a, b).n === 1 && carries(a, b).at[2] === 0,
@@ -94,37 +131,22 @@ test('계산 문항: 답이 맞고, 묶음 이름대로 받아올림·받아내�
     sub1: (a, b) => borrows(a, b) === 1,
     sub2: (a, b) => borrows(a, b) === 2
   };
-  const seen = {};
+  let checked = 0;
   everyItem((item, at) => {
-    const f = item.facts || {};
-    if (!f.op || f.masks) return;
-    const label = where(item, at);
-    assert.ok(f.a >= 100 && f.a <= 999 && f.b >= 100 && f.b <= 999, label);
-    if (f.op === '-') assert.ok(f.a > f.b, label);
-    assert.equal(item.inputs[item.inputs.length - 1].answer, calc(f.a, f.op, f.b), label);
-    const rule = RULE[at.group.id];
-    if (rule) assert.ok(rule(f.a, f.b), '묶음 조건에 안 맞는 수: ' + label);
-    if (f.parts) f.parts.forEach((p, i) => assert.equal(item.inputs[i].answer, p[0] + p[1], label));
-    if (f.wrong !== undefined) assert.notEqual(f.wrong, f.a - f.b, '틀린 답이 정답과 같다: ' + label);
-    if (f.digits) {
-      // 세 장으로 만들 수 있는 세 자리 수를 모두 늘어놓고 가장 큰 것과 가장 작은 것을 고른다.
-      const made = permutations(f.digits).filter((n) => n >= 100);
-      assert.equal(f.a, Math.max(...made), label);
-      assert.equal(f.b, Math.min(...made), label);
-      assert.equal(new Set(f.digits).size, 3, label);
+    const f = item.facts || {}, label = where(item, at);
+    for (const [text, i] of f.calc || []) { assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`); assert.ok(evaluate(text) > 0, label); checked += 1; }
+    if (f.pair) {
+      const [a, op, b] = f.pair;
+      assert.ok(a >= 100 && a <= 999 && b >= 100 && b <= 999, label);
+      if (op === '-') assert.ok(a > b, label);
+      if (f.rule && RULE[at.group.id]) assert.ok(RULE[at.group.id](a, b), '묶음 조건에 안 맞는 수: ' + label);
+      if (f.wrong !== undefined) assert.notEqual(f.wrong, calc(a, op, b), '틀린 답이 정답과 같다: ' + label);
+      if (f.carryValue) { const c = carries(a, b).at; assert.equal(answerAt(item, 0), f.carryValue, label); assert.equal(c[f.carryValue === 10 ? 0 : 1], 1, label); }
     }
-    if (f.three) assert.deepEqual([f.a, f.b], [Math.max(...f.three), Math.min(...f.three)], label);
-    (seen[at.group.id] = seen[at.group.id] || new Set()).add(carries(f.a, f.b).n + '/' + borrows(Math.max(f.a, f.b), Math.min(f.a, f.b)));
+    if (f.parts) f.parts.forEach(([text, i]) => assert.equal(answerAt(item, i), evaluate(text), label));
   });
-  // 받아올림이 두 번인 것과 세 번인 것, 십의 자리가 0인 뺄셈이 실제로 섞여 나온다.
-  assert.ok(seen.add2.has('2/0') || [...seen.add2].some((k) => k.startsWith('2/')), '받아올림 두 번');
-  assert.ok([...seen.add2].some((k) => k.startsWith('3/')), '받아올림 세 번');
+  assert.ok(checked > 1000);
 });
-function permutations(digits) {
-  const out = [];
-  for (let i = 0; i < 3; i += 1) for (let j = 0; j < 3; j += 1) for (let k = 0; k < 3; k += 1) if (i !== j && j !== k && i !== k) out.push(digits[i] * 100 + digits[j] * 10 + digits[k]);
-  return out;
-}
 
 test('가려진 숫자: 가린 자리를 모든 숫자로 바꿔 보아도 맞는 경우는 하나뿐이다', () => {
   let checked = 0;
@@ -133,89 +155,208 @@ test('가려진 숫자: 가린 자리를 모든 숫자로 바꿔 보아도 맞�
     if (!f.masks) return;
     checked += 1;
     const label = where(item, at);
-    const rows = [String(f.a), String(f.b), String(calc(f.a, f.op, f.b))];
-    assert.equal(new Set(f.masks.map((m) => m.place)).size, f.masks.length, '한 자리에 둘을 가렸다: ' + label);
+    const [a, op, b] = f.pair;
+    const rows = [String(a), String(b), String(calc(a, op, b))];
     let solutions = 0;
     const total = 10 ** f.masks.length;
     for (let code = 0; code < total; code += 1) {
       const trial = rows.map((r) => r.split(''));
       f.masks.forEach((m, i) => { trial[m.row][trial[m.row].length - 1 - m.place] = String(Math.trunc(code / 10 ** i) % 10); });
       if (trial.some((r) => r[0] === '0')) continue;
-      const [a, b, c] = trial.map((r) => Number(r.join('')));
-      if (calc(a, f.op, b) === c) solutions += 1;
+      const [x, y, z] = trial.map((r) => Number(r.join('')));
+      if (calc(x, op, y) === z) solutions += 1;
     }
     assert.equal(solutions, 1, label);
-    f.masks.forEach((m, i) => assert.equal(item.inputs[i].answer, Number(rows[m.row][rows[m.row].length - 1 - m.place]), label));
+    const hidden = f.masks.map((m) => Number(rows[m.row][rows[m.row].length - 1 - m.place]));
+    if (f.maskAsk === 'sum') assert.equal(answerAt(item, 0), hidden.reduce((s, v) => s + v, 0), label);
+    else if (f.maskAsk === 'numbers') assert.equal(answerAt(item, 0), a + b, label);
+    else hidden.forEach((v, i) => assert.equal(answerAt(item, i), v, label));
+    // 글에 적힌 차례(윗줄부터, 왼쪽부터)대로 ㉠㉡㉢이 붙는다.
+    const order = f.masks.map((m) => m.row * 10 - m.place);
+    assert.deepEqual(order, order.slice().sort((x, y) => x - y), '가린 자리의 차례: ' + label);
   });
-  assert.ok(checked > 500);
+  assert.ok(checked > 100);
 });
 
-test('고르기·범위·어림 문항: 모든 경우를 따져 답이 하나이고 표시된 답과 같다', () => {
+test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하나이고 표시된 답과 같다', () => {
   const counts = {};
   everyItem((item, at) => {
     const f = item.facts || {};
     const label = where(item, at);
     const tally = (name) => { counts[name] = (counts[name] || 0) + 1; };
-    if (f.compare) {
-      const [left, right] = f.compare.map(([a, op, b]) => calc(a, op, b));
-      assert.equal(item.choice.answer, left > right ? 0 : left === right ? 1 : 2, label); tally('compare');
-    }
-    if (f.best) {
-      const values = f.best.map(([a, op, b]) => calc(a, op, b));
-      assert.equal(values.filter((v) => v === Math.max(...values)).length, 1, label);
-      assert.equal(item.choice.answer, values.indexOf(Math.max(...values)), label);
-      assert.ok(values.every((v) => v > 0), label); tally('best');
+    if (f.choose) {
+      const values = f.choose.exprs.map(evaluate), rule = f.choose.rule;
+      assert.ok(values.every((v) => v > 0), label);
+      if (rule === 'compare') assert.equal(item.choice.answer, values[0] > values[1] ? 0 : values[0] === values[1] ? 1 : 2, label);
+      else if (rule === 'max' || rule === 'min') {
+        const best = rule === 'max' ? Math.max(...values) : Math.min(...values);
+        assert.equal(values.filter((v) => v === best).length, 1, label);
+        assert.equal(item.choice.answer, values.indexOf(best), label);
+      } else if (rule === 'equals') {
+        assert.equal(values.filter((v) => v === f.choose.target).length, 1, label);
+        assert.equal(item.choice.answer, values.indexOf(f.choose.target), label);
+      } else if (rule === 'nearest') {
+        const gaps = values.map((v) => Math.abs(v - f.choose.target));
+        assert.equal(gaps.filter((g) => g === Math.min(...gaps)).length, 1, label);
+        assert.equal(item.choice.answer, gaps.indexOf(Math.min(...gaps)), label);
+      } else if (rule === 'ascending' || rule === 'descending') {
+        assert.equal(new Set(values).size, values.length, label);
+        const right = values.map((_, i) => i).sort((x, y) => (rule === 'ascending' ? values[x] - values[y] : values[y] - values[x]));
+        const hits = f.choose.orders.filter((o) => o.join() === right.join());
+        assert.equal(hits.length, 1, label);
+        assert.equal(f.choose.orders[item.choice.answer].join(), right.join(), label);
+      } else if (rule === 'countAbove' || rule === 'countBelow') {
+        assert.ok(values.every((v) => v !== f.choose.target), label);
+        const hit = values.filter((v) => (rule === 'countAbove' ? v > f.choose.target : v < f.choose.target)).length;
+        assert.equal(answerAt(item, 0), hit, label);
+        assert.ok(hit >= 1 && hit < values.length, label);
+      } else if (rule === 'same') {
+        // 계산 결과가 같은 두 식 찾기: 같은 값은 꼭 한 쌍
+        const same = pairsOf(values.map((v, i) => [v, i])).filter(([x, y]) => x[0] === y[0]);
+        assert.equal(same.length, 1, label);
+        assert.deepEqual(f.choose.pairsShown[item.choice.answer].slice().sort(), [same[0][0][1], same[0][1][1]].sort(), label);
+        assert.equal(f.choose.pairsShown.filter((p) => values[p[0]] === values[p[1]]).length, 1, label);
+      } else assert.fail('모르는 고르기 규칙 ' + rule + ': ' + label);
+      tally('choose:' + rule);
     }
     if (f.range) {
-      let largest = -1;
-      for (let x = 100; x <= 999; x += 1) if (f.range === 'a-x>c' ? f.a - x > f.c : f.a + x < f.c) largest = x;
-      assert.equal(item.inputs[0].answer, largest, label);
-      assert.ok(largest >= 100, label); tally('range');
+      const holds = (x) => { const m = f.range.ineq.replace(/x/g, String(x)).match(/^(.+)([<>])(.+)$/); return m[2] === '<' ? evaluate(m[1]) < evaluate(m[3]) : evaluate(m[1]) > evaluate(m[3]); };
+      const ok = []; for (let x = f.range.lo; x <= f.range.hi; x += 1) if (holds(x)) ok.push(x);
+      assert.ok(ok.length >= 1, label);
+      assert.equal(ok[ok.length - 1] - ok[0] + 1, ok.length, '끊긴 범위: ' + label);
+      assert.equal(answerAt(item, 0), f.range.want === 'min' ? ok[0] : ok[ok.length - 1], label);
+      // 구하는 쪽 끝이 탐색 범위의 끝과 같으면 조건이 답을 정한 것이 아니다.
+      assert.notEqual(answerAt(item, 0), f.range.want === 'min' ? f.range.lo : f.range.hi, '범위 끝에 걸린 답: ' + label);
+      tally('range');
+    }
+    if (f.digit) {
+      const holds = (x) => { const parts = f.digit.template.replace(/□/g, String(x)).split(/([<>])/); for (let i = 1; i < parts.length; i += 2) { const l = evaluate(parts[i - 1]), r = evaluate(parts[i + 1]); if (!(parts[i] === '<' ? l < r : l > r)) return false; } return true; };
+      const ok = []; for (let x = f.digit.lo; x <= f.digit.hi; x += 1) if (holds(x)) ok.push(x);
+      assert.ok(ok.length >= 1 && ok.length <= f.digit.hi - f.digit.lo, label);
+      if (f.digit.ask === 'count') assert.equal(answerAt(item, 0), ok.length, label);
+      else if (f.digit.ask === 'max') assert.equal(answerAt(item, 0), ok[ok.length - 1], label);
+      else if (f.digit.ask === 'min') assert.equal(answerAt(item, 0), ok[0], label);
+      else assert.fail('digit.ask 가 없다: ' + label);
+      tally('digit');
+    }
+    if (f.cardSpec) {
+      const all = threeDigit(f.cardSpec.digits), big = all[all.length - 1], small = all[0];
+      assert.equal(new Set(f.cardSpec.digits).size, f.cardSpec.digits.length, label);
+      const want = { 'max+min': [big + small], 'max-min': [big - small], 'max+second': [big + all[all.length - 2]], 'max-second': [big - all[all.length - 2]], both: [big + small, big - small] }[f.cardSpec.which];
+      want.forEach((v, i) => assert.equal(answerAt(item, i), v, label));
+      tally('cards');
+    }
+    if (f.cardCond) {
+      const all = threeDigit(f.cardCond.digits);
+      const low = all.filter((v) => v % 10 === f.cardCond.onesIs)[0], high = all.filter((v) => Math.trunc(v / 10) % 10 === f.cardCond.tensIs).pop();
+      assert.equal(answerAt(item, 0), Math.abs(high - low), label); assert.ok(high !== low, label); tally('cardCond');
+    }
+    if (f.zeroTens) {
+      const all = threeDigit(f.zeroTens).filter((v) => Math.trunc(v / 10) % 10 === 0);
+      assert.ok(all.length >= 3, label);
+      assert.equal(answerAt(item, 0), all[all.length - 1] - all[1], label); tally('zeroTens');
+    }
+    if (f.placeDigits) {
+      const all = Array.from({ length: 900 }, (_, i) => i + 100);
+      const big = all.filter((v) => Math.trunc(v / 100) === f.placeDigits[0]).pop(), small = all.filter((v) => Math.trunc(v / 10) % 10 === f.placeDigits[1])[0];
+      assert.equal(answerAt(item, 0), big - small, label); assert.ok(big > small, label); tally('place');
+    }
+    if (f.compose) {
+      const [x, y] = f.compose.map(([h, t, o]) => h * 100 + t * 10 + o);
+      assert.equal(answerAt(item, 0), calc(x, f.composeOp, y), label); assert.ok(calc(x, f.composeOp, y) > 0, label);
+      assert.ok(f.compose.every(([, t, o]) => t >= 10 || o >= 10), '그냥 자릿값 읽기다: ' + label); tally('compose');
+    }
+    if (f.tableRank) {
+      const sorted = f.tableRank.values.slice().sort((x, y) => y - x);
+      assert.equal(new Set(sorted).size, sorted.length, label);
+      assert.equal(answerAt(item, 0), sorted[f.tableRank.a] - sorted[f.tableRank.b], label); tally('tableRank');
+    }
+    if (f.sums) {
+      const [p, q] = f.sums.map((row) => row.reduce((s, v) => s + v, 0));
+      assert.notEqual(p, q, label);
+      assert.equal(answerAt(item, item.inputs.length - 1), Math.abs(p - q), label); tally('sums');
+    }
+    if (f.pairs) {
+      const all = pairsOf(f.pairs.numbers), want = f.pairs.want;
+      assert.equal(new Set(f.pairs.numbers).size, f.pairs.numbers.length, label);
+      if (want === 'diff') {
+        const hits = all.filter(([x, y]) => Math.abs(x - y) === f.pairs.target);
+        assert.equal(hits.length, 1, label);
+        assert.deepEqual([answerAt(item, 0), answerAt(item, 1)], [Math.max(...hits[0]), Math.min(...hits[0])], label);
+      } else if (want === 'sum') {
+        const hits = all.filter(([x, y]) => x + y === f.pairs.target);
+        assert.equal(hits.length, 1, label);
+        assert.deepEqual([answerAt(item, 0), answerAt(item, 1)].sort(), hits[0].slice().sort(), label);
+        assert.equal(item.unordered, true, label);
+        // 일의 자리만 보고는 못 고르게, 일의 자리 합이 같은 짝이 하나 더 있다.
+        assert.ok(all.filter(([x, y]) => (x + y) % 10 === f.pairs.target % 10).length >= 2, '일의 자리만 보면 풀린다: ' + label);
+      } else if (want === 'maxDiff') assert.equal(answerAt(item, 0), Math.max(...f.pairs.numbers) - Math.min(...f.pairs.numbers), label);
+      else if (want === 'maxSum') { const s = f.pairs.numbers.slice().sort((x, y) => y - x); assert.equal(answerAt(item, 0), s[0] + s[1], label); }
+      else if (want === 'near') {
+        const gaps = all.map(([x, y]) => Math.abs(x + y - f.pairs.target)).sort((x, y) => x - y);
+        assert.ok(gaps[1] > gaps[0], label);
+        assert.equal(Math.abs(answerAt(item, 0) - f.pairs.target), gaps[0], label);
+        assert.ok(all.some(([x, y]) => x + y === answerAt(item, 0)), label);
+      } else assert.fail('모르는 두 수 고르기 ' + want);
+      tally('pairs:' + want);
+    }
+    if (f.ends3) { const s = f.ends3.slice().sort((x, y) => x - y); assert.equal(answerAt(item, 0), s[2] + s[0] - s[1], label); tally('ends3'); }
+    if (f.ends) { assert.equal(new Set(f.ends).size, f.ends.length, label); tally('ends'); }
+    if (f.sumDiff) { const [sum, known] = f.sumDiff, other = sum - known; assert.ok(other >= 100 && other <= 999 && other !== known, label); assert.equal(answerAt(item, 0), Math.abs(known - other), label); tally('sumDiff'); }
+    if (f.torn) {
+      const cands = [f.torn.known + f.torn.diff, f.torn.known - f.torn.diff].filter((v) => v >= 100 && v <= 999 && Math.trunc(v / 100) === f.torn.hundreds);
+      assert.equal(cands.length, 1, label);
+      assert.equal(answerAt(item, 0), f.torn.known + cands[0], label); tally('torn');
     }
     if (f.estimate) {
-      const round = (n) => Math.round(n / 100) * 100;
-      for (const n of [f.a, f.b]) assert.ok(Math.abs(n - round(n)) >= 2 && Math.abs(n - round(n)) <= 12, '몇백에 가깝지 않다: ' + label);
-      const right = calc(round(f.a), f.estimate, round(f.b));
+      const [a, op, b] = f.estimate;
+      for (const n of [a, b]) assert.ok(n >= 100 && Math.abs(n - hundred(n)) >= 1 && Math.abs(n - hundred(n)) <= 20, '몇백에 가깝지 않다: ' + label);
+      const right = calc(hundred(a), op, hundred(b));
       assert.ok(right > 0, label);
       if (f.options) { assert.equal(f.options.filter((v) => v === right).length, 1, label); assert.equal(f.options[item.choice.answer], right, label); assert.ok(f.options.every((v) => v > 0), label); }
-      else assert.equal(item.inputs[item.inputs.length - 1].answer, right, label);
-      if (item.inputs && item.inputs.length === 3) assert.deepEqual([item.inputs[0].answer, item.inputs[1].answer], [round(f.a), round(f.b)], label);
+      else if (item.inputs.length === 3) assert.deepEqual(item.inputs.map((i) => i.answer), [hundred(a), hundred(b), right], label);
+      else assert.equal(answerAt(item, 0), right, label);
       tally('estimate');
+    }
+    if (f.estimateExpr) {
+      const [a, , b] = f.estimateExpr;
+      const hits = f.options.filter(([x, y]) => x === hundred(a) && y === hundred(b));
+      assert.equal(hits.length, 1, label);
+      assert.deepEqual(f.options[item.choice.answer], [hundred(a), hundred(b)], label); tally('estimateExpr');
+    }
+    if (f.judge) {
+      // 넉넉한가를 묻는 문항: need ≤ have 인지를 실제 값으로 따진다. 맞는 보기는 하나다.
+      const need = evaluate(f.judge.need), have = evaluate(f.judge.have), can = need <= have;
+      const right = f.judge.options.filter((o) => o[0] === f.judge.shown && o[1] === can);
+      assert.equal(right.length, 1, label);
+      assert.deepEqual(Array.from(f.judge.options[item.choice.answer]), Array.from(right[0]), label);
+      assert.ok(Math.abs(need - have) >= 5, '아슬아슬한 판단: ' + label); tally('judge');
     }
     if (f.budget) {
       const affordable = pairsOf(f.prices).filter(([x, y]) => x + y <= f.budget);
       assert.equal(affordable.length, 1, label);
       assert.ok(pairsOf(f.prices).every(([x, y]) => Math.abs(x + y - f.budget) >= 20), '1000원에 너무 가까운 짝: ' + label);
-      const chosen = f.pairs[item.choice.answer];
+      const chosen = f.pairs2[item.choice.answer];
       assert.equal(chosen[0] + chosen[1] <= f.budget, true, label);
-      assert.equal(f.pairs.filter(([x, y]) => x + y <= f.budget).length, 1, label); tally('budget');
+      assert.equal(f.pairs2.filter(([x, y]) => x + y <= f.budget).length, 1, label); tally('budget');
     }
     if (f.inverse) {
-      const x = item.inputs[0].answer;
-      const holds = { 'x+b=a': x + f.b === f.a, 'b+x=a': f.b + x === f.a, 'a-x=c': f.a - x === f.c, 'x-b=c': x - f.b === f.c }[f.inverse];
-      assert.equal(holds, true, label); tally('inverse');
+      const [form, a, b, c] = f.inverse, x = answerAt(item, 0);
+      assert.equal({ 'x+b=a': x + b === a, 'b+x=a': b + x === a, 'a-x=c': a - x === c, 'x-b=c': x - b === c }[form], true, label); tally('inverse');
     }
-    if (f.wrong === 'sub-for-add') { assert.equal(f.x - f.b, f.c, label); assert.equal(item.inputs[0].answer, f.x + f.b, label); tally('wrong'); }
-    if (f.wrong === 'add-for-sub') { assert.equal(f.x + f.b, f.c, label); assert.equal(item.inputs[0].answer, f.x - f.b, label); assert.ok(f.x - f.b > 0, label); tally('wrong'); }
-    if (f.two) { assert.equal(item.inputs[0].answer, f.total - f.a - f.b, label); assert.ok(f.rest >= 100 && f.total <= 999, label); tally('two'); }
-    if (f.target) {
-      const hits = pairsOf(f.four).filter(([x, y]) => x + y === f.target);
-      assert.equal(hits.length, 1, label);
-      const chosen = f.pairs[item.choice.answer];
-      assert.equal(chosen[0] + chosen[1], f.target, label);
-      assert.equal(f.pairs.filter(([x, y]) => x + y === f.target).length, 1, label); tally('pair');
-    }
-    if (f.three && Array.isArray(f.three) && typeof f.three[1] === 'string') {
-      const [a, , b, , c] = f.three;
-      assert.equal(item.inputs[0].answer, a + b - c, label); assert.ok(a + b - c > 0, label); tally('three');
+    if (f.claimed) {
+      const good = f.claimed.map(([text, said]) => evaluate(text) === said);
+      assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
+      assert.equal(item.choice.answer, good.indexOf(f.claimedWant), label); tally('claimed');
     }
   });
-  for (const name of ['compare', 'best', 'range', 'estimate', 'budget', 'inverse', 'wrong', 'two', 'pair', 'three']) assert.ok(counts[name] > 100, name + ' 문항이 검사되지 않았다');
+  for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
+  assert.ok(Object.keys(counts).length >= 12, '검사한 갈래: ' + Object.keys(counts).join(', '));
 });
 
 test('토씨 붙이기', () => {
   const { josa, name } = B.kit;
   assert.deepEqual([josa(352, '을/를'), josa(350, '을/를'), josa(201, '을/를'), josa(476, '이/가'), josa(209, '은/는'), josa(390, '은/는')], ['352를', '350을', '201을', '476이', '209는', '390은']);
   assert.deepEqual([josa(300, '으로/로'), josa(201, '으로/로'), josa(203, '으로/로'), josa('물감', '과/와'), josa('가위', '과/와')], ['300으로', '201로', '203으로', '물감과', '가위와']);
-  assert.deepEqual([name('서연', '은/는'), name('지우', '은/는'), name('서연', '이/가'), name('지우', '이/가')], ['서연이는', '지우는', '서연이가', '지우가']);
+  assert.deepEqual([name('서연', '은/는'), name('지우', '은/는'), name('서연', '이/가'), name('지우', '이/가'), name('서연', '과/와'), name('지우', '과/와')], ['서연이는', '지우는', '서연이가', '지우가', '서연이와', '지우와']);
 });

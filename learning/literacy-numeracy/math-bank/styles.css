@@ -23,7 +23,7 @@ button, input, select { font: inherit; color: inherit; }
 .mb-group { counter-increment: group; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
 .mb-group::before { content: counter(group); width: 30px; height: 30px; border-radius: 50%; background: var(--brand-soft); color: var(--brand-dark); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; }
 .mb-group-title { font-weight: 600; }
-.mb-levels { display: flex; gap: 8px; }
+.mb-levels { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .mb-level { min-height: 44px; min-width: 76px; padding: 6px 14px; border-radius: 10px; border: 1px solid var(--brand); background: var(--paper); color: var(--brand-dark); font-weight: 600; cursor: pointer; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.25; }
 .mb-level:hover { background: var(--brand-soft); }
 .mb-level small { font-weight: 500; font-size: 0.72rem; color: var(--muted); }
@@ -35,7 +35,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* 푸는 화면 */
 .mb-round-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-.mb-round-title { font-weight: 700; font-size: 1.05rem; margin: 0; flex: 1; min-width: 12em; }
+.mb-round-title { font-weight: 700; font-size: 1.05rem; margin: 0 0 12px; }
 .mb-chip { display: inline-block; padding: 1px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-dark); font-size: 0.82rem; font-weight: 600; margin-left: 6px; vertical-align: 2px; }
 .mb-chip.is-hard { background: #f1eafe; color: #6d28d9; }
 .mb-plain { min-height: 44px; padding: 8px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; }
@@ -68,6 +68,8 @@ button, input, select { font: inherit; color: inherit; }
 .mb-lines { display: grid; gap: 8px; font-size: 1.1rem; }
 .mb-lines .mb-expr { font-size: 1.2rem; }
 .mb-tag { display: inline-block; min-width: 4.6em; color: var(--muted); font-size: 0.92rem; }
+.mb-tag.mb-tag-short { min-width: 2em; color: var(--ink); font-size: 1rem; }
+.mb-lines > div { word-break: keep-all; }
 .mb-versus { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .mb-ring { width: 1.9em; height: 1.9em; border: 2px solid var(--ink); border-radius: 50%; display: inline-block; }
 .mb-numbers, .mb-cards, .mb-prices { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -77,6 +79,40 @@ button, input, select { font: inherit; color: inherit; }
 .mb-prices { gap: 6px 22px; padding: 8px 18px; border-left: 4px solid var(--brand); background: var(--canvas); border-radius: 4px 10px 10px 4px; }
 .mb-prices span { display: grid; justify-items: center; font-variant-numeric: tabular-nums; }
 .mb-prices b { font-weight: 600; }
+
+/* 받아올림한 수를 적는 줄 */
+.mb-row.mb-above { font-size: 0.62em; line-height: 1.5; }
+.mb-row.mb-above .mb-sign { width: 2.1em; }
+.mb-row.mb-above .mb-cell { width: 1.855em; }
+.mb-row.mb-above .mb-box { font-size: 1em; min-width: 1.3em; height: 1.3em; border-width: 1.5px; }
+
+/* 차례로 계산하는 칸 */
+.mb-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; font-variant-numeric: tabular-nums; }
+.mb-node { min-width: 3.4em; padding: 6px 10px; border: 2px solid var(--ink); border-radius: 8px; text-align: center; font-size: 1.2rem; font-weight: 600; background: #fff; }
+.mb-node .mb-box { border: 0; font-size: 1em; min-width: 1.2em; }
+.mb-step { position: relative; min-width: 4.4em; padding: 0 8px 12px; text-align: center; font-size: 1.05rem; color: var(--brand-dark); font-weight: 600; }
+.mb-step::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: 6px; border-top: 2px solid var(--brand-dark); }
+.mb-step::before { content: ""; position: absolute; right: 5px; bottom: 2px; border: 5px solid transparent; border-left-color: var(--brand-dark); border-right-width: 0; }
+
+/* 표 */
+.mb-table-wrap { max-width: 100%; overflow-x: auto; }
+.mb-table { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.mb-table th, .mb-table td { border: 1px solid #8a96a3; padding: 6px 12px; text-align: center; font-size: 1.02rem; white-space: nowrap; }
+.mb-table th { background: var(--brand-soft); font-weight: 600; }
+.mb-table td:first-child { background: var(--canvas); font-weight: 600; }
+
+/* 길 그림, 겹쳐 붙인 띠 */
+.mb-route, .mb-tapes, .mb-bar, .mb-shapes { max-width: 100%; height: auto; }
+.mb-road { stroke: #5b6770; stroke-width: 1.1; }
+.mb-road-label { font-size: 7.6px; fill: var(--brand-dark); font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 2.4px; }
+.mb-place { fill: var(--ink); }
+.mb-place-name { font-size: 7.6px; fill: var(--ink); font-weight: 600; }
+.mb-tape-a { fill: #ffd98a; stroke: #a86a00; stroke-width: 0.8; }
+.mb-tape-b { fill: #a9d4ff; stroke: #1d4ed8; stroke-width: 0.8; opacity: 0.9; }
+.mb-brace { fill: none; stroke: var(--ink); stroke-width: 0.9; }
+.mb-bar-label { font-size: 8.4px; fill: var(--ink); font-weight: 700; }
+.mb-shape { fill: #fffdf5; stroke: var(--ink); stroke-width: 1.1; }
+.mb-shape-text { font-size: 8.6px; fill: var(--ink); font-weight: 700; }
 
 /* 수 모형 */
 .mb-blocks { margin: 0; display: grid; gap: 4px; max-width: 100%; }
@@ -93,6 +129,8 @@ button, input, select { font: inherit; color: inherit; }
 .mb-field.is-short input { width: 3.4em; }
 .mb-choices { display: flex; flex-wrap: wrap; gap: 8px; }
 .mb-choice { min-height: 44px; min-width: 56px; padding: 6px 16px; border-radius: 10px; border: 2px solid var(--brand); background: var(--paper); color: var(--brand-dark); font-weight: 600; cursor: pointer; font-size: 1.1rem; }
+.mb-choices.is-long { flex-direction: column; align-items: stretch; }
+.mb-choices.is-long .mb-choice { text-align: left; font-size: 1rem; font-weight: 500; word-break: keep-all; }
 .mb-choice:disabled { border-color: var(--line); color: var(--muted); cursor: default; }
 .mb-choice:hover:not(:disabled) { border-color: var(--brand); background: var(--brand-soft); }
 .mb-choice.is-picked { border-color: var(--wrong); background: var(--wrong-soft); color: var(--wrong); }
@@ -114,4 +152,7 @@ button, input, select { font: inherit; color: inherit; }
   .mb-group { grid-template-columns: auto 1fr; }
   .mb-levels { grid-column: 1 / -1; }
   .mb-level { flex: 1; }
+  .mb-table th, .mb-table td { padding: 5px 8px; font-size: 0.98rem; }
+  .mb-node { min-width: 3em; padding: 5px 7px; font-size: 1.1rem; }
+  .mb-step { min-width: 3.9em; padding: 0 5px 12px; }
 }

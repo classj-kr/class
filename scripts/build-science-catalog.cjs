@@ -12,14 +12,15 @@ const emptyMessage = populated => `<p class="catalog-empty"${populated?' hidden'
 function render(map) {
   const placements = classification.classify(map);
   const entries = Object.entries(map);
-  function card(slug) {
-    const app=map[slug], p=placements[slug];
+  const routes = classification.catalogEntries(placements);
+  function card(slug, p=placements[slug]) {
+    const app=map[slug], scope=app.courseContexts?.[p.context]||app;
     const more = (p.related||[]).filter(r=>r.course!==p.area||r.area!==p.category);
     const detail = more.length ? `<small class="course-label">함께 연결: ${more.map(r=>esc(r.course)+' · '+esc(r.area)).join(' / ')}</small>` : '';
-    return `<a class="level-entry available" data-level="${app.level}" data-school="${p.school}" data-grades="${app.grades.join(' ')}" data-standards="${app.codes.join(' ')}" href="${slug}/"><b>${app.level==='high'?(p.school==='high-common'?'공통':'선택'):app.grade}</b><span>${esc(app.title)}${detail}</span></a>`;
+    return `<a class="level-entry available" data-level="${app.level}" data-school="${p.school}" data-grades="${scope.grades.join(' ')}" data-standards="${scope.codes.join(' ')}" href="${slug}/${p.context?'?school='+p.context:''}"><b>${app.level==='high'?(p.school==='high-common'?'공통':'선택'):app.grade}</b><span>${esc(app.title)}${detail}</span></a>`;
   }
   function cell(slugs, school) {
-    return `<div class="level-cell ${school}" data-school="${school}"><span class="cell-label" aria-hidden="true">${schoolLabels[school]}</span>\n${slugs.map(card).join('\n')}${emptyMessage(slugs.length)}</div>`;
+    return `<div class="level-cell ${school}" data-school="${school}"><span class="cell-label" aria-hidden="true">${schoolLabels[school]}</span>\n${slugs.map(slug=>card(slug)).join('\n')}${emptyMessage(slugs.length)}</div>`;
   }
   const basic = classification.foundation.map(area=>{
     const rows=area.categories.map(category=>{
@@ -30,12 +31,12 @@ function render(map) {
   }).join('\n');
   const high = ['high-common','high-elective'].map(school=>{
     const sections=classification.courses.filter(course=>course.school===school).map(course=>{
-      const slugs=entries.filter(([slug])=>placements[slug].section===course.prefix).map(([slug])=>slug);
+      const slugs=routes.filter(p=>p.section===course.prefix);
       const domains=[...new Map(Object.values(classification.standards).filter(s=>s.code.startsWith(course.prefix)).map(s=>[s.domain,s.domainLine])).entries()].sort((a,b)=>a[1]-b[1]).map(([name])=>name);
       if (!domains.length) throw Error('No official domains for '+course.title);
       const rows=domains.map(category=>{
-        const selected=slugs.filter(slug=>placements[slug].category===category);
-        return `<article class="topic-row" data-category="${esc(category)}"><h4>${esc(category)}</h4><div class="course-apps">${selected.map(card).join('\n')}${emptyMessage(selected.length)}</div></article>`;
+        const selected=slugs.filter(p=>p.category===category);
+        return `<article class="topic-row" data-category="${esc(category)}"><h4>${esc(category)}</h4><div class="course-apps">${selected.map(p=>card(p.slug,p)).join('\n')}${emptyMessage(selected.length)}</div></article>`;
       }).filter(Boolean).join('\n');
       return `<section class="subject-section course-section ${course.theme}" data-area="${course.title}" id="course-${course.prefix}"><header class="subject-heading"><h3>${course.title}</h3><span class="course-kind">${course.kind}</span></header><div class="topic-list">${rows}</div></section>`;
     }).filter(Boolean).join('\n');
@@ -66,5 +67,6 @@ function build({check=false,map}={}) {
 module.exports={build,render};
 if(require.main===module) {
   const placements=build({check:process.argv.includes('--check')});
-  console.log(JSON.stringify({apps:Object.keys(placements).length,schools:Object.fromEntries(Object.entries(schoolLabels).map(([id,label])=>[label,Object.values(placements).filter(p=>p.school===id).length])),check:process.argv.includes('--check')}));
+  const entries=classification.catalogEntries(placements);
+  console.log(JSON.stringify({apps:Object.keys(placements).length,catalogEntries:entries.length,schools:Object.fromEntries(Object.entries(schoolLabels).map(([id,label])=>[label,entries.filter(p=>p.school===id).length])),check:process.argv.includes('--check')}));
 }

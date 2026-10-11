@@ -402,6 +402,26 @@
       "slug": "ride-acceleration"
     },
     {
+      "id": "ride-acceleration#q5",
+      "sha256": "4fefca124f3fcc7900687ea7ee6cd17d506ce9d4586dbe5af35c37a90294e2b2",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q6",
+      "sha256": "318a786a557bb717895c25defc4b762f0ba8909ff5879796d23cf57a272256bb",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q7",
+      "sha256": "0e3240acda9b96d87be06eb59e1b228432cdc3c7f4356ec745cf897a0b0f77f2",
+      "slug": "ride-acceleration"
+    },
+    {
+      "id": "ride-acceleration#q8",
+      "sha256": "ac9648d189da0b719d083dc621d635ca137fc45a948e62acf01f63011d1c1db4",
+      "slug": "ride-acceleration"
+    },
+    {
       "id": "dna-replication#q1",
       "sha256": "def2db8c789fee94fb4f4a04f574110c1e27e994ff6fde5f4308b375b62e0ded",
       "slug": "dna-replication"
@@ -722,26 +742,6 @@
       "slug": "organelle-builder"
     },
     {
-      "id": "energy-budget#q1",
-      "sha256": "0e087b36a5ed764630df99e2d82abd5a4a5940fcc331731e7517addbef194199",
-      "slug": "energy-budget"
-    },
-    {
-      "id": "energy-budget#q2",
-      "sha256": "e0ec34adb045d4b16a9d6bd5be4cea0ee66bf6fa3a2eadeb3b2336abc5b32f72",
-      "slug": "energy-budget"
-    },
-    {
-      "id": "energy-budget#q3",
-      "sha256": "aae14752b853dc999ebdeffdb63dcd237f7d47d34944d7d72db069e6efed9620",
-      "slug": "energy-budget"
-    },
-    {
-      "id": "energy-budget#q4",
-      "sha256": "948a49b84a0100a74f84a131c16a9a800dc544ab32a2c2b8a981a18c45230646",
-      "slug": "energy-budget"
-    },
-    {
       "id": "hydride-boiling#q1",
       "sha256": "71ea3c8e2ecae6b4c359650722b4291607b8ae401c665a620a09b3fcd677da0e",
       "slug": "hydride-boiling"
@@ -981,11 +981,19 @@
     },
     {
       "id": "ride-acceleration@double",
-      "sha256": "e7098cb84bedde803b5a61780f7d5ec961bd23bb70388944866d9496663e325c"
+      "sha256": "928ed7ec78d9e34af8a0799f3b5a01e6cf9c6f3aad4e5d4d9c52fd2fd9ff31c0"
     },
     {
       "id": "ride-acceleration@descending",
       "sha256": "d5db47c2efc4372cf702dfe88a856d01a3c87f3715bea7b39b19580344f2b258"
+    },
+    {
+      "id": "ride-acceleration@swing-support",
+      "sha256": "3cc33931396249e5dd5f152ebf4de32d6b6691ea0c8f8695648fc5e6dd1439dc"
+    },
+    {
+      "id": "ride-acceleration@mount-sign",
+      "sha256": "56aa213d481386538d61a302700580d38c18fadba479128b272d28942f5fc4e6"
     },
     {
       "id": "dna-replication@new-template",
@@ -1116,14 +1124,6 @@
       "sha256": "c63925af3b984a3fd81f742e38a16d91e96ec9a073033da8321bbeece21186d7"
     },
     {
-      "id": "energy-budget@label",
-      "sha256": "779d1bee8f158bdcfa1327ae7782df7b42aafc3c5682cbf0d803bcddb56ab332"
-    },
-    {
-      "id": "energy-budget@replace",
-      "sha256": "8924d3efe1f12f1b4cdb353858f616ffc8f72c62beac86ac080d5c10415724e3"
-    },
-    {
       "id": "hydride-boiling@ranking",
       "sha256": "aa44b8d098e9329e164afff1d4b5a2dc40fbc89949007deab0de398d05091f5e"
     },
@@ -1185,6 +1185,7 @@
           "part": "성질에서 원소 기호를 찾는 17장 카드와 현대 주기율표 비교: 다른 카드 구성이므로 현재 19장 활동과 구별"
         }
       ],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "764c91a83f8bf462",
@@ -1213,6 +1214,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "교과서의 역사적 배양액 실험을 정성적으로 재현한다. 우유 100 mL·끓인 뒤 4일 관찰의 실제 재연, 미생물 배양 속도와 냄새 측정은 제공하지 않는다."
     },
@@ -1248,6 +1250,7 @@
           "part": "백열전구·볼록 렌즈의 합성 및 고정된 두 번째 프리즘 변형 절차"
         }
       ],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "764c91a83f8bf462",
@@ -1278,6 +1281,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "6ed679a59c21c7a0",
@@ -1304,6 +1308,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "제작 절차를 재현한 단면 모형이다. 진동은 느리게 확대하며 실제 종이컵의 공명·효율·재료별 음량은 계산하지 않는다. 듣기 기능은 선택한 주파수의 참고음이며 제작품의 녹음이 아니다."
     },
@@ -1321,6 +1326,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "10 kHz 교류와 이상적인 결합 계수를 사용한 모형이다. 발광 여부는 모형의 문턱 전압으로 판단한다. 실제 충전 회로의 공진·정류·충전 제어는 구현하지 않으며 직류 전환 순간의 과도 현상도 별도이다."
     },
@@ -1336,6 +1342,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "자석의 감속을 속도에 비례하는 저항력으로 근사한다. 형상·틈·자석 세기에 따른 실제 낙하 시간은 예측하지 않는다. 알루미늄 조각은 외부 자기장이 없는 비교 물체로 취급한다."
     },
@@ -1351,6 +1358,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "교과서의 회로 제작 목적에 맞춘 기능 모형이다. 전압 이득 10과 전원에 따른 출력 제한을 가정하며 실제 C1815 바이어스·부품값으로 계산한 회로 시뮬레이터는 아니다."
     },
@@ -1368,6 +1376,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "수직 입사와 막 굴절률 1.33의 두 광선 근사다. 배수 과정은 가정한 두께 변화이며 실제 시간별 두께나 정확한 백색광 색상을 예측하지 않는다."
     },
@@ -1385,6 +1394,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "A·B는 서로 다른 방향의 선편광, C는 무편광, D는 원편광인 이상 광원이다. 실제 제품별 디스플레이 측정값이 아니다. 한 장의 편광판과 세기만으로 무편광과 원편광을 구별할 수 없음을 포함한다."
     },
@@ -1402,6 +1412,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "단색 전자의 원거리 확률 분포를 사용하는 모형이다. 검출 전 특정 궤적을 그리지 않는다. 경로 측정은 완전한 결어긋남으로 단순화하며 수치 눈금은 실제 장치 길이가 아니다."
     },
@@ -1419,6 +1430,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "25 ℃, 101.3 kPa의 이상 기체 모형이며 수증기압 3.17 kPa를 사용한다. 기체의 물에 대한 용해·누출·실제 기체 오차는 구현하지 않는다. 특히 이산화 탄소의 실제 수상 치환에서는 용해 영향을 별도로 고려해야 한다."
     },
@@ -1436,6 +1448,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "1기압 묽은 비전해질 용액의 근사다. 끓는점 오름 상수 0.512, 어는점 내림 상수 1.86 K·kg/mol을 사용한다. 과냉각은 생략하고 상변화가 진행되며 남은 용액의 농도가 증가하는 방향을 반영한다."
     },
@@ -1453,6 +1466,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "같은 시작·끝 상태의 이상 열량계 모형이다. 용해·중화 엔탈피 −44.5·−57.3 kJ/mol과 용액 비열 4.2 J/(g·℃)를 가정하며 열손실·희석열·열량계 열용량은 생략한다."
     },
@@ -1470,6 +1484,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "각 10 mL, 초기 pH 7의 이상적인 인산 완충계 한 평형을 사용한다. pKa 7.21, 총농도 0.1 M, 한 방울 0.05 mL로 가정한다. 실제 완충액의 조성·활동도·다단 해리는 생략한다."
     },
@@ -1485,6 +1500,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "25 ℃의 가상 시료에서 물의 자동 이온화까지 포함하여 전하 균형을 계산한다. 활동도와 실제 전극 오차는 생략한다. 제공된 교과서의 HCN 상수 표기 Kb는 문맥상 Ka로 해석하고 6.2×10⁻¹⁰을 사용했다."
     },
@@ -1502,6 +1518,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "같은 초기 조건에서 호흡의 방향과 대조군 역할을 비교하는 정성 모형이다. 표시한 센서 값·변화율·잉크 이동은 측정 자료가 아니다. 호흡계는 온도·압력 일정, 호흡 지수 1, CO₂ 완전 흡수를 가정한다."
     },
@@ -1517,6 +1534,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "집중 열용량 모형이다. 열전도율은 비교용 가정값(솜 0.04, 종이 0.10, 마른 모래 0.30 W/(m·K))이며 교과서의 실측 결과가 아니다. 재료의 밀도·습도·충전 방식과 자연 대류 변화는 생략한다."
     },
@@ -1532,6 +1550,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "공기가 정지한 1차원 음원 이동 모형, 음속 343 m/s를 사용한다. 수신기는 정지한다. 상대적인 파면 간격은 느리게 표시하며 실제 음파 진동을 화면 재생 속도와 같게 표시하지 않는다."
     },
@@ -1549,8 +1568,80 @@
         ]
       },
       "variantSources": [],
-      "assessmentSources": [],
-      "boundary": "실제 휴대전화 센서 수집이나 현장 놀이기구 탑승은 포함하지 않는 이상 운동 모형이다. 센서 크기는 수평 원운동에서 √(g²+a²), 승강기에서 |g+a_z|이며 회전·기울기·진동 오차는 생략한다."
+      "additionalSources": [
+        {
+          "id": "e7caa9f0f741ad37",
+          "pages": [
+            17
+          ],
+          "part": "그네·시소·미끄럼틀의 부착 위치·측정 방향과 시간별 가속도 비교"
+        }
+      ],
+      "assessmentSources": [
+        {
+          "id": "a97d3120332ca071",
+          "pages": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "part": "04번 경사면의 힘 분해, 11~15번 원운동·진자의 가속도와 해설"
+        }
+      ],
+      "defaultContext": "high-common",
+      "courseContexts": {
+        "high-common": {
+          "subjects": [
+            "과학탐구실험2"
+          ],
+          "codes": [
+            "10과탐2-01-01",
+            "10과탐2-01-02"
+          ],
+          "grades": [
+            "고1"
+          ],
+          "defaultMotion": "circle",
+          "questionNumbers": [
+            1,
+            3,
+            4,
+            8
+          ],
+          "followupIds": [
+            "ride-acceleration@descending",
+            "ride-acceleration@mount-sign"
+          ],
+          "intro": "운동 모습과 가상 센서값을 비교하세요. 센서의 방향을 바꾸고, 원시값과 중력 보정값이 어떻게 다른지 확인해 보세요."
+        },
+        "high-elective": {
+          "subjects": [
+            "역학과 에너지"
+          ],
+          "codes": [
+            "12역학01-01",
+            "12역학01-03"
+          ],
+          "grades": [
+            "고2",
+            "고3"
+          ],
+          "defaultMotion": "swing",
+          "questionNumbers": [
+            2,
+            5,
+            6,
+            7
+          ],
+          "followupIds": [
+            "ride-acceleration@double",
+            "ride-acceleration@swing-support"
+          ],
+          "intro": "그네·시소·미끄럼틀의 운동을 가상 센서로 측정하세요. 부착 위치·방향과 운동 조건을 바꾸고, 힘과 가속도의 관계로 그래프를 해석해 보세요."
+        }
+      },
+      "boundary": "계산한 가상 센서값이며 실제 기기에서 수집한 자료가 아닙니다. 그네는 마찰 없는 진자, 시소는 설정한 각도·주기로 구동하는 막대, 미끄럼틀은 마찰 없는 경사면입니다. 경사면 끝의 충돌은 제외합니다. 원시 센서는 지지 효과를 포함하고, 중력 보정값은 장치 축으로 읽은 운동 가속도입니다. 기기 잡음·진동은 생략합니다."
     },
     {
       "slug": "dna-replication",
@@ -1566,6 +1657,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "35ddba87be4c287d",
@@ -1594,6 +1686,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "한 유전자의 짧은 서열과 표준 유전부호를 사용하는 모형이다. RNA 가공·번역 후 변형은 생략한다. 무세포 반복 RNA는 개시 조건을 달리한 역사적 실험 모형이며 일반 세포의 AUG 개시와 구별한다."
     },
@@ -1609,6 +1702,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "X 염색체 열성 형질 하나를 다룬 7인 가상 가계도이며 원문의 14인 가계도를 복제한 것은 아니다. 완전 침투·돌연변이 없음·성별 확률 1/2를 가정한다. 실제 개인의 건강 진단을 제공하지 않는다."
     },
@@ -1626,6 +1720,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "4ffbb14ab2d71905",
@@ -1652,6 +1747,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "A~D는 실제 식물 이름과 대응하지 않는 가상 추출액이다. 표시된 억제 폭은 비교 학습용 합성 자료이며 교과서 실측치·식품 효능·치료 효과가 아니다. 농도·확산 특성이 다른 실제 물질의 항균 효과를 억제 폭만으로 순위화할 수 없다."
     },
@@ -1673,6 +1769,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "작은 진폭의 선형 중력파 모형이다. 일반 분산식 ω²=gk tanh(kh)를 사용하며 입자 궤도는 모든 깊이에 같은 배율을 적용해 확대한다. 쇄파·반사·마찰·표면장력·스톡스 표류는 생략한다. 수조 제작과 현장 측정을 완료한 것으로 세지 않는다."
     },
@@ -1694,6 +1791,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "원문의 시약 준비·관찰 순서를 단계화한 가상 실험이며 방울 수나 반응 시간을 실측값으로 제시하지 않는다. 포도당은 열린 사슬의 알데하이드 형태를 통해 반응한다. 염기성 반응 용액의 유기 생성물은 카복실산염으로 표시한다. 실제 시약 제조·보관·폐기는 다루지 않는다."
     },
@@ -1711,6 +1809,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "계면의 막 공급과 당기는 속력은 정성 모형이며 실제 속력·수율·강도 예측이 아니다. 짧은 한 사슬의 연결 수를 세며 실제 고분자의 분자량 분포는 생략한다. 다이클로로메테인층이 물보다 아래에 있는 원문 장치를 따른다. 의약품·인공 향 합성과 실물 제작은 포함하지 않는다."
     },
@@ -1728,6 +1827,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "bd95bbf067b48aaa",
@@ -1757,6 +1857,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "05050bb38391fb02",
@@ -1786,6 +1887,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "광도는 L/L☉=(R/R☉)²(T/5772 K)⁴이다. 경계는 태양 기준 0.95–1.67 AU를 √L로 확대하는 비교 모형이며 별의 스펙트럼에 따른 경계 이동·행성 대기·구름은 계산하지 않는다. 지정한 반지름·온도 조합이 모두 주계열성이라는 뜻이 아니며 지대 안에 있다고 생명 존재를 판정하지 않는다."
     },
@@ -1803,6 +1905,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "교과서의 대칭 배치·고정·파쇄액 분리를 참고한 가상 장치다. 실제 간이 기구 제작과 시금치 분리의 재현 완료로 세지 않는다. 입자는 반지름 8·3·1 μm, 밀도차 50 kg/m³, 점도 0.002 Pa·s인 가상 구이다. 일정 회전의 낮은 레이놀즈수 침강 모형이며 실제 세포소기관의 분리 시간·순도를 뜻하지 않는다."
     },
@@ -1824,6 +1927,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "원자 연결과 결합 수를 다루는 2차원 구조 모형이다. 원자의 화면 위치는 실제 결합각·입체 구조가 아니다. 액성은 메탄올·에탄올·폼알데하이드·아세트알데하이드·폼산·아세트산에 한정한 정성 비교이며 실제 시약 혼합·냄새·맛 측정을 제공하지 않는다."
     },
@@ -1845,6 +1949,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "d5f4c581c737cd5b",
@@ -1875,6 +1980,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "d5f4c581c737cd5b",
@@ -1907,6 +2013,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "5449a6b6cb158a69",
@@ -1924,36 +2031,6 @@
       "boundary": "두 소기관의 단면과 막 위상을 조작하는 구조 모형이다. 실제 3차원 제작·영상 발표를 완료한 것으로 세지 않는다. 수소 이온 이동은 정성 비교이며 농도·막전위·ATP 생성량을 정량 계산하지 않는다. 엽록체의 내막과 타이라코이드 막은 별개의 막이다."
     },
     {
-      "slug": "energy-budget",
-      "source": {
-        "id": "fbf365923abce545",
-        "pages": [
-          59,
-          60,
-          61
-        ],
-        "printedPages": [
-          57,
-          58,
-          59
-        ]
-      },
-      "variantSources": [],
-      "assessmentSources": [
-        {
-          "id": "7da2123dab6864ac",
-          "pages": [
-            154,
-            168,
-            449,
-            452
-          ],
-          "part": "09·10번 섭취·소비 비교와 기초대사·활동대사 구별"
-        }
-      ],
-      "boundary": "활동별 계수는 미래엔 2022 교과서 59쪽의 kcal/(kg·h) 값이며 기초대사를 포함하고 소화·흡수 에너지는 제외한다. 식품 표시는 단위 환산용 가상 자료다. 가상 인물의 24시간 자료를 분석하며 학생 개인의 체중·식단을 수집하거나 섭취 목표·건강 진단을 제공하지 않는다."
-    },
-    {
       "slug": "hydride-boiling",
       "source": {
         "id": "1be99a8dde753097",
@@ -1967,6 +2044,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "2bade83c530ddb24",
@@ -1996,6 +2074,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [
         {
           "id": "2cc14cc644bd6459",
@@ -2034,6 +2113,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "동아 2022의 생명적·물리적 현상 수집 절차를 가상 장치로 구현했다. 맥파는 정해진 주기의 합성 광학 신호이며 심전도나 실제 개인의 심장 측정이 아니다. 소음은 자유음장 거리 효과·지정한 차음값·40 dB 배경을 합한 예시로, 실제 교실이나 특정 재료의 성능을 뜻하지 않는다. 현장 측정·실물 보드 제작은 별도이다."
     },
@@ -2055,6 +2135,7 @@
         ]
       },
       "variantSources": [],
+      "additionalSources": [],
       "assessmentSources": [],
       "boundary": "교과서의 스마트 화분을 조건을 바꿔 시험하는 가상 시제품으로 구현했다. 건조 850·젖음 350, 매 단계 증발 1·급수 5는 비교용 가정이며 식물별 적정 수분이나 실제 센서 보정값이 아니다. 표시값은 두 기준 사이의 상대 척도로 실제 토양 수분 함량(%)이 아니다. 실제 제작·모둠 발표 수행 완료로 세지 않는다."
     }

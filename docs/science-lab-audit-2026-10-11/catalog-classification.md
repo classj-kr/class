@@ -56,7 +56,7 @@
 
 ## 현재 연결 현황과 한계
 
-초 29개 · 중 28개 · 고(공통) 17개 · 고(선택) 71개. 합계 145개는 현재 앱 수다. 필수실험 총수와 전체 포함 여부는 이 작업으로 확정하지 않았다.
+초 29개 · 중 28개 · 고(공통) 17개 · 고(선택) 70개. 합계 144개는 현재 앱 수다. 필수실험 총수와 전체 포함 여부는 이 작업으로 확정하지 않았다.
 
 초·중 18개 범주 중 대표 앱이 없는 범주: 생명과학과 인간의 생활, 과학과 지속가능한 사회, 과학과 진로. 다른 범주의 복합 앱에 일부 연결이 있을 수 있으므로 미구현 실험 총수로 환산하지 않는다.
 
@@ -215,7 +215,6 @@
 | [상보적 염기와 DNA 이중나선 만들기](../../learning/inquiry/science-lab/dna-structure/index.html) | 고(선택) | 세포와 물질대사 | 세포 | [원문 6805행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6805); 12세포01-02 |
 | [두 폴리펩타이드의 연결과 접힘](../../learning/inquiry/science-lab/protein-folding/index.html) | 고(선택) | 세포와 물질대사 | 세포 | [원문 6805행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6805); 12세포01-02 |
 | [미토콘드리아·엽록체의 막과 구획 만들기](../../learning/inquiry/science-lab/organelle-builder/index.html) | 고(선택) | 세포와 물질대사 | 세포호흡과 광합성 | [원문 6877행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6877); 12세포03-01, 12세포03-05, 12세포03-07 |
-| [자료로 비교하는 하루의 에너지 출입](../../learning/inquiry/science-lab/energy-budget/index.html) | 고(선택) | 세포와 물질대사 | 물질대사와 에너지 | [원문 6845행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6845); 12세포02-01 |
 | [수소 화합물의 끓는점과 분자 간 힘](../../learning/inquiry/science-lab/hydride-boiling/index.html) | 고(선택) | 물질과 에너지 | 물질의 세 가지 상태 | [원문 6099행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6099); 12물에01-03 |
 | [같은 몰·질량·부피로 연료 비교하기](../../learning/inquiry/science-lab/fuel-comparison/index.html) | 고(선택) | 물질과 에너지 | 화학 변화의 자발성 | [원문 6155행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6155); 12물에03-01 |
 | [센서 연결과 측정 자료 수집](../../learning/inquiry/science-lab/mcu-sampling/index.html) | 고(공통) | 과학탐구실험2 | 미래 사회와 첨단 과학 탐구 | [원문 3583행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3583); 10과탐2-02-01 |

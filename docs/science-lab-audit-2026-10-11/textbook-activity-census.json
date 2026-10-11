@@ -10,7 +10,7 @@
     "completedActivityVerdicts": 0,
     "receiptClassifiedSources": 2287,
     "manuallyReviewedCandidates": 7,
-    "sourceReviewedExperimentUnits": 49,
+    "sourceReviewedExperimentUnits": 48,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -833,24 +833,6 @@
         "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
         "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
         "boundary": "두 소기관의 단면과 막 위상을 조작하는 구조 모형이다. 실제 3차원 제작·영상 발표를 완료한 것으로 세지 않는다. 수소 이온 이동은 정성 비교이며 농도·막전위·ATP 생성량을 정량 계산하지 않는다. 엽록체의 내막과 타이라코이드 막은 별개의 막이다."
-      },
-      {
-        "id": "energy-budget-energy-budget",
-        "sourceId": "fbf365923abce545",
-        "pages": [
-          59,
-          60,
-          61
-        ],
-        "title": "자료로 비교하는 하루의 에너지 출입",
-        "slug": "energy-budget",
-        "mode": "energy-budget",
-        "conditions": [
-          "표시 기준량·섭취량 환산, 활동 계수×질량×시간, 24시간 검증"
-        ],
-        "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
-        "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
-        "boundary": "활동별 계수는 미래엔 2022 교과서 59쪽의 kcal/(kg·h) 값이며 기초대사를 포함하고 소화·흡수 에너지는 제외한다. 식품 표시는 단위 환산용 가상 자료다. 가상 인물의 24시간 자료를 분석하며 학생 개인의 체중·식단을 수집하거나 섭취 목표·건강 진단을 제공하지 않는다."
       },
       {
         "id": "hydride-boiling-hydride-boiling",

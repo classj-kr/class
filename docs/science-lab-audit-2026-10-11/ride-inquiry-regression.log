@@ -1,0 +1,10 @@
+✔ motion acceleration agrees with finite differences and sensor support (0.8328ms)
+✔ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (13857.8106ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13923.3168

@@ -2,3 +2,11 @@
 @media(max-width:600px){.inquiry-readout{gap:7px}.inquiry-readout>div{flex-basis:115px;padding:9px}.inquiry-readout strong{font-size:19px}.karyo-board{grid-template-columns:repeat(3,minmax(0,1fr));padding:7px;gap:5px}.karyo-slot{min-height:140px}.karyo-pool{padding:7px;gap:5px}.inquiry-lab .control-panel label{display:block}.inquiry-lab .control-panel label select{display:block;width:100%;margin-top:5px}.inquiry-lab input[type=range]{width:100%;display:block}.inquiry-lab table{font-size:12px}.inquiry-lab td,.inquiry-lab th{padding:5px}}
 .karyo-scene{overflow:visible}.karyo-picker{position:sticky;top:0;z-index:2;background:#eef5f8;border-radius:12px;border:1px solid #bed1dc;box-shadow:0 3px 7px #173c4c18}.karyo-picker .selected-card{margin:6px 12px;font-size:14px}.karyo-picker .karyo-pool{flex-wrap:nowrap;overflow-x:auto;padding:8px;scrollbar-width:thin}.karyo-picker .karyo-card{flex:0 0 52px}.scroll-hint{font-size:13px;margin:9px 12px;color:#4a6673}.sequence-scroll:focus-visible{outline:3px solid #d98532;outline-offset:-3px}
 .disc-scenes{display:grid;grid-template-columns:1.1fr 1fr;align-items:center}.disc-scenes svg{width:100%;height:auto;display:block}@media(max-width:600px){.disc-scenes{grid-template-columns:1fr}.disc-scenes svg{max-height:290px}}
+[data-inquiry="ride-acceleration"] [hidden]{display:none!important}
+[data-inquiry="ride-acceleration"] #inquiryExtra svg{width:100%;height:auto;display:block}
+[data-inquiry="ride-acceleration"] .control-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
+[data-inquiry="ride-acceleration"] .control-panel label{display:block}
+[data-inquiry="ride-acceleration"] .control-panel input,[data-inquiry="ride-acceleration"] .control-panel select{width:100%}
+[data-inquiry="ride-acceleration"] #measurementSummary{grid-column:1/-1;margin:0}
+[data-inquiry="ride-acceleration"] .ride-legend{font-size:13px;margin:8px 14px 14px;color:#395b6a}
+@media(max-width:600px){[data-inquiry="ride-acceleration"] .control-panel{grid-template-columns:1fr;gap:12px}}

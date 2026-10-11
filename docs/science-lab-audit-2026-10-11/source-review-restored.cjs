@@ -17,7 +17,8 @@ for(const r of [...require('../../scripts/science-physics-experiments.cjs'),...r
 ]);
 for(const r of require('../../scripts/science-inquiry-experiments.cjs')){
  module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 교과서 쪽의 절차·도식과 새 모형·객관식의 적용 범위를 대조했다. 장치·분자 방향·가계도·핵형 그림은 gap-source-pages의 WebP로 확인했다. '+r.boundary]);
- for(const a of r.assessmentSources||[])module.exports.push([a.id,a.id==='35ddba87be4c287d'?[66,67,68,69]:[45,72,112,132],[r.slug],a.part,'HWP의 문항·해설 텍스트를 읽고 개념 구별과 오답 피드백에 반영했다. 원문 그림 전체의 육안 대조나 문항 복제를 주장하지 않는다.']);
+ for(const a of r.additionalSources||[])module.exports.push([a.id,a.pages,[r.slug],a.part,'지정 PDF 쪽의 절차와 장치 그림을 ride-source-pages의 WebP로 확인했다. 가상 측정 구현이며 현장 센서 수집 완료는 아니다.']);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.pages||(a.id==='35ddba87be4c287d'?[66,67,68,69]:[45,72,112,132]),[r.slug],a.part,a.id==='a97d3120332ca071'?'PDF 1·3·4·5쪽 문항·그림·해설을 WebP로 대조했다. 축의 부호와 가속도 크기를 구별하고 수치·조건을 바꾼 새 문항을 작성했다.':'HWP의 문항·해설 텍스트를 읽고 개념 구별과 오답 피드백에 반영했다. 원문 그림 전체의 육안 대조나 문항 복제를 주장하지 않는다.']);
 }
 for(const r of require('../../scripts/science-evidence-experiments.cjs')){
  module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 원문 표·그림·절차를 WebP로 대조했다. 수치 표와 그림에서 읽은 근삿값을 구분한다. '+r.boundary]);

@@ -4,12 +4,13 @@ const root=path.resolve(__dirname,'..'),base=path.join(root,'learning/inquiry/sc
 const clean=s=>s.replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 function read(){
+ const counts=Object.fromEntries(require('./science-restored-experiments.cjs').map(r=>[r.slug,r.questions.length]));
  const rows=[];for(const slug of Object.keys(require(path.join(base,'curriculum-map.js')))){
   const html=fs.readFileSync(path.join(base,slug,'index.html'),'utf8');let n=0;
   for(const [,answer,card]of html.matchAll(/<article class="quiz-card" data-answer="([a-d])">([\s\S]*?)<\/article>/g)){
    const choices=[...card.matchAll(/<label><input[^>]*value="([a-d])"[^>]*>([\s\S]*?)<\/label>/g)].map(([,id,text])=>({id,text:clean(text)}));
    rows.push({id:slug+'#q'+(++n),slug,question:clean(card.match(/<h3>([\s\S]*?)<\/h3>/)[1]),choices,answer,why:clean(card.match(/<p class="answer-explanation"[^>]*>([\s\S]*?)<\/p>/)[1])});
-  }assert.equal(n,4,slug);
+  }assert.equal(n,counts[slug]||4,slug);
  }
  for(const q of require(path.join(base,'exam-bank.js')).questions)rows.push({id:q.id,slug:q.host,question:q.question,choices:q.choices.map((text,id)=>({id:String(id),text})),answer:String(q.answer),why:q.why,data:q.data});
  return rows;

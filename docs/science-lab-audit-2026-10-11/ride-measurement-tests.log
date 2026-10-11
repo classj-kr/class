@@ -1,0 +1,16 @@
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (10.6052ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.557ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.7334ms)
+✔ browser: all apparatus controls, sampling, eight diagnostic questions, reset and narrow screens (5689.0869ms)
+165 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (121.2874ms)
+✔ every science lab JavaScript file parses (90.0215ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.925ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5759.9223
