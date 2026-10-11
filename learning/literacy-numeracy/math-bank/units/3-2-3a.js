@@ -26,7 +26,8 @@
   const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
   const named = (c, p, name) => G.point(p) + G.text(G.beyond(c, p, 0.45), name);                  // 점과 이름(중심의 반대쪽에 적는다)
   const centre = (c, name) => G.point(c) + (name ? G.text([c[0] - 0.36, c[1] + 0.44], name) : '');
-  const tag = (p, q, value) => G.text(G.beside(p, q, mid(p, q), 0.45), value);                   // 선분 옆에 적는 길이
+  // 선분 옆에 적는 길이: 글자 폭만큼 더 비켜 적어 비스듬한 선분에 겹치지 않게 한다
+  const tag = (p, q, value) => { const dx = q[0] - p[0], dy = q[1] - p[1], size = Math.hypot(dx, dy) || 1; return G.text(G.beside(p, q, mid(p, q), 0.2 + String(value).length * 0.165 * Math.abs(dy / size) + 0.3 * Math.abs(dx / size)), value); };
   const draw = (cols, rows, parts, label, scale) => G.board(cols, rows, parts, { grid: false, scale: scale || 1.1, label });
   // 원 하나와 선분 셋: 반지름 ㅇㄱ, 중심을 지나지 않는 선분 ㄴㄷ, 지름 ㄹㅁ. 선분끼리 만나지 않게 자리를 정해 둔다.
   const PRESETS = [{ dia: [20, 200], chord: [235, 305], rad: 100 }, { dia: [160, 340], chord: [40, 110], rad: 250 }, { dia: [80, 260], chord: [130, 215], rad: 350 }];
@@ -48,7 +49,7 @@
   const quote = (text) => lines(['「' + text + '」']);
 
   B.addUnit({
-    id: '3-2-3', grade: 3, semester: 2, no: 3, title: '원', version: 2,
+    id: '3-2-3', grade: 3, semester: 2, no: 3, title: '원', version: 3,
     groups: [
       {
         id: 'parts', title: '원의 중심, 반지름, 지름', standard: PARTS,

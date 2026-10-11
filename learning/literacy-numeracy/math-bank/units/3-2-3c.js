@@ -28,6 +28,8 @@
     return G.point(c) + G.text(on(c, 0.5, at), name);
   }
   const draw = (cols, rows, parts, label, scale) => G.board(cols, rows, parts, { grid: false, scale: scale || 1.1, label });
+  // 모눈이 비쳐 보여야 하는 원은 칠하지 않고 그린다
+  const ring = (c, r) => G.polygon(Array.from({ length: 72 }, (_, i) => on(c, r, i * 5)), 'mb-poly is-plain');
   function rowOfCircles(radii, gaps) {
     const top = Math.max(...radii), xs = [0.9 + radii[0]];
     gaps.forEach((gap) => xs.push(xs[xs.length - 1] + gap));
@@ -136,7 +138,7 @@
     T('des-grid', '원의 중심을 옮긴 규칙', '①48 ②55 ③36 심36', (d) => {
       const step = d.int(2, 3), r = 1, centers = [0, 1, 2].map((i) => [1.5 + i * step, 2]);
       return N('모눈종이에 반지름이 같은 원을 규칙에 따라 그렸다. 원의 중심을 오른쪽으로 모눈 몇 칸씩 옮겨 가며 그렸는가?', step, {
-        unit: '칸', figure: G.board(3 + step * 2, 4, centers.map((c) => G.circle(c, r) + G.point(c)), { grid: 'lines', scale: 1.0, label: `모눈종이에 그린 원 3개: 반지름은 모두 모눈 1칸, 원의 중심은 오른쪽으로 ${step}칸씩 옮겨 감` }),
+        unit: '칸', figure: G.board(3 + step * 2, 4, centers.map((c) => ring(c, r) + G.point(c)), { grid: 'lines', scale: 1.0, label: `모눈종이에 그린 원 3개: 반지름은 모두 모눈 1칸, 원의 중심은 오른쪽으로 ${step}칸씩 옮겨 감` }),
         explain: `이웃한 두 원의 중심 사이는 모눈 ${step}칸이다.`, facts: { calc: [[String(step), 0]] }
       });
     })
@@ -301,7 +303,7 @@
     T('des-grow', '원의 반지름이 늘어난 규칙', '①48 ②55 심36', (d) => {
       const k = d.int(1, 2), radii = k === 1 ? [1, 2, 3] : [1, 3, 5], size = radii[2] * 2 + 2, c = [radii[2] + 1, radii[2] + 1];
       return N('모눈종이에 중심이 같은 원을 규칙에 따라 그렸다. 원의 반지름은 모눈 몇 칸씩 늘어나는가?', k, {
-        unit: '칸', figure: G.board(size, size, radii.slice().reverse().map((r) => G.circle(c, r)).concat([G.point(c)]), { grid: 'lines', scale: k === 1 ? 1.0 : 0.7, label: `모눈종이에 그린 중심이 같은 원 3개: 반지름은 모눈 ${radii.join('칸, ')}칸` }),
+        unit: '칸', figure: G.board(size, size, radii.map((r) => ring(c, r)).concat([G.point(c)]), { grid: 'lines', scale: k === 1 ? 1.0 : 0.7, label: `모눈종이에 그린 중심이 같은 원 3개: 반지름은 모눈 ${radii.join('칸, ')}칸` }),
         explain: `원의 반지름은 모눈 ${radii.join('칸, ')}칸이다. 원의 중심은 옮기지 않고 반지름만 ${k}칸씩 늘려 그렸다.`, facts: { calc: [[`${radii[1]}-${radii[0]}`, 0]] }
       });
     })
