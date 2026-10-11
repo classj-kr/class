@@ -1,0 +1,18 @@
+{
+  "slug": "protein-synthesis",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 41,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

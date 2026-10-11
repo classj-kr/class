@@ -1,0 +1,18 @@
+{
+  "slug": "antibiotic-disc",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 17,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

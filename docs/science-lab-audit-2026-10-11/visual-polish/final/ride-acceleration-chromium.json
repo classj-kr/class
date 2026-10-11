@@ -1,0 +1,18 @@
+{
+  "slug": "ride-acceleration",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 24,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

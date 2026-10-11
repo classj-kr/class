@@ -1,0 +1,94 @@
+{
+  "slug": "flame-ions",
+  "engine": "chromium",
+  "modes": [
+    "flame",
+    "ion"
+  ],
+  "cases": 20,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__flameIonModel",
+      "methods": [
+        "METALS",
+        "ANIONS",
+        "IONS",
+        "COLOURS",
+        "PAPER_FACTOR",
+        "STRIP_M",
+        "RUN_MINUTES",
+        "state",
+        "analyseFlame",
+        "analyseIon",
+        "analyse",
+        "compound",
+        "ionAt",
+        "flameIntensity",
+        "wlToRgb",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "flame",
+      "results": [
+        {
+          "choice": "red",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "yellow",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "violet",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "orange",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "green",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "ion",
+      "results": [
+        {
+          "choice": "plus",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "minus",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "none",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

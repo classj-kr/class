@@ -33,9 +33,52 @@
   return{x:b.x,y:y-m.actualBoundingBoxAscent,width:b.width,height:m.actualBoundingBoxAscent+m.actualBoundingBoxDescent};
  };
  const selector='svg.main-svg,svg.graph-svg,svg.scope-svg,svg.side-svg';
+ // Earlier diagrams used pastel lettering intended for a dark canvas. Keep
+ // each semantic hue, but choose readable ink against the actual painted shape
+ // underneath the label (including pale bars and dark astronomical panels).
+ const rgb=value=>{const n=value?.match(/^rgba?\(([^)]+)\)$/)?.[1].split(/[, /]+/).map(Number);return n?.length>=3?[...n.slice(0,3),n[3]??1]:null;};
+ const luminance=c=>c.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
+ const contrast=(a,b)=>{const x=luminance(a),y=luminance(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
+ const blend=(front,back,alpha=front[3])=>front.slice(0,3).map((v,i)=>v*alpha+back[i]*(1-alpha));
+ const adjustedInk=new WeakMap();
+ function readableInk(svg){
+  let base=[255,255,255];const parents=[];for(let n=svg;n;n=n.parentElement)parents.unshift(n);
+  for(const n of parents){const c=rgb(getComputedStyle(n).backgroundColor);if(c)base=blend(c,base);}
+  const paint=[];
+  for(const node of svg.querySelectorAll('path,rect,circle,ellipse,polygon,text')){
+   if(node.closest('defs,clipPath,mask')||!node.getClientRects().length)continue;
+   const style=getComputedStyle(node);if(style.display==='none'||style.visibility==='hidden')continue;
+   if(node.tagName!=='text'){
+    const color=rgb(style.fill);if(!color||color[3]===0||style.fillOpacity==='0')continue;
+    let alpha=color[3]*Number(style.fillOpacity);for(let p=node;p&&p!==svg;p=p.parentElement)alpha*=Number(getComputedStyle(p).opacity);
+    if(alpha)paint.push({node,color,alpha,box:node.getBBox()});continue;
+   }
+   const previous=adjustedInk.get(node);
+   if(previous&&node.style.fill===previous.adjusted)node.style.fill=previous.original;
+   const original=node.style.fill,color=rgb(getComputedStyle(node).fill);if(!color||!node.textContent.trim())continue;
+   const box=node.getBBox(),point=new DOMPoint(box.x+box.width/2,box.y+box.height/2),matrix=node.getCTM();
+   if(!matrix)continue;
+   const global=point.matrixTransform(matrix);let background=base;
+   for(const item of paint){
+    const matrix=item.node.getCTM();if(!matrix)continue;const local=global.matrixTransform(matrix.inverse()),b=item.box;
+    if(local.x<b.x||local.x>b.x+b.width||local.y<b.y||local.y>b.y+b.height)continue;
+    if(item.node.isPointInFill(local))background=blend(item.color,background,item.alpha);
+   }
+   if(contrast(blend(color,background),background)>=4.5){adjustedInk.delete(node);continue;}
+   const dark=[14,27,36],light=[255,255,255],target=contrast(dark,background)>contrast(light,background)?dark:light;let chosen=color;
+   for(let amount=.08;amount<=1.001;amount+=.08){chosen=color.slice(0,3).map((v,i)=>Math.round(v*(1-Math.min(amount,1))+target[i]*Math.min(amount,1)));if(contrast(chosen,background)>=4.5)break;}
+   node.style.fill='rgb('+chosen.slice(0,3).join(', ')+')';adjustedInk.set(node,{original,adjusted:node.style.fill});
+  }
+ }
+ let figureNumber=0;
  function attach(svg){
   const viewport=document.createElement('div');viewport.className='figure-viewport';svg.before(viewport);viewport.append(svg);
-  let notes=null,scheduled=false;
+  const figureName=svg.matches('.graph-svg')?'자료 그림':'관찰 그림';
+  viewport.id='lab-figure-'+(++figureNumber);viewport.setAttribute('role','region');viewport.setAttribute('aria-label',figureName);
+  const toolbar=document.createElement('div');toolbar.className='figure-tools';toolbar.hidden=true;
+  const zoom=document.createElement('button');zoom.type='button';zoom.textContent='그림 확대';zoom.setAttribute('aria-controls',viewport.id);zoom.setAttribute('aria-pressed','false');toolbar.append(zoom);viewport.before(toolbar);
+  const hint=document.createElement('span');hint.textContent='좌우로 움직여 볼 수 있습니다';hint.hidden=true;toolbar.append(hint);
+  let notes=null,scheduled=false,expanded=false;
   const baseFonts=new WeakMap();
   function layout(){
    scheduled=false;
@@ -43,13 +86,19 @@
    const proseOnly=svg.matches('.graph-svg')&&svg.querySelector('text')&&![...svg.querySelectorAll('path,line,rect,circle,ellipse,polygon,polyline,image,use,foreignObject')].some(n=>!n.closest('defs'));
    viewport.hidden=!!proseOnly;
    if(!box.width||(!proseOnly&&!svg.getBoundingClientRect().width))return;
+   if(!proseOnly)readableInk(svg);
    const lines=proseOnly?[...svg.querySelectorAll('text')].map(t=>t.textContent.trim()).filter(Boolean):[];
-   // Keep ordinary SVG labels legible on narrow screens; never shrink symbols.
-   svg.style.minWidth=svg.hasAttribute('data-mobile-fit')?'0px':box.width+'px';
+   // A phone first shows the complete apparatus. The same SVG can be enlarged
+   // for reading labels; model state and event handlers stay on the original node.
+   const narrow=viewport.clientWidth<box.width-1&&!svg.hasAttribute('data-mobile-fit');
+   toolbar.hidden=!narrow||!!proseOnly;if(!narrow)expanded=false;
+   const fitted=narrow&&!expanded;
+   svg.style.minWidth=fitted||svg.hasAttribute('data-mobile-fit')?'0px':box.width+'px';
+   zoom.textContent=expanded?'전체 보기':'그림 확대';zoom.setAttribute('aria-label',figureName+(expanded?' 전체 보기':' 확대'));zoom.setAttribute('aria-pressed',String(expanded));hint.hidden=!expanded;viewport.tabIndex=expanded?0:-1;
    const scale=proseOnly?1:svg.getBoundingClientRect().width/box.width;
    svg.querySelectorAll('text').forEach(text=>{
     if(!baseFonts.has(text))baseFonts.set(text,parseFloat(getComputedStyle(text).fontSize)||14);
-    const font=baseFonts.get(text);if(font<=18)text.style.fontSize=Math.max(font,12/scale)+'px';
+    const font=baseFonts.get(text);if(font<=18)text.style.fontSize=(fitted?font:Math.max(font,12/scale))+'px';
    });
    if(!proseOnly)svg.querySelectorAll('text.note-text,text.verdict-text,text.front-note,text.cmp-note,text.figure-caption').forEach(text=>{
     text.removeAttribute('data-figure-extracted');
@@ -69,8 +118,10 @@
    }else if(notes)notes.hidden=true;
   }
   const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(layout);}};
+  zoom.addEventListener('click',()=>{expanded=!expanded;viewport.scrollLeft=0;layout();});
   new MutationObserver(layout).observe(svg,{childList:true,subtree:true,characterData:true});
   new ResizeObserver(schedule).observe(svg);
+  new ResizeObserver(schedule).observe(viewport);
   schedule();document.fonts?.ready.then(schedule);
  }
  document.querySelectorAll(selector).forEach(attach);
