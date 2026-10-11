@@ -1,0 +1,26 @@
+{
+  "verifiedAt": "2026-10-12T05:17:00+09:00",
+  "url": "https://classj.kr/learning/inquiry/korea-map/?school=high#terrain",
+  "healthCommit": "213335e09a01995e522c57f918a7deb6d0e2d6e0",
+  "appVersion": "20261012-remaster8",
+  "browser": "Chrome",
+  "viewport": [
+    1920,
+    911
+  ],
+  "checks": {
+    "bathymetry": "five color bands visible on sea, land relief preserved",
+    "lesson": "08 · 주변 바다의 수심과 대륙붕",
+    "explanationDialog": "opened and inspected on first remaster deployment",
+    "profile": "A west sea to B east sea, land and seabed both rendered",
+    "profileMaximumMeters": 1256,
+    "profileMinimumMeters": -3034,
+    "seaLevelLabel": "해수면 0m · 해저는 음수로 표시",
+    "consoleErrors": 0,
+    "publicLearningRecords": "No quiz answers submitted during this deployment check"
+  },
+  "screenshots": [
+    "live-bathymetry.webp",
+    "live-seafloor-profile.webp"
+  ]
+}
