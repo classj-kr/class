@@ -4,6 +4,7 @@
     python tools/question-bank/add_part.py 3-1-3 c 20261012-28      3-1-3b.js 다음 줄에 3-1-3c.js를 넣는다
     python tools/question-bank/add_part.py 4-1-1 ab 20261012-29     새 단원: 마지막 단원 줄 뒤에 a.js, b.js를 넣는다(version은 그대로)
     python tools/question-bank/add_part.py 3-2-3 - 20261012-30      줄은 넣지 않고 번호와 version만 올린다
+    python tools/question-bank/add_part.py - - 20261012-31          번호만 올린다(엔진·화면만 고쳤을 때)
 
 index.html의 모든 ?v= 를 같은 번호로 맞춘다(로컬 js·css는 24시간 캐시라 번호를 안 올리면 옛 파일이 남는다).
 """
@@ -35,7 +36,10 @@ def main(argv):
         at = before[-1].end()
         html = html[:at] + line % name + html[at:]
     io.open(path, 'w', encoding='utf-8', newline='\n').write(html)
-    shell = os.path.join(APP, 'units', unit + 'a.js')
+    if unit == '-':
+        print('%s → %s' % (old, version))
+        return 0
+    shell =os.path.join(APP, 'units', unit + 'a.js')
     text = io.open(shell, encoding='utf-8').read()
     found = re.search(r"(id: '%s',[^\n]*?version: )(\d+)" % re.escape(unit), text)
     assert found, 'version 을 찾지 못했다'
