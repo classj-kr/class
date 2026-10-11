@@ -37,7 +37,7 @@
 
 고등은 **공통 4과목·10개 영역**, **선택 15과목·47개 영역**을 모두 표시한다. 물리학·화학·생명과학·지구과학은 초·중의 영역명으로 쓰지 않으며, 고등 일반 선택의 공식 과목명으로 사용한다.
 
-등록된 앱이 없는 칸에는 ‘이 범주에 등록된 실험 없음’, 학년 필터로 비게 된 칸에는 ‘선택한 학년에 등록된 실험 없음’을 표시한다. 교육과정에 해당 학교급의 내용 요소가 없거나 다른 범주의 복합 앱에서 일부 다루는 경우도 있으므로, 빈 칸을 미구현 필수실험 수로 세지 않는다. 빈 칸은 링크가 아닌 안내문이다.
+등록된 앱이 없거나 학년 필터로 비게 된 칸에는 ‘실험 없음’을 표시한다. 교육과정에 해당 학교급의 내용 요소가 없거나 다른 범주의 복합 앱에서 일부 다루는 경우도 있으므로, 빈 칸을 미구현 필수실험 수로 세지 않는다. 빈 칸은 링크가 아닌 안내문이다.
 
 [전체 분류·빈 범주·학교급 및 학년 필터 검증](official-categories-tests.log): 5개 검사 통과, 0개 실패. 320·390·768·1024·1440 px 검사. [과학과 사회 데스크톱](official-categories-qa/society-1440.webp), [생명 모바일](official-categories-qa/life-390.webp), [과학탐구실험2](official-categories-qa/inquiry2-1440.webp)는 직접 화면을 확인했다.
 
@@ -56,11 +56,11 @@
 
 ## 현재 연결 현황과 한계
 
-초 29개 · 중 28개 · 고(공통) 13개 · 고(선택) 51개. 합계 121개는 현재 앱 수다. 필수실험 총수와 전체 포함 여부는 이 작업으로 확정하지 않았다.
+초 29개 · 중 28개 · 고(공통) 17개 · 고(선택) 71개. 합계 145개는 현재 앱 수다. 필수실험 총수와 전체 포함 여부는 이 작업으로 확정하지 않았다.
 
 초·중 18개 범주 중 대표 앱이 없는 범주: 생명과학과 인간의 생활, 과학과 지속가능한 사회, 과학과 진로. 다른 범주의 복합 앱에 일부 연결이 있을 수 있으므로 미구현 실험 총수로 환산하지 않는다.
 
-연결 성취기준이 없는 고등 과목: 과학탐구실험2, 과학의 역사와 문화, 기후변화와 환경생태, 융합과학 탐구.
+연결 성취기준이 없는 고등 과목: 과학의 역사와 문화, 기후변화와 환경생태, 융합과학 탐구.
 
 ## 검증 범위
 
@@ -196,3 +196,27 @@
 | [물과 완충 용액의 pH 비교](../../learning/inquiry/science-lab/buffer-solution/index.html) | 고(선택) | 화학 반응의 세계 | 산 염기 평형 | [원문 6459행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6459); 12반응01-05 |
 | [염 수용액의 액성 확인](../../learning/inquiry/science-lab/salt-hydrolysis/index.html) | 고(선택) | 화학 반응의 세계 | 산 염기 평형 | [원문 6459행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6459); 12반응01-04 |
 | [발아하는 콩의 호흡과 열](../../learning/inquiry/science-lab/bean-respiration/index.html) | 고(선택) | 세포와 물질대사 | 물질대사와 에너지 | [원문 6845행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6845); 12세포02-01 |
+| [단열재의 보온·보냉 비교](../../learning/inquiry/science-lab/insulation-lab/index.html) | 고(선택) | 역학과 에너지 | 열과 에너지 | [원문 5413행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L5413); 12역학02-01 |
+| [움직이는 음원의 도플러 효과](../../learning/inquiry/science-lab/doppler-lab/index.html) | 고(선택) | 역학과 에너지 | 탄성파와 소리 | [원문 5447행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L5447); 12역학03-03 |
+| [놀이기구 운동과 가속도 센서](../../learning/inquiry/science-lab/ride-acceleration/index.html) | 고(공통) | 과학탐구실험2 | 생활 속의 과학 탐구 | [원문 3549행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3549); 10과탐2-01-01, 10과탐2-01-02 |
+| [DNA 복제 가닥 조립](../../learning/inquiry/science-lab/dna-replication/index.html) | 고(선택) | 생물의 유전 | 유전자와 유전물질 | [원문 7171행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7171); 12유전01-07 |
+| [코돈을 읽어 단백질 합성하기](../../learning/inquiry/science-lab/protein-synthesis/index.html) | 고(선택) | 생물의 유전 | 유전자의 발현 | [원문 7209행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7209); 12유전02-01, 12유전02-02 |
+| [가계도로 X 염색체 유전 추론](../../learning/inquiry/science-lab/pedigree-lab/index.html) | 고(선택) | 생물의 유전 | 유전자와 유전물질 | [원문 7171행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7171); 12유전01-01, 12유전01-02 |
+| [염색체 짝짓기와 핵형 분석](../../learning/inquiry/science-lab/karyotype-lab/index.html) | 고(선택) | 생명과학 | 생명의 연속성과 다양성 | [원문 4701행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L4701); 12생과03-01 |
+| [추출액의 생장 억제 구역 비교](../../learning/inquiry/science-lab/antibiotic-disc/index.html) | 고(공통) | 과학탐구실험1 | 과학 탐구의 과정과 절차 | [원문 3443행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3443); 10과탐1-02-02, 10과탐1-02-03, 10과탐1-02-04 |
+| [해파 발생과 물 입자 운동](../../learning/inquiry/science-lab/water-wave-tank/index.html) | 고(선택) | 지구시스템과학 | 해수의 운동 | [원문 7561행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7561); 12지시02-02 |
+| [은거울 반응과 작용기 변화](../../learning/inquiry/science-lab/silver-mirror/index.html) | 고(선택) | 화학 반응의 세계 | 탄소 화합물과 반응 | [원문 6531행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6531); 12반응03-02 |
+| [계면에서 나일론 합성하기](../../learning/inquiry/science-lab/nylon-interface/index.html) | 고(선택) | 화학 반응의 세계 | 탄소 화합물과 반응 | [원문 6531행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6531); 12반응03-03 |
+| [쌍성 관측 자료의 질량–광도 관계](../../learning/inquiry/science-lab/stellar-mass-data/index.html) | 고(선택) | 행성우주과학 | 태양과 별의 관측 | [원문 7931행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7931); 12행우02-04 |
+| [성단 자료로 주계열 맞추기](../../learning/inquiry/science-lab/cluster-fitting/index.html) | 고(선택) | 행성우주과학 | 은하와 우주 | [원문 7973행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7973); 12행우03-01 |
+| [중심별과 생명가능지대의 거리](../../learning/inquiry/science-lab/habitable-orbits/index.html) | 고(선택) | 행성우주과학 | 우주탐사와 행성계 | [원문 7887행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L7887); 12행우01-05 |
+| [원심분리기의 배치와 시료 분리](../../learning/inquiry/science-lab/centrifuge-design/index.html) | 고(선택) | 세포와 물질대사 | 세포 | [원문 6805행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6805); 12세포01-03 |
+| [원자와 결합으로 작용기 만들기](../../learning/inquiry/science-lab/organic-builder/index.html) | 고(선택) | 화학 반응의 세계 | 탄소 화합물과 반응 | [원문 6531행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6531); 12반응03-01 |
+| [상보적 염기와 DNA 이중나선 만들기](../../learning/inquiry/science-lab/dna-structure/index.html) | 고(선택) | 세포와 물질대사 | 세포 | [원문 6805행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6805); 12세포01-02 |
+| [두 폴리펩타이드의 연결과 접힘](../../learning/inquiry/science-lab/protein-folding/index.html) | 고(선택) | 세포와 물질대사 | 세포 | [원문 6805행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6805); 12세포01-02 |
+| [미토콘드리아·엽록체의 막과 구획 만들기](../../learning/inquiry/science-lab/organelle-builder/index.html) | 고(선택) | 세포와 물질대사 | 세포호흡과 광합성 | [원문 6877행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6877); 12세포03-01, 12세포03-05, 12세포03-07 |
+| [자료로 비교하는 하루의 에너지 출입](../../learning/inquiry/science-lab/energy-budget/index.html) | 고(선택) | 세포와 물질대사 | 물질대사와 에너지 | [원문 6845행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6845); 12세포02-01 |
+| [수소 화합물의 끓는점과 분자 간 힘](../../learning/inquiry/science-lab/hydride-boiling/index.html) | 고(선택) | 물질과 에너지 | 물질의 세 가지 상태 | [원문 6099행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6099); 12물에01-03 |
+| [같은 몰·질량·부피로 연료 비교하기](../../learning/inquiry/science-lab/fuel-comparison/index.html) | 고(선택) | 물질과 에너지 | 화학 변화의 자발성 | [원문 6155행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L6155); 12물에03-01 |
+| [센서 연결과 측정 자료 수집](../../learning/inquiry/science-lab/mcu-sampling/index.html) | 고(공통) | 과학탐구실험2 | 미래 사회와 첨단 과학 탐구 | [원문 3583행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3583); 10과탐2-02-01 |
+| [수분 센서와 펌프로 자동 급수 설계하기](../../learning/inquiry/science-lab/smart-pot/index.html) | 고(공통) | 과학탐구실험2 | 미래 사회와 첨단 과학 탐구 | [원문 3583행](../../references/moe/2022-revised-curriculum/extracted/09-science.txt#L3583); 10과탐2-02-01 |

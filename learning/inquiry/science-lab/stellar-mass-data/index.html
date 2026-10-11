@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 쌍성 관측 자료의 질량–광도 관계</title><meta name="description" content="2022 교육과정 · 쌍성 관측 자료의 질량–광도 관계의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css"><link rel="stylesheet" href="../science-reading.css"><link rel="stylesheet" href="../evidence-labs.css"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>쌍성 관측 자료의 질량–광도 관계</h1><div class="grade-tags"><span>고(선택)</span><span>행성우주과학</span></div></header><p class="intro">교과서의 쌍성 구성원 86개에서 분석할 별과 질량 구간을 선택한다. 절대등급을 광도로 변환하고 선형·로그 그래프를 비교하여 추세선과 새 별의 질량을 추정한다.</p><section class="experiment-layout evidence-lab" data-evidence="stellar-mass-data"><h2>조작하고 자료 비교하기</h2><div class="evidence-controls"><label>분석 범위<select id="massRange"><option value="all">86개 전체</option><option value="low">0.5–2 태양질량</option><option value="high">2–20 태양질량</option></select></label><label>그래프 축<select id="scale"><option value="log">질량·광도 모두 로그</option><option value="linear">질량·광도 모두 선형</option></select></label><button id="fitLine">선택한 별의 추세선 구하기</button><label>질량을 추정할 새 별의 광도 <output id="targetLightValue"></output><input id="targetLight" type="range" min="-1" max="3" step="0.1" value="1" data-unit="log₁₀(L/L☉)"></label></div><div id="evidenceScene" class="evidence-scene"></div><div id="evidenceReadout" class="evidence-readout" aria-live="polite"></div><p id="evidenceStatus" class="status" role="status"></p><div id="evidenceExtra"></div><div class="toolbar"><button id="resetExperiment">처음부터</button></div><p class="model-note">천재교육 2022 교과서 137쪽의 1–86번 자료를 사용한다. 광도 변환은 같은 책 75쪽의 태양 절대등급 4.74 기준이다. 관측 표본의 회귀식이며 모든 별·모든 질량 범위에 같은 지수를 적용하지 않는다. 138–140쪽 나머지 표본은 포함하지 않았다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="c">
+<h3>같은 기준의 절대등급이 A는 2.0, B는 4.5이다. A의 광도 / B의 광도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 0.1</label>
+<label><input type="radio" name="q1" value="b"> 2.5</label>
+<label><input type="radio" name="q1" value="c"> 10</label>
+<label><input type="radio" name="q1" value="d"> 100</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>등급 차이 2.5는 광도 10배에 해당합니다. 등급이 작은 A가 더 밝으므로 L_A/L_B=10^(0.4×2.5)=10입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>log₁₀(L/L☉)=3.6 log₁₀(M/M☉)+0.1로 맞춰졌다. 질량이 2배인 두 별의 광도 비는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 2×3.6</label>
+<label><input type="radio" name="q2" value="b"> 2^3.6</label>
+<label><input type="radio" name="q2" value="c"> 3.6^2</label>
+<label><input type="radio" name="q2" value="d"> 2^0.1</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 회귀식의 두 점을 비교하면 절편은 상쇄됩니다. L의 비는 질량 비를 기울기만큼 거듭제곱한 2^3.6입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>0.5–2 태양질량 자료와 2–20 태양질량 자료의 로그 기울기가 달랐다. 다음 분석으로 적절한 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 전체 기울기를 4로 고정</label>
+<label><input type="radio" name="q3" value="b"> 두 구간의 잔차와 표본 수 비교</label>
+<label><input type="radio" name="q3" value="c"> 작은 별 자료를 모두 삭제</label>
+<label><input type="radio" name="q3" value="d"> 등급을 광도로 다시 이름만 변경</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>질량 범위에 따라 관계가 달라질 수 있으므로 표본 수와 산포를 함께 확인합니다. 미리 정한 지수에 자료를 맞추지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>주계열 수명이 대략 M/L에 비례하고 이 구간에서 L∝M⁴이다. 질량이 2배일 때 수명 비는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 1/16</label>
+<label><input type="radio" name="q4" value="b"> 1/8</label>
+<label><input type="radio" name="q4" value="c"> 1/2</label>
+<label><input type="radio" name="q4" value="d"> 8</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>연료량은 2배, 단위 시간 방출 에너지는 16배이므로 수명은 2/16=1/8배입니다.</p>
+</article></details></main><script src="../evidence-data.js"></script><script src="../evidence-models.js"></script><script src="../evidence-labs.js"></script><script src="../curriculum-map.js"></script><script src="../exam-scope.js"></script></body></html>

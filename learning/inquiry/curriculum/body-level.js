@@ -12,7 +12,83 @@
         if(desc)desc.before(subject);
         const quiz=document.getElementById('quizContainer');
         const oldConcept=document.getElementById('conceptList');
-        if(oldConcept){const lesson=document.createElement('div');lesson.id='conceptList';lesson.className='body-lesson';oldConcept.replaceWith(lesson);}
+        const lesson=document.createElement('div');lesson.className='body-lesson';
+        if(oldConcept){oldConcept.hidden=true;oldConcept.closest('.meter-card')?.setAttribute('hidden','');}
+        const dialog=document.createElement('dialog');dialog.className='body-explanation-dialog';
+        dialog.setAttribute('aria-labelledby','bodyExplanationTitle');
+        dialog.innerHTML='<header><h2 id="bodyExplanationTitle">설명</h2><span class="body-explanation-subject"></span><button type="button" aria-label="설명 닫기">닫기 ×</button></header>';
+        dialog.append(lesson);document.body.append(dialog);
+        const close=dialog.querySelector('button');close.addEventListener('click',()=>dialog.close());
+        dialog.addEventListener('click',e=>{if(e.target===dialog){const b=dialog.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)dialog.close();}});
+        const explain=document.createElement('button');explain.type='button';explain.className='body-explanation-button';explain.textContent='설명 보기';explain.setAttribute('aria-haspopup','dialog');
+        // The joint model predates the shared tab layout. Give it the same two
+        // views while retaining the original controls and their event handlers.
+        if(!document.querySelector('.sidebar-tabs')){
+            const sidebar=document.querySelector('.sim-sidebar'),body=sidebar.querySelector('.sidebar-body');
+            const bar=document.createElement('div');bar.className='sidebar-tabs';
+            bar.innerHTML='<button type="button" class="sidebar-tab-btn active" data-tab="focus">모형</button><button type="button" class="sidebar-tab-btn" data-tab="quiz">문제</button>';
+            const focus=document.createElement('div');focus.id='tabPanel_focus';focus.className='sidebar-tab-panel';
+            const questions=document.createElement('div');questions.id='tabPanel_quiz';questions.className='sidebar-tab-panel';questions.style.display='none';
+            focus.append(...body.childNodes);
+            if(quiz){const oldCard=quiz.closest('.meter-card');questions.append(quiz);if(oldCard&&!oldCard.childElementCount)oldCard.remove();}
+            body.append(focus,questions);sidebar.prepend(bar);
+            bar.addEventListener('click',event=>{
+                const button=event.target.closest('[data-tab]');if(!button)return;
+                bar.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===button));
+                focus.style.display=button.dataset.tab==='focus'?'':'none';
+                questions.style.display=button.dataset.tab==='quiz'?'':'none';
+            });
+        }
+        const tabs=document.querySelector('.sidebar-tabs');
+        const focusPanel=document.getElementById('tabPanel_focus');
+        const focusButton=tabs?.querySelector('[data-tab="focus"]'),quizButton=tabs?.querySelector('[data-tab="quiz"]');
+        const controls=document.querySelector('.sim-header-right');
+        if(controls)controls.append(explain);
+        else if(focusPanel)focusPanel.prepend(explain);
+        else document.querySelector('.model-navigation').append(explain);
+        const references=document.createElement('div');references.className='body-reference-sections';dialog.append(references);
+        const extraControls=[];
+        tabs?.querySelectorAll('[data-tab]').forEach(button=>{
+            if(['focus','quiz'].includes(button.dataset.tab))return;
+            button.classList.add('body-reference-tab');
+            if(button.dataset.tab==='traps')return;
+            const panel=document.getElementById('tabPanel_'+button.dataset.tab);if(!panel)return;
+            if(panel.querySelector('input,select,button')){
+                const scene=button.dataset.forScene||(button.dataset.tab==='lab'?'lab':'');
+                panel.classList.add('body-extra-controls');focusPanel.append(panel);
+                extraControls.push({panel,scene});
+                if(app==='nervous'){
+                    const details=document.createElement('details');details.className='body-reference';details.dataset.reference=button.dataset.tab;
+                    const summary=document.createElement('summary');summary.textContent=button.textContent;details.append(summary);
+                    const content=document.createElement('div');content.className='body-reference-content';details.append(content);
+                    panel.querySelectorAll('.sensory-card,.meter-card:has(table)').forEach(card=>content.append(card));
+                    if(content.childElementCount)references.append(details);
+                }
+            }else{
+                const details=document.createElement('details');details.className='body-reference';
+                const summary=document.createElement('summary');summary.textContent=button.textContent;
+                panel.classList.add('body-reference-content');details.append(summary,panel);references.append(details);
+                details.dataset.reference=button.dataset.tab;
+            }
+        });
+        function updateMode(){
+            const question=!!quizButton?.classList.contains('active');
+            document.body.classList.toggle('body-question-view',question);
+            focusButton.textContent='모형';quizButton.textContent='문제';
+            [focusButton,quizButton].forEach(b=>b.setAttribute('aria-pressed',String(b.classList.contains('active'))));
+            const scene=document.querySelector('.scene-btn.active')?.dataset.scene;
+            extraControls.forEach(({panel,scene:scenes})=>panel.hidden=question||!!scenes&&!scenes.split(',').includes(scene));
+            window.dispatchEvent(new Event('resize'));
+        }
+        tabs?.addEventListener('click',event=>{
+            const button=event.target.closest('[data-tab]');if(!button)return;
+            if(button.classList.contains('body-reference-tab')){
+                event.stopImmediatePropagation();focusButton.click();
+            }
+            requestAnimationFrame(updateMode);
+        },true);
+        document.addEventListener('click',event=>{if(event.target.closest('.scene-btn'))requestAnimationFrame(updateMode);});
+        explain.addEventListener('click',()=>{render();dialog.showModal();dialog.scrollTop=0;close.focus({preventScroll:true});});
         let exercise;
         if(quiz){exercise=document.createElement('div');exercise.className='school-body-exercise';quiz.before(exercise);}
         const simple = [
@@ -57,15 +133,34 @@
         function render(){
             const p=S.profile('body-'+app);
             subject.textContent=p.subject||'';subject.hidden=!p.subject;
-            const concept=document.getElementById('conceptList');
-            if(concept)concept.innerHTML=S.concepts(p);
+            lesson.innerHTML=S.concepts({...p,subject:''});window.LessonVisuals?.decorate(lesson,'body-'+app,S.value);
+            // The short recap repeats the full chapter. Keep its diagrams and
+            // authored unique details in one reading sequence.
+            const sections=lesson.querySelectorAll('.school-concepts');
+            if(sections.length>1){
+                const first=sections[0],full=sections[1];
+                first.querySelectorAll(':scope > p').forEach(n=>n.remove());
+                first.querySelector('h2')?.remove();
+                const paragraphs=full.querySelectorAll(':scope > p');
+                const diagrams=full.querySelectorAll(':scope > .lesson-visual');
+                (paragraphs[0]||full.querySelector('h2')).after(...first.childNodes);
+                if(paragraphs.length)paragraphs[paragraphs.length-1].after(...diagrams);
+                first.remove();
+            }
+            dialog.querySelector('.body-explanation-subject').textContent=p.subject||'';
+            references.querySelectorAll('.body-reference').forEach(details=>{
+                const button=tabs.querySelector('[data-tab="'+details.dataset.reference+'"]');
+                details.querySelector('summary').textContent=button.textContent;
+                details.hidden=S.value==='elementary'&&!(app==='excretion'&&details.dataset.reference==='table');
+            });
             const trap=document.getElementById('examTrapList');
-            if(trap)trap.innerHTML=S.concepts(p);
+            if(trap)trap.hidden=true;
             const topic=app==='skeleton'&&quiz?.dataset.quizFor==='muscle'&&S.value==='high'?'muscle':app;
             if(exercise)S.practice(exercise,window.BodyPractice.forLevel(topic,S.value),topic+':'+S.value);
             if(quiz)quiz.hidden=true;
             ['organEnzyme','organPH','organProduct'].forEach(id=>{const item=document.getElementById(id)?.closest('.meter-stat-item');if(item)item.hidden=S.value==='elementary';});
             selected();
+            updateMode();
         }
         if(desc&&title){const watch=new MutationObserver(selected);[desc,title].forEach(n=>watch.observe(n,{childList:true,subtree:true,characterData:true}));}
         S.subscribe(render);

@@ -2,7 +2,7 @@
 
 **전체 교과서 탐구 구현 완료로 판정하지 않는다. 104개 앱이나 교육과정의 261개 항목으로 출판사별 교과서 탐구를 모두 포함했다고 주장할 수 없다.**
 
-원문 절차를 직접 확인한 실험 단위 24개는 별도 수동 목록에 기록했다. 제목 추출이 놓친 파스퇴르·접촉 놀이도 추가했고, 상위 표제·수행 기능 라벨은 독립 실험 수에 더하지 않는다. 출판사별 중복 검토 전이므로 전체 총수는 미확정이다.
+원문 절차를 직접 확인한 실험 단위 49개는 별도 수동 목록에 기록했다. 제목 추출이 놓친 파스퇴르·접촉 놀이도 추가했고, 상위 표제·수행 기능 라벨은 독립 실험 수에 더하지 않는다. 출판사별 중복 검토 전이므로 전체 총수는 미확정이다.
 
 - 원소 카드 19장 배열과 빈칸 원소 예측: 764c91a83f8bf462 PDF 27, 28, 75, 77쪽 → mendeleev. 가상 실험이며 실물 수행 완료 판정 아님.
 - 백조목 플라스크의 배양액 비교: 43ac53e9e01adbcc PDF 8쪽 → pasteur. 실물 우유 재연은 별도 미구현. 가상 실험이며 실물 수행 완료 판정 아님.
@@ -28,6 +28,31 @@
 - 같은 양의 마른 콩·발아 콩에서 500초 CO₂·온도 비교: 88b3398d0063221f PDF 3쪽 → bean-respiration / sensors. 가상 실험이며 실물 수행 완료 판정 아님.
 - 발아 콩+물, 발아 콩+KOH, 마른 콩+KOH의 잉크 비교: 88b3398d0063221f PDF 4쪽 → bean-respiration / respirometer. 가상 실험이며 실물 수행 완료 판정 아님.
 - 발아 콩·삶은 콩의 보온병 온도 비교: 88b3398d0063221f PDF 4쪽 → bean-respiration / heat. 가상 실험이며 실물 수행 완료 판정 아님.
+- 단열재의 보온·보냉 비교: a09d07688dc197a9 PDF 6쪽 → insulation-lab / insulation-lab. 가상 실험이며 실물 수행 완료 판정 아님.
+- 움직이는 음원의 도플러 효과: 55ff1f88dea3080a PDF 17쪽 → doppler-lab / doppler-lab. 가상 실험이며 실물 수행 완료 판정 아님.
+- 놀이기구 운동과 가속도 센서: f3119695e8a726b3 PDF 5, 6쪽 → ride-acceleration / ride-acceleration. 가상 실험이며 실물 수행 완료 판정 아님.
+- DNA 복제 가닥 조립: de0c1acaeaa2453a PDF 8, 9쪽 → dna-replication / dna-replication. 가상 실험이며 실물 수행 완료 판정 아님.
+- 코돈을 읽어 단백질 합성하기: 3efaa8d5b5bd911f PDF 6, 7, 8, 9, 10쪽 → protein-synthesis / protein-synthesis. 가상 실험이며 실물 수행 완료 판정 아님.
+- 가계도로 X 염색체 유전 추론: cb057c78a9819273 PDF 6쪽 → pedigree-lab / pedigree-lab. 가상 실험이며 실물 수행 완료 판정 아님.
+- 염색체 짝짓기와 핵형 분석: 588b1a480be9f824 PDF 3, 4쪽 → karyotype-lab / karyotype-lab. 가상 실험이며 실물 수행 완료 판정 아님.
+- 추출액의 생장 억제 구역 비교: 28177f9b69b984c7 PDF 5, 6, 7, 8쪽 → antibiotic-disc / antibiotic-disc. 가상 실험이며 실물 수행 완료 판정 아님.
+- 해파 발생과 물 입자 운동: b5e30308f3b900f9 PDF 10, 11, 12, 13쪽 → water-wave-tank / water-wave-tank. 가상 실험이며 실물 수행 완료 판정 아님.
+- 은거울 반응과 작용기 변화: d395204181f8b5da PDF 1, 2, 3, 4쪽 → silver-mirror / silver-mirror. 가상 실험이며 실물 수행 완료 판정 아님.
+- 계면에서 나일론 합성하기: 0dad0a95c5350609 PDF 5, 6쪽 → nylon-interface / nylon-interface. 가상 실험이며 실물 수행 완료 판정 아님.
+- 쌍성 관측 자료의 질량–광도 관계: 7e5723f0cbf775d1 PDF 75, 137쪽 → stellar-mass-data / stellar-mass-data. 가상 실험이며 실물 수행 완료 판정 아님.
+- 성단 자료로 주계열 맞추기: cd2d1ced86d442d1 PDF 85, 122쪽 → cluster-fitting / cluster-fitting. 가상 실험이며 실물 수행 완료 판정 아님.
+- 중심별과 생명가능지대의 거리: 35d817a99ea28582 PDF 32, 33쪽 → habitable-orbits / habitable-orbits. 가상 실험이며 실물 수행 완료 판정 아님.
+- 원심분리기의 배치와 시료 분리: fbf365923abce545 PDF 28, 29쪽 → centrifuge-design / centrifuge-design. 가상 실험이며 실물 수행 완료 판정 아님.
+- 원자와 결합으로 작용기 만들기: e29dd9e46390ff6b PDF 3, 4, 5, 6쪽 → organic-builder / organic-builder. 가상 실험이며 실물 수행 완료 판정 아님.
+- 상보적 염기와 DNA 이중나선 만들기: fbf365923abce545 PDF 16, 18, 19, 131쪽 → dna-structure / dna-structure. 가상 실험이며 실물 수행 완료 판정 아님.
+- 두 폴리펩타이드의 연결과 접힘: fbf365923abce545 PDF 17, 18, 19, 133쪽 → protein-folding / protein-folding. 가상 실험이며 실물 수행 완료 판정 아님.
+- 미토콘드리아·엽록체의 막과 구획 만들기: fbf365923abce545 PDF 87, 107, 108, 118, 119쪽 → organelle-builder / organelle-builder. 가상 실험이며 실물 수행 완료 판정 아님.
+- 자료로 비교하는 하루의 에너지 출입: fbf365923abce545 PDF 59, 60, 61쪽 → energy-budget / energy-budget. 가상 실험이며 실물 수행 완료 판정 아님.
+- 수소 화합물의 끓는점과 분자 간 힘: 1be99a8dde753097 PDF 5, 6쪽 → hydride-boiling / hydride-boiling. 가상 실험이며 실물 수행 완료 판정 아님.
+- 같은 몰·질량·부피로 연료 비교하기: 965f45ec469d480f PDF 76, 77쪽 → fuel-comparison / fuel-comparison. 가상 실험이며 실물 수행 완료 판정 아님.
+- 광학 센서 연결·1분 수집·조건과 수집 간격 비교: bb3048667d79ef51 PDF 5, 6쪽 → mcu-sampling / pulse. 가상 실험이며 실물 수행 완료 판정 아님.
+- 같은 위치·음원에서 5분 소음 수집·차음 전후 비교: bb3048667d79ef51 PDF 7, 8쪽 → mcu-sampling / sound. 가상 실험이며 실물 수행 완료 판정 아님.
+- 수분 센서와 펌프로 자동 급수 설계하기: bb3048667d79ef51 PDF 9, 10, 11, 12쪽 → smart-pot / smart-pot. 가상 실험이며 실물 수행 완료 판정 아님.
 
 - 페이지 텍스트에서 찾은 제목 후보이며, 여러 쪽으로 갈라진 제목·이미지 제목·다른 명칭의 활동은 빠질 수 있다.
 - 동일 활동의 출판사별·교사용 판본 중복은 아직 수동 판정 전이다. 후보 수를 독립적인 필수실험 총수로 쓰지 않는다.

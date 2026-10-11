@@ -9,7 +9,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0008_1.jpg",
     "width": 3308,
     "height": 4307,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "edf51520f32e4c064e91ef957b3a048462ab6ccd8c4a6b4c510a13bb4c9b2b88",
+    "webpSha256": "2d1ea76cfdae46433d53d96cc537b9e5bea17445d9c608dc5efda4e63da94f2f",
+    "previewFile": "dragon-preview.webp",
+    "previewWidth": 922,
+    "previewHeight": 1200
   },
   {
     "name": "dragon",
@@ -21,7 +27,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0007_1.jpg",
     "width": 3149,
     "height": 3977,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "31980514d7e4821079bbd06461361c260e67b2e3c759956f06a57d0dd063e08e",
+    "webpSha256": "f8c201683841ff86441e45af01463faf46d1419adc2a6c36ae6b55020e5bed54",
+    "previewFile": "dragon-late-preview.webp",
+    "previewWidth": 950,
+    "previewHeight": 1200
   },
   {
     "name": "tiger",
@@ -33,7 +45,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0009_1.jpg",
     "width": 3317,
     "height": 4307,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "daf83501b8e71501747fc76f19711102e31992ca8945de8c9a300ee36dd7585f",
+    "webpSha256": "10a0c6820ec601cf01d3c40551e6ee971e68964bc911f710c0a337fdf678ebfd",
+    "previewFile": "tiger-preview.webp",
+    "previewWidth": 924,
+    "previewHeight": 1200
   },
   {
     "name": "tiger",
@@ -45,7 +63,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0008_1.jpg",
     "width": 3131,
     "height": 3992,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "387825c5cc14dd56cf0bf390ec6e59a4f17c51897b1aeda01db5164d2ea0b674",
+    "webpSha256": "51483505e6174d315c3538db1b5d03649c81d2c2af0883f5c5cfb5222dacf4f2",
+    "previewFile": "tiger-late-preview.webp",
+    "previewWidth": 941,
+    "previewHeight": 1200
   },
   {
     "name": "bird",
@@ -57,7 +81,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0010_1.jpg",
     "width": 3299,
     "height": 4295,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "04d6b597c4411b06235a531242970bcabf7728a837c4d5a8081b0d19ba66c763",
+    "webpSha256": "e4c373971af1071b9c4df0ceab51c5340450aea32ea78ede7924b7447cc9410f",
+    "previewFile": "bird-preview.webp",
+    "previewWidth": 922,
+    "previewHeight": 1200
   },
   {
     "name": "bird",
@@ -69,7 +99,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0009_1.jpg",
     "width": 3140,
     "height": 3986,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "92716bbd8de828a8594b873121dd177d56ec01b637570370deb1bbde71a4aacf",
+    "webpSha256": "5a6051777985e7daac02f2d5f61c3b9a98162686111b253773e1b5887d465fb6",
+    "previewFile": "bird-late-preview.webp",
+    "previewWidth": 945,
+    "previewHeight": 1200
   },
   {
     "name": "tortoise",
@@ -81,7 +117,13 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0011_1.jpg",
     "width": 3347,
     "height": 4290,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "b44e7dd810b2373b856f962b5c8cbf0548d64cba7986c01bff009327d4c22a76",
+    "webpSha256": "09c64e2231e7e7e48104a0001cca0119ef4d9b282f4b6d3d5b58d576321e3da7",
+    "previewFile": "tortoise-preview.webp",
+    "previewWidth": 936,
+    "previewHeight": 1200
   },
   {
     "name": "tortoise",
@@ -93,6 +135,12 @@
     "image": "https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0010_1.jpg",
     "width": 3104,
     "height": 3968,
-    "license": "KOGL Type 4: attribution, noncommercial, no derivatives"
+    "license": "KOGL Type 4: attribution, noncommercial, no derivatives",
+    "displayFormat": "WebP lossless (VP8L); decoded source pixels, dimensions and embedded color profile retained",
+    "sourceSha256": "50690f942380fc88e84c59021c695dd106c4fc515c6c2b20d7c0610881ae3fc8",
+    "webpSha256": "8b0d2197ecd512f37b5118fb1779abcb95e1407cff46906195d99246829911ab",
+    "previewFile": "tortoise-late-preview.webp",
+    "previewWidth": 939,
+    "previewHeight": 1200
   }
 ]

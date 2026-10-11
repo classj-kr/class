@@ -8,10 +8,13 @@ import argparse
 from collections import deque
 import json
 import math
+import re
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from pypdf import PdfReader
+from shapely.geometry import Polygon, MultiPolygon, mapping
+from history_pixel_topology import repair_regions, polygons, rounded_line
 
 
 def fill_holes(mask):
@@ -169,18 +172,54 @@ def main(args):
             if scene['id']=='silla-sixth' and name=='신라':
                 outline = np.array(scene['temporaryRing'])
                 regions.append({'name':'진흥왕 때 진출했다가 이후 상실한 북방','color':2,'pattern':'hatch','ring':geo(outline),'sourcePixelRing':outline.tolist()})
+        base = [area for area in regions if not area.get('pattern')]
+        repaired, topology_audit = repair_regions([area['sourcePixelRing'] for area in base],
+            annotation_holes=scene.get('annotationHoles', []),
+            overlap_priority=[next(i for i,a in enumerate(base) if a['name'] == name)
+                              for name in scene.get('overlapPriority', [])],
+            annotation_seams=scene.get('annotationSeams', []),
+            connected_regions=[next(i for i,a in enumerate(base) if a['name'] == name)
+                               for name in scene.get('connectedRegions', [])])
+        def registered(geometry):
+            parts = [Polygon(geo(p.exterior.coords), [geo(r.coords) for r in p.interiors])
+                     for p in polygons(geometry)]
+            return parts[0] if len(parts) == 1 else MultiPolygon(parts)
+        # Retain pixel coordinates for reproducible visual review, but ship the
+        # shared registered geometry. A legacy primary ring remains compatible
+        # with the original standalone overlay generator.
+        preview = image.copy()
+        draw = ImageDraw.Draw(preview)
+        for area, geometry in zip(base, repaired):
+            area['sourceGeometry'] = mapping(geometry)
+            area['geometry'] = mapping(registered(geometry))
+            area['ring'] = geo(max(polygons(geometry), key=lambda p:p.area).exterior.coords)
+            for p in polygons(geometry):
+                draw.line(list(p.exterior.coords), fill='#c90000', width=1)
+        for area in regions:
+            if area.get('pattern'):
+                from shapely.geometry import LineString
+                geometry = Polygon(rounded_line(LineString(area['sourcePixelRing'])))
+                owner = repaired[next(i for i,a in enumerate(base) if a['color'] == area['color'])]
+                geometry = geometry.intersection(owner)
+                area['sourceGeometry'] = mapping(geometry)
+                area['geometry'] = mapping(registered(geometry))
+                area['ring'] = geo(max(polygons(geometry), key=lambda p:p.area).exterior.coords)
         for c in scene['controls']:
             x,y = c['pixel']
             draw.ellipse((x-3,y-3,x+3,y+3),outline='#ff0000',width=1)
-        preview.save(review/(scene['id']+'-trace.jpg'),quality=90)
-        results['scenes'][scene['id']] = {'referencePage':scene['page']+1,'controls':scene['controls'],'areas':regions}
+        preview.resize((image.width*2,image.height*2)).save(review/(scene['id']+'-trace.webp'),lossless=True)
+        results['scenes'][scene['id']] = {'referencePage':scene['page']+1,'controls':scene['controls'],
+                                        'topology':topology_audit,'areas':regions}
         print(scene['id'],[(r['name'],len(r['ring'])) for r in regions])
     Path(args.output).write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     if args.app_output:
         for scene in results['scenes'].values():
             for area in scene['areas']:
                 area.pop('sourcePixelRing',None)
-        Path(args.app_output).write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+                area.pop('sourceGeometry',None)
+        text = json.dumps(results,ensure_ascii=False,indent=2)
+        text = re.sub(r'\[\s*(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)\s*\]', r'[\1, \2]', text)
+        Path(args.app_output).write_text(text+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':

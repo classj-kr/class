@@ -1,0 +1,730 @@
+[
+  {
+    "key": "space-zodiac",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "night-direction",
+        "title": "계절마다 달라지는 밤의 방향"
+      }
+    ]
+  },
+  {
+    "key": "space-zodiac",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "night-direction",
+        "title": "계절마다 달라지는 밤의 방향"
+      }
+    ]
+  },
+  {
+    "key": "space-zodiac",
+    "level": "high",
+    "figures": [
+      {
+        "id": "night-direction",
+        "title": "계절마다 달라지는 밤의 방향"
+      },
+      {
+        "id": "ecliptic-tilt",
+        "title": "황도와 천구 적도의 기울기"
+      }
+    ]
+  },
+  {
+    "key": "space-north-sky",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "north-rotation",
+        "title": "북극성 주변의 별 움직임"
+      }
+    ]
+  },
+  {
+    "key": "space-north-sky",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "north-rotation",
+        "title": "북극성 주변의 별 움직임"
+      }
+    ]
+  },
+  {
+    "key": "space-north-sky",
+    "level": "high",
+    "figures": [
+      {
+        "id": "north-rotation",
+        "title": "북극성 주변의 별 움직임"
+      },
+      {
+        "id": "latitude-altitude",
+        "title": "위도와 북극성의 고도"
+      }
+    ]
+  },
+  {
+    "key": "space-star-motion",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "two-timescales",
+        "title": "하룻밤과 계절의 변화 비교"
+      }
+    ]
+  },
+  {
+    "key": "space-star-motion",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "two-timescales",
+        "title": "하룻밤과 계절의 변화 비교"
+      }
+    ]
+  },
+  {
+    "key": "space-star-motion",
+    "level": "high",
+    "figures": [
+      {
+        "id": "two-timescales",
+        "title": "하룻밤과 계절의 변화 비교"
+      },
+      {
+        "id": "sidereal-day",
+        "title": "항성일과 평균 태양일"
+      }
+    ]
+  },
+  {
+    "key": "space-celestial-sphere",
+    "level": "high",
+    "figures": [
+      {
+        "id": "meridian-altitude",
+        "title": "자오선에서 읽는 고도"
+      },
+      {
+        "id": "meridian-formula",
+        "title": "위도와 적위로 계산하기"
+      }
+    ]
+  },
+  {
+    "key": "space-star-properties",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "star-temperature",
+        "title": "별의 색과 표면 온도"
+      },
+      {
+        "id": "brightness-distance",
+        "title": "거리가 두 배이면 받는 빛은?"
+      }
+    ]
+  },
+  {
+    "key": "space-star-properties",
+    "level": "high",
+    "figures": [
+      {
+        "id": "star-temperature",
+        "title": "별의 색과 표면 온도"
+      },
+      {
+        "id": "brightness-distance",
+        "title": "거리가 두 배이면 받는 빛은?"
+      },
+      {
+        "id": "hr-regions",
+        "title": "온도와 광도를 함께 읽는 H-R도"
+      }
+    ]
+  },
+  {
+    "key": "space-stellar-life",
+    "level": "high",
+    "figures": [
+      {
+        "id": "stellar-branches",
+        "title": "처음 질량에 따라 갈라지는 변화"
+      },
+      {
+        "id": "hr-evolution",
+        "title": "태양 정도 질량의 별이 거성으로 변할 때"
+      }
+    ]
+  },
+  {
+    "key": "space-earth-motion",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "moon-appearances",
+        "title": "여러 날 관찰한 달의 모습"
+      },
+      {
+        "id": "moon-orbit-period",
+        "title": "낮과 밤이 바뀌는 까닭"
+      }
+    ]
+  },
+  {
+    "key": "space-earth-motion",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "moon-appearances",
+        "title": "여러 날 관찰한 달의 모습"
+      },
+      {
+        "id": "moon-orbit-period",
+        "title": "달의 위상과 관측 시각"
+      }
+    ]
+  },
+  {
+    "key": "space-earth-motion",
+    "level": "high",
+    "figures": [
+      {
+        "id": "moon-appearances",
+        "title": "여러 날 관찰한 달의 모습"
+      },
+      {
+        "id": "moon-orbit-period",
+        "title": "같은 별 기준과 같은 위상 기준"
+      }
+    ]
+  },
+  {
+    "key": "space-sun-path",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "seasonal-sun-arcs",
+        "title": "우리나라의 계절별 태양 경로"
+      }
+    ]
+  },
+  {
+    "key": "space-sun-path",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "seasonal-sun-arcs",
+        "title": "우리나라의 계절별 태양 경로"
+      }
+    ]
+  },
+  {
+    "key": "space-sun-path",
+    "level": "high",
+    "figures": [
+      {
+        "id": "seasonal-sun-arcs",
+        "title": "우리나라의 계절별 태양 경로"
+      },
+      {
+        "id": "sun-altitude-comparison",
+        "title": "북위 37.5°에서 남중 고도"
+      }
+    ]
+  },
+  {
+    "key": "space-eclipses",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "eclipse-order",
+        "title": "일식과 월식의 천체 배열"
+      }
+    ]
+  },
+  {
+    "key": "space-eclipses",
+    "level": "high",
+    "figures": [
+      {
+        "id": "eclipse-order",
+        "title": "일식과 월식의 천체 배열"
+      }
+    ]
+  },
+  {
+    "key": "body-digestion",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "food-path",
+        "title": "음식물이 지나가는 길"
+      },
+      {
+        "id": "nutrient-route",
+        "title": "흡수한 영양소가 몸으로"
+      }
+    ]
+  },
+  {
+    "key": "body-digestion",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "food-path",
+        "title": "음식물이 지나가는 길"
+      },
+      {
+        "id": "nutrient-route",
+        "title": "소화와 흡수의 차이"
+      }
+    ]
+  },
+  {
+    "key": "body-digestion",
+    "level": "high",
+    "figures": [
+      {
+        "id": "food-path",
+        "title": "음식물이 지나가는 길"
+      },
+      {
+        "id": "nutrient-route",
+        "title": "흡수 뒤에 갈라지는 운반 경로"
+      }
+    ]
+  },
+  {
+    "key": "body-circulation",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "closed-circulation",
+        "title": "폐와 온몸을 잇는 혈액 순환"
+      },
+      {
+        "id": "blood-cargo",
+        "title": "혈액이 운반하는 물질"
+      }
+    ]
+  },
+  {
+    "key": "body-circulation",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "closed-circulation",
+        "title": "폐와 온몸을 잇는 혈액 순환"
+      },
+      {
+        "id": "blood-cargo",
+        "title": "혈액이 운반하는 물질"
+      }
+    ]
+  },
+  {
+    "key": "body-circulation",
+    "level": "high",
+    "figures": [
+      {
+        "id": "closed-circulation",
+        "title": "폐와 온몸을 잇는 혈액 순환"
+      },
+      {
+        "id": "blood-cargo",
+        "title": "혈액이 운반하는 물질"
+      }
+    ]
+  },
+  {
+    "key": "body-respiration",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "ventilation",
+        "title": "들이쉴 때와 내쉴 때"
+      },
+      {
+        "id": "gas-exchange",
+        "title": "폐에서 기체가 이동하는 방향"
+      }
+    ]
+  },
+  {
+    "key": "body-respiration",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "ventilation",
+        "title": "들이쉴 때와 내쉴 때"
+      },
+      {
+        "id": "gas-exchange",
+        "title": "폐에서 기체가 이동하는 방향"
+      }
+    ]
+  },
+  {
+    "key": "body-respiration",
+    "level": "high",
+    "figures": [
+      {
+        "id": "ventilation",
+        "title": "들이쉴 때와 내쉴 때"
+      },
+      {
+        "id": "gas-exchange",
+        "title": "폐에서 기체가 이동하는 방향"
+      }
+    ]
+  },
+  {
+    "key": "body-excretion",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "urine-path",
+        "title": "콩팥에서 몸 밖으로"
+      }
+    ]
+  },
+  {
+    "key": "body-excretion",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "urine-path",
+        "title": "콩팥에서 몸 밖으로"
+      },
+      {
+        "id": "nephron-exchange",
+        "title": "혈액과 세뇨관 사이의 이동"
+      }
+    ]
+  },
+  {
+    "key": "body-excretion",
+    "level": "high",
+    "figures": [
+      {
+        "id": "urine-path",
+        "title": "콩팥에서 몸 밖으로"
+      },
+      {
+        "id": "nephron-exchange",
+        "title": "혈액과 세뇨관 사이의 이동"
+      }
+    ]
+  },
+  {
+    "key": "body-nervous",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "reflex-route",
+        "title": "반사 경로와 뇌로 전달되는 정보"
+      }
+    ]
+  },
+  {
+    "key": "body-nervous",
+    "level": "high",
+    "figures": [
+      {
+        "id": "reflex-route",
+        "title": "반사 경로와 뇌로 전달되는 정보"
+      },
+      {
+        "id": "neuron-synapse",
+        "title": "한 뉴런 안의 전도와 세포 사이 전달"
+      }
+    ]
+  },
+  {
+    "key": "body-homeostasis",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "glucose-feedback",
+        "title": "혈당량 변화에 따른 두 조절 경로"
+      },
+      {
+        "id": "heat-loss",
+        "title": "땀과 열의 이동"
+      }
+    ]
+  },
+  {
+    "key": "body-homeostasis",
+    "level": "high",
+    "figures": [
+      {
+        "id": "glucose-feedback",
+        "title": "혈당량 변화에 따른 두 조절 경로"
+      },
+      {
+        "id": "heat-loss",
+        "title": "땀과 열의 이동"
+      }
+    ]
+  },
+  {
+    "key": "body-immune",
+    "level": "high",
+    "figures": [
+      {
+        "id": "antibody-memory",
+        "title": "같은 항원에 대한 1차·2차 반응"
+      },
+      {
+        "id": "immune-cell-roles",
+        "title": "후천면역에서 세포의 역할"
+      }
+    ]
+  },
+  {
+    "key": "body-skeleton",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "arm-muscles",
+        "title": "팔을 굽히고 펼 때의 근육"
+      }
+    ]
+  },
+  {
+    "key": "matter-states",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "states-structure",
+        "title": "세 상태의 모양과 배열"
+      }
+    ]
+  },
+  {
+    "key": "matter-states",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "states-structure",
+        "title": "세 상태의 모양과 배열"
+      }
+    ]
+  },
+  {
+    "key": "matter-states",
+    "level": "high",
+    "figures": [
+      {
+        "id": "states-structure",
+        "title": "세 상태의 모양과 배열"
+      }
+    ]
+  },
+  {
+    "key": "matter-phase",
+    "level": "elementary",
+    "figures": [
+      {
+        "id": "phase-directions",
+        "title": "상태 변화와 열의 이동"
+      }
+    ]
+  },
+  {
+    "key": "matter-phase",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "phase-directions",
+        "title": "상태 변화와 열의 이동"
+      },
+      {
+        "id": "heating-plateaus",
+        "title": "열을 계속 주어도 온도가 일정한 구간"
+      }
+    ]
+  },
+  {
+    "key": "matter-phase",
+    "level": "high",
+    "figures": [
+      {
+        "id": "phase-directions",
+        "title": "상태 변화와 열의 이동"
+      },
+      {
+        "id": "heating-plateaus",
+        "title": "열을 계속 주어도 온도가 일정한 구간"
+      }
+    ]
+  },
+  {
+    "key": "matter-gas",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "gas-compression",
+        "title": "같은 온도에서 기체를 압축하면"
+      }
+    ]
+  },
+  {
+    "key": "matter-gas",
+    "level": "high",
+    "figures": [
+      {
+        "id": "gas-compression",
+        "title": "같은 온도에서 기체를 압축하면"
+      },
+      {
+        "id": "gas-conditions",
+        "title": "다른 조건을 고정한 뒤 비교"
+      }
+    ]
+  },
+  {
+    "key": "matter-atom",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "ion-electrons",
+        "title": "전자를 잃어도 양성자 수는 그대로"
+      }
+    ]
+  },
+  {
+    "key": "matter-atom",
+    "level": "high",
+    "figures": [
+      {
+        "id": "ion-electrons",
+        "title": "전자를 잃어도 양성자 수는 그대로"
+      },
+      {
+        "id": "isotope-comparison",
+        "title": "동위 원소는 중성자 수가 다르다"
+      }
+    ]
+  },
+  {
+    "key": "matter-orbital",
+    "level": "high",
+    "figures": [
+      {
+        "id": "orbital-density",
+        "title": "오비탈의 중앙 단면 비교"
+      }
+    ]
+  },
+  {
+    "key": "matter-config",
+    "level": "high",
+    "figures": [
+      {
+        "id": "hund-orbitals",
+        "title": "2p 전자를 채우는 순서"
+      }
+    ]
+  },
+  {
+    "key": "matter-bond",
+    "level": "high",
+    "figures": [
+      {
+        "id": "bond-dipoles",
+        "title": "결합 방향과 분자 전체의 극성"
+      }
+    ]
+  },
+  {
+    "key": "matter-classify",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "substance-types",
+        "title": "물질의 종류와 구성 원소를 따로 비교"
+      }
+    ]
+  },
+  {
+    "key": "matter-classify",
+    "level": "high",
+    "figures": [
+      {
+        "id": "substance-types",
+        "title": "물질의 종류와 구성 원소를 따로 비교"
+      }
+    ]
+  },
+  {
+    "key": "matter-reaction",
+    "level": "middle",
+    "figures": [
+      {
+        "id": "reaction-atoms",
+        "title": "반응 전후의 원자 수 비교"
+      }
+    ]
+  },
+  {
+    "key": "matter-reaction",
+    "level": "high",
+    "figures": [
+      {
+        "id": "reaction-atoms",
+        "title": "반응 전후의 원자 수 비교"
+      },
+      {
+        "id": "limiting-reagent",
+        "title": "넣은 양과 반응한 양 구분"
+      }
+    ]
+  },
+  {
+    "key": "matter-solution",
+    "level": "high",
+    "figures": [
+      {
+        "id": "dilution",
+        "title": "희석 전후에 같은 것은 용질의 양"
+      }
+    ]
+  },
+  {
+    "key": "matter-equilibrium",
+    "level": "high",
+    "figures": [
+      {
+        "id": "equilibrium-rates",
+        "title": "평형에서 같아지는 두 반응 속도"
+      }
+    ]
+  },
+  {
+    "key": "matter-acid",
+    "level": "high",
+    "figures": [
+      {
+        "id": "neutralisation-ions",
+        "title": "반응하는 이온과 남는 이온"
+      }
+    ]
+  },
+  {
+    "key": "matter-redox",
+    "level": "high",
+    "figures": [
+      {
+        "id": "redox-electrons",
+        "title": "잃은 전자 수와 얻은 전자 수"
+      }
+    ]
+  }
+]

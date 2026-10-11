@@ -1,6 +1,7 @@
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path"),http=require("node:http"),vm=require("node:vm"),pp=require("puppeteer-core");
 const root=path.resolve(__dirname,".."),course="learning/inquiry/information-computing/computer-fundamentals",out=path.resolve(root,process.env.EDITION_OUTPUT||"docs/computer-edition");
 const { startHarness } = require("./site-storage-harness.cjs");
+const screenshotWebp = require("./screenshot-webp.cjs");
 const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,course,"lessons/index-data.js"),"utf8"),context);
 const index=context.window.COMPUTER_LESSON_INDEX;
 const data={};for(const group of ["abc","de","fg","h","ij"]){const c={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,course,"textbook/edition-"+group+".js"),"utf8"),c);Object.assign(data,c.window.COMPUTER_EDITION_DATA);}
@@ -48,7 +49,7 @@ let browser;const results=[],failures=[];try{
  browser=await pp.launch({executablePath:process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe",headless:true,args:["--no-first-run","--no-default-browser-check"]});
  const page=await browser.newPage();page.setDefaultTimeout(5000);await page.setCookie({name:"test_user",value:"1",url:h.base});let errors=[];
  page.on("pageerror",e=>errors.push(e.message));page.on("response",r=>{if(r.status()>=400)errors.push(r.status()+" "+r.url());});
- const screenshot=async options=>{for(let attempt=0;;attempt++){try{return await page.screenshot(options);}catch(error){if(attempt>=2)throw error;await new Promise(resolve=>setTimeout(resolve,200));}}};
+ const screenshot=async options=>{for(let attempt=0;;attempt++){try{return await screenshotWebp(page,options);}catch(error){if(attempt>=2)throw error;await new Promise(resolve=>setTimeout(resolve,200));}}};
  const go=async view=>{await page.click('.edition-nav [data-page="'+view+'"]');await page.waitForFunction(v=>!document.getElementById("edition-"+v).hidden,{},view);};
  const click=async selector=>{const handles=await page.$$(selector);for(const handle of handles){if(await handle.evaluate(e=>!!e.getBoundingClientRect().width&&!e.disabled)){await handle.click();if(await handle.evaluate(e=>!!e.closest('#editionLab'))){await new Promise(resolve=>setTimeout(resolve,40));}return;}}throw Error("No enabled visible control: "+selector);};
  const value=async(selector,text)=>page.$eval(selector,(el,text)=>{el.value=text;el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}));},text);
@@ -137,9 +138,9 @@ let browser;const results=[],failures=[];try{
    for(const view of ["read","lab","apply","check"]){await go(view);
     const layout=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,top:document.querySelector(".edition-page:not([hidden])").getBoundingClientRect().top}));
     record.layouts.push({view,...layout});if(id==="j02"&&view==="lab")assert.equal(await page.$eval(".program-flow .flow-branch",e=>getComputedStyle(e).transform),"none","branch text stays upright");assert.ok(layout.scrollWidth<=width+1,"overflow "+width+" "+view);
-    if(width===1440&&view==="read"){await screenshot({path:path.join(out,id+"-read-1440.png"),fullPage:true});assert.ok(layout.top<160,"compact header");}
-    if(width===390&&view==="lab")await screenshot({path:path.join(out,id+"-lab-390.png"),fullPage:true});
-    if((width===1440||width===390)&&view==="apply")await screenshot({path:path.join(out,id+"-apply-"+width+".png"),fullPage:true});
+    if(width===1440&&view==="read"){await screenshot({path:path.join(out,id+"-read-1440.webp"),fullPage:true});assert.ok(layout.top<160,"compact header");}
+    if(width===390&&view==="lab")await screenshot({path:path.join(out,id+"-lab-390.webp"),fullPage:true});
+    if((width===1440||width===390)&&view==="apply")await screenshot({path:path.join(out,id+"-apply-"+width+".webp"),fullPage:true});
    }
   }
   await page.setViewport({width:1440,height:1000});
@@ -178,7 +179,8 @@ assert.equal(await read("#editionProgress"),"0 / 3");
   assert.equal(status,200);
   await page.goto(base+"lessons/?lesson=e02#apply",{waitUntil:"networkidle0"});await page.waitForSelector("#edition");
   assert.equal(await read("#editionProgress"),"0 / 3");
-  for(const i of [1,3])assert.equal(await page.$eval('[data-question="'+i+'"]',e=>e.dataset.solved),"true");
+  assert.equal(await page.$eval('[data-question="1"]',e=>e.dataset.solved),"true");
+  assert.equal(await page.$eval('[data-question="3"]',e=>e.dataset.solved),"false");
   assert.equal(await page.$eval('[data-question="0"]',e=>e.dataset.solved),"false","새 실습 해석 문항은 이전 판의 정답을 물려받지 않는다");
   assert.equal(await page.$eval('[data-question="2"]',e=>e.dataset.solved),"false");
   assert.equal(await page.$eval('[data-question="4"]',e=>e.dataset.solved),"false","새 확장자 판단 문항도 이전 정답을 물려받지 않는다");
@@ -186,7 +188,8 @@ assert.equal(await read("#editionProgress"),"0 / 3");
   await page.waitForFunction(async()=>{const data=await(await fetch('/api/me/storage/computer-literacy')).json();return data.items['classj:textbook:e02:v1']?.answers[2]?.revision===2;},{polling:100,timeout:10000});
   const migrated=(await h.items("computer-literacy"))["classj:textbook:e02:v1"];
   assert.equal(migrated.completed,false);assert.equal(migrated.answers[2].attempts,0);
-  for(const i of [1,3])assert.equal(migrated.answers[i].attempts,1);
+  assert.equal(migrated.answers[1].attempts,1);
+  assert.equal(migrated.answers[3].attempts,0);
   assert.equal(migrated.answers[4].attempts,0);
  }
  fs.writeFileSync(path.join(out,selectedIds?"verification-"+selectedIds.join("-")+".json":"verification.json"),JSON.stringify({date:new Date().toISOString(),results,failures,firstLessonRoute:true,storageChecks:true},null,2));

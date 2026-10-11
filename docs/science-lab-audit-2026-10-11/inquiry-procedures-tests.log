@@ -1,0 +1,21 @@
+✔ heat transfer: approach ambient from either side, with volume and thickness controlled (0.6528ms)
+✔ moving source: wavelength times observed frequency remains the medium sound speed (0.1796ms)
+✔ motion acceleration agrees with finite differences and sensor support (0.2975ms)
+✔ DNA construction preserves templates, antiparallel synthesis, primers and ligation order (1.7138ms)
+✔ translation: reading frame, synonymous substitution, termination, cell-free exception (0.2968ms)
+✔ pedigree: X inheritance and conditioning are independent of child order (0.2191ms)
+✔ karyotype: all cards conserved when moving, X/Y pairing, extra autosome is retained (3.0719ms)
+✔ disc assay: control stays zero, geometry detects overlap, preincubation shows no inhibition (0.3408ms)
+✔ water waves: dispersion limits, bottom boundary and closed linear particle orbits (0.4236ms)
+✔ silver mirror: precipitation is distinct from metal reduction, with a water control (0.2538ms)
+✔ interfacial polymer model: alternating functional groups conserve chain ends and HCl (0.2085ms)
+✔ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (13679.1056ms)
+✔ webkit: source-backed actions, wrong choices, reset, diagnosis and mobile (30581.922ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44331.0087

@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-11",
+  "scope": "태양계 별도 설명 외 우주 9개·인체 8개·물질 13개 주제의 설명용 그림 추가",
+  "topics": 30,
+  "availableSchoolVariants": 60,
+  "figureInstances": 92,
+  "verification": {
+    "unitTests": 25,
+    "unitFailures": 0,
+    "layoutVariants": 120,
+    "layoutWidths": [
+      740,
+      320
+    ],
+    "layoutIssues": 0,
+    "bodyDialogRoutes": 8,
+    "schoolSwitch": "순환계 초 → 중에서 사방/심실 구조 교체 및 기존 문제 탭 작동 확인",
+    "actualPages": [
+      "human-body/circulation",
+      "human-body/digestion",
+      "human-body/excretion",
+      "human-body/respiration",
+      "human-body/nervous",
+      "human-body/homeostasis",
+      "human-body/immune",
+      "human-body/skeleton",
+      "space/earth-moon?topic=earth-motion",
+      "periodic-table 반응식·몰비·질량 보존"
+    ]
+  },
+  "maps": "국내 지도 study-visuals.js와 세계 지도 atlas-visuals.mjs, 실제 지도 레이어가 기존 설명에 연결되어 있음을 코드로 확인. 이번 변경에서 지도 내용 전수 검증 또는 지도 수정은 하지 않음.",
+  "sources": [
+    "기존 SchoolContent 및 SchoolLessons의 교과서 기반 설명",
+    "tmp/model-completion-audit/source-0.json ~ source-7.json: 수집한 2022 교과서 추출문",
+    "references/moe/2022-revised-curriculum/extracted/09-science.txt"
+  ],
+  "limits": [
+    "배포 전 로컬 변경",
+    "60개 변형의 그림 레이아웃 검사와 대표 실제 경로 연결 검사이며 모든 모형 동작을 다시 전수 검사한 것은 아님"
+  ],
+  "images": [
+    {
+      "file": "body-elementary.webp",
+      "size": [
+        1280,
+        720
+      ],
+      "lossless": true
+    },
+    {
+      "file": "body-middle.webp",
+      "size": [
+        1280,
+        720
+      ],
+      "lossless": true
+    },
+    {
+      "file": "moon-high.webp",
+      "size": [
+        1280,
+        720
+      ],
+      "lossless": true
+    },
+    {
+      "file": "reaction-high.webp",
+      "size": [
+        1265,
+        712
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-0.webp",
+      "size": [
+        1265,
+        1573
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-1.webp",
+      "size": [
+        1265,
+        1969
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-2.webp",
+      "size": [
+        1265,
+        1921
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-3.webp",
+      "size": [
+        1265,
+        1910
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-4.webp",
+      "size": [
+        1265,
+        1479
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-5.webp",
+      "size": [
+        1265,
+        1263
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-6.webp",
+      "size": [
+        1265,
+        1238
+      ],
+      "lossless": true
+    },
+    {
+      "file": "sheet-7.webp",
+      "size": [
+        1280,
+        720
+      ],
+      "lossless": true
+    }
+  ]
+}

@@ -36,6 +36,6 @@ output('question-quality-review.md',`# 객관식 문항 재작성 — 2026-10-11
 - 내용 해시 검사는 변경 기록과 현재 파일의 일치만 확인한다. 과학적 정확성은 위 내용 검토와 구별한다.
 - [렌즈 문항 모바일 화면](question-quality-assessment-final-v2/lens-image-question-chromium-390.webp). 모든 신규 캡처는 WebP다.
 
-실험 경로는 현재 121개이며 104개는 목표나 상한이 아니다. 교육과정 활동과 교과서의 독립 실험은 다른 단위다. 전체 필수실험 총수와 전수 포함 여부는 아직 확정하지 않았다.
+실험 경로는 현재 ${Object.keys(require('../learning/inquiry/science-lab/curriculum-map.js')).length}개이며 104개는 목표나 상한이 아니다. 교육과정 활동과 교과서의 독립 실험은 다른 단위다. 전체 필수실험 총수와 전수 포함 여부는 아직 확정하지 않았다.
 `);
 console.log(JSON.stringify({check,...c}));

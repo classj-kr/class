@@ -135,7 +135,8 @@
                 explanation.showModal();
                 explainButton.setAttribute('aria-expanded', 'true');
                 document.body.classList.add('topic-explanation-open');
-                closeButton.focus();
+                closeButton.focus({preventScroll:true});
+                explanation.querySelector('.topic-explanation-body').scrollTop = 0;
                 window.dispatchEvent(new Event('resize'));
             });
             closeButton.addEventListener('click', () => explanation.close());
@@ -166,7 +167,7 @@
         const buttons = Array.from(nav.querySelectorAll('.nav-tab')).filter(button => {
             button.dataset.topicView = button.dataset.tab === 'sim' ? 'observe' : button.dataset.tab === 'quiz' ? 'quiz' : 'concept';
             if (button.dataset.topicView === 'concept') { button.remove(); return false; }
-            if (button.dataset.topicView === 'observe' && !hasObservation) button.textContent = '탐구';
+            button.textContent=button.dataset.topicView==='quiz'?'문제':'모형';
             return true;
         });
         function show(view, save) {

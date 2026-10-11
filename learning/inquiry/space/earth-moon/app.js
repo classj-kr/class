@@ -872,44 +872,9 @@
                 disk.renderOrder = 20;
                 marker.add(disk);
 
-                const bodyMat = new THREE.MeshBasicMaterial({ color: 0xf97316 });
-                const skinMat = new THREE.MeshBasicMaterial({ color: 0xffb35c });
-                const hatMat = new THREE.MeshBasicMaterial({ color: 0xfacc15 });
-                const hatBandMat = new THREE.MeshBasicMaterial({ color: 0x7c2d12 });
-
-                const leftLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.75, 10), bodyMat);
-                const rightLeg = leftLeg.clone();
-                leftLeg.position.set(-0.22, 0.43, 0);
-                rightLeg.position.set(0.22, 0.43, 0);
-                marker.add(leftLeg, rightLeg);
-
-                const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.46, 0.9, 12), bodyMat);
-                torso.position.y = 1.15;
-                marker.add(torso);
-
-                const leftArm = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.72, 10), bodyMat);
-                const rightArm = leftArm.clone();
-                leftArm.position.set(-0.48, 1.2, 0);
-                rightArm.position.set(0.48, 1.2, 0);
-                leftArm.rotation.z = -0.42;
-                rightArm.rotation.z = 0.42;
-                marker.add(leftArm, rightArm);
-
-                const head = new THREE.Mesh(new THREE.SphereGeometry(0.42, 18, 18), skinMat);
-                head.position.y = 1.92;
-                marker.add(head);
-
-                const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.7, 0.12, 24), hatMat);
-                brim.position.y = 2.22;
-                marker.add(brim);
-
-                const band = new THREE.Mesh(new THREE.CylinderGeometry(0.44, 0.44, 0.12, 24), hatBandMat);
-                band.position.y = 2.34;
-                marker.add(band);
-
-                const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.45, 0.48, 24), hatMat);
-                crown.position.y = 2.55;
-                marker.add(crown);
+                const figure = window.EarthObserver.create();
+                marker.add(figure);
+                marker.userData.figure = figure;
 
                 return marker;
             }
@@ -941,16 +906,8 @@
                     currentObserverKey === 'equator' ? '적도' :
                     currentObserverKey === 'north' ? '북극' : '한국';
                 currentObserverLatitude = location.latitude;
-                const latitudeRad = location.latitude * (Math.PI / 180);
-                const surfaceRadius = 10.3;
-                const surfaceNormal = new THREE.Vector3(
-                    0,
-                    Math.sin(latitudeRad),
-                    Math.cos(latitudeRad)
-                ).normalize();
-
-                observerMarker.position.copy(surfaceNormal.clone().multiplyScalar(surfaceRadius));
-                observerMarker.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), surfaceNormal);
+                window.EarthObserver.place(observerMarker, observerMarker.userData.figure,
+                    location.latitude, Math.PI / 2, 10.3);
 
                 if (observerDiskMaterial && observerDiskTextures[locationKey]) {
                     observerDiskMaterial.map = observerDiskTextures[locationKey];

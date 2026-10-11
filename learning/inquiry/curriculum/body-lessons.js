@@ -91,6 +91,19 @@
                 'A대는 마이오신 필라멘트의 길이에 해당하므로 수축 중에도 일정합니다. 액틴만 있는 I대와 마이오신만 있는 H대는 짧아지고, 충분히 수축하면 H대가 사라질 수 있습니다. 액틴이 근절의 중심 쪽으로 미끄러짐에 따라 두 Z선 사이의 거리가 줄어들어 근절 전체가 짧아집니다.']
         }
     };
+    // Merge the recap's unique facts into the full chapter before the recap is
+    // removed from the reading view. Keep the source profiles available to quizzes.
+    extra.digestion.elementary[2] += ' 음식물은 간이나 이자 속을 직접 지나가지 않습니다.';
+    extra.digestion.middle[1] += ' 녹말은 포도당으로, 단백질은 아미노산으로 분해됩니다. 쓸개즙은 소화 효소를 포함하지 않으며, 지방을 작은 방울로 나누어 효소의 작용을 돕습니다.';
+    extra.digestion.high[2] += ' 포도당과 아미노산은 융털의 모세혈관에서 간문맥을 거쳐 간으로 이동합니다. 대부분의 긴 사슬 지방 성분은 소장 세포에서 재조립된 뒤 림프관으로 들어가 혈류에 합류합니다.';
+    extra.circulation.middle[1] += ' 동맥은 심장에서 나가는 혈관이고, 정맥은 심장으로 들어오는 혈관입니다.';
+    extra.circulation.middle[2] += ' 폐순환은 우심실 → 폐동맥 → 폐 → 폐정맥 → 좌심방, 온몸순환은 좌심실 → 대동맥 → 온몸 → 대정맥 → 우심방으로 이어집니다.';
+    extra.respiration.elementary[1] += ' 가로막이 아래로 내려가면 가슴 속 공간이 넓어져 공기가 들어옵니다. 숨을 내쉴 때에는 가로막이 위로 올라갑니다.';
+    extra.respiration.middle[2] += ' 온몸의 조직에서는 산소가 혈액에서 세포 쪽으로, 이산화 탄소가 세포 쪽에서 혈액으로 이동합니다.';
+    extra.respiration.high[2] += ' 세포에서 산소를 소비하고 이산화 탄소를 만들기 때문에 조직과 혈액 사이에 기체 분압 차이가 유지됩니다.';
+    extra.excretion.high[1] = '콩팥은 노폐물을 내보내고 몸의 수분과 염류 균형을 조절합니다. ' + extra.excretion.high[1];
+    extra.homeostasis.middle[1] = '항상성은 외부 환경이 달라져도 몸속 상태를 일정한 범위로 유지하는 성질입니다. ' + extra.homeostasis.middle[1];
+    extra.homeostasis.high[2] += ' 체온이 높아지면 땀 분비와 피부 혈관 확장이 열 방출을 돕습니다. 습도가 높으면 땀의 증발이 어려워 냉각 효과가 작아질 수 있습니다.';
     for (const [topic, levels] of Object.entries(extra)) for (const [level, row] of Object.entries(levels)) {
         const p = window.SchoolContent['body-' + topic][level];
         p.sections = [{title: '구조와 기능', paragraphs: p.concepts}, {title: row[0], paragraphs: row.slice(1)}];

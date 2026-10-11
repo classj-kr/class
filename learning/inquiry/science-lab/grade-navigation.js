@@ -14,7 +14,7 @@
   });
   document.querySelectorAll('.catalog-empty').forEach(message=>{
    message.hidden=[...message.parentElement.querySelectorAll('.level-entry')].some(a=>!a.hidden);
-   message.textContent=grade==='전체'?'이 범주에 등록된 실험 없음':'선택한 학년에 등록된 실험 없음';
+   message.textContent='실험 없음';
   });
   document.querySelector('.catalog').classList.toggle('school-filtered',school!=='all');
   schoolButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.schoolFilter===school)));

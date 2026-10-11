@@ -64,6 +64,10 @@ module.exports=[
 ];
 module.exports.push(...require('./science-physics-experiments.cjs'));
 module.exports.push(...require('./science-chemistry-experiments.cjs'));
+module.exports.push(...require('./science-inquiry-experiments.cjs'));
+module.exports.push(...require('./science-evidence-experiments.cjs'));
+module.exports.push(...require('./science-structure-experiments.cjs'));
+module.exports.push(...require('./science-sensor-experiments.cjs'));
 const quality=require('./science-question-quality.cjs'),revision=require('./science-question-revision-utils.cjs');
 for(const row of module.exports){
  row.questions=row.questions.map((q,i)=>{const e=quality.find(e=>e.id===row.slug+'#q'+(i+1));if(!e)return q;const next=revision.revise(q,e);next.feedback=Object.fromEntries(Object.entries(next.feedback).map(([i,v])=>['abcd'[Number(i)],v]));return next;});

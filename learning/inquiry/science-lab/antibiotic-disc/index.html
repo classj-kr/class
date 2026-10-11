@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 추출액의 생장 억제 구역 비교</title><meta name="description" content="2022 교육과정 · 추출액의 생장 억제 구역 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css"><link rel="stylesheet" href="../science-reading.css"><link rel="stylesheet" href="../inquiry-labs.css"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>추출액의 생장 억제 구역 비교</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험1</span></div></header><p class="intro">증류수 대조와 네 익명 추출액의 디스크를 같은 조건에 놓고 배양 전후 및 반복 시료를 비교한다. 자로 디스크 가장자리부터 억제 구역 경계까지 측정하고, 밀집 배치의 겹침을 확인한다.</p><section class="experiment-layout inquiry-lab" data-inquiry="antibiotic-disc"><h2>조건을 바꾸고 관찰하기</h2><div class="control-panel"><label>반복 시료<select id="sampleSet"><option value="0">1회</option><option value="1">2회</option><option value="2">3회</option></select></label><label>디스크 간격<select id="spacing"><option value="apart">충분히 띄우기</option><option value="close">가깝게 놓기</option></select></label><label>모든 추출액의 투입량<select id="dose"><option value="1">같은 양 10 μL</option><option value="0.5">같은 양 5 μL</option><option value="2">같은 양 20 μL</option></select></label><div class="toolbar"><button id="incubate">가상 배양 24시간 진행</button></div><label>자로 볼 디스크<select id="disc"><option value="1">추출액 A</option><option value="2">추출액 B</option><option value="3">추출액 C</option><option value="4">추출액 D</option><option value="0">증류수</option></select></label><label for="ruler">디스크 가장자리부터 자 길이 <output id="rulerValue">0 mm</output><input id="ruler" type="range" min="0" max="12" step="0.5" value="0" data-unit="mm"></label><button id="measure">현재 자 길이 확인</button></div><div id="inquiryScene" class="inquiry-scene"></div><div id="inquiryReadout" class="inquiry-readout" aria-live="polite"></div><div id="inquiryExtra"></div><p id="inquiryStatus" class="status" role="status"></p><div class="toolbar"><button id="resetExperiment">실험 처음부터</button></div><p class="model-note">A~D는 실제 식물 이름과 대응하지 않는 가상 추출액이다. 표시된 억제 폭은 비교 학습용 합성 자료이며 교과서 실측치·식품 효능·치료 효과가 아니다. 농도·확산 특성이 다른 실제 물질의 항균 효과를 억제 폭만으로 순위화할 수 없다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>디스크 지름은 6 mm, 억제 구역 전체 지름은 16 mm이다. 디스크 가장자리에서 구역 경계까지의 거리는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 5 mm</label>
+<label><input type="radio" name="q1" value="b"> 8 mm</label>
+<label><input type="radio" name="q1" value="c"> 10 mm</label>
+<label><input type="radio" name="q1" value="d"> 16 mm</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>반지름의 차이 (16−6)/2=5 mm입니다. 전체 지름 또는 지름의 차이와 구별합니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>증류수 디스크 주변에도 추출액만큼 넓은 억제 구역이 생겼다. 추가 확인 전에 타당한 판단은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 추출액 효과만으로 설명할 수 있다</label>
+<label><input type="radio" name="q2" value="b"> 추출액 고유 효과는 구별하기 어렵다</label>
+<label><input type="radio" name="q2" value="c"> 물의 치료 효과가 입증되었다</label>
+<label><input type="radio" name="q2" value="d"> 추출액의 농도가 모두 같아졌다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>추출액이 없는 대조에서도 같은 변화가 나타났으므로 용매·장치·배양 조건 등의 영향을 구별해야 합니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>두 디스크의 억제 구역이 서로 겹쳤다. 각각의 효과를 비교할 재실험은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 같은 간격에서 양을 늘린다</label>
+<label><input type="radio" name="q3" value="b"> 같은 간격에서 시간을 늘린다</label>
+<label><input type="radio" name="q3" value="c"> 간격을 넓히고 나머지는 맞춘다</label>
+<label><input type="radio" name="q3" value="d"> 겹친 부분을 둘로 나눠 센다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>겹친 경계는 각 추출액만의 범위를 구분하기 어렵습니다. 충분한 간격을 두고 다른 조건을 통제해 재실험합니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>같은 조건에서 A의 억제 폭은 2, 3, 2.5 mm, B는 5, 4, 4.5 mm였다. 자료가 직접 지지하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> B는 모든 세균에 더 효과적이다</label>
+<label><input type="radio" name="q4" value="b"> B는 사람에게 치료 효과가 있다</label>
+<label><input type="radio" name="q4" value="c"> A에는 항균 성분이 전혀 없다</label>
+<label><input type="radio" name="q4" value="d"> 이 조건에서 B의 평균 폭이 더 크다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>평균은 A 2.5 mm, B 4.5 mm입니다. 이 비교만으로 다른 세균, 사람, 성분의 유무까지 확정할 수 없습니다.</p>
+</article></details></main><script src="../inquiry-models.js"></script><script src="../inquiry-labs.js"></script><script src="../curriculum-map.js"></script><script src="../exam-scope.js"></script></body></html>

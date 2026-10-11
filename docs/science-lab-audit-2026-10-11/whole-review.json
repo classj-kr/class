@@ -1,6 +1,6 @@
 {
   "scope": "2022 only; execution, visual inspection and bounded source review kept separate",
-  "apps": 121,
+  "apps": 145,
   "requiredExperimentTotal": null,
   "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
   "modes": 182,
@@ -24,8 +24,8 @@
   },
   "activityCoverage": {
     "activities": 261,
-    "linked": 193,
-    "unlinked": 68
+    "linked": 216,
+    "unlinked": 45
   },
   "textbookCandidates": {
     "scope": "2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님",
@@ -38,7 +38,7 @@
     "completedActivityVerdicts": 0,
     "receiptClassifiedSources": 2287,
     "manuallyReviewedCandidates": 7,
-    "sourceReviewedExperimentUnits": 24,
+    "sourceReviewedExperimentUnits": 49,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -1063,8 +1063,8 @@
   "gaps": [],
   "evidenceSummary": {
     "date": "2026-10-11",
-    "apps": 121,
-    "originalQuestions": 484,
+    "apps": 145,
+    "originalQuestions": 580,
     "examQuestions": 241,
     "sourcePaths": 4008,
     "duplicatePaths": 426,
@@ -1076,9 +1076,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 98,
-    "reviewRecords": 133,
-    "appsWithSelectedSourceReview": 121,
+    "reviewedSources": 125,
+    "reviewRecords": 167,
+    "appsWithSelectedSourceReview": 145,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -10524,14 +10524,356 @@
       ],
       "fix": null,
       "open": []
+    },
+    "insulation-lab": {
+      "slug": "insulation-lab",
+      "title": "단열재의 보온·보냉 비교",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "a09d07688dc197a9"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "doppler-lab": {
+      "slug": "doppler-lab",
+      "title": "움직이는 음원의 도플러 효과",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "55ff1f88dea3080a"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "ride-acceleration": {
+      "slug": "ride-acceleration",
+      "title": "놀이기구 운동과 가속도 센서",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "f3119695e8a726b3"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "dna-replication": {
+      "slug": "dna-replication",
+      "title": "DNA 복제 가닥 조립",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "de0c1acaeaa2453a",
+        "35ddba87be4c287d"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "protein-synthesis": {
+      "slug": "protein-synthesis",
+      "title": "코돈을 읽어 단백질 합성하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "3efaa8d5b5bd911f"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "pedigree-lab": {
+      "slug": "pedigree-lab",
+      "title": "가계도로 X 염색체 유전 추론",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "cb057c78a9819273"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "karyotype-lab": {
+      "slug": "karyotype-lab",
+      "title": "염색체 짝짓기와 핵형 분석",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "588b1a480be9f824",
+        "4ffbb14ab2d71905"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "antibiotic-disc": {
+      "slug": "antibiotic-disc",
+      "title": "추출액의 생장 억제 구역 비교",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "28177f9b69b984c7"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "water-wave-tank": {
+      "slug": "water-wave-tank",
+      "title": "해파 발생과 물 입자 운동",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "b5e30308f3b900f9"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "silver-mirror": {
+      "slug": "silver-mirror",
+      "title": "은거울 반응과 작용기 변화",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "d395204181f8b5da"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "nylon-interface": {
+      "slug": "nylon-interface",
+      "title": "계면에서 나일론 합성하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "0dad0a95c5350609"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "stellar-mass-data": {
+      "slug": "stellar-mass-data",
+      "title": "쌍성 관측 자료의 질량–광도 관계",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "7e5723f0cbf775d1",
+        "bd95bbf067b48aaa"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "cluster-fitting": {
+      "slug": "cluster-fitting",
+      "title": "성단 자료로 주계열 맞추기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "cd2d1ced86d442d1",
+        "05050bb38391fb02"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "habitable-orbits": {
+      "slug": "habitable-orbits",
+      "title": "중심별과 생명가능지대의 거리",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "35d817a99ea28582"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "centrifuge-design": {
+      "slug": "centrifuge-design",
+      "title": "원심분리기의 배치와 시료 분리",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "fbf365923abce545"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "organic-builder": {
+      "slug": "organic-builder",
+      "title": "원자와 결합으로 작용기 만들기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "e29dd9e46390ff6b"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "dna-structure": {
+      "slug": "dna-structure",
+      "title": "상보적 염기와 DNA 이중나선 만들기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "fbf365923abce545",
+        "d5f4c581c737cd5b"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "protein-folding": {
+      "slug": "protein-folding",
+      "title": "두 폴리펩타이드의 연결과 접힘",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "fbf365923abce545",
+        "d5f4c581c737cd5b"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "organelle-builder": {
+      "slug": "organelle-builder",
+      "title": "미토콘드리아·엽록체의 막과 구획 만들기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "fbf365923abce545",
+        "5449a6b6cb158a69"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "energy-budget": {
+      "slug": "energy-budget",
+      "title": "자료로 비교하는 하루의 에너지 출입",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "fbf365923abce545",
+        "7da2123dab6864ac"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "hydride-boiling": {
+      "slug": "hydride-boiling",
+      "title": "수소 화합물의 끓는점과 분자 간 힘",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "1be99a8dde753097",
+        "2bade83c530ddb24"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "fuel-comparison": {
+      "slug": "fuel-comparison",
+      "title": "같은 몰·질량·부피로 연료 비교하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "965f45ec469d480f",
+        "2cc14cc644bd6459"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "mcu-sampling": {
+      "slug": "mcu-sampling",
+      "title": "센서 연결과 측정 자료 수집",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "bb3048667d79ef51"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "smart-pot": {
+      "slug": "smart-pot",
+      "title": "수분 센서와 펌프로 자동 급수 설계하기",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "bb3048667d79ef51"
+      ],
+      "fix": null,
+      "open": []
     }
   },
   "questionQualityReview": {
-    "baseAndBank": 725,
+    "baseAndBank": 821,
     "rewrittenBase": 332,
     "rewrittenBank": 31,
     "rewrittenTransfer": 33,
-    "transferTotal": 40,
+    "transferTotal": 88,
     "correctLongerThanEveryDistractorBy50Percent": {
       "before": 116,
       "after": 2

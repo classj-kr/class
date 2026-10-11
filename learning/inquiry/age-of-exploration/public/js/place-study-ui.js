@@ -42,8 +42,8 @@ window.VoyageStudyUI = (() => {
     if(s.phase==='quiz'){const summary=document.createElement('summary');summary.textContent='설명 다시 읽기';body.append(summary);}
     const r=s.reading,figure=document.createElement('div');figure.className='photoFigure';
     if(r.image)body.append(figure);
-    if(r.image){const img=document.createElement('img');img.src=r.image;img.alt=r.name+'의 모습';figure.append(img);}
-    if(r.image&&r.imageCredit){const info=document.createElement('details');info.className='photoInfo';const summary=document.createElement('summary');summary.textContent='ⓘ';summary.title='사진 정보';summary.setAttribute('aria-label','사진 출처와 이용 조건');info.append(summary);figure.append(info);const caption=document.createElement('div');caption.className='photoCreditText';caption.textContent=r.imageCredit;
+    if(r.image){const img=document.createElement('img');img.src=r.image;img.alt=r.name+(r.imageKind==='map'?' 위치 지도':'의 모습');figure.append(img);if(r.imageKind==='map'){const label=document.createElement('span');label.className='imageKindLabel';label.textContent='위치 지도';figure.append(label);}}
+    if(r.image&&r.imageCredit){const info=document.createElement('details');info.className='photoInfo';const summary=document.createElement('summary');summary.textContent='ⓘ';summary.title=r.imageKind==='map'?'지도 정보':'사진 정보';summary.setAttribute('aria-label',r.imageKind==='map'?'지도 출처와 이용 조건':'사진 출처와 이용 조건');info.append(summary);figure.append(info);const caption=document.createElement('div');caption.className='photoCreditText';caption.textContent=r.imageKind==='map'?'위치 지도 · '+r.imageCredit:r.imageCredit.startsWith('오늘날 모습')?r.imageCredit:'오늘날 모습 · '+r.imageCredit;
       for(const [name,url]of [['원본',r.imageSource],['이용 조건',r.imageLicenseUrl]])if(/^https?:\/\//.test(url||'')){const a=document.createElement('a');a.href=url;a.textContent=name;a.target='_blank';a.rel='noopener noreferrer';caption.append(' · ',a);}
       if(r.imageChanges)caption.append(' · '+r.imageChanges);info.append(caption);
     }

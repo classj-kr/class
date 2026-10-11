@@ -1,15 +1,15 @@
 {
   "scope": "current app scope and partial mappings; not curriculum completion",
-  "apps": 121,
+  "apps": 145,
   "requiredExperimentTotal": null,
   "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
-  "questions": 484,
+  "questions": 580,
   "units": 112,
   "standards": 473,
   "activities": 261,
-  "linkedStandards": 255,
-  "unlinkedStandards": 218,
-  "unlinkedActivities": 68,
+  "linkedStandards": 280,
+  "unlinkedStandards": 193,
+  "unlinkedActivities": 45,
   "sources": [
     {
       "path": "learning/inquiry/science-lab/_verify.js",
@@ -25,7 +25,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/acid-base/index.html",
-      "sha256": "01a68d65b159633931279df2cc6fc660072ab41e40fa007222a6538d91414858"
+      "sha256": "ea8a05ed540d5666c90a81776ff645f47055041e2ca6d2b49338866efafc3845"
     },
     {
       "path": "learning/inquiry/science-lab/acid-base/quiz.css",
@@ -41,7 +41,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/activity-catalog.js",
-      "sha256": "2f5b4a557b1f35b3db24de23fdaf7903ebcb49944f161eb6771bae00c551c672"
+      "sha256": "2e9d054b0a11deaa4bf044b21d3b595735eedebd74e3cdd0c8b499df27cd1abc"
     },
     {
       "path": "learning/inquiry/science-lab/activity-comparison.js",
@@ -85,7 +85,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/air-stability/index.html",
-      "sha256": "9edd17982c75c435a6c07026685ecc97cc6a37223d5d98f646580770b25eb00e"
+      "sha256": "4b4171352cd0ac3ea27d098ad1366e9f3b4be8c842084ded2f5e5ab1116ce34b"
     },
     {
       "path": "learning/inquiry/science-lab/air-stability/quiz.css",
@@ -96,12 +96,16 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/antibiotic-disc/index.html",
+      "sha256": "4693370eb6ac8526b6f7aa5476e90b3e99a865b70ac3e44b4c3ebc24bb00ebcd"
+    },
+    {
       "path": "learning/inquiry/science-lab/apparent-motion/app.js",
       "sha256": "4db77951edb1cdfb4b05785221bd6059e016a29c012c0d07aa89cd673a0d31f3"
     },
     {
       "path": "learning/inquiry/science-lab/apparent-motion/index.html",
-      "sha256": "1f74604c358dcfcc441b1cb1035c69cf156abee280d1051cb57aaf67501c1bf7"
+      "sha256": "913c0590778463fb29c237319249b96a6ce12017ad70d4c9c6324b2b47729efa"
     },
     {
       "path": "learning/inquiry/science-lab/apparent-motion/quiz.css",
@@ -121,7 +125,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/bean-respiration/index.html",
-      "sha256": "69498e719ef131ac37fabbea5b60768f77f9ef870012e7eb5ad59debfa07c1dd"
+      "sha256": "5a26d698af541319d2fc64fe137ede411e00432a2c5bd2b3fd33c6c60344a065"
     },
     {
       "path": "learning/inquiry/science-lab/body-organs/app.js",
@@ -129,7 +133,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/body-organs/index.html",
-      "sha256": "64e2faae97b99f74baacda1a03ac7911f93b2fc473d99df461e2ee6bf7916df5"
+      "sha256": "a519cbeb2d6c76fa86dd551641538687a1403119b7e203a8f183bd13f29c9bf6"
     },
     {
       "path": "learning/inquiry/science-lab/body-organs/muscle-model.js",
@@ -157,7 +161,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/body-systems/index.html",
-      "sha256": "760d36d6f919c7a9cec875072c227213ae28530919cb032743ea51bafb6a3500"
+      "sha256": "52bdf62b53d9b72488fb92be080b9d0740926b69cebb2de69c81d260ba23c5d6"
     },
     {
       "path": "learning/inquiry/science-lab/body-systems/quiz.css",
@@ -169,7 +173,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/buffer-solution/index.html",
-      "sha256": "30f7725aeea6f17364307bedeac4e07bb4cad019ceaee3e199fd9a8e53e1a30a"
+      "sha256": "633d53b33af74c96d590e235a3aeeda0d343a3196066a77d42d672fb995c5a72"
     },
     {
       "path": "learning/inquiry/science-lab/burning-conditions/app.js",
@@ -181,7 +185,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/burning-conditions/index.html",
-      "sha256": "80423fa04a4dd5f610a9710c2057ee2f2c01d26b0c15833c7538529c2c86f96e"
+      "sha256": "54d104e86521e79e8948a48db92aa771a49bfccf2ee606f6c96fb4cfdebc68a7"
     },
     {
       "path": "learning/inquiry/science-lab/burning-conditions/quiz.css",
@@ -201,7 +205,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/cell-division/index.html",
-      "sha256": "39e0d2a112580a75db4688da29355ac1d86d4c7d96b055b37ba6f64fddd7816d"
+      "sha256": "db9e024e1f56f27d9de2f96c5a0e237de68e5c26406ffcc001779bdce0fe731f"
     },
     {
       "path": "learning/inquiry/science-lab/cell-division/quiz.css",
@@ -217,7 +221,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/cell-membrane/index.html",
-      "sha256": "fd1a9506e3ff3997d20902b0d7610b2c2a5dc56118a78fab0c2f1ca98f9ca7f1"
+      "sha256": "f5e5acb7121d94bf114831e683fc40fc72cbffacabd5568928c1d513197242ce"
     },
     {
       "path": "learning/inquiry/science-lab/cell-membrane/membrane-visual.css",
@@ -241,7 +245,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/cell-osmosis/index.html",
-      "sha256": "7129c185725bf88272cf6272e6b0d17225585f7f769af5b8c01d690af5fc8a50"
+      "sha256": "09ab4eca51b97128941e5db3abf79cb041cb2836e18258aed05faf9dde192aab"
     },
     {
       "path": "learning/inquiry/science-lab/cell-osmosis/quiz.css",
@@ -257,11 +261,15 @@
     },
     {
       "path": "learning/inquiry/science-lab/cell-structure/index.html",
-      "sha256": "e5ea267f080cdd5ff919fb5b35d410f2f7d821c0b6723ea4aebc4f4d7cc44211"
+      "sha256": "3232884e994569905a5b828ffe4d5d3b773b2f09b4226b8f6fed4848c066f9b5"
     },
     {
       "path": "learning/inquiry/science-lab/cell-structure/styles.css",
       "sha256": "beb1b88e6514cf63ef9ce83599980f29ab46b9534e6ea60d3a94c700e7d451eb"
+    },
+    {
+      "path": "learning/inquiry/science-lab/centrifuge-design/index.html",
+      "sha256": "c46d157a876901a8c36b1701f57e96c6a6cb76b37a284e9b64de6b0acef8d681"
     },
     {
       "path": "learning/inquiry/science-lab/check-controls.js",
@@ -285,7 +293,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/circuit-bulbs/index.html",
-      "sha256": "3782a045ab27f1e9eea7a9bf636749efafbbb74b7b5df812cb99c82d6c68c263"
+      "sha256": "f29abd5a798e31118b71a21cc62a4a29139f7e84501a4815c3d690f8ac999c21"
     },
     {
       "path": "learning/inquiry/science-lab/circuit-bulbs/quiz.css",
@@ -294,6 +302,10 @@
     {
       "path": "learning/inquiry/science-lab/circuit-bulbs/styles.css",
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
+    },
+    {
+      "path": "learning/inquiry/science-lab/cluster-fitting/index.html",
+      "sha256": "bf269e9c63ae6788049210952d2059ec69483c080110148b5c772ffe813af9f8"
     },
     {
       "path": "learning/inquiry/science-lab/collision/app.js",
@@ -305,7 +317,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/collision/index.html",
-      "sha256": "b59990d4e16054593f17b8d0af0f8a7fa74399e75469667e9c3530f7a7db2220"
+      "sha256": "838c3e15f26638f6bb6bec1af25d6b1c5e3757bca22ba35ce374329e995309d1"
     },
     {
       "path": "learning/inquiry/science-lab/collision/quiz.css",
@@ -325,7 +337,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/combustion/index.html",
-      "sha256": "33a897e3b4000a28c1f75ff1102be19b3b3b2d526eb3e346f4ea12d77c2963a6"
+      "sha256": "e427e743d74efb70dacafcb70a5e9bd6354d85b6a5e861d936ccbe0606e9c14f"
     },
     {
       "path": "learning/inquiry/science-lab/combustion/quiz.css",
@@ -337,7 +349,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/curriculum-map.js",
-      "sha256": "becb05d84572b396c6702e5ea52bf1bd9f247459502bbd3b2267bd926c0805ba"
+      "sha256": "43111aa63140a3af47c958e13c5527b5bd2334ec6d16941206fae2033f5db1d1"
     },
     {
       "path": "learning/inquiry/science-lab/density-buoyancy/app.js",
@@ -349,7 +361,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/density-buoyancy/index.html",
-      "sha256": "1f24151ff9167e48fba64d39fc3190e842e95d7c5606a5c7ff7f47ff66b16ac6"
+      "sha256": "713e5d6ccab8b63655288776b2e18d6283d7fb305b29e6a1afba67f779339beb"
     },
     {
       "path": "learning/inquiry/science-lab/density-buoyancy/quiz.css",
@@ -369,7 +381,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/diffusion/index.html",
-      "sha256": "dd0c2cf819ebc9723ce455318c79d1a43bfca217dc45230cef2fff8554502d40"
+      "sha256": "d9fbdf185148afd1cb54358c8ff4200bf8cb3197235ebf5f4f30b7ef9f3763a9"
     },
     {
       "path": "learning/inquiry/science-lab/diffusion/quiz.css",
@@ -397,7 +409,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/dna-gel/index.html",
-      "sha256": "b527ddd96c66aca6e20fc7d2ed6604ba2f8fd3afcd5191c126748ca47be73dfd"
+      "sha256": "f13b6e87d82240c9e2ea5b0440197f1c1399bc380cebb9551cbbb2bef1dfb64e"
     },
     {
       "path": "learning/inquiry/science-lab/dna-gel/quiz.css",
@@ -406,6 +418,18 @@
     {
       "path": "learning/inquiry/science-lab/dna-gel/styles.css",
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
+    },
+    {
+      "path": "learning/inquiry/science-lab/dna-replication/index.html",
+      "sha256": "0b17263e60e0673981056a0760109b0ca52fe81714bfd3d71d6c41d335b07d8b"
+    },
+    {
+      "path": "learning/inquiry/science-lab/dna-structure/index.html",
+      "sha256": "1fca4649d613b071d1da8101b7909fa3272fddca3477c00a2ab4c7a426ffd6d4"
+    },
+    {
+      "path": "learning/inquiry/science-lab/doppler-lab/index.html",
+      "sha256": "50e17dbc698208e4639df8f5890d9ebeb522de09297b69b6e59bddeff1220e0a"
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/app.js",
@@ -417,7 +441,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/index.html",
-      "sha256": "5a43b9c397697c5daacf00d7cb1484e58e866c677dd951eef1af472c76757bf1"
+      "sha256": "2dde9546a64f6fbbe83ffc6cf4d1187b0d50e497bdad448f159ed344b0ea4b88"
     },
     {
       "path": "learning/inquiry/science-lab/earth-system/quiz.css",
@@ -433,7 +457,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/earthquake/index.html",
-      "sha256": "19ada166462b8771fb623fe59b789a8705035829b6c33a84a52f7c7ab5fb6796"
+      "sha256": "b951cbb366b03cf1322059bcfcf83b639a19c3c35194877a08e1e27f9834f48e"
     },
     {
       "path": "learning/inquiry/science-lab/earthquake/quiz.css",
@@ -453,7 +477,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/electric-field/index.html",
-      "sha256": "67c982104f0be4e2949016544037e21ca2541a838135ca4f7a4f260d48dfd8d9"
+      "sha256": "dea55912f499e19a6d190599422f6b1b960e13acb90274ca5aef0476c832c91b"
     },
     {
       "path": "learning/inquiry/science-lab/electric-field/quiz.css",
@@ -465,7 +489,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/electron-slits/index.html",
-      "sha256": "9588e2b5aa103a4c47912d1291177a54e65c9dfebf637fd488815e049865223e"
+      "sha256": "99cee252f451b649b635fcb6d243feb59998f81d13f6958743219da74370cd68"
+    },
+    {
+      "path": "learning/inquiry/science-lab/energy-budget/index.html",
+      "sha256": "234ba771f4abd6902e67bc0a00234dc03b437dcf78d2ec047af934dcbf795f5e"
     },
     {
       "path": "learning/inquiry/science-lab/energy-conversion/app.js",
@@ -477,7 +505,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/energy-conversion/index.html",
-      "sha256": "b8f3778bb930d3ad58465be033a6b64a56a69aed5eeef59c5a8a71caaa86ef83"
+      "sha256": "46ee67227101793a212216e077dbd58eded52a157763934279aa5cc975d90d9e"
     },
     {
       "path": "learning/inquiry/science-lab/energy-conversion/quiz.css",
@@ -497,7 +525,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/energy-heat/index.html",
-      "sha256": "5dcb54ff1cf27ddebe96a977abbd0dd387a342504fe5ec25a89c2f0653161371"
+      "sha256": "6c826ef7c7a791d18ccfa24b9e2d364c024968afcfb4fb3138d6d983d9a840b4"
     },
     {
       "path": "learning/inquiry/science-lab/energy-heat/quiz.css",
@@ -513,7 +541,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/energy-metabolism/index.html",
-      "sha256": "1ff0c436f097256030f8bef353ccec51adcfe10b03805a578d05931a0b31502a"
+      "sha256": "db36e0819441631340d445c0d86017848d638900937b001ea2b1ebd0780bf56a"
     },
     {
       "path": "learning/inquiry/science-lab/energy-metabolism/metabolism-visual.css",
@@ -537,7 +565,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/enzyme/index.html",
-      "sha256": "4177dfd22a6cd3e8015c61790bfd869684bf0aaef4f572fa4bd631383b6cb30e"
+      "sha256": "456cf595318bfef4ee4a7eec32eaf591d58897d0d93607b7696f4aef99416b12"
     },
     {
       "path": "learning/inquiry/science-lab/enzyme/quiz.css",
@@ -546,6 +574,22 @@
     {
       "path": "learning/inquiry/science-lab/enzyme/styles.css",
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
+    },
+    {
+      "path": "learning/inquiry/science-lab/evidence-data.js",
+      "sha256": "7ad501dc368263742747a5884d0742dc524174ccf6c341ba5b0d39a509e4c100"
+    },
+    {
+      "path": "learning/inquiry/science-lab/evidence-labs.css",
+      "sha256": "0aacf460e38f0d751fada1666d29de5e397643dfd43ee0f2cbfea3fc05c9c8cc"
+    },
+    {
+      "path": "learning/inquiry/science-lab/evidence-labs.js",
+      "sha256": "061c38f238f56672277d05a028d04a3fa64e02e83fd2ad5d90d8d6212fc0ed49"
+    },
+    {
+      "path": "learning/inquiry/science-lab/evidence-models.js",
+      "sha256": "b5458c463df6a15b5c571d8abbc8d2fe009a2cc87df99bf6e011f3ac6c914f16"
     },
     {
       "path": "learning/inquiry/science-lab/exam-bank-elementary.js",
@@ -577,7 +621,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/exam-review.html",
-      "sha256": "edb3b227c7711a0a106a6e646b2ceb47ae723915657fdbcbe97d3da3a91b677b"
+      "sha256": "423bb4b6d88aa77beb97fa79be6c4ab26a21fc646500fe954275deaa13d543d3"
     },
     {
       "path": "learning/inquiry/science-lab/exam-review.js",
@@ -589,11 +633,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/exam-scope.js",
-      "sha256": "0eed212695f23ae9c1b5604f19ce9bda4ceb1d52729c22cbadd50b88bbaa440f"
+      "sha256": "dfe1820225a536d0a81a7ee69cc89a701593ab3961bbe6336f9e0cd069b2b83f"
     },
     {
       "path": "learning/inquiry/science-lab/experiment-questions.js",
-      "sha256": "dcd2ce371a59d45438a8c9dafaf76b67ed4253facfe3718bbf0a92ec6cdd69dc"
+      "sha256": "b530e279db6261bce1518f8e74a8a0b371df65e0c1d19c4389b91fa135715161"
     },
     {
       "path": "learning/inquiry/science-lab/experiment-stage.css",
@@ -609,7 +653,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/flame-ions/index.html",
-      "sha256": "af3df304ff5ec4fa87b1c15df6d18d589c97702dceb646e644dc3fcef9126c9d"
+      "sha256": "5ac53279f7ddf7a6657f3e376847d89f731aa5e397d6c68421acea3341a19f5e"
     },
     {
       "path": "learning/inquiry/science-lab/flame-ions/quiz.css",
@@ -629,7 +673,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/force-motion/index.html",
-      "sha256": "79860fe4ce5ac4c9a95296922d6bfa913c6b888f7cad3c0ac13540692134efb1"
+      "sha256": "a7dc92168237f7c612438039a3efc5d357d1d82edd1a875513e7f1fa2730712a"
     },
     {
       "path": "learning/inquiry/science-lab/force-motion/quiz.css",
@@ -638,6 +682,10 @@
     {
       "path": "learning/inquiry/science-lab/force-motion/styles.css",
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
+    },
+    {
+      "path": "learning/inquiry/science-lab/fuel-comparison/index.html",
+      "sha256": "2ded6a21f31d9e8ba70e474942d48a796823019d5374616a05f2312c9b827b72"
     },
     {
       "path": "learning/inquiry/science-lab/galaxy-hubble/app.js",
@@ -649,7 +697,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/galaxy-hubble/index.html",
-      "sha256": "6d632f6374d67b84613af512167f31276e9180ab3776e56c2335056e788b43a6"
+      "sha256": "3061be14a30372e713162619c9487faea74b76927e5b1e17fdf363cdb7932c00"
     },
     {
       "path": "learning/inquiry/science-lab/galaxy-hubble/quiz.css",
@@ -661,7 +709,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/gas-identification/index.html",
-      "sha256": "074c22e454ee7c5fddfd7f57a107f7dad47d4f6959d83394a9ea5a74f0fa56ca"
+      "sha256": "e787a3e5868997010be2551b85b02d26016c0816b38fbb4c022ba89d2130cd2c"
     },
     {
       "path": "learning/inquiry/science-lab/gases/app.js",
@@ -673,7 +721,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/gases/index.html",
-      "sha256": "58e76dd3e3d6650ef48175a11d5730258d20948f3178eaba9cb7e0643dbd0bad"
+      "sha256": "f9a10529d56eb7737278119cef47d5399affb56cb2218a889e8f586470a82ec3"
     },
     {
       "path": "learning/inquiry/science-lab/gases/quiz.css",
@@ -689,7 +737,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/geologic-time/index.html",
-      "sha256": "9bf2a4f8259b8bbd3b2900ebded6c6e4a29ea730da2aeb49acacce62943e9c53"
+      "sha256": "5bb3fce96f558725552457f8806b4873ca3cc4936994c362253fd9ad3738cd63"
     },
     {
       "path": "learning/inquiry/science-lab/geologic-time/quiz.css",
@@ -709,7 +757,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/grade-navigation.js",
-      "sha256": "ddf395c342c58d2dbb95f2b91082795efde282fd73219c8d62afb8a2819cb2c9"
+      "sha256": "898d59382ab5ca414ee36c93ca1ee5fcadad9788bd768e7b7523bdbf6e5e4cd6"
     },
     {
       "path": "learning/inquiry/science-lab/grade-quiz.js",
@@ -725,7 +773,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/gravity-motion/index.html",
-      "sha256": "2ca58d172471d555182212b046eb8dc9fa3133d92beaca845f6b0069d8fec99a"
+      "sha256": "e3eefebb9dbae020a70d575d71a32913b47952e9faefb5b5d77f9ba0f3b71577"
     },
     {
       "path": "learning/inquiry/science-lab/gravity-motion/quiz.css",
@@ -734,6 +782,10 @@
     {
       "path": "learning/inquiry/science-lab/gravity-motion/styles.css",
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
+    },
+    {
+      "path": "learning/inquiry/science-lab/habitable-orbits/index.html",
+      "sha256": "3f145f22dfb7b2642478bc2040f2b475b71de26d32ccdcf68b9fc7535f7b3a56"
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/app.js",
@@ -745,7 +797,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/index.html",
-      "sha256": "7e61f32d45fb4cf9b95cdf6b338341fd62ae936ecb1378d6f8789714c36c1629"
+      "sha256": "a9f58ee37b6692e06b5432ddac8da429c5d9e5b0b98c47dfff8a9be529c60ba3"
     },
     {
       "path": "learning/inquiry/science-lab/heat-engine/quiz.css",
@@ -765,7 +817,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/heat-transfer/index.html",
-      "sha256": "73ef322cf53297b8b4696903f5db43b27787edcc98c97c283a6fa8458f714448"
+      "sha256": "3a12b10c3f9a167bdc2075e2b47211bb21051058d65739ff7cf53dd19219e62c"
     },
     {
       "path": "learning/inquiry/science-lab/heat-transfer/quiz.css",
@@ -777,7 +829,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/hess-calorimetry/index.html",
-      "sha256": "50e324e57c33042b789d183408019d38fbac9552b4cbedb1e81d3c0c70620d81"
+      "sha256": "ae028f7fc2077f7fbe357f3dff2aaca8f1241958fd6768cbdf229a519e7e1763"
     },
     {
       "path": "learning/inquiry/science-lab/homeostasis/app.js",
@@ -789,7 +841,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/homeostasis/index.html",
-      "sha256": "a42bd40951de2a7a5ab6df5f561fc89ffe3b8a4eb55ece55d1711dfa908a9439"
+      "sha256": "9c3311ee2ada7e53f660b56cf021f2908fdeb841fa8819e4d486047456ccc071"
     },
     {
       "path": "learning/inquiry/science-lab/homeostasis/quiz.css",
@@ -798,6 +850,10 @@
     {
       "path": "learning/inquiry/science-lab/homeostasis/styles.css",
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
+    },
+    {
+      "path": "learning/inquiry/science-lab/hydride-boiling/index.html",
+      "sha256": "1354b594a4d92710b86b920beff447b68c51732a49cb37f99217afc44f9e2cb3"
     },
     {
       "path": "learning/inquiry/science-lab/immune/app.js",
@@ -809,7 +865,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/immune/index.html",
-      "sha256": "59e276998a8c7047b7adb0d700657f93638a8ff5e6705166a87e5b1407ea2686"
+      "sha256": "7f6e01dad93abdd3193a29b3d10306c4c77533df657f4302ac717a33f54bd104"
     },
     {
       "path": "learning/inquiry/science-lab/immune/quiz.css",
@@ -821,7 +877,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/index.html",
-      "sha256": "747f66b4c92c5bb108bd539f4a39a3655fd226dd226a9cbff7daad4240dee343"
+      "sha256": "bc3e9ace6b82e0a2284463ab26b4af339a9c1513db6b86b92acaf52ca1973a43"
     },
     {
       "path": "learning/inquiry/science-lab/induction/app.js",
@@ -829,7 +885,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/induction/index.html",
-      "sha256": "269203c8416dc3e255eee3cc4b214e95193edfe0c93b709080b1e76bbe389247"
+      "sha256": "ded12ed5b5b5fedcf505c4b998c50965b2768ca6cfda5bce6501affd30f922ee"
     },
     {
       "path": "learning/inquiry/science-lab/induction/induction-visual.css",
@@ -849,11 +905,27 @@
     },
     {
       "path": "learning/inquiry/science-lab/infection-prevention/index.html",
-      "sha256": "fe9e6e6cfaefc60530847896de778b7eb2aec3693b5fd6ba5e05e09e1defee39"
+      "sha256": "b469b74c522661f45826008f53402b2a64addc002d3b3d1d387f021e9dd20ac3"
     },
     {
       "path": "learning/inquiry/science-lab/infection-prevention/model.js",
       "sha256": "fb082c5e09bb6a00cabb03525793bac25e624c7444cf63dfdf69a1d660a7f1b4"
+    },
+    {
+      "path": "learning/inquiry/science-lab/inquiry-labs.css",
+      "sha256": "33a7c7001a085978bca0b7bcc23e79a677ff67b670f61f9611b70a72f6a954f5"
+    },
+    {
+      "path": "learning/inquiry/science-lab/inquiry-labs.js",
+      "sha256": "bebf9b20b54ae7fad4a0fa684f2ab50d97f2e352ff98d4a103715065bb69c441"
+    },
+    {
+      "path": "learning/inquiry/science-lab/inquiry-models.js",
+      "sha256": "291c80edd0fb2e1cb4e5bfcddc837095bcae9a25c17339dc9f3dc6ab39ecd9b1"
+    },
+    {
+      "path": "learning/inquiry/science-lab/insulation-lab/index.html",
+      "sha256": "e760cd1303a6d3e887fe328f76f78c455e7f6f732e4ee3e8afa9f464a6ebc952"
     },
     {
       "path": "learning/inquiry/science-lab/interference/app.js",
@@ -861,7 +933,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/interference/index.html",
-      "sha256": "391e055caa9854465553b14296165c0f803f6a77038b6faa8bd67557152d7ab8"
+      "sha256": "ce061b00e64798936a06e6557ab16db3e11088199bf4fac556dadb87b9e9df30"
     },
     {
       "path": "learning/inquiry/science-lab/interference/quiz.css",
@@ -874,6 +946,10 @@
     {
       "path": "learning/inquiry/science-lab/interference/wave-visual.css",
       "sha256": "e584d6f4e069e3330a69e4527ac2dbcbac3a128db5b911f7d4fcd4e56cb31201"
+    },
+    {
+      "path": "learning/inquiry/science-lab/karyotype-lab/index.html",
+      "sha256": "d6539782c50afe7dff0d0159487c8b52f4b8ad3e7a2c2dc9da1142e662f1c79f"
     },
     {
       "path": "learning/inquiry/science-lab/lab-ui.css",
@@ -889,7 +965,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/land-sea/index.html",
-      "sha256": "85a923ebf06908b10605d1402da28a8f24285d6a0b08b2d45ab6043b303b5f43"
+      "sha256": "bd7775d434179bb46fe93c1910cbce49e059349f3c3f336c518e554adf9b290a"
     },
     {
       "path": "learning/inquiry/science-lab/land-sea/land-visual.css",
@@ -909,7 +985,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/lens-image/index.html",
-      "sha256": "54e7c10fc13829002c399be27acb58f905d0df334c25195bc4eacc6b12f9b2aa"
+      "sha256": "83c4c8699bc8f22d86e9bbd44f5678ff92a721de5c58c34cf052431f8560e66b"
     },
     {
       "path": "learning/inquiry/science-lab/lens-image/lens-visual.css",
@@ -929,7 +1005,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/lever-balance/index.html",
-      "sha256": "932a0df2546f7b8185efdc5a8efe6bde84a9ff893a90151c5d296fe0201ffacc"
+      "sha256": "07e194e6a216d58b969fb4e0620852a2f5d6f36c0aea76188b4298d92d843158"
     },
     {
       "path": "learning/inquiry/science-lab/lever-balance/lever-visual.css",
@@ -949,7 +1025,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/life-cycle/index.html",
-      "sha256": "e69d4309a0729b9ea722a8c8c2e8ba7bf92a98b7d6c19e597d7625b3585e1c08"
+      "sha256": "f4d41cf21ffef91ac699906b652777f5aeef2ea47b959895d3fde941e63b7863"
     },
     {
       "path": "learning/inquiry/science-lab/life-cycle/life-observation-art.js",
@@ -973,7 +1049,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/light-shadow/index.html",
-      "sha256": "629b9bf60f3da5538d8030d9bb11ed9d81a533f29e2bc147592037d70ba1015b"
+      "sha256": "d1214eef38c1c7a06311f804b5dc0a4f350d4516146492f88d66ddbdcc529c0d"
     },
     {
       "path": "learning/inquiry/science-lab/light-shadow/light-visual.css",
@@ -993,7 +1069,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/living-environment/index.html",
-      "sha256": "8f854b492847042a6326ed45803bb4108ebd4a495443ebbcfca85e230b45fa74"
+      "sha256": "f1ec97e126909c6b5fc7dd5d747c9bafa5acc4eb34394163b3c109300159864d"
     },
     {
       "path": "learning/inquiry/science-lab/living-environment/living-visual.css",
@@ -1013,7 +1089,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/living-things/index.html",
-      "sha256": "75129a9706a88b8208fea20a6a597e814efe2e5bbdeb94c2d9216285692217fe"
+      "sha256": "e01fd6ff7a4764d2c644ceeabc8ca5987a046a717ba3044bcbe889844fe988ea"
     },
     {
       "path": "learning/inquiry/science-lab/living-things/living-visual.css",
@@ -1033,7 +1109,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/magma/index.html",
-      "sha256": "54415ee893fbbf18b099c869c45efa69739354c7f7fe0cd4bbac5caae8f81ca5"
+      "sha256": "62a80cd3f55cc3fcfd80943c8f01d06c99a29d6b8f67eb95508facd2c24d53c3"
     },
     {
       "path": "learning/inquiry/science-lab/magma/magma-visual.css",
@@ -1049,7 +1125,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/magnetic-brake/index.html",
-      "sha256": "7feda47964ca0e136788abd2bdfac57ffb9368d4b021a8e275eae2ba915d356e"
+      "sha256": "1de6a222eaff52685f8169ea779cb67eb860b1766317876386581e7100a0a740"
     },
     {
       "path": "learning/inquiry/science-lab/magnets/app.js",
@@ -1057,7 +1133,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/magnets/index.html",
-      "sha256": "1b4cf2a2147566acf46a78c8b2f49a572570b0576f9d4476119fbafe22967367"
+      "sha256": "fcd324e84949c5360a1aa260a6ec766cceed99598200135910b5e0ec9c0d6221"
     },
     {
       "path": "learning/inquiry/science-lab/magnets/magnets-visual.css",
@@ -1077,7 +1153,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/mass-ratio/index.html",
-      "sha256": "4d6fbee252257d3fdb26bf798e69d58d9e440b15eac7a6035087362fa649e881"
+      "sha256": "2c7c2f861d69232ae8161be85b603b2acebd35de67e646745a923a3ef6edd370"
     },
     {
       "path": "learning/inquiry/science-lab/mass-ratio/mass-visual.css",
@@ -1092,12 +1168,16 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/mcu-sampling/index.html",
+      "sha256": "819ba7bc85078a57230feb87572cec1be13b3cb1a2a19d5b2f22824814e93962"
+    },
+    {
       "path": "learning/inquiry/science-lab/measurement/app.js",
       "sha256": "ed311dda4d0899bfa8c2f1984e3fc7dd6728b3cafe9475e7d99ad1a9584d819f"
     },
     {
       "path": "learning/inquiry/science-lab/measurement/index.html",
-      "sha256": "8b55278377bfc9e4d5aae77a8a0dab1cc5697dddd46c69ae962fd5095ba17435"
+      "sha256": "86a7fbddd533dd71186de1f87fb6f20f4792b16280b1becd2adc89ea2d181834"
     },
     {
       "path": "learning/inquiry/science-lab/measurement/measure-visual.css",
@@ -1117,7 +1197,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/mendeleev/index.html",
-      "sha256": "6fed8b3f0b2c65a735a740360148bb3972e70e848b1acabc8d62e591603e5458"
+      "sha256": "85b0245ea7d61eb196c8913e197dc6137234e7cec8ddbda028dac763590a6690"
     },
     {
       "path": "learning/inquiry/science-lab/mendeleev/model.js",
@@ -1129,7 +1209,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/metamorphism/index.html",
-      "sha256": "c2c1e0983eff35ad1713b0746336751340ddad2d69899d9cba9c614bb42e0fd4"
+      "sha256": "df2dd23ce31d029ecdb1e156d4a3b0710321525b1db47edd45c476b903d9eda4"
     },
     {
       "path": "learning/inquiry/science-lab/metamorphism/meta-visual.css",
@@ -1149,7 +1229,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/microbes/index.html",
-      "sha256": "e11cfb16fe89e7c10b9f74bcb240d8a07f0381bf95de6590b63196e1f555fac1"
+      "sha256": "2554ebd0c0ab91ae6d5817cfc420ad310e480254ed3ed929eeff8bc4ff90faf0"
     },
     {
       "path": "learning/inquiry/science-lab/microbes/microbes-visual.css",
@@ -1169,7 +1249,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/microscope/index.html",
-      "sha256": "9a67343dbcf55e0b60370f396233c17171cd6045d7a7f9c2c3c2cdc9ebfddcf7"
+      "sha256": "7e7dc1d57e990071cddfcaf48b491a2b52a84a82c2370bcf14da808f1bad5eae"
     },
     {
       "path": "learning/inquiry/science-lab/microscope/quiz.css",
@@ -1189,7 +1269,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/index.html",
-      "sha256": "2f21130e38afffa9fac41b2fd74670d8c0428c7a00d4433081c31f9dc40ea991"
+      "sha256": "569a1d8eac6fa5f6f26ba3215e8213f3e49f7e370eb948675c8ca4cfa4dd9607"
     },
     {
       "path": "learning/inquiry/science-lab/minerals-rocks/quiz.css",
@@ -1209,7 +1289,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/mixture-separation/index.html",
-      "sha256": "82b82df9194323eb2c2080857a6df142ea360a7d37e5a69adffe5ba4c65d6672"
+      "sha256": "998fd42118e2950da7013a1de314d3b003f6b8d79bdcbf13e4143db16011ca9c"
     },
     {
       "path": "learning/inquiry/science-lab/mixture-separation/mixture-visual.css",
@@ -1229,7 +1309,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/mole/index.html",
-      "sha256": "9c014bb54c33cb0b191d863afd6acbef350f6189adfe3b4cd50dc621e271b407"
+      "sha256": "4efcfe83781a346506086bc5d4b5d31284a88834c7d7b9d3ef63e8a06a8a14af"
     },
     {
       "path": "learning/inquiry/science-lab/mole/mole-visual.css",
@@ -1249,7 +1329,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/molecule-shape/index.html",
-      "sha256": "036fceacf40fdbaa1a50488252c96d1c60bf74e700266aebe7fd91fcd71588b2"
+      "sha256": "f360e46591be698f17f5afd06ac4cd06b74e2417928dc41b0d6bcc1c38187653"
     },
     {
       "path": "learning/inquiry/science-lab/molecule-shape/quiz.css",
@@ -1269,7 +1349,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/moon-phases/index.html",
-      "sha256": "4c98e6f41b26a0055062414bf1c5c9e0176b834604ca8dfaaf9e1d3073ad2c57"
+      "sha256": "c16025a9b68c48e033f82b0e4ed2770de2b3999ed9839bfa48e6abeb1639b82d"
     },
     {
       "path": "learning/inquiry/science-lab/moon-phases/moon-visual.css",
@@ -1289,7 +1369,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/motion-energy/index.html",
-      "sha256": "22e5e2129aaaaa9de2e226fe8f4cba9bf627f8eb56784049d5fa061728d58d4c"
+      "sha256": "7f3a735ed98b92a3537f3111d1be5ededa2ffd9ac768787d4f6ae43b795cb5ba"
     },
     {
       "path": "learning/inquiry/science-lab/motion-energy/motion-visual.css",
@@ -1309,7 +1389,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/motor-magnet/index.html",
-      "sha256": "26ebc2c40c7196962b761fbba5bfca36469524e35959d9e9859bc5e2dedb213d"
+      "sha256": "fc44ab252a0ced43ff46031a1e6f1652862744f074297051f0c51ae6030fce56"
     },
     {
       "path": "learning/inquiry/science-lab/motor-magnet/motor-visual.css",
@@ -1329,7 +1409,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/natural-selection/index.html",
-      "sha256": "1ed83c0d8d95c898ee0225cd62540a6e75d0bc6060474f50bd8ef0b4b5a3decb"
+      "sha256": "2d8e15ac4f162e5fcb747119ea7086e80a0c9177f691e629d41abe4f11cef249"
     },
     {
       "path": "learning/inquiry/science-lab/natural-selection/quiz.css",
@@ -1349,7 +1429,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/neuron/index.html",
-      "sha256": "2ba7d0a854a1c9d5cde3c0af1e545356388e4ae1a9acbcf08b14f24004b8e1e3"
+      "sha256": "68f0c7e45643c675e37017a5d32444f8376ac49816a75549295b04452576301f"
     },
     {
       "path": "learning/inquiry/science-lab/neuron/neuron-visual.css",
@@ -1365,7 +1445,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/neutralization-common/index.html",
-      "sha256": "f5181350c4780a45d622ceec214dd09f1231abb85b63b105bf50d0df6a945d8c"
+      "sha256": "380e2d1e1a253da5f6ceb18749fcd42a484703984efd25e9582591d5558e2f6d"
     },
     {
       "path": "learning/inquiry/science-lab/neutralization/app.js",
@@ -1373,7 +1453,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/neutralization/index.html",
-      "sha256": "cf75913bf02e965d82346a2546e66b0858b380b43584f542bcf12d08ea6b27d3"
+      "sha256": "7703b0f4391dd8f1db004778d4728eda2619746f7c5e222a473143207e85cb4c"
     },
     {
       "path": "learning/inquiry/science-lab/neutralization/neut-visual.css",
@@ -1393,7 +1473,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/newton-prism/index.html",
-      "sha256": "1a368bfb11c65eb826ea01b00b74173af63ad6676c78e0239f9cc45d6b08c452"
+      "sha256": "2a2cdfef4f3317130afb114049392381d70065ab052ec4d6f1cbf6f09851f2e7"
     },
     {
       "path": "learning/inquiry/science-lab/newton-prism/model.js",
@@ -1405,7 +1485,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/night-sky/index.html",
-      "sha256": "90de8ec6efe413ff18f406ce45f35c3ef30c8e8a4fd9b8792630c4566a7cdc0e"
+      "sha256": "57e71f6a37330e80ef85de6a8c85d8bc9e10f7f8b7e37b48a991f38e1d2e8691"
     },
     {
       "path": "learning/inquiry/science-lab/night-sky/quiz.css",
@@ -1425,7 +1505,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/nutrient-detection/index.html",
-      "sha256": "afbf61f41a80e76538a6959f3f2f1d8a5450f41766d2853a4ed5e603a83fc5b7"
+      "sha256": "08b1a4ec21153489764f63268ad5f3bd55ea784bd01e2422fbb8f1042dcdc3df"
     },
     {
       "path": "learning/inquiry/science-lab/nutrient-detection/nutrient-visual.css",
@@ -1440,6 +1520,10 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/nylon-interface/index.html",
+      "sha256": "92f9a447e51d22e4539c862e28570ddc3ca715901d445f9cef4f912d636aa266"
+    },
+    {
       "path": "learning/inquiry/science-lab/observation-scenes.js",
       "sha256": "758a78f6414d83daaec50760f4b173e9cc80f68f4ee0b97bf09f380778ce2f96"
     },
@@ -1449,7 +1533,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/ocean-circulation/index.html",
-      "sha256": "72eaa7f6c1afc5193bf4c41bbba0f9a307324daaef4c66fd72d1e3f3f0cb65e6"
+      "sha256": "3ff04528f1481b04e476f7a4259befb32eacae17afe04385644e823c3eb36a69"
     },
     {
       "path": "learning/inquiry/science-lab/ocean-circulation/ocean-visual.css",
@@ -1469,7 +1553,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/ocean-layers/index.html",
-      "sha256": "311612e80beba1a4788d5260997e8418e5cb1d4ab96fc0f4f9ada4a881aff393"
+      "sha256": "a824ace18b45f08dd119a8430e4ce59c53f031c412455fcaf0df9d079e45ec11"
     },
     {
       "path": "learning/inquiry/science-lab/ocean-layers/layers-visual.css",
@@ -1489,7 +1573,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/ohms-law/index.html",
-      "sha256": "3758d79aff5875c5b21a07e411d3fee9f5b1e71fb88c2d93e0799bcb1ecba798"
+      "sha256": "2a63d7f13e9064b89e0bead2f3d11898bcbfbf925b41fb40bc678818385005a4"
     },
     {
       "path": "learning/inquiry/science-lab/ohms-law/ohm-visual.css",
@@ -1508,12 +1592,20 @@
       "sha256": "378a50cd935ee1ba313c5e7bf97b6639dcf704a2eb0b9ede5e54bc9744687ca0"
     },
     {
+      "path": "learning/inquiry/science-lab/organelle-builder/index.html",
+      "sha256": "bee02646f4bc90dde853ddb5958c0b0a6699a3148795e0bb5253de5436c07472"
+    },
+    {
+      "path": "learning/inquiry/science-lab/organic-builder/index.html",
+      "sha256": "8b1caba05d93eb986992ab02804648c2d64da47b32ece5bf6075d6c316bd7afb"
+    },
+    {
       "path": "learning/inquiry/science-lab/pasteur/app.js",
       "sha256": "8bef6147aafb7d549a4a7f0967292c754e8ef435082a741836f456fba2d1c5ad"
     },
     {
       "path": "learning/inquiry/science-lab/pasteur/index.html",
-      "sha256": "eb8c30bc30f855efbe6eecb34ef52a524a046ae16f21954190aa030ead64330f"
+      "sha256": "1f668240ec48bee994f0afb1072f6d4f767d7e6b7c91e84cba905c57cac65a8f"
     },
     {
       "path": "learning/inquiry/science-lab/pasteur/model.js",
@@ -1525,7 +1617,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/pea-genetics/index.html",
-      "sha256": "98894730e57be328e9f03cffa5bc3996450211994e1bad4ab1481b679c9a3328"
+      "sha256": "fadb0887fe1bd7b36084e552539ca464c5815f90f58783124915286dab15ec8b"
     },
     {
       "path": "learning/inquiry/science-lab/pea-genetics/pea-visual.css",
@@ -1540,6 +1632,10 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/pedigree-lab/index.html",
+      "sha256": "60a6a4543b77298ea89a254482e3154c4be2b63ff2198ab745bfe67e7669b665"
+    },
+    {
       "path": "learning/inquiry/science-lab/periodic-bonding/app.js",
       "sha256": "e13aaeeb04552ccd23b16f163c95218967ce9392d7c3e576235d924583627195"
     },
@@ -1549,7 +1645,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/periodic-bonding/index.html",
-      "sha256": "11931fd831dbdcfe3e12ad1f3f9e9c0a6d9b9c933fabbff72222e2895fd32215"
+      "sha256": "9b5869425d3ab5decbff48048bde6b6ecd6aa70e5561ed043f0029757feef655"
     },
     {
       "path": "learning/inquiry/science-lab/periodic-bonding/quiz.css",
@@ -1565,7 +1661,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/photoelectric/index.html",
-      "sha256": "2f86906d35d977c4d11d284ff0098132b62723c542fe4d6ad59c2c722281bb6c"
+      "sha256": "0d7cfaac27514facaa4271ec7c891574758df10b44f08ebe9070b2ce58c0a84c"
     },
     {
       "path": "learning/inquiry/science-lab/photoelectric/photo-visual.css",
@@ -1585,7 +1681,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/photosynthesis/index.html",
-      "sha256": "62838c64cf4f35509eacb61b0fbf433727f03681338b381708fbac049b0b0437"
+      "sha256": "02d022239b32bb71ffa4ab98446634d2f4c56a1624ed70982ca298749cfb5e6f"
     },
     {
       "path": "learning/inquiry/science-lab/photosynthesis/photo-visual.css",
@@ -1605,7 +1701,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/phylogeny/index.html",
-      "sha256": "f112993b5770182a6388958a923acf598fe608b5cc9c110e3589bb794595b116"
+      "sha256": "7ed32059672939e2d89532b7787f78eda0cdb1fc1a618b06507c9570a1b3ee64"
     },
     {
       "path": "learning/inquiry/science-lab/phylogeny/phylo-visual.css",
@@ -1633,7 +1729,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/planet-motion/index.html",
-      "sha256": "8ff000c24ed58c5a72a98ebcbd2e55239f9d6460957c12191065d8c2b79928ce"
+      "sha256": "1c19cd8bff57e8c226eda89250c217d23f08c2581d40d89f377dc270bef6aedd"
     },
     {
       "path": "learning/inquiry/science-lab/planet-motion/planet-visual.css",
@@ -1653,7 +1749,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/plate-tectonics/index.html",
-      "sha256": "1b3c9a8b9ce103a232bd974ee9294663f5a5490d3951fc3fa9597e7669652b43"
+      "sha256": "cc0cfa433c2c0ee7f1ecbd60d18520b5667cdd1f860b08c7c9dcbe0275ca82c1"
     },
     {
       "path": "learning/inquiry/science-lab/plate-tectonics/plate-visual.css",
@@ -1669,7 +1765,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/polarization/index.html",
-      "sha256": "2b658ee69936da2f76a04b4cd5c341abf61d06620ba8ec6c1d6ed351b1a8c421"
+      "sha256": "16f3e57fdf2fdb1de3327948a43aeff0a86b016820dac862ec93ebc944b69cb5"
     },
     {
       "path": "learning/inquiry/science-lab/population/app.js",
@@ -1677,7 +1773,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/population/index.html",
-      "sha256": "e1ae37061bd4e7f8d2a21dedaab1d18e91efd5e4c18687b2491c3dc46012d050"
+      "sha256": "8fa623728bd0f2a16cb8d7ed57754621d3b84f9c9b3bb0dbbc86afdd86f344bf"
     },
     {
       "path": "learning/inquiry/science-lab/population/population-visual.css",
@@ -1692,6 +1788,14 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/protein-folding/index.html",
+      "sha256": "f2077fcf086b41469221b03a01143220f980107352e3da23c3b02738149eef65"
+    },
+    {
+      "path": "learning/inquiry/science-lab/protein-synthesis/index.html",
+      "sha256": "77fba75feca1ad2bc8488b9ef165beac7ba1b66229fbafa0c9ac5a7224ecae2e"
+    },
+    {
       "path": "learning/inquiry/science-lab/question-quality-content.js",
       "sha256": "45b7b75512759d2e67c65d5e39d5971d3b69bf2e31d34e8df9d559dd7fd6c480"
     },
@@ -1701,7 +1805,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/rate-equilibrium/index.html",
-      "sha256": "f71921b528179f5a44b25fb08e53f15427ef140d7744a50e87f7e083ee450752"
+      "sha256": "41e89ad2f8df6fb3460c89a2e826ee1aafc4e5a777e9fbf0bc345ec220f9872c"
     },
     {
       "path": "learning/inquiry/science-lab/rate-equilibrium/quiz.css",
@@ -1725,7 +1829,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/recrystallise/index.html",
-      "sha256": "24d212fb9ed2d26ca1dd6c93d73e1ef58160dbae1f89f201f6e488b047ec0b37"
+      "sha256": "f0e71301489b1e97b3d7dc325236fe59e33dfca8e5fb093009f58bf418ef5494"
     },
     {
       "path": "learning/inquiry/science-lab/recrystallise/quiz.css",
@@ -1741,7 +1845,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/redox/index.html",
-      "sha256": "4cb19e0a606add40fcd92eb96e7f5136cffcbd375cb21389405e2e96c82164d3"
+      "sha256": "46d66ca928a8eb79636127a9b049192b2525119e5b0d89e87b7d2ea6abe23d31"
     },
     {
       "path": "learning/inquiry/science-lab/redox/quiz.css",
@@ -1761,7 +1865,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/reflex-nerve/index.html",
-      "sha256": "9dc6470f072e54b8b79103042e88603a132b947aa4e3a1f66b9f9edd7f1ae0e3"
+      "sha256": "d004fadf5c9ace5b874b868b7f05d0356741473653f57ffbe34ee47e9a5858ea"
     },
     {
       "path": "learning/inquiry/science-lab/reflex-nerve/quiz.css",
@@ -1781,7 +1885,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/refraction/index.html",
-      "sha256": "22e4a1a62663d384cc71f30beadd5491e275a7ebed6999f2ebac74ee4d4fa77c"
+      "sha256": "3aa3b9afd591115059e2feeed1e22cb685c6084f6cc94e2bbf58606ff45edf1c"
     },
     {
       "path": "learning/inquiry/science-lab/refraction/quiz.css",
@@ -1812,12 +1916,16 @@
       "sha256": "cf020f1a07a624a88a3a48439ab89649239b63a28baf96dad88b78c3f32c07fb"
     },
     {
+      "path": "learning/inquiry/science-lab/ride-acceleration/index.html",
+      "sha256": "0aedeb6e07fda22b734fa03d04699566ab74daab3e7df7b1edfcefd9ff1a22d9"
+    },
+    {
       "path": "learning/inquiry/science-lab/rock-age/app.js",
       "sha256": "13b637a7216f0ac8b89461be6709121f6aea5a165abd22015ccbff0f378b5ef8"
     },
     {
       "path": "learning/inquiry/science-lab/rock-age/index.html",
-      "sha256": "4626d298fd27d233de7092c5ec859de275630c607f27bcc251040f62cb79f23d"
+      "sha256": "1c65d01cab59f8a57c52e244b556281a4bad86403535b1c84776931db2178eb6"
     },
     {
       "path": "learning/inquiry/science-lab/rock-age/quiz.css",
@@ -1837,7 +1945,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/rock-layers/index.html",
-      "sha256": "5d5ee3515d40de8865ddfd53146ca27d3047a8c884929a90482e291994383e16"
+      "sha256": "5c6b0c0c04da659e5bfc41ab266c823e6de01c39abe5d374a1e5c870eaac7157"
     },
     {
       "path": "learning/inquiry/science-lab/rock-layers/layer-visual.css",
@@ -1853,7 +1961,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/salt-hydrolysis/index.html",
-      "sha256": "786dde75c603397b5410693d03bd58b16b24ecd4ad3f4a735dea8d64b6040e2f"
+      "sha256": "9635473c5f129c6ac0a4dadf0979655b85e3826a6450c976364f6a0be741f5ed"
     },
     {
       "path": "learning/inquiry/science-lab/scene-refinements.js",
@@ -1877,7 +1985,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/seasons/index.html",
-      "sha256": "2db064b6cf5396b3b8b578dd54885326b55b39be0195093c03b7f6e8ce16bcf0"
+      "sha256": "d8e098c3b0b5d7678163e4e3af1b0bab377606e0d5f1b106712f8b3427be80e8"
     },
     {
       "path": "learning/inquiry/science-lab/seasons/quiz.css",
@@ -1897,7 +2005,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/seawater/index.html",
-      "sha256": "9cdc2fdb233be48b1bb35e86dde3c85b83f4e7582649e50e0234b6fdc0c3ef09"
+      "sha256": "7d19d6c0616ddaeea745c7f0417f3b0c562babf485f53945a2b0d84a60e5eca0"
     },
     {
       "path": "learning/inquiry/science-lab/seawater/quiz.css",
@@ -1917,7 +2025,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/seed-germination/index.html",
-      "sha256": "285b538894315d0462a0c551096f9cd691743c7674ce360882bda9e635f41ae2"
+      "sha256": "267803170f3c8c2697ac617d9b56ad7baac378a6167ebbf7d66e733e4cf111f8"
     },
     {
       "path": "learning/inquiry/science-lab/seed-germination/quiz.css",
@@ -1937,7 +2045,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/semiconductor-relativity/index.html",
-      "sha256": "70ed0a76eb39ccdd944df3c926881719e9656e85b50d2aee60f1300244cd4132"
+      "sha256": "6f385aa701ff2d790811ac13fd0553f1794b5d6cb15ddab5ff41a68f0557e066"
     },
     {
       "path": "learning/inquiry/science-lab/semiconductor-relativity/quiz.css",
@@ -1957,7 +2065,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/senses/index.html",
-      "sha256": "20cdcb4c252a92415906f2846c6725175351d70b19afaf4a1ce21f2a835a480a"
+      "sha256": "ea21f38b0683d91cd3dbe4884278b4e79012a5a8daa7f334e9b185ab1918a752"
     },
     {
       "path": "learning/inquiry/science-lab/senses/quiz.css",
@@ -1972,12 +2080,20 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/sensor-labs.js",
+      "sha256": "d492f5217f411af7eeab15db3c8c627033f5a966c51704f3959a2d3bb92d099a"
+    },
+    {
+      "path": "learning/inquiry/science-lab/sensor-models.js",
+      "sha256": "2e03b7a08b9b7e7d7f9c7d7b95f1644505baa24a70b036ea3fbe8d3e13ab6a3e"
+    },
+    {
       "path": "learning/inquiry/science-lab/separation-methods/app.js",
       "sha256": "aac43e0828d3776b1607e2324224a989ec3b15321d9f0009112f27eb112fd378"
     },
     {
       "path": "learning/inquiry/science-lab/separation-methods/index.html",
-      "sha256": "33e7e4aded0c4c1016ea3fa2bf52a30b918e7c93dc046642a1b2326642e94a1d"
+      "sha256": "c6d27c753eb99a0d1d6446bfdb4fa69d7c82de134009764ac52025e6890c8d49"
     },
     {
       "path": "learning/inquiry/science-lab/separation-methods/quiz.css",
@@ -1992,8 +2108,16 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/silver-mirror/index.html",
+      "sha256": "abc6a34ed7acecafe425a90422e8260928e5a7e7b9bd618f5fcb83bea28e3a9f"
+    },
+    {
+      "path": "learning/inquiry/science-lab/smart-pot/index.html",
+      "sha256": "9f68f3cf84f83aeb570fed659afd7d86421053460f70046b2907e7e48810f82d"
+    },
+    {
       "path": "learning/inquiry/science-lab/soap-film/index.html",
-      "sha256": "2bf71dc0d20edaace708c1f0ed5499bebbf0df8dd67cff3bd0b0c97cca4bf0eb"
+      "sha256": "1901699cf7b403a149fb61382791a9d411875c6146913e3f32e4541afab0ec6d"
     },
     {
       "path": "learning/inquiry/science-lab/solubility-curve/app.js",
@@ -2005,7 +2129,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/solubility-curve/index.html",
-      "sha256": "43f9efb0c59784c81ae8cfd5d2895ce323405771d30130aa0eaa662bb36b6016"
+      "sha256": "3a7d9827a3f4cd7b5677f1f37f19a5598a624f7fa9b37be42482e7d3367be2db"
     },
     {
       "path": "learning/inquiry/science-lab/solubility-curve/quiz.css",
@@ -2021,7 +2145,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/solubility/index.html",
-      "sha256": "ebe767a16180e472beaf0e13d8ca7fbaf57802315da879d3f69f9ed32d2c3a2e"
+      "sha256": "e2d4558e59753603a7767a3fb2d4a14d5a8544a6755bdd5ab40c3556a293ca58"
     },
     {
       "path": "learning/inquiry/science-lab/solubility/quiz.css",
@@ -2041,7 +2165,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/sound-vibration/index.html",
-      "sha256": "eba7362365f7d75375233aa4c13d097f3d23bde53a98ce0b5276a6e6aa9bd489"
+      "sha256": "aa57f4f03740810655c4caa04d7c9569fe574949ba5c74a0d5cd9a028a79cb7e"
     },
     {
       "path": "learning/inquiry/science-lab/sound-vibration/quiz.css",
@@ -2057,7 +2181,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/speaker-lab/index.html",
-      "sha256": "27d75cda35c87058eee5b32e6f493aba16455dd97fe0308847aff9a08a9506da"
+      "sha256": "40d7f4a9a7c70b28188e73a47b4a2d0f2ac5650ad4c7a2eabad512b4b38e1a65"
     },
     {
       "path": "learning/inquiry/science-lab/specific-heat/app.js",
@@ -2069,7 +2193,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/specific-heat/index.html",
-      "sha256": "c8f416dda8af2791ff1c1427b61856b12e6f46ff83009e550c4c17583ee80b91"
+      "sha256": "cf937d462fb4ca5844653750bcf302931510ab7acd410361cfbca53ffe30aa0b"
     },
     {
       "path": "learning/inquiry/science-lab/specific-heat/quiz.css",
@@ -2085,7 +2209,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/speed/index.html",
-      "sha256": "f0ee714dabc3f08028f42943cc0411a753d71956d0c06758b999f14710feab9e"
+      "sha256": "f22b0162ee03362ca611a94c76acd6755845236b645da62ad276b344177c6889"
     },
     {
       "path": "learning/inquiry/science-lab/speed/quiz.css",
@@ -2105,7 +2229,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/star-elements/index.html",
-      "sha256": "7e9b34da386d2acf292d09b1eeda4613712a2f603030d79a94e50a3847e7d3d4"
+      "sha256": "57b85d1a8d676297e1f5037112882829dc6be2def1f868435545b81d0765440c"
     },
     {
       "path": "learning/inquiry/science-lab/star-elements/quiz.css",
@@ -2125,7 +2249,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/stars-universe/index.html",
-      "sha256": "5eab595cd0027979a8a7ff45fff6bbb394c3ea3c535417a85e84e4a1de26dc86"
+      "sha256": "5213ace3493981a675b68f277ad0dc6071ff596b352b8a9ec5f2ad85d031f3c0"
     },
     {
       "path": "learning/inquiry/science-lab/stars-universe/quiz.css",
@@ -2145,7 +2269,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/stars/index.html",
-      "sha256": "20b3d2ab0dd1460b5858789109530f67e6a2f6c361a47e2e09ff0b33e6cb16dd"
+      "sha256": "1938fee89798b9abf86e0a8ea63e2479866b5042af84212f2d1a160dc25e6643"
     },
     {
       "path": "learning/inquiry/science-lab/stars/quiz.css",
@@ -2165,7 +2289,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/state-change/index.html",
-      "sha256": "f06d08c1a0e026509741ba788a162d924ffb0dbb27cae679e3b9632862cfbef3"
+      "sha256": "857aa5a440ceb3c0a7bcd5045735da9874f8c05dc073636217bd77f104ffef1c"
     },
     {
       "path": "learning/inquiry/science-lab/state-change/phase-model.js",
@@ -2184,12 +2308,28 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/stellar-mass-data/index.html",
+      "sha256": "842607749b193806998b2302b3c199a6664fe30da9149495bd21786b7c40450c"
+    },
+    {
+      "path": "learning/inquiry/science-lab/structure-labs.css",
+      "sha256": "b129068f7162becd3dae22d22d92cb154ea5660e3ba628ffb6fccc4ef59f9787"
+    },
+    {
+      "path": "learning/inquiry/science-lab/structure-labs.js",
+      "sha256": "5f5d96a505b8f32ab1149adcb3ca097c05754c578de4c74bb96a65cb09c45447"
+    },
+    {
+      "path": "learning/inquiry/science-lab/structure-models.js",
+      "sha256": "772f38432d4962de520fe7b0eaa892b5e7d814b8c1335cfc00e1c61f6545b31b"
+    },
+    {
       "path": "learning/inquiry/science-lab/styles.css",
       "sha256": "ff22263b390f9ba4076fa65a3695055bf3da840c80cd20a58e34cb75ba99a7c1"
     },
     {
       "path": "learning/inquiry/science-lab/sugar-phase/index.html",
-      "sha256": "6aba44354f95d1a94a4f97d40ac8656e8e0f7fa8e592abbacc834e08d2bd7918"
+      "sha256": "e6450e84424bf90aa1ddcd4eaa5cd1e0a982fa7978f03117e19d9207c023d5cb"
     },
     {
       "path": "learning/inquiry/science-lab/supplement-core.js",
@@ -2213,7 +2353,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/titration/index.html",
-      "sha256": "3cb9eacbec80f8439e8d4dbc1aef8acabb6ef10b47cf982cdd63c1bcf53f6de6"
+      "sha256": "4656dc5e1afdd047c6e2fb0b5d97330764b55c593d9c1bf43a6bfd704df092b5"
     },
     {
       "path": "learning/inquiry/science-lab/titration/quiz.css",
@@ -2233,7 +2373,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/torque/index.html",
-      "sha256": "c97fc7cbfda207f91d3f49d36a96bd1870754433c714366ddc38468adbd33d24"
+      "sha256": "bd6455267bfd4e49b1c79696976c1a2bf88294426cfa618e7a4e9c6fa6b7a5e6"
     },
     {
       "path": "learning/inquiry/science-lab/torque/quiz.css",
@@ -2249,7 +2389,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/transistor-speaker/index.html",
-      "sha256": "6ab94ff6dd41fc4614fb399bebb116f9ed66b1b2c880f368d217050269840ba5"
+      "sha256": "545dae3e6d7dc3a92aaf75d2fb360a043e1771799c850d49e3db4f6ed734f0ce"
     },
     {
       "path": "learning/inquiry/science-lab/typhoon/app.js",
@@ -2257,7 +2397,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/typhoon/index.html",
-      "sha256": "d4e3871b8b87f5f666985daa54e8c78478f17e0cb2066d766c0def32bd71e2f1"
+      "sha256": "11ba6bf6bd571668df013b212bce3b8fec251c2a14efcf7e4040bcda432cfc34"
     },
     {
       "path": "learning/inquiry/science-lab/typhoon/quiz.css",
@@ -2277,7 +2417,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/volcano-model/index.html",
-      "sha256": "f4290e523b6aa439fd7ae7507af5bf86160d988747a83a9fac5c9278a0310543"
+      "sha256": "29f1054651b2f96756fa82aeb5bd4a797e2f5e61410e89ed6e7112e10105c91e"
     },
     {
       "path": "learning/inquiry/science-lab/volcano-model/quiz.css",
@@ -2301,7 +2441,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/water-cycle/index.html",
-      "sha256": "7ced9e5d8dd46d50977e2c795a125658cb0f37010739d22ee1b3f93bac0b434f"
+      "sha256": "e74309161764e19eb4a9a427d53a0795e9182b6479e00aa554ed0376cd3b6bbb"
     },
     {
       "path": "learning/inquiry/science-lab/water-cycle/quiz.css",
@@ -2312,12 +2452,16 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "path": "learning/inquiry/science-lab/water-wave-tank/index.html",
+      "sha256": "2f694b21529292844269e6a294be85a28c86846e3228c20c5858c4a18b30a637"
+    },
+    {
       "path": "learning/inquiry/science-lab/wave-transfer/app.js",
       "sha256": "d8594f9a10da32748653c3650beb7a1fe8eb9b179b8a90899e354eef2d144f1b"
     },
     {
       "path": "learning/inquiry/science-lab/wave-transfer/index.html",
-      "sha256": "333eca160545223c297575333e3a5fea1782b526a59406c58c24ca05f6a29b5b"
+      "sha256": "a7203a35e1cf8b168244d96f6771d9dc0ccf09e390d99d09abeb8a1c4b9b45b5"
     },
     {
       "path": "learning/inquiry/science-lab/wave-transfer/quiz.css",
@@ -2337,7 +2481,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/weather-front/index.html",
-      "sha256": "4b392ae5a85f819b71ca684851e2e05b916a9140e4a862d057bd13583cfef180"
+      "sha256": "c55305259297be776240647e31507fc2aff436ea18ce06957ec40ba1a1adf8cb"
     },
     {
       "path": "learning/inquiry/science-lab/weather-front/quiz.css",
@@ -2357,7 +2501,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/weather-watch/index.html",
-      "sha256": "caa32f1aa3a94a94bee6279222c3dccada4f9e35210d4b3bcea64bf72ce4915e"
+      "sha256": "14a74ee5cdccf8b3a29d677e42981f7b04ebecbdda737ecf58fe9ca689abddfb"
     },
     {
       "path": "learning/inquiry/science-lab/weather-watch/quiz.css",
@@ -2377,7 +2521,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/weight-compare/index.html",
-      "sha256": "6e9bcfd4064f34a5c98eb7f6fdf5bc34da5c3a8601a04eb7ff7bd89a72d0f555"
+      "sha256": "167657aa31346601de4bef9a65ed1ee3ebde07b3e9abfcaa83851b1c45a777d6"
     },
     {
       "path": "learning/inquiry/science-lab/weight-compare/quiz.css",
@@ -2393,19 +2537,19 @@
     },
     {
       "path": "learning/inquiry/science-lab/wireless-power/index.html",
-      "sha256": "3df9b9298ec715966982448c1fa09761ff9d258e5edb2ea69a927283eb0b9191"
+      "sha256": "2e4590944e0116b1802849111d0f7faa6f949631fe395f83ce6b7e04f604e9c7"
     },
     {
       "path": "scripts/science-restored-experiments.cjs",
-      "sha256": "c3950891289591cf7d689d23fb8b7220d98bbfba941a6ea215749aecd07099ef"
+      "sha256": "6d983c563e9062547102e7549b153c50663acca822c9c51a612af60424d791d1"
     },
     {
       "path": "docs/science-lab-audit-2026-10-11/textbook-manual-review.cjs",
-      "sha256": "b6b47b666dfb5f073e192deb7a9b699788b248f90ab3eb415c8c2b37042dade8"
+      "sha256": "122e6d0a76aae1773c18812ab1fa3cc75d8cfe38bf0649bde60bc347faea9729"
     },
     {
       "path": "docs/science-lab-audit-2026-10-11/source-review-restored.cjs",
-      "sha256": "102c5f09344efba7801672146ae47e2929d0de424851725f2b794557050c70ef"
+      "sha256": "2341eab3c2d9ee985adf18cb73298ceb94d2a1cb4c9047ed82923f031bf9d87d"
     },
     {
       "path": "scripts/science-activity-tools.cjs",

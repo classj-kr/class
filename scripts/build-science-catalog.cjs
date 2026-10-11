@@ -8,7 +8,7 @@ const lab = path.join(root,'learning/inquiry/science-lab');
 const classification = require('./science-catalog-classification.cjs');
 const esc = s => String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const schoolLabels = {elementary:'초', middle:'중', 'high-common':'고(공통)', 'high-elective':'고(선택)'};
-const emptyMessage = populated => `<p class="catalog-empty"${populated?' hidden':''}>이 범주에 등록된 실험 없음</p>`;
+const emptyMessage = populated => `<p class="catalog-empty"${populated?' hidden':''}>실험 없음</p>`;
 function render(map) {
   const placements = classification.classify(map);
   const entries = Object.entries(map);

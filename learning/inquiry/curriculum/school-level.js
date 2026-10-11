@@ -3,10 +3,11 @@
     const names = { elementary: '초', middle: '중', high: '고' };
     const params = new URLSearchParams(location.search);
     let level = names[params.get('school')] ? params.get('school') : 'middle';
+    let allowed = new Set(Object.keys(names));
     const listeners = new Set();
     const esc = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     function set(next) {
-        if (!names[next] || next === level) return;
+        if (!allowed.has(next) || next === level) return;
         level = next;
         document.documentElement.dataset.schoolLevel = level;
         const url = new URL(location.href); url.searchParams.set('school', level);
@@ -15,13 +16,23 @@
         listeners.forEach(fn => fn(level));
         window.dispatchEvent(new Event('resize'));
     }
+    function setAllowed(levels) {
+        const valid = levels.filter(key => names[key]);
+        if (!valid.length) return;
+        allowed = new Set(valid);
+        document.querySelectorAll('.school-level [data-school]').forEach(button => {
+            button.hidden = !allowed.has(button.dataset.school);
+            button.disabled = button.hidden;
+        });
+        if (!allowed.has(level)) set(valid[0]);
+    }
     function mount(host) {
         if (!host || host.querySelector('.school-level')) return;
         const box = document.createElement('div'); box.className = 'school-level';
         box.setAttribute('role', 'group'); box.setAttribute('aria-label', '학교급');
-        box.innerHTML = Object.entries(names).map(([key,name]) => `<button type="button" data-school="${key}" aria-pressed="${key===level}">${name}</button>`).join('');
+        box.innerHTML = Object.entries(names).map(([key,name]) => `<button type="button" data-school="${key}" aria-pressed="${key===level}"${allowed.has(key)?'':' hidden disabled'}>${name}</button>`).join('');
         box.addEventListener('click', e => { const b = e.target.closest('[data-school]'); if (b) set(b.dataset.school); });
-        host.append(box);
+        host.insertBefore(box,host.querySelector(':scope > .unified-music-control'));
     }
     function profile(key) { return window.SchoolContent?.[key]?.[level] || null; }
     function concepts(p) {
@@ -86,6 +97,6 @@
             url.searchParams.set('school',level);link.href=url.href;
         }
     },true);
-    window.SchoolLevel = { get value(){return level;}, names, set, mount, profile, concepts, practice, answerDetail, esc,
+    window.SchoolLevel = { get value(){return level;}, names, set, setAllowed, mount, profile, concepts, practice, answerDetail, esc,
         subscribe(fn){ listeners.add(fn); return () => listeners.delete(fn); } };
 })();

@@ -1,0 +1,41 @@
+.solar-visual-lesson { color:#202124; }
+.solar-visual-lesson .solar-lesson-figure { margin:16px 0 20px; padding:14px 14px 12px; border:1px solid #c9cec8; border-radius:12px; background:#eeeee7; }
+.solar-lesson-figure svg { display:block; width:100%; height:auto; max-height:405px; overflow:visible; }
+.solar-visual-lesson [data-solar-area] svg,.solar-visual-lesson [data-solar-period] svg { max-height:320px; }
+.solar-lesson-figure svg text { font:500 20px var(--font-main,sans-serif); fill:#29383d; }
+.solar-lesson-figure svg .sl-bold { font-weight:700; }
+.solar-lesson-figure svg .sl-teal { fill:#205f60; }
+.solar-lesson-figure svg .sl-amber { fill:#885000; }
+.solar-lesson-figure .sl-orbit { fill:none; stroke:#65737c; stroke-width:2; }
+.solar-lesson-figure .sl-guide { fill:none; stroke:#87979d; stroke-width:1.5; stroke-dasharray:6 5; }
+.solar-lesson-figure .sl-measure,.solar-lesson-figure .sl-radius { stroke:#207b7b; stroke-width:2; }
+.solar-lesson-figure .sl-axis { stroke:#65737c; stroke-width:2; }
+.solar-lesson-figure .sl-grid { stroke:#d0d7d2; }
+.solar-lesson-figure .sl-curve { fill:none; stroke:#207b7b; stroke-width:3; }
+.solar-lesson-figure .sl-light { fill:none; stroke:#a95d00; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.solar-visual-lesson figcaption { font:16px/1.65 var(--class-exam-font,serif); color:#4c5d62; word-break:keep-all; overflow-wrap:anywhere; margin-top:10px; }
+.solar-visual-lesson .solar-lesson-control { display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; margin:18px 0 12px; font:600 17px/1.5 var(--font-main,sans-serif); color:#205f60; }
+.solar-lesson-control output { font-variant-numeric:tabular-nums; }
+.solar-lesson-control input { grid-column:1 / -1; display:block; width:100%; margin:0; height:28px; accent-color:#207b7b; cursor:pointer; }
+.solar-lesson-control input:focus-visible { outline:3px solid #207b7b; outline-offset:3px; }
+.topic-explanation .solar-visual-lesson .solar-lesson-result { padding:14px 18px; background:#e3ede7; border-radius:8px; font-size:19px; }
+.solar-planet-order { list-style:none; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px 8px; margin:18px 0; padding:0; }
+.solar-planet-order li { display:flex; align-items:center; flex-direction:column; gap:10px; font:600 18px var(--font-main,sans-serif); }
+.solar-planet-dot { display:block; width:34px; height:34px; border-radius:50%; background:var(--planet-color); box-shadow:inset -7px -3px 0 #0002; }
+.solar-order-start { color:#885000; font:600 18px var(--font-main,sans-serif); }
+.solar-orbit-relation { display:flex; align-items:center; flex-wrap:wrap; justify-content:center; gap:12px; padding:20px 8px; border-block:1px solid #c9cec8; }
+.solar-orbit-relation span { background:#e3ede7; border-radius:50%; padding:18px; font:700 20px var(--font-main,sans-serif); }
+.solar-orbit-relation b { color:#205f60; font:500 16px var(--font-main,sans-serif); }
+.solar-planet-groups { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.solar-planet-groups > div { padding:18px 12px; background:#eeeee7; border:1px solid #c9cec8; border-radius:12px; }
+.solar-planet-groups h3 { color:#205f60; font-size:20px; margin:0; }
+.topic-explanation .solar-planet-groups p { font-size:18px; margin-bottom:0; }
+@media(max-width:600px) {
+    .solar-visual-lesson .solar-lesson-figure { padding:10px 4px; }
+    .solar-lesson-figure svg text { font-size:30px; }
+    .solar-lesson-control output { text-align:right; }
+    .solar-visual-lesson .solar-lesson-control { font-size:16px; }
+    .solar-planet-groups { grid-template-columns:1fr; }
+    .solar-orbit-relation { gap:8px; }
+    .solar-orbit-relation b { font-size:14px; }
+}

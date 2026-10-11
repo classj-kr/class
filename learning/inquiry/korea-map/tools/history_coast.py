@@ -32,7 +32,10 @@ def coastal_regions(regions, land, tolerance=32000, step=1000):
     # Restrict expensive coastline operations to the source-map neighbourhood.
     local_land = projected(land).intersection(cover.envelope.buffer(tolerance * 3))
     coast = local_land.boundary.buffer(tolerance)
-    eligible = local_land.intersection(coast).intersection(cover.buffer(tolerance)).difference(cover)
+    # Use the same per-region buffers as the allocator. Buffering the dissolved
+    # cover separately can create small wedges outside every region's buffer.
+    reach = unary_union([region.buffer(tolerance) for region in source])
+    eligible = local_land.intersection(coast).intersection(reach).difference(cover)
     # Compute one continuous nearest-source partition of missing land. Regions
     # keep their original inland geometry, including any unknown inland areas.
     additions = [Polygon() for _ in source]

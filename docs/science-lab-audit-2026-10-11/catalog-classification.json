@@ -6,8 +6,8 @@
   "counts": {
     "elementary": 29,
     "middle": 28,
-    "high-common": 13,
-    "high-elective": 51
+    "high-common": 17,
+    "high-elective": 71
   },
   "requiredExperimentTotal": null,
   "foundation": [
@@ -3862,6 +3862,641 @@
           "code": "12세포02-01",
           "line": 6847,
           "text": "물질대사는 생명체에서 생명을 유지하기 위해 일어나는 화학 반응임을 이해하고 에너지의 출입이 동반됨을 추론할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "insulation-lab",
+      "title": "단열재의 보온·보냉 비교",
+      "school": "high-elective",
+      "area": "역학과 에너지",
+      "category": "열과 에너지",
+      "section": "12역학",
+      "kind": "진로 선택",
+      "code": "12역학02-01",
+      "sourceLine": 5413,
+      "related": [
+        {
+          "course": "역학과 에너지",
+          "area": "열과 에너지",
+          "line": 5413
+        }
+      ],
+      "standards": [
+        {
+          "code": "12역학02-01",
+          "line": 5415,
+          "text": "건축을 포함한 다양한 열에너지 관련 기술에 단열, 열팽창 등이 활용된 예를 조사함으로써 과학의 유용성에 대한 가치를 인식할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "doppler-lab",
+      "title": "움직이는 음원의 도플러 효과",
+      "school": "high-elective",
+      "area": "역학과 에너지",
+      "category": "탄성파와 소리",
+      "section": "12역학",
+      "kind": "진로 선택",
+      "code": "12역학03-03",
+      "sourceLine": 5447,
+      "related": [
+        {
+          "course": "역학과 에너지",
+          "area": "탄성파와 소리",
+          "line": 5447
+        }
+      ],
+      "standards": [
+        {
+          "code": "12역학03-03",
+          "line": 5453,
+          "text": "도플러 효과를 이해하고 물체의 속도 측정 등 다양한 장치에 이용됨을 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "ride-acceleration",
+      "title": "놀이기구 운동과 가속도 센서",
+      "school": "high-common",
+      "area": "과학탐구실험2",
+      "category": "생활 속의 과학 탐구",
+      "section": "10과탐2",
+      "kind": "공통",
+      "code": "10과탐2-01-01",
+      "sourceLine": 3549,
+      "related": [
+        {
+          "course": "과학탐구실험2",
+          "area": "생활 속의 과학 탐구",
+          "line": 3549
+        }
+      ],
+      "standards": [
+        {
+          "code": "10과탐2-01-01",
+          "line": 3551,
+          "text": "영화, 건축, 요리, 스포츠, 미디어 등 생활 속의 과학 원리를 실험 등을 통해 탐구하고, 과학 원리를 활용한 놀이 체험을 통해 과학의 즐거움과 유용성을 느낄 수 있다."
+        },
+        {
+          "code": "10과탐2-01-02",
+          "line": 3553,
+          "text": "사회적 이슈나 생활 속에서 과학 탐구 문제를 발견하고, 이를 해결하기 위한 과학 탐구 활동을 계획하고 수행할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "dna-replication",
+      "title": "DNA 복제 가닥 조립",
+      "school": "high-elective",
+      "area": "생물의 유전",
+      "category": "유전자와 유전물질",
+      "section": "12유전",
+      "kind": "진로 선택",
+      "code": "12유전01-07",
+      "sourceLine": 7171,
+      "related": [
+        {
+          "course": "생물의 유전",
+          "area": "유전자와 유전물질",
+          "line": 7171
+        }
+      ],
+      "standards": [
+        {
+          "code": "12유전01-07",
+          "line": 7185,
+          "text": "반보존적 DNA 복제 과정을 이해하고 그 의미를 추론하여 협력적으로 소통할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "protein-synthesis",
+      "title": "코돈을 읽어 단백질 합성하기",
+      "school": "high-elective",
+      "area": "생물의 유전",
+      "category": "유전자의 발현",
+      "section": "12유전",
+      "kind": "진로 선택",
+      "code": "12유전02-01",
+      "sourceLine": 7209,
+      "related": [
+        {
+          "course": "생물의 유전",
+          "area": "유전자의 발현",
+          "line": 7209
+        }
+      ],
+      "standards": [
+        {
+          "code": "12유전02-01",
+          "line": 7211,
+          "text": "전사와 번역 과정을 거쳐 유전자가 발현되는 중심원리를 이해하고, 모형을 이용하여 유전자 발현 과정을 설명할 수 있다."
+        },
+        {
+          "code": "12유전02-02",
+          "line": 7213,
+          "text": "유전 부호를 이해하고, 유전 부호 표를 사용하여 유전 정보를 해독할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "pedigree-lab",
+      "title": "가계도로 X 염색체 유전 추론",
+      "school": "high-elective",
+      "area": "생물의 유전",
+      "category": "유전자와 유전물질",
+      "section": "12유전",
+      "kind": "진로 선택",
+      "code": "12유전01-01",
+      "sourceLine": 7171,
+      "related": [
+        {
+          "course": "생물의 유전",
+          "area": "유전자와 유전물질",
+          "line": 7171
+        }
+      ],
+      "standards": [
+        {
+          "code": "12유전01-01",
+          "line": 7173,
+          "text": "유전 형질이 유전자를 통해 자손에게 유전됨을 이해하고, 상염색체 유전과 성염색체 유전 양상의 차이를 설명할 수 있다."
+        },
+        {
+          "code": "12유전01-02",
+          "line": 7175,
+          "text": "사람 유전 연구 방법의 어려움을 이해하고, 사람의 유전 현상 분석을 근거로 유전 형질의 유전적 특성을 추론할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "karyotype-lab",
+      "title": "염색체 짝짓기와 핵형 분석",
+      "school": "high-elective",
+      "area": "생명과학",
+      "category": "생명의 연속성과 다양성",
+      "section": "12생과",
+      "kind": "일반 선택",
+      "code": "12생과03-01",
+      "sourceLine": 4701,
+      "related": [
+        {
+          "course": "생명과학",
+          "area": "생명의 연속성과 다양성",
+          "line": 4701
+        }
+      ],
+      "standards": [
+        {
+          "code": "12생과03-01",
+          "line": 4703,
+          "text": "염색체의 구조를 이해하고, DNA, 유전자의 관계를 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "antibiotic-disc",
+      "title": "추출액의 생장 억제 구역 비교",
+      "school": "high-common",
+      "area": "과학탐구실험1",
+      "category": "과학 탐구의 과정과 절차",
+      "section": "10과탐1",
+      "kind": "공통",
+      "code": "10과탐1-02-02",
+      "sourceLine": 3443,
+      "related": [
+        {
+          "course": "과학탐구실험1",
+          "area": "과학 탐구의 과정과 절차",
+          "line": 3443
+        }
+      ],
+      "standards": [
+        {
+          "code": "10과탐1-02-02",
+          "line": 3447,
+          "text": "가설 설정을 포함한 과학사의 대표적인 탐구실험을 수행하고, 연역적 탐구 방법의 특징을 예증할 수 있다."
+        },
+        {
+          "code": "10과탐1-02-03",
+          "line": 3449,
+          "text": "탐구 수행에서 얻은 정성적 혹은 정량적 데이터를 분석하고 그 결과를 다양하게 표상하고 소통할 수 있다."
+        },
+        {
+          "code": "10과탐1-02-04",
+          "line": 3451,
+          "text": "흥미와 호기심을 갖고 과학 탐구에 참여하고, 분야 간 협동 연구 등을 통해 협력적 탐구 활동을 수행하며, 도출한 결과를 증거에 근거하여 해석하고 평가할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "water-wave-tank",
+      "title": "해파 발생과 물 입자 운동",
+      "school": "high-elective",
+      "area": "지구시스템과학",
+      "category": "해수의 운동",
+      "section": "12지시",
+      "kind": "진로 선택",
+      "code": "12지시02-02",
+      "sourceLine": 7561,
+      "related": [
+        {
+          "course": "지구시스템과학",
+          "area": "해수의 운동",
+          "line": 7561
+        }
+      ],
+      "standards": [
+        {
+          "code": "12지시02-02",
+          "line": 7565,
+          "text": "해파의 발생 과정을 이해하고, 천해파와 심해파의 차이점을 비교⋅설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "silver-mirror",
+      "title": "은거울 반응과 작용기 변화",
+      "school": "high-elective",
+      "area": "화학 반응의 세계",
+      "category": "탄소 화합물과 반응",
+      "section": "12반응",
+      "kind": "진로 선택",
+      "code": "12반응03-02",
+      "sourceLine": 6531,
+      "related": [
+        {
+          "course": "화학 반응의 세계",
+          "area": "탄소 화합물과 반응",
+          "line": 6531
+        }
+      ],
+      "standards": [
+        {
+          "code": "12반응03-02",
+          "line": 6535,
+          "text": "간단한 탄소 화합물의 화학 반응 예를 찾아 작용기의 변화로 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "nylon-interface",
+      "title": "계면에서 나일론 합성하기",
+      "school": "high-elective",
+      "area": "화학 반응의 세계",
+      "category": "탄소 화합물과 반응",
+      "section": "12반응",
+      "kind": "진로 선택",
+      "code": "12반응03-03",
+      "sourceLine": 6531,
+      "related": [
+        {
+          "course": "화학 반응의 세계",
+          "area": "탄소 화합물과 반응",
+          "line": 6531
+        }
+      ],
+      "standards": [
+        {
+          "code": "12반응03-03",
+          "line": 6537,
+          "text": "단위체의 중합 반응으로 다양한 고분자가 합성되는 것을 이해하여 화학 반응의 유용성을 인식할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "stellar-mass-data",
+      "title": "쌍성 관측 자료의 질량–광도 관계",
+      "school": "high-elective",
+      "area": "행성우주과학",
+      "category": "태양과 별의 관측",
+      "section": "12행우",
+      "kind": "진로 선택",
+      "code": "12행우02-04",
+      "sourceLine": 7931,
+      "related": [
+        {
+          "course": "행성우주과학",
+          "area": "태양과 별의 관측",
+          "line": 7931
+        }
+      ],
+      "standards": [
+        {
+          "code": "12행우02-04",
+          "line": 7939,
+          "text": "쌍성의 관측 자료를 이용하여 항성의 질량을 직접적으로 구할 수 있음을 이해하고, 질량-광도 관계를 이용하여 쌍성이 아닌 별의 질량을 구할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "cluster-fitting",
+      "title": "성단 자료로 주계열 맞추기",
+      "school": "high-elective",
+      "area": "행성우주과학",
+      "category": "은하와 우주",
+      "section": "12행우",
+      "kind": "진로 선택",
+      "code": "12행우03-01",
+      "sourceLine": 7973,
+      "related": [
+        {
+          "course": "행성우주과학",
+          "area": "은하와 우주",
+          "line": 7973
+        }
+      ],
+      "standards": [
+        {
+          "code": "12행우03-01",
+          "line": 7975,
+          "text": "성단의 C-M도를 이용하여 성단의 나이와 거리를 비교하고, 맥동변광성의 주기-광도 관계를 이용하여 우리은하의 구조와 규모를 추론할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "habitable-orbits",
+      "title": "중심별과 생명가능지대의 거리",
+      "school": "high-elective",
+      "area": "행성우주과학",
+      "category": "우주탐사와 행성계",
+      "section": "12행우",
+      "kind": "진로 선택",
+      "code": "12행우01-05",
+      "sourceLine": 7887,
+      "related": [
+        {
+          "course": "행성우주과학",
+          "area": "우주탐사와 행성계",
+          "line": 7887
+        }
+      ],
+      "standards": [
+        {
+          "code": "12행우01-05",
+          "line": 7897,
+          "text": "외계 행성계 탐사의 원리를 이해하고, 외계 행성에 생명체가 존재할 수 있는 조건과 외계 생명체의 존재 가능성에 대해 논증할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "centrifuge-design",
+      "title": "원심분리기의 배치와 시료 분리",
+      "school": "high-elective",
+      "area": "세포와 물질대사",
+      "category": "세포",
+      "section": "12세포",
+      "kind": "진로 선택",
+      "code": "12세포01-03",
+      "sourceLine": 6805,
+      "related": [
+        {
+          "course": "세포와 물질대사",
+          "area": "세포",
+          "line": 6805
+        }
+      ],
+      "standards": [
+        {
+          "code": "12세포01-03",
+          "line": 6811,
+          "text": "동물세포와 식물세포를 구성하는 세포 소기관의 구조와 기능을 이해하고, 세포 소기관들의 유기적 관계를 추론하여 협력적으로 소통할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "organic-builder",
+      "title": "원자와 결합으로 작용기 만들기",
+      "school": "high-elective",
+      "area": "화학 반응의 세계",
+      "category": "탄소 화합물과 반응",
+      "section": "12반응",
+      "kind": "진로 선택",
+      "code": "12반응03-01",
+      "sourceLine": 6531,
+      "related": [
+        {
+          "course": "화학 반응의 세계",
+          "area": "탄소 화합물과 반응",
+          "line": 6531
+        }
+      ],
+      "standards": [
+        {
+          "code": "12반응03-01",
+          "line": 6533,
+          "text": "일상생활에 유용한 탄소 화합물을 작용기에 따라 분류할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "dna-structure",
+      "title": "상보적 염기와 DNA 이중나선 만들기",
+      "school": "high-elective",
+      "area": "세포와 물질대사",
+      "category": "세포",
+      "section": "12세포",
+      "kind": "진로 선택",
+      "code": "12세포01-02",
+      "sourceLine": 6805,
+      "related": [
+        {
+          "course": "세포와 물질대사",
+          "area": "세포",
+          "line": 6805
+        }
+      ],
+      "standards": [
+        {
+          "code": "12세포01-02",
+          "line": 6809,
+          "text": "핵산과 단백질의 기본 구조와 세포에서의 주요 기능을 조사하여 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "protein-folding",
+      "title": "두 폴리펩타이드의 연결과 접힘",
+      "school": "high-elective",
+      "area": "세포와 물질대사",
+      "category": "세포",
+      "section": "12세포",
+      "kind": "진로 선택",
+      "code": "12세포01-02",
+      "sourceLine": 6805,
+      "related": [
+        {
+          "course": "세포와 물질대사",
+          "area": "세포",
+          "line": 6805
+        }
+      ],
+      "standards": [
+        {
+          "code": "12세포01-02",
+          "line": 6809,
+          "text": "핵산과 단백질의 기본 구조와 세포에서의 주요 기능을 조사하여 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "organelle-builder",
+      "title": "미토콘드리아·엽록체의 막과 구획 만들기",
+      "school": "high-elective",
+      "area": "세포와 물질대사",
+      "category": "세포호흡과 광합성",
+      "section": "12세포",
+      "kind": "진로 선택",
+      "code": "12세포03-01",
+      "sourceLine": 6877,
+      "related": [
+        {
+          "course": "세포와 물질대사",
+          "area": "세포호흡과 광합성",
+          "line": 6877
+        }
+      ],
+      "standards": [
+        {
+          "code": "12세포03-01",
+          "line": 6879,
+          "text": "미토콘드리아의 구조를 이해하고 생명체 내에서의 미토콘드리아의 기능을 추론할 수 있다."
+        },
+        {
+          "code": "12세포03-05",
+          "line": 6887,
+          "text": "엽록체의 구조를 이해하고 기능과 관련지어 설명할 수 있다."
+        },
+        {
+          "code": "12세포03-07",
+          "line": 6891,
+          "text": "광합성과 세포호흡의 전자 전달계를 비교하여 공통점과 차이점을 다양한 매체를 활용하여 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "energy-budget",
+      "title": "자료로 비교하는 하루의 에너지 출입",
+      "school": "high-elective",
+      "area": "세포와 물질대사",
+      "category": "물질대사와 에너지",
+      "section": "12세포",
+      "kind": "진로 선택",
+      "code": "12세포02-01",
+      "sourceLine": 6845,
+      "related": [
+        {
+          "course": "세포와 물질대사",
+          "area": "물질대사와 에너지",
+          "line": 6845
+        }
+      ],
+      "standards": [
+        {
+          "code": "12세포02-01",
+          "line": 6847,
+          "text": "물질대사는 생명체에서 생명을 유지하기 위해 일어나는 화학 반응임을 이해하고 에너지의 출입이 동반됨을 추론할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "hydride-boiling",
+      "title": "수소 화합물의 끓는점과 분자 간 힘",
+      "school": "high-elective",
+      "area": "물질과 에너지",
+      "category": "물질의 세 가지 상태",
+      "section": "12물에",
+      "kind": "진로 선택",
+      "code": "12물에01-03",
+      "sourceLine": 6099,
+      "related": [
+        {
+          "course": "물질과 에너지",
+          "area": "물질의 세 가지 상태",
+          "line": 6099
+        }
+      ],
+      "standards": [
+        {
+          "code": "12물에01-03",
+          "line": 6105,
+          "text": "물질이 액체로 존재할 수 있는 이유를 분자 간 상호작용으로 이해하고, 액체의 종류에 따라 끓는점이 달라짐을 설명할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "fuel-comparison",
+      "title": "같은 몰·질량·부피로 연료 비교하기",
+      "school": "high-elective",
+      "area": "물질과 에너지",
+      "category": "화학 변화의 자발성",
+      "section": "12물에",
+      "kind": "진로 선택",
+      "code": "12물에03-01",
+      "sourceLine": 6155,
+      "related": [
+        {
+          "course": "물질과 에너지",
+          "area": "화학 변화의 자발성",
+          "line": 6155
+        }
+      ],
+      "standards": [
+        {
+          "code": "12물에03-01",
+          "line": 6157,
+          "text": "엔탈피의 의미를 알고, 엔탈피를 이용하여 열화학 반응식을 표현할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "mcu-sampling",
+      "title": "센서 연결과 측정 자료 수집",
+      "school": "high-common",
+      "area": "과학탐구실험2",
+      "category": "미래 사회와 첨단 과학 탐구",
+      "section": "10과탐2",
+      "kind": "공통",
+      "code": "10과탐2-02-01",
+      "sourceLine": 3583,
+      "related": [
+        {
+          "course": "과학탐구실험2",
+          "area": "미래 사회와 첨단 과학 탐구",
+          "line": 3583
+        }
+      ],
+      "standards": [
+        {
+          "code": "10과탐2-02-01",
+          "line": 3585,
+          "text": "첨단 과학기술 속의 과학 원리를 찾아내는 탐구 활동을 통해 과학 지식이 활용된 사례를 추론할 수 있다."
+        }
+      ]
+    },
+    {
+      "slug": "smart-pot",
+      "title": "수분 센서와 펌프로 자동 급수 설계하기",
+      "school": "high-common",
+      "area": "과학탐구실험2",
+      "category": "미래 사회와 첨단 과학 탐구",
+      "section": "10과탐2",
+      "kind": "공통",
+      "code": "10과탐2-02-01",
+      "sourceLine": 3583,
+      "related": [
+        {
+          "course": "과학탐구실험2",
+          "area": "미래 사회와 첨단 과학 탐구",
+          "line": 3583
+        }
+      ],
+      "standards": [
+        {
+          "code": "10과탐2-02-01",
+          "line": 3585,
+          "text": "첨단 과학기술 속의 과학 원리를 찾아내는 탐구 활동을 통해 과학 지식이 활용된 사례를 추론할 수 있다."
         }
       ]
     }

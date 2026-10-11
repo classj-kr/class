@@ -20,22 +20,26 @@
 
 ## 자료와 이용 조건
 
-그림 제공: **국립중앙박물관, 외규장각 의궤**. 아래 여덟 파일은 박물관이 제공하는 원본 JPEG를 그대로 보관했습니다. 색 보정·잘라내기·재인코딩을 하지 않았습니다. 화면에 맞춰 표시하며 확대 창에서도 같은 원본을 사용합니다.
+그림 제공: **국립중앙박물관, 외규장각 의궤**. 아래 여덟 확대용 파일은 박물관 원본 JPEG에서 다시 변환한 **무손실 WebP(VP8L)**입니다. 같은 디코더로 읽은 원본 JPEG와 변환 WebP의 모든 RGBA 픽셀이 일치하는지 검사했습니다. 원본 해상도·비율·투명도와 포함된 ICC 색상 프로파일·EXIF 정보도 유지했습니다. 이전의 손실 WebP를 확대하거나 재압축한 파일이 아닙니다.
+
+일반 화면에서는 긴 변 1200px 이내의 `*-preview.webp`를 사용합니다. 원본을 비율대로 축소하고 무손실 인코딩한 화면용 파일이며, 축소 결과와 WebP를 디코딩한 픽셀의 일치 및 ICC 프로파일 보존을 검사했습니다. 원본 해상도 파일은 그림을 확대할 때 불러옵니다. 별도 자르기나 색 보정은 하지 않습니다.
 
 박물관 도설 페이지의 **공공누리 제4유형(출처 표시·상업적 이용 금지·변경 금지)** 조건이 적용됩니다. 앱의 코드와 별도로 이 조건과 출처 표시를 유지해야 합니다.
 
-각 원본은 약 6–8MB이며 모두 합쳐 약 57MB입니다. 처음에는 선택한 사신의 1674년 그림 하나를 불러오고, 다른 그림은 선택하거나 시대 비교를 켤 때 불러옵니다. 불러오는 동안 상태를 표시하며, 디코딩이 끝나면 그림을 표시합니다.
+화면용 8장은 합계 10.17MB, 한 장 1.04~1.57MB입니다. 원본 해상도 확대용 8장은 합계 86.32MB입니다. 처음에는 선택한 사신의 화면용 그림 하나를 불러오고, 다른 화면용 그림은 선택하거나 시대 비교를 켤 때 불러옵니다. 큰 파일은 확대 버튼을 누를 때만 읽습니다. 불러오는 동안 상태를 표시하며 디코딩이 끝나면 그림을 표시합니다.
+
+변환 및 픽셀 검증 결과는 `outputs/art-webp-conversion-20261011/verification.json`에 있습니다.
 
 | 파일 | 자료 | 연도 | 원문 |
 |---|---|---|---|
-| `dragon.jpg` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%B2%AD%EB%A3%A1_%E9%9D%91%E9%BE%8D&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0008_1.jpg) |
-| `dragon-late.jpg` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%B2%AD%EB%A3%A1_%E9%9D%91%E9%BE%8D&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0007_1.jpg) |
-| `tiger.jpg` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EB%B0%B1%ED%98%B8_%E7%99%BD%E8%99%8E&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0009_1.jpg) |
-| `tiger-late.jpg` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EB%B0%B1%ED%98%B8_%E7%99%BD%E8%99%8E&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0008_1.jpg) |
-| `bird.jpg` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%A3%BC%EC%9E%91_%E6%9C%B1%E9%9B%80&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0010_1.jpg) |
-| `bird-late.jpg` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%A3%BC%EC%9E%91_%E6%9C%B1%E9%9B%80&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0009_1.jpg) |
-| `tortoise.jpg` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%ED%98%84%EB%AC%B4_%E7%8E%84%E6%AD%A6&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0011_1.jpg) |
-| `tortoise-late.jpg` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%ED%98%84%EB%AC%B4_%E7%8E%84%E6%AD%A6&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0010_1.jpg) |
+| `dragon.webp` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%B2%AD%EB%A3%A1_%E9%9D%91%E9%BE%8D&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0008_1.jpg) |
+| `dragon-late.webp` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%B2%AD%EB%A3%A1_%E9%9D%91%E9%BE%8D&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0007_1.jpg) |
+| `tiger.webp` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EB%B0%B1%ED%98%B8_%E7%99%BD%E8%99%8E&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0009_1.jpg) |
+| `tiger-late.webp` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EB%B0%B1%ED%98%B8_%E7%99%BD%E8%99%8E&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0008_1.jpg) |
+| `bird.webp` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%A3%BC%EC%9E%91_%E6%9C%B1%E9%9B%80&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0010_1.jpg) |
+| `bird-late.webp` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%EC%A3%BC%EC%9E%91_%E6%9C%B1%E9%9B%80&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0009_1.jpg) |
+| `tortoise.webp` | 인선왕후영릉산릉도감의궤 | 1674 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%ED%98%84%EB%AC%B4_%E7%8E%84%E6%AD%A6&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_031_0011_1.jpg) |
+| `tortoise-late.webp` | 인원왕후명릉산릉도감의궤 | 1757 | [도설](https://www.museum.go.kr/uigwe/dosul/dosulView?dataType=n&kind=%ED%98%84%EB%AC%B4_%E7%8E%84%E6%AD%A6&lmenuType=a_1) · [이미지](https://www.museum.go.kr/uigwe/data/dosul/imgOrigin/uig_di_196_0010_1.jpg) |
 
 개별 파일의 URL·연도·원본 크기·이용 조건은 `assets/sources.json`에도 기록했습니다.
 

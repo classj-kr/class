@@ -27,6 +27,7 @@
         function render(){
             const p=S.profile('matter-'+current());if(!p)return;
             explanation.innerHTML=S.concepts({...p,subject:''});subject.textContent=p.subject||'';
+            window.LessonVisuals?.decorate(explanation,'matter-'+current(),S.value);
             S.practice(exercise,window.MatterPractice.forLevel(current(),S.value),current()+':'+S.value);
             legacy.hidden=true;
             document.getElementById('modelFacts').hidden=S.value==='elementary';

@@ -17,7 +17,7 @@
     scrollbar-color: #526780 #101827; z-index: 30;
 }
 .sim-stage-area .scene-btn { min-height: 36px; flex-shrink: 0; }
-.body-diagram-label { min-height: 32px; border: 1px solid #65758c; background: #101a2be8; color: #e3edf8; border-radius: 7px; }
+.body-diagram-label { width:max-content; min-height: 32px; border: 1px solid #65758c; background: #101a2be8; color: #e3edf8; border-radius: 7px; }
 .body-diagram-label[aria-pressed="true"] { color: #1c1600 !important; background: #facc15 !important; border-color: #fff0a3 !important; box-shadow: 0 0 0 2px #a17c14; font-weight: 800; }
 .sim-stage-area svg [role="button"]:focus { outline: none; }
 /* Focus follows the organ's name, never the rectangular SVG bounding box. */
@@ -62,6 +62,31 @@ html[data-school-level="elementary"] .circulation-slider-item:has(#o2Slider) { d
     flex-wrap: wrap; overflow: visible; max-width: none; margin-bottom: 12px;
 }
 .model-compact-layout .sim-header-right:not(:has(> :not([hidden]))) { display: none; }
+.model-navigation .school-level { margin-left:auto; flex-shrink:0; }
+.model-navigation .unified-music-control {
+    position:relative!important; inset:auto!important; flex:0 0 40px;
+    width:40px; height:40px; margin:0;
+}
+.model-navigation .unified-music-control .unified-audio-menu-toggle { width:40px; height:40px; min-height:40px; padding:0; }
+.body-reference-tab { display:none!important; }
+.body-extra-controls:not([hidden]) { display:block!important; }
+.body-extra-controls[hidden] { display:none!important; }
+body .model-instruction {
+    padding:10px 12px; margin-bottom:12px; border:0; border-left:3px solid #5cbfcb;
+    border-radius:0 6px 6px 0; background:#152537; color:#dcecf1;
+}
+body .model-instruction p {
+    margin:0; font:15px/1.65 var(--font-main,sans-serif)!important;
+    color:#dcecf1!important; word-break:keep-all; overflow-wrap:anywhere;
+}
+body .model-selected-detail p { font-size:16px!important; line-height:1.7!important; }
+.body-question-view .sim-stage-area { visibility:hidden; pointer-events:none; }
+.model-compact-layout.body-question-view .model-navigation { grid-column:1 / -1; }
+.model-compact-layout.body-question-view .sim-sidebar { grid-column:1 / -1; z-index:40; border-left:0; }
+.body-question-view .sidebar-body,.body-question-view .sidebar-tabs { width:100%; max-width:900px; margin-inline:auto; box-sizing:border-box; }
+.body-question-view .sidebar-tabs { flex-shrink:0; }
+.body-question-view .sidebar-body { padding:20px; }
+.body-question-view .school-body-exercise { width:100%; }
 @media (max-width: 1100px) and (min-width: 901px) {
     .sim-app-container { grid-template-columns: minmax(0,1fr) 310px; }
     .sim-title { font-size: 14px; }
@@ -78,6 +103,9 @@ html[data-school-level="elementary"] .circulation-slider-item:has(#o2Slider) { d
     .model-navigation { grid-column: 1; grid-row: 1; border-left: 0; padding: 4px 12px; }
     .model-compact-layout .sim-stage-area { grid-column: 1; grid-row: 2; }
     .model-compact-layout .sim-sidebar { grid-column: 1; grid-row: 3; overflow: visible; }
+    .model-compact-layout.body-question-view .sim-app-container { grid-template-rows:auto auto; }
+    .model-compact-layout.body-question-view .sim-stage-area { display:none; }
+    .model-compact-layout.body-question-view .sim-sidebar { grid-row:2; }
 }
 @media (max-width: 600px) {
     .sim-title { font-size: 13px; }

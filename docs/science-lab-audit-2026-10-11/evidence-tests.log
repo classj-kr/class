@@ -1,0 +1,15 @@
+✔ published data retain numeric rows and outliers; regression does not prescribe exponent (0.5517ms)
+✔ cluster fitting preserves inverted magnitude axis mathematics and selected-point residuals (0.1938ms)
+✔ habitable distances scale with luminosity square root, with radius and temperature distinct (0.1042ms)
+✔ centrifuge uses two-axis mass balance and time-dependent radial sedimentation (0.4163ms)
+✔ atom construction supports both six-compound pathways and rejects impossible valence (1.3753ms)
+✔ chromium: evidence selection, graph changes, all atom pathways, assessment and mobile (8012.2996ms)
+✔ webkit: evidence selection, graph changes, all atom pathways, assessment and mobile (18787.6822ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26864.9802

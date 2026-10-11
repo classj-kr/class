@@ -145,7 +145,7 @@ const PHOTO_CREDITS = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'c
 function photoCreditFor(id) {
   const credit = PHOTO_CREDITS[id];
   if (!credit) return '';
-  return `사진 ${credit.author} · ${credit.license} · 위키미디어 공용`;
+  return `${credit.kind === 'map' ? '지도' : '사진'} ${credit.author} · ${credit.license} · 위키미디어 공용`;
 }
 
 function landmarkArtUrl(id) {
@@ -1257,7 +1257,7 @@ function studyReading(type, item) {
   const photo = city ? cityTodayPhoto(item.artKey) : null, credit = PHOTO_CREDITS[item.id];
   const text = city ? (story?.sections || []).map(s => [s.heading, s.text].filter(Boolean).join('\n')).join('\n\n') : [item.text, item.in1520 ? '1520년에는 '+item.in1520 : ''].filter(Boolean).join('\n\n');
   return { id:item.id, name:item.name, kind:city?'도시 설명':item.kind, todayCountry:item.todayCountry||'', text,
-    image:city?photo?.url:landmarkArtUrl(item.id), imageCredit:city?photo?.credit:'오늘날 모습 · '+photoCreditFor(item.id), imageChanges:city?'':credit?.changes,
+    image:city?photo?.url:landmarkArtUrl(item.id), imageCredit:city?photo?.credit:photoCreditFor(item.id), imageKind:city?'photo':credit?.kind||'photo', imageChanges:city?'':credit?.changes,
     imageSource:city?CITY_PHOTO_CREDITS[item.artKey]?.source:credit?.source,
     imageLicenseUrl:city?CITY_PHOTO_CREDITS[item.artKey]?.licenseUrl:credit?.licenseUrl };
 }
@@ -2269,7 +2269,7 @@ io.on('connection', (socket) => {
       setNotice(p, `발견! ${item.name}`);
       io.to(`teacher:${p.roomCode}`).emit('teacherEvent', { type:'discovery', name:p.name, discovery:item.name, at:Date.now() });
     }
-    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id), imageSource:PHOTO_CREDITS[item.id]?.source, imageLicenseUrl:PHOTO_CREDITS[item.id]?.licenseUrl, imageChanges:PHOTO_CREDITS[item.id]?.changes }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
+    ack({ ok:true, first, discovery:{ id:item.id, name:item.name, kind:item.kind, todayCountry:item.todayCountry, in1520:item.in1520, text:item.text, image:landmarkArtUrl(item.id), imageCredit:photoCreditFor(item.id), imageKind:PHOTO_CREDITS[item.id]?.kind||'photo', imageSource:PHOTO_CREDITS[item.id]?.source, imageLicenseUrl:PHOTO_CREDITS[item.id]?.licenseUrl, imageChanges:PHOTO_CREDITS[item.id]?.changes }, found:found.length, total:FOUND_TOTAL, self:publicPlayer(p) });
   });
 
   socket.on('meetAnimal', (payload, ack = () => {}) => {

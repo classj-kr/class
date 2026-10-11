@@ -2,11 +2,11 @@
   "date": "2026-10-11",
   "scope": "2022 only; editorial review of stems, plausible distractors, conditions and explanations; no student-response calibration data",
   "counts": {
-    "baseAndBank": 725,
+    "baseAndBank": 821,
     "rewrittenBase": 332,
     "rewrittenBank": 31,
     "rewrittenTransfer": 33,
-    "transferTotal": 40,
+    "transferTotal": 88,
     "correctLongerThanEveryDistractorBy50Percent": {
       "before": 116,
       "after": 2
