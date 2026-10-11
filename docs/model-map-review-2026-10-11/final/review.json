@@ -68,6 +68,25 @@
     "학생별 학습기록 서버 저장·분석 시스템"
   ],
   "production": {
-    "status": "pending-deployment"
+    "status": "deployed-and-verified",
+    "checkedAt": "2026-10-11T12:38:37.408425+00:00",
+    "commit": "9704e7ebebfb9ca6dba064967b36a26200cd0ada",
+    "health": "https://classj.kr/health returned status ok and matching commit",
+    "browser": "Authenticated existing Chrome session; separate temporary verification tab",
+    "checks": [
+      "고 발해: 운영 사이트 새 지도형 5지선다, 4개 지점·2개 교통로 표시",
+      "고 발해: 오답 선택 시 재시도 안내만 표시, 정답·해설 미노출",
+      "고 천구: 고 버튼만 표시, 연직선·북반구 근사 문구, 설명 도식 2개",
+      "초 물질 390×844: 세 상태 도식 나란히 표시, 설명창 clientWidth=scrollWidth=349, 배경 스크롤 잠금, Class Exam Batang 적용",
+      "고 세계 지도: 인구밀도 공급 자료 표와 5지선다 문항 운영 반영",
+      "검증한 운영 페이지의 브라우저 콘솔 오류 없음",
+      "검증 완료 후 임시 화면 크기 설정 해제"
+    ],
+    "screenshots": [
+      "production-history.webp",
+      "production-sphere.webp",
+      "production-matter-mobile.webp",
+      "production-world-question.webp"
+    ]
   }
 }

@@ -1212,7 +1212,8 @@
 
                 // Camera
                 camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-                camera.position.set(0, 6, 48);
+                // Leave room for the labels beyond the radius-18 celestial sphere.
+                camera.position.set(0, 6, 56);
                 camera.fov = 2 * Math.atan(Math.tan(Math.PI / 8) / Math.min(1, camera.aspect)) * 180 / Math.PI;
                 camera.updateProjectionMatrix();
 
@@ -1913,7 +1914,7 @@
                 // Export global 3D view reset function
                 window.reset3DCelestialView = function() {
                     if (camera && controls) {
-                        camera.position.set(0, 18, 42);
+                        camera.position.set(0, 6, 56);
                         controls.target.set(0, 0, 0);
                         controls.update();
                     }
