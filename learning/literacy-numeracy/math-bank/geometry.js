@@ -121,6 +121,66 @@
       + (fine ? '<line class="mb-hand-second" x1="' + C + '" y1="' + C + '" x2="' + fmt(sec[0]) + '" y2="' + fmt(sec[1]) + '"/>' : '') + '<circle class="mb-clock-pin" cx="' + C + '" cy="' + C + '" r="2.4"/></svg>';
   }
 
+  // ── 각도(4학년) ──────────────────────────────────────────────
+  // 여기서는 꼭짓점이 모눈의 점 위에 있지 않아도 된다. 방향은 오른쪽이 0°이고 시계 반대쪽으로 커진다.
+  const RAD = Math.PI / 180;
+  const toward = (v, r, deg) => [v[0] + r * Math.cos(deg * RAD), v[1] - r * Math.sin(deg * RAD)];
+  const xy = (p) => fmt(at(p[0])) + ' ' + fmt(at(p[1]));
+  // v 에서 p 를 바라보는 방향(도)
+  const bearing = (v, p) => (Math.atan2(v[1] - p[1], p[0] - v[0]) / RAD + 360) % 360;
+  // 호: v 를 중심으로 from° 에서 to° 까지 시계 반대쪽으로 그린다(to 가 from 보다 크다).
+  function arc(v, from, to, r, className) {
+    return '<path class="' + (className || 'mb-line is-thin') + '" style="fill:none" d="M' + xy(toward(v, r, from)) + 'A' + fmt(r * U) + ' ' + fmt(r * U) + ' 0 ' + (to - from > 180 ? 1 : 0) + ' 0 ' + xy(toward(v, r, to)) + '"/>';
+  }
+  // 직각 표시(모눈 밖의 꼭짓점에도 쓴다)
+  function squareMark(v, from, to, size) {
+    const s = size || 0.38, p1 = toward(v, s, from), p3 = toward(v, s, to), p2 = [p1[0] + p3[0] - v[0], p1[1] + p3[1] - v[1]];
+    return '<polyline class="mb-mark" points="' + [p1, p2, p3].map((p) => fmt(at(p[0])) + ',' + fmt(at(p[1]))).join(' ') + '"/>';
+  }
+  // 각: 꼭짓점 v 에서 from°, to° 쪽으로 그은 두 변과 그 사이의 호.
+  // options: length(변의 길이, 기본 2.6), r(호의 반지름), label(호 옆에 적는 글: '70°', '㉠'), names([from 쪽 끝, 꼭짓점, to 쪽 끝]의 이름), arc: false(호를 그리지 않는다)
+  function angle(v, from, to, options) {
+    const o = options || {}, len = o.length || 2.6, r = o.r || 0.75, mid = (from + to) / 2;
+    let out = line(v, toward(v, len, from)) + line(v, toward(v, len, to));
+    if (o.arc !== false) out += to - from === 90 ? squareMark(v, from, to) : arc(v, from, to, r);
+    // 좁은 각은 두 변 사이에 글이 들어가지 않으므로 변의 끝보다 바깥쪽에 적는다.
+    if (o.label) out += text(toward(v, to - from < 40 ? len + 0.6 : r + 0.6, mid), o.label, 'mb-label is-length');
+    if (o.names) out += text(toward(v, len + 0.42, from), o.names[0]) + text(toward(v, 0.5, mid + 180), o.names[1]) + text(toward(v, len + 0.42, to), o.names[2]);
+    return out;
+  }
+  // 각도기: 중심 c, 반지름 r. 밑금은 가로로 놓인다. 안쪽 눈금은 오른쪽이 0, 바깥쪽 눈금은 왼쪽이 0이다.
+  // options.rays: 중심에서 그을 변의 방향(도) 배열. 변은 각도기 밖까지 나간다.
+  function protractor(c, r, options) {
+    const o = options || {}, small = (inner) => 'style="font-size:' + (o.font || 8.5) + 'px;font-weight:600' + (inner ? ';fill:#1d4ed8' : '') + '"';
+    const label = (p, value, inner) => '<text class="mb-label" ' + small(inner) + ' x="' + fmt(at(p[0])) + '" y="' + fmt(at(p[1])) + '" text-anchor="middle" dominant-baseline="central">' + value + '</text>';
+    const thin = (p, q) => '<line class="mb-line" style="stroke-width:0.8" x1="' + fmt(at(p[0])) + '" y1="' + fmt(at(p[1])) + '" x2="' + fmt(at(q[0])) + '" y2="' + fmt(at(q[1])) + '"/>';
+    let out = '<path class="mb-poly" style="fill:#fff" d="M' + xy([c[0] - r, c[1]]) + 'A' + fmt(r * U) + ' ' + fmt(r * U) + ' 0 0 1 ' + xy([c[0] + r, c[1]]) + 'Z"/>';
+    for (let d = 0; d <= 180; d += 5) out += thin(toward(c, r, d), toward(c, r - (d % 10 ? 0.14 : 0.26), d));
+    for (let d = 0; d <= 180; d += 10) out += label(toward(c, r - 0.55, d), 180 - d) + label(toward(c, r - 1.4, d), d, true);
+    out += thin([c[0], c[1]], [c[0], c[1] - 0.3]) + '<circle class="mb-dot" cx="' + fmt(at(c[0])) + '" cy="' + fmt(at(c[1])) + '" r="2"/>';
+    for (const d of o.rays || []) out += line(c, toward(c, r + 0.55, d));
+    return out;
+  }
+  // 다각형의 꼭짓점 i 에서 안쪽 각의 크기(도)
+  function angleOf(points, i) {
+    const n = points.length, a = bearing(points[i], points[(i + n - 1) % n]), b = bearing(points[i], points[(i + 1) % n]), d = Math.abs(a - b);
+    return d > 180 ? 360 - d : d;
+  }
+  // 볼록한 다각형의 꼭짓점 i 안쪽에 각 표시(호나 직각 표시)와 글(label)을 넣는다.
+  function cornerArc(points, i, label, r) {
+    const n = points.length, a = bearing(points[i], points[(i + n - 1) % n]), b = bearing(points[i], points[(i + 1) % n]);
+    let from = Math.min(a, b), to = Math.max(a, b);
+    if (to - from > 180) { const t = from + 360; from = to; to = t; }
+    const size = r || 0.6, right = Math.abs(to - from - 90) < 0.01;
+    return (right ? squareMark(points[i], from, to) : arc(points[i], from, to, size)) + (label ? text(toward(points[i], size + (to - from < 40 ? 0.95 : 0.6), (from + to) / 2), label, 'mb-label is-length') : '');
+  }
+  // 밑변의 두 각이 left°, right° 인 삼각형의 세 꼭짓점 [왼쪽 아래, 오른쪽 아래, 위]. origin 은 왼쪽 아래 꼭짓점, base 는 밑변의 길이.
+  function triangle(left, right, base, origin) {
+    const side = base * Math.sin(right * RAD) / Math.sin((left + right) * RAD);
+    return [origin, [origin[0] + base, origin[1]], toward(origin, side, left)];
+  }
+
   B.kit.geo = { sub, dot, cross, len2, isRight, rightAt, rightAngles, isRectangle, isSquare, isRightTriangle, nearRight, looksRight,
-    board, polygon, polyline, line, circle, point, text, beyond, beside, outward, vertexLabels, rightMark, straight, curve, rays, tile, tiles, clock };
+    board, polygon, polyline, line, circle, point, text, beyond, beside, outward, vertexLabels, rightMark, straight, curve, rays, tile, tiles, clock,
+    toward, bearing, arc, squareMark, angle, protractor, angleOf, cornerArc, triangle };
 })(typeof window !== 'undefined' ? window : globalThis);
