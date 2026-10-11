@@ -43,6 +43,7 @@ body .school-next { background:#205f60; color:#fff; border-color:#205f60; }
 body .school-table :is(th,td) { color:var(--reading-ink); border-color:var(--reading-line); }
 body .school-table th { background:#e7ebe5; }
 body .school-table caption { color:var(--reading-muted); }
+body .school-table table { font-size:16px; line-height:1.65; }
 body .school-options button:focus-visible,body .school-next:focus-visible { outline-color:#205f60; }
 body .body-lesson { padding:18px; border-radius:10px; }
 body .body-lesson .school-concepts { background:transparent; }
@@ -50,6 +51,8 @@ body .body-lesson .school-concepts + .school-concepts { border-color:var(--readi
 body .model-reading summary { font-size:17px; }
 body .model-reading small,body .model-scene-step span { color:var(--reading-muted); }
 body .model-scene-step button { background:#e8eeea; color:#234c4d; border-color:#9cafab; }
+/* Selecting a question makes room for that question in the existing sidebar. */
+.sim-sidebar:has(.sidebar-tab-btn[data-tab="quiz"].active) :is(.model-reading,.model-selected-detail,.sim-header-right) { display:none!important; }
 body .model-selected-detail :is(h3,p,li,span) { color:var(--reading-ink)!important; }
 body .model-selected-detail p { font-size:var(--reading-size)!important; line-height:1.85!important; }
 body .topic-explanation :is(.topic-explanation-header,.school-concepts + .school-concepts) { border-color:var(--reading-line); }
@@ -59,6 +62,39 @@ body .topic-explanation .school-concepts p { font-size:20px; color:var(--reading
 body .topic-explanation-subject { color:var(--reading-muted); }
 body .topic-explanation-close { color:#234c4d; background:#e7ede7; border-color:#9cafab; }
 body .topic-explanation-close:focus-visible { outline-color:#205f60; }
+/* Space question cards use radio choices rather than the shared button list. */
+body.space-topic-page .quiz-card {
+    --quiz-accent:#205f60;
+    background:var(--reading-paper); color:var(--reading-ink);
+    border-color:var(--reading-line); color-scheme:light;
+}
+body.space-topic-page .quiz-card h3 { color:var(--reading-ink); font-size:20px; line-height:1.75; }
+body.space-topic-page .quiz-card :is(.quiz-card-no,.quiz-card-cat) { color:var(--reading-muted); font-size:14px; }
+body.space-topic-page .quiz-card label { color:var(--reading-ink); background:#fffefb; border-color:#aab8b2; font-size:var(--reading-size); line-height:1.75; font-weight:400; }
+body.space-topic-page .quiz-card label:hover,
+body.space-topic-page .quiz-card label:has(input:checked) { background:#e7eeea; color:var(--reading-ink); border-color:#205f60; }
+body.space-topic-page .quiz-card label[data-incorrect="true"] { background:#f6e4e0; color:#722d2b; border-color:#ad534c; }
+body.space-topic-page .quiz-card[data-state="correct"] label[data-correct="true"] { background:#e0efe5; color:#184b37; border-color:#32734f; }
+body.space-topic-page .quiz-card .answer-result { color:var(--reading-accent); font-size:17px; }
+body.space-topic-page .quiz-card[data-state="incorrect"] .answer-result { color:#722d2b; }
+body.space-topic-page .quiz-card .answer-explanation { color:var(--reading-ink); background:#e8eee7; font-size:var(--reading-size); line-height:1.85; }
+body.space-topic-page .quiz-card .answer-button { color:#fff; background:#205f60; border-color:#205f60; font-size:16px; }
+body.space-topic-page .quiz-card input:focus-visible { outline-color:#205f60; }
+body.space-topic-page .quiz-data-table { color:var(--reading-ink); font-size:16px; }
+body.space-topic-page .quiz-data-table caption { color:var(--reading-muted); }
+body.space-topic-page .quiz-data-table :is(th,td) { border-color:var(--reading-line); }
+body.space-topic-page .quiz-data-table th { background:#e7ebe5; }
+/* The periodic-table quiz is separate from its school-level model questions. */
+body.presentation-mode .model-inspector { color:var(--reading-ink); background:var(--reading-paper); border-color:var(--reading-line); }
+body #matterWorkbench .model-inspector :is(.model-fact strong,.model-fact small,.model-key p) { color:var(--reading-ink); }
+body #matterWorkbench .model-inspector :is(.model-fact>span,.model-key>span) { color:var(--reading-accent); }
+body.presentation-mode .model-fact { border-color:var(--reading-line); }
+body.presentation-mode :is(.quiz-container,.quiz-question-box) { color:var(--reading-ink); background:var(--reading-paper); border-color:var(--reading-line); color-scheme:light; }
+body.presentation-mode :is(.quiz-question-text,.quiz-subtext,.quiz-result-message,.quiz-result-message span) { color:var(--reading-ink); }
+body.presentation-mode .quiz-opt-btn { color:var(--reading-ink); background:#fffefb; border-color:#aab8b2; font-size:var(--reading-size); line-height:1.75; }
+body.presentation-mode .quiz-opt-btn:hover:not(:disabled) { background:#e7eeea; border-color:#205f60; }
+body.presentation-mode .quiz-opt-btn.correct { color:#184b37!important; background:#e0efe5!important; border-color:#32734f; }
+body.presentation-mode .quiz-opt-btn.wrong { color:#722d2b!important; background:#f6e4e0!important; border-color:#ad534c; }
 @media(max-width:600px) {
     :root { --reading-size:18px; }
     body .topic-explanation .school-concepts p { font-size:18px; }
