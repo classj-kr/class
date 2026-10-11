@@ -406,7 +406,7 @@
     for (let i = 0; i <= 10; i += 1) out += '<line class="mb-axis" x1="' + x(i) + '" y1="' + (y - (i % 10 === 0 ? 6 : 3.5)) + '" x2="' + x(i) + '" y2="' + (y + (i % 10 === 0 ? 6 : 3.5)) + '"/>';
     out += '<text class="mb-km-label" x="' + x(0) + '" y="' + (y + 20) + '" text-anchor="middle">' + from + '</text><text class="mb-km-label" x="' + x(10) + '" y="' + (y + 20) + '" text-anchor="middle">' + (from + 1) + '</text>';
     out += '<path class="mb-pointer" d="M' + x(k) + ' ' + (y - 8) + 'l-4.5 -9h9z"/>';
-    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: ' + from + '과 ' + (from + 1) + ' 사이를 10칸으로 똑같이 나누었다. 화살표는 ' + from + '에서 작은 눈금 ' + k + '칸 더 간 곳">' + out + '</svg>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: ' + josa(from, '과/와') + ' ' + (from + 1) + ' 사이를 10칸으로 똑같이 나누었다. 화살표는 ' + from + '에서 작은 눈금 ' + k + '칸 더 간 곳">' + out + '</svg>';
   }
   const chars = (n) => String(n).split('');
   // 수 모형: 백 모형(판)·십 모형(막대)·일 모형(낱개)
