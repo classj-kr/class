@@ -1,0 +1,68 @@
+{
+  "credit": "NASA/SDO and the HMI science team",
+  "kind": "HMI continuum intensity, colorized and limb-darkening corrected",
+  "orientationSource": "https://jsoc1.stanford.edu/hmi_latest.html",
+  "calibration": "Solar north up; each browse disk fitted independently. Perspective projection uses observer latitude and distance from a same-instrument record within 11 seconds. Coordinates are classroom estimates from browse images, not precision FITS measurements.",
+  "frames": [
+    {
+      "date": "2024-05-05T00:00:00Z",
+      "file": "2024-05-05.webp",
+      "source": "https://sdo.gsfc.nasa.gov/assets/img/browse/2024/05/05/20240505_000000_1024_HMIIF.jpg",
+      "sourceSha256": "069a8fb716187cd639d0a887d318b7989ee3418a3ec6337b07d94e349258c24f",
+      "sha256": "f7c5751382303fbb8e6de836288e15deb187b6c808d35c75a97f961567800659",
+      "size": [
+        1024,
+        1024
+      ],
+      "cx": 511.2547,
+      "cy": 511.7529,
+      "radius": 471.4319,
+      "limbFitResidualPixels": 0.2648,
+      "b0": -3.7388668,
+      "distanceSolarRadii": 216.76333333333332,
+      "ephemerisSource": "https://api.helioviewer.org/v2/getJP2Header/?id=156434341",
+      "ephemerisDate": "2024-05-04T23:59:49.700",
+      "ephemerisSha256": "bd70d0a6bc80c608805d2e468f2bb2d26aabc0c4b42478959baf47808c4262c5"
+    },
+    {
+      "date": "2024-05-07T00:00:00Z",
+      "file": "2024-05-07.webp",
+      "source": "https://sdo.gsfc.nasa.gov/assets/img/browse/2024/05/07/20240507_000000_1024_HMIIF.jpg",
+      "sourceSha256": "798a4a60ea1e01baf0cdc2bb0b2b87061dbc6d0a3cefcb5004c64ab9cc43c68b",
+      "sha256": "ca87c4c0e9442f46af1e6d8cee8468602947c65b897423a1a7c2fe3562ddcbdb",
+      "size": [
+        1024,
+        1024
+      ],
+      "cx": 511.2344,
+      "cy": 511.7389,
+      "radius": 471.2212,
+      "limbFitResidualPixels": 0.2641,
+      "b0": -3.5266552,
+      "distanceSolarRadii": 216.86827586206897,
+      "ephemerisSource": "https://api.helioviewer.org/v2/getJP2Header/?id=156502792",
+      "ephemerisDate": "2024-05-06T23:59:50.000",
+      "ephemerisSha256": "f298841a5af70930bd914ef9d2cf1973fc358a0b5e35cc2ef1fdac3fbd12f55f"
+    },
+    {
+      "date": "2024-05-09T00:00:00Z",
+      "file": "2024-05-09.webp",
+      "source": "https://sdo.gsfc.nasa.gov/assets/img/browse/2024/05/09/20240509_000000_1024_HMIIF.jpg",
+      "sourceSha256": "ba5ddc72bef0def8d5d7d5d5f03e85a10ef3f8407ba9cefc151b675120b726fa",
+      "sha256": "fe2871bc29cb310e758d947f8065bee55aa8631308a9f3e5ba610318665b73f4",
+      "size": [
+        1024,
+        1024
+      ],
+      "cx": 511.2321,
+      "cy": 511.734,
+      "radius": 470.9792,
+      "limbFitResidualPixels": 0.2557,
+      "b0": -3.3106403,
+      "distanceSolarRadii": 216.9696408045977,
+      "ephemerisSource": "https://api.helioviewer.org/v2/getJP2Header/?id=156561572",
+      "ephemerisDate": "2024-05-08T23:59:50.200",
+      "ephemerisSha256": "de13ea82c06b0caa7f794d522d89f6e1860a89affb676dcad6178172aa12d61e"
+    }
+  ]
+}

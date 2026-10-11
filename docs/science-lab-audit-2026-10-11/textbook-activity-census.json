@@ -11,8 +11,8 @@
     "receiptClassifiedSources": 2287,
     "experimentWorkbookPDFs": 98,
     "supplementalDocuments": 28,
-    "manuallyReviewedCandidates": 13,
-    "sourceReviewedExperimentUnits": 51,
+    "manuallyReviewedCandidates": 25,
+    "sourceReviewedExperimentUnits": 56,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -327,6 +327,117 @@
             "implementation": "처음부터 붉은 종이는 전후 변화로 판단할 수 없도록 구현"
           }
         ]
+      },
+      {
+        "id": "stem-dye-transport",
+        "sourceId": "89316af3de563d4c",
+        "pages": [
+          9
+        ],
+        "title": "백합 줄기의 물 이동과 단면 관찰",
+        "slug": "microscope",
+        "mode": "stem-dye-transport",
+        "conditions": [
+          "같은 크기의 백합 두 송이",
+          "맹물과 붉은 색소 물 대조",
+          "처음과 약 4시간 뒤 꽃·줄기 비교",
+          "줄기 위·아래의 가로·세로 단면 관찰"
+        ],
+        "verdict": "원문 절차·실험관찰·평가 문항 대조한 정성 가상 실험; 실물 절단·현미경 관찰은 별도",
+        "publisherDeduplication": "미래엔·천재의 같은 목적과 조작을 한 실험으로 묶음. 전체 출판사 전수 대조 완료 아님",
+        "publisherVariants": [
+          {
+            "sourceId": "d544b624a4fe52c2",
+            "pages": [
+              5,
+              6
+            ],
+            "difference": "미래엔 실험관찰: 두 백합의 맹물/색소 물 대조와 꽃·단면 기록",
+            "implementation": "맹물 대조와 가로·세로 단면 선택에 반영"
+          },
+          {
+            "sourceId": "4020707022bbe8dd",
+            "pages": [
+              11
+            ],
+            "difference": "천재 본문: 맹물과 붉은 색소 물의 두 백합을 약 4시간 관찰",
+            "implementation": "처음/약 4시간 뒤 비교에 반영"
+          },
+          {
+            "sourceId": "0c762181d67d630e",
+            "pages": [
+              5,
+              6,
+              13
+            ],
+            "difference": "천재 실험관찰·평가: 꽃 색 변화, 가로 단면의 점, 세로 단면의 선",
+            "implementation": "특정 이동 통로만 붉게 표시하고 전이 문항에 반영"
+          }
+        ]
+      },
+      {
+        "id": "telescope-observation",
+        "sourceId": "81ce1d0e81902b80",
+        "pages": [
+          234,
+          235,
+          236,
+          237
+        ],
+        "title": "천체 망원경으로 달·행성 관측",
+        "slug": "telescope-observation",
+        "mode": "telescope",
+        "conditions": [
+          "삼각대·가대·균형추·경통·광학 부품의 설치 순서",
+          "균형·방향·초점의 독립 조절",
+          "파인더와 접안렌즈 중심 정렬",
+          "맨눈·파인더·접안렌즈 비교",
+          "구름·대상 고도·건물 조건",
+          "같은 경통에서 30배·100배 시야 비교"
+        ],
+        "verdict": "원문 설치·관측 절차의 가상 연습. 실제 날짜의 천문 예보·현장 관측 완료 아님",
+        "publisherVariants": [
+          {
+            "sourceId": "35d817a99ea28582",
+            "pages": [
+              28,
+              29
+            ],
+            "difference": "고교 선택 행성우주과학: 관측 시기·장소 선택, 행성 망원경 관측과 특징 비교",
+            "implementation": "같은 장치의 고(선택) 경로에서 금성·목성·토성을 제공하며 달과 중학교 문항은 제외"
+          }
+        ],
+        "assessmentSources": [
+          {
+            "sourceId": "19245e6b38accf50",
+            "pages": [
+              515,
+              516,
+              517
+            ],
+            "basis": "설치·균형·관측 환경, 파인더와 접안렌즈의 역할, 배율과 집광력 오개념"
+          },
+          {
+            "sourceId": "6497f56a86f76b52",
+            "pages": [
+              411,
+              415,
+              426
+            ],
+            "basis": "파인더→접안렌즈 순서, 부품별 역할, 파인더 정렬, 저배율→고배율 관측"
+          },
+          {
+            "sourceId": "7393fdc9fdd2d6fa",
+            "pages": [
+              372,
+              454,
+              455
+            ],
+            "basis": "파인더 중심과 접안렌즈 관찰 절차, 현장 관측과 모의 관측 구분"
+          }
+        ],
+        "publisherDeduplication": "중학교와 고교 선택과목의 공통 장치를 한 도구로 구현. 고교 경로는 행성만 제공하고 문항을 분리; 전체 출판사 대조 완료 아님",
+        "boundary": "교과서의 관측 절차를 연습하는 가상 장치이다. 위치·고도·위상과 위성 배치는 대표 사례이며 현재 천문 예보나 촬영 자료가 아니다. 현장 설치·실제 천체 관측·촬영은 별도다. 600 mm 경통·50° 겉보기 시야를 가정하며 천체 특징 확대 그림은 실제 시야와 별도이다."
       },
       {
         "id": "speaker-lab-speaker-lab",
@@ -1037,6 +1148,112 @@
         "verdict": "기재한 교과서 절차와 대조한 가상 실험; 실물 수행·전체 단원 완료 아님",
         "publisherDeduplication": "해당 출판사·쪽만 대조; 다른 출판사 전수 중복 판정 전",
         "boundary": "교과서의 스마트 화분을 조건을 바꿔 시험하는 가상 시제품으로 구현했다. 건조 850·젖음 350, 매 단계 증발 1·급수 5는 비교용 가정이며 식물별 적정 수분이나 실제 센서 보정값이 아니다. 표시값은 두 기준 사이의 상대 척도로 실제 토양 수분 함량(%)이 아니다. 실제 제작·모둠 발표 수행 완료로 세지 않는다."
+      },
+      {
+        "id": "rotating-annulus",
+        "sourceId": "5b0ce08b8c0b10eb",
+        "pages": [
+          32
+        ],
+        "title": "회전 수조의 온도차와 흐름",
+        "slug": "rotating-annulus",
+        "mode": "annulus",
+        "conditions": [
+          "세 원통 물 채우기",
+          "안쪽 냉각·바깥쪽 가열",
+          "표면 송홧가루·상층 잉크 표지",
+          "정지·느림·파동·불규칙 대표 흐름",
+          "같은 온도 조건에서 회전 유무 비교",
+          "표면과 바닥의 반대 순환"
+        ],
+        "verdict": "기재한 출판사별 절차·평가를 대조한 정성 운동 모형; 실측·유체 수치 계산 완료 아님",
+        "publisherVariants": [
+          {
+            "sourceId": "cdbacd1f7e6522b8",
+            "pages": [
+              121
+            ],
+            "difference": "천재: 약 5분 뒤 잉크를 넣고 회전 전후 비교",
+            "implementation": "관찰용 표지를 잉크로 바꾸는 선택과 회전 전후 비교에 반영; 실제 대기 시간 측정은 제외"
+          },
+          {
+            "sourceId": "d41737876b631070",
+            "pages": [
+              113
+            ],
+            "difference": "미래엔: 잉크·송홧가루와 느린 회전/빠른 회전 비교",
+            "implementation": "표지 선택 및 회전 세기에 따른 대표 흐름 비교"
+          }
+        ],
+        "assessmentSources": [
+          {
+            "sourceId": "d8e0d7966df3a400",
+            "pages": [
+              201,
+              314,
+              315
+            ],
+            "basis": "각 원통의 대응, 정지/회전 비교, 회전 세기별 흐름, 위도에 따른 전향력의 한계"
+          }
+        ],
+        "publisherDeduplication": "세 출판사의 공통 장치를 한 실험으로 묶고 표지와 회전 조건의 차이를 보존; 정량적 회전수·온도차·발달 시간 관계는 미구현",
+        "boundary": "교과서의 관찰 결과를 설명하는 정성 운동 모형이다. 유체 방정식의 수치해가 아니며 회전수·온도·발달 시간·파동 개수의 정량 예측을 제공하지 않는다. 화면은 수조와 함께 도는 좌표에서 안정화된 대표 흐름을 보여 준다. 잉크는 상층 흐름의 표지로 한정하며 확산·침강 전체를 재현하지 않는다. 평평한 수조에는 위도에 따른 전향력 변화가 없어 실제 대기 로스비파와 발생 원리가 같다고 판정하지 않는다. 현장 가열·유체 관찰은 별도이다."
+      },
+      {
+        "id": "sunspot-observation",
+        "sourceId": "83a281f014c6a235",
+        "pages": [
+          6,
+          7
+        ],
+        "title": "태양 흑점의 이동과 자전",
+        "slug": "sunspot-observation",
+        "conditions": [
+          "2일 간격 세 영상 비교",
+          "4일 간격 같은 흑점 3~5개 대응",
+          "위도·경도 격자에서 각거리 측정",
+          "겉보기 자전 주기와 위도 비교"
+        ],
+        "verdict": "기재한 위성 영상 측정 절차 대조 · 직접 망원경 관측·촬영 완료 아님",
+        "publisherDeduplication": "기재한 판본·쪽만 검토; 다른 출판사의 유사 활동 전수 대조 전",
+        "assessmentSources": [
+          {
+            "sourceId": "83a281f014c6a235",
+            "pages": [
+              6,
+              7
+            ],
+            "basis": "위성 영상 겹침, 위도별 동일 흑점 대응, 각거리·경과 시간으로 주기 계산, 위도별 관측 범위"
+          }
+        ],
+        "boundary": "위성 영상 분석을 구현한다. 망원경의 태양 필터 부착·현장 정렬·스마트폰 촬영은 이 활동으로 완료 판정하지 않는다. 보관된 browse 영상의 픽셀로 어림 측정하며 정밀 FITS 분석이 아니다. 원반 경계 맞춤, 북쪽 방향, 관측자 위도와 거리를 반영한다. 주기는 지구 부근 관측자에 대한 겉보기 주기로 항성 자전 주기와 다르다. 흑점의 생성·소멸과 형태 변화, 가장자리 오차 때문에 소수 측정값만으로 전 위도 차등 자전을 확정하지 않는다."
+      },
+      {
+        "id": "protein-interaction",
+        "sourceId": "7bad326c8e3be2fd",
+        "pages": [
+          111
+        ],
+        "title": "단백질과 화합물의 상호작용",
+        "slug": "protein-interaction",
+        "conditions": [
+          "표적 단백질의 기능 확인",
+          "후보 화합물 선택",
+          "배치별 상대 에너지 비교",
+          "같은 표적에서 후보별 최저값 비교"
+        ],
+        "verdict": "기재한 교과서 지정 도구의 실제 계산 자료 대조 · 새로운 도킹 계산·실물 약효 검증 아님",
+        "publisherDeduplication": "기재한 판본·쪽만 검토; 다른 출판사의 유사 활동 전수 대조 전",
+        "assessmentSources": [
+          {
+            "sourceId": "7bad326c8e3be2fd",
+            "pages": [
+              111
+            ],
+            "basis": "표적 선택, 후보 화합물의 에너지 비교, 신약 탐색과 실제 약효의 구별"
+          }
+        ],
+        "boundary": "원본 제공자가 계산한 360개 배치를 비교하는 재생 실험이며 브라우저에서 새 도킹 계산을 수행하지 않는다. 원문 전체 표적 10종·화합물 102종 중 3종·6종만 제공한다. 점수는 원본 UI가 상대 에너지로 제시하며 단위를 명시하지 않아 kcal/mol 또는 실측 자유 에너지로 부르지 않는다. 원본 배치 순서는 시간에 따른 분자 운동이나 최적화 궤적이 아니다. PDB 원자 좌표 중 단백질 Cα 골격만 표시하고, 원래 결정화 리간드·물은 제외한다. 계산 점수의 우열로 실제 표적 저해·약효·안전성을 확정하지 않는다."
       }
     ],
     "candidates": {
@@ -1081,6 +1298,48 @@
         "verdict": "수행 기능 라벨 · 독립 실험 아님",
         "experiments": []
       },
+      "book-7ec61fd82b054f78": {
+        "verdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+        "experiments": [
+          "stem-dye-transport"
+        ]
+      },
+      "book-dc1382c6882026e6": {
+        "verdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+        "experiments": [
+          "stem-dye-transport"
+        ]
+      },
+      "book-2723f2f32dbbb2c9": {
+        "verdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+        "experiments": [
+          "stem-dye-transport"
+        ]
+      },
+      "book-72e44c087fff7383": {
+        "verdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+        "experiments": [
+          "stem-dye-transport"
+        ]
+      },
+      "book-cbe63e8e53901d34": {
+        "verdict": "장치와 대상 찾기 절차 대조 · 과목별 관측 범위 보존",
+        "experiments": [
+          "telescope-observation"
+        ]
+      },
+      "book-567f46082f41f032": {
+        "verdict": "장치와 대상 찾기 절차 대조 · 과목별 관측 범위 보존",
+        "experiments": [
+          "telescope-observation"
+        ]
+      },
+      "book-19232fb10e36a552": {
+        "verdict": "망원경 관측의 준비 단계 · 별도 독립 실험으로 중복 합산하지 않음",
+        "experiments": [
+          "telescope-observation"
+        ]
+      },
       "book-3899b84a16b83722": {
         "verdict": "원문 검출 도구·시간·처음 상태 대조",
         "experiments": [
@@ -1115,6 +1374,36 @@
         "verdict": "잎 유무를 실제로 바꾸는 두 장치 대조 구현 · 단일 잎 검출법과 구별",
         "experiments": [
           "leaf-transpiration-pair"
+        ]
+      },
+      "book-7f192eaa8383e968": {
+        "verdict": "원문 절차와 출판사 변형 대조 · 한 회전 수조 실험으로 묶음",
+        "experiments": [
+          "rotating-annulus"
+        ]
+      },
+      "book-715d9dd35a74712a": {
+        "verdict": "원문 절차와 출판사 변형 대조 · 한 회전 수조 실험으로 묶음",
+        "experiments": [
+          "rotating-annulus"
+        ]
+      },
+      "book-166285fed2ab2886": {
+        "verdict": "원문 절차와 출판사 변형 대조 · 한 회전 수조 실험으로 묶음",
+        "experiments": [
+          "rotating-annulus"
+        ]
+      },
+      "book-6a712e0bfbbce780": {
+        "verdict": "기재한 원문 절차 대조 · 자료 조작과 결과 해석 구현; 경계는 개별 검토 기록에 보존",
+        "experiments": [
+          "sunspot-observation"
+        ]
+      },
+      "book-87b4ea3036a67bbe": {
+        "verdict": "기재한 원문 절차 대조 · 자료 조작과 결과 해석 구현; 경계는 개별 검토 기록에 보존",
+        "experiments": [
+          "protein-interaction"
         ]
       }
     },
@@ -21785,7 +22074,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-87b4ea3036a67bbe",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "기재한 원문 절차 대조 · 자료 조작과 결과 해석 구현; 경계는 개별 검토 기록에 보존",
+      "manualExperimentIds": [
+        "protein-interaction"
+      ]
     },
     {
       "sourceId": "7bad326c8e3be2fd",
@@ -24184,7 +24476,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-7f192eaa8383e968",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 절차와 출판사 변형 대조 · 한 회전 수조 실험으로 묶음",
+      "manualExperimentIds": [
+        "rotating-annulus"
+      ]
     },
     {
       "sourceId": "cdbacd1f7e6522b8",
@@ -27662,7 +27957,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-cbe63e8e53901d34",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "장치와 대상 찾기 절차 대조 · 과목별 관측 범위 보존",
+      "manualExperimentIds": [
+        "telescope-observation"
+      ]
     },
     {
       "sourceId": "81ce1d0e81902b80",
@@ -34460,7 +34758,10 @@
       "samePageTools": [
         "12지시03#4"
       ],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 절차와 출판사 변형 대조 · 한 회전 수조 실험으로 묶음",
+      "manualExperimentIds": [
+        "rotating-annulus"
+      ]
     },
     {
       "sourceId": "5b0ce08b8c0b10eb",
@@ -35133,7 +35434,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-567f46082f41f032",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "장치와 대상 찾기 절차 대조 · 과목별 관측 범위 보존",
+      "manualExperimentIds": [
+        "telescope-observation"
+      ]
     },
     {
       "sourceId": "35d817a99ea28582",
@@ -35144,7 +35448,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-19232fb10e36a552",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "망원경 관측의 준비 단계 · 별도 독립 실험으로 중복 합산하지 않음",
+      "manualExperimentIds": [
+        "telescope-observation"
+      ]
     },
     {
       "sourceId": "35d817a99ea28582",
@@ -35183,7 +35490,10 @@
       "samePageTools": [
         "12행우02#1"
       ],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "기재한 원문 절차 대조 · 자료 조작과 결과 해석 구현; 경계는 개별 검토 기록에 보존",
+      "manualExperimentIds": [
+        "sunspot-observation"
+      ]
     },
     {
       "sourceId": "83a281f014c6a235",
@@ -40425,7 +40735,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-166285fed2ab2886",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 절차와 출판사 변형 대조 · 한 회전 수조 실험으로 묶음",
+      "manualExperimentIds": [
+        "rotating-annulus"
+      ]
     },
     {
       "sourceId": "d41737876b631070",
@@ -53581,7 +53894,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-7ec61fd82b054f78",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+      "manualExperimentIds": [
+        "stem-dye-transport"
+      ]
     },
     {
       "sourceId": "89316af3de563d4c",
@@ -53757,7 +54073,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-dc1382c6882026e6",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+      "manualExperimentIds": [
+        "stem-dye-transport"
+      ]
     },
     {
       "sourceId": "d544b624a4fe52c2",
@@ -66087,7 +66406,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-2723f2f32dbbb2c9",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+      "manualExperimentIds": [
+        "stem-dye-transport"
+      ]
     },
     {
       "sourceId": "4020707022bbe8dd",
@@ -66252,7 +66574,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-72e44c087fff7383",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "백합·맹물/색소 물 대조 및 줄기 단면 절차 대조 · 출판사 중복을 한 실험으로 묶음",
+      "manualExperimentIds": [
+        "stem-dye-transport"
+      ]
     },
     {
       "sourceId": "0c762181d67d630e",

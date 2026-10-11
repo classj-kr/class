@@ -215,8 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- LCD Screen Bezel & Display -->
             <rect x="${cx - w / 2 + 8}" y="${cy - h / 2 + 6}" width="${w - 16}" height="${h - 12}" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
             <rect x="${cx - w / 2 + 10}" y="${cy - h / 2 + 8}" width="${w - 20}" height="${h - 16}" rx="3" fill="url(#dmmLcd)"/>
-            <text x="${cx - w / 2 + 13}" y="${cy + 4}" fill="#34d399" font-size="10" font-weight="900" font-family="Pretendard, sans-serif">전류계</text>
-            <text x="${cx + 12}" y="${cy + 6}" text-anchor="middle" fill="#4ade80" font-size="14.5" font-weight="900" font-family="'Pretendard', monospace" filter="url(#glowGreen)">${currentVal.toFixed(2)} A</text>
+            <text x="${cx}" y="${cy - h / 2 - 9}" text-anchor="middle" fill="#245265" font-size="14" font-weight="700" font-family="system-ui, sans-serif">전류계</text>
+            <text x="${cx}" y="${cy + 6}" text-anchor="middle" fill="#4ade80" font-size="14.5" font-weight="900" font-family="system-ui, monospace" filter="url(#glowGreen)">${currentVal.toFixed(2)} A</text>
             ${isH ? `
             <!-- Binding Terminal Jacks -->
             <circle cx="${cx - w / 2}" cy="${cy}" r="3" fill="#dc2626"/>

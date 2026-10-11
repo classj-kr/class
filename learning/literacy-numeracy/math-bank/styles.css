@@ -254,3 +254,7 @@ button, input, select { font: inherit; color: inherit; }
 .mb-pic-mid { width: 14px; height: 14px; background: #d97706; }
 .mb-pic-small { width: 9px; height: 9px; background: #5b8def; }
 .mb-picto-legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 2px; font-size: 0.98rem; align-items: center; }
+
+/* 묶음 가운데 색칠한 묶음, 대분수 */
+.mb-thing.is-on { fill: #1d4ed8; stroke: #1e3a8a; }
+.mb-mixed { white-space: nowrap; font-weight: 600; }

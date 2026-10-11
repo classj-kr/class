@@ -79,7 +79,6 @@
   const zoom=document.createElement('button');zoom.type='button';zoom.textContent='그림 확대';zoom.setAttribute('aria-controls',viewport.id);zoom.setAttribute('aria-pressed','false');toolbar.append(zoom);viewport.before(toolbar);
   const hint=document.createElement('span');hint.textContent='좌우로 움직여 볼 수 있습니다';hint.hidden=true;toolbar.append(hint);
   let notes=null,scheduled=false,expanded=false;
-  const baseFonts=new WeakMap();
   function layout(){
    scheduled=false;
    const box=svg.viewBox.baseVal;
@@ -95,11 +94,6 @@
    const fitted=narrow&&!expanded;
    svg.style.minWidth=fitted||svg.hasAttribute('data-mobile-fit')?'0px':box.width+'px';
    zoom.textContent=expanded?'전체 보기':'그림 확대';zoom.setAttribute('aria-label',figureName+(expanded?' 전체 보기':' 확대'));zoom.setAttribute('aria-pressed',String(expanded));hint.hidden=!expanded;viewport.tabIndex=expanded?0:-1;
-   const scale=proseOnly?1:svg.getBoundingClientRect().width/box.width;
-   svg.querySelectorAll('text').forEach(text=>{
-    if(!baseFonts.has(text))baseFonts.set(text,parseFloat(getComputedStyle(text).fontSize)||14);
-    const font=baseFonts.get(text);if(font<=18)text.style.fontSize=(fitted?font:Math.max(font,12/scale))+'px';
-   });
    if(!proseOnly)svg.querySelectorAll('text.note-text,text.verdict-text,text.front-note,text.cmp-note,text.figure-caption').forEach(text=>{
     text.removeAttribute('data-figure-extracted');
     const b=text.getBBox(),atEdge=b.y<box.y+box.height*.18||b.y+b.height>box.y+box.height*.82;
@@ -125,4 +119,33 @@
   schedule();document.fonts?.ready.then(schedule);
  }
  document.querySelectorAll(selector).forEach(attach);
+})();
+
+// SVG coordinates describe apparatus geometry, not the size of printed letters.
+// Apply the same reading scale to both original and dynamically inserted figures.
+(() => {
+ const root=document.querySelector('main');if(!root)return;
+ const authored=new WeakMap(),observed=new WeakSet(),pending=new Set();let frame=0;
+ const pictogram=s=>/^[\p{Extended_Pictographic}\uFE0F\u200D\s←→↑↓↔↕·•①②③④⑤⑥]+$/u.test(s);
+ function normalize(svg){
+  if(!svg.isConnected||!svg.getBoundingClientRect().width)return;
+  for(const text of svg.querySelectorAll('text')){
+   if(text.closest('defs,clipPath,mask')||!text.textContent.trim()||pictogram(text.textContent.trim()))continue;
+   const matrix=text.getScreenCTM();if(!matrix)continue;
+   const scale=Math.hypot(matrix.c,matrix.d);if(!scale)continue;
+   if(!authored.has(text))authored.set(text,parseFloat(getComputedStyle(text).fontSize)||14);
+   const pixels=Math.max(14,Math.min(16,authored.get(text)));
+   const size=(pixels/scale).toFixed(4)+'px';
+   if(text.style.fontSize!==size)text.style.setProperty('font-size',size,'important');
+  }
+ }
+ function flush(){frame=0;for(const svg of pending)normalize(svg);pending.clear();}
+ function queue(svg){if(!svg)return;pending.add(svg);if(!frame)frame=requestAnimationFrame(flush);}
+ const resize=new ResizeObserver(entries=>{for(const e of entries)queue(e.target);});
+ function discover(node){if(node.nodeType!==1)return;const list=node.matches('svg')?[node]:node.querySelectorAll('svg');for(const svg of list){if(!observed.has(svg)){observed.add(svg);resize.observe(svg);}normalize(svg);queue(svg);}}
+ discover(root);
+ // Animated lessons replace their text every frame. Normalize in the mutation
+ // microtask, before paint, rather than one frame after the labels were replaced.
+ new MutationObserver(records=>{const changed=new Set();for(const r of records){const svg=r.target.nodeType===1?r.target.closest('svg'):r.target.parentElement?.closest('svg');if(svg)changed.add(svg);for(const n of r.addedNodes)discover(n);}for(const svg of changed)normalize(svg);}).observe(root,{childList:true,subtree:true,characterData:true});
+ document.fonts?.ready.then(()=>discover(root));
 })();

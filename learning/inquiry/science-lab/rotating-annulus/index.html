@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 회전 수조의 온도차와 흐름</title><meta name="description" content="2022 교육과정 · 회전 수조의 온도차와 흐름의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../annulus-lab.css?v=f10fe50f2e6c"><link rel="stylesheet" href="../lab-ui.css?v=7dd256382ee5"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>회전 수조의 온도차와 흐름</h1><div class="grade-tags"><span>고(선택)</span><span>지구시스템과학</span></div></header><p class="intro">수조의 안쪽을 차게, 바깥쪽을 따뜻하게 한 뒤 회전 전후의 흐름을 비교하세요.</p>
+<section class="annulus-lab" aria-label="회전 수조 실험">
+<div class="annulus-heading"><div><span class="annulus-eyebrow">온도차와 회전</span><h2>움직이는 표지로 흐름 관찰하기</h2></div><span class="annulus-badge">수조와 함께 도는 시점</span></div>
+<div class="annulus-layout"><div class="annulus-controls"><h3>장치 준비</h3><button id="annulusFill" aria-pressed="false">세 원통에 물 채우기</button><button id="annulusIce" aria-pressed="false">안쪽에 얼음 넣기</button><button id="annulusHeat" aria-pressed="false">바깥쪽 가열하기</button><label>관찰 표지<select id="annulusMaterial"><option value="pollen">송홧가루 · 수면</option><option value="ink">잉크 · 상층 흐름</option></select></label><button id="annulusTracer" aria-pressed="false">중간 원통에 표지 넣기</button><h3>조건 비교</h3><label>시계 반대 방향의 회전<select id="annulusRotation"><option value="off">회전 없음</option><option value="slow">느리게</option><option value="wave">중간</option><option value="fast">빠르게</option></select></label><label class="annulus-check"><input type="checkbox" id="annulusCompare">회전 없는 조건과 나란히 보기</label><div class="annulus-play"><button id="annulusRun">관찰 시작</button><button id="annulusStep">한 단계</button></div><button id="resetExperiment">처음부터</button></div>
+<div class="annulus-observation"><div class="annulus-view-buttons"><button data-annulus-view="top" aria-pressed="true">위에서 보기</button><button data-annulus-view="side" aria-pressed="false">옆면의 물 순환</button></div><div class="annulus-scenes"><figure><canvas id="annulusCanvas" width="1000" height="920" role="img" aria-label="회전 원통 장치와 움직이는 표지"></canvas><figcaption id="annulusCaption"></figcaption></figure><figure id="annulusComparison" hidden><canvas id="annulusBaseline" width="1000" height="920" role="img" aria-label="같은 온도 조건에서 회전하지 않는 수조"></canvas><figcaption>같은 온도 조건 · 회전 없음</figcaption></figure></div><div class="annulus-legend"><span><i class="cold"></i>안쪽 냉각</span><span><i class="warm"></i>바깥쪽 가열</span><span><i class="trace"></i>관찰 표지</span></div><p id="annulusStatus" class="annulus-status" role="status"></p><p class="annulus-hint">조건을 바꾸면 새 흐름을 처음부터 관찰합니다. ‘한 단계’로 움직임을 천천히 비교할 수 있습니다.</p></div></div>
+</section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>안쪽 원통은 얼음물, 바깥쪽은 가열한 물이다. 중간 원통에서 흐름을 관찰한다. 안쪽→중간→바깥쪽의 대응은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 극 지역 → 중위도 → 열대 지역</label>
+<label><input type="radio" name="q1" value="b"> 열대 지역 → 중위도 → 극 지역</label>
+<label><input type="radio" name="q1" value="c"> 중위도 → 극 지역 → 열대 지역</label>
+<label><input type="radio" name="q1" value="d"> 극 지역 → 열대 지역 → 중위도</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>온도가 낮은 안쪽은 극 지역, 두 경계 사이의 물은 중위도, 온도가 높은 바깥쪽은 열대 지역에 대응합니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>회전하지 않을 때와 회전할 때 흐름이 달라지는지 조사한다. 나머지 조건은 같게 할 때 알맞은 두 실험은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> A 온도차 없음·정지 / B 온도차 있음·회전</label>
+<label><input type="radio" name="q2" value="b"> A 온도차 있음·정지 / B 같은 온도차·회전</label>
+<label><input type="radio" name="q2" value="c"> A 온도차 있음·회전 / B 온도차 없음·같은 회전</label>
+<label><input type="radio" name="q2" value="d"> A 온도차 있음·정지 / B 같은 온도차·정지</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>안팎 온도차·물의 양·관찰 위치를 같게 두고 회전 여부만 바꿔야 회전 효과를 비교할 수 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>수조가 정지한 상태에서 안쪽을 냉각하고 바깥쪽을 가열했다. 옆면에서 본 중간 원통 물의 대표 순환은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 표면 안→밖 · 바닥 안→밖</label>
+<label><input type="radio" name="q3" value="b"> 표면 밖→안 · 바닥 밖→안</label>
+<label><input type="radio" name="q3" value="c"> 표면 밖→안 · 바닥 안→밖</label>
+<label><input type="radio" name="q3" value="d"> 표면 안→밖 · 바닥 밖→안</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>차가운 안쪽 벽 부근의 물은 내려가 바닥을 따라 바깥쪽으로 흐르고, 바깥쪽에서 올라온 물은 표면을 따라 안쪽으로 흐릅니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>수조의 굽이치는 흐름을 실제 중위도 편서풍 파동과 비교한다. 평평한 수조가 직접 재현하지 못한 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 안팎의 온도 차에 의한 에너지 차이</label>
+<label><input type="radio" name="q4" value="b"> 따뜻한 쪽과 찬 쪽 사이의 물 이동</label>
+<label><input type="radio" name="q4" value="c"> 회전하는 좌표에서 나타나는 전향 효과</label>
+<label><input type="radio" name="q4" value="d"> 지구에서 위도에 따라 달라지는 전향력</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>회전 수조에는 회전에 의한 효과와 안팎 온도차가 있지만, 평평한 바닥에서 위도별 전향력 변화까지 재현하지 않습니다. 파동 모양이 비슷해도 발생 원리를 같다고 단정할 수 없습니다.</p>
+</article></details></main><script src="../curriculum-map.js?v=0144933d1402"></script><script src="../app-context.js?v=d7510641d604"></script><script src="../annulus-model.js?v=91c477883958"></script><script src="../annulus-lab.js?v=e21d8347c4fa"></script><script src="../exam-scope.js?v=7db3969ea718"></script><script src="../lab-ui.js?v=e4a4a4452c4f"></script></body></html>

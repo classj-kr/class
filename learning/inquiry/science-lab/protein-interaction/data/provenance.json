@@ -1,0 +1,189 @@
+{
+  "targets": [
+    {
+      "id": 1,
+      "pdb": "4EY7",
+      "name": "아세틸콜린에스터레이스",
+      "role": "아세틸콜린을 분해하여 신경 신호 전달을 조절하는 효소",
+      "context": "알츠하이머병 관련 연구",
+      "file": "1.json",
+      "sha256": "0955d1b30bdde7f811e5a952b62d0b066f2e204eeae91d61f7d0e62dff8432e1"
+    },
+    {
+      "id": 5,
+      "pdb": "1T46",
+      "name": "KIT 키네이스",
+      "role": "단백질을 인산화하여 세포의 성장 신호를 전달하는 효소",
+      "context": "세포 증식과 종양 관련 연구",
+      "file": "5.json",
+      "sha256": "f1bce4a45e05eeec129be6a2187d0463243333c4b4fac6e0ef757fe93066324a"
+    },
+    {
+      "id": 8,
+      "pdb": "4J3J",
+      "name": "DPP-4",
+      "role": "인크레틴을 비롯한 펩타이드를 분해하는 효소",
+      "context": "혈당 조절 관련 연구",
+      "file": "8.json",
+      "sha256": "d3fbba38780e965c307d83cfaeb7d2686bcaec61b75189bd054352ffa1ddec0d"
+    }
+  ],
+  "compounds": [
+    {
+      "id": 6,
+      "name": "아픽사반",
+      "english": "Apixaban",
+      "formula": "C25H25N5O4"
+    },
+    {
+      "id": 17,
+      "name": "비포나졸",
+      "english": "Bifonazole",
+      "formula": "C22H18N2"
+    },
+    {
+      "id": 34,
+      "name": "플루코나졸",
+      "english": "Fluconazole",
+      "formula": "C13H12F2N6O"
+    },
+    {
+      "id": 47,
+      "name": "이부프로펜",
+      "english": "Ibuprofen",
+      "formula": "C13H18O2"
+    },
+    {
+      "id": 48,
+      "name": "이마티닙",
+      "english": "Imatinib",
+      "formula": "C29H31N7O"
+    },
+    {
+      "id": 59,
+      "name": "미노사이클린",
+      "english": "Minocycline",
+      "formula": "C23H27N3O7"
+    }
+  ],
+  "scoreKind": "Source-provided relative docking energies; unit not specified by the original UI. Do not label as measured binding free energy or clinical efficacy.",
+  "method": "20 precomputed poses per pair, in original index order. No interpolation between poses, no client-side docking, no arbitrary generated energies. Protein display uses PDB C-alpha trace; crystallographic ligands and waters omitted.",
+  "sources": [
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/content4_protein.xml",
+      "sha256": "c260e8c8b851c8fc2865c0548e320ef5606e2fec5763e4d52b68c74cd09de6e5",
+      "bytes": 621775
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/content4_molelist.csv",
+      "sha256": "e5a79beebf4f4b9b03fe51deae3eab18e9317d954786981319f92e9f57614a2e",
+      "bytes": 11161
+    },
+    {
+      "url": "https://files.rcsb.org/download/4EY7.pdb",
+      "sha256": "6bca2109d7b512a576458c3261e597bb5159e8fb43162c5b6c88df71f9fcdbd2",
+      "bytes": 794610
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_1_6.json",
+      "sha256": "72d6baa609b0978b8ccd25ab474aca89d55609470708f73c65cadf4777fd1586",
+      "bytes": 73472
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_1_17.json",
+      "sha256": "fd4aac7f58de52d8d544ee72dd03aa427e256ba02c1c79dd20a9dd4079d44d8b",
+      "bytes": 49018
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_1_34.json",
+      "sha256": "58b2e03fa75f364e23d0aa48900977ceaa9677c4d2a369fd1e313f36f6d28a52",
+      "bytes": 46305
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_1_47.json",
+      "sha256": "6150dac13394a32f9cd4276ef537d89b3ef24d4a467df541990e328ccf4480a7",
+      "bytes": 30988
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_1_48.json",
+      "sha256": "7922efbf494b4ae2f69f0e864aa17deb531cae90a87de79ebf5b8e3975ea9550",
+      "bytes": 79389
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_1_59.json",
+      "sha256": "92b1a5ca00eaa47fa7ad3c99fe943ec768d8d6a45e890543f1f086fba3071c0d",
+      "bytes": 78262
+    },
+    {
+      "url": "https://files.rcsb.org/download/1T46.pdb",
+      "sha256": "af7e14e6eb586366cec728fc22953a624d8b7007ef55029d714be3dfe41ee1c9",
+      "bytes": 258714
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_5_6.json",
+      "sha256": "21a0381acdf2fc390a35848e062c5ef93384e042569c1df93ecf3e1790231d2d",
+      "bytes": 73678
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_5_17.json",
+      "sha256": "63708286ee2650592ebc6bf74d29c602bcad1afb4cca1abe1f77809783d3c299",
+      "bytes": 49329
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_5_34.json",
+      "sha256": "e3eaecd8ebab57f6adad2a5ca588f027b0b53d044d61fb0b16b84bf536450b7d",
+      "bytes": 46533
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_5_47.json",
+      "sha256": "70dda3856f664a40ccf6cc65bcb1f63b53b8c7f06f12fbc97d3fd157f96a58a1",
+      "bytes": 31206
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_5_48.json",
+      "sha256": "b8fa7b8bef13caec7380c7b3a89e2a53502adc0af6e046e09d221ccf6ae4d468",
+      "bytes": 79716
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_5_59.json",
+      "sha256": "efa7466558087122c380b3bd180446bc9505b5ed817bad4fe70b6bb838bca0db",
+      "bytes": 78766
+    },
+    {
+      "url": "https://files.rcsb.org/download/4J3J.pdb",
+      "sha256": "1cb02315947d1ea321ff57a4059a388f93a53db84e7ee1ae75091272ee11a4cc",
+      "bytes": 1027242
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_8_6.json",
+      "sha256": "c3b122a77b806275e714fb9045d4ee536aa1f985429aaffcf5935fd7b6db732e",
+      "bytes": 74006
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_8_17.json",
+      "sha256": "263c8e371ccd0a562122ce32e16c2232b7d2208027c294978a1b039e57582292",
+      "bytes": 49538
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_8_34.json",
+      "sha256": "ff77ef48e5d821e753113bfa5bf7f8bd243501d40234f67712d6def32c352d1a",
+      "bytes": 46784
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_8_47.json",
+      "sha256": "37b9f5367766b7bfb752fd1ca36876c50a8cb183feff0542b1b4e3bf75100619",
+      "bytes": 31360
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_8_48.json",
+      "sha256": "5b94d86bb40fc5d5516d704093c3155e17ed2ebd43d46e1ff5b3e708d9cf9c45",
+      "bytes": 79885
+    },
+    {
+      "url": "https://vlabon.re.kr/play/contents/protein_interaction/resources4/moleAni/pdb_8_59.json",
+      "sha256": "1ce027f993b5ed60a88926d7e7b451fe12657e5f99e1b578e5fe78f8c5462992",
+      "bytes": 79048
+    }
+  ],
+  "sourcePage": "https://vlabon.re.kr/contents/protein_interaction"
+}

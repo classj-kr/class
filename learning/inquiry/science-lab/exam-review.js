@@ -12,7 +12,7 @@
   const context=window.scienceAppContext;
   const appMap=context?{...window.scienceCurriculum,[appSlug]:context}:window.scienceCurriculum;
   const followups=(window.scienceFollowups?.[appSlug]||[]).filter(q=>!context||context.followupIds.includes(q.id));
-  const appQuestions=appSlug?[...bank.forApp(appSlug,appMap),...followups]:null;if(appQuestions)grade=appQuestions[0]?.grade||grade;
+  const appQuestions=appSlug?[...bank.forApp(appSlug,appMap).filter(q=>!context?.bankQuestionIds||context.bankQuestionIds.includes(q.id)),...followups]:null;if(appQuestions)grade=appQuestions[0]?.grade||grade;
   if(appQuestions&&!appQuestions.length){root.remove();return;}
   const section=root.closest('.quiz-section'),assessment=section?.scienceAssessment;
   const definitions=(appQuestions||bank.questions).map(q=>({...q,choices:q.choices.map((text,id)=>({id:String(id),text})),answer:String(q.answer),...(window.scienceMisconceptions?.[q.id]||{})}));

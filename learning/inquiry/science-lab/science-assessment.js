@@ -53,7 +53,7 @@
   const store=session(slug+(context?':'+context.school:''),[],storage),cards=new Map();
   const diagnosis=el('section');diagnosis.className='science-diagnosis';diagnosis.setAttribute('aria-label','응답 결과');diagnosis.hidden=true;
   section.append(diagnosis);section.dataset.assessmentReady='true';
-  function revisit(){const target=doc.querySelector('#controlArea,.lab-layout,.experiment-layout,.control-panel,.main-svg')||doc.querySelector('main');target.scrollIntoView({block:'start',behavior:'auto'});target.tabIndex=-1;target.focus({preventScroll:true});}
+  function revisit(){const target=doc.querySelector('#controlArea,.lab-layout,.experiment-layout,.telescope-lab,.annulus-lab,.sunspot-lab,.docking-lab,.control-panel,.main-svg')||doc.querySelector('main');target.scrollIntoView({block:'start',behavior:'auto'});target.tabIndex=-1;target.focus({preventScroll:true});}
   function renderSummary(){
    const s=store.summary(),count=section.querySelector('.quiz-heading span');if(count)count.textContent=s.total+'문제';diagnosis.hidden=!s.answered;diagnosis.replaceChildren();if(!s.answered)return;
    diagnosis.append(el('h3','응답 결과'),el('p',`${s.total}문제 중 ${s.answered}문제 응답 · 처음부터 정답 ${s.firstCorrect} · 다시 풀어 정답 ${s.corrected} · 다시 확인 ${s.review}`));

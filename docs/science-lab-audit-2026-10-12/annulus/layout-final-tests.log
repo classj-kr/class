@@ -1,0 +1,12 @@
+✔ tank setup, thermal contrast and rotation are independent experimental conditions (4.1304ms)
+✔ source registry preserves variants, model limits and 2022 elective classification (0.1604ms)
+✔ chromium: tank preparation, moving tracers, fair comparison, reset and diagnosis (5155.8223ms)
+✔ webkit: tank preparation, moving tracers, fair comparison, reset and diagnosis (7567.2167ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12791.4149

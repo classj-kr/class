@@ -1,8 +1,8 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const lab=path.resolve(__dirname,'../learning/inquiry/science-lab'),models=require(path.join(lab,'required-experiments.js')).requiredExperimentModels().microscope;
-const questions=require(path.join(lab,'assessment-content.js')).followups.microscope.filter(q=>/microscope@(root|leaf)-/.test(q.id));
+const questions=require(path.join(lab,'assessment-content.js')).followups.microscope.filter(q=>/microscope@(root|leaf|stem)-/.test(q.id));
 const screenshot=require('./science-screenshot.cjs');
-for(const engine of ['chromium','webkit'])test(engine+': plant procedures, responsive figures and five first-response diagnostics',{timeout:90000},async()=>{
+for(const engine of ['chromium','webkit'])test(engine+': plant procedures, responsive figures and nine first-response diagnostics',{timeout:90000},async()=>{
  const server=http.createServer((req,res)=>{let file=path.resolve(lab,'.'+new URL(req.url,'http://localhost').pathname);if(!file.startsWith(lab+path.sep))return res.writeHead(403).end();if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(error,data)=>{if(error)return res.writeHead(404).end();res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css'}[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;const errors=[],out=path.resolve(__dirname,'../docs/science-lab-audit-2026-10-11/textbook-procedure-review');fs.mkdirSync(out,{recursive:true});
  try{

@@ -1,0 +1,302 @@
+{
+  "engine": "chromium",
+  "routes": 150,
+  "scenarios": 2610,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "issues": [
+    {
+      "slug": "electric-field",
+      "width": 1366,
+      "mode": {
+        "kind": "mode",
+        "value": "accel"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "초속 1,000~10,000 km"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "electric-field",
+      "width": 1180,
+      "mode": {
+        "kind": "mode",
+        "value": "accel"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "초속 1,000~10,000 km"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "electric-field",
+      "width": 1024,
+      "mode": {
+        "kind": "mode",
+        "value": "accel"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "초속 1,000~10,000 km"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "width": 1366,
+      "mode": {
+        "kind": "mode",
+        "value": "energy"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "0.999c"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "width": 1180,
+      "mode": {
+        "kind": "mode",
+        "value": "energy"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "0.999c"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "semiconductor-relativity",
+      "width": 1024,
+      "mode": {
+        "kind": "mode",
+        "value": "energy"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "0.999c"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "mole",
+      "width": 1366,
+      "mode": {
+        "kind": "mode",
+        "value": "count"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "설탕C₁₂H₂₂O₁₁ · 342.3 g/mol"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "mole",
+      "width": 1180,
+      "mode": {
+        "kind": "mode",
+        "value": "count"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "설탕C₁₂H₂₂O₁₁ · 342.3 g/mol",
+        "거의 1몰 (0.8~1.25)"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "mole",
+      "width": 1024,
+      "mode": {
+        "kind": "mode",
+        "value": "count"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "설탕C₁₂H₂₂O₁₁ · 342.3 g/mol",
+        "거의 1몰 (0.8~1.25)"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "middle",
+      "width": 768,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "처음부터"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "width": 1366,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "터치 높이: A",
+        "터치 높이: B",
+        "터치 높이: C",
+        "터치 높이: D",
+        "터치 높이: E"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "telescope-observation",
+      "school": "high-elective",
+      "width": 768,
+      "mode": {
+        "kind": "initial"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "처음부터"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "width": 1366,
+      "mode": {
+        "kind": "sunspot",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "터치 높이: A",
+        "터치 높이: B",
+        "터치 높이: C",
+        "터치 높이: D",
+        "터치 높이: E"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "width": 1180,
+      "mode": {
+        "kind": "sunspot",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "터치 높이: A",
+        "터치 높이: B",
+        "터치 높이: C",
+        "터치 높이: D",
+        "터치 높이: E"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "width": 1024,
+      "mode": {
+        "kind": "sunspot",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "터치 높이: A",
+        "터치 높이: B",
+        "터치 높이: C",
+        "터치 높이: D",
+        "터치 높이: E"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "width": 820,
+      "mode": {
+        "kind": "sunspot",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "터치 높이: A",
+        "터치 높이: B",
+        "터치 높이: C",
+        "터치 높이: D",
+        "터치 높이: E"
+      ],
+      "overlaps": [],
+      "canvas": []
+    },
+    {
+      "slug": "sunspot-observation",
+      "school": "high-elective",
+      "width": 768,
+      "mode": {
+        "kind": "sunspot",
+        "value": "compare"
+      },
+      "overflow": false,
+      "fonts": [],
+      "clipped": [
+        "터치 높이: A",
+        "터치 높이: B",
+        "터치 높이: C",
+        "터치 높이: D",
+        "터치 높이: E"
+      ],
+      "overlaps": [],
+      "canvas": []
+    }
+  ],
+  "errors": []
+}

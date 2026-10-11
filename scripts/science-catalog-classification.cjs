@@ -30,7 +30,7 @@ const primaryGroups = {
   '환경과 생태계':'living-environment',
   '고체 지구':'rock-layers minerals-rocks volcano-model plate-tectonics',
   '유체 지구':'land-sea weather-watch weather-front seawater',
-  '천체':'night-sky seasons moon-phases apparent-motion stars-universe',
+  '천체':'night-sky seasons moon-phases apparent-motion stars-universe telescope-observation',
   '과학과 안전':'infection-prevention'
 };
 const courses = [
@@ -71,6 +71,19 @@ function classify(map) {
   }
   for (const [slug, app] of Object.entries(map)) {
     if (!app.codes.length || app.codes.some(code=>!standards[code])) throw Error('Unknown standard: '+slug);
+    if(app.level!=='high'&&app.courseContexts){
+      const base=placements[slug];if(!base||!app.courseContexts[base.school]||app.defaultContext!==base.school)throw Error('Invalid foundation default context: '+slug);
+      const scopeCodes=Object.values(app.courseContexts).flatMap(c=>c.codes);
+      if(new Set(scopeCodes).size!==scopeCodes.length||scopeCodes.length!==app.codes.length||app.codes.some(c=>!scopeCodes.includes(c)))throw Error('Incomplete mixed-school context: '+slug);
+      const primary={...base,context:base.school},additional=[];
+      for(const [school,context]of Object.entries(app.courseContexts)){
+        if(school===base.school){if(!context.codes.length||context.codes.some(c=>!(base.school==='middle'?/^9과/:/^(4|6)과/).test(c)))throw Error('Non-foundation code: '+slug);continue;}
+        if(!context.codes.length)throw Error('Empty mixed-school course: '+slug);
+        const linked=context.codes.map(code=>{const course=courses.find(c=>code.startsWith(c.prefix));if(!course||course.school!==school||!context.subjects.includes(course.title))throw Error('Invalid mixed-school course: '+slug);return{...standards[code],course};});
+        const first=linked[0];additional.push({school,context:school,area:first.course.title,category:first.domain,section:first.course.prefix,kind:first.course.kind,code:first.code,sourceLine:first.domainLine,related:linked.map(x=>({course:x.course.title,area:x.domain,line:x.domainLine}))});
+      }
+      placements[slug]={...primary,additional};
+    }
     if (app.level === 'high') {
       const linked = app.codes.map(code => {
         const course = courses.find(c=>code.startsWith(c.prefix));

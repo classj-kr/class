@@ -12,7 +12,7 @@
  function note(s){if(status.textContent!==s)status.textContent=s;}
  function stop(){clearInterval(timer);timer=0;running=false;}
  function run(step,max,dt=100){if(running){stop();draw();return;}running=true;timer=setInterval(()=>{state.time=Math.min(max,state.time+step);if(state.time>=max)stop();draw();},dt);}
- function beaker(x,y,label,liquid='#afd5e5',level=85){return rect(x-61,y+120-level,122,level,liquid)+path(`M${x-65} ${y}V${y+120}Q${x-65} ${y+130} ${x-55} ${y+130}H${x+55}Q${x+65} ${y+130} ${x+65} ${y+120}V${y}`)+text(x,y+160,label);}
+ function beaker(x,y,label,liquid='#afd5e5',level=85,labelOffset=160){return rect(x-61,y+120-level,122,level,liquid)+path(`M${x-65} ${y}V${y+120}Q${x-65} ${y+130} ${x-55} ${y+130}H${x+55}Q${x+65} ${y+130} ${x+65} ${y+120}V${y}`)+text(x,y+labelOffset,label);}
  function thermometer(x,y,t){const h=Math.max(3,Math.min(89,(t+5)/115*89));return rect(x-5,y,10,100,'#eef4f6','rx="5" stroke="#628392"')+rect(x-3,y+97-h,6,h,'#c45348')+`<circle cx="${x}" cy="${y+100}" r="9" fill="#c45348"/>`;}
  function drawGas(){
   const r=M.gas(state.sample,state.head),surface=205,inside=state.collected?surface-state.head*3:70;
@@ -32,12 +32,12 @@
  function graph(x,y,w,h,maxT,fn,color){let d='';for(let t=0;t<=state.time;t+=5){const v=fn(t),xx=x+w*t/maxT,yy=y+h-(v+5)/115*h;d+=(d?'L':'M')+xx.toFixed(1)+' '+yy.toFixed(1);}return path(d,color,2.5);}
  function drawSugar(){
   const a=M.sugar(0,state.mode,state.time),b=M.sugar(state.molality,state.mode,state.time),names={liquid:'액체',boiling:'끓는 중',freezing:'얼기 시작함'};
-  let out='';[a,b].forEach((r,i)=>{const x=160+320*i;out+=beaker(x,80,i?'설탕물':'물',r.phase==='freezing'?'#d2e7f5':'#acd7e4');out+=thermometer(x+28,45,r.temperature)+text(x,35,(state.prepared?r.temperature:20).toFixed(2)+' ℃',23);
+  let out='';[a,b].forEach((r,i)=>{const x=160+320*i;out+=beaker(x,80,i?'설탕물':'물',r.phase==='freezing'?'#d2e7f5':'#acd7e4',85,-15);out+=thermometer(x+28,45,r.temperature)+text(x,35,(state.prepared?r.temperature:20).toFixed(2)+' ℃',23);
    out+=rect(x-80,220,160,30,state.mode==='heat'?'#b16b43':'#6ea2c2','rx="5"')+text(x,241,state.mode==='heat'?'가열판':'얼음 + 소금',16,'white');
    if(state.prepared&&r.phase==='boiling')for(let k=0;k<7;k++)out+=`<circle cx="${x-42+(k*19)%87}" cy="${102+(k*23)%90}" r="${3+k%4}" fill="none" stroke="white" stroke-width="2"/>`;
    if(state.prepared&&r.phase==='freezing')out+=path(`M${x-30} 145l20 -10 18 16 20 -8 12 20`,'white',8);
   });
-  out+=text(90,303,'온도 / ℃',15)+text(588,416,'시간 / s',15)+line(70,405,585,405,'#8ba7b5',1)+line(70,290,70,405,'#8ba7b5',1)+text(54,306,'100',13)+text(54,402,'0',13)+text(75,425,'0',13)+text(567,435,'500',13);
+  out+=text(90,277,'온도 / ℃',15)+text(588,416,'시간 / s',15)+line(70,405,585,405,'#8ba7b5',1)+line(70,290,70,405,'#8ba7b5',1)+text(54,306,'100',13)+text(54,402,'0',13)+text(75,425,'0',13)+text(567,435,'500',13);
   if(state.prepared)out+=graph(70,290,500,110,500,t=>M.sugar(0,state.mode,t).temperature,'#298b9c')+graph(70,290,500,110,500,t=>M.sugar(state.molality,state.mode,t).temperature,'#c67636');
   svg(out,'물과 설탕물의 온도 센서 및 시간별 온도 곡선, 파랑은 물 주황은 설탕물',445);
   readout.innerHTML=metric('필요한 설탕',b.mass.toFixed(1)+' g')+metric('경과 시간',state.time+' s')+metric('물 / 설탕물',state.prepared?names[a.phase]+' / '+names[b.phase]:'용액 준비 전');
