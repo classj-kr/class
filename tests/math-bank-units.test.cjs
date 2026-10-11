@@ -149,6 +149,9 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
   const TABLE_DIVISION = new Set(['3-1-3']);
   // 3학년 1학기 곱셈은 (두 자리 수)×(한 자리 수)까지다. 묶음 이름대로 올림이 일어나는지도 본다.
   const SMALL_MUL = new Set(['3-1-4']);
+  // 3학년 2학기 곱셈은 (세 자리 수)×(한 자리 수)와 (두 자리 수)×(두 자리 수)까지다.
+  const GRADE3_MUL = new Set(['3-2-1']);
+  const inGrade3 = (x, y) => x >= 0 && y >= 0 && ((Math.min(x, y) <= 9 && Math.max(x, y) <= 999) || (x <= 99 && y <= 99));
   const ups = (a, b) => { const ones = (a % 10) * b, tens = Math.trunc(a / 10) * b + Math.trunc(ones / 10); return [ones >= 10, tens >= 10]; };
   const MUL_RULE = {
     tens: (a) => a % 10 === 0,
@@ -193,6 +196,16 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       assert.ok(a >= 10 && a <= 99 && b >= 2 && b <= 9, label);
       if (MUL_RULE[at.group.id]) assert.ok(MUL_RULE[at.group.id](a, b), '묶음 조건에 안 맞는 곱셈: ' + label);
       if (f.wrongValue !== undefined) { assert.notEqual(f.wrongValue, a * b, '틀린 답이 정답과 같다: ' + label); assert.ok(f.wrongValue > 0, label); }
+    }
+    if (f.mulAny) {
+      const [a, b] = f.mulAny;
+      assert.ok(inGrade3(a, b), '3학년 범위를 넘는 곱셈: ' + label);
+      if (f.wrongProduct !== undefined) { assert.notEqual(f.wrongProduct, a * b, '틀린 답이 정답과 같다: ' + label); assert.ok(f.wrongProduct > 0, label); }
+      if (f.carry3) assert.ok((a % 10) * b >= 10, '일의 자리에서 올림이 없다: ' + label);
+    }
+    if (GRADE3_MUL.has(at.unit.id)) {
+      const whole = strip([item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<span class="mb-box">[^<]*<\/span>/g, '□'));
+      for (const m of whole.matchAll(/(\d+) × (\d+)/g)) { assert.ok(inGrade3(Number(m[1]), Number(m[2])), `3학년 범위를 넘는 곱셈 ${m[0]} — ${label}`); muls += 1; }
     }
     if (SMALL_MUL.has(at.unit.id)) {
       const whole = strip([item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<span class="mb-box">[^<]*<\/span>/g, '□'));
@@ -678,6 +691,19 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       const [a, b] = f.carry, up = Math.trunc(((a % 10) * b) / 10);
       assert.ok(up >= 1, label); assert.deepEqual(item.inputs.map((i) => i.answer), [up, up * 10], label); tally('carry');
     }
+    if (f.mulEnds2) {
+      const big = Math.max(...f.mulEnds2), small = Math.min(...f.mulEnds2);
+      assert.equal(new Set(f.mulEnds2).size, f.mulEnds2.length, label); assert.ok(big <= 99 && small >= 10, label);
+      assert.equal(answerAt(item, 0), big * small, label); tally('mulEnds2');
+    }
+    if (f.hundredEstimate) {
+      // 가까운 몇백으로 어림: 몇백에서 20 안쪽으로 떨어진 수만 쓴다.
+      const [a, b] = f.hundredEstimate, about = Math.round(a / 100) * 100;
+      assert.ok(Math.abs(a - about) >= 1 && Math.abs(a - about) <= 20, label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [about, about * b], label); tally('hundredEstimate');
+    }
+    if (f.zeros) { const [a, b] = f.zeros; assert.equal((a * b) % 10, 0, label); assert.ok(a * b < 100, label); tally('zeros'); }
+    if (f.zeroMiddle) { const [a, b] = f.zeroMiddle; assert.equal(Math.trunc(a / 10) % 10, 0, label); assert.ok(a >= 101 && b >= 2, label); tally('zeroMiddle'); }
     if (f.mulEnds) {
       const big = Math.max(...f.mulEnds), small = Math.min(...f.mulEnds);
       assert.equal(new Set(f.mulEnds).size, f.mulEnds.length, label);
