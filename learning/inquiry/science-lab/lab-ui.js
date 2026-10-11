@@ -3,6 +3,14 @@
  * Bottom axis titles may flow below their graph; plotted ticks, objects and shapes stay put.
  */
 (() => {
+ // Read the outcome beside the apparatus. Moving the existing node preserves
+ // event handlers, live regions and the experiment's model state.
+ document.querySelectorAll('.experiment-layout').forEach(layout=>{
+  const controls=layout.querySelector(':scope > .control-panel');
+  const stage=[...layout.children].find(n=>n.matches('.panel')&&n!==controls);
+  const result=controls?.querySelector('.result-box');
+  if(stage&&result){stage.append(result);result.classList.add('lab-observation-result');}
+ });
  // A verdict belongs to the submitted answer, never to a subsequently edited answer.
  window.scienceInvalidatePrediction=()=>{
   const empty=document.getElementById('resultEmpty'),content=document.getElementById('resultContent'),feedback=document.getElementById('predictionResult');

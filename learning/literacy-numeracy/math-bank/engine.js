@@ -156,29 +156,35 @@
   }
   const chars = (n) => String(n).split('');
   // 수 모형: 백 모형(판)·십 모형(막대)·일 모형(낱개)
-  function blocks(n, label) {
+  // removed 를 주면 그만큼(자리마다 뒤쪽부터)을 덜어 낸 것으로 그린다(옅은 색 + 빗금). 받아내림이 없는 수만 쓴다.
+  function blocks(n, label, removed) {
     const [h, t, o] = [Math.floor(n / 100), Math.floor(n / 10) % 10, n % 10];
+    const out = removed ? [Math.floor(removed / 100), Math.floor(removed / 10) % 10, removed % 10] : [0, 0, 0];
     const parts = []; let x = 4;
     for (let i = 0; i < h; i += 1) {
       let grid = '';
       for (let k = 1; k < 10; k += 1) grid += '<path d="M' + (x + k * 3.4) + ' 6v34M' + x + ' ' + (6 + k * 3.4) + 'h34"/>';
-      parts.push('<g class="mb-flat"><rect x="' + x + '" y="6" width="34" height="34" rx="1.5"/>' + grid + '</g>'); x += 38;
+      const gone = i >= h - out[0];
+      parts.push('<g class="mb-flat' + (gone ? ' is-out' : '') + '"><rect x="' + x + '" y="6" width="34" height="34" rx="1.5"/>' + grid + '</g>' + (gone ? '<path class="mb-strike" d="M' + (x - 1) + ' 41L' + (x + 35) + ' 5"/>' : '')); x += 38;
     }
     x += h ? 6 : 0;
     for (let i = 0; i < t; i += 1) {
       let ticks = '';
       for (let k = 1; k < 10; k += 1) ticks += '<path d="M' + x + ' ' + (6 + k * 3.4) + 'h5"/>';
-      parts.push('<g class="mb-rod"><rect x="' + x + '" y="6" width="5" height="34" rx="1"/>' + ticks + '</g>'); x += 8;
+      const gone = i >= t - out[1];
+      parts.push('<g class="mb-rod' + (gone ? ' is-out' : '') + '"><rect x="' + x + '" y="6" width="5" height="34" rx="1"/>' + ticks + '</g>' + (gone ? '<path class="mb-strike" d="M' + (x - 1.2) + ' 41L' + (x + 6.2) + ' 5"/>' : '')); x += 8;
     }
     x += t ? 6 : 0;
     for (let i = 0; i < o; i += 1) {
-      const col = Math.floor(i / 5), row = i % 5;
-      parts.push('<rect class="mb-one" x="' + (x + col * 8) + '" y="' + (6 + row * 7) + '" width="5.4" height="5.4" rx="1"/>');
+      const col = Math.floor(i / 5), row = i % 5, px = x + col * 8, py = 6 + row * 7;
+      const gone = i >= o - out[2];
+      parts.push('<rect class="mb-one' + (gone ? ' is-out' : '') + '" x="' + px + '" y="' + py + '" width="5.4" height="5.4" rx="1"/>' + (gone ? '<path class="mb-strike" d="M' + (px - 0.8) + ' ' + (py + 6.2) + 'L' + (px + 6.2) + ' ' + (py - 0.8) + '"/>' : ''));
     }
     x += o ? Math.ceil(o / 5) * 8 : 0;
     const width = Math.max(x + 4, 60);
+    const said = '수 모형: 백 모형 ' + h + '개, 십 모형 ' + t + '개, 일 모형 ' + o + '개' + (removed ? ' 가운데 백 모형 ' + out[0] + '개, 십 모형 ' + out[1] + '개, 일 모형 ' + out[2] + '개를 덜어 냄' : '');
     return '<figure class="mb-blocks">' + (label ? '<figcaption>' + esc(label) + '</figcaption>' : '')
-      + '<svg viewBox="0 0 ' + width + ' 46" width="' + Math.round(width * 2.1) + '" role="img" aria-label="수 모형: 백 모형 ' + h + '개, 십 모형 ' + t + '개, 일 모형 ' + o + '개">' + parts.join('') + '</svg></figure>';
+      + '<svg viewBox="0 0 ' + width + ' 46" width="' + Math.round(width * 2.1) + '" role="img" aria-label="' + said + '">' + parts.join('') + '</svg></figure>';
   }
   // 여러 줄로 늘어놓기, 기호(㉠㉡㉢)를 붙여 늘어놓기, 주어진 수를 띠로 묶어 보이기
   const lines = (rows) => '<div class="mb-lines">' + rows.map((row) => '<div>' + row + '</div>').join('') + '</div>';

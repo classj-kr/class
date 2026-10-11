@@ -1,0 +1,37 @@
+{
+  "slug": "lever-balance",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 5,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__leverModel",
+      "methods": [
+        "lifted",
+        "state"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "yes",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "no",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}
