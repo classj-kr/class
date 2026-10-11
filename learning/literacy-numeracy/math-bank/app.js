@@ -1,4 +1,4 @@
-// 수학 문제은행 화면. 단원 → 묶음(배우는 차례) → 기본·실력을 고르면 엔진이 그 판의 문항을 만들어 준다.
+// 「수학 문제」 화면(문제은행). 단원 → 묶음(배우는 차례) → 기본·실력을 고르면 엔진이 그 판의 문항을 만들어 준다.
 // 풀이 기록은 사이트 공용 학습 기록(LearningRecords)에 남긴다. 판마다 씨앗을 함께 저장해 두므로
 // 풀다가 나갔다 와도 같은 문제가 이어지고, 다 풀고 다시 시작하면 수가 바뀐 새 문제가 나온다.
 (function () {
@@ -231,7 +231,7 @@
   backLink.addEventListener('click', stepBack);
 
   async function start() {
-    records = window.LearningRecords.create('math-bank', { label: '수학 문제은행', mount: main });
+    records = window.LearningRecords.create('math-bank', { label: '수학 문제', mount: main });
     await records.ready;
     const params = new URLSearchParams(location.search);
     const record = (params.get('record') || '').split(':');   // 풀던 판: 단원:묶음:수준
