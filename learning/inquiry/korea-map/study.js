@@ -9,14 +9,29 @@
   function create(api) {
     const host = document.getElementById('studyWorkspace');
     const remembered = {};
-    let current=null, masked=false;
+    let current=null;
     const school=window.SchoolLevel, schoolMaps=window.SchoolMaps;
+    const explanation=document.createElement('dialog');
+    explanation.className='lesson-explanation';
+    explanation.setAttribute('aria-labelledby','explanationTitle');
+    document.body.append(explanation);
+    explanation.addEventListener('click',e=>{if(e.target===explanation)explanation.close();});
+    function openExplanation(){
+      const grade=schoolMaps.profile('korea',current,school.value);
+      const note=school.value==='high'&&window.KoreaExam?.notes[current.id];
+      const paragraphs=note?.paragraphs||grade.concepts;
+      explanation.innerHTML=`<header><h2 id="explanationTitle">${esc(current.title)}</h2><button type="button" aria-label="설명 닫기">닫기 ×</button></header><div class="explanation-body"><div class="explanation-visual"></div><div class="explanation-prose">${paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}</div></div>`;
+      window.KoreaVisuals.render(explanation.querySelector('.explanation-visual'),current);
+      explanation.querySelector('header button').onclick=()=>explanation.close();
+      explanation.showModal();
+    }
     const allowed=l=>!school||schoolMaps.available('korea',l.id,school.value);
     const nav=document.querySelector('.theme-tabs');
     if(school&&!document.querySelector('.korea-school-nav')){
       const bar=document.createElement('div');bar.className='korea-school-nav';nav.before(bar);bar.append(nav);school.mount(bar);
     }
     function updateSchool(){
+      explanation.close();
       document.getElementById('practiceDialog')?.close();
       document.querySelectorAll('[data-theme]').forEach(b=>{
         const lessons=d.lessons.filter(l=>l.topic===b.dataset.theme);
@@ -49,31 +64,37 @@
     }
     function select(id) {
       current=d.lessons.find(l=>l.id===id);
-      remembered[current.topic]=id;masked=false;
+      remembered[current.topic]=id;
       render();api.focus(current);
     }
     function render() {
-      masked=false;
       const list=d.lessons.filter(l=>l.topic===current.topic&&allowed(l)), index=list.indexOf(current);
       const grade=school&&schoolMaps.profile('korea',current,school.value);
+      const note=school?.value==='high'&&window.KoreaExam?.notes[current.id];
+      const summary=note?.summary||grade?.concepts?.[0]||current.steps[0];
+      const checks=note?.checks||(school?.value==='elementary'?[]:current.steps.slice(0,3));
       const pool=questionsFor(current), progress=api.progress().items;
       const ids=pool.map(q=>q.id);
       const correct=ids.filter(id=>progress[id]?.n && !progress[id].wrong).length;
       const wrong=ids.filter(id=>progress[id]?.wrong).length;
       host.innerHTML=`<div class="lesson-navigation"><label class="visually-hidden" for="lessonSelect">학습 개념</label><div class="lesson-picker"><button id="previousLesson" aria-label="이전 개념" ${index===0?'disabled':''}>←</button><select id="lessonSelect">${list.map((l,i)=>`<option value="${l.id}" ${l===current?'selected':''}>${String(i+1).padStart(2,'0')} · ${esc(l.title)}</option>`).join('')}</select><button id="nextLesson" aria-label="다음 개념" ${index===list.length-1?'disabled':''}>→</button></div></div>
-      <div class="lesson-tools"><button class="mask-button" id="maskConcept" aria-pressed="false">이름 가리기</button><div class="lesson-practice" role="group" aria-label="이 개념 문제 풀기"><span class="practice-progress" ${ids.some(id=>progress[id]?.n)?'':'hidden'}>맞힌 문제 ${correct}/${ids.length}</span><button class="primary-button" id="practiceLesson" ${pool.length?'':'disabled'}>문제 풀기 <span>${pool.length}</span></button><button class="lesson-review" id="reviewLesson" ${wrong?'':'hidden'}>오답 다시 풀기 <span>${wrong}</span></button></div></div>
+      <div class="lesson-tools"><button class="lesson-explain-button" id="explainLesson">설명</button><div class="lesson-practice" role="group" aria-label="이 개념 문제 풀기"><span class="practice-progress" ${ids.some(id=>progress[id]?.n)?'':'hidden'}>맞힌 문제 ${correct}/${ids.length}</span><button class="primary-button" id="practiceLesson" ${pool.length?'':'disabled'}>문제 <span>${pool.length}</span></button><button class="lesson-review" id="reviewLesson" ${wrong?'':'hidden'}>오답 <span>${wrong}</span></button></div></div>
       <article class="visual-lesson" aria-labelledby="lessonTitle"><h2 class="visually-hidden" id="lessonTitle">${esc(current.title)}</h2><div id="lessonDiagram"></div>
-      ${grade?school.concepts(grade):`<section class="reading-steps" aria-label="그림 읽는 순서"><ol>${current.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></section>`}<p class="concept-trap" ${school?.value==='elementary'?'hidden':''}>${esc(current.trap)}</p>
+      <p class="lesson-summary">${esc(summary)}</p><ul class="lesson-checks">${checks.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
       <div class="lesson-locations" role="group" aria-label="지도에서 위치 보기">${current.spots.map((s,i)=>`<button data-study-spot="${i}"><b>${i+1}</b> ${esc(s.name)}</button>`).join('')}</div></article>
       `;
       window.KoreaVisuals.render(host.querySelector('#lessonDiagram'),current);
       host.querySelector('#lessonSelect').onchange=e=>select(e.target.value);
       host.querySelector('#previousLesson').onclick=()=>select(list[index-1].id);
       host.querySelector('#nextLesson').onclick=()=>select(list[index+1].id);
-      host.querySelector('#maskConcept').onclick=e=>{
-        masked=!masked;e.currentTarget.setAttribute('aria-pressed',String(masked));e.currentTarget.textContent=masked?'이름 보기':'이름 가리기';
-        window.KoreaVisuals.render(host.querySelector('#lessonDiagram'),current,{quiz:masked});
-      };
+      host.querySelector('#explainLesson').onclick=openExplanation;
+      const diagram=host.querySelector('#lessonDiagram');
+      diagram.onclick=openExplanation;
+      diagram.setAttribute('role','button');
+      diagram.setAttribute('tabindex','0');
+      diagram.setAttribute('aria-label','그림과 설명 크게 보기');
+      diagram.setAttribute('title','그림과 설명 크게 보기');
+      diagram.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openExplanation();}};
       host.querySelectorAll('[data-study-spot]').forEach(b=>b.onclick=()=>{
         api.focusSpot(current.spots[Number(b.dataset.studySpot)]);
         host.querySelectorAll('[data-study-spot]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
@@ -83,7 +104,7 @@
       host.querySelector('.lesson-practice').hidden=false;
       api.rendered?.();
     }
-    return {show,refresh(){if(current)render();},get current(){return current;}};
+    return {show,explain:openExplanation,refresh(){if(current)render();},get current(){return current;}};
   }
   window.KoreaStudy={create,questionsFor};
 })();

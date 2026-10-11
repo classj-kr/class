@@ -50,6 +50,7 @@
     };
     window.MapPractice={pool(kind,lesson,items,level){
         if(level==='high'){
+            if(kind==='korea' && window.KoreaExam?.pool)return window.KoreaExam.pool(lesson.id);
             const authored=window.MapAdvanced.pool(kind,lesson.id).map(q=>({...q,topic:lesson.topic}));
             if(kind==='world')return authored;
             return [...authored,...items.filter(q=>lesson.questionIds.includes(q.id)&&q.difficulty==='advanced')];

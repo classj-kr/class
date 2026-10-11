@@ -112,7 +112,7 @@
   function createBaseMap(elementId, options) {
     const map = L.map(elementId, {
       center: [38.05, 127.65], zoom: 6, minZoom: 5, maxZoom: 12,
-      zoomControl: true, attributionControl: false, preferCanvas: true, ...options,
+      zoomControl: true, attributionControl: false, preferCanvas: true, fadeAnimation: false, ...options,
       maxBounds: NAVIGATION_BOUNDS, maxBoundsViscosity: 1, bounceAtZoomLimits: false
     });
     const minimumZoom = map.options.minZoom;
@@ -125,9 +125,16 @@
     };
     map.on("resize", updateNavigationLimits);
     updateNavigationLimits();
-    L.tileLayer(RELIEF_URL, { minNativeZoom: 3, maxNativeZoom: 6 }).addTo(map);
-    L.tileLayer(RELIEF_URL, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }).addTo(map);
-    new SparseTileLayer(RELIEF_URL, { minZoom: 10, minNativeZoom: 10, maxNativeZoom: 11, bounds: DETAIL_BOUNDS }).addTo(map);
+    const seaUrl = 'bathymetry/{z}/{x}/{y}.webp?v=20261012-1';
+    [
+      [L.TileLayer, { minNativeZoom: 3, maxNativeZoom: 6 }],
+      [L.TileLayer, { minZoom: 7, minNativeZoom: 7, maxNativeZoom: 9, bounds: DETAIL_BOUNDS }],
+      [SparseTileLayer, { minZoom: 10, minNativeZoom: 10, maxNativeZoom: 11, bounds: DETAIL_BOUNDS }]
+    ].forEach(([Layer, settings], i) => {
+      new Layer(RELIEF_URL, {...settings, zIndex: i*2+1}).addTo(map);
+      // Pair each overlay with its relief resolution, so a coarse coast cannot cover finer land.
+      new Layer(seaUrl, {...settings, zIndex: i*2+2, className: 'korea-bathymetry'}).addTo(map);
+    });
     [["themeZones", 420, true], ["borderLines", 430, false], ["themeLines", 450, true], ["themeLabels", 580, false],
       ["studyMarkers", 610, true], ["adminLabels", 640, false]].forEach(([name, z, events]) => {
       map.createPane(name);
@@ -380,6 +387,7 @@
     // 행정구역 탭은 시·도 이름이 늘 보이므로 지역명 단추가 필요 없다.
     $("#labelToggle").hidden = !!theme.provinceNames || !!theme.historical;
     $("#historyMapCaption").hidden = !theme.historical;
+    $("#progressButton").hidden = !!theme.historical;
     clearFeatureFocus(false);
     stopProfile();
     mainMap.closePopup();
@@ -401,12 +409,15 @@
   function focusLesson(lesson) {
     mainMap.invalidateSize({ pan: false });
     lessonMapLayer.clearLayers();
+    $("#labelToggle").hidden=!!lesson || !!themes[currentTheme].provinceNames || !!themes[currentTheme].historical;
     if (!lesson) { scene.setContext(currentTheme, null); return; }
     renderLegend(themes[currentTheme].legend || []);
-    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, excludeFeatures: lesson.spots });
+    drawThemeOnMap(mainMap, mainThemeLayer, themes[currentTheme], { interactive: true, skipFeatures: true });
     // 학습 지도에는 주제 정보와 이름표를 유지한다. 정답을 가리는 바탕 전용 지도는 문제 창에서만 쓴다.
     const theme = themes[currentTheme];
-    drawLabels(mainMap, mainLabelLayer, { admin: !theme.provinceNames, city: !theme.provinceNames, annotations: theme.annotations || [] });
+    const annotations=(theme.annotations||[]).filter(a=>
+      ['sea','range'].includes(a.kind) || (['relief','river','floodplain'].includes(lesson.id)&&a.kind==='river'));
+    drawLabels(mainMap, mainLabelLayer, { admin: false, city: false, annotations });
     lesson.spots.forEach((spot, index) => {
       // The temperature scene already places A/B at the observed stations; do not stack duplicate pins.
       if (currentTheme === "climate" && lesson.id === "temperature") return;
@@ -415,13 +426,30 @@
       marker.on("click", () => focusStudySpot(spot));
       marker.addTo(lessonMapLayer);
     });
-    if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[65,65],maxZoom:8,animate:false});
+    if (['seafloor','glacial'].includes(lesson.id)) mainMap.fitBounds([[32,123],[40,134]],{padding:[35,55],animate:false});
+    else if (lesson.spots.length > 1) mainMap.fitBounds(L.latLngBounds(lesson.spots.map(s=>[s.lat,s.lng])), {padding:[85,85],maxZoom:8,animate:false});
     else mainMap.setView([lesson.spots[0].lat,lesson.spots[0].lng],7,{animate:false});
     scene.setContext(currentTheme, lesson);
   }
 
   function focusStudySpot(spot) {
     mainMap.setView([spot.lat,spot.lng],8,{animate:false});
+    const lesson=study?.current, high=window.SchoolLevel?.value==='high';
+    const note=high&&window.KoreaExam?.notes[lesson?.id];
+    const index=lesson?.spots.indexOf(spot);
+    const profile=lesson&&window.SchoolMaps.profile('korea',lesson,window.SchoolLevel.value);
+    const content=note?.spotNotes?.[index]||note?.paragraphs[0]||profile?.concepts[0];
+    if(content){
+      const box=document.createElement('div');box.className='study-spot-explanation';
+      const title=document.createElement('strong');title.textContent=spot.name;
+      const station=lesson.topic==='climate'&&stations[spot.name];
+      const text=document.createElement('div');text.textContent=station?station.note:content;
+      const button=document.createElement('button');button.textContent='개념 설명';button.onclick=()=>{mainMap.closePopup();study.explain();};
+      box.append(title);
+      if(station){const graph=document.createElement('div');window.ClimateGraph.render(graph,station,{showName:true});box.append(graph);}
+      box.append(text,button);
+      L.popup({maxWidth:station?420:330,autoPan:true}).setLatLng([spot.lat,spot.lng]).setContent(box).openOn(mainMap);
+    }
     if (matchMedia("(max-width: 1050px)").matches) $(".map-stage").scrollIntoView({block:"start",behavior:"smooth"});
   }
 
@@ -471,9 +499,15 @@
       const node = document.createElement("span");
       if (item.type === "relief") {
         node.className = "key-item key-relief";
-        node.setAttribute("aria-label", "높이별 색: 바다, 0·200·500·1000·1500·2000m");
-        node.innerHTML = '<span class="relief-sea">바다</span><span class="relief-scale" aria-hidden="true"><span class="relief-bar"></span>'
+        node.setAttribute("aria-label", "육지 높이: 0·200·500·1000·1500·2000m");
+        node.innerHTML = '<span class="relief-label">높이</span><span class="relief-scale" aria-hidden="true"><span class="relief-bar"></span>'
           + '<span class="relief-ticks"><span>0</span><span>200</span><span>500</span><span>1000</span><span>1500</span><span>2000m</span></span></span>';
+        return node;
+      }
+      if (item.type === 'depth') {
+        node.className = 'key-item key-depth';
+        node.setAttribute('aria-label', '바다 수심: 0–200, 200–1000, 1000–2000, 2000–3000, 3000m 이상');
+        node.innerHTML = '<span class="relief-label">수심</span><span class="depth-scale"><span class="depth-bar" aria-hidden="true"></span><span class="depth-ticks"><span>0</span><span>200</span><span>1000</span><span>2000</span><span>3000+</span></span><span class="depth-unit">m</span></span>';
         return node;
       }
       node.className = "key-item";
@@ -488,6 +522,7 @@
 
   // 지형이 주제가 아닌 탭에서는 바탕 색을 옅게 해 주제 표지가 잘 보이게 한다.
   function setReliefTone(map, theme) {
+    map.getContainer().classList.toggle('show-bathymetry', !!theme.bathymetry);
     map.getContainer().classList.toggle("relief-muted", !theme.relief);
     map.getContainer().classList.toggle("history-map", !!theme.historical);
     map.getContainer().classList.toggle("transport-map", !!theme.network);
@@ -1102,7 +1137,7 @@
       caption.textContent = "기온은 꺾은선(왼쪽 눈금 ℃), 강수량은 막대(오른쪽 눈금 mm)입니다.";
       return;
     }
-    caption.textContent = "";
+    caption.textContent = question.mapCaption || "";
     setReliefTone(questionMap, theme);
     drawThemeOnMap(questionMap, questionThemeLayer, theme, { interactive: false, skipFeatures: true, baseOnly: true });
     drawQuestionLabels(question, theme, false);

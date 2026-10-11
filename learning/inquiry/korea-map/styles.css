@@ -92,6 +92,18 @@ button { cursor: pointer; }
 .key-relief { gap: 7px; }
 .relief-sea { padding: 2px 6px; border-radius: 5px; color: #1f4f73; background: #9cc9ea; font-size: 12px; }
 .relief-scale { display: grid; gap: 2px; width: 170px; }
+.leaflet-container:not(.show-bathymetry) .korea-bathymetry { visibility: hidden; }
+.relief-label { font-size: 12px; white-space: nowrap; }
+.key-depth { gap: 7px; }
+.depth-scale { position: relative; display: grid; gap: 2px; width: 190px; padding-right: 12px; }
+.depth-bar { height: 9px; border-radius: 3px; background: linear-gradient(90deg,#cae6ed 0 20%,#8fc5db 20% 40%,#559ac4 40% 60%,#2f70a7 60% 80%,#1e4c82 80%); }
+.depth-ticks { display: grid; grid-template-columns: repeat(5,1fr); font-size: 9px; font-weight: 500; line-height: 1.2; }
+.depth-unit { position: absolute; bottom: 0; right: 0; font-size: 9px; }
+@media (max-width: 600px) {
+  .map-key { max-width:calc(100% - 24px); gap:4px; padding:6px; }
+  .key-item { padding:2px 5px; min-height:25px; }
+  .depth-scale { width:180px; }
+}
 .relief-bar { height: 9px; border-radius: 3px; background: linear-gradient(90deg, #6fb46a 0%, #b9d98e 20%, #efe6a2 40%, #dfae70 60%, #b77a47 80%, #8a5a3f 100%); }
 .relief-ticks { display: flex; justify-content: space-between; color: #4e6368; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
 
@@ -286,7 +298,7 @@ dialog::backdrop { background: rgba(9, 30, 36, 0.68); backdrop-filter: blur(3px)
 .stimulus-card { margin: 0 0 14px; padding: 12px 14px; border-left: 4px solid var(--accent); border-radius: 8px; color: #38545a; background: #f4f7f5; font-size: 13px; line-height: 1.55; }
 .stimulus-title { margin-bottom: 9px; color: var(--deep); font-weight: 900; }
 .stimulus-table-wrap { overflow-x: auto; border: 1px solid #c8d7d3; border-radius: 8px; background: #fff; }
-.stimulus-table { width: 100%; border-collapse: collapse; text-align: center; white-space: nowrap; }
+.stimulus-table { width: 100%; table-layout: fixed; border-collapse: collapse; text-align: center; white-space: normal; word-break: keep-all; overflow-wrap: anywhere; }
 .stimulus-table th, .stimulus-table td { padding: 7px 9px; border-right: 1px solid #dbe5e2; border-bottom: 1px solid #dbe5e2; }
 .stimulus-table th { color: var(--deep); background: #eaf2f0; font-weight: 900; }
 .stimulus-table tr:last-child > * { border-bottom: 0; }
