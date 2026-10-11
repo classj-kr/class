@@ -10,7 +10,8 @@
     "초 순환 모형 폐순환·체순환 버튼을 심장↔폐·심장↔온몸으로 표시",
     "천구 천정–천저 축을 연직선으로 정정; 위도와 북극성 고도의 관계를 북반구 근사로 명시",
     "세계 지도 문제 18px·표 16px, 900px 문제창; 국내 지도 표 문항의 빈 지도와 비활성 단서 버튼 제거",
-    "역사 경계 픽셀 계단·틈·허위 조각 수정 및 학습용 자료 정보 팝업 제거"
+    "역사 경계 픽셀 계단·틈·허위 조각 수정 및 학습용 자료 정보 팝업 제거",
+    "천구 초기 시점과 초기화 시점을 통일하고 바깥 별 이름이 화면 안에 들어오도록 거리 조정"
   ],
   "sourceReview": {
     "file": "references\\textbooks\\중고등\\미래엔\\고등\\사회\\세계시민과 지리 (조성호)_2022개정\\미래엔_세계시민과지리_교과서__50e21718ab.pdf",
@@ -69,8 +70,8 @@
   ],
   "production": {
     "status": "deployed-and-verified",
-    "checkedAt": "2026-10-11T12:38:37.408425+00:00",
-    "commit": "9704e7ebebfb9ca6dba064967b36a26200cd0ada",
+    "checkedAt": "2026-10-11T12:49:09.962089+00:00",
+    "commit": "7dc1cc7dc4809c956c2c088e90e662082e8a95a9",
     "health": "https://classj.kr/health returned status ok and matching commit",
     "browser": "Authenticated existing Chrome session; separate temporary verification tab",
     "checks": [
@@ -80,13 +81,16 @@
       "초 물질 390×844: 세 상태 도식 나란히 표시, 설명창 clientWidth=scrollWidth=349, 배경 스크롤 잠금, Class Exam Batang 적용",
       "고 세계 지도: 인구밀도 공급 자료 표와 5지선다 문항 운영 반영",
       "검증한 운영 페이지의 브라우저 콘솔 오류 없음",
-      "검증 완료 후 임시 화면 크기 설정 해제"
+      "검증 완료 후 임시 화면 크기 설정 해제",
+      "4세기 백제 운영 지도: 공유 경계 사이 흰 틈과 픽셀 계단 제거 확인",
+      "천구 최초/초기화 시점 일치 및 천구 바깥 별 이름 잘림 수정; 최종 배포에서 재확인"
     ],
     "screenshots": [
       "production-history.webp",
       "production-sphere.webp",
       "production-matter-mobile.webp",
-      "production-world-question.webp"
+      "production-world-question.webp",
+      "production-boundary.webp"
     ]
   }
 }
