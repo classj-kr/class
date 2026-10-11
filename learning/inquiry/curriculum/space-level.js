@@ -5,6 +5,11 @@
         const header=document.querySelector('.top-header');S.mount(header);
         const concept=document.getElementById('tab-topic-concepts');
         const oldConcept=[...concept.children];
+        const supplemental=concept.querySelector('.stellar-study');
+        if(supplemental){
+            supplemental.classList.add('topic-supplement');
+            document.getElementById('topic-study').append(supplemental);
+        }
         const main=document.createElement('div');
         main.className='school-space-content';
         concept.prepend(main);

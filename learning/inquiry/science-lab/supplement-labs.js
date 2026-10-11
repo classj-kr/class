@@ -58,12 +58,12 @@
     return{svg,text:{mixed:'소금과 모래는 서로 섞여도 각각의 성질이 남아 있습니다.',dissolve:'소금은 물에 녹고 모래는 녹지 않습니다. 물에 녹는 성질의 차이를 이용합니다.',filter:'거름종이에는 모래가 남고 소금물은 통과합니다. 소금은 아직 물에 녹아 있으므로 소금 회수가 끝난 것이 아닙니다.',evaporate:'거른 소금물에서 물을 증발시키면 소금이 남습니다. 용해 → 거르기 → 증발 순서로 두 고체를 회수합니다.'}[s.stage]||'물에 녹는 성질의 차이를 이용합니다.',note:'증발과 가열 실험은 교사의 지도 아래 진행하세요.'};}
   },
   'heat-transfer':{
-   title:'접촉·대류·복사와 단열',codes:['6과07-02','6과07-03','6과07-04'],initial:{kind:'contact',stage:'before',hot:'80',cold:'20'},
-   fields:s=>[field('kind','관찰할 현상',[['contact','두 물체의 접촉'],['convection','물의 대류'],['radiation','빛에 의한 열 이동'],['insulation','단열 비교']]),steps,...(s.kind==='contact'?[field('hot','따뜻한 물의 처음 온도',[['60','60 ℃'],['80','80 ℃']]),field('cold','차가운 물의 처음 온도',[['20','20 ℃'],['40','40 ℃']])]:[])],
+   title:'접촉·대류·복사와 단열',codes:['6과07-02','6과07-03','6과07-04'],initial:{kind:'contact',stage:'before',hot:'80',cold:'20',minutes:'15'},
+   fields:s=>[field('kind','관찰할 현상',[['contact','두 물체의 접촉'],['convection','물의 대류'],['radiation','빛에 의한 열 이동'],['insulation','단열 비교']]),steps,...(s.kind==='contact'?[field('hot','따뜻한 물의 처음 온도',[['60','60 ℃'],['80','80 ℃']]),field('cold','차가운 물의 처음 온도',[['20','20 ℃'],['40','40 ℃']])]:s.kind==='insulation'?[field('minutes','비교 시간',[['5','5분'],['15','15분'],['30','30분']])]:[])],
    view(s){const after=s.stage==='after';if(s.kind==='contact'){const mean=(+s.hot + +s.cold)/2;return{svg:jar(75,120,'#f7a78e')+jar(280,120,'#82bce4')+label((after?mean:s.hot)+' ℃',130,35)+label((after?mean:s.cold)+' ℃',335,35)+line(185,180,280,180,'#64748b',6)+label(after?'충분한 시간 뒤 같은 온도':'접촉하여 열이 이동',230,265),text:after?'따뜻한 물의 온도는 내려가고 차가운 물의 온도는 올라갑니다. 열이 온도가 높은 쪽에서 낮은 쪽으로 이동하기 때문입니다.':'온도가 다른 두 물체의 처음 온도를 기록한 뒤 접촉시킵니다.',note:'같은 양의 물과 같은 용기를 사용하며, 주변으로 열이 빠져나가지 않는 조건입니다.'};}
     if(s.kind==='convection')return{svg:jar(175,150,'#9bceeb')+rect(190,247,80,12,after?'#ef8b44':'#9ca3af')+(after?label('↑',205,150,'#c94d29',48)+label('↓',255,150,'#3577a2',48):label('가열 전',230,35)),text:after?'아래쪽에서 데워진 물이 올라가고 다른 쪽 물이 내려오며 물이 움직여 열을 옮깁니다. 이런 열 이동을 대류라고 합니다.':'물의 아래쪽을 가열하기 전과 후를 비교합니다. 색과 화살표는 물의 움직임을 보기 쉽게 한 표시입니다.',note:''};
     if(s.kind==='radiation')return{svg:'<circle cx="85" cy="130" r="35" fill="'+(after?'#fbbf24':'#cbd5e1')+'"/>'+rect(295,95,70,80,'#4b5563')+(after?[110,130,150].map(y=>line(128,y,282,y,'#d97706',3)).join(''):'')+label(after?'빛을 비춤':'빛을 비추기 전',100,215)+label(after?'온도가 올라감':'처음 온도',330,215),text:after?'빛을 받은 물체의 온도가 올라갈 수 있습니다. 빛을 통해 열이 이동하는 것을 복사라고 합니다.':'빛을 비추기 전의 물체 온도를 기록하고, 빛을 받은 뒤와 비교합니다.',note:'강한 광원을 직접 바라보지 마세요.'};
-    return{svg:jar(75,110,'#f5b58f')+jar(280,110,'#f5b58f')+rect(65,170,130,65,'#c9b99d')+label('단열재로 감쌈',130,35)+label('감싸지 않음',335,35)+label(after?'더 따뜻하게 유지':'같은 처음 온도',130,275)+label(after?'더 빨리 식음':'같은 처음 온도',335,275),text:after?'다른 조건을 같게 하면 단열재로 감싼 용기는 주변과의 열 이동이 줄어 더 오래 따뜻하게 유지될 수 있습니다.':'같은 물의 양과 처음 온도, 같은 용기를 사용하고 단열재 유무만 다르게 합니다.',note:'단열재는 열 이동을 줄여 줍니다. 열 이동을 완전히 막지는 못합니다.'};}
+    return window.scienceObservationScenes.insulation(s);}
   },
   'light-shadow':{
    title:'빛의 반사와 굴절 관찰',codes:['6과02-02'],initial:{kind:'mirror',setting:'one'},
@@ -91,25 +91,46 @@
  Object.assign(specs,window.scienceCoreExtensions?.({line,label,rect,jar,field},specs)||{});
  const path=location.pathname.split('/').filter(Boolean);const slug=path.at(-1)==='index.html'?path.at(-2):path.at(-1),spec=specs[slug];
  if(!spec)return;
- const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=de68f18f7234',document.currentScript.src);document.head.append(css);
+ const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=e266796934a5',document.currentScript.src);document.head.append(css);
  const assetBase=new URL('.',document.currentScript.src);
  const section=document.createElement('section');section.className='panel curriculum-supplement';section.setAttribute('aria-label',spec.title);
  const h=document.createElement('h2');h.textContent=spec.title;const controls=document.createElement('div');controls.className='supplement-controls';
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 460 310');svg.setAttribute('role','img');svg.setAttribute('aria-label',spec.title+' 관찰 모형');
  const observation=document.createElement('p');observation.className='supplement-observation';observation.setAttribute('aria-live','polite');
  const note=document.createElement('p');note.className='supplement-guidance';
+ const soundControls=document.createElement('div');soundControls.className='supplement-audio';soundControls.hidden=true;
+ const listen=document.createElement('button');listen.type='button';listen.className='supplement-listen';listen.textContent='이 조건의 소리 듣기';
+ const soundStatus=document.createElement('span');soundStatus.setAttribute('role','status');soundControls.append(listen,soundStatus);
+ let audioContext,oscillator,currentGain,audioModel,audioGeneration=0;
+ function stopSound(){audioGeneration++;if(oscillator){oscillator.onended=null;try{oscillator.stop();}catch{}oscillator.disconnect();oscillator=null;}currentGain?.disconnect();currentGain=null;listen.disabled=false;soundStatus.textContent='';}
+ listen.addEventListener('click',async()=>{
+  stopSound();const generation=audioGeneration,model=audioModel;listen.disabled=true;
+  try{
+   const Context=window.AudioContext||window.webkitAudioContext;if(!Context)throw Error('Audio unavailable');
+   audioContext??=new Context();let resumeTimer;
+   try{await Promise.race([audioContext.resume(),new Promise((_,reject)=>{resumeTimer=setTimeout(()=>reject(Error('Audio did not start')),2500);})]);}finally{clearTimeout(resumeTimer);}
+   if(generation!==audioGeneration)return;if(audioContext.state!=='running')throw Error('Audio is not running');
+   const tone=audioContext.createOscillator(),gain=audioContext.createGain(),now=audioContext.currentTime;oscillator=tone;currentGain=gain;
+   tone.frequency.value=model.frequency;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.05*model.amplitude,now+.03);gain.gain.setValueAtTime(.05*model.amplitude,now+.5);gain.gain.linearRampToValueAtTime(0,now+.6);
+   tone.connect(gain);gain.connect(audioContext.destination);soundStatus.textContent=' 비교음 재생 중';
+   tone.onended=()=>{tone.disconnect();gain.disconnect();if(generation===audioGeneration){oscillator=null;currentGain=null;listen.disabled=false;soundStatus.textContent=' 재생 끝';}};
+   tone.start(now);tone.stop(now+.61);
+  }catch{if(generation===audioGeneration){stopSound();audioContext?.close().catch(()=>{});audioContext=null;soundStatus.textContent=' 소리를 재생할 수 없습니다. 파형으로 비교해 주세요.';}}
+ });
+ window.addEventListener('pagehide',()=>{stopSound();audioContext?.close();audioContext=null;});
  const reset=document.createElement('button');reset.type='button';reset.className='supplement-reset';reset.textContent='이 탐구 처음으로';
  const checkpoint=document.createElement('div');checkpoint.className='supplement-check';checkpoint.setAttribute('aria-label','관찰 확인 문제');
  const body=document.createElement('div');body.className='supplement-body';
  const visual=document.createElement('div');visual.className='supplement-visual';visual.append(svg);
  const reading=document.createElement('div');reading.className='supplement-reading';
  const observationHeading=document.createElement('h3');observationHeading.textContent='관찰해 보세요';
- reading.append(observationHeading,observation,note,checkpoint);body.append(visual,reading);
+ reading.append(observationHeading,observation,soundControls,note,checkpoint);body.append(visual,reading);
  const sources=document.createElement('details');sources.className='supplement-sources';
  const sourceTitle=document.createElement('summary');sourceTitle.textContent='사진 정보';sources.append(sourceTitle);
  section.append(h,controls,body,sources,reset);const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(section);else document.querySelector('main').append(section);
  let state={...spec.initial};
  function render(){
+  stopSound();
   const fields=typeof spec.fields==='function'?spec.fields(state):spec.fields;
   for(const f of fields)if(!f.items.some(o=>o.value===state[f.key]))state[f.key]=f.items[0].value;
   controls.replaceChildren();for(const f of fields){const set=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=f.title;set.append(legend);for(const o of f.items){const b=document.createElement('button');b.type='button';b.textContent=o.text;b.dataset.supplementChoice=f.key;b.dataset.value=o.value;b.setAttribute('aria-pressed',String(state[f.key]===o.value));b.addEventListener('click',()=>{state[f.key]=o.value;render();controls.querySelector(`[data-supplement-choice="${f.key}"][data-value="${o.value}"]`)?.focus({preventScroll:true});});set.append(b);}controls.append(set);}
@@ -133,6 +154,7 @@
    const photoInfo=document.createElement('p');photoInfo.textContent=result.media.info||'두 표본의 실제 크기 비율과 화면의 크기는 다릅니다. 확대는 사진의 일부를 크게 보여 줍니다. 숫자와 색칠한 부분은 표본 관리 표시입니다.';sources.append(photoInfo);
   }else{svg.innerHTML=result.svg;visual.append(svg);}
   observation.textContent=result.text;note.textContent=result.note;note.hidden=!result.note;
+  audioModel=result.audio;soundControls.hidden=!audioModel;
   checkpoint.replaceChildren();if(result.check){const q=result.check;const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);q.choices.forEach((choice,i)=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=String(i);button.textContent=choice;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{const correct=String(i)===q.answer;
     button.setAttribute('aria-pressed','true');button.dataset.correct=String(correct);button.disabled=true;
     if(correct){checkpoint.querySelectorAll('button').forEach(b=>{b.disabled=true;});feedback.textContent='정답입니다. '+q.why;}

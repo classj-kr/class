@@ -1,0 +1,105 @@
+{
+  "slug": "geologic-time",
+  "engine": "chromium",
+  "modes": [
+    "calendar",
+    "extinction",
+    "diversity"
+  ],
+  "cases": 25,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__geoTimeModel",
+      "methods": [
+        "EVENTS",
+        "EXTINCTIONS",
+        "FORESTS",
+        "ERAS",
+        "PERIODS",
+        "state",
+        "analyse",
+        "render",
+        "dayOf",
+        "dateText",
+        "fmtAge",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "calendar",
+      "results": [
+        {
+          "choice": "early",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "late",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "end",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "extinction",
+      "results": [
+        {
+          "choice": "low",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "mid",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "high",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    },
+    {
+      "mode": "diversity",
+      "results": [
+        {
+          "choice": "most",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "half",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "gone",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

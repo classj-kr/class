@@ -1,0 +1,82 @@
+{
+  "slug": "gases",
+  "engine": "chromium",
+  "modes": [
+    "make",
+    "press"
+  ],
+  "cases": 12,
+  "errors": [],
+  "issues": [],
+  "models": [
+    {
+      "key": "__gasModel",
+      "methods": [
+        "GASES",
+        "TESTS",
+        "WEIGHTS",
+        "TEMPS",
+        "V0",
+        "state",
+        "analyseMake",
+        "analysePress",
+        "analyse",
+        "volumeOf",
+        "pressureOf",
+        "collectedAt",
+        "testAt",
+        "render",
+        "runSeconds",
+        "setMode",
+        "set",
+        "setProgress",
+        "runToEnd",
+        "tick",
+        "finish"
+      ]
+    }
+  ],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "make",
+      "results": [
+        {
+          "choice": "flare",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "out",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "steady",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    },
+    {
+      "mode": "press",
+      "results": [
+        {
+          "choice": "smaller",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        },
+        {
+          "choice": "bigger",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "same",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        }
+      ]
+    }
+  ]
+}

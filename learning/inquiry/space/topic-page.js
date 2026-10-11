@@ -82,6 +82,22 @@
             window.EclipseLab.mount(observation);
         }
         const hasObservation = topic.app === 'solar-system' || Boolean(topic.mode);
+        // Keep the model and its explanation in the same study view.
+        const study = document.createElement('section');
+        study.id = 'topic-study';
+        study.className = 'tab-pane topic-study-layout';
+        study.setAttribute('aria-label', topic.title);
+        study.dataset.hasObservation = String(hasObservation);
+        concepts.classList.add('topic-reading-panel');
+        concepts.classList.add('active');
+        concepts.style.display = 'block';
+        if (hasObservation) {
+            observation.classList.add('topic-observation-panel', 'active');
+            observation.style.display = 'block';
+            study.append(observation);
+        }
+        study.append(concepts);
+        main.append(study);
         if (topic.app === 'constellations' && topic.mode && topic.mode !== 'stellar') {
             const button = document.querySelector('[data-sim-mode="' + topic.mode + '"]');
             if (button) button.click();
@@ -94,17 +110,18 @@
         ['simModeSwitcher'].forEach(id => { const node = document.getElementById(id); if (node) node.hidden = true; });
         const switcher = document.querySelector('.em-simulation-toolbar');
         if (switcher) switcher.hidden = true;
-        const buttons = Array.from(nav.querySelectorAll('.nav-tab'));
-        buttons.forEach(button => {
+        const buttons = Array.from(nav.querySelectorAll('.nav-tab')).filter(button => {
             button.dataset.topicView = button.dataset.tab === 'sim' ? 'observe' : button.dataset.tab === 'quiz' ? 'quiz' : 'concept';
-            if (!hasObservation && button.dataset.topicView === 'observe') button.hidden = true;
+            if (button.dataset.topicView === 'concept') { button.remove(); return false; }
+            if (button.dataset.topicView === 'observe' && !hasObservation) button.textContent = '탐구';
+            return true;
         });
         function show(view, save) {
-            if (!hasObservation && view === 'observe') view = 'concept';
-            const selected = view === 'quiz' ? document.getElementById('tab-quiz') : view === 'concept' ? concepts : observation;
+            if (view === 'concept') view = 'observe';
+            const selected = view === 'quiz' ? document.getElementById('tab-quiz') : study;
             main.querySelectorAll(':scope > .tab-pane').forEach(pane => {
                 pane.classList.toggle('active', pane === selected);
-                pane.style.display = pane === selected ? 'block' : 'none';
+                pane.style.display = pane === selected ? (pane === study ? 'grid' : 'block') : 'none';
             });
             buttons.forEach(button => {
                 const active = button.dataset.topicView === view;
@@ -124,7 +141,7 @@
         }, true);
         function fromHash() {
             const hash = location.hash.slice(1);
-            show(['observe', 'concept', 'quiz'].includes(hash) ? hash : hasObservation ? 'observe' : 'concept', false);
+            show(['observe', 'concept', 'quiz'].includes(hash) ? hash : 'observe', false);
         }
         window.addEventListener('hashchange', fromHash);
         fromHash();

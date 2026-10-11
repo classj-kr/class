@@ -3,7 +3,66 @@
   "apps": 104,
   "modes": 182,
   "controlCases": 1414,
+  "controlRecord": "final-all-controls/summary-chromium.json",
   "panelScreenshots": 347,
+  "tests": {
+    "tests": 65,
+    "passed": 65,
+    "failed": 0
+  },
+  "activityTests": {
+    "tests": 3,
+    "pass": 3,
+    "fail": 0
+  },
+  "questionReview": {
+    "original": 416,
+    "bank": 241,
+    "reviewed": 657,
+    "corrected": 76
+  },
+  "newTools": {
+    "10과탐1-01#3": {
+      "tool": "periodic",
+      "title": "멘델레예프의 주기율표 만들기",
+      "source": {
+        "id": "219f8d0b7dc938c3",
+        "pages": [
+          11,
+          12
+        ],
+        "label": "동아출판 2022 과학탐구실험1 · 1단원 PDF 11~12쪽"
+      },
+      "remaining": "일부 원소와 빈칸을 이용한 배열·예측 활동. 역사적 주기율표 전체 및 모둠 토론은 별도."
+    },
+    "10과탐1-02#1": {
+      "tool": "pasteur",
+      "title": "파스퇴르의 백조목 플라스크",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          8,
+          9,
+          10
+        ],
+        "label": "동아출판 2022 과학탐구실험1 · 2단원 PDF 8~10쪽"
+      },
+      "remaining": "변인 비교·가상 관찰·기록. 실물 장치 제작, 실제 배양 관찰과 폐기는 별도."
+    },
+    "10과탐1-02#2": {
+      "tool": "prism",
+      "title": "뉴턴의 프리즘 실험",
+      "source": {
+        "id": "43ac53e9e01adbcc",
+        "pages": [
+          5,
+          6
+        ],
+        "label": "동아출판 2022 과학탐구실험1 · 2단원 PDF 5~6쪽"
+      },
+      "remaining": "분산·단색광 재통과·빛 합성의 모형. 실제 광학 장치 정렬·스크린 관찰은 별도."
+    }
+  },
   "fixes": [
     [
       "refraction",
@@ -74,38 +133,78 @@
       "microbes",
       "성장 비율 문구·분열 초기 개체 수 불일치; 빵 영역을 벗어난 곰팡이",
       "수치·문구·영역 교정, 가상 시간임을 명시. 실제 사진 출처·WebP 사용 확인"
-    ]
-  ],
-  "gaps": [
+    ],
     [
-      "P1",
       "burning-conditions",
-      "연소 생성물 검출",
-      "불꽃과 검출 종이·석회수가 나란히 제시된다. 생성물을 모아 접촉시키는 절차·장치가 없어 실제 검출 실험을 수행하는 화면으로는 부족하다.",
-      "required-experiments.js"
+      "연소 생성물을 모아 검출 시약과 접촉시키는 절차·장치가 없음",
+      "연소 전·중·뒤 확인 단계, 통 안의 염화 코발트 종이, 생성물 수집·석회수 검사 장치를 표현. 공통 현상 문항을 빛과 열로 교정"
     ],
     [
-      "P2",
       "heat-transfer",
-      "단열 비교",
-      "조건과 결과 설명은 있으나 같은 색의 물 그림과 문구 중심이다. 시간별 온도 측정·비교 자료의 관찰을 보강해야 한다.",
-      "supplement-labs.js"
+      "단열 비교가 같은 색의 물 그림·설명에 머묾",
+      "같은 초기 온도·물의 양에서 시간별 온도계와 냉각 곡선을 비교. 수치는 실측이 아닌 가상 모형임을 명시"
     ],
     [
-      "P2",
       "sound-vibration",
-      "실 전화기·소음 줄이기",
-      "개념 설명 그림과 조건 전환만 제공한다. 실제 소리 듣기·파형 또는 측정값 관찰은 제공하지 않는다.",
-      "supplement-extra.js"
+      "실 전화기·소음 줄이기에서 소리·파형 비교가 없음",
+      "조건별 진폭 파형과 같은 진동수의 비교음 추가. 사용자 클릭으로만 재생하고 조건 변경 시 중지. 오디오 사용 불가 시 안내·조작 복구"
     ],
     [
-      "P2",
       "stars-universe",
-      "우리은하 구조",
-      "설명은 막대 나선 은하인데 그림은 원반·중심 타원뿐이다. 막대와 나선팔을 관찰하는 그림은 보강해야 한다.",
-      "supplement-extra.js"
+      "막대 나선 은하라는 설명과 원반·타원뿐인 그림이 불일치",
+      "중심 막대·나선팔·태양계 위치·옆모습 추가. 나선팔 수와 위치의 정밀 지도는 아님을 명시"
+    ],
+    [
+      "energy-metabolism",
+      "NADH 자체가 ATP로 바뀌거나 내막을 통과한다는 설명",
+      "전자 전달·H⁺ 기울기·ATP 합성 및 셔틀의 전자 전달로 교정. ATP 30/32개는 모형의 환산 가정에 따른 근삿값"
+    ],
+    [
+      "night-sky",
+      "음력 날짜와 삭 이후 경과일을 혼용해 위상 계산",
+      "삭을 0일로 하고 상현·보름·하현을 주기의 1/4·1/2·3/4로 설정. 실제 출몰 시각과 이상화된 모형을 구별"
+    ],
+    [
+      "air-stability",
+      "단열감률과 같은 값을 불안정으로 채점; 낮은 산에서 상승 곡선 불연속",
+      "같은 감률의 중립 경계를 별도 선택·설명. 산 높이에 상관없이 응결 고도에서 상승 기온 곡선이 이어지도록 계산 수정; 실제 푄은 강수 없이도 가능함을 교정"
+    ],
+    [
+      "motor-magnet",
+      "퀴리 온도 위의 자기화 0을 전체 자성이 사라진 것으로 읽을 수 있음",
+      "자발 자기화와 외부 장에 대한 상자성 반응을 분리하고 문항·화면 표기 교정"
+    ],
+    [
+      "rock-age",
+      "시료 종류와 무관한 연대 판정; K-40 붕괴를 모두 Ar-40으로 표시",
+      "퇴적층·단층·관입암의 탄소-14에 시료 근거 부족 판정. 붕괴 생성물 합계와 실제 붕괴 분기 구별; 임의 감도 범위를 실제 장비 한계와 구분"
+    ],
+    [
+      "population",
+      "환경 저항 전체를 밀도에 따른 경쟁만으로 정의",
+      "로지스틱 모형의 밀도 의존 항과 실제 환경 저항의 가뭄·혹한 등을 구별"
     ]
   ],
+  "gaps": [],
+  "evidenceSummary": {
+    "date": "2026-10-11",
+    "apps": 104,
+    "originalQuestions": 416,
+    "examQuestions": 241,
+    "sourcePaths": 1934,
+    "duplicatePaths": 380,
+    "sources": 1554,
+    "extractedSources": 1544,
+    "extractionErrors": 10,
+    "documentsWithoutText": 10,
+    "blankPdfPages": 422,
+    "pdfs": 402,
+    "assessmentDocuments": 1152,
+    "pdfPages": 20597,
+    "reviewedSources": 82,
+    "reviewRecords": 110,
+    "appsWithSelectedSourceReview": 104
+  },
   "byApp": {
     "light-shadow": {
       "slug": "light-shadow",
@@ -306,7 +405,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "decf53f3862ecfc9"
+      ],
       "fix": null,
       "open": []
     },
@@ -421,7 +522,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "258542d960132244"
+      ],
       "fix": null,
       "open": []
     },
@@ -495,15 +598,11 @@
       "sourceReview": [
         "ea4b521d6469fb4a"
       ],
-      "fix": null,
-      "open": [
-        {
-          "priority": "P2",
-          "topic": "실 전화기·소음 줄이기",
-          "finding": "개념 설명 그림과 조건 전환만 제공한다. 실제 소리 듣기·파형 또는 측정값 관찰은 제공하지 않는다.",
-          "source": "supplement-extra.js"
-        }
-      ]
+      "fix": [
+        "실 전화기·소음 줄이기에서 소리·파형 비교가 없음",
+        "조건별 진폭 파형과 같은 진동수의 비교음 추가. 사용자 클릭으로만 재생하고 조건 변경 시 중지. 오디오 사용 불가 시 안내·조작 복구"
+      ],
+      "open": []
     },
     "wave-transfer": {
       "slug": "wave-transfer",
@@ -592,7 +691,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -684,7 +785,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "6aeddd5b0fe32633"
+      ],
       "fix": null,
       "open": []
     },
@@ -828,7 +931,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "280217a87c1f9146"
+      ],
       "fix": null,
       "open": []
     },
@@ -909,7 +1014,9 @@
         "force-motion-spring-changed-chromium.webp",
         "force-motion-spring-initial-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "35761c2651ee0156"
+      ],
       "fix": null,
       "open": []
     },
@@ -1011,7 +1118,9 @@
         "motion-energy-supplement-only-time-2-chromium.webp",
         "motion-energy-supplement-only-time-3-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "6b548b1dd31d5305"
+      ],
       "fix": null,
       "open": []
     },
@@ -1106,7 +1215,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "dd78cb8dc8f37dd1"
+      ],
       "fix": null,
       "open": []
     },
@@ -1219,7 +1330,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "aca4841bfe407d28"
+      ],
       "fix": null,
       "open": []
     },
@@ -1290,7 +1403,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "94bb1159e5163734"
+      ],
       "fix": null,
       "open": []
     },
@@ -1447,7 +1562,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "563555452e4a2364"
+      ],
       "fix": null,
       "open": []
     },
@@ -1638,7 +1755,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "220fde79b78049bc"
+      ],
       "fix": [
         "전기장 설명 겹침; 축전기와 광원이 회로 없이 제시됨",
         "긴 수치를 본문으로 이동. 충전 전지·방전 전구·도선을 표시하고 방전 완료 시 소등"
@@ -1726,7 +1845,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "22578837da73a2b3"
+      ],
       "fix": null,
       "open": []
     },
@@ -1747,732 +1868,7 @@
         ],
         "cases": 22,
         "errors": [],
-        "issues": [
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "initial"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "some",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.99,
-                "d": 10000,
-                "g": 7.088812050083354,
-                "v": 296794533.42,
-                "tGround": 0.000033693342949308286,
-                "tMuon": 0.000004753030932582294,
-                "fRel": 0.11493152966445634,
-                "fNewton": 2.185898471818542e-7,
-                "reach": 4622.313700799718,
-                "verdict": "some"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "b05"
-                ]
-              ],
-              "group": "mspeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "few",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.5,
-                "d": 10000,
-                "g": 1.1547005383792517,
-                "v": 149896229,
-                "tGround": 0.00006671281903963041,
-                "tMuon": 0.000057774996046394106,
-                "fRel": 3.795436518625316e-12,
-                "fNewton": 6.493328479464343e-14,
-                "reach": 380.2683081511211,
-                "verdict": "few"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "b09"
-                ]
-              ],
-              "group": "mspeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "few",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.9,
-                "d": 10000,
-                "g": 2.294157338705618,
-                "v": 269813212.2,
-                "tGround": 0.000037062677244239115,
-                "tMuon": 0.00001615524646847028,
-                "fRel": 0.00064046178331865,
-                "fNewton": 4.716208374284444e-8,
-                "reach": 1359.9297319838604,
-                "verdict": "few"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "b099"
-                ]
-              ],
-              "group": "mspeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "some",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.99,
-                "d": 10000,
-                "g": 7.088812050083354,
-                "v": 296794533.42,
-                "tGround": 0.000033693342949308286,
-                "tMuon": 0.000004753030932582294,
-                "fRel": 0.11493152966445634,
-                "fNewton": 2.185898471818542e-7,
-                "reach": 4622.313700799718,
-                "verdict": "some"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "b0999"
-                ]
-              ],
-              "group": "mspeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "many",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.999,
-                "d": 10000,
-                "g": 22.36627204212937,
-                "v": 299492665.542,
-                "tGround": 0.00003338979931913434,
-                "tMuon": 0.0000014928638646727057,
-                "fRel": 0.506869818645574,
-                "fNewton": 2.5097665104440593e-7,
-                "reach": 14716.680147400237,
-                "verdict": "many"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h5"
-                ]
-              ],
-              "group": "height"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "many",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.999,
-                "d": 5000,
-                "g": 22.36627204212937,
-                "v": 299492665.542,
-                "tGround": 0.00001669489965956717,
-                "tMuon": 7.464319323363528e-7,
-                "fRel": 0.7119479044463675,
-                "fNewton": 0.0005009756990557586,
-                "reach": 14716.680147400237,
-                "verdict": "many"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h10"
-                ]
-              ],
-              "group": "height"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "many",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.999,
-                "d": 10000,
-                "g": 22.36627204212937,
-                "v": 299492665.542,
-                "tGround": 0.00003338979931913434,
-                "tMuon": 0.0000014928638646727057,
-                "fRel": 0.506869818645574,
-                "fNewton": 2.5097665104440593e-7,
-                "reach": 14716.680147400237,
-                "verdict": "many"
-              }
-            ]
-          },
-          {
-            "mode": "muon",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h20"
-                ]
-              ],
-              "group": "height"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "some",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "지상에서 더 길게 측정"
-                  },
-                  {
-                    "key": "no",
-                    "text": "지상에서 더 짧게 측정"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "지상에서 더 길게 측정"
-              },
-              {
-                "key": "no",
-                "text": "지상에서 더 짧게 측정"
-              }
-            ],
-            "values": [
-              {
-                "kind": "muon",
-                "b": 0.999,
-                "d": 20000,
-                "g": 22.36627204212937,
-                "v": 299492665.542,
-                "tGround": 0.00006677959863826868,
-                "tMuon": 0.0000029857277293454113,
-                "fRel": 0.2569170130537971,
-                "fNewton": 6.29892793694655e-14,
-                "reach": 14716.680147400237,
-                "verdict": "some"
-              }
-            ]
-          },
-          {
-            "mode": "energy",
-            "condition": {
-              "kind": "initial"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "much",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "운동 방향 길이가 짧아짐"
-                  },
-                  {
-                    "key": "no",
-                    "text": "운동 방향 길이가 길어짐"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "운동 방향 길이가 짧아짐"
-              },
-              {
-                "key": "no",
-                "text": "운동 방향 길이가 길어짐"
-              }
-            ],
-            "values": [
-              {
-                "kind": "energy",
-                "b": 0.9,
-                "g": 2.294157338705618,
-                "L": 43.58898943540673,
-                "kRel": 661314.4000785708,
-                "kNewton": 206955,
-                "ratio": 3.1954502190262173,
-                "verdict": "much"
-              }
-            ]
-          },
-          {
-            "mode": "energy",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e01"
-                ]
-              ],
-              "group": "espeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "same",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "운동 방향 길이가 짧아짐"
-                  },
-                  {
-                    "key": "no",
-                    "text": "운동 방향 길이가 길어짐"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "운동 방향 길이가 짧아짐"
-              },
-              {
-                "key": "no",
-                "text": "운동 방향 길이가 길어짐"
-              }
-            ],
-            "values": [
-              {
-                "kind": "energy",
-                "b": 0.1,
-                "g": 1.005037815259212,
-                "L": 99.498743710662,
-                "kRel": 2574.3235974573818,
-                "kNewton": 2555.0000000000005,
-                "ratio": 1.0075630518424192,
-                "verdict": "same"
-              }
-            ]
-          },
-          {
-            "mode": "energy",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e05"
-                ]
-              ],
-              "group": "espeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "bit",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "운동 방향 길이가 짧아짐"
-                  },
-                  {
-                    "key": "no",
-                    "text": "운동 방향 길이가 길어짐"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "운동 방향 길이가 짧아짐"
-              },
-              {
-                "key": "no",
-                "text": "운동 방향 길이가 길어짐"
-              }
-            ],
-            "values": [
-              {
-                "kind": "energy",
-                "b": 0.5,
-                "g": 1.1547005383792517,
-                "L": 86.60254037844385,
-                "kRel": 79051.97511179761,
-                "kNewton": 63875,
-                "ratio": 1.2376043070340135,
-                "verdict": "bit"
-              }
-            ]
-          },
-          {
-            "mode": "energy",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e09"
-                ]
-              ],
-              "group": "espeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "much",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "운동 방향 길이가 짧아짐"
-                  },
-                  {
-                    "key": "no",
-                    "text": "운동 방향 길이가 길어짐"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "운동 방향 길이가 짧아짐"
-              },
-              {
-                "key": "no",
-                "text": "운동 방향 길이가 길어짐"
-              }
-            ],
-            "values": [
-              {
-                "kind": "energy",
-                "b": 0.9,
-                "g": 2.294157338705618,
-                "L": 43.58898943540673,
-                "kRel": 661314.4000785708,
-                "kNewton": 206955,
-                "ratio": 3.1954502190262173,
-                "verdict": "much"
-              }
-            ]
-          },
-          {
-            "mode": "energy",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e099"
-                ]
-              ],
-              "group": "espeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "much",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "운동 방향 길이가 짧아짐"
-                  },
-                  {
-                    "key": "no",
-                    "text": "운동 방향 길이가 길어짐"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "운동 방향 길이가 짧아짐"
-              },
-              {
-                "key": "no",
-                "text": "운동 방향 길이가 길어짐"
-              }
-            ],
-            "values": [
-              {
-                "kind": "energy",
-                "b": 0.99,
-                "g": 7.088812050083354,
-                "L": 14.106735979665894,
-                "kRel": 3111382.957592594,
-                "kNewton": 250415.55,
-                "ratio": 12.424879196170503,
-                "verdict": "much"
-              }
-            ]
-          },
-          {
-            "mode": "energy",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e0999"
-                ]
-              ],
-              "group": "espeed"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "much",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "운동 방향 길이가 짧아짐"
-                  },
-                  {
-                    "key": "no",
-                    "text": "운동 방향 길이가 길어짐"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "운동 방향 길이가 짧아짐"
-              },
-              {
-                "key": "no",
-                "text": "운동 방향 길이가 길어짐"
-              }
-            ],
-            "values": [
-              {
-                "kind": "energy",
-                "b": 0.999,
-                "g": 22.36627204212937,
-                "L": 4.471017781221602,
-                "kRel": 10918165.013528109,
-                "kNewton": 254989.2555,
-                "ratio": 42.818137541203605,
-                "verdict": "much"
-              }
-            ]
-          }
-        ],
+        "issues": [],
         "models": [
           {
             "key": "__semiModel",
@@ -2551,7 +1947,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "b9dbe9c1aba21eb6"
+      ],
       "fix": [
         "두 시계 그림에 떨어지는 입자 그림을 설명하는 문구 잔존",
         "현재 그림의 관측자와 시간 간격 비교로 설명 교정"
@@ -2664,8 +2062,14 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
-      "fix": null,
+      "sourceReview": [
+        "37911380bc9ed683",
+        "6969a20462cfe732"
+      ],
+      "fix": [
+        "퀴리 온도 위의 자기화 0을 전체 자성이 사라진 것으로 읽을 수 있음",
+        "자발 자기화와 외부 장에 대한 상자성 반응을 분리하고 문항·화면 표기 교정"
+      ],
       "open": []
     },
     "heat-transfer": {
@@ -2756,15 +2160,11 @@
         "fec1f079908511c8",
         "645672143dcd9960"
       ],
-      "fix": null,
-      "open": [
-        {
-          "priority": "P2",
-          "topic": "단열 비교",
-          "finding": "조건과 결과 설명은 있으나 같은 색의 물 그림과 문구 중심이다. 시간별 온도 측정·비교 자료의 관찰을 보강해야 한다.",
-          "source": "supplement-labs.js"
-        }
-      ]
+      "fix": [
+        "단열 비교가 같은 색의 물 그림·설명에 머묾",
+        "같은 초기 온도·물의 양에서 시간별 온도계와 냉각 곡선을 비교. 수치는 실측이 아닌 가상 모형임을 명시"
+      ],
+      "open": []
     },
     "specific-heat": {
       "slug": "specific-heat",
@@ -2904,7 +2304,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "53d46258e78eb6ac"
+      ],
       "fix": [
         "관찰 그림과 긴 수치·주의 문구 겹침",
         "수치·주의 문구를 그림 아래 흐르는 본문으로 이동"
@@ -2928,864 +2330,7 @@
         ],
         "cases": 17,
         "errors": [],
-        "issues": [
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "initial"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "high",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 773.15,
-                "Tc": 293.15,
-                "eta": 0.6208368363189549,
-                "V3": 8.566250855844416,
-                "V4": 4.283125427922208,
-                "Qh": 4455.528658391449,
-                "Qc": 1689.3723419872642,
-                "W": 2766.1563164041854,
-                "verdict": "high"
-              }
-            ]
-          },
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h150"
-                ]
-              ],
-              "group": "hot"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "mid",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 423.15,
-                "Tc": 293.15,
-                "eta": 0.3072196620583717,
-                "V3": 3.468459803007966,
-                "V4": 1.734229901503983,
-                "Qh": 2438.539677680064,
-                "Qc": 1689.3723419872642,
-                "W": 749.1673356927997,
-                "verdict": "mid"
-              }
-            ]
-          },
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h300"
-                ]
-              ],
-              "group": "hot"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "mid",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 573.15,
-                "Tc": 293.15,
-                "eta": 0.4885283084707319,
-                "V3": 5.4676108039323745,
-                "V4": 2.7338054019661873,
-                "Qh": 3302.963526556372,
-                "Qc": 1689.3723419872642,
-                "W": 1613.5911845691078,
-                "verdict": "mid"
-              }
-            ]
-          },
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h500"
-                ]
-              ],
-              "group": "hot"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "high",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 773.15,
-                "Tc": 293.15,
-                "eta": 0.6208368363189549,
-                "V3": 8.566250855844416,
-                "V4": 4.283125427922208,
-                "Qh": 4455.528658391449,
-                "Qc": 1689.3723419872642,
-                "W": 2766.1563164041854,
-                "verdict": "high"
-              }
-            ]
-          },
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h800"
-                ]
-              ],
-              "group": "hot"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "high",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 1073.15,
-                "Tc": 293.15,
-                "eta": 0.7268322228952151,
-                "V3": 14.008311572238602,
-                "V4": 7.004155786119301,
-                "Qh": 6184.3763561440655,
-                "Qc": 1689.3723419872642,
-                "W": 4495.0040141568015,
-                "verdict": "high"
-              }
-            ]
-          },
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "c20"
-                ]
-              ],
-              "group": "cold"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "high",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 1073.15,
-                "Tc": 293.15,
-                "eta": 0.7268322228952151,
-                "V3": 14.008311572238602,
-                "V4": 7.004155786119301,
-                "Qh": 6184.3763561440655,
-                "Qc": 1689.3723419872642,
-                "W": 4495.0040141568015,
-                "verdict": "high"
-              }
-            ]
-          },
-          {
-            "mode": "carnot",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "c100"
-                ]
-              ],
-              "group": "cold"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "high",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "고온 열원을 높이면 한계 효율 증가"
-                  },
-                  {
-                    "key": "no",
-                    "text": "고온 열원을 높이면 한계 효율 감소"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "고온 열원을 높이면 한계 효율 증가"
-              },
-              {
-                "key": "no",
-                "text": "고온 열원을 높이면 한계 효율 감소"
-              }
-            ],
-            "values": [
-              {
-                "kind": "carnot",
-                "Th": 1073.15,
-                "Tc": 373.15,
-                "eta": 0.6522853282392955,
-                "V3": 9.754285695405656,
-                "V4": 4.877142847702828,
-                "Qh": 6184.3763561440655,
-                "Qc": 2150.398394721295,
-                "W": 4033.9779614227705,
-                "verdict": "high"
-              }
-            ]
-          },
-          {
-            "mode": "flow",
-            "condition": {
-              "kind": "initial"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "ok",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "가능한 기관"
-                  },
-                  {
-                    "key": "no",
-                    "text": "불가능한 기관"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "가능한 기관"
-              },
-              {
-                "key": "no",
-                "text": "불가능한 기관"
-              }
-            ],
-            "values": [
-              {
-                "kind": "flow",
-                "eta": 0.2,
-                "Th": 773.15,
-                "Tc": 293.15,
-                "etaC": 0.6208368363189549,
-                "W": 200,
-                "Qc": 800,
-                "dS": 1.4355682630699471,
-                "verdict": "ok"
-              }
-            ]
-          },
-          {
-            "mode": "flow",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e20"
-                ]
-              ],
-              "group": "eff"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "ok",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "가능한 기관"
-                  },
-                  {
-                    "key": "no",
-                    "text": "불가능한 기관"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "가능한 기관"
-              },
-              {
-                "key": "no",
-                "text": "불가능한 기관"
-              }
-            ],
-            "values": [
-              {
-                "kind": "flow",
-                "eta": 0.2,
-                "Th": 773.15,
-                "Tc": 293.15,
-                "etaC": 0.6208368363189549,
-                "W": 200,
-                "Qc": 800,
-                "dS": 1.4355682630699471,
-                "verdict": "ok"
-              }
-            ]
-          },
-          {
-            "mode": "flow",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "e100"
-                ]
-              ],
-              "group": "eff"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "perpetual",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "가능한 기관"
-                  },
-                  {
-                    "key": "no",
-                    "text": "불가능한 기관"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "가능한 기관"
-              },
-              {
-                "key": "no",
-                "text": "불가능한 기관"
-              }
-            ],
-            "values": [
-              {
-                "kind": "flow",
-                "eta": 1,
-                "Th": 773.15,
-                "Tc": 293.15,
-                "etaC": 0.6208368363189549,
-                "W": 1000,
-                "Qc": 0,
-                "dS": -1.2934100756644895,
-                "verdict": "perpetual"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "initial"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "mid",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 273.15,
-                "Th": 291.15,
-                "cop": 16.174999999999997,
-                "copReal": 5.661249999999999,
-                "Qc": 15.174999999999997,
-                "verdict": "mid"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "o10"
-                ]
-              ],
-              "group": "out"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "high",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 283.15,
-                "Th": 291.15,
-                "cop": 36.39375,
-                "copReal": 12.737812499999999,
-                "Qc": 35.39375,
-                "verdict": "high"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "o0"
-                ]
-              ],
-              "group": "out"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "mid",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 273.15,
-                "Th": 291.15,
-                "cop": 16.174999999999997,
-                "copReal": 5.661249999999999,
-                "Qc": 15.174999999999997,
-                "verdict": "mid"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "om10"
-                ]
-              ],
-              "group": "out"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "mid",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 263.15,
-                "Th": 291.15,
-                "cop": 10.398214285714285,
-                "copReal": 3.639375,
-                "Qc": 9.398214285714285,
-                "verdict": "mid"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "om20"
-                ]
-              ],
-              "group": "out"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "low",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 253.14999999999998,
-                "Th": 291.15,
-                "cop": 7.661842105263157,
-                "copReal": 2.681644736842105,
-                "Qc": 6.661842105263157,
-                "verdict": "low"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "i18"
-                ]
-              ],
-              "group": "inn"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "low",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 253.14999999999998,
-                "Th": 291.15,
-                "cop": 7.661842105263157,
-                "copReal": 2.681644736842105,
-                "Qc": 6.661842105263157,
-                "verdict": "low"
-              }
-            ]
-          },
-          {
-            "mode": "pump",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "i24"
-                ]
-              ],
-              "group": "inn"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "low",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "외부에서 일을 공급해야 한다"
-                  },
-                  {
-                    "key": "no",
-                    "text": "일 없이 저절로 옮긴다"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "외부에서 일을 공급해야 한다"
-              },
-              {
-                "key": "no",
-                "text": "일 없이 저절로 옮긴다"
-              }
-            ],
-            "values": [
-              {
-                "kind": "pump",
-                "Tc": 253.14999999999998,
-                "Th": 297.15,
-                "cop": 6.7534090909090905,
-                "copReal": 2.3636931818181814,
-                "Qc": 5.7534090909090905,
-                "verdict": "low"
-              }
-            ]
-          }
-        ],
+        "issues": [],
         "models": [
           {
             "key": "__engineModel",
@@ -3859,7 +2404,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "8419205b3592f91c"
+      ],
       "fix": null,
       "open": []
     },
@@ -4005,7 +2552,9 @@
         "energy-conversion-supplement-only-speed-fast-chromium.webp",
         "energy-conversion-supplement-only-speed-slow-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "ef2613dfc6b615dd"
+      ],
       "fix": [
         "코일과 검류계가 떨어져 회로가 연결되지 않음",
         "두 코일 단자와 검류계를 연결한 도선 추가"
@@ -4279,7 +2828,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "7edd546b32175655"
+      ],
       "fix": null,
       "open": []
     },
@@ -4444,7 +2995,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -4824,7 +3377,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -4897,7 +3452,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -5107,7 +3664,9 @@
         "periodic-bonding-group-design-changed-chromium.webp",
         "periodic-bonding-group-design-initial-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "28c7a55d8867b0c9"
+      ],
       "fix": [
         "화합물 전도성 장치에 전지가 없음",
         "전지·전구·전극을 직렬로 연결한 모식도 추가"
@@ -5224,7 +3783,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "49908c3f40025eda"
+      ],
       "fix": null,
       "open": []
     },
@@ -5345,7 +3906,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "7861607f0dc04270"
+      ],
       "fix": null,
       "open": []
     },
@@ -5417,7 +3980,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "66ed6c4a0bce38f5"
+      ],
       "fix": null,
       "open": []
     },
@@ -5498,7 +4063,9 @@
         "mass-ratio-supplement-only-trial-excess-chromium.webp",
         "mass-ratio-supplement-only-trial-one-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "5328a5be56a9a4d3"
+      ],
       "fix": null,
       "open": []
     },
@@ -5611,7 +4178,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "7861607f0dc04270"
+      ],
       "fix": null,
       "open": []
     },
@@ -5702,7 +4271,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "ee8cbb3b4ab047e7"
+      ],
       "fix": null,
       "open": []
     },
@@ -5782,15 +4353,11 @@
       "sourceReview": [
         "29025dcd99227936"
       ],
-      "fix": null,
-      "open": [
-        {
-          "priority": "P1",
-          "topic": "연소 생성물 검출",
-          "finding": "불꽃과 검출 종이·석회수가 나란히 제시된다. 생성물을 모아 접촉시키는 절차·장치가 없어 실제 검출 실험을 수행하는 화면으로는 부족하다.",
-          "source": "required-experiments.js"
-        }
-      ]
+      "fix": [
+        "연소 생성물을 모아 검출 시약과 접촉시키는 절차·장치가 없음",
+        "연소 전·중·뒤 확인 단계, 통 안의 염화 코발트 종이, 생성물 수집·석회수 검사 장치를 표현. 공통 현상 문항을 빛과 열로 교정"
+      ],
+      "open": []
     },
     "combustion": {
       "slug": "combustion",
@@ -5850,7 +4417,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "30a3f3db685ed5a2"
+      ],
       "fix": null,
       "open": []
     },
@@ -5936,7 +4505,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "73e22249bf2a1143"
+      ],
       "fix": null,
       "open": []
     },
@@ -6019,7 +4590,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "6ffbf49bb850d9e5"
+      ],
       "fix": null,
       "open": []
     },
@@ -6275,7 +4848,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "97f6b65c9c7b45ff"
+      ],
       "fix": null,
       "open": []
     },
@@ -6379,7 +4954,9 @@
         "cell-membrane-supplement-only-stage-after-chromium.webp",
         "cell-membrane-supplement-only-stage-before-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "b108d1a2c0d716f0"
+      ],
       "fix": null,
       "open": []
     },
@@ -6444,7 +5021,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "ada6483ae9f3eafd"
+      ],
       "fix": null,
       "open": []
     },
@@ -6684,8 +5263,14 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
-      "fix": null,
+      "sourceReview": [
+        "12371732aa7bdea5",
+        "73487151b2f57acf"
+      ],
+      "fix": [
+        "NADH 자체가 ATP로 바뀌거나 내막을 통과한다는 설명",
+        "전자 전달·H⁺ 기울기·ATP 합성 및 셔틀의 전자 전달로 교정. ATP 30/32개는 모형의 환산 가정에 따른 근삿값"
+      ],
       "open": []
     },
     "body-organs": {
@@ -6819,7 +5404,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -6938,7 +5525,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -7050,7 +5639,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "c18fcb2bbf64e6db"
+      ],
       "fix": null,
       "open": []
     },
@@ -7159,7 +5750,9 @@
         "immune-supplement-only-stage-after-chromium.webp",
         "immune-supplement-only-stage-before-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "b6dcf46c1423ecb6"
+      ],
       "fix": null,
       "open": []
     },
@@ -7235,7 +5828,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "84b73355f81109ec"
+      ],
       "fix": null,
       "open": []
     },
@@ -7306,7 +5901,9 @@
         "senses-blind-spot-changed-chromium.webp",
         "senses-blind-spot-initial-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "30573990e5feb933"
+      ],
       "fix": null,
       "open": []
     },
@@ -7354,7 +5951,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "c14abb3e8875f5e3"
+      ],
       "fix": null,
       "open": []
     },
@@ -7464,7 +6063,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "17dabc9bf2d5a3ea"
+      ],
       "fix": null,
       "open": []
     },
@@ -7574,7 +6175,9 @@
         "pea-genetics-supplement-only-step-middle-chromium.webp",
         "pea-genetics-supplement-only-step-start-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "ada6483ae9f3eafd"
+      ],
       "fix": null,
       "open": []
     },
@@ -7647,7 +6250,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "d5c3bb783a9e63b5"
+      ],
       "fix": null,
       "open": []
     },
@@ -7742,7 +6347,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "815225711f615d25"
+      ],
       "fix": [
         "털 색 평균이 그림에서는 1−평균, 그래프·해설에서는 평균으로 서로 반대",
         "0=흰색·1=검은색으로 표시값을 통일"
@@ -7853,7 +6460,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "5c95cd5c181dc6d0"
+      ],
       "fix": null,
       "open": []
     },
@@ -7919,7 +6528,9 @@
         "life-cycle-plant-life-types-changed-chromium.webp",
         "life-cycle-plant-life-types-initial-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "9c826e4094692239"
+      ],
       "fix": null,
       "open": []
     },
@@ -8020,7 +6631,9 @@
         "living-environment-supplement-only-missing-none-chromium.webp",
         "living-environment-supplement-only-missing-rabbit-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "da56bed7636da8a9"
+      ],
       "fix": null,
       "open": []
     },
@@ -8120,8 +6733,13 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
-      "fix": null,
+      "sourceReview": [
+        "e7f946d79cd76730"
+      ],
+      "fix": [
+        "환경 저항 전체를 밀도에 따른 경쟁만으로 정의",
+        "로지스틱 모형의 밀도 의존 항과 실제 환경 저항의 가뭄·혹한 등을 구별"
+      ],
       "open": []
     },
     "rock-layers": {
@@ -8285,7 +6903,9 @@
         "minerals-rocks-supplement-only-process-deposit-chromium.webp",
         "minerals-rocks-supplement-only-process-melt-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -8401,7 +7021,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "815225711f615d25"
+      ],
       "fix": null,
       "open": []
     },
@@ -8457,17 +7079,17 @@
               {
                 "choice": "p1",
                 "visible": true,
-                "text": "예상은 절반 이상였지만 결과는 거의 없음입니다."
+                "text": "예상은 50% 초과였지만 결과는 3% 미만입니다."
               },
               {
                 "choice": "p2",
                 "visible": true,
-                "text": "예상은 절반 이하였지만 결과는 거의 없음입니다."
+                "text": "예상은 3~50%였지만 결과는 3% 미만입니다."
               },
               {
                 "choice": "p3",
                 "visible": true,
-                "text": "예상이 맞았습니다 — 거의 없음."
+                "text": "예상이 맞았습니다 — 3% 미만."
               }
             ]
           },
@@ -8477,25 +7099,35 @@
               {
                 "choice": "p1",
                 "visible": true,
-                "text": "예상이 맞았습니다 — 잴 수 있다."
+                "text": "예상은 가정 아래 계산 가능였지만 결과는 시료 근거 부족입니다."
               },
               {
                 "choice": "p2",
                 "visible": true,
-                "text": "예상은 너무 오래됨였지만 결과는 잴 수 있다입니다."
+                "text": "예상은 모원소 비율 너무 작음였지만 결과는 시료 근거 부족입니다."
               },
               {
                 "choice": "p3",
                 "visible": true,
-                "text": "예상은 너무 젊음였지만 결과는 잴 수 있다입니다."
+                "text": "예상은 모원소 비율 너무 큼였지만 결과는 시료 근거 부족입니다."
+              },
+              {
+                "choice": "p4",
+                "visible": true,
+                "text": "예상이 맞았습니다 — 시료 근거 부족."
               }
             ]
           }
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
-      "fix": null,
+      "sourceReview": [
+        "5cd391fde1912cc3"
+      ],
+      "fix": [
+        "시료 종류와 무관한 연대 판정; K-40 붕괴를 모두 Ar-40으로 표시",
+        "퇴적층·단층·관입암의 탄소-14에 시료 근거 부족 판정. 붕괴 생성물 합계와 실제 붕괴 분기 구별; 임의 감도 범위를 실제 장비 한계와 구분"
+      ],
       "open": []
     },
     "metamorphism": {
@@ -8605,7 +7237,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "5cd391fde1912cc3"
+      ],
       "fix": null,
       "open": []
     },
@@ -8684,7 +7318,9 @@
         "volcano-model-supplement-only-rock-compare-chromium.webp",
         "volcano-model-supplement-only-rock-granite-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "295e8a991fecc12f"
+      ],
       "fix": null,
       "open": []
     },
@@ -8759,7 +7395,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "5cd391fde1912cc3"
+      ],
       "fix": null,
       "open": []
     },
@@ -8827,7 +7465,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "188d7481881a226e"
+      ],
       "fix": null,
       "open": []
     },
@@ -8857,7 +7497,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "c50c90b0d29a7655"
+      ],
       "fix": null,
       "open": []
     },
@@ -8984,7 +7626,9 @@
         "earth-system-population-change-changed-chromium.webp",
         "earth-system-population-change-initial-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "14545f17d7629d17"
+      ],
       "fix": null,
       "open": []
     },
@@ -9169,7 +7813,9 @@
         "weather-front-supplement-only-stage-before-chromium.webp",
         "weather-front-supplement-only-stage-compress-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "aad1bb1a1f5c811b"
+      ],
       "fix": null,
       "open": []
     },
@@ -9239,14 +7885,24 @@
                 "choice": "p3",
                 "visible": true,
                 "text": "예상은 절대 불안정였지만 결과는 조건부 불안정입니다."
+              },
+              {
+                "choice": "p4",
+                "visible": true,
+                "text": "예상은 단열감률과 같은 경계였지만 결과는 조건부 불안정입니다."
               }
             ]
           }
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
-      "fix": null,
+      "sourceReview": [
+        "5b0ce08b8c0b10eb"
+      ],
+      "fix": [
+        "단열감률과 같은 값을 불안정으로 채점; 낮은 산에서 상승 곡선 불연속",
+        "같은 감률의 중립 경계를 별도 선택·설명. 산 높이에 상관없이 응결 고도에서 상승 기온 곡선이 이어지도록 계산 수정; 실제 푄은 강수 없이도 가능함을 교정"
+      ],
       "open": []
     },
     "typhoon": {
@@ -9354,7 +8010,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "aad1bb1a1f5c811b"
+      ],
       "fix": null,
       "open": []
     },
@@ -9450,7 +8108,9 @@
         "land-sea-supplement-only-water-high-chromium.webp",
         "land-sea-supplement-only-water-low-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "5ef9a29031472d43"
+      ],
       "fix": null,
       "open": []
     },
@@ -9512,7 +8172,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "bb7e6bd6ea481715"
+      ],
       "fix": null,
       "open": []
     },
@@ -9583,7 +8245,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "1d197dc2ffb3184d"
+      ],
       "fix": null,
       "open": []
     },
@@ -9654,7 +8318,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "b5e30308f3b900f9"
+      ],
       "fix": null,
       "open": []
     },
@@ -9764,7 +8430,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "1d197dc2ffb3184d"
+      ],
       "fix": null,
       "open": []
     },
@@ -9870,8 +8538,14 @@
         "night-sky-planet-model-changed-chromium.webp",
         "night-sky-planet-model-initial-chromium.webp"
       ],
-      "sourceReview": [],
-      "fix": null,
+      "sourceReview": [
+        "37365b86c62b2aed",
+        "35761c2651ee0156"
+      ],
+      "fix": [
+        "음력 날짜와 삭 이후 경과일을 혼용해 위상 계산",
+        "삭을 0일로 하고 상현·보름·하현을 주기의 1/4·1/2·3/4로 설정. 실제 출몰 시각과 이상화된 모형을 구별"
+      ],
       "open": []
     },
     "seasons": {
@@ -10040,7 +8714,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "35761c2651ee0156"
+      ],
       "fix": [
         "날짜를 바꾸어도 이전 위상 설명이 남음",
         "매 렌더링에서 삭 이후 경과일·위상·밝은 부분을 갱신"
@@ -10108,7 +8784,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "35761c2651ee0156"
+      ],
       "fix": null,
       "open": []
     },
@@ -10231,7 +8909,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "b1a146350eab7903"
+      ],
       "fix": null,
       "open": []
     },
@@ -10325,15 +9005,11 @@
       "sourceReview": [
         "188d7481881a226e"
       ],
-      "fix": null,
-      "open": [
-        {
-          "priority": "P2",
-          "topic": "우리은하 구조",
-          "finding": "설명은 막대 나선 은하인데 그림은 원반·중심 타원뿐이다. 막대와 나선팔을 관찰하는 그림은 보강해야 한다.",
-          "source": "supplement-extra.js"
-        }
-      ]
+      "fix": [
+        "막대 나선 은하라는 설명과 원반·타원뿐인 그림이 불일치",
+        "중심 막대·나선팔·태양계 위치·옆모습 추가. 나선팔 수와 위치의 정밀 지도는 아님을 명시"
+      ],
+      "open": []
     },
     "star-elements": {
       "slug": "star-elements",
@@ -10351,148 +9027,7 @@
         ],
         "cases": 15,
         "errors": [],
-        "issues": [
-          {
-            "mode": "fusion",
-            "condition": {
-              "kind": "initial"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "lots",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "에너지 방출"
-                  },
-                  {
-                    "key": "no",
-                    "text": "에너지가 전혀 나오지 않음"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "에너지 방출"
-              },
-              {
-                "key": "no",
-                "text": "에너지가 전혀 나오지 않음"
-              }
-            ],
-            "values": [
-              {
-                "kind": "fusion",
-                "ratio": 100,
-                "massPct": 0.71658615136876,
-                "jPerKg": 644137500000000,
-                "coalKg": 21471250,
-                "verdict": "lots"
-              }
-            ]
-          },
-          {
-            "mode": "fusion",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "h"
-                ]
-              ],
-              "group": "step"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "lots",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "에너지 방출"
-                  },
-                  {
-                    "key": "no",
-                    "text": "에너지가 전혀 나오지 않음"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "에너지 방출"
-              },
-              {
-                "key": "no",
-                "text": "에너지가 전혀 나오지 않음"
-              }
-            ],
-            "values": [
-              {
-                "kind": "fusion",
-                "ratio": 100,
-                "massPct": 0.71658615136876,
-                "jPerKg": 644137500000000,
-                "coalKg": 21471250,
-                "verdict": "lots"
-              }
-            ]
-          },
-          {
-            "mode": "fusion",
-            "condition": {
-              "kind": "button",
-              "attrs": [
-                [
-                  "data-value",
-                  "he"
-                ]
-              ],
-              "group": "step"
-            },
-            "issues": [
-              {
-                "kind": "unanswerable-prediction",
-                "verdict": "tenth",
-                "choices": [
-                  {
-                    "key": "yes",
-                    "text": "에너지 방출"
-                  },
-                  {
-                    "key": "no",
-                    "text": "에너지가 전혀 나오지 않음"
-                  }
-                ]
-              }
-            ],
-            "choices": [
-              {
-                "key": "yes",
-                "text": "에너지 방출"
-              },
-              {
-                "key": "no",
-                "text": "에너지가 전혀 나오지 않음"
-              }
-            ],
-            "values": [
-              {
-                "kind": "fusion",
-                "ratio": 9.078651685393256,
-                "massPct": 0.06505636070853461,
-                "jPerKg": 58478999999999.984,
-                "coalKg": 1949299.9999999995,
-                "verdict": "tenth"
-              }
-            ]
-          }
-        ],
+        "issues": [],
         "models": [
           {
             "key": "__starModel",
@@ -10581,7 +9116,9 @@
         "star-elements-emission-spectrum-changed-chromium.webp",
         "star-elements-emission-spectrum-initial-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "cf6ec783e2923385"
+      ],
       "fix": null,
       "open": []
     },
@@ -10660,7 +9197,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "b1a146350eab7903"
+      ],
       "fix": null,
       "open": []
     },
@@ -10775,7 +9314,9 @@
         ]
       },
       "panelShots": [],
-      "sourceReview": [],
+      "sourceReview": [
+        "b1a146350eab7903"
+      ],
       "fix": null,
       "open": []
     },
@@ -10860,7 +9401,9 @@
         "neutralization-common-supplement-only-stage-after-chromium.webp",
         "neutralization-common-supplement-only-stage-before-chromium.webp"
       ],
-      "sourceReview": [],
+      "sourceReview": [
+        "6c1efd591f7852b2"
+      ],
       "fix": null,
       "open": []
     }

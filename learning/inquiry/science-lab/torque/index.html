@@ -113,7 +113,7 @@
                 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>높고 좁은 물체가 조금만 기울여도 넘어지는 까닭은?</h3>
+                    <h3>무게중심이 가운데인 균일한 직육면체를 미끄러지지 않게 기울인다. 높고 좁을수록 쉽게 넘어지는 까닭은?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q2" value="a"> 무게중심이 높고 바닥이 좁아 무게중심의 수직선이 금방 바닥면 밖으로 나가기 때문에</label>
                         <label><input type="radio" name="q2" value="b"> 무거워서 중력이 크기 때문에</label>
@@ -122,16 +122,16 @@
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>넘어지는 문턱 각은 폭÷높이의 탄젠트로 정해집니다. 높이가 폭의 3배면 18°만 기울어도 무게중심의 수직선이 바닥 모서리를 넘어가 무게가 물체를 넘기는 쪽으로 돌립니다.</p>
+                    <p class="answer-explanation" hidden>무게중심의 수직선이 받침면 밖으로 나가면 중력이 넘어뜨리는 돌림힘을 만듭니다. 이 균일한 직육면체에서 문턱 각 θ는 tan θ = 밑면 폭/높이를 만족합니다. 높이가 폭의 3배이면 약 18°입니다.</p>
                 </article>
 
                 <article class="quiz-card" data-answer="d">
-                    <h3>경사면을 천천히 세울 때 상자가 넘어지지 않고 미끄러지는 조건은?</h3>
+                    <h3>균일한 직육면체 상자를 경사면에 정지시킨 뒤 천천히 기울인다. 상자가 넘어지기 전에 미끄러지기 시작할 조건은? (μ: 정지 마찰 계수)</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q3" value="a"> 상자가 가벼울 때</label>
                         <label><input type="radio" name="q3" value="b"> 상자가 높고 좁을 때</label>
-                        <label><input type="radio" name="q3" value="c"> 마찰 계수가 폭÷높이보다 클 때</label>
-                        <label><input type="radio" name="q3" value="d"> 마찰 계수가 폭÷높이보다 작을 때</label>
+                        <label><input type="radio" name="q3" value="c"> μ가 경사 방향 밑면 폭÷높이보다 클 때</label>
+                        <label><input type="radio" name="q3" value="d"> μ가 경사 방향 밑면 폭÷높이보다 작을 때</label>
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
@@ -142,20 +142,20 @@
                     <h3>두 받침대 위의 판에서 물건을 오른쪽 받침대 바깥쪽으로 옮기면?</h3>
                     <div class="quiz-options">
                         <label><input type="radio" name="q4" value="a"> 두 받침대가 받는 힘이 똑같이 늘어난다</label>
-                        <label><input type="radio" name="q4" value="b"> 오른쪽 받침대가 받는 힘이 늘고 왼쪽은 줄어들며, 0이 되면 판이 뒤집힌다</label>
+                        <label><input type="radio" name="q4" value="b"> 오른쪽 받침힘은 늘고 왼쪽은 줄며, 왼쪽 힘이 0인 한계를 넘으면 판이 기울어진다</label>
                         <label><input type="radio" name="q4" value="c"> 왼쪽 받침대가 받는 힘이 늘어난다</label>
                         <label><input type="radio" name="q4" value="d"> 어디에 놓든 받침대가 받는 힘은 같다</label>
                     </div>
                     <button class="answer-button" type="button">정답 확인</button>
                     <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>오른쪽 받침대를 축으로 돌림힘을 재면, 바깥쪽의 물건은 판의 왼쪽을 들어 올리는 쪽으로 돌립니다. 왼쪽 받침대는 판을 아래로 붙잡을 수 없으므로 받는 힘이 0이 되는 순간 판이 뒤집힙니다.</p>
+                    <p class="answer-explanation" hidden>받침대는 판을 아래로 당길 수 없습니다. 왼쪽 받침힘이 0인 위치는 전도 한계이며, 물건을 더 바깥으로 옮기면 오른쪽 받침대를 중심으로 기울어집니다.</p>
                 </article>
             </div>
         </details>
     </main>
     <script src="app.js?v=20711e8ff0d5"></script>
     <script src="../curriculum-map.js?v=3f7264a2b189"></script>
-    <script src="../exam-scope.js?v=7e39dbac06b5"></script>
+    <script src="../exam-scope.js?v=f560e240ce7f"></script>
     <script src="../lab-ui.js?v=c295eda1bdab"></script>
 </body>
 </html>
