@@ -32,11 +32,15 @@
   };
 
   B.addUnit({
-    id: '3-1-6', grade: 3, semester: 1, no: 6, title: '분수와 소수', version: 3,
+    id: '3-1-6', grade: 3, semester: 1, no: 6, title: '분수와 소수', version: 4,
     groups: [
       {
         id: 'equal', title: '똑같이 나누기', standard: WHOLE,
         types: [
+          T('equal-count', '똑같이 나눈 조각의 수', '①3 ②3 ③2', (d) => {
+            const n = d.int(3, 9);
+            return N('도형을 똑같이 몇 조각으로 나누었는가?', n, { unit: '조각', figure: pieces(kindOf(d), n, {}), explain: `모양과 크기가 같은 조각이 ${n}개이다.`, facts: { pieceCount: true } });
+          }),
           T('equal-pick', '똑같이 나눈 도형 고르기', '①1·2 ②1·2 ③1', (d) => {
             // 똑같이 넷으로 나눈 것: 조각 수가 다른 것, 크기가 다르게 나눈 것이 섞여 있다.
             const n = d.int(3, 6), other = d.pick([n - 1, n + 1].filter((v) => v >= 2)), kinds = [kindOf(d), kindOf(d), kindOf(d), kindOf(d)];
@@ -78,6 +82,23 @@
             return C(`전체의 ${frac(k, n)}만큼 색칠한 도형은?`, LABELS, list.findIndex(([count, on, uneven]) => count === n && on === k && !uneven), {
               figure: G.tiles(list.map(([count, on, uneven], i) => [LABELS[i], pieces(kind, count, { shaded: on, uneven, scale: 1.25 })])),
               explain: `전체를 똑같이 ${n}조각으로 나눈 것 중의 ${k}조각을 색칠한 도형을 고른다. 똑같이 나누지 않은 도형은 분수로 나타낼 수 없다.`, facts: { tilePick: { n, shaded: k } }
+            });
+          }),
+          T('frac-parts', '분모와 분자', '①10 ②13 ③7', (d) => {
+            const [k, n] = d.until(() => [d.int(2, 8), d.int(3, 9)], ([x, y]) => x < y && gcd(x, y) === 1);
+            return M(`분수 ${frac(k, n)}의 분모와 분자는?`, [{ label: '분모', answer: n }, { label: '분자', answer: k }], {
+              explain: `가로선 아래의 수 ${josa(n, '이/가')} 분모, 가로선 위의 수 ${josa(k, '이/가')} 분자이다. 분모는 전체를 똑같이 나눈 수, 분자는 그중 부분의 수를 나타낸다.`,
+              facts: { calc: [[String(n), 0], [String(k), 1]] }
+            });
+          }, { standard: UNITFRAC }),
+          T('frac-odd', '나타내는 분수가 다른 그림', '①16 ②11 ③12', (d) => {
+            // 모양이 달라도 똑같이 나눈 수와 색칠한 수가 같으면 같은 분수이다
+            const [k, n] = d.until(() => [d.int(2, 5), d.int(4, 8)], ([x, y]) => x < y - 1 && gcd(x, y) === 1);
+            const other = d.pick([[n, k + 1], [n + 1, k]]), rows = d.shuffle([[n, k, 'bar'], [n, k, 'circle'], [other[0], other[1], d.pick(['bar', 'circle'])]]);
+            return C('색칠한 부분이 나타내는 분수가 나머지와 다른 것은?', LABELS.slice(0, 3), rows.findIndex(([x, y]) => x !== n || y !== k), {
+              figure: G.tiles(rows.map(([count, on, kind], i) => [LABELS[i], pieces(kind, count, { shaded: on, scale: 1.25 })])),
+              explain: rows.map(([count, on], i) => `${LABELS[i]} ${frac(on, count)}`).join(', ') + ' 을 나타낸다. 모양이 달라도 똑같이 나눈 수와 색칠한 수가 같으면 같은 분수이다.',
+              facts: { tileOdd: rows.map(([count, on]) => [count, on]) }
             });
           }),
           T('frac-rest', '남은 부분을 분수로 나타내기', '①15 ②15·67 ③14·15', (d) => {
@@ -199,6 +220,14 @@
             return M('㉠, ㉡에 알맞은 수는?', [{ label: LABELS[0], answer: a / 10, decimal: true }, { label: LABELS[1], answer: b }], {
               figure: lines([`${frac(a, 10)} = ${box(LABELS[0])}`, `0.${b} = ${frac(box(LABELS[1]), 10)}`]), explain: `${fj(a, 10, '은/는')} 0.${a}이고, ${dj('0.' + b, '은/는')} ${frac(b, 10)}이다.`,
               facts: { calc: [[`${a}/10`, 0], [String(b), 1]] }
+            });
+          }),
+          T('deci-read', '소수 읽기', '②47 ③42·44', (d) => {
+            const W = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+            const [x, y] = d.until(() => [d.int(2, 9), d.int(1, 9)], ([p, q]) => p !== q);
+            const rows = d.shuffle([[`${W[x]} 점 ${W[y]}`, true], [`${W[y]} 점 ${W[x]}`, false], [`${W[x]}십${W[y]}`, false], [`${W[x]}분의 ${W[y]}`, false]]);
+            return C(`${dj(x + '.' + y, '을/를')} 바르게 읽은 것은?`, rows.map(([text]) => text), rows.findIndex(([, ok]) => ok), {
+              explain: `소수점 앞의 수를 읽고, 소수점은 점이라고 읽은 뒤, 소수점 뒤의 숫자를 읽는다.`, facts: { truth: rows.map(([, ok]) => ok), want: true }
             });
           }),
           T('deci-shade', '색칠한 부분을 소수로 나타내기', '①43 ②42 ③39', (d) => {
