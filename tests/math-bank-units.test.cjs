@@ -1298,6 +1298,11 @@ test('큰 수: 읽은 말·끊어 쓴 말을 다시 읽고, □·수 카드는 �
     }
     // 수로 쓸 때 0의 개수
     if (g.zeros) { for (const [text, i] of g.zeros) { assert.equal(String(valueOf(text)).split('0').length - 1, answerAt(item, i), label); assert.ok(visible.includes(strip(text)), label); } tally('zeros'); }
+    // 수로 쓸 때 0이 가장 많은 보기 고르기
+    if (g.zerosMost) {
+      const zeros = item.choice.options.map((option) => String(valueOf(option)).split('0').length - 1), top = Math.max(...zeros);
+      assert.equal(zeros.filter((z) => z === top).length, 1, label); assert.equal(item.choice.answer, zeros.indexOf(top), label); tally('zeros');
+    }
     // 기준보다 큰(작은) 것의 수
     if (g.countIf) {
       const { values, test: kind, target, i } = g.countIf;
