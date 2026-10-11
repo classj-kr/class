@@ -137,10 +137,20 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     sub1: (a, b) => borrows(a, b) === 1,
     sub2: (a, b) => borrows(a, b) === 2
   };
-  let checked = 0;
+  const TABLE_DIVISION = new Set(['3-1-3']);
+  // 앞의 두 단원은 수가 그림(세로셈 칸·수 모형·길 그림) 안에 들어 있어 글만 읽어서는 맞춰 볼 수 없다.
+  const NUMBERS_IN_DRAWINGS = new Set(['3-1-1', '3-1-2']);
+  let checked = 0, divisions = 0;
   everyItem((item, at) => {
     const f = item.facts || {}, label = where(item, at);
     for (const [text, i] of f.calc || []) { assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`); assert.ok(evaluate(text) > 0, label); checked += 1; }
+    // 답을 다시 셈하는 식의 수는 문제에 적힌 수여야 한다(글과 식이 따로 놀면 답을 맞춰 본 것이 아니다).
+    // 글에 숫자로 적히지 않는 수(일주일의 7 따위)는 facts.unseen 에 밝혀 둔다.
+    if (f.calc && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
+      // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다.
+      const shown = new Set(strip((item.text + ' ' + (item.figure || '')).replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 ')).match(/\d+/g) || []);
+      for (const [text] of f.calc) for (const n of text.match(/\d+/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
+    }
     if (f.pair) {
       const [a, op, b] = f.pair;
       assert.ok(a >= 100 && a <= 999 && b >= 100 && b <= 999, label);
@@ -150,8 +160,18 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       if (f.carryValue) { const c = carries(a, b).at; assert.equal(answerAt(item, 0), f.carryValue, label); assert.equal(c[f.carryValue === 10 ? 0 : 1], 1, label); }
     }
     if (f.parts) f.parts.forEach(([text, i]) => assert.equal(answerAt(item, i), evaluate(text), label));
+    // 3학년 1학기 나눗셈은 곱셈구구 범위뿐이다: 글·그림·풀이에 적힌 나눗셈은 모두 나머지가 없고 나누는 수와 몫이 2~9.
+    if (TABLE_DIVISION.has(at.unit.id)) {
+      // 빈칸은 □ 로 남겨 두어야 빈칸 뒤의 수가 앞 식에 붙어 읽히지 않는다.
+      const whole = strip([item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<span class="mb-box">[^<]*<\/span>/g, '□'));
+      for (const m of whole.matchAll(/(\d+) ÷ (\d+)/g)) {
+        const a = Number(m[1]), b = Number(m[2]);
+        assert.ok(b >= 2 && b <= 9 && a % b === 0 && a / b >= 2 && a / b <= 9, `곱셈구구 밖의 나눗셈 ${m[0]} — ${label}`); divisions += 1;
+      }
+    }
   });
   assert.ok(checked > 1000);
+  assert.ok(divisions > 1000, '나눗셈 검사 수: ' + divisions);
 });
 
 test('가려진 숫자: 가린 자리를 모든 숫자로 바꿔 보아도 맞는 경우는 하나뿐이다', () => {
@@ -222,6 +242,11 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
         assert.equal(same.length, 1, label);
         assert.deepEqual(f.choose.pairsShown[item.choice.answer].slice().sort(), [same[0][0][1], same[0][1][1]].sort(), label);
         assert.equal(f.choose.pairsShown.filter((p) => values[p[0]] === values[p[1]]).length, 1, label);
+      } else if (rule === 'odd') {
+        // 값이 나머지와 다른 하나 찾기: 하나만 다르고 나머지는 모두 같다.
+        const lone = values.filter((v) => values.filter((w) => w === v).length === 1);
+        assert.equal(lone.length, 1, label); assert.equal(new Set(values).size, 2, label);
+        assert.equal(item.choice.answer, values.indexOf(lone[0]), label);
       } else assert.fail('모르는 고르기 규칙 ' + rule + ': ' + label);
       tally('choose:' + rule);
     }
@@ -410,6 +435,39 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
       assert.equal(item.choice.answer, good.indexOf(f.claimedWant), label); tally('claimed');
+    }
+    if (f.minus) {
+      // 같은 수를 거듭 빼어 0 만들기: a 에서 k 를 빼어 가며 센 횟수가 n
+      // 그림의 뺄셈식을 읽어 빼는 횟수가 n 인지도 본다. hidden 이면 빼는 수가 △ 로 가려져 있고 그 수를 묻는다.
+      const { a, k, n, hidden } = f.minus; let left = a, times = 0;
+      while (left > 0) { left -= k; times += 1; }
+      assert.equal(left, 0, label); assert.equal(times, n, label); assert.ok(n >= 2, label);
+      const terms = strip(item.figure).split('= 0')[0].split('−').map((s) => s.trim());
+      assert.deepEqual(terms, [String(a)].concat(Array.from({ length: n }, () => (hidden ? '△' : String(k)))), label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), hidden ? [k] : [k, n], label); tally('minus');
+    }
+    if (f.triple) {
+      // 수 카드 넷 가운데 셋으로 곱셈식 만들기: 곱셈식이 되는 세 수는 한 벌뿐이고, 남는 수가 답이다.
+      assert.equal(new Set(f.triple).size, 4, label);
+      const made = [];
+      for (const z of f.triple) for (const [x, y] of pairsOf(f.triple.filter((v) => v !== z))) if (x * y === z) made.push([x, y, z]);
+      assert.equal(made.length, 1, label);
+      assert.equal(answerAt(item, 0), f.triple.find((v) => !made[0].includes(v)), label); tally('triple');
+    }
+    if (f.times) {
+      // a ÷ b 의 몫을 구하는 곱셈식: 곱이 a 이고 b 가 들어 있는 보기는 하나뿐이다. 보기의 곱셈식은 모두 옳은 식이다.
+      const { a, b, options } = f.times;
+      const hits = options.filter(([x, y]) => x * y === a && (x === b || y === b));
+      assert.equal(hits.length, 1, label);
+      assert.deepEqual(Array.from(options[item.choice.answer]), Array.from(hits[0]), label);
+      assert.ok(options.every(([x, y]) => x >= 2 && x <= 9 && y >= 2 && y <= 9), label); tally('times');
+    }
+    if (f.divEnds) {
+      const big = Math.max(...f.divEnds), small = Math.min(...f.divEnds);
+      assert.equal(new Set(f.divEnds).size, f.divEnds.length, label);
+      assert.equal(big % small, 0, label); assert.equal(answerAt(item, 0), big / small, label);
+      // 가장 큰 수·가장 작은 수가 아닌 짝으로 나누어도 같은 답이 나오면 조건이 답을 가르지 못한다.
+      assert.ok(pairsOf(f.divEnds).filter(([x, y]) => Math.max(x, y) / Math.min(x, y) === big / small).length === 1, '다른 짝도 같은 몫: ' + label); tally('divEnds');
     }
   });
   for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
