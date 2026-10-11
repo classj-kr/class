@@ -131,10 +131,10 @@
       card.append(choices);
     } else {
       const form = el('form', 'mb-answer'); form.noValidate = true;
-      // 분수 답은 분자 칸과 분모 칸을 위아래로 놓는다.
+      // 분수 답은 분자 칸과 분모 칸을 위아래로 놓는다. 대분수 답은 자연수 칸을 그 왼쪽에 둔다.
       const stack = item.fraction ? el('span', 'mb-fracfield') : null;
-      if (stack) form.append(stack);
-      item.inputs.forEach((input) => {
+      if (stack && !item.mixed) form.append(stack);
+      item.inputs.forEach((input, at) => {
         // 칸 너비는 칸의 개수로만 정한다. 정답의 자릿수에 맞추면 칸 너비가 답의 크기를 알려 준다.
         const field = el('label', 'mb-field' + (roomy && !item.fraction ? ' is-wide' : item.inputs.length > 1 ? ' is-short' : ''));
         if (input.label && !item.fraction) field.append(el('span', null, input.label));
@@ -144,8 +144,11 @@
         box.setAttribute('aria-label', (input.label || '답') + ' 적기');
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));
-        (stack || form).append(field);
+        const whole = Boolean(stack) && item.mixed && at === 0;
+        (stack && !whole ? stack : form).append(field);
+        if (whole) form.append(stack);
       });
+      if (item.fraction && item.unit) form.append(el('span', null, item.unit));
       const submit = el('button', 'mb-primary', '확인'); submit.type = 'submit';
       form.append(submit);
       form.addEventListener('submit', (event) => {
@@ -165,7 +168,7 @@
 
   const answerText = (item) => (item.choice
     ? plainText(item.choice.options[item.choice.answer])
-    : item.fraction ? item.inputs[0].answer + '/' + item.inputs[1].answer
+    : item.fraction ? (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
     : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit ? (/^[A-Za-z]/.test(input.unit) ? ' ' : '') + input.unit : '')).join(', '));
 
   // 답한 문항을 그린다(방금 답했을 때와 이어 풀기로 되살릴 때 함께 쓴다).

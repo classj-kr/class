@@ -497,8 +497,9 @@
   const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead }], explain: o.explain || '', facts: o.facts || {} });
   const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, explain: o.explain || '', facts: o.facts || {} });
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
-  // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다.
-  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: [{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }], fraction: true, explain: o.explain || '', facts: o.facts || {} });
+  // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다. 답은 더 줄일 수 없는 분수(기약분수)로 적는다.
+  // o.whole 을 주면 대분수(자연수 칸 + 분자·분모 칸), o.improper: true 면 가분수(분자가 분모보다 크다), o.unit 은 분수 뒤에 적는 단위.
+  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: (o.whole != null ? [{ answer: o.whole, label: '자연수' }] : []).concat([{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }]), fraction: true, mixed: o.whole != null, improper: Boolean(o.improper), unit: o.unit || '', explain: o.explain || '', facts: o.facts || {} });
   // 소수 하나를 답하는 문항(소수 셋째 자리까지)
   const D = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, decimal: true }], explain: o.explain || '', facts: o.facts || {} });
   // 검사가 따로 셈할 식 글

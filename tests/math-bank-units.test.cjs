@@ -76,7 +76,7 @@ function everyItem(visit, extra = true) {
 }
 const where = (item, at) => `${at.unit.id} ${at.group.id} ${item.key} (seed ${at.seed}): ${strip(item.text)} ${strip(item.figure)}`;
 // 답이 네 자리를 넘는 단원(4학년 1학기 큰 수). 9000조를 넘는 수는 자바스크립트가 정확히 못 담으니 쓰지 않는다.
-const BIG_NUMBER_UNITS = new Set(['4-1-1', '4-1-3']);
+const BIG_NUMBER_UNITS = new Set(['4-1-1', '4-1-3', '4-1-6']);
 // 소수 둘째·셋째 자리까지 답하는 단원
 const FINE_DECIMAL_UNITS = new Set(['4-2-3']);
 const answerAt = (item, i) => item.inputs[i].answer;
@@ -116,10 +116,11 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
         if (input.decimal) { const fine = FINE_DECIMAL_UNITS.has(at.unit.id), scale = fine ? 1000 : 10; assert.ok(Math.abs(input.answer * scale - Math.round(input.answer * scale)) < 1e-6 && !Number.isInteger(input.answer) && input.answer > 0 && input.answer < (fine ? 1000 : 100), label); }
         else assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= (BIG_NUMBER_UNITS.has(at.unit.id) ? 9e15 : 9999), label);
       }
-      // 분수 답: 분자·분모 두 칸, 1보다 작은 분수, 더 줄일 수 없는 분수(같은 크기의 다른 분수가 답이 되지 않게).
+      // 분수 답: 분자·분모 두 칸(대분수는 자연수 칸까지 세 칸), 더 줄일 수 없는 분수(같은 크기의 다른 분수가 답이 되지 않게).
+      // 진분수가 기본이고, improper 인 문항만 가분수(분자가 분모보다 크다)를 받는다. 대분수의 분수 부분은 진분수다.
       if (item.fraction) {
-        const [top, bottom] = item.inputs.map((input) => input.answer), common = (x, y) => (y ? common(y, x % y) : x);
-        assert.ok(item.inputs.length === 2 && top >= 1 && top < bottom && common(top, bottom) === 1, '분수 답: ' + label);
+        const values = item.inputs.map((input) => input.answer), [top, bottom] = values.slice(-2), common = (x, y) => (y ? common(y, x % y) : x);
+        assert.ok(item.inputs.length === (item.mixed ? 3 : 2) && top >= 1 && bottom >= 2 && (item.improper && !item.mixed ? top > bottom : top < bottom) && common(top, bottom) === 1 && (!item.mixed || values[0] >= 1), '분수 답: ' + label);
       }
       const answers = item.inputs.map((input) => String(input.answer));
       assert.equal(B.isCorrect(item, answers), true, label);
