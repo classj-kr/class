@@ -722,6 +722,12 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       const { list, want } = f.fracKinds, hit = list.filter(([n, d]) => (want === 'proper' ? n < d : n >= d)).length;
       assert.ok(want === 'proper' || want === 'improper', label); assert.ok(hit >= 1 && hit < list.length, label); assert.equal(answerAt(item, 0), hit, label); tally('fracKinds');
     }
+    if (f.between) {
+      // 두 수 사이에 있는 수는 보기 가운데 하나뿐이다.
+      const lo = evaluate(f.between.low), hi = evaluate(f.between.high), hit = f.between.exprs.map((x) => evaluate(x) > lo && evaluate(x) < hi);
+      assert.ok(lo < hi, label); assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('between');
+    }
+    if (f.partTalk) { const { total, group, part } = f.partTalk; assert.ok(total % group === 0 && part % group === 0 && part < total, label); assert.equal(f.choose.target, (part / group) / (total / group), label); tally('partTalk'); }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
