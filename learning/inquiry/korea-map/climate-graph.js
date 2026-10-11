@@ -7,8 +7,8 @@
   // station: { name, temp[12], rain[12] }. options.title이 있으면 그 제목을, showName이면 지점 이름을 쓴다.
   function build(station, options) {
     const opts = options || {};
-    const width = 420, height = 250;
-    const left = 42, right = 46, top = 28, bottom = 34;
+    const width = 420, height = 278;
+    const left = 42, right = 46, top = 28, bottom = 62;
     const plotW = width - left - right, plotH = height - top - bottom;
     const tMin = -20, tMax = 40;
     const rMax = Math.max(300, opts.rainMax || 0, Math.ceil(Math.max(...station.rain) / 100) * 100);
@@ -38,12 +38,14 @@
     MONTHS.forEach((m, i) => parts.push(`<text x="${x(i)}" y="${height - bottom + 16}" text-anchor="middle" font-size="10" fill="#587079">${m}월</text>`));
     parts.push(`<line x1="${left}" y1="${top + plotH}" x2="${left + plotW}" y2="${top + plotH}" stroke="#8b9aa0"/>`);
 
-    const avg = station.temp.reduce((a, b) => a + b, 0) / 12;
-    const total = station.rain.reduce((a, b) => a + b, 0);
+    const avg = station.annualTemp ?? station.temp.reduce((a, b) => a + b, 0) / 12;
+    const total = station.annualRain ?? station.rain.reduce((a, b) => a + b, 0);
     const range = Math.max(...station.temp) - Math.min(...station.temp);
     const stats = `연평균 ${avg.toFixed(1)}℃ · 연교차 ${range.toFixed(1)}℃ · 연 강수량 ${Math.round(total)}mm`;
     const title = opts.title || (opts.showName ? station.name : "어느 지점의 기후 그래프");
-    parts.push(`<text x="${width / 2}" y="${height - 6}" text-anchor="middle" font-size="11" font-weight="700" fill="#17323a">${title} · ${stats}</text>`);
+    parts.push(`<text x="${width / 2}" y="${height - 29}" text-anchor="middle" font-size="13" font-weight="700" fill="#17323a">${title}</text>`);
+    parts.push(`<text x="${width / 2}" y="${height - 12}" text-anchor="middle" font-size="12" fill="#17323a">${stats}</text>`);
+    if(station.normalPeriod) parts.push(`<text x="${width / 2}" y="16" text-anchor="middle" font-size="11" fill="#587079">기상청 ${station.normalPeriod} 평년</text>`);
 
     return {
       svg: `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${title}" preserveAspectRatio="xMidYMid meet">${parts.join("")}</svg>`,

@@ -1,5 +1,5 @@
 /* 본문 크기를 유지하고, 중복 제목과 불필요한 여백을 줄인 학습 화면. */
-.has-study .app-shell { --map-columns: minmax(340px, .94fr) minmax(490px, 1.06fr); }
+.has-study .app-shell { --map-columns: minmax(0, 1fr) clamp(340px, 30vw, 430px); }
 .has-study .study-panel { padding: 0 16px 16px; background: #f5f5ef; gap: 12px; container-type: inline-size; }
 #studyWorkspace { min-width: 0; }
 #studyWorkspace[hidden], .question-diagram[hidden] { display: none; }
@@ -55,8 +55,7 @@
 .visual-evidence strong { font-size: 12px; }
 .visual-evidence p { font-size: 13px; line-height: 1.65; margin: 6px 0 0; }
 .is-revealed { outline: 2px solid #79a784; outline-offset: -2px; }
-@media (min-width: 1600px) { .has-study .app-shell { --map-columns: minmax(0,1.15fr) minmax(560px,.85fr); } }
-@media (max-width: 1050px) { .has-study .study-layout { display: flex; } .has-study .study-panel { overflow: visible; padding-inline: 14px; } .has-study .map-stage { height: 34dvh; min-height: 250px; } }
+@media (max-width: 1050px) { .has-study .study-layout { display: flex; } .has-study .study-panel { overflow: visible; padding-inline: 14px; } .has-study .map-stage { height: 55dvh; min-height: 300px; } }
 @media (max-width: 820px) { .question-map-wrap.has-diagram { grid-template-rows: auto auto; flex: 0 0 auto; } .question-diagram { overflow: visible; padding: 12px; } .question-diagram .concept-visual svg { max-height: 235px; } .question-diagram .visual-comparison { grid-template-columns: repeat(auto-fit,minmax(135px,1fr)); } .question-diagram .comparison-cell { padding: 8px; } }
 @media (max-width: 480px) { .has-study .study-panel { padding-inline: 12px; } .visual-comparison { grid-template-columns: 1fr; } .concept-visual { padding-inline: 5px; } .concept-visual figcaption { font-size: 10px; } .lesson-navigation select { font-size: 13px; } .concept-visual svg { font-size: 17px; } }
 button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #b98335; outline-offset: 3px; }
@@ -86,6 +85,41 @@ button:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px
 .korea-school-nav .theme-tabs { flex: 1; min-width: 0; }
 body .korea-school-nav { flex-direction: row; align-items: center; }
 body .korea-school-nav > .school-level { flex-shrink: 0; align-self: center; margin: 4px 10px 4px 2px; }
+.lesson-explain-button { min-height:40px; padding:8px 18px; border:1px solid #9bbcb9; border-radius:8px; background:#fffefa; color:#175e65; font-weight:700; }
+#studyWorkspace #lessonDiagram { display:block; cursor:zoom-in; }
+#studyWorkspace #lessonDiagram .visual-comparison { display:none; }
+#studyWorkspace .concept-table { font-size:13px; }
+#studyWorkspace .concept-table caption { padding:4px 2px 10px; font-size:14px; }
+#studyWorkspace .concept-table th, #studyWorkspace .concept-table td { padding:9px 5px; }
+.lesson-summary { margin:16px 0 10px; font-size:16px; line-height:1.7; word-break:keep-all; }
+.lesson-checks { padding-left:20px; margin:0 0 18px; font-size:14px; line-height:1.8; color:#385d63; }
+.lesson-checks:empty { display:none; }
+.lesson-explanation { width:min(840px,calc(100% - 28px)); max-height:calc(100dvh - 32px); padding:0; border:1px solid #bdccc6; border-radius:14px; background:#f8f7f1; overflow:hidden; }
+.lesson-explanation[open] { display:flex; flex-direction:column; }
+.lesson-explanation header { display:flex; align-items:center; justify-content:space-between; gap:15px; padding:14px 22px; border-bottom:1px solid #cdd7d0; flex-shrink:0; }
+.lesson-explanation h2 { font-size:18px; line-height:1.5; margin:0; }
+.lesson-explanation header button { min-height:40px; padding:8px 12px; border:1px solid #bdccc6; background:#fffefa; color:#31575e; border-radius:7px; white-space:nowrap; }
+.explanation-body { overflow:auto; padding:24px 32px; }
+.explanation-visual .concept-visual svg { max-width:500px; max-height:230px; }
+.explanation-visual .comparison-cell { padding:8px 12px; }
+.explanation-prose { color:#283431; font-family:var(--reading-font); font-size:18px; line-height:1.85; word-break:keep-all; }
+.lesson-summary, .lesson-checks, .study-spot-explanation { font-family:var(--reading-font); }
+.explanation-prose p { margin:24px 0 0; }
+.study-spot-explanation { font-size:15px; line-height:1.65; }
+.study-spot-explanation strong { display:block; margin-bottom:7px; }
+.study-spot-explanation button { margin-top:10px; padding:7px 12px; border:1px solid #aac3bd; border-radius:6px; background:#f7f6f0; color:#175e65; }
+.history-study-tools { display:flex; gap:10px; margin:12px 0; }
+.history-study-tools > button { flex:1; margin:0; min-height:42px; }
+.history-content > .history-cues { margin:0; }
+.history-content > .history-cues dt { font-family:var(--ui-font, system-ui); font-size:14px; font-weight:700; line-height:1.5; }
+.history-content > .history-cues dd, .history-map-summary { font-family:var(--reading-font); font-size:16px; line-height:1.7; }
+.history-reading-period { margin:0; color:#617275; font-size:14px; }
+.history-reading-dialog .history-explanation { font-size:18px; }
+.history-reading-dialog .history-cues { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:12px 0 24px; }
+.history-reading-dialog .history-cues > div { border:1px solid #d8dfd7; border-radius:8px; padding:12px; }
+.history-reading-dialog .history-cues dt { font-family:var(--ui-font, system-ui); font-size:15px; font-weight:700; }
+.history-reading-dialog .history-cues dd { font-size:16px; }
+@media (max-width:600px) { .explanation-body { padding:18px; } .explanation-prose { font-size:17px; } .lesson-explanation header { padding:12px 18px; } }
 @media (max-width: 1050px) {
   .app-shell { grid-template-columns: minmax(0, 1fr); }
   .study-layout { min-width: 0; }

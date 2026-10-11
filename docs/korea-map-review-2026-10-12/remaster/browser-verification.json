@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-12",
+  "version": "20261012-remaster5",
+  "questions": 78,
+  "lessons": 39,
+  "grade": "high",
+  "checks": [
+    "each question: incorrect choice permits retry without answer highlight or explanation",
+    "each question: correct choice enables next and reaches result",
+    "elementary switch from unsupported seafloor stays in app and selects allowed concept",
+    "desktop 1280x900 and mobile 390x844",
+    "native explanation dialog Escape closes",
+    "history Hanyang geographic context and explanation opens",
+    "history explanation dialog Escape closes; meaningless history 0/0 badge removed",
+    "mobile 390px data table fits width without horizontal scroll"
+  ],
+  "cases": [
+    {
+      "id": "relief",
+      "questions": [
+        "korea-exam-relief-1",
+        "korea-exam-relief-2"
+      ]
+    },
+    {
+      "id": "river",
+      "questions": [
+        "korea-exam-river-1",
+        "korea-exam-river-2"
+      ]
+    },
+    {
+      "id": "floodplain",
+      "questions": [
+        "korea-exam-floodplain-1",
+        "korea-exam-floodplain-2"
+      ]
+    },
+    {
+      "id": "coast",
+      "questions": [
+        "korea-exam-coast-1",
+        "korea-exam-coast-2"
+      ]
+    },
+    {
+      "id": "volcano",
+      "questions": [
+        "korea-exam-volcano-1",
+        "korea-exam-volcano-2"
+      ]
+    },
+    {
+      "id": "karst",
+      "questions": [
+        "korea-exam-karst-1",
+        "korea-exam-karst-2"
+      ]
+    },
+    {
+      "id": "basin",
+      "questions": [
+        "korea-exam-basin-1",
+        "korea-exam-basin-2"
+      ]
+    },
+    {
+      "id": "temperature",
+      "questions": [
+        "korea-exam-temperature-1",
+        "korea-exam-temperature-2"
+      ]
+    },
+    {
+      "id": "monsoon",
+      "questions": [
+        "korea-exam-monsoon-1",
+        "korea-exam-monsoon-2"
+      ]
+    },
+    {
+      "id": "foehn",
+      "questions": [
+        "korea-exam-foehn-1",
+        "korea-exam-foehn-2"
+      ]
+    },
+    {
+      "id": "local-climate",
+      "questions": [
+        "korea-exam-local-climate-1",
+        "korea-exam-local-climate-2"
+      ]
+    },
+    {
+      "id": "waters",
+      "questions": [
+        "korea-exam-waters-1",
+        "korea-exam-waters-2"
+      ]
+    },
+    {
+      "id": "location",
+      "questions": [
+        "korea-exam-location-1",
+        "korea-exam-location-2"
+      ]
+    },
+    {
+      "id": "oldmaps",
+      "questions": [
+        "korea-exam-oldmaps-1",
+        "korea-exam-oldmaps-2"
+      ]
+    },
+    {
+      "id": "map-data",
+      "questions": [
+        "korea-exam-map-data-1",
+        "korea-exam-map-data-2"
+      ]
+    },
+    {
+      "id": "distribution",
+      "questions": [
+        "korea-exam-distribution-1",
+        "korea-exam-distribution-2"
+      ]
+    },
+    {
+      "id": "age",
+      "questions": [
+        "korea-exam-age-1",
+        "korea-exam-age-2"
+      ]
+    },
+    {
+      "id": "city",
+      "questions": [
+        "korea-exam-city-1",
+        "korea-exam-city-2"
+      ]
+    },
+    {
+      "id": "village",
+      "questions": [
+        "korea-exam-village-1",
+        "korea-exam-village-2"
+      ]
+    },
+    {
+      "id": "port-industry",
+      "questions": [
+        "korea-exam-port-industry-1",
+        "korea-exam-port-industry-2"
+      ]
+    },
+    {
+      "id": "tech",
+      "questions": [
+        "korea-exam-tech-1",
+        "korea-exam-tech-2"
+      ]
+    },
+    {
+      "id": "farming",
+      "questions": [
+        "korea-exam-farming-1",
+        "korea-exam-farming-2"
+      ]
+    },
+    {
+      "id": "energy",
+      "questions": [
+        "korea-exam-energy-1",
+        "korea-exam-energy-2"
+      ]
+    },
+    {
+      "id": "transport-mode",
+      "questions": [
+        "korea-exam-transport-mode-1",
+        "korea-exam-transport-mode-2"
+      ]
+    },
+    {
+      "id": "transport-axis",
+      "questions": [
+        "korea-exam-transport-axis-1",
+        "korea-exam-transport-axis-2"
+      ]
+    },
+    {
+      "id": "regions",
+      "questions": [
+        "korea-exam-regions-1",
+        "korea-exam-regions-2"
+      ]
+    },
+    {
+      "id": "division",
+      "questions": [
+        "korea-exam-division-1",
+        "korea-exam-division-2"
+      ]
+    },
+    {
+      "id": "north",
+      "questions": [
+        "korea-exam-north-1",
+        "korea-exam-north-2"
+      ]
+    },
+    {
+      "id": "seafloor",
+      "questions": [
+        "korea-exam-seafloor-1",
+        "korea-exam-seafloor-2"
+      ]
+    },
+    {
+      "id": "rocks",
+      "questions": [
+        "korea-exam-rocks-1",
+        "korea-exam-rocks-2"
+      ]
+    },
+    {
+      "id": "glacial",
+      "questions": [
+        "korea-exam-glacial-1",
+        "korea-exam-glacial-2"
+      ]
+    },
+    {
+      "id": "soils",
+      "questions": [
+        "korea-exam-soils-1",
+        "korea-exam-soils-2"
+      ]
+    },
+    {
+      "id": "development",
+      "questions": [
+        "korea-exam-development-1",
+        "korea-exam-development-2"
+      ]
+    },
+    {
+      "id": "migration",
+      "questions": [
+        "korea-exam-migration-1",
+        "korea-exam-migration-2"
+      ]
+    },
+    {
+      "id": "hazards",
+      "questions": [
+        "korea-exam-hazards-1",
+        "korea-exam-hazards-2"
+      ]
+    },
+    {
+      "id": "climate-change",
+      "questions": [
+        "korea-exam-climate-change-1",
+        "korea-exam-climate-change-2"
+      ]
+    },
+    {
+      "id": "vegetation",
+      "questions": [
+        "korea-exam-vegetation-1",
+        "korea-exam-vegetation-2"
+      ]
+    },
+    {
+      "id": "services",
+      "questions": [
+        "korea-exam-services-1",
+        "korea-exam-services-2"
+      ]
+    },
+    {
+      "id": "renewal",
+      "questions": [
+        "korea-exam-renewal-1",
+        "korea-exam-renewal-2"
+      ]
+    }
+  ],
+  "presentationVersion": "20261012-remaster6"
+}

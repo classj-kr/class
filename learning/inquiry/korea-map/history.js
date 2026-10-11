@@ -23,6 +23,7 @@
   let selected = Math.max(0, scenes.findIndex(scene => scene.id === new URLSearchParams(location.search).get("historyScene")));
   let panelHost;
   let panelApi;
+  let explanationDialog;
   window.SchoolLevel?.subscribe(() => {
     if (!panelHost?.isConnected) return;
     renderPanel();
@@ -120,6 +121,7 @@
 
   function renderPanel() {
     if (!panelHost) return;
+    explanationDialog?.close();
     const visibleScenes = available();
     if (!visibleScenes.includes(scenes[selected])) {
       const next = visibleScenes.find(scene => scene.startYear >= scenes[selected].startYear) || visibleScenes[visibleScenes.length-1];
@@ -161,7 +163,7 @@
       if (active) eraNav.scrollLeft = active.offsetLeft - eraNav.offsetLeft - (eraNav.clientWidth - active.offsetWidth) / 2;
     });
     const content = panelHost.querySelector("#historyContent");
-    const title = el("header", "history-scene-heading");
+    const title = el("header", "visually-hidden");
     title.append(el("h3", "", scene.title));
     if (grade) title.append(el('span', 'history-subject', grade.subject));
     const explanation = el('section', 'history-explanation');
@@ -189,7 +191,6 @@
       row.append(el("dt", "", heading), el("dd", "", text));
       cues.append(row);
     });
-    const trap = el("p", "history-trap", scene.trap);
     const places = el("section", "history-places");
     places.setAttribute("aria-label", "지도 지점");
     const list = el("ol");
@@ -209,13 +210,35 @@
     const quiz = scene.id === "korean-war" && window.KoreaHistoryOrder
       ? button("지도 순서 문제", null, () => window.KoreaHistoryOrder.open()) : null;
     if (quiz) quiz.classList.add("history-order-launch");
-    const study = grade ? [explanation] : [cues, trap];
+    const tools = el('div', 'history-study-tools');
+    const explain = button('설명', '역사 지도 설명 보기', () => {
+      if (!explanationDialog) {
+        explanationDialog = el('dialog', 'lesson-explanation history-reading-dialog');
+        explanationDialog.setAttribute('aria-labelledby', 'historyExplanationTitle');
+        explanationDialog.addEventListener('click', e => { if(e.target === explanationDialog) explanationDialog.close(); });
+        document.body.append(explanationDialog);
+      }
+      const header = el('header');
+      const heading = el('h2', '', scene.title);
+      heading.id = 'historyExplanationTitle';
+      header.append(heading, button('닫기 ×', '역사 설명 닫기', () => explanationDialog.close()));
+      const body = el('div', 'explanation-body');
+      body.append(el('p', 'history-reading-period', scene.period));
+      if (school() !== 'elementary') body.append(cues.cloneNode(true));
+      body.append(explanation.cloneNode(true));
+      explanationDialog.replaceChildren(header, body);
+      explanationDialog.showModal();
+    });
+    explain.classList.add('lesson-explain-button');
+    explain.setAttribute('aria-haspopup', 'dialog');
+    tools.append(explain);
+    const summary = el('p', 'history-map-summary', (grade?.paragraphs?.[0] || '').split(/(?<=[.!?])\s+/)[0]);
+    const study = [tools, school() === 'elementary' || !scene.cues.length ? summary : cues];
     if(window.HistoryQuestions?.forLevel(scene.id,school()).length) {
-      const practice=button('확인 문제',null,()=>window.KoreaHistoryPractice.open(scene,panelApi));
+      const practice=button('문제',null,()=>window.KoreaHistoryPractice.open(scene,panelApi));
       practice.classList.add('history-practice-launch');practice.setAttribute('aria-haspopup','dialog');
-      study.push(practice);
+      tools.append(practice);
     }
-    if (state.lesson) study.push(cues);
     if (scene.distribution && window.KoreaHistoryBronze) study.push(window.KoreaHistoryBronze.panel());
     content.replaceChildren(title, territoryNav, ...(quiz ? [quiz] : []), ...study, places);
   }

@@ -1,0 +1,1134 @@
+{
+  "date": "2026-10-12",
+  "scope": "39 domestic geography concepts; prior history review retained separately",
+  "pageConvention": "1-based PDF page; geography2015 printed page = PDF page + 7",
+  "sources": {
+    "geography2015": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/한국지리 (박철웅)_2015/교과서/한국지리 (박철웅)_2015_한국지리 교과서 전체.pdf",
+      "pages": 206,
+      "sha256": "b283ea4e87ef673792f9d861ae890b80e075990f867097081ac6558da994f5b8",
+      "selectedPagesRead": [
+        3,
+        5,
+        12,
+        14,
+        16,
+        18,
+        26,
+        27,
+        28,
+        31,
+        33,
+        37,
+        38,
+        40,
+        41,
+        42,
+        45,
+        46,
+        47,
+        56,
+        57,
+        58,
+        60,
+        61,
+        69,
+        70,
+        73,
+        75,
+        89,
+        97,
+        98,
+        99,
+        102,
+        109,
+        110,
+        111,
+        112,
+        120,
+        122,
+        128,
+        129,
+        131,
+        134,
+        135,
+        137,
+        141,
+        148,
+        149,
+        155,
+        156,
+        165,
+        169,
+        170,
+        171
+      ],
+      "visuallyReviewedPages": [],
+      "status": "selected-page-review"
+    },
+    "atlas2015": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/지리 부도 (박철웅)_2015/교과서/지리 부도 (박철웅)_2015_[교과서 PDF] 지리부도.pdf",
+      "pages": 136,
+      "sha256": "3d5c90a4291a27f3c77b79af1343dc2fdd1d96a161930fbed2ea004912ddfcf0",
+      "selectedPagesRead": [
+        38,
+        42,
+        43,
+        48,
+        49,
+        51,
+        53
+      ],
+      "visuallyReviewedPages": [
+        38,
+        42,
+        43,
+        48,
+        49,
+        51,
+        53
+      ],
+      "status": "selected-page-review"
+    },
+    "atlas2022": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/지리 부도 (조성호)_2022/교과서/지리 부도 (조성호)_2022_[교과서PDF] 지리 부도.pdf",
+      "pages": 137,
+      "sha256": "10034e344965414feeccc953b939c6c7f3aca6985812f02dfb1623111a2573c1",
+      "selectedPagesRead": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "visuallyReviewedPages": [
+        41,
+        42,
+        43
+      ],
+      "status": "selected-page-review"
+    },
+    "geography": {
+      "path": "references/textbooks/중고등/T셀파/고등/사회/한국지리탐구(조대헌)/한지탐(천재)_교과서__b73b7dc5e1.pdf",
+      "pages": 221,
+      "sha256": "bab3b629a0fc2ba6f20c90fe4fac846b621434b2132d6041119bb0242e5e34c0",
+      "selectedPagesRead": [
+        5,
+        78,
+        79
+      ],
+      "visuallyReviewedPages": [],
+      "status": "selected-page-review"
+    },
+    "atlas": {
+      "path": "references/textbooks/중고등/T셀파/고등/사회/한국지리탐구(조대헌)/한지탐(천재)_고등 지리 부도(황병삼)__3b51c7cf7a.pdf",
+      "pages": 8,
+      "sha256": "c768bf4854e18a9bb4a28b209833fb12089f3563a737ae6037662a7747b8c7f4",
+      "selectedPagesRead": [],
+      "visuallyReviewedPages": [],
+      "status": "indexed-only-this-pass"
+    },
+    "primary": {
+      "path": "references/textbooks/초등/동아/사회과부도/사회과 부도 (정동연)_2022/사회과 부도 교과서_전체.pdf",
+      "pages": 132,
+      "sha256": "dbf9156a691750042c1ff3f4358175e117fc5e671c8b55a4df6837e1fc0d5f35",
+      "selectedPagesRead": [],
+      "visuallyReviewedPages": [],
+      "status": "indexed-only-this-pass"
+    },
+    "exam-6": {
+      "path": "references/textbooks/EBS/기출/2026/고3 6월 모평(평가원) 한국지리_문제_f5834b8a10.pdf",
+      "pages": 4,
+      "sha256": "218165ad20897860462cbf12f663bd1644905dd00d59c4bde961cad842f7263d",
+      "selectedPagesRead": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visuallyReviewedPages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "selected-page-review"
+    },
+    "answers-6": {
+      "path": "references/textbooks/EBS/기출/2026/고3 6월 모평(평가원) 한국지리_해설_9949f47939.pdf",
+      "pages": 7,
+      "sha256": "4dd8b43e9f9e28766dc762705f9a2373e6f5c126d85b86dbfc0345d6d93a2e65",
+      "selectedPagesRead": [
+        1,
+        3,
+        4
+      ],
+      "visuallyReviewedPages": [],
+      "status": "selected-page-review"
+    },
+    "exam-9": {
+      "path": "references/textbooks/EBS/기출/2026/고3 9월 모평(평가원) 한국지리_문제_38f3e36378.pdf",
+      "pages": 4,
+      "sha256": "45e64bb24310b43a66340b4890fd9a9559938ce68cb47a93d00db98838aa288a",
+      "selectedPagesRead": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visuallyReviewedPages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "selected-page-review"
+    },
+    "answers-9": {
+      "path": "references/textbooks/EBS/기출/2026/고3 9월 모평(평가원) 한국지리_해설_bd90edb526.pdf",
+      "pages": 9,
+      "sha256": "0c954abb2a7b5d01b0735b255b8b3cc56c35784fba780972ecb1c29ba6c04d71",
+      "selectedPagesRead": [],
+      "visuallyReviewedPages": [],
+      "status": "indexed-only-this-pass"
+    }
+  },
+  "coverage": [
+    {
+      "id": "relief",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        26,
+        27,
+        28
+      ],
+      "questionIds": [
+        "korea-exam-relief-1",
+        "korea-exam-relief-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "river",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        37,
+        38
+      ],
+      "questionIds": [
+        "korea-exam-river-1",
+        "korea-exam-river-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "floodplain",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        38
+      ],
+      "questionIds": [
+        "korea-exam-floodplain-1",
+        "korea-exam-floodplain-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "coast",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        40,
+        41,
+        42
+      ],
+      "questionIds": [
+        "korea-exam-coast-1",
+        "korea-exam-coast-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "volcano",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        45,
+        46
+      ],
+      "questionIds": [
+        "korea-exam-volcano-1",
+        "korea-exam-volcano-2"
+      ],
+      "evidenceTypes": [
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "karst",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        47
+      ],
+      "questionIds": [
+        "korea-exam-karst-1",
+        "korea-exam-karst-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "basin",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        31,
+        33
+      ],
+      "questionIds": [
+        "korea-exam-basin-1",
+        "korea-exam-basin-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "temperature",
+      "topic": "climate",
+      "textbookPdfPages": [
+        56,
+        57
+      ],
+      "questionIds": [
+        "korea-exam-temperature-1",
+        "korea-exam-temperature-2"
+      ],
+      "evidenceTypes": [
+        "graph",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          48,
+          49
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "monsoon",
+      "topic": "climate",
+      "textbookPdfPages": [
+        58,
+        60,
+        61
+      ],
+      "questionIds": [
+        "korea-exam-monsoon-1",
+        "korea-exam-monsoon-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          48,
+          49
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "foehn",
+      "topic": "climate",
+      "textbookPdfPages": [
+        60
+      ],
+      "questionIds": [
+        "korea-exam-foehn-1",
+        "korea-exam-foehn-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          48,
+          49
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "local-climate",
+      "topic": "climate",
+      "textbookPdfPages": [
+        69,
+        70
+      ],
+      "questionIds": [
+        "korea-exam-local-climate-1",
+        "korea-exam-local-climate-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          48,
+          49
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "waters",
+      "topic": "territory",
+      "textbookPdfPages": [
+        3,
+        5
+      ],
+      "questionIds": [
+        "korea-exam-waters-1",
+        "korea-exam-waters-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "location",
+      "topic": "territory",
+      "textbookPdfPages": [
+        3,
+        5
+      ],
+      "questionIds": [
+        "korea-exam-location-1",
+        "korea-exam-location-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "oldmaps",
+      "topic": "territory",
+      "textbookPdfPages": [
+        12,
+        14
+      ],
+      "questionIds": [
+        "korea-exam-oldmaps-1",
+        "korea-exam-oldmaps-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "map-data",
+      "topic": "territory",
+      "textbookPdfPages": [
+        16,
+        18
+      ],
+      "questionIds": [
+        "korea-exam-map-data-1",
+        "korea-exam-map-data-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "distribution",
+      "topic": "population",
+      "textbookPdfPages": [
+        89,
+        149
+      ],
+      "questionIds": [
+        "korea-exam-distribution-1",
+        "korea-exam-distribution-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          51,
+          53
+        ],
+        "atlas2022": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "age",
+      "topic": "population",
+      "textbookPdfPages": [
+        148,
+        149
+      ],
+      "questionIds": [
+        "korea-exam-age-1",
+        "korea-exam-age-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          51,
+          53
+        ],
+        "atlas2022": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "city",
+      "topic": "population",
+      "textbookPdfPages": [
+        89,
+        97
+      ],
+      "questionIds": [
+        "korea-exam-city-1",
+        "korea-exam-city-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          51,
+          53
+        ],
+        "atlas2022": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "village",
+      "topic": "population",
+      "textbookPdfPages": [
+        97
+      ],
+      "questionIds": [
+        "korea-exam-village-1",
+        "korea-exam-village-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          51,
+          53
+        ],
+        "atlas2022": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "port-industry",
+      "topic": "industry",
+      "textbookPdfPages": [
+        128,
+        129
+      ],
+      "questionIds": [
+        "korea-exam-port-industry-1",
+        "korea-exam-port-industry-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2022": [
+          43
+        ]
+      }
+    },
+    {
+      "id": "tech",
+      "topic": "industry",
+      "textbookPdfPages": [
+        128,
+        129,
+        134
+      ],
+      "questionIds": [
+        "korea-exam-tech-1",
+        "korea-exam-tech-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2022": [
+          43
+        ]
+      }
+    },
+    {
+      "id": "farming",
+      "topic": "industry",
+      "textbookPdfPages": [
+        122
+      ],
+      "questionIds": [
+        "korea-exam-farming-1",
+        "korea-exam-farming-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2022": [
+          43
+        ]
+      }
+    },
+    {
+      "id": "energy",
+      "topic": "industry",
+      "textbookPdfPages": [
+        109,
+        110,
+        111,
+        112,
+        120
+      ],
+      "questionIds": [
+        "korea-exam-energy-1",
+        "korea-exam-energy-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2022": [
+          43
+        ]
+      }
+    },
+    {
+      "id": "transport-mode",
+      "topic": "transport",
+      "textbookPdfPages": [
+        137,
+        141
+      ],
+      "questionIds": [
+        "korea-exam-transport-mode-1",
+        "korea-exam-transport-mode-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "transport-axis",
+      "topic": "transport",
+      "textbookPdfPages": [
+        137
+      ],
+      "questionIds": [
+        "korea-exam-transport-axis-1",
+        "korea-exam-transport-axis-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "regions",
+      "topic": "region",
+      "textbookPdfPages": [
+        165
+      ],
+      "questionIds": [
+        "korea-exam-regions-1",
+        "korea-exam-regions-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "division",
+      "topic": "region",
+      "textbookPdfPages": [
+        165
+      ],
+      "questionIds": [
+        "korea-exam-division-1",
+        "korea-exam-division-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "north",
+      "topic": "region",
+      "textbookPdfPages": [
+        169,
+        170,
+        171
+      ],
+      "questionIds": [
+        "korea-exam-north-1",
+        "korea-exam-north-2"
+      ],
+      "evidenceTypes": [
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "seafloor",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        41
+      ],
+      "questionIds": [
+        "korea-exam-seafloor-1",
+        "korea-exam-seafloor-2"
+      ],
+      "evidenceTypes": [
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "rocks",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        26,
+        27,
+        28,
+        47
+      ],
+      "questionIds": [
+        "korea-exam-rocks-1",
+        "korea-exam-rocks-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "glacial",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        28,
+        40,
+        41
+      ],
+      "questionIds": [
+        "korea-exam-glacial-1",
+        "korea-exam-glacial-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "soils",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        75
+      ],
+      "questionIds": [
+        "korea-exam-soils-1",
+        "korea-exam-soils-2"
+      ],
+      "evidenceTypes": [
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "development",
+      "topic": "region",
+      "textbookPdfPages": [
+        102
+      ],
+      "questionIds": [
+        "korea-exam-development-1",
+        "korea-exam-development-2"
+      ],
+      "evidenceTypes": [
+        "marks",
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {}
+    },
+    {
+      "id": "migration",
+      "topic": "population",
+      "textbookPdfPages": [
+        149,
+        155,
+        156
+      ],
+      "questionIds": [
+        "korea-exam-migration-1",
+        "korea-exam-migration-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          51,
+          53
+        ],
+        "atlas2022": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "hazards",
+      "topic": "climate",
+      "textbookPdfPages": [
+        69,
+        70
+      ],
+      "questionIds": [
+        "korea-exam-hazards-1",
+        "korea-exam-hazards-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          48,
+          49
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "climate-change",
+      "topic": "climate",
+      "textbookPdfPages": [
+        73
+      ],
+      "questionIds": [
+        "korea-exam-climate-change-1",
+        "korea-exam-climate-change-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          48,
+          49
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "vegetation",
+      "topic": "terrain",
+      "textbookPdfPages": [
+        75
+      ],
+      "questionIds": [
+        "korea-exam-vegetation-1",
+        "korea-exam-vegetation-2"
+      ],
+      "evidenceTypes": [
+        "diagram",
+        "marks"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          42,
+          43
+        ],
+        "atlas2022": [
+          41
+        ]
+      }
+    },
+    {
+      "id": "services",
+      "topic": "industry",
+      "textbookPdfPages": [
+        131,
+        134,
+        135
+      ],
+      "questionIds": [
+        "korea-exam-services-1",
+        "korea-exam-services-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2022": [
+          43
+        ]
+      }
+    },
+    {
+      "id": "renewal",
+      "topic": "population",
+      "textbookPdfPages": [
+        98,
+        99
+      ],
+      "questionIds": [
+        "korea-exam-renewal-1",
+        "korea-exam-renewal-2"
+      ],
+      "evidenceTypes": [
+        "stimulus"
+      ],
+      "testedInBrowser": true,
+      "textbookSource": "geography2015",
+      "atlasPages": {
+        "atlas2015": [
+          51,
+          53
+        ],
+        "atlas2022": [
+          42
+        ]
+      }
+    }
+  ]
+}

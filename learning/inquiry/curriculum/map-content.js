@@ -106,10 +106,14 @@
     function subject(kind,id,level){
         if(kind==='world'&&['winds','currents','seawater','enso','earthquakes','plate-motion'].includes(id))return level==='high'?'지구시스템과학':'과학';
         if(kind==='world'&&id==='seasons')return level==='high'?'고급 지구과학':'과학';
-        return level==='high'?(kind==='world'?'세계시민과 지리':'한국지리 탐구'):'사회';
+        return level==='high'?(kind==='world'?'세계시민과 지리':'한국지리 · 한국지리 탐구'):'사회';
     }
     window.SchoolMaps={
-        available(kind,id,level){return level!=='elementary'||!!(kind==='world'?primaryWorld:primaryKorea)[id];},
+        available(kind,id,level){
+            const lesson=kind==='korea'&&window.KOREA_GEOGRAPHY?.lessons?.find(l=>l.id===id);
+            if(lesson?.levels&&!lesson.levels.includes(level))return false;
+            return level!=='elementary'||!!(kind==='world'?primaryWorld:primaryKorea)[id];
+        },
         profile(kind,lesson,level){
             const low=(kind==='world'?primaryWorld:primaryKorea)[lesson.id];
             const high=(kind==='world'?highWorld:highKorea)[lesson.id];

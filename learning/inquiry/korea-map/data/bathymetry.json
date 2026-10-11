@@ -1,0 +1,29 @@
+{
+  "source": "NOAA ETOPO1 Ice Surface, grid registered, 1 arc-minute",
+  "url": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip",
+  "sourceSha256": "e4c4d8a98aba483012ebafd304942d09e4b880e1e596016573493c1b9536ddb3",
+  "depthBreaksMetres": [
+    200,
+    1000,
+    2000,
+    3000
+  ],
+  "colors": [
+    "#cae6ed",
+    "#8fc5db",
+    "#559ac4",
+    "#2f70a7",
+    "#1e4c82"
+  ],
+  "tiles": 2756,
+  "bytes": 790312,
+  "seaPixels": 67762417,
+  "sampleElevationMetres": {
+    "황해 중앙": -80,
+    "대한 해협": -120,
+    "울릉 분지": -2193,
+    "동해 북부 분지": -3519
+  },
+  "coastline": "Existing Copernicus/Mapzen relief coastline mask",
+  "encoding": "lossless WebP, exact RGBA round trip verified for every tile"
+}
