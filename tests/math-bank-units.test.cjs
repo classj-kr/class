@@ -641,7 +641,15 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.ok(m, label); assert.equal(answerAt(item, 0), Number(m[1]) * Number(m[2]), label); tally('onePiece');
     }
     if (f.mapSteps) { assert.equal(item.choice.answer, f.mapSteps - 1, label); tally('mapSteps'); }
-    if (f.divMeans) { const [a, b, q] = f.divMeans; assert.ok(a === b * q && b !== q && a - b !== q, label); tally('divMeans'); }
+    if (f.rulerPick) {
+      // 자 그림의 두 끝으로 길이를 다시 재어 보기에서 그 길이가 하나뿐인지, 끝 눈금 그대로 읽은 보기가 함정으로 들어 있는지 본다.
+      const ends = [...item.figure.matchAll(/눈금 (\d+)(?:에서 작은 눈금 (\d+)칸 더 간 곳)?/g)].map((m) => Number(m[1]) * 10 + Number(m[2] || 0)), length = ends[1] - ends[0];
+      assert.ok(ends[0] > 0, label); assert.equal(f.rulerPick.filter((v) => v === length).length, 1, label); assert.equal(new Set(f.rulerPick).size, f.rulerPick.length, label);
+      assert.equal(f.rulerPick[item.choice.answer], length, label); assert.ok(f.rulerPick.includes(ends[1]), '끝 눈금을 그대로 읽은 보기가 없다: ' + label); tally('rulerPick');
+    }
+    if (f.biggerPiece) { const { cuts, more } = f.biggerPiece; assert.ok(cuts[more] < cuts[1 - more], label); assert.equal(f.truth.filter(Boolean).length, 1, label); tally('biggerPiece'); }
+    if (f.drawn) { const { segment, line } = f.drawn; assert.ok(segment[1] - segment[0] > (line[1] - line[0]) * 2, '선분을 직선보다 길게 그려야 함정이 된다: ' + label); tally('drawn'); }
+    if (f.divMeans) { const [a, b, q] = f.divMeans; assert.ok(a === b * q && b !== q, label); tally('divMeans'); }
     if (f.timeKinds) {
       // 시각 ± 시간 = 시각, 시각 − 시각 = 시간, 시간 ± 시간 = 시간. 결과가 시각인 것은 하나뿐이다.
       const clocky = f.timeKinds.map(([x, , y]) => (x === 'at') !== (y === 'at'));

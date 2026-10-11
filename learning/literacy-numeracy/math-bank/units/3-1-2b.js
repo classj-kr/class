@@ -58,6 +58,22 @@
           facts: { angleTalk: { vertex: 'ㄴ', sides: [['ㄱ'], [near, far]], claims: rows.map((row) => row.claim) } }
         });
       }, { standard: ANGLE }),
+      H('h-drawn', '길게 그린 선분과 짧게 그린 직선', '선의 뜻·성질을 말한 문장 가리기(심화·기본 자료) — 그려진 길이에 속지 않고 뜻으로 가리게', (d) => {
+        // 그림은 선분을 길게, 직선을 짧게 그린다. 보기마다 걸리는 오개념이 다르다.
+        const [seg, lin] = d.pick([[['ㄱ', 'ㄴ'], ['ㄷ', 'ㄹ']], [['ㄷ', 'ㄹ'], ['ㄱ', 'ㄴ']]]), top = d.bool();
+        const rows = d.shuffle([
+          { text: `선분 ${seg.join('')}은 직선 ${lin.join('')}보다 길다.`, ok: false },                                         // 그려진 길이로 판단
+          { text: `직선 ${lin.join('')}은 점 ${lin[0]}에서 시작하여 점 ${lin[1]}에서 끝난다.`, ok: false },                     // 직선과 선분을 구별하지 못함
+          { text: `직선 ${lin.join('')}은 선분 ${lin.join('')}을 양쪽으로 끝없이 늘인 곧은 선이다.`, ok: true },
+          { text: `선분 ${seg.join('')}을 더 길게 그리면 직선 ${seg.join('')}이 된다.`, ok: false }                             // 길면 직선
+        ]);
+        const ySeg = top ? 0.8 : 2.4, yLin = top ? 2.4 : 0.8;
+        return C('그림에 대한 설명으로 옳은 것은?', rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
+          figure: G.board(9, 3, [G.straight('segment', [0.6, ySeg], [8.4, ySeg], seg), G.straight('line', [3.4, yLin], [5.4, yLin], lin)], { grid: false }),
+          explain: `직선은 양쪽으로 끝없이 늘인 곧은 선이므로 시작하는 점과 끝나는 점이 없고, 그림에 그려진 길이로 선분과 비교할 수 없다. 선분은 두 점을 곧게 이은 선이므로 길게 그려도 선분이다.`,
+          facts: { truth: rows.map((row) => row.ok), want: true, drawn: { segment: [0.6, 8.4], line: [3.4, 5.4] } }
+        });
+      }, { standard: LINE }),
       H('h-corner', '한 꼭짓점에 모인 각 가운데 직각 가리기', '도형의 성질을 말한 문장 가리기(심화 자료 여러 출판사) — 각을 정확히 읽어야 가릴 수 있게', (d) => {
         // 직사각형 ㄱㄴㄷㄹ에 선분 ㄱㄷ을 그었다. 각 ㄴㄱㄹ은 직각이지만 각 ㄴㄱㄷ은 직각이 아니다.
         const w = d.pick([5, 6]), points = { ㄱ: [0.5, 0.5], ㄴ: [0.5, 3.5], ㄷ: [0.5 + w, 3.5], ㄹ: [0.5 + w, 0.5] };
