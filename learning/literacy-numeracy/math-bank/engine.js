@@ -123,10 +123,48 @@
     return '<div class="mb-column' + (notes ? ' mb-column-noted' : '') + '" role="img" aria-label="세로셈">' + row(top) + row(bottom, SIGN[sign]) + '<div class="mb-rule"></div>'
       + steps.map((list, i) => row(list, '', notes && notes[i])).join('') + '<div class="mb-rule"></div>' + row(result) + '</div>';
   }
-  // 나눗셈의 세로셈 틀: 나누는 수 ) 나누어지는 수. 몫은 그 위에 적는 것이라 자리를 비워 둔다.
-  function divColumn(divisor, dividend) {
-    return '<div class="mb-divcol" role="img" aria-label="나눗셈 세로셈 ' + dividend + ' 나누기 ' + divisor + '"><span class="mb-divisor">' + divisor + '</span><span class="mb-dividend">' + String(dividend).split('').join(' ') + '</span></div>';
+  // 나눗셈을 세로로 계산하는 차례를 그대로 밟는다. quot: 자리마다 몫의 숫자(아직 몫이 서지 않은 자리는 null),
+  // rows: 과정의 줄 { value, end(끝 칸), sub(빼는 수인가) } — 빼는 수, 그다음에 남은 수와 내려 쓴 수가 번갈아 온다.
+  function longDivision(divisor, dividend) {
+    const digits = String(dividend).split('').map(Number), n = digits.length, quot = digits.map(() => null), rows = [];
+    let cur = 0, started = false;
+    for (let i = 0; i < n; i += 1) {
+      cur = cur * 10 + digits[i];
+      const q = Math.floor(cur / divisor);
+      if (q === 0) { if (started) quot[i] = 0; continue; }
+      started = true; quot[i] = q;
+      rows.push({ value: q * divisor, end: i, sub: true });
+      cur -= q * divisor;
+      // 남은 수 옆에, 다음에 나눌 수 있을 때까지 아래 자리 숫자를 내려 쓴다.
+      let j = i, shown = cur;
+      while (j < n - 1 && shown < divisor) { j += 1; shown = shown * 10 + digits[j]; }
+      rows.push({ value: shown, end: j, sub: false });
+    }
+    return { quot, rows };
   }
+  // 나눗셈의 세로셈. 나누는 수 ) 나누어지는 수 를 적는다. o.steps 이면 몫과 계산 과정도 적는다.
+  // 빈칸: o.quot(몫을 가리는 이름표), o.rows({ 줄 번호: 이름표 } — 과정의 줄은 0부터 센다). 이름표가 '' 이면 빈 네모.
+  function divSteps(divisor, dividend, options) {
+    const o = options || {}, digits = String(dividend).split(''), n = digits.length, work = longDivision(divisor, dividend);
+    // 수 하나를 끝 칸(end)에 맞춰 적은 줄. label 이 주어지면 그 수 자리에 빈칸을 둔다.
+    const line = (text, end, label, cls) => {
+      const len = String(text).length, from = end - len + 1;
+      let out = '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td></td><td></td>';
+      for (let c = 0; c < n; c += 1) {
+        if (c < from || c > end) out += '<td></td>';
+        else if (label !== undefined) { if (c === from) out += '<td colspan="' + len + '" class="mb-ld-blank">' + box(label) + '</td>'; }
+        else out += '<td>' + String(text)[c - from] + '</td>';
+      }
+      return out + '</tr>';
+    };
+    const quotient = work.quot.filter((q) => q !== null).join(''), hidden = o.rows || {};
+    let out = o.steps ? line(quotient, n - 1, o.quot, 'mb-ld-quot') : '';
+    out += '<tr class="mb-ld-top"><td>' + divisor + '</td><td class="mb-ld-hook"></td>' + digits.map((digit) => '<td>' + digit + '</td>').join('') + '</tr>';
+    if (o.steps) work.rows.forEach((row, k) => { out += line(row.value, row.end, hidden[k], row.sub ? 'mb-ld-sub' : ''); });
+    const said = o.steps ? ', 몫 ' + (o.quot !== undefined ? '□' : quotient) + ', 계산 과정: ' + work.rows.map((row, k) => (hidden[k] !== undefined ? '□' : row.value)).join(', ') : '';
+    return '<table class="mb-longdiv" role="img" aria-label="나눗셈 세로셈 ' + dividend + ' 나누기 ' + divisor + said + '">' + out + '</table>';
+  }
+  const divColumn = (divisor, dividend) => divSteps(divisor, dividend);
   // 차례로 계산하는 칸: 수 → (+a) → 수 → (−b) → 수. 조각은 수·box()·'+267'·'÷9' 같은 글이다.
   function chain(parts) {
     return '<div class="mb-chain">' + parts.map((part) => (/^[+\-−×÷]/.test(String(part)) ? '<span class="mb-step">' + String(part).replace('-', '−') + '</span>' : '<span class="mb-node">' + part + '</span>')).join('') + '</div>';
@@ -182,8 +220,8 @@
     let out = '';
     if (o.loop === 'rows') for (let r = 0; r < rows; r += 1) out += '<rect class="mb-loop" x="' + (pad - 5) + '" y="' + (pad - 3 + r * gap) + '" width="' + ((cols - 1) * gap + 24) + '" height="20" rx="10"/>';
     if (o.loop === 'cols') for (let c = 0; c < cols; c += 1) out += '<rect class="mb-loop" x="' + (pad - 3 + c * gap) + '" y="' + (pad - 5) + '" width="20" height="' + ((rows - 1) * gap + 24) + '" rx="10"/>';
-    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) out += '<circle class="mb-thing" cx="' + (pad + 7 + c * gap) + '" cy="' + (pad + 7 + r * gap) + '" r="6"/>';
-    const said = '물건 ' + rows * cols + '개' + (o.loop === 'rows' ? ', ' + cols + '개씩 ' + rows + '묶음' : o.loop === 'cols' ? ', ' + rows + '개씩 ' + cols + '묶음' : ', ' + cols + '개씩 ' + rows + '줄');
+    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) if (!o.count || r * cols + c < o.count) out += '<circle class="mb-thing" cx="' + (pad + 7 + c * gap) + '" cy="' + (pad + 7 + r * gap) + '" r="6"/>';
+    const said = o.count ? '물건 ' + o.count + '개' : '물건 ' + rows * cols + '개' + (o.loop === 'rows' ? ', ' + cols + '개씩 ' + rows + '묶음' : o.loop === 'cols' ? ', ' + rows + '개씩 ' + cols + '묶음' : ', ' + cols + '개씩 ' + rows + '줄');
     return '<svg class="mb-dots" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.25) + '" role="img" aria-label="' + said + '">' + out + '</svg>';
   }
   // 수직선에서 0부터 step 씩 뛰어 max 까지 간다. 뛴 자리마다 수를 적는다.
@@ -440,6 +478,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, divColumn, timeColumn, chars, blocks, counters, ruler, kmLine, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, divColumn, divSteps, longDivision, timeColumn, chars, blocks, counters, ruler, kmLine, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
