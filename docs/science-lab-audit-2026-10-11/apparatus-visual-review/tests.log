@@ -1,0 +1,15 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.7343ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (18565.6298ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (13264.8038ms)
+218 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (11.7718ms)
+218 browser conditions, 654 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (33742.3952ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33866.1904

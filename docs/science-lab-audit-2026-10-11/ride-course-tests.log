@@ -1,0 +1,31 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.6833ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.8021ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1224ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (63.9918ms)
+chromium: 144 apps / 145 course routes / 580 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (16226.8332ms)
+webkit: 144 apps / 145 course routes / 580 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (22122.9768ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (325.6801ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5063.3298ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.4357ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.507ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1475ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (14.0055ms)
+✔ course scopes partition authored questions and preserve scoped transfer evidence (13.4711ms)
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (9.7441ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.5738ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.5216ms)
+✔ browser: apparatus, course routes, isolated diagnostics, reload and narrow screens (6193.1235ms)
+166 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (142.7882ms)
+✔ every science lab JavaScript file parses (81.0575ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9036ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38567.5455

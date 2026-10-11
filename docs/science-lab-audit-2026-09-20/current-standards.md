@@ -1,3 +1,5 @@
+**실험 범위 정리: 진로·사례 조사·토의·홍보·콘텐츠 제작 등 32개 비실험 활동은 구현 대상에서 제외한다. 남은 미연결 검토 후보 15개는 확정된 필수실험 수가 아니다. 교육과정 전체 미연결 수와 구별한다.** 자료 해석 5개와 원문 미확인 1개는 독립 실험 구현 목록에서 뺐다. 직접 실험·관측·측정은 공통 절차 7묶음으로 검토하며 새 앱 수로 세지 않는다.
+
 # 현재 교정본 — 학년별 시험 대비 전수 점검
 
 초3~중3·고1 공통과목의 개념·자료 해석 확인 문제 241개와 기존 30개 문항 정정은 [시험 대비 점검 결과](exam-readiness.md)를 확인한다. 아래 표는 실험 앱의 부분 연결이며, 별도 확인 문제의 제공 여부와 구분한다.
@@ -314,9 +316,9 @@
 | 12지구03-03 · [원문 5087행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5087>) | 다양한 질량을 가진 별의 진화 과정을 H-R도에 나타내고 해석할 수 있다. | [고2~3 별의 스펙트럼과 HR도](<E:/webprojects/class/learning/inquiry/science-lab/stars/index.html>) |
 | 12지구03-04 · [원문 5089행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5089>) | 허블의 은하 분류 체계에 따른 은하의 특징을 비교하고 외부은하의 자료를 이용하여 특이 은하의 관측적 특징을 추론할 수 있다. | [고2~3 은하의 분류와 허블 법칙](<E:/webprojects/class/learning/inquiry/science-lab/galaxy-hubble/index.html>) |
 | 12지구03-05 · [원문 5091행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5091>) | 허블-르메트르 법칙으로 우주의 팽창을 이해하고 우주의 진화에 대한 다양한 설명 체계의 의의를 현대 우주론의 관점에서 비교할 수 있다. | [고2~3 은하의 분류와 허블 법칙](<E:/webprojects/class/learning/inquiry/science-lab/galaxy-hubble/index.html>) |
-| 12역학01-01 · [원문 5377행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5377>) | 물체에 작용하는 여러 가지 힘의 합력을 구하여 물체의 운동을 정량적으로 예측할 수 있다. | 직접 연결 없음 |
+| 12역학01-01 · [원문 5377행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5377>) | 물체에 작용하는 여러 가지 힘의 합력을 구하여 물체의 운동을 정량적으로 예측할 수 있다. | [고1 놀이기구 운동과 가속도 센서](<E:/webprojects/class/learning/inquiry/science-lab/ride-acceleration/index.html>) |
 | 12역학01-02 · [원문 5379행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5379>) | 뉴턴 운동 법칙을 이용하여 물체의 포물선 운동을 정량적으로 설명하고, 포물선 운동에서의 역학적 에너지를 구할 수 있다. | 직접 연결 없음 |
-| 12역학01-03 · [원문 5381행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5381>) | 물체에 작용하는 힘의 방향에 따라 물체의 운동 방향이 변할 수 있음을 원운동 등 다양한 예를 들어 설명할 수 있다. | 직접 연결 없음 |
+| 12역학01-03 · [원문 5381행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5381>) | 물체에 작용하는 힘의 방향에 따라 물체의 운동 방향이 변할 수 있음을 원운동 등 다양한 예를 들어 설명할 수 있다. | [고1 놀이기구 운동과 가속도 센서](<E:/webprojects/class/learning/inquiry/science-lab/ride-acceleration/index.html>) |
 | 12역학01-04 · [원문 5383행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5383>) | 케플러 법칙으로부터 중력의 존재가 밝혀지는 과학사적 배경을 이해하고, 중력을 이용하여 인공위성과 행성의 운동을 분석하고 설명할 수 있다. | 직접 연결 없음 |
 | 12역학01-05 · [원문 5385행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5385>) | 역학적 에너지 보존을 이용하여 행성에 따라 탈출 속도가 다름을 이해하고, 운동량 보존을 이용하여 우주선이 발사되어 궤도에 오르는 원리를 설명할 수 있다. | 직접 연결 없음 |
 | 12역학01-06 · [원문 5387행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:5387>) | 등가 원리와 시공간의 휘어짐으로 인해 블랙홀과 중력 시간 지연이 나타남을 이해하고, 일반 상대론에 흥미를 느낄 수 있다. | 직접 연결 없음 |
@@ -380,7 +382,7 @@
 | 12세포01-03 · [원문 6811행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6811>) | 동물세포와 식물세포를 구성하는 세포 소기관의 구조와 기능을 이해하고, 세포 소기관들의 유기적 관계를 추론하여 협력적으로 소통할 수 있다. | [고2~3 원심분리기의 배치와 시료 분리](<E:/webprojects/class/learning/inquiry/science-lab/centrifuge-design/index.html>) |
 | 12세포01-04 · [원문 6813행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6813>) | 원핵세포와 진핵세포의 공통점과 차이점을 설명할 수 있다. | 직접 연결 없음 |
 | 12세포01-05 · [원문 6815행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6815>) | 세포막의 구조와 특성을 이해하고, 세포막을 통한 물질 수송 과정을 추론할 수 있다. | [고2~3 세포막 수송과 삼투](<E:/webprojects/class/learning/inquiry/science-lab/cell-osmosis/index.html>) |
-| 12세포02-01 · [원문 6847행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6847>) | 물질대사는 생명체에서 생명을 유지하기 위해 일어나는 화학 반응임을 이해하고 에너지의 출입이 동반됨을 추론할 수 있다. | [고2~3 발아하는 콩의 호흡과 열](<E:/webprojects/class/learning/inquiry/science-lab/bean-respiration/index.html>)<br>[고2~3 자료로 비교하는 하루의 에너지 출입](<E:/webprojects/class/learning/inquiry/science-lab/energy-budget/index.html>) |
+| 12세포02-01 · [원문 6847행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6847>) | 물질대사는 생명체에서 생명을 유지하기 위해 일어나는 화학 반응임을 이해하고 에너지의 출입이 동반됨을 추론할 수 있다. | [고2~3 발아하는 콩의 호흡과 열](<E:/webprojects/class/learning/inquiry/science-lab/bean-respiration/index.html>) |
 | 12세포02-02 · [원문 6849행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6849>) | 생명 활동에 필요한 에너지를 공급하는 과정에서 광합성과 세포호흡 그리고 ATP의 역할을 설명할 수 있다. | [고2~3 광합성과 세포 호흡](<E:/webprojects/class/learning/inquiry/science-lab/energy-metabolism/index.html>) |
 | 12세포02-03 · [원문 6851행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6851>) | 효소의 종류와 특성을 이해하고 효소의 활성에 영향을 미치는 요인에 대한 실험을 설계하여 수행할 수 있다. | [고2~3 효소 반응과 조건](<E:/webprojects/class/learning/inquiry/science-lab/enzyme/index.html>) |
 | 12세포02-04 · [원문 6853행](<E:/webprojects/class/references/moe/2022-revised-curriculum/extracted/09-science.txt:6853>) | 효소의 작용 기작을 이해하고, 생명체 내에서 일어나는 효소 작용의 중요성에 대해 다양한 매체를 활용하여 협력적으로 소통할 수 있다. | [고2~3 효소 반응과 조건](<E:/webprojects/class/learning/inquiry/science-lab/enzyme/index.html>) |

@@ -49,7 +49,8 @@
   const section=doc.querySelector('.quiz-section');if(!section)return;
   const parts=location.pathname.split('/').filter(Boolean),slug=parts.at(-1)==='index.html'?parts.at(-2):parts.at(-1);
   let storage;try{storage=sessionStorage;}catch{}
-  const store=session(slug,[],storage),cards=new Map();
+  const context=root.scienceAppContext;
+  const store=session(slug+(context?':'+context.school:''),[],storage),cards=new Map();
   const diagnosis=el('section');diagnosis.className='science-diagnosis';diagnosis.setAttribute('aria-label','응답 결과');diagnosis.hidden=true;
   section.append(diagnosis);section.dataset.assessmentReady='true';
   function revisit(){const target=doc.querySelector('#controlArea,.lab-layout,.experiment-layout,.control-panel,.main-svg')||doc.querySelector('main');target.scrollIntoView({block:'start',behavior:'auto'});target.tabIndex=-1;target.focus({preventScroll:true});}
@@ -65,7 +66,7 @@
   function register(items){store.register(items);renderSummary();}
   function submit(id,choice){const r=store.submit(id,choice);renderSummary();return r;}
   for(const [i,card]of [...section.querySelectorAll('.quiz-card')].entries()){
-   const q={id:slug+'#q'+(i+1),question:clean(card.querySelector('h3')?.textContent),answer:card.dataset.answer,
+   const q={id:card.dataset.questionId||slug+'#q'+(i+1),question:clean(card.querySelector('h3')?.textContent),answer:card.dataset.answer,
     choices:[...card.querySelectorAll('input[type=radio]')].map(input=>({id:input.value,text:clean(input.closest('label').textContent)})),why:clean(card.querySelector('.answer-explanation')?.textContent)};
    const detail=root.scienceMisconceptions?.[q.id];if(detail)Object.assign(q,detail);
    card.dataset.questionId=q.id;cards.set(q.id,card);store.register([q]);

@@ -79,6 +79,10 @@
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 
 /* atoms */
+.stage-heading { flex-wrap: wrap; gap: 8px; }
+.orbit-toggle { min-height: 40px; padding: 7px 12px; border: 1px solid #b9cbd6; border-radius: 8px; background: #fff; color: #34566b; font: inherit; font-size: 13px; cursor: pointer; }
+.orbit-toggle:focus-visible { outline: 3px solid #0284c7; outline-offset: 2px; }
+.orbit-toggle[aria-pressed="true"] { background: #edf5f9; }
 .shell { fill: none; stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.1; }
 .shell.outer { stroke: rgba(217, 119, 6, .7); stroke-width: 1.4; }
 .shell.empty { stroke-dasharray: 3 3; stroke: rgba(148, 163, 184, 0.40); }

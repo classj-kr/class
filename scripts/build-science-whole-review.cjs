@@ -15,7 +15,7 @@ const fixes=[
  ['energy-heat','관찰 그림과 긴 수치·주의 문구 겹침','수치·주의 문구를 그림 아래 흐르는 본문으로 이동'],
  ['ohms-law','정전기 유도 전후 양전하·전자 배치가 가까운 쪽/먼 쪽의 차이를 제대로 보여 주지 않음; 코일 전원 누락','양이온 위치와 전하 수 보존, 전자만 먼 쪽으로 재배치. 코일 전원·도선 추가'],
  ['energy-conversion','코일과 검류계가 떨어져 회로가 연결되지 않음','두 코일 단자와 검류계를 연결한 도선 추가'],
- ['periodic-bonding','화합물 전도성 장치에 전지가 없음','전지·전구·전극을 직렬로 연결한 모식도 추가'],
+ ['periodic-bonding','전지·전구 모식도가 원문의 6홈판·전도성 측정기와 다르고 증류수 대조군이 빠짐','2022 교과서 PDF 13쪽의 장치 사진과 절차에 맞춰 6홈판·내장 전지 측정기·두 전극·5시료를 구현. 고체/수용액 입자 모형, 전극의 접촉/분리, 정성 표시를 구별'],
  ['diffusion','기체 입자 좌표가 선 형태로 겹쳐 공간 분포를 보여 주지 못함','용기 안 공간에 분포하도록 좌표 수정. 입자 수·크기는 유지'],
  ['flame-ions','헬륨·네온을 액체가 담긴 비커처럼 그림','기체 용기와 확대 입자 모형으로 바꾸고 실제로는 무색임을 명시'],
  ['photosynthesis','빛·CO₂·온도의 제한 요인과 그래프·정답 선택이 불일치','최소 제한 요인 적용, 공동 제한·최대 상태 선택지와 설명 교정. 엔진별 22,491조건 검사'],
@@ -53,12 +53,14 @@ const supplemental=fs.existsSync(path.join(base,'observation-repairs/inventory-c
 const byApp=Object.fromEntries(Object.keys(map).map(slug=>[slug,{slug,title:map[slug].title,grades:map[slug].grades,inspection:apps.reports.find(r=>r.slug===slug),panelShots:panels.shots.filter(s=>s.slug===slug).map(s=>s.file),sourceReview:evidence.apps.find(a=>a.slug===slug)?.reviewedEvidence||[],fix:fixes.find(f=>f[0]===slug)?.slice(1)||null,open:[]} ]));
 const result={scope:'2022 only; execution, visual inspection and bounded source review kept separate',apps:Object.keys(byApp).length,requiredExperimentTotal:null,appCountPolicy:'Observed app count, not an experiment total, target, limit or coverage denominator',modes:apps.modes,controlCases:apps.cases,controlRecord:appFile,panelScreenshots:panels.screenshots,tests,activityTests,toolTests,activityCoverage:coverage.total,textbookCandidates:census.summary,questionReview:questionReview.counts,newTools,fixes,gaps,evidenceSummary:evidence.summary,byApp};
 result.questionQualityReview=questionQuality.counts;
+result.apparatusVisualReview=read('apparatus-visual-review/review.json');
 write(path.join(base,'whole-review.json'),JSON.stringify(result,null,2)+'\n');
 const link=(label,file)=>`[${label}](<${path.join(base,file).split(path.sep).join('/')}>)`;
 const n=v=>Number(v).toLocaleString('en-US');
 const e=evidence.summary;
 const lines=[
  '# 과학실험실 전체 검토 결과','',
+ '공유 추가 실험 25개 패널을 다시 살펴 장치·관찰 그림 11개를 교체했다. 전도성은 2022 교과서 PDF 13쪽의 장치 사진과 절차를 대조했다. [변경·직접 화면 검토·검사 범위](apparatus-visual-review/review.json)에 최신 기록을 분리했다. 아래 이전 전수 검토 수치가 이번 시각자료 전체 승인으로 바뀌는 것은 아니다.','',
  `현재 ${Object.keys(map).length}개 앱이다. 기존 앱 외 원문 절차를 대조해 복원한 ${restoredRegistry.length}개 경로에는 스피커·무선 전력·자기 제동·박막·편광·전자 슬릿·기체 동정·설탕물·열량계·완충액·염의 가수 분해·콩 호흡 등이 포함된다. [원문·구현·검증 범위](restored-experiments.md)를 확인한다. 아래 이전 전수 로그의 앱 수와 새 구현을 구분한다. 필수실험 총수는 아직 미확정이다.`,'',
  `객관식 ${questionQuality.counts.baseAndBank}개를 재검토하여 기본 ${questionQuality.counts.rewrittenBase}개·문제은행 ${questionQuality.counts.rewrittenBank}개·추가 확인 ${questionQuality.counts.rewrittenTransfer}개를 재작성했다. [보기·조건·오답 피드백 수정과 검증](question-quality-review.md)을 확인한다.`,'',
  '현재 학생 동선은 실험 → 객관식 응답 → 응답별 해설과 재확인으로 수정했다. 별도 문제 목록·활동지로 나가는 첫 화면 버튼을 제거했다. 현재 변경의 범위·검사는 [학생 동선 및 채점 교정](assessment-repair.md)을 확인한다. 이전 화면·실행 로그는 당시 버전의 기록이다.','',
@@ -105,8 +107,10 @@ const lines=[
 write(path.join(base,'whole-review.md'),lines.join('\n'));
 write(path.join(base,'README.md'),[
  '# 과학실험 앱 검증 — 2026-10-11','',
+ '최근 시각자료 보완: 공유 실험 패널 25개를 검토하고 그중 장치·관찰 표현 11개를 다시 그렸다. 전도성은 수집한 2022 교과서의 6홈판·측정기 사진과 절차를 대조했다. [변경 범위와 화면 검토](apparatus-visual-review/review.json), [교체 후 화면](apparatus-visual-review/compound-conductivity-initial-1100.webp), [회귀 검사](apparatus-visual-review/final-tests.log). 이 검토는 144개 앱의 모든 그림을 다시 승인한 기록이 아니며, 실행 검사와 원문·화면 검토를 구별한다.','',
  `현재 ${Object.keys(map).length}개 앱과 복원 실험 ${restoredRegistry.length}개 경로의 [원문 근거](restored-experiments.md), [문항 ${questionQuality.counts.rewrittenBase+questionQuality.counts.rewrittenBank}개와 추가 확인 ${questionQuality.counts.rewrittenTransfer}개 재작성](question-quality-review.md), [전체 앱 재검사](question-quality-runtime.log), [최종 보완 재검사](question-quality-final.log)를 우선 확인한다. 기존 앱 수를 실험의 목표·상한으로 세지 않는다. 필수실험 총수는 미확정이다. 최근 구조·센서 구현 검사는 [structure-final-tests.log](structure-final-tests.log)와 [sensor-final-tests.log](sensor-final-tests.log)에 구분한다. 아래 기존 실행·화면 로그는 해당 시점의 증거다.`,'',
- `**필수실험 전체 포함 상태가 아니다. 앱 수와 실험 수는 다르며, 교육과정 탐구 ${coverage.total.activities}개 중 ${coverage.total.unlinked}개에는 대응 구현이 확인되지 않았다.** 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 실험 수에서 제외했다. 연결된 ${coverage.total.linked}개는 활동 전체 완료 수가 아니다. ${link('누락 활동과 집계 기준','activity-coverage.md')}.`,'',
+ '최근 놀이기구 보완: 그네·시소·미끄럼틀의 가상 센서, 부착 방향·위치·간격과 시간 그래프, 기본 8·추가 4문항. [구현과 원문 대조](restored-experiments.md#놀이기구-가상-센서-측정-보완), [최종 검사 13개](ride-final-tests.log), [기존 탐구 회귀 검사 2개](ride-inquiry-regression.log). 공통·선택 과목별 기본 4·추가 2문항으로 나누고 선택과목 목록에도 같은 앱을 연결했다. [과목 분리 검사 20개](ride-course-tests.log)에서 144앱·145진입 경로의 기본 580문항을 확인했다. 실제 기기 수집과 현장 수행은 포함하지 않는다.','',
+ `**비실험 활동 ${coverage.experimentScope.excluded}개는 구현 대상에서 제외했다. 남은 미연결 검토 후보는 ${coverage.experimentScope.unlinkedCandidates}개이며 필수실험 확정 수가 아니다.** 자료 해석 ${coverage.experimentScope.referenceOnly}개와 원문 미확인 ${coverage.experimentScope.sourceUnresolved}개는 독립 실험 구현 목록에서 분리했다. 직접 실험·관측·측정 ${coverage.experimentScope.experimentActivityRows}개 활동은 공통 절차 ${coverage.experimentScope.experimentReviewGroups}묶음으로 검토한다. 전체 교육과정 탐구 ${coverage.total.activities}개는 원문 보존용 집계다. [제외 사유와 실험 범위](gap-triage.md). 기존 활동지 시안 ${Object.keys(newTools).length}개는 학생용 실험 수에서 제외했다. 연결된 ${coverage.total.linked}개는 활동 전체 완료 수가 아니다. ${link('누락 활동과 집계 기준','activity-coverage.md')}.`,'',
  `104개 앱·${apps.modes}개 모드·${n(apps.cases)}개 조작 사례와 보충·추가 탐구를 검토하여 24개 앱의 확인 결함을 수정했다. 남겨 두었던 연소 검출·단열·소리·우리은하 관찰 표현 4건도 보강했다. ${link('앱별 문제·수정·검증 결과','whole-review.md')}.`,'',
  `경로·수집 기록으로 2022를 확인한 ${n(e.sourcePaths)}개 경로에서 중복을 제외한 ${n(e.sources)}개 문서를 색인화했다. ${n(e.extractedSources)}개 텍스트를 추출했고 ${e.extractionErrors}개는 오류로 남겼다. 이전에 누락했던 연도 없는 파일도 수집 기록 근거로 포함했다. ${e.apps}개 앱에 대한 ${e.reviewRecords}건 발췌 대조와 새 도구 ${e.activityReviewRecords}개의 근거를 기록했다. 657문항을 모두 읽어 76개를 수정했다. 발췌 대조가 문서 전체의 검토 완료를 뜻하지는 않는다. ${link('원문 위치와 검토 범위','source-comparison.md')}.`,'',
  `최종 전체 테스트: ${tests.tests===null?'실행 중':`${tests.tests}개 중 ${tests.passed}개 통과·${tests.failed}개 실패`}. ${link('실행 로그','content-tests.log')}. 기존 중간 로그는 당시 결과이며 최종 결과와 구별한다.`,'',

@@ -1,0 +1,32 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.9859ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (36064.8484ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (16091.68ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.2891ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.8646ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1337ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (71.149ms)
+chromium: 144 apps / 145 course routes / 580 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (21698.2917ms)
+webkit: 144 apps / 145 course routes / 580 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (26746.0732ms)
+218 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (12.3742ms)
+218 browser conditions, 654 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (36651.4841ms)
+167 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (166.0864ms)
+✔ every science lab JavaScript file parses (91.8488ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.4155ms)
+✔ all science entry pages and dynamic resources carry their current content hash (522.5266ms)
+✔ all ten optical diagrams satisfy imaging equations and ray intersections (1.0436ms)
+✔ a changed child invalidates its dynamic loader and HTML entry; rerun is stable (8.9081ms)
+✔ chromium: corrected observations, charge conservation and complete electrical apparatus (11839.2458ms)
+✔ webkit: corrected observations, charge conservation and complete electrical apparatus (16589.6257ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52239.2715

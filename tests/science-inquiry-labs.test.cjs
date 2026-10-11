@@ -73,7 +73,7 @@ test('interfacial polymer model: alternating functional groups conserve chain en
  let s=M.nylonStart();s=M.nylonAction(s,'pull');assert.equal(s.pulled,0);s=M.nylonAction(s,'layer');s=M.nylonAction(s,'pull','steady');assert.equal(s.pulled,1);s=M.nylonAction(s,'pull','fast');assert(s.broken);assert.equal(s.film,0);s=M.nylonAction(s,'wait');assert.equal(s.film,1);assert.equal(s.broken,false);
 });
 for(const engine of ['chromium','webkit'])test(engine+': source-backed actions, wrong choices, reset, diagnosis and mobile',{timeout:240000},async()=>{
- const {s,url}=await serve();let browser;const out=path.resolve('docs/science-lab-audit-2026-10-11/inquiry-implementation');fs.mkdirSync(out,{recursive:true});
+ const {s,url}=await serve();let browser;const out=path.resolve(process.env.SCIENCE_INQUIRY_CAPTURE_DIR||'docs/science-lab-audit-2026-10-11/inquiry-implementation');fs.mkdirSync(out,{recursive:true});
  try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});const p=await browser.newPage({viewport:{width:1100,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
   const snapshot=()=>p.evaluate(()=>window.__inquiryLab.snapshot());
   async function shot(name){for(const width of [1100,390]){await p.setViewportSize({width,height:900});assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,name+' overflow');await require('./science-screenshot.cjs')(p.locator('.experiment-layout'),path.join(out,`${name}-${engine}-${width}.webp`));}await p.setViewportSize({width:1100,height:900});}

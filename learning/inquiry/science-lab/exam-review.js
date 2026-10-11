@@ -9,7 +9,10 @@
  }
  function mount(root,bank,appSlug){
   root.classList.add('exam-widget');const params=new URLSearchParams(location.search),answers=new Map();let grade=bank.grades.includes(params.get('grade'))?params.get('grade'):'초3',unit='',index=0,list=[];
-  const appQuestions=appSlug?[...bank.forApp(appSlug,window.scienceCurriculum),...(window.scienceFollowups?.[appSlug]||[])]:null;if(appQuestions)grade=appQuestions[0]?.grade||grade;
+  const context=window.scienceAppContext;
+  const appMap=context?{...window.scienceCurriculum,[appSlug]:context}:window.scienceCurriculum;
+  const followups=(window.scienceFollowups?.[appSlug]||[]).filter(q=>!context||context.followupIds.includes(q.id));
+  const appQuestions=appSlug?[...bank.forApp(appSlug,appMap),...followups]:null;if(appQuestions)grade=appQuestions[0]?.grade||grade;
   if(appQuestions&&!appQuestions.length){root.remove();return;}
   const section=root.closest('.quiz-section'),assessment=section?.scienceAssessment;
   const definitions=(appQuestions||bank.questions).map(q=>({...q,choices:q.choices.map((text,id)=>({id:String(id),text})),answer:String(q.answer),...(window.scienceMisconceptions?.[q.id]||{})}));

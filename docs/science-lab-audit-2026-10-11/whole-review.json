@@ -1,6 +1,6 @@
 {
   "scope": "2022 only; execution, visual inspection and bounded source review kept separate",
-  "apps": 145,
+  "apps": 144,
   "requiredExperimentTotal": null,
   "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
   "modes": 182,
@@ -38,7 +38,7 @@
     "completedActivityVerdicts": 0,
     "receiptClassifiedSources": 2287,
     "manuallyReviewedCandidates": 7,
-    "sourceReviewedExperimentUnits": 49,
+    "sourceReviewedExperimentUnits": 48,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -981,8 +981,8 @@
     ],
     [
       "periodic-bonding",
-      "화합물 전도성 장치에 전지가 없음",
-      "전지·전구·전극을 직렬로 연결한 모식도 추가"
+      "전지·전구 모식도가 원문의 6홈판·전도성 측정기와 다르고 증류수 대조군이 빠짐",
+      "2022 교과서 PDF 13쪽의 장치 사진과 절차에 맞춰 6홈판·내장 전지 측정기·두 전극·5시료를 구현. 고체/수용액 입자 모형, 전극의 접촉/분리, 정성 표시를 구별"
     ],
     [
       "diffusion",
@@ -1063,7 +1063,7 @@
   "gaps": [],
   "evidenceSummary": {
     "date": "2026-10-11",
-    "apps": 145,
+    "apps": 144,
     "originalQuestions": 580,
     "examQuestions": 241,
     "sourcePaths": 4008,
@@ -1076,9 +1076,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 125,
+    "reviewedSources": 126,
     "reviewRecords": 167,
-    "appsWithSelectedSourceReview": 145,
+    "appsWithSelectedSourceReview": 144,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -4546,8 +4546,8 @@
         "28c7a55d8867b0c9"
       ],
       "fix": [
-        "화합물 전도성 장치에 전지가 없음",
-        "전지·전구·전극을 직렬로 연결한 모식도 추가"
+        "전지·전구 모식도가 원문의 6홈판·전도성 측정기와 다르고 증류수 대조군이 빠짐",
+        "2022 교과서 PDF 13쪽의 장치 사진과 절차에 맞춰 6홈판·내장 전지 측정기·두 전극·5시료를 구현. 고체/수용액 입자 모형, 전극의 접촉/분리, 정성 표시를 구별"
       ],
       "open": []
     },
@@ -10561,7 +10561,9 @@
       ],
       "panelShots": [],
       "sourceReview": [
-        "f3119695e8a726b3"
+        "f3119695e8a726b3",
+        "e7caa9f0f741ad37",
+        "a97d3120332ca071"
       ],
       "fix": null,
       "open": []
@@ -10796,21 +10798,6 @@
       "fix": null,
       "open": []
     },
-    "energy-budget": {
-      "slug": "energy-budget",
-      "title": "자료로 비교하는 하루의 에너지 출입",
-      "grades": [
-        "고2",
-        "고3"
-      ],
-      "panelShots": [],
-      "sourceReview": [
-        "fbf365923abce545",
-        "7da2123dab6864ac"
-      ],
-      "fix": null,
-      "open": []
-    },
     "hydride-boiling": {
       "slug": "hydride-boiling",
       "title": "수소 화합물의 끓는점과 분자 간 힘",
@@ -10877,6 +10864,166 @@
     "correctLongerThanEveryDistractorBy50Percent": {
       "before": 116,
       "after": 2
+    }
+  },
+  "apparatusVisualReview": {
+    "date": "2026-10-11",
+    "scope": "공유 추가 실험 25개 패널의 시각 검토와 그중 11개 장치·관찰 그림 보완. 전체 144개 앱의 시각자료 완성 판정은 아님.",
+    "counts": {
+      "sharedPanelsReviewed": 25,
+      "containingApps": 19,
+      "redrawnPanels": 11,
+      "retainedPanels": 14,
+      "webpCaptures": 76
+    },
+    "baselineContactSheets": [
+      "initial-1.webp",
+      "initial-2.webp",
+      "initial-3.webp"
+    ],
+    "sourceComparison": {
+      "id": "28c7a55d8867b0c9",
+      "path": "references/textbooks/중고등/두클래스/고등/과학/통합과학 1 (김호련)_2022/교과서/22개정_고등_통합과학1_2-2단원_교과서.pdf",
+      "pdfPage": 13,
+      "printedPage": 68,
+      "render": "conductivity-source-13.webp",
+      "checked": "6홈판, 전기 전도성 측정기, 증류수·소금·설탕, 용해 전후 비교, 전극 헹굼. 새 원문 사진 대조는 전도성 항목에 한정."
+    },
+    "changes": [
+      {
+        "id": "compound-conductivity",
+        "change": "6홈판·전도성 측정기·두 전극, 증류수 대조군, 고체/용액 입자 모형. 전극 미접촉은 측정 대기로 구별."
+      },
+      {
+        "id": "spring",
+        "change": "스탠드·용수철·추·눈금자, 처음 끝과 늘어난 길이를 같은 축척으로 표시."
+      },
+      {
+        "id": "buoyancy",
+        "change": "힘 센서·줄·물체·수면, 잠긴 비율과 장력·부력 방향을 표시."
+      },
+      {
+        "id": "mix-change",
+        "change": "약숟가락·시료·비커, 혼합 전후 기포와 용해를 구별."
+      },
+      {
+        "id": "group-design",
+        "change": "비커·금속·찬물·기포를 구별. 통제하지 않은 조건은 그림과 해설에 표시."
+      },
+      {
+        "id": "tuning-fork",
+        "change": "손잡이와 두 갈래를 구별하고 갈래 끝의 물 접촉·물방울·공의 운동을 표시."
+      },
+      {
+        "id": "dew-fog",
+        "change": "컵 겉면의 응결과 공기 중 물방울을 구별. 안개 입자는 어두운 배경의 확대 모형."
+      },
+      {
+        "id": "wind-chamber",
+        "change": "따뜻한/차가운 구역 및 아래·위 순환 방향을 표시. 점선은 벽이 아님을 명시."
+      },
+      {
+        "id": "photosynthesis-co2",
+        "change": "식물의 빛·CO₂ 조건과 꺼낸 잎의 전처리·아이오딘 색 반응을 구별."
+      },
+      {
+        "id": "heating-device",
+        "change": "위쪽 물 용기와 아래 반응부·단열·온도 센서·열 흐름을 구별."
+      },
+      {
+        "id": "thermal-image",
+        "change": "막대의 위치별 온도와 공통 20~80 ℃ 색상 척도. 가상 열화상과 물질의 실제 색을 구별."
+      }
+    ],
+    "retained": [
+      "erosion",
+      "sea-level",
+      "efficient-house",
+      "combustion-products",
+      "push-compare",
+      "altitude-meter",
+      "blind-spot",
+      "dna-model",
+      "diagnostic-principle",
+      "energy-budget",
+      "population-change",
+      "emission-spectrum",
+      "planet-model",
+      "plant-life-types"
+    ],
+    "retainedStatus": "기존 그림을 유지했다. 기본 화면 및 조작 회귀 범위에 포함되며 이번에 새로 그린 항목으로 세지 않는다. 맹점의 고정 표시는 실험 자극이므로 자동으로 숨기지 않는다.",
+    "sharedFlow": "추가 실험 패널의 관찰 기록 표·기록 버튼을 제거하고 실험 조작과 객관식 확인을 유지했다.",
+    "visualInspection": {
+      "method": "기존 25개 그림 모음 및 교체한 11개 패널의 대표 관찰 화면을 직접 열어 확인. 자동 경계 검사와 구별.",
+      "files": [
+        "compound-conductivity-initial-1100.webp",
+        "compound-conductivity-initial-390.webp",
+        "compound-conductivity-salt-solid-1100.webp",
+        "spring-initial-1100.webp",
+        "spring-maximum-extension-390.webp",
+        "buoyancy-changed-1100.webp",
+        "buoyancy-half-immersed-390.webp",
+        "mix-change-initial-1100.webp",
+        "mix-change-bubbles-1100.webp",
+        "mix-change-bubbles-390.webp",
+        "group-design-changed-1100.webp",
+        "group-design-changed-390.webp",
+        "tuning-fork-changed-1100.webp",
+        "tuning-fork-water-splash-1100.webp",
+        "tuning-fork-water-splash-390.webp",
+        "dew-fog-initial-1100.webp",
+        "dew-fog-dew-390.webp",
+        "dew-fog-fog-1100.webp",
+        "wind-chamber-initial-1100.webp",
+        "wind-chamber-left-warm-1100.webp",
+        "wind-chamber-right-warm-390.webp",
+        "photosynthesis-co2-changed-1100.webp",
+        "photosynthesis-co2-starch-1100.webp",
+        "photosynthesis-co2-starch-390.webp",
+        "heating-device-initial-1100.webp",
+        "heating-device-heating-1100.webp",
+        "heating-device-heating-390.webp",
+        "thermal-image-changed-1100.webp",
+        "thermal-image-conduction-390.webp"
+      ],
+      "issuesFoundAndFixed": [
+        "수용액 입자 겹침",
+        "고체 시료와 전극 끝의 접촉",
+        "금속 비교의 통제 조건 해설 불일치",
+        "안개 물방울 대비 부족"
+      ]
+    },
+    "verification": {
+      "regression": {
+        "log": "final-tests.log",
+        "passed": 19,
+        "failed": 0,
+        "coverage": "Chromium·WebKit 144개 앱/145개 과목 진입 경로의 기본 580문항, 추가 실험 218조건·654응답, 광학·전하·장치·자산 회귀."
+      },
+      "finalVisual": {
+        "log": "visual-final-tests.log",
+        "passed": 6,
+        "failed": 0,
+        "coverage": "25개 패널의 처음/변경 상태와 16개 추가 관찰 조건. Chromium·WebKit, 320·390·1100px. 화면 가로 넘침·SVG 글자 잘림·전도 표시·시료 선택·초기화·대체 패널 확인."
+      },
+      "cache": {
+        "log": "cache-tests.log",
+        "passed": 2,
+        "failed": 0,
+        "coverage": "버전이 없던 동적 JS URL에도 콘텐츠 해시를 추가하고 자식 변경이 로더와 진입 HTML까지 전파되는지 확인."
+      },
+      "sourceRefresh": "source-refresh.log",
+      "captureManifest": "screenshots.json"
+    },
+    "limitations": [
+      "11개 그림은 상호작용하는 SVG 모형이며 실물 사진이나 실측값이 아니다.",
+      "이번 기록은 2022 교과서 전체 및 모든 앱의 모든 시각자료 검증 완료를 뜻하지 않는다.",
+      "현재 앱 수와 패널 수는 필수실험의 총수·목표·상한이 아니다."
+    ],
+    "assets": {
+      "interactive": "SVG/HTML/CSS",
+      "raster": "무손실 WebP",
+      "newPngFiles": 0
     }
   }
 }

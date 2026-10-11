@@ -1,10 +1,10 @@
-// 「수학 문제」 화면(문제은행). 단원 → 묶음(배우는 차례) → 기본·실력을 고르면 엔진이 그 판의 문항을 만들어 준다.
-// 풀이 기록은 사이트 공용 학습 기록(LearningRecords)에 남긴다. 판마다 씨앗을 함께 저장해 두므로
-// 풀다가 나갔다 와도 같은 문제가 이어지고, 다 풀고 다시 시작하면 수가 바뀐 새 문제가 나온다.
+// 「수학 문제」 화면(문제은행). 단원 → 묶음(배우는 차례) → 기본·실력(문제가 많으면 회차)을 고르면 엔진이 그 회차의 문항을 내준다.
+// 회차의 문제는 정해져 있다. 풀이 기록은 사이트 공용 학습 기록(LearningRecords)에 남기고,
+// 풀다가 나갔다 와도 답한 데까지 이어진다.
 (function () {
   'use strict';
   const B = window.MathBank;
-  const VERSION = '1';
+  const VERSION = '2';
   const main = document.getElementById('main');
   const termSelect = document.getElementById('termSelect');
   const unitSelect = document.getElementById('unitSelect');
@@ -12,13 +12,15 @@
 
   let records = null;
   let unit = null;
-  let round = null;     // { group, level, seed, items, answers }
-  let finished = {};    // 판 열쇠 -> { right, total } (가장 최근에 끝낸 결과)
+  let round = null;     // { group, level, no, items, answers }
+  let finished = {};    // 회차 열쇠 -> { right, total } (가장 최근에 끝낸 결과)
   let busy = false;
 
   const el = (tag, className, html) => { const node = document.createElement(tag); if (className) node.className = className; if (html != null) node.innerHTML = html; return node; };
-  const plainText = (html) => { const box = document.createElement('div'); box.innerHTML = String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' 수 모형 '); return box.textContent.replace(/\s+/g, ' ').trim(); };
-  const roundKey = (groupId, level) => unit.id + ':' + groupId + ':' + level;
+  // 기록에 남길 글: 그림은 그림 이름으로 바꾼다.
+  const plainText = (html) => { const box = document.createElement('div'); box.innerHTML = String(html || '').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' [$1] '); return box.textContent.replace(/\s+/g, ' ').trim(); };
+  const roundKey = (groupId, level, no) => unit.id + ':' + groupId + ':' + level + ':' + no;
+  const versionOf = (u) => VERSION + '.' + (u.version || 1);
   const termOf = (u) => u.grade + '-' + u.semester;
 
   // ── 단원 고르기 ──────────────────────────────────────────────
@@ -39,7 +41,7 @@
   termSelect.addEventListener('change', async () => { fillUnits(); await loadFinished(); showGroups(); });
   unitSelect.addEventListener('change', async () => { unit = B.findUnit(unitSelect.value); await loadFinished(); showGroups(); });
 
-  // 끝낸 판의 결과(학생으로 로그인했을 때만 서버에 있다)
+  // 끝낸 회차의 결과(학생으로 로그인했을 때만 서버에 있다)
   async function loadFinished() {
     finished = {};
     try {
@@ -66,13 +68,16 @@
       row.append(el('span', 'mb-group-title', group.title));
       const levels = el('div', 'mb-levels');
       for (const level of B.LEVELS) {
-        if (B.typesOf(group, level).length === 0) continue;
-        const done = finished[roundKey(group.id, level)];
-        const button = el('button', 'mb-level' + (level === '실력' ? ' is-hard' : '') + (done ? ' is-done' : ''), level + (done ? '<small>' + done.right + ' / ' + done.total + '</small>' : ''));
-        button.type = 'button';
-        button.setAttribute('aria-label', group.title + ' ' + level + (done ? ', 지난번 ' + done.total + '문항 중 ' + done.right + '문항 정답' : ''));
-        button.addEventListener('click', () => openRound(group.id, level));
-        levels.append(button);
+        const rounds = B.roundCount(unit, group.id, level);
+        for (let no = 1; no <= rounds; no += 1) {
+          const done = finished[roundKey(group.id, level, no)];
+          const label = level + (rounds > 1 ? ' ' + no : '');
+          const button = el('button', 'mb-level' + (level === '실력' ? ' is-hard' : '') + (done ? ' is-done' : ''), label + (done ? '<small>' + done.right + ' / ' + done.total + '</small>' : ''));
+          button.type = 'button';
+          button.setAttribute('aria-label', group.title + ' ' + level + (rounds > 1 ? ' ' + no + '회' : '') + (done ? ', 지난번 ' + done.total + '문항 중 ' + done.right + '문항 정답' : ''));
+          button.addEventListener('click', () => openRound(group.id, level, no));
+          levels.append(button);
+        }
       }
       row.append(levels);
       list.append(row);
@@ -80,28 +85,29 @@
     main.replaceChildren(list);
   }
 
-  // ── 한 판 열기 ───────────────────────────────────────────────
-  async function openRound(groupId, level) {
+  // ── 한 회차 열기 ─────────────────────────────────────────────
+  async function openRound(groupId, level, no) {
     if (busy) return;
     const group = B.findGroup(unit, groupId);
-    if (!group || B.typesOf(group, level).length === 0) { showGroups(); return; }
+    const items = group ? B.makeRound(unit, groupId, level, no) : [];
+    if (items.length === 0) { showGroups(); return; }
     busy = true; main.inert = true;
     try {
-      const fresh = { seed: Math.floor(Math.random() * 2147483000) + 1, answers: {} };
-      const session = await records.start({ contentKey: roundKey(groupId, level), title: unit.title + ' · ' + group.title + ' (' + level + ')', version: VERSION, checkpoint: fresh });
-      const saved = session.checkpoint && Number(session.checkpoint.seed) ? session.checkpoint : fresh;
-      round = { group, level, seed: Number(saved.seed), answers: saved.answers || {}, items: [] };
-      round.items = B.makeRound(unit, groupId, level, round.seed);
-      const url = new URL(location.href); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
+      const rounds = B.roundCount(unit, groupId, level);
+      const session = await records.start({ contentKey: roundKey(groupId, level, no), title: unit.title + ' · ' + group.title + ' (' + level + (rounds > 1 ? ' ' + no + '회' : '') + ')', version: versionOf(unit), checkpoint: { answers: {} } });
+      const saved = (session.checkpoint && session.checkpoint.answers) || {};
+      round = { group, level, no, rounds, items, answers: {} };
+      for (const item of items) if (saved[item.key]) round.answers[item.key] = saved[item.key];
       showRound();
     } finally { busy = false; main.inert = false; }
   }
 
   function showRound() {
+    const head = el('p', 'mb-round-title', round.group.title + '<span class="mb-chip' + (round.level === '실력' ? ' is-hard' : '') + '">' + round.level + (round.rounds > 1 ? ' ' + round.no + '회' : '') + '</span>');
     const list = el('ol', 'mb-items');
     for (const item of round.items) list.append(itemCard(item));
     const finish = el('div', 'mb-finish'); finish.id = 'finish'; finish.hidden = true;
-    main.replaceChildren(list, finish);
+    main.replaceChildren(head, list, finish);
     updateFinish();
     const first = main.querySelector('.mb-item:not(.is-right):not(.is-wrong) input, .mb-item:not(.is-right):not(.is-wrong) .mb-choice');
     if (first) first.focus({ preventScroll: true });
@@ -114,7 +120,7 @@
     const result = el('p', 'mb-result'); result.hidden = true;
 
     if (item.choice) {
-      const choices = el('div', 'mb-choices');
+      const choices = el('div', 'mb-choices' + (item.choice.options.some((label) => plainText(label).length > 12) ? ' is-long' : ''));
       item.choice.options.forEach((label, i) => {
         const button = el('button', 'mb-choice', label); button.type = 'button';
         button.addEventListener('click', () => answer(item, card, i));
@@ -184,13 +190,13 @@
       const answered = Object.keys(round.answers).length, total = round.items.length;
       const complete = answered === total;
       await records.save({
-        checkpoint: { seed: round.seed, answers: round.answers },
+        checkpoint: { answers: round.answers },
         progress: { current: answered, total },
         events: [{ kind: 'answer', questionKey: item.key, response: Array.isArray(response) ? response.join(', ') : plainText(item.choice.options[response]), correct: ok,
           snapshot: { prompt: plainText(item.text) + (item.figure ? ' ' + plainText(item.figure) : ''), answer: answerText(item), type: item.typeTitle, level: item.level, standard: item.standard } }],
         complete
       });
-      if (complete) finished[roundKey(round.group.id, round.level)] = { right: Object.values(round.answers).filter((a) => a.ok).length, total };
+      if (complete) finished[roundKey(round.group.id, round.level, round.no)] = { right: Object.values(round.answers).filter((a) => a.ok).length, total };
       updateFinish();
     } finally {
       busy = false; main.inert = false;
@@ -205,18 +211,12 @@
     const total = round.items.length, answered = Object.keys(round.answers).length;
     if (answered < total) { finish.hidden = true; return; }
     const right = Object.values(round.answers).filter((a) => a.ok).length;
-    const group = round.group, level = round.level;
-    const again = el('button', 'mb-primary', '새 문제로 다시 풀기'); again.type = 'button';
-    again.addEventListener('click', () => openRound(group.id, level));
-    const back = el('button', 'mb-plain', '다른 묶음 고르기'); back.type = 'button';
-    back.addEventListener('click', showGroups);
-    finish.replaceChildren(el('p', null, total + '문항 중 ' + right + '문항 정답'), again);
-    if (level === '기본' && B.typesOf(group, '실력').length) {
-      const hard = el('button', 'mb-plain', '실력 문제 풀기'); hard.type = 'button';
-      hard.addEventListener('click', () => openRound(group.id, '실력'));
-      finish.append(hard);
-    }
-    finish.append(back);
+    const { group, level, no, rounds } = round;
+    const button = (className, label, go) => { const node = el('button', className, label); node.type = 'button'; node.addEventListener('click', go); return node; };
+    finish.replaceChildren(el('p', null, total + '문항 중 ' + right + '문항 정답'));
+    if (no < rounds) finish.append(button('mb-primary', '다음 회차', () => openRound(group.id, level, no + 1)));
+    else if (level === '기본' && B.roundCount(unit, group.id, '실력')) finish.append(button('mb-primary', '실력 문제 풀기', () => openRound(group.id, '실력', 1)));
+    finish.append(button('mb-plain', '다시 풀기', () => openRound(group.id, level, no)), button('mb-plain', '다른 묶음 고르기', showGroups));
     finish.hidden = false;
     finish.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
@@ -234,10 +234,10 @@
     records = window.LearningRecords.create('math-bank', { label: '수학 문제', mount: main });
     await records.ready;
     const params = new URLSearchParams(location.search);
-    const record = (params.get('record') || '').split(':');   // 풀던 판: 단원:묶음:수준
-    fillSelects(record.length === 3 ? record[0] : params.get('unit'));
+    const record = (params.get('record') || '').split(':');   // 풀던 회차: 단원:묶음:수준:회차
+    fillSelects(record.length >= 3 ? record[0] : params.get('unit'));
     await loadFinished();
-    if (record.length === 3 && unit.id === record[0] && B.findGroup(unit, record[1]) && B.LEVELS.includes(record[2])) await openRound(record[1], record[2]);
+    if (record.length >= 3 && unit.id === record[0] && B.findGroup(unit, record[1]) && B.LEVELS.includes(record[2])) await openRound(record[1], record[2], Number(record[3]) || 1);
     else showGroups();
   }
   start().catch((error) => { main.replaceChildren(el('p', 'mb-empty', '문제를 불러오지 못했습니다. 새로 고침 해 주세요.')); console.error(error); });

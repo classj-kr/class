@@ -77,16 +77,32 @@ function classify(map) {
         if (!course) throw Error('No official course for '+code);
         return {...standards[code], course:course.title, kind:course.kind, prefix:course.prefix, school:course.school};
       });
-      if (new Set(linked.map(x=>x.school)).size !== 1) throw Error('Common/elective mixed app needs an explicit route: '+slug);
-      const primary = primaryCodes[slug] ? linked.find(x=>x.code===primaryCodes[slug]) : linked[0];
+      if (new Set(linked.map(x=>x.school)).size !== 1 && !app.courseContexts) throw Error('Common/elective mixed app needs an explicit route: '+slug);
+      const place = (items,context) => {
+      const primary = primaryCodes[slug] ? items.find(x=>x.code===primaryCodes[slug]) : items[0];
       if (!primary) throw Error('Missing primary standard: '+slug);
-      placements[slug] = {school:primary.school, area:primary.course, category:primary.domain, section:primary.prefix,
+      return {school:primary.school, area:primary.course, category:primary.domain, section:primary.prefix,
         kind:primary.kind, code:primary.code, sourceLine:primary.domainLine,
-        related:linked.filter((x,i)=>linked.findIndex(y=>y.course===x.course&&y.domain===x.domain)===i)
+        ...(context?{context}:{}),
+        related:items.filter((x,i)=>items.findIndex(y=>y.course===x.course&&y.domain===x.domain)===i)
           .map(x=>({course:x.course, area:x.domain, line:x.domainLine}))};
+      };
+      if(app.courseContexts){
+        if(!Object.hasOwn(app.courseContexts,app.defaultContext))throw Error('Missing default context: '+slug);
+        const routes=Object.entries(app.courseContexts).map(([school,context])=>{
+          const items=linked.filter(x=>context.codes.includes(x.code));
+          if(!items.length||items.length!==context.codes.length||items.some(x=>x.school!==school)||context.subjects.some(s=>!items.some(x=>x.course===s)))throw Error('Invalid course context: '+slug+' '+school);
+          return place(items,school);
+        });
+        const codes=Object.values(app.courseContexts).flatMap(c=>c.codes);
+        if(new Set(codes).size!==codes.length||linked.some(x=>!codes.includes(x.code)))throw Error('Incomplete course context: '+slug);
+        const primary=routes.find(p=>p.context===app.defaultContext);
+        placements[slug]={...primary,additional:routes.filter(p=>p!==primary)};
+      }else placements[slug]=place(linked);
     }
     if (!placements[slug]) throw Error('App has no curriculum placement: '+slug);
   }
   return placements;
 }
-module.exports = {reference, source, foundation, courses, standards, classify};
+function catalogEntries(placements){return Object.entries(placements).flatMap(([slug,p])=>[p,...(p.additional||[])].map(placement=>({slug,...placement,href:slug+'/'+(placement.context?'?school='+placement.context:'')})));}
+module.exports = {reference, source, foundation, courses, standards, classify,catalogEntries};

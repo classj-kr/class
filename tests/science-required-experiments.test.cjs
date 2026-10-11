@@ -29,7 +29,7 @@ test('required experiment source evidence, all valid choices and independent inv
  assert(view('energy-budget',{greenhouse:'strong',stage:'initial'}).metrics.net>0);
  console.log(n+' new experiment conditions verified');
 });
-test('new experiments: controls, records, all answers, reset and Chromebook/iPad layout',{timeout:240000},async()=>{
+test('new experiments: controls, all answers, reset and Chromebook/iPad layout',{timeout:240000},async()=>{
  const {chromium}=require('playwright');const server=http.createServer((req,res)=>{let file=path.resolve(lab,'.'+new URL(req.url,'http://localhost').pathname);if(!file.startsWith(lab+path.sep)){res.writeHead(403);res.end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'}[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser,cases=0;const errors=[];
  try{browser=await chromium.launch({headless:true,executablePath:process.env.SCIENCE_BROWSER});
@@ -40,19 +40,14 @@ test('new experiments: controls, records, all answers, reset and Chromebook/iPad
     assert.deepEqual(await page.evaluate(()=>window.__requiredExperiments.getState()),state);
     const expected=spec.view(state);assert.equal(await page.locator('.required-observation').textContent(),expected.text);
     for(let i=0;i<3;i++){await page.locator(`[data-required-answer="${i}"]`).click();assert.equal(await page.locator('.required-check [data-correct]').getAttribute('data-correct'),String(i===expected.check.answer));}
-    await page.locator('[data-record]').click();assert((await page.evaluate(()=>window.__requiredExperiments.getRecords())).length>0);cases++;
+    assert.equal(await page.locator('[data-record],.required-history,textarea').count(),0);cases++;
    }
-   await page.locator('[data-reset]').click();assert.deepEqual(await page.evaluate(()=>window.__requiredExperiments.getState()),spec.initial);assert.equal(await page.locator('.required-history tr').count(),0);
+   await page.locator('[data-reset]').click();assert.deepEqual(await page.evaluate(()=>window.__requiredExperiments.getState()),spec.initial);assert.equal(await page.locator('[data-record],.required-history').count(),0);
    for(const width of [1366,1024,820,768]){await page.setViewportSize({width,height:width>=1024?768:1024});const result=await page.locator('.required-experiments').evaluate(panel=>{const svg=panel.querySelector('svg'),b=svg.getBoundingClientRect(),bad=[...svg.querySelectorAll('text')].filter(t=>{const a=t.getBoundingClientRect();return a.left<b.left-2||a.right>b.right+2||a.top<b.top-2||a.bottom>b.bottom+2;}).map(t=>t.textContent);return{overflow:document.documentElement.scrollWidth>innerWidth+1,bad};});assert.deepEqual(result,{overflow:false,bad:[]},slug+' '+spec.id+' '+width);
     if(process.env.SCIENCE_CAPTURE&&width===1024){const dir=path.resolve(lab,'../../../docs/science-lab-audit-2026-09-20/required-gap-screenshots');fs.mkdirSync(dir,{recursive:true});await screenshotWebp(page.locator('.required-experiments'), {path:path.join(dir,spec.id+'-1024.webp')});}
    }
   }
-  if(specs.length>1){
-   await page.locator('[data-experiment="'+specs[0].id+'"]').click();await page.locator('[data-record]').click();
-   await page.locator('[data-experiment="'+specs[1].id+'"]').click();await page.locator('[data-record]').click();
-   await page.locator('[data-experiment="'+specs[0].id+'"]').click();assert.equal((await page.evaluate(()=>window.__requiredExperiments.getRecords())).length,1);
-   await page.locator('[data-reset]').click();await page.locator('[data-experiment="'+specs[1].id+'"]').click();assert.equal((await page.evaluate(()=>window.__requiredExperiments.getRecords())).length,1);
-  }
+
   assert.equal(await page.evaluate(()=>String(window.render||'').includes('.required-tabs')),false,'UI render must not replace app animation');
   await page.close();
  }assert.deepEqual(errors,[]);console.log(cases+' browser conditions, '+cases*3+' answers checked');

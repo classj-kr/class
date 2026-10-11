@@ -1,5 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const api=require('../learning/inquiry/science-lab/science-assessment.js'),bank=require('../learning/inquiry/science-lab/exam-bank.js'),map=require('../learning/inquiry/science-lab/curriculum-map.js'),content=require('../learning/inquiry/science-lab/assessment-content.js');
+const authoredCounts=Object.fromEntries(require('../scripts/science-restored-experiments.cjs').map(r=>[r.slug,r.questions.length]));
 const q={id:'q',question:'입사각 30°',choices:[{id:'a',text:'30°'},{id:'b',text:'60°'}],answer:'a',why:'두 각은 법선을 기준으로 같다.'};
 test('first answer survives correction, duplicate submissions, reload and shuffled choices',()=>{
  const values=new Map(),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};
@@ -21,7 +22,8 @@ test('fresh transfer answer is distinguished from correcting the same item',()=>
  s.submit('transfer','b');assert.equal(s.summary().responses[0].transferVerified,false);
 });
 test('all supplied existing questions and new transfer items have valid assessment feedback',()=>{
- const reviewed=require('../scripts/review-science-questions.cjs').read();assert.equal(reviewed.length,Object.keys(map).length*4+bank.questions.length);
+ const authored=Object.fromEntries(require('../scripts/science-restored-experiments.cjs').map(r=>[r.slug,r.questions.length]));
+ const reviewed=require('../scripts/review-science-questions.cjs').read();assert.equal(reviewed.length,Object.keys(map).reduce((n,slug)=>n+(authored[slug]||4),0)+bank.questions.length);
  for(const q of reviewed){const s=api.session(q.id,[q]);for(const c of q.choices){const r=s.submit(q.id,c.id);assert.equal(r.correct,String(c.id)===String(q.answer));const text=api.feedback(q,r);if(r.correct)assert(text.includes(q.why));else assert.equal(text,'다시 생각하고 다른 답을 골라보세요.','wrong answers must not reveal the key or explanation');}}
  for(const [slug,items]of Object.entries(content.followups)){assert(map[slug]);for(const item of items){assert(item.id);assert.equal(new Set(item.choices).size,item.choices.length);assert(item.answer>=0&&item.answer<item.choices.length);assert(item.why.length>20);}}
  assert.equal(content.followups.refraction[0].choices[content.followups.refraction[0].answer],'70°');
@@ -31,10 +33,10 @@ test('all supplied existing questions and new transfer items have valid assessme
 for(const engine of ['chromium','webkit'])test(engine+': all registered apps preserve first responses and integrate diagnostics',{timeout:300000},async()=>{
  const root=path.resolve(__dirname,'../learning/inquiry/science-lab');
  const server=http.createServer((req,res)=>{let p=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(p!==root&&!p.startsWith(root+path.sep))return res.writeHead(403).end();if(fs.existsSync(p)&&fs.statSync(p).isDirectory())p=path.join(p,'index.html');fs.readFile(p,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css'}[path.extname(p)]||'application/octet-stream');res.end(b);});});await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
- try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});const origin='http://127.0.0.1:'+server.address().port,slugs=Object.keys(map),errors=[];let cursor=0,count=0;
+ try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});const origin='http://127.0.0.1:'+server.address().port,slugs=Object.keys(map),routes=slugs.flatMap(slug=>map[slug].courseContexts?Object.keys(map[slug].courseContexts).map(school=>({slug,school})): [{slug}]),errors=[];let cursor=0,count=0;
  await Promise.all(Array.from({length:3},async()=>{const page=await browser.newPage({viewport:{width:390,height:844}});page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
  await page.route('**/lab-ui.js*',async r=>{if(new URL(page.url()).pathname==='/refraction/')await new Promise(resolve=>setTimeout(resolve,200));await r.continue();});
- while(cursor<slugs.length){const slug=slugs[cursor++];await page.goto(origin+'/'+slug+'/');await page.waitForSelector('[data-assessment-ready]',{state:'attached'});
+ while(cursor<routes.length){const {slug,school}=routes[cursor++],questionCount=school?map[slug].courseContexts[school].questionNumbers.length:authoredCounts[slug]||4;await page.goto(origin+'/'+slug+'/'+(school?'?school='+school:''));await page.waitForSelector('[data-assessment-ready]',{state:'attached'});
   if(['measurement','wave-transfer'].includes(slug))await page.waitForFunction(()=>!!window.__digitalInquiry);
   assert.equal(await page.locator('textarea,#hypothesis,#conclusion,[data-export],[data-records],a[href*="activity-workbench"],a[href*="exam-review.html"]').count(),0,slug+' must lead from experiment to questions without worksheets or detours');
   const result=await page.evaluate(()=>{const section=document.querySelector('.quiz-section'),a=section.scienceAssessment,issues=[];for(const card of section.querySelectorAll('.quiz-card')){
@@ -43,8 +45,8 @@ for(const engine of ['chromium','webkit'])test(engine+': all registered apps pre
    if(card.querySelector('.answer-result').textContent!=='다시 생각하고 다른 답을 골라보세요.'||!card.querySelector('.answer-explanation').hidden)issues.push('wrong answer leaked feedback');right.click();button.click();
    const r=a.store.evidence(card.dataset.questionId);if(r.first!==wrong.value||!r.correct||r.firstCorrect)issues.push('first error overwritten');
   }return{issues,summary:a.store.summary()};});
-  assert.deepEqual(result.issues,[],slug);assert.equal(result.summary.answered,4,slug);assert.equal(result.summary.corrected,4,slug);assert.equal(result.summary.firstCorrect,0,slug);count+=4;
-  await page.reload();await page.waitForSelector('[data-assessment-ready]',{state:'attached'});assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().corrected),4,slug+' reload');
+  assert.deepEqual(result.issues,[],slug);assert.equal(result.summary.answered,questionCount,slug);assert.equal(result.summary.corrected,questionCount,slug);assert.equal(result.summary.firstCorrect,0,slug);count+=questionCount;
+  await page.reload();await page.waitForSelector('[data-assessment-ready]',{state:'attached'});assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().corrected),questionCount,slug+' reload');
   if(['refraction','lens-image'].includes(slug)){
    await page.locator('.quiz-section summary').click();await page.waitForFunction(()=>!!document.querySelector('.exam-widget')?.examController);
    const ids=await page.locator('.exam-widget').evaluate(e=>e.examController.ids());assert(!ids.includes('9과10-04'));assert(ids.includes(slug==='refraction'?'refraction@normal-transfer':'lens-image@screen-transfer'));assert.equal(await page.locator('.exam-local').count(),0);assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().total),4+ids.length,'bank joins the same session even when loaded before DOMContentLoaded');
@@ -57,6 +59,6 @@ for(const engine of ['chromium','webkit'])test(engine+': all registered apps pre
  }
  await page.close();}));
  const page=await browser.newPage();await page.goto(origin+'/');assert.equal(await page.locator('a[href*="exam-review"],a[href*="activity-workbench"]').count(),0);
- await page.goto(origin+'/activity-workbench.html?activity=4%EA%B3%BC08%231');await page.waitForURL(origin+'/');assert.equal(await page.locator('#hypothesis,#conclusion,#record,#records').count(),0);await page.close();assert.equal(count,slugs.length*4);assert.deepEqual(errors,[]);console.log(engine+': '+slugs.length+' apps / '+count+' first errors retained through correction and reload');
+ await page.goto(origin+'/activity-workbench.html?activity=4%EA%B3%BC08%231');await page.waitForURL(origin+'/');assert.equal(await page.locator('#hypothesis,#conclusion,#record,#records').count(),0);await page.close();assert.equal(count,slugs.reduce((n,slug)=>n+(authoredCounts[slug]||4),0));assert.deepEqual(errors,[]);console.log(engine+': '+slugs.length+' apps / '+routes.length+' course routes / '+count+' first errors retained through correction and reload');
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });

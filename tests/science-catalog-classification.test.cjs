@@ -6,9 +6,9 @@ const http=require('node:http');
 const {chromium}=require('playwright');
 const screenshotWebp=require('./science-screenshot.cjs');
 const map=require('../learning/inquiry/science-lab/curriculum-map.js');
-const {foundation,courses,standards,source,classify}=require('../scripts/science-catalog-classification.cjs');
+const {foundation,courses,standards,source,classify,catalogEntries}=require('../scripts/science-catalog-classification.cjs');
 const {build}=require('../scripts/build-science-catalog.cjs');
-const placements=classify(map);
+const placements=classify(map),entries=catalogEntries(placements);
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab');
 
 test('official 2022 areas and courses, and one auditable primary placement per app',()=>{
@@ -28,7 +28,7 @@ test('official 2022 areas and courses, and one auditable primary placement per a
  for(const [slug,p]of Object.entries(placements)) {
   assert(map[slug].codes.every(code=>standards[code]),slug);
   if(map[slug].level==='high') {
-   assert(map[slug].codes.every(code=>code.startsWith(p.school==='high-common'?'10':'12')),slug);
+   assert((map[slug].courseContexts?.[p.context]||map[slug]).codes.every(code=>code.startsWith(p.school==='high-common'?'10':'12')),slug);
    assert.equal(p.category,standards[p.code].domain,slug);
   }
  }
@@ -48,6 +48,13 @@ test('official 2022 areas and courses, and one auditable primary placement per a
  assert.equal(classify(changed)['lens-image'].school,'high-elective');
  const invalid=structuredClone(map); invalid.measurement.codes.push('12물리01-01');
  assert.throws(()=>classify(invalid),/Common\/elective mixed/);
+ const badContext=structuredClone(map);badContext['ride-acceleration'].courseContexts['high-elective'].codes.push('10과탐2-01-01');
+ assert.throws(()=>classify(badContext),/Invalid course context/);
+ assert.equal(entries.filter(p=>p.slug==='ride-acceleration').length,2);
+ assert.equal(entries.length,Object.keys(map).length+1);
+ assert.equal(require('../scripts/audit_science_curriculum.cjs').apps.length,Object.keys(map).length,'Shared course entries are one physical app');
+ const rideEntries=entries.filter(p=>p.slug==='ride-acceleration');
+ assert.deepEqual(rideEntries.map(p=>[p.school,p.area,p.category]),[['high-common','과학탐구실험2','생활 속의 과학 탐구'],['high-elective','역학과 에너지','시공간과 운동']]);
  const newApp={...map,'unclassified-app':{...map['refraction']}};
  assert.throws(()=>classify(newApp),/no curriculum placement/,'New apps cannot silently disappear from the catalog');
  build({check:true});
@@ -77,8 +84,8 @@ test('school/course filtering, old links, exact high-school domains and responsi
    await page.setViewportSize({width,height:1000});await page.goto(base);
    for(const school of ['all','elementary','middle','high-common','high-elective']){
     await page.locator(`[data-school-filter="${school}"]`).click();
-    const expected=Object.entries(placements).filter(([,p])=>school==='all'||p.school===school).map(([slug])=>slug).sort();
-    const actual=await page.locator('.level-entry:visible').evaluateAll(es=>es.map(e=>e.getAttribute('href').slice(0,-1)).sort());
+    const expected=entries.filter(p=>school==='all'||p.school===school).map(p=>p.href).sort();
+    const actual=await page.locator('.level-entry:visible').evaluateAll(es=>es.map(e=>e.getAttribute('href')).sort());
     assert.deepEqual(actual,expected,`${width} ${school}: visible routes`);
     assert.equal(await page.locator('[data-school-filter][aria-pressed="true"]').count(),1);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,`${width} ${school}: no horizontal overflow`);
@@ -133,8 +140,8 @@ test('school/course filtering, old links, exact high-school domains and responsi
    await page.reload();assert.equal(await page.locator(`[data-school-filter="${school}"]`).getAttribute('aria-pressed'),'true');
   }
   await page.goto(base);
-  const actual=await page.locator('.level-entry').evaluateAll(es=>es.map(e=>({slug:e.getAttribute('href').slice(0,-1),area:e.closest('.subject-section').dataset.area,category:e.closest('.topic-row').dataset.category,school:e.dataset.school})));
-  for(const e of actual){const p=placements[e.slug];assert.deepEqual({area:e.area,category:e.category,school:e.school},{area:p.area,category:p.category,school:p.school});}
+  const actual=await page.locator('.level-entry').evaluateAll(es=>es.map(e=>({slug:e.getAttribute('href'),area:e.closest('.subject-section').dataset.area,category:e.closest('.topic-row').dataset.category,school:e.dataset.school})));
+  for(const e of actual){const p=entries.find(p=>p.href===e.slug);assert.deepEqual({area:e.area,category:e.category,school:e.school},{area:p.area,category:p.category,school:p.school});}
   assert.deepEqual(errors,[]);
  }finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}
 });

@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGroup = document.getElementById('mainGroup');
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
+    const orbitToggle = document.getElementById('orbitToggle');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const RUN_SECONDS = 7;
 
@@ -76,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         progress: 0, prediction: null,
     };
     let running = false, frameId = 0, lastStamp = 0;
+    let orbitEnabled = !reducedMotion.matches, orbitSeconds = 0, orbitFrameId = 0, orbitStamp = 0;
 
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     const lerp = (a, b, t) => a + (b - a) * t;
@@ -163,13 +166,43 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ----------------------------------------------------------- visuals */
     const SHELL_R = [20, 36, 52, 68];
     const polar = (cx, cy, r, ang) => [cx + r * Math.cos(ang), cy + r * Math.sin(ang)];
+    // A slow explanatory motion, independent of the electron-transfer timeline.
+    const orbitDegrees = shell => (orbitSeconds * 360 / (28 + shell * 8)) % 360;
+    const orbitTransform = shell => `rotate(${orbitDegrees(shell).toFixed(4)} 110 118)`;
+    const canOrbit = () => orbitEnabled && !document.hidden && state.mode === 'elements' && (state.progress === 0 || state.progress === 1);
+
+    function orbitFrame(stamp) {
+        orbitFrameId = 0;
+        if (!canOrbit()) { orbitStamp = 0; return; }
+        if (orbitStamp) orbitSeconds += Math.min(.1, Math.max(0, (stamp - orbitStamp) / 1000));
+        orbitStamp = stamp;
+        mainGroup.querySelectorAll('[data-orbit-shell]').forEach(g => g.setAttribute('transform', orbitTransform(+g.dataset.orbitShell)));
+        orbitFrameId = requestAnimationFrame(orbitFrame);
+    }
+
+    function syncOrbit() {
+        orbitToggle.hidden = state.mode !== 'elements';
+        orbitToggle.textContent = orbitEnabled ? '회전 멈추기' : '회전 재생';
+        orbitToggle.setAttribute('aria-pressed', String(!orbitEnabled));
+        if (canOrbit()) {
+            if (!orbitFrameId) { orbitStamp = 0; orbitFrameId = requestAnimationFrame(orbitFrame); }
+        } else {
+            if (orbitFrameId) cancelAnimationFrame(orbitFrameId);
+            orbitFrameId = 0;
+            orbitStamp = 0;
+        }
+    }
+    orbitToggle.addEventListener('click', () => { orbitEnabled = !orbitEnabled; syncOrbit(); });
+    reducedMotion.addEventListener('change', e => { orbitEnabled = !e.matches; syncOrbit(); });
+    document.addEventListener('visibilitychange', syncOrbit);
+    window.addEventListener('pagehide', () => { cancelAnimationFrame(orbitFrameId); orbitFrameId = 0; orbitStamp = 0; });
+    window.addEventListener('pageshow', syncOrbit);
 
     // one element: Bohr shells on the left, the table on the right
     function renderElements(a) {
         const { el, v } = a;
         const p = state.progress;
         const CX = 110, CY = 118;
-        const spin = Math.min(p, 0.5) * Math.PI * 0.5;           // the model turns a quarter while we look
         const t = clamp((p - 0.5) / 0.4, 0, 1);                  // then the outer electrons move
         const lost = a.change < 0, gained = a.change > 0;
         let out = '';
@@ -182,29 +215,38 @@ document.addEventListener('DOMContentLoaded', () => {
         el.shells.forEach((n, s) => {
             const r = SHELL_R[s], outer = s === el.shells.length - 1;
             const slots = outer ? Math.max(n, gained ? 8 : n) : n;
+            const spin = orbitDegrees(s) * Math.PI / 180;
+            let bound = '';
             for (let k = 0; k < n; k += 1) {
-                const ang = -Math.PI / 2 + spin + k * 2 * Math.PI / slots;
+                const ang = -Math.PI / 2 + k * 2 * Math.PI / slots;
                 let [x, y] = polar(CX, CY, r, ang);
                 let cls = 'electron';
                 if (outer && lost && k >= n - Math.abs(a.change) && t > 0) {
                     // the leaving electrons drift out to the right and fade
                     const idx = k - (n - Math.abs(a.change));
                     const [ex, ey] = [CX + 120, CY - 6 + idx * 12];
+                    [x, y] = polar(CX, CY, r, ang + spin);
                     x = lerp(x, ex, t); y = lerp(y, ey, t); cls += ' moving';
                     out += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" opacity="${(1 - 0.6 * t).toFixed(2)}"/>`;
                     continue;
                 }
-                out += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2"/>`;
+                bound += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2"/>`;
             }
             if (outer && gained && t > 0) {
                 // the arriving electrons come in from the right into the empty slots
                 for (let k = n; k < n + a.change; k += 1) {
-                    const ang = -Math.PI / 2 + spin + k * 2 * Math.PI / 8;
-                    const [x1, y1] = polar(CX, CY, r, ang);
+                    const ang = -Math.PI / 2 + k * 2 * Math.PI / 8;
+                    if (t >= 1) {
+                        const [x, y] = polar(CX, CY, r, ang);
+                        bound += `<circle class="electron" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2"/>`;
+                        continue;
+                    }
+                    const [x1, y1] = polar(CX, CY, r, ang + spin);
                     const [x0, y0] = [CX + 120, CY - 6 + (k - n) * 12];
                     out += `<circle class="electron moving" cx="${lerp(x0, x1, t).toFixed(1)}" cy="${lerp(y0, y1, t).toFixed(1)}" r="3.2"/>`;
                 }
             }
+            out += `<g data-orbit-shell="${s}" transform="${orbitTransform(s)}">${bound}</g>`;
         });
         // facts beside the atom
         const IX = 200;
@@ -442,7 +484,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">원소</span><span class="data-val">${el.name} ${el.sym} · 원자 번호 ${el.z} · 전자 ${el.z}개 · ${el.kind}${el.sym === 'Na' ? ' · 소듐이라고도 함' : el.sym === 'K' ? ' · 포타슘이라고도 함' : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">전자 배치</span><span class="data-val">안쪽부터 ${el.shells.join(' · ')} — 바깥 전자 ${a.v}개</span></div>` +
                 `<div class="data-row"><span class="data-name">같은 족</span><span class="data-val">${sib} — 모두 바깥 전자 ${a.v}개</span></div>` +
-                `<div class="data-row match"><span class="data-name">되는 이온</span><span class="data-val">${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${a.change < 0 ? '잃음' : '얻음'}, ${el.ion.noble}과 같은 배치)` : el.why === 'noble' ? '없음 — 이미 가득 참' : el.why === 'h' ? '주로 공유 결합 (산에서는 H⁺)' : '없음 — 전자를 함께 쓰는 공유 결합'}</span></div>`;
+                `<div class="data-row match"><span class="data-name">되는 이온</span><span class="data-val">${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${a.change < 0 ? '잃음' : '얻음'}, ${el.ion.noble}과 같은 배치)` : el.why === 'noble' ? '없음 — 이미 가득 참' : el.why === 'h' ? '주로 공유 결합 (산에서는 H⁺)' : '없음 — 전자를 함께 쓰는 공유 결합'}</span></div>` +
+                `<div class="data-row"><span class="data-name">그림의 움직임</span><span class="data-val">전자 배치 설명용 모형입니다. 원과 회전 속도는 실제 전자의 궤적·속도를 나타내지 않습니다.</span></div>`;
         }
         const { p, A, B } = a;
         return `<div class="data-row"><span class="data-name">만나는 원자</span><span class="data-val">${A.name}(${A.sym}, 바깥 전자 ${valence(A)}개)${p.a === p.b ? ' 둘' : ` + ${B.name}(${B.sym}, 바깥 전자 ${valence(B)}개)`}</span></div>` +
@@ -459,6 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = a.kind === 'elements' ? '가장 바깥 껍질의 전자 수가 원소의 성질을 정합니다'
             : '금속은 전자를 내주고, 비금속끼리는 전자를 함께 씁니다';
         dataNote.innerHTML = noteFor(a);
+        syncOrbit();
         return a;
     }
 

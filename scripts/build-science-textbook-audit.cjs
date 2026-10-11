@@ -25,7 +25,7 @@ const review=reviews.map(([id,locators,apps,principle,method])=>{
  source.status='selected-passages-reviewed';
  return{id,locators,locatorType:source.kind==='pdf'?'PDF page':'extracted paragraph (figures/formulas may be absent)',apps,principle,method};
 });
-const apps=Object.entries(map).map(([slug,app])=>({slug,title:app.title,grades:app.grades,standards:app.codes,
+const apps=Object.entries(map).map(([slug,app])=>({slug,title:app.title,grades:app.grades,standards:app.codes,...(app.courseContexts?{courseContexts:app.courseContexts}:{}),
  originalQuestions:[...fs.readFileSync(path.join(root,'learning/inquiry/science-lab',slug,'index.html'),'utf8').matchAll(/class="quiz-card"/g)].length,
  linkedExamQuestions:bank.forApp(slug,map).map(q=>q.id),
  reviewedEvidence:[...new Set(review.filter(r=>r.apps.includes(slug)).map(r=>r.id))],
@@ -35,7 +35,7 @@ const activityReviews=Object.entries(activityTools).map(([activityId,tool])=>{
  const source=sources.find(s=>s.id===tool.source.id);if(!source||source.error)throw Error('Invalid activity source '+activityId);
  const extracted=JSON.parse(fs.readFileSync(path.join(root,manifest.find(s=>s.sha256===source.sha256).extractedFile),'utf8'));
  for(const page of tool.source.pages)if(!extracted.pages?.find(p=>p.pdfPage===page&&p.text.trim()))throw Error('Invalid activity page '+activityId+':'+page);
- return{activityId,tool:tool.tool,title:tool.title,kind:tool.kind||'모형',sourceId:source.id,pages:tool.source.pages,path:source.path,remaining:tool.remaining,verdict:'해당 단계에 한정한 지원 · 전체 활동 완료 판정 아님'};
+ return{activityId,labScope:require('./science-experiment-scope.cjs').decision(activityId),tool:tool.tool,title:tool.title,kind:tool.kind||'모형',sourceId:source.id,pages:tool.source.pages,path:source.path,remaining:tool.remaining,verdict:'해당 단계에 한정한 지원 · 전체 활동 완료 판정 아님'};
 });
 const summary={date:'2026-10-11',apps:apps.length,originalQuestions:apps.reduce((n,a)=>n+a.originalQuestions,0),examQuestions:bank.questions.length,
  sourcePaths:sources.reduce((n,s)=>n+1+(s.aliases?.length||0),0),duplicatePaths:sources.reduce((n,s)=>n+(s.aliases?.length||0),0),sources:sources.length,extractedSources:sources.filter(s=>!s.error).length,extractionErrors:sources.filter(s=>s.error).length,documentsWithoutText:sources.filter(s=>!s.hasExtractedText).length,blankPdfPages:sources.filter(s=>s.kind==='pdf').reduce((n,s)=>n+s.blankTextUnits,0),pdfs:sources.filter(s=>s.kind==='pdf').length,assessmentDocuments:sources.filter(s=>s.kind==='hwp').length,
@@ -45,6 +45,6 @@ const fileLink=(label,file)=>`[${label}](<${path.join(root,file).replaceAll('\\'
 const lines=['# 교과서·평가자료 근거 대조표','','이 표는 적힌 원리와 발췌 범위의 대조 기록이다. 앱 전체나 수집 자료 전체의 정확성 인증이 아니다. 전체 목록·해시·앱별 미대조 항목은 evidence-index.json에 기록했다.','','| 앱 | 원문 | 위치 | 대조한 원리 | 방법 |','|---|---|---|---|---|'];
 for(const r of review){const source=sources.find(s=>s.id===r.id);lines.push(`| ${r.apps.join(', ')} | ${fileLink(path.basename(source.path),source.path)} | ${r.locatorType}: ${r.locators.join(', ')} | ${r.principle} | ${r.method} |`);}
 lines.push('','## 추가 탐구·분석·조사 도구의 원문 범위','','새 도구의 근거 페이지와 남는 범위다. 모형·자료 분석·조사 활동지는 구분하며 전체 교과서 활동 이수나 과학적 무결성 판정으로 계산하지 않는다.','','| 활동 | 도구 유형 | 원문 | PDF 쪽 | 남는 범위 |','|---|---|---|---|---|');
-for(const r of activityReviews)lines.push(`| ${r.activityId} · ${r.title} | ${r.kind} | ${fileLink(path.basename(r.path),r.path)} | ${r.pages.join(', ')} | ${r.remaining} |`);
+for(const r of activityReviews)lines.push(`| ${r.activityId} · ${r.title} | ${r.kind} | ${fileLink(path.basename(r.path),r.path)} | ${r.pages.join(', ')} | ${r.labScope.status==='excluded'?'실험실 대상 제외: '+r.labScope.reason:r.remaining} |`);
 fs.writeFileSync(path.join(root,out,'source-comparison.md'),lines.join('\n')+'\n');
 console.log(JSON.stringify(summary));
