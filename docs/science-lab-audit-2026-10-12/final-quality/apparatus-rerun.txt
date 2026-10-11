@@ -1,0 +1,68 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.7434ms)
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (38897.8283ms)
+✖ webkit: apparatus states, labels, fallback panels and responsive drawings (20681.854ms)
+✔ 30 reviewed question positions preserve the latest reviewed choices, conditions and explanations (11.1092ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59661.9826
+
+✖ failing tests:
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (38897.8283ms)
+  AssertionError [ERR_ASSERTION]: root-uptake initial 320
+  + actual - expected
+  
+    {
+  +   bad: [
+  +     'A · 뿌리 그대로',
+  +     '처음·지금 수면 비교',
+  +     'B · 뿌리 자름',
+  +     '처음·지금 수면 비교'
+  +   ],
+  -   bad: [],
+      overflow: false
+    }
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:64:13)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { bad: [ 'A · 뿌리 그대로', '처음·지금 수면 비교', 'B · 뿌리 자름', '처음·지금 수면 비교' ], overflow: false },
+    expected: { bad: [], overflow: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ webkit: apparatus states, labels, fallback panels and responsive drawings (20681.854ms)
+  AssertionError [ERR_ASSERTION]: root-uptake initial 320
+  + actual - expected
+  
+    {
+  +   bad: [
+  +     'A · 뿌리 그대로',
+  +     '처음·지금 수면 비교',
+  +     'B · 뿌리 자름',
+  +     '처음·지금 수면 비교'
+  +   ],
+  -   bad: [],
+      overflow: false
+    }
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:64:13)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { bad: [ 'A · 뿌리 그대로', '처음·지금 수면 비교', 'B · 뿌리 자름', '처음·지금 수면 비교' ], overflow: false },
+    expected: { bad: [], overflow: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

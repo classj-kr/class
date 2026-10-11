@@ -13,7 +13,7 @@
  function rootFigure(s,m){let svg=defs;const onion=s.plant==='onion';
   for(const [i,key]of ['a','b'].entries()){
    const x=135+i*310,left=x-50,w=100,y=onion?216:180,bottom=410,initial=m.initial[key],surface=m.surface[key],intact=s[key]==='intact';
-   svg+=text(x,35,(i?'B':'A')+' · '+(intact?'뿌리 그대로':'뿌리 자름'));
+   svg+=text(x,48,(i?'B':'A')+' · '+(intact?'그대로':'자름'));
    svg+=`<ellipse cx="${x}" cy="423" rx="72" ry="9" fill="#264553" opacity=".09"/>`;
    svg+=`<path d="M${left} ${y}V${bottom-9}Q${left} ${bottom} ${left+10} ${bottom}H${left+w-10}Q${left+w} ${bottom} ${left+w} ${bottom-9}V${y}" fill="url(#plant-glass)" stroke="#72919b" stroke-width="2.5"/>`;
    svg+=`<path data-water="${key}" data-surface="${surface}" class="plant-water" style="--plant-drop:${surface-initial}px" d="M${left+3} ${surface}Q${x} ${surface+5} ${left+w-3} ${surface}V${bottom-10}Q${left+w-3} ${bottom-3} ${left+w-12} ${bottom-3}H${left+12}Q${left+3} ${bottom-3} ${left+3} ${bottom-10}Z" fill="#a4d4e3" fill-opacity=".6"/>`;
@@ -25,7 +25,7 @@
    else svg+=path(`M${x-6} ${rootY}h12`,'#a88354',3);
    // A fixed initial mark remains in place when the water surface changes.
    svg+=path(`M${left-8} ${initial}H${left+w+8}`,'#bd6845',2,'stroke-dasharray="5 5"');
-   svg+=text(x,456,'처음·지금 수면 비교',15);
+   svg+=text(x,456,'수면 비교',15);
   }
   svg+=text(290,495,s.stage==='before'?'처음 · 물 높이 표시':'3일 뒤 · 같은 시간 비교',19);
   return{svg,viewBox:'0 0 580 520',caption:'고정된 처음 표시와 두 용기의 수면을 비교하세요.',detail:legend([['주황 점선','실험을 시작할 때의 물 높이'],['파란 수면','선택한 시점의 물 높이'],[onion?'같은 크기의 양파':'같은 크기·잎 수의 고추 모종',onion?'같은 비커와 같은 장소에서 비교합니다.':'두 눈금실린더 입구를 탈지면으로 막고 같은 장소에 둡니다.']])};
@@ -33,7 +33,7 @@
  function transpirationFigure(s,m){let svg=defs;
   for(const [i,key]of ['a','b'].entries()){
    const x=135+i*310,hasLeaves=s[key]==='present';
-   svg+=text(x,35,(i?'B':'A')+' · '+(hasLeaves?'잎 그대로':'잎 제거'));
+   svg+=text(x,48,(i?'B':'A')+' · '+(hasLeaves?'잎 있음':'잎 제거'));
    svg+=`<ellipse cx="${x}" cy="423" rx="83" ry="9" fill="#264553" opacity=".08"/>`;
    svg+=`<path d="M${x-22} 270V310L${x-69} 393Q${x-77} 414 ${x-55} 414H${x+55}Q${x+77} 414 ${x+69} 393L${x+22} 310V270Z" fill="url(#plant-glass)" stroke="#72919b" stroke-width="2.5"/>`;
    svg+=`<path d="M${x-52} 364L${x-68} 395Q${x-73} 410 ${x-53} 410H${x+53}Q${x+73} 410 ${x+68} 395L${x+52} 364Z" fill="#a4d4e3" fill-opacity=".6"/>`;
@@ -42,7 +42,7 @@
    if(m.droplets[key])for(let n=0;n<16;n++){const dx=(n%4)*35-52,yy=112+Math.floor(n/4)*34;svg+=`<path data-droplet="${key}" d="M${x+dx} ${yy}q-8 10 0 11q8 -1 0 -11" fill="#85bfd4" fill-opacity=".85" stroke="#66a5bf" stroke-width=".6"/>`;}
    svg+=path(`M${x-11} 258h22 M${x-7} 261l-14 9 M${x+7} 261l14 9`,'#ad8d65',2);
    svg+=`<ellipse cx="${x}" cy="277" rx="21" ry="9" fill="#f0efe6" stroke="#c4c9be"/>`;
-   svg+=text(x,454,m.droplets[key]?'봉지에 맺힌 물방울':'물방울 거의 없음',17);
+   svg+=text(x,454,m.droplets[key]?'물방울 있음':'거의 없음',17);
   }
   svg+=text(290,495,s.stage==='before'?'처음 · 마른 봉지':'1~2일 뒤 · 같은 시간 비교',19);
   return{svg,viewBox:'0 0 580 520',caption:'두 봉지 안쪽의 변화를 같은 시점에서 비교하세요.',detail:legend([['봉지 안쪽','처음에는 물기가 없는 봉지를 씌웁니다.'],['용기 입구','탈지면으로 막고 봉지는 줄기 쪽에 묶습니다.'],['같게 맞춘 조건','식물의 종류·크기, 물의 양, 봉지 크기, 빛, 관찰 시간을 같게 합니다.']])};
@@ -50,7 +50,7 @@
  function stemFigure(s,m){let svg=defs;
   for(const [i,key] of ['a','b'].entries()){
    const x=150+i*310,dyed=m.stained[key],water=s[key]==='dye';
-   svg+=text(x,32,(i?'B':'A')+' · '+(water?'붉은 색소 물':'맹물'),18);
+   svg+=text(x,48,(i?'B':'A')+' · '+(water?'색소 물':'맹물'),18);
    svg+=`<ellipse cx="${x}" cy="427" rx="91" ry="10" fill="#264553" opacity=".09"/>`;
    // The pigment is confined to narrow transport strands; the whole stem never turns red.
    svg+=`<path d="M${x-9} 156Q${x-11} 231 ${x-9} 347H${x+9}Q${x+11} 230 ${x+9} 156Z" fill="#c8d69d" stroke="#71915b" stroke-width="2"/>`;
@@ -63,7 +63,7 @@
    svg+=`<ellipse cx="${x}" cy="114" rx="27" ry="31" fill="${dyed?'#efc2c9':'#f9f5e8'}" stroke="#c9b9ad" stroke-width="1.5"/><circle cx="${x}" cy="114" r="8" fill="#e3b25e"/>`;
    svg+=`<path d="M${x-56} 316L${x-75} 404Q${x-76} 418 ${x-60} 418H${x+60}Q${x+76} 418 ${x+75} 404L${x+56} 316Z" fill="url(#plant-glass)" stroke="#72919b" stroke-width="2.4"/>`;
    svg+=`<path d="M${x-66} 362L${x-73} 404Q${x-74} 416 ${x-59} 416H${x+59}Q${x+74} 416 ${x+73} 404L${x+66} 362Z" fill="${water?'#e9aab0':'#a9d8e3'}" fill-opacity=".68"/>`;
-   svg+=text(x,456,dyed?'꽃·줄기 일부가 붉어짐':'꽃·줄기 색 유지',16);
+   svg+=text(x,456,dyed?'일부 붉어짐':'색 유지',16);
   }
   svg+=`<rect x="174" y="207" width="272" height="93" rx="13" fill="#fff" stroke="#c9dce0" stroke-width="2"/>`;
   svg+=text(310,231,(s.location==='lower'?'아래쪽':'위쪽')+' 줄기 · '+(s.cut==='cross'?'가로 단면':'세로 단면'),16);
@@ -89,18 +89,18 @@
    if(after)for(const [x,y]of [[96,114],[355,118],[368,262],[88,288],[315,298]])svg+=`<path d="M${x} ${y}q-7 11 0 12q7 -1 0 -12" fill="#87bdd1"/>`;
    svg+=text(230,32,'잎 뒷면과 지퍼 백 확대',20)+text(230,363,'염화코발트 종이 · '+(red?'붉은색':'푸른색'),20);
    const figure={svg,viewBox:'0 0 460 390',caption:'잎 뒷면에 붙인 종이의 처음 색과 나중 색을 비교하세요.',detail:legend([['검출 원리','마른 푸른색 염화코발트 종이는 물이 닿으면 붉어집니다.'],['장치','종이를 잎 뒷면에 붙이고 지퍼 백 입구를 닫아 같은 장소에 둡니다.'],['처음 상태 확인','이미 붉어진 종이는 실험 전후의 변화를 판별하는 데 쓸 수 없습니다.']])};
-   return{svg,figure,metrics:{red,valid,detected:valid&&after},readings:[['처음 색',valid?'푸른색':'붉은색'],['현재 색',red?'붉은색':'푸른색']],text:!valid?'처음부터 붉은 종이입니다. 나중에도 붉다는 사실만으로 잎에서 나온 물을 검출했다고 판단할 수 없습니다.':after?'종이가 푸른색에서 붉은색으로 변했습니다. 잎을 통해 빠져나온 물을 검출한 결과입니다.':'푸른색 종이를 잎 뒷면에 붙였습니다. 같은 장치에서 시간이 지난 뒤의 색과 비교하세요.',note:'미래엔 2022 교과서의 물 검출 실험을 나타낸 모형입니다. 시약 취급은 교사 지도로 수행하며 화면의 색은 수분량을 수치로 나타내지 않습니다.',check:q('종이가 처음부터 붉었고 2일 뒤에도 붉었다. 이 결과를 해석하는 방법은?',['잎에서 물이 나왔음을 색 변화로 확인했다','잎에서 물이 나오지 않음을 색으로 확인했다','처음부터 붉어 전후 색으로 판단하기 어렵다'],2,'검출은 처음 상태와 비교해야 합니다. 마른 푸른색 종이로 시작해야 물에 의한 색 변화를 확인할 수 있습니다.')};
+   return{svg,figure,metrics:{red,valid,detected:valid&&after},readings:[['처음 색',valid?'푸른색':'붉은색'],['현재 색',red?'붉은색':'푸른색']],text:!valid?'처음부터 붉은 종이입니다. 나중에도 붉다는 사실만으로 잎에서 나온 물을 검출했다고 판단할 수 없습니다.':after?'종이가 푸른색에서 붉은색으로 변했습니다. 잎을 통해 빠져나온 물을 검출한 결과입니다.':'푸른색 종이를 잎 뒷면에 붙였습니다. 같은 장치에서 시간이 지난 뒤의 색과 비교하세요.',note:'시약은 교사의 지도에 따라 다룹니다. 종이 색으로 물의 양을 비교하지 않습니다.',check:q('종이가 처음부터 붉었고 2일 뒤에도 붉었다. 이 결과를 해석하는 방법은?',['잎에서 물이 나왔음을 색 변화로 확인했다','잎에서 물이 나오지 않음을 색으로 확인했다','처음부터 붉어 전후 색으로 판단하기 어렵다'],2,'검출은 처음 상태와 비교해야 합니다. 마른 푸른색 종이로 시작해야 물에 의한 색 변화를 확인할 수 있습니다.')};
   }});
   add('microscope',{id:'root-uptake',title:'뿌리의 물 흡수 비교',codes:['6과11-02'],textbookActivity:'root-uptake',source:{id:'89316af3de563d4c',pages:[7]},initial:{plant:'pepper',a:'intact',b:'cut',level:'same',stage:'before'},fields:[f('plant','실험 재료',[['pepper','고추 모종 · 눈금실린더'],['onion','양파 · 비커']]),f('a','A의 뿌리',[['intact','그대로 두기'],['cut','자른 것']]),f('b','B의 뿌리',[['intact','그대로 두기'],['cut','자른 것']]),f('level','처음 물 높이',[['same','두 용기를 같게 맞춤'],['different','B가 더 낮음']]),f('stage','관찰 시점',[['before','처음'],['after','3일 뒤']])],view(s){
    const after=s.stage==='after',initial={a:s.plant==='onion'?234:270,b:(s.plant==='onion'?234:270)+(s.level==='same'?0:25)},surface={a:initial.a+(after?(s.a==='intact'?(s.plant==='onion'?42:65):4):0),b:initial.b+(after?(s.b==='intact'?(s.plant==='onion'?42:65):4):0)},comparable=s.a!==s.b&&s.level==='same',metrics={initial,surface,comparable,changed:after};
    const observation=!after?'두 용기의 처음 물 높이를 표시했습니다. 뿌리 조건을 정하고 3일 뒤의 수면을 비교하세요.':s.a===s.b?'두 식물의 뿌리 조건이 같습니다. 이 한 쌍만으로는 뿌리 유무의 영향을 구별하기 어렵습니다.':s.level!=='same'?'처음 물 높이가 달라 마지막 수면만 비교하면 잘못 판단할 수 있습니다. 처음 높이를 같게 맞춘 뒤 다시 비교하세요.':`${s.a==='intact'?'A':'B'}에서 물이 더 많이 줄었습니다. 같은 조건에서 뿌리를 그대로 둔 식물이 물을 더 많이 흡수한 결과와 연결할 수 있습니다.`;
-   const figure=rootFigure(s,metrics);return{svg:figure.svg,figure,metrics,readings:[['A의 변화',!after?'관찰 전':s.a==='intact'?'물이 많이 줄어듦':'물이 거의 줄지 않음'],['B의 변화',!after?'관찰 전':s.b==='intact'?'물이 많이 줄어듦':'물이 거의 줄지 않음']],text:observation,note:'교과서의 관찰 결과를 나타낸 정성 모형입니다. 수면 변화는 실제 부피나 흡수 속도를 뜻하지 않으며, 뿌리를 자른 식물의 흡수를 항상 0으로 단정하지 않습니다.',check:s.level!=='same'?q('A와 B의 처음 물 높이가 달랐다. 뿌리의 유무를 비교하기 위해 다시 맞출 조건은?',['마지막 물 높이','처음 물 높이','뿌리를 자른 위치'],1,'처음 물 높이를 같게 하고 나머지 조건도 통제한 뒤 물의 감소를 비교합니다.'):q('A와 B에서 뿌리 유무의 영향만 비교하려 한다. 바꾸어야 할 조건은?',['뿌리를 남기는지 여부','햇빛을 받는 양','처음 넣는 물의 양'],0,'뿌리 유무를 다르게 하고 식물의 크기·잎 수, 물의 양, 빛, 관찰 시간은 같게 합니다.')};
+   const figure=rootFigure(s,metrics);return{svg:figure.svg,figure,metrics,readings:[['A의 변화',!after?'관찰 전':s.a==='intact'?'물이 많이 줄어듦':'물이 거의 줄지 않음'],['B의 변화',!after?'관찰 전':s.b==='intact'?'물이 많이 줄어듦':'물이 거의 줄지 않음']],text:observation,note:'처음 표시에서 수면이 얼마나 낮아졌는지 비교하세요. 물이 거의 줄지 않았다고 흡수가 전혀 없다고 단정하지 않습니다.',check:s.level!=='same'?q('A와 B의 처음 물 높이가 달랐다. 뿌리의 유무를 비교하기 위해 다시 맞출 조건은?',['마지막 물 높이','처음 물 높이','뿌리를 자른 위치'],1,'처음 물 높이를 같게 하고 나머지 조건도 통제한 뒤 물의 감소를 비교합니다.'):q('A와 B에서 뿌리 유무의 영향만 비교하려 한다. 바꾸어야 할 조건은?',['뿌리를 남기는지 여부','햇빛을 받는 양','처음 넣는 물의 양'],0,'뿌리 유무를 다르게 하고 식물의 크기·잎 수, 물의 양, 빛, 관찰 시간은 같게 합니다.')};
   }});
-  add('microscope',{id:'leaf-transpiration',title:'잎 유무와 증산 작용',codes:['6과11-02'],activity:'6과11#3',source:{id:'d544b624a4fe52c2',pages:[10]},initial:{a:'present',b:'removed',stage:'before'},fields:[f('a','A의 잎',[['present','그대로 두기'],['removed','모두 제거한 것']]),f('b','B의 잎',[['present','그대로 두기'],['removed','모두 제거한 것']]),f('stage','관찰 시점',[['before','처음'],['after','1~2일 뒤']])],view(s){const after=s.stage==='after',droplets={a:after&&s.a==='present',b:after&&s.b==='present'},metrics={droplets,comparable:s.a!==s.b},figure=transpirationFigure(s,metrics);return{svg:figure.svg,figure,metrics,readings:[['A 봉지 안쪽',droplets.a?'물방울 관찰':'뚜렷한 물방울 없음'],['B 봉지 안쪽',droplets.b?'물방울 관찰':'뚜렷한 물방울 없음']],text:!after?'같은 크기의 고추 모종과 마른 봉지를 준비했습니다. 잎 유무만 달리하고 같은 시간이 지난 뒤를 비교하세요.':s.a===s.b?'잎 조건이 같은 두 식물입니다. 잎의 역할을 알아보려면 한쪽의 잎 유무를 바꿔 비교해야 합니다.':'잎을 그대로 둔 쪽의 봉지에 물방울이 나타납니다. 잎을 통해 빠져나온 수증기가 봉지 안쪽에서 물방울로 변한 결과입니다.',note:'고추 모종의 잎 유무를 비교하는 교과서 정성 모형입니다. 물방울 수는 증산량을 측정한 값이 아니며 잎을 제거한 식물의 모든 물 배출이 0이라는 뜻도 아닙니다.',check:q('잎이 있는 쪽의 마른 봉지에서만 물방울이 관찰되었다. 물의 이동과 상태 변화로 알맞은 것은?',['잎 → 액체 방울 배출 → 봉지에 붙음','잎 → 수증기 배출 → 봉지에서 응결','봉지 → 물 생성 → 잎으로 이동'],1,'잎에서 물이 수증기 상태로 빠져나온 뒤 봉지 안쪽에서 응결해 눈에 보이는 물방울이 됩니다.')};}});
+  add('microscope',{id:'leaf-transpiration',title:'잎 유무와 증산 작용',codes:['6과11-02'],activity:'6과11#3',source:{id:'d544b624a4fe52c2',pages:[10]},initial:{a:'present',b:'removed',stage:'before'},fields:[f('a','A의 잎',[['present','그대로 두기'],['removed','모두 제거한 것']]),f('b','B의 잎',[['present','그대로 두기'],['removed','모두 제거한 것']]),f('stage','관찰 시점',[['before','처음'],['after','1~2일 뒤']])],view(s){const after=s.stage==='after',droplets={a:after&&s.a==='present',b:after&&s.b==='present'},metrics={droplets,comparable:s.a!==s.b},figure=transpirationFigure(s,metrics);return{svg:figure.svg,figure,metrics,readings:[['A 봉지 안쪽',droplets.a?'물방울 관찰':'뚜렷한 물방울 없음'],['B 봉지 안쪽',droplets.b?'물방울 관찰':'뚜렷한 물방울 없음']],text:!after?'같은 크기의 고추 모종과 마른 봉지를 준비했습니다. 잎 유무만 달리하고 같은 시간이 지난 뒤를 비교하세요.':s.a===s.b?'잎 조건이 같은 두 식물입니다. 잎의 역할을 알아보려면 한쪽의 잎 유무를 바꿔 비교해야 합니다.':'잎을 그대로 둔 쪽의 봉지에 물방울이 나타납니다. 잎을 통해 빠져나온 수증기가 봉지 안쪽에서 물방울로 변한 결과입니다.',note:'물방울의 유무를 비교하세요. 그림 속 물방울 개수로 증산량을 계산하지 않습니다.',check:q('잎이 있는 쪽의 마른 봉지에서만 물방울이 관찰되었다. 물의 이동과 상태 변화로 알맞은 것은?',['잎 → 액체 방울 배출 → 봉지에 붙음','잎 → 수증기 배출 → 봉지에서 응결','봉지 → 물 생성 → 잎으로 이동'],1,'잎에서 물이 수증기 상태로 빠져나온 뒤 봉지 안쪽에서 응결해 눈에 보이는 물방울이 됩니다.')};}});
   add('microscope',{id:'stem-dye-transport',title:'백합 줄기의 물 이동',codes:['6과11-02'],textbookActivity:'stem-dye-transport',source:{id:'89316af3de563d4c',pages:[9]},initial:{a:'plain',b:'dye',stage:'before',cut:'cross',location:'lower'},fields:[f('a','A의 물',[['plain','맹물'],['dye','붉은 색소 물']]),f('b','B의 물',[['plain','맹물'],['dye','붉은 색소 물']]),f('stage','관찰 시점',[['before','처음'],['after','약 4시간 뒤']]),f('cut','줄기 자르는 방향',[['cross','가로 단면'],['length','세로 단면']]),f('location','관찰 위치',[['lower','줄기 아래쪽'],['upper','줄기 위쪽']])],view(s){
    const after=s.stage==='after',stained={a:after&&s.a==='dye',b:after&&s.b==='dye'},metrics={stained,comparable:s.a!==s.b,after},figure=stemFigure(s,metrics);
    const section=s.cut==='cross'?'붉은 점':'붉은 선';
-   return{svg:figure.svg,figure,metrics,readings:[['A의 '+(s.cut==='cross'?'가로':'세로')+' 단면',stained.a?section+' 관찰':'붉은 부분 없음'],['B의 '+(s.cut==='cross'?'가로':'세로')+' 단면',stained.b?section+' 관찰':'붉은 부분 없음']],text:!after?'같은 크기의 백합 두 송이를 준비해 한쪽은 맹물, 다른 쪽은 붉은 색소 물에 꽂습니다. 처음 꽃과 줄기 색을 확인하세요.':s.a===s.b?'두 백합에 같은 물을 넣었습니다. 색소의 영향을 알아보려면 맹물과 색소 물을 같은 시간 동안 비교해야 합니다.':`색소 물에 꽂은 백합의 꽃과 줄기 ${s.location==='lower'?'아래쪽':'위쪽'} ${s.cut==='cross'?'가로':'세로'} 단면에서 ${section}이 보입니다. 줄기 안의 특정 통로를 따라 물이 이동한 증거입니다.`,note:'2022 미래엔·천재 교과서의 백합 관찰을 나타낸 정성 모형입니다. 실제 이동 속도·물의 양을 계산하지 않으며, 색소가 줄기 전체에 균일하게 퍼지는 것으로 해석하지 않습니다.',check:q('붉은 물에 둔 백합의 줄기를 가로로 잘랐더니 붉은 점이 여러 곳에 나타났다. 가장 타당한 해석은?',['줄기 안의 일부 통로를 따라 붉은 물이 이동했다','줄기 전체가 고르게 붉은 물로 바뀌었다','꽃의 색이 먼저 변해 물이 아래로 내려왔다'],0,'단면의 붉은 점과 세로 단면의 붉은 선은 물이 이동한 줄기 속 부분을 보여 줍니다.')};
+   return{svg:figure.svg,figure,metrics,readings:[['A의 '+(s.cut==='cross'?'가로':'세로')+' 단면',stained.a?section+' 관찰':'붉은 부분 없음'],['B의 '+(s.cut==='cross'?'가로':'세로')+' 단면',stained.b?section+' 관찰':'붉은 부분 없음']],text:!after?'같은 크기의 백합 두 송이를 준비해 한쪽은 맹물, 다른 쪽은 붉은 색소 물에 꽂습니다. 처음 꽃과 줄기 색을 확인하세요.':s.a===s.b?'두 백합에 같은 물을 넣었습니다. 색소의 영향을 알아보려면 맹물과 색소 물을 같은 시간 동안 비교해야 합니다.':`색소 물에 꽂은 백합의 꽃과 줄기 ${s.location==='lower'?'아래쪽':'위쪽'} ${s.cut==='cross'?'가로':'세로'} 단면에서 ${section}이 보입니다. 줄기 안의 특정 통로를 따라 물이 이동한 증거입니다.`,note:'붉게 변한 부분을 찾아보세요. 줄기 전체가 고르게 물드는지, 특정 통로를 따라 변하는지 비교합니다.',check:q('붉은 물에 둔 백합의 줄기를 가로로 잘랐더니 붉은 점이 여러 곳에 나타났다. 가장 타당한 해석은?',['줄기 안의 일부 통로를 따라 붉은 물이 이동했다','줄기 전체가 고르게 붉은 물로 바뀌었다','꽃의 색이 먼저 변해 물이 아래로 내려왔다'],0,'단면의 붉은 점과 세로 단면의 붉은 선은 물이 이동한 줄기 속 부분을 보여 줍니다.')};
   }});
  }
  const api={registerModels};if(typeof module!=='undefined')module.exports=api;else root.sciencePlantExperiments=api;

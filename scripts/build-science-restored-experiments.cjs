@@ -23,6 +23,8 @@ stages['telescope-observation']=require('./science-telescope-stage.cjs');
 stages['rotating-annulus']=require('./science-annulus-stage.cjs');
 stages['sunspot-observation']=require('./science-sunspot-stage.cjs');
 stages['protein-interaction']=require('./science-docking-stage.cjs');
+stages['air-sampling']=require('./science-air-sampling-stage.cjs');
+stages['local-biodiversity']=require('./science-biodiversity-stage.cjs');
 function output(file,body){if(process.argv.includes('--check'))assert.equal(fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n').replace(/\?v=[\w.-]+/g,''),body.replace(/\?v=[\w.-]+/g,''));else{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);}}
 for(const row of rows){
  const school=row.defaultContext||(row.codes.every(c=>c.startsWith('10'))?'high-common':row.codes.every(c=>c.startsWith('12'))?'high-elective':null);
@@ -33,6 +35,7 @@ for(const row of rows){
  output(path.join(lab,row.slug,'index.html'),html);
 }
 const misconceptions={},followups={};for(const row of rows){row.questions.forEach((q,i)=>misconceptions[row.slug+'#q'+(i+1)]={concept:q.concept,feedback:q.feedback});followups[row.slug]=row.followups;}
+const circuit=require('./science-circuit-course.cjs');circuit.questions.forEach((q,i)=>misconceptions[circuit.slug+'#q'+(i+5)]={concept:q.concept,feedback:q.feedback});followups[circuit.slug]=circuit.followups;
 const metadata=`/* Authored from the source-reviewed experiment registry. */\n(function(root){const extra=${JSON.stringify({misconceptions,followups},null,2)};if(typeof module!=='undefined'){module.exports=extra;}else{root.scienceExperimentQuestions=extra;}})(typeof window==='undefined'?globalThis:window);\n`;
 output(path.join(lab,'experiment-questions.js'),metadata);
 console.log(JSON.stringify({apps:rows.map(r=>r.slug),procedures:rows.reduce((n,r)=>n+r.procedures.length,0),baseQuestions:rows.reduce((n,r)=>n+r.questions.length,0),transferQuestions:rows.reduce((n,r)=>n+r.followups.length,0)}));

@@ -1,0 +1,27 @@
+(function(root){
+ 'use strict';
+ const path=(d,fill,stroke='#426f46',w=1.6)=>`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+ const circle=(x,y,r,fill)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/>`;
+ const group=(x,y,scale,angle,body)=>`<g transform="translate(${x} ${y}) rotate(${angle}) scale(${scale})">${body}</g>`;
+ function ovalLeaf(){let s=path('M0 0C-91-39-88-153 0-173C88-153 91-39 0 0Z','url(#bio-leaf)');for(const x of [-60,-35,0,35,60])s+=path(`M0 0Q${x} -94 0 -173`,'none','#bdd395',1.6);return s;}
+ function cloverLeaf(){return path('M0 0C-19-12-62-30-62-77C-62-116-25-121 0-98C25-121 62-116 62-77C62-30 19-12 0 0Z','url(#bio-leaf)')+path('M-39-64Q-19-71 0-50Q19-71 39-64','none','#d0dfaf',8)+path('M0 0V-88','none','#c3d79f',1.5);}
+ function fan(){let s=path('M0 0L-90-115Q-70-156-12-151L0-121L12-151Q70-156 90-115Z','url(#bio-leaf)');for(let i=-5;i<=5;i++){const x=i*14;s+=path(`M0 0Q${x*.4} -69 ${x} -132M${x*.48} -63Q${x*.9-7} -95 ${x-6} -140M${x*.48} -63Q${x*.9+7} -95 ${x+6} -140`,'none','#c7d891',1.1);}return s;}
+ function lobed(){return path('M0 0L-22-28-42-25-35-43-60-46-48-59-76-78-54-84-65-108-43-103-45-126-23-108-20-140-8-135 0-163 8-135 20-140 23-108 45-126 43-103 65-108 54-84 76-78 48-59 60-46 35-43 42-25 22-28Z','url(#bio-leaf)')+path('M0 0V-149M0-44L-48-91M0-44L48-91M0-79L-22-116M0-79L22-116','none','#a9cb82',2);}
+ function linear(){let s=path('M0 0Q-49-124 23-232Q9-103 0 0Z','url(#bio-leaf)');s+=path('M0 0Q-20-111 23-232','none','#bdcf8e',2);return s;}
+ function whiteHead(){let s='';for(let i=0;i<42;i++){const a=i*2.399,r=Math.sqrt(i/42)*49,x=Math.cos(a)*r,y=Math.sin(a)*r;s+=`<ellipse cx="${x}" cy="${y}" rx="7" ry="14" transform="rotate(${a*180/Math.PI} ${x} ${y})" fill="${i%3?'#faf7eb':'#eadacc'}" stroke="#b9b893" stroke-width="1"/>`;}return s;}
+ function foxHead(){let s=path('M0 35V-144','none','#789147',5);for(let i=0;i<21;i++){const y=-131+i*7,w=12+18*Math.sin(i/21*Math.PI);s+=path(`M0 ${y}L${-w-15} ${y-16}M0 ${y}L${w+14} ${y-20}`,'none','#b4b475',1.1);s+=`<ellipse cx="-8" cy="${y}" rx="${w*.58}" ry="5" fill="#839650"/><ellipse cx="9" cy="${y+2}" rx="${w*.58}" ry="5" fill="#99a760"/>`;}return s;}
+ function rose(){let s='';for(let i=0;i<5;i++)s+=`<g transform="rotate(${i*72})">${path('M0 10C-73-4-87-64-43-90C-5-120 51-85 38-41C32-17 15 0 0 10Z','url(#bio-petal)','#bd7e95',1.2)}${path('M0 0L-17-45M0 0L-36-59M0 0L3-62','none','#af496b',2)}</g>`;s+=circle(0,0,17,'#9a3558')+path('M0 0L7-48','none','#ece5ba',6);for(let i=0;i<17;i++)s+=circle(3+(i%3-1)*5,-12-i*2,2,'#f1cf65');s+=circle(7,-51,4,'#bd7590');return s;}
+ function stalk(){let s=path('M0 25V-158','none','#7f9260',3);for(let i=0;i<26;i++)s+=`<ellipse cx="${i%2?-3:3}" cy="${-150+i*5}" rx="4" ry="3" fill="${i%3?'#8f9867':'#d2c8a0'}"/>`;return s;}
+ function body(kind,view){
+  const leaf={clover:cloverLeaf,plantain:ovalLeaf,foxtail:linear,ginkgo:fan,hibiscus:lobed}[kind];
+  if(view==='leaf'){if(kind==='clover')return path('M210 366L200 267','none','#658352',5)+[-72,0,72].map(a=>group(200,275,.9,a,leaf())).join('');return group(200,345,kind==='foxtail'?1.1:1.35,kind==='foxtail'?0:10,leaf())+path('M194 340L186 375','none','#718454',5);}
+  if(view==='flower'){if(kind==='ginkgo')return group(215,346,1.35,8,fan());return group(200,235,kind==='foxtail'?1.35:1.25,kind==='foxtail'?12:0,({clover:whiteHead,plantain:stalk,foxtail:foxHead,hibiscus:rose}[kind])());}
+  let s='<ellipse cx="202" cy="364" rx="132" ry="16" fill="#dddace" opacity=".5"/>';
+  if(kind==='clover'){s+=path('M66 346Q166 313 327 348','none','#778653',5);for(const [x,y,a]of [[119,304,-20],[240,278,15],[286,322,40]]){s+=path(`M${x-15} 348L${x} ${y}`,'none','#658450',3);s+=[-72,0,72].map(r=>group(x,y,.45,a+r,cloverLeaf())).join('');}s+=path('M180 341Q188 220 164 168','none','#748b51',4)+group(163,164,.51,0,whiteHead());}
+  if(kind==='plantain'){for(const[a,size]of [[-68,.78],[-35,.88],[0,1],[40,.85],[72,.75]])s+=group(200,349,size,a,ovalLeaf());s+=path('M200 347Q222 214 228 122','none','#718257',4)+group(228,197,.65,7,stalk())+path('M204 347Q160 243 151 145','none','#718257',3)+group(150,198,.5,-9,stalk());}
+  if(kind==='foxtail'){s+=path('M173 357Q194 218 237 104M182 351Q173 242 134 168','none','#7c9150',4);for(const[x,y,a,size]of [[187,303,-47,.65],[201,254,53,.64],[213,207,-34,.55],[161,243,-45,.45]])s+=group(x,y,size,a,linear());s+=group(231,181,.63,18,foxHead())+group(141,216,.42,-20,foxHead());}
+  if(kind==='ginkgo'||kind==='hibiscus'){s+=path('M184 360Q209 253 201 113M198 283L116 199M199 233L278 173M203 171L149 119','none','#8e7054',kind==='ginkgo'?13:7);s+=path('M187 357L201 209','none','#b49570',3);for(const[x,y,a,size]of [[120,211,-45,.59],[280,182,48,.58],[161,137,-28,.55],[202,152,15,.59],[211,263,-5,.55]])s+=group(x,y,size,a,leaf());if(kind==='hibiscus')s+=group(273,260,.54,8,rose())+group(119,209,.38,-18,rose());}
+  return s;
+ }
+ root.LocalBiodiversityArt={svg:(kind,view='whole')=>`<svg viewBox="0 0 400 420" role="img" aria-label="식물의 ${view==='leaf'?'잎 확대':view==='flower'?'생식 기관 확대':'전체 모습'}"><defs><linearGradient id="bio-leaf" x2="1" y2="1"><stop stop-color="#96b76e"/><stop offset=".48" stop-color="#5c8c4e"/><stop offset="1" stop-color="#326749"/></linearGradient><radialGradient id="bio-petal"><stop stop-color="#b84b74"/><stop offset=".45" stop-color="#e5acc3"/><stop offset="1" stop-color="#f5dae6"/></radialGradient></defs>${body(kind,view)}</svg>`};
+})(window);

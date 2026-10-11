@@ -141,7 +141,7 @@
  }
  function flush(){frame=0;for(const svg of pending)normalize(svg);pending.clear();}
  function queue(svg){if(!svg)return;pending.add(svg);if(!frame)frame=requestAnimationFrame(flush);}
- const resize=new ResizeObserver(entries=>{for(const e of entries)queue(e.target);});
+ const resize=new ResizeObserver(entries=>{for(const e of entries)normalize(e.target);});
  function discover(node){if(node.nodeType!==1)return;const list=node.matches('svg')?[node]:node.querySelectorAll('svg');for(const svg of list){if(!observed.has(svg)){observed.add(svg);resize.observe(svg);}normalize(svg);queue(svg);}}
  discover(root);
  // Animated lessons replace their text every frame. Normalize in the mutation

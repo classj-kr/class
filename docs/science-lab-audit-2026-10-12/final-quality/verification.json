@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-12",
+  "appCount": 150,
+  "courseRoutes": 154,
+  "requiredExperimentTotal": null,
+  "physicalDevicesTested": false,
+  "readability": [
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/readability/catalog-chromium.json",
+      "engine": "chromium",
+      "routes": 1,
+      "scenarios": 25,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/readability/catalog-webkit.json",
+      "engine": "webkit",
+      "routes": 1,
+      "scenarios": 25,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/readability/extended-chromium.json",
+      "engine": "chromium",
+      "routes": 154,
+      "scenarios": 2910,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/readability/extended-webkit.json",
+      "engine": "webkit",
+      "routes": 154,
+      "scenarios": 2910,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/readability-targeted/extended-chromium.json",
+      "engine": "chromium",
+      "routes": 4,
+      "scenarios": 265,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/readability-targeted/extended-webkit.json",
+      "engine": "webkit",
+      "routes": 4,
+      "scenarios": 265,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/circuit/readability/extended-chromium.json",
+      "engine": "chromium",
+      "routes": 2,
+      "scenarios": 180,
+      "issues": 0,
+      "errors": 0
+    },
+    {
+      "file": "docs/science-lab-audit-2026-10-12/final-quality/circuit/readability/extended-webkit.json",
+      "engine": "webkit",
+      "routes": 2,
+      "scenarios": 180,
+      "issues": 0,
+      "errors": 0
+    }
+  ],
+  "sourceHashes": {
+    "learning/inquiry/science-lab/air-sampling-model.js": "cf9a7fbe2f06d70035249c2497dab257e04b63caca77d91655071e743b42216f",
+    "learning/inquiry/science-lab/air-sampling-lab.js": "bf87591075a102d9cafbbb785ac18e98b6393e9f73eb70a2309f1037b02f24ca",
+    "learning/inquiry/science-lab/local-biodiversity-model.js": "28ca5a5f3b9f144ebc441dbbcbd1a40c3f8a5b248c7055095d929b1f513d66a7",
+    "learning/inquiry/science-lab/local-biodiversity-art.js": "ba5c326014634b06ee030f1c450c66aaa0932487c8534e9de492b1d18d9ce8fd",
+    "learning/inquiry/science-lab/local-biodiversity-lab.js": "23b3ab77e623a587f6481324fd2c8b9c86b5bd88aa1f9e09fac86f7158899ca0",
+    "learning/inquiry/science-lab/physics-labs.js": "66fe0c5b6c1d2502703debfd7723071ae9b42c8301bb37417621dc1ce4111e6d",
+    "learning/inquiry/science-lab/plant-experiments.js": "4d345abc7df09d6795ffd7239454089cca09306f7aa9bcecbd9603b1fa3c295d",
+    "learning/inquiry/science-lab/observation-scenes.js": "573ec06a8810c244ac5a6f29ee1a3647202b01bd0669abeb9b03a18cdf6a6de2",
+    "learning/inquiry/science-lab/lab-ui.js": "e804868535ac6bf5dfda00c19c5526e68b8fea93425e25f94cf6fe5f94535393",
+    "learning/inquiry/science-lab/lab-ui.css": "1919c35bf2ab52bbf22db5be795b7767aff06323f2a112b2effc6b41c00b265b",
+    "learning/inquiry/science-lab/circuit-measurement-model.js": "f9effa54d827076c1c25a07e5c545875be771667fae6bb5158bef2de6103ee96",
+    "learning/inquiry/science-lab/circuit-measurement-lab.js": "2758981a535d46ac698ba952c80292f013b31958fec7cbf8d2e7e69938b6c2e5",
+    "learning/inquiry/science-lab/circuit-measurement.css": "a7439f0de42ff152bd8554855dbc354a900ff61f36a21aa8f309db751765a131",
+    "learning/inquiry/science-lab/ohms-law/index.html": "f513d27e5c5b280a4edfeca0093657dedc1f927139be86c96d405a7e3a4ac772",
+    "learning/inquiry/science-lab/app-context.js": "e709427ff17ae4791196c73d5a8879b496ef60ac040ad661d86c9eed4c265d2c",
+    "learning/inquiry/science-lab/exam-scope.js": "9dfe9f3d2f41a34a4164e728658f1316e63286cafb0bc6793e63cb74cbf3e105",
+    "scripts/science-circuit-course.cjs": "da1fe92aa2fce5ec588ab7d0010a1170bee3bc961c10a220770d79723a62f2a3",
+    "scripts/review-science-questions.cjs": "66fefa35f316415056b1c1345259272e8bf40d0a87604e99b2700748440f17b9"
+  },
+  "curriculumScope": "2022 only",
+  "sourceReviewComplete": false,
+  "baseResponsesAcrossCourseRoutes": 616,
+  "regressions": {
+    "fullRun": {
+      "log": "final-regressions.txt",
+      "tests": 187,
+      "passed": 186,
+      "failed": 1
+    },
+    "correctedObservationRerun": {
+      "log": "observation-final.txt",
+      "passed": 3,
+      "failed": 0
+    },
+    "circuitIntegration": {
+      "log": "circuit/integration.txt",
+      "passed": 11,
+      "failed": 0
+    },
+    "finalAssessmentAndCircuit": {
+      "log": "assessment-final.txt",
+      "passed": 9,
+      "failed": 0
+    },
+    "allObservedFailuresResolved": true,
+    "note": "One full-suite stale text assertion and one later static count assertion were corrected and rerun; logs retain original failures."
+  },
+  "rasterValidation": {
+    "root": "docs/science-lab-audit-2026-10-12",
+    "decodedWebP": 935,
+    "decodeFailures": 0,
+    "pngCopies": 0
+  },
+  "reviewedQuestionHashesMatched": 853,
+  "recentQuestionsReread": 33,
+  "sourceReviewedExperimentUnits": 59
+}

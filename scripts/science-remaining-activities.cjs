@@ -1,6 +1,6 @@
 // Source review inventory is deliberately separate from experiment work groups.
 // Neither an activity row nor a work group establishes mandatory status or a new app.
-const candidates=[
+const reviewedCandidates=[
   [
     "9과18#2",
     "실측 자료 분석",
@@ -53,35 +53,39 @@ const candidates=[
   ]
 ];
 
-const experimentGroups=[
+const resolvedGroups=[
   {
     id:'local-biology',title:'주변 생물 관찰·동정',activities:['10과탐2-01#2','12기환01#1'],
-    approach:'공통 관찰 절차를 함께 검토',relatedApps:['living-things'],
+    approach:'공통·선택 경로에서 가상 관찰·동정 구현',relatedApps:['local-biodiversity'],
     sharedProcedure:'학교·지역의 생물 관찰, 촬영, 특징에 따른 동정',
-    remaining:'공통과목의 구역·기간별 비교와 선택과목의 다섯 종류 이상 관찰 조건은 각각 유지한다. 초등 생물 카드 분류만으로 현장 관찰을 충족하지 않는다.'
+    remaining:'구역·시각·관찰 노력과 다섯 표본 조건을 구분한다. 작성된 표본 그림의 가상 연습이며 실제 현장 관찰·촬영·지도 게시 완료는 아니다.'
   },
   {
     id:'reaction-demonstration',title:'화학 반응 시연',activities:['10과탐1-02#4'],
-    approach:'기존 화학 실험에서 활용 범위 검토',relatedApps:['neutralization-common','redox'],
+    approach:'중화 반응의 혼합 비율·온도 비교로 연결',relatedApps:['neutralization-common'],
     sharedProcedure:'교과서가 제시한 산·염기, 산화·환원 등의 반응에서 하나를 골라 시연',
     remaining:'특정 반응을 의무 지정한 활동이 아니다. 과학마술 전용 앱은 만들지 않고, 선택한 반응의 조건과 결과를 기존 실험에서 확인한다. 대본·발표 활동의 완료로 세지 않는다.'
   },
   {
     id:'environment-measurement',title:'주변 오염물질 측정',activities:['10과탐2-01#5'],
-    approach:'측정 절차 검토',relatedApps:['mcu-sampling'],
+    approach:'공기질 센서의 영점·포집·농도 비교 구현',relatedApps:['air-sampling'],
     sharedProcedure:'오염물질·측정 장소·장치 선택, 현장 측정과 지역 자료 비교',
-    remaining:'기존 맥파·소음 센서 모형은 오염물질 측정 절차의 대체가 아니다. 물질별 센서와 측정 자료의 근거가 필요하다.'
+    remaining:'단위 밀도 구형 입자의 작성된 분포로 PM2.5·PM10의 농도를 계산한다. 실제 현장 측정·센서 교정·공개 지역 자료의 대조 완료는 아니다.'
   }
 ];
+
+const resolvedIds=resolvedGroups.flatMap(g=>g.activities);
+const candidates=reviewedCandidates.filter(r=>!resolvedIds.includes(r[0]));
+const experimentGroups=[];
 
 // These stay in the source inventory, but cannot generate independent experiments.
 const referenceActivities=['10과탐1-02#3','12지시02#2','12지시03#3','12행우03#2','12행우03#3'];
 const unresolvedActivities=['9과18#2'];
-const summary={experimentActivityRows:experimentGroups.flatMap(g=>g.activities).length,experimentReviewGroups:experimentGroups.length,referenceOnly:referenceActivities.length,sourceUnresolved:unresolvedActivities.length,newAppCount:null};
+const summary={experimentActivityRows:experimentGroups.flatMap(g=>g.activities).length,experimentReviewGroups:experimentGroups.length,referenceOnly:referenceActivities.length,sourceUnresolved:unresolvedActivities.length,newAppCount:null,sourceReviewedVirtualPracticeRows:resolvedIds.length};
 function disposition(id){
   if(referenceActivities.includes(id))return{queue:'reference-only',status:'자료 해석 참고 · 독립 실험 구현 대상 아님'};
   if(unresolvedActivities.includes(id))return{queue:'source-unresolved',status:'원문 절차 확인 대기 · 구현 목록에 넣지 않음'};
   const group=experimentGroups.find(g=>g.activities.includes(id));
   return group?{queue:'experiment-review',group:group.id,status:'공통 절차 검토 · 구현 완료 아님'}:null;
 }
-module.exports={candidates,experimentGroups,referenceActivities,unresolvedActivities,summary,disposition};
+module.exports={candidates,experimentGroups,resolvedGroups,referenceActivities,unresolvedActivities,summary,disposition};

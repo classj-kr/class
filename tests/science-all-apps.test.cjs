@@ -7,7 +7,7 @@ const { test } = require('node:test');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '../learning/inquiry/science-lab');
 const catalog = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const slugs = [...catalog.matchAll(/href="([^"/]+)\/"/g)].map(m => m[1]);
+const slugs = [...new Set([...catalog.matchAll(/href="([^"/?]+)\/(?:\?[^"]*)?"/g)].map(m => m[1]))];
 
 test('every catalog app loads, every question has a working correct answer, mobile layout', { timeout: 900000 }, async () => {
   const registered = Object.keys(require(path.join(root, 'curriculum-map.js'))).sort();
@@ -44,7 +44,7 @@ test('every catalog app loads, every question has a working correct answer, mobi
     assert.equal(await catalogPage.locator('#courseSelect,#gradeCount,.placement-note,.grade-navigation h1').count(),0);
     await catalogPage.goto(`http://127.0.0.1:${server.address().port}/?grade=고1&course=세포와%20물질대사`);
     assert.equal(new URL(catalogPage.url()).searchParams.has('course'),false);
-    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.codes.every(c=>c.startsWith('10'))).length);
+    const highOneCount=await catalogPage.evaluate(()=>Object.values(window.scienceCurriculum).filter(m=>m.courseContexts?.['high-common']||m.codes.every(c=>c.startsWith('10'))).length);
     assert.equal(await catalogPage.locator('.level-entry:not([hidden])').count(),highOneCount);
     assert(highOneCount>0);
     if(process.env.SCIENCE_CAPTURE){await catalogPage.locator('[data-school-filter="elementary"]').click();await catalogPage.locator('[data-grade="초6"]').click();fs.mkdirSync(path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots'),{recursive:true});await screenshotWebp(catalogPage, {path:path.resolve(root,'../../../docs/science-lab-audit-2026-09-20/current-screenshots/catalog-mobile.webp'),fullPage:true});}

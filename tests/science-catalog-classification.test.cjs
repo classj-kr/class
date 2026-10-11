@@ -51,7 +51,8 @@ test('official 2022 areas and courses, and one auditable primary placement per a
  const badContext=structuredClone(map);badContext['ride-acceleration'].courseContexts['high-elective'].codes.push('10과탐2-01-01');
  assert.throws(()=>classify(badContext),/Invalid course context/);
  assert.equal(entries.filter(p=>p.slug==='ride-acceleration').length,2);
- assert.equal(entries.length,Object.keys(map).length+2);
+ assert.equal(entries.length,Object.values(map).reduce((n,r)=>n+(r.courseContexts?Object.keys(r.courseContexts).length:1),0));
+ assert.deepEqual(entries.filter(p=>p.slug==='local-biodiversity').map(p=>p.school),['high-common','high-elective']);
  assert.deepEqual(entries.filter(p=>p.slug==='telescope-observation').map(p=>[p.school,p.area,p.category]),[['middle','지구와 우주','천체'],['high-elective','행성우주과학','우주탐사와 행성계']]);
  assert.equal(require('../scripts/audit_science_curriculum.cjs').apps.length,Object.keys(map).length,'Shared course entries are one physical app');
  const rideEntries=entries.filter(p=>p.slug==='ride-acceleration');

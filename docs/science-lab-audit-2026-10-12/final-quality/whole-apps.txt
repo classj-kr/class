@@ -1,0 +1,89 @@
+✖ every catalog app loads, every question has a working correct answer, mobile layout (1372.0038ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.1481ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.9468ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1229ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (93.4735ms)
+✖ chromium: all registered apps preserve first responses and integrate diagnostics (18033.7193ms)
+✖ webkit: all registered apps preserve first responses and integrate diagnostics (27769.3496ms)
+✖ official 2022 areas and courses, and one auditable primary placement per app (3.6981ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5094.2286ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 5
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46059.665
+
+✖ failing tests:
+
+test at tests\science-all-apps.test.cjs:12:1
+✖ every catalog app loads, every question has a working correct answer, mobile layout (1372.0038ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  19 !== 17
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-all-apps.test.cjs:48:12)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 19,
+    expected: 17,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-assessment.test.cjs:33:43
+✖ chromium: all registered apps preserve first responses and integrate diagnostics (18033.7193ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  612 !== 608
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-assessment.test.cjs:62:226)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 612,
+    expected: 608,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-assessment.test.cjs:33:43
+✖ webkit: all registered apps preserve first responses and integrate diagnostics (27769.3496ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  612 !== 608
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-assessment.test.cjs:62:226)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 612,
+    expected: 608,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-catalog-classification.test.cjs:14:1
+✖ official 2022 areas and courses, and one auditable primary placement per app (3.6981ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  153 !== 152
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-catalog-classification.test.cjs:54:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 153,
+    expected: 152,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

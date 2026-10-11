@@ -20,7 +20,7 @@
   }
  }
  function plot(){const c=$('dockPlot'),W=Math.max(250,c.clientWidth),H=150;c.width=Math.round(W*2);c.height=H*2;c.style.aspectRatio=W+'/'+H;const g=c.getContext('2d');g.scale(2,2);if(!loaded||!isTested())return;const values=loaded.poses[String(candidate)].map(p=>p.score),lo=Math.floor(Math.min(...values))-1,hi=Math.ceil(Math.max(...values))+1,left=44,right=W-18,top=22,bottom=118;
-  g.font='14px system-ui';g.fillStyle='#657b90';g.strokeStyle='#dfe6ef';for(let n=0;n<=2;n++){const y=top+(bottom-top)*n/2,v=hi-(hi-lo)*n/2;g.fillText(v.toFixed(1),3,y+4);g.beginPath();g.moveTo(left,y);g.lineTo(right,y);g.stroke();}g.fillText('배치 1',left,140);g.textAlign='right';g.fillText('배치 20',right,140);values.forEach((v,i)=>{const x=left+(right-left)*i/19,y=bottom-(v-lo)/(hi-lo)*(bottom-top);g.fillStyle=i===pose?'#dd8e33':'#4c72a8';g.beginPath();g.arc(x,y,i===pose?5:3,0,Math.PI*2);g.fill();});
+  g.font='14px system-ui';g.fillStyle='#405d6e';g.strokeStyle='#dfe6ef';for(let n=0;n<=2;n++){const y=top+(bottom-top)*n/2,v=hi-(hi-lo)*n/2;g.fillText(v.toFixed(1),3,y+4);g.beginPath();g.moveTo(left,y);g.lineTo(right,y);g.stroke();}g.fillText('배치 1',left,140);g.textAlign='right';g.fillText('배치 20',right,140);values.forEach((v,i)=>{const x=left+(right-left)*i/19,y=bottom-(v-lo)/(hi-lo)*(bottom-top);g.fillStyle=i===pose?'#dd8e33':'#4c72a8';g.beginPath();g.arc(x,y,i===pose?5:3,0,Math.PI*2);g.fill();});
  }
  function render(){
   const t=meta.targets.find(t=>t.id===target);$('dockTargetName').textContent=t.name;$('dockRole').textContent=t.role;$('dockContext').textContent=t.context;$('dockTarget').value=target;
