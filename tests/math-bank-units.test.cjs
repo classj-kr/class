@@ -158,12 +158,14 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     // 답을 다시 셈하는 식의 수는 문제에 적힌 수여야 한다(글과 식이 따로 놀면 답을 맞춰 본 것이 아니다).
     // 글에 숫자로 적히지 않는 수(일주일의 7 따위)는 facts.unseen 에 밝혀 둔다.
     // 고르기·견주기 문항의 식(choose.exprs, who.exprs)도 같은 잣대로 본다.
-    const recomputed = (f.calc || []).map(([text]) => text).concat((f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || []);
+    // 단위 바꾸기(unit)·시간(clock) 식도 본다. 시간 식의 3600·60 은 초로 바꾸는 수라 글에 없어도 된다.
+    const timed = Boolean(f.clock || f.clockExprs);
+    const recomputed = (f.calc || []).map(([text]) => text).concat((f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || [], (f.unit || []).map((u) => u.expr), (f.clock || []).map((c) => c.expr));
     if (recomputed.length && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
       // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다. 세로셈은 숫자가 칸마다 떨어져 있으니 붙여 읽은 것도 함께 본다.
       const seen = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 '));
       const shown = new Set((seen.match(/\d+/g) || []).concat(seen.replace(/(\d) (?=\d)/g, '$1').match(/\d+/g) || []));
-      for (const text of recomputed) for (const n of text.match(/\d+/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
+      for (const text of recomputed) for (const n of text.match(/\d+/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)) || (timed && (n === '3600' || n === '60')), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
     }
     if (f.pair) {
       const [a, op, b] = f.pair;
@@ -435,7 +437,8 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
     }
     if (f.who) {
       if (f.who.exprs) assert.deepEqual(f.who.values, f.who.exprs.map(evaluate), label);
-      const [x, y] = f.who.values, winner = x > y ? 0 : 1, gap = Math.abs(x - y);
+      // smaller: 값이 작은 쪽이 이기는 물음(더 빨리 들어온 사람)
+      const [x, y] = f.who.values, winner = (f.who.smaller ? x < y : x > y) ? 0 : 1, gap = Math.abs(x - y);
       assert.notEqual(x, y, label);
       const hits = f.who.options.filter(([who, n]) => who === winner && n === gap);
       assert.equal(hits.length, 1, label);
@@ -497,6 +500,70 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.deepEqual(Array.from(options[item.choice.answer]), Array.from(hits[0]), label);
       assert.ok(options.every(([x, y]) => x >= 2 && x <= 9 && y >= 2 && y <= 9), label); tally('times');
     }
+    if (f.unit) {
+      // 큰 단위와 작은 단위로 나누어 적기: 값을 base 로 나눈 몫과 나머지
+      for (const { expr, base, at: [i, j] } of f.unit) {
+        const value = evaluate(expr);
+        assert.ok(value > base && value % base !== 0, label);
+        assert.equal(answerAt(item, i), Math.trunc(value / base), label); assert.equal(answerAt(item, j), value % base, label);
+      }
+      tally('unit');
+    }
+    if (f.clock) {
+      // 시간 계산: 식을 초로 셈한 뒤 시·분·초로 다시 나눈다.
+      for (const { expr, parts, at: start } of f.clock) {
+        const total = evaluate(expr);
+        assert.ok(total > 0, label);
+        const want = parts === 'hms' ? [Math.trunc(total / 3600), Math.trunc((total % 3600) / 60), total % 60] : [Math.trunc(total / 60), total % 60];
+        if (parts === 'ms') assert.ok(total < 3600, label); else assert.ok(want[0] >= 1 && want[0] <= 23, label);
+        assert.deepEqual(item.inputs.slice(start, start + want.length).map((i) => i.answer), want, label);
+        if (f.wrongClock) assert.notDeepEqual(f.wrongClock, want, '틀린 값이 바른 값과 같다: ' + label);
+      }
+      tally('clock');
+    }
+    if (f.timeRule) {
+      // 계산 문항은 초에서 받아올림(받아내림)이 꼭 일어난다. 분·초는 1~59.
+      const { op, a, b } = f.timeRule;
+      for (const part of [a[1], a[2], b[1], b[2]]) assert.ok(part >= 1 && part <= 59, label);
+      assert.ok(op === '+' ? a[2] + b[2] >= 60 : a[2] < b[2], '받아올림·받아내림이 없다: ' + label); tally('timeRule');
+    }
+    if (f.timeMasks) {
+      // 빈칸이 있는 시간 셈: 빈칸(null)에 모든 수를 넣어 보아도 맞는 경우는 하나뿐이다. 답은 윗줄부터, 왼쪽부터.
+      const { op, a, b, r } = f.timeMasks, sec = ([h, m, s]) => h * 3600 + m * 60 + s, holes = [];
+      a.forEach((v, i) => { if (v === null) holes.push(['a', i]); }); b.forEach((v, i) => { if (v === null) holes.push(['b', i]); });
+      const found = [], limit = (i) => (i === 0 ? 24 : 60), trial = { a: a.slice(), b: b.slice() };
+      const walk = (k) => {
+        if (k === holes.length) { if ((op === '+' ? sec(trial.a) + sec(trial.b) : sec(trial.a) - sec(trial.b)) === sec(r)) found.push(holes.map(([row, i]) => trial[row][i])); return; }
+        const [row, i] = holes[k];
+        for (let v = 0; v < limit(i); v += 1) { trial[row][i] = v; walk(k + 1); }
+      };
+      walk(0);
+      assert.equal(found.length, 1, '빈칸에 맞는 경우가 하나가 아니다: ' + label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), found[0], label); tally('timeMasks');
+    }
+    if (f.ruler) {
+      // 자 그림: 그림 설명에 적힌 두 끝의 자리로 길이를 다시 잰다.
+      const ends = [...item.figure.matchAll(/눈금 (\d+)(?:에서 작은 눈금 (\d+)칸 더 간 곳)?/g)].map((m) => Number(m[1]) * 10 + Number(m[2] || 0));
+      assert.equal(ends.length, 2, label);
+      const length = ends[1] - ends[0];
+      assert.ok(length > 10 && length % 10 !== 0, label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [Math.trunc(length / 10), length % 10], label); tally('ruler');
+    }
+    if (f.kmLine) {
+      const m = item.figure.match(/화살표는 (\d+)km에서 작은 눈금 (\d+)칸 더 간 곳/);
+      assert.ok(m && Number(m[2]) >= 1 && Number(m[2]) <= 9, label);
+      assert.deepEqual(item.inputs.map((i) => i.answer), [Number(m[1]), Number(m[2]) * 100], label); tally('kmLine');
+    }
+    if (f.clockFace) {
+      // 초까지 읽는 시계: 그림 설명의 시각이 답이고, 바늘 셋이 서로 겹치거나 붙어 있지 않다.
+      const m = item.figure.match(/aria-label="시계 (\d+)시 (\d+)분 (\d+)초"/);
+      assert.ok(m, label);
+      const [hour, minute, second] = m.slice(1).map(Number), apart = (p, q) => { const gap = Math.abs(p - q) % 360; return Math.min(gap, 360 - gap); };
+      assert.deepEqual(item.inputs.map((i) => i.answer), [hour, minute, second], label);
+      assert.ok(minute % 5 === 0 && second % 5 === 0 && minute !== second, label);
+      assert.ok(apart(hour * 30 + minute / 2, minute * 6) >= 20 && apart(hour * 30 + minute / 2, second * 6) >= 20, '바늘이 붙어 있다: ' + label); tally('clockFace');
+    }
+    if (f.mapSteps) { assert.equal(item.choice.answer, f.mapSteps - 1, label); tally('mapSteps'); }
     if (f.repeatAdd) {
       // 같은 수를 거듭 더한 식 → 곱셈식: 그림의 덧셈식에 a 가 n 번 적혀 있다.
       const { a, n } = f.repeatAdd;

@@ -130,7 +130,7 @@ button, input, select { font: inherit; color: inherit; }
 .mb-field { display: inline-flex; align-items: center; gap: 6px; }
 .mb-field input { width: 6.2em; min-height: 44px; padding: 6px 10px; border: 2px solid var(--line); border-radius: 10px; font-size: 1.15rem; text-align: center; font-variant-numeric: tabular-nums; }
 .mb-field input:focus { outline: none; border-color: var(--brand); }
-.mb-field.is-short input { width: 3.4em; }
+.mb-field.is-short input { width: 4.4em; }
 .mb-choices { display: flex; flex-wrap: wrap; gap: 8px; }
 .mb-choice { min-height: 44px; min-width: 56px; padding: 6px 16px; border-radius: 10px; border: 2px solid var(--brand); background: var(--paper); color: var(--brand-dark); font-weight: 600; cursor: pointer; font-size: 1.1rem; }
 .mb-choices.is-long { flex-direction: column; align-items: stretch; }
@@ -205,3 +205,22 @@ button, input, select { font: inherit; color: inherit; }
 .mb-note { font-size: 0.6em; color: var(--muted, #475569); padding-left: 0.9em; min-width: 5.5em; white-space: nowrap; align-self: center; }
 .mb-cell.mb-wide.mb-wide-short { padding-left: 0; }
 .mb-cell.mb-wide.mb-wide-short .mb-box { min-width: 3.2em; }
+
+/* 길이와 시간: 자, km 수직선, 초바늘 시계, 시간의 세로셈 */
+.mb-ruler { max-width: 100%; height: auto; }
+.mb-ruler-body { fill: #fff7e0; stroke: #a86a00; stroke-width: 0.9; }
+.mb-ruler-tick { stroke: var(--ink); stroke-width: 0.7; }
+.mb-ruler-number { font-size: 11px; font-weight: 700; fill: var(--ink); }
+.mb-km-label { font-size: 12px; font-weight: 700; fill: var(--ink); }
+.mb-ruler-thing { fill: #93c5fd; stroke: var(--brand-dark); stroke-width: 0.9; }
+.mb-ruler-guide { stroke: var(--brand-dark); stroke-width: 0.6; stroke-dasharray: 2 1.6; }
+.mb-pointer { fill: var(--wrong); }
+.mb-tick-small { stroke-width: 0.5; }
+.mb-hand-second { stroke: var(--wrong); stroke-width: 1; stroke-linecap: round; }
+.mb-clock-fine .mb-hand-hour { stroke-width: 2.6; }
+.mb-clock-fine .mb-hand-minute { stroke-width: 1.7; }
+.mb-timecol { border-collapse: collapse; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.mb-timecol th { font-weight: 400; padding: 2px 8px 2px 0; text-align: center; min-width: 1.1em; }
+.mb-timecol td { text-align: right; padding: 2px 0 2px 12px; white-space: nowrap; }
+.mb-timecol-result th, .mb-timecol-result td { border-top: 2px solid var(--ink); height: 8px; padding-top: 6px; }
+.mb-timecol .mb-box { font-size: 0.8em; min-width: 1.9em; height: 1.5em; vertical-align: -0.2em; }

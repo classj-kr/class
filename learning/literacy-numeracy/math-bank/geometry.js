@@ -103,16 +103,22 @@
   const tiles = (list) => '<div class="mb-tiles">' + list.map(([label, svg]) => tile(label, svg)).join('') + '</div>';
 
   // 시계. 긴바늘은 분, 짧은바늘은 시.
-  function clock(hour, minute) {
-    const R = 46, C = 54;
+  // 시계. second 를 주면 초바늘과 작은 눈금 60개를 그리고 크게 그린다(초까지 읽는 문항).
+  // 초까지 읽는 시계의 긴바늘은 교과서 그림처럼 분 눈금에 딱 맞춰 그린다.
+  function clock(hour, minute, second) {
+    const R = 46, C = 54, fine = second !== undefined;
     const polar = (deg, r) => [C + r * Math.sin((deg * Math.PI) / 180), C - r * Math.cos((deg * Math.PI) / 180)];
     let ticks = '';
-    for (let i = 0; i < 12; i += 1) { const outer = polar(i * 30, R - 1), inner = polar(i * 30, R - 6); ticks += '<line class="mb-tick" x1="' + fmt(outer[0]) + '" y1="' + fmt(outer[1]) + '" x2="' + fmt(inner[0]) + '" y2="' + fmt(inner[1]) + '"/>'; }
+    for (let i = 0; i < (fine ? 60 : 12); i += 1) {
+      const step = fine ? 6 : 30, big = !fine || i % 5 === 0, outer = polar(i * step, R - 1), inner = polar(i * step, R - (big ? 6 : 3.5));
+      ticks += '<line class="' + (big ? 'mb-tick' : 'mb-tick mb-tick-small') + '" x1="' + fmt(outer[0]) + '" y1="' + fmt(outer[1]) + '" x2="' + fmt(inner[0]) + '" y2="' + fmt(inner[1]) + '"/>';
+    }
     let numbers = '';
     for (let n = 1; n <= 12; n += 1) { const p = polar(n * 30, R - 14); numbers += '<text class="mb-clock-number" x="' + fmt(p[0]) + '" y="' + fmt(p[1]) + '" text-anchor="middle" dominant-baseline="central">' + n + '</text>'; }
-    const m = polar(minute * 6, R - 10), h = polar((hour % 12) * 30 + minute * 0.5, R - 24);
-    return '<svg class="mb-clock" viewBox="0 0 108 108" width="104" role="img" aria-label="시계 ' + hour + '시' + (minute ? ' ' + minute + '분' : '') + '"><circle class="mb-clock-face" cx="' + C + '" cy="' + C + '" r="' + R + '"/>' + ticks + numbers
-      + '<line class="mb-hand-hour" x1="' + C + '" y1="' + C + '" x2="' + fmt(h[0]) + '" y2="' + fmt(h[1]) + '"/><line class="mb-hand-minute" x1="' + C + '" y1="' + C + '" x2="' + fmt(m[0]) + '" y2="' + fmt(m[1]) + '"/><circle class="mb-clock-pin" cx="' + C + '" cy="' + C + '" r="2.4"/></svg>';
+    const m = polar(minute * 6, R - 10), h = polar((hour % 12) * 30 + minute * 0.5, R - 24), sec = fine ? polar(second * 6, R - 5) : null;
+    return '<svg class="mb-clock' + (fine ? ' mb-clock-fine' : '') + '" viewBox="0 0 108 108" width="' + (fine ? 176 : 104) + '" role="img" aria-label="시계 ' + hour + '시' + (minute ? ' ' + minute + '분' : '') + (fine ? ' ' + second + '초' : '') + '"><circle class="mb-clock-face" cx="' + C + '" cy="' + C + '" r="' + R + '"/>' + ticks + numbers
+      + '<line class="mb-hand-hour" x1="' + C + '" y1="' + C + '" x2="' + fmt(h[0]) + '" y2="' + fmt(h[1]) + '"/><line class="mb-hand-minute" x1="' + C + '" y1="' + C + '" x2="' + fmt(m[0]) + '" y2="' + fmt(m[1]) + '"/>'
+      + (fine ? '<line class="mb-hand-second" x1="' + C + '" y1="' + C + '" x2="' + fmt(sec[0]) + '" y2="' + fmt(sec[1]) + '"/>' : '') + '<circle class="mb-clock-pin" cx="' + C + '" cy="' + C + '" r="2.4"/></svg>';
   }
 
   B.kit.geo = { sub, dot, cross, len2, isRight, rightAt, rightAngles, isRectangle, isSquare, isRightTriangle, nearRight, looksRight,
