@@ -4,10 +4,10 @@
 // (천재 박만구 교과서는 이 단원이 3단원이라 그 책의 자료는 3단원 폴더에서 가져왔다.)
 //
 // 고른 기준
-//  - 숫자만 다르거나 말만 다른 꼴은 한 번만 싣는다. 단위 바꾸기는 한 문항에서 두 방향을 함께 묻는다(65cm 8mm=□mm, 209mm=□cm □mm).
+//  - 숫자만 다르거나 말만 다른 꼴은 한 번만 싣는다. 단위 바꾸기는 한 문항에서 두 방향을 함께 묻는다(65 cm 8 mm=□mm, 209 mm=□cm □mm).
 //    견주기는 묶음마다 꼴을 달리했다(mm는 두 길이 >·=·<, km는 세 곳의 차례, 초는 가장 빠른 기록).
 //  - 자로 선 긋기·초바늘 그려 넣기·길이를 어림하고 직접 재기처럼 손으로 하는 활동, 「초」를 넣어 문장 짓기 같은 서술형은 싣지 않는다.
-//  - 길이를 소수로 나타내는 것(1.5km)은 6단원 뒤의 것이라 싣지 않는다.
+//  - 길이를 소수로 나타내는 것(1.5 km)은 6단원 뒤의 것이라 싣지 않는다.
 //  - 두 단계 이상이거나 거꾸로 생각해야 하는 꼴은 실력 문항으로 보냈다(3-1-5b.js).
 // 묻는 말: 수나 값을 물을 때는 "~은?/~는?", 양을 물을 때는 "몇 ~인가?" 로 맺는다.
 (function (root) {
@@ -45,7 +45,7 @@
   const OVER_KM = ['서울에서 부산까지의 거리', '한강의 길이', '마라톤 선수가 달리는 거리', '비행기가 1시간 동안 날아가는 거리'];
   const UNDER_KM = ['교실 칠판의 긴 쪽의 길이', '버스의 길이', '10층 아파트의 높이', '줄넘기 줄의 길이', '학교 복도의 길이', '축구 골대의 너비'];
   // [일, 수, 알맞은 단위]
-  const TIMES = [['눈을 한 번 깜박이는 데 걸리는 시간', 1, '초'], ['100m를 달리는 데 걸리는 시간', 20, '초'], ['이를 닦는 데 걸리는 시간', 3, '분'], ['점심을 먹는 데 걸리는 시간', 30, '분'],
+  const TIMES = [['눈을 한 번 깜박이는 데 걸리는 시간', 1, '초'], ['100 m를 달리는 데 걸리는 시간', 20, '초'], ['이를 닦는 데 걸리는 시간', 3, '분'], ['점심을 먹는 데 걸리는 시간', 30, '분'],
     ['밤에 잠을 자는 시간', 9, '시간'], ['학교에서 보내는 시간', 6, '시간']];
   const IN_ONE_SECOND = ['손뼉 한 번 치기', '눈 한 번 깜박이기', '고개 한 번 끄덕이기'];
   const NOT_IN_ONE_SECOND = ['손 씻기', '이 닦기', '운동장 한 바퀴 달리기', '동화책 한 권 읽기', '점심 먹기', '옷 갈아입기'];
@@ -58,34 +58,34 @@
         types: [
           T('mm-ticks', '자의 작은 눈금과 mm', '①1 ②1 ③4', (d) => {
             const n = d.int(3, 9);
-            return N(`자에서 작은 눈금 ${n}칸의 길이는 몇 mm인가?`, n, { unit: 'mm', explain: `자의 작은 눈금 한 칸의 길이는 1mm이다. ${n}칸은 ${n}mm이다.`, facts: { calc: [[String(n), 0]] } });
+            return N(`자에서 작은 눈금 ${n}칸의 길이는 몇 mm인가?`, n, { unit: 'mm', explain: `자의 작은 눈금 한 칸의 길이는 1 mm이다. ${n}칸은 ${n} mm이다.`, facts: { calc: [[String(n), 0]] } });
           }),
           T('mm-read', '자 그림에서 길이 읽기', '①7 ②4 ③5', (d) => {
             const to = d.until(() => d.int(23, 48), (v) => v % 10 !== 0 && v % 10 !== 5);
             return M('물건의 길이는 몇 cm 몇 mm인가?', [{ answer: Math.floor(to / 10), unit: 'cm' }, { answer: to % 10, unit: 'mm' }], {
-              figure: ruler(0, to, Math.floor(to / 10) + 1), explain: `물건의 오른쪽 끝이 ${Math.floor(to / 10)}cm에서 작은 눈금 ${to % 10}칸을 더 간 곳에 있다.`, facts: { ruler: true }
+              figure: ruler(0, to, Math.floor(to / 10) + 1), explain: `물건의 오른쪽 끝이 ${Math.floor(to / 10)} cm에서 작은 눈금 ${to % 10}칸을 더 간 곳에 있다.`, facts: { ruler: true }
             });
           }, { standard: MEASURE }),
           T('mm-say', '「몇 cm보다 몇 mm 더 긴 길이」', '①3 ②3 ③7', (d) => {
             const c = d.int(4, 28), m = d.int(2, 9);
-            return N(`${c}cm보다 ${m}mm 더 긴 길이는 몇 mm인가?`, c * 10 + m, { unit: 'mm', explain: `${c}cm는 ${c * 10}mm이다. ${c * 10}mm보다 ${m}mm 더 긴 길이는 ${c * 10 + m}mm이다.`, facts: { calc: [[`${c}*10+${m}`, 0]], unseen: [10] } });
+            return N(`${c} cm보다 ${m} mm 더 긴 길이는 몇 mm인가?`, c * 10 + m, { unit: 'mm', explain: `${c} cm는 ${c * 10} mm이다. ${c * 10} mm보다 ${m} mm 더 긴 길이는 ${c * 10 + m} mm이다.`, facts: { calc: [[`${c}*10+${m}`, 0]], unseen: [10] } });
           }),
           T('mm-convert', 'cm와 mm로 나타낸 길이 바꾸기', '①5·6 ②7 ③2·3', (d) => {
-            // 65cm 8mm=□mm, 209mm=□cm □mm
+            // 65 cm 8 mm=□mm, 209 mm=□cm □mm
             const c = d.int(12, 68), m = d.int(1, 9), v = d.until(() => d.int(102, 498), (x) => x % 10 !== 0 && Math.floor(x / 10) !== c);
             return M('㉠, ㉡, ㉢에 알맞은 수는?', [{ label: LABELS[0], answer: c * 10 + m }, { label: LABELS[1], answer: Math.floor(v / 10) }, { label: LABELS[2], answer: v % 10 }], {
-              figure: lines([`${c}cm ${m}mm = ${box(LABELS[0])}mm`, `${v}mm = ${box(LABELS[1])}cm ${box(LABELS[2])}mm`]),
-              explain: `1cm는 10mm이다. ${c}cm ${m}mm는 ${c * 10}mm보다 ${m}mm 더 긴 ${c * 10 + m}mm이고, ${v}mm는 ${Math.floor(v / 10) * 10}mm보다 ${v % 10}mm 더 긴 ${Math.floor(v / 10)}cm ${v % 10}mm이다.`,
+              figure: lines([`${c} cm ${m} mm = ${box(LABELS[0])} mm`, `${v} mm = ${box(LABELS[1])} cm ${box(LABELS[2])} mm`]),
+              explain: `1 cm는 10 mm이다. ${c} cm ${m} mm는 ${c * 10} mm보다 ${m} mm 더 긴 ${c * 10 + m} mm이고, ${v} mm는 ${Math.floor(v / 10) * 10} mm보다 ${v % 10} mm 더 긴 ${Math.floor(v / 10)} cm ${v % 10} mm이다.`,
               facts: { calc: [[`${c}*10+${m}`, 0]], unseen: [10], unit: [{ expr: String(v), base: 10, at: [1, 2] }] }
             });
           }),
           T('mm-compare', '두 길이의 비교', '①22 ②21 ③31', (d) => {
-            // 130mm ○ 10cm 9mm
+            // 130 mm ○ 10 cm 9 mm
             const c = d.int(8, 32), m = d.int(1, 9), v = d.until(() => c * 10 + m + d.int(-24, 24), (x) => x % 10 !== 0 && Math.floor(x / 10) !== c || x === c * 10 + m);
-            const flip = d.bool(), left = flip ? `${c}cm ${m}mm` : `${v}mm`, right = flip ? `${v}mm` : `${c}cm ${m}mm`;
+            const flip = d.bool(), left = flip ? `${c} cm ${m} mm` : `${v} mm`, right = flip ? `${v} mm` : `${c} cm ${m} mm`;
             const x = flip ? c * 10 + m : v, y = flip ? v : c * 10 + m;
             return C('두 길이를 비교할 때, ○ 안에 알맞은 것은?', SIGNS, x > y ? 0 : x === y ? 1 : 2, {
-              figure: versus(left, right), explain: `${c}cm ${m}mm는 ${c * 10 + m}mm이다.`,
+              figure: versus(left, right), explain: `${c} cm ${m} mm는 ${c * 10 + m} mm이다.`,
               facts: { choose: { exprs: flip ? [`${c}*10+${m}`, String(v)] : [String(v), `${c}*10+${m}`], rule: 'compare' }, unseen: [10] }
             });
           })
@@ -96,41 +96,41 @@
         types: [
           T('km-line', '수직선에서 거리 읽기', '①8 ②13 ③15', (d) => {
             const from = d.int(1, 6), k = d.until(() => d.int(2, 9), (v) => v !== 5);
-            return M('1km를 똑같이 10칸으로 나눈 수직선이다. 화살표가 가리키는 곳은 몇 km 몇 m인가?', [{ answer: from, unit: 'km' }, { answer: k * 100, unit: 'm' }], {
-              figure: kmLine(from, 1, from * 1000 + k * 100), explain: `작은 눈금 한 칸은 100m이다. ${from}km에서 ${k}칸을 더 갔으므로 ${from}km ${k * 100}m이다.`, facts: { kmLine: true }
+            return M('1 km를 똑같이 10칸으로 나눈 수직선이다. 화살표가 가리키는 곳은 몇 km 몇 m인가?', [{ answer: from, unit: 'km' }, { answer: k * 100, unit: 'm' }], {
+              figure: kmLine(from, 1, from * 1000 + k * 100), explain: `작은 눈금 한 칸은 100 m이다. ${from} km에서 ${k}칸을 더 갔으므로 ${from} km ${k * 100} m이다.`, facts: { kmLine: true }
             });
           }),
           T('km-convert', 'km와 m로 나타낸 거리 바꾸기', '①12·13 ②12 ③11·12', (d) => {
-            // 9km 46m=□m, 5100m=□km □m
+            // 9 km 46 m=□m, 5100 m=□km □m
             const k = d.int(2, 9), m = d.pick([d.int(3, 9), d.int(12, 95), d.int(105, 880)]), v = d.until(() => d.int(1005, 9990), (x) => x % 1000 !== 0 && Math.floor(x / 1000) !== k && (x % 1000 < 100 || x % 100 === 0));
             return M('㉠, ㉡, ㉢에 알맞은 수는?', [{ label: LABELS[0], answer: k * 1000 + m }, { label: LABELS[1], answer: Math.floor(v / 1000) }, { label: LABELS[2], answer: v % 1000 }], {
-              figure: lines([`${k}km ${m}m = ${box(LABELS[0])}m`, `${v}m = ${box(LABELS[1])}km ${box(LABELS[2])}m`]),
-              explain: `1km는 1000m이다. ${k}km ${m}m는 ${k * 1000}m보다 ${m}m 더 먼 ${k * 1000 + m}m이고, ${v}m는 ${Math.floor(v / 1000) * 1000}m보다 ${v % 1000}m 더 먼 ${Math.floor(v / 1000)}km ${v % 1000}m이다.`,
+              figure: lines([`${k} km ${m} m = ${box(LABELS[0])} m`, `${v} m = ${box(LABELS[1])} km ${box(LABELS[2])} m`]),
+              explain: `1 km는 1000 m이다. ${k} km ${m} m는 ${k * 1000} m보다 ${m} m 더 먼 ${k * 1000 + m} m이고, ${v} m는 ${Math.floor(v / 1000) * 1000} m보다 ${v % 1000} m 더 먼 ${Math.floor(v / 1000)} km ${v % 1000} m이다.`,
               facts: { calc: [[`${k}*1000+${m}`, 0]], unseen: [1000], unit: [{ expr: String(v), base: 1000, at: [1, 2] }] }
             });
           }),
           T('km-wrong', '거리를 잘못 나타낸 것 찾기', '①9 ②10 ③8·18', (d) => {
-            // 2km 89m=2089m, 1530m=1km 530m, 3km 7m=3070m(틀림)
+            // 2 km 89 m=2089 m, 1530 m=1 km 530 m, 3 km 7 m=3070 m(틀림)
             const k = d.shuffle([2, 3, 4, 5, 6, 7, 8]).slice(0, 4), small = d.int(3, 9), mid = d.int(12, 95), big = d.int(105, 880), round = d.int(1, 9) * 100;
             const rows = [[k[0], mid, k[0] * 1000 + mid, true], [k[1], big, k[1] * 1000 + big, false], [k[2], round, k[2] * 1000 + round, true], [k[3], small, k[3] * 1000 + small * 10, true]];
-            // 마지막 줄만 틀리게 적는다: 3km 7m 를 3070m 로.
-            const list = d.shuffle(rows.map(([km, m, said, mFirst], i) => ({ text: mFirst ? `${km}km ${m}m = ${said}m` : `${said}m = ${km}km ${m}m`, expr: `${km}*1000+${m}`, said, bad: i === 3 })));
+            // 마지막 줄만 틀리게 적는다: 3 km 7 m 를 3070 m 로.
+            const list = d.shuffle(rows.map(([km, m, said, mFirst], i) => ({ text: mFirst ? `${km} km ${m} m = ${said} m` : `${said} m = ${km} km ${m} m`, expr: `${km}*1000+${m}`, said, bad: i === 3 })));
             const bad = list.find((row) => row.bad);
             return C('거리를 잘못 나타낸 것은?', list.map((row) => row.text), list.indexOf(bad), {
-              explain: `${k[3]}km ${small}m는 ${k[3] * 1000}m보다 ${small}m 더 먼 ${k[3] * 1000 + small}m이다.`, facts: { claimed: list.map((row) => [row.expr, row.said]), claimedWant: false }
+              explain: `${k[3]} km ${small} m는 ${k[3] * 1000} m보다 ${small} m 더 먼 ${k[3] * 1000 + small} m이다.`, facts: { claimed: list.map((row) => [row.expr, row.said]), claimedWant: false }
             });
           }),
           T('km-order', '세 곳의 거리 비교', '①23 ②22 ③32', (d) => {
-            // 우체국 1km 500m, 도서관 1040m, 경찰서 1km 404m → 가까운 곳부터
+            // 우체국 1 km 500 m, 도서관 1040 m, 경찰서 1 km 404 m → 가까운 곳부터
             const places = d.shuffle(['은행', '병원', '소방서', '수영장', '놀이터', '박물관']).slice(0, 3), k = d.int(1, 4);
             const meters = d.until(() => [d.int(1, 9) * 100 + d.pick([0, 50]), d.int(12, 98), d.int(105, 890)].map((m) => k * 1000 + m), (v) => new Set(v).size === 3 && new Set(v.map((x) => Math.floor((x % 1000) / 100))).size >= 2);
             const order = d.shuffle([0, 1, 2]), dist = order.map((i) => meters[i]);
-            const said = dist.map((v, i) => (i === 1 ? `${v}m` : `${Math.floor(v / 1000)}km ${v % 1000}m`));
+            const said = dist.map((v, i) => (i === 1 ? `${v} m` : `${Math.floor(v / 1000)} km ${v % 1000} m`));
             const right = [0, 1, 2].sort((p, q) => dist[p] - dist[q]);
             const list = d.shuffle(d.shuffle(ORDERS.filter((o) => o.join() !== right.join())).slice(0, 3).concat([right]));
             return C(`집에서 ${places[0]}까지의 거리는 ${said[0]}, ${places[1]}까지의 거리는 ${said[1]}, ${places[2]}까지의 거리는 ${said[2]}이다. 집에서 가까운 곳부터 차례대로 나열한 것은?`,
               list.map((o) => o.map((i) => places[i]).join(', ')), list.findIndex((o) => o.join() === right.join()), {
-                explain: dist.map((v, i) => `${places[i]} ${v}m`).join(', ') + '이다.',
+                explain: dist.map((v, i) => `${places[i]} ${v} m`).join(', ') + '이다.',
                 facts: { choose: { exprs: dist.map((v, i) => (i === 1 ? String(v) : `${Math.floor(v / 1000)}*1000+${v % 1000}`)), rule: 'ascending', orders: list }, unseen: [1000] }
               });
           })
@@ -141,20 +141,20 @@
         types: [
           T('guess-unit', '알맞은 길이 단위 고르기', '①16 ②14 ③20', (d) => {
             const [thing, n, unit] = d.pick(LENGTHS), list = ['mm', 'cm', 'm', 'km'];
-            return C(`${josa(thing, '은/는')} 약 ${n}□이다. □ 안에 알맞은 단위는?`, list, list.indexOf(unit), { explain: `${josa(thing, '은/는')} 약 ${n}${unit}이다.`, facts: { truth: list.map((u) => u === unit), want: true } });
+            return C(`${josa(thing, '은/는')} 약 ${n} □이다. □ 안에 알맞은 단위는?`, list, list.indexOf(unit), { explain: `${josa(thing, '은/는')} 약 ${n} ${unit}이다.`, facts: { truth: list.map((u) => u === unit), want: true } });
           }),
           T('guess-wrong', '단위를 잘못 쓴 문장 찾기', '①19 ②16 ③22', (d) => {
             const picks = d.until(() => d.shuffle(LENGTHS).slice(0, 4), (list) => new Set(list.map(([, , u]) => u)).size >= 3), bad = d.int(0, 3);
-            const list = picks.map(([thing, n, unit], i) => `${josa(thing, '은/는')} 약 ${n}${i === bad ? WRONG_UNIT[unit] : unit}이다.`);
-            return C('길이의 단위를 알맞게 쓰지 않은 것은?', list, bad, { explain: `${josa(picks[bad][0], '은/는')} 약 ${picks[bad][1]}${picks[bad][2]}이다.`, facts: { truth: list.map((_, i) => i !== bad), want: false } });
+            const list = picks.map(([thing, n, unit], i) => `${josa(thing, '은/는')} 약 ${n} ${i === bad ? WRONG_UNIT[unit] : unit}이다.`);
+            return C('길이의 단위를 알맞게 쓰지 않은 것은?', list, bad, { explain: `${josa(picks[bad][0], '은/는')} 약 ${picks[bad][1]} ${picks[bad][2]}이다.`, facts: { truth: list.map((_, i) => i !== bad), want: false } });
           }),
-          T('guess-over', '1km보다 긴 것 고르기', '①18 ②17 ③23', (d) => {
+          T('guess-over', '1 km보다 긴 것 고르기', '①18 ②17 ③23', (d) => {
             const long = d.pick(OVER_KM), list = d.shuffle(d.shuffle(UNDER_KM).slice(0, 3).concat([long]));
-            return C('길이가 1km보다 긴 것은?', list, list.indexOf(long), { explain: `1km는 1000m이다. ${josa(long, '은/는')} 1km보다 훨씬 길다.`, facts: { truth: list.map((v) => v === long), want: true } });
+            return C('길이가 1 km보다 긴 것은?', list, list.indexOf(long), { explain: `1 km는 1000 m이다. ${josa(long, '은/는')} 1 km보다 훨씬 길다.`, facts: { truth: list.map((v) => v === long), want: true } });
           }),
           T('guess-map', '기준 거리로 어림하기', '①21 ②20 ③28·29', (d) => {
-            // 집~학교가 약 500m일 때 약 1km 떨어진 곳
-            const [base, far] = d.pick([['500m', ['1km', '1km 500m']], ['1km', ['2km', '3km']], ['2km', ['4km', '6km']]]), k = d.int(2, 3);
+            // 집~학교가 약 500 m일 때 약 1 km 떨어진 곳
+            const [base, far] = d.pick([['500 m', ['1 km', '1 km 500 m']], ['1 km', ['2 km', '3 km']], ['2 km', ['4 km', '6 km']]]), k = d.int(2, 3);
             const places = ['집'].concat(d.shuffle(['학교', '공원', '도서관', '병원', '우체국']).slice(0, 3));
             return C(`그림에서 이웃한 두 곳 사이의 거리는 모두 같다. 집에서 ${places[1]}까지의 거리가 약 ${base}일 때, 집에서 약 ${far[k - 2]} 떨어진 곳은?`, places.slice(1), k - 1, {
               figure: route(places.map((place, i) => [place, i * 33.3, 50, true]), [[0, 1, '약 ' + base, -5], [1, 2], [2, 3]], 44),

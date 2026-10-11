@@ -108,7 +108,7 @@
           }),
           T('upper-word', '문장제: 겹치지 않게 이어 붙인 길이', '②53 ③16', (d) => {
             const [a, b] = mulPair(d, MUL.upper);
-            return N(`길이가 ${a}cm인 리본 ${b}개를 겹치지 않게 한 줄로 이어 붙였다. 이어 붙인 리본의 전체 길이는 몇 cm인가?`, a * b, { unit: 'cm', explain: times(a, b), facts: { calc: [[E(a, '*', b), 0]] } });
+            return N(`길이가 ${a} cm인 리본 ${b}개를 겹치지 않게 한 줄로 이어 붙였다. 이어 붙인 리본의 전체 길이는 몇 cm인가?`, a * b, { unit: 'cm', explain: times(a, b), facts: { calc: [[E(a, '*', b), 0]] } });
           })
         ]
       },

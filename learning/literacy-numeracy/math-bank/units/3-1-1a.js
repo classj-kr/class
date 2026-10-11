@@ -140,7 +140,7 @@
           }),
           T('add1-twice', '문장제: 같은 수를 두 번 더하기', '85', (d) => {
             const a = d.until(() => three(d, 210, 480), (v) => ADD.once(carryPlaces(v, v)));
-            return N(`공원 산책로는 한 바퀴가 ${a}m이다. 산책로를 두 바퀴 걸었을 때, 걸은 거리는 모두 몇 m인가?`, a + a, { unit: 'm', explain: shown(a, '+', a), facts: { calc: [[E(a, '+', a), 0]] } });
+            return N(`공원 산책로는 한 바퀴가 ${a} m이다. 산책로를 두 바퀴 걸었을 때, 걸은 거리는 모두 몇 m인가?`, a + a, { unit: 'm', explain: shown(a, '+', a), facts: { calc: [[E(a, '+', a), 0]] } });
           })
         ]
       },
@@ -196,15 +196,15 @@
           T('add2-route', '문장제: 길 그림에서 두 구간 더하기', '95', (d) => {
             const [a, b] = addPair(d, (c, x, y) => ADD.many(c) && x + y <= 999);
             return N('집에서 공원을 지나 도서관까지 가는 거리는 몇 m인가?', a + b, {
-              unit: 'm', figure: route([['집', 0, 50], ['공원', 48, 50], ['도서관', 100, 50]], [[0, 1, a + 'm'], [1, 2, b + 'm']], 40), explain: shown(a, '+', b), facts: calcFacts(a, '+', b)
+              unit: 'm', figure: route([['집', 0, 50], ['공원', 48, 50], ['도서관', 100, 50]], [[0, 1, a + ' m'], [1, 2, b + ' m']], 40), explain: shown(a, '+', b), facts: calcFacts(a, '+', b)
             });
           }),
           T('add2-first', '문장제: 쓴 것과 남은 것으로 처음 양 구하기', '86', (d) => {
             // 485 cm를 쓰고 2 m 35 cm가 남음 → 처음 길이
             const [used, left] = d.until(() => [three(d, 310, 680), d.int(1, 3) * 100 + d.int(12, 88)], ([x, y]) => plain(y) && x + y <= 999 && ADD.many(carryPlaces(x, y)));
             const m = Math.floor(left / 100), cm = left % 100;
-            return N(`색 테이프를 ${used}cm 사용하였더니 ${m}m ${cm}cm가 남았다. 처음에 있던 색 테이프의 길이는 몇 cm인가?`, used + left, {
-              unit: 'cm', explain: `${m}m ${cm}cm는 ${left}cm이다. ` + shown(used, '+', left), facts: { calc: [[`${used}+${m}*100+${cm}`, 0]], pair: [used, '+', left], rule: true }
+            return N(`색 테이프를 ${used} cm 사용하였더니 ${m} m ${cm} cm가 남았다. 처음에 있던 색 테이프의 길이는 몇 cm인가?`, used + left, {
+              unit: 'cm', explain: `${m} m ${cm} cm는 ${left} cm이다. ` + shown(used, '+', left), facts: { calc: [[`${used}+${m}*100+${cm}`, 0]], pair: [used, '+', left], rule: true }
             });
           })
         ]
@@ -281,8 +281,8 @@
           }),
           T('sub1-route', '문장제: 전체 거리에서 한 구간 빼기', '101', (d) => {
             const [a, b] = subPair(d, (bw, x, y) => SUB.once(bw) && x - y >= 110 && y >= 150);
-            return N(`집에서 은행을 지나 시장까지 가는 거리는 ${a}m이다. 집에서 은행까지의 거리는 몇 m인가?`, a - b, {
-              unit: 'm', figure: route([['집', 0, 50], ['은행', 52, 50], ['시장', 100, 50]], [[0, 1, '?'], [1, 2, b + 'm']], 40), explain: shown(a, '-', b), facts: calcFacts(a, '-', b)
+            return N(`집에서 은행을 지나 시장까지 가는 거리는 ${a} m이다. 집에서 은행까지의 거리는 몇 m인가?`, a - b, {
+              unit: 'm', figure: route([['집', 0, 50], ['은행', 52, 50], ['시장', 100, 50]], [[0, 1, '?'], [1, 2, b + ' m']], 40), explain: shown(a, '-', b), facts: calcFacts(a, '-', b)
             });
           })
         ]
@@ -331,8 +331,8 @@
           T('sub2-unit', '문장제: 단위를 바꾼 뒤 빼기', '84', (d) => {
             // 3 m 리본에서 158 cm
             const m = d.int(3, 8), used = d.until(() => three(d, 125, m * 100 - 110), (v) => v % 10 !== 0);
-            return N(`길이가 ${m}m인 철사 중에서 ${used}cm를 잘라 사용하였다. 남은 철사의 길이는 몇 cm인가?`, m * 100 - used, {
-              unit: 'cm', explain: `${m}m는 ${m * 100}cm이다. ` + shown(m * 100, '-', used), facts: { calc: [[`${m}*100-${used}`, 0]] }
+            return N(`길이가 ${m} m인 철사 중에서 ${used} cm를 잘라 사용하였다. 남은 철사의 길이는 몇 cm인가?`, m * 100 - used, {
+              unit: 'cm', explain: `${m} m는 ${m * 100} cm이다. ` + shown(m * 100, '-', used), facts: { calc: [[`${m}*100-${used}`, 0]] }
             });
           }),
           T('sub2-less', '문장제: 더 적은 쪽 구하기', '80', (d) => {

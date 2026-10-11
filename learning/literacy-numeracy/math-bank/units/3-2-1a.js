@@ -72,7 +72,7 @@
           }),
           T('h3b-word', '문장제: 몇 배', '①13 ②11 ③12', (d) => {
             const [a, b] = pair3(d, (n, x, y) => n === 1 && x * y < 1000);
-            return N(`집에서 학교까지의 거리는 ${a}m이고, 집에서 공원까지의 거리는 그 ${b}배이다. 집에서 공원까지의 거리는 몇 m인가?`, a * b, { unit: 'm', explain: times(a, b), facts: { calc: [[E(a, '*', b), 0]] } });
+            return N(`집에서 학교까지의 거리는 ${a} m이고, 집에서 공원까지의 거리는 그 ${b}배이다. 집에서 공원까지의 거리는 몇 m인가?`, a * b, { unit: 'm', explain: times(a, b), facts: { calc: [[E(a, '*', b), 0]] } });
           })
         ]
       },

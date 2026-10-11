@@ -82,6 +82,9 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
     // 말투는 수능 문체: "~세요 / ~습니다 / ~인가요" 를 쓰지 않는다.
     assert.doesNotMatch(whole, /세요|습니다|입니다|인가요|나요\?|해요|예요|어요|까요/, '말투: ' + label);
     assert.ok(item.explain && strip(item.explain).length > 3, '풀이가 없다: ' + label);
+    // 수와 단위 기호는 띄어 쓴다(1 km, 7 km 741 m). 빈칸과 단위 기호도 띄어 쓴다(□ mm). 그림 속 글과 그림 설명(aria-label)도 본다.
+    const spaced = [item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).map((part) => String(part || '').replace(/<span class="mb-box">[^<]*<\/span>/g, '□').replace(/aria-label="([^"]*)"/g, '> $1 <').replace(/<[^>]+>/g, ' ')).join(' | ');
+    assert.doesNotMatch(spaced, /(?:\d|□)(?:mm|cm|km|kg|mL|m|g|L|t)(?![A-Za-z])/, '수(빈칸)와 단위를 붙여 썼다: ' + label);
     if (item.choice) {
       assert.ok(item.choice.options.length >= 2 && Number.isInteger(item.choice.answer) && item.choice.answer >= 0 && item.choice.answer < item.choice.options.length, label);
       assert.equal(new Set(item.choice.options.map(strip)).size, item.choice.options.length, '보기가 겹친다: ' + label);
@@ -149,6 +152,7 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
   const TABLE_DIVISION = new Set(['3-1-3']);
   // 3학년 1학기 곱셈은 (두 자리 수)×(한 자리 수)까지다. 묶음 이름대로 올림이 일어나는지도 본다.
   const SMALL_MUL = new Set(['3-1-4']);
+  const DIV_UNITS = new Set(['3-2-2']);
   // 3학년 2학기 곱셈은 (세 자리 수)×(한 자리 수)와 (두 자리 수)×(두 자리 수)까지다.
   const GRADE3_MUL = new Set(['3-2-1']);
   const inGrade3 = (x, y) => x >= 0 && y >= 0 && ((Math.min(x, y) <= 9 && Math.max(x, y) <= 999) || (x <= 99 && y <= 99));
@@ -196,6 +200,25 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       assert.ok(a >= 10 && a <= 99 && b >= 2 && b <= 9, label);
       if (MUL_RULE[at.group.id]) assert.ok(MUL_RULE[at.group.id](a, b), '묶음 조건에 안 맞는 곱셈: ' + label);
       if (f.wrongValue !== undefined) { assert.notEqual(f.wrongValue, a * b, '틀린 답이 정답과 같다: ' + label); assert.ok(f.wrongValue > 0, label); }
+    }
+    if (f.divide) {
+      // 나눗셈: 몫과 나머지를 다시 셈한다. 나누어떨어지면 몫 한 칸, 아니면 몫과 나머지 두 칸. 묶음 이름대로인지도 본다.
+      const [a, b] = f.divide, q = Math.trunc(a / b), r = a % b;
+      assert.ok(b >= 2 && b <= 9 && a >= b && a <= 999, label);
+      if (!f.divideFree) assert.deepEqual(item.inputs.map((i) => i.answer), r === 0 && item.inputs.length === 1 ? [q] : [q, r], label);
+      const RULE = {
+        tens: () => a % 10 === 0 && a <= 90 && r === 0,
+        plain: () => a <= 99 && r === 0 && (Math.trunc(a / 10) % b === 0),
+        down: () => a <= 99 && r === 0 && (Math.trunc(a / 10) % b !== 0) && Math.trunc(a / 10) >= b,
+        rest: () => a <= 99 && r !== 0,
+        three: () => a >= 100
+      }[at.group.id];
+      if (RULE && f.rule) assert.ok(RULE(), '묶음 조건에 안 맞는 나눗셈: ' + label);
+    }
+    if (DIV_UNITS.has(at.unit.id)) {
+      // 3학년 2학기 나눗셈은 한 자리 수로 나눈다. 글·그림·풀이의 모든 나눗셈을 본다.
+      const whole = strip([item.text, item.figure, item.explain].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<span class="mb-box">[^<]*<\/span>/g, '□'));
+      for (const m of whole.matchAll(/(\d+) ÷ (\d+)/g)) { assert.ok(Number(m[2]) >= 2 && Number(m[2]) <= 9 && Number(m[1]) <= 999, `한 자리 수로 나누는 범위를 넘는 나눗셈 ${m[0]} — ${label}`); divisions += 1; }
     }
     if (f.mulAny) {
       const [a, b] = f.mulAny;
@@ -577,7 +600,7 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       tally('ruler');
     }
     if (f.kmLine) {
-      const m = item.figure.match(/화살표는 (\d+)km에서 작은 눈금 (\d+)칸 더 간 곳/);
+      const m = item.figure.match(/화살표는 (\d+) km에서 작은 눈금 (\d+)칸 더 간 곳/);
       assert.ok(m && Number(m[2]) >= 1 && Number(m[2]) <= 9, label);
       assert.deepEqual(item.inputs.map((i) => i.answer), [Number(m[1]), Number(m[2]) * 100], label); tally('kmLine');
     }
