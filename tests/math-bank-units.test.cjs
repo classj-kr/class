@@ -77,6 +77,8 @@ function everyItem(visit, extra = true) {
 const where = (item, at) => `${at.unit.id} ${at.group.id} ${item.key} (seed ${at.seed}): ${strip(item.text)} ${strip(item.figure)}`;
 // 답이 네 자리를 넘는 단원(4학년 1학기 큰 수). 9000조를 넘는 수는 자바스크립트가 정확히 못 담으니 쓰지 않는다.
 const BIG_NUMBER_UNITS = new Set(['4-1-1', '4-1-3']);
+// 소수 둘째·셋째 자리까지 답하는 단원
+const FINE_DECIMAL_UNITS = new Set(['4-2-3']);
 const answerAt = (item, i) => item.inputs[i].answer;
 
 test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
@@ -109,9 +111,9 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.equal(B.isCorrect(item, (item.choice.answer + 1) % item.choice.options.length), false, label);
     } else {
       assert.ok(Array.isArray(item.inputs) && item.inputs.length >= 1, label);
-      // 소수 칸(decimal)은 소수 첫째 자리까지인 수이고 자연수가 아니다. 나머지 칸은 자연수.
+      // 소수 칸(decimal)은 소수 첫째 자리까지인 수이고 자연수가 아니다(소수 두·세 자리 수를 배우는 단원은 셋째 자리까지). 나머지 칸은 자연수.
       for (const input of item.inputs) {
-        if (input.decimal) assert.ok(Math.abs(input.answer * 10 - Math.round(input.answer * 10)) < 1e-9 && !Number.isInteger(input.answer) && input.answer > 0 && input.answer < 100, label);
+        if (input.decimal) { const fine = FINE_DECIMAL_UNITS.has(at.unit.id), scale = fine ? 1000 : 10; assert.ok(Math.abs(input.answer * scale - Math.round(input.answer * scale)) < 1e-6 && !Number.isInteger(input.answer) && input.answer > 0 && input.answer < (fine ? 1000 : 100), label); }
         else assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= (BIG_NUMBER_UNITS.has(at.unit.id) ? 9e15 : 9999), label);
       }
       // 분수 답: 분자·분모 두 칸, 1보다 작은 분수, 더 줄일 수 없는 분수(같은 크기의 다른 분수가 답이 되지 않게).
@@ -188,7 +190,7 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
   everyItem((item, at) => {
     const f = item.facts || {}, label = where(item, at);
     for (const [text, i] of f.calc || []) {
-      if (item.inputs[i].decimal) assert.equal(Math.round(answerAt(item, i) * 10), Math.round(evaluate(text) * 10), `${text} — ${label}`); else assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`);
+      if (item.inputs[i].decimal) assert.equal(Math.round(answerAt(item, i) * 1000), Math.round(evaluate(text) * 1000), `${text} — ${label}`); else assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`);
       assert.ok(evaluate(text) > 0, label); checked += 1;
     }
     // 답을 다시 셈하는 식의 수는 문제에 적힌 수여야 한다(글과 식이 따로 놀면 답을 맞춰 본 것이 아니다).
