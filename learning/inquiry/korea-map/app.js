@@ -220,12 +220,6 @@
     $("#reviewWrong").addEventListener("click", reviewWrongQuestions);
     $("#focusClose").addEventListener("click", clearFeatureFocus);
     $("#labelToggle").addEventListener("click", toggleMapDetails);
-    // 지도 자료 출처는 자료를 쓰는 조건이라 없앨 수 없어 ⓘ 단추 안에 접어 둔다.
-    $("#creditButton").addEventListener("click", () => {
-      const open = $("#creditText").hidden;
-      $("#creditText").hidden = !open;
-      $("#creditButton").setAttribute("aria-expanded", String(open));
-    });
     $("#profileButton").addEventListener("click", () => (profile.active ? stopProfile() : startProfile()));
     $("#profileClose").addEventListener("click", stopProfile);
     mainMap.on("click", (event) => { if (profile.active) addProfilePoint(event); });

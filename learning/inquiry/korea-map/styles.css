@@ -71,9 +71,6 @@ button { cursor: pointer; }
 .profile-panel { position: absolute; z-index: 650; left: 12px; right: 12px; bottom: 14px; padding: 10px 46px 8px 14px; border: 1px solid rgba(18, 60, 70, 0.16); border-radius: 12px; background: rgba(255, 255, 255, 0.95); box-shadow: var(--shadow); }
 .profile-panel[hidden] { display: none; }
 .map-key[hidden] { display: none; }
-.map-credit { position: absolute; z-index: 600; right: 10px; bottom: 14px; width: 26px; height: 26px; padding: 0; border: 1px solid rgba(18, 60, 70, 0.2); border-radius: 50%; color: #4d6466; background: rgba(255, 255, 255, 0.85); font: italic 800 13px/1 Georgia, serif; }
-.map-credit-text { position: absolute; z-index: 600; right: 42px; bottom: 14px; max-width: min(420px, calc(100% - 60px)); margin: 0; padding: 5px 9px; border-radius: 8px; color: #3d5157; background: rgba(255, 255, 255, 0.94); box-shadow: var(--shadow); font-size: 11px; line-height: 1.4; }
-.map-credit-text[hidden] { display: none; }
 .profile-close { position: absolute; top: 2px; right: 2px; width: 44px; height: 44px; border: 0; border-radius: 10px; color: #52696e; background: transparent; font-size: 22px; }
 .profile-hint { margin: 4px 0; color: var(--ink); font-size: 14px; font-weight: 750; }
 .profile-hint:empty { display: none; }
