@@ -1,0 +1,554 @@
+[
+  {
+    "file": "panels-chromium-01.webp",
+    "items": [
+      {
+        "id": "spring",
+        "variant": "initial",
+        "width": 1100,
+        "file": "spring-initial-1100.webp",
+        "slug": "force-motion",
+        "label": "force-motion / spring / initial"
+      },
+      {
+        "id": "spring",
+        "variant": "changed",
+        "width": 1100,
+        "file": "spring-changed-1100.webp",
+        "slug": "force-motion",
+        "label": "force-motion / spring / changed"
+      },
+      {
+        "id": "spring",
+        "variant": "maximum-extension",
+        "width": 1100,
+        "file": "spring-maximum-extension-1100.webp",
+        "slug": "force-motion",
+        "label": "force-motion / spring / maximum-extension"
+      },
+      {
+        "id": "buoyancy",
+        "variant": "initial",
+        "width": 1100,
+        "file": "buoyancy-initial-1100.webp",
+        "slug": "force-motion",
+        "label": "force-motion / buoyancy / initial"
+      },
+      {
+        "id": "buoyancy",
+        "variant": "changed",
+        "width": 1100,
+        "file": "buoyancy-changed-1100.webp",
+        "slug": "force-motion",
+        "label": "force-motion / buoyancy / changed"
+      },
+      {
+        "id": "buoyancy",
+        "variant": "half-immersed",
+        "width": 1100,
+        "file": "buoyancy-half-immersed-1100.webp",
+        "slug": "force-motion",
+        "label": "force-motion / buoyancy / half-immersed"
+      },
+      {
+        "id": "erosion",
+        "variant": "initial",
+        "width": 1100,
+        "file": "erosion-initial-1100.webp",
+        "slug": "volcano-model",
+        "label": "volcano-model / erosion / initial"
+      },
+      {
+        "id": "erosion",
+        "variant": "changed",
+        "width": 1100,
+        "file": "erosion-changed-1100.webp",
+        "slug": "volcano-model",
+        "label": "volcano-model / erosion / changed"
+      },
+      {
+        "id": "sea-level",
+        "variant": "initial",
+        "width": 1100,
+        "file": "sea-level-initial-1100.webp",
+        "slug": "living-environment",
+        "label": "living-environment / sea-level / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-02.webp",
+    "items": [
+      {
+        "id": "sea-level",
+        "variant": "changed",
+        "width": 1100,
+        "file": "sea-level-changed-1100.webp",
+        "slug": "living-environment",
+        "label": "living-environment / sea-level / changed"
+      },
+      {
+        "id": "efficient-house",
+        "variant": "initial",
+        "width": 1100,
+        "file": "efficient-house-initial-1100.webp",
+        "slug": "heat-transfer",
+        "label": "heat-transfer / efficient-house / initial"
+      },
+      {
+        "id": "efficient-house",
+        "variant": "changed",
+        "width": 1100,
+        "file": "efficient-house-changed-1100.webp",
+        "slug": "heat-transfer",
+        "label": "heat-transfer / efficient-house / changed"
+      },
+      {
+        "id": "mix-change",
+        "variant": "initial",
+        "width": 1100,
+        "file": "mix-change-initial-1100.webp",
+        "slug": "burning-conditions",
+        "label": "burning-conditions / mix-change / initial"
+      },
+      {
+        "id": "mix-change",
+        "variant": "changed",
+        "width": 1100,
+        "file": "mix-change-changed-1100.webp",
+        "slug": "burning-conditions",
+        "label": "burning-conditions / mix-change / changed"
+      },
+      {
+        "id": "mix-change",
+        "variant": "bubbles",
+        "width": 1100,
+        "file": "mix-change-bubbles-1100.webp",
+        "slug": "burning-conditions",
+        "label": "burning-conditions / mix-change / bubbles"
+      },
+      {
+        "id": "combustion-products",
+        "variant": "initial",
+        "width": 1100,
+        "file": "combustion-products-initial-1100.webp",
+        "slug": "burning-conditions",
+        "label": "burning-conditions / combustion-products / initial"
+      },
+      {
+        "id": "combustion-products",
+        "variant": "changed",
+        "width": 1100,
+        "file": "combustion-products-changed-1100.webp",
+        "slug": "burning-conditions",
+        "label": "burning-conditions / combustion-products / changed"
+      },
+      {
+        "id": "push-compare",
+        "variant": "initial",
+        "width": 1100,
+        "file": "push-compare-initial-1100.webp",
+        "slug": "lever-balance",
+        "label": "lever-balance / push-compare / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-03.webp",
+    "items": [
+      {
+        "id": "push-compare",
+        "variant": "changed",
+        "width": 1100,
+        "file": "push-compare-changed-1100.webp",
+        "slug": "lever-balance",
+        "label": "lever-balance / push-compare / changed"
+      },
+      {
+        "id": "altitude-meter",
+        "variant": "initial",
+        "width": 1100,
+        "file": "altitude-meter-initial-1100.webp",
+        "slug": "seasons",
+        "label": "seasons / altitude-meter / initial"
+      },
+      {
+        "id": "altitude-meter",
+        "variant": "changed",
+        "width": 1100,
+        "file": "altitude-meter-changed-1100.webp",
+        "slug": "seasons",
+        "label": "seasons / altitude-meter / changed"
+      },
+      {
+        "id": "compound-conductivity",
+        "variant": "initial",
+        "width": 1100,
+        "file": "compound-conductivity-initial-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / compound-conductivity / initial"
+      },
+      {
+        "id": "compound-conductivity",
+        "variant": "changed",
+        "width": 1100,
+        "file": "compound-conductivity-changed-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / compound-conductivity / changed"
+      },
+      {
+        "id": "compound-conductivity",
+        "variant": "water",
+        "width": 1100,
+        "file": "compound-conductivity-water-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / compound-conductivity / water"
+      },
+      {
+        "id": "compound-conductivity",
+        "variant": "salt-solid",
+        "width": 1100,
+        "file": "compound-conductivity-salt-solid-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / compound-conductivity / salt-solid"
+      },
+      {
+        "id": "compound-conductivity",
+        "variant": "sugar-solid",
+        "width": 1100,
+        "file": "compound-conductivity-sugar-solid-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / compound-conductivity / sugar-solid"
+      },
+      {
+        "id": "compound-conductivity",
+        "variant": "sugar-solution",
+        "width": 1100,
+        "file": "compound-conductivity-sugar-solution-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / compound-conductivity / sugar-solution"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-04.webp",
+    "items": [
+      {
+        "id": "group-design",
+        "variant": "initial",
+        "width": 1100,
+        "file": "group-design-initial-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / group-design / initial"
+      },
+      {
+        "id": "group-design",
+        "variant": "changed",
+        "width": 1100,
+        "file": "group-design-changed-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / group-design / changed"
+      },
+      {
+        "id": "group-design",
+        "variant": "same-group",
+        "width": 1100,
+        "file": "group-design-same-group-1100.webp",
+        "slug": "periodic-bonding",
+        "label": "periodic-bonding / group-design / same-group"
+      },
+      {
+        "id": "tuning-fork",
+        "variant": "initial",
+        "width": 1100,
+        "file": "tuning-fork-initial-1100.webp",
+        "slug": "sound-vibration",
+        "label": "sound-vibration / tuning-fork / initial"
+      },
+      {
+        "id": "tuning-fork",
+        "variant": "changed",
+        "width": 1100,
+        "file": "tuning-fork-changed-1100.webp",
+        "slug": "sound-vibration",
+        "label": "sound-vibration / tuning-fork / changed"
+      },
+      {
+        "id": "tuning-fork",
+        "variant": "water-splash",
+        "width": 1100,
+        "file": "tuning-fork-water-splash-1100.webp",
+        "slug": "sound-vibration",
+        "label": "sound-vibration / tuning-fork / water-splash"
+      },
+      {
+        "id": "dew-fog",
+        "variant": "initial",
+        "width": 1100,
+        "file": "dew-fog-initial-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / dew-fog / initial"
+      },
+      {
+        "id": "dew-fog",
+        "variant": "changed",
+        "width": 1100,
+        "file": "dew-fog-changed-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / dew-fog / changed"
+      },
+      {
+        "id": "dew-fog",
+        "variant": "dew",
+        "width": 1100,
+        "file": "dew-fog-dew-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / dew-fog / dew"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-05.webp",
+    "items": [
+      {
+        "id": "dew-fog",
+        "variant": "fog",
+        "width": 1100,
+        "file": "dew-fog-fog-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / dew-fog / fog"
+      },
+      {
+        "id": "wind-chamber",
+        "variant": "initial",
+        "width": 1100,
+        "file": "wind-chamber-initial-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / wind-chamber / initial"
+      },
+      {
+        "id": "wind-chamber",
+        "variant": "changed",
+        "width": 1100,
+        "file": "wind-chamber-changed-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / wind-chamber / changed"
+      },
+      {
+        "id": "wind-chamber",
+        "variant": "left-warm",
+        "width": 1100,
+        "file": "wind-chamber-left-warm-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / wind-chamber / left-warm"
+      },
+      {
+        "id": "wind-chamber",
+        "variant": "right-warm",
+        "width": 1100,
+        "file": "wind-chamber-right-warm-1100.webp",
+        "slug": "weather-watch",
+        "label": "weather-watch / wind-chamber / right-warm"
+      },
+      {
+        "id": "photosynthesis-co2",
+        "variant": "initial",
+        "width": 1100,
+        "file": "photosynthesis-co2-initial-1100.webp",
+        "slug": "photosynthesis",
+        "label": "photosynthesis / photosynthesis-co2 / initial"
+      },
+      {
+        "id": "photosynthesis-co2",
+        "variant": "changed",
+        "width": 1100,
+        "file": "photosynthesis-co2-changed-1100.webp",
+        "slug": "photosynthesis",
+        "label": "photosynthesis / photosynthesis-co2 / changed"
+      },
+      {
+        "id": "photosynthesis-co2",
+        "variant": "starch",
+        "width": 1100,
+        "file": "photosynthesis-co2-starch-1100.webp",
+        "slug": "photosynthesis",
+        "label": "photosynthesis / photosynthesis-co2 / starch"
+      },
+      {
+        "id": "heating-device",
+        "variant": "initial",
+        "width": 1100,
+        "file": "heating-device-initial-1100.webp",
+        "slug": "neutralization-common",
+        "label": "neutralization-common / heating-device / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-06.webp",
+    "items": [
+      {
+        "id": "heating-device",
+        "variant": "changed",
+        "width": 1100,
+        "file": "heating-device-changed-1100.webp",
+        "slug": "neutralization-common",
+        "label": "neutralization-common / heating-device / changed"
+      },
+      {
+        "id": "heating-device",
+        "variant": "heating",
+        "width": 1100,
+        "file": "heating-device-heating-1100.webp",
+        "slug": "neutralization-common",
+        "label": "neutralization-common / heating-device / heating"
+      },
+      {
+        "id": "dna-model",
+        "variant": "initial",
+        "width": 1100,
+        "file": "dna-model-initial-1100.webp",
+        "slug": "cell-membrane",
+        "label": "cell-membrane / dna-model / initial"
+      },
+      {
+        "id": "dna-model",
+        "variant": "changed",
+        "width": 1100,
+        "file": "dna-model-changed-1100.webp",
+        "slug": "cell-membrane",
+        "label": "cell-membrane / dna-model / changed"
+      },
+      {
+        "id": "diagnostic-principle",
+        "variant": "initial",
+        "width": 1100,
+        "file": "diagnostic-principle-initial-1100.webp",
+        "slug": "cell-membrane",
+        "label": "cell-membrane / diagnostic-principle / initial"
+      },
+      {
+        "id": "diagnostic-principle",
+        "variant": "changed",
+        "width": 1100,
+        "file": "diagnostic-principle-changed-1100.webp",
+        "slug": "cell-membrane",
+        "label": "cell-membrane / diagnostic-principle / changed"
+      },
+      {
+        "id": "energy-budget",
+        "variant": "initial",
+        "width": 1100,
+        "file": "energy-budget-initial-1100.webp",
+        "slug": "earth-system",
+        "label": "earth-system / energy-budget / initial"
+      },
+      {
+        "id": "energy-budget",
+        "variant": "changed",
+        "width": 1100,
+        "file": "energy-budget-changed-1100.webp",
+        "slug": "earth-system",
+        "label": "earth-system / energy-budget / changed"
+      },
+      {
+        "id": "population-change",
+        "variant": "initial",
+        "width": 1100,
+        "file": "population-change-initial-1100.webp",
+        "slug": "earth-system",
+        "label": "earth-system / population-change / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-07.webp",
+    "items": [
+      {
+        "id": "population-change",
+        "variant": "changed",
+        "width": 1100,
+        "file": "population-change-changed-1100.webp",
+        "slug": "earth-system",
+        "label": "earth-system / population-change / changed"
+      },
+      {
+        "id": "emission-spectrum",
+        "variant": "initial",
+        "width": 1100,
+        "file": "emission-spectrum-initial-1100.webp",
+        "slug": "star-elements",
+        "label": "star-elements / emission-spectrum / initial"
+      },
+      {
+        "id": "emission-spectrum",
+        "variant": "changed",
+        "width": 1100,
+        "file": "emission-spectrum-changed-1100.webp",
+        "slug": "star-elements",
+        "label": "star-elements / emission-spectrum / changed"
+      },
+      {
+        "id": "thermal-image",
+        "variant": "initial",
+        "width": 1100,
+        "file": "thermal-image-initial-1100.webp",
+        "slug": "specific-heat",
+        "label": "specific-heat / thermal-image / initial"
+      },
+      {
+        "id": "thermal-image",
+        "variant": "changed",
+        "width": 1100,
+        "file": "thermal-image-changed-1100.webp",
+        "slug": "specific-heat",
+        "label": "specific-heat / thermal-image / changed"
+      },
+      {
+        "id": "thermal-image",
+        "variant": "conduction",
+        "width": 1100,
+        "file": "thermal-image-conduction-1100.webp",
+        "slug": "specific-heat",
+        "label": "specific-heat / thermal-image / conduction"
+      },
+      {
+        "id": "planet-model",
+        "variant": "initial",
+        "width": 1100,
+        "file": "planet-model-initial-1100.webp",
+        "slug": "night-sky",
+        "label": "night-sky / planet-model / initial"
+      },
+      {
+        "id": "planet-model",
+        "variant": "changed",
+        "width": 1100,
+        "file": "planet-model-changed-1100.webp",
+        "slug": "night-sky",
+        "label": "night-sky / planet-model / changed"
+      },
+      {
+        "id": "plant-life-types",
+        "variant": "initial",
+        "width": 1100,
+        "file": "plant-life-types-initial-1100.webp",
+        "slug": "life-cycle",
+        "label": "life-cycle / plant-life-types / initial"
+      }
+    ]
+  },
+  {
+    "file": "panels-chromium-08.webp",
+    "items": [
+      {
+        "id": "plant-life-types",
+        "variant": "changed",
+        "width": 1100,
+        "file": "plant-life-types-changed-1100.webp",
+        "slug": "life-cycle",
+        "label": "life-cycle / plant-life-types / changed"
+      }
+    ]
+  }
+]

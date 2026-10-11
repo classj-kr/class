@@ -1,0 +1,29 @@
+{
+  "slug": "solubility",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": [
+        {
+          "choice": "all",
+          "visible": true,
+          "text": "예상과 다른 결과입니다."
+        },
+        {
+          "choice": "some",
+          "visible": true,
+          "text": "예상이 맞았습니다."
+        }
+      ]
+    }
+  ]
+}

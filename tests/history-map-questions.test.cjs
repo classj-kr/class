@@ -14,7 +14,7 @@ test('all high questions have valid map references, distinct options and version
   const seen=new Set();let count=0;
   for(const scene of KOREA_HISTORY.scenes)for(const q of HistoryQuestions.forLevel(scene.id,'high')){
     count++;assert.ok(!seen.has(q.id));seen.add(q.id);
-    assert.equal(q.revision,2);assert.equal(new Set(q.options).size,5);
+    assert.equal(q.revision,q.id==='history-goguryeo-fifth-high-02'?3:2);assert.equal(new Set(q.options).size,5);
     assert.ok(q.answer>=0&&q.answer<q.options.length);
     assert.ok(q.explanation.length>50);
     assert.ok(q.map.points.length>=2);
@@ -37,4 +37,14 @@ test('Balhae tasks require route endpoints and capital locations',()=>{
   assert.match(routes.options[routes.answer],/고구려 계승/);
   assert.match(capital.options[capital.answer],/당과 우호/);
   assert.match(capital.explanation,/문왕/);
+});
+
+test('Goguryeo evidence question connects the Chungju stele to its map location',()=>{
+  const q=HistoryQuestions.forLevel('goguryeo-fifth','high')[1];
+  const scene=KOREA_HISTORY.scenes.find(s=>s.id==='goguryeo-fifth');
+  assert.equal(q.revision,3);
+  assert.deepEqual(Array.from(q.map.points[2].xy),Array.from(scene.marks[4].xy));
+  assert.match(q.question,/매금/);
+  assert.match(q.options[q.answer],/남한강/);
+  assert.match(q.explanation,/충주 고구려비/);
 });

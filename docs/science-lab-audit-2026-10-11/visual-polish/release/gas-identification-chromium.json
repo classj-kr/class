@@ -1,0 +1,18 @@
+{
+  "slug": "gas-identification",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 7,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

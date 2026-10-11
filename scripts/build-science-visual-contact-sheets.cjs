@@ -8,7 +8,9 @@ const safe=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&
  const prefix=(kind==='apps'?(initial?'before':'after'):'panels')+'-'+engine;
  const pages=[];
  for(let start=0;start<items.length;start+=9){const batch=items.slice(start,start+9),parts=[];for(const[i,item]of batch.entries()){
-  const file=path.join(dir,item.file),meta=await sharp(file).metadata(),left=kind==='apps'&&meta.width>850?296:0;
+  const file=path.join(dir,item.file),meta=await sharp(file).metadata();
+  const classic=kind==='apps'&&fs.readFileSync(path.resolve(__dirname,'../learning/inquiry/science-lab',item.slug,'index.html'),'utf8').includes('class="panel control-panel"');
+  const left=classic&&meta.width>850?296:0;
   const preview=await sharp(file).extract({left,top:0,width:meta.width-left,height:Math.min(meta.height,kind==='apps'?770:1000)}).resize(530,460,{fit:'contain',background:'#fff'}).webp({lossless:true}).toBuffer();
   const x=i%3*540,y=Math.floor(i/3)*510;
   parts.push({input:Buffer.from(`<svg width="530" height="44"><rect width="530" height="44" fill="#e6edf0"/><text x="8" y="18" font-size="14" font-family="sans-serif">${start+i+1}. ${safe(item.label.slice(0,65))}</text><text x="8" y="36" font-size="12" font-family="sans-serif">${safe(item.label.slice(65,135))}</text></svg>`),left:x,top:y},{input:preview,left:x,top:y+44});

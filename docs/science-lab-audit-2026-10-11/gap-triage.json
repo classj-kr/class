@@ -123,12 +123,12 @@
         {
           "slug": "night-sky",
           "path": "learning/inquiry/science-lab/night-sky/index.html",
-          "sha256": "1782931c5f2958cd9a90e2a610ec90eb408897c54c62fe8a9248c03c6165f1aa"
+          "sha256": "a1f53288ff839f0d2db6b6c3a569d3766e3b8580df0feee51cfb08a741898407"
         },
         {
           "slug": "planet-motion",
           "path": "learning/inquiry/science-lab/planet-motion/index.html",
-          "sha256": "a43e8b3e675fcf951d074f16d11dff10c0953479837ccc36f2d8ada5fad7616c"
+          "sha256": "e2b06369c239803dd9ee8407cc2c9fced18cef7b4f1970d8f11712deed91083a"
         }
       ]
     },
@@ -205,7 +205,7 @@
         {
           "slug": "living-things",
           "path": "learning/inquiry/science-lab/living-things/index.html",
-          "sha256": "a719d7a882e1e25323f4a189ae2bb96621d890eb872a748faa61ba8f081fab7b"
+          "sha256": "71164aab6a079ef95722d1e84adde9fed000d6e22307c383a5d62aa0052b4c88"
         }
       ]
     },
@@ -251,12 +251,12 @@
         {
           "slug": "neutralization-common",
           "path": "learning/inquiry/science-lab/neutralization-common/index.html",
-          "sha256": "0275ec05c687001ed36ee5366a03e1c68ae8ee238338dadfff9853b1d5b2b389"
+          "sha256": "4105696cb15de5ec84382420bd024d5ccf5837daa3c5089f07fc091b7fe5e7f2"
         },
         {
           "slug": "redox",
           "path": "learning/inquiry/science-lab/redox/index.html",
-          "sha256": "5f8d67b3f903eba0b8cd1174a5f9f7f140dc6a2eb3d5b4acc94b5be3bf89777f"
+          "sha256": "9a968097d79126b86b92eb302c42e3bf8c2ec2252b9de637d090ae2643faefe5"
         }
       ]
     },
@@ -301,7 +301,7 @@
         {
           "slug": "mcu-sampling",
           "path": "learning/inquiry/science-lab/mcu-sampling/index.html",
-          "sha256": "149335c878de6f67cd9d8d1987d09896b377afef031f583f8754f1154cb19b2f"
+          "sha256": "2304d7c09db61b11d694a89a44ead4cfb7710d41185d16bf22d88dc7e482b3b8"
         }
       ]
     },
@@ -341,7 +341,7 @@
         {
           "slug": "protein-folding",
           "path": "learning/inquiry/science-lab/protein-folding/index.html",
-          "sha256": "edeecbb8845595bcb721d007008a0eaf824955c157c54ccf8dad6b67e8f31063"
+          "sha256": "e290b11be1dd5a313f3c244411533af858162c9e03d0b1a5beb06c7e28a420c6"
         }
       ]
     },

@@ -1,0 +1,18 @@
+{
+  "slug": "wireless-power",
+  "engine": "chromium",
+  "modes": [
+    "initial"
+  ],
+  "cases": 9,
+  "errors": [],
+  "issues": [],
+  "models": [],
+  "paint": [],
+  "grades": [
+    {
+      "mode": "initial",
+      "results": []
+    }
+  ]
+}

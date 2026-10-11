@@ -50,6 +50,23 @@
   const latLng = xy => [xy[1], xy[0]];
   const bounds = scene => [[scene.bounds[1], scene.bounds[0]], [scene.bounds[3], scene.bounds[2]]];
 
+  function pointAction(marker, scene, mark, state, label) {
+    const open = () => window.KoreaHistoryPoint.open(scene, mark, panelApi, state.id);
+    marker.on('click', open);
+    marker.on('add', () => {
+      const icon = marker.getElement();
+      icon.setAttribute('aria-label', label);
+      icon.setAttribute('aria-haspopup', 'dialog');
+      icon.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.stopPropagation();
+        open();
+      });
+    });
+    return marker;
+  }
+
   function fit(api) {
     api.map.invalidateSize({ pan: false });
     api.map.setMaxZoom(Math.max(12, scenes[selected].maxZoom || 12));
@@ -177,11 +194,9 @@
     const list = el("ol");
     scene.marks.forEach((mark, index) => {
       const li = el("li");
-      li.append(button(`${index + 1}. ${mark.label}`, `${mark.label} 위치 확대`, () => {
-        panelApi.map.setView(latLng(mark.xy), Math.max(panelApi.map.getZoom(), 8), { animate: false });
-        L.popup().setLatLng(latLng(mark.xy)).setContent(el("strong", "", mark.label)).openOn(panelApi.map);
-        if (matchMedia("(max-width: 1050px)").matches) document.querySelector(".map-stage").scrollIntoView({ block: "start" });
-      }));
+      const detail = button(`${index + 1}. ${mark.label}`, `${mark.label} 설명 보기`, () => window.KoreaHistoryPoint.open(scene, mark, panelApi, state.id));
+      detail.setAttribute('aria-haspopup', 'dialog');
+      li.append(detail);
       if (mark.relicId) {
         const photo = button("사진·설명", `${mark.label} 사진과 설명 보기`, () => window.KoreaHeritage?.open(mark.relicId));
         photo.dataset.historyRelic = mark.relicId;
@@ -270,9 +285,7 @@
     scene.marks.forEach((mark, index) => {
       if (mark.kind === "area" && scene.id !== "early-states") L.circle(latLng(mark.xy), { renderer:zoneRenderer, pane: "themeZones", radius: 28000, color: "#74592f", weight: 1.5, dashArray: "5 5", fillColor: "#e8b65d", fillOpacity: 0.16, interactive: false }).addTo(group);
       const marker = L.marker(latLng(mark.xy), { pane: "studyMarkers", title: mark.label, riseOnHover: true, icon: L.divIcon({ className: "history-point-wrap", html: el("span", "history-point", index + 1), iconSize: [22, 22], iconAnchor: [11, 11] }) });
-      if (mark.relicId) marker.on("click", () => window.KoreaHeritage?.open(mark.relicId));
-      else marker.bindPopup(el("strong", "", mark.label));
-      marker.addTo(group);
+      pointAction(marker, scene, mark, state, `${index + 1}. ${mark.label} 설명 보기`).addTo(group);
       pointMarkers.push(marker);
     });
     // Overlapping pins are offset with a leader; their stored coordinates stay unchanged.
@@ -320,7 +333,8 @@
         L.polyline([map.containerPointToLatLng(p), map.containerPointToLatLng(edge)], { renderer:lineRenderer, pane: "themeLines", color: "#665b46", weight: 1, opacity: 0.65, interactive: false }).addTo(labels);
         const text = el("span", "history-map-label", labelText);
         text.style.width = `${width}px`;
-        L.marker(map.containerPointToLatLng([best.x, best.y]), { pane: "themeLabels", interactive: false, keyboard: false, icon: L.divIcon({ className: "history-label-wrap", html: text, iconSize: [width, height], iconAnchor: [0, 0] }) }).addTo(labels);
+        const label = L.marker(map.containerPointToLatLng([best.x, best.y]), { pane: "themeLabels", title: `${mark.label} 설명 보기`, keyboard: true, icon: L.divIcon({ className: "history-label-wrap", html: text, iconSize: [width, height], iconAnchor: [0, 0] }) });
+        pointAction(label, scene, mark, state, `${mark.label} 지도 이름표 설명 보기`).addTo(labels);
       });
     }
     map.on("zoomend moveend resize", layoutLabels);

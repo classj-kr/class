@@ -1,0 +1,10 @@
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.8118ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (34500.4765ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34573.4243

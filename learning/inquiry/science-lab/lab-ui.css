@@ -38,6 +38,7 @@ body .quiz-options label{font-size:15px;line-height:1.65;font-weight:450;word-br
 }
 
 .figure-viewport{width:100%;max-width:620px;margin:0 auto;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#adc5cf #f4f8fa}.figure-viewport svg{display:block}.figure-viewport:focus-visible{outline:2px solid #26778d;outline-offset:2px}
+.figure-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;width:100%;max-width:620px;margin:0 auto 8px;color:#5c737e;font-size:13px}.figure-tools[hidden],.figure-tools [hidden]{display:none}.figure-tools button{min-height:44px;padding:7px 12px;border:1px solid #c6d9e0;border-radius:8px;background:#f4f8f9;color:#315e6b;cursor:pointer}.figure-tools button[aria-pressed=true]{background:#e4eff1;border-color:#75a1ac}
 
 /* Chromebook + iPad: reading space and touch targets, without phone-first stacking. */
 body .experiment-layout>*,body .panel,body .figure-viewport{min-width:0}
@@ -115,6 +116,8 @@ body .stage-views{padding:20px 0 8px;gap:18px}
 body .stage-views>.figure-viewport:has(svg.graph-svg){border-top:1px solid #eaf0f2;padding-top:18px}
 body .stage-verdict{font-size:15px;font-weight:550;line-height:1.7}
 body .stage-readout,body .data-note{font-weight:450;line-height:1.75}
+body .stage-readout>span{color:#355662!important}
+body .sky-stage .stage-readout>span,body .moon-stage .stage-readout>span{color:#d6e3ed!important}
 body .stage-caption{padding:14px 16px;border:1px solid #e2ebee;border-radius:8px;background:#f5f8f9;color:#3b5968;font-weight:400}
 body .stage-note{line-height:1.75;color:#526873}
 body .figure-notes{border-left:2px solid #88afb8;background:#f5f8f9;border-radius:0 6px 6px 0}
@@ -141,6 +144,11 @@ body .status{background:#f1f6f6;border-left:3px solid #6e9fa5;border-radius:0 8p
 body .required-tabs button[aria-pressed=true]{background:var(--lab-accent);color:#fff;border-color:var(--lab-accent)}
 body .required-experiments[data-apparatus] .required-visuals{background:#f4f8f9;border-color:#dce6eb}
 body .model-note{color:#5c707b;line-height:1.8}
+body .beaker{filter:drop-shadow(0 9px 10px #27465714)}
+body .beaker-svg .beaker-glass,body .beaker-svg .beaker-rim{stroke:#86aebb}
+body .beaker-svg .tick{stroke:#7c9caa}
+body .beaker-svg .tick-label{fill:#466879;font-weight:550}
+body .required-experiments .apparatus-small{font-size:13px}
 @media(min-width:821px) and (max-width:1180px){body .experiment-layout:has(>.panel.control-panel){grid-template-columns:280px minmax(0,1fr);gap:16px}body .panel{padding:20px}}
 @media(max-width:820px){body .experiment-layout:has(>.panel.control-panel){grid-template-columns:1fr}body .method-steps{flex-wrap:wrap}body .method-steps li{flex:1 1 45%;min-width:0}body .method-steps li+li{border-left:0}body .method-steps li:nth-child(n+3){border-top:1px solid #edf1f3}}
 @media(max-width:600px){:root{--lab-title:23px}body main{width:calc(100% - 24px);padding:18px 0 32px}body .panel,body .experiment-layout.inquiry-lab,body .experiment-layout.physics-lab{padding:16px}body .page-header{margin-bottom:16px;padding-bottom:16px}body .title-row{align-items:flex-start;flex-direction:column;gap:12px}body .method-steps li{flex-basis:100%;padding:11px 14px 11px 42px}body .method-steps li::before{top:13px}body .method-steps li+li{border-top:1px solid #edf1f3}body .stage-views{padding-top:16px}body .meaning-panel{padding:18px}body .quiz-heading{padding:14px 12px}body .stage-caption{padding:12px}.figure-viewport{scroll-padding:12px}}

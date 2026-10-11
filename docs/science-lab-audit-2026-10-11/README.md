@@ -1,5 +1,7 @@
 # 과학실험 앱 검증 — 2026-10-11
 
+최근 전체 화면 개선: 144개 앱 공통 디자인, 공유 장치 그림 10개 추가 개선·3개 정리, 모바일 전체 보기·확대, 배경별 글자 대비를 반영했다. 전체 224모드·1,671조건, 태블릿 896조건, Chrome·WebKit 모바일 전 앱 검사를 완료했다. [변경과 검증 범위](visual-polish/README.md).
+
 최근 시각자료 보완: 공유 실험 패널 25개를 검토하고 그중 장치·관찰 표현 11개를 다시 그렸다. 전도성은 수집한 2022 교과서의 6홈판·측정기 사진과 절차를 대조했다. [변경 범위와 화면 검토](apparatus-visual-review/review.json), [교체 후 화면](apparatus-visual-review/compound-conductivity-initial-1100.webp), [회귀 검사](apparatus-visual-review/final-tests.log). 이 검토는 144개 앱의 모든 그림을 다시 승인한 기록이 아니며, 실행 검사와 원문·화면 검토를 구별한다.
 
 현재 144개 앱과 복원 실험 40개 경로의 [원문 근거](restored-experiments.md), [문항 363개와 추가 확인 33개 재작성](question-quality-review.md), [전체 앱 재검사](question-quality-runtime.log), [최종 보완 재검사](question-quality-final.log)를 우선 확인한다. 기존 앱 수를 실험의 목표·상한으로 세지 않는다. 필수실험 총수는 미확정이다. 최근 구조·센서 구현 검사는 [structure-final-tests.log](structure-final-tests.log)와 [sensor-final-tests.log](sensor-final-tests.log)에 구분한다. 아래 기존 실행·화면 로그는 해당 시점의 증거다.

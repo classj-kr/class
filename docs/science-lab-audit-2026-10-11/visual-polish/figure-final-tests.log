@@ -1,0 +1,10 @@
+✔ chromium: figure ink follows its painted background and moving the result preserves its live node (924.7873ms)
+✔ webkit: figure ink follows its painted background and moving the result preserves its live node (747.9433ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1726.8139

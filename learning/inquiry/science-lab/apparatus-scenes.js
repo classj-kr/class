@@ -188,9 +188,9 @@
  function seaLevel(s,v){
   const id='sea',after=+s.step>0,land=s.ice==='land',level=251-v.metrics.rise;
   let svg=bench()+beaker(id,32,83,396,259,0);
-  svg+=`<path d="M251 335V188H320L407 335Z" fill="#c2ad8c" stroke="#9e8b6d" stroke-width="2"/>`;
-  svg+=rect(309,224,37,39,'#e6c99e',3)+`<path d="M302 225L327 203L353 225Z" fill="#a87854"/>`+rect(320,241,11,22,'#657b80',1);
-  svg+=`<path d="M43 ${level}H260L347 ${level}L407 335H53Q43 335 43 325Z" fill="#a7d1e2" fill-opacity=".6"/>`+path(`M44 ${level}H260`,blue,2);
+  svg+=`<path d="M251 335V188H312L329 247H378L407 335Z" fill="#c2ad8c" stroke="#9e8b6d" stroke-width="2"/>`;
+  svg+=rect(333,209,37,38,'#e6c99e',3,'data-sea-house=""')+`<path d="M326 210L351 188L377 210Z" fill="#a87854"/>`+rect(345,225,11,22,'#657b80',1);
+  svg+=`<path d="M43 ${level}H417V325Q417 335 407 335H53Q43 335 43 325Z" fill="#a7d1e2" fill-opacity=".6" data-sea-water="" data-level="${level}"/>`+path(`M44 ${level}H416`,blue,2);
   svg+=path('M44 251H411','#7596a3',1.5,'stroke-dasharray="5 5"');
   if(!after){const x=land?261:129,y=land?148:229;svg+=`<path d="M${x} ${y+5}l20 -5 32 8 -4 30 -44 -1Z" fill="#e6f6fc" stroke="#87b8cd" stroke-width="2"/>`+path(`M${x+20} ${y}l7 30`, '#afcfde',1);}
   svg+=txt(129,77,land?'육지 위 얼음':'떠 있는 얼음',22)+txt(121,301,'처음 수면',17,muted)+path('M121 281V254',muted,1.5);
@@ -227,7 +227,8 @@
   const id='altitude',base=92,y=293,scale=100,h=+s.height*scale,end=base+v.metrics.shadow*scale,a=+s.angle*Math.PI/180;
   let svg=bench()+rect(26,y,408,36,'#ece6d8',4)+path(`M26 ${y}H434`,'#a9a28e',2)+path(`M${base} ${y}H${end}`,'#7c817a',7)+path(`M${base} ${y}V${y-h}`,'#6e8591',6)+circle(base,y-h,3,'#aec3cc');
   svg+=path(`M${end} ${y}L${base-40} ${y-h-40*Math.tan(a)}`,'#d3a14a',2)+arrow(base-20,y-h-20*Math.tan(a),base+24,y-h+24*Math.tan(a),'#d3a14a',2);
-  svg+=path(`M${end-35} ${y}A35 35 0 0 1 ${end-35*Math.cos(a)} ${y-35*Math.sin(a)}`,orange,2)+txt(end-54*Math.cos(a/2),y-54*Math.sin(a/2)-5,s.angle+'°',18,orange);
+  const radius=Math.min(35,(end-base)*.65),narrow=end-base<70;
+  svg+=path(`M${end-radius} ${y}A${radius} ${radius} 0 0 1 ${end-radius*Math.cos(a)} ${y-radius*Math.sin(a)}`,orange,2)+txt(narrow?end+35:end-54*Math.cos(a/2),narrow?y-25:y-54*Math.sin(a/2)-5,s.angle+'°',18,orange);
   svg+=path(`M${base+13} ${y}v-13h-13`,'#859496',1.5)+txt(52,y-h/2,+s.height+' m',16,muted)+txt((base+end)/2,y+30,v.metrics.shadow.toFixed(2)+' m',17)+txt(230,49,'막대와 그림자로 만든 직각삼각형',22);
   return frame(id,svg,'평평한 바닥에 세운 수직 막대와 그림자',[['회색 막대','높이를 고정한 수직 막대입니다.'],['바닥 위 진한 선','태양 반대쪽에 생긴 그림자입니다.'],['고도 각도','그림자 끝에서 막대 끝을 이은 선과 바닥이 이루는 각입니다. 그림의 가로·세로 배율이 같습니다.']]);
  }
