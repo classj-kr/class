@@ -28,10 +28,10 @@ const UNIT = '3-1-1';
     return { context, page };
   };
   // 은행의 얼개(묶음·수준·회차 수)와 한 회차의 문항(답 포함)을 엔진에서 읽는다.
-  const outline = (page) => page.evaluate((unitId) => {
+  const outline = (page, unitId = UNIT) => page.evaluate((unitId) => {
     const B = window.MathBank, unit = B.findUnit(unitId);
     return unit.groups.map((group) => ({ id: group.id, rounds: B.LEVELS.flatMap((level) => Array.from({ length: B.roundCount(unit, group.id, level) }, (_, i) => ({ level, no: i + 1, of: B.roundCount(unit, group.id, level) }))) }));
-  }, UNIT);
+  }, unitId);
   const itemsOf = (page, group, level, no) => page.evaluate(({ unitId, group, level, no }) => {
     const B = window.MathBank;
     return B.makeRound(B.findUnit(unitId), group, level, no).map((it) => ({ key: it.key, choice: it.choice ? it.choice.answer : null, answers: it.inputs ? it.inputs.map((i) => i.answer) : null }));
@@ -156,25 +156,34 @@ const UNIT = '3-1-1';
     else { const boxes = guestCard.locator('.mb-field input'); for (let i = 0; i < guestItems[0].answers.length; i += 1) await boxes.nth(i).fill(String(guestItems[0].answers[i])); await guestCard.locator('.mb-primary').click(); }
     await guestCard.locator('.mb-result:not([hidden])').waitFor();
 
-    // ── 모든 회차를 열어 본다: 휴대폰 너비에서 가로로 넘치지 않고, 그림이 제 크기로 그려진다 ──
+    // ── 모든 단원의 모든 회차를 열어 본다: 휴대폰 너비에서 가로로 넘치지 않고, 그림이 제 크기로 그려진다 ──
+    const unitIds = await page.evaluate(() => window.MathBank.units().map((u) => u.id));
     for (const [name, viewport] of [['phone', { width: 360, height: 760 }], ['wide', { width: 1100, height: 900 }]]) {
       const view = await open(0, viewport);
       await view.page.goto(h.base + URL_PATH);
       await view.page.locator('.mb-group').first().waitFor();
-      for (let gi = 0; gi < plan.length; gi += 1) {
-        for (let li = 0; li < plan[gi].rounds.length; li += 1) {
-          await view.page.locator('.mb-group').nth(gi).locator('.mb-level').nth(li).click();
-          await view.page.locator('.mb-item').first().waitFor();
-          const report = await view.page.evaluate(() => {
-            const wide = [...document.querySelectorAll('.mb-item, .mb-item *')].filter((el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 1);
-            const flat = [...document.querySelectorAll('.mb-figure svg, .mb-figure table, .mb-column, .mb-chain')].filter((el) => el.getBoundingClientRect().height < 20 || el.getBoundingClientRect().width < 60);
-            return { page: document.documentElement.scrollWidth - document.documentElement.clientWidth, wide: wide.slice(0, 3).map((el) => el.className + ':' + Math.round(el.getBoundingClientRect().right)), flat: flat.map((el) => el.className.baseVal || el.className) };
-          });
-          const tag = `${plan[gi].id} ${plan[gi].rounds[li].level} ${plan[gi].rounds[li].no}회 (${name})`;
-          assert.deepEqual(report, { page: 0, wide: [], flat: [] }, '넘치거나 찌그러진 그림: ' + tag);
-          if (SHOTS) await view.page.screenshot({ path: path.join(OUT, `${name}-${gi + 1}${plan[gi].id}-${plan[gi].rounds[li].level}${plan[gi].rounds[li].no}.png`), fullPage: true });
-          await view.page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
-          await view.page.locator('.mb-group').first().waitFor();
+      for (const unitId of unitIds) {
+        const termOf = await view.page.evaluate((id) => { const u = window.MathBank.findUnit(id); return u.grade + '-' + u.semester; }, unitId);
+        await view.page.selectOption('#termSelect', termOf);
+        await view.page.selectOption('#unitSelect', unitId);
+        await view.page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group').length > 0, unitId);
+        const groups = await outline(view.page, unitId);
+        assert.equal(await view.page.locator('.mb-group').count(), groups.length, unitId + ' 묶음 수');
+        for (let gi = 0; gi < groups.length; gi += 1) {
+          for (let li = 0; li < groups[gi].rounds.length; li += 1) {
+            await view.page.locator('.mb-group').nth(gi).locator('.mb-level').nth(li).click();
+            await view.page.locator('.mb-item').first().waitFor();
+            const report = await view.page.evaluate(() => {
+              const wide = [...document.querySelectorAll('.mb-item, .mb-item *')].filter((el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 1);
+              const flat = [...document.querySelectorAll('.mb-figure svg, .mb-figure table, .mb-column, .mb-chain')].filter((el) => el.getBoundingClientRect().height < 20 || el.getBoundingClientRect().width < 60);
+              return { page: document.documentElement.scrollWidth - document.documentElement.clientWidth, wide: wide.slice(0, 3).map((el) => (el.className.baseVal || el.className) + ':' + Math.round(el.getBoundingClientRect().right)), flat: flat.map((el) => el.className.baseVal || el.className) };
+            });
+            const tag = `${unitId} ${groups[gi].id} ${groups[gi].rounds[li].level} ${groups[gi].rounds[li].no}회 (${name})`;
+            assert.deepEqual(report, { page: 0, wide: [], flat: [] }, '넘치거나 찌그러진 그림: ' + tag);
+            if (SHOTS) await view.page.screenshot({ path: path.join(OUT, `${name}-${unitId}-${gi + 1}${groups[gi].id}-${groups[gi].rounds[li].level}${groups[gi].rounds[li].no}.png`), fullPage: true });
+            await view.page.evaluate(() => window.dispatchEvent(new CustomEvent('sitebackrequest', { bubbles: true, cancelable: true })));
+            await view.page.locator('.mb-group').first().waitFor();
+          }
         }
       }
       await view.context.close();

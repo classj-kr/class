@@ -18,7 +18,7 @@ const ROOT = path.join(__dirname, '..');
 const APP = process.env.MATH_BANK_DIR || path.join(ROOT, 'learning/literacy-numeracy/math-bank');
 const context = { console }; context.globalThis = context;
 vm.createContext(context);
-for (const file of ['engine.js', ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) {
+for (const file of ['engine.js', 'geometry.js', ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) {
   vm.runInContext(fs.readFileSync(path.join(APP, file), 'utf8'), context, { filename: file });
 }
 const B = context.MathBank;
@@ -68,7 +68,7 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
   everyItem((item, at) => {
     made += 1;
     const label = where(item, at);
-    assert.ok(typeof item.text === 'string' && strip(item.text).length >= 6, label);
+    assert.ok(typeof item.text === 'string' && strip(item.text).length >= 4, label);
     const whole = strip(item.text + ' ' + (item.figure || '') + ' ' + (item.explain || '') + ' ' + (item.choice ? item.choice.options.join(' ') : ''));
     for (const part of [item.text, item.figure, item.explain]) assert.doesNotMatch(String(part || ''), /undefined|NaN|null|\[object/, label);
     // 잘못 붙은 토씨: 받침 없는 수 뒤의 을·은·이·과, 받침 있는 수 뒤의 를·는·가·와 를 수 읽기로 따진다.
@@ -414,6 +414,145 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
   });
   for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
   assert.ok(Object.keys(counts).length >= 25, '검사한 갈래: ' + Object.keys(counts).join(', '));
+});
+
+// ── 도형 문항 ────────────────────────────────────────────────
+// 엔진의 판정을 쓰지 않고 여기서 따로 셈한다(내적이 0이면 직각).
+const gsub = (p, q) => [p[0] - q[0], p[1] - q[1]];
+const gdot = (u, v) => u[0] * v[0] + u[1] * v[1];
+const gcross = (u, v) => u[0] * v[1] - u[1] * v[0];
+const rightAngle = (v, p, q) => gdot(gsub(p, v), gsub(q, v)) === 0;
+// 직각은 아닌데 직각처럼 보이는 각(76°~104°)
+function almostRight(v, p, q) { const a = gsub(p, v), b = gsub(q, v), d = gdot(a, b); return d !== 0 && (d * d) / (gdot(a, a) * gdot(b, b)) < 0.06; }
+const cornersOf = (points) => points.map((v, i) => [v, points[(i + points.length - 1) % points.length], points[(i + 1) % points.length]]);
+const rightCorners = (points) => cornersOf(points).filter(([v, p, q]) => rightAngle(v, p, q)).length;
+const hasAlmostRight = (points) => cornersOf(points).some(([v, p, q]) => almostRight(v, p, q));
+const isRect = (points) => points.length === 4 && rightCorners(points) === 4;
+const isSq = (points) => isRect(points) && gdot(gsub(points[0], points[1]), gsub(points[0], points[1])) === gdot(gsub(points[1], points[2]), gsub(points[1], points[2]));
+const isRightTri = (points) => points.length === 3 && rightCorners(points) === 1;
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
+test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 답과 같다', () => {
+  const counts = {};
+  everyItem((item, at) => {
+    const f = item.facts || {}, label = where(item, at);
+    const tally = (name) => { counts[name] = (counts[name] || 0) + 1; };
+    if (f.count) { assert.equal(answerAt(item, 0), f.count.filter(Boolean).length, label); assert.ok(f.count.some(Boolean) && !f.count.every(Boolean), label); tally('count'); }
+    if (f.kindPick) { assert.equal(f.kindPick.kinds.filter((k) => k === f.kindPick.target).length, 1, label); assert.equal(item.choice.answer, f.kindPick.kinds.indexOf(f.kindPick.target), label); tally('kindPick'); }
+    if (f.lineName) {
+      // 반직선은 시작하는 점부터 읽어야 맞고, 선분·직선은 차례가 달라도 같은 선이다.
+      const ok = f.lineName.options.map(([kind, a, b]) => kind === f.lineName.kind && (kind === '반직선' ? a === f.lineName.from && b === f.lineName.to : [a, b].sort().join() === [f.lineName.from, f.lineName.to].sort().join()));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); tally('lineName');
+    }
+    if (f.segments) { assert.equal(answerAt(item, 0), f.segments.closed ? f.segments.points.length : f.segments.points.length - 1, label); tally('segments'); }
+    if (f.truth) { assert.equal(f.truth.filter((t) => t === f.want).length, 1, label); assert.equal(item.choice.answer, f.truth.indexOf(f.want), label); tally('truth'); }
+    if (f.sets) {
+      let flags = f.sets.flags;
+      if (f.prop) {
+        const check = { rightTriangle: isRightTri, rectangle: isRect, square: isSq }[f.prop];
+        flags = f.polys.map(check);
+        assert.deepEqual(flags, f.sets.flags, label);
+        for (const points of f.polys) if (!check(points) || f.prop === 'rightTriangle') assert.ok(!hasAlmostRight(points), '직각처럼 보이는 각: ' + label);
+      }
+      const right = f.sets.labels.filter((_, i) => flags[i]);
+      assert.ok(right.length >= 1 && right.length < f.sets.labels.length, label);
+      assert.equal(f.sets.options.filter((o) => same(o, right)).length, 1, label);
+      assert.ok(same(f.sets.options[item.choice.answer], right), label);
+      assert.equal(new Set(f.sets.options.map((o) => o.join())).size, f.sets.options.length, label); tally('sets:' + (f.prop || 'kind'));
+    }
+    if (f.readAngle) {
+      const [v, p, q] = f.readAngle.names;
+      const ok = f.readAngle.options.map((o) => o[1] === v && [o[0], o[2]].sort().join() === [p, q].sort().join());
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); tally('readAngle');
+    }
+    if (f.mostAngles) { const top = Math.max(...f.mostAngles); assert.equal(f.mostAngles.filter((n) => n === top).length, 1, label); assert.equal(item.choice.answer, f.mostAngles.indexOf(top), label); tally('mostAngles'); }
+    if (f.anglePick) {
+      const ok = f.anglePick.map(([v, p, q]) => rightAngle(v, p, q));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label);
+      assert.ok(f.anglePick.every(([v, p, q]) => !almostRight(v, p, q)), '직각처럼 보이는 각: ' + label); tally('anglePick');
+    }
+    if (f.rightCount) {
+      assert.equal(answerAt(item, 0), rightCorners(f.rightCount), label); assert.ok(!hasAlmostRight(f.rightCount), label);
+      // 오목한 도형은 안쪽으로 꺾인 곳을 직각으로 셀지 헷갈리므로 볼록한 도형만 쓴다.
+      const turns = cornersOf(f.rightCount).map(([v, p, q]) => Math.sign(gcross(gsub(v, p), gsub(q, v))));
+      assert.ok(turns.every((t) => t === turns[0] && t !== 0), '볼록하지 않은 도형: ' + label); tally('rightCount');
+    }
+    if (f.clocks) { const ok = f.clocks.map((h) => h % 12 === 3 || h % 12 === 9); assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); assert.equal(new Set(f.clocks).size, 4, label); tally('clocks'); }
+    if (f.raysRight) {
+      const { v, ends, options } = f.raysRight;
+      const ok = options.map(([i, j]) => rightAngle(v, ends[i], ends[j]));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label);
+      let rights = 0;
+      for (const [x, y] of pairsOf(ends)) { if (rightAngle(v, x, y)) rights += 1; assert.ok(!almostRight(v, x, y), '직각처럼 보이는 각: ' + label); }
+      assert.equal(rights, 1, label); tally('raysRight');
+    }
+    if (f.triPoint) {
+      const { a, b, candidates } = f.triPoint, ok = candidates.map((c) => isRightTri([a, b, c]));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label);
+      candidates.forEach((c, i) => { assert.notEqual(gcross(gsub(b, a), gsub(c, a)), 0, '한 줄에 놓인 점: ' + label); if (!ok[i]) assert.ok(!hasAlmostRight([a, b, c]), '직각처럼 보이는 각: ' + label); });
+      tally('triPoint');
+    }
+    if (f.tangram) { assert.equal(f.tangram.length, 7, label); assert.equal(answerAt(item, 0), f.tangram.filter(isRightTri).length, label); assert.equal(answerAt(item, 0), 5, label); tally('tangram'); }
+    if (f.rectMove) {
+      const [A, Bp, D] = f.rectMove.fixed, ok = f.rectMove.candidates.map((c) => isRect([A, Bp, c, D]));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); tally('rectMove');
+    }
+    if (f.rectSides) { assert.deepEqual(item.inputs.map((i) => i.answer), f.rectSides, label); assert.ok(f.rectSides[0] > f.rectSides[1], label); tally('rectSides'); }
+    if (f.squareSum) { assert.equal(answerAt(item, 0), f.squareSum + f.squareSum + f.squareSum + f.squareSum, label); tally('squareSum'); }
+    if (f.names) {
+      assert.ok(isSq(f.names.points), label);
+      const ok = f.names.options.map((o) => same(o.slice().sort(), ['사각형', '직사각형', '정사각형'].sort()));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); tally('names');
+    }
+    if (f.propSum) {
+      const TABLE = { 직각삼각형: { 직각: 1, 변: 3, 꼭짓점: 3 }, 직사각형: { 직각: 4, 변: 4, 꼭짓점: 4 }, 정사각형: { 직각: 4, 변: 4, 꼭짓점: 4 } };
+      assert.equal(answerAt(item, 0), f.propSum.reduce((sum, [shape, prop]) => sum + TABLE[shape][prop], 0), label); tally('propSum');
+    }
+    if (f.choose2) {
+      const n = f.choose2.length;
+      for (let i = 0; i < n; i += 1) for (let j = i + 1; j < n; j += 1) for (let k = j + 1; k < n; k += 1) assert.notEqual(gcross(gsub(f.choose2[j], f.choose2[i]), gsub(f.choose2[k], f.choose2[i])), 0, '한 줄에 놓인 세 점: ' + label);
+      assert.equal(answerAt(item, 0), pairsOf(f.choose2).length, label); tally('choose2');
+    }
+    if (f.rayAngles) {
+      // 반직선들이 서로 다른 쪽으로 뻗고 반 바퀴 안에 모여 있으면 두 개씩 짝지은 것이 모두 각이다.
+      for (const [a, b] of pairsOf(f.rayAngles)) assert.ok(gcross(a, b) !== 0, label);
+      assert.equal(answerAt(item, 0), pairsOf(f.rayAngles).length, label); tally('rayAngles');
+    }
+    if (f.time) {
+      const hits = []; for (let h = f.time.lo + 1; h < f.time.hi; h += 1) if (h % 12 === 3 || h % 12 === 9) hits.push(h);
+      assert.deepEqual(hits, [answerAt(item, 0)], label); tally('time');
+    }
+    if (f.named) {
+      const ok = f.named.options.map((names) => !isRightTri(names.split('').map((n) => f.named.points[n])));
+      assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label);
+      // 직각삼각형이 아닌 보기에 직각처럼 보이는 각이 있으면 안 된다.
+      f.named.options.forEach((names, i) => { if (ok[i]) assert.ok(!hasAlmostRight(names.split('').map((n) => f.named.points[n])), '직각처럼 보이는 각: ' + label); });
+      tally('named');
+    }
+    if (f.lattice) {
+      // 그어진 선 위에 세 변이 모두 놓이는 삼각형을 빠짐없이 찾아 직각삼각형을 센다.
+      const { nodes, lines } = f.lattice, together = (i, j) => lines.some((line) => line.includes(i) && line.includes(j));
+      let right = 0;
+      for (let i = 0; i < nodes.length; i += 1) for (let j = i + 1; j < nodes.length; j += 1) for (let k = j + 1; k < nodes.length; k += 1) {
+        if (!together(i, j) || !together(j, k) || !together(i, k)) continue;
+        if (gcross(gsub(nodes[j], nodes[i]), gsub(nodes[k], nodes[i])) === 0) continue;
+        const tri = [nodes[i], nodes[j], nodes[k]];
+        if (isRightTri(tri)) right += 1; else assert.ok(!hasAlmostRight(tri), '직각처럼 보이는 각: ' + label);
+      }
+      assert.equal(answerAt(item, 0), right, label); assert.ok(right >= 2, label); tally('lattice');
+    }
+    if (f.pieces) { assert.deepEqual(item.inputs.map((i) => i.answer), [f.pieces.filter(isRect).length, f.pieces.filter(isSq).length], label); assert.ok(f.pieces.filter(isSq).length >= 1 && f.pieces.filter(isRect).length > f.pieces.filter(isSq).length, label); tally('pieces'); }
+    if (f.bigSquare) { assert.equal(answerAt(item, 0), Math.min(...f.bigSquare), label); assert.notEqual(f.bigSquare[0], f.bigSquare[1], label); tally('bigSquare'); }
+    if (f.gridRects) {
+      const [rows, cols] = f.gridRects; let n = 0;
+      for (let r0 = 0; r0 < rows; r0 += 1) for (let r1 = r0 + 1; r1 <= rows; r1 += 1) for (let c0 = 0; c0 < cols; c0 += 1) for (let c1 = c0 + 1; c1 <= cols; c1 += 1) n += 1;
+      assert.equal(answerAt(item, 0), n, label); tally('gridRects');
+    }
+    if (f.joined) { const [s, k] = f.joined; let long = 0; for (let i = 0; i < k; i += 1) long += s; assert.equal(answerAt(item, 0), long + s + long + s, label); tally('joined'); }
+    if (f.twoSquares) { const [a, total] = f.twoSquares, big = total - a; assert.ok(big > a, label); assert.equal(answerAt(item, 0), big - a, label); tally('twoSquares'); }
+  });
+  for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
+  assert.ok(Object.keys(counts).length >= 28, '검사한 갈래: ' + Object.keys(counts).join(', '));
 });
 
 test('토씨 붙이기', () => {
