@@ -121,7 +121,7 @@ def pieces(g):
     return [p for child in getattr(g,'geoms',[]) for p in pieces(child)]
 
 
-def build(countries_path, coast_path=None):
+def build(countries_path, coast_path=None, only=None):
     countries = {f['properties']['ADM0_A3']:make_valid(shape(f['geometry']))
                  for f in json.loads(Path(countries_path).read_text(encoding='utf-8'))['features']}
     # Replace adjoining countries together: mixing 10m Korea with 50m China
@@ -199,12 +199,13 @@ def build(countries_path, coast_path=None):
         if scene_id not in ancient_cache:
             areas = boundary_data['scenes'][scene_id]['areas']
             base = [a for a in areas if not a.get('pattern')]
-            shore, audit = coastal_regions([poly(a['ring']) for a in base], land)
+            area_geometry = lambda a: make_valid(shape(a['geometry'])) if a.get('geometry') else poly(a['ring'])
+            shore, audit = coastal_regions([area_geometry(a) for a in base], land)
             coastal_audit[scene_id] = audit
             fitted = iter(shore)
             result = []
             for a in areas:
-                geometry = poly(a['ring']).intersection(land) if a.get('pattern') else next(fitted)
+                geometry = area_geometry(a).intersection(land) if a.get('pattern') else next(fitted)
                 result.append(region(a['name'],geometry,
                   ['#86b7cf','#e7b579','#a4c77c','#c2add3'][a['color']],bool(a.get('pattern'))))
             ancient_cache[scene_id] = result
@@ -336,10 +337,23 @@ def build(countries_path, coast_path=None):
                                   {'name':'여진','xy':[129,42.6]}]
             state['sources'].append(SOURCE['atlas'] if key!='four-six' else SOURCE['joseon'])
     OUT.mkdir(parents=True,exist_ok=True)
+    if only and set(only).difference(states):
+        raise ValueError(f'Unknown scene IDs: {set(only).difference(states)}')
     manifest = {'version':1,'scenes':{}}
     audit = {'traces':TRACES,'coastalRegistration':coastal_audit,'renderExtent':[80,5,170,70],
              'coastSource':'Natural Earth 1:10m' if coast_path else 'Natural Earth 1:50m','coverage':{}}
+    if only:
+        # A targeted rebuild must preserve all unrelated dated maps, including
+        # their existing cache versions and source audit.
+        text = (ROOT/'data/history-territories.js').read_text(encoding='utf-8')
+        manifest = json.loads(text.split('window.KOREA_HISTORY_TERRITORIES = ')[1].strip().removesuffix(';'))
+        previous = json.loads((OUT/'provenance.json').read_text(encoding='utf-8'))
+        previous['coastalRegistration'].update(coastal_audit)
+        audit = previous
+    audit['pixelTopology'] = {key: data.get('topology') for key,data in boundary_data['scenes'].items()}
     for key,variants in states.items():
+        if only and key not in only:
+            continue
         scene = scenes[key]
         assert variants, key
         if scene.get('locationOnly'):
@@ -363,12 +377,14 @@ def build(countries_path, coast_path=None):
         top=merc(extent[3])
         height=(top-merc(extent[1]))*factor
         def ring_path(ring):
-            return 'M'+'L'.join(f'{math.radians(x-extent[0])*factor:.2f},{(top-merc(y))*factor:.2f}' for x,y in ring.coords)+'Z'
+            return 'M'+'L'.join(f'{math.radians(x-extent[0])*factor:.{precision}f},{(top-merc(y))*factor:.{precision}f}' for x,y in ring.coords)+'Z'
         def geo_path(g):
             return ''.join(ring_path(p.exterior)+''.join(ring_path(r) for r in p.interiors) for p in pieces(g))
         manifest['scenes'][key]=[]
         audit['coverage'][key]=[]
         for state in variants:
+            pixel_topology = key in {'baekje-fourth','goguryeo-fifth','silla-sixth','baekje-capitals'} or (key == 'unification' and state['id'] == '660')
+            precision = 4 if pixel_topology else 2
             svg_paths=[]
             legends=[]
             labels=[]
@@ -377,7 +393,10 @@ def build(countries_path, coast_path=None):
             for index,r in enumerate(state['regions']):
                 geometry = make_valid(r['geometry']).intersection(view)
                 if geometry.is_empty: continue
-                geometry=geometry.simplify(.003,preserve_topology=True)
+                # Registered source geometry already has common, rounded edges.
+                # Independent per-country simplification would open them again.
+                if not pixel_topology:
+                    geometry=geometry.simplify(.003,preserve_topology=True)
                 color=r['color']
                 fill=color
                 if r['pattern']:
@@ -405,17 +424,19 @@ def build(countries_path, coast_path=None):
             (OUT/filename).write_text(svg,encoding='utf-8')
             labels.extend(state.get('extraLabels',[]))
             manifest['scenes'][key].append({'id':state['id'],'date':state['date'],
-              'overlay':f'history/territories/{filename}?v=20260921-fill-2','overlayBounds':extent,
+              'overlay':f'history/territories/{filename}?v={"20261011-boundary-1" if pixel_topology else "20260921-fill-2"}','overlayBounds':extent,
               'legend':legends,'labels':labels,'sources':source,'note':state['note'],'lines':state['lines']})
             audit['coverage'][key].append({'date':state['date'],'regions':geometry_audit})
     (ROOT/'data/history-territories.js').write_text('// Generated by tools/build_history_territories.py.\nwindow.KOREA_HISTORY_TERRITORIES = '+json.dumps(manifest,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')
     (OUT/'provenance.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(f'{len(states)} scenes, {sum(map(len,states.values()))} dated territory overlays')
+    rebuilt = {key: value for key, value in states.items() if not only or key in only}
+    print(f'{len(rebuilt)} scenes, {sum(map(len,rebuilt.values()))} dated states rebuilt')
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--countries',required=True)
     parser.add_argument('--coast',help='Optional Natural Earth 10m countries for Korean coastlines')
+    parser.add_argument('--only',nargs='+',help='Rebuild only these scene IDs; preserve the other files')
     args = parser.parse_args()
-    build(args.countries,args.coast)
+    build(args.countries,args.coast,args.only)

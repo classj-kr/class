@@ -9,7 +9,7 @@
  assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);
  const loadContent=()=>{const quality=document.createElement('script');quality.src=new URL('question-quality-content.js?v=45b7b7551275',assessmentBase);quality.onload=quality.onerror=()=>document.body.append(assessmentContent);document.body.append(quality);};
  if(m.diagnostic){
-  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=dcd2ce371a59',assessmentBase);
+  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=b530e279db62',assessmentBase);
   questions.onload=questions.onerror=loadContent;document.body.append(questions);
  }else loadContent();
  // Load observation panels without injecting an administrative scope banner.

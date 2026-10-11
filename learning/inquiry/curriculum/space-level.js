@@ -10,7 +10,13 @@
         concept.prepend(main);
         function render(){
             const p=S.profile('space-'+topic.id);
-            main.innerHTML=S.concepts({...p,subject:''});
+            if(topic.id==='solar-system' && window.SolarLessonFigures) window.SolarLessonFigures.render(main,S.value);
+            else {
+                main.innerHTML=S.concepts({...p,subject:''});
+                window.LessonVisuals?.decorate(main,'space-'+topic.id,S.value);
+            }
+            const readingBody=main.closest('.topic-explanation-body');
+            if(readingBody)readingBody.scrollTop=0;
             const subject=document.querySelector('.topic-explanation-subject');
             if(subject){subject.textContent=p.subject||'';subject.hidden=!p.subject;}
             else {

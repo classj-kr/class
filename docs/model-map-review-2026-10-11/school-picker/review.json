@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-11",
+  "environment": "localhost:8876",
+  "changes": [
+    "현재 모형에서 지원하지 않는 학교급 버튼 숨김 및 비활성화",
+    "학교급 setter가 지원하지 않는 값을 거부하여 URL 및 렌더러 변경 방지",
+    "천구·일주/연주 비교 화면의 빈 공통 조작 패널 숨김; 별자리·북쪽 하늘의 필요한 패널 유지"
+  ],
+  "browserChecks": [
+    {
+      "buttons": [
+        "초",
+        "중",
+        "고"
+      ],
+      "overflow": false,
+      "path": "/learning/inquiry/space/constellations/?topic=zodiac&school=middle",
+      "strip": "flex"
+    },
+    {
+      "buttons": [
+        "중",
+        "고"
+      ],
+      "overflow": false,
+      "path": "/learning/inquiry/space/constellations/?topic=star-properties&school=high",
+      "strip": "flex"
+    },
+    {
+      "buttons": [
+        "중",
+        "고"
+      ],
+      "overflow": false,
+      "path": "/learning/inquiry/space/earth-moon/?topic=eclipses&school=middle",
+      "strip": null
+    },
+    {
+      "buttons": [
+        "고"
+      ],
+      "overflow": false,
+      "path": "/learning/inquiry/human-body/immune/?school=high",
+      "strip": null
+    },
+    {
+      "buttons": [
+        "초",
+        "중",
+        "고"
+      ],
+      "overflow": false,
+      "path": "/learning/inquiry/human-body/digestion/?school=middle",
+      "strip": null
+    }
+  ],
+  "celestial": {
+    "visibleSchoolButtons": [
+      "고"
+    ],
+    "emptyStripHeight": 0,
+    "speedStopButtonClicked": true
+  },
+  "validSwitches": [
+    "소화 중→초: 같은 경로 유지",
+    "별의 성질 고→중: 같은 경로 유지"
+  ],
+  "tests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "note": "지원하지 않는 학교급으로 직접 진입한 URL은 기존 교육과정 범위 안내 동작을 유지. 이 변경은 화면 내 학교급 선택으로 이탈하는 문제를 방지한다. 운영 서버 배포는 이 검사에 포함하지 않음."
+}

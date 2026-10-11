@@ -49,6 +49,13 @@ for (const item of discoveries) {
   assert.ok(String(credit.author || '').length >= 2, `${item.name} 사진 찍은 이가 없음`);
 }
 assert.equal(withPhoto, discoveries.length, '발견 지점 사진이 빠진 곳이 있음');
+const pitchLake = credits['trinidad-pitch-lake'];
+assert.match(pitchLake.source, /File:Pitch_Lake_1\.JPG$/, '아스팔트 호수에는 실제 현장 사진을 써야 함');
+assert.notEqual(pitchLake.kind, 'map');
+assert.equal(fs.readFileSync(path.join(photoDir, 'trinidad-pitch-lake.webp')).toString('ascii', 8, 12), 'WEBP');
+for (const id of ['grand-banks-cod', 'santorini', 'guanahani-island', 'strait-of-dover']) {
+  assert.equal(credits[id].kind, 'map', `${id} 위치도는 사진으로 안내하면 안 됨`);
+}
 
 const byReach = {};
 for (const item of discoveries) byReach[item.reach] = (byReach[item.reach] || 0) + 1;

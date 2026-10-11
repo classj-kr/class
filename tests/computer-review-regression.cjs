@@ -2,6 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 const {startHarness}=require('./site-storage-harness.cjs');
 const {chromium}=require('../game-hub-server/node_modules/playwright');
+const screenshotWebp=require('./screenshot-webp.cjs');
 const course='/learning/inquiry/information-computing/computer-fundamentals/lessons/';
 (async()=>{
  const h=await startHarness();let browser;
@@ -30,8 +31,8 @@ const course='/learning/inquiry/information-computing/computer-fundamentals/less
   await page.click('[data-study-action=memory-power]');await page.click('[data-study-action=memory-open]');
   assert.equal(await page.inputValue('#studyMemoryEditor'),'봄, 여름');
   const out='outputs/computer-simple-practice-20261010';fs.mkdirSync(out,{recursive:true});
-  await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:out+'/b01-lab-1440.png',fullPage:true});
-  await page.setViewportSize({width:390,height:900});await page.screenshot({path:out+'/b01-lab-390.png',fullPage:true});
+  await page.setViewportSize({width:1440,height:1000});await screenshotWebp(page,{path:out+'/b01-lab-1440.webp',fullPage:true});
+  await page.setViewportSize({width:390,height:900});await screenshotWebp(page,{path:out+'/b01-lab-390.webp',fullPage:true});
   await saved(items=>items['classj:textbook:b01:v1']?.answers[0].solved===true);
   await page.reload();await page.waitForSelector('#editionProgress');assert.equal(await page.locator('#editionProgress').textContent(),'1 / 3');
   assert.match(await feedback.textContent(),/이전에 해결한/);

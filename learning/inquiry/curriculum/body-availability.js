@@ -48,6 +48,7 @@
     function init() {
         const school = window.SchoolLevel;
         if (!school) return;
+        school.setAllowed(Object.keys(school.names).filter(level => isHub || supports(topic,level)));
         if (isHub) school.mount(document.querySelector('.hub-school-level'));
         function update(level) {
             if (!route(level)) return;

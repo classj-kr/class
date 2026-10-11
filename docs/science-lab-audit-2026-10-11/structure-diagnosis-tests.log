@@ -1,0 +1,22 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.5795ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.778ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.111ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (67.4987ms)
+chromium: 143 apps / 572 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (18027.4798ms)
+webkit: 143 apps / 572 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (23335.4908ms)
+✔ Mendeleev: textbook 19-card set, mass order and chemical grouping are independent constraints (1.2254ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.1505ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.4052ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2829ms)
+✔ chromium: source-specific controls, full question flow and mobile scenes (47761.2223ms)
+✔ webkit: source-specific controls, full question flow and mobile scenes (130095.3736ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 177957.7618

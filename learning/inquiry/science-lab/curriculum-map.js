@@ -1932,6 +1932,377 @@ const scienceCurriculum = {
       "12세포02-01"
     ],
     "diagnostic": true
+  },
+  "insulation-lab": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "단열재의 보온·보냉 비교",
+    "subjects": [
+      "역학과 에너지"
+    ],
+    "codes": [
+      "12역학02-01"
+    ],
+    "diagnostic": true
+  },
+  "doppler-lab": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "움직이는 음원의 도플러 효과",
+    "subjects": [
+      "역학과 에너지"
+    ],
+    "codes": [
+      "12역학03-03"
+    ],
+    "diagnostic": true
+  },
+  "ride-acceleration": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "놀이기구 운동과 가속도 센서",
+    "subjects": [
+      "과학탐구실험2"
+    ],
+    "codes": [
+      "10과탐2-01-01",
+      "10과탐2-01-02"
+    ],
+    "diagnostic": true
+  },
+  "dna-replication": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "DNA 복제 가닥 조립",
+    "subjects": [
+      "생물의 유전"
+    ],
+    "codes": [
+      "12유전01-07"
+    ],
+    "diagnostic": true
+  },
+  "protein-synthesis": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "코돈을 읽어 단백질 합성하기",
+    "subjects": [
+      "생물의 유전"
+    ],
+    "codes": [
+      "12유전02-01",
+      "12유전02-02"
+    ],
+    "diagnostic": true
+  },
+  "pedigree-lab": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "가계도로 X 염색체 유전 추론",
+    "subjects": [
+      "생물의 유전"
+    ],
+    "codes": [
+      "12유전01-01",
+      "12유전01-02"
+    ],
+    "diagnostic": true
+  },
+  "karyotype-lab": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "염색체 짝짓기와 핵형 분석",
+    "subjects": [
+      "생명과학"
+    ],
+    "codes": [
+      "12생과03-01"
+    ],
+    "diagnostic": true
+  },
+  "antibiotic-disc": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "추출액의 생장 억제 구역 비교",
+    "subjects": [
+      "과학탐구실험1"
+    ],
+    "codes": [
+      "10과탐1-02-02",
+      "10과탐1-02-03",
+      "10과탐1-02-04"
+    ],
+    "diagnostic": true
+  },
+  "water-wave-tank": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "해파 발생과 물 입자 운동",
+    "subjects": [
+      "지구시스템과학"
+    ],
+    "codes": [
+      "12지시02-02"
+    ],
+    "diagnostic": true
+  },
+  "silver-mirror": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "은거울 반응과 작용기 변화",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응03-02"
+    ],
+    "diagnostic": true
+  },
+  "nylon-interface": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "계면에서 나일론 합성하기",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응03-03"
+    ],
+    "diagnostic": true
+  },
+  "stellar-mass-data": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "쌍성 관측 자료의 질량–광도 관계",
+    "subjects": [
+      "행성우주과학"
+    ],
+    "codes": [
+      "12행우02-04"
+    ],
+    "diagnostic": true
+  },
+  "cluster-fitting": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "성단 자료로 주계열 맞추기",
+    "subjects": [
+      "행성우주과학"
+    ],
+    "codes": [
+      "12행우03-01"
+    ],
+    "diagnostic": true
+  },
+  "habitable-orbits": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "중심별과 생명가능지대의 거리",
+    "subjects": [
+      "행성우주과학"
+    ],
+    "codes": [
+      "12행우01-05"
+    ],
+    "diagnostic": true
+  },
+  "centrifuge-design": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "원심분리기의 배치와 시료 분리",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포01-03"
+    ],
+    "diagnostic": true
+  },
+  "organic-builder": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "원자와 결합으로 작용기 만들기",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응03-01"
+    ],
+    "diagnostic": true
+  },
+  "dna-structure": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "상보적 염기와 DNA 이중나선 만들기",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포01-02"
+    ],
+    "diagnostic": true
+  },
+  "protein-folding": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "두 폴리펩타이드의 연결과 접힘",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포01-02"
+    ],
+    "diagnostic": true
+  },
+  "organelle-builder": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "미토콘드리아·엽록체의 막과 구획 만들기",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포03-01",
+      "12세포03-05",
+      "12세포03-07"
+    ],
+    "diagnostic": true
+  },
+  "hydride-boiling": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "수소 화합물의 끓는점과 분자 간 힘",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에01-03"
+    ],
+    "diagnostic": true
+  },
+  "fuel-comparison": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "같은 몰·질량·부피로 연료 비교하기",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에03-01"
+    ],
+    "diagnostic": true
+  },
+  "mcu-sampling": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "센서 연결과 측정 자료 수집",
+    "subjects": [
+      "과학탐구실험2"
+    ],
+    "codes": [
+      "10과탐2-02-01"
+    ],
+    "diagnostic": true
+  },
+  "smart-pot": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "수분 센서와 펌프로 자동 급수 설계하기",
+    "subjects": [
+      "과학탐구실험2"
+    ],
+    "codes": [
+      "10과탐2-02-01"
+    ],
+    "diagnostic": true
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

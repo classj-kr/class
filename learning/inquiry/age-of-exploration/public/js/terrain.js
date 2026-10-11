@@ -55,6 +55,36 @@
   // 실제로 선박이 통과해야 하는 자연 해협만 별도 항로로 열어 둔다.
   // path 좌표는 [위도, 경도], widthDeg는 항로 중심선에서 허용할 반폭이다.
   const NAVIGABLE_SEA_CORRIDORS = Object.freeze([
+    // 마젤란 해협: 1520년 항로가 Natural Earth 격자에서 육지로 닫히는 구간을 잇는다.
+    // 동쪽의 좁은 해협에서 푼타아레나스를 지나 남쪽으로 굽고, 서쪽 섬들 사이로 빠져나간다.
+    Object.freeze({
+      id: 'magellan',
+      widthDeg: 0.12,
+      path: Object.freeze([
+        Object.freeze([-52.400, -68.289]),
+        Object.freeze([-52.511, -69.111]),
+        Object.freeze([-52.511, -69.311]),
+        Object.freeze([-52.422, -69.400]),
+        Object.freeze([-52.422, -69.489]),
+        Object.freeze([-52.578, -69.711]),
+        Object.freeze([-52.689, -70.133]),
+        Object.freeze([-52.689, -70.356]),
+        Object.freeze([-52.822, -70.400]),
+        Object.freeze([-53.244, -70.844]),
+        Object.freeze([-53.756, -71.000]),
+        Object.freeze([-53.867, -71.244]),
+        Object.freeze([-53.867, -71.422]),
+        Object.freeze([-53.711, -72.022]),
+        Object.freeze([-53.644, -72.222]),
+        Object.freeze([-53.511, -72.400]),
+        Object.freeze([-53.533, -72.533]),
+        Object.freeze([-53.267, -73.222]),
+        Object.freeze([-53.089, -73.467]),
+        Object.freeze([-52.911, -74.200]),
+        Object.freeze([-52.689, -74.689]),
+        Object.freeze([-52.644, -75.111])
+      ])
+    }),
     Object.freeze({
       id: 'messina',
       widthDeg: 0.26,

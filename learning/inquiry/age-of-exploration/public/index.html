@@ -129,7 +129,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 @media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}#cityRest{margin-top:5px;font-size:14px;font-weight:700;color:#e9f3d5}#cityArtCaption{display:block;margin-top:3px;font-size:10px;color:#cbd5d3}
 @media(max-width:650px){#cityMenu button{flex:1 1 calc(50% - 8px);max-width:none}}
 </style>
-<link rel="stylesheet" href="/learn/world-voyage/css/place-study.css">
+<link rel="stylesheet" href="/learn/world-voyage/css/place-study.css?v=91">
 </head>
 <body>
 <div id="globeBase"></div>
@@ -200,10 +200,10 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
   <div id="missionFeedback"></div>
   <div class="missionActions"><button id="missionClose">접기</button></div>
 </aside>
-<div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><div id="discoveryPhoto" class="photoFigure"><img id="discoveryImage" alt="" hidden><details id="discoveryPhotoInfo" class="photoInfo"><summary aria-label="사진 출처와 이용 조건" title="사진 정보">ⓘ</summary><div id="discoveryCredit" class="photoCreditText" hidden></div></details></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
+<div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><div id="discoveryPhoto" class="photoFigure"><img id="discoveryImage" alt="" hidden><span id="discoveryImageLabel" class="imageKindLabel" hidden>위치 지도</span><details id="discoveryPhotoInfo" class="photoInfo"><summary aria-label="사진 출처와 이용 조건" title="사진 정보">ⓘ</summary><div id="discoveryCredit" class="photoCreditText" hidden></div></details></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=82"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=83"></script>
 <script src="/learn/world-voyage/js/city-icons.js?v=3"></script>
 <script src="/learn/world-voyage/js/ship-designs.js?v=1"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
@@ -639,9 +639,12 @@ function showDiscovery(item,found,total,first,label='발견! '){
   discoveryName.textContent=`${first?label:''}${item.name}`;
   discoveryKind.textContent=[item.kind,item.built?`세운 때 ${item.built}`:'',item.todayCountry?`오늘날 ${item.todayCountry}`:''].filter(Boolean).join(' · ');
   discoveryText.textContent=[item.text,item.in1520?`1520년에는 ${item.in1520}`:''].filter(Boolean).join('\n\n');
-  if(item.image){discoveryImage.src=item.image;discoveryImage.alt=`${item.name} 오늘날 사진`;discoveryImage.hidden=false}
+  const isMap=item.imageKind==='map';
+  if(item.image){discoveryImage.src=item.image;discoveryImage.alt=`${item.name} ${isMap?'위치 지도':'오늘날 사진'}`;discoveryImage.hidden=false}
   else{discoveryImage.removeAttribute('src');discoveryImage.hidden=true}
-  discoveryCredit.textContent=item.image&&item.imageCredit?'오늘날 모습 · '+item.imageCredit:'';
+  discoveryImageLabel.hidden=!item.image||!isMap;
+  discoveryPhotoInfo.querySelector('summary').setAttribute('aria-label',isMap?'지도 출처와 이용 조건':'사진 출처와 이용 조건');
+  discoveryCredit.textContent=item.image&&item.imageCredit?(isMap?'위치 지도 · ':'오늘날 모습 · ')+item.imageCredit:'';
   if(discoveryCredit.textContent){
     for(const [label,url] of [['원본',item.imageSource],['이용 조건',item.imageLicenseUrl]]){
       if(!url||!/^https?:\/\//.test(url))continue;
@@ -1209,6 +1212,6 @@ requestAnimationFrame(loop);
 setInterval(()=>{if(joined&&self)updateHud()},100);
 setInterval(()=>{if(joined&&performance.now()-lastSnapshotAt>3000){connectionReady=false;for(const k in keys)keys[k]=false;net.textContent='● 연결 복구 중';net.className='bad';restoreVoyagerConnection()}},1000);
 </script>
-<script src="/learn/world-voyage/js/place-study-ui.js?v=90"></script>
+<script src="/learn/world-voyage/js/place-study-ui.js?v=91"></script>
 </body>
 </html>

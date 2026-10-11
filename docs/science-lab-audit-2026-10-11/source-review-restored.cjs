@@ -15,3 +15,16 @@ for(const r of [...require('../../scripts/science-physics-experiments.cjs'),...r
  r.source.id,r.source.pages,[r.slug],r.current,
  '해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. '+r.boundary
 ]);
+for(const r of require('../../scripts/science-inquiry-experiments.cjs')){
+ module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 교과서 쪽의 절차·도식과 새 모형·객관식의 적용 범위를 대조했다. 장치·분자 방향·가계도·핵형 그림은 gap-source-pages의 WebP로 확인했다. '+r.boundary]);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.id==='35ddba87be4c287d'?[66,67,68,69]:[45,72,112,132],[r.slug],a.part,'HWP의 문항·해설 텍스트를 읽고 개념 구별과 오답 피드백에 반영했다. 원문 그림 전체의 육안 대조나 문항 복제를 주장하지 않는다.']);
+}
+for(const r of require('../../scripts/science-evidence-experiments.cjs')){
+ module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 원문 표·그림·절차를 WebP로 대조했다. 수치 표와 그림에서 읽은 근삿값을 구분한다. '+r.boundary]);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.pages,[r.slug],a.part,'HWP 문항 해설의 지정 문단을 읽고 수치·판단 조건을 바꾼 새 문항과 선택지별 오개념 피드백에 반영했다. 도식 전체의 복제나 문항 전수 검토는 아님.']);
+}
+for(const r of require('../../scripts/science-structure-experiments.cjs')){
+ module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'기재한 교과서 본문·활동 절차를 대조했다. structure-source-pages에 보존한 DNA·단백질 부록, 막 단면, 활동 계수와 연료 표 그림도 확인했다. '+r.boundary]);
+ for(const a of r.assessmentSources||[])module.exports.push([a.id,a.pages,[r.slug],a.part,'지정 문단의 문제·해설 개념을 대조하고 새 조건의 문항을 작성했다. 추출 과정에서 빠진 수식·그림은 추정하여 복원하지 않았다.']);
+}
+for(const r of require('../../scripts/science-sensor-experiments.cjs'))module.exports.push([r.source.id,r.source.pages,[r.slug],r.current,'동아 2022 원문의 MCU·센서 연결, 광학 맥파 1분 수집, 같은 위치의 소음 5분 비교, 스마트 화분의 수분 센서·릴레이·펌프 그림과 절차를 확인했다. 센서 모형의 수치 가정과 실제 현장 측정은 구별한다. '+r.boundary]);

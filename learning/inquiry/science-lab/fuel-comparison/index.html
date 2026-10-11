@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 같은 몰·질량·부피로 연료 비교하기</title><meta name="description" content="2022 교육과정 · 같은 몰·질량·부피로 연료 비교하기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css"><link rel="stylesheet" href="../science-reading.css"><link rel="stylesheet" href="../structure-labs.css"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>같은 몰·질량·부피로 연료 비교하기</h1><div class="grade-tags"><span>고(선택)</span><span>물질과 에너지</span></div></header><p class="intro">옥테인·에탄올·수소의 교과서 자료를 같은 몰수·질량·부피로 환산한다. 방출열과 직접 발생한 CO₂를 비교하고, 가정한 장치 효율을 적용해 목표 에너지에 필요한 연료량을 구한다.</p><section class="experiment-layout structure-lab" data-structure="fuel-comparison"><h2>조건을 바꾸고 결과 비교하기</h2><div class="structure-controls"><label>동일하게 비교할 양의 단위<select id="fuelBasis"><option value="mol">mol · 같은 몰수</option><option value="g">g · 같은 질량</option><option value="L">L · 같은 부피</option></select></label><label>각 연료의 양 <output id="fuelAmountValue"></output><input id="fuelAmount" type="range" min="1" max="10" step="1" value="1" data-unit=""></label><label>옥테인 장치의 가정 효율<select id="efficiency0"><option value="1">100%</option><option value="0.4">40%</option><option value="0.25">25%</option><option value="0.1">10%</option></select></label><label>에탄올 장치의 가정 효율<select id="efficiency1"><option value="1">100%</option><option value="0.4">40%</option><option value="0.25">25%</option><option value="0.1">10%</option></select></label><label>수소 장치의 가정 효율<select id="efficiency2"><option value="1">100%</option><option value="0.4">40%</option><option value="0.25">25%</option><option value="0.1">10%</option></select></label><label>목표 유용 에너지 <output id="targetEnergyValue"></output><input id="targetEnergy" type="range" min="100" max="5000" step="100" value="1000" data-unit="kJ"></label><label>막대그래프 축<select id="fuelScale"><option value="linear">선형 축</option><option value="log">로그 축 · 작은 값까지 비교</option></select></label><p>세 연료에 같은 양을 적용합니다. 효율은 아래 표에서 각각 바꿀 수 있습니다. 액체 두 종과 25°C·1기압의 기체 수소를 비교합니다.</p></div><div id="structureScene" class="structure-scene"></div><div id="structureReadout" class="structure-readout" aria-live="polite"></div><p id="structureStatus" class="status" role="status"></p><div id="structureExtra"></div><div class="toolbar"><button id="resetExperiment">처음부터</button></div><details class="source-note"><summary>자료와 모형의 범위</summary><p>미래엔 2022의 몰질량·연소 엔탈피·25°C 1기압 밀도 표를 사용한다. 생성물 물은 액체이다. 휘발유는 순수 옥테인으로 대표한 비교이며 장치 효율은 사용자가 정한 가상 조건이다. CO₂는 연소 단계만 계산하고 생산·저장·운송의 배출량이나 비용은 계산하지 않는다.</p></details></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>H₂ 1 mol의 연소 엔탈피는 −285.8 kJ/mol이다. 2 mol 완전 연소 시 ΔH와 방출열은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> −571.6 kJ · 571.6 kJ</label>
+<label><input type="radio" name="q1" value="b"> −285.8 kJ · 571.6 kJ</label>
+<label><input type="radio" name="q1" value="c"> 571.6 kJ · −571.6 kJ</label>
+<label><input type="radio" name="q1" value="d"> −142.9 kJ · 142.9 kJ</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>반응량 2배에 ΔH도 2배입니다. 반응계의 엔탈피 변화는 음수이고 방출한 열의 크기는 양수입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>에탄올의 몰질량 46 g/mol, 연소 엔탈피 −1367 kJ/mol이다. 1 g의 방출열은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 약 0.034 kJ</label>
+<label><input type="radio" name="q2" value="b"> 약 29.7 kJ</label>
+<label><input type="radio" name="q2" value="c"> 약 1367 kJ</label>
+<label><input type="radio" name="q2" value="d"> 약 62882 kJ</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>1 g은 1/46 mol이므로 1367/46≈29.7 kJ입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>수소의 방출열은 142.9 kJ/g, 25°C 1기압 밀도는 0.0813 g/L이다. 1 L의 방출열은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 약 0.00057 kJ</label>
+<label><input type="radio" name="q3" value="b"> 약 11.6 kJ</label>
+<label><input type="radio" name="q3" value="c"> 약 142.9 kJ</label>
+<label><input type="radio" name="q3" value="d"> 약 1758 kJ</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>1 L에 0.0813 g이므로 142.9×0.0813≈11.6 kJ입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>같은 연료량에서 방출열 1000 kJ를 얻었다. 유용한 일로 전환되는 비율을 25%에서 40%로 바꿨다. 달라지는 양은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 연소 엔탈피의 절댓값</label>
+<label><input type="radio" name="q4" value="b"> 유용한 에너지 250→400 kJ</label>
+<label><input type="radio" name="q4" value="c"> 연료 속 탄소 원자 수</label>
+<label><input type="radio" name="q4" value="d"> 이론적 방출열 1000→1600 kJ</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>연료량과 완전 연소 조건이 같다면 방출열은 같고, 이용하는 에너지의 비율이 변합니다.</p>
+</article></details></main><script src="../structure-models.js"></script><script src="../structure-labs.js"></script><script src="../curriculum-map.js"></script><script src="../exam-scope.js"></script></body></html>

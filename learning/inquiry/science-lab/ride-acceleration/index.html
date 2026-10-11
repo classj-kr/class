@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(공통) 놀이기구 운동과 가속도 센서</title><meta name="description" content="2022 교육과정 · 놀이기구 운동과 가속도 센서의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css"><link rel="stylesheet" href="../science-reading.css"><link rel="stylesheet" href="../inquiry-labs.css"></head><body><main><header class="page-header"><a href="../?school=high-common">← 고(공통) 과학 실험</a><h1>놀이기구 운동과 가속도 센서</h1><div class="grade-tags"><span>고(공통)</span><span>과학탐구실험2</span></div></header><p class="intro">등속 직선·수평 원운동·상승하는 승강기의 시간별 위치와 속도·가속도 벡터를 비교한다. 중력 영향을 제외한 운동 가속도와 이상적인 휴대전화 가속도 센서 크기를 구분한다.</p><section class="experiment-layout inquiry-lab" data-inquiry="ride-acceleration"><h2>조건을 바꾸고 관찰하기</h2><div class="control-panel"><label>운동<select id="motion"><option value="circle">수평 등속 원운동</option><option value="straight">등속 직선 운동</option><option value="elevator">승강기 상승·정지</option></select></label><label for="speed">설정 속력 <output id="speedValue">4 m/s</output><input id="speed" type="range" min="1" max="8" step="0.5" value="4" data-unit="m/s"></label><label for="radius">원 궤도 반지름 <output id="radiusValue">4 m</output><input id="radius" type="range" min="2" max="12" step="1" value="4" data-unit="m"></label><label for="time">시각 <output id="timeValue">0 초</output><input id="time" type="range" min="0" max="12" step="0.1" value="0" data-unit="초"></label><button id="play">움직임 재생</button><button id="step">0.5초 진행</button></div><div id="inquiryScene" class="inquiry-scene"></div><div id="inquiryReadout" class="inquiry-readout" aria-live="polite"></div><div id="inquiryExtra"></div><p id="inquiryStatus" class="status" role="status"></p><div class="toolbar"><button id="resetExperiment">실험 처음부터</button></div><p class="model-note">실제 휴대전화 센서 수집이나 현장 놀이기구 탑승은 포함하지 않는 이상 운동 모형이다. 센서 크기는 수평 원운동에서 √(g²+a²), 승강기에서 |g+a_z|이며 회전·기울기·진동 오차는 생략한다.</p></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>수평 원 궤도를 일정한 속력으로 돈다. 1/4바퀴 뒤의 속도와 가속도에 대한 해석은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 속도가 같고 가속도는 0</label>
+<label><input type="radio" name="q1" value="b"> 속도 방향이 달라지고 가속도는 중심 쪽</label>
+<label><input type="radio" name="q1" value="c"> 속력만 달라지고 가속도는 접선 쪽</label>
+<label><input type="radio" name="q1" value="d"> 속도 방향이 달라지고 가속도는 바깥쪽</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>속도는 크기와 방향을 갖습니다. 등속 원운동에서도 방향이 변하므로 중심을 향한 가속도가 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>A는 속력 2 m/s·반지름 2 m, B는 4 m/s·8 m이다. 구심 가속도 a=v²/r를 적용한 B/A는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 1/2</label>
+<label><input type="radio" name="q2" value="b"> 1</label>
+<label><input type="radio" name="q2" value="c"> 2</label>
+<label><input type="radio" name="q2" value="d"> 4</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>A=4/2=2, B=16/8=2 m/s²이므로 비는 1입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>위로 움직이던 승강기가 위로 이동하면서 속력을 줄인다. 가속도 방향과 바닥의 받치는 힘은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 위쪽·무게보다 큼</label>
+<label><input type="radio" name="q3" value="b"> 위쪽·무게보다 작음</label>
+<label><input type="radio" name="q3" value="c"> 아래쪽·무게보다 큼</label>
+<label><input type="radio" name="q3" value="d"> 아래쪽·무게보다 작음</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>상승 중 감속하므로 가속도는 아래쪽입니다. N−mg=ma_z에서 a_z&lt;0이므로 N&lt;mg입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>바닥에 정지한 휴대전화의 원시 가속도 센서 크기가 약 9.8 m/s²였다. 위치 변화와 함께 보면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 운동 가속도 0·센서에는 지지 효과 포함</label>
+<label><input type="radio" name="q4" value="b"> 운동 가속도 9.8·위치는 계속 증가</label>
+<label><input type="radio" name="q4" value="c"> 운동 가속도 9.8·속력은 계속 일정</label>
+<label><input type="radio" name="q4" value="d"> 운동 가속도 0·센서는 반드시 고장</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>정지한 물체의 좌표상 가속도는 0입니다. 원시 센서는 바닥이 받치는 효과를 포함하므로 중력 보정값과 구분합니다.</p>
+</article></details></main><script src="../inquiry-models.js"></script><script src="../inquiry-labs.js"></script><script src="../curriculum-map.js"></script><script src="../exam-scope.js"></script></body></html>

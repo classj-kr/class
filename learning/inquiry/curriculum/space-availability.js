@@ -22,6 +22,7 @@
     function init() {
         const S = window.SchoolLevel;
         if (!S) return;
+        S.setAllowed(Object.keys(S.names).filter(level => supports(topic,level)));
         const hub = document.querySelector('.hub-container');
         if (hub) {
             const controls = document.createElement('nav');

@@ -70,13 +70,8 @@
         spin.add(observer);
         const platform = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.85, 0.12, 24), new THREE.MeshBasicMaterial({ color: 0xfde68a }));
         observer.add(platform);
-        const body = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.4, 1.1, 16), new THREE.MeshStandardMaterial({ color: 0x22d3ee }));
-        body.position.y = 0.65;
-        observer.add(body);
-        const head = new THREE.Mesh(new THREE.SphereGeometry(0.3, 16, 12), new THREE.MeshBasicMaterial({ color: 0xffb45c }));
-        head.position.y = 1.45;
-        observer.add(head);
-        const normal = new THREE.Vector3();
+        const figure = window.EarthObserver.create();
+        observer.add(figure);
 
         const rays = new THREE.Group();
         scene.add(rays);
@@ -171,10 +166,7 @@
                 localSunward.copy(sunward).applyQuaternion(inverseTilt);
                 // Local noon points toward the Sun; a positive Y turn is eastward.
                 spin.rotation.y = Math.atan2(-localSunward.z, localSunward.x) + (state.hour - 12) * Math.PI / 12;
-                const latitude = state.latitude * Math.PI / 180;
-                normal.set(Math.cos(latitude), Math.sin(latitude), 0);
-                observer.position.copy(normal).multiplyScalar(10.1);
-                observer.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+                window.EarthObserver.place(observer, figure, state.latitude, 0, 10.1);
                 orbit.visible = state.showOrbit;
                 rays.visible = state.showRays;
                 rays.children.forEach(line => {

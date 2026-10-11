@@ -32,6 +32,9 @@ const player = point => ({ ...pixel(point), roomCode: '9999', name: 'strait test
   mode: 'sea', input: {}, fatigue: 0, speedKmh: 0, noticeSeq: 0, transition: null });
 
 const passages = [
+  { name: 'magellan', ends: [[-52.400, -68.289], [-52.644, -75.111]],
+    bottleneck: [[-52.689, -70.133], [-52.689, -70.356]],
+    bounds: [-75.5, -67.9, -54.1, -52.1], maxTicks: 2500 },
   { name: 'bangka', ends: [[-2.232, 105.480], [-3.096, 106.344]],
     bottleneck: [[-2.520, 105.768], [-2.808, 105.912]],
     bounds: [105.1, 106.6, -3.3, -2.0] },
@@ -48,7 +51,7 @@ for (const passage of passages) {
     assert.equal(api.terrainAtPixel(goal.x, goal.y).type, 'sea', passage.name + ' exit');
     api.planRoute(p, goal);
     let ticks = 0;
-    for (; ticks < 600 && api.distanceXY(p.x, p.y, goal.x, goal.y) >= 4; ticks++) {
+    for (; ticks < (passage.maxTicks || 600) && api.distanceXY(p.x, p.y, goal.x, goal.y) >= 4; ticks++) {
       api.movePlayer(p, 0.1);
       assert.equal(api.terrainAtPixel(p.x, p.y).type, 'sea', passage.name + ' must not cross land');
       const lon = p.x / api.WORLD_PIXEL_W * 360 - 180, lat = 90 - p.y / api.WORLD_PIXEL_H * 180;
@@ -56,7 +59,7 @@ for (const passage of passages) {
       assert.ok(lon >= west && lon <= east && lat >= south && lat <= north,
         passage.name + ' must use the strait, not sail around the island');
     }
-    assert.ok(ticks < 600, passage.name + ' movement stuck, reverse=' + reverse + JSON.stringify({x:p.x,y:p.y,target:p.target,route:p.route}));
+    assert.ok(ticks < (passage.maxTicks || 600), passage.name + ' movement stuck, reverse=' + reverse + JSON.stringify({x:p.x,y:p.y,target:p.target,route:p.route}));
     // Directional steering must also cross the narrowest section without route planning.
     const points = reverse ? [...passage.bottleneck].reverse() : passage.bottleneck;
     const manual = player(points[0]), finish = pixel(points[1]);
@@ -73,6 +76,7 @@ for (const passage of passages) {
   }
 }
 for (const [name, point] of [
+  ['Patagonia north of Magellan', [-52.7, -71.0]], ['Tierra del Fuego', [-53.6, -69.6]],
   ['Palembang', [-2.99, 104.76]], ['Sumatra', [-2.7, 105.4]],
   ['Bangka', [-2.25, 106.0]], ['southern Bangka', [-2.75, 106.25]],
   ['Kyushu', [33.7, 130.8]], ['Honshu', [34.15, 131.1]], ['Shikoku', [33.8, 133.2]],

@@ -110,7 +110,7 @@ test('school/course filtering, old links, exact high-school domains and responsi
       const count=Object.values(map).filter(a=>a.grades.includes(grade)).length;
       assert.equal(await page.locator('.level-entry:visible').count(),count);
       assert.equal(await page.locator('.foundation-section .topic-row:visible').count(),18,'Grade changes must not erase the official classification');
-      assert.equal(await page.locator('.catalog-empty:visible').evaluateAll(es=>es.every(e=>e.textContent==='선택한 학년에 등록된 실험 없음')),true);
+      assert.equal(await page.locator('.catalog-empty:visible').evaluateAll(es=>es.every(e=>e.textContent==='실험 없음')),true);
      }
      await page.locator('[data-grade="전체"]').click();
     }

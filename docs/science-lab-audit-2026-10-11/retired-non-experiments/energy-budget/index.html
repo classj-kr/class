@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 자료로 비교하는 하루의 에너지 출입</title><meta name="description" content="2022 교육과정 · 자료로 비교하는 하루의 에너지 출입의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../structure-labs.css?v=b129068f7162"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>자료로 비교하는 하루의 에너지 출입</h1><div class="grade-tags"><span>고(선택)</span><span>세포와 물질대사</span></div></header><p class="intro">가상 식품 표시의 기준량과 먹은 양을 바꾸고, 가상 인물의 활동을 합계 24시간으로 구성한다. 같은 단위로 계산한 에너지 출입과 활동별 소비량을 비교한다.</p><section class="experiment-layout structure-lab" data-structure="energy-budget"><h2>조건을 바꾸고 결과 비교하기</h2><div class="structure-controls"><label>자료의 가상 인물<select id="person"><option value="50">가상 인물 A · 50 kg</option><option value="60">가상 인물 B · 60 kg</option></select></label><button id="compareDay">24시간 에너지 출입 비교</button><p>활동 시간과 가상 식품 사용량을 아래에서 바꿉니다. 시간을 추가했으면 다른 활동 시간도 조정하여 하루를 구성하세요.</p></div><div id="structureScene" class="structure-scene"></div><div id="structureReadout" class="structure-readout" aria-live="polite"></div><p id="structureStatus" class="status" role="status"></p><div id="structureExtra"></div><div class="toolbar"><button id="resetExperiment">처음부터</button></div><details class="source-note"><summary>자료와 모형의 범위</summary><p>활동별 계수는 미래엔 2022 교과서 59쪽의 kcal/(kg·h) 값이며 기초대사를 포함하고 소화·흡수 에너지는 제외한다. 식품 표시는 단위 환산용 가상 자료다. 가상 인물의 24시간 자료를 분석하며 학생 개인의 체중·식단을 수집하거나 섭취 목표·건강 진단을 제공하지 않는다.</p></details></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>질량 50 kg인 가상 인물이 30분 걷는다. 계수 4.0 kcal/(kg·h)를 적용한 소비량은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 2 kcal</label>
+<label><input type="radio" name="q1" value="b"> 100 kcal</label>
+<label><input type="radio" name="q1" value="c"> 200 kcal</label>
+<label><input type="radio" name="q1" value="d"> 6000 kcal</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>30분=0.5시간이므로 4.0×50×0.5=100 kcal입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>제공된 활동별 계수에는 기초대사가 포함된다. 24시간 소비량을 계산한 뒤 기초대사량을 다시 더하면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 누락된 소화 에너지만 보완</label>
+<label><input type="radio" name="q2" value="b"> 기초대사가 중복 계산됨</label>
+<label><input type="radio" name="q2" value="c"> 활동대사가 모두 제거됨</label>
+<label><input type="radio" name="q2" value="d"> 단위만 kcal에서 kJ로 변환</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>잠자기 등을 포함한 계수에 기초대사가 들어 있으므로 다시 더하면 중복됩니다. 소화·흡수 에너지와 구별합니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>100 g당 160 kcal로 표시된 가상 식품을 150 g 먹었다. 표시값으로 계산한 에너지는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 107 kcal</label>
+<label><input type="radio" name="q3" value="b"> 160 kcal</label>
+<label><input type="radio" name="q3" value="c"> 240 kcal</label>
+<label><input type="radio" name="q3" value="d"> 310 kcal</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>먹은 양은 기준량의 1.5배이므로 160×1.5=240 kcal입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>활동 시간 합계가 26시간이고 계산 소비량은 2300 kcal이다. 하루 섭취 2200 kcal와 비교하기 전에 확인할 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 활동 중 겹친 시간의 유무</label>
+<label><input type="radio" name="q4" value="b"> 식품 에너지를 26배 할지</label>
+<label><input type="radio" name="q4" value="c"> 잠자는 시간을 모두 뺄지</label>
+<label><input type="radio" name="q4" value="d"> 기초대사를 한 번 더 넣을지</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>하루에 같은 시간을 두 활동으로 중복 기록했는지 확인하고 24시간으로 맞춰야 합니다.</p>
+</article></details></main><script src="../structure-models.js?v=772f38432d49"></script><script src="../structure-labs.js?v=5f5d96a505b8"></script><script src="../curriculum-map.js?v=43111aa63140"></script><script src="../exam-scope.js?v=dfe1820225a5"></script></body></html>

@@ -1,0 +1,22 @@
+{
+  "scope": "태양계 설명 창의 초·중·고 시각 자료",
+  "source": "미래엔 행성우주과학(김연귀), 2022 개정, 인쇄 23–24쪽/PDF 25–26쪽; 로컬 2022 과학 교육과정 [4과13-02], [9과07-01]",
+  "browser": {
+    "desktop": "1280×720, 실제 설명 창 및 학교급 변경",
+    "small": "실제 페이지를 390×844 iframe에서 확인; 고등 도표 가로 넘침 없음, 조작 정상",
+    "areaPercent": [
+      3,
+      12
+    ],
+    "periodAU": {
+      "1": 1,
+      "2": 2.83,
+      "4": 8
+    },
+    "schoolChangeScrollTop": 0,
+    "runtimeErrors": []
+  },
+  "math": "초점 기준 다각형 면적의 차이 0.01% 미만, 근일점 이동 거리가 더 김, 케플러 방정식 및 공전 주기 검증",
+  "tests": "9/9 pass",
+  "deployment": "local verification only"
+}

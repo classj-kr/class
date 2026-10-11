@@ -62,6 +62,16 @@
         if(title&&stage)stage.setAttribute('aria-label',title.textContent);
         header.remove();
         document.body.classList.add('model-compact-layout');
+        // Audio belongs to the same flex row as school selection.
+        function dockAudio(){
+            var audio=document.querySelector('.unified-music-control');
+            if(!audio)return false;
+            navigation.appendChild(audio);return true;
+        }
+        if(!dockAudio()){
+            var audioWatch=new MutationObserver(function(){if(dockAudio())audioWatch.disconnect();});
+            audioWatch.observe(document.body,{childList:true});
+        }
     }
     function bindOrganFocus(){
         function clear(){
@@ -91,8 +101,9 @@
         var host=document.getElementById('organDetailCard')||document.getElementById('organFocusCard');
         if(!host)host=document.querySelector('.sidebar-tab-panel');
         if(!host)return;
-        var card=document.createElement('details');card.className='model-reading';card.open=true;
-        card.innerHTML='<summary>관찰하기</summary><p class="model-purpose"></p><p class="model-task"></p><div class="model-scene-step"><button type="button" data-step="-1">← 이전</button><span></span><button type="button" data-step="1">다음 →</button></div>';
+        var card=document.createElement('section');card.className='model-reading model-instruction';
+        card.setAttribute('aria-label','모형 조작 안내');
+        card.innerHTML='<p class="model-task"></p>';
         var sidebarBody=document.querySelector('.sidebar-body');
         if(sidebarBody){
             var actions=sidebarBody.querySelector('.sim-header-right');
@@ -117,27 +128,17 @@
             var g=(app==='respiration'&&window.RespirationLearning&&window.RespirationLearning.guide(key))||(app==='excretion'&&window.ExcretionLearning&&window.ExcretionLearning.guide(key))||(app==='circulation'&&window.CirculationLearning&&window.CirculationLearning.guide(key))||guides[app][key]||guides[app][aliases[key]];
             if(!g){card.hidden=true;return;}
             card.hidden=false;
-            ['.model-purpose','.model-task'].forEach(function(s,i){card.querySelector(s).textContent=g[i];});
-            card.querySelector('.model-scene-step span').textContent=(index+1)+' / '+buttons.length+' 장면';
-            card.querySelector('.model-scene-step').hidden=buttons.length===1;
-            card.querySelector('[data-step="-1"]').disabled=index===0;
-            card.querySelector('[data-step="1"]').disabled=index===buttons.length-1;
+            card.querySelector('.model-task').textContent=g[1].match(/^.*?[.!?](?:\s|$)/)?.[0].trim()||g[1];
         }
-        card.addEventListener('click',function(e){
-            var step=e.target.closest('[data-step]');if(!step)return;
-            var buttons=sceneButtons();
-            var i=buttons.findIndex(function(b){return b.classList.contains('active');});
-            var next=buttons[i+Number(step.dataset.step)];if(next)next.click();
-        });
         document.addEventListener('click',function(e){
             if(e.target.closest('.scene-btn')){
                 if(host.classList.contains('model-selected-detail'))host.hidden=true;
                 setTimeout(update,0);
             }
-            if(e.target.closest('.body-diagram-label,svg [role="button"],.brain-pill-btn,.joint-tag,.skin-tag,.model-band-buttons button')){host.hidden=false;card.open=false;}
+            if(e.target.closest('.body-diagram-label,svg [role="button"],.brain-pill-btn,.joint-tag,.skin-tag,.model-band-buttons button'))host.hidden=false;
         });
         document.addEventListener('keydown',function(e){
-            if((e.key==='Enter'||e.key===' ')&&e.target.closest('.body-diagram-label,svg [role="button"],.joint-tag,.skin-tag')){host.hidden=false;card.open=false;}
+            if((e.key==='Enter'||e.key===' ')&&e.target.closest('.body-diagram-label,svg [role="button"],.joint-tag,.skin-tag'))host.hidden=false;
         },true);
         if(window.SchoolLevel)window.SchoolLevel.subscribe(function(){requestAnimationFrame(update);});
         requestAnimationFrame(update);

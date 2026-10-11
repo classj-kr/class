@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 수소 화합물의 끓는점과 분자 간 힘</title><meta name="description" content="2022 교육과정 · 수소 화합물의 끓는점과 분자 간 힘의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css"><link rel="stylesheet" href="../science-reading.css"><link rel="stylesheet" href="../structure-labs.css"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>수소 화합물의 끓는점과 분자 간 힘</h1><div class="grade-tags"><span>고(선택)</span><span>물질과 에너지</span></div></header><p class="intro">14·15족의 분자량과 끓는점을 축을 바꾸어 비교한다. 메테인 자료를 확인한 뒤 암모니아의 끓는점을 예측하고, 관측값과 차이를 분자의 구조·분자 간 힘으로 해석한다.</p><section class="experiment-layout structure-lab" data-structure="hydride-boiling"><h2>조건을 바꾸고 결과 비교하기</h2><div class="structure-controls"><label>가로축<select id="hydrideAxis"><option value="mass">분자량</option><option value="period">중심 원자의 주기</option></select></label><label>비교할 족<select id="hydrideGroup"><option value="all">14족과 15족</option><option value="14">14족</option><option value="15">15족</option></select></label><label>NH₃ 끓는점 예상 <output id="boilingPredictionValue"></output><input id="boilingPrediction" type="range" min="-180" max="40" step="1" value="-120" data-unit="°C"></label><button id="revealMethane">CH₄ 끓는점 자료 추가</button><button id="revealAmmonia">예상값과 NH₃ 자료 비교</button><label class="inline"><input type="checkbox" id="showAmmonia" checked>확인한 NH₃를 그래프에 포함</label></div><div id="structureScene" class="structure-scene"></div><div id="structureReadout" class="structure-readout" aria-live="polite"></div><p id="structureStatus" class="status" role="status"></p><div id="structureExtra"></div><div class="toolbar"><button id="resetExperiment">처음부터</button></div><details class="source-note"><summary>자료와 모형의 범위</summary><p>동아 2022의 6개 표 값을 사용하고 CH₄·NH₃는 NIST·NOAA의 1기압 자료를 정수 °C로 반올림했다. 선은 같은 족 자료의 연결선이며 모든 물질의 끓는점 예측식이 아니다. 가열 실험이나 상전이 동역학을 재현하지 않는다.</p></details></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>같은 14족에서 SiH₄(32.1, −112°C)와 GeH₄(76.6, −88°C)를 비교했다. 차이를 설명하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> GeH₄의 더 큰 분산력</label>
+<label><input type="radio" name="q1" value="b"> SiH₄의 더 큰 분산력</label>
+<label><input type="radio" name="q1" value="c"> GeH₄의 수소 결합</label>
+<label><input type="radio" name="q1" value="d"> SiH₄의 이온 결합</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>둘 다 무극성 분자입니다. 이 계열에서 전자 구름이 더 큰 GeH₄의 분산력이 커 끓는점이 높습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>SiH₄(32.1, −112°C)와 PH₃(34.0, −88°C)의 자료에서 PH₃에 추가로 작용하는 힘은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 분산력만</label>
+<label><input type="radio" name="q2" value="b"> 쌍극자–쌍극자 힘</label>
+<label><input type="radio" name="q2" value="c"> N–H의 수소 결합</label>
+<label><input type="radio" name="q2" value="d"> 금속 양이온의 결합</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>SiH₄는 무극성이고 PH₃는 극성 분자입니다. PH₃에는 분산력 외에 쌍극자–쌍극자 힘도 작용합니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>NH₃는 PH₃보다 가볍지만 끓는점이 더 높다. 주요 원인과 끓을 때의 변화를 고르면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 수소 결합·분자 사이가 멀어짐</label>
+<label><input type="radio" name="q3" value="b"> 수소 결합·N–H가 모두 끊어짐</label>
+<label><input type="radio" name="q3" value="c"> 큰 분자량·분자 사이가 멀어짐</label>
+<label><input type="radio" name="q3" value="d"> 이온 결합·N과 H로 분해됨</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>NH₃ 분자 사이의 수소 결합 때문에 단순한 분자량 경향에서 벗어납니다. 끓음은 N–H 공유 결합을 모두 끊는 분해가 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>14족 네 자료에서 분자량이 클수록 끓는점이 높았다. NH₃까지 비교할 때의 판단은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 분자량만으로 여덟 값 정렬</label>
+<label><input type="radio" name="q4" value="b"> 분자 구조와 힘의 종류도 비교</label>
+<label><input type="radio" name="q4" value="c"> 가장 가벼운 값은 모두 삭제</label>
+<label><input type="radio" name="q4" value="d"> 족별 연결선을 하나로 합치기</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>서로 다른 종류의 분자 간 힘이 작용하므로 같은 계열에서 얻은 경향을 전체에 그대로 적용할 수 없습니다.</p>
+</article></details></main><script src="../structure-models.js"></script><script src="../structure-labs.js"></script><script src="../curriculum-map.js"></script><script src="../exam-scope.js"></script></body></html>

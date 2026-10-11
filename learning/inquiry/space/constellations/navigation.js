@@ -63,6 +63,15 @@ window.switchMainTab = function(targetTab) {
                 }
             }
 
+            // Some scenes own their controls inside the model. Do not leave an
+            // empty full-width panel covering those controls at the bottom.
+            var panel = document.querySelector('.sim-controls-panel');
+            if (panel) {
+                var hasControls = !!document.getElementById('controls-' + targetMode);
+                panel.hidden = !hasControls;
+                panel.style.display = hasControls ? 'flex' : 'none';
+            }
+
             if (targetMode === 'diurnal' && typeof window.updateDiurnalUI === 'function') {
                 window.updateDiurnalUI();
             } else if (targetMode === 'zodiac' && typeof window.updateZodiacUI === 'function') {
