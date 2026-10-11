@@ -7,6 +7,8 @@
     python tools/question-bank/dump_problems.py 3-1-2 hard --keep-answers    정답·풀이를 자르지 않는다(그림이 중심인 단원)
     python tools/question-bank/dump_problems.py 3-1-2 basic --without 박만구 --also 3-1-1:박만구
         단원 차례가 다른 교과서: 그 저자를 빼고, 내용이 맞는 다른 단원 폴더에서 그 저자의 문서를 가져온다
+    python tools/question-bank/dump_problems.py 3-2-2 hard --without 류희찬,최수일,장혜원,강문봉 --also 3-2-3:류희찬,최수일,장혜원,강문봉
+        저자는 쉼표로 여럿 적을 수 있다
     python tools/question-bank/dump_problems.py 3-1-1 all --only 3-1-2:박만구 --name 보충
         다른 단원 폴더에 있는 한 저자의 문서만 모은다(수준을 가르지 않고 → 보충문서_모음.txt)
 
@@ -49,10 +51,12 @@ def main(argv):
 
     # 교과서마다 단원 차례가 다르다(천재 박만구 3-1은 1단원이 평면도형, 2단원이 덧셈과 뺄셈).
     # 그런 책은 --without 으로 빼고, 내용이 맞는 다른 단원 폴더의 문서를 --also 로 가져온다.
-    rows = [row for row in listed(unit) if not option('--without') or option('--without') not in row['author']]
+    # 저자는 쉼표로 여럿 적을 수 있다(3-2는 나눗셈·원, 분수·들이와 무게가 책마다 뒤바뀐다).
+    without = [name for name in option('--without').split(',') if name]
+    rows = [row for row in listed(unit) if not any(name in row['author'] for name in without)]
     if option('--also'):
-        other, author = option('--also').split(':')
-        rows += [row for row in listed(other) if author in row['author']]
+        other, authors = option('--also').split(':')
+        rows += [row for row in listed(other) if any(name in row['author'] for name in authors.split(','))]
     if option('--only'):
         other, author = option('--only').split(':')
         rows = [row for row in listed(other) if author in row['author']]

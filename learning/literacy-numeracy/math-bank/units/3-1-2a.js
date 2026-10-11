@@ -65,7 +65,7 @@
   const TANGRAM = [[[0, 0], [8, 0], [4, 4]], [[0, 0], [4, 4], [0, 8]], [[4, 4], [6, 2], [8, 4], [6, 6]], [[8, 0], [8, 4], [6, 2]], [[4, 4], [6, 6], [2, 6]], [[0, 8], [2, 6], [6, 6], [4, 8]], [[8, 4], [8, 8], [4, 8]]];
 
   B.addUnit({
-    id: '3-1-2', grade: 3, semester: 1, no: 2, title: '평면도형', version: 1,
+    id: '3-1-2', grade: 3, semester: 1, no: 2, title: '평면도형', version: 2,
     groups: [
       {
         id: 'line', title: '선분, 반직선, 직선', standard: LINE,
@@ -298,18 +298,6 @@
               facts: { sets: { labels: TAGS.slice(0, 4), flags, options: made.sets }, polys: picks, prop: 'square' }
             });
           }),
-          T('quad-sum', '정사각형의 네 변의 길이의 합', '76', (d) => {
-            const s = d.int(6, 24);
-            return N(`한 변의 길이가 ${s}cm인 정사각형의 네 변의 길이의 합은 몇 cm인가?`, s * 4, { unit: 'cm', explain: '정사각형은 네 변의 길이가 모두 같다. ' + expr(s, '+', s, '+', s, '+', s, '=', s * 4), facts: { squareSum: s } });
-          }),
-          T('quad-names', '도형의 이름이 될 수 있는 것', '65', (d) => {
-            const points = d.pick(SQUARES.slice(0, 1).concat([SQUARES[3]]));
-            const list = d.shuffle([['사각형', '직사각형', '정사각형'], ['정사각형'], ['사각형', '정사각형'], ['직사각형', '정사각형']]);
-            return C('도형의 이름이 될 수 있는 것을 모두 고른 것은?', list.map((o) => o.join(', ')), list.findIndex((o) => o.length === 3), {
-              figure: G.board(4, 4, [G.polygon(centered(points, 4, 4))], { grid: 'lines', scale: 1.3 }), explain: '변이 4개이므로 사각형이고, 네 각이 모두 직각이므로 직사각형이며, 네 변의 길이도 모두 같으므로 정사각형이다.',
-              facts: { names: { points, options: list } }
-            });
-          }),
           T('quad-name', '설명에 맞는 도형', '61', (d) => {
             const [lines, answer] = d.pick([[['변이 3개이다.', '한 각이 직각이다.'], '직각삼각형'], [['변이 4개이다.', '네 각이 모두 직각이다.', '네 변의 길이가 모두 같지는 않다.'], '직사각형'], [['변이 4개이다.', '네 각이 모두 직각이다.', '네 변의 길이가 모두 같다.'], '정사각형']]);
             const list = d.shuffle(['삼각형', '직각삼각형', '직사각형', '정사각형']);
@@ -321,14 +309,7 @@
             const list = d.shuffle(good.concat([bad]));
             return C('직사각형에 대한 설명으로 옳지 않은 것은?', list, list.indexOf(bad), { explain: '직사각형은 네 각이 모두 직각인 사각형이다. 네 변의 길이가 모두 같은 직사각형은 정사각형이다.', facts: { truth: list.map((o) => o !== bad), want: false } });
           }),
-          T('quad-count', '도형의 요소 수로 셈하기', '67', (d) => {
-            const first = ['직각삼각형', d.pick(['직각', '변', '꼭짓점'])], second = [d.pick(['직사각형', '정사각형']), d.pick(['직각', '변', '꼭짓점'])];
-            const value = ([shape, prop]) => (shape === '직각삼각형' ? (prop === '직각' ? 1 : 3) : 4);
-            return N('㉠과 ㉡의 합은?', value(first) + value(second), {
-              figure: tagged([first, second].map(([shape, prop]) => `${shape}의 ${prop}의 수`)),
-              explain: `㉠은 ${value(first)}, ㉡은 ${value(second)}이다. ` + expr(value(first), '+', value(second), '=', value(first) + value(second)), facts: { propSum: [first, second] }
-            });
-          })
+
         ]
       }
     ]
