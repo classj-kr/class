@@ -3,27 +3,27 @@
   "questions": [
     {
       "id": "pasteur#q1",
-      "sha256": "79edda9cb54fc514cd843ac063341af841426c4680488ca0b5ce6a462628b1cf",
+      "sha256": "9dbcb4b879033d49aa4dc6b68d621ee5db314f1698c0b3acd230f6b0f21d8d0f",
       "slug": "pasteur"
     },
     {
       "id": "pasteur#q2",
-      "sha256": "34e0a7f67bccf37887d931e20b7d46d08ff23213e475e06727d68a8ab5fbaa11",
+      "sha256": "2258e7a90a4dd6f34c699365863fe93ea38d314b2f49d0931deb457bd2cd4db0",
       "slug": "pasteur"
     },
     {
       "id": "pasteur#q3",
-      "sha256": "000e076a5d45cbf5efd11405be22d08d4ba25c8ffaf0a47d5b3f7bea11d5cf10",
+      "sha256": "00502e47a4407caf87e4dfccc6d940362dd2524cf6d4b1b08b69f82d6a54ec6e",
       "slug": "pasteur"
     },
     {
       "id": "pasteur#q4",
-      "sha256": "2fd10f5ddba2a216f000c577e9760b55cec8d44e7404bb78165c73b1b50d89e8",
+      "sha256": "415589d5d2cb797d6b1800090331ff590d6fabfd1dedb555f99ee922237c1e3f",
       "slug": "pasteur"
     },
     {
       "id": "newton-prism#q1",
-      "sha256": "e59fe84f891c94ef492b3d5e7aadb02c04cff41ef7a39ddc737320c169d33240",
+      "sha256": "9b362c644feaaf0349db2a7202e521f5e486a6cb1ecf6957ade6a2b96adc683b",
       "slug": "newton-prism"
     },
     {
@@ -33,47 +33,47 @@
     },
     {
       "id": "newton-prism#q3",
-      "sha256": "1de3391ce67cb393ab5207e956b86608b45aba23d570cc8c0d95aea321770f37",
+      "sha256": "d04863160b5a3a5b46e2ff472d11345b44549868f20b4afce3bf01942d8667a2",
       "slug": "newton-prism"
     },
     {
       "id": "newton-prism#q4",
-      "sha256": "b41b7d4937001fcd69b9e2cb8acb4563f22e679ad50076cb565626f8a9c222d5",
+      "sha256": "4413f7a1035cbf01a8ca81e35e3296dd2fb39df166030f17d412cfbfccdf2554",
       "slug": "newton-prism"
     },
     {
       "id": "infection-prevention#q1",
-      "sha256": "e4a8e973ed87d57db19bbfe6bc1ed93bb8205f0ded143f812230c05618b21256",
+      "sha256": "95d2f08cf10b076f0bbe9958babdb559b611f7083b780bf3d2d0fdbe5a75cc33",
       "slug": "infection-prevention"
     },
     {
       "id": "infection-prevention#q2",
-      "sha256": "82e5f9a464b21a0852fd444b39d772af77bb4d734ef65816bb20ec7d658b9979",
+      "sha256": "6f7dabd24ebd95b215182b50c08b698ede8e89d49410dabb37b32c9d51392dee",
       "slug": "infection-prevention"
     },
     {
       "id": "infection-prevention#q3",
-      "sha256": "5a89a37f4813df8ef118149f6efd6089fb28f28e3afaa2071f4c05f4fbc05cf7",
+      "sha256": "758683544ecd9b5e1e187936aa7f7ec64baf43b5b70b90d38ab6a6687c5eb665",
       "slug": "infection-prevention"
     },
     {
       "id": "infection-prevention#q4",
-      "sha256": "375d0127ecbf00e3f9b61be34b47b4246216b60a912b385c6c53517dce95e1bb",
+      "sha256": "fd7be955da4b2d510859b1b21f06c453875256aefdb9d9d80535ff22756a401b",
       "slug": "infection-prevention"
     },
     {
       "id": "mendeleev#q1",
-      "sha256": "9d67789b29882fc00ee89adb86e6045e7944cdfea9b33b3877cd485c931d49f6",
+      "sha256": "00468eb3e2fcef0889fd61d3b62bea56e631535174187c1808449ff57cd28a83",
       "slug": "mendeleev"
     },
     {
       "id": "mendeleev#q2",
-      "sha256": "12efb541480c22d6bba5d7c6fb0f021b124c072398134b94d0d9c54fe01d85e0",
+      "sha256": "7041fea30dc5b6bbc5113fb797912bd8f81f5a3e56dd67cf0a67b693c3eac370",
       "slug": "mendeleev"
     },
     {
       "id": "mendeleev#q3",
-      "sha256": "c97b6c110a5e5fc027d9634b428933abff87af19ebf9f5663b6180140cbbe810",
+      "sha256": "6f611458e187f8101d8a3bd915a4eb83e1a9a64f6f4d0e23a0df57804b1045fa",
       "slug": "mendeleev"
     },
     {
@@ -83,92 +83,92 @@
     },
     {
       "id": "speaker-lab#q1",
-      "sha256": "0745137f0737eb9203afb276021fa49c3f6f28f7d91607b6644370d985be757d",
+      "sha256": "d62de8fc183636406563ca243286b2126e26cab2451ef3c5a028fb43473f6eaf",
       "slug": "speaker-lab"
     },
     {
       "id": "speaker-lab#q2",
-      "sha256": "d994817e5cf74769a6dc8c9e907e729fc3bce8b2b2559995e7b110a9f9319dce",
+      "sha256": "076439cc6fa468a252eab99235193e9b2e239028a753b6e02fd06261b51bb6cb",
       "slug": "speaker-lab"
     },
     {
       "id": "speaker-lab#q3",
-      "sha256": "77f3c073525e3ab47f984e24c69948b7723fbaf7ca577587fa25614013b0f6f7",
+      "sha256": "755f9ca0fc0dfcee7fe1c38c54d8bb65c80a3530ec130f3b21d2608260e2d3e0",
       "slug": "speaker-lab"
     },
     {
       "id": "speaker-lab#q4",
-      "sha256": "ce1834def829a0ff687207e2603de2da42e46cb31a2c72fbd0d13932ad9ae1ac",
+      "sha256": "5d2479a6c5799560cfdf39ae068654d29029b7148c9c7ce9486b8b4fcd2ed023",
       "slug": "speaker-lab"
     },
     {
       "id": "wireless-power#q1",
-      "sha256": "6d9465ec4c2ef64f21cb4ab7e088dd375da7eac176ff7c57975f44709d76393e",
+      "sha256": "349c15640d0a59ba923ad93b193595c6e8ae0f2dc6fe6907c821ca7ac917ce79",
       "slug": "wireless-power"
     },
     {
       "id": "wireless-power#q2",
-      "sha256": "f4bad2ba65bb28898a3d3df7d04a17fad2c2339ac46e380bf40ae1ca1d53a48a",
+      "sha256": "762d2042d6b336dd5c7f4d2312aaad4deb604af5fd39a082bc091c1a8eac8a14",
       "slug": "wireless-power"
     },
     {
       "id": "wireless-power#q3",
-      "sha256": "b374e6410d807901e97b81c0597d6ad036c11bed8ec874c3f83b775e64d18f7d",
+      "sha256": "9833ed60b569bb271bba0e2ecb7cf78654a19b78cbcc010c26b7bc56c9fc7541",
       "slug": "wireless-power"
     },
     {
       "id": "wireless-power#q4",
-      "sha256": "c548973f92b352d749c0ce8cb0b0190cfbe9efc3d762d9dc2b1c2853bb685665",
+      "sha256": "9f6adf81696cea96b3fe4e0747a214f3ee86c5f26e0abcc96e322b1905d6b167",
       "slug": "wireless-power"
     },
     {
       "id": "magnetic-brake#q1",
-      "sha256": "eee161f6e409f04ab0c329c87a203bf44877367017375268c46c993bfa29c58b",
+      "sha256": "b1cf0a86b93747aed6150106b410000fb0e2b597921435ae37838dbb36a8a713",
       "slug": "magnetic-brake"
     },
     {
       "id": "magnetic-brake#q2",
-      "sha256": "4ce884b6b53821f7b0ddef97b60acfb8079269fce91eab5eecbff6d05bd8984b",
+      "sha256": "5e282d68c0e0d0dc70d36736092f83e54411cd50fd8d5c9cdb049d777334d0d0",
       "slug": "magnetic-brake"
     },
     {
       "id": "magnetic-brake#q3",
-      "sha256": "6ac05805c001bc7bed214a45aab5c5f4c42d55eb279b30915b9190f2d2e037f2",
+      "sha256": "e5bb6aa724d3395bdbf63a911c7e6a1ac021ab63af0a6ddd27bfd4ef5bf5111a",
       "slug": "magnetic-brake"
     },
     {
       "id": "magnetic-brake#q4",
-      "sha256": "50f02953b40a07f041f79b54ffb0caea7f43252bafd1193b615d06e173fd5169",
+      "sha256": "24ec5ed0489e0d0b355a69f2ffbf5cff0c51dbdffd4c1c0bc53bcd244ce8b845",
       "slug": "magnetic-brake"
     },
     {
       "id": "transistor-speaker#q1",
-      "sha256": "78fe875dbe21b8cb99b3abdcb7531879177cccdfefad69408eeb3a7d18a095e2",
+      "sha256": "431a01195782db81b47db7428c7df0abc7998c28132b12b2c72ebdeeb00cc1e9",
       "slug": "transistor-speaker"
     },
     {
       "id": "transistor-speaker#q2",
-      "sha256": "11a4a958c2ac70f625c23560cf2d40c2ca1438f1dd90fedd80e1375f4625878b",
+      "sha256": "3ab287569c986a2bd9f9df51ac98819454d9338f412dd6f64822f40f10af1dbe",
       "slug": "transistor-speaker"
     },
     {
       "id": "transistor-speaker#q3",
-      "sha256": "a3e8ecd4c5dff1f41afc80a49c3037c56a4a0ad9aa524f743c040cf91e0c5167",
+      "sha256": "43c520105b16ce40cf86d4ec6e973ca97274232755159319e6a1da44bfcc8d61",
       "slug": "transistor-speaker"
     },
     {
       "id": "transistor-speaker#q4",
-      "sha256": "cbad997e5e63eb1f4fffa32d7e698edf2cedff89dd83b919ba65c09e2745c37f",
+      "sha256": "7ebb312b3a816f5f7eada4347d293dd36257c1022372494dda1e487d0b58f36a",
       "slug": "transistor-speaker"
     },
     {
       "id": "soap-film#q1",
-      "sha256": "6d308d04bb163e547609a23af1a04699018d076b2eab78ec36de9d121ead1343",
+      "sha256": "eebb60e27c69fe1c4195b402ff078619baa5b5224c70975efbb7c470d102c0ba",
       "slug": "soap-film"
     },
     {
       "id": "soap-film#q2",
-      "sha256": "4436fbe1f445e8df2da0ebf4a60e87239a455f0c4dbed778b41fbfef74de888f",
+      "sha256": "70832deee5489f2f115887fa6f85300e338b6673bd7862e4c75e75c302d9007b",
       "slug": "soap-film"
     },
     {
@@ -178,57 +178,57 @@
     },
     {
       "id": "soap-film#q4",
-      "sha256": "902ccab54bac93d77fd7f7a6cb27e3132d89b9dcbb6bdc53206f2f72c334878c",
+      "sha256": "249987ef03d8b457d02f056a9f9a9af2f6bcebf59a659a229794f8a32ef779ad",
       "slug": "soap-film"
     },
     {
       "id": "polarization#q1",
-      "sha256": "0afd22d831c401f76fc5b44292f5af14964a4dc539d2d289af72dcc4086610d2",
+      "sha256": "0140b63f732515ed7b2159b3f4373bb38e8a0f62cf419546669cee826b01be78",
       "slug": "polarization"
     },
     {
       "id": "polarization#q2",
-      "sha256": "94f905c453dd1c4942d3cf4c06cea74765b324b2ca37101f997b366fefa6dafd",
+      "sha256": "42240f66995a8a065fc1b2685153cc1b773809c6210cf37a7262e358d555ef46",
       "slug": "polarization"
     },
     {
       "id": "polarization#q3",
-      "sha256": "8fd05df1a4ac12ee5d2a2b845a0ba872303a466091e981ce1163ae2f35f23edc",
+      "sha256": "46c1ed5f61ce7f90e2d5bbfc99f921f6cfd88268164142f69d8aa4ef1cc598bd",
       "slug": "polarization"
     },
     {
       "id": "polarization#q4",
-      "sha256": "608cb53cbdf5932a6014bcc1d180012d10d0e7e0be3e14ee48bc2a7c4d30db69",
+      "sha256": "a0f54005664a6cb1b8d3cfcf9eb94b1819c20a158a29b352b10c60dfb48f4e1e",
       "slug": "polarization"
     },
     {
       "id": "electron-slits#q1",
-      "sha256": "a9d5ecae6c36579101f8588fedff14038f939272f1b8c4629ba820e35a9e9dfb",
+      "sha256": "83fb90294b7e0415d31ab4b64d411f9a0e6dc9d5a54bb1a4dc1d7430934c741b",
       "slug": "electron-slits"
     },
     {
       "id": "electron-slits#q2",
-      "sha256": "604f4c59c0887d932d900974254f80f13182ab05123c214c69ff28d2af097ad2",
+      "sha256": "5037dca15ed6d75e6963fb9069afa4361e67328525da48dbc3fe8593a10c0cca",
       "slug": "electron-slits"
     },
     {
       "id": "electron-slits#q3",
-      "sha256": "ec4d2bbcb620a98f2dd16f786a4b10db2d3c1b6c4e4d79f40ea99ed37ae88d23",
+      "sha256": "70e46b5362939de31049430aa0aca2aa718a62145fae6aaa8d5cfd9e6fe635e1",
       "slug": "electron-slits"
     },
     {
       "id": "electron-slits#q4",
-      "sha256": "580941a52ed0b59a024711513721c8c49f9bbeb298961ed2a1427e27adbf7e99",
+      "sha256": "569b3df0c4008cc95949c1f43e9338cd4b4d28e2de9ccefd8021d9c4855a167f",
       "slug": "electron-slits"
     },
     {
       "id": "gas-identification#q1",
-      "sha256": "b8af2d57c8d85612f410d4fc1d5890502225c991021e031ee8fabb0274f8e843",
+      "sha256": "6c8c90d551915790b0c17e9385e728a45656af4ed1e0a0e6abf98ed02da9513a",
       "slug": "gas-identification"
     },
     {
       "id": "gas-identification#q2",
-      "sha256": "3cbcc3a32feab7a4f1f93af02ba0fdf38b02f36db70dfef2f9d1dbd610eb6c5d",
+      "sha256": "f3bf2d58ba7d361982978d625b93e8bfabb3ba6c7cb4d624c84fe299812d383e",
       "slug": "gas-identification"
     },
     {
@@ -238,7 +238,7 @@
     },
     {
       "id": "gas-identification#q4",
-      "sha256": "bf09d09a98d748cda216ce39afca6a116a82e7cf46c00296e8e9e344b20091ea",
+      "sha256": "a889c30daedb4664cad6f12f349d8315ca04b3cf8fdcc1545a15907b920f351b",
       "slug": "gas-identification"
     },
     {
@@ -248,97 +248,97 @@
     },
     {
       "id": "sugar-phase#q2",
-      "sha256": "b2d57a390188e65f50c53419b6009a3b132222c982a29d50c1466e913b090ecb",
+      "sha256": "5b10aec4c74d603e405db09774033c6eaa98a58ab11513591459696b0c520783",
       "slug": "sugar-phase"
     },
     {
       "id": "sugar-phase#q3",
-      "sha256": "60f4d79874ed1e490a07c7f9a967f6a3ad156718dc79159ea8810dc53618398a",
+      "sha256": "55664f68ca8a367f02751dc0c2a334d009c6eceb9302543d16e8ff190f38f464",
       "slug": "sugar-phase"
     },
     {
       "id": "sugar-phase#q4",
-      "sha256": "2b8a17a7d553a6ecf9ccbb225782556d0073a00bbb69e775ff0e78ad174be61b",
+      "sha256": "318b5182fee7e092afd9438d4c5f4d673f7ada8c35b243bdb51a0b2a96f93d74",
       "slug": "sugar-phase"
     },
     {
       "id": "hess-calorimetry#q1",
-      "sha256": "dd76aa76726e8f7872447e649499acf7c27990265ddcc83450eddd9148cc5d2c",
+      "sha256": "24413c8b642cde0270e8b3de3e4d48deb1df105102552337aceaaeebd7111b10",
       "slug": "hess-calorimetry"
     },
     {
       "id": "hess-calorimetry#q2",
-      "sha256": "e43bad380695e3d4a49b7eec872ff435d7b994a921d1bcd526c084db3dccb0ab",
+      "sha256": "96377f3a5a10107a031f52571a11970e000a386eecc65f07d8829f9019ffe73a",
       "slug": "hess-calorimetry"
     },
     {
       "id": "hess-calorimetry#q3",
-      "sha256": "61e2d7e02580980c810f04edbc2ae6956ae41f4955f5430835118d8789936812",
+      "sha256": "7dbdb3f66f5dc61bc24b5da29fd4aa21ac9b56b0ce6bf367d8117b8d90a22da3",
       "slug": "hess-calorimetry"
     },
     {
       "id": "hess-calorimetry#q4",
-      "sha256": "22c9a0dd43855e1ad9751975329baad03ae307aad62603a8b1140f7f1e3e86f2",
+      "sha256": "f1faa2c6038003484444a5e1f8c335fa28da8f7f3f7d44501d291e4ec3f339ae",
       "slug": "hess-calorimetry"
     },
     {
       "id": "buffer-solution#q1",
-      "sha256": "46a54484cd8e27ace8ae54f9c7387375d71c4663412c0c0e8be646d2b72c58d6",
+      "sha256": "43ea4ebedaf8c4e7a7be289d59285bf913042ed967e3b39cd14c202c45cfb76a",
       "slug": "buffer-solution"
     },
     {
       "id": "buffer-solution#q2",
-      "sha256": "797c867740238cde9529a828300a4006491b430a993c18d627704eaa10ef09f7",
+      "sha256": "0e2c486b68c6fb59867f0241c3a80eb94d49d76a241643a4d615b1bfa95e066f",
       "slug": "buffer-solution"
     },
     {
       "id": "buffer-solution#q3",
-      "sha256": "a0ca787d4c2b2ef49ba64232da9f6346e24e19aa54840c66537b8ce992b23166",
+      "sha256": "4ba1acf37403e8d6e7d91b3898e217acd75f308fb1f065040090b6eeab3b1014",
       "slug": "buffer-solution"
     },
     {
       "id": "buffer-solution#q4",
-      "sha256": "db8af8befdb81acd7d519ccd3adfebc778266c8b7c939d017e51c826c23a364d",
+      "sha256": "e6bb85b9351455459e253830a8f7f560b0818bf5715a8d92eb280b59598cf423",
       "slug": "buffer-solution"
     },
     {
       "id": "salt-hydrolysis#q1",
-      "sha256": "cb39e5f8b3ad2d6c324c013b279a125be5ea728932eb471c4fcd6c9e36472178",
+      "sha256": "72ed385cadad016ae1c0d7dca647a1d7e9b71d0a21054fb470e6a4827e4ae135",
       "slug": "salt-hydrolysis"
     },
     {
       "id": "salt-hydrolysis#q2",
-      "sha256": "370e87b8a1ce26b6f8ec985c4939dce8685322587cb5523bcb6de6b1a6e1d646",
+      "sha256": "b9a57e37361de204a3af086ab4bc94556fe322b0778f5d2d059d11d5f2b74efb",
       "slug": "salt-hydrolysis"
     },
     {
       "id": "salt-hydrolysis#q3",
-      "sha256": "8f1444ca7478e3a7c45c64cfc20f69d5fa2fbe8e3b1407bf19998172bb4eac47",
+      "sha256": "b37441c8fd5449c083d4ac34321b6c1e4958dbaa390570fc45c073aade84aa2f",
       "slug": "salt-hydrolysis"
     },
     {
       "id": "salt-hydrolysis#q4",
-      "sha256": "d755c23e7a5bdda403766867e8e6b489a6e5839644efe04cc68e1cbda76e3717",
+      "sha256": "d399892745331b14013cf20ab69e70fd937e158c76d120c83a42952d0ce1419e",
       "slug": "salt-hydrolysis"
     },
     {
       "id": "bean-respiration#q1",
-      "sha256": "c39805850932bb16a5a2749fe5a6e664c3f46003cc56bd05044cb6e5072e6ebf",
+      "sha256": "b1b139348caec56dcbd453d2e55769d51bb00066e47733fb2bc402dd839e7594",
       "slug": "bean-respiration"
     },
     {
       "id": "bean-respiration#q2",
-      "sha256": "458e32fdae2a84cf7ddc98b1ae52925151d10b0bae359c7d692341bbcabf77b2",
+      "sha256": "661ed90b57a518b91394f4215773eef522bdde12b6296f5d58b1a67ce30ca95d",
       "slug": "bean-respiration"
     },
     {
       "id": "bean-respiration#q3",
-      "sha256": "727bf66ba2a637f23265e6705129f3015225edc20010b8efc9d46dba59a8e9d8",
+      "sha256": "9db0979239944e259bd2a0da2e3103e23661bc8a378293acc43bf3827072473b",
       "slug": "bean-respiration"
     },
     {
       "id": "bean-respiration#q4",
-      "sha256": "f50af6fbce9e865fadabf144fa21c4325b74e0f267dda9513b733dac482394d3",
+      "sha256": "861a24d6dae6dc9948f4062ffb218457787917b3ea095e2ecb910dcb87f3092b",
       "slug": "bean-respiration"
     }
   ],
@@ -349,11 +349,11 @@
     },
     {
       "id": "mendeleev@evidence-transfer",
-      "sha256": "714afc63aa446cb965aed972ee799061db523c79c85d75aa40be16a31ef9cea1"
+      "sha256": "d10e825c300b4abffbe0d1ac456c39e74961f4b9ad0c6909ef315d374aa44f83"
     },
     {
       "id": "pasteur@sealed-transfer",
-      "sha256": "36e397777457eea75b796fda7b282785d11d8ac165739656d599ec81919a39df"
+      "sha256": "dcd7dd9e1e94f1b51a3cbdcce4f907190f67e4ff7844123cce9eb1ecee633b78"
     },
     {
       "id": "pasteur@air-transfer",
@@ -361,19 +361,19 @@
     },
     {
       "id": "newton-prism@green-transfer",
-      "sha256": "6851003dce2e40e2c5cd7cc020087546209747c3e9c11e899a244f692b39d28a"
+      "sha256": "80f0e1817ac32c608b8d8d866bd24d5904c2ea6169eb0bc5c73638305668ddf5"
     },
     {
       "id": "newton-prism@screen-transfer",
-      "sha256": "0bfcea3af3dd59c0748d42c958fee556377a63faac3db877507983eae863f9fb"
+      "sha256": "52f6b693f6707f5b783975b79d63865b11eee88a3e18f998c7123663e2e35baf"
     },
     {
       "id": "newton-prism@source-transfer",
-      "sha256": "866543d06576a45af211d38ec18f52e70dc5ed471a7b0646da761182e3240ee6"
+      "sha256": "cc1d0aec516c8103d5f1424c5a42e380aeb4ddfcc3b9fd2f3bfb265e89e2f379"
     },
     {
       "id": "infection-prevention@control-transfer",
-      "sha256": "74c45a720d5fe7d4a13f4e14f2df6388e92e9d03334980763659ba10a01d6fec"
+      "sha256": "4e77ab2fcc789f79fd298ada56d3b14f60f6c1f015b0e3cdc49962c0d97b9e51"
     },
     {
       "id": "infection-prevention@route-transfer",
@@ -381,75 +381,75 @@
     },
     {
       "id": "speaker-lab@dc",
-      "sha256": "d0aa4122bccd3259d17731f4f29eea861e2eeaaf24bf4840eef7ed0422d6e7b7"
+      "sha256": "08cc736c8fef425a8b1c2fa69f035505ce4dead17af70b58324ab8145d918eb1"
     },
     {
       "id": "speaker-lab@control",
-      "sha256": "2d88184aa2f2a030371ed0bafd912da396dca98e25a89b5a1028d0fae46d20bc"
+      "sha256": "dc705c8930d33c2f3918d7266ab9d3bc976c390166b620da09d6d746d336bcef"
     },
     {
       "id": "wireless-power@transient",
-      "sha256": "725be8e5f1d6ae42b7fc820a6c72ff1506487b17de4d08862dce7f5245c1ca5b"
+      "sha256": "03d3f447fd07b7a18aff4024e64d7c12374794b9cb1c91f0d3fb916c054d3e38"
     },
     {
       "id": "wireless-power@distance",
-      "sha256": "a0d0d639c7d36514f42fdb95df6920a6fd09b5610a38bd1516178aa3064f6252"
+      "sha256": "166b86845aae75c59d7887f23aa04f12a744cb136fb0ec292e284f0a6903385d"
     },
     {
       "id": "magnetic-brake@insulator",
-      "sha256": "16d1c45956fe55b79f079ce04874821b246b069c9b9bae48cd09d96a411b5f3d"
+      "sha256": "9790fa2b9606e38266e3960e00093f78ecd07291e8d2d296f8f2c0e7e892ed43"
     },
     {
       "id": "magnetic-brake@upward",
-      "sha256": "4f92f863ceddb1a736b1fdcaec14ea8e11887385876855040db25f939226131d"
+      "sha256": "4478ddc3f5cd0c1cfd6516e28cdafc9cf33352d94947b97eddfc0ea172832e14"
     },
     {
       "id": "transistor-speaker@repair",
-      "sha256": "db7b0b4fe9478fca5c9579ff999ce7aa7f37c84fada2ba645eddff876bec2a67"
+      "sha256": "835d02f738716d391025595546ff9d494ce448de36f72dd05df3baf967849b0b"
     },
     {
       "id": "transistor-speaker@frequency",
-      "sha256": "9e39104d610032e5d8d0f8a868d92953eddd47ff27ed22daaa4feb7e03e42b8c"
+      "sha256": "5bbaa36d0932f13bc7a693cb12734572957624c3d6aa11739b04d8452a338df4"
     },
     {
       "id": "soap-film@wavelength",
-      "sha256": "b123c5983e23351abf4b955d72c0f674f21caa2fea715786a79dcfa42803d0e9"
+      "sha256": "1993d018e67ea8f9735e81d9e5d3975456fc79844d5d2b6bc2ba1a703d775fe7"
     },
     {
       "id": "soap-film@height",
-      "sha256": "e48c4f8dcd6495c0720eeb90742fbd9cd70833797f08b8c911940c27e9d98031"
+      "sha256": "139b27390f0f04895f530c5de832ef29c1f31d507489088ea5b67d55131521fd"
     },
     {
       "id": "polarization@axis",
-      "sha256": "3067a6178fa364d0aa306737867596efe32b41c9c8c7ecd3d8f52b6ffa9acf53"
+      "sha256": "eab44b1890c976a6b43d0dcfef0f2a333a72532baeb7e15edb5a36fc1017b5e1"
     },
     {
       "id": "polarization@unknown",
-      "sha256": "b4aa812d11f6b053c069b7fceb0cc7e7b91797675b1a8238fab4493b6b14de22"
+      "sha256": "3085965335d3428ab24a4e116be4e7dd490b292246ce0be1d66134910c620c7f"
     },
     {
       "id": "electron-slits@spacing",
-      "sha256": "bf2d9c72551b0ed391cca72b9c3c5100c7f2e965f84112055847c490d4751aeb"
+      "sha256": "9a5acc4430f35996bbd0d5b1c60d4b29e62e61798d0fd9b82bd7aaff7adeaf02"
     },
     {
       "id": "electron-slits@path",
-      "sha256": "cbab6ccfcf3e215e5d6575a143418ee50203885dce72fea6d987cec4a221410b"
+      "sha256": "cbd14b06dadccb984c5428fb877795d3840e32913256dd7c746025568c72e29a"
     },
     {
       "id": "gas-identification@pressure-error",
-      "sha256": "d58d9feb791f23630c33abb05d01d3d090f8c2c4f414c9320575cd011ccad519"
+      "sha256": "4971027148a02776b05758676000f8e147f9961aa791dc65b9558904a9ab4ce9"
     },
     {
       "id": "gas-identification@head",
-      "sha256": "16b8ed9daf0053ab33b198e41c5d145853a2d7583cdf49573df2c8521ea19b42"
+      "sha256": "7441c5ed751d3fbd2434ce26191ecdff37ff10c24add1f46393274d5a2b58cba"
     },
     {
       "id": "sugar-phase@dilute",
-      "sha256": "d32698a32cff094877e4b78bb5c41e5939a84cd7864e5c8583f9f22bafdd887d"
+      "sha256": "6df1f1ee9b69bb98a93a5205c3c2679c6a2cd062ebd4002be1703dbfc4a12717"
     },
     {
       "id": "sugar-phase@mass",
-      "sha256": "19d1b663e1df3143839be1fcb1afed6967480328d33c8a511d327c6de6b6d0ea"
+      "sha256": "d020d97920820d0979d5ba0300fd96447bc50bea28ff5bfd6fe04616057f0954"
     },
     {
       "id": "hess-calorimetry@subtract",
@@ -457,31 +457,31 @@
     },
     {
       "id": "hess-calorimetry@heat-loss",
-      "sha256": "dff19f844783da8404f06f322d6719018ce47f91d55388e3c4b730910894f3b3"
+      "sha256": "c0236b0a25357fbf3d4e7626dbf64283d9d9a545d2dd3613ca77ddc4f0432755"
     },
     {
       "id": "buffer-solution@equal",
-      "sha256": "9f59ae4022f0aaf4b1dd2befe5f888ca8e5c42b8dfacc87b6c316488669f0407"
+      "sha256": "a077117adb6eadb890910571136337499389f531fa55d847a793f3f2601325fb"
     },
     {
       "id": "buffer-solution@not-seven",
-      "sha256": "9d4611ca0e6b8afb74344699a66cdb6416a913a7860a2dee70884b662b5a80c3"
+      "sha256": "53090c91a939f71dc2d89bd712517a3724f71be235150230aad989d3ea4fb713"
     },
     {
       "id": "salt-hydrolysis@dilution",
-      "sha256": "d9a0e46d09cb9414de36da60b1852985594716ca13cc6d2247ba1e648177a328"
+      "sha256": "0e82319954c54cc9322cbc0bb10567d2a1074dd8abfd7651c857104e30636382"
     },
     {
       "id": "salt-hydrolysis@new-salt",
-      "sha256": "8440e35bd4446d2c14d5063fcf513a9d469917ca121846112fb83bb514954e3c"
+      "sha256": "1374880b710d7b04dc7a0e15f4ac1e44f1e1add9072d6739a1ab427e9b3805c1"
     },
     {
       "id": "bean-respiration@no-koh",
-      "sha256": "90d1846ee3bbc901f4bbce03ba790cfd6e6e987a650c0c645411d26a789b707f"
+      "sha256": "4e446ab7317cd4b765a439ab1bd2d28c9a0ad48555b63e66d53a23057bf20ff9"
     },
     {
       "id": "bean-respiration@amount",
-      "sha256": "a94f07cd81db070b1a2f2cb660dcccdfe3367cf47ddde6ee884938e12f8a2009"
+      "sha256": "553aae1b8ba906275c68a019025e221c70fb24a141e860cade5f886ae57fdf18"
     }
   ],
   "sources": [

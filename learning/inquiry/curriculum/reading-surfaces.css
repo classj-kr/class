@@ -54,6 +54,8 @@ body .model-scene-step button { background:#e8eeea; color:#234c4d; border-color:
 /* Selecting a question makes room for that question in the existing sidebar. */
 .sim-sidebar:has(.sidebar-tab-btn[data-tab="quiz"].active) :is(.model-reading,.model-selected-detail,.sim-header-right) { display:none!important; }
 body .model-selected-detail :is(h3,p,li,span) { color:var(--reading-ink)!important; }
+body .model-selected-detail { background:var(--reading-paper)!important; border-color:var(--reading-line)!important; }
+body .model-selected-detail .meter-stat-item { background:#e8eee7!important; border-color:var(--reading-line)!important; }
 body .model-selected-detail p { font-size:var(--reading-size)!important; line-height:1.85!important; }
 body .topic-explanation :is(.topic-explanation-header,.school-concepts + .school-concepts) { border-color:var(--reading-line); }
 body .topic-explanation :is(.topic-explanation-header h2,.school-concepts h2) { color:var(--reading-accent); }

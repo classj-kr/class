@@ -2,7 +2,7 @@
 
 **전체 교과서 탐구 구현 완료로 판정하지 않는다. 104개 앱이나 교육과정의 261개 항목으로 출판사별 교과서 탐구를 모두 포함했다고 주장할 수 없다.**
 
-원문 절차를 직접 확인한 실험 단위 8개는 별도 수동 목록에 기록했다. 제목 추출이 놓친 파스퇴르·접촉 놀이도 추가했고, 상위 표제·수행 기능 라벨은 독립 실험 수에 더하지 않는다. 출판사별 중복 검토 전이므로 전체 총수는 미확정이다.
+원문 절차를 직접 확인한 실험 단위 24개는 별도 수동 목록에 기록했다. 제목 추출이 놓친 파스퇴르·접촉 놀이도 추가했고, 상위 표제·수행 기능 라벨은 독립 실험 수에 더하지 않는다. 출판사별 중복 검토 전이므로 전체 총수는 미확정이다.
 
 - 원소 카드 19장 배열과 빈칸 원소 예측: 764c91a83f8bf462 PDF 27, 28, 75, 77쪽 → mendeleev. 가상 실험이며 실물 수행 완료 판정 아님.
 - 백조목 플라스크의 배양액 비교: 43ac53e9e01adbcc PDF 8쪽 → pasteur. 실물 우유 재연은 별도 미구현. 가상 실험이며 실물 수행 완료 판정 아님.
@@ -12,6 +12,22 @@
 - 분무기와 새 도화지의 거리 비교: 98fd4b1d24cbec64 PDF 11, 12쪽 → infection-prevention / spray. 가상 실험이며 실물 수행 완료 판정 아님.
 - 접촉 붙임딱지의 네 차례 전파: 98fd4b1d24cbec64 PDF 12쪽 → infection-prevention / contact. 가상 실험이며 실물 수행 완료 판정 아님.
 - 형광 로션·물/비누 30초 손 씻기 비교: 98fd4b1d24cbec64 PDF 17, 18쪽 → infection-prevention / wash. 가상 실험이며 실물 수행 완료 판정 아님.
+- 종이컵 스피커 만들기: 6969a20462cfe732 PDF 5, 6쪽 → speaker-lab / speaker-lab. 가상 실험이며 실물 수행 완료 판정 아님.
+- 두 코일의 무선 전력 전달: 22578837da73a2b3 PDF 5, 6쪽 → wireless-power / wireless-power. 가상 실험이며 실물 수행 완료 판정 아님.
+- 구리판 사이의 자기 브레이크: 000c068a0397ecb8 PDF 32쪽 → magnetic-brake / magnetic-brake. 가상 실험이며 실물 수행 완료 판정 아님.
+- 트랜지스터로 소리 증폭하기: 000c068a0397ecb8 PDF 39쪽 → transistor-speaker / transistor-speaker. 가상 실험이며 실물 수행 완료 판정 아님.
+- 세워 둔 비누막의 간섭: 428056f4452acd59 PDF 6, 7쪽 → soap-film / soap-film. 가상 실험이며 실물 수행 완료 판정 아님.
+- 편광판으로 광원 조사하기: 428056f4452acd59 PDF 21, 22쪽 → polarization / polarization. 가상 실험이며 실물 수행 완료 판정 아님.
+- 한 전자씩 보내는 이중 슬릿: 110fa0ab76336b3c PDF 5, 6쪽 → electron-slits / electron-slits. 가상 실험이며 실물 수행 완료 판정 아님.
+- 기체의 질량과 부피로 종류 찾기: f0a490bc4a299711 PDF 5, 6쪽 → gas-identification / gas-identification. 가상 실험이며 실물 수행 완료 판정 아님.
+- 물과 0.2·0.4·0.6 m 설탕물의 끓는점 비교: dd8c8169d8e6fbec PDF 5, 6쪽 → sugar-phase / heat. 가상 실험이며 실물 수행 완료 판정 아님.
+- 물과 설탕물의 어는점 비교: dd8c8169d8e6fbec PDF 5, 6쪽 → sugar-phase / cool. 가상 실험이며 실물 수행 완료 판정 아님.
+- 두 경로로 확인하는 헤스 법칙: 31afcde4eb7f7e27 PDF 3, 4쪽 → hess-calorimetry / hess-calorimetry. 가상 실험이며 실물 수행 완료 판정 아님.
+- 물과 완충 용액의 pH 비교: ae885f31c6b75cd2 PDF 1, 2쪽 → buffer-solution / buffer-solution. 가상 실험이며 실물 수행 완료 판정 아님.
+- 염 수용액의 액성 확인: e0f6072944407ce9 PDF 4쪽 → salt-hydrolysis / salt-hydrolysis. 가상 실험이며 실물 수행 완료 판정 아님.
+- 같은 양의 마른 콩·발아 콩에서 500초 CO₂·온도 비교: 88b3398d0063221f PDF 3쪽 → bean-respiration / sensors. 가상 실험이며 실물 수행 완료 판정 아님.
+- 발아 콩+물, 발아 콩+KOH, 마른 콩+KOH의 잉크 비교: 88b3398d0063221f PDF 4쪽 → bean-respiration / respirometer. 가상 실험이며 실물 수행 완료 판정 아님.
+- 발아 콩·삶은 콩의 보온병 온도 비교: 88b3398d0063221f PDF 4쪽 → bean-respiration / heat. 가상 실험이며 실물 수행 완료 판정 아님.
 
 - 페이지 텍스트에서 찾은 제목 후보이며, 여러 쪽으로 갈라진 제목·이미지 제목·다른 명칭의 활동은 빠질 수 있다.
 - 동일 활동의 출판사별·교사용 판본 중복은 아직 수동 판정 전이다. 후보 수를 독립적인 필수실험 총수로 쓰지 않는다.

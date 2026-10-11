@@ -40,7 +40,7 @@ test('direct links respect 2022 astronomy topic boundaries', () => {
     'http://localhost/learning/inquiry/space/?school=elementary');
 });
 const history = {window:{}};
-for (const file of ['history-data','history-bronze','history-school','history-additions','history-atlas','history-questions','history-questions-modern']) {
+for (const file of ['history-data','history-bronze','history-school','history-additions','history-atlas','history-questions','history-questions-modern','history-reading-questions']) {
   run(history, 'korea-map/data/' + file + '.js');
 }
 const {KOREA_HISTORY, KoreaHistorySchool, HistoryQuestions} = history.window;
@@ -57,7 +57,7 @@ test('every available history map has a distinct grade-specific explanation and 
       assert.ok(!explanations.has(signature),scene.id+' grade explanation repeated');
       explanations.add(signature);
       const questions = HistoryQuestions.forLevel(scene.id,level);
-      assert.ok(questions.length,scene.id+':'+level+' missing questions');
+      assert.ok(questions.length>=2,scene.id+':'+level+' needs multiple questions');
       for(const q of questions) {
         assert.ok(!ids.has(q.id),q.id);ids.add(q.id);counts[level]++;
         assert.equal(new Set(q.options).size,4,q.id);
@@ -66,7 +66,7 @@ test('every available history map has a distinct grade-specific explanation and 
       }
     }
   }
-  assert.deepEqual(counts,{elementary:33,middle:37,high:37});
+  assert.deepEqual(counts,{elementary:66,middle:74,high:74});
 });
 test('new atlas markers fit their geographic bounds; division line is latitude 38', () => {
   for(const id of ['prehistoric-sites','hanyang-capital','byeongja-war','liberation-division','democracy-movements']) {

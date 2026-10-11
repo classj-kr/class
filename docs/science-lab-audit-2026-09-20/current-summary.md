@@ -35,3 +35,7 @@
 ## 내용 정정에 추가 확인한 자료
 
 면역 기억·백신은 [CDC 백신 원리](https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-1-principles-of-vaccination.html), 전자 영역은 [Purdue VSEPR 설명](https://www.chem.purdue.edu/gchelp/vsepr/rules.html), 발효의 NAD⁺ 재생은 [TU Delft 생화학 교재](https://interactivetextbooks.tudelft.nl/biochemistry/content/Chapter_7_Metabolism.html)를 참고했다. 우주론적 적색편이와 특수상대론 속도의 혼동은 [UCLA 도플러 설명](https://www.astro.ucla.edu/~wright/doppler.htm) 및 [NASA 적색편이 설명](https://science.nasa.gov/asset/webb/what-is-cosmological-redshift/)과 대조했다. 교육과정 연결의 근거는 로컬 교육부 원문이다.
+
+## 최신 문항 재작성
+
+기본·문제은행 725개를 다시 읽고 기본 332개·문제은행 31개·추가 확인 33개를 고쳤다. 같은 관찰 조건에서 가능한 결과를 비교하도록 오답을 바꾸고 첫 응답 및 오답 해석을 연결했다. [원문 대조·변경 목록·실행 검사](../science-lab-audit-2026-10-11/question-quality-review.md)를 확인한다.

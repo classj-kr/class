@@ -361,14 +361,15 @@
       const picture = document.createElement("span");
       const label = document.createElement("span");
       const english = document.createElement("b");
-      const korean = document.createElement("small");
+      const korean = document.createElement("span");
       button.type = "button";
       button.className = "sound-choice";
       button.dataset.word = word;
       const tried=soundGameState.tried?.[soundGameState.index]||[];
       button.disabled=soundGameState.locked || tried.includes(word);
       if(tried.includes(word))button.classList.add(word===round.answer?'correct':'wrong');
-      button.setAttribute("aria-label", `${word}, 그림: ${item.pictureMeaning || item.korean}${item.meanings?.length > 1 ? `, 다른 뜻: ${item.meanings.slice(1).join(", ")}` : ""}`);
+      const meaning = item.pictureMeaning || item.korean;
+      button.setAttribute("aria-label", `${word}, ${meaning}`);
       picture.className = "sound-choice-picture";
       const artwork = item.picture || {
         file: "assets/images/sound-catcher-s-a.webp", index: item.sprite, columns: 4, rows: 4
@@ -376,14 +377,9 @@
       applyCleanSprite(picture, artwork);
       label.className = "sound-choice-label";
       english.textContent = word;
-      korean.textContent = item.meanings?.length > 1 ? `그림: ${item.pictureMeaning}` : item.korean;
+      korean.className = "sound-choice-meaning";
+      korean.textContent = meaning;
       label.append(english, korean);
-      if (item.meanings?.length > 1) {
-        const otherMeanings = document.createElement("small");
-        otherMeanings.className = "other-meanings";
-        otherMeanings.textContent = `다른 뜻: ${item.meanings.slice(1).join(" · ")}`;
-        label.append(otherMeanings);
-      }
       if (item.pictureNote) {
         const note = document.createElement("small");
         note.className = "picture-note";
@@ -484,7 +480,6 @@
     $("childLessonTitle").textContent = current.title;
     $("lessonInstruction").textContent = current.instruction;
     $("activityName").textContent = current.activityLabel;
-    $("soundInstruction").textContent = current.instruction;
     $("soundReplay").innerHTML = `<span>🔊</span>${current.activityType === "blend" ? "이어진 단어 듣기" : "단어 듣기"}`;
     const chips = $("lessonFocusChips");
     chips.replaceChildren();

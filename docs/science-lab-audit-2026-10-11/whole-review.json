@@ -1,6 +1,6 @@
 {
   "scope": "2022 only; execution, visual inspection and bounded source review kept separate",
-  "apps": 108,
+  "apps": 121,
   "requiredExperimentTotal": null,
   "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
   "modes": 182,
@@ -24,8 +24,8 @@
   },
   "activityCoverage": {
     "activities": 261,
-    "linked": 180,
-    "unlinked": 81
+    "linked": 193,
+    "unlinked": 68
   },
   "textbookCandidates": {
     "scope": "2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님",
@@ -38,7 +38,7 @@
     "completedActivityVerdicts": 0,
     "receiptClassifiedSources": 2287,
     "manuallyReviewedCandidates": 7,
-    "sourceReviewedExperimentUnits": 8,
+    "sourceReviewedExperimentUnits": 24,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -1063,8 +1063,8 @@
   "gaps": [],
   "evidenceSummary": {
     "date": "2026-10-11",
-    "apps": 108,
-    "originalQuestions": 432,
+    "apps": 121,
+    "originalQuestions": 484,
     "examQuestions": 241,
     "sourcePaths": 4008,
     "duplicatePaths": 426,
@@ -1076,9 +1076,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 89,
-    "reviewRecords": 120,
-    "appsWithSelectedSourceReview": 108,
+    "reviewedSources": 98,
+    "reviewRecords": 133,
+    "appsWithSelectedSourceReview": 121,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -10342,6 +10342,199 @@
       ],
       "fix": null,
       "open": []
+    },
+    "speaker-lab": {
+      "slug": "speaker-lab",
+      "title": "종이컵 스피커 만들기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "6969a20462cfe732"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "wireless-power": {
+      "slug": "wireless-power",
+      "title": "두 코일의 무선 전력 전달",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "22578837da73a2b3"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "magnetic-brake": {
+      "slug": "magnetic-brake",
+      "title": "구리판 사이의 자기 브레이크",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "000c068a0397ecb8"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "transistor-speaker": {
+      "slug": "transistor-speaker",
+      "title": "트랜지스터로 소리 증폭하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "000c068a0397ecb8"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "soap-film": {
+      "slug": "soap-film",
+      "title": "세워 둔 비누막의 간섭",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "428056f4452acd59"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "polarization": {
+      "slug": "polarization",
+      "title": "편광판으로 광원 조사하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "428056f4452acd59"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "electron-slits": {
+      "slug": "electron-slits",
+      "title": "한 전자씩 보내는 이중 슬릿",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "110fa0ab76336b3c"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "gas-identification": {
+      "slug": "gas-identification",
+      "title": "기체의 질량과 부피로 종류 찾기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "f0a490bc4a299711"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "sugar-phase": {
+      "slug": "sugar-phase",
+      "title": "설탕물의 끓는점과 어는점",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "dd8c8169d8e6fbec"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "hess-calorimetry": {
+      "slug": "hess-calorimetry",
+      "title": "두 경로로 확인하는 헤스 법칙",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "31afcde4eb7f7e27"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "buffer-solution": {
+      "slug": "buffer-solution",
+      "title": "물과 완충 용액의 pH 비교",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "ae885f31c6b75cd2"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "salt-hydrolysis": {
+      "slug": "salt-hydrolysis",
+      "title": "염 수용액의 액성 확인",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "e0f6072944407ce9"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "bean-respiration": {
+      "slug": "bean-respiration",
+      "title": "발아하는 콩의 호흡과 열",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "88b3398d0063221f"
+      ],
+      "fix": null,
+      "open": []
+    }
+  },
+  "questionQualityReview": {
+    "baseAndBank": 725,
+    "rewrittenBase": 332,
+    "rewrittenBank": 31,
+    "rewrittenTransfer": 33,
+    "transferTotal": 40,
+    "correctLongerThanEveryDistractorBy50Percent": {
+      "before": 116,
+      "after": 2
     }
   }
 }

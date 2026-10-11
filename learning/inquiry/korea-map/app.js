@@ -486,6 +486,10 @@
       node.innerHTML = `<span class="key-swatch${item.shape ? ` key-swatch--${item.shape}` : ""}" style="--swatch:${item.color}" aria-hidden="true"></span>${item.label}`;
       return node;
     }));
+    if (currentTheme === 'population') {
+      const note = element('span', 'population-source-note', '원 넓이는 인구에 비례 · 남북의 조사 시점과 집계 범위가 다름');
+      $("#mapKey").append(note);
+    }
   }
 
   // 지형이 주제가 아닌 탭에서는 바탕 색을 옅게 해 주제 표지가 잘 보이게 한다.
@@ -735,9 +739,9 @@
     });
 
     (theme.circles || []).forEach((city) => {
-      const radius = 3 + Math.sqrt(city.pop) * 0.8;
-      const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#3d4f5b", weight: 1.2, fillColor: "#5f7482", fillOpacity: 0.42, interactive }).addTo(group);
-      if (interactive) circle.bindTooltip(`${city.name} 약 ${city.pop}만 명`, { sticky: true, className: "study-tooltip" });
+      const radius = Math.sqrt(city.pop) * 0.9;
+      const circle = L.circleMarker([city.lat, city.lng], { pane: "themeZones", radius, color: "#3d4f5b", weight: 1.2, fillColor: city.region === 'north' ? '#a9773f' : '#5f7482', fillOpacity: 0.42, interactive }).addTo(group);
+      if (interactive) circle.bindTooltip(`${city.name} · ${city.population.toLocaleString('ko-KR')}명<br>${city.period} · ${city.basis}`, { sticky: true, className: "study-tooltip" });
     });
 
     // 시설·자원 표지는 확대했을 때(7단부터, 교통 탭은 6단부터) 보인다. 문제 지도에서는 정답 공개 뒤에 보인다.

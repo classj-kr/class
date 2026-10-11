@@ -98,7 +98,7 @@
             var actions=sidebarBody.querySelector('.sim-header-right');
             if(actions)actions.after(card);else sidebarBody.insertBefore(card,sidebarBody.firstChild);
             if(host.id==='organDetailCard'||host.id==='organFocusCard'){
-                sidebarBody.insertBefore(host,card.nextSibling);
+                sidebarBody.insertBefore(host,card);
                 host.classList.add('model-selected-detail');
                 host.hidden=true;
             }
@@ -134,10 +134,10 @@
                 if(host.classList.contains('model-selected-detail'))host.hidden=true;
                 setTimeout(update,0);
             }
-            if(e.target.closest('.body-diagram-label,svg [role="button"],.brain-pill-btn,.joint-tag,.skin-tag,.model-band-buttons button'))host.hidden=false;
+            if(e.target.closest('.body-diagram-label,svg [role="button"],.brain-pill-btn,.joint-tag,.skin-tag,.model-band-buttons button')){host.hidden=false;card.open=false;}
         });
         document.addEventListener('keydown',function(e){
-            if((e.key==='Enter'||e.key===' ')&&e.target.closest('.body-diagram-label,svg [role="button"],.joint-tag,.skin-tag'))host.hidden=false;
+            if((e.key==='Enter'||e.key===' ')&&e.target.closest('.body-diagram-label,svg [role="button"],.joint-tag,.skin-tag')){host.hidden=false;card.open=false;}
         },true);
         if(window.SchoolLevel)window.SchoolLevel.subscribe(function(){requestAnimationFrame(update);});
         requestAnimationFrame(update);
