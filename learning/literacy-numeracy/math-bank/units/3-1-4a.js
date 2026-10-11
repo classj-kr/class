@@ -9,6 +9,7 @@
 //    묶음마다 되풀이되는 수 모형 그림·자리별 곱 세로셈·「두 수의 곱」 빈칸은 한 번만 싣는다.
 //  - 식 쓰기·계산 방법 설명하기·문제 만들기 같은 서술형, 빙고·말판·암호 놀이는 싣지 않는다.
 //  - 곱셈은 모두 (두 자리 수)×(한 자리 수)까지다. (세 자리 수)×(한 자리 수)와 (두 자리 수)×(두 자리 수)는 3학년 2학기 것이다.
+//  - 곱하는 수 □ 구하기(25×□=175)는 싣지 않는다. 곱에서 거꾸로 찾는 것은 두 자리 수로 나누는 나눗셈(4학년)이다.
 //  - 두 단계 이상이거나 거꾸로 생각해야 하는 꼴은 실력 문항으로 보냈다(3-1-4b.js).
 // 묻는 말: 수나 값을 물을 때는 "~은?/~는?", 양을 물을 때는 "몇 ~인가?" 로 맺는다.
 (function (root) {
@@ -37,7 +38,7 @@
   const near = (d, center, spread) => d.until(() => { const list = factorings(center + d.int(-spread, spread)).filter(([x]) => x % 10 !== 0); return list.length ? d.pick(list) : null; }, Boolean);
 
   B.addUnit({
-    id: '3-1-4', grade: 3, semester: 1, no: 4, title: '곱셈', version: 1,
+    id: '3-1-4', grade: 3, semester: 1, no: 4, title: '곱셈', version: 2,
     groups: [
       {
         id: 'tens', title: '(몇십)×(몇)', standard: CALC,
@@ -235,11 +236,6 @@
               figure: chain([a, '×' + b, box(LABELS[0]), '×' + c, box(LABELS[1])]), explain: `${times(a, b)}, ${times(a * b, c)}`,
               facts: { calc: [[E(a, '*', b), 0], [`${a}*${b}*${c}`, 1]] }
             });
-          }),
-          T('mix-box', '곱하는 수 구하기', '①47 ②5 ③49', (d) => {
-            // 25×□=175
-            const [a, b] = mulPair(d, (c, x, y) => MUL.any(c, x) && (c[0] || c[1]) && y >= 3);
-            return N('□ 안에 알맞은 수는?', b, { figure: expr(a, '*', box(), '=', a * b), explain: `${a}에 수를 곱하여 ${josa(a * b, '이/가')} 되는 경우를 찾는다. ${times(a, b)}이므로 □는 ${b}이다.`, facts: { calc: [[`${a * b}/${a}`, 0]] } });
           }),
           T('mix-say', '나타내는 수가 다른 표현 찾기', '①42 ②36 ③41', (d) => {
             // 13×4 와 다른 것: 13을 4번 더한 수, 13의 4배, 10×4와 3×4의 합, 13과 5의 곱
