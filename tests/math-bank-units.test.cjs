@@ -1326,3 +1326,20 @@ test('토씨 붙이기', () => {
   assert.deepEqual([josa(300, '으로/로'), josa(201, '으로/로'), josa(203, '으로/로'), josa('물감', '과/와'), josa('가위', '과/와')], ['300으로', '201로', '203으로', '물감과', '가위와']);
   assert.deepEqual([name('서연', '은/는'), name('지우', '은/는'), name('서연', '이/가'), name('지우', '이/가'), name('서연', '과/와'), name('지우', '과/와')], ['서연이는', '지우는', '서연이가', '지우가', '서연이와', '지우와']);
 });
+
+test('도형 움직이기: 뒤집기·돌리기를 거듭한 결과와 디지털 숫자', () => {
+  const G = B.kit.geo;
+  if (!G.flip) return; // 옛 사본(도구가 생기기 전의 geometry.js)으로 돌릴 때
+  const L = [[1, 1], [2, 1], [2, 3], [4, 3], [4, 4], [1, 4]], side = (p) => G.flip(p, 5, 5, 'side'), updown = (p) => G.flip(p, 5, 5, 'updown');
+  // 같은 쪽으로 두 번 뒤집으면 처음과 같고, 한 번 뒤집으면 달라진다. 네 번 돌리면 처음과 같다.
+  assert.ok(G.samePoints(side(side(L)), L) && G.samePoints(updown(updown(L)), L) && !G.samePoints(side(L), L) && !G.samePoints(updown(L), L));
+  assert.ok(G.samePoints(G.turn(L, 5, 4), L) && !G.samePoints(G.turn(L, 5, 1), L) && !G.samePoints(G.turn(L, 5, 2), L));
+  // 시계 반대 방향 90°는 시계 방향 270°와 같고, 반 바퀴는 옆으로 한 번·위로 한 번 뒤집은 것과 같다.
+  assert.ok(G.samePoints(G.turn(L, 5, -1), G.turn(L, 5, 3)) && G.samePoints(G.turn(L, 5, 2), updown(side(L))));
+  // 시계 방향 90°: 위쪽 가운데 점이 오른쪽 가운데로 간다.
+  assert.equal(JSON.stringify(G.turn([[2.5, 0]], 5, 1)), '[[5,2.5]]');
+  // 디지털 숫자: 옆으로·위로 뒤집으면 2와 5가 바뀌고, 반 바퀴 돌리면 6과 9가 바뀐다. 숫자가 아닌 모양은 null.
+  const moved = (n, way) => G.segText(G.segNumber(n, way));
+  assert.deepEqual([moved('205', 'side'), moved('205', 'updown'), moved('619', 'half'), moved('180', 'half'), moved('52', 'side'), moved('34', 'side'), moved('7', 'updown'), moved('3', 'updown')], ['205', '502', '619', '081', '52', null, null, '3']);
+  for (let d = 0; d <= 9; d += 1) for (const way of ['side', 'updown', 'half']) assert.equal(G.segMove(G.segMove(G.SEGMENTS[d], way), way), G.SEGMENTS[d], `${d} ${way} 두 번`);
+});
