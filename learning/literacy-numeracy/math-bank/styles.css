@@ -258,3 +258,9 @@ button, input, select { font: inherit; color: inherit; }
 /* 묶음 가운데 색칠한 묶음, 대분수 */
 .mb-thing.is-on { fill: #1d4ed8; stroke: #1e3a8a; }
 .mb-mixed { white-space: nowrap; font-weight: 600; }
+
+/* 눈금 비커, 바늘 저울, 물 높이 */
+.mb-beaker, .mb-dial, .mb-levels { max-width: 100%; height: auto; }
+.mb-vessel { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+.mb-water { fill: #bfdcff; }
+.mb-needle { stroke: var(--wrong); stroke-width: 2; stroke-linecap: round; }
