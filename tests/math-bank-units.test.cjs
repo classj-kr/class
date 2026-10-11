@@ -923,6 +923,24 @@ test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 �
       assert.equal(ok.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, ok.indexOf(true), label); tally('lineName');
     }
     if (f.segments) { assert.equal(answerAt(item, 0), f.segments.closed ? f.segments.points.length : f.segments.points.length - 1, label); tally('segments'); }
+    if (f.sameRay) {
+      // 한 직선 위에 차례로 놓인 점들: 시작점이 같고 뻗는 쪽이 같은 반직선만 같은 반직선이다.
+      const { order, ray, options } = f.sameRay, at = (n) => order.indexOf(n), side = (r) => Math.sign(at(r[1]) - at(r[0]));
+      const same = options.map((r) => r[0] === ray[0] && side(r) === side(ray) && r !== ray);
+      assert.ok(options.every((r) => at(r[0]) >= 0 && at(r[1]) >= 0 && r[0] !== r[1]), label);
+      assert.equal(same.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, same.indexOf(true), label); tally('sameRay');
+    }
+    if (f.drawnAngle) {
+      // 각 ㄱㄴㄷ을 그린 그림: 꼭짓점에 가운데 글자가 적힌 그림은 하나뿐이다.
+      const { name, tops } = f.drawnAngle;
+      assert.equal(new Set(tops).size, 3, label); assert.ok(tops.every((x) => name.includes(x)), label);
+      assert.equal(item.choice.answer, tops.indexOf(name[1]), label); tally('drawnAngle');
+    }
+    if (f.shapeCounts) {
+      // 도형의 뜻에서 나오는 수: [변, 꼭짓점, 직각]
+      const want = { 직각삼각형: [3, 3, 1], 직사각형: [4, 4, 4], 정사각형: [4, 4, 4] }[f.shapeCounts];
+      assert.ok(want && item.text.includes(f.shapeCounts), label); assert.deepEqual(item.inputs.map((i) => i.answer), want, label); tally('shapeCounts');
+    }
     if (f.rayClaims) {
       // 각의 변은 꼭짓점(가운데 글자)에서 시작해 양 끝 점을 지나는 두 반직선이다.
       for (const claim of f.rayClaims) {

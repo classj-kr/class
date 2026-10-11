@@ -65,7 +65,7 @@
   const TANGRAM = [[[0, 0], [8, 0], [4, 4]], [[0, 0], [4, 4], [0, 8]], [[4, 4], [6, 2], [8, 4], [6, 6]], [[8, 0], [8, 4], [6, 2]], [[4, 4], [6, 6], [2, 6]], [[0, 8], [2, 6], [6, 6], [4, 8]], [[8, 4], [8, 8], [4, 8]]];
 
   B.addUnit({
-    id: '3-1-2', grade: 3, semester: 1, no: 2, title: '평면도형', version: 8,
+    id: '3-1-2', grade: 3, semester: 1, no: 2, title: '평면도형', version: 9,
     groups: [
       {
         id: 'line', title: '선분, 반직선, 직선', standard: LINE,
@@ -99,6 +99,17 @@
           T('line-segments', '도형을 이루는 선분의 수', '10', (d) => {
             const points = d.pick(SEGMENT_SHAPES);
             return N('도형을 이루는 선분은 모두 몇 개인가?', points.length, { unit: '개', figure: G.board(4, 4, [G.polygon(points)], { grid: false, scale: 1.3 }), explain: `꼭짓점과 꼭짓점을 이은 선분이 ${points.length}개이다.`, facts: { segments: { points, closed: true } } });
+          }),
+          T('line-same', '같은 반직선 찾기', '14', (d) => {
+            // 한 직선 위의 네 점: 시작점과 뻗는 쪽이 같으면 같은 반직선이다
+            const names = d.pick([['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ'], ['ㄴ', 'ㄷ', 'ㄹ', 'ㅁ'], ['ㄷ', 'ㄹ', 'ㅁ', 'ㅂ']]), [p, q, r, s] = names;
+            const list = d.shuffle([q + s, q + p, r + q, r + s]);
+            const parts = [G.line([0.3, 1.5], [6.7, 1.5])].concat(names.map((n, i) => G.point([1 + i * 1.65, 1.5]) + G.text([1 + i * 1.65, 2.15], n)));
+            return C(`반직선 ${q}${r}과 같은 반직선은?`, list.map((x) => '반직선 ' + x), list.indexOf(q + s), {
+              figure: G.board(7, 3, parts, { grid: false, scale: 1.05 }),
+              explain: `반직선 ${q}${r}은 점 ${q}에서 시작하여 점 ${r} 쪽으로 끝없이 늘인 곧은 선이다. 점 ${s}도 그 위에 있으므로 반직선 ${q}${s}과 같다. 시작점이 다르거나 뻗는 쪽이 다르면 다른 반직선이다.`,
+              facts: { sameRay: { order: names, ray: q + r, options: list } }
+            });
           }),
           T('line-define', '선의 뜻', '55', (d) => {
             const [text, answer] = d.pick([['두 점을 곧게 이은 선', '선분'], ['한 점에서 시작하여 한쪽으로 끝없이 늘인 곧은 선', '반직선'], ['선분을 양쪽으로 끝없이 늘인 곧은 선', '직선']]);
@@ -142,6 +153,16 @@
               figure: G.board(5, 4, [G.rays([V[0] + 0.5, V[1] + 0.5], [[P[0] + 0.5, P[1] + 0.5], [Q[0] + 0.5, Q[1] + 0.5]], [v, p, q])], { grid: false, scale: 1.3 }),
               explain: `각의 꼭짓점인 점 ${v}이 가운데에 오도록 읽는다. 각 ${p}${v}${q} 또는 각 ${q}${v}${p}이라고 읽는다.`,
               facts: { readAngle: { names: [v, p, q], options: list } }
+            });
+          }),
+          T('angle-drawn', '이름에 맞게 그린 각 고르기', '24', (d) => {
+            // 각 ㄱㄴㄷ: 꼭짓점이 ㄴ인 그림은 하나뿐이다
+            const [p, v, q] = d.pick([['ㄱ', 'ㄴ', 'ㄷ'], ['ㄴ', 'ㄷ', 'ㄹ'], ['ㄹ', 'ㅁ', 'ㅂ']]);
+            const tops = d.shuffle([v, p, q]), shapes = d.shuffle(ANGLE_OTHER).slice(0, 3), labels = ['가', '나', '다'];
+            const draw = (top, [V, P, Q]) => { const ends = [p, v, q].filter((x) => x !== top); return G.board(5, 4, [G.rays([V[0] + 0.5, V[1] + 0.5], [[P[0] + 0.5, P[1] + 0.5], [Q[0] + 0.5, Q[1] + 0.5]], [top, ends[0], ends[1]])], { grid: false, scale: 0.92 }); };
+            return C(`각 ${p}${v}${q}을 바르게 그린 것은?`, labels, tops.indexOf(v), {
+              figure: G.tiles(tops.map((top, i) => [labels[i], draw(top, shapes[i])])),
+              explain: `각 ${p}${v}${q}의 꼭짓점은 가운데에 읽는 점 ${v}이다. 두 반직선이 점 ${v}에서 시작하는 그림을 고른다.`, facts: { drawnAngle: { name: [p, v, q], tops } }
             });
           }),
           T('angle-say', '각에 대한 설명', '21', (d) => {
@@ -221,6 +242,9 @@
               facts: { sets: { labels: TAGS.slice(0, 4), flags, options: made.sets }, polys: picks, prop: 'rightTriangle' }
             });
           }),
+          T('rtri-counts', '직각삼각형의 변·꼭짓점·직각의 수', '64', () => M('직각삼각형에서 변, 꼭짓점, 직각은 각각 몇 개인가?', [{ label: '변', answer: 3, unit: '개' }, { label: '꼭짓점', answer: 3, unit: '개' }, { label: '직각', answer: 1, unit: '개' }], {
+            explain: '직각삼각형은 한 각이 직각인 삼각형이다. 변과 꼭짓점은 3개씩이고 직각은 1개이다.', facts: { shapeCounts: '직각삼각형' }
+          })),
           T('rtri-point', '직각삼각형이 되는 점', '41', (d) => {
             // 선분 ㄱㄴ과 점 넷. 이어서 직각삼각형이 되는 점은 하나뿐이다.
             const [a, b] = d.pick([[[1, 4], [4, 4]], [[1, 4], [5, 4]], [[2, 4], [5, 4]], [[1, 4], [3, 2]], [[2, 4], [5, 3]]]);
@@ -311,6 +335,9 @@
             const list = d.shuffle(['삼각형', '직각삼각형', '직사각형', '정사각형']);
             return C('다음 설명에 모두 알맞은 도형은?', list, list.indexOf(answer), { figure: conditions(lines), explain: `설명에 모두 알맞은 도형은 ${answer}이다.`, facts: { truth: list.map((o) => o === answer), want: true } });
           }),
+          T('quad-counts', '직사각형의 변·꼭짓점·직각의 수', '64', () => M('직사각형에서 변, 꼭짓점, 직각은 각각 몇 개인가?', [{ label: '변', answer: 4, unit: '개' }, { label: '꼭짓점', answer: 4, unit: '개' }, { label: '직각', answer: 4, unit: '개' }], {
+            explain: '직사각형은 네 각이 모두 직각인 사각형이다. 변, 꼭짓점, 직각이 모두 4개씩이다.', facts: { shapeCounts: '직사각형' }
+          })),
           T('quad-true', '직사각형에 대한 설명', '59', (d) => {
             const good = d.shuffle(['변이 4개이다.', '꼭짓점이 4개이다.', '네 각이 모두 직각이다.', '선분으로 둘러싸인 도형이다.']).slice(0, 3);
             const bad = d.pick(['직각이 2개뿐이다.', '네 변의 길이가 항상 모두 같다.', '변이 3개이다.']);
