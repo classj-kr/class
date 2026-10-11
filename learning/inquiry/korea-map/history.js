@@ -68,9 +68,10 @@
   }
 
   function fit(api) {
+    const scene = sceneFor(scenes[selected], territory(scenes[selected]));
     api.map.invalidateSize({ pan: false });
-    api.map.setMaxZoom(Math.max(12, scenes[selected].maxZoom || 12));
-    api.map.fitBounds(bounds(scenes[selected]), { padding: [18, 18], animate: false, maxZoom: scenes[selected].maxZoom || 10 });
+    api.map.setMaxZoom(Math.max(12, scene.maxZoom || 12));
+    api.map.fitBounds(bounds(scene), { padding: [18, 18], animate: false, maxZoom: scene.maxZoom || 10 });
   }
 
   function select(index, api) {
@@ -130,7 +131,7 @@
     const base = scenes[selected];
     const state = territory(base);
     const scene = sceneFor(base, state);
-    const grade = curriculum?.profile(base, school());
+    const grade = curriculum?.profile(scene, school());
     const eraNav = panelHost.querySelector('.history-eras');
     eraNav.replaceChildren(...[...new Set(visibleScenes.map(s => s.era))].map(era => {
       const tab = button(era, null, () => select(scenes.indexOf(available().find(s => s.era === era)), panelApi));
@@ -168,14 +169,14 @@
     (grade?.paragraphs || []).filter(Boolean).forEach(text => explanation.append(el('p', '', text)));
     const territoryNav = el("div", "history-territory-dates");
     territoryNav.setAttribute("role", "group");
-    territoryNav.setAttribute("aria-label", scene.id === "korean-war" ? "전쟁 전개 시점" : "영토 기준 시점");
+    territoryNav.setAttribute("aria-label", state.timeline || scene.id === "korean-war" ? "전쟁 전개 시점" : "영토 기준 시점");
     const variants = territories[scene.id] || [];
     if (variants.length > 1) variants.forEach((variant, index) => {
       const node = button(variant.date, null, () => {
         territorySelection[scene.id] = index;
         renderPanel();
         panelApi.refresh();
-        if (state.lesson) fit(panelApi);
+        if (state.lesson || variant.lesson) fit(panelApi);
         panelHost.querySelector('[data-territory][aria-pressed="true"]')?.focus({ preventScroll: true });
       });
       node.setAttribute("aria-pressed", String(variant === state));
@@ -231,6 +232,7 @@
       ? window.KoreaHistoryLocalMap.draw(map, group, scene.id) : [];
     const caption = document.querySelector("#historyMapCaption");
     caption.replaceChildren(el("strong", "", state.date || scene.period), el("span", "", state.stageTitle || scene.title));
+    if (state.dateNote) caption.append(el('small', '', state.dateNote));
     if (scene.localDetail) caption.append(el('small','history-north','↑ 북'));
     const legend = document.querySelector("#mapKey");
     legend.hidden = !!state.locationOnly && !scene.localDetail;
@@ -256,9 +258,17 @@
       row.style.setProperty("--history-line-style", solid ? "solid" : "dashed");
       legend.append(row);
     });
+    const routeKeys = new Set();
     scene.routes.forEach(route => {
       const coords = route.coords.map(latLng);
       const color = colors[route.color] || colors[0];
+      if (route.label && !routeKeys.has(route.label)) {
+        routeKeys.add(route.label);
+        const row = el('span', 'key-item history-line-key history-route-key', route.label);
+        row.style.setProperty('--history-line-color', color);
+        row.style.setProperty('--history-line-style', route.dash ? 'dashed' : 'solid');
+        legend.append(row);
+      }
       L.polyline(coords, { renderer:lineRenderer, pane: "themeLines", color: "#fffdf7", weight: 6, opacity: 0.9, interactive: false }).addTo(group);
       L.polyline(coords, { renderer:lineRenderer, pane: "themeLines", color, weight: 3, dashArray: route.dash ? "7 6" : null, interactive: false }).addTo(group);
       // The arrow angle follows Web Mercator, matching Leaflet's line projection.
@@ -303,6 +313,13 @@
         pins.push(placed);
       });
       const occupied = pins.map(p => ({ x: p.x - 12, y: p.y - 12, w: 24, h: 24 }));
+      const mapRect = map.getContainer().getBoundingClientRect();
+      for (const selector of ['#historyMapCaption','#mapKey','#progressButton','.leaflet-control-zoom','#mapOverview']) {
+        const control = document.querySelector(selector);
+        if (!control || control.hidden || !control.getClientRects().length) continue;
+        const rect = control.getBoundingClientRect();
+        occupied.push({x:rect.left-mapRect.left,y:rect.top-mapRect.top,w:rect.width,h:rect.height});
+      }
       countryLabels.forEach(label => {
         const p = map.latLngToContainerPoint(latLng(label.xy));
         occupied.push({ x: p.x - 50, y: p.y - 25, w: 100, h: label.name.length > 6 ? 50 : 30 });
@@ -318,11 +335,22 @@
         const displayName = scene.localDetail && size.x < 520 ? mark.label.split(' · ')[0] : mark.label;
         const labelText = `${index + 1} ${displayName}`;
         const width = Math.min(174, Math.max(65, labelText.length * 12 + 16));
-        const height = labelText.length * 12 + 16 > width ? 44 : 27;
+        const text = el("span", "history-map-label", labelText);
+        text.style.width = `${width}px`;
+        // Measure the actual wrapped text: counting all digits as full-width
+        // characters overestimated labels and pushed them underneath controls.
+        text.style.position = 'absolute';
+        text.style.visibility = 'hidden';
+        map.getContainer().append(text);
+        const height = text.getBoundingClientRect().height || 27;
+        text.remove();
+        text.style.removeProperty('position');
+        text.style.removeProperty('visibility');
         let best;
         let bestScore = Infinity;
         const sides = mark.side === "left" ? [-1, 1] : [1, -1];
-        for (const dy of [0, -35, 35, -70, 70, -105, 105, -140, 140]) {
+        const offsets = [0, ...Array.from({length:12}, (_,i) => [-(i+1)*15,(i+1)*15]).flat()];
+        for (const dy of offsets) {
           for (const side of sides) {
             const rect = { x: Math.max(6, Math.min(size.x - width - 6, p.x + (side > 0 ? 16 : -16 - width))), y: Math.max(58, Math.min(size.y - height - 20, p.y - height / 2 + dy)), w: width, h: height };
             const score = occupied.filter(other => overlaps(rect, other)).length * 10000 + Math.abs(dy) + (side !== sides[0] ? 12 : 0);
@@ -332,8 +360,6 @@
         occupied.push(best);
         const edge = L.point(Math.max(best.x, Math.min(best.x + best.w, p.x)), Math.max(best.y, Math.min(best.y + best.h, p.y)));
         L.polyline([map.containerPointToLatLng(p), map.containerPointToLatLng(edge)], { renderer:lineRenderer, pane: "themeLines", color: "#665b46", weight: 1, opacity: 0.65, interactive: false }).addTo(labels);
-        const text = el("span", "history-map-label", labelText);
-        text.style.width = `${width}px`;
         const label = L.marker(map.containerPointToLatLng([best.x, best.y]), { pane: "themeLabels", title: `${mark.label} 설명 보기`, keyboard: true, icon: L.divIcon({ className: "history-label-wrap", html: text, iconSize: [width, height], iconAnchor: [0, 0] }) });
         pointAction(label, scene, mark, state, `${mark.label} 지도 이름표 설명 보기`).addTo(labels);
       });
@@ -346,7 +372,7 @@
   geography.themes.history = {
     label: "역사", historical: true, minZoom: 3, practice: false,
     points: [], features: [], principles: [], legend: [],
-    get bounds() { return bounds(scenes[selected]); },
+    get bounds() { return bounds(sceneFor(scenes[selected], territory(scenes[selected]))); },
     get maxZoom() { return Math.max(12, scenes[selected].maxZoom || 12); },
     panel, draw
   };

@@ -159,11 +159,15 @@
       const row = lessons[scene.id];
       if (!row) return null;
       return { subject:school === 'elementary' ? '사회' : school === 'middle' ? '역사 2' : (scene.startYear >= 1910 ? '한국사 2' : '한국사 1'),
-        paragraphs:school === 'elementary' ? [row[0]] : school === 'middle' ? [row[1]] : [row[1],row[2]] };
+        paragraphs:scene.paragraphsByLevel?.[school === 'elementary' ? 0 : school === 'middle' ? 1 : 2] || (school === 'elementary' ? [row[0]] : school === 'middle' ? [row[1]] : [row[1],row[2]]) };
     },
     scene(scene, school) {
-      const indexes = school === 'elementary' && primaryMarks[scene.id];
-      return indexes ? {...scene, marks:scene.marks.filter((_,i)=>indexes.includes(i))} : scene;
+      const indexes = school === 'elementary' && (scene.elementaryMarks || primaryMarks[scene.id]);
+      return {...scene,
+        bounds:school === 'elementary' && scene.elementaryBounds || scene.bounds,
+        marks:indexes ? scene.marks.filter((_,i)=>indexes.includes(i)) : scene.marks,
+        routes:scene.routes.filter(route => !route.levels || route.levels.includes(school))
+      };
     }
   };
 })();

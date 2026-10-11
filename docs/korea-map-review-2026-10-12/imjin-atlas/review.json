@@ -1,0 +1,153 @@
+{
+  "scope": "Imjin War map only; not a complete audit of all atlases or all 37 history scenes",
+  "sources": [
+    {
+      "key": "elementary-miraen",
+      "file": "references/textbooks/초등/미래엔/사회과부도/사회과부도_5-6_전종한_2022/미래엔_사회과부도_5-6_전종한_2022.pdf",
+      "pdfPage": 62,
+      "printedPage": 62,
+      "sha256": "8c8b61d97b0d78b33484723e3ae7d0bb9309bf457f832c71e7820819ca767c9d",
+      "review": "rendered full page, visually compared routes, labels, legend and chronology"
+    },
+    {
+      "key": "elementary-donga",
+      "file": "references/textbooks/초등/동아/사회과부도/사회과 부도 (정동연)_2022/사회과 부도 교과서_전체.pdf",
+      "pdfPage": 65,
+      "printedPage": 65,
+      "sha256": "dbf9156a691750042c1ff3f4358175e117fc5e671c8b55a4df6837e1fc0d5f35",
+      "review": "rendered full page, visually compared routes, labels, legend and chronology"
+    },
+    {
+      "key": "middle-2022",
+      "file": "references/textbooks/중고등/미래엔/중학/사회/역사부도_이종대_2022/[교과서PDF]중등 역사부도.pdf",
+      "pdfPage": 84,
+      "printedPage": 84,
+      "sha256": "fc19754b09badac3bb0b13155c1600fb0f4a6a64c09646241b79dbf83d7aa5a3",
+      "review": "rendered full page, visually compared routes, labels, legend and chronology"
+    },
+    {
+      "key": "high-2022",
+      "file": "references/textbooks/중고등/미래엔/고등/사회/역사 부도 (강승호)_2022/교과서/역사 부도 (강승호)_2022_[교과서PDF]고등 역사부도.pdf",
+      "pdfPage": 21,
+      "printedPage": 21,
+      "sha256": "367b6fd0e4ff5b3ad37354760347eca8c84f38ef0eb6f53db1a282fd75199842",
+      "review": "rendered full page, visually compared routes, labels, legend and chronology"
+    }
+  ],
+  "browser": [
+    {
+      "school": "초",
+      "stage": "1592 · 침입과 저항",
+      "caption": "1592 · 침입과 저항",
+      "explanation": "일본군은 부산에 상륙한 뒤 한성과 평양까지 쳐들어왔습니다. 진주에서는 관군이, 의령 등 여러 고장에서는 의병이 맞서 싸웠습니다. 이순신이 이끈 수군은 한산도 앞바다에서 승리했습니다.",
+      "legend": "조선명일본일본군의 주요 침입 방향(1592)",
+      "points": 6
+    },
+    {
+      "school": "초",
+      "stage": "1593 · 반격과 협상",
+      "caption": "1593 · 반격과 협상",
+      "explanation": "조선군과 명군은 함께 싸워 평양성을 되찾았습니다. 권율이 이끈 군사는 행주에서 일본군을 물리쳤습니다. 일본군이 한성에서 물러난 뒤에도 전쟁은 끝나지 않았습니다.",
+      "legend": "조선명일본명군의 주요 진격 방향(1593)",
+      "points": 3
+    },
+    {
+      "school": "초",
+      "stage": "1597~1598 · 정유재란",
+      "caption": "1597~1598 · 정유재란",
+      "explanation": "1597년 일본이 다시 침략했습니다. 이순신이 이끈 수군은 명량에서 승리했습니다. 이듬해 일본군이 철수할 때 조선과 명의 수군은 노량에서 싸웠고, 이순신은 이 전투에서 전사했습니다.",
+      "legend": "조선명일본",
+      "points": 2
+    },
+    {
+      "school": "중",
+      "stage": "1592 · 침입과 저항",
+      "caption": "1592 · 침입과 저항",
+      "explanation": "일본군은 부산에서 한성과 평양으로 진격하고 함경도까지 침입했다. 관군·의병의 저항과 조선 수군의 승리는 일본군의 진격과 보급을 어렵게 했다.",
+      "legend": "조선명일본일본군의 주요 침입 방향(1592)",
+      "points": 9
+    },
+    {
+      "school": "중",
+      "stage": "1593 · 반격과 협상",
+      "caption": "1593 · 반격과 협상",
+      "explanation": "조명 연합군이 평양성을 탈환한 뒤 명군은 벽제관에서 일본군에 패했다. 권율의 행주 대첩과 한성 수복이 이어졌지만, 일본군이 남쪽으로 물러난 뒤 진주성을 함락했고 명·일 사이에는 강화 협상이 진행되었다.",
+      "legend": "조선명일본명군의 주요 진격 방향(1593)",
+      "points": 6
+    },
+    {
+      "school": "중",
+      "stage": "1597~1598 · 정유재란",
+      "caption": "1597~1598 · 정유재란",
+      "explanation": "강화 협상이 결렬되자 일본은 1597년 다시 침략했다. 조선 수군은 칠천량에서 크게 패했지만 이순신이 명량에서 승리했다. 육지에서는 명군이 직산에서 일본군의 북진을 막았다. 1598년 일본군이 철수하면서 전쟁이 끝났다.",
+      "legend": "조선명일본",
+      "points": 5
+    },
+    {
+      "school": "고",
+      "stage": "1592 · 침입과 저항",
+      "caption": "1592 · 침입과 저항",
+      "explanation": "침입로를 따라 한성·평양·함경도 방면을 비교한다. 의병은 여러 지역에서 일본군에 저항했고, 한산도 해전의 승리는 일본군의 서해 진출과 해상 보급을 어렵게 했다.",
+      "legend": "조선명일본일본군의 주요 침입 방향(1592)",
+      "points": 9
+    },
+    {
+      "school": "고",
+      "stage": "1593 · 반격과 협상",
+      "caption": "1593 · 반격과 협상",
+      "explanation": "평양성 탈환 → 벽제관 전투 → 행주 대첩 → 한성 수복의 순서를 공간 이동과 연결한다. 한성 수복 뒤에도 진주성 함락과 명·일 강화 협상이 이어졌으며, 전쟁이 끝난 것은 아니었다.",
+      "legend": "조선명일본명군의 주요 진격 방향(1593)",
+      "points": 6
+    },
+    {
+      "school": "고",
+      "stage": "1597~1598 · 정유재란",
+      "caption": "1597~1598 · 정유재란",
+      "explanation": "칠천량의 패배와 명량의 승리, 육상의 직산 전투를 함께 살펴본다. 1598년 도요토미 히데요시 사망 뒤 일본군이 철수했고, 조명 연합 수군은 노량에서 철수하던 일본군과 싸웠다.",
+      "legend": "조선명일본",
+      "points": 5
+    }
+  ],
+  "images": [
+    {
+      "file": "1592-desktop.webp",
+      "size": [
+        1440,
+        900
+      ],
+      "rgbaIdentical": true
+    },
+    {
+      "file": "1593-desktop.webp",
+      "size": [
+        1440,
+        900
+      ],
+      "rgbaIdentical": true
+    },
+    {
+      "file": "1597-desktop.webp",
+      "size": [
+        1440,
+        900
+      ],
+      "rgbaIdentical": true
+    },
+    {
+      "file": "elementary-mobile.webp",
+      "size": [
+        375,
+        812
+      ],
+      "rgbaIdentical": true
+    },
+    {
+      "file": "militia-popup.webp",
+      "size": [
+        1440,
+        900
+      ],
+      "rgbaIdentical": true
+    }
+  ]
+}
