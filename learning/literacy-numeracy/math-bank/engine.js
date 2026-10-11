@@ -231,6 +231,54 @@
     const row = (cells, mark, cls) => '<tr' + (cls ? ' class="' + cls + '"' : '') + '><th>' + (mark || '') + '</th>' + '<td></td>'.repeat(width - cells.length) + cells.map((cell) => '<td>' + cell + '</td>').join('') + '</tr>';
     return '<table class="mb-timecol"><tbody>' + row(first) + row(second, SIGN[sign]) + row(result || Array.from({ length: width }, () => ''), '', 'mb-timecol-result') + '</tbody></table>';
   }
+  // 분수. 화면에는 가로줄로 보이고, 글로 옮기면 3/4 가 되게 빗금을 숨겨 둔다.
+  const frac = (n, d) => '<span class="mb-frac"><span>' + n + '</span><span class="mb-frac-bar">/</span><span>' + d + '</span></span>';
+  // 나눈 도형. kind: 'bar'(띠) | 'circle'(원) | 'grid'(가로 cols 칸씩 여러 줄), n: 조각 수.
+  // options: shaded 색칠한 조각 수(앞에서부터), uneven 크기가 다르게 나눔, cols 격자의 가로 칸 수, size 그림 너비.
+  function pieces(kind, n, options) {
+    const o = options || {}, shaded = o.shaded || 0, cls = (i) => (i < shaded ? 'mb-piece is-on' : 'mb-piece');
+    // 크기가 다르게 나눌 때의 몫(눈에 띄게 다르다)
+    const share = Array.from({ length: n }, (_, i) => (o.uneven ? [1.9, 0.6, 1.3, 0.75, 1.6, 0.85, 1.2, 0.7][i % 8] : 1)), total = share.reduce((s, v) => s + v, 0);
+    let out = '', width = 124, height = 44;
+    if (kind === 'circle') {
+      width = 64; height = 64; let from = -90;
+      for (let i = 0; i < n; i += 1) {
+        const to = from + (share[i] / total) * 360, p = (deg) => (32 + 28 * Math.cos((deg * Math.PI) / 180)).toFixed(2) + ' ' + (32 + 28 * Math.sin((deg * Math.PI) / 180)).toFixed(2);
+        out += '<path class="' + cls(i) + '" d="M32 32L' + p(from) + 'A28 28 0 ' + (to - from > 180 ? 1 : 0) + ' 1 ' + p(to) + 'Z"/>'; from = to;
+      }
+    } else if (kind === 'grid') {
+      const cols = o.cols || n, rows = n / cols, cell = Math.min(24, 120 / cols); width = cols * cell + 4; height = rows * cell + 4;
+      for (let i = 0; i < n; i += 1) out += '<rect class="' + cls(i) + '" x="' + (2 + (i % cols) * cell) + '" y="' + (2 + Math.floor(i / cols) * cell) + '" width="' + cell + '" height="' + cell + '"/>';
+    } else {
+      let x = 2;
+      for (let i = 0; i < n; i += 1) { const w = (share[i] / total) * 120; out += '<rect class="' + cls(i) + '" x="' + x.toFixed(2) + '" y="2" width="' + w.toFixed(2) + '" height="40"/>'; x += w; }
+    }
+    const said = (kind === 'circle' ? '원' : '사각형') + '을 ' + (o.uneven ? '크기가 다르게 ' : '똑같이 ') + n + '조각으로 나누고 ' + shaded + '조각을 색칠';
+    return '<svg class="mb-pieces" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * (o.scale || 1.6)) + '" role="img" aria-label="' + said + '">' + out + '</svg>';
+  }
+  // 한 조각만 선이 그어진 도형: rows×cols 로 똑같이 나눌 수 있는 사각형에서 한 칸만 색칠해 보인다(나머지 선은 긋지 않는다).
+  function onePiece(rows, cols) {
+    const cell = 22, width = cols * cell + 4, height = rows * cell + 4;
+    return '<svg class="mb-pieces" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.7) + '" role="img" aria-label="사각형의 한 칸만 색칠: 가로로 ' + cols + '칸, 세로로 ' + rows + '칸이 들어가는 크기">'
+      + '<rect class="mb-piece" x="2" y="2" width="' + cols * cell + '" height="' + rows * cell + '"/><rect class="mb-piece is-on" x="2" y="2" width="' + cell + '" height="' + cell + '"/></svg>';
+  }
+  // 작은 정사각형을 이어 붙인 모양. cells: [가로, 세로] 자리의 목록.
+  // 모양마다 정사각형의 크기가 같아 보이게 배율은 그대로 두고, 좁은 모양은 양옆 여백만 넓힌다.
+  function squares(cells, scale) {
+    const cell = 16, cols = Math.max.apply(null, cells.map((c) => c[0])) + 1, rows = Math.max.apply(null, cells.map((c) => c[1])) + 1;
+    const width = Math.max(cols * cell + 4, 44), left = (width - cols * cell) / 2;
+    return '<svg class="mb-pieces" viewBox="0 0 ' + width + ' ' + (rows * cell + 4) + '" width="' + Math.round(width * (scale || 1.5)) + '" role="img" aria-label="작은 정사각형 ' + cells.length + '개를 이어 붙인 모양">'
+      + cells.map((c) => '<rect class="mb-piece is-on" x="' + (left + c[0] * cell) + '" y="' + (2 + c[1] * cell) + '" width="' + cell + '" height="' + cell + '"/>').join('') + '</svg>';
+  }
+  // 1 을 열 칸으로 똑같이 나눈 수직선. from: 왼쪽 끝의 수, k: 화살표가 가리키는 작은 눈금(1~9).
+  function tenthLine(from, k) {
+    const u = 25, x = (i) => 18 + i * u, y = 32, width = 36 + 10 * u;
+    let out = '<line class="mb-axis" x1="' + x(0) + '" y1="' + y + '" x2="' + x(10) + '" y2="' + y + '"/>';
+    for (let i = 0; i <= 10; i += 1) out += '<line class="mb-axis" x1="' + x(i) + '" y1="' + (y - (i % 10 === 0 ? 6 : 3.5)) + '" x2="' + x(i) + '" y2="' + (y + (i % 10 === 0 ? 6 : 3.5)) + '"/>';
+    out += '<text class="mb-km-label" x="' + x(0) + '" y="' + (y + 20) + '" text-anchor="middle">' + from + '</text><text class="mb-km-label" x="' + x(10) + '" y="' + (y + 20) + '" text-anchor="middle">' + (from + 1) + '</text>';
+    out += '<path class="mb-pointer" d="M' + x(k) + ' ' + (y - 8) + 'l-4.5 -9h9z"/>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.05) + '" role="img" aria-label="수직선: ' + from + '과 ' + (from + 1) + ' 사이를 10칸으로 똑같이 나누었다. 화살표는 ' + from + '에서 작은 눈금 ' + k + '칸 더 간 곳">' + out + '</svg>';
+  }
   const chars = (n) => String(n).split('');
   // 수 모형: 백 모형(판)·십 모형(막대)·일 모형(낱개)
   // removed 를 주면 그만큼(자리마다 뒤쪽부터)을 덜어 낸 것으로 그린다(옅은 색 + 빗금). 받아내림이 없는 수만 쓴다.
@@ -320,6 +368,10 @@
   const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead }], explain: o.explain || '', facts: o.facts || {} });
   const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, explain: o.explain || '', facts: o.facts || {} });
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
+  // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다.
+  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: [{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }], fraction: true, explain: o.explain || '', facts: o.facts || {} });
+  // 소수 하나를 답하는 문항(소수 첫째 자리까지)
+  const D = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, decimal: true }], explain: o.explain || '', facts: o.facts || {} });
   // 검사가 따로 셈할 식 글
   const E = (a, op, b) => String(a) + op + b;
   // 이름을 부를 때: 서연이, 지우
@@ -371,11 +423,12 @@
   }
   // 답 맞추기. 수는 쉼표·빈칸을 떼고 견준다. unordered 인 문항은 답의 차례를 따지지 않는다.
   const cleanNumber = (text) => String(text == null ? '' : text).replace(/[,\s]/g, '');
+  // 소수 칸(decimal)은 소수 첫째 자리까지 적은 수를 받는다. 나머지 칸은 자연수만 받는다.
   function isCorrect(item, response) {
     if (item.choice) return Number(response) === item.choice.answer;
     const given = (Array.isArray(response) ? response : [response]).map(cleanNumber);
-    if (given.length !== item.inputs.length || !given.every((text) => /^\d+$/.test(text))) return false;
-    const want = item.inputs.map((input) => input.answer), got = given.map(Number);
+    if (given.length !== item.inputs.length || !given.every((text, i) => (item.inputs[i].decimal ? /^\d+(\.\d)?$/ : /^\d+$/).test(text))) return false;
+    const want = item.inputs.map((input) => Math.round(input.answer * 10)), got = given.map((text) => Math.round(Number(text) * 10));
     if (item.unordered) { want.sort((a, b) => a - b); got.sort((a, b) => a - b); }
     return want.every((value, i) => value === got[i]);
   }
@@ -383,6 +436,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, columnSteps, timeColumn, chars, blocks, counters, ruler, kmLine, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, timeColumn, chars, blocks, counters, ruler, kmLine, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
