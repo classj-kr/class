@@ -2,7 +2,7 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20261011-webp";
+import { createAtlas } from "./atlas-study.mjs?v=20261012-sea";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 import { createAxisView } from "./axis-view.mjs?v=20260920-31";
@@ -18,7 +18,7 @@ const flowTracks = [...windModel.tracks, ...currentModel.tracks];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let flowSeconds = 0;
 const BASE = new URL(".", import.meta.url).href;
-const TILE_VERSION = "20261011-relief2";
+const TILE_VERSION = "20261012-sea";
 const FLAG_VERSION = 2;
 // 모양(shapes.json)·설명(info.json)·사진을 바꾸면 올린다.
 const DATA_VERSION = "20260920-39";
