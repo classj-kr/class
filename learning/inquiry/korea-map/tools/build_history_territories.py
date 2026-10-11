@@ -1,6 +1,6 @@
 """Build the chronological territorial backdrops (not battle fronts).
 
-Requires numpy, Shapely; input: Natural Earth's public-domain 1:50m countries.
+Requires numpy, Shapely, pyproj; input: Natural Earth's public-domain countries.
 Historical frontier traces below retain the source image pixels and registration
 controls. Modern country geometry supplies coastlines, NOT medieval frontiers.
 Output is offline SVG + a dated, source-linked manifest for every history scene.
@@ -16,6 +16,7 @@ from shapely.geometry import Polygon, MultiPolygon, GeometryCollection, box, sha
 from shapely.ops import unary_union
 from shapely import make_valid
 from history_coast import coastal_regions
+from history_ming import late_ming
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'history' / 'territories'
@@ -36,6 +37,7 @@ SOURCE = {
     'yuan': ['우리역사넷 · 동녕부', 'https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i200530'],
     'manchu': ['우리역사넷 · 만주국', 'https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401701'],
     'war': ['국가기록원 · 6·25 전쟁 전선의 변화', 'https://theme.archives.go.kr/next/625/process/frontline.do'],
+    'ming': ['F. W. Mote · 1580년경 명의 15개 성과 요동 지도 · 640쪽', 'https://littrup.sites.ku.dk/files/2015/05/Kin-ter.pdf#page=5'],
 }
 
 # Original textbook diagram coordinates; each control = pixel x,y, longitude,latitude.
@@ -141,8 +143,8 @@ def build(countries_path, coast_path=None, only=None):
     japan = countries['JPN'].intersection(domain)
     china = countries['CHN'].intersection(domain)
     russia = countries['RUS'].intersection(domain)
-    def region(name,geometry,color='korea',pattern=False,xy=None):
-        return dict(name=name,geometry=geometry,color=COLORS.get(color,color),pattern=pattern,xy=xy)
+    def region(name,geometry,color='korea',pattern=False,xy=None,context=False):
+        return dict(name=name,geometry=geometry,color=COLORS.get(color,color),pattern=pattern,xy=xy,context=context)
 
     silla_line = smooth(trace('balhae','south'))
     silla = korea.intersection(below(silla_line))
@@ -285,9 +287,11 @@ def build(countries_path, coast_path=None, only=None):
     def modern(kname='조선',cname='청',rname='러시아',colonial=False):
         return [region(kname,korea,'korea',colonial),region(cname,china,'china'),
                 region('일본',japan,'japan'),region(rname,russia,'russia')]
-    add('imjin','1592년 · 전쟁 전 국가 영역',[
-        region('조선',joseon),region('명',china,'china'),region('일본',japan,'japan')],['joseon'],
-        '색은 국가 영역, 화살표는 일본군 진격과 전쟁 사건입니다. 점령지나 시기별 전선의 변화와는 구분합니다.')
+    ming, ming_audit = late_ming(china)
+    add('imjin','1592년 · 임진왜란 발발',[
+        region('조선',joseon),region('명',ming,'china',xy=[117,36.8],context=True),
+        region('일본',japan,'japan',xy=[138.3,36.7],context=True)],['ming','joseon'],
+        '명은 1580년경의 성·요동 지배 영역을 바탕으로 표시한 개략도입니다. 티베트·몽골·중앙아시아·만주 전체를 명의 영토로 표시하지 않습니다. 화살표는 일본군 진격과 전쟁 사건이며 시기별 점령 전선이 아닙니다.')
     add('foreign-incursions','1866~1875년',modern(),note='국가 영역을 기준으로 표시했습니다. 공격 지점은 외국에 양도된 영토가 아닙니다.')
     add('ports','1876~1883년',modern(),note='개항장을 표시한 것으로, 개항이 해당 도시 전체의 영토 양도를 뜻하지는 않습니다.')
     add('donghak','1894년 · 조선',modern(),note='조선의 영역 위에 봉기·전투 지점을 표시했습니다.')
@@ -350,6 +354,8 @@ def build(countries_path, coast_path=None, only=None):
         previous = json.loads((OUT/'provenance.json').read_text(encoding='utf-8'))
         previous['coastalRegistration'].update(coastal_audit)
         audit = previous
+    if not only or 'imjin' in only:
+        audit['lateMing'] = ming_audit
     audit['pixelTopology'] = {key: data.get('topology') for key,data in boundary_data['scenes'].items()}
     for key,variants in states.items():
         if only and key not in only:
@@ -406,15 +412,20 @@ def build(countries_path, coast_path=None, only=None):
                 d=geo_path(geometry)
                 svg_paths.append(f'<path d="{d}" fill="{fill}" fill-opacity=".68" fill-rule="evenodd" stroke="#5c6957" stroke-opacity=".75" stroke-width="1.15" stroke-linejoin="round" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"><title>{escape(r["name"])}</title></path>')
                 in_view=geometry.intersection(visible)
-                if not in_view.is_empty and in_view.area > .008:
+                # A historical neighbour may be outside the initial battle-map
+                # camera. Keep its real label/legend available when zooming out.
+                label_area = geometry if r.get('context') else in_view
+                if not label_area.is_empty and label_area.area > .008:
                     legends.append({'label':r['name'],'color':color,'pattern':'hatch' if r['pattern'] else None})
                     point=Point(r['xy']) if r['xy'] else None
-                    if point is None or not in_view.covers(point):
-                        point=max(pieces(in_view),key=lambda p:p.area).representative_point()
+                    if point is None or not label_area.covers(point):
+                        point=max(pieces(label_area),key=lambda p:p.area).representative_point()
                     # Highlight overlays use the base country's label, not a
                     # second crowded large label over the same territory.
                     if '세력권' not in r['name'] and (not r['pattern'] or key in ['early-states','bongo-cheongsan','independence-bases','provisional-government','patriotic-corps','allied-operations']):
-                        labels.append({'name':r['name'],'xy':[round(point.x,5),round(point.y,5)]})
+                        label={'name':r['name'],'xy':[round(point.x,5),round(point.y,5)]}
+                        if r.get('context'): label['context']=True
+                        labels.append(label)
                 geometry_audit.append({'name':r['name'],'area':round(geometry.area,4),'visibleArea':round(in_view.area,4)})
             source=state['sources'][:]
             if scene.get('mapSource'):source.append(scene['mapSource'])
@@ -424,7 +435,7 @@ def build(countries_path, coast_path=None, only=None):
             (OUT/filename).write_text(svg,encoding='utf-8')
             labels.extend(state.get('extraLabels',[]))
             manifest['scenes'][key].append({'id':state['id'],'date':state['date'],
-              'overlay':f'history/territories/{filename}?v={"20261011-boundary-2" if pixel_topology else "20260921-fill-2"}','overlayBounds':extent,
+              'overlay':f'history/territories/{filename}?v={"20261012-ming-1" if key == "imjin" else "20261011-boundary-2" if pixel_topology else "20260921-fill-2"}','overlayBounds':extent,
               'legend':legends,'labels':labels,'sources':source,'note':state['note'],'lines':state['lines']})
             audit['coverage'][key].append({'date':state['date'],'regions':geometry_audit})
     (ROOT/'data/history-territories.js').write_text('// Generated by tools/build_history_territories.py.\nwindow.KOREA_HISTORY_TERRITORIES = '+json.dumps(manifest,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')

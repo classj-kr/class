@@ -24,7 +24,10 @@ for (const scene of scenes) for (const state of territories[scene.id]) {
   assert.ok(state.labels.length,`${scene.id}: country labels absent`);
   const svg = fs.readFileSync(path.join(app,state.overlay.split('?')[0]),'utf8');
   assert.ok(svg.includes('<path ') && !svg.includes('NaN'),scene.id);
-  for(const {xy} of state.labels) assert.ok(xy[0]>=scene.bounds[0] && xy[0]<=scene.bounds[2] && xy[1]>=scene.bounds[1] && xy[1]<=scene.bounds[3],`${scene.id}: label outside scene`);
+  for(const {xy,context} of state.labels) {
+    const extent = context ? state.overlayBounds : scene.bounds;
+    assert.ok(xy[0]>=extent[0] && xy[0]<=extent[2] && xy[1]>=extent[1] && xy[1]<=extent[3],`${scene.id}: label outside its map extent`);
+  }
 }
 const names = id => territories[id].at(-1).legend.map(x=>x.label);
 assert.ok(['발해','통일 신라','당','일본'].every(x=>names('balhae').includes(x)));
