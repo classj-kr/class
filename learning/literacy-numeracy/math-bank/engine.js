@@ -166,6 +166,45 @@
     return '<table class="mb-longdiv" role="img" aria-label="나눗셈 세로셈 ' + dividend + ' 나누기 ' + divisor + said + '">' + out + '</table>';
   }
   const divColumn = (divisor, dividend) => divSteps(divisor, dividend);
+  // 들이·무게의 눈금에 적는 글: 1000의 배수는 큰 단위로 적는다(1 L, 2 kg). 수와 단위는 띄어 쓴다.
+  const amount = (value, small, big) => (value === 0 ? '0' : value % 1000 === 0 ? value / 1000 + ' ' + big : value + ' ' + small);
+  // 눈금 비커. max: 가장 큰 눈금(mL), step: 작은 눈금 한 칸(mL), major: 수를 적는 눈금 간격(mL), level: 물의 높이(mL)
+  function beaker(max, step, major, level) {
+    const H = 112, W = 74, x0 = 10, y0 = 16, bottom = y0 + H, y = (ml) => bottom - (ml / max) * H;
+    let out = '<rect class="mb-water" x="' + (x0 + 1) + '" y="' + y(level).toFixed(1) + '" width="' + (W - 2) + '" height="' + (bottom + 5 - y(level)).toFixed(1) + '"/>';
+    out += '<path class="mb-vessel" d="M' + x0 + ' ' + (y0 - 8) + 'V' + (bottom + 6) + 'H' + (x0 + W) + 'V' + (y0 - 8) + '"/>';
+    for (let v = step; v <= max; v += step) {
+      const big = v % major === 0;
+      out += '<line class="mb-ruler-tick" x1="' + (x0 + W) + '" y1="' + y(v).toFixed(1) + '" x2="' + (x0 + W - (big ? 18 : 10)) + '" y2="' + y(v).toFixed(1) + '"/>';
+      if (big) out += '<text class="mb-km-label" x="' + (x0 + W + 5) + '" y="' + (y(v) + 4).toFixed(1) + '">' + amount(v, 'mL', 'L') + '</text>';
+    }
+    return '<svg class="mb-beaker" viewBox="0 0 150 140" width="195" role="img" aria-label="눈금 비커: 가장 큰 눈금 ' + max + ' mL, 작은 눈금 한 칸 ' + step + ' mL, 물은 작은 눈금 ' + level / step + '칸까지">' + out + '</svg>';
+  }
+  // 바늘 저울. max: 바늘이 한 바퀴 돌 때의 무게(g), step: 작은 눈금 한 칸(g), major: 수를 적는 눈금 간격(g), value: 바늘이 가리키는 무게(g)
+  function dial(max, step, major, value) {
+    const cx = 80, cy = 80, r = 62, at = (v, len) => { const a = (v / max) * 2 * Math.PI; return (cx + len * Math.sin(a)).toFixed(1) + ' ' + (cy - len * Math.cos(a)).toFixed(1); };
+    const xy = (v, len) => at(v, len).split(' ');
+    let out = '<circle class="mb-clock-face" cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>';
+    for (let v = 0; v < max; v += step) {
+      const big = v % major === 0, p = xy(v, r), q = xy(v, r - (big ? 10 : 5.5));
+      out += '<line class="mb-ruler-tick" x1="' + p[0] + '" y1="' + p[1] + '" x2="' + q[0] + '" y2="' + q[1] + '"/>';
+      if (big) { const t = xy(v, r - 29); out += '<text class="mb-km-label" x="' + t[0] + '" y="' + (Number(t[1]) + 4).toFixed(1) + '" text-anchor="middle">' + amount(v, 'g', 'kg') + '</text>'; }
+    }
+    const tip = xy(value, r - 14);
+    out += '<line class="mb-needle" x1="' + cx + '" y1="' + cy + '" x2="' + tip[0] + '" y2="' + tip[1] + '"/><circle class="mb-dot" cx="' + cx + '" cy="' + cy + '" r="3.2"/>';
+    return '<svg class="mb-dial" viewBox="0 0 160 160" width="200" role="img" aria-label="바늘 저울: 한 바퀴 ' + max + ' g, 작은 눈금 한 칸 ' + step + ' g, 바늘은 0에서 작은 눈금 ' + value / step + '칸">' + out + '</svg>';
+  }
+  // 모양과 크기가 같은 그릇에 옮겨 담은 물의 높이. names: 그릇 이름, heights: 물의 높이(칸 수, 1~10)
+  function levels(names, heights) {
+    const W = 44, gap = 22, H = 80, x = (i) => 14 + i * (W + gap), bottom = 14 + H;
+    let out = '';
+    names.forEach((name, i) => {
+      const top = bottom - heights[i] * 7;
+      out += '<rect class="mb-water" x="' + (x(i) + 1) + '" y="' + top + '" width="' + (W - 2) + '" height="' + (bottom - top) + '"/><path class="mb-vessel" d="M' + x(i) + ' 10V' + bottom + 'H' + (x(i) + W) + 'V10"/>'
+        + '<text class="mb-km-label" x="' + (x(i) + W / 2) + '" y="' + (bottom + 16) + '" text-anchor="middle">' + name + '</text>';
+    });
+    return '<svg class="mb-levels" viewBox="0 0 ' + (14 + names.length * (W + gap)) + ' 116" width="' + Math.round((14 + names.length * (W + gap)) * 1.3) + '" role="img" aria-label="같은 그릇에 옮겨 담은 물의 높이: ' + names.map((name, i) => name + ' ' + heights[i] + '칸').join(', ') + '">' + out + '</svg>';
+  }
   // 그림그래프. units: 그림 하나가 나타내는 수(큰 것부터 2~3가지), rows: [이름, 수] — 수가 null 이면 그 줄의 그림을 비워 둔다.
   // head: [항목 이름, 수량 이름], each: 수 뒤에 붙는 낱말(명·상자 …). 그림 설명에는 줄마다 그림의 종류와 개수만 적는다.
   function pictograph(head, rows, units, each) {
@@ -508,6 +547,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

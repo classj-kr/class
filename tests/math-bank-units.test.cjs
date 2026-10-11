@@ -728,6 +728,20 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.ok(lo < hi, label); assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('between');
     }
     if (f.partTalk) { const { total, group, part } = f.partTalk; assert.ok(total % group === 0 && part % group === 0 && part < total, label); assert.equal(f.choose.target, (part / group) / (total / group), label); tally('partTalk'); }
+    if (f.unitRule) {
+      // 큰 단위와 작은 단위(1000배)로 적은 두 양의 셈: 이름대로 받아올림·받아내림이 일어나는가. 작은 단위의 수는 1~999.
+      const { op, a, b, carry } = f.unitRule;
+      for (const part of [a[1], b[1]]) assert.ok(part >= 1 && part <= 999, label);
+      assert.equal(op === '+' ? a[1] + b[1] >= 1000 : a[1] < b[1], carry, '받아올림·받아내림이 이름과 다르다: ' + label);
+      if (op === '-') assert.ok(a[0] * 1000 + a[1] > b[0] * 1000 + b[1], label);
+      tally('unitRule');
+    }
+    if (f.levels) {
+      // 같은 그릇에 옮겨 담은 물의 높이: 그림 설명의 칸 수로 가장 높은(낮은) 것을 다시 찾는다.
+      const m = item.figure.match(/aria-label="같은 그릇에 옮겨 담은 물의 높이: ([^"]*)"/), heights = m[1].split(', ').map((part) => Number(part.match(/(\d+)칸/)[1]));
+      const best = f.levels === 'most' ? Math.max(...heights) : Math.min(...heights);
+      assert.equal(heights.filter((h) => h === best).length, 1, label); assert.equal(item.choice.answer, heights.indexOf(best), label); tally('levels');
+    }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);
