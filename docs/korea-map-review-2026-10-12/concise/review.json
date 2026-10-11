@@ -1,0 +1,377 @@
+{
+  "scope": "고등 역사 지도 74문항 중 45문항 간결화",
+  "changes": [
+    {
+      "id": "history-prehistoric-sites-high-02",
+      "revision": 6,
+      "beforeCharacters": 287,
+      "afterCharacters": 189
+    },
+    {
+      "id": "history-gojoseon-distribution-high-01",
+      "revision": 6,
+      "beforeCharacters": 194,
+      "afterCharacters": 120
+    },
+    {
+      "id": "history-gojoseon-distribution-high-02",
+      "revision": 6,
+      "beforeCharacters": 304,
+      "afterCharacters": 96
+    },
+    {
+      "id": "history-early-states-high-02",
+      "revision": 6,
+      "beforeCharacters": 280,
+      "afterCharacters": 150
+    },
+    {
+      "id": "history-gaya-federation-high-02",
+      "revision": 6,
+      "beforeCharacters": 308,
+      "afterCharacters": 67
+    },
+    {
+      "id": "history-baekje-fourth-high-02",
+      "revision": 6,
+      "beforeCharacters": 244,
+      "afterCharacters": 128
+    },
+    {
+      "id": "history-goguryeo-fifth-high-02",
+      "revision": 6,
+      "beforeCharacters": 267,
+      "afterCharacters": 111
+    },
+    {
+      "id": "history-baekje-capitals-high-02",
+      "revision": 6,
+      "beforeCharacters": 425,
+      "afterCharacters": 145
+    },
+    {
+      "id": "history-silla-sixth-high-02",
+      "revision": 6,
+      "beforeCharacters": 231,
+      "afterCharacters": 77
+    },
+    {
+      "id": "history-unification-high-02",
+      "revision": 6,
+      "beforeCharacters": 269,
+      "afterCharacters": 117
+    },
+    {
+      "id": "history-balhae-high-01",
+      "revision": 6,
+      "beforeCharacters": 328,
+      "afterCharacters": 216
+    },
+    {
+      "id": "history-balhae-high-02",
+      "revision": 6,
+      "beforeCharacters": 283,
+      "afterCharacters": 134
+    },
+    {
+      "id": "history-silla-trade-high-02",
+      "revision": 6,
+      "beforeCharacters": 339,
+      "afterCharacters": 119
+    },
+    {
+      "id": "history-later-three-high-02",
+      "revision": 6,
+      "beforeCharacters": 218,
+      "afterCharacters": 118
+    },
+    {
+      "id": "history-gangdong-high-02",
+      "revision": 6,
+      "beforeCharacters": 282,
+      "afterCharacters": 106
+    },
+    {
+      "id": "history-gwiju-high-02",
+      "revision": 6,
+      "beforeCharacters": 267,
+      "afterCharacters": 153
+    },
+    {
+      "id": "history-nine-forts-high-02",
+      "revision": 6,
+      "beforeCharacters": 292,
+      "afterCharacters": 94
+    },
+    {
+      "id": "history-sambyeolcho-high-02",
+      "revision": 6,
+      "beforeCharacters": 286,
+      "afterCharacters": 106
+    },
+    {
+      "id": "history-ssangseong-high-02",
+      "revision": 6,
+      "beforeCharacters": 291,
+      "afterCharacters": 111
+    },
+    {
+      "id": "history-hanyang-capital-high-01",
+      "revision": 6,
+      "beforeCharacters": 290,
+      "afterCharacters": 117
+    },
+    {
+      "id": "history-hanyang-capital-high-02",
+      "revision": 6,
+      "beforeCharacters": 329,
+      "afterCharacters": 167
+    },
+    {
+      "id": "history-four-six-high-02",
+      "revision": 6,
+      "beforeCharacters": 294,
+      "afterCharacters": 130
+    },
+    {
+      "id": "history-imjin-high-02",
+      "revision": 6,
+      "beforeCharacters": 267,
+      "afterCharacters": 70
+    },
+    {
+      "id": "history-byeongja-war-high-02",
+      "revision": 6,
+      "beforeCharacters": 287,
+      "afterCharacters": 120
+    },
+    {
+      "id": "history-foreign-incursions-high-02",
+      "revision": 6,
+      "beforeCharacters": 322,
+      "afterCharacters": 125
+    },
+    {
+      "id": "history-ports-high-02",
+      "revision": 6,
+      "beforeCharacters": 311,
+      "afterCharacters": 133
+    },
+    {
+      "id": "history-donghak-high-02",
+      "revision": 6,
+      "beforeCharacters": 276,
+      "afterCharacters": 88
+    },
+    {
+      "id": "history-an-jung-geun-high-02",
+      "revision": 6,
+      "beforeCharacters": 287,
+      "afterCharacters": 136
+    },
+    {
+      "id": "history-independence-bases-high-02",
+      "revision": 6,
+      "beforeCharacters": 385,
+      "afterCharacters": 97
+    },
+    {
+      "id": "history-march-first-high-01",
+      "revision": 6,
+      "beforeCharacters": 234,
+      "afterCharacters": 190
+    },
+    {
+      "id": "history-march-first-high-02",
+      "revision": 6,
+      "beforeCharacters": 333,
+      "afterCharacters": 128
+    },
+    {
+      "id": "history-provisional-government-high-01",
+      "revision": 6,
+      "beforeCharacters": 140,
+      "afterCharacters": 106
+    },
+    {
+      "id": "history-provisional-government-high-02",
+      "revision": 6,
+      "beforeCharacters": 310,
+      "afterCharacters": 130
+    },
+    {
+      "id": "history-provisional-route-high-02",
+      "revision": 6,
+      "beforeCharacters": 274,
+      "afterCharacters": 90
+    },
+    {
+      "id": "history-bongo-cheongsan-high-02",
+      "revision": 6,
+      "beforeCharacters": 357,
+      "afterCharacters": 118
+    },
+    {
+      "id": "history-patriotic-corps-high-02",
+      "revision": 6,
+      "beforeCharacters": 277,
+      "afterCharacters": 130
+    },
+    {
+      "id": "history-allied-operations-high-02",
+      "revision": 6,
+      "beforeCharacters": 320,
+      "afterCharacters": 125
+    },
+    {
+      "id": "history-korean-volunteer-corps-high-02",
+      "revision": 6,
+      "beforeCharacters": 290,
+      "afterCharacters": 183
+    },
+    {
+      "id": "history-liberation-army-high-01",
+      "revision": 6,
+      "beforeCharacters": 105,
+      "afterCharacters": 77
+    },
+    {
+      "id": "history-liberation-army-high-02",
+      "revision": 6,
+      "beforeCharacters": 297,
+      "afterCharacters": 162
+    },
+    {
+      "id": "history-liberation-division-high-01",
+      "revision": 6,
+      "beforeCharacters": 283,
+      "afterCharacters": 137
+    },
+    {
+      "id": "history-liberation-division-high-02",
+      "revision": 6,
+      "beforeCharacters": 298,
+      "afterCharacters": 110
+    },
+    {
+      "id": "history-korean-war-high-02",
+      "revision": 6,
+      "beforeCharacters": 268,
+      "afterCharacters": 136
+    },
+    {
+      "id": "history-democracy-movements-high-01",
+      "revision": 6,
+      "beforeCharacters": 149,
+      "afterCharacters": 131
+    },
+    {
+      "id": "history-democracy-movements-high-02",
+      "revision": 6,
+      "beforeCharacters": 360,
+      "afterCharacters": 102
+    }
+  ],
+  "browser": {
+    "cases": [
+      {
+        "id": "history-balhae-high-01",
+        "options": 5,
+        "revision": "6",
+        "stem": "발해의 두 교통로와 교류 사실을 바르게 연결한 것은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-balhae-high-02",
+        "options": 5,
+        "revision": "6",
+        "stem": "발해가 (나)에서 (다)로 천도한 시기의 대외 관계는?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-imjin-high-01",
+        "options": 5,
+        "revision": "2",
+        "stem": "지도 (가)~(라)의 사건과 시기를 바르게 연결한 것은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-imjin-high-02",
+        "options": 5,
+        "revision": "6",
+        "stem": "(가)·(나)의 두 해전 사이에 추진된 군제 개편은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-independence-bases-high-01",
+        "options": 5,
+        "revision": "2",
+        "stem": "지도 (가)~(다)의 독립운동 기반을 바르게 연결한 것은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-independence-bases-high-02",
+        "options": 5,
+        "revision": "6",
+        "stem": "중광단을 계승해 청산리 전투에 참여한 부대와 기반 지역은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-korean-volunteer-corps-high-01",
+        "options": 5,
+        "revision": "2",
+        "stem": "지도 (가)에서 1938년에 창설된 부대와 (나)에서 1940년에 창설된 부대의 연결은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-korean-volunteer-corps-high-02",
+        "options": 5,
+        "revision": "6",
+        "stem": "(가)에서 창설된 조선 의용대의 이후 변화는?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-goguryeo-fifth-high-01",
+        "options": 5,
+        "revision": "2",
+        "stem": "지도 (가)→(나)의 천도와 (다) 공격을 추진한 왕에 대한 설명으로 옳은 것은?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      },
+      {
+        "id": "history-goguryeo-fifth-high-02",
+        "options": 5,
+        "revision": "6",
+        "stem": "(다)의 비석으로 알 수 있는 고구려의 세력 범위는?",
+        "wrongFeedback": "다시 생각하고 다른 답을 골라보세요.",
+        "correctRetry": true
+      }
+    ],
+    "hanyang": {
+      "questions": 2,
+      "wrongAnswerHidden": true,
+      "firstAttemptScore": "0/2"
+    },
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720,
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "overflow": false
+      }
+    ],
+    "consoleErrors": []
+  }
+}
