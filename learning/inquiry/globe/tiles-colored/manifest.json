@@ -1,5 +1,5 @@
 {
-  "version": "20261012-sea3",
+  "version": "20261012-sea4",
   "count": 1365,
   "tileSize": 512,
   "minZoom": 0,
@@ -10,5 +10,5 @@
   "heightSource": "NOAA ETOPO1 Ice Surface, grid-registered, 1 arc-minute (public domain)",
   "heightUrl": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip",
   "climateSource": "Peel, Finlayson & McMahon (2007) Koppen-Geiger 0.1 degree raster: desert, tundra and ice-cap cells (CC BY-NC-SA 2.5)",
-  "method": "Base picture kept. Mountains tinted brown by their rise above the surrounding lowland with north-west hillshade; flat desert plateaus keep their sand colour. Ocean darkened in depth steps; lakes, rivers, ice and snow untouched."
+  "method": "Base picture kept. Mountains tinted brown by their rise above the surrounding lowland with north-west hillshade; flat desert plateaus keep their sand colour. Ocean: shelf slightly lighter, trenches darker, the rest as in the base; lakes, rivers, ice and snow untouched."
 }

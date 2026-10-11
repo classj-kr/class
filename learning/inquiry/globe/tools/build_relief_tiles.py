@@ -9,7 +9,7 @@
 - 사막은 바탕 그림 그대로다. Peel(2007) 쾨펜 구분의 사막 기후(BWh·BWk) 칸에서는 평평한 고원을 물들이지 않아
   모래색이 남고, 그 안의 바위산만 갈색이 된다. (모래 점무늬를 얹어 봤으나 지저분해서 뺐다, 2026-10-11)
 
-바다는 깊이를 단계로 나눠 깊을수록 조금씩 짙게 한다(대륙붕은 바탕색 그대로). 대륙붕·해령·해구가 드러난다.
+바다는 세 단계: 깊은 바다는 바탕 바다색 그대로, 얕은 대륙붕은 살짝 옅게, 해구는 짙게.
 
 높이와 바다 깊이는 ETOPO1 얼음 표면(1분 격자). 호수·강·얼음·만년설은 바탕 그림 그대로 둔다.
 """
@@ -32,7 +32,7 @@ MAX_Z = 5
 SIZE = TILE * 2 ** MAX_Z
 HALO = 160  # 둘레 낮은 땅을 찾는 창(REGION)과 그 뒤 흐림이 조각 줄 경계에서 끊기지 않을 만큼
 EARTH = 40075016.686
-VERSION = "20261012-sea3"
+VERSION = "20261012-sea4"
 
 # 산 빛깔: 높이(m) → 물들일 색. 낮은 산은 밝은 갈색, 높을수록 짙어지다 잿빛·흰빛으로.
 MOUNTAIN = [
@@ -50,13 +50,14 @@ TINT_BY_RISE = [(80, 0), (250, .3), (500, .5), (900, .66), (1600, .78)]
 # 솟지 않았어도 높은 땅(고원)은 조금 물든다. 사막 고원은 모래색 그대로 둔다.
 TINT_BY_HEIGHT = [(400, 0), (1000, .14), (2000, .28), (3500, .45), (5000, .6)]
 TUNDRA_TINT = .5  # 툰드라에서는 덜 물들여 잿빛을 남긴다
-# 바다는 깊이를 단계로 나눠 깊을수록 조금씩 짙게: (이 깊이(m)를 넘으면, 바탕 바다색의 몇 배 밝기).
-# 얕은 바다(대륙붕, 200m까지)는 바탕색 그대로 둔다 — 얕은 곳을 밝게 칠하면 육지처럼 보인다.
+# 바다는 세 단계뿐이다: 대륙붕 / 깊은 바다 / 해구. 깊은 바다가 바탕 그림의 바다색 그대로이고,
+# 얕은 대륙붕은 그보다 살짝 옅게, 해구만 짙게 한다. 더 잘게 나누면 바다 한가운데가 얼룩져 공부에 방해만 된다.
 OCEAN = (0, 95, 154)  # 바탕 그림의 바다색
-SEA_STEPS = [(200, .85), (6500, .64)]  # 대륙붕 / 깊은 바다 / 해구. 사이 단계(2,000·4,000m)는 바다 한가운데를 얼룩지게만 해서 뺐다
+SHELF_DEPTH, SHELF_LIGHTEN = 200, .15  # 이 깊이(m)까지는 흰색 쪽으로 이만큼 옅게
+TRENCH_DEPTH, TRENCH_DARKEN = 6500, .75  # 이 깊이(m)를 넘으면 바탕 바다색의 이만큼 밝기
 SEA_EDGE = 60  # 단계 경계를 이만큼(m) 풀어 테두리가 톱니처럼 보이지 않게
-# 북극 둘레: 조각이 끝나는 마지막 줄은 한 가지 색이어야 극 둘레에 부채꼴 줄무늬가 생기지 않는다. 깊은 바다 단계로 맞춘다.
-POLE_SEA = (83.5, 85, .85)
+# 북극 둘레: 조각이 끝나는 마지막 줄은 한 가지 색이어야 극 둘레에 부채꼴 줄무늬가 생기지 않는다. 이 위도 사이에서 바탕 바다색으로 돌아간다.
+POLE_SEA = (83.5, 85)
 DESERT_CLASSES = (4, 5)  # Peel(2007) 번호: 4 BWh, 5 BWk
 TUNDRA_CLASSES = (29,)  # ET
 ICE_CAP_CLASSES = (30,)  # EF
@@ -253,13 +254,14 @@ def render_band(row, base_root, etopo, koppen):
 
     # 바다 깊이 단계: 바탕 바다색인 픽셀만(호수·강·해안선 번짐은 그대로)
     depth = blur(np.maximum(-level, 0), 3)
-    deepen = np.ones_like(depth)
-    for limit, brightness in SEA_STEPS:
-        deepen += (brightness - deepen) * smoothstep(limit - SEA_EDGE, limit + SEA_EDGE, depth)
-    from_lat, to_lat, at_pole = POLE_SEA
-    deepen += (at_pole - deepen) * smoothstep(from_lat, to_lat, lat)[:, None].astype(np.float32)
     sea = 1 - smoothstep(4, 14, np.abs(base - np.array(OCEAN, dtype=np.float32)).max(axis=-1))
-    out = base * gain * (shade * (1 - sea * (1 - deepen)))[..., None]
+    # 해안선에서 땅색과 섞인 픽셀도 바다가 섞인 만큼 함께 옮긴다. 안 그러면 옅어진 대륙붕과 땅 사이에 원래 바다색 테가 남는다.
+    sea = np.maximum(sea, cv2.dilate(sea, np.ones((5, 5), np.uint8)) * smoothstep(20, 130, blue))
+    sea *= 1 - smoothstep(*POLE_SEA, lat)[:, None].astype(np.float32)
+    shelf = sea * (1 - smoothstep(SHELF_DEPTH - SEA_EDGE, SHELF_DEPTH + SEA_EDGE, depth)) * SHELF_LIGHTEN
+    trench = 1 - sea * smoothstep(TRENCH_DEPTH - SEA_EDGE, TRENCH_DEPTH + SEA_EDGE, depth) * (1 - TRENCH_DARKEN)
+    out = base * gain * shade[..., None]
+    out = (out + (255 - out) * shelf[..., None]) * trench[..., None]
 
     return np.clip(out[HALO:-HALO, HALO:-HALO] + .5, 0, 255).astype(np.uint8)
 
@@ -303,7 +305,7 @@ def main():
         "heightUrl": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip",
         "climateSource": "Peel, Finlayson & McMahon (2007) Koppen-Geiger 0.1 degree raster: desert, tundra and ice-cap cells (CC BY-NC-SA 2.5)",
         "method": "Base picture kept. Mountains tinted brown by their rise above the surrounding lowland with north-west hillshade; "
-                  "flat desert plateaus keep their sand colour. Ocean darkened in depth steps; lakes, rivers, ice and snow untouched.",
+                  "flat desert plateaus keep their sand colour. Ocean: shelf slightly lighter, trenches darker, the rest as in the base; lakes, rivers, ice and snow untouched.",
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print("끝.", count, "장")
