@@ -13,7 +13,7 @@
  }else document.body.append(assessmentContent);
  // Load observation panels without injecting an administrative scope banner.
  const base=document.currentScript.src;const extra=document.createElement('script');extra.src=new URL('supplement-extra.js?v=c2779312d820',base);
- const mount=()=>{const supplement=document.createElement('script');supplement.src=new URL('supplement-labs.js?v=c0d59fb6cf8d',base);document.body.append(supplement);if(['measurement','wave-transfer'].includes(slug)){const digital=document.createElement('script');digital.src=new URL('digital-inquiry.js?v=591ce18e900c',base);document.body.append(digital);}};
+ const mount=()=>{const supplement=document.createElement('script');supplement.src=new URL('supplement-labs.js?v=c0d59fb6cf8d',base);document.body.append(supplement);if(['measurement','wave-transfer'].includes(slug)){const digital=document.createElement('script');digital.src=new URL('digital-inquiry.js?v=c8669fb3547e',base);document.body.append(digital);}};
  const required=()=>{const script=document.createElement('script');script.src=new URL('required-experiments.js?v=cf020f1a07a6',base);script.onload=mount;script.onerror=mount;document.body.append(script);};
  const final=()=>{const script=document.createElement('script');script.src=new URL('required-experiments-final.js?v=0e2f2bbc4a65',base);script.onload=required;script.onerror=required;document.body.append(script);};
  const more=()=>{const script=document.createElement('script');script.src=new URL('required-experiments-more.js?v=dff0b84712b5',base);script.onload=final;script.onerror=final;document.body.append(script);};
