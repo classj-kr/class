@@ -8,6 +8,7 @@ const lab = path.join(root,'learning/inquiry/science-lab');
 const classification = require('./science-catalog-classification.cjs');
 const esc = s => String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const schoolLabels = {elementary:'초', middle:'중', 'high-common':'고(공통)', 'high-elective':'고(선택)'};
+const emptyMessage = populated => `<p class="catalog-empty"${populated?' hidden':''}>이 범주에 등록된 실험 없음</p>`;
 function render(map) {
   const placements = classification.classify(map);
   const entries = Object.entries(map);
@@ -18,32 +19,30 @@ function render(map) {
     return `<a class="level-entry available" data-level="${app.level}" data-school="${p.school}" data-grades="${app.grades.join(' ')}" data-standards="${app.codes.join(' ')}" href="${slug}/"><b>${app.level==='high'?(p.school==='high-common'?'공통':'선택'):app.grade}</b><span>${esc(app.title)}${detail}</span></a>`;
   }
   function cell(slugs, school) {
-    return `<div class="level-cell ${school}${slugs.length?'':' empty'}" data-school="${school}"${slugs.length?'':' aria-hidden="true"'}>${slugs.length?`<span class="cell-label" aria-hidden="true">${schoolLabels[school]}</span>\n${slugs.map(card).join('\n')}`:'<span class="empty-mark">—</span>'}</div>`;
+    return `<div class="level-cell ${school}" data-school="${school}"><span class="cell-label" aria-hidden="true">${schoolLabels[school]}</span>\n${slugs.map(card).join('\n')}${emptyMessage(slugs.length)}</div>`;
   }
   const basic = classification.foundation.map(area=>{
     const rows=area.categories.map(category=>{
       const slugs=entries.filter(([slug])=>placements[slug].section===area.id&&placements[slug].category===category).map(([slug])=>slug);
-      if (!slugs.length) return '';
       return `<article class="topic-row" data-category="${esc(category)}"><h4>${category}</h4><div class="level-matrix">${['elementary','middle'].map(s=>cell(slugs.filter(slug=>placements[slug].school===s),s)).join('\n')}</div></article>`;
     }).filter(Boolean).join('\n');
-    if (!rows) return '';
     return `<section class="subject-section ${area.id}" id="${area.id}" data-area="${area.title}"><header class="subject-heading"><h3>${area.title}</h3><div class="column-labels"><span>초</span><span>중</span></div></header><div class="topic-list">${rows}</div></section>`;
   }).join('\n');
   const high = ['high-common','high-elective'].map(school=>{
     const sections=classification.courses.filter(course=>course.school===school).map(course=>{
       const slugs=entries.filter(([slug])=>placements[slug].section===course.prefix).map(([slug])=>slug);
-      if (!slugs.length) return '';
       const domains=[...new Map(Object.values(classification.standards).filter(s=>s.code.startsWith(course.prefix)).map(s=>[s.domain,s.domainLine])).entries()].sort((a,b)=>a[1]-b[1]).map(([name])=>name);
+      if (!domains.length) throw Error('No official domains for '+course.title);
       const rows=domains.map(category=>{
         const selected=slugs.filter(slug=>placements[slug].category===category);
-        return selected.length?`<article class="topic-row" data-category="${esc(category)}"><h4>${esc(category)}</h4><div class="course-apps">${selected.map(card).join('\n')}</div></article>`:'';
+        return `<article class="topic-row" data-category="${esc(category)}"><h4>${esc(category)}</h4><div class="course-apps">${selected.map(card).join('\n')}${emptyMessage(selected.length)}</div></article>`;
       }).filter(Boolean).join('\n');
       return `<section class="subject-section course-section ${course.theme}" data-area="${course.title}" id="course-${course.prefix}"><header class="subject-heading"><h3>${course.title}</h3><span class="course-kind">${course.kind}</span></header><div class="topic-list">${rows}</div></section>`;
     }).filter(Boolean).join('\n');
     return `<section class="school-section" data-school="${school}" aria-label="${schoolLabels[school]}"><h2>${schoolLabels[school]}</h2>${sections}</section>`;
   }).join('\n');
   return {placements, html:`<section class="catalog" aria-label="2022 개정 교육과정별 실험 목록">
-<section class="school-section foundation-section" data-school="foundation" aria-label="초·중"><h2>초·중 <small>과학</small></h2>${basic}</section>
+<section class="school-section foundation-section" data-school="foundation" aria-label="초·중"><h2>초·중 <small>과학</small></h2><p class="classification-note">초·중 공통 교육과정의 5개 영역·18개 범주</p>${basic}</section>
 ${high}
 </section>`};
 }

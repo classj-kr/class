@@ -60,11 +60,10 @@
         synapseB: ['시냅스', '연합 뉴런에서 운동 뉴런으로 넘어가는 자리입니다. 시냅스를 지날 때마다 <strong>시간이 조금씩 더 걸립니다</strong>.']
     };
 
-    // 두 갈래 길. real = 실제로 걸리는 시간(초), show = 화면에서 보여 줄 시간(밀리초)
+    // 두 갈래 길. show는 경로를 관찰하기 위한 애니메이션 시간(밀리초)이다.
     var ROUTES = {
         reflexOnly: {
             name: '무조건 반사',
-            real: 0.09,
             steps: [
                 { path: 'flowSensory', show: 900, lit: ['receptor', 'sensoryNeuron', 'sensoryGanglion'] },
                 { path: 'flowRelay', show: 520, lit: ['grayMatter', 'interneuron'] },
@@ -73,7 +72,6 @@
         },
         conscious: {
             name: '의식적 반응',
-            real: 0.28,
             steps: [
                 { path: 'flowSensory', show: 900, lit: ['receptor', 'sensoryNeuron', 'sensoryGanglion'] },
                 { path: 'flowToBrain', show: 700, lit: ['brain'] },
@@ -359,21 +357,18 @@
 
     function drawCaption(route, elapsed) {
         if (!capBox) return;
-        var f = totalShow ? elapsed / totalShow : 1;
-        var sec = (route.real * f).toFixed(2);
 
         var order = routeKey === 'reflexOnly'
             ? '자극 ➔ 감각기 ➔ 감각 뉴런 ➔ <b>척수</b> ➔ 운동 뉴런 ➔ 반응기'
             : '자극 ➔ 감각기 ➔ 감각 뉴런 ➔ 척수 ➔ <b>대뇌</b> ➔ 척수 ➔ 운동 뉴런 ➔ 반응기';
 
         var note = routeKey === 'reflexOnly'
-            ? '대뇌를 <b>거치지 않아</b> 빠릅니다. 뜨거운 것에 손이 먼저 움직이고 나서 뜨겁다고 느끼는 까닭입니다.'
-            : '대뇌까지 갔다가 돌아오므로 <b>세 배쯤 오래</b> 걸립니다. 신호등을 보고 걷는 것처럼 마음먹고 하는 움직임입니다.';
+            ? '척수에서 운동 명령이 전달되어 위험한 자극에 빠르게 반응합니다. 감각 정보는 대뇌에도 전달됩니다.'
+            : '대뇌에서 감각 정보를 판단한 뒤 운동 명령을 보냅니다. 느낀 자극에 따라 의식적으로 움직이는 반응입니다.';
 
         capBox.innerHTML =
             '<span class="reflex-route">' + route.name + '</span>' +
             '<span class="reflex-order">' + order + '</span>' +
-            '<span class="reflex-time">걸린 시간 <b>' + sec + '초</b></span>' +
             '<span class="reflex-note">' + note + '</span>';
     }
 

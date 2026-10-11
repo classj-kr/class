@@ -12,6 +12,9 @@
 .school-section{display:grid;gap:16px;min-width:0}
 .school-section > h2{font-size:20px;margin:8px 0 0;color:#172f3b}
 .school-section > h2 small{font-size:14px;font-weight:500;color:#53636e}
+.classification-note{margin:-6px 0 0;font-size:13px;line-height:1.5;color:#53636e}
+.catalog-empty{margin:0;padding:12px;font-size:13px;line-height:1.6;color:#526371;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:9px;word-break:keep-all;overflow-wrap:anywhere}
+.course-apps > .catalog-empty{grid-column:1/-1}
 .catalog .subject-heading,.catalog .topic-row{grid-template-columns:180px minmax(0,1fr)}
 .catalog .column-labels,.catalog .level-matrix{grid-template-columns:repeat(2,minmax(0,1fr))}
 .catalog.school-filtered .level-matrix{grid-template-columns:1fr}

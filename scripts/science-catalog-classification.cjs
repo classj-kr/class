@@ -28,8 +28,8 @@ const primaryGroups = {
   '항상성과 몸의 조절':'senses reflex-nerve',
   '생명의 연속성':'seed-germination life-cycle pea-genetics',
   '환경과 생태계':'living-environment',
-  '고체 지구':'rock-layers minerals-rocks volcano-model plate-tectonics land-sea',
-  '유체 지구':'weather-watch weather-front seawater',
+  '고체 지구':'rock-layers minerals-rocks volcano-model plate-tectonics',
+  '유체 지구':'land-sea weather-watch weather-front seawater',
   '천체':'night-sky seasons moon-phases apparent-motion stars-universe',
   '과학과 안전':'infection-prevention'
 };

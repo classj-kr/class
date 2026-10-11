@@ -35,6 +35,7 @@ test('official 2022 areas and courses, and one auditable primary placement per a
  assert.equal(placements['infection-prevention'].area,'과학과 사회');
  assert.equal(placements['infection-prevention'].category,'과학과 안전');
  assert.equal(placements['water-cycle'].category,'물질의 성질');
+ assert.equal(placements['land-sea'].category,'유체 지구');
  assert.equal(placements['speaker-lab'].category,'전기와 자기');
  assert.equal(placements['newton-prism'].area,'과학탐구실험1');
  assert.equal(placements['newton-prism'].category,'과학 탐구의 과정과 절차');
@@ -82,16 +83,44 @@ test('school/course filtering, old links, exact high-school domains and responsi
     assert.equal(await page.locator('[data-school-filter][aria-pressed="true"]').count(),1);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,`${width} ${school}: no horizontal overflow`);
     assert.equal(await page.locator('.level-entry:visible > span').evaluateAll(es=>es.some(e=>e.scrollWidth>e.clientWidth+1)),false,'Full experiment names must be readable');
+    if(['all','elementary','middle'].includes(school)){
+     assert.deepEqual(await page.locator('.foundation-section .subject-heading h3:visible').allTextContents(),foundation.map(a=>a.title),'All five official areas remain visible');
+     assert.deepEqual(await page.locator('.foundation-section .topic-row h4:visible').allTextContents(),foundation.flatMap(a=>a.categories),'All 18 categories remain visible, including empty categories');
+     for(const category of ['생명과학과 인간의 생활','과학과 지속가능한 사회','과학과 진로']){
+      const row=page.locator(`.foundation-section [data-category="${category}"]`);
+      assert(await row.isVisible());assert((await row.locator('.catalog-empty:visible').count())>0);
+     }
+    }else assert.equal(await page.locator('.foundation-section').isVisible(),false);
+    for(const section of ['high-common','high-elective']){
+     const visible=school==='all'||school===section;
+     const scope=page.locator(`.school-section[data-school="${section}"]`);
+     assert.equal(await scope.isVisible(),visible);
+     if(visible){
+      assert.deepEqual(await scope.locator('.subject-heading h3:visible').allTextContents(),courses.filter(c=>c.school===section).map(c=>c.title),'Include every official course, even without registered apps');
+      for(const course of courses.filter(c=>c.school===section)){
+       const domains=[...new Set(Object.values(standards).filter(s=>s.code.startsWith(course.prefix)).map(s=>s.domain))];
+       assert.deepEqual(await scope.locator(`[data-area="${course.title}"] .topic-row h4:visible`).allTextContents(),domains);
+      }
+     }
+    }
+    assert.equal(await page.locator('.catalog-empty:visible').evaluateAll(es=>es.some(e=>e.parentElement.querySelector('.level-entry:not([hidden])'))),false,'Empty labels must never accompany visible experiments');
     if(['elementary','middle'].includes(school)){
      for(const grade of school==='elementary'?['초3','초4','초5','초6']:['중1','중2','중3']){
       await page.locator(`[data-grade="${grade}"]`).click();
       const count=Object.values(map).filter(a=>a.grades.includes(grade)).length;
       assert.equal(await page.locator('.level-entry:visible').count(),count);
+      assert.equal(await page.locator('.foundation-section .topic-row:visible').count(),18,'Grade changes must not erase the official classification');
+      assert.equal(await page.locator('.catalog-empty:visible').evaluateAll(es=>es.every(e=>e.textContent==='선택한 학년에 등록된 실험 없음')),true);
      }
      await page.locator('[data-grade="전체"]').click();
     }
     if(shotDir&&[1440,390].includes(width)&&['all','high-common','high-elective'].includes(school))
      await screenshotWebp(page,path.join(shotDir,`${school}-${width}.webp`));
+    if(shotDir&&[1440,390].includes(width)&&school==='all'){
+     await screenshotWebp(page.locator('#society'),path.join(shotDir,`society-${width}.webp`));
+     await screenshotWebp(page.locator('#biology'),path.join(shotDir,`life-${width}.webp`));
+     await screenshotWebp(page.locator('[data-area="과학탐구실험2"]'),path.join(shotDir,`inquiry2-${width}.webp`));
+    }
    }
   }
   for(const [query,school,grade]of [

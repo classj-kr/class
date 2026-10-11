@@ -705,11 +705,11 @@
     },
     {
       "path": "learning/inquiry/science-lab/grade-navigation.css",
-      "sha256": "052cf417a957c32fa9178a311f2565e4f6254c293a2ce5d3188b9fe327177964"
+      "sha256": "681c8e930ee2cc55049136ccb2c332b7b4235757d6380154c27f5f1a46d87842"
     },
     {
       "path": "learning/inquiry/science-lab/grade-navigation.js",
-      "sha256": "e3ba71e426849967cc70a2ec5c6910ff7899dbf774fdb400b819bacd0cce2d08"
+      "sha256": "ddf395c342c58d2dbb95f2b91082795efde282fd73219c8d62afb8a2819cb2c9"
     },
     {
       "path": "learning/inquiry/science-lab/grade-quiz.js",
@@ -821,7 +821,7 @@
     },
     {
       "path": "learning/inquiry/science-lab/index.html",
-      "sha256": "246820088ff9b5e3524f5bf3639ad5ea011ed6bc2009c852e87e1ec41c5070e2"
+      "sha256": "747f66b4c92c5bb108bd539f4a39a3655fd226dd226a9cbff7daad4240dee343"
     },
     {
       "path": "learning/inquiry/science-lab/induction/app.js",
@@ -2465,11 +2465,11 @@
     },
     {
       "path": "scripts/audit_science_curriculum.cjs",
-      "sha256": "3290efebb573322152fe7f6301a7215643e55f828e9e0079e5182b395ef4c7b3"
+      "sha256": "b5c0c82999eef861f54a5ea9a14de0d61d969772728d5abd56c58ba055c94e18"
     },
     {
       "path": "scripts/build-current-science-audit.cjs",
-      "sha256": "758ffa08f14069681ea927d38e852c70fab9122e0b9717f3210d5d87fa4d5a70"
+      "sha256": "c85b9459837c63fbe31b48af94eae363d0b8ad4bb71370abd49474cf45dcb2e3"
     }
   ]
 }

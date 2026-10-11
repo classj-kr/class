@@ -7,11 +7,16 @@
  const gradeSchool=g=>g.startsWith('초')?'elementary':g.startsWith('중')?'middle':null;
  function render(){
   for(const entry of entries) entry.hidden=(school!=='all'&&entry.dataset.school!==school)||(grade!=='전체'&&!entry.dataset.grades.split(' ').includes(grade));
-  document.querySelectorAll('.level-cell').forEach(cell=>{cell.hidden=school!=='all'&&![...cell.querySelectorAll('.level-entry')].some(a=>!a.hidden);});
-  document.querySelectorAll('.topic-row,.subject-section,.school-section').forEach(section=>{section.hidden=![...section.querySelectorAll('.level-entry')].some(a=>!a.hidden);});
+  // Curriculum rows exist independently of the apps currently registered in them.
+  document.querySelectorAll('.level-cell').forEach(cell=>{cell.hidden=school!=='all'&&cell.dataset.school!==school;});
+  document.querySelectorAll('.school-section').forEach(section=>{
+   section.hidden=school!=='all'&&(section.dataset.school==='foundation'?!['elementary','middle'].includes(school):section.dataset.school!==school);
+  });
+  document.querySelectorAll('.catalog-empty').forEach(message=>{
+   message.hidden=[...message.parentElement.querySelectorAll('.level-entry')].some(a=>!a.hidden);
+   message.textContent=grade==='전체'?'이 범주에 등록된 실험 없음':'선택한 학년에 등록된 실험 없음';
+  });
   document.querySelector('.catalog').classList.toggle('school-filtered',school!=='all');
-  const foundationTitle=document.querySelector('.foundation-section > h2');
-  foundationTitle.textContent=school==='elementary'?'초 · 과학':school==='middle'?'중 · 과학':'초·중 · 과학';
   schoolButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.schoolFilter===school)));
   gradeChoices.hidden=!['elementary','middle'].includes(school);
   gradeButtons.forEach(b=>{
