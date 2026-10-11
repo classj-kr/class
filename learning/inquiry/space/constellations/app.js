@@ -1800,7 +1800,7 @@
                     btnKorea.onclick = function() {
                         setObserverLatitude(37.5);
                         updateObsBtns(this);
-                        if(statusTitle) statusTitle.textContent = "📍 관측자 위도 (37.5°N) = ⭐ 북극성 고도 (37.5°)";
+                        if(statusTitle) statusTitle.textContent = "📍 관측자 위도 (37.5°N) · ⭐ 북극성 고도 (약 37.5°)";
                         if(statusDetail) statusDetail.textContent = "💡 한국(중위도 37.5°N)에서는 북쪽 지평선으로부터 북극성까지의 높이각(고도)이 약 37.5°로 보입니다!";
                     };
                 }
@@ -1808,16 +1808,16 @@
                     btnEquator.onclick = function() {
                         setObserverLatitude(0);
                         updateObsBtns(this);
-                        if(statusTitle) statusTitle.textContent = "📍 관측자 위도 (0° 적도) = ⭐ 북극성 고도 (0°)";
-                        if(statusDetail) statusDetail.textContent = "💡 적도(위도 0°)에서는 북극성이 북쪽 지평선 바로 위(고도 0°)에 걸쳐서 보입니다!";
+                        if(statusTitle) statusTitle.textContent = "📍 관측자 위도 (0° 적도) · ⭐ 북극성 고도 (약 0°)";
+                        if(statusDetail) statusDetail.textContent = "💡 적도(위도 0°)에서는 천구의 북극이 북쪽 지평선에 놓이며, 북극성은 지평선 가까이에 위치합니다.";
                     };
                 }
                 if(btnNorth) {
                     btnNorth.onclick = function() {
                         setObserverLatitude(90);
                         updateObsBtns(this);
-                        if(statusTitle) statusTitle.textContent = "📍 관측자 위도 (90°N 북극점) = ⭐ 북극성 고도 (90°)";
-                        if(statusDetail) statusDetail.textContent = "💡 북극점(위도 90°N)에서는 북극성이 관측자 머리 정중앙 천정(고도 90°)에 위치합니다!";
+                        if(statusTitle) statusTitle.textContent = "📍 관측자 위도 (90°N 북극점) · ⭐ 북극성 고도 (약 90°)";
+                        if(statusDetail) statusDetail.textContent = "💡 북극점(위도 90°N)에서는 천구의 북극이 천정(고도 90°)에 놓이고, 북극성은 그 가까이에 위치합니다.";
                     };
                 }
                 if(btnAus) {

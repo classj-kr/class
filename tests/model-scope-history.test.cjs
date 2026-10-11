@@ -40,7 +40,7 @@ test('direct links respect 2022 astronomy topic boundaries', () => {
     'http://localhost/learning/inquiry/space/?school=elementary');
 });
 const history = {window:{}};
-for (const file of ['history-data','history-bronze','history-school','history-additions','history-atlas','history-questions','history-questions-modern','history-reading-questions']) {
+for (const file of ['history-data','history-bronze','history-school','history-additions','history-atlas','history-questions','history-questions-modern','history-reading-questions','history-map-questions']) {
   run(history, 'korea-map/data/' + file + '.js');
 }
 const {KOREA_HISTORY, KoreaHistorySchool, HistoryQuestions} = history.window;
@@ -60,8 +60,8 @@ test('every available history map has a distinct grade-specific explanation and 
       assert.ok(questions.length>=2,scene.id+':'+level+' needs multiple questions');
       for(const q of questions) {
         assert.ok(!ids.has(q.id),q.id);ids.add(q.id);counts[level]++;
-        assert.equal(new Set(q.options).size,4,q.id);
-        assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4,q.id);
+        assert.equal(new Set(q.options).size,level==='high'?5:4,q.id);
+        assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<q.options.length,q.id);
         assert.ok(q.explanation.length>15,q.id);
       }
     }

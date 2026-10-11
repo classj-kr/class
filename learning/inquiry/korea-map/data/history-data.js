@@ -221,7 +221,7 @@ window.KOREA_HISTORY = {
       "era": "삼국",
       "startYear": 300,
       "endYear": 399,
-      "overlay": "history/baekje-fourth.svg?v=20260921-3",
+      "overlay": "history/baekje-fourth.svg?v=20261011-boundary-1",
       "overlayBounds": [
         120,
         33,
@@ -400,7 +400,7 @@ window.KOREA_HISTORY = {
       "era": "삼국",
       "startYear": 400,
       "endYear": 499,
-      "overlay": "history/goguryeo-fifth.svg?v=20260921-3",
+      "overlay": "history/goguryeo-fifth.svg?v=20261011-boundary-1",
       "overlayBounds": [
         120,
         33,
@@ -640,7 +640,7 @@ window.KOREA_HISTORY = {
       "era": "삼국",
       "startYear": 500,
       "endYear": 599,
-      "overlay": "history/silla-sixth.svg?v=20260921-3",
+      "overlay": "history/silla-sixth.svg?v=20261011-boundary-1",
       "overlayBounds": [
         125,
         33,

@@ -48,7 +48,7 @@
             selectedOptionId:'option-'+(selected+1),correctOptionId:'option-'+(q.answer+1),
             correct:selected===q.answer};
     }
-    function practice(host, items, key) {
+    function practice(host, items, key, {onQuestion} = {}) {
         if(!host || sessions.get(host)===key)return;
         sessions.set(host,key);
         const schoolLevel=level;
@@ -59,6 +59,7 @@
             for(let i=options.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[options[i],options[j]]=[options[j],options[i]];}
             const table=q.table?`<div class="school-table"><table><caption>${esc(q.table.caption)}</caption><thead><tr>${q.table.headers.map(h=>`<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${q.table.rows.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
             host.innerHTML=`<section class="school-question school-practice" data-question-id="${esc(q.id)}" data-question-revision="${q.revision||1}" data-school-level="${schoolLevel}"><p class="practice-counter">확인 문제 · ${at+1} / ${items.length}</p><h3>${esc(q.question)}</h3>${table}<div class="school-options" role="group" aria-label="보기">${options.map((o,i)=>`<button type="button" data-option="${o.index}" data-option-id="option-${o.index+1}"><span>${i+1}</span>${esc(o.text)}</button>`).join('')}</div><div class="school-feedback" role="status"></div><button type="button" class="school-next" hidden>${at+1===items.length?'결과 보기':'다음 문제'}</button></section>`;
+            onQuestion?.(q);
             const card=host.firstElementChild,feedback=host.querySelector('.school-feedback'),next=host.querySelector('.school-next');
             let answered=false,firstAnswer=null;
             host.querySelectorAll('[data-option]').forEach(button=>button.addEventListener('click',()=>{
@@ -84,6 +85,7 @@
                 if(!answered)return;
                 if(++at<items.length){show();host.querySelector('[data-option]')?.focus();return;}
                 host.innerHTML=`<section class="school-question"><h3>학습 확인</h3><p>첫 응답에서 ${items.length}문제 중 ${answers.filter(a=>a.correct).length}문제를 맞혔어요.</p><button type="button" class="school-next">다시 풀기</button></section>`;
+                onQuestion?.(null);
                 host.querySelector('button').onclick=()=>{at=0;answers.length=0;show();};
             });
         }
