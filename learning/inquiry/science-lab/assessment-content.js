@@ -35,6 +35,17 @@
  const extra=typeof module!=='undefined'?require('./experiment-questions.js'):root.scienceExperimentQuestions;
  if(extra){Object.assign(misconceptions,extra.misconceptions);Object.assign(followups,extra.followups);}
  const quality=typeof module!=='undefined'?require('./question-quality-content.js'):root.scienceQualityContent;
- if(quality){Object.assign(misconceptions,quality.misconceptions);Object.assign(followups,quality.followups);}
+ if(quality){Object.assign(misconceptions,quality.misconceptions);for(const [slug,questions]of Object.entries(quality.followups)){const revised=new Map(questions.map(q=>[q.id,q]));for(const q of followups[slug]||[])if(!revised.has(q.id))revised.set(q.id,q);followups[slug]=[...revised.values()];}}
+ // Collected MiraeN 2022 grade-6 unit assessment af6154f5a69b7385, item 03,
+ // and workbook d544b624a4fe52c2 pp. 3–4, 9–10. Authored transfer questions.
+ const plantQuestions=[
+  {id:'microscope@root-result',topic:'뿌리 유무와 물의 감소',concept:'물 높이의 감소와 뿌리의 흡수',question:'같은 크기의 고추 모종 A는 뿌리를 잘랐고 B는 그대로 두었다. 처음 물 높이·빛·관찰 시간을 같게 했을 때 교과서 실험에서 예상되는 결과는?',choices:['A의 물이 B보다 많이 줄어든다','B의 물이 A보다 많이 줄어든다','A와 B의 물이 같은 만큼 줄어든다'],answer:1,why:'뿌리를 그대로 둔 B에서 물이 더 많이 줄어드는 결과를 뿌리의 물 흡수와 연결할 수 있습니다. 왼쪽·오른쪽의 위치 대신 뿌리 조건을 확인해야 합니다.',feedback:{0:'뿌리를 자른 쪽이 더 많이 흡수한다고 판단했습니다. 줄기 절단과 온전한 뿌리의 기능을 구별해 보세요.',2:'처음 물 높이가 같으면 나중에도 같다고 판단했습니다. 뿌리 유무라는 다른 조건이 있습니다.'}},
+  {id:'microscope@root-baseline',topic:'처음 조건이 다른 실험',concept:'마지막 수면과 감소량의 구별',question:'뿌리가 있는 A는 처음부터 물이 적었고, 뿌리를 자른 B는 처음부터 물이 많았다. 3일 뒤 A의 수면이 더 낮았다. 이 기록만으로 타당한 판단은?',choices:['A의 뿌리가 물을 더 많이 흡수했다고 확정한다','B의 뿌리를 자르면 물 흡수가 멈춘다고 확정한다','처음 높이가 달라 마지막 높이만으로 비교하기 어렵다'],answer:2,why:'비교하려는 것은 물의 감소입니다. 처음 높이를 같게 하고 나머지 조건도 통제해야 마지막 수면 차이를 해석하기 쉽습니다.',checks:['microscope@root-result']},
+  {id:'microscope@root-control',topic:'비교 조건 설계',concept:'뿌리 유무만 다르게 하기',question:'뿌리의 흡수 기능을 비교하려 한다. 크기와 잎 수가 비슷한 고추 모종 두 개를 준비했을 때 알맞은 비교 조건은?',choices:['물·빛·시간 같게, 뿌리 유무 다르게','뿌리·빛·시간 같게, 물의 양 다르게','뿌리·물·시간 같게, 빛의 양 다르게'],answer:0,why:'물·빛·시간은 같게 하고 알아보려는 뿌리 유무를 다르게 해야 그 영향을 비교할 수 있습니다.'},
+  {id:'microscope@leaf-water',topic:'봉지 속 물방울 해석',concept:'증산과 응결의 연결',question:'같은 조건에서 잎이 있는 모종의 마른 봉지에 물방울이 맺혔고, 잎을 제거한 쪽에서는 거의 보이지 않았다. 이 차이를 설명하는 과정은?',choices:['뿌리의 물 → 잎에서 수증기로 배출 → 봉지에서 응결','뿌리의 물 → 잎에서 액체 방울로 배출 → 봉지에 붙음','플라스크의 물 → 물방울로 증발 → 봉지를 통과'],answer:0,why:'잎을 통해 수증기 상태로 빠져나온 물이 봉지 안쪽에서 응결하면 눈에 보이는 물방울이 됩니다. 수증기와 물방울은 상태가 다릅니다.',feedback:{1:'눈에 보이는 봉지의 물방울을 잎에서 처음 나올 때의 상태와 같다고 판단했습니다.',2:'증발을 액체 물방울의 이동으로 판단했습니다. 증발은 액체가 기체로 변하는 과정입니다.'}}
+ ];
+ plantQuestions.push({id:'microscope@leaf-indicator',topic:'검출 도구의 처음 상태',concept:'대조 전후와 검출의 유효성',question:'염화코발트 종이는 물이 닿으면 푸른색에서 붉은색으로 변한다. 잎에 붙이기 전부터 붉은 종이가 이틀 뒤에도 붉었다. 타당한 판단은?',choices:['잎에서 나온 물을 색 변화로 확인했다','종이의 전후 색만으로는 확인할 수 없다','잎에서 물이 나오지 않음을 확인했다'],answer:1,why:'처음부터 붉었으므로 이틀 동안의 색 변화가 확인되지 않았습니다. 마른 푸른색 종이로 시작해 전후를 비교해야 합니다.',checks:['microscope@leaf-water']});
+ const plantIds=new Set(plantQuestions.map(q=>q.id));
+ followups.microscope=[...(followups.microscope||[]).filter(q=>!plantIds.has(q.id)),...plantQuestions];
  const api={misconceptions,followups};if(typeof module!=='undefined')module.exports=api;else{root.scienceMisconceptions=misconceptions;root.scienceFollowups=followups;}
 })(typeof window==='undefined'?globalThis:window);

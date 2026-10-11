@@ -63,6 +63,8 @@ function requiredExperimentModels(){
  more?.({add,t,r,l,c,f,q,step,modelNote});
  const final=typeof module!=='undefined'?require('./required-experiments-final.js').requiredFinalModels:window.requiredFinalModels;
  final?.({add,t,r,l,c,f,q,step,modelNote});
+ const plants=typeof module!=='undefined'?require('./plant-experiments.js'):window.sciencePlantExperiments;
+ plants?.registerModels({add,f,q});
  const apparatus=typeof module!=='undefined'?require('./apparatus-scenes.js'):window.scienceApparatusScenes;
  for(const spec of Object.values(specs).flat())if(apparatus?.ids.includes(spec.id)){
   const view=spec.view;spec.view=state=>{const result=view(state),figure=apparatus.render(spec.id,state,result);return{...result,svg:figure.svg,figure};};

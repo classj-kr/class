@@ -1,5 +1,7 @@
 # 과학실험 앱 검증 — 2026-10-11
 
+최근 교과서 절차 보완: 파일명 규칙 때문에 빠졌던 교과서 PDF 33개와 실험관찰 PDF 98개를 대조 목록에 포함했다. 현재 400개 PDF를 색인하며, 제목 후보 개수를 실험 수로 세지 않는다. 뿌리 유무에 따른 물 흡수, 잎 유무의 증산 비교, 염화코발트 종이 검출을 식물 앱에 추가했고, 미래엔 프리즘의 고정 입사 경로 비교와 천재 17장 카드의 원소 기호 찾기·배열·현대 주기율표 비교를 구현했다. 새 진단 문항은 식물 5개·프리즘 1개·원소 카드 2개다. [절차·근거·검사 범위](textbook-procedure-review/review.json), [식물 비교 화면](textbook-procedure-review/root-uptake-desktop.webp), [프리즘 비교 화면](textbook-procedure-review/prism-fixed-chromium-desktop.webp), [17장 카드 모바일 화면](textbook-procedure-review/mendeleev-17-webkit-390.webp). 전체 필수실험 총수와 전체 교과서 절차 대조는 계속 미확정·미완료다.
+
 최근 전체 화면 개선: 144개 앱 공통 디자인, 공유 장치 그림 10개 추가 개선·3개 정리, 모바일 전체 보기·확대, 배경별 글자 대비를 반영했다. 전체 224모드·1,671조건, 태블릿 896조건, Chrome·WebKit 모바일 전 앱 검사를 완료했다. [변경과 검증 범위](visual-polish/README.md).
 
 최근 시각자료 보완: 공유 실험 패널 25개를 검토하고 그중 장치·관찰 표현 11개를 다시 그렸다. 전도성은 수집한 2022 교과서의 6홈판·측정기 사진과 절차를 대조했다. [변경 범위와 화면 검토](apparatus-visual-review/review.json), [교체 후 화면](apparatus-visual-review/compound-conductivity-initial-1100.webp), [회귀 검사](apparatus-visual-review/final-tests.log). 이 검토는 144개 앱의 모든 그림을 다시 승인한 기록이 아니며, 실행 검사와 원문·화면 검토를 구별한다.

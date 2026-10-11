@@ -88,7 +88,7 @@
   const LABELS = ['㉠', '㉡', '㉢', '㉣'];
   const box = (label) => '<span class="mb-box">' + (label || '') + '</span>';
   // 가로식. 조각에 box() 를 섞어 쓴다. 연산 기호는 − × 가 아니라 화면 글꼴에 맞춘 것을 쓴다.
-  const SIGN = { '+': '+', '-': '−' };
+  const SIGN = { '+': '+', '-': '−', '*': '×', '/': '÷' };
   function expr() {
     return '<span class="mb-expr">' + Array.from(arguments).map((part) => (SIGN[part] ? '<i>' + SIGN[part] + '</i>' : part === '=' ? '<i>=</i>' : part)).join(' ') + '</span>';
   }
@@ -105,9 +105,9 @@
       + '<div class="mb-row"><span class="mb-sign"></span>' + (result ? cells(result) : '<span class="mb-cell mb-wide">' + box() + '</span>') + '</div>'
       + '</div>';
   }
-  // 차례로 계산하는 칸: 수 → (+a) → 수 → (−b) → 수. 조각은 수·box()·'+267' 같은 글이다.
+  // 차례로 계산하는 칸: 수 → (+a) → 수 → (−b) → 수. 조각은 수·box()·'+267'·'÷9' 같은 글이다.
   function chain(parts) {
-    return '<div class="mb-chain">' + parts.map((part) => (/^[+\-−]/.test(String(part)) ? '<span class="mb-step">' + String(part).replace('-', '−') + '</span>' : '<span class="mb-node">' + part + '</span>')).join('') + '</div>';
+    return '<div class="mb-chain">' + parts.map((part) => (/^[+\-−×÷]/.test(String(part)) ? '<span class="mb-step">' + String(part).replace('-', '−') + '</span>' : '<span class="mb-node">' + part + '</span>')).join('') + '</div>';
   }
   // 표. head: 첫 줄, rows: 나머지 줄(칸은 글). 칸이 많으면 좁은 화면에서 옆으로 밀어 본다.
   function table(head, rows) {
@@ -153,6 +153,25 @@
       out += '<text class="mb-shape-text" x="' + cx + '" y="' + (kind === 'triangle' ? 33.5 : 25.5) + '" text-anchor="middle">' + value + '</text>';
     });
     return '<svg class="mb-shapes" viewBox="0 0 ' + (list.length * 42 + 2) + ' 42" width="' + (list.length * 84 + 4) + '" role="img" aria-label="수가 적힌 도형">' + out + '</svg>';
+  }
+  // 줄지어 놓인 물건(동그라미). loop: 'rows' 는 가로줄마다, 'cols' 는 세로줄마다 한 묶음으로 둘러 준다.
+  function dots(rows, cols, options) {
+    const o = options || {}, gap = 20, pad = 12, width = pad * 2 + (cols - 1) * gap + 14, height = pad * 2 + (rows - 1) * gap + 14;
+    let out = '';
+    if (o.loop === 'rows') for (let r = 0; r < rows; r += 1) out += '<rect class="mb-loop" x="' + (pad - 5) + '" y="' + (pad - 3 + r * gap) + '" width="' + ((cols - 1) * gap + 24) + '" height="20" rx="10"/>';
+    if (o.loop === 'cols') for (let c = 0; c < cols; c += 1) out += '<rect class="mb-loop" x="' + (pad - 3 + c * gap) + '" y="' + (pad - 5) + '" width="20" height="' + ((rows - 1) * gap + 24) + '" rx="10"/>';
+    for (let r = 0; r < rows; r += 1) for (let c = 0; c < cols; c += 1) out += '<circle class="mb-thing" cx="' + (pad + 7 + c * gap) + '" cy="' + (pad + 7 + r * gap) + '" r="6"/>';
+    const said = '물건 ' + rows * cols + '개' + (o.loop === 'rows' ? ', ' + cols + '개씩 ' + rows + '묶음' : o.loop === 'cols' ? ', ' + rows + '개씩 ' + cols + '묶음' : ', ' + cols + '개씩 ' + rows + '줄');
+    return '<svg class="mb-dots" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.25) + '" role="img" aria-label="' + said + '">' + out + '</svg>';
+  }
+  // 수직선에서 0부터 step 씩 뛰어 max 까지 간다. 뛴 자리마다 수를 적는다.
+  function numberLine(max, step) {
+    const unit = Math.min(13, 300 / max), x = (v) => 14 + v * unit, y = 34, width = 28 + max * unit;
+    let out = '<line class="mb-axis" x1="' + x(0) + '" y1="' + y + '" x2="' + x(max) + '" y2="' + y + '"/>';
+    for (let v = 0; v <= max; v += 1) out += '<line class="mb-axis" x1="' + x(v) + '" y1="' + (y - (v % step === 0 ? 5 : 3)) + '" x2="' + x(v) + '" y2="' + (y + (v % step === 0 ? 5 : 3)) + '"/>';
+    for (let v = 0; v <= max; v += step) out += '<text class="mb-axis-label" x="' + x(v) + '" y="' + (y + 17) + '" text-anchor="middle">' + v + '</text>';
+    for (let v = 0; v + step <= max; v += step) out += '<path class="mb-jump" d="M' + x(v) + ' ' + (y - 6) + 'Q' + x(v + step / 2) + ' ' + (y - 30) + ' ' + x(v + step) + ' ' + (y - 6) + '"/>';
+    return '<svg class="mb-numberline" viewBox="0 0 ' + width + ' 58" width="' + Math.round(width * 1.15) + '" role="img" aria-label="수직선: 0부터 ' + step + '씩 뛰어 ' + max + '까지">' + out + '</svg>';
   }
   const chars = (n) => String(n).split('');
   // 수 모형: 백 모형(판)·십 모형(막대)·일 모형(낱개)
@@ -296,6 +315,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, chars, blocks, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, count, plain, josa, name, NAMES, esc, LABELS, box, expr, column, chars, blocks, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, E, nick, addPair, subPair, pairNear, ADD, SUB, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -28,9 +28,9 @@ const EXTRA_SEEDS = Array.from({ length: 60 }, (_, i) => i * 7919 + 13);
 function carries(a, b) { let n = 0, c = 0; const at = []; for (let i = 0; i < 3; i += 1) { c = (a % 10) + (b % 10) + c >= 10 ? 1 : 0; n += c; at.push(c); a = Math.trunc(a / 10); b = Math.trunc(b / 10); } return { n, at }; }
 function borrows(a, b) { let n = 0, c = 0; for (let i = 0; i < 3; i += 1) { c = (a % 10) - (b % 10) - c < 0 ? 1 : 0; n += c; a = Math.trunc(a / 10); b = Math.trunc(b / 10); } return n; }
 const calc = (a, op, b) => (op === '+' ? a + b : a - b);
-// 식 글("345+278-(120-15)")을 셈한다. 숫자와 + - * ( ) 만 받는다.
+// 식 글("345+278-(120-15)", "56/7")을 셈한다. 숫자와 + - * / ( ) 만 받는다.
 function evaluate(text) {
-  assert.match(text, /^[\d+\-*() ]+$/, '식이 아니다: ' + text);
+  assert.match(text, /^[\d+\-*\/() ]+$/, '식이 아니다: ' + text);
   return Function('"use strict"; return (' + text + ');')();
 }
 const strip = (html) => String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
