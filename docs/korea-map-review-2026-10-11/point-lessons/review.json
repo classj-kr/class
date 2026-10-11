@@ -48,10 +48,19 @@
     ]
   },
   "production": {
-    "status": "pending"
+    "status": "verified",
+    "commit": "69cf51f199287c94443e544f64b9336e8890fd71",
+    "url": "https://classj.kr/learning/inquiry/korea-map/?school=high&historyScene=goguryeo-fifth#history",
+    "checks": [
+      "Chrome: right list, numeric marker, and map label each open Chungju point dialog",
+      "Photo loaded; Batang font applied; dialog width equals scrollWidth (758px)",
+      "Point dialog links to map quiz; second question displays Chungju stele and maegum interpretation with 3 map points",
+      "No browser console errors"
+    ]
   },
   "screenshots": [
     "desktop.webp",
-    "mobile.webp"
+    "mobile.webp",
+    "production.webp"
   ]
 }
