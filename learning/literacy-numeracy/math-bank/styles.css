@@ -246,3 +246,11 @@ button, input, select { font: inherit; color: inherit; }
 .mb-longdiv .mb-ld-top td.mb-ld-hook::after { content: ''; position: absolute; left: -0.12em; top: -2px; bottom: 1px; width: 0.5em; border-right: 2px solid var(--ink); border-radius: 0 60% 60% 0 / 0 50% 50% 0; }
 .mb-longdiv .mb-ld-sub td:nth-child(n+3) { border-bottom: 2px solid var(--ink); }
 .mb-longdiv td.mb-ld-blank { padding: 1px 0; }
+
+/* 그림그래프 */
+.mb-picto td.mb-picto-cell { text-align: left; min-width: 168px; white-space: normal; line-height: 1; padding: 7px 10px; background: #fff; }
+.mb-pic { display: inline-block; border-radius: 50%; background: #1d4ed8; margin: 2px; vertical-align: middle; }
+.mb-pic-big { width: 20px; height: 20px; }
+.mb-pic-mid { width: 14px; height: 14px; background: #d97706; }
+.mb-pic-small { width: 9px; height: 9px; background: #5b8def; }
+.mb-picto-legend { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 2px; font-size: 0.98rem; align-items: center; }
