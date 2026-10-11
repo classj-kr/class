@@ -5,7 +5,7 @@ const APP_DIRECTORIES = Object.freeze([
   'room', 'schooladmin', 'school-election', 'teacher', 'vote',
 ]);
 const SITE_PAGES = Object.freeze([
-  'privacy.html', 'school-setup.html', 'student-privacy.html', 'support.html', 'terms.html',
+  'credits.html', 'privacy.html', 'school-setup.html', 'student-privacy.html', 'support.html', 'terms.html',
 ]);
 
 // Public URLs stay unchanged while application sources live under apps/.
