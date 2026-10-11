@@ -28,14 +28,28 @@ const EXTRA_SEEDS = Array.from({ length: 60 }, (_, i) => i * 7919 + 13);
 function carries(a, b) { let n = 0, c = 0; const at = []; for (let i = 0; i < 3; i += 1) { c = (a % 10) + (b % 10) + c >= 10 ? 1 : 0; n += c; at.push(c); a = Math.trunc(a / 10); b = Math.trunc(b / 10); } return { n, at }; }
 function borrows(a, b) { let n = 0, c = 0; for (let i = 0; i < 3; i += 1) { c = (a % 10) - (b % 10) - c < 0 ? 1 : 0; n += c; a = Math.trunc(a / 10); b = Math.trunc(b / 10); } return n; }
 const calc = (a, op, b) => (op === '+' ? a + b : a - b);
-// 식 글("345+278-(120-15)", "56/7")을 셈한다. 숫자와 + - * / ( ) 만 받는다.
+// 식 글("345+278-(120-15)", "56/7", 나머지 "47%6")을 셈한다. 숫자와 + - * / % ( ) 만 받는다.
 function evaluate(text) {
-  assert.match(text, /^[\d+\-*\/(). ]+$/, '식이 아니다: ' + text);
+  assert.match(text, /^[\d+\-*\/%(). ]+$/, '식이 아니다: ' + text);
   return Function('"use strict"; return (' + text + ');')();
 }
 const strip = (html) => String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
 const pairsOf = (list) => { const out = []; for (let i = 0; i < list.length; i += 1) for (let j = i + 1; j < list.length; j += 1) out.push([list[i], list[j]]); return out; };
 const hundred = (n) => Math.round(n / 100) * 100;
+// 나눗셈 세로셈의 과정에 적히는 수를 엔진과 따로 밟아 본다: 앞에서부터 한 자리씩 붙여 가다 나눌 수 있으면 빼는 수를 적고,
+// 그 아래에는 남은 수 옆에 다음에 나눌 수 있을 때까지 아래 자리 숫자를 내려 쓴 수를 적는다.
+function longRows(a, b) {
+  const s = String(a), rows = []; let cur = 0;
+  for (let i = 0; i < s.length; i += 1) {
+    cur = cur * 10 + Number(s[i]);
+    if (cur < b) continue;
+    rows.push(cur - (cur % b)); cur %= b;
+    let shown = String(cur), j = i;
+    while (j < s.length - 1 && Number(shown) < b) { j += 1; shown += s[j]; }
+    rows.push(Number(shown));
+  }
+  return rows;
+}
 // 수 카드에서 세 장을 골라 만들 수 있는 세 자리 수 전부
 function threeDigit(digits) {
   const out = new Set();
@@ -129,12 +143,12 @@ test('은행: 같은 문제가 두 번 실리지 않고, 회차가 문항을 빠
       assert.deepEqual(local(B.makeRound(unit, group.id, level, rounds + 1)), []);
       for (const item of bank) {
         assert.ok(!keys.has(item.key), '열쇠가 겹친다: ' + item.key); keys.add(item.key);
-        // 수를 지우고 본 글이 같으면 수만 다른 같은 문제다. 받아올림·받아내림 조건이 걸린 계산 문제(facts.rule)만
-        // 묶음이 다를 때 같은 꼴을 허락한다(묶음마다 조건이 다르다).
+        // 수를 지우고 본 글이 같으면 수만 다른 같은 문제다. 계산 조건이 걸린 계산 문제(facts.rule)만 같은 꼴을 허락한다:
+        // 조건의 이름이 서로 다르거나(내림이 있는가, 몫이 몇 자리인가 …), 이름 없이 묶음마다 조건이 다른 경우(rule: true)이다.
         const shape = strip(item.text + ' ' + (item.figure || '')).replace(/\d+/g, '#');
-        const before = seen.get(shape), ruled = Boolean(item.facts && item.facts.rule);
-        if (before) assert.ok(ruled && before.ruled && before.groups.every((g) => g !== group.id), `같은 꼴이 두 번: ${item.key} 와 ${before.key} — ${shape}`);
-        seen.set(shape, { key: item.key, ruled, groups: (before ? before.groups : []).concat([group.id]) });
+        const before = seen.get(shape), rule = item.facts && item.facts.rule, tag = rule === true ? 'group:' + group.id : rule ? 'rule:' + rule : null;
+        if (before) assert.ok(tag && before.tags.every((t) => t && t !== tag), `같은 꼴이 두 번: ${item.key} 와 ${before.key} — ${shape}`);
+        seen.set(shape, { key: item.key, tags: (before ? before.tags : []).concat([tag]) });
       }
     }
   }
@@ -179,10 +193,11 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     // 고르기·견주기 문항의 식(choose.exprs, who.exprs)도 같은 잣대로 본다.
     // 단위 바꾸기(unit)·시간(clock) 식도 본다. 시간 식의 3600·60 은 초로 바꾸는 수라 글에 없어도 된다.
     const timed = Boolean(f.clock || f.clockExprs);
-    const recomputed = (f.calc || []).map(([text]) => text).concat((f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || [], (f.unit || []).map((u) => u.expr), (f.clock || []).map((c) => c.expr));
+    const recomputed = (f.calc || []).map(([text]) => text).concat((f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || [], (f.unit || []).map((u) => u.expr), (f.clock || []).map((c) => c.expr), f.pick ? [f.pick.expr] : []);
     if (recomputed.length && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
       // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다. 세로셈은 숫자가 칸마다 떨어져 있으니 붙여 읽은 것도 함께 본다.
-      const seen = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 '));
+      // 나눗셈 세로셈(표)은 숫자가 칸마다 떨어져 있으니 표의 설명 글도 함께 읽는다.
+      const seen = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 ').replace(/<table[^>]*aria-label="([^"]*)"[^>]*>/g, ' $1 | '));
       const shown = new Set((seen.match(/\d+/g) || []).concat(seen.match(/\d+\.\d+/g) || [], seen.replace(/(\d) (?=\d)/g, '$1').match(/\d+/g) || []));
       for (const text of recomputed) for (const n of text.match(/\d+(?:\.\d+)?/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)) || (timed && (n === '3600' || n === '60')), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
     }
@@ -206,14 +221,24 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
       const [a, b] = f.divide, q = Math.trunc(a / b), r = a % b;
       assert.ok(b >= 2 && b <= 9 && a >= b && a <= 999, label);
       if (!f.divideFree) assert.deepEqual(item.inputs.map((i) => i.answer), r === 0 && item.inputs.length === 1 ? [q] : [q, r], label);
+      const tens = Math.trunc(a / 10), hundreds = Math.trunc(a / 100), noZero = !String(q).includes('0');
       const RULE = {
-        tens: () => a % 10 === 0 && a <= 90 && r === 0,
-        plain: () => a <= 99 && r === 0 && (Math.trunc(a / 10) % b === 0),
-        down: () => a <= 99 && r === 0 && (Math.trunc(a / 10) % b !== 0) && Math.trunc(a / 10) >= b,
-        rest: () => a <= 99 && r !== 0,
-        three: () => a >= 100
-      }[at.group.id];
-      if (RULE && f.rule) assert.ok(RULE(), '묶음 조건에 안 맞는 나눗셈: ' + label);
+        tensPlain: () => a % 10 === 0 && a <= 90 && r === 0 && tens % b === 0,
+        tensDown: () => a % 10 === 0 && a <= 90 && r === 0 && tens % b !== 0 && tens > b,
+        plain: () => a <= 99 && a % 10 !== 0 && r === 0 && tens % b === 0,
+        down: () => a <= 99 && r === 0 && tens % b !== 0 && tens > b,
+        rest1: () => a <= 99 && r !== 0 && q >= 2 && q <= 9,
+        restPlain: () => a <= 99 && r !== 0 && tens % b === 0 && (a % 10) > b,
+        restDown: () => a <= 99 && r !== 0 && tens % b !== 0 && tens > b,
+        hundreds: () => a % 100 === 0 && r === 0 && hundreds % b === 0,
+        full: () => a >= 100 && r === 0 && hundreds >= b && noZero,
+        short: () => a >= 100 && r === 0 && hundreds < b,
+        zero: () => a >= 100 && r === 0 && hundreds >= b && !noZero,
+        restFull: () => a >= 100 && r !== 0 && hundreds >= b && noZero,
+        restShort: () => a >= 100 && r !== 0 && hundreds < b
+      }[f.rule];
+      if (f.rule) assert.ok(RULE, '모르는 나눗셈 조건 ' + f.rule + ': ' + label);
+      if (f.rule) assert.ok(RULE(), '묶음 조건(' + f.rule + ')에 안 맞는 나눗셈: ' + label);
     }
     if (DIV_UNITS.has(at.unit.id)) {
       // 3학년 2학기 나눗셈은 한 자리 수로 나눈다. 글·그림·풀이의 모든 나눗셈을 본다.
@@ -517,6 +542,45 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.equal(gaps.filter((g) => g === Math.min(...gaps)).length, 1, label);
       assert.equal(item.choice.answer, gaps.indexOf(Math.min(...gaps)), label); tally('closer');
     }
+    if (f.remainders) {
+      // 나눗셈 여러 개: 나누어떨어지는 것은 하나뿐인가(zero), 몫과 나머지를 바르게 적은 것은 하나뿐인가(right).
+      const rows = f.remainders;
+      const good = f.want === 'zero' ? rows.map(([a, b]) => a % b === 0) : rows.map(([a, b], i) => f.said[i][0] * b + f.said[i][1] === a && f.said[i][1] >= 0 && f.said[i][1] < b);
+      assert.ok(f.want === 'zero' || f.want === 'right', label);
+      assert.equal(good.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, good.indexOf(true), label); tally('remainders');
+    }
+    if (f.only) {
+      // 보기 가운데 기준 이상(이하)인 수는 하나뿐이고 그것이 답이다.
+      const hit = f.only.values.map((v) => (f.only.test === 'atLeast' ? v >= f.only.target : v <= f.only.target));
+      assert.ok(f.only.test === 'atLeast' || f.only.test === 'atMost', label);
+      assert.equal(hit.filter(Boolean).length, 1, label); assert.equal(item.choice.answer, hit.indexOf(true), label); tally('only');
+    }
+    if (f.pick) {
+      // 수 보기 가운데 식의 값과 같은 것은 하나뿐이다.
+      assert.equal(new Set(f.pick.options).size, f.pick.options.length, label);
+      assert.equal(item.choice.answer, f.pick.options.indexOf(evaluate(f.pick.expr)), label); assert.ok(item.choice.answer >= 0, label); tally('pick');
+    }
+    if (f.longDiv) {
+      // 세로셈 과정의 빈칸: 과정을 따로 밟아 그 줄의 수와 견준다. 'quot' 은 몫.
+      const { a, b, asks } = f.longDiv, rows = longRows(a, b);
+      assert.ok(b >= 2 && b <= 9 && a <= 999, label);
+      asks.forEach((ask, i) => assert.equal(answerAt(item, i), ask === 'quot' ? Math.trunc(a / b) : rows[ask], `세로셈 ${a}÷${b} ${ask} — ${label}`));
+      assert.equal(asks.length, item.inputs.length, label); tally('longDiv');
+    }
+    if (f.divCards) {
+      // 수 카드 세 장: 가장 큰 두 자리 수를 만들어 남은 수로 나눈다(나누어떨어지게 낸다).
+      const [x, y, z] = f.divCards.slice().sort((p, q) => q - p);
+      assert.ok(new Set(f.divCards).size === 3 && z >= 2 && (x * 10 + y) % z === 0, label);
+      assert.equal(answerAt(item, 0), (x * 10 + y) / z, label); tally('divCards');
+    }
+    if (f.nearHundred) { const [a, h] = f.nearHundred; assert.ok(hundred(a) === h && a !== h && Math.abs(a - h) <= 15, label); tally('nearHundred'); }
+    if (f.wrongDivide) {
+      // 잘못 나눈 수 바로잡기: 어떤 수를 되찾아 바른 수로 나눈다.
+      const { right, wrong, q, r } = f.wrongDivide, x = wrong * q + r;
+      assert.ok(r >= 1 && r < wrong && right !== wrong && right >= 2 && right <= 9 && wrong <= 9 && x <= 999, label);
+      assert.deepEqual(local(item.inputs.map((i) => i.answer)), [Math.trunc(x / right), x % right], label); tally('wrongDivide');
+    }
+    if (f.restTalk) { const { a, b, saidQ, saidR } = f.restTalk; assert.ok(saidQ * b + saidR === a && saidR >= b && saidQ >= 1, label); tally('restTalk'); }
     if (f.claimed) {
       const good = f.claimed.map(([text, said]) => evaluate(text) === said);
       assert.equal(good.filter((g) => g === f.claimedWant).length, 1, label);

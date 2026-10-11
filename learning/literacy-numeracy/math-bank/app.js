@@ -164,7 +164,7 @@
   const answerText = (item) => (item.choice
     ? plainText(item.choice.options[item.choice.answer])
     : item.fraction ? item.inputs[0].answer + '/' + item.inputs[1].answer
-    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit || '')).join(', '));
+    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit ? (/^[A-Za-z]/.test(input.unit) ? ' ' : '') + input.unit : '')).join(', '));
 
   // 답한 문항을 그린다(방금 답했을 때와 이어 풀기로 되살릴 때 함께 쓴다).
   function paintAnswered(item, card, response, ok) {
