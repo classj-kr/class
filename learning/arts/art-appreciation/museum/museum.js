@@ -859,8 +859,7 @@
     const movement=getMovement(work),movementCard=document.getElementById('movement-card');
     movementCard.hidden=!movement;
     if(movement){const [tag,guide]=movement;document.getElementById('movement-title').textContent=guide.title;document.getElementById('movement-description').textContent=guide.description;document.getElementById('movement-connection').textContent=`이 작품에서는 ${tag}의 특징을 찾아볼 수 있어요.`;}
-    const legal=document.getElementById('modal-legal'),rights=String(work.rights||''),needsCredit=/©|CC BY|공공누리|저작권자|출처 표시/.test(rights);
-    legal.hidden=!needsCredit;legal.open=false;document.getElementById('modal-rights').textContent=needsCredit?rights:'';document.getElementById('modal-source').href=work.source;modal.showModal();keysClear();
+    modal.showModal();keysClear();
   }
 
   function keysClear(){Object.keys(keys).forEach(k=>keys[k]=false);velocity.set(0,0,0);}
