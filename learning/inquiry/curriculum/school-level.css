@@ -65,10 +65,16 @@ html[data-school-level="elementary"] .model-inspector { display:none; }
 .atlas .atlas-header:has(.school-level) #catalogToggle { position:fixed; left:52px; }
 .atlas:has(.school-level) .map-caption { top:64px; }
 .atlas .catalog-tabs { padding-left:48px; }
+@media(min-width:861px) and (max-width:1150px) {
+    .atlas .atlas-header:has(.school-level) .projection-toggle { top:60px; right:calc(var(--lesson) + 60px); }
+    .atlas:has(.school-level) .map-caption { top:110px; }
+    .atlas .info-panel { top:108px; max-height:calc(100dvh - 128px); }
+}
 @media(max-width:600px) {
     .atlas .atlas-header:has(.school-level) .projection-toggle { top:12px; right:12px; }
     .atlas .atlas-header > .school-level { top:58px; right:12px; }
     .atlas:has(.school-level) .view-controls { top:108px; }
+    .atlas .maplibregl-ctrl-top-right { top:244px; }
     .atlas:has(.school-level) .map-caption { top:106px; right:60px; }
     .atlas .atlas-catalog .catalog-tabs { padding-left:100px; }
 }

@@ -1,8 +1,8 @@
 {
   "summary": {
     "date": "2026-10-11",
-    "apps": 108,
-    "originalQuestions": 432,
+    "apps": 121,
+    "originalQuestions": 484,
     "examQuestions": 241,
     "sourcePaths": 4008,
     "duplicatePaths": 426,
@@ -14,9 +14,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 89,
-    "reviewRecords": 120,
-    "appsWithSelectedSourceReview": 108,
+    "reviewedSources": 98,
+    "reviewRecords": 133,
+    "appsWithSelectedSourceReview": 121,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -3487,7 +3487,7 @@
       "sha256": "f0a490bc4a29971111f07ffbad0bba11a078f895000a6a34be664915c3f6ffac",
       "kind": "pdf",
       "pages": 8,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -3557,7 +3557,7 @@
       "sha256": "dd8c8169d8e6fbececddd0fbf16d22abc194475b2041d69ad8807077e4e18121",
       "kind": "pdf",
       "pages": 8,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -3599,7 +3599,7 @@
       "sha256": "31afcde4eb7f7e27cfb7e798149ce5fa1e723d6aabb7e789026101bc01196a5b",
       "kind": "pdf",
       "pages": 8,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -4033,7 +4033,7 @@
       "sha256": "88b3398d0063221f3b76675e8aa2ef84a3a6baa358ba77488fad5550f025c317",
       "kind": "pdf",
       "pages": 8,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -4145,7 +4145,7 @@
       "sha256": "000c068a0397ecb82a6ff0f2a3b13f5d366dfd8969850f69585871389e5f12f0",
       "kind": "pdf",
       "pages": 48,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -4159,7 +4159,7 @@
       "sha256": "428056f4452acd591d269e6f6f3c5e5426e70cf7e3a995999ba5473bf692de77",
       "kind": "pdf",
       "pages": 40,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -4173,7 +4173,7 @@
       "sha256": "110fa0ab76336b3c5582cdb6bf739c93e26ba760d06f145487f654b5a6ab6d51",
       "kind": "pdf",
       "pages": 32,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -4611,7 +4611,7 @@
       "sha256": "e0f6072944407ce906876fc29fbc1a701600f2862d287da77818c597cadbed89",
       "kind": "pdf",
       "pages": 4,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -4625,7 +4625,7 @@
       "sha256": "ae885f31c6b75cd205f89bb08ad86c9530817b877646985b84614198bd42d853",
       "kind": "pdf",
       "pages": 6,
-      "status": "indexed-only",
+      "status": "selected-passages-reviewed",
       "revisionEvidence": {
         "kind": "explicit-2022-path"
       },
@@ -71235,6 +71235,172 @@
       ],
       "principle": "동일한 30초 동안 물/비누 세척 뒤 남은 형광 로션 비교",
       "method": "평가자료의 심화 문항과 채점 기준 대조. 로션 제거 관찰을 실제 미생물 전멸로 확대 해석하는 오답을 구분"
+    },
+    {
+      "id": "6969a20462cfe732",
+      "locators": [
+        5,
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "speaker-lab"
+      ],
+      "principle": "자석 부착, 에나멜선 끝의 피복 제거, 코일 연결을 수행한 뒤 교류 신호로 종이컵 진동판을 움직인다. 코일 감은 수와 신호 주파수를 바꾸고 진동·소리의 관계를 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 제작 절차를 재현한 단면 모형이다. 진동은 느리게 확대하며 실제 종이컵의 공명·효율·재료별 음량은 계산하지 않는다. 듣기 기능은 선택한 주파수의 참고음이며 제작품의 녹음이 아니다."
+    },
+    {
+      "id": "22578837da73a2b3",
+      "locators": [
+        5,
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "wireless-power"
+      ],
+      "principle": "송신 코일의 전류 방식, 수신 코일의 거리와 각도를 조작하여 자기 선속과 수신 전압·발광 다이오드의 변화를 비교한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 10 kHz 교류와 이상적인 결합 계수를 사용한 모형이다. 발광 여부는 모형의 문턱 전압으로 판단한다. 실제 충전 회로의 공진·정류·충전 제어는 구현하지 않으며 직류 전환 순간의 과도 현상도 별도이다."
+    },
+    {
+      "id": "000c068a0397ecb8",
+      "locators": [
+        32
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "magnetic-brake"
+      ],
+      "principle": "같은 높이에서 구리판 사이로 자석과 알루미늄 조각을 동시에 떨어뜨리고 도착 시간과 운동을 비교한다. 판을 절연체로 바꾸어 맴돌이 전류의 역할을 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 자석의 감속을 속도에 비례하는 저항력으로 근사한다. 형상·틈·자석 세기에 따른 실제 낙하 시간은 예측하지 않는다. 알루미늄 조각은 외부 자기장이 없는 비교 물체로 취급한다."
+    },
+    {
+      "id": "000c068a0397ecb8",
+      "locators": [
+        39
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "transistor-speaker"
+      ],
+      "principle": "직접 연결과 전지를 사용하는 증폭 회로를 전환하여 입력·출력 파형과 진동을 비교한다. 입력 진폭을 늘려 증폭 한계를 관찰하고 전원 공급의 역할을 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 교과서의 회로 제작 목적에 맞춘 기능 모형이다. 전압 이득 10과 전원에 따른 출력 제한을 가정하며 실제 C1815 바이어스·부품값으로 계산한 회로 시뮬레이터는 아니다."
+    },
+    {
+      "id": "428056f4452acd59",
+      "locators": [
+        6,
+        7
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "soap-film"
+      ],
+      "principle": "원형 틀을 담가 막을 만든 뒤 수직으로 세워 시간이 흐를 때 나타나는 반사 무늬를 관찰한다. 광원의 색과 관찰 높이를 바꾸어 두 반사광의 간섭을 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 수직 입사와 막 굴절률 1.33의 두 광선 근사다. 배수 과정은 가정한 두께 변화이며 실제 시간별 두께나 정확한 백색광 색상을 예측하지 않는다."
+    },
+    {
+      "id": "428056f4452acd59",
+      "locators": [
+        21,
+        22
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "polarization"
+      ],
+      "principle": "같은 거리에서 편광판 없이 기준 세기를 확인한 뒤 편광판을 넣고 회전한다. 네 광원 모형의 상대 세기 변화를 비교하고 한 편광판 관찰의 한계를 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. A·B는 서로 다른 방향의 선편광, C는 무편광, D는 원편광인 이상 광원이다. 실제 제품별 디스플레이 측정값이 아니다. 한 장의 편광판과 세기만으로 무편광과 원편광을 구별할 수 없음을 포함한다."
+    },
+    {
+      "id": "110fa0ab76336b3c",
+      "locators": [
+        5,
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "electron-slits"
+      ],
+      "principle": "전자를 한 개씩 또는 연속으로 방출하고 도착 점이 쌓이는 과정을 관찰한다. 한 슬릿·두 슬릿, 슬릿 간격, 경로 측정 여부를 비교하며 조건 변경 시 검출판을 비운다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 단색 전자의 원거리 확률 분포를 사용하는 모형이다. 검출 전 특정 궤적을 그리지 않는다. 경로 측정은 완전한 결어긋남으로 단순화하며 수치 눈금은 실제 장치 길이가 아니다."
+    },
+    {
+      "id": "f0a490bc4a299711",
+      "locators": [
+        5,
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "gas-identification"
+      ],
+      "principle": "기체통의 질량을 재고 수상 치환으로 기체를 모은 뒤 다시 질량을 측정한다. 실린더 안팎의 수면 높이를 조절하고 수증기압·물기둥 압력을 반영한 몰 질량으로 세 미지 기체를 비교한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 25 ℃, 101.3 kPa의 이상 기체 모형이며 수증기압 3.17 kPa를 사용한다. 기체의 물에 대한 용해·누출·실제 기체 오차는 구현하지 않는다. 특히 이산화 탄소의 실제 수상 치환에서는 용해 영향을 별도로 고려해야 한다."
+    },
+    {
+      "id": "dd8c8169d8e6fbec",
+      "locators": [
+        5,
+        6
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "sugar-phase"
+      ],
+      "principle": "물 500 g에 농도에 맞는 설탕을 녹이고 물·설탕물을 나란히 가열 또는 냉각한다. 시간에 따른 두 온도 곡선에서 끓기·얼기 시작하는 지점과 농도에 따른 차이를 비교한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 1기압 묽은 비전해질 용액의 근사다. 끓는점 오름 상수 0.512, 어는점 내림 상수 1.86 K·kg/mol을 사용한다. 과냉각은 생략하고 상변화가 진행되며 남은 용액의 농도가 증가하는 방향을 반영한다."
+    },
+    {
+      "id": "31afcde4eb7f7e27",
+      "locators": [
+        3,
+        4
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "hess-calorimetry"
+      ],
+      "principle": "수산화 나트륨을 물에 녹여 온도를 확인한 뒤 실온으로 식혀 염산을 섞는 경로와, 물·염산에 고체를 직접 넣는 경로를 비교한다. 용액 질량과 온도 상승으로 각 단계의 방출 열량을 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 같은 시작·끝 상태의 이상 열량계 모형이다. 용해·중화 엔탈피 −44.5·−57.3 kJ/mol과 용액 비열 4.2 J/(g·℃)를 가정하며 열손실·희석열·열량계 열용량은 생략한다."
+    },
+    {
+      "id": "ae885f31c6b75cd2",
+      "locators": [
+        1,
+        2
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "buffer-solution"
+      ],
+      "principle": "6홈판의 물·완충 용액에 각각 같은 양의 산 또는 염기를 떨어뜨린다. 처음 시료 A·D는 그대로 두고, 전극을 헹구어 각 홈의 pH를 비교한다. 첨가를 늘려 완충 용량의 한계도 확인한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 각 10 mL, 초기 pH 7의 이상적인 인산 완충계 한 평형을 사용한다. pKa 7.21, 총농도 0.1 M, 한 방울 0.05 mL로 가정한다. 실제 완충액의 조성·활동도·다단 해리는 생략한다."
+    },
+    {
+      "id": "e0f6072944407ce9",
+      "locators": [
+        4
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "salt-hydrolysis"
+      ],
+      "principle": "염화 암모늄·사이안화 나트륨과 염화 나트륨 대조 시료의 농도를 고르고 pH 전극을 헹구어 측정한다. 짝산·짝염기의 가수 분해에 따른 액성을 비교한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 25 ℃의 가상 시료에서 물의 자동 이온화까지 포함하여 전하 균형을 계산한다. 활동도와 실제 전극 오차는 생략한다. 제공된 교과서의 HCN 상수 표기 Kb는 문맥상 Ka로 해석하고 6.2×10⁻¹⁰을 사용했다."
+    },
+    {
+      "id": "88b3398d0063221f",
+      "locators": [
+        3,
+        4
+      ],
+      "locatorType": "PDF page",
+      "apps": [
+        "bean-respiration"
+      ],
+      "principle": "같은 양의 마른 콩·발아 콩의 CO₂와 온도를 비교하고, KOH 유무에 따른 호흡계 잉크 이동 및 발아 콩·삶은 콩의 보온병 온도를 관찰한다.",
+      "method": "해당 PDF 쪽의 절차·관찰·결론 텍스트를 대조하고 장치 조작과 기본 4문항·전이 2문항을 작성했다. 스피커·자기 브레이크·증폭 회로·비누막·편광·전자 슬릿·기체 수집·설탕물·열량계·6홈판·콩 장치의 원문 그림도 확인했다. 같은 초기 조건에서 호흡의 방향과 대조군 역할을 비교하는 정성 모형이다. 표시한 센서 값·변화율·잉크 이동은 측정 자료가 아니다. 호흡계는 온도·압력 일정, 호흡 지수 1, CO₂ 완전 흡수를 가정한다."
     }
   ],
   "activityReviews": [
@@ -74258,6 +74424,227 @@
       "reviewedEvidence": [
         "764c91a83f8bf462",
         "ee3ee343af97cac2"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "speaker-lab",
+      "title": "종이컵 스피커 만들기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리02-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "6969a20462cfe732"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "wireless-power",
+      "title": "두 코일의 무선 전력 전달",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물리02-06"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "22578837da73a2b3"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "magnetic-brake",
+      "title": "구리판 사이의 자기 브레이크",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12전자01-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "000c068a0397ecb8"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "transistor-speaker",
+      "title": "트랜지스터로 소리 증폭하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12전자01-07"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "000c068a0397ecb8"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "soap-film",
+      "title": "세워 둔 비누막의 간섭",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12전자02-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "428056f4452acd59"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "polarization",
+      "title": "편광판으로 광원 조사하기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12전자02-03"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "428056f4452acd59"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "electron-slits",
+      "title": "한 전자씩 보내는 이중 슬릿",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12전자03-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "110fa0ab76336b3c"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "gas-identification",
+      "title": "기체의 질량과 부피로 종류 찾기",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물에01-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "f0a490bc4a299711"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "sugar-phase",
+      "title": "설탕물의 끓는점과 어는점",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물에02-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "dd8c8169d8e6fbec"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "hess-calorimetry",
+      "title": "두 경로로 확인하는 헤스 법칙",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12물에03-02"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "31afcde4eb7f7e27"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "buffer-solution",
+      "title": "물과 완충 용액의 pH 비교",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12반응01-05"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "ae885f31c6b75cd2"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "salt-hydrolysis",
+      "title": "염 수용액의 액성 확인",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12반응01-04"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "e0f6072944407ce9"
+      ],
+      "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
+    },
+    {
+      "slug": "bean-respiration",
+      "title": "발아하는 콩의 호흡과 열",
+      "grades": [
+        "고2",
+        "고3"
+      ],
+      "standards": [
+        "12세포02-01"
+      ],
+      "originalQuestions": 4,
+      "linkedExamQuestions": [],
+      "reviewedEvidence": [
+        "88b3398d0063221f"
       ],
       "contentVerdict": "No whole-app scientific certification; source review is limited to the listed principles."
     }

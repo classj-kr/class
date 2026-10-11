@@ -22,6 +22,16 @@
   let routeMap = null;
   let routeMapLayer = null;
   let routeRequest = 0;
+  const routeMarkerRenderers = new WeakMap();
+
+  function routeMarkerRenderer(map) {
+    // Canvas captures clicks across its entire rectangle, including empty space
+    // above place pins after panning. SVG receives clicks only on the route dots.
+    if (!routeMarkerRenderers.has(map)) {
+      routeMarkerRenderers.set(map, L.svg({ pane: "studyMarkers" }));
+    }
+    return routeMarkerRenderers.get(map);
+  }
 
   const inScope = (place) => activeCategory === "all" || place.categories.includes(activeCategory);
   const provinceOf = (place) => String(place.region).split(" ")[0];
@@ -199,7 +209,7 @@
     if (routeLayer) routeLayer.clearLayers();
     ensureRouteMap();
     routeMapLayer.clearLayers();
-    L.circleMarker([place.lat, place.lng], { pane: "studyMarkers", radius: 9, color: "#fff", weight: 3, fillColor: "#ef6b3b", fillOpacity: 1 })
+    L.circleMarker([place.lat, place.lng], { pane: "studyMarkers", renderer: routeMarkerRenderer(routeMap), radius: 9, color: "#fff", weight: 3, fillColor: "#ef6b3b", fillOpacity: 1 })
       .bindTooltip(place.name, { direction: "top" }).addTo(routeMapLayer);
     requestAnimationFrame(() => { routeMap.invalidateSize(); routeMap.setView([place.lat, place.lng], 9, { animate: false }); });
     try {
@@ -215,10 +225,10 @@
       const line = (body.route.coordinates || []).map((point) => [Number(point[1]), Number(point[0])]).filter((point) => Number.isFinite(point[0]) && Number.isFinite(point[1]));
       if (line.length < 2) return;
       const school = [body.school.latitude, body.school.longitude];
-      [routeLayer, routeMapLayer].forEach((layer) => {
+      [[routeLayer, map], [routeMapLayer, routeMap]].forEach(([layer, layerMap]) => {
         if (!layer) return;
         L.polyline(line, { pane: "themeLines", color: "#ef6b3b", weight: 5, opacity: 0.9, lineCap: "round", lineJoin: "round", interactive: false }).addTo(layer);
-        L.circleMarker(school, { pane: "studyMarkers", radius: 9, color: "#fff", weight: 3, fillColor: "#277562", fillOpacity: 1 })
+        L.circleMarker(school, { pane: "studyMarkers", renderer: routeMarkerRenderer(layerMap), radius: 9, color: "#fff", weight: 3, fillColor: "#277562", fillOpacity: 1 })
           .bindTooltip("우리 학교", { direction: "top" }).addTo(layer);
       });
       const bounds = L.latLngBounds(line);
