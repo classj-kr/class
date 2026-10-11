@@ -140,7 +140,7 @@
         if (input.label && !item.fraction) field.append(el('span', null, input.label));
         if (input.lead) field.append(el('span', null, input.lead));
         const box = document.createElement('input');
-        box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : 6;
+        box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : input.decimal ? 8 : 6;
         box.setAttribute('aria-label', (input.label || '답') + ' 적기');
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));
