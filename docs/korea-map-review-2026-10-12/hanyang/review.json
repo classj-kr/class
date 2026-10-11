@@ -25,5 +25,20 @@
     "tablet": "820×768 / 배경 경계 노출을 발견하여 지형 범위 확대 후 재검증"
   },
   "limits": "37개 전환 확인은 DOM 상태 검사이며 전체 역사 내용 및 37개 화면의 새 시각 검수를 의미하지 않는다.",
-  "deployment": "pending"
+  "deployment": {
+    "status": "verified",
+    "commit": "3760bc6877f0a2c84a33109d872283b35a02c001",
+    "url": "https://classj.kr/learning/inquiry/korea-map/?school=middle&historyScene=hanyang-capital#history",
+    "terrainDecodedSize": [
+      1792,
+      1536
+    ],
+    "checks": [
+      "운영 중 한양 화면 시각 확인",
+      "세 지점 설명 열기 확인",
+      "운영 고 문제 지도 시각 확인",
+      "운영 브라우저 오류 0",
+      "학교급 중으로 복원"
+    ]
+  }
 }
