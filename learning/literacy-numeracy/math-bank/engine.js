@@ -207,14 +207,15 @@
   }
   // 그림그래프. units: 그림 하나가 나타내는 수(큰 것부터 2~3가지), rows: [이름, 수] — 수가 null 이면 그 줄의 그림을 비워 둔다.
   // head: [항목 이름, 수량 이름], each: 수 뒤에 붙는 낱말(명·상자 …). 그림 설명에는 줄마다 그림의 종류와 개수만 적는다.
-  function pictograph(head, rows, units, each) {
+  // options.legend === false 이면 그림이 나타내는 수를 적지 않는다(표와 견주어 알아내는 문제).
+  function pictograph(head, rows, units, each, options) {
     const sizes = units.length === 3 ? ['big', 'mid', 'small'] : ['big', 'small'];
     const split = (value) => { let rest = value; return units.map((u) => { const n = Math.floor(rest / u); rest -= n * u; return n; }); };
     const icon = (size) => '<i class="mb-pic mb-pic-' + size + '"></i>';
     const body = rows.map(([name, value]) => '<tr><td>' + name + '</td><td class="mb-picto-cell">' + (value === null ? '' : split(value).map((n, i) => icon(sizes[i]).repeat(n)).join('')) + '</td></tr>').join('');
     const said = rows.map(([name, value]) => name + ' ' + (value === null ? '그림 없음' : split(value).map((n, i) => units[i] + '짜리 ' + n + '개').join(', '))).join(' / ');
     return '<div class="mb-table-wrap"><table class="mb-table mb-picto" role="img" aria-label="그림그래프: ' + said + '"><thead><tr><th>' + head[0] + '</th><th>' + head[1] + '</th></tr></thead><tbody>' + body + '</tbody></table></div>'
-      + '<div class="mb-picto-legend">' + units.map((u, i) => '<span>' + icon(sizes[i]) + ' ' + u + each + '</span>').join('') + '</div>';
+      + (options && options.legend === false ? '' : '<div class="mb-picto-legend">' + units.map((u, i) => '<span>' + icon(sizes[i]) + ' ' + u + each + '</span>').join('') + '</div>');
   }
   // 차례로 계산하는 칸: 수 → (+a) → 수 → (−b) → 수. 조각은 수·box()·'+267'·'÷9' 같은 글이다.
   function chain(parts) {
