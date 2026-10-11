@@ -108,7 +108,11 @@ html:has(.history-point-dialog[open]), body:has(.history-point-dialog[open]) { o
 .history-context-label.mountain::before { content: '▲ '; font-size: 11px; }
 .history-context-label.water { color: #276780; }
 .history-context-label.gate { color: #766247; font-size: 12px; }
-.history-local-relief { image-rendering: auto; }
+.history-local-relief {
+  image-rendering: auto;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
+}
 #map.history-map:has(.history-local-relief) .leaflet-bottom.leaflet-left { bottom: 60px; }
 .history-order-launch { margin-top: 12px; background: #174b55; border-color: #174b55; color: #fff; }
 .history-order-launch:hover:not(:disabled) { background: #27616b; color: #fff; }

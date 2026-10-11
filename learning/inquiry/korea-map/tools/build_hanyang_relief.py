@@ -4,6 +4,7 @@ Outputs are lossless WebP. Original PNG responses are decoded in memory only.
 Python dependencies: numpy, Pillow. Run from any working directory.
 """
 import io
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -14,7 +15,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'history' / 'hanyang'
 ZOOM = 13
-REGION = (126.915, 37.515, 127.065, 37.635)
+REGION = (126.86, 37.49, 127.13, 37.67)
 
 
 def tile(lon, lat):
@@ -62,6 +63,14 @@ def main():
             'format':'lossless WebP', 'nativeZoom':ZOOM,
             'source':'Mapzen terrain tiles / AWS Open Data', 'urls':sources}
     (OUT/'relief.json').write_text(json.dumps(meta, indent=2)+'\n', encoding='utf-8')
+    data_path = ROOT / 'data' / 'history-local-maps.js'
+    if data_path.exists():
+        prefix, payload = data_path.read_text(encoding='utf-8').split(' = ', 1)
+        data = json.loads(payload.strip().rstrip(';'))
+        version = hashlib.sha256(target.read_bytes()).hexdigest()[:12]
+        data['hanyang-capital']['relief'] = {
+            'src': f'history/hanyang/relief.webp?v={version}', 'bounds': meta['bounds']}
+        data_path.write_text(prefix + ' = ' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
     print(json.dumps({'size':image.size,'bounds':meta['bounds'],'bytes':target.stat().st_size}))
 
 
