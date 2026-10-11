@@ -25,6 +25,7 @@ const { createRhythmTraining } = require("./rhythm-training");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform } = require("./classroom-platform");
 const { redirectLegacyHosts } = require("./canonical-host");
+const { hideUnpublishedLessons } = require("./unpublished-lessons");
 const { createKmaWeather } = require("./kma-weather");
 const { registerSiteIcons } = require("./site-icons");
 const { APP_DIRECTORIES, SITE_PAGES, resolveSitePath } = require("./site-paths");
@@ -141,6 +142,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// Keep withdrawn lessons unavailable before login redirects and static serving.
+app.use(hideUnpublishedLessons);
 
 function startLearningApp(relativeDirectory, port, label) {
   const appDirectory = path.join(SITE_ROOT, relativeDirectory);
