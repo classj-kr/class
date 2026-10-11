@@ -121,6 +121,15 @@
           unit: '줄', explain: `처음에 서 있던 학생은 ${expr(p, '*', n, '=', p * n)}(명)이고, ${r}명이 더 와서 ${expr(p * n, '+', r, '=', p * n + r)}(명)이 되었다. ${expr(p * n + r, '/', k, '=', (p * n + r) / k)}`,
           facts: { calc: [[`(${p}*${n}+${r})/${k}`, 0]] }
         });
+      }),
+      H('h-limit', '두 재료로 만들 수 있는 수', '두 재료로 만들 수 있는 개수(기본 ③54) — 많은 쪽의 몫·두 몫의 합을 보기에 넣는다', (d) => {
+        // 장미 4송이와 튤립 3송이로 한 다발: 장미 32송이, 튤립 21송이 → 7다발
+        const [[a, b, p], [c, e, q]] = d.until(() => [fact(d), fact(d)], ([x, y]) => x[1] !== y[1] && x[2] !== y[2] && x[0] !== y[0] && new Set([Math.min(x[2], y[2]), Math.max(x[2], y[2]), x[2] + y[2], Math.abs(x[2] - y[2])]).size === 4);
+        const list = d.shuffle([Math.min(p, q), Math.max(p, q), p + q, Math.abs(p - q)]);
+        return C(`꽃다발 한 개를 만드는 데 장미 ${b}송이와 튤립 ${e}송이가 필요하다. 장미 ${a}송이와 튤립 ${c}송이로 만들 수 있는 꽃다발은 몇 개인가?`, list.map((v) => `${v}개`), list.indexOf(Math.min(p, q)), {
+          explain: `장미로는 ${expr(a, '/', b, '=', p)}(개), 튤립으로는 ${expr(c, '/', e, '=', q)}(개)까지 만들 수 있다. 두 꽃이 모두 있어야 하므로 ${Math.min(p, q)}개까지 만들 수 있다.`,
+          facts: { limit: { pairs: [[a, b], [c, e]], options: list } }
+        });
       })
     ]
   });

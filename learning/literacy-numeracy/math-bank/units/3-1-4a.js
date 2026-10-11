@@ -38,7 +38,7 @@
   const near = (d, center, spread) => d.until(() => { const list = factorings(center + d.int(-spread, spread)).filter(([x]) => x % 10 !== 0); return list.length ? d.pick(list) : null; }, Boolean);
 
   B.addUnit({
-    id: '3-1-4', grade: 3, semester: 1, no: 4, title: '곱셈', version: 3,
+    id: '3-1-4', grade: 3, semester: 1, no: 4, title: '곱셈', version: 4,
     groups: [
       {
         id: 'tens', title: '(몇십)×(몇)', standard: CALC,
@@ -86,6 +86,14 @@
               explain: `한 줄에 ${a}씩 ${b}줄이다. ` + times(a, b), facts: { calc: [[String(b), 0], [E(a, '*', b), 1]] }
             });
           }),
+          T('plain-split', '몇십과 몇으로 갈라 곱하기', '①11 ②13 ③12', (d) => {
+            // 32×3 = 30×3 + 2×3
+            const [a, b] = mulPair(d, (c, x) => MUL.none(c, x) && x % 10 >= 2), tens = Math.floor(a / 10) * 10, ones = a % 10;
+            return M(`${a} × ${josa(b, '을/를')} 몇십과 몇으로 갈라 계산하려고 한다. ㉠, ㉡, ㉢에 알맞은 수는?`, [{ label: LABELS[0], answer: tens * b }, { label: LABELS[1], answer: ones * b }, { label: LABELS[2], answer: a * b }], {
+              figure: lines([expr(tens, '*', b, '=', box(LABELS[0])), expr(ones, '*', b, '=', box(LABELS[1])), expr(a, '*', b, '=', box(LABELS[2]))]),
+              explain: `${times(tens, b)}, ${times(ones, b)}이고, 두 곱을 더하면 ${a * b}이다.`, facts: { calc: [[E(tens, '*', b), 0], [E(ones, '*', b), 1], [E(a, '*', b), 2]] }
+            });
+          }),
           T('plain-word', '문장제: 몇 배', '②51 ③16', (d) => {
             const [a, b] = mulPair(d, MUL.none);
             return N(`도서관에 동화책이 ${a}권 있고, 과학책은 동화책의 ${b}배만큼 있다. 과학책은 몇 권인가?`, a * b, { unit: '권', explain: `${a}의 ${b}배는 ${times(a, b)}이다.`, facts: { calc: [[E(a, '*', b), 0]] } });
@@ -124,6 +132,14 @@
               figure: column(chars(a), '*', [String(b)], chars(a * b), [box(LABELS[0]), '']),
               explain: `일의 자리 계산 ${times(a % 10, b)}에서 ${up * 10}을 십의 자리로 올림한다. ㉠은 ${up}이고 ${up * 10}을 나타낸다.`,
               facts: { carry: [a, b], mul: [a, b] }
+            });
+          }),
+          T('ones-model', '그림으로 올림 알아보기', '①18 ②12 ③21', (d) => {
+            // 16씩 3줄: 1이 18개 → 10이 1개, 1이 8개
+            const [a, b] = mulPair(d, (c, x, y) => MUL.ones(c, x) && x <= 29 && y <= 4 && ((x % 10) * y) % 10 !== 0), ones = a % 10, all = ones * b;
+            return M(`그림은 ${a}씩 ${b}줄을 나타낸 것이다. 1은 모두 ${box(LABELS[0])}개이고, 이것은 10이 ${box(LABELS[1])}개, 1이 ${box(LABELS[2])}개인 수와 같다. ㉠, ㉡, ㉢에 알맞은 수는?`, [{ label: LABELS[0], answer: all }, { label: LABELS[1], answer: Math.floor(all / 10) }, { label: LABELS[2], answer: all % 10 }], {
+              figure: counters(a, b), explain: `1은 한 줄에 ${ones}개씩 ${b}줄이므로 ${times(ones, b)}(개)이다. 1이 10개이면 10이 1개가 되므로 10이 ${Math.floor(all / 10)}개, 1이 ${all % 10}개인 수와 같다. ${times(a, b)}`,
+              facts: { calc: [[`${ones}*${b}`, 0], [`(${ones}*${b}-(${ones}*${b})%10)/10`, 1], [`(${ones}*${b})%10`, 2]], mul: [a, b] }
             });
           }),
           T('ones-word', '문장제: 날마다 같은 양', '①23 ②23 ③24', (d) => {
@@ -251,6 +267,15 @@
               explain: `${times(a, b)}이다. ${list[at][0]}만 계산 결과가 다르다.`, facts: { choose: { exprs: list.map(([, text]) => text), rule: 'odd' }, mul: [a, b] }
             });
           }),
+          T('mix-about', '어림하여 곱에 가장 가까운 수 고르기', '③73 ①72', (d) => {
+            // 49×6 → 50×6=300
+            const a = d.until(() => d.int(18, 92), (v) => [1, 2, 8, 9].includes(v % 10)), b = d.int(3, 8), about = Math.round(a / 10) * 10 * b;
+            const list = d.shuffle([about, about - b * 10, about + b * 10]);
+            return C(`${a} × ${b}의 곱에 가장 가까운 수는?`, list.map(String), list.indexOf(about), {
+              explain: `${josa(a, '은/는')} ${Math.round(a / 10) * 10}에 가깝다. ${times(Math.round(a / 10) * 10, b)}이므로 곱은 ${about}에 가깝다.`,
+              facts: { choose: { exprs: list.map(String), rule: 'nearest', target: a * b }, mul: [a, b] }
+            });
+          }, { standard: EST }),
           T('mix-estimate', '어림셈', '①70 ②22 ③71', (d) => {
             // 28은 약 30, 28×6은 약 180
             const a = d.until(() => d.int(18, 92), (v) => [1, 2, 8, 9].includes(v % 10)), b = d.int(3, 8), about = Math.round(a / 10) * 10;

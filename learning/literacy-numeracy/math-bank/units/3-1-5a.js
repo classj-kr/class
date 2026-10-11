@@ -13,7 +13,7 @@
 (function (root) {
   'use strict';
   const B = root.MathBank;
-  const { josa, name, NAMES, LABELS, box, lines, ruler, kmLine, timeColumn, route, N, M, C } = B.kit;
+  const { josa, name, NAMES, LABELS, box, lines, tagged, ruler, kmLine, timeColumn, route, N, M, C } = B.kit;
   const G = B.kit.geo;
   const UNIT = '4수03-16', MEASURE = '4수03-15', SECOND = '4수03-13', TIME = '4수03-14';
   const T = (id, title, ref, make, more) => Object.assign({ id, level: '기본', title, source: '수집본 기본 자료(' + ref + ')', make }, more || {});
@@ -51,7 +51,7 @@
   const NOT_IN_ONE_SECOND = ['손 씻기', '이 닦기', '운동장 한 바퀴 달리기', '동화책 한 권 읽기', '점심 먹기', '옷 갈아입기'];
 
   B.addUnit({
-    id: '3-1-5', grade: 3, semester: 1, no: 5, title: '길이와 시간', version: 3,
+    id: '3-1-5', grade: 3, semester: 1, no: 5, title: '길이와 시간', version: 4,
     groups: [
       {
         id: 'mm', title: 'mm와 cm', standard: UNIT,
@@ -77,6 +77,13 @@
               figure: lines([`${c} cm ${m} mm = ${box(LABELS[0])} mm`, `${v} mm = ${box(LABELS[1])} cm ${box(LABELS[2])} mm`]),
               explain: `1 cm는 10 mm이다. ${c} cm ${m} mm는 ${c * 10} mm보다 ${m} mm 더 긴 ${c * 10 + m} mm이고, ${v} mm는 ${Math.floor(v / 10) * 10} mm보다 ${v % 10} mm 더 긴 ${Math.floor(v / 10)} cm ${v % 10} mm이다.`,
               facts: { calc: [[`${c}*10+${m}`, 0]], unseen: [10], unit: [{ expr: String(v), base: 10, at: [1, 2] }] }
+            });
+          }),
+          T('mm-name', '길이 읽기', '①2 ②2 ③1', (d) => {
+            const [c, m] = d.until(() => [d.int(2, 9), d.int(2, 9)], ([x, y]) => x !== y);
+            const rows = d.shuffle([[`${c} 센티미터 ${m} 밀리미터`, true], [`${c} 미터 ${m} 센티미터`, false], [`${c} 밀리미터 ${m} 센티미터`, false], [`${c} 센티미터 ${m} 미터`, false]]);
+            return C(`${c} cm ${m} mm를 바르게 읽은 것은?`, rows.map(([text]) => text), rows.findIndex(([, ok]) => ok), {
+              explain: 'cm는 센티미터, mm는 밀리미터라고 읽는다.', facts: { truth: rows.map(([, ok]) => ok), want: true }
             });
           }),
           T('mm-compare', '두 길이의 비교', '①22 ②21 ③31', (d) => {
@@ -108,6 +115,10 @@
               explain: `1 km는 1000 m이다. ${k} km ${m} m는 ${k * 1000} m보다 ${m} m 더 먼 ${k * 1000 + m} m이고, ${v} m는 ${Math.floor(v / 1000) * 1000} m보다 ${v % 1000} m 더 먼 ${Math.floor(v / 1000)} km ${v % 1000} m이다.`,
               facts: { calc: [[`${k}*1000+${m}`, 0]], unseen: [1000], unit: [{ expr: String(v), base: 1000, at: [1, 2] }] }
             });
+          }),
+          T('km-say', '「몇 km보다 몇 m 더 먼 거리」', '①15 ②3 ③13', (d) => {
+            const k = d.int(2, 9), m = d.until(() => d.int(105, 950), (v) => v % 100 !== 0);
+            return N(`${k} km보다 ${m} m 더 먼 거리는 몇 m인가?`, k * 1000 + m, { unit: 'm', explain: `${k} km는 ${k * 1000} m이다. ${k * 1000} m보다 ${m} m 더 먼 거리는 ${k * 1000 + m} m이다.`, facts: { calc: [[`${k}*1000+${m}`, 0]], unseen: [1000] } });
           }),
           T('km-wrong', '거리를 잘못 나타낸 것 찾기', '①9 ②10 ③8·18', (d) => {
             // 2 km 89 m=2089 m, 1530 m=1 km 530 m, 3 km 7 m=3070 m(틀림)
@@ -151,6 +162,12 @@
           T('guess-over', '1 km보다 긴 것 고르기', '①18 ②17 ③23', (d) => {
             const long = d.pick(OVER_KM), list = d.shuffle(d.shuffle(UNDER_KM).slice(0, 3).concat([long]));
             return C('길이가 1 km보다 긴 것은?', list, list.indexOf(long), { explain: `1 km는 1000 m이다. ${josa(long, '은/는')} 1 km보다 훨씬 길다.`, facts: { truth: list.map((v) => v === long), want: true } });
+          }),
+          T('guess-span', '아는 길이로 어림하기', '③27', (d) => {
+            const who = d.pick(NAMES), a = d.int(12, 16), n = d.int(4, 7);
+            return N(`${who}의 한 뼘의 길이는 약 ${a} cm이다. 책상의 긴 쪽의 길이가 ${who}의 뼘으로 ${n}뼘쯤일 때, 책상의 긴 쪽의 길이는 약 몇 cm인가?`, a * n, {
+              unit: 'cm', lead: '약', explain: `한 뼘이 약 ${a} cm이므로 ${n}뼘은 약 ${a} × ${n} = ${a * n}(cm)이다.`, facts: { calc: [[`${a}*${n}`, 0]] }
+            });
           }),
           T('guess-map', '기준 거리로 어림하기', '①21 ②20 ③28·29', (d) => {
             // 집~학교가 약 500 m일 때 약 1 km 떨어진 곳
@@ -207,6 +224,12 @@
             const [thing, n, unit] = d.pick(TIMES), list = ['초', '분', '시간'];
             return C(`${josa(thing, '은/는')} 약 ${n}□이다. □ 안에 알맞은 단위는?`, list, list.indexOf(unit), { explain: `${josa(thing, '은/는')} 약 ${n}${unit}이다.`, facts: { truth: list.map((u) => u === unit), want: true } });
           }),
+          T('sec-wrong', '시간의 단위를 잘못 쓴 문장 찾기', '③46', (d) => {
+            const WRONG = { 초: '시간', 분: '초', 시간: '초' };
+            const picks = d.until(() => d.shuffle(TIMES).slice(0, 4), (list) => new Set(list.map(([, , u]) => u)).size === 3), bad = d.int(0, 3);
+            const list = picks.map(([thing, n, unit], i) => `${josa(thing, '은/는')} 약 ${n}${i === bad ? WRONG[unit] : unit}이다.`);
+            return C('시간의 단위를 알맞게 쓰지 않은 것은?', list, bad, { explain: `${josa(picks[bad][0], '은/는')} 약 ${picks[bad][1]}${picks[bad][2]}이다.`, facts: { truth: list.map((_, i) => i !== bad), want: false } });
+          }),
           T('sec-one', '1초 동안 할 수 있는 일', '①35 ②37 ③44', (d) => {
             const quick = d.pick(IN_ONE_SECOND), list = d.shuffle(d.shuffle(NOT_IN_ONE_SECOND).slice(0, 3).concat([quick]));
             return C('1초 동안 할 수 있는 일로 알맞은 것은?', list, list.indexOf(quick), { explain: `1초는 아주 짧은 시간이다. ${quick}는 1초쯤 걸린다.`, facts: { truth: list.map((v) => v === quick), want: true } });
@@ -227,7 +250,7 @@
             const [a, b] = sumPair(d, true, true), sum = hms(secs(a) + secs(b));
             return M('다음을 계산하시오.', ask(['시', '분', '초'], sum), {
               figure: timeColumn(atCells(a), '+', spanCells(b)), explain: `초끼리 더하면 ${a[2] + b[2]}초, 분끼리 더하면 ${a[1] + b[1]}분이다. 60초는 1분, 60분은 1시간으로 받아올림하면 ${at(sum)}이다.`,
-              facts: { clock: [{ expr: `${S(a)}+${S(b)}`, parts: 'hms', at: 0 }], timeRule: { op: '+', a, b } }
+              facts: { clock: [{ expr: `${S(a)}+${S(b)}`, parts: 'hms', at: 0 }], timeRule: { op: '+', a, b }, rule: 'carry' }
             });
           }),
           T('tadd-end', '문장제: 끝난 시각', '①54 ②52 ③61', (d) => {
@@ -241,6 +264,20 @@
             const [a, b] = sumPair(d, false, true), sum = hms(secs(a) + secs(b));
             return M(`수영을 ${span(a)} 동안 한 다음 바로 달리기를 ${span(b)} 동안 하였다. 수영과 달리기를 한 시간은 모두 몇 시간 몇 분 몇 초인가?`, ask(['시간', '분', '초'], sum), {
               explain: `초끼리 더하면 ${a[2] + b[2]}초, 분끼리 더하면 ${a[1] + b[1]}분이다. 받아올림하면 ${span(sum)}이다.`, facts: { clock: [{ expr: `${S(a)}+${S(b)}`, parts: 'hms', at: 0 }] }
+            });
+          }),
+          T('tadd-easy', '받아올림이 없는 덧셈', '①41 ②49 ③49', (d) => {
+            const [a, b] = d.until(() => [[d.int(1, 8), d.int(11, 38), d.int(11, 38)], [d.int(1, 3), d.int(11, 20), d.int(11, 20)]], ([x, y]) => x[1] !== y[1] && x[2] !== y[2] && x[1] !== x[2]), sum = hms(secs(a) + secs(b));
+            return M('다음을 계산하시오.', ask(['시', '분', '초'], sum), {
+              figure: timeColumn(atCells(a), '+', spanCells(b)), explain: `시는 시끼리, 분은 분끼리, 초는 초끼리 더한다. ${at(sum)}`, facts: { clock: [{ expr: `${S(a)}+${S(b)}`, parts: 'hms', at: 0 }], timePlain: { op: '+', a, b }, rule: 'noCarry' }
+            });
+          }),
+          T('tadd-clock', '시계의 시각에서 얼마 후의 시각', '①55 ③59', (d) => {
+            const apart = (p, q) => { const gap = Math.abs(p - q) % 360; return Math.min(gap, 360 - gap); };
+            const [h, m, s] = d.until(() => [d.int(1, 10), d.int(2, 6) * 5, d.int(4, 11) * 5], ([x, y, z]) => y !== z && apart(x * 30 + y / 2, y * 6) >= 24 && apart(x * 30 + y / 2, z * 6) >= 24);
+            const b = d.until(() => [0, d.int(12, 24), d.int(15, 50)], (v) => s + v[2] >= 61 && (s + v[2]) % 60 !== 0), sum = hms(secs([h, m, s]) + secs(b));
+            return M(`시계가 나타내는 시각에서 ${span(b)} 후의 시각은 몇 시 몇 분 몇 초인가?`, ask(['시', '분', '초'], sum), {
+              figure: G.clock(h, m, s), explain: `시계가 나타내는 시각은 ${at([h, m, s])}이다. ${span(b)} 후의 시각은 ${at(sum)}이다.`, facts: { clock: [{ expr: `${S([h, m, s])}+${S(b)}`, parts: 'hms', at: 0 }] }
             });
           }),
           T('tadd-fix', '잘못 계산한 덧셈 바로잡기', '①51 ②57 ③51', (d) => {
@@ -267,7 +304,31 @@
             const [a, b] = diffPair(d, true, true), gap = hms(secs(a) - secs(b));
             return M('다음을 계산하시오.', ask(['시', '분', '초'], gap), {
               figure: timeColumn(atCells(a), '-', spanCells(b)), explain: `1분을 60초로, 1시간을 60분으로 받아내림하여 계산하면 ${at(gap)}이다.`,
-              facts: { clock: [{ expr: `${S(a)}-${S(b)}`, parts: 'hms', at: 0 }], timeRule: { op: '-', a, b } }
+              facts: { clock: [{ expr: `${S(a)}-${S(b)}`, parts: 'hms', at: 0 }], timeRule: { op: '-', a, b }, rule: 'carry' }
+            });
+          }),
+          T('tsub-easy', '받아내림이 없는 뺄셈', '①46 ②64 ③55', (d) => {
+            const [a, b] = d.until(() => [[d.int(5, 11), d.int(31, 56), d.int(31, 56)], [d.int(1, 3), d.int(11, 28), d.int(11, 28)]], ([x, y]) => x[1] - y[1] !== x[2] - y[2] && x[1] !== x[2]), diff = hms(secs(a) - secs(b));
+            return M('다음을 계산하시오.', ask(['시', '분', '초'], diff), {
+              figure: timeColumn(atCells(a), '-', spanCells(b)), explain: `시는 시끼리, 분은 분끼리, 초는 초끼리 뺀다. ${at(diff)}`, facts: { clock: [{ expr: `${S(a)}-${S(b)}`, parts: 'hms', at: 0 }], timePlain: { op: '-', a, b }, rule: 'noCarry' }
+            });
+          }),
+          T('tsub-fix', '잘못 계산한 뺄셈 바로잡기', '①51 ②73 ③58', (d) => {
+            // 초를 받아내림하고도 분에서 1분을 빼지 않은 계산
+            const [a, b] = diffPair(d, true, false), diff = hms(secs(a) - secs(b)), wrong = [a[0] - b[0], a[1] - b[1], a[2] + 60 - b[2]];
+            return M('다음은 잘못 계산한 것이다. 바르게 계산한 값은 몇 시 몇 분 몇 초인가?', ask(['시', '분', '초'], diff), {
+              figure: timeColumn(atCells(a), '-', spanCells(b), atCells(wrong)), explain: `초끼리 뺄 수 없어 1분을 60초로 받아내림하였는데, 분에서 1분을 빼지 않았다. 바르게 계산하면 ${at(diff)}이다.`,
+              facts: { clock: [{ expr: `${S(a)}-${S(b)}`, parts: 'hms', at: 0 }], timeRule: { op: '-', a, b }, wrongClock: wrong }
+            });
+          }),
+          T('tsub-clocks', '두 시계의 시각으로 걸린 시간 구하기', '①64 ③65', (d) => {
+            const apart = (p, q) => { const gap = Math.abs(p - q) % 360; return Math.min(gap, 360 - gap); };
+            const clear = ([x, y, z]) => y !== z && y > 0 && z > 0 && apart(x * 30 + y / 2, y * 6) >= 24 && apart(x * 30 + y / 2, z * 6) >= 24;
+            const [start, took] = d.until(() => [[d.int(1, 10), d.int(1, 7) * 5, d.int(6, 11) * 5], [0, d.int(2, 4) * 5, d.int(2, 9) * 5]], ([x, y]) => x[2] + y[2] >= 65 && clear(x) && clear(hms(secs(x) + secs(y))));
+            const end = hms(secs(start) + secs(took));
+            return M('그림 그리기를 시작한 시각과 끝낸 시각이다. 그림을 그리는 데 걸린 시간은 몇 분 몇 초인가?', ask(['분', '초'], took), {
+              figure: lines(['시작한 시각', G.clock(start[0], start[1], start[2]), '끝낸 시각', G.clock(end[0], end[1], end[2])]),
+              explain: `시작한 시각은 ${at(start)}, 끝낸 시각은 ${at(end)}이다. ${at(end)} − ${at(start)} = ${span(took)}`, facts: { clock: [{ expr: `${S(end)}-${S(start)}`, parts: 'ms', at: 0 }] }
             });
           }),
           T('tsub-start', '문장제: 시작한 시각', '①65 ②67 ③63', (d) => {
