@@ -1836,6 +1836,102 @@ const scienceCurriculum = {
       "12전자03-01"
     ],
     "diagnostic": true
+  },
+  "gas-identification": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "기체의 질량과 부피로 종류 찾기",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에01-01"
+    ],
+    "diagnostic": true
+  },
+  "sugar-phase": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "설탕물의 끓는점과 어는점",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에02-02"
+    ],
+    "diagnostic": true
+  },
+  "hess-calorimetry": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "두 경로로 확인하는 헤스 법칙",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에03-02"
+    ],
+    "diagnostic": true
+  },
+  "buffer-solution": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "물과 완충 용액의 pH 비교",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응01-05"
+    ],
+    "diagnostic": true
+  },
+  "salt-hydrolysis": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "염 수용액의 액성 확인",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응01-04"
+    ],
+    "diagnostic": true
+  },
+  "bean-respiration": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "발아하는 콩의 호흡과 열",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포02-01"
+    ],
+    "diagnostic": true
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

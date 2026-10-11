@@ -22,24 +22,24 @@
 
 .atlas .lesson-description p,
 .atlas .info-panel .info-text p {
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.9;
   font-weight: 400;
 }
-.atlas .info-panel .info-exam li { font-size: 15px; line-height: 1.85; }
+.atlas .info-panel .info-exam li { font-size: 18px; line-height: 1.85; }
 .atlas :is(.spot-detail, .visual-caption, .info-photo figcaption) { line-height: 1.85; }
 
 /* Answer choices are reading content even though they are buttons. */
-.atlas #quizBody { font-size: 16px; line-height: 1.85; }
+.atlas #quizBody { font-size: 19px; line-height: 1.85; }
 .atlas #quizBody :is(button, .quiz-meta, .quiz-topic) { font-family: var(--interface-font); }
 .atlas #quizBody .quiz-options button {
   font-family: var(--reading-font);
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 400;
   line-height: 1.85;
 }
-.atlas #questionTitle { font-size: 20px; font-weight: 400; line-height: 1.75; }
-.atlas #answerFeedback { font-size: 16px; line-height: 1.9; }
+.atlas #questionTitle { font-size: 22px; font-weight: 400; line-height: 1.75; }
+.atlas #answerFeedback { font-size: 19px; line-height: 1.9; }
 .atlas .result-topics { font-size: 16px; }
 .atlas .question-table { font-size: 14px; line-height: 1.8; }
 .atlas :is(.question-grid svg, .lesson-visual svg) { font-family: var(--reading-font); }
@@ -48,6 +48,64 @@
   .atlas .lesson-description p,
   .atlas .info-panel .info-text p,
   .atlas #quizBody .quiz-options button,
-  .atlas #answerFeedback { font-size: 15px; }
-  .atlas #questionTitle { font-size: 18px; }
+  .atlas #answerFeedback { font-size: 18px; }
+  .atlas #questionTitle { font-size: 20px; }
+}
+
+/* Opaque paper panels keep long prose readable above either map projection. */
+.atlas :is(.atlas-lesson,.info-panel,.atlas-quiz) {
+  --text:#202124;
+  --muted:#54616a;
+  --line:#c9cec8;
+  color:#202124;
+  background:#f7f5ef;
+  border-color:#c9cec8;
+  color-scheme:light;
+  scrollbar-color:#899b97 #efede6;
+}
+.atlas .info-panel {
+  width:min(400px,calc(100vw - var(--catalog) - var(--lesson) - 32px));
+  top:64px;
+  max-height:calc(100dvh - 84px);
+  backdrop-filter:none;
+}
+.atlas .atlas-quiz { width:min(760px,calc(100vw - 28px)); }
+.atlas :is(.info-text,.info-where,.info-title,.lesson-heading h1,.lesson-description p,.core-list li,#questionTitle,#answerFeedback p,.result-topics) { color:#202124; }
+.atlas :is(.info-kind,.info-photo figcaption,.lesson-meta,.lesson-sources,.quiz-meta,.quiz-topic) { color:#54616a; }
+.atlas :is(.info-close,.lesson-close,.quiz-close) { background:#f7f5ef; color:#234c4d; border-color:#aab8b2; }
+.atlas .info-body { padding:18px 22px 22px; }
+.atlas .info-exam-box { background:#ecece1; border-color:#7c8657; }
+.atlas :is(.info-exam-box h3,.spot-detail,#answerFeedback strong) { color:#205f60; }
+.atlas .info-exam { color:#202124; }
+.atlas .lesson-scroll { scrollbar-color:#899b97 transparent; }
+.atlas .spot-list button { background:#fffefb; color:#234c4d; border-color:#aab8b2; font-size:13px; }
+.atlas .spot-list button span { color:#205f60; border-color:#7a9690; }
+.atlas .spot-list button[aria-pressed=true] { background:#e0efe5; border-color:#32734f; }
+.atlas .lesson-footer { background:#f7f5ef; }
+.atlas .lesson-footer button,.atlas .atlas-quiz .primary-button { background:#205f60; color:#fff; font-size:15px; }
+.atlas .quiz-options button { background:#fffefb; color:#202124; border-color:#aab8b2; }
+.atlas .quiz-options button span { color:#54616a; border-color:#7a9690; font-size:13px; width:25px; height:25px; }
+.atlas .quiz-options button:hover:not(:disabled) { background:#e7eeea; }
+.atlas .quiz-options button.correct { background:#e0efe5; color:#184b37; border-color:#32734f; }
+.atlas .quiz-options button.incorrect { background:#f6e4e0; color:#722d2b; border-color:#ad534c; }
+.atlas .atlas-quiz progress { accent-color:#205f60; }
+.atlas #returnMap { color:#234c4d; background:#e7eeea; border-color:#aab8b2; }
+.atlas :is(.atlas-lesson,.info-panel,.atlas-quiz) :is(button,a,summary):focus-visible { outline-color:#205f60; }
+.atlas .question-table-wrap { border-color:#b4c0b8; }
+.atlas .question-table :is(th,td) { color:#202124; border-color:#c9cec8; }
+.atlas .question-table thead,.atlas .question-table caption { color:#43564f; background:#e7ebe5; }
+.atlas .atlas-quiz { padding:24px; }
+.atlas #quizBody .quiz-meta { font-size:14px; line-height:1.5; margin:0 40px 8px 0; }
+.atlas #quizBody .quiz-topic { font-size:14px; line-height:1.5; margin:0 0 6px; }
+.atlas .atlas-quiz progress { display:block; margin:8px 0 16px; }
+.atlas #questionTitle { margin:8px 0 16px; }
+.atlas .question-grid { margin:12px 0 16px; padding:10px; background:#eef1ec; border-color:#b4c0b8; }
+.atlas .question-grid svg { display:block; max-width:480px; margin:0 auto; }
+.atlas .question-grid svg text { fill:#263d3b; font-size:11px; }
+.atlas .question-grid svg circle { fill:#205f60; }
+.atlas .question-grid svg path[stroke="#e4ca81"] { stroke:#906e25; }
+.atlas .question-grid figcaption { color:#54616a; font-size:13px; }
+@media(max-width:860px) {
+  .atlas .info-panel { width:calc(100vw - 24px); top:auto; max-height:38dvh; }
+  .atlas.lesson-closed .info-panel { max-height:65dvh; }
 }

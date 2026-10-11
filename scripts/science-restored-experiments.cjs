@@ -63,3 +63,4 @@ module.exports=[
   ]}
 ];
 module.exports.push(...require('./science-physics-experiments.cjs'));
+module.exports.push(...require('./science-chemistry-experiments.cjs'));

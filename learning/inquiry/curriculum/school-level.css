@@ -58,12 +58,20 @@ html[data-school-level="elementary"] .model-inspector { display:none; }
 @media(max-width:800px) { .matter-main > .school-matter-content .school-lesson { grid-template-columns:minmax(0,1fr); } }
 .top-header:has(.school-level) { gap:8px; flex-wrap:wrap; }
 .atlas-header .school-level { margin-left:8px; }
-.atlas:has(.school-level) { --top:60px; }
-.atlas .atlas-header:has(.school-level) { display:flex; position:fixed; inset:0 0 auto; height:60px; align-items:center; padding:0 14px; gap:8px; z-index:10; background:#0b1522; }
-.atlas .atlas-header:has(.school-level) .projection-toggle { position:static; transform:none; margin-left:auto; }
-.atlas .atlas-header:has(.school-level) #catalogToggle { position:static; }
-.atlas:has(.school-level) .view-controls { top:72px; }
-.atlas:has(.school-level) .map-caption { top:72px; }
+.atlas:has(.school-level) { --top:0px; }
+.atlas .atlas-header:has(.school-level) { display:contents; }
+.atlas .atlas-header:has(.school-level) .projection-toggle { position:fixed; top:12px; left:auto; right:calc(var(--lesson) + 222px); transform:none; margin:0; z-index:10; }
+.atlas .atlas-header > .school-level { position:fixed; top:12px; right:calc(var(--lesson) + 60px); margin:0; z-index:10; }
+.atlas .atlas-header:has(.school-level) #catalogToggle { position:fixed; left:52px; }
+.atlas:has(.school-level) .map-caption { top:64px; }
+.atlas .catalog-tabs { padding-left:48px; }
+@media(max-width:600px) {
+    .atlas .atlas-header:has(.school-level) .projection-toggle { top:12px; right:12px; }
+    .atlas .atlas-header > .school-level { top:58px; right:12px; }
+    .atlas:has(.school-level) .view-controls { top:108px; }
+    .atlas:has(.school-level) .map-caption { top:106px; right:60px; }
+    .atlas .atlas-catalog .catalog-tabs { padding-left:100px; }
+}
 .atlas .school-concepts,.atlas .school-question { padding:12px; }
 .korea-school-nav { grid-column:1; grid-row:1; min-width:0; display:flex; flex-direction:column; background:#eef3ef; }
 .korea-school-nav > .school-level { align-self:flex-start; margin:4px 12px 8px 58px; }
