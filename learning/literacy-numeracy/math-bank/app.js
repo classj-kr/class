@@ -105,7 +105,9 @@
   function showRound() {
     const head = el('p', 'mb-round-title', round.group.title + '<span class="mb-chip' + (round.level === '실력' ? ' is-hard' : '') + '">' + round.level + (round.rounds > 1 ? ' ' + round.no + '회' : '') + '</span>');
     const list = el('ol', 'mb-items');
-    for (const item of round.items) list.append(itemCard(item));
+    // 여섯 자리를 넘는 답이 있는 회차는 칸을 모두 넓힌다(문항마다 넓히면 칸 너비가 답의 크기를 알려 준다).
+    const roomy = round.items.some((item) => (item.inputs || []).some((input) => !input.decimal && input.answer > 99999));
+    for (const item of round.items) list.append(itemCard(item, roomy));
     const finish = el('div', 'mb-finish'); finish.id = 'finish'; finish.hidden = true;
     main.replaceChildren(head, list, finish);
     updateFinish();
@@ -113,7 +115,7 @@
     if (first) first.focus({ preventScroll: true });
   }
 
-  function itemCard(item) {
+  function itemCard(item, roomy) {
     const card = el('li', 'mb-item'); card.dataset.key = item.key;
     card.append(el('p', 'mb-text', item.text));
     if (item.figure) card.append(el('div', 'mb-figure', item.figure));
@@ -134,11 +136,11 @@
       if (stack) form.append(stack);
       item.inputs.forEach((input) => {
         // 칸 너비는 칸의 개수로만 정한다. 정답의 자릿수에 맞추면 칸 너비가 답의 크기를 알려 준다.
-        const field = el('label', 'mb-field' + (item.inputs.length > 1 ? ' is-short' : ''));
+        const field = el('label', 'mb-field' + (roomy && !item.fraction ? ' is-wide' : item.inputs.length > 1 ? ' is-short' : ''));
         if (input.label && !item.fraction) field.append(el('span', null, input.label));
         if (input.lead) field.append(el('span', null, input.lead));
         const box = document.createElement('input');
-        box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = 6;
+        box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : 6;
         box.setAttribute('aria-label', (input.label || '답') + ' 적기');
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));

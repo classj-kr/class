@@ -131,6 +131,7 @@ button, input, select { font: inherit; color: inherit; }
 .mb-field input { width: 6.2em; min-height: 44px; padding: 6px 10px; border: 2px solid var(--line); border-radius: 10px; font-size: 1.15rem; text-align: center; font-variant-numeric: tabular-nums; }
 .mb-field input:focus { outline: none; border-color: var(--brand); }
 .mb-field.is-short input { width: 4.4em; }
+.mb-field.is-wide input { width: 11.5em; max-width: 100%; }
 .mb-choices { display: flex; flex-wrap: wrap; gap: 8px; }
 .mb-choice { min-height: 44px; min-width: 56px; padding: 6px 16px; border-radius: 10px; border: 2px solid var(--brand); background: var(--paper); color: var(--brand-dark); font-weight: 600; cursor: pointer; font-size: 1.1rem; }
 .mb-choices.is-long { flex-direction: column; align-items: stretch; }

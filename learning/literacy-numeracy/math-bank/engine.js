@@ -499,7 +499,7 @@
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
   // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다.
   const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: [{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }], fraction: true, explain: o.explain || '', facts: o.facts || {} });
-  // 소수 하나를 답하는 문항(소수 첫째 자리까지)
+  // 소수 하나를 답하는 문항(소수 셋째 자리까지)
   const D = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, decimal: true }], explain: o.explain || '', facts: o.facts || {} });
   // 검사가 따로 셈할 식 글
   const E = (a, op, b) => String(a) + op + b;
@@ -601,13 +601,13 @@
   }
   // 답 맞추기. 수는 쉼표·빈칸을 떼고 견준다. unordered 인 문항은 답의 차례를 따지지 않는다.
   const cleanNumber = (text) => String(text == null ? '' : text).replace(/[,\s]/g, '');
-  // 소수 칸(decimal)은 소수 첫째 자리까지 적은 수를 받는다. 나머지 칸은 자연수만 받는다.
+  // 소수 칸(decimal)은 소수 셋째 자리까지 적은 수를 받는다(0.50처럼 끝에 0을 적어도 같은 수로 본다). 나머지 칸은 자연수만 받는다.
   function isCorrect(item, response) {
     if (item.choice) return Number(response) === item.choice.answer;
     const given = (Array.isArray(response) ? response : [response]).map(cleanNumber);
-    if (given.length !== item.inputs.length || !given.every((text, i) => (item.inputs[i].decimal ? /^\d+(\.\d)?$/ : /^\d+$/).test(text))) return false;
-    // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 10배 하면 어긋난다). 소수 칸만 10배 하여 견준다.
-    const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 10) : input.answer)), got = given.map((text, i) => (item.inputs[i].decimal ? Math.round(Number(text) * 10) : Number(text)));
+    if (given.length !== item.inputs.length || !given.every((text, i) => (item.inputs[i].decimal ? /^\d+(\.\d{1,3})?$/ : /^\d+$/).test(text))) return false;
+    // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 곱하면 어긋난다). 소수 칸만 1000배 하여 견준다.
+    const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 1000) : input.answer)), got = given.map((text, i) => (item.inputs[i].decimal ? Math.round(Number(text) * 1000) : Number(text)));
     if (item.unordered) { want.sort((a, b) => a - b); got.sort((a, b) => a - b); }
     return want.every((value, i) => value === got[i]);
   }
