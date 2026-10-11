@@ -35,6 +35,8 @@ for(const engine of ['chromium','webkit'])test(engine+': all registered apps pre
  await Promise.all(Array.from({length:3},async()=>{const page=await browser.newPage({viewport:{width:390,height:844}});page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
  await page.route('**/lab-ui.js*',async r=>{if(new URL(page.url()).pathname==='/refraction/')await new Promise(resolve=>setTimeout(resolve,200));await r.continue();});
  while(cursor<slugs.length){const slug=slugs[cursor++];await page.goto(origin+'/'+slug+'/');await page.waitForSelector('[data-assessment-ready]',{state:'attached'});
+  if(['measurement','wave-transfer'].includes(slug))await page.waitForFunction(()=>!!window.__digitalInquiry);
+  assert.equal(await page.locator('textarea,#hypothesis,#conclusion,[data-export],[data-records],a[href*="activity-workbench"],a[href*="exam-review.html"]').count(),0,slug+' must lead from experiment to questions without worksheets or detours');
   const result=await page.evaluate(()=>{const section=document.querySelector('.quiz-section'),a=section.scienceAssessment,issues=[];for(const card of section.querySelectorAll('.quiz-card')){
    const button=card.querySelector('.answer-button'),inputs=[...card.querySelectorAll('input[type=radio]')],wrong=inputs.find(i=>i.value!==card.dataset.answer),right=inputs.find(i=>i.value===card.dataset.answer);
    wrong.click();if(a.store.evidence(card.dataset.questionId))issues.push('selection graded before submit');button.click();if(!wrong.checked||!wrong.disabled||right.disabled)issues.push('wrong answer must leave the other options available');

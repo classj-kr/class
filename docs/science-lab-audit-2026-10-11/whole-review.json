@@ -1,6 +1,6 @@
 {
   "scope": "2022 only; execution, visual inspection and bounded source review kept separate",
-  "apps": 107,
+  "apps": 108,
   "requiredExperimentTotal": null,
   "appCountPolicy": "Observed app count, not an experiment total, target, limit or coverage denominator",
   "modes": 182,
@@ -24,8 +24,8 @@
   },
   "activityCoverage": {
     "activities": 261,
-    "linked": 179,
-    "unlinked": 82
+    "linked": 180,
+    "unlinked": 81
   },
   "textbookCandidates": {
     "scope": "2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님",
@@ -37,8 +37,8 @@
     "primaryDocumentsWithoutCandidates": 20,
     "completedActivityVerdicts": 0,
     "receiptClassifiedSources": 2287,
-    "manuallyReviewedCandidates": 6,
-    "sourceReviewedExperimentUnits": 7,
+    "manuallyReviewedCandidates": 7,
+    "sourceReviewedExperimentUnits": 8,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -1063,8 +1063,8 @@
   "gaps": [],
   "evidenceSummary": {
     "date": "2026-10-11",
-    "apps": 107,
-    "originalQuestions": 428,
+    "apps": 108,
+    "originalQuestions": 432,
     "examQuestions": 241,
     "sourcePaths": 4008,
     "duplicatePaths": 426,
@@ -1076,9 +1076,9 @@
     "pdfs": 524,
     "assessmentDocuments": 3058,
     "pdfPages": 37818,
-    "reviewedSources": 86,
-    "reviewRecords": 115,
-    "appsWithSelectedSourceReview": 107,
+    "reviewedSources": 89,
+    "reviewRecords": 120,
+    "appsWithSelectedSourceReview": 108,
     "receiptClassifiedSources": 2287,
     "activityReviewRecords": 60,
     "activityReviewSources": 45
@@ -10306,7 +10306,9 @@
       ],
       "panelShots": [],
       "sourceReview": [
-        "43ac53e9e01adbcc"
+        "43ac53e9e01adbcc",
+        "ee3ee343af97cac2",
+        "764c91a83f8bf462"
       ],
       "fix": null,
       "open": []
@@ -10320,8 +10322,23 @@
       "panelShots": [],
       "sourceReview": [
         "98fd4b1d24cbec64",
+        "7ef50ee5847f660e",
         "6ed679a59c21c7a0",
         "c645186ae5280481"
+      ],
+      "fix": null,
+      "open": []
+    },
+    "mendeleev": {
+      "slug": "mendeleev",
+      "title": "멘델레예프의 원소 카드 배열",
+      "grades": [
+        "고1"
+      ],
+      "panelShots": [],
+      "sourceReview": [
+        "764c91a83f8bf462",
+        "ee3ee343af97cac2"
       ],
       "fix": null,
       "open": []

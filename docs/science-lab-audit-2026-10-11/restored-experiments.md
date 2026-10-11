@@ -72,3 +72,7 @@
 - 같은 검사에서 Chromium·WebKit의 조작·초기화·문항 채점·첫 응답 보존·새 조건 문항·390/1100px 배치와 WebP 캡처를 확인한다.
 - 전체 앱 재검사는 `restored-four-tests.log`, 카드 화학식 표시 보완 뒤 최종 재검사는 `restored-four-final.log`에 기록한다. 이전 세 앱의 전체 재검사는 `restored-final-recheck.log`, 프리즘 도구 변형의 재검사는 `prism-variants-recheck.log`에 있다. `restored-final-tests.log`의 캡처 파일 쓰기 오류와 `prism-variants-tests.log`의 option 비활성 판독 오류는 실패 이력으로 보존하며 통과 증거로 사용하지 않는다. 원문 대조 기록은 `source-review-restored.cjs`, 문항 내용 해시는 `restored-question-review.json`이다.
 - 새로운 앱 수를 교육과정 완료 수로 환산하지 않는다. 활동 연결은 부분 모형을 포함한다. 실물 배양·도구 제작·현장 측정·다른 출판사 변형 절차는 별도다.
+
+## 측정 화면의 동선 정리
+
+measurement·wave-transfer의 별도 기록표와 기록·내려받기 버튼도 제거했다. 현재 측정값·파형을 관찰하고 기존 객관식으로 이어진다. 길이 보정, 시간 측정, 합성 신호의 RMS·주파수, 가상 마이크 중지·권한 거부 처리는 `digital-direct-tests.log`에서 검사했다. 전체 앱의 활동지·우회 링크 부재와 첫 응답 보존은 `direct-flow-final.log`에 기록한다.

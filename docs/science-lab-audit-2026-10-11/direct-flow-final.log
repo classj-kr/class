@@ -1,0 +1,16 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (14.3217ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (1.0193ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.115ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (46.0459ms)
+chromium: 108 apps / 432 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (11215.2147ms)
+webkit: 108 apps / 432 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (16864.5027ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28238.2015
