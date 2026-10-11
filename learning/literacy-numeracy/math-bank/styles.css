@@ -102,7 +102,7 @@ button, input, select { font: inherit; color: inherit; }
 .mb-table td:first-child { background: var(--canvas); font-weight: 600; }
 
 /* 길 그림, 겹쳐 붙인 띠 */
-.mb-route, .mb-tapes, .mb-bar, .mb-shapes { max-width: 100%; height: auto; }
+.mb-route, .mb-tapes, .mb-bar, .mb-shapes, .mb-splitgrid { max-width: 100%; height: auto; }
 .mb-road { stroke: #5b6770; stroke-width: 1.1; }
 .mb-road-label { font-size: 7.6px; fill: var(--brand-dark); font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 2.4px; }
 .mb-place { fill: var(--ink); }

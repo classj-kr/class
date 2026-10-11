@@ -247,6 +247,13 @@
     }
     return '<svg class="mb-counters" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.5) + '" role="img" aria-label="한 줄에 ' + a + '(10이 ' + tens + '개, 1이 ' + ones + '개)씩 ' + rows + '줄">' + out + '</svg>';
   }
+  // 모눈: 세로 rows 칸, 가로 left + right 칸. 왼쪽 left 칸과 오른쪽 right 칸을 다른 빛깔로 칠한다(곱을 갈라 계산하는 그림).
+  function splitGrid(rows, left, right) {
+    const u = 11, pad = 3, width = pad * 2 + (left + right) * u, height = pad * 2 + rows * u;
+    let out = '';
+    for (let r = 0; r < rows; r += 1) for (let c = 0; c < left + right; c += 1) out += '<rect class="' + (c < left ? 'mb-tape-a' : 'mb-tape-b') + '" x="' + (pad + c * u) + '" y="' + (pad + r * u) + '" width="' + u + '" height="' + u + '"/>';
+    return '<svg class="mb-splitgrid" viewBox="0 0 ' + width + ' ' + height + '" width="' + Math.round(width * 1.25) + '" role="img" aria-label="모눈: 세로 ' + rows + '칸, 가로 ' + (left + right) + '칸. 왼쪽 ' + left + '칸과 오른쪽 ' + right + '칸을 다른 빛깔로 칠했다">' + out + '</svg>';
+  }
   // 자(작은 눈금 한 칸이 1mm)와 그 위에 놓인 물건. from·to 는 물건 두 끝이 놓인 곳(mm), cm 는 자에 적는 마지막 수.
   function ruler(from, to, cm) {
     const u = 4.6, x = (mm) => 11 + mm * u, width = 22 + cm * 10 * u, top = 27;
@@ -478,6 +485,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, divColumn, divSteps, longDivision, timeColumn, chars, blocks, counters, ruler, kmLine, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, esc, LABELS, box, frac, expr, column, columnSteps, divColumn, divSteps, longDivision, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);
