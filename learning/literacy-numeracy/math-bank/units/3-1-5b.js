@@ -59,12 +59,14 @@
           facts: { truth: rows.map((row) => row.ok), want: false, secFacts: { m, s, k, slip } }
         });
       }, { standard: SECOND }),
-      H('h-zero', '0이 아닌 눈금에서 잰 길이', '천재 단원평가 심화', (d) => {
-        // 왼쪽 끝을 눈금 2에 맞추고 잰 길이
-        const from = d.int(1, 2) * 10, length = d.until(() => d.int(23, 38), (v) => v % 10 !== 0 && v % 10 !== 5), to = from + length;
-        return M(`물건의 왼쪽 끝을 자의 눈금 ${from / 10}에 맞추어 길이를 재었다. 물건의 길이는 몇 cm 몇 mm인가?`, [{ answer: Math.floor(length / 10), unit: 'cm' }, { answer: length % 10, unit: 'mm' }], {
-          figure: ruler(from, to, Math.floor(to / 10) + 1), explain: `오른쪽 끝은 ${Math.floor(to / 10)}cm ${to % 10}mm인 곳에 있다. 눈금 ${from / 10}부터 재었으므로 ${Math.floor(to / 10)}cm ${to % 10}mm에서 ${from / 10}cm를 뺀 ${Math.floor(length / 10)}cm ${length % 10}mm이다.`,
-          facts: { ruler: true }
+      H('h-zero', '0이 아닌 눈금에서 잰 길이', '천재 단원평가 심화 — 끝 눈금을 그대로 읽는 것, 눈금 숫자를 세는 것, 시작 눈금을 더하는 것을 보기에 넣는다', (d) => {
+        const from = 20, length = d.until(() => d.int(23, 38), (v) => v % 10 !== 0 && v % 10 !== 5), to = from + length;
+        const say = (mm) => `${Math.floor(mm / 10)}cm ${mm % 10}mm`;
+        // 바른 길이, 끝 눈금 그대로, 눈금 숫자를 센 것(하나 더 많다), 시작 눈금을 더한 것
+        const list = d.shuffle([length, to, length + 10, to + from]);
+        return C('연필의 길이는?', list.map(say), list.indexOf(length), {
+          figure: ruler(from, to, Math.floor(to / 10) + 1), explain: `연필의 왼쪽 끝이 눈금 ${from / 10}에 있다. 오른쪽 끝 ${say(to)}에서 ${from / 10}cm를 빼면 ${say(length)}이다.`,
+          facts: { rulerPick: list }
         });
       }, { standard: MEASURE }),
       H('h-gap', '가장 긴 것과 가장 짧은 것의 차', 'YBM 수학익힘 심화', (d) => {

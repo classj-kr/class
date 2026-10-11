@@ -34,10 +34,11 @@
           { text: `구슬 ${a}개를 ${b}명이 똑같이 나누어 가지면 한 명이 ${q}개씩 가진다.`, ok: true },
           { text: `구슬 ${a}개를 한 명에게 ${b}개씩 주면 ${q}명에게 줄 수 있다.`, ok: true },
           { text: `${a}에서 ${josa(b, '을/를')} ${q}번 빼면 0이 된다.`, ok: true },
-          { text: `구슬 ${a}개 중에서 ${b}개를 덜어 내면 ${q}개가 남는다.`, ok: false }
+          // 세 수가 모두 나오니 맞다고 여기기 쉽다. 이것은 a÷q=b 이다.
+          { text: `구슬 ${a}개를 ${q}명이 똑같이 나누어 가지면 한 명이 ${b}개씩 가진다.`, ok: false }
         ]);
         return C(`나눗셈식 ${a} ÷ ${b} = ${josa(q, '으로/로')} 나타낼 수 없는 것은?`, rows.map((row) => row.text), rows.findIndex((row) => !row.ok), {
-          explain: `${a}개에서 ${b}개를 한 번 덜어 내면 ${a - b}개가 남는다. 이것은 뺄셈식 ${expr(a, '-', b, '=', a - b)}이다.`,
+          explain: `${q}명이 똑같이 나누어 가지는 것은 ${expr(a, '/', q, '=', b)}이다. ${expr(a, '/', b, '=', q)}는 ${b}명이 똑같이 나누어 가지거나 ${b}개씩 덜어 내는 상황이다.`.replace('</span>는 ', '</span>의 식은 '),
           facts: { truth: rows.map((row) => row.ok), want: false, divMeans: [a, b, q] }
         });
       }, { standard: MEAN }),

@@ -30,6 +30,20 @@
   B.addGroup('3-1-6', {
     id: 'hard', title: '실력 문제', standard: FCOMPARE,
     types: [
+      H('h-onepiece', '나눈 조각 수가 다른 한 조각의 크기', '단위분수 문장제(기본·심화 자료) — 분모를 자연수처럼 견주는 것, 조각 수만 보는 것을 보기에 넣는다', (d) => {
+        const [one, two] = d.shuffle(NAMES).slice(0, 2), [many, few] = d.until(() => [d.int(5, 12), d.int(3, 8)], ([x, y]) => x > y + 1), flip = d.bool();
+        const cuts = flip ? [few, many] : [many, few], more = flip ? 0 : 1;       // 조각 수가 적은 쪽이 한 조각이 크다
+        const rows = d.shuffle([
+          { text: `${josa(Math.max(...cuts), '이/가')} ${Math.min(...cuts)}보다 크므로 ${name([one, two][1 - more], '이/가')} 더 많이 먹었다.`, ok: false },      // 분모를 자연수처럼 견줌
+          { text: '둘 다 한 조각씩 먹었으므로 먹은 양이 같다.', ok: false },                                                                             // 조각 수만 봄
+          { text: `${name([one, two][more], '이/가')} 더 많이 먹었다.`, ok: true },
+          { text: '나눈 조각 수가 달라서 먹은 양을 비교할 수 없다.', ok: false }                                                                          // 전체가 같다는 조건을 못 씀
+        ]);
+        return C(`같은 크기의 떡을 ${name(one, '은/는')} 똑같이 ${cuts[0]}조각으로, ${name(two, '은/는')} 똑같이 ${cuts[1]}조각으로 나누어 한 조각씩 먹었다. 옳은 것은?`, rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
+          explain: `${name(one, '은/는')} 전체의 ${frac(1, cuts[0])}, ${name(two, '은/는')} 전체의 ${frac(1, cuts[1])}만큼 먹었다. 단위분수는 분모가 작을수록 크므로 ${cuts[more]}조각으로 나눈 한 조각이 더 크다.`,
+          facts: { truth: rows.map((row) => row.ok), want: true, biggerPiece: { cuts, more } }
+        });
+      }),
       H('h-frac-say', '분수에 대한 설명 가리기', '분수 설명의 참·거짓·비교식의 옳고 그름(심화 자료) — 분모가 같은 분수와 단위분수의 견주는 법을 함께 가리게', (d) => {
         const n = d.int(4, 9), k = d.int(2, n - 1), [a, b] = d.until(() => [d.int(2, 9), d.int(2, 9)], ([x, y]) => x < y), m = d.int(6, 11), [p, q] = d.until(() => [d.int(1, m - 1), d.int(1, m - 1)], ([x, y]) => x > y);
         const slip = d.bool();     // 단위분수 비교를 틀리게 할지, 분모가 같은 분수 비교를 틀리게 할지
