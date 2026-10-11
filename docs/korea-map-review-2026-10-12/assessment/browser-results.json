@@ -190,7 +190,7 @@
       },
       {
         "id": "history-silla-trade-high-02",
-        "revision": 4,
+        "revision": 5,
         "wrongAnswerHidden": true,
         "correctExplanation": true
       }
@@ -298,7 +298,7 @@
       },
       {
         "id": "history-ssangseong-high-02",
-        "revision": 4,
+        "revision": 5,
         "wrongAnswerHidden": true,
         "correctExplanation": true
       }
@@ -352,7 +352,7 @@
       },
       {
         "id": "history-imjin-high-02",
-        "revision": 4,
+        "revision": 5,
         "wrongAnswerHidden": true,
         "correctExplanation": true
       }
@@ -424,7 +424,7 @@
       },
       {
         "id": "history-donghak-high-02",
-        "revision": 4,
+        "revision": 5,
         "wrongAnswerHidden": true,
         "correctExplanation": true
       }
