@@ -65,7 +65,7 @@
   const TANGRAM = [[[0, 0], [8, 0], [4, 4]], [[0, 0], [4, 4], [0, 8]], [[4, 4], [6, 2], [8, 4], [6, 6]], [[8, 0], [8, 4], [6, 2]], [[4, 4], [6, 6], [2, 6]], [[0, 8], [2, 6], [6, 6], [4, 8]], [[8, 4], [8, 8], [4, 8]]];
 
   B.addUnit({
-    id: '3-1-2', grade: 3, semester: 1, no: 2, title: '평면도형', version: 2,
+    id: '3-1-2', grade: 3, semester: 1, no: 2, title: '평면도형', version: 3,
     groups: [
       {
         id: 'line', title: '선분, 반직선, 직선', standard: LINE,
@@ -296,6 +296,14 @@
             return C('정사각형을 모두 고른 것은?', made.options, made.answer, {
               figure: G.tiles(picks.map((points, i) => [TAGS[i], shapeTile(points, 4, 4, 'lines')])), explain: '네 각이 모두 직각이고 네 변의 길이가 모두 같은 사각형을 정사각형이라고 한다.',
               facts: { sets: { labels: TAGS.slice(0, 4), flags, options: made.sets }, polys: picks, prop: 'square' }
+            });
+          }),
+          T('quad-names', '도형의 이름이 될 수 있는 것', '65', (d) => {
+            const points = d.pick(SQUARES.slice(0, 1).concat([SQUARES[3]]));
+            const list = d.shuffle([['사각형', '직사각형', '정사각형'], ['정사각형'], ['사각형', '정사각형'], ['직사각형', '정사각형']]);
+            return C('도형의 이름이 될 수 있는 것을 모두 고른 것은?', list.map((o) => o.join(', ')), list.findIndex((o) => o.length === 3), {
+              figure: G.board(4, 4, [G.polygon(centered(points, 4, 4))], { grid: 'lines', scale: 1.3 }), explain: '변이 4개이므로 사각형이고, 네 각이 모두 직각이므로 직사각형이며, 네 변의 길이도 모두 같으므로 정사각형이다.',
+              facts: { names: { points, options: list } }
             });
           }),
           T('quad-name', '설명에 맞는 도형', '61', (d) => {
