@@ -129,17 +129,20 @@
       card.append(choices);
     } else {
       const form = el('form', 'mb-answer'); form.noValidate = true;
+      // 분수 답은 분자 칸과 분모 칸을 위아래로 놓는다.
+      const stack = item.fraction ? el('span', 'mb-fracfield') : null;
+      if (stack) form.append(stack);
       item.inputs.forEach((input) => {
         // 칸 너비는 칸의 개수로만 정한다. 정답의 자릿수에 맞추면 칸 너비가 답의 크기를 알려 준다.
         const field = el('label', 'mb-field' + (item.inputs.length > 1 ? ' is-short' : ''));
-        if (input.label) field.append(el('span', null, input.label));
+        if (input.label && !item.fraction) field.append(el('span', null, input.label));
         if (input.lead) field.append(el('span', null, input.lead));
         const box = document.createElement('input');
-        box.type = 'text'; box.inputMode = 'numeric'; box.autocomplete = 'off'; box.maxLength = 6;
+        box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = 6;
         box.setAttribute('aria-label', (input.label || '답') + ' 적기');
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));
-        form.append(field);
+        (stack || form).append(field);
       });
       const submit = el('button', 'mb-primary', '확인'); submit.type = 'submit';
       form.append(submit);
@@ -160,6 +163,7 @@
 
   const answerText = (item) => (item.choice
     ? plainText(item.choice.options[item.choice.answer])
+    : item.fraction ? item.inputs[0].answer + '/' + item.inputs[1].answer
     : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit || '')).join(', '));
 
   // 답한 문항을 그린다(방금 답했을 때와 이어 풀기로 되살릴 때 함께 쓴다).

@@ -30,7 +30,7 @@ function borrows(a, b) { let n = 0, c = 0; for (let i = 0; i < 3; i += 1) { c = 
 const calc = (a, op, b) => (op === '+' ? a + b : a - b);
 // 식 글("345+278-(120-15)", "56/7")을 셈한다. 숫자와 + - * / ( ) 만 받는다.
 function evaluate(text) {
-  assert.match(text, /^[\d+\-*\/() ]+$/, '식이 아니다: ' + text);
+  assert.match(text, /^[\d+\-*\/(). ]+$/, '식이 아니다: ' + text);
   return Function('"use strict"; return (' + text + ');')();
 }
 const strip = (html) => String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
@@ -89,7 +89,16 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.equal(B.isCorrect(item, (item.choice.answer + 1) % item.choice.options.length), false, label);
     } else {
       assert.ok(Array.isArray(item.inputs) && item.inputs.length >= 1, label);
-      for (const input of item.inputs) assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= 9999, label);
+      // 소수 칸(decimal)은 소수 첫째 자리까지인 수이고 자연수가 아니다. 나머지 칸은 자연수.
+      for (const input of item.inputs) {
+        if (input.decimal) assert.ok(Math.abs(input.answer * 10 - Math.round(input.answer * 10)) < 1e-9 && !Number.isInteger(input.answer) && input.answer > 0 && input.answer < 100, label);
+        else assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= 9999, label);
+      }
+      // 분수 답: 분자·분모 두 칸, 1보다 작은 분수, 더 줄일 수 없는 분수(같은 크기의 다른 분수가 답이 되지 않게).
+      if (item.fraction) {
+        const [top, bottom] = item.inputs.map((input) => input.answer), common = (x, y) => (y ? common(y, x % y) : x);
+        assert.ok(item.inputs.length === 2 && top >= 1 && top < bottom && common(top, bottom) === 1, '분수 답: ' + label);
+      }
       const answers = item.inputs.map((input) => String(input.answer));
       assert.equal(B.isCorrect(item, answers), true, label);
       assert.equal(B.isCorrect(item, answers.map((v, i) => (i === 0 ? String(Number(v) + 1) : v))), false, label);
@@ -154,7 +163,10 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
   let checked = 0, divisions = 0;
   everyItem((item, at) => {
     const f = item.facts || {}, label = where(item, at);
-    for (const [text, i] of f.calc || []) { assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`); assert.ok(evaluate(text) > 0, label); checked += 1; }
+    for (const [text, i] of f.calc || []) {
+      if (item.inputs[i].decimal) assert.equal(Math.round(answerAt(item, i) * 10), Math.round(evaluate(text) * 10), `${text} — ${label}`); else assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`);
+      assert.ok(evaluate(text) > 0, label); checked += 1;
+    }
     // 답을 다시 셈하는 식의 수는 문제에 적힌 수여야 한다(글과 식이 따로 놀면 답을 맞춰 본 것이 아니다).
     // 글에 숫자로 적히지 않는 수(일주일의 7 따위)는 facts.unseen 에 밝혀 둔다.
     // 고르기·견주기 문항의 식(choose.exprs, who.exprs)도 같은 잣대로 본다.
@@ -164,8 +176,8 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     if (recomputed.length && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
       // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다. 세로셈은 숫자가 칸마다 떨어져 있으니 붙여 읽은 것도 함께 본다.
       const seen = strip([item.text, item.figure || ''].concat(item.choice ? item.choice.options : []).join(' | ').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' $1 '));
-      const shown = new Set((seen.match(/\d+/g) || []).concat(seen.replace(/(\d) (?=\d)/g, '$1').match(/\d+/g) || []));
-      for (const text of recomputed) for (const n of text.match(/\d+/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)) || (timed && (n === '3600' || n === '60')), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
+      const shown = new Set((seen.match(/\d+/g) || []).concat(seen.match(/\d+\.\d+/g) || [], seen.replace(/(\d) (?=\d)/g, '$1').match(/\d+/g) || []));
+      for (const text of recomputed) for (const n of text.match(/\d+(?:\.\d+)?/g)) assert.ok(shown.has(n) || (f.unseen || []).includes(Number(n)) || (timed && (n === '3600' || n === '60')), `식의 수 ${n} 이 문제에 없다(${text}) — ${label}`);
     }
     if (f.pair) {
       const [a, op, b] = f.pair;
@@ -280,9 +292,9 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
         assert.equal(item.choice.answer, hit.indexOf(true), label);
       } else if (rule === 'odd') {
         // 값이 나머지와 다른 하나 찾기: 하나만 다르고 나머지는 모두 같다.
-        const lone = values.filter((v) => values.filter((w) => w === v).length === 1);
-        assert.equal(lone.length, 1, label); assert.equal(new Set(values).size, 2, label);
-        assert.equal(item.choice.answer, values.indexOf(lone[0]), label);
+        const even = values.map((v) => Math.round(v * 1e6) / 1e6), lone = even.filter((v) => even.filter((w) => w === v).length === 1);
+        assert.equal(lone.length, 1, label); assert.equal(new Set(even).size, 2, label);
+        assert.equal(item.choice.answer, even.indexOf(lone[0]), label);
       } else assert.fail('모르는 고르기 규칙 ' + rule + ': ' + label);
       tally('choose:' + rule);
     }
@@ -547,7 +559,9 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.equal(ends.length, 2, label);
       const length = ends[1] - ends[0];
       assert.ok(length > 10 && length % 10 !== 0, label);
-      assert.deepEqual(item.inputs.map((i) => i.answer), [Math.trunc(length / 10), length % 10], label); tally('ruler');
+      if (f.ruler === 'decimal') assert.equal(Math.round(answerAt(item, 0) * 10), length, label);
+      else assert.deepEqual(item.inputs.map((i) => i.answer), [Math.trunc(length / 10), length % 10], label);
+      tally('ruler');
     }
     if (f.kmLine) {
       const m = item.figure.match(/화살표는 (\d+)km에서 작은 눈금 (\d+)칸 더 간 곳/);
@@ -562,6 +576,69 @@ test('고르기·범위·수 카드·어림: 모든 경우를 따져 답이 하�
       assert.deepEqual(item.inputs.map((i) => i.answer), [hour, minute, second], label);
       assert.ok(minute % 5 === 0 && second % 5 === 0 && minute !== second, label);
       assert.ok(apart(hour * 30 + minute / 2, minute * 6) >= 20 && apart(hour * 30 + minute / 2, second * 6) >= 20, '바늘이 붙어 있다: ' + label); tally('clockFace');
+    }
+    // ── 분수와 소수 ──
+    const piecesIn = (html) => [...String(html || '').matchAll(/aria-label="(?:원|사각형)을 (똑같이|크기가 다르게) (\d+)조각으로 나누고 (\d+)조각을 색칠"/g)].map((m) => ({ equal: m[1] === '똑같이', n: Number(m[2]), shaded: Number(m[3]) }));
+    if (f.pieceRead) {
+      // 색칠한 그림 하나: 그림 설명의 조각 수와 색칠한 수로 답을 다시 읽는다.
+      const shapes = piecesIn(item.figure);
+      assert.equal(shapes.length, 1, label); assert.ok(shapes[0].equal && shapes[0].shaded >= 1 && shapes[0].shaded < shapes[0].n, label);
+      const { n, shaded } = shapes[0];
+      const want = { parts: [n, shaded], shaded: [shaded, n], more: [f.target - shaded] }[f.pieceRead];
+      if (f.pieceRead === 'decimal') { assert.equal(n, 10, label); assert.equal(Math.round(answerAt(item, 0) * 10), shaded, label); }
+      else assert.deepEqual(item.inputs.map((i) => i.answer), want, label);
+      if (f.pieceRead === 'more') assert.ok(f.target > shaded && f.target < n, label);
+      tally('pieceRead');
+    }
+    if (f.tilePick) {
+      // 보기 그림 넷 가운데 「똑같이 n조각, 색칠 k조각」인 것은 하나뿐이다.
+      const shapes = piecesIn(item.figure), hits = shapes.map((s) => s.equal && s.n === f.tilePick.n && s.shaded === f.tilePick.shaded);
+      assert.equal(shapes.length, 4, label); assert.equal(hits.filter(Boolean).length, 1, label);
+      assert.equal(item.choice.answer, hits.indexOf(true), label); assert.ok(shapes.some((s) => !s.equal), '똑같이 나누지 않은 보기가 없다: ' + label); tally('tilePick');
+    }
+    if (f.squarePick) {
+      const counts = [...item.figure.matchAll(/작은 정사각형 (\d+)개를 이어 붙인 모양/g)].map((m) => Number(m[1]));
+      assert.equal(counts[0], 1, label); assert.equal(counts.slice(1).filter((v) => v === f.squarePick).length, 1, label);
+      assert.equal(item.choice.answer, counts.slice(1).indexOf(f.squarePick), label); tally('squarePick');
+    }
+    if (f.fracList) {
+      assert.equal(new Set(f.fracList.map((r) => r.join('/'))).size, f.fracList.length, label);
+      assert.ok(f.fracList.every(([k, n]) => k >= 1 && k < n), label);
+      const units = f.fracList.filter(([k]) => k === 1).length;
+      assert.ok(units >= 1 && units < f.fracList.length, label); assert.equal(answerAt(item, 0), units, label); tally('fracList');
+    }
+    if (f.minOf) { assert.equal(new Set(f.minOf).size, f.minOf.length, label); assert.equal(answerAt(item, 0), Math.min(...f.minOf), label); tally('minOf'); }
+    if (f.tenths) {
+      // 소수는 0.1이 몇 개인 수인가: 글에 적힌 소수 그대로 다시 센다.
+      for (const [said, i] of f.tenths) { assert.match(said, /^\d+\.\d$/, label); assert.ok(strip(item.text + ' ' + (item.figure || '')).includes(said), label); assert.equal(answerAt(item, i), Number(said.replace('.', '')), label); }
+      tally('tenths');
+    }
+    if (f.tenthRead) {
+      const m = item.figure.match(/화살표는 (\d+)에서 작은 눈금 (\d+)칸 더 간 곳/);
+      assert.ok(m && Number(m[2]) >= 1 && Number(m[2]) <= 9, label);
+      assert.equal(Math.round(answerAt(item, 0) * 10), Number(m[1]) * 10 + Number(m[2]), label); tally('tenthRead');
+    }
+    if (f.deciCards) {
+      const sorted = f.deciCards.slice().sort((x, y) => y - x);
+      assert.equal(new Set(sorted).size, sorted.length, label); assert.ok(sorted.every((v) => v >= 1 && v <= 9), label);
+      assert.equal(Math.round(answerAt(item, 0) * 10), sorted[0] * 10 + sorted[1], label); tally('deciCards');
+    }
+    if (f.unitBetween) {
+      // 1/a 보다 크고 1/b 보다 작은 단위분수: 분모를 하나씩 넣어 센다.
+      const [a, b] = f.unitBetween; let count = 0;
+      for (let bottom = 2; bottom <= 200; bottom += 1) if (1 / bottom > 1 / a && 1 / bottom < 1 / b) count += 1;
+      assert.ok(count >= 1, label); assert.equal(answerAt(item, 0), count, label); tally('unitBetween');
+    }
+    if (f.digitBoth) {
+      // 두 식을 모두 맞게 하는 숫자의 개수
+      const holds = (template, x) => { const parts = template.replace(/□/g, String(x)).split(/([<>])/); return parts[1] === '<' ? evaluate(parts[0]) < evaluate(parts[2]) : evaluate(parts[0]) > evaluate(parts[2]); };
+      let count = 0;
+      for (let x = f.digitBoth.lo; x <= f.digitBoth.hi; x += 1) if (f.digitBoth.templates.every((template) => holds(template, x))) count += 1;
+      assert.ok(count >= 1, label); assert.equal(answerAt(item, 0), count, label); tally('digitBoth');
+    }
+    if (f.onePiece) {
+      const m = item.figure.match(/가로로 (\d+)칸, 세로로 (\d+)칸이 들어가는 크기/);
+      assert.ok(m, label); assert.equal(answerAt(item, 0), Number(m[1]) * Number(m[2]), label); tally('onePiece');
     }
     if (f.mapSteps) { assert.equal(item.choice.answer, f.mapSteps - 1, label); tally('mapSteps'); }
     if (f.repeatAdd) {

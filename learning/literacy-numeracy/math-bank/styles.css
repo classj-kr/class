@@ -224,3 +224,15 @@ button, input, select { font: inherit; color: inherit; }
 .mb-timecol td { text-align: right; padding: 2px 0 2px 12px; white-space: nowrap; }
 .mb-timecol-result th, .mb-timecol-result td { border-top: 2px solid var(--ink); height: 8px; padding-top: 6px; }
 .mb-timecol .mb-box { font-size: 0.8em; min-width: 1.9em; height: 1.5em; vertical-align: -0.2em; }
+
+/* 분수와 소수: 분수 글, 분수 답 칸, 나눈 도형 */
+.mb-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.12; font-variant-numeric: tabular-nums; margin: 0 1px; font-size: 1em; font-weight: 600; }
+.mb-frac > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 4px 1px; }
+.mb-frac > span:last-child { padding: 1px 4px 0; }
+.mb-frac .mb-frac-bar { font-size: 0; line-height: 0; height: 0; padding: 0; border: 0; overflow: hidden; }
+.mb-fracfield { display: inline-flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.mb-fracfield .mb-field:first-child { padding-bottom: 6px; border-bottom: 2.5px solid var(--ink); }
+.mb-fracfield .mb-field input { width: 4.4em; }
+.mb-pieces { max-width: 100%; height: auto; }
+.mb-piece { fill: #fff; stroke: var(--ink); stroke-width: 0.9; }
+.mb-piece.is-on { fill: #93c5fd; }
