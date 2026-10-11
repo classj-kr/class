@@ -29,13 +29,12 @@ let corpus = '';
   }
 })(corpusDir);
 
-// 내 문장: 씨앗을 바꿔 가며 만든 지시문을 문장 단위로 모은다.
+// 내 문장: 은행에 실린 문항의 물음을 문장 단위로 모은다.
 const mine = new Map();   // 문장 -> 유형
 for (const unit of B.units()) {
   if (unitId && unit.id !== unitId) continue;
   for (const group of unit.groups) for (const level of B.LEVELS) {
-    if (!B.typesOf(group, level).length) continue;
-    for (let seed = 1; seed <= 400; seed += 1) for (const item of B.makeRound(unit, group.id, level, seed * 31)) {
+    for (const item of B.bankOf(unit, group.id, level)) {
       const plain = String(item.text).replace(/<[^>]+>/g, '').replace(NAMES, '○');
       for (const sentence of plain.split(/(?<=[.?])\s+/)) { const key = squash(sentence); if (key.length >= 8 && !mine.has(key)) mine.set(key, item.typeId); }
     }
