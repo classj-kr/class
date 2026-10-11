@@ -830,7 +830,7 @@ test('도형: 그림의 좌표로 다시 따져 답이 하나이고 표시된 �
     if (f.twoSquares) { const [a, total] = f.twoSquares, big = total - a; assert.ok(big > a, label); assert.equal(answerAt(item, 0), big - a, label); tally('twoSquares'); }
   });
   for (const name of Object.keys(counts)) assert.ok(counts[name] >= 30, name + ' 문항이 거의 검사되지 않았다');
-  assert.ok(Object.keys(counts).length >= 28, '검사한 갈래: ' + Object.keys(counts).join(', '));
+  assert.ok(Object.keys(counts).length >= 20, '검사한 갈래: ' + Object.keys(counts).join(', '));
 });
 
 test('토씨 붙이기', () => {

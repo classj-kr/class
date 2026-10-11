@@ -51,9 +51,9 @@
         });
       }, { standard: UNIT }),
       H('h-lap', '같은 거리를 두 번 간 거리', '천재 수학익힘 · YBM 수학익힘 심화', (d) => {
-        // 둘레가 860m인 공원을 2바퀴 → 1km 720m
+        // 한 바퀴가 860m인 공원을 2바퀴 → 1km 720m
         const a = d.until(() => d.int(52, 97) * 10, (v) => v % 100 !== 0 && (v * 2) % 1000 !== 0), total = a * 2;
-        return M(`둘레가 ${a}m인 호수의 둘레를 따라 2바퀴 걸었다. 걸은 거리는 모두 몇 km 몇 m인가?`, [{ answer: Math.floor(total / 1000), unit: 'km' }, { answer: total % 1000, unit: 'm' }], {
+        return M(`한 바퀴가 ${a}m인 호수 산책로를 2바퀴 걸었다. 걸은 거리는 모두 몇 km 몇 m인가?`, [{ answer: Math.floor(total / 1000), unit: 'km' }, { answer: total % 1000, unit: 'm' }], {
           explain: `${a}m + ${a}m = ${total}m이다. 1000m는 1km이므로 ${Math.floor(total / 1000)}km ${total % 1000}m이다.`, facts: { unit: [{ expr: `${a}+${a}`, base: 1000, at: [0, 1] }] }
         });
       }, { standard: UNIT }),
