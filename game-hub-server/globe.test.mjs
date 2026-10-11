@@ -48,7 +48,8 @@ const context = { window: {} };
 vm.runInNewContext(read('data/globe-data.js'), context);
 // 판 구조론 이름표와 선은 따로 만든 파일이 같은 이름표 묶음에 보탠다(두 진입 화면이 모두 읽어야 한다).
 vm.runInNewContext(read('data/tectonics-labels.js'), context);
-for (const page of [html, fs.readFileSync(new URL('../world-geography/index.html', root), 'utf8')]) assert.match(page, /tectonics-labels\.js\?v=/);
+vm.runInNewContext(read('data/landform-labels.js'), context);
+for (const page of [html, fs.readFileSync(new URL('../world-geography/index.html', root), 'utf8')]) { assert.match(page, /tectonics-labels\.js\?v=/); assert.match(page, /landform-labels\.js\?v=/); }
 const tectonicShapes = context.window.GLOBE_TECTONICS.shapes;
 const { labels, borders } = context.window.GLOBE_DATA;
 assert.ok(borders.features.length > 100, 'Country borders must be present.');
