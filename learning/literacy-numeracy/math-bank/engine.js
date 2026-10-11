@@ -579,12 +579,12 @@
       out += rule(left, topPad, left, base, false, true) + rule(left, base, left + n * W, base, false, true);
       if (o.title) out += label(left + n * W, base + 32, 'end', o.title);
     } else {
-      const longest = Math.max.apply(null, names.map((name) => String(name).length)), left = 14 + longest * 11, W = Math.min(13, (268 - left) / ticks), H = 26, topPad = o.title ? 22 : 8, x = (v) => left + v / step * W, base = topPad + n * H;
-      width = left + ticks * W + 30; height = base + 24;
+      const longest = Math.max.apply(null, names.concat(o.title ? [o.title] : []).map((name) => String(name).length)), left = 14 + longest * 11, off = String(top).length * 3.3 + 4, room = unit ? Math.max(30, off + Array.from(unit).length * 11 + 12) : 30, W = Math.min(13, (298 - room - left) / ticks), H = 26, topPad = o.title ? 22 : 8, x = (v) => left + v / step * W, base = topPad + n * H;
+      width = left + ticks * W + room; height = base + 24;
       for (let t = 0; t <= ticks; t += 1) out += rule(x(t * step), topPad, x(t * step), base, t % major === 0);
       for (let i = 0; i <= n; i += 1) out += rule(left, topPad + i * H, x(top), topPad + i * H);
       for (let t = 0; t <= ticks; t += major) out += label(x(t * step), base + 14, 'middle', t * step);
-      if (unit) out += label(x(top) + 6, base + 14, 'start', '(' + unit + ')');
+      if (unit) out += label(x(top) + off, base + 14, 'start', '(' + unit + ')');
       series.forEach((list, k) => list.forEach((v, i) => {
         if (v == null) return;
         const bh = H * (series.length > 1 ? 0.3 : 0.5);
@@ -594,8 +594,10 @@
       out += rule(left, topPad, left, base, false, true) + rule(left, base, x(top), base, false, true);
       if (o.title) out += label(left - 6, topPad - 8, 'end', o.title);
     }
-    const told = (list) => names.map((name, i) => name + ' ' + (list[i] == null ? '막대 없음' : list[i] + unit)).join(', ');
-    const said = '막대그래프: ' + (o.flip ? '가로' : '세로') + ' 눈금 한 칸은 ' + step + unit + '. ' + (o.second ? (o.legend ? o.legend[0] : '첫째') + ' — ' + told(values) + ' / ' + (o.legend ? o.legend[1] : '둘째') + ' — ' + told(o.second) : told(values));
+    // 그림 설명에서도 수와 단위 기호는 띄어 쓴다(20 kg). 우리말 단위는 붙여 쓴다(20명).
+    const amount = (v) => v + (/^[A-Za-z]/.test(unit) ? ' ' : '') + unit;
+    const told = (list) => names.map((name, i) => name + ' ' + (list[i] == null ? '막대 없음' : amount(list[i]))).join(', ');
+    const said = '막대그래프: ' + (o.flip ? '가로' : '세로') + ' 눈금 한 칸은 ' + amount(step) + '. ' + (o.second ? (o.legend ? o.legend[0] : '첫째') + ' — ' + told(values) + ' / ' + (o.legend ? o.legend[1] : '둘째') + ' — ' + told(o.second) : told(values));
     const key = o.second && o.legend ? '<div class="mb-lines" style="font-size:0.9rem"><div>' + o.legend.map((name, k) => '<span style="margin-right:14px"><span style="display:inline-block;width:12px;height:12px;margin-right:4px;vertical-align:-1px;background:' + fills[k] + ';border:1px solid #1e3a8a"></span>' + name + '</span>').join('') + '</div></div>' : '';
     return '<svg class="mb-numberline" viewBox="0 0 ' + Math.ceil(width) + ' ' + Math.ceil(height) + '" width="' + Math.ceil(width) + '" role="img" aria-label="' + said + '">' + out + '</svg>' + key;
   }
