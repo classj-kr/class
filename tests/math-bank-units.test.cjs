@@ -76,7 +76,7 @@ function everyItem(visit, extra = true) {
 }
 const where = (item, at) => `${at.unit.id} ${at.group.id} ${item.key} (seed ${at.seed}): ${strip(item.text)} ${strip(item.figure)}`;
 // 답이 네 자리를 넘는 단원(4학년 1학기 큰 수). 9000조를 넘는 수는 자바스크립트가 정확히 못 담으니 쓰지 않는다.
-const BIG_NUMBER_UNITS = new Set(['4-1-1']);
+const BIG_NUMBER_UNITS = new Set(['4-1-1', '4-1-3']);
 const answerAt = (item, i) => item.inputs[i].answer;
 
 test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
