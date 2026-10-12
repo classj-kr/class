@@ -38,8 +38,8 @@ test('independent science invariants: controls, conservation, optics, division a
  assert.match(view('acid-base',{material:'shell',stage:'after'}).text,/기포/);
  assert.doesNotMatch(view('acid-base',{material:'protein',stage:'after'}).text,/기포가 생/);
  assert.match(view('state-change',{kind:'condensation',stage:'after'}).text,/공기 중의 수증기/);
- for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','far']){
-  const r=view('refraction',{optic,distance});const expected=['concaveMirror','convexLens'].includes(optic)&&distance==='far';assert.equal(r.text.includes('거꾸로 된'),expected,optic+distance);
+ for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','middle','far']){
+  const r=view('refraction',{optic,distance});const expected=['concaveMirror','convexLens'].includes(optic)&&distance!=='near';assert.equal(r.text.includes('거꾸로 된'),expected,optic+distance);
  }
  for(const kind of ['melt','boil'])for(const sample of ['A','B']){const a=view('density-buoyancy',{kind,sample,amount:'one',step:'during'}),b=view('density-buoyancy',{kind,sample,amount:'two',step:'during'});assert.equal(a.text,b.text);assert.match(a.text,/온도가 .*일정한 구간/);}
  const numberOfParticles=r=>(r.svg.match(/<circle /g)||[]).length;

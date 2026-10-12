@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-12T22:02:51.187Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "diffusion",
+      "scenarios": 115
+    }
+  ],
+  "scenarios": 115,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

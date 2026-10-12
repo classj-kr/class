@@ -8,7 +8,7 @@
     <meta name="description" content="확산 현상을 관찰하고 입자가 스스로 움직임을 설명하는 중학교 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
-    <link rel="stylesheet" href="diff-visual.css?v=fe3d0bc72425">
+    <link rel="stylesheet" href="diff-visual.css?v=73270b1de5bb">
     <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
     <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
     <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
@@ -24,179 +24,39 @@
             <div class="grade-tags"><span>중학교 1학년</span><span>과학</span></div>
         </header>
 
-        <ol class="method-steps" aria-label="실험 방법">
-            <li>유리관 양쪽 끝에 두 물질을 동시에 놓습니다.</li>
-            <li>온도를 정합니다.</li>
-            <li>흰 고리가 어디에 생길지 예상합니다.</li>
-            <li>입자가 움직인다는 증거를 설명합니다.</li>
-        </ol>
-
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-
-                <div class="mode-switch" role="group" aria-label="실험 선택">
-                    <button type="button" class="mode selected" data-mode="diff">확산</button>
-
-                </div>
-
-                <div id="diffControls">
-                    <p class="water-standard">관 길이 40 cm · 암모니아 ↔ 염화수소</p>
-
-                    <div class="range-heading">
-                        <label for="tempRange">온도</label>
-                        <output id="tempOutput" for="tempRange">20 ℃</output>
-                    </div>
-                    <input id="tempRange" type="range" min="0" max="100" step="5" value="20">
-                    <div class="range-scale" aria-hidden="true"><span>0℃</span><span>50℃</span><span>100℃</span></div>
-
-                    <div class="range-heading amount-heading">
-                        <label for="timeRange">지난 시간</label>
-                        <output id="timeOutput" for="timeRange">0.0 초</output>
-                    </div>
-                    <input id="timeRange" type="range" min="0" max="8" step="0.1" value="0">
-                    <div class="range-scale" aria-hidden="true"><span>0초</span><span>4초</span><span>8초</span></div>
-
-                    <fieldset class="prediction-field">
-                        <legend>흰 고리가 생기는 곳</legend>
-                        <div class="prediction-buttons three">
-                            <button type="button" data-prediction="nh3">암모니아 쪽</button>
-                            <button type="button" data-prediction="center">가운데</button>
-                            <button type="button" data-prediction="hcl">염화수소 쪽</button>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <div id="gasControls" hidden>
-                    <p class="water-standard">탄산칼슘 1.00 g + 묽은 염산 50 mL</p>
-
-                    <div class="range-heading">
-                        <label for="concRange">염산의 농도</label>
-                        <output id="concOutput" for="concRange">1.00 mol/L</output>
-                    </div>
-                    <input id="concRange" type="range" min="0.1" max="2" step="0.1" value="1">
-                    <div class="range-scale" aria-hidden="true"><span>0.1</span><span>1.0</span><span>2.0 mol/L</span></div>
-
-                    <fieldset class="grain-field">
-                        <legend>탄산칼슘의 형태</legend>
-                        <div class="grain-buttons">
-                            <button type="button" data-grain="lump" class="selected">큰 덩어리</button>
-                            <button type="button" data-grain="chip">작은 조각</button>
-                            <button type="button" data-grain="powder">가루</button>
-                        </div>
-                    </fieldset>
-
-                    <div class="range-heading amount-heading">
-                        <label for="gasTimeRange">지난 시간</label>
-                        <output id="gasTimeOutput" for="gasTimeRange">0 초</output>
-                    </div>
-                    <input id="gasTimeRange" type="range" min="0" max="120" step="1" value="0">
-                    <div class="range-scale" aria-hidden="true"><span>0초</span><span>60초</span><span>120초</span></div>
-                </div>
-
-                <div class="run-row">
-                    <button class="run-button" id="playBtn" type="button">시간 흘려보내기</button>
-                    <button class="reset-button" id="resetBtn" type="button">처음으로</button>
-                </div>
-
-                <section class="result-box" aria-labelledby="result-title" aria-live="polite">
-                    <h3 id="result-title">관찰 결과</h3>
-                    <p id="resultEmpty">조건을 정하고 시간을 흘려보내 보세요.</p>
-                    <div id="resultContent" hidden>
-                        <div class="result-numbers">
-                            <article><span id="labelA">고리 위치</span><strong id="valueA">-</strong></article>
-                            <article><span id="labelB">이동 비교</span><strong id="valueB">-</strong></article>
-                        </div>
-                        <p class="prediction-result" id="predictionResult"></p>
-                        <p class="explanation" id="elementaryExplanation"></p>
-                    </div>
-                </section>
-            </section>
-
-            <section class="panel diff-stage" aria-label="관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">0.0 초</span></div>
-
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 220" aria-hidden="true">
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 180" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
-                </div>
-
-                <p class="stage-caption" id="stageCaption">두 기체가 동시에 퍼져 나가 만나는 곳에 흰 고리가 생깁니다.</p>
-                <div class="data-note" id="dataNote"></div>
-            </section>
-        </div>
-
-        <section class="panel meaning-panel">
-            <h2>실험 결과의 의미</h2>
-            <div class="meaning-body">
-                <p><strong>확산</strong> 입자가 스스로 움직여 골고루 퍼지는 현상입니다.</p>
-                <p><strong>입자 운동의 증거</strong> 직접 섞지 않아도 물질이 퍼지는 현상으로 입자가 스스로 움직이고 있음을 알 수 있습니다.</p>
-                <p>화면의 색은 눈에 보이지 않는 두 기체를 구별합니다. 유해 기체를 직접 만들거나 냄새 맡지 마세요.</p>
-            </div>
-        </section>
-
-        <details class="quiz-section" aria-labelledby="quiz-title">
+        <ol class="method-steps" aria-label="실험 방법"><li>관찰할 실험을 고릅니다.</li><li>물질을 놓고 변화를 관찰합니다.</li><li>관찰 모습과 입자 모형을 비교합니다.</li><li>퍼지는 방향과 변색 순서를 해석합니다.</li></ol>
+<section id="dfLab" class="panel" aria-label="확산 관찰 실험"><div class="df-layout"><div class="df-controls"><fieldset><legend>관찰할 실험</legend><div class="df-buttons"><button type="button" data-df-mode="ink">물속 잉크</button><button type="button" data-df-mode="btb">식초와 BTB</button></div></fieldset><div id="dfInkControls"><label for="dfPosition">잉크를 넣는 위치</label><select id="dfPosition"><option value="left">바닥 왼쪽</option><option value="centre" selected>바닥 가운데</option><option value="right">바닥 오른쪽</option></select></div><div id="dfBtbControls" hidden><label for="dfSubstance">중앙에 놓는 물질</label><select id="dfSubstance"><option value="vinegar">식초</option><option value="water">물</option></select></div><p id="dfMethod"></p><p class="df-note">색이 퍼지거나 변하는 순서를 비교합니다. 화면의 진행은 실제 측정 시간이 아닙니다.</p></div>
+<section class="df-scene"><div class="df-scene-top"><h2 id="dfSceneTitle"></h2><div class="df-buttons" role="group" aria-label="보여 줄 모습"><button type="button" data-df-view="observation">관찰 모습</button><button type="button" data-df-view="particles">입자 모형</button></div></div><canvas id="dfCanvas" role="img"></canvas><p id="dfKey"></p><div id="dfDropGroups" class="df-groups" hidden><div id="df-near"><span><i class="df-swatch" aria-hidden="true"></i>가까운 네 방울</span><strong></strong></div><div id="df-middle"><span><i class="df-swatch" aria-hidden="true"></i>대각선 네 방울</span><strong></strong></div><div id="df-far"><span><i class="df-swatch" aria-hidden="true"></i>먼 네 방울</span><strong></strong></div></div></section></div>
+<div class="df-actions"><button id="playBtn" type="button">관찰 시작</button><button id="resetBtn" type="button">처음으로</button></div><label for="dfProgress" class="df-range-title"><span>관찰 진행</span><span id="dfStage">처음</span></label><input id="dfProgress" type="range" min="0" max="100" step="1" value="0" aria-label="관찰 과정 이동"><p id="dfObservation" aria-live="polite"></p></section>
+<section class="panel meaning-panel df-meaning"><h2>관찰 결과를 해석해 보세요</h2><p><strong>물속 잉크</strong> 직접 젓지 않아도 잉크 입자가 움직여 퍼집니다. 물이 고른 색을 띠어도 입자는 계속 움직입니다.</p><p><strong>식초와 BTB</strong> 식초에서 증발한 아세트산 입자가 접시 안으로 퍼집니다. 아세트산이 BTB 용액에 도달하면 초록색이 노란색으로 변합니다.</p><p>입자 모형의 점은 눈에 보이지 않는 입자를 확대해 나타낸 것입니다. 입자가 커지거나 새로 생기는 것이 아닙니다.</p></section>
+<details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
-                <article class="quiz-card" data-answer="a">
-<h3>암모니아와 염화수소가 관 양 끝에서 퍼져 흰 고리가 염화수소 쪽에 더 가깝게 생겼다. 고리가 생길 때까지 이동 거리는?</h3>
-<div class="quiz-options">
-<label><input type="radio" name="q1" value="a"> 암모니아가 더 큼</label>
-<label><input type="radio" name="q1" value="b"> 염화수소가 더 큼</label>
-<label><input type="radio" name="q1" value="c"> 두 기체가 같음</label>
-</div>
-<button class="answer-button" type="button">정답 확인</button>
-<p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>고리가 염화수소 쪽에 가깝다면 암모니아 쪽 출발점에서 고리까지의 거리가 더 깁니다.</p>
-</article>
+                <article class="quiz-card" data-answer="a"><h3>중앙에 식초를 놓고 뚜껑을 덮었다. 같은 양의 BTB 방울을 네 방향에 같은 간격으로 놓았을 때, 가장 먼저 노랗게 변할 것으로 예상되는 묶음은?</h3><div class="quiz-options"><label><input type="radio" name="q1" value="a"> 네 방향의 가까운 방울</label>
+<label><input type="radio" name="q1" value="b"> 네 방향의 먼 방울</label>
+<label><input type="radio" name="q1" value="c"> 오른쪽의 가까운·먼 방울</label>
+<label><input type="radio" name="q1" value="d"> 왼쪽의 가까운·먼 방울</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>아세트산 입자가 여러 방향으로 퍼집니다. 다른 조건이 같다면 식초에 가까운 방울부터 변색이 관찰됩니다.</p></article>
 
-                <article class="quiz-card" data-answer="b">
-<h3>공기의 큰 흐름을 줄인 용기 한쪽에 향을 두자 시간이 지나 반대쪽에서도 냄새가 났다. 입자 모형에 맞는 해석은?</h3>
-<div class="quiz-options">
-<label><input type="radio" name="q2" value="a"> 입자들이 한 방향으로만 줄지어 이동</label>
-<label><input type="radio" name="q2" value="b"> 불규칙한 운동으로 농도 차가 줄어듦</label>
-<label><input type="radio" name="q2" value="c"> 처음 자리에 머문 입자의 크기만 증가</label>
-</div>
-<button class="answer-button" type="button">정답 확인</button>
-<p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>입자의 불규칙한 운동으로 높은 농도에서 낮은 농도 쪽으로 순이동이 나타납니다.</p>
-</article>
+                <article class="quiz-card" data-answer="b"><h3>식초와 BTB 방울은 서로 닿지 않았는데 BTB가 노랗게 변했다. 식초의 아세트산이 BTB에 도달하기까지 일어난 변화와 이동은?</h3><div class="quiz-options"><label><input type="radio" name="q2" value="a"> 액체 그대로 흘러감 · 바닥을 따라 이동</label>
+<label><input type="radio" name="q2" value="b"> 액체에서 기체로 됨 · 접시 안에 퍼짐</label>
+<label><input type="radio" name="q2" value="c"> 기체에서 액체로 됨 · 중앙으로 모임</label>
+<label><input type="radio" name="q2" value="d"> 액체 그대로 머무름 · 빛만 BTB로 이동</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>식초에서 아세트산이 증발하고 기체 입자가 접시 안으로 확산합니다. BTB 방울에 도달하여 녹아들면 색 변화가 나타납니다.</p></article>
 
-                <article class="quiz-card" data-answer="c">
-<h3>같은 종류·양의 기체를 담은 A와 B 중 B의 온도가 더 높다. 입자 모형에서 비교해야 할 차이는?</h3>
-<div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> B의 입자 하나 크기가 더 크다</label>
-<label><input type="radio" name="q3" value="b"> B의 입자 수가 더 많다</label>
-<label><input type="radio" name="q3" value="c"> B의 평균 운동 속력이 더 크다</label>
-<label><input type="radio" name="q3" value="d"> B의 입자 운동 방향이 모두 같다</label>
-</div>
-<button class="answer-button" type="button">정답 확인</button>
-<p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>온도가 높을수록 입자의 평균 운동이 활발합니다. 입자 자체의 크기나 개수가 커지는 것으로 나타내면 안 됩니다.</p>
-</article>
+                <article class="quiz-card" data-answer="c"><h3>잉크를 넣은 물을 오래 두어 색이 거의 고르게 보였다. 물과 잉크가 밖으로 나가지 않은 상태에서, 그 뒤의 잉크 입자는?</h3><div class="quiz-options"><label><input type="radio" name="q3" value="a"> 처음 자리로 돌아가 한곳에 모인다.</label>
+<label><input type="radio" name="q3" value="b"> 서로 합쳐져 더 큰 입자로 바뀐다.</label>
+<label><input type="radio" name="q3" value="c"> 여러 방향으로 계속 움직인다.</label>
+<label><input type="radio" name="q3" value="d"> 각자 그 자리에 멈추어 머문다.</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>색이 고르게 보이는 것은 전체적인 분포가 비슷해진 것입니다. 입자의 불규칙한 운동은 계속되며 입자 자체가 커지거나 멈추지 않습니다.</p></article>
 
-                <article class="quiz-card" data-answer="d">
-<h3>같은 부피의 두 공간 사이 칸막이를 제거했다. 왼쪽에만 있던 기체 입자가 충분히 섞인 뒤에도 유지되는 것은?</h3>
-<div class="quiz-options">
-<label><input type="radio" name="q4" value="a"> 왼쪽 공간의 입자 수</label>
-<label><input type="radio" name="q4" value="b"> 왼쪽에만 있는 입자 분포</label>
-<label><input type="radio" name="q4" value="c"> 모든 입자의 이동 방향</label>
-<label><input type="radio" name="q4" value="d"> 양쪽을 합한 입자 수</label>
-</div>
-<button class="answer-button" type="button">정답 확인</button>
-<p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>확산은 입자가 이동하여 분포가 달라지는 과정입니다. 닫힌 전체 공간의 입자 수는 변하지 않습니다.</p>
-</article>
+                <article class="quiz-card" data-answer="d"><h3>같은 BTB 방울을 놓은 두 접시에서 중앙 물질만 바꾸었다. 식초를 놓은 A에서는 노랗게 변했고 물을 놓은 B에서는 초록색이 유지됐다. 이 결과로 뒷받침되는 해석은?</h3><div class="quiz-options"><label><input type="radio" name="q4" value="a"> 뚜껑을 덮으면 모든 액체가 BTB를 변색시킨다.</label>
+<label><input type="radio" name="q4" value="b"> B의 색이 같으므로 B에는 움직이는 입자가 없다.</label>
+<label><input type="radio" name="q4" value="c"> A에서 색이 변한 만큼 BTB 방울의 양이 늘었다.</label>
+<label><input type="radio" name="q4" value="d"> A의 변색에는 식초에서 나온 물질이 관여했다.</label></div><button class="answer-button" type="button">정답 확인</button><p class="answer-result" aria-live="polite"></p><p class="answer-explanation" hidden>중앙 물질 외의 조건을 같게 했으므로 변색 차이를 식초에서 나온 물질과 관련지을 수 있습니다. 색이 변하지 않아도 입자는 움직입니다.</p></article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=051de6afa516"></script>
-    <script src="../curriculum-map.js?v=abff06271ba2"></script>
-    <script src="../exam-scope.js?v=b258c46c2f6d"></script>
+    <script src="model.js?v=fdf795ad5bea"></script><script src="app.js?v=8340a1f8acb6"></script>
+    <script src="../curriculum-map.js?v=3e38d6d70bc9"></script>
+    <script src="../exam-scope.js?v=597914c2603e"></script>
     <script src="../lab-ui.js?v=fa13c92e90ea"></script>
 </body>
 </html>

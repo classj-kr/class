@@ -1,0 +1,47 @@
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (3.8516ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.9253ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1444ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (37.5505ms)
+618 core state/observation/check combinations verified
+33 live observation questions, 66 incorrect choices have stable authored feedback
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (17.4496ms)
+✔ every live supplementary observation has choice-specific misconception feedback after rotation (6.0134ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.8988ms)
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 15 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+576 browser state cases, 1728 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (10278.8605ms)
+270 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (189.933ms)
+✔ every science lab JavaScript file parses (107.948ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8968ms)
+✔ publisher textbook and experiment workbook names are included without the word 교과서 (0.7652ms)
+✔ metadata and assessments do not become textbooks even under a textbook directory; aliases retain source identity (0.2575ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10418.5978
+

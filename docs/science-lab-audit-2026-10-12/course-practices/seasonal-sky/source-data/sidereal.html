@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computing Approximate Sidereal Time</title>
+    <meta name="description" content="Information on calculating Greenwich mean sidereal time (GMST) and Greenwich apparent sidereal time (GAST).">
+    <meta name="keywords" content="Greenwich mean sidereal time, Greenwich apparent sidereal time, sidereal time">
+
+    <link rel="stylesheet" href="/uswds/css/uswds.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/aa.css">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <script src="/uswds/js/uswds-init.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>   
+</head>
+
+<body>
+    
+
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+
+
+<div class="site-banner usa-banner">
+    <div class="usa-accordion">
+        <header class="usa-banner__header">
+            <div class="usa-banner__inner">
+                <div class="grid-col-auto">
+                    <img class="usa-banner__header-flag" src="/uswds/img/us_flag_small.png" alt="U.S. flag">
+                </div>
+                <div class="grid-col-fill tablet:grid-col-auto">
+                    <p class="usa-banner__header-text">An official website of the United States government</p>
+                    <p class="usa-banner__header-action" aria-hidden="true">Here’s how you know</p>
+                </div>
+                <button class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+            <span class="usa-banner__button-text">Here’s how you know</span>
+            </button>
+            </div>
+        </header>
+        <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+            <div class="grid-row grid-gap-lg">
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img class="usa-banner__icon usa-media-block__img" src="/uswds/img/icon-dot-gov.svg" alt="Dot gov">
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>The .gov means it’s official.</strong>
+                            <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+                        </p>
+                    </div>
+                </div>
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img class="usa-banner__icon usa-media-block__img" src="/uswds/img/icon-https.svg" alt="Https">
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>The site is secure.</strong>
+                            <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="usa-overlay"></div>
+<header class="usa-header site-header site-header-dark" role="banner">
+    <div class="usa-navbar site-header-navbar">
+        <div class="usa-logo site-logo" id="logo">
+            <em class="usa-logo__text">
+                <a class="margin-right-05" href="/" title="Home" aria-label="USNO Astronomical Applications Home">
+                <span aria-hidden="true" class="site-title-short">AA Dept</span>
+                <span class="site-title">Astronomical Applications Department</span>
+                </a>
+            </em>
+        </div>
+        <div class="urania-logo-container">
+            <a href="https://www.cnmoc.usff.navy.mil/usno/">
+                <img class="urania-logo" src="/graphics/urania_logo_circle.png" alt="Urania Logo">
+            </a>
+        </div>
+        <button class="usa-menu-btn">Menu</button>
+    </div>
+
+</header>
+<nav class="site-nav-secondary sticky">
+    <ul>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/index"><span>Main</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/data/index"><span>Data Services</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item is-current" >
+        <a class="usa-current" href="/faq/index"><span>Information Center</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/publications/index"><span>Publications</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/software/index"><span>Software</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/about/index"><span>About Us</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/sitemap/"><span>Site Map</span></a>
+        </li>
+        
+    </ul>
+</nav>
+    
+
+<nav role="navigation" aria-label="Mobile Navigation" class="usa-nav site-nav sidenav-mobile">
+    <div class="usa-nav__inner"><button class="usa-nav__close"><img src="/uswds/img/close.svg" role="img" alt="close"></button>
+    <ul class="usa-nav__primary">
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/index"><span>Main</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/data/index"><span>Data Services</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item is-current" >
+        <a class="usa-current" href="/faq/index"><span>Information Center</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/publications/index"><span>Publications</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/software/index"><span>Software</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/about/index"><span>About Us</span></a>
+        </li>
+        
+        <li class="usa-nav__primary-item " >
+        <a class="" href="/sitemap/"><span>Site Map</span></a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+<main class="usa-layout-docs usa-section" id="main-content">
+    <div class="grid-container">
+        <div class="grid-row grid-gap">
+            <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
+                <nav aria-label="Secondary navigation">
+                    <ul class="usa-sidenav"> 
+                         
+
+    
+
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/index">
+            <span><strong>Astronomical Information Center</strong></span></a>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Terms used on this website</span></strong>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/asa_glossary">
+            <span>Astronomical Almanac Glossary</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Phenomena of the Sun and Moon</span></strong>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/RST_defs">
+            <span>Rise, Set and Twilight Definitions</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/longest_day">
+            <span>Comparative Lengths of Days and Nights</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/equinoxes">
+            <span>Length of Day and Night at the Equinoxes</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/rs_solstices">
+            <span>Sunrise and Sunset Times Near the Solstices</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/crescent">
+            <span>Visibility of the Crescent Moon</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/eclipse_ref">
+            <span>References on Eclipses</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/moon_phases">
+            <span>Phases of the Moon and Percent of the Moon Illuminated</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Time</span></strong>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/UT">
+            <span>Universal Time</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/TT">
+            <span>Terrestrial Time</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="usa-current" 
+            href="/faq/GAST">
+            <span>Approximate Sidereal Time</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/us_tzones">
+            <span>U.S. Time Zones</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/world_tzones">
+            <span>World Time Zone Map</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/daylight_time">
+            <span>Daylight Saving Time</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/eqtime">
+            <span>The Equation of Time</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Calendars and Historical Events</span></strong>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/calendars">
+            <span>Introduction to Calendars</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/leap_years">
+            <span>Leap Years</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/holidays">
+            <span>U.S. Holidays</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/international_date">
+            <span>International Date Line</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/millennium">
+            <span>The 21st Century and the 3rd Millennium</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/first_sunrise">
+            <span>The First Sunrise of the New Year</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Computing Astronomical Data and Phenomena</span></strong>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/JD_formula">
+            <span>Converting Between Julian Dates and Gregorian Calendar Dates</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/rs_algor">
+            <span>Computing Times of Rise, Set, and Twilight</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/sun_approx">
+            <span>Computing Approximate Solar Coordinates</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/alt_az">
+            <span>Computing Altitude and Azimuth</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Celestial Navigation</span></strong>
+        
+    </li>
+    
+
+ 
+    
+        
+          
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/publications/celnav">
+            <span>Celestial Navigation Algorithms</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/celnav">
+            <span>Celestial Navigation Resources</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <strong><span>Other Topics</span></strong>
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/lawyers">
+            <span>Astronomical Data Used for Litigation</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/seasons_orbit">
+            <span>The Seasons and the Earth&#39;s Orbit</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/apsides">
+            <span>Variation in Times of Perihelion and Aphelion</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/ICRS_doc">
+            <span>International Celestial Reference System (ICRS)</span></a>
+        
+        
+    </li>
+    
+
+ 
+    
+    
+    <li class="usa-sidenav__item">
+        
+            <a class="" 
+            href="/faq/minorplanets">
+            <span>When Did the Asteroids Become Minor Planets?</span></a>
+        
+        
+    </li>
+    
+
+
+
+
+
+         
+                     </ul>
+                </nav>
+            </aside>
+            <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
+                <div>
+                
+<h1>Computing Approximate Sidereal Time</h1>
+
+
+<p>
+    Sidereal time is a system of timekeeping based on the rotation of the Earth with respect
+    to the fixed stars in the sky. Specifically, it is the measure of the hour angle of the
+    vernal equinox. If the hour angle is measured with respect to the mean equinox, <em>mean sidereal
+    time</em> is being measured, and if the hour angle is measured with respect to the true equinox,
+    <em>apparent sidereal time</em> is being measured. When the measurement is made with respect to the meridian
+    at Greenwich, the time is referred to as Greenwich mean sidereal time (GMST) and Greenwich apparent
+    sidereal time (GAST).
+</p>
+
+<p>
+    Below is an algorithm for computing apparent sidereal time to an accuracy of about 0.1 second of time,
+    equivalent to about 1.5 arcseconds on the sky.
+</p>
+
+<p>
+    Sidereal time is a function of both the rotation of the Earth on its axis and its motion about the Sun.
+    Because the Earth's rotation rate is not constant the input needs to be split into two parts:
+    <a href="/faq/TT">Terrestrial Time, TT</a>, and
+    <a href="/faq/UT">Universal Time, UT1</a>.
+    The input times are represented as <a href="/data/JulianDate">Julian dates</a>.
+</p>
+
+<p>
+    Let JD<sub>TT</sub> be the TT Julian date of the time of interest, JD<sub>UT</sub> be the UT1 Julian date.
+    The difference between TT and UT1 is small, ∼0.001 day, so for most applications
+    JD<sub>TT</sub> = JD<sub>UT</sub>. Also let JD<sub>0</sub> be the Julian date of the previous midnight
+    (0<sup>h</sup>) UT1 (the value of JD<sub>0</sub> will end in .5 exactly), and H be the hours of UT1 elapsed
+    since that time. Thus we have <span class="formula">JD<sub>UT</sub> = JD<sub>0</sub> + H/24</span>.
+</p>
+
+<p>
+    For both of these Julian dates, compute the number of days and fraction (+&nbsp;or&nbsp;-) from 2000 January 1,
+    12<sup>h</sup>, Julian date 2451545.0:
+</p>
+
+    <p class="formula center">
+       D<sub>TT</sub> = JD<sub>TT</sub> - 2451545.0<br>
+       D<sub>UT</sub> = JD<sub>0</sub> - 2451545.0
+    </p>
+
+<p>
+    Also compute T the number of TT <em>centuries</em> since the year 2000.
+</p>
+
+    <p class="formula center">
+        T = D<sub>TT</sub> / 36525
+    </p>
+
+<p>
+    Then the Greenwich mean sidereal time in hours is:
+</p>
+
+    <p class="formula center">
+       GMST = mod (6.697375 + 0.065707485828 D<sub>UT</sub>
+            + 1.0027379 H + 0.0854103 T + 0.0000258 T<sup>2</sup>, 24) <sup>h</sup>
+    </p>
+<p>
+    Or, assuming JD<sub>TT</sub> = JD<sub>UT</sub> :
+</p>
+
+    <p class="formula center">
+        GMST = mod (6.697375 + 0.065709824279 D<sub>UT</sub>
+         + 1.0027379 H + 0.0000258 T<sup>2</sup>, 24) <sup>h</sup>
+    </p>
+
+<p>
+    where mod(•,•) is the modulo function. The T<sup>2</sup> term can be omitted in most
+    applications. Setting H = 0 in the above formulae yields the Greenwich mean sidereal
+    time at 0<sup>h</sup> UT1, which is tabulated in <em>The Astronomical Almanac</em>.
+</p>
+
+<p>
+    The following alternative formula can be used for approximate GMST at 0<sup>h</sup> UT
+    with a loss of precision of 0.1&nbsp;second per century:
+</p>
+
+    <p class="formula center">
+        GMST = mod (18.697375 + 24.065709824279 D<sub>UT</sub>, 24<sup>h</sup>)
+    </p>
+
+<p>
+    The equations for GMST given above are adapted from those given in section 2.6.2 of
+    <a href="/publications/Circular_179"><em>USNO Circular No.
+    179</em> (2005)</a>.
+</p>
+
+<p>
+    The Greenwich apparent sidereal time is obtained by adding a correction to the Greenwich
+    mean sidereal time computed above.  The correction term is called the
+    <em>nutation in right ascension</em> or the <em>equation of the equinoxes</em>.  Thus,
+</p>
+
+    <p class="formula center">
+       GAST = GMST + eqeq.
+    </p>
+
+<p>
+    The equation of the equinoxes is given as <span class="formula">
+    eqeq = &#916;&#968; cos &#949;</span> where &#916;&#968;, the nutation in longitude,
+    is given in hours approximately by
+</p>
+
+    <p class="formula center">
+        &#916;&#968; &#8776; -0.000319 sin &#937; - 0.000024 sin 2L
+    </p>
+
+<p>
+    with &#937;, the Longitude of the ascending node of the Moon, given as
+</p>
+
+    <p class="formula center">
+        &#937; = 125.04 - 0.052954 D<sub>TT</sub>,
+    </p>
+
+<p>
+    and L, the Mean Longitude of the Sun, given as
+</p>
+
+    <p class="formula center">
+        L = 280.47 + 0.98565 D<sub>TT</sub>.
+    </p>
+
+<p>
+    &#949; is the obliquity and is given as
+</p>
+
+    <p class="formula center">
+        &#949; = 23.4393 - 0.0000004 D<sub>TT</sub>.
+    </p>
+
+<p>
+    The above expressions for &#937;, L, and &#949; are all expressed in degrees.
+</p>
+
+<p>
+    The <em>local</em> mean or apparent sidereal time is found by obtaining the local
+    longitude in degrees (east longitudes positive), dividing by 15 to convert it to
+    hours, and adding it to the Greenwich sidereal time.
+</p>
+
+<p>
+    If you need apparent sidereal time to better than 0.1&nbsp;second accuracy on a
+    regular basis, consider using the Multiyear Interactive Computer Almanac,
+    
+    MICA. MICA
+    
+    provides very accurate almanac data in tabular form for a range of years.
+</p>
+
+    <br>
+
+<p class="sectionheading">
+    NOTES ON ACCURACY
+</p>
+
+<p>
+    The maximum error in GAST resulting from the use of these formulae over the period
+    2000-2100 is 0.432&nbsp;seconds; the RMS error is 0.01512&nbsp;seconds. To obtain
+    sub-second accuracy in sidereal time, it is important to use the form of Universal
+    Time called <a href="/faq/UT">UT1</a>
+    as the basis for the input Julian date.
+</p>
+
+<p>
+    The maximum value of the equation of the equinoxes is about 1.1&nbsp;seconds, so if
+    an error of ~1&nbsp;second is unimportant, the transformation from GMST to GAST can
+    be skipped. In this case use either UT1 or UTC as the Universal Time basis for the input
+    Julian date, set eqeq&nbsp;= 0, and GAST&nbsp;= GMST.
+</p>
+
+
+                </div>
+            </div>
+        </div> 
+    </div>
+</main>
+ 
+
+<footer class="usa-footer usa-footer--slim">
+    <div class="usa-footer">
+      <div class="usa-footer grid-row">
+        <div class="mobile-lg:grid-col-12 bg-gold padding-y-1 line-height-sans-3 font-lang-4">
+          <nav class="usa-footer__nav" aria-label="Footer navigation">
+            <ul class="grid-row grid-gap">
+              <li class="mobile-lg:grid-col-6 desktop:grid-col-3 usa-footer">
+                <p class="usa-footer">This is an official 
+
+<a href='https://www.navy.mil' target="_blank" rel="noreferrer">U.S. Navy</a>
+
+ Web site</p>
+              </li>
+              <li class="mobile-lg:grid-col-6 desktop:grid-col-7 usa-footer">
+                <p class="usa-footer">
+                  Hyperlinks do not constitute endorsement by the U.S. Navy of non-U.S.Government sites or the information, products, or services contained therein.
+                </p>
+              </li>
+              <li class="mobile-lg:grid-col-6 desktop:grid-col-2 usa-footer">
+                <p><a class="usa-footer" href="/about/PrivacyNotice">Privacy and Security Notice</a></p>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer> 
+
+
+
+<script src="/js/aa.js"></script>
+<script src="/uswds/js/uswds.min.js"></script>
+</body>
+
+</html>

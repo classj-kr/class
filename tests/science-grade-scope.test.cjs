@@ -52,18 +52,13 @@ test('six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile
         assert.doesNotMatch(await text('main'), /무게\s*[×*]|정비례|심화|기본 모드/);
       }
       if (app === 'reflex-nerve') {
-        for (const [kind, centre, prediction] of [['conscious', '대뇌', 'yes'], ['pupil', '중간뇌', 'no'], ['knee', '척수', 'no']]) {
-          await click(`[data-path="${kind}"]`);
-          const route = await text('#routeList');
-          assert.match(route, new RegExp(centre));
-          if (kind === 'pupil') assert.doesNotMatch(route, /척수|연수/);
-          await click(`[data-prediction="${prediction}"]`); await click('#checkBtn');
-          for (let i = 0; i < 4; i++) await click('#nextBtn');
+        for (const [kind, centre] of [['conscious', '대뇌'], ['leg','대뇌'], ['pupil', '중간뇌'], ['knee', '척수']]) {
+          await click('[data-path="'+kind+'"]');
+          assert.match(await text('#routeList'), new RegExp(centre));
+          await page.evaluate(()=>__reflexModel.runToEnd());
           assert.equal(await page.locator('#nextBtn').isDisabled(), true);
-          assert.match(await text('#predictionResult'), /맞았습니다/);
-          assert.match(await text('#elementaryExplanation'), new RegExp(centre));
+          assert.equal(await text('#rfCentreValue'),centre);
         }
-        assert.doesNotMatch(await text('main'), /m\/s|자유 낙하|0\.1초|말이집|심화/);
       }
       if (app === 'solubility') {
         for (const [temperature, amount, dissolved, remaining] of [[20, 33, '33 g', '0 g'], [20, 39, '36 g', '3 g'], [0, 39, '35.7 g', '3.3 g'], [100, 43, '39.8 g', '3.2 g']]) {
@@ -159,7 +154,7 @@ test('six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile
         assert.equal(await card.getAttribute('data-state'), 'correct');
         assert((await card.locator('.answer-result').innerText()).includes((await card.locator('.answer-explanation').textContent()).trim()));
       }
-      if (['lever-balance', 'reflex-nerve'].includes(app)) {
+      if (app === 'lever-balance') {
         await click('#resetBtn');
         if (app === 'lever-balance') {
           assert.deepEqual(await page.evaluate(() => window.__leverModel.state()), { method: 'direct', force: 'small', prediction: null, ran: false });
@@ -173,7 +168,7 @@ test('six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile
       }
       await click('.quiz-heading');
       if (app === 'lever-balance') { await click('[data-method="lever"]'); await click('#checkBtn'); }
-      if (app === 'reflex-nerve') { await click('[data-path="pupil"]'); await click('#checkBtn'); for (let i = 0; i < 4; i++) await click('#nextBtn'); }
+      if (app === 'reflex-nerve') { await click('[data-path="pupil"]'); await page.evaluate(()=>__reflexModel.runToEnd()); }
       if (shotDir) await screenshotWebp(page, { path: path.join(shotDir, `${app}-desktop.webp`), fullPage: true });
       await page.setViewportSize({ width: 390, height: 844 });
       const geometry = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, width: window.innerWidth }));

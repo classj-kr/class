@@ -901,7 +901,7 @@
     {
       "id": "reflex-nerve#q2",
       "slug": "reflex-nerve",
-      "sha256": "7df7de053b1081bb61203d7bb57a64aaff4c893a8b96b3d44378d1a1ecb37ce3",
+      "sha256": "ab791bfe9d77c9ab23a8af68394df6fac5769c6f9a26b4502760b9d5a9c68c28",
       "before": {
         "id": "reflex-nerve#q2",
         "slug": "reflex-nerve",
@@ -930,32 +930,32 @@
       "after": {
         "id": "reflex-nerve#q2",
         "slug": "reflex-nerve",
-        "question": "피부 자극으로 척수 반사가 일어날 때 신호가 전달되는 차례는?",
+        "question": "무릎뼈 아래를 두드렸을 때 다리가 먼저 들리고, 닿았다는 느낌도 인식했다. 이 결과에 대한 해석으로 알맞은 것은?",
         "choices": [
           {
             "id": "a",
-            "text": "감각 기관 → 운동 신경 → 척수 → 감각 신경 → 반응 기관"
+            "text": "감각 신경이 근육 수축을 명령하고 대뇌는 자극만 느낀다."
           },
           {
             "id": "b",
-            "text": "반응 기관 → 감각 신경 → 척수 → 운동 신경 → 감각 기관"
+            "text": "척수가 근육 수축을 명령하고 대뇌도 자극 정보를 받는다."
           },
           {
             "id": "c",
-            "text": "감각 기관 → 감각 신경 → 척수 → 운동 신경 → 반응 기관"
+            "text": "대뇌가 자극을 인식한 뒤에야 척수가 근육 수축을 명령한다."
           },
           {
             "id": "d",
-            "text": "감각 기관 → 감각 신경 → 반응 기관 → 운동 신경 → 척수"
+            "text": "대뇌가 근육 수축을 명령한 뒤에 그 신호를 척수에 보낸다."
           }
         ],
-        "answer": "c",
-        "why": "감각 신경이 자극 정보를 척수로 전달하고 운동 신경이 명령을 근육 같은 반응 기관으로 전달한다. 감각 신경과 운동 신경의 기능, 중추와 반응 기관의 위치를 구별한다."
+        "answer": "b",
+        "why": "무릎 반사는 척수에서 조절되어 대뇌의 의식적 판단을 기다리지 않습니다. 감각 정보가 대뇌에도 전달되므로 자극을 느낄 수 있습니다."
       },
       "misconceptions": [
-        "감각 신경과 운동 신경이 전달하는 방향을 바꾸었습니다.",
-        "자극을 받는 감각 기관과 반응하는 기관을 바꾸었습니다.",
-        "반응 기관을 중추인 척수보다 앞에 놓았습니다."
+        "감각 신경은 자극 정보를 전달합니다. 근육으로 보내는 운동 신호와 구별하세요.",
+        "의식적 판단이 먼저 필요한 반응과 척수 반사를 혼동했습니다.",
+        "무릎 반사의 명령이 대뇌에서 먼저 나온다고 보았습니다."
       ]
     },
     {
@@ -2011,7 +2011,7 @@
     "Observed sugar table preserved: 29−20=9 g; observation not extrapolated to all substances.",
     "Redshift: (505−500)/500=0.01, no nonrelativistic velocity assumption needed.",
     "Closed-system water: vapor 30 g, total 100 g; compensation point: 6−6=0 with both processes continuing.",
-    "Metamorphic sequence options all contain four rocks; neural paths all contain five nodes; no option wins by merely containing every step.",
+    "Metamorphic sequence options all contain four rocks; reflex choices distinguish the command centre from conscious sensation using similarly sized descriptions.",
     "Brine boiling specifies unsaturated solution before salt crystallization; neurotransmitter question limited to immediate stimulation, not clinical effects."
   ]
 }

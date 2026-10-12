@@ -1,0 +1,48 @@
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (20823.9376ms)
+✖ chromium: real animation frames keep observations and grades synchronized (16799.7362ms)
+✖ webkit: real animation frames keep observations and grades synchronized (36890.7579ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53791.2724
+
+✖ failing tests:
+
+test at tests\science-live-results.test.cjs:4:43
+✖ chromium: real animation frames keep observations and grades synchronized (16799.7362ms)
+  AssertionError [ERR_ASSERTION]: supplement loaded: cell-structure
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-live-results.test.cjs:28:88)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\science-live-results.test.cjs:4:43
+✖ webkit: real animation frames keep observations and grades synchronized (36890.7579ms)
+  AssertionError [ERR_ASSERTION]: supplement loaded: cell-structure
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-live-results.test.cjs:28:88)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+

@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-12T22:23:32.832Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "refraction",
+      "scenarios": 220
+    }
+  ],
+  "scenarios": 220,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

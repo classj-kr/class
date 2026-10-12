@@ -2,15 +2,19 @@
 function scienceOpticsComparison(optic, distance) {
  const mirror=!optic.endsWith('Lens'),plane=optic==='plane',converging=['concaveMirror','convexLens'].includes(optic);
  const names={plane:'평면거울',convexMirror:'볼록거울',concaveMirror:'오목거울',convexLens:'볼록렌즈',concaveLens:'오목렌즈'};
- const cx=230,axis=165,h=35,u=distance==='near'?30:160,f=converging?60:-60;
+ const cx=230,axis=165,h=35,u=({near:30,middle:90,far:160})[distance]||160,f=converging?60:-60;
  const v=plane?-u:1/(1/f-1/u),m=-v/u,ox=cx-u,ix=cx+(mirror?-v:v),iy=axis-m*h,virtual=v<0;
  const text=(s,x,y,color='#284b59',size=14)=>`<text x="${x}" y="${y}" text-anchor="middle" fill="${color}" font-size="${size}">${s}</text>`;
- const segment=(x1,y1,x2,y2,color,dashed=false)=>`<line data-ray="${dashed?'extension':'light'}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="2"${dashed?' stroke-dasharray="5 4"':''}/>`;
+ const segment=(x1,y1,x2,y2,color,dashed=false)=>{
+  let out=`<line data-ray="${dashed?'extension':'light'}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="2"${dashed?' stroke-dasharray="5 4"':''}/>`;
+  if(!dashed){const x=x1+(x2-x1)*.45,y=y1+(y2-y1)*.45,angle=Math.atan2(y2-y1,x2-x1)*180/Math.PI;out+=`<path data-ray-direction="light" d="M-6 -3 L1 0 L-6 3" transform="translate(${x} ${y}) rotate(${angle})" fill="none" stroke="${color}" stroke-width="2"/>`;}
+  return out;
+ };
  const arrow=(x,height,color,part)=>`<g data-optics-part="${part}" data-x="${x}" data-height="${height}"><path d="M${x} ${axis} V${axis-height} m-6 ${Math.sign(height)*9} l6 ${-Math.sign(height)*9} 6 ${Math.sign(height)*9}" fill="none" stroke="${color}" stroke-width="4"/></g>`;
  let svg=`<g data-optic="${optic}" data-object-distance="${u}" data-image-distance="${v}" data-focal-distance="${plane?'0':f}" data-magnification="${m}">`;
  svg+='<defs><clipPath id="opticsRayWindow"><rect x="20" y="42" width="420" height="198"/></clipPath></defs>';
  svg+='<line x1="20" y1="165" x2="440" y2="165" stroke="#b5c6cc" stroke-width="1"/>';
- if(!plane)for(const x of mirror?[cx-f]:[cx-60,cx+60])svg+=`<circle cx="${x}" cy="165" r="3" fill="#688694"/>`+text('초점',x,185,'#526d79',12);
+ if(!plane)for(const x of mirror?[cx-f]:[cx-60,cx+60])svg+=`<circle cx="${x}" cy="165" r="3" fill="#688694"/>`+text('초점',x,distance==='near'?194:211,'#526d79',12);
  svg+='<g clip-path="url(#opticsRayWindow)">';
  svg+=segment(ox,axis-h,cx,axis-h,'#d29135')+segment(ox,axis-h,cx,axis,'#628ac2');
  const end=mirror?20:440,d=Math.abs(end-cx);

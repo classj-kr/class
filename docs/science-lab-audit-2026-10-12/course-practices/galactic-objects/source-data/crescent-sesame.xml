@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sesame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="https://vizier.cds.unistra.fr/xml/sesame_4x.xsd">
+<Target option="SNV">
+  <name>NGC6888</name>
+  <!-- Q10259739 #1 -->
+  <Resolver name="Sc=Simbad (CDS, via client/server)"><!--delay: 211ms [2] -->
+    <oid>2953051</oid>
+    <otype>WR*</otype>
+    <jpos>20:12:06.54 +38:21:17.7</jpos>
+    <jradeg>303.02725787</jradeg>
+    <jdedeg>38.35494005</jdedeg>
+    <refPos>2020yCat.1350....0G</refPos>
+    <errRAmas>0.0120</errRAmas><errDEmas>0.0142</errDEmas>
+    <pm>
+      <v>10.347</v><e>0.023</e><q>A</q><r>2020yCat.1350....0G</r>
+      <pa>229.8</pa>
+      <pmRA>-7.902</pmRA><epmRA>0.016</epmRA>
+      <pmDE>-6.679</pmDE><epmDE>0.017</epmDE>
+    </pm>
+    <Vel><v>-100.00</v><q>D</q><r>1994A&amp;AS..108..603B</r></Vel>
+    <plx><v>0.5772</v><e>0.016</e><q>A</q><r>2020yCat.1350....0G</r></plx>
+    <spType>WN6(h)-s</spType><spNum>0.00143C00.0000.1000000100000000</spNum>
+    <oname>HD 192163</oname>
+    <nrefs>718</nrefs>
+  </Resolver>
+</Target>
+</Sesame>
+<!--- ****Total of 1 crashes -->
+<!-- Configuration tested: /run/sesame.conf -->

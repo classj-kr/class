@@ -74,22 +74,18 @@ for (const engine of ['chromium', 'webkit']) test(`${engine}: six refined scenes
         }
         await snap('weather-night'); await page.evaluate(() => __weatherModel.setHour(14)); await snap('weather-day'); await layout();
 
-        await open('minerals-rocks'); await page.locator('[data-mode="rock"]').tap();
-        for (const silica of [45,60,75]) for (const time of [0,25,50,75,100]) {
-            const s = await page.evaluate(([silica,time]) => {
-                __rockModel.set('silica',silica); __rockModel.set('logT',time);
-                const field = document.querySelector('[data-rock-field]'), grains = [...field.querySelectorAll('[data-crystal]')], uncovered = [];
-                for(let y=48;y<162;y+=19) for(let x=271;x<439;x+=21) {
-                    if(!grains.some(g=>g.isPointInFill(new DOMPoint(x,y)))) uncovered.push([x,y]);
-                }
-                return {uncovered,outline:getComputedStyle(document.querySelector('[data-field-outline]')).fill,mm:__rockModel.analyse().mm,field:+field.dataset.fieldMm,grains:grains.length};
-            }, [silica,time]);
-            assert.deepEqual(s.uncovered, [], 'crystals tile every part of the view');
-            assert.equal(s.outline, 'none', 'border must not paint over crystals');
-            assert.ok(s.field >= s.mm * 3, 'large crystals use a labelled wider field');
+        await open('minerals-rocks');
+        for(const pair of ['dark','light']) {
+            await page.locator('[data-mr-mode=igneous]').tap();
+            await page.locator('[data-mr-pair="'+pair+'"]').tap();
+            await page.waitForFunction(()=>[...document.querySelectorAll('#mrIgneous img')].every(i=>i.complete&&i.naturalWidth>300));
+            const names=await page.locator('#mrIgneous h3').allTextContents();
+            assert.deepEqual(names,pair==='dark'?['현무암','반려암']:['유문암','화강암']);
+            assert.match(await page.locator('#mrIgneous').innerText(),/결정이 작음/);
+            assert.match(await page.locator('#mrIgneous').innerText(),/결정이 큼/);
             counts.rock++;
         }
-        await snap('rock-coarse'); await page.evaluate(() => __rockModel.set('logT',35)); await snap('rock-fine'); await layout();
+        await snap('rock-photo-comparison'); await layout();
 
         await open('earth-system');
         const phenomena = await page.evaluate(() => Object.keys(__earthModel.PHENOMENA));

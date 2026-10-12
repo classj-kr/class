@@ -1,161 +1,49 @@
 <!doctype html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f1f5f9">
-    <title>과학 실험실</title>
-    <meta name="description" content="굳기·조흔색·자성으로 광물을 구별하고 마그마가 식는 빠르기로 화성암이 어떻게 달라지는지 확인하는 중학교 과학 모의실험">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
-    <link rel="stylesheet" href="rock-visual.css?v=3e4a9cbf2551">
-    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
-    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
-    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
-<link rel="stylesheet" href="../science-reading.css?v=138648f6a24b">
-</head>
-<body>
-    <main>
-        <header class="page-header">
-            <div class="title-row">
-                <a href="../">← 과학 실험실</a>
-                <h1>광물과 암석 분류</h1>
-            </div>
-            <div class="grade-tags"><span>중학교 2학년</span><span>과학</span></div>
-        </header>
-
-        <ol class="method-steps" aria-label="실험 방법">
-            <li>무엇을 조사할지 고릅니다.</li>
-            <li>광물 두 가지를 골라 서로 긁어 봅니다.</li>
-            <li>마그마가 식는 빠르기와 성분을 정합니다.</li>
-            <li>결정의 크기로 암석의 이름을 찾습니다.</li>
-        </ol>
-
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard" id="methodHint">굳기가 큰 광물이 작은 광물을 긁습니다</p>
-
-                <fieldset class="mode-field">
-                    <legend>무엇을 조사할까요</legend>
-                    <div class="mode-buttons">
-                        <button type="button" data-mode="mineral">광물 구별<small>굳기·조흔색·자성</small></button>
-                        <button type="button" data-mode="rock">화성암 분류<small>결정의 크기</small></button>
-                    </div>
-                </fieldset>
-
-                <div id="controlArea"></div>
-
-                <fieldset class="prediction-field">
-                    <legend id="predictionLegend">어떻게 될까요?</legend>
-                    <div class="prediction-buttons three" id="predictionArea"></div>
-                </fieldset>
-
-                <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">결과 보기</button>
-                    <button class="reset-button" id="resetBtn" type="button">처음으로</button>
-                </div>
-
-                <section class="result-box" aria-labelledby="result-title" aria-live="polite">
-                    <h3 id="result-title">관찰 결과</h3>
-                    <p id="resultEmpty">조건을 정하고 결과를 확인해 보세요.</p>
-                    <div id="resultContent" hidden>
-                        <div class="result-numbers">
-                            <article><span id="labelA">값</span><strong id="valueA">-</strong></article>
-                            <article><span id="labelB">값</span><strong id="valueB">-</strong></article>
-                        </div>
-                        <p class="prediction-result" id="predictionResult"></p>
-                        <p class="explanation" id="elementaryExplanation"></p>
-                    </div>
-                </section>
-            </section>
-
-            <section class="panel rock-stage" aria-label="관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">-</span></div>
-
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 214" aria-hidden="true">
-                        <defs><clipPath id="fieldClip"><rect x="252" y="44" width="160" height="120"/></clipPath></defs>
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 196" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
-                </div>
-
-                <p class="stage-caption" id="stageCaption">굳기가 큰 쪽이 작은 쪽에 흠집을 냅니다. 같으면 서로 긁지 못합니다.</p>
-                <div class="data-note" id="dataNote"></div>
-            </section>
-        </div>
-
-        <section class="panel meaning-panel">
-            <h2>실험 결과의 의미</h2>
-            <div class="meaning-body">
-                <p><strong>굳기</strong> 광물마다 단단한 정도가 다릅니다. 서로 긁어 보면 어느 쪽이 더 단단한지 알 수 있고, 이것을 번호로 나타낸 것이 모스 굳기계입니다.</p>
-                <p><strong>조흔색</strong> 겉보기 색은 같아도 가루의 색은 광물마다 정해져 있습니다. 그래서 겉색보다 조흔색이 더 믿을 만한 단서입니다.</p>
-                <p><strong>화성암</strong> 마그마가 천천히 식으면 결정이 크게 자라 조립질이 되고, 빨리 식으면 결정이 자랄 틈이 없어 세립질이 됩니다.</p>
-            </div>
-        </section>
-
-        <details class="quiz-section" aria-labelledby="quiz-title">
-            <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
-            <div class="quiz-grid">
-                <article class="quiz-card" data-answer="b">
-                    <h3>석영(굳기 7)과 방해석(굳기 3)을 서로 긁으면?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 방해석이 석영을 긁는다</label>
-                        <label><input type="radio" name="q1" value="b"> 석영이 방해석을 긁는다</label>
-                        <label><input type="radio" name="q1" value="c"> 서로 긁지 못한다</label>
-                        <label><input type="radio" name="q1" value="d"> 둘 다 부서진다</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>굳기가 큰 광물이 작은 광물을 긁습니다. 석영이 7, 방해석이 3이므로 석영이 방해석에 흠집을 냅니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="c">
-<h3>같은 성분의 마그마 A는 천천히, B는 빠르게 식었다. 충분한 결정 성장 시간이 있었던 것은?</h3>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>중2 광물 성질과 암석 표본 분류</title><meta name="description" content="2022 교육과정 · 광물 성질과 암석 표본 분류의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="specimens.css?v=2ffab3f74f1e"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=중2">← 중2 과학 실험</a><h1>광물 성질과 암석 표본 분류</h1><div class="grade-tags"><span>중2</span><span>과학</span></div></header><section class="experiment-layout mr-lab" id="mrLab"><h2>표본의 특징으로 분류하기</h2><div class="mr-tabs" role="group" aria-label="관찰할 대상"><button data-mr-mode="rocks" aria-pressed="true">암석 분류</button><button data-mr-mode="minerals" aria-pressed="false">광물 성질</button><button data-mr-mode="igneous" aria-pressed="false">화성암 비교</button></div><section data-mr-panel="rocks"><p>준비된 암석 6종의 색·알갱이·무늬와 묽은 염산 반응을 비교해 이름과 종류를 골라 보세요.</p><div class="mr-rocks" id="mrRockCards"></div><div class="mr-workspace"><div><div class="mr-photo-frame" id="mrViewport" tabindex="0" aria-label="선택한 암석 사진 확대 관찰"><img id="mrRockPhoto" alt="암석 표본 A"><div id="mrRockEffect" class="mr-effect" aria-hidden="true"></div></div><div class="mr-zoom"><label for="mrZoom">사진 확대</label><input id="mrZoom" type="range" min="1" max="2" step=".1" value="1"><output id="mrZoomValue">1.0배</output><button id="mrCenter">가운데로</button></div><p class="mr-note">확대한 사진은 손가락이나 방향키로 옮겨 볼 수 있습니다. 표본마다 사진의 크기는 다릅니다.</p></div><section class="mr-observation"><h3 id="mrRockTitle">표본 A</h3><button id="mrAcid">묽은 염산 2방울 떨어뜨리기</button><p id="mrAcidResult" class="mr-readout" aria-live="polite">염산 반응을 아직 관찰하지 않았습니다.</p><div class="mr-answer"><label for="mrName">암석 이름<select id="mrName"><option value="">선택</option><option>화강암</option><option>현무암</option><option>역암</option><option>사암</option><option>편마암</option><option>대리암</option></select></label><label for="mrFamily">생성 과정에 따른 종류<select id="mrFamily"><option value="">선택</option><option value="igneous">화성암</option><option value="sedimentary">퇴적암</option><option value="metamorphic">변성암</option></select></label></div><button id="mrCheck" class="primary">이 표본의 분류 확인</button><p id="mrRockStatus" class="mr-status" aria-live="polite"></p><p id="mrProgress" class="mr-note"></p></section></div></section><section data-mr-panel="minerals" hidden><p>도구를 하나씩 사용하여 표본의 성질을 비교하세요. 석영과 방해석은 서로 긁어 굳기를 비교할 수 있습니다.</p><div class="mr-minerals" id="mrMineralCards"></div><div class="mr-workspace"><div><div class="mr-mineral-frame"><img id="mrMineralPhoto" alt="선택한 광물"><div id="mrMineralEffect" class="mr-effect" aria-hidden="true"></div></div><div id="mrPlate" class="mr-plate" aria-label="조흔판"><span id="mrStreak" aria-hidden="true"></span></div><div class="mr-inline" role="group" aria-label="조흔판 바탕"><button data-mr-plate="white" aria-pressed="true">흰 조흔판</button><button data-mr-plate="black" aria-pressed="false">검은 조흔판</button></div></div><section class="mr-observation"><h3 id="mrMineralTitle">석영</h3><div class="mr-tool-buttons"><button data-mr-tool="streak">조흔판에 긁기</button><button data-mr-tool="clip">클립 대어 보기</button><button data-mr-tool="acid">묽은 염산 떨어뜨리기</button></div><p id="mrMineralResult" class="mr-readout" aria-live="polite">관찰할 도구를 고르세요.</p><div class="mr-mineral-results" id="mrMineralResults"></div></section></div><section class="mr-scratch"><h3>석영과 방해석의 굳기 비교</h3><div class="mr-scratch-pair"><div><img src="photos/quartz.webp" alt="석영"><span>석영</span></div><div><img src="photos/calcite.webp" alt="방해석"><span id="mrScratchMark" aria-hidden="true"></span><span>방해석</span></div></div><button id="mrScratch">서로 긁은 뒤 가루 털기</button><p id="mrScratchResult" aria-live="polite"></p></section></section><section data-mr-panel="igneous" hidden><p>같은 계열의 색을 띠는 두 암석에서 결정의 크기를 비교하세요.</p><div class="mr-inline" role="group" aria-label="화성암 비교 조건"><button data-mr-pair="dark" aria-pressed="true">어두운색</button><button data-mr-pair="light" aria-pressed="false">밝은색</button></div><div class="mr-igneous" id="mrIgneous"></div><p class="mr-note">빠르게 식은 암석은 대체로 결정이 작고, 천천히 식은 암석은 결정이 큽니다. 색은 구성 광물의 종류와 관련됩니다.</p></section><p class="mr-safety">실물에서 묽은 염산을 사용할 때는 보안경·장갑을 착용하고 선생님의 안내를 따르세요.</p><button id="mrReset">관찰 처음부터</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="c">
+<h3>광물 A로 B를 긁은 뒤 가루를 털었다. B에는 흠집이 남고 A에는 흠집이 없었다. 이 관찰로 비교할 수 있는 성질과 관계는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q2" value="a"> B, 결정이 더 큼</label>
-<label><input type="radio" name="q2" value="b"> A와 B, 결정 크기 같음</label>
-<label><input type="radio" name="q2" value="c"> A, 결정이 더 큼</label>
+<label><input type="radio" name="q1" value="a"> 조흔색 · A가 더 어두움</label>
+<label><input type="radio" name="q1" value="b"> 굳기 · B가 더 단단함</label>
+<label><input type="radio" name="q1" value="c"> 굳기 · A가 더 단단함</label>
+<label><input type="radio" name="q1" value="d"> 조흔색 · B가 더 어두움</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>천천히 식으면 결정이 자랄 시간이 길어져 더 큰 결정이 형성되기 쉽습니다.</p>
+<p class="answer-explanation" hidden>가루를 턴 뒤 B에 흠집이 남았으므로 A가 B보다 더 단단합니다. 이 결과만으로 광물 가루의 색을 판단할 수는 없습니다.</p>
 </article>
-
-                <article class="quiz-card" data-answer="a">
-<h3>겉색이 다른 광물 A와 B를 조흔판에 그었더니 모두 적갈색 가루가 나왔다. 같은 것으로 관찰된 성질은?</h3>
+<article class="quiz-card" data-answer="b">
+<h3>검은색 광물 P에는 클립이 붙고 검은 가루가 남았다. 검은색 광물 Q에는 클립이 붙지 않고 흰 가루가 남았다. 관찰 결과의 비교는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> 조흔색</label>
-<label><input type="radio" name="q3" value="b"> 굳기</label>
-<label><input type="radio" name="q3" value="c"> 쪼개짐</label>
+<label><input type="radio" name="q2" value="a"> 겉색 같음 · 조흔색 같음 · 자성 다름</label>
+<label><input type="radio" name="q2" value="b"> 겉색 같음 · 조흔색 다름 · 자성 다름</label>
+<label><input type="radio" name="q2" value="c"> 겉색 다름 · 조흔색 같음 · 자성 같음</label>
+<label><input type="radio" name="q2" value="d"> 겉색 다름 · 조흔색 다름 · 자성 같음</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>조흔색은 광물 가루의 색입니다. 겉색과 다를 수 있으며, 같은 조흔색만으로 두 광물이 반드시 같은 종류라고 확정하지는 않습니다.</p>
+<p class="answer-explanation" hidden>두 광물의 겉색은 검은색으로 같지만 가루의 색과 클립 반응은 서로 다릅니다. 겉색만으로 같은 광물이라고 판단할 수 없습니다.</p>
 </article>
-
-                <article class="quiz-card" data-answer="d">
-                    <h3>어두운 색이고 결정이 아주 작은 화성암은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="a"> 화강암</label>
-                        <label><input type="radio" name="q4" value="b"> 유문암</label>
-                        <label><input type="radio" name="q4" value="c"> 반려암</label>
-                        <label><input type="radio" name="q4" value="d"> 현무암</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>지표로 흘러나온 용암이 빨리 식으면 세립질이 됩니다. 그 가운데 성분이 어두운 것이 현무암입니다.</p>
-                </article>
-            </div>
-        </details>
-    </main>
-    <script src="../scene-refinements.js?v=d1d978d6d3f7"></script>
-<script src="app.js?v=b16ac35c0e87"></script>
-    <script src="../curriculum-map.js?v=abff06271ba2"></script>
-    <script src="../exam-scope.js?v=b258c46c2f6d"></script>
-    <script src="../lab-ui.js?v=fa13c92e90ea"></script>
-</body>
-</html>
+<article class="quiz-card" data-answer="a">
+<h3>둘 다 어두운색인 화성암 X·Y 중 X는 결정이 작고 Y는 결정이 크다. 냉각 조건과 대표 암석의 연결은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> X 빠름·현무암 / Y 느림·반려암</label>
+<label><input type="radio" name="q3" value="b"> X 느림·반려암 / Y 빠름·현무암</label>
+<label><input type="radio" name="q3" value="c"> X 빠름·유문암 / Y 느림·화강암</label>
+<label><input type="radio" name="q3" value="d"> X 느림·화강암 / Y 빠름·유문암</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>어두운색의 작은 결정은 대표적으로 현무암, 어두운색의 큰 결정은 반려암에 해당합니다. 결정 크기로 냉각 조건을, 색으로 구성 광물의 차이를 살핍니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>준비한 표본 중 X는 밝은 결정질이고 묽은 염산과 반응했다. Y는 밝고 어두운 광물이 띠를 이루며 배열되어 있다. X가 대리암, Y가 편마암일 때 두 암석의 분류는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> X 화성암 · Y 변성암</label>
+<label><input type="radio" name="q4" value="b"> X 변성암 · Y 퇴적암</label>
+<label><input type="radio" name="q4" value="c"> X 퇴적암 · Y 화성암</label>
+<label><input type="radio" name="q4" value="d"> X 변성암 · Y 변성암</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>대리암은 석회암이 변성되어, 편마암은 기존 암석이 변성되어 만들어집니다. 줄무늬가 있는 암석을 모두 퇴적암으로 분류하거나 밝은 암석을 모두 화성암으로 분류하지 않습니다.</p>
+</article></details></main><script src="specimen-model.js?v=dd1900ea2d5d"></script><script src="specimens.js?v=504210db3660"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

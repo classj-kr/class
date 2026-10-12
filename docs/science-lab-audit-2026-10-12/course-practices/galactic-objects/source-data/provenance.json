@@ -1,0 +1,166 @@
+{
+  "reviewedAt": "2026-10-12T20:15:45.384Z",
+  "images": [
+    {
+      "id": "m44",
+      "path": "learning/inquiry/science-lab/galactic-objects/m44.webp",
+      "sha256": "6710f3ffd189a148baeaf64cd041f455109c0469d00bde2ae651a8b7ed3a9bde",
+      "downloadSha256": "fcd5530fbdea2788905b2be0b01a01838dedad8a9c35b1c85ae5da42f7626eda",
+      "url": "https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=CDS%2FP%2FDSS2%2Fcolor&width=1024&height=1024&fov=2.2&ra=130.05416667&dec=19.62111111&projection=TAN&coordsys=icrs&rotation_angle=0&format=jpg",
+      "coordinateURL": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?M44",
+      "icrs": [
+        130.05416667,
+        19.62111111
+      ],
+      "fieldDegrees": 2.2,
+      "size": [
+        1024,
+        1024
+      ],
+      "conversion": "Decoded original JPEG pixels were compared byte-for-byte with the lossless WebP decode. No contrast, color or geometry changes in stored assets."
+    },
+    {
+      "id": "m5",
+      "path": "learning/inquiry/science-lab/galactic-objects/m5.webp",
+      "sha256": "ed3349bbdf332c81042ee457bea51a9783d341c102a70e06581ad2a56594f923",
+      "downloadSha256": "95d5153e715f1b83357bfb74b9de8f2386460e3b0698001a135bf2e478106012",
+      "url": "https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=CDS%2FP%2FDSS2%2Fcolor&width=1024&height=1024&fov=0.7&ra=229.63841667&dec=2.08102778&projection=TAN&coordsys=icrs&rotation_angle=0&format=jpg",
+      "coordinateURL": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?M5",
+      "icrs": [
+        229.63841667,
+        2.08102778
+      ],
+      "fieldDegrees": 0.7,
+      "size": [
+        1024,
+        1024
+      ],
+      "conversion": "Decoded original JPEG pixels were compared byte-for-byte with the lossless WebP decode. No contrast, color or geometry changes in stored assets."
+    },
+    {
+      "id": "crescent",
+      "path": "learning/inquiry/science-lab/galactic-objects/crescent.webp",
+      "sha256": "0747bc703d8486203291e91276d88ed5f382eb42b6523dc7540055e495c83c58",
+      "downloadSha256": "6abe2470edc4c5878fac6bdde6c54ef15cd822e7cd71df284682d390943e1a37",
+      "url": "https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=CDS%2FP%2FDSS2%2Fcolor&width=1024&height=1024&fov=0.65&ra=303.02725787&dec=38.35494005&projection=TAN&coordsys=icrs&rotation_angle=0&format=jpg",
+      "coordinateURL": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?NGC6888",
+      "icrs": [
+        303.02725787,
+        38.35494005
+      ],
+      "fieldDegrees": 0.65,
+      "size": [
+        1024,
+        1024
+      ],
+      "conversion": "Decoded original JPEG pixels were compared byte-for-byte with the lossless WebP decode. No contrast, color or geometry changes in stored assets."
+    },
+    {
+      "id": "witch",
+      "path": "learning/inquiry/science-lab/galactic-objects/witch.webp",
+      "sha256": "d374cbf7624b990bd811cd51adafa85ae8c9215c515deae4774d9ca929f2fb1b",
+      "downloadSha256": "4d2e71bd96c3fe03bc7a1deb12b565c542952e6020dbb85c1473149d51308b53",
+      "url": "https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=CDS%2FP%2FDSS2%2Fcolor&width=1536&height=1536&fov=6&ra=75.5&dec=-7.9&projection=TAN&coordsys=icrs&rotation_angle=0&format=jpg",
+      "coordinateURL": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?IC2118",
+      "icrs": [
+        75.5,
+        -7.9
+      ],
+      "fieldDegrees": 6,
+      "size": [
+        1536,
+        1536
+      ],
+      "conversion": "Decoded original JPEG pixels were compared byte-for-byte with the lossless WebP decode. No contrast, color or geometry changes in stored assets."
+    },
+    {
+      "id": "shark",
+      "path": "learning/inquiry/science-lab/galactic-objects/shark.webp",
+      "sha256": "a70db760c24e7884c74796f7b7a2c7eab57a015b10f443d40dc3917b16d7fad6",
+      "downloadSha256": "87af1b7c11773835568f85b4919af4240eb94897e11185cfc7330828be8e25db",
+      "url": "https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=CDS%2FP%2FDSS2%2Fcolor&width=1024&height=1024&fov=2&ra=333.72916667&dec=73.41666667&projection=TAN&coordsys=icrs&rotation_angle=0&format=jpg",
+      "coordinateURL": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?LDN1235",
+      "icrs": [
+        333.72916667,
+        73.41666667
+      ],
+      "fieldDegrees": 2,
+      "size": [
+        1024,
+        1024
+      ],
+      "conversion": "Decoded original JPEG pixels were compared byte-for-byte with the lossless WebP decode. No contrast, color or geometry changes in stored assets."
+    }
+  ],
+  "sources": [
+    {
+      "file": "ReadMe",
+      "sha256": "af906e494b7390de1257a06934b69ce1a87e1c4a55776d2e8c16de8e3b468705"
+    },
+    {
+      "file": "constell.txt",
+      "sha256": "4d906000d1647aab4b65fc1319116f16a65f35ed6017d4101817c9806976486b"
+    },
+    {
+      "file": "bound_18.dat",
+      "sha256": "3f563d0e3002a410afbc551791db6297cbfc3d291a20deb18f1fd7b4df60d7b8"
+    },
+    {
+      "file": "bound_20.dat",
+      "sha256": "425e75a944260d4b08819a6e12c9990890981288a44068f8c4499ac64986c513"
+    },
+    {
+      "file": "constbnd.dat",
+      "sha256": "865cdf4218f676eb304587c75c63231948d29cd0abe6892a8a8130c1c4fe3592"
+    },
+    {
+      "file": "dss-properties.txt",
+      "sha256": "464c6de690685769187e1e99d87c425b6d4a0273096436c4e53e3e5b1071ccd8"
+    },
+    {
+      "file": "objects-wide.json",
+      "sha256": "e176cd705b46ea99034382965e1eb9ab222380e38d4a54295c77bb6dccaac92f"
+    },
+    {
+      "file": "m44-sesame.xml",
+      "sha256": "20cc20adba34ecb95a972380951094497322a5a3cf7195fcce7261c80db2e1b4"
+    },
+    {
+      "file": "m5-sesame.xml",
+      "sha256": "c39d89a9f8c3f22c721b26a9ca6ae341e068a700393d37ef34990b9e0c4bbd48"
+    },
+    {
+      "file": "crescent-sesame.xml",
+      "sha256": "40471f74d886c61a689c26f429830ddc565ddbb67cd33254e175f00d59041eaf"
+    },
+    {
+      "file": "witch-sesame.xml",
+      "sha256": "2c559a6687304eedcf376f56b99272239b228b1c2a2e779f3945f06b8b09c2f2"
+    },
+    {
+      "file": "shark-sesame.xml",
+      "sha256": "c2386f9090223ec88ad4fe062536f52c14dcb7327d0f0d6ecbf59cab0601bec5"
+    }
+  ],
+  "outputSha256": "2c4daba84bb7fb798d27bf28eecb2f2fe15b35f23f8d2caefc586cefdf531ff8",
+  "methods": {
+    "images": "CDS DSS2-color HiPS, TAN, ICRS, rotation 0; north up and east left. Optical survey plates combined in color; not unaided-eye colors, current live images or photometric measurements.",
+    "boundaries": "Ordered Delporte B1875 VI/49 corners, interpolated at <=1 degree in original RA/Dec then rotated into J2000 using the inverse of Astronomy Engine constellation-lookup rotation. Five constellations only; SER1 is Serpens Caput.",
+    "positions": "J2000 -> equatorial of date -> geometric observer horizon; no atmospheric refraction, proper motion or parallax. Date/time applies to position, not archived photographs."
+  },
+  "sourceDiscrepancies": [
+    "MiraeN teacher PDF 299 and older NASA Witch Head page say Orion; official IAU coordinate lookup and ESO place IC 2118 in Eridanus. App uses Eridanus.",
+    "Sesame NGC6888 resolves WR136 central star; its coordinates are a reference center, not a nebula type classification. NASA Caldwell metadata calls it planetary while its own physical discussion describes a massive Wolf-Rayet wind nebula; classify as emission nebula, not planetary.",
+    "Downloaded bound_20.dat rows are globally ordered by RA, contrary to traversal documentation. Do not connect this row order. Original ordered B1875 file is used instead."
+  ],
+  "rights": {
+    "survey": "DSS images retain their original survey copyrights (STScI/NASA, Caltech/POSS and UK Schmidt/AAO/SERC as applicable); color HiPS by CDS. Not public-domain AI imagery.",
+    "metadata": "Full survey acknowledgement and license metadata retained in dss-properties.txt.",
+    "links": [
+      "https://archive.stsci.edu/dss/copyright.html",
+      "https://alasky.cds.unistra.fr/DSS/DSSColor/properties",
+      "https://alasky.cds.unistra.fr/hips-image-services/hips2fits",
+      "https://cdsarc.cds.unistra.fr/ftp/VI/49/ReadMe"
+    ]
+  }
+}

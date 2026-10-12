@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T18:33:16.956Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "equilibrium-data",
+      "scenarios": 65
+    }
+  ],
+  "scenarios": 65,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

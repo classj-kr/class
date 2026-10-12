@@ -1,0 +1,11 @@
+✔ ARGO snapshot provenance, missing values, actual sample selection and no gap interpolation (7.3943ms)
+✔ chromium: original observations, responsive plots, touch/keyboard and first errors (6337.0611ms)
+✔ webkit: original observations, responsive plots, touch/keyboard and first errors (13115.6763ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19535.3101

@@ -21,8 +21,8 @@ const primaryGroups = {
   '전기와 자기':'magnets circuit-bulbs ohms-law',
   '열':'heat-transfer specific-heat liquid-heat',
   '빛과 파동':'light-shadow refraction sound-vibration wave-transfer',
-  '물질의 성질':'mixture-separation separation-methods state-change gases diffusion solubility solubility-curve recrystallise density-buoyancy water-cycle dissolution-mass phase-mass',
-  '물질의 변화':'acid-base mass-ratio burning-conditions combustion',
+  '물질의 성질':'mixture-separation separation-methods state-change gases diffusion solubility solubility-curve recrystallise density-buoyancy water-cycle dissolution-mass phase-mass phase-curves',
+  '물질의 변화':'acid-base acid-mixing mass-ratio burning-conditions combustion',
   '물질의 구조':'flame-ions',
   '생물의 구조와 에너지':'living-things leaf-classification animal-classification microbes microscope cell-structure photosynthesis body-organs body-systems nutrient-detection leaf-starch',
   '항상성과 몸의 조절':'senses reflex-nerve',
@@ -30,7 +30,7 @@ const primaryGroups = {
   '환경과 생태계':'food-web',
   '고체 지구':'rock-layers minerals-rocks volcano-model plate-tectonics',
   '유체 지구':'land-sea weather-watch weather-front seawater',
-  '천체':'night-sky seasons moon-phases apparent-motion stars-universe telescope-observation',
+  '천체':'night-sky seasonal-sky galactic-objects seasons moon-phases apparent-motion stars-universe telescope-observation',
   '과학과 안전':'infection-prevention',
   '과학과 지속가능한 사회':'coastal-inundation'
 };

@@ -146,9 +146,9 @@ function scienceCoreFactory({line,label,rect,jar,field},existing={}) {
  });
  add('refraction',{
   title:'여러 거울·렌즈의 상 비교',codes:['9과10-02'],initial:{optic:'plane',distance:'near'},
-  fields:[field('optic','거울 또는 렌즈',[['plane','평면거울'],['convexMirror','볼록거울'],['concaveMirror','오목거울'],['convexLens','볼록렌즈'],['concaveLens','오목렌즈']]),field('distance','물체 위치의 두 예',[['near','아주 가까운 물체'],['far','충분히 먼 물체']])],
+  fields:[field('optic','거울 또는 렌즈',[['plane','평면거울'],['convexMirror','볼록거울'],['concaveMirror','오목거울'],['convexLens','볼록렌즈'],['concaveLens','오목렌즈']]),field('distance','물체 위치 비교',[['near','아주 가까이'],['middle','조금 떨어뜨림'],['far','충분히 멀리']])],
   view(s){const diagram=(typeof window!=='undefined'?window.scienceOpticsComparison:require('./optics-comparison.js'))(s.optic,s.distance);
-   return{svg:diagram.svg,text:diagram.text,note:'얇은 렌즈와 거울의 중심 가까이를 지나는 빛의 경로 모형입니다. 가까운 예는 초점 안, 먼 예는 초점 거리 두 배보다 멀리 둔 조건입니다. 실제 장치의 크기와 거리를 측정한 그림은 아닙니다.',check:check("물체를 초점보다 가까이 두었을 때, 크고 바로 선 상을 볼 수 있는 조합은?",["오목거울 · 볼록렌즈","볼록거울 · 오목렌즈","평면거울 · 오목렌즈"],"0","오목거울과 볼록렌즈는 물체가 초점 안에 있으면 확대된 정립 허상을 만듭니다. 볼록거울과 오목렌즈는 축소된 상, 평면거울은 같은 크기의 상을 만듭니다.")};}
+   return{svg:diagram.svg,text:diagram.text,note:'오목거울·볼록렌즈에서 가까운 예는 초점 안, 중간 예는 초점과 초점 거리 두 배 사이, 먼 예는 두 배보다 바깥입니다. 중심 가까이를 지나는 빛을 비교합니다.',check:check("물체를 초점보다 가까이 두었을 때, 크고 바로 선 상을 볼 수 있는 조합은?",["오목거울 · 볼록렌즈","볼록거울 · 오목렌즈","평면거울 · 오목렌즈"],"0","오목거울과 볼록렌즈는 물체가 초점 안에 있으면 확대된 정립 허상을 만듭니다. 볼록거울과 오목렌즈는 축소된 상, 평면거울은 같은 크기의 상을 만듭니다.")};}
  });
  add('weight-compare',{
   title:'고체·액체·기체의 모양과 공간',codes:['4과05-02'],initial:{kind:'liquid',container:'narrow',stage:'before'},

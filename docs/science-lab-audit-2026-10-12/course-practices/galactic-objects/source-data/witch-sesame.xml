@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sesame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="https://vizier.cds.unistra.fr/xml/sesame_4x.xsd">
+<Target option="SNV">
+  <name>IC2118</name>
+  <!-- Q10259744 #1 -->
+  <Resolver name="Sc=Simbad (CDS, via client/server)"><!--delay: 102ms [2] -->
+    <oid>750205</oid>
+    <otype>RNe</otype>
+    <jpos>05:02:00.00 -07:54:00.0</jpos>
+    <jradeg>75.5</jradeg>
+    <jdedeg>-7.9</jdedeg>
+    <oname>NGC  1909</oname>
+    <nrefs>37</nrefs>
+  </Resolver>
+</Target>
+</Sesame>
+<!--- ****Total of 1 crashes -->
+<!-- Configuration tested: /run/sesame.conf -->

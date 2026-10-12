@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/source-data/sst-2023-west-pacific.ascii",
+      "sha256": "86239332be56ad9b29d155d8a69eb2b848beea7a45c8f14bd47651bb7a2d0cec",
+      "url": "https://psl.noaa.gov/thredds/dodsC/Datasets/noaa.oisst.v2.highres/sst.mon.mean.nc.ascii?sst[496:1:507][200:1:559][460:1:659]",
+      "shape": [
+        12,
+        360,
+        200
+      ],
+      "dates": [
+        "2023-01",
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12"
+      ]
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/source-data/sst-korea-2019-2023-january-july.ascii",
+      "sha256": "1ed810b7f8b2f19857c65aa08111c6055752fa535d70e64ea3be13d253465461",
+      "url": "https://psl.noaa.gov/thredds/dodsC/Datasets/noaa.oisst.v2.highres/sst.mon.mean.nc.ascii?sst[448:6:502][472:1:535][480:1:547]",
+      "shape": [
+        10,
+        64,
+        68
+      ],
+      "dates": [
+        "2019-01",
+        "2019-07",
+        "2020-01",
+        "2020-07",
+        "2021-01",
+        "2021-07",
+        "2022-01",
+        "2022-07",
+        "2023-01",
+        "2023-07"
+      ]
+    }
+  ],
+  "outputSha256": "cb21589b84b09e48d794b63fd8046b4f02075799538542e663402772067aea1f",
+  "mapSource": {
+    "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/source-data/ne_10m_land.zip",
+    "sha256": "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc",
+    "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip"
+  },
+  "methodSources": [
+    "https://www.ncei.noaa.gov/products/optimum-interpolation-sst",
+    "https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html"
+  ],
+  "method": "NOAA monthly 0.25-degree OISST analysis: satellite and in-situ inputs blended and gaps filled by the original analysis. Preserve returned Float32 values, grid-cell centers, UTC months and original land/missing mask. No app interpolation or spatial averaging. Display values only are rounded. Natural Earth coast clipped and topology-preserving simplification 0.003 degree. Map latitude scale corrected by cosine of the region midpoint.",
+  "scope": "2023 monthly maps for Korea, Solomon Islands and Sydney; Korea also January/July 2019–2022 (2023 duplicates independently matched). A minus/B minus calculations use the same cell. Annual series is 2023 only. Not raw GK2A imagery, ten-day composites, current-year or live satellite retrieval.",
+  "downloadIssue": "NCSS endpoint returned HTTP 500 No space left on device. OPeNDAP ASCII official subsets succeeded; no entire 2.2 GB dataset download."
+}

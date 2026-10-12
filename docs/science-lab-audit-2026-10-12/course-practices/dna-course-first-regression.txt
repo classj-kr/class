@@ -1,0 +1,11 @@
+✔ common and elective courses have separate questions and source scope (0.8242ms)
+✔ chromium: both DNA courses, twelve positions, first answers, slow rotation and responsive text (8571.6891ms)
+✔ webkit: both DNA courses, twelve positions, first answers, slow rotation and responsive text (20639.3559ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29275.3164

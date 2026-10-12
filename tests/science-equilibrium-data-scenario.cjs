@@ -1,0 +1,1 @@
+module.exports=function(value){const $=s=>document.querySelector(s);$('#edReset').click();const [set,basis,formula]=value.split(':');$('[data-ed-set="'+set+'"]').click();$('[data-ed-basis="'+basis+'"]').click();$('[data-ed-formula="'+formula+'"]').click();$('#edCalculate').click();$('#edConclude').click();};

@@ -395,9 +395,17 @@
     }
   ],
   "file": "learning/inquiry/science-lab/supplement-core.js",
-  "sha256": "bdd505f27316eff0f6232ca3456a5192d752ba2a1d7c24bd8732c047bf5d8eca",
+  "sha256": "9c603770bfd35c007961275540e7de459b01d1a6e17b5bcf7117f865174b3d05",
   "misconceptionFeedback": {
     "scope": "Every live supplementary observation item has an authored interpretation of each incorrect choice. It is shown after correction and linked to the retained first response, not to an inferred student trait.",
     "incorrectChoiceTexts": 67
-  }
+  },
+  "previousContentHash": "bdd505f27316eff0f6232ca3456a5192d752ba2a1d7c24bd8732c047bf5d8eca",
+  "nonQuestionFollowups": [
+    {
+      "change": "Optics object-distance control gains a middle position between f and 2f; scientific condition note updated. All observation question text, choices, answers and feedback remain unchanged.",
+      "source": "optics/source-review.json",
+      "checkedAt": "2026-10-12T22:14:08.310Z"
+    }
+  ]
 }

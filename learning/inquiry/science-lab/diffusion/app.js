@@ -1,420 +1,60 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modeButtons = [...document.querySelectorAll('[data-mode]')];
-    const grainButtons = [...document.querySelectorAll('[data-grain]')];
-    const predictionButtons = [...document.querySelectorAll('[data-prediction]')];
-    const diffControls = document.getElementById('diffControls');
-    const gasControls = document.getElementById('gasControls');
-    const tempRange = document.getElementById('tempRange');
-    const timeRange = document.getElementById('timeRange');
-    const concRange = document.getElementById('concRange');
-    const gasTimeRange = document.getElementById('gasTimeRange');
-    const tempOutput = document.getElementById('tempOutput');
-    const timeOutput = document.getElementById('timeOutput');
-    const concOutput = document.getElementById('concOutput');
-    const gasTimeOutput = document.getElementById('gasTimeOutput');
-    const playBtn = document.getElementById('playBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const resultEmpty = document.getElementById('resultEmpty');
-    const resultContent = document.getElementById('resultContent');
-    const labelA = document.getElementById('labelA');
-    const labelB = document.getElementById('labelB');
-    const valueA = document.getElementById('valueA');
-    const valueB = document.getElementById('valueB');
-    const predictionResult = document.getElementById('predictionResult');
-    const explanation = document.getElementById('elementaryExplanation');
-    const stageCaption = document.getElementById('stageCaption');
-    const stageBadge = document.getElementById('stageBadge');
-    const mainGroup = document.getElementById('mainGroup');
-    const graphGroup = document.getElementById('graphGroup');
-    const dataNote = document.getElementById('dataNote');
-
-    // Molar masses in g/mol. Kinetic theory puts the mean molecular speed at
-    // √(8RT/πM), so a gas's diffusion rate goes as √(T/M) — that single fact
-    // gives both Graham's law and the temperature dependence below.
-    const NH3 = { name: '암모니아', formula: 'NH₃', M: 17.0 };
-    const HCL = { name: '염화수소', formula: 'HCl', M: 36.5 };
-    const TUBE_CM = 40;
-    const DIFF_C = 1.1453;              // tuned so they meet in about 5 s at 20 ℃
-
-    // CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂
-    const CACO3_G = 1.00, CACO3_M = 100.09;
-    const HCL_VOL_L = 0.050;
-    const MOLAR_VOL_ML = 22400;         // at STP
-    const SURFACE = { lump: 1, chip: 3, powder: 8 };
-    const GRAIN_NAME = { lump: '큰 덩어리', chip: '작은 조각', powder: '가루' };
-    // 조사는 앞말의 받침에 따라 갈립니다. 받침이 없거나 ㄹ이면 '로', 그 밖에는 '으로'.
-    const jong = w => { const c = String(w).trim().slice(-1).charCodeAt(0); return (c < 0xac00 || c > 0xd7a3) ? -1 : (c - 0xac00) % 28; };
-    const ro = w => w + (jong(w) <= 0 || jong(w) === 8 ? '로' : '으로');
-    const RATE_K = 0.012;
-
-    const TUBE = { x0: 50, x1: 410, y: 66, h: 34 };
-    const GRAPH = { x0: 54, x1: 428, y0: 142, y1: 20 };
-
-    let mode = 'diff';
-    let grain = 'lump';
-    let prediction = null;
-    let playing = false;
-    let animT = null;
-    let rafId = null, lastT = null;
-
-    const tempK = () => Number(tempRange.value) + 273.15;
-    const elapsed = () => (animT === null ? Number(timeRange.value) : animT);
-    const conc = () => Number(concRange.value);
-    const gasElapsed = () => (animT === null ? Number(gasTimeRange.value) : animT);
-
-    const speed = (M, T) => DIFF_C * Math.sqrt(T / M);
-
-    // Where the two fronts meet. Because both speeds carry the same √T, the
-    // temperature cancels out of the ratio: raising it makes the ring appear
-    // sooner but never moves it.
-    function meetPoint() {
-        const rNH3 = 1 / Math.sqrt(NH3.M), rHCL = 1 / Math.sqrt(HCL.M);
-        const fromNH3 = (TUBE_CM * rNH3) / (rNH3 + rHCL);
-        return { fromNH3, fromHCL: TUBE_CM - fromNH3, ratio: rNH3 / rHCL };
-    }
-    function meetTime(T) {
-        const sum = speed(NH3.M, T) + speed(HCL.M, T);
-        return TUBE_CM / sum;
-    }
-    function fronts(t, T) {
-        const mp = meetPoint(), tm = meetTime(T);
-        const capped = Math.min(t, tm);
-        return {
-            nh3: speed(NH3.M, T) * capped,
-            hcl: speed(HCL.M, T) * capped,
-            met: t >= tm, meetTime: tm, mp,
-        };
-    }
-
-    // Stoichiometry decides the final volume; concentration and surface area
-    // only decide how quickly it gets there.
-    function gasModel() {
-        const nCaCO3 = CACO3_G / CACO3_M;
-        const nHCl = HCL_VOL_L * conc();
-        const nFromAcid = nHCl / 2;
-        const limiting = nFromAcid < nCaCO3 ? 'acid' : 'solid';
-        const nCO2 = Math.min(nCaCO3, nFromAcid);
-        const vMax = nCO2 * MOLAR_VOL_ML;
-        const k = RATE_K * conc() * SURFACE[grain];
-        return { nCaCO3, nHCl, nFromAcid, limiting, nCO2, vMax, k };
-    }
-    const gasVolume = (t, g) => g.vMax * (1 - Math.exp(-g.k * t));
-
-    const gx = (v, lo, hi) => GRAPH.x0 + ((v - lo) / (hi - lo)) * (GRAPH.x1 - GRAPH.x0);
-    const gy = (v, max) => GRAPH.y0 - (v / max) * (GRAPH.y0 - GRAPH.y1);
-    const PX_PER_CM = (TUBE.x1 - TUBE.x0) / TUBE_CM;
-
-    function renderDiff() {
-        const T = tempK(), t = elapsed();
-        const f = fronts(t, T);
-        const nh3W = f.nh3 * PX_PER_CM, hclW = f.hcl * PX_PER_CM;
-        let out = '';
-
-        out += `<rect class="cloud-nh3" x="${TUBE.x0}" y="${TUBE.y}" width="${nh3W.toFixed(1)}" height="${TUBE.h}"/>`;
-        out += `<rect class="cloud-hcl" x="${(TUBE.x1 - hclW).toFixed(1)}" y="${TUBE.y}" width="${hclW.toFixed(1)}" height="${TUBE.h}"/>`;
-        out += `<rect class="tube" x="${TUBE.x0}" y="${TUBE.y}" width="${TUBE.x1 - TUBE.x0}" height="${TUBE.h}" rx="4"/>`;
-        out += `<rect class="cotton" x="${TUBE.x0 - 12}" y="${TUBE.y + 4}" width="12" height="${TUBE.h - 8}" rx="3"/>`;
-        out += `<rect class="cotton" x="${TUBE.x1}" y="${TUBE.y + 4}" width="12" height="${TUBE.h - 8}" rx="3"/>`;
-        out += `<text class="end-label" fill="#78dcbe" x="${TUBE.x0 - 14}" y="${TUBE.y - 8}">${NH3.name}</text>`;
-        out += `<text class="end-label" fill="#ffbe78" x="${TUBE.x1 + 12}" y="${TUBE.y - 8}" text-anchor="end">${HCL.name}</text>`;
-
-        for (let cm = 0; cm <= TUBE_CM; cm += 5) {
-            const x = TUBE.x0 + cm * PX_PER_CM;
-            out += `<line class="tick" x1="${x.toFixed(1)}" y1="${TUBE.y + TUBE.h}" x2="${x.toFixed(1)}" y2="${TUBE.y + TUBE.h + 6}"/>`;
-            out += `<text class="tick-text" x="${x.toFixed(1)}" y="${TUBE.y + TUBE.h + 17}" text-anchor="middle">${cm}</text>`;
-        }
-        // where the ring will be, marked from the start so the prediction is testable
-        const ringX = TUBE.x0 + f.mp.fromNH3 * PX_PER_CM;
-        out += `<line class="meet-marker" x1="${ringX.toFixed(1)}" y1="${TUBE.y - 4}" x2="${ringX.toFixed(1)}" y2="${TUBE.y + TUBE.h + 4}"/>`;
-        if (f.met) {
-            out += `<rect class="ring-glow" x="${(ringX - 9).toFixed(1)}" y="${TUBE.y}" width="18" height="${TUBE.h}"/>`;
-            out += `<rect class="ring" x="${(ringX - 4).toFixed(1)}" y="${TUBE.y}" width="8" height="${TUBE.h}"/>`;
-            out += `<text class="ring-text" x="${ringX.toFixed(1)}" y="${TUBE.y - 20}" text-anchor="middle">흰 고리 ${f.mp.fromNH3.toFixed(1)} cm</text>`;
-        }
-        out += `<text class="tick-text" x="230" y="${TUBE.y + TUBE.h + 40}" text-anchor="middle">암모니아 끝에서의 거리 (cm)</text>`;
-        out += `<text class="axis-title" x="230" y="${TUBE.y + TUBE.h + 62}" text-anchor="middle">${f.met ? `${f.meetTime.toFixed(2)} 초에 만났습니다` : `만나는 예상 시각 ${f.meetTime.toFixed(2)} 초`}</text>`;
-        mainGroup.innerHTML = out;
-
-        // distance travelled against time for both gases
-        const tMax = 8;
-        let g = '';
-        for (let k = 0; k <= 4; k += 1) {
-            const y = GRAPH.y0 - (k / 4) * (GRAPH.y0 - GRAPH.y1);
-            g += `<line class="grid-line" x1="${GRAPH.x0}" y1="${y}" x2="${GRAPH.x1}" y2="${y}"/>`;
-            g += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${y + 3}" text-anchor="end">${(TUBE_CM * k / 4).toFixed(0)}</text>`;
-        }
-        for (let s = 0; s <= tMax; s += 2) {
-            g += `<text class="axis-text" x="${gx(s, 0, tMax)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${s}</text>`;
-        }
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        g += `<text class="axis-title" x="${(GRAPH.x0 + GRAPH.x1) / 2}" y="${GRAPH.y0 + 30}" text-anchor="middle">시간 (초)</text>`;
-        g += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 4}">이동 거리 (cm)</text>`;
-        [[NH3, '#78dcbe'], [HCL, '#ffbe78']].forEach(([gas, col]) => {
-            const pts = [];
-            for (let k = 0; k <= 80; k += 1) {
-                const tt = (tMax * k) / 80;
-                const d = speed(gas.M, T) * Math.min(tt, f.meetTime);
-                pts.push(`${gx(tt, 0, tMax).toFixed(1)},${gy(d, TUBE_CM).toFixed(1)}`);
-            }
-            g += `<path class="trace" style="stroke:${col}" d="M${pts.join('L')}"/>`;
-            const d = speed(gas.M, T) * Math.min(t, f.meetTime);
-            g += `<circle class="trace-dot" cx="${gx(t, 0, tMax).toFixed(1)}" cy="${gy(d, TUBE_CM).toFixed(1)}" r="4" fill="${col}"/>`;
-        });
-        g += `<line class="limit-line" x1="${gx(f.meetTime, 0, tMax).toFixed(1)}" y1="${GRAPH.y0}" x2="${gx(f.meetTime, 0, tMax).toFixed(1)}" y2="${GRAPH.y1}"/>`;
-        graphGroup.innerHTML = g;
-
-        const mp = f.mp;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">이동 거리</span><span class="data-val">${NH3.name} ${f.nh3.toFixed(1)} cm · ${HCL.name} ${f.hcl.toFixed(1)} cm</span></div>` +
-            `<div class="data-row"><span class="data-name">고리 위치</span><span class="data-val">암모니아 끝에서 ${mp.fromNH3.toFixed(2)} cm (온도와 무관)</span></div>`;
-
-        stageBadge.textContent = `${t.toFixed(1)} 초`;
-        tempOutput.textContent = `${Number(tempRange.value)} ℃`;
-        timeOutput.textContent = `${t.toFixed(1)} 초`;
-    }
-
-    function renderGas() {
-        const g0 = gasModel(), t = gasElapsed();
-        const v = gasVolume(t, g0);
-        const V_SCALE = 250;
-        let out = '';
-        // flask with acid and the carbonate
-        out += `<path class="flask" d="M150,66 L150,96 L120,168 Q114,186 132,186 L188,186 Q206,186 200,168 L170,96 L170,66 Z"/>`;
-        out += `<path class="acid" d="M126,150 L194,150 Q200,168 188,180 L132,180 Q120,168 126,150 Z"/>`;
-        const chips = grain === 'lump' ? 1 : grain === 'chip' ? 4 : 12;
-        for (let i = 0; i < chips; i += 1) {
-            const r = grain === 'lump' ? 9 : grain === 'chip' ? 5 : 2.6;
-            const cx = 138 + ((i * 37) % 44);
-            const cy = 168 + ((i * 13) % 10);
-            out += `<circle class="chip" cx="${cx}" cy="${cy}" r="${r}"/>`;
-        }
-        if (v > 0.5 && v < g0.vMax - 0.5) {
-            for (let i = 0; i < 6; i += 1) {
-                const bx = 134 + ((i * 23) % 52);
-                const by = 108 + ((i * 17) % 40);
-                out += `<circle class="bubble" cx="${bx}" cy="${by}" r="${2 + (i % 3)}">` +
-                       `<animate attributeName="cy" from="${by}" to="102" dur="1.3s" begin="${(i * 0.18).toFixed(2)}s" repeatCount="indefinite"/>` +
-                       `<animate attributeName="opacity" values="0;.8;0" dur="1.3s" begin="${(i * 0.18).toFixed(2)}s" repeatCount="indefinite"/></circle>`;
-            }
-        }
-        // delivery tube to a syringe that reads the gas volume
-        out += `<path class="tube" fill="none" d="M160,66 L160,44 L286,44 L286,62"/>`;
-        const SY = { x0: 262, x1: 322, top: 62, bot: 196 };
-        const gasH = (v / V_SCALE) * (SY.bot - SY.top - 12);
-        out += `<rect class="syringe-gas" x="${SY.x0 + 3}" y="${(SY.bot - gasH).toFixed(1)}" width="${SY.x1 - SY.x0 - 6}" height="${gasH.toFixed(1)}"/>`;
-        out += `<rect class="syringe-plunger" x="${SY.x0 - 3}" y="${(SY.bot - gasH - 11).toFixed(1)}" width="${SY.x1 - SY.x0 + 6}" height="11" rx="3"/>`;
-        out += `<path class="syringe" fill="none" d="M${SY.x0},${SY.top} L${SY.x0},${SY.bot} L${SY.x1},${SY.bot} L${SY.x1},${SY.top}"/>`;
-        out += `<text class="vol-text" x="${SY.x1 + 10}" y="${(SY.bot - gasH + 4).toFixed(1)}">${v.toFixed(1)} mL</text>`;
-        out += `<text class="tick-text" x="${(SY.x0 + SY.x1) / 2}" y="${SY.bot + 16}" text-anchor="middle">모인 이산화탄소</text>`;
-        out += `<text class="tick-text" x="160" y="204" text-anchor="middle">${GRAIN_NAME[grain]} · 염산 ${conc().toFixed(1)} mol/L</text>`;
-        mainGroup.innerHTML = out;
-
-        const tMax = 120, vScale = 250;
-        let g = '';
-        for (let k = 0; k <= 5; k += 1) {
-            const y = GRAPH.y0 - (k / 5) * (GRAPH.y0 - GRAPH.y1);
-            g += `<line class="grid-line" x1="${GRAPH.x0}" y1="${y}" x2="${GRAPH.x1}" y2="${y}"/>`;
-            g += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${y + 3}" text-anchor="end">${(vScale * k / 5).toFixed(0)}</text>`;
-        }
-        for (let s = 0; s <= tMax; s += 30) {
-            g += `<text class="axis-text" x="${gx(s, 0, tMax)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${s}</text>`;
-        }
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
-        g += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        g += `<text class="axis-title" x="${(GRAPH.x0 + GRAPH.x1) / 2}" y="${GRAPH.y0 + 30}" text-anchor="middle">시간 (초)</text>`;
-        g += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 4}">기체 부피 (mL)</text>`;
-        g += `<line class="limit-line" x1="${GRAPH.x0}" y1="${gy(g0.vMax, vScale).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(g0.vMax, vScale).toFixed(1)}"/>`;
-        g += `<text class="axis-text" x="${GRAPH.x1 - 4}" y="${(gy(g0.vMax, vScale) - 5).toFixed(1)}" text-anchor="end" style="fill:#d97706">최대 ${g0.vMax.toFixed(0)} mL</text>`;
-        // all three surface areas share the same ceiling and differ only in rate
-        Object.entries(SURFACE).forEach(([key, factor]) => {
-            const kk = RATE_K * conc() * factor;
-            const pts = [];
-            for (let i = 0; i <= 90; i += 1) {
-                const tt = (tMax * i) / 90;
-                pts.push(`${gx(tt, 0, tMax).toFixed(1)},${gy(g0.vMax * (1 - Math.exp(-kk * tt)), vScale).toFixed(1)}`);
-            }
-            const col = key === 'powder' ? '#059669' : key === 'chip' ? '#0284c7' : '#9aa4ab';
-            g += `<path class="trace" style="stroke:${col};opacity:${key === grain ? 1 : 0.42}" d="M${pts.join('L')}"/>`;
-        });
-        g += `<circle class="trace-dot" cx="${gx(t, 0, tMax).toFixed(1)}" cy="${gy(v, vScale).toFixed(1)}" r="4.5" fill="#d97706"/>`;
-        graphGroup.innerHTML = g;
-
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">탄산칼슘</span><span class="data-val">${CACO3_G.toFixed(2)} g ÷ ${CACO3_M} = ${g0.nCaCO3.toFixed(5)} mol</span></div>` +
-            `<div class="data-row"><span class="data-name">염산</span><span class="data-val">${(HCL_VOL_L * 1000).toFixed(0)} mL × ${conc().toFixed(1)} = ${g0.nHCl.toFixed(4)} mol → CO₂ ${g0.nFromAcid.toFixed(5)} mol</span></div>` +
-            `<div class="data-row match"><span class="data-name">한계 반응물</span><span class="data-val">${g0.limiting === 'acid' ? '염산' : '탄산칼슘'} → 최대 ${g0.vMax.toFixed(1)} mL</span></div>`;
-
-        stageBadge.textContent = `${t.toFixed(0)} 초 · ${v.toFixed(0)} mL`;
-        concOutput.textContent = `${conc().toFixed(2)} mol/L`;
-        gasTimeOutput.textContent = `${t.toFixed(0)} 초`;
-    }
-
-    const render = () => {
-        mode === 'diff' ? renderDiff() : renderGas();
-        if (!resultContent.hidden) showResult();
-    };
-    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
-
-    function showResult() {
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        if (mode === 'diff') {
-            const T = tempK(), t = elapsed();
-            const f = fronts(t, T);
-            const grahamRatio = Math.sqrt(HCL.M / NH3.M);
-            labelA.textContent = '고리 위치';
-            labelB.textContent = '이동 비교';
-            valueA.textContent = `${f.mp.fromNH3.toFixed(1)} cm`;
-            valueB.textContent = "암모니아가 더 멀리";
-            const actual = f.mp.fromNH3 > TUBE_CM / 2 + 0.01 ? 'hcl'
-                         : f.mp.fromNH3 < TUBE_CM / 2 - 0.01 ? 'nh3' : 'center';
-            predictionResult.textContent = !prediction
-                ? '다음에는 결과를 먼저 예상해 보세요.'
-                : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-            explanation.textContent = "직접 섞지 않아도 입자가 스스로 움직여 퍼집니다. 이 모형에서는 암모니아가 더 멀리 이동하므로 염화수소 쪽에서 흰 고리가 생깁니다. 시간·경계는 단순화한 예시이며 실제 측정값이 아닙니다.";
-        } else {
-            const g0 = gasModel(), t = gasElapsed();
-            const v = gasVolume(t, g0);
-            labelA.textContent = '모인 기체';
-            labelB.textContent = '최대 부피';
-            valueA.textContent = `${v.toFixed(1)} mL`;
-            valueB.textContent = `${g0.vMax.toFixed(1)} mL`;
-            predictionResult.textContent = `한계 반응물은 ${g0.limiting === 'acid' ? '염산' : '탄산칼슘'}입니다.`;
-            explanation.textContent =
-                `CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂ 에서 탄산칼슘 ${g0.nCaCO3.toFixed(4)} mol과 염산 ${g0.nHCl.toFixed(4)} mol 중 ` +
-                `${g0.limiting === 'acid' ? '염산이 부족해 CO₂가 ' + g0.nCO2.toFixed(5) + ' mol 까지만' : '탄산칼슘이 먼저 다 써서 CO₂가 ' + g0.nCO2.toFixed(5) + ' mol 까지만'} 생깁니다. ` +
-                `${ro(GRAIN_NAME[grain])} 만들면 표면적이 ${SURFACE[grain]}배가 되어 반응이 그만큼 빨라지지만, 최대 부피 ${g0.vMax.toFixed(1)} mL는 달라지지 않습니다.`;
-        }
-    }
-
-    function frame(now) {
-        const tt = now / 1000;
-        const dt = lastT === null ? 1 / 60 : Math.min(1 / 20, tt - lastT);
-        lastT = tt;
-        if (playing) {
-            const max = mode === 'diff' ? 8 : 120;
-            const rate = mode === 'diff' ? 1 : 20;
-            animT = Math.min(max, animT + dt * rate);
-            (mode === 'diff' ? timeRange : gasTimeRange).value = String(mode === 'diff' ? animT.toFixed(1) : Math.round(animT));
-            render();
-            if (animT >= max) { playing = false; playBtn.textContent = '시간 흘려보내기'; }
-            rafId = playing ? requestAnimationFrame(frame) : null;
-            if (!playing) lastT = null;
-        } else { rafId = null; lastT = null; }
-    }
-
-    function stopPlayback() {
-        playing = false;
-        if (rafId !== null) cancelAnimationFrame(rafId);
-        rafId = null; lastT = null; animT = null;
-        playBtn.textContent = '시간 흘려보내기';
-    }
-    document.querySelectorAll('.control-panel input[type="range"]').forEach(el => el.addEventListener('input', stopPlayback, true));
-    document.querySelectorAll('.control-panel button').forEach(el => {
-        if (el !== playBtn && el !== resetBtn) el.addEventListener('click', stopPlayback, true);
-    });
-
-    playBtn.addEventListener('click', () => {
-        playing = !playing;
-        playBtn.textContent = playing ? '멈추기' : '시간 흘려보내기';
-        if (playing) {
-            animT = mode === 'diff' ? Number(timeRange.value) : Number(gasTimeRange.value);
-            const max = mode === 'diff' ? 8 : 120;
-            if (animT >= max) animT = 0;
-            showResult();
-            if (rafId === null) { lastT = null; rafId = requestAnimationFrame(frame); }
-        } else {
-            if (mode === 'diff') timeRange.value = String(elapsed().toFixed(1));
-            else gasTimeRange.value = String(Math.round(gasElapsed()));
-            animT = null;
-            render();
-        }
-    });
-
-    resetBtn.addEventListener('click', () => {
-        playing = false; animT = null;
-        if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; lastT = null; }
-        playBtn.textContent = '시간 흘려보내기';
-        timeRange.value = '0';
-        gasTimeRange.value = '0';
-        clearResult();
-        stageCaption.textContent = mode === 'diff'
-            ? '두 기체가 동시에 퍼져 나가 만나는 곳에 흰 고리가 생깁니다.'
-            : '농도와 표면적을 바꾸며 기체가 모이는 속도를 비교해 보세요.';
-        render();
-    });
-
-    modeButtons.forEach(button => button.addEventListener('click', () => {
-        mode = button.dataset.mode;
-        modeButtons.forEach(item => item.classList.toggle('selected', item === button));
-        diffControls.hidden = mode !== 'diff';
-        gasControls.hidden = mode !== 'gas';
-        resetBtn.click();
-    }));
-    grainButtons.forEach(button => button.addEventListener('click', () => {
-        grain = button.dataset.grain;
-        grainButtons.forEach(item => item.classList.toggle('selected', item === button));
-        animT = null; render();
-        if (!resultContent.hidden) showResult();
-    }));
-    [tempRange, timeRange, concRange, gasTimeRange].forEach(el => el.addEventListener('input', () => {
-        animT = null; render();
-        if (!resultContent.hidden) showResult();
-    }));
-    predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
-    }));
-
-    function shuffleQuizOptions(card) {
-        const optionGroup = card.querySelector('.quiz-options');
-        const options = Array.from(optionGroup.children);
-        for (let index = options.length - 1; index > 0; index -= 1) {
-            const randomIndex = Math.floor(Math.random() * (index + 1));
-            [options[index], options[randomIndex]] = [options[randomIndex], options[index]];
-        }
-        optionGroup.append(...options);
-    }
-
-    document.querySelectorAll('.quiz-card').forEach(card => {
-        shuffleQuizOptions(card);
-        const answerButton = card.querySelector('.answer-button');
-        const answerResult = card.querySelector('.answer-result');
-        const answerExplanation = card.querySelector('.answer-explanation');
-        answerButton.addEventListener('click', () => {
-            const selected = card.querySelector('input:checked');
-            if (!selected) {
-                delete card.dataset.state;
-                answerResult.textContent = '답을 먼저 선택하세요.';
-                return;
-            }
-            const correct = selected.value === card.dataset.answer;
-            card.dataset.state = correct ? 'correct' : 'incorrect';
-            answerResult.textContent = correct ? '맞았습니다.' : '다시 생각해 보세요.';
-            answerExplanation.hidden = !correct;
-            if (!correct) {
-                selected.checked = false;
-                selected.disabled = true;
-                answerResult.textContent = '다시 생각하고 다른 답을 골라보세요.';
-            }
-        });
-    });
-
-    window.__diffModel = {
-        NH3, HCL, TUBE_CM, SURFACE, CACO3_G, CACO3_M, HCL_VOL_L, MOLAR_VOL_ML,
-        speed, meetPoint, meetTime, fronts, gasModel, gasVolume,
-        setMode(m) { document.querySelector(`[data-mode="${m}"]`).click(); },
-        setGrain(gr) { document.querySelector(`[data-grain="${gr}"]`).click(); },
-        // These fire a real input event so they follow exactly the same path as
-        // dragging the slider — otherwise the result panel would keep stale
-        // numbers and look like a bug that isn't there.
-        setTemp(c) { tempRange.value = String(c); tempRange.dispatchEvent(new Event('input')); },
-        setTime(t) { timeRange.value = String(t); timeRange.dispatchEvent(new Event('input')); },
-        setConc(c) { concRange.value = String(c); concRange.dispatchEvent(new Event('input')); },
-        setGasTime(t) { gasTimeRange.value = String(t); gasTimeRange.dispatchEvent(new Event('input')); },
-        tempK, elapsed, conc, gasElapsed, render,
-    };
-
-    resetBtn.click();
+document.addEventListener('DOMContentLoaded',()=>{
+ 'use strict';const M=window.DiffusionModel,$=s=>document.querySelector(s),canvas=$('#dfCanvas'),ctx=canvas.getContext('2d');
+ let mode='ink',position='centre',substance='vinegar',view='observation',progress=0,running=false,raf=0,last=0,free=[],freeTick=0;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)'),off=document.createElement('canvas');off.width=off.height=M.N;const oc=off.getContext('2d');
+ const mix=(a,b,t)=>a.map((v,i)=>Math.round(v+(b[i]-v)*t));
+ function ellipse(x,y,rx,ry,fill,stroke,line=2){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=line;ctx.stroke();}}
+ function path(points,stroke,width){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.lineJoin='round';ctx.stroke();}
+ function beaker(){
+  ctx.save();ctx.beginPath();ctx.roundRect(105,106,330,252,[0,0,16,16]);ctx.clip();ctx.fillStyle='#e6f3f7';ctx.fillRect(105,106,330,252);
+  if(view==='observation'){
+   const values=M.ink(progress,position),img=oc.createImageData(M.N,M.N);values.forEach((v,i)=>{const c=mix([230,243,247],[32,58,133],1-Math.exp(-v*5));img.data.set([...c,255],i*4);});oc.putImageData(img,0,0);ctx.imageSmoothingEnabled=true;ctx.drawImage(off,105,106,330,252);
+  }else{const points=progress>=1&&free.length?free:M.particles('ink',progress,position);for(const p of points)ellipse(109+p.x*322,110+p.y*244,2.5,2.5,'#294d99');}
+  ctx.restore();ellipse(270,106,165,10,null,'#8fbaca',1.5);
+  path([[99,72],[100,350],[105,365],[435,365],[440,350],[440,72]],'#658894',3);
+  path([[99,72],[83,63],[114,63],[119,72]],'#658894',3);path([[119,72],[440,72]],'#95b0ba',2);
+  for(let y=140;y<330;y+=42)path([[415,y],[432,y]],'#7195a4',1.4);
+  const sx=105+({left:.25,centre:.5,right:.75}[position])*330;
+  if(progress===0){const g=ctx.createLinearGradient(sx-6,0,sx+6,0);g.addColorStop(0,'#d6e7ea');g.addColorStop(.5,'#fff');g.addColorStop(1,'#94b3c0');ctx.fillStyle=g;ctx.fillRect(sx-5,40,10,277);path([[sx-5,40],[sx-5,317],[sx,332],[sx+5,317],[sx+5,40]],'#6c8d9c',1.5);ellipse(sx,37,14,26,'#264f65');}
+  const shine=ctx.createLinearGradient(100,0,140,0);shine.addColorStop(0,'rgba(255,255,255,.7)');shine.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=shine;ctx.fillRect(108,118,25,230);
+ }
+ function dish(){
+  const cx=270,cy=211,r=175;ellipse(cx,cy+8,r+6,r+6,'#d8e8ed');ellipse(cx,cy,r,r,'#fbfcf5','#8baab8',2.5);
+  for(const d of M.btb(progress,substance)){const x=cx+d.x*69,y=cy+d.y*69,c=mix([74,146,107],[231,193,48],d.yellow);ellipse(x,y+3,12,9,'rgba(65,90,100,.14)');const g=ctx.createRadialGradient(x-4,y-4,1,x,y,12);g.addColorStop(0,'#eff4cb');g.addColorStop(.35,'rgb('+c.join(',')+')');g.addColorStop(1,'rgb('+c.map(v=>Math.round(v*.8)).join(',')+')');ellipse(x,y,12,10,g,'#587b68',.7);}
+  ellipse(cx,cy+2,14,11,'#b6dce4','#6f9fac',1.3);ellipse(cx-4,cy-3,4,2,'#f5fcff');
+  if(view==='particles'&&substance==='vinegar'){const points=progress>=1&&free.length?free:M.particles('btb',progress);for(const p of points)ellipse(cx+(p.x-.5)*330,cy+(p.y-.5)*330,2.3,2.3,'#82499a');}
+  ellipse(cx,cy,r-8,r-8,null,'rgba(158,189,198,.6)',1);ctx.beginPath();ctx.arc(cx,cy,r-4,Math.PI*1.15,Math.PI*1.7);ctx.lineWidth=6;ctx.strokeStyle='rgba(255,255,255,.7)';ctx.stroke();
+ }
+ function draw(){const width=Math.max(1,canvas.getBoundingClientRect().width),dpr=devicePixelRatio||1,height=width*420/540;
+  if(canvas.width!==Math.round(width*dpr)||canvas.height!==Math.round(height*dpr)){canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);}
+  ctx.setTransform(canvas.width/540,0,0,canvas.height/420,0,0);ctx.clearRect(0,0,540,420);mode==='ink'?beaker():dish();
+ }
+ function render(){
+  const ink=mode==='ink';document.querySelectorAll('[data-df-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.dfMode===mode));document.querySelectorAll('[data-df-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.dfView===view));
+  $('#dfInkControls').hidden=!ink;$('#dfBtbControls').hidden=ink;$('#dfDropGroups').hidden=ink;
+  $('#dfMethod').textContent=ink?'스포이트 끝을 물속 바닥 가까이 대고 잉크를 천천히 넣습니다. 물을 젓지 않고 변화를 관찰하세요.':'BTB 방울을 일정한 간격으로 떨어뜨리고, 가운데에 '+(substance==='vinegar'?'식초':'물')+'를 1~2방울 놓은 뒤 뚜껑을 덮습니다. 액체 방울은 서로 닿지 않습니다.';
+  $('#dfSceneTitle').textContent=ink?'물속 잉크의 확산':'덮개를 덮은 페트리 접시';
+  canvas.setAttribute('aria-label',(ink?'바닥에 넣은 잉크가 물속으로 퍼지는 모습':'중앙의 '+(substance==='vinegar'?'식초':'물')+'와 떨어져 있는 BTB 방울의 색 변화')+(view==='particles'?' — 입자 모형':''));
+  $('#dfKey').textContent=view==='observation'?(ink?'파란색: 물속의 잉크':'중앙: '+(substance==='vinegar'?'식초':'물')+' · 주변: BTB 용액 · '+(substance==='vinegar'?'초록색 → 노란색':'초록색 유지')):(ink?'파란 점: 잉크 입자 · 물 입자는 생략':substance==='vinegar'?'보라색 점: 증발한 아세트산 입자 · 공기 입자는 생략':'아세트산 없음 · 물과 공기 입자는 생략');
+  $('#dfProgress').value=String(Math.round(progress*100));$('#dfStage').textContent=progress===0?'처음':progress<.33?'퍼지기 시작':progress<.75?'퍼지는 중':'충분히 지난 뒤';
+  $('#playBtn').textContent=running?'잠시 멈추기':progress>=1&&view==='particles'?'입자 운동 계속 보기':progress>=1?'다시 관찰':'관찰 시작';
+  $('#dfObservation').textContent=ink?(progress===0?'잉크가 바닥 가까운 곳에 모여 있습니다.':progress<.35?'잉크를 넣은 곳에서 주변으로 색이 퍼집니다.':progress<.8?'잉크가 퍼지면서 진한 곳과 연한 곳의 차이가 줄어듭니다.':'물이 거의 고른 색을 띱니다. 잉크 입자는 여전히 여러 방향으로 움직입니다.'):(substance==='water'?'중앙에 물을 놓으면 이 조건에서 BTB의 초록색이 유지됩니다.':progress<.26?'서로 떨어진 BTB 방울의 색을 비교하세요.':progress<.43?'식초에 가까운 BTB 방울부터 노랗게 변합니다.':progress<.76?'더 먼 방울에도 색 변화가 나타납니다.':'아세트산이 퍼지면서 먼 방울도 노랗게 변합니다.');
+  if(!ink){const ds=M.btb(progress,substance);for(const group of ['near','middle','far']){const t=ds.find(d=>d.group===group).yellow,label=t===0?'초록색':t>=1?'노란색':'변하는 중',el=$('#df-'+group);el.querySelector('strong').textContent=label;el.querySelector('.df-swatch').style.backgroundColor='rgb('+mix([74,146,107],[231,193,48],t).join(',')+')';}}
+  draw();
+ }
+ function pause(){running=false;cancelAnimationFrame(raf);last=0;}
+ function reset(){pause();progress=0;free=[];freeTick=0;render();}
+ function drift(){if(!free.length)free=M.particles(mode,1,position).map(p=>({...p}));freeTick++;
+  for(const p of free){const angle=(Math.sin((p.id+1)*127.1+freeTick*311.7)*43758.5453%1)*Math.PI*2,step=.005,nx=p.x+Math.cos(angle)*step,ny=p.y+Math.sin(angle)*step;if(mode==='ink'){p.x=M.reflect(nx);p.y=M.reflect(ny);}else if(Math.hypot(nx-.5,ny-.5)<.48){p.x=nx;p.y=ny;}}
+ }
+ function tick(time){if(!running)return;const dt=last?Math.min(80,time-last):0;last=time;
+  if(progress<1){progress=Math.min(1,progress+dt/16000);render();}else if(view==='particles'){drift();draw();}else{pause();render();return;}raf=requestAnimationFrame(tick);
+ }
+ function play(){if(running){pause();render();return;}if(progress>=1&&view==='observation'){progress=0;free=[];}if(reduced.matches){progress=1;render();return;}running=true;last=0;render();raf=requestAnimationFrame(tick);}
+ document.querySelectorAll('[data-df-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.dfMode;reset();}));document.querySelectorAll('[data-df-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.dfView;render();}));
+ $('#dfPosition').addEventListener('change',e=>{position=e.target.value;reset();});$('#dfSubstance').addEventListener('change',e=>{substance=e.target.value;reset();});
+ $('#dfProgress').addEventListener('input',e=>{pause();progress=+e.target.value/100;free=[];render();});$('#playBtn').addEventListener('click',play);$('#resetBtn').addEventListener('click',reset);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){pause();render();}});new ResizeObserver(draw).observe(canvas);reduced.addEventListener('change',()=>{if(reduced.matches){pause();render();}});
+ window.__diffusionModel={...M,state:()=>({mode,position,substance,view,progress,running,free:free.map(p=>({...p})),drops:M.btb(progress,substance)}),setMode(v){mode=v;reset();},setPosition(v){position=v;$('#dfPosition').value=v;reset();},setSubstance(v){substance=v;$('#dfSubstance').value=v;reset();},setView(v){view=v;render();},setProgress(v){pause();progress=M.clamp(v);free=[];render();}};
+ render();
 });

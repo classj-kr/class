@@ -1,0 +1,11 @@
+✔ five observed images and ordered boundaries retain source hashes; independent horizon formula and photo angular scale (121.8034ms)
+✔ chromium: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (16026.1501ms)
+✔ webkit: photo recovery, all objects, zoom/pan, coordinate controls, six widths and first-error retention (34814.5214ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 51044.9817

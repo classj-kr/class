@@ -1,0 +1,16 @@
+✔ DNA complement conserves base pairing, nucleotide count and hydrogen bonds (0.9843ms)
+✔ paper protein overlap is counted once; folding never creates peptide bonds (0.1644ms)
+✔ organelle topology and ATP-facing compartments distinguish envelope and energy membranes (0.1213ms)
+✔ 24-hour budget scales time and food labels, with no duplicate basal term (0.2377ms)
+✔ fuel comparisons preserve enthalpy sign, mass/volume conversions and efficiency separation (0.1904ms)
+✔ boiling data preserve source values and ammonia exception without forcing global rank (0.0847ms)
+✔ chromium: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (9316.7617ms)
+✔ webkit: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (24792.3718ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34197.9334

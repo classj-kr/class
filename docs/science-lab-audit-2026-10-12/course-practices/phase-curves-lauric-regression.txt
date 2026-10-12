@@ -1,0 +1,13 @@
+✔ original table values and independent enthalpy integration, bath equilibrium and phase transitions (1207.8734ms)
+chromium: 126 layout states; 4 first MCQ errors and phase interval first error retained
+✔ chromium: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (12392.9302ms)
+webkit: 126 layout states; 4 first MCQ errors and phase interval first error retained
+✔ webkit: data, invalid probes, playback, touch, six widths, phase diagnosis and retained MCQ mistakes (25330.6981ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38996.7642

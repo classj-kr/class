@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-12T17:33:51.772Z",
-  "count": 3625,
+  "checkedAt": "2026-10-12T22:43:49.834Z",
+  "count": 4029,
   "allDecoded": true,
   "allLossless": false,
   "redundantRasters": [],
@@ -164,6 +164,118 @@
       "alpha": false,
       "lossless": true,
       "sha256": "99a788ed019b9bf65639d5056ab9859363f3ad5de21f127ac3ec6e8c3e13cdd6"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-live-cabbage-acid-opposite-0-bare.webp",
+      "sha256": "d52963cef63f5d7935697c2aca5d0704c0bde055d96061d7d5002e40688866ec",
+      "width": 1600,
+      "height": 1176,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-live-cabbage-acid-opposite-20.webp",
+      "sha256": "5cdec2fa9cab1c23efc0c37afd2f2ac1a79ac8d2f53e8b7190ed0f13becd1186",
+      "width": 1600,
+      "height": 1314,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-live-cabbage-acid-opposite-30.webp",
+      "sha256": "ae6d82f212e7da3693f7e38cecfca55fc6f3695cd3ac97925aad98a6fc2eb2eb",
+      "width": 1600,
+      "height": 1314,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-live-phenol-acid-opposite-2.5.webp",
+      "sha256": "e36b7a6859b9b58ebab0077354a613b7b4ea453bf5d0df8ea42d4003d8969e51",
+      "width": 1600,
+      "height": 1314,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-live-q3.webp",
+      "sha256": "d600c417acd398a2dab914e68998ddc3f07f1ce1c86a74606bad5fa6cdf68bde",
+      "width": 1538,
+      "height": 594,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-live-q4.webp",
+      "sha256": "d2974533c751a206d4a7c16b354357e57d3ff301452b5e001c6796bae948bd4a",
+      "width": 1538,
+      "height": 558,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/chromium-water-question.webp",
+      "sha256": "5114c97068e38dce3433e87b813c3d478d15a661ff5fe0a74f95dc38394d8dcf",
+      "width": 838,
+      "height": 701,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-live-cabbage-base-opposite-30.webp",
+      "sha256": "9e0a3a187e4892667d5d18337cb4ffe8fcde2d487b24143131a0a275cbdbd077",
+      "width": 1440,
+      "height": 3164,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-live-phenol-390.webp",
+      "sha256": "31116c9299628e2b0a9859f805c95598de4f773590dd81a6446540c55026ac70",
+      "width": 732,
+      "height": 4098,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-live-phenol-base-opposite-2.webp",
+      "sha256": "d072bb9b3d8415882edac22be5381fe229787df44b1f22aaf71f54d156b26f9e",
+      "width": 1440,
+      "height": 2892,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-live-phenol-base-water-5.webp",
+      "sha256": "550f2a7be03eb34c2426e4478c13203e2da7b45d60672162802b85896aa36df4",
+      "width": 1440,
+      "height": 3436,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-live-q3.webp",
+      "sha256": "56fdb8d4706193477719c06451c6892b09af1bcc96877c7b5d9d92df1ad643bc",
+      "width": 1340,
+      "height": 1122,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-live-q4.webp",
+      "sha256": "6d8514c0f716511b6030b34ed195fe15e7be63310b290b90bdbef908c71c7421",
+      "width": 1340,
+      "height": 1006,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/acid-mixing/webkit-water-question.webp",
+      "sha256": "225f66b2a1b7998147eed1bdf23ee7435ec00ed8064cc1991caf9da750d42451",
+      "width": 1340,
+      "height": 1124,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/aebc37106d1bf1bc-3.webp",
@@ -2300,6 +2412,102 @@
       "alpha": false,
       "lossless": true,
       "sha256": "f6a808e653b0d9ba5beb4565189f9e62d93576f02b02aa0c9fe26203ae57a935"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/chromium-initial-1366.webp",
+      "sha256": "f20f5ee2b6d72a9d2acf2d63d03d186e5e0679c149a99c8047078472633f15d6",
+      "width": 1600,
+      "height": 1839,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/chromium-map-768.webp",
+      "sha256": "546aa7e1623dd31573eacfd1bad654c9663d96ebc9be2ff14ce4dc1c05f28983",
+      "width": 900,
+      "height": 1320,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/chromium-missing-768.webp",
+      "sha256": "e1a3d2e4ab7b9524454d8543f3fb331c0effdbe9dc4b63955558aaf5aa898899",
+      "width": 900,
+      "height": 2435,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/chromium-surface-390.webp",
+      "sha256": "7d204070d0f75a179904f026ce1a6e3a7ec32a5cc743070b943392c88d1b9ee3",
+      "width": 458,
+      "height": 3120,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/chromium-surface-768.webp",
+      "sha256": "1f0d0aca738d702310cd6988078d2961c084974431ea5ef3726726187db16656",
+      "width": 900,
+      "height": 2435,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/chromium-ts-768.webp",
+      "sha256": "5082a7de8630819b5350a7960368daf75df91eb08ba3dae94b594e34c379e63b",
+      "width": 900,
+      "height": 1885,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/webkit-initial-1366.webp",
+      "sha256": "e4ac90c8aab5d49b01573efe05c25527585595620149d4db99ec4f539145fa92",
+      "width": 2560,
+      "height": 2954,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/webkit-map-768.webp",
+      "sha256": "ff5ab7bd72cc1c66ac69d4d1da2bd69c2f4a06ac9c1a5c0bf68f984634fd6d8d",
+      "width": 1440,
+      "height": 2126,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/webkit-missing-768.webp",
+      "sha256": "2981b72ed198b87b3b31f776e60236c3501ab1d80656bf411b304b8d626de797",
+      "width": 1440,
+      "height": 3910,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/webkit-surface-390.webp",
+      "sha256": "f621f97aadfd0dc5eab4149dfd2889996e3a37e4042be19f91c805578b9f4e87",
+      "width": 732,
+      "height": 5018,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/webkit-surface-768.webp",
+      "sha256": "44be43342435ea0ffc254eab661c3109bc60956729fa1ec8ca5f669de6adafb0",
+      "width": 1440,
+      "height": 3910,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/argo-observation/webkit-ts-768.webp",
+      "sha256": "5d7104bc34c5cf66b327b1e1dab5d9b9e4be1abcd96edff2051ef58dda383d67",
+      "width": 1440,
+      "height": 3028,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/b24be3a85c99e9fa-2.webp",
@@ -11246,6 +11454,206 @@
       "sha256": "27593fd0d91e9cb341b860f9d507122f299d703fb5b161df84a47235c0c604a6"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-live-combination-question.webp",
+      "sha256": "bcdad17db55324474ada56cb6211377287ad9be1d7e284b4df60eb13c2a06faa",
+      "width": 1543,
+      "height": 410,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-live-meiosis-4-8.webp",
+      "sha256": "673d720d03ffd8267d70a2d676ee399ee40f934a42db7ed08f50822aa72f6422",
+      "width": 1600,
+      "height": 2336,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-live-mitosis-5-8.webp",
+      "sha256": "920a49b4ee2fb4fee6d4a39f662eb742b42e5072101a0786e05ab3988e4b1233",
+      "width": 1600,
+      "height": 2034,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-meiosis-11-6-0-5-768.webp",
+      "sha256": "155dac58083105e5b5f57aa84573a5bce8670c0e3edadd2ec24a381a2020a87b",
+      "width": 900,
+      "height": 3436,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-meiosis-11-8-1-390.webp",
+      "sha256": "1cd61c7ce00354b84cfdc769b3b69fa5f0856f4848ec145d06221b68480108a1",
+      "width": 458,
+      "height": 4350,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-meiosis-11-8-1-768.webp",
+      "sha256": "6f7ef4f8b25510ae4ae696e8bb93ee205dac80131ce1b13c33dab8eac39a2176",
+      "width": 900,
+      "height": 3510,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-meiosis-4-768.webp",
+      "sha256": "262afd5099ba5a9975c5ac6f0af7ed989333cf2b2d113b1e4207ab7e7a153f72",
+      "width": 900,
+      "height": 2828,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-meiosis-8-768.webp",
+      "sha256": "d3dd0362cdfc0e2d3c6947eb792b69aa1d4cf77cfc703507d7a03b67ffabe477",
+      "width": 900,
+      "height": 2803,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-mitosis-0-768.webp",
+      "sha256": "1bfce0b1da8f802ae4b6bd5d7f5e49257f1ba43b28fc5fd19e8a66090d536238",
+      "width": 900,
+      "height": 2418,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-mitosis-5-768.webp",
+      "sha256": "9c4784ec24a2bbdbc308fabbbd92c5b6341a857f42b69156eda9dbe2140d6963",
+      "width": 900,
+      "height": 2418,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/chromium-mitosis-6-768.webp",
+      "sha256": "3dce001f60eb3efa62e1e88cfb0cc5bc3dbacaa672191457689ada7fab1b9ee9",
+      "width": 900,
+      "height": 2418,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-live-combination-question.webp",
+      "sha256": "f78bc7246ab17407c9ae125ee8af86881b125de038d24469acf81fb38a0ea50a",
+      "width": 1348,
+      "height": 714,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-live-meiosis-11-6-0-5.webp",
+      "sha256": "a85e96e886e8342b5b0248febdd1718735c87c01a5c85ff64026fdcb48ee1b84",
+      "width": 1440,
+      "height": 5498,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-live-meiosis-11-8-1.webp",
+      "sha256": "def5030e0a0056e1cef0f71803ec8257bd07bbd8e778597d98cce905c65d026c",
+      "width": 1440,
+      "height": 5616,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-live-meiosis-8-8.webp",
+      "sha256": "8be2f5f49a70f465fd0346927d8ee206f3325018658c3d9076fc51de03997fce",
+      "width": 1440,
+      "height": 4484,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-live-mitosis-0-8.webp",
+      "sha256": "68fb4bd7763faad530df36648ef918d0f5cb2e3ef60a8f060423fbac28bb941c",
+      "width": 1440,
+      "height": 3868,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-live-mitosis-6-8.webp",
+      "sha256": "491ac1f00fe53a301b11fb34be32b2fe53d0b0f191e1daebd086e8c54eea8c05",
+      "width": 1440,
+      "height": 3868,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-meiosis-11-6-0-5-768.webp",
+      "sha256": "0a549ad523c00801969f06b0cdc5bade47daeb04583b9ca7ca99991b496c88eb",
+      "width": 1440,
+      "height": 5498,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-meiosis-11-8-1-390.webp",
+      "sha256": "78e411a5f311499b6f2c417a3156e6c691a22e07b36b670bd9ba170e567d709b",
+      "width": 732,
+      "height": 6960,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-meiosis-11-8-1-768.webp",
+      "sha256": "efec414bf21f45162a4f21a608e0ad50e38cfe7b76d7aac8124f57c1a82e2307",
+      "width": 1440,
+      "height": 5616,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-meiosis-4-768.webp",
+      "sha256": "7f826adce35ec457587daeecde5304ca384637f42de0b97d8992ad1c2eb49658",
+      "width": 1440,
+      "height": 4524,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-meiosis-8-768.webp",
+      "sha256": "27f4f2b9eb227420f6e7c3498470c85ca4e0d48c87c89ce68c93f1cf422e5e7e",
+      "width": 1440,
+      "height": 4484,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-mitosis-0-768.webp",
+      "sha256": "3dfb820ae84bcf79e7a227daf4bdb453762198c38400273a22e3ac162363ce33",
+      "width": 1440,
+      "height": 3868,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-mitosis-5-768.webp",
+      "sha256": "f7c639a204ad4f8a8abf88ffcf475d56c02e8449d3edc2bc6f624c62ee95a408",
+      "width": 1440,
+      "height": 3868,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-division/webkit-mitosis-6-768.webp",
+      "sha256": "9be717820c33cc1a7097adaf2c6811be07d3e4d04130331f43d19d84fd36432e",
+      "width": 1440,
+      "height": 3868,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/cell-observation/chromium-complete-1366.webp",
       "width": 1600,
       "height": 1795,
@@ -12382,6 +12790,310 @@
       "sha256": "6c708a0516f442ada50cb26b9c1670fe57cfb228d8f9c8ee0f5bb541f0c04c4b"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-btb-vinegar-0.4-768.webp",
+      "sha256": "55c68de735b0c110e7db3ab2a4dfe157c4c4d4327738aa651c309ceb990815fb",
+      "width": 900,
+      "height": 1536,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-btb-vinegar-0.65-768.webp",
+      "sha256": "c9cabc1d34a0da987ff0d45e919689c95bad9f1da3419b70d015cdaa00655761",
+      "width": 900,
+      "height": 1536,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-btb-vinegar-1-390.webp",
+      "sha256": "c4720897a73f3036ef8f7b6ecc062ecf8698991cbb8cb6679cc5bd0b1d8d70cf",
+      "width": 458,
+      "height": 1610,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-btb-water-1-768.webp",
+      "sha256": "f43facdb970711edf24b6076bbba8d4d0bb2370aeafcdaa3c8a7eebe2f555e0d",
+      "width": 900,
+      "height": 1536,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-control-question.webp",
+      "sha256": "7117d37377044011bdaa3b07b5b259800f2c86bd1d0dc2b65f5ebc63c7eca136",
+      "width": 674,
+      "height": 582,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-ink-centre-0-768.webp",
+      "sha256": "a959b5c1ac16e3ed255bb8f5dd72102a39ea3c9cccc209eb72f2495fafa56036",
+      "width": 900,
+      "height": 1376,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-ink-centre-0.15-768.webp",
+      "sha256": "5ffa50d980c2bd5bf28e2746685a3d52ee7f1de2f88f4983ebe532ba4ce32f4a",
+      "width": 900,
+      "height": 1376,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-ink-centre-1-particles-768.webp",
+      "sha256": "f6a40f35c1b6826ac84c4c8c9bce21a1c34b0783e69c7cc5dabd331864312e92",
+      "width": 900,
+      "height": 1376,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-live-btb-vinegar-0.4.webp",
+      "sha256": "fc5eb940be1d00ce97f44cdbd7986384c688c10b3f0329f9f7ab957859b9a495",
+      "width": 1600,
+      "height": 1271,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-live-control-question.webp",
+      "sha256": "1078647f56df6ef423876d1e510257b0b39e705ecff14ceaafe37be26860f579",
+      "width": 1543,
+      "height": 454,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/chromium-live-ink-centre-0.webp",
+      "sha256": "7ab8c367109a5cad69897e08fd7705782733272ff2dc40049919d2ad8d06d436",
+      "width": 1600,
+      "height": 1145,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-btb-vinegar-0.4-768.webp",
+      "sha256": "e47f0aae2620fcbbf522cc048b8c7ef9fb454573e329a3849c6a0f2821628073",
+      "width": 1440,
+      "height": 2474,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-btb-vinegar-0.65-768.webp",
+      "sha256": "fe9b1c8b79327255fd00045619d761ce5a65d66c938d1b8ebfd52663db3084ee",
+      "width": 1440,
+      "height": 2474,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-btb-vinegar-1-390.webp",
+      "sha256": "b9723af6f4415bff6edf896e8b5cd4956d06beda8007622c1b66fa2db26f6364",
+      "width": 732,
+      "height": 2592,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-btb-water-1-768.webp",
+      "sha256": "e45585e2f487fe9bcfadf18bdb84e733142144ab65797cacd8ba3a354932d4e7",
+      "width": 1440,
+      "height": 2474,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-control-question.webp",
+      "sha256": "315be6f0eed99f146721d89e80bc4b254649f3009288aa1a74b55dce9b7d0362",
+      "width": 674,
+      "height": 549,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-ink-centre-0-768.webp",
+      "sha256": "4977a44fc7752d701ef4cb54e22ac35e03a19d779b889f070cbfb8bb4e3866dd",
+      "width": 1440,
+      "height": 2218,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-ink-centre-0.15-768.webp",
+      "sha256": "df2dc6bcc5a972b90a972e93cb6705d95393ce4a1c6bece8f2f06fbbb30f65c8",
+      "width": 1440,
+      "height": 2218,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-ink-centre-1-particles-768.webp",
+      "sha256": "8b5aed0ad42b6508ae793526b49eb014ad5b42606d894c851f4e4ad68bf90c61",
+      "width": 1440,
+      "height": 2218,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-btb-390.webp",
+      "sha256": "e995b2305e559cda5abf5264c787a8eb124a8d40e6f2f3ef0c0251b30467afbc",
+      "width": 732,
+      "height": 2586,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-btb-vinegar-0.65.webp",
+      "sha256": "74795fb751c777cbe4588d6bb6424df87aea4daf157fae7f89c368617b6482f6",
+      "width": 1440,
+      "height": 2468,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-btb-vinegar-0.webp",
+      "sha256": "7f3bc76abbf7f075e2e313b38ff2d28630958956180d1c3829d2c5e2f28cb6ef",
+      "width": 1440,
+      "height": 2468,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-btb-water-1.webp",
+      "sha256": "e7f8ebc5076f3c61d18f2380d0d904c6403c605026ae436793c1b540a606abc8",
+      "width": 1440,
+      "height": 2468,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-control-question.webp",
+      "sha256": "f975101423a67c78b858de4a312886431b1f1742134601f291b5e22ead45e937",
+      "width": 1348,
+      "height": 1096,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-ink-centre-0.15.webp",
+      "sha256": "0a8d52e15ff228609078010d7ce647395d34799712b54572924b6000b1886709",
+      "width": 1440,
+      "height": 2210,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/diffusion/webkit-live-ink-centre-1-particles.webp",
+      "sha256": "89d9c6e1297805e927c43bc40403a9aeceb617020339a37b653acbe5af8aee95",
+      "width": 1440,
+      "height": 2210,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/chromium-high-common-45-768.webp",
+      "sha256": "7d4ec00c10b98ec4932d802227dbfdab32af2bd789ba69f05b5d1ae82aa69afd",
+      "width": 900,
+      "height": 2528,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/chromium-high-common-90-390.webp",
+      "sha256": "bfec043a8cb19711ddba5c8100e039b22bebfc2afd95923c69f6ccdee6d76083",
+      "width": 458,
+      "height": 2968,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/chromium-high-common-flat-1366.webp",
+      "sha256": "8677b0beaf68d8a94146ae9c4ce9485240db5b63a3c4c9cbc3ad5999664a57f1",
+      "width": 1600,
+      "height": 1599,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/chromium-high-elective-45-768.webp",
+      "sha256": "aff5a0f114ff104a312212a11a58b35dc387c067ff23a6a42d8241551a0fdf9e",
+      "width": 900,
+      "height": 2108,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/chromium-high-elective-90-390.webp",
+      "sha256": "297e33a97953578dbff064d8420f8e98bee78a54fa553e9b5a73477d6e7168fd",
+      "width": 458,
+      "height": 2514,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/chromium-high-elective-flat-1366.webp",
+      "sha256": "f65918baebb3f70907b888454eedef9b623db640bb51e5d14366a19a6b746fca",
+      "width": 1600,
+      "height": 1349,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/webkit-high-common-45-768.webp",
+      "sha256": "83b2ebdd7d5551de02d141edab89b417395f76364eb29077e31d8669b4486247",
+      "width": 1440,
+      "height": 4236,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/webkit-high-common-90-390.webp",
+      "sha256": "efe9edc88c0b7c23c445bb853f22d83d76a1300f730e580e4833b962ef05d6cb",
+      "width": 732,
+      "height": 4940,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/webkit-high-common-flat-1366.webp",
+      "sha256": "97bf4d9632552e3a84363d1ff64ef0d77d3aba462940f0baee21ae0376268db6",
+      "width": 2560,
+      "height": 2750,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/webkit-high-elective-45-768.webp",
+      "sha256": "237d32ccac996ff89147c59f67ba61caf0058ba108bdf8ca3ac0bd34925a9c01",
+      "width": 1440,
+      "height": 3500,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/webkit-high-elective-90-390.webp",
+      "sha256": "06747f35f0a49a5897e042f112d60ebc32f22233b1999b332ac09d4cd50dbd73",
+      "width": 732,
+      "height": 4150,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-course/webkit-high-elective-flat-1366.webp",
+      "sha256": "89b278b3bcb2b73c3df72f88b5c84c7669306682a45271f6c2d51661a41ca9ad",
+      "width": 2560,
+      "height": 2262,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-replication-chromium-1024.webp",
       "width": 980,
       "height": 1765,
@@ -12428,6 +13140,358 @@
       "alpha": false,
       "lossless": true,
       "sha256": "9e512b06e288fe418d1e6f9c58209e9860e146f204244734c67814ba51443208"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/chloroplast-complete-chromium-1100.webp",
+      "sha256": "dc7e47a190ce9284512d6b93d40b36da458c86532ac8bb9172e0b7cb1d35a875",
+      "width": 1052,
+      "height": 1670,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/chloroplast-complete-chromium-390.webp",
+      "sha256": "4727b2f329d9034f05537dd86ea8a40e89aaf2cea8ba456ad26b75675367e25e",
+      "width": 366,
+      "height": 1375,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/chloroplast-complete-webkit-1100.webp",
+      "sha256": "6bc3f510d113e7d09aca25c29eee922998823b13690e291313e4ade63bddbf57",
+      "width": 1052,
+      "height": 1684,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/chloroplast-complete-webkit-390.webp",
+      "sha256": "4b66b7fb2eb1f8fab86f682cd7017afd204e5140b14fec3f6554033d97378c83",
+      "width": 366,
+      "height": 1396,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-complete-chromium-1100.webp",
+      "sha256": "b10accb1871550cb1f3c3dc4a6f1b10bef115ac4f177071c05c7a3b7a03e9a9c",
+      "width": 1052,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-complete-chromium-390.webp",
+      "sha256": "f67e64b318e7d77ac409e8569a21617a5180169f0c7eefe1c3206b4e9811b7bb",
+      "width": 366,
+      "height": 2039,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-complete-webkit-1100.webp",
+      "sha256": "0d073b69ee4a49d139120c310e19010d8f17a2484d598a45e95a1c37b5f52144",
+      "width": 1052,
+      "height": 1131,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-complete-webkit-390.webp",
+      "sha256": "b7176886e08367b3cc71baa919b4148c6590a7736352cd8b8ea7a2ed3873dfb5",
+      "width": 366,
+      "height": 2103,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-structure-chromium-1100.webp",
+      "sha256": "353f5dc1039f62edf02954ba6b7c84e0411dbb9f84706d522ec07604c00ba1c2",
+      "width": 1052,
+      "height": 1079,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-structure-chromium-390.webp",
+      "sha256": "b31a37964434469b1fab3151101409b13105800fa1bc55c68353108648299326",
+      "width": 366,
+      "height": 2011,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-structure-webkit-1100.webp",
+      "sha256": "e41316387c6f09510fd25f5b940eb9acff71efe1d98e59108129b953cf6fda4b",
+      "width": 1052,
+      "height": 1131,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/dna-structure-webkit-390.webp",
+      "sha256": "3e2bd5d106d66513d5d56e36af18d6d8c037039daba566440f7f9de324a01d52",
+      "width": 366,
+      "height": 2075,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuel-comparison-chromium-1100.webp",
+      "sha256": "56d2c2b0263c29494f49d12045b0040c7f85f1fbe71432c00aa5a4a94ab4e2ae",
+      "width": 1052,
+      "height": 2083,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuel-comparison-chromium-390.webp",
+      "sha256": "3e2a9dedb75b4750b43d417de259da2b5e560025d88b4e705b2a47344902bb7a",
+      "width": 366,
+      "height": 2238,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuel-comparison-webkit-1100.webp",
+      "sha256": "bb8ddafed9ac9bd1c998a58897aea1ca401eaa4dd74735c15ad4876757e06425",
+      "width": 1052,
+      "height": 2083,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuel-comparison-webkit-390.webp",
+      "sha256": "1d327c51136ec01a1405cede83b2ecbe1726daf1bae996d16ea5fe31421f844f",
+      "width": 366,
+      "height": 2273,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuels-volume-log-chromium-1100.webp",
+      "sha256": "a832ec82b37f354ceab6ce3df896c7ac970a0172ab89acfadb2681d095ce8dd6",
+      "width": 1052,
+      "height": 2083,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuels-volume-log-chromium-390.webp",
+      "sha256": "ec794a8c2293441f1d7b5763624fc6ebc2812032975bf99f37e1b27f876ad7c1",
+      "width": 366,
+      "height": 2238,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuels-volume-log-webkit-1100.webp",
+      "sha256": "86fdcca6819412fddc448fd7d937e73c71847e8375612ab6545f664777835002",
+      "width": 1052,
+      "height": 2083,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/fuels-volume-log-webkit-390.webp",
+      "sha256": "02a395df1726ad172e96b850c530d17d0594fc107469cdd9e575737a7a65d434",
+      "width": 366,
+      "height": 2273,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydride-boiling-chromium-1100.webp",
+      "sha256": "86961c6fbbbc9f79a801dafb25874f054cf10e1337c790d34c9028fee1fb78c4",
+      "width": 1052,
+      "height": 1599,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydride-boiling-chromium-390.webp",
+      "sha256": "2906604080aa329120b0085acd13009e665f16fb743b39f00f7542b3a84f4cd4",
+      "width": 366,
+      "height": 1575,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydride-boiling-webkit-1100.webp",
+      "sha256": "42dfa76f1c677ced0bfbbc05d25a3ddecea8890d889ed3cfbac0b4ce98a47769",
+      "width": 1052,
+      "height": 1599,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydride-boiling-webkit-390.webp",
+      "sha256": "f96c1d4ec7ee8d41a04e27cebc82665bc2e3745629ee264f14e05514e0ac1265",
+      "width": 366,
+      "height": 1589,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydrides-mass-chromium-1100.webp",
+      "sha256": "286c866b57ac12b2453b4021e2287ff73520a9c0588a78c17f2013ae0678ae52",
+      "width": 1052,
+      "height": 1819,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydrides-mass-chromium-390.webp",
+      "sha256": "d072b57b31cec2a8e0be51d12806a24adcc9422cbbfcdbae99435ab57dafec0f",
+      "width": 366,
+      "height": 1779,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydrides-mass-webkit-1100.webp",
+      "sha256": "2eb0e267d071d3fea79e2a8c282c19e1aef3b2ea80090ceb0f85900b8b5d632e",
+      "width": 1052,
+      "height": 1819,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/hydrides-mass-webkit-390.webp",
+      "sha256": "5ac917972fb7f460fc0376876ae46cb182f9fb559e4de025d2cd9f95dd3e07ed",
+      "width": 366,
+      "height": 1793,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/mitochondrion-complete-chromium-1100.webp",
+      "sha256": "50803f7e31c0b32b55563955cb5d064e9d82eb8735aad53213165d10f197649a",
+      "width": 1052,
+      "height": 1670,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/mitochondrion-complete-chromium-390.webp",
+      "sha256": "8f7e20fa14b7c9e70f1f598af6799c3a45b4d416577acb21262bdc04312e0a01",
+      "width": 366,
+      "height": 1351,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/mitochondrion-complete-webkit-1100.webp",
+      "sha256": "6ba048c508af16eaa100ebafc317e642c6a9774196857097b668740bc3b4207a",
+      "width": 1052,
+      "height": 1684,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/mitochondrion-complete-webkit-390.webp",
+      "sha256": "e76b96de4dfac29a8fcd3fea80b206ea3e0d6c4bcf45ccb38f9899c628c33cc6",
+      "width": 366,
+      "height": 1372,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/organelle-builder-chromium-1100.webp",
+      "sha256": "a78df3385cd01b9f432bf76098f5406d2a009bf7f9c461a3b52a0436ac5529fd",
+      "width": 1052,
+      "height": 1670,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/organelle-builder-chromium-390.webp",
+      "sha256": "eb6fe43fe9a8997552997aa515120d5c200e3c945e71ea8031684780c2f19e9a",
+      "width": 366,
+      "height": 1375,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/organelle-builder-webkit-1100.webp",
+      "sha256": "d8322217d69e88a01bd0afb724d235fff67a6987d129a2361d13b1d375756dd1",
+      "width": 1052,
+      "height": 1684,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/organelle-builder-webkit-390.webp",
+      "sha256": "f172bdefd951c76c47d43e790a657baad68b332c3bfca999fc08fb7aab6011d3",
+      "width": 366,
+      "height": 1396,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-folding-chromium-1100.webp",
+      "sha256": "1bb2000ba09eb70d5945b4f31e663e5c9207c8f9353bbae301c682820b0663c6",
+      "width": 1052,
+      "height": 1408,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-folding-chromium-390.webp",
+      "sha256": "8417cefb52bdf65c0cce26da297fab18da4d5e3faa8eb5c4756d7320e6fef9d0",
+      "width": 366,
+      "height": 1622,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-folding-webkit-1100.webp",
+      "sha256": "964c31eaca0f141d66a8b77f0e7eb0edc41eeff84b6f559268bf2b03cd0a4c43",
+      "width": 1052,
+      "height": 1415,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-folding-webkit-390.webp",
+      "sha256": "dd5366e2036a58adf23ee036487fd611f171e1df757822b5552bba89bd048318",
+      "width": 366,
+      "height": 1629,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-joined-chromium-1100.webp",
+      "sha256": "2fa13608768eeee1e2cc358c04c2dee671bf1b6a9e51ca4abc659cdfa9294160",
+      "width": 1052,
+      "height": 1408,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-joined-chromium-390.webp",
+      "sha256": "31a48e240632f4b25cfe074f87ebf4812422df122179a486ccc94087a9d637ae",
+      "width": 366,
+      "height": 1598,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-joined-webkit-1100.webp",
+      "sha256": "457dc7db027e81cadcec687959bc5f430e49e23d6649c8178777654b07493b0d",
+      "width": 1052,
+      "height": 1415,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/dna-structure-regression/protein-joined-webkit-390.webp",
+      "sha256": "ebd0648405818a7454f0dfed28dc3d3c408e874c48f387d74ef260bc872c02b3",
+      "width": 366,
+      "height": 1605,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/doppler-chromium-1024.webp",
@@ -13966,6 +15030,118 @@
       "sha256": "5234d2f05cfe49bee57c3ef257d8cc4468259b703d7ec6b65c6b19c0c7dd347b"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-A-1366.webp",
+      "sha256": "da390f66c0535f798a683dc4b63dd4807775e652162d49fdec1bc05795579310",
+      "width": 1600,
+      "height": 1323,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-B-768.webp",
+      "sha256": "e8317176ad4db68c0fecad47902aecf4ef2e1576e003c0cd8508b0b6100273a0",
+      "width": 900,
+      "height": 1671,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-fusion-he-768.webp",
+      "sha256": "515a9c6d76b43da43e5d78677e2718e8c37e96a07fe4e37e319f31abea48021b",
+      "width": 900,
+      "height": 2085,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-large-390.webp",
+      "sha256": "812b57ffc23a197f9c9a7678635553e73de7f313c727a69b51c6205973b166c8",
+      "width": 458,
+      "height": 2060,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-missing-768.webp",
+      "sha256": "746216eb4468af9255a25a06a1b94d0ce331304c2e318a6b7130bca1a7ad8ea4",
+      "width": 900,
+      "height": 1971,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-origin-768.webp",
+      "sha256": "f27031f2c812c53c0ebc31fba725ec974903da7e4c6df3b2a8a9233aa526be4b",
+      "width": 900,
+      "height": 2161,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/chromium-star-large-768.webp",
+      "sha256": "942a2564175649c14fd78cf8148a09c90fdc12ae594b2c7823a98c44fa033692",
+      "width": 900,
+      "height": 2155,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-A-1366.webp",
+      "sha256": "c1d822cae8d1abce02f487f0d75273560ad8f4aa5a79bcd60b35a34d970d6418",
+      "width": 2560,
+      "height": 2132,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-B-768.webp",
+      "sha256": "3d3d00092c4461da1d4c1fa9075188aedca269d1eadb271f53a606a153d859cc",
+      "width": 1440,
+      "height": 2690,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-fusion-he-768.webp",
+      "sha256": "2d5ade330def5c018851e6aa2b8ee5e7062bea727635d57d769e3124633baf6c",
+      "width": 1440,
+      "height": 3336,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-large-390.webp",
+      "sha256": "85a8142cc536c1ff8c1843f33e957383745d99924cfb42104e8591216f9162c0",
+      "width": 732,
+      "height": 3256,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-missing-768.webp",
+      "sha256": "968e3e57e1c7e0e42eaeba1dcfec235ffa014f35bf001db65cadc436431997c7",
+      "width": 1440,
+      "height": 3170,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-origin-768.webp",
+      "sha256": "f66b70b66d4ef9426caef5745c76e4517fdb6f701fcb4f0cfa78132dba17aee8",
+      "width": 1440,
+      "height": 3458,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/element-origin/webkit-star-large-768.webp",
+      "sha256": "16c76fc94886958d9783520c34f44c27588a055e0cf97422ff2ab0065e067932",
+      "width": 1440,
+      "height": 3400,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/energy-metabolism-chromium-1024.webp",
       "width": 976,
       "height": 1384,
@@ -14140,6 +15316,70 @@
       "alpha": false,
       "lossless": true,
       "sha256": "2d8b3ea42b982bf23694162cc13b44a00b2b05c9be9c20de0b0f057b50d7e8f8"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/chromium-a-eq-square-1366.webp",
+      "sha256": "98c14cb8d8ac96ba7aeeaf96ce25630ad4bd33058edc2e045f917c83d477711e",
+      "width": 1600,
+      "height": 1500,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/chromium-a-eq-square-390.webp",
+      "sha256": "c3fc77f0f17548a5e435b2fbc7defb4cf4aef093ccc7e81f34bd6551342968db",
+      "width": 458,
+      "height": 2941,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/chromium-b-eq-coefficient-768.webp",
+      "sha256": "57797a9c381366ee6b8cef3307a16af147bc04f6a33c9a0ddccb106e968b9d68",
+      "width": 900,
+      "height": 1993,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/chromium-b-initial-square-768.webp",
+      "sha256": "03974b90c4cd09c2f7a2e1a37c53868450694a6024fe5026aef1c630dc98f64a",
+      "width": 900,
+      "height": 1993,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/webkit-a-eq-square-1366.webp",
+      "sha256": "94d0f7ac9b5cdbb7a6a66c03b043d7f37d1f010e9a913d0770b332618b57f3b0",
+      "width": 2560,
+      "height": 2400,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/webkit-a-eq-square-390.webp",
+      "sha256": "2aa5c6fc9696d443f50aac978be3e8ff10a3f1c1bdc35a035db3e64bea381578",
+      "width": 732,
+      "height": 4706,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/webkit-b-eq-coefficient-768.webp",
+      "sha256": "f6e24c8c1be6ccf8a4ae98c1de963f73ba707b806572ceb4d0679304c117b449",
+      "width": 1440,
+      "height": 3188,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/equilibrium-data/webkit-b-initial-square-768.webp",
+      "sha256": "029c24dafba0ee803de9b6b337083d0aa0c59c454ccceb496a4b7ecfe8d13788",
+      "width": 1440,
+      "height": 3188,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/fermentation-sources/12371732aa7bdea5-3.webp",
@@ -24086,6 +25326,206 @@
       "sha256": "181579a010459442540ff8672f8953ce6aeb010e21f8070395b705bffe50937f"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-classified-768.webp",
+      "sha256": "d613c9092763ffd2f47670d581fd61eb10b587a3061f1b1b6a26107d0984c2c7",
+      "width": 900,
+      "height": 2271,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-compare-1366.webp",
+      "sha256": "af8575cdde6fa25ed89d2e0e9c4a9bed771d5d3b94db250b1804c3fe3c31790b",
+      "width": 1600,
+      "height": 2114,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-compare-nebula-1366.webp",
+      "sha256": "fbb71dca737c20dc8e5730f138c0911d821e68d5da3c639857053cb106285e63",
+      "width": 1600,
+      "height": 2114,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-compare-nebula-390.webp",
+      "sha256": "80d4c8192b0f138ac1ac02447eb28e742119e50239a5ef9239fd5792397bccf5",
+      "width": 458,
+      "height": 3116,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-live-compare.webp",
+      "sha256": "af8575cdde6fa25ed89d2e0e9c4a9bed771d5d3b94db250b1804c3fe3c31790b",
+      "width": 1600,
+      "height": 2114,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-shark-768.webp",
+      "sha256": "119896f0719e6ae43b6168c3f28b144b3e6d5d3fafa0e8effc4b342f466cea2d",
+      "width": 900,
+      "height": 2236,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-sky-1366.webp",
+      "sha256": "8d66f158e8b99662ac7bd0af56338496cef48fcffa615e38f1f1b236b78dd569",
+      "width": 1600,
+      "height": 1763,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-sky-390.webp",
+      "sha256": "0854eaf38867dc181c27089412eb9d3e25f69fbdf80d9594d6280144944baf73",
+      "width": 458,
+      "height": 2381,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-sky-day-768.webp",
+      "sha256": "ef5f71606c1f52752a56a66398abb267666efa2647b81cf0d93a6b30e777e8db",
+      "width": 900,
+      "height": 1833,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-sky-ground-768.webp",
+      "sha256": "9f94d225e100a30c8812a63a998c7c8005c1b35285a658fbe052bd3ec12fc2ed",
+      "width": 900,
+      "height": 1798,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-witch-768.webp",
+      "sha256": "8ffa7ca0a68b742549aa38ea7d2262302e59e27e03996234c0b7a48533b90a27",
+      "width": 900,
+      "height": 2236,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/chromium-zoom-768.webp",
+      "sha256": "73520e1fdf49aebb8947a6213685c26d2878edff3bb57cbafd47b16710b33bb9",
+      "width": 900,
+      "height": 2236,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-classified-768.webp",
+      "sha256": "efad2daf8ae8567cd0d44ed19f6dbe23ba5d44b8518afd5199b1dda06441570e",
+      "width": 1440,
+      "height": 3648,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-compare-1366.webp",
+      "sha256": "8fa194f5732acbbb1cce71a194b2005c2b087f355e82d92b077305bf52a9ca87",
+      "width": 2560,
+      "height": 3396,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-compare-nebula-1366.webp",
+      "sha256": "0e71fe62f7cb621354035c5ac825c8b035a3892dbf9988b8b43f7a1ad3bd9d2f",
+      "width": 2560,
+      "height": 3396,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-compare-nebula-390.webp",
+      "sha256": "4732edf4866d090795c8729bce7d45d663cc516ddaf512f9c02838cd87333393",
+      "width": 732,
+      "height": 5014,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-live-compare-nebula.webp",
+      "sha256": "aa8dcea4cbfa9f5359e66ce2a85c330fdd77ef1053e19c3eaccb27ec3ed26132",
+      "width": 1440,
+      "height": 3004,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-live-sky.webp",
+      "sha256": "30262f16c5e736f139924a8204cecf6e5181245a994c8b2f6d1be958efc30c10",
+      "width": 1440,
+      "height": 2878,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-shark-768.webp",
+      "sha256": "6216c29d854f9a40944dc316958cba1d130377d91af3db2d6e7d88223a28af71",
+      "width": 1440,
+      "height": 3592,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-sky-1366.webp",
+      "sha256": "b0185b916cf49f08ff411850084114ccd42e57c5d3a3e6e4e81d1e87ff32a30c",
+      "width": 2560,
+      "height": 2822,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-sky-390.webp",
+      "sha256": "2979fc37a933011f890c36f5eff466bbf10640bb13867add98f65bae3dbf292d",
+      "width": 732,
+      "height": 3826,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-sky-day-768.webp",
+      "sha256": "2a373f56932e2ca8e794e2b60cdb6b44bd0411106e51309bce0b14b119348fd8",
+      "width": 1440,
+      "height": 2934,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-sky-ground-768.webp",
+      "sha256": "0f82d14be926dfff4c49d2f9e6be6bd773413a2776ba6df97159de16efcfe1e5",
+      "width": 1440,
+      "height": 2878,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-witch-768.webp",
+      "sha256": "265621e98e914593af01d94c8af0369b12f15a652335f7897a24b1b2f30ea2ab",
+      "width": 1440,
+      "height": 3592,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/galactic-objects/webkit-zoom-768.webp",
+      "sha256": "63d71b60aef426f86f9f58afbafb3f057b6cc6219bd70de4926967c933a45265",
+      "width": 1440,
+      "height": 3592,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/galileo-sources/219f8d0b7dc938c3-5.webp",
       "width": 745,
       "height": 975,
@@ -25102,6 +26542,246 @@
       "sha256": "88d4eae4745c7ebb456f08c5be5e8361acf607eefa2545e62a3ff4b8b35dd0ba"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/chromium-igneous-light-768.webp",
+      "sha256": "42451395bb9b79c27803f315fe37743f41a6cf289c33f8b8579579f1d506ef96",
+      "width": 900,
+      "height": 1029,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/chromium-magnetite-clip-768.webp",
+      "sha256": "6bba4e99217ad16ba78d5165b85d16886ba1b46901a4fbeca99a7229ff1aaa22",
+      "width": 900,
+      "height": 1708,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/chromium-quartz-streak-768.webp",
+      "sha256": "01840e5614c59c13743a9bd9356b7fd59d7d9ce732b8151ad1f96afa4cb5e587",
+      "width": 900,
+      "height": 1770,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/chromium-rock-C-390.webp",
+      "sha256": "9ee078ddbe385329ecea911b9ee6e067851213209bb3609118cd1ea4c6d6e907",
+      "width": 458,
+      "height": 2218,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/chromium-rock-E-1366.webp",
+      "sha256": "79e7a0bce40f5ac4f15f6145369c234e050b854e09b5c0c48255ebf98a604692",
+      "width": 1600,
+      "height": 1306,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/webkit-igneous-light-768.webp",
+      "sha256": "90ffae720c7ff1e346dc2c304934def84a089c6a6b54b8adb1efb7f1043bcc7c",
+      "width": 1440,
+      "height": 1646,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/webkit-magnetite-clip-768.webp",
+      "sha256": "7003c933357fef441283e10b32a263fb2812f50855acbdabbcd208aa316cf00a",
+      "width": 1440,
+      "height": 2732,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/webkit-quartz-streak-768.webp",
+      "sha256": "e45ffd9a5da5fdb6106041a255975652e3db44111521010e60f6c4184cd160f8",
+      "width": 1440,
+      "height": 2832,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/webkit-rock-C-390.webp",
+      "sha256": "15d871e5c8d1f74add423b5ad8589f6a2a474e85216bffb55822ae047706fc9c",
+      "width": 732,
+      "height": 3576,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks/webkit-rock-E-1366.webp",
+      "sha256": "d7091853a0fa2dc9cbc91975b621dcbc5d93dd37f5cf7d5f7c82c0465bcedcbf",
+      "width": 2560,
+      "height": 2118,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-distill-chromium.webp",
+      "sha256": "4c92067e30a3a52a9fd0434f9a5c724cb33b18a3d20513b59601191b5023a756",
+      "width": 976,
+      "height": 1227,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-distill-webkit.webp",
+      "width": 976,
+      "height": 1227,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "3f6de52283c50f75ab609a8ba29312f0eced5d84aebcddf172c863d9535081b2"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-earth-chromium.webp",
+      "width": 976,
+      "height": 1225,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "06e3414ef403b096677a24f8221f847fa28d2881976e88b49bf70097aa46c4a1"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-earth-webkit.webp",
+      "width": 976,
+      "height": 1225,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "a1a417f4649594fc9387f7c9ea2ac7efc2854245805d5d310c14968b07fae785"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-engine-carnot-chromium.webp",
+      "width": 976,
+      "height": 1004,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "2c03909b6e14868097de01f248a6d6ed7ca06e82aa418755d8ffb605be5b1da5"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-engine-carnot-webkit.webp",
+      "width": 976,
+      "height": 1004,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "f2c2045bb3e936f16f2ac6898bd5363406fbdff65a384b0052ad1d0d5e424754"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-engine-flow-chromium.webp",
+      "sha256": "9e22fdc416cda073ffd3a752c7991f4bd27f459ad1bcf183c765c9b55a503159",
+      "width": 976,
+      "height": 1028,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-engine-flow-webkit.webp",
+      "width": 976,
+      "height": 1028,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "d2f2b31600c8e3116c180b5a4a07b6f986e3c53767868d1dfd62711f10a6a01c"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-engine-pump-chromium.webp",
+      "width": 976,
+      "height": 1005,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "ee8a804a2a8ef4568d5832e20ce3458e6bd7da5ac5d27794beaf5eb828cf0c60"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-engine-pump-webkit.webp",
+      "width": 976,
+      "height": 980,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "41490e1a28c657f3e29002f761c688454a8384a46b58b8d62d39ba8592aaf0fd"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-fusion-h-chromium.webp",
+      "sha256": "a4cdf8399585888c2322f50ce9f8cd9be8a2757c82ea64869e4a923ef10da918",
+      "width": 976,
+      "height": 1080,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-fusion-h-webkit.webp",
+      "sha256": "107142c64e1bc0c8c157b172c29c3ffe30531991fd8587357c0dbe3990727922",
+      "width": 976,
+      "height": 1080,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-fusion-he-chromium.webp",
+      "sha256": "883d990d42c7649918cc291e549c132ebbc9e7723eacc577acf6478dde2b33d3",
+      "width": 976,
+      "height": 1055,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-fusion-he-webkit.webp",
+      "sha256": "bd4f5365e8df84a8ad97dec5e46b888ae70c417e0fa9c8a191d4b2f8064b8e09",
+      "width": 976,
+      "height": 1055,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-rock-photo-comparison-chromium.webp",
+      "sha256": "98e2dc124d91edecb7e11f7e3c4e7b85c0e460ba441017b05455e788dd28a8ab",
+      "width": 976,
+      "height": 845,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-rock-photo-comparison-webkit.webp",
+      "sha256": "0156d52c40c7dab613707dc9b924987ac53b80776cb7fca0cd47273ad2b49f49",
+      "width": 976,
+      "height": 845,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-weather-day-chromium.webp",
+      "sha256": "207be4a027de2f13fba6f7e2ceafd454f7cbdbcbe83270dc5f151000720afa7b",
+      "width": 976,
+      "height": 1119,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-weather-day-webkit.webp",
+      "sha256": "05fb93fd33d09914a1871f5f340ee4d6dcf93136930a075b25bb87630b53592a",
+      "width": 976,
+      "height": 1119,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-weather-night-chromium.webp",
+      "sha256": "663a4175b9f96e111f87fa4e9230ad9cb14bc26a14134b0372e70decf4fe323a",
+      "width": 976,
+      "height": 1119,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/middle-rocks-shared-regression/six-redesign/verified-weather-night-webkit.webp",
+      "sha256": "95c811d3f049f68c0e20ac1557b86b4cb69cb3f06d2f836df24d241e21982598",
+      "width": 976,
+      "height": 1119,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/mole-sources/tcell-204.webp",
       "width": 915,
       "height": 1191,
@@ -25380,6 +27060,710 @@
       "alpha": false,
       "lossless": true,
       "sha256": "ae4437636d0394c7263e8b98aefb98f1a9718e9bdb5d7c64df97c8518488788a"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/before-focus-label.webp",
+      "sha256": "46b8a43de225a863a53169c26f4b32c3a56248c5760921f467f67552e1360478",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/before-range-label.webp",
+      "sha256": "3a6b33dc659496bae957200ec9cff037d1611c24696a3d2663656f086a939530",
+      "width": 1600,
+      "height": 1139,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/chromium-live-concaveMirror-middle.webp",
+      "sha256": "ff13306b66096985a60be973b346385685c9c785c0bb0822d51666f4e9efa48a",
+      "width": 1600,
+      "height": 949,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/chromium-live-convexLens-middle.webp",
+      "sha256": "4a5a4a49cf03440a7b270b5405dd6ce19570389afa750a89ca4abcf5d57380ce",
+      "width": 1600,
+      "height": 949,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/chromium-live-q3.webp",
+      "sha256": "9e9d7d14b0cad97ca1a64c3fa3364f9707f95ca5b773dab75cee609b87e48b5e",
+      "width": 1543,
+      "height": 333,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/chromium-live-q4.webp",
+      "sha256": "242bfee32d4afdceadcb3f244b1d3b3792ed1ca486308aaa4acf7c80b99ec0d9",
+      "width": 1543,
+      "height": 334,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/chromium-live-ray-water-in-0.webp",
+      "sha256": "696768b777cdfbb9c9afd7e2357766201503c764b67c295954c567b4c1381446",
+      "width": 1600,
+      "height": 1139,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/capacitor-chromium.webp",
+      "sha256": "b8a032ccacd9310b8e659e07837144aae37bf58e4de3d33731babcd3015e5e91",
+      "width": 976,
+      "height": 866,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/capacitor-released-chromium.webp",
+      "width": 976,
+      "height": 885,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "4847fbeef02bd950d2ea607f436522f4a691e89ed6f6704737f8eb7e9b27499d"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/chromium-interpretation.webp",
+      "sha256": "eb310115cae8c58260ca4cfbdca8e77fb40dc70426c0abb848301b4637982d15",
+      "width": 843,
+      "height": 526,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/coil-power-chromium.webp",
+      "sha256": "1137e2c3804e1d2c7033d6d71ba140613f9b2275af433a17354d72650d84f397",
+      "width": 976,
+      "height": 900,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/compound-conductivity-chromium.webp",
+      "width": 976,
+      "height": 1573,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "1e562fa0202c885e1ecc54f1d0c1cdda6495cf053bd49b7ec859bbd26480f2a5"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/electrostatic-induction-chromium.webp",
+      "sha256": "7c43885d2733ff6040fb723b2ac36d6cb3e78afec6c9350b025ab1882302cf9c",
+      "width": 976,
+      "height": 822,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/induction-apparatus-chromium.webp",
+      "sha256": "1bcb855f3f237468dff8876d6b4e8828a8d3967cca524c7fa3ee44ab4a0018d5",
+      "width": 976,
+      "height": 852,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/natural-selection-chromium.webp",
+      "sha256": "e4dc0cbf564a12a6e07df920189bbc8fea6fbdeff4a093c750db0793ffb58903",
+      "width": 976,
+      "height": 1196,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/noble-gases-chromium.webp",
+      "sha256": "75beb64f62e12331eaf778b5fd2b47910e69c3c200dd6a6d6bc91d7d5355f8ca",
+      "width": 976,
+      "height": 793,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-concaveLens-far-chromium.webp",
+      "sha256": "1112b93f894497a49664ee3295dd6bcde824b4c8fa3082ed6a57111b2409ef0b",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-concaveLens-middle-chromium.webp",
+      "sha256": "9b86afcad28d93bd7c06af462932efc0a8f035527a515cb671b3ba6e06ca68fb",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-concaveLens-near-chromium.webp",
+      "sha256": "8944e3b4147f2302154d5574db8f69c25af830087e8891d6cceec039cd5b4a25",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-concaveMirror-far-chromium.webp",
+      "sha256": "bc64b062ab14923ac4ddb306144a33d6b5c22cb6f9a12155b4a3f7db4b3a895b",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-concaveMirror-middle-chromium.webp",
+      "sha256": "40cb08fe6a3f3ac93c58899d58cc015c7c4675684071bb393f3c0a20a6cf8be5",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-concaveMirror-near-chromium.webp",
+      "sha256": "733687f56e29d2648be3ed030adef566419ed8032f56bbfa546e7e94b5e63ced",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-convexLens-far-chromium.webp",
+      "sha256": "39aa29e1fa07033cc2027c7fa172af37640bc607bc69810d2a9269f32352e5a3",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-convexLens-middle-chromium.webp",
+      "sha256": "50727784af1dabfc9d8574e5a314e461d2002107f8d85cb83cce2f3128e71d7d",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-convexLens-near-chromium.webp",
+      "sha256": "ffde396608542fb3d01636d66c6d9e4b35dc3631478dc3d6f71e9e7a2c82d796",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-convexMirror-far-chromium.webp",
+      "sha256": "35d64628a8996f21c3f279cb18997d579793ff3ba297676be511e30ae1743997",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-convexMirror-middle-chromium.webp",
+      "sha256": "ba101d9d6521e19861f4d9183c2147cef58ca4b9b192702241b47eff05bf8dd6",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-convexMirror-near-chromium.webp",
+      "sha256": "3753c59d0c7b315cb12ca76f678274d968dd9048f137f7f2dede31f4b69175a2",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-plane-far-chromium.webp",
+      "sha256": "81aea54b202c17ba3b8142cb8df9f6c1cf06d7ad93ea887360312ac3f9785c15",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-plane-middle-chromium.webp",
+      "sha256": "4ba3c08fe0b64b01b942c11fc61c0814f68811c42374d501e5c885717ea8dfb1",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/optics-plane-near-chromium.webp",
+      "sha256": "41eb288055478e9ff656dccb061a2c908b51509b3ccf95490484e9a80a98f183",
+      "width": 976,
+      "height": 789,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/regression/webkit-interpretation.webp",
+      "sha256": "3b4e7298fbf05826863d6c61f445fc5134eb7161a228028a221e7c36e2fe8471",
+      "width": 1348,
+      "height": 842,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/capacitor-chromium.webp",
+      "sha256": "b8a032ccacd9310b8e659e07837144aae37bf58e4de3d33731babcd3015e5e91",
+      "width": 976,
+      "height": 866,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/capacitor-released-chromium.webp",
+      "width": 976,
+      "height": 885,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "4847fbeef02bd950d2ea607f436522f4a691e89ed6f6704737f8eb7e9b27499d"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/capacitor-released-webkit.webp",
+      "width": 976,
+      "height": 885,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "89f39ab2023dd4b3fc526fe5ba92f03beed288878c177e9daad75c47c4d4d5c9"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/capacitor-webkit.webp",
+      "width": 976,
+      "height": 866,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "e61d26ebfbf3a0135d06f42b691319ca3dd541edb1c35ca062feef09b2364d73"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/coil-power-chromium.webp",
+      "sha256": "1137e2c3804e1d2c7033d6d71ba140613f9b2275af433a17354d72650d84f397",
+      "width": 976,
+      "height": 900,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/coil-power-webkit.webp",
+      "sha256": "4978b4ecf2b37fd786d08aedf0ccefa8b0a716e1dc2999ac2f2313b6582504b0",
+      "width": 976,
+      "height": 793,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/compound-conductivity-chromium.webp",
+      "width": 976,
+      "height": 1573,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "1e562fa0202c885e1ecc54f1d0c1cdda6495cf053bd49b7ec859bbd26480f2a5"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/compound-conductivity-webkit.webp",
+      "width": 976,
+      "height": 1580,
+      "alpha": false,
+      "lossless": true,
+      "sha256": "75c666daaf37d93d61b74aa5c80106d92721f42c8915e13399531cfae58093e1"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/electrostatic-induction-chromium.webp",
+      "sha256": "7c43885d2733ff6040fb723b2ac36d6cb3e78afec6c9350b025ab1882302cf9c",
+      "width": 976,
+      "height": 822,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/electrostatic-induction-webkit.webp",
+      "sha256": "0cb18d33ca605778958e878bdeb5a2576ed6e0c5e33e3ecabdb9585fb8d8fb7f",
+      "width": 976,
+      "height": 822,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/induction-apparatus-chromium.webp",
+      "sha256": "1bcb855f3f237468dff8876d6b4e8828a8d3967cca524c7fa3ee44ab4a0018d5",
+      "width": 976,
+      "height": 852,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/induction-apparatus-webkit.webp",
+      "sha256": "2da1c9074bd0902a7c6a4c9246aa09f35390012eaaa3c47d6ccddd8459813672",
+      "width": 976,
+      "height": 852,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/natural-selection-chromium.webp",
+      "sha256": "bd7fbb3dfb7bd5e0cddaa2af8035c2021ec74f41951304e9fd5be9478842d3ee",
+      "width": 976,
+      "height": 1219,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/natural-selection-webkit.webp",
+      "sha256": "1ca6129390343762dd57fa763b29b4bc40d2a771ee80b3057af4cc8574ac91ab",
+      "width": 976,
+      "height": 1219,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/noble-gases-chromium.webp",
+      "sha256": "75beb64f62e12331eaf778b5fd2b47910e69c3c200dd6a6d6bc91d7d5355f8ca",
+      "width": 976,
+      "height": 793,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/noble-gases-webkit.webp",
+      "sha256": "53589892a1975825c618c65a7a4f977ba355a49464a058c1b5b859725eca7c3c",
+      "width": 976,
+      "height": 793,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveLens-far-chromium.webp",
+      "sha256": "b1c98a31a4b2cc3fd9fbd0463193f22fa1e4fa4292356d7d98d63e8d02c9af6f",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveLens-far-webkit.webp",
+      "sha256": "b68650c8f2a2785766dcce7dea35226a8f6fd3611ea021872aabd8a639e3ec92",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveLens-middle-chromium.webp",
+      "sha256": "311b7553e0b550a3a7e785c260fb8cf685c4beba60d55de17f079975075b2e11",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveLens-middle-webkit.webp",
+      "sha256": "a478cb0ae5d33aaa09b0dfd1f41e85ee0de62b26f23af90dcd960edfc8b9682a",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveLens-near-chromium.webp",
+      "sha256": "988d1ef30f72d959bb7ec0fd70fb0086a89966d0b3f3910115d861b294ea982b",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveLens-near-webkit.webp",
+      "sha256": "9d864d5920c205ed899032f29b3d6eff977e6cd2292be7feadc6d94fd9b67934",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveMirror-far-chromium.webp",
+      "sha256": "36c029ac06e364b9ddc92ae40b3289ffa3d9b5782fb161a2730e77f56819fa1d",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveMirror-far-webkit.webp",
+      "sha256": "7265d50f90995f0a85f5715510cdf816c88800e844e4352c01b1c7ce3b5cd06d",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveMirror-middle-chromium.webp",
+      "sha256": "ff912e3168272bb1c18968836ed2d177155fd6929251458f45c8e8c7dd6cf670",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveMirror-middle-webkit.webp",
+      "sha256": "617c02949efc6b0e860c7d0e59a52c3e75d86673701b48e17f4c60d7c4320cb1",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveMirror-near-chromium.webp",
+      "sha256": "51bd3429a821802f5cb30fc289ea0698b99bbc806507e0f2dd60d7574970e260",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-concaveMirror-near-webkit.webp",
+      "sha256": "d2232e15429619ec0021636012edae33acd8429cafd7b750cbf73d6971b1a5b1",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexLens-far-chromium.webp",
+      "sha256": "98631c4f6a91070de75a99878044b56879340c54febbe3af6d5f20ab21d6b85c",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexLens-far-webkit.webp",
+      "sha256": "4342cca526a0e161f6d8b3dc23b81480cc76a5cf48b491d3d92f3057111e6963",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexLens-middle-chromium.webp",
+      "sha256": "6cdc276d1c486919ca9cd98533469fcb03d92abdc6fbfe96e6ba5d8b3fc56bd3",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexLens-middle-webkit.webp",
+      "sha256": "ce77d6ee3912ed75d8818e877444ebd9847046d68da178d31ef70d3568b49931",
+      "width": 976,
+      "height": 759,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexLens-near-chromium.webp",
+      "sha256": "2320ebb93f40c4ceadc2d41f2b1e227d92cdea328e64ab669f7606488c57af9f",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexLens-near-webkit.webp",
+      "sha256": "f412a3454198a5693173057be5acfcf7619701fbf54ac05149c774f20b6ec7d4",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexMirror-far-chromium.webp",
+      "sha256": "0964541cd6c8eb676ed5038b9cc26613691a94bb4d437391032bf2a66948f200",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexMirror-far-webkit.webp",
+      "sha256": "2fb9038923bb7d9e836a0f84ec62a0466c4dbe94e3b8c02b4ab37f5ff9078ed9",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexMirror-middle-chromium.webp",
+      "sha256": "62f2467a5743f6da73d2780c8687e76326f678597763248da7b70e8914879582",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexMirror-middle-webkit.webp",
+      "sha256": "9ede7482066f906b98b753450e91a959e57d9db36cba7b5b71b9216c9a2c9277",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexMirror-near-chromium.webp",
+      "sha256": "393ca01b88deb63c546868cb7cdb636368197c4e980160f6fd423b190c4facc9",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-convexMirror-near-webkit.webp",
+      "sha256": "32763be6680404fda4af538e6eee4835447fcb581177bb686d464dc25c669fe6",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-plane-far-chromium.webp",
+      "sha256": "d95b0a31cafd745f54ecd0ca418cd780842eecd645c95bcf9aaa5c77a62b4c37",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-plane-far-webkit.webp",
+      "sha256": "6b718b44601a3646de7ed1b7fd065f75be014d559fceaf1d44ca1c0d7c6aa5db",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-plane-middle-chromium.webp",
+      "sha256": "13e080116c5a821459dc47e5815332f9f3368c578d93c24fdf092c091978256c",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-plane-middle-webkit.webp",
+      "sha256": "e8cfe97d4c108465103a448625cc68a0267a680ff2af681b7cbfe5ca32458799",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-plane-near-chromium.webp",
+      "sha256": "64043639d6d51e5c90ccb9e5511621cd75f80a54d642fa61bfcd04383622daa9",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/shared-regression/optics-plane-near-webkit.webp",
+      "sha256": "97d718c5ff0735bd27f79f02a296e1c6ed6f9164c449a065e0c5ee03bd1571ff",
+      "width": 976,
+      "height": 788,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-concaveLens-far.webp",
+      "sha256": "ec08fa8c0b2dfedb74db1e5f10b5a2a6a3721fad69c8681af895047af4d00923",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-concaveMirror-middle-390.webp",
+      "sha256": "1947f3980ade8d364ae7434e0c6f9eefe584fe9c4d3114ad23b34ea47e2cc928",
+      "width": 732,
+      "height": 2396,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-concaveMirror-near.webp",
+      "sha256": "ab40f02096ccaa6b25843d0f8c62b47699bc3cde6d48a9af77f112064e2e6f47",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-convexLens-far.webp",
+      "sha256": "c3ef763ce46d9c8f7b29caa873cad16fb1d761d28b9d2a0c45d2ed91602d4d4f",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-convexLens-middle.webp",
+      "sha256": "95fefad2a4c010cc1e806ca56035a667bbd953a092a01c598b13fad91d89798e",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-plane-far.webp",
+      "sha256": "5f62a3e66547470c18c2d3438f3e168f68240c765afb89fb1aede637485f168f",
+      "width": 1440,
+      "height": 2296,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-q3.webp",
+      "sha256": "5830445527a647792c589333d3e02f8fb4dd1a0d100689291608a5eff5226ce9",
+      "width": 1348,
+      "height": 656,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-q4.webp",
+      "sha256": "53b3cee906dd1b953dad68a491080a15e206eee3130228a4a64fb5468f6fbf00",
+      "width": 1348,
+      "height": 842,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-ray-glass-out-40.webp",
+      "sha256": "eff9add0d8501c80a228c0ba67654e10c315a0f1fea23bcfb52d4382c05f901c",
+      "width": 1440,
+      "height": 3210,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/optics/webkit-live-ray-water-in-85.webp",
+      "sha256": "73e8e2921deb8a0d55795550787d57ff3d5ee3d0057bbc131497d6762dbf7c33",
+      "width": 1440,
+      "height": 3210,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/optics-concaveLens-far-chromium.webp",
@@ -25870,6 +28254,246 @@
       "sha256": "7009c5418bf23ae6b4d1006a9bd28887b92823a8013bde058593f131b44112a9"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-boil-mid-768.webp",
+      "sha256": "2b4344eeb14a7dc191295516c2eb66aeeecd58dbeb888de609fe01df27db09eb",
+      "width": 900,
+      "height": 2564,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-bottom-768.webp",
+      "sha256": "9b72a3a1ef6976371251e4e04d63ddc50b67a732973bdab6e153e71e9d14496e",
+      "width": 900,
+      "height": 2720,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-correct-768.webp",
+      "sha256": "3315579a528cb0ba18c890b9ba7df2bca9caa1d1ce3b2642988255e0f8a71c40",
+      "width": 900,
+      "height": 2564,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-freeze-390.webp",
+      "sha256": "b7b7eaa2ff6247216e35f6462f6bee9a0d0fb3663031056c64f86cf1dda9638e",
+      "width": 458,
+      "height": 3530,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-freeze-mid-768.webp",
+      "sha256": "d87db3f92cb41388b00321f64479ed9aefc50d6d8b040eac17122c4429b8b771",
+      "width": 900,
+      "height": 2686,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-freeze-zero-768.webp",
+      "sha256": "f98d689dcea7e92ec06b45020adad27039b120b4bd9ccd4e6d31966fdca58a55",
+      "width": 900,
+      "height": 2693,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-lauric-bath-768.webp",
+      "sha256": "772c719466b5a2a22f40e0d54d4497c792231f9f97ede7265826dd5e69e2d4c6",
+      "width": 900,
+      "height": 2891,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-lauric-mid-768.webp",
+      "sha256": "f71eb4c53f67779ba42f6c91f805ef3672bde1b2af46f62354e77e8d0ecda4f2",
+      "width": 900,
+      "height": 2953,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-lauric-ready-768.webp",
+      "sha256": "af3e9dc0f1b46bee2f05c7e463e557fa6e3aa17b84b1733e8a086e67be3c30e0",
+      "width": 900,
+      "height": 2885,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-live-melt-mid.webp",
+      "sha256": "1da7796895f6e6a009e4818d04bc68b6e16f52a4225b3825aea874b1e57fbf03",
+      "width": 1600,
+      "height": 2398,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-melt-1366.webp",
+      "sha256": "9b44900b8dfa26e7beac77a847cca4f2b24e74e67f9b326184710a2800aa19bd",
+      "width": 1600,
+      "height": 2398,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-melt-mid-768.webp",
+      "sha256": "dac953623b68c5815a5f2e4dcbbc8d8ed4245d3cbf278cdec16d603547557088",
+      "width": 900,
+      "height": 2495,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/chromium-table-768.webp",
+      "sha256": "66ac0dd08fe5ebd36578e1a1fc35cbcf3c2758de55f0ed59878ac62b7cd7d158",
+      "width": 900,
+      "height": 2861,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-boil-mid-768.webp",
+      "sha256": "b6a625a37524247e50264e9aca4757c670d31eb5caf1e23e4f06cb210b13af55",
+      "width": 1440,
+      "height": 4112,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-bottom-768.webp",
+      "sha256": "ea7daa18abcc0ec401ece376964f99795a1b6598354906343395cc156fb76db4",
+      "width": 1440,
+      "height": 4372,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-correct-768.webp",
+      "sha256": "09c72b3a78e6ab727f3608de7adea430a9a5873b96ac3674144ad709aad569fc",
+      "width": 1440,
+      "height": 4112,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-freeze-390.webp",
+      "sha256": "664bdd83dbf56db8d0336cf78fefb76373e6a265a246a151d3f3e49d76bb413f",
+      "width": 732,
+      "height": 5678,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-freeze-mid-768.webp",
+      "sha256": "129bb084644e34ccd0561ef5f5d9a0c667f863fdbfddee7980c968544f38a5c5",
+      "width": 1440,
+      "height": 4318,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-freeze-zero-768.webp",
+      "sha256": "a52df0b52ead18ae13660b984540a418191c421756cdbdb53aa1f27f9189438f",
+      "width": 1440,
+      "height": 4328,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-lauric-bath-768.webp",
+      "sha256": "05fb039d35f0b68e024e6930659a51c67960f364f452d0a5c07046ade349d14c",
+      "width": 1440,
+      "height": 4646,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-lauric-mid-768.webp",
+      "sha256": "77bf2a8f98cdf71d5f14f1f821a618bcb6d6c1307014398f48a00a1df613a019",
+      "width": 1440,
+      "height": 4744,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-lauric-ready-768.webp",
+      "sha256": "fde82c4b090eacdf79a7fb892343f36c7b6b5bcae36f4e12910084a71320356c",
+      "width": 1440,
+      "height": 4636,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-live-correct.webp",
+      "sha256": "09c72b3a78e6ab727f3608de7adea430a9a5873b96ac3674144ad709aad569fc",
+      "width": 1440,
+      "height": 4112,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-live-freeze-mid.webp",
+      "sha256": "129bb084644e34ccd0561ef5f5d9a0c667f863fdbfddee7980c968544f38a5c5",
+      "width": 1440,
+      "height": 4318,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-live-lauric-bath.webp",
+      "sha256": "05fb039d35f0b68e024e6930659a51c67960f364f452d0a5c07046ade349d14c",
+      "width": 1440,
+      "height": 4646,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-live-lauric-mid.webp",
+      "sha256": "784c2f35cc09096a0d1685844c41563a236dca795b21903fa9bef7f6f688bbe9",
+      "width": 1440,
+      "height": 4636,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-live-table.webp",
+      "sha256": "f0a47fbaefa900a12c8e9728db72854a7d72cefaa341527b5fb918f7fa5631af",
+      "width": 1440,
+      "height": 4534,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-melt-1366.webp",
+      "sha256": "0b3fc680a8fab039ddf16a2a6e284e20615e74ed8482a867db2635fd8e3e7fbf",
+      "width": 2560,
+      "height": 3846,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-melt-mid-768.webp",
+      "sha256": "74322bd41b6156a2b4c9b735c93deb3577470c3500196f7bd566badd542dadf8",
+      "width": 1440,
+      "height": 4002,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-curves/webkit-table-768.webp",
+      "sha256": "77ae3de7f0338451f1dbb36eff47f14ce869b8cc98f07a94ee877236c28dbf28",
+      "width": 1440,
+      "height": 4588,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/phase-mass-sources/3630e303237d192e-127.webp",
       "width": 715,
       "height": 936,
@@ -26270,6 +28894,190 @@
       "sha256": "800785e535dff24c86ce478d950a9a767072b20ea2ba1bb5238a5eda0669481c"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-conscious-none-5-390.webp",
+      "sha256": "eb922e22e1d4f1c2714f4d63a80001d042903c2162adda523ffd506936d778ac",
+      "width": 458,
+      "height": 2236,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-knee-motor-5-768.webp",
+      "sha256": "a3236c74c7cb53a61049851069bfaee31dbab065706fdf6ceeb7d2a9507777cf",
+      "width": 900,
+      "height": 2145,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-knee-none--1-768.webp",
+      "sha256": "2e8728c649dbb68351d08d32f5f1ce4dfa9b7b1d211bb309b62f32c6379dd021",
+      "width": 900,
+      "height": 2145,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-knee-none-5-768.webp",
+      "sha256": "09a0565c4fa4f038a63692a0b3a24c7d917b498cab9e63e6ba60ad5a63498284",
+      "width": 900,
+      "height": 2145,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-latency-question.webp",
+      "sha256": "dec0a7c97543222f2992b2b0704ebdbb87a306b414d7498497b4d0d25d5447df",
+      "width": 674,
+      "height": 454,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-leg-none-3.5-768.webp",
+      "sha256": "9474dc0cb438f802fb9456021963121bf6a1de1d514a0f6aa988ee0e62faebdf",
+      "width": 900,
+      "height": 2145,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-live-knee-none--1.webp",
+      "sha256": "503b4484f0a130a25ea8a9381672c986eced1a2786625a41444a2f2cad3a729f",
+      "width": 1600,
+      "height": 1445,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-live-knee-none-5.webp",
+      "sha256": "9cf88e148d7df2455aac94521479f2c067a53a1d09d0c8642f9747d231c84876",
+      "width": 1600,
+      "height": 1445,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-live-latency-question.webp",
+      "sha256": "35b9b6d5ba17ac419e7fd339e5ef644dae950b1ee586e35fcfc4506925d79c3c",
+      "width": 1543,
+      "height": 375,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/chromium-pupil-none-5-768.webp",
+      "sha256": "6ed01148d757acad84bc868ae309197ace20b775f23ee22c4256a24b72d7dbad",
+      "width": 900,
+      "height": 2145,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-conscious-none-5-390.webp",
+      "sha256": "adcb0f46930d416279415b65b6c93525f7e7136f4f35107575a9fe84e0fba71c",
+      "width": 732,
+      "height": 3594,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-knee-motor-5-768.webp",
+      "sha256": "761267dfe1daa88620f5dbbca34ebf1afdc2e54a58ad2d19f80a64ec0f9e0a95",
+      "width": 1440,
+      "height": 3448,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-knee-none--1-768.webp",
+      "sha256": "f07a95a15194e6952015400405c5f212c939055d9760979024780a81caaff743",
+      "width": 1440,
+      "height": 3448,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-knee-none-5-768.webp",
+      "sha256": "b453a4e3ecfb24cebc42c285f414892eef9a452ee61dd490ffa1985b21bb02b9",
+      "width": 1440,
+      "height": 3448,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-latency-question.webp",
+      "sha256": "f511895e7dcf65a4796458626d2f1762879f38702556a5e6c3282776cb35e624",
+      "width": 674,
+      "height": 455,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-leg-none-3.5-768.webp",
+      "sha256": "6539a6cda06eb91deb376ac6ac16d79e57b52df5b401cfd2d091b05c4ce396fa",
+      "width": 1440,
+      "height": 3448,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-live-knee-motor-5.webp",
+      "sha256": "71178528c3a2a36f27cb10e509993cfbdca0ff443881421d2a77d6fc96f8ecaa",
+      "width": 1440,
+      "height": 3472,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-live-knee-sensory-5.webp",
+      "sha256": "57855f6fc6efc7a6b2630b60345be33842a1ba9e5b899fddebc7ab5f265e9a5c",
+      "width": 1440,
+      "height": 3472,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-live-latency-question.webp",
+      "sha256": "afe58572360594ed4a66d10cb9ca7572b6d297794d9993e099e4ae2d6dc15d3f",
+      "width": 1348,
+      "height": 850,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-live-leg-none-3.5.webp",
+      "sha256": "82a489b62d66b5dc95dc9ce54a45afb6f893ba35c4a40c7d8e93b99a9c039a14",
+      "width": 1440,
+      "height": 3472,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-live-pupil-none--1.webp",
+      "sha256": "2d409ca9bbcb241145def731192fa86262226964ba4788c80b3fc2837cac4c9d",
+      "width": 1440,
+      "height": 3472,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-live-pupil-none-5.webp",
+      "sha256": "c27f6562dc67170496b6fcea0f3c307b3c7815205b4a439a07ab6a062a394763",
+      "width": 1440,
+      "height": 3472,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/reflex-nerve/webkit-pupil-none-5-768.webp",
+      "sha256": "581508b49b96ac764b6b178f318ecc7e261b9e9033a17ecdec69695a0a37ec3f",
+      "width": 1440,
+      "height": 3448,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/regression/photosynthesis-chromium-1366.webp",
       "width": 1280,
       "height": 1216,
@@ -26614,6 +29422,118 @@
       "sha256": "93fa4afffd9e77983550b185c595e230effffa2a0ae22d0f6e5da3560469ee00"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-difference-768.webp",
+      "sha256": "de20d2f51966c74d1a4b2314981527e828f7777a65fad9b7f321efe3802f5a00",
+      "width": 900,
+      "height": 2490,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-initial-1366.webp",
+      "sha256": "b3e9aee29d68d259995fd4e42d79aed6543bc8bd32e0c744a8ec427d87e5bee7",
+      "width": 1600,
+      "height": 2406,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-land-768.webp",
+      "sha256": "6a65163d08b7890538c5433682fdcaae01f81d612a6b270169bc266cab7d1286",
+      "width": 900,
+      "height": 3151,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-solomon-768.webp",
+      "sha256": "a1fe8ef45c36853108ee95e76ada36f14ee4609a0890aa73153086bfef2401c1",
+      "width": 900,
+      "height": 3069,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-sydney-768.webp",
+      "sha256": "b524bcdd7f30185dea06fd9eb05a625803f4f0b1aad08e44cb78e84de56400ae",
+      "width": 900,
+      "height": 3069,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-sydney-diff-390.webp",
+      "sha256": "628b864aa1611d0f35fecc9bbe852cc081c1c3792f79de4e193fd7ce0ad00c99",
+      "width": 458,
+      "height": 2829,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/chromium-years-768.webp",
+      "sha256": "0c71df4d2ab59635f465045bf21c0dca8e19ab0909ef0b5dfdd34c0dea0d0efc",
+      "width": 900,
+      "height": 3151,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-difference-768.webp",
+      "sha256": "d1ab22536b75bb99083f99bc5c508d3bbe13dce509860b1df5ee8cf8b4226c35",
+      "width": 1440,
+      "height": 3998,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-initial-1366.webp",
+      "sha256": "5668eedb4582441be1d89378b070d01ac0757a516bf4950db89c98b1c905b595",
+      "width": 2560,
+      "height": 3864,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-land-768.webp",
+      "sha256": "376e6abec9fc0191b0f9140b69a145e0da70ce904248a89328f494a625cc3b1d",
+      "width": 1440,
+      "height": 5056,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-solomon-768.webp",
+      "sha256": "3c93831b97dbc8ea660bf308d8f7ec0c37b15b6b469c5348c861db301906744f",
+      "width": 1440,
+      "height": 4924,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-sydney-768.webp",
+      "sha256": "a83dffd24c7fa05bfe82c7d72497dc9c9abb30691d8a3de61045b7eb5c5156ad",
+      "width": 1440,
+      "height": 4924,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-sydney-diff-390.webp",
+      "sha256": "566f05934e1411cfc5d9f47482f762e4dfd1a8bf88fc4ec09351490c5ce656a6",
+      "width": 732,
+      "height": 4554,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/satellite-sea-temperature/webkit-years-768.webp",
+      "sha256": "a9358da7f0a9704e8e05edaeb7f63d4b3ecc191a650170f3c2ad24ae735a5980",
+      "width": 1440,
+      "height": 5056,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/science-career-chromium-1024.webp",
       "width": 980,
       "height": 3165,
@@ -26756,6 +29676,86 @@
       "alpha": false,
       "lossless": true,
       "sha256": "7e4ad819c8c06a7b5d3ce4f4c38ba19535e9d503ee289fe7f77a9232a7296314"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/chromium-autumn-zoom-768.webp",
+      "sha256": "d9c07bbd842835808004d3d8c5adc7894032908a8d8eb78fcdd62e8ac2d34548",
+      "width": 900,
+      "height": 1790,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/chromium-spring-day-768.webp",
+      "sha256": "bc2d322bb47103c2121e43d761ae2c0503b6bd0b476b8f404b7eb1e6baef08ba",
+      "width": 900,
+      "height": 1790,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/chromium-spring-night-390.webp",
+      "sha256": "60821189a9d56643cfdc224c0beb45d414ab4b7cd8b7012fe244efe5b32ad63f",
+      "width": 458,
+      "height": 2343,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/chromium-summer-night-768.webp",
+      "sha256": "418dcfed842d15f7b5d49f4e19bd43f5df1e848b8f5f4cd3937dae422944709f",
+      "width": 900,
+      "height": 1790,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/chromium-winter-compare-1366.webp",
+      "sha256": "e850bbbb455b1cf71e550e20d3e2940f723dc50f109f1bc57abc574fc1798764",
+      "width": 1600,
+      "height": 1669,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/webkit-autumn-zoom-768.webp",
+      "sha256": "30d4c819377518a5b48ac5a13f4f94b9247b9d61b5489a684ace7f8602453fac",
+      "width": 1440,
+      "height": 2882,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/webkit-spring-day-768.webp",
+      "sha256": "3ab06ea4f482a91702240dbed9ff3880977ff3a0403eee42dc96f8e099f65082",
+      "width": 1440,
+      "height": 2882,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/webkit-spring-night-390.webp",
+      "sha256": "06f3abec89833cc72517bffc613627744b73b41fc929d827f00792ff2a9d9b64",
+      "width": 732,
+      "height": 3792,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/webkit-summer-night-768.webp",
+      "sha256": "3c863bf99d04d8455d4aaa5797c84516c59b2720944f96579145a3c5d561bebd",
+      "width": 1440,
+      "height": 2882,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/seasonal-sky/webkit-winter-compare-1366.webp",
+      "sha256": "99308ace800d7f59667c6f6d08aabc8cf5884896a905f6522ba235c85ad3499f",
+      "width": 2560,
+      "height": 2672,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/sensor-chromium-1024.webp",
@@ -27644,6 +30644,86 @@
       "alpha": false,
       "lossless": true,
       "sha256": "e98c948efcaab04a2376e5b518f26713ac187ec4c7dd0637a65513d2ada8a1e0"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/chromium-andes-768.webp",
+      "sha256": "0c239289b5236203168a8a486f88131234675517c5296109f319300a3932a565",
+      "width": 900,
+      "height": 2133,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/chromium-atlantic-390.webp",
+      "sha256": "cd76804fa0e530567b06b90ca5282c95f12614103febfcf42b71dd4a64e52d2b",
+      "width": 458,
+      "height": 3138,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/chromium-japan-768.webp",
+      "sha256": "8c74e7a67b92296ee718a869d2e2a3fe1a6b700d628563e677f26b9bf14ee13e",
+      "width": 900,
+      "height": 2133,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/chromium-volcano-selected-768.webp",
+      "sha256": "94a519fc9b0abed646ca74ec3ee0a29cb32f906f2f70d50a1bd5607b82b1868b",
+      "width": 900,
+      "height": 2033,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/chromium-world-all-1366.webp",
+      "sha256": "996e97bbf40effc5dcfe7e45b23acf0a41c264b74eaafdad489aa6e697a29359",
+      "width": 1600,
+      "height": 2215,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/webkit-andes-768.webp",
+      "sha256": "529d183a0f06d4d5a3483ef74d8adc6c07516093812440260c69da035eeb26eb",
+      "width": 1440,
+      "height": 3434,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/webkit-atlantic-390.webp",
+      "sha256": "0dfff213e3824ffda46dcb5c96dad90bba8d8dd6894b1fd1daef35f501a49aea",
+      "width": 732,
+      "height": 5068,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/webkit-japan-768.webp",
+      "sha256": "66d879fcb2c54972a0731efd621463185e5286cb98c07fb0df0a62f0e3e3631e",
+      "width": 1440,
+      "height": 3434,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/webkit-volcano-selected-768.webp",
+      "sha256": "208f341347789d7cb847f6149646c3725d0355e3ab6c0dfc86241492c4e2c4ec",
+      "width": 1440,
+      "height": 3274,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/tectonic-data/webkit-world-all-1366.webp",
+      "sha256": "a70eddffd82029f3dfa667bd3efd5306fe5d608185e52ddcfba89072132cacc8",
+      "width": 2560,
+      "height": 3566,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-basalt-1366.webp",
@@ -28979,6 +32059,158 @@
       "width": 728,
       "height": 533,
       "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/galactic-objects/crescent.webp",
+      "sha256": "0747bc703d8486203291e91276d88ed5f382eb42b6523dc7540055e495c83c58",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/galactic-objects/m44.webp",
+      "sha256": "6710f3ffd189a148baeaf64cd041f455109c0469d00bde2ae651a8b7ed3a9bde",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/galactic-objects/m5.webp",
+      "sha256": "ed3349bbdf332c81042ee457bea51a9783d341c102a70e06581ad2a56594f923",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/galactic-objects/shark.webp",
+      "sha256": "a70db760c24e7884c74796f7b7a2c7eab57a015b10f443d40dc3917b16d7fad6",
+      "width": 1024,
+      "height": 1024,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/galactic-objects/witch.webp",
+      "sha256": "d374cbf7624b990bd811cd51adafa85ae8c9215c515deae4774d9ca929f2fb1b",
+      "width": 1536,
+      "height": 1536,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/basalt.webp",
+      "sha256": "25633cd6e3beebaf729798edfde44c1eb5edd2f30a770d498e61e2d444d79a75",
+      "width": 440,
+      "height": 344,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/biotite.webp",
+      "sha256": "49f7c141eb325634d951b0a7a99599470a50b6823bb3e7269bd781775767ca2f",
+      "width": 527,
+      "height": 310,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/calcite.webp",
+      "sha256": "9556e6f882d004b400457759692e9acdf000c99ac23140714983f14c4f60aa51",
+      "width": 375,
+      "height": 347,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/conglomerate.webp",
+      "sha256": "b13dd9f62b4de2b13668dd6869bbb02c4d5644ce7ea27be7231a729e50af082d",
+      "width": 523,
+      "height": 408,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/feldspar.webp",
+      "sha256": "0f08cb5a8d1fea877615233158cfa8c39c2e2f74b8a29dbfc303111d14a6f646",
+      "width": 348,
+      "height": 355,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/gabbro.webp",
+      "sha256": "efca3e2fe6844396b04e51d0e7a06260cc639ff09c4dbb4ada9c74ef7acac8e1",
+      "width": 423,
+      "height": 331,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/gneiss.webp",
+      "sha256": "5492496da276d2ceffd6a85b3c7ae296c0b1075b00b73483c6d779f7c3e6bfa0",
+      "width": 422,
+      "height": 308,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/granite.webp",
+      "sha256": "0eaa65685339b91257c26b69e5692dee4526ee4770762766bebbba097227bc41",
+      "width": 470,
+      "height": 341,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/limestone.webp",
+      "sha256": "3890256022a7dc056fc03894ad935ada324486d3e4a3e1b579c6137ce8367f5d",
+      "width": 466,
+      "height": 408,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/magnetite.webp",
+      "sha256": "c5ca48089f5cbc2fb8e377dbbb408a4515f1202032c04407577d135dacd75a2a",
+      "width": 406,
+      "height": 377,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/marble.webp",
+      "sha256": "fbe60a95cc8509ea9cd6575474dff2889f172d5b6f1fc99a999cb154bfa237b9",
+      "width": 422,
+      "height": 363,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/quartz.webp",
+      "sha256": "9cb4b16c2e18f0231709ae906cc51d02e785d842cd697a301afacfbdbbf283c2",
+      "width": 383,
+      "height": 384,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/rhyolite.webp",
+      "sha256": "27898fbc5ed02b55fa7e2a224b6664bbeb40fb0d5c14ce91ba5f624fe42d0214",
+      "width": 436,
+      "height": 303,
+      "alpha": true,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/minerals-rocks/photos/sandstone.webp",
+      "sha256": "ec8bb75648ceae31cd5caf5c5f1ba31d43d4c762391c85bf578c0cc6921f55d1",
+      "width": 473,
+      "height": 393,
+      "alpha": true,
       "lossless": true
     },
     {

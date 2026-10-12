@@ -117,3 +117,19 @@ module.exports.push(require('./science-hr-diagram-experiment.cjs'));
 module.exports.push(require('./science-kepler-data-experiment.cjs'));
 
 module.exports.push(require('./science-element-origin-experiment.cjs'));
+
+module.exports.push(require('./science-seasonal-sky-experiment.cjs'));
+module.exports.push(require('./science-equilibrium-data-experiment.cjs'));
+module.exports.push(require('./science-middle-rocks-experiment.cjs'));
+
+module.exports.push(require('./science-tectonic-data-experiment.cjs'));
+
+module.exports.push(require('./science-argo-experiment.cjs'));
+module.exports.push(require('./science-sst-experiment.cjs'));
+
+module.exports.push(require('./science-galactic-experiment.cjs'));
+module.exports.push(require('./science-phase-curves-experiment.cjs'));
+
+module.exports.push(require('./science-acid-mixing-experiment.cjs'));
+
+module.exports.push(require('./science-iodine-clock-experiment.cjs'));
