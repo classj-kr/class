@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T16:04:03.994Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "strata-correlation",
+      "scenarios": 45
+    }
+  ],
+  "scenarios": 45,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

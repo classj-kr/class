@@ -73,7 +73,7 @@
 .curve { fill: none; stroke-width: 2.6; }
 .curve.kno3 { stroke: #0284c7; }
 .curve.nacl { stroke: #d97706; }
-.curve.dim { opacity: .3; stroke-width: 1.8; }
+.curve.dim { opacity: 1; stroke-width: 2; stroke-dasharray: 6 4; }
 .curve-tag { font-size: 14px; font-weight: 900; }
 .drop-line { stroke: var(--mint); stroke-width: 2; stroke-dasharray: 5 4; }
 .drop-text { fill: var(--mint); font-size: 14px; font-weight: 900; }

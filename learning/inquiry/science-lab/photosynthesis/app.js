@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Three CO₂ levels at the current temperature: they lie on top of one
         // another while light is scarce, then split where CO₂ takes over.
-        const tags = [[25, '#4a7fd6'], [50, '#0284c7'], [100, '#a8ecff']].map(([c, col]) => {
+        const tags = [[25, '#4a7fd6'], [50, '#0284c7'], [100, '#276a60']].map(([c, col]) => {
             const pts = [];
             for (let L = 0; L <= 100; L += 1) pts.push(`${gx(L).toFixed(1)},${gy(analyse(L, c, temp()).rate).toFixed(1)}`);
             const isCurrent = Math.abs(c - co2()) < 3;
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tags[0].y < lo) shift = lo - tags[0].y;
         if (tags[tags.length - 1].y + shift > hi) shift = hi - tags[tags.length - 1].y;
         tags.forEach(t => {
-            out += `<text class="curve-tag" fill="${t.col}" opacity="${t.isCurrent ? 1 : .55}" ` +
+            out += `<text class="curve-tag" fill="${t.col}" ` +
                    `x="${GRAPH.x1 - 4}" y="${(t.y + shift).toFixed(1)}" text-anchor="end">CO₂ ${t.c}</text>`;
         });
         // where the current setting stops being light-limited

@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-10-12T14:32:51.601Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "light-shadow",
+      "scenarios": 40
+    },
+    {
+      "slug": "refraction",
+      "scenarios": 40
+    },
+    {
+      "slug": "lever-balance",
+      "scenarios": 35
+    },
+    {
+      "slug": "motion-energy",
+      "scenarios": 40
+    },
+    {
+      "slug": "ohms-law",
+      "school": "middle",
+      "scenarios": 55
+    },
+    {
+      "slug": "ohms-law",
+      "school": "high-elective",
+      "scenarios": 125
+    },
+    {
+      "slug": "energy-conversion",
+      "scenarios": 60
+    },
+    {
+      "slug": "weight-compare",
+      "scenarios": 30
+    },
+    {
+      "slug": "density-buoyancy",
+      "scenarios": 55
+    },
+    {
+      "slug": "state-change",
+      "scenarios": 40
+    },
+    {
+      "slug": "diffusion",
+      "scenarios": 35
+    },
+    {
+      "slug": "solubility",
+      "scenarios": 25
+    },
+    {
+      "slug": "flame-ions",
+      "scenarios": 30
+    },
+    {
+      "slug": "acid-base",
+      "scenarios": 35
+    },
+    {
+      "slug": "mass-ratio",
+      "scenarios": 35
+    },
+    {
+      "slug": "burning-conditions",
+      "scenarios": 50
+    },
+    {
+      "slug": "cell-membrane",
+      "scenarios": 55
+    },
+    {
+      "slug": "pea-genetics",
+      "scenarios": 35
+    },
+    {
+      "slug": "volcano-model",
+      "scenarios": 40
+    },
+    {
+      "slug": "weather-front",
+      "scenarios": 35
+    },
+    {
+      "slug": "seasons",
+      "scenarios": 60
+    },
+    {
+      "slug": "cell-structure",
+      "scenarios": 55
+    },
+    {
+      "slug": "neutralization-common",
+      "scenarios": 50
+    }
+  ],
+  "scenarios": 1060,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Pretendard",
+    "Noto Serif KR"
+  ]
+}

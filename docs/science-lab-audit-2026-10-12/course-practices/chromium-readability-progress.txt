@@ -178,3 +178,5 @@ chromium: liquid-heat / 3877 screen states
 chromium: phase-mass / 3976 screen states
 chromium: rotating-disc / 3987 screen states
 chromium: quadrat-community / 3995 screen states
+chromium: ph-comparison / 4040 screen states
+{"engine":"chromium","deviceProfile":"chromebook-scale","routes":181,"scenarios":4040,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR","Pretendard"],"errors":[]}

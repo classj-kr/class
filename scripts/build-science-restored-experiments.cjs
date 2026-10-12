@@ -46,6 +46,9 @@ stages['rotating-disc']=require('./science-rotating-disc-stage.cjs');
 stages['quadrat-community']=require('./science-quadrat-community-stage.cjs');
 stages['ph-comparison']=require('./science-ph-comparison-stage.cjs');
 stages.microbes=require('./science-microbe-observation-stage.cjs');
+stages['equilibrium-colour']=require('./science-equilibrium-colour-stage.cjs');
+stages['cell-structure']=require('./science-cell-observation-stage.cjs');
+stages['strata-correlation']=require('./science-strata-correlation-stage.cjs');
 function output(file,body){const normalized=s=>s.replace(/\r\n/g,'\n').replace(/\?v=[\w.-]+/g,'');const old=fs.existsSync(file)?fs.readFileSync(file,'utf8'):null;if(process.argv.includes('--check'))assert.equal(old===null?null:normalized(old),normalized(body));else if(old===null||normalized(old)!==normalized(body)){fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);}}
 for(const row of rows){
  const school=row.defaultContext||(row.codes.every(c=>c.startsWith('10'))?'high-common':row.codes.every(c=>c.startsWith('12'))?'high-elective':null);

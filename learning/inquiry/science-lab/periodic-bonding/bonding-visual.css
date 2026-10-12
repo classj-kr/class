@@ -72,9 +72,9 @@
 .grid-line { stroke: #e2e8f0; stroke-width: 1; stroke-width: 1; }
 .axis-text { fill: #334155; font-size: 14px; font-weight: 800; }
 .axis-title { fill: #0f172a; font-size: 14px; font-weight: 900; }
-.trace { fill: none; stroke-width: 2; stroke: rgba(148, 163, 184, 0.40); }
-.trace-dot { stroke: rgba(0, 0, 0, .4); stroke-width: 1; }
-.trace-dot.chosen { stroke: #fff; stroke-width: 2; }
+.trace { fill: none; stroke-width: 2; stroke: #507b8b; }
+.trace-dot { stroke: #48636f; stroke-width: 1; }
+.trace-dot.chosen { stroke: #173f50; stroke-width: 2; }
 
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 
@@ -83,12 +83,12 @@
 .orbit-toggle { min-height: 40px; padding: 7px 12px; border: 1px solid #b9cbd6; border-radius: 8px; background: #fff; color: #34566b; font: inherit; font-size: 13px; cursor: pointer; }
 .orbit-toggle:focus-visible { outline: 3px solid #0284c7; outline-offset: 2px; }
 .orbit-toggle[aria-pressed="true"] { background: #edf5f9; }
-.shell { fill: none; stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.1; }
-.shell.outer { stroke: rgba(217, 119, 6, .7); stroke-width: 1.4; }
-.shell.empty { stroke-dasharray: 3 3; stroke: rgba(148, 163, 184, 0.40); }
+.shell { fill: none; stroke: #6a8797; stroke-width: 1.1; }
+.shell.outer { stroke: #b45309; stroke-width: 1.4; }
+.shell.empty { stroke-dasharray: 3 3; stroke: #6a8797; }
 .ion-body { stroke: rgba(255, 255, 255, .5); stroke-width: 1.2; }
-.nucleus { fill: #c9756b; stroke: rgba(255, 255, 255, .55); stroke-width: 1; }
-.nucleus-text { fill: #fff; font-size: 13.5px; font-weight: 900; }
+.nucleus { fill: #e1aca6; stroke: #965650; stroke-width: 1; }
+.nucleus-text { fill: #143c4a; font-size: 13.5px; font-weight: 900; }
 .electron { fill: #0284c7; stroke: rgba(0, 0, 0, .45); stroke-width: .6; }
 .electron.moving { fill: #c2410c; }
 .electron.shared { fill: #059669; }
@@ -97,8 +97,10 @@
 .cell-head { font-size: 13.5px; font-weight: 800; fill: #475569; }
 .charge-text { font-size: 14px; font-weight: 900; fill: #c2410c; }
 .attract { stroke: #d97706; stroke-width: 1.4; fill: none; }
-.bar { stroke: rgba(255, 255, 255, .25); stroke-width: .8; }
-.bar.chosen { stroke: #fff; stroke-width: 2; }
+.bar { stroke: #47646f; stroke-width: .8; }
+.bar.chosen { stroke: #173f50; stroke-width: 2; }
+.burn-stage :is(.verdict-text,.big-text){fill:#9b4c0b!important}
+.burn-stage .trait-text{fill:#334155!important}
 
 .stage-verdict { margin: 4px 0 0; font-size: 15px; font-weight: 900; color: #b45309; line-height: 1.4; }
 .stage-verdict:empty { display: none; }

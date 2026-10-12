@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="cell" x="${x}" y="${y}" width="${CW}" height="${CH}" fill="${mine ? GROUP_COLOR[e.group] : same ? GROUP_COLOR[e.group] + '55' : 'rgba(148,163,184,.18)'}"/>`;
             out += `<text class="cell-text" style="fill:${mine ? '#0a1c24' : '#0f172a'}" x="${x + CW / 2}" y="${y + CH / 2 + 3}" text-anchor="middle">${e.sym}</text>`;
         });
-        out += `<text class="small-label" x="${TX}" y="${TY + 4 * CH + 14}">같은 세로줄(족) = 같은 바깥 전자 수</text>`;
+        out += `<text class="small-label" x="${TX}" y="${TY + 4 * CH + 14}">18족: He는 2개, Ne·Ar은 8개</text>`;
         // verdict
         if (p >= 0.9) {
             const IONX = 372;
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${el.name} (${el.sym}) · 원자 번호 ${el.z} · ${el.period}주기 ${el.group}족</text>`;
         }
-        out += `<text class="note-text" x="20" y="208">${lost || gained ? '가장 바깥 껍질이 비활성 기체처럼 가득 차는 쪽으로 전자를 잃거나 얻습니다' : el.why === 'noble' ? '바깥 껍질이 가득 차 있어 전자를 잃거나 얻을 까닭이 없습니다' : '4개를 잃기도 얻기도 힘들어 다른 원자와 전자를 함께 씁니다'}</text>`;
+        out += `<text class="note-text" x="20" y="208">${lost || gained ? '가장 바깥 껍질이 비활성 기체처럼 가득 차는 쪽으로 전자를 잃거나 얻습니다' : el.why === 'noble' ? '바깥 껍질이 가득 차 있어 전자를 잃거나 얻을 까닭이 없습니다' : '다른 원자와 전자를 함께 쓰는 공유 결합을 살펴봅니다'}</text>`;
         return out;
     }
 
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function graphElements(a) {
         const X0 = 40, X1 = 440, Y0 = 140, Y1 = 40;
         const xOf = z => X0 + (z - 1) / 19 * (X1 - X0), yOf = v => Y0 - v / 8 * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">가장 바깥 껍질의 전자 수 — 8개가 되면 다음 가로줄로 넘어간다</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">바깥 껍질 전자 수 — 1주기는 2개, 2·3주기는 8개까지</text>`;
         for (let v = 0; v <= 8; v += 2) {
             out += `<line class="grid-line" x1="${X0}" y1="${yOf(v).toFixed(1)}" x2="${X1}" y2="${yOf(v).toFixed(1)}"/>`;
             out += `<text class="axis-text" x="${X0 - 6}" y="${(yOf(v) + 3.5).toFixed(1)}" text-anchor="end">${v}</text>`;
@@ -299,12 +299,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ELEMENTS.forEach(e => {
             const mine = e.z === a.el.z, same = e.group === a.el.group;
             out += `<circle class="trace-dot ${mine ? 'chosen' : ''}" fill="${same ? GROUP_COLOR[e.group] : '#64748b'}" cx="${xOf(e.z).toFixed(1)}" cy="${yOf(valence(e)).toFixed(1)}" r="${mine ? 5 : 3.2}"/>`;
-            out += `<text class="axis-text" style="fill:${same ? GROUP_COLOR[e.group] : '#475569'};font-size:${e.sym.length > 1 ? 8.5 : 9.5}px" x="${xOf(e.z).toFixed(1)}" y="${Y0 + 13}" text-anchor="middle">${e.sym}</text>`;
+            out += `<text class="axis-text" style="fill:#334155;font-size:${e.sym.length > 1 ? 8.5 : 9.5}px" x="${xOf(e.z).toFixed(1)}" y="${Y0 + 13}" text-anchor="middle">${e.sym}</text>`;
         });
         [[1, 2], [3, 10], [11, 18], [19, 20]].forEach(([z0, z1], n) => {
             out += `<text class="small-label" x="${((xOf(z0) + xOf(z1)) / 2).toFixed(1)}" y="${Y0 + 28}" text-anchor="middle">${n + 1}주기</text>`;
         });
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 46}" text-anchor="middle">원자 번호 순서 — 색이 같은 점이 ${a.el.name}과 같은 족 (바깥 전자 ${a.v}개)</text>`;
+        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 46}" text-anchor="middle">${a.el.group === 18 ? '18족의 바깥 전자 — He 2개 · Ne·Ar 8개' : `원자 번호 순서 — 색이 같은 점은 ${a.el.group}족 (바깥 전자 ${a.v}개)`}</text>`;
         return out;
     }
 
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${PX}" y="66">${p.name}${p.note ? ` (${p.note})` : ''}</text>`;
         out += `<text class="trait-text" x="${PX}" y="86">결합: ${shown ? (ionic ? '이온 결합' : '공유 결합') : '?'}</text>`;
         out += `<text class="trait-text" x="${PX}" y="102">상온: ${shown ? p.state : '?'}</text>`;
-        out += `<text class="trait-text" x="${PX}" y="118">녹는점: ${shown ? meltText(p) : '?'}</text>`;
+        out += `<text class="trait-text" x="${PX}" y="118">${p.sublimes ? '승화점' : '녹는점'}: ${shown ? meltText(p) : '?'}</text>`;
         out += `<text class="trait-text" x="${PX}" y="134">전기: ${shown ? (ionic ? '고체 ✗ · 녹인 액체 ✓' : '흐르지 않음') : '?'}</text>`;
         if (shown && ionic) out += `<text class="trait-text" x="${PX}" y="150">${p.aq === 'yes' ? '물에 풀면 ✓' : p.aq === 'insoluble' ? '물에 거의 안 녹음' : '물과 만나면 반응'}</text>`;
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${shown ? (a.same ? `${a.A.name} 원자 2개 → ${p.formulaHtml} (공유 결합, 전자 ${a.pairs}쌍 함께 씀)` : `${a.A.name} ${a.na}개 : ${a.B.name} ${a.nb}개 → ${p.formulaHtml} (${ionic ? '이온 결합' : '공유 결합'})`) : `${a.A.name}(${a.A.sym})${a.same ? ' 원자 둘이' : `${pWa(a.A.name)} ${a.B.name}(${a.B.sym})${pIga(a.B.name)}`} 만난다`}</text>`;
@@ -450,12 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return out;
     }
 
-    // melting points of the eight, above and below the 0 ℃ line
+    // One linear temperature scale; the CO2 endpoint is sublimation at 1 atm.
     function graphBonds(a) {
-        const X0 = 50, X1 = 440, YZ = 122, YTOP = 36, YBOT = 134;
+        const X0 = 50, X1 = 440, YZ = 122, YTOP = 36, SCALE = (YZ - YTOP) / 3000, YBOT = YZ + 300 * SCALE;
         const keys = [...IONIC_KEYS, ...COVALENT_KEYS];
-        const yOf = m => m >= 0 ? YZ - m / 3000 * (YZ - YTOP) : YZ - m / 300 * (YBOT - YZ);
-        let out = `<text class="axis-title" x="${X0}" y="18">녹는점 — 노란 막대는 이온 결합, 파란 막대는 분자</text>`;
+        const yOf = m => YZ - m * SCALE;
+        let out = `<text class="axis-title" x="${X0}" y="18">상태 변화 온도 — 주황: 이온 결합 · 파랑: 분자</text>`;
         out += `<text class="axis-text" x="${X1}" y="18" text-anchor="end">℃</text>`;
         [0, 1000, 2000, 3000].forEach(m => {
             out += `<line class="grid-line" x1="${X0}" y1="${yOf(m).toFixed(1)}" x2="${X1}" y2="${yOf(m).toFixed(1)}"/>`;
@@ -466,14 +466,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const W = 30, step = (X1 - X0 - 10) / keys.length;
         keys.forEach((k, n) => {
             const p = PAIRS[k], x = X0 + 8 + n * step;
-            const y = yOf(p.melt), top = Math.min(y, YZ), h = Math.max(1.5, Math.abs(YZ - y));
+            const y = yOf(p.melt), top = Math.min(y, YZ), h = Math.abs(YZ - y);
             const mine = k === state.pair;
-            out += `<rect class="bar ${mine ? 'chosen' : ''}" fill="${p.bond === 'ionic' ? '#d97706' : '#0284c7'}" opacity="${mine ? 1 : 0.6}" x="${x.toFixed(1)}" y="${top.toFixed(1)}" width="${W}" height="${h.toFixed(1)}" rx="2"/>`;
+            out += `<rect class="bar ${mine ? 'chosen' : ''}" data-compound="${k}" data-transition="${p.sublimes ? 'sublimation' : 'melting'}" fill="${p.bond === 'ionic' ? '#b76508' : '#207b9f'}" x="${x.toFixed(1)}" y="${top.toFixed(1)}" width="${W}" height="${h.toFixed(1)}" rx="2"/>`;
+            if (p.melt === 0) out += `<line data-zero-temperature x1="${x.toFixed(1)}" x2="${(x + W).toFixed(1)}" y1="${YZ}" y2="${YZ}" stroke="#207b9f" stroke-width="3"/>`;
             const ly = p.melt >= 0 ? top - 4 : YZ + h + 11;
             out += `<text class="axis-text" style="fill:${mine ? '#0f172a' : '#475569'};font-weight:${mine ? '900' : '750'}" x="${(x + W / 2).toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle">${fmtNum(p.melt)}</text>`;
             out += `<text class="axis-text" style="fill:${mine ? '#0f172a' : '#475569'};font-weight:${mine ? '900' : '750'}" x="${(x + W / 2).toFixed(1)}" y="${YBOT + 26}" text-anchor="middle">${p.formulaHtml}</text>`;
         });
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${YBOT + 46}" text-anchor="middle">이온끼리의 끌림은 세고, 분자끼리의 끌림은 약하다${a.p.sublimes ? ' (CO₂는 −78.5 ℃에서 곧바로 기체가 됨)' : ''}</text>`;
+        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${YBOT + 46}" text-anchor="middle">1기압 · CO₂는 승화, 나머지는 녹는점</text>`;
         return out;
     }
 
@@ -483,14 +484,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const sib = a.siblings.map(e => `${e.name}(${e.sym})`).join(', ');
             return `<div class="data-row"><span class="data-name">원소</span><span class="data-val">${el.name} ${el.sym} · 원자 번호 ${el.z} · 전자 ${el.z}개 · ${el.kind}${el.sym === 'Na' ? ' · 소듐이라고도 함' : el.sym === 'K' ? ' · 포타슘이라고도 함' : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">전자 배치</span><span class="data-val">안쪽부터 ${el.shells.join(' · ')} — 바깥 전자 ${a.v}개</span></div>` +
-                `<div class="data-row"><span class="data-name">같은 족</span><span class="data-val">${sib} — 모두 바깥 전자 ${a.v}개</span></div>` +
+                `<div class="data-row"><span class="data-name">같은 족</span><span class="data-val">${sib} — ${el.group === 18 ? '헬륨 2개, 네온·아르곤 8개로 바깥 껍질이 가득 참' : `모두 바깥 전자 ${a.v}개`}</span></div>` +
                 `<div class="data-row match"><span class="data-name">되는 이온</span><span class="data-val">${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${a.change < 0 ? '잃음' : '얻음'}, ${el.ion.noble}과 같은 배치)` : el.why === 'noble' ? '없음 — 이미 가득 참' : el.why === 'h' ? '주로 공유 결합 (산에서는 H⁺)' : '없음 — 전자를 함께 쓰는 공유 결합'}</span></div>` +
                 `<div class="data-row"><span class="data-name">그림의 움직임</span><span class="data-val">전자 배치 설명용 모형입니다. 원과 회전 속도는 실제 전자의 궤적·속도를 나타내지 않습니다.</span></div>`;
         }
         const { p, A, B } = a;
         return `<div class="data-row"><span class="data-name">만나는 원자</span><span class="data-val">${A.name}(${A.sym}, 바깥 전자 ${valence(A)}개)${p.a === p.b ? ' 둘' : ` + ${B.name}(${B.sym}, 바깥 전자 ${valence(B)}개)`}</span></div>` +
             `<div class="data-row"><span class="data-name">결합</span><span class="data-val">${p.bond === 'ionic' ? `이온 결합 — ${A.name} ${a.na}개가 전자 ${valence(A) * a.na}개를 ${B.name} ${a.nb}개에 넘김` : `공유 결합 — 전자 ${p.bonds.reduce((s, b) => s + b.pairs, 0)}쌍을 함께 씀`}</span></div>` +
-            `<div class="data-row"><span class="data-name">${p.formula}</span><span class="data-val">${p.name} · 상온에서 ${p.state} · 녹는점 ${meltText(p)}</span></div>` +
+            `<div class="data-row"><span class="data-name">${p.formula}</span><span class="data-val">${p.name} · 상온에서 ${p.state} · ${p.sublimes ? '승화점' : '녹는점'} ${meltText(p)}</span></div>` +
             `<div class="data-row match"><span class="data-name">전기</span><span class="data-val">${p.bond === 'ionic' ? `고체 ✗ · 녹인 액체 ✓${p.aq === 'yes' ? ' · 수용액 ✓' : p.aq === 'insoluble' ? ' · 물에 거의 안 녹음' : ' · 물과 만나면 반응함'}` : '이온이 없어 흐르지 않음'}</span></div>`;
     }
 
@@ -499,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainGroup.innerHTML = a.kind === 'elements' ? renderElements(a) : renderBonds(a);
         graphGroup.innerHTML = a.kind === 'elements' ? graphElements(a) : graphBonds(a);
         stageBadge.textContent = a.kind === 'elements' ? `${a.el.name} ${a.el.sym} · ${a.el.period}주기 ${a.el.group}족` : `${PAIRS[state.pair].label} → ${PAIRS[state.pair].formula}`;
-        methodHint.textContent = a.kind === 'elements' ? '가장 바깥 껍질의 전자 수가 원소의 성질을 정합니다'
+        methodHint.textContent = a.kind === 'elements' ? '전자 배치와 원소의 성질에서 규칙을 찾아보세요'
             : '금속은 전자를 내주고, 비금속끼리는 전자를 함께 씁니다';
         dataNote.innerHTML = noteFor(a);
         syncOrbit();
@@ -561,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 s += `바깥 전자가 ${v}개라 ${8 - v}개를 얻기도 ${v}개를 잃기도 힘듭니다. 그래서 이 모형에서는 단원자 이온으로 나타내지 않고 다른 원자와 전자를 함께 쓰는 공유 결합을 합니다${el.sym === 'C' ? '(다이아몬드, 이산화 탄소, 생명체의 몸)' : el.sym === 'Si' ? '(모래·유리·반도체)' : ''}. `;
             }
-            s += `주기율표에서 세로줄이 같으면 바깥 전자 수가 같고, 그래서 성질이 닮습니다.`;
+            s += `같은 족의 주족 원소는 전자 배치와 성질에 비슷한 점이 있습니다. 18족에서 헬륨의 바깥 전자는 2개, 네온과 아르곤은 8개입니다.`;
         } else {
             const { p, A, B } = a;
             if (a.same) { labelA.textContent = '함께 쓰는 전자쌍'; valueA.textContent = `${a.pairs}쌍`; }
@@ -579,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const need = el => el.sym === 'H' ? 1 : 8 - valence(el);
                 s = a.same ? `${A.name} 원자는 둘 다 비금속이어서 어느 쪽도 전자를 내주지 않습니다. 저마다 전자 ${need(A)}개가 더 있어야 하므로 ${KOREAN_COUNT[pairs]} 쌍을 함께 써서 둘 다 바깥 껍질을 채웁니다. `
                     : `${A.name}${pWa(A.name)} ${B.name}${pEun(B.name)} 둘 다 비금속이어서 어느 쪽도 전자를 내주지 않습니다. ${A.name}${pEun(A.name)} 전자 ${need(A)}개, ${B.name}${pEun(B.name)} ${need(B)}개가 더 있어야 하므로 ${A.name} ${a.na}개와 ${B.name} ${a.nb}개가 전자 ${KOREAN_COUNT[pairs]} 쌍을 함께 써서 모두 바깥 껍질을 채웁니다. `;
-                s += `이렇게 묶인 원자 ${p.atoms.length}개가 ${p.formula} 분자 하나입니다. 분자 안의 결합은 단단하지만 분자와 분자 사이의 끌림은 약해 녹는점이 ${meltText(p)}로 낮아 상온에서 ${p.state}이고, 이온이 없으니 전류가 흐르지 않습니다.`;
+                s += `이렇게 묶인 원자 ${p.atoms.length}개가 ${p.formula} 분자 하나입니다. ${p.sublimes ? '1기압에서 드라이아이스는 −78.5 ℃에서 액체를 거치지 않고 기체로 승화합니다.' : `이 물질의 녹는점은 ${meltText(p)}입니다.`} 상온·1기압에서는 ${p.state}입니다. 분자 사이의 끌림과 분자 안의 공유 결합은 구분해야 합니다. 순수한 분자 물질에는 전류를 운반할 자유로운 이온이나 전자가 거의 없어 전류가 잘 흐르지 않습니다.`;
             }
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'

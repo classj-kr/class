@@ -11,6 +11,19 @@ const deviceOptions=deviceProfile==='ipad'?require('playwright').devices['iPad (
 if(deviceProfile&&!['ipad','chromebook-scale'].includes(deviceProfile))throw Error('Unknown device profile');
 if(deviceProfile==='ipad'&&engine!=='webkit')throw Error('iPad profile requires WebKit');
 const output=path.resolve(process.env.SCIENCE_TEST_ARTIFACTS||'docs/science-lab-audit-2026-10-12/readability');fs.mkdirSync(output,{recursive:true});
+const completedRoutes=[];
+async function prepareEquilibriumColour(page,value){
+ const click=s=>page.locator(s).click(),settle=()=>page.waitForFunction(()=>!__equilibriumColour.getState().pending);
+ await page.emulateMedia({reducedMotion:'reduce'});await click('#ecReset');
+ if(value.startsWith('pressure')){await click('[data-mode=pressure]');await click('#ecCompress');await settle();if(value==='pressure-final'){await click('#ecEquilibrate');await settle();}}
+ else if(value.startsWith('cobalt')){await click('[data-mode=temperature]');await click('#ecFill');await click('#ecChloride');await settle();if(value!=='cobalt-prepared'){await click('[data-ec-bath=hot]');await settle();if(value==='cobalt-cold'){await click('[data-ec-bath=cold]');await settle();}}}
+ else{await click('[data-mode=concentration]');await click('#ecPrepare');const indexes=value==='complete'?[0,1,2,3]:value==='prepared'?[]:[Number(value)];for(const i of indexes){await click('[data-ec-tube="'+i+'"]');await click('[data-ec-reagent="'+(i<2?'acid':'base')+'"]');await click('#ecAdd');await settle();}}
+}
+async function painted(page){
+ await page.bringToFront();
+ if(liveWebFonts)await page.evaluate(async()=>{document.body.getBoundingClientRect();let timer;try{await Promise.race([document.fonts.ready,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Newly displayed text fonts did not settle within 10 seconds')),10000);})]);}finally{clearTimeout(timer);}});
+ await page.evaluate(()=>new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('No rendered frame within 10 seconds')),10000);requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{clearTimeout(timer);resolve();})));}));
+}
 function inspect(){
  const visible=e=>e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden'&&!e.closest('[hidden],defs,clipPath,mask')&&e.getBoundingClientRect().width>0;
  const fonts=[],clipped=[],overlaps=[],canvas=[];
@@ -41,6 +54,21 @@ async function prepareMoleWeighing(page,mode){
  if(mode==='empty'){await click('mwTare');await click('mwEmpty');await stable();}
  if(['solid','liquid'].includes(mode))await click('mwShowCalculation');
 }
+async function prepareCells(page,value){
+ await page.locator('#mbReset').click();
+ const samples=value==='all'?['cheek','leaf','leaf-stained']:[value==='zoom'?'leaf-stained':value.split(':')[0]],stage=value.split(':')[1]||'ready';
+ for(const sample of samples){
+  await page.locator('[data-mb-sample="'+sample+'"]').click();
+  if(stage==='before')continue;
+  for(let i=0,n=await page.locator('[data-mb-step]').count();i<n;i++)await page.locator('[data-mb-step="'+i+'"]').click();
+  if(stage==='prepared')continue;
+  await page.locator('#mbPlace').click();if(stage==='dark')continue;
+  if(await page.locator('#mbLamp').getAttribute('aria-pressed')==='false')await page.locator('#mbLamp').click();if(stage==='blur')continue;
+  await page.locator('#mbFocus').evaluate(e=>{e.value=6;e.dispatchEvent(new Event('input'));});
+  await page.waitForFunction(()=>document.querySelector('#mbImage').complete&&document.querySelector('#mbImage').naturalWidth>0);await page.locator('#mbObserve').click();
+ }
+ if(value==='zoom'){await page.locator('#mbZoom').evaluate(e=>{e.value=1.8;e.dispatchEvent(new Event('input'));});await page.locator('#mbViewer').focus();await page.keyboard.press('ArrowRight');}
+}
 async function preparePh(page,mode){
  const tap=id=>page.locator('#'+id).click(),select=id=>page.locator('[data-pc-liquid="'+id+'"]').click(),dip=async()=>{await tap('pcImmerse');await page.waitForFunction(()=>__phComparison.getState().settled);};
  await tap('pcReset');if(mode==='uncalibrated'){await select('hcl');await dip();await tap('pcMeasure');return;}
@@ -54,13 +82,14 @@ async function preparePh(page,mode){
  try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});await Promise.all(Array.from({length:engine==='webkit'?1:3},async()=>{const page=await browser.newPage({...deviceOptions,hasTouch:true});let current;
   page.on('pageerror',e=>errors.push({route:current,error:e.message}));await page.route('**/*',r=>{const host=new URL(r.request().url()).hostname,kind=r.request().resourceType();return host==='127.0.0.1'||liveWebFonts&&['stylesheet','font'].includes(kind)&&['fonts.googleapis.com','fonts.gstatic.com','cdn.jsdelivr.net'].includes(host)?r.continue():r.abort();});
   await page.addInitScript(()=>{const p=CanvasRenderingContext2D.prototype,fill=p.fillText,clear=p.clearRect,draw=p.drawImage;p.fillText=function(t,x,y,...rest){const m=this.getTransform(),c=this.canvas;c.__textAudit??=new Map();c.__textAudit.set(t+'|'+x+'|'+y,{text:String(t),px:parseFloat(this.font.match(/([\d.]+)px/)?.[1]||0)*Math.hypot(m.c,m.d)});return fill.call(this,t,x,y,...rest);};p.clearRect=function(...a){this.canvas.__textAudit?.clear();return clear.apply(this,a);};p.drawImage=function(...a){if(a.length===3&&a[1]===0&&a[2]===0&&a[0].width>=this.canvas.width&&a[0].height>=this.canvas.height||a.length===9&&a[5]===0&&a[6]===0&&a[7]===this.canvas.width&&a[8]===this.canvas.height)this.canvas.__textAudit?.clear();return draw.apply(this,a);};});
-  while(cursor<routes.length){const route=routes[cursor++];current=route;await page.goto(`http://127.0.0.1:${server.address().port}/${route.slug?route.slug+'/':''}${route.school?'?school='+route.school:''}`);await page.waitForSelector(catalog?'.catalog':'[data-assessment-ready]',{state:'attached'});await page.evaluate(()=>{document.querySelector('.quiz-section')?.setAttribute('open','');});await page.evaluate(()=>document.fonts.ready);
+  while(cursor<routes.length){const route=routes[cursor++];current=route;let routeScenarios=0;console.log(engine+': opening '+route.slug);await page.bringToFront();await page.goto(`http://127.0.0.1:${server.address().port}/${route.slug?route.slug+'/':''}${route.school?'?school='+route.school:''}`);await page.waitForSelector(catalog?'.catalog':'[data-assessment-ready]',{state:'attached'});await page.evaluate(()=>{document.querySelector('.quiz-section')?.setAttribute('open','');});await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready);
    const modes=catalog?['all','elementary','middle','high-common','high-elective'].map(value=>({kind:'catalog',value})):await page.locator('button[data-mode]').evaluateAll(es=>es.map(e=>({kind:'mode',value:e.dataset.mode})));
    if(!modes.length)modes.push({kind:'initial'});
    if(extended){modes.push(...await page.evaluate(()=>[
     ...[...document.querySelectorAll('[data-experiment]')].flatMap(e=>[false,true].map(last=>({kind:'required',value:e.dataset.experiment,last}))),
     ...[...document.querySelectorAll('[data-supplement-choice]')].map(e=>({kind:'supplement',key:e.dataset.supplementChoice,value:e.dataset.value})),
     ...[...document.querySelectorAll('#motion option')].map(e=>({kind:'ride',value:e.value})),
+    ...(document.querySelector('#scLab')?['key','fossil'].flatMap(value=>['initial','wrong','linked','summary'].map(stage=>({kind:'strata-correlation',value,stage}))):[]),
     ...(document.querySelector('#annulusCanvas')?[{kind:'annulus',value:'top'},{kind:'annulus',value:'compare'},{kind:'annulus',value:'side'}]:[]),
     ...(document.querySelector('#sunCanvasA')?[{kind:'sunspot',value:'compare'},{kind:'sunspot',value:'sequence'},{kind:'sunspot',value:'overlay'}]:[]),
     ...(document.querySelector('#dockCanvas')?[{kind:'dock',value:'test'}]:[]),
@@ -77,10 +106,14 @@ async function preparePh(page,mode){
     ...(document.querySelector('.pg-lab')?['water','light','both','same','larger','intermediate'].map(value=>({kind:'plant-growth',value})):[]),
     ...(document.querySelector('.fm-lab')?['before','observed','withdrawn','koh','water','air'].map(value=>({kind:'fermentation',value})):[]),
     ...(document.querySelector('.li-lab')?['bare','green','red','one','blocked','wide','tight','measured','edge'].map(value=>({kind:'light-interference',value})):[]),
-    ...(document.querySelector('#mbLab')?['mounted','dark','blur','gills','hyphae','mold','algae','paramecium','zoom','all'].map(value=>({kind:'microbe-observation',value})):[]),
+    ...(document.querySelector('#mbLab')&&!window.__cellObservation?['mounted','dark','blur','gills','hyphae','mold','algae','paramecium','zoom','all'].map(value=>({kind:'microbe-observation',value})):[]),
+    ...(window.__cellObservation?[...['cheek','leaf','leaf-stained'].flatMap(sample=>['before','prepared','dark','blur','ready'].map(stage=>sample+':'+stage)),'zoom','all'].map(value=>({kind:'cell-observation',value})):[]),
     ...(document.querySelector('#mwLab')?['untared','loaded-tare','solid','liquid','complete','empty','wrong'].map(value=>({kind:'mole-weighing',value})):[]),
     ...(document.querySelector('#rsLab')?['wrong','correct','A','B','C','D','E','F','A-detail','C-detail','D-detail','fossils','fossil-wrong','fossil-correct',...Array.from({length:8},(_,i)=>'cast-'+i),'layers','layers-full'].map(value=>({kind:'rock-specimens',value})):[]),
     ...(document.querySelector('#tfLab')?['held','paper-still','paper-moving','water-still','water-moving','hand-stop','comparison','bars','bars-moving'].map(value=>({kind:'tuning-fork',value})):[]),
+    ...(window.__rateModel?[['exo','off',25],['exo','on',25],['endo','off',25],['endo','on',25],['endo','on',0],['endo','on',95],['endo','on',100]].map(value=>({kind:'rate-energy',value})):[]),
+    ...(window.__rateModel?[[0,.5],[0,2],[25,.5],[25,2],[100,.5],[100,2]].map(value=>({kind:'rate-equilibrium',value})):[]),
+    ...(document.querySelector('.ec-lab')?['prepared','0','1','2','3','complete','cobalt-prepared','cobalt-hot','cobalt-cold','pressure-compressed','pressure-final'].map(value=>({kind:'equilibrium-colour',value})):[]),
     ...(document.querySelector('.pc-lab')?['uncalibrated','calibrated','dirty','hcl','acetic','naoh','ammonia','complete'].map(value=>({kind:'ph-comparison',value})):[]),
     ...(document.querySelector('.qc-lab')?['selected','first','three','complete','empty','resample'].map(value=>({kind:'quadrat-community',value})):[]),
     ...(document.querySelector('.rd-lab')?['prepared','ccw-moving','still','ccw-slow','ccw-fast','cw-slow','cw-fast','all'].map(value=>({kind:'rotating-disc',value})):[]),
@@ -92,7 +125,7 @@ async function preparePh(page,mode){
     ...(document.querySelector('.rp-lab')?['before','assembled','moving','complete','leak','range','disconnected','larger'].map(value=>({kind:'reaction-pressure',value})):[]),
     ...(document.querySelector('.gi-lab')?['before','moving','arrived','hollow','delay','same','steep'].map(value=>({kind:'galileo',value})):[])
    ]));if(route.slug==='protein-interaction')await page.waitForFunction(()=>window.__docking?.getState().ready);if(route.slug==='sunspot-observation')await page.waitForFunction(()=>window.__sunspot?.getState().ready);}
-   for(const width of widths){await page.setViewportSize({width,height:({1366:768,1180:820,1024:768,820:1180,768:1024})[width]});for(const mode of modes){if(route.slug==='ph-comparison'&&mode.kind==='initial')await page.locator('#pcReset').click();if(mode.kind==='ph-comparison')await preparePh(page,mode.value);if(mode.kind==='mole-weighing')await prepareMoleWeighing(page,mode.value);if(route.slug==='mole'&&mode.kind==='mode'&&mode.value==='weigh')await page.locator('#mwReset').click();await page.evaluate(mode=>{
+   for(const width of widths){await page.setViewportSize({width,height:({1366:768,1180:820,1024:768,820:1180,768:1024})[width]});for(const mode of modes){if(mode.kind==='cell-observation')await prepareCells(page,mode.value);if(route.slug==='cell-structure'&&mode.kind==='initial')await page.locator('#mbReset').click();if(route.slug==='equilibrium-colour'&&mode.kind==='mode')await page.locator('#ecReset').click();if(mode.kind==='equilibrium-colour')await prepareEquilibriumColour(page,mode.value);if(route.slug==='ph-comparison'&&mode.kind==='initial')await page.locator('#pcReset').click();if(mode.kind==='ph-comparison')await preparePh(page,mode.value);if(mode.kind==='mole-weighing')await prepareMoleWeighing(page,mode.value);if(route.slug==='mole'&&mode.kind==='mode'&&mode.value==='weigh')await page.locator('#mwReset').click();await page.evaluate(mode=>{
     const $=s=>document.querySelector(s);if(mode.kind==='initial'&&$('#rsLab')){$('[data-rs-mode=rocks]').click();$('#rsReset').click();}if(mode.kind==='catalog')$(`[data-school-filter="${mode.value}"]`).click();if(mode.kind==='mode')$(`button[data-mode="${mode.value}"]`)?.click();
     if(mode.kind==='required'){$(`[data-experiment="${mode.value}"]`).click();$('.required-experiments [data-reset]').click();if(mode.last)for(const key of [...document.querySelectorAll('[data-required-field]')].map(e=>e.dataset.requiredField)){const e=$(`[data-required-field="${key}"]`);e.selectedIndex=e.options.length-1;e.dispatchEvent(new Event('change',{bubbles:true}));}}
     if(mode.kind==='initial'&&$('#tfLab')){$('[data-tf-mode=fork]').click();$('#tfReset').click();}
@@ -104,6 +137,8 @@ async function preparePh(page,mode){
      else if(mode.value.startsWith('bars')){$('[data-tf-mode=bars]').click();if(mode.value==='bars-moving')$('#strikeBtn').click();}
      else if(mode.value!=='held'){if(mode.value.endsWith('moving')||mode.value==='hand-stop')strike();contact(mode.value.split('-')[0]);}
     }
+    if(mode.kind==='rate-energy'){__rateModel.setMode('rate');for(const [i,key]of ['heat','cat','T'].entries())__rateModel.set(key,mode.value[i]);__rateModel.check();}
+    if(mode.kind==='rate-equilibrium'){__rateModel.setMode('eq');__rateModel.set('Teq',mode.value[0]);__rateModel.set('V',mode.value[1]);__rateModel.check();}
     if(mode.kind==='ride'){const e=$('#motion');e.value=mode.value;e.dispatchEvent(new Event('input',{bubbles:true}));$('#measureRide').click();}
     if(mode.kind==='annulus'){$('#resetExperiment').click();$('#annulusFill').click();$('#annulusIce').click();$('#annulusHeat').click();$('#annulusTracer').click();if(mode.value==='side')$('[data-annulus-view="side"]').click();if(mode.value==='compare')$('#annulusCompare').click();$('#annulusStep').click();}
     if(mode.kind==='dock')$('#dockTest').click();
@@ -111,6 +146,14 @@ async function preparePh(page,mode){
      $('#fwReset').click();const M=window.scienceFoodWeb;
      if(mode.value.startsWith('roles')){for(const c of M.cards){const e=$('[data-fw-role="'+c.id+'"]');e.value=mode.value==='roles-right'?c.role:'consumer';e.dispatchEvent(new Event('change'));}$('#fwCheckRoles').click();}
      else{$('[data-fw-mode=web]').click();const edges=mode.value==='web-wrong'?['frog>grasshopper','rice>hawk']:M.edges;for(const edge of edges)for(const id of edge.split('>'))$('[data-fw-node="'+id+'"]').click();$('#fwCheckWeb').click();if(['frog','sparrow'].includes(mode.value)){const e=$('#fwMissing');e.value=mode.value;if(e.value!==mode.value)throw Error('Missing food-web option: '+mode.value);e.dispatchEvent(new Event('change'));if(window.__foodWeb.getState().removed!==mode.value)throw Error('Food-web removal did not apply');}if(mode.value==='flow')$('#fwFlow').click();}
+    }
+    if(mode.kind==='strata-correlation'){
+     $('[data-sc-mode="'+mode.value+'"]').click();
+     if(mode.stage==='summary')$('#scReveal').click();
+     if(mode.stage==='wrong'||mode.stage==='linked'){
+      const pair=mode.value==='key'?['0:0',mode.stage==='wrong'?'1:4':'1:1']:['0:5',mode.stage==='wrong'?'1:2':'1:5'];
+      for(const key of pair)$('[data-sc-layer="'+key+'"]').click();
+     }
     }
     if(mode.kind==='microbe-observation'){
      const click=id=>$('#'+id).click(),set=(id,value)=>{const e=$('#'+id);e.value=value;e.dispatchEvent(new Event('input'));};click('mbReset');
@@ -208,11 +251,13 @@ async function preparePh(page,mode){
     if(mode.kind==='bio'){$(`[data-bio-specimen="${mode.value}"]`).click();$(`[data-bio-view="${mode.view}"]`).click();}
     if(mode.kind==='sunspot'){$(`[data-sun-view="${mode.value}"]`).click();if(mode.value==='compare')for(const [id,x,y]of [['sunCanvasA',510,421],['sunCanvasB',881,437]]){const c=$('#'+id),b=c.getBoundingClientRect();c.dispatchEvent(new MouseEvent('click',{clientX:b.left+x/1024*b.width,clientY:b.top+y/1024*b.height,bubbles:true}));}}
     for(const k of Object.keys(window).filter(k=>k.startsWith('__')&&k.endsWith('Model')))window[k]?.runToEnd?.();
-   },mode);if(route.slug==='microbes'){await page.waitForFunction(()=>document.querySelector('#mbImage').complete&&document.querySelector('#mbImage').naturalWidth>0);if(mode.kind==='microbe-observation'&&!['mounted','dark','blur'].includes(mode.value)){if(mode.value==='all'){for(const[sample,view]of [['mushroom',0],['mushroom',1],['mold',0],['algae',0],['paramecium',0]]){await page.evaluate(({sample,view})=>{document.querySelector('[data-mb-sample="'+sample+'"]').click();if(view)document.querySelector('[data-mb-view="'+view+'"]').click();document.querySelector('#mbPlace').click();const e=document.querySelector('#mbFocus');e.value=6;e.dispatchEvent(new Event('input'));},{sample,view});await page.waitForFunction(()=>document.querySelector('#mbImage').complete&&document.querySelector('#mbImage').naturalWidth>0);await page.locator('#mbObserve').click();}}else await page.locator('#mbObserve').click();}if(mode.kind==='initial')await page.locator('#mbReset').click();}await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(r)))));const result=await page.evaluate(inspect);scenarios++;if(result.overflow||result.fonts.length||result.clipped.length||result.overlaps.length||result.canvas.length)issues.push({...route,width,mode,...result});}}
+   },mode);if(route.slug==='microbes'){await page.waitForFunction(()=>document.querySelector('#mbImage').complete&&document.querySelector('#mbImage').naturalWidth>0);if(mode.kind==='microbe-observation'&&!['mounted','dark','blur'].includes(mode.value)){if(mode.value==='all'){for(const[sample,view]of [['mushroom',0],['mushroom',1],['mold',0],['algae',0],['paramecium',0]]){await page.evaluate(({sample,view})=>{document.querySelector('[data-mb-sample="'+sample+'"]').click();if(view)document.querySelector('[data-mb-view="'+view+'"]').click();document.querySelector('#mbPlace').click();const e=document.querySelector('#mbFocus');e.value=6;e.dispatchEvent(new Event('input'));},{sample,view});await page.waitForFunction(()=>document.querySelector('#mbImage').complete&&document.querySelector('#mbImage').naturalWidth>0);await page.locator('#mbObserve').click();}}else await page.locator('#mbObserve').click();}if(mode.kind==='initial')await page.locator('#mbReset').click();}await painted(page);await page.evaluate(()=>{const checkpoint=document.querySelector('.supplement-check[data-question-id]'),controller=document.querySelector('.quiz-section')?.scienceAssessment;if(!checkpoint?.getBoundingClientRect().width||!controller)return;const q=controller.store.questions.get(checkpoint.dataset.questionId);if(!q||controller.store.evidence(q.id)?.correct)return;const wrong=q.choices.find(c=>c.id!==q.answer&&!checkpoint.querySelector('[data-check-answer="'+c.id+'"]').disabled);if(wrong)checkpoint.querySelector('[data-check-answer="'+wrong.id+'"]').click();checkpoint.querySelector('[data-check-answer="'+q.answer+'"]').click();});await painted(page);const result=await page.evaluate(inspect);scenarios++;routeScenarios++;if(result.overflow||result.fonts.length||result.clipped.length||result.overlaps.length||result.canvas.length)issues.push({...route,width,mode,...result});}}
    if(liveWebFonts)for(const family of await page.evaluate(()=>[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family)))loadedFontFamilies.add(family);
+   completedRoutes.push({...route,scenarios:routeScenarios});
+   fs.writeFileSync(path.join(output,'progress-'+engine+'.json'),JSON.stringify({checkedAt:new Date().toISOString(),engine,catalog,complete:completedRoutes.length===routes.length,completedRoutes,scenarios,issues,errors,liveWebFonts,loadedFontFamilies:[...loadedFontFamilies]},null,2));
    console.log(engine+': '+route.slug+(route.school?' ('+route.school+')':'')+' / '+scenarios+' screen states');
   }await page.close();}));
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
  if(liveWebFonts&&!loadedFontFamilies.size)errors.push({error:'Live-font run did not load any web font'});
- const report={engine,catalog,routes:routes.length,scenarios,widths,extended,deviceProfile,emulationOnly:!!deviceProfile,deviceScaleFactor:deviceOptions.deviceScaleFactor||1,liveWebFonts,loadedFontFamilies:[...loadedFontFamilies].sort(),issues,errors};fs.writeFileSync(path.join(output,(catalog?'catalog-':'')+(baseline?'baseline-':'')+(extended?'extended-':'')+engine+'.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({engine,deviceProfile,routes:routes.length,scenarios,flagged:issues.length,fontFlags:issues.reduce((n,r)=>n+r.fonts.length,0),canvasFlags:issues.reduce((n,r)=>n+r.canvas.length,0),liveWebFonts,loadedFontFamilies:[...loadedFontFamilies].sort(),errors}));if(!baseline&&(issues.length||errors.length))process.exitCode=1;
+ const report={engine,catalog,routes:routes.length,scenarios,widths,extended,supplementDiagnosisChecked:true,deviceProfile,emulationOnly:!!deviceProfile,deviceScaleFactor:deviceOptions.deviceScaleFactor||1,liveWebFonts,loadedFontFamilies:[...loadedFontFamilies].sort(),issues,errors};fs.writeFileSync(path.join(output,(catalog?'catalog-':'')+(baseline?'baseline-':'')+(extended?'extended-':'')+engine+'.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({engine,deviceProfile,routes:routes.length,scenarios,flagged:issues.length,fontFlags:issues.reduce((n,r)=>n+r.fonts.length,0),canvasFlags:issues.reduce((n,r)=>n+r.canvas.length,0),liveWebFonts,loadedFontFamilies:[...loadedFontFamilies].sort(),errors}));if(!baseline&&(issues.length||errors.length))process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});

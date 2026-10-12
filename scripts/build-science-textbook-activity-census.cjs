@@ -41,7 +41,7 @@ for(const file of manifest){
   c.samePageTools=Object.entries(tools).filter(([,r])=>r.source.id===sourceId&&r.source.pages.some(p=>c.pages.includes(p))).map(([id])=>id);
   // Being on a reviewed page is not proof of a one-to-one activity match.
   c.implementationVerdict=manual.candidates[c.id]?.verdict||'미판정';
-  if(manual.candidates[c.id])c.manualExperimentIds=manual.candidates[c.id].experiments;
+  if(manual.candidates[c.id]){c.manualExperimentIds=manual.candidates[c.id].experiments;if(manual.candidates[c.id].pendingExperiments)c.pendingExperimentIds=manual.candidates[c.id].pendingExperiments;}
   candidates.push(c);
  }
  doc.candidateCount=found.size;documents.push(doc);
@@ -49,7 +49,7 @@ for(const file of manifest){
 const summary={scope:'2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님',indexedUniqueSources:manifest.length,textbookPDFs:documents.filter(d=>d.role.includes('PDF')).length,activitySheets:documents.filter(d=>d.role==='탐구 활동지').length,titleCandidates:candidates.filter(c=>c.pages.length).length,activitySheetCandidates:candidates.filter(c=>!c.pages.length).length,primaryDocumentsWithoutCandidates:documents.filter(d=>d.role.includes('PDF')&&!d.candidateCount).length,completedActivityVerdicts:0,receiptClassifiedSources:manifest.filter(s=>s.revisionEvidence?.receipt).length};
 Object.assign(summary,{experimentWorkbookPDFs:documents.filter(d=>d.role==='실험관찰 PDF').length,supplementalDocuments:documents.filter(d=>d.supplemental).length});
 Object.assign(summary,{headingRecoveryReviewedDocuments:sourceReview.documents.length,zeroCandidateDocumentsWithPageReview:documents.filter(d=>d.role.includes('PDF')&&!d.candidateCount&&d.procedureReview).length});
-Object.assign(summary,{manuallyReviewedCandidates:Object.keys(manual.candidates).length,sourceReviewedExperimentUnits:manual.experiments.length,manualAdditionsOutsideHeadingExtraction:manual.missedByHeadingExtractor.length,requiredExperimentTotal:null});
+Object.assign(summary,{manuallyReviewedCandidates:Object.keys(manual.candidates).length,sourceReviewedExperimentUnits:manual.experiments.length,sourceReviewedPendingUnits:(manual.pendingExperiments||[]).length,manualAdditionsOutsideHeadingExtraction:manual.missedByHeadingExtractor.length,requiredExperimentTotal:null});
 for(const e of manual.experiments){assert(documents.some(d=>d.sourceId===e.sourceId),e.id);assert(e.pages.length,e.id);}
 for(const id of Object.keys(manual.candidates))assert(candidates.some(c=>c.id===id),id);
 const result={summary,manualReview:manual,limitations:['페이지 텍스트에서 찾은 제목 후보이며, 여러 쪽으로 갈라진 제목·이미지 제목·다른 명칭의 활동은 빠질 수 있다.','동일 활동의 출판사별·교사용 판본 중복은 아직 수동 판정 전이다. 후보 수를 독립적인 필수실험 총수로 쓰지 않는다.','같은 쪽의 기존 도구는 검토 참고 링크이며 활동 충족 판정이 아니다.','교육과정의 261개 활동과 이 교과서 제목 후보는 집계 단위가 다르다.'],documents,candidates};

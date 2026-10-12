@@ -11,6 +11,7 @@
     768
   ],
   "extended": false,
+  "supplementDiagnosisChecked": true,
   "deviceProfile": "chromebook-scale",
   "emulationOnly": true,
   "deviceScaleFactor": 1.25,

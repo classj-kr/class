@@ -1,0 +1,12 @@
+chromium 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ chromium: textbook causal relationships and every photosynthesis control combination (6535.3133ms)
+webkit 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ webkit: textbook causal relationships and every photosynthesis control combination (12019.2023ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18664.0641

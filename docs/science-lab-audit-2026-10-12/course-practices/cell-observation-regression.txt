@@ -1,0 +1,132 @@
+✔ three original cell micrographs retain identity and optical magnification (233.8421ms)
+✖ chromium: cell preparation, observation, touch navigation and retained diagnosis (8156.9424ms)
+✖ webkit: cell preparation, observation, touch navigation and retained diagnosis (18946.2971ms)
+✔ five micrographs retain source identity, nominal magnification and lossless decoding (188.9285ms)
+✖ chromium: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (4659.787ms)
+✖ webkit: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (5928.7501ms)
+613 core state/observation/check combinations verified
+33 live observation questions, 66 incorrect choices have stable authored feedback
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (17.9777ms)
+✔ every live supplementary observation has choice-specific misconception feedback after rotation (6.231ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.8932ms)
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 10 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+571 browser state cases, 1713 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (10844.087ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 6
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49269.0455
+
+✖ failing tests:
+
+test at tests\science-cell-observation.test.cjs:9:43
+✖ chromium: cell preparation, observation, touch navigation and retained diagnosis (8156.9424ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '9과02-01'
+  -   'cell-structure@onion',
+  -   'cell-structure@field'
+    ]
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-cell-observation.test.cjs:27:96)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '9과02-01' ],
+    expected: [ 'cell-structure@onion', 'cell-structure@field' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-cell-observation.test.cjs:9:43
+✖ webkit: cell preparation, observation, touch navigation and retained diagnosis (18946.2971ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '9과02-01'
+  -   'cell-structure@onion',
+  -   'cell-structure@field'
+    ]
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-cell-observation.test.cjs:27:96)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '9과02-01' ],
+    expected: [ 'cell-structure@onion', 'cell-structure@field' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-microbe-observation.test.cjs:7:43
+✖ chromium: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (4659.787ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   ''
+  + ]
+  - []
+  
+      at capture (E:\webprojects\class\tests\science-microbe-observation.test.cjs:10:229)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-microbe-observation.test.cjs:12:545)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-microbe-observation.test.cjs:7:43
+✖ webkit: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (5928.7501ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   ''
+  + ]
+  - []
+  
+      at capture (E:\webprojects\class\tests\science-microbe-observation.test.cjs:10:229)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-microbe-observation.test.cjs:12:545)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

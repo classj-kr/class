@@ -1,0 +1,64 @@
+✔ all app grades, standards, quizzes and local script cache versions agree (221.0901ms)
+✖ every science lab JavaScript file parses (131.4182ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8587ms)
+node:internal/modules/cjs/loader:1520
+  throw err;
+  ^
+
+Error: Cannot find module 'sharp'
+Require stack:
+- E:\webprojects\class\tests\science-screenshot.cjs
+- E:\webprojects\class\tests\science-textbook-evidence.test.cjs
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1617:12)
+    at require (node:internal/modules/helpers:153:16)
+    at Object.<anonymous> (E:\webprojects\class\tests\science-screenshot.cjs:2:15)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'E:\\webprojects\\class\\tests\\science-screenshot.cjs',
+    'E:\\webprojects\\class\\tests\\science-textbook-evidence.test.cjs'
+  ]
+}
+
+Node.js v24.18.0
+✖ tests\science-textbook-evidence.test.cjs (44.9467ms)
+✔ 2022 publisher headings survive 준비해요, wrapped titles and 만들기/나타내기 endings (5.6477ms)
+✔ heading recovery leaves ordinary prose, numbered steps and unscoped title-like text out (1.0398ms)
+✔ publisher textbook and experiment workbook names are included without the word 교과서 (0.711ms)
+✔ metadata and assessments do not become textbooks even under a textbook directory; aliases retain source identity (0.1837ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 449.5224
+
+✖ failing tests:
+
+test at tests\science-scope-metadata.test.cjs:29:1
+✖ every science lab JavaScript file parses (131.4182ms)
+  strata-correlation\app.js:24
+    if(result.correct){if(!links.some(x=>x.key===key))links.push({...result,key});$('scStatus').textContent=result.left.label+'와 '+result.right.label+'를 연결했습니다. '+(result.left.fossil?'화석과 위아래 지층의 순서를 함께 확인하세요.':result.left.rock==='tuff'?'넓게 쌓인 응회암층이 대비의 기준입니다.':'기준 층에서의 위치와 암석 순서가 맞습니다.'));}
+                                                                                                                                                                                                                                                                                                 ^
+  
+  SyntaxError: Unexpected token ')'
+      at new Script (node:vm:117:7)
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-scope-metadata.test.cjs:30:96)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+
+test at tests\science-textbook-evidence.test.cjs:1:1
+✖ tests\science-textbook-evidence.test.cjs (44.9467ms)
+  'test failed'

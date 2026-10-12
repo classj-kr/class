@@ -1,0 +1,24 @@
+{
+  "engine": "webkit",
+  "catalog": false,
+  "routes": 5,
+  "scenarios": 65,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "deviceProfile": "ipad",
+  "emulationOnly": true,
+  "deviceScaleFactor": 2,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [],
+  "errors": []
+}
