@@ -1,2 +1,47 @@
 ✔ same field size, distinct textures, fixed grains and crossed-polar rotation (25.5434ms)
 ✖ chromium: microscope procedure, slow rotation, photo classification and retained misconceptions (12750.0527ms)
+✖ webkit: microscope procedure, slow rotation, photo classification and retained misconceptions (25876.6007ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38714.1966
+
+✖ failing tests:
+
+test at tests\science-thin-sections.test.cjs:11:43
+✖ chromium: microscope procedure, slow rotation, photo classification and retained misconceptions (12750.0527ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  16 !== 7
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-thin-sections.test.cjs:20:386)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 16,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\science-thin-sections.test.cjs:11:43
+✖ webkit: microscope procedure, slow rotation, photo classification and retained misconceptions (25876.6007ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  16 !== 7
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-thin-sections.test.cjs:20:386)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 16,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
