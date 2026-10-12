@@ -89,6 +89,7 @@ async function preparePh(page,mode){
     ...[...document.querySelectorAll('[data-experiment]')].flatMap(e=>[false,true].map(last=>({kind:'required',value:e.dataset.experiment,last}))),
     ...[...document.querySelectorAll('[data-supplement-choice]')].map(e=>({kind:'supplement',key:e.dataset.supplementChoice,value:e.dataset.value})),
     ...[...document.querySelectorAll('#motion option')].map(e=>({kind:'ride',value:e.value})),
+    ...(document.querySelector('#tsLab')?['basalt-ppl','basalt-xpl','granite-ppl','granite-xpl','dark','blur','photos','classified','zoom'].map(value=>({kind:'thin-sections',value})):[]),
     ...(document.querySelector('#scLab')?['key','fossil'].flatMap(value=>['initial','wrong','linked','summary'].map(stage=>({kind:'strata-correlation',value,stage}))):[]),
     ...(document.querySelector('#annulusCanvas')?[{kind:'annulus',value:'top'},{kind:'annulus',value:'compare'},{kind:'annulus',value:'side'}]:[]),
     ...(document.querySelector('#sunCanvasA')?[{kind:'sunspot',value:'compare'},{kind:'sunspot',value:'sequence'},{kind:'sunspot',value:'overlay'}]:[]),
@@ -146,6 +147,11 @@ async function preparePh(page,mode){
      $('#fwReset').click();const M=window.scienceFoodWeb;
      if(mode.value.startsWith('roles')){for(const c of M.cards){const e=$('[data-fw-role="'+c.id+'"]');e.value=mode.value==='roles-right'?c.role:'consumer';e.dispatchEvent(new Event('change'));}$('#fwCheckRoles').click();}
      else{$('[data-fw-mode=web]').click();const edges=mode.value==='web-wrong'?['frog>grasshopper','rice>hawk']:M.edges;for(const edge of edges)for(const id of edge.split('>'))$('[data-fw-node="'+id+'"]').click();$('#fwCheckWeb').click();if(['frog','sparrow'].includes(mode.value)){const e=$('#fwMissing');e.value=mode.value;if(e.value!==mode.value)throw Error('Missing food-web option: '+mode.value);e.dispatchEvent(new Event('change'));if(window.__foodWeb.getState().removed!==mode.value)throw Error('Food-web removal did not apply');}if(mode.value==='flow')$('#fwFlow').click();}
+    }
+    if(mode.kind==='thin-sections'){
+     const set=(id,value)=>{const e=$('#'+id);e.value=value;e.dispatchEvent(new Event('input'));};$('#tsReset').click();
+     if(['photos','classified','zoom'].includes(mode.value)){$('[data-ts-mode=photos]').click();if(mode.value==='classified'){for(const p of scienceThinSections.photos){const e=$('[data-ts-class='+p.id+']');e.value=p.texture;e.dispatchEvent(new Event('change',{bubbles:true}));}$('#tsCheckPhotos').click();}if(mode.value==='zoom'){$('[data-ts-photo=porphyritic]').click();set('tsPhotoZoom',2);}}
+     else{$('[data-ts-sample='+ (mode.value.startsWith('granite')?'granite':'basalt') +']').click();$('#tsMount').click();set('tsFocus',mode.value==='blur'?20:50);set('tsLight',mode.value==='dark'?10:70);if(mode.value.endsWith('xpl'))$('#tsAnalyzer').click();set('tsAngle',45);$('#tsObserve').click();}
     }
     if(mode.kind==='strata-correlation'){
      $('[data-sc-mode="'+mode.value+'"]').click();
