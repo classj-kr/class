@@ -1,0 +1,11 @@
+✔ time, metric calibration, rotated axes, interval velocities and energy are consistent (1.1519ms)
+✔ chromium: touch tracking, graphs, diagnostic responses and explicit native-media outcome (16741.738ms)
+✔ webkit: touch tracking, graphs, diagnostic responses and explicit native-media outcome (23808.1336ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40626.6741

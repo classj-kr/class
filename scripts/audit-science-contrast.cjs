@@ -1,6 +1,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),map=require('../learning/inquiry/science-lab/curriculum-map.js');
 const engine=process.argv.includes('--webkit')?'webkit':'chromium';
+const selected=process.argv.find(a=>a.startsWith('--slugs='))?.slice(8).split(',');
 const baseURL=process.env.SCIENCE_BASE_URL||'http://127.0.0.1:18765/learning/inquiry/science-lab/';
 function inspect(){
  const rgb=s=>{const a=s.match(/[\d.]+/g)?.map(Number);return a&&a.length>=3?[...a.slice(0,3),a[3]??1]:null;};
@@ -23,7 +24,7 @@ function inspect(){
  return{checked,gradientSkipped,issues};
 }
 (async()=>{const browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});
- const reports=[],errors=[];let cursor=0;const routes=Object.entries(map).flatMap(([slug,r])=>r.courseContexts?Object.keys(r.courseContexts).map(school=>({slug,school})):[{slug}]);
+ const reports=[],errors=[];let cursor=0;const routes=Object.entries(map).filter(([slug])=>!selected||selected.includes(slug)).flatMap(([slug,r])=>r.courseContexts?Object.keys(r.courseContexts).map(school=>({slug,school})):[{slug}]);
  try{await Promise.all(Array.from({length:engine==='webkit'?1:2},async()=>{const page=await browser.newPage({viewport:{width:768,height:1024}});page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
  while(cursor<routes.length){const r=routes[cursor++];await page.goto(baseURL+r.slug+'/'+(r.school?'?school='+r.school:''));await page.waitForSelector('[data-assessment-ready]',{state:'attached'});await page.evaluate(()=>{const section=document.querySelector('.quiz-section');if(!section)throw Error('Missing quiz section');section.open=true;section.setAttribute('open','');section.dispatchEvent(new Event('toggle'));});await page.waitForFunction(()=>!!window.scienceExamBank&&(!document.querySelector('.exam-integrated')||!!document.querySelector('.exam-widget')?.examController)).catch(e=>{e.message=r.slug+': '+e.message;throw e;});
   await page.evaluate(()=>{const section=document.querySelector('.quiz-section');for(const card of section.querySelectorAll('.quiz-card')){card.querySelector('input[value="'+card.dataset.answer+'"]').click();card.querySelector('.answer-button').click();}const w=document.querySelector('.exam-widget');if(w?.examController){const id=w.examController.current(),q=section.scienceAssessment.store.questions.get(id);w.querySelector('[data-exam-answer="'+q.answer+'"]').click();w.querySelector('.exam-submit').click();}});
@@ -39,6 +40,17 @@ function inspect(){
    for(let i=0;i<5;i++)await page.locator('[data-mb-step="'+i+'"]').click();
    reports.push({...r,state:'all-preparation-steps-completed',...await page.evaluate(inspect)});
   }
+  if(r.slug==='star-elements'){for(const value of ['A','B','missing','fusion-he','star-large','origin']){await page.evaluate(require('../tests/science-element-origin-scenario.cjs'),value);reports.push({...r,state:value,...await page.evaluate(inspect)});}}
+  if(r.slug==='kepler-data'){for(const value of ['all','metric','minor','extreme']){await page.evaluate(require('../tests/science-kepler-data-scenario.cjs'),value);reports.push({...r,state:value,...await page.evaluate(inspect)});}}
+  if(r.slug==='hr-diagram'){for(const value of ['wrong','all','data','different-types']){await page.evaluate(require('../tests/science-hr-diagram-scenario.cjs'),value);reports.push({...r,state:value,...await page.evaluate(inspect)});}}
+  if(r.slug==='video-motion'){for(const value of ['cart-data','cart-axis','projectile-energy','projectile-mass']){await page.evaluate(require('../tests/science-video-motion-scenario.cjs'),value);reports.push({...r,state:value,...await page.evaluate(inspect)});}}
+  if(r.slug==='crust-thickness'){
+   for(const key of ['local','stations']){await page.locator('[data-ct-case='+key+']').click();await page.locator('#ctFit').click();await page.locator('#ctDepth').fill('10');await page.locator('#ctCheck').click();reports.push({...r,state:key+'-calculation',...await page.evaluate(inspect)});}
+  }
+  if(r.slug==='polarized-thin-sections'){
+   await page.locator('[data-ts-mode=photos]').click();await page.evaluate(()=>{for(const p of scienceThinSections.photos){const e=document.querySelector('[data-ts-class='+p.id+']');e.value=p.texture;e.dispatchEvent(new Event('change',{bubbles:true}));}document.getElementById('tsCheckPhotos').click();});reports.push({...r,state:'four-real-specimens-classified',...await page.evaluate(inspect)});
+   await page.locator('[data-ts-photo=porphyritic]').click();await page.locator('#tsPhotoZoom').evaluate(e=>{e.value=2;e.dispatchEvent(new Event('input'));});reports.push({...r,state:'photo-zoom',...await page.evaluate(inspect)});
+  }
   if(r.slug==='strata-correlation'){
    for(const mode of ['key','fossil']){await page.locator('[data-sc-mode="'+mode+'"]').click();await page.locator('#scReveal').click();reports.push({...r,state:mode+'-summary',...await page.evaluate(inspect)});}
   }
@@ -50,5 +62,5 @@ function inspect(){
  }finally{await browser.close();}
  const result={engine,viewport:[768,1024],scope:'Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.',routes:routes.length,checked:reports.reduce((n,r)=>n+r.checked,0),gradientSkipped:reports.reduce((n,r)=>n+r.gradientSkipped,0),errors,flagged:reports.filter(r=>r.issues.length)};
  const out=path.resolve(process.env.SCIENCE_TEST_ARTIFACTS||path.join(root,'docs/science-lab-audit-2026-10-12/course-practices'));fs.mkdirSync(out,{recursive:true});
- const file=path.join(out,'reading-contrast-'+engine+'.json');fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({...result,flagged:result.flagged.map(r=>({slug:r.slug,issues:r.issues.length}))}));if(result.flagged.length||errors.length)process.exitCode=1;
+ const file=path.join(out,'reading-contrast-'+engine+(selected?'-selected':'')+'.json');fs.writeFileSync(file,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({...result,flagged:result.flagged.map(r=>({slug:r.slug,issues:r.issues.length}))}));if(result.flagged.length||errors.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});

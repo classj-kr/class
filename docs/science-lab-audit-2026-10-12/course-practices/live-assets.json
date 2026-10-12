@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-12T16:05:43.416Z",
+  "checkedAt": "2026-10-12T17:33:49.940Z",
   "baseURL": "http://127.0.0.1:18765/learning/inquiry/science-lab/",
   "scope": "Every local HTML, JS, CSS, WebP, SVG and JSON file under science-lab; exact-byte comparison with the running localhost server.",
   "files": [
@@ -17,7 +17,7 @@
     },
     {
       "file": "acid-base/index.html",
-      "sha256": "63197d25f6ef7079a34e4620a39698ec2e911d469490f1f91d30cd87f7921edb"
+      "sha256": "2deda6f37d35b686de79c3c871d57787994ca8e048a3c27a7f38feee931aabec"
     },
     {
       "file": "acid-base/quiz.css",
@@ -41,7 +41,7 @@
     },
     {
       "file": "acoustic-resonance/index.html",
-      "sha256": "c3c4ccc80a11fdb5cfd75e6c7a5ce8644749ef2cd7bc309dafd1d4e022c41f51"
+      "sha256": "68473c47f865b53f1b42e7066c6fc205b0a624ce6d7cb9e6086c57472e26eebd"
     },
     {
       "file": "activity-analysis.js",
@@ -97,7 +97,7 @@
     },
     {
       "file": "air-sampling/index.html",
-      "sha256": "38bf33b69865790a2f7d62ca747bc8d1e2d87ec8a527532be164b429d14ae174"
+      "sha256": "6247a7e1b24ec4f43125290e6355ff61a97be66f91a1aee44af3c9bdb9a349b1"
     },
     {
       "file": "air-stability/air-visual.css",
@@ -109,7 +109,7 @@
     },
     {
       "file": "air-stability/index.html",
-      "sha256": "e2360908ed0b9ec0adcc8e30338cd2b6f073d20a03575c3a3c1d0b0508378df6"
+      "sha256": "380100eb94af02310f750976c04593202fdaaff9e2d7759ceb861dbd88d995f3"
     },
     {
       "file": "air-stability/quiz.css",
@@ -133,7 +133,7 @@
     },
     {
       "file": "animal-classification/index.html",
-      "sha256": "b376bc4adc60bc3311f457072dda8dd537e509879b8ea44d49e24a2a2c960c9c"
+      "sha256": "5b3e0d9e3500df579c8a11d0d77501157c966b83de1db996df7443b0360e64bc"
     },
     {
       "file": "annulus-lab.css",
@@ -149,7 +149,7 @@
     },
     {
       "file": "antibiotic-disc/index.html",
-      "sha256": "ca974f0c13a74bb460e5b3d96b3748b129d9bf732f0ea793a00f4c45605f6581"
+      "sha256": "09aeb0bb6678cdc8a04b1abf69349cb66e3d67780b9ba9d56bc4b41e51c19201"
     },
     {
       "file": "app-context.js",
@@ -165,7 +165,7 @@
     },
     {
       "file": "apparent-motion/index.html",
-      "sha256": "90c4675465e70e8fe1c74869ff63bf81b7446da2937d6b6c62e9046a8502ef17"
+      "sha256": "39eaf58fd1c9ce40e49339321c031b39d5cc39c9b68b8e85d3f6668bbc848aa5"
     },
     {
       "file": "apparent-motion/quiz.css",
@@ -368,8 +368,24 @@
       "sha256": "70d2dea236ea4756deba4994d5d5dbff44b592fe8a598d482de9244d7848a49b"
     },
     {
+      "file": "assets/thin-sections/coarse.webp",
+      "sha256": "487942e3249be768643c784f8d227730cd96edd1f7b9735b0babfcc7ed808a76"
+    },
+    {
+      "file": "assets/thin-sections/fine.webp",
+      "sha256": "a4d6f3bf0b0d7945d3fa166b7ff1f4909c933c3db6b28197b6a473dccf45b4b1"
+    },
+    {
+      "file": "assets/thin-sections/glass.webp",
+      "sha256": "11567f78e69f9e27a263ac7e8b88e04d8145b50c36298272f6887783aed611ce"
+    },
+    {
+      "file": "assets/thin-sections/porphyritic.webp",
+      "sha256": "3cf91f1d331d88e59f559960c5cd66477186ade951f1c66d7783f0338ac02c7a"
+    },
+    {
       "file": "bean-respiration/index.html",
-      "sha256": "9376675f1a5eca80a0565f0941f7314588674f92099b4c01d359588a3c08f7ad"
+      "sha256": "f75a1fd9ee46c3699a25641c3dab20dd25bf41817901b54f8053dc7754fe12f6"
     },
     {
       "file": "body-organs/app.js",
@@ -377,7 +393,7 @@
     },
     {
       "file": "body-organs/index.html",
-      "sha256": "ccf85e8d1b0ab56eb5515017b72c36ec173835d75ae06dcd17ea35b0205c7d5e"
+      "sha256": "5ec7b53aa212c7a16e5e51bddd28324c0d39c53561f5f5845679805da975dcb8"
     },
     {
       "file": "body-organs/muscle-model.js",
@@ -405,7 +421,7 @@
     },
     {
       "file": "body-systems/index.html",
-      "sha256": "f515338b560aaa091f9239fde623cdfaa4ceea9c0d3c733450ce3a91ecdc8de7"
+      "sha256": "ec0c10e197c2b2347eb86eb7371a0fd57df1df0ac36d4ccf41630668d51138b2"
     },
     {
       "file": "body-systems/quiz.css",
@@ -417,7 +433,7 @@
     },
     {
       "file": "buffer-solution/index.html",
-      "sha256": "e0f62b49852279346f4e4a630d7e73705294ba113b17f5957b93ae5332590e84"
+      "sha256": "54496127780554d3390fce6c02aded3e10ed11447434ada2853055d6ebb49cc8"
     },
     {
       "file": "burning-conditions/app.js",
@@ -429,7 +445,7 @@
     },
     {
       "file": "burning-conditions/index.html",
-      "sha256": "709ca171c1702883f7194ef93c9c42dc350802f9b1a71560707bc1b3bd7c1a9a"
+      "sha256": "67187fcbc18ba3810f4cb1d996c601b104140bf8f7b8000a349f517b1df21d13"
     },
     {
       "file": "burning-conditions/quiz.css",
@@ -449,7 +465,7 @@
     },
     {
       "file": "cell-division/index.html",
-      "sha256": "c2fccac7107861f46e0855125f537a8e367341db123776d3ede60876136e3543"
+      "sha256": "9fbeb7df0a0d1e2718c96035e40ca87e79f0ca67f77eeb3f442ca49658107486"
     },
     {
       "file": "cell-division/quiz.css",
@@ -465,7 +481,7 @@
     },
     {
       "file": "cell-membrane/index.html",
-      "sha256": "20887366f9b7a30d93077b8a247ef40393024092045ef21eaa750fa8a5c3a97f"
+      "sha256": "4e2e6158a4cfda6c6e17bb0fa02f23b6454393900378f94d8537beec13a94330"
     },
     {
       "file": "cell-membrane/membrane-visual.css",
@@ -481,7 +497,7 @@
     },
     {
       "file": "cell-micrometry/index.html",
-      "sha256": "d1cef61edaec7ff537154825cdfefa9a4e777c8d6d6cd647c047274048685a64"
+      "sha256": "c5933e944b1958086958340e730e4193d301666fc4f6e0de216e4aa22ba04356"
     },
     {
       "file": "cell-observation.css",
@@ -501,7 +517,7 @@
     },
     {
       "file": "cell-osmosis/index.html",
-      "sha256": "92e4d174522fe68be5b8798076e8645ba3b9f5dc0560c6d6ba72a7798f6b2d96"
+      "sha256": "84c096069cecc369d050177dfa9a62df55d9345ca7ac931b0c00cf4ec21ab2fb"
     },
     {
       "file": "cell-osmosis/quiz.css",
@@ -517,7 +533,7 @@
     },
     {
       "file": "cell-structure/index.html",
-      "sha256": "83217c5aa9e34533d4ad4dbcbc29169a5eaf9c0abef92a4a83eee98be3c92ddb"
+      "sha256": "5f83e8a24e6d4c08db180fdd4a8381187243869ae5b8f01f1d7d59990fd91138"
     },
     {
       "file": "cell-structure/styles.css",
@@ -525,7 +541,7 @@
     },
     {
       "file": "centrifuge-design/index.html",
-      "sha256": "676a9d2ea7bc561b1a691d7ff7fbbc2ef76d494fe93e76be2e852e4d8e71ac8e"
+      "sha256": "d0692c6f60f7fc1874f0d1a96190253631efda4c464a9aede0935045bef312f9"
     },
     {
       "file": "check-controls.js",
@@ -549,7 +565,7 @@
     },
     {
       "file": "circuit-bulbs/index.html",
-      "sha256": "039bc2970d6559f19b47023587daff1edd767a802176cedb164058b854709fdb"
+      "sha256": "8997a9c688404d15e608665c080545f04d7b87c7d37a6cedf97f8de67f2224d4"
     },
     {
       "file": "circuit-bulbs/quiz.css",
@@ -573,11 +589,11 @@
     },
     {
       "file": "cluster-fitting/index.html",
-      "sha256": "9f571fa114ce9018bf5a9c45d6e9c3789fbd808ef8f6b0b6a12cbd09987de02c"
+      "sha256": "9a31f86f137b20e3762700359efffe086987b3cd3619cabbe601e67b42a46789"
     },
     {
       "file": "coastal-inundation/index.html",
-      "sha256": "ae7cb50fc997ee899eca3cd431e8709d5a4ca613fb4a7f3cb18af23b00f9c545"
+      "sha256": "7cb99f516d17c80f72425c3c95ccfc45cb8b0291cdb9ce5d9de7015d8792326b"
     },
     {
       "file": "collision/app.js",
@@ -589,7 +605,7 @@
     },
     {
       "file": "collision/index.html",
-      "sha256": "7ff290ffd55798e16182cc1e3eb2099f2f7479f7e45fee6cf195b113ac549b00"
+      "sha256": "5a50815c47f0195908f7343bb2941d6745fa85cc7f31f70a953843c81a6e2145"
     },
     {
       "file": "collision/quiz.css",
@@ -609,7 +625,7 @@
     },
     {
       "file": "combustion/index.html",
-      "sha256": "b9bf1a8c09af54175d7bc6bfe6a484997468efbd2bed1990eb43a3a284e9b547"
+      "sha256": "445d2c0c521156ac0f412445868aa7e9ae4e543355c3cb12ab7087d11dc9b992"
     },
     {
       "file": "combustion/quiz.css",
@@ -632,8 +648,24 @@
       "sha256": "9de0d1c67fe38f2eddb074a21da4dfc95267c1eed3902420c44095cf6617255d"
     },
     {
+      "file": "crust-thickness/app.js",
+      "sha256": "47a62028669c2dc7d0782dc6196dc1638f908c23905c1fb57b73ddec7433d13d"
+    },
+    {
+      "file": "crust-thickness/crust.css",
+      "sha256": "cbc321e26e97d4732090f8f478188f7bed100aa08bec0fbfaedfd67ca926814e"
+    },
+    {
+      "file": "crust-thickness/index.html",
+      "sha256": "b2726f5ecbfdd8e3c303df9e81ba1c9282c8831f902c925a5d18343e072db8b8"
+    },
+    {
+      "file": "crust-thickness/model.js",
+      "sha256": "99d8b78e566fce8322dfa752fd7cb045cbddaed851bac778b450bd3ee651a873"
+    },
+    {
       "file": "curriculum-map.js",
-      "sha256": "dd841b1c7a9c8304b1586c318de66909d2256260ad4c752a3bf60e016f7e0f36"
+      "sha256": "ce5c3eadd22e321966233dcab5a60f5a9987d7ab7889df4359cf0d7993e8524b"
     },
     {
       "file": "density-buoyancy/app.js",
@@ -645,7 +677,7 @@
     },
     {
       "file": "density-buoyancy/index.html",
-      "sha256": "a4712592647fbdbcac4868c122636d66b73ed31fd8cafb8737bf89326fecbc69"
+      "sha256": "2573cf4efe0e843125a4fd4de03bf54808119c56cc683e1f2c11c1443fec3079"
     },
     {
       "file": "density-buoyancy/quiz.css",
@@ -665,7 +697,7 @@
     },
     {
       "file": "diffusion/index.html",
-      "sha256": "1d2dafae842064177c9effcc2021128eb3f7247031a58b97862a08091ccab935"
+      "sha256": "ce88248466f2ad103010b3e586ac8e2c1856c944ce73e5521db8544c5bc94690"
     },
     {
       "file": "diffusion/quiz.css",
@@ -677,7 +709,7 @@
     },
     {
       "file": "digestive-enzymes/index.html",
-      "sha256": "1a0245d16aa0f1d0e1cf04c9d149fab54bec549c612b5dc9b9f86180f2f82e6b"
+      "sha256": "d40f6f7d96e025ac0391b8ffd6af5e8dfe93c43eb73d7ee729babdb7b8c3f881"
     },
     {
       "file": "digital-inquiry.css",
@@ -701,7 +733,7 @@
     },
     {
       "file": "dissolution-mass/index.html",
-      "sha256": "c93bfcd107ce9ed1a517556b3e2fbb590e555aca911d698884262479ec32848e"
+      "sha256": "16fe56ac74748f7aa55a9a1422f7c504732f7e5dad98771b88d6b756ce9f3c24"
     },
     {
       "file": "dna-gel/app.js",
@@ -713,7 +745,7 @@
     },
     {
       "file": "dna-gel/index.html",
-      "sha256": "83a5f208c826b787e697267f5ebcf3449cd2626d3cf421b6979ca61a9aafb633"
+      "sha256": "242e6db330c2c2d7b883bbf786e7dbabdbc01c131b44c0d8df7523b1a728f32d"
     },
     {
       "file": "dna-gel/quiz.css",
@@ -725,11 +757,11 @@
     },
     {
       "file": "dna-replication/index.html",
-      "sha256": "3121294856630fdf53ef157dccfba37493f0112439772b82ed725d14224d07ed"
+      "sha256": "c47225c1ac7287b681fc53d380055b7b1bbdc8b2c80b290af9aaee8298b07f97"
     },
     {
       "file": "dna-structure/index.html",
-      "sha256": "6a380eb4807aac7b60398570f9ba324351f4955b350680b20d948fd88fde6000"
+      "sha256": "c9c3ea4e624dbb457abe6c72eed015c85a20e27d7f929d573ff3a619b856bf08"
     },
     {
       "file": "docking-data.js",
@@ -745,7 +777,7 @@
     },
     {
       "file": "doppler-lab/index.html",
-      "sha256": "53b2437606b97541f199257735ce1543f10fbf54d76c777920f8c9933f698796"
+      "sha256": "e985145d2694113adbfef35ffa1df2746dd988548c1dba6b7ca31f946755b059"
     },
     {
       "file": "earth-system/app.js",
@@ -757,7 +789,7 @@
     },
     {
       "file": "earth-system/index.html",
-      "sha256": "e337b61beccc6c48db2b35ac9575ae2a936cd3330f0c566319b2ee100dd4a0e6"
+      "sha256": "4d669545bc4927263e414f4256e1446339b377b3fcf765b69019c1a0ea909f14"
     },
     {
       "file": "earth-system/quiz.css",
@@ -773,7 +805,7 @@
     },
     {
       "file": "earthquake/index.html",
-      "sha256": "19bab55079bf3c02dec801f9d5046f8862ac73300d7b7c430691ff240b326643"
+      "sha256": "ecacf36d156d3eb6e5b5f1b01086c2286e5fa63aab6330369a8ac590d5884088"
     },
     {
       "file": "earthquake/quiz.css",
@@ -793,7 +825,7 @@
     },
     {
       "file": "electric-field/index.html",
-      "sha256": "d4c156fddff7c6710b4444ef9560cfe91aa5beea030a3526ebede025076fcfa6"
+      "sha256": "10fe6c1304b9f79d9bff9554391b900d3239f8c04fb4b2a8f643b5c1a7129732"
     },
     {
       "file": "electric-field/quiz.css",
@@ -805,7 +837,7 @@
     },
     {
       "file": "electron-slits/index.html",
-      "sha256": "b3e22343da5900d7ca5c1406daeac768df1f94c2eb0a788588f4ebaa23835228"
+      "sha256": "ea3500fa6ae5f23f42267e44c167b249ca6ada91c645916f7d15c79990132a2b"
     },
     {
       "file": "electroplating-model.js",
@@ -821,7 +853,7 @@
     },
     {
       "file": "electroplating/index.html",
-      "sha256": "eb2c6d9472b391e6e48b4e0121d53c2f1799b7997bb9b740cd14f9b825f33499"
+      "sha256": "c32cbfe41d75d111bf13711658771cde62a95e1a32b84dbe3bba193f98660f97"
     },
     {
       "file": "energy-conversion/app.js",
@@ -833,7 +865,7 @@
     },
     {
       "file": "energy-conversion/index.html",
-      "sha256": "276825fdb20fb0af5b97860079d798826f8157179fd09bc3f8dc875fde22ec2e"
+      "sha256": "a4bc03e65d99a63909a3b1a93b4bc88e1d0e134a16d2802cb5bc1e3fd9c655f1"
     },
     {
       "file": "energy-conversion/quiz.css",
@@ -853,7 +885,7 @@
     },
     {
       "file": "energy-heat/index.html",
-      "sha256": "297f721ba9e535ce1cabf6c3708e6b065068dcdb28d294219ae09ad7c124a392"
+      "sha256": "84bdaeabf301f02231b36dedd2d73506c397c1f5e704a9af26ae1efb2cdf3018"
     },
     {
       "file": "energy-heat/quiz.css",
@@ -869,7 +901,7 @@
     },
     {
       "file": "energy-metabolism/index.html",
-      "sha256": "72a034cc1ef4333b52c61a26346bd3a521e05a5334b227a531a587d8bf6ae4f7"
+      "sha256": "8f195498c8026cebc7331689325c5466a2dbbb147d9836439af3ee54dfc234f3"
     },
     {
       "file": "energy-metabolism/metabolism-visual.css",
@@ -893,7 +925,7 @@
     },
     {
       "file": "enzyme/index.html",
-      "sha256": "9e2e66066bf46db79ec050bd28a014542b0684fec6f8dc80c7104618c615d88a"
+      "sha256": "7c6cc0521325119b529f49530c2248a866be5421d5c28bd1890e9978cab5e1c0"
     },
     {
       "file": "enzyme/quiz.css",
@@ -913,7 +945,7 @@
     },
     {
       "file": "equilibrium-colour/index.html",
-      "sha256": "eee8cf6e12cceb062a13002ce50824771a4bc9bfb694ff99dcbf49e2dbc23709"
+      "sha256": "4df8c49a0b0d9dae9c8552967ec9edc1417470006b2489ba9f1cc50f8a97e202"
     },
     {
       "file": "equilibrium-colour/model.js",
@@ -965,7 +997,7 @@
     },
     {
       "file": "exam-review.html",
-      "sha256": "bfff8631a17face241dbad23b08d2aa6101d677f30ce195ef2f8188449b6ae74"
+      "sha256": "cd0c8ba9af66fa1e72461d9e262cdab2bb36a6163ecb336e4ae43f8528af8bdb"
     },
     {
       "file": "exam-review.js",
@@ -977,11 +1009,11 @@
     },
     {
       "file": "exam-scope.js",
-      "sha256": "6f0c8b6e31497b8d92a03bdea272a2ecf6bf6135b5ede73478680622b715a936"
+      "sha256": "e6969ff46521a559978c219af8740405ffc3adeb0518ead8cfe6925c1cc0c13a"
     },
     {
       "file": "experiment-questions.js",
-      "sha256": "c98d113afc3e7b82a66e3501be5ea66fcbb242f3c833b2ce355ef27ba5edb17a"
+      "sha256": "df93ea3dbba64ad9fbed4808a3383a5b202f1fbdf1521885ad2ef45cd05f028e"
     },
     {
       "file": "experiment-stage.css",
@@ -1009,7 +1041,7 @@
     },
     {
       "file": "flame-ions/index.html",
-      "sha256": "97d4ac886e01a89b9b2eefb2872274a828c6497784410acb53704ff033faf47e"
+      "sha256": "c1def96511bc8055d4527c9651cb67df4b04a15324eec426a068f7b8d77faf10"
     },
     {
       "file": "flame-ions/quiz.css",
@@ -1033,7 +1065,7 @@
     },
     {
       "file": "food-web/index.html",
-      "sha256": "647af658960321feaff3b032f07565aac1f285ed2a15546f42cf58186497a446"
+      "sha256": "a0f0b67ea5205d1ddf1cfcdb41006f06e944e8fecf50598bd4c6f70076da9e41"
     },
     {
       "file": "force-motion/app.js",
@@ -1045,7 +1077,7 @@
     },
     {
       "file": "force-motion/index.html",
-      "sha256": "d6be9ad265c9ca552132d899523bf170def2017de630f6e34458033966e4fb16"
+      "sha256": "16f739121725ad2c027b3223fe7378edcd148c66b0b60a84743f7a1aa97ade90"
     },
     {
       "file": "force-motion/quiz.css",
@@ -1057,7 +1089,7 @@
     },
     {
       "file": "fuel-comparison/index.html",
-      "sha256": "3da748010731535f3e858f0c6e0cb37340afde53260f4a1266c6c02c72e55b91"
+      "sha256": "6e6cc5ceeb94cc9bc0cadbe392694610bfb8ee7ecc9c493b9d224c342c90b1bf"
     },
     {
       "file": "galaxy-hubble/app.js",
@@ -1069,7 +1101,7 @@
     },
     {
       "file": "galaxy-hubble/index.html",
-      "sha256": "60a204257e1c66c39bc88c9a4d2c798ac0dbad3cd4391816ffee49a9cd7c2020"
+      "sha256": "9ef1de3d02106a0a4679d4221e561a03f581bc75626ccae22780a0e30c97ac9c"
     },
     {
       "file": "galaxy-hubble/quiz.css",
@@ -1081,7 +1113,7 @@
     },
     {
       "file": "galileo-incline/index.html",
-      "sha256": "2f68654a28db93dcdc943f19addd7e91af9b20aa6fc86f90e0c391a1a1ff7a76"
+      "sha256": "351b8f922679e1d3adf215a5b195972522b6c41ff528b61c1a231e5c07a54a79"
     },
     {
       "file": "galileo-model.js",
@@ -1097,7 +1129,7 @@
     },
     {
       "file": "gas-identification/index.html",
-      "sha256": "b8f3de674802f34345a2d23d9de2d0e7a1e29d4c0fc1bc6595d60406adeac3c6"
+      "sha256": "c31819b8f87abe05d97ecb4860423518a9b9eb1cec789f2d97ea39d16a237e78"
     },
     {
       "file": "gases/app.js",
@@ -1109,7 +1141,7 @@
     },
     {
       "file": "gases/index.html",
-      "sha256": "599dfcb58d70edc8fa7ed2962f7f10b8e554367294dc9cb8f990bc1af044c73a"
+      "sha256": "0843a6236d91bc665833d48c81f2a63a44a22b0095ddd25fd2b25c860eb5563e"
     },
     {
       "file": "gases/quiz.css",
@@ -1125,7 +1157,7 @@
     },
     {
       "file": "geologic-time/index.html",
-      "sha256": "e17445724f655943065a3b2bbe6113d2eab0e4037c6ee7f3a70c893e6b7a32a0"
+      "sha256": "8f4d0577fe6149afa942a466fc0392495de8ccb92734bf3fc178033286f3efdf"
     },
     {
       "file": "geologic-time/quiz.css",
@@ -1161,7 +1193,7 @@
     },
     {
       "file": "gravity-motion/index.html",
-      "sha256": "ffe8f7ad406771339e885cb27714fb28559545919c8841debfc3a56690a59871"
+      "sha256": "00a4f124260119fb281ba4b210463bbf0e829f460639898138dcf71d51f3dbdf"
     },
     {
       "file": "gravity-motion/quiz.css",
@@ -1173,7 +1205,7 @@
     },
     {
       "file": "habitable-orbits/index.html",
-      "sha256": "e6698703d296eeeb28545b9613aa6f840e30afb38b60c3b291c296a4c08cf584"
+      "sha256": "6c5cf59f1994977a2766e4328de6241dabfedbf11e316c27308d8e02acea7207"
     },
     {
       "file": "heat-engine/app.js",
@@ -1185,7 +1217,7 @@
     },
     {
       "file": "heat-engine/index.html",
-      "sha256": "97fa8b96596842e33e9a27c8c3473f2d6f77c78f65eb979592a1c45bf69d806c"
+      "sha256": "42b1eb91bc523353979435b1ede03296839d4558445ed85f090cac66589adb80"
     },
     {
       "file": "heat-engine/quiz.css",
@@ -1205,7 +1237,7 @@
     },
     {
       "file": "heat-transfer/index.html",
-      "sha256": "487bf81d637b95aa0122fb3c0de4c2ab14b2db9cc81bdf8c729d92165b896d4b"
+      "sha256": "f2c92120540cf08e6c72a7444261ec125eb1b00631072e7b3563fc58a41fbeba"
     },
     {
       "file": "heat-transfer/quiz.css",
@@ -1217,7 +1249,7 @@
     },
     {
       "file": "hess-calorimetry/index.html",
-      "sha256": "6bc9120fa322b705b024b3526b3d1f5fc06ced386314306d7cc2cc25ab53c07b"
+      "sha256": "1253d4b270a411355698fdef2335280e68882c34c3ea0a9be5a7e7f5c0d3d74b"
     },
     {
       "file": "homeostasis/app.js",
@@ -1229,7 +1261,7 @@
     },
     {
       "file": "homeostasis/index.html",
-      "sha256": "6b70d9bfa4d96239cccff42b71a63419aad093e35eea2d2d8726efc81599fae1"
+      "sha256": "41ca207185103c561ce5cb79e5894a907405b33816127e552f096f1e41348b1d"
     },
     {
       "file": "homeostasis/quiz.css",
@@ -1240,8 +1272,24 @@
       "sha256": "1a839ae2d0e7c787d1c4f9577651645ddb442b5c1444e10629c8ae54669d81f7"
     },
     {
+      "file": "hr-diagram/app.js",
+      "sha256": "3086bc1ba84facafd7320d675ecf168acd25d200aacc3a3863ccf2f24b5c3e1e"
+    },
+    {
+      "file": "hr-diagram/hr.css",
+      "sha256": "b95936e2e56e49e0de2ff7467d6d796a35d834ae67787c098bf57e3101846702"
+    },
+    {
+      "file": "hr-diagram/index.html",
+      "sha256": "ba09707c56d655f6dcea5c1422dc3da2455d523e67568339754d6dabe83e31d2"
+    },
+    {
+      "file": "hr-diagram/model.js",
+      "sha256": "3e6fa02b1983564b5a5ab1a5a74e481365beabc3a326b2c205df851ac8d6e56d"
+    },
+    {
       "file": "hydride-boiling/index.html",
-      "sha256": "f98490d7fdad22c58138ec810b00e03e9a03546ea0b395b5a71edefdae29c82d"
+      "sha256": "815aacd105d83cae658ce792b655d4af33fe1361f30ad2ccd62364abcba7ccd8"
     },
     {
       "file": "immune/app.js",
@@ -1253,7 +1301,7 @@
     },
     {
       "file": "immune/index.html",
-      "sha256": "67386ac18f701a05c5bb3b02a93461596cf1058a58ae2826cb37a15fe7d918fb"
+      "sha256": "7ba05fd5833d49e61369ca52a01b0e0151d7df5624b587281bf7a21b8999c41d"
     },
     {
       "file": "immune/quiz.css",
@@ -1265,7 +1313,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "0da74fa7c01e65c16fa0aa179ae92448b08ea9bf371b83f23bae67335f7689a5"
+      "sha256": "2901cb782796bb92d1ee942b42c967d2c01d292dd7538e9c5b36e24d51852a92"
     },
     {
       "file": "induction/app.js",
@@ -1273,7 +1321,7 @@
     },
     {
       "file": "induction/index.html",
-      "sha256": "0dbc150aa75955de0f0ca3f704bc65ddfdd038424843973c972832f112ae468f"
+      "sha256": "1832aab46cf3229486fca25f944fddb73fb4da566c1380703583fefab9cf8120"
     },
     {
       "file": "induction/induction-visual.css",
@@ -1293,7 +1341,7 @@
     },
     {
       "file": "infection-prevention/index.html",
-      "sha256": "7ee462c45e28f3058d9a106507c972df880ebf33700eb2d621c049c4f6168998"
+      "sha256": "63c536b792100938d45f5944ec4276366c442cf5982696ba3829686b73696828"
     },
     {
       "file": "infection-prevention/model.js",
@@ -1313,7 +1361,7 @@
     },
     {
       "file": "insulation-lab/index.html",
-      "sha256": "9f3eb9116f91e63319e7970b077ddfb07dd7e39857d15a7cb6d58693d5f729ac"
+      "sha256": "45e5db88c3b492bd332d10c88e3cddbdb95a9696acc65760ca7cc606feeaa119"
     },
     {
       "file": "interference/app.js",
@@ -1321,7 +1369,7 @@
     },
     {
       "file": "interference/index.html",
-      "sha256": "0106c06ddd587aeacfafaa9cb3798d1cd171ca35edf03dc9f64b6c41f97278e5"
+      "sha256": "328d1cbc456bad03e8ea91be146f5755712ff81fe7b339a5016b91c7f9fc591d"
     },
     {
       "file": "interference/quiz.css",
@@ -1337,7 +1385,23 @@
     },
     {
       "file": "karyotype-lab/index.html",
-      "sha256": "1558d4d95ebead52349495f092464a67f5211bc7d50f0f3d58e4e8b57f8a7e79"
+      "sha256": "fb377b71f063b568d662f46e56352f836939793a656792cbacf4fabb744ac69d"
+    },
+    {
+      "file": "kepler-data/app.js",
+      "sha256": "ac14696c26a509b2b509693db994c42dc47673ec24966ac67190d97524ef0a5e"
+    },
+    {
+      "file": "kepler-data/index.html",
+      "sha256": "7f44c057251f18fa001fd5d0629354f6f26b44c2da38a5a0df440851f6e14581"
+    },
+    {
+      "file": "kepler-data/kepler.css",
+      "sha256": "fdeaeca3ce4ce3ec59d0aa7956566a81ae6d18d56119f0f0b993bd904b6717b1"
+    },
+    {
+      "file": "kepler-data/model.js",
+      "sha256": "2fc1e79a78b321b0b305512df40bde16ed36f3d45629f7d27dc9b07dff245cba"
     },
     {
       "file": "lab-ui.css",
@@ -1353,7 +1417,7 @@
     },
     {
       "file": "land-sea/index.html",
-      "sha256": "253f1665a868a5887ff08a14c543305a83be517ecff97bfd4e4db6148fe8fa39"
+      "sha256": "ec63810ee9fb0c63bd2ff313adde02b4cfb66ac274f7fc309c0cd24fb0161536"
     },
     {
       "file": "land-sea/land-visual.css",
@@ -1381,11 +1445,11 @@
     },
     {
       "file": "leaf-classification/index.html",
-      "sha256": "f4b1d335ca3454fadb71ca183d26dd3a56b4953ad8d644264c3cf2a9dc4cbee5"
+      "sha256": "1b230369935aff21942aaf9f983575c5da892f2da0b3fd91ff53ff613440dc17"
     },
     {
       "file": "leaf-pigments/index.html",
-      "sha256": "0553b3e93b2380ca23058f8f80fb43e7583e348dc25f07b2fe2cb7370baa5592"
+      "sha256": "9a130370629fb75906e98b688a441793f0ff6a4b4ac02071f912803a911dd9ec"
     },
     {
       "file": "leaf-starch-model.js",
@@ -1401,7 +1465,7 @@
     },
     {
       "file": "leaf-starch/index.html",
-      "sha256": "ec6aca47fb973578e6b40775878e37da3935f8e5b4d9d0b7dc5c049ddf02068f"
+      "sha256": "2141a97f0e59a1180802bceb6767047b1e479a7f6760c32e028ee7b2fe49421e"
     },
     {
       "file": "lens-image/app.js",
@@ -1409,7 +1473,7 @@
     },
     {
       "file": "lens-image/index.html",
-      "sha256": "81d806de0d6a2ea4cbb2445d9eb24f20eb2a34500c56161c963708cb3a3e0c14"
+      "sha256": "68671085882e6a026eb51273cc542dba103d9ccf441921b85fb1f33014e0fd0a"
     },
     {
       "file": "lens-image/lens-visual.css",
@@ -1429,7 +1493,7 @@
     },
     {
       "file": "lever-balance/index.html",
-      "sha256": "0fa145daba60204fa8af8a3db16caf8d01cf3615fd664f9fdd64d78e6bedf1d2"
+      "sha256": "d2de0a2c49bec3f1f6e1b07711b6ac67dbeb824b66cc845500cde7d8f0697965"
     },
     {
       "file": "lever-balance/lever-visual.css",
@@ -1449,7 +1513,7 @@
     },
     {
       "file": "life-cycle/index.html",
-      "sha256": "a5824ae6333969b081e8c42411fd7382b8a28d1a125af70b37c9750ecb91aa94"
+      "sha256": "d0aa92d461091875cf61114217cceafccd0608208f6eae57ba254ddb38fb74ee"
     },
     {
       "file": "life-cycle/life-observation-art.js",
@@ -1481,7 +1545,7 @@
     },
     {
       "file": "light-interference/index.html",
-      "sha256": "edeee46e8e69c807cbbb673502bf2f4b0c15671bab44f32075290398af616ea9"
+      "sha256": "a20f194fd9cddfe0c042336a3e21e832de8d19bf88cc580014e3de44d5d4008b"
     },
     {
       "file": "light-shadow/app.js",
@@ -1489,7 +1553,7 @@
     },
     {
       "file": "light-shadow/index.html",
-      "sha256": "629f93557b643bc1c4c4146baf5a4c89686e085ca238f269e3fdc6bc0d08b7fa"
+      "sha256": "51f789eb6f5a562a981675cea3c3ef9c52f3b9b3e1851b1d9a824fc18206faff"
     },
     {
       "file": "light-shadow/light-visual.css",
@@ -1517,7 +1581,7 @@
     },
     {
       "file": "liquid-heat/index.html",
-      "sha256": "c8ece6fd6a81a286c3071b8ba4be5c762d3d9719fe55dbc7354986a2d098ab89"
+      "sha256": "4a75b28cc65c2c0fca8000abb97591ed1bb6090bf80804dbe23a284ba3393664"
     },
     {
       "file": "living-environment/app.js",
@@ -1525,7 +1589,7 @@
     },
     {
       "file": "living-environment/index.html",
-      "sha256": "7b0b551848100f82adc60d08e93c0eabf422b32362ab4296a675c3926c9fb880"
+      "sha256": "d2a0dbe15c335b83c16517648ec472dfbf60ba9238a59080bc049056428b4d91"
     },
     {
       "file": "living-environment/living-visual.css",
@@ -1545,7 +1609,7 @@
     },
     {
       "file": "living-things/index.html",
-      "sha256": "79b0a6da25a8bc8b8c0d7bf5fac81fc5559e7fe663c8506f98f3031b72653dcd"
+      "sha256": "e87d86cab6f8bc62b693e44aaf11437995ec210233ce55e998f2f853b3ae3bb8"
     },
     {
       "file": "living-things/living-visual.css",
@@ -1577,7 +1641,7 @@
     },
     {
       "file": "local-biodiversity/index.html",
-      "sha256": "86746ed568ed3ee16b452be0248abb81bc980dacce70e0bc9ec8678d991d2d21"
+      "sha256": "8e98afd34d13c5b14d9f52365896367511abcfbd5009a25a3e852e8ebbd5d361"
     },
     {
       "file": "magma/app.js",
@@ -1585,7 +1649,7 @@
     },
     {
       "file": "magma/index.html",
-      "sha256": "a2f84559734dfcf119d6b08f44c23717009c5a531a6509e9dde78fcec84f3f73"
+      "sha256": "c5bec8dcc2e3fdc7c1d30efb271a8ac87c14bac0454dd9093d928d4ad02c0efd"
     },
     {
       "file": "magma/magma-visual.css",
@@ -1601,7 +1665,7 @@
     },
     {
       "file": "magnetic-brake/index.html",
-      "sha256": "164a9cc3a2f8afd9ab92754251aefb30daf6ac00c4cdc70ab4e9e94d09d49bc8"
+      "sha256": "301ba1ef661358bf7be81d066276eda2f5a67444de5414f9999bd186bbdf2e68"
     },
     {
       "file": "magnets/app.js",
@@ -1609,7 +1673,7 @@
     },
     {
       "file": "magnets/index.html",
-      "sha256": "4aaf4e0a609cfc26589204de6a2d0251b7088900abc5d90fd102752e1374d72d"
+      "sha256": "d5de7db84ee8ceb7ee781e806967f15723927da86e4d98697114a74a82d56d07"
     },
     {
       "file": "magnets/magnets-visual.css",
@@ -1629,7 +1693,7 @@
     },
     {
       "file": "mass-ratio/index.html",
-      "sha256": "da8c6200e8ed5bb781dbe7a746c0159dbbc8f877b2113d15797f3aeff459407d"
+      "sha256": "c1873198bebd1dffc8fe38ff5c21a83e8d6aa757bab91b277a6006703a92fa30"
     },
     {
       "file": "mass-ratio/mass-visual.css",
@@ -1645,7 +1709,7 @@
     },
     {
       "file": "mcu-sampling/index.html",
-      "sha256": "dd71ca9dd092204009b789a987ef2c9ea28d9459677056a4104610796abac39c"
+      "sha256": "7f69e9cc0c3f040b34c26e104f0238147efb0bfbc66acac691ee672d56a6d8ea"
     },
     {
       "file": "measurement/app.js",
@@ -1653,7 +1717,7 @@
     },
     {
       "file": "measurement/index.html",
-      "sha256": "45acc257f710d7fd84d8e6451b84219ce69fa268ddef3702af1c6291ba337294"
+      "sha256": "497dd38d37d150e17833ca4337dd668e9c860420107967f230d8bb0800e581c1"
     },
     {
       "file": "measurement/measure-visual.css",
@@ -1685,7 +1749,7 @@
     },
     {
       "file": "mendeleev/index.html",
-      "sha256": "e3d42f9957d96bb84d92842233779e4634d150f21dda0646e4f974c0f4d18e41"
+      "sha256": "7678ca9f5e05dfc335ed4c42952df0fe5d23b69aaeaafad95dc3931224b3b008"
     },
     {
       "file": "mendeleev/model.js",
@@ -1697,7 +1761,7 @@
     },
     {
       "file": "metamorphism/index.html",
-      "sha256": "8d086f0f38326d5c1ecda7cd2c4ff17b738c9eec306d21ad08f3236da9b0829e"
+      "sha256": "bd9b811ae376e285c9718fc237893ccacf8b97da722a74fc5aa231eb85ed6ce6"
     },
     {
       "file": "metamorphism/meta-visual.css",
@@ -1725,7 +1789,7 @@
     },
     {
       "file": "microbes/index.html",
-      "sha256": "c579172eb07a91725e4c5f34bd43be4ded9fc0b13d1017f428137926953b835e"
+      "sha256": "96f58b4178a82b90539500405f850836442ed8b6e9f25b2669256c877102766f"
     },
     {
       "file": "microbes/microbes-visual.css",
@@ -1745,7 +1809,7 @@
     },
     {
       "file": "microscope/index.html",
-      "sha256": "ec5744048f97f676726006a2e0529ca1a75fc9e6f94b766f399f2d69fa08115a"
+      "sha256": "6df80131abbd6ab33313770f1547abd78da9c220448e715e41962f40f3622ab4"
     },
     {
       "file": "microscope/quiz.css",
@@ -1765,7 +1829,7 @@
     },
     {
       "file": "minerals-rocks/index.html",
-      "sha256": "f33c8d0b8c59ddaa7e571b6ae25dab5ed2d4d18d8d0de27a8b0fc54c011e70c3"
+      "sha256": "82c25afff84f2911ce5dfc2f8210c35a0e05336b01cc3e8f770c0cf0f43b0f7a"
     },
     {
       "file": "minerals-rocks/quiz.css",
@@ -1785,7 +1849,7 @@
     },
     {
       "file": "mixture-separation/index.html",
-      "sha256": "b99c8a44d72a86cc9e13eae98c637d43da26df9178b88d0a3fd4627e5fe56e8d"
+      "sha256": "6b14a15cc0273f681bca4b36e6379e986f1b03a30d69170c034bf8bf89271113"
     },
     {
       "file": "mixture-separation/mixture-visual.css",
@@ -1805,7 +1869,7 @@
     },
     {
       "file": "mole/index.html",
-      "sha256": "5bb73a9581809f82cb99d9f6bb7757ae1eaca3414822e438e74a2482e4e527cb"
+      "sha256": "bf21dc605394c52460a514d4d3a0cf77f2aa4c5ec09a7d59d5ad31fb3e6c74a2"
     },
     {
       "file": "mole/mole-visual.css",
@@ -1837,7 +1901,7 @@
     },
     {
       "file": "molecule-shape/index.html",
-      "sha256": "2e8b2b8bf83388659b011836c31c2ea93156f47696c0ca0af6cae7ac0a6d05fb"
+      "sha256": "0ac5d6ef4e754942a57dd0dc28a6bc8469a085a05cf1ac5c0d6191321fb7bb5e"
     },
     {
       "file": "molecule-shape/quiz.css",
@@ -1857,7 +1921,7 @@
     },
     {
       "file": "moon-phases/index.html",
-      "sha256": "de2ba1236ebca78509a0d717698affb902bce06ae86ca9f45b2049a6fbbfbc9c"
+      "sha256": "fd5f04a86e155a28dff3520f3b933739a866308592c4821743358f5021e97d76"
     },
     {
       "file": "moon-phases/moon-visual.css",
@@ -1877,7 +1941,7 @@
     },
     {
       "file": "motion-energy/index.html",
-      "sha256": "1ce099c75e99386cf30a06adf0148c03b04c5d408cc32259b5ca0c72195c6867"
+      "sha256": "b1497c30d0a525b7fda26beb1af4c5f7affda2a3793555b57f2bcd25d34a3715"
     },
     {
       "file": "motion-energy/motion-visual.css",
@@ -1897,7 +1961,7 @@
     },
     {
       "file": "motor-magnet/index.html",
-      "sha256": "c4c5a1bca10654373c2b5be17ed1db48cdef962389c971200e7fbc947655013a"
+      "sha256": "cb0b79a24bca56226dbc0024464dd7175aa63f30124ce9468ba292242d0dfea7"
     },
     {
       "file": "motor-magnet/motor-visual.css",
@@ -1917,7 +1981,7 @@
     },
     {
       "file": "natural-selection/index.html",
-      "sha256": "7143eded1f0f7f7ebb8d1eb2ddb5a17ef279fa78639e9801ff8961e100644acd"
+      "sha256": "9ec3e07c132e89a102bf5b1ad1379ac85e1f346738701d4e1eddfefbf99c4d89"
     },
     {
       "file": "natural-selection/quiz.css",
@@ -1937,7 +2001,7 @@
     },
     {
       "file": "neuron/index.html",
-      "sha256": "2488c0203890cef11ac062ca69bbd004e59eaf14e1dd0f9d5b92b782783cf917"
+      "sha256": "e0897bd12c847ce32b40502861963c684db97d73e9c18051e0abde752c5bfa96"
     },
     {
       "file": "neuron/neuron-visual.css",
@@ -1953,7 +2017,7 @@
     },
     {
       "file": "neutralization-common/index.html",
-      "sha256": "093f2f938fb03e97286dac50462f817bf5df5fe2b2bcddf0adc073ce9a51d92d"
+      "sha256": "d5c42035a45ec053f14be6443e31ee3ce32f6c01b102c007d16fad30c544ed4a"
     },
     {
       "file": "neutralization/app.js",
@@ -1961,7 +2025,7 @@
     },
     {
       "file": "neutralization/index.html",
-      "sha256": "c3499c4963eeada5e90edf473c91f59933b7deb768e31a6bc4d5811735e2c315"
+      "sha256": "f2a7da30f25b6ac71bc20a6aef8fd64da9f68d2656f48384f4095ddb196dde33"
     },
     {
       "file": "neutralization/neut-visual.css",
@@ -1981,7 +2045,7 @@
     },
     {
       "file": "newton-prism/index.html",
-      "sha256": "83bac41a744929c1cd7e3a7660e1daba8e58bdb9018efc1c099c706a3fb4fc6c"
+      "sha256": "a87e7a9ddc9884240ca5e004218c48643d2f53eb45ae6300ba443eb6e80be496"
     },
     {
       "file": "newton-prism/model.js",
@@ -1997,7 +2061,7 @@
     },
     {
       "file": "night-sky/index.html",
-      "sha256": "3633155adf1e8ac77dd2bcb0872b8ddf4efb5a188bdff3429fe9024cfa425150"
+      "sha256": "92ffb53b1f0c5c1762ee18f779ca2a4ed83e8dd9673ae2d5d98df73ebceffca6"
     },
     {
       "file": "night-sky/quiz.css",
@@ -2017,7 +2081,7 @@
     },
     {
       "file": "nutrient-detection/index.html",
-      "sha256": "f3ff1111a7336a9ddd056b2314fee05731b2cab89ffd86181098daae53481261"
+      "sha256": "28e8d748832f6957f9d58e95946e354da3694411eab9482dfc07925a5301c869"
     },
     {
       "file": "nutrient-detection/nutrient-visual.css",
@@ -2033,7 +2097,7 @@
     },
     {
       "file": "nylon-interface/index.html",
-      "sha256": "138a457ebe10b055c80184e1950eda7c63a7e5d70c0506bcc3bfd17f9a8925f3"
+      "sha256": "993b5b77b8e349e7fbc41db2550bbfdc33d2ec99072663016054c7ee54472c08"
     },
     {
       "file": "observation-scenes.js",
@@ -2045,7 +2109,7 @@
     },
     {
       "file": "ocean-circulation/index.html",
-      "sha256": "379f61bb55fa3f6c11353a507a0a0243769262d188004b901c6b94db21223fa3"
+      "sha256": "7bbc858f245e1fed4044c63e329c9a76ac101f6495c4679e8cbe99397f3d6617"
     },
     {
       "file": "ocean-circulation/ocean-visual.css",
@@ -2065,7 +2129,7 @@
     },
     {
       "file": "ocean-layers/index.html",
-      "sha256": "23c0045f0b06a88311862e6bd53b224e515abccea6e9eb01fbc928d1a5e4b2fb"
+      "sha256": "9dac3b448fda13bd5b5d122a676cba37c18b59bc5c31fb2ff968694a72469f52"
     },
     {
       "file": "ocean-layers/layers-visual.css",
@@ -2085,7 +2149,7 @@
     },
     {
       "file": "ohms-law/index.html",
-      "sha256": "d1c2280c07654e94fdaa751c67603f7f82919b9bdb9da75ff226d4bc67f33a48"
+      "sha256": "e1664ab79d0ee184a468c363c4dec1ef8bc8124c8c752261dd87bee4b6b26f48"
     },
     {
       "file": "ohms-law/ohm-visual.css",
@@ -2105,11 +2169,11 @@
     },
     {
       "file": "organelle-builder/index.html",
-      "sha256": "fe268a940f17c43c8212c066a368ce7bcb2a4939c581ae9ef5e30572e15b4524"
+      "sha256": "8e73c4e56f66e48f8bcdb14659c41b6bf8bf1a53ea7dd7f26632ad776ff37c51"
     },
     {
       "file": "organic-builder/index.html",
-      "sha256": "afa8cfd53e47850a4efbe9cd00af6f84e68145c9f958cb81ca6354e86461758e"
+      "sha256": "7cc2e42a61d6d9e6136ac8929ebf8b6fe36777d0c583531f2b6155b24d2c0d0d"
     },
     {
       "file": "osmosis-mass-model.js",
@@ -2125,7 +2189,7 @@
     },
     {
       "file": "osmosis-mass/index.html",
-      "sha256": "170fa14ede6d477749b5d55d6500fcebac538f23317224bc4dbfeabc62243ffc"
+      "sha256": "76061c0231276b1893c530b5479c955f5b612350038a3d4bd40173345c8ccc26"
     },
     {
       "file": "pasteur/app.js",
@@ -2133,7 +2197,7 @@
     },
     {
       "file": "pasteur/index.html",
-      "sha256": "f5011c4bf6f5b9f0ba0767c3d48feeb5a8f9e09457613c9235bc7378dbc05124"
+      "sha256": "870fcd2dd2a579bc6be955e1bdd2c5ce319338f07baaa1d7435a6ff097081f57"
     },
     {
       "file": "pasteur/model.js",
@@ -2145,7 +2209,7 @@
     },
     {
       "file": "pea-genetics/index.html",
-      "sha256": "f15698677f1cc0fc189972df8cf659e466627c4728b33eeeb121f7a80685a765"
+      "sha256": "5975a5fefde90fe93684c970d8fa20306753a5ce416b09b9ca1c6f33a52dc457"
     },
     {
       "file": "pea-genetics/pea-visual.css",
@@ -2161,7 +2225,7 @@
     },
     {
       "file": "pedigree-lab/index.html",
-      "sha256": "584388330d39c84f4e97bbdb342bf0eea87aff587f07fc4ac9a721ddc19df216"
+      "sha256": "55f90f0501a5404027a56fde5ef9a0e85045e0cd22e6e32d8e48629efc9d828c"
     },
     {
       "file": "periodic-bonding/app.js",
@@ -2173,7 +2237,7 @@
     },
     {
       "file": "periodic-bonding/index.html",
-      "sha256": "a6c33bccf7f7336f75eec9dfcd95a47aa2c845d2bab1356634fcb119bb442654"
+      "sha256": "2a1a10f970d43b2b4fac6468f5ec42a619c19ac7343d5e9d56b61fb49dbcf581"
     },
     {
       "file": "periodic-bonding/quiz.css",
@@ -2197,7 +2261,7 @@
     },
     {
       "file": "ph-comparison/index.html",
-      "sha256": "164c73ebf8bace6edba04256cdec21e29de19105e683e8870522a7bf54a3c5b1"
+      "sha256": "4f8a9757c443615b60534fc52383f4099fb5db8801ee45c93a390dc983c4a9eb"
     },
     {
       "file": "phase-mass-model.js",
@@ -2213,7 +2277,7 @@
     },
     {
       "file": "phase-mass/index.html",
-      "sha256": "b5f8ad95b8798d48ff35bf318d5f608da4c8a667f55b04379676f5c65dc02277"
+      "sha256": "4316265bf41f469bad1d1193b5604454a7d20c90d93e6cb2866d713aa97ed893"
     },
     {
       "file": "photoelectric/app.js",
@@ -2221,7 +2285,7 @@
     },
     {
       "file": "photoelectric/index.html",
-      "sha256": "c82424190151faa7c6c98ab611d54ca3357d64a956f7d272f0fa83d550c8aa5b"
+      "sha256": "3e14f5cf8f90f0ee3afe74d0d52e9e4a68e0a2eb17584dacd8c2597717d1eceb"
     },
     {
       "file": "photoelectric/photo-visual.css",
@@ -2241,7 +2305,7 @@
     },
     {
       "file": "photosynthesis/index.html",
-      "sha256": "a1ef683c9e3dc8bfba56826f7a026d6a1956354af1507b2d70a68859a93f365b"
+      "sha256": "f854135425229dfdff5f3027f16be05f33a97ab81109c4882996baa3031f1604"
     },
     {
       "file": "photosynthesis/photo-visual.css",
@@ -2261,7 +2325,7 @@
     },
     {
       "file": "phylogeny/index.html",
-      "sha256": "95e57c381676108d8a280cf3520ab06f900e43b64b3fd6f19c9e2905a5b51632"
+      "sha256": "ee55c4fefe61a4bc2f9a435f701126f5e0ba2a5ca01b1c870203c6181941b866"
     },
     {
       "file": "phylogeny/phylo-visual.css",
@@ -2289,7 +2353,7 @@
     },
     {
       "file": "planet-motion/index.html",
-      "sha256": "139530fbb0ca33e8e824a9f5210069166335537fd9b9106aaf0046efe78677ad"
+      "sha256": "636f137e974f5d128fece6922076507882a8ac8ac77067b81bc6cb121e00b289"
     },
     {
       "file": "planet-motion/planet-visual.css",
@@ -2325,7 +2389,7 @@
     },
     {
       "file": "plate-tectonics/index.html",
-      "sha256": "9e5fe2d8ffde58766acf189c3db1cf65520800ca60f13d5a091898bc7997bcc0"
+      "sha256": "f655a33e1b2012bd602baf4dcd98bf9922d38249abe4ade9b6050cb74791fee0"
     },
     {
       "file": "plate-tectonics/plate-visual.css",
@@ -2341,7 +2405,23 @@
     },
     {
       "file": "polarization/index.html",
-      "sha256": "b65ee61abd2057032e707da35f43a39ef169b23c1e4e05fb8ce81e5c6764d405"
+      "sha256": "48dcb93d9226d50011ae5ce638669a4a959a04ff5bad9d929130720c7f2be136"
+    },
+    {
+      "file": "polarized-thin-sections/app.js",
+      "sha256": "c83ac8466a77e1bcd0775d7f49e99844987155e1f7fba8680d65c9c1021f1627"
+    },
+    {
+      "file": "polarized-thin-sections/index.html",
+      "sha256": "da98a07263a4a7a37a9aa265f0f8059a2f2a4f1f7bb0a3ea4389e36e73596f5e"
+    },
+    {
+      "file": "polarized-thin-sections/model.js",
+      "sha256": "c82d8c75433d7739499ac417ab3f1ed982cc2d3f3e949e8046872bdff356cbcb"
+    },
+    {
+      "file": "polarized-thin-sections/thin-section.css",
+      "sha256": "bae4c1f30c9db65894be0e8ca619798ecd31b2d851657fa3238840cdcc377bff"
     },
     {
       "file": "population/app.js",
@@ -2349,7 +2429,7 @@
     },
     {
       "file": "population/index.html",
-      "sha256": "85cc138f23c5ea2f0aa749736d4dba1c0b429c84492eee6641c5511756fbfe6e"
+      "sha256": "89a79238bbd2b5d20f2d4ceed7f3b03aa78f782c020efc1c600d8c30a688d99f"
     },
     {
       "file": "population/population-visual.css",
@@ -2365,7 +2445,7 @@
     },
     {
       "file": "protein-folding/index.html",
-      "sha256": "87dca8b52a3bf71411db1f93fa7d506b41a6741de49b68807249febcdbd5e383"
+      "sha256": "1d3eb64e479fa7124649945f43a2ebf621c97d88fcd390a692a4da28c44e1da5"
     },
     {
       "file": "protein-interaction/data/1.json",
@@ -2385,11 +2465,11 @@
     },
     {
       "file": "protein-interaction/index.html",
-      "sha256": "7cf50a8f6e75b5368d68d08b450486705fa03ad4c191046ffb2f3c56232240d2"
+      "sha256": "577147890d36fd5ff6f4bb546eeb7ecc0721c8c899678534bc3f3a764383acdb"
     },
     {
       "file": "protein-synthesis/index.html",
-      "sha256": "1df6ce65f56602336781a77111556c2f492b7f23d29111102303e8437e62d1a3"
+      "sha256": "dd6cebfb551e079665d8406c6c6023ca67daca69695a45e421abe13094b6d319"
     },
     {
       "file": "quadrat-community-model.js",
@@ -2405,7 +2485,7 @@
     },
     {
       "file": "quadrat-community/index.html",
-      "sha256": "1cf21e49f5691ac2a78bc5d518133a85ed936323c52bd386936d97ea2508d4e5"
+      "sha256": "022f53290004b46560f2835ddbc29261c3db4d9d3f2c728cb3633e632a5698e4"
     },
     {
       "file": "question-quality-content.js",
@@ -2417,7 +2497,7 @@
     },
     {
       "file": "rate-equilibrium/index.html",
-      "sha256": "86a77fd0d6dd690fdb1c473b7769bcbb372bd95fae93c6640c25c14470093624"
+      "sha256": "4f68438e705c806427a6febb257bc3be62c612df3904fc4e55b4a8ba615e0b15"
     },
     {
       "file": "rate-equilibrium/quiz.css",
@@ -2445,7 +2525,7 @@
     },
     {
       "file": "reaction-pressure/index.html",
-      "sha256": "3ffc8196e27b90147c65ff7a9abfc605dd07744922febed089aef2f764adab41"
+      "sha256": "24f41edbabef0f4dc66a890e69d5a1736f1bf365a217759f07f32e7810551af4"
     },
     {
       "file": "recrystallise/app.js",
@@ -2457,7 +2537,7 @@
     },
     {
       "file": "recrystallise/index.html",
-      "sha256": "4c579b1dc1d366eabded89f0b59492f87bca1f60dc6cc7f03171c8af5266b4ea"
+      "sha256": "75fde4ca8258037e79981df1f3ea3d1c7f7428222f03a1f50244f1f265417a60"
     },
     {
       "file": "recrystallise/quiz.css",
@@ -2473,7 +2553,7 @@
     },
     {
       "file": "redox/index.html",
-      "sha256": "eb7accbb3b5bfaf3558d3ffb6e0e9b5214645b285642ca5f5b353862919c6fdd"
+      "sha256": "581cce6a8df932597eb6703d25c6d88d66871872f1ae1cd5965bff03b9448556"
     },
     {
       "file": "redox/quiz.css",
@@ -2493,7 +2573,7 @@
     },
     {
       "file": "reflex-nerve/index.html",
-      "sha256": "bba9d5caa7d14601c29347e85270a374d0d94c6f7233486438fbdbcde99ccf9d"
+      "sha256": "b3996c51d49f7f2895bda9ce508e443747aadc8aaecaeda18d1b690058c426bb"
     },
     {
       "file": "reflex-nerve/quiz.css",
@@ -2513,7 +2593,7 @@
     },
     {
       "file": "refraction/index.html",
-      "sha256": "24e119c35482263e1dfcaa9af0df7b2c4d0a14924f23866b0e3cdec68fa39f5c"
+      "sha256": "76cfbdff99eb90c70a309f849e91925f248af386f67c350281ca0d536a1674ce"
     },
     {
       "file": "refraction/quiz.css",
@@ -2545,7 +2625,7 @@
     },
     {
       "file": "ride-acceleration/index.html",
-      "sha256": "18a08596c048377219dbd34939d61df84e7825d3f4927d310358e0f187dbb23e"
+      "sha256": "49b4bd534b5503082712a0da26b958bad0890923553b3613e1a3d0575ef0743a"
     },
     {
       "file": "ride-lab.js",
@@ -2561,7 +2641,7 @@
     },
     {
       "file": "rock-age/index.html",
-      "sha256": "da261d60de0ec7f57159dcb6eef94d9191aa399955ad716a7c14b2c3dd94a274"
+      "sha256": "a1bdf495472df63e177c69f41428189b5a20d5cab71f41a1f6e98bc2192eb4d3"
     },
     {
       "file": "rock-age/quiz.css",
@@ -2581,7 +2661,7 @@
     },
     {
       "file": "rock-layers/index.html",
-      "sha256": "28c3902b5f48ce61ba0a43314b4fdc3db126f5fe6fa3e0058b1e9a3243e30977"
+      "sha256": "75a2e2e0799e15135cbd0165f6ba0cccd077baa4c7cea366b31e3af5e0b86d91"
     },
     {
       "file": "rock-layers/layer-visual.css",
@@ -2609,7 +2689,7 @@
     },
     {
       "file": "rotating-annulus/index.html",
-      "sha256": "fff703d636f19f965eda9cd9ac86f7b01883b68c2c120888d5640bbe4474e434"
+      "sha256": "eaeb550ce0b22d035ab18eb2f51b8761f05f476f87f7d8868410d09be0c192c1"
     },
     {
       "file": "rotating-disc-model.js",
@@ -2625,11 +2705,11 @@
     },
     {
       "file": "rotating-disc/index.html",
-      "sha256": "6b53f17f3195e8ddc8b64a1c69fd1ce9a3f0ce16d0d909e361f6087759388d31"
+      "sha256": "db79e959060e85e2daf69c61dfd833529eff8cd245800271d9eb7abbccab1133"
     },
     {
       "file": "salt-hydrolysis/index.html",
-      "sha256": "eb06d40501c9041dcf77900d2b5d16e30192df066990896a1e22c7f1ef271a82"
+      "sha256": "de8ee13d12222f3324bd8676f8cab6fb3b09da382ebb4c47604f07f189005017"
     },
     {
       "file": "scene-refinements.js",
@@ -2649,7 +2729,7 @@
     },
     {
       "file": "sea-level-causes/index.html",
-      "sha256": "f8d7a41c05a571cbeb6090b1dd16868add1bec7e760110b23bb443e673c2970b"
+      "sha256": "a76b12fc400494ea4d56759bfbe0e8756079cddc4dce7cda3cac2031cc37139a"
     },
     {
       "file": "seasons/app.js",
@@ -2657,7 +2737,7 @@
     },
     {
       "file": "seasons/index.html",
-      "sha256": "24853b3a0b75bae5db0dfcddfb023e431f4c327a3af0371eacc01432ba732392"
+      "sha256": "183e3bc6860b7d0229f0c2f5de8319e3b3bccf314d9d9163f4e99b986437ab07"
     },
     {
       "file": "seasons/quiz.css",
@@ -2677,7 +2757,7 @@
     },
     {
       "file": "seawater/index.html",
-      "sha256": "9e366a2bbc05a8a19d550b6e7e2847f8b025ec1b11bb2b65df88726d08b5f405"
+      "sha256": "aa73a8901b30c90b9a94b42cfd0294a7b5479016bde3ad4b9c995125746604fc"
     },
     {
       "file": "seawater/quiz.css",
@@ -2697,7 +2777,7 @@
     },
     {
       "file": "seed-germination/index.html",
-      "sha256": "fb20a9c274a4945bfbfa295c6983266946c599e0cb50ee1c635de0ba1f450636"
+      "sha256": "acfecd55a31902bc16e9e793ecfc7381e55e2f1fdf734189570c671cf4225c11"
     },
     {
       "file": "seed-germination/quiz.css",
@@ -2717,7 +2797,7 @@
     },
     {
       "file": "semiconductor-relativity/index.html",
-      "sha256": "5514c8f978957eff8473f66140163d8b12fa8da9131c9d627d11920e2c4cd8c9"
+      "sha256": "42e04fece5286b80696933cb98328b4d918312db391c10d3ee568e9e8c8cb84d"
     },
     {
       "file": "semiconductor-relativity/quiz.css",
@@ -2737,7 +2817,7 @@
     },
     {
       "file": "senses/index.html",
-      "sha256": "608551e0161388eceec750d3775b3d5ba94ff18bf22d41131bc48aa02d5ba8e4"
+      "sha256": "f6e0f73566b2c8fb6a6ef566dace5e7167f25e080d4130a2ab2c28bba16c398b"
     },
     {
       "file": "senses/quiz.css",
@@ -2765,7 +2845,7 @@
     },
     {
       "file": "separation-methods/index.html",
-      "sha256": "f01ab011207df4073b2eb990bae22082372008c75572c93bd7e41ff176144b00"
+      "sha256": "4a837bb1e967723a06f65237341b3c84d012fcbda1dfdba03364655f15c1a4ee"
     },
     {
       "file": "separation-methods/quiz.css",
@@ -2781,19 +2861,19 @@
     },
     {
       "file": "serial-dilution/index.html",
-      "sha256": "c3a3bdc4631536a8a73fa0e221dcfe29517a36617823f5d5fe3d5d93ebd0f3fd"
+      "sha256": "80d20c37ec1095c19a30cd66eea264b82711a38c1567de4e289af6a1ad2ec44c"
     },
     {
       "file": "silver-mirror/index.html",
-      "sha256": "bd07b5e6e37500347c36dec787fa770d5071e37fb9a5f4db940de0a9f070c60c"
+      "sha256": "d1707f63215d3479a80507317f9f0a81a8010b55d6e09b3e8e331aac2c8c2ec8"
     },
     {
       "file": "smart-pot/index.html",
-      "sha256": "8906e75010894996fd0a708af0ae874dd85891313c7a8a62849a8c1488848809"
+      "sha256": "78159f5257709526ad0c02b19703ab20fc5463d5a02239a6620ec1010d52ed1e"
     },
     {
       "file": "soap-film/index.html",
-      "sha256": "40bb4e4a240ba975e031bd65d72adb3cbaad118c7a17668475cd2d5111e79758"
+      "sha256": "11a278ba052e54ccfe5b7c383e9d90509b8cbd42cf7813f82589833cf435aaca"
     },
     {
       "file": "solubility-curve/app.js",
@@ -2805,7 +2885,7 @@
     },
     {
       "file": "solubility-curve/index.html",
-      "sha256": "d6c6f21fe7bc8e4f1686ff1182d97f4d2ac9ead8faa92ed8e8f637971de5d738"
+      "sha256": "74d0cd0f188a508846a7a9e4fe1c7a2ef71873eee453aae03e400c7a760f72d6"
     },
     {
       "file": "solubility-curve/quiz.css",
@@ -2821,7 +2901,7 @@
     },
     {
       "file": "solubility/index.html",
-      "sha256": "521b2b520a7ba1c34bfd5696d2d66648d45bf15c794426c788496477710dd9c4"
+      "sha256": "3bd5d63363c85bcef465c10d9cb71dc708a1ea06f9a41a44b0229ab0a20f18a8"
     },
     {
       "file": "solubility/quiz.css",
@@ -2865,7 +2945,7 @@
     },
     {
       "file": "sound-vibration/index.html",
-      "sha256": "a4715a6c7c5220eac1acae57ac5b1ea0cf05eaf93bc7cb4b3de218a916682522"
+      "sha256": "bab03642fb340bb6cb36f78434602580b3e0c97e04ab3cce23afe0b45f026315"
     },
     {
       "file": "sound-vibration/quiz.css",
@@ -2881,7 +2961,7 @@
     },
     {
       "file": "speaker-lab/index.html",
-      "sha256": "65eb5806b99570aa2d79370bd9dad6e9f95b3dd98f1482e305440eff803b2b57"
+      "sha256": "8b5d39a0c6a6ac9338b00f7b2c045bb15831572bd8ffede98aaca3a17f7fad93"
     },
     {
       "file": "specific-heat/app.js",
@@ -2893,7 +2973,7 @@
     },
     {
       "file": "specific-heat/index.html",
-      "sha256": "d71fd0b07f7dd836f62d3c55fbb37d63608dfcbc22eae1440ef9ff18041f737b"
+      "sha256": "7348d0f9bd3f7b11fe82b33d17b41191c951280c066ac4f6055ef543bf5856f1"
     },
     {
       "file": "specific-heat/quiz.css",
@@ -2909,7 +2989,7 @@
     },
     {
       "file": "speed/index.html",
-      "sha256": "88ddf77c2db34f2c777b06bc3e555d9b210d86b4a77850bb30648f3bf52b1c7e"
+      "sha256": "213b4e879e5664b0e88a50ce87d0c7f7e93d1eaae41982cf0bd9f5693a54b114"
     },
     {
       "file": "speed/quiz.css",
@@ -2925,11 +3005,11 @@
     },
     {
       "file": "spring-wave-speed/index.html",
-      "sha256": "2eb9e093a035cde655b6ad0dd9ba26d6bff12608cd873c339ca364a7f3bfd121"
+      "sha256": "44f89a0945c91d1095e61824a5ab09f7827c8f472cd45178dfbe27e48bc12fbd"
     },
     {
       "file": "standard-solution/index.html",
-      "sha256": "05fe033d8cf76edfbadfecc80704773561ca93d57ab1d8017aab7bde0997cd03"
+      "sha256": "3af087a8d96b151bdd8d684c77a8649d21526680c27b0f90c85fdbac8e235c3d"
     },
     {
       "file": "star-elements/app.js",
@@ -2937,7 +3017,7 @@
     },
     {
       "file": "star-elements/index.html",
-      "sha256": "bfae43bf5f2bd3664ad6a5e48076ab2cad6df9636728eab7fc3ce35437da9710"
+      "sha256": "900152b9251314386ee5c4d304e4b68c2726a25a618dcbc4617f6b3276dd3817"
     },
     {
       "file": "star-elements/quiz.css",
@@ -2957,7 +3037,7 @@
     },
     {
       "file": "stars-universe/index.html",
-      "sha256": "da8766d78191a915b88ab0d0748fc2fc3f5a7f41cf54e371ba8dca50a92a1c00"
+      "sha256": "9cc7180c03aa442687f9afdc388835cfa6af5a956ad5e44f4b4a67765694be46"
     },
     {
       "file": "stars-universe/quiz.css",
@@ -2977,7 +3057,7 @@
     },
     {
       "file": "stars/index.html",
-      "sha256": "66fd6cf5f1aee2616387629f78c656af3abcc95880694471530daf77eabbc167"
+      "sha256": "1c2a5de8c3c81d1fefcadf3ec99a6f90b4cd5388b798ff4db06d7bb51b2006d8"
     },
     {
       "file": "stars/quiz.css",
@@ -2997,7 +3077,7 @@
     },
     {
       "file": "state-change/index.html",
-      "sha256": "23f40da2e86fb921dc86c73bd34f1ff569fce6cc6eeb3d7d546020b09c68f7e7"
+      "sha256": "7ca12d05ecc85dfdbe826a2a343163b2e85bf98174ef5432cb73276a68efbb8a"
     },
     {
       "file": "state-change/phase-model.js",
@@ -3017,7 +3097,7 @@
     },
     {
       "file": "stellar-mass-data/index.html",
-      "sha256": "4e8e8e9863376c573ac42d0d094f39c306340b1b9a2c2251492af5ad247a9b87"
+      "sha256": "061bb2d7b80c96c4fd4960bd3009114267a5a988b34177e02991c170db7c77dd"
     },
     {
       "file": "strata-correlation/app.js",
@@ -3025,7 +3105,7 @@
     },
     {
       "file": "strata-correlation/index.html",
-      "sha256": "c92905c89de3c9f48905003092fb0ccfdc0c088e4b26f15c13a056be63c1cc1d"
+      "sha256": "be7c65d6746c3513f2e288c8dc4380b888d2e8fcc4b3b6a48c37cb72d903bfc2"
     },
     {
       "file": "strata-correlation/model.js",
@@ -3053,7 +3133,7 @@
     },
     {
       "file": "sugar-phase/index.html",
-      "sha256": "7e5b533ca2206253294aadab2b74e45f79bba6f1f07913cce4637f2548c112ae"
+      "sha256": "c4305f4c812542fa210aa3deab756ff783d9f63151e9d58bdf7d415baab66211"
     },
     {
       "file": "sunspot-data.js",
@@ -3089,7 +3169,7 @@
     },
     {
       "file": "sunspot-observation/index.html",
-      "sha256": "f9d0d0a2ddb44dc040bd4f34927822af74a7947af01d8a5c961944de28db354b"
+      "sha256": "947fae66c3520c51bcec34567f4c117e15b7b7c6c085c4600823e2f0d026cab6"
     },
     {
       "file": "supplement-core.js",
@@ -3121,7 +3201,7 @@
     },
     {
       "file": "telescope-observation/index.html",
-      "sha256": "fce7bcb41131e0c5751817282ed8f1e3bc03ca82d6567c3d865e2be79974bf31"
+      "sha256": "fb00c094d82676159df34d3c5bd3593a5af19596be6cbaea1ad1b73db9fc6872"
     },
     {
       "file": "titration/app.js",
@@ -3129,7 +3209,7 @@
     },
     {
       "file": "titration/index.html",
-      "sha256": "bf6006749f299b6faa4b2e03c6f66b2aea89d36b030dfb01c7612e5cd390fd44"
+      "sha256": "2ece828dd4b1809e3ff43ba8f1f1ee55458dfeff4e518b81e2c7275b25b14339"
     },
     {
       "file": "titration/quiz.css",
@@ -3149,7 +3229,7 @@
     },
     {
       "file": "torque/index.html",
-      "sha256": "93d9ee20dac3c36babfd5775ada5201b308432eb86c2ea16d427273e10691b81"
+      "sha256": "96dc233612c1f45441d7152050a0bd39e9ba48902f9c88e760044ba2630751d6"
     },
     {
       "file": "torque/quiz.css",
@@ -3165,7 +3245,7 @@
     },
     {
       "file": "transistor-speaker/index.html",
-      "sha256": "b905320c6a83b7fbceafd96c1350b78586d1c28043e8aa0f70b0c3937086659b"
+      "sha256": "621948cf7ff4d8306d4b8eedef3a1ba2fdf2b1d176fb343f7d21451f8e0df6c7"
     },
     {
       "file": "typhoon/app.js",
@@ -3173,7 +3253,7 @@
     },
     {
       "file": "typhoon/index.html",
-      "sha256": "71defc8248f12a949e5d4734a4ed3ff50af66be7e440351ca8f580500ed1145f"
+      "sha256": "e86d451465aca665838d619b882fec6a8c142b693f9f71c4e7660bc6bc29af50"
     },
     {
       "file": "typhoon/quiz.css",
@@ -3188,8 +3268,24 @@
       "sha256": "69b8f6e2e626fc569a93943fb445ee550c87a4dedef695144abb2a5ecad15e6e"
     },
     {
+      "file": "video-motion/app.js",
+      "sha256": "e1de6dc63a901341dfcf1f42e863d59754966797c7e0a216357d09c01b615da9"
+    },
+    {
+      "file": "video-motion/index.html",
+      "sha256": "04d4f2cea2fbbd49924189a502d0112975402c49456ab03df092ca332997e3d4"
+    },
+    {
+      "file": "video-motion/model.js",
+      "sha256": "4455a47f7cb7816159b3fd2a43b36973c0a70ecbfc9f3ac6905b0934c62b5219"
+    },
+    {
+      "file": "video-motion/motion.css",
+      "sha256": "437cc9e9c1d32beedc9f7a1bf7e2af4e1d71499ee29b2abdd769effcc39ed258"
+    },
+    {
       "file": "vinegar-titration/index.html",
-      "sha256": "9edb1ca2f3e1e4540236f8fd8e2c9b42708562533caa467edc51efc9e8f95e9d"
+      "sha256": "112bae3b49be547fcae2f21ba5a108887887329e4920bbe4cdfa1a5736e8640c"
     },
     {
       "file": "volcano-model/app.js",
@@ -3197,7 +3293,7 @@
     },
     {
       "file": "volcano-model/index.html",
-      "sha256": "4cc69cd55f6436fa363f9450482d416580c0ba85e5a787f99a67c894509b5bad"
+      "sha256": "4a85c4be3be8c6bbf1107b1202183ad405d73efe6eac838ef3202c273bf8f338"
     },
     {
       "file": "volcano-model/quiz.css",
@@ -3221,7 +3317,7 @@
     },
     {
       "file": "water-cycle/index.html",
-      "sha256": "bdece11919f65aeb8f09d493b672698393167e7b736499f66f9c62ccb413c368"
+      "sha256": "14d6864f0a9c0ffb1d36ee3408e07adf0e1f975bc58fe23261aceb99d0e05f34"
     },
     {
       "file": "water-cycle/quiz.css",
@@ -3233,11 +3329,11 @@
     },
     {
       "file": "water-electrolysis/index.html",
-      "sha256": "51e201a3609de314a34812d2a53b5327ee3b6273e04783ccd71614bb6b08e2d9"
+      "sha256": "9b27d77ac62a987bbdecfa813622b5fc84c166dd24a6305b449a089fb545db68"
     },
     {
       "file": "water-wave-tank/index.html",
-      "sha256": "ce836343a46ba452eef10362c396890cea5f36e75c3036c56e28aef7da08b8af"
+      "sha256": "c721b7f637b5fb00691d7f1014aa03898557d624f5fe85520661d2ce5d04f8ba"
     },
     {
       "file": "wave-transfer/app.js",
@@ -3245,7 +3341,7 @@
     },
     {
       "file": "wave-transfer/index.html",
-      "sha256": "380a79f0dd82e22dde463a73877dc7f8be0ee490699197e484e82baeaabacc1e"
+      "sha256": "134c5f1096172729b12a9d473a5fbc11ede75cdf51c525045310b2ea21404e37"
     },
     {
       "file": "wave-transfer/quiz.css",
@@ -3265,7 +3361,7 @@
     },
     {
       "file": "weather-front/index.html",
-      "sha256": "bdbc75afeac97351200e63437a5534344ab6b1ad1c8a8d7fb1ba6a827607b743"
+      "sha256": "a8597c3556425940402d6d9d80f6f9a365592775a63ad73bccf34a46a3f4e885"
     },
     {
       "file": "weather-front/quiz.css",
@@ -3285,7 +3381,7 @@
     },
     {
       "file": "weather-watch/index.html",
-      "sha256": "86d03bb06f30fd1bab99e94ed9e0a65e9d3f5b98f7cff3660d98413a536e2359"
+      "sha256": "e485a0c7486546f7aaae72ad6e70f116ce78f28e51113de3986c4926f25925ff"
     },
     {
       "file": "weather-watch/quiz.css",
@@ -3305,7 +3401,7 @@
     },
     {
       "file": "weight-compare/index.html",
-      "sha256": "e0dc133769465e961417001bd65d60a6c14362161ad45687e01c81f86b719e50"
+      "sha256": "96aa10b051795d3d8dbfd9b3327fa482c89be9fbc08ba32a83a8bd8bc1000a7f"
     },
     {
       "file": "weight-compare/quiz.css",
@@ -3321,11 +3417,11 @@
     },
     {
       "file": "wireless-power/index.html",
-      "sha256": "04601f3b182a0ca609defd5362fe99cab41474bfc55f2a1353a53ded55f25dd9"
+      "sha256": "4ec96d54229c2930ea2fec046142c87ac5a67196f3d1643170deef8dcc1f79ed"
     },
     {
       "file": "yeast-fermentation/index.html",
-      "sha256": "6140c1ce9dd17e392d861b7122aabf2fd4ca65e6c2ae69a14a6a466d83d48abf"
+      "sha256": "50cc1c5756d57080d5ba5148f72981ea574250c3e39a65f8bc21d36c2e9acfb1"
     }
   ]
 }

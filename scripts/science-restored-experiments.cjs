@@ -103,8 +103,17 @@ module.exports.push(require('./science-equilibrium-colour-experiment.cjs'));
 module.exports.push(require('./science-cell-observation-experiment.cjs'));
 module.exports.push(require('./science-strata-correlation-experiment.cjs'));
 module.exports.push(require('./science-thin-section-experiment.cjs'));
+module.exports.push(require('./science-crust-thickness-experiment.cjs'));
 const quality=require('./science-question-quality.cjs'),revision=require('./science-question-revision-utils.cjs');
 for(const row of module.exports){
  row.questions=row.questions.map((q,i)=>{const e=quality.find(e=>e.id===row.slug+'#q'+(i+1));if(!e)return q;const next=revision.revise(q,e);next.feedback=Object.fromEntries(Object.entries(next.feedback).map(([i,v])=>['abcd'[Number(i)],v]));return next;});
  row.followups=row.followups.map(revision.reviseTransfer);
 }
+
+module.exports.push(require('./science-video-motion-experiment.cjs'));
+
+module.exports.push(require('./science-hr-diagram-experiment.cjs'));
+
+module.exports.push(require('./science-kepler-data-experiment.cjs'));
+
+module.exports.push(require('./science-element-origin-experiment.cjs'));

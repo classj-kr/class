@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 별 자료로 H-R도 작성하기</title><meta name="description" content="2022 교육과정 · 별 자료로 H-R도 작성하기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="hr.css?v=b95936e2e56e"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>별 자료로 H-R도 작성하기</h1><div class="grade-tags"><span>고(선택)</span><span>지구과학</span></div></header><section class="hr-lab" id="hrLab"><h2>별 자료로 H-R도 그리기</h2><p>별의 분광형과 절대 등급을 좌표로 나타내고, 분포에서 별의 특징을 찾아보세요.</p><div class="hr-workspace"><section class="hr-chart-panel"><div class="hr-chart-head"><h3>H-R도</h3><span id="hrCount">0 / 30개 별</span></div><p id="hrVertical" class="hr-axis-caption">절대 등급 · 위쪽이 밝음</p><svg id="hrPlot" role="img" aria-label="분광형과 절대 등급으로 작성한 H-R도"></svg><p id="hrHorizontal" class="hr-axis-caption">분광형 · 왼쪽이 높은 표면 온도</p><div class="hr-chart-options"><button id="hrGroups" aria-pressed="false">별의 무리 보기</button><span id="hrSelectedSummary">별을 선택하여 표시하세요.</span></div><div id="hrLegend" class="hr-legend" hidden><span><i class="hr-main"></i>주계열성</span><span><i class="hr-giant"></i>거성</span><span><i class="hr-super"></i>초거성</span><span><i class="hr-white"></i>백색왜성</span></div></section><section class="hr-controls"><h3>자료를 좌표로 바꾸기</h3><label for="hrStar">표시할 별<select id="hrStar"></select></label><dl class="hr-facts"><div><dt>분광형</dt><dd id="hrType"></dd></div><div><dt>절대 등급</dt><dd id="hrMagnitude"></dd></div></dl><label for="hrIndex">분광형 좌표<input id="hrIndex" type="number" min="0" max="69" step="1" inputmode="numeric" placeholder="0~69"></label><div class="hr-code-key" aria-label="분광형 좌표의 기준"><span>O0 · 0</span><span>B0 · 10</span><span>A0 · 20</span><span>F0 · 30</span><span>G0 · 40</span><span>K0 · 50</span><span>M0 · 60</span></div><p class="hr-note">각 분광형의 숫자를 더합니다. G2는 40+2=42입니다. 이 좌표의 간격이 같은 온도 차이를 뜻하지는 않습니다.</p><div class="hr-actions"><button id="hrAdd">선택한 별 표시</button><button id="hrRemaining">나머지 별 표시</button></div><label for="hrXDirection">가로축 방향<select id="hrXDirection"><option value="hot-left">높은 온도 → 낮은 온도</option><option value="hot-right">낮은 온도 → 높은 온도</option></select></label><label for="hrYDirection">세로축 위쪽<select id="hrYDirection"><option value="bright-top">밝은 별 · 작은 절대 등급</option><option value="faint-top">어두운 별 · 큰 절대 등급</option></select></label><button id="hrCheck">그래프 확인</button></section></div><p id="hrStatus" class="hr-status" aria-live="polite">분광형 좌표를 입력하고 별을 표시하세요.</p><section class="hr-comparison"><h3>두 별의 성질 비교</h3><div class="hr-pair"><label for="hrCompareA">별 A<select id="hrCompareA"></select></label><label for="hrCompareB">별 B<select id="hrCompareB"></select></label></div><div id="hrPairData" class="hr-pair-data"></div><p id="hrComparison"></p><p class="hr-note">절대 등급은 같은 거리에서 비교한 밝기입니다. 같은 파장대에서 5등급 차이는 밝기 100배에 해당합니다.</p></section><details class="hr-data"><summary>전체 별 자료</summary><div class="hr-table-scroll"><table><thead><tr><th>별</th><th>분광형</th><th>절대 등급</th><th>입력한 좌표</th></tr></thead><tbody id="hrRows"></tbody></table></div></details><button id="hrReset">그래프 처음부터</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>별 X는 B1·절대 등급 11.3, 별 Y는 K5·절대 등급 −0.6이다. 올바른 H-R도에서 X는 Y보다 어느 쪽인가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 왼쪽 위</label>
+<label><input type="radio" name="q1" value="b"> 왼쪽 아래</label>
+<label><input type="radio" name="q1" value="c"> 오른쪽 위</label>
+<label><input type="radio" name="q1" value="d"> 오른쪽 아래</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>B형은 K형보다 높은 온도 쪽인 왼쪽입니다. 11.3등급은 −0.6등급보다 어두우므로 아래쪽입니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>표면 온도가 같은 두 별 A, B에서 A의 전파장 광도가 B의 100배이다. 반지름 R_A/R_B는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 0.1</label>
+<label><input type="radio" name="q2" value="b"> 1</label>
+<label><input type="radio" name="q2" value="c"> 100</label>
+<label><input type="radio" name="q2" value="d"> 10</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>L=4πR²σT⁴에서 온도가 같으면 광도비는 반지름비의 제곱입니다. 따라서 √100=10입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>같은 파장대의 절대 등급이 A는 −1, B는 +4이다. 같은 거리에서 A의 밝기는 B의 몇 배인가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 100배</label>
+<label><input type="radio" name="q3" value="b"> 5배</label>
+<label><input type="radio" name="q3" value="c"> 1/5배</label>
+<label><input type="radio" name="q3" value="d"> 1/100배</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>A의 절대 등급이 5만큼 작으므로 A가 밝습니다. 5등급 차이는 밝기 100배입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>별 A의 표면 온도는 B의 2배이고 반지름은 B의 절반이다. 전파장 광도 L_A/L_B는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 1</label>
+<label><input type="radio" name="q4" value="b"> 2</label>
+<label><input type="radio" name="q4" value="c"> 4</label>
+<label><input type="radio" name="q4" value="d"> 16</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>광도비는 (1/2)²×2⁴=4입니다. 반지름과 표면 온도의 효과를 함께 계산해야 합니다.</p>
+</article></details></main><script src="model.js?v=3e6fa02b1983"></script><script src="app.js?v=33cb4e50361f"></script><script src="../curriculum-map.js?v=abff06271ba2"></script><script src="../exam-scope.js?v=b258c46c2f6d"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

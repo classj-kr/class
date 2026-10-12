@@ -1,6 +1,6 @@
 {
   "date": "2026-10-12",
-  "scope": "140 base and 71 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
+  "scope": "162 base and 81 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
   "questions": [
     {
       "id": "sound-vibration#q1",
@@ -480,6 +480,126 @@
         ],
         "answer": "c",
         "why": "물고기의 뼈와 나뭇잎은 생물 몸체의 모습입니다. 발자국은 발 자체가 아니라 생물이 활동하며 남긴 흔적입니다."
+      }
+    },
+    {
+      "id": "star-elements#q1",
+      "slug": "star-elements",
+      "sha256": "edc444cd7b745ab0fa2707a51a2b6c96be8dedec84464e1d592e0448c8e8b702",
+      "after": {
+        "id": "star-elements#q1",
+        "slug": "star-elements",
+        "question": "자료 A에서 지구 전체의 산소 질량비는 30%, 사람은 65%이다. 각각 200 g에 포함된 산소 질량의 차이(사람−지구)는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "35 g"
+          },
+          {
+            "id": "b",
+            "text": "60 g"
+          },
+          {
+            "id": "c",
+            "text": "70 g"
+          },
+          {
+            "id": "d",
+            "text": "130 g"
+          }
+        ],
+        "answer": "c",
+        "why": "사람 130 g, 지구 전체 60 g이므로 차이는 70 g입니다. 백분율 차 35%p에 시료 질량 200 g을 적용합니다."
+      }
+    },
+    {
+      "id": "star-elements#q2",
+      "slug": "star-elements",
+      "sha256": "335d6b6aafacd401220e8f523cbb41db9ef9fb651564629f91f3e161fac511f4",
+      "after": {
+        "id": "star-elements#q2",
+        "slug": "star-elements",
+        "question": "어떤 시료에서 산소와 수소의 질량비가 8:1이다. 원자량을 O=16, H=1로 보면 산소 원자 수:수소 원자 수는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "1:2"
+          },
+          {
+            "id": "b",
+            "text": "2:1"
+          },
+          {
+            "id": "c",
+            "text": "8:1"
+          },
+          {
+            "id": "d",
+            "text": "128:1"
+          }
+        ],
+        "answer": "a",
+        "why": "원자 수에 비례하는 값은 질량을 원자량으로 나눈 값입니다. (8/16):(1/1)=1:2입니다."
+      }
+    },
+    {
+      "id": "star-elements#q3",
+      "slug": "star-elements",
+      "sha256": "d7163efcc2f900f5ef3352b1e27bb7beece80442bd2fbeab49099f138a1bf310",
+      "after": {
+        "id": "star-elements#q3",
+        "slug": "star-elements",
+        "question": "자료 B는 사람의 산소·탄소·수소·질소와 기타 4%만 따로 표시한다. 이 자료만으로 사람의 철 질량비를 정확히 구하면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.0%"
+          },
+          {
+            "id": "b",
+            "text": "4.0%"
+          },
+          {
+            "id": "c",
+            "text": "33.0%"
+          },
+          {
+            "id": "d",
+            "text": "결정 불가"
+          }
+        ],
+        "answer": "d",
+        "why": "철이 별도 항목에 없다고 0은 아닙니다. 기타 4%에 포함될 수 있지만 철만의 비율은 이 자료에서 분리할 수 없습니다."
+      }
+    },
+    {
+      "id": "star-elements#q4",
+      "slug": "star-elements",
+      "sha256": "a20e67b81584f200a826f8344cfd0bf0f7f58d4ffa6b8778ed9acda50fecaa0f",
+      "after": {
+        "id": "star-elements#q4",
+        "slug": "star-elements",
+        "question": "수소 원자핵 4개가 여러 단계를 거쳐 헬륨 원자핵 1개를 만들며 에너지가 방출된다. 원자핵의 핵자 수와 반응 전후 정지 질량을 비교하면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "핵자 수 감소 · 정지 질량 감소"
+          },
+          {
+            "id": "b",
+            "text": "핵자 수 보존 · 정지 질량 감소"
+          },
+          {
+            "id": "c",
+            "text": "핵자 수 보존 · 정지 질량 보존"
+          },
+          {
+            "id": "d",
+            "text": "핵자 수 감소 · 정지 질량 보존"
+          }
+        ],
+        "answer": "b",
+        "why": "수소 핵자 4개는 헬륨의 양성자 2개와 중성자 2개로 남습니다. 전체 반응에서 정지 질량 차이에 해당하는 에너지가 방출됩니다."
       }
     },
     {
@@ -4129,7 +4249,7 @@
     {
       "id": "polarized-thin-sections#q3",
       "slug": "polarized-thin-sections",
-      "sha256": "3d1b30afb07a7832a86f3388b741ca641bc19adf1bb70e0eba7ecd44e0c0bee3",
+      "sha256": "22798c8655513258b9bd27ce3ea8d7cb2e08494904a904427c1913e2f79aabad",
       "after": {
         "id": "polarized-thin-sections#q3",
         "slug": "polarized-thin-sections",
@@ -4137,19 +4257,19 @@
         "choices": [
           {
             "id": "a",
-            "text": "처음부터 끝까지 같은 속도로 빠르게 냉각"
+            "text": "빠른 냉각으로 반정 형성 → 빠른 냉각으로 석기 형성"
           },
           {
             "id": "b",
-            "text": "작은 입자가 먼저 생긴 뒤 압력으로 모두 성장"
+            "text": "빠른 냉각으로 석기 형성 → 압력 증가로 반정 형성"
           },
           {
             "id": "c",
-            "text": "먼저 빠르게 냉각한 뒤 모든 결정이 천천히 성장"
+            "text": "빠른 냉각으로 반정 형성 → 느린 냉각으로 석기 형성"
           },
           {
             "id": "d",
-            "text": "일부 결정이 먼저 성장한 뒤 남은 부분이 빠르게 냉각"
+            "text": "느린 냉각으로 반정 형성 → 빠른 냉각으로 석기 형성"
           }
         ],
         "answer": "d",
@@ -4184,6 +4304,546 @@
         ],
         "answer": "b",
         "why": "작은 결정이 모인 X는 세립질, 대부분의 결정이 자라지 못한 Y는 유리질입니다. 두 조직을 단순히 입자가 작다는 이유로 같게 분류하지 않습니다."
+      }
+    },
+    {
+      "id": "crust-thickness#q1",
+      "slug": "crust-thickness",
+      "sha256": "0ad9ceb8c2f55790039fd98e24f593d9b0202a021a584f58e1f734f2cf049292",
+      "after": {
+        "id": "crust-thickness#q1",
+        "slug": "crust-thickness",
+        "question": "가로축이 거리(km), 세로축이 시간(초)인 그래프에서 X의 기울기는 0.20, Y는 0.125이다. 두 속도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X 0.20 km/s · Y 0.125 km/s"
+          },
+          {
+            "id": "b",
+            "text": "X 5 km/s · Y 8 km/s"
+          },
+          {
+            "id": "c",
+            "text": "X 8 km/s · Y 5 km/s"
+          },
+          {
+            "id": "d",
+            "text": "X 20 km/s · Y 12.5 km/s"
+          }
+        ],
+        "answer": "b",
+        "why": "기울기는 시간/거리이므로 속도의 역수입니다. X는 1/0.20=5, Y는 1/0.125=8 km/s입니다."
+      }
+    },
+    {
+      "id": "crust-thickness#q2",
+      "slug": "crust-thickness",
+      "sha256": "10f004e5bac9f45485178b9dbb36f6b1a1878731db6ecb50f2be0ab6e033eeb5",
+      "after": {
+        "id": "crust-thickness#q2",
+        "slug": "crust-thickness",
+        "question": "지각 두께를 구하는 주시 곡선에서 두 추세선의 교점은 어떤 도착 시간이 같아지는 지점인가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "직접 P파와 직접 S파"
+          },
+          {
+            "id": "b",
+            "text": "직접 S파와 굴절 S파"
+          },
+          {
+            "id": "c",
+            "text": "표면파와 직접 P파"
+          },
+          {
+            "id": "d",
+            "text": "직접 P파와 굴절 P파"
+          }
+        ],
+        "answer": "d",
+        "why": "이 탐구에서는 같은 P파가 지각만 통과한 경로와 맨틀을 거친 경로를 비교합니다. P파와 S파의 도착 시간 차인 PS시와는 다릅니다."
+      }
+    },
+    {
+      "id": "crust-thickness#q3",
+      "slug": "crust-thickness",
+      "sha256": "6c00c1df9b7ba8db4a3fe201d64f11c00d8295ca53f28d6138563a8abb0d52f3",
+      "after": {
+        "id": "crust-thickness#q3",
+        "slug": "crust-thickness",
+        "question": "교차 거리 l=200 km, V₁=6 km/s, V₂=8 km/s이다. d=(l/2)×√((V₂−V₁)/(V₂+V₁))로 구한 두께는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "약 37.8 km"
+          },
+          {
+            "id": "b",
+            "text": "약 75.6 km"
+          },
+          {
+            "id": "c",
+            "text": "약 14.3 km"
+          },
+          {
+            "id": "d",
+            "text": "약 200.0 km"
+          }
+        ],
+        "answer": "a",
+        "why": "100×√(2/14)≈37.8 km입니다. 교차 거리를 절반으로 하고, 두 속도의 차/합에 제곱근을 적용합니다."
+      }
+    },
+    {
+      "id": "crust-thickness#q4",
+      "slug": "crust-thickness",
+      "sha256": "12b59a7bb6dd4d300510f3fa8c15d03a7a5462a8b80793b8be847e2da57e0131",
+      "after": {
+        "id": "crust-thickness#q4",
+        "slug": "crust-thickness",
+        "question": "지각과 맨틀의 P파 속도가 그대로이고 지각의 두께만 두 배가 되었다. 이 두 층 모형에서 교차 거리는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "절반으로 줄어든다"
+          },
+          {
+            "id": "b",
+            "text": "변하지 않는다"
+          },
+          {
+            "id": "c",
+            "text": "두 배로 늘어난다"
+          },
+          {
+            "id": "d",
+            "text": "네 배로 늘어난다"
+          }
+        ],
+        "answer": "c",
+        "why": "두 속도가 같게 유지되면 식의 제곱근 부분은 일정합니다. 따라서 지각 두께와 교차 거리는 비례합니다."
+      }
+    },
+    {
+      "id": "video-motion#q1",
+      "slug": "video-motion",
+      "sha256": "672331dc25c57e6a3f485b87b444412e228d89e661d9e7214f8fa26da5260f33",
+      "after": {
+        "id": "video-motion#q1",
+        "slug": "video-motion",
+        "question": "30 fps 영상의 6프레임에서 x=0.12 m, 9프레임에서 x=0.18 m였다. 이 구간의 x방향 평균 속도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.02 m/s"
+          },
+          {
+            "id": "b",
+            "text": "0.60 m/s"
+          },
+          {
+            "id": "c",
+            "text": "1.80 m/s"
+          },
+          {
+            "id": "d",
+            "text": "6.00 m/s"
+          }
+        ],
+        "answer": "b",
+        "why": "시간 간격은 (9−6)/30=0.10초, 변위는 0.06 m입니다. 평균 속도는 0.06/0.10=0.60 m/s입니다."
+      }
+    },
+    {
+      "id": "video-motion#q2",
+      "slug": "video-motion",
+      "sha256": "f5e336a8ce8059e0273482ce4b2b59230582abc82139c4514e18d95602a204a2",
+      "after": {
+        "id": "video-motion#q2",
+        "slug": "video-motion",
+        "question": "실제 30 fps 영상을 60 fps로 입력했다. 표시한 위치와 기준 길이가 같을 때 계산된 속력과 가속도 크기는 실제의 몇 배인가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "속력 ½배 · 가속도 ¼배"
+          },
+          {
+            "id": "b",
+            "text": "속력 2배 · 가속도 2배"
+          },
+          {
+            "id": "c",
+            "text": "속력 ½배 · 가속도 ½배"
+          },
+          {
+            "id": "d",
+            "text": "속력 2배 · 가속도 4배"
+          }
+        ],
+        "answer": "d",
+        "why": "시간 간격을 절반으로 계산하므로 속력은 2배입니다. 속도 변화도 2배이고 그 변화에 걸린 시간도 절반이므로 가속도는 4배입니다."
+      }
+    },
+    {
+      "id": "video-motion#q3",
+      "slug": "video-motion",
+      "sha256": "1c8d14695336e56e554cc00e77cbe0ba19e924619ef036d8ded5e245d6f30fda",
+      "after": {
+        "id": "video-motion#q3",
+        "slug": "video-motion",
+        "question": "등가속도 운동의 0.20초와 0.40초 위치로 구간 속도를 구했다. 이 값을 순간 속도와 비교할 대표 시각은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.30초"
+          },
+          {
+            "id": "b",
+            "text": "0.20초"
+          },
+          {
+            "id": "c",
+            "text": "0.40초"
+          },
+          {
+            "id": "d",
+            "text": "0.60초"
+          }
+        ],
+        "answer": "a",
+        "why": "등가속도 운동에서는 두 시각 사이 평균 속도가 중간 시각의 순간 속도와 같습니다. (0.20+0.40)/2=0.30초입니다."
+      }
+    },
+    {
+      "id": "video-motion#q4",
+      "slug": "video-motion",
+      "sha256": "ebf07ae36698645563c23ba8ec038c101b51063e1c3632341c1a6d6ea9303dc0",
+      "after": {
+        "id": "video-motion#q4",
+        "slug": "video-motion",
+        "question": "x방향 속도가 0.10초에 0.30 m/s, 0.30초에 0.50 m/s였다. 이 사이 평균 가속도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.04 m/s²"
+          },
+          {
+            "id": "b",
+            "text": "0.20 m/s²"
+          },
+          {
+            "id": "c",
+            "text": "1.00 m/s²"
+          },
+          {
+            "id": "d",
+            "text": "2.00 m/s²"
+          }
+        ],
+        "answer": "c",
+        "why": "속도 변화 0.20 m/s를 시간 간격 0.20초로 나누면 1.00 m/s²입니다."
+      }
+    },
+    {
+      "id": "video-motion#q5",
+      "slug": "video-motion",
+      "sha256": "7603a2e819cb63976dcd6f22f5b8ae585478b91ec751ed9dfb519780f2d26182",
+      "after": {
+        "id": "video-motion#q5",
+        "slug": "video-motion",
+        "question": "공기 저항을 무시한 포물선 운동에서 최고점의 수평·연직 속도는? x는 수평, y는 위쪽이다.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "vₓ=0 · vᵧ=0"
+          },
+          {
+            "id": "b",
+            "text": "vₓ≠0 · vᵧ=0"
+          },
+          {
+            "id": "c",
+            "text": "vₓ=0 · vᵧ≠0"
+          },
+          {
+            "id": "d",
+            "text": "vₓ≠0 · vᵧ≠0"
+          }
+        ],
+        "answer": "b",
+        "why": "최고점에서도 수평 운동은 계속됩니다. 위로 가던 운동이 아래로 바뀌는 순간 연직 속도만 0입니다."
+      }
+    },
+    {
+      "id": "video-motion#q6",
+      "slug": "video-motion",
+      "sha256": "c9bf9bd07f179b9710cb867730e761deb6ce14a63a133c627ae939d9f63664e7",
+      "after": {
+        "id": "video-motion#q6",
+        "slug": "video-motion",
+        "question": "질량 0.20 kg인 공의 vₓ=3 m/s, vᵧ=4 m/s이다. 이 순간의 운동 에너지는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.9 J"
+          },
+          {
+            "id": "b",
+            "text": "1.6 J"
+          },
+          {
+            "id": "c",
+            "text": "5.0 J"
+          },
+          {
+            "id": "d",
+            "text": "2.5 J"
+          }
+        ],
+        "answer": "d",
+        "why": "속력의 제곱은 3²+4²=25입니다. 운동 에너지는 ½×0.20×25=2.5 J입니다."
+      }
+    },
+    {
+      "id": "hr-diagram#q1",
+      "slug": "hr-diagram",
+      "sha256": "a7f79173d7a8208c760be524065aaafdaefeb02c474e110d06685926c5167bc6",
+      "after": {
+        "id": "hr-diagram#q1",
+        "slug": "hr-diagram",
+        "question": "별 X는 B1·절대 등급 11.3, 별 Y는 K5·절대 등급 −0.6이다. 올바른 H-R도에서 X는 Y보다 어느 쪽인가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "왼쪽 위"
+          },
+          {
+            "id": "b",
+            "text": "왼쪽 아래"
+          },
+          {
+            "id": "c",
+            "text": "오른쪽 위"
+          },
+          {
+            "id": "d",
+            "text": "오른쪽 아래"
+          }
+        ],
+        "answer": "b",
+        "why": "B형은 K형보다 높은 온도 쪽인 왼쪽입니다. 11.3등급은 −0.6등급보다 어두우므로 아래쪽입니다."
+      }
+    },
+    {
+      "id": "hr-diagram#q2",
+      "slug": "hr-diagram",
+      "sha256": "d85630c939a5853d29b9d3080976884a6f481288b56918b2ea38716049f029e7",
+      "after": {
+        "id": "hr-diagram#q2",
+        "slug": "hr-diagram",
+        "question": "표면 온도가 같은 두 별 A, B에서 A의 전파장 광도가 B의 100배이다. 반지름 R_A/R_B는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.1"
+          },
+          {
+            "id": "b",
+            "text": "1"
+          },
+          {
+            "id": "c",
+            "text": "100"
+          },
+          {
+            "id": "d",
+            "text": "10"
+          }
+        ],
+        "answer": "d",
+        "why": "L=4πR²σT⁴에서 온도가 같으면 광도비는 반지름비의 제곱입니다. 따라서 √100=10입니다."
+      }
+    },
+    {
+      "id": "hr-diagram#q3",
+      "slug": "hr-diagram",
+      "sha256": "f8b00fe6354dedf8a9667957530c2dd295019e1634ea3d98a0307c3e48d57e95",
+      "after": {
+        "id": "hr-diagram#q3",
+        "slug": "hr-diagram",
+        "question": "같은 파장대의 절대 등급이 A는 −1, B는 +4이다. 같은 거리에서 A의 밝기는 B의 몇 배인가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "100배"
+          },
+          {
+            "id": "b",
+            "text": "5배"
+          },
+          {
+            "id": "c",
+            "text": "1/5배"
+          },
+          {
+            "id": "d",
+            "text": "1/100배"
+          }
+        ],
+        "answer": "a",
+        "why": "A의 절대 등급이 5만큼 작으므로 A가 밝습니다. 5등급 차이는 밝기 100배입니다."
+      }
+    },
+    {
+      "id": "hr-diagram#q4",
+      "slug": "hr-diagram",
+      "sha256": "bc53038b48cde726bc3fa5c388792f0835a97854147ae5893f668a1abdc0ae94",
+      "after": {
+        "id": "hr-diagram#q4",
+        "slug": "hr-diagram",
+        "question": "별 A의 표면 온도는 B의 2배이고 반지름은 B의 절반이다. 전파장 광도 L_A/L_B는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "1"
+          },
+          {
+            "id": "b",
+            "text": "2"
+          },
+          {
+            "id": "c",
+            "text": "4"
+          },
+          {
+            "id": "d",
+            "text": "16"
+          }
+        ],
+        "answer": "c",
+        "why": "광도비는 (1/2)²×2⁴=4입니다. 반지름과 표면 온도의 효과를 함께 계산해야 합니다."
+      }
+    },
+    {
+      "id": "kepler-data#q1",
+      "slug": "kepler-data",
+      "sha256": "2e512dac96bc3dc84710d3e6f7f397541c7fac57e431363fbe1a2b8b636c33a3",
+      "after": {
+        "id": "kepler-data#q1",
+        "slug": "kepler-data",
+        "question": "태양을 도는 두 천체 A, B에서 긴반지름 a_B/a_A=4이다. 두 천체의 질량을 태양에 비해 무시하면 T_B/T_A는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2"
+          },
+          {
+            "id": "b",
+            "text": "4"
+          },
+          {
+            "id": "c",
+            "text": "8"
+          },
+          {
+            "id": "d",
+            "text": "16"
+          }
+        ],
+        "answer": "c",
+        "why": "T²∝a³이므로 주기비는 √(4³)=8입니다."
+      }
+    },
+    {
+      "id": "kepler-data#q2",
+      "slug": "kepler-data",
+      "sha256": "dcc89aa6b4be9c8cd08c8acc61bef3f4eb65f0c112aae1f8d559ea3a0b5b3624",
+      "after": {
+        "id": "kepler-data#q2",
+        "slug": "kepler-data",
+        "question": "태양 주위를 도는 X의 긴반지름은 4 AU이고 주기는 8년이다. 같은 근사에서 긴반지름 9 AU인 Y의 주기는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "12년"
+          },
+          {
+            "id": "b",
+            "text": "18년"
+          },
+          {
+            "id": "c",
+            "text": "36년"
+          },
+          {
+            "id": "d",
+            "text": "27년"
+          }
+        ],
+        "answer": "d",
+        "why": "X에서 T²/a³=8²/4³=1입니다. Y의 T²=9³=729이므로 T=27년입니다."
+      }
+    },
+    {
+      "id": "kepler-data#q3",
+      "slug": "kepler-data",
+      "sha256": "bdbd2deabc8eb8d3ec37f28a20321821597ce2c5200d0830adbfc9098340c3cf",
+      "after": {
+        "id": "kepler-data#q3",
+        "slug": "kepler-data",
+        "question": "자료의 a를 모두 km에서 AU로 바꾸고 T는 그대로 두었다. T²/a³의 값과 천체별 일정성은 어떻게 되는가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "값은 같고, 일정성이 사라진다."
+          },
+          {
+            "id": "b",
+            "text": "값은 변하고, 일정성은 유지된다."
+          },
+          {
+            "id": "c",
+            "text": "값도 같고, 일정성도 유지된다."
+          },
+          {
+            "id": "d",
+            "text": "값도 변하고, 일정성도 사라진다."
+          }
+        ],
+        "answer": "b",
+        "why": "모든 긴반지름을 같은 환산 인자로 나누므로 비는 모두 같은 배수로 변합니다. 천체들 사이의 일정성은 유지됩니다."
+      }
+    },
+    {
+      "id": "kepler-data#q4",
+      "slug": "kepler-data",
+      "sha256": "3f74992a3c04b8dcc243a24e389643af7cc5ec6f41964e8512342731027f7e6c",
+      "after": {
+        "id": "kepler-data#q4",
+        "slug": "kepler-data",
+        "question": "한 행성이 근일점 부근과 원일점 부근에서 각각 같은 시간 Δt 동안 이동했다. 태양과 행성을 잇는 선이 쓸고 간 면적을 비교하면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "두 곳에서 같다."
+          },
+          {
+            "id": "b",
+            "text": "근일점 쪽이 크다."
+          },
+          {
+            "id": "c",
+            "text": "원일점 쪽이 크다."
+          },
+          {
+            "id": "d",
+            "text": "주기마다 순서가 바뀐다."
+          }
+        ],
+        "answer": "a",
+        "why": "같은 시간 동안 쓸고 지나간 면적은 같습니다. 태양에 가까울 때 더 빠르게 움직이는 것과 모순되지 않습니다."
       }
     }
   ],
@@ -5656,6 +6316,210 @@
         "why": "화성암의 큰 결정은 서서히 냉각되는 동안 결정이 자랄 시간이 충분했음을 뒷받침합니다.",
         "checks": [
           "polarized-thin-sections#q2"
+        ]
+      }
+    },
+    {
+      "id": "crust-thickness@units",
+      "sha256": "dc81f5b622bd4a6da2dabe4a1fc72f77664145ed77698755c1fc6c002b0b2048",
+      "after": {
+        "id": "crust-thickness@units",
+        "topic": "자료의 축과 단위",
+        "question": "가로축 거리, 세로축 시간인 주시 곡선에서 기울기가 더 작은 직선이 나타내는 속도는?",
+        "choices": [
+          "더 빠르다",
+          "더 느리다",
+          "항상 같다",
+          "항상 0이다"
+        ],
+        "answer": 0,
+        "why": "같은 거리를 이동하는 시간이 짧으므로 더 빠릅니다. 속도는 시간/거리인 기울기의 역수입니다.",
+        "checks": [
+          "crust-thickness#q1"
+        ]
+      }
+    },
+    {
+      "id": "crust-thickness@intersection",
+      "sha256": "2e6efa9c06a41127e9acecbececfcc0739e8ed3e48c058ed5a83fd12861356e6",
+      "after": {
+        "id": "crust-thickness@intersection",
+        "topic": "두 추세선의 교점",
+        "question": "두 추세선이 t=0.20x, t=0.125x+9이다. x의 단위가 km일 때 교차 거리는?",
+        "choices": [
+          "45 km",
+          "72 km",
+          "120 km",
+          "200 km"
+        ],
+        "answer": 2,
+        "why": "도달 시간이 같은 곳에서 0.20x=0.125x+9입니다. 따라서 (0.20−0.125)x=9이고 x=120 km입니다.",
+        "checks": [
+          "crust-thickness#q2"
+        ]
+      }
+    },
+    {
+      "id": "video-motion@scale",
+      "sha256": "9e577e63ee25b6caa3a97fa365348de004780ac39dd7c67921c46b8c26feceae",
+      "after": {
+        "id": "video-motion@scale",
+        "topic": "기준 길이 오차",
+        "question": "실제 0.30 m인 자를 0.60 m로 입력했다. fps와 위치 표시는 맞을 때 계산한 변위와 속력은?",
+        "choices": [
+          "변위 ½배 · 속력 ½배",
+          "변위 2배 · 속력 2배",
+          "변위 2배 · 속력 4배",
+          "변위 ½배 · 속력 ¼배"
+        ],
+        "answer": 1,
+        "why": "화면의 같은 거리에 두 배의 길이를 부여했습니다. 시간 간격은 그대로이므로 변위와 속력이 모두 두 배입니다.",
+        "checks": [
+          "video-motion#q1",
+          "video-motion#q2"
+        ]
+      }
+    },
+    {
+      "id": "video-motion@energy",
+      "sha256": "504ca63a063fb05af020c46943d141e26804ffd278bd76532fd3b3d4fa81ab5d",
+      "after": {
+        "id": "video-motion@energy",
+        "topic": "역학적 에너지 보존",
+        "question": "공이 올라가는 동안 운동 에너지가 2.8 J에서 1.6 J로 줄었다. 공기 저항을 무시하면 위치 에너지는?",
+        "choices": [
+          "1.2 J 증가",
+          "1.2 J 감소",
+          "4.4 J 증가",
+          "4.4 J 감소"
+        ],
+        "answer": 0,
+        "why": "역학적 에너지가 일정하므로 운동 에너지 감소량 1.2 J만큼 위치 에너지가 증가합니다.",
+        "checks": [
+          "video-motion#q5",
+          "video-motion#q6"
+        ]
+      }
+    },
+    {
+      "id": "hr-diagram@temperature",
+      "sha256": "e43163a2f0e10a42a3ed89c6ffd0655c6c0bc73985f8fb50b6642eb9e8f9345a",
+      "after": {
+        "id": "hr-diagram@temperature",
+        "topic": "높은 온도와 작은 광도",
+        "question": "H-R도에서 주계열보다 왼쪽 아래에 있는 별이 높은 표면 온도에도 어두운 주된 까닭은?",
+        "choices": [
+          "반지름이 매우 작아서",
+          "반지름이 매우 커서",
+          "지구에서 멀리 있어서",
+          "표면 온도가 더 낮아서"
+        ],
+        "answer": 0,
+        "why": "H-R도는 거리 효과를 제거한 광도 또는 절대 등급을 사용합니다. 높은 온도에도 광도가 작으면 빛을 내는 표면적, 즉 반지름이 작아야 합니다.",
+        "checks": [
+          "hr-diagram#q1",
+          "hr-diagram#q2"
+        ]
+      }
+    },
+    {
+      "id": "hr-diagram@sequence",
+      "sha256": "48bf31b7e93522dbd7687487bccebc713ee0bb4473d8de2236d2209c5d484321",
+      "after": {
+        "id": "hr-diagram@sequence",
+        "topic": "분광형 순서",
+        "question": "F5, K2, B8 세 별을 표면 온도가 높은 순서대로 배열하면?",
+        "choices": [
+          "K2 → F5 → B8",
+          "F5 → B8 → K2",
+          "B8 → K2 → F5",
+          "B8 → F5 → K2"
+        ],
+        "answer": 3,
+        "why": "분광형의 온도 순서는 O, B, A, F, G, K, M입니다. 분광형 뒤 숫자만 서로 비교하면 안 됩니다.",
+        "checks": [
+          "hr-diagram#q1"
+        ]
+      }
+    },
+    {
+      "id": "kepler-data@period",
+      "sha256": "5042d4a4131f3bbf9c40c07b1a4bf791fe6d927a3e846d01a372e244b1f7ad11",
+      "after": {
+        "id": "kepler-data@period",
+        "topic": "거꾸로 주기에서 거리 추론",
+        "question": "같은 중심별 주위를 도는 B의 주기가 A의 8배이다. 긴반지름 a_B/a_A는?",
+        "choices": [
+          "2",
+          "4",
+          "8",
+          "16"
+        ],
+        "answer": 1,
+        "why": "a³∝T²이므로 거리비의 세제곱은 64, 거리비는 4입니다.",
+        "checks": [
+          "kepler-data#q1",
+          "kepler-data#q2"
+        ]
+      }
+    },
+    {
+      "id": "kepler-data@scale",
+      "sha256": "c5ef2638007466f349fc68f563a5c9f9168a28b81de7ff780fb30338904606c8",
+      "after": {
+        "id": "kepler-data@scale",
+        "topic": "로그 그래프와 비",
+        "question": "a–T 로그 그래프가 직선으로 보였다. T가 a에 단순 비례하는지를 추가로 확인할 계산은?",
+        "choices": [
+          "T+a",
+          "T−a",
+          "T×a",
+          "T/a"
+        ],
+        "answer": 3,
+        "why": "단순 비례라면 T/a가 일정해야 합니다. 로그 그래프에서는 거듭제곱 관계도 직선이므로 직선 모양만으로 단순 비례라고 판단할 수 없습니다.",
+        "checks": [
+          "kepler-data#q3"
+        ]
+      }
+    },
+    {
+      "id": "star-elements@sample",
+      "sha256": "1d134d06c69c6041fa387c7be592b3dab638dda75b8eed284c4817c294e097fb",
+      "after": {
+        "id": "star-elements@sample",
+        "topic": "시료 질량을 바꾼 비교",
+        "question": "자료 A의 사람은 산소 65%, 지구 전체는 산소 30%이다. 사람 100 g과 지구 전체 200 g 중 산소 질량이 큰 쪽과 차이는?",
+        "choices": [
+          "사람 · 5 g",
+          "지구 · 5 g",
+          "사람 · 35 g",
+          "지구 · 35 g"
+        ],
+        "answer": 0,
+        "why": "사람은 65 g, 지구 전체는 60 g이므로 사람 쪽이 5 g 더 많습니다. 비율과 시료의 전체 질량을 함께 비교해야 합니다.",
+        "checks": [
+          "star-elements#q1"
+        ]
+      }
+    },
+    {
+      "id": "star-elements@origin",
+      "sha256": "3880722daef6a7c8d47fe345e96777b6211187e9a3cacba2d09cf1095d26f539",
+      "after": {
+        "id": "star-elements@origin",
+        "topic": "탄소의 기원과 이동 순서",
+        "question": "탄소가 만들어져 지구의 생명체를 이루기까지, ㉠ 태양계 성운 형성, ㉡ 이전 세대 별의 핵반응, ㉢ 별의 물질 방출, ㉣ 지구의 물질 순환을 시간 순으로 나열하면?",
+        "choices": [
+          "㉠ → ㉡ → ㉢ → ㉣",
+          "㉡ → ㉠ → ㉣ → ㉢",
+          "㉡ → ㉢ → ㉠ → ㉣",
+          "㉢ → ㉠ → ㉡ → ㉣"
+        ],
+        "answer": 2,
+        "why": "이전 세대 별에서 만들어진 탄소가 우주로 방출되어 태양계 성운의 재료에 포함되고, 지구의 물질 순환을 거쳐 생명체에 들어갑니다.",
+        "checks": [
+          "star-elements#q3"
         ]
       }
     }
@@ -7613,6 +8477,418 @@
         }
       ],
       "boundary": "조작 화면은 고정된 결정 조직과 두께를 가정한 작성 모형이며 실제 PPL/XPL 연속 사진이 아니다. 결정 개수·조성·간섭색으로 실물 시료를 동정하지 않는다. 원문 사진 네 장은 서로 다른 시료이고 전후 편광판 상태를 합성하지 않는다. 모형의 6 mm 시야는 비교용 설정이며 사진의 눈금은 원문의 벡터 막대 길이를 그대로 비례 적용했다. 실제 박편 제작·기기 충돌·배율 교체는 미구현이다. 공식 2022 성취기준은 조직 비교만 다루므로 소광각·복굴절·간섭색 계산을 평가에 넣지 않는다. 모든 판본·실물 수행 완료 아님."
+    },
+    {
+      "slug": "crust-thickness",
+      "source": {
+        "id": "d41737876b631070",
+        "pages": [
+          41,
+          42,
+          43
+        ],
+        "printedPages": [
+          39,
+          40,
+          41
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "eb8c9b09037f8860",
+          "paragraphs": [
+            587,
+            588,
+            589,
+            596,
+            603,
+            604,
+            605,
+            606,
+            607,
+            608,
+            609,
+            610,
+            611,
+            612,
+            613,
+            614,
+            615,
+            616,
+            617,
+            618,
+            619,
+            620,
+            621,
+            622,
+            623,
+            626,
+            628,
+            630,
+            632,
+            696,
+            708,
+            709,
+            710,
+            711
+          ],
+          "part": "2022 지구시스템과학 평가 예시의 자료 시각화, 교차 거리, 기울기의 역수, 두께와 교차 거리 관계를 대조. 수치 답안 불일치는 별도 기록하고 앱에 전용하지 않음"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "cdbacd1f7e6522b8",
+          "pages": [
+            43,
+            44,
+            45
+          ],
+          "difference": "10개 관측소 중 1~5 직접파, 6~10 굴절파 구간을 명시. 원점 추가를 지시하지 않음",
+          "implementation": "관측 자료 B로 원문 표 그대로 제공하고 각각 자유 절편 선형 추세선 계산"
+        },
+        {
+          "sourceId": "c50c90b0d29a7655",
+          "pages": [
+            30,
+            31
+          ],
+          "difference": "2019 포항 지진의 14개 관측값과 0.148/0.123 기울기 및 153 km 교차 거리 제시",
+          "implementation": "공통 두께 해석 절차로 연결하되 해당 14점 판본 자료는 미구현이며 완료로 세지 않음"
+        },
+        {
+          "sourceId": "ea55a4e6c430dd9b",
+          "pages": [
+            33
+          ],
+          "difference": "동일 미래엔 탐구 별도 추출본",
+          "implementation": "동일 관측표·분석 목적의 중복으로 통합"
+        }
+      ],
+      "boundary": "수집 교과서에 실린 고정 관측표의 분석이다. 실시간 지진이나 새 현장 측정이 아니며 진앙 찾기·PS시로 거리를 구하는 활동과 구별한다. 수평한 두 층·각 층의 일정한 속도를 가정한 교과서 근사다. 관측값의 편차와 구간 나누기에 따라 추정값이 변하며 이를 한국 전역의 정확한 두께로 일반화하지 않는다. 진원 깊이 10 km 보정이나 3차원 지각 역산은 하지 않는다. 모든 출판사 자료 및 실제 스프레드시트 작성 수행 완료 아님."
+    },
+    {
+      "slug": "video-motion",
+      "source": {
+        "id": "88f46daabd2095a9",
+        "pages": [
+          31,
+          221,
+          222,
+          223
+        ],
+        "printedPages": [
+          31,
+          221,
+          222,
+          223
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "fae49b365abaf22a",
+          "paragraphs": [
+            176,
+            256
+          ],
+          "part": "교사용 탐구·결과 해설의 위치·속도·가속도 관계, 속도 그래프의 기울기와 넓이 대조; 범위 양 끝은 문단 범위 표기"
+        },
+        {
+          "id": "557b659a0e610777",
+          "part": "포물선 운동 교사용 활동지의 수평·연직 운동, 최고점의 속도 성분, 운동·위치·역학적 에너지 해석 대조"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "5ae07b36d128f25f",
+          "pages": [
+            24,
+            25
+          ],
+          "difference": "10~30도 빗면, 30 cm 자, 빗면과 나란한 x축, 위치·속도·가속도 그래프와 속도 그래프 넓이 비교",
+          "implementation": "기준 길이·축 방향 설정과 세 그래프 제공. 구간 속도×시간 간격 합이 위치 변화와 일치함을 수치 검증"
+        },
+        {
+          "sourceId": "e7caa9f0f741ad37",
+          "pages": [
+            22,
+            23
+          ],
+          "difference": "질량 측정, 공과 기준 자를 같은 평면에 두어 포물선 촬영, x/y 성분과 역학적 에너지 비교, 발사 조건 변경 반복",
+          "implementation": "실제 영상 입력과 질량·좌표 보정, 두 성분 및 K/U/합 계산. 다른 조건의 촬영 영상도 다시 불러올 수 있음. 촬영·질량 실측의 완료를 앱에서 대신 판정하지 않음"
+        }
+      ],
+      "boundary": "실제 촬영 영상은 사용자 파일 입력이며 서버로 전송하지 않는다. 수집 자료에 포함된 실제 실험 동영상은 확인되지 않아 내장하지 않았다. 모형 궤적은 실측 증거가 아니다. 고정 카메라, 같은 평면의 기준 자, 일정 프레임 간격과 올바른 fps, 수평 촬영을 전제로 한다. 자동 추적·원근 보정·가변 프레임 타임스탬프 복원은 제공하지 않는다. 추출 구간 속도와 평균 높이는 근사이며 위치 오차·긴 간격에 따른 에너지 오차를 물리적 손실로 단정하지 않는다. 모든 출판사 절차 및 실물 촬영 완료 아님."
+    },
+    {
+      "slug": "hr-diagram",
+      "source": {
+        "id": "9d9ec13f61753da5",
+        "pages": [
+          172,
+          173,
+          174,
+          175
+        ],
+        "printedPages": [
+          172,
+          173,
+          174,
+          175
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "0ed82ea620638555",
+          "paragraphs": [
+            1384,
+            1387,
+            1399,
+            1400,
+            1409,
+            1410,
+            1411,
+            1418,
+            1420,
+            1421,
+            1422,
+            1423,
+            1424,
+            1425,
+            1426,
+            1427,
+            1428,
+            1429,
+            1430,
+            1431,
+            1432,
+            1433,
+            1434,
+            1435,
+            1436,
+            1438,
+            1440,
+            1443,
+            1457,
+            1461,
+            1467,
+            1471
+          ],
+          "part": "서술형 평가의 물리량 비교·온도·반지름·광도 결합 추론을 대조하여 별도의 수치·선다형 문항 작성. 원본 HWP 도형·누락 수식 전체를 복원 대조했다고 주장하지 않음"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "b1a146350eab7903",
+          "pages": [
+            20,
+            21
+          ],
+          "difference": "네 집단을 나누어 표 입력·분산형 차트·축 반전·합치기",
+          "implementation": "같은 H-R도 작성 목적으로 통합; 해당 부록 204쪽 네 집단 표는 미대조이며 그 판본의 모든 자료 구현 완료로 세지 않음"
+        },
+        {
+          "sourceId": "b01d77c896a31d93",
+          "pages": [
+            150,
+            151
+          ],
+          "printedPages": [
+            148,
+            149
+          ],
+          "difference": "20개 별을 모눈종이에 직접 표시하고 태양의 위치와 무리별 성질 비교",
+          "implementation": "분광형–절대등급 배치와 해석의 공통 절차를 구현. 시리우스 B/프로키온 B의 분광형이 천재 표와 달라 두 판본을 섞지 않음; 이 20개 표 자체는 미구현"
+        }
+      ],
+      "boundary": "2022 교과서 30행 표에 대한 자료 해석이다. 실시간 관측 또는 최신 천문 카탈로그 전체가 아니며 모든 별 분광형·복성 성분·진화 단계를 검증한 천체 데이터베이스로 사용하지 않는다. 분광형 좌표 간격은 선형 온도 차이가 아니다. 절대 등급 차이는 같은 파장대 밝기 비교이며, 서로 다른 표면 온도의 별에 이를 전파장 광도비로 그대로 적용하여 반지름을 계산하지 않는다. 출판사 부록 전수·실제 스프레드시트 작성·관측 수행 완료 아님."
+    },
+    {
+      "slug": "kepler-data",
+      "source": {
+        "id": "e7caa9f0f741ad37",
+        "pages": [
+          34,
+          35
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "62723d252536d8e2",
+          "paragraphs": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195
+          ],
+          "part": "행성 자료의 거듭제곱 관계와 미지의 a·T를 추론하는 평가 목적 대조. HWP에 포함된 수식 그림·수치의 전체 복원을 주장하지 않고 독립된 수치 문항 작성"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "9f9329c580c435e2",
+          "pages": [
+            23,
+            24
+          ],
+          "difference": "근일점·원일점·긴반지름·주기를 수집하고 T²/a³ 비교",
+          "implementation": "행성별 근일점·원일점 원자료와 타원 모형을 추가; 타원 운동의 정량 유도는 학생 화면에 도입하지 않음"
+        },
+        {
+          "sourceId": "08e6b41c3997e230",
+          "pages": [
+            29,
+            30
+          ],
+          "difference": "AU·년 단위의 NASA 자료와 로그 그래프 비교",
+          "implementation": "단위 전환과 선형·로그 눈금 구현"
+        },
+        {
+          "sourceId": "35d817a99ea28582",
+          "pages": [
+            21
+          ],
+          "printedPages": [
+            27
+          ],
+          "difference": "명왕성·세레스·에리스·베스타·베누·핼리·엥케의 자료 비교",
+          "implementation": "시각 대조한 7행 원문 표를 별도 자료 세트로 보존; 행성 데이터와 합성하지 않음"
+        }
+      ],
+      "boundary": "관측 자료 해석과 이상적인 태양-행성 두 물체 타원 모형이다. 실시간 천체 위치·N체 수치 적분·실제 관측 수행 또는 스프레드시트 작성 완료가 아니다. 원자료의 시대·평균 요소·섭동 차이로 T²/a³에 편차가 있으며 이를 모두 1로 맞추지 않는다. 소천체 표는 교과서의 표시값을 보존한다. 각 타원은 별도로 확대하고 공전 주기를 12초로 맞추므로 행성끼리 화면상의 크기·속도를 직접 비교하지 않는다. 2022 성취기준 해설에 따라 타원 운동의 정량 유도·면적 공식을 학생 평가에 요구하지 않는다."
+    },
+    {
+      "slug": "star-elements",
+      "source": {
+        "id": "5c1484707d6ea1e3",
+        "pages": [
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ],
+        "printedPages": [
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "5c1484707d6ea1e3",
+          "pages": [
+            53,
+            56,
+            58,
+            59
+          ],
+          "part": "교과서의 스스로 확인하기 및 구성 원소 자료 해석 과제. 별도 객관식 원문 파일 대조 완료로 주장하지 않음; 주어진 질량비를 이용한 독립 선다형 문항 작성"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "5ce1f1f1cc94030e",
+          "pages": [
+            61
+          ],
+          "printedPages": [
+            59
+          ],
+          "difference": "같은 미래엔 표의 앞표지로 인한 PDF 쪽 오프셋",
+          "implementation": "같은 표로 대조하여 중복 실험으로 세지 않음"
+        },
+        {
+          "sourceId": "cf6ec783e2923385",
+          "pages": [
+            13,
+            14,
+            15
+          ],
+          "printedPages": [
+            49,
+            50,
+            51
+          ],
+          "difference": "동아의 지구 철 33%, 산소 31% 등과 사람 탄소 18%, 수소 10%를 사용하는 5항목 표",
+          "implementation": "자료 B로 분리하여 보존; 미래엔의 세부 원소 수치를 섞어 채우지 않음"
+        }
+      ],
+      "boundary": "지구 전체의 평균 조성과 사람의 대표 조성 자료다. 지각 조성·개인의 체성분 검사·원자 개수비와 동일하지 않다. 판본별 수치는 하나로 섞지 않는다. 기존 핵융합 모형의 수소 4개→헬륨 1개, 헬륨 3개→탄소 1개만 개념적으로 표시하며 반응의 중간 단계·양전자·중성미자는 생략한다. 실제 우주의 핵종 생성 비율·질량별 정밀 별 수명·핵반응 에너지 측정이 아니다. 모둠 이야기·발표·진로 활동은 실험으로 추가하지 않는다. 기존 선스펙트럼 보조 활동은 유지하되 이 표 대조로 분광 자료 전수 검증까지 완료한 것으로 세지 않는다."
     }
   ]
 }

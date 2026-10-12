@@ -83,3 +83,11 @@ const fork=require('../../scripts/science-tuning-fork-course.cjs');for(const id 
 module.exports.push({id:'12화학03#2',slugs:['rate-equilibrium','equilibrium-colour'],status:'부분 구현',note:'농도: 네 시험관의 크로뮴산 평형 비교, 온도: 코발트 용액의 조제·중탕·냉각을 정성 모형으로 추가. 기존 NO₂/N₂O₄의 온도·부피 조작은 이상 기체 평형 모형이다. 압축 직후와 새 평형의 입자 수·상대 농도·색 비교를 추가했다. 실물 측정·다른 출판사 조제 변형까지 완료한 것은 아니다.'});
 
 const strata=require('../../scripts/science-strata-correlation-experiment.cjs');module.exports.push({id:'12지구02#1',slugs:['strata-correlation','rock-age'],status:'모의활동',note:strata.current+' '+strata.boundary});
+
+const video=require('../../scripts/science-video-motion-experiment.cjs');for(const id of video.activities)module.exports.push({id,slugs:[video.slug],status:'직접측정',note:video.current+' '+video.boundary});
+
+const hr=require('../../scripts/science-hr-diagram-experiment.cjs');module.exports.push({id:'12지구03#2',slugs:[hr.slug,'stars'],status:'모의활동',note:hr.current+' '+hr.boundary});
+
+const kepler=require('../../scripts/science-kepler-data-experiment.cjs');module.exports.push({id:'12역학01#3',slugs:[kepler.slug],status:'모의활동',note:kepler.current+' '+kepler.boundary});
+
+const elementOrigin=require('../../scripts/science-element-origin-experiment.cjs');module.exports.push({id:'10통과1-02#2',slugs:[elementOrigin.slug],status:'모의활동',note:elementOrigin.current+' '+elementOrigin.boundary});

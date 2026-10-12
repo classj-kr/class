@@ -50,6 +50,11 @@ stages['equilibrium-colour']=require('./science-equilibrium-colour-stage.cjs');
 stages['cell-structure']=require('./science-cell-observation-stage.cjs');
 stages['strata-correlation']=require('./science-strata-correlation-stage.cjs');
 stages['polarized-thin-sections']=require('./science-thin-section-stage.cjs');
+stages['crust-thickness']=require('./science-crust-thickness-stage.cjs');
+stages['video-motion']=require('./science-video-motion-stage.cjs');
+stages['hr-diagram']=require('./science-hr-diagram-stage.cjs');
+stages['kepler-data']=require('./science-kepler-data-stage.cjs');
+stages['star-elements']=require('./science-element-origin-stage.cjs');
 function output(file,body){const normalized=s=>s.replace(/\r\n/g,'\n').replace(/\?v=[\w.-]+/g,'');const old=fs.existsSync(file)?fs.readFileSync(file,'utf8'):null;if(process.argv.includes('--check'))assert.equal(old===null?null:normalized(old),normalized(body));else if(old===null||normalized(old)!==normalized(body)){fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);}}
 for(const row of rows){
  const school=row.defaultContext||(row.codes.every(c=>c.startsWith('10'))?'high-common':row.codes.every(c=>c.startsWith('12'))?'high-elective':null);

@@ -1,0 +1,11 @@
+✔ source table spectral coordinates and same-band magnitude ratios (0.8098ms)
+✔ chromium: graph construction, retained first errors, comparison and tablet layouts (8032.938ms)
+✔ webkit: graph construction, retained first errors, comparison and tablet layouts (11397.1204ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19489.9494

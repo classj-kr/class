@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-12T16:04:14.959Z",
+  "checkedAt": "2026-10-12T17:48:26.381Z",
   "engine": "webkit",
-  "routes": 1,
-  "states": 15,
+  "routes": 5,
+  "states": 185,
   "widths": [
     1366,
     1180,

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "mercury",
+    "name": "수성",
+    "aMillionKm": 57.909,
+    "periodDays": 87.969,
+    "perihelionMillionKm": 46.0,
+    "aphelionMillionKm": 69.818
+  },
+  {
+    "id": "venus",
+    "name": "금성",
+    "aMillionKm": 108.21,
+    "periodDays": 224.701,
+    "perihelionMillionKm": 107.48,
+    "aphelionMillionKm": 108.941
+  },
+  {
+    "id": "earth",
+    "name": "지구",
+    "aMillionKm": 149.598,
+    "periodDays": 365.256,
+    "perihelionMillionKm": 147.095,
+    "aphelionMillionKm": 152.1
+  },
+  {
+    "id": "mars",
+    "name": "화성",
+    "aMillionKm": 227.956,
+    "periodDays": 686.98,
+    "perihelionMillionKm": 206.65,
+    "aphelionMillionKm": 249.261
+  },
+  {
+    "id": "jupiter",
+    "name": "목성",
+    "aMillionKm": 778.479,
+    "periodDays": 4332.589,
+    "perihelionMillionKm": 740.595,
+    "aphelionMillionKm": 816.363
+  },
+  {
+    "id": "saturn",
+    "name": "토성",
+    "aMillionKm": 1432.041,
+    "periodDays": 10755.699,
+    "perihelionMillionKm": 1357.554,
+    "aphelionMillionKm": 1506.527
+  },
+  {
+    "id": "uranus",
+    "name": "천왕성",
+    "aMillionKm": 2867.043,
+    "periodDays": 30685.4,
+    "perihelionMillionKm": 2732.696,
+    "aphelionMillionKm": 3001.39
+  },
+  {
+    "id": "neptune",
+    "name": "해왕성",
+    "aMillionKm": 4514.953,
+    "periodDays": 60189.018,
+    "perihelionMillionKm": 4471.05,
+    "aphelionMillionKm": 4558.857
+  }
+]

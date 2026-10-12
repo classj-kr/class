@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-12T16:05:44.715Z",
-  "count": 3558,
+  "checkedAt": "2026-10-12T17:33:51.772Z",
+  "count": 3625,
   "allDecoded": true,
   "allLossless": false,
   "redundantRasters": [],
@@ -12254,6 +12254,102 @@
       "sha256": "0ab53a5e3602beac2a4e01baa11bbf56cbc385da3883d27bb83af7d9e832234c"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/chromium-local-1366.webp",
+      "sha256": "74cfe170c6c3508ed9eba3e9fa1e002efe0b2e81da29dfa32f0bbeef81b3572c",
+      "width": 1600,
+      "height": 2173,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/chromium-local-390.webp",
+      "sha256": "81e1988f625727ebbd79513362b79af9f6b95e21093c6f91ed2f55bfc55fb46f",
+      "width": 458,
+      "height": 3380,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/chromium-local-768.webp",
+      "sha256": "3a92e9f5ca54dad7327a8b0495115ad1bb5620c04da28895ecbc8964ead5d15e",
+      "width": 900,
+      "height": 2933,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/chromium-stations-1366.webp",
+      "sha256": "01989f740da1b69d416a692284c9ca9cbe985bc0b6e3bb5eddda964eff36083c",
+      "width": 1600,
+      "height": 2173,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/chromium-stations-390.webp",
+      "sha256": "a3f03045775afd41e800a02efbf99763b0b63cab8197fe41112bf6aafd975612",
+      "width": 458,
+      "height": 3481,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/chromium-stations-768.webp",
+      "sha256": "47f005696f598c644e7a85ecd895e3bd9155a429645c82ed7570b31fefae76e8",
+      "width": 900,
+      "height": 3034,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/webkit-local-1366.webp",
+      "sha256": "c2413367c16453752209f20158a05332f55134ed11c3fd204a80bcc955118dcb",
+      "width": 2560,
+      "height": 3492,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/webkit-local-390.webp",
+      "sha256": "ba23d493058cd730a8a32bbccb91e354680107fed1cc1896eb7f4d2fa79f962b",
+      "width": 732,
+      "height": 5424,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/webkit-local-768.webp",
+      "sha256": "f9aad198044923ff970aaa0f28c8ec7a83094fdd08ec5d7c75d9be27bb8f3260",
+      "width": 1440,
+      "height": 4708,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/webkit-stations-1366.webp",
+      "sha256": "ae3bc30ff6fe01139439844a29636400488bc46f69e84c8e043176ed54438cfe",
+      "width": 2560,
+      "height": 3492,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/webkit-stations-390.webp",
+      "sha256": "d8158454c350d7862194b89c746354a342f0db1c47ef992c48521e8c0e5ac5e8",
+      "width": 732,
+      "height": 5586,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/crust-thickness/webkit-stations-768.webp",
+      "sha256": "252845b6ef5549b37197863a2f37e1edeb348ee2a7ab75ae4c2d6b8c7f3c89fa",
+      "width": 1440,
+      "height": 4870,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/dating-chromium.webp",
       "width": 976,
       "height": 1419,
@@ -24278,6 +24374,70 @@
       "sha256": "1a6c66003dde476ce0ac3e9386b41c10695dcb647996853f4177e190f5644f25"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/chromium-all-1366.webp",
+      "sha256": "960e30e615c196626224a163e66156e8b9a1ef0ed46fc6c14541403de589136c",
+      "width": 1600,
+      "height": 1973,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/chromium-all-390.webp",
+      "sha256": "a01c899598fe9cfcbe04a1b977dee1d08d8a979e716d3add67fb5b2634c7adfe",
+      "width": 458,
+      "height": 3673,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/chromium-all-768.webp",
+      "sha256": "6f9f8c6657af13574dbc4955a390567387840d6cf32bf37df349b95c0e47aa1a",
+      "width": 900,
+      "height": 2880,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/chromium-reversed-768.webp",
+      "sha256": "ec362307430f269d1fc16eed669cff5ca8788f60b801c3e1bbc2be60baaeb647",
+      "width": 900,
+      "height": 2845,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/webkit-all-1366.webp",
+      "sha256": "e6c389fec730ee204adad67c796195c02ca62646fca71f492ae4eb13a53cb75a",
+      "width": 2560,
+      "height": 3210,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/webkit-all-390.webp",
+      "sha256": "f22fc8e72fb93cba04c5cd54a75bf78d1c6ffa847b2690082cb082bab53757a8",
+      "width": 732,
+      "height": 5956,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/webkit-all-768.webp",
+      "sha256": "e8adb5b3282e99125da9839c81c57ba94a63334ab207fbadc41121fb4b1555f5",
+      "width": 1440,
+      "height": 4640,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/hr-diagram/webkit-reversed-768.webp",
+      "sha256": "b43119788b29c4d2050da662c6655553915b8312ea6d0fd417394200e332a85f",
+      "width": 1440,
+      "height": 4584,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/hydride-boiling-chromium-1024.webp",
       "width": 980,
       "height": 1843,
@@ -24532,6 +24692,86 @@
       "alpha": false,
       "lossless": true,
       "sha256": "1a69ad465a07ef1b048a94ab5c5e323b4b238b6200d011af73cf556e43086528"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/chromium-all-1366.webp",
+      "sha256": "d5315d3e057acaad32650407fa0a62d589c8203d62b6c1f9ac7e3d2ca7d093f3",
+      "width": 1600,
+      "height": 2813,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/chromium-all-768.webp",
+      "sha256": "59a042ea4063ab7fe96d37fb37d31d2aa0d92cc1fda7f47ce6f9bdfab368913d",
+      "width": 900,
+      "height": 3536,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/chromium-extreme-390.webp",
+      "sha256": "215a66ff57d225a79aa2971dd3b672c74a98d865e4dd2dc929829cb5ecddb754",
+      "width": 458,
+      "height": 3983,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/chromium-metric-768.webp",
+      "sha256": "01b217fc5c798fb38a2ff892ed09836fc28c358ea8c91eb40203baa096be25ae",
+      "width": 900,
+      "height": 3466,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/chromium-minor-768.webp",
+      "sha256": "9ce9cfbf3d6c5796ee4f185f428998c6bbd3c31ba5981dd936434910fb992cf8",
+      "width": 900,
+      "height": 2525,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/webkit-all-1366.webp",
+      "sha256": "a1cf642ce72e77fc159dfd6916bbaa012d35c095900ee6b556c88a6d97ccab2c",
+      "width": 2560,
+      "height": 4532,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/webkit-all-768.webp",
+      "sha256": "339c2725de852a79006ae9d70a12661790a12bb3b97d1880f40218dab20020b7",
+      "width": 1440,
+      "height": 5690,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/webkit-extreme-390.webp",
+      "sha256": "856eff8017096bcfbdeece67efee4df2bceea92210d32f3e05ce95cae64a2eda",
+      "width": 732,
+      "height": 6420,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/webkit-metric-768.webp",
+      "sha256": "9430412b7f9559c4a6d6154592e420ba6c373f0bb3ef435aac9ff1b13af70aca",
+      "width": 1440,
+      "height": 5578,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/kepler-data/webkit-minor-768.webp",
+      "sha256": "abce52282b0a90338d039a8e3a1177e4d4ede460a040aa4f0058aaa0fe6f15c0",
+      "width": 1440,
+      "height": 4056,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/leaf-classification-sources/6ffbf49bb850d9e5-10.webp",
@@ -27406,6 +27646,166 @@
       "sha256": "e98c948efcaab04a2376e5b518f26713ac187ec4c7dd0637a65513d2ada8a1e0"
     },
     {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-basalt-1366.webp",
+      "sha256": "59ecdd256ccee3cdfb501a979d0e7ac5110a42c25ff36b2a6b93330ec377286a",
+      "width": 1538,
+      "height": 1254,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-basalt-390.webp",
+      "sha256": "19491f16f1ebbea5b5d57caa0d1bcf4e9b6de018af85edf4f56ba1fe10d09680",
+      "width": 415,
+      "height": 1936,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-basalt-768.webp",
+      "sha256": "b1603c3c227c9819df9464ccdd5ad9a1b3f63cd8c4f2a014f2876c5ea1d26da8",
+      "width": 838,
+      "height": 1769,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-granite-1366.webp",
+      "sha256": "9105c9d2c4e1a1c25d429386161f7c90af2c7f0340750a602ef7a367a6787106",
+      "width": 1538,
+      "height": 1605,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-granite-390.webp",
+      "sha256": "6995bd06ebd2cffc7b0dab7c946dc325c407131183cacb7fa8961108cf9e2e52",
+      "width": 415,
+      "height": 2455,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-granite-768.webp",
+      "sha256": "5a43f35df478a6938039b55f3dd9f397044d4d956b26c31876d462e11c5aefc5",
+      "width": 838,
+      "height": 2120,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-photos-1366.webp",
+      "sha256": "6186af5e569fbd77999d731eb178baad4607859336f6376344d6316ea139a1e4",
+      "width": 1538,
+      "height": 1921,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-photos-390.webp",
+      "sha256": "16c1db13877dca901b4068f5002fa514929e90526bdc529a43da48cf65db0a21",
+      "width": 415,
+      "height": 2979,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-photos-768.webp",
+      "sha256": "e6e720372e8780a4e39ad842b62561f74b151f22f0a3753cdfde6eb78b59a6b8",
+      "width": 838,
+      "height": 1549,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/chromium-zoom-390.webp",
+      "sha256": "ed6cb66898807700b04dcd091b149b9932d772e53fd960ce716e00e368924362",
+      "width": 415,
+      "height": 625,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-basalt-1366.webp",
+      "sha256": "15fedf31b99c5386676c91f9269dcfd42c481da1ef998c3b3403d02bd7677868",
+      "width": 2460,
+      "height": 2006,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-basalt-390.webp",
+      "sha256": "49da5d5a933550c34eebafb790504f6d34453c96293b0f87b855a1e94095f1af",
+      "width": 664,
+      "height": 3098,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-basalt-768.webp",
+      "sha256": "f46d75a8957720e0639be696062ad3891d804d367dac9fd3b66a61b070dbcf7a",
+      "width": 1340,
+      "height": 2830,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-granite-1366.webp",
+      "sha256": "dd7a498197773a8d77b5b175b6ea8fe9cef0e323d041a737729a886d1152f09a",
+      "width": 2460,
+      "height": 2568,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-granite-390.webp",
+      "sha256": "bef0cf578988c1f5668e414aceb312c213fcadc5271856fcb6a5079e100758fb",
+      "width": 664,
+      "height": 3928,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-granite-768.webp",
+      "sha256": "b4da519ba75d18cfb4f6cfdcf9930eeb22c6b3e6042d034a59fd028b7dcc3033",
+      "width": 1340,
+      "height": 3392,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-photos-1366.webp",
+      "sha256": "488869b4d5363ea52591c8b0231125fb69d39c43f80075863958db28a5b8866f",
+      "width": 2460,
+      "height": 3106,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-photos-390.webp",
+      "sha256": "3818724c0464e2b7a8d06aee4772a5838b868adbead826cebbe01c43a269d499",
+      "width": 664,
+      "height": 4830,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-photos-768.webp",
+      "sha256": "dda00adaa8da4fe3933871c0608f421aa62e31e0dffe75649d84d0e87f178c62",
+      "width": 1340,
+      "height": 2510,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/thin-sections/webkit-zoom-390.webp",
+      "sha256": "c3090bb800f35b74d45331ced16d53c0449f70812b38f20bf9f8e828ee52841a",
+      "width": 664,
+      "height": 1000,
+      "alpha": false,
+      "lossless": true
+    },
+    {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/tides-chromium-1024.webp",
       "width": 980,
       "height": 2168,
@@ -27500,6 +27900,110 @@
       "alpha": false,
       "lossless": true,
       "sha256": "970734c153c9d5b74ca5971de9a847bcf64221979e2d0656a6ab62eea16f05e5"
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-cart-1366.webp",
+      "sha256": "329618b3aa8673e3e396b29e8469e1b4b489e58394179f37babda0ab740d8d4a",
+      "width": 1600,
+      "height": 4656,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-cart-390.webp",
+      "sha256": "4bb31cbf634418d99c2631d31a1da5c3709c62258adc6766d9eb65856c2ef5a6",
+      "width": 458,
+      "height": 6299,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-cart-768.webp",
+      "sha256": "24b4ffe775589fa18d23d03b6f1946ae3a032f91eb3a4e1edfdea3e17f674a06",
+      "width": 900,
+      "height": 5226,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-projectile-1366.webp",
+      "sha256": "787aa4a1728f19c572edea4b7f37514a18a48a19fda31a639f97e9a4da9e1b79",
+      "width": 1600,
+      "height": 4656,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-projectile-390.webp",
+      "sha256": "53137cebc8641008cd3d771659db98028a10c2993183ac9db1bb8dd728181dfa",
+      "width": 458,
+      "height": 6299,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-projectile-768.webp",
+      "sha256": "f9eb5d2554582ee28f39c57766bf1c9bbc6b659a1d008e5258f881dddee61551",
+      "width": 900,
+      "height": 5226,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/chromium-uploaded-768.webp",
+      "sha256": "9047c8d3eb694e127b2575f0f1bf7e88620cf1a18c64ce368b1b0b209223dc5d",
+      "width": 900,
+      "height": 4890,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/webkit-cart-1366.webp",
+      "sha256": "c0a3c866e4d074d22884e7a84d42f334ce33f7ea828e87eb61c745e4bc334a11",
+      "width": 2560,
+      "height": 7450,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/webkit-cart-390.webp",
+      "sha256": "963f6cefeebbdf17b1c09163e08f23eab5113a46ba6e5a33d1745a0b899b54e7",
+      "width": 732,
+      "height": 10078,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/webkit-cart-768.webp",
+      "sha256": "5b321f5960a195210af74c2b3109aad133c8dcaa2599d44348e8ecaa4383cf72",
+      "width": 1440,
+      "height": 8360,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/webkit-projectile-1366.webp",
+      "sha256": "a5803173e02e0d3a23ee7f31c46045484fd670a9da3c3ef2bde1ace9ecdd647d",
+      "width": 2560,
+      "height": 7450,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/webkit-projectile-390.webp",
+      "sha256": "47456189fc18b83ad91ba10e548f7de007b33619cbd8037a9a7635afda864b49",
+      "width": 732,
+      "height": 10078,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "docs/science-lab-audit-2026-10-12/course-practices/video-motion/webkit-projectile-768.webp",
+      "sha256": "71d22b3795aea877965374b7a45af6a775c1eeb8b203f9418d4e1ed9b0c2b845",
+      "width": 1440,
+      "height": 8360,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "docs/science-lab-audit-2026-10-12/course-practices/water-waves-chromium-1024.webp",
@@ -28444,6 +28948,38 @@
       "alpha": false,
       "lossless": false,
       "sha256": "70d2dea236ea4756deba4994d5d5dbff44b592fe8a598d482de9244d7848a49b"
+    },
+    {
+      "path": "learning/inquiry/science-lab/assets/thin-sections/coarse.webp",
+      "sha256": "487942e3249be768643c784f8d227730cd96edd1f7b9735b0babfcc7ed808a76",
+      "width": 728,
+      "height": 533,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/assets/thin-sections/fine.webp",
+      "sha256": "a4d6f3bf0b0d7945d3fa166b7ff1f4909c933c3db6b28197b6a473dccf45b4b1",
+      "width": 728,
+      "height": 533,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/assets/thin-sections/glass.webp",
+      "sha256": "11567f78e69f9e27a263ac7e8b88e04d8145b50c36298272f6887783aed611ce",
+      "width": 728,
+      "height": 533,
+      "alpha": false,
+      "lossless": true
+    },
+    {
+      "path": "learning/inquiry/science-lab/assets/thin-sections/porphyritic.webp",
+      "sha256": "3cf91f1d331d88e59f559960c5cd66477186ade951f1c66d7783f0338ac02c7a",
+      "width": 728,
+      "height": 533,
+      "alpha": false,
+      "lossless": true
     },
     {
       "path": "learning/inquiry/science-lab/sunspot-observation/data/2024-05-05.webp",

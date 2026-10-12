@@ -256,6 +256,141 @@
       "sha256": "c9d33f655b4e8667a9f12e634df02284ef197f5a3e3b54b9c7a899b5d23d6481",
       "observation": "Three narrow columns retain legible rock labels and 44px boundaries; the summary stacks without horizontal overflow.",
       "recheckedAt": "2026-10-12T16:10:52.568Z"
+    },
+    {
+      "file": "thin-sections/webkit-granite-768.webp",
+      "sha256": "b4da519ba75d18cfb4f6cfdcf9930eeb22c6b3e6042d034a59fd028b7dcc3033",
+      "observation": "Same-size field, crossed-polar grain model, touch controls and comparison text are readable without overlap; image is clearly labelled as a model.",
+      "recheckedAt": "2026-10-12T16:24:03.549Z"
+    },
+    {
+      "file": "thin-sections/chromium-basalt-1366.webp",
+      "sha256": "59ecdd256ccee3cdfb501a979d0e7ac5110a42c25ff36b2a6b93330ec377286a",
+      "observation": "Fine-grained field is distinct from coarse-grained field. Controls and observation progress have consistent readable type.",
+      "recheckedAt": "2026-10-12T16:24:03.551Z"
+    },
+    {
+      "file": "thin-sections/webkit-zoom-390.webp",
+      "sha256": "c3090bb800f35b74d45331ced16d53c0449f70812b38f20bf9f8e828ee52841a",
+      "observation": "Actual porphyritic source photo remains visible; 1 mm scale expands with the image while its label stays at a fixed screen size.",
+      "recheckedAt": "2026-10-12T16:24:03.551Z"
+    },
+    {
+      "file": "thin-sections/webkit-photos-768.webp",
+      "sha256": "dda00adaa8da4fe3933871c0608f421aa62e31e0dffe75649d84d0e87f178c62",
+      "observation": "Four original source micrographs have proportional 1 mm/0.5 mm scales, legible classification controls and a retained first 1/4 result after correction to 4/4.",
+      "recheckedAt": "2026-10-12T16:24:37.105Z"
+    },
+    {
+      "file": "crust-thickness/webkit-local-768.webp",
+      "sha256": "f9aad198044923ff970aaa0f28c8ec7a83094fdd08ec5d7c75d9be27bb8f3260",
+      "observation": "Actual eight-point table, two trend lines and intersection are legible. The derived 33.1 km calculation and first-error feedback match the original source fit.",
+      "recheckedAt": "2026-10-12T16:34:34.393Z"
+    },
+    {
+      "file": "crust-thickness/chromium-stations-1366.webp",
+      "sha256": "01989f740da1b69d416a692284c9ca9cbe985bc0b6e3bb5eddda964eff36083c",
+      "observation": "Ten-point data table aligns beside the graph; times, speeds, crossing distance and 40.6 km estimate fit without clipped labels.",
+      "recheckedAt": "2026-10-12T16:34:34.395Z"
+    },
+    {
+      "file": "crust-thickness/webkit-local-390.webp",
+      "sha256": "ba23d493058cd730a8a32bbccb91e354680107fed1cc1896eb7f4d2fa79f962b",
+      "observation": "Narrow layout stacks data and results; axis labels remain readable and the full formula stays within the screen.",
+      "recheckedAt": "2026-10-12T16:34:34.395Z"
+    },
+    {
+      "file": "video-motion/chromium-cart-1366.webp",
+      "sha256": "329618b3aa8673e3e396b29e8469e1b4b489e58394179f37babda0ab740d8d4a",
+      "observation": "Incline acceleration now follows g sin(theta); kinetic and gravitational energy sum stays flat. Three labeled component graphs, consistent type, measurements and closed-by-default data sections.",
+      "recheckedAt": "2026-10-12T17:02:47.510Z"
+    },
+    {
+      "file": "video-motion/webkit-projectile-768.webp",
+      "sha256": "71d22b3795aea877965374b7a45af6a775c1eeb8b203f9418d4e1ed9b0c2b845",
+      "observation": "Tablet touch-marked positions, x/y velocity, acceleration, expanded interval table and energy curves. Small marking noise remains visible rather than forced onto a perfect model curve.",
+      "recheckedAt": "2026-10-12T17:02:47.512Z"
+    },
+    {
+      "file": "video-motion/webkit-cart-390.webp",
+      "sha256": "963f6cefeebbdf17b1c09163e08f23eab5113a46ba6e5a33d1745a0b899b54e7",
+      "observation": "Narrow-screen two-column playback controls, single-column readable graphs, full-width axis control, no page overflow.",
+      "recheckedAt": "2026-10-12T17:02:47.512Z"
+    },
+    {
+      "file": "video-motion/chromium-uploaded-768.webp",
+      "sha256": "9047c8d3eb694e127b2575f0f1bf7e88620cf1a18c64ce368b1b0b209223dc5d",
+      "observation": "Actual decoding of the generated H264 test fixture, local file name, calibration and manually marked points. Last keyboard point deliberately differs from the trajectory; calculated curves reflect that edit. This fixture is not a recorded textbook experiment.",
+      "recheckedAt": "2026-10-12T17:02:47.512Z"
+    },
+    {
+      "file": "hr-diagram/chromium-all-1366.webp",
+      "sha256": "960e30e615c196626224a163e66156e8b9a1ef0ed46fc6c14541403de589136c",
+      "observation": "Thirty source-table stars, correct spectral/magnitude directions, distinct star groups, coherent input and graph typography; no explanatory source text in student flow.",
+      "recheckedAt": "2026-10-12T17:14:10.930Z"
+    },
+    {
+      "file": "hr-diagram/webkit-all-768.webp",
+      "sha256": "e8adb5b3282e99125da9839c81c57ba94a63334ab207fbadc41121fb4b1555f5",
+      "observation": "Tablet graph followed by a two-column control section. Coordinate correction retains the first wrong response; selected star label and legend remain inside the plot.",
+      "recheckedAt": "2026-10-12T17:14:10.932Z"
+    },
+    {
+      "file": "hr-diagram/webkit-all-390.webp",
+      "sha256": "f22fc8e72fb93cba04c5cd54a75bf78d1c6ffa847b2690082cb082bab53757a8",
+      "observation": "Narrow layout keeps diagram labels readable, controls stack without horizontal overflow, and all seven spectral-axis ticks fit.",
+      "recheckedAt": "2026-10-12T17:14:10.932Z"
+    },
+    {
+      "file": "hr-diagram/webkit-reversed-768.webp",
+      "sha256": "b43119788b29c4d2050da662c6655553915b8312ea6d0fd417394200e332a85f",
+      "observation": "Both reversed axes visibly move the points and selected label; captions reflect the actual chosen direction. Reversal does not clip the diagram or controls. Final check: changing either axis replaces stale correct feedback with a request to check the new graph.",
+      "recheckedAt": "2026-10-12T17:14:10.932Z"
+    },
+    {
+      "file": "kepler-data/chromium-all-1366.webp",
+      "sha256": "d5315d3e057acaad32650407fa0a62d589c8203d62b6c1f9ac7e3d2ca7d093f3",
+      "observation": "Coherent graph, ratio panel and data table; equal-time sectors and focus are visible without oversized SVG labels."
+    },
+    {
+      "file": "kepler-data/webkit-all-768.webp",
+      "sha256": "339c2725de852a79006ae9d70a12661790a12bb3b97d1880f40218dab20020b7",
+      "observation": "Tablet stacks graph and ratio panel while maintaining readable controls, all table columns and orbit labels."
+    },
+    {
+      "file": "kepler-data/webkit-extreme-390.webp",
+      "sha256": "856eff8017096bcfbdeece67efee4df2bceea92210d32f3e05ce95cae64a2eda",
+      "observation": "Narrow extreme unit/power state preserves 14 px graph labels and 44 px controls; data table scrolls within its panel, not the entire page."
+    },
+    {
+      "file": "element-origin/chromium-A-1366.webp",
+      "sha256": "da390f66c0535f798a683dc4b63dd4807775e652162d49fdec1bc05795579310",
+      "observation": "Source A whole-Earth and human mass composition share the same 0–75% axis. Values and labels remain readable; neither unlisted values nor crust composition are substituted."
+    },
+    {
+      "file": "element-origin/webkit-B-768.webp",
+      "sha256": "3d3d00092c4461da1d4c1fa9075188aedca269d1eadb271f53a606a153d859cc",
+      "observation": "Source B stays a separate five-category dataset. Vertical chart layout and equal-mass comparison remain readable on a tablet."
+    },
+    {
+      "file": "element-origin/webkit-large-390.webp",
+      "sha256": "85a8142cc536c1ff8c1843f33e957383745d99924cfb42104e8591216f9162c0",
+      "observation": "Narrow layout preserves element names, numerical percentages and controls without whole-page horizontal scrolling."
+    },
+    {
+      "file": "element-origin/webkit-fusion-he-768.webp",
+      "sha256": "2d5ade330def5c018851e6aa2b8ee5e7062bea727635d57d769e3124633baf6c",
+      "observation": "Three helium nuclei preserve all twelve nucleons in the carbon result; labels, legend and energy explanation remain readable."
+    },
+    {
+      "file": "element-origin/webkit-star-large-768.webp",
+      "sha256": "16c76fc94886958d9783520c34f44c27588a055e0cf97422ff2ab0065e067932",
+      "observation": "Qualitative stellar endpoint and reaction stages use consistent labels; no obsolete numerical fusion energy or precise stellar lifetime is displayed."
+    },
+    {
+      "file": "element-origin/webkit-origin-768.webp",
+      "sha256": "f66b70b66d4ef9426caef5745c76e4517fdb6f701fcb4f0cfa78132dba17aee8",
+      "observation": "Origin selection and its retained conceptual explanation render without source/provenance text or clipped labels."
     }
   ],
   "superseded": [

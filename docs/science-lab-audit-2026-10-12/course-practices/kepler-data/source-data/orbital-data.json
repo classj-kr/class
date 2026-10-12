@@ -1,0 +1,218 @@
+[
+  {
+    "body": "mercury",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html",
+    "retrievedAt": "2026-10-12T17:18:02.087339+00:00",
+    "sha256": "170d9f2d2ba7f7ae322c68d473ccb0b35ab94f4b4aca197bf74fe3b7e4e10f3f",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "57.909",
+        "149.598",
+        "0.387"
+      ],
+      "Sidereal orbit period (days)": [
+        "87.969",
+        "365.256",
+        "0.241"
+      ],
+      "Perihelion (10 6 km)": [
+        "46.000",
+        "147.095",
+        "0.313"
+      ],
+      "Aphelion (10 6 km)": [
+        "69.818",
+        "152.100",
+        "0.459"
+      ]
+    }
+  },
+  {
+    "body": "venus",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html",
+    "retrievedAt": "2026-10-12T17:18:02.955640+00:00",
+    "sha256": "473c61da0bf7188764ec8ae5b12c0fdc9f922bccd9e3f6b47c885fef0723541c",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "108.210",
+        "149.598",
+        "0.723"
+      ],
+      "Sidereal orbit period (days)": [
+        "224.701",
+        "365.256",
+        "0.615"
+      ],
+      "Perihelion (10 6 km)": [
+        "107.480",
+        "147.095",
+        "0.731"
+      ],
+      "Aphelion (10 6 km)": [
+        "108.941",
+        "152.100",
+        "0.716"
+      ]
+    }
+  },
+  {
+    "body": "earth",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+    "retrievedAt": "2026-10-12T17:18:03.817807+00:00",
+    "sha256": "1b06e3ec31249d063d40d1b38837fac89ddcd2f4b25268b38e8a6d5f413e70ef",
+    "values": {
+      "Semimajor axis (106 km)": [
+        "149.598"
+      ],
+      "Sidereal orbit period (days)": [
+        "365.256"
+      ],
+      "Perihelion (106 km)": [
+        "147.095"
+      ],
+      "Aphelion (106 km)": [
+        "152.100"
+      ]
+    }
+  },
+  {
+    "body": "mars",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+    "retrievedAt": "2026-10-12T17:18:04.686718+00:00",
+    "sha256": "366b0ce9b69cbee370be904956748af954468a41b93dc71a796a986519aa8d74",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "227.956",
+        "149.598",
+        "1.524"
+      ],
+      "Sidereal orbit period (days)": [
+        "686.980",
+        "365.256",
+        "1.881"
+      ],
+      "Perihelion (10 6 km)": [
+        "206.650",
+        "147.095",
+        "1.405"
+      ],
+      "Aphelion (10 6 km)": [
+        "249.261",
+        "152.100",
+        "1.639"
+      ]
+    }
+  },
+  {
+    "body": "jupiter",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html",
+    "retrievedAt": "2026-10-12T17:18:05.555110+00:00",
+    "sha256": "9ac7835ae5387261bc02019a641bbfc8450122ffebebffea5678c3de6c54d0cb",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "778.479",
+        "149.598",
+        "5.204"
+      ],
+      "Sidereal orbit period (days)": [
+        "4,332.589",
+        "365.256",
+        "11.862"
+      ],
+      "Perihelion (10 6 km)": [
+        "740.595",
+        "147.095",
+        "5.035"
+      ],
+      "Aphelion (10 6 km)": [
+        "816.363",
+        "152.100",
+        "5.367"
+      ]
+    }
+  },
+  {
+    "body": "saturn",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+    "retrievedAt": "2026-10-12T17:18:06.436344+00:00",
+    "sha256": "6d09ba010cacef61c8ae1a1ff137b06e5464e99461faf8f32c107419c474d06d",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "1,432.041",
+        "149.598",
+        "9.573"
+      ],
+      "Sidereal orbit period (days)": [
+        "10,755.699",
+        "365.256",
+        "29.447"
+      ],
+      "Perihelion (10 6 km)": [
+        "1,357.554",
+        "147.095",
+        "9.229"
+      ],
+      "Aphelion (10 6 km)": [
+        "1,506.527",
+        "152.100",
+        "9.905"
+      ]
+    }
+  },
+  {
+    "body": "uranus",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+    "retrievedAt": "2026-10-12T17:18:07.368476+00:00",
+    "sha256": "02389139f8345a4328fc8f8956012cb72f691c6c7c2854c03c0b2512a063de81",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "2,867.043",
+        "149.598",
+        "19.165"
+      ],
+      "Sidereal orbit period (days)": [
+        "30,685.400",
+        "365.256",
+        "84.011"
+      ],
+      "Perihelion (10 6 km)": [
+        "2,732.696",
+        "147.095",
+        "18.578"
+      ],
+      "Aphelion (10 6 km)": [
+        "3,001.390",
+        "152.100",
+        "19.733"
+      ]
+    }
+  },
+  {
+    "body": "neptune",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html",
+    "retrievedAt": "2026-10-12T17:18:08.234576+00:00",
+    "sha256": "4b9166f959be2b507eea77a9eef56f4e5679b693ba75151072a28bb228f44328",
+    "values": {
+      "Semimajor axis (10 6 km)": [
+        "4,514.953",
+        "149.598",
+        "30.178"
+      ],
+      "Sidereal orbit period (days)": [
+        "60,189.018",
+        "365.256",
+        "164.79"
+      ],
+      "Perihelion (10 6 km)": [
+        "4,471.050",
+        "147.095",
+        "30.396"
+      ],
+      "Aphelion (10 6 km)": [
+        "4,558.857",
+        "152.100",
+        "29.973"
+      ]
+    }
+  }
+]

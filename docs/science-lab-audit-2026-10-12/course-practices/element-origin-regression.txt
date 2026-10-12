@@ -1,0 +1,11 @@
+✔ two source tables stay separate, total 100%, distinguish unlisted from zero (7.8754ms)
+✔ chromium: composition, conserved nuclei, touch, first errors and responsive labels (6078.2121ms)
+✔ webkit: composition, conserved nuclei, touch, first errors and responsive labels (14912.0296ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21072.6796

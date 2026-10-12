@@ -18,7 +18,15 @@ async function paint(p){await p.bringToFront();await p.evaluate(()=>new Promise(
    await p.waitForSelector('[data-assessment-ready]',{state:'attached'});
    const selectors=await p.evaluate(()=>['button[data-mode]','[data-sc-mode]','[data-experiment]','[data-supplement-choice]','[data-rs-mode]','[data-rs-action]','[data-tf-mode]','[data-tf-contact]'].flatMap(sel=>[...document.querySelectorAll(sel)].map(e=>({selector:[...e.attributes].filter(a=>['data-mode','data-sc-mode','data-experiment','data-supplement-choice','data-value','data-rs-mode','data-rs-action','data-tf-mode','data-tf-contact'].includes(a.name)).map(a=>'['+a.name+'='+JSON.stringify(a.value)+']').join(''),name:e.textContent.trim().slice(0,50)}))));
    if(route.slug==='rate-equilibrium')selectors.push(...['exo','endo'].flatMap(heat=>['off','on'].map(cat=>({rate:{heat,cat}}))));
+   if(route.slug==='star-elements')selectors.push(...['A','B','missing','hydrogen','large','fusion-he','star-small','star-large','origin'].map(element=>({element})));
+   if(route.slug==='kepler-data')selectors.push(...['all','metric','linear','inner','outer','minor','earth','extreme'].map(kepler=>({kepler})));
+   if(route.slug==='hr-diagram')selectors.push(...['all','top','bottom','long-name','reversed','different-types','data'].map(hr=>({hr})));
+   if(route.slug==='video-motion')selectors.push(...['cart-data','cart-axis','projectile-energy','projectile-mass'].map(video=>({video})));
    for(const mode of [null,...selectors]){
+    if(mode?.element)await p.evaluate(require('../tests/science-element-origin-scenario.cjs'),mode.element);
+    if(mode?.kepler)await p.evaluate(require('../tests/science-kepler-data-scenario.cjs'),mode.kepler);
+    if(mode?.hr)await p.evaluate(require('../tests/science-hr-diagram-scenario.cjs'),mode.hr);
+    if(mode?.video)await p.evaluate(require('../tests/science-video-motion-scenario.cjs'),mode.video);
     if(mode?.selector){
      if(!await p.locator(mode.selector).count()){await p.reload();await p.waitForSelector('[data-assessment-ready]',{state:'attached'});}
      await p.evaluate(selector=>{
