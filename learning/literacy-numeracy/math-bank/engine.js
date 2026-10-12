@@ -499,6 +499,13 @@
   const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, signed: Boolean(o.signed) }], explain: o.explain || '', facts: o.facts || {} });
   // o.shown: 틀렸을 때 답 줄에 보일 글(답이 식일 때 「3x − 2」처럼 식 그대로 보인다). 주지 않으면 칸마다의 답을 쉼표로 이어 보인다.
   const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, shown: o.shown || '', explain: o.explain || '', facts: o.facts || {} });
+  // 답 칸을 식 속에 끼워 넣는 문항(중학교): template 의 {0}, {1}, … 자리에 inputs 의 칸이 그 번호대로 들어간다(지수 칸은 「x<sup>{1}</sup>」처럼 적는다).
+  // 칸은 M 과 같은 수 칸({ answer, signed })이거나 부등호 칸({ rel: true, answer: '<' | '<=' | '>' | '>=' })이다. 틀렸을 때 보일 답 글 o.shown 을 꼭 준다.
+  const inline = (text, template, inputs, o) => {
+    if (!o || !o.shown) throw new Error('inline 문항에는 shown(틀렸을 때 보일 답 글)을 준다');
+    inputs.forEach((input, i) => { if (template.split('{' + i + '}').length !== 2) throw new Error('template 에 {' + i + '} 자리가 꼭 하나 있어야 한다'); });
+    return Object.assign(M(text, inputs, o), { template });
+  };
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
   // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다. 답은 더 줄일 수 없는 분수(기약분수)로 적는다.
   // o.whole 을 주면 대분수(자연수 칸 + 분자·분모 칸), o.improper: true 면 가분수(분자가 분모보다 크다), o.unit 은 분수 뒤에 적는 단위.
@@ -652,6 +659,13 @@
   // 소수 칸(decimal)은 소수 셋째 자리까지 적은 수를 받는다(0.50처럼 끝에 0을 적어도 같은 수로 본다). 나머지 칸은 자연수만 받는다.
   function isCorrect(item, response) {
     if (item.choice) return Number(response) === item.choice.answer;
+    // 부등호 칸(rel)은 고른 기호를 글자 그대로 견주고, 나머지 칸만 수로 견준다.
+    if (item.inputs.some((input) => input.rel)) {
+      const raw = Array.isArray(response) ? response : [response];
+      if (raw.length !== item.inputs.length || item.inputs.some((input, i) => input.rel && String(raw[i]) !== input.answer)) return false;
+      const keep = item.inputs.map((input, i) => i).filter((i) => !item.inputs[i].rel);
+      return keep.length === 0 || isCorrect(Object.assign({}, item, { inputs: keep.map((i) => item.inputs[i]) }), keep.map((i) => raw[i]));
+    }
     let given = (Array.isArray(response) ? response : [response]).map(cleanNumber);
     if (given.length !== item.inputs.length) return false;
     // 부호가 있는 칸은 앞에 +, −(-)를 붙여 적은 글을 받는다. 분수 답의 부호는 첫 칸의 글 앞에 붙는다(값 전체의 부호).
@@ -680,6 +694,6 @@
   root.MathBank = {
     Dice, addUnit, addTypes, addGroup, findUnit, findGroup, typesOf, bankOf, makeRound, roundCount, isCorrect, LEVELS, ROUND_SIZE,
     units: () => units.slice(),
-    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, barChart, lineChart, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
+    kit: { digitsOf, carryPlaces, borrowPlaces, mulCarries, count, plain, josa, name, NAMES, groupsOf, cut, say, named, barChart, lineChart, esc, LABELS, box, frac, mixed, partLine, expr, column, columnSteps, divColumn, divSteps, longDivision, pictograph, beaker, dial, levels, timeColumn, chars, blocks, counters, ruler, kmLine, splitGrid, tenthLine, pieces, onePiece, squares, cards, lines, tagged, numbers, chain, table, route, tapes, bar, shapes, dots, numberLine, N, M, C, F, D, E, inline, nick, addPair, subPair, pairNear, ADD, SUB, mulPair, MUL, result, shown }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

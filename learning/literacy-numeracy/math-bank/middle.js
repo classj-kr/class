@@ -5,7 +5,7 @@
 (function (root) {
   'use strict';
   const B = root.MathBank;
-  const { josa, box, frac, lines, numbers, N, M, C, F, D } = B.kit;
+  const { josa, box, frac, lines, numbers, N, M, C, F, D, inline } = B.kit;
   const LAB = ['㉠', '㉡', '㉢', '㉣', '㉤'];
   const MINUS = '−', GT = '&gt;', LT = '&lt;', GE = '≥', LE = '≤';
   const range = (lo, hi) => Array.from({ length: hi - lo + 1 }, (_, i) => lo + i);
@@ -153,11 +153,12 @@
   const f1 = (v) => Number(v.toFixed(1));
   // 수직선(음수 쪽까지). lo~hi: 정수 눈금의 두 끝. o.parts 1을 똑같이 나눈 칸 수, o.labels 수를 적을 정수(주지 않으면 모두),
   //  o.points [{ at 유리수, name }], o.moves 화살표 [{ from, to, label }](유리수, 아래 것부터 위로 쌓는다)
+  //  o.rays 부등식의 해 [{ at 수, dir: 1(오른쪽) | -1(왼쪽), closed: 경계를 포함하는가 }] — 경계에 ○(●)를 찍고 그쪽으로 굵은 선을 화살표로 뻗는다.
   // 그림 설명에는 점마다 0에서 어느 쪽으로 몇 칸 간 곳인지 적는다(검사와 화면 읽기가 그 글로 수를 읽는다).
   function nline(lo, hi, o) {
     const opt = o || {}, parts = opt.parts || 1, span = hi - lo, u = Math.min(30, 288 / span), left = 20, x = (v) => left + (v - lo) * u;
-    const moves = opt.moves || [], points = opt.points || [], labelled = moves.some((m) => m.label), gap = labelled ? 25 : 16;
-    const y = moves.length ? 10 + moves.length * gap + (labelled ? 4 : 0) : points.length ? 26 : 10, width = left * 2 + span * u, height = y + 27;
+    const moves = opt.moves || [], points = opt.points || [], rays = opt.rays || [], labelled = moves.some((m) => m.label), gap = labelled ? 25 : 16;
+    const y = moves.length ? 10 + moves.length * gap + (labelled ? 4 : 0) : points.length ? 26 : rays.length ? 22 : 10, width = left * 2 + span * u, height = y + 27;
     const labels = opt.labels || range(lo, hi), text = (v) => (v < 0 ? MINUS + -v : String(v));
     let out = `<line class="mb-axis" x1="${f1(x(lo) - 11)}" y1="${y}" x2="${f1(x(hi) + 11)}" y2="${y}"/>`
       + `<path d="M${f1(x(lo) - 17)} ${y}l7 -3.6v7.2z" style="fill:#1f2933"/><path d="M${f1(x(hi) + 17)} ${y}l-7 -3.6v7.2z" style="fill:#1f2933"/>`;
@@ -170,11 +171,17 @@
         + (m.label ? `<text x="${f1((a + b) / 2)}" y="${yy - 5}" text-anchor="middle" style="font-size:12px;font-weight:700;fill:#1d4ed8">${m.label}</text>` : '');
     });
     for (const p of points) out += `<circle class="mb-dot" cx="${f1(x(fl(p.at)))}" cy="${y}" r="3.3"/><text class="mb-km-label" style="font-size:13.5px" x="${f1(x(fl(p.at)))}" y="${y - 10}" text-anchor="middle">${p.name}</text>`;
+    for (const r of rays) {
+      const a = f1(x(fl(asQ(r.at)))), end = r.dir > 0 ? x(hi) + 9 : x(lo) - 9, yy = y - 12;
+      out += `<path d="M${a} ${y - 3.6}V${yy}H${f1(end - r.dir * 6)}" style="fill:none;stroke:#1d4ed8;stroke-width:1.9;stroke-linejoin:round"/><path d="M${f1(end)} ${yy}l${-r.dir * 8} -3.8v7.6z" style="fill:#1d4ed8"/>`
+        + `<circle cx="${a}" cy="${y}" r="3.7" style="fill:${r.closed ? '#1d4ed8' : '#fff'};stroke:#1d4ed8;stroke-width:1.6"/>`;
+    }
     const steps = (v) => Math.abs(v.p) * parts / v.q + '칸', side = (v) => (v.p > 0 ? '오른쪽' : '왼쪽');
     const where = (v) => (v.p === 0 ? '0이 적힌 눈금' : `0에서 ${side(v)}으로 ${parts > 1 ? '작은 눈금 ' : ''}${steps(v)} 간 곳`);
     const said = `수직선: ${text(lo)}부터 ${text(hi)}까지 정수마다 눈금이 있다` + (parts > 1 ? `. 1을 똑같이 ${parts}칸으로 나눈 작은 눈금이 있다` : '') + '. '
       + (labels.length === span + 1 ? '정수 눈금마다 수를 적었다' : `수를 적은 눈금은 ${labels.map(text).join(', ')}`) + '.'
       + points.map((p) => ` 점 ${p.name}: ${where(p.at)}.`).join('')
+      + rays.map((r) => ` ${where(asQ(r.at))}에 ${r.closed ? '색칠한 점(●)' : '속이 빈 점(○)'}이 있고, 거기서 ${r.dir > 0 ? '오른쪽' : '왼쪽'}으로 굵은 선이 화살표로 뻗어 있다.`).join('')
       + moves.map((m, k) => { const len = qsub(m.to, m.from); return ` 화살표 ${k + 1}: ${k && qcmp(m.from, moves[k - 1].to) === 0 ? `화살표 ${k}의 끝` : plain(m.from)}에서 ${side(len)}으로 ${m.label ? plain(qabs(len)) + '만큼' : steps(len)}.`; }).join('');
     return `<svg class="mb-numberline" viewBox="0 0 ${f1(width)} ${height}" width="${Math.round(width)}" role="img" aria-label="${said}">${out}</svg>`;
   }
@@ -309,7 +316,7 @@
     const u = Math.min(24, 260 / (xhi - xlo)), padL = 16, padR = 26, padT = 24, padB = 16, W = padL + padR + (xhi - xlo) * u, H = padT + padB + (yhi - ylo) * u;
     const X = (v) => f1(padL + (v - xlo) * u), Y = (v) => f1(padT + (yhi - v) * u);
     // 원점의 이름 O 는 왼쪽 아래에 적는다. 오른쪽 위로 올라가는 직선이 그 자리를 지나면 오른쪽 아래에 적는다.
-    const oSide = (opt.lines || []).length && num(opt.lines[0].a) > 0 ? 1 : -1;
+    const first = (opt.lines || [])[0], oSide = opt.oSide ? (opt.oSide === 'r' ? 1 : -1) : first && first.x == null && num(first.a) > 0 ? 1 : -1;
     const ticks = opt.ticks || 'all', shown = (v) => v !== 0 && (ticks === 'all' || (Array.isArray(ticks) && ticks.includes(v)));
     let out = '';
     if (opt.grid !== false) {
@@ -328,14 +335,24 @@
     const said = [`좌표평면: x축은 ${signedText(xlo)}부터 ${signedText(xhi)}까지, y축은 ${signedText(ylo)}부터 ${signedText(yhi)}까지이고 모눈 한 칸은 1이다.`];
     const COLORS = ['#1d4ed8', '#b42318', '#15803d', '#7c3aed'];
     (opt.lines || []).forEach((line, k) => {
-      const a = num(line.a), color = COLORS[k % COLORS.length];
+      const color = COLORS[k % COLORS.length], dash = line.dash ? ';stroke-dasharray:5 3' : '', title = `직선${line.name ? ' ' + line.name : ''}`;
+      // x = p: y축에 평행한 직선
+      if (line.x != null) {
+        const p = num(line.x);
+        out += `<line x1="${X(p)}" y1="${Y(ylo)}" x2="${X(p)}" y2="${Y(yhi)}" style="stroke:${color};stroke-width:1.8${dash}"/>`;
+        if (line.name) out += `<text x="${X(p) + 5}" y="${Y(yhi) + 11}" text-anchor="start" style="font-size:12px;font-weight:700;fill:${color}">${line.name}</text>`;
+        said.push(`${title}: x축 위의 ${plain(asQ(line.x))}인 점을 지나고 y축에 평행하다.`);
+        return;
+      }
+      // y = ax + b (b 를 주지 않으면 원점을 지난다)
+      const a = num(line.a), b = line.b == null ? 0 : num(line.b);
       // 상자 안에 드는 구간
       let lo = xlo, hi = xhi;
-      if (a !== 0) { const p = ylo / a, q = yhi / a; lo = Math.max(lo, Math.min(p, q)); hi = Math.min(hi, Math.max(p, q)); }
-      out += `<line x1="${X(lo)}" y1="${Y(a * lo)}" x2="${X(hi)}" y2="${Y(a * hi)}" style="stroke:${color};stroke-width:1.8"/>`;
-      if (line.name) out += `<text x="${X(hi) + (a < 0 ? 4 : -4)}" y="${Y(a * hi) + (a < 0 ? 13 : -5)}" text-anchor="${a < 0 ? 'start' : 'end'}" style="font-size:12px;font-weight:700;fill:${color}">${line.name}</text>`;
-      const q = asQ(line.a);
-      said.push(`직선${line.name ? ' ' + line.name : ''}: 원점을 지나고, 오른쪽으로 ${q.q}칸 갈 때 ${q.p < 0 ? '아래쪽' : '위쪽'}으로 ${Math.abs(q.p)}칸 간다.`);
+      if (a !== 0) { const p = (ylo - b) / a, q = (yhi - b) / a; lo = Math.max(lo, Math.min(p, q)); hi = Math.min(hi, Math.max(p, q)); }
+      out += `<line x1="${X(lo)}" y1="${Y(a * lo + b)}" x2="${X(hi)}" y2="${Y(a * hi + b)}" style="stroke:${color};stroke-width:1.8${dash}"/>`;
+      if (line.name) out += `<text x="${X(hi) + (a < 0 ? 4 : -4)}" y="${Y(a * hi + b) + (a < 0 ? 13 : -5)}" text-anchor="${a < 0 ? 'start' : 'end'}" style="font-size:12px;font-weight:700;fill:${color}">${line.name}</text>`;
+      const q = asQ(line.a), run = `오른쪽으로 ${q.q}칸 갈 때 ${q.p < 0 ? '아래쪽' : '위쪽'}으로 ${Math.abs(q.p)}칸 간다`;
+      said.push(b === 0 ? `${title}: 원점을 지나고, ${run}.` : a === 0 ? `${title}: y축 위의 ${plain(asQ(line.b))}인 점을 지나고 x축에 평행하다.` : `${title}: y축 위의 ${plain(asQ(line.b))}인 점을 지나고, ${run}.`);
     });
     (opt.curves || []).forEach((curve, k) => {
       const a = num(curve.a), color = COLORS[(k + (opt.lines || []).length) % COLORS.length], lattice = [];
@@ -412,6 +429,49 @@
   }
   const LN = (name) => over('line', name), RY = (name) => over('ray', name), SG = (name) => over('seg', name);
 
+  // ── 중2에서 더한 것 ──
+  // 화면에는 안 보이고 글로 옮길 때만 남는 글(기록·검사가 표기를 가려 읽게 한다)
+  const SR = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)';
+  // 순환소수: rep('0.', '3') → 0.3 위에 점, rep('1.2', '45') → 1.245 의 4와 5 위에 점(순환마디의 첫 숫자와 끝 숫자). head 는 순환마디 앞까지의 글('0.', '−2.1').
+  function rep(head, cycle) {
+    const c = String(cycle), dot = (ch) => '<span class="mb-rdot">' + ch + '</span>';
+    return '<span style="white-space:nowrap">' + head + (c.length === 1 ? dot(c) : dot(c[0]) + c.slice(1, -1) + dot(c[c.length - 1])) + '<span style="' + SR + '">(순환마디 ' + c + ')</span></span>';
+  }
+  // 순환소수의 값(유리수). repQ('1.2', '45') = 1.2454545… = 137/110
+  function repQ(head, cycle) {
+    const text = String(head).replace(MINUS, '-'), neg = text.startsWith('-'), [w, f = ''] = text.replace('-', '').split('.'), k = String(cycle).length;
+    const value = Q(Number(w + f + cycle) - Number(w + f), 10 ** f.length * (10 ** k - 1));
+    return neg ? qneg(value) : value;
+  }
+  // 순환소수의 소수점 아래 n번째 자리의 숫자
+  const repDigit = (head, cycle, n) => { const f = (String(head).split('.')[1] || ''), c = String(cycle); return Number(n <= f.length ? f[n - 1] : c[(n - f.length - 1) % c.length]); };
+
+  // 연립방정식: sys(['x + y = 5', '2x − y = 1']) — 왼쪽에 중괄호를 두고 식을 위아래로 놓는다. 글로 옮기면 「식1, 식2」가 된다.
+  function sys(rows) {
+    const brace = '<svg class="mb-inline" aria-hidden="true" viewBox="0 0 10 40" preserveAspectRatio="none" style="width:0.5em;height:auto;align-self:stretch;overflow:visible"><path d="M8.5 1C3.5 1 5.5 8 5.5 12.5C5.5 17 4 19 1 20C4 21 5.5 23 5.5 27.5C5.5 32 3.5 39 8.5 39" style="fill:none;stroke:currentColor;stroke-width:1.3;vector-effect:non-scaling-stroke"/></svg>';
+    return '<span class="mb-sys">' + brace + '<span class="mb-sys-rows">' + rows.map((row, i) => '<span>' + row + (i < rows.length - 1 ? '<span style="' + SR + '">, </span>' : '') + '</span>').join('') + '</span></span>';
+  }
+
+  // 답이 부등식인 문항: 「x [부등호 고르기] [±][ ]」로 받고, 틀리면 「x ≥ −3」 꼴로 보인다. rel 은 '<' | '<=' | '>' | '>=', value 는 정수.
+  const REL_MARK = { '<': '&lt;', '<=': '≤', '>': '&gt;', '>=': '≥' };
+  function ineqAns(text, rel, value, v, o) {
+    if (!REL_MARK[rel] || !Number.isInteger(value)) throw new Error('부등식 답은 부등호 넷 가운데 하나와 정수여야 한다');
+    const name = v || V('x');
+    return inline(text, name + ' {0} {1}', [{ rel: true, answer: rel }, { answer: value, signed: true }], Object.assign({}, o, { shown: name + ' ' + REL_MARK[rel] + ' ' + signedText(value) }));
+  }
+  // 답이 단항식인 문항: 「[±][ ] x^[ ] y^[ ]」로 받는다. coef 는 0이 아닌 정수, vars 는 [[문자, 지수], …](지수는 자연수 — 1이어도 칸에 1을 적게 한다. 문제 글에 그 말이 붙는다).
+  function monoAns(text, coef, vars, o) {
+    if (!Number.isInteger(coef) || coef === 0 || !vars.length || vars.some(([, e]) => !Number.isInteger(e) || e < 1)) throw new Error('단항식 답: 계수는 0이 아닌 정수, 지수는 자연수여야 한다');
+    const template = '{0}' + vars.map(([name], i) => V(name) + '<sup>{' + (i + 1) + '}</sup>').join('');
+    const shownText = mono(coef, vars.map(([name, e]) => V(name) + (e > 1 ? sup(e) : '')).join(''));
+    return inline(text + ' <span style="white-space:nowrap">(단, 지수가 1이면 1을 적는다.)</span>', template, [{ answer: coef, signed: true }].concat(vars.map(([, e]) => ({ answer: e }))), Object.assign({}, o, { shown: shownText }));
+  }
+  // 답이 다항식인 문항: 항마다 「[±][ ] 문자」로 받는다. terms 는 [[계수, 문자 글], …](문자 글은 V('x'), V('x') + sup(2), 상수항은 ''). 계수는 0이 아닌 정수이고, 1이어도 1을 적게 한다.
+  function polyAns(text, terms, o) {
+    if (!terms.length || terms.some(([k]) => !Number.isInteger(k) || k === 0)) throw new Error('다항식 답의 계수는 0이 아닌 정수여야 한다');
+    return inline(text, terms.map(([, name], i) => '{' + i + '}' + name).join(' '), terms.map(([k]) => ({ answer: k, signed: true })), Object.assign({}, o, { shown: poly(terms) }));
+  }
+
   B.kit.mid = {
     LAB, MINUS, GT, LT, GE, LE, range, gcd, lcm, Q, dc, dc2, plainQ, qadd, qsub, qmul, qdiv, keepD, qneg, qabs, qpow, qcmp, isInt, fl, asDec, U, mag, tx,
     sx, px, digits, nb, isFrac, glue, plain, tail, lastOf, tj, sj, pj, js, V, sup, P, G, W, WN, MN, A, isNum, valT, val, OPS, BR, htmlT, html, inl, jsT,
@@ -419,6 +479,7 @@
     co, fr, distinct, okKind, ansV, valueFacts, CALC, calcQ, pickEx, SAME_ADD, DIFF_ADD, TO_ADD, SAME_MUL, DIFF_MUL, SAME_DIV, DIFF_DIV, BY_RECIP, rawMag,
     uniq, addTold, subTold, mulTold, divTold, commonTold, un, sv, claimQ,
     asQ, mono, poly, lin, linAns, pointAns, whereOnPlane, plane, graph,
-    over, LN, RY, SG
+    over, LN, RY, SG,
+    rep, repQ, repDigit, sys, ineqAns, monoAns, polyAns
   };
 })(typeof window !== 'undefined' ? window : globalThis);

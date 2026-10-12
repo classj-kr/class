@@ -131,6 +131,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.ok(Array.isArray(item.inputs) && item.inputs.length >= 1, label);
       // 소수 칸(decimal)은 소수 첫째 자리까지인 수이고 자연수가 아니다(소수 두·세 자리 수를 배우는 단원은 셋째 자리까지). 나머지 칸은 자연수.
       for (const input of item.inputs) {
+        // 부등호 칸(rel)의 답은 네 기호 가운데 하나다.
+        if (input.rel) { assert.ok(['<', '<=', '>', '>='].includes(input.answer), '부등호 칸의 답: ' + label); continue; }
         // 부호가 있는 칸(signed)만 음수를 받는다. 크기의 잣대는 같다.
         const size = Math.abs(input.answer);
         assert.ok(input.signed || input.answer >= 0, '부호 없는 칸의 답이 음수다: ' + label);
@@ -152,6 +154,10 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       if (flipped.some((v, i) => v !== answers[i])) assert.equal(B.isCorrect(item, flipped), false, '부호를 뒤집은 답: ' + label);
       assert.equal(B.isCorrect(item, answers.map((v, i) => (i === 0 ? String(Number(v) + 1) : v))), false, label);
       assert.equal(B.isCorrect(item, answers.map(() => '')), false, label);
+      // 부등호 칸: 다른 기호를 고르면 틀리다.
+      if (item.inputs.some((input) => input.rel)) assert.equal(B.isCorrect(item, answers.map((v, i) => (item.inputs[i].rel ? (v === '<' ? '>' : '<') : v))), false, '부등호를 바꾼 답: ' + label);
+      // 식 속에 끼워 넣는 칸(template): 자리 표시가 칸마다 꼭 하나씩 있고, 틀렸을 때 보일 답 글(shown)이 있다.
+      if (item.template) { item.inputs.forEach((input, i) => assert.equal(item.template.split('{' + i + '}').length, 2, 'template 의 {' + i + '} 자리: ' + label)); assert.ok(item.shown, 'shown 이 없다: ' + label); }
       if (item.unordered) assert.equal(B.isCorrect(item, answers.slice().reverse()), true, label);
       // 크기가 같은 다른 분수(분자·분모를 두 배 한 것)는 anyForm 인 문항만 받는다.
       if (item.fraction) assert.equal(B.isCorrect(item, answers.map((v, i) => (i >= answers.length - 2 ? String(Number(v) * 2) : v))), Boolean(item.anyForm), '같은 크기의 다른 분수: ' + label);

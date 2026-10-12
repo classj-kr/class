@@ -165,11 +165,11 @@
     } else {
       const form = el('form', 'mb-answer'); form.noValidate = true;
       // 분수 답은 분자 칸과 분모 칸을 위아래로 놓는다. 대분수 답은 자연수 칸을 그 왼쪽에 둔다.
-      const stack = item.fraction ? el('span', 'mb-fracfield') : null;
+      const stack = item.fraction ? el('span', 'mb-fracfield') : null, slots = [];
       if (stack && !item.mixed) form.append(stack);
       item.inputs.forEach((input, at) => {
         // 칸 너비는 칸의 개수로만 정한다. 정답의 자릿수에 맞추면 칸 너비가 답의 크기를 알려 준다.
-        const field = el('label', 'mb-field' + (roomy && !item.fraction ? ' is-wide' : item.inputs.length > 1 ? ' is-short' : ''));
+        const field = el('label', 'mb-field' + (item.template ? ' is-slot' : roomy && !item.fraction ? ' is-wide' : item.inputs.length > 1 ? ' is-short' : ''));
         if (input.label && !item.fraction) field.append(el('span', null, input.label));
         if (input.lead) field.append(el('span', null, input.lead));
         // 부호가 있는 답: 숫자 자판에는 −가 없으므로 칸 앞의 단추를 눌러 +와 −를 바꾼다. 분수는 맨 앞에 단추 하나만 둔다(값 전체의 부호).
@@ -179,31 +179,43 @@
           sign.addEventListener('click', () => setSign(sign, sign.dataset.sign === '+' ? '−' : '+'));
           if (!item.fraction) field.append(sign); else if (stack.parentNode) stack.before(sign); else form.append(sign);
         }
-        const box = document.createElement('input');
-        box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : input.decimal ? 8 : 6;
-        box.setAttribute('aria-label', (input.label ? plainText(input.label) : '답') + ' 적기');
-        if (signed) box.dataset.signed = '1';
+        // 부등호 칸: 네 기호 가운데 하나를 고른다. 처음에는 아무것도 고르지 않은 채로 둔다.
+        const box = input.rel ? el('select', 'mb-rel', '<option value="">□</option>' + RELS.map(([value, mark]) => '<option value="' + value + '">' + mark + '</option>').join('')) : document.createElement('input');
+        if (input.rel) box.setAttribute('aria-label', '부등호 고르기');
+        else {
+          box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : input.decimal ? 8 : 6;
+          box.setAttribute('aria-label', (input.label ? plainText(input.label) : '답') + ' 적기');
+        }
+        box.dataset.at = at;
+        if (signed) { box.dataset.signed = '1'; box._sign = field.querySelector('.mb-sign') || form.querySelector('.mb-sign'); }
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));
+        slots[at] = field;
+        if (item.template) return;
         const whole = Boolean(stack) && item.mixed && at === 0;
         (stack && !whole ? stack : form).append(field);
         if (whole) form.append(stack);
       });
+      // 식 속에 끼워 넣는 답 칸: template 의 {0}, {1}, … 자리에 그 번호의 칸을 넣는다.
+      if (item.template) {
+        const line = el('span', 'mb-tpl', item.template.replace(/\{(\d+)\}/g, '<span data-slot="$1"></span>'));
+        // 지수 자리(<sup> 안)의 칸은 작게, 위로 올려 놓는다.
+        line.querySelectorAll('[data-slot]').forEach((slot) => { if (slot.parentElement.tagName === 'SUP') slot.parentElement.classList.add('mb-tpl-up'); slot.replaceWith(slots[Number(slot.dataset.slot)]); });
+        form.append(line);
+      }
       if (item.fraction && item.unit) form.append(el('span', null, item.unit));
       const submit = el('button', 'mb-primary', '확인'); submit.type = 'submit';
       form.append(submit);
       form.addEventListener('submit', (event) => {
         event.preventDefault();
-        const boxes = [...form.querySelectorAll('input')];
+        const boxes = [...form.querySelectorAll('input, select.mb-rel')].sort((a, b) => a.dataset.at - b.dataset.at);
         const empty = boxes.find((box) => box.value.trim() === '');
         if (empty) { empty.focus(); return; }
         // 부호 단추가 붙은 칸은 단추의 부호를 글 앞에 붙여 보낸다. 자판으로 -를 직접 적은 것도 받는다.
-        const signs = [...form.querySelectorAll('.mb-sign')];
-        let s = 0;
         answer(item, card, boxes.map((box) => {
           const text = box.value.trim();
           if (!box.dataset.signed) return text;
-          const button = signs[s]; s += 1;
+          const button = box._sign;
           const typed = /^[-−]/.test(text) ? '−' : /^\+/.test(text) ? '+' : null;
           if (typed) setSign(button, typed);
           return (button.dataset.sign === '−' ? '-' : '') + text.replace(/^[-−+]\s*/, '');
@@ -217,6 +229,8 @@
     return card;
   }
 
+  // 부등호 칸의 보기: [채점에 쓰는 글, 화면에 보이는 기호]
+  const RELS = [['&lt;', '&lt;'], ['&lt;=', '≤'], ['&gt;', '&gt;'], ['&gt;=', '≥']];   // innerHTML 로 넣으므로 꺾쇠는 문자 참조로 적는다(값은 <, <=, >, >= 가 된다)
   const setSign = (button, sign) => { button.dataset.sign = sign; button.textContent = sign; button.setAttribute('aria-label', '부호 바꾸기(지금 ' + sign + ')'); };
   // 음수는 빼기표(−)로 적는다.
   const signedText = (n) => (n < 0 ? '−' + Math.abs(n) : String(n));
@@ -237,11 +251,9 @@
         else if (i === Number(response)) button.classList.add('is-picked');
       });
     } else {
-      const signs = [...card.querySelectorAll('.mb-sign')];
-      let s = 0;
-      card.querySelectorAll('.mb-field input').forEach((box, i) => {
-        const text = String(Array.isArray(response) ? response[i] ?? '' : response);
-        if (box.dataset.signed) { const button = signs[s]; s += 1; setSign(button, /^[-−]/.test(text) ? '−' : '+'); button.disabled = true; box.value = text.replace(/^[-−+]/, ''); } else box.value = text;
+      card.querySelectorAll('.mb-field input, .mb-field select.mb-rel').forEach((box) => {
+        const text = String(Array.isArray(response) ? response[Number(box.dataset.at)] ?? '' : response);
+        if (box.dataset.signed) { const button = box._sign; setSign(button, /^[-−]/.test(text) ? '−' : '+'); button.disabled = true; box.value = text.replace(/^[-−+]/, ''); } else box.value = text;
         box.disabled = true;
       });
       card.querySelector('.mb-primary').disabled = true;
