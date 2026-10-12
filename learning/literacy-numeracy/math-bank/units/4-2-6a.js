@@ -1,7 +1,10 @@
 // 4학년 2학기 6단원 평면도형의 이동 — 단원 틀과 기본 문항(점의 이동, 밀기, 뒤집기, 돌리기).
 // 수집해 둔 교과서 9종의 평가 자료에서 뽑은 문제 꼴 목록(기본꼴 1~3: 69·84·72꼴, 심화꼴 71꼴)을 번호마다 따져,
 // 꼴마다 ① 몇 학년 무슨 단원 내용인가 ② 무엇을 하게 하는 문제인가를 보고 실었다.
-// (뒤집고 돌리기, 글자와 수 카드, 규칙적인 무늬의 기본 문항과 실력 문항은 4-2-6b.js에 있다. 대조표는 수집본의 _분석/4-2-6/싣기_대조표.md)
+// 교육과정이 금을 그은 것은 싣지 않는다(2026-10-12 걷어 냄): 「돌리고 뒤집기나 뒤집고 돌리기 등 복잡한 변화를 지양한다」 → 뒤집기와 돌리기를 이어 하는 문제,
+//   「꼭짓점의 이동을 이용하여 평면도형의 이동을 설명하는 활동은 다루지 않는다」 → 민·뒤집은·돌린 도형에서 꼭짓점이 옮겨 가는 자리를 묻는 문제.
+//   같은 갈래를 거듭하는 것(뒤집기 여러 번, 돌리기 여러 번)은 싣는다.
+// (움직인 방법, 글자와 수 카드, 규칙적인 무늬의 기본 문항과 실력 문항은 4-2-6b.js에 있다. 대조표는 수집본의 _분석/4-2-6/싣기_대조표.md)
 //
 // 싣는 기준
 //  - 이 단원의 꼴은 절반이 「움직인 도형을 그리시오」이다. 그리기는 받을 수 없으므로 두 가지 고르기로 바꾸어 싣는다.
@@ -206,7 +209,7 @@
   const onRim = ([x, y]) => x === 1 || x === S - 1 || y === 1 || y === S - 1;
 
   B.addUnit({
-    id: '4-2-6', grade: 4, semester: 2, no: 6, title: '평면도형의 이동', version: 1,
+    id: '4-2-6', grade: 4, semester: 2, no: 6, title: '평면도형의 이동', version: 2,
     groups: [
       {
         id: 'point', title: '점의 이동', standard: MOVE,
@@ -399,18 +402,6 @@
               explain: '도형을 어느 쪽으로 밀어도 모양과 크기, 놓인 방향은 변하지 않는다. 바뀌는 것은 위치뿐이다.'
             });
           }),
-          T('slide-vertex', '몇 칸 민 도형의 꼭짓점', '①13·14 ②20·21·22 ③16 심17', (d) => {
-            // 그리기 꼴을 「꼭짓점이 옮겨 가는 자리」로 바꾸었다. 처음 도형과 민 도형 사이의 빈칸을 민 거리로 세는 아이는 2칸 더 간 점을 고른다.
-            // 보기 점은 한 줄에 왼쪽부터 가·나·다·라. 정답이 늘 같은 자리에 오지 않게 보기 점의 묶음을 여럿 둔다.
-            const shape = d.pick(SMALL), right = d.bool(), n = d.int(5, 7), cols = n + 5, x0 = right ? 0 : cols - 2, sign = right ? 1 : -1, dir = right ? '오른쪽' : '왼쪽';
-            const offsets = d.pick([[n, n + 1, n + 2, n + 3], [n - 1, n, n + 1, n + 2], [n - 2, n - 1, n, n + 2], [n - 2, n - 1, n, n + 1]]);
-            const list = offsets.map((o) => [x0 + sign * o, 1]).sort((p, q) => p[0] - q[0]), hits = list.map((p) => p[0] === x0 + sign * n);
-            return C(`도형을 ${dir}으로 ${n}칸 밀었을 때, 꼭짓점 ㄱ이 옮겨 가는 자리에 있는 점은?`, PICKS, hits.indexOf(true), {
-              figure: gridBoard(cols, 3, [G.polygon(shifted(shape.points, x0, 1)), mark([x0, 1], 'ㄱ')].concat(list.map((p, i) => mark(p, PICKS[i]))), '모눈종이 위의 도형과 그 도형의 꼭짓점 ㄱ, 꼭짓점 ㄱ과 같은 줄에 놓인 점 가, 나, 다, 라'),
-              explain: `도형을 밀면 모든 꼭짓점이 같은 쪽으로 같은 칸 수만큼 옮겨 간다. 꼭짓점 ㄱ에서 ${dir}으로 ${n}칸 간 곳은 점 ${PICKS[hits.indexOf(true)]}이다. 처음 도형과 민 도형 사이의 빈칸을 ${n}칸으로 세지 않는다.`,
-              facts: { kindPick: { kinds: hits.map((hit, i) => (hit ? 'hit' : 'no' + i)), target: 'hit' }, walk: { from: [x0, 1], legs: [[dir, n]], options: list } }
-            });
-          }),
           T('slide-two', '두 방향으로 민 도형', '①15 ②21 ③17 심17', (d) => {
             // 같은 도형 여섯 개를 두 줄로 놓았다. 오답: 한쪽으로만 민 것, 칸 수가 다른 것
             const shape = d.pick(SMALL), slots = [0, 3].reduce((out, y) => out.concat([0, 4, 8].map((x) => [x, y])), []);
@@ -445,21 +436,6 @@
               explain: `가 도형과 나 도형의 같은 꼭짓점끼리 비교한다. 나 도형의 꼭짓점은 가 도형의 꼭짓점에서 ${h}으로 ${dx}칸, ${v}으로 ${dy}칸 떨어져 있다.`,
               facts: { calc: [[String(dx), 0], [String(dy), 1]], walk: { from: m.a, legs: [[h, dx], [v, dy]], to: m.b } }
             });
-          }),
-          T('slide-before', '밀기 전의 도형의 꼭짓점', '①19 ②25 ③20 심17', (d) => {
-            // 오답: 같은 쪽으로 한 번 더 민 자리(되돌리지 않은 것), 한 칸·두 칸 더 간 자리
-            // 보기 점의 묶음을 여럿 두어 정답이 늘 같은 자리에 오지 않게 한다. 보기 점은 판 안에 있고 도형 위에 놓이지 않는다.
-            const shape = d.pick(SMALL), left = d.bool(), n = d.int(3, 4), cols = 12, dir = left ? '왼쪽' : '오른쪽', sign = left ? 1 : -1;
-            const [x, list] = d.until(() => {
-              const at = d.int(0, cols - 2), offsets = d.pick([[n, n + 1, n + 2, n + 3], [-n, n, n + 1, n + 2], [-n - 1, -n, n, n + 2], [-n - 2, -n - 1, -n, n]]);
-              return [at, offsets.map((o) => [at + sign * o, 1]).sort((p, q) => p[0] - q[0])];
-            }, ([at, points]) => points.every((p) => p[0] >= 0 && p[0] <= cols && (p[0] < at || p[0] > at + 2)));
-            const hits = list.map((p) => p[0] === x + sign * n);
-            return C(`어떤 도형을 ${dir}으로 ${n}칸 밀었더니 그림과 같은 자리에 왔다. 밀기 전에 꼭짓점 ㄱ이 있던 자리의 점은?`, PICKS, hits.indexOf(true), {
-              figure: gridBoard(cols, 3, [G.polygon(shifted(shape.points, x, 1)), mark([x, 1], 'ㄱ')].concat(list.map((p, i) => mark(p, PICKS[i]))), '모눈종이 위의 도형과 그 도형의 꼭짓점 ㄱ, 꼭짓점 ㄱ과 같은 줄에 놓인 점 가, 나, 다, 라'),
-              explain: `밀기 전의 도형은 지금 도형을 ${BACK[dir]}으로 ${n}칸 되돌린 자리에 있다. 꼭짓점 ㄱ에서 ${BACK[dir]}으로 ${n}칸 간 곳은 점 ${PICKS[hits.indexOf(true)]}이다.`,
-              facts: { kindPick: { kinds: hits.map((hit, i) => (hit ? 'hit' : 'no' + i)), target: 'hit' }, walk: { to: [x, 1], legs: [[dir, n]], options: list, back: true } }
-            });
           })
         ]
       },
@@ -473,17 +449,6 @@
               moves: [m], explain: `도형을 ${say(m, 5)} 도형의 ${SWAPPED[m.way]}이 서로 바뀐다. ${m.way === 'side' ? '위쪽과 아래쪽' : '왼쪽과 오른쪽'}은 그대로이다.`
             });
           }, { count: 2 }),
-          T('flip-vertex', '뒤집은 도형의 꼭짓점이 놓이는 자리', '①24 ②22·31 ③23 심20', (d) => {
-            // 그리기 꼴을 「꼭짓점 하나가 옮겨 가는 자리」로 바꾸었다. 오답: 처음 판에서와 같은 자리(민 것), 다른 쪽으로 뒤집은 자리, 반 바퀴 돌린 자리
-            const m = anyFlip(d), start = lopsided(d), v = d.pick(start.filter(onRim)), want = act(m, [v])[0];
-            const made = pointChoice(d, [want, v, (m.way === 'side' ? updown([v]) : side([v]))[0], turn([v], 2)[0]]);
-            return C(`도형을 ${say(m, 2)}의 도형을 빈 모눈에 그리려고 한다. 꼭짓점 ㄱ이 옮겨 가는 자리에 있는 점은?`, PICKS, made.at, {
-              figure: twinBoards(start, v, made.list, m.word),
-              explain: m.way === 'side' ? `${m.word}으로 뒤집으면 왼쪽과 오른쪽이 서로 바뀌고 위쪽과 아래쪽은 그대로이다. 꼭짓점 ㄱ은 판의 왼쪽에서 ${v[0]}칸, 위쪽에서 ${v[1]}칸인 자리에 있으므로, 뒤집은 뒤에는 오른쪽에서 ${v[0]}칸, 위쪽에서 ${v[1]}칸인 자리로 간다. 답은 점 ${PICKS[made.at]}이다.`
-                : `${m.word}으로 뒤집으면 위쪽과 아래쪽이 서로 바뀌고 왼쪽과 오른쪽은 그대로이다. 꼭짓점 ㄱ은 판의 위쪽에서 ${v[1]}칸, 왼쪽에서 ${v[0]}칸인 자리에 있으므로, 뒤집은 뒤에는 아래쪽에서 ${v[1]}칸, 왼쪽에서 ${v[0]}칸인 자리로 간다. 답은 점 ${PICKS[made.at]}이다.`,
-              facts: { kindPick: { kinds: made.kinds, target: 'hit' }, spot: { size: S, from: v, steps: steps([m]), options: made.list } }
-            });
-          }),
           T('flip-word', '뒤집으면 바뀌는 쪽', '①23 ②33 ③21', (d) => {
             const m = anyFlip(d);
             const rows4 = [['도형의 왼쪽과 오른쪽이 서로 바뀐다.', m.way === 'side'], ['도형의 위쪽과 아래쪽이 서로 바뀐다.', m.way === 'updown'], ['도형의 왼쪽과 오른쪽, 위쪽과 아래쪽이 모두 서로 바뀐다.', false], ['도형의 어느 쪽도 바뀌지 않고 위치만 바뀐다.', false]];
@@ -578,17 +543,6 @@
               explain: `${m.deg === 270 ? `${way(m)} 돌린 도형은 ${m.clockwise ? '시계 반대 방향' : '시계 방향'}으로 90°만큼 돌린 도형과 같다. ` : ''}도형의 위쪽 부분이 ${topGoes(m.q)}으로 간 도형을 찾는다.`
             });
           }, { count: 4 }),
-          T('turn-vertex', '돌린 도형의 꼭짓점이 놓이는 자리', '①43 ②22·43 ③45 심36', (d) => {
-            // 그리기 꼴을 「꼭짓점 하나가 옮겨 가는 자리」로 바꾸었다. 오답: 반대 방향으로 돌린 자리, 반 바퀴 돌린 자리(또는 뒤집은 자리), 처음 판에서와 같은 자리
-            const m = d.pick([turnBy(true, 90), turnBy(false, 90), turnBy(d.bool(), 180)]), q = norm(m.q), start = lopsided(d), v = d.pick(start.filter(onRim)), want = act(m, [v])[0];
-            const made = pointChoice(d, q === 2 ? [want, v, side([v])[0], updown([v])[0]] : [want, turn([v], -m.q)[0], turn([v], 2)[0], v]);
-            const [toX, toY] = { 1: ['위쪽', '오른쪽'], 2: ['오른쪽', '아래쪽'], 3: ['아래쪽', '왼쪽'] }[q];
-            return C(`도형을 ${say(m, 2)}의 도형을 빈 모눈에 그리려고 한다. 꼭짓점 ㄱ이 옮겨 가는 자리에 있는 점은?`, PICKS, made.at, {
-              figure: twinBoards(start, v, made.list, '오른쪽'),
-              explain: `${way(m)} 돌리면 도형의 위쪽 부분이 ${topGoes(m.q)}으로 가고, 왼쪽 부분이 ${toX}으로 간다. 꼭짓점 ㄱ은 판의 왼쪽에서 ${v[0]}칸, 위쪽에서 ${v[1]}칸인 자리에 있으므로, 돌린 뒤에는 ${toX}에서 ${v[0]}칸, ${toY}에서 ${v[1]}칸인 자리로 간다. 답은 점 ${PICKS[made.at]}이다.`,
-              facts: { kindPick: { kinds: made.kinds, target: 'hit' }, spot: { size: S, from: v, steps: steps([m]), options: made.list } }
-            });
-          }),
           T('turn-word', '돌리면 위쪽 부분이 가는 쪽', '①42 ③43 심42', (d) => {
             const m = d.pick([turnBy(true, 90), turnBy(false, 90), turnBy(d.bool(), 180), turnBy(true, 270), turnBy(false, 270)]), goes = topGoes(m.q);
             return truthItem(d, `도형을 ${say(m, 5)} 도형의 위쪽 부분은 어느 쪽으로 가는가?`, ['오른쪽', '아래쪽', '왼쪽'].map((word) => [word, word === goes]).concat([['움직이지 않는다', goes === '위쪽']]), true, {
@@ -666,7 +620,7 @@
           }, { count: 2 })
         ]
       },
-      { id: 'mix', title: '뒤집고 돌리기, 움직인 방법', standard: MOVE, types: [] },
+      { id: 'mix', title: '움직인 방법', standard: MOVE, types: [] },
       { id: 'card', title: '글자와 수 카드의 이동', standard: MOVE, types: [] },
       { id: 'pattern', title: '규칙적인 무늬', standard: PATTERN, types: [] }
     ]
