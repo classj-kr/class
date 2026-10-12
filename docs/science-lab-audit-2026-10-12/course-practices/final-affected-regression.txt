@@ -38,3 +38,30 @@ density-buoyancy: 24 browser states, all 3 answers + reset verified
 ✔ fork contact: no spontaneous vibration, no skipped preparation, conserved comparison evidence and damping ordering (1.4948ms)
 ✔ fork review retains exact textbook and assessment sources without turning synthetic audio into measurements (9.7254ms)
 ✔ chromium: fork actions, real animation, optional sound, stopped contact, touch widths and retained diagnosis (12626.9095ms)
+✔ webkit: fork actions, real animation, optional sound, stopped contact, touch widths and retained diagnosis (9426.2463ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 263003.5547
+
+✖ failing tests:
+
+test at tests\science-apparatus-scenes.test.cjs:30:43
+✖ chromium: apparatus states, labels, fallback panels and responsive drawings (41182.4861ms)
+  Error: UNKNOWN: unknown error, open 'E:\webprojects\class\docs\science-lab-audit-2026-10-11\apparatus-visual-review\thermal-image-initial-1100.webp'
+      at async open (node:internal/fs/promises:640:25)
+      at async Object.writeFile (node:internal/fs/promises:1260:14)
+      at async writeArtifact (E:\webprojects\class\tests\science-screenshot.cjs:7:11)
+      at async screenshotWebp (E:\webprojects\class\tests\science-screenshot.cjs:22:3)
+      at async TestContext.<anonymous> (E:\webprojects\class\tests\science-apparatus-scenes.test.cjs:59:56)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    errno: -4094,
+    code: 'UNKNOWN',
+    syscall: 'open',
+    path: 'E:\\webprojects\\class\\docs\\science-lab-audit-2026-10-11\\apparatus-visual-review\\thermal-image-initial-1100.webp'
+  }
