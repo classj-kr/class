@@ -164,10 +164,6 @@
       const per = d.pick([20000, 30000, 50000]), have = d.int(12, 38) * 10000, t = d.int(3, 7), goal = have + per * t;
       return N(`지금 ${have}원이 있다. 매달 ${per}원씩 모으면 ${goal}원이 되는 데 몇 개월이 걸리는가?`, t, { unit: '개월', explain: `${have}에서 ${per}씩 뛰어 세어 ${goal}이 될 때까지 센다. ${goal} - ${have} = ${goal - have}이고, ${per}씩 ${t}번이다.`, facts: { calc: [[`(${goal}-${have})/${per}`, 0]] } });
     }),
-    T('skip-monthly', '기간 안에 모으려면 매달 얼마', '심54', (d) => {
-      const months = d.int(3, 8), per = d.int(2, 9) * 100000, goal = per * months;
-      return N(`${months}개월 동안 매달 같은 금액을 모아 ${goal}원을 만들려고 한다. 한 달에 얼마씩 모아야 하는가?`, per, { unit: '원', explain: `${per}씩 ${months}번 뛰어 세면 ${goal}이 된다.`, facts: { calc: [[`${goal}/${months}`, 0]] } });
-    }),
     T('skip-line', '수직선의 눈금이 나타내는 수', '①117 ②102 심48', (d) => {
       const a = d.int(2, 8), at = d.until(() => d.int(2, 8), (v) => v !== 5), left = a * 1e8, right = (a + 1) * 1e8, value = left + at * 1e7, list = d.shuffle([value, left + at * 1e6, value + 1e7, left + (10 - at) * 1e7]);
       return C(`수직선에서 ${cut(left)}과 ${cut(right)} 사이를 똑같이 10칸으로 나누었다. ㉠이 나타내는 수는?`, list.map(cut), list.indexOf(value), {
@@ -312,16 +308,6 @@
           explain: `100이 ${b}개이면 ${b * 100}이다. ${n} - ${a * 10000} - ${b * 100} - ${c * 10} = ${x * 1000}이므로 1000은 ${x}개이다.`, facts: { pick: { expr: `(${n}-10000*${a}-100*${b}-10*${c})/1000`, options: list } }
         });
       }),
-      H('h-ratio', '서로 다른 숫자가 나타내는 값은 몇 배', '34, 덧문서', (d) => {
-        // 자리만 보는 아이(1000배), 숫자만 보는 아이(4배), 자리를 하나 덜 센 아이
-        const [lo, hi] = d.pick([[2, 4], [2, 6], [2, 8], [3, 6], [3, 9], [4, 8]]), g = d.int(2, 4), pl = d.int(3, 5), ph = pl + g, ratio = hi / lo;
-        const n = toNum([9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map((k) => (k === ph ? hi : k === pl ? lo : d.until(() => d.int(1, 9), (v) => v !== hi && v !== lo))));
-        const right = ratio * pow(g), list = d.shuffle([right, pow(g), ratio, ratio * pow(g - 1)]), top = hi * pow(ph), bottom = lo * pow(pl);
-        return C(`${n}에서 숫자 ${josa(hi, '이/가')} 나타내는 값은 숫자 ${josa(lo, '이/가')} 나타내는 값의 몇 배인가?`, list.map((v) => v + '배'), list.indexOf(right), {
-          explain: `숫자 ${josa(hi, '은/는')} ${named(top, cut(top), '을/를')}, 숫자 ${josa(lo, '은/는')} ${named(bottom, cut(bottom), '을/를')} 나타낸다. ${named(top, cut(top), '은/는')} ${cut(bottom)}의 ${right}배이다.`,
-          facts: { pick: { expr: `(${vx(n, ph)})/(${vx(n, pl)})`, options: list }, unseen: [pow(ph), pow(pl), 10] }
-        });
-      }),
       H('h-times-digit', '몇 배 한 수의 자리 숫자', '36, 덧문서', (d) => {
         const ds = uniq(d, 5), base = big(0, ds[0], toNum(ds.slice(1))), mult = d.pick([10, 100, 1000]), result = base * mult, k = String(result).length - 1 - d.int(0, 3);
         return N(`${named(base, cut(base), '을/를')} ${mult}배 한 수에서 ${PLACES[k]}의 자리 숫자는?`, digitAt(result, k), {
@@ -347,22 +333,6 @@
         const price = d.pick([40000, 60000, 70000, 80000, 90000]), count = d.int(3, 6), money = price * count + d.int(1, price / 10000 - 1) * 10000;
         return N(`${money}원으로 한 개에 ${price}원인 물건을 몇 개까지 살 수 있는가?`, count, {
           unit: '개', explain: `${price}씩 뛰어 세면 ${Array.from({ length: count + 1 }, (_, i) => price * (i + 1)).join(', ')}이다. ${josa(price * (count + 1), '은/는')} ${money}보다 크므로 ${count}개까지 살 수 있다.`, facts: { calc: [[`(${money}-${money}%${price})/${price}`, 0]] }
-        });
-      }),
-      H('h-near-make', '어떤 수에 가장 가까운 수 만들기', '68, 기본 ②124', (d) => {
-        // 기준보다 작은 쪽과 큰 쪽을 모두 만들어 보아야 한다
-        const pickCards = () => { const digits = uniq(d, 5), sorted = digits.slice().sort((p, q) => p - q), t = d.int(sorted[0] + 1, sorted[4] - 1); return { digits, sorted, t }; };
-        const set = d.until(pickCards, ({ sorted, t }) => {
-          if (sorted.includes(t)) return false;
-          const lowLead = Math.max(...sorted.filter((v) => v < t)), highLead = Math.min(...sorted.filter((v) => v > t));
-          const below = toNum([lowLead].concat(sorted.filter((v) => v !== lowLead).reverse())), above = toNum([highLead].concat(sorted.filter((v) => v !== highLead)));
-          return t * 10000 - below !== above - t * 10000;
-        });
-        const target = set.t * 10000, lowLead = Math.max(...set.sorted.filter((v) => v < set.t)), highLead = Math.min(...set.sorted.filter((v) => v > set.t));
-        const below = toNum([lowLead].concat(set.sorted.filter((v) => v !== lowLead).reverse())), above = toNum([highLead].concat(set.sorted.filter((v) => v !== highLead))), answer = target - below < above - target ? below : above;
-        return N(`수 카드를 한 번씩 모두 사용하여 만들 수 있는 다섯 자리 수 중에서 ${target}에 가장 가까운 수는?`, answer, {
-          figure: cards(set.digits), explain: `${target}보다 작은 수 중에서 가장 큰 수는 ${below}, ${target}보다 큰 수 중에서 가장 작은 수는 ${above}이다. ${target}과의 차는 ${target - below}, ${above - target}이므로 ${josa(answer, '이/가')} 더 가깝다.`,
-          facts: { big: { cardsMake: { digits: set.digits, rule: 'nearest', target } } }
         });
       }),
       H('h-below-make', '기준보다 작은 수 중에서 가장 큰 수 만들기', '69, 기본 ②123 ③126', (d) => {

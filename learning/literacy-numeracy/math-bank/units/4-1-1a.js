@@ -37,7 +37,7 @@
   const truthOf = (rows, want) => ({ truth: rows.map((row) => row[1]), want });
 
   B.addUnit({
-    id: '4-1-1', grade: 4, semester: 1, no: 1, title: '큰 수', version: 2,
+    id: '4-1-1', grade: 4, semester: 1, no: 1, title: '큰 수', version: 3,
     groups: [
       {
         id: 'man', title: '만', standard: NUM,
@@ -73,10 +73,6 @@
             const have = d.int(12, 97) * 100;
             return N(`저금통에 ${have}원이 있다. 10000원이 되려면 얼마가 더 있어야 하는가?`, 10000 - have, { unit: '원', explain: `10000 - ${have} = ${10000 - have}`, facts: { calc: [[`10000-${have}`, 0]] } });
           }),
-          T('man-need-sum', '두 번 모은 돈으로 10000원까지 모자란 돈', '②6', (d) => {
-            const a = d.int(3, 6) * 1000, b = d.int(1, 3) * 1000 + d.int(1, 9) * 100;
-            return N(`지난달에 ${a}원, 이번 달에 ${b}원을 모았다. 10000원이 되려면 얼마를 더 모아야 하는가?`, 10000 - a - b, { unit: '원', explain: `모은 돈은 ${a} + ${b} = ${a + b}(원)이다. 10000 - ${a + b} = ${10000 - a - b}`, facts: { calc: [[`10000-(${a}+${b})`, 0]] } });
-          }),
           T('man-pair', '합이 10000이 되는 두 수', '①11 심2', (d) => {
             const a = d.int(2, 8) * 1000 + 500, b = 10000 - a, rows = d.shuffle([[a, b], [a, b + 1000], [a, b - 1000], [a + 1000, b + 1000]]);
             return C('두 수의 합이 10000이 되는 것은?', rows.map(([x, y]) => `${x}, ${y}`), rows.findIndex(([x, y]) => x + y === 10000), { explain: `${a} + ${b} = 10000`, facts: { choose: { exprs: rows.map(([x, y]) => `${x}+${y}`), rule: 'equals', target: 10000 } } });
@@ -84,11 +80,6 @@
           T('man-row', '10000까지 뛰어 세기', '①3 ②4 ③4·5', (d) => {
             const step = d.pick([1, 10, 100, 1000]), list = [3, 2, 1].map((k) => 10000 - step * k);
             return N('규칙에 따라 수를 늘어놓았다. 빈칸에 알맞은 수는?', 10000, { figure: numbers(list.map(String).concat([box()])), explain: `${step}씩 커지는 규칙이다. ${10000 - step}보다 ${step} 큰 수는 10000이다.`, facts: { calc: [[`${list[2]}+${list[2]}-${list[1]}`, 0]] } });
-          }),
-          T('man-coins', '가진 돈으로 10000원까지 더 필요한 돈', '②7 ③10·11 심6', (d) => {
-            // 100원짜리 동전이 10개를 넘는다
-            const bills = d.int(5, 8), coins = d.int(11, 19), have = bills * 1000 + coins * 100;
-            return N(`1000원짜리 지폐 ${bills}장과 100원짜리 동전 ${coins}개가 있다. 10000원이 되려면 얼마가 더 있어야 하는가?`, 10000 - have, { unit: '원', explain: `가진 돈은 ${bills * 1000} + ${coins * 100} = ${have}(원)이다. 10000 - ${have} = ${10000 - have}`, facts: { calc: [[`10000-(1000*${bills}+100*${coins})`, 0]] } });
           }),
           T('man-near', '10000에 가장 가까운 수', '심3', (d) => {
             // 자리 수가 같은 수(구천몇백)가 더 가깝다고 여기는 아이가 있다

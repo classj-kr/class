@@ -51,7 +51,7 @@
   const NOT_IN_ONE_SECOND = ['손 씻기', '이 닦기', '운동장 한 바퀴 달리기', '동화책 한 권 읽기', '점심 먹기', '옷 갈아입기'];
 
   B.addUnit({
-    id: '3-1-5', grade: 3, semester: 1, no: 5, title: '길이와 시간', version: 5,
+    id: '3-1-5', grade: 3, semester: 1, no: 5, title: '길이와 시간', version: 6,
     groups: [
       {
         id: 'mm', title: 'mm와 cm', standard: UNIT,

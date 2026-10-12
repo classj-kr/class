@@ -640,13 +640,6 @@
           facts: { calc: [[`${total}-${rest.join('-')}-${v[k - 1]}`, 0]] }
         });
       }),
-      H('h-bare-total', '눈금의 수가 지워진 그래프에서 값 구하기', '44', (d) => {
-        const [step, key] = d.pick([[2, 'ice'], [5, 'ice'], [10, 'jump'], [20, 'jump']]), c = pick(d, key, 5, 0), cells = cellsOf(d, 5, 2, 10, (x) => distinct(x) && sum(x) % 10 === 0), k = d.int(0, 4), total = step * sum(cells);
-        return N(`${lead(c)} 세로 눈금에는 0만 적혀 있다. 월요일부터 금요일까지 ${c.noun}의 합이 ${U(c, total)}일 때, ${josa(one(c, c.names[k]), '은/는')} 몇 ${c.unit}인가?`, step * cells[k], {
-          unit: c.unit, figure: bare(c, cells), explain: `다섯 점의 높이는 0에서 차례로 ${cells.join(', ')}칸이므로 모두 ${cells.join(' + ')} = ${sum(cells)}(칸)이다. ${sum(cells)}칸이 ${U(c, total, '을/를')} 나타내므로 한 칸은 ${total} ÷ ${sum(cells)} = ${step}(${c.unit})이다. ${day(c.names[k])}의 점은 ${cells[k]}칸 위에 있으므로 ${step} × ${cells[k]} = ${step * cells[k]}(${c.unit})이다.`,
-          facts: { calc: [[`${total}/(${cells.join('+')})*${cells[k]}`, 0]] }
-        });
-      }),
       H('h-two-grow', '두 꺾은선에서 더 많이 늘어난 쪽과 그 차', '61', (d) => {
         // 끝 값이 큰 쪽을 고르는 아이: 처음 값이 다르므로 끝 값이 아니라 늘어난 양을 비교한다
         const c = TWO.plants, [a, b] = d.until(() => [climb(d, 5, [1, 6], 1, 3, 14), climb(d, 5, [1, 6], 1, 3, 14)], ([x, y]) => { const p = x[4] - x[0], q = y[4] - y[0]; return p !== q && x[4] !== y[4] && (p > q) !== (x[4] > y[4]) && x[0] !== y[0]; });

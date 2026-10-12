@@ -335,10 +335,6 @@
       const a = d.int(31, 69), x = d.int(6, 25), c = d.int(2, 9), b = a + x + c;
       return N('□ 안에 알맞은 수는?', x, { figure: lines([`${a} + ${box()} = ${b} − ${c}`]), explain: `${b} − ${c} = ${b - c}이므로 ${a} + □ = ${b - c}이다. □ = ${b - c} − ${a} = ${x}`, facts: { calc: [[`${b}-${c}-${a}`, 0]] } });
     }),
-    T('eq-mixed-mul', '곱셈식과 덧셈식의 등식', '①62 ②67', (d) => {
-      const k = d.int(2, 6), x = d.int(12, 30), total = k * x, a = d.int(11, total - 11);
-      return N('□ 안에 알맞은 수는?', x, { figure: lines([`${k} × ${box()} = ${a} + ${total - a}`]), explain: `${a} + ${total - a} = ${total}이므로 ${k} × □ = ${total}이다. □ = ${total} ÷ ${k} = ${x}`, facts: { calc: [[`(${a}+${total - a})/${k}`, 0]] } });
-    }),
     T('eq-mul', '곱셈 등식의 □', '①63 ②67 ③67 심60', (d) => {
       const f = d.pick([2, 3]), down = d.bool(), a = down ? f * d.int(3, 12) : d.int(3, 12), b = down ? d.int(3, 9) : f * d.int(2, 9), c = down ? a / f : a * f, x = down ? b * f : b / f;
       return N('□ 안에 알맞은 수는?', x, { figure: lines([`${a} × ${b} = ${c} × ${box()}`]), explain: down ? `${josa(c, '은/는')} ${josa(a, '을/를')} ${josa(f, '으로/로')} 나눈 수이므로 □는 ${b}의 ${f}배인 ${x}이다. ${a} × ${b} = ${a * b}, ${c} × ${x} = ${a * b}` : `${josa(c, '은/는')} ${a}의 ${f}배이므로 □는 ${josa(b, '을/를')} ${josa(f, '으로/로')} 나눈 ${x}이다. ${a} × ${b} = ${a * b}, ${c} × ${x} = ${a * b}`, facts: { calc: [[`${a}*${b}/${c}`, 0]] } });
@@ -438,17 +434,9 @@
         while (t[t.length - 1] < 1000) t.push(t[t.length - 1] * p);
         return N('규칙에 따라 수를 늘어놓았다. 이 규칙으로 수를 계속 늘어놓을 때, 처음으로 나오는 네 자리 수는?', t[t.length - 1], { figure: seq(t.slice(0, 4).concat(['…'])), explain: `${p}씩 곱하는 규칙이다. ${t.slice(3).join(', ')}이므로 처음으로 나오는 네 자리 수는 ${t[t.length - 1]}이다.`, facts: { calc: [[t[3] + range(t.length - 4).map(() => `*(${t[1]}/${t[0]})`).join(''), 0]] } });
       }, { standard: RULE }),
-      H('hd-nth-odd', '개수를 보고 몇째인지 거꾸로 구하기', '26, 기본 ①26', (d) => {
-        const s = 2, what = '바둑돌', shapes = range(3, 1).map((n) => st(ell(n))), n = d.int(8, 12), count = 1 + s * (n - 1);
-        return N(`규칙에 따라 ${josa(what, '을/를')} 늘어놓았다. ${what} ${count}개를 모두 써서 만든 모양은 몇 번째 모양인가?`, n, { unit: '번째', figure: steps(shapes, ORD, told(shapes, ORD, what)), explain: `1개에서 시작하여 ${s}개씩 늘어난다. ${count} − 1 = ${count - 1}, ${count - 1} ÷ ${s} = ${n - 1}이므로 첫째 모양에서 ${n - 1}번 늘어난 ${n}번째 모양이다.`, facts: { calc: [[`(${count}-${shapes[0].n})/(${shapes[1].n}-${shapes[0].n})+1`, 0]] } });
-      }, { standard: RULE }),
       H('hd-nth-stairs', '계단 모양에서 몇째인지 구하기', '26, 기본 ②23 ③26', (d) => {
         const shapes = range(4, 1).map((n) => sq(stairs(n))), k = d.pick([6, 7]), total = (k * (k + 1)) / 2, list = range(k, 1).map((n) => (n * (n + 1)) / 2);
         return N(`규칙에 따라 사각형을 계단 모양으로 늘어놓았다. 사각형 ${total}개로 만든 모양은 몇 번째 모양인가?`, k, { unit: '번째', figure: steps(shapes, ORD, told(shapes, ORD, '사각형')), explain: `늘어나는 수가 2개, 3개, 4개, …로 1씩 커진다. 사각형의 수는 ${list.join(', ')}이므로 ${total}개인 모양은 ${k}번째 모양이다.`, facts: { count: range(10, 1).map((n) => (n * (n + 1)) / 2 <= total) } });
-      }, { standard: RULE }),
-      H('hd-sticks-max', '성냥개비로 만들 수 있는 도형의 수', '27, 기본 ②30 ③26', (d) => {
-        const first = 3, step = 2, what = '정삼각형', shapes = range(3, 1).map((n) => sticks(triRow(n), n)), m = d.pick([7, 8, 9, 10, 11, 13]), total = first + step * (m - 1);
-        return N(`성냥개비로 ${what}을 한 줄로 이어 만들고 있다. 성냥개비 ${total}개로 만들 수 있는 ${what}은 몇 개인가?`, m, { unit: '개', figure: steps(shapes, ORD, '모양의 배열: ' + shapes.map((sh, i) => `${ORD[i]} ${what} ${sh.pieces}개 성냥개비 ${sh.n}개`).join(', '), 32), explain: `첫 ${what}에는 성냥개비 ${first}개가 들고, 하나 더 만들 때마다 ${step}개씩 더 든다. (${total} − ${first}) ÷ ${step} = ${m - 1}이므로 ${what}은 1 + ${m - 1} = ${m}(개)이다.`, facts: { calc: [[`(${total}-${shapes[0].n})/(${shapes[1].n}-${shapes[0].n})+1`, 0]] } });
       }, { standard: RULE }),
       H('hd-two-diff', '두 색 바둑돌의 수의 차', '34, 기본 ②24', () => {
         const shapes = range(4, 1).map((n) => st(block(n, n).map(([x, y]) => [x, y, x === n - 1 || y === 0])));
@@ -475,10 +463,6 @@
         // 틀린 보기: 「두 번 곱해 그 수가 되는 수」를 그대로 순서로 답한 것(순서보다 1 큰 수를 두 번 곱한 값이 결과이다)
         const k = d.int(5, 7), target = (k + 1) * (k + 1), ks = [5, 6, 7, 8];
         return C(`덧셈식의 배열에서 규칙에 따라 식을 계속 쓸 때, 계산 결과가 ${target}인 식은 몇째 식인가?`, ks.map((n) => ORD[n - 1]), ks.indexOf(k), { figure: eqs(['1+3=4', '1+3+5=9', '1+3+5+7=16']), explain: `첫째 식의 결과는 2 × 2, 둘째는 3 × 3, 셋째는 4 × 4이다. ${target} = ${k + 1} × ${k + 1}이므로 ${ORD[k - 1]} 식이다.`, facts: { truth: ks.map((n) => (n + 1) * (n + 1) === target), want: true } });
-      }, { standard: CALC }),
-      H('hd-shift-target', '계산 결과가 정해진 식의 첫 수', '42', (d) => {
-        const a = d.int(11, 15), m = d.int(6, 9), row = (i) => range(5).map((j) => a + i + j), sum = (i) => 5 * (a + i) + 10;
-        return N(`덧셈식의 배열에서 규칙에 따라 계산 결과가 ${sum(m)}인 식을 쓸 때, 그 식에서 가장 작은 수는?`, a + m, { figure: eqs(range(3).map((i) => row(i).join('+') + '=' + sum(i))), explain: `더하는 수가 모두 1씩 커지면 합은 5씩 커진다. (${sum(m)} − ${sum(0)}) ÷ 5 = ${m}이므로 첫째 식에서 ${m}번 더 간 식 ${row(m).join(' + ')} = ${sum(m)}이다.`, facts: { calc: [[`(${sum(m)}-${sum(0)})/(${sum(1)}-${sum(0)})+${a}`, 0]] } });
       }, { standard: CALC }),
       H('hd-updown-nth', '커졌다가 작아지는 덧셈식의 순서', '44·45', (d) => {
         const k = d.int(5, 8), target = (k + 1) * (k + 1), row = (n) => range(n, 1).concat(range(n - 1, 1).reverse());

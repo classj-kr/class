@@ -387,58 +387,12 @@
         explain: `한 점에서 같은 길이만큼 떨어진 점을 모두 이으면 원이 된다. 나무가 원의 중심이고 반지름이 ${k} cm인 원 위의 모든 점이 나무에서 ${k} cm 떨어져 있다.`, facts: { truth: rows.map(([, ok]) => ok), want: true }
       });
     }, { standard: DRAW }),
-    H('h-centers-d', '지름으로 나타낸 맞닿은 두 원의 중심 사이', '기본 ③41, 심40', (d) => {
-      // 지름을 그대로 더하는 아이, 한쪽만 반으로 줄이는 아이
-      const [a, b] = d.until(() => [d.int(3, 9), d.int(3, 9)], ([x, y]) => x !== y), big = Math.max(a, b), ra = 1.7 * a / big, rb = 1.7 * b / big, row = rowOfCircles([ra, rb], [ra + rb]), list = d.shuffle([a + b, a * 2 + b * 2, a * 2 + b, a + b * 2]);
-      const parts = row.circles.concat([G.line(row.centers[0], row.centers[1]), below(row.centers[0], 'ㄱ'), below(row.centers[1], 'ㄴ')]);
-      return C(`지름이 ${a * 2} cm인 원과 지름이 ${b * 2} cm인 원이 맞닿아 있다. 점 ㄱ, 점 ㄴ이 원의 중심일 때, 선분 ㄱㄴ의 길이는 몇 cm인가?`, cmList(list), list.indexOf(a + b), {
-        figure: draw(row.cols, row.rows, parts, '맞닿은 두 원과 두 원의 중심 ㄱ, ㄴ', 0.95),
-        explain: `선분 ㄱㄴ의 길이는 두 원의 반지름의 합이다. 반지름은 ${a * 2} ÷ 2 = ${a}(cm), ${b * 2} ÷ 2 = ${b}(cm)이므로 ${a} + ${b} = ${a + b}(cm)이다.`, facts: { pick: { expr: `${a * 2}/2+${b * 2}/2`, options: list }, unseen: [2] }
-      });
-    }),
-    H('h-row3-centers', '크기가 다른 세 원의 양 끝 중심 사이', '기본 ③43', (d) => {
-      // 양 끝 원은 반지름만, 가운데 원은 지름이 든다: 반지름 셋을 더하는 아이, 지름 셋을 더하는 아이, 양 끝을 지름으로 세는 아이
-      const rs = d.until(() => [d.int(3, 7), d.int(3, 7), d.int(3, 7)], (x) => new Set(x).size === 3 && Math.min(...x) * 100 >= Math.max(...x) * 55 && x[1] !== x[0] + x[2]), [a, b, e] = rs;
-      const big = Math.max(...rs), sizes = rs.map((r) => 1.5 * r / big), row = rowOfCircles(sizes, [sizes[0] + sizes[1], sizes[1] + sizes[2]]), list = d.shuffle([a + b * 2 + e, a + b + e, (a + b + e) * 2, a * 2 + b + e * 2]);
-      const parts = row.circles.concat([G.line(row.centers[0], row.centers[2])], row.centers.map((p, i) => below(p, ['ㄱ', 'ㄴ', 'ㄷ'][i])));
-      return C(`반지름이 ${a} cm, ${b} cm, ${e} cm인 세 원을 맞닿게 한 줄로 그렸다. 점 ㄱ, 점 ㄴ, 점 ㄷ이 원의 중심일 때, 선분 ㄱㄷ의 길이는 몇 cm인가?`, cmList(list), list.indexOf(a + b * 2 + e), {
-        figure: draw(row.cols, row.rows, parts, '한 줄로 맞닿은 크기가 다른 원 3개와 세 원의 중심 ㄱ, ㄴ, ㄷ', 0.95),
-        explain: `선분 ㄱㄷ은 왼쪽 원의 반지름, 가운데 원의 지름, 오른쪽 원의 반지름을 이은 것이다. ${a} + ${b} × 2 + ${e} = ${a + b * 2 + e}(cm)이다.`, facts: { pick: { expr: `${a}+${b}*2+${e}`, options: list }, unseen: [2] }
-      });
-    }),
-    H('h-chain-seg', '반씩 줄어드는 세 원의 중심 사이', '기본 ③45, 심47', (d) => {
-      const k = d.int(2, 6), c = [3.4, 3.4], R = 3, m = [c[0] + R / 2, c[1]], s = [m[0] + R / 4, c[1]];
-      const parts = [G.circle(c, R), G.circle(m, R / 2), G.circle(s, R / 4), G.line(c, s), G.point(c), G.point(m), G.point(s), G.text([c[0] - 0.42, c[1]], 'ㄱ'), G.text([m[0] - 0.32, m[1] + 0.48], 'ㄴ'), G.text([s[0] + 0.05, s[1] - 0.4], 'ㄷ')];
-      return N(`가장 큰 원의 반지름은 가운데 원의 지름과 같고, 가운데 원의 반지름은 가장 작은 원의 지름과 같다. 점 ㄱ, 점 ㄴ, 점 ㄷ이 세 원의 중심이고 가장 큰 원의 반지름이 ${k * 4} cm일 때, 선분 ㄱㄷ의 길이는 몇 cm인가?`, k * 3, {
-        unit: 'cm', figure: draw(6.8, 6.8, parts, '큰 원 안의 가운데 원, 그 안의 작은 원. 점 ㄱ, ㄴ, ㄷ은 차례로 가장 큰 원, 가운데 원, 가장 작은 원의 중심', 1.0),
-        explain: `선분 ㄱㄴ은 가운데 원의 반지름으로 ${k * 4} ÷ 2 = ${k * 2}(cm)이고, 선분 ㄴㄷ은 가장 작은 원의 반지름으로 ${k * 2} ÷ 2 = ${k}(cm)이다. ${k * 2} + ${k} = ${k * 3}(cm)이다.`, facts: { calc: [[`${k * 4}/2+${k * 4}/2/2`, 0]], unseen: [2] }
-      });
-    }),
-    H('h-chain-up', '가장 작은 원으로 가장 큰 원의 지름 구하기', '기본 ②61, 심47', (d) => {
-      const k = d.int(2, 6), c = [3, 3], R = 2.4, m = [c[0] + R / 2, c[1]], s = [m[0] + R / 4, c[1]];
-      return N(`가장 큰 원의 반지름은 가운데 원의 지름과 같고, 가운데 원의 반지름은 가장 작은 원의 지름과 같다. 가장 작은 원의 반지름이 ${k} cm일 때, 가장 큰 원의 지름은 몇 cm인가?`, k * 8, {
-        unit: 'cm', figure: draw(6, 6, [G.circle(c, R), G.circle(m, R / 2), G.circle(s, R / 4), G.point(c), G.point(m), G.point(s)], '큰 원 안의 가운데 원, 그 안의 작은 원. 점은 원의 중심'),
-        explain: `가장 작은 원의 지름은 ${k} × 2 = ${k * 2}(cm)이고 이것이 가운데 원의 반지름이다. 가운데 원의 지름은 ${k * 2} × 2 = ${k * 4}(cm)이고 이것이 가장 큰 원의 반지름이다. 가장 큰 원의 지름은 ${k * 4} × 2 = ${k * 8}(cm)이다.`,
-        facts: { calc: [[`${k}*2*2*2`, 0]], unseen: [2] }
-      });
-    }),
     H('h-overlap-reverse', '겹쳐 그린 원의 전체 길이로 반지름 구하기', '기본 ③49, 심43', (d) => {
       const n = d.pick([2, 3, 5]), r = d.int(3, 9), size = { 2: 1.4, 3: 1.25, 5: 0.85 }[n], row = rowOfCircles(Array(n).fill(size), Array(n - 1).fill(size), true), a = [row.centers[0][0] - size, row.y], b = [row.centers[n - 1][0] + size, row.y];
       const parts = row.circles.concat(row.centers.map((p) => G.point(p)), [G.line(a, b), G.point(a), G.point(b), G.text([a[0] - 0.4, row.y], 'ㄱ'), G.text([b[0] + 0.4, row.y], 'ㄴ')]);
       return N(`크기가 같은 원 ${n}개를 이웃한 원의 중심을 지나도록 겹쳐 그렸더니 선분 ㄱㄴ의 길이가 ${r * (n + 1)} cm였다. 원의 반지름은 몇 cm인가?`, r, {
         unit: 'cm', figure: draw(row.cols, row.rows, parts, `이웃한 원의 중심을 지나게 겹쳐 그린 원 ${n}개와 양 끝을 이은 선분 ㄱㄴ. 점은 원의 중심`, 0.95),
         explain: `이웃한 두 원의 중심 사이의 길이는 반지름과 같으므로 선분 ㄱㄴ의 길이는 반지름의 ${n + 1}배이다. ${r * (n + 1)} ÷ ${n + 1} = ${r}(cm)이다.`, facts: { calc: [[`${r * (n + 1)}/(${n}+1)`, 0]], unseen: [1] }
-      });
-    }),
-    H('h-overlap-centers', '겹쳐 그린 두 원의 중심 사이', '기본 ③63, 심60', (d) => {
-      // 맞닿은 원처럼 반지름을 그냥 더하는 아이, 겹친 길이를 더하는 아이, 지름으로 세는 아이
-      const [a, b, w] = d.until(() => [d.int(5, 9), d.int(5, 9), d.int(2, 4)], ([x, y, z]) => x !== y && z * 2 !== x + y && Math.min(x, y) - z >= 3), u = 2.4 / Math.max(a, b), A = a * u, Bq = b * u, top = Math.max(A, Bq);
-      const y = 0.7 + top, x1 = 0.9 + A, x2 = x1 + A + Bq - w * u, P = { ㄱ: [x1, y], ㄴ: [x2, y], ㄷ: [x2 - Bq, y], ㄹ: [x1 + A, y] }, list = d.shuffle([a + b - w, a + b, a + b + w, a * 2 + b * 2 - w]);
-      const parts = [ring(P.ㄱ, A), ring(P.ㄴ, Bq), G.line(P.ㄱ, P.ㄴ), below(P.ㄱ, 'ㄱ'), below(P.ㄴ, 'ㄴ'), G.point(P.ㄷ), G.point(P.ㄹ), G.text([P.ㄷ[0] - 0.38, y - 0.45], 'ㄷ'), G.text([P.ㄹ[0] + 0.38, y - 0.45], 'ㄹ')];
-      return C(`반지름이 ${a} cm인 원과 반지름이 ${b} cm인 원을 겹쳐 그렸다. 점 ㄱ, 점 ㄴ은 두 원의 중심이고, 선분 ㄱㄴ 위에서 두 원이 겹친 부분인 선분 ㄷㄹ의 길이는 ${w} cm이다. 선분 ㄱㄴ의 길이는 몇 cm인가?`, cmList(list), list.indexOf(a + b - w), {
-        figure: draw(Math.ceil(x2 + Bq + 0.9), Math.ceil(top * 2 + 1.5), parts, '겹쳐 그린 두 원과 두 원의 중심 ㄱ, ㄴ을 이은 선분. 점 ㄷ은 오른쪽 원 위에, 점 ㄹ은 왼쪽 원 위에 있고 두 점은 선분 ㄱㄴ 위에 있다', 0.95),
-        explain: `선분 ㄱㄹ은 왼쪽 원의 반지름으로 ${a} cm, 선분 ㄷㄴ은 오른쪽 원의 반지름으로 ${b} cm이다. 두 반지름을 더하면 선분 ㄷㄹ을 두 번 센 것이므로 ${a} + ${b} - ${w} = ${a + b - w}(cm)이다.`,
-        facts: { pick: { expr: `${a}+${b}-${w}`, options: list } }
       });
     }),
     H('h-lens-tri', '서로 중심을 지나는 두 원과 삼각형', '기본 ②70 ③61', (d) => {
@@ -464,39 +418,11 @@
         explain: `큰 원의 반지름은 작은 원의 반지름의 3배이므로 작은 원의 반지름은 ${r * 3} ÷ 3 = ${r}(cm)이다. 선분 ㄱㄴ은 작은 원의 반지름의 4배이므로 ${r} × 4 = ${r * 4}(cm)이다.`, facts: { calc: [[`${r * 3}/3*4`, 0]], unseen: [4] }
       });
     }),
-    H('h-inside-diff', '큰 원 안의 크기가 다른 두 원 가운데 하나', '심46', (d) => {
-      const [a, b] = d.until(() => [d.int(2, 7), d.int(2, 7)], ([x, y]) => x !== y && Math.min(x, y) * 10 >= Math.max(x, y) * 4), c = [3, 3], R = 2.4, ra = R * a / (a + b), rb = R * b / (a + b);
-      const parts = [G.circle(c, R), G.circle([c[0] - R + ra, c[1]], ra), G.circle([c[0] + R - rb, c[1]], rb), G.line([c[0] - R, c[1]], [c[0] + R, c[1]]), G.point(c), G.point([c[0] - R + ra, c[1]]), G.point([c[0] + R - rb, c[1]])];
-      return N(`큰 원 안에 크기가 다른 원 2개를 맞닿게 그렸다. 세 원의 중심은 한 선분 위에 있다. 큰 원의 지름이 ${(a + b) * 2} cm이고 왼쪽 원의 반지름이 ${a} cm일 때, 오른쪽 원의 반지름은 몇 cm인가?`, b, {
-        unit: 'cm', figure: draw(6, 6, parts, '큰 원 안에 꼭 맞게 맞닿은 크기가 다른 원 2개. 세 원의 중심이 큰 원의 지름 위에 있다'),
-        explain: `큰 원의 지름은 두 작은 원의 지름의 합이다. 왼쪽 원의 지름은 ${a} × 2 = ${a * 2}(cm)이므로 오른쪽 원의 지름은 ${(a + b) * 2} - ${a * 2} = ${b * 2}(cm)이고, 반지름은 ${b * 2} ÷ 2 = ${b}(cm)이다.`,
-        facts: { calc: [[`(${(a + b) * 2}-${a}*2)/2`, 0]], unseen: [2] }
-      });
-    }),
-    H('h-square-seg', '정사각형 안 큰 원과 작은 원을 가로지르는 선분', '기본 ③53', (d) => {
-      // 큰 원의 반지름에서 멈추는 아이, 정사각형의 한 변을 그대로 답하는 아이, 작은 원의 반지름만 구하는 아이
-      const r = d.int(2, 6), c = [3, 3], R = 2.2, corner = [[c[0] - R, c[1] - R], [c[0] + R, c[1] - R], [c[0] + R, c[1] + R], [c[0] - R, c[1] + R]];
-      const P = { ㄱ: [c[0] - R, c[1]], ㄴ: [c[0] - R / 2, c[1]], ㄷ: [c[0] + R / 2, c[1]] }, list = d.shuffle([r * 3, r * 2, r * 4, r]);
-      const parts = [G.polygon(corner), G.circle(c, R), G.circle(P.ㄴ, R / 2), G.circle(P.ㄷ, R / 2), G.line(P.ㄱ, P.ㄷ), G.point(P.ㄱ), G.text([P.ㄱ[0] - 0.42, c[1]], 'ㄱ'), below(P.ㄴ, 'ㄴ'), below(P.ㄷ, 'ㄷ')];
-      return C(`한 변의 길이가 ${r * 4} cm인 정사각형 안에 큰 원을 꼭 맞게 그리고, 큰 원 안에 크기가 같은 작은 원 2개를 맞닿게 그렸다. 점 ㄴ, 점 ㄷ이 작은 원의 중심일 때, 선분 ㄱㄷ의 길이는 몇 cm인가?`, cmList(list), list.indexOf(r * 3), {
-        figure: draw(6, 6, parts, '정사각형 안에 꼭 맞는 큰 원과 그 안에 맞닿은 작은 원 2개. 점 ㄱ은 정사각형의 왼쪽 변 위에 있고, 점 ㄴ, ㄷ은 작은 원의 중심이며 세 점은 한 선분 위에 있다'),
-        explain: `큰 원의 지름은 정사각형의 한 변과 같은 ${r * 4} cm이고, 작은 원의 지름은 큰 원의 반지름과 같은 ${r * 2} cm이므로 작은 원의 반지름은 ${r} cm이다. 선분 ㄱㄷ은 작은 원의 반지름의 3배이므로 ${r} × 3 = ${r * 3}(cm)이다.`,
-        facts: { pick: { expr: `${r * 4}/2/2*3`, options: list }, unseen: [2, 3] }
-      });
-    }),
     H('h-rect-overlap', '직사각형 안에 서로 중심을 지나게 겹친 두 원', '기본 ③57', (d) => {
       const r = d.int(3, 9), s = 1.3, x0 = 0.8, y0 = 0.7, a = [x0 + s, y0 + s], b = [x0 + s * 2, y0 + s], corner = [[x0, y0], [x0 + s * 3, y0], [x0 + s * 3, y0 + s * 2], [x0, y0 + s * 2]];
       return M(`직사각형 안에 반지름이 ${r} cm인 원 2개를 서로 원의 중심을 지나도록 겹쳐서 꼭 맞게 그렸다. 직사각형의 가로와 세로는 각각 몇 cm인가?`, [{ label: '가로', answer: r * 3, unit: 'cm' }, { label: '세로', answer: r * 2, unit: 'cm' }], {
         figure: draw(5.5, 4, [G.polygon(corner), ring(a, s), ring(b, s), G.point(a), G.point(b)], '직사각형 안에 꼭 맞게 그린 크기가 같은 원 2개. 두 원은 서로 원의 중심을 지나게 겹쳐 있다. 점은 원의 중심'),
         explain: `두 원의 중심 사이의 길이는 반지름과 같다. 가로는 반지름의 3배이므로 ${r} × 3 = ${r * 3}(cm)이고, 세로는 원의 지름과 같으므로 ${r} × 2 = ${r * 2}(cm)이다.`, facts: { calc: [[`${r}*3`, 0], [`${r}*2`, 1]], unseen: [3] }
-      });
-    }),
-    H('h-ring-times', '반지름이 몇 배인, 중심이 같은 두 원', '심48', (d) => {
-      const k = d.int(2, 3), r = d.int(2, 6), D = r * k * 2, c = [3.2, 3.2], R = 2.6, a = d.pick([20, 160]), p = on(c, R / k, a), q = on(c, R, a);
-      const parts = [G.circle(c, R), G.circle(c, R / k), G.line(c, q), G.point(p), G.point(q), G.text([p[0], p[1] - 0.45], 'ㄱ'), G.text(G.beyond(c, q, 0.45), 'ㄴ'), centreAway(c, 'ㅇ', [a])];
-      return N(`점 ㅇ은 두 원의 중심이다. 큰 원의 반지름은 작은 원의 반지름의 ${k}배이다. 큰 원의 지름이 ${D} cm일 때, 선분 ㄱㄴ의 길이는 몇 cm인가?`, r * k - r, {
-        unit: 'cm', figure: draw(6.4, 6.4, parts, '중심이 같은 두 원. 점 ㄱ은 작은 원 위에, 점 ㄴ은 큰 원 위에 있고, 점 ㄱ은 선분 ㅇㄴ 위에 있다'),
-        explain: `큰 원의 반지름은 ${D} ÷ 2 = ${r * k}(cm)이고, 작은 원의 반지름은 ${r * k} ÷ ${k} = ${r}(cm)이다. 선분 ㄱㄴ의 길이는 ${r * k} - ${r} = ${r * k - r}(cm)이다.`, facts: { calc: [[`${D}/2-${D}/2/${k}`, 0]], unseen: [2] }
       });
     })
   ]);

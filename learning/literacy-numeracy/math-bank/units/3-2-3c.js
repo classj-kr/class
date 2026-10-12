@@ -153,26 +153,11 @@
         explain: `선분 ㄱㄴ의 길이는 왼쪽 원의 반지름과 오른쪽 원의 지름을 더한 것이다. ${a} + ${b} × 2 = ${a + b * 2}`, facts: { calc: [[`${a}+${b}*2`, 0]], unseen: [2] }
       });
     }),
-    T('touch-row3', '크기가 다른 원을 한 줄로 놓은 전체 길이', '②66', (d) => {
-      const rs = d.until(() => [d.int(2, 6), d.int(2, 6), d.int(2, 6)], (x) => new Set(x).size === 3), big = Math.max(...rs), sizes = rs.map((r) => 1.25 * r / big), row = rowOfCircles(sizes, [sizes[0] + sizes[1], sizes[1] + sizes[2]]);
-      const y = row.centers[0][1], a = [row.centers[0][0] - sizes[0], y], b = [row.centers[2][0] + sizes[2], y];
-      return N(`반지름이 ${rs[0]} cm, ${rs[1]} cm, ${rs[2]} cm인 세 원을 맞닿게 한 줄로 그렸다. 선분 ㄱㄴ의 길이는 몇 cm인가?`, (rs[0] + rs[1] + rs[2]) * 2, {
-        unit: 'cm', figure: draw(row.cols, row.rows, row.circles.concat([G.line(a, b), G.point(a), G.point(b), G.text([a[0] - 0.4, y], 'ㄱ'), G.text([b[0] + 0.4, y], 'ㄴ')]), '크기가 다른 원 3개와 양 끝을 이은 선분 ㄱㄴ', 0.95),
-        explain: `선분 ㄱㄴ의 길이는 세 원의 지름의 합이다. ${rs[0] * 2} + ${rs[1] * 2} + ${rs[2] * 2} = ${(rs[0] + rs[1] + rs[2]) * 2}`, facts: { calc: [[`(${rs[0]}+${rs[1]}+${rs[2]})*2`, 0]], unseen: [2] }
-      });
-    }),
     T('touch-inside2', '작은 원의 반지름으로 큰 원의 지름 구하기', '①58 ②60', (d) => {
       const r = d.int(2, 9), c = [3, 3], R = 2.4;
       return N(`큰 원 안에 크기가 같은 작은 원 2개를 맞닿게 그렸다. 작은 원의 반지름이 ${r} cm일 때, 큰 원의 지름은 몇 cm인가?`, r * 4, {
         unit: 'cm', figure: draw(6, 6, [G.circle(c, R), G.circle([c[0] - R / 2, c[1]], R / 2), G.circle([c[0] + R / 2, c[1]], R / 2), G.point(c), G.point([c[0] - R / 2, c[1]]), G.point([c[0] + R / 2, c[1]])], '큰 원 안에 꼭 맞게 맞닿은 작은 원 2개. 점은 원의 중심'),
         explain: `큰 원의 지름은 작은 원의 지름 2개를 이은 것과 같다. 작은 원의 지름은 ${r} × 2 = ${r * 2}(cm)이므로 ${r * 2} × 2 = ${r * 4}(cm)이다.`, facts: { calc: [[`${r}*2*2`, 0]], unseen: [2] }
-      });
-    }),
-    T('touch-inside3', '큰 원 안에 크기가 다른 원 2개', '①59 심46', (d) => {
-      const [a, b] = d.until(() => [d.int(2, 7), d.int(2, 7)], ([x, y]) => x !== y), c = [3, 3], R = 2.4, ra = R * a / (a + b), rb = R * b / (a + b);
-      return N(`큰 원 안에 반지름이 ${a} cm인 원과 반지름이 ${b} cm인 원을 맞닿게 그렸다. 세 원의 중심이 한 선분 위에 있을 때, 큰 원의 반지름은 몇 cm인가?`, a + b, {
-        unit: 'cm', figure: draw(6, 6, [G.circle(c, R), G.circle([c[0] - R + ra, c[1]], ra), G.circle([c[0] + R - rb, c[1]], rb), G.line([c[0] - R, c[1]], [c[0] + R, c[1]]), G.point(c), G.point([c[0] - R + ra, c[1]]), G.point([c[0] + R - rb, c[1]])], '큰 원 안에 꼭 맞게 맞닿은 크기가 다른 원 2개. 세 원의 중심이 지름 위에 있다'),
-        explain: `큰 원의 지름은 두 작은 원의 지름의 합이다. ${a * 2} + ${b * 2} = ${(a + b) * 2}(cm)이므로 반지름은 ${(a + b) * 2} ÷ 2 = ${a + b}(cm)이다.`, facts: { calc: [[`(${a}*2+${b}*2)/2`, 0]], unseen: [2] }
       });
     }),
     T('touch-square2', '원이 꼭 맞는 정사각형의 한 변', '①62 ②67', (d) => {
@@ -199,13 +184,6 @@
       return C(`반지름이 ${r} cm인 원 3개를 맞닿게 한 줄로 그렸다. 점 ㄱ이 왼쪽 원의 중심일 때, 선분 ㄱㄴ의 길이는 몇 cm인가?`, list.map((v) => v + ' cm'), list.indexOf(r * 5), {
         figure: draw(row.cols, row.rows, row.circles.concat([G.line(a, b), G.point(a), G.point(b), G.text([a[0], a[1] + 0.48], 'ㄱ'), G.text([b[0] + 0.4, y], 'ㄴ')]), '크기가 같은 원 3개. 점 ㄱ은 왼쪽 원의 중심, 점 ㄴ은 오른쪽 원의 오른쪽 끝', 0.95),
         explain: `선분 ㄱㄴ은 왼쪽 원의 반지름 하나와 나머지 두 원의 지름을 이은 것이다. 반지름의 5배이므로 ${r} × 5 = ${r * 5}(cm)이다.`, facts: { pick: { expr: `${r}*5`, options: list }, unseen: [5] }
-      });
-    }),
-    H('h-nested-square', '정사각형 안의 큰 원과 그 안의 작은 원', '심55', (d) => {
-      const r = d.int(2, 6), c = [3, 3], R = 2.2, corner = [[c[0] - R, c[1] - R], [c[0] + R, c[1] - R], [c[0] + R, c[1] + R], [c[0] - R, c[1] + R]];
-      return N(`한 변의 길이가 ${r * 4} cm인 정사각형 안에 큰 원을 꼭 맞게 그리고, 큰 원 안에 크기가 같은 작은 원 2개를 맞닿게 그렸다. 작은 원의 반지름은 몇 cm인가?`, r, {
-        unit: 'cm', figure: draw(6, 6, [G.polygon(corner), G.circle(c, R), G.circle([c[0] - R / 2, c[1]], R / 2), G.circle([c[0] + R / 2, c[1]], R / 2)], '정사각형 안에 꼭 맞는 큰 원과 그 안에 맞닿은 작은 원 2개'),
-        explain: `큰 원의 지름은 정사각형의 한 변과 같은 ${r * 4} cm이다. 작은 원의 지름은 큰 원의 반지름과 같은 ${r * 2} cm이므로 작은 원의 반지름은 ${r} cm이다.`, facts: { calc: [[`${r * 4}/2/2`, 0]], unseen: [2] }
       });
     })
   ]);
@@ -317,15 +295,6 @@
         explain: `큰 원의 지름은 작은 원의 지름의 3배이다. 작은 원의 지름은 ${r * 6} ÷ 3 = ${r * 2}(cm)이고 반지름은 ${r * 2} ÷ 2 = ${r}(cm)이다.`, facts: { calc: [[`${r * 6}/3/2`, 0]], unseen: [2] }
       });
     }),
-    T('touch-rect-rows', '직사각형 안에 두 줄로 꼭 맞는 같은 원', '③56', (d) => {
-      const r = d.int(2, 8), n = d.int(3, 4), size = n === 3 ? 0.85 : 0.7, x0 = 0.8, y0 = 0.7, cs = [];
-      for (let j = 0; j < 2; j += 1) for (let i = 0; i < n; i += 1) cs.push([x0 + size + i * size * 2, y0 + size + j * size * 2]);
-      const corner = [[x0, y0], [x0 + size * 2 * n, y0], [x0 + size * 2 * n, y0 + size * 4], [x0, y0 + size * 4]];
-      return M(`직사각형 안에 반지름이 ${r} cm인 원 ${n * 2}개를 두 줄로 꼭 맞게 그렸다. 직사각형의 가로와 세로는 각각 몇 cm인가?`, [{ label: '가로', answer: r * 2 * n, unit: 'cm' }, { label: '세로', answer: r * 4, unit: 'cm' }], {
-        figure: draw(Math.ceil(x0 * 2 + size * 2 * n), Math.ceil(y0 * 2 + size * 4), [G.polygon(corner)].concat(cs.map((p) => G.circle(p, size))), `직사각형 안에 한 줄에 ${n}개씩 두 줄로 꼭 맞게 그린 크기가 같은 원 ${n * 2}개`, 0.95),
-        explain: `원의 지름은 ${r} × 2 = ${r * 2}(cm)이다. 가로는 지름의 ${n}배이므로 ${r * 2} × ${n} = ${r * 2 * n}(cm), 세로는 지름의 2배이므로 ${r * 2} × 2 = ${r * 4}(cm)이다.`, facts: { calc: [[`${r}*2*${n}`, 0], [`${r}*2*2`, 1]], unseen: [2] }
-      });
-    }),
     T('touch-side', '정사각형의 변을 지름으로 하는 원', '③54', (d) => {
       const r = d.int(3, 12), x0 = 0.9, y0 = 0.9, s = 2.6, corner = [[x0, y0], [x0 + s, y0], [x0 + s, y0 + s], [x0, y0 + s]], c = [x0 + s, y0 + s / 2];
       return N(`한 변의 길이가 ${r * 2} cm인 정사각형의 한 변을 지름으로 하는 원을 그렸다. 원의 반지름은 몇 cm인가?`, r, {
@@ -336,28 +305,11 @@
   ]);
 
   B.addTypes('3-2-3', 'hard', [
-    H('h-overlap-width', '겹쳐 그린 두 원의 겹친 폭', '기본 ③50, 심51', (d) => {
-      const [a, b, w] = d.until(() => [d.int(6, 9), d.int(5, 9), d.int(3, 5)], ([x, y]) => x !== y), u = 2.0 / Math.max(a, b), A = a * u, Bq = b * u, W = w * u, top = Math.max(A, Bq);
-      const y = 0.7 + top, x1 = 0.9 + A, x2 = x1 + A + Bq - W, P = { ㄱ: [x1 - A, y], ㄴ: [x2 - Bq, y], ㄷ: [x1 + A, y], ㄹ: [x2 + Bq, y] }, L = a * 2 + b * 2 - w;
-      const parts = [G.circle([x1, y], A), G.circle([x2, y], Bq), G.line(P.ㄱ, P.ㄹ), G.point(P.ㄱ), G.point(P.ㄴ), G.point(P.ㄷ), G.point(P.ㄹ), G.text([P.ㄱ[0] - 0.4, y], 'ㄱ'), G.text([P.ㄴ[0] - 0.28, y - 0.42], 'ㄴ'), G.text([P.ㄷ[0] + 0.28, y + 0.5], 'ㄷ'), G.text([P.ㄹ[0] + 0.4, y], 'ㄹ')];
-      return N(`반지름이 ${a} cm인 원과 반지름이 ${b} cm인 원을 겹쳐 그렸다. 두 원의 중심을 지나는 선분 ㄱㄹ의 길이가 ${L} cm일 때, 선분 ㄴㄷ의 길이는 몇 cm인가?`, w, {
-        unit: 'cm', figure: draw(Math.ceil(x2 + Bq + 0.9), Math.ceil(top * 2 + 1.5), parts, '겹쳐 그린 두 원과 두 원의 중심을 지나는 선분. 점 ㄱ은 왼쪽 원의 왼쪽 끝, 점 ㄴ은 오른쪽 원의 왼쪽 끝, 점 ㄷ은 왼쪽 원의 오른쪽 끝, 점 ㄹ은 오른쪽 원의 오른쪽 끝', 0.95),
-        explain: `선분 ㄱㄷ은 왼쪽 원의 지름으로 ${a * 2} cm, 선분 ㄴㄹ은 오른쪽 원의 지름으로 ${b * 2} cm이다. 두 지름을 더하면 겹친 선분 ㄴㄷ을 두 번 센 것이므로 ${a * 2} + ${b * 2} - ${L} = ${w}(cm)이다.`,
-        facts: { calc: [[`${a}*2+${b}*2-${L}`, 0]], unseen: [2] }
-      });
-    }),
     H('h-times', '반지름이 몇 배인 두 원', '심22', (d) => {
       // 가의 지름을 바로 나누는 아이(2배 큰 답), 가의 반지름에서 멈추는 아이, 거꾸로 곱하는 아이
       const k = d.int(3, 4), r = d.int(2, 6), D = r * k * 2, list = d.shuffle([r, r * 2, r * k, r * k * k]);
       return C(`가 원의 반지름은 나 원의 반지름의 ${k}배이다. 가 원의 지름이 ${D} cm일 때, 나 원의 반지름은 몇 cm인가?`, list.map((v) => v + ' cm'), list.indexOf(r), {
         explain: `가 원의 반지름은 ${D} ÷ 2 = ${r * k}(cm)이다. 나 원의 반지름은 ${r * k} ÷ ${k} = ${r}(cm)이다.`, facts: { pick: { expr: `${D}/2/${k}`, options: list }, unseen: [2] }
-      });
-    }),
-    H('h-inside-overlap', '큰 원 안에 서로 중심을 지나게 겹친 작은 원', '심45', (d) => {
-      const m = d.int(1, 5), c = [3, 3], R = 2.4, S = R * 2 / 3;
-      return N(`큰 원 안에 지름이 ${m * 4} cm인 작은 원 2개를 서로 원의 중심을 지나도록 겹쳐서 꼭 맞게 그렸다. 큰 원의 반지름은 몇 cm인가?`, m * 3, {
-        unit: 'cm', figure: draw(6, 6, [G.circle(c, R), G.circle([c[0] - S / 2, c[1]], S), G.circle([c[0] + S / 2, c[1]], S), G.point([c[0] - S / 2, c[1]]), G.point([c[0] + S / 2, c[1]])], '큰 원 안에 꼭 맞게 그린 작은 원 2개. 작은 원은 서로 원의 중심을 지나게 겹쳐 있다. 점은 작은 원의 중심'),
-        explain: `작은 원의 반지름은 ${m * 4} ÷ 2 = ${m * 2}(cm)이다. 큰 원의 지름은 작은 원의 반지름의 3배이므로 ${m * 2} × 3 = ${m * 6}(cm)이고, 큰 원의 반지름은 ${m * 6} ÷ 2 = ${m * 3}(cm)이다.`, facts: { calc: [[`${m * 4}/2*3/2`, 0]], unseen: [2, 3] }
       });
     })
   ]);

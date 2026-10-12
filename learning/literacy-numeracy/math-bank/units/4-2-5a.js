@@ -113,7 +113,7 @@
   const relabel = (html, map) => html.replace(/(<text class="mb-axis-label"[^>]*>)(\d+)(<\/text>)/g, (all, head, n, end) => (map[n] ? head.replace('font-size:11px', 'font-size:14px') + map[n] + end : n === '0' ? all : ''));
 
   B.addUnit({
-    id: '4-2-5', grade: 4, semester: 2, no: 5, title: '꺾은선그래프', version: 1,
+    id: '4-2-5', grade: 4, semester: 2, no: 5, title: '꺾은선그래프', version: 2,
     groups: [
       {
         id: 'know', title: '꺾은선그래프 알아보기', standard: READ,

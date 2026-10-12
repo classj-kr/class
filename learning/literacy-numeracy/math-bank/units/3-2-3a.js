@@ -49,7 +49,7 @@
   const quote = (text) => lines(['「' + text + '」']);
 
   B.addUnit({
-    id: '3-2-3', grade: 3, semester: 2, no: 3, title: '원', version: 3,
+    id: '3-2-3', grade: 3, semester: 2, no: 3, title: '원', version: 4,
     groups: [
       {
         id: 'parts', title: '원의 중심, 반지름, 지름', standard: PARTS,

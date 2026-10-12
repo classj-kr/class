@@ -688,23 +688,6 @@
 
   // ── 실력 문제 ────────────────────────────────────────────────
   B.addTypes('3-1-5', 'hard', [
-    HB('h-four', '네 가지 단위로 나타낸 길이의 비교', '①23 ②23', (d) => {
-      // ㉠ 1 km ㉡ 1020 m ㉢ 110 cm ㉣ 1210 mm.
-      // 보기: 바른 차례 / 단위를 보지 않고 수만 견주는 아이(1210 > 1020 > 110 > 1) / cm와 mm를 바꾸지 않고 견주는 아이(뒤의 둘을 바꿈) / km와 m를 바꾸지 않고 견주는 아이(앞의 둘을 바꿈)
-      const k = d.int(1, 3), far = k * 1000 + (d.bool() ? 1 : -1) * d.int(1, 9) * 10, c = k * 100 + d.int(1, 9) * 10;
-      const thin = d.until(() => c * 10 + (d.bool() ? 1 : -1) * d.int(2, 12) * 10, (v) => v !== far);
-      const rows = d.shuffle([{ text: `${k} km`, expr: `${k}*1000000`, value: k * 1000000, raw: k }, { text: `${far} m`, expr: `${far}*1000`, value: far * 1000, raw: far },
-        { text: `${c} cm`, expr: `${c}*10`, value: c * 10, raw: c }, { text: `${thin} mm`, expr: String(thin), value: thin, raw: thin }]);
-      const by = (key) => [0, 1, 2, 3].sort((p, q) => rows[q][key] - rows[p][key]), right = by('value'), swap = (o, i, j) => { const out = o.slice(); out[i] = o[j]; out[j] = o[i]; return out; };
-      const picked = [];
-      for (const o of [right, by('raw'), swap(right, 2, 3), swap(right, 0, 1), swap(swap(right, 0, 1), 2, 3)]) if (picked.length < 4 && !picked.some((p) => p.join() === o.join())) picked.push(o);
-      const list = d.shuffle(picked);
-      return C('길이가 긴 것부터 차례대로 기호를 쓴 것은?', list.map((o) => o.map((i) => LABELS[i]).join(', ')), list.findIndex((o) => o.join() === right.join()), {
-        figure: tagged(rows.map((row) => row.text)),
-        explain: `${k} km는 ${k * 1000} m이고, ${c} cm는 ${c * 10} mm이다. m로 나타낸 길이는 cm나 mm로 나타낸 길이보다 훨씬 길다. 긴 것부터 쓰면 ${right.map((i) => rows[i].text).join(', ')}이다.`,
-        facts: { choose: { exprs: rows.map((row) => row.expr), rule: 'descending', orders: list }, unseen: [1000000, 1000, 10] }
-      });
-    }, { standard: UNIT }),
     H('h-roads', '길 그림에서 두 길의 거리 비교', '①24 ②24 심28', (d) => {
       // 한 길에는 「1 km 몇백 m」가 적혀 있어 m로 바꾸어 더해야 한다.
       // 보기: 바른 답 / 더 긴 길을 고르는 아이 / 1 km를 100 m로 여기거나 계산을 틀려 차가 100 m 어긋나는 아이(길 둘)
@@ -718,42 +701,6 @@
         figure: G.tiles([[tags[0], road(p1, legs[0])], [tags[1], road(p2, legs[1])]]),
         explain: `가 길은 ${values[0]} m, 나 길은 ${values[1]} m이다. ${tags[winner]}이 ${gap} m 더 짧다.`,
         facts: { who: { values, options: list, exprs: flip ? [`1*1000+${x}+${b2}`, `${a1}+${a2}`] : [`${a1}+${a2}`, `1*1000+${x}+${b2}`], smaller: true }, unseen: [1000] }
-      });
-    }, { standard: UNIT }),
-    HB('h-sumdiff', '표기가 다른 두 길이의 합과 차', '②27', (d) => {
-      // 157 mm 와 6 cm 2 mm → 21 cm 9 mm, 9 cm 5 mm
-      const [v, w] = d.until(() => [d.int(112, 198), d.int(32, 88)], ([x, y]) => x % 10 !== 0 && y % 10 !== 0 && (x + y) % 10 !== 0 && (x - y) % 10 !== 0 && (x % 10) + (y % 10) >= 11);
-      return M(`두 길이 ${v} mm와 ${cm(w)}의 합과 차는 각각 몇 cm 몇 mm인가?`, [{ label: '합', answer: Math.floor((v + w) / 10), unit: 'cm' }, { answer: (v + w) % 10, unit: 'mm' }, { label: '차', answer: Math.floor((v - w) / 10), unit: 'cm' }, { answer: (v - w) % 10, unit: 'mm' }], {
-        explain: `${cm(w)}는 ${w} mm이다. 합은 ${v} + ${w} = ${v + w}(mm)이므로 ${cm(v + w)}이고, 차는 ${v} − ${w} = ${v - w}(mm)이므로 ${cm(v - w)}이다.`,
-        facts: { unit: [{ expr: `${v}+${cmE(w)}`, base: 10, at: [0, 1] }, { expr: `${v}-${cmE(w)}`, base: 10, at: [2, 3] }], unseen: [10] }
-      });
-    }, { standard: UNIT }),
-    HB('h-tapes', '겹쳐 이어 붙인 띠의 전체 길이', '②29', (d) => {
-      const [a, b, o] = d.until(() => [d.int(82, 168), d.int(82, 168), d.int(12, 38)], ([x, y, z]) => [x, y, z, x + y - z].every((v) => v % 10 !== 0) && x !== y);
-      return M(`길이가 ${cm(a)}인 띠와 ${cm(b)}인 띠를 ${cm(o)}만큼 겹쳐서 한 줄로 이어 붙였다. 이어 붙인 띠의 전체 길이는 몇 cm 몇 mm인가?`, [{ answer: Math.floor((a + b - o) / 10), unit: 'cm' }, { answer: (a + b - o) % 10, unit: 'mm' }], {
-        figure: tapes(cm(a), cm(b), cm(o)), explain: `mm로 나타내면 ${a} mm, ${b} mm, ${o} mm이다. ${a} + ${b} − ${o} = ${a + b - o}(mm)이므로 ${cm(a + b - o)}이다.`,
-        facts: { unit: [{ expr: `${cmE(a)}+${cmE(b)}-${cmE(o)}`, base: 10, at: [0, 1] }], unseen: [10] }
-      });
-    }, { standard: UNIT }),
-    HB('h-pieces', '똑같이 자른 한 도막의 비교', '②30', (d) => {
-      // 4 cm 2 mm 를 6도막(7 mm), 7 cm 2 mm 를 9도막(8 mm). 긴 끈을 자른 도막이 더 짧게 수를 잡는다.
-      // 보기: 바른 답 / 처음 끈이 긴 쪽의 도막이 길다고 여기는 아이 / 나눗셈을 틀려 차가 1 mm 어긋나는 아이(사람 둘)
-      const [one, two] = d.shuffle(NAMES).slice(0, 2);
-      const [p, u, q, w] = d.until(() => [d.int(2, 9), d.int(3, 9), d.int(2, 9), d.int(3, 9)], ([x, y, z, v]) => y !== v && x !== z && [x * y, z * v].every((len) => len >= 12 && len % 10 !== 0) && (x * y > z * v) !== (y > v));
-      const values = [u, w], winner = u > w ? 0 : 1, gap = Math.abs(u - w);
-      const list = d.shuffle([[winner, gap], [1 - winner, gap], [winner, gap + 1], [1 - winner, gap + 1]]);
-      return C(`${name(one, '은/는')} 길이가 ${cm(p * u)}인 끈을 똑같이 ${p}도막으로 자르고, ${name(two, '은/는')} 길이가 ${cm(q * w)}인 끈을 똑같이 ${q}도막으로 잘랐다. 누가 자른 한 도막이 몇 mm 더 긴가?`,
-        list.map(([i, n]) => `${[one, two][i]}, ${n} mm`), list.findIndex(([i, n]) => i === winner && n === gap), {
-          explain: `${nick(one)}의 한 도막은 ${p * u} ÷ ${p} = ${u}(mm), ${nick(two)}의 한 도막은 ${q * w} ÷ ${q} = ${w}(mm)이다. ${name([one, two][winner], '이/가')} 자른 한 도막이 ${gap} mm 더 길다.`,
-          facts: { who: { values, options: list, exprs: [`${cmE(p * u)}/${p}`, `${cmE(q * w)}/${q}`] }, unseen: [10] }
-        });
-    }, { standard: UNIT }),
-    HB('h-grow', '날마다 같은 길이씩 자란 뒤의 길이', '②32', (d) => {
-      // 14 cm 5 mm + 6 mm × 6
-      const [now, r, t] = d.until(() => [d.int(72, 168), d.int(3, 8), d.int(4, 9)], ([x, y, z]) => x % 10 !== 0 && (x + y * z) % 10 !== 0 && (x % 10) + ((y * z) % 10) >= 10 && y !== z);
-      return M(`봉숭아 싹의 길이가 지금 ${cm(now)}이다. 이 싹이 하루에 ${r} mm씩 자란다면 ${t}일 후에는 몇 cm 몇 mm가 되는가?`, [{ answer: Math.floor((now + r * t) / 10), unit: 'cm' }, { answer: (now + r * t) % 10, unit: 'mm' }], {
-        explain: `${t}일 동안 ${r} × ${t} = ${r * t}(mm) 자란다. ${cm(now)}는 ${now} mm이므로 ${now} + ${r * t} = ${now + r * t}(mm)이고, 이것은 ${cm(now + r * t)}이다.`,
-        facts: { unit: [{ expr: `${cmE(now)}+${r}*${t}`, base: 10, at: [0, 1] }], unseen: [10] }
       });
     }, { standard: UNIT }),
     H('h-span', '가장 긴 시간과 가장 짧은 시간의 차', '①69 ②46 심72', (d) => {
@@ -899,14 +846,6 @@
       return M(`어느 날 낮의 길이가 ${span(day)}였다. 이날 낮은 밤보다 몇 시간 몇 분 몇 초 더 긴가?`, ask(['시간', '분', '초'], gap), {
         explain: `하루는 24시간이므로 밤의 길이는 24시간 − ${span(day)} = ${span(night)}이다. ${span(day)} − ${span(night)} = ${span(gap)}`,
         facts: { clock: [{ expr: `${S(day)}-(24*3600-${S(day)})`, parts: 'hms', at: 0 }], unseen: [24] }
-      });
-    }),
-    H('h-clock-slow', '날마다 늦어지는 시계', '심71', (d) => {
-      // 하루에 10초씩 늦어지는 시계: 9일 뒤 오전 9시에는 90초 = 1분 30초 늦다 → 오전 8시 58분 30초
-      const slow = d.pick([15, 20, 25, 35, 40, 45]), days = d.until(() => d.int(3, 7), (v) => (slow * v) % 60 !== 0 && slow * v > 60), loss = slow * days, hour = d.int(8, 11), shown = hms(hour * 3600 - loss);
-      return M(`하루에 ${slow}초씩 늦어지는 시계를 오늘 오전 ${hour}시에 정확히 맞추었다. ${days}일 후 오전 ${hour}시에 이 시계가 가리키는 시각은 오전 몇 시 몇 분 몇 초인가?`, ask(['시', '분', '초'], shown), {
-        explain: `${days}일 동안 ${slow} × ${days} = ${loss}(초) 늦어진다. ${loss}초는 ${ms(loss)}이므로 이 시계는 오전 ${hour}시보다 ${ms(loss)} 이른 오전 ${at(shown)}를 가리킨다.`,
-        facts: { clock: [{ expr: `${hour}*3600-${slow}*${days}`, parts: 'hms', at: 0 }] }
       });
     }),
     HB('h-longer-by', '세 번 계산하여 구하는 시작한 시각', '①71', (d) => {
