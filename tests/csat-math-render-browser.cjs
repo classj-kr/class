@@ -24,6 +24,9 @@ const only = process.argv[2];
   try {
     browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
     const page = await browser.newPage();
+    // 바깥 서버를 막고 그린다. KaTeX 와 auto-render, 글꼴은 앱의 vendor/ 에서 받아야 한다.
+    // 'https://**' 꼴의 글롭은 Playwright 1.63 에서 아무것도 막지 못해 정규식으로 쓴다.
+    await page.route(/^https:\/\//, (route) => route.abort());
     await page.goto(base + '/learning/literacy-numeracy/csat-math/');
     await page.waitForFunction(() => typeof window.renderMathInElement === 'function', null, { timeout: 30000 });
     for (const exam of exams) {
