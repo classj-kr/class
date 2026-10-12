@@ -169,7 +169,9 @@
   const answerText = (item) => (item.choice
     ? plainText(item.choice.options[item.choice.answer])
     : item.fraction ? (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
-    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit ? (/^[A-Za-z]/.test(input.unit) ? ' ' : '') + input.unit : '')).join(', '));
+    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit ? (/^[A-Za-z%:]/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))
+      // 비(□ : □)는 쉼표 없이 잇는다.
+      .reduce((text, part, i) => text + (i ? (/:$/.test(text) ? ' ' : ', ') : '') + part, ''));
 
   // 답한 문항을 그린다(방금 답했을 때와 이어 풀기로 되살릴 때 함께 쓴다).
   function paintAnswered(item, card, response, ok) {
