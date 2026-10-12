@@ -18,7 +18,7 @@
 - 먼저 `engine.js`의 `B.kit`와 `geometry.js`의 `B.kit.geo`에 있는 도구를 쓴다.
 - 없는 그림은 단원 파일 안에 작은 함수로 그린다(`units/4-1-1b.js`의 `bigLine`, `units/3-2-3a.js`의 그림 도우미가 본보기). `styles.css`에 이미 있는 class(`mb-axis`, `mb-axis-label`, `mb-numberline`, `mb-table`, `mb-lines`, `mb-numbers`, `mb-cards`, `mb-versus` …)를 쓰고, 새 CSS가 필요하면 그 요소에만 `style="…"`로 적는다(SVG 글씨 크기는 class의 CSS가 속성을 이기므로 `style="font-size:15px"`처럼 적어야 먹는다).
 - SVG에는 `role="img"`와 `aria-label`을 달고, 그림 속 수는 `aria-label`에 적는다(검사가 그 글로 식의 수를 맞춰 본다).
-- 화면 검사가 떨어뜨리는 것: 너비 60px 미만·높이 20px 미만인 그림, 휴대폰 너비(360px)를 넘는 그림·표·식. 칠이 있는 도형을 나중에 그리면 먼저 그린 선이 가려진다(큰 것부터 그리고, 겹치는 선은 한 번 더 긋는다). 이름표가 선과 겹치지 않게 놓는다.
+- 화면 검사가 떨어뜨리는 것: 너비 60px 미만·높이 20px 미만인 그림, 휴대폰 너비(360px)를 넘는 그림·표·식. 글줄 안에 넣는 작은 아이콘 svg(모양 이름 옆의 작은 그림 따위)에는 `class="mb-inline"`을 붙인다(검사가 그것은 건너뛴다 — 본 그림에는 붙이지 않는다). 칠이 있는 도형을 나중에 그리면 먼저 그린 선이 가려진다(큰 것부터 그리고, 겹치는 선은 한 번 더 긋는다). 이름표가 선과 겹치지 않게 놓는다.
 
 ## 3. 검사
 - 확인 명령은 `fill-guide.md` 5와 같다. 여기에 같은 꼴을 한꺼번에 찾는 도구를 더한다: `MATH_BANK_DIR="D" node tools/question-bank/shapes.cjs <단원>` (「끝」만 나오면 통과).

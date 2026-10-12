@@ -30,10 +30,11 @@ def main(argv):
         if 'units/%s.js' % name in html:
             continue
         assert os.path.exists(os.path.join(APP, 'units', name + '.js')), name + '.js 가 없다'
-        # 같은 단원의 앞 갈래 뒤에, 없으면 마지막 단원 줄 뒤에 넣는다.
-        before = [m for m in re.finditer(r'  <script src="units/([0-9-]+[a-z])\.js\?v=[0-9-]+"></script>\n', html) if m.group(1) < name]
-        assert before, '단원 줄을 찾지 못했다'
-        at = before[-1].end()
+        # 같은 단원의 앞 갈래 뒤에, 없으면 이름 차례로 바로 앞 단원 줄 뒤에 넣는다. 가장 앞선 단원이면 첫 단원 줄 앞에 넣는다.
+        lines = list(re.finditer(r'  <script src="units/([0-9-]+[a-z])\.js\?v=[0-9-]+"></script>\n', html))
+        assert lines, '단원 줄을 찾지 못했다'
+        before = [m for m in lines if m.group(1) < name]
+        at = before[-1].end() if before else lines[0].start()
         html = html[:at] + line % name + html[at:]
     io.open(path, 'w', encoding='utf-8', newline='\n').write(html)
     if unit == '-':
