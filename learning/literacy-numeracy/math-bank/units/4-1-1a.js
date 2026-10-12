@@ -37,7 +37,7 @@
   const truthOf = (rows, want) => ({ truth: rows.map((row) => row[1]), want });
 
   B.addUnit({
-    id: '4-1-1', grade: 4, semester: 1, no: 1, title: '큰 수', version: 1,
+    id: '4-1-1', grade: 4, semester: 1, no: 1, title: '큰 수', version: 2,
     groups: [
       {
         id: 'man', title: '만', standard: NUM,

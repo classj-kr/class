@@ -619,15 +619,6 @@
   B.addGroup('4-1-3', {
     id: 'hard', title: '실력 문제', standard: DIV,
     types: [
-      H('h-zero', '곱에 0이 더 생기는 곱셈', '7, 기본 ②7 ③6', (d) => {
-        // 450×20: 45×2=90 에 0을 2개 더 붙여 9000.
-        // 틀린 보기: 0을 붙이지 않은 아이(90), 90의 0을 붙인 0으로 친 아이(900), 0을 하나 더 붙인 아이(90000)
-        const [a, b] = d.until(() => [d.int(12, 98) * 10, d.int(2, 9) * 10], ([x, y]) => x % 100 !== 0 && ((x / 10) * (y / 10)) % 10 === 0 && ((x / 10) * (y / 10)) % 100 !== 0), m = (a / 10) * (b / 10);
-        const list = d.shuffle([m, m * 10, m * 100, m * 1000]);
-        return C(`${a} × ${b}의 곱은?`, list.map(String), list.indexOf(m * 100), {
-          explain: `${times(a / 10, b / 10)}이다. 곱해지는 수와 곱하는 수에 0이 하나씩 있으므로 ${m} 뒤에 0을 2개 더 붙인다. ${times(a, b)}`, facts: { pick: { expr: E(a, '*', b), options: list } }
-        });
-      }, { standard: MUL }),
       H('h-rows', '곱셈 세로셈의 둘째 줄이 나타내는 값', '5·9, 기본 ①10 ②17', (d) => {
         const [a, b] = byTwo(d, (x, y) => y >= 20), ones = b % 10, digit = Math.floor(b / 10), first = a * ones, second = a * digit * 10;
         const rows = d.shuffle([
@@ -653,28 +644,6 @@
         return C(`${a} ÷ ${josa(b, '을/를')} 계산하여 몫을 ${q - 1}, 나머지를 ${josa(r + b, '이라고/라고')} 하였다. 이 계산에 대한 설명으로 옳은 것은?`, rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
           explain: `나머지는 나누는 수보다 작아야 한다. 나머지 ${r + b}에서 ${josa(b, '을/를')} 한 번 더 뺄 수 있으므로 몫은 ${q}, 나머지는 ${r}이다.`,
           facts: { truth: rows.map((row) => row.ok), want: true, restTalk: { a, b, saidQ: q - 1, saidR: r + b } }
-        });
-      }),
-      H('h-quot-zero', '몫의 일의 자리에 0을 써야 하는 나눗셈', '33, 기본 ①53 ③53', (d) => {
-        // 624÷31: 62÷31=2, 남은 4는 31보다 작다 → 몫 20, 나머지 4
-        // 틀린 보기: 몫의 0을 빠뜨린 아이, 0을 하나 더 쓴 아이, 나머지가 나누는 수보다 큰데 멈춘 아이
-        const [a, b] = division(d, 132, 987, (x, y, q, r) => x >= y * 10 && q % 10 === 0 && r !== 0, 12, 79), q = quot(a, b), r = a % b;
-        const rows = d.shuffle([[q, r], [q / 10, r], [q * 10, r], [q - 1, r + b]]);
-        return C(`${a} ÷ ${b}의 몫과 나머지를 바르게 구한 것은?`, rows.map(([x, y]) => `몫 ${x}, 나머지 ${y}`), rows.findIndex(([x, y]) => x === q && y === r), {
-          explain: `${Math.floor(a / 10)} ÷ ${b}의 몫 ${josa(q / 10, '을/를')} 몫의 십의 자리에 쓴다. 남은 ${josa(r, '은/는')} ${b}보다 작아 더 나눌 수 없으므로 몫의 일의 자리에 0을 쓴다. ${shown(a, b)}`,
-          facts: { remainders: rows.map(() => [a, b]), said: rows, want: 'right' }
-        });
-      }),
-      H('h-check', '계산이 맞는지 확인하는 식', '29, 기본 ①57', (d) => {
-        const [a, b] = twoDigit(d, (x, y, q, r) => y * r + q !== x && q * r + y !== x && q !== r && q !== y && r >= 2), q = quot(a, b), r = a % b;
-        const list = d.shuffle([
-          [`${b} × ${q}에 ${josa(r, '을/를')} 더한 값이 ${a}인지 본다.`, `${b}*${q}+${r}`],
-          [`${b} × ${q}의 값이 ${a}인지 본다.`, `${b}*${q}`],                                   // 나머지를 더하지 않는 아이
-          [`${b} × ${r}에 ${josa(q, '을/를')} 더한 값이 ${a}인지 본다.`, `${b}*${r}+${q}`],      // 몫과 나머지의 자리를 바꾸는 아이
-          [`${q} × ${r}에 ${josa(b, '을/를')} 더한 값이 ${a}인지 본다.`, `${q}*${r}+${b}`]       // 세 수를 아무렇게나 엮는 아이
-        ]);
-        return C(`${a} ÷ ${b} = ${q} … ${josa(r, '이/가')} 맞는지 확인하는 방법으로 옳은 것은?`, list.map((row) => row[0]), list.findIndex((row) => row[1] === `${b}*${q}+${r}`), {
-          explain: `나누는 수와 몫의 곱에 나머지를 더하면 나누어지는 수가 되어야 한다. ${times(b, q)}, ${expr(b * q, '+', r, '=', a)}`, facts: { choose: { exprs: list.map((row) => row[1]), rule: 'equals', target: a } }
         });
       }),
       H('h-updown', '나머지를 올리는 경우와 버리는 경우', '64·65, 기본 ①89·90', (d) => {

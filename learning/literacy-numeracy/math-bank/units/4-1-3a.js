@@ -132,7 +132,7 @@
   }
 
   B.addUnit({
-    id: '4-1-3', grade: 4, semester: 1, no: 3, title: '곱셈과 나눗셈', version: 1,
+    id: '4-1-3', grade: 4, semester: 1, no: 3, title: '곱셈과 나눗셈', version: 2,
     groups: [
       {
         id: 'mt', title: '(세 자리 수)×(몇십)', standard: MUL,

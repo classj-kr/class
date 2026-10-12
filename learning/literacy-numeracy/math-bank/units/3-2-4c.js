@@ -497,33 +497,6 @@
         explain: `어떤 수는 ${v} × ${m1} = ${whole}이다. ${whole}의 ${fj(k2, m2, '은/는')} ${whole} ÷ ${m2} × ${k2} = ${whole / m2 * k2}이다.`, facts: { calc: [[`${v}*${m1}/${m2}*${k2}`, 0]] }
       });
     }, { standard: PART }),
-    H('h-conv-back', '가분수를 대분수로 바르게 나타내기', '심49', (d) => {
-      const [den, q, r] = d.until(() => [d.int(3, 9), d.int(2, 8), d.int(1, 8)], ([z, x, y]) => {
-        const top = x * z + y, t = Math.floor(top / 10), o = top % 10;
-        return x < z && y < z && x !== y && top >= 11 && o >= 1 && o < z && !(t === x && o === y) && !(t === y && o === x);
-      });
-      const top = q * den + r;
-      const list = d.shuffle([
-        [q, r],                                  // 바른 것
-        [Math.floor(top / 10), top % 10],        // 분자의 두 숫자를 떼어 자연수와 분자로 쓰는 아이가 고른다
-        [r, q]                                   // 몫과 나머지의 자리를 바꾸어 쓰는 아이가 고른다
-      ]);
-      return C(`${fj(top, den, '을/를')} 대분수로 바르게 나타낸 것은?`, list.map(([a, b]) => mixed(a, b, den)), list.findIndex(([a, b]) => a === q && b === r), {
-        explain: `${top} ÷ ${den} = ${q} … ${r}이다. ${frac(den, den)}이 ${q}개 있고 ${frac(r, den)}이 남으므로 ${mixed(q, r, den)}이다.`,
-        facts: { choose: { exprs: list.map(([a, b]) => `(${a}*${den}+${b})/${den}`), rule: 'equals', target: top / den } }
-      });
-    }),
-    H('h-comp-say', '대분수의 크기를 비교하는 방법', '심64, 기본 ①83 ②67 ③98', (d) => {
-      const [w, a, b, den] = d.until(() => [d.int(1, 4), d.int(2, 8), d.int(1, 7), d.int(4, 9)], ([x, p, q, z]) => p < z && q < p);
-      const rows = d.shuffle([
-        { text: `자연수 부분이 ${w} &lt; ${w + 1}이므로 ${mj(w, a, den, '이/가')} 더 작다.`, ok: true },
-        { text: `분자가 ${a} &gt; ${b}이므로 ${mj(w, a, den, '이/가')} 더 크다.`, ok: false },      // 자연수 부분을 보지 않고 분자만 비교하는 아이가 고른다
-        { text: '분모가 같으므로 두 분수의 크기는 같다.', ok: false }                                 // 분모가 같으면 크기가 같다고 여기는 아이가 고른다
-      ]);
-      return C(`${mj(w, a, den, '과/와')} ${mixed(w + 1, b, den)}의 크기를 바르게 비교한 것은?`, rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
-        explain: '대분수는 자연수 부분이 클수록 크다. 자연수 부분이 같을 때에만 분자의 크기를 비교한다.', facts: { truth: rows.map((row) => row.ok), want: true }
-      });
-    }, { standard: COMP }),
     H('h-cards-mixed', '수 카드로 가장 큰 대분수 만들기', '심59, 기본 ①59 ②51 ③87', (d) => {
       const [x, y, z] = d.shuffle([2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 3).sort((p, q) => p - q);
       return M('수 카드 세 장을 한 번씩 모두 사용하여 가장 큰 대분수를 만들고, 그 대분수를 가분수로 나타내려고 한다. ㉠, ㉡, ㉢, ㉣에 알맞은 수는?', labelled([z, x, y, z * y + x]), {

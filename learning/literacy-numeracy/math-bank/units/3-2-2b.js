@@ -64,40 +64,12 @@
           facts: { truth: rows.map((row) => row.ok), want: true, divide: [a, b], divideFree: true, rule: 'down' }
         });
       }),
-      H('h-zero', '몫의 가운데에 0이 있는 나눗셈', '세로셈 고치기: 몫의 자리와 0(심화 60) — 0을 건너뛰는 것을 보기에 넣는다', (d) => {
-        // 618÷6 = 103 (13 이 아니다)
-        const [h, o, b] = d.until(() => [d.int(1, 3), d.int(1, 9), d.int(2, 4)], ([x, y, z]) => (x * 100 + y) * z <= 999), q = h * 100 + o, a = q * b;
-        const list = d.shuffle([q, h * 10 + o, h * 100 + o * 10, h * 1000 + o]);      // 바른 몫, 0을 건너뜀, 0의 자리를 틀림, 0을 하나 더 씀
-        return C(`${a} ÷ ${b}의 몫은?`, list.map(String), list.indexOf(q), {
-          explain: `백의 자리부터 차례로 나눈다. 십의 자리에서 나눌 수 없으면 몫의 십의 자리에 0을 쓴다. ${a} ÷ ${b} = ${q}`, facts: { pick: { expr: `${a}/${b}`, options: list }, divide: [a, b], divideFree: true, rule: 'zero' }
-        });
-      }),
-      H('h-check', '계산이 맞는지 확인하는 방법', '확인식으로 맞는지 판단(심화 37), 확인에 필요한 식 고르기(기본 ①32)', (d) => {
-        const [a, b] = rest2(d, (x, y, q, r) => y * r + q !== x && q * r + y !== x && q !== r && q !== y && y * q - r !== x), q = Math.floor(a / b), r = a % b;
-        const list = d.shuffle([
-          [`${b} × ${q}에 ${josa(r, '을/를')} 더한 값이 ${a}인지 본다.`, `${b}*${q}+${r}`],
-          [`${b} × ${r}에 ${josa(q, '을/를')} 더한 값이 ${a}인지 본다.`, `${b}*${r}+${q}`],      // 몫과 나머지의 자리를 바꾸는 아이
-          [`${q} × ${r}에 ${josa(b, '을/를')} 더한 값이 ${a}인지 본다.`, `${q}*${r}+${b}`],      // 세 수를 아무렇게나 엮는 아이
-          [`${b} × ${q}에서 ${josa(r, '을/를')} 뺀 값이 ${a}인지 본다.`, `${b}*${q}-${r}`]       // 나머지를 빼는 아이
-        ]);
-        return C(`${a} ÷ ${josa(b, '을/를')} 계산하여 몫 ${q}, 나머지 ${josa(r, '을/를')} 얻었다. 계산이 맞는지 확인하는 방법으로 옳은 것은?`, list.map(([text]) => text), list.findIndex(([, text]) => text === `${b}*${q}+${r}`), {
-          explain: `나누는 수와 몫의 곱에 나머지를 더하면 나누어지는 수가 되어야 한다. ${b} × ${q} = ${b * q}, ${b * q} + ${r} = ${a}`,
-          facts: { choose: { exprs: list.map(([, text]) => text), rule: 'equals', target: a } }
-        });
-      }),
       H('h-more', '남김없이 나누려면 더 필요한 수', '남김없이 나누려면 적어도 몇 개 더(심화 23, 기본 ②54 ③34)', (d) => {
         const [a, b] = rest2(d, (x, y, q, r) => new Set([y - r, r, q + 1, y]).size === 4), q = Math.floor(a / b), r = a % b;
         const list = d.shuffle([b - r, r, q + 1, b]);                                  // 바른 답, 나머지를 답함, 몫보다 1 큰 수를 답함, 나누는 수를 답함
         return C(`구슬 ${a}개를 ${b}명에게 남김없이 똑같이 나누어 주려고 한다. 구슬은 적어도 몇 개 더 필요한가?`, list.map((v) => `${v}개`), list.indexOf(b - r), {
           explain: `${a} ÷ ${b} = ${q} … ${r}이다. ${r}개가 남으므로 ${b - r}개가 더 있으면 한 명에게 ${q + 1}개씩 남김없이 나누어 줄 수 있다.`,
           facts: { pick: { expr: `${b}-${a}%${b}`, options: list }, divide: [a, b], divideFree: true }
-        });
-      }, { standard: SOLVE }),
-      H('h-sets', '나머지는 묶음이 되지 못하는 경우', '나머지를 버리는 문장제(심화 24), 나눈 몫에 곱하기(기본 ②89)', (d) => {
-        const [a, b] = rest2(d, (x, y, q, r) => ![q, q + 1, q - 1].includes(r)), q = Math.floor(a / b), r = a % b;
-        const list = d.shuffle([q, q + 1, r, q - 1]);                                  // 바른 답, 남은 것도 한 묶음으로 셈, 나머지를 답함
-        return C(`장미 ${a}송이를 ${b}송이씩 묶어 꽃다발을 만들려고 한다. 만들 수 있는 꽃다발은 몇 개인가?`, list.map((v) => `${v}개`), list.indexOf(q), {
-          explain: `${a} ÷ ${b} = ${q} … ${r}이다. 남은 ${r}송이로는 꽃다발을 만들 수 없으므로 ${q}개이다.`, facts: { pick: { expr: `(${a}-${a}%${b})/${b}`, options: list }, divide: [a, b], divideFree: true }
         });
       }, { standard: SOLVE }),
       H('h-max', '나누어지는 수가 될 수 있는 가장 큰 수', '나누어지는 수의 가장 큰 값(심화 47), 몫이 정해졌을 때 가장 큰 나누어지는 수(기본 ③39)', (d) => {

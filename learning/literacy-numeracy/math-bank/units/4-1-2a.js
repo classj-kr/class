@@ -162,7 +162,7 @@
   const hourGap = (h) => Math.min(h, 12 - h);
 
   B.addUnit({
-    id: '4-1-2', grade: 4, semester: 1, no: 2, title: '각도', version: 1,
+    id: '4-1-2', grade: 4, semester: 1, no: 2, title: '각도', version: 2,
     groups: [
       {
         id: 'compare', title: '각의 크기 비교', standard: KIND,

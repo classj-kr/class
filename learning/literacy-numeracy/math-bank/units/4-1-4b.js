@@ -406,15 +406,6 @@
           facts: { calc: [[`180-${b}*2`, 0]], unseen: [180, 2] }
         });
       }),
-      H('hard-acute-talk', '예각이 있는 삼각형을 두고 한 말', '42, 기본 ①50 ②51 ③48', (d) => {
-        const t = d.shuffle(d.pick([[30, 40, 110], [25, 50, 105], [35, 45, 100], [20, 40, 120], [35, 55, 90], [20, 70, 90], [40, 50, 90]])), kind = kindByAngles(t), word = kind === 'right' ? '직각' : '둔각';
-        // 보기마다 어떤 아이가 고르는가: 예각의 수만 세는 아이 / 「~이 없으니 예각」으로 가르는 아이 / 한 삼각형에 각마다 이름을 붙이는 아이
-        const rows = d.shuffle([[`한 각이 ${word}이므로 ${word}삼각형이다.`, true], ['예각이 2개 있으므로 예각삼각형이다.', false], [`${kind === 'right' ? '둔각' : '직각'}이 없으므로 예각삼각형이다.`, false], [`예각도 있고 ${word}도 있으므로 예각삼각형이면서 ${word}삼각형이다.`, false]]);
-        return C(`세 각의 크기가 ${deg(t)}인 삼각형을 두고 바르게 말한 것은?`, rows.map(([text]) => text), rows.findIndex(([, ok]) => ok), {
-          explain: `예각삼각형은 세 각이 모두 예각인 삼각형이다. 이 삼각형은 ${Math.max(...t)}°인 각이 ${word}이므로 ${word}삼각형이다. 직각삼각형과 둔각삼각형에도 예각이 2개씩 있다.`,
-          facts: { truth: rows.map(([, ok]) => ok), want: true }
-        });
-      }, { standard: ANGLE }),
       H('hard-angle-claims', '삼각형에 있는 예각·직각·둔각의 수에 대한 설명', '45, 기본 ②52·53 ③46·47·48', (d) => {
         const good = d.pick(['직각삼각형에는 예각이 2개 있다.', '둔각삼각형에는 예각이 2개 있다.', '정삼각형은 예각삼각형이다.']);
         const bad = d.shuffle(['둔각이 2개인 둔각삼각형도 있다.', '예각이 1개만 있어도 예각삼각형이다.', '직각이 2개인 직각삼각형도 있다.', '둔각삼각형에는 예각이 없다.', '이등변삼각형은 모두 예각삼각형이다.']).slice(0, 3);
@@ -434,15 +425,6 @@
           figure: G.tiles(picks.map(([, points], i) => [labels[i], gridTile(points, 4)])),
           explain: picks.map(([kind], i) => `${labels[i]}는 ${KIND[kind]}`).join(', ') + '이다. 삼각형이 뒤집히거나 기울어져 있어도 세 각을 하나씩 직각과 비교하여 가린다.',
           facts: { sets: { labels, flags, options: sets } }
-        });
-      }, { standard: ANGLE }),
-      H('hard-two-names', '이름이 둘인 삼각형', '50, 기본 ①56 ③59', (d) => {
-        const [t, kind] = d.pick([[[45, 45, 90], 'right'], [[30, 30, 120], 'obtuse'], [[40, 40, 100], 'obtuse'], [[70, 70, 40], 'acute'], [[50, 50, 80], 'acute']]), word = KIND[kind];
-        // 보기마다: 이름은 하나뿐이라고 여기는 아이 / 예각의 수만 세는 아이(예각삼각형이면 둔각삼각형으로 잘못 가르는 아이) / 크기가 같은 각이 있으면 정삼각형이라고 여기는 아이
-        const rows = d.shuffle([[`이등변삼각형이면서 ${word}이다.`, true], [`${word}이므로 이등변삼각형이 아니다.`, false], [kind === 'acute' ? '두 각의 크기가 같으므로 둔각삼각형이다.' : '두 각이 예각이므로 예각삼각형이다.', false], ['두 각의 크기가 같으므로 정삼각형이다.', false]]);
-        return C(`세 각의 크기가 ${deg(d.shuffle(t))}인 삼각형에 대한 설명으로 옳은 것은?`, rows.map(([text]) => text), rows.findIndex(([, ok]) => ok), {
-          explain: `두 각의 크기가 같으므로 이등변삼각형이고, ${{ acute: '세 각이 모두 예각이므로 예각삼각형', right: '한 각이 직각이므로 직각삼각형', obtuse: '한 각이 둔각이므로 둔각삼각형' }[kind]}이다. 한 삼각형을 변의 길이로 본 이름과 각의 크기로 본 이름으로 함께 부를 수 있다.`,
-          facts: { truth: rows.map(([, ok]) => ok), want: true }
         });
       }, { standard: ANGLE }),
       H('hard-relations', '삼각형 사이의 관계', '4, 기본 ②1·38·70 ③60', (d) => {

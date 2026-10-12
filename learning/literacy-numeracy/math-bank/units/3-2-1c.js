@@ -568,21 +568,6 @@
 
   // ── 실력 문제 ──────────────────────────────────────────────────
   B.addTypes('3-2-1', 'hard', [
-    H('h-carry-pick', '올림이 있는 곱을 바르게 계산한 값', '심16', (d) => {
-      // 219×3 = 657
-      const [h, t, o, b] = d.until(() => [d.int(1, 4), d.int(1, 4), d.int(3, 9), d.int(2, 9)], ([x, y, z, k]) => x * k <= 8 && z * k >= 10 && y * k + Math.floor((z * k) / 10) <= 9 && new Set([x, y, z]).size === 3);
-      const a = h * 100 + t * 10 + o, up = Math.floor((o * b) / 10);
-      const list = d.shuffle([
-        a * b,
-        Number(`${h * b}${t * b}${o * b}`),                              // 자리마다 구한 곱을 그대로 이어 쓰는 아이
-        h * b * 100 + t * b * 10 + ((o * b) % 10),                       // 올림한 수를 더하지 않는 아이
-        (h * b + up) * 100 + t * b * 10 + ((o * b) % 10)                 // 올림한 수를 십의 자리가 아니라 백의 자리에 더하는 아이
-      ]);
-      return C(`${a} × ${josa(b, '을/를')} 바르게 계산한 값은?`, list.map(String), list.indexOf(a * b), {
-        explain: `일의 자리 계산 ${times(o, b)}에서 ${up * 10}을 올림하여 십의 자리 계산에 더한다. ${times(a, b)}`,
-        facts: { choose: { exprs: list.map(String), rule: 'equals', target: a * b }, mulAny: [a, b], carry3: [a, b] }
-      });
-    }),
     H('h-fits-two', '양쪽이 곱인 식에서 □ 안에 들어갈 수 있는 수', '①49 ②58 심49', (d) => {
       // 3×67 > □×52 → 1, 2, 3
       const [x, y, c, k] = d.until(() => {

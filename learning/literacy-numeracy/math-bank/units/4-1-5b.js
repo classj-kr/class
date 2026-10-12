@@ -323,16 +323,6 @@
   B.addGroup('4-1-5', {
     id: 'hard', title: '실력 문제', standard: READ,
     types: [
-      H('h-misread', '눈금 한 칸의 크기를 따져 읽기', '8, 기본 ①18 ②9', (d) => {
-        // 틀린 보기: 큰 눈금 위의 칸을 1씩 센 것(한 칸을 언제나 1로 읽는 아이), 막대의 칸 수를 그대로 읽은 것, 바로 아래 큰 눈금의 수만 읽은 것
-        const [step, major, key] = d.pick([[2, 5, 'tree'], [4, 5, 'can'], [5, 2, 'can']]), c = pick(d, key, 4);
-        const cells = nums(d, 4, 2, major === 5 ? 14 : 11, 1, (x) => x.some((y) => y > major && y % major !== 0)), k = d.until(() => d.int(0, 3), (i) => cells[i] > major && cells[i] % major !== 0), v = cells.map((x) => x * step);
-        const base = Math.floor(cells[k] / major) * major * step, list = d.shuffle([v[k], base + (cells[k] % major), cells[k], base]);
-        return C(`${lead(c)} ${josa(c.one(c.names[k]), '을/를')} 바르게 읽은 것은?`, list.map((x) => U(c, x)), list.indexOf(v[k]), {
-          figure: chart(c, v, { step, major }), explain: `세로 눈금 ${major}칸이 ${U(c, major * step)}이므로 한 칸은 ${U(c, step)}이다. ${c.tag(c.names[k])}의 막대는 ${cells[k]}칸이므로 ${step} × ${cells[k]} = ${v[k]}(${c.unit})이다.`,
-          facts: { pick: { expr: `${step}*${cells[k]}`, options: list }, unseen: [cells[k]] }
-        });
-      }),
       H('h-cells-talk', '막대의 칸 수와 나타내는 수', '68, 기본 ①35 ②70', (d) => {
         // 잘못 말한 사람: 막대의 칸 수의 차를 그대로 수의 차로 읽는다(한 칸을 1로 여기는 아이)
         const step = d.pick([2, 5]), c = pick(d, d.pick(['sport', 'fruit']), 4), cells = nums(d, 4, 2, step === 2 ? 14 : 9), v = cells.map((x) => x * step), who = d.shuffle(NAMES).slice(0, 3);
@@ -357,16 +347,6 @@
           figure: cap('가 반', chart(c, vs[0], { step: steps[0], top: 15 * steps[0] })) + cap('나 반', chart(c, vs[1], { step: steps[1], top: 15 * steps[1] })),
           explain: `두 그래프는 세로 눈금 한 칸의 크기가 다르다. 가 반은 한 칸이 ${steps[0]}명이므로 ${vs[0][k]}명, 나 반은 한 칸이 ${steps[1]}명이므로 ${vs[1][k]}명이다. 막대의 길이가 아니라 나타내는 수를 비교한다.`,
           facts: { choose: { exprs: [String(vs[0][k]), String(vs[1][k])], rule: 'compare' } }
-        });
-      }),
-      H('h-cmp-who', '표와 막대그래프의 쓰임', '72·73, 기본 ①14 ②33', (d) => {
-        // 잘못 말한 사람의 생각: 막대그래프에서는 수를 알 수 없다 / 많고 적음은 표에서 더 잘 보인다 / 전체 수는 가장 긴 막대가 알려 준다
-        const c = pick(d, d.pick(['sport', 'fruit']), 4), v = nums(d, 4, 3, 12), who = d.shuffle(NAMES).slice(0, 3);
-        const bad = d.pick([`막대그래프에는 수가 적혀 있지 않으니까 ${c.kind}별 학생 수는 표에서만 알 수 있어.`, `어떤 ${josa(c.kind, '을/를')} 좋아하는 학생이 많은지 한눈에 비교하기에는 막대그래프보다 표가 편리해.`, '조사한 학생이 모두 몇 명인지는 막대그래프에서 가장 긴 막대를 보면 바로 알 수 있어.']);
-        const says = d.shuffle([['조사한 학생이 모두 몇 명인지는 표의 합계를 보면 바로 알 수 있어.', true], [`가장 많은 학생이 좋아하는 ${josa(c.kind, '은/는')} 막대그래프에서 가장 긴 막대를 찾으면 돼.`, true], [bad, false]]);
-        return C(`${lead(c, '표와 막대그래프')} 표와 막대그래프를 보고 잘못 말한 사람은?`, who, says.findIndex((s) => !s[1]), {
-          figure: tab(c, v, [['합계', sum(v)]]) + chart(c, v) + lines(says.map((s, at) => `${who[at]}: 「${s[0]}」`)),
-          explain: '표는 조사한 수와 합계를 바로 알 수 있고, 막대그래프는 수의 많고 적음을 한눈에 비교할 수 있다. 막대그래프에서도 막대 끝의 눈금을 읽으면 수를 알 수 있다.', facts: { truth: says.map((s) => s[1]), want: false }
         });
       }),
       H('h-miss-half', '「2배」에서 기준이 되는 쪽 가리기', '24·33, 기본 ②59', (d) => {

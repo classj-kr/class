@@ -916,7 +916,7 @@
   ];
 
   B.addUnit({
-    id: '4-2-3', grade: 4, semester: 2, no: 3, title: '소수의 덧셈과 뺄셈', version: 1,
+    id: '4-2-3', grade: 4, semester: 2, no: 3, title: '소수의 덧셈과 뺄셈', version: 2,
     groups: [
       { id: 'read', title: '소수 두 자리 수와 소수 세 자리 수', standard: NUM, types: READ },
       { id: 'place', title: '소수의 자릿값', standard: NUM, types: PLACE },

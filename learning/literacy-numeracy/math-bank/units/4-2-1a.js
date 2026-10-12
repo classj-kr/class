@@ -136,7 +136,7 @@
   const circlesOf = (w, n, den, scale) => Array.from({ length: w + 1 }, (_, i) => pieces('circle', den, { shaded: i < w ? den : n, scale })).join(' ');
 
   B.addUnit({
-    id: '4-2-1', grade: 4, semester: 2, no: 1, title: '분수의 덧셈과 뺄셈', version: 1,
+    id: '4-2-1', grade: 4, semester: 2, no: 1, title: '분수의 덧셈과 뺄셈', version: 2,
     groups: [
       {
         id: 'padd', title: '진분수의 덧셈', standard: STD,

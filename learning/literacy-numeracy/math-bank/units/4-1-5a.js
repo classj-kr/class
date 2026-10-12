@@ -91,7 +91,7 @@
   }
 
   B.addUnit({
-    id: '4-1-5', grade: 4, semester: 1, no: 5, title: '막대그래프', version: 1,
+    id: '4-1-5', grade: 4, semester: 1, no: 5, title: '막대그래프', version: 2,
     groups: [
       {
         id: 'know', title: '막대그래프 알아보기', standard: READ,

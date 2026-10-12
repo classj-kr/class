@@ -684,15 +684,6 @@
         facts: { truth: rows.map((row) => row.ok), want: true }
       });
     }),
-    H('h-borrow', '받아내림이 있는 뺄셈에서 생기는 잘못', '심31', (d) => {
-      const [a, b] = d.until(() => subPair(d, true), ([x, y]) => lo(y) - lo(x) !== 500), r = a - b, gap = lo(b) - lo(a), up = hi(a) - hi(b);
-      // 바른 값, 받아내림한 1 L를 빼지 않은 값, mL끼리 큰 수에서 작은 수를 뺀 값, 받아내림은 하고 mL는 큰 수에서 작은 수를 뺀 값
-      const list = d.shuffle([r, r + 1000, up * 1000 + gap, (up - 1) * 1000 + gap]);
-      return C('다음을 바르게 계산한 것은?', list.map(vol), list.indexOf(r), {
-        figure: expr(vol(a), '-', vol(b)), explain: `${lo(a)} mL에서 ${lo(b)} mL를 뺄 수 없으므로 1 L를 1000 mL로 받아내림한다. ${1000 + lo(a)} - ${lo(b)} = ${lo(r)}(mL), ${hi(a) - 1} - ${hi(b)} = ${hi(r)}(L)이므로 ${vol(r)}이다.`,
-        facts: { pick: { expr: `${X(a)}-${X(b)}`, options: list }, unseen: [1000] }
-      });
-    }, { standard: VOL_CALC }),
     H('h-less-sum', '더 적은 쪽을 구해 두 들이의 합 구하기', '심84 ①55 ②110 덧', (d) => {
       const [one, other] = d.shuffle(NAMES).slice(0, 2);
       const [a, less] = d.until(() => [d.int(2, 4) * 1000 + d.int(2, 12) * 50, d.int(0, 1) * 1000 + d.int(13, 19) * 50], ([x, y]) => lo(x) < lo(y) && x - y >= 500 && lo(x + x - y) !== 0);
