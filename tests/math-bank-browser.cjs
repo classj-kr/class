@@ -20,7 +20,8 @@ async function shot(page, name) {
   assert.equal(result.status, 0, 'WebP 저장 실패: ' + String(result.stderr));
 }
 const URL_PATH = '/learning/literacy-numeracy/math-bank/';
-const UNIT = '3-1-1';
+// 화면이 처음 여는 단원(은행의 첫 단원).
+const UNIT = '1-1-1';
 
 (async () => {
   const h = await harness();
@@ -183,7 +184,7 @@ const UNIT = '3-1-1';
             await view.page.locator('.mb-item').first().waitFor();
             const report = await view.page.evaluate(() => {
               const wide = [...document.querySelectorAll('.mb-item, .mb-item *')].filter((el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 1);
-              const flat = [...document.querySelectorAll('.mb-figure svg, .mb-figure table, .mb-column, .mb-chain')].filter((el) => el.getBoundingClientRect().height < 20 || el.getBoundingClientRect().width < 60);
+              const flat = [...document.querySelectorAll('.mb-figure svg:not(.mb-inline), .mb-figure table, .mb-column, .mb-chain')].filter((el) => el.getBoundingClientRect().height < 20 || el.getBoundingClientRect().width < 60);
               return { page: document.documentElement.scrollWidth - document.documentElement.clientWidth, wide: wide.slice(0, 3).map((el) => (el.className.baseVal || el.className) + ':' + Math.round(el.getBoundingClientRect().right)), flat: flat.map((el) => el.className.baseVal || el.className) };
             });
             const tag = `${unitId} ${groups[gi].id} ${groups[gi].rounds[li].level} ${groups[gi].rounds[li].no}회 (${name})`;
