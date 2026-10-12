@@ -1,6 +1,7 @@
 const { chromium } = require('../../../../game-hub-server/node_modules/playwright');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const sharp = require('sharp');
 const output = path.resolve('tmp/browser-audit');
 const baseUrl = process.env.ARITHMETIC_AUDIT_URL || 'http://localhost:6180';
 (async () => {
@@ -47,7 +48,7 @@ const baseUrl = process.env.ARITHMETIC_AUDIT_URL || 'http://localhost:6180';
         const count = initial.counter?.match(/(\d+)\s*\/\s*(\d+)/);
         record.total = count ? Number(count[2]) : null;
         if (count && initial.rows && record.total !== initial.rows && record.total !== initial.inputs && !worksheet.route.endsWith('prime-numbers')) record.issues.push('counter/row count differs');
-        await page.screenshot({path:path.join(output, `${String(index).padStart(3,'0')}-desktop.png`), fullPage:true});
+        await sharp(await page.screenshot({fullPage:true})).webp({lossless:true}).toFile(path.join(output, `${String(index).padStart(3,'0')}-desktop.webp`));
         const grade = page.getByRole('button',{name:'전체 채점',exact:true});
         if (await grade.count()) {
           await grade.first().click();
@@ -59,6 +60,11 @@ const baseUrl = process.env.ARITHMETIC_AUDIT_URL || 'http://localhost:6180';
           await panelButton.click();
           const items = page.locator('.trig-derivative-answer-panel .trig-derivative-answer-item');
           if (await items.count()) {
+            const unstyledChoices = await items.evaluateAll(items => items.flatMap(item => [...item.querySelectorAll('.trig-derivative-choices button')].filter(button => {
+              const style = getComputedStyle(button);
+              return style.display !== 'grid' || parseFloat(style.borderTopWidth) < 1 || button.getBoundingClientRect().height < 44;
+            }).map(button => button.textContent.trim().slice(0, 40))));
+            if (unstyledChoices.length) record.issues.push('unstyled answer choices');
             if (!(await items.first().locator('.is-correct-answer').count())) {
               for (let i=0;i<await items.count();i++) await items.nth(i).locator('.trig-derivative-choices button').first().click();
               await gradePanel(page);
@@ -109,7 +115,7 @@ const baseUrl = process.env.ARITHMETIC_AUDIT_URL || 'http://localhost:6180';
         await page.waitForTimeout(50);
         record.mobileOverflow = await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
         if(record.mobileOverflow>2) record.issues.push('mobile horizontal overflow');
-        if(record.issues.length || index%12===0) await page.screenshot({path:path.join(output,`${String(index).padStart(3,'0')}-mobile.png`),fullPage:true});
+        if(record.issues.length || index%12===0) await sharp(await page.screenshot({fullPage:true})).webp({lossless:true}).toFile(path.join(output,`${String(index).padStart(3,'0')}-mobile.webp`));
       } catch(error) {record.issues.push('audit error');record.error=error.message;}
       finally {await page.close();}
       if(record.browserErrors.length) record.issues.push('browser error');
