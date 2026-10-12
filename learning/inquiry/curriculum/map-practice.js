@@ -1,7 +1,7 @@
 (function(){
     const banks={};
     function add(kind,level,rows){
-        Object.entries(rows).forEach(([lesson,r])=>{banks[kind+':'+lesson+':'+level]={id:`map-${kind}-${lesson}-${level}-01`,revision:1,lesson,level,difficulty:level==='high'?'advanced':'basic',prompt:r[0],options:r[1],answer:r[2],explanation:r[3]};});
+        Object.entries(rows).forEach(([lesson,r])=>{banks[kind+':'+lesson+':'+level]={id:`map-${kind}-${lesson}-${level}-01`,revision:1,lesson,level,difficulty:level==='high'?'advanced':'basic',prompt:r[0],options:r[1],answer:r[2],explanation:r[3],...(r[4]||{})};});
     }
     add('world','elementary',{
         coordinates:['북위 35°·동경 130°인 곳의 위치는?',['적도 북쪽·본초 자오선 동쪽','적도 북쪽·본초 자오선 서쪽','적도 남쪽·본초 자오선 동쪽','적도 남쪽·본초 자오선 서쪽'],0,'북위는 적도 북쪽, 동경은 본초 자오선 동쪽의 위치를 나타냅니다.'],
@@ -31,7 +31,7 @@
         age:['전체 인구가 같은 두 지역의 65세 이상 인구가 A는 100명, B는 300명입니다. 고령 인구 비중이 큰 곳은?',['A','B','같다','나이 자료로 비교할 수 없다'],1,'전체 인구가 같다면 고령 인구 수가 많은 B의 비중이 큽니다.'],
         city:['도심으로 아침에 출근하고 저녁에 집으로 돌아가는 사람이 많습니다. 도심의 인구는 언제 많아질 가능성이 클까요?',['업무가 이루어지는 낮','모든 회사가 문을 닫은 밤','출근 전 새벽만','시간과 관계없이 반드시 같다'],0,'도심에 업무·상업 기능이 모여 있으면 낮에 통근자가 들어와 활동하는 인구가 늘어납니다.'],
         village:['바다 가까이에서 물고기를 잡는 일이 활발한 촌락은?',['어촌','산촌','도심','공업 도시'],0,'어촌은 바다와 연결되어 어업 활동이 활발합니다.'],
-        'transport-mode':['급하지 않은 대량의 철광석을 먼 나라로 운반할 때 보통 유리한 수단은?',['여객 택시','항공기','화물선','도시 지하철'],2,'배는 많은 양의 무거운 화물을 먼 거리까지 비교적 낮은 비용으로 옮기는 데 유리합니다.'],
+        'transport-mode':["지도의 A·B·C 중 도로만 이용해 서로 오갈 수 있는 두 곳은?", ["A·B", "A·C", "B·C"], 0, "A 서울과 B 부산은 육지의 도로망으로 연결됩니다. C 제주도는 본토와 바다로 떨어져 있어 배나 비행기로 바다를 건너야 합니다.", {"revision": 2, "marks": [{"label": "A", "lat": 37.55, "lng": 126.97}, {"label": "B", "lat": 35.12, "lng": 129.04}, {"label": "C", "lat": 33.51, "lng": 126.49}], "labels": "admin", "hint": "육지와 바다의 위치를 보고 세 지점을 잇는 길을 생각하세요."}],
         regions:['넓은 평야에서 벼농사가 이루어지고 어항에서는 어업이 이루어집니다. 이 비교로 알 수 있는 것은?',['자연환경이 지역의 산업과 생활에 영향을 준다','모든 지역은 같은 산업만 한다','바다가 없는 곳에서만 어업을 한다','평야에서는 농사를 지을 수 없다'],0,'지형·물·기후 등 지역의 자연환경은 산업과 주민 생활에 영향을 줍니다.'],
         division:['한 시에 살면서 이웃 시의 학교에 매일 다니는 사례가 보여 주는 것은?',['생활 범위가 행정구역 경계를 넘을 수 있다','행정구역 경계가 없어졌다','학교가 있는 시에만 사람이 산다','두 시가 반드시 하나의 시로 합쳐졌다'],0,'통학·통근·소비로 연결되는 생활권과 행정구역은 항상 일치하지 않습니다.']
     });
@@ -58,6 +58,6 @@
         const extra=banks[kind+':'+lesson.id+':'+level];
         const base=items.filter(q=>kind==='world'?q.lesson===lesson.id:lesson.questionIds.includes(q.id));
         const selected=level==='elementary'?(kind==='world'?base.filter(q=>q.level==='elementary'||primaryWorldIds[lesson.id]?.includes(q.id)):base.filter(q=>primaryKoreaIds[lesson.id]?.includes(q.id))):kind==='korea'&&level==='middle'?base.filter(q=>q.difficulty==='basic'):base;
-        return [...(extra?[{...extra,topic:lesson.topic,hint:'지도와 문제의 조건을 함께 살펴보세요.'}]:[]),...selected];
+        return [...(extra?[{hint:'지도와 문제의 조건을 함께 살펴보세요.',...extra,topic:lesson.topic}]:[]),...selected];
     }};
 })();

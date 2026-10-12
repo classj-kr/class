@@ -1406,13 +1406,38 @@
       focus: { lat: 35.10, lng: 129.04, zoom: 8, label: "부산항" }
     },
     {
-      id: "transport-03", topic: "transport", difficulty: "basic",
-      prompt: "밀물과 썰물의 높이 차가 커서 배가 늘 드나들 수 있도록 갑문을 만든 항구는?",
-      options: ["인천항", "부산항", "울산항", "광양항", "포항항"],
-      answer: 0,
-      hint: "밀물과 썰물의 차가 큰 서해안의 항구입니다.",
-      explanation: "인천항은 서해안에 있어 밀물과 썰물의 높이 차가 매우 큽니다. 그래서 갑문으로 물을 가둔 선거(독)를 만들어 물이 빠져도 배가 드나들게 했습니다. 부산·울산·포항은 동해안과 남동 해안, 광양은 남해안의 항구로 조차가 작습니다.",
-      focus: { lat: 37.46, lng: 126.61, zoom: 10, label: "인천항 갑문" }
+      "id": "transport-03",
+      "revision": 2,
+      "topic": "transport",
+      "difficulty": "basic",
+      "prompt": "지도에서 서해안의 큰 조차에 대응하여 내항에 갑문을 설치한 항만은?",
+      "marks": [
+        {
+          "label": "A",
+          "lat": 37.46,
+          "lng": 126.61
+        },
+        {
+          "label": "B",
+          "lat": 35.1,
+          "lng": 129.04
+        },
+        {
+          "label": "C",
+          "lat": 34.9,
+          "lng": 127.72
+        }
+      ],
+      "labels": false,
+      "options": [
+        "A",
+        "B",
+        "C",
+        "A·B·C 모두"
+      ],
+      "answer": 0,
+      "hint": "서해안의 항만을 찾으세요.",
+      "explanation": "A는 인천항, B는 부산항, C는 광양항입니다. 인천항 내항은 갑문으로 안쪽 수위를 조절합니다. 서해안의 큰 조차와 항만 시설을 연결해 이해합니다. 갑문이 있어도 선박의 출입은 운영 조건과 수심 등의 영향을 받습니다."
     },
     {
       id: "transport-04", topic: "transport", difficulty: "advanced",
@@ -1442,13 +1467,33 @@
       focus: { lat: 37.46, lng: 126.44, zoom: 10, label: "인천 국제공항" }
     },
     {
-      id: "transport-06", topic: "transport", difficulty: "basic",
-      prompt: "반도체처럼 가볍고 값비싼 제품을 외국으로 빨리 보낼 때 주로 이용하는 교통수단은?",
-      options: ["항공", "해운", "철도", "도로", "파이프라인"],
-      answer: 0,
-      hint: "운임은 가장 비싸지만 가장 빠릅니다.",
-      explanation: "항공은 운임이 비싸지만 가장 빨라서 반도체처럼 가볍고 값비싼 제품이나 신선한 화물을 먼 나라로 보낼 때 씁니다. 해운은 느리지만 싸서 무겁고 부피가 큰 화물을, 파이프라인은 석유·가스 같은 액체·기체를 나릅니다. 철도와 도로는 주로 나라 안에서 씁니다.",
-      focus: { lat: 37.46, lng: 126.44, zoom: 9, label: "인천 국제공항(항공 화물)" }
+      "id": "transport-06",
+      "revision": 2,
+      "topic": "transport",
+      "difficulty": "basic",
+      "prompt": "지도 A 서울에서 B 제주도로 갈 때 바다를 건너는 구간에서 이용할 수 있는 교통수단끼리 묶은 것은?",
+      "marks": [
+        {
+          "label": "A",
+          "lat": 37.55,
+          "lng": 126.97
+        },
+        {
+          "label": "B",
+          "lat": 33.51,
+          "lng": 126.49
+        }
+      ],
+      "labels": "admin",
+      "options": [
+        "배 · 비행기",
+        "버스 · 기차",
+        "기차 · 배",
+        "버스 · 비행기"
+      ],
+      "answer": 0,
+      "hint": "제주도와 본토 사이에 어떤 지형이 있는지 보세요.",
+      "explanation": "제주도는 본토와 바다로 떨어진 섬입니다. 바다를 건너는 구간은 배나 비행기로 이동합니다. 버스나 기차는 서울에서 항구·공항까지 이동할 때 이용할 수 있지만, 그 수단만으로 바다를 건널 수는 없습니다."
     },
     {
       id: "region-admin-01", topic: "region", difficulty: "basic",

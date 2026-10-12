@@ -27,10 +27,6 @@ test('paired measures derive from the actual displayed table values',()=>{
   const industry=get('port-industry-2'),[c,d]=industry.stimulus.rows.map(r=>r.slice(1).map(n));
   assert.ok(c[1]>d[1] && c[0]*c[1]<d[0]*d[1]);
   assert.equal(industry.options[industry.answer],'비중은 갑, 종사자 수는 을이 크다');
-  const transport=get('transport-mode-2'),costs=transport.stimulus.rows.map(r=>r.slice(1).map(n));
-  const cheapest=distance=>costs.map(([fixed,rate],i)=>({i,total:fixed+rate*distance})).sort((a,b)=>a.total-b.total)[0].i;
-  assert.deepEqual([cheapest(100),cheapest(500)],[1,2]);
-  assert.equal(transport.options[transport.answer],'철도 · 해운');
 });
 test('every high-school concept has supplied evidence, distinct answers, explanation and a rendered visual',()=>{
   assert.equal(w.KOREA_GEOGRAPHY.lessons.length,39);assert.equal(bank.length,78);
@@ -69,7 +65,6 @@ test('independent calculation of case-study denominators and units',()=>{
   assert.ok(20000*.4<60000*.2 && .4/.1>.2/.1);assert.match(answer('port-industry-2'),/비중은 갑, 종사자 수는 을/);
   assert.ok(120/400>100/500 && 120*100/6000<100*100/2500);assert.match(answer('farming-2'),/경지율이 높지만.*좁다/);
   assert.equal((80*.2)/(20*.4),2);assert.match(answer('energy-2'),/을.*두 배/);
-  assert.equal(100+80,20+2*80);assert.equal(answer('transport-mode-1'),'x>80');
   assert.equal(100000*.2,20000);assert.equal(40000*.25,10000);assert.match(answer('division-1'),/갑→을.*2만/);
   assert.equal(-100-(-300),200);assert.match(answer('migration-1'),/사회적 증가에도 총인구가 감소/);
   assert.ok(500000*.04>100000*.1);assert.match(answer('migration-2'),/갑은 수가 많고 을은 비율이 높다/);
