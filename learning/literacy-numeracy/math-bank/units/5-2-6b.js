@@ -107,10 +107,12 @@
   const INK = { 빨강: '#f87171', 파랑: '#60a5fa', 노랑: '#fde047', 초록: '#4ade80', 보라: '#c4b5fd', 주황: '#fdba74', 흰색: '#ffffff', 검정: '#374151' };
   const HUE = { 빨강: '빨간색', 파랑: '파란색', 노랑: '노란색', 초록: '초록색', 보라: '보라색', 주황: '주황색', 흰색: '흰색', 검정: '검은색' };
   // 회전판. parts: [[색(또는 칸에 적을 글), 각도], …] — 12시에서 시계 방향으로 놓는다. 칸은 각도대로 그리고 색 이름을 칸 안에 적는다.
-  // o: { tag: 판의 이름, size: 그림의 크기, said: 그림 설명 }. 색이 아닌 글(수·기호)을 넘기면 칸을 칠하지 않고 그 글만 적는다.
+  // o: { tag: 판의 이름, size: 그림의 크기, said: 그림 설명, ticks: 둘레에 같은 간격으로 긋는 눈금의 수, start: 첫 칸을 놓기 시작하는 자리(12시에서 시계 방향으로 몇 도) }.
+  // 색이 아닌 글(수·기호)을 넘기면 칸을 칠하지 않고 그 글만 적는다.
   function spinner(parts, o) {
-    const opt = o || {}, size = opt.size || 112, R = size / 2 - 5, cx = size / 2, cy = size / 2, at = (deg, r) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
-    let a = -90, wedges = '', words = '';
+    const opt = o || {}, size = opt.size || 112, R = size / 2 - (opt.ticks ? 9 : 5), cx = size / 2, cy = size / 2, at = (deg, r) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+    let a = -90 + (opt.start || 0), wedges = '', words = '', marks = '';
+    for (let k = 0; k < (opt.ticks || 0); k += 1) { const [x1, y1] = at(-90 + k * 360 / opt.ticks, R + 1.5), [x2, y2] = at(-90 + k * 360 / opt.ticks, R + 7.5); marks += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" style="stroke:#1f2937;stroke-width:1.4"/>`; }
     parts.forEach(([key, deg]) => {
       const fill = INK[key] || '#ffffff', whole = deg >= 360, [tx, ty] = whole ? [cx, cy + R * 0.5] : at(a + deg / 2, R * (deg >= 180 ? 0.5 : 0.67));
       if (whole) wedges += `<circle cx="${cx}" cy="${cy}" r="${R}" style="fill:${fill};stroke:#1f2937;stroke-width:1.3"/>`;
@@ -125,7 +127,7 @@
       : even ? `똑같이 ${parts.length}칸으로 나누어 ${keys.map((k) => `${HUE[k]} ${parts.filter((p) => p[0] === k).length}칸`).join(', ')}`
         : `크기가 다른 ${parts.length}칸으로 나누어 ${keys.map((k) => `${HUE[k]} ${parts.filter((p) => p[0] === k).length}칸(모두 ${sum(parts.filter((p) => p[0] === k).map((p) => p[1]))}도)`).join(', ')}`);
     const label = opt.tag ? `<text class="mb-axis-label" style="font-size:${/[가-힣]/.test(opt.tag) ? 12.5 : 15}px" x="${cx}" y="${size + 12}" text-anchor="middle">${opt.tag}</text>` : '';
-    return `<svg class="mb-geo" viewBox="0 0 ${size} ${size + (opt.tag ? 17 : 0)}" width="${size}" role="img" aria-label="회전판${opt.tag ? ' ' + opt.tag : ''}: ${said}">${wedges}${words}${needle}${label}</svg>`;
+    return `<svg class="mb-geo" viewBox="0 0 ${size} ${size + (opt.tag ? 17 : 0)}" width="${size}" role="img" aria-label="회전판${opt.tag ? ' ' + opt.tag : ''}: ${said}${opt.ticks ? `. 둘레에 같은 간격으로 눈금 ${opt.ticks}개` : ''}">${wedges}${marks}${words}${needle}${label}</svg>`;
   }
   // 똑같이 n칸으로 나눈 회전판의 칸: counts [[색, 칸 수], …]를 섞어 놓는다.
   const wheel = (d, n, counts) => d.shuffle(counts.reduce((list, [key, k]) => list.concat(Array.from({ length: k }, () => key)), [])).map((key) => [key, 360 / n]);
@@ -832,14 +834,20 @@
           facts: { calc: [[`(${hour}*60+${minute}+${per}*3-${a}-${b}-(${hour}*60+${minute}+${per}*3-${a}-${b})%60)/60`, 0], [`(${hour}*60+${minute}+${per}*3-${a}-${b})%60`, 1]], unseen: [60] }
         });
       }),
-      H('h-spin-area', '칸 수가 아니라 넓이로 따지는 회전판', '36·53의 변형, 기본 ②45 ③51', (d) => {
-        // ① 장치: 칸의 크기가 다른 회전판. 칸 수가 반(4칸 가운데 2칸)인 판은 빨간색이 반이 아니고, 칸 수는 3칸 가운데 1칸이지만 빨간색이 판의 반인 판이 답이다.
-        // 보기: 3칸 가운데 1칸이지만 넓이가 반(정답) / 4칸 가운데 2칸이지만 좁은 두 칸(칸 수만 센 아이) / 똑같은 4칸 가운데 1칸 / 2칸 가운데 1칸이지만 좁은 칸(칸 수만 센 아이)
-        const made = d.shuffle([{ parts: [['빨강', 180], ['파랑', 90], ['노랑', 90]], red: 180 }, { parts: [['빨강', 45], ['파랑', 135], ['빨강', 45], ['파랑', 135]], red: 90 }, { parts: d.shuffle(['빨강', '파랑', '노랑', '파랑']).map((k) => [k, 90]), red: 90 }, { parts: [['빨강', 120], ['파랑', 240]], red: 120 }]), right = made.findIndex((m) => m.red === 180);
-        return C('회전판을 돌릴 때, 화살이 빨간색에 멈출 가능성이 「반반이다」인 회전판은?', TAGS.slice(0, 4), right, {
-          figure: grid(made.map((m, i) => spinner(m.parts, { tag: TAGS[i] }))),
-          explain: `가능성은 칸의 수가 아니라 칸의 넓이로 따진다. 빨간색이 회전판의 꼭 반을 차지하는 것은 ${TAGS[right]}뿐이다. 칸의 수가 4칸 가운데 2칸이거나 2칸 가운데 1칸이어도 빨간색 칸이 좁으면 빨간색은 회전판의 반이 되지 않는다.`,
-          facts: { claimed: made.map((m) => [`${m.red}*2`, 360]), claimedWant: true }
+      H('h-spin-area', '흩어진 칸을 모아 넓이로 따지는 회전판', '36·53의 변형, 기본 ②45 ③51', (d) => {
+        // ① 장치: 칸의 크기가 서로 다르고 빨간색 칸이 흩어져 있다. 네 판 모두 빨간색 칸의 수는 전체 칸 수의 반이라 칸 수로는 가릴 수 없고,
+        // 흩어진 빨간색 칸을 모아 붙여 판의 꼭 반이 되는지 따져야 한다(한 덩어리로 반을 칠한 판은 눈으로 바로 보여서 쓰지 않는다 — 2026-10-12 사용자 지적).
+        // 칸은 판을 똑같이 8칸으로 나눈 것을 몇 칸씩 이어 붙인 크기이고, 둘레의 눈금 8개로 잴 수 있다. 수는 차례로 놓은 칸의 크기(8칸 가운데 몇 칸), 홀수째 칸이 빨간색이다.
+        const HALVES = [[2, 1, 1, 2, 1, 1], [3, 2, 1, 2], [2, 3, 2, 1], [1, 2, 2, 1, 1, 1]], LESS = [[1, 3, 2, 2], [1, 2, 1, 1, 1, 2], [2, 2, 1, 3]], MORE = [[3, 1, 2, 2], [2, 1, 2, 1, 1, 1], [3, 2, 2, 1]];
+        const less = d.shuffle(LESS), more = d.shuffle(MORE), others = d.shuffle(['파랑', '노랑', '초록']).slice(0, 2);
+        const made = d.shuffle([d.pick(HALVES), less[0], more[0], d.pick([less[1], more[1]])]).map((sizes) => {
+          const cells = sizes.map((k, i) => [i % 2 === 0 ? '빨강' : others[((i - 1) / 2) % 2], k * 45]), turn = d.int(0, cells.length - 1), turned = cells.slice(turn).concat(cells.slice(0, turn));
+          return { parts: d.bool() ? turned : turned.reverse(), start: d.int(0, 7) * 45, red: sum(sizes.filter((_, i) => i % 2 === 0)) };
+        }), right = made.findIndex((m) => m.red === 4);
+        return C('둘레에 같은 간격으로 눈금 8개를 표시한 회전판이다. 회전판을 돌릴 때, 화살이 빨간색에 멈출 가능성이 「반반이다」인 회전판은?', TAGS.slice(0, 4), right, {
+          figure: grid(made.map((m, i) => spinner(m.parts, { tag: TAGS[i], ticks: 8, start: m.start }))),
+          explain: `가능성은 칸의 수가 아니라 칸의 넓이로 따진다. 눈금과 눈금 사이를 한 칸으로 보면 회전판은 똑같이 8칸이고, 흩어진 빨간색 칸을 모으면 ${made.map((m, i) => `${TAGS[i]} ${m.red}칸`).join(', ')}만큼이다. 빨간색이 8칸의 꼭 반인 4칸만큼인 것은 ${TAGS[right]}뿐이다. 네 회전판 모두 빨간색 칸의 수는 전체 칸 수의 반이지만, 칸의 크기가 서로 달라서 칸의 수로는 알 수 없다.`,
+          facts: { claimed: made.map((m) => [`${m.red}*2`, 8]), claimedWant: true }
         });
       }, { standard: SAY }),
       H('h-coin-streak', '앞의 결과와 상관없는 가능성', '59의 변형, 기본 ②71의 변형', (d) => {

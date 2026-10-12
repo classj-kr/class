@@ -120,7 +120,7 @@
   B.kit.avg526 = { AVG, SAY, NUM, JUDGE, sum, mean, top, low, distinct, plus, E, worked, who, data, DAYS5, DAYS7, TAGS, blank, tab, rowsTab, cap, truthOf, dotChart, barsWith };
 
   B.addUnit({
-    id: '5-2-6', grade: 5, semester: 2, no: 6, title: '평균과 가능성', version: 1,
+    id: '5-2-6', grade: 5, semester: 2, no: 6, title: '평균과 가능성', version: 2,
     groups: [
       {
         id: 'mean', title: '평균의 뜻', standard: AVG,
