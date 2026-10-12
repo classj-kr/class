@@ -10,7 +10,7 @@ class HttpError extends Error {
   constructor(status, code, message) { super(message); this.status = status; this.code = code; }
 }
 
-async function createHarness({ studentSiteAccess = false } = {}) {
+async function createHarness({ studentSiteAccess = false, now = Date.now } = {}) {
   const db = new PGlite();
   await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2),(3),(4),(5);');
   // PGlite has one connection: lease it for a whole transaction, as pg.Pool does.
@@ -39,7 +39,7 @@ async function createHarness({ studentSiteAccess = false } = {}) {
   const roomCodes = createRoomCodes({ pool, legacyTaken: async (code, client) =>
     (await client.query('SELECT 1 FROM learning_boards WHERE code=$1', [code])).rows.length > 0 });
   await roomCodes.initialize();
-  const feature = createLearningBoards({ pool, sessionUser,
+  const feature = createLearningBoards({ pool, sessionUser, now,
     async joinIdentity(req, user) {
       if (user) return { name: user.name, number: user.role === 'student' ? 7 : undefined };
       return /(?:^|;\s*)test_guest=1(?:;|$)/.test(req.headers.cookie || '') ? { name: '게스트' } : null;
@@ -59,7 +59,7 @@ async function createHarness({ studentSiteAccess = false } = {}) {
   app.use(express.static(path.resolve(__dirname, '..', 'apps')));
   app.use(express.static(path.resolve(__dirname, '..')));
   const server = await new Promise(resolve => { const instance = app.listen(0, '127.0.0.1', () => resolve(instance)); });
-  return { db, pool, roomCodes, initialize: feature.initialize, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise(resolve => server.close(resolve)); await db.close(); } };
+  return { app, db, pool, roomCodes, initialize: feature.initialize, base: `http://127.0.0.1:${server.address().port}`, async close() { await new Promise(resolve => server.close(resolve)); await db.close(); } };
 }
 module.exports = { createHarness };
 

@@ -3,12 +3,13 @@ const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const QRCode = require('qrcode');
+const { installBoardRaces } = require('./learning-board-races');
 
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
 const MAX_POSTS = 200;
 
-function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode, joinIdentity = async () => null }) {
+function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode, joinIdentity = async () => null, now = Date.now }) {
   const router = express.Router();
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   function text(value, max, required = false) {
@@ -39,6 +40,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query('BEGIN');
       await db.query("SELECT pg_advisory_xact_lock(hashtext('006-learning-boards'))");
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '006-learning-boards.sql'), 'utf8'));
+      await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '013-learning-board-races.sql'), 'utf8'));
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_code_check');
       await db.query("ALTER TABLE learning_boards ADD CONSTRAINT learning_boards_code_check CHECK (code ~ '^([0-9]{4}|[0-9]{6})$')");
       await db.query('COMMIT');
@@ -210,7 +212,8 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const members = (await db.query('SELECT id, number, name FROM learning_board_members WHERE board_id=$1 ORDER BY number', [b.id])).rows;
       const posts = (await db.query('SELECT * FROM learning_board_posts WHERE board_id=$1 ORDER BY created_at, id', [b.id])).rows;
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
-      const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id || p.review_status === 'approved'))).map(p => {
+      const live = (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0] || null;
+      const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id))).map(p => {
         const m = members.find(m => m.id === p.member_id);
         const own = who.teacher || p.member_id === who.id;
         return { id: p.id, kind: p.kind, content: p.content, link: p.link, column: p.column_index, choices: p.choices,
@@ -220,7 +223,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
           ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback } : {}) };
       });
       await db.query('COMMIT');
-      res.json({ board: publicBoard(b), me: { teacher: who.teacher, number: who.number, name: who.name }, posts: result, sets,
+      res.json({ board: publicBoard(b), me: { teacher: who.teacher, number: who.number, name: who.name }, posts: result, sets: who.teacher ? sets : [], live,
         members: members.map(m => ({ number: m.number, name: b.hide_names && !who.teacher ? '' : m.name,
           posted: posts.some(p => p.member_id === m.id && !p.hidden) })) });
     } catch (error) { await db.query('ROLLBACK'); throw error; }
@@ -364,7 +367,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         const p = available.find(p => p.id === item.id && p.revision === item.revision);
         if (!p) fail(409, 'UNAPPROVED_QUESTION', '승인 상태나 내용이 바뀐 문제가 있어요. 목록을 새로고침해 주세요.');
         return { id: id(), sourceId: p.id, revision: p.revision, kind: p.kind, content: p.content,
-          choices: p.choices, answer: p.answer, explanation: p.explanation, authorNumber: p.number };
+          choices: p.choices, answer: p.answer, explanation: p.explanation, authorNumber: p.number, authorId: p.member_id };
       });
       const setId = id();
       await db.query('INSERT INTO learning_board_sets(id, board_id, title, questions) VALUES($1,$2,$3,$4::jsonb)', [setId, b.id, text(req.body?.title, 80, true), JSON.stringify(questions)]);
@@ -373,7 +376,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     res.status(201).json(result);
   }));
   router.get('/:id/sets/:setId', asyncRoute(async (req, res) => {
-    const verified = await actor(req, await board(pool, req.params.id), pool);
+    const verified = await owner(req, await board(pool, req.params.id));
     const db = await pool.connect();
     try {
       await db.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');
@@ -406,18 +409,10 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     res.json({ ok: true });
   }));
   router.post('/:id/sets/:setId/answer', asyncRoute(async (req, res) => {
-    await transaction(req, async (db, b, who) => {
-      if (who.teacher) fail(403, 'STUDENTS_ONLY', '학생만 답을 제출할 수 있어요.');
-      const set = (await db.query('SELECT * FROM learning_board_sets WHERE board_id=$1 AND id=$2', [b.id, req.params.setId])).rows[0];
-      if (!set || set.status !== 'open') fail(403, 'QUIZ_CLOSED', '지금은 답을 제출할 수 없어요.');
-      const q = set.questions.find(q => q.id === req.body?.questionId);
-      if (!q) fail(404, 'QUESTION_NOT_FOUND', '문제를 찾을 수 없어요.');
-      const choice = integer(req.body?.choice, 0, q.choices.length - 1);
-      await db.query(`INSERT INTO learning_board_answers(board_id, set_id, question_id, member_id, choice) VALUES($1,$2,$3,$4,$5)
-        ON CONFLICT(set_id, question_id, member_id) DO UPDATE SET choice=EXCLUDED.choice, created_at=NOW()`, [b.id, set.id, q.id, who.id, choice]);
-    });
-    res.json({ ok: true });
+    fail(410, 'USE_LIVE_RACE', '실시간 경주에서 현재 문제에 답해 주세요.');
+
   }));
+  installBoardRaces({ router, asyncRoute, transaction, fail, integer, now });
   return { router, initialize };
 }
 

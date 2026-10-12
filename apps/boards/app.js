@@ -47,6 +47,12 @@
     });
   }
   function navigateBoard(id) { location.href = `?id=${encodeURIComponent(id)}`; }
+  function navigateRace(id) { location.href = `live.html?id=${encodeURIComponent(boardId)}&game=${encodeURIComponent(id)}`; }
+  async function startRace(set, seconds = 20) {
+    const result = await api(`/${boardId}/races`, 'POST', { setId: set, seconds });
+    navigateRace(result.id);
+  }
+  $('resumeRace').addEventListener('click', () => { if (data?.live) navigateRace(data.live.id); });
   function historyView() {
     const query = new URLSearchParams({ id: boardId });
     if (setId) query.set('set', setId);
@@ -182,12 +188,15 @@
     $('closedNotice').hidden = !b.closed;
     $('quizControls').hidden = b.layout !== 'quiz';
     $('setCount').textContent = data.sets.length;
+    $('setDetails').hidden = !me.teacher;
+    $('reviewFilter').options[0].textContent = me.teacher ? '전체 문제' : '내 문제';
+    $('resumeRace').hidden = !data.live;
     $('buildSet').hidden = !me.teacher;
     $('setList').replaceChildren();
     data.sets.forEach(s => {
       const row = element('div', undefined, 'set-row'); const title = element('div');
       title.append(element('strong', s.title), element('small', `${s.count}문항 · ${statuses[s.status]}`));
-      row.append(title, button(me.teacher ? '진행·결과 보기' : '문제 풀기', () => openSet(s.id))); $('setList').append(row);
+      row.append(title, button('문제 확인', () => openSet(s.id)), button('경주 시작', () => startRace(s.id), 'primary')); $('setList').append(row);
     });
     if (!data.sets.length) $('setList').append(element('p', '문제 세트 없음', 'hint'));
     renderPosts();
@@ -198,6 +207,8 @@
     try {
       const next = await api(`/${boardId}`);
       data = next;
+      if (!data.me.teacher && data.live) { navigateRace(data.live.id); return; }
+      if (!data.me.teacher && setId) { setId = null; historyView(); }
       const nextSignature = JSON.stringify(next);
       if (nextSignature !== signature || force) { signature = nextSignature; renderBoard(); }
       if (setId) {
@@ -328,15 +339,13 @@
     $('setTitle').textContent = s.title; $('setStatus').textContent = statuses[s.status];
     $('setControls').replaceChildren(); $('setQuestions').replaceChildren();
     if (data.me.teacher) {
-      const transitions = { ready: [['open', '풀이 시작']], open: [['closed', '답안 마감']], closed: [['open', '다시 받기'], ['revealed', '정답·해설 공개']], revealed: [] };
-      transitions[s.status].forEach(([status, title]) => $('setControls').append(button(title, async () => {
-        if (status === 'revealed' && !confirm('정답과 해설을 공개할까요? 공개 후에는 답안을 다시 받을 수 없어요.')) return;
-        await api(`/${boardId}/sets/${setId}`, 'PATCH', { status }); await refresh(true);
-      }, 'primary')));
+      const duration = element('select'); duration.setAttribute('aria-label', '문제당 제한 시간');
+      [20, 30, 45, 60, 90, 120].forEach(seconds => { const option = element('option', seconds + '초'); option.value = seconds; duration.append(option); });
+      $('setControls').append(duration, button('경주 시작', () => startRace(setId, Number(duration.value)), 'primary'));
     }
     const answered = s.questions.filter(q => q.myChoice !== undefined).length;
     const correct = s.questions.filter(q => q.myChoice !== undefined && q.myChoice === q.answer).length;
-    $('setProgress').textContent = data.me.teacher ? '' :
+    $('setProgress').textContent = data.me.teacher ? '출제자는 자기 문제를 관전하며 다른 참가자의 평균 이동거리를 받습니다.' :
       s.status === 'ready' ? '시작 대기' : s.status === 'revealed' ? `정답 ${correct} / ${s.questions.length}` :
         `응답 ${answered} / ${s.questions.length}${s.status === 'open' ? ' · 선택 즉시 저장' : ''}`;
     s.questions.forEach((q, index) => {
