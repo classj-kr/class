@@ -14,7 +14,7 @@ const SHOTS = process.argv.includes('--shots');
 const OUT = path.resolve(__dirname, '../outputs/math-bank-review');
 const TO_WEBP = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sys.stdin.buffer.read())).convert('RGBA');im.save(sys.argv[1],format='WEBP',lossless=True);out=Image.open(sys.argv[1]).convert('RGBA');assert im.size==out.size and im.tobytes()==out.tobytes()";
 const URL_PATH = '/learning/literacy-numeracy/math-bank/';
-// 부호가 있는 답을 받는 단원(중학교 1학년 1학기 「정수와 유리수」).
+// 부호가 있는 답을 받는 단원(중 1학년 1학기 「정수와 유리수」).
 const UNIT = '7-1-2';
 const MINUS = '−';
 
@@ -31,7 +31,7 @@ const MINUS = '−';
     page.on('dialog', (d) => d.accept());
     await page.goto(h.base + URL_PATH);
     await page.locator('.mb-group').first().waitFor();
-    assert.equal(await page.locator('#termSelect option[value="7-1"]').innerText(), '중학교 1학년 1학기');
+    assert.equal(await page.locator('#termSelect option[value="7-1"]').innerText(), '중 1학년 1학기');
     await page.selectOption('#termSelect', '7-1');
     await page.selectOption('#unitSelect', UNIT);
     await page.waitForFunction((id) => new URL(location.href).searchParams.get('unit') === id && document.querySelectorAll('.mb-group').length > 0, UNIT);

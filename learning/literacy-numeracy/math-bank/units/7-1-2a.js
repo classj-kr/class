@@ -83,7 +83,7 @@
   // 검사가 다시 셈하는 식에 적는 글: 음수는 (-3), 분수는 (3/4)
   const js = (x) => { const m = digits(x) || (x.q === 1 ? String(Math.abs(x.p)) : Math.abs(x.p) + '/' + x.q); return x.p < 0 ? '(-' + m + ')' : x.q === 1 || x.d ? m : '(' + m + ')'; };
   // 문자
-  const V = (name) => '<i style="font-style:italic;margin:0 0.03em">' + name + '</i>';
+  const V = (name) => '<i class="mb-var">' + name + '</i>';
   const sup = (n) => '<sup>' + n + '</sup>';
 
   // ── 식 ──
