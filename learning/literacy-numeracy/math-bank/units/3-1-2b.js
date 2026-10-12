@@ -96,7 +96,7 @@
         const placed = picks.map((shape, i) => shape.map(([px, py]) => [px + (i % 2) * 5, py + Math.floor(i / 2) * 5]));
         return N('모눈종이에 그린 사각형 4개 중 직사각형은 모두 몇 개인가?', count, {
           unit: '개', figure: G.board(9, 9, placed.map((shape) => G.polygon(shape, 'mb-poly is-plain')), { grid: 'lines' }),
-          explain: `네 각이 모두 직각인 사각형이 직사각형이다. 정사각형도 네 각이 모두 직각이므로 직사각형이고, 비스듬히 놓여 있어도 네 각이 모두 직각이면 직사각형이다. 직사각형은 ${count}개이다.`,
+          explain: `네 각이 모두 직각인 사각형이 직사각형이다. 사각형마다 네 각이 모두 직각인지만 본다. 변의 길이가 같든 다르든, 비스듬히 놓여 있든 네 각이 모두 직각이면 직사각형이다. 직사각형은 ${count}개이다.`,
           facts: { rectCount: placed }
         });
       }, { standard: QUAD }),

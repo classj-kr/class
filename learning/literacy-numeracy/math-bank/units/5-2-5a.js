@@ -536,7 +536,7 @@
     touch, overlap, fold, whyNot, WHY, cornersOf, outline, POINTS, boundsOf, moved, sorted, turned, netArt, netTidy, cellRects, turnCells, spanOf, CUBE_NETS, CUBE_FAKES, hasRow4, pickShapes, cubeArt, TREES, unfold, hasStrip, boxNet, cubeNet, rectName, cutsOf, fakeMove, fakeSize, sameKind, normCells, freeKey };
 
   B.addUnit({
-    id: '5-2-5', grade: 5, semester: 2, no: 5, title: '직육면체', version: 2,
+    id: '5-2-5', grade: 5, semester: 2, no: 5, title: '직육면체', version: 3,
     groups: [
       { id: 'def', title: '직육면체와 정육면체', standard: SOLID, types: [] },
       { id: 'parts', title: '면, 모서리, 꼭짓점', standard: SOLID, types: [] },

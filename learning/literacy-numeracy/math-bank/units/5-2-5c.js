@@ -60,13 +60,13 @@
       // ── ① 그림·상황에 함정이 있는 문제 ──
       H('hard-count-box', '정육면체가 섞인 그림에서 직육면체 세기', '1, 기본 ①2 ②2 ③2', (d) => {
         // 그림에 함정을 둔다: 정육면체를 섞어 놓는다. 직육면체를 「길쭉한 상자」라는 겉모습으로 아는 아이는 정육면체를 빼고 세고, 면이 6개이기만 하면 된다고 보는 아이는 사다리꼴 모양의 면이 있는 도형까지 센다.
-        // 뜻(직사각형 6개로 둘러싸인 도형 — 정사각형도 네 각이 모두 직각이다)을 그대로 대어 세는 문제이다. 「정육면체는 직육면체라고 할 수 있는가」를 말로 묻는 것(포함 관계)과는 다른 일이다.
+        // 볼 것은 하나뿐이다: 여섯 면이 모두 네 각이 직각인 사각형인가. 면이 정사각형인지 아닌지는 따질 일이 아니다(2026-10-12 사용자: "그냥 네 각이 모두 직각인지 아닌지만 보라고"). 포함 관계를 말로 묻는 문제가 아니다.
         const k = d.pick([1, 2]), six = d.shuffle(['trap', 'para', 'cut']), rest = d.shuffle(['tri', 'pyr', 'cyl']), others = [six[0], rest[0], six[1]].slice(0, 4 - k);
         const items = d.shuffle(d.shuffle(BOXES).slice(0, k).map((b) => ({ kind: 'box', art: () => boxTile(b[0], b[1], b[2]) })).concat([{ kind: 'cube', art: cubeTile }], others.map((key) => Object.assign({ kind: 'no' }, OTHERS[key]()))));
-        const labels = TAGS.slice(0, 5), flags = items.map((it) => it.kind !== 'no'), cube = labels[items.findIndex((it) => it.kind === 'cube')];
+        const labels = TAGS.slice(0, 5), flags = items.map((it) => it.kind !== 'no'), right = labels.filter((_, i) => flags[i]).join(', ');
         return N('다음 도형 가운데 직육면체는 모두 몇 개인가?', flags.filter(Boolean).length, {
           unit: '개', figure: tiles(items.map((it) => it.art())),
-          explain: `직사각형 6개로 둘러싸인 도형이 직육면체이다. ${cube}의 면은 모두 정사각형이고, 정사각형도 네 각이 모두 직각인 사각형이므로 ${cube}도 직육면체이다. ` + items.map((it, i) => (it.kind === 'no' ? `${labels[i]}에는 ${it.why}이 있다. ` : '')).join('') + `직육면체는 ${labels.filter((_, i) => flags[i]).join(', ')}이다.`,
+          explain: `직사각형 6개로 둘러싸인 도형이 직육면체이다. 도형마다 여섯 면이 모두 네 각이 직각인 사각형인지 본다. ${right}는 여섯 면이 모두 네 각이 직각인 사각형이다. ` + items.map((it, i) => (it.kind === 'no' ? `${labels[i]}에는 ${it.why}이 있다. ` : '')).join('') + `직육면체는 ${right}이다.`,
           facts: { count: flags }
         });
       }),
