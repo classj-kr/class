@@ -593,15 +593,6 @@
           facts: truthOf(rows, true)
         });
       }, { standard: KIND }),
-      H('h-pro-scale', '안쪽 눈금과 바깥쪽 눈금 가운데 읽을 눈금', '11·14·15, 기본 ①18·19 ②18 ③13', (d) => {
-        // 눈금을 바꿔 읽는 아이는 180° - 답을, 큰 눈금을 한 칸 잘못 세는 아이는 답 ± 10°를 고른다.
-        const x = d.until(() => d.int(5, 31) * 5, (v) => Math.abs(v - 90) >= 15), inner = d.bool(), side = inner ? '안쪽' : '바깥쪽', other = inner ? '바깥쪽' : '안쪽', list = d.shuffle([x, 180 - x, x + 10, x - 10]);
-        return C('각도기로 잰 각도를 바르게 읽은 것은?', list.map((v) => v + '°'), list.indexOf(x), {
-          figure: proBoard(inner ? [0, x] : [180, 180 - x], { label: `각도기: 각의 한 변은 ${side} 눈금 0에, 나머지 변은 ${side} 눈금 ${x}(${other} 눈금 ${180 - x})에 놓여 있다` }),
-          explain: `각의 한 변이 ${side} 눈금 0에 맞추어져 있으므로 ${side} 눈금을 읽어야 한다. 나머지 변이 가리키는 ${side} 눈금은 ${x}이므로 ${x}°이다. ${other} 눈금을 읽으면 ${180 - x}°가 되어 틀린다.`,
-          facts: { pick: { expr: `${x}-0`, options: list } }
-        });
-      }),
       H('h-pro-offset', '0이 아닌 눈금에서 시작한 각 읽기', '13, 기본 ③14', (d) => {
         // 끝 눈금을 그대로 읽는 아이(q), 바깥쪽 눈금으로 읽는 아이(180 - p), 두 눈금을 더하는 아이(p + q)
         const [p, q] = d.until(() => [d.int(4, 14) * 5, d.int(16, 32) * 5], ([x, y]) => y - x >= 35 && new Set([y - x, y, 180 - x, x + y]).size === 4 && x + y <= 180);
@@ -612,14 +603,6 @@
           facts: { pick: { expr: `${q}-${p}`, options: list } }
         });
       }),
-      H('h-obtuse-sum', '두 각도의 합이 둔각인 것', '26·28·59, 기본 ①43', (d) => {
-        // 둔각을 「90°보다 큰 각」으로만 아는 아이는 합이 180°이거나 180°보다 큰 식을 고른다.
-        const rows = d.shuffle([exprOf(d, d.int(21, 35) * 5, true, 5), exprOf(d, 180, true, 5), exprOf(d, d.int(37, 42) * 5, true, 5), exprOf(d, d.pick([90, 85, 80]), true, 5)]);
-        return C('두 각도의 합이 둔각인 것은?', LABELS.slice(0, 4), rows.findIndex((row) => row.value > 90 && row.value < 180), {
-          figure: tagged(rows.map((row) => row.html)), explain: rows.map((row, i) => `${LABELS[i]} ${row.said}`).join(', ') + '. 둔각은 90°보다 크고 180°보다 작은 각이다. 180°와 180°보다 큰 각도는 둔각이 아니다.',
-          facts: { between: { low: '90', high: '180', exprs: rows.map((row) => row.calc) } }
-        });
-      }, { standard: KIND }),
       H('h-tri-big', '크기가 다른 두 삼각형의 세 각의 크기의 합', '83, 기본 ①85·101', (d) => {
         // 큰 삼각형의 합이 더 크다고 여기는 아이, 둔각이 있으면 합이 더 크다고 여기는 아이
         const bigFirst = d.bool(), big = triPts(50, 60, 4.2, 3.6), small = triPts(30, 35, 2.6, 1.5), tags = bigFirst ? ['가', '나'] : ['나', '가'];

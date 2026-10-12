@@ -509,20 +509,6 @@
 
   // ── 실력 문제 ──────────────────────────────────────────────────
   B.addTypes('3-2-2', 'hard', [
-    H('h-verify', '확인하는 식의 값이 나누어지는 수와 다른 계산', '심37 ①31 ②58 ②64 ③54', (d) => {
-      // 54÷7 = 7 … 6 이라고 한 계산: 나머지 6은 7보다 작지만 7×7+6=55 이다
-      const [a, b] = rest2(d, (x, y, q, r) => r + 1 < y), q = quot(a, b), toldR = a % b + 1;
-      const rows = d.shuffle([
-        { text: `${b} × ${q}에 ${josa(toldR, '을/를')} 더하면 ${josa(a + 1, '이/가')} 되어 ${josa(a, '과/와')} 다르므로 잘못 계산하였다.`, ok: true },
-        { text: `${b} × ${q}에 ${josa(toldR, '을/를')} 더하면 ${josa(a, '이/가')} 되므로 바르게 계산하였다.`, ok: false },      // 확인하는 셈을 하지 않고 맞다고 여기는 아이
-        { text: `나머지 ${josa(toldR, '이/가')} 나누는 수 ${b}보다 작으므로 바르게 계산하였다.`, ok: false },                     // 나머지가 나누는 수보다 작기만 하면 된다는 아이
-        { text: '나머지가 0이 아니므로 잘못 계산하였다.', ok: false }                                                            // 나머지가 있으면 틀린 계산이라는 아이
-      ]);
-      return C(`${a} ÷ ${b} = ${q} … ${josa(toldR, '이라고/라고')} 계산하였다. 이 계산을 확인한 것으로 옳은 것은?`, rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
-        explain: `${expr(b, '*', q, '=', b * q)}, ${expr(b * q, '+', toldR, '=', a + 1)}이다. 나누어지는 수 ${josa(a, '과/와')} 다르므로 잘못 계산한 것이다. 바르게 계산하면 ${shown(a, b)}이다.`,
-        facts: { truth: rows.map((row) => row.ok), want: true, divide: [a, b], divideFree: true }
-      });
-    }),
     H('h-which', '두 나눗셈식의 나누어지는 수 비교', '심45', (d) => {
       // ㉮÷5=11…4, ㉯÷7=8…2 → 59 > 58. 몫이 큰 쪽이 큰 수라고 여기면 틀리게, 몫이 작은 쪽이 더 큰 수가 되게 한다(두 수가 같은 경우도 낸다).
       const [[b, q, r], [e, p, s]] = d.until(() => [[d.int(3, 9), d.int(6, 16), d.int(1, 8)], [d.int(3, 9), d.int(6, 16), d.int(1, 8)]],

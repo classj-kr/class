@@ -45,20 +45,6 @@
           explain: '무게를 잰 단위가 동전과 구슬로 서로 다르다. 동전 1개와 구슬 1개의 무게가 같은지 모르므로 수가 같아도 무게가 같다고 할 수 없다.', facts: { truth: rows.map((row) => row.ok), want: true }
         });
       }),
-      H('h-zero', '0이 끼는 들이 바꾸기', 'L와 mL 고쳐 쓰기(심화 13), 0이 끼는 바꾸기(기본 ①19)', (d) => {
-        const a = d.int(2, 9), b = d.int(2, 9) * 10, list = d.shuffle([a * 1000 + b, a * 100 + b, a * 1000 + b * 10, a * 1000 + b / 10]);      // 바른 것, 이어 쓴 것, 0을 뒤에 붙인 것, 자리를 하나 더 민 것
-        return C(`${a} L ${b} mL는 몇 mL인가?`, list.map((v) => v + ' mL'), list.indexOf(a * 1000 + b), {
-          explain: `${a} L는 ${a * 1000} mL이다. ${a * 1000} mL보다 ${b} mL 더 많은 들이는 ${a * 1000 + b} mL이다.`, facts: { pick: { expr: `${a}*1000+${b}`, options: list }, unseen: [1000] }
-        });
-      }, { standard: VOL }),
-      H('h-tick', '저울의 작은 눈금 한 칸의 크기', '저울 눈금 읽기(심화 57), 저울 눈금을 잘못 읽은 말 바로잡기(기본 ①101)', (d) => {
-        // 한 바퀴 4 kg, 작은 눈금 한 칸 200 g: 한 칸을 100 g으로 읽으면 틀린다
-        const ticks = d.pick([6, 7, 8, 9, 11, 12, 13, 14]), value = ticks * 200, list = d.shuffle([value, ticks * 100, hi(value) * 1000 + (ticks - hi(value) * 5) * 100, value + 200].filter((v, i, all) => all.indexOf(v) === i));
-        return C('저울에 올린 물건의 무게는?', list.map((v) => wt(v)), list.indexOf(value), {
-          figure: dial(4000, 200, 1000, value), explain: `1 kg이 작은 눈금 5칸으로 나뉘어 있으므로 작은 눈금 한 칸은 200 g이다. 바늘이 0에서 ${ticks}칸 간 곳을 가리키므로 ${wt(value)}이다.`,
-          facts: { pick: { expr: `${ticks}*200`, options: list } }
-        });
-      }),
       H('h-overflow', '넘친 물의 양으로 그릇의 들이 구하기', '넘친 물로 그릇의 들이 구하기(심화 37, 기본 ①57)', (d) => {
         const [a, b, over] = d.until(() => [d.int(1, 3) * 1000 + d.int(4, 18) * 50, d.int(1, 3) * 1000 + d.int(4, 18) * 50, d.int(3, 9) * 50], ([x, y, z]) => lo(x) + lo(y) > 1000 && lo(x + y) < z && lo(x) !== lo(y));
         return M(`빈 수조에 물을 ${vol(a)} 부은 다음 ${vol(b)}를 더 부었더니 물이 ${over} mL 넘쳤다. 수조의 들이는 몇 L 몇 mL인가?`, ask(a + b - over, 'mL', 'L'), {

@@ -45,23 +45,6 @@
           facts: { truth: rows.map((row) => row.ok), want: false }
         });
       }),
-      H('h-part-unit', '묶음의 수와 낱개의 수', '잘못 나타낸 것 찾아 고치기(심화 10), 묶음과 낱개를 헷갈린 말 바로잡기(기본 ①10)', (d) => {
-        // 15를 3씩 묶으면 9는 15의 3/5. 9/5(낱개÷묶음), 3/15(묶음÷낱개)를 보기에 넣는다.
-        const [g, m, k] = d.until(() => [d.int(2, 5), d.int(4, 6), d.int(2, 4)], ([x, y, z]) => z < y - 1 && gcd(z, y) === 1 && x * y <= 30 && x * z !== y), total = g * m;
-        const list = d.shuffle([[k, m], [g * k, m], [k, total], [m - k, m]]);
-        return C(`${josa(total, '을/를')} ${g}씩 묶으면 ${josa(g * k, '은/는')} ${total}의 몇 분의 몇인가?`, list.map(([n, den]) => frac(n, den)), list.findIndex(([n, den]) => n === k && den === m), {
-          figure: dots(g, m, { loop: 'cols' }), explain: `${josa(total, '을/를')} ${g}씩 묶으면 ${m}묶음이고 ${josa(g * k, '은/는')} ${k}묶음이다. 분모에는 전체 묶음의 수, 분자에는 부분 묶음의 수를 쓰므로 ${frac(k, m)}이다.`,
-          facts: { choose: { exprs: list.map(([n, den]) => `${n}/${den}`), rule: 'equals', target: k / m }, partTalk: { total, group: g, part: g * k } }
-        });
-      }, { standard: PART }),
-      H('h-conv', '대분수를 가분수로 바르게 나타내기', '바꾼 것이 맞는지 가려내기(기본 ③78·79), 대분수↔가분수 바꾸기(심화 49)', (d) => {
-        const [w, n, den] = d.until(() => [d.int(2, 4), d.int(1, 7), d.int(4, 9)], ([x, y, z]) => y < z && new Set([x * z + y, x * 10 + y, x * z, x + y]).size === 4);
-        const list = d.shuffle([w * den + n, w * 10 + n, w * den, w + n]);      // 바른 것, 이어 쓴 것, 자연수만 바꾼 것, 그냥 더한 것
-        return C(`${mj(w, n, den, '을/를')} 가분수로 바르게 나타낸 것은?`, list.map((top) => frac(top, den)), list.indexOf(w * den + n), {
-          explain: `${josa(w, '은/는')} ${frac(1, den)}이 ${den} × ${w} = ${w * den}(개)이고 ${fj(n, den, '은/는')} ${frac(1, den)}이 ${n}개이다. ${w * den} + ${n} = ${w * den + n}이므로 ${frac(w * den + n, den)}이다.`,
-          facts: { pick: { expr: `${w}*${den}+${n}`, options: list } }
-        });
-      }),
       H('h-kind-fill', '가분수가 되게 하는 가장 작은 분자', '□에 들어갈 수(심화 41), 분자 □에 들어갈 수(기본 ①42 ③49)', (d) => {
         const den = d.int(5, 9), list = d.shuffle([den, den + 1, den - 1, 1]);          // 분자가 분모보다 커야만 가분수라는 아이는 den+1 을 고른다
         return C(`${fj(box(), den, '이/가').replace(/(이|가)$/, '')}가 가분수일 때, □ 안에 들어갈 수 있는 자연수 중에서 가장 작은 수는?`, list.map(String), list.indexOf(den), {

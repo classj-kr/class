@@ -628,99 +628,6 @@
   B.addGroup('4-2-3', {
     id: 'hard', title: '실력 문제', standard: CALC,
     types: [
-      H('h-longer-bigger', '자릿수가 다른 소수의 크기 비교 가리기', '②53 ③38 심31·32', (d) => {
-        const a = d.int(2, 7), b = d.int(1, 9), c = d.int(a + 1, 9), w = d.int(1, 9), e = d.int(2, 9), f = d.int(1, e - 1), x = d.int(1, 9), y = d.int(2, 9), r = d.int(1, 9);
-        const rows = d.shuffle([
-          [`0.${a}${b}`, `0.${c}`],              // 자릿수가 많은 수가 더 크다고 여기는 아이(35 > 4)
-          [`${w}.0${e}`, `${w}.${f}`],           // 소수점 아래를 자연수처럼 보는 아이(8 > 1)
-          [`${x}.${y}0`, `${x}.${y}`],           // 끝자리에 0이 붙으면 더 큰 수라고 여기는 아이
-          [`${x}.${y}`, `${x}.${y - 1}9${r}`]    // 바른 비교: 소수 첫째 자리 숫자가 더 크다
-        ]).map(([left, right]) => [`${left} &gt; ${right}`, Number(left) > Number(right)]);
-        return C('두 수의 크기를 바르게 비교한 것은?', rows.map((row) => row[0]), rows.findIndex((row) => row[1]), {
-          explain: `자릿수가 많다고 더 큰 수는 아니다. 높은 자리부터 같은 자리 숫자끼리 차례로 비교한다. ${x}.${y}${tail(y, '과/와')} ${x}.${y - 1}9${r}${tail(r, '은/는')} 소수 첫째 자리 숫자가 ${y}, ${y - 1}이므로 ${x}.${y}${tail(y, '이/가')} 더 크다.`, facts: truthOf(rows, true)
-        });
-      }, { standard: ORDER }),
-      H('h-describe', '소수에 대한 설명 가리기', '①16 ②21 ③24 심11', (d) => {
-        const [w, a, c] = uniq(d, 3), x = `${w}.${a}0${c}`;
-        const rows = d.shuffle([
-          [`숫자 ${josa(a, '은/는')} ${dj(d1(a), '을/를')} 나타낸다.`, true],
-          [`소수 둘째 자리 숫자는 ${c}이다.`, false],                                   // 0을 건너뛰고 자리를 세는 아이
-          [`${said(`${say(w)} 점 ${DIGITS[a]}${DIGITS[c]}`)} 읽는다.`, false],          // 0을 읽지 않는 아이
-          [`0.001이 ${w}${a}${c}개인 수이다.`, false]                                    // 가운데 0을 빼고 개수를 세는 아이
-        ]);
-        return C(`${x}에 대한 설명으로 옳은 것은?`, rows.map((row) => row[0]), rows.findIndex((row) => row[1]), {
-          explain: `${dj(x, '은/는')} ${said(read(x))} 읽고, 0.001이 ${w}${a}0${c}개인 수이다. 소수 둘째 자리 숫자는 0이고, 소수 첫째 자리 숫자 ${josa(a, '은/는')} ${dj(d1(a), '을/를')} 나타낸다.`, facts: truthOf(rows, true)
-        });
-      }, { standard: NUM }),
-      H('h-zero-pair', '크기가 같은 두 소수 짝 짓기', '①34 ③29·30 심11·12', (d) => {
-        const w = d.int(1, 9), a = d.int(1, 9), b = digit(d, [a]);
-        const rows = d.shuffle([
-          [`${w}.${a}0`, `${w}.${a}`],            // 바른 짝: 끝자리 0은 생략할 수 있다
-          [`${w}.0${a}`, `${w}.${a}`],            // 가운데 0도 생략할 수 있다고 여기는 아이
-          [`${w}.${a}0${b}`, `${w}.${a}${b}`],    // 〃
-          [`0.${w}${a}`, `${w}.${a}`]             // 숫자가 같으면 같은 수라고 여기는 아이
-        ]);
-        return C('크기가 같은 두 수를 짝 지은 것은?', rows.map(([left, right]) => `${left}, ${right}`), rows.findIndex(([left, right]) => Number(left) === Number(right)), {
-          explain: `소수점 아래 끝자리에 있는 0만 생략할 수 있다. ${w}.${a}0 = ${w}.${a}이고, 끝자리가 아닌 0을 빼면 다른 수가 된다.`, facts: { claimed: rows.map(([left, right]) => [left, Number(right)]), claimedWant: true }
-        });
-      }, { standard: ORDER }),
-      H('h-same-digit', '같은 숫자가 나타내는 수 가리기', '①44 ②32 ③46 심23', (d) => {
-        const t = d.int(2, 9), x = `${t}.${t}${t}`, it = josa(t, '이/가');
-        const rows = d.shuffle([
-          [`일의 자리 숫자 ${it} 나타내는 수는 소수 둘째 자리 숫자 ${it} 나타내는 수의 100배이다.`, true],
-          [`세 숫자 ${it} 나타내는 수는 모두 같다.`, false],                                                        // 숫자가 같으면 나타내는 수도 같다고 여기는 아이
-          [`소수 첫째 자리 숫자 ${it} 나타내는 수는 소수 둘째 자리 숫자 ${it} 나타내는 수의 100배이다.`, false],   // 자리 사이의 관계를 한 칸 더 센 아이
-          [`소수 둘째 자리 숫자 ${josa(t, '은/는')} ${dj(d1(t), '을/를')} 나타낸다.`, false]                        // 소수 첫째 자리와 둘째 자리를 바꿔 아는 아이
-        ]);
-        return C(`${x}에 있는 세 숫자 ${t}에 대한 설명으로 옳은 것은?`, rows.map((row) => row[0]), rows.findIndex((row) => row[1]), {
-          explain: `${x}에서 ${josa(t, '은/는')} 자리에 따라 ${t}, ${d1(t)}, ${dj(d2(t), '을/를')} 나타낸다. ${josa(t, '은/는')} ${d2(t)}의 100배이다.`, facts: truthOf(rows, true)
-        });
-      }, { standard: NUM }),
-      H('h-point-move', '소수의 1/10 고르기', '①38 ②29 ③40·42 심16', (d) => {
-        // 틀린 보기: 24.5(소수점을 기준으로 수를 왼쪽으로 옮긴 아이), 2.35(0.1을 뺀 아이), 2.045(소수점 뒤에 0을 끼운 아이)
-        const n = d.until(() => d.int(205, 989), (v) => v % 10 !== 0 && Math.floor(v / 10) % 10 !== 0 && Number(d2(v)) / 10 === v / 1000), x = d2(n), w = Math.floor(n / 100);
-        const list = d.shuffle([n, n * 100, (n - 10) * 10, w * 1000 + (n % 100)]);
-        return C(`${x}의 ${TENTH}은?`, list.map((v) => sx(v, 3)), list.indexOf(n), {
-          explain: `${RIGHT} ${x}의 ${TENTH}은 ${d3(n)}이다.`, facts: { pick: { expr: `${x}/10`, options: list.map((v) => v / 1000) } }
-        });
-      }, { standard: NUM }),
-      H('h-align', '자리를 바르게 맞춘 세로셈 고르기', '①85 ②83 ③79 심51', (d) => {
-        // 0.7 + 0.45: 끝자리를 맞춘 것(0.52), 소수점을 맞추어 바르게 계산한 것(1.15), 자리는 맞추었으나 소수점을 잘못 찍은 것(11.5)
-        const [p, q] = d.until(() => [d.int(2, 9), d.int(12, 98)], ([x, y]) => y % 10 !== 0 && x + Math.floor(y / 10) >= 10), A = d1(p), Bt = d2(q), right = p * 10 + q, rows = aligned([A, Bt]);
-        const made = d.shuffle([
-          [misaligned(A, '+', Bt, d2(p + q)), p + q],
-          [column(A, '+', Bt, d2(right)), right],
-          [dcol(rows[0], '+', rows[1], `${A} + ${Bt} = ${d1(right)}`, { result: cellsOf(d1(right)) }), right * 10]
-        ]);
-        return C('바르게 계산한 것은?', LABELS.slice(0, 3), made.findIndex((row) => row[1] === right), {
-          figure: G.tiles(made.map((row, i) => [LABELS[i], row[0]])), explain: `소수점의 자리를 맞추어 같은 자리 숫자끼리 더하고, 소수점을 그대로 내려 찍는다. ${A} + ${Bt} = ${d2(right)}`,
-          facts: { claimed: made.map((row) => [`${p * 10}+${q}`, row[1]]), claimedWant: true }
-        });
-      }),
-      H('h-whole-sub', '자연수에서 소수 두 자리 수 빼기', '②74·81 ③61·78 심55·84', (d) => {
-        // 틀린 보기: 4.37(자연수끼리만 빼고 소수 부분을 그대로 내려 쓴 아이), 3.73(소수 첫째 자리에서 받아내림한 것을 잊은 아이), 4.63(일의 자리에서 받아내림한 것을 잊은 아이)
-        const [w, b] = d.until(() => [d.int(4, 9), two(d, 112, 689)], ([x, y]) => x * 100 - y >= 150 && y % 100 !== 50 && Math.floor(y / 10) % 10 !== 0 && x - Number(d2(y)) === (x * 100 - y) / 100), Bt = d2(b), right = w * 100 - b;
-        const list = d.shuffle([right, (w - Math.floor(b / 100)) * 100 + (b % 100), right + 10, right + 100]);
-        return C(`${w} − ${Bt}의 값은?`, list.map(d2), list.indexOf(right), {
-          explain: `${w}의 소수 첫째 자리와 소수 둘째 자리에 0이 있다고 생각하고 일의 자리에서 받아내림한다. ${w} − ${Bt} = ${d2(right)}`, facts: { pick: { expr: `${w}-${Bt}`, options: list.map((v) => v / 100) } }
-        });
-      }),
-      H('h-unit-zero', '몇 m 몇 cm를 m로 바르게 나타내기', '①50 ②10 ③49·50 심41', (d) => {
-        // 틀린 보기: 1.5 m(cm의 수를 소수점 바로 뒤에 쓴 아이), 1.005 m(1000으로 나누는 단위와 헷갈린 아이), 0.15 m(숫자만 이어 쓴 아이)
-        const [m, c] = d.until(() => [d.int(1, 9), d.int(2, 9)], ([x, y]) => x + y / 100 === (x * 100 + y) / 100);
-        const list = d.shuffle([[`${m}.0${c} m`, (m * 100 + c) / 100], [`${m}.${c} m`, (m * 10 + c) / 10], [`${m}.00${c} m`, (m * 1000 + c) / 1000], [`0.${m}${c} m`, (m * 10 + c) / 100]]);
-        return C(`${m} m ${c} cm를 m 단위로 바르게 나타낸 것은?`, list.map((row) => row[0]), list.findIndex((row) => row[1] === (m * 100 + c) / 100), {
-          explain: `1 cm는 0.01 m이므로 ${c} cm는 0.0${c} m이다. ${m} m ${c} cm = ${m}.0${c} m`, facts: { pick: { expr: `${m}+${c}/100`, options: list.map((row) => row[1]) }, unseen: [100] }
-        });
-      }, { standard: NUM }),
-      H('h-over-bundle', '10개가 넘는 묶음이 둘인 수', '①19 ③19 심6', (d) => {
-        // 틀린 보기: 30.52(개수를 그대로 이어 붙인 아이), 3.052(0.01이 52개를 0.052로 본 아이), 0.352(자리를 한 칸씩 밀어 쓴 아이)
-        const [p, q] = d.until(() => [d.int(21, 49), d.int(12, 98)], ([x, y]) => y % 10 !== 0 && 0.1 * x + 0.01 * y === (x * 10 + y) / 100), right = (p * 10 + q) * 10;
-        const list = d.shuffle([right, (p * 100 + q) * 10, p * 100 + q, p * 10 + q]);
-        return C(`0.1이 ${p}개, 0.01이 ${q}개인 수는?`, list.map((v) => sx(v, 3)), list.indexOf(right), {
-          explain: `0.1이 ${p}개이면 ${s2(p * 10)}, 0.01이 ${q}개이면 ${d2(q)}이다. ${s2(p * 10)} + ${d2(q)} = ${d2(p * 10 + q)}`, facts: { pick: { expr: `0.1*${p}+0.01*${q}`, options: list.map((v) => v / 1000) } }
-        });
-      }, { standard: NUM }),
       H('h-between-count', '두 수 사이에 있는 소수 세 자리 수의 개수', '①62 심15', (d) => {
         // 2.674와 2.68 사이: 2.68을 2.680으로 보아야 2.675부터 2.679까지 센다.
         const w = d.int(0, 9), a = d.int(0, 9), b = d.int(1, 8), c = d.int(1, 7), low = `${w}.${a}${b}${c}`, high = `${w}.${a}${b + 1}`;
@@ -729,26 +636,6 @@
           facts: { digit: { template: `${low}<${w}.${a}${b}□<${high}`, lo: 0, hi: 9, ask: 'count' } }
         });
       }, { standard: ORDER }),
-      H('h-digits-part', '같은 숫자 둘 사이의 관계를 거꾸로 묻기', '②32 심23', (d) => {
-        const t = d.int(1, 9), [p, q] = d.pick([[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]), ds = [0, 1, 2, 3].map((i) => (i === p || i === q ? t : digit(d, [t]))), x = `${ds[0]}.${ds[1]}${ds[2]}${ds[3]}`, k = P10[q - p], it = josa(t, '이/가');
-        const rows = d.shuffle([
-          [PARTS[k], true],
-          [`${k}배`, false],                               // 어느 쪽이 큰지 거꾸로 본 아이
-          [PARTS[k === 10 ? 100 : 10], false],              // 자리 사이의 칸 수를 잘못 센 아이
-          ['두 수는 같다', false]                            // 숫자가 같으면 나타내는 수도 같다고 여기는 아이
-        ]);
-        return C(`${x}에서 ${PLACES[q]} 숫자 ${it} 나타내는 수는 ${PLACES[p]} 숫자 ${it} 나타내는 수의 얼마인가?`, rows.map((row) => row[0]), rows.findIndex((row) => row[1]), {
-          explain: `${PLACES[p]} 숫자 ${josa(t, '은/는')} ${dj(sx(t * P10[3 - p], 3), '을/를')}, ${PLACES[q]} 숫자 ${josa(t, '은/는')} ${dj(sx(t * P10[3 - q], 3), '을/를')} 나타낸다. 자리가 오른쪽으로 ${q - p}칸 차이 나므로 ${PARTS[k]}이다.`, facts: truthOf(rows, true)
-        });
-      }, { standard: NUM }),
-      H('h-empty-place', '소수 한 자리 수에서 소수 두 자리 수 빼기', '①101 ②80 ③77 심50·51', (d) => {
-        // 5.2 − 3.74: 1.54(빈 자리의 4를 그대로 내려 쓴 아이), 1.56(소수 첫째 자리에서 받아내림한 것을 잊은 아이), 2.46(일의 자리에서 받아내림한 것을 잊은 아이)
-        const [a, b] = d.until(() => sixDigits(d, (w1, t1, h1, w2, t2, h2) => h1 === 0 && t1 >= 1 && t1 < t2 && h2 >= 1 && h2 !== 5 && w1 - w2 >= 2), ([x, y]) => Number(s2(x)) - Number(d2(y)) === (x - y) / 100), A = s2(a), Bt = d2(b), right = a - b;
-        const list = d.shuffle([right, right + 2 * (b % 10), right + 10, right + 100]);
-        return C(`${A} − ${Bt}의 값은?`, list.map(d2), list.indexOf(right), {
-          explain: `${A}의 소수 둘째 자리에 0이 있다고 생각하고 소수 첫째 자리에서 받아내림한다. ${A} − ${Bt} = ${d2(right)}`, facts: { pick: { expr: `${A}-${Bt}`, options: list.map((v) => v / 100) } }
-        });
-      }),
       H('h-box-pair', '□가 들어 있는 두 소수의 크기 비교', '②50', (d) => {
         // □를 몰라도 높은 자리로 비교할 수 있을 때가 있다. 「알 수 없다」를 고르는 아이는 □가 있으면 비교할 수 없다고 여긴다.
         const t = d.int(1, 8), [h2, h1] = uniq(d, 2).sort((p, q) => p - q), kind = d.int(0, 2);
@@ -759,14 +646,6 @@
           facts: { big: { boxedPair: { left, right, signs: ['>', '<', '?'] } } }
         });
       }, { standard: ORDER }),
-      H('h-point-sum', '합이 1을 넘는 덧셈의 소수점 자리', '①73·85 ②62 ③57', (d) => {
-        // 틀린 보기: 0.12(5 + 7 = 12 앞에 0.을 붙인 아이), 12(소수점을 빠뜨린 아이), 0.012
-        const [a, b] = d.until(() => [d.int(2, 9), d.int(2, 9)], ([x, y]) => x + y >= 11 && x !== y && Number(`0.${x}`) + Number(`0.${y}`) === (x + y) / 10), s = a + b;
-        const list = d.shuffle([[d1(s), s / 10], [`0.${s}`, s / 100], [String(s), s], [`0.0${s}`, s / 1000]]);
-        return C(`0.${a} + 0.${b}의 값은?`, list.map((row) => row[0]), list.findIndex((row) => row[1] === s / 10), {
-          explain: `0.${a} + 0.${dj(b, '은/는')} 0.1이 ${a} + ${b} = ${s}(개)인 수이다. 0.1이 10개이면 1이므로 ${d1(s)}이다.`, facts: { pick: { expr: `0.${a}+0.${b}`, options: list.map((row) => row[1]) } }
-        });
-      }),
       H('h-relate-wrong', '1/10을 잘못 구한 값 바로잡기', '①43 ②34 심25', (d) => {
         const r = two(d, 105, 989), kind = d.int(0, 2), got = [String(r * 10), String(r), d3(r)][kind], did = ['100배를', '10배를', `${HUNDREDTH}을`][kind];
         return D(`어떤 수의 ${TENTH}을 구해야 할 것을 잘못하여 어떤 수의 ${did} 구했더니 ${dj(got, '이/가')} 되었다. 바르게 구한 값은?`, r / 100, {

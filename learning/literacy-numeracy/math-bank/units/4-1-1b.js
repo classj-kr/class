@@ -305,12 +305,6 @@
   B.addGroup('4-1-1', {
     id: 'hard', title: '실력 문제', standard: NUM,
     types: [
-      H('h-zero-read', '0이 여러 군데 낀 수 읽기', '20, 기본 ①40 ①87', (d) => {
-        // 틀린 보기: 십의 자리를 백의 자리로 당겨 읽은 것, 억의 자리를 하나 줄인 것, 일의 묶음을 하나 올린 것
-        const a = d.int(2, 9), b = d.int(1, 9), c = d.int(1, 9), e = d.int(1, 9), n = big(0, a * 100, b * 1000 + c * 10, e * 100);
-        const list = d.shuffle([n, big(0, a * 100, b * 1000 + c * 100, e * 100), big(0, a * 10, b * 1000 + c * 10, e * 100), big(0, a * 100, b * 1000 + c * 10, e * 1000)]);
-        return C(`${josa(n, '을/를')} 읽은 것으로 옳은 것은?`, list.map(say), list.indexOf(n), { explain: `일의 자리부터 네 자리씩 끊으면 ${cut(n)}이다. ${said(n)} 읽는다.`, facts: { big: { names: { value: n, given: String(n) } } } });
-      }),
       H('h-missing-count', '10개가 넘는 묶음이 낀 수에서 빠진 묶음의 수', '9, 기본 ②15', (d) => {
         // 수의 천의 자리 숫자를 그대로 답하는 아이(100이 10개를 넘어 천의 자리가 하나 올라간 것을 놓친다)
         const a = d.int(2, 8), x = d.int(2, 7), b = d.int(11, 19), c = d.int(1, 9), n = a * 10000 + x * 1000 + b * 100 + c * 10, list = d.shuffle([x, x + 1, x - 1, x + 2]);

@@ -43,15 +43,6 @@
           facts: facts(v, { choose: { exprs: v.map(String), rule: 'max' }, symbolTrap: { values: v, symbols } })
         });
       }),
-      H('h-legend', '그림이 나타내는 수를 보고 읽기', '그림이 나타내는 수 읽기(심화 21·22), 한 항목의 수로 그림의 단위 알아내기(기본 ②26 ③22)', (d) => {
-        // 큰 그림이 100, 작은 그림이 10인 그림그래프: 큰 그림을 10으로 읽으면 틀린다
-        const s = SETS[1], v = d.until(() => [0, 1, 2, 3].map(() => d.int(1, 4) * 100 + d.int(1, 7) * 10), (x) => new Set(x).size === 4), k = d.int(0, 3), big = Math.floor(v[k] / 100), small = (v[k] % 100) / 10;
-        const list = d.until(() => d.shuffle([v[k], v[k] / 10, big + small, big * 100 + small]), (x) => new Set(x).size === 4);
-        return C(`${lead(s)} ${josa(of(s, k), '은/는')} 몇 ${s.each}인가?`, list.map((x) => x + s.each), list.indexOf(v[k]), {
-          figure: graphOf(s, v, [100, 10]), explain: `큰 그림은 100${s.each}, 작은 그림은 10${s.each}를 나타낸다. ${josa(s.names[k], '은/는')} 큰 그림이 ${big}개, 작은 그림이 ${small}개이므로 ${big * 100} + ${small * 10} = ${v[k]}(${s.each})이다.`.replace(`10${s.each}를`, josa('10' + s.each, '을/를')),
-          facts: facts(v, { pick: { expr: String(v[k]), options: list } })
-        });
-      }),
       H('h-double', '2배 조건으로 빠진 항목을 구해 전체 수 구하기', '「2배」로 빈 항목 구하기(심화 73, 기본 ②66)', (d) => {
         const s = d.pick(SETS), [a, b, e] = d.until(() => [d.int(1, 2) * 10 + d.int(1, 4), d.int(2, 5) * 10 + d.int(0, 8), d.int(2, 5) * 10 + d.int(0, 8)], ([x, y, z]) => new Set([x, x * 2, y, z]).size === 4 && x + x * 2 + y + z <= 160);
         const v = [a, b, a * 2, e], shown = [a, b, null, e];

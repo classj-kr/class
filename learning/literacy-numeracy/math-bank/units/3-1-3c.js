@@ -327,37 +327,6 @@
   for (const a of [12, 18, 24, 36]) for (const b of divisorsOf(a)) for (const x of divisorsOf(a)) if (b !== a / b && x !== b && x !== a / b) TWINS.push([a, b, a / b, x, a / x]);
 
   B.addTypes('3-1-3', 'hard', [
-    H('h-how', '곱셈식으로 몫을 구하는 방법', '심17 심25 ①39', (d) => {
-      const [a, b, q, x, y] = d.pick(TWINS);
-      const rows = d.shuffle([
-        { text: `${expr(b, '*', q, '=', a)}이므로 몫은 ${q}이다.`, ok: true },
-        // 곱셈식은 바르게 찾았으나 나누는 수를 몫으로 읽는 아이가 고른다.
-        { text: `${expr(b, '*', q, '=', a)}이므로 몫은 ${b}이다.`, ok: false },
-        // 곱만 같으면 어느 곱셈식이든 쓸 수 있다고 여기는 아이가 고른다(나누는 수가 들어 있지 않다).
-        { text: `${expr(x, '*', y, '=', a)}이므로 몫은 ${y}이다.`, ok: false },
-        // 곱셈식의 곱을 몫으로 읽는 아이가 고른다.
-        { text: `${expr(b, '*', q, '=', a)}이므로 몫은 ${a}이다.`, ok: false }
-      ]);
-      return C(`${a} ÷ ${b}의 몫을 구하는 방법을 바르게 말한 것은?`, rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
-        explain: `나누는 수 ${josa(b, '과/와')} 곱하여 ${josa(a, '이/가')} 되는 수가 몫이다. ${expr(b, '*', q, '=', a)}이므로 몫은 ${q}이다.`,
-        facts: { truth: rows.map((row) => row.ok), want: true, divMeans: [a, b, q] }
-      });
-    }),
-    H('h-times-form', '나눗셈식을 곱셈식으로 나타낸 것', '심20', (d) => {
-      // 8÷4=2 → 4×2=8 (8×4=32, 2×8=16 은 아니다). 나누어지는 수가 한 자리 수여야 보기의 곱셈이 곱셈구구 안에 든다.
-      const [a, b, q] = d.pick([[6, 2, 3], [8, 2, 4], [8, 4, 2]]);
-      const rows = d.shuffle([
-        { html: expr(b, '*', q, '=', a), ok: true },
-        // 나눗셈식에 적힌 차례대로 나누어지는 수와 나누는 수를 곱하는 아이가 고른다.
-        { html: expr(a, '*', b, '=', a * b), ok: false },
-        // 몫과 나누어지는 수를 곱하는 아이가 고른다(나누어지는 수가 곱이 되어야 함을 모른다).
-        { html: expr(q, '*', a, '=', q * a), ok: false }
-      ]);
-      return C(`나눗셈식 ${a} ÷ ${b} = ${josa(q, '을/를')} 곱셈식으로 바르게 나타낸 것은?`, rows.map((row) => row.html), rows.findIndex((row) => row.ok), {
-        explain: `나누는 수 ${josa(b, '과/와')} 몫 ${josa(q, '을/를')} 곱하면 나누어지는 수 ${josa(a, '이/가')} 된다. ${expr(b, '*', q, '=', a)}`,
-        facts: { truth: rows.map((row) => row.ok), want: true, divMeans: [a, b, q] }
-      });
-    }, { standard: MEAN }),
     H('h-friends', '나누는 사람 수가 글에 숨어 있는 문장제', '심4 ②60', (d) => {
       // 젤리 48개를 민수와 친구 7명이 → 8명 → 6개. 친구 수로만 나누어도 나누어지는 수를 고른다.
       const who = d.pick(NAMES), k = d.pick([2, 3, 4, 6, 7, 8]), a = k * (k + 1);

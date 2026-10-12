@@ -46,20 +46,6 @@
           facts: { claimed: rows.map((row) => row.claim), claimedWant: false, mulAny: [a, b] }
         });
       }),
-      H('h-zeros', '(몇십)×(몇십)에서 0의 개수', '곱의 0의 개수(미래엔), 0을 빠뜨린 계산 고르기·고치기(미래엔·비상·천재)', (d) => {
-        // 50×40: 5×4=20 에 0 을 2개 붙여 2000. 곱에 있는 0 은 3개다.
-        const [a, b] = d.pick([[5, 4], [5, 6], [5, 8], [4, 5], [6, 5], [8, 5], [2, 5], [5, 2]]), small = a * b, product = small * 100;
-        const rows = d.shuffle([
-          { text: `${a} × ${b} = ${small}에 0을 1개 붙인 ${small * 10}이다.`, ok: false },                               // 0을 하나만 붙이는 아이
-          { text: `${a} × ${b} = ${small}에 0을 2개 붙인 ${product}이다.`, ok: true },
-          { text: `${a} × ${b} = ${small}이므로 곱에 있는 0은 모두 2개이다.`, ok: false },                                 // 붙인 0의 수와 곱의 0의 수를 같은 것으로 아는 아이
-          { text: `${a * 10} × ${b * 10}의 값은 ${a} × ${b}의 값의 10배이다.`, ok: false }                                // 10배와 100배를 혼동하는 아이
-        ]);
-        return C(`${a * 10} × ${b * 10}의 계산에 대한 설명으로 옳은 것은?`, rows.map((row) => row.text), rows.findIndex((row) => row.ok), {
-          explain: `${a * 10} × ${b * 10}은 ${a} × ${b}의 100배이다. ${a} × ${b} = ${small}에 0을 2개 붙이면 ${product}이고, 이 수에는 0이 3개 있다.`,
-          facts: { truth: rows.map((row) => row.ok), want: true, zeros: [a, b] }
-        });
-      }),
       H('h-split', '곱하는 수를 갈라 계산하기', '곱하는 수를 갈라 더하기(비상·천재), 모눈으로 나누어 계산(YBM·미래엔·천재)', (d) => {
         // 26×34 = 26×30 + 26×4
         const [a, b] = pair22(d), a10 = a - a % 10, b10 = b - b % 10;
@@ -72,14 +58,6 @@
         return C(`${a} × ${josa(b, '과/와')} 계산 결과가 같은 것은?`, list.map(([said]) => said), list.findIndex(([, text]) => text === `${a}*${b10}+${a}*${b % 10}`), {
           explain: `${josa(b, '은/는')} ${josa(b10, '과/와')} ${b % 10}의 합이므로 ${a} × ${josa(b, '은/는')} ${a} × ${josa(b10, '과/와')} ${a} × ${b % 10}의 합이다.`,
           facts: { choose: { exprs: list.map(([, text]) => text), rule: 'equals', target: a * b }, mulAny: [a, b] }
-        });
-      }),
-      H('h-middle', '가운데 0이 있는 수의 곱', '(세 자리 수)×(한 자리 수) 계산(모든 출판사) — 0과의 곱을 건너뛰는 것을 보기에 넣는다', (d) => {
-        // 304×2 = 608 (68 이 아니다)
-        const [h, o, b] = d.until(() => [d.int(1, 4), d.int(1, 4), d.int(2, 3)], ([x, y, z]) => x * z <= 9 && y * z <= 9 && x !== y), a = h * 100 + o;
-        const list = d.shuffle([a * b, h * b * 10 + o * b, h * b * 100 + o * b * 10, h * b * 1000 + o * b]);       // 바른 값, 0을 건너뜀, 자리를 밀어 씀, 0을 하나 더 씀
-        return C(`${a} × ${b}의 값은?`, list.map(String), list.indexOf(a * b), {
-          explain: `십의 자리 계산 0 × ${b} = 0도 십의 자리에 적는다. ${times(a, b)}`, facts: { choose: { exprs: list.map(String), rule: 'equals', target: a * b }, zeroMiddle: [a, b] }
         });
       }),
       H('h-wrong', '잘못 계산한 어떤 수', '한대희·지학사·미래엔·동아·YBM·디딤돌·비상·아이스크림(여덟 종)', (d) => {

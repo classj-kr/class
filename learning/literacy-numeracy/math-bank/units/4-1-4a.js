@@ -139,7 +139,7 @@
   const plainlyUneven = (t) => { const s = sides2(t).map(Math.sqrt).sort((x, y) => x - y); return s[1] / s[0] > 1.15 && s[2] / s[1] > 1.15; };
 
   B.addUnit({
-    id: '4-1-4', grade: 4, semester: 1, no: 4, title: '삼각형', version: 1,
+    id: '4-1-4', grade: 4, semester: 1, no: 4, title: '삼각형', version: 2,
     groups: [
       {
         id: 'sides', title: '변의 길이에 따라 삼각형 분류하기', standard: SIDE,

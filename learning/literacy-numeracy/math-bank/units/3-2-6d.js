@@ -377,16 +377,6 @@
 
   // ── 실력 문제 ────────────────────────────────────────────────
   B.addTypes('3-2-6', 'hard', [
-    H('h-skip', '가운데 그림이 없는 수 읽기', '심25, 기본 ①9', (d) => {
-      // 100 그림 3개와 1 그림 4개(304). 340: 가장 작은 그림을 10으로 읽는 아이, 34: 큰 그림은 10·작은 그림은 1이라고 읽는 아이, 7: 그림의 수를 세는 아이
-      const s = TREE, h = d.int(1, 4), o = d.until(() => d.int(1, 7), (x) => x !== h), right = h * 100 + o;
-      const rest = d.until(() => [0, 1, 2].map(() => d.int(1, 4) * 100 + d.int(1, 6) * 10 + d.int(0, 5)), (x) => distinct(x.concat([right]))), k = d.int(0, 3), v = rest.slice(0, k).concat([right], rest.slice(k));
-      const list = d.shuffle([right, h * 100 + o * 10, h * 10 + o, h + o]);
-      return C(`${lead(s)} ${s.names[k]}에 심은 나무의 수를 바르게 읽은 것은?`, list.map((x) => x + '그루'), list.indexOf(right), {
-        figure: graph(s, v, [100, 10, 1]), explain: `${s.names[k]}에는 100그루를 나타내는 그림 ${h}개와 1그루를 나타내는 그림 ${o}개가 있고, 10그루를 나타내는 그림은 없다. ${h * 100} + ${o} = ${right}(그루)이다.`,
-        facts: facts(v, { pick: { expr: String(right), options: list } })
-      });
-    }),
     H('h-fewest', '그림의 수가 적다고 수가 적은 것은 아니다', '심31', (d) => {
       // 큰 그림 2개와 작은 그림 1개(210, 그림 3개)가 큰 그림 1개와 작은 그림 8개(180, 그림 9개)보다 많다.
       // 그림의 수가 가장 적은 줄을 고르는 아이는 틀린다.

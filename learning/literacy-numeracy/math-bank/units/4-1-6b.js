@@ -406,11 +406,6 @@
   B.addGroup('4-1-6', {
     id: 'hard', title: '실력 문제', standard: EQUAL,
     types: [
-      H('hd-equal-answer', '등호 바로 뒤의 □', '59, 기본 ②69', (d) => {
-        // 틀린 보기: 등호 뒤에 왼쪽 식의 답을 쓴 것, 나온 수를 모두 더한 것, 한 수가 커지면 다른 수도 커진다고 여긴 것
-        const a = d.int(23, 58), b = d.int(12, 29), k = d.int(2, 6), more = d.bool(), c = more ? b + k : b - k, x = more ? a - k : a + k, list = d.shuffle([x, a + b, a + b + c, more ? a + k : a - k]);
-        return C('□ 안에 알맞은 수는?', list.map(String), list.indexOf(x), { figure: lines([`${a} + ${b} = ${box()} + ${c}`]), explain: `등호는 양쪽의 크기가 같음을 나타낸다. ${a} + ${b} = ${a + b}이므로 □ + ${c} = ${a + b}이고, □ = ${a + b} − ${c} = ${x}이다.`, facts: { pick: { expr: `${a}+${b}-${c}`, options: list } } });
-      }),
       H('hd-right-side', '등호 오른쪽에 올 수 있는 것', '66, 기본 ③73', (d) => {
         // 등호 오른쪽에는 수 하나(답)만 온다고 여기는 아이는 1개라고 답한다.
         const a = d.int(15, 29), b = d.int(6, 10), v = a - b, p = d.int(2, v - 2), q = d.int(5, 12), same = d.bool();
@@ -423,50 +418,12 @@
         const rows = d.shuffle([[`${a} + ${b} + ${c} = ${a + b + c}`, true], [`${a} + ${b} = ${a + b}`, true], [`${a + b} + ${c} = ${a + b + c}`, true], [`${a} + ${b} = ${a + b} + ${c} = ${a + b + c}`, false]]);
         return C(`책꽂이에 책이 ${a}권 꽂혀 있었다. 오전에 ${b}권을 더 꽂고, 오후에 ${c}권을 더 꽂았다. 책꽂이에 꽂힌 책의 수를 구하면서 쓴 식 가운데 등호를 잘못 사용한 것은?`, rows.map((row) => row[0]), rows.findIndex((row) => !row[1]), { explain: `${a} + ${b} = ${a + b}이고 ${a + b} + ${c} = ${a + b + c}이다. ${a} + ${josa(b, '과/와')} ${a + b} + ${josa(c, '은/는')} 크기가 다르므로 등호로 이을 수 없다.`, facts: truthOf(rows, false) });
       }),
-      H('hd-sub-same-way', '뺄셈 등식에서 두 수의 변화', '59, 기본 ③71', (d) => {
-        // 틀린 보기: 덧셈처럼 한 수가 작아지면 다른 수가 커진다고 여긴 것, 왼쪽 식의 답을 쓴 것, 변한 크기를 쓴 것
-        const [a, b, k] = d.until(() => [d.int(51, 89), d.int(21, 39), d.pick([5, 10, 20])], ([x, y, z]) => y - z >= 3 && new Set([y - z, y + z, x - y, z]).size === 4), list = d.shuffle([b - k, b + k, a - b, k]);
-        return C('□ 안에 알맞은 수는?', list.map(String), list.indexOf(b - k), { figure: lines([`${a} − ${b} = ${a - k} − ${box()}`]), explain: `빼지는 수가 ${k} 작아졌으므로 빼는 수도 ${k} 작아져야 차가 같다. ${a} − ${b} = ${a - b}, ${a - k} − ${b - k} = ${a - b}`, facts: { pick: { expr: `${a - k}-(${a}-${b})`, options: list } } });
-      }),
       H('hd-double-half', '덧셈과 곱셈에서 달라지는 규칙', '60·65', (d) => {
         // 틀린 보기: 곱셈의 「2배와 절반」을 덧셈에 쓴 것, 덧셈의 「커진 만큼 작게」를 곱셈에 쓴 것, 두 수를 모두 2배 한 것
         const [a, b] = d.until(() => [d.pick([12, 14, 16, 18]), d.pick([24, 26, 28, 32, 34])], ([x, y]) => y !== 2 * x && y - x !== 10);
         const rows = d.shuffle([[`${a} × ${b} = ${2 * a} × ${b / 2}`, `${a}*${b}`, 2 * a * (b / 2)], [`${a} + ${b} = ${2 * a} + ${b / 2}`, `${a}+${b}`, 2 * a + b / 2], [`${a} × ${b} = ${a + 10} × ${b - 10}`, `${a}*${b}`, (a + 10) * (b - 10)], [`${a} × ${b} = ${2 * a} × ${2 * b}`, `${a}*${b}`, 4 * a * b]]);
         return C('계산하지 않고 두 수가 어떻게 변했는지 살펴 옳은 식을 찾으려고 한다. 옳은 식은?', rows.map((row) => row[0]), rows.findIndex((row) => row[1] === `${a}*${b}` && row[2] === a * b), { explain: `곱셈에서는 한 수가 2배가 되면 다른 수는 절반이 되어야 곱이 같다. 덧셈에서는 한 수가 커진 만큼 다른 수가 작아져야 합이 같다. ${a} × ${b} = ${a * b}, ${2 * a} × ${b / 2} = ${a * b}`, facts: { claimed: rows.map((row) => [row[1], row[2]]), claimedWant: true } });
       }),
-      H('hd-row-first-gap', '한 칸만 보고 정한 규칙', '10, 기본 ②15', (d) => {
-        // 틀린 보기: 바로 앞 두 수의 차를 더한 것, 첫 두 수의 차를 더한 것, 양옆 두 수의 가운데 수를 쓴 것
-        const [p, s] = d.pick([[2, 30], [2, 50], [2, 70], [3, 6], [3, 8], [3, 10]]), t = range(5).map((i) => s * Math.pow(p, i)), list = d.shuffle([t[3], t[2] + t[2] - t[1], t[2] + t[1] - t[0], (t[2] + t[4]) / 2]);
-        return C('수의 배열에서 ㉠에 알맞은 수는?', list.map(String), list.indexOf(t[3]), { figure: seq([t[0], t[1], t[2], box(LABELS[0]), t[4]]), explain: `${t[1]} ÷ ${t[0]} = ${p}, ${t[2]} ÷ ${t[1]} = ${p}이므로 ${p}씩 곱하는 규칙이다. ${t[2]} × ${p} = ${t[3]}이고 ${t[3]} × ${p} = ${josa(t[4], '으로/로')} 끝까지 맞는다.`, facts: { pick: { expr: `${t[2]}*(${t[1]}/${t[0]})`, options: list } } });
-      }, { standard: RULE }),
-      H('hd-rule-swap', '세로줄에 써야 할 규칙', '2', (d) => {
-        // 틀린 보기: 세로로 가면서 가로 규칙을 쓴 것, 가로와 세로 규칙을 한꺼번에 쓴 것, 한 칸을 더 간 것
-        const [h, v] = d.pick(HV), cell = cellOf(startOf(d), h, v), c = d.int(1, 2), marks = {};
-        for (let i = 1; i < 4; i += 1) for (let j = 0; j < 4; j += 1) if (j !== c || i === 3) marks[i + ',' + j] = '';
-        marks['3,' + c] = box(LABELS[0]);
-        const list = d.shuffle([cell(3, c), cell(2, c) + h, cell(2, c) + h + v, cell(2, c) + 2 * v]);
-        return C('수 배열표의 일부가 지워졌다. 규칙에 따라 ㉠에 알맞은 수는?', list.map(String), list.indexOf(cell(3, c)), { figure: tableOf(cell, 4, 4, marks), explain: `㉠은 ${cell(2, c)}의 바로 아래 칸이다. ↓ 방향으로 ${cell(2, c)} − ${cell(1, c)} = ${v}씩 커지므로 ㉠은 ${cell(2, c)} + ${v} = ${cell(3, c)}이다. ${h}씩 커지는 것은 → 방향의 규칙이다.`, facts: { pick: { expr: `${cell(2, c)}+${cell(2, c)}-${cell(1, c)}`, options: list } } });
-      }, { standard: RULE }),
-      H('hd-total-vs-step', '늘어나는 수와 전체의 수', '24·25, 기본 ③18', (d) => {
-        // 틀린 보기: 늘어나는 수를 답한 것, 순서에 늘어나는 수를 곱한 것(처음 1개를 놓침), 한 단계 덜 간 것
-        const s = 4, what = '바둑돌', shapes = range(3, 1).map((n) => st(cross(n))), list = d.shuffle([1 + 4 * s, s, 5 * s, 1 + 3 * s]);
-        return C(`규칙에 따라 ${josa(what, '을/를')} 늘어놓았다. 다섯째 모양의 ${josa(what, '은/는')} 모두 몇 개인가?`, list.map((n) => n + '개'), list.indexOf(1 + 4 * s), { figure: steps(shapes, ORD, told(shapes, ORD, what)), explain: `1개에서 시작하여 ${s}개씩 늘어난다. 넷째 모양은 ${1 + 3 * s}개, 다섯째 모양은 ${1 + 3 * s} + ${s} = ${1 + 4 * s}(개)이다. ${s}개는 늘어나는 수이고, ${5 * s}개는 처음 1개를 ${s}개로 잘못 센 수이다.`, facts: { pick: { expr: `${shapes[2].n}+(${shapes[2].n}-${shapes[1].n})+(${shapes[2].n}-${shapes[1].n})`, options: list } } });
-      }, { standard: RULE }),
-      H('hd-square-off', '순서와 하나 어긋나는 곱', '29', (d) => {
-        // 틀린 보기: 순서의 수를 두 번 곱한 것(일곱째이니 7 × 7), 하나 더 간 것, 순서와 그다음 수를 곱한 것
-        const shapes = range(3, 1).map((n) => sq(block(n + 1, n + 1))), k = d.pick([6, 8]), list = d.shuffle([(k + 1) * (k + 1), k * k, (k + 2) * (k + 2), k * (k + 1)]);
-        return C(`규칙에 따라 사각형을 늘어놓았다. ${ORD[k - 1]} 모양의 사각형은 몇 개인가?`, list.map((n) => n + '개'), list.indexOf((k + 1) * (k + 1)), { figure: steps(shapes, ORD, told(shapes, ORD, '사각형')), explain: `첫째 모양은 2 × 2, 둘째 모양은 3 × 3, 셋째 모양은 4 × 4이다. 순서보다 1 큰 수를 두 번 곱하므로 ${ORD[k - 1]} 모양은 ${k + 1} × ${k + 1} = ${(k + 1) * (k + 1)}(개)이다.`, facts: { pick: { expr: `${k + 1}*${k + 1}`, options: list }, unseen: [k + 1] } });
-      }, { standard: RULE }),
-      H('hd-both-double', '두 수가 모두 2배가 되는 곱셈식', '52', (d) => {
-        // 틀린 보기: 곱도 2배가 된다고 여긴 것, 8배로 본 것, 앞의 두 곱의 차를 더한 것
-        const a = d.pick([15, 12, 30, 35]), b = d.pick([2, 3]), A = (i) => a * Math.pow(2, i), Bv = (i) => b * Math.pow(2, i), R = (i) => A(i) * Bv(i), list = d.shuffle([R(3), 2 * R(2), 8 * R(2), R(2) + R(2) - R(1)]);
-        return C('곱해지는 수와 곱하는 수가 모두 2배씩 커지는 곱셈식의 배열이다. □ 안에 알맞은 수는?', list.map(String), list.indexOf(R(3)), { figure: named(range(4).map((i) => (i === 3 ? `${A(i)} × ${Bv(i)} = ${box()}` : fmt(`${A(i)}*${Bv(i)}=${R(i)}`)))), explain: `두 수가 모두 2배가 되면 곱은 4배가 된다. 곱은 ${R(0)}, ${R(1)}, ${josa(R(2), '으로/로')} 4배씩 되었다. ${R(2)} × 4 = ${R(3)}`, facts: { pick: { expr: `${A(3)}*${Bv(3)}`, options: list } } });
-      }, { standard: CALC }),
-      H('hd-mid-times', '네 수의 합과 가운데 수', '21', (d) => {
-        // 틀린 보기: 세 수의 합은 3배, 다섯 수의 합은 5배라는 것만 외워 5배라고 한 것, 짝의 수(2)를 답한 것
-        const a = d.int(21, 45), t = range(4).map((i) => a + 2 * i), list = d.shuffle([4, 5, 3, 2]);
-        return C('□ 안에 알맞은 수는?', list.map(String), list.indexOf(4), { figure: lines([`${t.join(' + ')} = ${a + 3} × ${box()}`]), explain: `${t[0]} + ${t[3]} = ${2 * a + 6}, ${t[1]} + ${t[2]} = ${2 * a + 6}이고 ${josa(2 * a + 6, '은/는')} ${a + 3}의 2배이다. 네 수의 합은 ${a + 3}의 4배이다.`, facts: { pick: { expr: `(${t.join('+')})/${a + 3}`, options: list } } });
-      }, { standard: CALC }),
       H('hd-torn-back', '규칙을 거꾸로 써서 구하는 칸', '3', (d) => {
         const [h, v] = d.pick(HV), cell = cellOf(startOf(d), h, v), marks = { '0,0': box(LABELS[0]) };
         for (let i = 1; i < 4; i += 1) { marks['0,' + i] = ''; marks[i + ',0'] = ''; }
