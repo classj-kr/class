@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-12T15:59:49.593Z",
+  "engine": "webkit",
+  "catalog": true,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "",
+      "scenarios": 25
+    }
+  ],
+  "scenarios": 25,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": false,
+  "loadedFontFamilies": []
+}

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-12",
-  "scope": "124 base and 63 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
+  "scope": "136 base and 69 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
   "questions": [
     {
       "id": "sound-vibration#q1",
@@ -480,6 +480,110 @@
         ],
         "answer": "c",
         "why": "물고기의 뼈와 나뭇잎은 생물 몸체의 모습입니다. 발자국은 발 자체가 아니라 생물이 활동하며 남긴 흔적입니다."
+      }
+    },
+    {
+      "id": "cell-structure#q1",
+      "slug": "cell-structure",
+      "sha256": "ffcd933064aa8ea63352e225000b3061a6044fc2da22a453991a9b0da656677d",
+      "after": {
+        "id": "cell-structure#q1",
+        "slug": "cell-structure",
+        "question": "동물 구강 상피와 양파 표피에서 공통으로 관찰하는 구조의 짝은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "핵과 세포막"
+          },
+          {
+            "id": "b",
+            "text": "핵과 세포벽"
+          },
+          {
+            "id": "c",
+            "text": "세포벽과 엽록체"
+          }
+        ],
+        "answer": "a",
+        "why": "두 세포에는 핵과 세포막이 있지만 동물 구강 상피에는 세포벽이 없습니다. 양파 비늘줄기 표피에서는 보통 엽록체가 관찰되지 않습니다."
+      }
+    },
+    {
+      "id": "cell-structure#q2",
+      "slug": "cell-structure",
+      "sha256": "0306210306aa93280bae2a545f9892e91b914ef8a5d093b120e58251cbb90676",
+      "after": {
+        "id": "cell-structure#q2",
+        "slug": "cell-structure",
+        "question": "양파 표피 세포의 바깥에서 각진 형태를 지지하는 구조는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "핵막"
+          },
+          {
+            "id": "b",
+            "text": "액포막"
+          },
+          {
+            "id": "c",
+            "text": "세포벽"
+          }
+        ],
+        "answer": "c",
+        "why": "단단한 세포벽이 식물 세포의 형태를 지지합니다. 핵막과 액포막은 세포 내부 구조를 둘러쌉니다."
+      }
+    },
+    {
+      "id": "cell-structure#q3",
+      "slug": "cell-structure",
+      "sha256": "ae0d173fdc9bcd996474b66ad0263e55fc48ff56059abfce8da33e886cbbdadb",
+      "after": {
+        "id": "cell-structure#q3",
+        "slug": "cell-structure",
+        "question": "같은 표본을 100배에서 400배로 바꾸어 관찰했다. 시야에 들어오는 세포 수와 세포 하나의 보이는 크기는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "세포 수 증가 · 크기 감소"
+          },
+          {
+            "id": "b",
+            "text": "세포 수 감소 · 크기 감소"
+          },
+          {
+            "id": "c",
+            "text": "세포 수 감소 · 크기 증가"
+          }
+        ],
+        "answer": "c",
+        "why": "배율을 높이면 더 좁은 범위를 확대해 보므로 한 세포는 크게 보이지만 시야에 들어오는 세포 수는 줄어듭니다."
+      }
+    },
+    {
+      "id": "cell-structure#q4",
+      "slug": "cell-structure",
+      "sha256": "a5c635a2f23521f732128a964ea15250798e4ac89913bc670a125c63a3ecc71f",
+      "after": {
+        "id": "cell-structure#q4",
+        "slug": "cell-structure",
+        "question": "양파 비늘줄기 표피에서 세포벽과 핵이 보였지만 엽록체는 보이지 않았다. 관찰과 일치하는 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "세포벽이 있으면 핵은 관찰할 수 없음"
+          },
+          {
+            "id": "b",
+            "text": "식물 세포라도 엽록체가 없을 수 있음"
+          },
+          {
+            "id": "c",
+            "text": "엽록체가 안 보이면 동물 세포에 해당함"
+          }
+        ],
+        "answer": "b",
+        "why": "양파 비늘줄기 표피는 식물 세포이지만 보통 엽록체가 관찰되지 않습니다. 식물의 모든 부위 세포가 같은 구조를 갖는 것은 아닙니다."
       }
     },
     {
@@ -3721,6 +3825,246 @@
         "answer": "d",
         "why": "생성된 CH₃COO⁻와 H₃O⁺가 각각 x M이고 남은 CH₃COOH는 0.1−x M이므로 Kₐ=x²/(0.1−x)입니다."
       }
+    },
+    {
+      "id": "equilibrium-colour#q1",
+      "slug": "equilibrium-colour",
+      "sha256": "0448f53017ea398c8792e689c068b2e6a9558f41025390cdb93bb967f244d4f8",
+      "after": {
+        "id": "equilibrium-colour#q1",
+        "slug": "equilibrium-colour",
+        "question": "Cr₂O₇²⁻ + H₂O ⇌ 2CrO₄²⁻ + 2H⁺가 평형이다. 온도와 다른 이온 농도는 그대로 두고 [H⁺]만 순간적으로 2배가 되었다. 반응 직후 Q와 우세한 반응은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Q = 2K · 정반응"
+          },
+          {
+            "id": "b",
+            "text": "Q = 2K · 역반응"
+          },
+          {
+            "id": "c",
+            "text": "Q = 4K · 정반응"
+          },
+          {
+            "id": "d",
+            "text": "Q = 4K · 역반응"
+          }
+        ],
+        "answer": "d",
+        "why": "Q=[CrO₄²⁻]²[H⁺]²/[Cr₂O₇²⁻]이므로 Q는 4K입니다. Q>K이면 역반응이 우세하여 주황색 이온이 늘어나는 방향입니다."
+      }
+    },
+    {
+      "id": "equilibrium-colour#q2",
+      "slug": "equilibrium-colour",
+      "sha256": "45c375832954e9e2d2eadf80501fa775f8ffd5fc1a0ac508e7cc4ff58ce74908",
+      "after": {
+        "id": "equilibrium-colour#q2",
+        "slug": "equilibrium-colour",
+        "question": "같은 온도에서 주황색 다이크로뮴산 수용액에 NaOH 수용액을 조금씩 넣어 노란색이 되었다. H⁺ 농도 변화의 원인과 평형 상수 K의 변화는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "H⁺ 소비 · K 일정"
+          },
+          {
+            "id": "b",
+            "text": "H⁺ 소비 · K 증가"
+          },
+          {
+            "id": "c",
+            "text": "H⁺ 생성 · K 일정"
+          },
+          {
+            "id": "d",
+            "text": "H⁺ 생성 · K 감소"
+          }
+        ],
+        "answer": "a",
+        "why": "OH⁻가 H⁺를 소비하면 제시한 반응의 Q가 작아져 정반응이 우세해집니다. 온도를 유지했으므로 K는 변하지 않습니다."
+      }
+    },
+    {
+      "id": "equilibrium-colour#q3",
+      "slug": "equilibrium-colour",
+      "sha256": "a0b9b9533b4c85c00bbe864da809212fbe579c7680651be4c048ac21099e359c",
+      "after": {
+        "id": "equilibrium-colour#q3",
+        "slug": "equilibrium-colour",
+        "question": "Co(H₂O)₆²⁺ + 4Cl⁻ ⇌ CoCl₄²⁻ + 6H₂O의 정반응은 흡열 반응이다. 보라색 용액을 가열해 파란색이 되었을 때, 증가하는 착이온과 K의 변화는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Co(H₂O)₆²⁺ · K 증가"
+          },
+          {
+            "id": "b",
+            "text": "CoCl₄²⁻ · K 감소"
+          },
+          {
+            "id": "c",
+            "text": "CoCl₄²⁻ · K 증가"
+          },
+          {
+            "id": "d",
+            "text": "Co(H₂O)₆²⁺ · K 감소"
+          }
+        ],
+        "answer": "c",
+        "why": "온도가 높아지면 흡열 방향인 정반응이 유리해집니다. 파란색 CoCl₄²⁻가 증가하고 이 반응의 K도 커집니다."
+      }
+    },
+    {
+      "id": "equilibrium-colour#q4",
+      "slug": "equilibrium-colour",
+      "sha256": "d5faf6898d179bf045597d215200a4706bf2674fc7e4173e9a3c584fef7f4267",
+      "after": {
+        "id": "equilibrium-colour#q4",
+        "slug": "equilibrium-colour",
+        "question": "2NO₂(g) ⇌ N₂O₄(g)가 평형이다. 같은 온도에서 부피를 절반으로 줄인 직후, 반응이 진행되기 전의 Q와 이후 우세한 반응은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Q = 2K · 정반응"
+          },
+          {
+            "id": "b",
+            "text": "Q = K/2 · 정반응"
+          },
+          {
+            "id": "c",
+            "text": "Q = 2K · 역반응"
+          },
+          {
+            "id": "d",
+            "text": "Q = K/2 · 역반응"
+          }
+        ],
+        "answer": "b",
+        "why": "두 기체의 농도가 각각 2배가 되므로 Q=[N₂O₄]/[NO₂]²은 K/2입니다. 이후 정반응이 우세하여 NO₂가 줄지만, 새 평형의 NO₂ 농도가 압축 전보다 낮아진다는 뜻은 아닙니다."
+      }
+    },
+    {
+      "id": "strata-correlation#q1",
+      "slug": "strata-correlation",
+      "sha256": "942dc7b3144db899e47944a3ec28861edd8aa1f81e640a22ccffc859e6100036",
+      "after": {
+        "id": "strata-correlation#q1",
+        "slug": "strata-correlation",
+        "question": "건층 자료에서 지역 Ⅰ의 맨 아래 사암과 대비되는 지역 Ⅱ의 층은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "맨 위 사암"
+          },
+          {
+            "id": "b",
+            "text": "맨 아래 역암"
+          },
+          {
+            "id": "c",
+            "text": "석회암 바로 아래 사암"
+          },
+          {
+            "id": "d",
+            "text": "응회암 바로 아래 석회암"
+          }
+        ],
+        "answer": "c",
+        "why": "응회암을 먼저 연결하면 그 아래의 석회암과 사암 순서가 이어집니다. 지역 Ⅱ에는 사암이 두 층 있으므로 암석 이름만으로 고르면 안 됩니다."
+      }
+    },
+    {
+      "id": "strata-correlation#q2",
+      "slug": "strata-correlation",
+      "sha256": "841aa2742233ad666b6d9b7fed0b6dabe3d2a00e256a7cb5c2bc3c88bc114242",
+      "after": {
+        "id": "strata-correlation#q2",
+        "slug": "strata-correlation",
+        "question": "건층 자료의 세 지역을 대비했다. 중복된 층을 한 번씩 세었을 때 지층 수와 가장 젊은 층이 있는 지역은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "7개 · Ⅰ"
+          },
+          {
+            "id": "b",
+            "text": "8개 · Ⅲ"
+          },
+          {
+            "id": "c",
+            "text": "7개 · Ⅲ"
+          },
+          {
+            "id": "d",
+            "text": "8개 · Ⅰ"
+          }
+        ],
+        "answer": "b",
+        "why": "역암부터 사질 셰일까지 8개 층이 이어집니다. 가장 위에 놓이는 사질 셰일은 지역 Ⅲ에 있습니다."
+      }
+    },
+    {
+      "id": "strata-correlation#q3",
+      "slug": "strata-correlation",
+      "sha256": "18dd57b76aed677c7241d5af1b6003f54bcfc5c225974417bb5687e0370e3179",
+      "after": {
+        "id": "strata-correlation#q3",
+        "slug": "strata-correlation",
+        "question": "화석 자료의 지역 B에는 석회암이 세 층 있다. 지역 A의 맨 위 석회암과 대비되는 층은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "맨 아래의 삼엽충 석회암"
+          },
+          {
+            "id": "b",
+            "text": "셰일 바로 위의 석회암"
+          },
+          {
+            "id": "c",
+            "text": "석회암 세 층 모두"
+          },
+          {
+            "id": "d",
+            "text": "암모나이트가 있는 석회암"
+          }
+        ],
+        "answer": "d",
+        "why": "지역 A의 맨 위에는 암모나이트가 있습니다. 지역 B에서도 그 화석층과 위아래 순서를 함께 확인합니다."
+      }
+    },
+    {
+      "id": "strata-correlation#q4",
+      "slug": "strata-correlation",
+      "sha256": "772f1c0a36271002295f8d2636e217245f6e2518f601d3e9719f3988d62d5582",
+      "after": {
+        "id": "strata-correlation#q4",
+        "slug": "strata-correlation",
+        "question": "화석 자료에서 지역 C의 응회암과 그 바로 위 사암은 지역 A에서는 보이지 않는다. 이 두 층의 시기에 해당하는 위치는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "사질 셰일 위의 부정합"
+          },
+          {
+            "id": "b",
+            "text": "삼엽충층 아래의 사암"
+          },
+          {
+            "id": "c",
+            "text": "역암 아래의 부정합"
+          },
+          {
+            "id": "d",
+            "text": "맨 아래의 사질 셰일"
+          }
+        ],
+        "answer": "a",
+        "why": "지역 C에서 두 층은 사질 셰일과 암모나이트 석회암 사이에 있습니다. 지역 A에서는 그 사이가 부정합면입니다."
+      }
     }
   ],
   "transferQuestions": [
@@ -5029,6 +5373,129 @@
         "why": "소리를 내는 트라이앵글의 진동을 손으로 억제하면 소리도 줄어들어 멈춥니다. 귀를 막아 들리는 소리만 줄이는 경우와 다릅니다.",
         "checks": [
           "sound-vibration#q4"
+        ]
+      }
+    },
+    {
+      "id": "equilibrium-colour@hydrogen",
+      "sha256": "c388ba6ae356a5b097a73b7760b79ad5726c2c46576bad76af79efa1a77f8089",
+      "after": {
+        "id": "equilibrium-colour@hydrogen",
+        "topic": "다른 농도 변화에 적용",
+        "question": "Cr₂O₇²⁻ + H₂O ⇌ 2CrO₄²⁻ + 2H⁺가 평형이다. 다른 조건과 농도를 유지하고 [H⁺]만 순간적으로 절반으로 만들었다. 직후 Q와 이동 방향은?",
+        "choices": [
+          "Q = K/2 · 정반응",
+          "Q = K/4 · 역반응",
+          "Q = K/2 · 역반응",
+          "Q = K/4 · 정반응"
+        ],
+        "answer": 3,
+        "why": "[H⁺]에 제곱이 적용되어 Q=K/4입니다. Q<K이므로 정반응이 우세하며 노란색 크로뮴산 이온이 증가합니다.",
+        "checks": [
+          "equilibrium-colour#q1",
+          "equilibrium-colour#q2"
+        ]
+      }
+    },
+    {
+      "id": "equilibrium-colour@chloride",
+      "sha256": "8e4959d1db8762b44f60a0e22afbbb21eb95ad687f1c6607a3bbae422f8d6332",
+      "after": {
+        "id": "equilibrium-colour@chloride",
+        "topic": "온도와 농도 조작 구별",
+        "question": "Co(H₂O)₆²⁺ + 4Cl⁻ ⇌ CoCl₄²⁻ + 6H₂O가 평형이다. 같은 온도에서 Cl⁻를 더 넣으면 K의 변화와 증가하는 착이온은?",
+        "choices": [
+          "K 일정 · CoCl₄²⁻",
+          "K 증가 · CoCl₄²⁻",
+          "K 일정 · Co(H₂O)₆²⁺",
+          "K 감소 · Co(H₂O)₆²⁺"
+        ],
+        "answer": 0,
+        "why": "Cl⁻ 첨가로 Q가 작아져 정반응 쪽으로 이동하지만 같은 온도에서는 K가 일정합니다. 가열로 파란색이 되는 경우와 색은 비슷해도 K의 변화는 다릅니다.",
+        "checks": [
+          "equilibrium-colour#q2",
+          "equilibrium-colour#q3"
+        ]
+      }
+    },
+    {
+      "id": "cell-structure@onion",
+      "sha256": "6ec6b49f0e0a626dc7dd187b02444923f65418cc57e275174de4c32644e9c643",
+      "after": {
+        "id": "cell-structure@onion",
+        "topic": "다른 식물 표본에 적용하기",
+        "question": "양파 비늘줄기 표피에서는 세포벽과 핵이 보이지만 엽록체는 관찰되지 않았다. 이 결과와 맞는 해석은?",
+        "choices": [
+          "세포벽이 보이면 핵은 없어야 한다.",
+          "엽록체가 없으므로 동물 세포이다.",
+          "식물의 부위에 따라 엽록체가 없을 수 있다.",
+          "검정말의 엽록체도 염색으로 생긴 것이다."
+        ],
+        "answer": 2,
+        "why": "식물의 모든 부위 세포가 엽록체를 갖는 것은 아닙니다. 검정말잎 관찰을 양파 비늘줄기 표피에 그대로 일반화할 수 없습니다.",
+        "checks": [
+          "cell-structure#q1",
+          "cell-structure#q4"
+        ]
+      }
+    },
+    {
+      "id": "cell-structure@field",
+      "sha256": "3e2ec11129b2e07994ed6f412f5772a5a044bc34bf1c849c8d535e69e4e6aa29",
+      "after": {
+        "id": "cell-structure@field",
+        "topic": "시야의 길이와 배율",
+        "question": "100배 시야의 지름에 같은 크기 세포 8개가 나란히 들어갔다. 배율을 400배로 높여 같은 곳을 보면 지름에 들어가는 세포는 약 몇 개인가?",
+        "choices": [
+          "2개",
+          "4개",
+          "8개",
+          "32개"
+        ],
+        "answer": 0,
+        "why": "배율은 4배가 되므로 보이는 시야의 지름은 1/4로 줄어듭니다. 8÷4=2개입니다. 세포 자체가 커지거나 수가 달라진 것이 아닙니다.",
+        "checks": [
+          "cell-structure#q3"
+        ]
+      }
+    },
+    {
+      "id": "strata-correlation@time",
+      "sha256": "6bf5d3277b9e30c18b273ea26fa9e4a89485aab9c5ec38af3045d41ff2d512a2",
+      "after": {
+        "id": "strata-correlation@time",
+        "topic": "대비의 한계",
+        "question": "두 지역의 층에서 모두 암모나이트 화석을 찾았다. 추가 자료 없이 확정할 수 없는 것은?",
+        "choices": [
+          "각 화석층의 존재",
+          "그 층들의 암석 종류",
+          "두 층의 정확한 퇴적 연도",
+          "화석층 위아래의 순서"
+        ],
+        "answer": 2,
+        "why": "화석과 층서를 통해 상대적인 시기를 비교하지만, 넓은 화석 분류군의 이름만으로 정확한 퇴적 연도를 구할 수는 없습니다.",
+        "checks": [
+          "strata-correlation#q3"
+        ]
+      }
+    },
+    {
+      "id": "strata-correlation@gaps",
+      "sha256": "649b66b13d22f7703368d2275f958e211dc0c3d7fed20ed2edcd71b9e29ff0c7",
+      "after": {
+        "id": "strata-correlation@gaps",
+        "topic": "부정합과 시간",
+        "question": "평행한 지층 사이에 침식면이 있고 그 위에 새 지층이 쌓였다. 이 경계가 알려 주는 것은?",
+        "choices": [
+          "위아래 층의 같은 나이",
+          "퇴적 기록의 시간 간격",
+          "두 층의 같은 퇴적 속도",
+          "아래층의 정확한 나이"
+        ],
+        "answer": 1,
+        "why": "부정합은 퇴적 중단이나 침식으로 기록이 빠진 시간 간격을 뜻합니다. 그 간격의 길이나 절대연령은 별도 자료가 필요합니다.",
+        "checks": [
+          "strata-correlation#q4"
         ]
       }
     }
@@ -6631,13 +7098,17 @@
           9,
           10,
           11,
-          12
+          12,
+          13,
+          14
         ],
         "printedPages": [
           74,
           75,
           76,
-          77
+          77,
+          78,
+          79
         ]
       },
       "assessmentSources": [
@@ -6666,9 +7137,11 @@
             7,
             8,
             11,
-            12
+            12,
+            15,
+            16
           ],
-          "difference": "손·종이·물 관찰, 작은북의 세기와 조각 움직임",
+          "difference": "손·종이·물 관찰, 작은북의 세기와 조각 움직임, 음판·빨대 길이에 따른 소리 높낮이",
           "implementation": "소리굽쇠의 공통 접촉 비교 구현. 작은북의 실물 조작과 목의 촉각은 별도"
         },
         {
@@ -6711,6 +7184,206 @@
         }
       ],
       "boundary": "정성 가상 실험이다. 감쇠율·2 Hz 느린 표시·440 Hz 합성음은 관찰용 설계값으로 원본 측정값이 아니다. 실제 소리굽쇠의 진동수·음색·진폭·dB 또는 접촉 물질의 정량적 감쇠를 재현한다고 주장하지 않는다. 물 접촉은 진동이 더 빨리 줄어드는 관계만 표현한다. 손의 느낌은 설명과 움직임 변화로 비교하며 촉각을 재현하지 않는다. 브라우저 오디오가 지원되지 않으면 관찰 화면은 계속 작동한다. 실제 소리세기 측정과 작은북·스피커·트라이앵글 조작은 미구현이다."
+    },
+    {
+      "slug": "equilibrium-colour",
+      "source": {
+        "id": "ee8cbb3b4ab047e7",
+        "pages": [
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "printedPages": [
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "1ef15cc299603506",
+          "part": "교사용 중단원 평가: 5~8번의 Q와 K 비교, 크로뮴산 평형, 온도와 평형 상수. HWP 추출에서 누락된 수식·숫자는 인용하지 않으며 PDF 122~128쪽의 완전한 반응식을 사용하여 새 문항 작성."
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "4417457f97abb418",
+          "pages": [
+            126,
+            127,
+            130,
+            131
+          ],
+          "difference": "농도: 3 g/100 mL 원액 10 mL에 NaOH 후 HCl을 순차 첨가. 온도: 수화물 1 g/물 30 mL의 용액 10 mL에 CaCl₂, 약 60 °C 물과 얼음물 사용.",
+          "implementation": "공통 평형 방향과 해설을 대조. 이 화면은 동아의 네 시험관 및 HCl 조제 절차이며 천재의 연속 첨가·CaCl₂ 조제·60 °C 조건을 수행했다고 합산하지 않음."
+        }
+      ],
+      "boundary": "색 변화 방향을 보여 주는 정성 모형. 색상 RGB·애니메이션 시간은 실측값, 평형 농도, 실제 반응 속도 또는 필요한 방울 수가 아니다. 크로뮴산/다이크로뮴산 및 코발트 착이온의 대표 평형만 다루며 모든 중간 화학종·활동도·희석·열전달·용해열을 정량 재현하지 않는다. 시약 첨가는 색 변화를 관찰하는 충분한 첨가 과정이며 특정 한 방울로 종말 색에 도달한다는 뜻이 아니다. 농도 조작은 동일 온도, 온도 조작은 같은 조제 용액을 유지한다. 압력 모형의 8 NO₂+8 N₂O₄ → 6 NO₂+9 N₂O₄는 독립 작성한 반응비 예시다. 초기 부피 1에서 1/2로 줄였을 때 NO₂ 상대 농도 1→2→1.5, N₂O₄ 상대 농도 1→2→2.25가 되어 Q/K=1→1/2→1이다. 질소 원자 수 24개와 두 평형의 질량 작용식이 보존되며 실제 시료의 입자 수·농도 측정값으로 주장하지 않는다. 온도 및 빛이 지나는 두께를 일정하게 둔 이상 기체 모형. 다른 출판사의 전체 변형이나 실물 실험 완료를 주장하지 않는다."
+    },
+    {
+      "slug": "cell-structure",
+      "source": {
+        "id": "3630e303237d192e",
+        "pages": [
+          42,
+          43
+        ],
+        "printedPages": [
+          42,
+          43
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "3630e303237d192e",
+          "pages": [
+            42,
+            43
+          ],
+          "part": "교사용 관찰 사진·해설: 메틸렌 블루 염색 입안 상피, 검정말 염색 전후, 공통 핵/세포막과 세포벽/엽록체 차이"
+        },
+        {
+          "id": "f83522c7ad8e2eab",
+          "pages": [
+            36,
+            37
+          ],
+          "part": "교사용 정리·오개념: 저배율에서 상을 찾고 고배율 조절, 세포막과 세포벽은 따로 구별하기 어려움"
+        },
+        {
+          "id": "8f5785bce8d4e000",
+          "pages": [
+            2,
+            3
+          ],
+          "part": "양파 표피·입안 상피의 별도 표본 준비 절차와 배율 비교"
+        },
+        {
+          "id": "75f161484e5ed6f8",
+          "part": "2022 중1 Ⅱ 단원 평가 1·2·12번: 세포의 공통 구조, 핵의 기능, 식물 세포 판단 근거"
+        },
+        {
+          "id": "ee132e1db3cb7932",
+          "paragraphs": [
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            68,
+            69,
+            70,
+            71,
+            72,
+            295,
+            296
+          ],
+          "part": "2022 중1 형성 평가 4번과 정답 해설: 상피 채취·메틸렌 블루·덮개 유리·여분 용액 제거; 상피에서 엽록체를 볼 수 있다는 오개념"
+        },
+        {
+          "id": "d4f42d98ef9bb001",
+          "paragraphs": [
+            159,
+            162,
+            199,
+            202,
+            204,
+            205,
+            206,
+            588,
+            594
+          ],
+          "part": "2026 학기말 문제은행 Ⅱ 1회 13번, 2회 2번, 3회 13번: 준비 순서와 염색의 목적. 추출 텍스트에 없는 그림 기호는 앱 문항으로 옮기지 않음"
+        },
+        {
+          "id": "dc0c67831064937a",
+          "paragraphs": [
+            114,
+            115,
+            212,
+            213,
+            214,
+            458,
+            459
+          ],
+          "part": "위 문제은행의 정답 해설: 염색으로 핵을 뚜렷하게 관찰. 별도 준비 변형은 덮개를 먼저 덮고 옆에서 염색액을 흡수시킴"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "8f5785bce8d4e000",
+          "pages": [
+            2,
+            3
+          ],
+          "difference": "식물 표본은 양파이며, 덮개 유리 한쪽의 염색액을 반대쪽 거름종이로 흡수",
+          "implementation": "검정말을 양파라고 표시하지 않고 이 절차의 실물/사진 관찰은 별도 미구현으로 보존"
+        },
+        {
+          "sourceId": "81ce1d0e81902b80",
+          "pages": [
+            34,
+            35
+          ],
+          "difference": "양파 표피 아세트올세인 염색과 입안 상피 메틸렌 블루 처리 순서가 서로 다름",
+          "implementation": "같은 세포 비교 목적을 대조하되 미래엔의 준비 절차로 대체 완료 판정하지 않음"
+        },
+        {
+          "sourceId": "f83522c7ad8e2eab",
+          "pages": [
+            36,
+            37
+          ],
+          "difference": "검정말도 메틸렌 블루로 2분 염색하고 물로 씻은 뒤 덮개 유리 사용. 입안 상피는 염색 전 1분 건조. 신경세포·적혈구 영구표본도 비교",
+          "implementation": "이 조제·세척 변형과 신경세포·적혈구 관찰은 별도 미구현. 아세트올세인 사진으로 대체하거나 도해를 실제 사진으로 사용하지 않음"
+        },
+        {
+          "sourceId": "dc0c67831064937a",
+          "paragraphs": [
+            212,
+            213
+          ],
+          "difference": "검정말에 물을 떨어뜨리고 덮개 유리를 덮은 후 한쪽에서 염색액을 흡수시키는 평가자료의 순서",
+          "implementation": "교과서 본문의 염색 후 덮기와 다른 허용 절차로 보존. 앱에 제시된 순서만 유일한 현미경 표본 제작법이라고 주장하지 않음"
+        }
+      ],
+      "boundary": "정지 사진의 초점·밝기·부분 확대 모형이다. 광학 배율 변경, 렌즈 충돌, 실제 조직 채취, 염색 시간 1분/5분이나 염색 속도를 재현하지 않는다. 기다리기는 준비 절차의 단계이며 실제 경과 시간 측정이 아니다. 염색 전후 검정말 사진은 서로 다른 잎이며 같은 세포의 연속 촬영이 아니다. 원본에 없는 세포막/세포벽의 분리, 핵 생성, 엽록체 움직임을 합성하지 않는다. 원본 사진의 해상도 이상으로 구조를 복원하지 않는다. 모든 출판사·실물 수행 완료로 판정하지 않는다."
+    },
+    {
+      "slug": "strata-correlation",
+      "source": {
+        "id": "5cd391fde1912cc3",
+        "pages": [
+          7,
+          8
+        ],
+        "printedPages": [
+          83,
+          84
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "0ed82ea620638555",
+          "paragraphs": [
+            723,
+            724,
+            725
+          ],
+          "part": "2022 지구과학 평가 예시의 층서 비교 지도: 삼엽충·암모나이트의 넓은 분류군과 개별 종의 생존 기간을 혼동하지 않도록 안내. 원본 문항의 미확인 그림을 복제하지 않고 별도 선택지 작성"
+        }
+      ],
+      "boundary": "교과서 모식도 자료의 대비 활동이다. 실제 노두 조사·퇴적 두께·절대연령·지층의 정확한 퇴적 순간을 산출하지 않는다. 버튼 높이는 실제 층 두께가 아니다. 화석은 해당 층의 표지이며 모든 삼엽충/암모나이트를 같은 종으로 보거나 정확한 동시성으로 일반화하지 않는다. 원문의 플랫폼 공유·의견 작성은 독립 실험에서 제외한다."
     }
   ]
 }

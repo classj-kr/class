@@ -1,0 +1,10 @@
+✔ chromium: helium exception, phase-change axes and chart contrast remain consistent (1977.7128ms)
+✔ webkit: helium exception, phase-change axes and chart contrast remain consistent (1763.4321ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3868.0332

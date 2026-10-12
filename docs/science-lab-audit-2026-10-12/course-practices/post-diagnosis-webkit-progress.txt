@@ -1,0 +1,365 @@
+webkit: opening light-shadow
+webkit: light-shadow / 40 screen states
+webkit: opening refraction
+webkit: refraction / 80 screen states
+webkit: opening lens-image
+webkit: lens-image / 85 screen states
+webkit: opening photoelectric
+webkit: photoelectric / 100 screen states
+webkit: opening sound-vibration
+webkit: sound-vibration / 170 screen states
+webkit: opening wave-transfer
+webkit: wave-transfer / 180 screen states
+webkit: opening interference
+webkit: interference / 190 screen states
+webkit: opening lever-balance
+webkit: lever-balance / 225 screen states
+webkit: opening speed
+webkit: speed / 235 screen states
+webkit: opening force-motion
+webkit: force-motion / 260 screen states
+webkit: opening motion-energy
+webkit: motion-energy / 300 screen states
+webkit: opening gravity-motion
+webkit: gravity-motion / 310 screen states
+webkit: opening torque
+webkit: torque / 325 screen states
+webkit: opening collision
+webkit: collision / 330 screen states
+webkit: opening magnets
+webkit: magnets / 340 screen states
+webkit: opening circuit-bulbs
+webkit: circuit-bulbs / 350 screen states
+webkit: opening ohms-law
+webkit: ohms-law (middle) / 405 screen states
+webkit: opening ohms-law
+webkit: ohms-law (high-elective) / 530 screen states
+webkit: opening electric-field
+webkit: electric-field / 545 screen states
+webkit: opening induction
+webkit: induction / 555 screen states
+webkit: opening semiconductor-relativity
+webkit: semiconductor-relativity / 570 screen states
+webkit: opening motor-magnet
+webkit: motor-magnet / 585 screen states
+webkit: opening heat-transfer
+webkit: heat-transfer / 650 screen states
+webkit: opening specific-heat
+webkit: specific-heat / 670 screen states
+webkit: opening energy-heat
+webkit: energy-heat / 675 screen states
+webkit: opening heat-engine
+webkit: heat-engine / 690 screen states
+webkit: opening energy-conversion
+webkit: energy-conversion / 750 screen states
+webkit: opening weight-compare
+webkit: weight-compare / 780 screen states
+webkit: opening density-buoyancy
+webkit: density-buoyancy / 835 screen states
+webkit: opening measurement
+webkit: measurement / 850 screen states
+webkit: opening mixture-separation
+webkit: mixture-separation / 880 screen states
+webkit: opening separation-methods
+webkit: separation-methods / 895 screen states
+webkit: opening state-change
+webkit: state-change / 935 screen states
+webkit: opening gases
+webkit: gases / 960 screen states
+webkit: opening diffusion
+webkit: diffusion / 995 screen states
+webkit: opening solubility
+webkit: solubility / 1020 screen states
+webkit: opening solubility-curve
+webkit: solubility-curve / 1025 screen states
+webkit: opening recrystallise
+webkit: recrystallise / 1030 screen states
+webkit: opening flame-ions
+webkit: flame-ions / 1060 screen states
+webkit: opening periodic-bonding
+webkit: periodic-bonding / 1090 screen states
+webkit: opening molecule-shape
+webkit: molecule-shape / 1105 screen states
+webkit: opening acid-base
+webkit: acid-base / 1140 screen states
+webkit: opening neutralization
+webkit: neutralization / 1145 screen states
+webkit: opening titration
+webkit: titration / 1150 screen states
+webkit: opening mass-ratio
+webkit: mass-ratio / 1185 screen states
+webkit: opening mole
+webkit: mole / 1240 screen states
+webkit: opening rate-equilibrium
+webkit: rate-equilibrium / 1315 screen states
+webkit: opening burning-conditions
+webkit: burning-conditions / 1365 screen states
+webkit: opening combustion
+webkit: combustion / 1370 screen states
+webkit: opening redox
+webkit: redox / 1380 screen states
+webkit: opening living-things
+webkit: living-things / 1390 screen states
+webkit: opening microbes
+webkit: microbes / 1445 screen states
+webkit: opening microscope
+webkit: microscope / 1520 screen states
+webkit: opening cell-osmosis
+webkit: cell-osmosis / 1525 screen states
+webkit: opening cell-membrane
+webkit: cell-membrane / 1580 screen states
+webkit: opening cell-division
+webkit: cell-division / 1585 screen states
+webkit: opening seed-germination
+webkit: seed-germination / 1590 screen states
+webkit: opening photosynthesis
+webkit: photosynthesis / 1630 screen states
+webkit: opening energy-metabolism
+webkit: energy-metabolism / 1640 screen states
+webkit: opening body-organs
+webkit: body-organs / 1645 screen states
+webkit: opening body-systems
+webkit: body-systems / 1650 screen states
+webkit: opening nutrient-detection
+webkit: nutrient-detection / 1665 screen states
+webkit: opening homeostasis
+webkit: homeostasis / 1680 screen states
+webkit: opening immune
+webkit: immune / 1745 screen states
+webkit: opening enzyme
+webkit: enzyme / 1750 screen states
+webkit: opening senses
+webkit: senses / 1765 screen states
+webkit: opening reflex-nerve
+webkit: reflex-nerve / 1770 screen states
+webkit: opening neuron
+webkit: neuron / 1785 screen states
+webkit: opening pea-genetics
+webkit: pea-genetics / 1820 screen states
+webkit: opening dna-gel
+webkit: dna-gel / 1825 screen states
+webkit: opening natural-selection
+webkit: natural-selection / 1835 screen states
+webkit: opening phylogeny
+webkit: phylogeny / 1850 screen states
+webkit: opening life-cycle
+webkit: life-cycle / 1865 screen states
+webkit: opening living-environment
+webkit: living-environment / 1900 screen states
+webkit: opening population
+webkit: population / 1910 screen states
+webkit: opening rock-layers
+webkit: rock-layers / 2035 screen states
+webkit: opening minerals-rocks
+webkit: minerals-rocks / 2065 screen states
+webkit: opening geologic-time
+webkit: geologic-time / 2080 screen states
+webkit: opening rock-age
+webkit: rock-age / 2090 screen states
+webkit: opening metamorphism
+webkit: metamorphism / 2105 screen states
+webkit: opening volcano-model
+webkit: volcano-model / 2145 screen states
+webkit: opening magma
+webkit: magma / 2150 screen states
+webkit: opening plate-tectonics
+webkit: plate-tectonics / 2155 screen states
+webkit: opening earthquake
+webkit: earthquake / 2160 screen states
+webkit: opening earth-system
+webkit: earth-system / 2195 screen states
+webkit: opening weather-watch
+webkit: weather-watch / 2240 screen states
+webkit: opening weather-front
+webkit: weather-front / 2275 screen states
+webkit: opening air-stability
+webkit: air-stability / 2280 screen states
+webkit: opening typhoon
+webkit: typhoon / 2295 screen states
+webkit: opening land-sea
+webkit: land-sea / 2315 screen states
+webkit: opening water-cycle
+webkit: water-cycle / 2320 screen states
+webkit: opening seawater
+webkit: seawater / 2325 screen states
+webkit: opening ocean-circulation
+webkit: ocean-circulation / 2330 screen states
+webkit: opening ocean-layers
+webkit: ocean-layers / 2345 screen states
+webkit: opening night-sky
+webkit: night-sky / 2365 screen states
+webkit: opening seasons
+webkit: seasons / 2425 screen states
+webkit: opening moon-phases
+webkit: moon-phases / 2430 screen states
+webkit: opening apparent-motion
+webkit: apparent-motion / 2435 screen states
+webkit: opening planet-motion
+webkit: planet-motion / 2450 screen states
+webkit: opening stars-universe
+webkit: stars-universe / 2490 screen states
+webkit: opening star-elements
+webkit: star-elements / 2515 screen states
+webkit: opening stars
+webkit: stars / 2520 screen states
+webkit: opening galaxy-hubble
+webkit: galaxy-hubble / 2535 screen states
+webkit: opening cell-structure
+webkit: cell-structure / 2590 screen states
+webkit: opening neutralization-common
+webkit: neutralization-common / 2640 screen states
+webkit: opening pasteur
+webkit: pasteur / 2645 screen states
+webkit: opening newton-prism
+webkit: newton-prism / 2665 screen states
+webkit: opening infection-prevention
+webkit: infection-prevention / 2670 screen states
+webkit: opening mendeleev
+webkit: mendeleev / 2675 screen states
+webkit: opening speaker-lab
+webkit: speaker-lab / 2680 screen states
+webkit: opening wireless-power
+webkit: wireless-power / 2685 screen states
+webkit: opening magnetic-brake
+webkit: magnetic-brake / 2690 screen states
+webkit: opening transistor-speaker
+webkit: transistor-speaker / 2695 screen states
+webkit: opening soap-film
+webkit: soap-film / 2700 screen states
+webkit: opening polarization
+webkit: polarization / 2705 screen states
+webkit: opening electron-slits
+webkit: electron-slits / 2710 screen states
+webkit: opening gas-identification
+webkit: gas-identification / 2715 screen states
+webkit: opening sugar-phase
+webkit: sugar-phase / 2720 screen states
+webkit: opening hess-calorimetry
+webkit: hess-calorimetry / 2725 screen states
+webkit: opening buffer-solution
+webkit: buffer-solution / 2730 screen states
+webkit: opening salt-hydrolysis
+webkit: salt-hydrolysis / 2735 screen states
+webkit: opening bean-respiration
+webkit: bean-respiration / 2740 screen states
+webkit: opening insulation-lab
+webkit: insulation-lab / 2745 screen states
+webkit: opening doppler-lab
+webkit: doppler-lab / 2750 screen states
+webkit: opening ride-acceleration
+webkit: ride-acceleration (high-common) / 2785 screen states
+webkit: opening ride-acceleration
+webkit: ride-acceleration (high-elective) / 2820 screen states
+webkit: opening dna-replication
+webkit: dna-replication / 2825 screen states
+webkit: opening protein-synthesis
+webkit: protein-synthesis / 2830 screen states
+webkit: opening pedigree-lab
+webkit: pedigree-lab / 2835 screen states
+webkit: opening karyotype-lab
+webkit: karyotype-lab / 2840 screen states
+webkit: opening antibiotic-disc
+webkit: antibiotic-disc / 2845 screen states
+webkit: opening water-wave-tank
+webkit: water-wave-tank / 2850 screen states
+webkit: opening silver-mirror
+webkit: silver-mirror / 2855 screen states
+webkit: opening nylon-interface
+webkit: nylon-interface / 2860 screen states
+webkit: opening stellar-mass-data
+webkit: stellar-mass-data / 2865 screen states
+webkit: opening cluster-fitting
+webkit: cluster-fitting / 2870 screen states
+webkit: opening habitable-orbits
+webkit: habitable-orbits / 2875 screen states
+webkit: opening centrifuge-design
+webkit: centrifuge-design / 2880 screen states
+webkit: opening organic-builder
+webkit: organic-builder / 2885 screen states
+webkit: opening dna-structure
+webkit: dna-structure / 2890 screen states
+webkit: opening protein-folding
+webkit: protein-folding / 2895 screen states
+webkit: opening organelle-builder
+webkit: organelle-builder / 2900 screen states
+webkit: opening hydride-boiling
+webkit: hydride-boiling / 2905 screen states
+webkit: opening fuel-comparison
+webkit: fuel-comparison / 2910 screen states
+webkit: opening mcu-sampling
+webkit: mcu-sampling / 2915 screen states
+webkit: opening smart-pot
+webkit: smart-pot / 2920 screen states
+webkit: opening telescope-observation
+webkit: telescope-observation (middle) / 2925 screen states
+webkit: opening telescope-observation
+webkit: telescope-observation (high-elective) / 2930 screen states
+webkit: opening rotating-annulus
+webkit: rotating-annulus (high-elective) / 2950 screen states
+webkit: opening sunspot-observation
+webkit: sunspot-observation (high-elective) / 2970 screen states
+webkit: opening protein-interaction
+webkit: protein-interaction (high-elective) / 2980 screen states
+webkit: opening air-sampling
+webkit: air-sampling / 2995 screen states
+webkit: opening local-biodiversity
+webkit: local-biodiversity (high-common) / 3075 screen states
+webkit: opening local-biodiversity
+webkit: local-biodiversity (high-elective) / 3155 screen states
+webkit: opening water-electrolysis
+webkit: water-electrolysis / 3180 screen states
+webkit: opening cell-micrometry
+webkit: cell-micrometry / 3205 screen states
+webkit: opening leaf-pigments
+webkit: leaf-pigments / 3230 screen states
+webkit: opening digestive-enzymes
+webkit: digestive-enzymes / 3255 screen states
+webkit: opening spring-wave-speed
+webkit: spring-wave-speed / 3280 screen states
+webkit: opening coastal-inundation
+webkit: coastal-inundation / 3305 screen states
+webkit: opening sea-level-causes
+webkit: sea-level-causes / 3330 screen states
+webkit: opening standard-solution
+webkit: standard-solution / 3355 screen states
+webkit: opening serial-dilution
+webkit: serial-dilution / 3380 screen states
+webkit: opening vinegar-titration
+webkit: vinegar-titration / 3405 screen states
+webkit: opening acoustic-resonance
+webkit: acoustic-resonance / 3430 screen states
+webkit: opening electroplating
+webkit: electroplating / 3465 screen states
+webkit: opening leaf-starch
+webkit: leaf-starch / 3510 screen states
+webkit: opening dissolution-mass
+webkit: dissolution-mass / 3545 screen states
+webkit: opening food-web
+webkit: food-web / 3585 screen states
+webkit: opening yeast-fermentation
+webkit: yeast-fermentation / 3620 screen states
+webkit: opening light-interference
+webkit: light-interference / 3670 screen states
+webkit: opening galileo-incline
+webkit: galileo-incline / 3710 screen states
+webkit: opening reaction-pressure
+webkit: reaction-pressure / 3755 screen states
+webkit: opening osmosis-mass
+webkit: osmosis-mass / 3795 screen states
+webkit: opening leaf-classification
+webkit: leaf-classification / 3840 screen states
+webkit: opening animal-classification
+webkit: animal-classification / 3885 screen states
+webkit: opening liquid-heat
+webkit: liquid-heat / 3935 screen states
+webkit: opening phase-mass
+webkit: phase-mass / 3980 screen states
+webkit: opening rotating-disc
+webkit: rotating-disc / 4025 screen states
+webkit: opening quadrat-community
+webkit: quadrat-community / 4060 screen states
+webkit: opening ph-comparison
+webkit: ph-comparison / 4105 screen states
+webkit: opening equilibrium-colour
+webkit: equilibrium-colour / 4175 screen states
+{"engine":"webkit","deviceProfile":"ipad","routes":182,"scenarios":4175,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR","Pretendard"],"errors":[]}

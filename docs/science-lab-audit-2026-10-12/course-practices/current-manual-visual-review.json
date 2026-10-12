@@ -4,8 +4,10 @@
   "images": [
     {
       "file": "browser/webkit-animal-classification-before-768.webp",
-      "sha256": "67389ed8399343410595025921a0e6560a3014650b71abacea977a5c8a2fe06c",
-      "observation": "Actual specimen photos, complete eight-card grid, consistent readable labels and tap controls."
+      "sha256": "4c7a0c2b4b46aceb84b874f35bf8af40f4d36f816d487eb1fa465892008297aa",
+      "observation": "Actual specimen photos, complete eight-card grid, consistent readable labels and tap controls.",
+      "previousSha256": "67389ed8399343410595025921a0e6560a3014650b71abacea977a5c8a2fe06c",
+      "recheckedAt": "2026-10-12T12:09:43.322Z"
     },
     {
       "file": "browser/chromium-animal-classification-correct-1366.webp",
@@ -34,8 +36,10 @@
     },
     {
       "file": "browser/chromium-phase-mass-wet-mass-390.webp",
-      "sha256": "7748925e8923e384ac31a10084f6571779e00946594be9fb47c36957f981ff7c",
-      "observation": "Wet exterior remains visible and the 13.8 g result is distinct from the dry 13.5 g reading. The balance number and unit fit on one line after the display repair."
+      "sha256": "2347823e4ed495f60bca4fbcac11b7d7418a914fde15998993fae09944540ae2",
+      "observation": "Wet exterior remains visible and the 13.8 g result is distinct from the dry 13.5 g reading. The balance number and unit fit on one line after the display repair.",
+      "previousSha256": "7748925e8923e384ac31a10084f6571779e00946594be9fb47c36957f981ff7c",
+      "recheckedAt": "2026-10-12T12:09:43.323Z"
     },
     {
       "file": "browser/webkit-rotating-disc-cw-fast-768.webp",
@@ -69,13 +73,196 @@
     },
     {
       "file": "browser/webkit-microbe-observation-complete-768.webp",
-      "sha256": "5865c2e66f075e99990f714ac0cec446adee1106cd7075359ba752b880838af7",
-      "observation": "Five distinct original microscope specimens remain visible in comparison cards. Tablet controls, source magnification and explanatory labels fit without clipping; permanent specimens are not animated as living organisms."
+      "sha256": "65b5af579813c1187a4744d53372842a97aa8c327b4cd4e287496e38a3a412b4",
+      "observation": "Rechecked after shared specimen controls were extended: all five source photos and original magnifications remain intact, readable disabled mount control, consistent labels, clean comparison grid.",
+      "previousSha256": "5865c2e66f075e99990f714ac0cec446adee1106cd7075359ba752b880838af7",
+      "recheckedAt": "2026-10-12T15:27:48.575Z"
     },
     {
       "file": "browser/chromium-mole-weighing-liquid-768.webp",
       "sha256": "2961bd1d75822adf6b45465ade846283b00d9a6a9b5f67bd0b18197f402db7e5",
       "observation": "Final cropped balance view visibly contains the beaker, connected display and mounted bubble level. Chemical formulae, mass display, five-column material chooser and seven measured table rows remain readable."
+    },
+    {
+      "file": "browser/webkit-rock-specimens-complete-768.webp",
+      "sha256": "1b0716c903638558d98529dbd416075689e01f7fcb51c3102fe8948dd58af05a",
+      "observation": "Current fossil classification preserves first 0/3; source photograph crops are intact; completed alginate mould caption stays below the photo with no overlap; four comparison images remain distinct."
+    },
+    {
+      "file": "browser/webkit-tuning-fork-complete-768.webp",
+      "sha256": "b38442967ac85b7c9488037866775a6e617a2ff34db937061a8aa150331f9914",
+      "observation": "After the reset-button layout repair: compact touch controls, clear hand contact with the prong, stopped fork, all six actually observed comparisons, legible equal-scale labels and no clipped captions."
+    },
+    {
+      "file": "browser/chromium-rate-energy-endothermic-768.webp",
+      "sha256": "71379d34f7507e616402eeb7145236ef42a0ddf78f4625c73708b604340cafd7",
+      "observation": "Final energy diagram: complete kJ/mol label left of its arrow, positive reverse barrier and visible solid/dashed comparison profiles.",
+      "recheckedAt": "2026-10-12T12:55:35.380Z"
+    },
+    {
+      "file": "browser/webkit-rate-equilibrium-compressed-768.webp",
+      "sha256": "11b4ae9c6125fcfe81ab328dbe28624767d3996bc2b19a8701998a43be173d17",
+      "observation": "Final compressed gas: 24 NO2 units visible as dark single units and outlined colourless pairs; vessel boundary and three distinct volume curves remain clear.",
+      "recheckedAt": "2026-10-12T12:55:35.381Z"
+    },
+    {
+      "file": "browser/chromium-plot-visibility-energy-heat-768.webp",
+      "sha256": "4c89ee060a761f69e00186e060979f842d065078939f97755ad2c87dbc3a8b43",
+      "observation": "Height h 4 m is fully visible beside the ramp, outside the apparatus crop; controls, energy labels and graph remain within the tablet width.",
+      "recheckedAt": "2026-10-12T12:55:35.381Z"
+    },
+    {
+      "file": "browser/webkit-plot-visibility-solubility-curve-768.webp",
+      "sha256": "f566aae7f7e66ccde79474cf85218c275b3b5f2729012183d185b5a71de4f9d8",
+      "observation": "All three solubility curves and formula labels are readable; comparison lines use clear dashes instead of fading.",
+      "recheckedAt": "2026-10-12T12:55:35.381Z"
+    },
+    {
+      "file": "browser/chromium-plot-visibility-wave-transfer-768.webp",
+      "sha256": "0fa173f90b07e4ce33a8a3e38dfe3d0360730b099044f029af38b0af4e3e0108",
+      "observation": "The three speed comparison curves and labels remain distinguishable. The transverse-motion diagram, wavelength bracket and tablet controls fit.",
+      "recheckedAt": "2026-10-12T12:55:35.382Z"
+    },
+    {
+      "file": "browser/webkit-plot-visibility-photosynthesis-768.webp",
+      "sha256": "ee5ac9beb2254e39e50efa2b29dacb32db39e39f2fe9ff3881b2eb9ef368d09b",
+      "observation": "Three CO2 curves retain readable labels and visible solid/dashed strokes; the observation apparatus and five prediction choices remain legible.",
+      "recheckedAt": "2026-10-12T12:55:35.382Z"
+    },
+    {
+      "file": "browser/chromium-plot-visibility-recrystallise-768.webp",
+      "sha256": "732083fac24e37b8c3dc8e2f1361d1c667ab1f630b27e389af8079fb1581fa97",
+      "observation": "Both solubility curves and the independent impurity guide are visible; temperature/readout labels fit beside the vessel and the calculation panel remains readable.",
+      "recheckedAt": "2026-10-12T12:55:35.382Z"
+    },
+    {
+      "file": "equilibrium-colour/chromium-concentration-768.webp",
+      "sha256": "29a93d513b9770094e3b6b3085d83b71754bb7b80f93466d0804cf43f3b5a709",
+      "observation": "Four independent tubes; initial and observed colours remain separately labeled, two-column tablet layout, reagent controls and guidance readable.",
+      "recheckedAt": "2026-10-12T13:21:50.900Z"
+    },
+    {
+      "file": "equilibrium-colour/webkit-temperature-768.webp",
+      "sha256": "2d8b3ea42b982bf23694162cc13b44a00b2b05c9be9c20de0b0f057b50d7e8f8",
+      "observation": "Same cobalt tube moves between external water baths; blue/pink comparison stays readable at tablet width, no overlapping bath labels.",
+      "recheckedAt": "2026-10-12T13:21:50.902Z"
+    },
+    {
+      "file": "equilibrium-colour/chromium-equilibrated-768.webp",
+      "sha256": "a9fdda1c7325340899bc0e202d53c2557363605a90ede2ce28db32f7ddb77c1e",
+      "observation": "Final compressed state: six NO2 plus nine N2O4 molecules, relative concentration 1.50; all three comparison stages and captions fit.",
+      "recheckedAt": "2026-10-12T13:21:50.902Z"
+    },
+    {
+      "file": "equilibrium-colour/webkit-compressed-1366.webp",
+      "sha256": "0bbcd648b55f2e55433c503f159be9fdc7b06d71fa05a53f0f1390ed3da426e6",
+      "observation": "Immediate compression keeps eight NO2 plus eight N2O4 molecules; final state remains unfilled until observed, consistent desktop text sizes.",
+      "recheckedAt": "2026-10-12T13:21:50.902Z"
+    },
+    {
+      "file": "core-choice/chromium-optics-correction-768.webp",
+      "sha256": "8488ea035735f2ab5b776d32b383f6c75b5fb017a4f7f514f3a3f39065440b7d",
+      "observation": "Reopened final tablet observation panel: equal-format optics choices, retained first error and choice-specific misconception explanation fit after reload.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z",
+      "previousSha256": "3cbdf26e10119c2e1fa5b389208ab6796acd503d728d5bea119123922177febf"
+    },
+    {
+      "file": "core-choice/webkit-optics-correction-768.webp",
+      "sha256": "ed32b687d7d3caf337ff5591c340730d7d9be48b903af7464f093cd34570d183",
+      "observation": "Reopened final tablet observation panel: equal-format optics choices, retained first error and choice-specific misconception explanation fit after reload.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z",
+      "previousSha256": "1c2210101941f2d0fb36cf3c28655cebab14031ca7e79d395b73efce76b32a40"
+    },
+    {
+      "file": "core-choice-final/webkit-state-change-0-768.webp",
+      "sha256": "23a8cb6c67d146905e0df098d8cda6cc2a95328f363ab78b4cc2a3a05e7becc7",
+      "observation": "Loaded-font tablet panel: beaker rim, water surface and internal boiling bubbles are distinct; comparison choices and retained misconception feedback fit.",
+      "recheckedAt": "2026-10-12T14:55:26.610Z"
+    },
+    {
+      "file": "core-choice-final/webkit-state-change-1-768.webp",
+      "sha256": "0ab53a5e3602beac2a4e01baa11bbf56cbc385da3883d27bb83af7d9e832234c",
+      "observation": "Cold-cup initial state, glass/water/ice separation, equal-format water-origin alternatives and first-error explanation remain readable.",
+      "recheckedAt": "2026-10-12T14:55:26.611Z"
+    },
+    {
+      "file": "core-choice-final/webkit-acid-base-2-768.webp",
+      "sha256": "9c12527f54cbe6a7286a58c95874cc5ae818b9e4b2a54bebed4ea4dfcf421f2c",
+      "observation": "Two vessels have separate reagent labels; shell shrinkage and acid bubbles are visible. Question and response interpretation fit below.",
+      "recheckedAt": "2026-10-12T14:55:26.611Z"
+    },
+    {
+      "file": "core-choice-final/webkit-acid-base-3-768.webp",
+      "sha256": "6438196e4962bed24476f16bd78f1d8c25afe7893a0cb9c3523facaf7c25acbe",
+      "observation": "Protein initial comparison, matching vessels and same-size controls are legible; no oversized scene type relative to the question.",
+      "recheckedAt": "2026-10-12T14:55:26.611Z"
+    },
+    {
+      "file": "core-choice-final/webkit-diffusion-4-768.webp",
+      "sha256": "2bd7834a7507208c2d93fe3f5f113fcce9cb06ca642dcb77cb9e25b5d010d45f",
+      "observation": "Constant-pressure condition and low-temperature piston scene fit. Controlled-variable alternatives use parallel wording.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z"
+    },
+    {
+      "file": "core-choice-final/webkit-diffusion-5-768.webp",
+      "sha256": "cb19e5ae7b085d6f95f96910f9eb1af8826bd6b7cedb06dc3cdd74c821f076b3",
+      "observation": "Isothermal compression scene, preserved particle count and size, and spacing alternatives remain legible.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z"
+    },
+    {
+      "file": "core-choice-final/webkit-ohms-law-6-768.webp",
+      "sha256": "3aeb693d542edc6c007d249485a6161fe280ced65d694b5e414057fe2295c845",
+      "observation": "Fixed positive sites and displaced electrons are distinguishable; charge-conservation question and retained error interpretation fit.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z"
+    },
+    {
+      "file": "periodic-consistency/webkit-helium-768.webp",
+      "sha256": "37ddc63ae98bbf75c53e6f9666cc068ae716ec66c49ced14caa9afc28096010b",
+      "observation": "Helium two-electron exception agrees across chart, table and result; graph note is no longer mislabeled as the x-axis.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z"
+    },
+    {
+      "file": "periodic-consistency/chromium-phase-comparison-768.webp",
+      "sha256": "f31a3e10e9837fca09f8829accf530faf434d9d547874b87650687dd881a9330",
+      "observation": "Linear positive/negative temperature comparison, water zero marker and always-visible CO2 sublimation condition; no spurious x-axis prefix.",
+      "recheckedAt": "2026-10-12T14:55:26.612Z"
+    },
+    {
+      "file": "cell-observation/chromium-complete-768.webp",
+      "sha256": "0eebc34315188d5d29638ffe18ae74a5c3ab7b9118d623b5b4ee65a8fcfafe06",
+      "observation": "Completed preparation stays legible; original 400× cheek/leaf micrographs, photo zoom and side-by-side comparison have consistent labels. Narrow controls wrap; no clipping. Browser-emulated viewport, not a physical device.",
+      "recheckedAt": "2026-10-12T15:19:45.627Z"
+    },
+    {
+      "file": "cell-observation/webkit-complete-390.webp",
+      "sha256": "c0a0e22b400f91f50f8df908cb6fba6c31a9b7155de9cab5a9742f2a0313f836",
+      "observation": "Completed preparation stays legible; original 400× cheek/leaf micrographs, photo zoom and side-by-side comparison have consistent labels. Narrow controls wrap; no clipping. Browser-emulated viewport, not a physical device.",
+      "recheckedAt": "2026-10-12T15:19:45.629Z"
+    },
+    {
+      "file": "strata-correlation/webkit-fossil-768.webp",
+      "sha256": "6bb036c63488c4ccee3f41451f8f898bbd67a6e4bf0e5788b9a4d284544d0cfd",
+      "observation": "Three fossil columns, unconformity controls and eleven-unit summary are readable; feedback is outside the diagram, with no overlay.",
+      "recheckedAt": "2026-10-12T16:10:52.567Z"
+    },
+    {
+      "file": "strata-correlation/chromium-key-1366.webp",
+      "sha256": "253bf9dce2d19a81903ea516879a3354aa99850ff046ac294053f80df1684829",
+      "observation": "Three key-bed columns and eight-unit summary are aligned, all layer labels visible and consistently sized.",
+      "recheckedAt": "2026-10-12T16:10:52.568Z"
+    },
+    {
+      "file": "strata-correlation/webkit-key-390.webp",
+      "sha256": "c9d33f655b4e8667a9f12e634df02284ef197f5a3e3b54b9c7a899b5d23d6481",
+      "observation": "Three narrow columns retain legible rock labels and 44px boundaries; the summary stacks without horizontal overflow.",
+      "recheckedAt": "2026-10-12T16:10:52.568Z"
+    }
+  ],
+  "superseded": [
+    {
+      "file": "browser/rate-energy-before-clip-fix.webp",
+      "sha256": "c09180fb83ed9b60ff01ccc5dbeaea03e08b2f16af1fa2306e9055b142063cf7",
+      "observation": "On renewed visual inspection the reaction-heat unit is cut by the stage clip. This failed capture is retained as evidence; it is not a final visual pass."
     }
   ]
 }

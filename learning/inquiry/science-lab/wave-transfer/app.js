@@ -181,12 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="ref-text" x="${GRAPH.x1 - 4}" y="${(gy(REF_LAMBDA) - 5).toFixed(1)}" text-anchor="end">기준 ${REF_LAMBDA} cm</text>`;
 
         // λ = v / f for three different media: faster medium, longer wave
-        [[10, '#4a7fd6'], [20, '#0284c7'], [30, '#a8ecff']].forEach(([v, col]) => {
+        [[10, '#4a7fd6'], [20, '#0284c7'], [30, '#276a60']].forEach(([v, col]) => {
             const pts = [];
             for (let f = 0.5; f <= 2.501; f += 0.02) pts.push(`${gx(f).toFixed(1)},${gy(v / f).toFixed(1)}`);
             const isCurrent = v === speed();
             out += `<path class="trace${isCurrent ? '' : ' dim'}" style="stroke:${col}" d="M${pts.join('L')}"/>`;
-            out += `<text class="curve-tag" fill="${col}" opacity="${isCurrent ? 1 : .55}" x="${(gx(0.5) + 5).toFixed(1)}" y="${(gy(v / 0.5) - 6).toFixed(1)}">${v} cm/s</text>`;
+            out += `<text class="curve-tag" fill="${col}" x="${(gx(0.5) + 5).toFixed(1)}" y="${(gy(v / 0.5) - 6).toFixed(1)}">${v} cm/s</text>`;
         });
         if (![10, 20, 30].includes(speed())) {
             const pts = [];

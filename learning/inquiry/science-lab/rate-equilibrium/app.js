@@ -20,10 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
 
-    const R = 8.314, T_REF = 298.15;
+    const R = 8.314462618, T_REF = 298.15;
     const EA_PLAIN = 50000, EA_CAT = 30000;      // joules per mole
-    const DH = { exo: -80, endo: 40 };            // kilojoules per mole
-    const K_REF = 216, DH_EQ = -57200;            // for 2NO2 = N2O4
+    // Both illustrative transition states must remain above the products.
+    // +40 with the 30 kJ/mol catalytic path gave a negative reverse barrier.
+    const DH = { exo: -80, endo: 20 };            // kilojoules per mole
+    // NIST-JANAF, 298.15 K, 1 bar: formation G (kJ/mol) NO2=51.258,
+    // N2O4=97.787; H NO2=33.095, N2O4=9.079. Ideal-gas approximation.
+    // For delta nu=-1, Kc = Kp * R(bar L) * T, not Kp alone.
+    const DH_EQ = (9.079 - 2 * 33.095) * 1000;
+    const K_REF = Math.exp(-(97.787 - 2 * 51.258) * 1000 / (R * T_REF)) * (R / 100) * T_REF;
     const N_TOTAL = 0.2;                          // moles of nitrogen, as NO2
     const GRAPH = { x0: 70, x1: 424, y0: 156, y1: 32 };
 
@@ -41,7 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                  peak: Ea / 1000, product: dh };
     }
 
-    const Kof = T => K_REF * Math.exp((-DH_EQ / R) * (1 / (T + 273.15) - 1 / T_REF));
+    // Constant reaction enthalpy over the displayed interval; the extra T/Tref
+    // factor converts the temperature-dependent pressure constant to Kc.
+    const Kof = T => K_REF * ((T + 273.15) / T_REF) * Math.exp((-DH_EQ / R) * (1 / (T + 273.15) - 1 / T_REF));
 
     // 2NO2 = N2O4 solves in closed form: 4Kx^2 - (4Kc+1)x + Kc^2 = 0.
     function analyseEq(T = state.Teq, V = state.V) {
@@ -73,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildControls() {
         controlArea.innerHTML = state.mode === 'rate'
             ? `<fieldset class="pick-field"><legend>반응의 종류</legend><div class="pick-buttons" data-pick="heat">` +
-              `<button type="button" data-value="exo" class="${state.heat === 'exo' ? 'selected' : ''}">발열 반응<small>ΔH = −80 kJ</small></button>` +
-              `<button type="button" data-value="endo" class="${state.heat === 'endo' ? 'selected' : ''}">흡열 반응<small>ΔH = +40 kJ</small></button>` +
+              `<button type="button" data-value="exo" class="${state.heat === 'exo' ? 'selected' : ''}">발열 반응<small>ΔH = −80 kJ/mol</small></button>` +
+              `<button type="button" data-value="endo" class="${state.heat === 'endo' ? 'selected' : ''}">흡열 반응<small>ΔH = +20 kJ/mol</small></button>` +
               `</div></fieldset>` +
               `<fieldset class="pick-field"><legend>촉매</legend><div class="pick-buttons" data-pick="cat">` +
-              `<button type="button" data-value="off" class="${state.cat === 'off' ? 'selected' : ''}">없음<small>Ea 50 kJ</small></button>` +
-              `<button type="button" data-value="on" class="${state.cat === 'on' ? 'selected' : ''}">넣음<small>Ea 30 kJ</small></button>` +
+              `<button type="button" data-value="off" class="${state.cat === 'off' ? 'selected' : ''}">없음<small>Ea 50 kJ/mol</small></button>` +
+              `<button type="button" data-value="on" class="${state.cat === 'on' ? 'selected' : ''}">넣음<small>Ea 30 kJ/mol</small></button>` +
               `</div></fieldset>` +
               slider('tRange', '온도', 0, 100, 5, state.T, ['0℃', '50℃', '100℃'])
             : slider('teRange', '온도', 0, 100, 5, state.Teq, ['0℃', '50℃', '100℃']) +
@@ -130,20 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
         body += `<line class="level-line" x1="60" y1="${yR.toFixed(1)}" x2="400" y2="${yR.toFixed(1)}"/>`;
         body += `<line class="level-line" x1="60" y1="${yP.toFixed(1)}" x2="400" y2="${yP.toFixed(1)}"/>`;
         // the uncatalysed hill is always drawn, so the catalyst's effect is visible
-        body += `<path class="profile" opacity="${a.cat === 'on' ? 0.35 : 1}" d="${profilePath(EA_PLAIN / 1000, a.product)}"/>`;
+        body += `<path class="profile" d="${profilePath(EA_PLAIN / 1000, a.product)}"/>`;
         if (a.cat === 'on') body += `<path class="profile cat" d="${profilePath(EA_CAT / 1000, a.product)}"/>`;
 
         // activation energy, measured from the reactant level up to the peak
         const eaX = 176;
         body += `<line class="ea-arrow${a.cat === 'on' ? ' cat' : ''}" x1="${eaX}" y1="${yR.toFixed(1)}" x2="${eaX}" y2="${ey(a.peak).toFixed(1)}"/>`;
         body += `<path class="ea-arrow${a.cat === 'on' ? ' cat' : ''}" d="M${eaX - 4},${(ey(a.peak) + 6).toFixed(1)} L${eaX},${ey(a.peak).toFixed(1)} L${eaX + 4},${(ey(a.peak) + 6).toFixed(1)}"/>`;
-        body += `<text class="ea-text${a.cat === 'on' ? ' cat' : ''}" x="${eaX - 6}" y="${((yR + ey(a.peak)) / 2).toFixed(1)}" text-anchor="end">Ea ${a.peak} kJ</text>`;
+        body += `<text class="ea-text${a.cat === 'on' ? ' cat' : ''}" x="${eaX - 6}" y="${(ey(a.peak) - 10).toFixed(1)}" text-anchor="end">Ea ${a.peak} kJ/mol</text>`;
         // reaction heat, from reactant level to product level
         const dhX = 356;
         body += `<line class="dh-arrow" x1="${dhX}" y1="${yR.toFixed(1)}" x2="${dhX}" y2="${yP.toFixed(1)}"/>`;
         const dir = yP > yR ? 1 : -1;
         body += `<path class="dh-arrow" d="M${dhX - 4},${(yP - dir * 6).toFixed(1)} L${dhX},${yP.toFixed(1)} L${dhX + 4},${(yP - dir * 6).toFixed(1)}"/>`;
-        body += `<text class="dh-text" x="${dhX + 6}" y="${((yR + yP) / 2).toFixed(1)}">ΔH ${a.dh > 0 ? '+' : ''}${a.dh} kJ</text>`;
+        body += `<text class="dh-text" x="${dhX - 8}" y="${((yR + yP) / 2).toFixed(1)}" text-anchor="end">ΔH ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol</text>`;
 
         let out = `<g clip-path="url(#stageClip)">${body}</g>`;
         // left of the axis and below the title line, which runs across the top
@@ -151,31 +159,33 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="100" y="${(yR - 8).toFixed(1)}" text-anchor="middle">반응물</text>`;
         out += `<text class="small-label" x="360" y="${(yP + (a.dh > 0 ? -8 : 16)).toFixed(1)}" text-anchor="middle">생성물</text>`;
         out += `<text class="part-label" x="20" y="24">${a.heat === 'exo' ? '발열' : '흡열'} 반응 · ${a.T} ℃ · 촉매 ${a.cat === 'on' ? '있음' : '없음'}</text>`;
-        out += `<text class="read-text" x="20" y="200">기준보다 ${a.rel >= 1 ? `${fmtRate(a.rel)}배 빠릅니다` : `${fmtRate(1 / a.rel)}배 느립니다`}</text>`;
+        out += `<text class="read-text" x="20" y="200">${rateSentence(a.rel)}</text>`;
         mainGroup.innerHTML = out;
     }
 
     const fmtRate = r => (r >= 100 ? r.toFixed(0) : r >= 10 ? r.toFixed(1) : r.toFixed(2));
+    const rateSentence = r => Math.abs(r - 1) < 1e-9 ? '기준과 같은 속도입니다' : `기준보다 ${fmtRate(r > 1 ? r : 1 / r)}배 ${r > 1 ? '빠릅니다' : '느립니다'}`;
 
     function renderEq(a) {
         const CYL = { x0: 70, x1: 210, bottom: 186 };
         // a smaller volume means a shorter cylinder
-        const height = 40 + ((a.V - 0.5) / 1.5) * 96;
+        const height = 68 * a.V;
         const top = CYL.bottom - height;
         let body = '';
         const brown = Math.min(0.85, (a.no2 / 0.15) * 0.85);
         body += `<rect class="gas" fill="#c8703c" opacity="${brown.toFixed(3)}" x="${CYL.x0 + 3}" y="${top.toFixed(1)}" ` +
                 `width="${CYL.x1 - CYL.x0 - 6}" height="${(height - 3).toFixed(1)}"/>`;
         // molecules in the right proportion: singles are brown, pairs are colourless
-        const rand = (i) => ((i * 9301 + 49297) % 233280) / 233280;
-        const nNO2 = Math.round(20 * (a.no2 / a.c0) / Math.max(0.001, (a.no2 + a.n2o4) / a.c0));
-        const nN2O4 = 20 - nNO2;
-        for (let i = 0; i < 20; i += 1) {
-            const x = CYL.x0 + 12 + rand(i * 3) * (CYL.x1 - CYL.x0 - 26);
-            const y = top + 10 + rand(i * 7 + 1) * Math.max(6, height - 22);
-            if (i < nNO2) body += `<circle class="mol-no2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.6"/>`;
-            else body += `<g><circle class="mol-n2o4" cx="${(x - 3).toFixed(1)}" cy="${y.toFixed(1)}" r="3.2"/>` +
-                         `<circle class="mol-n2o4" cx="${(x + 3).toFixed(1)}" cy="${y.toFixed(1)}" r="3.2"/></g>`;
+        // A dot represents one NO2 unit. Pairing changes molecule count while
+        // preserving all 24 N atoms (and the corresponding 48 O atoms).
+        const nN2O4 = Math.round(12 * a.fracN2O4), nNO2 = 24 - 2 * nN2O4;
+        const count = nNO2 + nN2O4, columns = 6, rows = Math.ceil(count / columns);
+        for (let i = 0; i < count; i += 1) {
+            const x = CYL.x0 + 13 + (i % columns) * 22;
+            const y = top + 7 + (Math.floor(i / columns) + .5) * (height - 14) / rows;
+            if (i < nNO2) body += `<circle class="mol-no2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/>`;
+            else body += `<g><circle class="mol-n2o4" cx="${(x - 2.2).toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/>` +
+                         `<circle class="mol-n2o4" cx="${(x + 2.2).toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/></g>`;
         }
         body += `<rect class="piston" x="${CYL.x0 - 4}" y="${(top - 9).toFixed(1)}" width="${CYL.x1 - CYL.x0 + 8}" height="9" rx="2"/>`;
         body += `<path class="flask" d="M${CYL.x0},${(top - 9).toFixed(1)} L${CYL.x0},${CYL.bottom} L${CYL.x1},${CYL.bottom} L${CYL.x1},${(top - 9).toFixed(1)}"/>`;
@@ -229,10 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const l = Math.log10(analyseRate(T, c, a.heat).rel);
                 pts.push(`${gx(T).toFixed(1)},${gy(Math.max(LO, Math.min(HI, l))).toFixed(1)}`);
             }
-            const on = c === a.cat;
-            out += `<path class="${cls}" opacity="${on ? 1 : 0.32}" d="M${pts.join('L')}"/>`;
+            out += `<path class="${cls}" d="M${pts.join('L')}"/>`;
             const endL = Math.min(HI, Math.log10(analyseRate(100, c, a.heat).rel));
-            out += `<text class="curve-tag" fill="${c === 'on' ? '#059669' : '#d97706'}" opacity="${on ? 1 : 0.5}" ` +
+            out += `<text class="curve-tag" fill="${c === 'on' ? '#059669' : '#d97706'}" ` +
                    `x="${GRAPH.x1 - 4}" y="${(gy(endL) + 12).toFixed(1)}" text-anchor="end">${tag}</text>`;
         });
         const l = Math.max(LO, Math.min(HI, Math.log10(a.rel)));
@@ -248,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = frame([0, 25, 50, 75, 100].map(T => [T, gx(T)]),
                         [0, 0.25, 0.5, 0.75, 1].map(f => [`${(f * 100).toFixed(0)}%`, gy(f)]),
                         '온도 (℃)', 'N₂O₄로 있는 질소의 비율');
-        [[0.5, 'rgba(217, 119, 6, .3)'], [1.0, '#d97706'], [2.0, 'rgba(217, 119, 6, .3)']].forEach(([V, col]) => {
+        [[0.5, '#985914'], [1.0, '#a1431b'], [2.0, '#326c85']].forEach(([V, col]) => {
             const pts = [];
             for (let T = 0; T <= 100; T += 1) pts.push(`${gx(T).toFixed(1)},${gy(analyseEq(T, V).fracN2O4).toFixed(1)}`);
             out += `<path class="trace" style="stroke:${col}" d="M${pts.join('L')}"/>`;
@@ -273,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? '기준은 25 ℃, 촉매 없음입니다'
             : '기준은 25 ℃, 1 L 입니다 · 정반응은 발열';
         stageBadge.textContent = a.kind === 'rate'
-            ? `${fmtRate(a.rel >= 1 ? a.rel : 1 / a.rel)}배 ${a.rel >= 1 ? '빠름' : '느림'}`
+            ? Math.abs(a.rel - 1) < 1e-9 ? '기준과 같음' : `${fmtRate(a.rel >= 1 ? a.rel : 1 / a.rel)}배 ${a.rel >= 1 ? '빠름' : '느림'}`
             : `K ${a.K.toFixed(1)} · ${EQ_WORD[a.verdict]}`;
         dataNote.innerHTML = a.kind === 'rate'
             ? `<div class="data-row"><span class="data-name">활성화 에너지</span><span class="data-val">${a.peak} kJ/mol ${a.cat === 'on' ? '(촉매가 50 → 30으로 낮춤)' : ''}</span></div>` +
@@ -281,9 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${a.K.toFixed(1)} K</span></div>` +
               `<div class="data-row"><span class="data-name">상대 속도</span><span class="data-val">exp(Ea₀/RT₀ − Ea/RT) = ${fmtRate(a.rel)}배</span></div>` +
               `<div class="data-row match"><span class="data-name">기준과 견주면</span><span class="data-val">${RATE_WORD[a.verdict]}</span></div>`
-            : `<div class="data-row"><span class="data-name">평형 상수</span><span class="data-val">${a.T} ℃ 에서 K = ${a.K.toFixed(1)} (25 ℃ 에서는 ${K_REF})</span></div>` +
+            : `<div class="data-row"><span class="data-name">평형 상수</span><span class="data-val">${a.T} ℃ 에서 K = ${a.K.toFixed(1)} (25 ℃ 에서는 ${K_REF.toFixed(1)})</span></div>` +
               `<div class="data-row"><span class="data-name">농도</span><span class="data-val">[NO₂] ${a.no2.toFixed(4)} M · [N₂O₄] ${a.n2o4.toFixed(4)} M</span></div>` +
-              `<div class="data-row"><span class="data-name">K 확인</span><span class="data-val">${a.n2o4.toFixed(4)} ÷ ${a.no2.toFixed(4)}² = ${(a.n2o4 / (a.no2 * a.no2)).toFixed(1)}</span></div>` +
+              `<div class="data-row"><span class="data-name">K 확인</span><span class="data-val">[N₂O₄] ÷ [NO₂]² = ${(a.n2o4 / (a.no2 * a.no2)).toFixed(1)}</span></div>` +
               `<div class="data-row"><span class="data-name">N₂O₄ 비율</span><span class="data-val">${(a.fracN2O4 * 100).toFixed(1)}% (기준 ${(a.ref.fracN2O4 * 100).toFixed(1)}%)</span></div>` +
               `<div class="data-row match"><span class="data-name">색</span><span class="data-val">기준의 ${a.ratio.toFixed(2)}배 — ${EQ_WORD[a.verdict]}</span></div>`;
         return a;
@@ -301,13 +310,14 @@ document.addEventListener('DOMContentLoaded', () => {
             valueB.textContent = `${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol`;
             predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-            const hotter = analyseRate(Math.min(100, a.T + 10), a.cat, a.heat);
-            let s = `활성화 에너지가 ${a.peak} kJ/mol 이고 온도가 ${a.K.toFixed(1)} K 이므로, 기준보다 ${fmtRate(a.rel)}배 ` +
-                    `${a.rel >= 1 ? '빠릅니다' : '느립니다'}. `;
-            s += `여기서 온도만 10 ℃ 올리면 ${fmtRate(hotter.rel / a.rel)}배 더 빨라집니다. ` +
-                 `온도가 활성화 에너지를 넘는 분자의 비율을 지수적으로 바꾸기 때문입니다. `;
+            let s = `활성화 에너지가 ${a.peak} kJ/mol 이고 온도가 ${a.K.toFixed(1)} K 이므로, ${rateSentence(a.rel)}. `;
+            if (a.T < 100) {
+                const delta = Math.min(10, 100 - a.T), hotter = analyseRate(a.T + delta, a.cat, a.heat);
+                s += `여기서 온도만 ${delta} ℃ 올리면 ${fmtRate(hotter.rel / a.rel)}배 더 빨라집니다. `;
+            }
+            s += `온도에 따라 활성화 에너지를 넘는 분자의 비율이 달라지기 때문입니다. `;
             s += a.cat === 'on'
-                ? `촉매가 언덕을 50 kJ 에서 30 kJ로 낮춰 ${fmtRate(analyseRate(a.T, 'on', a.heat).rel / analyseRate(a.T, 'off', a.heat).rel)}배 빨라졌습니다. `
+                ? `촉매가 언덕을 50 kJ/mol에서 30 kJ/mol로 낮춰 ${fmtRate(analyseRate(a.T, 'on', a.heat).rel / analyseRate(a.T, 'off', a.heat).rel)}배 빨라졌습니다. `
                 : `촉매를 넣으면 같은 온도에서 ${fmtRate(analyseRate(a.T, 'on', a.heat).rel / a.rel)}배 빨라집니다. `;
             s += `다만 촉매는 언덕의 높이만 낮출 뿐 반응물과 생성물의 에너지는 건드리지 않으므로, 반응열은 ${a.dh > 0 ? '+' : ''}${a.dh} kJ/mol 그대로입니다.`;
             explanation.textContent = s;
@@ -319,9 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         let s = `${a.T} ℃ 에서 평형 상수는 ${a.K.toFixed(1)} 입니다. `;
-        s += a.T > 25 ? `정반응이 발열이므로 온도를 올리면 흡열인 역반응 쪽으로 밀려 K가 25 ℃ 의 ${K_REF}보다 작아졌습니다. `
-            : a.T < 25 ? `정반응이 발열이므로 온도를 내리면 정반응 쪽으로 밀려 K가 25 ℃ 의 ${K_REF}보다 커졌습니다. `
-            : `기준 온도이므로 K는 ${K_REF} 그대로입니다. `;
+        s += a.T > 25 ? `정반응이 발열이므로 온도를 올리면 흡열인 역반응 쪽으로 이동해 K가 25 ℃ 의 ${K_REF.toFixed(1)}보다 작아졌습니다. `
+            : a.T < 25 ? `정반응이 발열이므로 온도를 내리면 정반응 쪽으로 이동해 K가 25 ℃ 의 ${K_REF.toFixed(1)}보다 커졌습니다. `
+            : `기준 온도이므로 K는 ${K_REF.toFixed(1)} 그대로입니다. `;
         s += `이 K로 풀면 [NO₂] = ${a.no2.toFixed(4)} M, [N₂O₄] = ${a.n2o4.toFixed(4)} M 이고 질소의 ${(a.fracN2O4 * 100).toFixed(1)}%가 N₂O₄로 있습니다. `;
         if (Math.abs(a.V - 1) > 1e-9) {
             const sameT = analyseEq(a.T, 1.0);
@@ -347,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildPrediction();
         stageCaption.textContent = state.mode === 'rate'
             ? '촉매는 활성화 에너지만 낮출 뿐 반응열은 바꾸지 못합니다.'
-            : '갈색 NO₂와 무색 N₂O₄ 의 비율이 조건에 따라 달라집니다.';
+            : '액화하지 않는 이상 기체의 평형을 비교합니다. 갈색은 NO₂ 농도에 따라 달라집니다.';
         changed();
     }));
     checkBtn.addEventListener('click', check);

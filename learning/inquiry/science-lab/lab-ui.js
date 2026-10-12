@@ -99,11 +99,13 @@
     const b=text.getBBox(),atEdge=b.y<box.y+box.height*.18||b.y+b.height>box.y+box.height*.82;
     if(text.matches('.figure-caption')||(atEdge&&b.width>box.width*.67)||b.x<box.x||b.x+b.width>box.x+box.width||b.y<box.y||b.y+b.height>box.y+box.height){lines.push(text.textContent.trim());text.setAttribute('data-figure-extracted','');}
    });
-   // Bottom axis titles are prose, not plotted coordinates. Give them a separate line.
+   // Bottom labels may be axis names, legends or scientific conditions. Keep
+   // the author's meaning when moving them into document flow; position alone
+   // does not make a caption an x-axis title.
    if(!proseOnly&&svg.matches('.graph-svg'))svg.querySelectorAll('text.axis-title:not(.figure-caption)').forEach(text=>{
     text.removeAttribute('data-figure-extracted');
     const b=text.getBBox();
-    if(b.y>box.y+box.height*.72){lines.push('가로축: '+text.textContent.trim());text.setAttribute('data-figure-extracted','');}
+    if(b.y>box.y+box.height*.72){lines.push(text.textContent.trim());text.setAttribute('data-figure-extracted','');}
    });
    if(lines.length){
     if(!notes){notes=document.createElement('div');notes.className='figure-notes';viewport.after(notes);}

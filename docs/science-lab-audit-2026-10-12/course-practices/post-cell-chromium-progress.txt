@@ -1,0 +1,5 @@
+chromium: opening microbes
+chromium: opening cell-structure
+chromium: microbes / 75 screen states
+chromium: cell-structure / 145 screen states
+{"engine":"chromium","deviceProfile":"chromebook-scale","routes":2,"scenarios":145,"flagged":0,"fontFlags":0,"canvasFlags":0,"liveWebFonts":true,"loadedFontFamilies":["Noto Serif KR"],"errors":[]}

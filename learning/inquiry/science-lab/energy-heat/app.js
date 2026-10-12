@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         body += `<rect class="ground" x="20" y="${GROUND_Y}" width="420" height="16"/>`;
         body += `<path class="ramp${a.stuck ? ' stuck' : ''}" d="M${RAMP_X0},${topY.toFixed(1)} L${botX.toFixed(1)},${GROUND_Y} L${RAMP_X0},${GROUND_Y} Z"/>`;
         body += `<line class="height-line" x1="${RAMP_X0}" y1="${topY.toFixed(1)}" x2="${RAMP_X0}" y2="${GROUND_Y}"/>`;
-        body += `<text class="small-label" x="${RAMP_X0 - 6}" y="${((topY + GROUND_Y) / 2).toFixed(1)}" text-anchor="end">h ${a.h} m</text>`;
         const arcR = Math.min(34, baseLen * 0.6);
         body += `<path class="angle-arc" d="M${(botX - arcR).toFixed(1)},${GROUND_Y} A${arcR.toFixed(1)} ${arcR.toFixed(1)} 0 0 1 ` +
                 `${(botX - arcR * a.cos).toFixed(1)},${(GROUND_Y - arcR * a.sin).toFixed(1)}"/>`;
@@ -105,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
             body += `<path class="stuck-mark" d="M${(cx - 16).toFixed(1)},${(cy - 26).toFixed(1)} l10,10 M${(cx - 6).toFixed(1)},${(cy - 26).toFixed(1)} l-10,10"/>`;
         }
         let out = `<g clip-path="url(#rampClip)">${body}</g>`;
+        // The height annotation sits beside the apparatus, outside its crop.
+        out += `<text class="small-label" x="${RAMP_X0 - 6}" y="${((topY + GROUND_Y) / 2).toFixed(1)}" text-anchor="end">h ${a.h} m</text>`;
         out += `<text class="part-label" x="20" y="20">h ${a.h} m · θ ${a.deg}° · μ ${a.mu.toFixed(2)} · 빗면 길이 ${a.slope.toFixed(2)} m</text>`;
         if (a.stuck) {
             out += `<text class="warn-text figure-caption" x="20" y="196">μ ${a.mu.toFixed(2)}가 tan ${a.deg}° = ${a.tan.toFixed(2)}보다 커서 수레가 미끄러지지 않습니다</text>`;

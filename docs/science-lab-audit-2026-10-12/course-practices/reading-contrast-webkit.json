@@ -4,10 +4,10 @@
     768,
     1024
   ],
-  "scope": "Visible HTML text in initial experiment state and opened/graded questions. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.",
-  "routes": 181,
-  "checked": 16225,
-  "gradientSkipped": 151,
+  "scope": "Visible HTML text in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.",
+  "routes": 182,
+  "checked": 16844,
+  "gradientSkipped": 209,
   "errors": [],
   "flagged": []
 }

@@ -1,0 +1,357 @@
+{
+  "checkedAt": "2026-10-12T12:42:40.132Z",
+  "engine": "chromium",
+  "routes": 181,
+  "states": 2810,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "scope": "Duplicate SVG IDs, cross-SVG URL references, definite clipping of text by ancestor clip paths and 20–24 px page headings. Arbitrary mask silhouettes require visual review.",
+  "findings": [
+    {
+      "slug": "energy-heat",
+      "mode": null,
+      "width": 1366,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "h 4 m",
+          "clip": "rampClip",
+          "textBounds": {
+            "left": 576.5476100085494,
+            "right": 614.2663597840572,
+            "top": 422.7352511682243,
+            "bottom": 434.9088785046729
+          },
+          "clipBounds": {
+            "left": 592.3538259345794,
+            "right": 1103.6461740654204,
+            "top": 305.86842873831773,
+            "bottom": 529.863171728972
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "energy-heat",
+      "mode": null,
+      "width": 1180,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "h 4 m",
+          "clip": "rampClip",
+          "textBounds": {
+            "left": 466.54761000854944,
+            "right": 504.26635978405716,
+            "top": 442.5321261682243,
+            "bottom": 454.7057535046729
+          },
+          "clipBounds": {
+            "left": 482.3538259345794,
+            "right": 993.6461740654205,
+            "top": 325.66530373831773,
+            "bottom": 549.660046728972
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "energy-heat",
+      "mode": null,
+      "width": 1024,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "h 4 m",
+          "clip": "rampClip",
+          "textBounds": {
+            "left": 388.54761000854944,
+            "right": 426.26635978405716,
+            "top": 442.5321261682243,
+            "bottom": 454.7057535046729
+          },
+          "clipBounds": {
+            "left": 404.3538259345794,
+            "right": 915.6461740654205,
+            "top": 325.66530373831773,
+            "bottom": 549.660046728972
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "energy-heat",
+      "mode": null,
+      "width": 820,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "h 4 m",
+          "clip": "rampClip",
+          "textBounds": {
+            "left": 138.54761000854947,
+            "right": 176.26635978405722,
+            "top": 1177.9227511682243,
+            "bottom": 1190.0963785046729
+          },
+          "clipBounds": {
+            "left": 154.35382593457945,
+            "right": 665.6461740654205,
+            "top": 1061.0559287383178,
+            "bottom": 1285.050671728972
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "energy-heat",
+      "mode": null,
+      "width": 768,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "h 4 m",
+          "clip": "rampClip",
+          "textBounds": {
+            "left": 112.54761000854947,
+            "right": 150.26635978405722,
+            "top": 1177.9227511682243,
+            "bottom": 1190.0963785046729
+          },
+          "clipBounds": {
+            "left": 128.35382593457945,
+            "right": 639.6461740654205,
+            "top": 1061.0559287383178,
+            "bottom": 1285.050671728972
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "cell-micrometry",
+      "mode": null,
+      "width": 1366,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "0",
+          "clip": "miField",
+          "textBounds": {
+            "left": 526.5669008954447,
+            "right": 535.9879090413152,
+            "top": 739.6506594337741,
+            "bottom": 751.4290140390842
+          },
+          "clipBounds": {
+            "left": 541.7386968085107,
+            "right": 1068.2613031914893,
+            "top": 433.95079787234044,
+            "bottom": 960.4734042553191
+          }
+        },
+        {
+          "text": "100",
+          "clip": "miField",
+          "textBounds": {
+            "left": 1087.6597799426186,
+            "right": 1112.4904440207436,
+            "top": 818.507121000632,
+            "bottom": 832.4511615131377
+          },
+          "clipBounds": {
+            "left": 541.7386968085107,
+            "right": 1068.2613031914893,
+            "top": 433.95079787234044,
+            "bottom": 960.4734042553191
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "cell-micrometry",
+      "mode": null,
+      "width": 1180,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "0",
+          "clip": "miField",
+          "textBounds": {
+            "left": 433.28838979696525,
+            "right": 443.2163428234554,
+            "top": 738.4265206047662,
+            "bottom": 751.4377125841635
+          },
+          "clipBounds": {
+            "left": 448.7386968085106,
+            "right": 975.2613031914893,
+            "top": 433.95079787234044,
+            "bottom": 960.4734042553191
+          }
+        },
+        {
+          "text": "100",
+          "clip": "miField",
+          "textBounds": {
+            "left": 993.8319313330762,
+            "right": 1020.2695104095401,
+            "top": 817.2057778192859,
+            "bottom": 832.5372464243708
+          },
+          "clipBounds": {
+            "left": 448.7386968085106,
+            "right": 975.2613031914893,
+            "top": 433.95079787234044,
+            "bottom": 960.4734042553191
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "cell-micrometry",
+      "mode": null,
+      "width": 1024,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "0",
+          "clip": "miField",
+          "textBounds": {
+            "left": 233.28838979696528,
+            "right": 243.21634282345542,
+            "top": 1189.0202706047662,
+            "bottom": 1202.0314625841634
+          },
+          "clipBounds": {
+            "left": 248.7386968085106,
+            "right": 775.2613031914893,
+            "top": 884.5445478723404,
+            "bottom": 1411.067154255319
+          }
+        },
+        {
+          "text": "100",
+          "clip": "miField",
+          "textBounds": {
+            "left": 793.8319313330762,
+            "right": 820.2695104095401,
+            "top": 1267.799527819286,
+            "bottom": 1283.1309964243708
+          },
+          "clipBounds": {
+            "left": 248.7386968085106,
+            "right": 775.2613031914893,
+            "top": 884.5445478723404,
+            "bottom": 1411.067154255319
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "cell-micrometry",
+      "mode": null,
+      "width": 820,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "0",
+          "clip": "miField",
+          "textBounds": {
+            "left": 131.28838979696528,
+            "right": 141.21634282345542,
+            "top": 1189.0202706047662,
+            "bottom": 1202.0314625841634
+          },
+          "clipBounds": {
+            "left": 146.7386968085106,
+            "right": 673.2613031914893,
+            "top": 884.5445478723404,
+            "bottom": 1411.067154255319
+          }
+        },
+        {
+          "text": "100",
+          "clip": "miField",
+          "textBounds": {
+            "left": 691.8319313330762,
+            "right": 718.2695104095401,
+            "top": 1267.799527819286,
+            "bottom": 1283.1309964243708
+          },
+          "clipBounds": {
+            "left": 146.7386968085106,
+            "right": 673.2613031914893,
+            "top": 884.5445478723404,
+            "bottom": 1411.067154255319
+          }
+        }
+      ],
+      "titleFonts": []
+    },
+    {
+      "slug": "cell-micrometry",
+      "mode": null,
+      "width": 768,
+      "duplicates": [],
+      "brokenRefs": [],
+      "clippedText": [
+        {
+          "text": "0",
+          "clip": "miField",
+          "textBounds": {
+            "left": 123.15773520120197,
+            "right": 132.63859022942907,
+            "top": 1168.749556896121,
+            "bottom": 1180.9537464777045
+          },
+          "clipBounds": {
+            "left": 137.60438829787233,
+            "right": 630.3956117021277,
+            "top": 883.7779255319149,
+            "bottom": 1376.5691489361702
+          }
+        },
+        {
+          "text": "100",
+          "clip": "miField",
+          "textBounds": {
+            "left": 647.8108382464205,
+            "right": 672.7013480162695,
+            "top": 1242.4847419272958,
+            "bottom": 1256.8546172487424
+          },
+          "clipBounds": {
+            "left": 137.60438829787233,
+            "right": 630.3956117021277,
+            "top": 883.7779255319149,
+            "bottom": 1376.5691489361702
+          }
+        }
+      ],
+      "titleFonts": []
+    }
+  ],
+  "errors": []
+}

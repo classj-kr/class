@@ -1,0 +1,10 @@
+✔ chromium: every reaction-energy profile has positive forward/reverse barriers and catalyst-invariant enthalpy (1259.3421ms)
+✔ webkit: every reaction-energy profile has positive forward/reverse barriers and catalyst-invariant enthalpy (704.2166ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2048.2575

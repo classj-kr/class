@@ -78,3 +78,8 @@ for(const id of circuit.activities){const r={id,slugs:[circuit.slug],status:'모
 module.exports.push({id:'10과탐1-02#4',slugs:['neutralization-common'],status:'모의활동',note:'동아 2022 과학탐구실험1 28177f9b69b984c7 PDF 3~4쪽은 산·염기·산화 환원·흡열 발열 반응에서 하나를 선정해 시연한다. 기존 중화 반응에서 혼합 비율·열 이동·온도 비교를 연습한다. 특정 시약 조합을 필수로 지정한 활동이 아니며 시나리오·대본·발표 기능과 실물 시연 완료 판정은 제외한다.'});
 
 const fork=require('../../scripts/science-tuning-fork-course.cjs');for(const id of fork.activities){const r={id,slugs:[fork.slug],status:'모의활동',note:fork.current+' '+fork.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+
+// Three control variables share a curriculum activity; two new procedures do not complete all publisher variants.
+module.exports.push({id:'12화학03#2',slugs:['rate-equilibrium','equilibrium-colour'],status:'부분 구현',note:'농도: 네 시험관의 크로뮴산 평형 비교, 온도: 코발트 용액의 조제·중탕·냉각을 정성 모형으로 추가. 기존 NO₂/N₂O₄의 온도·부피 조작은 이상 기체 평형 모형이다. 압축 직후와 새 평형의 입자 수·상대 농도·색 비교를 추가했다. 실물 측정·다른 출판사 조제 변형까지 완료한 것은 아니다.'});
+
+const strata=require('../../scripts/science-strata-correlation-experiment.cjs');module.exports.push({id:'12지구02#1',slugs:['strata-correlation','rock-age'],status:'모의활동',note:strata.current+' '+strata.boundary});

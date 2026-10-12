@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T12:18:36.556Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "digestive-enzymes",
+      "scenarios": 25
+    }
+  ],
+  "scenarios": 25,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

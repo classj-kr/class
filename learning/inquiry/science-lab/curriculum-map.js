@@ -1702,7 +1702,9 @@ const scienceCurriculum = {
     ],
     "codes": [
       "9과02-01"
-    ]
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   },
   "neutralization-common": {
     "grade": "고1",
@@ -3148,6 +3150,41 @@ const scienceCurriculum = {
     ],
     "codes": [
       "12반응01-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "equilibrium-colour": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "농도·압력·온도와 평형의 색",
+    "subjects": [
+      "화학"
+    ],
+    "codes": [
+      "12화학03-03",
+      "12화학03-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "strata-correlation": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "건층과 화석으로 지층 대비",
+    "subjects": [
+      "지구과학"
+    ],
+    "codes": [
+      "12지구02-01"
     ],
     "diagnostic": true,
     "bankQuestionIds": []

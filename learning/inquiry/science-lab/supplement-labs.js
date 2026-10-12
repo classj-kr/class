@@ -4,7 +4,17 @@
  const line=(x1,y1,x2,y2,color='#64748b',width=4)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
  const label=(text,x,y,color='#173f50',size=16)=>`<text x="${x}" y="${y}" fill="${color}" font-size="${size}" text-anchor="middle">${text}</text>`;
  const rect=(x,y,w,h,fill)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${fill}"/>`;
- const jar=(x,height,color)=>rect(x,60,110,180,'#edf4f8')+rect(x+6,230-height,98,height,color)+line(x,55,x,235)+line(x,235,x+110,235)+line(x+110,235,x+110,55);
+ const jar=(x,height,color)=>{
+  const top=230-height,glass='observationGlass'+String(x).replace('.','_'),liquid='observationLiquid'+String(x).replace('.','_');
+  const marks=[95,120,145,170,195].map((y,i)=>`<path d="M${x+83} ${y} h${i%2?9:15}" stroke="#698695" stroke-width="1.2" opacity=".65"/>`).join('');
+  return `<g data-observation-beaker><defs><linearGradient id="${glass}"><stop stop-color="#c2d7e1" stop-opacity=".35"/><stop offset=".22" stop-color="#fff" stop-opacity=".15"/><stop offset=".72" stop-color="#dce9ee" stop-opacity=".16"/><stop offset="1" stop-color="#85a8ba" stop-opacity=".32"/></linearGradient><linearGradient id="${liquid}" x1="0" y1="0" x2="1" y2="0"><stop stop-color="${color}"/><stop offset=".42" stop-color="${color}" stop-opacity=".78"/><stop offset="1" stop-color="${color}"/></linearGradient></defs>`+
+   `<ellipse cx="${x+55}" cy="243" rx="63" ry="7" fill="#254754" fill-opacity=".08"/>`+
+   `<path d="M${x} 59 L${x+3} 227 Q${x+3} 237 ${x+14} 237 H${x+96} Q${x+107} 237 ${x+107} 227 L${x+110} 59" fill="url(#${glass})" stroke="#7896a5" stroke-width="2"/>`+
+   `<path data-observation-liquid d="M${x+6} ${top} Q${x+55} ${top+9} ${x+104} ${top} L${x+101} 225 Q${x+101} 231 ${x+94} 231 H${x+16} Q${x+9} 231 ${x+9} 225 Z" fill="url(#${liquid})"/>`+
+   `<ellipse cx="${x+55}" cy="${top}" rx="49" ry="5" fill="${color}" fill-opacity=".7" stroke="#6595a7" stroke-opacity=".65" stroke-width="1"/>`+
+   marks+`<path d="M${x+12} 74 L${x+15} 217" stroke="#fff" stroke-opacity=".72" stroke-width="4" stroke-linecap="round"/>`+
+   `<ellipse cx="${x+55}" cy="59" rx="55" ry="7" fill="none" stroke="#7e9daa" stroke-width="1.5"/><path d="M${x+16} 234 H${x+94}" stroke="#668c9e" stroke-opacity=".55" stroke-width="1.5"/></g>`;
+ };
  const field=(key,title,items)=>({key,title,items:items.map(([value,text])=>({value,text}))});
  const steps=field('stage','관찰 시점',[['before','처음'],['after','변화 뒤']]);
 
@@ -124,8 +134,43 @@
  const sourceTitle=document.createElement('summary');sourceTitle.textContent='사진 정보';sources.append(sourceTitle);
  section.append(h,controls,body,sources,reset);const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(section);else document.querySelector('main').append(section);
  let state={...spec.initial};
+ const questionStates=new Map();
+ const assessment=()=>document.querySelector('.quiz-section')?.scienceAssessment;
+ // Preserve response identity when apparatus controls redraw the same item.
+ function observationQuestion(check){
+  const identity=JSON.stringify([check.question,check.choices]);let a=2166136261,b=5381;
+  for(const ch of identity){a=Math.imul(a^ch.charCodeAt(0),16777619)>>>0;b=(Math.imul(b,33)^ch.charCodeAt(0))>>>0;}
+  return{id:slug+'#observation-'+a.toString(16)+'-'+b.toString(16),question:check.question,choices:check.choices.map((text,i)=>({id:String(i),text})),answer:String(check.answer),why:check.why,feedback:check.feedback};
+ }
+ let observationBank=null,connectedAssessment=null;
+ function connectObservations(controller){
+  if(!controller||connectedAssessment===controller)return;
+  if(!observationBank){
+   const seen=new Set(),pending=[{...spec.initial}],questions=new Map();
+   while(pending.length){
+    const sample=pending.pop(),fields=typeof spec.fields==='function'?spec.fields(sample):spec.fields;
+    for(const f of fields)if(!f.items.some(o=>o.value===sample[f.key]))sample[f.key]=f.items[0].value;
+    const key=JSON.stringify(sample);if(seen.has(key))continue;seen.add(key);
+    const check=spec.view(sample).check;
+    if(check){const q=observationQuestion(check);questions.set(q.id,q);if(!questionStates.has(q.id))questionStates.set(q.id,{...sample});}
+    for(const f of fields)for(const o of f.items)pending.push({...sample,[f.key]:o.value});
+   }
+   observationBank=[...questions.values()];
+  }
+  // Register every condition's question so a reload also restores responses
+  // to modes other than the initially displayed one.
+  controller.register(observationBank);connectedAssessment=controller;
+ }
+ document.addEventListener('science-assessment-ready',()=>render(),{once:true});
+ document.querySelector('.quiz-section')?.addEventListener('science-assessment-reset',()=>render());
+ document.querySelector('.quiz-section')?.addEventListener('science-review-question',event=>{
+  const previous=questionStates.get(event.detail);if(!previous)return;
+  state={...previous};render();checkpoint.scrollIntoView({block:'center'});
+  const heading=checkpoint.querySelector('h3');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+ });
  function render(){
   stopSound();
+  connectObservations(assessment());
   const fields=typeof spec.fields==='function'?spec.fields(state):spec.fields;
   for(const f of fields)if(!f.items.some(o=>o.value===state[f.key]))state[f.key]=f.items[0].value;
   controls.replaceChildren();for(const f of fields){const set=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=f.title;set.append(legend);for(const o of f.items){const b=document.createElement('button');b.type='button';b.textContent=o.text;b.dataset.supplementChoice=f.key;b.dataset.value=o.value;b.setAttribute('aria-pressed',String(state[f.key]===o.value));b.addEventListener('click',()=>{state[f.key]=o.value;render();controls.querySelector(`[data-supplement-choice="${f.key}"][data-value="${o.value}"]`)?.focus({preventScroll:true});});set.append(b);}controls.append(set);}
@@ -150,11 +195,21 @@
   }else{svg.innerHTML=result.svg;visual.append(svg);}
   observation.textContent=result.text;note.textContent=result.note;note.hidden=!result.note;
   audioModel=result.audio;soundControls.hidden=!audioModel;
-  checkpoint.replaceChildren();if(result.check){const q=result.check;const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);q.choices.forEach((choice,i)=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=String(i);button.textContent=choice;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{const correct=String(i)===q.answer;
-    button.setAttribute('aria-pressed','true');button.dataset.correct=String(correct);button.disabled=true;
-    if(correct){checkpoint.querySelectorAll('button').forEach(b=>{b.disabled=true;});feedback.textContent='정답입니다. '+q.why;}
-    else{feedback.textContent='다시 관찰하고 다른 답을 골라 보세요.';}
-    feedback.dataset.correct=String(correct);});checkpoint.append(button);});checkpoint.append(feedback);}
+  checkpoint.replaceChildren();if(result.check){
+   const q=observationQuestion(result.check),controller=assessment();
+   checkpoint.dataset.questionId=q.id;questionStates.set(q.id,{...state});controller?.register([q]);
+   const heading=document.createElement('h3');heading.textContent=q.question;const feedback=document.createElement('p');feedback.className='supplement-check-feedback';feedback.setAttribute('aria-live','polite');checkpoint.append(heading);
+   function show(record){
+    feedback.textContent=record?window.scienceAssessment.feedback(q,record)+(record.correct&&!record.firstCorrect&&q.feedback?.[record.first]?' 처음 선택을 돌아보면: '+q.feedback[record.first]:''):'';
+    if(record)feedback.dataset.correct=String(record.correct);else delete feedback.dataset.correct;
+    for(const b of checkpoint.querySelectorAll('button')){
+     const choice=b.dataset.checkAnswer;b.disabled=!controller||!!record?.correct||!!record?.attempts.includes(choice);
+     b.setAttribute('aria-pressed',String(record?.last===choice));
+     if(record?.attempts.includes(choice))b.dataset.correct=String(choice===q.answer);else delete b.dataset.correct;
+    }
+   }
+   q.choices.forEach(choice=>{const button=document.createElement('button');button.type='button';button.dataset.checkAnswer=choice.id;button.textContent=choice.text;button.addEventListener('click',()=>{if(!button.disabled&&controller)show(controller.submit(q.id,choice.id));});checkpoint.append(button);});checkpoint.append(feedback);show(controller?.store.evidence(q.id));
+  }else delete checkpoint.dataset.questionId;
   checkpoint.hidden=!result.check;
  }
  reset.addEventListener('click',()=>{state={...spec.initial};render();});render();

@@ -111,4 +111,8 @@ for(const r of require('./required-gap-review.cjs')){const entry=module.exports.
 
 for(const slug of ['measurement','wave-transfer']){const r=module.exports.find(x=>x.slug===slug);r.current+='; 디지털 측정: 합성 신호·마이크 파형 분석, 조건별 상대 진폭·주파수 기록·내려받기'+(slug==='measurement'?' 및 실제 자 보정 길이·기기 시계 시간 측정':'');}
 
-for(const r of require('../../scripts/science-restored-experiments.cjs'))module.exports.push({slug:r.slug,current:r.current,boundary:r.boundary});
+for(const r of require('../../scripts/science-restored-experiments.cjs')){
+ const entry={slug:r.slug,current:r.current,boundary:r.boundary};
+ const index=module.exports.findIndex(x=>x.slug===r.slug);
+ if(index<0)module.exports.push(entry);else module.exports[index]=entry;
+}

@@ -13,8 +13,9 @@
     "supplementalDocuments": 28,
     "headingRecoveryReviewedDocuments": 24,
     "zeroCandidateDocumentsWithPageReview": 22,
-    "manuallyReviewedCandidates": 132,
-    "sourceReviewedExperimentUnits": 95,
+    "manuallyReviewedCandidates": 152,
+    "sourceReviewedExperimentUnits": 100,
+    "sourceReviewedPendingUnits": 1,
     "manualAdditionsOutsideHeadingExtraction": 2,
     "requiredExperimentTotal": null
   },
@@ -3198,9 +3199,11 @@
               7,
               8,
               11,
-              12
+              12,
+              15,
+              16
             ],
-            "difference": "손·종이·물 관찰, 작은북의 세기와 조각 움직임",
+            "difference": "손·종이·물 관찰, 작은북의 세기와 조각 움직임, 음판·빨대 길이에 따른 소리 높낮이",
             "implementation": "소리굽쇠의 공통 접촉 비교 구현. 작은북의 실물 조작과 목의 촉각은 별도"
           },
           {
@@ -3262,6 +3265,274 @@
           }
         ],
         "boundary": "정성 가상 실험이다. 감쇠율·2 Hz 느린 표시·440 Hz 합성음은 관찰용 설계값으로 원본 측정값이 아니다. 실제 소리굽쇠의 진동수·음색·진폭·dB 또는 접촉 물질의 정량적 감쇠를 재현한다고 주장하지 않는다. 물 접촉은 진동이 더 빨리 줄어드는 관계만 표현한다. 손의 느낌은 설명과 움직임 변화로 비교하며 촉각을 재현하지 않는다. 브라우저 오디오가 지원되지 않으면 관찰 화면은 계속 작동한다. 실제 소리세기 측정과 작은북·스피커·트라이앵글 조작은 미구현이다."
+      },
+      {
+        "id": "equilibrium-colour-concentration",
+        "slug": "equilibrium-colour",
+        "mode": "concentration",
+        "title": "네 시험관에 두 0.1 M 용액 5 mL씩 준비·1 M HCl/NaOH 선택 첨가·전후 색 비교",
+        "sourceId": "ee8cbb3b4ab047e7",
+        "pages": [
+          22,
+          23
+        ],
+        "conditions": [
+          "네 시험관에 두 0.1 M 용액 5 mL씩 준비·1 M HCl/NaOH 선택 첨가·전후 색 비교"
+        ],
+        "verdict": "기재한 동아 절차의 정성 모형; 실측 농도·반응 시간·실물 수행 완료 아님",
+        "publisherDeduplication": "농도·압력·온도를 세 실험 단위로 구분. 천재의 조제법 차이는 메타데이터에 보존하며 해당 변형 수행 완료로 세지 않음",
+        "publisherVariants": [
+          {
+            "sourceId": "4417457f97abb418",
+            "pages": [
+              126,
+              127,
+              130,
+              131
+            ],
+            "difference": "농도: 3 g/100 mL 원액 10 mL에 NaOH 후 HCl을 순차 첨가. 온도: 수화물 1 g/물 30 mL의 용액 10 mL에 CaCl₂, 약 60 °C 물과 얼음물 사용.",
+            "implementation": "공통 평형 방향과 해설을 대조. 이 화면은 동아의 네 시험관 및 HCl 조제 절차이며 천재의 연속 첨가·CaCl₂ 조제·60 °C 조건을 수행했다고 합산하지 않음."
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "1ef15cc299603506",
+            "part": "교사용 중단원 평가: 5~8번의 Q와 K 비교, 크로뮴산 평형, 온도와 평형 상수. HWP 추출에서 누락된 수식·숫자는 인용하지 않으며 PDF 122~128쪽의 완전한 반응식을 사용하여 새 문항 작성."
+          }
+        ],
+        "boundary": "색 변화 방향을 보여 주는 정성 모형. 색상 RGB·애니메이션 시간은 실측값, 평형 농도, 실제 반응 속도 또는 필요한 방울 수가 아니다. 크로뮴산/다이크로뮴산 및 코발트 착이온의 대표 평형만 다루며 모든 중간 화학종·활동도·희석·열전달·용해열을 정량 재현하지 않는다. 시약 첨가는 색 변화를 관찰하는 충분한 첨가 과정이며 특정 한 방울로 종말 색에 도달한다는 뜻이 아니다. 농도 조작은 동일 온도, 온도 조작은 같은 조제 용액을 유지한다. 압력 모형의 8 NO₂+8 N₂O₄ → 6 NO₂+9 N₂O₄는 독립 작성한 반응비 예시다. 초기 부피 1에서 1/2로 줄였을 때 NO₂ 상대 농도 1→2→1.5, N₂O₄ 상대 농도 1→2→2.25가 되어 Q/K=1→1/2→1이다. 질소 원자 수 24개와 두 평형의 질량 작용식이 보존되며 실제 시료의 입자 수·농도 측정값으로 주장하지 않는다. 온도 및 빛이 지나는 두께를 일정하게 둔 이상 기체 모형. 다른 출판사의 전체 변형이나 실물 실험 완료를 주장하지 않는다."
+      },
+      {
+        "id": "equilibrium-colour-pressure",
+        "slug": "equilibrium-colour",
+        "mode": "pressure",
+        "title": "일정 온도에서 피스톤 압축 직후와 새 평형의 갈색·입자 수·상대 농도 비교",
+        "sourceId": "ee8cbb3b4ab047e7",
+        "pages": [
+          25,
+          26
+        ],
+        "conditions": [
+          "일정 온도에서 피스톤 압축 직후와 새 평형의 갈색·입자 수·상대 농도 비교"
+        ],
+        "verdict": "기재한 동아 절차의 정성 모형; 실측 농도·반응 시간·실물 수행 완료 아님",
+        "publisherDeduplication": "농도·압력·온도를 세 실험 단위로 구분. 천재의 조제법 차이는 메타데이터에 보존하며 해당 변형 수행 완료로 세지 않음",
+        "publisherVariants": [
+          {
+            "sourceId": "4417457f97abb418",
+            "pages": [
+              126,
+              127,
+              130,
+              131
+            ],
+            "difference": "농도: 3 g/100 mL 원액 10 mL에 NaOH 후 HCl을 순차 첨가. 온도: 수화물 1 g/물 30 mL의 용액 10 mL에 CaCl₂, 약 60 °C 물과 얼음물 사용.",
+            "implementation": "공통 평형 방향과 해설을 대조. 이 화면은 동아의 네 시험관 및 HCl 조제 절차이며 천재의 연속 첨가·CaCl₂ 조제·60 °C 조건을 수행했다고 합산하지 않음."
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "1ef15cc299603506",
+            "part": "교사용 중단원 평가: 5~8번의 Q와 K 비교, 크로뮴산 평형, 온도와 평형 상수. HWP 추출에서 누락된 수식·숫자는 인용하지 않으며 PDF 122~128쪽의 완전한 반응식을 사용하여 새 문항 작성."
+          }
+        ],
+        "boundary": "색 변화 방향을 보여 주는 정성 모형. 색상 RGB·애니메이션 시간은 실측값, 평형 농도, 실제 반응 속도 또는 필요한 방울 수가 아니다. 크로뮴산/다이크로뮴산 및 코발트 착이온의 대표 평형만 다루며 모든 중간 화학종·활동도·희석·열전달·용해열을 정량 재현하지 않는다. 시약 첨가는 색 변화를 관찰하는 충분한 첨가 과정이며 특정 한 방울로 종말 색에 도달한다는 뜻이 아니다. 농도 조작은 동일 온도, 온도 조작은 같은 조제 용액을 유지한다. 압력 모형의 8 NO₂+8 N₂O₄ → 6 NO₂+9 N₂O₄는 독립 작성한 반응비 예시다. 초기 부피 1에서 1/2로 줄였을 때 NO₂ 상대 농도 1→2→1.5, N₂O₄ 상대 농도 1→2→2.25가 되어 Q/K=1→1/2→1이다. 질소 원자 수 24개와 두 평형의 질량 작용식이 보존되며 실제 시료의 입자 수·농도 측정값으로 주장하지 않는다. 온도 및 빛이 지나는 두께를 일정하게 둔 이상 기체 모형. 다른 출판사의 전체 변형이나 실물 실험 완료를 주장하지 않는다."
+      },
+      {
+        "id": "equilibrium-colour-temperature",
+        "slug": "equilibrium-colour",
+        "mode": "temperature",
+        "title": "0.1 M CoCl₂ 5 mL·진한 HCl로 보라색 조제·동일 시험관의 뜨거운 물/차가운 물 왕복",
+        "sourceId": "ee8cbb3b4ab047e7",
+        "pages": [
+          27,
+          28
+        ],
+        "conditions": [
+          "0.1 M CoCl₂ 5 mL·진한 HCl로 보라색 조제·동일 시험관의 뜨거운 물/차가운 물 왕복"
+        ],
+        "verdict": "기재한 동아 절차의 정성 모형; 실측 농도·반응 시간·실물 수행 완료 아님",
+        "publisherDeduplication": "농도·압력·온도를 세 실험 단위로 구분. 천재의 조제법 차이는 메타데이터에 보존하며 해당 변형 수행 완료로 세지 않음",
+        "publisherVariants": [
+          {
+            "sourceId": "4417457f97abb418",
+            "pages": [
+              126,
+              127,
+              130,
+              131
+            ],
+            "difference": "농도: 3 g/100 mL 원액 10 mL에 NaOH 후 HCl을 순차 첨가. 온도: 수화물 1 g/물 30 mL의 용액 10 mL에 CaCl₂, 약 60 °C 물과 얼음물 사용.",
+            "implementation": "공통 평형 방향과 해설을 대조. 이 화면은 동아의 네 시험관 및 HCl 조제 절차이며 천재의 연속 첨가·CaCl₂ 조제·60 °C 조건을 수행했다고 합산하지 않음."
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "1ef15cc299603506",
+            "part": "교사용 중단원 평가: 5~8번의 Q와 K 비교, 크로뮴산 평형, 온도와 평형 상수. HWP 추출에서 누락된 수식·숫자는 인용하지 않으며 PDF 122~128쪽의 완전한 반응식을 사용하여 새 문항 작성."
+          }
+        ],
+        "boundary": "색 변화 방향을 보여 주는 정성 모형. 색상 RGB·애니메이션 시간은 실측값, 평형 농도, 실제 반응 속도 또는 필요한 방울 수가 아니다. 크로뮴산/다이크로뮴산 및 코발트 착이온의 대표 평형만 다루며 모든 중간 화학종·활동도·희석·열전달·용해열을 정량 재현하지 않는다. 시약 첨가는 색 변화를 관찰하는 충분한 첨가 과정이며 특정 한 방울로 종말 색에 도달한다는 뜻이 아니다. 농도 조작은 동일 온도, 온도 조작은 같은 조제 용액을 유지한다. 압력 모형의 8 NO₂+8 N₂O₄ → 6 NO₂+9 N₂O₄는 독립 작성한 반응비 예시다. 초기 부피 1에서 1/2로 줄였을 때 NO₂ 상대 농도 1→2→1.5, N₂O₄ 상대 농도 1→2→2.25가 되어 Q/K=1→1/2→1이다. 질소 원자 수 24개와 두 평형의 질량 작용식이 보존되며 실제 시료의 입자 수·농도 측정값으로 주장하지 않는다. 온도 및 빛이 지나는 두께를 일정하게 둔 이상 기체 모형. 다른 출판사의 전체 변형이나 실물 실험 완료를 주장하지 않는다."
+      },
+      {
+        "id": "cell-observation",
+        "slug": "cell-structure",
+        "title": "동물·식물 세포 관찰",
+        "sourceId": "3630e303237d192e",
+        "pages": [
+          42,
+          43
+        ],
+        "conditions": [
+          "입안 상피와 검정말 두 표본의 용액 처리·덮개 유리·여분 용액 제거 순서",
+          "조명·초점·사진 확대·세 표본 나란히 비교"
+        ],
+        "verdict": "원본 관찰 사진과 세포 준비·비교 절차 대조; 실물 수행 완료 아님",
+        "publisherDeduplication": "입안 상피와 식물 세포 비교 목적은 통합하되 양파/검정말·염색 순서·영구표본의 차이를 보존",
+        "publisherVariants": [
+          {
+            "sourceId": "8f5785bce8d4e000",
+            "pages": [
+              2,
+              3
+            ],
+            "difference": "식물 표본은 양파이며, 덮개 유리 한쪽의 염색액을 반대쪽 거름종이로 흡수",
+            "implementation": "검정말을 양파라고 표시하지 않고 이 절차의 실물/사진 관찰은 별도 미구현으로 보존"
+          },
+          {
+            "sourceId": "81ce1d0e81902b80",
+            "pages": [
+              34,
+              35
+            ],
+            "difference": "양파 표피 아세트올세인 염색과 입안 상피 메틸렌 블루 처리 순서가 서로 다름",
+            "implementation": "같은 세포 비교 목적을 대조하되 미래엔의 준비 절차로 대체 완료 판정하지 않음"
+          },
+          {
+            "sourceId": "f83522c7ad8e2eab",
+            "pages": [
+              36,
+              37
+            ],
+            "difference": "검정말도 메틸렌 블루로 2분 염색하고 물로 씻은 뒤 덮개 유리 사용. 입안 상피는 염색 전 1분 건조. 신경세포·적혈구 영구표본도 비교",
+            "implementation": "이 조제·세척 변형과 신경세포·적혈구 관찰은 별도 미구현. 아세트올세인 사진으로 대체하거나 도해를 실제 사진으로 사용하지 않음"
+          },
+          {
+            "sourceId": "dc0c67831064937a",
+            "paragraphs": [
+              212,
+              213
+            ],
+            "difference": "검정말에 물을 떨어뜨리고 덮개 유리를 덮은 후 한쪽에서 염색액을 흡수시키는 평가자료의 순서",
+            "implementation": "교과서 본문의 염색 후 덮기와 다른 허용 절차로 보존. 앱에 제시된 순서만 유일한 현미경 표본 제작법이라고 주장하지 않음"
+          }
+        ],
+        "assessmentSources": [
+          {
+            "id": "3630e303237d192e",
+            "pages": [
+              42,
+              43
+            ],
+            "part": "교사용 관찰 사진·해설: 메틸렌 블루 염색 입안 상피, 검정말 염색 전후, 공통 핵/세포막과 세포벽/엽록체 차이"
+          },
+          {
+            "id": "f83522c7ad8e2eab",
+            "pages": [
+              36,
+              37
+            ],
+            "part": "교사용 정리·오개념: 저배율에서 상을 찾고 고배율 조절, 세포막과 세포벽은 따로 구별하기 어려움"
+          },
+          {
+            "id": "8f5785bce8d4e000",
+            "pages": [
+              2,
+              3
+            ],
+            "part": "양파 표피·입안 상피의 별도 표본 준비 절차와 배율 비교"
+          },
+          {
+            "id": "75f161484e5ed6f8",
+            "part": "2022 중1 Ⅱ 단원 평가 1·2·12번: 세포의 공통 구조, 핵의 기능, 식물 세포 판단 근거"
+          },
+          {
+            "id": "ee132e1db3cb7932",
+            "paragraphs": [
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              68,
+              69,
+              70,
+              71,
+              72,
+              295,
+              296
+            ],
+            "part": "2022 중1 형성 평가 4번과 정답 해설: 상피 채취·메틸렌 블루·덮개 유리·여분 용액 제거; 상피에서 엽록체를 볼 수 있다는 오개념"
+          },
+          {
+            "id": "d4f42d98ef9bb001",
+            "paragraphs": [
+              159,
+              162,
+              199,
+              202,
+              204,
+              205,
+              206,
+              588,
+              594
+            ],
+            "part": "2026 학기말 문제은행 Ⅱ 1회 13번, 2회 2번, 3회 13번: 준비 순서와 염색의 목적. 추출 텍스트에 없는 그림 기호는 앱 문항으로 옮기지 않음"
+          },
+          {
+            "id": "dc0c67831064937a",
+            "paragraphs": [
+              114,
+              115,
+              212,
+              213,
+              214,
+              458,
+              459
+            ],
+            "part": "위 문제은행의 정답 해설: 염색으로 핵을 뚜렷하게 관찰. 별도 준비 변형은 덮개를 먼저 덮고 옆에서 염색액을 흡수시킴"
+          }
+        ],
+        "boundary": "정지 사진의 초점·밝기·부분 확대 모형이다. 광학 배율 변경, 렌즈 충돌, 실제 조직 채취, 염색 시간 1분/5분이나 염색 속도를 재현하지 않는다. 기다리기는 준비 절차의 단계이며 실제 경과 시간 측정이 아니다. 염색 전후 검정말 사진은 서로 다른 잎이며 같은 세포의 연속 촬영이 아니다. 원본에 없는 세포막/세포벽의 분리, 핵 생성, 엽록체 움직임을 합성하지 않는다. 원본 사진의 해상도 이상으로 구조를 복원하지 않는다. 모든 출판사·실물 수행 완료로 판정하지 않는다."
+      },
+      {
+        "id": "strata-correlation",
+        "slug": "strata-correlation",
+        "title": "건층과 화석으로 지층 대비",
+        "sourceId": "5cd391fde1912cc3",
+        "pages": [
+          7,
+          8
+        ],
+        "conditions": [
+          "세 지역의 응회암 건층과 위아래 암상을 연결하고 부정합 확인",
+          "화석층과 위아래 순서를 연결해 전체 층서와 가장 오래된/젊은 지역 판단"
+        ],
+        "verdict": "원문 두 지층 집합의 층서·암상·화석·부정합 위치를 시각 대조한 자료 해석 모형",
+        "publisherDeduplication": "같은 탐구의 건층/화석 대비를 하나로 통합; 다른 출판사 도면 전수 대조 완료 아님",
+        "assessmentSources": [
+          {
+            "id": "0ed82ea620638555",
+            "paragraphs": [
+              723,
+              724,
+              725
+            ],
+            "part": "2022 지구과학 평가 예시의 층서 비교 지도: 삼엽충·암모나이트의 넓은 분류군과 개별 종의 생존 기간을 혼동하지 않도록 안내. 원본 문항의 미확인 그림을 복제하지 않고 별도 선택지 작성"
+          }
+        ],
+        "boundary": "교과서 모식도 자료의 대비 활동이다. 실제 노두 조사·퇴적 두께·절대연령·지층의 정확한 퇴적 순간을 산출하지 않는다. 버튼 높이는 실제 층 두께가 아니다. 화석은 해당 층의 표지이며 모든 삼엽충/암모나이트를 같은 종으로 보거나 정확한 동시성으로 일반화하지 않는다. 원문의 플랫폼 공유·의견 작성은 독립 실험에서 제외한다."
       }
     ],
     "candidates": {
@@ -4046,8 +4317,202 @@
         "experiments": [
           "tuning-fork-contact"
         ]
+      },
+      "book-3b5aa4cb5477452b": {
+        "verdict": "원문의 장치·시약·전후 색 비교 절차를 대조한 정성 모형",
+        "experiments": [
+          "equilibrium-colour-concentration"
+        ]
+      },
+      "book-42d5c44771aec78f": {
+        "verdict": "원문의 장치·시약·전후 색 비교 절차를 대조한 정성 모형",
+        "experiments": [
+          "equilibrium-colour-temperature"
+        ]
+      },
+      "book-2a76c5c735cc8d20": {
+        "verdict": "원문의 장치·시약·전후 색 비교 절차를 대조한 정성 모형",
+        "experiments": [
+          "equilibrium-colour-pressure"
+        ]
+      },
+      "book-52abc93db99eee2e": {
+        "verdict": "천재 원문의 조제량·시약 차이 확인. 공통 평형 원리는 연결하되 연속 첨가/CaCl₂ 조제 변형은 미구현이며 완료로 판정하지 않음",
+        "experiments": [
+          "equilibrium-colour-concentration"
+        ]
+      },
+      "book-8db7161bb675c96a": {
+        "verdict": "천재 원문의 조제량·시약 차이 확인. 공통 평형 원리는 연결하되 연속 첨가/CaCl₂ 조제 변형은 미구현이며 완료로 판정하지 않음",
+        "experiments": [
+          "equilibrium-colour-temperature"
+        ]
+      },
+      "book-353f52f41fe941fa": {
+        "verdict": "동아 물질과 에너지 62~63쪽의 두 종류 채소·0.2~0.5 M 설탕물 설계와 통제 조건 대조. 같은 질량 비교 목적의 출판사 변형으로 묶되, 포도당 80/78/72 g 예시를 다른 채소·설탕물에 전용하지 않음. 두 채소 설계 절차는 미구현이므로 완료로 판정하지 않음",
+        "experiments": [
+          "osmosis-mass"
+        ]
+      },
+      "book-5df468e934b52378": {
+        "verdict": "미래엔 학생·교사 교과서의 동일 준비·염색 전후 사진·구조 비교를 통합 대조",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-2c785e6910354648": {
+        "verdict": "미래엔 학생·교사 교과서의 동일 준비·염색 전후 사진·구조 비교를 통합 대조",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-222f4385e47dc697": {
+        "verdict": "양파·입안 상피 표본 및 덮개 유리와 염색 순서 차이 대조. 검정말 사진으로 양파 관찰을 완료 처리하지 않음",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-6ef0f713f937612c": {
+        "verdict": "양파·입안 상피 표본 및 덮개 유리와 염색 순서 차이 대조. 검정말 사진으로 양파 관찰을 완료 처리하지 않음",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-7b8037d9a2364c52": {
+        "verdict": "양파·입안 상피 표본 및 덮개 유리와 염색 순서 차이 대조. 검정말 사진으로 양파 관찰을 완료 처리하지 않음",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-a4839be088dd5697": {
+        "verdict": "입안 상피·검정말 관찰과 교사용 해설의 같은 활동을 묶음. 신경세포·적혈구 영구표본은 미구현이고 전개 라벨은 독립 실험 아님",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-a243fcc59888fc33": {
+        "verdict": "입안 상피·검정말 관찰과 교사용 해설의 같은 활동을 묶음. 신경세포·적혈구 영구표본은 미구현이고 전개 라벨은 독립 실험 아님",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-ff1f1bf24e89d00a": {
+        "verdict": "입안 상피·검정말 관찰과 교사용 해설의 같은 활동을 묶음. 신경세포·적혈구 영구표본은 미구현이고 전개 라벨은 독립 실험 아님",
+        "experiments": [
+          "cell-observation"
+        ]
+      },
+      "book-0d55d333663ab62c": {
+        "verdict": "원문 PDF 8쪽의 두 집합을 직접 시각 대조. 건층/화석/부정합과 8개·11개 전체 층서 비교 구현; 공유 플랫폼 활동 제외",
+        "experiments": [
+          "strata-correlation"
+        ]
+      },
+      "book-5cb24151b12e21a9": {
+        "verdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+        "experiments": [],
+        "pendingExperiments": [
+          "polarized-thin-sections"
+        ]
+      },
+      "book-a1d836b9fca0aa0c": {
+        "verdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+        "experiments": [],
+        "pendingExperiments": [
+          "polarized-thin-sections"
+        ]
+      },
+      "book-7c88272bbd6afa07": {
+        "verdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+        "experiments": [],
+        "pendingExperiments": [
+          "polarized-thin-sections"
+        ]
+      },
+      "book-c20e55d63c47f860": {
+        "verdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+        "experiments": [],
+        "pendingExperiments": [
+          "polarized-thin-sections"
+        ]
+      },
+      "book-14b151d496065492": {
+        "verdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+        "experiments": [],
+        "pendingExperiments": [
+          "polarized-thin-sections"
+        ]
       }
     },
+    "pendingExperiments": [
+      {
+        "id": "polarized-thin-sections",
+        "activityId": "12지시01#5",
+        "title": "편광 현미경으로 화산암·심성암 박편 관찰",
+        "implementation": "미구현: 기존 광물/냉각 모형으로 이 절차를 충족 처리하지 않음",
+        "sourceProcedures": [
+          {
+            "sourceId": "cdbacd1f7e6522b8",
+            "pages": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "steps": [
+              "서로 다른 화성암 박편 선택",
+              "편광 현미경으로 입자 크기·형태·배열 관찰",
+              "조직을 근거로 화산암·심성암과 냉각 환경 판단"
+            ]
+          },
+          {
+            "sourceId": "c50c90b0d29a7655",
+            "pages": [
+              26,
+              27
+            ],
+            "steps": [
+              "회전 재물대에 박편 올리기",
+              "다른 암석도 같은 배율로 관찰",
+              "입자 크기 순서와 생성 환경 비교"
+            ]
+          },
+          {
+            "sourceId": "d41737876b631070",
+            "pages": [
+              35,
+              36,
+              37
+            ],
+            "sameEditionVariant": {
+              "sourceId": "ea55a4e6c430dd9b",
+              "pages": [
+                27
+              ]
+            },
+            "steps": [
+              "현무암 박편 올리고 초점 조절",
+              "상부 편광판을 뺀 상태 관찰",
+              "상부 편광판을 넣은 상태 관찰",
+              "화강암에 같은 과정을 적용하고 조직 비교"
+            ]
+          },
+          {
+            "sourceId": "7d5310bce1637268",
+            "part": "교사용 활동지 전체 텍스트",
+            "steps": [
+              "대부분 1 mm 미만인 현무암 세립질과 큰 입자의 화강암 조립질 비교",
+              "반상 조직의 두 단계 냉각 해석",
+              "불투명 광물과 약 0.03 mm 박편의 투과 관찰 한계"
+            ]
+          }
+        ],
+        "excluded": [
+          "플랫폼 공유·스케치 문서 양식은 별도 실험으로 합산하지 않음"
+        ],
+        "imageEvidence": "미래엔 d41737876b631070 PDF 37쪽을 렌더링하여 세립질·유리질·반상·조립질 원본 박편 사진 네 장과 눈금을 직접 확인. 유리질은 0.5 mm, 나머지는 1 mm 눈금이며 사진 크기만 비교하지 않음. 같은 시야의 개방/직교 니콜 두 상태 대응은 확인 전이며 합성 색상으로 대체하지 않음"
+      }
+    ],
     "missedByHeadingExtractor": [
       "pasteur-broth",
       "contact-game"
@@ -28125,7 +28590,11 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-5cb24151b12e21a9",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "polarized-thin-sections"
+      ]
     },
     {
       "sourceId": "cdbacd1f7e6522b8",
@@ -29509,7 +29978,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-52abc93db99eee2e",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "천재 원문의 조제량·시약 차이 확인. 공통 평형 원리는 연결하되 연속 첨가/CaCl₂ 조제 변형은 미구현이며 완료로 판정하지 않음",
+      "manualExperimentIds": [
+        "equilibrium-colour-concentration"
+      ]
     },
     {
       "sourceId": "4417457f97abb418",
@@ -29521,7 +29993,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-8db7161bb675c96a",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "천재 원문의 조제량·시약 차이 확인. 공통 평형 원리는 연결하되 연속 첨가/CaCl₂ 조제 변형은 미구현이며 완료로 판정하지 않음",
+      "manualExperimentIds": [
+        "equilibrium-colour-temperature"
+      ]
     },
     {
       "sourceId": "4417457f97abb418",
@@ -32091,7 +32566,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-222f4385e47dc697",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "양파·입안 상피 표본 및 덮개 유리와 염색 순서 차이 대조. 검정말 사진으로 양파 관찰을 완료 처리하지 않음",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "81ce1d0e81902b80",
@@ -32611,7 +33089,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-a4839be088dd5697",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "입안 상피·검정말 관찰과 교사용 해설의 같은 활동을 묶음. 신경세포·적혈구 영구표본은 미구현이고 전개 라벨은 독립 실험 아님",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "33598fd33915c169",
@@ -33364,7 +33845,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-a243fcc59888fc33",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "입안 상피·검정말 관찰과 교사용 해설의 같은 활동을 묶음. 신경세포·적혈구 영구표본은 미구현이고 전개 라벨은 독립 실험 아님",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "f83522c7ad8e2eab",
@@ -33375,7 +33859,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-ff1f1bf24e89d00a",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "입안 상피·검정말 관찰과 교사용 해설의 같은 활동을 묶음. 신경세포·적혈구 영구표본은 미구현이고 전개 라벨은 독립 실험 아님",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "f83522c7ad8e2eab",
@@ -38335,7 +38822,10 @@
       "discovery": "실험 설계 표제의 줄바꿈",
       "id": "book-353f52f41fe941fa",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "동아 물질과 에너지 62~63쪽의 두 종류 채소·0.2~0.5 M 설탕물 설계와 통제 조건 대조. 같은 질량 비교 목적의 출판사 변형으로 묶되, 포도당 80/78/72 g 예시를 다른 채소·설탕물에 전용하지 않음. 두 채소 설계 절차는 미구현이므로 완료로 판정하지 않음",
+      "manualExperimentIds": [
+        "osmosis-mass"
+      ]
     },
     {
       "sourceId": "22f354e573a49af4",
@@ -39593,7 +40083,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-0d55d333663ab62c",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문 PDF 8쪽의 두 집합을 직접 시각 대조. 건층/화석/부정합과 8개·11개 전체 층서 비교 구현; 공유 플랫폼 활동 제외",
+      "manualExperimentIds": [
+        "strata-correlation"
+      ]
     },
     {
       "sourceId": "5cd391fde1912cc3",
@@ -39764,7 +40257,11 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-a1d836b9fca0aa0c",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "polarized-thin-sections"
+      ]
     },
     {
       "sourceId": "c50c90b0d29a7655",
@@ -40943,7 +41440,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-3b5aa4cb5477452b",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문의 장치·시약·전후 색 비교 절차를 대조한 정성 모형",
+      "manualExperimentIds": [
+        "equilibrium-colour-concentration"
+      ]
     },
     {
       "sourceId": "ee8cbb3b4ab047e7",
@@ -40954,7 +41454,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-2a76c5c735cc8d20",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문의 장치·시약·전후 색 비교 절차를 대조한 정성 모형",
+      "manualExperimentIds": [
+        "equilibrium-colour-pressure"
+      ]
     },
     {
       "sourceId": "ee8cbb3b4ab047e7",
@@ -40965,7 +41468,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-42d5c44771aec78f",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "원문의 장치·시약·전후 색 비교 절차를 대조한 정성 모형",
+      "manualExperimentIds": [
+        "equilibrium-colour-temperature"
+      ]
     },
     {
       "sourceId": "ee8cbb3b4ab047e7",
@@ -41345,7 +41851,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-6ef0f713f937612c",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "양파·입안 상피 표본 및 덮개 유리와 염색 순서 차이 대조. 검정말 사진으로 양파 관찰을 완료 처리하지 않음",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "11293206ef2bed2d",
@@ -41423,7 +41932,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-7b8037d9a2364c52",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "양파·입안 상피 표본 및 덮개 유리와 염색 순서 차이 대조. 검정말 사진으로 양파 관찰을 완료 처리하지 않음",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "3f7e3699924e680f",
@@ -46306,7 +46818,11 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-7c88272bbd6afa07",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "polarized-thin-sections"
+      ]
     },
     {
       "sourceId": "d41737876b631070",
@@ -46488,7 +47004,11 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-c20e55d63c47f860",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "polarized-thin-sections"
+      ]
     },
     {
       "sourceId": "ea55a4e6c430dd9b",
@@ -48606,7 +49126,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-5df468e934b52378",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "미래엔 학생·교사 교과서의 동일 준비·염색 전후 사진·구조 비교를 통합 대조",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "35761c2651ee0156",
@@ -49553,7 +50076,10 @@
       "status": "제목 후보 · 활동 범위 수동 대조 필요",
       "id": "book-2c785e6910354648",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "미래엔 학생·교사 교과서의 동일 준비·염색 전후 사진·구조 비교를 통합 대조",
+      "manualExperimentIds": [
+        "cell-observation"
+      ]
     },
     {
       "sourceId": "3630e303237d192e",
@@ -81619,7 +82145,11 @@
       "status": "활동지 파일 · 본문 단계 수동 대조 필요",
       "id": "book-14b151d496065492",
       "samePageTools": [],
-      "implementationVerdict": "미판정"
+      "implementationVerdict": "박편 선택·관찰·조직 해석의 원문 절차 확인. 같은 배율 및 개방/직교 니콜 차이를 보존. 기존 냉각 모형으로는 미구현 절차이며 완료 처리하지 않음",
+      "manualExperimentIds": [],
+      "pendingExperimentIds": [
+        "polarized-thin-sections"
+      ]
     },
     {
       "sourceId": "a016fe0d65afb558",
