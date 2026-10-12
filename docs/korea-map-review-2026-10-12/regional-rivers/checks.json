@@ -74,6 +74,14 @@
         812
       ]
     },
-    "images": "Lossless WebP, original dimensions and decoded RGBA pixel equality verified."
+    "images": "Lossless WebP, original dimensions and decoded RGBA pixel equality verified.",
+    "live": {
+      "url": "https://classj.kr/learning/inquiry/korea-map/?school=high#terrain",
+      "asset": "data/regional-rivers.js?v=20261012-rivers1",
+      "sixRiverLabelsPresent": true,
+      "liaoPopupOpened": true,
+      "consoleErrors": [],
+      "deployedAppCommit": "cf5431229"
+    }
   }
 }
