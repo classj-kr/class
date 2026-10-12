@@ -199,7 +199,7 @@ const MINUS = '−';
     card = await open(item);
     await card.locator('.mb-field input').fill(String(Math.abs(item.inputs[0].answer) + 1));
     await card.locator('.mb-primary').click();
-    assert.match(await done(card, false), /답: [−]?\d+ °C/);
+    assert.match(await done(card, false), /답: [−]?\d+[ \u00A0]°C/);   // 수와 단위 사이는 줄이 갈리지 않는 빈칸이다
 
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ ok: true }));

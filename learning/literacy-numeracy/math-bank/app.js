@@ -16,7 +16,21 @@
   let finished = {};    // 회차 열쇠 -> { right, total } (가장 최근에 끝낸 결과)
   let busy = false;
 
-  const el = (tag, className, html) => { const node = document.createElement(tag); if (className) node.className = className; if (html != null) node.innerHTML = html; return node; };
+  // 수와 단위 기호 사이(7 cm, 30 %, x cm, 12π cm²)에서 줄이 갈리지 않게 그 빈칸을 줄 바꿈 없는 빈칸으로 바꾼다. 그림(svg) 안의 글은 그대로 둔다.
+  const UNIT = '(?:cm|mm|km|m|kg|mg|g|mL|L|t|°C|%)(?![A-Za-z])';
+  const GAP = new RegExp('([0-9π]) (?=' + UNIT + ')', 'g'), HEAD = new RegExp('^ (?=' + UNIT + ')');
+  const tie = (node) => {
+    const walk = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+    for (let t = walk.nextNode(); t; t = walk.nextNode()) {
+      if (t.parentElement.closest('svg')) continue;
+      let text = t.data.replace(GAP, '$1\u00A0');
+      const before = t.previousSibling;
+      if (HEAD.test(text) && before && before.nodeType === 1 && /^(I|SUP)$/.test(before.tagName)) text = '\u00A0' + text.slice(1);
+      if (text !== t.data) t.data = text;
+    }
+    return node;
+  };
+  const el = (tag, className, html) => { const node = document.createElement(tag); if (className) node.className = className; if (html != null) { node.innerHTML = html; tie(node); } return node; };
   // 기록에 남길 글: 그림은 그림 이름으로 바꾼다.
   // 위첨자(거듭제곱의 지수)는 글로 바꾸며 잃지 않게 표를 해 두었다가, 기록에는 (−2)^3 꼴로, 화면의 답 줄에는 위첨자로 되살린다.
   const SUP = /\uE000([^\uE001]*)\uE001/g;
@@ -228,6 +242,7 @@
     result.hidden = false;
     result.className = 'mb-result ' + (ok ? 'is-right' : 'is-wrong');
     result.innerHTML = ok ? '<strong>정답</strong>' : '<strong>답: ' + answerText(item, true) + '</strong>' + (item.explain ? '<br>' + item.explain : '');
+    tie(result);
   }
 
   async function answer(item, card, response) {
