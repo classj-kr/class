@@ -113,8 +113,11 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.ok(Array.isArray(item.inputs) && item.inputs.length >= 1, label);
       // 소수 칸(decimal)은 소수 첫째 자리까지인 수이고 자연수가 아니다(소수 두·세 자리 수를 배우는 단원은 셋째 자리까지). 나머지 칸은 자연수.
       for (const input of item.inputs) {
-        if (input.decimal) { const fine = FINE_DECIMAL_UNITS.has(at.unit.id), scale = fine ? 1000 : 10; assert.ok(Math.abs(input.answer * scale - Math.round(input.answer * scale)) < 1e-6 && !Number.isInteger(input.answer) && input.answer > 0 && input.answer < (fine ? 1000 : 100), label); }
-        else assert.ok(Number.isInteger(input.answer) && input.answer >= 0 && input.answer <= (BIG_NUMBER_UNITS.has(at.unit.id) ? 9e15 : 9999), label);
+        // 부호가 있는 칸(signed)만 음수를 받는다. 크기의 잣대는 같다.
+        const size = Math.abs(input.answer);
+        assert.ok(input.signed || input.answer >= 0, '부호 없는 칸의 답이 음수다: ' + label);
+        if (input.decimal) { const fine = FINE_DECIMAL_UNITS.has(at.unit.id), scale = fine ? 1000 : 10; assert.ok(Math.abs(size * scale - Math.round(size * scale)) < 1e-6 && !Number.isInteger(size) && size > 0 && size < (fine ? 1000 : 100), label); }
+        else assert.ok(Number.isInteger(size) && size <= (BIG_NUMBER_UNITS.has(at.unit.id) ? 9e15 : 9999), label);
       }
       // 분수 답: 분자·분모 두 칸(대분수는 자연수 칸까지 세 칸), 더 줄일 수 없는 분수(같은 크기의 다른 분수가 답이 되지 않게).
       // 진분수가 기본이고, improper 인 문항만 가분수(분자가 분모보다 크다)를 받는다. 대분수의 분수 부분은 진분수다.
@@ -123,7 +126,12 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
         assert.ok(item.inputs.length === (item.mixed ? 3 : 2) && top >= 1 && bottom >= 2 && (item.improper && !item.mixed ? top > bottom : top < bottom) && common(top, bottom) === 1 && (!item.mixed || values[0] >= 1), '분수 답: ' + label);
       }
       const answers = item.inputs.map((input) => String(input.answer));
+      if (item.fraction) assert.ok(!item.negative || item.signed, '음의 분수인데 부호 칸이 없다: ' + label);
+      if (item.negative) answers[0] = '-' + answers[0];
       assert.equal(B.isCorrect(item, answers), true, label);
+      // 부호가 있는 답: 부호를 뒤집으면 틀리다(0은 부호가 없다).
+      const flipped = answers.map((v, i) => ((item.inputs[i].signed && Number(v) !== 0) || (item.fraction && item.signed && i === 0) ? (v.startsWith('-') ? v.slice(1) : '-' + v) : v));
+      if (flipped.some((v, i) => v !== answers[i])) assert.equal(B.isCorrect(item, flipped), false, '부호를 뒤집은 답: ' + label);
       assert.equal(B.isCorrect(item, answers.map((v, i) => (i === 0 ? String(Number(v) + 1) : v))), false, label);
       assert.equal(B.isCorrect(item, answers.map(() => '')), false, label);
       if (item.unordered) assert.equal(B.isCorrect(item, answers.slice().reverse()), true, label);
@@ -194,14 +202,20 @@ test('계산: 식을 따로 셈한 값이 답과 같고, 묶음 이름대로 받
     const f = item.facts || {}, label = where(item, at);
     for (const [text, i] of f.calc || []) {
       if (item.inputs[i].decimal) assert.equal(Math.round(answerAt(item, i) * 1000), Math.round(evaluate(text) * 1000), `${text} — ${label}`); else assert.equal(answerAt(item, i), evaluate(text), `${text} — ${label}`);
-      assert.ok(evaluate(text) > 0, label); checked += 1;
+      assert.ok(evaluate(text) > 0 || item.inputs[i].signed, label); checked += 1;
+    }
+    // facts.value: 답 하나의 값을 식으로 다시 셈한다(정수와 유리수의 계산). 분수 답은 부호와 대분수까지 합친 값으로 견준다. 거듭제곱은 ** 로 적는다.
+    if (f.value !== undefined) {
+      const valueOf = () => { const v = item.inputs.map((input) => input.answer); if (!item.fraction) return v[0]; const size = (item.mixed ? v[0] : 0) + v[v.length - 2] / v[v.length - 1]; return item.negative ? -size : size; };
+      assert.ok(item.fraction || item.inputs.length === 1, 'value 는 답이 하나인 문항에만 쓴다: ' + label);
+      assert.ok(Math.abs(valueOf() - evaluate(f.value)) < 1e-9, `${f.value} = ${evaluate(f.value)} 인데 답은 ${valueOf()} — ${label}`); checked += 1;
     }
     // 답을 다시 셈하는 식의 수는 문제에 적힌 수여야 한다(글과 식이 따로 놀면 답을 맞춰 본 것이 아니다).
     // 글에 숫자로 적히지 않는 수(일주일의 7 따위)는 facts.unseen 에 밝혀 둔다.
     // 고르기·견주기 문항의 식(choose.exprs, who.exprs)도 같은 잣대로 본다.
     // 단위 바꾸기(unit)·시간(clock) 식도 본다. 시간 식의 3600·60 은 초로 바꾸는 수라 글에 없어도 된다.
     const timed = Boolean(f.clock || f.clockExprs);
-    const recomputed = (f.calc || []).map(([text]) => text).concat((f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || [], (f.unit || []).map((u) => u.expr), (f.clock || []).map((c) => c.expr), f.pick ? [f.pick.expr] : []);
+    const recomputed = (f.calc || []).map(([text]) => text).concat(f.value !== undefined ? [f.value] : [], (f.who && f.who.exprs) || [], (f.choose && f.choose.exprs) || [], (f.unit || []).map((u) => u.expr), (f.clock || []).map((c) => c.expr), f.pick ? [f.pick.expr] : []);
     if (recomputed.length && !NUMBERS_IN_DRAWINGS.has(at.unit.id)) {
       // 그림은 그림 설명(aria-label)에 적힌 수로 읽는다. 세로셈은 숫자가 칸마다 떨어져 있으니 붙여 읽은 것도 함께 본다.
       // 나눗셈 세로셈(표)은 숫자가 칸마다 떨어져 있으니 표의 설명 글도 함께 읽는다.
