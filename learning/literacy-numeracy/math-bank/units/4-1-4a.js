@@ -364,7 +364,7 @@
             const s = d.int(4, 15), fit = place(bySides(1, 1, 1), [4.6, 4.2], [1.6, 0.95]), p = fit.points;
             return N('삼각형 ㄱㄴㄷ에서 변 ㄴㄷ의 길이는 몇 cm인가?', s, {
               unit: 'cm', figure: draw(fit, [G.polygon(p), G.vertexLabels(p, NAMES3), corner(p, 2, '60°'), sideOf(p, 0, 2, cm(s)), sideOf(p, 1, 2, cm(s))], `삼각형 ㄱㄴㄷ. 변 ㄱㄴ과 변 ㄱㄷ의 길이 ${s} cm, 각 ㄴㄱㄷ은 60°`),
-              explain: `두 변의 길이가 같으므로 이등변삼각형이고, 나머지 두 각은 (180° − 60°) ÷ 2 = 60°씩이다. 세 각의 크기가 모두 60°이므로 정삼각형이고, 변 ㄴㄷ의 길이도 ${s} cm이다.`,
+              explain: `두 변의 길이가 같으므로 이등변삼각형이고, 나머지 두 각은 180° − 60° = 120°를 똑같이 둘로 나눈 60°씩이다. 세 각의 크기가 모두 60°이므로 정삼각형이고, 변 ㄴㄷ의 길이도 ${s} cm이다.`,
               facts: { calc: [[String(s), 0]], rule: 'two-sides-sixty' }
             });
           }),

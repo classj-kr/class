@@ -338,7 +338,7 @@
           T('read-cells-gap', '두 점의 높이는 몇 칸 차이인가', '심17', (d) => {
             const [step, key] = d.pick([[10, 'jump'], [20, 'pop'], [5, 'visit']]), c = pick(d, key, 5), v = vals(d, c, 5, distinct, step), [i, j] = d.until(() => d.shuffle([0, 1, 2, 3, 4]).slice(0, 2), ([p, q]) => v[p] - v[q] >= 2 * step);
             return N(`${lead(c)} ${c.tag(c.names[i])}의 점은 ${c.tag(c.names[j])}의 점보다 몇 칸 더 높은 곳에 있는가?`, (v[i] - v[j]) / step, {
-              unit: '칸', figure: chart(c, v, { step }), explain: `${said(c, v, i)}, ${said(c, v, j)}이고 세로 눈금 한 칸은 ${U(c, step)}이다. (${v[i]} - ${v[j]}) ÷ ${step} = ${(v[i] - v[j]) / step}`,
+              unit: '칸', figure: chart(c, v, { step }), explain: `${said(c, v, i)}, ${said(c, v, j)}이고 세로 눈금 한 칸은 ${U(c, step)}이다. ${v[i]} - ${v[j]} = ${v[i] - v[j]}이고, ${v[i] - v[j]} ÷ ${step} = ${(v[i] - v[j]) / step}이다.`,
               facts: { calc: [[`(${v[i]}-${v[j]})/${step}`, 0]] }
             });
           }),
@@ -600,14 +600,14 @@
           T('wave-step', '물결선이 있는 그래프의 세로 눈금 한 칸', '①38 ②35 심4', (d) => {
             const w = wave(d, 5, null, WAVES.filter((x) => x.key === 'tall' || x.key === 'pop')), next = w.from + w.major * w.step;
             return N(`${lead(w.c)} 세로 눈금 한 칸은 몇 ${UT(w.c, '을/를')} 나타내는가?`, w.step, {
-              unit: w.c.unit, figure: waved(w), explain: `물결선 위에서 수가 적힌 눈금 ${w.from}부터 ${next}까지가 ${w.major}칸이므로 한 칸은 (${next} - ${w.from}) ÷ ${w.major} = ${w.step}(${w.c.unit})${tail(SOUND[w.c.unit] || w.c.unit, '을/를')} 나타낸다. 0과 ${w.from} 사이는 줄인 부분이므로 칸으로 세지 않는다.`,
+              unit: w.c.unit, figure: waved(w), explain: `물결선 위에서 수가 적힌 눈금 ${w.from}부터 ${next}까지가 ${w.major}칸이다. ${next} - ${w.from} = ${next - w.from}이므로 한 칸은 ${next - w.from} ÷ ${w.major} = ${w.step}(${w.c.unit})${tail(SOUND[w.c.unit] || w.c.unit, '을/를')} 나타낸다. 0과 ${w.from} 사이는 줄인 부분이므로 칸으로 세지 않는다.`,
               facts: { calc: [[`(${next}-${w.from})/${w.major}`, 0]], unseen: [next, w.major], rule: 'wave' }
             });
           }),
           T('wave-read', '물결선이 있는 그래프에서 한 때의 값 읽기', '①39 ②35 ③30 심9', (d) => {
             const w = wave(d, 5, (x, spec) => x.some((y) => y % spec.major !== 0), WAVES.filter((x) => x.key === 'pop' || x.key === 'type')), c = w.c, k = d.until(() => d.int(0, 4), (i) => w.cells[i] % w.major !== 0);
             return N(`${lead(c)} ${josa(one(c, c.names[k]), '은/는')} 몇 ${c.unit}인가?`, w.v[k], {
-              unit: c.unit, figure: waved(w), explain: `세로 눈금 한 칸은 ${U(c, w.step)}이다. ${c.tag(c.names[k])}의 점은 눈금 ${w.from}에서 ${w.cells[k]}칸 위에 있으므로 ${w.from} + ${w.step} × ${w.cells[k]} = ${w.v[k]}(${c.unit})이다.`,
+              unit: c.unit, figure: waved(w), explain: `세로 눈금 한 칸은 ${U(c, w.step)}이다. ${c.tag(c.names[k])}의 점은 눈금 ${w.from}에서 ${w.cells[k]}칸 위에 있다. ${w.step} × ${w.cells[k]} = ${w.step * w.cells[k]}이므로 ${w.from} + ${w.step * w.cells[k]} = ${w.v[k]}(${c.unit})이다.`,
               facts: { calc: [[`${w.from}+${w.step}*${w.cells[k]}`, 0]], unseen: [w.cells[k]], rule: 'wave' }
             });
           }),
@@ -646,7 +646,7 @@
             const marked = relabel(w.cut, { [w.from]: LABELS[0], [next]: LABELS[1] }).replace(/aria-label="[^"]*"/, `aria-label="꺾은선그래프: 물결선이 있고, 세로 눈금의 두 곳에 ㉠, ㉡을 적었다. ㉡은 ㉠에서 ${w.mb}칸 위에 있다. ${c.names.map((n, i) => `${n} ㉠에서 ${(w.v[i] - w.from) / w.sb}칸 위`).join(', ')}"`);
             return M(`${c.intro} 조사하여 두 꺾은선그래프 (가), (나)로 나타내었다. (나)의 세로 눈금 한 칸이 ${U(c, w.sb, '을/를')} 나타낼 때, ㉠, ㉡에 알맞은 수는?`, [{ label: LABELS[0], answer: w.from }, { label: LABELS[1], answer: next }], {
               figure: cap('(가)', w.plain) + cap('(나)', marked),
-              explain: `(가)에서 ${said(c, w.v, k)}이다. (나)에서 ${c.tag(c.names[k])}의 점은 ㉠에서 ${up}칸 위에 있으므로 ㉠은 ${w.v[k]} - ${w.sb} × ${up} = ${w.from}이다. ㉡은 ㉠에서 ${w.mb}칸 위에 있으므로 ${w.from} + ${w.sb} × ${w.mb} = ${next}이다.`,
+              explain: `(가)에서 ${said(c, w.v, k)}이다. (나)에서 ${c.tag(c.names[k])}의 점은 ㉠에서 ${up}칸 위에 있다. ${w.sb} × ${up} = ${w.sb * up}이므로 ㉠은 ${w.v[k]} - ${w.sb * up} = ${w.from}이다. ㉡은 ㉠에서 ${w.mb}칸 위에 있다. ${w.sb} × ${w.mb} = ${w.sb * w.mb}이므로 ㉡은 ${w.from} + ${w.sb * w.mb} = ${next}이다.`,
               facts: { calc: [[`${w.v[k]}-${w.sb}*${up}`, 0], [`${w.v[k]}-${w.sb}*${up}+${w.sb}*${w.mb}`, 1]] }
             });
           }),

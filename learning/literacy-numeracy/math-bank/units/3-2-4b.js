@@ -55,7 +55,7 @@
         const [a, b, k, u] = d.until(() => [d.int(3, 6), d.int(3, 6), d.int(1, 4), d.int(2, 4)], ([x, y, z, w]) => z < y && gcd(z, y) === 1 && ((x - 1) * w) % y === 0 && x * w * y <= 99 && x !== y);
         const total = a * u * b, eaten = total / a, rest = total - eaten;
         return N(`사탕 ${total}개 중에서 ${fj(1, a, '을/를')} 먹고, 남은 사탕의 ${fj(k, b, '을/를')} 동생에게 주었다. 동생에게 준 사탕은 몇 개인가?`, rest / b * k, {
-          unit: '개', explain: `먹은 사탕은 ${total} ÷ ${a} = ${eaten}(개)이고 남은 사탕은 ${total} - ${eaten} = ${rest}(개)이다. ${rest}의 ${fj(k, b, '은/는')} ${rest} ÷ ${b} × ${k} = ${rest / b * k}(개)이다.`,
+          unit: '개', explain: `먹은 사탕은 ${total} ÷ ${a} = ${eaten}(개)이고 남은 사탕은 ${total} - ${eaten} = ${rest}(개)이다. ` + (k === 1 ? `${rest}의 ${fj(1, b, '은/는')} ${rest} ÷ ${b} = ${rest / b}(개)이다.` : `${rest}의 ${fj(1, b, '은/는')} ${rest} ÷ ${b} = ${rest / b}(개)이므로 ${rest}의 ${fj(k, b, '은/는')} ${rest / b} × ${k} = ${rest / b * k}(개)이다.`),
           facts: { calc: [[`(${total}-${total}/${a})/${b}*${k}`, 0]] }
         });
       }, { standard: PART }),

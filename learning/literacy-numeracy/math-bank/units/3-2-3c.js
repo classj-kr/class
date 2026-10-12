@@ -150,7 +150,7 @@
       const parts = row.circles.concat([G.line(row.centers[0], end), G.point(row.centers[0]), G.point(row.centers[1]), G.point(end), G.text([row.centers[0][0], row.centers[0][1] + 0.5], 'ㄱ'), G.text([end[0] + 0.4, end[1]], 'ㄴ')]);
       return N(`반지름이 ${a} cm인 원과 반지름이 ${b} cm인 원이 맞닿아 있다. 점 ㄱ이 왼쪽 원의 중심일 때, 선분 ㄱㄴ의 길이는 몇 cm인가?`, a + b * 2, {
         unit: 'cm', figure: draw(row.cols, row.rows, parts, '맞닿은 두 원. 점 ㄱ은 왼쪽 원의 중심, 점 ㄴ은 오른쪽 원의 오른쪽 끝', 0.95),
-        explain: `선분 ㄱㄴ의 길이는 왼쪽 원의 반지름과 오른쪽 원의 지름을 더한 것이다. ${a} + ${b} × 2 = ${a + b * 2}`, facts: { calc: [[`${a}+${b}*2`, 0]], unseen: [2] }
+        explain: `선분 ㄱㄴ의 길이는 왼쪽 원의 반지름과 오른쪽 원의 지름을 더한 것이다. 오른쪽 원의 지름은 ${b} × 2 = ${b * 2}(cm)이므로 ${a} + ${b * 2} = ${a + b * 2}(cm)이다.`, facts: { calc: [[`${a}+${b}*2`, 0]], unseen: [2] }
       });
     }),
     T('touch-inside2', '작은 원의 반지름으로 큰 원의 지름 구하기', '①58 ②60', (d) => {
