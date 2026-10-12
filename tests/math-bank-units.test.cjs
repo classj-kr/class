@@ -127,6 +127,8 @@ test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
       assert.equal(B.isCorrect(item, answers.map((v, i) => (i === 0 ? String(Number(v) + 1) : v))), false, label);
       assert.equal(B.isCorrect(item, answers.map(() => '')), false, label);
       if (item.unordered) assert.equal(B.isCorrect(item, answers.slice().reverse()), true, label);
+      // 크기가 같은 다른 분수(분자·분모를 두 배 한 것)는 anyForm 인 문항만 받는다.
+      if (item.fraction) assert.equal(B.isCorrect(item, answers.map((v, i) => (i >= answers.length - 2 ? String(Number(v) * 2) : v))), Boolean(item.anyForm), '같은 크기의 다른 분수: ' + label);
     }
     // 검사할 거리가 하나도 없는 문항은 답을 믿을 수 없다.
     assert.ok(Object.keys(item.facts || {}).length > 0, '다시 셈할 근거(facts)가 없다: ' + label);
