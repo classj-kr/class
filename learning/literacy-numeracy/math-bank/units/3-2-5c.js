@@ -417,14 +417,6 @@
         explain: `${a} kg은 ${a * 1000} g이다. ${a * 1000} g보다 ${b} g 더 무거운 무게는 ${a * 1000 + b} g이다.`, facts: { calc: [[`${a}*1000`, 0], [`${a}*1000+${b}`, 1]], unseen: [1000] }
       });
     }),
-    T('wu-ton-mixed', '몇 t 몇 kg과 몇 kg으로 나타낸 무게 바꾸기', '①81 ②81 ③76', (d) => {
-      const a = d.int(2, 8), b = d.int(1, 9) * 100 + d.int(1, 9) * 10, c = d.int(2, 9) * 1000 + d.pick([20, 30, 40, 50, 60, 70, 80, 90]);
-      return M('㉠, ㉡, ㉢에 알맞은 수는?', [{ label: LABELS[0], answer: a * 1000 + b }, { label: LABELS[1], answer: hi(c) }, { label: LABELS[2], answer: lo(c) }], {
-        figure: lines([`${a} t ${b} kg = ${box(LABELS[0])} kg`, `${c} kg = ${box(LABELS[1])} t ${box(LABELS[2])} kg`]),
-        explain: `1 t은 1000 kg이다. ${a} t ${b} kg은 ${a * 1000} kg보다 ${b} kg 더 무거운 ${a * 1000 + b} kg이고, ${c} kg은 ${hi(c) * 1000} kg보다 ${lo(c)} kg 더 무거운 ${hi(c)} t ${lo(c)} kg이다.`,
-        facts: { calc: [[`${a}*1000+${b}`, 0], [`(${c}-${c}%1000)/1000`, 1], [`${c}%1000`, 2]], unseen: [1000] }
-      });
-    }),
     T('wu-right', '무게를 바르게 나타낸 것 찾기', '①82 ②72 ③80 심58 덧', (d) => {
       const [a, b, k, t] = d.shuffle([2, 3, 4, 5, 6, 7, 8, 9]), z = d.int(2, 9) * 10, v = b * 1000 + d.int(1, 9) * 100 + d.int(1, 9) * 10;
       const rows = d.shuffle([

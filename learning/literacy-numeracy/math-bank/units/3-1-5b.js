@@ -33,19 +33,6 @@
   B.addGroup('3-1-5', {
     id: 'hard', title: '실력 문제', standard: TIME,
     types: [
-      H('h-kind', '계산 결과가 시각인 것', '시간의 덧셈과 뺄셈(기본 자료) — 시각에 시간을 더하면 시각, 시각에서 시각을 빼면 시간임을 가리게', (d) => {
-        const hm = (h, m, hour) => `${h}${hour} ${m}분`, clockAt = () => [d.int(1, 5), d.int(11, 28)], long = () => [d.int(1, 3), d.int(11, 28)];
-        const a = clockAt(), s1 = long(), b = [d.int(7, 11), d.int(31, 55)], c = clockAt(), s2 = [d.int(2, 4), d.int(31, 55)], s3 = long(), s4 = [d.int(4, 6), d.int(31, 55)], s5 = long();
-        const rows = d.shuffle([
-          { text: `${hm(a[0], a[1], '시')} + ${hm(s1[0], s1[1], '시간')}`, kinds: ['at', '+', 'span'] },
-          { text: `${hm(b[0], b[1], '시')} − ${hm(c[0], c[1], '시')}`, kinds: ['at', '-', 'at'] },
-          { text: `${hm(s2[0], s2[1], '시간')} + ${hm(s3[0], s3[1], '시간')}`, kinds: ['span', '+', 'span'] },
-          { text: `${hm(s4[0], s4[1], '시간')} − ${hm(s5[0], s5[1], '시간')}`, kinds: ['span', '-', 'span'] }
-        ]);
-        return C('계산 결과가 시각인 것은?', rows.map((row) => row.text), rows.findIndex((row) => row.kinds.join('') === 'at+span'), {
-          explain: '시각에 시간을 더하면 시각이 된다. 시각에서 시각을 빼거나, 시간끼리 더하고 빼면 시간이 된다.', facts: { timeKinds: rows.map((row) => row.kinds) }
-        });
-      }),
       H('h-second-say', '초에 대한 설명 가리기', '초에 관한 설명 중 틀린 것(기본 자료)', (d) => {
         const m = d.int(1, 4), s = d.int(11, 48), k = d.until(() => d.int(2, 11), (v) => v !== 6), slip = d.bool();
         const rows = d.shuffle([
@@ -174,14 +161,6 @@
         return C('㉠과 ㉡의 계산 결과를 비교할 때, ○ 안에 알맞은 것은?', SIGNS, x > y ? 0 : x === y ? 1 : 2, {
           figure: tagged([`${span(a)} + ${span(b)}`, `${span(c)} + ${span(e)}`]) + '<div class="mb-versus"><span class="mb-expr">㉠</span><span class="mb-ring"></span><span class="mb-expr">㉡</span></div>',
           explain: `㉠은 ${span(hms(x))}, ㉡은 ${span(hms(y))}이다.`, facts: { choose: { exprs: [`${S(a)}+${S(b)}`, `${S(c)}+${S(e)}`], rule: 'compare' }, clockExprs: true }
-        });
-      }),
-      H('h-clock', '날마다 빨라지는 시계', '빨리 가는 시계(기본 ②56 ③69)', (d) => {
-        // 하루에 25초씩 빨라지는 시계: 6일 뒤에는 150초 = 2분 30초 빠르다
-        const fast = d.pick([15, 20, 25, 35, 40, 45]), days = d.until(() => d.int(3, 7), (v) => (fast * v) % 60 !== 0 && fast * v > 60), gain = fast * days, hour = d.int(8, 11);
-        return M(`하루에 ${fast}초씩 빨라지는 시계를 오늘 오전 ${hour}시에 정확히 맞추었다. ${days}일 후 오전 ${hour}시에 이 시계가 가리키는 시각은 오전 몇 시 몇 분 몇 초인가?`, [{ answer: hour, unit: '시' }, { answer: Math.floor(gain / 60), unit: '분' }, { answer: gain % 60, unit: '초' }], {
-          explain: `${days}일 동안 ${fast} × ${days} = ${gain}(초) 빨라진다. ${gain}초는 ${Math.floor(gain / 60)}분 ${gain % 60}초이므로 이 시계는 오전 ${hour}시 ${Math.floor(gain / 60)}분 ${gain % 60}초를 가리킨다.`,
-          facts: { clock: [{ expr: `${hour}*3600+${fast}*${days}`, parts: 'hms', at: 0 }] }
         });
       })
     ]

@@ -53,7 +53,7 @@
   const rowsOf = (a, b) => longDivision(b, a).rows.map((row) => row.value);
 
   B.addUnit({
-    id: '3-2-2', grade: 3, semester: 2, no: 2, title: '나눗셈', version: 4,
+    id: '3-2-2', grade: 3, semester: 2, no: 2, title: '나눗셈', version: 5,
     groups: [
       {
         id: 'tens', title: '(몇십)÷(몇)', standard: CALC,
@@ -369,15 +369,6 @@
             const [a, b] = d.until(() => [d.int(31, 98), d.int(3, 9)], ([x, y]) => x % y !== 0 && Math.floor(x / y) >= 4), q = Math.floor(a / b), r = a % b;
             return N('□ 안에 알맞은 수는?', a, {
               figure: `<span class="mb-expr">${box()} <i>÷</i> ${b} <i>=</i> ${q} … ${r}</span>`, explain: `나누는 수와 몫의 곱에 나머지를 더한다. ${expr(b, '*', q, '=', b * q)}, ${expr(b * q, '+', r, '=', a)}`, facts: { calc: [[`${b}*${q}+${r}`, 0]] }
-            });
-          }),
-          T('check-back', '확인한 식을 보고 나눗셈식 되찾기', '①34 ②60 ③53 심39', (d) => {
-            // 7×4=28, 28+5=33 → 33÷7=4…5
-            const [b, q, r] = d.until(() => [d.int(4, 9), d.int(3, 12), d.int(1, 8)], ([x, y, z]) => z < x && y !== z && y !== x), a = b * q + r;
-            return M('나눗셈을 계산하고 계산이 맞는지 확인하였다. ㉠, ㉡, ㉢에 알맞은 수는?', labelled([a, q, r]), {
-              figure: lines([`확인: ${expr(b, '*', q, '=', b * q)}, ${expr(b * q, '+', r, '=', a)}`, `계산한 나눗셈: <span class="mb-expr">${box(LABELS[0])} <i>÷</i> ${b} <i>=</i> ${box(LABELS[1])} … ${box(LABELS[2])}</span>`]),
-              explain: `나누는 수와 몫의 곱에 나머지를 더하면 나누어지는 수가 된다. 나누는 수가 ${b}이므로 몫은 ${q}, 나머지는 ${r}, 나누어지는 수는 ${a}이다.`,
-              facts: { calc: [[`${b}*${q}+${r}`, 0], [String(q), 1], [String(r), 2]] }
             });
           }),
           T('check-word', '문장제: 나눈 결과로 처음 수 구하기', '③59', (d) => {

@@ -614,12 +614,6 @@
       return D(`${name(who, '은/는')} ${k} km ${m} m를 걷고 ${Bt} km를 더 걸었다. 걸은 거리는 모두 몇 km인가?`, (first + b) / 100, {
         unit: 'km', explain: `${k} km ${m} m는 ${d2(first)} km이다. ${d2(first)} + ${Bt} = ${d2(first + b)}`, facts: { calc: [[`${k}+${m}/1000+${Bt}`, 0]], unseen: [1000] }
       });
-    }),
-    T('word-units-after', '자연수로 계산한 뒤 단위 바꾸기', '심44', (d) => {
-      const who = d.pick(NAMES), [a, b] = d.until(() => [d.int(305, 689), d.int(105, 289)], ([x, y]) => (x + y) % 10 !== 0 && x + y < 1000);
-      return D(`${name(who, '은/는')} ${a} m를 걸어간 다음 ${b} m를 더 걸어갔다. 걸어간 거리는 모두 몇 km인가?`, (a + b) / 1000, {
-        unit: 'km', explain: `${a} + ${b} = ${a + b}(m)이다. 1 m는 0.001 km이므로 ${a + b} m는 ${d3(a + b)} km이다.`, facts: { calc: [[`(${a}+${b})/1000`, 0]], unseen: [1000] }
-      });
     })
   ]);
 

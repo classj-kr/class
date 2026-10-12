@@ -45,7 +45,7 @@
   const oddUnit = (d, pool, major, minor) => { const rows = d.shuffle(d.shuffle(pool.filter(([, , u]) => u === major)).slice(0, 3).concat([d.pick(pool.filter(([, , u]) => u === minor))])); return { rows, at: rows.findIndex(([, , u]) => u === minor) }; };
 
   B.addUnit({
-    id: '3-2-5', grade: 3, semester: 2, no: 5, title: '들이와 무게', version: 3,
+    id: '3-2-5', grade: 3, semester: 2, no: 5, title: '들이와 무게', version: 4,
     groups: [
       {
         id: 'vcmp', title: '들이 비교하기', standard: VOL,

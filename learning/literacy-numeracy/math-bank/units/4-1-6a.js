@@ -127,7 +127,7 @@
   const wordOf = (op) => ({ '+': '덧셈식', '-': '뺄셈식', '*': '곱셈식', '/': '나눗셈식' })[op];
 
   B.addUnit({
-    id: '4-1-6', grade: 4, semester: 1, no: 6, title: '규칙 찾기', version: 2,
+    id: '4-1-6', grade: 4, semester: 1, no: 6, title: '규칙 찾기', version: 3,
     groups: [
       {
         id: 'table', title: '수 배열표에서 규칙 찾기', standard: RULE,

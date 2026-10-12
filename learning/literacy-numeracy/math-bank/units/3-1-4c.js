@@ -151,15 +151,6 @@
 
   // ── 일의 자리에서 올림이 있는 (몇십몇)×(몇) ───────────────────
   B.addTypes('3-1-4', 'ones', [
-    T('ones-split', '한 식으로 갈라 계산하기', '①19 ②11 ②13 ③12', (d) => {
-      // 16×6 = 10×6 + 6×6 = 60 + 36 = 96
-      const [a, b] = mulPair(d, (c, x) => MUL.ones(c, x) && x % 10 !== Math.floor(x / 10)), o = a % 10, t = a - o;
-      return M(`${a} × ${josa(b, '을/를')} 다음과 같이 계산할 때, ㉠, ㉡, ㉢에 알맞은 수는?`, [{ label: LABELS[0], answer: t * b }, { label: LABELS[1], answer: o * b }, { label: LABELS[2], answer: a * b }], {
-        figure: lines([expr(a, '*', b, '=', t, '*', b, '+', o, '*', b), expr('=', box(LABELS[0]), '+', box(LABELS[1])), expr('=', box(LABELS[2]))]),
-        explain: `${times(t, b)}, ${times(o, b)}이고, 두 곱을 더하면 ${expr(t * b, '+', o * b, '=', a * b)}이다.`,
-        facts: { calc: [[E(t, '*', b), 0], [E(o, '*', b), 1], [E(a, '*', b), 2]], mul: [a, b] }
-      });
-    }),
     T('ones-line', '수직선으로 (몇십몇)×(몇) 구하기', '②49 ③4', (d) => {
       // 14씩 5번 뛰어 70. 끝 수는 적지 않는다.
       const [a, n] = mulPair(d, (c, x, y) => MUL.ones(c, x) && y >= 3 && y <= 5 && x <= 28);

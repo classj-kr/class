@@ -140,15 +140,6 @@
         facts: { calc: [[E(o, '*', b), 0], [E(t, '*', b), 1], [E(h, '*', b), 2], [E(a, '*', b), 3]], mulAny: [a, b] }
       });
     }),
-    T('h3c-split', '자리별로 나눈 곱셈식 완성하기', '①3 ②3 ③3', (d) => {
-      // 635×4 = 600×4 + 30×4 + 5×4 = 2400 + 120 + 20 = 2540
-      const [a, b] = pair3(d, MANY), [h1, t1, o] = D3(a), h = h1 * 100, t = t1 * 10;
-      return M(`${a} × ${b}의 계산 과정이다. ㉠, ㉡, ㉢에 알맞은 수는?`, [t, t * b, a * b].map((answer, i) => ({ label: LABELS[i], answer })), {
-        figure: lines([expr(a, '*', b), expr('=', h, '*', b, '+', box(LABELS[0]), '*', b, '+', o, '*', b), expr('=', h * b, '+', box(LABELS[1]), '+', o * b), expr('=', box(LABELS[2]))]),
-        explain: `${josa(a, '은/는')} ${h}, ${t}, ${o}의 합이다. ${times(t, b)}이고, 세 곱을 더하면 ${a * b}이다.`,
-        facts: { calc: [[`${a}-${h}-${o}`, 0], [`(${a}-${h}-${o})*${b}`, 1], [E(a, '*', b), 2]], mulAny: [a, b] }
-      });
-    }),
     T('h3c-carry2', '올림한 두 수가 나타내는 값', '심15', (d) => {
       // 249×6=1494: 십의 자리 위의 5 는 50, 백의 자리 위의 2 는 200
       const firstUp = (x, y) => Math.floor(((x % 10) * y) / 10), secondUp = (x, y) => Math.floor(((Math.floor(x / 10) % 10) * y + firstUp(x, y)) / 10);
@@ -402,15 +393,6 @@
         figure: grid + lines([expr(10, '*', 10, '=', 100), expr(10, '*', q, '=', box(LABELS[0])), expr(p, '*', 10, '=', box(LABELS[1])), expr(p, '*', q, '=', box(LABELS[2])), expr(r, '*', c, '=', box(LABELS[3]))]),
         explain: `네 부분의 모눈의 수는 100, ${10 * q}, ${p * 10}, ${p * q}이다. 모두 더하면 ${r * c}이다.`,
         facts: { calc: [[E(10, '*', q), 0], [E(p, '*', 10), 1], [E(p, '*', q), 2], [E(r, '*', c), 3]], mulAny: [r, c] }
-      });
-    }),
-    T('two2-split', '곱하는 수를 몇십과 몇으로 나누어 계산하기', '①34 ②34 ③35', (d) => {
-      // 36×27 = 36×20 + 36×7 = 720 + 252 = 972
-      const [a, b] = pair22(d, (x, y) => y % 10 >= 2), ones = b % 10, b10 = b - ones;
-      return M(`${a} × ${b}의 계산 과정이다. ㉠, ㉡, ㉢에 알맞은 수는?`, [ones, a * ones, a * b].map((answer, i) => ({ label: LABELS[i], answer })), {
-        figure: lines([expr(a, '*', b), expr('=', a, '*', b10, '+', a, '*', box(LABELS[0])), expr('=', a * b10, '+', box(LABELS[1])), expr('=', box(LABELS[2]))]),
-        explain: `${josa(b, '은/는')} ${josa(b10, '과/와')} ${ones}의 합이다. ${times(a, b10)}, ${times(a, ones)}이고, 두 곱을 더하면 ${a * b}이다.`,
-        facts: { calc: [[`${b}-${b10}`, 0], [`${a}*(${b}-${b10})`, 1], [E(a, '*', b), 2]], mulAny: [a, b] }
       });
     }),
     T('two2-rows', '세로셈의 두 줄이 나타내는 곱', '①35 심34', (d) => {

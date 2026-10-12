@@ -132,7 +132,7 @@
   }
 
   B.addUnit({
-    id: '4-1-3', grade: 4, semester: 1, no: 3, title: '곱셈과 나눗셈', version: 2,
+    id: '4-1-3', grade: 4, semester: 1, no: 3, title: '곱셈과 나눗셈', version: 3,
     groups: [
       {
         id: 'mt', title: '(세 자리 수)×(몇십)', standard: MUL,
@@ -257,15 +257,6 @@
             return M(`${a} × ${josa(b, '을/를')} 몇십과 몇으로 갈라 계산하려고 한다. ㉠, ㉡, ㉢에 알맞은 수는?`, labelled([a * tens, a * ones, a * b]), {
               figure: lines([expr(a, '*', tens, '=', box(LABELS[0])), expr(a, '*', ones, '=', box(LABELS[1])), expr(a, '*', b, '=', box(LABELS[2]))]),
               explain: `${times(a, tens)}, ${times(a, ones)}이다. ${josa(b, '은/는')} ${josa(tens, '과/와')} ${ones}의 합이므로 두 곱을 더하면 ${a * b}이다.`, facts: { calc: [[E(a, '*', tens), 0], [E(a, '*', ones), 1], [E(a, '*', b), 2]] }
-            });
-          }),
-          T('mm-split-form', '곱하는 수를 가른 식 완성하기', '②18 심5', (d) => {
-            // 528×39 = 528×30 + 528×9 = 15840 + 4752 = 20592
-            const [a, b] = TWO.five(d), ones = b % 10, tens = b - ones;
-            return M('㉠, ㉡, ㉢에 알맞은 수는?', labelled([ones, a * ones, a * b]), {
-              figure: lines([expr(a, '*', b), expr('=', a, '*', tens, '+', a, '*', box(LABELS[0])), expr('=', a * tens, '+', box(LABELS[1])), expr('=', box(LABELS[2]))]),
-              explain: `${josa(b, '은/는')} ${josa(tens, '과/와')} ${ones}의 합이다. ${times(a, tens)}, ${times(a, ones)}이므로 ${a * tens} + ${a * ones} = ${a * b}이다.`,
-              facts: { calc: [[`${b}-${tens}`, 0], [`${a}*(${b}-${tens})`, 1], [E(a, '*', b), 2]] }
             });
           }),
           T('mm-use', '주어진 곱을 이용하여 계산하기', '심5', (d) => {

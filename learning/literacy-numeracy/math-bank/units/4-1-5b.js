@@ -439,21 +439,6 @@
           facts: { calc: [[`${step * cells[k]}/${cells[k]}*(${cells.join('+')})`, 0]] }
         });
       }),
-      H('h-scale-sum', '전체 수와 칸 수의 합으로 눈금을 알아내기', '41', (d) => {
-        const step = d.pick([2, 3, 4, 5, 10]), c = pick(d, d.pick(['fruit', 'snack']), 4), cells = nums(d, 4, 2, 10, 1, (x) => sum(x) % 5 === 0), k = d.int(0, 3), total = step * sum(cells);
-        return N(`${lead(c)} ${BARE} 조사한 학생이 모두 ${total}명일 때, ${josa(c.one(c.names[k]), '은/는')} 몇 명인가?`, step * cells[k], {
-          unit: '명', figure: bare(c, cells), explain: `막대는 모두 ${cells.join(' + ')} = ${sum(cells)}(칸)이고 ${total}명을 나타내므로 한 칸은 ${total} ÷ ${sum(cells)} = ${step}(명)이다. ${c.names[k]}의 막대는 ${cells[k]}칸이므로 ${step} × ${cells[k]} = ${step * cells[k]}(명)이다.`,
-          facts: { calc: [[`${total}/(${cells.join('+')})*${cells[k]}`, 0]] }
-        });
-      }),
-      H('h-scale-gap', '두 항목의 차로 눈금을 알아내기', '기본 ②56', (d) => {
-        const [step, key] = d.pick([[2, 'tree'], [5, 'can'], [10, 'town']]), c = pick(d, key, 4), cells = nums(d, 4, 2, 11, 1, (x) => x.some((p) => x.some((q) => p - q >= 2 && p - q <= 6)));
-        const [i, j, k] = d.until(() => d.shuffle([0, 1, 2, 3]), (x) => cells[x[0]] - cells[x[1]] >= 2 && cells[x[0]] - cells[x[1]] <= 6), dc = cells[i] - cells[j];
-        return N(`${lead(c)} ${BARE} ${josa(c.one(c.names[i]), '이/가')} ${c.one(c.names[j])}보다 ${U(c, step * dc)} 더 많을 때, ${josa(c.one(c.names[k]), '은/는')} 몇 ${c.unit}인가?`, step * cells[k], {
-          unit: c.unit, figure: bare(c, cells), explain: `${c.tag(c.names[i])}의 막대는 ${c.tag(c.names[j])}의 막대보다 ${cells[i]} - ${cells[j]} = ${dc}(칸) 더 길다. ${dc}칸이 ${U(c, step * dc)}이므로 한 칸은 ${U(c, step)}이다. ${c.tag(c.names[k])}의 막대는 ${cells[k]}칸이므로 ${step} × ${cells[k]} = ${step * cells[k]}(${c.unit})이다.`,
-          facts: { calc: [[`${step * dc}/(${cells[i]}-${cells[j]})*${cells[k]}`, 0]] }
-        });
-      }),
       H('h-two-sum-most', '두 막대그래프를 합하여 가장 많은 항목 찾기', '63, 기본 ①53 ①57 ②71', (d) => {
         // 한 반에서 가장 많은 것을 그대로 고르는 아이: 한 반의 으뜸이 두 반을 합한 으뜸은 아니다
         const c = pick(d, 'place', 4), [v1, v2] = d.until(() => [nums(d, 4, 3, 13), nums(d, 4, 3, 13)], ([x, y]) => { const t = x.map((p, i) => p + y[i]); return t.filter((u) => u === top(t)).length === 1 && x.indexOf(top(x)) !== t.indexOf(top(t)) && y.indexOf(top(y)) !== t.indexOf(top(t)); });

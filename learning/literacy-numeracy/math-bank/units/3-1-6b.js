@@ -93,14 +93,6 @@
           explain: `가장 적게 마신 사람의 주스가 가장 많이 남는다. 분모가 같으므로 분자가 가장 작은 ${frac(Math.min(...ks), n)}만큼 마신 사람이다.`, facts: { choose: { exprs: ks.map((k) => `${k}/${n}`), rule: 'min' } }
         });
       }),
-      H('h-almost', '거의 다 먹은 양에서 남은 부분 견주기', '비상 단원평가 실력 · YBM 단원심화평가 · 지학사 단원평가 실력', (d) => {
-        // 3/4, 5/6, 11/12 만큼 먹었을 때 가장 많이 남긴 사람
-        const who = d.shuffle(NAMES).slice(0, 3), ns = d.shuffle([3, 4, 5, 6, 7, 8, 9, 10, 12]).slice(0, 3);
-        return C(`같은 크기의 케이크를 ${name(who[0], '은/는')} 한 개의 ${frac(ns[0] - 1, ns[0])}만큼, ${name(who[1], '은/는')} ${frac(ns[1] - 1, ns[1])}만큼, ${name(who[2], '은/는')} ${frac(ns[2] - 1, ns[2])}만큼 먹었다. 케이크를 가장 많이 남긴 사람은?`, who, ns.indexOf(Math.min(...ns)), {
-          explain: `남은 케이크는 차례대로 ${ns.map((n) => frac(1, n)).join(', ')}이다. 단위분수는 분모가 작을수록 크므로 ${frac(1, Math.min(...ns))}만큼 남긴 사람이 가장 많이 남겼다.`,
-          facts: { choose: { exprs: ns.map((n) => `1-${n - 1}/${n}`), rule: 'max' }, unseen: [1] }
-        });
-      }),
       H('h-link', '분모가 같은 분수와 단위분수를 이어 견주기', '디딤돌 단원평가 심화', (d) => {
         // 1/8, 3/7, 1/7 가운데 가장 큰 것
         const who = d.shuffle(NAMES).slice(0, 3), n = d.int(5, 9), m = n + d.int(1, 3), k = d.int(2, 3);
