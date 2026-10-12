@@ -3188,6 +3188,23 @@ const scienceCurriculum = {
     ],
     "diagnostic": true,
     "bankQuestionIds": []
+  },
+  "polarized-thin-sections": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "편광 현미경으로 화성암 조직 비교",
+    "subjects": [
+      "지구시스템과학"
+    ],
+    "codes": [
+      "12지시01-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;
