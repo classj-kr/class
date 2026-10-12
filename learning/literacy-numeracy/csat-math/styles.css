@@ -65,6 +65,11 @@ body {
 
 main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
 
+/* ── 「수학 문제」와 같은 드롭다운(학기들, 맨 밑이 이 화면) ── */
+.term-nav { margin: 0 0 12px; }
+.term-select { min-height: 44px; max-width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font: inherit; font-size: 1rem; cursor: pointer; }
+.term-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
 /* ── 고르기 ── */
 .picker {
   background: rgba(255, 255, 255, 0.96);

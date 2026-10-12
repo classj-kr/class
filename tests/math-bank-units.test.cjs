@@ -81,6 +81,22 @@ const BIG_NUMBER_UNITS = new Set(['4-1-1', '4-1-3', '4-1-6', '5-1-1', '5-1-6', '
 const FINE_DECIMAL_UNITS = new Set(['4-2-3', '5-2-1', '5-2-4', '6-1-3', '6-1-4', '6-1-6', '6-2-3', '6-2-5']);
 const answerAt = (item, i) => item.inputs[i].answer;
 
+test('맨 위 드롭다운: 학기 목록(terms.js)이 실린 단원과 같고, 기출 화면도 그 파일을 읽는다', () => {
+  const own = {}; own.globalThis = own;
+  vm.runInNewContext(fs.readFileSync(path.join(APP, 'terms.js'), 'utf8'), own, { filename: 'terms.js' });
+  const T = own.MathBankTerms;
+  const terms = [...new Set(B.units().map((u) => u.grade + '-' + u.semester))];
+  assert.deepEqual(JSON.parse(JSON.stringify(T.TERMS)), terms, 'terms.js 의 TERMS 를 실린 단원에 맞춘다(add_part.py 가 고친다)');
+  assert.equal(T.label('3-2'), '초 3학년 2학기');
+  assert.equal(T.label('7-1'), '중 1학년 1학기');
+  assert.equal(T.PAST.label, '평가원·수능 기출');
+  if (!process.env.MATH_BANK_DIR) {
+    const page = fs.readFileSync(path.join(ROOT, 'learning/literacy-numeracy/csat-math/index.html'), 'utf8');
+    assert.match(page, /<select[^>]*data-math-terms="\.\.\/math-bank\/"/, '기출 화면에 같은 드롭다운이 있다');
+    assert.match(page, /\.\.\/math-bank\/terms\.js\?v=[0-9-]+/, '기출 화면이 terms.js 를 읽는다');
+  }
+});
+
 test('모든 문항이 온전한 모양이고 글이 멀쩡하다', () => {
   let made = 0;
   everyItem((item, at) => {

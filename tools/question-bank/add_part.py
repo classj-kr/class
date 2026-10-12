@@ -17,6 +17,24 @@ ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 APP = os.path.join(ROOT, 'learning', 'literacy-numeracy', 'math-bank')
 
 
+def sync_terms(html, version):
+    """맨 위 드롭다운의 학기 목록(terms.js)을 index.html 에 실린 단원에 맞춘다. 목록이 바뀌면 기출 화면(csat-math)이 이 파일을 읽는 번호도 올린다."""
+    terms = sorted({m.group(1) for m in re.finditer(r'units/(\d+-\d+)-\d+[a-z]\.js', html)}, key=lambda t: [int(x) for x in t.split('-')])
+    path = os.path.join(APP, 'terms.js')
+    text = io.open(path, encoding='utf-8', newline='').read()
+    found = re.search(r'const TERMS = \[[^\]]*\];', text)
+    assert found, 'terms.js 에서 TERMS 를 찾지 못했다'
+    line = 'const TERMS = [%s];' % ', '.join("'%s'" % t for t in terms)
+    if found.group(0) == line:
+        return
+    io.open(path, 'w', encoding='utf-8', newline='').write(text.replace(found.group(0), line))
+    past = os.path.join(APP, '..', 'csat-math', 'index.html')
+    page = io.open(past, encoding='utf-8', newline='').read()
+    assert re.search(r'\.\./math-bank/terms\.js\?v=[0-9-]+', page), '기출 화면이 terms.js 를 읽지 않는다'
+    io.open(past, 'w', encoding='utf-8', newline='').write(re.sub(r'(\.\./math-bank/terms\.js\?v=)[0-9-]+', lambda m: m.group(1) + version, page))
+    print('학기 목록: ' + ', '.join(terms))
+
+
 def main(argv):
     unit, parts, version = argv[1], argv[2].replace('-', ''), argv[3]
     path = os.path.join(APP, 'index.html')
@@ -37,6 +55,7 @@ def main(argv):
         at = before[-1].end() if before else lines[0].start()
         html = html[:at] + line % name + html[at:]
     io.open(path, 'w', encoding='utf-8', newline='\n').write(html)
+    sync_terms(html, version)
     if unit == '-':
         print('%s → %s' % (old, version))
         return 0
