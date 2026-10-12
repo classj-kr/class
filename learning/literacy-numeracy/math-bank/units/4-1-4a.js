@@ -139,7 +139,7 @@
   const plainlyUneven = (t) => { const s = sides2(t).map(Math.sqrt).sort((x, y) => x - y); return s[1] / s[0] > 1.15 && s[2] / s[1] > 1.15; };
 
   B.addUnit({
-    id: '4-1-4', grade: 4, semester: 1, no: 4, title: '삼각형', version: 2,
+    id: '4-1-4', grade: 4, semester: 1, no: 4, title: '삼각형', version: 3,
     groups: [
       {
         id: 'sides', title: '변의 길이에 따라 삼각형 분류하기', standard: SIDE,
@@ -296,19 +296,6 @@
               facts: { calc: [[`180-${b}*2`, 0]], unseen: [180, 2], rule: 'base-apex' }
             });
           }),
-          T('iso-in-rect', '직사각형 안의 이등변삼각형', '③22', (d) => {
-            // 직사각형의 한 각(직각)이 길이가 같은 두 변 사이의 각이다.
-            const flip = d.bool(), x = (v) => (flip ? 8 - v : v), P = { ㄱ: [x(1), 1], ㄴ: [x(1), 4], ㄷ: [x(7), 4], ㄹ: [x(7), 1], ㅁ: [x(4), 1] };
-            const names = flip ? { ㄱ: 'ㄹ', ㄴ: 'ㄷ', ㄷ: 'ㄴ', ㄹ: 'ㄱ', ㅁ: 'ㅁ' } : { ㄱ: 'ㄱ', ㄴ: 'ㄴ', ㄷ: 'ㄷ', ㄹ: 'ㄹ', ㅁ: 'ㅁ' };
-            const cornerName = names.ㄹ, low = names.ㄷ;   // 삼각형이 놓인 쪽의 위 꼭짓점과 아래 꼭짓점
-            const parts = [G.polygon([P.ㄱ, P.ㄴ, P.ㄷ, P.ㄹ], 'mb-poly is-plain'), G.polygon([P.ㅁ, P.ㄷ, P.ㄹ]),
-              G.text([P.ㄱ[0] + (flip ? 0.45 : -0.45), 0.7], names.ㄱ), G.text([P.ㄴ[0] + (flip ? 0.45 : -0.45), 4.3], names.ㄴ), G.text([P.ㄷ[0] + (flip ? -0.45 : 0.45), 4.3], names.ㄷ), G.text([P.ㄹ[0] + (flip ? -0.45 : 0.45), 0.7], names.ㄹ), G.text([P.ㅁ[0], 0.5], 'ㅁ')];
-            return N(`사각형 ㄱㄴㄷㄹ은 직사각형이고, 삼각형 ㅁ${low}${cornerName}은 변 ${cornerName}ㅁ과 변 ${cornerName}${low}의 길이가 같은 이등변삼각형이다. 각 ${cornerName}ㅁ${low}의 크기는 몇 도인가?`, 45, {
-              unit: '°', figure: G.board(8, 5, parts, { grid: false, scale: 1.25, label: `직사각형 ㄱㄴㄷㄹ의 변 ㄱㄹ 위에 점 ㅁ이 있다. 삼각형 ㅁ${low}${cornerName}에서 각 ㅁ${cornerName}${low}은 직사각형의 한 각이다.` }),
-              explain: `직사각형의 네 각은 모두 직각이므로 각 ㅁ${cornerName}${low}은 90°이다. 삼각형 ㅁ${low}${cornerName}은 이등변삼각형이므로 나머지 두 각의 크기가 같다. (180° − 90°) ÷ 2 = 45°`,
-              facts: { calc: [['(180-90)/2', 0]], unseen: [180, 90, 2] }
-            });
-          }),
           T('iso-list-three', '세 각의 크기를 보고 이등변삼각형 고르기', '①22 ②29 심28', (d) => {
             // 60°, 60°, 60°는 넣지 않는다(정삼각형).
             const b = d.pick([25, 35, 40, 45, 50, 55, 65, 70, 75, 80]), key = (t) => t.slice().sort((x, y) => x - y).join();
@@ -343,18 +330,6 @@
               unit: 'cm', figure: draw(fit, [G.polygon(p), G.vertexLabels(p, NAMES3), corner(p, 2, top + '°'), corner(p, left ? 1 : 0, b + '°'), sideOf(p, left ? 0 : 1, 2, cm(leg)), sideOf(p, 0, 1, cm(base))], `삼각형 ㄱㄴㄷ. 각 ㄴㄱㄷ은 ${top}°, 각 ${left ? 'ㄱㄷㄴ' : 'ㄱㄴㄷ'}은 ${b}°, 변 ${left ? 'ㄱㄴ' : 'ㄱㄷ'}의 길이 ${leg} cm, 변 ㄴㄷ의 길이 ${base} cm`),
               explain: `각 ${left ? 'ㄱㄴㄷ' : 'ㄱㄷㄴ'}은 180° − ${top}° − ${b}° = ${b}°이다. 각 ㄱㄴㄷ과 각 ㄱㄷㄴ의 크기가 같으므로 이등변삼각형이고, 변 ㄱㄴ과 변 ㄱㄷ의 길이가 같다. 그러므로 ${leg} cm이다.`,
               facts: { calc: [[String(leg), 0]], rule: 'third-angle' }
-            });
-          }),
-          T('iso-circle', '원 안의 삼각형의 각', '①24 심40', (d) => {
-            // 두 변이 원의 반지름이라 이등변삼각형이다(길이가 같다는 표시가 없다).
-            const open = d.pick([50, 70, 80, 100, 110, 120]), turn = d.pick([0, 180]), c = [3.3, 3.3], r = 2.5;
-            const p = G.toward(c, r, turn + 270 - open / 2), q = G.toward(c, r, turn + 270 + open / 2), ask = d.pick(['ㅇㄱㄴ', 'ㅇㄴㄱ']);
-            const parts = [G.circle(c, r).replace('class="mb-poly"', 'class="mb-poly is-plain"'), G.polygon([c, p, q]), corner([c, p, q], 0, open + '°'), G.point(c), G.point(p), G.point(q),
-              G.text(G.toward(c, 0.5, turn + 90), 'ㅇ'), G.text(G.beyond(c, p, 0.45), 'ㄱ'), G.text(G.beyond(c, q, 0.45), 'ㄴ')];
-            return N(`점 ㅇ은 원의 중심이고, 점 ㄱ과 점 ㄴ은 원 위의 점이다. 각 ${ask}의 크기는 몇 도인가?`, (180 - open) / 2, {
-              unit: '°', figure: G.board(6.6, 6.6, parts, { grid: false, scale: 1.3, label: `원의 중심 ㅇ과 원 위의 두 점 ㄱ, ㄴ을 이은 삼각형 ㅇㄱㄴ. 각 ㄱㅇㄴ은 ${open}°` }),
-              explain: `변 ㅇㄱ과 변 ㅇㄴ은 원의 반지름이라 길이가 같으므로 삼각형 ㅇㄱㄴ은 이등변삼각형이다. 각 ㅇㄱㄴ과 각 ㅇㄴㄱ의 크기가 같으므로 (180° − ${open}°) ÷ 2 = ${(180 - open) / 2}°이다.`,
-              facts: { calc: [[`(180-${open})/2`, 0]], unseen: [180, 2] }
             });
           })
         ]
@@ -399,22 +374,6 @@
               facts: { choose: { exprs: sums.map((v) => `180-${v}`), rule: 'equals', target: 60 }, unseen: [180] }
             });
           }),
-          T('equi-joined', '이어 붙인 정삼각형의 각', '①30 ②42 심33', (d) => {
-            const h = Math.sqrt(3) / 2, fit = place([[0.5, 0], [0, h], [1, h], [1.5, 0]], [6.4, 3.4], [1.1, 0.95]), p = fit.points, ask = d.pick(['ㄴㄱㄹ', 'ㄴㄷㄹ']);
-            return N(`삼각형 ㄱㄴㄷ과 삼각형 ㄱㄷㄹ은 정삼각형이다. 각 ${ask}의 크기는 몇 도인가?`, 120, {
-              unit: '°', figure: draw(fit, [G.polygon(p), G.line(p[0], p[2]), G.vertexLabels(p, ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ'])], '정삼각형 ㄱㄴㄷ과 정삼각형 ㄱㄷㄹ을 변 ㄱㄷ에서 이어 붙인 사각형 ㄱㄴㄷㄹ'),
-              explain: `각 ${ask}은 정삼각형의 각 2개를 모은 것이다. 정삼각형의 한 각은 60°이므로 60° + 60° = 120°이다.`, facts: { calc: [['60+60', 0]], unseen: [60] }
-            });
-          }),
-          T('equi-outer', '정삼각형의 한 변을 늘인 바깥쪽 각', '②43 심32', (d) => {
-            const h = Math.sqrt(3) / 2, flip = d.bool(), raw = [[0, 0], [1, 0], [0.5, -h], [1.6, 0]], fit = place(flip ? mirrored(raw) : raw, [6.6, 3.6], [1.1, 0.95]), p = fit.points;
-            const names = flip ? ['ㄷ', 'ㄴ', 'ㄱ', 'ㄹ'] : ['ㄴ', 'ㄷ', 'ㄱ', 'ㄹ'], near = names[1], far = names[0];
-            return N(`삼각형 ㄱㄴㄷ은 정삼각형이고, 점 ${far}, ${near}, ㄹ은 한 직선 위에 있다. ㉠의 크기는 몇 도인가?`, 120, {
-              unit: '°', figure: draw(fit, [G.polygon(p.slice(0, 3)), G.line(p[1], p[3]), wedge(p[1], p[2], p[3], '㉠'), G.point(p[3]), G.text([p[0][0], p[0][1] + 0.55], names[0]), G.text([p[1][0], p[1][1] + 0.55], names[1]), G.text([p[2][0], p[2][1] - 0.5], names[2]), G.text([p[3][0], p[3][1] + 0.55], names[3])],
-                `정삼각형 ㄱㄴㄷ의 변 ㄴㄷ을 점 ${near} 쪽으로 늘인 직선 위에 점 ㄹ이 있다. ㉠은 각 ㄱ${near}ㄹ`),
-              explain: `정삼각형의 한 각은 60°이므로 각 ㄱ${near}${far}은 60°이다. 한 직선이 이루는 각은 180°이므로 ㉠ = 180° − 60° = 120°이다.`, facts: { calc: [['180-60', 0]], unseen: [180, 60] }
-            });
-          }),
           T('equi-row', '이어 붙인 정삼각형의 선분의 길이', '①31', (d) => {
             // 둘레가 아니라, 한 직선 위에 놓인 두 변의 길이를 정삼각형의 성질로 읽는다.
             const s = d.int(3, 12), h = Math.sqrt(3) / 2, A = [0, h], Bm = [1, h], Cr = [2, h], D = [0.5, 0], E = [1.5, 0], fit = place([A, Bm, Cr, D, E], [7.4, 3.2], [1.1, 0.9]), [a, b, c, e, f] = fit.points;
@@ -432,11 +391,7 @@
               explain: `색칠한 삼각형의 아래쪽 두 각은 정삼각형의 각이므로 60°씩이고, 나머지 한 각도 180° − 60° − 60° = 60°이다. 세 각의 크기가 모두 60°이므로 정삼각형이고, 세 변의 길이가 모두 ${s} cm이다.`,
               facts: { calc: [[String(s), 0]] }
             });
-          }),
-          T('equi-circles', '두 원으로 그린 삼각형의 각', '③30 심41', () => N('크기가 같은 두 원이 서로의 중심 ㄱ, ㄴ을 지난다. 점 ㄷ이 두 원이 만나는 점일 때, 각 ㄷㄱㄴ의 크기는 몇 도인가?', 60, {
-            unit: '°', figure: twoCircles(),
-            explain: '변 ㄱㄴ, 변 ㄱㄷ, 변 ㄴㄷ은 모두 크기가 같은 원의 반지름이라 길이가 같다. 삼각형 ㄱㄴㄷ은 정삼각형이므로 한 각의 크기는 60°이다.', facts: { calc: [['180/3', 0]], unseen: [180, 3] }
-          }))
+          })
         ]
       },
       { id: 'angles', title: '각의 크기에 따라 삼각형 분류하기', standard: ANGLE, types: [] },

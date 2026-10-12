@@ -745,51 +745,6 @@
           facts: { calc: [[`(${k}+3)*${k}/2`, 0]], unseen: [3, 2] }
         });
       }),
-      H('hard-rect-iso', '직사각형의 대각선이 만드는 이등변삼각형의 각', '55, 기본 ②63', (d) => {
-        const low = d.pick([50, 70, 80, 100, 110, 120]);
-        return N(`직사각형 ㄱㄴㄷㄹ에서 두 대각선이 만나는 점이 ㅁ이다. 각 ㄴㅁㄷ의 크기가 ${low}°일 때, 각 ㅁㄴㄷ의 크기는 몇 도인가?`, (180 - low) / 2, {
-          unit: '°', figure: crossFig(rectBy(low), { busy: [1], more: (p, m) => [wedge(m, p[1], p[2], low + '°', 0.5)], label: `두 대각선을 그은 직사각형 ㄱㄴㄷㄹ. 두 대각선이 만나는 점 ㅁ. 각 ㄴㅁㄷ은 ${low}°` }),
-          explain: `직사각형의 두 대각선은 길이가 같고 서로를 똑같이 둘로 나누므로 선분 ㅁㄴ과 선분 ㅁㄷ의 길이가 같다. 삼각형 ㅁㄴㄷ은 이등변삼각형이므로 각 ㅁㄴㄷ = (180° − ${low}°) ÷ 2 = ${(180 - low) / 2}°이다.`,
-          facts: { calc: [[`(180-${low})/2`, 0]], unseen: [180, 2] }
-        });
-      }),
-      H('hard-rect-next', '옆의 각을 먼저 구해 이등변삼각형의 각 구하기', '55, 기본 ②63', (d) => {
-        const side = d.pick([40, 50, 70, 80]), low = 180 - side;
-        return N(`직사각형 ㄱㄴㄷㄹ에서 두 대각선이 만나는 점이 ㅁ이다. 각 ㄱㅁㄴ의 크기가 ${side}°일 때, 각 ㅁㄴㄷ의 크기는 몇 도인가?`, side / 2, {
-          unit: '°', figure: crossFig(rectBy(low), { busy: [0], more: (p, m) => [wedge(m, p[0], p[1], side + '°', 0.5)], label: `두 대각선을 그은 직사각형 ㄱㄴㄷㄹ. 두 대각선이 만나는 점 ㅁ. 각 ㄱㅁㄴ은 ${side}°` }),
-          explain: `선분 ㄱㄷ은 곧은 선이므로 각 ㄴㅁㄷ = 180° − ${side}° = ${low}°이다. 직사각형의 두 대각선은 길이가 같고 서로를 똑같이 둘로 나누므로 삼각형 ㅁㄴㄷ은 선분 ㅁㄴ과 선분 ㅁㄷ의 길이가 같은 이등변삼각형이다. 각 ㅁㄴㄷ = (180° − ${low}°) ÷ 2 = ${side / 2}°`,
-          facts: { calc: [[`(180-(180-${side}))/2`, 0]], unseen: [180, 2] }
-        });
-      }),
-      H('hard-rhombus-right', '마름모의 대각선이 만드는 직각삼각형의 각', '50, 기본 ①63 ②58', (d) => {
-        const half = d.pick([25, 30, 35, 40, 50, 55, 60, 65]);
-        return N(`마름모 ㄱㄴㄷㄹ에서 두 대각선이 만나는 점이 ㅁ이다. 각 ㄴㄱㅁ의 크기가 ${half}°일 때, 각 ㄱㄴㅁ의 크기는 몇 도인가?`, 90 - half, {
-          unit: '°', figure: crossFig(rhombusBy(half), { box: [4.8, 4.2], more: (p, m) => [wedge(p[0], p[1], m, '', 0.7)], label: `두 대각선을 그은 마름모 ㄱㄴㄷㄹ. 두 대각선이 만나는 점 ㅁ. 각 ㄴㄱㅁ은 ${half}°` }),
-          explain: `마름모의 두 대각선은 서로 수직으로 만나므로 각 ㄱㅁㄴ = 90°이다. 삼각형 ㄱㄴㅁ의 세 각의 크기의 합은 180°이므로 각 ㄱㄴㅁ = 180° − 90° − ${half}° = ${90 - half}°이다.`,
-          facts: { calc: [[`180-90-${half}`, 0]], unseen: [180, 90] }
-        });
-      }),
-      H('hard-joined-angle', '이어 붙인 두 정다각형 사이의 각', '30', (d) => {
-        // 정다각형의 한 각의 크기는 그림에 적는다(정삼각형 60°, 정사각형 90°는 앞에서 배웠다). 한 점에 모인 각의 합 360°를 쓴다.
-        const [a, b] = d.pick([[4, 5], [4, 6], [4, 8], [3, 8], [5, 5], [5, 6], [5, 8], [6, 8]]), A = onSide([0, 1], [0, 0], a, true), Bp = onSide([0, 1], [0, 0], b, false);
-        const fit = place(A.concat(Bp), [6.6, 4.2], [0.9, 0.95]), pa = fit.points.slice(0, a), pb = fit.points.slice(a), ask = 360 - ANGLE[a] - ANGLE[b];
-        const marks = [a > 4 ? corner(pa, Math.floor(a / 2) + 1, ANGLE[a] + '°') : '', b > 4 ? corner(pb, Math.floor(b / 2) + 1, ANGLE[b] + '°') : ''];
-        const known = [a, b].filter((n) => n <= 4).map((n) => `정${NAME[n]}의 한 각은 ${ANGLE[n]}°`).join(', ');
-        return N(`${a === b ? `정${NAME[a]} 2개를` : `정${NAME[a]}과 정${NAME[b]}을`} 한 변이 꼭 맞닿게 이어 붙였다. ㉠의 크기는 몇 도인가?`, ask, {
-          unit: '°', figure: draw(fit, [G.polygon(pa), G.polygon(pb)].concat(marks, [wedge(pa[1], pa[2], pb[2], '㉠', 0.5)]), `한 변이 맞닿은 정${NAME[a]}과 정${NAME[b]}. ` + [a, b].filter((n) => n > 4).map((n) => `정${NAME[n]}의 한 각의 크기는 ${ANGLE[n]}°`).join(', ') + '. 맞닿은 변의 한쪽 끝에서 두 도형의 바깥쪽에 생긴 각이 ㉠'),
-          explain: `정다각형은 각의 크기가 모두 같으므로 ㉠이 있는 꼭짓점에 모인 두 도형의 각은 ${ANGLE[a]}°와 ${ANGLE[b]}°이다${known ? `(${known})` : ''}. 한 점에 모인 각의 합은 360°이므로 ㉠ = 360° − ${ANGLE[a]}° − ${ANGLE[b]}° = ${ask}°이다.`,
-          facts: { calc: [[`360-${ANGLE[a]}-${ANGLE[b]}`, 0]], unseen: [360, 60, 90] }
-        });
-      }),
-      H('hard-regular-iso', '정다각형의 대각선이 만드는 이등변삼각형의 각', '31', (d) => {
-        // 한 각의 크기는 대각선에서 먼 꼭짓점 ㄹ에 적는다. 각의 크기가 모두 같다는 것과 변의 길이가 모두 같다는 것(이등변삼각형)을 함께 쓴다.
-        const n = d.pick([5, 6]), A = ANGLE[n], last = NAMES[n - 1], fit = place(regular(n), [4.4, 4.2], [1.05, 0.95]), p = fit.points, ask = d.pick([`ㄱㄴ${last}`, `ㄱ${last}ㄴ`]);
-        return N(`정${NAME[n]} ${NAMES.slice(0, n).join('')}에 대각선 ㄴ${last}을 그었다. 각 ${ask}의 크기는 몇 도인가?`, (180 - A) / 2, {
-          unit: '°', figure: draw(fit, [G.polygon(p), G.line(p[1], p[n - 1]), corner(p, 3, A + '°', 0.45), G.vertexLabels(p, NAMES)], `정${NAME[n]} ${NAMES.slice(0, n).join('')}과 대각선 ㄴ${last}. 각 ㄷㄹㅁ은 ${A}°`),
-          explain: `정다각형은 각의 크기가 모두 같으므로 각 ㄴㄱ${last}도 ${A}°이다. 변의 길이도 모두 같으므로 변 ㄱㄴ과 변 ㄱ${last}의 길이가 같고, 삼각형 ㄱㄴ${last}은 이등변삼각형이다. 각 ㄱㄴ${last}과 각 ㄱ${last}ㄴ의 크기가 같으므로 (180° − ${A}°) ÷ 2 = ${(180 - A) / 2}°이다.`,
-          facts: { calc: [[`(180-${A})/2`, 0]], unseen: [180, 2] }
-        });
-      }),
       H('hard-para-sum', '두 대각선의 길이의 합에서 거꾸로 구하기', '53', (d) => {
         const [a, b] = d.until(() => [d.int(5, 12), d.int(4, 11)], ([x, y]) => x !== y && x / y > 0.6 && x / y < 1.7), sum = a * 2 + b * 2;
         return N(`평행사변형 ㄱㄴㄷㄹ에서 두 대각선의 길이의 합은 ${sum} cm이다. 두 대각선이 만나는 점이 ㅁ이고 선분 ㄴㅁ의 길이가 ${b} cm일 때, 선분 ㄱㅁ의 길이는 몇 cm인가?`, a, {
