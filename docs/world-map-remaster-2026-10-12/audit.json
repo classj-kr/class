@@ -1,5 +1,12 @@
 {
   "date": "2026-10-12",
+  "productionVerification": {
+    "url": "https://classj.kr/learning/inquiry/globe/?school=high",
+    "healthCommit": "b1c0448d65b1f55be4cf1228b3b7984093897117",
+    "browser": "Chrome",
+    "checks": ["New climate lesson and diagram/graph question visible", "Wrong choice does not reveal the correct answer", "Correct retry opens explanation and next question", "No browser console errors"],
+    "screenshot": "live-climate.webp"
+  },
   "scope": "World map: physical geography and selected human-geography remaster; original practice items derived from supplied textbook and examination skills.",
   "counts": {
     "highSchoolLessons": 35,
