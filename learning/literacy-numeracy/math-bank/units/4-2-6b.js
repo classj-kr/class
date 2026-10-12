@@ -1,4 +1,5 @@
-// 4학년 2학기 6단원 평면도형의 이동 — 뒤집고 돌리기, 글자와 수 카드, 규칙적인 무늬의 기본 문항과 실력 문항.
+// 4학년 2학기 6단원 평면도형의 이동 — 움직인 방법, 글자와 수 카드, 규칙적인 무늬의 기본 문항과 실력 문항.
+// 뒤집기와 돌리기를 이어 하는 문제는 싣지 않는다(교육과정: 돌리고 뒤집기 등 복잡한 변화를 지양한다). 4-2-6a.js 머리 주석을 볼 것.
 // 꼴 목록(기본꼴 1~3의 「뒤집고 돌리기」「글자」「수 카드」「무늬」 묶음, 심화꼴 71꼴)을 번호마다 따져서 실었다.
 //
 // 실력 문항의 잣대(기본에서 이미 하는 일을 고르기로 바꾸고 흔한 실수 답을 보기에 넣은 것은 실력이 아니다. 그런 것은 싣지 않는다)
@@ -308,15 +309,8 @@
   }
   const RULE_NAME = { slide: '밀기', flip: '뒤집기', turn: '돌리기' };
 
-  // ── 뒤집고 돌리기, 움직인 방법 ───────────────────────────────
+  // ── 움직인 방법 ───────────────────────────────
   B.addTypes('4-2-6', 'mix', [
-    T('mix-flip-turn', '뒤집고 돌린 도형, 돌리고 뒤집은 도형', '①57·58 심48', (d, n) => {
-      // 오답: 한 가지만 한 것 둘, 차례를 바꾸어 한 것(90° 돌리기는 차례를 바꾸면 결과가 달라진다)
-      const f = anyFlip(d), t = turnBy(d.bool(), d.pick([90, 270])), moves = n === 0 ? [f, t] : [t, f], start = lopsided(d);
-      return movedItem(d, `도형을 ${say(moves[0], 3)} ${say(moves[1], 2)}의 도형은?`, '처음 도형', start, run(moves, start), [act(f, start), act(t, start), run([moves[1], moves[0]], start)], {
-        moves, explain: `차례대로 움직인다. 먼저 ${say(moves[0], 1)} 도형을 떠올리고, 그 도형을 다시 ${say(moves[1], 5)} 된다. 차례를 바꾸어 움직이면 다른 도형이 된다.`
-      });
-    }, { count: 2 }),
     T('mix-how', '한 번 움직인 방법', '①59·60 ②58 ③61 심51·52', (d) => {
       // 보기 넷은 움직인 결과가 서로 다르다(여덟 가지가 모두 다른 도형이라서).
       const start = lopsided(d), pool = d.shuffle([anyFlip(d, 'side'), anyFlip(d, 'updown'), anyTurn(d, 1), anyTurn(d, 3), anyTurn(d, 2)]), real = pool[0], result = act(real, start);
@@ -796,25 +790,6 @@
           facts: { kindPick: { kinds: made.kinds, target: 'hit' }, moved: { size: S, shown: start, steps: steps(moves), back: false, options: made.list } }
         });
       }),
-      H('hard-mix-one', '이어 한 이동과 같은 한 번의 이동', '25·63, 기본 ①58', (d) => {
-        // 뒤집고 반 바퀴 돌리면 다른 쪽으로 한 번 뒤집은 것과 같고, 두 쪽으로 한 번씩 뒤집으면 반 바퀴 돌린 것과 같다. 참·거짓은 도형 감을 모두 움직여 본 결과다.
-        const f = anyFlip(d), g = anyFlip(d, f.way === 'side' ? 'updown' : 'side'), half = turnBy(d.bool(), 180), moves = d.pick([[f, half], [half, f], [f, g]]);
-        const rows4 = [g, flip(f.word === '왼쪽' ? '오른쪽' : f.word === '오른쪽' ? '왼쪽' : f.word === '위쪽' ? '아래쪽' : '위쪽'), turnBy(d.bool(), 180), turnBy(d.bool(), 90)].map((m) => [`${say(m, 1)} 도형`, alwaysSame(moves, [m])]);
-        return truthItem(d, `도형을 ${say(moves[0], 3)} ${say(moves[1], 1)} 도형과 항상 같은 것은?`, rows4, true, {
-          explain: moves[1].kind === 'flip' && moves[0].kind === 'flip' ? '왼쪽과 오른쪽이 바뀌고 위쪽과 아래쪽도 바뀐다. 180°만큼 돌린 도형도 왼쪽과 오른쪽, 위쪽과 아래쪽이 모두 바뀌므로 같다.'
-            : `180°만큼 돌리면 왼쪽과 오른쪽, 위쪽과 아래쪽이 모두 바뀐다. ${f.word}으로 뒤집으면 ${SWAPPED[f.way]}이 한 번 더 바뀌어 제자리로 오므로, ${SWAPPED[g.way]}만 바뀐 도형이 된다. ${g.word}으로 뒤집은 도형과 같다.`
-        });
-      }),
-      H('hard-mix-how', '뒤집기와 돌리기를 이어 움직인 방법', '49', (d) => {
-        // 한 번의 뒤집기나 돌리기로는 나오지 않는 도형. 오답: 차례를 바꾼 것, 돌리기만 한 것, 뒤집기만 한 것
-        const start = lopsided(d), f = anyFlip(d), t = turnBy(d.bool(), 90), real = d.shuffle([f, t]), result = run(real, start);
-        const told = (moves) => (moves.length === 1 ? say(moves[0], 0) : `${say(moves[0], 3)} ${say(moves[1], 0)}`);
-        return truthItem(d, '처음 도형을 두 번 움직였더니 움직인 도형이 되었다. 움직인 방법으로 옳은 것은?', [real, [real[1], real[0]], [turnBy(t.clockwise, 90, 2)], [flip(f.word, 2)]].map((moves) => [told(moves), G.samePoints(run(moves, start), result)]), true, {
-          figure: pair(start, result),
-          explain: `보기의 방법대로 처음 도형을 차례로 움직여 본다. ${say(real[0], 3)} ${say(real[1], 5)} 움직인 도형이 된다. 차례를 바꾸면 다른 도형이 된다.`,
-          facts: { moved: { size: S, shown: start, steps: steps(real), back: false, options: [result] } }
-        });
-      }),
       H('hard-nth', '되풀이되는 모양의 몇 번째', '69', (d) => {
         // 90°씩 돌리면 네 칸마다, 180°씩 돌리면 두 칸마다 같은 모양이 되풀이된다.
         const base = motif(d), m = d.pick([turnBy(true, 90), turnBy(false, 90), turnBy(d.bool(), 180)]), row = rowBy(base, m, 4), at = d.pick([10, 11, 14, 15, 18, 19]), period = m.deg === 180 ? 2 : 4;
@@ -825,17 +800,6 @@
           facts: { kindPick: { kinds: hits.map((hit, i) => (hit ? 'hit' : 'no' + i)), target: 'hit' }, pattern: { cell: CELL, rows: [row], steps: steps([m]), nth: at, options: list } }
         });
       }, { standard: PATTERN }),
-      H('hard-letter-reduce', '돌리고 뒤집어도 처음과 같은 글자', '53', (d) => {
-        // 180° 돌리고 위로 뒤집으면 옆으로 한 번 뒤집은 것과 같다. 한 가지씩 따로 보면 틀린다.
-        const moves = d.shuffle([turnBy(d.bool(), 180), anyFlip(d)]), keep = (name) => sameStrokes(strokeRun(moves, JAMO[name], 3, 3), JAMO[name]), alone = (name) => keeps(moves[0], name) && keeps(moves[1], name);
-        const names = d.until(() => d.shuffle(JAMO_NAMES).slice(0, 4), (list) => { const k = list.filter(keep).length; return k >= 1 && k <= 3 && list.some((name) => keep(name) !== alone(name)); });
-        const flags = names.map(keep), net = moves.find((m) => m.kind === 'flip').way === 'side' ? 'updown' : 'side';
-        return N(`글자 카드를 ${say(moves[0], 3)} ${say(moves[1], 2)} 처음과 같은 글자는 모두 몇 개인가?`, flags.filter(Boolean).length, {
-          unit: '개', figure: plainRow(names.map((name) => jamoCard(JAMO[name]))),
-          explain: `180°만큼 돌리면 왼쪽과 오른쪽, 위쪽과 아래쪽이 모두 바뀐다. 여기에 한 번 뒤집으면 한쪽은 제자리로 오므로, 두 번 움직인 것은 ${net === 'side' ? '왼쪽이나 오른쪽' : '위쪽이나 아래쪽'}으로 한 번 뒤집은 것과 같다. ${SWAPPED[net]}의 모양이 같은 글자는 ${flags.filter(Boolean).length}개이다.`,
-          facts: { count: flags, strokes: { w: 3, h: 3, shapes: names.map((name) => JAMO[name]), steps: steps(moves) } }
-        });
-      }),
       H('hard-syllable-how', '글자가 바뀌도록 뒤집는 방법', '32, 기본 ①40 ③38', (d) => {
         // 위아래도 좌우도 바뀌었으니 두 쪽으로 한 번씩 뒤집어야 한다. 오답: 한 쪽으로만 뒤집은 것, 같은 쪽으로 2번 뒤집은 것(처음과 같다), 2번 뒤집기를 섞어 한쪽만 바뀐 것
         const [name, to] = d.pick([['문', '곰'], ['곰', '문'], ['눈', '곡'], ['곡', '눈'], ['롬', '물']]), start = syl(name), target = syl(to);
@@ -847,17 +811,6 @@
           facts: { strokes: { w: SYL_W, h: SYL_H, shown: start, steps: ['side', 'updown'], options: [target] } }
         });
       }),
-      H('hard-seg-two', '두 가지로 움직인 수의 합과 차', '57, 기본 ①37 ②73', (d) => {
-        // 둘째 이동도 처음 수에 한다(이어 하지 않는다). 옆으로 뒤집기와 반 바퀴 돌리기는 자리의 차례가 거꾸로 된다.
-        const [a, b] = d.shuffle([anyFlip(d, 'side'), anyFlip(d, 'updown'), turnBy(d.bool(), 180)]).slice(0, 2), plus = d.bool();
-        const text = digitText(d, '1258', [2, 3], (t) => /[25]/.test(t) && segMoved(t, segAxis(a)) !== segMoved(t, segAxis(b)) && t !== t.split('').reverse().join(''));
-        const x = segMoved(text, segAxis(a)), y = segMoved(text, segAxis(b)), big = Math.max(Number(x), Number(y)), small = Math.min(Number(x), Number(y));
-        return N(`수 카드를 ${say(a, 2)} 만들어지는 수와 ${say(b, 2)} 만들어지는 수의 ${plus ? '합은' : '차는'}?`, plus ? big + small : big - small, {
-          figure: segCard(text),
-          explain: `처음 수 ${text}에서 두 수를 따로 만든다. ${say(a, 5)} ${x}, ${say(b, 5)} ${y}이다. ${plus ? `${x} + ${y} = ${big + small}` : `${big} − ${small} = ${big - small}`}`,
-          facts: { calc: [[plus ? `${x}+${y}` : `${big}-${small}`, 0]], unseen: [Number(x), Number(y)], seg: { from: text, steps: [segAxis(a)], to: x, second: { steps: [segAxis(b)], to: y } } }
-        });
-      }),
       H('hard-seg-chain', '두 번 이어 뒤집은 수', '54·63', (d) => {
         // 옆으로 뒤집고 위로 뒤집으면 2와 5는 두 번 바뀌어 제자리로 오고, 자리의 차례만 거꾸로 된다.
         const moves = d.shuffle([anyFlip(d, 'side'), anyFlip(d, 'updown')]), text = digitText(d, '01258', [3], (t) => /[25]/.test(t) && t !== t.split('').reverse().join(''));
@@ -867,25 +820,6 @@
           figure: segCard(text),
           explain: `${say(moves[0], 5)} ${josa(Number(mid), '이/가')} 되고, 이것을 다시 ${say(moves[1], 5)} ${josa(Number(last), '이/가')} 된다. 2와 5는 두 번 바뀌어 제자리로 오고, 숫자가 놓인 차례만 거꾸로 된다.`,
           facts: { calc: [[last, 0]], unseen: [Number(last)], seg: { from: text, steps: moves.map((m) => m.way), to: last } }
-        });
-      }),
-      H('hard-seg-undo', '뒤집힌 수에서 처음 수를 찾아 돌리기', '60, 기본 ②74', (d) => {
-        // 투명 종이를 뒤집어 본 모양이라 숫자가 아닌 모양이 섞여 있다. 처음 수를 찾은 다음 그 수를 돌린다.
-        const f = anyFlip(d, 'side'), t = turnBy(d.bool(), 180), text = digitText(d, '0125689', [2, 3], (x) => /[69]/.test(x) && segMoved(x, 'half') !== x), moved = segMoved(text, 'half');
-        return N(`투명 종이에 디지털 숫자로 수를 쓴 다음 종이를 ${say(f, 4)} 그림과 같이 보였다. 처음에 쓴 수를 ${say(t, 2)} 만들어지는 수는?`, Number(moved), {
-          figure: G.segDigits(G.segNumber(text, 'side'), { scale: 1.2, label: '투명 종이를 뒤집어 본 디지털 숫자' }),
-          explain: `그림을 ${f.word}으로 한 번 더 뒤집으면 처음에 쓴 수 ${josa(Number(text), '이/가')} 된다. ${josa(Number(text), '을/를')} 180°만큼 돌리면 6과 9가 서로 바뀌고 차례가 거꾸로 되어 ${josa(Number(moved), '이/가')} 된다.`,
-          facts: { calc: [[moved, 0]], unseen: [Number(moved)], seg: { from: text, steps: ['half'], to: moved, shownBy: ['side'] } }
-        });
-      }),
-      H('hard-seg-make', '수 카드로 만든 수를 돌린 수와의 차', '58, 기본 ②75', (d) => {
-        const t = turnBy(d.bool(), 180), biggest = d.bool();
-        const digits = d.until(() => d.shuffle('125689'.split('')).slice(0, 3), (list) => { const made = list.slice().sort().join(''), text = biggest ? made.split('').reverse().join('') : made; return /[69]/.test(text) && segMoved(text, 'half') !== text; });
-        const sorted = digits.slice().sort(), text = (biggest ? sorted.slice().reverse() : sorted).join(''), moved = segMoved(text, 'half'), big = Math.max(Number(text), Number(moved)), small = Math.min(Number(text), Number(moved));
-        return N(`디지털 숫자 카드 3장을 한 번씩 모두 사용하여 가장 ${biggest ? '큰' : '작은'} 세 자리 수를 만들었다. 만든 수를 ${say(t, 2)} 만들어지는 수와 만든 수의 차는?`, big - small, {
-          figure: plainRow(digits.map((digit) => G.segDigits(digit, { scale: 0.92, label: `디지털 숫자 카드 ${digit}` }))),
-          explain: `가장 ${biggest ? '큰' : '작은'} 수는 ${biggest ? '큰' : '작은'} 숫자부터 차례로 놓은 ${text}이다. 180°만큼 돌리면 6과 9가 서로 바뀌고 차례가 거꾸로 되어 ${josa(Number(moved), '이/가')} 된다. ${big} − ${small} = ${big - small}`,
-          facts: { calc: [[`${big}-${small}`, 0]], unseen: [big, small], seg: { from: text, steps: ['half'], to: moved, cards: digits.map(Number), biggest } }
         });
       }),
       H('hard-seg-addition', '뒤집힌 덧셈식', '61', (d) => {
