@@ -1,0 +1,9 @@
+Failed to find real location of C:\Python314\python.exe
+test_detailed_land_retains_small_islands_and_ocean (__main__.ArgoSources.test_detailed_land_retains_small_islands_and_ocean) ... ok
+test_every_observation_matches_adjusted_source_and_quality (__main__.ArgoSources.test_every_observation_matches_adjusted_source_and_quality) ... ok
+test_published_density_example (__main__.ArgoSources.test_published_density_example) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.048s
+
+OK

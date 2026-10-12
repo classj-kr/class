@@ -46,3 +46,5 @@ f('fuel-comparison','mass','방출열이 50 kJ/g인 가상 연료로 유용한 �
 f('fuel-comparison','carbon','수소를 태울 때 직접 발생하는 CO₂가 0이었다. 추가 자료 없이 확정할 수 있는 것은?',['연소 단계의 직접 CO₂가 0','생산 단계의 CO₂도 0','압축·운송 에너지도 0','전체 수명주기의 CO₂가 0'],0,'연소 반응의 자료로 생산·운송까지 판단할 수 없습니다. 비교의 경계를 구분합니다.',[3,4])]},
 ];
 module.exports=rows.filter(r=>!require('./science-experiment-scope.cjs').retiredApps[r.slug]).map(r=>({...r,group:r.title,grade:'고2~3',grades:['고2','고3'],level:'high',scripts:['../structure-models.js','../structure-labs.js'],styles:['../structure-labs.css'],diagnostic:true}));
+
+module.exports=module.exports.map(r=>r.slug==='dna-structure'?require('./science-dna-common-course.cjs')(r):r);

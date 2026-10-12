@@ -1,0 +1,15 @@
+{
+  "license": "MIT",
+  "repository": "https://github.com/cosinekitty/astronomy",
+  "commit": "865d3da7d8112bbc7911238052c6af4aaf877181",
+  "files": [
+    {
+      "file": "astronomy.browser.min.js",
+      "sha256": "d1b3ab4b86aa409f78c0f0d95162a847496cba7e938eb6f4712cf9c1c45f4a2e"
+    },
+    {
+      "file": "LICENSE.txt",
+      "sha256": "a76df666a7db8a06f599d08e07c3ff74c4b250b50b49c43353af2bd5bb34604e"
+    }
+  ]
+}

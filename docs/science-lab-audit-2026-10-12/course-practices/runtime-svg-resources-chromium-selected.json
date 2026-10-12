@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-12T17:48:16.713Z",
+  "checkedAt": "2026-10-12T19:30:43.554Z",
   "engine": "chromium",
-  "routes": 5,
-  "states": 185,
+  "routes": 12,
+  "states": 550,
   "widths": [
     1366,
     1180,

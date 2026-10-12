@@ -1273,14 +1273,16 @@ const scienceCurriculum = {
       "중2"
     ],
     "level": "middle",
-    "title": "광물과 암석 분류",
+    "title": "광물 성질과 암석 표본 분류",
     "subjects": [
       "과학"
     ],
     "codes": [
       "9과09-02",
       "9과09-03"
-    ]
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   },
   "geologic-time": {
     "grade": "고1",
@@ -1365,13 +1367,15 @@ const scienceCurriculum = {
       "중2"
     ],
     "level": "middle",
-    "title": "지진과 판의 이동",
+    "title": "화산·지진 분포와 판의 경계",
     "subjects": [
       "과학"
     ],
     "codes": [
       "9과09-05"
-    ]
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   },
   "earthquake": {
     "grade": "고2~3",
@@ -2308,20 +2312,77 @@ const scienceCurriculum = {
     "diagnostic": true
   },
   "dna-structure": {
-    "grade": "고2~3",
+    "grade": "고1~3",
     "grades": [
+      "고1",
       "고2",
       "고3"
     ],
     "level": "high",
-    "title": "상보적 염기와 DNA 이중나선 만들기",
+    "title": "DNA 모형 조립과 구조 비교",
     "subjects": [
+      "통합과학1",
       "세포와 물질대사"
     ],
     "codes": [
+      "10통과1-02-05",
       "12세포01-02"
     ],
-    "diagnostic": true
+    "diagnostic": true,
+    "defaultContext": "high-elective",
+    "courseContexts": {
+      "high-common": {
+        "title": "DNA 모형 만들고 규칙성 찾기",
+        "subjects": [
+          "통합과학1"
+        ],
+        "codes": [
+          "10통과1-02-05"
+        ],
+        "grades": [
+          "고1"
+        ],
+        "questionNumbers": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "dna-structure@common-count",
+          "dna-structure@common-sequence"
+        ],
+        "standaloneApparatus": true,
+        "intro": ""
+      },
+      "high-elective": {
+        "title": "상보적 염기와 DNA 이중나선 만들기",
+        "subjects": [
+          "세포와 물질대사"
+        ],
+        "codes": [
+          "12세포01-02"
+        ],
+        "grades": [
+          "고2",
+          "고3"
+        ],
+        "questionNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "bankQuestionIds": [],
+        "followupIds": [
+          "dna-structure@fraction",
+          "dna-structure@replace"
+        ],
+        "standaloneApparatus": true,
+        "intro": ""
+      }
+    }
   },
   "protein-folding": {
     "grade": "고2~3",
@@ -3273,6 +3334,140 @@ const scienceCurriculum = {
     ],
     "codes": [
       "12역학01-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "seasonal-sky": {
+    "grade": "초6",
+    "grades": [
+      "초6"
+    ],
+    "level": "elementary",
+    "title": "날짜와 시간을 바꾸며 별자리 관찰하기",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "6과12-01",
+      "6과12-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "equilibrium-data": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "평형 농도에서 규칙 찾기",
+    "subjects": [
+      "화학"
+    ],
+    "codes": [
+      "12화학03-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "argo-observation": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "ARGO 해수 관측 자료 비교",
+    "subjects": [
+      "지구과학"
+    ],
+    "codes": [
+      "12지구01-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "satellite-sea-temperature": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "계절별 표층 수온 지도 비교",
+    "subjects": [
+      "지구과학"
+    ],
+    "codes": [
+      "12지구01-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "galactic-objects": {
+    "grade": "중2",
+    "grades": [
+      "중2"
+    ],
+    "level": "middle",
+    "title": "우리은하의 성운과 성단 관측",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "9과15-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "phase-curves": {
+    "grade": "중1",
+    "grades": [
+      "중1"
+    ],
+    "level": "middle",
+    "title": "가열·냉각 곡선과 상태 변화",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "9과04-03",
+      "9과04-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "acid-mixing": {
+    "grade": "초6",
+    "grades": [
+      "초6"
+    ],
+    "level": "elementary",
+    "title": "산·염기를 섞을 때의 색 변화",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "6과09-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "iodine-clock": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "아이오딘 시계 반응 · 농도와 온도",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에04-04"
     ],
     "diagnostic": true,
     "bankQuestionIds": []

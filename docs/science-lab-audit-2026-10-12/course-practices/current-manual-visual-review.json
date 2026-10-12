@@ -391,6 +391,617 @@
       "file": "element-origin/webkit-origin-768.webp",
       "sha256": "f66b70b66d4ef9426caef5745c76e4517fdb6f701fcb4f0cfa78132dba17aee8",
       "observation": "Origin selection and its retained conceptual explanation render without source/provenance text or clipped labels."
+    },
+    {
+      "file": "dna-course/chromium-high-common-flat-1366.webp",
+      "sha256": "8677b0beaf68d8a94146ae9c4ce9485240db5b63a3c4c9cbc3ad5999664a57f1",
+      "observation": "12 common-course base pairs and 24 nucleotides; complete controls, clear sugar/phosphate backbone and readable bases without bond lines crossing letters."
+    },
+    {
+      "file": "dna-course/webkit-high-common-45-768.webp",
+      "sha256": "83b2ebdd7d5551de02d141edab89b417395f76364eb29077e31d8669b4486247",
+      "observation": "Portrait iPad emulation: twelve-pair helix, non-overlapping bases, full-width touch assembly and consistent type."
+    },
+    {
+      "file": "dna-course/webkit-high-elective-90-390.webp",
+      "sha256": "06747f35f0a49a5897e042f112d60ebc32f22233b1999b332ac09d4cd50dbd73",
+      "observation": "Narrow elective layout: paired backbone, readable base lettering and direction instruction; all controls and 20-bond result remain in bounds."
+    },
+    {
+      "file": "seasonal-sky/chromium-winter-compare-1366.webp",
+      "sha256": "e850bbbb455b1cf71e550e20d3e2940f723dc50f109f1bc57abc574fc1798764",
+      "observation": "Stereographic sky preserves Orion shape; current and two-hour positions, horizon and 14 px labels remain legible."
+    },
+    {
+      "file": "seasonal-sky/webkit-summer-night-768.webp",
+      "sha256": "3c863bf99d04d8455d4aaa5797c84516c59b2720944f96579145a3c5d561bebd",
+      "observation": "Altair and summer constellations retain their shapes near the zenith; labels and controls fit the tablet width."
+    },
+    {
+      "file": "seasonal-sky/webkit-spring-night-390.webp",
+      "sha256": "06f3abec89833cc72517bffc613627744b73b41fc929d827f00792ff2a9d9b64",
+      "observation": "Phone-width controls wrap without clipping; spring constellation and readout remain legible."
+    },
+    {
+      "file": "seasonal-sky/webkit-autumn-zoom-768.webp",
+      "sha256": "30d4c819377518a5b48ac5a13f4f94b9247b9d61b5489a684ace7f8602453fac",
+      "observation": "Zoomed autumn constellation has undistorted line geometry and readable labels within the viewport."
+    },
+    {
+      "file": "seasonal-sky/webkit-spring-day-768.webp",
+      "sha256": "3ab06ea4f482a91702240dbed9ff3880977ff3a0403eee42dc96f8e099f65082",
+      "observation": "Daytime sky correctly hides stellar points; controls and observation feedback remain readable."
+    },
+    {
+      "file": "equilibrium-data/chromium-a-eq-square-1366.webp",
+      "sha256": "98c14cb8d8ac96ba7aeeaf96ce25630ad4bd33058edc2e045f917c83d477711e",
+      "observation": "Original rounded concentrations and three calculated equilibrium ratios stay visible together; zero-based graph and labels have consistent screen type."
+    },
+    {
+      "file": "equilibrium-data/webkit-b-initial-square-768.webp",
+      "sha256": "029c24dafba0ee803de9b6b337083d0aa0c59c454ccceb496a4b7ecfe8d13788",
+      "observation": "Undefined denominator appears as a missing bar and explicit text, not as zero; tablet controls and all source numbers fit."
+    },
+    {
+      "file": "equilibrium-data/webkit-a-eq-square-390.webp",
+      "sha256": "2aa5c6fc9696d443f50aac978be3e8ff10a3f1c1bdc35a035db3e64bea381578",
+      "observation": "Cards and formula controls stack at narrow width; calculated ratios, graph labels and retained first-error feedback remain legible."
+    },
+    {
+      "file": "middle-rocks/chromium-rock-E-1366.webp",
+      "sha256": "79e7a0bce40f5ac4f15f6145369c234e050b854e09b5c0c48255ebf98a604692",
+      "observation": "Six numbered specimens, actual marble photo, visible qualitative acid bubbles, readable independent name and genesis choices."
+    },
+    {
+      "file": "middle-rocks/webkit-quartz-streak-768.webp",
+      "sha256": "e45ffd9a5da5fdb6106041a255975652e3db44111521010e60f6c4184cd160f8",
+      "observation": "Quartz photo and black ceramic plate show the plate scratch distinctly; mineral powder is not falsely reported. Consistent control and body text."
+    },
+    {
+      "file": "middle-rocks/webkit-magnetite-clip-768.webp",
+      "sha256": "7003c933357fef441283e10b32a263fb2812f50855acbdabbcd208aa316cf00a",
+      "observation": "Five mineral photos and clip observation are visible at tablet width; controls and observation rows remain readable."
+    },
+    {
+      "file": "middle-rocks/webkit-igneous-light-768.webp",
+      "sha256": "90ffae720c7ff1e346dc2c304934def84a089c6a6b54b8adb1efb7f1043bcc7c",
+      "observation": "Rhyolite and granite photos compare grain size without invented cooling numbers; paired cards and captions fit tablet width."
+    },
+    {
+      "file": "middle-rocks/webkit-rock-C-390.webp",
+      "sha256": "15d871e5c8d1f74add423b5ad8589f6a2a474e85216bffb55822ae047706fc9c",
+      "observation": "Six specimens wrap into three columns; enlarged gneiss photo, pan/zoom controls and independent classification stack without clipping."
+    },
+    {
+      "file": "tectonic-data/chromium-world-all-1366.webp",
+      "sha256": "996e97bbf40effc5dcfe7e45b23acf0a41c264b74eaafdad489aa6e697a29359",
+      "observation": "Full 360-degree world extent has no duplicate edge symbols. Land, plate boundaries, earthquake circles and volcano triangles align; controls and listed coordinates are legible."
+    },
+    {
+      "file": "tectonic-data/webkit-japan-768.webp",
+      "sha256": "66d879fcb2c54972a0731efd621463185e5286cb98c07fb0df0a62f0e3e3631e",
+      "observation": "Tablet map resolves the Japanese earthquake and volcanic belts. The two-column list keeps each latitude and longitude intact."
+    },
+    {
+      "file": "tectonic-data/webkit-andes-768.webp",
+      "sha256": "529d183a0f06d4d5a3483ef74d8adc6c07516093812440260c69da035eeb26eb",
+      "observation": "Andes and oceanic ridge distributions remain distinguishable; map controls do not cover the whole observed region."
+    },
+    {
+      "file": "tectonic-data/webkit-volcano-selected-768.webp",
+      "sha256": "208f341347789d7cb847f6149646c3725d0355e3ab6c0dfc86241492c4e2c4ec",
+      "observation": "Hawaii selection visibly persists with a ring and selected list item. Volcano locations do not acquire invented eruption dates."
+    },
+    {
+      "file": "tectonic-data/webkit-atlantic-390.webp",
+      "sha256": "0dfff213e3824ffda46dcb5c96dad90bba8d8dd6894b1fd1daef35f501a49aea",
+      "observation": "Narrow layout wraps controls and uses one-column point cards without horizontal page overflow or split numeric coordinates."
+    },
+    {
+      "file": "argo-observation/chromium-initial-1366.webp",
+      "sha256": "f20f5ee2b6d72a9d2acf2d63d03d186e5e0679c149a99c8047078472633f15d6",
+      "observation": "Both depth profiles share a consistent scale and screen-pixel labels. Date colors, actual nearest sample depth and reading cards remain clear."
+    },
+    {
+      "file": "argo-observation/webkit-surface-768.webp",
+      "sha256": "44be43342435ea0ffc254eab661c3109bc60956729fa1ec8ca5f669de6adafb0",
+      "observation": "Tablet plots stack without shrinking the text. The upper-ocean temperature gradient and distinct actual sample depths are visible."
+    },
+    {
+      "file": "argo-observation/webkit-ts-768.webp",
+      "sha256": "5d7104bc34c5cf66b327b1e1dab5d9b9e4be1abcd96edff2051ef58dda383d67",
+      "observation": "T-S scatter shows independently measured point pairs, circle/square date symbols and selected observation rings without oversized axis text."
+    },
+    {
+      "file": "argo-observation/webkit-map-768.webp",
+      "sha256": "ff5ab7bd72cc1c66ac69d4d1da2bd69c2f4a06ac9c1a5c0bf68f984634fd6d8d",
+      "observation": "Detailed, merged coastline preserves the Korean peninsula and islands. Latitude-adjusted map scaling avoids horizontal stretch; A/B positions are legible."
+    },
+    {
+      "file": "argo-observation/webkit-missing-768.webp",
+      "sha256": "2981b72ed198b87b3b31f776e60236c3501ab1d80656bf411b304b8d626de797",
+      "observation": "Missing salinity and density remain explicitly absent while the valid temperature is retained; no fabricated zero is drawn."
+    },
+    {
+      "file": "argo-observation/webkit-surface-390.webp",
+      "sha256": "f621f97aadfd0dc5eab4149dfd2889996e3a37e4042be19f91c805578b9f4e87",
+      "observation": "Narrow viewport stacks selectors, plots and readings. Controls remain touch-sized and graph labels stay at 14 screen pixels."
+    },
+    {
+      "file": "satellite-sea-temperature/chromium-initial-1366.webp",
+      "sha256": "b3e9aee29d68d259995fd4e42d79aed6543bc8bd32e0c744a8ec427d87e5bee7",
+      "observation": "Same color scale in both seasonal maps; no artificial raster grid seams, aligned coordinate labels and readable fixed-pixel text."
+    },
+    {
+      "file": "satellite-sea-temperature/webkit-difference-768.webp",
+      "sha256": "d1ab22536b75bb99083f99bc5c508d3bbe13dce509860b1df5ee8cf8b4226c35",
+      "observation": "Tablet difference view uses a symmetric zero-centered scale and preserves the same selected cell."
+    },
+    {
+      "file": "satellite-sea-temperature/webkit-solomon-768.webp",
+      "sha256": "3c93831b97dbc8ea660bf308d8f7ec0c37b15b6b469c5348c861db301906744f",
+      "observation": "Low-latitude maps and twelve-month graph show small seasonal range. Stacked maps and controls remain readable."
+    },
+    {
+      "file": "satellite-sea-temperature/webkit-sydney-768.webp",
+      "sha256": "a83dffd24c7fa05bfe82c7d72497dc9c9abb30691d8a3de61045b7eb5c5156ad",
+      "observation": "Southern-hemisphere maps show opposite seasonal change with a negative B-minus-A reading and clear monthly curve."
+    },
+    {
+      "file": "satellite-sea-temperature/webkit-years-768.webp",
+      "sha256": "a9358da7f0a9704e8e05edaeb7f63d4b3ecc191a650170f3c2ad24ae735a5980",
+      "observation": "Fixed-month historical comparison shows a small nonzero negative difference with meaningful digits, no negative zero."
+    },
+    {
+      "file": "satellite-sea-temperature/webkit-land-768.webp",
+      "sha256": "376e6abec9fc0191b0f9140b69a145e0da70ce904248a89328f494a625cc3b1d",
+      "observation": "Original land mask gives missing readings and an empty annual curve instead of fabricated zero temperatures."
+    },
+    {
+      "file": "satellite-sea-temperature/webkit-sydney-diff-390.webp",
+      "sha256": "566f05934e1411cfc5d9f47482f762e4dfd1a8bf88fc4ec09351490c5ce656a6",
+      "observation": "Narrow view preserves touch controls and 14-pixel plot labels; fields stack without horizontal overflow."
+    },
+    {
+      "file": "galactic-objects/chromium-live-compare.webp",
+      "sha256": "af8575cdde6fa25ed89d2e0e9c4a9bed771d5d3b94db250b1804c3fe3c31790b",
+      "observation": "Real M44/M5 images retain different angular fields, consistent controls and separate image scales; final duplicate labels removed. Live web font loaded."
+    },
+    {
+      "file": "galactic-objects/webkit-live-compare-nebula.webp",
+      "sha256": "aa8dcea4cbfa9f5359e66ce2a85c330fdd77ef1053e19c3eaccb27ec3ed26132",
+      "observation": "Two actual nebula photographs remain side by side at iPad width with full labels and readable independent zoom/brightness controls. Live font loaded."
+    },
+    {
+      "file": "galactic-objects/webkit-live-sky.webp",
+      "sha256": "30262f16c5e736f139924a8204cecf6e5181245a994c8b2f6d1be958efc30c10",
+      "observation": "Actual positions and ordered constellation boundaries, horizon, readable 14px numbers and HTML name/readout cards. Live font loaded."
+    },
+    {
+      "file": "galactic-objects/webkit-witch-768.webp",
+      "sha256": "265621e98e914593af01d94c8af0369b12f15a652335f7897a24b1b2f30ea2ab",
+      "observation": "Faint reflection nebula fully framed; north/east and angular field remain separate from zoom transform."
+    },
+    {
+      "file": "galactic-objects/webkit-zoom-768.webp",
+      "sha256": "63d71b60aef426f86f9f58afbafb3f057b6cc6219bd70de4926967c933a45265",
+      "observation": "3x photo pan and 2x display brightness preserve fixed label size; stored source pixels unchanged."
+    },
+    {
+      "file": "galactic-objects/webkit-classified-768.webp",
+      "sha256": "efad2daf8ae8567cd0d44ed19f6dbe23ba5d44b8518afd5199b1dda06441570e",
+      "observation": "Corrected classification retains first mistaken response and gives shape-based feedback."
+    },
+    {
+      "file": "galactic-objects/webkit-sky-ground-768.webp",
+      "sha256": "0f82d14be926dfff4c49d2f9e6be6bd773413a2776ba6df97159de16efcfe1e5",
+      "observation": "Ground mask correctly hides negative-altitude markers while listing those coordinates below the plot."
+    },
+    {
+      "file": "galactic-objects/webkit-sky-day-768.webp",
+      "sha256": "2a373f56932e2ca8e794e2b60cdb6b44bd0411106e51309bce0b14b119348fd8",
+      "observation": "Daytime geometric position diagram retains readable coordinates and explicitly distinguishes actual visibility."
+    },
+    {
+      "file": "galactic-objects/webkit-sky-390.webp",
+      "sha256": "2979fc37a933011f890c36f5eff466bbf10640bb13867add98f65bae3dbf292d",
+      "observation": "Narrow layout wraps controls and stacks all five position cards; labels remain legible without horizontal overflow."
+    },
+    {
+      "file": "phase-curves/chromium-live-melt-mid.webp",
+      "sha256": "1da7796895f6e6a009e4818d04bc68b6e16f52a4225b3825aea874b1e57fbf03",
+      "observation": "Final actual-font desktop view: floating ice, immersed probe, 0 degree melting plateau and its 6-minute point; graph labels and control text stay proportional.",
+      "recheckedAt": "2026-10-12T21:04:39.794Z"
+    },
+    {
+      "file": "phase-curves/webkit-live-freeze-mid.webp",
+      "sha256": "129bb084644e34ccd0561ef5f5d9a0c667f863fdbfddee7980c968544f38a5c5",
+      "observation": "Final tablet view: wall ice grows while liquid remains, 0 degree plateau and surrounding -15 degree bath; readable controls and plot.",
+      "recheckedAt": "2026-10-12T21:04:39.795Z"
+    },
+    {
+      "file": "phase-curves/webkit-live-lauric-mid.webp",
+      "sha256": "784c2f35cc09096a0d1685844c41563a236dca795b21903fa9bef7f6f688bbe9",
+      "observation": "Final tablet view: removed test tube has no water bath, pale wax grows during the 43.8 degree plateau, heat points outward and graph ends at 22 minutes.",
+      "recheckedAt": "2026-10-12T21:04:39.795Z"
+    },
+    {
+      "file": "phase-curves/webkit-live-lauric-bath.webp",
+      "sha256": "05fb039d35f0b68e024e6930659a51c67960f364f452d0a5c07046ade349d14c",
+      "observation": "Final tablet view: 70 degree bath retains liquid with a flat curve; no-phase response is correct and all labels fit.",
+      "recheckedAt": "2026-10-12T21:04:39.795Z"
+    },
+    {
+      "file": "phase-curves/webkit-live-table.webp",
+      "sha256": "f0a47fbaefa900a12c8e9728db72854a7d72cefaa341527b5fb918f7fa5631af",
+      "observation": "Boiling table shows all 14 numeric readings including the 13-minute endpoint; probe stays immersed, bubbles remain inside liquid, touch cells fit.",
+      "recheckedAt": "2026-10-12T21:04:39.796Z"
+    },
+    {
+      "file": "phase-curves/webkit-live-correct.webp",
+      "sha256": "09c72b3a78e6ab727f3608de7adea430a9a5873b96ac3674144ad709aad569fc",
+      "observation": "Corrected 9-to-13-minute interval shades the graph and preserves first incorrect response; status and interval controls are readable.",
+      "recheckedAt": "2026-10-12T21:04:39.796Z"
+    },
+    {
+      "file": "phase-curves/webkit-freeze-zero-768.webp",
+      "sha256": "a52df0b52ead18ae13660b984540a418191c421756cdbdb53aa1f27f9189438f",
+      "observation": "Zero-degree bath approaches zero without freezing; small positive temperature displays less than 0.1 degrees, not false zero or a solid state.",
+      "recheckedAt": "2026-10-12T21:04:39.796Z"
+    },
+    {
+      "file": "phase-curves/webkit-bottom-768.webp",
+      "sha256": "ea7daa18abcc0ec401ece376964f99795a1b6598354906343395cc156fb76db4",
+      "observation": "Misplaced probe touches the tube bottom; measurement shows an em dash and no plotted data, with disabled run controls.",
+      "recheckedAt": "2026-10-12T21:04:39.796Z"
+    },
+    {
+      "file": "phase-curves/webkit-freeze-390.webp",
+      "sha256": "664bdd83dbf56db8d0336cf78fefb76373e6a265a246a151d3f3e49d76bb413f",
+      "observation": "Narrow view stacks scene, cards and controls; fully frozen water and cooling below zero remain readable without clipped graph labels.",
+      "recheckedAt": "2026-10-12T21:04:39.796Z"
+    },
+    {
+      "file": "cell-division/chromium-live-combination-question.webp",
+      "sha256": "bcdad17db55324474ada56cb6211377287ad9be1d7e284b4df60eb13c2a06faa",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.388Z"
+    },
+    {
+      "file": "cell-division/chromium-live-meiosis-4-8.webp",
+      "sha256": "673d720d03ffd8267d70a2d676ee399ee40f934a42db7ed08f50822aa72f6422",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.389Z"
+    },
+    {
+      "file": "cell-division/chromium-live-mitosis-5-8.webp",
+      "sha256": "920a49b4ee2fb4fee6d4a39f662eb742b42e5072101a0786e05ab3988e4b1233",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.389Z"
+    },
+    {
+      "file": "cell-division/webkit-live-combination-question.webp",
+      "sha256": "f78bc7246ab17407c9ae125ee8af86881b125de038d24469acf81fb38a0ea50a",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.389Z"
+    },
+    {
+      "file": "cell-division/webkit-live-meiosis-11-6-0-5.webp",
+      "sha256": "a85e96e886e8342b5b0248febdd1718735c87c01a5c85ff64026fdcb48ee1b84",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.390Z"
+    },
+    {
+      "file": "cell-division/webkit-live-meiosis-11-8-1.webp",
+      "sha256": "def5030e0a0056e1cef0f71803ec8257bd07bbd8e778597d98cce905c65d026c",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.390Z"
+    },
+    {
+      "file": "cell-division/webkit-live-meiosis-8-8.webp",
+      "sha256": "8be2f5f49a70f465fd0346927d8ee206f3325018658c3d9076fc51de03997fce",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.390Z"
+    },
+    {
+      "file": "cell-division/webkit-live-mitosis-0-8.webp",
+      "sha256": "68fb4bd7763faad530df36648ef918d0f5cb2e3ef60a8f060423fbac28bb941c",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.390Z"
+    },
+    {
+      "file": "cell-division/webkit-live-mitosis-6-8.webp",
+      "sha256": "491ac1f00fe53a301b11fb34be32b2fe53d0b0f191e1daebd086e8c54eea8c05",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.391Z"
+    },
+    {
+      "file": "cell-division/webkit-meiosis-11-8-1-390.webp",
+      "sha256": "78e411a5f311499b6f2c417a3156e6c691a22e07b36b670bd9ba170e567d709b",
+      "observation": "Opened final captures: separated spindle paths, eight-chromosome nuclei, crossover lineage and four daughter-cell combinations; readable controls, stage labels, graph and retained first-error feedback.",
+      "reviewedAt": "2026-10-12T21:52:44.391Z"
+    },
+    {
+      "file": "reflex-nerve/chromium-live-knee-none--1.webp",
+      "sha256": "503b4484f0a130a25ea8a9381672c986eced1a2786625a41444a2f2cad3a729f",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.391Z"
+    },
+    {
+      "file": "reflex-nerve/chromium-live-knee-none-5.webp",
+      "sha256": "9cf88e148d7df2455aac94521479f2c067a53a1d09d0c8642f9747d231c84876",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.391Z"
+    },
+    {
+      "file": "reflex-nerve/chromium-live-latency-question.webp",
+      "sha256": "35b9b6d5ba17ac419e7fd339e5ef644dae950b1ee586e35fcfc4506925d79c3c",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.391Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-live-knee-motor-5.webp",
+      "sha256": "71178528c3a2a36f27cb10e509993cfbdca0ff443881421d2a77d6fc96f8ecaa",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-live-knee-sensory-5.webp",
+      "sha256": "57855f6fc6efc7a6b2630b60345be33842a1ba9e5b899fddebc7ab5f265e9a5c",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-live-latency-question.webp",
+      "sha256": "afe58572360594ed4a66d10cb9ca7572b6d297794d9993e099e4ae2d6dc15d3f",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-live-leg-none-3.5.webp",
+      "sha256": "82a489b62d66b5dc95dc9ce54a45afb6f893ba35c4a40c7d8e93b99a9c039a14",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-live-pupil-none--1.webp",
+      "sha256": "2d409ca9bbcb241145def731192fa86262226964ba4788c80b3fc2837cac4c9d",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-live-pupil-none-5.webp",
+      "sha256": "c27f6562dc67170496b6fcea0f3c307b3c7815205b4a439a07ab6a062a394763",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "reflex-nerve/webkit-conscious-none-5-390.webp",
+      "sha256": "adcb0f46930d416279415b65b6c93525f7e7136f4f35107575a9fe84e0fba71c",
+      "observation": "Opened final captures: resting and moving leg, sensory/motor interruption, pupil constriction, voluntary arm movement and latency question. Readable selected controls and pathway rows; first-error explanation survives correction.",
+      "reviewedAt": "2026-10-12T21:52:44.392Z"
+    },
+    {
+      "file": "diffusion/chromium-live-btb-vinegar-0.4.webp",
+      "sha256": "fc5eb940be1d00ce97f44cdbd7986384c688c10b3f0329f9f7ab957859b9a495",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.440Z"
+    },
+    {
+      "file": "diffusion/chromium-live-control-question.webp",
+      "sha256": "1078647f56df6ef423876d1e510257b0b39e705ecff14ceaafe37be26860f579",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.441Z"
+    },
+    {
+      "file": "diffusion/chromium-live-ink-centre-0.webp",
+      "sha256": "7ab8c367109a5cad69897e08fd7705782733272ff2dc40049919d2ad8d06d436",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.441Z"
+    },
+    {
+      "file": "diffusion/webkit-live-btb-390.webp",
+      "sha256": "e995b2305e559cda5abf5264c787a8eb124a8d40e6f2f3ef0c0251b30467afbc",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.441Z"
+    },
+    {
+      "file": "diffusion/webkit-live-btb-vinegar-0.65.webp",
+      "sha256": "74795fb751c777cbe4588d6bb6424df87aea4daf157fae7f89c368617b6482f6",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.442Z"
+    },
+    {
+      "file": "diffusion/webkit-live-btb-vinegar-0.webp",
+      "sha256": "7f3bc76abbf7f075e2e313b38ff2d28630958956180d1c3829d2c5e2f28cb6ef",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.442Z"
+    },
+    {
+      "file": "diffusion/webkit-live-btb-water-1.webp",
+      "sha256": "e7f8ebc5076f3c61d18f2380d0d904c6403c605026ae436793c1b540a606abc8",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.442Z"
+    },
+    {
+      "file": "diffusion/webkit-live-control-question.webp",
+      "sha256": "f975101423a67c78b858de4a312886431b1f1742134601f291b5e22ead45e937",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.442Z"
+    },
+    {
+      "file": "diffusion/webkit-live-ink-centre-0.15.webp",
+      "sha256": "0a8d52e15ff228609078010d7ce647395d34799712b54572924b6000b1886709",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.442Z"
+    },
+    {
+      "file": "diffusion/webkit-live-ink-centre-1-particles.webp",
+      "sha256": "89d9c6e1297805e927c43bc40403a9aeceb617020339a37b653acbe5af8aee95",
+      "observation": "Opened final actual-font captures. Ink starts below the dropper and spreads without false time labels; BTB droplet positions stay fixed as nearest groups turn yellow. Water control remains green. Hidden BTB results are absent in ink mode. Readable 390px controls and first-error feedback.",
+      "reviewedAt": "2026-10-12T22:05:07.443Z"
+    },
+    {
+      "file": "optics/chromium-live-concaveMirror-middle.webp",
+      "sha256": "ff13306b66096985a60be973b346385685c9c785c0bb0822d51666f4e9efa48a",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.827Z"
+    },
+    {
+      "file": "optics/chromium-live-convexLens-middle.webp",
+      "sha256": "4a5a4a49cf03440a7b270b5405dd6ce19570389afa750a89ca4abcf5d57380ce",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.828Z"
+    },
+    {
+      "file": "optics/chromium-live-q3.webp",
+      "sha256": "9e9d7d14b0cad97ca1a64c3fa3364f9707f95ca5b773dab75cee609b87e48b5e",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.828Z"
+    },
+    {
+      "file": "optics/chromium-live-q4.webp",
+      "sha256": "242bfee32d4afdceadcb3f244b1d3b3792ed1ca486308aaa4acf7c80b99ec0d9",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.828Z"
+    },
+    {
+      "file": "optics/chromium-live-ray-water-in-0.webp",
+      "sha256": "696768b777cdfbb9c9afd7e2357766201503c764b67c295954c567b4c1381446",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-concaveLens-far.webp",
+      "sha256": "ec08fa8c0b2dfedb74db1e5f10b5a2a6a3721fad69c8681af895047af4d00923",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-concaveMirror-middle-390.webp",
+      "sha256": "1947f3980ade8d364ae7434e0c6f9eefe584fe9c4d3114ad23b34ea47e2cc928",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-concaveMirror-near.webp",
+      "sha256": "ab40f02096ccaa6b25843d0f8c62b47699bc3cde6d48a9af77f112064e2e6f47",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-convexLens-far.webp",
+      "sha256": "c3ef763ce46d9c8f7b29caa873cad16fb1d761d28b9d2a0c45d2ed91602d4d4f",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-convexLens-middle.webp",
+      "sha256": "95fefad2a4c010cc1e806ca56035a667bbd953a092a01c598b13fad91d89798e",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-plane-far.webp",
+      "sha256": "5f62a3e66547470c18c2d3438f3e168f68240c765afb89fb1aede637485f168f",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-q3.webp",
+      "sha256": "5830445527a647792c589333d3e02f8fb4dd1a0d100689291608a5eff5226ce9",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.829Z"
+    },
+    {
+      "file": "optics/webkit-live-q4.webp",
+      "sha256": "53b3cee906dd1b953dad68a491080a15e206eee3130228a4a64fb5468f6fbf00",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.830Z"
+    },
+    {
+      "file": "optics/webkit-live-ray-glass-out-40.webp",
+      "sha256": "eff9add0d8501c80a228c0ba67654e10c315a0f1fea23bcfb52d4382c05f901c",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.830Z"
+    },
+    {
+      "file": "optics/webkit-live-ray-water-in-85.webp",
+      "sha256": "73e8e2921deb8a0d55795550787d57ff3d5ee3d0057bbc131497d6762dbf7c33",
+      "observation": "Opened the final actual-font capture after moving focus labels away from rays and fixing range-label columns. Three converging regimes, virtual ray extensions, direction arrows and first-choice feedback remain readable. Checked the 390px stack and tablet/desktop controls.",
+      "reviewedAt": "2026-10-12T22:26:12.830Z"
+    },
+    {
+      "file": "acid-mixing/chromium-live-cabbage-acid-opposite-0-bare.webp",
+      "sha256": "d52963cef63f5d7935697c2aca5d0704c0bde055d96061d7d5002e40688866ec",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.288Z"
+    },
+    {
+      "file": "acid-mixing/chromium-live-cabbage-acid-opposite-20.webp",
+      "sha256": "5cdec2fa9cab1c23efc0c37afd2f2ac1a79ac8d2f53e8b7190ed0f13becd1186",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.289Z"
+    },
+    {
+      "file": "acid-mixing/chromium-live-cabbage-acid-opposite-30.webp",
+      "sha256": "ae6d82f212e7da3693f7e38cecfca55fc6f3695cd3ac97925aad98a6fc2eb2eb",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.289Z"
+    },
+    {
+      "file": "acid-mixing/chromium-live-phenol-acid-opposite-2.5.webp",
+      "sha256": "e36b7a6859b9b58ebab0077354a613b7b4ea453bf5d0df8ea42d4003d8969e51",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.289Z"
+    },
+    {
+      "file": "acid-mixing/chromium-live-q3.webp",
+      "sha256": "d600c417acd398a2dab914e68998ddc3f07f1ce1c86a74606bad5fa6cdf68bde",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.289Z"
+    },
+    {
+      "file": "acid-mixing/chromium-live-q4.webp",
+      "sha256": "d2974533c751a206d4a7c16b354357e57d3ff301452b5e001c6796bae948bd4a",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
+    },
+    {
+      "file": "acid-mixing/webkit-live-cabbage-base-opposite-30.webp",
+      "sha256": "9e0a3a187e4892667d5d18337cb4ffe8fcde2d487b24143131a0a275cbdbd077",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
+    },
+    {
+      "file": "acid-mixing/webkit-live-phenol-390.webp",
+      "sha256": "31116c9299628e2b0a9859f805c95598de4f773590dd81a6446540c55026ac70",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
+    },
+    {
+      "file": "acid-mixing/webkit-live-phenol-base-opposite-2.webp",
+      "sha256": "d072bb9b3d8415882edac22be5381fe229787df44b1f22aaf71f54d156b26f9e",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
+    },
+    {
+      "file": "acid-mixing/webkit-live-phenol-base-water-5.webp",
+      "sha256": "550f2a7be03eb34c2426e4478c13203e2da7b45d60672162802b85896aa36df4",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
+    },
+    {
+      "file": "acid-mixing/webkit-live-q3.webp",
+      "sha256": "56fdb8d4706193477719c06451c6892b09af1bcc96877c7b5d9d92df1ad643bc",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
+    },
+    {
+      "file": "acid-mixing/webkit-live-q4.webp",
+      "sha256": "6d8514c0f716511b6030b34ed195fe15e7be63310b290b90bdbef908c71c7421",
+      "observation": "Opened the final actual-font capture. Checked unindicated colourless reagent, equivalence and excess, both directions, water control, all visible volume/colour labels, two diagnostic feedback cards, and the 390px stack. No text overlap or clipping found.",
+      "reviewedAt": "2026-10-12T22:41:49.290Z"
     }
   ],
   "superseded": [
@@ -398,6 +1009,16 @@
       "file": "browser/rate-energy-before-clip-fix.webp",
       "sha256": "c09180fb83ed9b60ff01ccc5dbeaea03e08b2f16af1fa2306e9055b142063cf7",
       "observation": "On renewed visual inspection the reaction-heat unit is cut by the stage clip. This failed capture is retained as evidence; it is not a final visual pass."
+    },
+    {
+      "file": "optics/before-focus-label.webp",
+      "sha256": "46b8a43de225a863a53169c26f4b32c3a56248c5760921f467f67552e1360478",
+      "observation": "Manual follow-up found ray overlap on the focus label / unnecessary wrapping in the two-ended angle scale. Kept as before-fix evidence, not counted as a final visual pass."
+    },
+    {
+      "file": "optics/before-range-label.webp",
+      "sha256": "3a6b33dc659496bae957200ec9cff037d1611c24696a3d2663656f086a939530",
+      "observation": "Manual follow-up found ray overlap on the focus label / unnecessary wrapping in the two-ended angle scale. Kept as before-fix evidence, not counted as a final visual pass."
     }
   ]
 }

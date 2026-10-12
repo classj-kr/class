@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>초6 날짜와 시간을 바꾸며 별자리 관찰하기</title><meta name="description" content="2022 교육과정 · 날짜와 시간을 바꾸며 별자리 관찰하기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=138648f6a24b"><link rel="stylesheet" href="sky.css?v=a57ddba7c573"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=초6">← 초6 과학 실험</a><h1>날짜와 시간을 바꾸며 별자리 관찰하기</h1><div class="grade-tags"><span>초6</span><span>과학</span></div></header><section id="skyLab" class="sky-lab"><h2>날짜와 시간을 바꾸어 관찰하기</h2><p>같은 날에 시간을 바꾸고, 같은 시각에 계절을 바꾸어 별자리의 위치를 비교하세요.</p><div class="sky-seasons" id="skySeasons"></div><div class="sky-controls"><label>관측 장소<select id="skySite"><option value="seoul">서울</option><option value="busan">부산</option><option value="jeju">제주</option></select></label><label>날짜<input type="date" id="skyDate" required min="2026-01-01" max="2027-12-31" value="2026-04-15"></label><label>찾아볼 별자리<select id="skyTarget"></select></label><label>시야 넓이<select id="skyFov"><option value="180">넓게 보기</option><option value="90">가까이 보기</option></select></label></div><div class="sky-time"><label for="skyHour">시각 <output id="skyClock">00:00</output></label><input type="range" id="skyHour" min="0" max="23.75" step="0.25" value="0"><div class="sky-buttons"><button id="skyEarlier">1시간 전</button><button id="skyPlay" aria-pressed="false">시간 흐름 보기</button><button id="skyLater">1시간 후</button><button id="skyMidnight">자정으로</button></div></div><div class="sky-view"><div class="sky-view-heading"><strong id="skyViewTitle">남쪽 하늘</strong><span id="skyWhen"></span></div><canvas id="skyCanvas" role="img" aria-label="관측 날짜와 시각에 따라 움직이는 별자리"></canvas><div class="sky-direction" aria-label="바라보는 방향"><button data-sky-direction="90">동</button><button data-sky-direction="180" aria-pressed="true">남</button><button data-sky-direction="270">서</button><button data-sky-direction="0">북</button><button id="skyFind">선택한 별자리 찾기</button></div></div><div class="sky-options"><label><input type="checkbox" id="skyLines" checked>별자리 선</label><label><input type="checkbox" id="skyNames" checked>별자리 이름</label><label><input type="checkbox" id="skyLaterMark">2시간 뒤 위치 겹쳐 보기</label></div><p id="skyReadout" class="sky-readout" aria-live="polite"></p><p class="sky-condition">맑고 주변 불빛이 적은 하늘을 가정합니다. 날짜와 시각은 한국 표준시입니다.</p><div class="sky-buttons"><button id="skyNextSeason">같은 시각 · 3개월 뒤</button><button id="skyReset">처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>남쪽을 바라보며 같은 별을 관찰했다. 밤 9시에는 정면에 있었다. 한 시간 뒤에도 지평선 위에 있다면 어느 쪽으로 옮겨 보이는가?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 왼쪽인 동쪽</label>
+<label><input type="radio" name="q1" value="b"> 오른쪽인 서쪽</label>
+<label><input type="radio" name="q1" value="c"> 정면에 그대로</label>
+<label><input type="radio" name="q1" value="d"> 머리 위로만 이동</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>남쪽을 바라보는 사람의 왼쪽은 동쪽, 오른쪽은 서쪽입니다. 지구의 자전 때문에 별은 남쪽을 지나 서쪽으로 옮겨 보입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>날짜가 달라질 때 남쪽 하늘의 별자리가 어떻게 달라지는지 비교하려 한다. 가장 알맞은 두 관측 조건은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 서울 4월 15일 21시 ↔ 서울 4월 15일 23시</label>
+<label><input type="radio" name="q2" value="b"> 서울 4월 15일 21시 ↔ 부산 7월 15일 23시</label>
+<label><input type="radio" name="q2" value="c"> 서울 4월 15일 21시 ↔ 서울 7월 15일 21시</label>
+<label><input type="radio" name="q2" value="d"> 서울 4월 15일 21시 ↔ 부산 4월 15일 21시</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>장소·시각·바라보는 방향을 같게 하고 날짜를 바꿔야 계절에 따른 차이를 비교하기 쉽습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>① 같은 밤에 별이 동쪽에서 서쪽으로 옮겨 보였다. ② 같은 시각에 관찰했는데 몇 달 뒤 남쪽 하늘의 별자리가 달랐다. 두 현상의 주된 원인은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> ① 자전 · ② 공전</label>
+<label><input type="radio" name="q3" value="b"> ① 공전 · ② 자전</label>
+<label><input type="radio" name="q3" value="c"> ① 자전 · ② 자전</label>
+<label><input type="radio" name="q3" value="d"> ① 공전 · ② 공전</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>하룻밤의 위치 변화는 지구의 자전으로, 계절에 따른 변화는 지구가 공전하여 밤에 바라보는 우주 방향이 달라지기 때문에 나타납니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>관측 프로그램에서 어떤 별은 새벽 5시와 아침 7시 모두 지평선 위에 있다. 5시는 어두웠고 7시에는 해가 떠 있었다. 실제 관찰에 대한 판단은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 7시에는 별 자체가 사라진다</label>
+<label><input type="radio" name="q4" value="b"> 지평선 위면 두 시각 모두 잘 보인다</label>
+<label><input type="radio" name="q4" value="c"> 7시에는 별이 지평선 아래에 있다</label>
+<label><input type="radio" name="q4" value="d"> 위치는 남아도 7시에는 별빛이 묻힌다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>별이 지평선 위에 있는 것과 눈에 잘 보이는 것은 다릅니다. 해가 뜨면 밝은 하늘에 별빛이 묻힙니다.</p>
+</article></details></main><script src="vendor/astronomy.browser.min.js?v=d1b3ab4b86aa"></script><script src="stars.js?v=4fbd41007362"></script><script src="model.js?v=d8d53a91d79e"></script><script src="app.js?v=acf21c4f34d6"></script><script src="../curriculum-map.js?v=3e38d6d70bc9"></script><script src="../exam-scope.js?v=597914c2603e"></script><script src="../lab-ui.js?v=fa13c92e90ea"></script></body></html>

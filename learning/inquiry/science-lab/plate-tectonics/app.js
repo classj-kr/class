@@ -1,465 +1,55 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const kindButtons = [...document.querySelectorAll('[data-kind]')];
-    const predictionButtons = [...document.querySelectorAll('[data-prediction]')];
-    const speedRange = document.getElementById('speedRange');
-    const timeRange = document.getElementById('timeRange');
-    const speedOutput = document.getElementById('speedOutput');
-    const timeOutput = document.getElementById('timeOutput');
-    const checkBtn = document.getElementById('checkBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const resultEmpty = document.getElementById('resultEmpty');
-    const resultContent = document.getElementById('resultContent');
-    const valueA = document.getElementById('valueA');
-    const valueB = document.getElementById('valueB');
-    const predictionResult = document.getElementById('predictionResult');
-    const explanation = document.getElementById('elementaryExplanation');
-    const stageCaption = document.getElementById('stageCaption');
-    const stageBadge = document.getElementById('stageBadge');
-    const mainGroup = document.getElementById('mainGroup');
-    const graphGroup = document.getElementById('graphGroup');
-    const dataNote = document.getElementById('dataNote');
-
-    const DEPTH_MAX = 700;                 // km, as deep as earthquakes ever reach
-    const SURFACE_Y = 76, BOTTOM_Y = 190;
-    // One scale for both directions, so a 45 degree slab is drawn at 45 degrees.
-    const PX_PER_KM = (BOTTOM_Y - SURFACE_Y) / DEPTH_MAX;
-    const CX = 230, SEC_X0 = 30, SEC_X1 = 430;
-    const SHALLOW = 70, MIDDLE = 300;      // the usual depth bands
-    const GRAPH = { x0: 64, x1: 424, y0: 150, y1: 30, span: 700 };
-
-    const KINDS = {
-        diverge: { label: '발산형 경계', place: '해령', verdict: 'shallow', moves: '서로 멀어집니다' },
-        converge: { label: '수렴형 경계', place: '해구', verdict: 'deep', moves: '서로 가까워집니다' },
-        transform: { label: '보존형 경계', place: '변환 단층', verdict: 'shallow', moves: '서로 어긋납니다' },
-        inside: { label: '판의 내부', place: '경계가 아닌 곳', verdict: 'none', moves: '판 전체가 함께 움직입니다' },
-    };
-
-    let kind = 'diverge';
-    let prediction = null;
-    let running = false, frameId = 0, lastStamp = 0;
-
-    const speed = () => Number(speedRange.value);      // cm each year, for one plate
-    const years = () => Number(timeRange.value);       // in units of ten thousand years
-
-    // 5 cm/year for ten million years is 500 km, so distance = speed x time x 0.1
-    const moved = (v = speed(), t = years()) => v * t * 0.1;
-
-    // Fixed pseudo-random draw so the same boundary always shows the same quakes.
-    function rng(seed) {
-        let s = seed >>> 0;
-        return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
-    }
-
-    function quakes(k = kind) {
-        const r = rng({ diverge: 11, converge: 27, transform: 43, inside: 61 }[k]);
-        const list = [];
-        if (k === 'diverge') {
-            for (let i = 0; i < 46; i += 1) list.push({ dist: (r() * 2 - 1) * 80, depth: r() * 15 });
-        } else if (k === 'transform') {
-            for (let i = 0; i < 46; i += 1) list.push({ dist: (r() * 2 - 1) * 50, depth: r() * 20 });
-        } else if (k === 'inside') {
-            for (let i = 0; i < 6; i += 1) list.push({ dist: (r() * 2 - 1) * 600, depth: r() * 25 });
-        } else {
-            // shallow ones right at the trench
-            for (let i = 0; i < 16; i += 1) list.push({ dist: -30 + r() * 90, depth: r() * 45 });
-            // then down the sinking slab: it dips at 45 degrees, so depth = distance
-            for (let i = 0; i < 52; i += 1) {
-                const s = r() * DEPTH_MAX;
-                list.push({ dist: s + (r() * 2 - 1) * 34, depth: Math.max(4, s + (r() * 2 - 1) * 30) });
-            }
-        }
-        return list;
-    }
-
-    function analyse(k = kind, v = speed(), t = years()) {
-        const info = KINDS[k];
-        const pts = quakes(k);
-        const deepest = Math.max(...pts.map(p => p.depth));
-        const dist = k === 'inside' ? moved(v, t) : moved(v, t);
-        const total = k === 'inside' ? dist : dist * 2;   // both plates move
-        const age = v > 0 ? dist / v * 1e5 / 1e4 : 0;     // ten-thousand-year units
-        return { k, info, pts, deepest, dist, total, age, verdict: info.verdict, v, t };
-    }
-
-    const dx = km => CX + km * PX_PER_KM;
-    const dy = km => SURFACE_Y + km * PX_PER_KM;
-
-    function arrow(x1, y, x2, cls) {
-        const s = Math.sign(x2 - x1);
-        return `<line class="${cls}" x1="${x1.toFixed(1)}" y1="${y}" x2="${x2.toFixed(1)}" y2="${y}"/>` +
-               `<path class="${cls}" d="M${(x2 - s * 7).toFixed(1)},${y - 5} L${x2.toFixed(1)},${y} L${(x2 - s * 7).toFixed(1)},${y + 5}"/>`;
-    }
-
-    function renderMain(a) {
-        const off = a.dist * PX_PER_KM;      // how far one plate has slid, in pixels
-        let out = '';
-        out += `<rect class="mantle" x="${SEC_X0}" y="${SURFACE_Y}" width="${SEC_X1 - SEC_X0}" height="${BOTTOM_Y - SURFACE_Y}"/>`;
-        out += `<rect class="sea" x="${SEC_X0}" y="52" width="${SEC_X1 - SEC_X0}" height="${SURFACE_Y - 52}"/>`;
-
-        let body = '';
-        if (a.k === 'diverge') {
-            // old crust pushed outwards, new crust filling the middle
-            body += `<rect class="plate old" x="${SEC_X0 - 40}" y="${SURFACE_Y}" width="${(CX - off - SEC_X0 + 40).toFixed(1)}" height="12"/>`;
-            body += `<rect class="plate old" x="${(CX + off).toFixed(1)}" y="${SURFACE_Y}" width="${(SEC_X1 + 40 - CX - off).toFixed(1)}" height="12"/>`;
-            if (off > 0.5) body += `<rect class="plate new" x="${(CX - off).toFixed(1)}" y="${SURFACE_Y}" width="${(off * 2).toFixed(1)}" height="12"/>`;
-            body += `<path class="magma" d="M${CX - 9},${SURFACE_Y + 12} L${CX + 9},${SURFACE_Y + 12} L${CX + 4},${BOTTOM_Y} L${CX - 4},${BOTTOM_Y} Z"/>`;
-            body += `<path class="magma hot" d="M${CX - 5},${SURFACE_Y + 2} L${CX + 5},${SURFACE_Y + 2} L${CX + 2},${SURFACE_Y + 40} L${CX - 2},${SURFACE_Y + 40} Z">` +
-                    `<animate attributeName="opacity" values=".55;1;.55" dur="2.4s" repeatCount="indefinite"/></path>`;
-            body += arrow(CX - 22, SURFACE_Y - 12, CX - 62, 'move-arrow');
-            body += arrow(CX + 22, SURFACE_Y - 12, CX + 62, 'move-arrow');
-        } else if (a.k === 'converge') {
-            // an ocean plate sliding under a continent, at 45 degrees
-            const slabEnd = dy(DEPTH_MAX);
-            body += `<rect class="plate" x="${SEC_X0 - 40}" y="${SURFACE_Y}" width="${(CX - SEC_X0 + 40).toFixed(1)}" height="12"/>`;
-            body += `<path class="plate" d="M${CX},${SURFACE_Y} L${CX + 12},${SURFACE_Y} L${dx(DEPTH_MAX) + 12},${slabEnd} L${dx(DEPTH_MAX)},${slabEnd} Z"/>`;
-            body += `<path class="continent" d="M${CX + 16},${SURFACE_Y + 4} L${SEC_X1 + 40},${SURFACE_Y + 4} L${SEC_X1 + 40},${SURFACE_Y + 26} L${CX + 16},${SURFACE_Y + 26} Z"/>`;
-            body += `<path class="continent" d="M${CX + 6},${SURFACE_Y + 4} q8,-12 18,0 Z"/>`;
-            body += `<path class="magma hot" d="M${CX + 74},${SURFACE_Y + 4} l10,-16 l10,16 Z">` +
-                    `<animate attributeName="opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/></path>`;
-            body += `<text class="small-label" x="${CX + 84}" y="${SURFACE_Y - 22}" text-anchor="middle">화산</text>`;
-            body += `<text class="small-label" x="${CX - 2}" y="${SURFACE_Y - 8}" text-anchor="end">해구</text>`;
-            body += arrow(CX - 62, SURFACE_Y - 22, CX - 22, 'move-arrow');
-            body += arrow(CX + 150, SURFACE_Y - 22, CX + 110, 'move-arrow');
-        } else if (a.k === 'transform') {
-            // the two blocks slide past each other, across the page
-            body += `<rect class="plate" x="${SEC_X0 - 40}" y="${SURFACE_Y}" width="${(CX - SEC_X0 + 38).toFixed(1)}" height="14"/>`;
-            body += `<rect class="plate" x="${CX + 2}" y="${SURFACE_Y}" width="${(SEC_X1 + 40 - CX).toFixed(1)}" height="14"/>`;
-            body += `<line class="slab-line" x1="${CX}" y1="${SURFACE_Y - 14}" x2="${CX}" y2="${BOTTOM_Y}"/>`;
-            body += `<circle class="into-page" cx="${CX - 46}" cy="${SURFACE_Y - 20}" r="8"/>`;
-            body += `<circle class="magma hot" cx="${CX - 46}" cy="${SURFACE_Y - 20}" r="2.6"/>`;
-            body += `<circle class="into-page" cx="${CX + 46}" cy="${SURFACE_Y - 20}" r="8"/>`;
-            body += `<path class="into-page" d="M${CX + 40},${SURFACE_Y - 26} L${CX + 52},${SURFACE_Y - 14} M${CX + 52},${SURFACE_Y - 26} L${CX + 40},${SURFACE_Y - 14}"/>`;
-            body += `<text class="small-label" x="${CX - 46}" y="${SURFACE_Y - 34}" text-anchor="middle">앞으로</text>`;
-            body += `<text class="small-label" x="${CX + 46}" y="${SURFACE_Y - 34}" text-anchor="middle">뒤로</text>`;
-        } else {
-            body += `<rect class="plate" x="${SEC_X0 - 40}" y="${SURFACE_Y}" width="${(SEC_X1 - SEC_X0 + 80).toFixed(1)}" height="14"/>`;
-            body += arrow(CX - 40, SURFACE_Y - 16, CX + 40, 'move-arrow');
-            body += `<text class="small-label" x="${CX}" y="${SURFACE_Y - 26}" text-anchor="middle">판 전체가 함께 움직입니다</text>`;
-        }
-        // earthquakes, at the depth each one really happens
-        a.pts.forEach(p => {
-            const x = dx(p.dist), y = dy(p.depth);
-            if (x < SEC_X0 - 2 || x > SEC_X1 + 2 || y > BOTTOM_Y) return;
-            body += `<circle class="quake${p.depth > MIDDLE ? ' deep' : ''}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>`;
-        });
-        out += `<g clip-path="url(#sectionClip)">${body}</g>`;
-
-        // depth scale down the left edge
-        out += `<line class="surface" x1="${SEC_X0}" y1="${SURFACE_Y}" x2="${SEC_X1}" y2="${SURFACE_Y}"/>`;
-        [0, 200, 400, 600].forEach(km => {
-            out += `<line class="depth-tick" x1="${SEC_X0}" y1="${dy(km).toFixed(1)}" x2="${SEC_X1}" y2="${dy(km).toFixed(1)}"/>`;
-            out += `<text class="depth-text" x="${SEC_X0 - 4}" y="${(dy(km) + 3).toFixed(1)}" text-anchor="end">${km}</text>`;
-        });
-        out += `<text class="depth-text" x="${SEC_X0 - 4}" y="${(dy(700) + 3).toFixed(1)}" text-anchor="end">km</text>`;
-
-        // a bar showing how far 200 km is at this scale
-        const barPx = 200 * PX_PER_KM;
-        out += `<line class="scale-bar" x1="${SEC_X1 - barPx - 10}" y1="${BOTTOM_Y - 8}" x2="${SEC_X1 - 10}" y2="${BOTTOM_Y - 8}"/>`;
-        out += `<text class="scale-text" x="${SEC_X1 - barPx / 2 - 10}" y="${BOTTOM_Y - 12}" text-anchor="middle">200 km</text>`;
-
-        out += `<text class="part-label" x="20" y="20">${a.info.label} (${a.info.place}) — 판이 ${a.info.moves}</text>`;
-        out += `<text class="note-text" x="20" y="206">` +
-               (a.k === 'inside'
-                   ? `${a.v} cm/년 × ${(a.t * 1e4).toLocaleString()}년 = ${a.dist.toFixed(0)} km 이동 · 가장 깊은 지진 ${a.deepest.toFixed(0)} km`
-                   : `한쪽 판이 ${a.dist.toFixed(0)} km, 두 판을 합쳐 ${a.total.toFixed(0)} km · 가장 깊은 지진 ${a.deepest.toFixed(0)} km`) +
-               `</text>`;
-        mainGroup.innerHTML = out;
-    }
-
-    function renderGraph(a) {
-        const gx = km => GRAPH.x0 + ((km + GRAPH.span) / (2 * GRAPH.span)) * (GRAPH.x1 - GRAPH.x0);
-        const gy = km => GRAPH.y1 + (km / DEPTH_MAX) * (GRAPH.y0 - GRAPH.y1);
-        let out = '';
-        [-700, -350, 0, 350, 700].forEach(km => {
-            out += `<line class="grid-line" x1="${gx(km).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(km).toFixed(1)}" y2="${GRAPH.y0}"/>`;
-            out += `<text class="axis-text" x="${gx(km).toFixed(1)}" y="${GRAPH.y0 + 14}" text-anchor="middle">${km}</text>`;
-        });
-        [0, 200, 400, 600].forEach(km => {
-            out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(gy(km) + 3).toFixed(1)}" text-anchor="end">${km}</text>`;
-        });
-        out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y1}" x2="${GRAPH.x1}" y2="${GRAPH.y1}"/>`;
-        out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y1}" x2="${GRAPH.x0}" y2="${GRAPH.y0}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 32}" text-anchor="middle">경계로부터의 거리 (km)</text>`;
-        out += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 10}">깊이 (km)</text>`;
-
-        [[SHALLOW, '얕은 지진'], [MIDDLE, '중간 깊이']].forEach(([km, name]) => {
-            out += `<line class="zone-line" x1="${GRAPH.x0}" y1="${gy(km).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(km).toFixed(1)}"/>`;
-            out += `<text class="zone-text" x="${GRAPH.x1 - 4}" y="${(gy(km) - 4).toFixed(1)}" text-anchor="end">${name} ${km} km</text>`;
-        });
-        a.pts.forEach(p => {
-            if (Math.abs(p.dist) > GRAPH.span) return;
-            out += `<circle class="quake${p.depth > MIDDLE ? ' deep' : ''}" cx="${gx(p.dist).toFixed(1)}" cy="${gy(p.depth).toFixed(1)}" r="3"/>`;
-        });
-        // anchored right: the y-axis title already sits at the left of this row
-        out += `<text class="legend-text" fill="#8fa8b0" x="${GRAPH.x1}" y="${GRAPH.y1 - 10}" text-anchor="end">지진 ${a.pts.length}개 · 가장 깊은 곳 ${a.deepest.toFixed(0)} km</text>`;
-        graphGroup.innerHTML = out;
-    }
-
-    function render() {
-        const a = analyse();
-        renderMain(a);
-        renderGraph(a);
-        speedOutput.textContent = `${a.v} cm/년`;
-        timeOutput.textContent = `${a.t.toLocaleString()} 만년`;
-        stageBadge.textContent = `${a.info.label} · 가장 깊은 지진 ${a.deepest.toFixed(0)} km`;
-        const deepCount = a.pts.filter(p => p.depth > MIDDLE).length;
-        dataNote.innerHTML =
-            `<div class="data-row"><span class="data-name">판의 이동</span><span class="data-val">${a.v} cm/년 × ${(a.t * 1e4).toLocaleString()}년 = ${a.dist.toFixed(0)} km</span></div>` +
-            (a.k === 'diverge'
-                ? `<div class="data-row"><span class="data-name">새 해양 지각</span><span class="data-val">해령 양쪽으로 ${a.dist.toFixed(0)} km씩, 모두 ${a.total.toFixed(0)} km</span></div>`
-                : a.k === 'converge'
-                    ? `<div class="data-row"><span class="data-name">사라진 판</span><span class="data-val">${a.total.toFixed(0)} km가 맨틀 속으로 들어갔습니다</span></div>`
-                    : a.k === 'transform'
-                        ? `<div class="data-row"><span class="data-name">어긋난 거리</span><span class="data-val">양쪽을 합쳐 ${a.total.toFixed(0)} km</span></div>`
-                        : `<div class="data-row"><span class="data-name">경계까지</span><span class="data-val">멀리 떨어져 있어 힘이 쌓이지 않습니다</span></div>`) +
-            `<div class="data-row"><span class="data-name">지진 수</span><span class="data-val">${a.pts.length}개 · 이 가운데 ${MIDDLE} km보다 깊은 것 ${deepCount}개</span></div>` +
-            `<div class="data-row match"><span class="data-name">가장 깊은 지진</span><span class="data-val">${a.deepest.toFixed(0)} km</span></div>`;
-        return a;
-    }
-
-    const VERDICT = { shallow: '얕은 지진만', deep: '깊은 지진까지', none: '지진이 거의 없다' };
-
-    function check() {
-        const a = analyse();
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
-        valueA.textContent = `${a.total.toFixed(0)} km`;
-        valueB.textContent = `${a.deepest.toFixed(0)} km`;
-        predictionResult.textContent = !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        let s = `${a.v} cm씩 ${(a.t * 1e4).toLocaleString()}년 동안 움직이면 한쪽 판이 ${a.dist.toFixed(0)} km를 갑니다. `;
-        if (a.k === 'diverge') {
-            s += `해령에서 새 지각이 계속 만들어져 양쪽으로 ${a.dist.toFixed(0)} km 씩, 모두 ${a.total.toFixed(0)} km 넓어졌습니다. ` +
-                 `해령에서 멀수록 오래된 지각이고, 양쪽이 좌우 대칭입니다. ` +
-                 `판이 벌어지기만 하므로 지진은 ${a.deepest.toFixed(0)} km보다 깊은 곳에서는 일어나지 않습니다.`;
-        } else if (a.k === 'converge') {
-            s += `두 판을 합쳐 ${a.total.toFixed(0)} km 만큼의 판이 해구에서 맨틀 속으로 들어갔습니다. ` +
-                 `들어간 판이 45도로 비스듬히 내려가기 때문에, 해구에서 멀어질수록 지진이 점점 깊어져 ${a.deepest.toFixed(0)} km 까지 이릅니다. ` +
-                 `이렇게 비스듬히 줄지어 나타나는 지진대가 판이 내려가고 있다는 증거입니다.`;
-        } else if (a.k === 'transform') {
-            s += `두 판이 서로 어긋나기만 해 모두 ${a.total.toFixed(0)} km가 밀려났습니다. ` +
-                 `새 지각이 생기지도, 사라지지도 않습니다. 어긋나는 힘은 얕은 곳에 쌓이므로 지진도 ${a.deepest.toFixed(0)} km보다 얕은 곳에서만 일어납니다.`;
-        } else {
-            s += `하지만 이곳은 판의 한가운데라 부딪치거나 벌어지는 곳이 없습니다. ` +
-                 `힘이 쌓이지 않으니 지진이 ${a.pts.length}개밖에 없고 그마저도 아주 얕습니다. 지진은 판의 경계에 몰려 있습니다.`;
-        }
-        explanation.textContent = s;
-    }
-
-    function stopRun() { running = false; if (frameId) cancelAnimationFrame(frameId); frameId = 0; }
-
-    function tick(dt) {
-        const next = Math.min(1000, Number(timeRange.value) + dt * 200);
-        timeRange.value = String(Math.round(next / 10) * 10);
-        render();
-        return next >= 1000;
-    }
-
-    function frame(stamp) {
-        if (!running) return;
-        const dt = Math.min(0.05, (stamp - lastStamp) / 1000 || 0);
-        lastStamp = stamp;
-        if (tick(dt)) { stopRun(); check(); } else frameId = requestAnimationFrame(frame);
-    }
-
-    function startRun() {
-        stopRun();
-        timeRange.value = '0';
-        running = true;
-        lastStamp = performance.now();
-        render();
-        frameId = requestAnimationFrame(frame);
-    }
-
-    function changed() {
-        stopRun();
-        resultEmpty.hidden = false;
-        resultContent.hidden = true;
-        render();
-    }
-
-    [speedRange, timeRange].forEach(el => el.addEventListener('input', () => {
-        stopRun(); render(); if (!resultContent.hidden) check();
-    }));
-    kindButtons.forEach(button => button.addEventListener('click', () => {
-        kind = button.dataset.kind;
-        kindButtons.forEach(item => item.classList.toggle('selected', item === button));
-        stageCaption.textContent = kind === 'converge'
-            ? '지진이 비스듬히 줄지어 깊어집니다. 판이 내려가는 길입니다.'
-            : '지진이 일어난 곳에 점을 찍었습니다. 깊이가 어떻게 다른지 보세요.';
-        changed();
-    }));
-    predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
-        predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
-    }));
-    checkBtn.addEventListener('click', startRun);
-    resetBtn.addEventListener('click', () => {
-        stopRun();
-        speedRange.value = '5'; timeRange.value = '0';
-        prediction = null;
-        predictionButtons.forEach(item => item.classList.remove('selected'));
-        kindButtons.find(b => b.dataset.kind === 'diverge').click();
-    });
-
-    function shuffleQuizOptions(card) {
-        const optionGroup = card.querySelector('.quiz-options');
-        const options = Array.from(optionGroup.children);
-        for (let index = options.length - 1; index > 0; index -= 1) {
-            const randomIndex = Math.floor(Math.random() * (index + 1));
-            [options[index], options[randomIndex]] = [options[randomIndex], options[index]];
-        }
-        optionGroup.append(...options);
-    }
-
-    document.querySelectorAll('.quiz-card').forEach(card => {
-        shuffleQuizOptions(card);
-        const answerButton = card.querySelector('.answer-button');
-        const answerResult = card.querySelector('.answer-result');
-        const answerExplanation = card.querySelector('.answer-explanation');
-        answerButton.addEventListener('click', () => {
-            const selected = card.querySelector('input:checked');
-            if (!selected) {
-                delete card.dataset.state;
-                answerResult.textContent = '답을 먼저 선택하세요.';
-                return;
-            }
-            const correct = selected.value === card.dataset.answer;
-            card.dataset.state = correct ? 'correct' : 'incorrect';
-            answerResult.textContent = correct ? '맞았습니다.' : '다시 생각해 보세요.';
-            answerExplanation.hidden = !correct;
-            if (!correct) {
-                selected.checked = false;
-                selected.disabled = true;
-                answerResult.textContent = '다시 생각하고 다른 답을 골라보세요.';
-            }
-        });
-    });
-
-    window.__plateModel = {
-        DEPTH_MAX, PX_PER_KM, SHALLOW, MIDDLE, KINDS, analyse, quakes, moved, render, check,
-        setKind(k) { kindButtons.find(b => b.dataset.kind === k).click(); },
-        setSpeed(v) { speedRange.value = String(v); speedRange.dispatchEvent(new Event('input')); },
-        setYears(v) { timeRange.value = String(v); timeRange.dispatchEvent(new Event('input')); },
-        runToEnd(dt = 0.1, cap = 500) {
-            stopRun(); timeRange.value = '0';
-            let n = 0; while (!tick(dt) && n < cap) n += 1;
-            check(); return { steps: n, years: Number(timeRange.value) };
-        },
-        getKind: () => kind, speed, years,
-    };
-
-    resetBtn.click();
+document.addEventListener('DOMContentLoaded',()=>{
+ 'use strict';
+ const M=window.ScienceTectonicData,$=s=>document.querySelector(s),canvas=$('#tdMap'),ctx=canvas.getContext('2d');
+ const presets={world:{lon:180,lat:0,zoom:1},japan:{lon:137,lat:36,zoom:7},indonesia:{lon:119,lat:-4,zoom:5},andes:{lon:-73,lat:-20,zoom:3.5},atlantic:{lon:-25,lat:15,zoom:2.6},hawaii:{lon:-155,lat:20,zoom:8}};
+ let data,view={...presets.world},layers={earthquakes:true,volcanoes:false,boundaries:false},start=1980,end=2025,magnitude=6,cursor=2025,selected=null,listPage=0,running=false,timer=null,pointer=null,frame=null,ready=false,loading=false;
+ let width=0,height=0,projection,shown=[],visibleQuakes=[],visibleVolcanoes=[],hitPoints=[];
+ const coordinates=r=>(r.lat<0?'남위 ':'북위 ')+Math.abs(r.lat).toFixed(2)+'° · '+(r.lon<0?'서경 ':'동경 ')+Math.abs(r.lon).toFixed(2)+'°';
+ const date=r=>r.time.slice(0,10).replaceAll('-','.');
+ const same=r=>selected&&selected.kind===r.kind&&selected.id===r.row.id;
+ function stop(){running=false;clearTimeout(timer);timer=null;$('#tdPlay').textContent='지진 연도 재생';$('#tdPlay').setAttribute('aria-pressed','false');}
+ function yearControls(){for(const id of ['tdStart','tdEnd']){const select=$('#'+id);select.replaceChildren(...Array.from({length:46},(_,i)=>new Option(String(1980+i)+'년',String(1980+i))));}$('#tdStart').value=start;$('#tdEnd').value=end;}
+ function controls(){for(const b of document.querySelectorAll('[data-td-layer]'))b.setAttribute('aria-pressed',String(layers[b.dataset.tdLayer]));$('#tdStart').value=start;$('#tdEnd').value=end;$('#tdMagnitude').value=magnitude;$('#tdYear').min=start;$('#tdYear').max=end;$('#tdYear').value=cursor;$('#tdYearValue').textContent=cursor+'년까지';$('#tdPlay').disabled=start===end;$('#tdZoomOut').disabled=view.zoom<=1;$('#tdZoomIn').disabled=view.zoom>=10;}
+ function clearRegion(){for(const b of document.querySelectorAll('[data-td-region]'))b.setAttribute('aria-pressed','false');}
+ function region(name){stop();view={...presets[name]};listPage=0;selected=null;for(const b of document.querySelectorAll('[data-td-region]'))b.setAttribute('aria-pressed',String(b.dataset.tdRegion===name));render();}
+ function prepareGeometry(){
+  data.landRings=data.land.flatMap(g=>(g.type==='Polygon'?[g.coordinates]:g.coordinates).map(poly=>poly.map(M.unroll)));
+  data.boundaryLines=data.boundaries.flatMap(f=>(f.geometry.type==='LineString'?[f.geometry.coordinates]:f.geometry.coordinates).map(M.unroll));
+  const add=(path,line)=>line.forEach(([x,y],i)=>i?path.lineTo(x,y):path.moveTo(x,y));data.landPath=new Path2D();for(const poly of data.landRings)for(const ring of poly){add(data.landPath,ring);data.landPath.closePath();}data.boundaryPath=new Path2D();for(const line of data.boundaryLines)add(data.boundaryPath,line);
+ }
+ function inFrame([x,y]){return x>=0&&x<=width&&y>=0&&y<=height;}
+ function draw(){
+  const box=canvas.getBoundingClientRect();width=box.width;height=box.height;const dpr=Math.min(devicePixelRatio||1,2),w=Math.round(width*dpr),h=Math.round(height*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);projection=M.projection(width,height,view);view.lat=projection.lat;
+  ctx.fillStyle='#e5f2f5';ctx.fillRect(0,0,width,height);ctx.save();ctx.beginPath();ctx.rect(0,0,width,height);ctx.clip();
+  ctx.strokeStyle='#c5dfe6';ctx.lineWidth=.65;for(let lon=-180;lon<180;lon+=30){const[x]=projection.point(lon,0);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,height);ctx.stroke();}for(let lat=-60;lat<=60;lat+=30){const[,y]=projection.point(0,lat);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(width,y);ctx.stroke();}
+  for(const shift of [-720,-360,0,360,720]){ctx.save();ctx.translate(width/2+(shift-view.lon)*projection.scale,height/2+projection.lat*projection.scale);ctx.scale(projection.scale,-projection.scale);ctx.fillStyle='#d4dfce';ctx.fill(data.landPath,'evenodd');if(layers.boundaries){ctx.strokeStyle='#126b7d';ctx.lineWidth=1.7/projection.scale;ctx.stroke(data.boundaryPath);}ctx.restore();}
+  shown=M.filter(data.earthquakes,{start,end,magnitude,cursor});hitPoints=[];visibleQuakes=[];visibleVolcanoes=[];
+  for(const row of shown){const[x,y]=projection.point(row.lon,row.lat);if(!inFrame([x,y]))continue;visibleQuakes.push(row);if(!layers.earthquakes)continue;const r=2.2+(row.mag-6)*1.35;ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);ctx.fillStyle='#c85113bb';ctx.fill();ctx.strokeStyle='#873204';ctx.lineWidth=.5;ctx.stroke();hitPoints.push({kind:'earthquakes',row,x,y});}
+  for(const row of data.volcanoes){const[x,y]=projection.point(row.lon,row.lat);if(!inFrame([x,y]))continue;visibleVolcanoes.push(row);if(!layers.volcanoes)continue;ctx.beginPath();ctx.moveTo(x,y-4);ctx.lineTo(x-3.7,y+3.2);ctx.lineTo(x+3.7,y+3.2);ctx.closePath();ctx.fillStyle='#8d2392';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=.5;ctx.stroke();hitPoints.push({kind:'volcanoes',row,x,y});}
+  const target=hitPoints.find(same);if(target){ctx.beginPath();ctx.arc(target.x,target.y,10,0,2*Math.PI);ctx.lineWidth=3;ctx.strokeStyle='#fff';ctx.stroke();ctx.lineWidth=1.6;ctx.strokeStyle='#10394b';ctx.stroke();}
+  ctx.restore();
+ }
+ function detail(){const p=hitPoints.find(same);if(!p){selected=null;$('#tdDetail').textContent='지도에서 기호를 누르거나 아래 목록에서 지점을 선택하세요.';return;}const r=p.row;$('#tdDetail').textContent=p.kind==='earthquakes'?date(r)+' (UTC) · 규모 '+r.mag.toFixed(1)+' · 깊이 '+r.depth.toFixed(1)+' km · '+coordinates(r):r.name+' · '+r.country+' · '+coordinates(r);}
+ function list(){
+  const kind=$('#tdListKind').value,rows=layers[kind]?(kind==='earthquakes'?[...visibleQuakes].sort((a,b)=>b.time.localeCompare(a.time)):visibleVolcanoes):[],pages=Math.max(1,Math.ceil(rows.length/9));listPage=Math.max(0,Math.min(listPage,pages-1));$('#tdPage').textContent=(listPage+1)+' / '+pages;$('#tdPrev').disabled=listPage===0;$('#tdNext').disabled=listPage===pages-1;const box=$('#tdList');box.replaceChildren();
+  if(!rows.length){const p=document.createElement('p');p.className='td-empty';p.textContent=!layers[kind]?(kind==='earthquakes'?'지진':'화산 위치')+' 표시를 켜서 지점을 살펴보세요.':'이 범위에서 조건에 맞는 지점이 없습니다.';box.append(p);return;}
+  for(const row of rows.slice(listPage*9,listPage*9+9)){const b=document.createElement('button');b.dataset.tdPoint=row.id;b.setAttribute('aria-pressed',String(!!selected&&selected.kind===kind&&selected.id===row.id));const strong=document.createElement('strong'),span=document.createElement('span');strong.textContent=kind==='earthquakes'?date(row)+' · 규모 '+row.mag.toFixed(1):row.name;for(const text of coordinates(row).split(' · ')){const part=document.createElement('span');part.className='td-coordinate';part.textContent=text;span.append(part);}b.append(strong,span);b.addEventListener('click',()=>{selected={kind,id:row.id};render(false);});box.append(b);}
+ }
+ function render(resetPage=false){if(!ready)return;if(resetPage)listPage=0;draw();controls();$('#tdCounts').textContent=start+'~'+cursor+'년 · 규모 '+magnitude.toFixed(1)+' 이상 '+shown.length.toLocaleString('ko-KR')+'건 / 지도 안 '+visibleQuakes.length.toLocaleString('ko-KR')+'건'+(layers.earthquakes?'':' (지진 숨김)')+' · 화산 위치 '+(layers.volcanoes?visibleVolcanoes.length.toLocaleString('ko-KR')+'곳':'숨김');detail();list();}
+ function queue(){if(frame!==null)return;frame=requestAnimationFrame(()=>{frame=null;render();});}
+ async function load(){if(loading)return;loading=true;$('#tdRetry').hidden=true;$('#tdLoading').hidden=false;$('#tdLoading').textContent='지도 자료를 불러오는 중입니다.';try{const r=await fetch('data.json',{cache:'no-cache'});if(!r.ok)throw Error('map data unavailable');data=await r.json();if(!data.earthquakes?.length||!data.volcanoes?.length||!data.boundaries?.length||!data.land?.length)throw Error('incomplete map data');prepareGeometry();ready=true;$('#tdLoading').hidden=true;$('#tdReady').hidden=false;yearControls();render();}catch{ready=false;$('#tdLoading').textContent='지도 자료를 불러오지 못했습니다. 다시 불러와 주세요.';$('#tdRetry').hidden=false;}finally{loading=false;}}
+ function tick(){if(!running)return;cursor=Math.min(end,cursor+1);render(true);if(cursor>=end){stop();return;}timer=setTimeout(tick,750);}
+ $('#tdPlay').addEventListener('click',()=>{if(running){stop();return;}if(cursor>=end)cursor=start;running=true;$('#tdPlay').textContent='재생 멈춤';$('#tdPlay').setAttribute('aria-pressed','true');render(true);timer=setTimeout(tick,750);});
+ $('#tdYear').addEventListener('input',e=>{stop();cursor=+e.target.value;selected=null;render(true);});
+ for(const b of document.querySelectorAll('[data-td-layer]'))b.addEventListener('click',()=>{layers[b.dataset.tdLayer]=!layers[b.dataset.tdLayer];render(true);});
+ for(const b of document.querySelectorAll('[data-td-region]'))b.addEventListener('click',()=>region(b.dataset.tdRegion));
+ $('#tdStart').addEventListener('change',e=>{stop();start=+e.target.value;if(start>end)end=start;cursor=end;selected=null;render(true);});$('#tdEnd').addEventListener('change',e=>{stop();end=+e.target.value;if(end<start)start=end;cursor=end;selected=null;render(true);});$('#tdMagnitude').addEventListener('change',e=>{stop();magnitude=+e.target.value;selected=null;render(true);});
+ for(const [id,factor]of [['tdZoomIn',1.5],['tdZoomOut',1/1.5]])$('#'+id).addEventListener('click',()=>{view.zoom=M.valid(view.zoom*factor,1,10);clearRegion();render(true);});$('#tdWorld').addEventListener('click',()=>region('world'));
+ $('#tdListKind').addEventListener('change',()=>{listPage=0;list();});$('#tdPrev').addEventListener('click',()=>{listPage--;list();});$('#tdNext').addEventListener('click',()=>{listPage++;list();});
+ canvas.addEventListener('pointerdown',e=>{if(!ready||pointer)return;pointer={id:e.pointerId,x:e.clientX,y:e.clientY,lon:view.lon,lat:view.lat,scale:projection.scale,moved:false};canvas.setPointerCapture(e.pointerId);});
+ canvas.addEventListener('pointermove',e=>{if(!pointer||pointer.id!==e.pointerId)return;const dx=e.clientX-pointer.x,dy=e.clientY-pointer.y;if(Math.hypot(dx,dy)>5)pointer.moved=true;if(!pointer.moved)return;view.lon=M.wrap(pointer.lon-dx/pointer.scale);view.lat=pointer.lat+dy/pointer.scale;clearRegion();listPage=0;queue();});
+ canvas.addEventListener('pointerup',e=>{if(!pointer||pointer.id!==e.pointerId)return;if(!pointer.moved){const b=canvas.getBoundingClientRect(),x=e.clientX-b.left,y=e.clientY-b.top;let best=null;for(const p of hitPoints){const d=Math.hypot(p.x-x,p.y-y);if(d<=22&&(!best||d<best.d))best={...p,d};}if(best){selected={kind:best.kind,id:best.row.id};$('#tdListKind').value=best.kind;}}pointer=null;render();});canvas.addEventListener('pointercancel',()=>{pointer=null;});canvas.addEventListener('lostpointercapture',()=>{pointer=null;});
+ canvas.addEventListener('keydown',e=>{if(!ready)return;const step=15/view.zoom;if(e.key==='ArrowLeft')view.lon=M.wrap(view.lon-step);else if(e.key==='ArrowRight')view.lon=M.wrap(view.lon+step);else if(e.key==='ArrowUp')view.lat+=step;else if(e.key==='ArrowDown')view.lat-=step;else if(e.key==='Home'){region('world');e.preventDefault();return;}else return;e.preventDefault();clearRegion();render(true);});
+ $('#tdReset').addEventListener('click',()=>{stop();start=1980;end=2025;magnitude=6;cursor=end;layers={earthquakes:true,volcanoes:false,boundaries:false};$('#tdListKind').value='earthquakes';region('world');});$('#tdRetry').addEventListener('click',load);new ResizeObserver(queue).observe(canvas);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+ window.__tectonicData={snapshot:()=>({ready,start,end,magnitude,cursor,layers:{...layers},view:{...view},running,selected,filteredIds:shown.map(r=>r.id),visibleQuakeIds:visibleQuakes.map(r=>r.id),visibleVolcanoIds:visibleVolcanoes.map(r=>r.id),width,height}),point:(kind,id)=>{const row=data?.[kind]?.find(r=>r.id===id);return row&&projection.point(row.lon,row.lat);}};load();
 });
-
-/* 그림 속 문장을 HTML로 내린다. 액자를 벗어나거나 서로 겹치는 글자만 옮기므로
-   조건이 바뀌어도 스스로 맞는다. 그림에는 짧은 이름표만 남는다. */
-(function () {
-    const stageVerdict = document.getElementById('stageVerdict');
-    const stageReadout = document.getElementById('stageReadout');
-    const stageNote = document.getElementById('stageNote');
-    if (!stageReadout) return;
-    const pairs = [['mainGroup', '.main-svg'], ['graphGroup', '.graph-svg']]
-        .map(([id, sel]) => [document.getElementById(id), document.querySelector(sel)])
-        .filter(([g, s]) => g && s);
-    if (!pairs.length) return;
-
-    // 그림에서 쓰던 색이 흰 바탕에서는 너무 흐린 경우가 있어, 그런 색은 버리고 기본색을 쓴다.
-    function readableOnWhite(c) {
-        let r, g, b;
-        if (c[0] === '#') {
-            let h = c.slice(1);
-            if (h.length === 3) h = h.split('').map(x => x + x).join('');
-            if (h.length !== 6) return false;
-            r = parseInt(h.slice(0, 2), 16); g = parseInt(h.slice(2, 4), 16); b = parseInt(h.slice(4, 6), 16);
-        } else {
-            const m = c.match(/[\d.]+/g);
-            if (!m || m.length < 3) return false;
-            r = +m[0]; g = +m[1]; b = +m[2];
-            const a = m.length > 3 ? +m[3] : 1;
-            r = a * r + (1 - a) * 255; g = a * g + (1 - a) * 255; b = a * b + (1 - a) * 255;
-        }
-        const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
-        const L = 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
-        return 1.05 / (L + 0.05) >= 3.5;
-    }
-
-    function liftProse() {
-        const rows = [], notes = [], verdicts = [];
-        const takeOut = t => {
-            const cls = t.getAttribute('class') || '';let txt = t.textContent.trim();
-            if(t.matches('.stat-value')){
-                const label=t.previousElementSibling;
-                if(label?.matches('.stat-name')&&label.getAttribute('y')===t.getAttribute('y')){txt=label.textContent.trim()+': '+txt;label.remove();}
-            }
-            if (txt) {
-                if (/verdict-text/.test(cls)) verdicts.push(txt);
-                else if (/note-text/.test(cls)) notes.push(txt);
-                else rows.push({ txt, fill: t.style.fill || '' });
-            }
-            t.remove();
-        };
-        pairs.forEach(([g, svg]) => {
-            const vb = svg.viewBox.baseVal, W = vb.width, H = vb.height;
-            const outside = b => b.x < -0.5 || b.x + b.width > W + 0.5 || b.y + b.height > H + 0.5 || b.y < -0.5;
-            [...g.querySelectorAll('text')].forEach(t => {
-                const cls = t.getAttribute('class') || '';
-                const must = /verdict-text|note-text|prose/.test(cls);
-                let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { return; }
-                // 눈금 같은 짧은 이름표는 밖으로 내보내면 뜻을 잃는다. 액자 안으로 밀어 넣어 본다.
-                if (!must && outside(b) && b.width < W * 0.6 && !t.getAttribute('transform')) {
-                    const x = parseFloat(t.getAttribute('x')), y = parseFloat(t.getAttribute('y'));
-                    if (!Number.isNaN(x)) {
-                        const dx = b.x + b.width > W - 2 ? (W - 2) - (b.x + b.width) : (b.x < 2 ? 2 - b.x : 0);
-                        if (dx) { t.setAttribute('x', (x + dx).toFixed(1)); b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); }
-                    }
-                    if (!Number.isNaN(y)) {
-                        const dy = b.y + b.height > H - 1 ? (H - 1) - (b.y + b.height) : (b.y < 1 ? 1 - b.y : 0);
-                        if (dy) { t.setAttribute('y', (y + dy).toFixed(1)); b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); }
-                    }
-                }
-                if (must || outside(b)) takeOut(t);
-            });
-            const items = [...g.querySelectorAll('text')].map(t => {
-                let b; try { b = window.scienceTextInkBox ? window.scienceTextInkBox(t) : t.getBBox(); } catch (e) { b = null; }
-                return { t, b, len: t.textContent.trim().length };
-            }).filter(o => o.b);
-            const drop = new Set();
-            for (let i = 0; i < items.length; i += 1) for (let j = i + 1; j < items.length; j += 1) {
-                if (drop.has(i) || drop.has(j)) continue;
-                const a = items[i].b, c = items[j].b;
-                if (Math.min(a.x + a.width, c.x + c.width) - Math.max(a.x, c.x) <= 3) continue;
-                if (Math.min(a.y + a.height, c.y + c.height) - Math.max(a.y, c.y) <= 1.5) continue;
-                const k = items[i].len >= items[j].len ? i : j;
-                if (items[k].len < 8) continue;
-                drop.add(k);
-            }
-            [...drop].sort((x, y) => x - y).forEach(k => takeOut(items[k].t));
-        });
-        // A new drawing may contain no lifted prose. Clear the previous
-        // drawing's copy too; takeRecords below already consumes our own edits.
-        if (stageVerdict) stageVerdict.textContent = verdicts.join(' ');
-        stageReadout.textContent = '';
-        rows.forEach(r => {
-            const s = document.createElement('span');
-            s.textContent = r.txt;
-            if (r.fill && readableOnWhite(r.fill)) s.style.color = r.fill;
-            stageReadout.appendChild(s);
-        });
-        if (stageNote) stageNote.textContent = notes.join(' ');
-    }
-
-    // 화면이 다시 그려지면 곧바로 돈다. 옮기는 동안 스스로를 깨우지 않도록 잠근다.
-    let busy = false, obs;
-    // 글자를 옮기는 것도 화면 변경이라 감시기가 다시 불린다. 그때는 기록이 비어 있으므로
-    // 그냥 돌아가야 한다. 그러지 않으면 두 번째 실행이 방금 옮긴 결과를 지운다.
-    const run = recs => {
-        if (busy || (recs && recs.length === 0)) return;
-        busy = true;
-        try { liftProse(); } finally { obs.takeRecords(); busy = false; }
-    };
-    obs = new MutationObserver(run);
-    pairs.forEach(([g]) => obs.observe(g, { childList: true, subtree: true }));
-    run();
-    // The observer sees the app's DOMContentLoaded render; do not run twice.
-})();

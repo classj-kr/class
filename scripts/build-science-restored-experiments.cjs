@@ -55,6 +55,17 @@ stages['video-motion']=require('./science-video-motion-stage.cjs');
 stages['hr-diagram']=require('./science-hr-diagram-stage.cjs');
 stages['kepler-data']=require('./science-kepler-data-stage.cjs');
 stages['star-elements']=require('./science-element-origin-stage.cjs');
+stages['dna-structure']=require('./science-dna-stage.cjs');
+stages['seasonal-sky']=require('./science-seasonal-sky-stage.cjs');
+stages['equilibrium-data']=require('./science-equilibrium-data-stage.cjs');
+stages['minerals-rocks']=require('./science-middle-rocks-stage.cjs');
+stages['plate-tectonics']=require('./science-tectonic-data-stage.cjs');
+stages['argo-observation']=require('./science-argo-stage.cjs');
+stages['satellite-sea-temperature']=require('./science-sst-stage.cjs');
+stages['galactic-objects']=require('./science-galactic-stage.cjs');
+stages['phase-curves']=require('./science-phase-curves-stage.cjs');
+stages['acid-mixing']=require('./science-acid-mixing-stage.cjs');
+stages['iodine-clock']=require('./science-iodine-clock-stage.cjs');
 function output(file,body){const normalized=s=>s.replace(/\r\n/g,'\n').replace(/\?v=[\w.-]+/g,'');const old=fs.existsSync(file)?fs.readFileSync(file,'utf8'):null;if(process.argv.includes('--check'))assert.equal(old===null?null:normalized(old),normalized(body));else if(old===null||normalized(old)!==normalized(body)){fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);}}
 for(const row of rows){
  const school=row.defaultContext||(row.codes.every(c=>c.startsWith('10'))?'high-common':row.codes.every(c=>c.startsWith('12'))?'high-elective':null);

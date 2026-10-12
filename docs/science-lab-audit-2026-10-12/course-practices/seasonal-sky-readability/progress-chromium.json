@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T18:20:27.094Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "seasonal-sky",
+      "scenarios": 55
+    }
+  ],
+  "scenarios": 55,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

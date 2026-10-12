@@ -1,0 +1,399 @@
+{
+  "sources": [
+    {
+      "kind": "earthquakes",
+      "path": "references/geography/tectonics/usgs-m6-1970-2025.csv",
+      "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=1970-01-01&endtime=2025-12-31&minmagnitude=6&orderby=time-asc",
+      "sha256": "948c8a950cee424e8debca11641c9290dafc21e30d6ff8812b3565f5b0f77389"
+    },
+    {
+      "kind": "volcanoes",
+      "path": "references/geography/tectonics/noaa-volcanolocs.json",
+      "url": "https://www.ngdc.noaa.gov/hazel/hazard-service/api/v1/volcanolocs",
+      "sha256": "b49d981366ff8740054931f64c524437d3d15016ea807cdb8fa9fe9a64462c05"
+    },
+    {
+      "kind": "boundaries",
+      "path": "learning/inquiry/globe/data/atlas-plates.json",
+      "url": "https://earthquake.usgs.gov/arcgis/rest/services/eq/map_plateboundaries/MapServer/1",
+      "sha256": "298c7285c04219f8bf5e11bbda0b571e2ce4750c26c04626243506ca3c6d0e03"
+    },
+    {
+      "kind": "land",
+      "path": "learning/inquiry/globe/data/atlas-countries.json",
+      "url": "https://www.naturalearthdata.com/",
+      "sha256": "5313f4c0528b4d97e48bef1641e9f8502c1a1555809e655bf56a582eac27c444"
+    }
+  ],
+  "outputSha256": "1484be60689ca0dff9ef2292062eed85cf51d9043d5f2db6e5c1095a428af12d",
+  "counts": {
+    "rawEvents": 7823,
+    "earthquakes": 6660,
+    "volcanoes": 1609,
+    "boundaries": 1175,
+    "landGeometries": 177
+  },
+  "excludedNonEarthquakes": [
+    {
+      "id": "usp000021x",
+      "type": "nuclear explosion",
+      "time": "1973-06-06T13:00:00.100Z"
+    },
+    {
+      "id": "usp00002tp",
+      "type": "nuclear explosion",
+      "time": "1973-07-23T01:22:57.800Z"
+    },
+    {
+      "id": "usp00003dp",
+      "type": "nuclear explosion",
+      "time": "1973-09-12T06:59:54.300Z"
+    },
+    {
+      "id": "usp00003k1",
+      "type": "nuclear explosion",
+      "time": "1973-09-27T06:59:58.000Z"
+    },
+    {
+      "id": "usp00003ya",
+      "type": "nuclear explosion",
+      "time": "1973-10-27T06:59:57.400Z"
+    },
+    {
+      "id": "usp00004ht",
+      "type": "nuclear explosion",
+      "time": "1973-12-14T07:46:57.000Z"
+    },
+    {
+      "id": "usp00007ug",
+      "type": "nuclear explosion",
+      "time": "1974-08-29T09:59:55.500Z"
+    },
+    {
+      "id": "usp00008n6",
+      "type": "nuclear explosion",
+      "time": "1974-11-02T04:59:56.700Z"
+    },
+    {
+      "id": "usp0000b1a",
+      "type": "nuclear explosion",
+      "time": "1975-05-14T14:00:00.400Z"
+    },
+    {
+      "id": "usp0000bnk",
+      "type": "nuclear explosion",
+      "time": "1975-06-19T13:00:00.100Z"
+    },
+    {
+      "id": "usp0000bss",
+      "type": "nuclear explosion",
+      "time": "1975-06-26T12:30:00.200Z"
+    },
+    {
+      "id": "usp0000cjx",
+      "type": "explosion",
+      "time": "1975-08-23T08:59:57.900Z"
+    },
+    {
+      "id": "usp0000d69",
+      "type": "nuclear explosion",
+      "time": "1975-10-18T08:59:56.300Z"
+    },
+    {
+      "id": "usp0000d7g",
+      "type": "nuclear explosion",
+      "time": "1975-10-21T11:59:57.300Z"
+    },
+    {
+      "id": "usp0000dat",
+      "type": "nuclear explosion",
+      "time": "1975-10-28T14:30:00.200Z"
+    },
+    {
+      "id": "usp0000dnt",
+      "type": "nuclear explosion",
+      "time": "1975-11-20T15:00:00.100Z"
+    },
+    {
+      "id": "usp0000e9f",
+      "type": "nuclear explosion",
+      "time": "1976-01-03T19:15:00.200Z"
+    },
+    {
+      "id": "usp0000f1b",
+      "type": "nuclear explosion",
+      "time": "1976-02-12T14:45:00.200Z"
+    },
+    {
+      "id": "usp0000f1z",
+      "type": "nuclear explosion",
+      "time": "1976-02-14T11:30:00.200Z"
+    },
+    {
+      "id": "usp0000fch",
+      "type": "nuclear explosion",
+      "time": "1976-03-09T14:00:00.100Z"
+    },
+    {
+      "id": "usp0000feq",
+      "type": "nuclear explosion",
+      "time": "1976-03-14T12:30:00.200Z"
+    },
+    {
+      "id": "usp0000fg8",
+      "type": "nuclear explosion",
+      "time": "1976-03-17T14:15:00.100Z"
+    },
+    {
+      "id": "usp0000rqy",
+      "type": "nuclear explosion",
+      "time": "1977-11-24T16:59:58.500Z"
+    },
+    {
+      "id": "usp0000wja",
+      "type": "nuclear explosion",
+      "time": "1978-09-15T02:36:57.300Z"
+    },
+    {
+      "id": "usp0000xnu",
+      "type": "nuclear explosion",
+      "time": "1978-11-29T04:33:02.900Z"
+    },
+    {
+      "id": "usp0000xz3",
+      "type": "nuclear explosion",
+      "time": "1978-12-18T07:59:56.300Z"
+    },
+    {
+      "id": "usp0000yfe",
+      "type": "nuclear explosion",
+      "time": "1979-01-17T07:59:55.700Z"
+    },
+    {
+      "id": "usp00011g5",
+      "type": "nuclear explosion",
+      "time": "1979-06-23T02:56:57.600Z"
+    },
+    {
+      "id": "usp0001226",
+      "type": "nuclear explosion",
+      "time": "1979-07-25T17:56:58.300Z"
+    },
+    {
+      "id": "usp000127h",
+      "type": "nuclear explosion",
+      "time": "1979-08-04T03:56:57.200Z"
+    },
+    {
+      "id": "usp00012ge",
+      "type": "nuclear explosion",
+      "time": "1979-08-18T02:51:57.300Z"
+    },
+    {
+      "id": "usp00013ra",
+      "type": "nuclear explosion",
+      "time": "1979-10-28T03:16:56.900Z"
+    },
+    {
+      "id": "usp00014a5",
+      "type": "nuclear explosion",
+      "time": "1979-12-02T04:36:57.500Z"
+    },
+    {
+      "id": "usp00014nn",
+      "type": "nuclear explosion",
+      "time": "1979-12-23T04:56:57.600Z"
+    },
+    {
+      "id": "usp00019td",
+      "type": "nuclear explosion",
+      "time": "1980-09-14T02:42:39.300Z"
+    },
+    {
+      "id": "usp0001fut",
+      "type": "nuclear explosion",
+      "time": "1981-09-13T02:17:18.250Z"
+    },
+    {
+      "id": "usp0001ghn",
+      "type": "nuclear explosion",
+      "time": "1981-10-18T03:57:02.620Z"
+    },
+    {
+      "id": "usp0001hpj",
+      "type": "nuclear explosion",
+      "time": "1981-12-27T03:43:14.140Z"
+    },
+    {
+      "id": "usp0001kx8",
+      "type": "nuclear explosion",
+      "time": "1982-04-25T03:23:05.420Z"
+    },
+    {
+      "id": "usp0001n8v",
+      "type": "nuclear explosion",
+      "time": "1982-07-04T01:17:14.470Z"
+    },
+    {
+      "id": "usp0001r99",
+      "type": "nuclear explosion",
+      "time": "1982-12-05T03:37:12.650Z"
+    },
+    {
+      "id": "usp0001w19",
+      "type": "nuclear explosion",
+      "time": "1983-06-12T02:36:43.500Z"
+    },
+    {
+      "id": "usp0001yu0",
+      "type": "nuclear explosion",
+      "time": "1983-10-06T01:47:06.560Z"
+    },
+    {
+      "id": "usp0001z9k",
+      "type": "nuclear explosion",
+      "time": "1983-10-26T01:55:04.880Z"
+    },
+    {
+      "id": "usp00024mv",
+      "type": "nuclear explosion",
+      "time": "1984-05-26T03:13:12.470Z"
+    },
+    {
+      "id": "usp00025qv",
+      "type": "nuclear explosion",
+      "time": "1984-07-14T01:09:10.570Z"
+    },
+    {
+      "id": "usp00028j4",
+      "type": "nuclear explosion",
+      "time": "1984-10-27T01:50:10.610Z"
+    },
+    {
+      "id": "usp0002a3e",
+      "type": "nuclear explosion",
+      "time": "1984-12-16T03:55:02.750Z"
+    },
+    {
+      "id": "usp0002aft",
+      "type": "nuclear explosion",
+      "time": "1984-12-28T03:50:10.720Z"
+    },
+    {
+      "id": "usp0002fv4",
+      "type": "nuclear explosion",
+      "time": "1985-06-15T00:57:00.790Z"
+    },
+    {
+      "id": "usp0002g9b",
+      "type": "nuclear explosion",
+      "time": "1985-06-30T02:39:02.790Z"
+    },
+    {
+      "id": "usp00033vd",
+      "type": "nuclear explosion",
+      "time": "1987-04-03T01:17:08.080Z"
+    },
+    {
+      "id": "usp000347p",
+      "type": "nuclear explosion",
+      "time": "1987-04-17T01:03:04.810Z"
+    },
+    {
+      "id": "usp00035hr",
+      "type": "nuclear explosion",
+      "time": "1987-06-05T04:59:58.390Z"
+    },
+    {
+      "id": "usp00035xc",
+      "type": "nuclear explosion",
+      "time": "1987-06-20T00:53:04.830Z"
+    },
+    {
+      "id": "usp0003a4q",
+      "type": "nuclear explosion",
+      "time": "1987-11-15T03:31:06.700Z"
+    },
+    {
+      "id": "usp0003b88",
+      "type": "nuclear explosion",
+      "time": "1987-12-13T03:21:04.890Z"
+    },
+    {
+      "id": "usp0003bkh",
+      "type": "nuclear explosion",
+      "time": "1987-12-27T03:05:04.770Z"
+    },
+    {
+      "id": "usp0003czn",
+      "type": "nuclear explosion",
+      "time": "1988-02-13T03:05:05.980Z"
+    },
+    {
+      "id": "usp0003em3",
+      "type": "nuclear explosion",
+      "time": "1988-04-03T01:33:05.850Z"
+    },
+    {
+      "id": "usp0003fmx",
+      "type": "nuclear explosion",
+      "time": "1988-05-04T00:57:06.830Z"
+    },
+    {
+      "id": "usp0003kyj",
+      "type": "nuclear explosion",
+      "time": "1988-09-14T03:59:57.450Z"
+    },
+    {
+      "id": "usp0003r3e",
+      "type": "nuclear explosion",
+      "time": "1989-01-22T03:57:06.650Z"
+    },
+    {
+      "id": "usp00040yn",
+      "type": "nuclear explosion",
+      "time": "1989-10-19T09:49:57.280Z"
+    },
+    {
+      "id": "usp0004dfg",
+      "type": "nuclear explosion",
+      "time": "1990-08-16T04:59:57.690Z"
+    },
+    {
+      "id": "usp00057t0",
+      "type": "nuclear explosion",
+      "time": "1992-05-21T04:59:57.570Z"
+    },
+    {
+      "id": "usp0006kqc",
+      "type": "nuclear explosion",
+      "time": "1994-10-07T03:25:58.120Z"
+    },
+    {
+      "id": "usp0006xcy",
+      "type": "nuclear explosion",
+      "time": "1995-05-15T04:05:57.830Z"
+    },
+    {
+      "id": "usp00071xv",
+      "type": "nuclear explosion",
+      "time": "1995-08-17T00:59:57.730Z"
+    },
+    {
+      "id": "us2000aert",
+      "type": "nuclear explosion",
+      "time": "2017-09-03T03:30:01.760Z"
+    }
+  ],
+  "transformations": [
+    "Only type=earthquake; exclude explosions and nuclear explosions.",
+    "Preserve original coordinates, magnitude, magnitude type, depth, timestamp and event ID. Select 1980–2025 and magnitude >=6.",
+    "Volcano locations include Holocene and Pleistocene entries. Never filter these points by earthquake year or present them as dated eruptions.",
+    "Land is contextual geometry only. No population values or country labels are used."
+  ],
+  "boundary": "Historical catalog snapshot, not real-time monitoring, completeness certification, a forecast, or a hazard/risk map.",
+  "methodSources": [
+    "https://earthquake.usgs.gov/fdsnws/event/1/",
+    "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.hazards%3AG02135%3Bview%3Diso"
+  ]
+}

@@ -1,0 +1,13 @@
+✔ reflex pathways preserve afferent input, central processing and efferent output as separate functions (100.4282ms)
+chromium: 168 screen states; afferent/efferent blocks; real signal and leg motion; 12 distinct first-error explanations retained
+✔ chromium: four reactions, signal blocks, real motion, accessible controls and all first errors (19320.0456ms)
+webkit: 168 screen states; afferent/efferent blocks; real signal and leg motion; 12 distinct first-error explanations retained
+✔ webkit: four reactions, signal blocks, real motion, accessible controls and all first errors (34700.2634ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54249.9136

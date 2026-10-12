@@ -1,0 +1,13 @@
+{
+  "engine": "webkit",
+  "viewport": [
+    768,
+    1024
+  ],
+  "scope": "Visible HTML text, including disabled instructions and completed controls, in initial experiment state and opened/graded questions, plus completed rock/fossil, tuning-fork and concentration/pressure/temperature equilibrium comparisons. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.",
+  "routes": 7,
+  "checked": 4510,
+  "gradientSkipped": 37,
+  "errors": [],
+  "flagged": []
+}

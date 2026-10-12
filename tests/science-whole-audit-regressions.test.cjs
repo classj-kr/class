@@ -5,12 +5,12 @@ const {synchronize}=require('../scripts/sync-science-assets.cjs');
 const screenshotWebp=require('./science-screenshot.cjs');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab');
 test('all science entry pages and dynamic resources carry their current content hash',()=>assert.deepEqual(synchronize(root,false),[]));
-test('all ten optical diagrams satisfy imaging equations and ray intersections',()=>{
- for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','far']){
+test('all fifteen optical diagrams satisfy imaging equations and ray intersections',()=>{
+ for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','middle','far']){
   const a=optics(optic,distance),mirror=!optic.endsWith('Lens'),converging=['concaveMirror','convexLens'].includes(optic);
   if(optic==='plane'){assert.equal(a.v,-a.u);assert.equal(a.m,1);}else assert(Math.abs(1/a.u+1/a.v-1/(converging?60:-60))<1e-10);
   assert.equal(a.m>0,!converging||distance==='near');
-  assert.equal(Math.abs(a.m)>1,converging&&distance==='near');
+  assert.equal(Math.abs(a.m)>1,converging&&distance!=='far');
   const x=230+(mirror?-a.v:a.v),y=165-a.m*35;
   const rays=[...a.svg.matchAll(/<line data-ray="light" x1="([^"]+)" y1="([^"]+)" x2="([^"]+)" y2="([^"]+)"/g)].slice(2);
   assert.equal(rays.length,2);for(const ray of rays){const [x1,y1,x2,y2]=ray.slice(1).map(Number);assert(Math.abs(y1+(y2-y1)*(x-x1)/(x2-x1)-y)<1e-8);}
@@ -39,7 +39,7 @@ for(const engine of ['chromium','webkit'])test(engine+': corrected observations,
   assert.match(await page.locator('#stageCaption').textContent(),/공기/);const first=await page.locator('#stageCaption').textContent();
   await page.evaluate(()=>__rayModel.setDir('in'));assert.notEqual(await page.locator('#stageCaption').textContent(),first);
   await page.evaluate(()=>__rayModel.setAngle(0));assert.match(await page.locator('#stageCaption').textContent(),/꺾이지|방향/);
-  for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','far']){
+  for(const optic of ['plane','convexMirror','concaveMirror','convexLens','concaveLens'])for(const distance of ['near','middle','far']){
    await choice('optic',optic);await choice('distance',distance);assert.equal(await page.locator('[data-optics-part="device"]').count(),1);assert.equal(await page.locator('[data-optics-part="object"]').count(),1);assert.equal(await page.locator('[data-optics-part="image"]').count(),1);
    for(const width of [390,768,1024]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);assert(await page.locator('.supplement-observation').isVisible());}await shot('optics-'+optic+'-'+distance);
   }

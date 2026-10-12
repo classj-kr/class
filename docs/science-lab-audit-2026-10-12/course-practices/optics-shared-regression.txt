@@ -1,0 +1,14 @@
+✔ all science entry pages and dynamic resources carry their current content hash (259.7064ms)
+✔ all fifteen optical diagrams satisfy imaging equations and ray intersections (0.7657ms)
+✔ a changed child invalidates its dynamic loader and HTML entry; rerun is stable (4.0243ms)
+✔ chromium: corrected observations, charge conservation and complete electrical apparatus (11512.8063ms)
+✔ webkit: corrected observations, charge conservation and complete electrical apparatus (16995.7707ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28882.3116
+

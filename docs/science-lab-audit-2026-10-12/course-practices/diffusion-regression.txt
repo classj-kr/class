@@ -1,0 +1,14 @@
+✔ diffusion conserves dye, smooths concentration without directed drift, and separates colour change from particle motion (495.5459ms)
+chromium: 96 screen states; colour order and water control; motion before/after mixing, pause and reduced motion; 12 distinct first-error explanations retained
+✔ chromium: ink and BTB, real animation, touch/keyboard, all first errors (14909.8017ms)
+webkit: 96 screen states; colour order and water control; motion before/after mixing, pause and reduced motion; 12 distinct first-error explanations retained
+✔ webkit: ink and BTB, real animation, touch/keyboard, all first errors (28997.9281ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44502.6972
+

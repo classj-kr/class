@@ -1,0 +1,173 @@
+{
+  "files": [
+    {
+      "id": "81ce1d0e81902b80",
+      "path": "references/textbooks/중고등/T셀파/중학/과학/과학1(임성숙)/교과서_과학1__534d97f622.pdf",
+      "sha256": "81ce1d0e81902b806a7f9bf8c2c99d17249e4f1c5e326cce0f8746afe315310f"
+    },
+    {
+      "id": "3630e303237d192e",
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1 (김태일)_2022/미래엔_과학1_교사용교과서__5dc10b5933.pdf",
+      "sha256": "3630e303237d192e89d335e62eb7d7308719ae9a73e4a23358dbb6b9b32ab706"
+    },
+    {
+      "id": "35761c2651ee0156",
+      "path": "references/textbooks/중고등/미래엔/중학/과학/과학1 (김태일)_2022/미래엔_과학1_교과서__ad9173d70a.pdf",
+      "sha256": "35761c2651ee0156db672b9d49fb95fc9843a8a7e5a9d038cfbddeed5b2473c2"
+    },
+    {
+      "id": "33598fd33915c169",
+      "path": "references/textbooks/중고등/T셀파/중학/과학/과학1(정대홍)/교과서PDF__4b35510d8b.pdf",
+      "sha256": "33598fd33915c169abf4f50ade6f27879b71ab5f7e57418e1156c491af0095f3"
+    },
+    {
+      "id": "dfe2ad8ba5fcf4e5",
+      "path": "references/textbooks/중고등/두클래스/중등/과학/과학 1 (김호련)_2022/교과서/Ⅳ. 교과서 PDF.pdf",
+      "sha256": "dfe2ad8ba5fcf4e58ba73555498cf2a3a1006455bdbe536e63d3320194058d6b"
+    }
+  ],
+  "recordedSeries": [
+    {
+      "id": "boil",
+      "sourceId": "81ce1d0e81902b80",
+      "page": 132,
+      "values": [
+        13.3,
+        14.1,
+        16.5,
+        25.4,
+        32.9,
+        41.3,
+        54.2,
+        68.8,
+        85.4,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "plateau": [
+        9,
+        13
+      ],
+      "kind": "student textbook supplied observation table"
+    },
+    {
+      "id": "melt",
+      "sourceId": "3630e303237d192e",
+      "page": 136,
+      "values": [
+        -2.8,
+        -1.8,
+        -1,
+        -0.5,
+        -0.1,
+        0,
+        0,
+        0,
+        0,
+        0.2
+      ],
+      "plateau": [
+        5,
+        8
+      ],
+      "kind": "teacher example table, not a user measurement"
+    },
+    {
+      "id": "boil2",
+      "sourceId": "3630e303237d192e",
+      "page": 137,
+      "values": [
+        32.3,
+        40.9,
+        48.2,
+        56.4,
+        64.9,
+        77.1,
+        82,
+        88.2,
+        100,
+        100
+      ],
+      "plateau": [
+        8,
+        9
+      ],
+      "kind": "teacher example table; graph continuation beyond the table is not imported"
+    }
+  ],
+  "model": {
+    "equation": "Qdot = conductance * (T - bath); before and after phase change: exponential temperature approach; during freezing: T=0 and Q=m*Lf*frozenFraction",
+    "constants": {
+      "mass": 0.01,
+      "waterHeat": 4180,
+      "iceHeat": 2100,
+      "fusion": 334000,
+      "conductance": 0.3,
+      "initial": 20
+    },
+    "baths": [
+      -15,
+      0
+    ],
+    "source": "Authored ideal heat-transfer model, not recorded data. All source cooling tables are blank."
+  },
+  "reviewedVisualPages": [
+    "81ce1d0e81902b80-132",
+    "3630e303237d192e-136",
+    "3630e303237d192e-137",
+    "3630e303237d192e-140",
+    "3630e303237d192e-150",
+    "33598fd33915c169-136",
+    "33598fd33915c169-137",
+    "33598fd33915c169-140",
+    "33598fd33915c169-141",
+    "dfe2ad8ba5fcf4e5-21",
+    "dfe2ad8ba5fcf4e5-22"
+  ],
+  "independentTableExtraction": {
+    "file": "extracted-tables.json",
+    "sha256": "7665d611a4705070aa478a656405cb05e422b449843da7240930fdad585430ab",
+    "method": "Read numeric glyphs in the visually confirmed table rows from original PDFs; group joined 100.0 strings by table-cell character coordinates. All 34 values match the app."
+  },
+  "lauric": {
+    "originalTextbook": {
+      "id": "dfe2ad8ba5fcf4e5",
+      "pages": [
+        21,
+        22
+      ],
+      "procedure": "About70°C water bath melts the sample, then remove the tube, mount sensor and acquire at least20min; continue3min after complete solidification. No numeric measurements supplied."
+    },
+    "constants": {
+      "mass": 0.012,
+      "liquidHeat": 2200,
+      "solidHeat": 2020,
+      "fusion": 181000,
+      "conductance": 0.1,
+      "initial": 70,
+      "transition": 43.8
+    },
+    "sources": [
+      {
+        "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C143077&Mask=E8F",
+        "values": {
+          "transitionKelvin": 316.98,
+          "fusionKJPerMol": 36.295,
+          "molarMassGramPerMol": 200.3178,
+          "solidCpJPerMolK": 404.28
+        },
+        "reference": "Schaake, van Miltenburg, et al., 1982; NIST SRD69 table as read2026-10-13. Round conversion to43.8°C,181000J/kg and2020J/(kgK)."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5832651/fullTextXML",
+        "file": "lauric-primary.xml",
+        "sha256": "432f9d371844ac23e62cb2dad8cf7894312965f351620357b67676e5ea7f69cf",
+        "part": "Data in Brief2018, Table1:43.6°C,176J/g; near-transition liquid molar Cp polynomial. Inferred representative liquid specific heat near2190J/(kgK), simplified to2200. The reported polynomial is not extrapolated outside its near-transition range."
+      }
+    ],
+    "scope": "Authored constant-property cooling model; mass12g, conductance0.1W/K and ambient20°C are scenario assumptions, not source measurements. In70°C bath the equilibrated70°C liquid remains liquid. At20°C it freezes near43.8°C. Water and lauric acid are variants of one cooling-curve procedure."
+  }
+}
