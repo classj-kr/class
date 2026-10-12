@@ -18,7 +18,7 @@ const ROOT = path.join(__dirname, '..');
 const APP = process.env.MATH_BANK_DIR || path.join(ROOT, 'learning/literacy-numeracy/math-bank');
 const context = { console }; context.globalThis = context;
 vm.createContext(context);
-for (const file of ['engine.js', 'geometry.js', ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) {
+for (const file of [...['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(APP, f))), ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) {
   vm.runInContext(fs.readFileSync(path.join(APP, file), 'utf8'), context, { filename: file });
 }
 const B = context.MathBank;

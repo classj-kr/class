@@ -198,7 +198,7 @@
   const setSign = (button, sign) => { button.dataset.sign = sign; button.textContent = sign; button.setAttribute('aria-label', '부호 바꾸기(지금 ' + sign + ')'); };
   // 음수는 빼기표(−)로 적는다.
   const signedText = (n) => (n < 0 ? '−' + Math.abs(n) : String(n));
-  const answerText = (item, shown) => (item.choice
+  const answerText = (item, shown) => (item.shown ? (shown ? item.shown : plainText(item.shown)) : item.choice
     ? (shown ? shownText : plainText)(item.choice.options[item.choice.answer])
     : item.fraction ? (item.negative ? '−' : '') + (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
     : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + signedText(input.answer) + (input.unit ? (/^([A-Za-z%:]|°C)/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))

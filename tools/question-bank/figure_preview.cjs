@@ -5,7 +5,7 @@ const fs = require('fs'), path = require('path'), vm = require('vm');
 const { chromium } = require('../../game-hub-server/node_modules/playwright');
 const dir = process.env.MATH_BANK_DIR || path.join(__dirname, '../../learning/literacy-numeracy/math-bank');
 const c = { console }; c.globalThis = c; vm.createContext(c);
-for (const f of ['engine.js', 'geometry.js']) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), c, { filename: f });
+for (const f of ['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(dir, f)))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), c, { filename: f });
 const figures = require(path.resolve(process.argv[2]))(c.MathBank);
 const css = fs.readFileSync(path.join(dir, 'styles.css'), 'utf8');
 const html = '<!doctype html><meta charset="utf-8"><style>' + css + ' body{margin:0;padding:12px;background:#f1f5f9} .card{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;width:300px} h4{margin:0 0 8px;font:600 13px sans-serif;color:#1d4ed8}</style>'

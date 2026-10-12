@@ -2,7 +2,7 @@
 const fs = require('fs'), vm = require('vm'), path = require('path');
 const dir = process.env.MATH_BANK_DIR || path.join(__dirname, '../../learning/literacy-numeracy/math-bank');
 const c = { console }; c.globalThis = c; vm.createContext(c);
-for (const f of ['engine.js', 'geometry.js'].concat(fs.readdirSync(path.join(dir, 'units')).sort().map((f) => 'units/' + f))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), c, { filename: f });
+for (const f of ['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(dir, f))).concat(fs.readdirSync(path.join(dir, 'units')).sort().map((f) => 'units/' + f))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), c, { filename: f });
 const B = c.MathBank, strip = (html) => String(html || '').replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
 for (const unit of B.units()) {
   if (unit.id !== process.argv[2]) continue;

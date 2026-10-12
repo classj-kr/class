@@ -2,7 +2,7 @@
 const path = require('path'), fs = require('fs'), vm = require('vm');
 const dir = process.env.MATH_BANK_DIR || path.join(__dirname, '../../learning/literacy-numeracy/math-bank');
 const ctx = { console }; ctx.globalThis = ctx; vm.createContext(ctx);
-for (const f of ['engine.js', 'geometry.js'].concat(fs.readdirSync(path.join(dir, 'units')).sort().map((f) => 'units/' + f))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), ctx, { filename: f });
+for (const f of ['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(dir, f))).concat(fs.readdirSync(path.join(dir, 'units')).sort().map((f) => 'units/' + f))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), ctx, { filename: f });
 const B = ctx.MathBank, want = process.argv[2];
 const seeds = Array.from({ length: 60 }, (_, i) => i * 7919 + 13);
 for (const unit of B.units()) {
