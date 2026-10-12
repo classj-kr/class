@@ -2,7 +2,7 @@
 const fs = require('fs'), vm = require('vm'), path = require('path');
 const dir = process.env.MATH_BANK_DIR || path.join(__dirname, '../../learning/literacy-numeracy/math-bank');
 const c = { console }; c.globalThis = c; vm.createContext(c);
-for (const f of ['engine.js', 'geometry.js'].concat(fs.readdirSync(path.join(dir, 'units')).sort().map((f) => 'units/' + f))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), c, { filename: f });
+for (const f of ['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(dir, f))).concat(fs.readdirSync(path.join(dir, 'units')).sort().map((f) => 'units/' + f))) vm.runInContext(fs.readFileSync(path.join(dir, f), 'utf8'), c, { filename: f });
 const B = c.MathBank, want = process.argv[2], prefix = process.argv[3] || '';
 const flat = (h) => String(h || '').replace(/<span class="mb-box">([^<]*)<\/span>/g, '[$1]').replace(/<span class="mb-frac"><span>((?:[^<]|\[[^\]]*\])*)<\/span><span class="mb-frac-bar">\/<\/span><span>([^<]*)<\/span><\/span>/g, '($1/$2)').replace(/aria-label="([^"]*)"/g, '>{$1}<').replace(/<[^>]+>/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/\s+/g, ' ').trim();
 for (const u of B.units()) {

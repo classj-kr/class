@@ -497,7 +497,8 @@
   // 부호가 있는 답(중학교): o.signed: true 면 답 칸 앞에 부호 단추(+/−)가 붙고 answer 는 음수일 수 있다. M 은 칸마다 { signed: true } 를 적는다.
   // 분수 답은 o.signed: true 로 부호 단추를 붙이고, 음수이면 o.negative: true 를 적는다(분자·분모·자연수 칸의 수는 늘 양수로 적는다).
   const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, signed: Boolean(o.signed) }], explain: o.explain || '', facts: o.facts || {} });
-  const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, explain: o.explain || '', facts: o.facts || {} });
+  // o.shown: 틀렸을 때 답 줄에 보일 글(답이 식일 때 「3x − 2」처럼 식 그대로 보인다). 주지 않으면 칸마다의 답을 쉼표로 이어 보인다.
+  const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, shown: o.shown || '', explain: o.explain || '', facts: o.facts || {} });
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
   // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다. 답은 더 줄일 수 없는 분수(기약분수)로 적는다.
   // o.whole 을 주면 대분수(자연수 칸 + 분자·분모 칸), o.improper: true 면 가분수(분자가 분모보다 크다), o.unit 은 분수 뒤에 적는 단위.

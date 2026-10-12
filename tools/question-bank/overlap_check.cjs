@@ -13,7 +13,7 @@ if (!corpusDir || !fs.existsSync(corpusDir)) { console.error('수집본 txt 폴�
 
 const APP = path.join(__dirname, '../../learning/literacy-numeracy/math-bank');
 const context = { console }; context.globalThis = context; vm.createContext(context);
-for (const file of ['engine.js', 'geometry.js', ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) vm.runInContext(fs.readFileSync(path.join(APP, file), 'utf8'), context);
+for (const file of [...['engine.js', 'geometry.js', 'middle.js'].filter((f) => fs.existsSync(path.join(APP, f))), ...fs.readdirSync(path.join(APP, 'units')).filter((f) => f.endsWith('.js')).sort().map((f) => 'units/' + f)]) vm.runInContext(fs.readFileSync(path.join(APP, file), 'utf8'), context);
 const B = context.MathBank;
 
 const NAMES = new RegExp(B.kit.NAMES.join('|'), 'g');
