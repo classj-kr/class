@@ -24,7 +24,7 @@ from dump_problems import clean, cut_at  # noqa: E402
 ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 SRC = os.path.join(ROOT, 'references', 'textbooks', '중고등')
 OUT = os.path.join(ROOT, 'references', 'textbooks', '수학', '_분석')
-PART = 150000  # 기본 덩이 하나의 크기(바이트쯤)
+PART = 120000  # 기본 덩이 하나의 크기(바이트쯤)
 
 # 단원: [(교과서, 파일 이름 정규식, 수준)] — 수준은 'basic' | 'hard'. 위에서부터 먼저 맞는 줄을 쓴다.
 def grade7(dong, pages, hwa, mirae, bank, old=None):

@@ -281,6 +281,12 @@
     return M(text, [{ answer: a, signed: true, unit: name }, { answer: b, signed: true }], Object.assign({}, o, { shown: lin(a, b, name) }));
   }
 
+  // 답이 점의 좌표인 문항: 「( [±][ ] , [±][ ] )」 두 칸으로 받고, 틀리면 (−3, 2) 꼴로 보인다. x, y 는 정수.
+  function pointAns(text, x, y, o) {
+    if (!Number.isInteger(x) || !Number.isInteger(y)) throw new Error('좌표 답은 정수여야 한다');
+    return M(text, [{ answer: x, signed: true, lead: '(' }, { answer: y, signed: true, lead: ',', unit: ')' }], Object.assign({}, o, { shown: `(${signedText(x)}, ${signedText(y)})` }));
+  }
+
   // ── 좌표평면 ──
   const ITALIC = "font-style:italic;font-family:'MB Math','Times New Roman',serif";
   const num = (v) => (typeof v === 'number' ? v : fl(v));
@@ -397,6 +403,6 @@
     jsx, hasP, S, isPow, step, trace, chainOf, flatNums, intsOnly, biggest, emOf, FIT, fit, ex, show, tag, tagged, taggedEx, proc, flow, f1, nline, nz, pm,
     co, fr, distinct, okKind, ansV, valueFacts, CALC, calcQ, pickEx, SAME_ADD, DIFF_ADD, TO_ADD, SAME_MUL, DIFF_MUL, SAME_DIV, DIFF_DIV, BY_RECIP, rawMag,
     uniq, addTold, subTold, mulTold, divTold, commonTold, un, sv, claimQ,
-    asQ, mono, poly, lin, linAns, whereOnPlane, plane, graph
+    asQ, mono, poly, lin, linAns, pointAns, whereOnPlane, plane, graph
   };
 })(typeof window !== 'undefined' ? window : globalThis);
