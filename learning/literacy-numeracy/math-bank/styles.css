@@ -151,6 +151,20 @@ body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Ro
 .mb-sign[data-sign="−"] { border-color: var(--brand); color: var(--brand); }
 .mb-sign:disabled { cursor: default; opacity: .75; }
 .mb-field.is-wide input { width: 11.5em; max-width: 100%; }
+/* 식 속에 끼워 넣는 답 칸(중학교): 「[±][ ] x [±][ ]」, 「x [부등호] [ ]」, 지수 칸은 위로 올린다. */
+.mb-tpl { font-size: 1.25rem; line-height: 2.75; }
+.mb-tpl .mb-field { gap: 4px; margin: 0 2px; vertical-align: middle; line-height: 1.2; }
+.mb-tpl .mb-field input { width: 3.3em; padding: 6px 4px; }
+.mb-tpl sup.mb-tpl-up { font-size: 1em; line-height: 1; vertical-align: 1em; margin-left: -1px; }
+.mb-tpl sup.mb-tpl-up .mb-field input { width: 2.5em; min-height: 36px; padding: 2px; font-size: 1rem; border-radius: 8px; }
+.mb-rel { min-width: 58px; min-height: 44px; padding: 0 4px; border: 2px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font-family: "MB Rel", "Times New Roman", serif; font-size: 1.3rem; font-weight: 700; text-align: center; text-align-last: center; cursor: pointer; }
+.mb-rel:focus { outline: none; border-color: var(--brand); }
+.mb-rel:disabled { cursor: default; opacity: 1; color: var(--ink); }
+/* 순환마디의 점: 숫자 위 한가운데에 찍는다(글줄 높이는 그대로). 연립방정식: 왼쪽 중괄호와 위아래로 놓은 식. */
+.mb-rdot { position: relative; display: inline-block; padding-top: 0.3em; line-height: 1.12; }
+.mb-rdot::before { content: ""; position: absolute; left: 50%; top: 0.12em; width: 0.17em; height: 0.17em; margin-left: -0.085em; border-radius: 50%; background: currentColor; }
+.mb-sys { display: inline-flex; align-items: stretch; gap: 0.3em; vertical-align: middle; margin: 2px 0.15em; }
+.mb-sys-rows { display: inline-flex; flex-direction: column; justify-content: center; gap: 0.1em; text-align: left; white-space: nowrap; line-height: 1.5; }
 .mb-choices { display: flex; flex-wrap: wrap; gap: 8px; }
 .mb-choice { min-height: 44px; min-width: 56px; padding: 6px 16px; border-radius: 10px; border: 2px solid var(--brand); background: var(--paper); color: var(--brand-dark); font-weight: 600; cursor: pointer; font-size: 1.1rem; }
 .mb-choices.is-long { flex-direction: column; align-items: stretch; }
