@@ -1154,14 +1154,23 @@
     const caption = $("#questionMapCaption");
     caption.classList.remove("is-hint");
     renderAnswerOptions(question);
-    const hasMap = question.showMap !== false;
+    const visualKind = window.KoreaExamFigures.visualKind(question);
+    $(".question-body").classList.toggle("with-graph", visualKind === 'graph');
+    const hasMap = visualKind !== 'none';
     $(".question-map-wrap").hidden = !hasMap;
     $(".question-body").classList.toggle("without-map", !hasMap);
     if (!hasMap) return;
 
     const diagram = dataset.lessons.find(l => l.id === question.diagram);
-    $("#questionDiagram").hidden = !diagram;
-    $(".question-map-wrap").classList.toggle("has-diagram", !!diagram);
+    $("#questionDiagram").hidden = !diagram && !question.figure;
+    $(".question-map-wrap").classList.toggle("has-diagram", !!diagram || !!question.figure);
+    if (question.figure) {
+      $("#questionMap").hidden = true;
+      $("#questionGraph").hidden = true;
+      window.KoreaExamFigures.render($("#questionDiagram"), question.figure);
+      caption.textContent = question.mapCaption || '';
+      return;
+    }
     if (diagram) {
       $("#questionMap").hidden = true;
       $("#questionGraph").hidden = true;
@@ -1397,7 +1406,8 @@
   }
 
   function showAnswerLocation(question) {
-    if (question.showMap === false) return;
+    if (window.KoreaExamFigures.visualKind(question) === 'none') return;
+    if (question.figure) return;
     if (question.diagram) {
       window.KoreaVisuals.render($("#questionDiagram"), dataset.lessons.find(l=>l.id===question.diagram), { quiz:true, revealed:true, evidence:question.explanation, area:question.evidenceArea });
       $("#questionMapCaption").textContent = "개념 이름과 정답 근거를 같은 그림에서 확인하세요.";

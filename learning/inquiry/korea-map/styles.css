@@ -328,6 +328,16 @@ dialog::backdrop { background: rgba(9, 30, 36, 0.68); backdrop-filter: blur(3px)
 .question-graph { min-height: 0; display: grid; gap: 6px; align-content: start; padding: 8px; background: #fffdf7; overflow-y: auto; }
 .question-graph[hidden] { display: none; }
 .question-graph svg { display: block; width: 100%; height: auto; }
+.question-body.with-graph { grid-template-columns: 1fr; overflow-y: auto; }
+.with-graph .question-map-wrap { grid-row: 1; min-height: 0; border-left: 0; }
+.with-graph .question-graph { grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; gap: 12px; padding: 8px 24px; }
+.with-graph .question-graph svg { height: min(270px, 38dvh); }
+.with-graph .question-graph svg text[font-size="10"] { font-size: 12px; }
+.with-graph .question-copy { overflow: visible; padding-block: 12px; }
+.with-graph .answer-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.exam-figure { margin: 0; padding: 14px; color: #243f46; background: #fffdf7; }
+.exam-figure svg { display: block; width: 100%; height: auto; font: 16px sans-serif; }
+.exam-figure figcaption { margin-top: 12px; font-size: 14px; line-height: 1.7; }
 .question-map-caption { padding: 8px 12px; color: #405e65; background: #eef5f3; font-size: 12px; font-weight: 750; text-align: center; line-height: 1.4; }
 .question-map-caption.is-hint { color: #83500e; background: #fbf1da; }
 .question-map-caption:empty { display: none; }
@@ -392,6 +402,10 @@ button:focus-visible, a:focus-visible, select:focus-visible, summary:focus-visib
   .question-map-wrap { min-height: 240px; grid-template-rows: 220px auto; border-bottom: 1px solid var(--line); border-left: 0; }
   #questionMap { min-height: 220px; }
   .question-graph { max-height: 300px; }
+  .with-graph .question-map-wrap { grid-template-rows: auto auto; flex-shrink: 0; }
+  .with-graph .question-graph { grid-template-columns: 1fr; max-height: none; padding-inline: 8px; }
+  .with-graph .question-graph svg { height: auto; }
+  .with-graph .answer-options { grid-template-columns: 1fr; }
   .question-copy { max-height: none; overflow: visible; padding: 16px; }
   .answer-feedback { margin-inline: 16px; }
 }

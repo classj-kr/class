@@ -26,8 +26,8 @@
     for (let r = 0; r <= rMax; r += rMax / 3) {
       parts.push(`<text x="${left + plotW + 6}" y="${yR(r) + 4}" font-size="10" fill="#2f6fb3">${Math.round(r)}</text>`);
     }
-    parts.push(`<text x="${left - 4}" y="${top - 12}" text-anchor="end" font-size="10" fill="#c0392b">기온(℃)</text>`);
-    parts.push(`<text x="${left + plotW + 4}" y="${top - 12}" font-size="10" fill="#2f6fb3">강수량(mm)</text>`);
+    parts.push(`<text x="8" y="${top - 12}" font-size="10" fill="#c0392b">기온(℃)</text>`);
+    parts.push(`<text x="${width - 8}" y="${top - 12}" text-anchor="end" font-size="10" fill="#2f6fb3">강수량(mm)</text>`);
     station.rain.forEach((r, i) => {
       const h = Math.max(0, top + plotH - yR(Math.min(r, rMax)));
       parts.push(`<rect x="${x(i) - barW / 2}" y="${top + plotH - h}" width="${barW}" height="${h}" fill="#4f8fe8" opacity=".85"/>`);

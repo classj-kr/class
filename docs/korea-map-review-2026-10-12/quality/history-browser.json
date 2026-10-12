@@ -1,0 +1,142 @@
+[
+  {
+    "id": "history-gojoseon-distribution-high-01",
+    "points": 3,
+    "materials": 1,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-gojoseon-distribution-high-02",
+    "points": 3,
+    "materials": 2,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-early-states-high-01",
+    "points": 4,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-early-states-high-02",
+    "points": 4,
+    "materials": 2,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-goguryeo-fifth-high-01",
+    "points": 4,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-goguryeo-fifth-high-02",
+    "points": 3,
+    "materials": 2,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-unification-high-01",
+    "points": 4,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-unification-high-02",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-balhae-high-01",
+    "points": 4,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-balhae-high-02",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-silla-trade-high-01",
+    "points": 4,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-silla-trade-high-02",
+    "points": 4,
+    "materials": 2,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-sambyeolcho-high-01",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-sambyeolcho-high-02",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-march-first-high-01",
+    "points": 3,
+    "materials": 2,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-march-first-high-02",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-bongo-cheongsan-high-01",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-bongo-cheongsan-high-02",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-patriotic-corps-high-01",
+    "points": 3,
+    "materials": 0,
+    "retry": true,
+    "correct": true
+  },
+  {
+    "id": "history-patriotic-corps-high-02",
+    "points": 3,
+    "materials": 2,
+    "retry": true,
+    "correct": true
+  }
+]
