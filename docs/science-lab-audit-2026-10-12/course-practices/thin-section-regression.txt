@@ -1,0 +1,2 @@
+✔ same field size, distinct textures, fixed grains and crossed-polar rotation (25.5434ms)
+✖ chromium: microscope procedure, slow rotation, photo classification and retained misconceptions (12750.0527ms)
