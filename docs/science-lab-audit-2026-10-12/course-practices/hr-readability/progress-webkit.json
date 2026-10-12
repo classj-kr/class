@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T17:17:38.208Z",
+  "engine": "webkit",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "hr-diagram",
+      "scenarios": 45
+    }
+  ],
+  "scenarios": 45,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

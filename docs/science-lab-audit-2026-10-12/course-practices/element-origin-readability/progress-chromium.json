@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T17:47:53.661Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "star-elements",
+      "scenarios": 75
+    }
+  ],
+  "scenarios": 75,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

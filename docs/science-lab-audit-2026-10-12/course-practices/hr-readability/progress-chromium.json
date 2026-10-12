@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-12T17:17:31.487Z",
+  "engine": "chromium",
+  "catalog": false,
+  "complete": true,
+  "completedRoutes": [
+    {
+      "slug": "hr-diagram",
+      "scenarios": 45
+    }
+  ],
+  "scenarios": 45,
+  "issues": [],
+  "errors": [],
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR"
+  ]
+}

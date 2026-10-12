@@ -36,19 +36,20 @@
   state.seen[state.sample][state.crossed?'xpl':'ppl']=true;
   status(M.specimens[state.sample].name+'의 '+(state.crossed?'직교':'개방')+' 니콜 조직을 확인했습니다. '+(state.sample==='basalt'?'작은 입자들이 촘촘하게 모여 있습니다.':'큰 입자들이 서로 맞물려 있습니다.'));progress();
  }
- const assets='../assets/thin-sections/';
+ const assets='../assets/thin-sections/',storageKey='science-thin-section-classification-v1';
  function scaleMarkup(p){return '<span class="ts-image-scale" style="width:'+p.scaleFraction*100+'%"><i></i><b>'+p.scaleMM+' mm</b></span>';}
  function buildPhotos(){
   $('tsPhotoGrid').innerHTML=M.photos.map(p=>'<figure class="ts-photo-card"><div class="ts-photo-frame"><img src="'+assets+p.file+'" alt="박편 '+p.label+' 관찰 사진">'+scaleMarkup(p)+'</div><figcaption><strong>박편 '+p.label+'</strong><button data-ts-photo="'+p.id+'">확대 보기</button></figcaption><label for="tsClass-'+p.id+'">관찰한 조직<select id="tsClass-'+p.id+'" data-ts-class="'+p.id+'"><option value="">고르기</option>'+['세립질 조직','조립질 조직','반상 조직','유리질 조직'].map(t=>'<option>'+t+'</option>').join('')+'</select></label><p class="ts-photo-feedback" id="tsFeedback-'+p.id+'"></p></figure>').join('');
  }
  function photoTransform(){
-  const b=$('tsPhotoViewer').getBoundingClientRect(),maxX=b.width*(zoom-1)/2,maxY=b.height*(zoom-1)/2;pan.x=Math.max(-maxX,Math.min(maxX,pan.x));pan.y=Math.max(-maxY,Math.min(maxY,pan.y));$('tsPhotoSurface').style.transform='translate('+pan.x+'px,'+pan.y+'px) scale('+zoom+')';$('tsPhotoSurface').style.setProperty('--zoom',zoom);$('tsPhotoViewer').dataset.zoomed=String(zoom>1);$('tsPhotoZoomValue').textContent=zoom.toFixed(1)+'배';
+  const b=$('tsPhotoViewer').getBoundingClientRect(),maxX=b.width*(zoom-1)/2,maxY=b.height*(zoom-1)/2;pan.x=Math.max(-maxX,Math.min(maxX,pan.x));pan.y=Math.max(-maxY,Math.min(maxY,pan.y));$('tsPhotoSurface').style.transform='translate('+pan.x+'px,'+pan.y+'px) scale('+zoom+')';$('tsPhotoScale').style.width=(M.photos.find(p=>p.id===photo).scaleFraction*100*zoom)+'%';$('tsPhotoViewer').dataset.zoomed=String(zoom>1);$('tsPhotoZoomValue').textContent=zoom.toFixed(1)+'배';
  }
  function showPhoto(id){photo=id;zoom=1;pan={x:0,y:0};$('tsPhotoZoom').value=1;const p=M.photos.find(p=>p.id===id);$('tsPhotoDetail').hidden=false;$('tsPhotoTitle').textContent='박편 '+p.label+' 자세히 보기';$('tsPhotoImage').src=assets+p.file;$('tsPhotoImage').alt='박편 '+p.label+' 확대 사진';$('tsPhotoScale').style.width=p.scaleFraction*100+'%';$('tsPhotoScale').querySelector('b').textContent=p.scaleMM+' mm';photoTransform();$('tsPhotoDetail').scrollIntoView({block:'nearest'});}
  function checkPhotos(){
   if(M.photos.some(p=>!state.classifications[p.id])){$('tsPhotoStatus').textContent='네 박편의 조직을 모두 고른 뒤 확인하세요.';return;}
   const result=Object.fromEntries(M.photos.map(p=>[p.id,state.classifications[p.id]===p.texture]));state.firstClassification??={answers:{...state.classifications},result:{...result}};state.attempts.push({answers:{...state.classifications},result:{...result}});
   for(const p of M.photos){const right=result[p.id];$('tsFeedback-'+p.id).textContent=(right?'알맞게 분류했습니다. ':'다시 관찰하세요. ')+p.description+' '+(right?p.environment:'사진의 눈금과 큰 결정·작은 바탕의 관계를 함께 보세요.');}
+  try{localStorage.setItem(storageKey,JSON.stringify({first:state.firstClassification.answers,last:state.classifications}));}catch{}
   const score=Object.values(result).filter(Boolean).length,first=Object.values(state.firstClassification.result).filter(Boolean).length;$('tsPhotoStatus').textContent='현재 '+score+'/4 · 첫 분류 '+first+'/4. '+(score===4?'입자 크기의 차이를 냉각 과정과 연결해 보세요.':'입자 크기와 크기 차이에 주목해 다시 골라 보세요.');
  }
  $('tsLab').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.tsMode)mode(b.dataset.tsMode);if(b.dataset.tsSample)selectSample(b.dataset.tsSample);if(b.dataset.tsPhoto)showPhoto(b.dataset.tsPhoto);});
@@ -63,5 +64,7 @@
  viewer.onpointerdown=e=>{if(zoom<=1)return;drag={x:e.clientX,y:e.clientY};viewer.setPointerCapture(e.pointerId);};viewer.onpointermove=e=>{if(!drag)return;pan.x+=e.clientX-drag.x;pan.y+=e.clientY-drag.y;drag={x:e.clientX,y:e.clientY};photoTransform();};viewer.onpointerup=viewer.onpointercancel=()=>drag=null;
  document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();update();}});window.addEventListener('resize',()=>{photoTransform();document.querySelector('.ts-scale i').style.width=(canvas.getBoundingClientRect().width/6)+'px';});
  function reset(){if(state)stop();state=initial();$('tsFocus').value=20;$('tsLight').value=70;$('tsPhotoDetail').hidden=true;$('tsPhotoStatus').textContent='';buildPhotos();mode('scope');status(' 초점을 맞추고 편광판을 넣고 빼며 같은 박편을 살펴보세요.');}
- $('tsReset').onclick=reset;reset();window.__thinSections={getState:()=>JSON.parse(JSON.stringify({...state,photo,zoom,pan})),sample:selectSample};
+ $('tsReset').onclick=()=>{try{localStorage.removeItem(storageKey);}catch{}reset();};reset();
+ try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null'),valid=a=>a&&M.photos.every(p=>M.photos.some(t=>t.texture===a[p.id]));if(saved&&valid(saved.first)&&valid(saved.last)){state.firstClassification={answers:saved.first,result:Object.fromEntries(M.photos.map(p=>[p.id,saved.first[p.id]===p.texture]))};state.classifications=saved.last;for(const p of M.photos)$('tsClass-'+p.id).value=saved.last[p.id];checkPhotos();}}catch{}
+window.__thinSections={getState:()=>JSON.parse(JSON.stringify({...state,photo,zoom,pan})),sample:selectSample};
 })();

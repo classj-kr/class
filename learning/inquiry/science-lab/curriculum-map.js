@@ -1643,7 +1643,7 @@ const scienceCurriculum = {
       "고1"
     ],
     "level": "high",
-    "title": "원소의 기원과 스펙트럼",
+    "title": "구성 원소의 비교와 기원",
     "subjects": [
       "통합과학1",
       "통합과학2"
@@ -1652,7 +1652,8 @@ const scienceCurriculum = {
       "10통과1-02-01",
       "10통과1-02-02",
       "10통과2-02-04"
-    ]
+    ],
+    "diagnostic": true
   },
   "stars": {
     "grade": "고2~3",
@@ -3202,6 +3203,76 @@ const scienceCurriculum = {
     ],
     "codes": [
       "12지시01-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "crust-thickness": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "지진파 자료로 지각 두께 구하기",
+    "subjects": [
+      "지구시스템과학"
+    ],
+    "codes": [
+      "12지시01-05"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "video-motion": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "동영상으로 운동 분석하기",
+    "subjects": [
+      "물리학",
+      "역학과 에너지"
+    ],
+    "codes": [
+      "12물리01-02",
+      "12역학01-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "hr-diagram": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "별 자료로 H-R도 작성하기",
+    "subjects": [
+      "지구과학"
+    ],
+    "codes": [
+      "12지구03-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "kepler-data": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "천체 자료로 케플러 법칙 확인하기",
+    "subjects": [
+      "역학과 에너지"
+    ],
+    "codes": [
+      "12역학01-04"
     ],
     "diagnostic": true,
     "bankQuestionIds": []

@@ -1,0 +1,11 @@
+✔ source tables, printed trend equations and thickness formula are numerically consistent (0.987ms)
+✔ chromium: source-data analysis, calculation feedback, responsive graph and retained first answers (4300.4245ms)
+✔ webkit: source-data analysis, calculation feedback, responsive graph and retained first answers (12251.567ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16612.5262

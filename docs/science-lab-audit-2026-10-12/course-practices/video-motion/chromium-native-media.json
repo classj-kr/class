@@ -1,0 +1,10 @@
+{
+  "engine": "chromium",
+  "readyState": 4,
+  "errorCode": null,
+  "errorMessage": null,
+  "actualVideoDecoded": true,
+  "physicalIPadTested": false,
+  "scope": "Actual H264 MP4 blob import, frame seeking, canvas pixels and measurements tested.",
+  "documentation": "https://playwright.dev/docs/browsers#webkit"
+}

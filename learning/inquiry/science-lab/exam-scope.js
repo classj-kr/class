@@ -7,9 +7,9 @@
  assessment.onload=()=>{if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadReview,{once:true});else loadReview();};
  const assessmentContent=document.createElement('script');assessmentContent.src=new URL('assessment-content.js?v=925965f69be2',assessmentBase);
  assessmentContent.onload=assessmentContent.onerror=()=>document.body.append(assessment);
- const loadContent=()=>{const quality=document.createElement('script');quality.src=new URL('question-quality-content.js?v=ec7666fab96b',assessmentBase);quality.onload=quality.onerror=()=>document.body.append(assessmentContent);document.body.append(quality);};
+ const loadContent=()=>{const quality=document.createElement('script');quality.src=new URL('question-quality-content.js?v=4cc1bf517135',assessmentBase);quality.onload=quality.onerror=()=>document.body.append(assessmentContent);document.body.append(quality);};
  if(m.diagnostic){
-  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=ae427e8cee53',assessmentBase);
+  const questions=document.createElement('script');questions.src=new URL('experiment-questions.js?v=d163996f1b5e',assessmentBase);
   questions.onload=questions.onerror=loadContent;document.body.append(questions);
  }else loadContent();
  // Load observation panels without injecting an administrative scope banner.
