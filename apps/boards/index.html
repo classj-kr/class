@@ -25,7 +25,7 @@
       <p id="closedNotice" class="notice" hidden>글쓰기·문제 출제 마감</p>
       <div id="quizControls" class="quiz-controls" hidden>
         <label class="filter-bar"><span class="sr-only">문제 보기</span><select id="reviewFilter"><option value="all">전체 문제</option><option value="mine">내 문제</option><option value="pending">검토 대기</option><option value="changes">수정 요청</option><option value="approved">승인 완료</option></select></label>
-        <div class="sets-panel"><details id="setDetails"><summary>문제 세트 <span id="setCount">0</span></summary><div id="setList"></div></details><button id="buildSet" hidden>세트 만들기</button></div>
+        <div class="sets-panel"><button id="resumeRace" class="primary" hidden>진행 중인 경주</button><details id="setDetails"><summary>문제 세트 <span id="setCount">0</span></summary><div id="setList"></div></details><button id="buildSet" hidden>세트 만들기</button></div>
       </div>
       <div id="posts" class="posts"></div>
     </section>
@@ -48,7 +48,7 @@
   <dialog id="reviewDialog"><form id="reviewForm"><div class="dialog-head"><h2>수정 요청하기</h2><button type="button" data-close aria-label="닫기">✕</button></div><p id="reviewContent"></p><label>수정할 내용<textarea id="reviewFeedback" maxlength="500" rows="4" required></textarea></label><p class="form-error error" role="alert"></p><button type="submit" class="primary full">수정 요청</button></form></dialog>
 
   <dialog id="buildDialog"><form id="buildForm"><div class="dialog-head"><h2>승인 문제로 세트 만들기</h2><button type="button" data-close aria-label="닫기">✕</button></div><label>문제 세트 제목<input id="setName" maxlength="80" required></label><p class="hint">승인 문항만 선택할 수 있습니다.</p><div id="approvedChoices"></div><p class="form-error error" role="alert"></p><button type="submit" class="primary full">세트 만들기</button></form></dialog>
-  <script src="app.js?v=20261012-auto-entry"></script>
+  <script src="app.js?v=20261012-live-race1"></script>
 </body>
 </html>
 
