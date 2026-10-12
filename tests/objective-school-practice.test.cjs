@@ -37,12 +37,13 @@ test('all 24 body and 21 matter profiles have gradeable questions and stable ide
 });
 test('available map topics never have an empty school pool and keep objective source visuals',async()=>{
     const {WORLD_LESSONS,WORLD_QUESTIONS}=await import('../learning/inquiry/globe/curriculum.mjs');
+    const {worldPracticePool}=await import('../learning/inquiry/globe/world-exam.mjs');
     for(const [kind,lessons,questions] of [['world',WORLD_LESSONS,WORLD_QUESTIONS],['korea',w.KOREA_GEOGRAPHY.lessons,w.KOREA_GEOGRAPHY.questions]]){
         for(const lesson of lessons){
             const signatures=[];
             for(const level of ['elementary','middle','high']){
                 if(!w.SchoolMaps.available(kind,lesson.id,level)||kind==='world'&&level==='middle'&&lesson.level==='high')continue;
-                const pool=w.MapPractice.pool(kind,lesson,questions,level);
+                const pool=kind==='world'?worldPracticePool(lesson,questions,level,w.MapPractice):w.MapPractice.pool(kind,lesson,questions,level);
                 validate(pool,`${kind}:${lesson.id}:${level}`);
                 signatures.push([level,pool.map(q=>q.id).join(',')]);
                 if(level==='high') {

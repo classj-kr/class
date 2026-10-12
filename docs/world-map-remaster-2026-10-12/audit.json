@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-12",
+  "scope": "World map: physical geography and selected human-geography remaster; original practice items derived from supplied textbook and examination skills.",
+  "counts": {
+    "highSchoolLessons": 35,
+    "newHighSchoolOnlyLessons": 6,
+    "rewrittenQuestionLessons": 18,
+    "newQuestions": 36,
+    "unchangedAdvancedQuestions": 34,
+    "totalAdvancedQuestions": 70
+  },
+  "sources": {
+    "unit2": {
+      "path": "references\\textbooks\\중고등\\미래엔\\고등\\사회\\세계지리 (박철웅)_2015\\교과서\\세계지리_교과서_Ⅱ.pdf",
+      "pages": 38,
+      "sha256": "f83364175577c9d12b36dcda3188048bb7d59445e482de1e940ff4f77bbf04f5",
+      "review": {
+        "mode": "Text extraction and targeted reading",
+        "pdfPages": "3–19, 21–36 (some extracted passages truncated; not a complete page-by-page visual audit)",
+        "topics": [
+          "climate distribution and seasonality",
+          "dry, glacial and periglacial landforms",
+          "major landforms",
+          "karst, volcanic and coastal landforms"
+        ]
+      }
+    },
+    "unit3": {
+      "path": "references\\textbooks\\중고등\\미래엔\\고등\\사회\\세계지리 (박철웅)_2015\\교과서\\세계지리_교과서_Ⅲ.pdf",
+      "pages": 34,
+      "sha256": "3bdd65cc158e27b616cdbba1b30fb1e8992a9e2456112235f41daa9ca7b613d2",
+      "review": {
+        "mode": "Text extraction and targeted reading",
+        "pdfPages": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          14,
+          17,
+          18,
+          19,
+          23,
+          24,
+          25
+        ],
+        "topics": [
+          "religion and cultural landscapes",
+          "population and migration",
+          "cities",
+          "resources and agriculture"
+        ]
+      }
+    },
+    "unit6": {
+      "path": "references\\textbooks\\중고등\\미래엔\\고등\\사회\\세계지리 (박철웅)_2015\\교과서\\세계지리_교과서_Ⅵ.pdf",
+      "pages": 22,
+      "sha256": "331c7e1317979520939c4f8e530c18ae324ca28e3a7cd7023dcebfad76c5f74b",
+      "review": {
+        "mode": "Text extraction and targeted reading",
+        "pdfPages": [
+          5,
+          6,
+          7,
+          11,
+          12
+        ],
+        "topics": [
+          "industrial regions",
+          "city structure"
+        ]
+      }
+    },
+    "unit7": {
+      "path": "references\\textbooks\\중고등\\미래엔\\고등\\사회\\세계지리 (박철웅)_2015\\교과서\\세계지리_교과서_Ⅶ.pdf",
+      "pages": 22,
+      "sha256": "32dfcd8a51bf52411439f9d3639c592e37ab4ce2a098dbf8b858e3c1a0629881",
+      "review": {
+        "mode": "Text extraction and targeted reading",
+        "pdfPages": [
+          6,
+          8
+        ],
+        "topics": [
+          "Latin American urbanization"
+        ]
+      }
+    },
+    "atlas2015": {
+      "path": "references\\textbooks\\중고등\\미래엔\\고등\\사회\\지리 부도 (박철웅)_2015\\교과서\\지리 부도 (박철웅)_2015_[교과서 PDF] 지리부도.pdf",
+      "pages": 136,
+      "sha256": "3d5c90a4291a27f3c77b79af1343dc2fdd1d96a161930fbed2ea004912ddfcf0",
+      "review": {
+        "mode": "Rendered pages visually inspected",
+        "pdfPages": [
+          75,
+          76,
+          77,
+          78
+        ],
+        "topics": [
+          "climates and agriculture",
+          "dry and cold landforms",
+          "geological regions",
+          "rivers, karst, coasts and volcanoes"
+        ]
+      }
+    },
+    "exam6": {
+      "path": "references\\textbooks\\EBS\\기출\\2026\\고3 6월 모평(평가원) 세계지리_문제_816f9ba213.pdf",
+      "pages": 4,
+      "sha256": "fc55c91c3c3d5a8094b61d0741876e8f74cbd8d2ca34f1f296c0ca13ccde34ca",
+      "review": {
+        "mode": "Text extracted; selected stems and answer reasoning reviewed",
+        "questions": [
+          6,
+          9,
+          11,
+          13,
+          18
+        ],
+        "completeVisualAudit": false
+      }
+    },
+    "answers6": {
+      "path": "references\\textbooks\\EBS\\기출\\2026\\고3 6월 모평(평가원) 세계지리_해설_1e8bc85a4a.pdf",
+      "pages": 7,
+      "sha256": "3df5021c9b471ca14ab7e9b81f937631ee333d498b3d93ad2da1e086b60f0d70",
+      "review": {
+        "mode": "Text reading",
+        "pdfPages": [
+          3,
+          4
+        ]
+      }
+    },
+    "exam9": {
+      "path": "references\\textbooks\\EBS\\기출\\2026\\고3 9월 모평(평가원) 세계지리_문제_0f1113ad55.pdf",
+      "pages": 4,
+      "sha256": "f3e845ef8f4e5dd00f7573c3f1cac0489779cf6c9d71a3b59d772704a89eb4da",
+      "review": {
+        "mode": "Text extracted; PDF pages 3–4 rendered and visually inspected",
+        "visualPdfPages": [
+          3,
+          4
+        ],
+        "focusedQuestions": [
+          2,
+          4,
+          8,
+          11,
+          15,
+          17,
+          19
+        ],
+        "completeVisualAudit": false
+      }
+    },
+    "answers9": {
+      "path": "references\\textbooks\\EBS\\기출\\2026\\고3 9월 모평(평가원) 세계지리_해설_833cfab0e9.pdf",
+      "pages": 8,
+      "sha256": "26161264c883aac7ac58509206d43a6b1c73e57e19672c77b230caf880e06580",
+      "review": {
+        "mode": "Text reading",
+        "pdfPages": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8
+        ]
+      }
+    }
+  },
+  "indexedOnlyNotClaimedAsReviewed": [
+    "unit1",
+    "unit4",
+    "unit5",
+    "unit8",
+    "atlas2022"
+  ],
+  "questionSkills": {
+    "climates": "Read hemisphere, temperature range and dry/wet seasons; connect graphs with positions.",
+    "landforms": "Use location, rock type, erosion/deposition and freezing/thawing to identify process.",
+    "population": "Separate population totals, density, age ratios and migration balance.",
+    "economy": "Distinguish output from exports, compare costs and locate industries/transport routes.",
+    "culture": "Identify diffusion and regional adaptation with evidence rather than moral judgments."
+  },
+  "dataRules": [
+    "Climate series and statistical tables are labeled teaching models, not claimed station observations or live statistics.",
+    "Question outlines derive from the existing Natural Earth country geometry.",
+    "Photos reuse existing WebP files with author/license links.",
+    "No examination stem or diagram was copied verbatim."
+  ],
+  "verified": [
+    "node --test tests/world-remaster.test.mjs tests/objective-school-practice.test.cjs tests/school-level-content.test.cjs: 11 passed",
+    "node --check learning/inquiry/globe/atlas-study.mjs: passed",
+    "git diff --check: passed",
+    "Browser 1280x800: climate map and graph questions, population table question, karst diagram and two loaded 720x480 photos.",
+    "Browser 390x844: map, explanation and question dialog, no horizontal overflow.",
+    "Browser 320x740: back/menu/projection/grade controls do not intersect; compact card has content-based height.",
+    "Wrong answer disabled only that option; no correct answer or explanation revealed until correct choice.",
+    "Switching to elementary keeps the app open and removes new high-school-only topics from catalog."
+  ],
+  "limits": [
+    "This record does not assert that every page of every supplied textbook or exam has been analyzed.",
+    "The 34 retained advanced questions were checked for valid pools and identities, not rewritten in this change.",
+    "Real browser checks covered representative feature paths; the automated pool check covers all 35 high-school lesson entries."
+  ]
+}

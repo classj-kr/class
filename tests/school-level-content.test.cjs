@@ -26,6 +26,7 @@ test('primary matter scope excludes high school equations and orbitals',()=>{
 });
 test('each map lesson has a specific high school reasoning exercise and primary filtering is explicit',async()=>{
   const {WORLD_LESSONS}=await import('../learning/inquiry/globe/curriculum.mjs');
+  const {worldExamPool}=await import('../learning/inquiry/globe/world-exam.mjs');
   const korea={window:{KOREA_GEOGRAPHY:{questions:[]}}};
   vm.runInNewContext(fs.readFileSync('learning/inquiry/korea-map/data/questions.js','utf8'),korea);
   vm.runInNewContext(fs.readFileSync('learning/inquiry/korea-map/data/study-lessons.js','utf8'),korea);
@@ -33,9 +34,11 @@ test('each map lesson has a specific high school reasoning exercise and primary 
     const prompts=new Set();
     for(const l of list){
       const high=context.window.SchoolMaps.profile(kind,l,'high');
-      assert.ok(high.source.includes('고등'),l.id);
-      assert.ok(high.question.length>20&&high.answer.length>20,l.id);
-      prompts.add(high.question);
+      assert.ok((l.source||high.source).includes('고등'),l.id);
+      const objective=kind==='world'&&worldExamPool(l.id)?.[0];
+      const question=objective?.prompt||high.question,answer=objective?.explanation||high.answer;
+      assert.ok(question.length>20&&answer.length>20,l.id);
+      prompts.add(question);
       if(context.window.SchoolMaps.available(kind,l.id,'elementary')){
         const low=context.window.SchoolMaps.profile(kind,l,'elementary');
         assert.notEqual(high.question,low.question,l.id);
