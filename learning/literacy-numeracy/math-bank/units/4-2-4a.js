@@ -207,7 +207,7 @@
   }
 
   B.addUnit({
-    id: '4-2-4', grade: 4, semester: 2, no: 4, title: '다각형', version: 1,
+    id: '4-2-4', grade: 4, semester: 2, no: 4, title: '다각형', version: 2,
     groups: [
       {
         id: 'poly', title: '다각형 알아보기', standard: POLY,
@@ -494,25 +494,6 @@
               figure: regularFig(n, { sides: [[at, cm(s)]], angles: [[(at + Math.floor(n / 2)) % n, A + '°']], label: `정${NAME[n]}. 한 변의 길이는 ${s} cm, 한 각의 크기는 ${A}°` }),
               explain: `정${NAME[n]}은 변과 꼭짓점이 ${n}개씩이고, 변 ${n}개의 길이가 모두 ${s} cm, 각 ${n}개의 크기가 모두 ${A}°이다.`,
               facts: { truth: rows.map(([, ok]) => ok), want: false }
-            });
-          }),
-          T('regular-angle-sum', '한 각의 크기로 모든 각의 크기의 합 구하기', '①41 ②29 ③26 심27', (d) => {
-            // 각의 크기의 합 공식이 아니라, 주어진 한 각에 각의 수를 곱한다(각의 크기가 모두 같다).
-            const n = d.pick([5, 6, 8, 9, 10]), A = ANGLE[n];
-            return N(`정${NAME[n]}의 한 각의 크기는 ${A}°이다. 정${NAME[n]}의 모든 각의 크기의 합은 몇 도인가?`, A * n, {
-              unit: '°', explain: `정${NAME[n]}은 각이 ${n}개이고 크기가 모두 ${A}°로 같다. ${A}° × ${n} = ${A * n}°`,
-              facts: { calc: [[`${A}*${n}`, 0]], unseen: [n] }
-            });
-          }),
-          T('regular-outer', '정다각형의 한 변을 늘인 바깥쪽 각', '②31 심29', (d) => {
-            // 한 각의 크기는 다른 꼭짓점에 적는다. 각의 크기가 모두 같다는 것과 직선이 이루는 각 180°를 쓴다.
-            const n = d.pick([5, 6, 8, 9, 10]), A = ANGLE[n], raw = regular(n), low = Math.max(...raw.map((p) => p[1]));
-            const base = raw.map((p, i) => i).filter((i) => Math.abs(raw[i][1] - low) < 1e-6), q = raw[base[0]][0] > raw[base[1]][0] ? base[0] : base[1], next = base.includes((q + 1) % n) ? (q + n - 1) % n : (q + 1) % n;
-            const fit = place(raw.concat([[raw[q][0] + 0.95, raw[q][1]]]), [5.8, 4.2], [0.8, 0.9]), p = fit.points.slice(0, n), end = fit.points[n], far = (q + Math.floor(n / 2)) % n;
-            return N(`정${NAME[n]}의 한 변을 늘여 직선을 그었다. ㉠의 크기는 몇 도인가?`, 180 - A, {
-              unit: '°', figure: draw(fit, [G.polygon(p), G.line(p[q], end), corner(p, far, A + '°'), wedge(p[q], p[next], end, '㉠')], `정${NAME[n]}의 한 각의 크기는 ${A}°. 한 변을 한쪽으로 늘인 직선과 이웃한 변이 이루는 바깥쪽 각이 ㉠`),
-              explain: `정다각형은 각의 크기가 모두 같으므로 ㉠과 이웃한 안쪽 각도 ${A}°이다. 직선이 이루는 각은 180°이므로 ㉠ = 180° − ${A}° = ${180 - A}°이다.`,
-              facts: { calc: [[`180-${A}`, 0]], unseen: [180] }
             });
           })
         ]

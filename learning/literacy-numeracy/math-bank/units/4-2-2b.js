@@ -421,13 +421,6 @@
         explain: `마름모에서 마주 보는 꼭짓점끼리 이은 두 선분은 서로를 똑같이 둘로 나눈다. 선분 ${part}의 길이는 ${half * 2} ÷ 2 = ${half}(cm)이다.`, facts: { calc: [[`${half * 2}/2`, 0]], unseen: [2] }
       });
     }, { count: 2 }),
-    T('rhom-cross-tri', '마름모의 두 선분이 만든 직각삼각형의 각', '심61', (d) => {
-      const x = d.pick([35, 40, 50, 55]);
-      return N('마름모 ㄱㄴㄷㄹ에서 마주 보는 꼭짓점끼리 이은 두 선분이 점 ㅇ에서 만난다. ㉠의 크기는 몇 도인가?', 90 - x, {
-        unit: '°', figure: diamond(3 * Math.sin(x * RAD), 3 * Math.cos(x * RAD), (p) => [wedge(p[0], p[4], p[1], x + '°'), wedge(p[1], p[0], p[4], '㉠')], `마름모 ㄱㄴㄷㄹ. 선분 ㄱㄷ과 선분 ㄴㄹ이 점 ㅇ에서 만난다. 각 ㅇㄱㄴ은 ${x}°, 각 ㄱㄴㅇ은 ㉠`, [7, 7.5]),
-        explain: `마주 보는 꼭짓점끼리 이은 두 선분은 서로 수직으로 만나므로 각 ㄱㅇㄴ은 90°이다. 삼각형 ㄱㄴㅇ에서 ㉠ = 180° − 90° − ${x}° = ${90 - x}°`, facts: { calc: [[`180-90-${x}`, 0]], unseen: [180, 90] }
-      });
-    }),
     T('rhom-point', '마름모가 되는 꼭짓점 고르기', '②80 심55 ①44', (d) => {
       // 길이가 같은 두 선분의 끝과 이어 네 변의 길이가 모두 같은 사각형이 되는 점은 하나뿐이다.
       const mir = d.bool(), mx = ([x, y]) => [mir ? 8 - x : x, y], far = (p, q) => Math.abs(p[0] - q[0]) + Math.abs(p[1] - q[1]) >= 2;
@@ -506,14 +499,6 @@
         facts: { truth: ok, want: true }
       });
     }),
-    T('kinds-relations', '사각형 사이의 관계', '①80 ③79 심72', (d) => {
-      const pairs = [['정사각형', '직사각형'], ['정사각형', '마름모'], ['마름모', '평행사변형'], ['직사각형', '평행사변형'], ['평행사변형', '사다리꼴'], ['사다리꼴', '평행사변형'], ['직사각형', '정사각형'], ['평행사변형', '마름모'], ['마름모', '정사각형']];
-      const good = d.shuffle(pairs.filter(([a, b]) => isA(a, b))).slice(0, 3), bad = d.pick(pairs.filter(([a, b]) => !isA(a, b))), rows = d.shuffle(good.concat([bad]));
-      return C('사각형 사이의 관계를 잘못 말한 것은?', rows.map(([a, b]) => relation(a, b)), rows.indexOf(bad), {
-        explain: `${josa(bad[1], '은/는')} ${josa(bad[0], '이라고/라고')} 할 수 있지만, 거꾸로 ${josa(bad[0], '은/는')} ${josa(bad[1], '이라고/라고')} 할 수 없다. ${josa(bad[1], '이/가')} 되려면 ${bad[0]}에는 없는 조건이 더 있어야 하기 때문이다.`,
-        facts: { truth: rows.map(([a, b]) => isA(a, b)), want: false }
-      });
-    }),
     T('kinds-mixed-say', '여러 사각형의 성질을 섞어 말한 설명', '①81 ②83 ③80 심72', (d) => {
       const props = ['para2', 'sides4', 'angles4', 'oppSides', 'oppAngles'], all = [];
       NAMES5.forEach((name) => props.forEach((p) => all.push([name, p, HAS[name].includes(p)])));
@@ -539,10 +524,6 @@
         facts: { sets: { labels, flags, options: made.sets } }
       });
     }),
-    T('kinds-square-talk', '정사각형을 두고 한 말', '③78 ①80 ②46', (d) => say(d, '정사각형에 대하여 한 말 가운데 옳지 않은 것은?',
-      ['네 변의 길이가 모두 같으므로 마름모라고 할 수 있다.', '네 각이 모두 직각이므로 직사각형이라고 할 수 있다.', '마주 보는 두 쌍의 변이 서로 평행하므로 평행사변형이라고 할 수 있다.', '평행한 변이 있으므로 사다리꼴이라고 할 수 있다.'],
-      ['평행한 변이 두 쌍이므로 사다리꼴이라고 할 수 없다.', '네 변의 길이가 모두 같으므로 직사각형이라고 할 수 없다.', '네 각이 모두 직각이므로 마름모라고 할 수 없다.'], false,
-      '사다리꼴은 평행한 변이 한 쌍이라도 있는 사각형이므로 평행한 변이 두 쌍이어도 사다리꼴이다. 정사각형은 직사각형의 성질(네 각이 직각)과 마름모의 성질(네 변의 길이가 같다)을 모두 가지므로 직사각형이라고도, 마름모라고도 할 수 있다.')),
     T('kinds-sticks', '막대로 만들 수 없는 사각형', '①91 ②92 ③81 심73', (d) => {
       // 길이가 다른 막대가 2개씩이라 네 변의 길이를 모두 같게 할 수 없다.
       const [a, b] = d.until(() => [d.int(5, 9), d.int(8, 14)], ([x, y]) => y >= x + 2), flags = NAMES5.map((name) => HAS[name].includes('sides4'));
@@ -592,13 +573,6 @@
         figure: shape(raw, { names: N4, extra: (p) => thin(p[0], p[2]), box: [5.2, 3.4], label: '정삼각형 ㄱㄴㄷ과 정삼각형 ㄱㄷㄹ을 변 ㄱㄷ에서 이어 붙인 사각형 ㄱㄴㄷㄹ' }),
         explain: '사각형의 네 변은 모두 정삼각형의 변이라 길이가 같으므로 마름모이다. 마름모는 평행사변형이고 사다리꼴이라고도 할 수 있다. 네 각은 60°, 120°, 60°, 120°라 직각이 아니므로 직사각형이나 정사각형은 아니다.',
         facts: { sets: { labels: NAMES5, flags, options: made.sets } }
-      });
-    }),
-    T('kinds-tri-join-angle', '정삼각형 2개를 이어 붙인 사각형의 각', '③89', (d) => {
-      const at = d.pick([0, 2]);
-      return N(`크기가 같은 정삼각형 2개를 변끼리 이어 붙여 사각형 ㄱㄴㄷㄹ을 만들었다. ${ANG4[at]}의 크기는 몇 도인가?`, 120, {
-        unit: '°', figure: shape(pg(1, 1, 60), { names: N4, extra: (p) => thin(p[0], p[2]), box: [5.2, 3.4], label: '정삼각형 ㄱㄴㄷ과 정삼각형 ㄱㄷㄹ을 변 ㄱㄷ에서 이어 붙인 사각형 ㄱㄴㄷㄹ' }),
-        explain: `정삼각형의 한 각의 크기는 60°이다. ${ANG4[at]}은 정삼각형의 각 2개가 모인 각이므로 60° + 60° = 120°이다.`, facts: { calc: [['60+60', 0]], unseen: [60] }
       });
     }),
     T('kinds-square-rhom', '한 변을 맞댄 정사각형과 마름모', '③87', (d) => {
@@ -661,56 +635,6 @@
           facts: { calc: [[tall ? `${h1}+${h2}` : `${w1}+${w2}`, 0]] }
         });
       }, { standard: LINE }),
-      H('hard-dist-iso', '이등변삼각형을 거쳐 평행선 사이의 거리 구하기', '27, 기본 ①38', (d) => {
-        const m = d.int(4, 12), raw = [[0.35 * m, 0], [0, m], [1.95 * m, m], [0.95 * m, 0], [0.95 * m, m]];
-        const extra = (p) => dashed(p[3], p[4]) + G.rightMark(p[4], p[3], p[1]) + G.text([p[4][0], p[4][1] + 0.5], 'ㅁ') + lengthAt([(p[4][0] + p[2][0]) / 2, p[4][1] + 0.45], cm(m)) + wedge(p[2], p[4], p[3], '45°');
-        return N('사다리꼴 ㄱㄴㄷㄹ에서 변 ㄱㄹ과 변 ㄴㄷ은 서로 평행하다. 꼭짓점 ㄹ에서 변 ㄴㄷ에 수선 ㄹㅁ을 그었더니 각 ㄹㄷㅁ이 45°였다. 평행선 사이의 거리는 몇 cm인가?', m, {
-          unit: 'cm', figure: shape(raw, { count: 4, names: N4, extra, box: [7, 3.6], pad: [1.7, 1.1], label: `사다리꼴 ㄱㄴㄷㄹ. 꼭짓점 ㄹ에서 변 ㄴㄷ에 그은 수선이 변 ㄴㄷ과 만나는 점 ㅁ. 선분 ㅁㄷ의 길이 ${m} cm, 각 ㄹㄷㅁ은 45°` }),
-          explain: `삼각형 ㄹㅁㄷ에서 각 ㅁㄹㄷ = 180° − 90° − 45° = 45°이다. 두 각의 크기가 같으므로 이등변삼각형이고, 선분 ㄹㅁ의 길이는 선분 ㅁㄷ과 같은 ${m} cm이다. 선분 ㄹㅁ이 평행한 두 변에 수직이므로 거리는 ${m} cm이다.`,
-          facts: { calc: [[String(m), 0]] }
-        });
-      }, { standard: LINE }),
-      H('hard-dist-triangle', '평행선 사이의 수선과 비스듬한 선분이 이루는 각', '33·35, 기본 ①39', (d) => {
-        const x = d.pick([30, 35, 40, 50, 55]), g = 90 + x, top = 1.3, low = 4.5, P = [3.6, top], F = [3.6, low], Q = [3.6 + (low - top) * Math.tan(x * RAD), low];
-        const parts = [G.line([0.9, top], [11, top]), G.line([0.9, low], [11, low]), G.line(P, F), G.line(P, Q), G.rightMark(F, P, Q), G.arc(P, 180, 270 + x, 0.7), lengthAt(G.toward(P, 1.5, 213), g + '°'), sector(Q, 90 + x, 180, '㉠'),
-          G.text([0.45, top], 'ㄱ'), G.text([11.45, top], 'ㄴ'), G.text([0.45, low], 'ㄷ'), G.text([11.45, low], 'ㄹ'), G.text([P[0], top - 0.5], 'ㅁ'), G.text([F[0], low + 0.5], 'ㅅ'), G.text([Q[0], low + 0.5], 'ㅂ')];
-        return N('직선 ㄱㄴ과 직선 ㄷㄹ은 서로 평행하고, 선분 ㅁㅅ의 길이는 평행선 사이의 거리이다. ㉠의 크기는 몇 도인가?', 90 - x, {
-          unit: '°', figure: G.board(12, 5.6, parts, { grid: false, scale: 1, label: `평행한 두 직선 ㄱㄴ, ㄷㄹ. 직선 ㄱㄴ 위의 점 ㅁ에서 직선 ㄷㄹ 위의 두 점 ㅅ, ㅂ에 선분을 그었다. 선분 ㅁㅅ은 두 직선에 수직이다. 각 ㄱㅁㅂ은 ${g}°, 각 ㅁㅂㅅ은 ㉠` }),
-          explain: `선분 ㅁㅅ은 두 직선에 수직이므로 각 ㄱㅁㅅ과 각 ㅁㅅㅂ은 90°이다. 각 ㅅㅁㅂ = ${g}° − 90° = ${x}°이고, 삼각형 ㅁㅅㅂ에서 ㉠ = 180° − 90° − ${x}° = ${90 - x}°이다.`,
-          facts: { calc: [[`180-90-(${g}-90)`, 0]], unseen: [180, 90] }
-        });
-      }, { standard: LINE }),
-      H('hard-zigzag', '평행선 사이의 꺾인 선: 수선을 그어 구하기', '34, 기본 ②104', (d) => {
-        const [a, b] = d.until(() => [d.pick([30, 35, 40, 45, 50]), d.pick([30, 35, 40, 45, 50])], ([x, y]) => x !== y), top = 1, low = 6.2, P = [8.2, 3.6], A = [P[0] - 2.6 / Math.tan(a * RAD), top], Bq = [P[0] - 2.6 / Math.tan(b * RAD), low], Cc = [P[0], top], D = [P[0], low];
-        const parts = [G.line([0.9, top], [10.9, top]), G.line([0.9, low], [10.9, low]), dashed(Cc, D), G.rightMark(Cc, P, A), G.rightMark(D, P, Bq), G.line(A, P), G.line(Bq, P), sector(A, 360 - a, 360, a + '°'), sector(Bq, 0, b, b + '°'), sector(P, 180 - a, 180 + b, '㉠', 0.55), G.text([0.45, top], '가'), G.text([0.45, low], '나')];
-        return N('직선 가와 직선 나는 서로 평행하다. 꺾인 점을 지나고 두 직선에 수직인 선분을 점선으로 그었다. ㉠의 크기는 몇 도인가?', a + b, {
-          unit: '°', figure: G.board(11.6, 7, parts, { grid: false, scale: 1, label: `평행한 두 직선 가, 나 사이에 꺾인 선이 있다. 꺾인 선이 직선 가와 이루는 각은 ${a}°, 직선 나와 이루는 각은 ${b}°, 꺾인 곳의 각은 ㉠. 꺾인 점을 지나 두 직선에 수직인 점선이 그어져 있다.` }),
-          explain: `점선은 두 직선과 직각으로 만나므로 직각삼각형이 2개 생긴다. 꺾인 점에서 위쪽 삼각형의 각은 180° − 90° − ${a}° = ${90 - a}°, 아래쪽 삼각형의 각은 180° − 90° − ${b}° = ${90 - b}°이다. 점선 위의 각은 180°이므로 ㉠ = 180° − ${90 - a}° − ${90 - b}° = ${a + b}°이다.`,
-          facts: { calc: [[`180-(90-${a})-(90-${b})`, 0]], unseen: [180, 90] }
-        });
-      }, { standard: LINE }),
-      H('hard-split-right', '직각을 똑같이 나눈 각과 직각', '30', (d) => {
-        const n = d.pick([2, 3]), k = n === 3 ? d.pick([1, 2]) : 1, part = 90 / n, o = [4.6, 4.7], from = 90 - part * k;
-        const parts = [G.line([0.8, o[1]], [8, o[1]]), G.line([o[0], 0.7], [o[0], 6.2])];
-        for (let i = 1; i < n; i += 1) parts.push(G.line(o, G.toward(o, 3.6, part * i)));
-        for (let i = 0; i < n; i += 1) parts.push(G.arc(o, part * i, part * (i + 1), 2.3 + (i % 2) * 0.12), G.text(G.toward(o, 2.75, part * (i + 0.5)), '●', 'mb-label is-small'));
-        parts.push(G.arc(o, from, 180, 0.8), lengthAt(G.toward(o, 1.3, 135), '㉠'), G.text([8.35, o[1]], '가'), G.text([o[0], 0.3], '나'));
-        return N(`직선 가와 직선 나는 서로 수직이다. 두 직선이 만나서 이루는 한 각을 크기가 같은 각 ${n}개로 나누었다. ㉠의 크기는 몇 도인가?`, 90 + part * k, {
-          unit: '°', figure: G.board(8.8, 6.6, parts, { grid: false, scale: 1.1, label: `서로 수직인 직선 가, 나. 오른쪽 위의 직각을 크기가 같은 각 ${n}개로 나누었다(●로 표시). ㉠은 왼쪽 위의 직각과, 그 옆에 붙은 ● 각 ${k}개를 합친 각` }),
-          explain: `직각을 똑같이 ${n}개로 나눈 각 하나는 90° ÷ ${n} = ${part}°이다. ㉠은 직각 하나와 이 각 ${k}개를 합친 각이므로 90° + ${part * k}° = ${90 + part * k}°이다.`,
-          facts: { calc: [[k === 1 ? `90+90/${n}` : `90+90/${n}*${k}`, 0]], unseen: [90, 2] }
-        });
-      }, { standard: LINE }),
-      H('hard-two-crosses', '서로 수직인 선분 두 쌍이 이루는 각', '31', (d) => {
-        // 겹쳐 놓인 직각 둘: 가운데 낀 각을 알면 양 끝 선분이 이루는 각은 90° + (90° − 가운데 각)이다.
-        const m = d.pick([35, 40, 50, 55, 60, 65]), x = 90 - m, t = d.pick([8, 12, 16]), o = [4.6, 4.9], dirs = [t, t + x, t + 90, t + 90 + x], names = ['ㄱ', 'ㄷ', 'ㄴ', 'ㄹ'];
-        const parts = dirs.map((b) => G.line(o, G.toward(o, 3.5, b))).concat(dirs.map((b, i) => G.text(G.toward(o, 3.95, b), names[i])), [sector(o, t + x, t + 90, m + '°'), G.point(o), G.text([o[0], o[1] + 0.5], 'ㅇ')]);
-        return N('점 ㅇ에서 선분 4개를 그었다. 선분 ㅇㄱ과 선분 ㅇㄴ은 서로 수직이고, 선분 ㅇㄷ과 선분 ㅇㄹ도 서로 수직이다. 각 ㄱㅇㄹ의 크기는 몇 도인가?', 180 - m, {
-          unit: '°', figure: G.board(9, 5.8, parts, { grid: false, scale: 1.1, label: `점 ㅇ에서 그은 선분 ㅇㄱ, ㅇㄷ, ㅇㄴ, ㅇㄹ이 이 차례로 놓여 있다. 각 ㄷㅇㄴ은 ${m}°` }),
-          explain: `각 ㄷㅇㄹ이 90°이므로 각 ㄴㅇㄹ = 90° − ${m}° = ${x}°이다. 각 ㄱㅇㄴ도 90°이므로 각 ㄱㅇㄹ = 90° + ${x}° = ${180 - m}°이다.`,
-          facts: { calc: [[`90+(90-${m})`, 0]], unseen: [90] }
-        });
-      }, { standard: LINE }),
       H('hard-trap-all', '평행한 변이 두 쌍인 사각형이 섞인 그림에서 사다리꼴 세기', '36·68, 기본 ②45 ③39·40', (d) => {
         // 그림에 함정을 둔다: 평행사변형·직사각형(정사각형)·마름모를 섞는다. 평행한 변이 한 쌍뿐이어야 사다리꼴이라고 보는 아이는 1개라고 답한다.
         const kinds = d.shuffle(['tr', 'pg', 'rc', 'rh', 'no']), picks = kinds.map((k) => vary(d, d.pick({ tr: TRAPS, pg: PGRAMS, rc: RECTS.slice(0, 2).concat(SQUARES), rh: RHOMBI, no: NONES }[k]))), labels = TAGS.slice(0, 5), flags = picks.map((pts) => kindOf(pts).trap);
@@ -719,54 +643,12 @@
           facts: { count: flags }
         });
       }),
-      H('hard-trap-right', '평행한 두 변에 수직인 변이 있는 사각형의 각', '32', (d) => {
-        const a = d.pick([50, 55, 60, 65, 70, 75]), h = 3, out = h / Math.tan(a * RAD), raw = [[0, 0], [0, h], [2.6 + out, h], [2.6, 0]];
-        return N('사각형 ㄱㄴㄷㄹ에서 변 ㄱㄹ과 변 ㄴㄷ은 서로 평행하고, 변 ㄱㄴ은 변 ㄴㄷ에 수직이다. 각 ㄴㄷㄹ의 크기는 몇 도인가?', a, {
-          unit: '°', figure: shape(raw, { names: N4, angles: { 3: (180 - a) + '°' }, rights: [1], box: [5.6, 3.6], label: `사각형 ㄱㄴㄷㄹ. 꼭짓점 ㄴ에 직각 표시, 각 ㄱㄹㄷ은 ${180 - a}°` }),
-          explain: `변 ㄱㄴ은 평행한 두 변 가운데 변 ㄴㄷ에 수직이므로 변 ㄱㄹ에도 수직이다. 그래서 각 ㄴㄱㄹ도 90°이다. 사각형의 네 각의 크기의 합은 360°이므로 각 ㄴㄷㄹ = 360° − 90° − 90° − ${180 - a}° = ${a}°이다.`,
-          facts: { calc: [[`360-90-90-${180 - a}`, 0]], unseen: [360, 90] }
-        });
-      }),
       H('hard-trap-cut', '사다리꼴에 평행한 선분을 그어 생긴 평행사변형', '86, 기본 ①59 ③57', (d) => {
         const [t, b] = d.pick([[7, 10], [8, 11], [9, 12], [9, 13], [10, 14], [11, 15]]), o = 2, h = 5, raw = [[o, 0], [0, h], [b, h], [o + t, 0], [t, h]];
         return N('사다리꼴 ㄱㄴㄷㄹ에서 변 ㄱㄹ과 변 ㄴㄷ은 서로 평행하다. 변 ㄱㄴ과 평행하게 선분 ㄹㅁ을 그었다. 선분 ㅁㄷ의 길이는 몇 cm인가?', b - t, {
           unit: 'cm', figure: shape(raw, { count: 4, names: N4, sides: { 3: cm(t) }, extra: (p) => thin(p[3], p[4]) + G.text([p[4][0], p[4][1] + 0.5], 'ㅁ') + under(p[1], p[2], cm(b)), box: [6.6, 3.4], pad: [1.7, 1.35], label: `사다리꼴 ㄱㄴㄷㄹ. 변 ㄱㄹ ${t} cm, 변 ㄴㄷ ${b} cm. 꼭짓점 ㄹ에서 변 ㄱㄴ과 평행하게 그은 선분이 변 ㄴㄷ과 점 ㅁ에서 만난다.` }),
           explain: `사각형 ㄱㄴㅁㄹ은 마주 보는 두 쌍의 변이 서로 평행하므로 평행사변형이다. 선분 ㄴㅁ의 길이는 마주 보는 변 ㄱㄹ과 같은 ${t} cm이다. 선분 ㅁㄷ의 길이는 ${b} − ${t} = ${b - t}(cm)이다.`,
           facts: { calc: [[`${b}-${t}`, 0]] }
-        });
-      }),
-      H('hard-pgram-ext', '평행사변형의 한 변을 늘인 선 위의 각', '47, 기본 ②62', (d) => {
-        const slope = d.pick([50, 55, 60, 65, 70, 75]), g = 180 - slope, raw = pg(4.6, 3, slope).concat([[6.8, 3 * Math.sin(slope * RAD)]]);
-        return N('평행사변형 ㄱㄴㄷㄹ에서 변 ㄴㄷ을 길게 늘인 선 위에 점 ㅁ이 있다. 각 ㄹㄷㅁ의 크기는 몇 도인가?', slope, {
-          unit: '°', figure: shape(raw, { count: 4, names: N4, angles: { 0: g + '°' }, extra: (p) => G.line(p[2], p[4]) + G.point(p[4]) + G.text([p[4][0], p[4][1] + 0.5], 'ㅁ'), box: [7.2, 3.2], pad: [1.6, 1], label: `평행사변형 ㄱㄴㄷㄹ. 각 ㄴㄱㄹ은 ${g}°. 변 ㄴㄷ을 꼭짓점 ㄷ 쪽으로 늘인 선 위에 점 ㅁ이 있다.` }),
-          explain: `평행사변형은 마주 보는 두 각의 크기가 같으므로 각 ㄴㄷㄹ = ${g}°이다. 점 ㄴ, ㄷ, ㅁ은 한 직선 위에 있으므로 각 ㄹㄷㅁ = 180° − ${g}° = ${slope}°이다.`,
-          facts: { calc: [[`180-${g}`, 0]], unseen: [180] }
-        });
-      }),
-      H('hard-pgram-diag', '평행사변형에 그은 선분과 마주 보는 각', '48, 기본 ②63', (d) => {
-        // 삼각형 ㄱㄴㄹ: 각 ㄴㄱㄹ = c(마주 보는 각 ㄴㄷㄹ 과 같다), 각 ㄱㄴㄹ = x. 그림은 이 각대로 그린다.
-        const [c, x] = d.pick([[110, 40], [115, 35], [115, 40], [120, 35]]), y = 180 - c - x, b = 3, a = b * Math.sin(x * RAD) / Math.sin(y * RAD);
-        return N('평행사변형 ㄱㄴㄷㄹ에 선분 ㄴㄹ을 그었다. 각 ㄱㄹㄴ의 크기는 몇 도인가?', y, {
-          unit: '°', figure: shape(pg(a, b, 180 - c), { names: N4, extra: (p) => thin(p[1], p[3]) + wedge(p[1], p[0], p[3], x + '°', 1.1) + corner(p.slice(0, 4), 2, c + '°', 0.45), box: [6.4, 3.6], label: `평행사변형 ㄱㄴㄷㄹ과 선분 ㄴㄹ. 각 ㄴㄷㄹ은 ${c}°, 각 ㄱㄴㄹ은 ${x}°` }),
-          explain: `평행사변형은 마주 보는 두 각의 크기가 같으므로 각 ㄴㄱㄹ = 각 ㄴㄷㄹ = ${c}°이다. 삼각형 ㄱㄴㄹ에서 각 ㄱㄹㄴ = 180° − ${c}° − ${x}° = ${y}°이다.`,
-          facts: { calc: [[`180-${c}-${x}`, 0]], unseen: [180], rule: 'pgram-diag' }
-        });
-      }),
-      H('hard-pgram-split', '평행사변형에 그은 선분이 나눈 각', '49', (d) => {
-        // 각 ㄱㄴㄷ = t 를 선분 ㄴㄹ 이 x(ㄱ 쪽)와 z(ㄷ 쪽)로 나눈다. 삼각형 ㄴㄷㄹ: 각 ㄷ = 180 − t, 각 ㄴ = z, 각 ㄹ = x.
-        const [t, z] = d.pick([[70, 30], [80, 30], [80, 35]]), x = t - z, a = 4.4, b = a * Math.sin(z * RAD) / Math.sin(x * RAD);
-        return N('평행사변형 ㄱㄴㄷㄹ에 선분 ㄴㄹ을 그었다. 각 ㄱㄴㄹ의 크기는 몇 도인가?', x, {
-          unit: '°', figure: shape(pg(a, b, t), { names: N4, extra: (p) => thin(p[1], p[3]) + wedge(p[1], p[3], p[2], z + '°', 1.1) + corner(p.slice(0, 4), 2, (180 - t) + '°', 0.45), box: [6.6, 3.4], label: `평행사변형 ㄱㄴㄷㄹ과 선분 ㄴㄹ. 각 ㄴㄷㄹ은 ${180 - t}°, 각 ㄹㄴㄷ은 ${z}°` }),
-          explain: `평행사변형에서 이웃한 두 각의 크기의 합은 180°이므로 각 ㄱㄴㄷ = 180° − ${180 - t}° = ${t}°이다. 각 ㄱㄴㄹ = ${t}° − ${z}° = ${x}°이다.`,
-          facts: { calc: [[`180-${180 - t}-${z}`, 0]], unseen: [180], rule: 'pgram-split' }
-        });
-      }),
-      H('hard-rhom-iso', '마름모에 그은 선분이 만든 이등변삼각형의 각', '59, 기본 ①70', (d) => {
-        const v = d.pick([50, 70, 80, 100, 110, 130]), value = (180 - v) / 2;
-        return N('마름모 ㄱㄴㄷㄹ에 선분 ㄱㄷ을 그었다. 각 ㄱㄷㄹ의 크기는 몇 도인가?', value, {
-          unit: '°', figure: shape(pg(4, 4, v), { names: N4, angles: { 1: v + '°' }, extra: (p) => thin(p[0], p[2]), box: [5.6, 3.6], label: `마름모 ㄱㄴㄷㄹ과 선분 ㄱㄷ. 각 ㄱㄴㄷ은 ${v}°` }),
-          explain: `마름모는 마주 보는 두 각의 크기가 같으므로 각 ㄱㄹㄷ = ${v}°이다. 변 ㄹㄱ과 변 ㄹㄷ의 길이가 같으므로 삼각형 ㄱㄷㄹ은 이등변삼각형이고, 각 ㄱㄷㄹ = (180° − ${v}°) ÷ 2 = ${value}°이다.`,
-          facts: { calc: [[`(180-${v})/2`, 0]], unseen: [180, 2] }
         });
       }),
       H('hard-square-find', '기울어진 정사각형과 마름모가 섞인 그림에서 정사각형 세기', '67, 기본 ②85·86 ③44', (d) => {
@@ -785,47 +667,6 @@
         return N('모눈종이에 그린 사각형 가운데 직사각형은 모두 몇 개인가?', flags.filter(Boolean).length, {
           unit: '개', figure: tilesOf(picks, '모눈종이 위의 사각형'), explain: `직사각형은 네 각이 모두 직각인 사각형이다. 정사각형도 네 각이 모두 직각이므로 직사각형이다. ${tag('tilt')}는 비스듬히 놓여 있지만 네 각이 모두 직각인 정사각형이다. ${tag('rh')}에는 직각이 없다. 직사각형은 ${labels.filter((_, i) => flags[i]).join(', ')}이다.`,
           facts: { rectCount: picks }
-        });
-      }),
-      H('hard-join-rhom-tri', '마름모와 정삼각형을 이어 붙인 도형의 각', '기본 ②103', (d) => {
-        const v = d.pick([40, 50, 70, 80]), value = (180 - v - 60) / 2, r = pg(1, 1, v), turn = (w, t) => [w[0] * Math.cos(t * RAD) - w[1] * Math.sin(t * RAD), w[0] * Math.sin(t * RAD) + w[1] * Math.cos(t * RAD)];
-        const side = G.sub(r[2], r[3]), cands = [60, -60].map((t) => { const w = turn(side, t); return [r[3][0] + w[0], r[3][1] + w[1]]; }), m = cands[0][0] > cands[1][0] ? cands[0] : cands[1];
-        return N('마름모 ㄱㄴㄷㄹ과 정삼각형 ㄹㄷㅁ을 이어 붙이고 선분 ㄱㅁ을 그었다. 각 ㄹㄱㅁ의 크기는 몇 도인가?', value, {
-          unit: '°', figure: scene(r.concat([m]), (p) => [G.polygon(p.slice(0, 4)), G.polygon([p[3], p[2], p[4]]), thin(p[0], p[4]), outs(p, ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ']), corner(p.slice(0, 4), 1, v + '°')], { box: [7, 3.6], pad: [1.6, 1.1], label: `마름모 ㄱㄴㄷㄹ의 변 ㄹㄷ에 정삼각형 ㄹㄷㅁ을 이어 붙이고 선분 ㄱㅁ을 그은 그림. 각 ㄱㄴㄷ은 ${v}°` }),
-          explain: `마름모에서 각 ㄱㄹㄷ = 각 ㄱㄴㄷ = ${v}°이고 정삼각형의 한 각은 60°이므로 각 ㄱㄹㅁ = ${v}° + 60° = ${v + 60}°이다. 변 ㄹㄱ, 변 ㄹㄷ, 변 ㄹㅁ의 길이가 모두 같으므로 삼각형 ㄹㄱㅁ은 이등변삼각형이다. 각 ㄹㄱㅁ = (180° − ${v + 60}°) ÷ 2 = ${value}°`,
-          facts: { calc: [[`(180-${v}-60)/2`, 0]], unseen: [180, 60, 2] }
-        });
-      }),
-      H('hard-join-tri-pgram', '정삼각형과 평행사변형을 이어 붙인 도형의 각', '80', (d) => {
-        const c = d.pick([100, 110, 130, 140]), beta = 120 - c, vec = [1.4 * Math.cos(beta * RAD), -1.4 * Math.sin(beta * RAD)], hgt = Math.sqrt(3) / 2;
-        const raw = [[0.5, 0], [0, hgt], [1, hgt], [1 + vec[0], hgt + vec[1]], [0.5 + vec[0], vec[1]]];   // ㄱ ㄴ ㄷ ㄹ ㅁ
-        return N('정삼각형 ㄱㄴㄷ과 평행사변형 ㄱㄷㄹㅁ을 이어 붙였다. 각 ㄴㄱㅁ의 크기는 몇 도인가?', 240 - c, {
-          unit: '°', figure: scene(raw, (p) => [G.polygon(p.slice(0, 3)), G.polygon([p[0], p[2], p[3], p[4]]), outs(p, ['ㄱ', 'ㄴ', '', 'ㄹ', 'ㅁ']), G.text([p[2][0] - 0.1, p[2][1] + 0.5], 'ㄷ'), wedge(p[2], p[0], p[3], c + '°')], { box: [6.4, 3.8], pad: [1.6, 1.1], label: `정삼각형 ㄱㄴㄷ의 변 ㄱㄷ에 평행사변형 ㄱㄷㄹㅁ을 이어 붙인 그림. 각 ㄱㄷㄹ은 ${c}°` }),
-          explain: `정삼각형의 한 각은 60°이므로 각 ㄴㄱㄷ = 60°이다. 평행사변형에서 이웃한 두 각의 크기의 합은 180°이므로 각 ㄷㄱㅁ = 180° − ${c}° = ${180 - c}°이다. 각 ㄴㄱㅁ = 60° + ${180 - c}° = ${240 - c}°`,
-          facts: { calc: [[`60+(180-${c})`, 0]], unseen: [60, 180] }
-        });
-      }),
-      H('hard-two-rhombi', '모양과 크기가 같은 마름모 2개를 이어 붙인 도형의 각', '기본 ①93', (d) => {
-        const v = d.pick([110, 115, 125, 130]), r = pg(1, 1, v), axis = unit(G.sub(r[2], r[3]));
-        const mirror = (q) => { const w = G.sub(q, r[3]), along = G.dot(w, axis); return [r[3][0] + 2 * along * axis[0] - w[0], r[3][1] + 2 * along * axis[1] - w[1]]; };   // 변 ㄹㄷ을 지나는 직선에 대하여 뒤집는다
-        const raw = r.concat([mirror(r[1]), mirror(r[0])]);   // ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ
-        return N('모양과 크기가 같은 마름모 ㄱㄴㄷㄹ과 마름모 ㄹㄷㅁㅂ을 변 ㄹㄷ에서 이어 붙였다. 각 ㄴㄷㅁ의 크기는 몇 도인가?', (180 - v) * 2, {
-          unit: '°', figure: scene(raw, (p) => [G.polygon(p.slice(0, 4)), G.polygon([p[3], p[2], p[4], p[5]]), outs(p, ['ㄱ', 'ㄴ', 'ㄷ', '', 'ㅁ', 'ㅂ']), G.text([p[3][0] - 0.15, p[3][1] - 0.5], 'ㄹ'), corner(p.slice(0, 4), 1, v + '°')], { box: [7.4, 5.8], pad: [1.6, 1.1], label: `마름모 ㄱㄴㄷㄹ과 마름모 ㄹㄷㅁㅂ을 변 ㄹㄷ에서 이어 붙인 그림. 각 ㄱㄴㄷ은 ${v}°, 두 마름모에서 꼭짓점 ㄷ에 모인 두 각의 크기는 같다.` }),
-          explain: `마름모에서 이웃한 두 각의 크기의 합은 180°이므로 각 ㄴㄷㄹ = 180° − ${v}° = ${180 - v}°이다. 두 마름모의 모양과 크기가 같으므로 각 ㄹㄷㅁ도 ${180 - v}°이다. 각 ㄴㄷㅁ = ${180 - v}° × 2 = ${(180 - v) * 2}°`,
-          facts: { calc: [[`(180-${v})*2`, 0]], unseen: [180, 2] }
-        });
-      }),
-      H('hard-overlap-angle', '겹친 종이띠 두 장이 만든 사각형의 각', '93·94, 기본 ①90 ②99·100', (d) => {
-        // 종이띠의 마주 보는 두 변은 평행하므로 겹친 부분은 평행사변형이다. 가로로 놓인 띠와 phi° 기울어진 띠.
-        const phi = d.pick([50, 55, 60, 65]), y1 = 2.2, y2 = 4.8, c = [6, 3.5], wt = 2.4, len = 3.1, u = [Math.cos(phi * RAD), -Math.sin(phi * RAD)], nrm = [Math.sin(phi * RAD), Math.cos(phi * RAD)];
-        const edge = (s) => (y) => { const a = [c[0] + nrm[0] * s, c[1] + nrm[1] * s]; return [a[0] + u[0] * (y - a[1]) / u[1], y]; }, L = edge(-wt / 2), R = edge(wt / 2), quad = [L(y1), L(y2), R(y2), R(y1)];
-        const rect = [[-1, -1], [-1, 1], [1, 1], [1, -1]].map(([s, t]) => [c[0] + nrm[0] * s * wt / 2 + u[0] * t * len, c[1] + nrm[1] * s * wt / 2 + u[1] * t * len]), tint = (svg, fill) => svg.replace('class="mb-poly"', `class="mb-poly" style="fill:${fill};stroke:#64748b;stroke-width:1.1"`);
-        const given = d.bool(), g = given ? 180 - phi : phi, i = given ? 0 : 1, j = given ? 1 : 0;   // 꼭짓점 0(왼쪽 위)의 각은 180 − phi, 꼭짓점 1(왼쪽 아래)의 각은 phi
-        const parts = [tint(G.polygon([[0.4, y1], [0.4, y2], [11.6, y2], [11.6, y1]]), '#dbeafe'), tint(G.polygon(rect), 'rgba(254,215,170,0.75)'), G.polygon(quad), corner(quad, i, g + '°'), corner(quad, j, '㉠')];
-        return N('폭이 일정한 직사각형 모양의 종이띠 2장을 겹쳐 놓았다. 겹쳐진 부분은 사각형이다. ㉠의 크기는 몇 도인가?', 180 - g, {
-          unit: '°', figure: G.board(12, 7, parts, { grid: false, scale: 1, label: `가로로 놓인 종이띠 위에 다른 종이띠를 비스듬히 겹쳐 놓은 그림. 겹쳐진 사각형의 한 각은 ${g}°, 그 각과 이웃한 각은 ㉠` }),
-          explain: `종이띠의 마주 보는 두 변은 서로 평행하므로, 겹쳐진 사각형은 마주 보는 두 쌍의 변이 서로 평행한 평행사변형이다. 이웃한 두 각의 크기의 합은 180°이므로 ㉠ = 180° − ${g}° = ${180 - g}°이다.`,
-          facts: { calc: [[`180-${g}`, 0]], unseen: [180], rule: 'overlap' }
         });
       }),
       H('hard-square-rect', '직사각형을 정사각형과 직사각형으로 나눈 그림', '88', (d) => {
