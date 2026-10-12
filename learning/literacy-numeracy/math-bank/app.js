@@ -181,7 +181,7 @@
         }
         const box = document.createElement('input');
         box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : input.decimal ? 8 : 6;
-        box.setAttribute('aria-label', (input.label || '답') + ' 적기');
+        box.setAttribute('aria-label', (input.label ? plainText(input.label) : '답') + ' 적기');
         if (signed) box.dataset.signed = '1';
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));
