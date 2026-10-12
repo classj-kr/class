@@ -2059,6 +2059,9 @@ function createClassroomPlatform(options = {}) {
           // 표시한다. 서버도 같은 예외를 알아야 학생을 다시 content=locked로
           // 돌려보내지 않는다. 하위 CSS/JS 요청도 함께 허용한다.
           || requestPath === "/room" || requestPath.startsWith("/room/")
+          // fetch defaults to Accept: */*, which also matches req.accepts("html").
+          // The room lookup belongs to the always-open entrance, not the lesson catalog.
+          || /^\/api\/room-entry\/resolve\/\d{4}$/.test(requestPath)
           || requestPath === "/vote" || requestPath.startsWith("/vote/")
           || requestPath === "/school-election" || requestPath.startsWith("/school-election/");
         if (classId && requestPath && !isAlwaysAllowed) {

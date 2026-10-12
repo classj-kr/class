@@ -14,12 +14,12 @@
       <h1 id="pageTitle">방번호 입력</h1>
       <form id="roomForm">
         <label class="sr-only" for="roomCode">방번호</label>
-        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="one-time-code" placeholder="숫자 4자리" autofocus>
+        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}|[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="4자리 또는 6자리" autofocus>
         <button type="submit">입장</button>
       </form>
       <p id="status" class="status" role="status"></p>
     </section>
   </main>
-  <script src="app.js?v=20261007-unified-entry"></script>
+  <script src="app.js?v=20261012-board-entry"></script>
 </body>
 </html>

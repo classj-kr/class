@@ -4,12 +4,13 @@ const { createLearningBoards } = require('../game-hub-server/learning-boards');
 const { createRoomCodes } = require('../game-hub-server/room-codes');
 const { createRoomEntry } = require('../game-hub-server/room-entry');
 const path = require('node:path');
+const { createAccessGate } = require('./classroom-site-access-harness.cjs');
 
 class HttpError extends Error {
   constructor(status, code, message) { super(message); this.status = status; this.code = code; }
 }
 
-async function createHarness() {
+async function createHarness({ studentSiteAccess = false } = {}) {
   const db = new PGlite();
   await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2);');
   // PGlite has one connection: lease it for a whole transaction, as pg.Pool does.
@@ -45,6 +46,7 @@ async function createHarness() {
   await feature.initialize();
   await feature.initialize(); // repeat boot is safe
   const app = express(); app.use(express.json({ limit: '32kb' }));
+  if (studentSiteAccess) app.use(['/room', '/api/room-entry'], createAccessGate());
   app.use('/api/room-entry', createRoomEntry({ roomCodes }));
   app.use('/api/boards', feature.router);
   app.use((error, _req, res, _next) => res.status(error.status || 500).json({ error: error.code, message: error.message }));
