@@ -16,6 +16,7 @@
 - 식을 그리기: `ex(글)`(긴 식은 휴대폰 너비에 맞게 글씨를 줄인다), `show(식)`, 이름표를 붙인 여러 줄 `taggedEx([글, …])`, 계산 과정 `proc([{ h, mark }, …])`, 차례로 계산하는 칸 `flow([...])`.
 - 답: 값 하나 `ansV(text, 유리수, 'int' | 'frac' | 'dec', { figure, unit, explain, facts })`(부호 단추가 붙는다), 식 하나를 계산하는 문항 `calcQ(식, kind, { rule, explain, text })`, 조건에 맞는 식 뽑기 `pickEx(d, make, kind, ok)`, 검사 근거 `valueFacts(식, { rule })`.
 - **답이 일차식인 문항** `linAns(text, a, b, 문자 글, { figure, explain, facts })`: 「[±][ ]x [±][ ]」 두 칸으로 받고, 틀리면 식 그대로(3x − 2) 보인다. a, b는 0이 아닌 정수. `facts.calc: [[계수를 셈하는 식, 0], [상수항을 셈하는 식, 1]]`. 계수가 분수이거나 항이 하나·셋인 답은 고르기로 바꾸거나 `M(…, { shown: 식 글 })`으로 칸을 직접 짠다(`shown`은 틀렸을 때 답 줄에 보일 글).
+- **답이 점의 좌표인 문항** `pointAns(text, x, y, { figure, explain, facts })`: 「( [±][ ] , [±][ ] )」 두 칸으로 받는다(정수 좌표). `facts.calc`로 두 칸을 따로 근거 댄다.
 - 수 고르기: `nz(d, lo, hi)` 0이 아닌 정수, `pm(d)` ±1, `co(d, q, lo, hi)` q와 서로소인 수, `fr(d, [분모들], 최대 크기)` 정수가 아닌 양의 기약분수, `distinct(유리수들)`.
 - 풀이 글: `addTold(x, y)`·`subTold`·`mulTold`·`divTold`·`commonTold(식)`(두 수의 셈을 규칙대로 풀어 적은 글), 참·거짓 문장 고르기 `claimQ(d, text, 옳은 문장들, [[틀린 문장, 바로잡은 말, 함께 싣지 않을 옳은 문장], …], 옳은 것을 묻는가)`.
 - 그림
