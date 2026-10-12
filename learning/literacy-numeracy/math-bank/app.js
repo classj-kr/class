@@ -26,15 +26,17 @@
   const roundKey = (groupId, level, no) => unit.id + ':' + groupId + ':' + level + ':' + no;
   const versionOf = (u) => VERSION + '.' + (u.version || 1);
   const termOf = (u) => u.grade + '-' + u.semester;
+  // 드롭다운의 항목 이름과 맨 밑의 기출 항목(terms.js). 기출 화면의 자리.
+  const T = window.MathBankTerms, PAST_URL = '../csat-math/';
 
   // ── 단원 고르기 ──────────────────────────────────────────────
   function fillSelects(preferred) {
     const units = B.units();
     const terms = [...new Set(units.map(termOf))];
-    // 학교급을 앞에 적는다: 1~6학년은 「초」, 7·8·9학년은 「중」 1·2·3학년.
-    termSelect.replaceChildren(...terms.map((term) => { const [g, s] = term.split('-').map(Number); return new Option((g > 6 ? '중 ' + (g - 6) : '초 ' + g) + '학년 ' + s + '학기', term); }));
-    unit = units.find((u) => u.id === preferred) || units[0];
-    termSelect.value = termOf(unit);
+    // preferred 는 단원 번호(3-1-2)이거나 학기(3-1)다. 학기이면 그 학기의 첫 단원을 연다.
+    unit = units.find((u) => u.id === preferred) || units.find((u) => termOf(u) === preferred) || units[0];
+    // 학기들 아래 맨 밑에 「평가원·수능 기출」이 붙는다(terms.js).
+    T.fill(termSelect, termOf(unit), terms);
     fillUnits();
   }
   function fillUnits() {
@@ -43,7 +45,11 @@
     if (!list.includes(unit)) unit = list[0];
     unitSelect.value = unit.id;
   }
-  termSelect.addEventListener('change', async () => { fillUnits(); await loadFinished(); showGroups(); });
+  termSelect.addEventListener('change', async () => {
+    // 맨 밑의 「평가원·수능 기출」은 따로 있는 기출 화면으로 간다. 뒤로 돌아왔을 때 드롭다운이 기출에 머물러 있지 않게 먼저 되돌려 둔다.
+    if (termSelect.value === T.PAST.value) { termSelect.value = termOf(unit); location.href = PAST_URL; return; }
+    fillUnits(); await loadFinished(); showGroups();
+  });
   unitSelect.addEventListener('change', async () => { unit = B.findUnit(unitSelect.value); await loadFinished(); showGroups(); });
 
   // 끝낸 회차의 결과(학생으로 로그인했을 때만 서버에 있다)
@@ -66,7 +72,7 @@
   // ── 묶음 목록 ────────────────────────────────────────────────
   function showGroups() {
     round = null;
-    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
+    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('term'); url.searchParams.set('unit', unit.id); history.replaceState(history.state, '', url);
     const list = el('ol', 'mb-groups');
     for (const group of unit.groups) {
       const row = el('li', 'mb-group');
@@ -279,7 +285,7 @@
     await records.ready;
     const params = new URLSearchParams(location.search);
     const record = (params.get('record') || '').split(':');   // 풀던 회차: 단원:묶음:수준:회차
-    fillSelects(record.length >= 3 ? record[0] : params.get('unit'));
+    fillSelects(record.length >= 3 ? record[0] : params.get('unit') || params.get('term'));
     await loadFinished();
     if (record.length >= 3 && unit.id === record[0] && B.findGroup(unit, record[1]) && B.LEVELS.includes(record[2])) await openRound(record[1], record[2], Number(record[3]) || 1);
     else showGroups();
