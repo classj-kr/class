@@ -1633,6 +1633,14 @@ function createClassroomPlatform(options = {}) {
 
   const learningBoards = createLearningBoards({
     pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute,
+    async joinIdentity(req, user) {
+      if (user) {
+        const membership = await studentMembership(user.id);
+        return { name: membership?.studentName || user.name || user.displayName, number: membership?.studentNumber };
+      }
+      const guest = guestAccess(req);
+      return guest ? { name: guest.name } : null;
+    },
     allocateRoomCode: (db) => roomCodes.allocate('board', db),
     failureLimiter: createAuthenticationFailureLimiter()
   });

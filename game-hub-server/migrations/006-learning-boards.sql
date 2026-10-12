@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS learning_board_members (
   UNIQUE(board_id, number),
   UNIQUE(board_id, id)
 );
+ALTER TABLE learning_board_members ADD COLUMN IF NOT EXISTS user_id BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS learning_board_members_user_idx ON learning_board_members(board_id, user_id) WHERE user_id IS NOT NULL;
 CREATE TABLE IF NOT EXISTS learning_board_posts (
   id TEXT PRIMARY KEY,
   board_id TEXT NOT NULL REFERENCES learning_boards(id) ON DELETE CASCADE,
