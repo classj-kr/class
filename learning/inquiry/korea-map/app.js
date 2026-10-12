@@ -12,6 +12,7 @@
   const regionOfProvince = dataset.regionOfProvince || [];
   const borders = window.KOREA_BORDERS || { mdl: [], national: [] };
   const terrainRivers = (window.TERRAIN_DATA && window.TERRAIN_DATA.rivers) || { features: [] };
+  const regionalRivers = window.KOREA_REGIONAL_RIVERS || { features: [] };
   // 북한 도 경계(data/regions.js). 남한 시·도 경계(provinces-topo.json)와 함께 그린다.
   const northFeatures = ((window.KOREA_REGIONS && window.KOREA_REGIONS.north) || []).map((province) => ({
     type: "Feature", properties: { name: province.name, north: true },
@@ -547,7 +548,9 @@
     const box = document.createElement("div");
     box.append(element("span", "note-kind", KIND_LABELS[annotation.kind] || "지형"), element("strong", "", annotation.text || annotation.name));
     if (annotation.note) box.append(element("p", "", annotation.note));
-    notePopup = L.popup({ className: "note-popup", maxWidth: 280, offset: [0, -8], autoPanPadding: [16, 16] })
+    // Keep the reading balloon clear of zoom/profile controls and the bottom legend.
+    notePopup = L.popup({ className: "note-popup", maxWidth: Math.min(280, mainMap.getSize().x - 106), offset: [0, -8],
+      autoPanPaddingTopLeft: [56, 128], autoPanPaddingBottomRight: [18, 150] })
       .setLatLng([annotation.lat, annotation.lng]).setContent(box).openOn(mainMap);
   }
 
@@ -710,6 +713,27 @@
     });
   }
 
+  // 주변국 하천은 지형 비교용이다. 한반도 하천의 유수 모형 대신 위치 설명을 연다.
+  function drawRegionalRivers(map, group, interactive) {
+    const strokes = regionalRivers.features.map(({ properties: p, geometry }) => {
+      const latLngs = riverCoordinateLines(geometry).map(line => line.map(([lng, lat]) => [lat, lng]));
+      const options = { pane: "themeLines", lineCap: "round", lineJoin: "round", smoothFactor: 0.6 };
+      const casing = L.polyline(latLngs, { ...options, color: "#fff", opacity: 0.7, interactive: false });
+      const path = L.polyline(latLngs, { ...options, color: "#087eaf", opacity: 0.96, interactive, className: "regional-river-path" });
+      if (interactive) path.bindTooltip(p.name, { sticky: true, className: "river-tooltip" });
+      if (interactive && map === mainMap) path.on("click", event => {
+        if (!profile.active) showAnnotationNote({ ...p, kind: "river", lat: event.latlng.lat, lng: event.latlng.lng });
+      });
+      return { casing, path };
+    });
+    strokes.forEach(({ casing }) => casing.addTo(group));
+    strokes.forEach(({ path }) => path.addTo(group));
+    setZoomSync(map, "regionalRivers", () => {
+      const weight = map.getZoom() <= 4 ? 1.4 : map.getZoom() <= 6 ? 1.9 : 2.5;
+      strokes.forEach(({ casing, path }) => { casing.setStyle({ weight: weight + 1.5 }); path.setStyle({ weight }); });
+    });
+  }
+
   // 교통 탭의 실제 노선(data/transport-lines.js). 일반 철도는 검은 선에 흰 점선(철도 기호), 고속 국도는 주황(간선은 굵게), 고속 철도는 진홍.
   // 노선이 여러 토막이라 테두리를 한꺼번에 먼저 깔고 색선을 나중에 그린다(토막마다 번갈아 그리면 이음매를 테두리가 덮는다).
   function drawTransportNetwork(group, interactive) {
@@ -743,6 +767,7 @@
     const interactive = !!opts.interactive;
     clearZoomSync(map, "minorRivers");
     clearZoomSync(map, "riverWidth");
+    clearZoomSync(map, "regionalRivers");
     clearZoomSync(map, "markers");
     clearZoomSync(map, "heritage");
     clearZoomSync(map, "travel");
@@ -751,6 +776,7 @@
     // 문제 지도는 답하기 전에는 바탕(지형·하천)만 그린다. 구역·등온선·교통축이 답을 드러내기 때문이다.
     if ((theme.rivers || theme === themes.climate || opts.baseOnly) && majorRivers) drawMajorRivers(map, group, interactive);
     if (theme.minorRivers && !opts.baseOnly) drawMinorRivers(map, group, interactive);
+    if (theme === themes.terrain && !opts.baseOnly) drawRegionalRivers(map, group, interactive);
     if (theme.network && !opts.baseOnly) drawTransportNetwork(group, interactive);
     if (opts.baseOnly) return;
 

@@ -52,6 +52,9 @@
       { name: "새만금 간척지", kind: "coast", lat: 35.78, lng: 126.58, minZoom: 8, note: "갯벌을 방조제로 막고 메워 만든 간척지. 새만금 방조제는 길이가 33.9km로 세계에서 가장 긴 방조제다." },
       { name: "시화호", kind: "coast", lat: 37.29, lng: 126.72, minZoom: 8, note: "바다를 방조제로 막아 만든 인공 호수. 물이 더러워져 민물 호수로 쓰려던 계획을 접고 바닷물이 드나들게 했으며, 조력 발전소가 들어섰다." }
     );
+    (window.KOREA_REGIONAL_RIVERS?.features || []).forEach(({ properties: p }) => {
+      items.push({ name: p.name, kind: "river", note: p.note, lat: p.label[1], lng: p.label[0], minZoom: p.minZoom });
+    });
     return items;
   }
 
@@ -138,6 +141,7 @@
     },
 
     terrain: {
+      minZoom: 4,
       label: "지형",
       points: [
         "동고서저: 태백산맥이 동해안 가까이 있어 동해로 흐르는 하천은 짧고 급하며, 서·남해로 흐르는 하천은 길고 완만하다.",
