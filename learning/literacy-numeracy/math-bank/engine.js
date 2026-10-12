@@ -499,7 +499,8 @@
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
   // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다. 답은 더 줄일 수 없는 분수(기약분수)로 적는다.
   // o.whole 을 주면 대분수(자연수 칸 + 분자·분모 칸), o.improper: true 면 가분수(분자가 분모보다 크다), o.unit 은 분수 뒤에 적는 단위.
-  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: (o.whole != null ? [{ answer: o.whole, label: '자연수' }] : []).concat([{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }]), fraction: true, mixed: o.whole != null, improper: Boolean(o.improper), unit: o.unit || '', explain: o.explain || '', facts: o.facts || {} });
+  // o.anyForm: true 면 크기가 같은 분수를 모두 맞게 친다. 문제가 「기약분수로」라고 하지 않은 5·6학년 분수 계산에 쓴다(적어 두는 답은 그래도 기약분수다).
+  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: (o.whole != null ? [{ answer: o.whole, label: '자연수' }] : []).concat([{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }]), fraction: true, mixed: o.whole != null, improper: Boolean(o.improper), anyForm: Boolean(o.anyForm), unit: o.unit || '', explain: o.explain || '', facts: o.facts || {} });
   // 소수 하나를 답하는 문항(소수 셋째 자리까지)
   const D = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, decimal: true }], explain: o.explain || '', facts: o.facts || {} });
   // 검사가 따로 셈할 식 글
@@ -653,6 +654,13 @@
     // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 곱하면 어긋난다). 소수 칸만 1000배 하여 견준다.
     const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 1000) : input.answer)), got = given.map((text, i) => (item.inputs[i].decimal ? Math.round(Number(text) * 1000) : Number(text)));
     if (item.unordered) { want.sort((a, b) => a - b); got.sort((a, b) => a - b); }
+    // anyForm 인 분수 문항은 크기가 같은 분수를 모두 받는다(교육과정: 기약분수로 나타내라고 하지 않았으면 기약분수가 아닌 분수도 허용한다).
+    // 대분수는 자연수 칸이 같고 분수 부분이 진분수여야 한다. 가분수를 받지 않는 문항은 가분수로 적은 답을 받지 않는다.
+    if (item.fraction && item.anyForm) {
+      const n = want.length, top = got[n - 2], bottom = got[n - 1];
+      if (bottom < 2 || top < 1 || top * want[n - 1] !== want[n - 2] * bottom) return false;
+      return item.mixed ? got[0] === want[0] && top < bottom : true;
+    }
     return want.every((value, i) => value === got[i]);
   }
 
