@@ -55,10 +55,24 @@
   $('joinCode').value = (params.get('code') || '').replace(/\D/g, '').slice(0, 6);
   // Both typed legacy codes and invitation links must remain usable.
   $('joinCode').addEventListener('input', () => { $('joinCode').value = $('joinCode').value.replace(/\D/g, '').slice(0, $('joinCode').maxLength); });
-  handleForm('joinForm', async () => {
-    const result = await api('/join', 'POST', { code: $('joinCode').value, number: Number($('joinNumber').value), name: $('joinName').value });
+  let identityReady;
+  function prepareEntry() {
+    if (!identityReady) identityReady = api('/identity').then(({ recognized }) => {
+      $('joinIdentityFields').hidden = recognized;
+      $('joinNumber').disabled = $('joinName').disabled = recognized;
+      return recognized;
+    }).catch(error => { identityReady = null; throw error; });
+    return identityReady;
+  }
+  async function joinBoard() {
+    const recognized = await prepareEntry();
+    if (!$('joinForm').reportValidity()) return;
+    const body = { code: $('joinCode').value };
+    if (!recognized) { body.number = Number($('joinNumber').value); body.name = $('joinName').value; }
+    const result = await api('/join', 'POST', body);
     navigateBoard(result.board.id);
-  });
+  }
+  handleForm('joinForm', joinBoard);
 
   async function teacherHome() {
     show('teacherHome');
@@ -199,6 +213,7 @@
         show('entry'); $('joinError').textContent = error.message;
         if (data) $('joinCode').value = data.board.code;
         boardId = null; setId = null;
+        await prepareEntry().catch(() => {});
       }
       if (force) toast(error.message);
     } finally { loading = false; }
@@ -355,6 +370,12 @@
       catch (error) { $('joinError').textContent = error.message; }
     } else if (boardId) await refresh(true);
     else if (params.get('mode') === 'teacher') await teacherHome();
+    else {
+      try {
+        const recognized = await prepareEntry();
+        if (recognized && /^(?:\d{4}|\d{6})$/.test($('joinCode').value)) await joinBoard();
+      } catch (error) { $('joinError').textContent = error.message; }
+    }
   }
   setInterval(() => { if (boardId && !document.hidden) void refresh(); }, 3000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && boardId) void refresh(); });

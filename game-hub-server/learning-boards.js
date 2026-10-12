@@ -8,7 +8,7 @@ const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const id = () => crypto.randomUUID();
 const MAX_POSTS = 200;
 
-function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode }) {
+function createLearningBoards({ pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, failureLimiter, allocateRoomCode, joinIdentity = async () => null }) {
   const router = express.Router();
   const fail = (status, code, message) => { throw new HttpError(status, code, message); };
   function text(value, max, required = false) {
@@ -61,14 +61,18 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   }
   async function actor(req, b, db, verified) {
     if (verified?.teacher) return verified;
+    let userId = verified?.userId;
     if (!verified) {
       const user = await sessionUser(req);
       if (user && String(user.id) === String(b.owner_id)) return owner(req, b);
+      userId = user?.id;
     }
     const token = cookie(req, b.id);
-    const member = token && (await db.query('SELECT id, number, name FROM learning_board_members WHERE board_id=$1 AND token_hash=$2', [b.id, hash(token)])).rows[0];
+    const member = (await db.query(`SELECT id, number, name FROM learning_board_members
+      WHERE board_id=$1 AND ((user_id IS NOT NULL AND user_id=$2) OR (user_id IS NULL AND token_hash=$3))
+      ORDER BY user_id NULLS LAST LIMIT 1`, [b.id, userId || null, token ? hash(token) : null])).rows[0];
     if (!member) fail(401, 'BOARD_JOIN_REQUIRED', '방번호를 입력하고 게시판에 참여해 주세요.');
-    return { ...member, teacher: false };
+    return { ...member, userId, teacher: false };
   }
   async function transaction(req, work, teacherOnly = false) {
     // Resolve platform auth before leasing a connection: auth itself uses pool.query.
@@ -99,6 +103,11 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
   }
 
   router.use((_req, res, next) => { requireDatabase(); res.set('Cache-Control', 'no-store'); next(); });
+
+  router.get('/identity', asyncRoute(async (req, res) => {
+    const user = await sessionUser(req);
+    res.json({ recognized: Boolean(await joinIdentity(req, user)) });
+  }));
 
   router.get('/mine', asyncRoute(async (req, res) => {
     const user = await requireTeacher(req);
@@ -138,8 +147,11 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     failureLimiter.enforce(req, 'board-join');
     const code = text(req.body?.code, 6, true);
     if (!/^\d{4}$|^\d{6}$/.test(code)) fail(400, 'INVALID_CODE', '방번호 4자리를 입력해 주세요.');
-    const name = text(req.body?.name, 20, true);
-    const number = integer(req.body?.number, 1, 60);
+    // Resolve platform identity before leasing a connection (it also queries the pool).
+    const user = await sessionUser(req);
+    const identity = await joinIdentity(req, user);
+    const name = text(identity ? identity.name : req.body?.name, 80, true);
+    const requestedNumber = identity ? Number(identity.number) : integer(req.body?.number, 1, 60);
     const db = await pool.connect();
     try {
       await db.query('BEGIN');
@@ -148,14 +160,30 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         failureLimiter.recordFailure(req, 'board-join');
         fail(404, 'BOARD_NOT_FOUND', '방번호를 다시 확인해 주세요.');
       }
+      if (user && String(user.id) === String(b.owner_id)) {
+        await db.query('COMMIT');
+        return res.json({ board: publicBoard(b) });
+      }
       const previous = cookie(req, b.id);
-      const member = previous && (await db.query('SELECT id FROM learning_board_members WHERE board_id=$1 AND token_hash=$2', [b.id, hash(previous)])).rows[0];
+      let member = user && (await db.query('SELECT id FROM learning_board_members WHERE board_id=$1 AND user_id=$2', [b.id, user.id])).rows[0];
+      if (!member && previous) {
+        member = (await db.query('SELECT id, name FROM learning_board_members WHERE board_id=$1 AND user_id IS NULL AND token_hash=$2', [b.id, hash(previous)])).rows[0];
+        if (member && identity && member.name !== name) member = null;
+        if (member && user) await db.query('UPDATE learning_board_members SET user_id=$2 WHERE id=$1', [member.id, user.id]);
+      }
       if (!member) {
         if (b.locked || b.closed) fail(403, 'BOARD_LOCKED', '선생님이 입장을 닫았어요.');
-        if (number > b.slots) fail(400, 'INVALID_NUMBER', `이 게시판에는 ${b.slots}번까지 참여할 수 있어요.`);
+        let number = requestedNumber;
+        if (identity) {
+          const occupied = (await db.query('SELECT number FROM learning_board_members WHERE board_id=$1', [b.id])).rows.map(row => row.number);
+          if (!Number.isInteger(number) || number < 1 || number > b.slots || occupied.includes(number)) {
+            number = Array.from({ length: b.slots }, (_, index) => index + 1).find(value => !occupied.includes(value));
+          }
+          if (!number) fail(409, 'BOARD_FULL', '참여 인원이 가득 찼어요.');
+        } else if (number > b.slots) fail(400, 'INVALID_NUMBER', `이 게시판에는 ${b.slots}번까지 참여할 수 있어요.`);
         const token = crypto.randomBytes(32).toString('hex');
-        const added = await db.query(`INSERT INTO learning_board_members(id, board_id, number, name, token_hash)
-          VALUES($1,$2,$3,$4,$5) ON CONFLICT(board_id, number) DO NOTHING RETURNING id`, [id(), b.id, number, name, hash(token)]);
+        const added = await db.query(`INSERT INTO learning_board_members(id, board_id, number, name, token_hash, user_id)
+          VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(board_id, number) DO NOTHING RETURNING id`, [id(), b.id, number, name, hash(token), identity && user ? user.id : null]);
         if (!added.rowCount) fail(409, 'NUMBER_TAKEN', '이미 참여한 번호예요. 원래 기기로 접속하거나 선생님께 참여 초기화를 요청해 주세요.');
         // The cookie covers /join as well, allowing re-entry from the same browser.
         res.cookie(`board_${b.id}`, token, { httpOnly: true, sameSite: 'strict', secure: req.secure, path: '/api/boards', maxAge: 1000 * 60 * 60 * 24 * 180 });
@@ -240,7 +268,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
     const result = await transaction(req, async (db, b) => {
       const number = integer(req.body?.number, 1, b.slots);
       const ticket = crypto.randomBytes(16).toString('hex');
-      const found = await db.query('UPDATE learning_board_members SET token_hash=$3 WHERE board_id=$1 AND number=$2 RETURNING id', [b.id, number, `reclaim:${hash(ticket)}`]);
+      const found = await db.query('UPDATE learning_board_members SET token_hash=$3, user_id=NULL WHERE board_id=$1 AND number=$2 RETURNING id', [b.id, number, `reclaim:${hash(ticket)}`]);
       if (!found.rowCount) fail(404, 'MEMBER_NOT_FOUND', '아직 참여하지 않은 번호예요.');
       return { ticket, code: b.code, number };
     }, true);

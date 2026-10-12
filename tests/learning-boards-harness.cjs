@@ -12,7 +12,7 @@ class HttpError extends Error {
 
 async function createHarness({ studentSiteAccess = false } = {}) {
   const db = new PGlite();
-  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2);');
+  await db.exec('CREATE TABLE classroom_users(id BIGINT PRIMARY KEY); INSERT INTO classroom_users VALUES(1),(2),(3),(4),(5);');
   // PGlite has one connection: lease it for a whole transaction, as pg.Pool does.
   let tail = Promise.resolve();
   async function lease() {
@@ -31,15 +31,21 @@ async function createHarness({ studentSiteAccess = false } = {}) {
   };
   const sessionUser = async req => {
     const match = /(?:^|;\s*)test_teacher=(1|2)(?:;|$)/.exec(req.headers.cookie || '');
-    return match ? { id: Number(match[1]), role: 'teacher' } : null;
+    if (match) return { id: Number(match[1]), role: 'teacher', name: '선생님' };
+    const student = /(?:^|;\s*)test_student=(3|4|5)(?:;|$)/.exec(req.headers.cookie || '');
+    return student ? { id: Number(student[1]), role: 'student', name: `학생${student[1]}` } : null;
   };
   const failures = new Map();
   const roomCodes = createRoomCodes({ pool, legacyTaken: async (code, client) =>
     (await client.query('SELECT 1 FROM learning_boards WHERE code=$1', [code])).rows.length > 0 });
   await roomCodes.initialize();
   const feature = createLearningBoards({ pool, sessionUser,
+    async joinIdentity(req, user) {
+      if (user) return { name: user.name, number: user.role === 'student' ? 7 : undefined };
+      return /(?:^|;\s*)test_guest=1(?:;|$)/.test(req.headers.cookie || '') ? { name: '게스트' } : null;
+    },
     allocateRoomCode: client => roomCodes.allocate('board', client),
-    requireTeacher: async req => { const user = await sessionUser(req); if (!user) throw new HttpError(401, 'AUTH_REQUIRED', '선생님 로그인이 필요해요.'); return user; },
+    requireTeacher: async req => { const user = await sessionUser(req); if (user?.role !== 'teacher') throw new HttpError(401, 'AUTH_REQUIRED', '선생님 로그인이 필요해요.'); return user; },
     requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res)).catch(next),
     failureLimiter: { enforce(req) { if ((failures.get(req.ip) || 0) >= 30) throw new HttpError(429, 'RATE_LIMIT', '잠시 후 다시 시도해 주세요.'); }, recordFailure(req) { failures.set(req.ip, (failures.get(req.ip) || 0) + 1); } }
   });
