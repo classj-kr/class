@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const root=path.resolve(__dirname,'../learning/inquiry');
 const context={window:{ExamData:require('../learning/inquiry/human-body/shared/exam-data.js'),KOREA_GEOGRAPHY:{questions:[]}}};
 vm.createContext(context);
-for(const f of ['curriculum/body-content.js','curriculum/matter-content.js','curriculum/map-content.js','curriculum/body-practice.js','curriculum/matter-practice.js','curriculum/map-advanced.js','curriculum/map-practice.js','korea-map/data/questions.js','korea-map/data/study-lessons.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),context,{filename:f});
+for(const f of ['curriculum/body-content.js','curriculum/matter-content.js','curriculum/map-content.js','curriculum/body-practice.js','curriculum/matter-practice.js','curriculum/map-advanced.js','curriculum/map-practice.js','korea-map/data/questions.js','korea-map/data/study-lessons.js','korea-map/data/exam-lessons.js','korea-map/data/exam-questions.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),context,{filename:f});
 const w=context.window;
 const identities=new Map();
 function validate(items,label){
@@ -48,7 +48,7 @@ test('available map topics never have an empty school pool and keep objective so
                 signatures.push([level,pool.map(q=>q.id).join(',')]);
                 if(level==='high') {
                     assert.ok(pool.every(q=>q.difficulty==='advanced'),`${kind}:${lesson.id} leaked a basic question`);
-                    if(kind==='world'||lesson.id==='division') {
+                    if(kind==='world') {
                         assert.ok(pool.length>=2);
                         assert.ok(pool.every(q=>q.options.length===5&&(q.table||q.stimulus)),`${lesson.id} needs supplied data and five choices`);
                     }

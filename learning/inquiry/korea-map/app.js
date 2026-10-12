@@ -250,6 +250,18 @@
       questionFocusLayer.clearLayers();
       session.answered = false;
     });
+    // 화면 폭이 바뀌어 문제 지도가 세로 배치되어도 모든 표식이 보이게 한다.
+    let questionResizeFrame;
+    new ResizeObserver(() => {
+      cancelAnimationFrame(questionResizeFrame);
+      questionResizeFrame = requestAnimationFrame(() => {
+        if (!$("#practiceDialog").open || $("#questionMap").hidden) return;
+        const question = session.questions[session.index];
+        if (!question) return;
+        questionMap.invalidateSize({ pan: false });
+        fitQuestionMap(question);
+      });
+    }).observe($("#questionMap"));
     window.addEventListener("hashchange", () => {
       const key = (location.hash || "").replace("#", "");
       if (themes[key] && key !== currentTheme) renderTheme(key);
@@ -1090,7 +1102,7 @@
     }
     const theme = themes[currentTheme];
     if (theme && theme.buildQuestions) return theme.buildQuestions();
-    return questions.filter((question) => question.topic === currentTheme);
+    return allQuestions().filter((question) => question.topic === currentTheme);
   }
 
   function allQuestions(allSchools=false) {
