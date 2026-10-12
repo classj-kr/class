@@ -235,7 +235,7 @@
   }
 
   B.addUnit({
-    id: '4-2-2', grade: 4, semester: 2, no: 2, title: '사각형', version: 2,
+    id: '4-2-2', grade: 4, semester: 2, no: 2, title: '사각형', version: 3,
     groups: [
       {
         id: 'perp', title: '수직과 수선', standard: LINE,

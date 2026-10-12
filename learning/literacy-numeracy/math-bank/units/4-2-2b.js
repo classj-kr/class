@@ -669,7 +669,7 @@
         const kinds = d.shuffle(['rc', 'sq', 'tilt', 'rh']), picks = kinds.map((k) => vary(d, d.pick({ rc: RECTS, sq: SQUARES, tilt: TILTED, rh: RHOMBI }[k]))), labels = TAGS.slice(0, 4), tag = (k) => labels[kinds.indexOf(k)];
         const flags = picks.map((pts) => kindOf(pts).rect);
         return N('모눈종이에 그린 사각형 가운데 직사각형은 모두 몇 개인가?', flags.filter(Boolean).length, {
-          unit: '개', figure: tilesOf(picks, '모눈종이 위의 사각형'), explain: `직사각형은 네 각이 모두 직각인 사각형이다. 정사각형도 네 각이 모두 직각이므로 직사각형이다. ${tag('tilt')}는 비스듬히 놓여 있지만 네 각이 모두 직각인 정사각형이다. ${tag('rh')}에는 직각이 없다. 직사각형은 ${labels.filter((_, i) => flags[i]).join(', ')}이다.`,
+          unit: '개', figure: tilesOf(picks, '모눈종이 위의 사각형'), explain: `직사각형은 네 각이 모두 직각인 사각형이다. 사각형마다 네 각이 모두 직각인지만 본다. 변의 길이가 같든 다르든, 비스듬히 놓여 있든 상관없다. ${tag('rh')}에는 직각이 없다. 네 각이 모두 직각인 사각형은 ${labels.filter((_, i) => flags[i]).join(', ')}이다.`,
           facts: { rectCount: picks }
         });
       }),
