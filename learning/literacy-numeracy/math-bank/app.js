@@ -27,7 +27,8 @@
   function fillSelects(preferred) {
     const units = B.units();
     const terms = [...new Set(units.map(termOf))];
-    termSelect.replaceChildren(...terms.map((term) => { const [g, s] = term.split('-'); return new Option(g + '학년 ' + s + '학기', term); }));
+    // 7·8·9학년은 중학교 1·2·3학년이다.
+    termSelect.replaceChildren(...terms.map((term) => { const [g, s] = term.split('-'); return new Option((Number(g) > 6 ? '중학교 ' + (Number(g) - 6) : g) + '학년 ' + s + '학기', term); }));
     unit = units.find((u) => u.id === preferred) || units[0];
     termSelect.value = termOf(unit);
     fillUnits();
@@ -139,9 +140,17 @@
         const field = el('label', 'mb-field' + (roomy && !item.fraction ? ' is-wide' : item.inputs.length > 1 ? ' is-short' : ''));
         if (input.label && !item.fraction) field.append(el('span', null, input.label));
         if (input.lead) field.append(el('span', null, input.lead));
+        // 부호가 있는 답: 숫자 자판에는 −가 없으므로 칸 앞의 단추를 눌러 +와 −를 바꾼다. 분수는 맨 앞에 단추 하나만 둔다(값 전체의 부호).
+        const signed = Boolean(input.signed || (item.signed && at === 0));
+        if (signed) {
+          const sign = el('button', 'mb-sign', '+'); sign.type = 'button'; sign.dataset.sign = '+'; sign.setAttribute('aria-label', '부호 바꾸기(지금 +)');
+          sign.addEventListener('click', () => setSign(sign, sign.dataset.sign === '+' ? '−' : '+'));
+          (item.fraction ? form : field).append(sign);
+        }
         const box = document.createElement('input');
         box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : input.decimal ? 8 : 6;
         box.setAttribute('aria-label', (input.label || '답') + ' 적기');
+        if (signed) box.dataset.signed = '1';
         field.append(box);
         if (input.unit) field.append(el('span', null, input.unit));
         const whole = Boolean(stack) && item.mixed && at === 0;
@@ -156,7 +165,17 @@
         const boxes = [...form.querySelectorAll('input')];
         const empty = boxes.find((box) => box.value.trim() === '');
         if (empty) { empty.focus(); return; }
-        answer(item, card, boxes.map((box) => box.value.trim()));
+        // 부호 단추가 붙은 칸은 단추의 부호를 글 앞에 붙여 보낸다. 자판으로 -를 직접 적은 것도 받는다.
+        const signs = [...form.querySelectorAll('.mb-sign')];
+        let s = 0;
+        answer(item, card, boxes.map((box) => {
+          const text = box.value.trim();
+          if (!box.dataset.signed) return text;
+          const button = signs[s]; s += 1;
+          const typed = /^[-−]/.test(text) ? '−' : /^\+/.test(text) ? '+' : null;
+          if (typed) setSign(button, typed);
+          return (button.dataset.sign === '−' ? '-' : '') + text.replace(/^[-−+]\s*/, '');
+        }));
       });
       card.append(form);
     }
@@ -166,10 +185,13 @@
     return card;
   }
 
+  const setSign = (button, sign) => { button.dataset.sign = sign; button.textContent = sign; button.setAttribute('aria-label', '부호 바꾸기(지금 ' + sign + ')'); };
+  // 음수는 빼기표(−)로 적는다.
+  const signedText = (n) => (n < 0 ? '−' + Math.abs(n) : String(n));
   const answerText = (item) => (item.choice
     ? plainText(item.choice.options[item.choice.answer])
-    : item.fraction ? (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
-    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + input.answer + (input.unit ? (/^[A-Za-z%:]/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))
+    : item.fraction ? (item.negative ? '−' : '') + (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
+    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + signedText(input.answer) + (input.unit ? (/^[A-Za-z%:]/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))
       // 비(□ : □)는 쉼표 없이 잇는다.
       .reduce((text, part, i) => text + (i ? (/:$/.test(text) ? ' ' : ', ') : '') + part, ''));
 
@@ -183,7 +205,13 @@
         else if (i === Number(response)) button.classList.add('is-picked');
       });
     } else {
-      card.querySelectorAll('.mb-field input').forEach((box, i) => { box.value = Array.isArray(response) ? response[i] ?? '' : response; box.disabled = true; });
+      const signs = [...card.querySelectorAll('.mb-sign')];
+      let s = 0;
+      card.querySelectorAll('.mb-field input').forEach((box, i) => {
+        const text = String(Array.isArray(response) ? response[i] ?? '' : response);
+        if (box.dataset.signed) { const button = signs[s]; s += 1; setSign(button, /^[-−]/.test(text) ? '−' : '+'); button.disabled = true; box.value = text.replace(/^[-−+]/, ''); } else box.value = text;
+        box.disabled = true;
+      });
       card.querySelector('.mb-primary').disabled = true;
     }
     const result = card.querySelector('.mb-result');

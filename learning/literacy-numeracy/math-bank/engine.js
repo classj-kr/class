@@ -493,16 +493,18 @@
 
   // ── 문항 꼴 세 가지: 수 하나(N), 수 여럿(M), 고르기(C) ───────
   // 서술형(식 쓰기·설명하기)은 없다. 답은 수를 적거나 보기에서 고른다.
-  // o: { figure, unit, lead, explain, facts, unordered }. facts 는 검사가 답을 다른 길로 다시 셈하는 근거다.
-  const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead }], explain: o.explain || '', facts: o.facts || {} });
+  // o: { figure, unit, lead, explain, facts, unordered, signed }. facts 는 검사가 답을 다른 길로 다시 셈하는 근거다.
+  // 부호가 있는 답(중학교): o.signed: true 면 답 칸 앞에 부호 단추(+/−)가 붙고 answer 는 음수일 수 있다. M 은 칸마다 { signed: true } 를 적는다.
+  // 분수 답은 o.signed: true 로 부호 단추를 붙이고, 음수이면 o.negative: true 를 적는다(분자·분모·자연수 칸의 수는 늘 양수로 적는다).
+  const N = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, signed: Boolean(o.signed) }], explain: o.explain || '', facts: o.facts || {} });
   const M = (text, inputs, o) => ({ text, figure: o.figure, inputs, unordered: o.unordered || false, explain: o.explain || '', facts: o.facts || {} });
   const C = (text, options, answer, o) => ({ text, figure: o.figure, choice: { options, answer }, explain: o.explain || '', facts: o.facts || {} });
   // 분수 하나를 답하는 문항: 분자와 분모를 위아래 칸에 적는다. 답은 더 줄일 수 없는 분수(기약분수)로 적는다.
   // o.whole 을 주면 대분수(자연수 칸 + 분자·분모 칸), o.improper: true 면 가분수(분자가 분모보다 크다), o.unit 은 분수 뒤에 적는 단위.
   // o.anyForm: true 면 크기가 같은 분수를 모두 맞게 친다. 문제가 「기약분수로」라고 하지 않은 5·6학년 분수 계산에 쓴다(적어 두는 답은 그래도 기약분수다).
-  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: (o.whole != null ? [{ answer: o.whole, label: '자연수' }] : []).concat([{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }]), fraction: true, mixed: o.whole != null, improper: Boolean(o.improper), anyForm: Boolean(o.anyForm), unit: o.unit || '', explain: o.explain || '', facts: o.facts || {} });
+  const F = (text, top, bottom, o) => ({ text, figure: o.figure, inputs: (o.whole != null ? [{ answer: o.whole, label: '자연수' }] : []).concat([{ answer: top, label: '분자' }, { answer: bottom, label: '분모' }]), fraction: true, mixed: o.whole != null, improper: Boolean(o.improper), anyForm: Boolean(o.anyForm), signed: Boolean(o.signed || o.negative), negative: Boolean(o.negative), unit: o.unit || '', explain: o.explain || '', facts: o.facts || {} });
   // 소수 하나를 답하는 문항(소수 셋째 자리까지)
-  const D = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, decimal: true }], explain: o.explain || '', facts: o.facts || {} });
+  const D = (text, answer, o) => ({ text, figure: o.figure, inputs: [{ answer, unit: o.unit, lead: o.lead, decimal: true, signed: Boolean(o.signed) }], explain: o.explain || '', facts: o.facts || {} });
   // 검사가 따로 셈할 식 글
   const E = (a, op, b) => String(a) + op + b;
   // 이름을 부를 때: 서연이, 지우
@@ -649,10 +651,20 @@
   // 소수 칸(decimal)은 소수 셋째 자리까지 적은 수를 받는다(0.50처럼 끝에 0을 적어도 같은 수로 본다). 나머지 칸은 자연수만 받는다.
   function isCorrect(item, response) {
     if (item.choice) return Number(response) === item.choice.answer;
-    const given = (Array.isArray(response) ? response : [response]).map(cleanNumber);
-    if (given.length !== item.inputs.length || !given.every((text, i) => (item.inputs[i].decimal ? /^\d+(\.\d{1,3})?$/ : /^\d+$/).test(text))) return false;
-    // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 곱하면 어긋난다). 소수 칸만 1000배 하여 견준다.
-    const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 1000) : input.answer)), got = given.map((text, i) => (item.inputs[i].decimal ? Math.round(Number(text) * 1000) : Number(text)));
+    let given = (Array.isArray(response) ? response : [response]).map(cleanNumber);
+    if (given.length !== item.inputs.length) return false;
+    // 부호가 있는 칸은 앞에 +, −(-)를 붙여 적은 글을 받는다. 분수 답의 부호는 첫 칸의 글 앞에 붙는다(값 전체의 부호).
+    const signedAt = (i) => Boolean(item.inputs[i].signed) || (Boolean(item.signed) && i === 0);
+    const signs = given.map((text, i) => (signedAt(i) && /^[-−]/.test(text) ? -1 : 1));
+    given = given.map((text, i) => (signedAt(i) ? text.replace(/^[-−+]/, '') : text));
+    if (!given.every((text, i) => (item.inputs[i].decimal ? /^\d+(\.\d{1,3})?$/ : /^\d+$/).test(text))) return false;
+    if (item.fraction && item.signed) {
+      // 0이 아닌 분수이므로 부호가 맞아야 한다. 아래에서는 크기만 견준다.
+      if ((signs[0] < 0) !== Boolean(item.negative)) return false;
+      signs[0] = 1;
+    }
+    // 자연수 칸은 수 그대로 견준다(열몇 자리 수는 곱하면 어긋난다). 소수 칸만 1000배 하여 견준다. (끝의 + 0 은 −0을 0으로 만든다.)
+    const want = item.inputs.map((input) => (input.decimal ? Math.round(input.answer * 1000) : input.answer)), got = given.map((text, i) => signs[i] * (item.inputs[i].decimal ? Math.round(Number(text) * 1000) : Number(text)) + 0);
     if (item.unordered) { want.sort((a, b) => a - b); got.sort((a, b) => a - b); }
     // anyForm 인 분수 문항은 크기가 같은 분수를 모두 받는다(교육과정: 기약분수로 나타내라고 하지 않았으면 기약분수가 아닌 분수도 허용한다).
     // 대분수는 자연수 칸이 같고 분수 부분이 진분수여야 한다. 가분수를 받지 않는 문항은 가분수로 적은 답을 받지 않는다.
