@@ -1,6 +1,6 @@
 {
   "date": "2026-10-12",
-  "scope": "136 base and 69 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
+  "scope": "140 base and 71 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
   "questions": [
     {
       "id": "sound-vibration#q1",
@@ -4065,6 +4065,126 @@
         "answer": "a",
         "why": "지역 C에서 두 층은 사질 셰일과 암모나이트 석회암 사이에 있습니다. 지역 A에서는 그 사이가 부정합면입니다."
       }
+    },
+    {
+      "id": "polarized-thin-sections#q1",
+      "slug": "polarized-thin-sections",
+      "sha256": "fe5fcdb00e8b87483ab7d60a0371a8e0c34f47892e4b625899cf28d8e7f649e6",
+      "after": {
+        "id": "polarized-thin-sections#q1",
+        "slug": "polarized-thin-sections",
+        "question": "사진 X의 1 mm 눈금은 화면에서 40 px, 사진 Y의 1 mm 눈금은 80 px이다. 두 사진에서 입자 길이가 모두 40 px라면 실제 길이는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X 1 mm · Y 0.5 mm"
+          },
+          {
+            "id": "b",
+            "text": "X 0.5 mm · Y 1 mm"
+          },
+          {
+            "id": "c",
+            "text": "X 1 mm · Y 1 mm"
+          },
+          {
+            "id": "d",
+            "text": "X 0.5 mm · Y 0.5 mm"
+          }
+        ],
+        "answer": "a",
+        "why": "X는 입자가 1 mm 눈금과 같고, Y는 1 mm 눈금의 절반입니다. 화면의 같은 길이가 항상 같은 실제 길이는 아닙니다."
+      }
+    },
+    {
+      "id": "polarized-thin-sections#q2",
+      "slug": "polarized-thin-sections",
+      "sha256": "ead3ec36206d1b5ca84a94c5f61c4d68b2d2e1ee34aab87740deb189fff53b3e",
+      "after": {
+        "id": "polarized-thin-sections#q2",
+        "slug": "polarized-thin-sections",
+        "question": "같은 시야 크기에서 X는 대부분 작은 입자, Y는 서로 맞물린 큰 입자가 보였다. 냉각 과정과의 연결은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X 느린 냉각 · Y 빠른 냉각"
+          },
+          {
+            "id": "b",
+            "text": "X 빠른 냉각 · Y 빠른 냉각"
+          },
+          {
+            "id": "c",
+            "text": "X 빠른 냉각 · Y 느린 냉각"
+          },
+          {
+            "id": "d",
+            "text": "X 느린 냉각 · Y 느린 냉각"
+          }
+        ],
+        "answer": "c",
+        "why": "결정이 자랄 시간이 짧으면 작은 입자, 길면 큰 입자가 나타납니다. 이 관찰의 X는 세립질 화산암, Y는 조립질 심성암의 특징입니다."
+      }
+    },
+    {
+      "id": "polarized-thin-sections#q3",
+      "slug": "polarized-thin-sections",
+      "sha256": "3d1b30afb07a7832a86f3388b741ca641bc19adf1bb70e0eba7ecd44e0c0bee3",
+      "after": {
+        "id": "polarized-thin-sections#q3",
+        "slug": "polarized-thin-sections",
+        "question": "큰 반정이 매우 작은 입자의 석기에 둘러싸인 박편을 관찰했다. 두 크기의 결정이 생긴 과정을 가장 잘 설명하는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "처음부터 끝까지 같은 속도로 빠르게 냉각"
+          },
+          {
+            "id": "b",
+            "text": "작은 입자가 먼저 생긴 뒤 압력으로 모두 성장"
+          },
+          {
+            "id": "c",
+            "text": "먼저 빠르게 냉각한 뒤 모든 결정이 천천히 성장"
+          },
+          {
+            "id": "d",
+            "text": "일부 결정이 먼저 성장한 뒤 남은 부분이 빠르게 냉각"
+          }
+        ],
+        "answer": "d",
+        "why": "반상 조직에서는 일부 결정이 먼저 크게 자란 뒤, 남은 마그마가 빠르게 냉각되어 작은 결정이나 유리질 바탕을 만듭니다."
+      }
+    },
+    {
+      "id": "polarized-thin-sections#q4",
+      "slug": "polarized-thin-sections",
+      "sha256": "3fcdd68682c231f8eba1334f9d6b708e431cd19217ed91b94d5f5b997756b9a6",
+      "after": {
+        "id": "polarized-thin-sections#q4",
+        "slug": "polarized-thin-sections",
+        "question": "X에는 작은 결정의 경계가 촘촘히 보이지만, Y의 대부분은 결정 경계가 없는 유리 같은 바탕이다. 알맞은 분류는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X 유리질 · Y 세립질"
+          },
+          {
+            "id": "b",
+            "text": "X 세립질 · Y 유리질"
+          },
+          {
+            "id": "c",
+            "text": "X 조립질 · Y 반상"
+          },
+          {
+            "id": "d",
+            "text": "X 반상 · Y 조립질"
+          }
+        ],
+        "answer": "b",
+        "why": "작은 결정이 모인 X는 세립질, 대부분의 결정이 자라지 못한 Y는 유리질입니다. 두 조직을 단순히 입자가 작다는 이유로 같게 분류하지 않습니다."
+      }
     }
   ],
   "transferQuestions": [
@@ -5496,6 +5616,46 @@
         "why": "부정합은 퇴적 중단이나 침식으로 기록이 빠진 시간 간격을 뜻합니다. 그 간격의 길이나 절대연령은 별도 자료가 필요합니다.",
         "checks": [
           "strata-correlation#q4"
+        ]
+      }
+    },
+    {
+      "id": "polarized-thin-sections@comparison",
+      "sha256": "87077cf225032af2fc1b13d5109bf636cc6da202ca9c236763de8956b7bdc81e",
+      "after": {
+        "id": "polarized-thin-sections@comparison",
+        "topic": "같은 조건의 크기 비교",
+        "question": "현무암과 화강암을 비교하다가 화강암 사진만 크게 확대했다. 입자 크기를 비교하려면 무엇을 맞춰야 할까?",
+        "choices": [
+          "사진의 전체 밝기",
+          "사진에 보이는 색 수",
+          "사진의 실제 시야 크기",
+          "사진의 테두리 두께"
+        ],
+        "answer": 2,
+        "why": "서로 다른 확대율에서는 화면에 보이는 길이를 직접 비교할 수 없습니다. 같은 실제 시야 크기로 맞추거나 각 사진의 눈금을 사용합니다.",
+        "checks": [
+          "polarized-thin-sections#q1"
+        ]
+      }
+    },
+    {
+      "id": "polarized-thin-sections@cooling",
+      "sha256": "752d63a3a64f77ff2b981668545312a7775ef844f7d021156479138fc060ef72",
+      "after": {
+        "id": "polarized-thin-sections@cooling",
+        "topic": "입자 크기의 해석",
+        "question": "암석 P에서 서로 맞물린 큰 결정들을 관찰했다. 이 자료가 직접 뒷받침하는 설명은?",
+        "choices": [
+          "결정이 자랄 시간이 길었다",
+          "퇴적물이 층층이 쌓여 굳었다",
+          "물에 녹은 물질이 증발해 남았다",
+          "빠른 냉각으로 결정 성장이 멈췄다"
+        ],
+        "answer": 0,
+        "why": "화성암의 큰 결정은 서서히 냉각되는 동안 결정이 자랄 시간이 충분했음을 뒷받침합니다.",
+        "checks": [
+          "polarized-thin-sections#q2"
         ]
       }
     }
@@ -7384,6 +7544,75 @@
         }
       ],
       "boundary": "교과서 모식도 자료의 대비 활동이다. 실제 노두 조사·퇴적 두께·절대연령·지층의 정확한 퇴적 순간을 산출하지 않는다. 버튼 높이는 실제 층 두께가 아니다. 화석은 해당 층의 표지이며 모든 삼엽충/암모나이트를 같은 종으로 보거나 정확한 동시성으로 일반화하지 않는다. 원문의 플랫폼 공유·의견 작성은 독립 실험에서 제외한다."
+    },
+    {
+      "slug": "polarized-thin-sections",
+      "source": {
+        "id": "d41737876b631070",
+        "pages": [
+          35,
+          36,
+          37
+        ],
+        "printedPages": [
+          33,
+          34,
+          35
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "7d5310bce1637268",
+          "paragraphs": [
+            32,
+            33,
+            34,
+            38,
+            39,
+            40,
+            46,
+            47,
+            51,
+            52,
+            54,
+            55,
+            57,
+            58
+          ],
+          "part": "교사용 활동지의 현무암 1 mm 미만 입자·화강암 조립질 비교, 생성 환경, 반상 조직의 두 단계 냉각, 약 0.03 mm 박편과 불투명 광물. 객관식은 이 관찰 근거로 새로 작성"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "cdbacd1f7e6522b8",
+          "pages": [
+            34,
+            35,
+            36,
+            37
+          ],
+          "difference": "화산암·심성암을 하나 이상씩 선택하고 조직으로 분류",
+          "implementation": "두 박편 조작과 네 조직 사진 비교로 연결. 스케치·플랫폼 공유는 독립 실험에서 제외"
+        },
+        {
+          "sourceId": "c50c90b0d29a7655",
+          "pages": [
+            26,
+            27
+          ],
+          "difference": "서로 다른 암석을 같은 배율에서 비교하고 입자 크기 순서 판단",
+          "implementation": "모형의 두 박편은 같은 6 mm 시야에서 비교. 실제 사진은 원문의 서로 다른 눈금을 보존하며 같은 광학 배율이라고 표시하지 않음"
+        },
+        {
+          "sourceId": "ea55a4e6c430dd9b",
+          "pages": [
+            27
+          ],
+          "difference": "동일 미래엔 탐구의 별도 추출본",
+          "implementation": "같은 현무암·화강암 관찰 절차로 중복 통합"
+        }
+      ],
+      "boundary": "조작 화면은 고정된 결정 조직과 두께를 가정한 작성 모형이며 실제 PPL/XPL 연속 사진이 아니다. 결정 개수·조성·간섭색으로 실물 시료를 동정하지 않는다. 원문 사진 네 장은 서로 다른 시료이고 전후 편광판 상태를 합성하지 않는다. 모형의 6 mm 시야는 비교용 설정이며 사진의 눈금은 원문의 벡터 막대 길이를 그대로 비례 적용했다. 실제 박편 제작·기기 충돌·배율 교체는 미구현이다. 공식 2022 성취기준은 조직 비교만 다루므로 소광각·복굴절·간섭색 계산을 평가에 넣지 않는다. 모든 판본·실물 수행 완료 아님."
     }
   ]
 }
