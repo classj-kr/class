@@ -483,3 +483,180 @@
     rep, repQ, repDigit, sys, ineqAns, monoAns, polyAns
   };
 })(typeof window !== 'undefined' ? window : globalThis);
+
+// ── 중학교 도형 그림 판(B.kit.mgeo) ── 7-2-3 「평면도형의 성질」에서 지은 것을 옮겼다. 쓰는 본보기는 units/7-2-3a.js·b.js·c.js.
+(function (root) {
+  'use strict';
+  const B = root.MathBank;
+  const inSum = (n) => 180 * (n - 2);   // n각형의 내각의 크기의 합
+  // ── 그림 판 ──────────────────────────────────────────────────
+  // 화면 좌표(px, y 는 아래로 커진다)에 바로 그린다. 각은 오른쪽이 0°이고 시계 반대쪽으로 커진다.
+  // 그린 것의 크기를 재어 두었다가 꼭 맞는 그림 틀(viewBox)을 만든다. 글씨는 13px 이고, 그림 너비는 휴대폰 카드(288px)를 넘기지 않게 짓는다.
+  const RAD = Math.PI / 180, r1 = (v) => Math.round(v * 10) / 10, FS = 13;
+  const at = (c, r, a) => [c[0] + r * Math.cos(a * RAD), c[1] - r * Math.sin(a * RAD)];
+  // 점 p 에서 q 를 바라보는 방향(도)
+  const dirOf = (p, q) => (Math.atan2(p[1] - q[1], q[0] - p[0]) / RAD + 360) % 360;
+  const dist = (p, q) => Math.hypot(q[0] - p[0], q[1] - p[1]);
+  const mid = (p, q, t) => { const k = t == null ? 0.5 : t; return [p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k]; };
+  const XY = (p) => r1(p[0]) + ' ' + r1(p[1]);
+  // 두 직선 pq, rs 가 만나는 점
+  const meet = (p, q, r, s) => { const u = [q[0] - p[0], q[1] - p[1]], w = [s[0] - r[0], s[1] - r[1]], t = ((r[0] - p[0]) * w[1] - (r[1] - p[1]) * w[0]) / (u[0] * w[1] - u[1] * w[0]); return [p[0] + u[0] * t, p[1] + u[1] * t]; };
+  // 점 p 에서, 다른 점들이 있는 쪽의 반대 방향(이름을 적을 쪽)
+  const awayFrom = (p, others) => { let x = 0, y = 0; for (const q of others) { const L = dist(p, q) || 1; x += (q[0] - p[0]) / L; y += (q[1] - p[1]) / L; } return (Math.atan2(y, -x) / RAD + 360) % 360; };
+  // 글의 너비 어림(px)
+  const textW = (s) => { let w = 0; for (const ch of String(s).replace(/<[^>]+>/g, '')) w += /[가-힣㉠-㉯]/.test(ch) ? 1 : /[A-Z]/.test(ch) ? 0.74 : ch === ' ' ? 0.3 : /[°()′.,]/.test(ch) ? 0.4 : 0.62; return w * FS; };
+  // 중심 c, 반지름 r 인 원 위에서 a0° 에서 a1° 까지 가는 호(경로 조각). a1 이 크면 시계 반대쪽으로 돈다.
+  const arcTo = (c, r, a0, a1) => `A${r1(r)} ${r1(r)} 0 ${Math.abs(a1 - a0) > 180 ? 1 : 0} ${a1 > a0 ? 0 : 1} ${XY(at(c, r, a1))}`;
+  const HALO = 'paint-order:stroke;stroke:#fff;stroke-width:3.2px;stroke-linejoin:round';
+  // 그림 속의 문자(기울인 글자)
+  const sv = (name) => `<tspan style="font-style:italic;font-family:'MB Math','Times New Roman',serif;font-size:1.12em">${name}</tspan>`;
+  // 색칠한 부분
+  const TINT = 'fill:rgba(251,191,36,0.45)', WHITE = 'fill:#fff', CLEAR = 'fill:none';
+
+  function Board() {
+    const out = [], texts = [], rects = [], bb = [1e9, 1e9, -1e9, -1e9];
+    const grow = (p, m) => { const k = m || 0; bb[0] = Math.min(bb[0], p[0] - k); bb[1] = Math.min(bb[1], p[1] - k); bb[2] = Math.max(bb[2], p[0] + k); bb[3] = Math.max(bb[3], p[1] + k); };
+    const growArc = (c, r, a0, a1) => { const lo = Math.min(a0, a1), hi = Math.max(a0, a1); for (let a = lo; a < hi; a += 10) grow(at(c, r, a), 1); grow(at(c, r, hi), 1); };
+    const b = {
+      grow,
+      // 선분. kind: 'thin' 가는 선, 'cut' 점선
+      seg(p, q, kind, css) { grow(p, 1); grow(q, 1); out.push(`<line class="mb-line${kind === 'thin' ? ' is-thin' : kind === 'cut' ? ' is-cut' : ''}"${css ? ` style="${css}"` : ''} x1="${r1(p[0])}" y1="${r1(p[1])}" x2="${r1(q[0])}" y2="${r1(q[1])}"/>`); return b; },
+      // 다각형(칠하지 않는다. css 로 칠을 바꾼다)
+      poly(pts, css) { pts.forEach((p) => grow(p, 1)); out.push(`<polygon class="mb-poly" style="${css || CLEAR}" points="${pts.map((p) => r1(p[0]) + ',' + r1(p[1])).join(' ')}"/>`); return b; },
+      disk(c, r, css) { grow([c[0] - r, c[1] - r], 1); grow([c[0] + r, c[1] + r], 1); out.push(`<circle class="mb-poly" style="${css || CLEAR}" cx="${r1(c[0])}" cy="${r1(c[1])}" r="${r1(r)}"/>`); return b; },
+      // 굽은 변이 있는 도형. d: 경로 글, pts: 그림의 크기를 재는 데 쓸 점들
+      shape(d, pts, css) { pts.forEach((p) => grow(p, 1)); out.push(`<path class="mb-poly" style="${css || CLEAR}" d="${d}"/>`); return b; },
+      // 부채꼴(중심 c, 반지름 r, a0° → a1° 시계 반대쪽)
+      fan(c, r, a0, a1, css) { growArc(c, r, a0, a1); grow(c, 1); out.push(`<path class="mb-poly" style="${css || CLEAR}" d="M${XY(c)}L${XY(at(c, r, a0))}${arcTo(c, r, a0, a1)}Z"/>`); return b; },
+      // 호만 긋는다. kind: 'thin' 가는 선, 'bold' 굵은 파란 선
+      arc(c, r, a0, a1, kind) { growArc(c, r, a0, a1); out.push(`<path class="mb-line${kind === 'thin' ? ' is-thin' : ''}" style="fill:none${kind === 'bold' ? ';stroke:#1d4ed8;stroke-width:3.2' : ''}" d="M${XY(at(c, r, a0))}${arcTo(c, r, a0, a1)}"/>`); return b; },
+      dot(p, r) { grow(p, 3); out.push(`<circle class="mb-dot" cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r || 2.6}"/>`); return b; },
+      // 글. o.blue: 값(각도·길이)의 빛깔, o.plain: 흰 테두리 없이, o.size: 글씨 크기(기본 13px)
+      text(p, html, o) {
+        const opt = o || {}, size = opt.size || FS, w = textW(html) * size / FS;
+        grow([p[0] - w / 2, p[1] - size * 0.55]); grow([p[0] + w / 2, p[1] + size * 0.55]);
+        rects.push([p[0] - w / 2, p[1] - size * 0.5, p[0] + w / 2, p[1] + size * 0.5]);
+        texts.push(`<text class="mb-label" style="font-size:${size}px;${opt.blue ? 'fill:#1d4ed8;font-weight:700;' : ''}${opt.plain ? '' : HALO}" x="${r1(p[0])}" y="${r1(p[1])}" text-anchor="middle" dominant-baseline="central">${html}</text>`);
+        return b;
+      },
+      // 점의 이름: 점 p 에서 a° 쪽으로 조금 떨어뜨려 적는다.
+      name(p, label, a, gap) { return b.text(at(p, gap == null ? 11 : gap, a), label); },
+      // 꼭짓점 v 에서 a0° 쪽 변에서 a1° 쪽 변까지(시계 반대쪽) 벌어진 각에 표시(호, 직각이면 네모)와 글을 넣는다.
+      // 직각 표시(네모)는 글 없이 표시만 할 때 그린다(구하는 각에는 o.square: false 를 준다). 글은 두 변에 닿지 않게, 좁은 각일수록 꼭짓점에서 멀리 적는다.
+      // o.r 호의 반지름, o.d 글까지의 거리, o.arc: false 이면 글만, o.size 글씨 크기, o.ink 이름처럼 검은 글씨로
+      angle(v, a0, a1, label, o) {
+        const opt = o || {};
+        let to = a1; while (to <= a0) to += 360; while (to - a0 > 360) to -= 360;
+        const span = to - a0, m = a0 + span / 2, right = Math.abs(span - 90) < 0.01 && (label == null || label === '') && opt.square !== false;
+        const r = opt.r || (span < 40 ? 22 : span > 130 ? 11 : 15);
+        if (opt.arc === false) { /* 표시 없이 글만 */ } else if (right) {
+          const p1 = at(v, 9, a0), p3 = at(v, 9, to), p2 = [p1[0] + p3[0] - v[0], p1[1] + p3[1] - v[1]];
+          out.push(`<polyline class="mb-mark" points="${[p1, p2, p3].map((p) => r1(p[0]) + ',' + r1(p[1])).join(' ')}"/>`);
+        } else { out.push(`<path class="mb-line is-thin" style="fill:none" d="M${XY(at(v, r, a0))}${arcTo(v, r, a0, to)}"/>`); growArc(v, r, a0, to); }
+        if (label != null && label !== '') {
+          // 글 상자의 네 귀가 두 변에서 떨어질 때까지 꼭짓점에서 멀리 민다.
+          const k = (opt.size || FS) / FS, w = textW(label) * k + 5, h = FS * k + 3, c0 = Math.cos(a0 * RAD), s0 = Math.sin(a0 * RAD), c1 = Math.cos(to * RAD), s1 = Math.sin(to * RAD);
+          const fits = (dd) => { const c = at(v, dd, m); return [[-1, -1], [1, -1], [1, 1], [-1, 1]].every(([sx, sy]) => { const ux = c[0] + sx * w / 2 - v[0], uy = -(c[1] + sy * h / 2 - v[1]); return c0 * uy - s0 * ux >= 1.5 && s1 * ux - c1 * uy >= 1.5; }); };
+          let dd = (opt.arc === false ? 0 : right ? 10 : r) + 2 + (w / 2) * Math.abs(Math.cos(m * RAD)) + (h / 2) * Math.abs(Math.sin(m * RAD));
+          if (span < 180) while (dd < 96 && !fits(dd)) dd += 2;
+          b.text(at(v, opt.d || dd, m), label, { blue: !opt.ink, size: opt.size });
+        }
+        return b;
+      },
+      // 점 v 에서 여러 쪽(dirs, 도)으로 선이 뻗어 있을 때, 선 사이가 가장 넓게 빈 쪽에 이름을 적는다.
+      nameFree(v, label, dirs) {
+        const list = dirs.map((a) => ((a % 360) + 360) % 360).sort((x, y) => x - y); let best = 0, from = 0;
+        list.forEach((a, i) => { const gap = i + 1 < list.length ? list[i + 1] - a : list[0] + 360 - a; if (gap > best) { best = gap; from = a; } });
+        return b.angle(v, from, from + best, label, { arc: false, ink: true });
+      },
+      // 꼭짓점 v 에서 점 p 쪽 변과 점 q 쪽 변 사이의 각(180°보다 작은 쪽)
+      corner(v, p, q, label, o) { const a = dirOf(v, p), c = dirOf(v, q); return (c - a + 360) % 360 < 180 ? b.angle(v, a, c, label, o) : b.angle(v, c, a, label, o); },
+      // 크기가 같은 각의 표시: 꼭짓점 v 에서 a° 쪽으로 d 만큼 떨어진 곳에 점(●)이나 가위표(×)
+      sym(v, a, kind, d) {
+        const p = at(v, d || 21, a); grow(p, 4);
+        out.push(kind === 'x' ? `<path d="M${r1(p[0] - 3)} ${r1(p[1] - 3)}l6 6M${r1(p[0] + 3)} ${r1(p[1] - 3)}l-6 6" style="stroke:#b42318;stroke-width:1.5;fill:none"/>` : `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="2.5" style="fill:#b42318"/>`);
+        return b;
+      },
+      // 선분 p–q 옆에 글을 적는다. inside: 글을 두지 않을 쪽에 있는 점(도형의 안쪽), o.t 선분을 따라간 자리, o.gap 선에서 띄울 거리, o.plain 흰 테두리 없이
+      beside(p, q, label, inside, o) {
+        const opt = o || {}, m = mid(p, q, opt.t), L = dist(p, q);
+        let n = [-(q[1] - p[1]) / L, (q[0] - p[0]) / L];
+        if ((inside[0] - m[0]) * n[0] + (inside[1] - m[1]) * n[1] > 0) n = [-n[0], -n[1]];
+        const off = (textW(label) / 2) * Math.abs(n[0]) + 7 * Math.abs(n[1]) + (opt.gap == null ? 5 : opt.gap);
+        return b.text([m[0] + n[0] * off, m[1] + n[1] * off], label, { blue: true, plain: opt.plain });
+      },
+      // 치수선: 선분 p–q 와 나란히 off 만큼 떨어진 가는 선과 양 끝 눈금, 그 바깥에 글
+      dim(p, q, label, inside, off) {
+        const L = dist(p, q), m = mid(p, q), k = off == null ? 10 : off;
+        let n = [-(q[1] - p[1]) / L, (q[0] - p[0]) / L];
+        if ((inside[0] - m[0]) * n[0] + (inside[1] - m[1]) * n[1] > 0) n = [-n[0], -n[1]];
+        const a = [p[0] + n[0] * k, p[1] + n[1] * k], c = [q[0] + n[0] * k, q[1] + n[1] * k];
+        b.seg(a, c, 'thin');
+        for (const e of [a, c]) b.seg([e[0] - n[0] * 3.5, e[1] - n[1] * 3.5], [e[0] + n[0] * 3.5, e[1] + n[1] * 3.5], 'thin');
+        return b.beside(a, c, label, [m[0] - n[0] * 30, m[1] - n[1] * 30], { gap: 4 });
+      },
+      // 호의 길이: 호(중심 c, 반지름 R, a0° → a1°) 바깥에 가는 호와 양 끝 눈금을 긋고 그 바깥에 글을 적는다.
+      arcDim(c, R, a0, a1, label, off) {
+        const rr = R + (off == null ? 8 : off), m = (a0 + a1) / 2;
+        b.arc(c, rr, a0, a1, 'thin');
+        for (const a of [a0, a1]) b.seg(at(c, rr - 3.5, a), at(c, rr + 3.5, a), 'thin');
+        const need = (textW(label) / 2) * Math.abs(Math.cos(m * RAD)) + 7 * Math.abs(Math.sin(m * RAD)) + 5;
+        return b.text(at(c, rr + need, m), label, { blue: true });
+      },
+      // 길이가 같다는 표시(짧은 금 n 개)
+      tick(p, q, n) {
+        const m = mid(p, q), L = dist(p, q), u = [(q[0] - p[0]) / L, (q[1] - p[1]) / L], k = n || 1;
+        for (let i = 0; i < k; i += 1) { const c = [m[0] + u[0] * (i - (k - 1) / 2) * 4.2, m[1] + u[1] * (i - (k - 1) / 2) * 4.2]; out.push(`<line x1="${r1(c[0] + u[1] * 4.6)}" y1="${r1(c[1] - u[0] * 4.6)}" x2="${r1(c[0] - u[1] * 4.6)}" y2="${r1(c[1] + u[0] * 4.6)}" style="stroke:#b42318;stroke-width:1.5"/>`); }
+        return b;
+      },
+      // 평행하다는 표시(선분 p–q 위의 화살촉)
+      arrow(p, q, t) {
+        const m = mid(p, q, t), a = dirOf(p, q), p1 = at(m, 7, a + 152), p2 = at(m, 7, a - 152);
+        out.push(`<path d="M${XY(p1)}L${XY(m)}L${XY(p2)}" style="fill:none;stroke:#b42318;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"/>`);
+        return b;
+      },
+      // 글끼리 겹쳤거나 옆으로 바짝 붙었는가(그러면 수를 다시 고른다)
+      clash() { return rects.some((a, i) => rects.some((c, j) => j > i && a[0] < c[2] + 5 && c[0] < a[2] + 5 && a[1] < c[3] + 1 && c[1] < a[3] + 1)); },
+      svg(label) {
+        const k = 5, x = bb[0] - k, y = bb[1] - k, w = bb[2] - bb[0] + 2 * k, h = bb[3] - bb[1] + 2 * k;
+        return `<svg class="mb-geo" viewBox="${r1(x)} ${r1(y)} ${r1(w)} ${r1(h)}" width="${Math.round(w)}" role="img" aria-label="${label}">${out.join('')}${texts.join('')}</svg>`;
+      }
+    };
+    return b;
+  }
+
+  // ── 다각형 짓기 ──
+  // 내각의 크기(도, 꼭짓점 차례)로 볼록한 다각형의 꼭짓점을 만든다. 꼭짓점 0은 밑변의 왼쪽 끝이고 화면에서 시계 반대쪽으로 돈다.
+  // 변의 길이는 도형이 닫히는 것 가운데 서로 가장 비슷한 것으로 잡는다. size: [가로, 세로] 안에 꼭 맞게 키운다.
+  // 돌려주는 것: pts 꼭짓점, dirs 변 i(꼭짓점 i → i + 1)의 방향, ok 변의 길이가 고른가
+  function polyOf(angles, size) {
+    const n = angles.length, dirs = [0];
+    for (let i = 1; i < n; i += 1) dirs.push(dirs[i - 1] + 180 - angles[i]);
+    const cs = dirs.map((a) => [Math.cos(a * RAD), Math.sin(a * RAD)]);
+    let sxx = 0, sxy = 0, syy = 0, bx = 0, by = 0;
+    for (const [x, y] of cs) { sxx += x * x; sxy += x * y; syy += y * y; bx += x; by += y; }
+    const det = sxx * syy - sxy * sxy, lx = (bx * syy - by * sxy) / det, ly = (by * sxx - bx * sxy) / det;
+    const len = cs.map(([x, y]) => 1 - x * lx - y * ly), raw = [[0, 0]];
+    for (let i = 0; i < n - 1; i += 1) raw.push([raw[i][0] + len[i] * cs[i][0], raw[i][1] - len[i] * cs[i][1]]);
+    const xs = raw.map((p) => p[0]), ys = raw.map((p) => p[1]), x0 = Math.min(...xs), y0 = Math.min(...ys), k = Math.min(size[0] / (Math.max(...xs) - x0), size[1] / (Math.max(...ys) - y0));
+    return { pts: raw.map(([x, y]) => [(x - x0) * k, (y - y0) * k]), dirs, ok: Math.min(...len) > 0.5 && Math.max(...len) < 2 };
+  }
+  // 내각의 크기가 모두 5°의 배수인 볼록한 n각형의 내각. ok(각들)로 조건을 더 건다.
+  const RANGE = { 3: [35, 100], 4: [60, 125], 5: [80, 140], 6: [100, 145] };
+  function anglesOf(d, n, ok) {
+    const [lo, hi] = RANGE[n];
+    return d.until(() => { const a = []; for (let i = 0; i < n - 1; i += 1) a.push(5 * d.int(lo / 5, hi / 5)); a.push(inSum(n) - a.reduce((s, v) => s + v, 0)); return a; },
+      (a) => a[n - 1] >= lo && a[n - 1] <= hi && polyOf(a, [160, 120]).ok && (!ok || ok(a)));
+  }
+  // 꼭짓점의 이름: 맨 위 꼭짓점이 A 이고 시계 반대쪽으로 B, C, …
+  const ALPHA = 'ABCDEFGHIJKL';
+  const vnames = (pts) => { const n = pts.length; let top = 0; pts.forEach((p, i) => { if (p[1] < pts[top][1] - 0.5) top = i; }); return pts.map((_, i) => ALPHA[(i - top + n) % n]); };
+  // 삼각형 ABC(A 위, B 왼쪽 아래, C 오른쪽 아래)의 세 꼭짓점
+  const triOf = (a, bv, c, size) => { const [pB, pC, pA] = polyOf([bv, c, a], size || [165, 120]).pts; return { A: pA, B: pB, C: pC }; };
+  // 정n각형의 꼭짓점. 첫 변은 p → q 이고 시계 반대쪽으로 돈다(도형은 p → q 의 왼쪽에 놓인다).
+  const regOn = (p, q, n) => { const s = dist(p, q), a = dirOf(p, q), pts = [p]; for (let i = 0; i < n - 1; i += 1) pts.push(at(pts[i], s, a + i * 360 / n)); return pts; };
+  // 밑변이 가로로 놓인 정n각형(한 변 s)
+  const regPts = (n, s) => regOn([0, 0], [s, 0], n);
+
+  B.kit.mgeo = { RAD, r1, FS, at, dirOf, dist, mid, XY, meet, awayFrom, textW, arcTo, HALO, sv, TINT, WHITE, CLEAR, Board, polyOf, RANGE, anglesOf, ALPHA, vnames, triOf, regOn, regPts };
+})(typeof window !== 'undefined' ? window : globalThis);
