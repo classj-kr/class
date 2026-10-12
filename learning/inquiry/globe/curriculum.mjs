@@ -1,4 +1,5 @@
 import {EXTRA_QUESTIONS} from './question-bank.mjs?v=20260920-38';
+import {extendWorldLessons} from './world-study.mjs?v=20261012-remaster1';
 // 2022 개정 교육과정 원문과 대조한 학습 경로. 위치는 비교를 위한 대표 사례이며 분포의 전부가 아니다.
 export const GROUPS = [
   ['map','지도 읽기','◎'], ['terrain','지형과 생활','△'], ['climate','기후와 바람','≋'], ['ocean','바다와 물','≈'],
@@ -120,6 +121,6 @@ export const QUESTIONS = LESSONS.flatMap(l=>[
 ]);
 
 // 국내 전용 내용은 세계 지리의 목록·검색·문제 출제에서 제외한다.
-export const WORLD_LESSONS = LESSONS.filter(l=>!['korea','reference-only'].includes(l.scope));
+export const WORLD_LESSONS = extendWorldLessons(LESSONS.filter(l=>!['korea','reference-only'].includes(l.scope)));
 const worldLessonIds = new Set(WORLD_LESSONS.map(l=>l.id));
 export const WORLD_QUESTIONS = QUESTIONS.filter(q=>worldLessonIds.has(q.lesson));
