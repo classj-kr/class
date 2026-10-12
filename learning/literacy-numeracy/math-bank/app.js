@@ -18,7 +18,11 @@
 
   const el = (tag, className, html) => { const node = document.createElement(tag); if (className) node.className = className; if (html != null) node.innerHTML = html; return node; };
   // 기록에 남길 글: 그림은 그림 이름으로 바꾼다.
-  const plainText = (html) => { const box = document.createElement('div'); box.innerHTML = String(html || '').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' [$1] '); return box.textContent.replace(/\s+/g, ' ').trim(); };
+  // 위첨자(거듭제곱의 지수)는 글로 바꾸며 잃지 않게 표를 해 두었다가, 기록에는 (−2)^3 꼴로, 화면의 답 줄에는 위첨자로 되살린다.
+  const SUP = /\uE000([^\uE001]*)\uE001/g;
+  const rawText = (html) => { const box = document.createElement('div'); box.innerHTML = String(html || '').replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/g, ' [$1] ').replace(/<sup>([\s\S]*?)<\/sup>/g, '\uE000$1\uE001'); return box.textContent.replace(/\s+/g, ' ').trim(); };
+  const plainText = (html) => rawText(html).replace(SUP, (all, e) => '^' + (/^[0-9A-Za-z]+$/.test(e) ? e : '(' + e + ')'));
+  const shownText = (html) => rawText(html).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(SUP, '<sup>$1</sup>');
   const roundKey = (groupId, level, no) => unit.id + ':' + groupId + ':' + level + ':' + no;
   const versionOf = (u) => VERSION + '.' + (u.version || 1);
   const termOf = (u) => u.grade + '-' + u.semester;
@@ -145,7 +149,7 @@
         if (signed) {
           const sign = el('button', 'mb-sign', '+'); sign.type = 'button'; sign.dataset.sign = '+'; sign.setAttribute('aria-label', '부호 바꾸기(지금 +)');
           sign.addEventListener('click', () => setSign(sign, sign.dataset.sign === '+' ? '−' : '+'));
-          (item.fraction ? form : field).append(sign);
+          if (!item.fraction) field.append(sign); else if (stack.parentNode) stack.before(sign); else form.append(sign);
         }
         const box = document.createElement('input');
         box.type = 'text'; box.inputMode = input.decimal ? 'decimal' : 'numeric'; box.autocomplete = 'off'; box.maxLength = roomy ? 22 : input.decimal ? 8 : 6;
@@ -188,10 +192,10 @@
   const setSign = (button, sign) => { button.dataset.sign = sign; button.textContent = sign; button.setAttribute('aria-label', '부호 바꾸기(지금 ' + sign + ')'); };
   // 음수는 빼기표(−)로 적는다.
   const signedText = (n) => (n < 0 ? '−' + Math.abs(n) : String(n));
-  const answerText = (item) => (item.choice
-    ? plainText(item.choice.options[item.choice.answer])
+  const answerText = (item, shown) => (item.choice
+    ? (shown ? shownText : plainText)(item.choice.options[item.choice.answer])
     : item.fraction ? (item.negative ? '−' : '') + (item.mixed ? item.inputs[0].answer + ' ' : '') + item.inputs.slice(-2).map((input) => input.answer).join('/') + (item.unit ? ' ' + item.unit : '')
-    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + signedText(input.answer) + (input.unit ? (/^[A-Za-z%:]/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))
+    : item.inputs.map((input) => (input.label ? input.label + ' ' : '') + (input.lead ? input.lead + ' ' : '') + signedText(input.answer) + (input.unit ? (/^([A-Za-z%:]|°C)/.test(input.unit.trim()) ? ' ' : '') + input.unit.trim() : ''))
       // 비(□ : □)는 쉼표 없이 잇는다.
       .reduce((text, part, i) => text + (i ? (/:$/.test(text) ? ' ' : ', ') : '') + part, ''));
 
@@ -217,7 +221,7 @@
     const result = card.querySelector('.mb-result');
     result.hidden = false;
     result.className = 'mb-result ' + (ok ? 'is-right' : 'is-wrong');
-    result.innerHTML = ok ? '<strong>정답</strong>' : '<strong>답: ' + answerText(item) + '</strong>' + (item.explain ? '<br>' + item.explain : '');
+    result.innerHTML = ok ? '<strong>정답</strong>' : '<strong>답: ' + answerText(item, true) + '</strong>' + (item.explain ? '<br>' + item.explain : '');
   }
 
   async function answer(item, card, response) {
