@@ -536,7 +536,7 @@
     touch, overlap, fold, whyNot, WHY, cornersOf, outline, POINTS, boundsOf, moved, sorted, turned, netArt, netTidy, cellRects, turnCells, spanOf, CUBE_NETS, CUBE_FAKES, hasRow4, pickShapes, cubeArt, TREES, unfold, hasStrip, boxNet, cubeNet, rectName, cutsOf, fakeMove, fakeSize, sameKind, normCells, freeKey };
 
   B.addUnit({
-    id: '5-2-5', grade: 5, semester: 2, no: 5, title: '직육면체', version: 1,
+    id: '5-2-5', grade: 5, semester: 2, no: 5, title: '직육면체', version: 2,
     groups: [
       { id: 'def', title: '직육면체와 정육면체', standard: SOLID, types: [] },
       { id: 'parts', title: '면, 모서리, 꼭짓점', standard: SOLID, types: [] },
@@ -577,7 +577,7 @@
       return pickWord(d, '직사각형 6개로 둘러싸인 도형을 무엇이라고 하는가?', '직육면체', ['정육면체', '직사각형', '사각형'], '직사각형 6개로 둘러싸인 도형을 직육면체라고 한다.');
     }, { count: 2 }),
     T('def-find', '여러 도형 가운데 직육면체 고르기', '①2 ②2 ③2 심1', (d) => {
-      // 면이 6개이지만 직사각형이 아닌 면이 있는 도형을 꼭 하나 넣는다. 정육면체는 넣지 않는다(직육면체와 정육면체의 포함 관계는 다루지 않는다).
+      // 면이 6개이지만 직사각형이 아닌 면이 있는 도형을 꼭 하나 넣는다. 정육면체는 넣지 않는다(정육면체가 섞인 그림은 실력에 있다).
       const six = d.shuffle(['trap', 'para', 'cut']), rest = d.shuffle(['tri', 'pyr', 'cyl']), kinds = [six[0], rest[0], d.bool() ? six[1] : rest[1]];
       const items = d.shuffle(d.shuffle(BOXES).slice(0, 2).map((b) => ({ box: true, art: () => boxTile(b[0], b[1], b[2]) })).concat(kinds.map((k) => OTHERS[k]())));
       const flags = items.map((it) => Boolean(it.box)), made = setOptions(d, TAGS.slice(0, 5), flags);
