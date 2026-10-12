@@ -60,6 +60,11 @@
   const ofValue = ([, u, k]) => u * k;
   const ofSay = ([m, u, k]) => `${m * u}의 ${frac(k, m)}`;
   const ofExpr = ([m, u, k]) => `${m * u}/${m}*${k}`;
+  // 풀이에 적는 「전체의 k/m」: 나눗셈과 곱셈을 한 식에 잇지 않고 한 번에 하나씩 적는다(식을 잇는 표기는 5학년 「자연수의 혼합 계산」). 분자가 1이면 나눗셈뿐이다.
+  // ofSteps 는 식만 잇달아 적고, ofWay 는 단위분수만큼을 먼저 구하는 문장이다.
+  // whole 은 전체를 가리키는 말('30', '귤 30개'), n 은 전체의 수, unit 은 값 뒤에 붙는 '(cm)' 따위, lead 는 구하는 것을 가리키는 앞말, end 는 뒷말.
+  const ofSteps = ([m, u, k]) => (k === 1 ? `${m * u} ÷ ${m} = ${u}이다.` : `${m * u} ÷ ${m} = ${u}이고, ${u} × ${k} = ${u * k}이다.`);
+  const ofWay = (whole, n, m, k, unit, lead, end) => (k === 1 ? `${lead} ${n} ÷ ${m} = ${n / m}${unit}${end}` : `${whole}의 ${fj(1, m, '은/는')} ${n} ÷ ${m} = ${n / m}${unit}이므로 ${lead} ${n / m} × ${k} = ${n / m * k}${unit}${end}`);
   const OF_ALL = [];
   for (let m = 3; m <= 9; m += 1) for (let u = 2; u <= 9; u += 1) for (let k = 1; k < m; k += 1) if (gcd(k, m) === 1 && m !== u && m * u <= 72) OF_ALL.push([m, u, k]);
   // 한 전체(total)의 두 분수만큼: 분모가 서로 다르고 둘 다 단위분수이지는 않다(plain 이면 둘 다 단위분수가 아니다). ok(total, 첫째 양, 둘째 양)
@@ -153,7 +158,7 @@
       const rows = d.until(() => [ofPick(d), ofPick(d), ofPick(d)], (list) => new Set(list.map(ofValue)).size === 3 && new Set(list.map(ofTotal)).size === 3 && list.filter((row) => row[2] >= 2).length >= 2 && Math.max(...list.map(ofValue)) - Math.min(...list.map(ofValue)) <= 8);
       const values = rows.map(ofValue), list = d.shuffle(d.shuffle(ORDERS.slice(1)).slice(0, 3).concat([ORDERS[0]]));
       return C('분수만큼과 그 값을 알맞게 짝 지은 것은?', list.map((o) => o.map((j, i) => `${LABELS[i]} ${values[j]}`).join(', ')), list.findIndex((o) => o.join() === '0,1,2'), {
-        figure: tagged(rows.map(ofSay)), explain: rows.map((row, i) => `${LABELS[i]} ${ofTotal(row)} ÷ ${row[0]} × ${row[2]} = ${ofValue(row)}`).join(', ') + '이다.',
+        figure: tagged(rows.map(ofSay)), explain: rows.map((row, i) => `${LABELS[i]} ${ofSteps(row)}`).join(' '),
         facts: { match: { exprs: rows.map(ofExpr), options: list.map((o) => o.map((j) => values[j])) } }
       });
     }),
@@ -166,7 +171,7 @@
       }, ([first, second, third]) => second !== first && third !== first);
       const rows = d.shuffle([a, b, c]);
       return C('나타내는 수가 나머지와 다른 하나는?', THREE, rows.indexOf(c), {
-        figure: tagged(rows.map(ofSay)), explain: rows.map((row, i) => `${LABELS[i]} ${ofTotal(row)} ÷ ${row[0]} × ${row[2]} = ${ofValue(row)}`).join(', ') + '이다.',
+        figure: tagged(rows.map(ofSay)), explain: rows.map((row, i) => `${LABELS[i]} ${ofSteps(row)}`).join(' '),
         facts: { choose: { exprs: rows.map(ofExpr), rule: 'odd' } }
       });
     }),
@@ -184,14 +189,14 @@
     }),
     T('of-day', '하루의 분수만큼은 몇 시간', '①29 ②22 ③37 심12', (d) => {
       const [m, k] = d.pick([[2, 1], [3, 1], [3, 2], [4, 1], [4, 3], [6, 1], [6, 5], [8, 3], [8, 5], [8, 7]]);
-      return N(`하루의 ${fj(k, m, '은/는')} 몇 시간인가?`, 24 / m * k, { unit: '시간', explain: `하루는 24시간이다. 24시간의 ${fj(k, m, '은/는')} 24 ÷ ${m} × ${k} = ${24 / m * k}(시간)이다.`, facts: { calc: [[`24/${m}*${k}`, 0]], unseen: [24] } });
+      return N(`하루의 ${fj(k, m, '은/는')} 몇 시간인가?`, 24 / m * k, { unit: '시간', explain: `하루는 24시간이다. ${ofWay('24시간', 24, m, k, '(시간)', `24시간의 ${fj(k, m, '은/는')}`, '이다.')}`, facts: { calc: [[`24/${m}*${k}`, 0]], unseen: [24] } });
     }),
     T('of-word-compare', '문장제: 분수만큼을 구해 비교하기', '②25 심21', (d) => {
       // 전체가 긴 쪽이 답이 되지 않게 고른다.
       const [one, two] = d.shuffle(NAMES).slice(0, 2);
       const [p, q] = d.until(() => [ofPick(d), ofPick(d)], ([x, y]) => x[0] !== y[0] && ofTotal(x) !== ofTotal(y) && ofValue(x) !== ofValue(y) && Math.abs(ofValue(x) - ofValue(y)) <= 6 && (ofTotal(x) > ofTotal(y)) !== (ofValue(x) > ofValue(y)));
       return C(`${name(one, '은/는')} 길이가 ${ofTotal(p)} cm인 리본의 ${fj(p[2], p[0], '을/를')} 사용하였고, ${name(two, '은/는')} 길이가 ${ofTotal(q)} cm인 리본의 ${fj(q[2], q[0], '을/를')} 사용하였다. 리본을 더 길게 사용한 사람은?`, [one, two], ofValue(p) > ofValue(q) ? 0 : 1, {
-        explain: `${name(one, '은/는')} ${ofTotal(p)} ÷ ${p[0]} × ${p[2]} = ${ofValue(p)}(cm), ${name(two, '은/는')} ${ofTotal(q)} ÷ ${q[0]} × ${q[2]} = ${ofValue(q)}(cm)를 사용하였다.`,
+        explain: [[one, p], [two, q]].map(([who, row]) => ofWay(`${ofTotal(row)} cm`, ofTotal(row), row[0], row[2], '(cm)', name(who, '은/는'), '를 사용하였다.')).join(' '),
         facts: { choose: { exprs: [ofExpr(p), ofExpr(q)], rule: 'max' } }
       });
     })
@@ -307,7 +312,7 @@
       const list = d.shuffle(d.shuffle(ORDERS.slice(1)).slice(0, 3).concat([ORDERS[0]]));
       return C('대분수와 크기가 같은 가분수를 알맞게 짝 지은 것은?', list.map((o) => o.map((j, i) => `${LABELS[i]} ${frac(tops[j], den)}`).join(', ')), list.findIndex((o) => o.join() === '0,1,2'), {
         figure: tagged(tops.map((top) => mixed(Math.floor(top / den), top % den, den))),
-        explain: '가분수의 분자는 ' + tops.map((top, i) => `${LABELS[i]} ${Math.floor(top / den)} × ${den} + ${top % den} = ${top}`).join(', ') + '이다.',
+        explain: '가분수의 분자를 구한다. ' + tops.map((top, i) => `${LABELS[i]} ${Math.floor(top / den)} × ${den} = ${top - top % den}이고, ${top - top % den} + ${top % den} = ${top}이다.`).join(' '),
         facts: { match: { exprs: tops.map((top) => `${Math.floor(top / den)}*${den}+${top % den}`), options: list.map((o) => o.map((j) => tops[j])) } }
       });
     }),
@@ -326,7 +331,7 @@
     T('conv-largest', '조건에 맞는 가장 큰 대분수를 가분수로 나타내기', '①74 ③85', (d) => {
       const w = d.int(2, 6), den = d.until(() => d.int(3, 9), (v) => v !== w);
       return N(`자연수 부분이 ${w}이고 분모가 ${den}인 대분수 중에서 가장 큰 분수를 가분수로 나타내려고 한다. □ 안에 알맞은 수는?`, w * den + den - 1, {
-        figure: ex(frac(box(), den)), explain: `분모가 ${den}인 진분수 중에서 가장 큰 분수는 ${frac(den - 1, den)}이므로 가장 큰 대분수는 ${mixed(w, den - 1, den)}이다. ${w} × ${den} + ${den - 1} = ${w * den + den - 1}`,
+        figure: ex(frac(box(), den)), explain: `분모가 ${den}인 진분수 중에서 가장 큰 분수는 ${frac(den - 1, den)}이므로 가장 큰 대분수는 ${mixed(w, den - 1, den)}이다. ${w} × ${den} = ${w * den}이고, ${w * den} + ${den - 1} = ${w * den + den - 1}이므로 가분수로 나타내면 ${frac(w * den + den - 1, den)}이다.`,
         facts: { calc: [[`${w}*${den}+${den}-1`, 0]], unseen: [1] }
       });
     }),
@@ -339,7 +344,7 @@
         { text: `${w}보다 크고 ${w + 1}보다 작은 수이다.`, ok: true }
       ]);
       return C(`${mixed(w, n, den)}에 대한 설명으로 옳지 않은 것은?`, rows.map((row) => row.text), rows.findIndex((row) => !row.ok), {
-        explain: `${mj(w, n, den, '은/는')} ${frac(1, den)}이 ${w} × ${den} + ${n} = ${top}(개)인 수이고, 가분수로 나타내면 ${frac(top, den)}이다.`,
+        explain: `${josa(w, '은/는')} ${frac(1, den)}이 ${w} × ${den} = ${w * den}(개)이므로 ${mj(w, n, den, '은/는')} ${frac(1, den)}이 ${w * den} + ${n} = ${top}(개)인 수이고, 가분수로 나타내면 ${frac(top, den)}이다.`,
         facts: { truth: rows.map((row) => row.ok), want: false }
       });
     })
@@ -440,7 +445,7 @@
       const [total, m1, k1, m2, k2] = twoShares(d, (all, a, b) => a + b < all && a !== b);
       const a = total / m1 * k1, b = total / m2 * k2;
       return N(`색종이 ${total}장 중에서 전체의 ${fj(k1, m1, '은/는')} 종이학을 접는 데 사용하고, 전체의 ${fj(k2, m2, '은/는')} 종이배를 접는 데 사용하였다. 남은 색종이는 몇 장인가?`, total - a - b, {
-        unit: '장', explain: `종이학을 접는 데 ${total} ÷ ${m1} × ${k1} = ${a}(장), 종이배를 접는 데 ${total} ÷ ${m2} × ${k2} = ${b}(장)을 사용하였다. ${total} - ${a} - ${b} = ${total - a - b}`,
+        unit: '장', explain: `${ofWay(`색종이 ${total}장`, total, m1, k1, '(장)', '종이학을 접는 데', '을 사용하였다.')} ${ofWay(`색종이 ${total}장`, total, m2, k2, '(장)', '종이배를 접는 데', '을 사용하였다.')} ${total} - ${a} - ${b} = ${total - a - b}`,
         facts: { calc: [[`${total}-${total}/${m1}*${k1}-${total}/${m2}*${k2}`, 0]] }
       });
     }, { standard: PART }),
@@ -452,7 +457,7 @@
       const unit = Math.abs(total / m1 - total / m2), other = unit > 0 && unit !== gap ? unit : gap + 2;
       const list = d.shuffle([[winner, gap], [1 - winner, gap], [winner, other], [1 - winner, other]]);
       return C(`딸기 ${total}개 중에서 ${name(one, '은/는')} 전체의 ${fj(k1, m1, '을/를')}, ${name(two, '은/는')} 전체의 ${fj(k2, m2, '을/를')} 먹었다. 누가 몇 개 더 많이 먹었는가?`, list.map(([who, n]) => `${[one, two][who]}, ${n}개`), list.findIndex(([who, n]) => who === winner && n === gap), {
-        explain: `${name(one, '은/는')} ${total} ÷ ${m1} × ${k1} = ${values[0]}(개), ${name(two, '은/는')} ${total} ÷ ${m2} × ${k2} = ${values[1]}(개)를 먹었다. ${name([one, two][winner], '이/가')} ${Math.max(...values)} - ${Math.min(...values)} = ${gap}(개) 더 많이 먹었다.`,
+        explain: `${ofWay(`딸기 ${total}개`, total, m1, k1, '(개)', name(one, '은/는'), '를 먹었다.')} ${ofWay(`딸기 ${total}개`, total, m2, k2, '(개)', name(two, '은/는'), '를 먹었다.')} ${name([one, two][winner], '이/가')} ${Math.max(...values)} - ${Math.min(...values)} = ${gap}(개) 더 많이 먹었다.`,
         facts: { who: { values, options: list, exprs: [`${total}/${m1}*${k1}`, `${total}/${m2}*${k2}`] } }
       });
     }, { standard: PART }),
@@ -462,7 +467,7 @@
       const said = [`${total}/${m1}*${k1}`, `${total}/${m2}*${k2}`, `(${total}-${total}/${m1}*${k1}-${total}/${m2}*${k2})`];
       const values = [total / m1 * k1, total / m2 * k2, total - total / m1 * k1 - total / m2 * k2], most = values.indexOf(Math.max(...values)), least = values.indexOf(Math.min(...values));
       return N(`귤 ${total}개를 세 사람이 나누어 가졌다. ${name(one, '은/는')} 전체의 ${fj(k1, m1, '을/를')}, ${name(two, '은/는')} 전체의 ${fj(k2, m2, '을/를')} 가졌고, ${name(three, '은/는')} 나머지를 모두 가졌다. 귤을 가장 많이 가진 사람은 가장 적게 가진 사람보다 몇 개 더 많이 가졌는가?`, values[most] - values[least], {
-        unit: '개', explain: `${name(one, '은/는')} ${total} ÷ ${m1} × ${k1} = ${values[0]}(개), ${name(two, '은/는')} ${total} ÷ ${m2} × ${k2} = ${values[1]}(개), ${name(three, '은/는')} ${total} - ${values[0]} - ${values[1]} = ${values[2]}(개)를 가졌다. ${values[most]} - ${values[least]} = ${values[most] - values[least]}`,
+        unit: '개', explain: `${ofWay(`귤 ${total}개`, total, m1, k1, '(개)', name(one, '은/는'), '를 가졌다.')} ${ofWay(`귤 ${total}개`, total, m2, k2, '(개)', name(two, '은/는'), '를 가졌다.')} ${name(three, '은/는')} ${total} - ${values[0]} - ${values[1]} = ${values[2]}(개)를 가졌다. ${values[most]} - ${values[least]} = ${values[most] - values[least]}`,
         facts: { calc: [[`${said[most]}-${said[least]}`, 0]], tableRank: { values, a: 0, b: 2 } }
       });
     }, { standard: PART }),
@@ -470,14 +475,14 @@
       const who = d.pick(NAMES), [m1, k1, m2, k2] = d.pick([[4, 1, 3, 1], [4, 1, 8, 3], [6, 1, 3, 1], [6, 1, 8, 3]]);
       const a = 24 / m1 * k1, b = 24 / m2 * k2;
       return N(`${name(who, '은/는')} 하루의 ${frac(k1, m1)}만큼은 학교에서 지내고, 하루의 ${frac(k2, m2)}만큼은 잠을 잔다. ${name(who, '이/가')} 하루에 학교에서 지내는 시간과 잠을 자는 시간은 모두 몇 시간인가?`, a + b, {
-        unit: '시간', explain: `하루는 24시간이다. 학교에서 지내는 시간은 24 ÷ ${m1} × ${k1} = ${a}(시간), 잠을 자는 시간은 24 ÷ ${m2} × ${k2} = ${b}(시간)이다. ${a} + ${b} = ${a + b}`,
+        unit: '시간', explain: `하루는 24시간이다. ${ofWay('24시간', 24, m1, k1, '(시간)', '학교에서 지내는 시간은', '이다.')} ${ofWay('24시간', 24, m2, k2, '(시간)', '잠을 자는 시간은', '이다.')} ${a} + ${b} = ${a + b}`,
         facts: { calc: [[`24/${m1}*${k1}+24/${m2}*${k2}`, 0]], unseen: [24] }
       });
     }, { standard: PART }),
     H('h-of-total', '두 양을 합한 전체의 분수만큼', '심25', (d) => {
       const [m, u, k] = ofPick(d, (x, y) => x * y >= 20), total = m * u, a = d.until(() => d.int(6, total - 6), (v) => v % m !== 0 && v * 2 !== total), b = total - a;
       return N(`상자에 빨간 공 ${a}개와 파란 공 ${b}개가 들어 있다. 상자에 들어 있는 공 전체의 ${fj(k, m, '을/를')} 꺼냈다. 꺼낸 공은 몇 개인가?`, u * k, {
-        unit: '개', explain: `공은 모두 ${a} + ${b} = ${total}(개)이다. ${total}의 ${fj(k, m, '은/는')} ${total} ÷ ${m} × ${k} = ${u * k}(개)이다.`,
+        unit: '개', explain: `공은 모두 ${a} + ${b} = ${total}(개)이다. ${ofWay(total, total, m, k, '(개)', `${total}의 ${fj(k, m, '은/는')}`, '이다.')}`,
         facts: { calc: [[`(${a}+${b})/${m}*${k}`, 0]] }
       });
     }, { standard: PART }),
@@ -486,7 +491,7 @@
       const [p, q] = d.until(() => [ofPick(d), ofPick(d)], ([x, y]) => x[0] !== y[0] && ofTotal(x) >= 12 && ofTotal(y) >= 12 && ofTotal(x) !== ofTotal(y) && left(x) !== left(y) && Math.abs(left(x) - left(y)) <= 20);
       const said = (row) => `(${ofTotal(row)}-${ofExpr(row)})`, big = left(p) > left(q) ? p : q, small = big === p ? q : p;
       return N(`길이가 ${ofTotal(p)} cm인 빨간 끈의 ${fj(p[2], p[0], '과/와')} 길이가 ${ofTotal(q)} cm인 파란 끈의 ${fj(q[2], q[0], '을/를')} 사용하였다. 남은 두 끈의 길이의 차는 몇 cm인가?`, left(big) - left(small), {
-        unit: 'cm', explain: `빨간 끈은 ${ofTotal(p)} ÷ ${p[0]} × ${p[2]} = ${ofValue(p)}(cm)를 사용하여 ${ofTotal(p)} - ${ofValue(p)} = ${left(p)}(cm)가 남고, 파란 끈은 ${ofTotal(q)} ÷ ${q[0]} × ${q[2]} = ${ofValue(q)}(cm)를 사용하여 ${ofTotal(q)} - ${ofValue(q)} = ${left(q)}(cm)가 남는다. ${left(big)} - ${left(small)} = ${left(big) - left(small)}`,
+        unit: 'cm', explain: `${[['빨간 끈은', p], ['파란 끈은', q]].map(([lead, row]) => ofWay(`${ofTotal(row)} cm`, ofTotal(row), row[0], row[2], '(cm)', lead, `를 사용하여 ${ofTotal(row)} - ${ofValue(row)} = ${left(row)}(cm)가 남는다.`)).join(' ')} ${left(big)} - ${left(small)} = ${left(big) - left(small)}`,
         facts: { calc: [[`${said(big)}-${said(small)}`, 0]] }
       });
     }, { standard: PART }),
@@ -494,14 +499,14 @@
       const [m1, v, m2, k2] = d.until(() => [d.int(2, 9), d.int(2, 9), d.int(3, 9), d.int(2, 8)], ([a, x, b, k]) => a !== b && k < b && gcd(k, b) === 1 && (a * x) % b === 0 && a * x <= 72 && a * x / b * k !== x);
       const whole = m1 * v;
       return N(`어떤 수의 ${fj(1, m1, '은/는')} ${v}이다. 어떤 수의 ${fj(k2, m2, '은/는')}?`, whole / m2 * k2, {
-        explain: `어떤 수는 ${v} × ${m1} = ${whole}이다. ${whole}의 ${fj(k2, m2, '은/는')} ${whole} ÷ ${m2} × ${k2} = ${whole / m2 * k2}이다.`, facts: { calc: [[`${v}*${m1}/${m2}*${k2}`, 0]] }
+        explain: `어떤 수는 ${v} × ${m1} = ${whole}이다. ${ofWay(whole, whole, m2, k2, '', `${whole}의 ${fj(k2, m2, '은/는')}`, '이다.')}`, facts: { calc: [[`${v}*${m1}/${m2}*${k2}`, 0]] }
       });
     }, { standard: PART }),
     H('h-cards-mixed', '수 카드로 가장 큰 대분수 만들기', '심59, 기본 ①59 ②51 ③87', (d) => {
       const [x, y, z] = d.shuffle([2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 3).sort((p, q) => p - q);
       return M('수 카드 세 장을 한 번씩 모두 사용하여 가장 큰 대분수를 만들고, 그 대분수를 가분수로 나타내려고 한다. ㉠, ㉡, ㉢, ㉣에 알맞은 수는?', labelled([z, x, y, z * y + x]), {
         figure: cards(d.shuffle([x, y, z])) + lines([`가장 큰 대분수: ${mixed(box(LABELS[0]), box(LABELS[1]), box(LABELS[2]))}`, `가분수: ${frac(box(LABELS[3]), box(LABELS[2]))}`]),
-        explain: `자연수 부분이 클수록 큰 분수이므로 가장 큰 수 ${josa(z, '을/를')} 자연수 부분에 놓고, 남은 두 수로 진분수 ${fj(x, y, '을/를')} 만든다. ${z} × ${y} + ${x} = ${z * y + x}이므로 ${mj(z, x, y, '은/는')} ${frac(z * y + x, y)}이다.`,
+        explain: `자연수 부분이 클수록 큰 분수이므로 가장 큰 수 ${josa(z, '을/를')} 자연수 부분에 놓고, 남은 두 수로 진분수 ${fj(x, y, '을/를')} 만든다. ${z} × ${y} = ${z * y}이고, ${z * y} + ${x} = ${z * y + x}이므로 ${mj(z, x, y, '은/는')} ${frac(z * y + x, y)}이다.`,
         facts: { calc: [[String(z), 0], [String(x), 1], [String(y), 2], [`${z}*${y}+${x}`, 3]] }
       });
     }),

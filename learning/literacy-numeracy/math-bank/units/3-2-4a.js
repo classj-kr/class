@@ -27,6 +27,9 @@
   const tail = (n, pair) => josa(n, pair).slice(String(n).length);
   const fj = (k, n, pair) => frac(k, n) + tail(k, pair);
   const mj = (w, k, n, pair) => mixed(w, k, n) + tail(k, pair);
+  // 풀이에 적는 「전체의 k/m」: 나눗셈과 곱셈을 한 식에 잇지 않고 단위분수만큼을 먼저 구한다(식을 잇는 표기는 5학년 「자연수의 혼합 계산」). 분자가 1이면 나눗셈뿐이다.
+  // whole 은 전체를 가리키는 말('30', '100 cm'), n 은 전체의 수, unit 은 값 뒤에 붙는 '(cm)' 따위, lead 는 구하는 것을 가리키는 앞말, end 는 뒷말.
+  const ofWay = (whole, n, m, k, unit, lead, end) => (k === 1 ? `${lead} ${n} ÷ ${m} = ${n / m}${unit}${end}` : `${whole}의 ${fj(1, m, '은/는')} ${n} ÷ ${m} = ${n / m}${unit}이므로 ${lead} ${n / m} × ${k} = ${n / m * k}${unit}${end}`);
   const labelled = (answers) => answers.map((answer, i) => ({ label: LABELS[i], answer }));
   const sign = (x, y) => (x > y ? 0 : x === y ? 1 : 2);
   // 묶음: 한 묶음 g개, 모두 m묶음, 그 가운데 k묶음(k/m 은 더 줄일 수 없는 진분수)
@@ -96,7 +99,7 @@
             const rows = d.until(() => [pick(), pick(), pick()], (list) => new Set(list.map(([x, y]) => x * y)).size === 3), good = d.int(0, 2);
             const told = rows.map(([m, u, k], i) => (i === good ? u * k : i === (good + 1) % 3 ? u : m * u / k));
             return C('바르게 구한 것은?', rows.map(([m, u, k], i) => `${m * u}의 ${fj(k, m, '은/는')} ${told[i]}이다.`), good, {
-              explain: rows.map(([m, u, k]) => `${m * u}의 ${fj(k, m, '은/는')} ${m * u} ÷ ${m} × ${k} = ${u * k}`).join(', ') + '이다.',
+              explain: rows.map(([m, u, k]) => `${m * u} ÷ ${m} = ${u}이므로 ${m * u}의 ${fj(k, m, '은/는')} ${u} × ${k} = ${u * k}이다.`).join(' '),
               facts: { claimed: rows.map(([m, u, k], i) => [`${m * u}/${m}*${k}`, told[i]]), claimedWant: true }
             });
           }),
@@ -110,26 +113,26 @@
           }),
           T('of-word', '문장제: 전체의 분수만큼', '①16 ②18 ③18 심18', (d) => {
             const [m, u, k] = d.until(() => [d.int(3, 9), d.int(3, 9), d.int(2, 7)], ([x, y, z]) => z < x && gcd(z, x) === 1), total = m * u;
-            return N(`색종이 ${total}장 중에서 ${fj(k, m, '을/를')} 사용하였다. 사용한 색종이는 몇 장인가?`, u * k, { unit: '장', explain: `${total}의 ${fj(k, m, '은/는')} ${total} ÷ ${m} × ${k} = ${u * k}이다.`, facts: { calc: [[`${total}/${m}*${k}`, 0]] } });
+            return N(`색종이 ${total}장 중에서 ${fj(k, m, '을/를')} 사용하였다. 사용한 색종이는 몇 장인가?`, u * k, { unit: '장', explain: ofWay(total, total, m, k, '', `${total}의 ${fj(k, m, '은/는')}`, '이다.'), facts: { calc: [[`${total}/${m}*${k}`, 0]] } });
           }),
           T('of-left', '문장제: 분수만큼 쓰고 남은 양', '①17 ②20 ③20 심19', (d) => {
             const [m, u, k] = d.until(() => [d.int(3, 9), d.int(3, 9), d.int(1, 7)], ([x, y, z]) => z < x && gcd(z, x) === 1), total = m * u;
             return N(`딱지 ${total}장 중에서 ${fj(k, m, '을/를')} 친구에게 주었다. 남은 딱지는 몇 장인가?`, total - u * k, {
-              unit: '장', explain: `친구에게 준 딱지는 ${total} ÷ ${m} × ${k} = ${u * k}(장)이다. ${total} - ${u * k} = ${total - u * k}`, facts: { calc: [[`${total}-${total}/${m}*${k}`, 0]] }
+              unit: '장', explain: `${ofWay(`딱지 ${total}장`, total, m, k, '(장)', '친구에게 준 딱지는', '이다.')} ${total} - ${u * k} = ${total - u * k}`, facts: { calc: [[`${total}-${total}/${m}*${k}`, 0]] }
             });
           }),
           T('of-length', '1 m의 분수만큼은 몇 cm', '①28 ③34', (d) => {
             const [m, k] = d.pick([[2, 1], [4, 1], [4, 3], [5, 1], [5, 2], [5, 3], [5, 4], [10, 3], [10, 7], [10, 9]]);
-            return N(`1 m의 ${fj(k, m, '은/는')} 몇 cm인가?`, 100 / m * k, { unit: 'cm', explain: `1 m는 100 cm이다. 100 cm의 ${fj(k, m, '은/는')} 100 ÷ ${m} × ${k} = ${100 / m * k}(cm)이다.`, facts: { calc: [[`100/${m}*${k}`, 0]], unseen: [100] } });
+            return N(`1 m의 ${fj(k, m, '은/는')} 몇 cm인가?`, 100 / m * k, { unit: 'cm', explain: `1 m는 100 cm이다. ${ofWay('100 cm', 100, m, k, '(cm)', `100 cm의 ${fj(k, m, '은/는')}`, '이다.')}`, facts: { calc: [[`100/${m}*${k}`, 0]], unseen: [100] } });
           }),
           T('of-time', '1시간의 분수만큼은 몇 분', '①30 ③37', (d) => {
             const [m, k] = d.pick([[2, 1], [3, 1], [3, 2], [4, 1], [4, 3], [5, 2], [5, 3], [6, 5], [10, 3], [10, 7]]);
-            return N(`1시간의 ${fj(k, m, '은/는')} 몇 분인가?`, 60 / m * k, { unit: '분', explain: `1시간은 60분이다. 60분의 ${fj(k, m, '은/는')} 60 ÷ ${m} × ${k} = ${60 / m * k}(분)이다.`, facts: { calc: [[`60/${m}*${k}`, 0]], unseen: [60] } });
+            return N(`1시간의 ${fj(k, m, '은/는')} 몇 분인가?`, 60 / m * k, { unit: '분', explain: `1시간은 60분이다. ${ofWay('60분', 60, m, k, '(분)', `60분의 ${fj(k, m, '은/는')}`, '이다.')}`, facts: { calc: [[`60/${m}*${k}`, 0]], unseen: [60] } });
           }),
           T('of-tape', '띠 그림을 보고 길이의 분수만큼 구하기', '①26 ②? ③32 심12', (d) => {
             const [m, u, k] = d.until(() => [d.int(3, 8), d.int(2, 9), d.int(2, 7)], ([x, y, z]) => z < x && gcd(z, x) === 1), total = m * u;
             return N(`길이가 ${total} cm인 종이띠를 똑같이 ${m}칸으로 나누어 ${k}칸을 색칠하였다. 색칠한 부분의 길이는 몇 cm인가?`, u * k, {
-              unit: 'cm', figure: pieces('bar', m, { shaded: k }), explain: `색칠한 부분은 전체의 ${frac(k, m)}이다. ${total} ÷ ${m} × ${k} = ${u * k}`, facts: { calc: [[`${total}/${m}*${k}`, 0]] }
+              unit: 'cm', figure: pieces('bar', m, { shaded: k }), explain: `색칠한 부분은 전체의 ${frac(k, m)}이다. 한 칸의 길이는 ${total} ÷ ${m} = ${u}(cm)이므로 색칠한 ${k}칸의 길이는 ${u} × ${k} = ${u * k}(cm)이다.`, facts: { calc: [[`${total}/${m}*${k}`, 0]] }
             });
           })
         ]

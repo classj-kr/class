@@ -360,7 +360,7 @@
             const a = MX(w1, x, den), b = MX(w2, y, den), s = a.top + b.top;
             return M('가분수로 바꾸어 계산하였다. ㉠, ㉡, ㉢, ㉣에 알맞은 수는?', labelled([b.top, s, Math.floor(s / den), s % den]), {
               figure: lines([eq(show(a), '+', show(b), '=', frac(a.top, den), '+', frac(box(LAB[0]), den)), eq('=', frac(box(LAB[1]), den), '=', blank2(den, 2))]),
-              explain: `${sj(b, '을/를')} 가분수로 나타내면 ${w2} × ${den} + ${y} = ${b.top}이므로 ${frac(b.top, den)}이다. ${frac(a.top, den)} + ${frac(b.top, den)} = ${frac(s, den)} = ${mixed(Math.floor(s / den), s % den, den)}`,
+              explain: `${sj(b, '을/를')} 가분수로 나타내면 ${w2} × ${den} = ${w2 * den}이고, ${w2 * den} + ${y} = ${b.top}이므로 ${frac(b.top, den)}이다. ${frac(a.top, den)} + ${frac(b.top, den)} = ${frac(s, den)} = ${mixed(Math.floor(s / den), s % den, den)}`,
               facts: { calc: [[`${w2}*${den}+${y}`, 0], [`${a.top}+${w2}*${den}+${y}`, 1]].concat(calc2(`${a.top}+${w2}*${den}+${y}`, den, 2)) }
             });
           }),
@@ -531,7 +531,7 @@
             const den = d.int(4, 9), [x, y] = two(d, 1, den - 1, (p, q) => p < q), [w1, w2] = two(d, 1, 4, (p, q) => p >= q + 2), a = MX(w1, x, den), b = MX(w2, y, den), v = a.top - b.top;
             return M('가분수로 바꾸어 계산하였다. ㉠, ㉡, ㉢, ㉣에 알맞은 수는?', labelled([b.top, v, Math.floor(v / den), v % den]), {
               figure: lines([eq(show(a), '-', show(b), '=', frac(a.top, den), '-', frac(box(LAB[0]), den)), eq('=', frac(box(LAB[1]), den), '=', blank2(den, 2))]),
-              explain: `${sj(b, '을/를')} 가분수로 나타내면 ${w2} × ${den} + ${y} = ${b.top}이므로 ${frac(b.top, den)}이다. ${frac(a.top, den)} − ${frac(b.top, den)} = ${frac(v, den)} = ${show(Q(v, den))}`,
+              explain: `${sj(b, '을/를')} 가분수로 나타내면 ${w2} × ${den} = ${w2 * den}이고, ${w2 * den} + ${y} = ${b.top}이므로 ${frac(b.top, den)}이다. ${frac(a.top, den)} − ${frac(b.top, den)} = ${frac(v, den)} = ${show(Q(v, den))}`,
               facts: { calc: [[`${w2}*${den}+${y}`, 0], [`${a.top}-(${w2}*${den}+${y})`, 1]].concat(calc2(`${a.top}-(${w2}*${den}+${y})`, den, 2)) }
             });
           }),
@@ -539,7 +539,7 @@
             const den = d.int(3, 7), [x, y] = two(d, 1, den - 1, (p, q) => p < q), [w1, w2] = two(d, 1, 4, (p, q) => p >= q + 1), a = MX(w1, x, den), b = MX(w2, y, den), u = frac(1, den);
             return M('㉠, ㉡, ㉢에 알맞은 수는?', labelled([a.top, b.top, a.top - b.top]), {
               figure: lines([`${sj(a, '은/는')} ${u}이 ${box(LAB[0])}개, ${sj(b, '은/는')} ${u}이 ${box(LAB[1])}개이므로`, `${eq(show(a), '-', show(b))}${tail(y, '은/는')} ${u}이 ${box(LAB[2])}개이다.`]),
-              explain: `${sj(a, '은/는')} ${u}이 ${w1} × ${den} + ${x} = ${a.top}(개), ${sj(b, '은/는')} ${u}이 ${w2} × ${den} + ${y} = ${b.top}(개)이다. ${a.top} − ${b.top} = ${a.top - b.top}`,
+              explain: `${josa(w1, '은/는')} ${u}이 ${w1} × ${den} = ${w1 * den}(개)이므로 ${sj(a, '은/는')} ${u}이 ${w1 * den} + ${x} = ${a.top}(개)이다. ${josa(w2, '은/는')} ${u}이 ${w2} × ${den} = ${w2 * den}(개)이므로 ${sj(b, '은/는')} ${u}이 ${w2 * den} + ${y} = ${b.top}(개)이다. ${a.top} − ${b.top} = ${a.top - b.top}`,
               facts: { calc: [[`${w1}*${den}+${x}`, 0], [`${w2}*${den}+${y}`, 1], [`${top(a)}-${top(b)}`, 2]] }
             });
           }),

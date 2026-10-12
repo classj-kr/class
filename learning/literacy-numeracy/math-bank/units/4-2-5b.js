@@ -297,7 +297,7 @@
       const clock = (m) => (m < 60 ? `${m}분` : m % 60 === 0 ? `${m / 60}시간` : `${Math.floor(m / 60)}시간 ${m % 60}분`), parts = (m) => [Math.floor(m / 60), m % 60];
       return M('지우가 요일별로 피아노를 연습한 시간을 조사한 표이다. 연습한 시간을 모두 분으로 고쳐 꺾은선그래프로 나타내려고 한다. 표의 ㉠, ㉡에 알맞은 수는?', [{ label: LABELS[0], answer: mins[i] }, { label: LABELS[1], answer: mins[j] }], {
         figure: table(['요일', '연습한 시간', '시간(분)'], names.map((n, k) => [day(n), clock(mins[k]), k === i ? box(LABELS[0]) : k === j ? box(LABELS[1]) : mins[k]])),
-        explain: `1시간은 60분이다. ${clock(mins[i])}은 60 × ${parts(mins[i])[0]} + ${parts(mins[i])[1]} = ${mins[i]}(분), ${clock(mins[j])}은 60 × ${parts(mins[j])[0]} + ${parts(mins[j])[1]} = ${mins[j]}(분)이다.`,
+        explain: '1시간은 60분이다. ' + [mins[i], mins[j]].map((m) => (parts(m)[0] === 1 ? `${clock(m)}은 60 + ${parts(m)[1]} = ${m}(분)이다.` : `${parts(m)[0]}시간은 60 × ${parts(m)[0]} = ${60 * parts(m)[0]}(분)이므로 ${clock(m)}은 ${60 * parts(m)[0]} + ${parts(m)[1]} = ${m}(분)이다.`)).join(' '),
         facts: { calc: [[`60*${parts(mins[i])[0]}+${parts(mins[i])[1]}`, 0], [`60*${parts(mins[j])[0]}+${parts(mins[j])[1]}`, 1]], unseen: [60] }
       });
     }),
@@ -552,7 +552,7 @@
         const next = { weight: 2, tall: 10, type: 20, pop: 20 }, w = wave(d, 5, (x, s) => x.some((y) => (s.from + y * s.step) % next[s.key] === 0)), c = w.c, to = next[w.key], k = d.until(() => d.int(0, 4), (i) => w.v[i] % to === 0);
         return N(`${lead(c)} 이 그래프를 물결선 없이 세로 눈금 한 칸이 ${U(c, to, '을/를')} 나타내도록 다시 그리면, ${c.tag(c.names[k])}의 점은 세로 눈금 0에서 몇 칸 위에 찍히는가?`, w.v[k] / to, {
           unit: '칸', figure: waved(w),
-          explain: `${c.tag(c.names[k])}의 점은 눈금 ${w.from}에서 ${w.cells[k]}칸 위에 있으므로 ${w.from} + ${w.step} × ${w.cells[k]} = ${w.v[k]}(${c.unit})이다. 물결선 없이 한 칸이 ${U(c, to)}이면 0에서 ${w.v[k]} ÷ ${to} = ${w.v[k] / to}(칸) 위에 찍힌다. 물결선이 있는 그래프에서 센 ${w.cells[k]}칸으로 셈하면 안 된다.`,
+          explain: `세로 눈금 한 칸은 ${U(c, w.step)}이고 ${c.tag(c.names[k])}의 점은 눈금 ${w.from}에서 ${w.cells[k]}칸 위에 있다. ${w.step} × ${w.cells[k]} = ${w.step * w.cells[k]}이므로 ${w.from} + ${w.step * w.cells[k]} = ${w.v[k]}(${c.unit})이다. 물결선 없이 한 칸이 ${U(c, to)}이면 0에서 ${w.v[k]} ÷ ${to} = ${w.v[k] / to}(칸) 위에 찍힌다. 물결선이 있는 그래프에서 센 ${w.cells[k]}칸으로 셈하면 안 된다.`,
           facts: { calc: [[`(${w.from}+${w.step}*${w.cells[k]})/${to}`, 0]], unseen: [w.cells[k]] }
         });
       }, { standard: DRAW }),

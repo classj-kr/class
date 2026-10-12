@@ -323,7 +323,7 @@
       const [v, k] = d.until(() => [COLORS.map(() => d.int(4, 14)), d.int(0, 3)], ([x, i]) => distinct(x) && x[i] >= 6 && x[i] % 5 >= 1 && big(x[i], 5) !== small(x[i], 5));
       return M(`학생들이 좋아하는 색깔을 조사하여 나타낸 표이다. 5명을 나타내는 큰 그림과 1명을 나타내는 작은 그림으로 그림그래프를 그릴 때, ${COLORS[k]}에 그려야 하는 큰 그림과 작은 그림은 각각 몇 개인가?`, [{ label: '큰 그림', answer: big(v[k], 5), unit: '개' }, { label: '작은 그림', answer: small(v[k], 5), unit: '개' }], {
         figure: table(['색깔', '학생 수(명)'], COLORS.map((word, i) => [word, v[i]])),
-        explain: `${josa(COLORS[k], '을/를')} 좋아하는 학생은 ${v[k]}명이다. ${v[k]} = 5 × ${big(v[k], 5)} + ${small(v[k], 5)}이므로 큰 그림 ${big(v[k], 5)}개와 작은 그림 ${small(v[k], 5)}개를 그린다.`, facts: { calc: [[`(${v[k]}-${v[k]}%5)/5`, 0], [`${v[k]}%5`, 1]] }
+        explain: `${josa(COLORS[k], '을/를')} 좋아하는 학생은 ${v[k]}명이다. 5 × ${big(v[k], 5)} = ${5 * big(v[k], 5)}이고, ${5 * big(v[k], 5)} + ${small(v[k], 5)} = ${v[k]}이므로 큰 그림 ${big(v[k], 5)}개와 작은 그림 ${small(v[k], 5)}개를 그린다.`, facts: { calc: [[`(${v[k]}-${v[k]}%5)/5`, 0], [`${v[k]}%5`, 1]] }
       });
     }),
     T('draw-hundreds', '몇백몇십을 나타내는 데 필요한 그림의 수', '①48 ②60 ③52 심62', (d) => {

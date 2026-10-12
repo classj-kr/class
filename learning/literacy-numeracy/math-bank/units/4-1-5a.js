@@ -355,7 +355,7 @@
           T('calc-cells-gap', '두 막대의 칸 수의 차', '①34 심20', (d) => {
             const [step, key] = d.pick([[2, 'book'], [5, 'can'], [10, 'jump']]), c = pick(d, key, 4), v = nums(d, 4, 2, 13, step), [i, j] = d.shuffle([0, 1, 2, 3]).slice(0, 2).sort((p, q) => v[q] - v[p]);
             return N(`${lead(c)} ${c.tag(c.names[i])}의 막대는 ${c.tag(c.names[j])}의 막대보다 몇 칸 더 긴가?`, (v[i] - v[j]) / step, {
-              unit: '칸', figure: chart(c, v, { step }), explain: `${told(c, v, i)}, ${told(c, v, j)}이고 세로 눈금 한 칸은 ${U(c, step)}이다. (${v[i]} - ${v[j]}) ÷ ${step} = ${(v[i] - v[j]) / step}`,
+              unit: '칸', figure: chart(c, v, { step }), explain: `${told(c, v, i)}, ${told(c, v, j)}이고 세로 눈금 한 칸은 ${U(c, step)}이다. ${v[i]} - ${v[j]} = ${v[i] - v[j]}이고, ${v[i] - v[j]} ÷ ${step} = ${(v[i] - v[j]) / step}이다.`,
               facts: { calc: [[`(${v[i]}-${v[j]})/${step}`, 0]] }
             });
           }),

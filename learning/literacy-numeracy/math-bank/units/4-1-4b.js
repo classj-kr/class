@@ -294,7 +294,7 @@
       const made = nameOptions(d, true, kind, kind === 'acute' ? '정삼각형' : '예각삼각형');
       return C('그림과 같은 삼각형의 이름이 될 수 있는 것을 모두 고른 것은?', made.options, made.answer, {
         figure: draw(fit, [G.polygon(p), sideOf(p, 0, 2, cm(leg)), sideOf(p, 1, 2, cm(leg)), corner(p, 2, right ? '' : top + '°')], `두 변의 길이가 ${leg} cm로 같은 삼각형. 길이가 같은 두 변 사이의 각은 ${right ? '직각' : top + '°'}`),
-        explain: '두 변의 길이가 같으므로 이등변삼각형이다. ' + { acute: `나머지 두 각은 (180° − ${top}°) ÷ 2 = ${b}°씩이다. 세 각이 모두 예각이므로 예각삼각형이기도 하다.`, right: '길이가 같은 두 변 사이의 각이 직각이므로 직각삼각형이기도 하다.', obtuse: `${top}°인 각이 둔각이므로 둔각삼각형이기도 하다.` }[kind],
+        explain: '두 변의 길이가 같으므로 이등변삼각형이다. ' + { acute: `나머지 두 각은 180° − ${top}° = ${180 - top}°를 똑같이 둘로 나눈 ${b}°씩이다. 세 각이 모두 예각이므로 예각삼각형이기도 하다.`, right: '길이가 같은 두 변 사이의 각이 직각이므로 직각삼각형이기도 하다.', obtuse: `${top}°인 각이 둔각이므로 둔각삼각형이기도 하다.` }[kind],
         facts: made.facts
       });
     }),
@@ -361,7 +361,7 @@
       const open = d.pick([50, 70, 80, 90, 100, 110, 120]), base = (180 - open) / 2, kind = kindByAngles([open, base, base]), made = nameOptions(d, true, kind, LURE[kind]);
       return C('점 ㅇ은 원의 중심이고, 점 ㄱ과 점 ㄴ은 원 위의 점이다. 삼각형 ㅇㄱㄴ의 이름이 될 수 있는 것을 모두 고른 것은?', made.options, made.answer, {
         figure: circleTriangle(open, d.bool(), open === 90 ? '' : open + '°'),
-        explain: '변 ㅇㄱ과 변 ㅇㄴ은 원의 반지름이라 길이가 같으므로 이등변삼각형이다. ' + { acute: `나머지 두 각은 (180° − ${open}°) ÷ 2 = ${base}°씩이다. 세 각이 모두 예각이므로 예각삼각형이기도 하다.`, right: '각 ㄱㅇㄴ이 직각이므로 직각삼각형이기도 하다.', obtuse: `${open}°인 각이 둔각이므로 둔각삼각형이기도 하다.` }[kind],
+        explain: '변 ㅇㄱ과 변 ㅇㄴ은 원의 반지름이라 길이가 같으므로 이등변삼각형이다. ' + { acute: `나머지 두 각은 180° − ${open}° = ${180 - open}°를 똑같이 둘로 나눈 ${base}°씩이다. 세 각이 모두 예각이므로 예각삼각형이기도 하다.`, right: '각 ㄱㅇㄴ이 직각이므로 직각삼각형이기도 하다.', obtuse: `${open}°인 각이 둔각이므로 둔각삼각형이기도 하다.` }[kind],
         facts: made.facts
       });
     }),
@@ -442,14 +442,14 @@
         const flags = pairs.map(([u, v]) => u + v + x === 180 && (u === v || u === x || v === x)), made = setOptions(d, LABELS.slice(0, 3), flags);
         return C(`한 각의 크기가 ${x}°인 이등변삼각형이 있다. 나머지 두 각의 크기가 될 수 있는 것을 모두 고른 것은?`, made.options, made.answer, {
           figure: tagged(pairs.map(deg)),
-          explain: `${x}°인 각이 길이가 같은 두 변 사이의 각이면 나머지 두 각은 (180° − ${x}°) ÷ 2 = ${p}°씩이다. ${x}°인 각이 크기가 같은 두 각 가운데 하나이면 나머지 두 각은 ${x}°와 180° − ${x}° − ${x}° = ${180 - x * 2}°이다.`,
+          explain: `${x}°인 각이 길이가 같은 두 변 사이의 각이면 나머지 두 각은 180° − ${x}° = ${180 - x}°를 똑같이 둘로 나눈 ${p}°씩이다. ${x}°인 각이 크기가 같은 두 각 가운데 하나이면 나머지 두 각은 ${x}°와 180° − ${x}° − ${x}° = ${180 - x * 2}°이다.`,
           facts: { sets: { labels: LABELS.slice(0, 3), flags, options: made.sets } }
         });
       }),
       H('hard-iso-acute', '예각삼각형인 이등변삼각형의 가장 큰 각', '57', (d) => {
         const x = d.pick([20, 30, 40]);
         return N(`세 각이 모두 예각인 이등변삼각형이 있다. 한 각의 크기가 ${x}°일 때, 이 삼각형에서 가장 큰 각의 크기는 몇 도인가?`, (180 - x) / 2, {
-          unit: '°', explain: `${x}°인 각이 크기가 같은 두 각 가운데 하나이면 나머지 한 각이 180° − ${x}° − ${x}° = ${180 - x * 2}°로 둔각이 되어 예각삼각형이 아니다. 그러므로 나머지 두 각의 크기가 같고, (180° − ${x}°) ÷ 2 = ${(180 - x) / 2}°이다.`,
+          unit: '°', explain: `${x}°인 각이 크기가 같은 두 각 가운데 하나이면 나머지 한 각이 180° − ${x}° − ${x}° = ${180 - x * 2}°로 둔각이 되어 예각삼각형이 아니다. 그러므로 나머지 두 각의 크기가 같고, 180° − ${x}° = ${180 - x}°를 똑같이 둘로 나눈 ${(180 - x) / 2}°이다.`,
           facts: { calc: [[`(180-${x})/2`, 0]], unseen: [180, 2] }
         });
       }),
