@@ -56,6 +56,15 @@ button, input, select { font: inherit; color: inherit; }
 /* 식과 빈칸 */
 .mb-expr { font-size: 1.35rem; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; white-space: nowrap; }
 .mb-expr i { font-style: normal; margin: 0 0.12em; }
+/* 수를 나타내는 문자(a, b, x, n)는 수식 글꼴의 기울인 글자로 적는다. 사이트 공용 읽기 글꼴(바탕체)에는 기울인 글자가 없고 꾸며 기울이는 것도 꺼져 있어, 글꼴을 따로 대지 않으면 곧게 나온다. */
+@font-face { font-family: "MB Math"; src: url("fonts/KaTeX_Math-Italic.woff2") format("woff2"); font-style: italic; font-weight: 400; font-display: swap; }
+@font-face { font-family: "MB Math"; src: url("fonts/KaTeX_Math-BoldItalic.woff2") format("woff2"); font-style: italic; font-weight: 700; font-display: swap; }
+.mb-var, .mb-expr i.mb-var { font-family: "MB Math", "Times New Roman", serif; font-style: italic; font-size: 1.08em; letter-spacing: 0; margin: 0 0.04em; }
+/* 부등호(<, >, ≤, ≥)는 수식 글꼴에서 가져온다. 사이트 공용 읽기 글꼴(바탕체)의 <, >는 꺾쇠처럼 좁고 길어 부등호로 읽히지 않는다.
+   공용 스타일은 --class-exam-font 를 !important 로 입히므로, 그 변수의 맨 앞에 부등호만 맡는 글꼴을 끼운다(unicode-range). */
+@font-face { font-family: "MB Rel"; src: url("fonts/KaTeX_Main-Regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; unicode-range: U+3C, U+3E, U+2264, U+2265; }
+@font-face { font-family: "MB Rel"; src: url("fonts/KaTeX_Main-Bold.woff2") format("woff2"); font-style: normal; font-weight: 700; font-display: swap; unicode-range: U+3C, U+3E, U+2264, U+2265; }
+body { --class-exam-font: "MB Rel", "Class Exam Batang", "Batang", "Times New Roman", serif; }
 .mb-box { display: inline-flex; align-items: center; justify-content: center; min-width: 1.5em; height: 1.5em; padding: 0 0.15em; border: 2px solid var(--ink); border-radius: 4px; font-size: 0.8em; vertical-align: -0.2em; line-height: 1; background: #fff; }
 .mb-column { display: inline-grid; font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1.35; }
 .mb-row { display: flex; justify-content: flex-end; }

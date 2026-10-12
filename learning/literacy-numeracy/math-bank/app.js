@@ -31,8 +31,8 @@
   function fillSelects(preferred) {
     const units = B.units();
     const terms = [...new Set(units.map(termOf))];
-    // 7·8·9학년은 중학교 1·2·3학년이다.
-    termSelect.replaceChildren(...terms.map((term) => { const [g, s] = term.split('-'); return new Option((Number(g) > 6 ? '중학교 ' + (Number(g) - 6) : g) + '학년 ' + s + '학기', term); }));
+    // 학교급을 앞에 적는다: 1~6학년은 「초」, 7·8·9학년은 「중」 1·2·3학년.
+    termSelect.replaceChildren(...terms.map((term) => { const [g, s] = term.split('-').map(Number); return new Option((g > 6 ? '중 ' + (g - 6) : '초 ' + g) + '학년 ' + s + '학기', term); }));
     unit = units.find((u) => u.id === preferred) || units[0];
     termSelect.value = termOf(unit);
     fillUnits();
