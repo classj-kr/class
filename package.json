@@ -20,6 +20,7 @@
     "test:board-coach": "node --test tests/board-coach.test.cjs && node tests/omok-unit.js",
     "test:board-coach:ui": "node tests/board-coach-browser.cjs",
     "test:learning-boards": "node --test tests/learning-boards.test.cjs",
+    "test:learning-boards:entry": "node --test tests/room-entry-student-access.test.cjs && node tests/learning-boards-entry-browser.cjs",
     "test:learning-boards:ui": "node tests/learning-boards-browser.cjs",
     "build": "npm --prefix game-hub-server install",
     "start": "npm --prefix game-hub-server start",

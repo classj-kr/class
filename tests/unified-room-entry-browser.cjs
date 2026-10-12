@@ -76,7 +76,7 @@ function ack(socket,event,payload) {return new Promise((resolve,reject)=>{
   const student=await context.newPage(), errors=[];
   student.on('pageerror',e=>errors.push(e.message));
   await student.goto(base+'/room/');
-  assert.equal(await student.locator('#roomCode').getAttribute('maxlength'),'4');
+  assert.equal(await student.locator('#roomCode').getAttribute('maxlength'),'6');
   await student.fill('#roomCode',arithmetic.roomCode);
   await student.click('button[type=submit]');
   await student.waitForURL('**/arithmetic/race?**');

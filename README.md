@@ -57,8 +57,9 @@ class/
 ## 게시판
 
 교사 도구의 **게시판** 또는 `/boards/?mode=teacher`에서 개설합니다.
-교사는 기존 교사 로그인이 필요하고, 학생은 `/boards/`에서 6자리 방번호·번호·이름으로
-참여합니다. 기존 `/room/`도 보드의 6자리 번호를 받으며, 4자리 활동방은 그대로 유지됩니다.
+교사는 기존 교사 로그인이 필요하고, 학생은 `/boards/`에서 방번호·번호·이름으로
+참여합니다. 새 방번호는 4자리이며, 기존 게시판의 6자리 번호도 직접 입력하거나 링크로
+참여할 수 있습니다. 사이트 로그인 후 이용하는 공통 `/room/` 입구도 두 길이를 받습니다.
 
 - 자유형: 글·링크 공유. 모둠형: 2~8개 열. 번호형: 번호별 한 글.
 - 문제출제형: 학생이 OX·객관식의 문제·보기·정답·해설을 제출합니다. 미승인 문항과
@@ -80,7 +81,7 @@ class/
 `game-hub-server/migrations/006-learning-boards.sql`을 멱등적으로 적용합니다.
 별도 파일 저장소는 필요하지 않습니다. QR은 서버의 `qrcode`로 생성합니다.
 
-검증: `npm run test:learning-boards`, `npm run test:learning-boards:ui`.
+검증: `npm run test:learning-boards`, `npm run test:learning-boards:entry`, `npm run test:learning-boards:ui`.
 테스트는 PGlite 임시 DB와 테스트 전용 교사 세션을 사용하고 운영 DB를 건드리지 않습니다.
 
 ## 로컬 실행

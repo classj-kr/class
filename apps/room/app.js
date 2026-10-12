@@ -5,20 +5,24 @@
   const status = document.getElementById("status");
   const button = form.querySelector("button");
   const invitation = new URLSearchParams(location.search).get('code') || '';
-  if (/^\d{4}$/.test(invitation)) input.value = invitation;
+  if (/^(?:\d{4}|\d{6})$/.test(invitation)) input.value = invitation;
 
-  input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, "").slice(0, 4); });
+  input.addEventListener("input", () => { input.value = input.value.replace(/\D/g, "").slice(0, 6); });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const code = input.value.replace(/\D/g, "");
     status.classList.remove("error");
-    if (code.length !== 4) {
-      status.textContent = "방번호 4자리를 입력해 주세요.";
+    if (code.length !== 4 && code.length !== 6) {
+      status.textContent = "방번호 4자리 또는 기존 게시판 번호 6자리를 입력해 주세요.";
       status.classList.add("error");
       input.focus();
       return;
     }
     button.disabled = true;
+    if (code.length === 6) {
+      location.href = `/boards/?code=${encodeURIComponent(code)}`;
+      return;
+    }
     status.textContent = "방을 확인하고 있어요…";
     try {
       const response = await fetch(`/api/room-entry/resolve/${encodeURIComponent(code)}`, { cache: "no-store" });
