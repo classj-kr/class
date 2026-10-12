@@ -19,6 +19,7 @@
   // 수와 단위 기호 사이(7 cm, 30 %, x cm, 12π cm²)에서 줄이 갈리지 않게 그 빈칸을 줄 바꿈 없는 빈칸으로 바꾼다. 그림(svg) 안의 글은 그대로 둔다.
   const UNIT = '(?:cm|mm|km|m|kg|mg|g|mL|L|t|°C|%)(?![A-Za-z])';
   const GAP = new RegExp('([0-9π]) (?=' + UNIT + ')', 'g'), HEAD = new RegExp('^ (?=' + UNIT + ')');
+  const POWER = /(cm|mm|km|m)([²³])/;
   const tie = (node) => {
     const walk = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
     for (let t = walk.nextNode(); t; t = walk.nextNode()) {
@@ -27,6 +28,13 @@
       const before = t.previousSibling;
       if (HEAD.test(text) && before && before.nodeType === 1 && /^(I|SUP)$/.test(before.tagName)) text = '\u00A0' + text.slice(1);
       if (text !== t.data) t.data = text;
+      // 단위에 붙여 적은 ²·³ 글자(cm², cm³)는 위첨자 태그로 바꾼다. 읽기 글꼴의 ²·³ 글자는 작아서 잘 안 보인다.
+      for (let part = t, m = POWER.exec(part.data); m; m = POWER.exec(part.data)) {
+        const rest = part.splitText(m.index + m[1].length);
+        rest.data = rest.data.slice(1);
+        rest.parentNode.insertBefore(el('sup', null, m[2] === '²' ? '2' : '3'), rest);
+        part = rest;
+      }
     }
     return node;
   };
