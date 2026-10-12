@@ -1,0 +1,11 @@
+✔ Animal classification keeps one criterion, covers every specimen and preserves first mistakes after corrections (6.099ms)
+✔ chromium: manual animal classification, repeat criteria, zoom and diagnostic feedback (17856.5019ms)
+✔ webkit: manual animal classification, repeat criteria, zoom and diagnostic feedback (21678.6775ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39595.9127

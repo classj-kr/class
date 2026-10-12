@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>초4 점토 마을의 해수면 상승 실험</title><meta name="description" content="2022 교육과정 · 점토 마을의 해수면 상승 실험의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../course-practices.css?v=c5372b302833"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=초4">← 초4 과학 실험</a><h1>점토 마을의 해수면 상승 실험</h1><div class="grade-tags"><span>초4</span><span>과학</span></div></header><p class="intro">점토 마을에 깃발을 놓고 바다 쪽에 물을 조금씩 부어 보세요. 어느 곳부터 물이 들어올까요?</p><section class="cp-lab" data-practice="coastal-inundation"><header class="cp-heading"><span>기후변화 · 바닷가 마을</span><h2>수면이 높아지면 어디가 잠길까요?</h2></header><div class="cp-layout"><aside class="cp-controls"><h3>마을의 깃발 놓기</h3><label>집의 위치<select id="cohome"><option value="low">낮은 땅</option><option value="middle">중간 땅</option><option value="high">높은 땅</option></select></label><label>학교의 위치<select id="coschool"><option value="middle">중간 땅</option><option value="low">낮은 땅</option><option value="high">높은 땅</option></select></label><label>밭의 위치<select id="cofield"><option value="high">높은 땅</option><option value="middle">중간 땅</option><option value="low">낮은 땅</option></select></label><button id="coBuild">점토 마을 만들기</button><button id="coMark">처음 수면 표시하기</button><button id="coPour" class="primary">물을 조금 더 붓기</button><button id="coDrain">물만 처음 높이로</button><p class="cp-note">깃발 위치를 바꾸면 원래 그곳에 있던 깃발과 자리를 바꿉니다.</p></aside><div class="cp-view"><div id="cpScene" class="cp-scene"></div><div class="cp-live"><div><span>처음보다 높아진 수면</span><strong id="cpReadA">—</strong></div><div><span>물에 잠긴 곳</span><strong id="cpReadB">—</strong></div></div><div id="coPlaces" class="cp-legend"></div><p class="cp-note">마을의 높이와 수면을 비교하는 모형입니다. 눈금은 실제 해안의 거리나 연도를 뜻하지 않습니다.</p><p id="cpStatus" class="cp-status" role="status"></p></div></div><div class="cp-footer"><button id="cpReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>같은 마을 모형에서 집은 낮은 땅, 학교는 중간 땅, 밭은 높은 땅에 있다. 물을 천천히 더 부을 때 먼저 물이 들어오는 곳은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 집</label>
+<label><input type="radio" name="q1" value="b"> 학교</label>
+<label><input type="radio" name="q1" value="c"> 밭</label>
+<label><input type="radio" name="q1" value="d"> 세 곳이 동시에</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 수면이 높아질 때 바닥이 가장 낮은 집부터 물이 들어옵니다. 시설의 이름이 아니라 땅의 높이를 비교합니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>처음 물 높이로 되돌린 뒤 낮은 땅의 집과 높은 땅의 밭을 서로 바꿨다. 학교는 중간 땅에 그대로 있다. 다시 물을 부을 때 잠기는 순서는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 집 → 학교 → 밭</label>
+<label><input type="radio" name="q2" value="b"> 밭 → 학교 → 집</label>
+<label><input type="radio" name="q2" value="c"> 학교 → 집 → 밭</label>
+<label><input type="radio" name="q2" value="d"> 밭 → 집 → 학교</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>바뀐 배치에서는 밭, 학교, 집 순서로 바닥이 높습니다. 시설의 이름이 아니라 놓인 땅의 높이가 침수 순서를 결정합니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>처음 수면은 통의 2눈금, 물을 부은 뒤 수면은 5눈금이다. 낮은 땅의 바닥은 4눈금에 있다. 처음보다 높아진 수면과 낮은 땅의 상태는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 1눈금 상승 · 물에 잠김</label>
+<label><input type="radio" name="q3" value="b"> 3눈금 상승 · 마른 땅</label>
+<label><input type="radio" name="q3" value="c"> 3눈금 상승 · 물에 잠김</label>
+<label><input type="radio" name="q3" value="d"> 5눈금 상승 · 마른 땅</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>처음보다 5−2=3눈금 높아졌습니다. 수면 5눈금이 바닥 4눈금보다 높으므로 낮은 땅은 물에 잠겼습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>물을 더 부었을 때 집 바닥과 학교로 가는 낮은 길은 잠겼지만, 높은 땅의 학교 바닥은 마른 상태였다. 이 관찰에 맞는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 학교 바닥과 길을 모두 이용하기 어렵다</label>
+<label><input type="radio" name="q4" value="b"> 학교 바닥과 길을 모두 이용할 수 있다</label>
+<label><input type="radio" name="q4" value="c"> 학교 바닥은 잠기고 길은 마른 상태이다</label>
+<label><input type="radio" name="q4" value="d"> 학교 바닥은 말라도 길을 이용하기 어렵다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>학교 바닥이 마른 상태여도 연결된 낮은 길이 잠기면 학교로 이동하기 어려울 수 있습니다. 시설과 길을 각각 관찰해야 합니다.</p>
+</article></details></main><script src="../course-practice-models.js?v=2b291b02b6a7"></script><script src="../course-practice-labs.js?v=33961e8ff883"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

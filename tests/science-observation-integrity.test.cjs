@@ -7,7 +7,7 @@ const screenshotWebp = require('./science-screenshot.cjs');
 const root = path.resolve(__dirname, '../learning/inquiry/science-lab');
 const output = path.resolve(process.env.SCIENCE_TEST_ARTIFACTS || path.resolve(__dirname, '../docs/science-lab-audit-2026-09-21'), 'observation-fixes');
 
-for (const engine of ['chromium', 'webkit']) test(engine + ': specimen anatomy, growth wording and 27 parameter combinations', {timeout:120000}, async () => {
+for (const engine of ['chromium', 'webkit']) test(engine + ': microscope optics, five source micrographs and 27 lens combinations', {timeout:120000}, async () => {
   fs.mkdirSync(output, {recursive:true});
   const server = http.createServer((req,res) => {
     let file = path.resolve(root, '.' + new URL(req.url,'http://localhost').pathname);
@@ -52,51 +52,22 @@ for (const engine of ['chromium', 'webkit']) test(engine + ': specimen anatomy, 
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow at '+width);
     }
     await page.setViewportSize({width:1024,height:768});
-    await go('microbes');await page.waitForFunction(()=>!!window.__microbeModel);
-    const growth=await page.evaluate(()=>{
-      const m=window.__microbeModel,rows=[];
-      for(const temp of ['cold','room','warm'])for(const moist of ['damp','dry']){
-        m.setMode('mould');m.set('temp',temp);m.set('moist',moist);m.setProgress(1);m.finish();
-        rows.push({kind:'mould',temp,moist,cover:m.analyse().finalCover,text:document.getElementById('mainGroup').textContent});
-      }
-      for(const gtemp of ['cold','room','warm'])for(const hours of [2,4,6]){
-        m.setMode('germ');m.set('gtemp',gtemp);m.set('hours',hours);m.setProgress(1);m.finish();
-        rows.push({kind:'germ',gtemp,hours,final:m.analyse().final,text:document.getElementById('mainGroup').textContent});
-      }return rows;
-    });
-    assert.equal(growth.length,15);
-    for(const r of growth){
-      if(r.kind==='germ')assert.equal(r.final,2**Math.floor(r.hours*60/({cold:360,room:60,warm:20}[r.gtemp])));
-      else {assert(r.cover>=0&&r.cover<=.9);assert.equal(r.text.includes('거의 다 덮였습니다'),r.cover>=.75);}
+    await go('microbes');await page.waitForFunction(()=>!!window.__microbeObservation);
+    const observations=[];
+    for(const [sample,view]of [['mushroom',0],['mushroom',1],['mold',0],['algae',0],['paramecium',0]]){
+      await page.locator('[data-mb-sample="'+sample+'"]').tap();
+      if(view)await page.locator('[data-mb-view="'+view+'"]').tap();
+      await page.locator('#mbPlace').tap();
+      if(!await page.evaluate(()=>__microbeObservation.getState().lamp))await page.locator('#mbLamp').tap();
+      await page.locator('#mbFocus').evaluate(e=>{e.value='6';e.dispatchEvent(new Event('input'));});
+      await page.waitForFunction(()=>document.querySelector('#mbImage').complete&&document.querySelector('#mbImage').naturalWidth>300);
+      await page.locator('#mbObserve').tap();
+      observations.push({sample,view,src:await page.locator('#mbImage').getAttribute('src'),caption:await page.locator('#mbCaption').textContent()});
+      await shot('sample-'+sample+'-'+view,'#mbLab');
     }
-    await page.evaluate(()=>{const m=window.__microbeModel;m.setMode('mould');m.set('temp','warm');m.set('moist','damp');m.setProgress(.45);});
-    assert.match(await page.locator('#mainGroup').textContent(),/넓게 퍼졌습니다/);
-    assert.equal(await page.locator('.mould-colonies').getAttribute('clip-path'),'url(#mouldBreadClip)');
-    assert.equal(await page.locator('#mouldBreadClip path').getAttribute('d'),await page.locator('.bread').getAttribute('d'));
-    await shot('mould-progress','.experiment-layout');
-    await page.evaluate(()=>{const m=window.__microbeModel;m.setMode('germ');m.set('gtemp','cold');m.set('hours',2);m.setProgress(1);m.finish();});
-    assert.match(await page.locator('#mainGroup').textContent(),/처음 수의 1~2배/);
-    assert.match(await page.locator('#elementaryExplanation').innerText(),/가정했습니다/);
-    assert.match(await page.locator('#graphGroup').textContent(),/아직 분열하지 않습니다/);
-    assert.doesNotMatch(await page.locator('#graphGroup').textContent(),/늘어난 것이 거의 끝/);
-    await shot('bacteria-cold','.experiment-layout');
-    for(const sample of ['mushroom','mold','algae','paramecium','bacteria']){
-      await page.locator('[data-supplement-choice="sample"][data-value="'+sample+'"]').tap();
-      await page.locator('[data-supplement-choice="focus"][data-value="detail"]').tap();
-      if(sample==='paramecium'){
-        const hairs=await page.locator('.supplement-visual>svg line').evaluateAll(es=>es.map(e=>['x1','y1','x2','y2'].map(a=>Number(e.getAttribute(a)))));
-        assert(hairs.length>=20,'cilia surround the body');
-        for(const [x1,y1,x2,y2]of hairs)assert(Math.hypot(x2-230,y2-145)>Math.hypot(x1-230,y1-145),'cilia extend outside the body');
-      }
-      if(sample==='algae'){
-        // The current lesson uses a credited micrograph instead of drawn ribbons.
-        await page.waitForFunction(()=>[...document.querySelectorAll('.supplement-photo-frame img')].some(i=>i.complete&&i.naturalWidth>=800));
-        assert.match(await page.locator('.supplement-photo-frame img').first().getAttribute('alt'),/나선/);
-        assert.match(await page.locator('.supplement-sources').textContent(),/CC BY-SA 3.0/);
-      }
-      await shot('sample-'+sample,'.curriculum-supplement');
-    }
+    assert.equal(await page.locator('#mbComparisonGrid figure').count(),5);
+    assert.equal(new Set(observations.map(r=>r.src)).size,5);
     assert.deepEqual(errors,[]);
-    fs.writeFileSync(path.join(output,engine+'-checks.json'),JSON.stringify({lensCases,growth,errors},null,2));
+    fs.writeFileSync(path.join(output,engine+'-checks.json'),JSON.stringify({lensCases,observations,errors},null,2));
   } finally {await browser?.close();await new Promise(r=>server.close(r));}
 });

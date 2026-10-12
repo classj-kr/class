@@ -1,0 +1,1 @@
+{"engine":"webkit","viewport":[768,1024],"scope":"Visible HTML text in initial experiment state and opened/graded questions. Gradient/image-backed text is explicitly skipped; this is not a full visual contrast certification.","routes":169,"checked":15297,"gradientSkipped":90,"errors":[],"flagged":[]}

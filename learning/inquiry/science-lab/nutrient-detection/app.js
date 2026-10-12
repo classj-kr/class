@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- SVG graphics */
+    function scopedDefs(markup,prefix){for(const id of ['glassWall','liqShine','rackWood','cardShadow'])markup=markup.replaceAll('id="'+id+'"','id="'+prefix+id+'"').replaceAll('url(#'+id+')','url(#'+prefix+id+')');return markup;}
     const SVG_DEFS = `
     <defs>
         <linearGradient id="glassWall" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -781,8 +782,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
         const a = analyse();
-        mainGroup.innerHTML = a.kind === 'reagent' ? renderReagent(a) : a.kind === 'benedict' ? renderBenedict(a) : renderAmylase(a);
-        graphGroup.innerHTML = a.kind === 'reagent' ? graphReagent(a) : a.kind === 'benedict' ? graphBenedict(a) : graphAmylase(a);
+        mainGroup.innerHTML = scopedDefs(a.kind === 'reagent' ? renderReagent(a) : a.kind === 'benedict' ? renderBenedict(a) : renderAmylase(a),'nutrient-main-');
+        graphGroup.innerHTML = scopedDefs(a.kind === 'reagent' ? graphReagent(a) : a.kind === 'benedict' ? graphBenedict(a) : graphAmylase(a),'nutrient-graph-');
         liftProse();
         stageBadge.textContent = a.kind === 'reagent'
             ? `${a.r.label}${a.r.needsHeat ? ` · 가열 ${HEATS[state.heat].label}` : ''}`

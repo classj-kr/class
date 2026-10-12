@@ -1,0 +1,262 @@
+lever-balance: OK (4 questions)
+speed: OK (4 questions)
+weight-compare: OK (4 questions)
+force-motion: OK (4 questions)
+motion-energy: OK (4 questions)
+magnets: OK (4 questions)
+circuit-bulbs: OK (4 questions)
+ohms-law: OK (4 questions)
+heat-transfer: OK (4 questions)
+specific-heat: OK (4 questions)
+light-shadow: OK (4 questions)
+sound-vibration: OK (4 questions)
+refraction: OK (4 questions)
+wave-transfer: OK (4 questions)
+mixture-separation: OK (4 questions)
+state-change: OK (4 questions)
+gases: OK (4 questions)
+solubility: OK (4 questions)
+water-cycle: OK (4 questions)
+density-buoyancy: OK (4 questions)
+separation-methods: OK (4 questions)
+diffusion: OK (4 questions)
+solubility-curve: OK (4 questions)
+recrystallise: OK (4 questions)
+acid-base: OK (4 questions)
+burning-conditions: OK (4 questions)
+mass-ratio: OK (4 questions)
+combustion: OK (4 questions)
+flame-ions: OK (4 questions)
+living-things: OK (4 questions)
+microbes: OK (4 questions)
+microscope: OK (4 questions)
+body-organs: OK (4 questions)
+photosynthesis: OK (4 questions)
+body-systems: OK (4 questions)
+nutrient-detection: OK (4 questions)
+cell-structure: OK (4 questions)
+senses: OK (4 questions)
+reflex-nerve: OK (4 questions)
+seed-germination: OK (4 questions)
+life-cycle: OK (4 questions)
+pea-genetics: OK (4 questions)
+living-environment: OK (4 questions)
+rock-layers: OK (4 questions)
+volcano-model: OK (4 questions)
+minerals-rocks: OK (4 questions)
+plate-tectonics: OK (4 questions)
+weather-watch: OK (4 questions)
+land-sea: OK (4 questions)
+weather-front: OK (4 questions)
+seawater: OK (4 questions)
+night-sky: OK (4 questions)
+seasons: OK (4 questions)
+moon-phases: OK (4 questions)
+apparent-motion: OK (4 questions)
+stars-universe: OK (4 questions)
+telescope-observation: OK (4 questions)
+infection-prevention: OK (4 questions)
+measurement: OK (4 questions)
+periodic-bonding: OK (4 questions)
+star-elements: OK (4 questions)
+gravity-motion: OK (4 questions)
+cell-membrane: OK (4 questions)
+earth-system: OK (4 questions)
+natural-selection: OK (4 questions)
+geologic-time: OK (4 questions)
+neutralization-common: OK (4 questions)
+energy-conversion: OK (4 questions)
+mendeleev: OK (4 questions)
+pasteur: OK (4 questions)
+newton-prism: OK (4 questions)
+antibiotic-disc: OK (4 questions)
+ride-acceleration: OK (4 questions)
+air-sampling: OK (4 questions)
+local-biodiversity: OK (4 questions)
+mcu-sampling: OK (4 questions)
+smart-pot: OK (4 questions)
+torque: OK (4 questions)
+collision: OK (4 questions)
+energy-heat: OK (4 questions)
+induction: OK (4 questions)
+motor-magnet: OK (4 questions)
+speaker-lab: OK (4 questions)
+wireless-power: OK (4 questions)
+lens-image: OK (4 questions)
+photoelectric: OK (4 questions)
+interference: OK (4 questions)
+semiconductor-relativity: OK (4 questions)
+mole: OK (4 questions)
+molecule-shape: OK (4 questions)
+water-electrolysis: OK (4 questions)
+rate-equilibrium: OK (4 questions)
+neutralization: OK (4 questions)
+population: OK (4 questions)
+digestive-enzymes: OK (4 questions)
+homeostasis: OK (4 questions)
+immune: OK (4 questions)
+neuron: OK (4 questions)
+cell-division: OK (4 questions)
+phylogeny: OK (4 questions)
+karyotype-lab: OK (4 questions)
+typhoon: OK (4 questions)
+ocean-layers: OK (4 questions)
+rock-age: OK (4 questions)
+metamorphism: OK (4 questions)
+magma: OK (4 questions)
+planet-motion: OK (4 questions)
+stars: OK (4 questions)
+galaxy-hubble: OK (4 questions)
+heat-engine: OK (4 questions)
+insulation-lab: OK (4 questions)
+doppler-lab: OK (4 questions)
+spring-wave-speed: OK (4 questions)
+electric-field: OK (4 questions)
+magnetic-brake: OK (4 questions)
+transistor-speaker: OK (4 questions)
+soap-film: OK (4 questions)
+polarization: OK (4 questions)
+electron-slits: OK (4 questions)
+gas-identification: OK (4 questions)
+hydride-boiling: OK (4 questions)
+sugar-phase: OK (4 questions)
+hess-calorimetry: OK (4 questions)
+fuel-comparison: OK (4 questions)
+titration: OK (4 questions)
+buffer-solution: OK (4 questions)
+salt-hydrolysis: OK (4 questions)
+redox: OK (4 questions)
+silver-mirror: OK (4 questions)
+nylon-interface: OK (4 questions)
+organic-builder: OK (4 questions)
+cell-osmosis: OK (4 questions)
+centrifuge-design: OK (4 questions)
+dna-structure: OK (4 questions)
+protein-folding: OK (4 questions)
+cell-micrometry: OK (4 questions)
+enzyme: OK (4 questions)
+bean-respiration: OK (4 questions)
+energy-metabolism: OK (4 questions)
+organelle-builder: OK (4 questions)
+leaf-pigments: OK (4 questions)
+dna-gel: OK (4 questions)
+dna-replication: OK (4 questions)
+pedigree-lab: OK (4 questions)
+protein-synthesis: OK (4 questions)
+protein-interaction: OK (4 questions)
+earthquake: OK (4 questions)
+ocean-circulation: OK (4 questions)
+water-wave-tank: OK (4 questions)
+air-stability: OK (4 questions)
+rotating-annulus: OK (4 questions)
+habitable-orbits: OK (4 questions)
+stellar-mass-data: OK (4 questions)
+sunspot-observation: OK (4 questions)
+cluster-fitting: OK (4 questions)
+Inspected 155 apps / 620 questions
+✔ every catalog app loads, every question has a working correct answer, mobile layout (83468.0452ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.973ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7265ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1106ms)
+✖ all supplied existing questions and new transfer items have valid assessment feedback (34.0042ms)
+chromium: 155 apps / 159 course routes / 636 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (22483.8066ms)
+webkit: 155 apps / 159 course routes / 636 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (38229.9707ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (169.3001ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5167.2396ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (31.5404ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2225.8161ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.5492ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (67759.7994ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.1163ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.4628ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1211ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (17.2149ms)
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (20841.6503ms)
+{ circuits: 54, forces: 72, collisions: 81, survival: 4 }
+✔ independent checks: current/voltage, friction, collision conservation, survival proportions (1683.7651ms)
+✔ Mendeleev: textbook 19-card set, mass order and chemical grouping are independent constraints (1.1453ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.1526ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.4114ms)
+✔ fixed-path prism comparison keeps incidence equal and separates red/blue by refraction (1.4946ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2934ms)
+chromium: 10/51 assessment routes verified
+chromium: 20/51 assessment routes verified
+chromium: 30/51 assessment routes verified
+chromium: 40/51 assessment routes verified
+chromium: 50/51 assessment routes verified
+✔ chromium: source-specific controls, full question flow and mobile scenes (63295.6235ms)
+webkit: 10/51 assessment routes verified
+webkit: 20/51 assessment routes verified
+webkit: 30/51 assessment routes verified
+webkit: 40/51 assessment routes verified
+webkit: 50/51 assessment routes verified
+✔ webkit: source-specific controls, full question flow and mobile scenes (168947.6027ms)
+188 JavaScript files parsed
+✖ all app grades, standards, quizzes and local script cache versions agree (31.3417ms)
+✔ every science lab JavaScript file parses (91.5152ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9434ms)
+chromium 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ chromium: textbook causal relationships and every photosynthesis control combination (6655.9057ms)
+webkit 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ webkit: textbook causal relationships and every photosynthesis control combination (9773.4717ms)
+✔ publisher textbook and experiment workbook names are included without the word 교과서 (0.81ms)
+✔ metadata and assessments do not become textbooks even under a textbook directory; aliases retain source identity (0.2041ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 31
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 338942.8868
+
+✖ failing tests:
+
+test at tests\science-assessment.test.cjs:24:1
+✖ all supplied existing questions and new transfer items have valid assessment feedback (34.0042ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(item.why.length>20)
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-assessment.test.cjs:29:238)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\science-scope-metadata.test.cjs:7:1
+✖ all app grades, standards, quizzes and local script cache versions agree (31.3417ms)
+  AssertionError [ERR_ASSERTION]: ohms-law
+  
+  8 !== 4
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-scope-metadata.test.cjs:19:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 8,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

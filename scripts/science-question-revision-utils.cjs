@@ -25,8 +25,8 @@ const detail={
 function revise(old,e){
  const answer=Math.min(old.answer,e.wrong.length),choices=e.wrong.slice();choices.splice(answer,0,e.correct);
  const feedback={};let w=0;
- choices.forEach((choice,i)=>{if(i!==answer){feedback[i]=detail[e.id]?.wrong[w++]||`첫 선택에서는 “${choice}”로 판단했습니다.`;}});
- return{...old,question:e.question,q:e.question,choices,answer,why:e.why,concept:detail[e.id]?.concept||old.concept,feedback,checks:checks[e.id]||old.checks};
+ choices.forEach((choice,i)=>{if(i!==answer){feedback[i]=(e.misconceptions||detail[e.id]?.wrong)?.[w++]||`첫 선택에서는 “${choice}”로 판단했습니다.`;}});
+ return{...old,question:e.question,q:e.question,choices,answer,why:e.why,concept:detail[e.id]?.concept||e.concept||old.concept,feedback,checks:checks[e.id]||old.checks};
 }
 function reviseTransfer(q){const e=revisions.transfer.find(e=>e.id===q.id);return e?revise(q,e):q;}
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');

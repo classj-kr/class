@@ -1,0 +1,128 @@
+{
+  "sourceId": "6ffbf49bb850d9e5",
+  "sourcePath": "references/textbooks/초등/미래엔/과학/과학 3-1 (양일호)_2022/31_3_과학PDF__bbdba105.pdf",
+  "sourceSha256": "6ffbf49bb850d9e538ce93f6b72465c13396516da643804c50efaf09af94e442",
+  "method": "Original PDF image, clipping paths, graphics state and colour rendered in isolation; transparent bounds trimmed; no added or removed specimen detail.",
+  "specimens": [
+    {
+      "id": "grass",
+      "file": "learning/inquiry/science-lab/assets/leaf-classification/grass.webp",
+      "pdfPage": 10,
+      "printedPage": 69,
+      "imageObject": "/Im1",
+      "renderScale": 4,
+      "alphaBounds": [
+        1102,
+        890,
+        1382,
+        1234
+      ],
+      "width": 280,
+      "height": 344,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "35c6d235b67545d4fe7e6ba04cc4992945e369c82c608f8b1aa14902c6d8b289"
+    },
+    {
+      "id": "pine",
+      "file": "learning/inquiry/science-lab/assets/leaf-classification/pine.webp",
+      "pdfPage": 10,
+      "printedPage": 69,
+      "imageObject": "/Im2",
+      "renderScale": 4,
+      "alphaBounds": [
+        1547,
+        891,
+        1889,
+        1244
+      ],
+      "width": 342,
+      "height": 353,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "efc327424df06a166867e443f7beb6f144d5d252b5a06a190f856184cf873c52"
+    },
+    {
+      "id": "clover",
+      "file": "learning/inquiry/science-lab/assets/leaf-classification/clover.webp",
+      "pdfPage": 10,
+      "printedPage": 69,
+      "imageObject": "/Im3",
+      "renderScale": 4,
+      "alphaBounds": [
+        1450,
+        1529,
+        1672,
+        1823
+      ],
+      "width": 222,
+      "height": 294,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "43d4d9945cec58160c9d86198e7ff852025e84736e40d4e98bde56e83a1ee470"
+    },
+    {
+      "id": "maple",
+      "file": "learning/inquiry/science-lab/assets/leaf-classification/maple.webp",
+      "pdfPage": 10,
+      "printedPage": 69,
+      "imageObject": "/Im4",
+      "renderScale": 4,
+      "alphaBounds": [
+        1666,
+        1715,
+        2068,
+        2108
+      ],
+      "width": 402,
+      "height": 393,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "6d424550aa7664281d24c5853f166eb0f335428d3064955c6f1ef330e1f6cabe"
+    },
+    {
+      "id": "cherry",
+      "file": "learning/inquiry/science-lab/assets/leaf-classification/cherry.webp",
+      "pdfPage": 10,
+      "printedPage": 69,
+      "imageObject": "/Im5",
+      "renderScale": 4,
+      "alphaBounds": [
+        1008,
+        1782,
+        1343,
+        2195
+      ],
+      "width": 335,
+      "height": 413,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "f367a87009b6ba387f96ff54acf0a9ca7dd709334180836b6548a620a83959c5"
+    },
+    {
+      "id": "euonymus",
+      "file": "learning/inquiry/science-lab/assets/leaf-classification/euonymus.webp",
+      "pdfPage": 10,
+      "printedPage": 69,
+      "imageObject": "/Im6",
+      "renderScale": 4,
+      "alphaBounds": [
+        933,
+        1519,
+        1256,
+        1768
+      ],
+      "width": 323,
+      "height": 249,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "026199e6722781fdbedc050a108c4ed44eedf03a35e26d98af16ea4d1d68bda1"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+✔ five micrographs retain source identity, nominal magnification and lossless decoding (103.7735ms)
+✔ chromium: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (12378.2792ms)
+✔ webkit: preparation, focus, five observed photos, touch zoom, diagnostic correction and failed-image handling (14250.8576ms)
+✔ chromium: specimen anatomy, growth wording and 27 parameter combinations (6894.6454ms)
+✔ webkit: specimen anatomy, growth wording and 27 parameter combinations (8491.9301ms)
+chromebook: 15 observation states, source credits, image loading, geometry and resets verified
+ipad-landscape: 15 observation states, source credits, image loading, geometry and resets verified
+ipad-portrait: 15 observation states, source credits, image loading, geometry and resets verified
+✔ rebuilt observations: real media, apparatus, state changes and tablet layout (32956.2381ms)
+229 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (176.2495ms)
+✔ every science lab JavaScript file parses (124.1855ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0404ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33303.2324

@@ -70,5 +70,11 @@ for(const app of require('../../scripts/science-restored-experiments.cjs'))for(c
 
 // The textbook lets learners select a reaction; no separate science-magic app.
 const circuit=require('../../scripts/science-circuit-course.cjs');
+const weighing=require('../../scripts/science-mole-weighing-course.cjs');
+const rocks=require('../../scripts/science-rock-specimens-course.cjs');
+for(const id of rocks.activities){const r={id,slugs:[rocks.slug],status:'모의활동',note:rocks.current+' '+rocks.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
+for(const id of weighing.activities){const r={id,slugs:[weighing.slug],status:'모의활동',note:weighing.current+' '+weighing.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
 for(const id of circuit.activities){const r={id,slugs:[circuit.slug],status:'모의활동',note:circuit.current+' '+circuit.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}
 module.exports.push({id:'10과탐1-02#4',slugs:['neutralization-common'],status:'모의활동',note:'동아 2022 과학탐구실험1 28177f9b69b984c7 PDF 3~4쪽은 산·염기·산화 환원·흡열 발열 반응에서 하나를 선정해 시연한다. 기존 중화 반응에서 혼합 비율·열 이동·온도 비교를 연습한다. 특정 시약 조합을 필수로 지정한 활동이 아니며 시나리오·대본·발표 기능과 실물 시연 완료 판정은 제외한다.'});
+
+const fork=require('../../scripts/science-tuning-fork-course.cjs');for(const id of fork.activities){const r={id,slugs:[fork.slug],status:'모의활동',note:fork.current+' '+fork.boundary};const i=module.exports.findIndex(x=>x.id===id);if(i<0)module.exports.push(r);else module.exports[i]=r;}

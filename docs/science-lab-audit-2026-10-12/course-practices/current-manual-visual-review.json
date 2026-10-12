@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-12",
+  "scope": "These named captures were opened and visually inspected. This does not assert physical iPad/Chromebook testing or manual visual review of every state.",
+  "images": [
+    {
+      "file": "browser/webkit-animal-classification-before-768.webp",
+      "sha256": "67389ed8399343410595025921a0e6560a3014650b71abacea977a5c8a2fe06c",
+      "observation": "Actual specimen photos, complete eight-card grid, consistent readable labels and tap controls."
+    },
+    {
+      "file": "browser/chromium-animal-classification-correct-1366.webp",
+      "sha256": "871817639bfcaa1622315123ad0852984f7cc74f2b78d135984a8f0703d40542",
+      "observation": "Corrected classification preserves the first 0/8 result; card text and image boundaries remain clean."
+    },
+    {
+      "file": "browser/webkit-liquid-heat-finished-768.webp",
+      "sha256": "05880c0f019b2da2dfacbfb4f75c86aa4964120bebffdf445c2a1091b3b572da",
+      "observation": "Sensor apparatus, equal-mass controls, two temperature curves and minute table are legible without oversized chart type."
+    },
+    {
+      "file": "browser/chromium-liquid-heat-bottom-1366.webp",
+      "sha256": "7d21e191eb83f78a2ea8bf5755a5a875ca30f9e5492980f8a47d54c6f6ea77a9",
+      "observation": "Probe contacts the beaker bottom; the oil result is unavailable and its curve is absent rather than plotted at zero."
+    },
+    {
+      "file": "bank-chart-webkit-390.webp",
+      "sha256": "30e48b931997d04a043253f42261695338cc3312d163ef7cce94238720513a58",
+      "observation": "Responsive axis labels, curve, table and answer choices fit the narrow viewport."
+    },
+    {
+      "file": "ride-current-webkit-1024.webp",
+      "sha256": "37b7f2ab578e98aee0ff3dd003ee990201dc3cb85ecdcc44eaaa296726741083",
+      "observation": "Graph labels and adjacent controls use consistent readable sizes; the measured trace is visible."
+    },
+    {
+      "file": "browser/chromium-phase-mass-wet-mass-390.webp",
+      "sha256": "7748925e8923e384ac31a10084f6571779e00946594be9fb47c36957f981ff7c",
+      "observation": "Wet exterior remains visible and the 13.8 g result is distinct from the dry 13.5 g reading. The balance number and unit fit on one line after the display repair."
+    },
+    {
+      "file": "browser/webkit-rotating-disc-cw-fast-768.webp",
+      "sha256": "65992b0f01386104ecdd948611f4d2fcb8b3ad6ee4ca9b61ec6926f207b82443",
+      "observation": "The stationary lab view has a straight spatial path; the paper-frame trace bends left for clockwise rotation. All five result cards are legible, both main views fit side by side, and the finish control says movement completed."
+    },
+    {
+      "file": "browser/chromium-quadrat-complete-768.webp",
+      "sha256": "c2463cce2a0cbc8bdc66967eeb27d7ac1e077377542f8f3aec6d8551ce5c4723",
+      "observation": "Final tablet layout: both sampling views fit side by side, the two-leaf specimen matches its key, three species cards share consistent readable text sizes and all results are visible."
+    },
+    {
+      "file": "browser/webkit-quadrat-complete-390.webp",
+      "sha256": "4fe0b3497c2ce02692fa9e42063eaedad739cbd1ebec5685db7de19299260ba0",
+      "observation": "Final phone layout: sampling views and species cards stack without clipped values or controls; units, totals and conclusion stay within the viewport."
+    },
+    {
+      "file": "browser/webkit-leaf-classification-before-768.webp",
+      "sha256": "e4e7c26498be8cb98cc8e1daf9fff5bb85e0ca3c92fde2294391bbbc7291ccb7",
+      "observation": "Six original textbook leaf photos, including Euonymus rather than Ginkgo, remain identifiable. Tablet cards and observation controls have consistent type and no clipped labels."
+    },
+    {
+      "file": "browser/chromium-leaf-classification-edge-390.webp",
+      "sha256": "7971c547fb3660242e22bc46420bff2fde508dceaf6a756d1cab994e4580a526",
+      "observation": "The enlarged cherry-leaf edge visibly retains real serrations and veins. Narrow-screen controls and the six-card grid remain readable without horizontal overflow."
+    },
+    {
+      "file": "browser/webkit-ph-comparison-complete-768.webp",
+      "sha256": "79f42d7d1f1f8c6740aaab87c00987e8526042ed4beeb8a23fe2a856524befe7",
+      "observation": "After repairing the duplicated SVG ID, the electrode tip is visibly below the solution surface, its cable remains connected, and the four measured/calculated pH rows and formula text fit the tablet layout."
+    },
+    {
+      "file": "browser/webkit-microbe-observation-complete-768.webp",
+      "sha256": "5865c2e66f075e99990f714ac0cec446adee1106cd7075359ba752b880838af7",
+      "observation": "Five distinct original microscope specimens remain visible in comparison cards. Tablet controls, source magnification and explanatory labels fit without clipping; permanent specimens are not animated as living organisms."
+    },
+    {
+      "file": "browser/chromium-mole-weighing-liquid-768.webp",
+      "sha256": "2961bd1d75822adf6b45465ade846283b00d9a6a9b5f67bd0b18197f402db7e5",
+      "observation": "Final cropped balance view visibly contains the beaker, connected display and mounted bubble level. Chemical formulae, mass display, five-column material chooser and seven measured table rows remain readable."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+✔ chromium: battery prediction, apparatus continuity and electromagnet controls (3460.3153ms)
+✔ webkit: battery prediction, apparatus continuity and electromagnet controls (3460.3751ms)
+✔ meter topology, Kirchhoff relations and measurements keep their physical conditions (4.6348ms)
+✔ chromium: move meters, reject wrong connections, compare six readings and separate course diagnosis (7877.2094ms)
+✔ webkit: move meters, reject wrong connections, compare six readings and separate course diagnosis (10121.0625ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25113.3488

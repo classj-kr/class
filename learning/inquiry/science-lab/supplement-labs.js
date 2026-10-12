@@ -76,11 +76,6 @@
    fields:[field('light','빛을 받은 부분',[['all','잎 전체'],['half','잎 절반만'],['none','빛을 받지 않음']]),field('stage','아이오딘 반응 관찰',[['before','처리 전'],['after','준비된 잎의 반응 확인']])],
    view(s){const tested=s.stage==='after',left=tested?(s.light==='none'?'#c8a46e':'#293e68'):'#7dab64',right=tested?(s.light==='all'?'#293e68':'#c8a46e'):'#7dab64';return{svg:'<defs><clipPath id="starchLeaf"><ellipse cx="230" cy="145" rx="85" ry="110"/></clipPath></defs><g clip-path="url(#starchLeaf)">'+rect(135,25,95,240,left)+rect(230,25,95,240,right)+'</g>'+line(230,45,230,260,'#607550',3)+label(tested?'청람색 부분: 녹말 검출':'빛을 가린 부분과 받은 부분 비교',230,285),text:tested?'빛을 받아 녹말이 만들어진 부분은 아이오딘 용액과 반응하여 청람색을 띱니다. 가린 부분과 비교하여 빛의 필요성을 알아봅니다.':'먼저 잎에 남아 있던 녹말을 없앤 식물을 사용하며, 물·이산화 탄소를 충분히 공급하고 빛 이외의 조건은 같게 합니다. 필요한 전처리를 마친 잎의 반응을 비교하는 모형입니다.',note:'교사가 준비한 잎을 사용하고 알코올을 직접 가열하지 마세요. 식물은 낮과 밤 모두 호흡합니다.'};}
   },
-  'living-environment':{
-   title:'한 줄 먹이사슬을 먹이그물로 연결하기',codes:['4과14-02'],initial:{missing:'none'},
-   fields:[field('missing','모형에서 줄어든 생물',[['none','모두 있음'],['rabbit','토끼가 줄어듦'],['mouse','쥐가 줄어듦']])],
-   view(s){const nodes={grass:[70,240,'풀'],seed:[360,240,'씨앗'],rabbit:[65,135,'토끼'],mouse:[225,135,'쥐'],bird:[375,135,'새'],fox:[110,40,'여우'],hawk:[345,40,'매']};const links=[['grass','rabbit'],['grass','mouse'],['seed','mouse'],['seed','bird'],['rabbit','fox'],['mouse','fox'],['mouse','hawk'],['bird','hawk']];let svg='<defs><marker id="foodArrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#628174"/></marker></defs>';for(const [from,to]of links){if([from,to].includes(s.missing))continue;const a=nodes[from],b=nodes[to];svg+=`<line x1="${a[0]}" y1="${a[1]-15}" x2="${b[0]}" y2="${b[1]+18}" stroke="#628174" stroke-width="2" marker-end="url(#foodArrow)"/>`;}for(const [key,[x,y,name]]of Object.entries(nodes))svg+=rect(x-32,y-17,64,32,key===s.missing?'#e5e7eb':'#d6e8cf')+label(name,x,y+5,key===s.missing?'#9ca3af':'#173f50');return{svg,text:s.missing==='none'?'한 생물은 여러 먹이를 먹거나 여러 생물에게 먹힐 수 있습니다. 여러 먹이사슬이 서로 연결되면 먹이그물이 됩니다.':s.missing==='rabbit'?'토끼가 줄어도 여우는 쥐를 먹을 수 있습니다. 먹이 관계가 여러 갈래이면 다른 먹이를 이용할 가능성이 있습니다.':'쥐가 줄면 여우와 매의 먹이 관계에 영향을 줍니다. 여우에게는 토끼, 매에게는 새와의 관계가 남아 있습니다.',note:'화살표는 먹이가 되는 생물에서 먹는 생물로 향합니다.'};}
-  },
   'acid-base':{
    title:'산성 용액과 염기성 용액을 섞을 때',codes:['6과09-02'],initial:{drops:'0'},
    fields:[field('drops','지시약을 넣은 산성 용액에 염기성 용액 더하기',[['0','더하기 전'],['2','조금 더함'],['4','더 더함'],['6','충분히 더함']])],
@@ -90,7 +85,7 @@
  Object.assign(specs,window.scienceSupplementExtensions?.({line,label,rect,jar,field})||{});
  Object.assign(specs,window.scienceCoreExtensions?.({line,label,rect,jar,field},specs)||{});
  const path=location.pathname.split('/').filter(Boolean);const slug=path.at(-1)==='index.html'?path.at(-2):path.at(-1),spec=specs[slug];
- if(!spec)return;
+ if(!spec||document.getElementById('mbLab')||document.getElementById('rsLab'))return;
  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('supplement-labs.css?v=e266796934a5',document.currentScript.src);document.head.append(css);
  const assetBase=new URL('.',document.currentScript.src);
  const section=document.createElement('section');section.className='panel curriculum-supplement';section.setAttribute('aria-label',spec.title);

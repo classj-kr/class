@@ -1,0 +1,343 @@
+{
+  "routes": 181,
+  "states": 555,
+  "findings": [
+    {
+      "slug": "nutrient-detection",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "glassWall",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "liqShine",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "rackWood",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "cardShadow",
+          "tags": [
+            "filter",
+            "filter"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nutrient-detection",
+      "mode": {
+        "selector": "[data-mode=\"reagent\"]",
+        "name": "🧪 시약 넣기어느 시험관이 변하나"
+      },
+      "duplicates": [
+        {
+          "id": "glassWall",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "liqShine",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "rackWood",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "cardShadow",
+          "tags": [
+            "filter",
+            "filter"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nutrient-detection",
+      "mode": {
+        "selector": "[data-mode=\"benedict\"]",
+        "name": "🔥 베네딕트와 가열가열해야 색이 날까"
+      },
+      "duplicates": [
+        {
+          "id": "glassWall",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "liqShine",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "rackWood",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "cardShadow",
+          "tags": [
+            "filter",
+            "filter"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nutrient-detection",
+      "mode": {
+        "selector": "[data-mode=\"amylase\"]",
+        "name": "✂️ 녹말 소화엿당이 되면"
+      },
+      "duplicates": [
+        {
+          "id": "glassWall",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "liqShine",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "rackWood",
+          "tags": [
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "cardShadow",
+          "tags": [
+            "filter",
+            "filter"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "insulation-lab",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "arrow",
+          "tags": [
+            "marker",
+            "marker"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-common",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "rideArrow",
+          "tags": [
+            "marker",
+            "marker"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ride-acceleration",
+      "school": "high-elective",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "rideArrow",
+          "tags": [
+            "marker",
+            "marker"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "antibiotic-disc",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "arrow",
+          "tags": [
+            "marker",
+            "marker"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "water-wave-tank",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "arrow",
+          "tags": [
+            "marker",
+            "marker"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-elective",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "bio-leaf",
+          "tags": [
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "bio-petal",
+          "tags": [
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "local-biodiversity",
+      "school": "high-common",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "bio-leaf",
+          "tags": [
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "bio-petal",
+          "tags": [
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient",
+            "radialGradient"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sea-level-causes",
+      "mode": null,
+      "duplicates": [
+        {
+          "id": "glass",
+          "tags": [
+            "linearGradient",
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "water",
+          "tags": [
+            "linearGradient",
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "metal",
+          "tags": [
+            "linearGradient",
+            "linearGradient",
+            "linearGradient"
+          ]
+        },
+        {
+          "id": "soft",
+          "tags": [
+            "filter",
+            "filter",
+            "filter"
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

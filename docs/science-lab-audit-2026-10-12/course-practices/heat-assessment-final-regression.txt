@@ -1,0 +1,35 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (2.0336ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.7404ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.688ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1747ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1044ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (64.012ms)
+chromium: 173 apps / 177 course routes / 708 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (20021.7749ms)
+webkit: 173 apps / 177 course routes / 708 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (31746.0951ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.4734ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ chromium: all exam answers, filters, persistence, charts, app integration and tablet screens (67352.8234ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ webkit: all exam answers, filters, persistence, charts, app integration and tablet screens (248581.9784ms)
+✔ two-liquid heating conserves the imposed heat, distinguishes comparison controls and never invents invalid sensor values (7.6647ms)
+✔ chromium: prepare, connect, measure, reject misplaced sensors, compare controls and interpret (26916.5373ms)
+✔ webkit: prepare, connect, measure, reject misplaced sensors, compare controls and interpret (30761.2983ms)
+218 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (195.4716ms)
+✔ every science lab JavaScript file parses (97.5022ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8277ms)
+✔ all science entry pages and dynamic resources carry their current content hash (353.4978ms)
+✔ all ten optical diagrams satisfy imaging equations and ray intersections (0.6647ms)
+✔ a changed child invalidates its dynamic loader and HTML entry; rerun is stable (6.4625ms)
+✔ chromium: corrected observations, charge conservation and complete electrical apparatus (10761.6076ms)
+✔ webkit: corrected observations, charge conservation and complete electrical apparatus (17176.3112ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 454731.3064

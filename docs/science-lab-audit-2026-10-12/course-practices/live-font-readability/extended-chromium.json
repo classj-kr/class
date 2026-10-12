@@ -1,0 +1,21 @@
+{
+  "engine": "chromium",
+  "catalog": false,
+  "routes": 169,
+  "scenarios": 3335,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "extended": true,
+  "liveWebFonts": true,
+  "loadedFontFamilies": [
+    "Noto Serif KR",
+    "Pretendard"
+  ],
+  "issues": [],
+  "errors": []
+}

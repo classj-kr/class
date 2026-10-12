@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 물의 전기분해와 기체 부피 비교</title><meta name="description" content="2022 교육과정 · 물의 전기분해와 기체 부피 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../course-practices.css?v=c5372b302833"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>물의 전기분해와 기체 부피 비교</h1><div class="grade-tags"><span>고(선택)</span><span>화학</span></div></header><p class="intro">같은 크기의 관에 모인 두 기체의 부피를 비교하고, 전극과 생성물의 관계를 찾아보세요.</p><section class="cp-lab" data-practice="water-electrolysis"><header class="cp-heading"><span>화학 결합 · 기체 포집</span><h2>물이 두 기체로 나뉘는 과정</h2></header><div class="cp-layout"><aside class="cp-controls"><h3>장치 준비</h3><label>관과 수조에 넣을 용액<select id="elSolution"><option value="sulfate">황산 나트륨 수용액</option><option value="pure">순수한 물</option></select></label><button id="elFill">두 관을 가득 채워 뒤집기</button><label>관 위쪽 마개<select id="elSeal"><option value="sealed">기체가 새지 않게 막음</option><option value="open">마개가 열려 있음</option></select></label><label>전원 연결<select id="elPolarity"><option value="normal">왼쪽 − / 오른쪽 +</option><option value="reverse">왼쪽 + / 오른쪽 −</option></select></label><button id="elPower" class="primary">전원 켜기</button><button id="elStep">같은 전하량 더 흘리기</button><p class="cp-note">전원을 끄고 연결을 바꾸세요. 새 용액·전극 조건에서는 관을 다시 채웁니다.</p></aside><div class="cp-view"><div id="cpScene" class="cp-scene"></div><div class="cp-live"><div><span>왼쪽 관 · 기체 부피</span><strong id="cpReadA">—</strong></div><div><span>오른쪽 관 · 기체 부피</span><strong id="cpReadB">—</strong></div></div><p class="cp-note">같은 온도·압력에서 비교하는 상대 부피입니다. 황산 나트륨은 전류가 흐르도록 돕습니다.</p><p id="cpStatus" class="cp-status" role="status"></p></div></div><div class="cp-footer"><button id="cpReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="c">
+<h3>같은 온도·압력에서 A관에 8 mL, B관에 4 mL의 기체가 모였다. 공기 혼입과 누출이 없고 물만 분해되었다면 A의 연결과 기체는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> (+)극 · 산소</label>
+<label><input type="radio" name="q1" value="b"> (−)극 · 산소</label>
+<label><input type="radio" name="q1" value="c"> (−)극 · 수소</label>
+<label><input type="radio" name="q1" value="d"> (+)극 · 수소</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>수소는 (−)극, 산소는 (+)극에서 생깁니다. 같은 온도·압력에서 수소의 부피가 두 배입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>수소 관에만 처음부터 공기 2 mL가 남았다. 새로 생긴 산소는 3 mL이며 용해·누출은 없다. 같은 온도·압력에서 두 관의 최종 부피는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 수소 쪽 6 · 산소 쪽 3 mL</label>
+<label><input type="radio" name="q2" value="b"> 수소 쪽 8 · 산소 쪽 3 mL</label>
+<label><input type="radio" name="q2" value="c"> 수소 쪽 8 · 산소 쪽 4 mL</label>
+<label><input type="radio" name="q2" value="d"> 수소 쪽 4 · 산소 쪽 3 mL</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>새로 생긴 수소 6 mL와 처음 공기 2 mL를 함께 읽으면 8 mL입니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>순수한 물에 황산 나트륨을 조금 녹였더니 같은 전원에서 기체 발생을 관찰하기 쉬워졌다. 이 비교에 맞는 설명은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 전하를 운반할 이온이 늘었다</label>
+<label><input type="radio" name="q3" value="b"> 물 분자 속 산소 원자가 늘었다</label>
+<label><input type="radio" name="q3" value="c"> 생성 기체의 부피비가 바뀌었다</label>
+<label><input type="radio" name="q3" value="d"> 전해질이 수소의 원료가 되었다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>용액 속 이온이 전하 이동을 돕습니다. 물의 조성이나 수소:산소의 생성 부피비는 달라지지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>같은 온도·압력에서 생성된 수소와 산소의 부피비는 2:1이다. 기체 분자 수 비와 수소 원자:산소 원자 수 비는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 분자 1:1 · 원자 2:1</label>
+<label><input type="radio" name="q4" value="b"> 분자 2:1 · 원자 1:1</label>
+<label><input type="radio" name="q4" value="c"> 분자 2:1 · 원자 4:1</label>
+<label><input type="radio" name="q4" value="d"> 분자 2:1 · 원자 2:1</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>H₂ 두 분자와 O₂ 한 분자는 H 원자 네 개, O 원자 두 개이므로 두 비 모두 2:1입니다.</p>
+</article></details></main><script src="../course-practice-models.js?v=2b291b02b6a7"></script><script src="../course-practice-labs.js?v=33961e8ff883"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

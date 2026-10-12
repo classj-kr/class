@@ -22,8 +22,13 @@ const excluded=coverage.rows.filter(r=>r.labScope.status==='excluded').map(r=>({
 const counts={};for(const r of rows)counts[r.method]=(counts[r.method]||0)+1;
 const workGroups=plans.experimentGroups.map(g=>({...g,mandatoryStatus:'unconfirmed',implementationStatus:'review',sourceActivities:g.activities.map(id=>({id,source:procedureById[id].source})),relatedAppEvidence:g.relatedApps.map(slug=>({slug,path:'learning/inquiry/science-lab/'+slug+'/index.html',sha256:require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'../learning/inquiry/science-lab',slug,'index.html'))).digest('hex')}))}));
 const resolvedGroups=plans.resolvedGroups.map(g=>({...g,implementationStatus:'virtual-practice',mandatoryStatus:'unconfirmed',sourceActivities:g.activities.map(id=>({id,source:procedureById[id].source})),boundary:g.remaining}));
-const workSummary=plans.summary;
-const result={scope:scope.policy,requiredExperimentTotal:null,apps:coverage.apps,remainingCandidates:rows.length,excludedNonExperiments:excluded.length,retiredApps:scope.retiredApps,methodCounts:counts,procedureReview:procedureReview.summary,workSummary,workGroups,resolvedGroups,referenceActivities:plans.referenceActivities,unresolvedActivities:plans.unresolvedActivities,rows,excluded};
+const linkedAppGaps=require('../docs/science-lab-audit-2026-10-12/course-practices/heading-recall-review.cjs').documents.filter(r=>r.implementation==='보완 필요').map(r=>{
+ const activity=coverage.rows.find(a=>a.id===r.activity);assert(activity&&activity.labScope.status!=='excluded',r.activity);
+ return{id:r.activity,title:activity.text,relatedApps:activity.slugs,source:{id:r.sourceId,pages:r.pages},missingProcedure:r.decision,status:'원문에서 확인한 기존 연결 앱의 절차 누락 · 구현 보완 필요'};
+});
+const sourceOnlyProcedures=require('../docs/science-lab-audit-2026-10-12/course-practices/heading-recall-review.cjs').documents.flatMap(r=>(r.procedureCandidates||[]).map(p=>({...p,sourceId:r.sourceId,mandatoryStatus:'unconfirmed',status:'공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기'})));
+const workSummary={...plans.summary,sourceReviewedLinkedAppGaps:linkedAppGaps.length,sourceOnlyProcedureCandidates:sourceOnlyProcedures.length};
+const result={scope:scope.policy,requiredExperimentTotal:null,apps:coverage.apps,remainingCandidates:rows.length,excludedNonExperiments:excluded.length,retiredApps:scope.retiredApps,methodCounts:counts,procedureReview:procedureReview.summary,workSummary,workGroups,linkedAppGaps,sourceOnlyProcedures,resolvedGroups,referenceActivities:plans.referenceActivities,unresolvedActivities:plans.unresolvedActivities,rows,excluded};
 const ref=r=>`[${r.id}](../../${coverage.basis}#L${r.sourceLine})`;
 const md=['# 실험 범위 정리와 남은 검토 후보','',scope.policy,'',
  '**교육과정에 있는 모든 탐구활동을 실험으로 구현하지 않는다. 아래 제외 항목은 교육과정에서 삭제한 것이 아니라 사용자가 요청한 실험실의 범위 밖으로 분리한 것이다.**','',
@@ -35,6 +40,12 @@ const md=['# 실험 범위 정리와 남은 검토 후보','',scope.policy,'',
  '## 직접 실험·관측·측정의 공통 절차 검토','',
  '과목별 학습 범위는 보존하되 같은 장치·절차마다 페이지를 복제하지 않는다. 기존 앱 연결은 재사용 검토 근거이며 해당 활동의 구현 완료 판정이 아니다. 과학마술은 특정 반응을 의무 지정한 활동이 아니므로 별도 앱을 만들지 않는다.','',
  '| 검토 묶음 | 원문 활동 | 처리 | 공통 절차 | 남은 차이 |','|---|---|---|---|---|',...workGroups.map(g=>`| ${g.title} | ${g.activities.map(id=>ref(rows.find(r=>r.id===id))).join(', ')} | ${g.approach}${g.relatedApps.length?' · '+g.relatedApps.map(slug=>`[${slug}](../../learning/inquiry/science-lab/${slug}/index.html)`).join(', '):''} | ${g.sharedProcedure} | ${g.remaining} |`),'',
+ '## 기존 앱 연결 뒤에도 남은 절차 누락','',
+ '관련 단원 앱이 이미 연결되어 있어도 교과서의 측정·조작 절차가 없으면 완료로 간주하지 않는다. 다음 항목은 제목 추출 누락을 다시 읽어 확인했다.','',
+ '| 원문 활동 | 기존 앱 | 대조한 원문 | 보완할 절차 |','|---|---|---|---|',...linkedAppGaps.map(r=>`| ${r.id} ${r.title} | ${r.relatedApps.join(', ')} | ${r.source.id} PDF ${r.source.pages.join(', ')}쪽 | ${r.missingProcedure} |`),'',
+ '## 제목 없는 공통 탐구 기능 연습','',
+ '자동 제목 추출에서 빠진 실제 관찰·측정 절차를 보존한다. 단원 도입의 공통 기능 연습을 곧바로 별도 필수실험이나 신규 앱으로 세지 않는다.','',
+ '| 활동 | 원문 | 종류 | 판정 |','|---|---|---|---|',...sourceOnlyProcedures.map(r=>`| ${r.title} | ${r.sourceId} PDF ${r.pages.join(', ')}쪽 | ${r.kind} | ${r.status} |`),'',
  '## 원문 절차를 연결한 가상 실험','',
  '실제 현장 수행·실측 자료 제출 완료와 구분한다. 필수실험 총수 확정이나 수집 교과서 전수 대조 완료를 뜻하지 않는다.','',
  '| 활동 묶음 | 원문 활동 | 구현 | 해석 경계 |','|---|---|---|---|',...resolvedGroups.map(g=>`| ${g.title} | ${g.activities.join(', ')} | ${g.relatedApps.map(slug=>`[${slug}](../../learning/inquiry/science-lab/${slug}/index.html)`).join(', ')} | ${g.remaining} |`),'',

@@ -1,0 +1,5 @@
+{
+  "apps": 177,
+  "scope": "HTML source IDs; generated runtime SVGs require separate runtime audit.",
+  "findings": []
+}

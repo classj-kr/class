@@ -1,0 +1,49 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (1.8184ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.8789ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7136ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1633ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.11ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (37.7609ms)
+chromium: 177 apps / 181 course routes / 724 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (31017.4779ms)
+webkit: 177 apps / 181 course routes / 724 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (49561.6612ms)
+✔ pH values satisfy ionization equilibrium, water product and acid/base symmetry (0.5044ms)
+✔ uncalibrated, unstable and unwashed probes cannot add comparison readings; valid sequences work in all sample orders (1.5452ms)
+✔ chromium: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (14074.3981ms)
+✔ webkit: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (21023.7923ms)
+226 JavaScript files parsed
+✖ all app grades, standards, quizzes and local script cache versions agree (18.7827ms)
+✔ every science lab JavaScript file parses (111.1738ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0839ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116344.3147
+
+✖ failing tests:
+
+test at tests\science-scope-metadata.test.cjs:8:1
+✖ all app grades, standards, quizzes and local script cache versions agree (18.7827ms)
+  AssertionError [ERR_ASSERTION]: light-shadow: ../curriculum-map.js
+  + actual - expected
+  
+  + '54e73914e374'
+  - '259b3c6e43f6'
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-scope-metadata.test.cjs:25:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '54e73914e374',
+    expected: '259b3c6e43f6',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

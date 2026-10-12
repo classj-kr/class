@@ -97,7 +97,11 @@ test('school/course filtering, old links, exact high-school domains and responsi
      assert.deepEqual(await page.locator('.foundation-section .topic-row h4:visible').allTextContents(),foundation.flatMap(a=>a.categories),'All 18 categories remain visible, including empty categories');
      for(const category of ['생명과학과 인간의 생활','과학과 지속가능한 사회','과학과 진로']){
       const row=page.locator(`.foundation-section [data-category="${category}"]`);
-      assert(await row.isVisible());assert((await row.locator('.catalog-empty:visible').count())>0);
+      assert(await row.isVisible());
+      for(const cell of await row.locator('.level-cell:visible').all()){
+       const occupied=await cell.locator('.level-entry:visible').count();
+       assert.equal(await cell.locator('.catalog-empty:visible').count(),occupied?0:1,'Empty status follows the currently visible experiments in each school column');
+      }
      }
     }else assert.equal(await page.locator('.foundation-section').isVisible(),false);
     for(const section of ['high-common','high-elective']){

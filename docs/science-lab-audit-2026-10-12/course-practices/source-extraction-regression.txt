@@ -1,0 +1,16 @@
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.4147ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.9154ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1322ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (29.7829ms)
+✔ 2022 publisher headings survive 준비해요, wrapped titles and 만들기/나타내기 endings (4.6457ms)
+✔ heading recovery leaves ordinary prose, numbered steps and unscoped title-like text out (0.7457ms)
+✔ publisher textbook and experiment workbook names are included without the word 교과서 (1.1787ms)
+✔ metadata and assessments do not become textbooks even under a textbook directory; aliases retain source identity (0.1927ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97.9786

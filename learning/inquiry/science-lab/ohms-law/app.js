@@ -375,7 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <text x="${bw / 2}" y="15" text-anchor="middle" fill="#c2410c" font-size="12.5" font-weight="900" font-family="Pretendard, monospace">${V().toFixed(1)} V, ${a.I.toFixed(2)} A</text>
         </g>`;
 
-        graphGroup.innerHTML = out;
+        const graphShadow='<defs><filter id="ohmsGraphDrop" x="-15%" y="-15%" width="130%" height="130%"><feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/></filter></defs>';
+        graphGroup.innerHTML = graphShadow + out.replaceAll('url(#compDrop)','url(#ohmsGraphDrop)');
     }
 
     function render() {

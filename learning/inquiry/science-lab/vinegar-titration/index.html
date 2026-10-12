@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 식초의 아세트산 함량 측정</title><meta name="description" content="2022 교육과정 · 식초의 아세트산 함량 측정의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../course-practices.css?v=c5372b302833"><link rel="stylesheet" href="../solution-practices.css?v=a1a7a002038b"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>식초의 아세트산 함량 측정</h1><div class="grade-tags"><span>고(선택)</span><span>화학</span></div></header><p class="intro">식초 속 아세트산을 0.100 M NaOH로 중화하세요. 방울을 넣은 뒤 섞고, 옅은 분홍색이 남는 지점의 눈금을 읽습니다.</p><section class="cp-lab solution-lab" data-solution="vinegar-titration"><header class="cp-heading"><span>화학 · 용액의 제조와 측정</span><h2>세 번의 적정으로 원액 함량 구하기</h2></header><div class="cp-layout"><aside class="cp-controls"><h3>시료와 장치 준비</h3><label>시료 조제<select id="viProtocol"><option value="direct">원액 3 mL + 물 → 약 30 mL 전량</option><option value="diluted">10배 희석액에서 20 mL 취함</option></select></label><button id="viPrepare">피펫으로 시료 준비</button><button id="viIndicator">페놀프탈레인 2방울 넣기</button><button id="viFill">뷰렛에 0.100 M NaOH 채우기</button><button id="viTip">꼭지 아래까지 채우고 흘린 용액 버리기</button><label>처음 눈금 읽기 (mL)<input id="viInitial" type="number" min="0" step="0.01" value="0"></label><button id="viMark">처음 눈금 확정</button><p class="cp-note">보안경과 장갑을 착용합니다. 수산화 나트륨 용액이 피부에 닿지 않도록 주의합니다.</p></aside><div class="cp-view"><div id="soSteps" class="cp-step"></div><div id="soScene" class="cp-scene"></div><p id="soStatus" class="cp-status" role="status"></p></div></div><section class="cp-footer"><h3>한 방울씩 종말점 찾기</h3><div class="cp-actions"><button id="viAdd1">1.00 mL 넣기</button><button id="viDrop">한 방울 0.05 mL 넣기</button><button id="viMix" class="primary">플라스크 흔들어 섞기</button></div><p id="viColor" class="cp-status">시료와 뷰렛을 준비하세요.</p><div class="cp-measures"><label>나중 눈금 읽기 (mL)<input id="viFinal" type="number" min="0" step="0.01" value="0"></label><button id="viRecord">이번 적정값 사용</button><button id="viNext">새 시료로 다음 적정</button><button id="viRetry">이번 시료 다시 준비</button></div><div id="viTrials" class="so-data"></div><h3>원액의 농도 계산</h3><div class="cp-measures"><label>계산한 원액 몰농도 (M)<input id="viMolarity" type="number" min="0" step="0.001" value="0"></label><label>원액 100 mL의 아세트산 질량 (g)<input id="viMass" type="number" min="0" step="0.01" value="0"></label><button id="viCalculate" class="primary">계산 확인</button></div><p id="viResult" class="cp-status">세 번의 사용량 평균으로 계산하세요. 아세트산 몰질량은 60.0 g/mol입니다.</p></section><div class="cp-footer"><button id="soReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>뷰렛의 처음 눈금은 2.30 mL, 종말점의 눈금은 29.80 mL였다. 사용한 표준 용액 부피는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 27.50 mL</label>
+<label><input type="radio" name="q1" value="b"> 29.80 mL</label>
+<label><input type="radio" name="q1" value="c"> 32.10 mL</label>
+<label><input type="radio" name="q1" value="d"> 2.30 mL</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>아래로 증가하는 뷰렛 눈금에서 사용량은 나중 눈금−처음 눈금=27.50 mL입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>식초 10.0 mL를 100 mL로 희석한 뒤 그 용액 20.0 mL를 적정했다. 이 시료에 들어 있는 원래 식초의 양은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 1.00 mL</label>
+<label><input type="radio" name="q2" value="b"> 2.00 mL</label>
+<label><input type="radio" name="q2" value="c"> 10.0 mL</label>
+<label><input type="radio" name="q2" value="d"> 20.0 mL</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>희석액 중 원래 식초는 1/10이므로 시료 20.0 mL에는 원액 2.00 mL에 해당하는 아세트산이 들어 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>적정 중 한 방울을 떨어뜨린 곳만 분홍색이었으나 흔들자 무색이 되었다. 다음 조작과 판단으로 맞는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 즉시 멈춤 · 종말점에 도달</label>
+<label><input type="radio" name="q3" value="b"> 한 번에 많이 첨가 · 과량 염기 확인</label>
+<label><input type="radio" name="q3" value="c"> 한 방울씩 더 첨가 · 아직 종말점 전</label>
+<label><input type="radio" name="q3" value="d"> 시료를 버림 · 지시약이 작용하지 않음</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>떨어진 곳의 국소적인 색이 섞은 뒤 사라졌으므로 산이 남아 있습니다. 한 방울씩 더하며 섞은 뒤 색이 유지되는지 봅니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>원액 식초 3.00 mL를 전량 적정하는 데 0.100 M NaOH 27.0 mL가 들었다. 아세트산 몰질량은 60.0 g/mol이다. 원액 100 mL의 아세트산 질량은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 0.162 g</label>
+<label><input type="radio" name="q4" value="b"> 0.540 g</label>
+<label><input type="radio" name="q4" value="c"> 1.62 g</label>
+<label><input type="radio" name="q4" value="d"> 5.40 g</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>시료에 0.00270 mol, 원액 농도는 0.900 M입니다. 100 mL에는 0.0900 mol×60.0=5.40 g이 있습니다.</p>
+</article></details></main><script src="../solution-practice-models.js?v=b23d18ee887d"></script><script src="../solution-practice-labs.js?v=758676e1391d"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

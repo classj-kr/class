@@ -1,0 +1,24 @@
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (20960.5892ms)
+chromebook: 11 observation states, source credits, image loading, geometry and resets verified
+ipad-landscape: 11 observation states, source credits, image loading, geometry and resets verified
+ipad-portrait: 11 observation states, source credits, image loading, geometry and resets verified
+✔ rebuilt observations: real media, apparatus, state changes and tablet layout (20098.5207ms)
+✔ six rock classifications, fossil body/trace distinction and first mistakes survive correction (5.4483ms)
+✔ casting cannot skip removal, mixing, hardening or separation (0.2068ms)
+✔ six distinct rock photos and matched detail views retain exact source provenance (1893.8389ms)
+✔ chromium: source photos, independent classification, casting, tablet and diagnosis (21007.3491ms)
+✔ webkit: source photos, independent classification, casting, tablet and diagnosis (27340.6116ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50335.7293

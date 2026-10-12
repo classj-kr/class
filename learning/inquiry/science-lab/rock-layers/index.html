@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="layer-visual.css?v=ce33eda5ba58">
     <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
     <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
-    <link rel="stylesheet" href="../lab-ui.css?v=1919c35bf2ab">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
 <link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+<link rel="stylesheet" href="specimens.css?v=ce96c904b600">
 </head>
 <body>
     <main>
@@ -24,6 +25,17 @@
             <div class="grade-tags"><span>초등 5학년</span><span>과학</span></div>
         </header>
 
+<!-- rock-specimens:start -->
+<nav class="rs-modes" aria-label="관찰할 실험"><button data-rs-mode="rocks" aria-pressed="true">퇴적암 분류</button><button data-rs-mode="layers" aria-pressed="false">지층 쌓기</button><button data-rs-mode="fossils" aria-pressed="false">화석 관찰·모형</button></nav>
+<section id="rsLab" class="rs-lab">
+ <section id="rsRocks"><h2>알갱이의 모습을 보고 퇴적암 분류하기</h2><p>번호가 붙은 암석을 살펴보고 이암·사암·역암으로 나누세요.</p><div id="rsRockCards" class="rs-cards"></div><div class="rs-result-row"><button id="rsRockCheck" class="primary">분류 확인</button><span id="rsRockProgress"></span></div><p id="rsRockStatus" class="rs-status" aria-live="polite"></p><p id="rsRockFirst" hidden></p></section>
+ <section id="rsFossils" hidden><h2>몸체와 흔적이 남은 화석 비교하기</h2><div id="rsFossilCards" class="rs-cards rs-fossil-cards"></div><div class="rs-result-row"><button id="rsFossilCheck" class="primary">분류 확인</button><span id="rsFossilProgress"></span></div><p id="rsFossilStatus" class="rs-status" aria-live="polite"></p><p id="rsFossilFirst" hidden></p></section>
+ <section class="rs-observation" aria-label="표본 확대 관찰"><div class="rs-view"><div id="rsViewport" tabindex="0" role="group" aria-label="확대한 사진을 끌거나 방향키로 이동"><img id="rsPhoto" src="../assets/rock-specimens/sand-a.webp" alt="암석 A" draggable="false"></div><strong id="rsSelectedName">암석 A</strong></div><div class="rs-camera"><h3>자세히 관찰하기</h3><div id="rsPhotoChoices" class="rs-choices"><button id="rsWhole" aria-pressed="true">전체 모습</button><button id="rsDetail" aria-pressed="false">표면 자세히</button></div><label>사진 확대 <output id="rsZoomValue">1.0배</output><input id="rsZoom" type="range" min="1" max="2" step="0.1" value="1"></label><button id="rsCenter">사진 전체 보기</button><p>확대 후 사진을 끌거나 방향키로 옮겨 보세요.</p><p>사진은 같은 배율이 아닙니다. 화면에 보이는 크기로 실제 크기를 비교하지 마세요.</p></div></section>
+ <section id="rsCasting" hidden><h2>점토의 자국과 굳은 반죽 비교하기</h2><div class="rs-cast-layout"><div id="rsCastScene" class="rs-cast-scene" aria-label="조개 화석 모형 만들기"></div><div class="rs-cast-controls"><p>점토에 조개껍데기 자국을 만들고, 알지네이트 반죽을 부어 모형을 만드세요.</p><div class="rs-cast-actions"><button data-rs-action="clay">점토 평평하게 채우기</button><button data-rs-action="press">껍데기 눌러 찍기</button><button data-rs-action="lift">껍데기 떼어 내기</button><button data-rs-action="mix">가루 10 g + 물 30 mL 섞기</button><button data-rs-action="pour">자국 위에 반죽 붓기</button><button data-rs-action="set">반죽 굳히기</button><button data-rs-action="separate">굳은 모형 분리하기</button></div><p id="rsCastStatus" class="rs-status" aria-live="polite"></p><button id="rsCastReset">모형 처음부터</button></div></div><div id="rsCastComparison" hidden><h3>모형과 실제 화석</h3><div class="rs-compare"><figure><img src="../assets/rock-specimens/clay-mould.webp" alt="점토에 오목하게 남은 조개껍데기 자국"><figcaption>점토에 남은 자국</figcaption></figure><figure><img src="../assets/rock-specimens/alginate-cast.webp" alt="볼록한 조개 모양의 알지네이트 모형"><figcaption>굳은 알지네이트 모형</figcaption></figure><figure><img src="../assets/rock-specimens/fossil-mould.webp" alt="암석에 조개의 자국이 남은 실제 화석"><figcaption>암석에 남은 조개 자국</figcaption></figure><figure><img src="../assets/rock-specimens/fossil-shell.webp" alt="조개 몸체가 남은 실제 화석"><figcaption>몸체가 남은 조개 화석</figcaption></figure></div><p>모형은 생물의 모양이 남는 과정을 보여 줍니다. 실제 화석이 만들어지는 시간과 재료는 모형과 다릅니다.</p></div></section>
+ <div class="rs-footer"><p>실물 표본의 날카로운 부분과 조개껍데기에 손을 다치지 않도록 주의합니다.</p><button id="rsReset">관찰 처음부터</button></div>
+</section>
+<!-- rock-specimens:end -->
+<div id="rsLayerPanel" hidden>
         <ol class="method-steps" aria-label="실험 방법">
             <li>물이 담긴 통에 퇴적물을 붓습니다.</li>
             <li>알갱이 크기에 따라 어떻게 쌓일지 관찰합니다.</li>
@@ -107,63 +119,69 @@
             </div>
         </section>
 
+</div>
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="a">
-<h3>뒤집히거나 뒤섞이지 않고 차례로 쌓인 지층에서 먼저 만들어진 층은?</h3>
+<h3>색이 같은 퇴적암 X·Y를 관찰했다. X는 알갱이가 모래보다 작고, Y는 주로 모래 크기의 알갱이로 이루어져 있다. 알맞은 분류는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q1" value="a"> 가장 아래층</label>
-<label><input type="radio" name="q1" value="b"> 가장 위층</label>
-<label><input type="radio" name="q1" value="c"> 색이 가장 밝은 층</label>
-<label><input type="radio" name="q1" value="d"> 두께가 가장 얇은 층</label>
+<label><input type="radio" name="q1" value="a"> X 이암 · Y 사암</label>
+<label><input type="radio" name="q1" value="b"> X 사암 · Y 이암</label>
+<label><input type="radio" name="q1" value="c"> X 이암 · Y 이암</label>
+<label><input type="radio" name="q1" value="d"> X 사암 · Y 사암</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>차례로 쌓인 뒤 뒤집히지 않은 지층에서는 아래층이 먼저 만들어졌습니다. 지층이 뒤집히거나 변형된 경우에는 추가 증거를 함께 살펴야 합니다.</p>
+<p class="answer-explanation" hidden>X는 모래보다 작은 알갱이이므로 이암, Y는 주로 모래 크기의 알갱이이므로 사암입니다. 색이 같아도 알갱이의 크기가 다르면 서로 다른 종류로 분류할 수 있습니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="c">
-<h3>비슷한 모양의 자갈·모래·진흙을 물에 섞었다. 큰 알갱이가 먼저 가라앉는 조건에서 아래부터 쌓이는 순서는?</h3>
+<h3>암석에서 큰 자갈 사이에 모래와 더 작은 알갱이가 함께 보였다. 이 표본을 분류한 판단으로 알맞은 것은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q2" value="a"> 진흙 → 모래 → 자갈</label>
-<label><input type="radio" name="q2" value="b"> 모래 → 자갈 → 진흙</label>
-<label><input type="radio" name="q2" value="c"> 자갈 → 모래 → 진흙</label>
+<label><input type="radio" name="q2" value="a"> 자갈 이외의 알갱이가 있어 사암이다</label>
+<label><input type="radio" name="q2" value="b"> 알갱이 색이 여러 가지이므로 이암이다</label>
+<label><input type="radio" name="q2" value="c"> 여러 크기의 알갱이가 섞인 역암이다</label>
+<label><input type="radio" name="q2" value="d"> 작은 알갱이도 있으므로 모두 사암이다</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>주어진 조건에서는 먼저 가라앉은 자갈이 아래에 쌓이고 모래와 진흙이 그 위에 쌓입니다. 실제 퇴적은 흐르는 물의 세기와 알갱이의 성질에도 영향을 받습니다.</p>
+<p class="answer-explanation" hidden>역암에는 모래보다 큰 자갈과 작은 알갱이가 함께 들어 있을 수 있습니다. 역암이 자갈로만 이루어져야 하는 것은 아닙니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="b">
-<h3>물속에 모래를 넣어 가라앉힌 뒤 진흙을 넣어 가라앉혔습니다. 뒤집히지 않았다면 위아래의 순서는?</h3>
+<h3>변형되지 않은 지층 모형에서 아래부터 진흙층·자갈층·모래층이 보인다. 세 종류를 따로 한 번씩 부었다면 부은 차례는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> 위 모래 · 아래 진흙</label>
-<label><input type="radio" name="q3" value="b"> 위 진흙 · 아래 모래</label>
-<label><input type="radio" name="q3" value="c"> 위아래 모두 모래만</label>
+<label><input type="radio" name="q3" value="a"> 자갈 → 모래 → 진흙</label>
+<label><input type="radio" name="q3" value="b"> 진흙 → 자갈 → 모래</label>
+<label><input type="radio" name="q3" value="c"> 모래 → 자갈 → 진흙</label>
+<label><input type="radio" name="q3" value="d"> 진흙 → 모래 → 자갈</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>나중에 쌓인 진흙이 먼저 쌓인 모래 위에 놓입니다.</p>
+<p class="answer-explanation" hidden>각각 따로 부은 모형에서는 먼저 넣은 퇴적물이 아래에 쌓입니다. 따라서 진흙, 자갈, 모래의 차례입니다. 섞인 알갱이의 가라앉는 순서와 여러 번 부은 층의 순서는 구별합니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="c">
-<h3>산에서 발견한 지층 속에 바다에 살던 조개의 화석이 있었다. 이 지층이 만들어질 때의 환경으로 알맞은 것은?</h3>
+<h3>물고기의 뼈 모양 A, 나뭇잎의 잎맥 모양 B, 새의 발자국 C가 각각 화석으로 남았다. 몸체와 흔적의 연결은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q4" value="a"> 모래가 날리는 사막</label>
-<label><input type="radio" name="q4" value="b"> 얼음으로 덮인 육지</label>
-<label><input type="radio" name="q4" value="c"> 바닷물이 있던 곳</label>
+<label><input type="radio" name="q4" value="a"> 몸체 A · 흔적 B,C</label>
+<label><input type="radio" name="q4" value="b"> 몸체 A,C · 흔적 B</label>
+<label><input type="radio" name="q4" value="c"> 몸체 A,B · 흔적 C</label>
+<label><input type="radio" name="q4" value="d"> 몸체 B,C · 흔적 A</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>화석은 그 생물이 살던 환경의 단서입니다. 지금 산이라는 사실과 지층이 만들어지던 때의 환경을 구별해야 합니다.</p>
+<p class="answer-explanation" hidden>물고기의 뼈와 나뭇잎은 생물 몸체의 모습입니다. 발자국은 발 자체가 아니라 생물이 활동하며 남긴 흔적입니다.</p>
 </article>
             </div>
         </details>
     </main>
     <script src="app.js?v=1dd258366de1"></script>
-    <script src="../curriculum-map.js?v=6356b85c9f40"></script>
-    <script src="../exam-scope.js?v=bfaefaaa93c9"></script>
+    <script src="specimen-model.js?v=47d9852ceef1"></script>
+    <script src="specimens.js?v=2fe9bafe9732"></script>
+    <script src="../curriculum-map.js?v=c1af0dc3f212"></script>
+    <script src="../exam-scope.js?v=fc86ec633dd8"></script>
     <script src="../lab-ui.js?v=e804868535ac"></script>
 </body>
 </html>

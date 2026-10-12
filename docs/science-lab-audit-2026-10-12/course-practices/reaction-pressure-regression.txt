@@ -1,0 +1,11 @@
+✔ Pressure experiment conserves H2 stoichiometry and gas law; invalid measurements do not become zero rates (0.76ms)
+✔ chromium: apparatus workflow, pressure graph, bad data and retained diagnostic answers (18568.4872ms)
+✔ webkit: apparatus workflow, pressure graph, bad data and retained diagnostic answers (19847.5095ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38487.1416

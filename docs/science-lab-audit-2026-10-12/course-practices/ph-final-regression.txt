@@ -1,0 +1,26 @@
+✔ display permutation is stable, preserves identities, and varies keyed positions across questions (1.8466ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.5214ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.6955ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1592ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1116ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (76.4832ms)
+chromium: 177 apps / 181 course routes / 724 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (32782.6681ms)
+webkit: 177 apps / 181 course routes / 724 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (50094.5179ms)
+✔ pH values satisfy ionization equilibrium, water product and acid/base symmetry (0.5077ms)
+✔ uncalibrated, unstable and unwashed probes cannot add comparison readings; valid sequences work in all sample orders (1.5149ms)
+✔ chromium: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (14748.1737ms)
+✔ webkit: calibration, rinse, all four measurements, tablet layout and first-answer diagnostics (19635.4825ms)
+226 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (174.8856ms)
+✔ every science lab JavaScript file parses (100.1954ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8671ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118095.1132

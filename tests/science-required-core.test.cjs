@@ -52,7 +52,10 @@ test('all required observation controls, wrong/correct answers and resets work i
  const server=http.createServer((req,res)=>{let file=path.resolve(base,'.'+new URL(req.url,'http://localhost').pathname);if(file!==base&&!file.startsWith(base+path.sep)){res.writeHead(403);res.end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',{'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css'}[path.extname(file)]||'application/octet-stream');res.end(data);});});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser,total=0;
  try{browser=await chromium.launch({headless:true,executablePath:process.env.SCIENCE_BROWSER||chromium.executablePath()});
-  for(const[slug,spec]of Object.entries(specs)){
+  // These two old extension galleries were replaced by the source-photo workflows.
+  // Their interactions and diagnosis are covered by science-microbe-observation
+  // and science-rock-specimens, rather than exercising removed controls.
+  for(const[slug,spec]of Object.entries(specs).filter(([slug])=>!['microbes','rock-layers'].includes(slug))){
    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',e=>errors.push(e.message));await page.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
    try{await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`,{waitUntil:'load'});await page.locator('.curriculum-supplement').waitFor();

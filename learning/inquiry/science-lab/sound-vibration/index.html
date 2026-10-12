@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="sound-visual.css?v=0d31fcb7b447">
     <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
     <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
-    <link rel="stylesheet" href="../lab-ui.css?v=1919c35bf2ab">
+    <link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03">
 <link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
+<link rel="stylesheet" href="fork.css?v=bbb5823c0e24">
 </head>
 <body>
     <main>
@@ -24,6 +25,21 @@
             <div class="grade-tags"><span>초등 3학년</span><span>과학</span></div>
         </header>
 
+<!-- tuning-fork:start -->
+<div class="tf-switch" role="group" aria-label="실험 선택"><button type="button" data-tf-mode="fork" aria-pressed="true">소리굽쇠의 떨림</button><button type="button" data-tf-mode="bars" aria-pressed="false">음판의 높낮이와 세기</button></div>
+<section id="tfLab" class="tf-lab" aria-labelledby="tfTitle">
+ <h2 id="tfTitle">소리굽쇠의 떨림 관찰</h2><p class="tf-intro">손잡이를 잡고, 치기 전과 친 뒤를 비교하세요. 종이·물에 대어 작은 떨림을 확인하고, 갈래를 손으로 잡아 보세요.</p>
+ <div class="tf-grid"><div class="tf-controls">
+ <fieldset><legend>준비</legend><div class="tf-actions"><button id="tfHold" type="button">손잡이 잡기</button><button id="tfAudio" type="button" aria-pressed="false">소리 듣기 꺼짐</button></div></fieldset>
+ <fieldset><legend>고무망치로 치기</legend><div class="tf-actions"><button data-tf-strike="weak" type="button">약하게 치기</button><button data-tf-strike="strong" type="button">세게 치기</button></div></fieldset>
+ <fieldset><legend>떨림 확인</legend><div class="tf-actions"><button data-tf-contact="paper" type="button" aria-pressed="false">종이 대기</button><button data-tf-contact="water" type="button" aria-pressed="false">물 표면에 대기</button><button data-tf-contact="hand" type="button" aria-pressed="false">갈래를 손으로 잡기</button><button data-tf-contact="none" type="button" aria-pressed="true">닿은 물체 떼기</button></div></fieldset>
+ <div class="tf-actions"><button id="tfReset" type="button">처음부터</button></div>
+ </div><div class="tf-stage"><div class="tf-stage-head"><strong id="tfStageTitle">치기 전</strong><span>떨림을 느리게 확대</span></div><svg id="tfScene" class="tf-scene" viewBox="0 0 600 370" role="img" aria-label="소리굽쇠와 닿은 물체의 모습"></svg><p id="tfStatus" class="tf-status" aria-live="polite">손잡이를 잡은 뒤, 치기 전의 소리굽쇠에 종이나 물을 대어 보세요.</p></div></div>
+ <div id="tfComparisons" class="tf-observations" aria-label="치기 전과 친 뒤의 비교"></div>
+ <p class="tf-note">소리굽쇠를 귀 가까이 가져가지 마세요. 화면의 소리 크기는 기기 음량에 따라 달라집니다.</p>
+</section>
+<!-- tuning-fork:end -->
+<div id="tfBarsPanel" hidden>
         <ol class="method-steps" aria-label="실험 방법">
             <li>칠 음판을 고릅니다.</li>
             <li>얼마나 세게 칠지 정합니다.</li>
@@ -196,66 +212,69 @@
             </div>
         </section>
 
+</div>
         <details class="quiz-section" aria-labelledby="quiz-title">
             <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
             <div class="quiz-grid">
                 <article class="quiz-card" data-answer="c">
-<h3>소리 나는 북 위에 작은 종이 조각을 놓으니 튀었다. 북의 울림이 멈추자 종이도 멈췄다. 이 결과와 가장 가까운 설명은?</h3>
+<h3>같은 종이를 소리굽쇠에 대었다. 치기 전에는 종이가 가만히 있었고, 친 뒤에는 떨렸다. 이 차이를 설명하는 것은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q1" value="a"> 종이의 떨림만 북소리를 만든다</label>
-<label><input type="radio" name="q1" value="b"> 북 안의 공기가 계속 종이를 민다</label>
-<label><input type="radio" name="q1" value="c"> 북의 떨림이 종이를 움직인다</label>
-<label><input type="radio" name="q1" value="d"> 북을 친 손이 종이에 직접 닿는다</label>
+<label><input type="radio" name="q1" value="a"> 종이의 떨림이 먼저 소리굽쇠를 울림</label>
+<label><input type="radio" name="q1" value="b"> 고무망치가 종이에 직접 닿아 움직임</label>
+<label><input type="radio" name="q1" value="c"> 소리굽쇠의 떨림이 종이에 전달됨</label>
+<label><input type="radio" name="q1" value="d"> 소리굽쇠가 종이를 빨아들여 움직임</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>북의 막이 떨리며 종이 조각을 움직입니다. 소리와 함께 떨림이 멈추는 관찰이 물체의 진동과 소리의 관계를 보여 줍니다.</p>
+<p class="answer-explanation" hidden>치기 전후에 달라진 것은 소리굽쇠의 떨림입니다. 진동하는 갈래에 닿은 종이가 움직여 눈으로 보기 어려운 떨림을 확인할 수 있습니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="a">
-                    <h3>같은 음판을 더 세게 치면 소리는 어떻게 되는가?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="a"> 더 큰 소리가 난다.</label>
-                        <label><input type="radio" name="q2" value="b"> 더 높은 소리가 난다.</label>
-                        <label><input type="radio" name="q2" value="c"> 더 낮은 소리가 난다.</label>
-                        <label><input type="radio" name="q2" value="d"> 아무 변화가 없다.</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>세게 치면 떨림의 크기(진폭)가 커져서 더 큰 소리가 납니다. 높낮이는 변하지 않습니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="b">
-<h3>같은 재료·폭·두께인 긴 음판 A와 짧은 음판 B를 두드렸다. 더 높은 음을 내는 것과 그 음판의 떨림은?</h3>
+<h3>같은 소리굽쇠를 약하게 한 번, 세게 한 번 쳤다. 두 번째에 떨림의 폭이 더 컸다면?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> A / 더 빠르게 떨린다</label>
-<label><input type="radio" name="q3" value="b"> B / 더 빠르게 떨린다</label>
-<label><input type="radio" name="q3" value="c"> B / 더 느리게 떨린다</label>
-<label><input type="radio" name="q3" value="d"> A / 더 느리게 떨린다</label>
+<label><input type="radio" name="q2" value="a"> 소리는 더 큼 · 높낮이는 같음</label>
+<label><input type="radio" name="q2" value="b"> 소리는 같음 · 높낮이는 더 높음</label>
+<label><input type="radio" name="q2" value="c"> 소리는 더 큼 · 높낮이도 더 높음</label>
+<label><input type="radio" name="q2" value="d"> 소리는 더 작음 · 높낮이는 같음</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>짧은 음판이 더 빠르게 진동하여 높은 소리를 냅니다. 세게 두드려 소리를 크게 만드는 것과 구별합니다.</p>
+<p class="answer-explanation" hidden>같은 소리굽쇠를 더 세게 치면 떨림의 폭이 커져 더 큰 소리가 납니다. 세게 친 것과 높은 소리를 낸 것은 다릅니다.</p>
+</article>
+
+                <article class="quiz-card" data-answer="b">
+<h3>재료·폭·두께가 같은 긴 음판 A와 짧은 음판 B를 쳤다. 더 높은 소리를 내는 음판과 그 떨림은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> A · 더 빠르게 떨림</label>
+<label><input type="radio" name="q3" value="b"> B · 더 빠르게 떨림</label>
+<label><input type="radio" name="q3" value="c"> B · 더 느리게 떨림</label>
+<label><input type="radio" name="q3" value="d"> A · 더 느리게 떨림</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 조건에서 짧은 음판이 더 빠르게 떨려 높은 소리를 냅니다. 소리의 높낮이와 크기를 구별합니다.</p>
 </article>
 
                 <article class="quiz-card" data-answer="d">
-<h3>같은 음판을 두 번 쳤다. 두 번째에는 울리는 음판을 손으로 잡았다. 첫 번째와 비교하면?</h3>
+<h3>울리는 소리굽쇠의 갈래를 손으로 잡았더니 소리가 멈췄다. 손으로 잡기 전후를 바르게 비교한 것은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q4" value="a"> 떨림은 멈춰도 소리는 계속된다</label>
-<label><input type="radio" name="q4" value="b"> 떨림은 커지고 소리는 작아진다</label>
-<label><input type="radio" name="q4" value="c"> 떨림은 같고 소리 높이만 낮아진다</label>
-<label><input type="radio" name="q4" value="d"> 떨림과 소리가 더 일찍 멈춘다</label>
+<label><input type="radio" name="q4" value="a"> 갈래는 같은 폭으로 계속 떨림</label>
+<label><input type="radio" name="q4" value="b"> 갈래는 더 큰 폭으로 떨림</label>
+<label><input type="radio" name="q4" value="c"> 갈래는 그대로이고 공기만 멈춤</label>
+<label><input type="radio" name="q4" value="d"> 갈래의 떨림도 함께 멈춤</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>손이 음판의 진동을 억제하므로 떨림과 소리가 함께 더 일찍 멈춥니다.</p>
+<p class="answer-explanation" hidden>손으로 갈래를 잡으면 소리를 내던 진동이 억제됩니다. 소리와 떨림이 함께 멈추는 것을 비교합니다.</p>
 </article>
             </div>
         </details>
     </main>
-    <script src="app.js?v=38d642dc5ddc"></script>
-    <script src="../curriculum-map.js?v=6356b85c9f40"></script>
-    <script src="../exam-scope.js?v=bfaefaaa93c9"></script>
+    <script src="app.js?v=9ec1b0993a43"></script>
+    <script src="fork-model.js?v=250e6c7bc1d1"></script>
+    <script src="fork.js?v=3af563788c19"></script>
+    <script src="../curriculum-map.js?v=c1af0dc3f212"></script>
+    <script src="../exam-scope.js?v=fc86ec633dd8"></script>
     <script src="../lab-ui.js?v=e804868535ac"></script>
 </body>
 </html>

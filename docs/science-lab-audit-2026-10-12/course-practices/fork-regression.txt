@@ -1,0 +1,12 @@
+✔ fork contact: no spontaneous vibration, no skipped preparation, conserved comparison evidence and damping ordering (1.534ms)
+✔ fork review retains exact textbook and assessment sources without turning synthetic audio into measurements (4.7676ms)
+✔ chromium: fork actions, real animation, optional sound, stopped contact, touch widths and retained diagnosis (13792.6561ms)
+✔ webkit: fork actions, real animation, optional sound, stopped contact, touch widths and retained diagnosis (10802.727ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24672.7866

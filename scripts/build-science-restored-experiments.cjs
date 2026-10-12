@@ -25,7 +25,28 @@ stages['sunspot-observation']=require('./science-sunspot-stage.cjs');
 stages['protein-interaction']=require('./science-docking-stage.cjs');
 stages['air-sampling']=require('./science-air-sampling-stage.cjs');
 stages['local-biodiversity']=require('./science-biodiversity-stage.cjs');
-function output(file,body){if(process.argv.includes('--check'))assert.equal(fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n').replace(/\?v=[\w.-]+/g,''),body.replace(/\?v=[\w.-]+/g,''));else{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);}}
+Object.assign(stages,require('./science-course-practice-stages.cjs'));
+Object.assign(stages,require('./science-solution-stages.cjs'));
+stages['acoustic-resonance']=require('./science-acoustic-stage.cjs');
+stages.electroplating=require('./science-electroplating-stage.cjs');
+stages['leaf-starch']=require('./science-leaf-starch-stage.cjs');
+stages['dissolution-mass']=require('./science-dissolution-mass-stage.cjs');
+stages['food-web']=require('./science-food-web-stage.cjs');
+stages['living-environment']=require('./science-plant-growth-stage.cjs');
+stages['yeast-fermentation']=require('./science-fermentation-stage.cjs');
+stages['light-interference']=require('./science-light-interference-stage.cjs');
+stages['galileo-incline']=require('./science-galileo-stage.cjs');
+stages['reaction-pressure']=require('./science-reaction-pressure-stage.cjs');
+stages['osmosis-mass']=require('./science-osmosis-mass-stage.cjs');
+stages['leaf-classification']=require('./science-leaf-classification-stage.cjs');
+stages['animal-classification']=require('./science-animal-classification-stage.cjs');
+stages['liquid-heat']=require('./science-liquid-heat-stage.cjs');
+stages['phase-mass']=require('./science-phase-mass-stage.cjs');
+stages['rotating-disc']=require('./science-rotating-disc-stage.cjs');
+stages['quadrat-community']=require('./science-quadrat-community-stage.cjs');
+stages['ph-comparison']=require('./science-ph-comparison-stage.cjs');
+stages.microbes=require('./science-microbe-observation-stage.cjs');
+function output(file,body){const normalized=s=>s.replace(/\r\n/g,'\n').replace(/\?v=[\w.-]+/g,'');const old=fs.existsSync(file)?fs.readFileSync(file,'utf8'):null;if(process.argv.includes('--check'))assert.equal(old===null?null:normalized(old),normalized(body));else if(old===null||normalized(old)!==normalized(body)){fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);}}
 for(const row of rows){
  const school=row.defaultContext||(row.codes.every(c=>c.startsWith('10'))?'high-common':row.codes.every(c=>c.startsWith('12'))?'high-elective':null);
  const levelLabel=school==='high-common'?'고(공통)':school==='high-elective'?'고(선택)':row.grade;
@@ -36,6 +57,8 @@ for(const row of rows){
 }
 const misconceptions={},followups={};for(const row of rows){row.questions.forEach((q,i)=>misconceptions[row.slug+'#q'+(i+1)]={concept:q.concept,feedback:q.feedback});followups[row.slug]=row.followups;}
 const circuit=require('./science-circuit-course.cjs');circuit.questions.forEach((q,i)=>misconceptions[circuit.slug+'#q'+(i+5)]={concept:q.concept,feedback:q.feedback});followups[circuit.slug]=circuit.followups;
+const rocks=require('./science-rock-specimens-course.cjs');rocks.questions.forEach((q,i)=>misconceptions[rocks.slug+'#q'+(i+1)]={concept:q.concept,feedback:q.feedback});followups[rocks.slug]=rocks.followups;
+const fork=require('./science-tuning-fork-course.cjs');fork.questions.forEach((q,i)=>misconceptions[fork.slug+'#q'+(i+1)]={concept:q.concept,feedback:q.feedback});followups[fork.slug]=fork.followups;
 const metadata=`/* Authored from the source-reviewed experiment registry. */\n(function(root){const extra=${JSON.stringify({misconceptions,followups},null,2)};if(typeof module!=='undefined'){module.exports=extra;}else{root.scienceExperimentQuestions=extra;}})(typeof window==='undefined'?globalThis:window);\n`;
 output(path.join(lab,'experiment-questions.js'),metadata);
 console.log(JSON.stringify({apps:rows.map(r=>r.slug),procedures:rows.reduce((n,r)=>n+r.procedures.length,0),baseQuestions:rows.reduce((n,r)=>n+r.questions.length,0),transferQuestions:rows.reduce((n,r)=>n+r.followups.length,0)}));

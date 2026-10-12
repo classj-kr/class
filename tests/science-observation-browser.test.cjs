@@ -21,7 +21,7 @@ for(const engine of ['chromium','webkit'])test(engine+': sound playback, lunar d
   const open=async slug=>{await page.goto(`http://127.0.0.1:${server.address().port}/${slug}/`);await page.waitForLoadState('networkidle');};
   const choice=async(key,value)=>page.locator(`[data-supplement-choice="${key}"][data-value="${value}"]`).click();
   const capture=async(slug,selector='.experiment-layout')=>{for(const width of [390,768,1024]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,slug+': overflow '+width);await screenshotWebp(page.locator(selector),path.join(out,`${slug}-${engine}-${width}.webp`));}};
-  await open('sound-vibration');assert.equal(await page.evaluate(()=>audioAudit.contexts),0);
+  await open('sound-vibration');assert.equal(await page.evaluate(()=>audioAudit.contexts),0);await page.locator('[data-tf-mode=bars]').click();
   const listen=page.getByRole('button',{name:'이 조건의 소리 듣기'});
   let playback=true;
   for(const [kind,condition]of [['string','on'],['string','off'],['noise','on'],['noise','off']]){

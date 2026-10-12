@@ -1,0 +1,17 @@
+✔ official 2022 areas and courses, and one auditable primary placement per app (488.9655ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4581.5756ms)
+✔ light interference: spacing, finite-width diffraction, single-slit and measurement invariants (1.3041ms)
+✔ chromium: optical bench, fringe measurements, controls and assessment (21439.0714ms)
+✔ webkit: optical bench, fringe measurements, controls and assessment (21340.8038ms)
+206 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (206.916ms)
+✔ every science lab JavaScript file parses (178.9047ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0581ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42842.3404

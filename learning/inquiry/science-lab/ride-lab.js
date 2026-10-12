@@ -1,10 +1,11 @@
 (function(){
  'use strict';
  const host=document.querySelector('[data-inquiry="ride-acceleration"]');if(!host)return;
- const M=window.scienceRideModels,$=id=>document.getElementById(id),num=id=>Number($(id).value),fmt=(n,d=2)=>Math.abs(n)<.00001?(0).toFixed(d):n.toFixed(d);
+ const M=window.scienceRideModels,$=id=>document.getElementById(id),num=id=>Number($(id).value),fmt=(n,d=2)=>{const value=n.toFixed(d);return Number(value)===0?(0).toFixed(d):value;};
  const text=(x,y,s,attr='')=>`<text x="${x}" y="${y}" ${attr}>${s}</text>`;
  const line=(x,y,u,v,color='#56798b',attrs='')=>`<line x1="${x}" y1="${y}" x2="${u}" y2="${v}" stroke="${color}" stroke-width="3" ${attrs}/>`;
- const svg=(body,label,h=330)=>`<svg viewBox="0 0 540 ${h}" role="img" aria-label="${label}"><defs><marker id="rideArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>${body}</svg>`;
+ let svgSerial=0;
+ const svg=(body,label,h=330)=>{const scopedId="ride-arrow-"+(++svgSerial);return `<svg viewBox="0 0 540 ${h}" role="img" aria-label="${label}"><defs><marker id="rideArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>${body}</svg>` .replaceAll('id="rideArrow"','id="'+scopedId+'"').replaceAll('url(#rideArrow)','url(#'+scopedId+')');};
  let timer=null,measured=null;
  const options=()=>({motion:$('motion').value,speed:num('speed'),radius:num('radius'),length:num('length'),angle:num('angle'),position:num('position'),period:num('period'),slope:num('slope'),mount:$('motion').value==='circle'?0:num('mount'),axis:$('axis').value,sensorMode:$('sensorMode').value,time:num('time')});
  const motionNames={circle:'수평 원운동',straight:'등속 직선',elevator:'승강기',swing:'그네',seesaw:'시소',slide:'미끄럼틀'};

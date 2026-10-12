@@ -3,14 +3,24 @@
 (function(root){
  'use strict';
  const clean=s=>String(s??'').replace(/\s+/g,' ').trim();
+ // Keep choice identities stable for evidence, but do not teach a repeated key-position pattern.
+ function choiceOrder(questionId,items){
+  const order=[...items];let seed=2166136261;
+  for(const ch of String(questionId))seed=Math.imul(seed^ch.charCodeAt(0),16777619)>>>0;
+  if(!seed)seed=0x9e3779b9;
+  for(let i=order.length-1;i>0;i--){seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;const j=(seed>>>0)%(i+1);[order[i],order[j]]=[order[j],order[i]];}
+  return order;
+ }
  function fingerprint(q){return JSON.stringify([q.question,[...q.choices].sort((a,b)=>String(a.id).localeCompare(String(b.id))),q.answer,q.why,q.data||null]);}
  function session(scope,initial=[],storage=null){
   const questions=new Map(),records=new Map(),key='science-assessment-v1:'+scope;
   let saved={};try{saved=JSON.parse(storage?.getItem(key)||'{}');}catch{}
   function register(items){for(const q of items){
    if(!q.id||!q.choices?.length||!q.choices.some(c=>String(c.id)===String(q.answer)))throw Error('Invalid assessment question');
+   const signature=fingerprint(q);
+   if(records.has(q.id)&&records.get(q.id).fingerprint!==signature)records.delete(q.id);
    questions.set(q.id,q);const old=saved[q.id];
-   if(!records.has(q.id)&&old?.fingerprint===fingerprint(q)&&Array.isArray(old.attempts)){
+   if(!records.has(q.id)&&old?.fingerprint===signature&&Array.isArray(old.attempts)){
     const attempts=old.attempts.filter(a=>q.choices.some(c=>String(c.id)===a)).slice(0,20);
     if(attempts.length)records.set(q.id,{fingerprint:old.fingerprint,attempts});
    }
@@ -40,7 +50,7 @@
   if(r.correct)return (r.firstCorrect?'정답입니다. ':'다시 풀어 맞혔습니다. 첫 응답은 오답으로 남습니다. ')+q.why;
   return '다시 생각하고 다른 답을 골라보세요.';
  }
- const api={session,feedback,fingerprint};
+ const api={session,feedback,fingerprint,choiceOrder};
  if(typeof module!=='undefined'&&module.exports){module.exports=api;return;}
  root.scienceAssessment=api;
  const doc=root.document,script=doc.currentScript,css=doc.createElement('link');css.rel='stylesheet';css.href=new URL('science-assessment.css?v=839f0768d20c',script.src);doc.head.append(css);
@@ -70,6 +80,12 @@
     choices:[...card.querySelectorAll('input[type=radio]')].map(input=>({id:input.value,text:clean(input.closest('label').textContent)})),why:clean(card.querySelector('.answer-explanation')?.textContent)};
    const detail=root.scienceMisconceptions?.[q.id];if(detail)Object.assign(q,detail);
    card.dataset.questionId=q.id;cards.set(q.id,card);store.register([q]);
+   const options=card.querySelector('.quiz-options');if(options){
+    // Some legacy apps shuffle before this loader mounts. Normalize by the
+    // stable input value so the final display order also survives reload.
+    const labels=[...options.children].sort((a,b)=>String(a.querySelector('input')?.value).localeCompare(String(b.querySelector('input')?.value)));
+    for(const label of choiceOrder(q.id,labels))options.append(label);
+   }
    const previous=store.evidence(q.id);if(previous){const input=card.querySelector('input[value="'+previous.last+'"]');if(input)input.checked=true;renderCard(card,q,previous);}
   }
   function renderCard(card,q,r){

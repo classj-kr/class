@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<span class="data-val">${conditions[k] ? COND_LABELS[k].on : COND_LABELS[k].off}</span></div>`).join('') +
             `<div class="data-row"><span class="data-name">싹트는 데 필요한 것</span><span class="data-val">물 · 알맞은 온도 (나머지 조건은 같게 둠)</span></div>` +
             `<div class="data-row${germinates() ? ' match' : ''}"><span class="data-name">지금 모자란 것</span>` +
-            `<span class="data-val">${missing.length ? missing.join(' · ') : '없음 — 세 가지가 다 갖추어졌습니다'}</span></div>` +
+            `<span class="data-val">${missing.length ? missing.join(' · ') : '없음 — 물과 알맞은 온도를 갖추었습니다'}</span></div>` +
             `<div class="data-row"><span class="data-name">지난 날수</span><span class="data-val">${germinates() ? `${days}일째 · ${stageName(progress)}` : '변화 없음'}</span></div>`;
     }
 

@@ -4,6 +4,7 @@ const base=path.resolve(__dirname,'../learning/inquiry/science-lab');
 const read=p=>fs.readFileSync(p,'utf8').replace(/\r\n/g,'\n');
 const map=require(path.join(base,'curriculum-map.js'));
 const authoredCounts=Object.fromEntries(require('../scripts/science-restored-experiments.cjs').map(r=>[r.slug,r.questions.length]));
+for(const [slug,row]of Object.entries(map))if(row.courseContexts)authoredCounts[slug]=new Set(Object.values(row.courseContexts).flatMap(c=>c.questionNumbers)).size;
 test('all app grades, standards, quizzes and local script cache versions agree',()=>{
  const curriculum=read(path.resolve(base,'../../../references/moe/2022-revised-curriculum/extracted/09-science.txt'));
  const catalog=read(path.join(base,'index.html'));
@@ -16,6 +17,7 @@ test('all app grades, standards, quizzes and local script cache versions agree',
  assert.deepEqual(directories,registered,'No app directory may be omitted from the registry');
  for(const[slug,m]of Object.entries(map)){
   const html=read(path.join(base,slug,'index.html'));
+  assert.doesNotMatch(html,/<\/(?:option|select|button|label)\s+[^>]+>/i,slug+': malformed control closing tag can silently remove a choice');
   assert.equal((html.match(/class="quiz-card"/g)||[]).length,authoredCounts[slug]||4,slug);
   for(const entry of entries.filter(e=>e.slug===slug)){const scope=m.courseContexts?.[entry.context]||m;assert(catalog.includes('data-grades="'+scope.grades.join(' ')+'" data-standards="'+scope.codes.join(' ')+'" href="'+entry.href+'"'),entry.href);}
   for(const code of m.codes){assert(curriculum.includes('['+code+']'),slug+': '+code);assert(m.courseContexts?Object.values(m.courseContexts).some(c=>c.codes.includes(code)):code.startsWith(m.grade.startsWith('중')?'9과':m.grade==='고1'?'10':m.grade.startsWith('고')?'12':Number(m.grade.slice(1))<=4?'4과':'6과'),slug+': grade/code mismatch');}

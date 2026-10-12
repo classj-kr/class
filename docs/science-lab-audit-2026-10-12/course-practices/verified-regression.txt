@@ -1,0 +1,54 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9235ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7599ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1672ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.0935ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (60.7234ms)
+chromium: 165 apps / 169 course routes / 676 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (20786.879ms)
+webkit: 165 apps / 169 course routes / 676 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (30097.9525ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (328.3003ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4975.7124ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (72.2787ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2229.3896ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.4779ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (66910.6221ms)
+✔ classification and directed food paths remain distinct; removal never invents a shortcut (1.6249ms)
+✔ chromium: classify, build, correct, remove and compare food relationships with touch and keyboard (11640.2326ms)
+✔ webkit: classify, build, correct, remove and compare food relationships with touch and keyboard (10214.7362ms)
+✔ plant growth starts with seedlings; a fair comparison changes only the investigated condition (0.8453ms)
+✔ chromium: design, observe, replay and interpret pre-grown plants (13302.5539ms)
+✔ webkit: design, observe, replay and interpret pre-grown plants (9187.9408ms)
+chromium 20/165
+chromium 40/165
+chromium 60/165
+chromium 80/165
+chromium 100/165
+chromium 120/165
+chromium 140/165
+chromium 160/165
+{"engine":"chromium","apps":165,"predictions":99,"quizzes":660,"rebuilt":30,"failures":[]}
+✔ chromium: every app clears obsolete predictions and quiz verdicts (9044.5144ms)
+webkit 20/165
+webkit 40/165
+webkit 60/165
+webkit 80/165
+webkit 100/165
+webkit 120/165
+webkit 140/165
+webkit 160/165
+{"engine":"webkit","apps":165,"predictions":99,"quizzes":660,"rebuilt":30,"failures":[]}
+✔ webkit: every app clears obsolete predictions and quiz verdicts (12947.0026ms)
+202 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (173.8587ms)
+✔ every science lab JavaScript file parses (91.4316ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8564ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97320.3103

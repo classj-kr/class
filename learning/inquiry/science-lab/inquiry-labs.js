@@ -7,7 +7,8 @@
  const val=id=>$(id).value,num=id=>Number(val(id));
  const fmt=(n,d=1)=>Number(n).toFixed(d);
  const text=(x,y,t,attrs='')=>`<text x="${x}" y="${y}" ${attrs}>${esc(t)}</text>`;
- const svg=(body,label,w=540,h=310)=>`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#b65d20"/></marker></defs>${body}</svg>`;
+ let svgSerial=0;
+ const svg=(body,label,w=540,h=310)=>{const scopedId="inquiry-arrow-"+(++svgSerial);return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#b65d20"/></marker></defs>${body}</svg>` .replaceAll('id="arrow"','id="'+scopedId+'"').replaceAll('url(#arrow)','url(#'+scopedId+')');};
  const line=(x1,y1,x2,y2,color='#527785',other='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="2" ${other}/>`;
  const metrics=items=>readout.innerHTML=items.map(([label,value])=>`<div><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`).join('');
  const colors=['#1a7581','#ac5626','#7254ad'];

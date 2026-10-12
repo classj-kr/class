@@ -1,0 +1,33 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9968ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7403ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1114ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (71.2216ms)
+chromium: 157 apps / 161 course routes / 644 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (27048.0478ms)
+webkit: 157 apps / 161 course routes / 644 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (39917.7581ms)
+✔ gas stoichiometry, calibration invariance, chromatography ratios and selective digestion remain physically distinct (1.3142ms)
+✔ chromium: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (63567.3358ms)
+✔ webkit: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (67521.2551ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.9724ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (70771.7349ms)
+290 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (17.4308ms)
+290 browser conditions, 870 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (74732.577ms)
+188 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (179.1028ms)
+✔ every science lab JavaScript file parses (114.835ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.1094ms)
+✔ three tanks: energy, added mass and expansion stay separate, including melting completion (9.7051ms)
+✔ chromium: source-matched preparation, heating, zoom, pause, reset and tablet readability (9212.4698ms)
+✔ webkit: source-matched preparation, heating, zoom, pause, reset and tablet readability (9033.7448ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 131154.5831

@@ -47,7 +47,7 @@ if(require.main===module){
  else {const rows=read(),snapshot=require('../docs/science-lab-audit-2026-10-11/question-review.json'),restored=require('../docs/science-lab-audit-2026-10-11/restored-question-review.json'),reviews=[...snapshot.questions,...restored.questions];
   assert.equal(new Set(rows.map(q=>q.id)).size,rows.length);
   const latest=require('../docs/science-lab-audit-2026-10-11/question-quality-review.json').questions;
-  const final=require('../docs/science-lab-audit-2026-10-12/final-quality/question-review.json').questions;
+  const final=[...require('../docs/science-lab-audit-2026-10-12/course-practices/bank-explanation-review.json').questions,...require('../docs/science-lab-audit-2026-10-12/course-practices/question-refinement-review.json').questions,...require('../docs/science-lab-audit-2026-10-12/course-practices/question-review.json').questions,...(require('../docs/science-lab-audit-2026-10-12/course-practices/question-review.json').bankRoutes||[]),...require('../docs/science-lab-audit-2026-10-12/final-quality/question-review.json').questions];
   for(const q of rows){const reviewed=final.find(r=>r.id===q.id)||latest.find(r=>r.id===q.id)||reviews.find(r=>r.id===q.id);assert(reviewed,'Unreviewed '+q.id);assert.equal(digest(q),reviewed.sha256,'Question changed after review: '+q.id);assert.equal(new Set(q.choices.map(c=>c.text)).size,q.choices.length);assert(q.choices.some(c=>c.id===q.answer));}
   console.log(rows.length+' question contents match the reviewed snapshots; this check does not independently prove scientific correctness.');
  }

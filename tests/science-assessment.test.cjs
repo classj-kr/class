@@ -2,6 +2,11 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const api=require('../learning/inquiry/science-lab/science-assessment.js'),bank=require('../learning/inquiry/science-lab/exam-bank.js'),map=require('../learning/inquiry/science-lab/curriculum-map.js'),content=require('../learning/inquiry/science-lab/assessment-content.js');
 const authoredCounts=Object.fromEntries(require('../scripts/science-restored-experiments.cjs').map(r=>[r.slug,r.questions.length]));
 const q={id:'q',question:'입사각 30°',choices:[{id:'a',text:'30°'},{id:'b',text:'60°'}],answer:'a',why:'두 각은 법선을 기준으로 같다.'};
+test('display permutation is stable, preserves identities, and varies keyed positions across questions',()=>{
+ const ids=['a','b','c','d'],positions=new Set(),input=ids.map(id=>({id}));
+ for(let i=0;i<200;i++){const id='assessment#'+i,ordered=api.choiceOrder(id,input);assert.deepEqual(ordered,api.choiceOrder(id,input));assert.deepEqual(ordered.map(r=>r.id).sort(),ids);assert(ordered.every(r=>input.includes(r)));positions.add(ordered.findIndex(r=>r.id==='a'));}
+ assert.equal(positions.size,4);assert.deepEqual(input.map(r=>r.id),ids);assert.deepEqual(api.choiceOrder('empty',[]),[]);
+});
 test('first answer survives correction, duplicate submissions, reload and shuffled choices',()=>{
  const values=new Map(),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};
  const s=api.session('test',[q],storage);assert.equal(s.submit('q','missing'),null);assert.equal(s.summary().answered,0);
@@ -15,6 +20,16 @@ test('missing/corrupt/denied storage and repeated guesses cannot turn first erro
  for(const storage of [null,{getItem:()=>'{bad',setItem:()=>{}},{getItem:()=>{throw Error('denied');},setItem:()=>{throw Error('denied');}}]){
   const s=api.session('test',[q],storage);for(let i=0;i<100;i++)s.submit('q',i%2?'a':'b');assert.equal(s.evidence('q').first,'b');assert(s.evidence('q').attempts.length<=20);assert.equal(s.summary().firstCorrect,0);
  }
+});
+test('re-registering revised content within an open page cannot reuse earlier evidence',()=>{
+ const values=new Map(),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};
+ const s=api.session('revision',[q],storage);s.submit(q.id,'a');
+ s.register([{...q,choices:[...q.choices].reverse()}]);assert.equal(s.evidence(q.id).firstCorrect,true,'choice display order is not a content change');
+ const revised={...q,question:'입사각 60°',answer:'b',why:'법선을 기준으로 60°이다.'};
+ s.register([revised]);assert.equal(s.evidence(q.id),null);assert.equal(s.summary().answered,0);
+ s.submit(q.id,'a');s.submit(q.id,'b');assert.equal(s.evidence(q.id).firstCorrect,false);assert.equal(s.evidence(q.id).status,'corrected');
+ const reload=api.session('revision',[revised],storage);assert.equal(reload.evidence(q.id).first,'a');assert.equal(reload.evidence(q.id).last,'b');
+ s.register([{...revised,data:{rows:[[1,2]]}}]);assert.equal(s.evidence(q.id),null,'new observations invalidate the previous inference');
 });
 test('fresh transfer answer is distinguished from correcting the same item',()=>{
  const follow={...q,id:'transfer',checks:['q']},s=api.session('transfer',[q,follow]);s.submit('q','b');s.submit('q','a');assert.equal(s.summary().responses[0].transferVerified,false);
@@ -47,12 +62,15 @@ for(const engine of ['chromium','webkit'])test(engine+': all registered apps pre
    const r=a.store.evidence(card.dataset.questionId);if(r.first!==wrong.value||!r.correct||r.firstCorrect)issues.push('first error overwritten');
   }return{issues,summary:a.store.summary()};});
   assert.deepEqual(result.issues,[],slug);assert.equal(result.summary.answered,questionCount,slug);assert.equal(result.summary.corrected,questionCount,slug);assert.equal(result.summary.firstCorrect,0,slug);count+=questionCount;
+  const order=await page.locator('.quiz-card').evaluateAll(cards=>cards.map(card=>({id:card.dataset.questionId,choices:[...card.querySelectorAll('input[type=radio]')].map(i=>i.value)})));
+  for(const row of order)assert.deepEqual(row.choices,api.choiceOrder(row.id,[...row.choices].sort()),slug+' preserves input identity when reordering');
   await page.reload();await page.waitForSelector('[data-assessment-ready]',{state:'attached'});assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().corrected),questionCount,slug+' reload');
+  assert.deepEqual(await page.locator('.quiz-card').evaluateAll(cards=>cards.map(card=>({id:card.dataset.questionId,choices:[...card.querySelectorAll('input[type=radio]')].map(i=>i.value)}))),order,slug+' display order survives reload');
   if(['refraction','lens-image'].includes(slug)){
    await page.locator('.quiz-section summary').click();await page.waitForFunction(()=>!!document.querySelector('.exam-widget')?.examController);
    const ids=await page.locator('.exam-widget').evaluate(e=>e.examController.ids());assert(!ids.includes('9과10-04'));assert(ids.includes(slug==='refraction'?'refraction@normal-transfer':'lens-image@screen-transfer'));assert.equal(await page.locator('.exam-local').count(),0);assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().total),4+ids.length,'bank joins the same session even when loaded before DOMContentLoaded');
-   const initialQuestion=bank.questions.find(q=>q.id===ids[0])||content.followups[slug][0],initialWrong=(initialQuestion.answer+1)%initialQuestion.choices.length;await page.locator('[data-exam-answer="'+initialWrong+'"]').click();assert.equal(await page.locator('.exam-feedback').textContent(),'');await page.locator('.exam-submit').click();assert.doesNotMatch(await page.locator('.exam-feedback').textContent(),/정답[:은]|정답입니다/);
-   for(const [i,id]of ids.entries()){const q=bank.questions.find(q=>q.id===id)||content.followups[slug].find(q=>q.id===id);await page.locator('[data-exam-answer="'+q.answer+'"]').click();await page.locator('.exam-submit').click();assert.equal(await page.locator('.exam-feedback').getAttribute('data-correct'),'true',id);if(i<ids.length-1)await page.locator('[data-exam-next]').click();}
+   const initialQuestion=bank.questions.find(q=>q.id===ids[0])||content.followups[slug][0],initialWrong=(initialQuestion.answer+1)%initialQuestion.choices.length;await page.locator('[data-exam-answer="'+initialWrong+'"]').click();assert.deepEqual(await page.locator('[data-exam-answer][aria-pressed=true]').evaluateAll(es=>es.map(e=>Number(e.dataset.examAnswer))),[initialWrong]);assert.equal(await page.locator('.exam-feedback').textContent(),'');await page.locator('.exam-submit').click();assert.doesNotMatch(await page.locator('.exam-feedback').textContent(),/정답[:은]|정답입니다/);
+   for(const [i,id]of ids.entries()){const q=bank.questions.find(q=>q.id===id)||content.followups[slug].find(q=>q.id===id);assert.deepEqual(await page.locator('[data-exam-answer]').evaluateAll(es=>es.map(e=>Number(e.dataset.examAnswer))),api.choiceOrder(q.id,q.choices.map((_,j)=>j)),id+' bank/transfer display order');await page.locator('[data-exam-answer="'+q.answer+'"]').click();assert.deepEqual(await page.locator('[data-exam-answer][aria-pressed=true]').evaluateAll(es=>es.map(e=>Number(e.dataset.examAnswer))),[q.answer]);await page.locator('.exam-submit').click();assert.equal(await page.locator('.exam-feedback').getAttribute('data-correct'),'true',id);if(i<ids.length-1)await page.locator('[data-exam-next]').click();}
    if(slug==='lens-image')assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().responses.filter(r=>r.id.includes('#q')&&r.transferVerified).length),2,'corrected transfer item is not counted as a fresh first-answer success');
    for(const width of [390,1024]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);const out=path.resolve(process.env.SCIENCE_ASSESSMENT_CAPTURE_DIR||'docs/science-lab-audit-2026-10-11/assessment-repair');fs.mkdirSync(out,{recursive:true});await require('./science-screenshot.cjs')(page.locator('.science-diagnosis'),path.join(out,`${slug}-diagnosis-${engine}-${width}.webp`));await require('./science-screenshot.cjs')(page.locator('.quiz-card').first(),path.join(out,`${slug}-question-${engine}-${width}.webp`));}
    await page.locator('.science-diagnosis>button').filter({hasText:'새로 풀기'}).click();assert.equal(await page.locator('.quiz-section').evaluate(e=>e.scienceAssessment.store.summary().answered),0);assert.equal(await page.locator('.exam-feedback').textContent(),'');
