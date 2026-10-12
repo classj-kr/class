@@ -878,13 +878,15 @@ const scienceCurriculum = {
       "초4"
     ],
     "level": "elementary",
-    "title": "균류·원생생물·세균 관찰",
+    "title": "버섯·곰팡이·해캄·짚신벌레 관찰",
     "subjects": [
       "과학"
     ],
     "codes": [
       "4과12-01"
-    ]
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   },
   "microscope": {
     "grade": "초6",
@@ -1219,22 +1221,20 @@ const scienceCurriculum = {
     ]
   },
   "living-environment": {
-    "grade": "초4",
+    "grade": "초3",
     "grades": [
-      "초4"
+      "초3"
     ],
     "level": "elementary",
-    "title": "강낭콩·먹이 관계와 기후변화",
+    "title": "물·햇빛과 식물의 자람",
     "subjects": [
       "과학"
     ],
     "codes": [
-      "4과04-02",
-      "4과14-01",
-      "4과14-02",
-      "4과14-03",
-      "4과16-02"
-    ]
+      "4과04-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   },
   "population": {
     "grade": "고2~3",
@@ -2697,6 +2697,460 @@ const scienceCurriculum = {
         "intro": "화단의 다섯 종류 식물을 관찰하고 특징으로 동정하세요. 같은 조건에서 잔디밭과 비교하고, 관찰 자료로 판단할 수 있는 범위를 구별하세요."
       }
     }
+  },
+  "water-electrolysis": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "물의 전기분해와 기체 부피 비교",
+    "subjects": [
+      "화학"
+    ],
+    "codes": [
+      "12화학02-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "cell-micrometry": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "마이크로미터로 세포 크기 측정",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포01-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "leaf-pigments": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "잎의 광합성 색소 추출과 분리",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포03-05"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "digestive-enzymes": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "소화 효소의 녹말 분해와 막 통과",
+    "subjects": [
+      "생명과학"
+    ],
+    "codes": [
+      "12생과01-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "spring-wave-speed": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "용수철의 종파·횡파 속력 측정",
+    "subjects": [
+      "역학과 에너지"
+    ],
+    "codes": [
+      "12역학03-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "coastal-inundation": {
+    "grade": "초4",
+    "grades": [
+      "초4"
+    ],
+    "level": "elementary",
+    "title": "점토 마을의 해수면 상승 실험",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "4과16-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "sea-level-causes": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "해수면 상승의 두 원인 비교",
+    "subjects": [
+      "기후변화와 환경생태"
+    ],
+    "codes": [
+      "12기환02-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "standard-solution": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "염화 나트륨 표준 용액 만들기",
+    "subjects": [
+      "화학"
+    ],
+    "codes": [
+      "12화학04-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "serial-dilution": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "연속 희석과 pH 측정",
+    "subjects": [
+      "화학"
+    ],
+    "codes": [
+      "12화학04-01",
+      "12화학04-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "vinegar-titration": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "식초의 아세트산 함량 측정",
+    "subjects": [
+      "화학"
+    ],
+    "codes": [
+      "12화학04-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "acoustic-resonance": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "정상파로 음속 측정",
+    "subjects": [
+      "역학과 에너지"
+    ],
+    "codes": [
+      "12역학03-02",
+      "12역학03-05"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "electroplating": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "철 펜던트의 구리 도금",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응02-01",
+      "12반응02-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "leaf-starch": {
+    "grade": "초6",
+    "grades": [
+      "초6"
+    ],
+    "level": "elementary",
+    "title": "잎에서 만드는 양분 확인",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "6과11-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "dissolution-mass": {
+    "grade": "초5",
+    "grades": [
+      "초5"
+    ],
+    "level": "elementary",
+    "title": "용해 전후 무게 측정",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "6과03-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "food-web": {
+    "grade": "초4",
+    "grades": [
+      "초4"
+    ],
+    "level": "elementary",
+    "title": "생물 분류와 먹이그물 만들기",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "4과14-01",
+      "4과14-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "yeast-fermentation": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "효모의 발효와 생성 기체 확인",
+    "subjects": [
+      "세포와 물질대사"
+    ],
+    "codes": [
+      "12세포03-04"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "light-interference": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "이중 슬릿과 빛의 간섭무늬",
+    "subjects": [
+      "물리학"
+    ],
+    "codes": [
+      "12물리03-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "galileo-incline": {
+    "grade": "고1",
+    "grades": [
+      "고1"
+    ],
+    "level": "high",
+    "title": "갈릴레이의 경사면 실험",
+    "subjects": [
+      "과학탐구실험1"
+    ],
+    "codes": [
+      "10과탐1-01-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "reaction-pressure": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "압력 센서로 반응 속도 비교",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에04-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "osmosis-mass": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "삼투 전후 채소의 질량 비교",
+    "subjects": [
+      "물질과 에너지"
+    ],
+    "codes": [
+      "12물에02-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "leaf-classification": {
+    "grade": "초3",
+    "grades": [
+      "초3"
+    ],
+    "level": "elementary",
+    "title": "잎을 관찰하고 기준에 따라 분류하기",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "4과03-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "animal-classification": {
+    "grade": "초3",
+    "grades": [
+      "초3"
+    ],
+    "level": "elementary",
+    "title": "동물을 관찰하고 기준에 따라 분류하기",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "4과02-01"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "liquid-heat": {
+    "grade": "중1",
+    "grades": [
+      "중1"
+    ],
+    "level": "middle",
+    "title": "온도 센서로 두 액체의 비열 비교",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "9과03-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "phase-mass": {
+    "grade": "중1",
+    "grades": [
+      "중1"
+    ],
+    "level": "middle",
+    "title": "응고 전후 질량과 부피 비교",
+    "subjects": [
+      "과학"
+    ],
+    "codes": [
+      "9과04-03"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "rotating-disc": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "회전 원판과 구슬의 전향 효과",
+    "subjects": [
+      "지구시스템과학"
+    ],
+    "codes": [
+      "12지시03-05"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "quadrat-community": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "방형구로 식물군집과 우점종 조사",
+    "subjects": [
+      "생명과학"
+    ],
+    "codes": [
+      "12생과01-07"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
+  },
+  "ph-comparison": {
+    "grade": "고2~3",
+    "grades": [
+      "고2",
+      "고3"
+    ],
+    "level": "high",
+    "title": "같은 농도의 산·염기 pH 측정",
+    "subjects": [
+      "화학 반응의 세계"
+    ],
+    "codes": [
+      "12반응01-02"
+    ],
+    "diagnostic": true,
+    "bankQuestionIds": []
   }
 };
 if (typeof window !== 'undefined') window.scienceCurriculum = scienceCurriculum;

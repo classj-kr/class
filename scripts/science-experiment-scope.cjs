@@ -2,6 +2,8 @@
 // These decisions do not remove activities from the official curriculum.
 // Keep explicit, reviewable decisions; never classify by a keyword alone.
 const excluded = [
+ ['10통과1-01#2','일상생활에서 측정 표준이 활용되는 사례 탐색하기','세 출판사의 확인한 절차는 생활 속 측정 표준 사례 검색·토의·발표이다. 독립 실험에서 제외하며 실제 길이·시간·온도 측정은 유지'],
+ ['10과탐1-01#2','크기, 시간, 온도 등 과학의 단위 및 도량형 발견의 역사 추적하기','세 출판사의 확인한 절차는 단위 정의의 역사 조사·연대표·카드 뉴스·발표이다. 실제 측정 장치의 조작 실험과 구별하여 제외'],
  ['4과11#2','지진의 피해 사례를 조사하고 대처 방법 탐구하기','재난 사례 조사와 대처 방안'],
  ['6과16#1','우리의 진로에 영향을 미치는 과학적 요소 탐구하기','진로 조사와 공유'],
  ['9과01#1','주변에서 탐구할 문제를 발견하고 탐구 계획서 작성하기','특정 실험 수행이 없는 일반 계획서 작성'],
@@ -36,6 +38,8 @@ const excluded = [
  ['12융탐02#2','인공지능을 활용하여 미세먼지 농도 예측하기','미세먼지 자료를 선형 회귀 도구에 넣고 미래값을 출력하는 코딩 과제. 직접 오염물질 측정 실험은 유지']
 ];
 const exclusions=Object.fromEntries(excluded.map(([id,text,reason])=>[id,{text,reason}]));
+Object.assign(exclusions['10통과1-01#2'],{sources:[{id:'b95ee3d4da9065dd',pages:[24],printedPages:[24]},{id:'afdf783d8600127c',pages:[14,15],printedPages:[24,25]},{id:'a1ba39c4ae71e700',pages:[21],printedPages:[30]}],reviewed:'2026-10-12',boundary:'제목만이 아니라 세 출판사의 해당 활동 과정·정리·평가를 대조했다. 같은 단원의 어림·측정·단위 환산 실험을 제외하는 판정이 아니다.'});
+Object.assign(exclusions['10과탐1-01#2'],{sources:[{id:'ee3ee343af97cac2',pages:[28,29,30,31],printedPages:[28,29,30,31]},{id:'219f8d0b7dc938c3',pages:[7,8],printedPages:[14,15]},{id:'764c91a83f8bf462',pages:[20,21,22,23],printedPages:[20,21,22,23]}],reviewed:'2026-10-12',boundary:'단위와 도량형 발견의 조사·토의·연대표 또는 카드 뉴스 제작 절차이다. 실제 측정 활동 및 공식 과목 분류는 보존한다.'});
 const retiredApps={
  'energy-budget':{activity:'12세포02#1',reason:exclusions['12세포02#1'].reason,source:{id:'fbf365923abce545',pages:[60,61],printedPages:[58,59]}}
 };

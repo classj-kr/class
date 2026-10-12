@@ -1,0 +1,11 @@
+✔ rotation changes the paper frame, not inertial motion; opposite rotations mirror and conserve distances (1.5572ms)
+✔ chromium: deliberate preparation, smooth play/pause, five comparisons, tablet layout and first-answer diagnosis (16475.4889ms)
+✔ webkit: deliberate preparation, smooth play/pause, five comparisons, tablet layout and first-answer diagnosis (12094.2672ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28632.6306

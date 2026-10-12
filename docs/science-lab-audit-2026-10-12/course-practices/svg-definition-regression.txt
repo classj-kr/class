@@ -1,0 +1,20 @@
+✔ gas stoichiometry, calibration invariance, chromatography ratios and selective digestion remain physically distinct (1.1917ms)
+✔ chromium: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (67273.9099ms)
+✔ webkit: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (75745.4701ms)
+✔ course scopes partition authored questions and preserve scoped transfer evidence (306.4506ms)
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (8.2233ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.5298ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.5629ms)
+✔ browser: apparatus, course routes, isolated diagnostics, reload and narrow screens (5939.9713ms)
+226 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (200.7721ms)
+✔ every science lab JavaScript file parses (99.8272ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8364ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 149814.2208

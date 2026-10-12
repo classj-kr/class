@@ -1,0 +1,20 @@
+{
+  "engine": "chromium",
+  "deviceProfile": "chromebook-scale",
+  "emulationOnly": true,
+  "questions": 241,
+  "scenarios": 1205,
+  "widths": [
+    1366,
+    1180,
+    1024,
+    820,
+    768
+  ],
+  "liveFonts": [
+    "Noto Serif KR"
+  ],
+  "scope": "All 241 bank questions with their correct-answer feedback open, at five viewport sizes. Text size, clipping, touch height and chart label overlap are checked; this is not physical-device testing.",
+  "issues": [],
+  "errors": []
+}

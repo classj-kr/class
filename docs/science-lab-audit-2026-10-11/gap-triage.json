@@ -1,9 +1,9 @@
 {
   "scope": "2022 교과서의 실험·직접 관찰·측정과 그 결과 해석을 대상으로 한다. 진로·사례 조사, 토의, 홍보·콘텐츠 제작, 일반 계획서와 아이디어 제안은 독립 실험으로 만들거나 미구현 필수실험에 합산하지 않는다. 관측 자료 분석·모형·장치 설계는 실제 탐구 절차를 확인한 뒤 판단하며 제목만으로 일괄 제외하지 않는다.",
   "requiredExperimentTotal": null,
-  "apps": 150,
+  "apps": 177,
   "remainingCandidates": 6,
-  "excludedNonExperiments": 32,
+  "excludedNonExperiments": 34,
   "retiredApps": {
     "energy-budget": {
       "activity": "12세포02#1",
@@ -40,9 +40,93 @@
     "referenceOnly": 5,
     "sourceUnresolved": 1,
     "newAppCount": null,
-    "sourceReviewedVirtualPracticeRows": 4
+    "sourceReviewedVirtualPracticeRows": 4,
+    "sourceReviewedLinkedAppGaps": 1,
+    "sourceOnlyProcedureCandidates": 6
   },
   "workGroups": [],
+  "linkedAppGaps": [
+    {
+      "id": "12물에02#2",
+      "title": "농도와 삼투현상의 관계를 찾기 위한 실험 설계하고 수행하기",
+      "relatedApps": [
+        "osmosis-mass"
+      ],
+      "source": {
+        "id": "279be25ef56d430f",
+        "pages": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "missingProcedure": "PDF 3~4쪽의 두 채소·0.2~0.5 M 설탕물·같은 크기/처음 질량·전후 질량 측정은 실제 실험 설계 절차. 기존 세포 삼투 그림만으로 충족 판정할 수 없음. osmosis-mass에서 포도당·무의 전후 저울 측정을 추가했지만 이 판본의 두 채소·설탕물 결과로 대체하지 않음.",
+      "status": "원문에서 확인한 기존 연결 앱의 절차 누락 · 구현 보완 필요"
+    }
+  ],
+  "sourceOnlyProcedures": [
+    {
+      "pages": [
+        1
+      ],
+      "title": "필기도구의 관찰과 기준별 분류",
+      "kind": "observation",
+      "sourceId": "dac431898e5527b4",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        2
+      ],
+      "title": "같은 컵을 1~3층 쌓아 높이를 측정하고 4층 높이 예상",
+      "kind": "measurement",
+      "sourceId": "dac431898e5527b4",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        3
+      ],
+      "title": "검은 천으로 가린 물건의 모양·소리·촉감으로 추리",
+      "kind": "observation",
+      "sourceId": "dac431898e5527b4",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        1
+      ],
+      "title": "음료수의 색·투명도·알갱이·거품을 관찰해 분류",
+      "kind": "observation",
+      "sourceId": "a01ba11c558ae902",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        2
+      ],
+      "title": "물 10 mL에 바둑알 1~3개를 넣어 눈금 측정하고 4개 값 예상",
+      "kind": "measurement",
+      "sourceId": "a01ba11c558ae902",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    },
+    {
+      "pages": [
+        3
+      ],
+      "title": "물체의 용도·색·모양을 질문하고 정체 추리",
+      "kind": "observation",
+      "sourceId": "a01ba11c558ae902",
+      "mandatoryStatus": "unconfirmed",
+      "status": "공통 탐구 기능 연습 · 기존 활동 중복 및 필수 범위 대조 대기"
+    }
+  ],
   "resolvedGroups": [
     {
       "id": "local-biology",
@@ -493,6 +577,13 @@
       "sourceCandidate": null
     },
     {
+      "id": "10통과1-01#2",
+      "title": "일상생활에서 측정 표준이 활용되는 사례 탐색하기",
+      "sourceLine": 2861,
+      "reason": "세 출판사의 확인한 절차는 생활 속 측정 표준 사례 검색·토의·발표이다. 독립 실험에서 제외하며 실제 길이·시간·온도 측정은 유지",
+      "sourceCandidate": null
+    },
+    {
       "id": "10통과1-03#1",
       "title": "화산 분출로 인한 환경⋅사회경제적 피해의 종류를 조사하고, 지구와 생명 시스템 측면에서 피해를 줄이기 위한 대책 수립하기",
       "sourceLine": 2945,
@@ -511,6 +602,13 @@
         ],
         "label": "동아출판 통합과학2 · 2022 · PDF 12쪽"
       }
+    },
+    {
+      "id": "10과탐1-01#2",
+      "title": "크기, 시간, 온도 등 과학의 단위 및 도량형 발견의 역사 추적하기",
+      "sourceLine": 3425,
+      "reason": "세 출판사의 확인한 절차는 단위 정의의 역사 조사·연대표·카드 뉴스·발표이다. 실제 측정 장치의 조작 실험과 구별하여 제외",
+      "sourceCandidate": null
     },
     {
       "id": "10과탐2-01#1",

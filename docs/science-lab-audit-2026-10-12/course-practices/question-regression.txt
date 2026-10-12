@@ -1,0 +1,26 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9703ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.8461ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1846ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.0953ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (73.4524ms)
+chromium: 164 apps / 168 course routes / 672 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (22375.6055ms)
+webkit: 164 apps / 168 course routes / 672 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (30972.4154ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (64.8081ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2520.3595ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.487ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (67184.6758ms)
+198 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (172.115ms)
+✔ every science lab JavaScript file parses (95.1363ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.9345ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67556.6067

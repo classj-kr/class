@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 소화 효소의 녹말 분해와 막 통과</title><meta name="description" content="2022 교육과정 · 소화 효소의 녹말 분해와 막 통과의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../course-practices.css?v=c5372b302833"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>소화 효소의 녹말 분해와 막 통과</h1><div class="grade-tags"><span>고(선택)</span><span>생명과학</span></div></header><p class="intro">소화 효소가 있는 두 튜브와 증류수를 넣은 튜브를 비교하고, 바깥 용액으로 이동한 물질을 확인하세요.</p><section class="cp-lab" data-practice="digestive-enzymes"><header class="cp-heading"><span>소화 효소 · 분해와 확산</span><h2>녹말이 분해되면 무엇이 달라질까요?</h2></header><div class="cp-layout"><aside class="cp-controls"><h3>세 튜브를 같은 조건으로</h3><label>B에 넣을 소화제 용액<select id="diEnzyme"><option value="active">녹말분해효소가 작용하는 용액</option><option value="inactive">효소를 끓여 식힌 용액</option></select></label><label>세 튜브의 막<select id="diMembrane"><option value="selective">녹말 차단 · 엿당 통과</option><option value="blocked">녹말·엿당 모두 차단</option></select></label><button id="diPrepare">혼합액을 넣고 튜브 막기</button><button id="diIncubate" class="primary">37 °C에서 30분 반응</button><button id="diSample">바깥 용액 2 mL씩 옮기기</button><button id="diReagent">베네딕트 용액 넣기</button><button id="diHeat">뜨거운 물에서 검출 반응</button><p class="cp-note">각 튜브: 녹말 혼합액 15 mL + 비교 용액 5 mL. 바깥 증류수는 각각 30 mL입니다. 실제 검출 반응은 뜨거운 물로 가열합니다.</p></aside><div class="cp-view"><div id="diSteps" class="cp-step"></div><div id="diScene" class="cp-triple"></div><p class="cp-note">청람색은 녹말 검출, 가열 뒤 황적색은 환원당 검출입니다. 셀로판 막의 통과 현상을 작은창자의 모든 흡수 방식과 같다고 볼 수는 없습니다.</p><p id="cpStatus" class="cp-status" role="status"></p></div></div><div class="cp-footer"><button id="cpReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="c">
+<h3>A에는 침, B에는 소화제, C에는 증류수를 넣고 나머지 조건을 같게 했다. A·B만 청람색이 사라졌다. 뒷받침하는 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> C에서만 녹말이 엿당으로 분해되었다</label>
+<label><input type="radio" name="q1" value="b"> 물만 있어도 녹말이 같은 정도로 분해된다</label>
+<label><input type="radio" name="q1" value="c"> A·B의 효소가 녹말 분해에 관여하였다</label>
+<label><input type="radio" name="q1" value="d"> 세 용액의 모든 영양소가 완전히 분해되었다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>효소 조건 A·B와 물 대조 C의 차이입니다. 녹말 검출만으로 다른 영양소까지 판단하지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>막은 녹말을 막고 엿당을 통과시킨다. 침을 넣은 튜브 바깥 용액이 베네딕트 시약과 가열 뒤 황적색이었다. 직접 확인한 것은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 바깥 용액에 환원당이 존재한다</label>
+<label><input type="radio" name="q2" value="b"> 녹말이 그대로 막을 통과한다</label>
+<label><input type="radio" name="q2" value="c"> 막이 소화 효소를 합성한다</label>
+<label><input type="radio" name="q2" value="d"> 튜브 안의 물이 모두 이동한다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>가열한 베네딕트 반응은 외액의 환원당 존재를 확인합니다. 주어진 조건에서는 분해로 생긴 엿당이 이동한 것으로 해석합니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>바깥 용액에 베네딕트 시약을 넣었으나 가열하지 않았다. 푸른색이 유지되었다. 옳은 판단은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 녹말 분해가 전혀 없었다</label>
+<label><input type="radio" name="q3" value="b"> 막이 엿당을 모두 차단했다</label>
+<label><input type="radio" name="q3" value="c"> 환원당 농도가 정확히 0이다</label>
+<label><input type="radio" name="q3" value="d"> 가열을 마쳐야 검출을 판단한다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>가열 조건을 갖추기 전에 푸른색만으로 환원당이 없다고 판단할 수 없습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>효소는 정상이고 막만 녹말·엿당을 모두 차단하도록 바꿨다. 예상되는 조합은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 튜브 안 청람색 유지 · 외액 황적색</label>
+<label><input type="radio" name="q4" value="b"> 튜브 안 청람색 소실 · 외액 푸른색</label>
+<label><input type="radio" name="q4" value="c"> 튜브 안 청람색 유지 · 외액 푸른색</label>
+<label><input type="radio" name="q4" value="d"> 튜브 안 청람색 소실 · 외액 황적색</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>내부에서 녹말은 분해되지만 엿당이 밖으로 이동하지 못합니다.</p>
+</article></details></main><script src="../course-practice-models.js?v=2b291b02b6a7"></script><script src="../course-practice-labs.js?v=33961e8ff883"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

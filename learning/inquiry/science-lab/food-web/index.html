@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>초4 생물 분류와 먹이그물 만들기</title><meta name="description" content="2022 교육과정 · 생물 분류와 먹이그물 만들기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../food-web.css?v=7f199e124720"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=초4">← 초4 과학 실험</a><h1>생물 분류와 먹이그물 만들기</h1><div class="grade-tags"><span>초4</span><span>과학</span></div></header><p class="intro">생물 카드를 읽어 양분을 얻는 방법으로 분류하고, 먹이 관계를 직접 연결하세요.</p><section class="fw-lab"><header class="fw-heading"><span>생물과 환경</span><h2>분류한 생물로 먹이그물 만들기</h2></header><div class="fw-tabs" role="group" aria-label="활동 선택"><button data-fw-mode="roles" aria-pressed="true">양분을 얻는 방법</button><button data-fw-mode="web" aria-pressed="false">먹이그물 연결</button></div><div class="fw-role-panel"><div class="fw-role-key"><p><strong>생산자</strong>스스로 양분을 만듭니다.</p><p><strong>소비자</strong>다른 생물을 먹습니다.</p><p><strong>분해자</strong>죽은 생물이나 배출물을 분해합니다.</p></div><div id="fwRoleCards" class="fw-role-cards"></div><button id="fwCheckRoles" class="fw-primary">분류 확인</button><p id="fwRoleStatus" role="status"></p></div><div class="fw-web-panel" hidden><div class="fw-workspace"><aside class="fw-controls"><h3>먹이 관계 관찰 카드</h3><div id="fwDietCards"></div><p class="fw-hint">먹히는 생물 → 먹는 생물 순서로 두 카드를 누르세요.</p><p id="fwSelection" role="status"></p><button id="fwCheckWeb" class="fw-primary">내 연결 확인</button><button id="fwFlow">화살표 흐름 보기</button><label class="fw-missing-field" for="fwMissing"><span>이 생물이 사라진다면</span><select id="fwMissing" disabled><option value="none">모두 있음</option><option value="frog">개구리</option><option value="sparrow">참새</option><option value="grasshopper">메뚜기</option></select></label><p id="fwWebStatus" role="status"></p></aside><div class="fw-board-area"><p class="fw-direction">먹이가 되는 생물에서 먹는 생물로</p><div id="fwBoard" class="fw-board"><svg id="fwLines" aria-hidden="true"></svg></div><div id="fwComparison" class="fw-comparison"></div></div></div><div class="fw-connections"><h3>내가 연결한 관계</h3><ul id="fwEdges"></ul></div></div><footer><button id="fwReset">처음부터 다시</button></footer></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>X는 빛을 이용해 양분을 만들고, Y는 죽은 생물을 분해해 양분을 얻는다. X와 Y의 역할은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> X 생산자 · Y 분해자</label>
+<label><input type="radio" name="q1" value="b"> X 소비자 · Y 분해자</label>
+<label><input type="radio" name="q1" value="c"> X 분해자 · Y 생산자</label>
+<label><input type="radio" name="q1" value="d"> X 생산자 · Y 소비자</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>X는 스스로 양분을 만드는 생산자이고, Y는 죽은 생물을 분해하여 양분을 얻는 분해자입니다. 생김새나 사는 장소가 아니라 양분을 얻는 방법으로 분류합니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>메뚜기가 배추를 먹고 개구리가 메뚜기를 먹는다. 먹이가 되는 생물에서 먹는 생물로 화살표를 그리면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 개구리 → 메뚜기 → 배추</label>
+<label><input type="radio" name="q2" value="b"> 배추 → 메뚜기 → 개구리</label>
+<label><input type="radio" name="q2" value="c"> 배추 → 개구리 → 메뚜기</label>
+<label><input type="radio" name="q2" value="d"> 메뚜기 → 배추 → 개구리</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>배추는 메뚜기의 먹이이고 메뚜기는 개구리의 먹이이므로 배추 → 메뚜기 → 개구리로 연결합니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>매는 개구리와 참새를 먹는다. 만든 모형에서 개구리 카드와 연결을 지웠다. 매에게 남는 먹이 관계는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 벼 → 매</label>
+<label><input type="radio" name="q3" value="b"> 매 → 참새</label>
+<label><input type="radio" name="q3" value="c"> 참새 → 매</label>
+<label><input type="radio" name="q3" value="d"> 개구리 → 참새</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>개구리와의 관계를 지워도 참새 → 매의 관계는 남습니다. 여러 먹이사슬이 연결되어 있으면 다른 먹이 경로가 남을 수 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>관찰 카드에 따르면 메뚜기는 벼와 배추를 모두 먹는다. 벼 → 메뚜기만 그린 모형에 추가할 연결은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 메뚜기 → 벼</label>
+<label><input type="radio" name="q4" value="b"> 개구리 → 메뚜기</label>
+<label><input type="radio" name="q4" value="c"> 메뚜기 → 배추</label>
+<label><input type="radio" name="q4" value="d"> 배추 → 메뚜기</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>관찰 카드에서 빠진 먹이는 배추입니다. 먹이가 되는 배추에서 먹는 메뚜기로 화살표를 추가하면 두 먹이 관계를 함께 나타낼 수 있습니다.</p>
+</article></details></main><script src="../food-web-model.js?v=63eb5d8ab299"></script><script src="../food-web.js?v=bbca8305a062"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

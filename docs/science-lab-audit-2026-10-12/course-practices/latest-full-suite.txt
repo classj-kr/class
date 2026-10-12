@@ -1,0 +1,541 @@
+✔ sound resonance: adjacent peaks/nodes, end correction, frequency invariance and skipped positions (0.7843ms)
+✔ chromium: two sound apparatuses, measurement correction, independent diagnostic questions and five viewports (11008.6845ms)
+✔ webkit: two sound apparatuses, measurement correction, independent diagnostic questions and five viewports (9091.4807ms)
+✔ data parsing rejects missing cells; regression retains known slope and intercept (0.7892ms)
+✔ independent physical limiting cases and analytical results (12.3309ms)
+✔ standard genetic code and biological model boundary cases (0.4187ms)
+✔ new source-based analysis has correct units, limits and incomplete-work behavior (1.3702ms)
+✔ chromosome pairing distinguishes homologues, duplicate cards and sex chromosome composition (1.1636ms)
+✔ planet groups follow the learner criterion, including the exact boundary and invalid data (0.4343ms)
+✔ three-axis acceleration uses vector magnitude and time weighting without guessing invalid intervals (0.614ms)
+✔ every activity model supports declared numeric endpoints without non-finite output (31.5459ms)
+✔ chromium: internal draft-model harness, edit, persist and invalid data (33497.1023ms)
+✔ webkit: internal draft-model harness, edit, persist and invalid data (53038.8025ms)
+✔ activity models: controls, counterexamples, ordering and numerical optics (0.9845ms)
+✔ chromium: internal draft-model harness and dating evidence (3372.0986ms)
+✔ webkit: internal draft-model harness and dating evidence (4081.5896ms)
+lever-balance: OK (4 questions)
+speed: OK (4 questions)
+weight-compare: OK (4 questions)
+force-motion: OK (4 questions)
+motion-energy: OK (4 questions)
+magnets: OK (4 questions)
+circuit-bulbs: OK (4 questions)
+ohms-law: OK (4 questions)
+heat-transfer: OK (4 questions)
+specific-heat: OK (4 questions)
+light-shadow: OK (4 questions)
+sound-vibration: OK (4 questions)
+refraction: OK (4 questions)
+wave-transfer: OK (4 questions)
+mixture-separation: OK (4 questions)
+state-change: OK (4 questions)
+gases: OK (4 questions)
+solubility: OK (4 questions)
+water-cycle: OK (4 questions)
+dissolution-mass: OK (4 questions)
+density-buoyancy: OK (4 questions)
+separation-methods: OK (4 questions)
+diffusion: OK (4 questions)
+solubility-curve: OK (4 questions)
+recrystallise: OK (4 questions)
+acid-base: OK (4 questions)
+burning-conditions: OK (4 questions)
+mass-ratio: OK (4 questions)
+combustion: OK (4 questions)
+flame-ions: OK (4 questions)
+living-things: OK (4 questions)
+microbes: OK (4 questions)
+microscope: OK (4 questions)
+body-organs: OK (4 questions)
+leaf-starch: OK (4 questions)
+photosynthesis: OK (4 questions)
+body-systems: OK (4 questions)
+nutrient-detection: OK (4 questions)
+cell-structure: OK (4 questions)
+senses: OK (4 questions)
+reflex-nerve: OK (4 questions)
+seed-germination: OK (4 questions)
+life-cycle: OK (4 questions)
+living-environment: OK (4 questions)
+pea-genetics: OK (4 questions)
+food-web: OK (4 questions)
+rock-layers: OK (4 questions)
+volcano-model: OK (4 questions)
+minerals-rocks: OK (4 questions)
+plate-tectonics: OK (4 questions)
+weather-watch: OK (4 questions)
+land-sea: OK (4 questions)
+weather-front: OK (4 questions)
+seawater: OK (4 questions)
+night-sky: OK (4 questions)
+seasons: OK (4 questions)
+moon-phases: OK (4 questions)
+apparent-motion: OK (4 questions)
+stars-universe: OK (4 questions)
+telescope-observation: OK (4 questions)
+infection-prevention: OK (4 questions)
+coastal-inundation: OK (4 questions)
+measurement: OK (4 questions)
+periodic-bonding: OK (4 questions)
+star-elements: OK (4 questions)
+gravity-motion: OK (4 questions)
+cell-membrane: OK (4 questions)
+earth-system: OK (4 questions)
+natural-selection: OK (4 questions)
+geologic-time: OK (4 questions)
+neutralization-common: OK (4 questions)
+energy-conversion: OK (4 questions)
+mendeleev: OK (4 questions)
+pasteur: OK (4 questions)
+newton-prism: OK (4 questions)
+antibiotic-disc: OK (4 questions)
+ride-acceleration: OK (4 questions)
+air-sampling: OK (4 questions)
+local-biodiversity: OK (4 questions)
+mcu-sampling: OK (4 questions)
+smart-pot: OK (4 questions)
+torque: OK (4 questions)
+collision: OK (4 questions)
+energy-heat: OK (4 questions)
+induction: OK (4 questions)
+motor-magnet: OK (4 questions)
+speaker-lab: OK (4 questions)
+wireless-power: OK (4 questions)
+lens-image: OK (4 questions)
+photoelectric: OK (4 questions)
+interference: OK (4 questions)
+semiconductor-relativity: OK (4 questions)
+light-interference: OK (4 questions)
+mole: OK (4 questions)
+molecule-shape: OK (4 questions)
+water-electrolysis: OK (4 questions)
+rate-equilibrium: OK (4 questions)
+neutralization: OK (4 questions)
+standard-solution: OK (4 questions)
+serial-dilution: OK (4 questions)
+vinegar-titration: OK (4 questions)
+population: OK (4 questions)
+digestive-enzymes: OK (4 questions)
+homeostasis: OK (4 questions)
+immune: OK (4 questions)
+neuron: OK (4 questions)
+cell-division: OK (4 questions)
+phylogeny: OK (4 questions)
+karyotype-lab: OK (4 questions)
+typhoon: OK (4 questions)
+ocean-layers: OK (4 questions)
+rock-age: OK (4 questions)
+metamorphism: OK (4 questions)
+magma: OK (4 questions)
+planet-motion: OK (4 questions)
+stars: OK (4 questions)
+galaxy-hubble: OK (4 questions)
+heat-engine: OK (4 questions)
+insulation-lab: OK (4 questions)
+doppler-lab: OK (4 questions)
+spring-wave-speed: OK (4 questions)
+acoustic-resonance: OK (4 questions)
+electric-field: OK (4 questions)
+magnetic-brake: OK (4 questions)
+transistor-speaker: OK (4 questions)
+soap-film: OK (4 questions)
+polarization: OK (4 questions)
+electron-slits: OK (4 questions)
+gas-identification: OK (4 questions)
+hydride-boiling: OK (4 questions)
+sugar-phase: OK (4 questions)
+hess-calorimetry: OK (4 questions)
+fuel-comparison: OK (4 questions)
+titration: OK (4 questions)
+buffer-solution: OK (4 questions)
+salt-hydrolysis: OK (4 questions)
+redox: OK (4 questions)
+electroplating: OK (4 questions)
+silver-mirror: OK (4 questions)
+nylon-interface: OK (4 questions)
+organic-builder: OK (4 questions)
+cell-osmosis: OK (4 questions)
+centrifuge-design: OK (4 questions)
+dna-structure: OK (4 questions)
+protein-folding: OK (4 questions)
+cell-micrometry: OK (4 questions)
+enzyme: OK (4 questions)
+bean-respiration: OK (4 questions)
+energy-metabolism: OK (4 questions)
+organelle-builder: OK (4 questions)
+leaf-pigments: OK (4 questions)
+yeast-fermentation: OK (4 questions)
+dna-gel: OK (4 questions)
+dna-replication: OK (4 questions)
+pedigree-lab: OK (4 questions)
+protein-synthesis: OK (4 questions)
+protein-interaction: OK (4 questions)
+earthquake: OK (4 questions)
+ocean-circulation: OK (4 questions)
+water-wave-tank: OK (4 questions)
+air-stability: OK (4 questions)
+rotating-annulus: OK (4 questions)
+habitable-orbits: OK (4 questions)
+stellar-mass-data: OK (4 questions)
+sunspot-observation: OK (4 questions)
+cluster-fitting: OK (4 questions)
+sea-level-causes: OK (4 questions)
+Inspected 167 apps / 668 questions
+✔ every catalog app loads, every question has a working correct answer, mobile layout (70593.8275ms)
+✔ tank setup, thermal contrast and rotation are independent experimental conditions (3.9687ms)
+✔ source registry preserves variants, model limits and 2022 elective classification (0.1607ms)
+✔ chromium: tank preparation, moving tracers, fair comparison, reset and diagnosis (5239.8511ms)
+✔ webkit: tank preparation, moving tracers, fair comparison, reset and diagnosis (7552.0145ms)
+✔ conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result (1.7034ms)
+✔ chromium: apparatus states, labels, fallback panels and responsive drawings (38089.8906ms)
+✔ webkit: apparatus states, labels, fallback panels and responsive drawings (23207.898ms)
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.803ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.754ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1554ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.0912ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (56.3144ms)
+chromium: 167 apps / 171 course routes / 684 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (18607.3088ms)
+webkit: 167 apps / 171 course routes / 684 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (30145.142ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (211.8687ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (4498.4454ms)
+✔ wet gas collection: hydrostatic and vapor corrections conserve mass and moles (0.5422ms)
+✔ colligative phase onset and changing solvent fraction, not a false solution plateau (0.173ms)
+✔ calorimetry: reaction amounts, mass and heat sum independently agree (0.1053ms)
+✔ buffer and hydrolysis: water equilibrium, electroneutrality and finite capacity (0.3431ms)
+✔ bean controls: equal starts, separate gas absorption and heat control (0.4235ms)
+✔ chromium: source procedure, control isolation, questions and mobile (7166.9374ms)
+✔ webkit: source procedure, control isolation, questions and mobile (15332.0677ms)
+✔ chromium: battery prediction, apparatus continuity and electromagnet controls (3096.5855ms)
+✔ webkit: battery prediction, apparatus continuity and electromagnet controls (3051.285ms)
+✔ meter topology, Kirchhoff relations and measurements keep their physical conditions (2.933ms)
+✔ chromium: move meters, reject wrong connections, compare six readings and separate course diagnosis (8240.8601ms)
+✔ webkit: move meters, reject wrong connections, compare six readings and separate course diagnosis (10305.5588ms)
+{
+  engine: 'chromium',
+  evaporation: 6,
+  samples: 2000,
+  recrystallization: 288,
+  respiration: 4,
+  impacts: 12,
+  massBalance: 121,
+  seawater: 36,
+  moon: 5
+}
+✔ chromium: scientific content and boundary regressions (4442.5805ms)
+{
+  engine: 'webkit',
+  evaporation: 6,
+  samples: 2000,
+  recrystallization: 288,
+  respiration: 4,
+  impacts: 12,
+  massBalance: 121,
+  seawater: 36,
+  moon: 5
+}
+✔ webkit: scientific content and boundary regressions (6139.5846ms)
+1331 temperature/fraction states verified against independent phase rules
+✔ water phases: coexistence, mass balance and latent heat plateaus (1.637ms)
+✔ chromium: corrected phase grades and non-numeric food chains (8235.8793ms)
+✔ webkit: corrected phase grades and non-numeric food chains (10922.5635ms)
+chromium: 28 control layouts and six current question data resources passed
+✔ chromium: readable tablet controls and current exam-bank cache (3199.3268ms)
+webkit: 28 control layouts and six current question data resources passed
+✔ webkit: readable tablet controls and current exam-bank cache (4661.1456ms)
+✔ gas stoichiometry, calibration invariance, chromatography ratios and selective digestion remain physically distinct (1.1847ms)
+✔ chromium: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (57197.505ms)
+✔ webkit: six course apparatus, invalid procedures, measurements, diagnosis and tablet layouts (63755.1112ms)
+✔ device tools: calibrated length, timer, waveform, opt-in capture, stop, denial, no worksheet controls and tablet layout (2642.319ms)
+✔ whole mass conserved during dissolution; omitted equipment, transfer and tare change measured system (0.7093ms)
+✔ chromium: whole apparatus weighing, salt/sugar, corrections, motion and diagnostic questions (15662.2399ms)
+✔ webkit: whole apparatus weighing, salt/sugar, corrections, motion and diagnostic questions (17443.065ms)
+✔ all 360 source poses retain finite atom coordinates, existing bond endpoints and exact target-specific minima (8.2303ms)
+✔ chromium: actual structure rotation, all target/candidate scores, reset and six diagnostic questions (5936.2845ms)
+✔ webkit: actual structure rotation, all target/candidate scores, reset and six diagnostic questions (11413.3199ms)
+✔ chromium: electrons rotate slowly without changing shells, transfer, labels or motion preferences (12996.0356ms)
+✔ webkit: electrons rotate slowly without changing shells, transfer, labels or motion preferences (13460.2283ms)
+✔ plating: spontaneous reaction is distinct, contacts and water cannot drive the plating model (0.5388ms)
+✔ chromium: plating source procedure, comparisons, animated apparatus and diagnosis (13233.5932ms)
+✔ webkit: plating source procedure, comparisons, animated apparatus and diagnosis (14985.3198ms)
+✔ particle mass, sampled volume, size inclusion and completed comparisons are independently consistent (12.0704ms)
+✔ specimen locations are not species, repeated identification is idempotent and comparison requires equal effort (0.6277ms)
+✔ chromium: observation, repeated identification, sensor preparation, interruption, diagnosis and tablet layouts (20569.6988ms)
+✔ webkit: observation, repeated identification, sensor preparation, interruption, diagnosis and tablet layouts (27244.7355ms)
+✔ published data retain numeric rows and outliers; regression does not prescribe exponent (0.5558ms)
+✔ cluster fitting preserves inverted magnitude axis mathematics and selected-point residuals (0.1837ms)
+✔ habitable distances scale with luminosity square root, with radius and temperature distinct (0.1011ms)
+✔ centrifuge uses two-axis mass balance and time-dependent radial sedimentation (0.813ms)
+✔ atom construction supports both six-compound pathways and rejects impossible valence (1.316ms)
+✔ chromium: evidence selection, graph changes, all atom pathways, assessment and mobile (8300.5401ms)
+✔ webkit: evidence selection, graph changes, all atom pathways, assessment and mobile (18553.9826ms)
+✔ 30 reviewed question positions preserve the latest reviewed choices, conditions and explanations (3.7646ms)
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (23.2544ms)
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (2083.2037ms)
+✔ exam bank covers all 220 common standards with valid answers and grade-specific questions (1.3017ms)
+241 questions / 723 answer checks / 61 unit filters
+✔ all exam answers, filters, persistence, charts, app integration and tablet screens (66753.8726ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (3.9956ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.6403ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1177ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (20.4845ms)
+✔ fermentation separates trapped air, glucose controls and detector chemistry (0.7172ms)
+✔ chromium: fermentation sequence, controls, animation and first-answer diagnosis (26325.2846ms)
+✔ webkit: fermentation sequence, controls, animation and first-answer diagnosis (19885.5219ms)
+✔ final comparisons: spectral evidence, controlled design, ecology, validity and thermal scale (2.303ms)
+✔ classification and directed food paths remain distinct; removal never invents a shortcut (1.6209ms)
+✔ chromium: classify, build, correct, remove and compare food relationships with touch and keyboard (11692.1229ms)
+✔ webkit: classify, build, correct, remove and compare food relationships with touch and keyboard (10310.5365ms)
+lever-balance: interactions, four quizzes, 390px layout passed
+reflex-nerve: interactions, four quizzes, 390px layout passed
+solubility: interactions, four quizzes, 390px layout passed
+acid-base: interactions, four quizzes, 390px layout passed
+ohms-law: interactions, four quizzes, 390px layout passed
+seasons: interactions, four quizzes, 390px layout passed
+✔ six grade-aligned lessons: interactions, 24 quizzes, boundaries and mobile layout (20501.8666ms)
+✔ heat transfer: approach ambient from either side, with volume and thickness controlled (0.636ms)
+✔ moving source: wavelength times observed frequency remains the medium sound speed (0.1825ms)
+✔ motion acceleration agrees with finite differences and sensor support (0.2785ms)
+✔ DNA construction preserves templates, antiparallel synthesis, primers and ligation order (1.5885ms)
+✔ translation: reading frame, synonymous substitution, termination, cell-free exception (0.2751ms)
+✔ pedigree: X inheritance and conditioning are independent of child order (0.2187ms)
+✔ karyotype: all cards conserved when moving, X/Y pairing, extra autosome is retained (2.4027ms)
+✔ disc assay: control stays zero, geometry detects overlap, preincubation shows no inhibition (0.3151ms)
+✔ water waves: dispersion limits, bottom boundary and closed linear particle orbits (0.2602ms)
+✔ silver mirror: precipitation is distinct from metal reduction, with a water control (0.2294ms)
+✔ interfacial polymer model: alternating functional groups conserve chain ends and HCl (0.1972ms)
+✔ chromium: source-backed actions, wrong choices, reset, diagnosis and mobile (13755.011ms)
+✔ webkit: source-backed actions, wrong choices, reset, diagnosis and mobile (30979.7544ms)
+✔ leaf starch: treatment order, light mask, residual starch and pigment interference are independent (0.9076ms)
+✔ chromium: elementary leaf preparation, water bath, decoloring, controls and diagnosis (12738.3104ms)
+✔ webkit: elementary leaf preparation, water bath, decoloring, controls and diagnosis (14092.769ms)
+chromium: 7 corrected stages; 28 layouts × 4 motion phases; anatomy anchors, digits, forward-only crawling and SVG paints passed
+✔ chromium: life anatomy, forward crawling and visible attachments (6289.5824ms)
+webkit: 7 corrected stages; 28 layouts × 4 motion phases; anatomy anchors, digits, forward-only crawling and SVG paints passed
+✔ webkit: life anatomy, forward crawling and visible attachments (6886.4604ms)
+✔ light interference: spacing, finite-width diffraction, single-slit and measurement invariants (1.197ms)
+✔ chromium: optical bench, fringe measurements, controls and assessment (21099.3251ms)
+✔ webkit: optical bench, fringe measurements, controls and assessment (21080.6338ms)
+✔ chromium: real animation frames keep observations and grades synchronized (13200.3588ms)
+✔ webkit: real animation frames keep observations and grades synchronized (33440.3495ms)
+✔ 17-card source dataset and board keep identification, mass and families separate (1.7246ms)
+✔ chromium: identify 17 cards, arrange, compare and preserve first quiz responses (3981.3837ms)
+✔ webkit: identify 17 cards, arrange, compare and preserve first quiz responses (9659.8989ms)
+chromium: sieve groups at six mesh sizes; full re-separation and salt recovery; 16 seed states passed
+✔ chromium: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (5544.7631ms)
+webkit: sieve groups at six mesh sizes; full re-separation and salt recovery; 16 seed states passed
+✔ webkit: fractions stay mixed, dissolved salt needs recovery, reset cancels old action; 16 germination conditions (7493.865ms)
+✔ chromium: sound playback, lunar dates and atmospheric boundary conditions (8661.7541ms)
+webkit: audio unavailable (resume timeout); verified recovery and waveform fallback
+✔ webkit: sound playback, lunar dates and atmospheric boundary conditions (7452.645ms)
+✔ chromium: specimen anatomy, growth wording and 27 parameter combinations (4586.44ms)
+✔ webkit: specimen anatomy, growth wording and 27 parameter combinations (5111.1792ms)
+✔ plant types: surviving individual is not confused with a new generation (0.7172ms)
+chromium: 14 stages, 56 layouts, motion/pause/reduced-motion, plant identity, heat, 4 litmus and 6 flame colours verified
+✔ chromium: biological movement, meaningful observation states and tablet layout (16664.2798ms)
+webkit: 14 stages, 56 layouts, motion/pause/reduced-motion, plant identity, heat, 4 litmus and 6 flame colours verified
+✔ webkit: biological movement, meaningful observation states and tablet layout (19382.9865ms)
+chromebook: 21 observation states, source credits, image loading, geometry and resets verified
+ipad-landscape: 21 observation states, source credits, image loading, geometry and resets verified
+ipad-portrait: 21 observation states, source credits, image loading, geometry and resets verified
+✔ rebuilt observations: real media, apparatus, state changes and tablet layout (25570.1735ms)
+✔ combustion separates collection and reagent observation, with a relevant common-phenomenon question (0.9009ms)
+✔ insulation preserves the initial condition and approaches ambient more slowly (0.4122ms)
+✔ sound conditions change amplitude with unchanged pitch; galaxy contains observable bar and arms (1.0607ms)
+{ circuits: 54, forces: 72, collisions: 81, survival: 4 }
+✔ independent checks: current/voltage, friction, collision conservation, survival proportions (1492.5868ms)
+✔ magnetic braking: Newton limit, terminal velocity, ground and force direction (0.5288ms)
+✔ speaker, induction and amplification: missing connections, DC, orientation and finite power (0.2187ms)
+✔ optical boundaries: reflection phase, Malus law and indistinguishable states (0.124ms)
+✔ electron interference: nodes, loss of cross term and stable event accumulation (4.6516ms)
+✔ chromium: apparatus operations, clearing, mobile and diagnostics (7591.1018ms)
+✔ webkit: apparatus operations, clearing, mobile and diagnostics (14918.3816ms)
+✔ chromium: plant procedures, responsive figures and nine first-response diagnostics (7083.6594ms)
+✔ webkit: plant procedures, responsive figures and nine first-response diagnostics (16535.241ms)
+✔ root comparison preserves initial marks, controls, symmetry and qualitative limits (2.2258ms)
+✔ transpiration compares real control branches and never draws invisible vapor as droplets (0.4069ms)
+✔ stem observations distinguish the water control, time and section directions (1.027ms)
+✔ source-derived diagnostic items retain first mistakes and test transfer separately (11.1024ms)
+✔ wet indicator paper cannot produce a valid new positive result (0.24ms)
+✔ plant growth starts with seedlings; a fair comparison changes only the investigated condition (0.8481ms)
+✔ chromium: design, observe, replay and interpret pre-grown plants (12128.9059ms)
+✔ webkit: design, observe, replay and interpret pre-grown plants (8796.6893ms)
+chromium 20/167
+chromium 40/167
+chromium 60/167
+chromium 80/167
+chromium 100/167
+chromium 120/167
+chromium 140/167
+chromium 160/167
+{"engine":"chromium","apps":167,"predictions":99,"quizzes":668,"rebuilt":30,"failures":[]}
+✔ chromium: every app clears obsolete predictions and quiz verdicts (8747.7398ms)
+webkit 20/167
+webkit 40/167
+webkit 60/167
+webkit 80/167
+webkit 100/167
+webkit 120/167
+webkit 140/167
+webkit 160/167
+{"engine":"webkit","apps":167,"predictions":99,"quizzes":668,"rebuilt":30,"failures":[]}
+✔ webkit: every app clears obsolete predictions and quiz verdicts (12759.2369ms)
+✔ chromium: figure ink follows its painted background and moving the result preserves its live node (869.6479ms)
+✔ webkit: figure ink follows its painted background and moving the result preserves its live node (610.5828ms)
+613 core state/observation/check combinations verified
+✔ 23 repaired common-curriculum paths have source evidence and observation checks in every state (21.3011ms)
+✔ independent science invariants: controls, conservation, optics, division and neutralization (0.7753ms)
+microbes: 10 browser states, all 3 answers + reset verified
+solubility: 16 browser states, all 3 answers + reset verified
+acid-base: 4 browser states, all 3 answers + reset verified
+state-change: 6 browser states, all 3 answers + reset verified
+light-shadow: 5 browser states, all 3 answers + reset verified
+refraction: 10 browser states, all 3 answers + reset verified
+weight-compare: 12 browser states, all 3 answers + reset verified
+volcano-model: 6 browser states, all 3 answers + reset verified
+lever-balance: 4 browser states, all 3 answers + reset verified
+seasons: 120 browser states, all 3 answers + reset verified
+diffusion: 216 browser states, all 3 answers + reset verified
+weather-front: 6 browser states, all 3 answers + reset verified
+motion-energy: 8 browser states, all 3 answers + reset verified
+ohms-law: 72 browser states, all 3 answers + reset verified
+burning-conditions: 6 browser states, all 3 answers + reset verified
+cell-structure: 32 browser states, all 3 answers + reset verified
+energy-conversion: 24 browser states, all 3 answers + reset verified
+mass-ratio: 6 browser states, all 3 answers + reset verified
+pea-genetics: 6 browser states, all 3 answers + reset verified
+cell-membrane: 6 browser states, all 3 answers + reset verified
+flame-ions: 4 browser states, all 3 answers + reset verified
+neutralization-common: 10 browser states, all 3 answers + reset verified
+density-buoyancy: 24 browser states, all 3 answers + reset verified
+613 browser state cases, 1839 answer checks
+✔ all required observation controls, wrong/correct answers and resets work in the browser (9598.9363ms)
+290 new experiment conditions verified
+✔ required experiment source evidence, all valid choices and independent invariants (17.1791ms)
+290 browser conditions, 870 answers checked
+✔ new experiments: controls, all answers, reset and Chromebook/iPad layout (49160.3043ms)
+✔ water residence model retains original water after one mean residence time (1070.1435ms)
+✔ Mendeleev: textbook 19-card set, mass order and chemical grouping are independent constraints (1.1077ms)
+✔ Pasteur: air alone does not cause growth; heating, dust contact and existing contamination remain distinct (0.1487ms)
+✔ Prism: independent Snell and triangle-boundary checks; single colors persist and only overlap gives white (0.3867ms)
+✔ fixed-path prism comparison keeps incidence equal and separates red/blue by refraction (1.3346ms)
+✔ Contact and fluorescence: no spontaneous label, no same-round chain, no diagnostic numeric result (0.2779ms)
+chromium: 10/64 assessment routes verified
+chromium: 20/64 assessment routes verified
+chromium: 30/64 assessment routes verified
+chromium: 40/64 assessment routes verified
+chromium: 50/64 assessment routes verified
+chromium: 60/64 assessment routes verified
+✔ chromium: source-specific controls, full question flow and mobile scenes (72530.5621ms)
+webkit: 10/64 assessment routes verified
+webkit: 20/64 assessment routes verified
+webkit: 30/64 assessment routes verified
+webkit: 40/64 assessment routes verified
+webkit: 50/64 assessment routes verified
+webkit: 60/64 assessment routes verified
+✔ webkit: source-specific controls, full question flow and mobile scenes (208453.6532ms)
+✔ course scopes partition authored questions and preserve scoped transfer evidence (29.6687ms)
+✔ pendulum conserves energy and acceleration matches position and velocity derivatives (8.9031ms)
+✔ seesaw attachment distance scales linear acceleration but not gravity; axis rotation preserves magnitude (1.6334ms)
+✔ frictionless slide distinguishes raw and corrected axes and ends at the end of the ramp (0.526ms)
+✔ browser: apparatus, course routes, isolated diagnostics, reload and narrow screens (6227.9596ms)
+WebKit checked: light-shadow
+WebKit checked: motor-magnet
+WebKit checked: acid-base
+WebKit checked: nutrient-detection
+WebKit checked: magma
+WebKit checked: stars
+WebKit checked: bean-respiration
+WebKit checked: hydride-boiling
+WebKit checked: acoustic-resonance
+WebKit touch: 104 app loads and 104 original answer interactions passed
+✔ WebKit touch: all 104 apps load and original questions respond (139031.7013ms)
+chromebook: input, answer state, resized viewport, reset and focus passed
+tablet-webkit: input, answer state, resized viewport, reset and focus passed
+✔ Chromebook keyboard and WebKit tablet touch: filtering, answers, rotation and focus (1711.7748ms)
+208 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (181.1096ms)
+✔ every science lab JavaScript file parses (91.8456ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.9931ms)
+✔ three tanks: energy, added mass and expansion stay separate, including melting completion (1.7365ms)
+✔ chromium: source-matched preparation, heating, zoom, pause, reset and tablet readability (7262.6949ms)
+✔ webkit: source-matched preparation, heating, zoom, pause, reset and tablet readability (7186.2522ms)
+✔ wiring gate requires shared ground, power, matching input and uploaded program (0.8481ms)
+✔ optical sample count and period estimates expose coherent undersampling (2.1326ms)
+✔ sound adds intensities; distance and attenuation are separate; sampling follows setting (1.5274ms)
+✔ two-point calibration and stateful control distinguish command from actual pumping (0.4518ms)
+✔ chromium: sensor acquisition and closed-loop design, feedback, reset and mobile (4622.2792ms)
+✔ webkit: sensor acquisition and closed-loop design, feedback, reset and mobile (12164.0146ms)
+✔ chromium: six refined scenes preserve controls, process direction and visible state (7434.6992ms)
+✔ webkit: six refined scenes preserve controls, process direction and visible state (9845.6825ms)
+✔ standard preparation, serial dilution charge balance and vinegar amount conservation (1.2764ms)
+✔ chromium: solution apparatus, measurement errors, three trials, diagnosis and five tablet viewports (19411.1054ms)
+✔ webkit: solution apparatus, measurement errors, three trials, diagnosis and five tablet viewports (25446.4902ms)
+1366: real images, compare, zoom, wrong retry, correct lock, reset, source links and overflow passed
+390: real images, compare, zoom, wrong retry, correct lock, reset, source links and overflow passed
+✔ real specimen comparison, enlarged surfaces and retry rule on desktop and mobile (3330.4369ms)
+✔ DNA complement conserves base pairing, nucleotide count and hydrogen bonds (0.9731ms)
+✔ paper protein overlap is counted once; folding never creates peptide bonds (0.166ms)
+✔ organelle topology and ATP-facing compartments distinguish envelope and energy membranes (0.1155ms)
+✔ 24-hour budget scales time and food labels, with no duplicate basal term (0.2258ms)
+✔ fuel comparisons preserve enthalpy sign, mass/volume conversions and efficiency separation (0.1975ms)
+✔ boiling data preserve source values and ammonia exception without forcing global rank (0.0787ms)
+✔ chromium: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (8873.4523ms)
+✔ webkit: active source activities, rejected assembly, conversions, MCQ diagnosis and responsive scenes (22161.7892ms)
+✔ solar surface coordinates round-trip with observer tilt and perspective, and reject invalid comparisons (1.2914ms)
+✔ archived observations keep the exact dates, hashes, attribution and calibrated limb outside student prose (7.1595ms)
+✔ chromium: measure actual sunspots, compare frames, persist diagnostic answers and fit mobile (6378.3405ms)
+✔ webkit: measure actual sunspots, compare frames, persist diagnostic answers and fit mobile (7783.7887ms)
+✖ all supplement choices return finite, curriculum-referenced observations (0.865ms)
+✔ ABO both-reagent truth table and student judgement (1.0166ms)
+✔ freezing mass, gas mass, heat contact, separation and starch (0.5369ms)
+28 WebKit experiment flows passed
+✔ WebKit tablet: all embedded experiments, touch answers/reset, rotation (27365.5146ms)
+✔ instrument assembly, field of view, focus and sky availability have independent causes (1.318ms)
+✔ course routes retain separate evidence and plausible answer lengths (0.1597ms)
+✔ chromium: complete telescope operation and course diagnosis (7024.3761ms)
+✔ webkit: complete telescope operation and course diagnosis (10504.5697ms)
+chromium 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ chromium: textbook causal relationships and every photosynthesis control combination (6573.6107ms)
+webkit 22491 independent causal comparisons 35 UI answer checks { multiple: 92, light: 4409, co2: 3257, temp: 14656, none: 77 }
+✔ webkit: textbook causal relationships and every photosynthesis control combination (8888.8816ms)
+✔ publisher textbook and experiment workbook names are included without the word 교과서 (0.7179ms)
+✔ metadata and assessments do not become textbooks even under a textbook directory; aliases retain source identity (0.1925ms)
+✔ all science lessons share the same reading scale and layout module (47.3004ms)
+✔ visual regressions: Chromebook and iPad landscape/portrait (11377.989ms)
+✔ all science entry pages and dynamic resources carry their current content hash (315.0419ms)
+✔ all ten optical diagrams satisfy imaging equations and ray intersections (0.7309ms)
+✔ a changed child invalidates its dynamic loader and HTML entry; rerun is stable (4.919ms)
+✔ chromium: corrected observations, charge conservation and complete electrical apparatus (9339.4195ms)
+✔ webkit: corrected observations, charge conservation and complete electrical apparatus (12493.22ms)
+ℹ tests 224
+ℹ suites 0
+ℹ pass 223
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1967390.1183
+
+✖ failing tests:
+
+test at tests\science-supplement-models.test.cjs:16:1
+✖ all supplement choices return finite, curriculum-referenced observations (0.865ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  35 !== 36
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-supplement-models.test.cjs:17:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 35,
+    expected: 36,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

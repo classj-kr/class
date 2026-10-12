@@ -1,0 +1,6716 @@
+{
+  "date": "2026-10-12",
+  "scope": "124 base and 63 transfer questions individually re-read against the named pages; independent authored numerical cases, not copied source questions. This is not empirical student validation or a complete textbook census.",
+  "questions": [
+    {
+      "id": "sound-vibration#q1",
+      "slug": "sound-vibration",
+      "sha256": "cf94f7cdf6c8aed191d79251101c711d2dd01c4afbc5d737f64df5f46a1bb7d1",
+      "after": {
+        "id": "sound-vibration#q1",
+        "slug": "sound-vibration",
+        "question": "같은 종이를 소리굽쇠에 대었다. 치기 전에는 종이가 가만히 있었고, 친 뒤에는 떨렸다. 이 차이를 설명하는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "종이의 떨림이 먼저 소리굽쇠를 울림"
+          },
+          {
+            "id": "b",
+            "text": "고무망치가 종이에 직접 닿아 움직임"
+          },
+          {
+            "id": "c",
+            "text": "소리굽쇠의 떨림이 종이에 전달됨"
+          },
+          {
+            "id": "d",
+            "text": "소리굽쇠가 종이를 빨아들여 움직임"
+          }
+        ],
+        "answer": "c",
+        "why": "치기 전후에 달라진 것은 소리굽쇠의 떨림입니다. 진동하는 갈래에 닿은 종이가 움직여 눈으로 보기 어려운 떨림을 확인할 수 있습니다."
+      }
+    },
+    {
+      "id": "sound-vibration#q2",
+      "slug": "sound-vibration",
+      "sha256": "39bcd67029e5f0575bc35055801537bd7285e82df1611a776004366ff1855a45",
+      "after": {
+        "id": "sound-vibration#q2",
+        "slug": "sound-vibration",
+        "question": "같은 소리굽쇠를 약하게 한 번, 세게 한 번 쳤다. 두 번째에 떨림의 폭이 더 컸다면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "소리는 더 큼 · 높낮이는 같음"
+          },
+          {
+            "id": "b",
+            "text": "소리는 같음 · 높낮이는 더 높음"
+          },
+          {
+            "id": "c",
+            "text": "소리는 더 큼 · 높낮이도 더 높음"
+          },
+          {
+            "id": "d",
+            "text": "소리는 더 작음 · 높낮이는 같음"
+          }
+        ],
+        "answer": "a",
+        "why": "같은 소리굽쇠를 더 세게 치면 떨림의 폭이 커져 더 큰 소리가 납니다. 세게 친 것과 높은 소리를 낸 것은 다릅니다."
+      }
+    },
+    {
+      "id": "sound-vibration#q3",
+      "slug": "sound-vibration",
+      "sha256": "24b1e8f250c37833e9121dbf6a7c13e7dc9b370f18dc7cf86db1adf5b7116fbe",
+      "after": {
+        "id": "sound-vibration#q3",
+        "slug": "sound-vibration",
+        "question": "재료·폭·두께가 같은 긴 음판 A와 짧은 음판 B를 쳤다. 더 높은 소리를 내는 음판과 그 떨림은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A · 더 빠르게 떨림"
+          },
+          {
+            "id": "b",
+            "text": "B · 더 빠르게 떨림"
+          },
+          {
+            "id": "c",
+            "text": "B · 더 느리게 떨림"
+          },
+          {
+            "id": "d",
+            "text": "A · 더 느리게 떨림"
+          }
+        ],
+        "answer": "b",
+        "why": "같은 조건에서 짧은 음판이 더 빠르게 떨려 높은 소리를 냅니다. 소리의 높낮이와 크기를 구별합니다."
+      }
+    },
+    {
+      "id": "sound-vibration#q4",
+      "slug": "sound-vibration",
+      "sha256": "5cf0548f676f8c7dbeb1407c41855d17e4ee15ccf1ea5dc4b3d62fba11518a26",
+      "after": {
+        "id": "sound-vibration#q4",
+        "slug": "sound-vibration",
+        "question": "울리는 소리굽쇠의 갈래를 손으로 잡았더니 소리가 멈췄다. 손으로 잡기 전후를 바르게 비교한 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "갈래는 같은 폭으로 계속 떨림"
+          },
+          {
+            "id": "b",
+            "text": "갈래는 더 큰 폭으로 떨림"
+          },
+          {
+            "id": "c",
+            "text": "갈래는 그대로이고 공기만 멈춤"
+          },
+          {
+            "id": "d",
+            "text": "갈래의 떨림도 함께 멈춤"
+          }
+        ],
+        "answer": "d",
+        "why": "손으로 갈래를 잡으면 소리를 내던 진동이 억제됩니다. 소리와 떨림이 함께 멈추는 것을 비교합니다."
+      }
+    },
+    {
+      "id": "microbes#q1",
+      "slug": "microbes",
+      "sha256": "6bd50bb9f6cc9542fc0902521a0b076e2388c30aeb7ecf4df3da8d84dfd96196",
+      "after": {
+        "id": "microbes#q1",
+        "slug": "microbes",
+        "question": "표고버섯의 균사 사진과 빵곰팡이 사진에서 공통으로 확인한 구조는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "실처럼 가늘고 긴 구조"
+          },
+          {
+            "id": "b",
+            "text": "마디 안의 나선 모양 띠"
+          },
+          {
+            "id": "c",
+            "text": "갓 아래의 나란한 주름"
+          },
+          {
+            "id": "d",
+            "text": "길쭉한 한 개체의 윤곽"
+          }
+        ],
+        "answer": "a",
+        "why": "두 사진에는 가늘고 긴 균사가 보입니다. 갓의 주름은 버섯의 한 부분이며, 나선 모양 띠와 길쭉한 개체의 윤곽은 다른 표본의 관찰과 구별해야 합니다."
+      }
+    },
+    {
+      "id": "microbes#q2",
+      "slug": "microbes",
+      "sha256": "95e1a164b40fbfb3dd0fc08ec601f7d353ddfd3d861f7c65142971c447eba7b3",
+      "after": {
+        "id": "microbes#q2",
+        "slug": "microbes",
+        "question": "표본 A는 가늘고 길게 이어지고, B는 한 개체의 몸이 길쭉하며 끝이 둥글다. 관찰 결과와 맞는 연결은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A 짚신벌레 · B 해캄"
+          },
+          {
+            "id": "b",
+            "text": "A 해캄 · B 짚신벌레"
+          },
+          {
+            "id": "c",
+            "text": "A 해캄 · B 빵곰팡이"
+          },
+          {
+            "id": "d",
+            "text": "A 빵곰팡이 · B 해캄"
+          }
+        ],
+        "answer": "b",
+        "why": "해캄은 가늘고 길게 이어진 모습이고 짚신벌레는 한 개체의 윤곽이 길쭉하며 끝이 둥급니다. 곰팡이의 실처럼 얽힌 균사와도 구별합니다."
+      }
+    },
+    {
+      "id": "microbes#q3",
+      "slug": "microbes",
+      "sha256": "61f96e168cf764566525314f7e71cd6e864f18cb258d93738a469ce0ca91d328",
+      "after": {
+        "id": "microbes#q3",
+        "slug": "microbes",
+        "question": "짚신벌레의 정지 영구표본 사진만으로 확인할 수 없는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "몸 바깥의 윤곽"
+          },
+          {
+            "id": "b",
+            "text": "끝 부분의 모양"
+          },
+          {
+            "id": "c",
+            "text": "헤엄치는 방향"
+          },
+          {
+            "id": "d",
+            "text": "염색된 부분의 분포"
+          }
+        ],
+        "answer": "c",
+        "why": "한 장의 정지 사진은 모양과 분포를 보여 주지만 시간에 따른 위치 변화가 없습니다. 헤엄치는 방향은 살아 있는 표본을 연속으로 관찰해야 알 수 있습니다."
+      }
+    },
+    {
+      "id": "microbes#q4",
+      "slug": "microbes",
+      "sha256": "9b4b6d768e69360dfece4dde29be89f342cd9fa2f16a88efbedbb92691e98fac",
+      "after": {
+        "id": "microbes#q4",
+        "slug": "microbes",
+        "question": "해캄과 짚신벌레의 염색한 표본이 모두 초록빛으로 보였다. 이 관찰만으로 내릴 수 있는 판단은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "두 생물은 원래 같은 색이다"
+          },
+          {
+            "id": "b",
+            "text": "두 생물은 같은 종류의 생물이다"
+          },
+          {
+            "id": "c",
+            "text": "두 생물은 모두 스스로 양분을 만든다"
+          },
+          {
+            "id": "d",
+            "text": "두 표본의 색에 염색이 영향을 주었다"
+          }
+        ],
+        "answer": "d",
+        "why": "염색은 표본을 잘 보이게 하기 위한 처리입니다. 염색 뒤 색이 같다는 사실만으로 본래 색·생물의 종류·양분을 만드는 방법이 같다고 판단할 수 없습니다."
+      }
+    },
+    {
+      "id": "living-environment#q1",
+      "slug": "living-environment",
+      "sha256": "65f5de88437ba089f5e8c20dfd8040079994a370d63a16aa54601d90e2046dab",
+      "after": {
+        "id": "living-environment#q1",
+        "slug": "living-environment",
+        "question": "비슷하게 자란 강낭콩 A와 B로 물의 영향을 알아본다. A에 물을 주고 햇빛을 받게 했다면, B의 조건은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "물 줌 · 햇빛 받음"
+          },
+          {
+            "id": "b",
+            "text": "물 안 줌 · 햇빛 받음"
+          },
+          {
+            "id": "c",
+            "text": "물 줌 · 햇빛 가림"
+          },
+          {
+            "id": "d",
+            "text": "물 안 줌 · 햇빛 가림"
+          }
+        ],
+        "answer": "b",
+        "why": "물의 영향을 알아보려면 물을 주는 조건만 다르게 하고 햇빛을 비롯한 다른 조건은 같게 합니다. 이미 자란 식물의 처음 크기도 비슷하게 맞춥니다."
+      }
+    },
+    {
+      "id": "living-environment#q2",
+      "slug": "living-environment",
+      "sha256": "b907155b2b15692a25cdf02c23a4609bab0b87325066d6038e65ccb5f9424558",
+      "after": {
+        "id": "living-environment#q2",
+        "slug": "living-environment",
+        "question": "물을 준 두 식물 중 햇빛을 가린 B는 A보다 줄기가 길지만 잎이 옅고 줄기가 가늘었다. 이 결과의 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "키가 더 크므로 B가 더 튼튼하게 자랐다."
+          },
+          {
+            "id": "b",
+            "text": "잎이 옅어졌으므로 B는 싹이 나지 않았다."
+          },
+          {
+            "id": "c",
+            "text": "줄기가 길어도 B가 튼튼하게 자란 것은 아니다."
+          },
+          {
+            "id": "d",
+            "text": "줄기가 가늘어도 B의 잎은 더 푸르게 자랐다."
+          }
+        ],
+        "answer": "c",
+        "why": "줄기 길이만으로 식물이 잘 자랐는지 판단하지 않습니다. B는 이미 자란 식물이고, 햇빛을 가린 뒤 잎이 옅어지고 줄기가 가늘어진 모습을 함께 살펴야 합니다."
+      }
+    },
+    {
+      "id": "living-environment#q3",
+      "slug": "living-environment",
+      "sha256": "62ecbbe8c08a8c1d5475a18437cdecd31770bcbc1caa8255e8b74e0be311f598",
+      "after": {
+        "id": "living-environment#q3",
+        "slug": "living-environment",
+        "question": "A는 물을 주며 햇빛을 받게 하고, B는 물을 주지 않으며 햇빛도 가렸다. 일주일 뒤 B가 잘 자라지 못했다. 이 실험만으로 판단하면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "물의 영향만 따로 확인할 수 있다."
+          },
+          {
+            "id": "b",
+            "text": "햇빛의 영향만 따로 확인할 수 있다."
+          },
+          {
+            "id": "c",
+            "text": "처음 크기의 영향만 확인할 수 있다."
+          },
+          {
+            "id": "d",
+            "text": "물과 햇빛의 영향을 나누기 어렵다."
+          }
+        ],
+        "answer": "d",
+        "why": "물과 햇빛을 동시에 바꾸었으므로 B의 변화가 어느 조건 때문인지 나누어 판단하기 어렵습니다. 알아보려는 조건 한 가지만 다르게 하여 비교해야 합니다."
+      }
+    },
+    {
+      "id": "living-environment#q4",
+      "slug": "living-environment",
+      "sha256": "8eba7a6838eeab88202c33986e66f6a9b31e2b52051a6169dbbaa3301459deb4",
+      "after": {
+        "id": "living-environment#q4",
+        "slug": "living-environment",
+        "question": "처음에 두 화분 모두 초록색 잎이 있었다. 물을 주지 않은 화분은 일주일 뒤 잎이 처졌다. 이 관찰로 확인한 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "자란 식물에도 물이 필요하다."
+          },
+          {
+            "id": "b",
+            "text": "싹이 트는 데 빛이 필요하다."
+          },
+          {
+            "id": "c",
+            "text": "씨가 만들어질 때 물이 필요하다."
+          },
+          {
+            "id": "d",
+            "text": "물을 끊으면 잎의 수가 늘어난다."
+          }
+        ],
+        "answer": "a",
+        "why": "실험을 시작할 때 이미 잎과 줄기가 자란 식물이었습니다. 따라서 이 실험은 씨의 발아나 씨가 만들어지는 과정을 비교한 것이 아니라 식물이 계속 자라는 데 물이 필요함을 살핀 것입니다."
+      }
+    },
+    {
+      "id": "rock-layers#q1",
+      "slug": "rock-layers",
+      "sha256": "638af9578168841284736571c648317440f6c3cb873561b4be0b424ec9c707a6",
+      "after": {
+        "id": "rock-layers#q1",
+        "slug": "rock-layers",
+        "question": "색이 같은 퇴적암 X·Y를 관찰했다. X는 알갱이가 모래보다 작고, Y는 주로 모래 크기의 알갱이로 이루어져 있다. 알맞은 분류는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X 이암 · Y 사암"
+          },
+          {
+            "id": "b",
+            "text": "X 사암 · Y 이암"
+          },
+          {
+            "id": "c",
+            "text": "X 이암 · Y 이암"
+          },
+          {
+            "id": "d",
+            "text": "X 사암 · Y 사암"
+          }
+        ],
+        "answer": "a",
+        "why": "X는 모래보다 작은 알갱이이므로 이암, Y는 주로 모래 크기의 알갱이이므로 사암입니다. 색이 같아도 알갱이의 크기가 다르면 서로 다른 종류로 분류할 수 있습니다."
+      }
+    },
+    {
+      "id": "rock-layers#q2",
+      "slug": "rock-layers",
+      "sha256": "c0b9ec30436f70aa9a3f9164deaaece1b543cb78eb13fc5259f33cc1f5628c4e",
+      "after": {
+        "id": "rock-layers#q2",
+        "slug": "rock-layers",
+        "question": "암석에서 큰 자갈 사이에 모래와 더 작은 알갱이가 함께 보였다. 이 표본을 분류한 판단으로 알맞은 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "자갈 이외의 알갱이가 있어 사암이다"
+          },
+          {
+            "id": "b",
+            "text": "알갱이 색이 여러 가지이므로 이암이다"
+          },
+          {
+            "id": "c",
+            "text": "여러 크기의 알갱이가 섞인 역암이다"
+          },
+          {
+            "id": "d",
+            "text": "작은 알갱이도 있으므로 모두 사암이다"
+          }
+        ],
+        "answer": "c",
+        "why": "역암에는 모래보다 큰 자갈과 작은 알갱이가 함께 들어 있을 수 있습니다. 역암이 자갈로만 이루어져야 하는 것은 아닙니다."
+      }
+    },
+    {
+      "id": "rock-layers#q3",
+      "slug": "rock-layers",
+      "sha256": "8759e768e3e698af20b164e544a27523cae2c31f93dd4c983d745d2ad1f0a0b7",
+      "after": {
+        "id": "rock-layers#q3",
+        "slug": "rock-layers",
+        "question": "변형되지 않은 지층 모형에서 아래부터 진흙층·자갈층·모래층이 보인다. 세 종류를 따로 한 번씩 부었다면 부은 차례는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "자갈 → 모래 → 진흙"
+          },
+          {
+            "id": "b",
+            "text": "진흙 → 자갈 → 모래"
+          },
+          {
+            "id": "c",
+            "text": "모래 → 자갈 → 진흙"
+          },
+          {
+            "id": "d",
+            "text": "진흙 → 모래 → 자갈"
+          }
+        ],
+        "answer": "b",
+        "why": "각각 따로 부은 모형에서는 먼저 넣은 퇴적물이 아래에 쌓입니다. 따라서 진흙, 자갈, 모래의 차례입니다. 섞인 알갱이의 가라앉는 순서와 여러 번 부은 층의 순서는 구별합니다."
+      }
+    },
+    {
+      "id": "rock-layers#q4",
+      "slug": "rock-layers",
+      "sha256": "c0e1a3978df319dda43c1e248c27f7ecc5bfe19d31c6eef4170a63b4731cc4f7",
+      "after": {
+        "id": "rock-layers#q4",
+        "slug": "rock-layers",
+        "question": "물고기의 뼈 모양 A, 나뭇잎의 잎맥 모양 B, 새의 발자국 C가 각각 화석으로 남았다. 몸체와 흔적의 연결은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "몸체 A · 흔적 B,C"
+          },
+          {
+            "id": "b",
+            "text": "몸체 A,C · 흔적 B"
+          },
+          {
+            "id": "c",
+            "text": "몸체 A,B · 흔적 C"
+          },
+          {
+            "id": "d",
+            "text": "몸체 B,C · 흔적 A"
+          }
+        ],
+        "answer": "c",
+        "why": "물고기의 뼈와 나뭇잎은 생물 몸체의 모습입니다. 발자국은 발 자체가 아니라 생물이 활동하며 남긴 흔적입니다."
+      }
+    },
+    {
+      "id": "water-electrolysis#q1",
+      "slug": "water-electrolysis",
+      "sha256": "427a375d02a4eb15af6565322b55a245bfa8ca9d805c67d89d22546322f93050",
+      "after": {
+        "id": "water-electrolysis#q1",
+        "slug": "water-electrolysis",
+        "question": "같은 온도·압력에서 A관에 8 mL, B관에 4 mL의 기체가 모였다. 공기 혼입과 누출이 없고 물만 분해되었다면 A의 연결과 기체는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "(+)극 · 산소"
+          },
+          {
+            "id": "b",
+            "text": "(−)극 · 산소"
+          },
+          {
+            "id": "c",
+            "text": "(−)극 · 수소"
+          },
+          {
+            "id": "d",
+            "text": "(+)극 · 수소"
+          }
+        ],
+        "answer": "c",
+        "why": "수소는 (−)극, 산소는 (+)극에서 생깁니다. 같은 온도·압력에서 수소의 부피가 두 배입니다."
+      }
+    },
+    {
+      "id": "water-electrolysis#q2",
+      "slug": "water-electrolysis",
+      "sha256": "7391853b896b86e3b6433531af5f66f721647a255eca88aadd76b9a5b2151d20",
+      "after": {
+        "id": "water-electrolysis#q2",
+        "slug": "water-electrolysis",
+        "question": "수소 관에만 처음부터 공기 2 mL가 남았다. 새로 생긴 산소는 3 mL이며 용해·누출은 없다. 같은 온도·압력에서 두 관의 최종 부피는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "수소 쪽 6 · 산소 쪽 3 mL"
+          },
+          {
+            "id": "b",
+            "text": "수소 쪽 8 · 산소 쪽 3 mL"
+          },
+          {
+            "id": "c",
+            "text": "수소 쪽 8 · 산소 쪽 4 mL"
+          },
+          {
+            "id": "d",
+            "text": "수소 쪽 4 · 산소 쪽 3 mL"
+          }
+        ],
+        "answer": "b",
+        "why": "새로 생긴 수소 6 mL와 처음 공기 2 mL를 함께 읽으면 8 mL입니다."
+      }
+    },
+    {
+      "id": "water-electrolysis#q3",
+      "slug": "water-electrolysis",
+      "sha256": "09ccd1f40ba392efdb6e0462cb547d5207b2d958cea3e49adc23b49007ab2b7f",
+      "after": {
+        "id": "water-electrolysis#q3",
+        "slug": "water-electrolysis",
+        "question": "순수한 물에 황산 나트륨을 조금 녹였더니 같은 전원에서 기체 발생을 관찰하기 쉬워졌다. 이 비교에 맞는 설명은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "전하를 운반할 이온이 늘었다"
+          },
+          {
+            "id": "b",
+            "text": "물 분자 속 산소 원자가 늘었다"
+          },
+          {
+            "id": "c",
+            "text": "생성 기체의 부피비가 바뀌었다"
+          },
+          {
+            "id": "d",
+            "text": "전해질이 수소의 원료가 되었다"
+          }
+        ],
+        "answer": "a",
+        "why": "용액 속 이온이 전하 이동을 돕습니다. 물의 조성이나 수소:산소의 생성 부피비는 달라지지 않습니다."
+      }
+    },
+    {
+      "id": "water-electrolysis#q4",
+      "slug": "water-electrolysis",
+      "sha256": "1492517e9509ee9a52788cdad02c9340f38a36475128fa346cdcfec88de45773",
+      "after": {
+        "id": "water-electrolysis#q4",
+        "slug": "water-electrolysis",
+        "question": "같은 온도·압력에서 생성된 수소와 산소의 부피비는 2:1이다. 기체 분자 수 비와 수소 원자:산소 원자 수 비는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "분자 1:1 · 원자 2:1"
+          },
+          {
+            "id": "b",
+            "text": "분자 2:1 · 원자 1:1"
+          },
+          {
+            "id": "c",
+            "text": "분자 2:1 · 원자 4:1"
+          },
+          {
+            "id": "d",
+            "text": "분자 2:1 · 원자 2:1"
+          }
+        ],
+        "answer": "d",
+        "why": "H₂ 두 분자와 O₂ 한 분자는 H 원자 네 개, O 원자 두 개이므로 두 비 모두 2:1입니다."
+      }
+    },
+    {
+      "id": "cell-micrometry#q1",
+      "slug": "cell-micrometry",
+      "sha256": "bfb58adacf42a05b322f5c677d7543422fac218baef162a06c9ca54c9bfadfac",
+      "after": {
+        "id": "cell-micrometry#q1",
+        "slug": "cell-micrometry",
+        "question": "대물 눈금 12칸과 접안 눈금 30칸이 같은 길이이다. 대물 한 칸은 10 µm이다. 접안 18칸인 세포의 길이는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "45 µm"
+          },
+          {
+            "id": "b",
+            "text": "60 µm"
+          },
+          {
+            "id": "c",
+            "text": "72 µm"
+          },
+          {
+            "id": "d",
+            "text": "180 µm"
+          }
+        ],
+        "answer": "c",
+        "why": "접안 한 칸은 12×10/30=4 µm이므로 세포 길이는 18×4=72 µm입니다."
+      }
+    },
+    {
+      "id": "cell-micrometry#q2",
+      "slug": "cell-micrometry",
+      "sha256": "a6b79faa0d9ec107c6cf41d1d0a04631407f4397347845389d0db38af8449e39",
+      "after": {
+        "id": "cell-micrometry#q2",
+        "slug": "cell-micrometry",
+        "question": "같은 접안렌즈에서 전체 배율을 100배에서 400배로 바꿨다. 접안 한 칸의 실제 길이와 같은 세포가 차지하는 접안 칸 수는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "한 칸 길이 4배 · 세포 칸 수 1/4배"
+          },
+          {
+            "id": "b",
+            "text": "한 칸 길이 1/4배 · 세포 칸 수 4배"
+          },
+          {
+            "id": "c",
+            "text": "한 칸 길이 4배 · 세포 칸 수 4배"
+          },
+          {
+            "id": "d",
+            "text": "한 칸 길이 1/4배 · 세포 칸 수 1/4배"
+          }
+        ],
+        "answer": "b",
+        "why": "세포가 네 배 크게 보이고 한 칸의 실제 길이는 1/4이므로 계산한 세포 길이는 같습니다."
+      }
+    },
+    {
+      "id": "cell-micrometry#q3",
+      "slug": "cell-micrometry",
+      "sha256": "fe12b48ba9f79194e277de7317c39b59025a8fd488785d50ef90d3816bb974cb",
+      "after": {
+        "id": "cell-micrometry#q3",
+        "slug": "cell-micrometry",
+        "question": "접안 한 칸은 2.5 µm이다. 세포의 왼쪽 끝은 18, 오른쪽 끝은 74에 맞는다. 세포 길이는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "140 µm"
+          },
+          {
+            "id": "b",
+            "text": "185 µm"
+          },
+          {
+            "id": "c",
+            "text": "230 µm"
+          },
+          {
+            "id": "d",
+            "text": "56 µm"
+          }
+        ],
+        "answer": "a",
+        "why": "세포가 차지하는 구간은 오른쪽과 왼쪽 눈금의 차인 56칸입니다. (74−18)×2.5=140 µm입니다."
+      }
+    },
+    {
+      "id": "cell-micrometry#q4",
+      "slug": "cell-micrometry",
+      "sha256": "7c723b99af862e6e5cffb3dd009d189eae37192f99d98bc43a01b70067d883e9",
+      "after": {
+        "id": "cell-micrometry#q4",
+        "slug": "cell-micrometry",
+        "question": "같은 세포를 100배에서 160 µm, 400배에서 640 µm로 계산했다. 세포 크기는 변하지 않았다. 먼저 확인할 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "핵이 시야 중심에 놓였는지"
+          },
+          {
+            "id": "b",
+            "text": "덮개 유리의 모서리가 평행한지"
+          },
+          {
+            "id": "c",
+            "text": "확대되어 세포 칸 수가 늘었는지"
+          },
+          {
+            "id": "d",
+            "text": "새 배율에 맞게 눈금을 보정했는지"
+          }
+        ],
+        "answer": "d",
+        "why": "100배의 보정 상수를 400배에 그대로 적용하면 네 배 큰 길이를 계산합니다."
+      }
+    },
+    {
+      "id": "leaf-pigments#q1",
+      "slug": "leaf-pigments",
+      "sha256": "c533cd3e580b24805f884c1da3d3d44e0b55d498decaf54a6f08852db87c99c7",
+      "after": {
+        "id": "leaf-pigments#q1",
+        "slug": "leaf-pigments",
+        "question": "판 바닥에서 출발선은 2 cm, 색소 중심은 5 cm, 용매 전선은 8 cm에 있다. 전개율은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.38"
+          },
+          {
+            "id": "b",
+            "text": "0.50"
+          },
+          {
+            "id": "c",
+            "text": "0.63"
+          },
+          {
+            "id": "d",
+            "text": "0.83"
+          }
+        ],
+        "answer": "b",
+        "why": "두 거리 모두 출발선부터 읽습니다. (5−2)/(8−2)=0.50입니다."
+      }
+    },
+    {
+      "id": "leaf-pigments#q2",
+      "slug": "leaf-pigments",
+      "sha256": "36e490e456e387e50b813af28b847736fd247447f32f1d4e641d9960001cfadd",
+      "after": {
+        "id": "leaf-pigments#q2",
+        "slug": "leaf-pigments",
+        "question": "출발선이 2 cm인 판을 전개액 높이 3 cm인 용기에 넣었다. 작은 점으로 분리되지 않는 원인은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "용매가 판 위쪽에 도달하지 못해서"
+          },
+          {
+            "id": "b",
+            "text": "색소가 용매보다 먼저 끝까지 가서"
+          },
+          {
+            "id": "c",
+            "text": "찍은 색소가 전개액에 직접 풀려서"
+          },
+          {
+            "id": "d",
+            "text": "색소의 원래 분자량이 작아져서"
+          }
+        ],
+        "answer": "c",
+        "why": "출발점이 용매에 잠기면 색소가 전개액에 풀립니다."
+      }
+    },
+    {
+      "id": "leaf-pigments#q3",
+      "slug": "leaf-pigments",
+      "sha256": "336ab285d7c055eba4cc9df9bbb9ca03b8be896a073a34b735f0e9d28f936871",
+      "after": {
+        "id": "leaf-pigments#q3",
+        "slug": "leaf-pigments",
+        "question": "같은 추출액 총량을 A는 한 번에 큰 방울로, B는 작게 찍고 말리기를 반복해 올렸다. 분리에 유리한 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A · 출발점을 넓게 퍼뜨릴 수 있어서"
+          },
+          {
+            "id": "b",
+            "text": "A · 색소의 분자량을 줄일 수 있어서"
+          },
+          {
+            "id": "c",
+            "text": "B · 용매의 이동 거리를 없앨 수 있어서"
+          },
+          {
+            "id": "d",
+            "text": "B · 좁은 출발점에 색소를 모을 수 있어서"
+          }
+        ],
+        "answer": "d",
+        "why": "작게 찍고 말려야 시작점을 넓히지 않고 농축하여 띠를 구별하기 좋습니다."
+      }
+    },
+    {
+      "id": "leaf-pigments#q4",
+      "slug": "leaf-pigments",
+      "sha256": "9ef7570c3ba437324311cfeb33ce31939282ebda64ec04a40f86e7a440bc38f8",
+      "after": {
+        "id": "leaf-pigments#q4",
+        "slug": "leaf-pigments",
+        "question": "같은 색소가 용매 A에서 Rf=0.52, B에서 Rf=0.61이었다. 해석으로 적절한 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "용매 조건에 따라 상대 이동이 달라진다"
+          },
+          {
+            "id": "b",
+            "text": "두 값 중 하나는 반드시 측정 오류이다"
+          },
+          {
+            "id": "c",
+            "text": "분자량이 0.52에서 0.61로 증가하였다"
+          },
+          {
+            "id": "d",
+            "text": "B 용매에서만 새 색소가 합성되었다"
+          }
+        ],
+        "answer": "a",
+        "why": "전개율은 색소와 고정상·이동상의 상호작용에 따라 달라집니다."
+      }
+    },
+    {
+      "id": "digestive-enzymes#q1",
+      "slug": "digestive-enzymes",
+      "sha256": "077f7104186e246b95f73b7994579bb19da31915be3e6cffd829bd233dd65c0c",
+      "after": {
+        "id": "digestive-enzymes#q1",
+        "slug": "digestive-enzymes",
+        "question": "A에는 침, B에는 소화제, C에는 증류수를 넣고 나머지 조건을 같게 했다. A·B만 청람색이 사라졌다. 뒷받침하는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "C에서만 녹말이 엿당으로 분해되었다"
+          },
+          {
+            "id": "b",
+            "text": "물만 있어도 녹말이 같은 정도로 분해된다"
+          },
+          {
+            "id": "c",
+            "text": "A·B의 효소가 녹말 분해에 관여하였다"
+          },
+          {
+            "id": "d",
+            "text": "세 용액의 모든 영양소가 완전히 분해되었다"
+          }
+        ],
+        "answer": "c",
+        "why": "효소 조건 A·B와 물 대조 C의 차이입니다. 녹말 검출만으로 다른 영양소까지 판단하지 않습니다."
+      }
+    },
+    {
+      "id": "digestive-enzymes#q2",
+      "slug": "digestive-enzymes",
+      "sha256": "481b41fa54da55d4d9df6cd57c87e036b01c0f3fc432415c58e6b7af819ac172",
+      "after": {
+        "id": "digestive-enzymes#q2",
+        "slug": "digestive-enzymes",
+        "question": "막은 녹말을 막고 엿당을 통과시킨다. 침을 넣은 튜브 바깥 용액이 베네딕트 시약과 가열 뒤 황적색이었다. 직접 확인한 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "바깥 용액에 환원당이 존재한다"
+          },
+          {
+            "id": "b",
+            "text": "녹말이 그대로 막을 통과한다"
+          },
+          {
+            "id": "c",
+            "text": "막이 소화 효소를 합성한다"
+          },
+          {
+            "id": "d",
+            "text": "튜브 안의 물이 모두 이동한다"
+          }
+        ],
+        "answer": "a",
+        "why": "가열한 베네딕트 반응은 외액의 환원당 존재를 확인합니다. 주어진 조건에서는 분해로 생긴 엿당이 이동한 것으로 해석합니다."
+      }
+    },
+    {
+      "id": "digestive-enzymes#q3",
+      "slug": "digestive-enzymes",
+      "sha256": "1be947d44118123241cdd503500bdcb0e3de2f351f95446e58ee68e147e57cd0",
+      "after": {
+        "id": "digestive-enzymes#q3",
+        "slug": "digestive-enzymes",
+        "question": "바깥 용액에 베네딕트 시약을 넣었으나 가열하지 않았다. 푸른색이 유지되었다. 옳은 판단은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "녹말 분해가 전혀 없었다"
+          },
+          {
+            "id": "b",
+            "text": "막이 엿당을 모두 차단했다"
+          },
+          {
+            "id": "c",
+            "text": "환원당 농도가 정확히 0이다"
+          },
+          {
+            "id": "d",
+            "text": "가열을 마쳐야 검출을 판단한다"
+          }
+        ],
+        "answer": "d",
+        "why": "가열 조건을 갖추기 전에 푸른색만으로 환원당이 없다고 판단할 수 없습니다."
+      }
+    },
+    {
+      "id": "digestive-enzymes#q4",
+      "slug": "digestive-enzymes",
+      "sha256": "782e13c12b55fce4e6605a864983803f844d74f76bd364cc1cabf4b3b6b8df76",
+      "after": {
+        "id": "digestive-enzymes#q4",
+        "slug": "digestive-enzymes",
+        "question": "효소는 정상이고 막만 녹말·엿당을 모두 차단하도록 바꿨다. 예상되는 조합은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "튜브 안 청람색 유지 · 외액 황적색"
+          },
+          {
+            "id": "b",
+            "text": "튜브 안 청람색 소실 · 외액 푸른색"
+          },
+          {
+            "id": "c",
+            "text": "튜브 안 청람색 유지 · 외액 푸른색"
+          },
+          {
+            "id": "d",
+            "text": "튜브 안 청람색 소실 · 외액 황적색"
+          }
+        ],
+        "answer": "b",
+        "why": "내부에서 녹말은 분해되지만 엿당이 밖으로 이동하지 못합니다."
+      }
+    },
+    {
+      "id": "spring-wave-speed#q1",
+      "slug": "spring-wave-speed",
+      "sha256": "c2aa74b84c54aeec13124087afdf19c05d3157c005a1e1a4d61cbfbf4b659471",
+      "after": {
+        "id": "spring-wave-speed#q1",
+        "slug": "spring-wave-speed",
+        "question": "4.0 m 용수철에서 파동 앞부분이 출발한 지 2.0초 뒤 반대쪽 끝에 도달했다. 속력은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.50 m/s"
+          },
+          {
+            "id": "b",
+            "text": "2.0 m/s"
+          },
+          {
+            "id": "c",
+            "text": "4.0 m/s"
+          },
+          {
+            "id": "d",
+            "text": "8.0 m/s"
+          }
+        ],
+        "answer": "b",
+        "why": "진행 거리 4.0 m를 2.0초로 나누면 2.0 m/s입니다. 리본의 순간 속력과 구별합니다."
+      }
+    },
+    {
+      "id": "spring-wave-speed#q2",
+      "slug": "spring-wave-speed",
+      "sha256": "94b4a7057716c306778956e85b93060488e36800769ee0301a371b98add5da13",
+      "after": {
+        "id": "spring-wave-speed#q2",
+        "slug": "spring-wave-speed",
+        "question": "파동은 오른쪽으로 진행하고 중앙 리본은 그에 수직한 방향으로 왕복했다. 맞는 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "종파 · 리본도 끝까지 이동"
+          },
+          {
+            "id": "b",
+            "text": "횡파 · 리본도 끝까지 이동"
+          },
+          {
+            "id": "c",
+            "text": "종파 · 리본은 중심 주위 왕복"
+          },
+          {
+            "id": "d",
+            "text": "횡파 · 리본은 중심 주위 왕복"
+          }
+        ],
+        "answer": "d",
+        "why": "진동과 진행 방향이 수직이면 횡파이며 리본은 파동과 함께 운반되지 않습니다."
+      }
+    },
+    {
+      "id": "spring-wave-speed#q3",
+      "slug": "spring-wave-speed",
+      "sha256": "a274266a8b448d006776824f582fd2b88eec3e62d029ea0a6fc83ba7f36433ae",
+      "after": {
+        "id": "spring-wave-speed#q3",
+        "slug": "spring-wave-speed",
+        "question": "같은 용수철에서 같은 종류의 파동을 1 Hz에서 2 Hz로 바꿨다. 속력이 유지될 때 파장과 주기는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "파장 1/2배 · 주기 1/2배"
+          },
+          {
+            "id": "b",
+            "text": "파장 2배 · 주기 1/2배"
+          },
+          {
+            "id": "c",
+            "text": "파장 1/2배 · 주기 2배"
+          },
+          {
+            "id": "d",
+            "text": "파장 2배 · 주기 2배"
+          }
+        ],
+        "answer": "a",
+        "why": "v=fλ와 T=1/f에 따라 파장과 주기는 모두 절반입니다."
+      }
+    },
+    {
+      "id": "spring-wave-speed#q4",
+      "slug": "spring-wave-speed",
+      "sha256": "5fbe2ecf0f386b22128c9449e258c0bb1fc27f9e18e9a487a1755883c771bcb6",
+      "after": {
+        "id": "spring-wave-speed#q4",
+        "slug": "spring-wave-speed",
+        "question": "한 프레임의 이웃한 마루가 0.6 m와 2.4 m에 있다. 한 지점의 마루는 0.75초마다 반복된다. 속력은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.42 m/s"
+          },
+          {
+            "id": "b",
+            "text": "1.35 m/s"
+          },
+          {
+            "id": "c",
+            "text": "2.40 m/s"
+          },
+          {
+            "id": "d",
+            "text": "3.20 m/s"
+          }
+        ],
+        "answer": "c",
+        "why": "파장은 1.8 m, 주기는 0.75초이므로 1.8/0.75=2.4 m/s입니다."
+      }
+    },
+    {
+      "id": "coastal-inundation#q1",
+      "slug": "coastal-inundation",
+      "sha256": "0ac85e7ae3234b6b2125d83332000fea4162ef9ed340db0ac3048180b3790d4d",
+      "after": {
+        "id": "coastal-inundation#q1",
+        "slug": "coastal-inundation",
+        "question": "같은 마을 모형에서 집은 낮은 땅, 학교는 중간 땅, 밭은 높은 땅에 있다. 물을 천천히 더 부을 때 먼저 물이 들어오는 곳은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "집"
+          },
+          {
+            "id": "b",
+            "text": "학교"
+          },
+          {
+            "id": "c",
+            "text": "밭"
+          },
+          {
+            "id": "d",
+            "text": "세 곳이 동시에"
+          }
+        ],
+        "answer": "a",
+        "why": "같은 수면이 높아질 때 바닥이 가장 낮은 집부터 물이 들어옵니다. 시설의 이름이 아니라 땅의 높이를 비교합니다."
+      }
+    },
+    {
+      "id": "coastal-inundation#q2",
+      "slug": "coastal-inundation",
+      "sha256": "2a7cf72c6c5278fd890a3ff177841a9c358c46098c9cb2efad6f3be78124e544",
+      "after": {
+        "id": "coastal-inundation#q2",
+        "slug": "coastal-inundation",
+        "question": "처음 물 높이로 되돌린 뒤 낮은 땅의 집과 높은 땅의 밭을 서로 바꿨다. 학교는 중간 땅에 그대로 있다. 다시 물을 부을 때 잠기는 순서는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "집 → 학교 → 밭"
+          },
+          {
+            "id": "b",
+            "text": "밭 → 학교 → 집"
+          },
+          {
+            "id": "c",
+            "text": "학교 → 집 → 밭"
+          },
+          {
+            "id": "d",
+            "text": "밭 → 집 → 학교"
+          }
+        ],
+        "answer": "b",
+        "why": "바뀐 배치에서는 밭, 학교, 집 순서로 바닥이 높습니다. 시설의 이름이 아니라 놓인 땅의 높이가 침수 순서를 결정합니다."
+      }
+    },
+    {
+      "id": "coastal-inundation#q3",
+      "slug": "coastal-inundation",
+      "sha256": "be5c080188b78d732c589ca2a69c9f5047a9d1810b135ea79b608d4b4cf30d1a",
+      "after": {
+        "id": "coastal-inundation#q3",
+        "slug": "coastal-inundation",
+        "question": "처음 수면은 통의 2눈금, 물을 부은 뒤 수면은 5눈금이다. 낮은 땅의 바닥은 4눈금에 있다. 처음보다 높아진 수면과 낮은 땅의 상태는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "1눈금 상승 · 물에 잠김"
+          },
+          {
+            "id": "b",
+            "text": "3눈금 상승 · 마른 땅"
+          },
+          {
+            "id": "c",
+            "text": "3눈금 상승 · 물에 잠김"
+          },
+          {
+            "id": "d",
+            "text": "5눈금 상승 · 마른 땅"
+          }
+        ],
+        "answer": "c",
+        "why": "처음보다 5−2=3눈금 높아졌습니다. 수면 5눈금이 바닥 4눈금보다 높으므로 낮은 땅은 물에 잠겼습니다."
+      }
+    },
+    {
+      "id": "coastal-inundation#q4",
+      "slug": "coastal-inundation",
+      "sha256": "67156f2d14d28b77c2982db0710d2bdced5d8036f816460c7b260001a822c6a9",
+      "after": {
+        "id": "coastal-inundation#q4",
+        "slug": "coastal-inundation",
+        "question": "물을 더 부었을 때 집 바닥과 학교로 가는 낮은 길은 잠겼지만, 높은 땅의 학교 바닥은 마른 상태였다. 이 관찰에 맞는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "학교 바닥과 길을 모두 이용하기 어렵다"
+          },
+          {
+            "id": "b",
+            "text": "학교 바닥과 길을 모두 이용할 수 있다"
+          },
+          {
+            "id": "c",
+            "text": "학교 바닥은 잠기고 길은 마른 상태이다"
+          },
+          {
+            "id": "d",
+            "text": "학교 바닥은 말라도 길을 이용하기 어렵다"
+          }
+        ],
+        "answer": "d",
+        "why": "학교 바닥이 마른 상태여도 연결된 낮은 길이 잠기면 학교로 이동하기 어려울 수 있습니다. 시설과 길을 각각 관찰해야 합니다."
+      }
+    },
+    {
+      "id": "sea-level-causes#q1",
+      "slug": "sea-level-causes",
+      "sha256": "bfff734632b136e2477c931b1882ed5102f31879aec2d9a1a1f460ea2bd0e208",
+      "after": {
+        "id": "sea-level-causes#q1",
+        "slug": "sea-level-causes",
+        "question": "같은 물을 넣은 A는 가열하지 않고 B만 가열했다. 얼음은 없고 증발은 무시한다. B의 온도와 수면만 높아졌다면 맞는 설명은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "B의 물 질량과 밀도가 모두 증가했다"
+          },
+          {
+            "id": "b",
+            "text": "B의 물 질량은 같고 부피가 증가했다"
+          },
+          {
+            "id": "c",
+            "text": "B의 물 질량이 줄고 부피도 감소했다"
+          },
+          {
+            "id": "d",
+            "text": "B의 물 부피는 같고 밀도가 증가했다"
+          }
+        ],
+        "answer": "b",
+        "why": "물이 추가되지 않은 B에서 질량은 같지만 온도 상승으로 부피가 늘어 수면이 높아집니다. 같은 질량을 더 큰 부피로 나누면 밀도는 작아집니다."
+      }
+    },
+    {
+      "id": "sea-level-causes#q2",
+      "slug": "sea-level-causes",
+      "sha256": "d1377c2f6fb3f7302b4851751eb39c2be581d47e5ead6659053b073c8e962a9f",
+      "after": {
+        "id": "sea-level-causes#q2",
+        "slug": "sea-level-causes",
+        "question": "육상 빙하가 녹아 바다에 더해지는 현상을 나타내려 한다. 얼음을 놓을 위치와 녹은 물의 이동은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "물 위에 띄움 · 수조 물에 섞임"
+          },
+          {
+            "id": "b",
+            "text": "물속에 가라앉힘 · 수조 물에 섞임"
+          },
+          {
+            "id": "c",
+            "text": "수면 위 받침 · 수조 물에 섞임"
+          },
+          {
+            "id": "d",
+            "text": "수면 위 받침 · 수조 밖으로 받음"
+          }
+        ],
+        "answer": "c",
+        "why": "처음 물에 잠기지 않은 얼음이 녹아 수조로 들어와야 육상 얼음에서 바다로 물이 추가되는 과정을 나타냅니다."
+      }
+    },
+    {
+      "id": "sea-level-causes#q3",
+      "slug": "sea-level-causes",
+      "sha256": "0cfebbc119cecc7c0189cdc1296430c5c640b8d573662d26e88ba28b3b22e319",
+      "after": {
+        "id": "sea-level-causes#q3",
+        "slug": "sea-level-causes",
+        "question": "B는 가열만, C는 같은 가열과 육상 얼음을 두었다. C의 수면 상승이 더 컸지만 나중 온도는 서로 달랐다. C와 B의 수면 차만으로 정확히 구하기 어려운 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "육상 얼음 융해만의 수면 상승량"
+          },
+          {
+            "id": "b",
+            "text": "각 수조의 처음 수면 높이"
+          },
+          {
+            "id": "c",
+            "text": "두 수조의 나중 수면 높이 차"
+          },
+          {
+            "id": "d",
+            "text": "나중 온도가 더 높은 수조"
+          }
+        ],
+        "answer": "a",
+        "why": "온도가 다르면 두 수조의 열팽창량도 다릅니다. C−B를 모두 얼음이 더한 물의 효과로 보려면 열팽창 차이도 따로 보정해야 합니다."
+      }
+    },
+    {
+      "id": "sea-level-causes#q4",
+      "slug": "sea-level-causes",
+      "sha256": "c76de43cb179086d47c72797519fe370013ee76d62181377934b81fe4777819a",
+      "after": {
+        "id": "sea-level-causes#q4",
+        "slug": "sea-level-causes",
+        "question": "처음 600 mL 물이 든 B와 C를 같은 나중 온도로 맞췄다. C에는 육상 얼음이 녹은 물 60 mL가 추가되었다. 받침·수조가 같고 넘침이 없을 때 맞는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "B가 높음 · C의 물이 더 차가워서"
+          },
+          {
+            "id": "b",
+            "text": "같은 높이 · 나중 온도가 같아서"
+          },
+          {
+            "id": "c",
+            "text": "같은 높이 · 처음 물의 양이 같아서"
+          },
+          {
+            "id": "d",
+            "text": "C가 높음 · 액체 물의 양이 더 많아서"
+          }
+        ],
+        "answer": "d",
+        "why": "온도에 의한 부피 차를 같게 맞춰도 C에는 물이 더해져 수면이 높습니다. 같은 온도라는 조건은 같은 물의 양을 뜻하지 않습니다."
+      }
+    },
+    {
+      "id": "standard-solution#q1",
+      "slug": "standard-solution",
+      "sha256": "d8c474d797a5f40710db3ddd2c1ff8ad98c178783f4c779d64de5e6b063be1ec",
+      "after": {
+        "id": "standard-solution#q1",
+        "slug": "standard-solution",
+        "question": "NaCl의 몰질량은 58.5 g/mol이다. 1.00 M 용액 100 mL를 만들 때 필요한 NaCl 질량은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.585 g"
+          },
+          {
+            "id": "b",
+            "text": "5.85 g"
+          },
+          {
+            "id": "c",
+            "text": "58.5 g"
+          },
+          {
+            "id": "d",
+            "text": "585 g"
+          }
+        ],
+        "answer": "b",
+        "why": "필요한 양은 1.00 mol/L×0.100 L=0.100 mol이며 질량은 5.85 g입니다."
+      }
+    },
+    {
+      "id": "standard-solution#q2",
+      "slug": "standard-solution",
+      "sha256": "38e276a92e680383a415c14beae1878e83e27fc5e8841f07549599aa4aafe73e",
+      "after": {
+        "id": "standard-solution#q2",
+        "slug": "standard-solution",
+        "question": "5.85 g의 NaCl을 물 100 mL에 녹였더니 최종 용액은 102 mL였다. 표시선에 맞춘 100 mL 용액과 비교한 농도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "두 용액 모두 1.00 M"
+          },
+          {
+            "id": "b",
+            "text": "102 mL 용액이 더 진함"
+          },
+          {
+            "id": "c",
+            "text": "102 mL 용액이 더 묽음"
+          },
+          {
+            "id": "d",
+            "text": "염의 질량을 몰라 비교 불가"
+          }
+        ],
+        "answer": "c",
+        "why": "두 용액의 NaCl 양은 같고 102 mL 쪽의 전체 부피가 더 크므로 농도는 더 작습니다."
+      }
+    },
+    {
+      "id": "standard-solution#q3",
+      "slug": "standard-solution",
+      "sha256": "fd0d18077e62dae9a4cbfecf41a1e776a0b860af69906f6b92865acf2f576b96",
+      "after": {
+        "id": "standard-solution#q3",
+        "slug": "standard-solution",
+        "question": "NaCl을 정확히 잰 뒤 녹였지만 비커를 헹구지 않아 용액이 일부 남았다. 부피 플라스크는 100 mL에 맞췄다. 목표 농도와 비교하면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "실제 농도가 더 작다"
+          },
+          {
+            "id": "b",
+            "text": "실제 농도가 더 크다"
+          },
+          {
+            "id": "c",
+            "text": "실제 농도가 같다"
+          },
+          {
+            "id": "d",
+            "text": "남은 양을 몰라 비교할 수 없다"
+          }
+        ],
+        "answer": "a",
+        "why": "부피는 목표와 같지만 옮겨진 NaCl의 몰수가 줄었으므로 실제 농도는 더 작습니다."
+      }
+    },
+    {
+      "id": "standard-solution#q4",
+      "slug": "standard-solution",
+      "sha256": "6781aa4f0fe268f83860169467e617331929f68b3f216c92873a7f1b0feef75a",
+      "after": {
+        "id": "standard-solution#q4",
+        "slug": "standard-solution",
+        "question": "물에 잘 젖는 유리 부피 플라스크에서 수면은 오목하다. 정확히 정용하는 눈의 위치와 읽을 부분은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "표시선 위 · 액면 위쪽"
+          },
+          {
+            "id": "b",
+            "text": "표시선 아래 · 액면 아래쪽"
+          },
+          {
+            "id": "c",
+            "text": "표시선 높이 · 액면 위쪽"
+          },
+          {
+            "id": "d",
+            "text": "표시선 높이 · 액면 아래쪽"
+          }
+        ],
+        "answer": "d",
+        "why": "시차를 줄이려면 눈높이를 표시선에 맞추고 오목한 메니스커스의 가장 낮은 부분을 표시선에 맞춥니다."
+      }
+    },
+    {
+      "id": "serial-dilution#q1",
+      "slug": "serial-dilution",
+      "sha256": "957853b238ab1fee64d242f794d79ee16e45a12eda40c416b4f66cea754c1a2c",
+      "after": {
+        "id": "serial-dilution#q1",
+        "slug": "serial-dilution",
+        "question": "0.100 M인 A 10.0 mL를 100 mL로 정용해 B를 만들고, B 10.0 mL로 같은 과정을 반복해 C를 만들었다. C의 농도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.0500 M"
+          },
+          {
+            "id": "b",
+            "text": "0.0100 M"
+          },
+          {
+            "id": "c",
+            "text": "0.00100 M"
+          },
+          {
+            "id": "d",
+            "text": "0.000100 M"
+          }
+        ],
+        "answer": "c",
+        "why": "각 단계에서 농도가 1/10이 되므로 두 단계 뒤에는 0.100×(1/10)²=0.00100 M입니다."
+      }
+    },
+    {
+      "id": "serial-dilution#q2",
+      "slug": "serial-dilution",
+      "sha256": "58f702c786cb97ea490b8791afe4f14fa7e0b1d4e578d51ad8d75e04d1841117",
+      "after": {
+        "id": "serial-dilution#q2",
+        "slug": "serial-dilution",
+        "question": "25 °C에서 묽은 염산 0.1 M, 0.01 M, 0.001 M의 pH는 각각 약 1, 2, 3이었다. 농도를 1/10로 바꿀 때의 관계는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "수소 이온 농도 1/10 · pH 약 1 증가"
+          },
+          {
+            "id": "b",
+            "text": "수소 이온 농도 1/10 · pH 약 10배"
+          },
+          {
+            "id": "c",
+            "text": "수소 이온 농도 10배 · pH 약 1 증가"
+          },
+          {
+            "id": "d",
+            "text": "수소 이온 농도 10배 · pH 약 1 감소"
+          }
+        ],
+        "answer": "a",
+        "why": "이 농도 범위에서 pH=−log[H⁺]이므로 농도가 1/10이 될 때 pH는 약 1 증가합니다."
+      }
+    },
+    {
+      "id": "serial-dilution#q3",
+      "slug": "serial-dilution",
+      "sha256": "9590b2b1a0a8287e94112ee9d65604eb8d1a9bf54f3946b65e5f1a4a7ad623e2",
+      "after": {
+        "id": "serial-dilution#q3",
+        "slug": "serial-dilution",
+        "question": "25 °C에서 1.0×10⁻⁸ M 염산을 이상적으로 만들었다. 물의 자동 이온화를 고려한 액성과 pH의 범위는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "염기성 · 7보다 큼"
+          },
+          {
+            "id": "b",
+            "text": "중성 · 정확히 7"
+          },
+          {
+            "id": "c",
+            "text": "산성 · 정확히 8"
+          },
+          {
+            "id": "d",
+            "text": "산성 · 7보다 조금 작음"
+          }
+        ],
+        "answer": "d",
+        "why": "물의 자동 이온화도 고려하면 수소 이온 농도는 10⁻⁷ M보다 조금 크므로 pH는 7보다 조금 작습니다."
+      }
+    },
+    {
+      "id": "serial-dilution#q4",
+      "slug": "serial-dilution",
+      "sha256": "043c992c54b8bfc0f107dce4617dc86d373faed07614b5bf853b4f5312a3c233",
+      "after": {
+        "id": "serial-dilution#q4",
+        "slug": "serial-dilution",
+        "question": "25 °C에서 0.010 M NaOH 수용액을 10배로 묽혔다. 묽히기 전과 후의 pH는 대략?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2 → 3"
+          },
+          {
+            "id": "b",
+            "text": "12 → 11"
+          },
+          {
+            "id": "c",
+            "text": "12 → 13"
+          },
+          {
+            "id": "d",
+            "text": "2 → 1"
+          }
+        ],
+        "answer": "b",
+        "why": "처음 pOH는 2이고 희석 뒤 3입니다. pH=14−pOH이므로 12에서 11로 작아집니다."
+      }
+    },
+    {
+      "id": "vinegar-titration#q1",
+      "slug": "vinegar-titration",
+      "sha256": "cf32be1a911c52d6a8798b31cc73820fe72848006095e8f7bca85de77717b134",
+      "after": {
+        "id": "vinegar-titration#q1",
+        "slug": "vinegar-titration",
+        "question": "뷰렛의 처음 눈금은 2.30 mL, 종말점의 눈금은 29.80 mL였다. 사용한 표준 용액 부피는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "27.50 mL"
+          },
+          {
+            "id": "b",
+            "text": "29.80 mL"
+          },
+          {
+            "id": "c",
+            "text": "32.10 mL"
+          },
+          {
+            "id": "d",
+            "text": "2.30 mL"
+          }
+        ],
+        "answer": "a",
+        "why": "아래로 증가하는 뷰렛 눈금에서 사용량은 나중 눈금−처음 눈금=27.50 mL입니다."
+      }
+    },
+    {
+      "id": "vinegar-titration#q2",
+      "slug": "vinegar-titration",
+      "sha256": "7fd0f05184c0c18eaa8c729e594a791d58e44238d2bb768c256871f559fb780c",
+      "after": {
+        "id": "vinegar-titration#q2",
+        "slug": "vinegar-titration",
+        "question": "식초 10.0 mL를 100 mL로 희석한 뒤 그 용액 20.0 mL를 적정했다. 이 시료에 들어 있는 원래 식초의 양은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "1.00 mL"
+          },
+          {
+            "id": "b",
+            "text": "2.00 mL"
+          },
+          {
+            "id": "c",
+            "text": "10.0 mL"
+          },
+          {
+            "id": "d",
+            "text": "20.0 mL"
+          }
+        ],
+        "answer": "b",
+        "why": "희석액 중 원래 식초는 1/10이므로 시료 20.0 mL에는 원액 2.00 mL에 해당하는 아세트산이 들어 있습니다."
+      }
+    },
+    {
+      "id": "vinegar-titration#q3",
+      "slug": "vinegar-titration",
+      "sha256": "7f793ed5e9c79797e178922984ed41c9f58ee11fc7818fe96a2f0f2f69ff8006",
+      "after": {
+        "id": "vinegar-titration#q3",
+        "slug": "vinegar-titration",
+        "question": "적정 중 한 방울을 떨어뜨린 곳만 분홍색이었으나 흔들자 무색이 되었다. 다음 조작과 판단으로 맞는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "즉시 멈춤 · 종말점에 도달"
+          },
+          {
+            "id": "b",
+            "text": "한 번에 많이 첨가 · 과량 염기 확인"
+          },
+          {
+            "id": "c",
+            "text": "한 방울씩 더 첨가 · 아직 종말점 전"
+          },
+          {
+            "id": "d",
+            "text": "시료를 버림 · 지시약이 작용하지 않음"
+          }
+        ],
+        "answer": "c",
+        "why": "떨어진 곳의 국소적인 색이 섞은 뒤 사라졌으므로 산이 남아 있습니다. 한 방울씩 더하며 섞은 뒤 색이 유지되는지 봅니다."
+      }
+    },
+    {
+      "id": "vinegar-titration#q4",
+      "slug": "vinegar-titration",
+      "sha256": "fecea97576222cdb14746b4a9c6b188745fc4f5953657cc7b38834e381abda1e",
+      "after": {
+        "id": "vinegar-titration#q4",
+        "slug": "vinegar-titration",
+        "question": "원액 식초 3.00 mL를 전량 적정하는 데 0.100 M NaOH 27.0 mL가 들었다. 아세트산 몰질량은 60.0 g/mol이다. 원액 100 mL의 아세트산 질량은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.162 g"
+          },
+          {
+            "id": "b",
+            "text": "0.540 g"
+          },
+          {
+            "id": "c",
+            "text": "1.62 g"
+          },
+          {
+            "id": "d",
+            "text": "5.40 g"
+          }
+        ],
+        "answer": "d",
+        "why": "시료에 0.00270 mol, 원액 농도는 0.900 M입니다. 100 mL에는 0.0900 mol×60.0=5.40 g이 있습니다."
+      }
+    },
+    {
+      "id": "acoustic-resonance#q1",
+      "slug": "acoustic-resonance",
+      "sha256": "0948105884ae55dcf91ced4db5e3fd55c37cd0e33c618c8416ef2e209ef12c9a",
+      "after": {
+        "id": "acoustic-resonance#q1",
+        "slug": "acoustic-resonance",
+        "question": "1000 Hz 소리에서 관의 두 번째·세 번째 큰 소리 위치가 25.1 cm, 42.3 cm였다. 이 측정으로 구한 파장과 음속은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.172 m · 172 m/s"
+          },
+          {
+            "id": "b",
+            "text": "0.344 m · 344 m/s"
+          },
+          {
+            "id": "c",
+            "text": "0.688 m · 688 m/s"
+          },
+          {
+            "id": "d",
+            "text": "0.344 m · 172 m/s"
+          }
+        ],
+        "answer": "b",
+        "why": "이웃한 공명 길이 차는 0.172 m로 반 파장입니다. 파장은 0.344 m이고, 1000 Hz를 곱하면 344 m/s입니다."
+      }
+    },
+    {
+      "id": "acoustic-resonance#q2",
+      "slug": "acoustic-resonance",
+      "sha256": "666f8a55fce177c8703e9786b07f17dc8b04042aca66a3ccd6ddb494edb7e287",
+      "after": {
+        "id": "acoustic-resonance#q2",
+        "slug": "acoustic-resonance",
+        "question": "2300 Hz에서 소리가 작은 이웃한 위치의 평균 간격은 7.45 cm였다. 이때 파장과 음속에 가장 가까운 값은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.0745 m · 171 m/s"
+          },
+          {
+            "id": "b",
+            "text": "0.298 m · 685 m/s"
+          },
+          {
+            "id": "c",
+            "text": "0.149 m · 343 m/s"
+          },
+          {
+            "id": "d",
+            "text": "0.149 m · 171 m/s"
+          }
+        ],
+        "answer": "c",
+        "why": "소리가 작은 이웃한 지점은 음압의 마디로 간격이 반 파장입니다. 2×0.0745 m×2300 Hz≈343 m/s입니다."
+      }
+    },
+    {
+      "id": "acoustic-resonance#q3",
+      "slug": "acoustic-resonance",
+      "sha256": "bebd491f8defa06f27c9018bb74e60232b9c2935aa9830fc7008f25e431a25a6",
+      "after": {
+        "id": "acoustic-resonance#q3",
+        "slug": "acoustic-resonance",
+        "question": "열린 관 끝의 변위 배가 입구 바깥에 조금 생긴다. 같은 진동수에서 끝 보정의 영향을 줄여 파장을 구하는 방법은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "첫 번째 공명 길이를 네 배한 값"
+          },
+          {
+            "id": "b",
+            "text": "두 번째 공명 길이를 두 배한 값"
+          },
+          {
+            "id": "c",
+            "text": "첫째·둘째 공명 길이 합의 두 배"
+          },
+          {
+            "id": "d",
+            "text": "둘째·셋째 공명 길이 차의 두 배"
+          }
+        ],
+        "answer": "d",
+        "why": "두 공명 길이에 거의 같은 끝 보정이 더해져 있다면 길이의 차에서 상쇄됩니다. 이웃한 공명 간격을 두 배하여 파장을 구합니다."
+      }
+    },
+    {
+      "id": "acoustic-resonance#q4",
+      "slug": "acoustic-resonance",
+      "sha256": "9b8a70e69154093c4b4515e8b86044613b97bc20e2822c34e9a6b44e91ea4467",
+      "after": {
+        "id": "acoustic-resonance#q4",
+        "slug": "acoustic-resonance",
+        "question": "완전히 닫힌 관 끝에서 공기 입자의 변위 진폭과 음압 변화의 진폭은 각각 어떤가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "변위 최소 · 음압 최대"
+          },
+          {
+            "id": "b",
+            "text": "변위 최대 · 음압 최소"
+          },
+          {
+            "id": "c",
+            "text": "변위 최소 · 음압 최소"
+          },
+          {
+            "id": "d",
+            "text": "변위 최대 · 음압 최대"
+          }
+        ],
+        "answer": "a",
+        "why": "닫힌 벽에서 공기는 벽을 통과해 움직일 수 없어 변위 마디가 되고, 압력 변화는 큰 음압의 배가 됩니다."
+      }
+    },
+    {
+      "id": "electroplating#q1",
+      "slug": "electroplating",
+      "sha256": "c1d22ae25b289cb6eb9e8746a4ecd8c28c628cc600492738463b7c92a2c37ef1",
+      "after": {
+        "id": "electroplating#q1",
+        "slug": "electroplating",
+        "question": "황산 구리(Ⅱ) 수용액에서 철 펜던트에 구리를 전기 도금하려 한다. 구리판과 펜던트의 연결은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "구리판 (−) · 펜던트 (+)"
+          },
+          {
+            "id": "b",
+            "text": "구리판 (+) · 펜던트 (+)"
+          },
+          {
+            "id": "c",
+            "text": "구리판 (−) · 펜던트 (−)"
+          },
+          {
+            "id": "d",
+            "text": "구리판 (+) · 펜던트 (−)"
+          }
+        ],
+        "answer": "d",
+        "why": "펜던트가 전자를 받는 음극이 되어 Cu²⁺가 Cu로 환원되어야 합니다. 구리판은 양극에서 산화되어 구리 이온을 공급합니다."
+      }
+    },
+    {
+      "id": "electroplating#q2",
+      "slug": "electroplating",
+      "sha256": "64ea6d6442431dc1b357f3950aefb9a411a2f5db4969d9c677d4b78e5b6cb94a",
+      "after": {
+        "id": "electroplating#q2",
+        "slug": "electroplating",
+        "question": "구리판을 (+), 펜던트를 (−)에 연결했다. 구리판에서 일어나는 주요 반응과 질량 변화는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Cu²⁺ + 2e⁻ → Cu · 증가"
+          },
+          {
+            "id": "b",
+            "text": "Cu → Cu²⁺ + 2e⁻ · 감소"
+          },
+          {
+            "id": "c",
+            "text": "Cu → Cu²⁺ + 2e⁻ · 증가"
+          },
+          {
+            "id": "d",
+            "text": "Cu²⁺ + 2e⁻ → Cu · 감소"
+          }
+        ],
+        "answer": "b",
+        "why": "양극의 구리 원자는 전자를 잃고 구리 이온으로 용액에 들어갑니다. 따라서 구리판의 질량은 감소합니다."
+      }
+    },
+    {
+      "id": "electroplating#q3",
+      "slug": "electroplating",
+      "sha256": "75b69dba7a9f65e83997b5509b16d80dfca2812c97037e091fdf940cedc1fef4",
+      "after": {
+        "id": "electroplating#q3",
+        "slug": "electroplating",
+        "question": "전원을 연결하지 않은 철에도 갈색 구리가 생겼다. Fe + Cu²⁺ → Fe²⁺ + Cu에서 전자를 내놓는 입자와 받는 입자는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Fe · Cu²⁺"
+          },
+          {
+            "id": "b",
+            "text": "Cu²⁺ · Fe"
+          },
+          {
+            "id": "c",
+            "text": "Fe²⁺ · Cu"
+          },
+          {
+            "id": "d",
+            "text": "Cu · Fe²⁺"
+          }
+        ],
+        "answer": "a",
+        "why": "Fe는 전자 2개를 내놓아 Fe²⁺가 되고, Cu²⁺는 전자를 받아 Cu가 됩니다. 이 자발적 치환 반응은 외부 전원을 통한 도금과 구별해야 합니다."
+      }
+    },
+    {
+      "id": "electroplating#q4",
+      "slug": "electroplating",
+      "sha256": "611d4e5319d5adaac00d5a3d875749a20f0cdf440f3ddbc95bb08bd59c50b98f",
+      "after": {
+        "id": "electroplating#q4",
+        "slug": "electroplating",
+        "question": "다른 반응 없이 펜던트에 Cu 0.020 mol이 석출되었다. Cu²⁺ + 2e⁻ → Cu에 따라 소비한 전자의 양과 구리 양극에서 녹은 Cu의 양은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "전자 0.010 mol · Cu 0.020 mol"
+          },
+          {
+            "id": "b",
+            "text": "전자 0.020 mol · Cu 0.040 mol"
+          },
+          {
+            "id": "c",
+            "text": "전자 0.040 mol · Cu 0.020 mol"
+          },
+          {
+            "id": "d",
+            "text": "전자 0.040 mol · Cu 0.040 mol"
+          }
+        ],
+        "answer": "c",
+        "why": "Cu²⁺ 1 mol의 환원에는 전자 2 mol이 필요합니다. 0.040 mol의 전자가 이동하며 양극에서는 Cu 0.020 mol이 산화됩니다."
+      }
+    },
+    {
+      "id": "leaf-starch#q1",
+      "slug": "leaf-starch",
+      "sha256": "dddc9f0860999bd7bce1d8af5ce3c7b190915c2a0c1eb94d00e98fae5ce07d7c",
+      "after": {
+        "id": "leaf-starch#q1",
+        "slug": "leaf-starch",
+        "question": "같은 방법으로 처리한 두 잎에 아이오딘 용액을 떨어뜨렸다. 빛을 받은 A는 청람색, 가린 B는 황갈색이었다. 관찰 결과의 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A에서 녹말 검출 · B에서 검출 안 됨"
+          },
+          {
+            "id": "b",
+            "text": "A에서 검출 안 됨 · B에서 녹말 검출"
+          },
+          {
+            "id": "c",
+            "text": "A에서 녹말 검출 · B에서도 녹말 검출"
+          },
+          {
+            "id": "d",
+            "text": "A에서 검출 안 됨 · B에서도 검출 안 됨"
+          }
+        ],
+        "answer": "a",
+        "why": "아이오딘 용액의 청람색 반응은 녹말이 있다는 증거입니다. 황갈색으로 남은 B에서는 같은 반응이 나타나지 않았습니다."
+      }
+    },
+    {
+      "id": "leaf-starch#q2",
+      "slug": "leaf-starch",
+      "sha256": "7c7213e3970d54211e4a108221fb0270fd3bd6b0b3d038997a92bd55d96baaf9",
+      "after": {
+        "id": "leaf-starch#q2",
+        "slug": "leaf-starch",
+        "question": "물중탕하는 동안 잎은 연한 색이 되고 에탄올은 초록색이 되었다. 주로 어떤 물질이 어디로 옮겨 갔는가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "녹말이 잎에서 에탄올로"
+          },
+          {
+            "id": "b",
+            "text": "초록색 색소가 잎에서 물로"
+          },
+          {
+            "id": "c",
+            "text": "초록색 색소가 잎에서 에탄올로"
+          },
+          {
+            "id": "d",
+            "text": "녹말이 에탄올에서 잎으로"
+          }
+        ],
+        "answer": "c",
+        "why": "잎의 초록색 색소가 에탄올에 녹아 나오면 이후 아이오딘 반응 색을 구별하기 쉬워집니다."
+      }
+    },
+    {
+      "id": "leaf-starch#q3",
+      "slug": "leaf-starch",
+      "sha256": "bdf1c3c4786bafbf71b3e32e0d673954dda4ba0eb3554dba3c463c8e1ed07c4f",
+      "after": {
+        "id": "leaf-starch#q3",
+        "slug": "leaf-starch",
+        "question": "빛을 가린 잎에서, 실험 전에 있던 녹말이 관찰할 때까지 남아 있었다. 탈색·헹굼 뒤 아이오딘 용액을 떨어뜨리면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "황갈색 · 빛을 못 받았기 때문"
+          },
+          {
+            "id": "b",
+            "text": "청람색 · 녹말이 남아 있기 때문"
+          },
+          {
+            "id": "c",
+            "text": "초록색 · 빛을 못 받았기 때문"
+          },
+          {
+            "id": "d",
+            "text": "무색 · 녹말이 남아 있기 때문"
+          }
+        ],
+        "answer": "b",
+        "why": "아이오딘 반응은 관찰할 때의 녹말을 검출합니다. 그 녹말이 이번 실험에서 새로 만들어졌는지까지 구별하지는 못합니다."
+      }
+    },
+    {
+      "id": "leaf-starch#q4",
+      "slug": "leaf-starch",
+      "sha256": "8df353d613f1356a234edb70dd2e2a5df994f0e42537360f1cf420771243633c",
+      "after": {
+        "id": "leaf-starch#q4",
+        "slug": "leaf-starch",
+        "question": "두 잎의 처음 상태·종류·온도·시간을 같게 했다. 빛의 영향을 알아보기 위한 A와 B의 조건은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A: 빛·물 공급 / B: 빛·물 없음"
+          },
+          {
+            "id": "b",
+            "text": "A: 어둠·물 공급 / B: 어둠·물 없음"
+          },
+          {
+            "id": "c",
+            "text": "A: 빛·물 공급 / B: 어둠·물 없음"
+          },
+          {
+            "id": "d",
+            "text": "A: 빛·물 공급 / B: 어둠·물 공급"
+          }
+        ],
+        "answer": "d",
+        "why": "빛 이외의 물 조건도 같게 유지해야 빛을 받은 차이가 녹말 반응과 어떤 관계가 있는지 비교할 수 있습니다."
+      }
+    },
+    {
+      "id": "dissolution-mass#q1",
+      "slug": "dissolution-mass",
+      "sha256": "e12d65bd563e8459990e52183978e714e3f572e7c7f9027004c817b6b4c89616",
+      "after": {
+        "id": "dissolution-mass#q1",
+        "slug": "dissolution-mass",
+        "question": "물과 소금을 섞기 전 전체 기구와 물질은 149.0 g이었다. 흘리거나 증발하지 않았고, 소금이 다 녹은 뒤 같은 기구를 모두 올렸다. 저울값은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "145.0 g"
+          },
+          {
+            "id": "b",
+            "text": "149.0 g"
+          },
+          {
+            "id": "c",
+            "text": "153.0 g"
+          },
+          {
+            "id": "d",
+            "text": "80.0 g"
+          }
+        ],
+        "answer": "b",
+        "why": "소금이 용해되어 보이지 않아도 같은 기구와 물질이 모두 남아 있으므로 전체 무게는 149.0 g으로 유지됩니다."
+      }
+    },
+    {
+      "id": "dissolution-mass#q2",
+      "slug": "dissolution-mass",
+      "sha256": "92e9c10a4978ad098ab03fef0f7bde2fb3ac31016611eacf71e6043545fb6b39",
+      "after": {
+        "id": "dissolution-mass#q2",
+        "slug": "dissolution-mass",
+        "question": "처음에는 시약포지를 포함해 149.0 g이었다. 용해 후에는 빈 시약포지 1.0 g만 빼놓고 재었다. 다른 손실이 없다면 저울값은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "150.0 g"
+          },
+          {
+            "id": "b",
+            "text": "149.0 g"
+          },
+          {
+            "id": "c",
+            "text": "148.0 g"
+          },
+          {
+            "id": "d",
+            "text": "145.0 g"
+          }
+        ],
+        "answer": "c",
+        "why": "전체 물질의 무게는 같지만 저울에서 시약포지 1.0 g이 빠졌으므로 148.0 g으로 표시됩니다."
+      }
+    },
+    {
+      "id": "dissolution-mass#q3",
+      "slug": "dissolution-mass",
+      "sha256": "4fb4a4669ad46d344e76f60cef4538e2d5030553a4a47b63ee4f1029fea50623",
+      "after": {
+        "id": "dissolution-mass#q3",
+        "slug": "dissolution-mass",
+        "question": "처음에는 물 든 비커·소금 든 시약포지·유리 막대를 모두 쟀다. 용해 후 공정하게 비교할 구성은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "용액 비커 · 빈 시약포지 · 약숟가락"
+          },
+          {
+            "id": "b",
+            "text": "용액 비커 · 새 소금 시약포지 · 유리 막대"
+          },
+          {
+            "id": "c",
+            "text": "빈 비커 · 빈 시약포지 · 유리 막대"
+          },
+          {
+            "id": "d",
+            "text": "용액 비커 · 빈 시약포지 · 유리 막대"
+          }
+        ],
+        "answer": "d",
+        "why": "용질의 위치만 종이에서 비커로 바뀌었을 뿐입니다. 처음 함께 잰 기구와 물질을 모두 포함해 무게를 비교해야 합니다."
+      }
+    },
+    {
+      "id": "dissolution-mass#q4",
+      "slug": "dissolution-mass",
+      "sha256": "d3d09215e9268de333a439a82354627af77936de7bb9a33cf1a21c4e0b0706b1",
+      "after": {
+        "id": "dissolution-mass#q4",
+        "slug": "dissolution-mass",
+        "question": "기구를 모두 올려 149.0 g을 읽은 다음, 그 상태에서 영점 버튼을 눌렀다. 물질을 잃지 않았다면 곧바로 표시되는 값과 실제 전체 무게는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "표시 0.0 g · 실제 149.0 g"
+          },
+          {
+            "id": "b",
+            "text": "표시 0.0 g · 실제 0.0 g"
+          },
+          {
+            "id": "c",
+            "text": "표시 149.0 g · 실제 0.0 g"
+          },
+          {
+            "id": "d",
+            "text": "표시 149.0 g · 실제 149.0 g"
+          }
+        ],
+        "answer": "a",
+        "why": "영점 버튼은 표시의 기준을 바꾸므로 0.0 g이 됩니다. 올려놓은 기구와 물질의 실제 무게가 사라진 것은 아닙니다."
+      }
+    },
+    {
+      "id": "food-web#q1",
+      "slug": "food-web",
+      "sha256": "3ede420170122e01e9e66a0a6eb04470320fd84871eb6ed27d737c1cc64f6cf1",
+      "after": {
+        "id": "food-web#q1",
+        "slug": "food-web",
+        "question": "X는 빛을 이용해 양분을 만들고, Y는 죽은 생물을 분해해 양분을 얻는다. X와 Y의 역할은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "X 생산자 · Y 분해자"
+          },
+          {
+            "id": "b",
+            "text": "X 소비자 · Y 분해자"
+          },
+          {
+            "id": "c",
+            "text": "X 분해자 · Y 생산자"
+          },
+          {
+            "id": "d",
+            "text": "X 생산자 · Y 소비자"
+          }
+        ],
+        "answer": "a",
+        "why": "X는 스스로 양분을 만드는 생산자이고, Y는 죽은 생물을 분해하여 양분을 얻는 분해자입니다. 생김새나 사는 장소가 아니라 양분을 얻는 방법으로 분류합니다."
+      }
+    },
+    {
+      "id": "food-web#q2",
+      "slug": "food-web",
+      "sha256": "1b029fe8b63431fffbd6dbd64b1c2137ce0c3c8f16aec79e48aa6857d47d268a",
+      "after": {
+        "id": "food-web#q2",
+        "slug": "food-web",
+        "question": "메뚜기가 배추를 먹고 개구리가 메뚜기를 먹는다. 먹이가 되는 생물에서 먹는 생물로 화살표를 그리면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "개구리 → 메뚜기 → 배추"
+          },
+          {
+            "id": "b",
+            "text": "배추 → 메뚜기 → 개구리"
+          },
+          {
+            "id": "c",
+            "text": "배추 → 개구리 → 메뚜기"
+          },
+          {
+            "id": "d",
+            "text": "메뚜기 → 배추 → 개구리"
+          }
+        ],
+        "answer": "b",
+        "why": "배추는 메뚜기의 먹이이고 메뚜기는 개구리의 먹이이므로 배추 → 메뚜기 → 개구리로 연결합니다."
+      }
+    },
+    {
+      "id": "food-web#q3",
+      "slug": "food-web",
+      "sha256": "51c9b539d0df92d9d6c2e7a70bb992a4c734993233b345c1962ebf86e5a957f0",
+      "after": {
+        "id": "food-web#q3",
+        "slug": "food-web",
+        "question": "매는 개구리와 참새를 먹는다. 만든 모형에서 개구리 카드와 연결을 지웠다. 매에게 남는 먹이 관계는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "벼 → 매"
+          },
+          {
+            "id": "b",
+            "text": "매 → 참새"
+          },
+          {
+            "id": "c",
+            "text": "참새 → 매"
+          },
+          {
+            "id": "d",
+            "text": "개구리 → 참새"
+          }
+        ],
+        "answer": "c",
+        "why": "개구리와의 관계를 지워도 참새 → 매의 관계는 남습니다. 여러 먹이사슬이 연결되어 있으면 다른 먹이 경로가 남을 수 있습니다."
+      }
+    },
+    {
+      "id": "food-web#q4",
+      "slug": "food-web",
+      "sha256": "8aabcf7745aa5b1fddca1bce726a232a8d2097867e9d0fc1b0e248b0d6186b09",
+      "after": {
+        "id": "food-web#q4",
+        "slug": "food-web",
+        "question": "관찰 카드에 따르면 메뚜기는 벼와 배추를 모두 먹는다. 벼 → 메뚜기만 그린 모형에 추가할 연결은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "메뚜기 → 벼"
+          },
+          {
+            "id": "b",
+            "text": "개구리 → 메뚜기"
+          },
+          {
+            "id": "c",
+            "text": "메뚜기 → 배추"
+          },
+          {
+            "id": "d",
+            "text": "배추 → 메뚜기"
+          }
+        ],
+        "answer": "d",
+        "why": "관찰 카드에서 빠진 먹이는 배추입니다. 먹이가 되는 배추에서 먹는 메뚜기로 화살표를 추가하면 두 먹이 관계를 함께 나타낼 수 있습니다."
+      }
+    },
+    {
+      "id": "yeast-fermentation#q1",
+      "slug": "yeast-fermentation",
+      "sha256": "01f55a4a1216087552f9a9fa9d70334310252b4449ab34e4eff06d23f878f4af",
+      "after": {
+        "id": "yeast-fermentation#q1",
+        "slug": "yeast-fermentation",
+        "question": "A는 효모액+증류수에 솜 마개, B는 효모액+포도당 용액에 열린 입구, C는 효모액+포도당 용액에 솜 마개이다. 포도당 유무만 다른 비교는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A와 B"
+          },
+          {
+            "id": "b",
+            "text": "A와 C"
+          },
+          {
+            "id": "c",
+            "text": "B와 C"
+          },
+          {
+            "id": "d",
+            "text": "A와 A"
+          }
+        ],
+        "answer": "b",
+        "why": "A와 C는 솜 마개와 효모액·총 용액량·온도·시간을 같게 하고 포도당 유무만 다릅니다."
+      }
+    },
+    {
+      "id": "yeast-fermentation#q2",
+      "slug": "yeast-fermentation",
+      "sha256": "b706d60df71ebb1b34958dc3e147a4b65d954437ffc2c9d8e99635c3de9c1255",
+      "after": {
+        "id": "yeast-fermentation#q2",
+        "slug": "yeast-fermentation",
+        "question": "발효관에서 용액 일부를 덜고 KOH 용액을 넣었다. 기울인 뒤 맹관부의 기체 부분이 크게 줄고 용액이 올라왔다. 변화의 주된 까닭은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "기체가 팽창하여 용액을 밀었기 때문이다."
+          },
+          {
+            "id": "b",
+            "text": "KOH가 에탄올을 기체로 만들었기 때문이다."
+          },
+          {
+            "id": "c",
+            "text": "KOH가 이산화 탄소를 흡수했기 때문이다."
+          },
+          {
+            "id": "d",
+            "text": "효모가 산소를 새로 방출했기 때문이다."
+          }
+        ],
+        "answer": "c",
+        "why": "맹관부의 이산화 탄소가 KOH 용액에 흡수되면서 기체 부분이 줄고 그 자리로 용액이 올라옵니다."
+      }
+    },
+    {
+      "id": "yeast-fermentation#q3",
+      "slug": "yeast-fermentation",
+      "sha256": "6601719953f16fd8e6679a4f5395ce8d45df7b85bfa268bda29482f11349a253",
+      "after": {
+        "id": "yeast-fermentation#q3",
+        "slug": "yeast-fermentation",
+        "question": "처음 남긴 공기 방울이 2 mL였다. 관찰 뒤 기체는 8 mL, KOH 처리 뒤에는 2 mL였다. 온도·압력이 같고 KOH가 CO₂만 완전히 흡수했다면, 흡수된 CO₂의 부피는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2 mL"
+          },
+          {
+            "id": "b",
+            "text": "4 mL"
+          },
+          {
+            "id": "c",
+            "text": "8 mL"
+          },
+          {
+            "id": "d",
+            "text": "6 mL"
+          }
+        ],
+        "answer": "d",
+        "why": "흡수된 부피는 처리 전후 차이인 8−2=6 mL입니다. 처음 혼입된 공기 2 mL까지 새로 생긴 이산화 탄소로 합산하지 않습니다."
+      }
+    },
+    {
+      "id": "yeast-fermentation#q4",
+      "slug": "yeast-fermentation",
+      "sha256": "e5cefec79518f2bc8d627c8f371aae2b2af0ddf13ed20c0ec2c87f3b8102c889",
+      "after": {
+        "id": "yeast-fermentation#q4",
+        "slug": "yeast-fermentation",
+        "question": "포도당을 넣은 B와 C에서 모두 기체와 알코올 냄새가 관찰되었다. B는 입구가 열려 있고 C는 솜으로 막혀 있다. 이 결과의 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "열린 입구만으로 발효가 없다고 단정하지 않는다."
+          },
+          {
+            "id": "b",
+            "text": "솜 마개만으로 산소가 전혀 없다고 확정한다."
+          },
+          {
+            "id": "c",
+            "text": "기체가 생겼으므로 두 관에서 광합성이 일어났다."
+          },
+          {
+            "id": "d",
+            "text": "알코올 냄새가 같으므로 기체 부피도 같다고 본다."
+          }
+        ],
+        "answer": "a",
+        "why": "솜은 완전한 밀폐 장치가 아니며 입구가 열렸다는 사실만으로 효모 주위의 산소 조건을 정량할 수 없습니다. 고농도 포도당에서 효모는 산소가 있어도 발효할 수 있습니다."
+      }
+    },
+    {
+      "id": "light-interference#q1",
+      "slug": "light-interference",
+      "sha256": "59cbaefbaad92884f444c2daa705530a5fd66553da9486d643f24c066cbd16c1",
+      "after": {
+        "id": "light-interference#q1",
+        "slug": "light-interference",
+        "question": "같은 이중 슬릿과 스크린 위치에서 녹색(532 nm)을 적색(650 nm)으로 바꾸었다. 중심 부근의 밝은 무늬 사이 간격은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "좁아진다."
+          },
+          {
+            "id": "b",
+            "text": "넓어진다."
+          },
+          {
+            "id": "c",
+            "text": "변하지 않는다."
+          },
+          {
+            "id": "d",
+            "text": "두 줄만 남는다."
+          }
+        ],
+        "answer": "b",
+        "why": "같은 슬릿 간격과 스크린 거리에서는 파장이 길어질수록 인접한 밝은 무늬 사이 간격이 넓어집니다."
+      }
+    },
+    {
+      "id": "light-interference#q2",
+      "slug": "light-interference",
+      "sha256": "42fc437a5d2551e08ba5f86c5280f162c5e69a1194c7b063f3dd966e7b0777e3",
+      "after": {
+        "id": "light-interference#q2",
+        "slug": "light-interference",
+        "question": "파장과 스크린 거리를 그대로 두고 슬릿 사이 간격을 0.10 mm에서 0.20 mm로 바꾸었다. 처음 무늬 간격이 2.4 mm였다면 바뀐 간격은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.6 mm"
+          },
+          {
+            "id": "b",
+            "text": "2.4 mm"
+          },
+          {
+            "id": "c",
+            "text": "1.2 mm"
+          },
+          {
+            "id": "d",
+            "text": "4.8 mm"
+          }
+        ],
+        "answer": "c",
+        "why": "중심 부근에서 무늬 간격은 슬릿 사이 간격에 반비례합니다. 슬릿 사이 간격이 2배이므로 무늬 간격은 절반인 1.2 mm입니다."
+      }
+    },
+    {
+      "id": "light-interference#q3",
+      "slug": "light-interference",
+      "sha256": "4352ec9de5fba28b0f9aa7158796ecce0bd051945feb866a9669d0f956efd534",
+      "after": {
+        "id": "light-interference#q3",
+        "slug": "light-interference",
+        "question": "연속한 밝은 무늬 여섯 개의 첫 중심은 2.0 mm, 마지막 중심은 17.0 mm이다. 인접한 밝은 무늬 사이의 평균 간격은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2.5 mm"
+          },
+          {
+            "id": "b",
+            "text": "3.0 mm"
+          },
+          {
+            "id": "c",
+            "text": "15.0 mm"
+          },
+          {
+            "id": "d",
+            "text": "17.0 mm"
+          }
+        ],
+        "answer": "b",
+        "why": "밝은 무늬 여섯 개 사이에는 간격이 다섯 칸 있습니다. 따라서 (17.0−2.0)÷5=3.0 mm입니다."
+      }
+    },
+    {
+      "id": "light-interference#q4",
+      "slug": "light-interference",
+      "sha256": "1466fac45b0e11984aa66fa4377375591d6e1665352a3104c9f25b690e644e9b",
+      "after": {
+        "id": "light-interference#q4",
+        "slug": "light-interference",
+        "question": "두 틈을 모두 비추면 중앙 P는 밝고 바로 옆 Q는 어둡다. 한 틈을 가리고 나머지 빛은 그대로 두면, P와 Q의 밝기는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "P 증가 · Q 증가"
+          },
+          {
+            "id": "b",
+            "text": "P 증가 · Q 감소"
+          },
+          {
+            "id": "c",
+            "text": "P 감소 · Q 감소"
+          },
+          {
+            "id": "d",
+            "text": "P 감소 · Q 증가"
+          }
+        ],
+        "answer": "d",
+        "why": "P는 두 빛의 보강이 사라져 어두워지고, Q는 두 빛의 상쇄가 사라져 밝아집니다. 한 틈을 가린다고 스크린 전체가 같은 비율로 어두워지는 것은 아닙니다."
+      }
+    },
+    {
+      "id": "galileo-incline#q1",
+      "slug": "galileo-incline",
+      "sha256": "4638006e7982308451d2dda8df5cac6737d24f0f3349ce4c29847fb9675cf1e2",
+      "after": {
+        "id": "galileo-incline#q1",
+        "slug": "galileo-incline",
+        "question": "속이 꽉 찬 균질한 공 A(20 g)와 B(80 g)를 같은 기울기에서 동시에 놓았다. 미끄러짐과 저항이 없다면 도착 시점은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A가 먼저다."
+          },
+          {
+            "id": "b",
+            "text": "B가 먼저다."
+          },
+          {
+            "id": "c",
+            "text": "두 공이 같다."
+          },
+          {
+            "id": "d",
+            "text": "기울기에 따라 순서가 바뀐다."
+          }
+        ],
+        "answer": "c",
+        "why": "같은 구조의 구에서는 질량이 달라도 가속도가 같습니다. 같은 위치에서 동시에 출발하면 함께 도착합니다."
+      }
+    },
+    {
+      "id": "galileo-incline#q2",
+      "slug": "galileo-incline",
+      "sha256": "be91a6789274b2f5fe897308f6ca783b9d8c2d47861cf3211cd522d370c4b082",
+      "after": {
+        "id": "galileo-incline#q2",
+        "slug": "galileo-incline",
+        "question": "정지 상태에서 놓은 공이 첫 0.1초 동안 2 mm 이동했다. 일정한 가속도로 구르면 다음 0.1초 동안 이동하는 거리는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2 mm"
+          },
+          {
+            "id": "b",
+            "text": "4 mm"
+          },
+          {
+            "id": "c",
+            "text": "6 mm"
+          },
+          {
+            "id": "d",
+            "text": "8 mm"
+          }
+        ],
+        "answer": "c",
+        "why": "처음부터 이동한 거리는 시간의 제곱에 비례합니다. 0.2초까지는 8 mm이므로 두 번째 구간에서 이동한 거리는 8−2=6 mm입니다."
+      }
+    },
+    {
+      "id": "galileo-incline#q3",
+      "slug": "galileo-incline",
+      "sha256": "e4eb29d4826f3ae35eca72d84a10959349657b9d9777ac9b006d5f7427c92cbf",
+      "after": {
+        "id": "galileo-incline#q3",
+        "slug": "galileo-incline",
+        "question": "구조와 기울기가 같은 A(20 g), B(80 g) 중 B를 0.1초 늦게 놓았다. B가 0.1초 늦게 도착했다. 결과로 판단할 수 있는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "B의 가속도가 더 작다."
+          },
+          {
+            "id": "b",
+            "text": "B의 중력이 더 작다."
+          },
+          {
+            "id": "c",
+            "text": "B의 이동 시간이 더 길다."
+          },
+          {
+            "id": "d",
+            "text": "출발 후 이동 시간은 같다."
+          }
+        ],
+        "answer": "d",
+        "why": "도착 시점에서 각 공의 출발 시점을 빼면 두 공이 움직인 시간은 같습니다. 함께 놓지 않은 결과를 질량에 따른 가속도 차이로 해석하면 안 됩니다."
+      }
+    },
+    {
+      "id": "galileo-incline#q4",
+      "slug": "galileo-incline",
+      "sha256": "944bf914c57e8ce876a4fc6bbd683587bdde0f5d129b4ccda292c41500314bd4",
+      "after": {
+        "id": "galileo-incline#q4",
+        "slug": "galileo-incline",
+        "question": "탁구공과 속이 꽉 찬 쇠구슬을 같은 경사면에서 동시에 놓았더니 도착 시점이 달랐다. 질량의 영향만 비교하려면 무엇을 추가로 맞춰야 하는가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "공에 작용하는 중력"
+          },
+          {
+            "id": "b",
+            "text": "공의 내부 구조"
+          },
+          {
+            "id": "c",
+            "text": "공의 운동 에너지"
+          },
+          {
+            "id": "d",
+            "text": "공의 운동량"
+          }
+        ],
+        "answer": "b",
+        "why": "속이 빈 구와 꽉 찬 구는 질량이 분포하는 방식이 다릅니다. 구르는 운동에서 구조까지 달라지면 질량만의 영향으로 결론 내릴 수 없습니다."
+      }
+    },
+    {
+      "id": "reaction-pressure#q1",
+      "slug": "reaction-pressure",
+      "sha256": "11447e3ac55d968c2e6b5de7e4e30c0353bd1ec034a394a70439a1a10b2dc753",
+      "after": {
+        "id": "reaction-pressure#q1",
+        "slug": "reaction-pressure",
+        "question": "시간 0, 20, 40, 60초에서 압력이 각각 101, 141, 157, 159 kPa였다. 온도·기체 부피가 일정하고 누출이 없을 때 평균 반응 속도가 가장 큰 구간은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0~20초"
+          },
+          {
+            "id": "b",
+            "text": "20~40초"
+          },
+          {
+            "id": "c",
+            "text": "40~60초"
+          },
+          {
+            "id": "d",
+            "text": "세 구간이 같다."
+          }
+        ],
+        "answer": "a",
+        "why": "같은 20초 동안 압력은 40, 16, 2 kPa 증가했습니다. 압력 자체가 아니라 같은 시간 동안 증가한 양을 비교합니다."
+      }
+    },
+    {
+      "id": "reaction-pressure#q2",
+      "slug": "reaction-pressure",
+      "sha256": "5fb7eed1b3e078ed84152b607bd2baaf9a609ffe0eb2dd28df3a0ea41f646c52",
+      "after": {
+        "id": "reaction-pressure#q2",
+        "slug": "reaction-pressure",
+        "question": "밸브를 닫은 뒤 10초에 115 kPa, 30초에 145 kPa를 읽었다. 이 구간의 평균 압력 증가율은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "1.0 kPa/s"
+          },
+          {
+            "id": "b",
+            "text": "1.5 kPa/s"
+          },
+          {
+            "id": "c",
+            "text": "3.0 kPa/s"
+          },
+          {
+            "id": "d",
+            "text": "4.8 kPa/s"
+          }
+        ],
+        "answer": "b",
+        "why": "(145−115)÷(30−10)=1.5 kPa/s입니다. 압력 차이를 두 시점 사이의 시간으로 나눕니다."
+      }
+    },
+    {
+      "id": "reaction-pressure#q3",
+      "slug": "reaction-pressure",
+      "sha256": "ee3fc58e9f155e8a3d0e07db692b72285fdda014fd383251d1c8c34269e0fe6d",
+      "after": {
+        "id": "reaction-pressure#q3",
+        "slug": "reaction-pressure",
+        "question": "기포가 계속 생기는데 압력은 처음과 거의 같았다. 밸브가 외부로 열려 있었다. 이 결과의 적절한 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "반응이 이미 끝났다."
+          },
+          {
+            "id": "b",
+            "text": "수소가 모두 액화됐다."
+          },
+          {
+            "id": "c",
+            "text": "생성 기체가 빠져나갔다."
+          },
+          {
+            "id": "d",
+            "text": "반응물의 양이 늘어났다."
+          }
+        ],
+        "answer": "c",
+        "why": "열린 밸브로 생성 기체가 빠져나가면 압력이 축적되지 않습니다. 일정한 압력만으로 기체 발생 속도가 0이라고 판단할 수 없습니다."
+      }
+    },
+    {
+      "id": "reaction-pressure#q4",
+      "slug": "reaction-pressure",
+      "sha256": "9162b440833ed392f8ea955d67b2b226badbf2f7cf7a6f6a917f40fa3c8566c5",
+      "after": {
+        "id": "reaction-pressure#q4",
+        "slug": "reaction-pressure",
+        "question": "0~120 kPa 센서가 119 kPa를 표시한 뒤 범위 초과로 바뀌었다. 기체 발생은 계속 관찰됐다. 다음 측정에 적절한 조치는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "마지막 값을 끝까지 유지한다."
+          },
+          {
+            "id": "b",
+            "text": "누락값을 0 kPa로 기록한다."
+          },
+          {
+            "id": "c",
+            "text": "범위 초과 시점을 종료로 정한다."
+          },
+          {
+            "id": "d",
+            "text": "더 넓은 범위의 센서를 쓴다."
+          }
+        ],
+        "answer": "d",
+        "why": "범위 초과는 압력이 측정 가능한 범위를 벗어난 상태입니다. 반응이 멈춘 것도 압력이 0이 된 것도 아닙니다."
+      }
+    },
+    {
+      "id": "osmosis-mass#q1",
+      "slug": "osmosis-mass",
+      "sha256": "31c542b6003a65d44e66c5d5ed31721cb5a168bc768aab7766096a282c969ff9",
+      "after": {
+        "id": "osmosis-mass#q1",
+        "slug": "osmosis-mass",
+        "question": "처음 질량 80.0 g인 무 조각이 물기를 닦은 뒤 72.0 g이었다. 처음 질량을 기준으로 한 질량 변화율은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "−8.0%"
+          },
+          {
+            "id": "b",
+            "text": "−10.0%"
+          },
+          {
+            "id": "c",
+            "text": "−11.1%"
+          },
+          {
+            "id": "d",
+            "text": "−90.0%"
+          }
+        ],
+        "answer": "b",
+        "why": "(72−80)÷80×100=−10.0%입니다. 질량 차이 −8 g과 변화율 −10%는 구별해야 합니다."
+      }
+    },
+    {
+      "id": "osmosis-mass#q2",
+      "slug": "osmosis-mass",
+      "sha256": "cdd4938a5fd8886276665c53b207265d771545dcf2b2777b547dbaca4ecc72d2",
+      "after": {
+        "id": "osmosis-mass#q2",
+        "slug": "osmosis-mass",
+        "question": "표면 물기를 제거한 무의 질량이 진한 포도당 수용액에서 감소했다. 용질 이동을 무시하는 비교에서 주된 까닭은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "물이 무에서 용액으로 순이동했다."
+          },
+          {
+            "id": "b",
+            "text": "물이 용액에서 무로 순이동했다."
+          },
+          {
+            "id": "c",
+            "text": "포도당이 무에 쌓여 질량이 줄었다."
+          },
+          {
+            "id": "d",
+            "text": "세포막이 사라져 질량이 줄었다."
+          }
+        ],
+        "answer": "a",
+        "why": "세포막을 사이에 두고 물이 양쪽으로 이동하지만, 무에서 밖으로 나간 물이 더 많으면 무의 질량이 줄어듭니다."
+      }
+    },
+    {
+      "id": "osmosis-mass#q3",
+      "slug": "osmosis-mass",
+      "sha256": "3e6aae4ace5789cdd24806c52a0d56485dadde0cb354346383186e2be652ee2e",
+      "after": {
+        "id": "osmosis-mass#q3",
+        "slug": "osmosis-mass",
+        "question": "나중 질량을 잴 때 한 시료만 표면에 용액이 남아 있었다. 물기를 제거한 경우와 비교하면 이 시료의 질량 감소는 어떻게 보일까?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "실제보다 크게 보인다."
+          },
+          {
+            "id": "b",
+            "text": "차이 없이 같게 보인다."
+          },
+          {
+            "id": "c",
+            "text": "실제보다 작게 보인다."
+          },
+          {
+            "id": "d",
+            "text": "처음 질량도 함께 줄어 보인다."
+          }
+        ],
+        "answer": "c",
+        "why": "붙어 있는 용액이 나중 질량에 더해집니다. 따라서 감소량이 실제보다 작아 보이거나, 오히려 늘어난 것처럼 보일 수 있습니다."
+      }
+    },
+    {
+      "id": "osmosis-mass#q4",
+      "slug": "osmosis-mass",
+      "sha256": "0e8a1101f1c387f1b8f62cc38895c74e03fc1e404b30c02a612201bb3d068b1b",
+      "after": {
+        "id": "osmosis-mass#q4",
+        "slug": "osmosis-mass",
+        "question": "0.2 M 설탕물에는 무를, 0.5 M에는 감자를 넣었다. 크기·처음 질량·시간은 같았다. 농도만의 영향을 비교하기 위한 보완은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "두 시료의 나중 질량을 같게 맞춘다."
+          },
+          {
+            "id": "b",
+            "text": "감자만 담그는 시간을 늘린다."
+          },
+          {
+            "id": "c",
+            "text": "두 용액의 농도를 같게 맞춘다."
+          },
+          {
+            "id": "d",
+            "text": "각 농도에서 같은 채소끼리 비교한다."
+          }
+        ],
+        "answer": "d",
+        "why": "종류가 다른 채소는 조직과 내부 상태도 다를 수 있습니다. 농도의 영향을 보려면 같은 채소 종류 안에서 농도를 달리해 비교합니다."
+      }
+    },
+    {
+      "id": "leaf-classification#q1",
+      "slug": "leaf-classification",
+      "sha256": "e2bf54c81983189e80033c106f5b76fe2aeda6d9491f49b8ac83437ab9aed5e6",
+      "after": {
+        "id": "leaf-classification#q1",
+        "slug": "leaf-classification",
+        "question": "화면의 여섯 잎을 ‘전체적인 모양이 길쭉한가?’로 나눌 때, ‘그렇다’ 무리에 함께 들어가는 것은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "소나무 · 강아지풀"
+          },
+          {
+            "id": "b",
+            "text": "소나무 · 사철나무"
+          },
+          {
+            "id": "c",
+            "text": "강아지풀 · 토끼풀"
+          },
+          {
+            "id": "d",
+            "text": "사철나무 · 토끼풀"
+          }
+        ],
+        "answer": "a",
+        "why": "이 표본에서는 소나무와 강아지풀의 잎이 폭이 좁고 깁니다. 잎 끝이 뾰족한지와 전체가 길쭉한지는 다른 기준입니다."
+      }
+    },
+    {
+      "id": "leaf-classification#q2",
+      "slug": "leaf-classification",
+      "sha256": "a1631f9308dc31ede80726295c1eaddf6a8ed0396ee988222f99afb97346e227",
+      "after": {
+        "id": "leaf-classification#q2",
+        "slug": "leaf-classification",
+        "question": "기준을 ‘전체가 길쭉한가?’에서 ‘끝이 뾰족한가?’로 바꾸었다. 화면에서 ‘아니다’ 무리에서 ‘그렇다’ 무리로 옮겨야 하는 잎은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "소나무"
+          },
+          {
+            "id": "b",
+            "text": "벚나무"
+          },
+          {
+            "id": "c",
+            "text": "사철나무"
+          },
+          {
+            "id": "d",
+            "text": "토끼풀"
+          }
+        ],
+        "answer": "b",
+        "why": "벚나무 잎은 폭이 넓지만 끝은 뾰족합니다. 한 가지 특징으로 나눈 무리가 다른 기준에서도 그대로 유지되는 것은 아닙니다."
+      }
+    },
+    {
+      "id": "leaf-classification#q3",
+      "slug": "leaf-classification",
+      "sha256": "1b8ed4a34f1977661dca676ea66bdda5043405679722c569fda6fefad1be062b",
+      "after": {
+        "id": "leaf-classification#q3",
+        "slug": "leaf-classification",
+        "question": "단풍나무와 토끼풀을 ‘한 잎몸이 손바닥처럼 여러 갈래로 갈라졌는가?’로 나누었다. 알맞은 결과는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "둘 다 그렇다"
+          },
+          {
+            "id": "b",
+            "text": "둘 다 아니다"
+          },
+          {
+            "id": "c",
+            "text": "단풍나무만 그렇다"
+          },
+          {
+            "id": "d",
+            "text": "토끼풀만 그렇다"
+          }
+        ],
+        "answer": "c",
+        "why": "단풍나무는 한 잎몸이 여러 갈래로 갈라져 있습니다. 토끼풀은 작은 잎 세 장이 달린 모습이므로 같은 갈라짐으로 분류하지 않습니다."
+      }
+    },
+    {
+      "id": "leaf-classification#q4",
+      "slug": "leaf-classification",
+      "sha256": "7a6fe4b9de7fd82a15ecdbbcae29c7069daf2313f35175090b280f336c8c62bb",
+      "after": {
+        "id": "leaf-classification#q4",
+        "slug": "leaf-classification",
+        "question": "‘전체가 길쭉한가?’로 나누어 ‘그렇다’에 소나무·강아지풀·벚나무, ‘아니다’에 단풍나무·사철나무·토끼풀을 놓았다. 기준에 맞게 고치려면 어느 잎을 옮겨야 하는가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "소나무 → 아니다"
+          },
+          {
+            "id": "b",
+            "text": "강아지풀 → 아니다"
+          },
+          {
+            "id": "c",
+            "text": "단풍나무 → 그렇다"
+          },
+          {
+            "id": "d",
+            "text": "벚나무 → 아니다"
+          }
+        ],
+        "answer": "d",
+        "why": "벚나무는 끝은 뾰족하지만 잎 전체는 폭이 넓습니다. 벚나무를 옮기면 ‘그렇다’ 2장, ‘아니다’ 4장이 됩니다. 두 무리의 수가 같을 필요는 없습니다."
+      }
+    },
+    {
+      "id": "animal-classification#q1",
+      "slug": "animal-classification",
+      "sha256": "da03940ca6ce433dbcef368da765270aa0cc0b8ce1bf2bc9a429bb1a070a1558",
+      "after": {
+        "id": "animal-classification#q1",
+        "slug": "animal-classification",
+        "question": "여덟 동물을 ‘날개가 있는가?’로 분류했다. ‘그렇다’ 무리에 함께 들어가는 두 동물은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "참새 · 나비"
+          },
+          {
+            "id": "b",
+            "text": "참새 · 붕어"
+          },
+          {
+            "id": "c",
+            "text": "나비 · 참돔"
+          },
+          {
+            "id": "d",
+            "text": "붕어 · 참돔"
+          }
+        ],
+        "answer": "a",
+        "why": "참새와 나비에게 날개가 있습니다. 붕어와 참돔의 몸 옆에 있는 부분은 지느러미입니다."
+      }
+    },
+    {
+      "id": "animal-classification#q2",
+      "slug": "animal-classification",
+      "sha256": "5eea515bd2c7b377bd69ed1ee8d320f0926d3fae2ad6db036b7142584d99a235",
+      "after": {
+        "id": "animal-classification#q2",
+        "slug": "animal-classification",
+        "question": "기준을 ‘날개가 있는가?’에서 ‘다리가 있는가?’로 바꾸었다. ‘아니다’에서 ‘그렇다’로 함께 옮겨야 하는 두 동물은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "참새 · 나비"
+          },
+          {
+            "id": "b",
+            "text": "토끼 · 호랑이"
+          },
+          {
+            "id": "c",
+            "text": "붕어 · 참돔"
+          },
+          {
+            "id": "d",
+            "text": "뱀 · 지렁이"
+          }
+        ],
+        "answer": "b",
+        "why": "토끼와 호랑이는 날개가 없지만 다리가 있습니다. 참새와 나비는 두 기준 모두 ‘그렇다’에 들어갑니다."
+      }
+    },
+    {
+      "id": "animal-classification#q3",
+      "slug": "animal-classification",
+      "sha256": "e9c7fead3384799720eae8807a28188b59a70afe524bea4888d3a0fc7b472782",
+      "after": {
+        "id": "animal-classification#q3",
+        "slug": "animal-classification",
+        "question": "‘그렇다’에 붕어·참돔, ‘아니다’에 나머지 여섯 동물이 들어갔다. 여덟 동물 모두에 적용한 기준은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "날개가 있는가?"
+          },
+          {
+            "id": "b",
+            "text": "다리가 있는가?"
+          },
+          {
+            "id": "c",
+            "text": "지느러미가 있는가?"
+          },
+          {
+            "id": "d",
+            "text": "꼬리가 있는가?"
+          }
+        ],
+        "answer": "c",
+        "why": "붕어와 참돔은 지느러미가 있고 나머지 여섯 동물은 지느러미가 없습니다. 꼬리는 토끼·호랑이·참새·뱀 등에도 있습니다."
+      }
+    },
+    {
+      "id": "animal-classification#q4",
+      "slug": "animal-classification",
+      "sha256": "2cbb02cc931ce817d4a6adaf6402b280f4be9ae2d8a995b1acc0d9caf72351df",
+      "after": {
+        "id": "animal-classification#q4",
+        "slug": "animal-classification",
+        "question": "‘다리가 있는가?’로 나누던 학생이 뱀과 지렁이를 ‘그렇다’에 넣었다. 두 동물이 스스로 이동하기 때문이라고 했다. 이 두 카드의 알맞은 위치는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "둘 다 그렇다"
+          },
+          {
+            "id": "b",
+            "text": "뱀만 그렇다"
+          },
+          {
+            "id": "c",
+            "text": "지렁이만 그렇다"
+          },
+          {
+            "id": "d",
+            "text": "둘 다 아니다"
+          }
+        ],
+        "answer": "d",
+        "why": "스스로 이동해도 다리가 없을 수 있습니다. 뱀과 지렁이는 다리 없이 몸을 움직여 이동하므로 두 카드 모두 ‘아니다’에 넣습니다."
+      }
+    },
+    {
+      "id": "liquid-heat#q1",
+      "slug": "liquid-heat",
+      "sha256": "4d33ba75628b7a16901735bcab3115834930141883c20a692cb842f7bbc6cd24",
+      "after": {
+        "id": "liquid-heat#q1",
+        "slug": "liquid-heat",
+        "question": "질량이 같은 물과 콩기름을 20 ℃에서 같은 세기로 5분 가열했다. 물은 27 ℃, 콩기름은 35 ℃가 되었다. 열손실이 없다면?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "물의 비열이 더 크다."
+          },
+          {
+            "id": "b",
+            "text": "콩기름의 비열이 더 크다."
+          },
+          {
+            "id": "c",
+            "text": "두 액체의 비열이 같다."
+          },
+          {
+            "id": "d",
+            "text": "콩기름이 받은 열량이 더 크다."
+          }
+        ],
+        "answer": "a",
+        "why": "같은 질량이 같은 양의 열을 받았을 때 온도가 덜 오른 물의 비열이 더 큽니다. 최종 온도가 높다는 이유로 받은 열량도 더 크다고 판단하지 않습니다."
+      }
+    },
+    {
+      "id": "liquid-heat#q2",
+      "slug": "liquid-heat",
+      "sha256": "cce9a4bd8407fdfe8c5b403d8ec46581e65c66d29360013aa58846c398cd91a8",
+      "after": {
+        "id": "liquid-heat#q2",
+        "slug": "liquid-heat",
+        "question": "물 100 g과 콩기름 200 g을 같은 세기로 가열했다. 이 결과로 비열을 비교하려면 어떤 조건을 먼저 고쳐야 하는가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "두 액체의 부피를 같게 한다."
+          },
+          {
+            "id": "b",
+            "text": "두 액체의 질량을 같게 한다."
+          },
+          {
+            "id": "c",
+            "text": "콩기름의 가열 시간을 늘린다."
+          },
+          {
+            "id": "d",
+            "text": "최종 온도가 같아질 때까지 가열한다."
+          }
+        ],
+        "answer": "b",
+        "why": "온도 변화에는 비열뿐 아니라 질량도 영향을 줍니다. 다른 조건을 유지하고 질량을 같게 해야 온도 변화로 비열을 비교할 수 있습니다."
+      }
+    },
+    {
+      "id": "liquid-heat#q3",
+      "slug": "liquid-heat",
+      "sha256": "d02fbcb8c4bfe2aa97f8756f73e6068ae94dd3b4407927148468dd1d782e2fc3",
+      "after": {
+        "id": "liquid-heat#q3",
+        "slug": "liquid-heat",
+        "question": "물의 센서는 액체 속에 떠 있고 콩기름의 센서는 가열된 금속 비커 바닥에 닿았다. 먼저 해야 할 조치는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "두 센서를 모두 비커 바닥에 댄다."
+          },
+          {
+            "id": "b",
+            "text": "두 센서를 모두 액체 밖에 둔다."
+          },
+          {
+            "id": "c",
+            "text": "두 센서를 비커와 떨어진 액체 속에 둔다."
+          },
+          {
+            "id": "d",
+            "text": "물의 센서만 꺼내어 온도를 다시 잰다."
+          }
+        ],
+        "answer": "c",
+        "why": "두 센서가 각각 액체의 온도를 재도록 끝을 액체 속에 두되 비커에 닿지 않게 해야 합니다. 잘못된 위치의 값을 액체의 온도나 0℃로 해석하지 않습니다."
+      }
+    },
+    {
+      "id": "liquid-heat#q4",
+      "slug": "liquid-heat",
+      "sha256": "78a28ae9ae8dc63f0199ff48e08fa767ca4f994c518f9c2a8f52946ad46d6fec",
+      "after": {
+        "id": "liquid-heat#q4",
+        "slug": "liquid-heat",
+        "question": "질량과 처음 온도는 같지만 물에는 10 J/s, 콩기름에는 20 J/s의 열이 전달됐다. 온도–시간 그래프의 기울기를 비교할 때 적절한 판단은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "기울기가 큰 액체의 비열이 항상 크다."
+          },
+          {
+            "id": "b",
+            "text": "기울기가 작은 액체의 비열이 항상 작다."
+          },
+          {
+            "id": "c",
+            "text": "질량이 같으므로 가열 조건도 같다."
+          },
+          {
+            "id": "d",
+            "text": "가열 세기를 같게 하여 다시 비교한다."
+          }
+        ],
+        "answer": "d",
+        "why": "기울기는 비열뿐 아니라 매초 전달되는 열량에도 영향을 받습니다. 질량만 같게 해서는 부족하며 같은 세기로 가열해 비교해야 합니다."
+      }
+    },
+    {
+      "id": "phase-mass#q1",
+      "slug": "phase-mass",
+      "sha256": "079ced730f68a101e611936a8df7e163b4219a82744f519e4d1e4530dcceb4e4",
+      "after": {
+        "id": "phase-mass#q1",
+        "slug": "phase-mass",
+        "question": "뚜껑을 닫은 병을 닦아 측정했더니 응고 전후 모두 13.5 g이었다. 같은 병 안의 올리브유 높이는 낮아졌다. 관찰 결과는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "질량은 같고 부피는 감소"
+          },
+          {
+            "id": "b",
+            "text": "질량과 부피가 모두 감소"
+          },
+          {
+            "id": "c",
+            "text": "질량은 증가하고 부피는 감소"
+          },
+          {
+            "id": "d",
+            "text": "질량은 같고 부피는 증가"
+          }
+        ],
+        "answer": "a",
+        "why": "같은 병에서 액면 높이가 낮아진 것은 올리브유의 부피 감소를 나타냅니다. 전후 저울값이 같으므로 부피 감소를 질량 감소로 해석하지 않습니다."
+      }
+    },
+    {
+      "id": "phase-mass#q2",
+      "slug": "phase-mass",
+      "sha256": "38a2bb6168c1d98deb8c71982bf7adb1e198f6eab3ee2ecf71aeb14c85ae0c52",
+      "after": {
+        "id": "phase-mass#q2",
+        "slug": "phase-mass",
+        "question": "처음 13.5 g이던 병이 냉각 후 13.8 g으로 측정됐다. 바깥 물기를 닦고 다시 재니 13.5 g이었다. 가장 적절한 해석은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "응고하며 기름 입자의 질량이 늘었다."
+          },
+          {
+            "id": "b",
+            "text": "병 바깥 물방울도 함께 측정됐다."
+          },
+          {
+            "id": "c",
+            "text": "부피가 증가한 만큼 기름이 무거워졌다."
+          },
+          {
+            "id": "d",
+            "text": "입자 사이 공간의 질량이 더해졌다."
+          }
+        ],
+        "answer": "b",
+        "why": "물기를 닦은 뒤 처음 질량으로 돌아왔으므로 추가된 저울값은 병 바깥 물기와 관련됩니다. 응고하여 기름 입자의 질량이 늘어난 결과가 아닙니다."
+      }
+    },
+    {
+      "id": "phase-mass#q3",
+      "slug": "phase-mass",
+      "sha256": "630b30eebbd57a5169e577a1010b7e07bf82176fff67f471e93f55c239fd7a40",
+      "after": {
+        "id": "phase-mass#q3",
+        "slug": "phase-mass",
+        "question": "물질이 새로 들어오거나 빠져나가지 않은 올리브유의 응고를 입자 모형으로 나타내려 한다. 알맞은 표현은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "입자의 개수를 늘리고 배열을 촘촘하게 한다."
+          },
+          {
+            "id": "b",
+            "text": "입자의 크기를 줄이고 개수는 그대로 둔다."
+          },
+          {
+            "id": "c",
+            "text": "입자의 종류·개수는 두고 배열을 바꾼다."
+          },
+          {
+            "id": "d",
+            "text": "입자 종류를 바꾸고 개수를 줄인다."
+          }
+        ],
+        "answer": "c",
+        "why": "상태 변화는 물질을 이루는 입자의 종류나 개수를 바꾸는 변화가 아닙니다. 입자 사이 거리와 배열의 변화로 부피 변화를 나타냅니다."
+      }
+    },
+    {
+      "id": "phase-mass#q4",
+      "slug": "phase-mass",
+      "sha256": "672d544de7a4f79801135a46cc44e4cba99ed7166de8c1e5191ac211098dc27b",
+      "after": {
+        "id": "phase-mass#q4",
+        "slug": "phase-mass",
+        "question": "빈 저울이 0.2 g인 채 응고 전 병을 재니 13.7 g이었다. 이후 영점을 맞추고 응고 후 병을 재니 13.5 g이었다. 다음 조치는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "차이 0.2 g을 기름의 질량 감소로 본다."
+          },
+          {
+            "id": "b",
+            "text": "차이 0.2 g을 기름의 부피 감소로 본다."
+          },
+          {
+            "id": "c",
+            "text": "응고 후 값에 처음 병의 질량을 더한다."
+          },
+          {
+            "id": "d",
+            "text": "같은 영점 조건으로 전후 질량을 다시 잰다."
+          }
+        ],
+        "answer": "d",
+        "why": "처음과 나중의 영점 조건이 다르므로 표시값 차이를 곧바로 상태 변화에 의한 질량 변화로 해석할 수 없습니다. 빈 저울의 영점을 확인하고 같은 조건으로 비교합니다."
+      }
+    },
+    {
+      "id": "rotating-disc#q1",
+      "slug": "rotating-disc",
+      "sha256": "31de6b3a65ef19ea453aed5a93bd0a5c5292885d1521ddd09a1c1b6f564203ab",
+      "after": {
+        "id": "rotating-disc#q1",
+        "slug": "rotating-disc",
+        "question": "마찰을 무시하고 원판 중심에서 구슬을 곧게 굴렸다. 원판이 반시계 방향으로 돌 때, 고정된 실험대에서 본 이동 / 종이에 남은 흔적은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "직선 / 진행 방향 오른쪽으로 휨"
+          },
+          {
+            "id": "b",
+            "text": "직선 / 진행 방향 왼쪽으로 휨"
+          },
+          {
+            "id": "c",
+            "text": "오른쪽으로 휨 / 직선"
+          },
+          {
+            "id": "d",
+            "text": "왼쪽으로 휨 / 직선"
+          }
+        ],
+        "answer": "a",
+        "why": "구슬은 고정된 실험대 기준으로 곧게 이동합니다. 구슬 아래의 종이가 반시계 방향으로 돌아가므로 종이에는 진행 방향 오른쪽으로 휜 흔적이 남습니다."
+      }
+    },
+    {
+      "id": "rotating-disc#q2",
+      "slug": "rotating-disc",
+      "sha256": "19aa7e22943b6fe0997e20c145a9ef20e8e5d38c19f88dd75645dce24b5c4c31",
+      "after": {
+        "id": "rotating-disc#q2",
+        "slug": "rotating-disc",
+        "question": "중심에서 같은 방향·속력으로 구슬을 굴렸다. 반시계 회전이 느린 A보다 빠른 B에서 종이에 남는 흔적은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "왼쪽으로 더 많이 휜다."
+          },
+          {
+            "id": "b",
+            "text": "왼쪽으로 더 적게 휜다."
+          },
+          {
+            "id": "c",
+            "text": "오른쪽으로 더 많이 휜다."
+          },
+          {
+            "id": "d",
+            "text": "오른쪽으로 더 적게 휜다."
+          }
+        ],
+        "answer": "c",
+        "why": "같은 이동 시간 동안 B의 종이가 더 큰 각도만큼 회전하므로 오른쪽으로 휘어지는 정도가 더 큽니다."
+      }
+    },
+    {
+      "id": "rotating-disc#q3",
+      "slug": "rotating-disc",
+      "sha256": "127631bbe9b7a6b367a36a4811819685dc91fc23001ef3939dc83c25e1ca6768",
+      "after": {
+        "id": "rotating-disc#q3",
+        "slug": "rotating-disc",
+        "question": "회전 속도에 따른 흔적의 차이를 비교한다. 두 실험의 구슬을 같은 출발점에서 굴릴 때 추가로 같게 유지해야 하는 조건은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "원판의 회전 속도와 흔적 모양"
+          },
+          {
+            "id": "b",
+            "text": "구슬의 출발 방향과 처음 속력"
+          },
+          {
+            "id": "c",
+            "text": "구슬의 질량과 마지막 도착 방향"
+          },
+          {
+            "id": "d",
+            "text": "원판의 회전 속도와 구슬의 색"
+          }
+        ],
+        "answer": "b",
+        "why": "구슬의 출발 방향과 속력을 같게 유지하고 원판의 회전 속도만 바꾸어야 흔적 차이를 회전 속도와 연결할 수 있습니다."
+      }
+    },
+    {
+      "id": "rotating-disc#q4",
+      "slug": "rotating-disc",
+      "sha256": "3a50811210fb52f57c8b745d0bbbe7eeaf7f684f27a95dd7d15533232bd9b5a8",
+      "after": {
+        "id": "rotating-disc#q4",
+        "slug": "rotating-disc",
+        "question": "지구의 서로 다른 위도에서 같은 속력으로 수평 이동하는 공기를 비교한다. 고위도에서 전향 효과가 더 큰 까닭은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "지표의 자전 선속력이 고위도에서 더 크다."
+          },
+          {
+            "id": "b",
+            "text": "지구가 한 바퀴 도는 시간이 고위도에서 더 짧다."
+          },
+          {
+            "id": "c",
+            "text": "같은 부피의 공기 질량이 고위도에서 항상 더 크다."
+          },
+          {
+            "id": "d",
+            "text": "지역 연직축 방향의 자전 성분이 고위도에서 더 크다."
+          }
+        ],
+        "answer": "d",
+        "why": "지구 자전 각속도는 같지만 지역 연직축 방향의 성분 Ωsinφ는 위도의 절댓값이 커질수록 커집니다. 같은 수평 속력에서 전향 효과도 커집니다."
+      }
+    },
+    {
+      "id": "quadrat-community#q1",
+      "slug": "quadrat-community",
+      "sha256": "3fe68bac1a3452b9138e0f897d15e7bbf2d474d0ad952846d6c96c020716cd8e",
+      "after": {
+        "id": "quadrat-community#q1",
+        "slug": "quadrat-community",
+        "question": "25 cm² 방형구 다섯 개에서 A종이 총 30개 관찰되었다. A종의 밀도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.24개체/cm²"
+          },
+          {
+            "id": "b",
+            "text": "1.20개체/cm²"
+          },
+          {
+            "id": "c",
+            "text": "6.00개체/cm²"
+          },
+          {
+            "id": "d",
+            "text": "30.00개체/cm²"
+          }
+        ],
+        "answer": "a",
+        "why": "전체 조사 면적은 25×5=125 cm²입니다. 밀도는 30÷125=0.24개체/cm²입니다."
+      }
+    },
+    {
+      "id": "quadrat-community#q2",
+      "slug": "quadrat-community",
+      "sha256": "61088bb8047a4cc27127696e676cf717e38fdf6da77b2a584b8c6dff98b775d5",
+      "after": {
+        "id": "quadrat-community#q2",
+        "slug": "quadrat-community",
+        "question": "다섯 방형구에서 A는 3곳, B는 4곳, C는 3곳에 출현했다. A의 빈도 / 상대빈도는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.30 / 60%"
+          },
+          {
+            "id": "b",
+            "text": "0.60 / 30%"
+          },
+          {
+            "id": "c",
+            "text": "0.60 / 60%"
+          },
+          {
+            "id": "d",
+            "text": "0.30 / 30%"
+          }
+        ],
+        "answer": "b",
+        "why": "빈도는 3÷5=0.60입니다. 세 종의 출현 횟수 합이 10이므로 상대빈도는 3÷10×100=30%입니다."
+      }
+    },
+    {
+      "id": "quadrat-community#q3",
+      "slug": "quadrat-community",
+      "sha256": "719c6a2cc989ea781fb047252e160d66819254445cfd342d135b52b251c15c9e",
+      "after": {
+        "id": "quadrat-community#q3",
+        "slug": "quadrat-community",
+        "question": "A의 상대밀도·상대빈도·상대피도는 60·20·15%, B는 25·45·55%, C는 15·35·30%이다. 중요도가 가장 큰 종과 그 값은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "A종 · 95"
+          },
+          {
+            "id": "b",
+            "text": "A종 · 60"
+          },
+          {
+            "id": "c",
+            "text": "B종 · 125"
+          },
+          {
+            "id": "d",
+            "text": "C종 · 80"
+          }
+        ],
+        "answer": "c",
+        "why": "세 상대값을 더하면 A=95, B=125, C=80입니다. 개체 수의 비율이 가장 큰 A와 중요도가 가장 큰 B가 반드시 같지는 않습니다."
+      }
+    },
+    {
+      "id": "quadrat-community#q4",
+      "slug": "quadrat-community",
+      "sha256": "e4bf0c192db560666004e66aaf18a5161d719edeff3c6fefd756bbd8be82e1ec",
+      "after": {
+        "id": "quadrat-community#q4",
+        "slug": "quadrat-community",
+        "question": "다섯 곳 중 한 방형구에서 세 종이 모두 관찰되지 않았다. 나머지 조사 결과와 합산하는 방법은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "빈 곳을 제외해 네 곳의 면적으로 나눈다."
+          },
+          {
+            "id": "b",
+            "text": "빈 곳의 개체 수를 한 개씩 더하여 나눈다."
+          },
+          {
+            "id": "c",
+            "text": "식물이 많은 다른 곳의 값을 대신 사용한다."
+          },
+          {
+            "id": "d",
+            "text": "개체 수는 0으로 두고 다섯 곳을 포함한다."
+          }
+        ],
+        "answer": "d",
+        "why": "빈 방형구도 무작위로 뽑힌 표본입니다. 개체 수와 점유 면적은 0으로 기록하되 전체 조사 면적과 방형구 수에서는 빼지 않습니다."
+      }
+    },
+    {
+      "id": "ph-comparison#q1",
+      "slug": "ph-comparison",
+      "sha256": "a1d7cda1abbae4bdce523b83f7e8bba71351fc129216eb630c195b2862ebbcd3",
+      "after": {
+        "id": "ph-comparison#q1",
+        "slug": "ph-comparison",
+        "question": "25 °C의 0.1 M 염산과 0.1 M 아세트산에서 pH가 각각 1.00, 2.88로 나타났다. [H₃O⁺]의 대소 관계는?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "염산 > 아세트산"
+          },
+          {
+            "id": "b",
+            "text": "염산 < 아세트산"
+          },
+          {
+            "id": "c",
+            "text": "염산 = 아세트산"
+          },
+          {
+            "id": "d",
+            "text": "두 용액 모두 0"
+          }
+        ],
+        "answer": "a",
+        "why": "pH가 작을수록 [H₃O⁺]가 큽니다. 같은 초기 농도라도 염산은 거의 모두 해리하고 아세트산은 일부만 이온화합니다."
+      }
+    },
+    {
+      "id": "ph-comparison#q2",
+      "slug": "ph-comparison",
+      "sha256": "203ec04faf661934e2246a3d99f429af389f715f2819c205e99f6a5e3431135f",
+      "after": {
+        "id": "ph-comparison#q2",
+        "slug": "ph-comparison",
+        "question": "25 °C에서 암모니아수의 [OH⁻]가 약 1.3 × 10⁻³ M이다. pH에 가장 가까운 값은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "2.9"
+          },
+          {
+            "id": "b",
+            "text": "11.1"
+          },
+          {
+            "id": "c",
+            "text": "3.9"
+          },
+          {
+            "id": "d",
+            "text": "10.1"
+          }
+        ],
+        "answer": "b",
+        "why": "pOH≈2.9이고 25 °C에서 pH+pOH=14이므로 pH≈11.1입니다."
+      }
+    },
+    {
+      "id": "ph-comparison#q3",
+      "slug": "ph-comparison",
+      "sha256": "9909d22e0c40af80f6281957ee2c385209ee2bc91f3478ceb244d5cd49f28363",
+      "after": {
+        "id": "ph-comparison#q3",
+        "slug": "ph-comparison",
+        "question": "0.1 M 아세트산에서 [H₃O⁺]=1.33 × 10⁻³ M이다. 이온화한 비율은 약 얼마인가?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "0.0133%"
+          },
+          {
+            "id": "b",
+            "text": "0.133%"
+          },
+          {
+            "id": "c",
+            "text": "1.33%"
+          },
+          {
+            "id": "d",
+            "text": "13.3%"
+          }
+        ],
+        "answer": "c",
+        "why": "이온화한 비율은 (1.33×10⁻³÷0.1)×100=1.33%입니다."
+      }
+    },
+    {
+      "id": "ph-comparison#q4",
+      "slug": "ph-comparison",
+      "sha256": "8a3795306ddc27820410b9131af7fb7ff3c609e09f5d131296bafbf400041b4c",
+      "after": {
+        "id": "ph-comparison#q4",
+        "slug": "ph-comparison",
+        "question": "0.1 M 아세트산이 x M만큼 이온화했다. Kₐ를 나타내는 식은?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "x / (0.1 − x)"
+          },
+          {
+            "id": "b",
+            "text": "x² / 0.1²"
+          },
+          {
+            "id": "c",
+            "text": "(0.1 − x)² / x"
+          },
+          {
+            "id": "d",
+            "text": "x² / (0.1 − x)"
+          }
+        ],
+        "answer": "d",
+        "why": "생성된 CH₃COO⁻와 H₃O⁺가 각각 x M이고 남은 CH₃COOH는 0.1−x M이므로 Kₐ=x²/(0.1−x)입니다."
+      }
+    }
+  ],
+  "transferQuestions": [
+    {
+      "id": "water-electrolysis@polarity",
+      "sha256": "6b46c5835fec3afb254806ea9c95b84420041cd7be67b3e62d164e98c4992a95",
+      "after": {
+        "id": "water-electrolysis@polarity",
+        "topic": "다른 조건의 결과 해석",
+        "question": "관을 비우고 전원 연결을 반대로 했다. 새로 모이는 기체의 관계는?",
+        "choices": [
+          "기체 종류 유지 · 부피비 역전",
+          "기체 종류 교환 · 수소 부피 두 배",
+          "양쪽 모두 수소 · 부피 같음",
+          "양쪽 모두 산소 · 부피 같음"
+        ],
+        "answer": 1,
+        "why": "좌우 위치가 바뀌어도 수소는 (−)극에서 생기며 산소 부피의 두 배입니다.",
+        "checks": [
+          "water-electrolysis#q1",
+          "water-electrolysis#q4"
+        ]
+      }
+    },
+    {
+      "id": "water-electrolysis@leak",
+      "sha256": "2ef89a14e0b9e5e6b57f6c1a36bac04ff7a7016329b7ef716f2c4e8efa89e00e",
+      "after": {
+        "id": "water-electrolysis@leak",
+        "topic": "다른 조건의 결과 해석",
+        "question": "수소 6 mL가 모이는 동안 산소 관에서만 일부 기체가 샜다. 읽은 부피비 V(수소)/V(산소)는?",
+        "choices": [
+          "2보다 작음",
+          "2와 같음",
+          "2보다 큼",
+          "반드시 1"
+        ],
+        "answer": 2,
+        "why": "산소의 읽은 부피만 줄어들므로 나눈 값이 2보다 커집니다.",
+        "checks": [
+          "water-electrolysis#q2"
+        ]
+      }
+    },
+    {
+      "id": "cell-micrometry@scale",
+      "sha256": "4869469685f95aefdf72a75d76fe3bfb2d877c14ac4dbb8e2c2b8be2b6e594fc",
+      "after": {
+        "id": "cell-micrometry@scale",
+        "topic": "다른 조건의 결과 해석",
+        "question": "200배에서 접안 40칸과 대물 20칸이 같다. 대물 한 칸은 10 µm이다. 같은 접안렌즈로 400배에서 세포가 60칸을 차지했다. 길이는?",
+        "choices": [
+          "75 µm",
+          "150 µm",
+          "300 µm",
+          "600 µm"
+        ],
+        "answer": 1,
+        "why": "200배에서 한 칸은 5 µm, 400배에서는 2.5 µm이므로 150 µm입니다.",
+        "checks": [
+          "cell-micrometry#q1",
+          "cell-micrometry#q2"
+        ]
+      }
+    },
+    {
+      "id": "cell-micrometry@interval",
+      "sha256": "ee867a63caa09b98136dc2f009086946e3262ac4ac8c4adda4b7f0106b2e2733",
+      "after": {
+        "id": "cell-micrometry@interval",
+        "topic": "다른 조건의 결과 해석",
+        "question": "세포의 양 끝 접안 눈금은 22와 58이며 한 칸은 4 µm이다. 길이는?",
+        "choices": [
+          "90 µm",
+          "144 µm",
+          "232 µm",
+          "320 µm"
+        ],
+        "answer": 1,
+        "why": "오른쪽에서 왼쪽 눈금을 빼면 36칸입니다. 한 칸의 실제 길이를 곱하여 (58−22)×4=144 µm를 얻습니다.",
+        "checks": [
+          "cell-micrometry#q1",
+          "cell-micrometry#q3"
+        ]
+      }
+    },
+    {
+      "id": "leaf-pigments@rf",
+      "sha256": "d36c1903aa4910bd02c1f671b2b286e2662c21a43fbf4e9e7060e769fac9ab1d",
+      "after": {
+        "id": "leaf-pigments@rf",
+        "topic": "다른 조건의 결과 해석",
+        "question": "출발선에서 용매는 5.0 cm, 두 색소는 4.0 cm와 1.5 cm 이동했다. 두 전개율의 차는?",
+        "choices": [
+          "0.30",
+          "0.50",
+          "0.80",
+          "2.50"
+        ],
+        "answer": 1,
+        "why": "0.80−0.30=0.50이며 전개율에는 길이 단위가 없습니다.",
+        "checks": [
+          "leaf-pigments#q1"
+        ]
+      }
+    },
+    {
+      "id": "leaf-pigments@mark",
+      "sha256": "b76c9e567a0176f66638885e4b5b909262881bc6bfb2c208bfa32ef4ddf405d9",
+      "after": {
+        "id": "leaf-pigments@mark",
+        "topic": "다른 조건의 결과 해석",
+        "question": "판을 꺼낸 뒤 용매 전선을 표시하지 않아 위치를 잃었다. 색소 위치만 남았을 때 구할 수 없는 것은?",
+        "choices": [
+          "색 띠의 개수",
+          "색 띠 사이의 거리",
+          "색소의 전개율",
+          "색 띠의 위아래 순서"
+        ],
+        "answer": 2,
+        "why": "전개율에는 용매가 이동한 거리가 필요합니다.",
+        "checks": [
+          "leaf-pigments#q1",
+          "leaf-pigments#q2"
+        ]
+      }
+    },
+    {
+      "id": "digestive-enzymes@heat-enzyme",
+      "sha256": "90fe8e713f66cb8188d0a3746f111654b326142ca4e36307e36834ead59780bd",
+      "after": {
+        "id": "digestive-enzymes@heat-enzyme",
+        "topic": "다른 조건의 결과 해석",
+        "question": "B의 효소를 끓여 식혔더니 변성되어 작용하지 않았다. 나머지 조건은 같다. B의 결과는?",
+        "choices": [
+          "튜브 안 청람색 · 외액 푸른색",
+          "튜브 안 청람색 · 외액 황적색",
+          "튜브 안 갈색 · 외액 푸른색",
+          "튜브 안 갈색 · 외액 황적색"
+        ],
+        "answer": 0,
+        "why": "녹말이 남아 청람색이고 새로 생긴 엿당의 외액 검출도 음성입니다.",
+        "checks": [
+          "digestive-enzymes#q1",
+          "digestive-enzymes#q2"
+        ]
+      }
+    },
+    {
+      "id": "digestive-enzymes@sample",
+      "sha256": "27682fc6773fd93c99021aa5647f376b6a96777f9b0eb6dd61dfa46016743236",
+      "after": {
+        "id": "digestive-enzymes@sample",
+        "topic": "다른 조건의 결과 해석",
+        "question": "세 조건에서 막을 통과한 물질을 비교한다. 검출용 시험관으로 옮길 시료는?",
+        "choices": [
+          "각 튜브 안쪽 용액 같은 양",
+          "각 비커 바깥 용액 같은 양",
+          "A 안쪽과 B·C 바깥 용액",
+          "A·B 바깥과 C 안쪽 용액"
+        ],
+        "answer": 1,
+        "why": "세 조건 모두 같은 위치인 막 바깥의 용액을 채취해야 비교할 수 있습니다.",
+        "checks": [
+          "digestive-enzymes#q2",
+          "digestive-enzymes#q4"
+        ]
+      }
+    },
+    {
+      "id": "spring-wave-speed@period",
+      "sha256": "80caab6144f8dae7859b0eb7eaeeeb75adbd153321cd6c5334f92c68caeee00f",
+      "after": {
+        "id": "spring-wave-speed@period",
+        "topic": "다른 조건의 결과 해석",
+        "question": "한 지점의 리본이 3.0초 동안 세 번 왕복했다. 파장이 2.0 m이면 속력은?",
+        "choices": [
+          "0.67 m/s",
+          "1.5 m/s",
+          "2.0 m/s",
+          "6.0 m/s"
+        ],
+        "answer": 2,
+        "why": "주기는 1.0초이므로 2.0/1.0=2.0 m/s입니다.",
+        "checks": [
+          "spring-wave-speed#q1",
+          "spring-wave-speed#q4"
+        ]
+      }
+    },
+    {
+      "id": "spring-wave-speed@longitudinal",
+      "sha256": "71ddde6700a14cceab6f541c562400253ab1906a52e62ccf690a94cdb1441d41",
+      "after": {
+        "id": "spring-wave-speed@longitudinal",
+        "topic": "다른 조건의 결과 해석",
+        "question": "종파에서 이웃한 밀한 곳의 간격은 1.5 m, 진동수는 2 Hz였다. 속력은?",
+        "choices": [
+          "0.75 m/s",
+          "1.33 m/s",
+          "3.0 m/s",
+          "6.0 m/s"
+        ],
+        "answer": 2,
+        "why": "밀한 곳 사이가 한 파장이므로 2×1.5=3.0 m/s입니다.",
+        "checks": [
+          "spring-wave-speed#q2",
+          "spring-wave-speed#q3",
+          "spring-wave-speed#q4"
+        ]
+      }
+    },
+    {
+      "id": "coastal-inundation@location",
+      "sha256": "f55583da240db9e92393f12c7f4ac5b386285ebc5377766862d585781442c91d",
+      "after": {
+        "id": "coastal-inundation@location",
+        "topic": "다른 조건의 결과 해석",
+        "question": "학교를 가장 낮은 땅으로 옮기고 집을 가장 높은 땅으로 옮겼다. 물을 조금씩 부을 때 먼저 살펴볼 침수 장소는?",
+        "choices": [
+          "높은 땅의 집",
+          "중간 땅의 밭",
+          "낮은 땅의 학교",
+          "세 장소와 무관한 곳"
+        ],
+        "answer": 2,
+        "why": "같은 수면 조건에서 가장 낮은 바닥이 먼저 물에 잠깁니다. 시설의 이름이 바뀌어도 높이를 기준으로 비교합니다.",
+        "checks": [
+          "coastal-inundation#q1",
+          "coastal-inundation#q2"
+        ]
+      }
+    },
+    {
+      "id": "coastal-inundation@control",
+      "sha256": "9f3f4d618b2f8a43008addff37cc7efe3238d46bca6f831fdbe3dafac0ac1a31",
+      "after": {
+        "id": "coastal-inundation@control",
+        "topic": "다른 조건의 결과 해석",
+        "question": "첫 실험에서는 낮은 땅에 집을 놓고 수면을 0에서 2눈금까지 높였다. 집을 놓는 땅 높이만 바꾸어 비교하는 두 번째 실험은?",
+        "choices": [
+          "낮은 땅의 집 · 수면 0→4눈금",
+          "높은 땅의 집 · 수면 0→4눈금",
+          "낮은 땅의 집 · 수면 2→4눈금",
+          "높은 땅의 집 · 수면 0→2눈금"
+        ],
+        "answer": 3,
+        "why": "집의 높이를 바꾸고 처음과 나중 수면은 같게 맞춰야 위치에 따른 침수 차이를 비교할 수 있습니다.",
+        "checks": [
+          "coastal-inundation#q2",
+          "coastal-inundation#q3"
+        ]
+      }
+    },
+    {
+      "id": "sea-level-causes@volume",
+      "sha256": "612c000f08c63c44934b9313679096b134b237e2a9e0fba72194450f6294c12b",
+      "after": {
+        "id": "sea-level-causes@volume",
+        "topic": "다른 조건의 결과 해석",
+        "question": "얼음 없는 수조에서 질량이 일정한 물 600.0 mL를 가열했더니 603.6 mL가 되었다. 물의 부피 증가량과 밀도 변화는?",
+        "choices": [
+          "3.6 mL · 감소",
+          "3.6 mL · 증가",
+          "603.6 mL · 감소",
+          "603.6 mL · 증가"
+        ],
+        "answer": 0,
+        "why": "증가량은 603.6−600.0=3.6 mL입니다. 질량이 같고 부피가 커졌으므로 밀도는 감소합니다.",
+        "checks": [
+          "sea-level-causes#q1"
+        ]
+      }
+    },
+    {
+      "id": "sea-level-causes@isolate",
+      "sha256": "3e978574a1c47cf0b7884088a6f3f33e7fe99c9182d740c170b9b72af3967610",
+      "after": {
+        "id": "sea-level-causes@isolate",
+        "topic": "다른 조건의 결과 해석",
+        "question": "얼음 융해에 따른 물 추가 효과만 비교하려 한다. B와 C의 처음 물 양·수조·받침은 같다. 더 맞춰야 할 조건은?",
+        "choices": [
+          "B에만 얼음을 더 놓기",
+          "두 수조의 나중 온도 같게 맞추기",
+          "두 수조의 나중 수면 같게 맞추기",
+          "C에서 녹은 물을 모두 밖으로 받기"
+        ],
+        "answer": 1,
+        "why": "나중 온도를 같게 맞추면 열팽창 조건을 통제하면서 추가된 물의 효과를 비교할 수 있습니다.",
+        "checks": [
+          "sea-level-causes#q2",
+          "sea-level-causes#q3",
+          "sea-level-causes#q4"
+        ]
+      }
+    },
+    {
+      "id": "standard-solution@tare",
+      "sha256": "dcd98166405789deb4119543d392b737e48a35a53d68198314d1acbf2d1343e9",
+      "after": {
+        "id": "standard-solution@tare",
+        "topic": "다른 조건의 결과 해석",
+        "question": "빈 질량 접시는 2.00 g이다. 영점을 맞추지 않고 접시와 NaCl의 합이 5.85 g이 되게 쟀다. 담긴 NaCl 질량은?",
+        "choices": [
+          "2.00 g",
+          "3.85 g",
+          "5.85 g",
+          "7.85 g"
+        ],
+        "answer": 1,
+        "why": "저울이 가리킨 전체 질량에서 접시 질량을 빼면 5.85−2.00=3.85 g입니다.",
+        "checks": [
+          "standard-solution#q1",
+          "standard-solution#q3"
+        ]
+      }
+    },
+    {
+      "id": "standard-solution@overfill",
+      "sha256": "f09eaa846e62ebee390199264838f9a4f049070d631fc231b2b7d12fee64577f",
+      "after": {
+        "id": "standard-solution@overfill",
+        "topic": "다른 조건의 결과 해석",
+        "question": "정확한 NaCl 양을 넣었지만 표시선을 넘어 채웠다. 그 용액을 잘 섞은 뒤 일부 덜어 100 mL로 맞추면?",
+        "choices": [
+          "농도가 목표보다 작게 남는다",
+          "농도가 목표값으로 회복된다",
+          "농도가 목표보다 크게 변한다",
+          "NaCl 몰수가 처음으로 회복된다"
+        ],
+        "answer": 0,
+        "why": "균일한 용액을 덜면 용질과 용매가 함께 빠져나가 농도는 달라지지 않습니다. 과도하게 희석된 농도가 유지됩니다.",
+        "checks": [
+          "standard-solution#q2",
+          "standard-solution#q3"
+        ]
+      }
+    },
+    {
+      "id": "serial-dilution@aliquot",
+      "sha256": "e9c62f3becf1dede8a4d1e7f7b0631df11afe6ce89e66ed01da3e7afd1a1d799",
+      "after": {
+        "id": "serial-dilution@aliquot",
+        "topic": "다른 조건의 결과 해석",
+        "question": "0.100 M 용액 5.0 mL를 취해 100 mL로 정용했다. 농도는?",
+        "choices": [
+          "0.0200 M",
+          "0.0100 M",
+          "0.00500 M",
+          "0.00200 M"
+        ],
+        "answer": 2,
+        "why": "희석 전후 용질의 몰수가 같으므로 0.100×5.0/100=0.00500 M입니다.",
+        "checks": [
+          "serial-dilution#q1"
+        ]
+      }
+    },
+    {
+      "id": "serial-dilution@probe",
+      "sha256": "b578348036f1efa97329628ed5e7983c6e20a6acdcbf2972cff65b11c30a822c",
+      "after": {
+        "id": "serial-dilution@probe",
+        "topic": "다른 조건의 결과 해석",
+        "question": "A를 측정한 전극에 A의 용액이 남은 채 더 묽은 B를 측정하려 한다. A의 영향을 줄이는 조작은?",
+        "choices": [
+          "B를 더 진하게 만들어 측정",
+          "전극을 증류수로 씻은 뒤 측정",
+          "A의 pH를 B의 결과로 사용",
+          "전극을 닦지 않고 B를 계속 희석"
+        ],
+        "answer": 1,
+        "why": "이전 용액이 새 시료에 섞이지 않도록 전극을 세척해야 농도에 따른 pH를 비교할 수 있습니다.",
+        "checks": [
+          "serial-dilution#q2",
+          "serial-dilution#q3"
+        ]
+      }
+    },
+    {
+      "id": "vinegar-titration@mean",
+      "sha256": "e598624b8b82790143decad068a8be3be9284dd8b3df3ce5e7ab660e870e42c4",
+      "after": {
+        "id": "vinegar-titration@mean",
+        "topic": "다른 조건의 결과 해석",
+        "question": "세 번의 NaOH 사용량은 18.40, 18.50, 18.60 mL였다. 0.100 M NaOH로 원액 2.00 mL에 해당하는 시료를 적정했다. 평균으로 구한 원액 농도는?",
+        "choices": [
+          "0.0925 M",
+          "0.185 M",
+          "0.925 M",
+          "9.25 M"
+        ],
+        "answer": 2,
+        "why": "평균 18.50 mL의 NaOH는 0.001850 mol이며 원액 0.00200 L로 나누면 0.925 M입니다.",
+        "checks": [
+          "vinegar-titration#q1",
+          "vinegar-titration#q2",
+          "vinegar-titration#q4"
+        ]
+      }
+    },
+    {
+      "id": "vinegar-titration@overshoot",
+      "sha256": "7f6ad2d1af82678523fc93c48d8c1c91732c014f5738554470505fa5d32d3249",
+      "after": {
+        "id": "vinegar-titration@overshoot",
+        "topic": "다른 조건의 결과 해석",
+        "question": "종말점을 지나 진한 분홍색이 된 시료를 그대로 종말점으로 계산했다. 다른 조건이 정확하면 계산한 아세트산 함량은?",
+        "choices": [
+          "실제보다 작다",
+          "실제보다 크다",
+          "실제와 같다",
+          "희석 배수와 항상 무관하다"
+        ],
+        "answer": 1,
+        "why": "실제로 중화에 필요한 양보다 많은 NaOH를 사용한 것으로 계산하므로 아세트산의 양도 크게 구합니다.",
+        "checks": [
+          "vinegar-titration#q3",
+          "vinegar-titration#q4"
+        ]
+      }
+    },
+    {
+      "id": "acoustic-resonance@frequency",
+      "sha256": "21b178eac8394046614403a0f11a42de3c302851d856032719617e88969219bb",
+      "after": {
+        "id": "acoustic-resonance@frequency",
+        "topic": "다른 진동수에서 비교",
+        "question": "공기 온도를 유지하고 진동수를 1000 Hz에서 1200 Hz로 바꾸었다. 이웃한 공명 길이의 간격과 음속은 어떻게 되는가?",
+        "choices": [
+          "간격 증가 · 음속 일정",
+          "간격 감소 · 음속 일정",
+          "간격 일정 · 음속 증가",
+          "간격 감소 · 음속 증가"
+        ],
+        "answer": 1,
+        "why": "같은 공기 조건에서 음속은 일정합니다. 진동수가 증가하면 λ=v/f가 작아지므로 공명 길이 간격 λ/2도 감소합니다.",
+        "checks": [
+          "acoustic-resonance#q1",
+          "acoustic-resonance#q2"
+        ]
+      }
+    },
+    {
+      "id": "acoustic-resonance@skipped",
+      "sha256": "051c0c7f80931e91464433d824d6ea57c6c3bcd1d63e2824ce9e298d5ce4cacf",
+      "after": {
+        "id": "acoustic-resonance@skipped",
+        "topic": "측정 간격의 해석",
+        "question": "소리가 작은 지점을 찾다가 중간의 한 지점을 놓쳤다. 표시한 두 지점이 서로 이웃하다고 생각해 파장을 계산하면 음속은?",
+        "choices": [
+          "실제의 1/2배",
+          "실제와 같음",
+          "실제의 2배",
+          "실제의 4배"
+        ],
+        "answer": 2,
+        "why": "실제 한 파장만큼 떨어진 두 지점을 반 파장으로 보아 길이를 두 배하므로, 계산한 파장과 음속도 실제의 두 배가 됩니다.",
+        "checks": [
+          "acoustic-resonance#q1",
+          "acoustic-resonance#q2"
+        ]
+      }
+    },
+    {
+      "id": "electroplating@ions",
+      "sha256": "c508c7bab1b8ef091bada32a29f3d2b7312acf3ab2a1e8f639e5ace634bfcc60",
+      "after": {
+        "id": "electroplating@ions",
+        "topic": "이온 공급과 반응",
+        "question": "구리 양극이 녹아 공급한 Cu²⁺의 양과 음극에서 석출된 Cu의 몰수가 같다. 다른 반응과 부피 변화를 무시하면 용액의 Cu²⁺ 농도는?",
+        "choices": [
+          "감소한다",
+          "증가한다",
+          "거의 일정하다",
+          "반드시 0이 된다"
+        ],
+        "answer": 2,
+        "why": "양극에서 생기는 Cu²⁺의 양과 음극에서 소비되는 양이 같으므로 용액 속 구리 이온의 전체 양은 유지됩니다.",
+        "checks": [
+          "electroplating#q1",
+          "electroplating#q2"
+        ]
+      }
+    },
+    {
+      "id": "electroplating@reverse",
+      "sha256": "aa0c98010188569d29ffc7564ee0a2791fa9771f609d802047db12a2e0700f35",
+      "after": {
+        "id": "electroplating@reverse",
+        "topic": "극성을 바꾼 결과",
+        "question": "구리판을 (−), 철 펜던트를 (+)에 연결했다. 외부 전원에 의해 환원되어 구리가 석출되는 전극과 반응은?",
+        "choices": [
+          "펜던트 · Cu²⁺ + 2e⁻ → Cu",
+          "구리판 · Cu²⁺ + 2e⁻ → Cu",
+          "펜던트 · Cu → Cu²⁺ + 2e⁻",
+          "구리판 · Cu → Cu²⁺ + 2e⁻"
+        ],
+        "answer": 1,
+        "why": "외부 전원의 음극에 연결된 구리판에서 구리 이온이 전자를 받아 환원됩니다. 도금 대상인 펜던트가 양극이면 원하는 연결과 반대입니다.",
+        "checks": [
+          "electroplating#q1",
+          "electroplating#q2"
+        ]
+      }
+    },
+    {
+      "id": "leaf-starch@half",
+      "sha256": "2fabe12a75b22d107bc0faab7020bb865a14c11db3d8295d1bbed5c4bda65847",
+      "after": {
+        "id": "leaf-starch@half",
+        "topic": "같은 잎의 두 부분 비교",
+        "question": "처음 녹말이 거의 없는 잎의 오른쪽 절반을 가리고 충분히 빛을 비췄다. 처리 후 아이오딘 반응으로 예상되는 색은?",
+        "choices": [
+          "왼쪽 청람색 · 오른쪽 청람색",
+          "왼쪽 황갈색 · 오른쪽 청람색",
+          "왼쪽 청람색 · 오른쪽 황갈색",
+          "왼쪽 황갈색 · 오른쪽 황갈색"
+        ],
+        "answer": 2,
+        "why": "빛을 받은 왼쪽에서는 녹말이 만들어져 청람색 반응을 보이고, 가린 오른쪽에서는 같은 녹말 반응이 나타나지 않습니다.",
+        "checks": [
+          "leaf-starch#q1",
+          "leaf-starch#q4"
+        ]
+      }
+    },
+    {
+      "id": "leaf-starch@rice",
+      "sha256": "cdaad807209608e28e22a6adeeb7cae43e1b4c0b32ab5a77d11624d8b9ae1c2d",
+      "after": {
+        "id": "leaf-starch@rice",
+        "topic": "다른 시료에 검출법 적용",
+        "question": "같은 아이오딘 용액이 밥에서는 청람색, 시료 X에서는 황갈색이었다. X에 관해 이 검사로 알 수 있는 것은?",
+        "choices": [
+          "녹말은 검출 안 됨 · 다른 양분은 판단 못 함",
+          "녹말은 검출 안 됨 · 다른 양분도 모두 없음",
+          "녹말이 검출됨 · 다른 양분은 판단 못 함",
+          "녹말이 검출됨 · 다른 양분도 모두 있음"
+        ],
+        "answer": 0,
+        "why": "녹말 반응이 나타나지 않았다는 사실과 모든 양분이 없다는 주장은 다릅니다. 설탕 같은 다른 양분의 유무는 녹말 검출 반응만으로 판단할 수 없습니다.",
+        "checks": [
+          "leaf-starch#q1",
+          "leaf-starch#q3"
+        ]
+      }
+    },
+    {
+      "id": "dissolution-mass@rod",
+      "sha256": "dc3a951d4835fcb34d84aa6ff135a314c51fd60360475386482854ef82ae102b",
+      "after": {
+        "id": "dissolution-mass@rod",
+        "topic": "측정 차이의 원인",
+        "question": "용해 전 118.5 g, 용해 후 106.5 g이었다. 용해 후 유리 막대 12.0 g만 빼놓은 것을 발견했다. 막대와 묻은 용액까지 모두 다시 올리면?",
+        "choices": [
+          "94.5 g",
+          "106.5 g",
+          "118.5 g",
+          "130.5 g"
+        ],
+        "answer": 2,
+        "why": "누락한 막대 12.0 g을 다시 포함하면 106.5+12.0=118.5 g입니다. 같은 물질을 비교하지 않은 저울값 차이를 용해로 질량이 없어진 증거로 볼 수 없습니다.",
+        "checks": [
+          "dissolution-mass#q2",
+          "dissolution-mass#q3"
+        ]
+      }
+    },
+    {
+      "id": "dissolution-mass@unmelted",
+      "sha256": "affa45ded649549478e1169917ac4ab235ddd4fc2d95ff69a3f291ee9ce60a93",
+      "after": {
+        "id": "dissolution-mass@unmelted",
+        "topic": "아직 덜 녹은 경우",
+        "question": "설탕 일부가 비커 바닥에 남은 상태에서 모든 기구와 물질은 118.5 g이었다. 흘리거나 증발하지 않고 완전히 녹인 뒤 같은 전체를 재면?",
+        "choices": [
+          "115.0 g",
+          "118.5 g",
+          "122.0 g",
+          "106.5 g"
+        ],
+        "answer": 1,
+        "why": "일부가 고체로 남아 있든 모두 용해되어 있든 물질이 드나들지 않으면 전체 무게는 같습니다. 보이는 결정의 크기만으로 전체 무게를 판단하지 않습니다.",
+        "checks": [
+          "dissolution-mass#q1",
+          "dissolution-mass#q3"
+        ]
+      }
+    },
+    {
+      "id": "food-web@decomposer",
+      "sha256": "7b071d24184db6e2c2a5415e7ea0434d1a438f2145c6e2e30b0899cd6c4be7c1",
+      "after": {
+        "id": "food-web@decomposer",
+        "topic": "다른 생물 카드",
+        "question": "Z는 움직이지 않지만 죽은 나뭇잎을 분해하며 자란다. 제시된 양분 획득 방법으로 분류하면?",
+        "choices": [
+          "비생물 요소",
+          "생산자",
+          "분해자",
+          "소비자"
+        ],
+        "answer": 2,
+        "why": "움직임만으로 생물 여부나 생태계 역할을 정하지 않습니다. Z는 자라는 생물이고 죽은 나뭇잎을 분해하여 양분을 얻으므로 이 자료에서는 분해자로 분류합니다.",
+        "checks": [
+          "food-web#q1"
+        ]
+      }
+    },
+    {
+      "id": "food-web@remaining-path",
+      "sha256": "8a428b70a8b6994546fb63a4fd637e5fc6950298e5b47eaa5519c706babf8b2d",
+      "after": {
+        "id": "food-web@remaining-path",
+        "topic": "다른 카드 제거",
+        "question": "벼 → 메뚜기 → 개구리 → 매, 벼 → 참새 → 매 두 경로를 만들었다. 메뚜기를 지웠을 때 그대로 남는 경로는?",
+        "choices": [
+          "벼 → 개구리 → 매",
+          "벼 → 메뚜기 → 매",
+          "벼 → 참새 → 매",
+          "벼 → 매 → 참새"
+        ],
+        "answer": 2,
+        "why": "메뚜기를 지워도 벼 → 참새 → 매에는 메뚜기가 없으므로 이 경로가 남습니다. 중간 카드를 지웠다고 그 카드 양쪽을 자동으로 직접 연결해서는 안 됩니다.",
+        "checks": [
+          "food-web#q2",
+          "food-web#q3",
+          "food-web#q4"
+        ]
+      }
+    },
+    {
+      "id": "living-environment@initial-size",
+      "sha256": "5f49fcb082af1444982cc87aeecac26fa3be9d8d225abcc3e9d0f3ea1b90d5c0",
+      "after": {
+        "id": "living-environment@initial-size",
+        "topic": "다른 실험 설계",
+        "question": "햇빛의 영향을 알아보며 A는 작은 식물, B는 큰 식물로 시작했다. 일주일 뒤 B가 더 크다는 이유만으로 햇빛의 효과라고 할 수 있을까?",
+        "choices": [
+          "처음 크기가 달라 바로 판단하기 어렵다.",
+          "일주일을 기다려 처음 크기 차이는 없어진다.",
+          "물의 양이 같으면 처음 크기는 달라도 된다.",
+          "같은 종이면 처음 크기는 달라도 된다."
+        ],
+        "answer": 0,
+        "why": "처음부터 크기가 달랐으므로 마지막 크기만 비교해서는 햇빛의 영향인지 구별하기 어렵습니다. 비슷하게 자란 식물을 준비하고 알아볼 조건 외에는 같게 합니다.",
+        "checks": [
+          "living-environment#q1",
+          "living-environment#q3"
+        ]
+      }
+    },
+    {
+      "id": "living-environment@dark-box",
+      "sha256": "74034ffbdc13b6eaa0181fca5dffbfdafd8642f9c01c8784e12f575e63870e35",
+      "after": {
+        "id": "living-environment@dark-box",
+        "topic": "다른 식물로 비교",
+        "question": "봉숭아의 자람에 햇빛이 필요한지 비교한다. 햇빛을 가릴 B의 어둠상자는 어떤 조건으로 준비할까?",
+        "choices": [
+          "공기 통함 · 물 안 줌",
+          "공기 차단 · 물 안 줌",
+          "공기 차단 · A와 물 같음",
+          "공기 통함 · A와 물 같음"
+        ],
+        "answer": 3,
+        "why": "햇빛만 다르게 하려면 물의 조건을 같게 하고 상자 안에도 공기가 통하도록 합니다. 상자를 씌우면서 물과 공기 조건까지 함께 바꾸면 햇빛의 영향만 비교할 수 없습니다.",
+        "checks": [
+          "living-environment#q1",
+          "living-environment#q3"
+        ]
+      }
+    },
+    {
+      "id": "yeast-fermentation@detector",
+      "sha256": "10348d264f283c962d215ef4c726e16eac422ad8c9853bce620c6437f8678105",
+      "after": {
+        "id": "yeast-fermentation@detector",
+        "topic": "검출 대조",
+        "question": "기체가 같은 만큼 모인 두 발효관에 같은 부피의 KOH 용액과 증류수를 각각 넣어 기울였다. KOH 쪽에서만 기체가 훨씬 크게 줄었다. 가장 직접적인 해석은?",
+        "choices": [
+          "용액 부피가 같으면 흡수되는 기체도 같다.",
+          "KOH에 잘 흡수되는 기체가 포함되어 있다.",
+          "줄어든 기체는 모두 처음 들어 있던 산소이다.",
+          "증류수 쪽 효모만 에탄올을 만들어 냈다."
+        ],
+        "answer": 1,
+        "why": "같은 부피의 용액을 넣는 대조로 단순한 용액 추가와 검출 용액의 흡수 효과를 구별합니다. 이 실험에서 KOH가 흡수하는 이산화 탄소를 확인할 수 있습니다.",
+        "checks": [
+          "yeast-fermentation#q2",
+          "yeast-fermentation#q3"
+        ]
+      }
+    },
+    {
+      "id": "yeast-fermentation@evidence",
+      "sha256": "1a001210038322a8a819d86685e921d586752be3dbb266e2a60c76e398e4c3b6",
+      "after": {
+        "id": "yeast-fermentation@evidence",
+        "topic": "다른 관찰 결과",
+        "question": "어떤 효모 배양액에서 CO₂만 검출했고 에탄올은 검사하지 않았다. 이 결과만으로 알코올발효를 확정할 수 있는가?",
+        "choices": [
+          "CO₂가 나오면 산소호흡만 가능하다.",
+          "CO₂가 나오면 알코올발효만 가능하다.",
+          "CO₂는 두 과정에서 나올 수 있어 부족하다.",
+          "CO₂가 나오면 두 과정 모두 불가능하다."
+        ],
+        "answer": 2,
+        "why": "산소호흡과 알코올발효 모두 이산화 탄소를 만들 수 있습니다. CO₂ 한 가지 결과만으로 둘을 구별하지 말고 에탄올 생성 등 추가 증거를 확인해야 합니다.",
+        "checks": [
+          "yeast-fermentation#q2",
+          "yeast-fermentation#q4"
+        ]
+      }
+    },
+    {
+      "id": "light-interference@distance",
+      "sha256": "15ebc1c3b83f7a0778b731921faa6390ca979cb62d63f6c2d280bb8a84474bdc",
+      "after": {
+        "id": "light-interference@distance",
+        "topic": "새 장치의 비교",
+        "question": "같은 파장의 빛으로 슬릿 간격과 스크린 거리를 모두 2배로 했다. 중심 부근 무늬 간격은 처음의 몇 배인가?",
+        "choices": [
+          "0.5배",
+          "1배",
+          "2배",
+          "4배"
+        ],
+        "answer": 1,
+        "why": "무늬 간격은 스크린 거리에 비례하고 슬릿 간격에 반비례하므로 2÷2=1배입니다.",
+        "checks": [
+          "light-interference#q1",
+          "light-interference#q2"
+        ]
+      }
+    },
+    {
+      "id": "light-interference@phase",
+      "sha256": "09ec579ce0122fa870bb608318b8eb661cfd089dd2b009e35bb5dd5f0b18609e",
+      "after": {
+        "id": "light-interference@phase",
+        "topic": "경로차 해석",
+        "question": "같은 위상·진폭의 두 빛이 만나는 P의 경로차는 2λ, Q의 경로차는 2.5λ이다. 두 지점의 간섭은?",
+        "choices": [
+          "P 보강 · Q 보강",
+          "P 상쇄 · Q 보강",
+          "P 보강 · Q 상쇄",
+          "P 상쇄 · Q 상쇄"
+        ],
+        "answer": 2,
+        "why": "경로차가 파장의 정수배인 P에서는 보강 간섭, 반파장의 홀수배인 Q에서는 상쇄 간섭이 일어납니다.",
+        "checks": [
+          "light-interference#q1",
+          "light-interference#q4"
+        ]
+      }
+    },
+    {
+      "id": "galileo-incline@distance",
+      "sha256": "ec730315631238fc8edc02e097c3add4bd7b10edd67ac74c63125a976ac92ac5",
+      "after": {
+        "id": "galileo-incline@distance",
+        "topic": "위치와 구간 거리",
+        "question": "정지에서 일정한 가속도로 출발한 공의 0.1초 위치가 3 mm, 0.2초 위치가 12 mm였다. 0.3초 위치는 출발선에서 몇 mm인가?",
+        "choices": [
+          "15 mm",
+          "21 mm",
+          "24 mm",
+          "27 mm"
+        ],
+        "answer": 3,
+        "why": "출발선부터의 거리는 시간의 제곱에 비례하므로 3×3²=27 mm입니다. 같은 시간 간격의 구간 거리는 3, 9, 15 mm로 늘어납니다.",
+        "checks": [
+          "galileo-incline#q2"
+        ]
+      }
+    },
+    {
+      "id": "galileo-incline@angle",
+      "sha256": "1e7801132eeef406375eba5cf713efc68d6a29856e51e23de30b0073ac4bebf6",
+      "after": {
+        "id": "galileo-incline@angle",
+        "topic": "기울기 변화",
+        "question": "같은 꽉 찬 공 두 개의 경사면을 모두 5°에서 10°로 높였다. 이동 구간과 출발 조건을 같게 했다면 두 공의 도착은?",
+        "choices": [
+          "함께 도착 · 시간 감소",
+          "함께 도착 · 시간 증가",
+          "무거운 공 먼저 · 시간 감소",
+          "가벼운 공 먼저 · 시간 증가"
+        ],
+        "answer": 0,
+        "why": "같은 구조의 구는 두 기울기 모두에서 질량에 무관하게 함께 도착합니다. 기울기가 커지면 가속도가 커져 같은 거리를 가는 시간이 줄어듭니다.",
+        "checks": [
+          "galileo-incline#q1",
+          "galileo-incline#q4"
+        ]
+      }
+    },
+    {
+      "id": "reaction-pressure@volume",
+      "sha256": "d3145d4f5afd0532ffe97497a5d799e74c50fcbfc2165413b04fbeb8e1b45e97",
+      "after": {
+        "id": "reaction-pressure@volume",
+        "topic": "기체 공간과 압력 증가",
+        "question": "같은 온도에서 수소가 같은 몰수만큼 발생했다. 닫힌 장치 B의 기체 공간이 A의 두 배라면, 처음에 비해 증가한 압력 ΔP는?",
+        "choices": [
+          "B가 A의 ¼",
+          "B가 A의 ½",
+          "B가 A와 같음",
+          "B가 A의 2배"
+        ],
+        "answer": 1,
+        "why": "ΔP=ΔnRT/V입니다. 온도와 생성 몰수가 같을 때 기체 공간이 두 배면 압력 증가량은 절반입니다. 전체 압력이 절반이라는 뜻은 아닙니다.",
+        "checks": [
+          "reaction-pressure#q1",
+          "reaction-pressure#q2"
+        ]
+      }
+    },
+    {
+      "id": "reaction-pressure@baseline",
+      "sha256": "af917e401944cf11a1c7ff13e045afab5c02704d16943f7832dc5388f1f3271a",
+      "after": {
+        "id": "reaction-pressure@baseline",
+        "topic": "처음의 공기 압력",
+        "question": "온도와 기체 부피가 일정한 닫힌 장치에서 처음 공기 압력은 100 kPa, 반응 후 전체 압력은 145 kPa였다. 새로 생긴 수소가 더한 압력은?",
+        "choices": [
+          "31 kPa",
+          "45 kPa",
+          "100 kPa",
+          "145 kPa"
+        ],
+        "answer": 1,
+        "why": "공기의 양·온도·기체 부피가 유지되므로 공기 압력은 100 kPa입니다. 수소가 더한 압력은 145−100=45 kPa입니다.",
+        "checks": [
+          "reaction-pressure#q1",
+          "reaction-pressure#q2"
+        ]
+      }
+    },
+    {
+      "id": "osmosis-mass@dynamic",
+      "sha256": "16cba677049f848c3c8ccec8be4c1b0a2bb2f434dae837e8955ef4430151c2e8",
+      "after": {
+        "id": "osmosis-mass@dynamic",
+        "topic": "질량 변화가 없는 상태",
+        "question": "표면 물기를 같은 방법으로 제거했더니 무의 처음·나중 질량이 같았다. 이 결과에 대한 해석으로 적절한 것은?",
+        "choices": [
+          "물 분자의 이동이 모두 멈췄다.",
+          "밖으로 나간 물만 다시 돌아왔다.",
+          "안팎으로 이동한 물의 양이 같았다.",
+          "세포 안팎의 용질 종류가 같았다."
+        ],
+        "answer": 2,
+        "why": "용질 이동과 다른 질량 변화를 무시하면 질량이 같다는 것은 물의 순이동량이 0이라는 뜻입니다. 양방향 분자 이동이 멈췄다는 뜻은 아닙니다.",
+        "checks": [
+          "osmosis-mass#q2"
+        ]
+      }
+    },
+    {
+      "id": "osmosis-mass@tare",
+      "sha256": "eaf767140a282380a3868092945b9468ba86133bc7cf4ea873f54e315486282c",
+      "after": {
+        "id": "osmosis-mass@tare",
+        "topic": "용기 질량과 변화율",
+        "question": "12 g 접시를 포함한 처음 질량은 92 g, 나중 질량은 84 g이었다. 무 자체의 처음 질량을 기준으로 한 감소율은?",
+        "choices": [
+          "8.0%",
+          "8.7%",
+          "9.5%",
+          "10.0%"
+        ],
+        "answer": 3,
+        "why": "무의 처음 질량은 92−12=80 g, 나중 질량은 84−12=72 g입니다. 감소량 8 g을 80 g으로 나누면 10%입니다.",
+        "checks": [
+          "osmosis-mass#q1",
+          "osmosis-mass#q3"
+        ]
+      }
+    },
+    {
+      "id": "leaf-classification@two-features",
+      "sha256": "9d27d2cb20066384e925716c718e656a24ec0b4709feea0026899cb0ce71e93c",
+      "after": {
+        "id": "leaf-classification@two-features",
+        "topic": "두 특징을 함께 판단",
+        "question": "화면의 잎 중 ‘전체가 길쭉하지 않으면서 끝은 뾰족하다’에 함께 해당하는 두 잎은?",
+        "choices": [
+          "벚나무 · 단풍나무",
+          "소나무 · 강아지풀",
+          "사철나무 · 토끼풀",
+          "강아지풀 · 벚나무"
+        ],
+        "answer": 0,
+        "why": "벚나무와 단풍나무는 전체가 폭이 넓은 편이면서 잎 끝은 뾰족합니다. 두 기준을 각각 확인해야 합니다.",
+        "checks": [
+          "leaf-classification#q1",
+          "leaf-classification#q2"
+        ]
+      }
+    },
+    {
+      "id": "leaf-classification@reclassify",
+      "sha256": "040843754c5d255a891dc698387cd9bc72db0d9fe26e4337317900b51d728a29",
+      "after": {
+        "id": "leaf-classification@reclassify",
+        "topic": "분류 결과로 기준 추론",
+        "question": "‘그렇다’에 소나무·강아지풀·벚나무·단풍나무, ‘아니다’에 사철나무·토끼풀이 놓여 있다. 여섯 잎에 적용한 기준은?",
+        "choices": [
+          "전체 모양이 길쭉한가?",
+          "잎 끝이 뾰족한가?",
+          "한 잎몸이 여러 갈래로 갈라졌는가?",
+          "작은 잎 세 장이 함께 달렸는가?"
+        ],
+        "answer": 1,
+        "why": "앞의 네 표본은 잎 끝이 뾰족하고, 사철나무와 토끼풀의 표본은 끝이 둥근 편입니다. 길쭉함 기준이면 소나무·강아지풀만, 갈라짐 기준이면 단풍나무만 ‘그렇다’에 들어갑니다.",
+        "checks": [
+          "leaf-classification#q2",
+          "leaf-classification#q4"
+        ]
+      }
+    },
+    {
+      "id": "animal-classification@counts",
+      "sha256": "c971daab986c2e553640532857e65be2974975daeed1ec7a563f0b2f9d76b839",
+      "after": {
+        "id": "animal-classification@counts",
+        "topic": "무리의 수만으로 기준 판단",
+        "question": "여덟 동물을 나눈 뒤 동물 이름은 가리고 ‘그렇다 2종, 아니다 6종’만 보았다. 이 결과가 나올 수 있는 기준을 모두 묶은 것은?",
+        "choices": [
+          "날개 · 다리",
+          "날개 · 지느러미",
+          "다리 · 지느러미",
+          "날개 · 다리 · 지느러미"
+        ],
+        "answer": 1,
+        "why": "날개가 있는 동물은 참새·나비, 지느러미가 있는 동물은 붕어·참돔으로 각각 2종입니다. 다리가 있는 동물은 4종입니다. 수가 같아도 같은 동물로 이루어진 무리는 아닙니다.",
+        "checks": [
+          "animal-classification#q1",
+          "animal-classification#q3"
+        ]
+      }
+    },
+    {
+      "id": "animal-classification@folded",
+      "sha256": "6cdbf3df38f1248e1ac15da04e49f5eb07d4885c0e26b7aab997eac4b5756cf7",
+      "after": {
+        "id": "animal-classification@folded",
+        "topic": "접힌 날개 관찰",
+        "question": "참새 카드를 날개를 펼친 사진에서 몸 옆에 날개를 접은 사진으로 바꾸었다. ‘날개가 있는가?’ 기준에서 참새의 분류는 어떻게 하는가?",
+        "choices": [
+          "‘아니다’ 무리로 옮긴다.",
+          "두 무리 모두에 넣는다.",
+          "‘그렇다’ 무리에 둔다.",
+          "두 무리 모두에서 뺀다."
+        ],
+        "answer": 2,
+        "why": "날개가 접혀 있어도 날개가 없어지는 것은 아닙니다. 사진에서 자세가 달라져도 같은 특징을 기준으로 판단해야 합니다.",
+        "checks": [
+          "animal-classification#q1",
+          "animal-classification#q2"
+        ]
+      }
+    },
+    {
+      "id": "liquid-heat@change",
+      "sha256": "70c96726562faad256794a0aefbba0f539b09976219c0a6ca9af564d7573b412",
+      "after": {
+        "id": "liquid-heat@change",
+        "topic": "최종 온도와 온도 변화",
+        "question": "같은 질량의 액체 A·B가 같은 열을 받았다. A는 10→22 ℃, B는 20→26 ℃가 되었다. 열손실이 없을 때 비열은?",
+        "choices": [
+          "A가 B보다 크다.",
+          "B가 A보다 크다.",
+          "A와 B가 같다.",
+          "최종 온도가 높을수록 작다."
+        ],
+        "answer": 1,
+        "why": "A는 12℃, B는 6℃ 올랐습니다. 최종 온도만 비교하지 말고 온도 변화량을 비교해야 하며, 온도가 덜 오른 B의 비열이 큽니다.",
+        "checks": [
+          "liquid-heat#q1"
+        ]
+      }
+    },
+    {
+      "id": "liquid-heat@mass",
+      "sha256": "29b52a30c94b4594f5e8693dc099658b58fc07a1b6d7ea2a50dcd7412806aea3",
+      "after": {
+        "id": "liquid-heat@mass",
+        "topic": "같은 물질의 질량과 온도 변화",
+        "question": "같은 온도의 물 100 g과 200 g에 같은 양의 열을 주었다. 100 g의 온도가 8 ℃ 올랐다면 200 g의 온도 상승은? 열손실은 없다.",
+        "choices": [
+          "2 ℃",
+          "4 ℃",
+          "8 ℃",
+          "16 ℃"
+        ],
+        "answer": 1,
+        "why": "같은 물질에서 같은 열을 받으면 질량이 두 배일 때 온도 상승은 절반입니다. 8÷2=4℃입니다. 물의 비열 자체가 질량에 따라 달라지는 것은 아닙니다.",
+        "checks": [
+          "liquid-heat#q2",
+          "liquid-heat#q4"
+        ]
+      }
+    },
+    {
+      "id": "phase-mass@water",
+      "sha256": "d12db5e9a897379eac129c89cb041925ffb15ad800fa91d0fda244b9c53ca232",
+      "after": {
+        "id": "phase-mass@water",
+        "topic": "물과 올리브유의 응고 비교",
+        "question": "새거나 증발하지 않은 물은 얼면서 부피가 커졌고, 올리브유는 응고하며 부피가 줄었다. 각각의 질량은?",
+        "choices": [
+          "물만 증가하고 올리브유는 같다.",
+          "물은 같고 올리브유만 감소한다.",
+          "두 물질 모두 응고 전과 같다.",
+          "부피가 변한 방향과 같이 변한다."
+        ],
+        "answer": 2,
+        "why": "두 물질 모두 상태가 변해도 물질이 드나들지 않으면 질량은 보존됩니다. 부피 변화의 방향이 같아야 질량이 보존되는 것은 아닙니다.",
+        "checks": [
+          "phase-mass#q1",
+          "phase-mass#q3"
+        ]
+      }
+    },
+    {
+      "id": "phase-mass@mark",
+      "sha256": "5a52cc962aeee02fb07ca3c8a20a3d40a8fbef881665f73fe6d70efbbad42412",
+      "after": {
+        "id": "phase-mass@mark",
+        "topic": "측정 대상이 달라진 경우",
+        "question": "같은 병의 질량이 응고 전 13.5 g, 응고 후 13.6 g이었다. 병은 말랐고, 두 번째 측정 전에 0.1 g의 테이프를 새로 붙였다. 이 결과는?",
+        "choices": [
+          "추가 테이프의 질량으로 설명할 수 있다.",
+          "응고하면서 기름 질량이 0.1 g 증가했다.",
+          "응고하면서 병의 질량이 0.1 g 증가했다.",
+          "저울의 두 값을 비교할 필요가 없다."
+        ],
+        "answer": 0,
+        "why": "측정 대상에 테이프 0.1 g이 추가되어 전체 저울값이 그만큼 늘 수 있습니다. 상태 변화 전후에는 병 밖의 물기나 새로 붙인 표식도 구별해야 합니다.",
+        "checks": [
+          "phase-mass#q2",
+          "phase-mass#q4"
+        ]
+      }
+    },
+    {
+      "id": "rotating-disc@west",
+      "sha256": "495c202cedbe3167ac13a5ca4d20cf2a43e429fb70ab3062124f253f10691d8a",
+      "after": {
+        "id": "rotating-disc@west",
+        "topic": "진행 방향 기준의 오른쪽",
+        "question": "북반구에서 공기 덩어리가 서쪽으로 이동한다. 수평 전향력의 방향은?",
+        "choices": [
+          "북쪽",
+          "남쪽",
+          "동쪽",
+          "서쪽"
+        ],
+        "answer": 0,
+        "why": "서쪽을 바라보며 이동할 때 오른쪽은 북쪽입니다. 북반구의 오른쪽 전향을 항상 동쪽이라고 해석하면 안 됩니다.",
+        "checks": [
+          "rotating-disc#q1"
+        ]
+      }
+    },
+    {
+      "id": "rotating-disc@speed",
+      "sha256": "0b6974600169c92627c4b50adb7836fd7d1a1d23c801850aaea09b4ce2934740",
+      "after": {
+        "id": "rotating-disc@speed",
+        "topic": "이동 시간과 흔적",
+        "question": "원판은 같은 각속도로 반시계 회전한다. 구슬이 중심에서 가장자리까지 도달하는 시간이 절반으로 줄면, 그동안 원판이 회전한 각도는?",
+        "choices": [
+          "두 배가 된다.",
+          "같게 유지된다.",
+          "절반이 된다.",
+          "네 배가 된다."
+        ],
+        "answer": 2,
+        "why": "각속도가 같으면 회전각은 시간에 비례합니다. 구슬의 출발 속력이 달라지면 원판 위에 머무는 시간도 바뀌므로, 회전 속도를 비교할 때 구슬의 속력도 같게 유지해야 합니다.",
+        "checks": [
+          "rotating-disc#q2",
+          "rotating-disc#q3"
+        ]
+      }
+    },
+    {
+      "id": "quadrat-community@presence",
+      "sha256": "971ccfc33c43f79ddac69e5d755ee46d25f29ba3902cffdc7b1ac81382140900",
+      "after": {
+        "id": "quadrat-community@presence",
+        "topic": "같은 방형구의 여러 개체",
+        "question": "한 방형구에 A종이 12개, B종이 1개 있다. 이 방형구가 A·B 각각의 출현 횟수에 더하는 값은?",
+        "choices": [
+          "12회 · 1회",
+          "1회 · 1회",
+          "12회 · 12회",
+          "1회 · 12회"
+        ],
+        "answer": 1,
+        "why": "출현 여부는 그 종이 해당 방형구에 있는지를 셉니다. 같은 종이 여러 개 있어도 그 방형구에서의 출현 횟수는 한 번입니다.",
+        "checks": [
+          "quadrat-community#q2"
+        ]
+      }
+    },
+    {
+      "id": "quadrat-community@cover",
+      "sha256": "b2dbedef1e17a71666d78346a09b6e7f0706ae58c5cd57ba7988400adca891d6",
+      "after": {
+        "id": "quadrat-community@cover",
+        "topic": "피도와 상대피도",
+        "question": "전체 조사 면적은 125 cm²이다. A·B·C의 점유 면적은 각각 20·50·30 cm²이다. B의 피도 / 상대피도는?",
+        "choices": [
+          "0.40 / 50%",
+          "0.50 / 40%",
+          "0.40 / 40%",
+          "0.50 / 50%"
+        ],
+        "answer": 0,
+        "why": "피도는 50÷125=0.40입니다. 상대피도는 모든 종의 점유 면적 합 100으로 나눈 50÷100×100=50%입니다.",
+        "checks": [
+          "quadrat-community#q2",
+          "quadrat-community#q3"
+        ]
+      }
+    },
+    {
+      "id": "ph-comparison@rinse",
+      "sha256": "c828686f0c69e072b8361498806318fce72cd3946e47c40ca47c152abbec4e5e",
+      "after": {
+        "id": "ph-comparison@rinse",
+        "topic": "연속 측정의 오염",
+        "question": "염산을 측정한 전극을 씻지 않고 암모니아수에 옮겼다. 전극에 묻은 염산이 시료와 섞일 때 [OH⁻]와 pH의 변화 방향은?",
+        "choices": [
+          "둘 다 증가",
+          "둘 다 감소",
+          "[OH⁻] 증가 · pH 감소",
+          "[OH⁻] 감소 · pH 증가"
+        ],
+        "answer": 1,
+        "why": "묻어 온 산이 OH⁻를 소비하므로 염기성 시료의 [OH⁻]가 줄고 pH도 낮아지는 방향입니다. 변화량은 옮겨 온 산의 양에 따라 달라져 여기서 특정 수치로 정하지 않습니다.",
+        "checks": [
+          "ph-comparison#q1",
+          "ph-comparison#q2"
+        ]
+      }
+    },
+    {
+      "id": "ph-comparison@dilution",
+      "sha256": "5409be73c4ef688a022f8ac63342f4f7db215f628a61300a11ff52eaf20a20c3",
+      "after": {
+        "id": "ph-comparison@dilution",
+        "topic": "약산의 농도와 이온화율",
+        "question": "25 °C에서 아세트산을 0.1 M에서 0.01 M로 희석했다. 약산 근사가 성립할 때 [H₃O⁺]와 이온화율의 변화는?",
+        "choices": [
+          "[H₃O⁺] 감소 · 이온화율 증가",
+          "[H₃O⁺] 증가 · 이온화율 감소",
+          "둘 다 증가",
+          "둘 다 감소"
+        ],
+        "answer": 0,
+        "why": "[H₃O⁺]≈√(KₐC)이므로 농도가 낮아지면 [H₃O⁺]는 감소합니다. 이온화율≈√(Kₐ/C)이므로 이온화한 비율은 커집니다. 이온 농도와 이온화율은 같은 양이 아닙니다.",
+        "checks": [
+          "ph-comparison#q1",
+          "ph-comparison#q3",
+          "ph-comparison#q4"
+        ]
+      }
+    },
+    {
+      "id": "microbes@unknown-filaments",
+      "sha256": "caf7b46f57ebc9b5dcab175d57dd2165f07cf68996a92ea6679aa1ae69df9013",
+      "after": {
+        "id": "microbes@unknown-filaments",
+        "topic": "새 표본의 구조로 분류하기",
+        "question": "새 표본에서 실 같은 구조들이 얽히고 그 끝에 둥근 부분이 보였다. 관찰한 것 중 구조가 가장 비슷한 생물은?",
+        "choices": [
+          "해캄",
+          "짚신벌레",
+          "빵곰팡이",
+          "강낭콩"
+        ],
+        "answer": 2,
+        "why": "빵곰팡이에서 관찰한 가는 균사와 둥근 끝 부분이 함께 나타난 특징입니다. 색이나 크기만으로 판단한 것이 아닙니다.",
+        "checks": [
+          "microbes#q1",
+          "microbes#q2"
+        ]
+      }
+    },
+    {
+      "id": "microbes@stained-colour",
+      "sha256": "444e89f74b98722e2599a35aacea79c7704450e94fb9bdb3f5e6594b80d5d499",
+      "after": {
+        "id": "microbes@stained-colour",
+        "topic": "관찰 조건과 일반화",
+        "question": "색소로 염색한 원생생물 사진 두 장이 모두 초록색이다. “원생생물은 모두 원래 초록색이다”를 판단하려면 추가로 어떤 자료가 필요한가?",
+        "choices": [
+          "같은 두 사진을 더 밝게 한 자료",
+          "다른 종류도 포함한 염색 전 관찰 자료",
+          "같은 두 사진을 더 크게 한 자료",
+          "같은 두 사진을 좌우로 뒤집은 자료"
+        ],
+        "answer": 1,
+        "why": "염색 전의 색을 확인하고 다른 종류도 관찰해야 합니다. 같은 사진의 밝기·크기·방향을 바꾸어도 빠진 생물의 종류와 처리 전 색에 관한 증거는 생기지 않습니다.",
+        "checks": [
+          "microbes#q4"
+        ]
+      }
+    },
+    {
+      "id": "rock-layers@mould-cast",
+      "sha256": "465539a29f78f5fbb9c3b7eca2e929ec73c3ca5684a55f67a58a6f59056010ef",
+      "after": {
+        "id": "rock-layers@mould-cast",
+        "topic": "점토 자국과 굳은 모형",
+        "question": "조개껍데기를 떼어 낸 점토의 자국에 반죽을 붓고 굳혀 분리했다. 점토 자국과 그 자국에 닿았던 모형 면의 모습은?",
+        "choices": [
+          "점토 오목 · 모형 오목",
+          "점토 볼록 · 모형 오목",
+          "점토 오목 · 모형 볼록",
+          "점토 볼록 · 모형 볼록"
+        ],
+        "answer": 2,
+        "why": "조개껍데기를 누르면 점토에는 오목한 자국이 남고 반죽이 그 공간을 채웁니다. 분리한 모형의 닿았던 면은 볼록해집니다.",
+        "checks": []
+      }
+    },
+    {
+      "id": "rock-layers@time-material",
+      "sha256": "0b12ce56a39dcee12bafa7036e6ffb6b4ef9f395ea521341030c7ab08737425a",
+      "after": {
+        "id": "rock-layers@time-material",
+        "topic": "화석 모형이 보여 주는 범위",
+        "question": "알지네이트 모형이 조개 화석과 비슷한 모양이 되었다. 이것만으로 실제 화석과 같다고 판단할 수 없는 두 가지는?",
+        "choices": [
+          "만들어지는 시간 · 구성 재료",
+          "겉면에 남은 무늬 · 전체 윤곽",
+          "조개와 닮은 모습 · 겉면 무늬",
+          "전체 윤곽 · 조개와 닮은 모습"
+        ],
+        "answer": 0,
+        "why": "모형으로 생김새가 남는 과정을 비교할 수 있지만, 빠르게 굳는 알지네이트가 실제 화석의 재료와 생성 시간을 재현하는 것은 아닙니다.",
+        "checks": []
+      }
+    },
+    {
+      "id": "rock-layers@body-trace",
+      "sha256": "e911aa9a54087f12bf3595c6be21f2b0312d0de93d3877c442d58bbee57afa00",
+      "after": {
+        "id": "rock-layers@body-trace",
+        "topic": "새 화석의 몸체와 활동 흔적",
+        "question": "암석 P에는 조개껍데기 일부가, Q에는 벌레가 기어간 자국이 남았다. 생물의 몸체가 아닌 활동 흔적이 남은 화석은?",
+        "choices": [
+          "P만 해당한다",
+          "Q만 해당한다",
+          "P와 Q 모두 해당한다",
+          "P와 Q 모두 해당하지 않는다"
+        ],
+        "answer": 1,
+        "why": "조개껍데기는 몸체의 일부이고, 기어간 자국은 벌레가 활동하며 남긴 흔적입니다. 몸체 자체가 남지 않아도 활동의 흔적이 화석으로 보존될 수 있습니다.",
+        "checks": [
+          "rock-layers#q4"
+        ]
+      }
+    },
+    {
+      "id": "sound-vibration@speaker-motion",
+      "sha256": "3afc4b343ef4b76e4815cfc7fe4d417c2c902c19b520cc94f432fa05ee706978",
+      "after": {
+        "id": "sound-vibration@speaker-motion",
+        "topic": "새 물체의 떨림 확인",
+        "question": "스피커에 올린 가벼운 조각이 소리를 낼 때 움직이고 소리가 멈추면 가만히 있었다. 관찰 결과로 뒷받침되는 것은?",
+        "choices": [
+          "스피커 표면이 떨려 조각을 움직임",
+          "조각을 올려야 스피커가 소리를 냄",
+          "스피커의 소리는 조각의 무게가 만듦",
+          "조각이 움직이면 소리 높낮이는 같음"
+        ],
+        "answer": 0,
+        "why": "소리와 함께 조각의 움직임이 나타나고 사라진 관찰로 스피커 표면의 떨림을 확인할 수 있습니다. 조각은 떨림을 알아보는 도구입니다.",
+        "checks": [
+          "sound-vibration#q1"
+        ]
+      }
+    },
+    {
+      "id": "sound-vibration@triangle-stop",
+      "sha256": "ae51a0ddb361e1a6f81e97659fabd7f2fb6a76f7d9daedc12a4b1c1534903455",
+      "after": {
+        "id": "sound-vibration@triangle-stop",
+        "topic": "다른 악기의 소리 멈추기",
+        "question": "친 트라이앵글에서 소리가 계속 난다. 손으로 진동하는 부분을 잡을 때 예상되는 변화는?",
+        "choices": [
+          "떨림 줄어듦 · 소리 줄어듦",
+          "떨림 줄어듦 · 소리 그대로",
+          "떨림 그대로 · 소리 줄어듦",
+          "떨림 커짐 · 소리 줄어듦"
+        ],
+        "answer": 0,
+        "why": "소리를 내는 트라이앵글의 진동을 손으로 억제하면 소리도 줄어들어 멈춥니다. 귀를 막아 들리는 소리만 줄이는 경우와 다릅니다.",
+        "checks": [
+          "sound-vibration#q4"
+        ]
+      }
+    }
+  ],
+  "checks": [
+    "H₂:O₂=2:1 at equal temperature/pressure; initial air and selective leakage distinguished from reaction stoichiometry.",
+    "Stage/ocular calibration and differences of endpoint readings; same 160 µm specimen invariant under 100/200/400 magnification.",
+    "Rf is a dimensionless ratio of two distances from the same origin; solvent changes preclude universal Rf assertions.",
+    "Starch hydrolysis, membrane transport and heated Benedict test kept separate; biuret is not a universal digestion-completion indicator.",
+    "v=L/Δt=fλ; material oscillation distinct from wave propagation; same-mode fixed-medium speed independent of selected frequency."
+  ],
+  "bankRoutes": [
+    {
+      "id": "4과14-01",
+      "sha256": "34e9d9fcd8ffb120783af0c341ce8de1896569b3687b3d940b31c5ae56ce55f4",
+      "after": {
+        "id": "4과14-01",
+        "slug": "food-web",
+        "question": "풀·토끼·버섯·물·햇빛 중 비생물 요소끼리 묶인 것은?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "버섯과 물"
+          },
+          {
+            "id": "1",
+            "text": "풀과 버섯"
+          },
+          {
+            "id": "2",
+            "text": "물과 햇빛"
+          }
+        ],
+        "answer": "2",
+        "why": "물과 햇빛은 비생물 요소입니다. 버섯도 살아 있는 생물이므로 생물 요소에 속합니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    },
+    {
+      "id": "4과14-02",
+      "sha256": "e5e2d5c872ca51d5e4b0ba6126ec5952e98491280a887828ab7dced271934da2",
+      "after": {
+        "id": "4과14-02",
+        "slug": "food-web",
+        "question": "풀 → 토끼 → 여우에서 화살표가 뜻하는 것은?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "몸집이 큰 생물에서 작은 생물로 향한다"
+          },
+          {
+            "id": "1",
+            "text": "힘이 센 생물에서 약한 생물로 향한다"
+          },
+          {
+            "id": "2",
+            "text": "먹이가 되는 생물에서 먹는 생물로 향한다"
+          }
+        ],
+        "answer": "2",
+        "why": "풀은 토끼에게 먹히고 토끼는 여우에게 먹힙니다. 화살표는 먹이가 되는 생물에서 먹는 생물로 향하며, 몸집이나 힘의 크기를 표시하는 것이 아닙니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    },
+    {
+      "id": "4과14-03",
+      "sha256": "ec444b0910ac32185c6c9fd5bb04aad59cb24e4a2b412705e0ab5e62dc4b9df6",
+      "after": {
+        "id": "4과14-03",
+        "slug": "food-web",
+        "question": "하천 A·B는 물의 양과 온도가 비슷하다. 생활하수 유입을 줄인 A에서만 물속 곤충 종류가 늘었다. 자료가 뒷받침하는 해석은?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "하천 온도 상승이 곤충 종류 증가의 원인이다"
+          },
+          {
+            "id": "1",
+            "text": "하수 유입 감소가 서식 환경 개선과 관련 있을 수 있다"
+          },
+          {
+            "id": "2",
+            "text": "물의 양 증가가 곤충 종류 증가의 원인이다"
+          }
+        ],
+        "answer": "1",
+        "why": "비교에서 물의 양과 온도는 비슷하고 하수 유입 조건이 달랐습니다. 관찰된 차이와 관련된 조건을 찾되 다른 요인의 가능성도 살펴야 합니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    },
+    {
+      "id": "4과16-01",
+      "sha256": "f31cf72317072b2c8f56f9ddc6665cd02c91e04ea1037b74fbb02519ec0b4345",
+      "after": {
+        "id": "4과16-01",
+        "slug": "coastal-inundation",
+        "question": "하루의 추위만으로 기후변화를 판단하기 어려운 이유는?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "오랜 기간의 기온·강수 등 자료를 비교해야 하기 때문이다"
+          },
+          {
+            "id": "1",
+            "text": "서로 다른 지역의 하루 기온만 비교하면 되기 때문이다"
+          },
+          {
+            "id": "2",
+            "text": "하루의 기온보다 낮과 밤의 기온 차이만 알면 되기 때문이다"
+          }
+        ],
+        "answer": "0",
+        "why": "기후변화는 장기간의 변화로 살핍니다. 폭염·가뭄 등과 인간 활동의 관련 사례를 함께 봅니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    },
+    {
+      "id": "4과16-02",
+      "sha256": "332138e88d4cd793f53684de71a8c7645bed323473137c0951f838b31e5135e6",
+      "after": {
+        "id": "4과16-02",
+        "slug": "coastal-inundation",
+        "question": "육지의 얼음이 녹아 바다로 들어올 때 우려되는 영향은?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "물의 양이 늘어도 해수면 높이는 낮아질 수 있다"
+          },
+          {
+            "id": "1",
+            "text": "해수면이 올라 낮은 해안이 잠길 수 있다"
+          },
+          {
+            "id": "2",
+            "text": "바다의 물 양은 같고 염분만 높아질 수 있다"
+          }
+        ],
+        "answer": "1",
+        "why": "육지에 있던 얼음이 녹아 바다에 들어가면 바닷물의 양이 늘어 해수면이 높아질 수 있습니다. 낮은 해안은 그 영향을 받을 수 있습니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    },
+    {
+      "id": "4과16-03",
+      "sha256": "d1619a7fa755be9e23036c9af9cf566070312d18853db1ba180664f7111ba36f",
+      "after": {
+        "id": "4과16-03",
+        "slug": "coastal-inundation",
+        "question": "교실의 같은 밝기를 유지하면서 전기 사용을 줄이려 한다. 어떤 비교 자료가 가장 필요한가?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "조명별 빛의 색과 제품의 이름"
+          },
+          {
+            "id": "1",
+            "text": "조명별 소비 전력과 하루 사용 시간"
+          },
+          {
+            "id": "2",
+            "text": "조명별 포장 크기와 설치한 날짜"
+          }
+        ],
+        "answer": "1",
+        "why": "같은 효과를 내는 조건에서 소비 전력과 사용 시간을 비교해야 전기 사용량을 판단할 수 있습니다. 절약이라는 말 자체보다 실제 감소 근거를 확인합니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    },
+    {
+      "id": "4과14-01@decomposer",
+      "sha256": "19c8ecb10b4995fdf2c41b22f4b35a82e912f0f11b3f9537ee446b32704001d4",
+      "after": {
+        "id": "4과14-01@decomposer",
+        "slug": "food-web",
+        "question": "풀·토끼·버섯을 양분을 얻는 방법으로 바르게 연결하면?",
+        "choices": [
+          {
+            "id": "0",
+            "text": "생산자·소비자·분해자"
+          },
+          {
+            "id": "1",
+            "text": "분해자·생산자·소비자"
+          },
+          {
+            "id": "2",
+            "text": "소비자·분해자·생산자"
+          }
+        ],
+        "answer": "0",
+        "why": "풀은 스스로 양분을 만들고 토끼는 다른 생물을 먹습니다. 버섯 등은 생물의 사체나 배설물을 분해해 양분을 얻습니다.",
+        "data": null
+      },
+      "note": "Unchanged question and answer re-read; associated app moved from the legacy mixed plant/ecology page to the matching ecology or coastal activity. This is a related-unit route, not full standard coverage."
+    }
+  ],
+  "sources": [
+    {
+      "slug": "water-electrolysis",
+      "source": {
+        "id": "4417457f97abb418",
+        "pages": [
+          62,
+          63
+        ],
+        "printedPages": [
+          62,
+          63
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "4417457f97abb418",
+          "pages": [
+            96
+          ],
+          "part": "단원 평가 01: 전극의 부호, 생성 기체 부피 및 공유 결합의 전기적 성질"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "49908c3f40025eda",
+          "pages": [
+            6,
+            7
+          ],
+          "difference": "백금 전극·밀폐 연결, 100 mL 황산 나트륨 수용액과 9 V 전지",
+          "implementation": "물 충전·기밀·기체 부피비의 관찰로 묶음. 전극 재료에 따른 부반응과 실제 전류·속도 예측은 제외"
+        }
+      ],
+      "boundary": "이상적인 물 전기분해의 같은 온도·압력 상대 부피 모형. 전하량에 대한 2:1 생성만 계산하며 화면 시간·전압으로 실험 속도나 mL를 예측하지 않는다. 순수한 물의 낮은 전도도는 정성 관찰이며 전류가 정확히 0이라는 뜻이 아니다. 실제 침핀의 산화·용해, 기체 용해도·수증기압·압력차·누출 속도는 계산하지 않는다."
+    },
+    {
+      "slug": "cell-micrometry",
+      "source": {
+        "id": "68a9aa30848d400d",
+        "pages": [
+          23
+        ],
+        "printedPages": [
+          23
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "68a9aa30848d400d",
+          "pages": [
+            23
+          ],
+          "part": "정리 1·2: 보정, 세포 길이 및 400배 변경의 해석"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "ee99dd8a776b457e",
+          "pages": [
+            2
+          ],
+          "difference": "자주달개비 영구 표본, 200배에서 대물 20칸=접안 40칸, 400배 재보정",
+          "implementation": "눈금 보정 원리는 한 실험으로 묶고 200배를 추가. 자주달개비 형태와 영상 분석 소프트웨어는 제외"
+        }
+      ],
+      "boundary": "160 µm인 작성한 세포와 배율별 10/5/2.5 µm인 예시 접안 눈금이다. 모든 현미경에 동일 상수를 적용하지 않는다. 세포 도식은 실물 사진이 아니며 표피를 벗기는 손기술은 재현하지 않는다."
+    },
+    {
+      "slug": "leaf-pigments",
+      "source": {
+        "id": "68a9aa30848d400d",
+        "pages": [
+          106
+        ],
+        "printedPages": [
+          106
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "68a9aa30848d400d",
+          "pages": [
+            106
+          ],
+          "part": "정리 1~3: 색소, 이동 거리·전개율과 위치"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "ed4193e6ebbf64b5",
+          "pages": [
+            3
+          ],
+          "difference": "생잎 분쇄·에탄올:아세톤=3:1 추출, 9:1 전개액, 출발선 1 cm",
+          "implementation": "분리와 Rf 측정 목적은 한 실험으로 묶음. 화면의 가루·아세톤 추출/7:3 전개와 구별하며, 생잎 분쇄·다른 용매의 이동 거리까지 완료 판정하지 않음"
+        }
+      ],
+      "boundary": "Rf 0.90/0.72/0.52/0.30과 제곱근 전선 이동은 작성한 비교 모형이다. 교과서의 실측 수치나 모든 판·용매의 고유 상수가 아니다. 실제 취급·추출 수율·전개 속도·흡착 계수의 정량 예측은 제외한다."
+    },
+    {
+      "slug": "digestive-enzymes",
+      "source": {
+        "id": "f0744f7198a25194",
+        "pages": [
+          36,
+          37
+        ],
+        "printedPages": [
+          34,
+          35
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "f0744f7198a25194",
+          "pages": [
+            37
+          ],
+          "part": "정리 1~3: 분해의 관찰 근거와 셀로판 막 통과"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "7ad5e2bf06acaec3",
+          "pages": [
+            36,
+            37
+          ],
+          "difference": "녹말·알부민 6개 시험관, 두 효소와 소화제, 37 °C 10분 뒤 아이오딘/뷰렛 검사",
+          "implementation": "검출법·측정 대상이 다른 별도 절차로 남김. 뷰렛 음성=소화 완료로 일반화하지 않으며 이 판본 구현 완료 판정 제외"
+        },
+        {
+          "sourceId": "63f8dab2fdcf16c4",
+          "pages": [
+            3,
+            4
+          ],
+          "difference": "8개 시험관의 아밀레이스·펩신·소화제·물 비교 및 시약 사전 투입",
+          "implementation": "단백질·시약 조건이 다른 절차. 이 앱으로 동일 수행 완료 판정하지 않음"
+        }
+      ],
+      "boundary": "정성 종말점 모형으로 효소 속도·농도·약제별 성능을 예측하지 않는다. 녹말 차단/엿당 통과 조건을 명시하며 작은창자의 능동 수송·막단백질과 동일한 흡수 방식으로 설명하지 않는다. 천재·동아의 알부민/뷰렛 절차는 미구현이다."
+    },
+    {
+      "slug": "spring-wave-speed",
+      "source": {
+        "id": "e7caa9f0f741ad37",
+        "pages": [
+          100,
+          101
+        ],
+        "printedPages": [
+          100,
+          101
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "e7caa9f0f741ad37",
+          "pages": [
+            107
+          ],
+          "part": "개념 확인 3: 위치별 파형과 한 지점의 시간별 변위로 파장·주기·속력 판단"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "55ff1f88dea3080a",
+          "pages": [
+            10
+          ],
+          "difference": "1 Hz/2 Hz 횡파·종파 영상 비교, 반사 전 분석",
+          "implementation": "진동수 선택과 반사 전 구간에 반영. 메트로놈·촬영 기기 실물 조작은 제외"
+        }
+      ],
+      "boundary": "횡파 2 m/s·종파 3 m/s의 작성한 비분산 파형이다. 실제 장력·질량·탄성으로 예측한 값이 아니며 두 파동의 속력이 항상 같다고 가정하지 않는다. 처음 두 진동과 최초 반대쪽 도달까지 표시하고 반사 이후는 제외한다."
+    },
+    {
+      "slug": "coastal-inundation",
+      "source": {
+        "id": "b80669359d767d64",
+        "pages": [
+          86,
+          87
+        ],
+        "printedPages": [
+          86,
+          87
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "b80669359d767d64",
+          "pages": [
+            86,
+            87
+          ],
+          "part": "탐구 과정 2·3 및 확인 문항: 수면 상승과 장소별 침수·피해 예측"
+        },
+        {
+          "id": "5aed1d35619c99c6",
+          "pages": [
+            15,
+            16
+          ],
+          "part": "처음 수면 표시, 조금씩 물 붓기, 마을 피해 해석"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "5aed1d35619c99c6",
+          "pages": [
+            15,
+            16
+          ],
+          "difference": "깃발 대신 건물·자동차 모형을 배치하고 처음 수면을 표시",
+          "implementation": "점토 마을의 위치 표시·처음 수면·점진적 물 붓기를 같은 실험으로 묶음. 실제 점토 조형과 모든 마을 시설 제작은 제외"
+        }
+      ],
+      "boundary": "표시 눈금과 세 높이는 작성한 모형이며 실제 해안 높이·물 부피·미래 침수 연도를 예측하지 않는다. 이 실험은 수면 상승의 피해를 관찰하며 원인인 열팽창·빙상 융해의 실험을 대신하지 않는다."
+    },
+    {
+      "slug": "sea-level-causes",
+      "source": {
+        "id": "d7367226ffe975c8",
+        "pages": [
+          70,
+          71
+        ],
+        "printedPages": [
+          68,
+          69
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "d7367226ffe975c8",
+          "pages": [
+            71
+          ],
+          "part": "정리 1·2: 가열 대조와 육상 얼음 융해의 해석"
+        }
+      ],
+      "publisherVariants": [],
+      "boundary": "600 mL 물·60 g 육상 얼음·유효 수면 단면적 80 cm²의 작성한 에너지/질량 보존 모형. 순흡수 전력 90 W, 물 비열 4.18 J/(g·K), 융해열 334 J/g, 20 °C 기준 체적팽창계수 0.00030/K를 사용한다. 초기 0 °C 얼음은 가열 중 흡수 에너지의 절반으로 녹고 녹은 물은 즉시 섞인다. 증발·외부 열손실·컵에 갇힌 공기·용기 팽창·염분·얼음과 물 사이 접촉 열전달은 제외한다. 수치와 시간 변화는 원문 실측값·실제 지구 예측값이 아니며 실제 수조의 온도 차를 제거한 정량 기여도 추정으로 보지 않는다."
+    },
+    {
+      "slug": "standard-solution",
+      "source": {
+        "id": "4417457f97abb418",
+        "pages": [
+          162,
+          163
+        ],
+        "printedPages": [
+          162,
+          163
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "43b424b426217afd",
+          "part": "교사용 활동지 정리 1·2: 정량 이동, 용매 부피와 용액 부피의 구별"
+        },
+        {
+          "id": "4417457f97abb418",
+          "pages": [
+            163
+          ],
+          "part": "정리 1·2"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "30a3f3db685ed5a2",
+          "pages": [
+            142,
+            143
+          ],
+          "difference": "0.1 M·1 L, NaCl/포도당/NaOH 선택",
+          "implementation": "질량 측정·정량 이동·정용·혼합 원리의 같은 실험으로 묶음. 다른 시약과 1 L 기구의 조작은 이 화면에서 구현했다고 판정하지 않음"
+        }
+      ],
+      "boundary": "NaCl 몰질량 58.5 g/mol, 부피 기구의 이상적 보정, 잔류 용액의 정성 표시이다. 3회 세척으로 완전 이동된 것으로 가정하되 누락한 잔류 질량을 임의 수치로 예측하지 않는다. 실제 용해 수축·유리 팽창·온도 보정·순도 및 저울 오차는 제외한다."
+    },
+    {
+      "slug": "serial-dilution",
+      "source": {
+        "id": "4417457f97abb418",
+        "pages": [
+          156,
+          157,
+          206
+        ],
+        "printedPages": [
+          156,
+          157,
+          206
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "2aa98fcf87dd57ef",
+          "part": "교사용 활동지: 농도와 pH, 계속 희석할 때 물의 자동 이온화"
+        },
+        {
+          "id": "30a3f3db685ed5a2",
+          "pages": [
+            147
+          ],
+          "part": "이론 비교, 강염기 전이, 매우 묽은 강산의 액성"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "30a3f3db685ed5a2",
+          "pages": [
+            146,
+            147
+          ],
+          "difference": "1 mL→10 mL, A~E 다섯 용액, 강염기 전이와 10⁻⁸/10⁻⁹ M 해석",
+          "implementation": "연속 10배 희석·여러 농도 측정과 극희석의 pH 접근을 포함한다. 화면은 10 mL→100 mL 기구이며 외부 스프레드시트 조작은 제외한다"
+        }
+      ],
+      "boundary": "25 °C·이상 용액·강전해질 완전 해리·Kw=10⁻¹⁴의 전하 균형 해이다. 기기 잡음·활동도·공기 중 CO₂·이온 오염·실제 전극 응답 속도는 제외하며 이상값을 원문 실측값이라고 표시하지 않는다. 반복 희석은 최대 9개 용액이다."
+    },
+    {
+      "slug": "vinegar-titration",
+      "source": {
+        "id": "7861607f0dc04270",
+        "pages": [
+          30,
+          31
+        ],
+        "printedPages": [
+          172,
+          173
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "7861607f0dc04270",
+          "pages": [
+            31
+          ],
+          "part": "결론 1~4: 눈금 차·세 차례 평균·원액 농도·함량"
+        },
+        {
+          "id": "4417457f97abb418",
+          "pages": [
+            181
+          ],
+          "part": "중화 반응식·희석 전 농도·100 mL의 아세트산 질량"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "4417457f97abb418",
+          "pages": [
+            180,
+            181
+          ],
+          "difference": "10배 희석한 식초 20 mL를 사용하도록 설계",
+          "implementation": "3 mL 식초를 전량 적정하는 방법과 10배 희석액 20 mL 방법을 별도 조건으로 선택하고 환산량을 각각 3/2 mL로 계산한다"
+        },
+        {
+          "sourceId": "30a3f3db685ed5a2",
+          "pages": [
+            159,
+            160
+          ],
+          "difference": "학생 설계·세 차례 측정·초기 눈금 0이 아니어도 사용량 측정",
+          "implementation": "세 차례 측정·초기/최종 눈금의 차에 포함; 협업 문서와 발표는 제외"
+        }
+      ],
+      "boundary": "작성한 원액 0.925 M, 표준 NaOH 0.100 M, Ka=1.8×10⁻⁵·Kw=10⁻¹⁴ 전하 균형으로 지시약 색을 정한다. pH 8.2~9.5를 옅은 종말점 관찰 범위로 쓰며 실제 주관적 색 판정·표준화 오차·식초의 다른 산·CO₂는 제외한다. 일반 화학 학생 화면에는 중화 적정 곡선·약산 평형 계산을 노출하지 않는다. 3회 반복의 이상 결과를 실측 정밀도로 주장하지 않는다."
+    },
+    {
+      "slug": "acoustic-resonance",
+      "source": {
+        "id": "e7caa9f0f741ad37",
+        "pages": [
+          123
+        ],
+        "printedPages": [
+          123
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "e7caa9f0f741ad37",
+          "pages": [
+            123
+          ],
+          "part": "결과 및 정리 1~3: 진동수·세 공명 길이·파장과 속력, 열린 끝의 보정 도움말"
+        },
+        {
+          "id": "55ff1f88dea3080a",
+          "pages": [
+            29
+          ],
+          "part": "결론 도출 1~2: 정상파 형성·파장·음파의 속력"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "55ff1f88dea3080a",
+          "pages": [
+            29
+          ],
+          "printedPages": [
+            119
+          ],
+          "difference": "2300 Hz 스피커와 반사판 사이 30 cm 구간에서 마이크를 움직여 소리가 작은 위치를 찾음",
+          "implementation": "관 길이 조절과 구별되는 두 번째 장치·마이크 조작·최소 위치 측정을 구현"
+        }
+      ],
+      "boundary": "20 °C 음속 343 m/s인 1차원 이상 모형이다. 관 끝 보정은 작성한 6 mm 고정값이며 실제 장치 보정 측정값이 아니다. 공명 강도의 모양은 정성 Lorentz형 응답, 반사판은 완전 반사로 가정한다. 소리 크기는 dB·실측 음압이 아닌 상대 진폭이다. 관/반사판 지름·회절·손실·잡음·3차원장을 계산하지 않는다. 화면 진동은 느린 모형이며 실제 800~2300 Hz 음파 재생·마이크 입력을 제공하지 않는다."
+    },
+    {
+      "slug": "electroplating",
+      "source": {
+        "id": "73e22249bf2a1143",
+        "pages": [
+          5
+        ],
+        "printedPages": [
+          70
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "73e22249bf2a1143",
+          "pages": [
+            5
+          ],
+          "part": "결론 도출: 두 전극에서 일어나는 반쪽 반응식"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "1312595cd997419c",
+          "pages": [
+            74,
+            75
+          ],
+          "difference": "구리 펜던트·은판·은 착이온 용액·유성펜 도안·전처리와 별도 세척 홈",
+          "implementation": "읽어서 차이를 확인했으나 은 도금과 도안 마스킹 절차는 미구현; 구리 도금의 구현으로 이 판본 완료를 주장하지 않음"
+        }
+      ],
+      "boundary": "CuSO₄ 속 Fe의 전원 없는 치환 반응을 정성 표면 변화로 포함한다. 전원 연결 후 주요 전극 반응을 나타내는 교육용 모형이며 실제 혼합 전위·전류·경쟁 수소 발생·접착력·두께·성장 시간은 계산하지 않는다. 역극성에서는 노출된 철의 산화와 Cu판의 환원을 표시하고 기존 구리 얼룩의 소실을 정성 표현한다. 불균일한 오염 표면과 코팅 진행도는 정량 실측값이 아니다. 원문 9 V 장치의 외형·조작을 표시하지만 실제 9 V에서 균일한 구리층을 보장하지 않는다. 은 착이온·산 전처리 판본은 별도 미구현이다."
+    },
+    {
+      "slug": "leaf-starch",
+      "source": {
+        "id": "4020707022bbe8dd",
+        "pages": [
+          15,
+          16
+        ],
+        "printedPages": [
+          78,
+          79
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "0c762181d67d630e",
+          "pages": [
+            8,
+            9
+          ],
+          "printedPages": [
+            43,
+            44
+          ],
+          "part": "빛을 가린/가리지 않은 잎의 색깔·녹말 해석, 밥에 적용하는 추가 확인"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "78ce7aeae55fc0b3",
+          "pages": [
+            170,
+            171
+          ],
+          "difference": "중학교 고추 모종·검은 종이·70~80 °C 에탄올 물중탕",
+          "implementation": "절차 유사성만 확인했으며 이 앱은 초6 봉선화·포일·뜨거운 물 선처리 경로이다. 중학교 전체 광합성 활동 완료로 연결하지 않음"
+        },
+        {
+          "sourceId": "1c5d31ad60cefbfa",
+          "pages": [
+            5,
+            6
+          ],
+          "printedPages": [
+            162,
+            163
+          ],
+          "difference": "검정말·기체 검출·현미경으로 엽록체 전후 비교",
+          "implementation": "별개 표본·산소 검출·현미경 절차이며 미구현; 잎 색깔 비교만으로 충족 판정하지 않음"
+        }
+      ],
+      "boundary": "처리 시간을 줄여 보여 주는 정성 모형이다. 기본 조건은 검출에 영향을 줄 기존 녹말이 없는 잎이며, 잔류 조건은 검출될 만큼의 기존 녹말이 관찰 때까지 남아 있는 반례이다. 처음 녹말이 조금이라도 있으면 다음 날까지 반드시 남는다는 예측이 아니다. 탈색 누락 시 반응이 없다고 판정하지 않고 색 구별 곤란으로 처리한다. 광합성 속도·녹말의 실제 질량·호흡·양분 이동·색소 추출 속도를 수치로 예측하지 않는다. 검정말의 산소와 현미경 검출은 별도 절차로 미구현이다."
+    },
+    {
+      "slug": "dissolution-mass",
+      "source": {
+        "id": "ab3d40fbf44d14ba",
+        "pages": [
+          7
+        ],
+        "printedPages": [
+          64
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "aebc37106d1bf1bc",
+          "pages": [
+            3
+          ],
+          "printedPages": [
+            44
+          ],
+          "part": "용해 전후 전체 기구를 올리는 과정과 유리 막대의 용액 유실 통제"
+        },
+        {
+          "id": "b24be3a85c99e9fa",
+          "pages": [
+            2
+          ],
+          "printedPages": [
+            35
+          ],
+          "part": "118.5 g 전후 예시·같은 무게의 해석"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "7353de7f59ca65f0",
+          "pages": [
+            7
+          ],
+          "printedPages": [
+            70
+          ],
+          "difference": "각설탕 1개·물 50 mL, 핀셋으로 옮김",
+          "implementation": "소금·80 mL와 각설탕·50 mL의 두 시료를 제공한다. 물질이 사라지는지 전후 전체 무게를 비교하는 동일 실험으로 묶으며 시료와 무게를 별도로 유지한다."
+        }
+      ],
+      "boundary": "상온에서 증발·튀김·시약 잔류가 없는 닫힌 물질 수지의 가상 비교이다. 물 80/50 g·비커 52 g·종이 1 g·막대 12 g·소금 4 g/설탕 3.5 g과 0.8 g 영점 오프셋은 구성한 예시이며 실제 기구의 계량값이 아니다. 초등 성취기준의 제한에 따라 용해를 입자 모형으로 설명하지 않고 눈에 보이는 결정과 전체 무게만 비교한다. 녹는 속도·용액의 부피 수축·실제 측정 오차를 수치 예측하지 않는다."
+    },
+    {
+      "slug": "food-web",
+      "source": {
+        "id": "2448d73420ce481b",
+        "pages": [
+          9,
+          10,
+          15,
+          16
+        ],
+        "printedPages": [
+          44,
+          45,
+          50,
+          51
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "63adc95700ef72b2",
+          "pages": [
+            5,
+            8
+          ],
+          "printedPages": [
+            26,
+            29
+          ],
+          "part": "생물 요소의 역할 분류와 먹이 관계 모형 구성·화살표 해석"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "b80669359d767d64",
+          "pages": [
+            38,
+            39,
+            42
+          ],
+          "difference": "생물 카드를 생산자·소비자·분해자로 분류하고 숲의 먹이그물을 관찰한다.",
+          "implementation": "역할 분류의 목적과 조작을 묶음. 모든 원문 생물종의 표본 관찰이나 종이컵 먹이사슬 놀이를 구현한 것은 아님."
+        }
+      ],
+      "boundary": "교과서의 분류·먹이 관계 모형 구성 절차를 디지털 카드로 수행한다. 제공한 먹이 관찰 카드는 7종·10관계로 단순화한 수업용 자료이며 특정 서식지의 실측 식단이나 모든 자연적 먹이 관계를 나타내지 않는다. 생물 제거는 모형의 연결 제거이며 실제 개체군의 멸종·개체 수·시간별 변화를 예측하지 않는다. 생산자·소비자·분해자 분류는 제시한 역할에 한정하며 파리지옥 등 원문의 예외 카드는 포함하지 않는다. 종이컵·신체 놀이와 미술 재료 제작은 별도 활동이며 중복된 실험으로 합산하지 않는다."
+    },
+    {
+      "slug": "living-environment",
+      "source": {
+        "id": "f3afcfb26b5beb10",
+        "pages": [
+          15,
+          16
+        ],
+        "printedPages": [
+          108,
+          109
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "9cd8608a1fabd172",
+          "pages": [
+            8
+          ],
+          "printedPages": [
+            59
+          ],
+          "part": "물·햇빛 중 다르게 할 조건과 같게 할 조건, 일주일 관찰 결과"
+        },
+        {
+          "id": "460886b7b8acc07b",
+          "pages": [
+            9,
+            10
+          ],
+          "printedPages": [
+            62,
+            63
+          ],
+          "part": "비슷한 크기의 강낭콩 화분, 물·햇빛 비교의 조건 통제"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "4ac896b66c2378f8",
+          "pages": [
+            14,
+            15,
+            16
+          ],
+          "printedPages": [
+            105,
+            106,
+            107
+          ],
+          "difference": "화분 네 개를 두 쌍으로 나누어 물과 햇빛의 영향을 각각 약 일주일 동안 비교하며, 어둠상자에도 공기를 통하게 한다.",
+          "implementation": "두 조건을 선택해 각각 두 화분으로 비교한다. 네 화분 동시 관찰·실물 재배 완료가 아니며 봉숭아·분꽃의 별도 표본은 제공하지 않는다."
+        }
+      ],
+      "boundary": "명시된 2022 초3 교과서 절차에 맞춘 정성 관찰 모형이다. 줄기 길이·황화·시듦의 그림과 중간 날짜 변화는 작성된 대표 모습이며 실측 생장량·발생일·회복률을 제공하지 않는다. 처음에는 이미 자란 초록색 식물과 촉촉한 흙을 사용한다. 발아 실험, 일주일 안의 개화·꼬투리, 임의의 24개월 개체군 수치 예측은 제거했다. 먹이그물 구성은 food-web 앱으로 분리하며 4과14 성취기준을 이 식물 자람 앱의 이수 범위로 주장하지 않는다. 공통 목적의 물/햇빛 조건 비교를 하나의 설계 실험으로 묶으며 전체 출판사 전수 대조 완료는 아니다."
+    },
+    {
+      "slug": "yeast-fermentation",
+      "source": {
+        "id": "68a9aa30848d400d",
+        "pages": [
+          100,
+          101
+        ],
+        "printedPages": [
+          100,
+          101
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "dfd6e2082249cd70",
+          "part": "탐구활동지 교사용: 변인 통제, 대조군 냄새 비교, KOH 처리 후 맹관부 수면 상승과 CO₂ 흡수의 연결. 산소 공급을 입구 개폐만으로 단정하는 부분은 검토 후 그대로 구현하지 않음"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "12371732aa7bdea5",
+          "pages": [
+            3,
+            4
+          ],
+          "printedPages": [
+            92,
+            93
+          ],
+          "difference": "효모 7 g/50 mL, 두 비커에 포도당과 효모액을 넣고 파라필름과 기포 발생기로 기체 공급을 달리하며 알코올 농도계로 측정",
+          "implementation": "발효관의 정성 기체 확인과 별개인 알코올 농도 측정 변형은 미구현. 해당 후보를 완료로 판정하지 않음"
+        }
+      ],
+      "boundary": "원문 발효관 절차의 정성 가상 연습이다. 기체의 크기와 5분 간격 변화·미량 배경 기체·KOH 및 물에 의한 감소 비율은 작성된 관찰 경향을 나타내는 그림 좌표이며 실측 mL·발효 속도·고정 반응 수율을 표시하지 않는다. A도 효모의 저장 물질 등으로 배경 기체가 생길 수 있어 절대 0으로 놓지 않는다. B/C의 솜 유무는 밀폐/산소 공급의 엄밀한 조작이 아니며 두 관의 기체와 냄새 순위를 강제하지 않는다. 고농도 당에서 열린 B도 발효 가능한 대표 상황을 제공한다. 냄새는 정성 단서이고 에탄올 농도 측정이 아니다. 자료의 젖산발효 추가 실험·비커의 정량 알코올 농도계 절차·전체 출판사 절차는 미완료다."
+    },
+    {
+      "slug": "light-interference",
+      "source": {
+        "id": "88f46daabd2095a9",
+        "pages": [
+          142,
+          143
+        ],
+        "printedPages": [
+          142,
+          143
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "90bfbb936178e287",
+          "part": "교사용 탐구활동지: 적색/녹색 무늬 간격, 경로차·위상, 슬릿 간격·스크린 거리·파장. 추출되지 않은 그림 속 수치는 답안으로 복사하지 않음"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "6aeddd5b0fe32633",
+          "pages": [
+            3
+          ],
+          "printedPages": [
+            129
+          ],
+          "difference": "광학대에서 슬릿 없는 레이저 무늬와 이중 슬릿을 설치한 무늬를 촬영해 비교",
+          "implementation": "슬릿 설치/제거와 정렬·스크린 무늬 비교에 포함. 실물 스마트 기기 촬영·영상 분석 프로그램은 제공하지 않음"
+        },
+        {
+          "sourceId": "5ae07b36d128f25f",
+          "pages": [
+            142,
+            143
+          ],
+          "printedPages": [
+            142,
+            143
+          ],
+          "difference": "이중 슬릿을 스크린으로 비추어 반복되는 밝고 어두운 무늬 관찰",
+          "implementation": "광원·슬릿·스크린 정렬과 무늬 비교에 포함. 전체 출판사 전수 대조 완료 아님"
+        }
+      ],
+      "boundary": "동일 위상·진폭으로 두 슬릿을 비추는 단색광의 소각도 원거리 근사 모형이다. 슬릿 폭은 0.02 mm로 고정하며 sin(β)/β의 제곱 회절 포락선과 cos² 간섭 인자를 곱한다. 한 틈에서는 간섭 인자가 사라지고 중앙 세기는 두 틈 최대의 1/4이다. 광원의 슬릿 없는 밝은 점 크기와 디스플레이 RGB는 작성된 표현으로 빔 품질·분광 측색 실측값이 아니다. 회절 포락선에 의해 바깥쪽 극대가 약간 이동할 수 있으므로 간격 판정에는 허용 오차를 둔다. 개별 광자 축적·전자 이중 슬릿과 줄의 정상파는 별도 앱이며 이 앱의 실험 수에 합치지 않는다. 도식의 광학대는 배치 설명이고 공기 중 빛길의 직접 관측을 주장하지 않는다. 실물 촬영·수집 데이터 분석 완료 아님."
+    },
+    {
+      "slug": "galileo-incline",
+      "source": {
+        "id": "ee3ee343af97cac2",
+        "pages": [
+          16,
+          17
+        ],
+        "printedPages": [
+          16,
+          17
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "ee3ee343af97cac2",
+          "pages": [
+            17
+          ],
+          "part": "동시에 놓은 쇠구슬의 위치·도착 시점 비교, 충돌 전까지 0.1초마다 이동한 거리 비교 및 점점 빨라지는 운동 해석"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "219f8d0b7dc938c3",
+          "pages": [
+            5,
+            6
+          ],
+          "printedPages": [
+            12,
+            13
+          ],
+          "difference": "골프공·탁구공과 경사면을 촬영하고 영상 분석의 길이 보정·좌표 설정·위치 추적으로 위치-시간·속도-시간 그래프 비교",
+          "implementation": "기울기와 같은 시간의 위치 비교를 제공. 실물 영상 촬영·길이 보정·좌표 추적 도구는 미구현. 속이 빈 구와 꽉 찬 구를 구별하며 서로 다른 구조의 구를 질량만의 비교로 간주하지 않음"
+        },
+        {
+          "sourceId": "764c91a83f8bf462",
+          "pages": [
+            16,
+            17,
+            18
+          ],
+          "difference": "5°/10° 경사면, 지름 40 mm 탁구공·쇠구슬, 두 포토게이트·5회 측정 평균 및 도착 시간의 1/3·2/3 시점 위치 확인",
+          "implementation": "공통 기울기와 구조 차이·출발 시점·시간별 위치 비교를 제공. 포토게이트 조정, 반복 측정 오차와 평균값 계산은 미구현. 해당 별도 후보는 완료로 판정하지 않음"
+        }
+      ],
+      "boundary": "균질한 구가 평평한 경사면에서 미끄러지지 않고 구르는 이상 모형이며 정지 마찰을 통한 구름 조건을 전제한다. 공기저항·구름저항·충돌 후 운동은 제외한다. 교과서의 자 두 개 사이 홈 접촉에 따른 유효 구름 반지름과 접촉 기하, 실물 공의 재질·탄성은 재현하지 않는다. 표시 질량과 크기는 가상 장치 조건이며 실측 자료가 아니다. 같은 구조의 구는 질량에 무관한 가속도로 계산하지만 빈 구와 꽉 찬 구는 관성모멘트가 다르므로 같은 가속도를 강제하지 않는다. 교과서 모든 판본·영상 분석·포토게이트 실험 완료가 아니다."
+    },
+    {
+      "slug": "reaction-pressure",
+      "source": {
+        "id": "ddcc57290fbbe04a",
+        "pages": [
+          3,
+          4
+        ],
+        "printedPages": [
+          106,
+          107
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "ddcc57290fbbe04a",
+          "pages": [
+            3,
+            4
+          ],
+          "part": "압력 센서 연결, 주입 시점과 세 시간 구간의 압력 증가율 비교"
+        },
+        {
+          "id": "03978ccd926f8cfc",
+          "pages": [
+            106,
+            107
+          ],
+          "part": "Mg와 HCl 반응의 압력 변화 측정, 반응 속도 해석"
+        },
+        {
+          "id": "d8e1bf3dd039c88a",
+          "pages": [
+            104,
+            105
+          ],
+          "part": "일정한 온도와 부피에서 기체 발생량과 압력 변화의 관계"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "03978ccd926f8cfc",
+          "pages": [
+            106,
+            107
+          ],
+          "implementation": "압력 센서 조립·주입·구간 비교의 공통 절차를 보완. 판본별 반응 조건의 실측 재현으로 보지 않음"
+        },
+        {
+          "sourceId": "965f45ec469d480f",
+          "pages": [
+            100,
+            101
+          ],
+          "difference": "Mg 0.4 g, 0.2 M HCl 50 mL, 250 mL 플라스크, 산화 피막 제거",
+          "implementation": "다른 제한 반응물 조건과 표면 전처리 미구현. 이 별도 후보는 완료로 판정하지 않음"
+        }
+      ],
+      "boundary": "25°C 일정 온도와 고정 기체 부피에서 이상 기체 상태방정식 및 Mg+2HCl→MgCl₂+H₂의 양론을 적용한 비교 모형이다. 반응 진행률은 60초에서 끝나는 1−(1−t/60)^3의 저작 곡선이며 실제 Mg 반응의 측정 자료나 검증된 속도식이 아니다. 생성량 상한은 Mg와 HCl의 제한 반응물로 별도 계산한다. 시작 압력은 101.325 kPa, 액체 주입 중 외부로 열린 밸브가 공기 치환을 허용하고 주입 직후부터 닫는 장치를 가정한다. 센서·관의 사강, 수증기압, 온도 상승, 산화 피막, 누출 과도 응답은 제외한다. 400 mL는 같은 반응량에서 기체 공간의 영향을 비교하는 추가 조건이다. 교과서의 다른 질량·농도·실측 그래프와 동일하다고 주장하지 않는다. 교사용 자료에 잘못 섞인 염소 발생 문구는 재현하지 않는다."
+    },
+    {
+      "slug": "osmosis-mass",
+      "source": {
+        "id": "d8e1bf3dd039c88a",
+        "pages": [
+          64,
+          65
+        ],
+        "printedPages": [
+          64,
+          65
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "03978ccd926f8cfc",
+          "pages": [
+            66,
+            67
+          ],
+          "part": "같은 처음 질량, 용액 농도, 표면 물기 제거와 질량 변화 해석"
+        },
+        {
+          "id": "d8e1bf3dd039c88a",
+          "pages": [
+            64,
+            65
+          ],
+          "part": "0.5/1/2 M 포도당 비교의 처음 80/80/80 g, 나중 80/78/72 g 예시 표"
+        },
+        {
+          "id": "279be25ef56d430f",
+          "pages": [
+            3,
+            4
+          ],
+          "part": "채소 종류·크기·처음 질량의 통제와 용액 농도 비교"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "279be25ef56d430f",
+          "pages": [
+            3,
+            4
+          ],
+          "difference": "두 종류 채소, 0.2~0.5 M 설탕물, 같은 모양·두께·처음 질량을 설계하는 활동",
+          "implementation": "채소 종류와 농도에 대한 평가 해석은 대조했으나 두 채소의 결과를 예측하는 장치는 미구현. 포도당 표본의 수치를 설탕물/다른 채소에 전용하지 않음"
+        },
+        {
+          "sourceId": "965f45ec469d480f",
+          "pages": [
+            61,
+            62
+          ],
+          "difference": "셀로판 주머니·빨대의 수면 높이 변화 관찰",
+          "implementation": "채소 질량과 다른 절차이므로 이 후보는 완료로 판정하지 않음"
+        }
+      ],
+      "boundary": "질량 끝점은 검토한 교사용 예시 표의 80/80/80 g→80/78/72 g을 그대로 사용한다. 이 표는 같은 자료에 있는 약 10 g 준비 설명과 불일치하므로 10 g으로 환산하거나 20분의 실측 결과라고 조합하지 않는다. 시간 수치나 질량의 연속 변화·용액 농도에 대한 보편 예측식을 만들지 않는다. 담금·꺼냄은 동일 시간 처리의 절차 단계이며 실제 시간 경과를 모사하지 않는다. 12 g 접시는 저울 영점 연습용으로 설정한 가상 기구 질량이다. 표면에 묻은 용액의 질량은 임의로 생성하지 않고 물기 제거 전 측정을 무효로 한다. 시료의 크기·모양 변화량은 측정하지 않으며 그림은 정성적인 기구·시료 표시다. 표의 0.5 M 조건을 모든 무의 보편 등장액 농도로 주장하지 않는다. 출판사별 모든 채소·설탕물·막 주머니 실험 완료가 아니다."
+    },
+    {
+      "slug": "leaf-classification",
+      "source": {
+        "id": "6ffbf49bb850d9e5",
+        "pages": [
+          8,
+          9,
+          10
+        ],
+        "printedPages": [
+          67,
+          68,
+          69
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "a7e24a36d0271bf6",
+          "pages": [
+            4,
+            5,
+            6
+          ],
+          "part": "전체 모양과 가장자리 관찰, 분류 결과의 중복·누락 없이 같은 기준 유지"
+        },
+        {
+          "id": "cfb89eb84b81f779",
+          "pages": [
+            7,
+            8
+          ],
+          "part": "다른 기준으로 다시 분류, 잎 끝이 뾰족한지 비교"
+        },
+        {
+          "id": "e4f5ab2a6080c3eb",
+          "pages": [
+            62,
+            63
+          ],
+          "part": "전체 모양·가장자리·작은 잎의 수, 특징에 따른 기준 비교"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "e4f5ab2a6080c3eb",
+          "pages": [
+            62,
+            63
+          ],
+          "difference": "주변의 잎 채집·번호·돋보기·잎자루에 달린 작은 잎의 수까지 비교",
+          "implementation": "표시된 여섯 참조 잎의 번호 대신 이름으로 구분. 현장 채집과 실제 잎의 길이 측정은 제외"
+        },
+        {
+          "sourceId": "cfb89eb84b81f779",
+          "pages": [
+            7,
+            8
+          ],
+          "difference": "잎 끝의 모양과 다른 기준으로 재분류",
+          "implementation": "잎 끝·전체 모양·갈라짐의 세 기준을 선택해 재분류. 자유 문장 기준 작성은 학생 화면에 추가하지 않음"
+        }
+      ],
+      "boundary": "제공된 2022 미래엔 교과서 PDF 10쪽(인쇄 69쪽)의 원래 여섯 잎 사진과 PDF의 자르기 경계·투명도·색 변환을 유지해 분리 렌더링한 무손실 WebP이다. 사진에 없던 잎맥·톱니·형태를 생성하지 않았다. 사진은 실제 크기와 동일 배율이 아니며 실물 채집·촉감·현미경 관찰을 대신하지 않는다. 길쭉함은 이 여섯 표본에서 폭이 좁고 긴 소나무·강아지풀을 구별하는 초등 외형 기준이며 길이/폭의 보편 수치 문턱을 정하지 않는다. 개체·성장 단계별 모든 잎의 변이를 대표하거나 식물학적 계통 분류를 수행한다고 주장하지 않는다. 토끼풀의 작은 잎 여러 장을 단풍나무 한 잎몸의 갈라짐과 구별한다. 원문의 실물 채집·촉감·가장자리 톱니의 모든 판본 기준 및 자유 문장 기준 작성은 구현 완료로 보지 않는다."
+    },
+    {
+      "slug": "animal-classification",
+      "source": {
+        "id": "7b7d21ce70cbc112",
+        "pages": [
+          8,
+          9,
+          10
+        ],
+        "printedPages": [
+          41,
+          42,
+          43
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "09d48816c6bfaca2",
+          "pages": [
+            2,
+            3,
+            4
+          ],
+          "part": "동물 카드 관찰, 객관적 외형 기준, 중복·누락 없는 두 무리 분류 및 새로운 동물에 같은 기준 적용"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "e4f5ab2a6080c3eb",
+          "pages": [
+            36,
+            37
+          ],
+          "difference": "고라니·물까치·오징어·각시붕어·꼬리박각시 카드, 분류 기준 정하기",
+          "implementation": "공통 관찰·기준 유지 목적만 대조. 이 앱은 미래엔 여덟 동물 카드이며 동아 다섯 종의 실물 관찰을 구현한 것으로 세지 않음"
+        }
+      ],
+      "boundary": "제공된 2022 교과서 PDF에 포함된 여덟 동물의 원래 사진과 알파 마스크를 분리 추출하여 무손실 WebP로 결합하였다. 새 해부학적 특징을 생성하거나 사진을 고치지 않았다. 사진은 동일 배율이 아니며 실제 크기 비교나 개체별 모든 변이를 대표하지 않는다. 한쪽에서 찍은 사진에 가려진 다리가 있으므로 다리 개수 세기를 요구하지 않는다. 날개·다리·지느러미 존재의 초등 외형 분류이며 생물 계통 분류나 현장 채집을 구현했다고 주장하지 않는다. 자유 토론·자유 문장 기준 작성·실물 관찰은 범위에 포함하지 않는다."
+    },
+    {
+      "slug": "liquid-heat",
+      "source": {
+        "id": "bf06a26fac90f0f5",
+        "pages": [
+          19,
+          20
+        ],
+        "printedPages": [
+          94,
+          95
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "bf06a26fac90f0f5",
+          "pages": [
+            19,
+            20
+          ],
+          "part": "동일 질량·가열 조건, 시간–온도 그래프의 기울기와 비열의 관계"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "33598fd33915c169",
+          "pages": [
+            100,
+            101
+          ],
+          "difference": "물·식용유 각 100 g을 뜨거운 물과 찬물에 각 2분 두고, 꺼내 골고루 흔든 뒤 적외선 온도계로 중심 온도 측정",
+          "implementation": "별도의 수조 열교환·표면 온도 측정 절차이며 이 일정 열입력 모형으로 구현 완료 처리하지 않음"
+        }
+      ],
+      "boundary": "물의 비열 4180 J/(kg·℃), 교과서 상대 비열 그래프의 콩기름/물=0.47을 사용한 등온 액체·일정 열입력 모형이다. 초기 20℃, 기본 각 100 g·10 J/s·300초이며 용기 열용량·열손실·센서 지연·온도에 따른 비열 변화는 무시한다. 10 J/s와 수치 곡선은 저작 비교 조건이고 교과서 실측 데이터가 아니다. 비커 바닥·공기 중 센서는 액체 온도로 유효하지 않아 수치를 생성하지 않으며 0℃로 표시하지 않는다. 콩기름 200 g·20 J/s는 통제 변인 판단용 추가 조건이다. 두 비커의 표시 높이는 개략도이며 밀도·부피 측정에 쓰지 않는다. 수조와 적외선 온도계 판본은 별도 미구현 절차로 남긴다."
+    },
+    {
+      "slug": "phase-mass",
+      "source": {
+        "id": "3630e303237d192e",
+        "pages": [
+          128,
+          129
+        ],
+        "printedPages": [
+          128,
+          129
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "3630e303237d192e",
+          "pages": [
+            128,
+            129
+          ],
+          "part": "전후 13.5 g 예시, 부피 감소, 입자 종류·개수 보존, 물기와 추가 테이프의 영향"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "dfe2ad8ba5fcf4e5",
+          "pages": [
+            12,
+            13
+          ],
+          "difference": "봉지 속 드라이아이스의 승화와 부피 변화, 기체 부력 영향을 줄이기 위한 용기 전체 질량 비교",
+          "implementation": "상태 변화와 장치가 다른 별도 절차. 올리브유 응고로 구현 완료 처리하지 않음"
+        }
+      ],
+      "boundary": "교사용 원문의 병·뚜껑·내용물 전체 13.5 g 예시를 재구성한다. 5 mL는 준비물의 병 용량이며 올리브유를 정확히 5 mL 담았다는 뜻으로 사용하지 않는다. 응고 전후 질량은 보존하고 높이 감소는 정성 표시한다. 그림 높이 비는 실제 올리브유의 수축률·밀도 측정값이 아니다. 바깥 물기 0.3 g과 초기 저울 오프셋 0.2 g은 측정 조건 판단을 위한 저작 사례이다. 냉각 버튼은 충분히 냉각된 끝 상태로 바꾸며 실제 시간·온도별 상전이 속도를 계산하지 않는다. 입자 배열은 중학교의 단순 모형이며 혼합물인 올리브유의 실제 결정 구조를 재현하지 않는다. 원문의 색 테이프 대신 비접촉 기준선을 사용하여 표식 자체의 추가 질량을 제외한다. 테이프 추가에 따른 비교 조건은 전이 문항으로 따로 확인한다. 다른 물질의 응고·기체의 부력 및 실물 실험 수행까지 완료로 보지 않는다."
+    },
+    {
+      "slug": "rotating-disc",
+      "source": {
+        "id": "d41737876b631070",
+        "pages": [
+          104,
+          105
+        ],
+        "printedPages": [
+          102,
+          103
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "d8e0d7966df3a400",
+          "pages": [
+            312,
+            313
+          ],
+          "part": "회전 유무·속도·방향 비교, 지역 연직축 회전 성분과 위도 해석"
+        },
+        {
+          "id": "cdbacd1f7e6522b8",
+          "pages": [
+            78
+          ],
+          "part": "회전 속도 차이와 구슬 경로의 상대적인 전향 비교"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "cdbacd1f7e6522b8",
+          "pages": [
+            108,
+            109
+          ],
+          "difference": "정지·반시계 두 속도·시계 방향을 비교",
+          "implementation": "동일한 중심 출발과 회전 조건의 비교로 통합. 푸코 진자의 별도 장치 실험은 포함하지 않음"
+        },
+        {
+          "sourceId": "5b0ce08b8c0b10eb",
+          "pages": [
+            23
+          ],
+          "difference": "새 종이, 구슬 속력·출발 방향 통제, 시계와 반시계 각각 두 속도 비교",
+          "implementation": "다섯 조건과 새 종이 준비·동일 출발·흔적 나란히 비교에 반영"
+        }
+      ],
+      "boundary": "수평 마찰을 무시한 중심 출발 등속 구슬의 관성계 위치를 회전 좌표계로 변환한다. r_paper=R(-ωt)r_lab이며 원심·전향 성분을 임의의 가로 힘으로 가산하지 않는다. 모형의 이동 시간 4초, 반지름 1, 각속도 7.5/15도·초는 시각 비교를 위한 저작 조건으로 실측값이나 실제 지구 자전 속도가 아니다. 구슬 속력은 실험대 기준으로 일정하며 회전 좌표계에서의 속력과 동일하다고 하지 않는다. 실물 구슬의 미끄럼·회전·마찰 및 잉크 저항은 모사하지 않는다. 위도 해석은 미래엔 PDF105의 지역 연직 성분 Ωsinφ를 따른다. T셀파 PDF109의 고위도 지표가 더 빠르게 회전한다는 표현을 지표 선속력 증가로 전용하지 않는다. 모든 위도에서 지구 자전 각속도 Ω는 같고 선속력은 극에 가까울수록 작아진다. 실제 장치 수행과 푸코 진자 실험은 별도이다."
+    },
+    {
+      "slug": "quadrat-community",
+      "source": {
+        "id": "e7f946d79cd76730",
+        "pages": [
+          7,
+          8
+        ],
+        "printedPages": [
+          54,
+          55
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "e7f946d79cd76730",
+          "pages": [
+            7,
+            8
+          ],
+          "part": "5회×25 cm², 개체 수와 출현 여부 구별, 밀도·빈도·피도 및 상대값·중요도 공식"
+        },
+        {
+          "id": "7ad5e2bf06acaec3",
+          "pages": [
+            52,
+            53,
+            201,
+            203
+          ],
+          "part": "상대밀도·상대빈도·상대피도 합과 우점종, 중복되지 않는 방형구, 부록의 도형 군집 모형"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "7ad5e2bf06acaec3",
+          "pages": [
+            53,
+            201,
+            203
+          ],
+          "difference": "한 칸 5 cm×5 cm, 1 m×1 m 방형구, 다섯 식물종, 경계에서 절반 이상 포함한 개체를 세는 규칙",
+          "implementation": "다종 군집과 합산 원리는 대조했으나 동아의 cm² 척도·세 종과 혼합하지 않음. 다섯 종의 실제 부록 배열과 절반 경계 규칙은 별도 변형으로 남김"
+        }
+      ],
+      "boundary": "교과서의 도형 군집 조사 절차를 따르는 저작 모형으로 원문 부록이나 실제 야외 조사 수치를 복제한 자료가 아니다. 전체 20×20 cm 모형을 5×5 cm의 16개 표본 구역으로 나누어 다섯 구역을 비복원 추출한다. 작은 한 칸은 1 cm²이며 모양의 실제 잎 면적이 아니라 교과서 규칙대로 점유한 칸을 센다. A는 한 칸, B는 아홉 칸, C는 두 칸을 차지하며 각 모양이 한 개체다. 개체의 모든 점유 칸이 같은 표본 구역 안에 있고 경계에 걸친 개체는 없으므로 동아의 중심부 포함 규칙과 천재의 절반 포함 규칙을 동일하게 구현했다고 하지 않는다. 종별 피도는 점유 면적/전체 조사 면적의 비, 빈도는 출현 방형구 수/전체 방형구 수다. 상대값의 분모는 각각 모든 종의 해당 값 합이며 중요도 합은 300이다. 비어 있는 방형구도 조사 면적과 방형구 수의 분모에 포함한다. 처음 표본 순서는 고정 시드로 재현하며 새로운 조사에서 시드를 바꾸어 임의 순서의 새 표본을 만든다. 군집 모형의 반복 표집이며 실측·식물 동정·공유 스프레드시트 편집 완료를 뜻하지 않는다."
+    },
+    {
+      "slug": "ph-comparison",
+      "source": {
+        "id": "1312595cd997419c",
+        "pages": [
+          20,
+          21,
+          22,
+          23,
+          127
+        ],
+        "printedPages": [
+          20,
+          21,
+          22,
+          23,
+          127
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "7420d01f52595320",
+          "pages": [],
+          "part": "교사용 탐구활동지: 같은 농도 네 수용액 측정과 이론 비교. HWP 수식의 문자인식 누락은 PDF 20~23쪽으로 대조했으며 누락된 기호를 추정해 인용하지 않음"
+        },
+        {
+          "id": "ac96b40366f7e849",
+          "pages": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "part": "이온화 상수·같은 농도에서의 상대 세기·용액을 바꿀 때마다 전극 세척"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "ac96b40366f7e849",
+          "pages": [
+            5,
+            6
+          ],
+          "difference": "같은 네 시료·0.1 M·약 50 mL·25 °C, 전극을 증류수로 여러 번 헹구는 절차",
+          "implementation": "공통 측정과 세척 절차를 묶음. 실측 수치가 제공되지 않은 표의 결과를 임의로 채워 원문 측정값으로 제시하지 않음"
+        }
+      ],
+      "boundary": "25 °C의 농도 기반 이상 용액 모형이며 실제 pH 전극의 활동도 응답·온도 보상·접합 전위·오염량·휘발·실측 잡음을 재현하지 않는다. 강산·강염기의 완전 해리와 물의 자동 이온화를 적용한다. 약산·약염기는 x²/(C−x)=K를 풀며 약전해질에서 물의 자동 이온화는 무시한다. C=0.1 M에서 이 근사는 충분하지만 극희석·다양성자 산으로 일반화하지 않는다. 약전해질 pH 2.88·11.12는 C−x를 유지한 계산이고 교과서의 C−x≈C 근사 2.87·11.13과 구별한다. 가상 계기값은 계산을 소수 둘째 자리로 반올림한다. 실측 수치를 창작하지 않으며 보정과 세척 오류는 임의 오염 pH를 만들어 주는 대신 측정 불가로 처리한다. 보정 순서는 해당 판본 부록의 기기 예시이며 모든 pH 미터의 보편적인 순서라고 주장하지 않는다. PDF 22쪽의 부록 125쪽 안내와 달리 실제 사용·보정 절차는 PDF/인쇄 127쪽에서 확인했다."
+    },
+    {
+      "slug": "microbes",
+      "source": {
+        "id": "c84377a276e7c9d4",
+        "pages": [
+          5,
+          6,
+          9,
+          10
+        ],
+        "printedPages": [
+          90,
+          91,
+          94,
+          95
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "db0e9fff7780eb20",
+          "pages": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "part": "실험관찰: 준비 표본·조명·초점·균사의 모양 및 해캄/짚신벌레 생김새 비교"
+        },
+        {
+          "id": "5e82dd654d57238e",
+          "pages": [],
+          "questions": [
+            "01",
+            "02",
+            "03",
+            "04"
+          ],
+          "part": "단원평가와 해설: 균류의 균사, 버섯과 식물 구별, 해캄과 짚신벌레의 형태·사는 곳. 누락된 HWP 삽입 그림을 복원하지 않음"
+        },
+        {
+          "id": "9342c9fd891428a4",
+          "pages": [],
+          "questions": [
+            "보충 01"
+          ],
+          "part": "모든 원생생물이 초록색이라는 일반화의 반례. 글과 해설만 대조함"
+        },
+        {
+          "id": "8852932f2c9c2f37",
+          "pages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "part": "천재 실험관찰: 테이프 표본, 덮개를 닫은 곰팡이 관찰, 영구표본 조명과 초점 순서"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "01d46737b7fb1928",
+          "pages": [
+            90,
+            91,
+            92,
+            93
+          ],
+          "difference": "동아는 해캄과 살아 있는 짚신벌레 배양액을 맨눈·돋보기·디지털 현미경으로 관찰한다. PDF와 인쇄쪽은 2쪽 차이",
+          "implementation": "고정 표본 사진과 생김새 비교만 통합. 정지 영구표본을 살아 움직이는 배양액 관찰로 제시하지 않음"
+        },
+        {
+          "sourceId": "3da0d210d33ad0c6",
+          "pages": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "difference": "천재는 해캄과 짚신벌레 영구표본 사용, 제시 사진 400배와 200배",
+          "implementation": "동일 표본 준비·조명·초점 조절 목적을 묶되 사진/배율은 미래엔 원본 150배·100배로 유지"
+        }
+      ],
+      "boundary": "원본 PDF의 사진을 그래픽 상태·색상·클리핑을 유지하여 무손실 WebP로 추출했다. 현미경의 20/40/150/100배 표기는 원본 촬영 배율이고 화면의 1~2배 확대와 다르다. 초점·밝기 조작은 정지 사진의 디지털 모형이며 실물 렌즈·표본 거리나 접촉을 재현하지 않는다. 원본에 없는 움직임·세균 증식률·염색 전 색을 생성하지 않는다. 맨눈의 전체 표본 준비와 실체/디지털 현미경의 기종별 기계적 조작, 살아 있는 짚신벌레의 움직임 관찰은 미구현이다. 실물 수행 및 두 활동 전체 완료로 판정하지 않는다."
+    },
+    {
+      "slug": "rock-layers",
+      "source": {
+        "id": "bff24e51554bee1f",
+        "pages": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "printedPages": [
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "44b458c732d901ee",
+          "pages": [],
+          "part": "퇴적암 형성평가 기본·보충·심화와 해설: 알갱이 크기 기준, 역암이 자갈만으로 이루어진다는 오개념"
+        },
+        {
+          "id": "a4ad37b8160f54b5",
+          "pages": [],
+          "part": "화석 형성평가: 몸체/흔적의 구별, 퇴적물 매몰 과정. HWP 그림은 복원하지 않고 텍스트와 해설만 대조"
+        },
+        {
+          "id": "f338aada90e3dca0",
+          "pages": [],
+          "questions": [
+            "02",
+            "05",
+            "06",
+            "07",
+            "09"
+          ],
+          "part": "지층 순서·퇴적암·화석·모형과 실제의 시간 및 재료 차이. 그림이 필요한 답은 교과서 원본 사진으로 교차 확인"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "4f9126e5e524fa88",
+          "pages": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "difference": "여섯 퇴적암의 알갱이 비교, 물고기·나뭇잎 화석, 점토·조개껍데기·알지네이트 모형. 가루 10 g과 물 30 mL",
+          "implementation": "양 출판사의 암석 세 종류씩을 여섯 표본으로 구성. 미래엔의 진흙·모래·자갈 사진을 암석의 확대 사진으로 전용하지 않음. 사진 16쪽 모형 절차와 재료 비율을 대조"
+        },
+        {
+          "sourceId": "7af27df0ba66a425",
+          "pages": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "difference": "관찰 분류, 생물 모습, 모형과 자연의 대응. 12쪽 발자국 모형 변형",
+          "implementation": "공통 관찰·분류·점토 자국 및 양각 모형 비교를 묶음; 공룡 발자국을 직접 찍는 제작 변형은 미구현"
+        }
+      ],
+      "boundary": "정지 사진의 확대·분류와 가상 모형 제작이다. 실제 현미경 배율, 표본 전체·알갱이의 mm 크기, 촉감·경도는 측정하지 않는다. 표면 자세히는 천재의 동일 표본 확대 사진 세 장만 사용한다. 사진 간 표시 크기를 실제 크기나 동일 배율로 제시하지 않는다. 점토와 껍데기의 형상·반죽의 유동·굳음은 정성 모형으로 압력·점도·시간이나 실제 지질 연대를 계산하지 않는다. 완료 후 사진은 교과서에 제시된 별도의 실물 모형 예시이며 사용자의 실물 제작 사진이 아니다. 실물 제작·현미경 조작과 출판사 모든 변형의 완료로 판정하지 않는다."
+    },
+    {
+      "slug": "sound-vibration",
+      "source": {
+        "id": "0427f65975abab3c",
+        "pages": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "printedPages": [
+          74,
+          75,
+          76,
+          77
+        ]
+      },
+      "assessmentSources": [
+        {
+          "id": "7f0ff172c928082f",
+          "pages": [],
+          "part": "형성평가의 물 표면 떨림·물방울·스피커 진동과 해설. HWP 미복원 그림은 검증 근거로 사용하지 않음"
+        },
+        {
+          "id": "2634437e787c8a51",
+          "pages": [],
+          "questions": [
+            "01",
+            "02",
+            "03",
+            "04",
+            "05"
+          ],
+          "part": "떨림, 손으로 잡기, 북의 세기와 음판 길이의 구별. 텍스트와 정답 대조"
+        }
+      ],
+      "publisherVariants": [
+        {
+          "sourceId": "ea4b521d6469fb4a",
+          "pages": [
+            7,
+            8,
+            11,
+            12
+          ],
+          "difference": "손·종이·물 관찰, 작은북의 세기와 조각 움직임",
+          "implementation": "소리굽쇠의 공통 접촉 비교 구현. 작은북의 실물 조작과 목의 촉각은 별도"
+        },
+        {
+          "sourceId": "236664dda9cfa03d",
+          "pages": [
+            3,
+            4
+          ],
+          "difference": "치기 전후 소리, 손 느낌, 종이·물 비교",
+          "implementation": "무진동/진동 비교를 직접 조작. 실제 촉각과 실물 측정은 제외"
+        },
+        {
+          "sourceId": "d21b11d92195a717",
+          "pages": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "difference": "소리굽쇠와 트라이앵글 비교, 북과 디지털 소리 측정",
+          "implementation": "소리굽쇠의 전후 접촉 비교. 트라이앵글과 dB 측정은 미구현"
+        },
+        {
+          "sourceId": "664e31e7d1ee5bc0",
+          "pages": [
+            3,
+            4
+          ],
+          "difference": "소리굽쇠·트라이앵글의 느낌, 물 튀김 비교",
+          "implementation": "소리굽쇠 물 접촉과 손으로 잡는 효과를 구현; 트라이앵글은 전이 문제에서 판단"
+        },
+        {
+          "sourceId": "affeaa5e20057002",
+          "pages": [
+            3,
+            4
+          ],
+          "difference": "종이는 진동, 물은 튐, 손으로 잡으면 소리 멈춤. 북·스피커 dB 예시",
+          "implementation": "정성 관계를 대조. 예시 dB 수치를 이 앱의 측정값으로 전용하지 않음"
+        }
+      ],
+      "boundary": "정성 가상 실험이다. 감쇠율·2 Hz 느린 표시·440 Hz 합성음은 관찰용 설계값으로 원본 측정값이 아니다. 실제 소리굽쇠의 진동수·음색·진폭·dB 또는 접촉 물질의 정량적 감쇠를 재현한다고 주장하지 않는다. 물 접촉은 진동이 더 빨리 줄어드는 관계만 표현한다. 손의 느낌은 설명과 움직임 변화로 비교하며 촉각을 재현하지 않는다. 브라우저 오디오가 지원되지 않으면 관찰 화면은 계속 작동한다. 실제 소리세기 측정과 작은북·스피커·트라이앵글 조작은 미구현이다."
+    }
+  ]
+}

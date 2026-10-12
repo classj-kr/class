@@ -1,0 +1,35 @@
+✖ community metrics separate counts, occurrence and cover; empty plots remain in every sampling denominator (1.4849ms)
+✔ all 4,368 distinct five-quadrat samples use 125 cm² and normalized relative measures (11.7888ms)
+✔ chromium: five nonoverlapping plots, empty observations, reset, readable results and first-answer feedback (15402.6752ms)
+✔ webkit: five nonoverlapping plots, empty observations, reset, readable results and first-answer feedback (15620.6853ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31099.9357
+
+✖ failing tests:
+
+test at tests\science-quadrat-community.test.cjs:2:1
+✖ community metrics separate counts, occurrence and cover; empty plots remain in every sampling denominator (1.4849ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 33.33333333333333
+  - 33.333333333333336
+  
+      at TestContext.<anonymous> (E:\webprojects\class\tests\science-quadrat-community.test.cjs:4:339)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 33.33333333333333,
+    expected: 33.333333333333336,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

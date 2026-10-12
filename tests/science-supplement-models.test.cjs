@@ -14,7 +14,10 @@ function models(){
 }
 const specs=models();
 test('all supplement choices return finite, curriculum-referenced observations',()=>{
- assert.equal(Object.keys(specs).length,36);
+ // The mixed living-environment supplement was replaced by the source-reviewed
+ // plant-growth and food-web apparatus. This is the remaining legacy bundle.
+ assert.equal(Object.keys(specs).length,35);
+ assert.equal(specs['living-environment'],undefined,'Do not restore the retired arbitrary population diagram');
  const curriculum=fs.readFileSync('references/moe/2022-revised-curriculum/extracted/09-science.txt','utf8');
  for(const [slug,spec]of Object.entries(specs)){
   for(const code of spec.codes)assert(curriculum.includes('['+code+']'),slug+': '+code);

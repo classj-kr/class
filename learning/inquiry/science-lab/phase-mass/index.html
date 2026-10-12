@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>중1 응고 전후 질량과 부피 비교</title><meta name="description" content="2022 교육과정 · 응고 전후 질량과 부피 비교의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../phase-mass.css?v=52e470d7aa43"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=중1">← 중1 과학 실험</a><h1>응고 전후 질량과 부피 비교</h1><div class="grade-tags"><span>중1</span><span>과학</span></div></header><p class="intro">뚜껑을 닫은 병의 올리브유를 얼려, 질량과 높이가 어떻게 달라지는지 확인하세요.</p><section class="pm-lab"><header class="pm-heading"><span>상태 변화와 질량·부피</span><h2>굳으면 질량도 늘어날까?</h2></header><ol class="pm-steps"><li>영점을 맞추고, 처음 높이와 질량을 확인합니다.</li><li>얼음·소금으로 냉각한 뒤 높이를 비교합니다.</li><li>병 바깥 물기를 닦고 바로 질량을 잽니다.</li></ol><div class="pm-actions"><button id="pmZero">빈 저울 영점</button><button id="pmPrepare">올리브유 준비 · 뚜껑 닫기</button><button id="pmMark">현재 높이 표시</button><button id="pmWeigh" class="primary">저울에 올려 측정</button><button id="pmRemove">저울에서 내리기</button><button id="pmCool">얼음·소금으로 냉각</button><button id="pmRetrieve">냉각조에서 꺼내기</button><button id="pmWipe">병 바깥 물기 닦기</button></div><div class="pm-workspace"><div class="pm-instrument"><strong id="pmPlace">병을 준비하세요.</strong><div id="pmScene" class="pm-scene"><div class="pm-bath"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="pm-bottle"><div class="pm-cap"></div><div class="pm-glass"><div class="pm-oil"></div><div class="pm-mark pm-mark-before"></div><div class="pm-mark pm-mark-after"></div><div class="pm-droplets"><i></i><i></i><i></i><i></i></div></div></div><div class="pm-bench-platform"></div><div class="pm-balance"><div class="pm-display"><output id="pmScale">0.2</output><span>g</span></div></div></div><p id="pmBalanceNote">빈 저울에서 영점을 확인하세요.</p><div class="pm-level-key"><span><i></i>처음 높이</span><span><i></i>응고 후 높이</span></div></div><div class="pm-observation"><h3>확인한 결과</h3><div class="pm-result-pair"><article><h4>응고 전</h4><strong id="pmBeforeMass">— g</strong><p id="pmBeforeNote">아직 측정하지 않았습니다.</p></article><article><h4>응고 후</h4><strong id="pmAfterMass">— g</strong><p id="pmAfterNote">아직 측정하지 않았습니다.</p></article></div><h3>입자 배열 비교</h3><div class="pm-particles"><div><span>액체</span><svg id="pmLiquid" viewBox="0 0 180 160" role="img" aria-label="액체 상태의 입자 배열"></svg></div><div><span>고체</span><svg id="pmSolid" viewBox="0 0 180 160" role="img" aria-label="응고 후 입자 배열"></svg></div></div><p id="pmParticleNote">응고 전후 입자의 종류와 개수도 비교해 보세요.</p></div></div><p id="pmStatus" class="pm-status" aria-live="polite"></p><p class="pm-condition">뚜껑을 닫은 같은 병을 비교합니다. 높이 표시는 병에 물질을 더하지 않는 기준선입니다. 차가운 유리병은 장갑을 끼고 다루세요.</p><button id="pmReset">처음부터 다시</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>뚜껑을 닫은 병을 닦아 측정했더니 응고 전후 모두 13.5 g이었다. 같은 병 안의 올리브유 높이는 낮아졌다. 관찰 결과는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 질량은 같고 부피는 감소</label>
+<label><input type="radio" name="q1" value="b"> 질량과 부피가 모두 감소</label>
+<label><input type="radio" name="q1" value="c"> 질량은 증가하고 부피는 감소</label>
+<label><input type="radio" name="q1" value="d"> 질량은 같고 부피는 증가</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>같은 병에서 액면 높이가 낮아진 것은 올리브유의 부피 감소를 나타냅니다. 전후 저울값이 같으므로 부피 감소를 질량 감소로 해석하지 않습니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>처음 13.5 g이던 병이 냉각 후 13.8 g으로 측정됐다. 바깥 물기를 닦고 다시 재니 13.5 g이었다. 가장 적절한 해석은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 응고하며 기름 입자의 질량이 늘었다.</label>
+<label><input type="radio" name="q2" value="b"> 병 바깥 물방울도 함께 측정됐다.</label>
+<label><input type="radio" name="q2" value="c"> 부피가 증가한 만큼 기름이 무거워졌다.</label>
+<label><input type="radio" name="q2" value="d"> 입자 사이 공간의 질량이 더해졌다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>물기를 닦은 뒤 처음 질량으로 돌아왔으므로 추가된 저울값은 병 바깥 물기와 관련됩니다. 응고하여 기름 입자의 질량이 늘어난 결과가 아닙니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>물질이 새로 들어오거나 빠져나가지 않은 올리브유의 응고를 입자 모형으로 나타내려 한다. 알맞은 표현은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 입자의 개수를 늘리고 배열을 촘촘하게 한다.</label>
+<label><input type="radio" name="q3" value="b"> 입자의 크기를 줄이고 개수는 그대로 둔다.</label>
+<label><input type="radio" name="q3" value="c"> 입자의 종류·개수는 두고 배열을 바꾼다.</label>
+<label><input type="radio" name="q3" value="d"> 입자 종류를 바꾸고 개수를 줄인다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>상태 변화는 물질을 이루는 입자의 종류나 개수를 바꾸는 변화가 아닙니다. 입자 사이 거리와 배열의 변화로 부피 변화를 나타냅니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>빈 저울이 0.2 g인 채 응고 전 병을 재니 13.7 g이었다. 이후 영점을 맞추고 응고 후 병을 재니 13.5 g이었다. 다음 조치는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 차이 0.2 g을 기름의 질량 감소로 본다.</label>
+<label><input type="radio" name="q4" value="b"> 차이 0.2 g을 기름의 부피 감소로 본다.</label>
+<label><input type="radio" name="q4" value="c"> 응고 후 값에 처음 병의 질량을 더한다.</label>
+<label><input type="radio" name="q4" value="d"> 같은 영점 조건으로 전후 질량을 다시 잰다.</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>처음과 나중의 영점 조건이 다르므로 표시값 차이를 곧바로 상태 변화에 의한 질량 변화로 해석할 수 없습니다. 빈 저울의 영점을 확인하고 같은 조건으로 비교합니다.</p>
+</article></details></main><script src="../phase-mass-model.js?v=41e50a4f041a"></script><script src="../phase-mass.js?v=0d16a892faec"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

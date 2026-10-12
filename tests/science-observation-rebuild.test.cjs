@@ -6,10 +6,10 @@ const {chromium,webkit}=require('playwright');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab');
 const cases=[
  ...['cool','deposit','change','melt'].map(process=>['minerals-rocks',{process},'rock-process']),
- ...['mold','algae','mushroom'].flatMap(sample=>['whole','detail'].map(focus=>['microbes',{sample,focus},'photo'])),
+ // Source-backed micrographs and focus/zoom are covered by science-microbe-observation.test.cjs.
  ...['mixed','dissolve','filter','evaporate'].map(stage=>['mixture-separation',{kind:'salt',stage},'salt-separation']),
  ...['before','after'].map(stage=>['microscope',{kind:'stem',stage},'stem-water']),
- ...['shell','leaf'].flatMap(fossil=>['whole','detail'].map(focus=>['rock-layers',{fossil,focus},'photo'])),
+ // Rock and fossil photos, casting and zoom are covered by science-rock-specimens.test.cjs.
  ['weather-watch',{kind:'dew'},'dew'],
 ];
 

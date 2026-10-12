@@ -1,0 +1,11 @@
+✔ standard preparation, serial dilution charge balance and vinegar amount conservation (1.195ms)
+✔ chromium: solution apparatus, measurement errors, three trials, diagnosis and five tablet viewports (18799.9827ms)
+✔ webkit: solution apparatus, measurement errors, three trials, diagnosis and five tablet viewports (21493.6367ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40355.5683

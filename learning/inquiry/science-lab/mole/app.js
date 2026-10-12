@@ -70,23 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* -------------------------------------------------------------- data */
-    const NA = 6.022e23, VM = 22.4;
+    // Use the same textbook-rounded atomic masses in every mode.
+    const NA = 6.02e23, VM = 22.4;
     const SUBS = {
-        water: { label: '물', formula: 'H₂O', M: 18.02, kind: 'liquid', per: '물 분자', short: '분자' },
-        salt: { label: '소금', formula: 'NaCl', M: 58.44, kind: 'solid', per: 'NaCl 단위(이온 쌍)', short: 'NaCl 단위' },
-        sugar: { label: '설탕', formula: 'C₁₂H₂₂O₁₁', M: 342.3, kind: 'solid', per: '설탕 분자', short: '분자' },
-        iron: { label: '철', formula: 'Fe', M: 55.85, kind: 'metal', per: '철 원자', short: '원자' },
+        water: { label: '물', formula: 'H₂O', M: 18.0, kind: 'liquid', per: '물 분자', short: '분자' },
+        salt: { label: '소금', formula: 'NaCl', M: 58.5, kind: 'solid', per: 'NaCl 화학식 단위', short: 'NaCl 단위' },
+        sugar: { label: '설탕', formula: 'C₁₂H₂₂O₁₁', M: 342.0, kind: 'solid', per: '설탕 분자', short: '분자' },
+        iron: { label: '철', formula: 'Fe', M: 55.8, kind: 'metal', per: '철 원자', short: '원자' },
         oxygen: { label: '산소 기체', formula: 'O₂', M: 32.00, kind: 'gas', per: '산소 분자', short: '분자' },
     };
     const MASSES = { g10: { label: '10 g', g: 10 }, g50: { label: '50 g', g: 50 }, g100: { label: '100 g', g: 100 }, kg1: { label: '1 kg', g: 1000 } };
     const REACTIONS = {
-        h2o: { label: '수소 연소', eq: '2H₂ + O₂ → 2H₂O', A: { name: '수소', f: 'H₂', M: 2.016, coef: 2 }, B: { name: '산소', f: 'O₂', M: 32.00, coef: 1 }, products: [{ name: '물', f: 'H₂O', M: 18.02, coef: 2 }] },
-        ch4: { label: '메테인 연소', eq: 'CH₄ + 2O₂ → CO₂ + 2H₂O', A: { name: '메테인', f: 'CH₄', M: 16.04, coef: 1 }, B: { name: '산소', f: 'O₂', M: 32.00, coef: 2 }, products: [{ name: '이산화 탄소', f: 'CO₂', M: 44.01, coef: 1 }, { name: '물', f: 'H₂O', M: 18.02, coef: 2 }] },
-        mg: { label: '마그네슘 + 염산', eq: 'Mg + 2HCl → MgCl₂ + H₂', A: { name: '마그네슘', f: 'Mg', M: 24.31, coef: 1 }, B: { name: '염화 수소', f: 'HCl', M: 36.46, coef: 2 }, products: [{ name: '염화 마그네슘', f: 'MgCl₂', M: 95.21, coef: 1 }, { name: '수소', f: 'H₂', M: 2.016, coef: 1 }] },
+        h2o: { label: '수소 연소', eq: '2H₂ + O₂ → 2H₂O', A: { name: '수소', f: 'H₂', M: 2.0, coef: 2 }, B: { name: '산소', f: 'O₂', M: 32.00, coef: 1 }, products: [{ name: '물', f: 'H₂O', M: 18.0, coef: 2 }] },
+        ch4: { label: '메테인 연소', eq: 'CH₄ + 2O₂ → CO₂ + 2H₂O', A: { name: '메테인', f: 'CH₄', M: 16.0, coef: 1 }, B: { name: '산소', f: 'O₂', M: 32.00, coef: 2 }, products: [{ name: '이산화 탄소', f: 'CO₂', M: 44.0, coef: 1 }, { name: '물', f: 'H₂O', M: 18.0, coef: 2 }] },
+        mg: { label: '마그네슘 + 염산', eq: 'Mg + 2HCl → MgCl₂ + H₂', A: { name: '마그네슘', f: 'Mg', M: 24.3, coef: 1 }, B: { name: '염화 수소', f: 'HCl', M: 36.5, coef: 2 }, products: [{ name: '염화 마그네슘', f: 'MgCl₂', M: 95.3, coef: 1 }, { name: '수소', f: 'H₂', M: 2.0, coef: 1 }] },
     };
     const AMT_A = { a1: { label: '1 mol', n: 1 }, a2: { label: '2 mol', n: 2 } };
     const AMT_B = { b05: { label: '0.5 mol', n: 0.5 }, b1: { label: '1 mol', n: 1 }, b2: { label: '2 mol', n: 2 }, b4: { label: '4 mol', n: 4 } };
-    const SOLUTES = { nacl: { label: '소금 NaCl', short: '소금', M: 58.44 }, glucose: { label: '포도당 C₆H₁₂O₆', short: '포도당', M: 180.16 }, naoh: { label: '수산화 나트륨 NaOH', short: '수산화 나트륨', M: 40.00 } };
+    const SOLUTES = { nacl: { label: '소금 NaCl', short: '소금', M: 58.5 }, glucose: { label: '포도당 C₆H₁₂O₆', short: '포도당', M: 180.0 }, naoh: { label: '수산화 나트륨 NaOH', short: '수산화 나트륨', M: 40.00 } };
     const NSOL = { n01: { label: '0.1 mol', n: 0.1 }, n05: { label: '0.5 mol', n: 0.5 }, n1: { label: '1 mol', n: 1 } };
     const VOLS = { v250: { label: '250 mL', L: 0.25 }, v500: { label: '500 mL', L: 0.5 }, v1000: { label: '1 L', L: 1 } };
     const DILS = { none: { label: '그대로', hint: '묽히지 않음', k: 1 }, x2: { label: '2배 부피로', hint: '물을 더 넣음', k: 2 }, x4: { label: '4배 부피로', hint: '물을 더 넣음', k: 4 } };
@@ -206,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.V !== null) out += `<text class="trait-text" style="fill:#97dad3" x="236" y="94">0 ℃ 1기압 부피 = ${fmtMol(n)} × 22.4 L = ${a.V >= 1000 ? `${fmtN(a.V / 1000, 2)} m³` : `${fmtN(a.V, a.V < 10 ? 2 : 1)} L`}</text>`;
         const VERD = { less: '1몰보다 적음', one: '거의 1몰', more: '1몰보다 많음' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${sub.label} ${MASSES[state.mass].label}: ${fmtMol(n)} mol = ${fmtSci(a.N)}개 — ${VERD[a.verdict]}` : `${sub.label} ${sub.formula} · ${MASSES[state.mass].label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">몰수 = 질량 ÷ 몰 질량. 저울로 무게를 재는 것이 곧 개수를 세는 것입니다</text>`;
+        out += `<text class="note-text" x="20" y="208">몰수 = 질량 ÷ 몰 질량. 질량을 몰 질량으로 나누면 물질의 양(mol)을 구할 수 있습니다</text>`;
         return out;
     }
 
@@ -256,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="30" y="50">넣은 양 (점 하나 = 0.25 mol)</text>`;
         const VERD = { aLeft: `${r.B.name}${iga(r.B.name)} 먼저 바닥나고 ${r.A.name} ${fmtMol(a.leftA)} mol 남음`, bLeft: `${r.A.name}${iga(r.A.name)} 먼저 바닥나고 ${r.B.name} ${fmtMol(a.leftB)} mol 남음`, exact: '계수 비대로 둘 다 딱 맞게 쓰임' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${r.label}: ${VERD[a.verdict]}` : `${r.label} — ${r.A.name} ${AMT_A[state.na].label}, ${r.B.name} ${AMT_B[state.nb].label}`}</text>`;
-        out += `<text class="note-text" x="20" y="196">질량은 반응 전 ${fmtG(a.before)} = 반응 후 (생성물 + 남은 것) ${fmtG(a.before)}. 원자는 없어지지 않습니다</text>`;
+        out += `<text class="note-text" x="20" y="196">질량은 반응 전 ${fmtG(a.before)} = 반응 후 (생성물 + 남은 것) ${fmtG(a.after)}. 원자는 없어지지 않습니다</text>`;
         out += `<text class="note-text" x="20" y="208">계수 비 ${r.A.f} : ${r.B.f} = ${r.A.coef} : ${r.B.coef} — 이 비율보다 많이 넣은 쪽이 남습니다</text>`;
         return out;
     }
@@ -336,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">넣은 양</span><span class="data-val">${r.A.f} ${fmtMol(a.nA)} mol (${fmtG(a.nA * r.A.M)}) · ${r.B.f} ${fmtMol(a.nB)} mol (${fmtG(a.nB * r.B.M)})</span></div>` +
                 `<div class="data-row"><span class="data-name">계수로 나누면</span><span class="data-val">${r.A.f}: ${fmtMol(a.nA)} ÷ ${r.A.coef} = ${fmtMol(a.nA / r.A.coef)} · ${r.B.f}: ${fmtMol(a.nB)} ÷ ${r.B.coef} = ${fmtMol(a.nB / r.B.coef)} → ${a.limiting ? `작은 쪽 ${a.limiting === 'A' ? r.A.name : r.B.name}${iga(a.limiting === 'A' ? r.A.name : r.B.name)} 한계 반응물` : '같음 — 둘 다 다 쓰임'}</span></div>` +
                 `<div class="data-row"><span class="data-name">생성물</span><span class="data-val">${a.prods.map(pr => `${pr.f} ${fmtMol(pr.n)} mol (${fmtG(pr.g)})`).join(' · ')}</span></div>` +
-                `<div class="data-row match"><span class="data-name">남는 것</span><span class="data-val">${a.leftA > 1e-9 ? `${r.A.f} ${fmtMol(a.leftA)} mol (${fmtG(a.leftA * r.A.M)})` : a.leftB > 1e-9 ? `${r.B.f} ${fmtMol(a.leftB)} mol (${fmtG(a.leftB * r.B.M)})` : '없음'} · 질량 ${fmtG(a.before)} → ${fmtG(a.before)} (같음)</span></div>`;
+                `<div class="data-row match"><span class="data-name">남는 것</span><span class="data-val">${a.leftA > 1e-9 ? `${r.A.f} ${fmtMol(a.leftA)} mol (${fmtG(a.leftA * r.A.M)})` : a.leftB > 1e-9 ? `${r.B.f} ${fmtMol(a.leftB)} mol (${fmtG(a.leftB * r.B.M)})` : '없음'} · 질량 ${fmtG(a.before)} → ${fmtG(a.after)} (같음)</span></div>`;
         }
         return `<div class="data-row"><span class="data-name">용질</span><span class="data-val">${a.so.label} ${fmtMol(a.n)} mol × ${fmtN(a.so.M, 2)} g/mol = ${fmtG(a.g)}</span></div>` +
             `<div class="data-row"><span class="data-name">처음 농도</span><span class="data-val">${fmtMol(a.n)} mol ÷ ${fmtN(a.V1, 2)} L = ${fmtN(a.M1, 2)} M</span></div>` +
@@ -350,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
         graphGroup.innerHTML = a.kind === 'count' ? graphCount(a) : a.kind === 'react' ? graphReact(a) : graphMolar(a);
         liftProse();
         stageBadge.textContent = a.kind === 'count' ? `${a.sub.label} · ${MASSES[state.mass].label}` : a.kind === 'react' ? `${a.r.label} · ${AMT_A[state.na].label} + ${AMT_B[state.nb].label}` : `${a.so.short} ${NSOL[state.nsol].label} · ${VOLS[state.vol].label} · ${DILS[state.dil].label}`;
-        methodHint.textContent = a.kind === 'count' ? '1몰 = 6.02×10²³개, 그 질량이 몰 질량(g)입니다'
+        methodHint.textContent = a.kind === 'count' ? '1몰 = 6.02×10²³개, 몰 질량의 단위는 g/mol입니다'
             : a.kind === 'react' ? '반응식의 계수가 몰수의 비입니다. 비율보다 많은 쪽이 남습니다'
                 : '몰 농도 = 용질 몰수 ÷ 용액 부피(L). 묽혀도 몰수는 그대로입니다';
         dataNote.innerHTML = noteFor(a);
@@ -392,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
             s += a.verdict === 'one' ? `몰 질량과 비슷한 무게라 거의 1몰입니다. ` : a.verdict === 'less' ? `몰 질량보다 가벼워 1몰이 안 됩니다. 1몰이 되려면 ${fmtN(sub.M, 1)} g이 필요합니다. ` : `몰 질량의 ${fmtN(n, 1)}배 무게라 ${fmtMol(n)}몰입니다. `;
             if (a.V !== null) s += `기체는 종류와 상관없이 0 ℃ 1기압에서 1몰이 22.4 L이므로 이 산소는 ${a.V >= 1000 ? `${fmtN(a.V / 1000, 2)} m³` : `${fmtN(a.V, 1)} L`}를 차지합니다. `;
             else if (sub.kind === 'liquid') s += `물은 1 g이 1 mL이니 ${fmtN(g)} mL, 컵으로 ${fmtN(g / 180, 1)}잔쯤입니다. `;
-            s += `저울로 무게를 재는 것이 곧 입자의 개수를 세는 것, 이것이 몰의 쓸모입니다.`;
+            s += `질량과 몰 질량으로 물질의 양을 구하고, 아보가드로수를 곱하면 입자 수를 알 수 있습니다.`;
         } else if (a.kind === 'react') {
             const { r } = a;
             labelA.textContent = '한계 반응물'; valueA.textContent = a.limiting ? (a.limiting === 'A' ? `${r.A.name} ${r.A.f}` : `${r.B.name} ${r.B.f}`) : '없음 (딱 맞음)';
@@ -424,6 +425,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modeButtons.forEach(button => button.addEventListener('click', () => {
+        const weighing = button.dataset.mode === 'weigh';
+        document.getElementById('mwLab').hidden = !weighing;
+        document.querySelector('.experiment-layout').hidden = weighing;
+        document.querySelector('.meaning-panel').hidden = weighing;
+        modeButtons.forEach(item => {item.classList.toggle('selected', item === button);item.setAttribute('aria-pressed', String(item === button));});
+        stopRun();
+        if (weighing) return;
         state.mode = button.dataset.mode;
         state.prediction = null;
         modeButtons.forEach(item => item.classList.toggle('selected', item === button));
@@ -493,4 +501,5 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     resetBtn.click();
+    modeButtons.find(b => b.dataset.mode === 'weigh').click();
 });

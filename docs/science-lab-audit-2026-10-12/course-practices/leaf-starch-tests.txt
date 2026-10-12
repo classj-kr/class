@@ -1,0 +1,11 @@
+✔ leaf starch: treatment order, light mask, residual starch and pigment interference are independent (0.9353ms)
+✔ chromium: elementary leaf preparation, water bath, decoloring, controls and diagnosis (12726.1706ms)
+✔ webkit: elementary leaf preparation, water bath, decoloring, controls and diagnosis (14399.6785ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27185.0307

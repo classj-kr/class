@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const map = { width: 400, height: 320 };
     const predictionTolerance = 50;
     const stations = [
-        { id: 'A', x: 70, y: 70, color: '#0284c7' },
-        { id: 'B', x: 330, y: 80, color: '#d97706' },
+        { id: 'A', x: 70, y: 70, color: '#0369a1' },
+        { id: 'B', x: 330, y: 80, color: '#92400e' },
         { id: 'C', x: 100, y: 260, color: '#7c3aed' }
     ];
     const scenarios = [

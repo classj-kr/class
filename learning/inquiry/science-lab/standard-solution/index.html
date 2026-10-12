@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고(선택) 염화 나트륨 표준 용액 만들기</title><meta name="description" content="2022 교육과정 · 염화 나트륨 표준 용액 만들기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../course-practices.css?v=c5372b302833"><link rel="stylesheet" href="../solution-practices.css?v=a1a7a002038b"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?school=high-elective">← 고(선택) 과학 실험</a><h1>염화 나트륨 표준 용액 만들기</h1><div class="grade-tags"><span>고(선택)</span><span>화학</span></div></header><p class="intro">NaCl 1.00 M 용액 100 mL를 만드세요. 용질을 잰 뒤 모두 옮기고, 용액 전체 부피를 표시선에 맞춥니다.</p><section class="cp-lab solution-lab" data-solution="standard-solution"><header class="cp-heading"><span>화학 · 용액의 제조와 측정</span><h2>저울에서 부피 플라스크까지</h2></header><div class="cp-layout"><aside class="cp-controls"><h3>용질의 질량</h3><button id="stPan">빈 질량 접시 올리기</button><button id="stTare">저울 영점 맞추기</button><label>접시에 담을 NaCl (g)<input id="stMass" type="number" min="0" step="0.01" value="5.85"></label><button id="stWeigh">NaCl 담고 질량 확인</button><button id="stDissolve">비커에서 물에 완전히 녹이기</button><button id="stTransfer">깔때기로 부피 플라스크에 옮기기</button><button id="stRinse">비커·깔때기 헹구어 함께 넣기</button><button id="stPremix">정용 전에 마개 닫고 섞기</button><p class="cp-note">NaCl의 몰질량은 58.5 g/mol입니다. 처음 녹일 때는 표시 부피보다 적은 물을 씁니다.</p></aside><div class="cp-view"><div id="soSteps" class="cp-step"></div><div id="soScene" class="cp-scene"></div><p id="soStatus" class="cp-status" role="status"></p></div></div><section class="cp-footer"><h3>표시선에 맞추기</h3><div class="cp-measures"><label>눈의 높이<select id="stEye"><option value="level">표시선과 같은 높이</option><option value="above">표시선보다 높음</option><option value="below">표시선보다 낮음</option></select></label><button id="stWater">증류수 5 mL 더 넣기</button><button id="stDrop">증류수 0.1 mL 더 넣기</button></div><button id="stMix" class="primary">마개 닫고 고르게 섞기</button><p id="stResult" class="cp-status">용액을 모두 옮긴 뒤 수면 아래쪽을 표시선에 맞추세요.</p></section><div class="cp-footer"><button id="soReset">실험 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="b">
+<h3>NaCl의 몰질량은 58.5 g/mol이다. 1.00 M 용액 100 mL를 만들 때 필요한 NaCl 질량은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 0.585 g</label>
+<label><input type="radio" name="q1" value="b"> 5.85 g</label>
+<label><input type="radio" name="q1" value="c"> 58.5 g</label>
+<label><input type="radio" name="q1" value="d"> 585 g</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>필요한 양은 1.00 mol/L×0.100 L=0.100 mol이며 질량은 5.85 g입니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>5.85 g의 NaCl을 물 100 mL에 녹였더니 최종 용액은 102 mL였다. 표시선에 맞춘 100 mL 용액과 비교한 농도는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 두 용액 모두 1.00 M</label>
+<label><input type="radio" name="q2" value="b"> 102 mL 용액이 더 진함</label>
+<label><input type="radio" name="q2" value="c"> 102 mL 용액이 더 묽음</label>
+<label><input type="radio" name="q2" value="d"> 염의 질량을 몰라 비교 불가</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>두 용액의 NaCl 양은 같고 102 mL 쪽의 전체 부피가 더 크므로 농도는 더 작습니다.</p>
+</article>
+<article class="quiz-card" data-answer="a">
+<h3>NaCl을 정확히 잰 뒤 녹였지만 비커를 헹구지 않아 용액이 일부 남았다. 부피 플라스크는 100 mL에 맞췄다. 목표 농도와 비교하면?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 실제 농도가 더 작다</label>
+<label><input type="radio" name="q3" value="b"> 실제 농도가 더 크다</label>
+<label><input type="radio" name="q3" value="c"> 실제 농도가 같다</label>
+<label><input type="radio" name="q3" value="d"> 남은 양을 몰라 비교할 수 없다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>부피는 목표와 같지만 옮겨진 NaCl의 몰수가 줄었으므로 실제 농도는 더 작습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>물에 잘 젖는 유리 부피 플라스크에서 수면은 오목하다. 정확히 정용하는 눈의 위치와 읽을 부분은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 표시선 위 · 액면 위쪽</label>
+<label><input type="radio" name="q4" value="b"> 표시선 아래 · 액면 아래쪽</label>
+<label><input type="radio" name="q4" value="c"> 표시선 높이 · 액면 위쪽</label>
+<label><input type="radio" name="q4" value="d"> 표시선 높이 · 액면 아래쪽</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>시차를 줄이려면 눈높이를 표시선에 맞추고 오목한 메니스커스의 가장 낮은 부분을 표시선에 맞춥니다.</p>
+</article></details></main><script src="../solution-practice-models.js?v=b23d18ee887d"></script><script src="../solution-practice-labs.js?v=758676e1391d"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

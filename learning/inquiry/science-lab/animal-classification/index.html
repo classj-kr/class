@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>초3 동물을 관찰하고 기준에 따라 분류하기</title><meta name="description" content="2022 교육과정 · 동물을 관찰하고 기준에 따라 분류하기의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../animal-classification.css?v=9d44f7ccc794"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=초3">← 초3 과학 실험</a><h1>동물을 관찰하고 기준에 따라 분류하기</h1><div class="grade-tags"><span>초3</span><span>과학</span></div></header><p class="intro">동물의 몸을 자세히 관찰하고, 같은 기준으로 여덟 동물을 빠짐없이 나눠 보세요.</p><section class="ac-lab"><header class="ac-heading"><span>동물 관찰과 분류</span><h2>어떤 특징으로 두 무리를 나눌까?</h2></header><div class="ac-observation"><div class="ac-view"><div id="acSpecimen" class="ac-specimen" tabindex="0" role="group" aria-label="동물 확대 관찰. 확대한 뒤 방향키 또는 끌기로 이동"><img id="acPhoto" src="../assets/animal-classification/butterfly.webp" alt="나비" draggable="false"></div><strong id="acSelectedName">나비</strong><label for="acZoom">확대 <output id="acZoomValue">1.0배</output></label><input id="acZoom" type="range" min="1" max="2" step="0.1" value="1"><p class="ac-view-hint">확대 후 사진을 끌거나 방향키로 옮겨 보세요.</p><button id="acCenter">사진 전체 보기</button></div><div class="ac-design"><label for="acRule">분류 기준</label><select id="acRule"><option value="wings">날개가 있는가?</option><option value="legs">다리가 있는가?</option><option value="fins">지느러미가 있는가?</option></select><h3 id="acQuestion"></h3><p id="acHint"></p><p class="ac-observe-hint">동물 카드를 누르면 크게 볼 수 있습니다. 사진 속 크기는 실제 동물의 크기와 다릅니다.</p></div></div><div id="acCards" class="ac-cards"></div><div class="ac-actions"><button id="acCheck" class="primary">분류 확인</button><strong id="acProgress">0 / 8종 분류</strong></div><p id="acStatus" class="ac-status" aria-live="polite"></p><p id="acFirst" hidden></p><button id="acReset">처음부터 다시</button></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>여덟 동물을 ‘날개가 있는가?’로 분류했다. ‘그렇다’ 무리에 함께 들어가는 두 동물은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q1" value="a"> 참새 · 나비</label>
+<label><input type="radio" name="q1" value="b"> 참새 · 붕어</label>
+<label><input type="radio" name="q1" value="c"> 나비 · 참돔</label>
+<label><input type="radio" name="q1" value="d"> 붕어 · 참돔</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>참새와 나비에게 날개가 있습니다. 붕어와 참돔의 몸 옆에 있는 부분은 지느러미입니다.</p>
+</article>
+<article class="quiz-card" data-answer="b">
+<h3>기준을 ‘날개가 있는가?’에서 ‘다리가 있는가?’로 바꾸었다. ‘아니다’에서 ‘그렇다’로 함께 옮겨야 하는 두 동물은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q2" value="a"> 참새 · 나비</label>
+<label><input type="radio" name="q2" value="b"> 토끼 · 호랑이</label>
+<label><input type="radio" name="q2" value="c"> 붕어 · 참돔</label>
+<label><input type="radio" name="q2" value="d"> 뱀 · 지렁이</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>토끼와 호랑이는 날개가 없지만 다리가 있습니다. 참새와 나비는 두 기준 모두 ‘그렇다’에 들어갑니다.</p>
+</article>
+<article class="quiz-card" data-answer="c">
+<h3>‘그렇다’에 붕어·참돔, ‘아니다’에 나머지 여섯 동물이 들어갔다. 여덟 동물 모두에 적용한 기준은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q3" value="a"> 날개가 있는가?</label>
+<label><input type="radio" name="q3" value="b"> 다리가 있는가?</label>
+<label><input type="radio" name="q3" value="c"> 지느러미가 있는가?</label>
+<label><input type="radio" name="q3" value="d"> 꼬리가 있는가?</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>붕어와 참돔은 지느러미가 있고 나머지 여섯 동물은 지느러미가 없습니다. 꼬리는 토끼·호랑이·참새·뱀 등에도 있습니다.</p>
+</article>
+<article class="quiz-card" data-answer="d">
+<h3>‘다리가 있는가?’로 나누던 학생이 뱀과 지렁이를 ‘그렇다’에 넣었다. 두 동물이 스스로 이동하기 때문이라고 했다. 이 두 카드의 알맞은 위치는?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 둘 다 그렇다</label>
+<label><input type="radio" name="q4" value="b"> 뱀만 그렇다</label>
+<label><input type="radio" name="q4" value="c"> 지렁이만 그렇다</label>
+<label><input type="radio" name="q4" value="d"> 둘 다 아니다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>스스로 이동해도 다리가 없을 수 있습니다. 뱀과 지렁이는 다리 없이 몸을 움직여 이동하므로 두 카드 모두 ‘아니다’에 넣습니다.</p>
+</article></details></main><script src="../animal-classification-model.js?v=c0dbac29cc66"></script><script src="../animal-classification.js?v=2354a2a11bcb"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

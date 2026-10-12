@@ -19,19 +19,20 @@ const foundation = [
 const primaryGroups = {
   '힘과 에너지':'lever-balance speed force-motion motion-energy weight-compare',
   '전기와 자기':'magnets circuit-bulbs ohms-law',
-  '열':'heat-transfer specific-heat',
+  '열':'heat-transfer specific-heat liquid-heat',
   '빛과 파동':'light-shadow refraction sound-vibration wave-transfer',
-  '물질의 성질':'mixture-separation separation-methods state-change gases diffusion solubility solubility-curve recrystallise density-buoyancy water-cycle',
+  '물질의 성질':'mixture-separation separation-methods state-change gases diffusion solubility solubility-curve recrystallise density-buoyancy water-cycle dissolution-mass phase-mass',
   '물질의 변화':'acid-base mass-ratio burning-conditions combustion',
   '물질의 구조':'flame-ions',
-  '생물의 구조와 에너지':'living-things microbes microscope cell-structure photosynthesis body-organs body-systems nutrient-detection',
+  '생물의 구조와 에너지':'living-things leaf-classification animal-classification microbes microscope cell-structure photosynthesis body-organs body-systems nutrient-detection leaf-starch',
   '항상성과 몸의 조절':'senses reflex-nerve',
-  '생명의 연속성':'seed-germination life-cycle pea-genetics',
-  '환경과 생태계':'living-environment',
+  '생명의 연속성':'seed-germination life-cycle pea-genetics living-environment',
+  '환경과 생태계':'food-web',
   '고체 지구':'rock-layers minerals-rocks volcano-model plate-tectonics',
   '유체 지구':'land-sea weather-watch weather-front seawater',
   '천체':'night-sky seasons moon-phases apparent-motion stars-universe telescope-observation',
-  '과학과 안전':'infection-prevention'
+  '과학과 안전':'infection-prevention',
+  '과학과 지속가능한 사회':'coastal-inundation'
 };
 const courses = [
   ['10통과1','통합과학1','공통','physics'], ['10통과2','통합과학2','공통','earth'],

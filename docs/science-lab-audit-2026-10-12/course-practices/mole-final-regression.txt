@@ -1,0 +1,16 @@
+✔ weighing procedure is anchored to a valid 2022 standard and the read source pages (7.4462ms)
+✔ all seven substances at three amounts use textbook molar masses; weighing excludes the container and loaded tare (1.0735ms)
+✔ chromium: tactile weighing, incorrect tare recovery, all substances and four modes at device widths (17863.6886ms)
+✔ webkit: tactile weighing, incorrect tare recovery, all substances and four modes at device widths (16603.9466ms)
+228 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (193.5614ms)
+✔ every science lab JavaScript file parses (116.5255ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0019ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34534.6935

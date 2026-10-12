@@ -96,54 +96,6 @@
     "file": "erosion-changed-1100.webp"
   },
   {
-    "id": "sea-level",
-    "variant": "initial",
-    "width": 390,
-    "file": "sea-level-initial-390.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "initial",
-    "width": 1100,
-    "file": "sea-level-initial-1100.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "changed",
-    "width": 390,
-    "file": "sea-level-changed-390.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "changed",
-    "width": 1100,
-    "file": "sea-level-changed-1100.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "land-melted",
-    "width": 390,
-    "file": "sea-level-land-melted-390.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "land-melted",
-    "width": 1100,
-    "file": "sea-level-land-melted-1100.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "floating-melted",
-    "width": 390,
-    "file": "sea-level-floating-melted-390.webp"
-  },
-  {
-    "id": "sea-level",
-    "variant": "floating-melted",
-    "width": 1100,
-    "file": "sea-level-floating-melted-1100.webp"
-  },
-  {
     "id": "efficient-house",
     "variant": "initial",
     "width": 390,

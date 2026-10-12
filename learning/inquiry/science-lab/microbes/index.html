@@ -1,154 +1,49 @@
 <!doctype html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f1f5f9">
-    <title>과학 실험실</title>
-    <meta name="description" content="빵을 온도와 물기가 다른 곳에 두어 곰팡이가 어디에서 잘 자라는지 날마다 살펴보고, 세균 한 마리가 일정한 시간마다 둘로 나뉘어 얼마나 빨리 늘어나는지 세어 보는 초등 과학 모의실험">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
-    <link rel="stylesheet" href="microbes-visual.css?v=5bca53191650">
-    <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
-    <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
-    <link rel="stylesheet" href="../lab-ui.css?v=1919c35bf2ab">
-<link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d">
-</head>
-<body>
-    <main>
-        <header class="page-header">
-            <div class="title-row">
-                <a href="../">← 과학 실험실</a>
-                <h1>균류·원생생물·세균 관찰</h1>
-            </div>
-            <div class="grade-tags"><span>초등 4학년</span><span>과학</span></div>
-        </header>
-
-        <ol class="method-steps" aria-label="실험 방법">
-            <li>곰팡이를 기를지, 세균을 기를지 고릅니다.</li>
-            <li>곰팡이는 빵을 둘 곳의 온도와 물기를, 세균은 온도와 기르는 시간을 정합니다.</li>
-            <li>얼마나 자랄지 먼저 예상해 봅니다.</li>
-            <li>실험을 시작해 날마다(세균은 시간마다) 얼마나 늘어나는지 지켜보고, 왜 그런지 확인합니다.</li>
-        </ol>
-
-        <div class="experiment-layout">
-            <section class="panel control-panel" aria-labelledby="control-title">
-                <h2 id="control-title">실험 조건</h2>
-                <p class="water-standard" id="methodHint">곰팡이는 따뜻하고 축축한 곳에서 잘 자랍니다</p>
-                <fieldset class="mode-field">
-                    <legend>실험 종류</legend>
-                    <div class="mode-buttons">
-                        <button type="button" data-mode="mould">곰팡이 기르기<small>어디에 둔 빵이 먼저 상할까</small></button>
-                        <button type="button" data-mode="germ">세균 기르기<small>한 마리가 얼마나 늘어날까</small></button>
-                    </div>
-                </fieldset>
-                <div id="controlArea"></div>
-                <fieldset class="prediction-field">
-                    <legend id="predictionLegend">어떻게 될까요?</legend>
-                    <div class="prediction-buttons three" id="predictionArea"></div>
-                </fieldset>
-                <div class="run-row">
-                    <button class="run-button" id="checkBtn" type="button">실험 시작</button>
-                    <button class="reset-button" id="resetBtn" type="button">처음으로</button>
-                </div>
-                <section class="result-box" aria-labelledby="result-title" aria-live="polite">
-                    <h3 id="result-title">관찰 결과</h3>
-                    <p id="resultEmpty">조건을 정하고 실험을 시작해 보세요.</p>
-                    <div id="resultContent" hidden>
-                        <div class="result-numbers">
-                            <article><span id="labelA">결과</span><strong id="valueA">-</strong></article>
-                            <article><span id="labelB">까닭</span><strong id="valueB">-</strong></article>
-                        </div>
-                        <p class="prediction-result" id="predictionResult"></p>
-                        <p class="explanation" id="elementaryExplanation"></p>
-                    </div>
-                </section>
-            </section>
-
-            <section class="panel burn-stage" aria-label="관찰 화면">
-                <div class="stage-heading"><h2>관찰</h2><span id="stageBadge">-</span></div>
-
-                <div class="stage-views">
-                    <svg class="main-svg" viewBox="0 0 460 214" aria-hidden="true">
-                        <g id="mainGroup"></g>
-                    </svg>
-                    <svg class="graph-svg" viewBox="0 0 460 196" aria-hidden="true">
-                        <g id="graphGroup"></g>
-                    </svg>
-                </div>
-
-                <p class="stage-caption" id="stageCaption">날이 갈수록 빵 위에 곰팡이가 얼마나 퍼지는지 보세요.</p>
-                <div class="data-note" id="dataNote"></div>
-            </section>
-        </div>
-
-        <section class="panel meaning-panel">
-            <h2>실험 결과의 의미</h2>
-            <div class="meaning-body">
-                <p><strong>곰팡이가 잘 자라는 곳</strong> 곰팡이는 따뜻하고 축축한 곳에서 잘 자랍니다. 마른 빵이나 냉장고 속 빵에는 곰팡이가 거의 자라지 않습니다. 그래서 음식을 냉장고에 넣거나 바짝 말려 보관합니다.</p>
-                <p><strong>세균은 둘로 나뉘어 늘어난다</strong> 많은 세균은 몸이 둘로 나뉘면서 수가 늘어납니다. 늘어나는 빠르기는 세균의 종류와 온도·먹이 등 조건에 따라 다릅니다. 화면의 분열 간격과 수는 비교를 위한 가상 값이며 실제 음식의 안전한 보관 시간을 예측하지 않습니다.</p>
-                <p><strong>다양한 생물</strong> 곰팡이·버섯은 균류, 짚신벌레·해캄은 원생생물의 예입니다. 세균도 생활 주변에서 찾아볼 수 있습니다. 크기만으로 나누는 것은 아니며, 버섯처럼 맨눈으로 볼 수 있는 생물도 있습니다. 생김새와 사는 곳을 관찰해 비교합니다.</p>
-                <p><strong>우리 생활과의 관계</strong> 세균과 곰팡이는 음식을 상하게 하고 병을 일으키기도 하지만, 김치·된장·요구르트·빵을 만드는 데 쓰이고 죽은 생물을 썩혀 흙으로 돌려보내기도 합니다. 손을 씻고 음식을 차게 보관하는 것은 해로운 것들이 늘어나는 것을 막는 방법입니다.</p>
-            </div>
-        </section>
-
-        <details class="quiz-section" aria-labelledby="quiz-title">
-            <summary class="quiz-heading"><h2 id="quiz-title">확인 문제</h2><span>4문제</span></summary>
-            <div class="quiz-grid">
-                <article class="quiz-card" data-answer="b">
-                    <h3>빵 네 조각을 서로 다른 곳에 두었습니다. 곰팡이가 가장 잘 자라는 것은?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="a"> 냉장고 속 축축한 빵</label>
-                        <label><input type="radio" name="q1" value="b"> 따뜻한 곳의 축축한 빵</label>
-                        <label><input type="radio" name="q1" value="c"> 따뜻한 곳의 바짝 마른 빵</label>
-                        <label><input type="radio" name="q1" value="d"> 냉장고 속 마른 빵</label>
-                    </div>
-                    <button class="answer-button" type="button">정답 확인</button>
-                    <p class="answer-result" aria-live="polite"></p>
-                    <p class="answer-explanation" hidden>곰팡이는 따뜻하고 축축한 곳을 좋아합니다. 온도가 낮거나 물기가 없으면 거의 자라지 못합니다.</p>
-                </article>
-
-                <article class="quiz-card" data-answer="c">
-<h3>같은 음식을 냉장고와 따뜻한 곳에 두었습니다. 냉장고에서 곰팡이가 늦게 보이는 까닭은?</h3>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>초4 버섯·곰팡이·해캄·짚신벌레 관찰</title><meta name="description" content="2022 교육과정 · 버섯·곰팡이·해캄·짚신벌레 관찰의 조건 조작, 관찰과 객관식 결과 해석"><link rel="stylesheet" href="../experiment-stage.css?v=6969e71a9363"><link rel="stylesheet" href="../science-reading.css?v=d820b5d4959d"><link rel="stylesheet" href="../microbe-observation.css?v=a117d9bb835a"><link rel="stylesheet" href="../lab-ui.css?v=ea25b45e3a03"></head><body><main><header class="page-header"><a href="../?grade=초4">← 초4 과학 실험</a><h1>버섯·곰팡이·해캄·짚신벌레 관찰</h1><div class="grade-tags"><span>초4</span><span>과학</span></div></header><section class="mb-lab" id="mbLab"><h2>표본을 밝히고 초점 맞추기</h2><div id="mbSamples" class="mb-choices" role="group" aria-label="관찰할 생물"></div><div id="mbViews" class="mb-choices" role="group" aria-label="관찰할 부분"></div><div class="mb-workspace"><section class="mb-monitor"><h3 id="mbName"></h3><div id="mbViewer" class="mb-viewer" tabindex="0"><img id="mbImage" draggable="false" alt=""><p id="mbEmpty"></p></div><p id="mbCaption"></p></section><section class="mb-controls" aria-label="현미경 조작"><div class="mb-actions"><button id="mbPlace">표본 올리기</button><button id="mbLamp" aria-pressed="false">조명 켜기</button></div><label for="mbBrightness">조명 밝기<input id="mbBrightness" type="range" min="30" max="100" step="5" value="75"></label><label for="mbFocus">초점 조절<input id="mbFocus" type="range" min="0" max="10" step="0.5" value="2"></label><label for="mbZoom">사진 확대 <output id="mbZoomValue">1.0배</output><input id="mbZoom" type="range" min="1" max="2" step="0.1" value="1"></label><button id="mbWhole">사진 전체 보기</button><p id="mbGuide" class="mb-guide"></p><button id="mbObserve" class="primary">관찰한 표본 나란히 비교</button></section></div><p id="mbStatus" class="mb-status" aria-live="polite"></p><section id="mbComparisons" class="mb-compare" hidden><h3>관찰한 생김새 비교</h3><div id="mbComparisonGrid" class="mb-comparison-grid"></div><p id="mbComparisonNote"></p></section><div class="mb-footer"><p>실물 곰팡이는 맨손으로 만지지 않고, 마스크·보안경·장갑을 착용합니다.</p><button id="mbReset">관찰 처음부터</button></div></section><details class="quiz-section"><summary class="quiz-heading">결과 해석 문제 <span>4문제</span></summary><article class="quiz-card" data-answer="a">
+<h3>표고버섯의 균사 사진과 빵곰팡이 사진에서 공통으로 확인한 구조는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q2" value="a"> 낮은 온도에서 먹이 양이 줄어듦</label>
-<label><input type="radio" name="q2" value="b"> 낮은 온도에서 자람이 빨라짐</label>
-<label><input type="radio" name="q2" value="c"> 낮은 온도에서 자람이 느려짐</label>
+<label><input type="radio" name="q1" value="a"> 실처럼 가늘고 긴 구조</label>
+<label><input type="radio" name="q1" value="b"> 마디 안의 나선 모양 띠</label>
+<label><input type="radio" name="q1" value="c"> 갓 아래의 나란한 주름</label>
+<label><input type="radio" name="q1" value="d"> 길쭉한 한 개체의 윤곽</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>낮은 온도는 많은 미생물의 증식을 늦춥니다. 냉장이 모든 미생물을 죽이거나 음식을 영구히 보존한다는 뜻은 아닙니다.</p>
+<p class="answer-explanation" hidden>두 사진에는 가늘고 긴 균사가 보입니다. 갓의 주름은 버섯의 한 부분이며, 나선 모양 띠와 길쭉한 개체의 윤곽은 다른 표본의 관찰과 구별해야 합니다.</p>
 </article>
-
-                <article class="quiz-card" data-answer="c">
-<h3>곰팡이와 버섯을 같은 무리로 분류했습니다. 이 무리의 이름은?</h3>
+<article class="quiz-card" data-answer="b">
+<h3>표본 A는 가늘고 길게 이어지고, B는 한 개체의 몸이 길쭉하며 끝이 둥글다. 관찰 결과와 맞는 연결은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q3" value="a"> 세균</label>
-<label><input type="radio" name="q3" value="b"> 식물</label>
-<label><input type="radio" name="q3" value="c"> 균류</label>
+<label><input type="radio" name="q2" value="a"> A 짚신벌레 · B 해캄</label>
+<label><input type="radio" name="q2" value="b"> A 해캄 · B 짚신벌레</label>
+<label><input type="radio" name="q2" value="c"> A 해캄 · B 빵곰팡이</label>
+<label><input type="radio" name="q2" value="d"> A 빵곰팡이 · B 해캄</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>곰팡이와 버섯은 균류입니다. 세균이나 광합성을 하는 식물과 구별합니다.</p>
+<p class="answer-explanation" hidden>해캄은 가늘고 길게 이어진 모습이고 짚신벌레는 한 개체의 윤곽이 길쭉하며 끝이 둥급니다. 곰팡이의 실처럼 얽힌 균사와도 구별합니다.</p>
 </article>
-
-                <article class="quiz-card" data-answer="a">
-<h3>세균의 작용으로 우유를 발효해 만드는 식품은?</h3>
+<article class="quiz-card" data-answer="c">
+<h3>짚신벌레의 정지 영구표본 사진만으로 확인할 수 없는 것은?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q4" value="a"> 요구르트</label>
-<label><input type="radio" name="q4" value="b"> 밀가루</label>
-<label><input type="radio" name="q4" value="c"> 식용유</label>
+<label><input type="radio" name="q3" value="a"> 몸 바깥의 윤곽</label>
+<label><input type="radio" name="q3" value="b"> 끝 부분의 모양</label>
+<label><input type="radio" name="q3" value="c"> 헤엄치는 방향</label>
+<label><input type="radio" name="q3" value="d"> 염색된 부분의 분포</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
-<p class="answer-explanation" hidden>유산균의 발효를 이용해 요구르트를 만듭니다. 미생물의 작용을 식품 생산에 이용하는 예입니다.</p>
+<p class="answer-explanation" hidden>한 장의 정지 사진은 모양과 분포를 보여 주지만 시간에 따른 위치 변화가 없습니다. 헤엄치는 방향은 살아 있는 표본을 연속으로 관찰해야 알 수 있습니다.</p>
 </article>
-            </div>
-        </details>
-    </main>
-    <script src="app.js?v=3e8b089d39e1"></script>
-    <script src="../curriculum-map.js?v=6356b85c9f40"></script>
-    <script src="../exam-scope.js?v=bfaefaaa93c9"></script>
-    <script src="../lab-ui.js?v=e804868535ac"></script>
-</body>
-</html>
+<article class="quiz-card" data-answer="d">
+<h3>해캄과 짚신벌레의 염색한 표본이 모두 초록빛으로 보였다. 이 관찰만으로 내릴 수 있는 판단은?</h3>
+<div class="quiz-options">
+<label><input type="radio" name="q4" value="a"> 두 생물은 원래 같은 색이다</label>
+<label><input type="radio" name="q4" value="b"> 두 생물은 같은 종류의 생물이다</label>
+<label><input type="radio" name="q4" value="c"> 두 생물은 모두 스스로 양분을 만든다</label>
+<label><input type="radio" name="q4" value="d"> 두 표본의 색에 염색이 영향을 주었다</label>
+</div>
+<button class="answer-button" type="button">정답 확인</button>
+<p class="answer-result" aria-live="polite"></p>
+<p class="answer-explanation" hidden>염색은 표본을 잘 보이게 하기 위한 처리입니다. 염색 뒤 색이 같다는 사실만으로 본래 색·생물의 종류·양분을 만드는 방법이 같다고 판단할 수 없습니다.</p>
+</article></details></main><script src="../microbe-observation.js?v=426f95be81ef"></script><script src="../curriculum-map.js?v=c1af0dc3f212"></script><script src="../exam-scope.js?v=fc86ec633dd8"></script><script src="../lab-ui.js?v=e804868535ac"></script></body></html>

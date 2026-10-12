@@ -1,0 +1,113 @@
+{
+  "sourceId": "c84377a276e7c9d4",
+  "sourcePath": "references/textbooks/초등/미래엔/과학/과학 4-1 (양일호)_2022/41_4_과학PDF__cab2d478.pdf",
+  "sourceSha256": "c84377a276e7c9d407992e4a2385771278b8a4213507f9c370f03baa90795b85",
+  "method": "Original PDF image, clipping paths, graphics state and colour rendered in isolation; transparent bounds trimmed; no added or removed specimen detail.",
+  "specimens": [
+    {
+      "id": "mushroom-gills",
+      "file": "learning/inquiry/science-lab/assets/microbe-observation/mushroom-gills.webp",
+      "pdfPage": 6,
+      "printedPage": 91,
+      "sourceMagnification": 20,
+      "imageObject": "/Im16",
+      "renderScale": 4,
+      "alphaBounds": [
+        1375,
+        257,
+        1816,
+        699
+      ],
+      "width": 441,
+      "height": 442,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "7a38fe2dc0824270bde0d0c0ea59dde2ce6adb24349660a02e061e04018a66fd"
+    },
+    {
+      "id": "mushroom-hyphae",
+      "file": "learning/inquiry/science-lab/assets/microbe-observation/mushroom-hyphae.webp",
+      "pdfPage": 6,
+      "printedPage": 91,
+      "sourceMagnification": 40,
+      "imageObject": "/Im11",
+      "renderScale": 4,
+      "alphaBounds": [
+        1012,
+        744,
+        1564,
+        1296
+      ],
+      "width": 552,
+      "height": 552,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "deb47533abb1e201387a8b8099c83897c161ba12120666d5d772781718bf93d1"
+    },
+    {
+      "id": "mold",
+      "file": "learning/inquiry/science-lab/assets/microbe-observation/mold.webp",
+      "pdfPage": 6,
+      "printedPage": 91,
+      "sourceMagnification": 20,
+      "imageObject": "/Im12",
+      "renderScale": 4,
+      "alphaBounds": [
+        1022,
+        2439,
+        1575,
+        2991
+      ],
+      "width": 553,
+      "height": 552,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "fe07a3fbdffdb35c8407cb34f773dd1a0b4db78f0558eaeef532d56165e65423"
+    },
+    {
+      "id": "spirogyra",
+      "file": "learning/inquiry/science-lab/assets/microbe-observation/spirogyra.webp",
+      "pdfPage": 10,
+      "printedPage": 95,
+      "sourceMagnification": 150,
+      "imageObject": "/Im8",
+      "renderScale": 4,
+      "alphaBounds": [
+        1269,
+        684,
+        1759,
+        1174
+      ],
+      "width": 490,
+      "height": 490,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "7af33a842407d4b5d65e5357340448cb9d6e6f462b1da52472bb069501473b06"
+    },
+    {
+      "id": "paramecium",
+      "file": "learning/inquiry/science-lab/assets/microbe-observation/paramecium.webp",
+      "pdfPage": 10,
+      "printedPage": 95,
+      "sourceMagnification": 100,
+      "imageObject": "/Im4",
+      "renderScale": 4,
+      "alphaBounds": [
+        782,
+        2591,
+        1315,
+        2995
+      ],
+      "width": 533,
+      "height": 404,
+      "mode": "RGBA",
+      "lossless": true,
+      "decodedPixelsIdentical": true,
+      "sha256": "9fca411f0859b5330854baa6f30e212cfde1d00db1aa9220581366d04d8db103"
+    }
+  ]
+}

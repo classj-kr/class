@@ -15,7 +15,7 @@ const observationStates={
  'photosynthesis-co2':{starch:{co2:'present',light:'on',step:'1'}},
  'heating-device':{heating:{reaction:'calcium',insulation:'yes',step:'1'}},
  'thermal-image':{conduction:{material:'metal',time:'3'}},
- 'sea-level':{'land-melted':{ice:'land',step:'1'},'floating-melted':{ice:'floating',step:'1'}}
+
 };
 test('conductivity compares the five textbook samples and distinguishes a lifted probe from a negative result',()=>{
  const spec=specs.find(s=>s.id==='compound-conductivity');
@@ -46,13 +46,6 @@ for(const engine of ['chromium','webkit'])test(engine+': apparatus states, label
     assert.equal(await page.locator('.required-observation').textContent(),expected.text);
     assert.equal(await page.locator('.apparatus-explanation').isVisible(),!!expected.figure);
     assert.equal(await page.locator('[data-record],.required-history').count(),0);
-    if(spec.id==='sea-level'){
-     const flooded=await page.evaluate(()=>{
-      const house=document.querySelector('[data-sea-house]'),water=document.querySelector('[data-sea-water]');
-      return Number(water.dataset.level)<Number(house.getAttribute('y'))+Number(house.getAttribute('height'));
-     });
-     assert.equal(flooded,state.ice==='land'&&Number(state.step)>0,'coastal house is dry initially and floods only when land ice melts');
-    }
     for(const width of [320,390,1100]){
      await page.setViewportSize({width,height:900});
      await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
@@ -76,6 +69,6 @@ for(const engine of ['chromium','webkit'])test(engine+': apparatus states, label
    assert.equal(await page.locator('[data-well="'+sample+'"]').getAttribute('data-selected'),'true');
   }
   assert.deepEqual(errors,[]);
-  if(engine==='chromium')fs.writeFileSync(path.join(out,'screenshots.json'),JSON.stringify(shots,null,2)+'\n');
+  if(engine==='chromium')await require('./science-screenshot.cjs').writeArtifact(path.join(out,'screenshots.json'),JSON.stringify(shots,null,2)+'\n');
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 });

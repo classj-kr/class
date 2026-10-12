@@ -1,0 +1,26 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (5.9574ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7988ms)
+✔ re-registering revised content within an open page cannot reuse earlier evidence (0.1773ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.0916ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (81.2275ms)
+chromium: 165 apps / 169 course routes / 676 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (22559.7198ms)
+webkit: 165 apps / 169 course routes / 676 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (29852.1731ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (360.3701ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5419.6882ms)
+✔ plant growth starts with seedlings; a fair comparison changes only the investigated condition (0.8817ms)
+✔ chromium: design, observe, replay and interpret pre-grown plants (13773.7471ms)
+✔ webkit: design, observe, replay and interpret pre-grown plants (9590.6619ms)
+202 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (184.0802ms)
+✔ every science lab JavaScript file parses (115.8619ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (1.0087ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52672.1901

@@ -1,0 +1,16 @@
+✔ official 2022 areas and courses, and one auditable primary placement per app (261.7767ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5225.0136ms)
+✔ non-experiment exclusions agree with the curriculum source and stay out of the implementation queue (4.1372ms)
+✔ source references and unresolved procedures cannot become independent experiment work items (1.4296ms)
+✔ experimental design, observation and measurement are not discarded by title keywords or elective status (0.1437ms)
+✔ retired lifestyle worksheet cannot remain a student route or reappear through generation (31.0427ms)
+✔ 2022 publisher headings survive 준비해요, wrapped titles and 만들기/나타내기 endings (3.9934ms)
+✔ heading recovery leaves ordinary prose, numbered steps and unscoped title-like text out (0.7341ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5749.2723

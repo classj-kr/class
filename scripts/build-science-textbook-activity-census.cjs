@@ -5,6 +5,8 @@ const manifest=JSON.parse(fs.readFileSync(path.join(root,'tmp/science-audit-2026
 const tools=require('./science-activity-tools.cjs');
 const manual=require('../docs/science-lab-audit-2026-10-11/textbook-manual-review.cjs');
 const {classifySource}=require('./science-textbook-source-role.cjs');
+const {extraHeadings}=require('./science-textbook-headings.cjs');
+const sourceReview=require('../docs/science-lab-audit-2026-10-12/course-practices/heading-recall-review.cjs');
 const normalized=s=>s.normalize('NFKC').replace(/[\u0000-\u001f]/g,'').replace(/\s+/g,'').replace(/[·ㆍ:：()（）]/g,'');
 const generic=/^(?:탐구|활동|실험)?(?:목표|과정|수행|설계|평가|정리|준비|결론|자료수집|자료분석|공유|발표|토의|토론|스스로|배운내용|생각열기|문제인식|문제발견|실력|해결|더알아|탐구문제|결과및)/;
 const documents=[],candidates=[];
@@ -14,6 +16,7 @@ for(const file of manifest){
  const basename=path.basename(classification.path),primary=file.kind==='pdf';
  const data=JSON.parse(fs.readFileSync(path.join(root,file.extractedFile),'utf8'));
  const doc={sourceId,...classification,pages:file.pages||null,error:file.error||null,revisionEvidence:file.revisionEvidence||{kind:'explicit-2022-path'},candidateCount:0};
+ const review=sourceReview.documents.find(r=>r.sourceId===sourceId);if(review)doc.procedureReview=review;
  const found=new Map();
  if(primary){for(const page of data.pages||[]){
   const t=page.text||'',compact=normalized(t);
@@ -25,7 +28,14 @@ for(const file of manifest){
    if(!found.has(key))found.set(key,{sourceId,title:line,pages:[],status:'제목 후보 · 활동 범위 수동 대조 필요'});
    const r=found.get(key);if(!r.pages.includes(page.pdfPage))r.pages.push(page.pdfPage);
   }
- }}else if(!file.error){found.set(basename,{sourceId,title:basename.replace(/__[a-f0-9]+\.(?:hwp|hwpx)$/i,''),pages:[],status:'활동지 파일 · 본문 단계 수동 대조 필요'});}
+ }
+ // Keep original IDs stable; append recovered headings without completion claims.
+ for(const page of data.pages||[])for(const recovered of extraHeadings(page.text||'')){
+  const key=normalized(recovered.title);if(generic.test(key)||/써보|생각해|이야기해|말해보|설명해|정리해/.test(key))continue;
+  if(!found.has(key))found.set(key,{sourceId,title:recovered.title,pages:[],status:'제목 후보 · 활동 범위 수동 대조 필요',discovery:recovered.method});
+  const r=found.get(key);if(!r.pages.includes(page.pdfPage))r.pages.push(page.pdfPage);
+ }
+ }else if(!file.error){found.set(basename,{sourceId,title:basename.replace(/__[a-f0-9]+\.(?:hwp|hwpx)$/i,''),pages:[],status:'활동지 파일 · 본문 단계 수동 대조 필요'});}
  for(const c of found.values()){
   c.id='book-'+crypto.createHash('sha256').update(sourceId+'\n'+normalized(c.title)).digest('hex').slice(0,16);
   c.samePageTools=Object.entries(tools).filter(([,r])=>r.source.id===sourceId&&r.source.pages.some(p=>c.pages.includes(p))).map(([id])=>id);
@@ -38,6 +48,7 @@ for(const file of manifest){
 }
 const summary={scope:'2022 자료만; 추출 후보는 필수실험 수 또는 완료 수가 아님',indexedUniqueSources:manifest.length,textbookPDFs:documents.filter(d=>d.role.includes('PDF')).length,activitySheets:documents.filter(d=>d.role==='탐구 활동지').length,titleCandidates:candidates.filter(c=>c.pages.length).length,activitySheetCandidates:candidates.filter(c=>!c.pages.length).length,primaryDocumentsWithoutCandidates:documents.filter(d=>d.role.includes('PDF')&&!d.candidateCount).length,completedActivityVerdicts:0,receiptClassifiedSources:manifest.filter(s=>s.revisionEvidence?.receipt).length};
 Object.assign(summary,{experimentWorkbookPDFs:documents.filter(d=>d.role==='실험관찰 PDF').length,supplementalDocuments:documents.filter(d=>d.supplemental).length});
+Object.assign(summary,{headingRecoveryReviewedDocuments:sourceReview.documents.length,zeroCandidateDocumentsWithPageReview:documents.filter(d=>d.role.includes('PDF')&&!d.candidateCount&&d.procedureReview).length});
 Object.assign(summary,{manuallyReviewedCandidates:Object.keys(manual.candidates).length,sourceReviewedExperimentUnits:manual.experiments.length,manualAdditionsOutsideHeadingExtraction:manual.missedByHeadingExtractor.length,requiredExperimentTotal:null});
 for(const e of manual.experiments){assert(documents.some(d=>d.sourceId===e.sourceId),e.id);assert(e.pages.length,e.id);}
 for(const id of Object.keys(manual.candidates))assert(candidates.some(c=>c.id===id),id);

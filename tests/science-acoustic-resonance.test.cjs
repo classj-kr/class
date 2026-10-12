@@ -1,0 +1,31 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+const M=require('../learning/inquiry/science-lab/acoustic-resonance-model.js');
+test('sound resonance: adjacent peaks/nodes, end correction, frequency invariance and skipped positions',()=>{
+ for(const mode of ['tube','microphone'])for(const frequency of mode==='tube'?[800,1000,1200]:[2300]){
+  const s=M.create(mode);s.frequency=frequency;assert.equal(M.amplitude(s),0);assert(M.record(s));s.powered=s.measured=true;const points=M.locations(s);
+  for(const position of points.slice(0,3)){s.position=Math.round(position*1000)/1000;assert.equal(M.record(s),'');}
+  const r=M.result(s);assert(!r.error);assert(Math.abs(r.speed-343)<=1.8,mode+' '+frequency);assert(M.record(s));
+  const original=points[0];s.position=original;assert(Math.abs(M.amplitude(s)-(mode==='tube'?1:0))<1e-12);
+  if(mode==='tube'){assert(Math.abs(4*(points[0]+M.correction)-M.wavelength(s))<1e-12);assert(4*points[0]<M.wavelength(s));}
+ }
+ const s=M.create('microphone');s.powered=s.measured=true;for(const position of [M.locations(s)[0],M.locations(s)[1],M.locations(s)[3]]){s.position=position;M.record(s);}assert.match(M.result(s).error,/건너뛰/);
+ const wrong=M.create();wrong.powered=wrong.measured=true;for(const position of [.05,.2,.4]){wrong.position=position;M.record(wrong);}assert.match(M.result(wrong).error,/가장 큰/);
+});
+for(const engine of ['chromium','webkit'])test(engine+': two sound apparatuses, measurement correction, independent diagnostic questions and five viewports',{timeout:120000},async()=>{
+ const root=path.resolve(__dirname,'../learning/inquiry/science-lab'),server=http.createServer((req,res)=>{let f=path.resolve(root,'.'+new URL(req.url,'http://local').pathname);if(f!==root&&!f.startsWith(root+path.sep))return res.writeHead(403).end();if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');fs.readFile(f,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',{'.js':'text/javascript','.css':'text/css','.html':'text/html; charset=utf-8'}[path.extname(f)]||'application/octet-stream');res.end(b);});});await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
+ try{browser=await require('playwright')[engine].launch({headless:true,...(engine==='chromium'?{executablePath:process.env.SCIENCE_BROWSER}:{})});const p=await browser.newPage({hasTouch:true}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());await p.goto(`http://127.0.0.1:${server.address().port}/acoustic-resonance/`);await p.waitForSelector('[data-assessment-ready]',{state:'attached'});
+ const tap=id=>p.locator('#'+id).tap(),state=()=>p.evaluate(()=>window.__acousticResonance.getState());
+ assert(await p.locator('#acRecord').isDisabled());await tap('acPower');await tap('acMeasure');
+ for(const mode of ['tube','microphone']){await p.locator('#acMode').selectOption(mode);await tap('acPower');await tap('acMeasure');
+  await p.locator('#acPosition').evaluate(e=>{e.value=50;e.dispatchEvent(new Event('input'));});await tap('acRecord');await tap('acCalculate');assert.match(await p.locator('#acResult').textContent(),/세 위치/);await p.locator('[data-remove="0"]').tap();
+  for(const mm of mode==='tube'?[80,251,423]:[263,188,114]){await p.locator('#acPosition').evaluate((e,mm)=>{e.value=mm;e.dispatchEvent(new Event('input'));},mm);await tap('acRecord');}
+  const result=M.result(await state());assert(!result.error);await p.locator('#acWave').fill(String(result.wavelength/2));await p.locator('#acSpeed').fill(result.speed.toFixed(1));await tap('acCalculate');assert.match(await p.locator('#acResult').textContent(),/반 파장/);await p.locator('#acWave').fill(result.wavelength.toFixed(3));await tap('acCalculate');assert.match(await p.locator('#acResult').textContent(),/음속 34/);
+  const phase=(await state()).phase;await p.waitForTimeout(140);assert.notEqual((await state()).phase,phase);await tap('acPower');const stopped=(await state()).phase;await p.waitForTimeout(140);assert.equal((await state()).phase,stopped);await tap('acPower');await p.waitForTimeout(170);
+  for(const width of [1366,1180,1024,820,768]){await p.setViewportSize({width,height:width===768?1024:820});await p.waitForTimeout(60);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.equal(await p.locator('.acoustic-lab button:visible').evaluateAll(es=>es.some(e=>e.getBoundingClientRect().height<43.5)),false);assert.equal(await p.locator('#acScene svg text').evaluateAll(es=>es.some(e=>{const m=e.getScreenCTM(),px=parseFloat(getComputedStyle(e).fontSize)*Math.hypot(m.c,m.d);return px<14||px>16;})),false);
+   const dir=path.resolve(process.env.SCIENCE_TEST_ARTIFACTS||'docs/science-lab-audit-2026-10-12/course-practices/browser');fs.mkdirSync(dir,{recursive:true});await require('./science-screenshot.cjs')(p.locator('.acoustic-lab'),path.join(dir,`${engine}-acoustic-${mode}-${width}.webp`));
+  }
+ }
+ await tap('acReset');assert.equal((await state()).records.length,0);assert.equal((await state()).measured,false);await p.locator('#acMode').selectOption('tube');await p.locator('#acFrequency').selectOption('800');assert.equal((await state()).frequency,800);assert.equal((await state()).records.length,0);
+ await p.locator('.quiz-section summary').tap();for(const c of await p.locator('.quiz-card').all()){await c.locator('input[value='+await c.getAttribute('data-answer')+']').check();await c.locator('.answer-button').tap();}await p.waitForFunction(()=>!!document.querySelector('.exam-widget')?.examController);const r=require('../scripts/science-acoustic-experiment.cjs');assert.deepEqual(await p.locator('.exam-widget').evaluate(w=>w.examController.ids()),r.followups.map(q=>q.id));for(let i=0;i<2;i++){await p.locator('[data-exam-answer="'+r.followups[i].answer+'"]').tap();await p.locator('.exam-submit').tap();assert.equal(await p.locator('.exam-feedback').getAttribute('data-correct'),'true');if(i===0)await p.locator('[data-exam-next]').tap();}assert.deepEqual(errors,[]);
+ }finally{await browser?.close();await new Promise(r=>server.close(r));}
+});

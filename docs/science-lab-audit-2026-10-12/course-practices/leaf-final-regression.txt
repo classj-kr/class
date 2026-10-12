@@ -1,0 +1,64 @@
+✔ first answer survives correction, duplicate submissions, reload and shuffled choices (6.1148ms)
+✔ missing/corrupt/denied storage and repeated guesses cannot turn first error into mastery (0.7402ms)
+✔ fresh transfer answer is distinguished from correcting the same item (0.1126ms)
+✔ all supplied existing questions and new transfer items have valid assessment feedback (69.1566ms)
+chromium: 163 apps / 167 course routes / 668 first errors retained through correction and reload
+✔ chromium: all registered apps preserve first responses and integrate diagnostics (24511.8369ms)
+webkit: 163 apps / 167 course routes / 668 first errors retained through correction and reload
+✔ webkit: all registered apps preserve first responses and integrate diagnostics (35041.5535ms)
+✔ official 2022 areas and courses, and one auditable primary placement per app (336.1882ms)
+✔ school/course filtering, old links, exact high-school domains and responsive catalog (5298.9175ms)
+✔ leaf starch: treatment order, light mask, residual starch and pigment interference are independent (0.8972ms)
+✔ chromium: elementary leaf preparation, water bath, decoloring, controls and diagnosis (14186.3287ms)
+✔ webkit: elementary leaf preparation, water bath, decoloring, controls and diagnosis (16537.4598ms)
+196 JavaScript files parsed
+✔ all app grades, standards, quizzes and local script cache versions agree (165.0866ms)
+✔ every science lab JavaScript file parses (92.1477ms)
+✔ arm flexion changes opposing muscle lengths, not bone lengths (0.8446ms)
+state-change: 36 valid states
+gases: 3 valid states
+mixture-separation: 7 valid states
+heat-transfer: 96 valid states
+light-shadow: 10 valid states
+photosynthesis: 6 valid states
+living-environment: 3 valid states
+acid-base: 32 valid states
+immune: 40 valid states
+stars-universe: 24 valid states
+microscope: 18 valid states
+weather-watch: 8 valid states
+land-sea: 2 valid states
+sound-vibration: 4 valid states
+rock-layers: 4 valid states
+minerals-rocks: 4 valid states
+microbes: 10 valid states
+solubility: 16 valid states
+refraction: 10 valid states
+weight-compare: 12 valid states
+volcano-model: 6 valid states
+lever-balance: 4 valid states
+seasons: 120 valid states
+diffusion: 216 valid states
+weather-front: 6 valid states
+motion-energy: 8 valid states
+ohms-law: 72 valid states
+burning-conditions: 6 valid states
+cell-structure: 32 valid states
+energy-conversion: 24 valid states
+mass-ratio: 6 valid states
+pea-genetics: 6 valid states
+cell-membrane: 6 valid states
+flame-ions: 4 valid states
+neutralization-common: 10 valid states
+density-buoyancy: 24 valid states
+✔ all supplement choices return finite, curriculum-referenced observations (24.9682ms)
+✔ ABO both-reagent truth table and student judgement (0.4972ms)
+✔ freezing mass, gas mass, heat contact, separation and starch (0.2654ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59820.2698

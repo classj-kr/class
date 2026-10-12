@@ -1,0 +1,9 @@
+✔ weighing procedure is anchored to a valid 2022 standard and the read source pages (7.6507ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 60.6577

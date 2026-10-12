@@ -1,0 +1,11 @@
+✔ bank editorial revisions match their latest reviewed wording and retain distinct choices (52.9449ms)
+Noto Serif KR: browser font loaded
+✔ clean question sheet, CSAT reading font, all-grade layouts and original-app typography (3733.4244ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3880.8984
