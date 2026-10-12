@@ -397,12 +397,28 @@
     return `<svg class="mb-geo" viewBox="0 0 ${w} ${h}" width="${w}" role="img" aria-label="${said.join(' ')}">${out}</svg>`;
   }
 
+  // 직선·반직선·선분의 기호: 글자 위에 ↔, →, ― 를 얹는다. 글줄 높이는 그대로 두고(위쪽 여백 0.36em), 표시는 작은 그림으로 그린다.
+  // 화면에 보이지 않는 낱말(직선·반직선·선분)을 함께 넣어, 글로 옮기거나 소리 내어 읽을 때 세 기호가 가려지게 한다.
+  const WORD = { line: '직선', ray: '반직선', seg: '선분' };
+  function over(kind, name) {
+    const w = name.length * 0.7 + 0.2, W = Math.round(w * 10), y = 2.5, h = 1.7;
+    const head = (x, s) => `M${x + s * 2.4} ${y - h}L${x} ${y}L${x + s * 2.4} ${y + h}`;
+    const dd = kind === 'seg' ? `M0.6 ${y}H${W - 0.6}` : kind === 'ray' ? `M0.6 ${y}H${W - 0.8}${head(W - 0.6, -1)}` : `M0.8 ${y}H${W - 0.8}${head(0.6, 1)}${head(W - 0.6, -1)}`;
+    return `<span style="position:relative;display:inline-block;padding-top:0.36em;line-height:1.12;white-space:nowrap"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">${WORD[kind]} </span>${name}`
+      // 선분의 줄은 글자 너비에 꼭 맞춘다(글꼴마다 글자 너비가 달라 어림한 너비로는 옆 글자 위까지 나간다). 화살표는 머리가 찌그러지지 않게 어림한 너비로 둔다.
+      + (kind === 'seg'
+        ? `<svg class="mb-inline" aria-hidden="true" viewBox="0 0 ${W} 5" preserveAspectRatio="none" style="position:absolute;left:0;top:0;width:100%;height:0.5em;overflow:visible"><path d="${dd}" style="fill:none;stroke:currentColor;stroke-width:0.8;stroke-linecap:butt"/></svg></span>`
+        : `<svg class="mb-inline" aria-hidden="true" viewBox="0 0 ${W} 5" style="position:absolute;left:50%;top:0;width:${w.toFixed(2)}em;height:0.5em;margin-left:-${(w / 2).toFixed(2)}em;overflow:visible"><path d="${dd}" style="fill:none;stroke:currentColor;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round"/></svg></span>`);
+  }
+  const LN = (name) => over('line', name), RY = (name) => over('ray', name), SG = (name) => over('seg', name);
+
   B.kit.mid = {
     LAB, MINUS, GT, LT, GE, LE, range, gcd, lcm, Q, dc, dc2, plainQ, qadd, qsub, qmul, qdiv, keepD, qneg, qabs, qpow, qcmp, isInt, fl, asDec, U, mag, tx,
     sx, px, digits, nb, isFrac, glue, plain, tail, lastOf, tj, sj, pj, js, V, sup, P, G, W, WN, MN, A, isNum, valT, val, OPS, BR, htmlT, html, inl, jsT,
     jsx, hasP, S, isPow, step, trace, chainOf, flatNums, intsOnly, biggest, emOf, FIT, fit, ex, show, tag, tagged, taggedEx, proc, flow, f1, nline, nz, pm,
     co, fr, distinct, okKind, ansV, valueFacts, CALC, calcQ, pickEx, SAME_ADD, DIFF_ADD, TO_ADD, SAME_MUL, DIFF_MUL, SAME_DIV, DIFF_DIV, BY_RECIP, rawMag,
     uniq, addTold, subTold, mulTold, divTold, commonTold, un, sv, claimQ,
-    asQ, mono, poly, lin, linAns, pointAns, whereOnPlane, plane, graph
+    asQ, mono, poly, lin, linAns, pointAns, whereOnPlane, plane, graph,
+    over, LN, RY, SG
   };
 })(typeof window !== 'undefined' ? window : globalThis);
