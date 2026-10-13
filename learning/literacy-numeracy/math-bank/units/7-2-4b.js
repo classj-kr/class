@@ -52,7 +52,7 @@
     if (o.h) beside(cv, P[1], P[5], P[0], o.h);
     return cv.out(o.label);
   }
-  // 밑면이 오각형(직사각형 위에 이등변삼각형을 얹은 모양)인 오각기둥을 눕혀 그린 것. w: 밑면의 가로, e: 직사각형의 세로, g: 삼각형의 높이, L: 기둥의 높이(cm). o: { w, e, g, L: 글, label }
+  // 밑면이 오각형(직사각형 위에 이등변삼각형을 얹은 모양)인 오각기둥을 눕혀 그린 것. w: 밑면의 가로, e: 직사각형의 세로, g: 삼각형의 높이, L: 기둥의 높이(cm). o: { w, e, g, L: 글, s: 삼각형의 비스듬한 변의 글, label }
   function housePrismFig(w, e, g, L, o) {
     const k = Math.min(fitK(w, 72, 96), 100 / (e + g)), cv = canvas(), dep = clamp(L * k, 60, 120), front = [[0, 0], [w * k, 0], [w * k, e * k], [w * k / 2, (e + g) * k], [0, e * k]];
     const P = addPoly(cv, [0, 0], front.map(([x, z]) => [x, 0, z]).concat(front.map(([x, z]) => [x, dep, z])), [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [0, 1, 6, 5], [1, 2, 7, 6], [2, 3, 8, 7], [3, 4, 9, 8], [4, 0, 5, 9]], { sk: 0.5, tl: 0.28 });
@@ -62,6 +62,8 @@
     if (o.e) beside(cv, P[0], P[4], P[1], o.e);
     if (o.g) leader(cv, [P[4][0] - 2, P[3][1] + 2], mid2(P[3], m), o.g);
     if (o.L) beside(cv, P[1], P[6], P[0], o.L);
+    // 지붕의 비스듬한 변의 길이는 그림 밖(오른쪽)에 적고 가는 선으로 가리킨다(지붕 면 위에 적으면 가려진 모서리의 점선과 겹친다).
+    if (o.s) leader(cv, [P[7][0] + 9 + half(o.s), (P[7][1] + P[8][1]) / 2 - 3], mid2(P[2], P[3]), o.s);
     return cv.out(o.label);
   }
   // 밑면이 직사각형(가로 a, 세로 b)인 사각뿔. H: 높이(cm). o: { a, b, h: 높이 글, s: 앞쪽 옆면의 높이 글, label }
