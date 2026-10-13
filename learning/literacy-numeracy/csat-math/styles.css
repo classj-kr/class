@@ -420,6 +420,15 @@ main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
 .katex .mop {
   font-feature-settings: normal;
 }
+/* 수식의 끝(첫) 조각과 거기에 빈칸 없이 붙은 글을 한 덩이로 묶는다(app.js glueMath).
+   nowrap이 아니라 inline-block인 까닭: 덩이가 한 줄보다 넓어도 안에서 꺾일 뿐 카드 밖으로 밀려나지 않는다.
+   그렇게 넓은 덩이는 app.js가 is-loose를 붙여 풀어 둔다. */
+.math-glue {
+  display: inline-block;
+}
+.math-glue.is-loose {
+  display: inline;
+}
 
 @media (max-width: 560px) {
   body { font-size: 15px; }

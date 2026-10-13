@@ -315,6 +315,7 @@
       body.hidden = !open;
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.textContent = open ? "풀이 접기" : "풀이";
+      if (open) loosenWideGlue(body);
     });
 
     bar.appendChild(btn);
@@ -383,6 +384,88 @@
       },
       throwOnError: false
     });
+    glueMath(root);
+    loosenWideGlue(root);
+  }
+
+  // 수식에 빈칸 없이 붙은 글(뒤의 조사·문장부호, 앞의 여는 괄호 따위)이 수식과 다른 줄로 갈라지지 않게 한다.
+  // KaTeX의 .base는 inline-block이라 브라우저가 그 앞뒤를 줄 바꿀 자리로 보고, 낱말 이음표(U+2060)를 끼워도 듣지 않는다.
+  // 수식을 통째로 묶으면 긴 수식이 .base 사이에서 꺾이지 못하므로, 글과 맞닿은 .base 하나만 떼어 글과 함께 한 덩이(.math-glue)로 싼다.
+  function glueMath(root) {
+    root.querySelectorAll(".katex").forEach((katex) => {
+      if (katex.closest(".katex-display, .math-glue")) return;
+      const html = katex.querySelector(".katex-html");
+      const bases = html ? html.querySelectorAll(":scope > .base") : [];
+      if (bases.length === 0) return;
+
+      const holder = katex.parentElement;
+      const before = holder.previousSibling;
+      const after = holder.nextSibling;
+      const leadLength = before && before.nodeType === 3 ? before.data.match(/\S*$/)[0].length : 0;
+      const tailLength = after && after.nodeType === 3 ? after.data.match(/^\S*/)[0].length : 0;
+      if (leadLength === 0 && tailLength === 0) return;
+
+      const lead = leadLength === 0 ? null : leadLength < before.length ? before.splitText(before.length - leadLength) : before;
+      if (tailLength > 0 && tailLength < after.length) after.splitText(tailLength);
+      const tail = tailLength === 0 ? null : after;
+
+      const glue = function () {
+        const span = document.createElement("span");
+        span.className = "math-glue";
+        return span;
+      };
+      // 떼어 낸 .base 가 수식 글꼴을 그대로 받도록 빈 .katex > .katex-html 껍데기에 담는다.
+      const piece = function (base) {
+        const shell = katex.cloneNode(false);
+        const inner = html.cloneNode(false);
+        inner.appendChild(base);
+        shell.appendChild(inner);
+        return shell;
+      };
+
+      if (bases.length === 1) {
+        const span = glue();
+        holder.before(span);
+        if (lead) span.appendChild(lead);
+        span.appendChild(holder);
+        if (tail) span.appendChild(tail);
+        return;
+      }
+      if (lead) {
+        const span = glue();
+        holder.before(span);
+        span.append(lead, piece(bases[0]));
+      }
+      if (tail) {
+        const span = glue();
+        holder.after(span);
+        span.append(piece(bases[bases.length - 1]), tail);
+      }
+    });
+  }
+
+  // 묶은 덩이가 한 줄보다 넓으면 그 덩이만 풀어, 묶기 전처럼 글이 다음 줄로 흐르게 둔다.
+  // 풀지 않으면 덩이 안에서 꺾인 글이 혼자 한 줄을 차지한다. 숨은 풀이는 너비가 0이라 펼칠 때 다시 본다.
+  function loosenWideGlue(root) {
+    const spans = Array.from(root.querySelectorAll(".math-glue"));
+    spans.forEach((span) => span.classList.remove("is-loose"));
+    const lineWidths = new Map();
+    const lineWidth = function (span) {
+      const parent = span.parentElement;
+      if (!lineWidths.has(parent)) {
+        let block = parent;
+        while (getComputedStyle(block).display.startsWith("inline")) block = block.parentElement;
+        const style = getComputedStyle(block);
+        lineWidths.set(parent, block.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight));
+      }
+      return lineWidths.get(parent);
+    };
+    spans
+      .filter((span) => {
+        const width = span.getBoundingClientRect().width;
+        return width > 0 && width > lineWidth(span) - 1;
+      })
+      .forEach((span) => span.classList.add("is-loose"));
   }
 
   function updateCount(items, renderedCount) {
@@ -539,6 +622,19 @@
         }
 
         updateCount(items, Math.min(state.displayLimit, items.length));
+      });
+    }
+
+    // 줄 너비가 바뀌거나 수식 글꼴이 뒤늦게 들어오면 덩이 너비가 달라지므로 다시 잰다.
+    let listWidth = els.list.clientWidth;
+    window.addEventListener("resize", function () {
+      if (els.list.clientWidth === listWidth) return;
+      listWidth = els.list.clientWidth;
+      loosenWideGlue(els.list);
+    });
+    if (document.fonts && document.fonts.addEventListener) {
+      document.fonts.addEventListener("loadingdone", function () {
+        loosenWideGlue(els.list);
       });
     }
 
