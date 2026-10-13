@@ -36,6 +36,19 @@
         part = rest;
       }
     }
+    // 선분·직선·반직선 기호는 위에 줄을 얹은 한 덩어리(inline-block)라, 기호와 바로 뒤의 토씨 사이에서 줄이 갈릴 수 있다(「EF」가 줄 끝에, 「의 길이는?」이 다음 줄 머리에 온다).
+    // 기호(나 기호로 끝나는 묶음)와 바로 뒤의 한글을 줄이 갈리지 않는 한 덩어리로 묶는다.
+    node.querySelectorAll('svg.mb-inline[aria-hidden="true"]').forEach((mark) => {
+      let unit = mark.parentElement;
+      if (!unit || unit.tagName !== 'SPAN' || unit.style.display !== 'inline-block' || unit.lastChild !== mark) return;
+      while (!unit.nextSibling && unit.parentElement !== node && unit.parentElement.tagName === 'SPAN') unit = unit.parentElement;
+      const next = unit.nextSibling, tail = next && next.nodeType === 3 ? /^[가-힣]+/.exec(next.data) : null;
+      if (!tail || unit.parentElement.dataset.glued) return;
+      const wrap = document.createElement('span');
+      wrap.style.whiteSpace = 'nowrap'; wrap.dataset.glued = '1';
+      unit.parentNode.insertBefore(wrap, unit); wrap.appendChild(unit); wrap.appendChild(document.createTextNode(tail[0]));
+      next.data = next.data.slice(tail[0].length);
+    });
     return node;
   };
   const el = (tag, className, html) => { const node = document.createElement(tag); if (className) node.className = className; if (html != null) { node.innerHTML = html; tie(node); } return node; };
