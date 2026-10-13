@@ -501,11 +501,21 @@
     }
 
     if (els.btnMore) {
-      els.btnMore.addEventListener("click", function () {
+      els.btnMore.addEventListener("click", async function () {
         const items = visibleProblems();
         const prevLimit = state.displayLimit;
-        state.displayLimit += CHUNK_SIZE;
-        const newItems = items.slice(prevLimit, state.displayLimit);
+        const newItems = items.slice(prevLimit, prevLimit + CHUNK_SIZE);
+
+        // 새로 띄울 문항이 아직 받지 않은 회차 것이면 본문부터 받는다. 받는 사이에 고른 조건이 바뀌었으면 그리지 않는다.
+        const pending = ensureBodies(newItems);
+        if (pending) {
+          const token = renderToken;
+          els.btnMore.disabled = true;
+          await pending;
+          els.btnMore.disabled = false;
+          if (token !== renderToken) return;
+        }
+        state.displayLimit = prevLimit + CHUNK_SIZE;
 
         const frag = document.createDocumentFragment();
         const newCardElements = [];

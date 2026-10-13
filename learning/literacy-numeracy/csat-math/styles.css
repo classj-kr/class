@@ -208,7 +208,8 @@ main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
 .reset:hover { border-color: #b9c3cf; color: var(--ink); }
 
 /* ── 문항 ── */
-.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+/* 열 너비를 minmax(0, 1fr)로 묶는다. 그냥 두면 열이 내용에 맞춰 자라서, 긴 수식 하나가 모든 카드를 화면 밖까지 넓힌다. */
+.list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 
 .item {
   background: rgba(255, 255, 255, 0.97);
@@ -252,7 +253,7 @@ main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
 .note-box {
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 10px 0;
   margin: 12px 0;
   position: relative;
   font-family: "KoPubWorld Batang", "Noto Serif KR", "Batang", "Times New Roman", serif;
@@ -271,8 +272,10 @@ main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
   font-weight: 700;
   letter-spacing: 0.3em;
 }
-.note-box ul { margin: 0; padding-left: 0; list-style: none; }
-.note-box ul.has-bullets { padding-left: 1.1em; list-style: disc; }
+/* 줄바꿈이 안 되는 수식(경우를 나눈 식 등)이 상자보다 넓으면 상자 안에서 옆으로 굴린다.
+   가로 여백을 ul이 갖고 있어, 조금 넘치는 수식은 굴리지 않아도 여백 자리에 다 보인다. */
+.note-box ul { margin: 0; padding: 0 14px; list-style: none; overflow-x: auto; overflow-y: hidden; }
+.note-box ul.has-bullets { padding-left: calc(14px + 1.1em); list-style: disc; }
 .note-box li { margin: 4px 0; }
 .note-box li::marker { color: var(--ink-soft); }
 
@@ -425,4 +428,6 @@ main { max-width: 940px; margin: 0 auto; padding: 18px 16px 48px; }
   .picker-label { flex-basis: 100%; padding-top: 0; }
   .picker-row { flex-wrap: wrap; }
   .choices.is-wide { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
+  /* 칸이 96px까지 좁아지므로 번호와 수식을 왼쪽으로 당겨, 분수 꼴 보기가 칸 테두리를 넘지 않게 한다. */
+  .choices.is-wide .choice { padding-left: 8px; gap: 5px; }
 }
