@@ -50,7 +50,7 @@ async function main() {
 
     browser = await chromium.launch({ channel: 'msedge', headless: true });
     const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '1' }, viewport: { width: 1440, height: 1000 } });
-    await context.route('https://**', route => route.abort());
+    await context.route(/^https:\/\//, route => route.abort());
     const page = await context.newPage(), errors = []; page.on('pageerror', e => errors.push(e.message));
     const url = h.base + '/learning/literacy-numeracy/math-ox/?record=' + encodeURIComponent('초6') + '&unit=' + encodeURIComponent(unit);
     await page.goto(url); await page.waitForFunction(() => !document.getElementById('questionsList').inert && document.querySelectorAll('.question-card').length === 9);
@@ -87,7 +87,7 @@ async function main() {
     assert.equal(await page.locator('learning-records .detail').count(), 10, 'student detail contains only this unit and its retry');
     assert.deepEqual(await page.evaluate(() => [Object.keys(localStorage), Object.keys(sessionStorage)]), [[], []]);
     const home = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '1' } });
-    await home.route('https://**', route => route.abort());
+    await home.route(/^https:\/\//, route => route.abort());
     const homePage = await home.newPage(); await homePage.goto(url);
     await homePage.locator(`#q-card-${questions[0].id}.correct`).waitFor();
     assert.equal(await homePage.locator('.question-card.answered').count(), 9);

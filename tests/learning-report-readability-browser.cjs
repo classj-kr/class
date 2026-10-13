@@ -35,7 +35,7 @@ async function main() {
     }
     const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '3' }, viewport: { width: 1440, height: 1000 } });
     // Reports must render math even without access to an external CDN.
-    await context.route('https://**', route => route.abort());
+    await context.route(/^https:\/\//, route => route.abort());
     const page = await context.newPage(), errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(h.base + '/classtools/learning-reports.html');

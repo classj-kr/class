@@ -87,7 +87,7 @@ async function main() {
     browser = await chromium.launch({ channel: 'msedge', headless: true });
     async function login(name) {
       const context = await browser.newContext();
-      await context.route('https://**', route => route.abort());
+      await context.route(/^https:\/\//, route => route.abort());
       const response = await context.request.post(`${base}/api/auth/google`, { data: { credential: `fixture-${name}` } });
       assert.equal(response.status(), 200, await response.text());
       return context;

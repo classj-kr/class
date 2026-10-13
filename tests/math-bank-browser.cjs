@@ -30,7 +30,7 @@ const UNIT = '1-1-1';
   if (SHOTS) fs.mkdirSync(OUT, { recursive: true });
   const open = async (user, viewport = { width: 1100, height: 900 }) => {
     const context = await browser.newContext({ viewport, ...(user ? { extraHTTPHeaders: { 'x-test-user': String(user) } } : {}) });
-    await context.route('https://**', (route) => route.abort());
+    await context.route(/^https:\/\//, (route) => route.abort());
     const page = await context.newPage();
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('dialog', (d) => d.accept());

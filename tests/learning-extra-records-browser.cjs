@@ -3,7 +3,7 @@ const {chromium}=require('../game-hub-server/node_modules/playwright');
 const {harness}=require('./learning-records-integration.cjs');
 async function main(){
  const h=await harness(), browser=await chromium.launch({channel:'msedge',headless:true});
- const ctx=await browser.newContext({extraHTTPHeaders:{'x-test-user':'1'}});await ctx.route('https://**',r=>r.abort());
+ const ctx=await browser.newContext({extraHTTPHeaders:{'x-test-user':'1'}});await ctx.route(/^https:\/\//,r=>r.abort());
  const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>{errors.push(e.message);console.error('PAGE',e.message)});
  p.on('response',async r=>{if(r.url().includes('/api/learning-records')&&r.status()>=400)console.error('API',r.status(),await r.text())});
  const base=h.base+'/learning/literacy-numeracy/';
