@@ -9,17 +9,20 @@
 //  - 기차가 다리를 건넌 거리를 다리의 길이로만 센다(기차의 길이를 더한다). 강을 거슬러 오를 때의 속력을 배의 속력 그대로 쓴다(강물의 속력을 뺀다).
 //  - 방정식의 해를 그대로 답한다. 미지수로 놓은 것(작년 학생 수)과 묻는 것(올해 학생 수)이 다를 수 있다. 늘고 준 것은 「작년 수의 몇 %」이다.
 //  - 잘못 보고 푼 해를 처음 연립방정식에 넣는다. 잘못 본 식은 버리고 바르게 본 식만 그 해를 참이 되게 한다. 바꾸어 놓고 푼 해는 「바꾼 식」의 해이다.
+//  - 순환소수 0.222…(순환마디 2)를 0.2 로 읽어 양변에 10을 곱한다(분수로 고쳐 9를 곱한다). 상수 a의 값을 모르면 풀 수 없다고 여긴다(수처럼 다루어 해를 a의 식으로 구한다).
+//  - 농도(%)끼리 더하거나 반으로 나눈다(식은 소금의 양으로 세운다). 물을 넣으면 소금도 는다고 여긴다. 일의 양에서 구한 해(하루에 하는 양)를 그대로 답한다(걸리는 날수는 그 역수이다).
 //
 // 실력에는 ① 문제의 식·말·상황에 장치가 있어 배운 뜻을 정확히 대야 풀리는 문제와 ② 세 단계 넘게 이어 생각해야 풀리는 문제(잘못 본 수 되찾기, 바꾸어 놓고 푼 해에서
 // 처음 해 구하기, 식을 다시 짝 지어 연립방정식을 두 번 풀기, 순환소수를 분수로 고쳐 풀기, 그림에서 두 식을 읽어 넓이 구하기, 속력의 비와 트랙)만 실었다.
 // 기본 문서에 여러 번 나오는 꼴(한 식만 참이 되게 하는 순서쌍을 섞어 고르기, 자연수인 해의 개수, 자리의 숫자를 바꾼 수, 풀이 과정의 빈칸, 가위바위보)은 기본 묶음에 있다.
+// 2026-10-13: 처음 지을 때 「지나치게 복잡한 활용」「꼬임·요령·경우 따지기」로 뺐던 꼴을 다시 보고 실력 묶음 끝에 붙였다(아래 「처음 지을 때 뺐다가 다시 실은 꼴」).
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」, 시키는 말은 「~하시오.」
 (function (root) {
   'use strict';
   const B = root.MathBank;
-  const { frac, N, M, C } = B.kit;
+  const { josa, name, NAMES, table, inline, frac, N, M, C } = B.kit;
   const { MINUS, gcd, Q, tx, nb, tail, V, nz, pm, ansV, poly, rep } = B.kit.mid;
-  const { STD, NAME, X, Y, va, vb, vk, iq, tg, tm, ts, sideH, eqH, eqT, I, solH, pairH, sysOf, sysL, wide, stdI, tame, stdJ, cramerJ, solJ, stdH, elimTold, told, xyAns, valsAns, pickSol, SOLVE } = B.kit.m814;
+  const { STD, NAME, X, Y, va, vb, vk, iq, only, tg, tm, tf, ts, sideH, eqH, eqT, I, solH, pairH, sysOf, sysL, wide, steps, evS, at, stdI, natSols, tame, stdJ, cramerJ, solJ, stdH, isStd, elimTold, told, xyAns, valsAns, pickSol, SOLVE } = B.kit.m814;
   // 실력 문항. 기본 자료에서만 나온 꼴은 ref 를 '기본 ①22' 처럼 적는다.
   const H = (id, title, ref, make, more) => Object.assign({ id, level: '실력', title, source: ref.startsWith('기본 ') ? '수집본 기본 자료(' + ref.slice(3) + ')' : '수집본 심화 자료(' + ref + ')', make }, more || {});
   const vc = V('c');
@@ -199,6 +202,230 @@
       })
     ]
   });
+
+  // ── 처음 지을 때 뺐다가 다시 실은 꼴 ──
+  // 사용자(2026-10-13): 「수학실력에 필요해보이는문제는 다 넣어」. 「지나치게 복잡한 활용」(농도, 합금, 일의 양·물 채우기, 세 무리의 요금)과 꼬임·요령·경우 따지기라는 까닭으로
+  // 뺐던 꼴을 다시 보고 실력 묶음 끝에 붙였다. 상위 학년이나 뒤 단원의 내용이 있어야 풀리는 것(분모·지수의 미지수, 절댓값, 미지수 3개, 해가 무수히 많거나 없는 것)은 그대로 빼 두었다.
+  const vm = V('m'), vn = V('n'), ZERO6 = [0, 0, 0, 0, 0, 0];
+  // 자연수인 해가 하나뿐인 qx + py = c (x/p + y/q = c/pq 로 적는다) 가운데 한 값이 다른 값의 몇 배(2배 이상)인 것
+  const NAT_ONE = [];
+  for (const p of [2, 3, 4, 5, 6]) for (const q of [2, 3, 4, 5, 6]) if (gcd(p, q) === 1) for (let c = 5; c <= 60; c += 1) {
+    const sols = natSols(q, p, c); if (sols.length !== 1) continue;
+    const [x0, y0] = sols[0]; if (x0 !== y0 && (y0 % x0 === 0 || x0 % y0 === 0)) NAT_ONE.push({ p, q, c, x0, y0 });
+  }
+  // 물속에서 가벼워지는 무게: [금속, 분자, 분모] — 그 무게의 몇 분의 몇만큼 가벼워진다.
+  const SINK = [['금', 1, 19], ['은', 2, 21], ['구리', 1, 9]];
+  // 구간마다의 버스 요금 [A→B, B→C, A→C]. 한 번에 가는 요금이 나누어 가는 요금의 합보다 싸다.
+  const FARES = [[800, 1400, 2000], [1000, 1200, 1800], [900, 1300, 1900], [700, 1100, 1500], [1200, 1500, 2400], [600, 900, 1300], [1000, 1500, 2200], [1100, 1400, 2100]];
+  B.addTypes('8-1-4', 'hard', [
+    // ── ① 문제의 식·말·상황에 장치가 있어 뜻을 정확히 대야 풀리는 문제 ──
+    H('hard-recurring', '계수가 순환소수인 연립방정식', '심25', (d) => {
+      // 함정: 순환소수 0.222…(순환마디 2)를 0.2 로 읽어 양변에 10을 곱하는 아이(1.111…은 11/10 이 아니라 10/9 이다). 순환소수는 먼저 분수로 고친다(8-1-1).
+      const m = d.until(() => {
+        const [x0, y0] = pickSol(d, 6), a = d.int(1, 8), b = d.int(1, 8), s = pm(d), c = a * x0 + s * b * y0;
+        if (d.bool()) { const a2 = nz(d, -5, 5), b2 = nz(d, -5, 5); return { x0, y0, a, b, s, c, e2: I(a2, b2, a2 * x0 + b2 * y0), ok: a2 * x0 + b2 * y0 !== 0 }; }
+        // ㉡ (x + p)/j − (y + q)/k = (정수나 분수)
+        const j = d.pick([2, 3, 4, 6, 8]), k = d.pick([2, 3, 4, 6]), p = nz(d, -5, 5), q = nz(d, -5, 5), L = [tf(ts([1, 'x'], [p, '']), j, 1), tf(ts([1, 'y'], [q, '']), k, -1)], v = evS(L, at(x0, y0));
+        return { x0, y0, a, b, s, c, e2: [L, ts([v, ''])], ok: j !== k && v.p !== 0 && v.q <= 8 && Math.abs(v.p) <= 9 };
+      }, (r) => { if (!r.ok || r.a === r.b || r.c < 10 || r.c > 35 || r.c % 9 === 0) return false; const t = stdI(r.e2); return r.a * t.b - t.a * r.s * r.b !== 0 && tame(I(r.a, r.s * r.b, r.c), r.e2); });
+      const { x0, y0, a, b, s, c, e2 } = m, w = Math.floor(c / 9), k = c % 9, P1 = { a, b: s * b, c }, P2 = stdI(e2), plain = isStd(e2), used = [0, 1, 9];
+      const row1 = `${rep('0.', a)}${X} ${s < 0 ? MINUS : '+'} ${rep('0.', b)}${Y} = ${rep(w + '.', k)}`, [xJ, yJ] = cramerJ({ a: `(${a})`, b: `(${s * b})`, c: `(9*${w}+${k})` }, stdJ(e2, used));
+      const el = elimTold(P1, P2, '㉢', plain ? '㉡' : '㉣');
+      return xyAns(`연립방정식 ${sysOf([row1, eqH(e2)], NAME)}${SOLVE}`, x0, y0, {
+        explain: `순환소수를 분수로 고치면 ${nb(`${rep('0.', a)} = ${frac(a, 9)}`)}, ${nb(`${rep('0.', b)} = ${frac(b, 9)}`)}, ${nb(`${rep(w + '.', k)} = ${frac(c, 9)}`)}이다. 분수로 고친 ㉠의 양변에 9를 곱하면 ${nb(stdH(P1))} …… ㉢이다. ${plain ? '' : `㉡의 양변에 ${P2.n}${tail(P2.n, '을/를')} 곱하여 정리하면 ${nb(stdH(P2))} …… ㉣이다. `}${el.text}`,
+        facts: { calc: [[xJ, 0], [yJ, 1]], unseen: only(used), rule: 'recurring' }
+      });
+    }),
+    H('hard-letter-sol', '상수가 문자인 연립방정식의 해를 그 문자의 식으로 나타내기', '심22', (d) => {
+      // 함정: a의 값을 모르므로 풀 수 없다고 여기거나, a를 미지수로 보아 미지수가 3개라고 여기는 아이. 상수 a는 값이 정해진 수이므로 수처럼 다루어 해를 a의 식으로 구한다.
+      const m = d.until(() => { const p = big(d, 5), q = big(d, 5), k = nz(d, -3, 3), A = nz(d, -5, 5), Bc = nz(d, -5, 5); return { p, q, k, A, Bc, c1: q - k * p, c2: A * p + Bc * q }; },
+        (r) => r.p !== r.q && r.c1 !== 0 && r.c2 !== 0 && r.A + r.Bc * r.k !== 0 && Math.abs(r.c1) <= 12 && Math.abs(r.c2) <= 30);
+      const { p, q, k, A, Bc, c1, c2 } = m, expr = ts([k, 'x'], [c1, 'a']), r1 = `${Y} = ${sideH(expr)}`, r2 = `${poly([[A, X], [Bc, Y]])} = ${poly([[c2, va]])}`;
+      const xJ = `((${c2})-(${Bc})*(${c1}))/((${A})+(${Bc})*(${k}))`, put = sideH([tm(A, 'x'), Bc === 1 ? tg(1, expr) : tg(Bc, expr)]);
+      return inline(`${va}가 상수일 때, 연립방정식 ${sysOf([r1, r2], NAME)}의 해를 ${va}를 사용한 식으로 나타내시오.`, `${X} = {0}${va}<br>${Y} = {1}${va}`, [{ answer: p, signed: true }, { answer: q, signed: true }], {
+        shown: `${nb(`${X} = ${poly([[p, va]])}`)}, ${nb(`${Y} = ${poly([[q, va]])}`)}`,
+        explain: `상수 ${va}는 값이 정해진 수이므로 수처럼 다룬다. ㉠을 ㉡에 대입하면 ${nb(`${put} = ${poly([[c2, va]])}`)}이다. 이 식을 정리하면 ${nb(`${poly([[A + Bc * k, X]])} = ${poly([[c2 - Bc * c1, va]])}`)}이므로 ${nb(`${X} = ${poly([[p, va]])}`)}이다. 이것을 ㉠에 대입하면 ${nb(`${Y} = ${poly([[k * p, va], [c1, va]])} = ${poly([[q, va]])}`)}이다.`,
+        facts: { calc: [[xJ, 0], [`(${k})*(${xJ})+(${c1})`, 1]], unseen: [1, 0] }
+      });
+    }),
+    H('hard-salt-conc', '섞는 양을 바꾸어 두 번 섞은 두 소금물의 농도', '심60', (d) => {
+      // 함정: 두 농도를 그대로 더하거나 반으로 나누는 아이, 소금물의 양을 곱하지 않는 아이. 식은 소금의 양으로 세운다: (소금의 양) = (소금물의 양) × (농도) ÷ 100, 섞기 전과 후에 소금의 양은 같다.
+      const m = d.until(() => {
+        const x0 = d.int(2, 16), y0 = d.int(2, 16), [a1, b1, a2, b2] = [d.int(1, 4), d.int(1, 4), d.int(1, 4), d.int(1, 4)];
+        return { x0, y0, a1, b1, a2, b2, p: (a1 * x0 + b1 * y0) / (a1 + b1), q: (a2 * x0 + b2 * y0) / (a2 + b2) };
+      }, (r) => r.x0 !== r.y0 && r.a1 * r.b2 !== r.a2 * r.b1 && Number.isInteger(r.p) && Number.isInteger(r.q) && r.p !== r.q && r.a1 + r.b1 <= 6 && r.a2 + r.b2 <= 6 && gcd(r.a1, r.b1) === 1 && gcd(r.a2, r.b2) === 1);
+      const { x0, y0, a1, b1, a2, b2, p, q } = m, [A1, B1, A2, B2] = [a1, b1, a2, b2].map((v) => 100 * v), S1 = p * (a1 + b1), S2 = q * (a2 + b2);
+      const C1 = `${p}*(${A1}+${B1})`, C2 = `${q}*(${A2}+${B2})`, det = `(${A1}*${B2}-${A2}*${B1})`, el = elimTold({ a: a1, b: b1, c: S1 }, { a: a2, b: b2, c: S2 }, '㉠', '㉡');
+      return M(`농도가 서로 다른 두 소금물 A, B가 있다. 소금물 A ${A1} g과 소금물 B ${B1} g을 섞으면 ${p} %의 소금물이 되고, 소금물 A ${A2} g과 소금물 B ${B2} g을 섞으면 ${q} %의 소금물이 된다. 두 소금물 A, B의 농도는 각각 ${nb('몇 %인가?')}`, [{ label: 'A', answer: x0, unit: '%' }, { label: 'B', answer: y0, unit: '%' }], {
+        explain: `소금물 A의 농도를 ${nb(`${X} %`)}, 소금물 B의 농도를 ${nb(`${Y} %`)}라 하자. 소금의 양은 (소금물의 양) × ${frac('(농도)', 100)}이고, 섞기 전과 후에 소금의 양은 같다. 처음 섞을 때 소금물 A, B에 든 소금의 양은 ${nb(`${frac(X, 100)} × ${A1} = ${poly([[a1, X]])}`)}(g), ${nb(`${frac(Y, 100)} × ${B1} = ${poly([[b1, Y]])}`)}(g)이고, 섞은 소금물에 든 소금의 양은 ${nb(`${frac(p, 100)} × ${A1 + B1} = ${S1}`)}(g)이므로 ${nb(stdH({ a: a1, b: b1, c: S1 }))} …… ㉠이다. 같은 방법으로 두 번째 섞을 때에는 ${nb(`${frac(q, 100)} × ${A2 + B2} = ${S2}`)}(g)이므로 ${nb(stdH({ a: a2, b: b2, c: S2 }))} …… ㉡이다. ${el.text}`,
+        facts: { calc: [[`(${C1}*${B2}-${C2}*${B1})/${det}`, 0], [`(${A1}*${C2}-${A2}*${C1})/${det}`, 1]] }
+      });
+    }),
+    H('hard-mix', '성분의 비율이 다른 두 가지를 섞어 정해진 비율로 만들기', '기본 ①67 / 심61', (d, n) => {
+      // 함정: 비율(%)을 그대로 더하는 아이, 물을 넣으면 소금도 늘어난다고 여기는 아이. 식은 전체의 양과 그 속에 든 성분의 양으로 세운다. 물에는 소금이 없지만 소금물의 양에는 물도 더한다.
+      if (n === 0) {
+        // 두 합금을 섞어 만든 합금
+        const metal = d.pick(['구리', '금', '은']);
+        const m = d.until(() => { const q = 5 * d.int(8, 16) + d.pick([0, 0, 2, 4]), p = q + d.pick([4, 5, 6, 8, 10, 12, 15, 20]), x0 = 50 * d.int(1, 12), y0 = 50 * d.int(1, 12), T = x0 + y0; return { p, q, x0, y0, T, r: (p * x0 + q * y0) / T }; },
+          (t) => t.p <= 95 && t.x0 !== t.y0 && t.T % 100 === 0 && t.T <= 1000 && Number.isInteger(t.r));
+        const { p, q, x0, y0, T, r } = m, e1 = I(1, 1, T), P2 = { a: p, b: q, c: r * T }, el = elimTold({ a: 1, b: 1, c: T }, P2, '㉠', '㉡');
+        return M(`${josa(metal, '을/를')} ${p} % 포함한 합금 A와 ${josa(metal, '을/를')} ${q} % 포함한 합금 B를 녹여서 ${josa(metal, '을/를')} ${r} % 포함한 합금 ${T} g을 만들려고 한다. 합금 A와 합금 B는 각각 ${nb('몇 g')} 필요한가?`, [{ label: 'A', answer: x0, unit: 'g' }, { label: 'B', answer: y0, unit: 'g' }], {
+          explain: `합금 A를 ${nb(`${X} g`)}, 합금 B를 ${nb(`${Y} g`)} 녹인다고 하면 ${eqT(e1)} …… ㉠이다. 합금에 든 ${metal}의 양은 (합금의 양) × ${frac('(비율)', 100)}이고, 녹이기 전과 후에 ${metal}의 양은 같으므로 ${nb(`${frac(p, 100)}${X} + ${frac(q, 100)}${Y} = ${frac(r, 100)} × ${T}`)}, 곧 ${nb(stdH(P2))} …… ㉡이다. ${el.text}`,
+          facts: { calc: [[`${T}*(${r}-${q})/(${p}-${q})`, 0], [`${T}*(${p}-${r})/(${p}-${q})`, 1]], rule: 'mix-0' }
+        });
+      }
+      // 두 소금물을 섞고 물을 더 넣는다. 물의 양은 한 소금물의 양과의 비로 준다.
+      const m = d.until(() => {
+        const [mm, nn] = d.pick([[2, 1], [3, 1], [4, 1], [5, 1], [3, 2], [5, 2]]), x0 = 50 * mm * d.int(1, 6), y0 = 50 * d.int(1, 10), water = x0 * nn / mm, T = x0 + y0 + water, q = d.int(1, 6), p = q + d.int(2, 8);
+        return { mm, nn, x0, y0, water, T, p, q, r: (p * x0 + q * y0) / T };
+      }, (t) => t.T % 100 === 0 && t.T <= 1000 && t.x0 !== t.y0 && Number.isInteger(t.r) && t.r !== t.q && t.p * t.mm !== t.q * (t.mm + t.nn));
+      const { mm, nn, x0, y0, T, p, q, r } = m, P1 = { a: mm + nn, b: mm, c: mm * T }, P2 = { a: p, b: q, c: r * T }, el = elimTold(P1, P2, '㉢', '㉡');
+      const xJ = `(${r}-${q})*${T}*${mm}/(${p}*${mm}-${q}*(${mm}+${nn}))`;
+      return M(`${p} %의 소금물 A와 ${q} %의 소금물 B를 섞은 다음 물을 더 넣어 ${r} %의 소금물 ${T} g을 만들었다. 섞은 소금물 A의 양과 더 넣은 물의 양의 비가 ${nb(`${mm} : ${nn}`)}일 때, 소금물 A와 소금물 B는 각각 ${nb('몇 g')} 섞었는가?`, [{ label: 'A', answer: x0, unit: 'g' }, { label: 'B', answer: y0, unit: 'g' }], {
+        explain: `소금물 A를 ${nb(`${X} g`)}, 소금물 B를 ${nb(`${Y} g`)} 섞었다고 하면 더 넣은 물의 양은 ${nb(`${frac(nn, mm)}${X} g`)}이다. 물도 소금물의 양에 들어가므로 ${nb(`${X} + ${Y} + ${frac(nn, mm)}${X} = ${T}`)} …… ㉠이다. 물에는 소금이 없으므로 소금의 양은 ${nb(`${frac(p, 100)}${X} + ${frac(q, 100)}${Y} = ${frac(r, 100)} × ${T}`)}, 곧 ${nb(stdH(P2))} …… ㉡이다. ㉠의 양변에 ${mm}${tail(mm, '을/를')} 곱하여 정리하면 ${nb(stdH(P1))} …… ㉢이다. ${el.text}`,
+        facts: { calc: [[xJ, 0], [`${T}-${xJ}*(${mm}+${nn})/${mm}`, 1]], rule: 'mix-1' }
+      });
+    }, { count: 2 }),
+    H('hard-work-rate', '일한 시간 두 가지로 혼자서 할 때 걸리는 시간 구하기', '기본 ①68 / 심57', (d) => {
+      // 함정: 연립방정식의 해(한 시간에 하는 일의 양)를 그대로 답하는 아이. 전체 일의 양을 1로 놓으면 해는 「한 시간에 전체의 몇 분의 몇」이고, 걸리는 시간은 그 역수이다.
+      // 혼자서 할 때 걸리는 시간 P, W 를 먼저 정한다. 한 번은 (A a시간, B b시간) 두 가지로, 한 번은 「함께 하면 며칠」과 (A a일, B b일)로 준다.
+      const hose = d.bool();
+      const m = d.until(() => {
+        const [u, w] = d.pick([[1, 2], [2, 1], [1, 3], [3, 1], [2, 3], [3, 2], [1, 4], [4, 1], [3, 4], [4, 3], [2, 5], [5, 2]]), g = d.int(3, 10), [k1, k2] = d.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9].filter((v) => v < g)), P = g * u, W = g * w;
+        return { P, W, a1: k1 * u, b1: (g - k1) * w, a2: k2 * u, b2: (g - k2) * w, both: P * W / (P + W) };
+      }, (r) => r.P >= 4 && r.W >= 4 && r.P <= 30 && r.W <= 30 && [r.a1, r.b1, r.a2, r.b2].every((v) => v >= 2) && (hose || (Number.isInteger(r.both) && r.both >= 2 && r.a2 !== r.both)));
+      const { P, W } = m, [a1, b1] = hose ? [m.a1, m.b1] : [m.both, m.both], { a2, b2 } = m, det = `(${a1}*${b2}-${a2}*${b1})`;
+      const el = elimTold({ a: a1, b: b1, c: 1 }, { a: a2, b: b2, c: 1 }, '㉠', '㉡'), facts = { calc: [[`${det}/(${b2}-${b1})`, 0], [`${det}/(${a1}-${a2})`, 1]] };
+      if (hose) {
+        return M(`빈 물탱크에 A 호스로 ${a1}시간, B 호스로 ${b1}시간 동안 물을 넣으면 가득 차고, A 호스로 ${a2}시간, B 호스로 ${b2}시간 동안 물을 넣어도 가득 찬다. A 호스만으로, 또 B 호스만으로 이 빈 물탱크를 가득 채우는 데 각각 몇 시간이 걸리는가? (단, 호스에서 나오는 물의 양은 각각 일정하다.)`, [{ label: 'A', answer: P, unit: '시간' }, { label: 'B', answer: W, unit: '시간' }], {
+          explain: `물탱크를 가득 채운 물의 양을 1이라 하고, A 호스와 B 호스로 1시간 동안 넣는 물의 양을 각각 ${X}, ${Y}라 하면 ${nb(stdH({ a: a1, b: b1, c: 1 }))} …… ㉠, ${nb(stdH({ a: a2, b: b2, c: 1 }))} …… ㉡이다. ${el.text} 1시간 동안 A 호스는 전체의 ${frac(1, P)}, B 호스는 전체의 ${frac(1, W)}${tail(1, '을/를')} 채우므로 A 호스만으로는 ${P}시간, B 호스만으로는 ${W}시간이 걸린다.`,
+          facts
+        });
+      }
+      const [p1, p2] = d.shuffle(NAMES).slice(0, 2);
+      return M(`어떤 일을 ${name(p1, '과/와')} ${name(p2, '이/가')} 함께 하면 ${a1}일 만에 끝낼 수 있다. 이 일을 ${name(p1, '이/가')} 혼자 ${a2}일 동안 하고, 나머지를 ${name(p2, '이/가')} 혼자 ${b2}일 동안 하여 끝냈다. 이 일을 ${name(p1, '과/와')} ${name(p2, '이/가')} 혼자서 하면 각각 며칠이 걸리는가?`, [{ label: p1, answer: P, unit: '일' }, { label: p2, answer: W, unit: '일' }], {
+        explain: `전체 일의 양을 1이라 하고, ${name(p1, '과/와')} ${name(p2, '이/가')} 하루에 하는 일의 양을 각각 ${X}, ${Y}라 하면 ${nb(stdH({ a: a1, b: b1, c: 1 }))} …… ㉠, ${nb(stdH({ a: a2, b: b2, c: 1 }))} …… ㉡이다. ${el.text} 하루에 ${name(p1, '은/는')} 전체의 ${frac(1, P)}, ${name(p2, '은/는')} 전체의 ${frac(1, W)}${tail(1, '을/를')} 하므로 혼자서 하면 ${name(p1, '은/는')} ${P}일, ${name(p2, '은/는')} ${W}일이 걸린다.`,
+        facts
+      });
+    }),
+    H('hard-work-relay', '한 사람이 하다가 다른 사람이 이어서 끝낸 일에서 각자 일한 날수', '심56', (d) => {
+      // 함정: 일한 날수만으로 식을 하나만 세우는 아이. 전체 일의 양을 1로 놓고 하루에 하는 일의 양(혼자 할 때 걸리는 날수의 역수)으로 한 일의 양의 합이 1이라는 식을 세운다.
+      const m = d.until(() => { const [u, w] = d.pick([[1, 2], [2, 1], [1, 3], [3, 1], [2, 3], [3, 2], [3, 4], [4, 3], [2, 5], [5, 2], [3, 5], [5, 3]]), g = d.int(2, 6), k = d.int(1, g - 1); return { P: g * u, W: g * w, x0: k * u, y0: (g - k) * w }; }, (r) => r.P >= 4 && r.W >= 4 && r.P <= 30 && r.W <= 30 && r.x0 !== r.y0);
+      const { P, W, x0, y0 } = m, T = x0 + y0, [p1, p2] = d.shuffle(NAMES).slice(0, 2), e1 = I(1, 1, T), e2 = [ts([Q(1, P), 'x'], [Q(1, W), 'y']), ts([1, ''])];
+      return M(`어떤 일을 혼자서 끝내는 데 ${name(p1, '은/는')} ${P}일, ${name(p2, '은/는')} ${W}일이 걸린다. 이 일을 ${name(p1, '이/가')} 혼자 며칠 동안 하다가 나머지를 ${name(p2, '이/가')} 혼자 하였더니, 일을 시작한 지 ${T}일 만에 끝났다. ${name(p1, '과/와')} ${name(p2, '이/가')} 일한 날은 각각 며칠인가?`, [{ label: p1, answer: x0, unit: '일' }, { label: p2, answer: y0, unit: '일' }], {
+        explain: `전체 일의 양을 1이라 하면 하루에 하는 일의 양은 ${name(p1, '이/가')} ${frac(1, P)}, ${name(p2, '이/가')} ${frac(1, W)}이다. ${name(p1, '이/가')} ${X}일, ${name(p2, '이/가')} ${Y}일 동안 일하였다고 하면 일한 날수에서 ${eqT(e1)} …… ㉠, 한 일의 양에서 ${eqT(e2)} …… ㉡이다. ${told(e1, e2).text}`,
+        facts: { calc: [[`${P}*(${W}-${T})/(${W}-${P})`, 0], [`${W}*(${T}-${P})/(${W}-${P})`, 1]] }
+      });
+    }),
+
+    // ── ② 세 단계 넘게 이어 생각해야 풀리는 문제 ──
+    H('hard-linked', '해가 서로 이어진 두 연립방정식의 상수 구하기', '기본 ②43', (d) => {
+      // 첫째 연립방정식의 해 x = m, y = n 과 둘째 연립방정식의 해 x = m + p, y = n + q 를 상수가 없는 식에 하나씩 넣어 m, n 에 대한 연립방정식을 세운다. m, n 을 구한 다음 나머지 두 식에서 a, b 를 구한다.
+      const r = d.until(() => {
+        const [m0, n0] = pickSol(d, 4), p = pm(d) * d.int(1, 2), q = pm(d) * d.int(1, 2), [A1, B1, A2, B3, A4, B4] = ZERO6.map(() => nz(d, -5, 5)), a = big(d, 5), b = big(d, 5), x2 = m0 + p, y2 = n0 + q;
+        return { m0, n0, p, q, A1, B1, A2, B3, A4, B4, a, b, x2, y2, c1: A1 * m0 + B1 * n0, c2: A2 * m0 + a * n0, c3: b * x2 + B3 * y2, c4: A4 * x2 + B4 * y2 };
+      }, (t) => t.x2 !== 0 && t.y2 !== 0 && t.A1 * t.B4 - t.A4 * t.B1 !== 0 && t.A1 * t.a - t.A2 * t.B1 !== 0 && t.b * t.B4 - t.A4 * t.B3 !== 0 && [t.c1, t.c2, t.c3, t.c4].every((c) => c !== 0 && Math.abs(c) <= 30));
+      const { m0, n0, p, q, A1, B1, A2, B3, A4, B4, a, b, x2, y2, c1, c2, c3, c4 } = r, e1 = I(A1, B1, c1), e4 = I(A4, B4, c4), r2 = `${poly([[A2, X], [1, va + Y]])} = ${iq(c2)}`, r3 = `${poly([[1, vb + X], [B3, Y]])} = ${iq(c3)}`;
+      const Pm = { a: A1, b: B1, c: c1 }, Pn = { a: A4, b: B4, c: c4 - A4 * p - B4 * q }, el = elimTold(Pm, Pn, '㉠', '㉡', ['m', 'n']), second = `${nb(`${X} = ${poly([[1, vm], [p, '']])}`)}, ${nb(`${Y} = ${poly([[1, vn], [q, '']])}`)}`;
+      const [mJ, nJ] = cramerJ({ a: `(${A1})`, b: `(${B1})`, c: `(${c1})` }, { a: `(${A4})`, b: `(${B4})`, c: `((${c4})-(${A4})*(${p})-(${B4})*(${q}))` });
+      return valsAns(`연립방정식 ${sysOf([eqH(e1), r2])}의 해가 ${nb(`${X} = ${vm}`)}, ${nb(`${Y} = ${vn}`)}일 때, 연립방정식 ${sysOf([r3, eqH(e4)])}의 해는 ${second}이다. 상수 ${va}, ${vb}의 값은?`, [['a', a], ['b', b]], {
+        explain: `${va}, ${vb}가 없는 두 식에 각 연립방정식의 해를 대입한다. ${nb(`${X} = ${vm}`)}, ${nb(`${Y} = ${vn}`)}${tail(1, '을/를')} ${eqT(e1)}에 대입하면 ${nb(stdH(Pm, ['m', 'n']))} …… ㉠이다. ${second}${tail(Math.abs(q), '을/를')} ${eqT(e4)}에 대입하면 ${nb(`${sideH([tg(A4, ts([1, 'm'], [p, ''])), tg(B4, ts([1, 'n'], [q, '']))])} = ${iq(c4)}`)}, 곧 ${nb(stdH(Pn, ['m', 'n']))} …… ㉡이다. ${el.text} 따라서 첫째 연립방정식의 해는 ${solH(m0, n0)}, 둘째 연립방정식의 해는 ${solH(x2, y2)}이다. ${solH(m0, n0)}${tail(Math.abs(n0), '을/를')} ${nb(r2)}에 대입하면 ${nb(`${poly([[A2 * m0, ''], [n0, va]])} = ${iq(c2)}`)}이므로 ${nb(`${va} = ${iq(a)}`)}이고, ${solH(x2, y2)}${tail(Math.abs(y2), '을/를')} ${nb(r3)}에 대입하면 ${nb(`${poly([[x2, vb], [B3 * y2, '']])} = ${iq(c3)}`)}이므로 ${nb(`${vb} = ${iq(b)}`)}이다.`,
+        facts: { calc: [[`((${c2})-(${A2})*(${mJ}))/(${nJ})`, 0], [`((${c3})-(${B3})*((${nJ})+(${q})))/((${mJ})+(${p}))`, 1]], unseen: [1, 0] }
+      });
+    }),
+    H('hard-ratio-coef', '해의 비가 주어지고 상수가 두 식의 계수일 때 상수 구하기', '심15', (d) => {
+      // x : y = u : w 에서 x = uk, y = wk 로 놓고 두 식에 대입하면 ak 와 k 에 대한 연립방정식이 된다. ak 를 한 문자로 보고 풀어 k 와 ak 의 값을 구한 다음 a 를 구한다.
+      const m = d.until(() => {
+        const [u, w] = d.pick([[1, 2], [2, 1], [1, 3], [3, 1], [2, 3], [3, 2], [3, 4], [4, 3]]), k = nz(d, -3, 3), a = big(d, 5), B1 = nz(d, -5, 5), A2 = nz(d, -5, 5), s = pm(d), x0 = u * k, y0 = w * k;
+        return { u, w, k, a, B1, A2, s, c1: a * x0 + B1 * y0, c2: A2 * x0 + s * a * y0 };
+      }, (r) => r.c1 !== 0 && r.c2 !== 0 && Math.abs(r.c1) <= 40 && Math.abs(r.c2) <= 40 && r.A2 * r.u * r.u - r.s * r.B1 * r.w * r.w !== 0 && r.s * r.a * r.a - r.A2 * r.B1 !== 0);
+      const { u, w, k, a, B1, A2, s, c1, c2 } = m, r1 = `${poly([[1, va + X], [B1, Y]])} = ${iq(c1)}`, r2 = `${poly([[A2, X], [s, va + Y]])} = ${iq(c2)}`, ak = va + vk;
+      const P3 = { a: u, b: B1 * w, c: c1 }, P4 = { a: s * w, b: A2 * u, c: c2 }, row = (P) => `${poly([[P.a, ak], [P.b, vk]])} = ${iq(P.c)}`, el = elimTold(P3, P4, '㉢', '㉣', ['ak', 'k']);
+      return ansV(`연립방정식 ${sysOf([r1, r2], NAME)}의 해 ${X}, ${Y}에 대하여 ${nb(`${X} : ${Y} = ${u} : ${w}`)}일 때, 상수 ${va}의 값은?`, Q(a), 'int', {
+        explain: `${nb(`${X} : ${Y} = ${u} : ${w}`)}이므로 ${nb(`${X} = ${poly([[u, vk]])}`)}, ${nb(`${Y} = ${poly([[w, vk]])}`)}로 놓을 수 있다. 이것을 ㉠, ㉡에 대입하면 ${nb(row(P3))} …… ㉢, ${nb(row(P4))} …… ㉣이다. ${va}${vk}를 한 문자로 보고 ㉢, ㉣을 연립하여 푼다. ${el.text} ${nb(`${va}${vk} = ${iq(a * k)}`)}, ${nb(`${vk} = ${iq(k)}`)}이므로 ${nb(`${va} = ${iq(a)}`)}이다.`,
+        facts: { value: `((${c1})*(${A2})*${u}-(${c2})*(${B1})*${w})/(${u}*(${c2})-(${s})*${w}*(${c1}))`, unseen: [1, 0] }
+      });
+    }),
+    H('hard-abc-ratio', 'A = B = C 꼴의 방정식에서 x가 y의 몇 배일 때 상수 구하기', '심29', (d) => {
+      // x = my 를 두 식에 대입하면 좌변이 (…)y 꼴이고 우변이 모두 a 인 두 식이 된다. a ≠ 0 이므로 y ≠ 0 이고, 좌변끼리 같다고 놓은 식의 양변을 y 로 나누어 a 를 구한다.
+      const m = d.until(() => { const mm = d.pick([2, 3, -2]), Bc = nz(d, -6, 6), Cc = nz(d, -6, 6); return { mm, Bc, Cc, aq: Q(Cc * mm - Bc, mm - 1) }; }, (r) => r.aq.q === 1 && Math.abs(r.aq.p) > 1 && Math.abs(r.aq.p) <= 12 && r.aq.p * r.mm + r.Bc !== 0);
+      const { mm, Bc, Cc } = m, a = m.aq.p, L1 = `(${poly([[mm, va], [Bc, '']])})${Y}`, L2 = `(${poly([[1, va], [Cc * mm, '']])})${Y}`;
+      return ansV(`방정식 ${nb(`${poly([[1, va + X], [Bc, Y]])} = ${poly([[Cc, X], [1, va + Y]])} = ${va}`)}를 만족시키는 ${X}의 값이 ${Y}의 값의 ${mm < 0 ? iq(mm) : mm}배일 때, 상수 ${va}의 값은? (단, ${nb(`${va} ≠ 0`)})`, Q(a), 'int', {
+        explain: `${X}의 값이 ${Y}의 값의 ${iq(mm)}배이므로 ${nb(`${X} = ${poly([[mm, Y]])}`)}이다. 이것을 ${nb(`${poly([[1, va + X], [Bc, Y]])} = ${va}`)}, ${nb(`${poly([[Cc, X], [1, va + Y]])} = ${va}`)}에 대입하여 정리하면 ${nb(`${L1} = ${va}`)} …… ㉠, ${nb(`${L2} = ${va}`)} …… ㉡이다. ${nb(`${va} ≠ 0`)}이므로 ㉠에서 ${nb(`${Y} ≠ 0`)}이다. ㉠, ㉡의 우변이 같으므로 ${nb(`${L1} = ${L2}`)}이고, 양변을 ${Y}로 나누면 ${nb(`${poly([[mm, va], [Bc, '']])} = ${poly([[1, va], [Cc * mm, '']])}`)}이다. ${mm === 2 ? '따라서' : `따라서 ${nb(`${poly([[mm - 1, va]])} = ${iq(Cc * mm - Bc)}`)}에서`} ${nb(`${va} = ${iq(a)}`)}이다.`,
+        facts: { value: `((${Cc})*(${mm})-(${Bc}))/((${mm})-1)`, unseen: [1] }
+      });
+    }),
+    H('hard-natural-coef', '자연수인 해의 개수가 정해질 때 계수 고르기', '심8', (d) => {
+      // 보기의 값마다 일차방정식을 만들어 자연수인 해를 센다. 함정: 0이 든 쌍까지 세는 아이, 한 미지수의 값만 자연수인 쌍을 세는 아이.
+      const m = d.until(() => { const Bc = d.int(2, 5), c = d.int(15, 40), from = d.int(1, 2), values = [from, from + 1, from + 2, from + 3], counts = values.map((a) => natSols(a, Bc, c).length), k = d.pick(counts); return { Bc, c, values, counts, k }; }, (r) => r.k >= 2 && r.k <= 6 && r.counts.filter((v) => v === r.k).length === 1);
+      const { Bc, c, values, counts, k } = m, a = values[counts.indexOf(k)], sols = natSols(a, Bc, c), eq = (v) => nb(`${poly([[v, X], [Bc, Y]])} = ${c}`);
+      return C(`${X}, ${Y}가 자연수일 때, 일차방정식 ${nb(`${poly([[1, va + X], [Bc, Y]])} = ${c}`)}의 해가 ${k}개이다. 다음 중 상수 ${va}의 값이 될 수 있는 것은?`, values.map(String), values.indexOf(a), {
+        explain: `${va}에 보기의 값을 차례로 넣어 ${X}, ${Y}가 모두 자연수인 해를 센다. ${nb(`${va} = ${a}`)}일 때 ${eq(a)}의 해는 ${sols.map(([x, y]) => pairH(x, y)).join(', ')}의 ${k}개이다. 나머지 값에서는 해가 ${values.filter((v) => v !== a).map((v) => `${nb(`${va} = ${v}`)}일 때 ${counts[values.indexOf(v)] ? counts[values.indexOf(v)] + '개' : '없고'}`).join(', ').replace(/없고$/, '없다').replace(/개$/, '개이다')}.`,
+        facts: { truth: counts.map((v) => v === k), want: true }
+      });
+    }),
+    H('hard-natural-ratio', '비례식과 자연수 조건으로 상수 구하기', '심27', (d) => {
+      // 비례식을 풀면 y = ax (또는 x = ay)이다. 상수가 없는 식의 자연수인 해는 하나뿐이므로 그 해를 찾아 넣는다(연립방정식을 푸는 것이 아니라 자연수인 해를 찾는 문제로 읽어야 한다).
+      const { p, q, c, x0, y0 } = d.pick(NAT_ONE), byX = y0 % x0 === 0, a = byX ? y0 / x0 : x0 / y0, base = byX ? X : Y, other = byX ? Y : X, rhs = Q(c, p * q);
+      const row1 = `(${X} + ${Y}) : ${base} = (${va} + 1) : 1`, e2 = [ts([Q(1, p), 'x'], [Q(1, q), 'y']), ts([rhs, ''])], small = byX ? x0 : y0, large = byX ? y0 : x0;
+      return ansV(`연립방정식 ${sysOf([row1, eqH(e2)], NAME)}을 만족시키는 ${X}, ${Y}의 값이 모두 자연수일 때, 상수 ${va}의 값은?`, Q(a), 'int', {
+        explain: `비례식에서 외항의 곱과 내항의 곱은 같으므로 ㉠은 ${nb(`${X} + ${Y} = (${va} + 1)${base}`)}, 곧 ${nb(`${other} = ${va}${base}`)} …… ㉢이다. ㉡의 양변에 ${p * q}${tail(p * q, '을/를')} 곱하면 ${nb(stdH({ a: q, b: p, c }))} …… ㉣이다. ${X}, ${Y}가 자연수이므로 ㉣의 ${X}에 1, 2, 3, …을 차례로 대입하여 ${Y}의 값도 자연수가 되는 것을 찾으면 ${solH(x0, y0)}뿐이다. 이것을 ㉢에 대입하면 ${nb(`${large} = ${va} × ${small}`)}이므로 ${nb(`${va} = ${a}`)}이다.`,
+        facts: { value: byX ? `${q}*(${rhs.p}${rhs.q === 1 ? '' : '/' + rhs.q}-${x0}/${p})/${x0}` : `${p}*(${rhs.p}${rhs.q === 1 ? '' : '/' + rhs.q}-${y0}/${q})/${y0}`, unseen: [byX ? x0 : y0] }
+      });
+    }),
+    H('hard-promise', '새로 약속한 기호로 적은 두 등식에서 상수 구하기', '심41', (d) => {
+      // 약속을 읽어 등식마다 「x = p일 때의 값 − x = q일 때의 값」을 m, n 의 식으로 적으면 m, n 에 대한 연립방정식이 된다.
+      // 원문은 약속을 f(x), f(a) − f(b) 로 적는다. 함수 기호는 뒤 단원(8-1-5)에서 배우므로 「x = p일 때의 식의 값」(중1)으로 바꾸어 적었다.
+      const m = d.until(() => {
+        const [m0, n0] = pickSol(d, 5), [A1, B1, A2, B2] = [nz(d, -3, 3), nz(d, -3, 3), nz(d, -3, 3), nz(d, -3, 3)], pair = () => d.until(() => [nz(d, -3, 4), nz(d, -3, 4)], ([s, t]) => s !== t), [s1, t1] = pair(), [s2, t2] = pair();
+        return { m0, n0, A1, B1, A2, B2, s1, t1, s2, t2, c1: (A1 * m0 + B1 * n0) * (s1 - t1), c2: (A2 * m0 + B2 * n0) * (s2 - t2) };
+      }, (r) => r.A1 * r.B2 - r.A2 * r.B1 !== 0 && r.c1 !== 0 && r.c2 !== 0 && Math.abs(r.c1) <= 40 && Math.abs(r.c2) <= 40 && (r.s1 !== r.s2 || r.t1 !== r.t2));
+      const { m0, n0, A1, B1, A2, B2, s1, t1, s2, t2, c1, c2 } = m, body = (A, Bc) => poly([[A, vm + X], [Bc, vn + X]]), at2 = (A, Bc, v) => poly([[A * v, vm], [Bc * v, vn]]), mark = (A, Bc, s, t) => `[${body(A, Bc)}; ${iq(s)}, ${iq(t)}]`;
+      const k1 = s1 - t1, k2 = s2 - t2, P1 = { a: A1 * k1, b: B1 * k1, c: c1 }, P2 = { a: A2 * k2, b: B2 * k2, c: c2 }, R1 = { a: A1, b: B1, c: c1 / k1 }, R2 = { a: A2, b: B2, c: c2 / k2 }, el = elimTold(R1, R2, '㉠', '㉡', ['m', 'n']);
+      // 정리한 식과, 양변을 (p − q)로 나누어 간단히 한 식
+      const tidy = (P, R, k) => nb(stdH(P, ['m', 'n'])) + (k === 1 ? '' : `, 양변을 ${iq(k)}${tail(Math.abs(k), '으로/로')} 나누면 ${nb(stdH(R, ['m', 'n']))}`);
+      const side = (A, Bc, s, t) => ({ a: `(${A})*((${s})-(${t}))`, b: `(${Bc})*((${s})-(${t}))` }), [mJ, nJ] = cramerJ(Object.assign(side(A1, B1, s1, t1), { c: `(${c1})` }), Object.assign(side(A2, B2, s2, t2), { c: `(${c2})` }));
+      return valsAns(`${X}에 대한 식 A에 대하여 ${nb(`${X} = ${V('p')}`)}일 때의 A의 값에서 ${nb(`${X} = ${V('q')}`)}일 때의 A의 값을 뺀 것을 ${nb(`[A; ${V('p')}, ${V('q')}]`)}로 나타내기로 하자. 예를 들어 ${nb(`[5${X}; 3, 1] = 15 ${MINUS} 5 = 10`)}이다. 다음 두 등식이 성립할 때, 상수 ${vm}, ${vn}의 값은?`, [['m', m0], ['n', n0]], {
+        figure: steps([nb(`${mark(A1, B1, s1, t1)} = ${iq(c1)}`), nb(`${mark(A2, B2, s2, t2)} = ${iq(c2)}`)]),
+        explain: `첫째 등식의 좌변은 ${nb(`${X} = ${iq(s1)}`)}일 때의 값에서 ${nb(`${X} = ${iq(t1)}`)}일 때의 값을 뺀 것이므로 ${nb(`(${at2(A1, B1, s1)}) ${MINUS} (${at2(A1, B1, t1)}) = ${iq(c1)}`)}, 곧 ${tidy(P1, R1, k1)} …… ㉠이다. 같은 방법으로 둘째 등식에서 ${nb(`(${at2(A2, B2, s2)}) ${MINUS} (${at2(A2, B2, t2)}) = ${iq(c2)}`)}, 곧 ${tidy(P2, R2, k2)} …… ㉡이다. ${el.text}`,
+        facts: { calc: [[mJ, 0], [nJ, 1]], unseen: [1, 0] }
+      });
+    }),
+    H('hard-bus', '구간마다 요금이 다른 버스에서 타고 내린 승객 수', '심49', (d) => {
+      // 승객을 세 무리(A → B, B → C, A → C)로 가른다. A에서 탄 승객 가운데 B에서 내리지 않은 승객이 A → C 승객이고, C에서 내린 승객은 A → C 승객과 B에서 탄 승객이다.
+      const [f1, f2, f3] = d.pick(FARES), m = d.until(() => { const n0 = d.int(15, 30), x0 = d.int(4, n0 - 3), y0 = d.int(3, 15); return { n0, x0, y0 }; }, (r) => r.x0 !== r.y0), { n0, x0, y0 } = m, off = n0 - x0 + y0, sum = f1 * x0 + f2 * y0 + f3 * (n0 - x0);
+      const e1 = [ts([n0, ''], [-1, 'x'], [1, 'y']), ts([off, ''])], xJ = `(${sum}-${f3}*${n0}-${f2}*(${off}-${n0}))/(${f1}+${f2}-${f3})`;
+      // ㉠ x − y = (A에서 탄 승객) − (C에서 내린 승객), ㉡ 요금의 식을 정리하여 100과 공약수로 나눈 것
+      const g2 = gcd(gcd(f3 - f1, f2), f3 * n0 - sum), P1 = { a: 1, b: -1, c: n0 - off }, P2 = { a: (f3 - f1) / g2, b: -f2 / g2, c: (f3 * n0 - sum) / g2 }, el = elimTold(P1, P2, '㉠', '㉡');
+      return M(`A 정류장을 출발하여 B 정류장을 거쳐 종점인 C 정류장까지 가는 버스의 구간별 요금은 다음 표와 같다. 이 버스가 A 정류장을 출발할 때 탄 승객은 ${n0}명이었고, C 정류장에서 내린 승객은 ${off}명이었다. 승객이 낸 요금의 합이 ${sum}원일 때, B 정류장에서 내린 승객과 탄 승객은 각각 ${nb('몇 명인가?')}`, [{ label: '내린 승객', answer: x0, unit: '명' }, { label: '탄 승객', answer: y0, unit: '명' }], {
+        figure: table(['구간', 'A → B', 'B → C', 'A → C'], [['요금(원)', f1, f2, f3]]),
+        explain: `B 정류장에서 내린 승객을 ${X}명, B 정류장에서 탄 승객을 ${Y}명이라 하자. A 정류장에서 탄 ${n0}명 가운데 B 정류장에서 내리지 않은 ${nb(`(${n0} ${MINUS} ${X})`)}명은 C 정류장까지 간다. C 정류장에서 내린 승객은 이 승객과 B 정류장에서 탄 승객이므로 ${eqT(e1)}, 곧 ${nb(stdH(P1))} …… ㉠이다. 낸 요금의 합은 A → B 구간이 ${nb(`${poly([[f1, X]])}원`)}, B → C 구간이 ${nb(`${poly([[f2, Y]])}원`)}, A → C 구간이 ${nb(`${f3}(${n0} ${MINUS} ${X})원`)}이고 이것을 모두 더하면 ${sum}원이다. 이 식을 정리하면 ${nb(stdH(P2))} …… ㉡이다. ${el.text}`,
+        facts: { calc: [[xJ, 0], [`${xJ}+${off}-${n0}`, 1]] }
+      });
+    }),
+    H('hard-buoyancy', '물속에서 줄어든 무게로 합금에 든 두 금속의 무게 구하기', '심62', (d) => {
+      // 줄어든 무게는 (물 밖에서 단 무게) − (물속에서 단 무게)이고, 두 금속이 저마다 줄어든 무게의 합이다. 합금 전체에 한 분수를 곱하는 아이는 걸린다.
+      const [[m1, n1, d1], [m2, n2, d2]] = d.shuffle(SINK).slice(0, 2), i = d.int(2, 6), j = d.int(2, 6), x0 = d1 * i, y0 = d2 * j, W = x0 + y0, loss = n1 * i + n2 * j, V2 = W - loss;
+      const e1 = I(1, 1, W), e2 = [ts([Q(n1, d1), 'x'], [Q(n2, d2), 'y']), ts([loss, ''])], top = `(${W}-${V2})*${d1}*${d2}`;
+      return M(`${josa(m1, '을/를')} 물속에 넣고 무게를 달면 처음 무게의 ${frac(n1, d1)}만큼 줄어들고, ${josa(m2, '은/는')} 처음 무게의 ${frac(n2, d2)}만큼 줄어든다. ${josa(m1, '과/와')} ${josa(m2, '을/를')} 섞어 만든 합금 ${W} g을 물속에 넣고 달았더니 ${V2} g이었다. 이 합금에 든 ${josa(m1, '과/와')} ${josa(m2, '은/는')} 각각 ${nb('몇 g인가?')}`, [{ label: m1, answer: x0, unit: 'g' }, { label: m2, answer: y0, unit: 'g' }], {
+        explain: `합금에 든 ${josa(m1, '을/를')} ${nb(`${X} g`)}, ${josa(m2, '을/를')} ${nb(`${Y} g`)}이라 하면 ${eqT(e1)} …… ㉠이다. 물속에서 줄어든 무게는 ${nb(`${W} ${MINUS} ${V2} = ${loss}`)}(g)이고, 이것은 ${m1}의 줄어든 무게와 ${m2}의 줄어든 무게의 합이므로 ${eqT(e2)} …… ㉡이다. ${told(e1, e2).text}`,
+        facts: { calc: [[`(${top}-${n2}*${d1}*${W})/(${n1}*${d2}-${n2}*${d1})`, 0], [`(${top}-${n1}*${d2}*${W})/(${n2}*${d1}-${n1}*${d2})`, 1]] }
+      });
+    }),
+    H('hard-tank', '두 수도꼭지를 튼 시간을 합쳐 읽어 물통을 채우는 시간 구하기', '심59', (d) => {
+      // 「함께 t분 틀고 A만 s분 더 튼다」는 A를 (t + s)분, B를 t분 튼 것이고, 「r L 모자란다」는 (들이 − r) L가 찼다는 뜻이다. 1분 동안 나오는 물의 양을 구한 다음 들이를 나눈다.
+      const m = d.until(() => {
+        const x0 = d.pick([10, 12, 15, 16, 18, 20, 24, 25, 30]), y0 = d.pick([10, 12, 15, 16, 18, 20, 24, 25, 30]), a1 = d.int(10, 40), b1 = d.int(10, 40), t = d.int(8, 30), s = d.int(5, 25), V2 = a1 * x0 + b1 * y0;
+        return { x0, y0, a1, b1, t, s, V2, r: V2 - (t + s) * x0 - t * y0 };
+      }, (r) => r.x0 !== r.y0 && r.V2 % 100 === 0 && r.V2 <= 3000 && r.V2 % r.y0 === 0 && r.r >= 20 && r.r <= 200 && r.r % 10 === 0 && r.a1 * r.t !== r.b1 * (r.t + r.s) && r.a1 !== r.b1 && r.t !== r.b1);
+      const { x0, y0, a1, b1, t, s, V2, r } = m, e1 = I(a1, b1, V2), e2 = I(t + s, t, V2 - r), time = V2 / y0;
+      return N(`들이가 ${V2} L인 빈 물통에 수도꼭지 A를 ${a1}분, 수도꼭지 B를 ${b1}분 동안 틀면 물통이 가득 찬다. 이 빈 물통에 A, B를 함께 ${t}분 동안 튼 다음 A만 ${s}분 동안 더 틀었더니 가득 차기에 ${r} L가 모자랐다. B만 틀어 이 빈 물통을 가득 채우는 데 몇 분이 걸리는가? (단, 수도꼭지에서 나오는 물의 양은 각각 일정하다.)`, time, {
+        unit: '분',
+        explain: `1분 동안 수도꼭지 A에서 나오는 물의 양을 ${nb(`${X} L`)}, 수도꼭지 B에서 나오는 물의 양을 ${nb(`${Y} L`)}라 하면 ${eqT(e1)} …… ㉠이다. 두 번째 방법에서 A는 ${nb(`${t} + ${s} = ${t + s}`)}(분), B는 ${t}분 동안 틀었고 물은 ${nb(`${V2} ${MINUS} ${r} = ${V2 - r}`)}(L) 찼으므로 ${eqT(e2)} …… ㉡이다. 이 연립방정식을 풀면 ${solH(x0, y0)}이다. 수도꼭지 B에서는 1분 동안 ${y0} L의 물이 나오므로 B만 틀어 ${V2} L를 채우는 데 걸리는 시간은 ${nb(`${V2} ÷ ${y0} = ${time}`)}(분)이다.`,
+        facts: { value: `${V2}*(${a1}*${t}-${b1}*(${t}+${s}))/(${a1}*(${V2}-${r})-(${t}+${s})*${V2})` }
+      });
+    })
+  ]);
   // ── 기본 묶음에 덧붙이는 꼴 ──
   // 받으면서 실력에서 기본으로 내린 꼴: 기본에서 하는 일을 다시 묻거나 한 번에 풀리는 것.
   const TB = (id, title, ref, make, more) => Object.assign({ id, level: '기본', title, source: '수집본 자료(' + ref + ')', make }, more || {});

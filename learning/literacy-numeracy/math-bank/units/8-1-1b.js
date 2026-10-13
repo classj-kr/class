@@ -1,7 +1,8 @@
 // 중학교 2학년 1학기 1단원 유리수와 순환소수 — 뒤쪽 묶음(유한소수·순환소수가 되게 하는 수, 순환소수를 분수로 나타내기, 순환소수의 크기 비교와 계산, 유리수와 순환소수의 관계).
 // 단원 틀과 도구, 싣는 기준, 뺀 것과 까닭은 8-1-1a.js 에 있다. ref: ①n = 기본꼴_1의 n번, 심n = 심화꼴의 n번.
-//  - 순환소수를 분수로 나타내는 문항은 과정(10x − x, 1000x − 10x 꼴의 빈칸, 가장 편리한 식, 뺀 값)과 값(기약분수)을 따로 묻는다. 공식 꼴((전체 − 앞부분)/990)을 외워야 가릴 수 있는 문항은 없다.
-//  - 순환소수의 계산은 분수로 고쳐서 하는 계산 한 번까지이다: 역수, 두 순환소수의 합, 자연수를 곱해 자연수가 되게 하기.
+//  - 순환소수를 분수로 나타내는 문항은 과정(10x − x, 1000x − 10x 꼴의 빈칸, 가장 편리한 식, 뺀 값)과 값(기약분수)을 따로 묻는다.
+//    약분하지 않은 식의 꼴((전체 − 앞부분)/990)의 참·거짓은 과정을 계산한 그대로의 꼴로 묻는다(tofrac-formula-claims — 2026-10-13 다시 싣기, 파일 끝).
+//  - 기본 묶음의 순환소수 계산은 분수로 고쳐서 하는 계산 한 번까지이다: 역수, 두 순환소수의 합, 자연수를 곱해 자연수가 되게 하기. 등식·혼합 계산은 실력(8-1-1c.js 끝)에 있다.
 //  - 관계를 말하는 문장은 2022 자료의 말로 적는다(「정수가 아닌 유리수는 유한소수 또는 순환소수로 나타낼 수 있다」「순환소수는 모두 유리수이다」「무한소수 가운데에는 순환소수가 아닌 것도 있다」).
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」, 시키는 말은 「~하시오.」
 (function (root) {
@@ -320,5 +321,49 @@
         ? claimQ(d, `유리수와 소수의 관계에 대한 설명으로 ${wantTrue ? '옳은' : '옳지 않은'} 것은?`, REL_TRUE, REL_FALSE, wantTrue)
         : claimQ(d, `무한소수와 순환소수에 대한 설명으로 ${wantTrue ? '옳은' : '옳지 않은'} 것은?`, INF_TRUE, INF_FALSE, wantTrue);
     }, { count: 2 })
+  ]);
+
+  // ══ 다시 실은 꼴(2026-10-13) ══
+  // 처음 지을 때 「정도 넘음」(공식 꼴 식)과 「기본 둘을 붙인 것」으로 뺀 꼴 가운데 두 단계 안팎이라 기본에 두는 것이다. 묶음 끝에 덧붙인다(앞의 유형은 그대로다).
+  // 실력에 둔 것(순환소수가 든 등식·혼합 계산, 조건이 여럿 붙은 분수 찾기 등)은 8-1-1c.js 끝에 있다.
+  const { SR } = B.kit.m811;
+  // 문자가 든 순환마디에 점을 찍는다(순환마디의 첫 글자와 끝 글자, 한 글자이면 그 글자). toks: 순환마디의 글자들, said: 글로 옮길 때의 순환마디
+  const rdot = (h) => '<span class="mb-rdot">' + h + '</span>';
+  const repL = (head, toks, said) => '<span style="white-space:nowrap">' + head + (toks.length === 1 ? rdot(toks[0]) : rdot(toks[0]) + toks.slice(1, -1).join('') + rdot(toks[toks.length - 1])) + '<span style="' + SR + '">(순환마디 ' + said + ')</span></span>';
+  Object.assign(B.kit.m811, { repL });
+
+  B.addTypes(U, 'tofrac', [
+    T('tofrac-formula-claims', '순환소수를 분수로 나타내는 식이 옳지 않은 것 고르기', '①55·63', (d) => {
+      // 식은 약분하지 않은 꼴 「(순환마디 끝까지의 수 − 순환마디 앞까지의 수)/(9…90…0)」로 적는다. 100x − 10x 를 계산한 그대로의 꼴이라 과정을 알면 가릴 수 있다.
+      // 틀린 식: 분모의 0의 개수가 순환하지 않는 자리의 수와 다른 것(5.13̇ = (513 − 51)/900), 순환마디 앞까지의 수가 아니라 정수 부분만 뺀 것, 아무것도 빼지 않은 것, 분모의 9의 개수가 순환마디의 숫자 수와 다른 것
+      const rows = d.until(() => {
+        const rs = d.shuffle([pickRep(d, { whole: [1, 5], k: 1 }), pickRep(d, { whole: [1, 5], k: 2 }), pickRep(d, { whole: [1, 5], f: 1, k: 1 }), pickRep(d, { f: 1, k: 2, ok: (v) => v.pre === '0' && v.cyc[0] !== '0' }), pickRep(d, { whole: [1, 3], f: 1, k: 2 })]), at = d.int(0, 4);
+        return rs.map((r, i) => {
+          const { f, k, A, B: Bn, den } = parts(r), top = (n1, n2) => (n2 ? `${n1} − ${n2}` : String(n1)), right = frac(top(A, Bn), den);
+          if (i !== at) return { r, ok: true, html: right, expr: `(${A}-${Bn})/${den}`, said: (A - Bn) / den };
+          const wrongs = [].concat(
+            f >= 1 ? [[top(A, Bn), d.bool() ? den * 10 : den / 10, A - Bn]] : [],
+            f >= 1 && r.whole >= 1 ? [[top(A, r.whole), den, A - r.whole]] : [],
+            Bn > 0 ? [[String(A), den, A]] : [],
+            [[top(A, Bn), (10 ** (k + 1) - 1) * 10 ** f, A - Bn]]
+          ), [shown, wden, wnum] = d.pick(wrongs);
+          return { r, ok: false, html: frac(shown, wden), expr: `(${A}-${Bn})/${den}`, said: wnum / wden };
+        });
+      }, (list) => new Set(list.map((v) => repOf(v.r))).size === 5);
+      const bad = rows.find((v) => !v.ok), { f, A, B: Bn, den, small, big } = parts(bad.r), left = f === 0 ? `${big}${x} − ${x}` : `${big}${x} − ${small}${x}`;
+      return C('순환소수를 분수로 나타내는 식으로 옳지 않은 것은?', rows.map((v) => `${repOf(v.r)} = ${v.html}`), rows.indexOf(bad), {
+        explain: `${nb(`${x} = ${unrollOf(bad.r)}`)}${lastJ(bad.r.cyc, '으로/로')} 놓으면 ${nb(`${left} = ${A}${Bn ? ` − ${Bn}` : ''}`)}이고 ${nb(`${left} = ${big - small}${x}`)}이다. 따라서 ${nb(`${repOf(bad.r)} = ${frac(`${A}${Bn ? ` − ${Bn}` : ''}`, den)}`)}이다.`,
+        facts: { claimed: rows.map((v) => [v.expr, v.said]), claimedWant: false }
+      });
+    }),
+    T('tofrac-swap', '자리를 바꾼 순환소수를 기약분수로 나타내기', '①61', (d) => {
+      // 분수에서 순환마디의 두 숫자를 읽고(분모를 99로 고치거나 나눗셈을 한다), 자리를 바꾼 순환소수를 다시 분수로 고친다.
+      const s = d.until(() => { const da = d.int(1, 9), db = d.int(1, 9); return { da, db, v: Q(10 * da + db, 99), w: Q(10 * db + da, 99) }; }, (c) => c.da !== c.db && c.v.q < 99);
+      const ab = 10 * s.da + s.db, ba = 10 * s.db + s.da, { p, q } = s.v;
+      return F(`순환소수 ${repL('0.', [a, b], 'ab')}를 기약분수로 나타내면 ${frac(p, q)}이다. 순환소수 ${repL('0.', [b, a], 'ba')}를 기약분수로 나타내시오. (단, ${a}, ${b}는 한 자리 자연수이다.)`, s.w.p, s.w.q, {
+        explain: `${frac(p, q)} = ${frac(ab, 99)} = ${rep('0.', String(ab))}이므로 ${nb(`${a} = ${s.da}`)}, ${nb(`${b} = ${s.db}`)}이다. ${nb(`${repL('0.', [b, a], 'ba')} = ${rep('0.', String(ba))}`)} = ${frac(ba, 99)}${s.w.q === 99 ? '' : ` = ${frac(s.w.p, s.w.q)}`}이다.`,
+        facts: { value: `((${p}*99/${q})%10*10+(${p}*99/${q}-(${p}*99/${q})%10)/10)/99`, unseen: [99, 10] }
+      });
+    })
   ]);
 })(typeof window !== 'undefined' ? window : globalThis);
