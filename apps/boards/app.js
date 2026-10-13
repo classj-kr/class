@@ -345,7 +345,7 @@
     }
     const answered = s.questions.filter(q => q.myChoice !== undefined).length;
     const correct = s.questions.filter(q => q.myChoice !== undefined && q.myChoice === q.answer).length;
-    $('setProgress').textContent = data.me.teacher ? '출제자는 자기 문제를 관전하며 다른 참가자의 평균 이동거리를 받습니다.' :
+    $('setProgress').textContent = data.me.teacher ? '' :
       s.status === 'ready' ? '시작 대기' : s.status === 'revealed' ? `정답 ${correct} / ${s.questions.length}` :
         `응답 ${answered} / ${s.questions.length}${s.status === 'open' ? ' · 선택 즉시 저장' : ''}`;
     s.questions.forEach((q, index) => {

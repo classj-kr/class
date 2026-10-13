@@ -31,18 +31,18 @@
     $('studentScore').textContent = s.me.joined ? `${s.me.rank}위 · ${s.me.score}m` : '';
     $('studentStatus').textContent = !s.me.joined ? '이미 시작한 경주예요. 다음 경주에서 참여해 주세요.' :
       s.phase === 'lobby' ? '입장 완료 · 선생님이 시작하면 문제가 나와요.' : s.phase === 'finished' ? `경주 종료 · ${s.me.rank}위` :
-        s.me.spectator ? '내가 출제한 문제 · 관전' : s.phase === 'reveal' ? '전자칠판을 보세요' : s.me.choice !== undefined ? '제출 완료 · 전자칠판을 보세요' : '답을 선택하세요';
+        s.phase === 'reveal' ? '전자칠판을 보세요' : s.me.choice !== undefined ? '제출 완료 · 전자칠판을 보세요' : '답을 선택하세요';
     $('question').textContent = q?.content || '';
     $('choices').replaceChildren();
     q?.choices.forEach((choice, i) => {
       const b = node('button'); b.type = 'button'; b.append(node('b', i + 1), node('span', choice));
-      b.disabled = s.phase !== 'question' || s.me.choice !== undefined || s.me.spectator || !s.me.joined || busy || remaining() === 0;
+      b.disabled = s.phase !== 'question' || s.me.choice !== undefined || !s.me.joined || busy || remaining() === 0;
       b.classList.toggle('selected', s.me.choice === i); b.setAttribute('aria-pressed', String(s.me.choice === i));
       b.classList.toggle('correct', revealed && q.answer === i);
       b.classList.toggle('incorrect', revealed && s.me.choice === i && q.answer !== i);
       b.addEventListener('click', () => void answer(q.id, i)); $('choices').append(b);
     });
-    $('feedback').textContent = !revealed || !q || !s.me.joined ? '' : s.me.spectator ? `다른 참가자의 평균만큼 +${s.me.delta}m` :
+    $('feedback').textContent = !revealed || !q || !s.me.joined ? '' :
       s.me.choice === q.answer ? `정답 · +${s.me.delta}m` : s.me.choice === undefined ? '미응답' : `정답: ${q.choices[q.answer]}`;
     $('explanation').textContent = revealed ? q?.explanation || '' : '';
   }

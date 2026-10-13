@@ -10,7 +10,6 @@ function scoreAnswer(correct, streak, elapsed, duration) {
 }
 
 function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now = Date.now }) {
-  const ownQuestion = (q, p) => q.authorId ? q.authorId === p.id : q.authorNumber != null && q.authorNumber === p.number;
   async function load(db, b, raceId) {
     const row = (await db.query('SELECT * FROM learning_board_races WHERE board_id=$1 AND id=$2', [b.id, raceId])).rows[0];
     if (!row) fail(404, 'RACE_NOT_FOUND', '경주를 찾을 수 없어요.');
@@ -23,21 +22,13 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
   function grade(s) {
     if (s.phase !== 'question') return;
     const q = s.questions[s.index];
-    const eligible = s.players.filter(p => !ownQuestion(q, p));
-    let total = 0;
-    for (const p of eligible) {
+    for (const p of s.players) {
       const a = s.answers[p.id];
       const correct = !!a && a.choice === q.answer;
       const scored = scoreAnswer(correct, p.streak, a ? a.at - s.startsAt : s.seconds * 1000, s.seconds * 1000);
       p.delta = scored.points; p.streak = scored.streak; p.boost = scored.boost; p.correct = correct;
       if (correct) p.correctCount++;
-      p.attempts++; p.score += p.delta; total += p.delta;
-    }
-    // Authors spectate their own questions. Neutral average movement prevents
-    // both advance knowledge and unequal submission counts from deciding a race.
-    for (const p of s.players.filter(p => ownQuestion(q, p))) {
-      p.delta = eligible.length ? Math.round(total / eligible.length) : 0;
-      p.score += p.delta; p.boost = false; p.correct = null;
+      p.attempts++; p.score += p.delta;
     }
     s.history.push({ index: s.index, answers: s.answers, results: s.players.map(p => ({ id: p.id, delta: p.delta, correct: p.correct })) });
     s.phase = 'reveal';
@@ -57,13 +48,12 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       id: q.id, kind: q.kind, content: q.content, choices: q.choices,
       ...(revealed ? { answer: q.answer, explanation: q.explanation } : {})
     } : null;
-    const eligible = q ? s.players.filter(p => !ownQuestion(q, p)).length : s.players.length;
+    const eligible = s.players.length;
     return { id: row.id, boardId: b.id, code: b.code, title: s.title, mode: 'individual', phase,
       index: s.index, total: s.questions.length, seconds: s.seconds, serverTime: time,
       startsAt: s.startsAt, endsAt: s.endsAt, participantCount: s.players.length,
       answered: Object.keys(s.answers).length, eligible, question,
       me: { teacher: who.teacher, joined: !!player, name: who.name, number: who.number,
-        spectator: !!player && !!q && ownQuestion(q, player),
         ...(player ? { score: player.score, rank: 1 + s.players.filter(p => p.score > player.score).length,
           correctCount: player.correctCount, attempts: player.attempts, delta: revealed ? player.delta : 0 } : {}),
         ...(answer ? { choice: answer.choice } : {}) },
@@ -140,7 +130,6 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       if (s.phase !== 'question' || time < s.startsAt || time >= s.endsAt) fail(409, 'ANSWER_CLOSED', '답안 제출 시간이 아니에요.');
       const player = s.players.find(p => p.id === who.id), q = s.questions[s.index];
       if (!player) fail(403, 'NOT_PLAYING', '경주에 참여하지 않았어요.');
-      if (ownQuestion(q, player)) fail(403, 'AUTHOR_SPECTATES', '직접 출제한 문제에서는 관전해요.');
       if (req.body?.questionId !== q.id) fail(409, 'WRONG_QUESTION', '현재 문제에 답해 주세요.');
       const choice = integer(req.body?.choice, 0, q.choices.length - 1);
       if (!s.answers[who.id]) { s.answers[who.id] = { choice, at: time }; await save(db, row); }
