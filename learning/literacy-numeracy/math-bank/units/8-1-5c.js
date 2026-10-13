@@ -16,6 +16,18 @@
 // 수집본 기본 문서에 여러 번 나오는 꼴(세 점이 한 직선 위 ①36 ②40, 두 그래프가 x축 위에서 만날 때 ②31, 그래프로 준 활용 ②77, 기울기와 한 점·두 점으로 식 구하기)은 기본 묶음에 두고,
 // 같은 얼개에 한 겹이 더 있는 것(세 점으로 미지수를 구해 x절편까지 심26, 두 축 위에서 만나는 조건 둘 심17)을 실력에 두었다.
 // 과제 글이 실력에 한 유형씩만 두라고 한 것: 넓이로 수 구하기(hard-area-coef), 선분과 만나는 기울기의 범위(hard-slope-range), 다른 그래프에서 읽은 부호로 사분면 가리기(hard-signs-other-graph).
+//
+// 다시 실은 꼴(2026-10-13, 실력 묶음 끝의 hard-lap-ahead 부터 hard-letter-point-xint 까지)
+//  처음 지을 때 「지나치게 복잡한 활용」「경우 나누기·요령·조건 풀이」「한 유형만」이라는 까닭으로 뺀 꼴을 다시 보아, 이 단원에서 배운 것만으로 풀리는 것은 모두 실었다.
+//  - 복잡한 활용: 늦게 출발하여 한 바퀴 앞서기(①73), 따로 움직이는 두 점(심64), 꼭짓점을 돌아 움직이는 점(심65 — 변마다 식이 다르다. 두 식을 따로 답한다).
+//  - 경우 나누기: x축 위의 두 점 사이의 거리(①52 심20 — 조건으로 하나를 고르는 것과 둘 다 구하는 것), y절편이 같은 두 그래프와 x축의 삼각형(①55),
+//    사분면을 지나지 않게 하는 정수 기울기의 개수(심39 — 「일차함수」로 물어 a = 0은 세지 않는다), 사다리꼴의 넓이를 이등분하는 원점을 지나는 그래프(심56 — 어느 변과 만나는지 먼저 가린다).
+//  - 요령(이 단원의 성질에서 나오는 것): a + b는 x = 1일 때의 y의 값(심30), a로 묶으면 늘 지나는 점이 보인다(심38), 두 절편의 비에서 기울기(심46), 그래프 위의 점을 문자로 놓기(심54),
+//    두 절편을 한 문자로 놓고 합의 조건 풀기(심15), 곱의 부호에서 몫의 부호(심34), 부호 조건 둘에 맞는 값(심36 — 범위로 답하는 원문을 「될 수 있는 값」 고르기로 바꾸었다).
+//  - 「한 유형만」이라서 뺐으나 하는 일이 다른 것: 분수 꼴 계수의 부호를 차례로(심35), 넓이로 x절편을 정해 다른 점(심50), 선분과 만나는 y절편의 범위(심57 — 돌리는 것이 아니라 민다),
+//    그림의 식이 y = ax − b 꼴이고 보기의 식 넷을 거꾸로 가리는 것(①44·②52의 변형), 문자로 준 점에서 한 단계 더(심45), 정사각형을 가로지르는 그래프가 나눈 넓이의 비(심53).
+//  그대로 뺀 것: 함수를 함수에 넣는 것(심10 — 고등), 반비례 관계의 그래프(심8 — 중1), 교점을 연립방정식으로 구해야 하는 넓이 등분(심55 — 8-1-6에 실려 있다), 뜻 없는 새 식(심18·44), 그림을 알 수 없는 것.
+//  그림 설명: 공용 좌표평면은 직선의 기울기와 점의 자리를 숫자로 말한다. 그것이 답을 흘리는 그림(정사각형·사다리꼴·선분·a + b의 부호)은 relabel 로 설명을 바꾸어 그림에서 읽을 수 있는 것만 적었다.
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」, 시키는 말은 「~하시오.」
 (function (root) {
   'use strict';
@@ -43,6 +55,38 @@
     b.beside(pA, pD, `${w} cm`, pB).beside(pD, pC, `${h} cm`, pA);
     return b.svg(`직사각형 ABCD: 변 AD의 길이는 ${w} cm, 변 DC의 길이는 ${h} cm이다. 변 BC 위에 점 P가 있고, 삼각형 APC를 색칠하였다.`);
   }
+
+  // ── 다시 실은 꼴의 도구(처음 지을 때 뺐다가 실력 묶음 끝에 덧붙인 유형들이 쓴다) ──
+  const { inline, NAMES, name } = B.kit;
+  const { gcd, qadd, qdiv, ansV, lastOf } = B.kit.mid;
+  const { eqAB, eqAns, mulA, quadText } = B.kit.m815;
+  const CC = V('c'), TT = V('t'), PP = V('p'), NN = V('n');
+  const ASK = '직선을 그래프로 하는 일차함수의 식을 구하시오.';
+  const times = (n, v) => (Math.abs(n) === 1 ? '' : Math.abs(n)) + v;   // 문자의 배수의 크기 부분: 2k, k
+  const rel = (s) => (s > 0 ? GT : LT);
+  const FOUR = [[1, 1], [1, -1], [-1, 1], [-1, -1]];
+  // 공용 좌표평면의 그림 설명은 직선의 기울기와 점의 자리를 숫자로 말한다. 그것이 답을 흘리는 그림은 설명을 통째로 바꾼다.
+  const relabel = (svg, label) => svg.replace(/aria-label="[^"]*"/, 'aria-label="' + label + '"');
+  // 눈금 없는 좌표평면(pl 에 넘긴 o)의 x축 위 xs 인 곳에 짧은 눈금을 긋는다.
+  const xTicks = (o, svg, xs) => { const u = Math.min(24, 260 / (o.x[1] - o.x[0])), py = 24 + o.y[1] * u; return svg.replace('</svg>', xs.map((x) => { const px = 16 + (x - o.x[0]) * u; return `<line x1="${px.toFixed(1)}" y1="${(py - 3.5).toFixed(1)}" x2="${px.toFixed(1)}" y2="${(py + 3.5).toFixed(1)}" style="stroke:#1f2933;stroke-width:1.3"/>`; }).join('') + '</svg>'); };
+  // a, b 의 부호로 기울기와 y절편의 부호가 정해지는 식 여덟 가지(공용 일곱 가지에 y = −bx − a 를 더했다)
+  const SIGN_ALL = SIGN_FORMS.concat([{ h: eqT(lt(BB + X, true), lt(A, true)), sl: MINUS + BB, ic: MINUS + A, a: (sa, sb) => -sb, b: (sa) => -sa }]);
+  // 직사각형 ABCD 와 변 AD 위의 점 P, 변 BC 위의 점 Q, 색칠한 사각형 AQCP
+  function twoPointFig(w, h) {
+    const k = Math.min(190 / w, 110 / h), W = w * k, Hh = h * k, pA = [0, 0], pB = [0, Hh], pC = [W, Hh], pD = [W, 0], pP = [W * 0.24, 0], pQ = [W * 0.6, Hh], b = Board();
+    b.poly([pA, pB, pC, pD], 'fill:#fff').poly([pA, pQ, pC, pP], TINT).dot(pP).dot(pQ).name(pA, 'A', 135).name(pB, 'B', 225).name(pC, 'C', 315).name(pD, 'D', 45).name(pP, 'P', 90).name(pQ, 'Q', 270);
+    b.beside(pA, pD, `${w} cm`, pB, { t: 0.66 }).beside(pD, pC, `${h} cm`, pA);
+    return b.svg(`직사각형 ABCD: 변 AD의 길이는 ${w} cm, 변 DC의 길이는 ${h} cm이다. 변 AD 위에 점 P가, 변 BC 위에 점 Q가 있고, 사각형 AQCP를 색칠하였다.`);
+  }
+  // 각 C가 직각인 직각삼각형 ABC 와 변 BC 위의 점 P, 색칠한 삼각형 ABP. 두 변 BC, CA 의 길이를 적는다.
+  function turnFig(a, b) {
+    const k = Math.min(170 / a, 120 / b), W = a * k, Hh = b * k, pB = [0, Hh], pC = [W, Hh], pA = [W, 0], pP = [W * 0.45, Hh], bd = Board();
+    bd.poly([pA, pB, pC], 'fill:#fff').poly([pA, pB, pP], TINT).corner(pC, pB, pA).dot(pP).name(pA, 'A', 60).name(pB, 'B', 200).name(pC, 'C', 335).name(pP, 'P', 270);
+    bd.dim(pB, pC, `${a} cm`, pA, 25).beside(pC, pA, `${b} cm`, pB);
+    return bd.svg(`직각삼각형 ABC: 각 C가 직각이고, 변 BC의 길이는 ${a} cm, 변 CA의 길이는 ${b} cm이다. 변 BC 위에 점 P가 있고, 삼각형 ABP를 색칠하였다.`);
+  }
+  // 두 그래프 사이에 놓인 정사각형: [y = mx 의 m, y = −nx + c 의 n, 점 A의 x좌표]. 한 변의 길이 mt 와 c = t(m + n + mn)이 정수이고, 그림이 휴대폰 너비에서 줄어들지 않게 오른쪽 직선의 x절편이 8 이하인 것만 골랐다.
+  const SQUARES = [[Q(2), Q(1), 1], [Q(1), Q(1), 2], [Q(1), Q(1, 2), 2], [Q(3), Q(1), 1], [Q(3, 2), Q(1), 2], [Q(1, 2), Q(1), 4], [Q(2), Q(2), 1], [Q(3), Q(3, 2), 1], [Q(1), Q(2), 2], [Q(2), Q(2), 2], [Q(3), Q(2), 1], [Q(1), Q(2), 3]];
 
   B.addGroup('8-1-5', {
     id: 'hard', title: '실력 문제', standard: S16,
@@ -242,6 +286,200 @@
           figure: rectFig(w, h),
           explain: `출발한 지 ${X}초 후 선분 BP의 길이는 ${v === 1 ? '' : v}${X} cm이므로 선분 PC의 길이는 (${w} ${MINUS} ${v === 1 ? '' : v}${X}) cm이다. 삼각형 APC의 넓이를 ${Y} cm²라 하면 ${Y} = ${HALF} × (${w} ${MINUS} ${v === 1 ? '' : v}${X}) × ${h}, 곧 ${eqT(tm(-v * h / 2, X), tm(w * h / 2))}이다. ${is(Y, S)}${tail(S, '을/를')} 대입하면 ${is(X, t)}이다.`,
           facts: { value: `(${w}-2*${S}/${h})/${v}`, unseen: [2] }
+        });
+      }),
+      // ── 다시 실은 꼴 ── 처음 지을 때 「복잡한 활용」「경우 나누기·요령」「한 유형만」이라는 까닭으로 뺐다가 덧붙였다(2026-10-13). 까닭은 파일 머리에 적었다.
+      H('hard-lap-ahead', '늦게 출발한 사람이 트랙을 한 바퀴 앞서는 때 구하기', '기본 ①73', (d) => {
+        // ② 두 사람이 간 거리를 저마다 식으로 → 늦게 출발한 사람이 간 시간은 (x − t0)분 → 간 거리의 차가 트랙의 둘레 → 늦게 출발한 사람의 시간으로 고친다.
+        const c = d.until(() => { const v1 = d.pick([40, 50, 60, 80]), v2 = v1 + d.pick([60, 80, 100, 120]), t0 = d.int(1, 3), P = d.pick([240, 300, 360, 400, 480]); return { v1, v2, t0, P, t: (P + v1 * t0) / (v2 - v1) }; }, (v) => Number.isInteger(v.t) && v.t >= 2 && v.t <= 12 && 2 * v.v1 * v.t0 < v.P);
+        const { v1, v2, t0, P, t } = c, [n1, n2] = d.shuffle(NAMES).slice(0, 2);
+        return N(`${name(n1, '이/가')} 둘레의 길이가 ${P} m인 트랙을 분속 ${v1} m로 걷기 시작하였다. ${t0}분 후 ${name(n2, '이/가')} 같은 곳에서 출발하여 같은 방향으로 분속 ${v2} m로 달리기 시작하였다. ${name(n2, '이/가')} ${name(n1, '을/를')} 정확히 한 바퀴 앞서게 되는 것은 ${name(n2, '이/가')} 출발한 지 몇 분 후인가? (단, 두 사람의 속력은 각각 일정하다.)`, t, { unit: '분',
+          explain: `${name(n1, '이/가')} 출발한 지 ${X}분 후에 두 사람이 간 거리를 ${Y} m라 하면 ${name(n1, '은/는')} ${eq(v1, 0)}, ${name(n2, '은/는')} ${nb(`${Y} = ${v2}(${X} ${MINUS} ${t0})`)}이다. 한 바퀴 앞서면 간 거리의 차가 ${P} m이므로 ${nb(`${v2}(${X} ${MINUS} ${t0}) ${MINUS} ${v1}${X} = ${P}`)}에서 ${is(X, t + t0)}이다. ${name(n2, '은/는')} ${t0}분 늦게 출발하였으므로 ${name(n2, '이/가')} 출발한 지 ${t}분 후이다.`,
+          facts: { value: `(${P}+${v1}*${t0})/(${v2}-${v1})` }
+        });
+      }),
+      H('hard-two-moving-points', '따로 움직이는 두 점이 만드는 사각형의 넓이', '심64', (d) => {
+        // ② 두 선분 AP, QC의 길이를 x의 식으로 → 사다리꼴의 넓이의 식 → 넓이가 주어진 때 → 그때의 선분 QC의 길이
+        const c = d.until(() => { const h = d.pick([6, 8, 10, 12]), w = d.pick([16, 18, 20, 24]), p = d.int(1, 2), q = d.int(3, 5), t = d.int(2, 5); return { h, w, p, q, t, S: h * (w - (q - p) * t) / 2, qc: w - q * t }; }, (v) => v.qc >= 2);
+        const { h, w, p, q, t, S, qc } = c, px = times(p, X), qx = times(q, X);
+        return N(`그림과 같이 가로의 길이가 ${w} cm, 세로의 길이가 ${h} cm인 직사각형 ABCD에서 점 P는 꼭짓점 A를 출발하여 변 AD를 따라 꼭짓점 D까지 매초 ${p} cm의 빠르기로 움직이고, 점 Q는 꼭짓점 B를 출발하여 변 BC를 따라 꼭짓점 C까지 매초 ${q} cm의 빠르기로 움직인다. 두 점 P, Q가 동시에 출발하였을 때, 사각형 AQCP의 넓이가 ${S} cm²가 되는 순간의 선분 QC의 길이는 몇 cm인가?`, qc, { unit: 'cm',
+          figure: twoPointFig(w, h),
+          explain: `출발한 지 ${X}초 후 선분 AP의 길이는 ${px} cm, 선분 BQ의 길이는 ${qx} cm이므로 선분 QC의 길이는 (${w} ${MINUS} ${qx}) cm이다. 사각형 AQCP는 두 변 AP, QC가 평행한 사다리꼴이므로 넓이를 ${Y} cm²라 하면 ${Y} = ${HALF} × {${px} + (${w} ${MINUS} ${qx})} × ${h}, 곧 ${eqT(tm(-h * (q - p) / 2, X), tm(w * h / 2))}이다. ${is(Y, S)}${tail(S, '을/를')} 대입하면 ${is(X, t)}이므로 선분 QC의 길이는 ${w} ${MINUS} ${q} × ${t} = ${qc}(cm)이다.`,
+          facts: { value: `${w}-${q}*(${w}-2*${S}/${h})/(${q}-${p})`, unseen: [2] }
+        });
+      }),
+      H('hard-moving-point-turn', '꼭짓점을 돌아 움직이는 점이 만드는 삼각형의 넓이', '심65', (d) => {
+        // ② 점 P가 어느 변 위에 있는가에 따라 밑변과 높이가 달라진다. 변 CA 위에서는 밑변 AP의 길이가 (a + b − x) cm이다.
+        const [a, b] = d.pick([[6, 8], [8, 6], [4, 6], [6, 4], [4, 8], [8, 4], [6, 10], [10, 6], [8, 10], [10, 8], [4, 10], [10, 4]]), m1 = b / 2, m2 = -a / 2, c2 = a * (a + b) / 2;
+        return inline(`그림과 같이 ∠C = 90°이고 변 BC의 길이가 ${a} cm, 변 CA의 길이가 ${b} cm인 직각삼각형 ABC가 있다. 점 P가 꼭짓점 B를 출발하여 꼭짓점 C를 거쳐 꼭짓점 A까지 변을 따라 움직인다. 점 P가 움직인 거리를 ${X} cm, 삼각형 ABP의 넓이를 ${Y} cm²라 할 때, 점 P가 ㉠ 변 BC 위에 있을 때와 ㉡ 변 CA 위에 있을 때로 나누어 ${Y}를 ${X}에 대한 식으로 나타내시오. (단, 점 P가 꼭짓점 위에 있을 때는 생각하지 않는다.)`,
+          `㉠ 변 BC 위에 있을 때<br>${Y} = {0}${X}<br>㉡ 변 CA 위에 있을 때<br>${Y} = {1}${X} {2}`, [{ answer: m1, signed: true }, { answer: m2, signed: true }, { answer: c2, signed: true }], {
+            shown: `㉠ ${eq(m1, 0)}, ㉡ ${eq(m2, c2)}`,
+            figure: turnFig(a, b),
+            explain: `㉠ 점 P가 변 BC 위에 있으면 밑변 BP의 길이가 ${X} cm, 높이가 변 CA의 길이 ${b} cm이므로 ${Y} = ${HALF} × ${X} × ${b}, 곧 ${eq(m1, 0)}이다. ㉡ 점 P가 변 CA 위에 있으면 밑변 AP의 길이가 (${a + b} ${MINUS} ${X}) cm, 높이가 변 BC의 길이 ${a} cm이므로 ${Y} = ${HALF} × (${a + b} ${MINUS} ${X}) × ${a}, 곧 ${eq(m2, c2)}이다.`,
+            facts: { calc: [[`${b}/2`, 0], [`0-${a}/2`, 1], [`${a}*(${a}+${b})/2`, 2]], unseen: [0, 2] }
+          });
+      }),
+      H('hard-xgap', 'x축과 만나는 두 점 사이의 거리로 수 구하기', '①52 심20', (d, n) => {
+        if (n === 0) {
+          // ② 평행 → 기울기, 한 그래프의 x절편 → 거리가 주어진 점은 양쪽에 하나씩 → 조건으로 하나를 고른다.
+          const c = d.until(() => { const [mp, mq] = d.pick([[2, 1], [3, 1], [1, 2], [3, 2], [2, 3]]), m = Q(pm(d) * mp, mq), j = nz(d, -3, 3), l = Math.abs(j) + d.int(1, 3), e = pm(d); return { m, p: mq * j, c1: -m.p * j, L: mq * l, e, b: -m.p * (j + e * l) }; }, (v) => Math.abs(v.b) <= 20);
+          const { m, p, c1, L, e, b } = c, bOf = (x) => -m.p * x / m.q;
+          return N(`두 일차함수 ${eq(m, c1)}, ${eqAB}의 그래프가 서로 평행하고, 두 그래프가 ${XA}과 만나는 점을 각각 P, Q라 하자. 선분 PQ의 길이가 ${L}일 때, 수 ${BB}의 값은? (단, ${cmp(BB, rel(b))}이다.)`, b, { signed: true,
+            explain: `두 그래프가 서로 평행하므로 ${is(A, m)}이다. ${eq(m, c1)}의 그래프의 ${XI}은 ${iq(p)}이므로 P${pt(p, 0)}이다. 선분 PQ의 길이가 ${L}이므로 점 Q의 ${X}좌표는 ${iq(p)} + ${L} = ${iq(p + L)} 또는 ${iq(p)} ${MINUS} ${L} = ${iq(p - L)}이다. ${eqT(tm(m, X), lt(BB))}에 대입하면 ${is(BB, bOf(p + L))} 또는 ${is(BB, bOf(p - L))}이고, ${cmp(BB, rel(b))}이므로 ${is(BB, b)}이다.`,
+            facts: { value: `${jn(c1)}${e > 0 ? '-' : '+'}${mulA(m, L)}` }
+          });
+        }
+        // ② 거리가 주어진 점이 양쪽에 있어 답이 둘이다. 보기를 고르는 아이: 한쪽만 구한 아이(둘), 부호를 놓친 아이.
+        const c = d.until(() => { const pq = nz(d, -4, 4), L = d.int(1, 6), k = nz(d, -12, 12), m2 = pq % 2 === 0 && d.bool() ? Q(pm(d) * d.pick([1, 3]), 2) : Q(pm(d) * d.int(2, 3)); return { pq, L, k, m2, u: pq - L, v: pq + L }; }, (w) => w.u !== 0 && w.v !== 0 && w.k % w.u === 0 && w.k % w.v === 0);
+        const { pq, L, k, m2, u, v } = c, a1 = -k / u, a2 = -k / v, c2 = -m2.p * pq / m2.q, h1 = eqT(lt(A + X), tm(k)), show = (list) => list.slice().sort((s, t) => s - t).map(iq).join(', ');
+        const rows = d.shuffle([[a1, a2], [a1], [a2], [-a1, -a2]]), ok = (r) => r.length === 2 && r.includes(a1) && r.includes(a2);
+        return C(`두 일차함수 ${h1}, ${eq(m2, c2)}의 그래프가 ${XA}과 만나는 점을 각각 P, Q라 하자. 선분 PQ의 길이가 ${L}일 때, 수 ${A}의 값을 모두 구한 것은?`, rows.map(show), rows.findIndex(ok), {
+          explain: `${eq(m2, c2)}의 그래프의 ${XI}은 ${iq(pq)}이므로 Q${pt(pq, 0)}이다. 선분 PQ의 길이가 ${L}이므로 점 P의 ${X}좌표는 ${iq(pq)} ${MINUS} ${L} = ${iq(u)} 또는 ${iq(pq)} + ${L} = ${iq(v)}이다. ${h1}에 ${is(X, u)}, ${is(Y, 0)}${tail(0, '을/를')} 대입하면 ${is(A, a1)}이고, ${is(X, v)}, ${is(Y, 0)}${tail(0, '을/를')} 대입하면 ${is(A, a2)}이다.`,
+          facts: { truth: rows.map(ok), want: true }
+        });
+      }, { count: 2, standard: S15 }),
+      H('hard-intercept-sum', '평행이동한 그래프의 두 절편의 합으로 수 구하기', '심15', (d) => {
+        // ② 평행이동한 그래프의 식 → 두 절편을 같은 문자로 → 합이 주어진 값 → 처음 식의 수
+        const a = pm(d) * d.int(2, 4), j = nz(d, -3, 3), n0 = a * j, T = n0 - j, s = d.until(() => nz(d, -6, 6), (v) => n0 - v !== 0), kv = n0 - s, h = eqT(tm(a, X), lt(K));
+        const xi = a > 0 ? nb(`${MINUS}${frac(NN, a)}`) : frac(NN, -a);
+        return N(`일차함수 ${h}의 그래프를 ${YA}의 방향으로 ${iq(s)}만큼 평행이동한 그래프의 ${XI}과 ${YI}의 합이 ${iq(T)}일 때, 수 ${K}의 값은?`, kv, { signed: true,
+          explain: `평행이동한 그래프의 ${YI}을 ${NN}이라 하면 식은 ${eqT(tm(a, X), lt(NN))}이고, ${is(Y, 0)}${tail(0, '을/를')} 대입하면 ${XI}은 ${xi}이다. 두 절편의 합이 ${iq(T)}이므로 ${nb(`${xi} + ${NN} = ${iq(T)}`)}에서 ${is(NN, n0)}이다. 평행이동한 그래프의 ${YI}은 ${ex(lt(K), tm(s))}이므로 ${nb(`${ex(lt(K), tm(s))} = ${iq(n0)}`)}에서 ${is(K, kv)}이다.`,
+          facts: { value: `${jn(T)}*${jn(a)}/(${jn(a)}-1)-${jn(s)}`, unseen: [1] }
+        });
+      }, { standard: S15 }),
+      H('hard-signs-at-one', '그래프에서 a + b와 −a + b의 부호 읽기', '심30', (d) => {
+        // ① a + b는 x = 1일 때의 y의 값, −a + b는 x = −1일 때의 y의 값이다. 그래프가 x축과 만나는 곳이 1(−1)의 안쪽인지 바깥쪽인지를 그림에서 읽는다.
+        // 답을 가르는 보기는 a, b의 부호만으로는 정해지지 않는 쪽이다(a와 b의 부호가 다르면 a + b, 같으면 −a + b).
+        const fig = (v) => ({ x: [-3, 3], y: [-4, 4], grid: false, ticks: 'none', lines: [{ a: v.a, b: v.b }], xnums: [{ v: -1 }, { v: 1 }] });
+        const c = d.until(() => { const sa = pm(d), sb = pm(d), near = d.bool(); return { sa, sb, near, a: Q(sa * (near ? 4 : 1)), b: sb * 2 }; }, (v) => plOk(fig(v)));
+        const { sa, sb, near } = c, av = fl(c.a), s1 = av + c.b > 0 ? 1 : -1, s2 = -av + c.b > 0 ? 1 : -1, want = d.bool(), key = sa !== sb ? 2 : 3, xs = -sa * sb;
+        const forms = [A, BB, `${A} + ${BB}`, `${MINUS}${A} + ${BB}`], signs = [sa, sb, s1, s2];
+        const rows = d.shuffle([0, 1, 2, 3].map((i) => { const ok = i === key ? want : !want; return { h: nb(`${forms[i]} ${rel(ok ? signs[i] : -signs[i])} 0`), ok }; }));
+        const meet = near ? (xs > 0 ? '0과 1 사이' : '−1과 0 사이') : (xs > 0 ? '1보다 오른쪽' : '−1보다 왼쪽');
+        return C(`일차함수 ${eqAB}의 그래프가 그림과 같을 때, 다음 중 ${want ? '옳은' : '옳지 않은'} 것은?`, rows.map((r) => r.h), rows.findIndex((r) => r.ok === want), {
+          figure: relabel(xTicks(fig(c), pl(fig(c)), [-1, 1]), `좌표평면: 눈금 없는 그림. x축에 −1과 1이 적혀 있다. 직선이 오른쪽 ${sideWord(sa)}로 향하고, y축과는 원점의 ${sideWord(sb)}쪽에서, x축과는 ${meet}에서 만난다.`),
+          explain: `그래프가 오른쪽 ${sideWord(sa)}로 향하므로 ${cmp(A, rel(sa))}이고, ${YA}과 ${partWord(sb)}의 부분에서 만나므로 ${cmp(BB, rel(sb))}이다. ${is(X, 1)}일 때의 ${Y}의 값은 ${nb(`${A} + ${BB}`)}이고, 그림에서 ${is(X, 1)}일 때 그래프가 ${XA}보다 ${sideWord(s1)}쪽에 있으므로 ${nb(`${A} + ${BB} ${rel(s1)} 0`)}이다. ${is(X, -1)}일 때의 ${Y}의 값은 ${nb(`${MINUS}${A} + ${BB}`)}이고, 그림에서 ${is(X, -1)}일 때 그래프가 ${XA}보다 ${sideWord(s2)}쪽에 있으므로 ${nb(`${MINUS}${A} + ${BB} ${rel(s2)} 0`)}이다.`,
+          facts: { truth: rows.map((r) => r.ok), want }
+        });
+      }),
+      H('hard-signs-frac-coef', '그래프에서 분수 꼴 계수의 부호를 차례로 구하기', '심35', (d) => {
+        // ② 그림에서 기울기와 y절편의 부호 → y절편 ±1/a에서 a의 부호 → 그 부호를 써서 기울기 ±b/a에서 b의 부호.
+        // 보기를 고르는 아이: b의 부호를 기울기의 부호 그대로 적는 아이, y절편 앞의 −를 놓치는 아이.
+        const ga = pm(d), gb = pm(d), [e1, e2] = d.pick([[1, -1], [-1, -1], [-1, 1], [1, 1]]), sa = e2 * gb, sb = e1 * ga * sa, at = FOUR.findIndex(([u, v]) => u === sa && v === sb);
+        const sl = `${e1 < 0 ? MINUS : ''}${frac(BB, A)}`, ic = `${e2 < 0 ? MINUS : ''}${frac(1, A)}`, h = nb(`${Y} = ${sl}${X} ${e2 < 0 ? MINUS : '+'} ${frac(1, A)}`);
+        return C(`일차함수 ${h}의 그래프가 그림과 같을 때, 수 ${A}, ${BB}의 부호로 옳은 것은?`, FOUR.map(([u, v]) => `${cmp(A, rel(u))}, ${cmp(BB, rel(v))}`), at, {
+          figure: signFig(d, ga, gb),
+          explain: `그래프가 ${YA}과 ${partWord(gb)}의 부분에서 만나므로 ${YI} ${nb(ic)}은 ${signWord(gb)}이고, ${cmp(A, rel(sa))}이다. 그래프가 오른쪽 ${sideWord(ga)}로 향하므로 기울기 ${nb(sl)}는 ${signWord(ga)}이고, ${cmp(A, rel(sa))}이므로 ${cmp(BB, rel(sb))}이다.`,
+          facts: { truth: FOUR.map((_, i) => i === at), want: true }
+        });
+      }),
+      H('hard-quadrant-k', '그래프가 지나는 사분면으로 수의 조건을 찾아 알맞은 값 고르기', '심36', (d) => {
+        // ② 지나는 사분면 → 기울기와 y절편의 부호 → 수 k에 대한 두 조건 → 둘 다 맞는 값.
+        // 보기를 고르는 아이: 한 조건만 본 아이(둘), 기울기나 y절편이 0이 되는 경계의 값을 넣은 아이. (범위로 답하는 원문을 「될 수 있는 값」 고르기로 바꾸었다.)
+        const c = d.until(() => ({ r1: nz(d, -3, 3), r2: d.int(-3, 3), al: pm(d) * d.int(1, 3), ga: pm(d) * d.int(1, 3), ss: pm(d), si: pm(d) }),
+          (v) => Math.abs(v.r1 - v.r2) >= 2 && Math.abs(v.r1 - v.r2) <= 4 && (v.r1 < v.r2 ? v.al * v.ss > 0 && v.ga * v.si < 0 : v.al * v.ss < 0 && v.ga * v.si > 0));
+        const { r1, r2, al, ga, ss, si } = c, lo = Math.min(r1, r2), hi = Math.max(r1, r2), inside = d.int(lo + 1, hi - 1), sign = (x) => (x > 0 ? 1 : x < 0 ? -1 : 0);
+        const slx = ex(lt(times(al, K), al < 0), tm(-al * r1)), icx = ex(lt(times(ga, K), ga < 0), tm(-ga * r2)), h = eqT(lt(`(${slx})${X}`), lt(times(ga, K), ga < 0), tm(-ga * r2));
+        const rows = d.shuffle([inside, lo - d.int(1, 2), hi + d.int(1, 2), d.pick([r1, r2])]), ok = (v) => sign(al * (v - r1)) === ss && sign(ga * (v - r2)) === si;
+        return C(`일차함수 ${h}의 그래프가 ${quadText(ss, si)}을 지날 때, 다음 중 수 ${K}의 값이 될 수 있는 것은?`, rows.map((v) => iq(v)), rows.findIndex(ok), {
+          explain: `${quadText(ss, si)}을 지나는 직선은 오른쪽 ${sideWord(ss)}로 향하고 ${YA}과 ${partWord(si)}의 부분에서 만나므로 기울기는 ${signWord(ss)}, ${YI}은 ${signWord(si)}이다. ${nb(`${slx} ${rel(ss)} 0`)}에서 ${cmp(K, rel(al * ss), iq(r1))}이고, ${nb(`${icx} ${rel(si)} 0`)}에서 ${cmp(K, rel(ga * si), iq(r2))}이다. 보기 가운데 두 조건에 모두 맞는 것은 ${iq(inside)}이다.`,
+          facts: { truth: rows.map(ok), want: true }
+        });
+      }),
+      H('hard-fixed-point', 'a의 값에 관계없이 그래프가 항상 지나는 점', '심38', (d) => {
+        // ① 식에 a가 두 번 들어 있다. a로 묶으면 y = a(x − p) + q이므로 x = p일 때 a가 사라진다.
+        // 보기를 고르는 아이: 상수항 q를 y절편으로 읽는 아이, 부호를 놓친 아이, a > 0이라고 여기거나 특별한 a의 값만 넣어 본 아이.
+        const p = nz(d, -3, 3), q = nz(d, -5, 5), h = eqT(lt(A + X), lt(times(p, A), p > 0), tm(q)), hp = nb(`${Y} = ${A}(${X} ${sgn(-p)}) ${sgn(q)}`);
+        const rows = d.shuffle([[`점 ${ptj(p, q, '을/를')} 지난다.`, true], [`점 ${ptj(0, q, '을/를')} 지난다.`, false], [`점 ${ptj(-p, q, '을/를')} 지난다.`, false], d.bool() ? [`${X}의 값이 증가하면 ${Y}의 값도 증가한다.`, false] : ['원점을 지난다.', false]]);
+        return C(`일차함수 ${h}의 그래프에 대한 설명으로 수 ${A}의 값에 관계없이 항상 옳은 것은?`, rows.map((r) => r[0]), rows.findIndex((r) => r[1]), {
+          explain: `${h}에서 ${hp}이므로 ${is(X, p)}일 때 ${A}의 값에 관계없이 ${is(Y, q)}이다. 따라서 그래프는 항상 점 ${ptj(p, q, '을/를')} 지난다. ${is(X, 0)}일 때의 ${Y}의 값과 그래프의 방향은 ${A}의 값에 따라 달라진다.`,
+          facts: { truth: rows.map((r) => r[1]), want: true }
+        });
+      }),
+      H('hard-intercept-ratio', '두 절편의 비와 미지수가 든 두 점으로 식 구하기', '심46', (d) => {
+        // ② 절편의 비 → 기울기(x절편이 p이면 y절편은 rp이고 두 점 (p, 0), (0, rp)를 지난다) → 두 점의 기울기 식에서 k → 한 점을 넣어 y절편
+        // 원점을 지나는 직선은 두 절편이 모두 0이어서 ㈎에 맞으므로(0 = r × 0) 원점을 지나지 않는다고 못 박는다.
+        const c = d.until(() => { const r = d.int(2, 4), a = -r, kv = nz(d, -4, 4), x1 = nz(d, -3, 3), j = d.pick([2, 3]), b = kv - a * x1; return { r, a, kv, x1, j, b, y2: a * j * kv + b }; }, (v) => v.b !== 0 && v.j * v.kv !== v.x1 && v.y2 !== 0 && Math.abs(v.y2) <= 20 && Math.abs(v.b) <= 15);
+        const { r, a, kv, x1, j, b, y2 } = c, jk = j + K;
+        return eqAns(`다음 조건을 모두 만족시키는 ${ASK} (단, 그래프는 원점을 지나지 않는다.)`, a, b, {
+          figure: lines([`㈎ ${YI}은 ${XI}의 ${r}배이다.`, `㈏ 그래프가 두 점 ${pt(x1, K)}, ${ptj(jk, y2, '을/를')} 지난다.`]),
+          explain: `${XI}을 ${PP}라 하면 ${YI}은 ${r}${PP}이므로 그래프는 두 점 ${pt(PP, 0)}, ${nb(`(0, ${r}${PP})`)}를 지나고, 기울기는 ${frac(`${r}${PP} ${MINUS} 0`, `0 ${MINUS} ${PP}`)} = ${iq(a)}이다. ㈏의 두 점을 지나는 직선의 기울기도 ${iq(a)}이므로 ${nb(`${frac(`${iq(y2)} ${MINUS} ${K}`, `${jk} ${MINUS} ${par(x1)}`)} = ${iq(a)}`)}에서 ${is(K, kv)}이다. ${eqT(tm(a, X), lt(BB))}에 ${is(X, x1)}, ${is(Y, kv)}${tail(Math.abs(kv), '을/를')} 대입하면 ${is(BB, b)}이므로 ${eq(a, b)}이다.`,
+          facts: { calc: [[`0-${r}`, 0], [`(${jn(y2)}-${r}*${jn(x1)})/(1-${r}*${j})+${r}*${jn(x1)}`, 1]], unseen: [0, 1] }
+        });
+      }),
+      H('hard-square-between', '두 그래프 사이에 놓인 정사각형의 넓이', '심54', (d) => {
+        // ② 그래프 위의 점 A의 좌표를 문자로 → 한 변의 길이 → 점 D의 좌표 → 점 D가 다른 그래프 위에 있다는 식 → 넓이
+        const spec = ([m, n, t]) => { const s = fl(m) * t, cq = qmul(Q(t), qadd(qadd(m, n), qmul(m, n))); return { m, n, t, s, c: cq.p / cq.q, xi: fl(qdiv(cq, n)), top: fl(m) * fl(cq) / (fl(m) + fl(n)) }; };
+        const fig = (v) => ({ x: [-1, Math.ceil(v.xi) + 1], y: [-1, Math.ceil(v.top) + 1], grid: false, ticks: 'none', lines: [{ a: v.m }, { a: qneg(v.n), b: v.c }], poly: [[v.t, 0], [v.t + v.s, 0], [v.t + v.s, v.s], [v.t, v.s]],
+          points: [{ x: v.t, y: v.s, name: 'A', side: 'ul' }, { x: v.t, y: 0, name: 'B', side: 'dl' }, { x: v.t + v.s, y: 0, name: 'C', side: 'dr' }, { x: v.t + v.s, y: v.s, name: 'D', side: 'ur' }] });
+        const c = d.until(() => spec(d.pick(SQUARES)), (v) => plOk(fig(v))), { m, n, t, s } = c, m1 = qadd(Q(1), m), side = `${js(m)}*${c.c}/(${js(m)}+${js(n)}+${js(m)}*${js(n)})`;
+        return N(`그림과 같이 정사각형 ABCD의 두 꼭짓점 A, D는 각각 두 일차함수 ${eq(m, 0)}, ${eq(qneg(n), c.c)}의 그래프 위에 있고, 두 꼭짓점 B, C는 ${XA} 위에 있다. 정사각형 ABCD의 넓이는?`, s * s, {
+          figure: relabel(pl(fig(c)), '좌표평면: 눈금 없는 그림. 원점을 지나 오른쪽 위로 향하는 직선과 오른쪽 아래로 향하는 직선이 있다. 정사각형 ABCD의 변 BC는 x축 위에 있고, 꼭짓점 A는 오른쪽 위로 향하는 직선 위에, 꼭짓점 D는 오른쪽 아래로 향하는 직선 위에 있다.'),
+          explain: `점 A의 ${X}좌표를 ${TT}라 하면 A${pt(TT, ex(tm(m, TT)))}이고 정사각형의 한 변의 길이는 ${ex(tm(m, TT))}이다. 점 D의 좌표는 ${pt(ex(tm(m1, TT)), ex(tm(m, TT)))}이고, 점 D가 ${eq(qneg(n), c.c)}의 그래프 위에 있으므로 ${nb(`${ex(tm(m, TT))} = ${ex(tm(qneg(qmul(n, m1)), TT), tm(c.c))}`)}에서 ${is(TT, t)}이다. 한 변의 길이가 ${s}이므로 넓이는 ${s} × ${s} = ${s * s}이다.`,
+          facts: { value: `(${side})*(${side})`, unseen: [1] }
+        });
+      }),
+      H('hard-shift-range', '선분과 만나도록 평행이동한 그래프의 y절편의 범위', '심57', (d) => {
+        // ② 평행이동한 그래프는 기울기가 같은 채로 위아래로 움직인다. 선분의 두 끝 점을 지날 때의 b의 값이 범위의 두 끝이다.
+        // 틀린 범위: 두 끝 점의 y좌표를 그대로 적은 것, b = y + ax로 셈한 것, 바른 끝 값과 틀린 끝 값을 섞은 것.
+        const span = (u, v) => (u < v ? [u, v] : [v, u]), same = (r, s) => r[0] === s[0] && r[1] === s[1];
+        const fig = (v) => ({ x: [-1, v.x2 + 1], y: [Math.min(Math.floor(v.mid), 0) - 1, Math.max(v.y1, v.y2, Math.ceil(v.mid)) + 1], grid: false, ticks: 'none', lines: [{ a: v.a, b: Q(v.b1 + v.b2, 2) }], segs: [[v.x1, v.y1, v.x2, v.y2]],
+          points: [{ x: v.x1, y: v.y1, name: 'A', side: v.a.p > 0 ? 'ul' : 'ur', guide: true }, { x: v.x2, y: v.y2, name: 'B', side: v.a.p > 0 ? 'dr' : 'ur', guide: true }], xnums: [{ v: v.x1 }, { v: v.x2 }], ynums: [{ v: v.y1 }, { v: v.y2 }] });
+        const c = d.until(() => {
+          const a = d.pick([Q(2), Q(-2), Q(1, 2), Q(-1, 2), Q(3), Q(-1), Q(1), Q(3, 2)]), x1 = a.q * d.int(1, 2), x2 = x1 + a.q * d.int(1, 3), y1 = d.int(1, 6), y2 = d.int(1, 6), ax1 = a.p * x1 / a.q, ax2 = a.p * x2 / a.q, b1 = y1 - ax1, b2 = y2 - ax2;
+          const good = span(b1, b2), ys = span(y1, y2), plus = span(y1 + ax1, y2 + ax2), mix = [[good[0], ys[1]], [ys[0], good[1]], [good[0], plus[1]], [plus[0], good[1]]].find((r) => r[0] < r[1] && ![good, ys, plus].some((s) => same(r, s)));
+          return { a, x1, x2, y1, y2, ax1, ax2, b1, b2, mid: (b1 + b2) / 2, good, ys, plus, mix };
+        }, (v) => v.x2 <= 6 && v.y1 !== v.y2 && v.b1 !== v.b2 && v.mix && !same(v.good, v.ys) && !same(v.good, v.plus) && !same(v.ys, v.plus) && v.mid >= -2.5 && v.mid <= 6 && plOk(fig(v)));
+        const { a, x1, x2, y1, y2, good } = c, rows = d.shuffle([c.good, c.ys, c.plus, c.mix]), say = (r) => nb(`${iq(r[0])} ≤ ${BB} ≤ ${iq(r[1])}`);
+        return C(`그림과 같이 좌표평면 위에 두 점 A${pt(x1, y1)}, B${pt(x2, y2)}${tail(y2, '이/가')} 있다. 일차함수 ${eq(a, 0)}의 그래프를 ${YA}의 방향으로 ${BB}만큼 평행이동한 그래프가 선분 AB와 만나도록 하는 수 ${BB}의 값의 범위는?`, rows.map(say), rows.findIndex((r) => same(r, good)), {
+          figure: relabel(pl(fig(c)), `좌표평면: 눈금 없는 그림. 두 점 A, B를 이은 선분이 있고, 두 점에서 두 축에 내린 점선이 x축의 ${x1}, ${x2}${tail(x2, '과/와')} y축의 ${y1}, ${y2}에 닿는다. 오른쪽 ${sideWord(a.p)}로 향하는 직선이 선분 AB와 만난다.`),
+          explain: `평행이동한 그래프의 식은 ${eqT(tm(a, X), lt(BB))}이다. 이 그래프가 점 A를 지날 때 ${nb(`${y1} = ${iq(c.ax1)} + ${BB}`)}에서 ${is(BB, c.b1)}, 점 B를 지날 때 ${nb(`${y2} = ${iq(c.ax2)} + ${BB}`)}에서 ${is(BB, c.b2)}이다. 그래프가 선분 AB와 만나려면 ${BB}의 값이 이 두 값 사이에 있어야 하므로 ${say(good)}이다.`,
+          facts: { truth: rows.map((r) => same(r, good)), want: true }
+        });
+      }),
+      H('hard-area-then-point', '넓이로 x절편을 정하고 그래프 위의 다른 점의 좌표 구하기', '심50', (d) => {
+        // ② 세 점에서 y절편과 x절편 → 넓이에서 x절편의 절댓값 → 조건으로 부호 → 식 → 그래프 위의 다른 점
+        const c = d.until(() => { const [P, Qm] = d.pick([[6, 4], [4, 6], [6, 3], [4, 8], [8, 4], [3, 6], [6, 8], [8, 6], [2, 6], [2, 8], [6, 2], [8, 2]]), g = gcd(P, Qm), i = d.int(-2, g + 2), sp = pm(d), sq = pm(d); return { P, Qm, g, i, p: sp * P, q: sq * Qm, bv: sp * (P / g) * i, y3: sq * (Qm / g) * (g - i) }; },
+          (v) => v.i !== 0 && v.i !== v.g && Math.abs(v.bv) <= 12 && Math.abs(v.y3) <= 12);
+        const { P, Qm, p, q, bv, y3 } = c, S = P * Qm / 2, sl = Q(-q, p), aE = p > 0 ? `2*${S}/${Qm}` : `(0-2*${S}/${Qm})`;
+        return vals(`세 점 ${pt(0, q)}, ${pt(A, 0)}, ${nb(`(${BB}, ${iq(y3)})`)}${tail(Math.abs(y3), '을/를')} 지나는 일차함수의 그래프와 ${XA}, ${YA}으로 둘러싸인 도형의 넓이가 ${S}일 때, 수 ${A}, ${BB}의 값은? (단, ${cmp(A, rel(p))}이다.)`, [[A, p], [BB, bv]], {
+          explain: `그래프의 ${YI}은 ${iq(q)}, ${XI}은 ${A}이므로 둘러싸인 도형은 높이가 ${Qm}인 직각삼각형이다. ${HALF} × (밑변의 길이) × ${Qm} = ${S}에서 밑변의 길이는 ${P}이고, ${cmp(A, rel(p))}이므로 ${is(A, p)}이다. 두 점 ${pt(0, q)}, ${ptj(p, 0, '을/를')} 지나는 직선의 기울기는 ${iq(sl)}이므로 식은 ${eq(sl, q)}이다. ${is(Y, y3)}${tail(Math.abs(y3), '을/를')} 대입하면 ${is(X, bv)}이므로 ${is(BB, bv)}이다.`,
+          facts: { calc: [[aE, 0], [`${aE}*(${jn(q)}-${jn(y3)})/${jn(q)}`, 1]], unseen: [0, 2] }
+        });
+      }),
+      H('hard-area-ratio-rect', '정사각형을 가로지르는 그래프가 나눈 두 사각형의 넓이의 비로 기울기 구하기', '심53', (d) => {
+        // ② y절편에서 점 D → 넓이의 비에서 아래쪽 사다리꼴의 넓이 → 점 E의 y좌표 → 기울기
+        const fig = (v) => ({ x: [-1, v.L + 1], y: [-1, v.L + 1], grid: false, ticks: 'none', poly: [[0, 0], [v.L, 0], [v.L, v.L], [0, v.L]], lines: [{ a: Q(v.k - v.c, v.L), b: v.c }],
+          points: [{ x: 0, y: v.L, name: 'A', side: 'ul' }, { x: v.L, y: 0, name: 'B', side: 'dr' }, { x: v.L, y: v.L, name: 'C', side: 'ur' }, { x: 0, y: v.c, name: 'D', side: v.k > v.c ? 'ul' : 'dl' }, { x: v.L, y: v.k, name: 'E', side: v.k > v.c ? 'dr' : 'ur' }] });
+        const c = d.until(() => { const L = d.pick([6, 8]), r = d.int(2, 3), up = d.bool(), cc = d.int(1, L - 1), sum = up ? 2 * L / (r + 1) : 2 * L * r / (r + 1); return { L, r, up, c: cc, k: sum - cc }; },
+          (v) => Number.isInteger(v.k) && v.k > 0 && v.k < v.L && v.k !== v.c && plOk(fig(v)));
+        const { L, r, up, k } = c, cc = c.c, a = Q(k - cc, L), lower = (cc + k) * L / 2, big = up ? 'ADEC' : 'DOBE', small = up ? 'DOBE' : 'ADEC', h = eqT(lt(A + X), tm(cc));
+        return ansV(`그림과 같이 일차함수 ${h}의 그래프가 한 변의 길이가 ${L}인 정사각형 AOBC의 두 변 AO, BC와 만나는 점을 각각 D, E라 하자. 사각형 ${big}의 넓이가 사각형 ${small}의 넓이의 ${r}배일 때, 수 ${A}의 값은? (단, O는 원점이다.)`, a, 'frac', {
+          figure: relabel(pl(fig(c)), `좌표평면: 눈금 없는 그림. 정사각형 AOBC의 꼭짓점 O는 원점, 꼭짓점 A는 y축 위, 꼭짓점 B는 x축 위에 있다. 오른쪽 ${sideWord(k - cc)}로 향하는 직선이 변 AO와 점 D에서, 변 BC와 점 E에서 만난다.`),
+          explain: `정사각형 AOBC의 넓이는 ${L} × ${L} = ${L * L}이고 사각형 ${big}의 넓이가 사각형 ${small}의 넓이의 ${r}배이므로, 사각형 DOBE의 넓이는 ${L * L} × ${frac(up ? 1 : r, r + 1)} = ${lower}이다. ${YI}이 ${cc}이므로 D${pt(0, cc)}이다. 점 E의 ${Y}좌표를 ${K}라 하면 사다리꼴 DOBE의 넓이는 ${HALF} × (${cc} + ${K}) × ${L} = ${lower}이므로 ${is(K, k)}이다. 그래프가 점 E${ptj(L, k, '을/를')} 지나므로 ${nb(`${k} = ${L}${A} + ${cc}`)}에서 ${is(A, a)}이다.`,
+          facts: { value: `(2*${L}${up ? '' : '*' + r}/(${r}+1)-2*${cc})/${L}`, unseen: [1, 2] }
+        });
+      }),
+      H('hard-bisect-trapezoid', '원점을 지나는 그래프가 사다리꼴의 넓이를 이등분할 때 기울기 구하기', '심56', (d) => {
+        // ② 사다리꼴의 넓이 → 그래프가 어느 변과 만나는가(삼각형 OAB의 넓이와 견준다) → 넓이에서 만나는 점의 y좌표 → 두 점 A, B를 지나는 직선의 식에서 x좌표 → 기울기
+        const spec = ([w, e, h]) => ({ w, e, h, yp: Q((w - e) * h, w), xp: Q(w * w - e * (w - e), w), a: Q((w - e) * h, w * w - e * (w - e)) });
+        const fig = (v) => ({ x: [-1, v.w + 1], y: [-1, v.h + 1], grid: false, ticks: 'none', poly: [[0, 0], [v.w, 0], [v.w - v.e, v.h], [v.e, v.h]], lines: [{ a: v.a }], points: [{ x: v.w, y: 0, name: 'A', side: 'dr' }, { x: v.w - v.e, y: v.h, name: 'B', side: 'ur' }, { x: v.e, y: v.h, name: 'C', side: 'ul' }] });
+        const c = d.until(() => spec(d.pick([[6, 2, 3], [6, 2, 6], [4, 1, 4], [4, 1, 2], [8, 2, 8], [8, 2, 2], [8, 2, 6], [6, 1, 6], [5, 1, 5]])), (v) => plOk(fig(v)));
+        const { w, e, h, yp, xp, a } = c, b1 = w - e, half = b1 * h / 2, ypE = `((${w}+${b1}-${e})*${h}/(2*${w}))`, xpE = `(${w}-(${w}-${b1})*${ypE}/${h})`, ab = eq(Q(-h, e), Q(w * h, e)), yj = tail(lastOf(yp), '을/를');
+        return ansV(`그림과 같이 네 점 O${pt(0, 0)}, A${pt(w, 0)}, B${pt(b1, h)}, C${ptj(e, h, '을/를')} 꼭짓점으로 하는 사다리꼴 OABC가 있다. 일차함수 ${eqT(lt(A + X))}의 그래프가 사다리꼴 OABC의 넓이를 이등분할 때, 수 ${A}의 값은?`, a, 'frac', {
+          figure: relabel(pl(fig(c)), '좌표평면: 눈금 없는 그림. 사다리꼴 OABC의 꼭짓점 O는 원점, 꼭짓점 A는 x축 위에 있고, 변 CB는 x축에 평행하다. 원점을 지나는 직선이 변 AB와 만난다.'),
+          explain: `사다리꼴 OABC의 넓이는 ${HALF} × (${w} + ${b1 - e}) × ${h} = ${2 * half}이므로 그래프가 나눈 한쪽의 넓이는 ${half}이다. 삼각형 OAB의 넓이는 ${HALF} × ${w} × ${h} = ${iq(Q(w * h, 2))}${tail(lastOf(Q(w * h, 2)), '으로/로')} ${half}보다 크므로 그래프는 변 AB와 만난다. 만나는 점을 P라 하면 삼각형 OAP의 넓이가 ${half}이므로 ${HALF} × ${w} × (점 P의 ${Y}좌표) = ${half}에서 점 P의 ${Y}좌표는 ${iq(yp)}이다. 두 점 A, B를 지나는 직선을 그래프로 하는 일차함수의 식은 ${ab}이고, ${is(Y, yp)}${yj} 대입하면 ${is(X, xp)}이다. ${eqT(lt(A + X))}에 ${is(X, xp)}, ${is(Y, yp)}${yj} 대입하면 ${is(A, a)}이다.`,
+          facts: { value: `${ypE}/${xpE}`, unseen: [2] }
+        });
+      }),
+      H('hard-letter-point-xint', '문자로 나타낸 그래프 위의 점과 x절편으로 식 구하기', '심45', (d) => {
+        // ② 그래프 위의 점 → 대입하여 a → 점의 좌표 → x절편이 p이면 점 (p, 0)을 지난다 → 두 점으로 식
+        const c = d.until(() => { const tv = nz(d, -4, 4), j = d.pick([2, 3]), [cx0, cy0] = d.bool() ? [1, j] : [j, 1], a2 = pm(d) * d.int(2, 4), m = nz(d, -3, 3), x0 = cx0 * tv, y0 = cy0 * tv; return { tv, cx0, cy0, a2, m, x0, y0, k: tv * (cy0 - m * cx0), p: x0 - y0 / a2 }; },
+          (v) => v.k !== 0 && Math.abs(v.k) <= 12 && Number.isInteger(v.p) && v.p !== 0 && Math.abs(v.p) <= 9 && v.m !== v.a2 && Math.abs(v.a2 * v.p) <= 24);
+        const { tv, cx0, cy0, a2, m, x0, y0, k, p } = c, b2 = -a2 * p, px0 = times(cx0, A), py0 = times(cy0, A), tE = `(${jn(k)}/(${cy0}-${jn(m)}*${cx0}))`, aE = `(${cy0}*${tE}/(${cx0}*${tE}-${jn(p)}))`;
+        return eqAns(`점 ${pt(px0, py0)}가 일차함수 ${eq(m, k)}의 그래프 위에 있다. 이 점을 지나고 ${XI}이 ${iq(p)}인 ${ASK}`, a2, b2, {
+          explain: `${eq(m, k)}에 ${is(X, px0)}, ${is(Y, py0)}를 대입하면 ${nb(`${py0} = ${ex(lt(times(m * cx0, A), m * cx0 < 0), tm(k))}`)}에서 ${is(A, tv)}이므로 이 점의 좌표는 ${pt(x0, y0)}이다. ${XI}이 ${iq(p)}이므로 구하는 직선은 점 ${pt(p, 0)}도 지난다. 기울기는 ${frac(`${iq(y0)} ${MINUS} 0`, `${iq(x0)} ${MINUS} ${par(p)}`)} = ${iq(a2)}이고, ${eqT(tm(a2, X), lt(BB))}에 ${is(X, p)}, ${is(Y, 0)}${tail(0, '을/를')} 대입하면 ${is(BB, b2)}이다. 따라서 ${eq(a2, b2)}이다.`,
+          facts: { calc: [[aE, 0], [`0-${aE}*${jn(p)}`, 1]], unseen: [0, 1] }
         });
       })
     ]

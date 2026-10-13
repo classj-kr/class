@@ -326,6 +326,254 @@
       }, { count: 2 })
     ]
   });
+  // ── 다시 보아 덧붙인 실력 문항 ──
+  // 처음 지을 때 「보조선을 스스로 그어야 한다, 닮음·중점을 세 번 넘게 잇는다, 합동을 스스로 찾아야 한다, 어려움이 단원 밖에서 온다」는 까닭으로 뺐던 꼴을 다시 따져 실었다.
+  // 모두 ② 세 단계 넘게 이어 생각해야 풀리는 문제다. 꼴마다의 판정은 대조표에 있다.
+  //  - 내심과 이등변삼각형(8-2-1), 삼각형의 합동과 부채꼴의 호의 길이(중1)는 앞에서 배운 내용이라 그대로 쓴다.
+  //  - 삼각형의 각의 이등분선과 선분의 길이의 비는 2022 개정 교육과정에 정리로 나오지 않는다. 2022 자료(미래엔 2022 출제대비 문제은행)에 나온 심13만 실었고 문제 글에서 그 정리를 알려 주지 않는다.
+  //    풀이는 평행한 보조선과 이등변삼각형으로 적었다(이 단원과 앞 단원의 내용만 쓴다). 2015 자료에만 나온 ①17·18 심14·15는 싣지 않았다.
+  //  - 수는 답과 풀이의 중간 값이 자연수가 되는 것으로 골랐다. 그런 수가 드문 유형은 수의 목록에서 고른다.
+  const { dist, sv } = B.kit.mgeo;
+  const { sss, sab, X, LV, simple, fracOrInt } = K;
+  const RATIO = '가장 간단한 자연수의 비로 나타내시오.';
+  const ratio2 = (text, a, b, o) => ratioQ(text, a, b, Object.assign({ shown: `${a} : ${b}` }, o));
+  // 원주율이 든 길이 「□π cm」: π의 계수를 받는다.
+  const piLen = (text, k, o) => Object.assign(lenQ(text, k, Object.assign({}, o, { unit: 'π cm' })), { shown: `${k}π cm` });
+  // 내심: 마주 보는 변의 길이를 무게로 한 세 꼭짓점의 평균
+  const incOf = (t) => { const a = dist(t.B, t.C), b = dist(t.C, t.A), c = dist(t.A, t.B), s = a + b + c; return [(a * t.A[0] + b * t.B[0] + c * t.C[0]) / s, (a * t.A[1] + b * t.B[1] + c * t.C[1]) / s]; };
+  // 화면의 점 v 에서 두 점 p, q 를 바라보는 두 방향의 가운데 방향(작은 각 쪽)
+  const between = (v, p, q) => { const from = dirOf(v, p), turn = ((dirOf(v, q) - from + 540) % 360) - 180; return from + turn / 2; };
+  // 크기가 같은 각의 표시: 꼭짓점 v 의 각 pvq 의 가운데에 ●(kind 'x' 이면 ×)
+  const mark = (fig, v, p, q, kind, far) => fig.b.sym(fig.P[v], between(fig.P[v], fig.P[p], fig.P[q]), kind, far);
+  // 내심을 지나는 평행선에 쓰는 삼각형 [BC, 나머지 두 변]: 잘린 네 조각이 모두 자연수이다.
+  const INC = [[12, 9, 15], [12, 16, 20], [15, 12, 18], [18, 15, 21], [20, 28, 32], [21, 18, 24], [24, 16, 24], [24, 21, 27], [30, 20, 25], [27, 24, 30], [24, 18, 30], [14, 14, 21]];
+  // 내각과 외각의 이등분선에 쓰는 수 [AB, AC, BD, DC, CE]
+  const BIS = [[8, 4, 4, 2, 6], [10, 5, 6, 3, 9], [12, 6, 6, 3, 9], [12, 6, 8, 4, 12], [6, 3, 4, 2, 6], [9, 3, 6, 2, 4], [12, 4, 9, 3, 6], [15, 5, 9, 3, 6], [15, 5, 12, 4, 8], [16, 4, 12, 3, 5], [10, 6, 5, 3, 12], [21, 9, 14, 6, 15]];
+  B.addTypes(UNIT, 'hard', [
+    H('hard-trap-diag-pts', '사다리꼴의 두 대각선 위의 점을 이은 평행한 선분', '①28', (d) => {
+      // BE : ED = CF : FA = j : i. 변 AB 위의 점이 주어지지 않는다: 선분 FE 를 늘여 변 AB 와 만나는 점을 스스로 잡아야 한다.
+      const v = d.until(() => {
+        const [j, i] = d.pick([[1, 3], [1, 2], [2, 3], [1, 4], [2, 5], [3, 4]]), s = i + j, p = d.int(1, 5), q = d.int(2, 6), ad = s * p, bc = s * q, P0 = trapOf(ad, bc, bc * d.pick([0.6, 0.68, 0.76]), (bc - ad) * d.pick([0.3, 0.45, 0.6]));
+        Object.assign(P0, { E: lerp(P0.B, P0.D, j / s), F: lerp(P0.C, P0.A, j / s) });
+        const fig = Fig(P0, [190, 140], { hub: 'ABCD' }).poly('ABCD').seg('AC BD EF').arrow('AD BC').arrow('EF').name('ABCD').free('E', 'BDF').free('F', 'ACE').len('AD', cm(ad)).len('BC', cm(bc));
+        return { i, j, s, p, q, ad, bc, fig };
+      }, (x) => x.ad < x.bc && x.bc <= 30 && (x.i * x.q - x.j * x.p) / x.bc >= 0.26 && x.ad / x.bc >= 0.3 && !x.fig.clash());
+      const { i, j, s, p, q, ad, bc } = v, ge = j * p, gf = i * q;
+      return lenQ(`${par('AD', 'BC')}인 사다리꼴 ABCD에서 점 E는 대각선 BD 위의 점, 점 F는 대각선 AC 위의 점이고 ${par('AD', 'EF', 'BC')}이다. ${nb(`${SG('BE')} : ${SG('ED')} = ${SG('CF')} : ${SG('FA')} = ${j} : ${i}`)}이고 ${eq('AD', ad)}, ${eq('BC', bc)}일 때, ${SG('EF')}의 길이는?`, gf - ge, {
+        figure: v.fig.svg(`사다리꼴 ABCD와 두 대각선 AC, BD. 윗변 AD와 아랫변 BC가 가로로 놓여 있다. 점 E는 대각선 BD 위에, 점 F는 대각선 AC 위에 있고 선분 EF가 그어져 있다. 변 AD, 선분 EF, 변 BC에 평행하다는 표시가 있다. AD = ${cm(ad)}, BC = ${cm(bc)}`),
+        explain: `${SG('FE')}의 연장선이 변 AB와 만나는 점을 G라 하자. △ABD에서 ${par('GE', 'AD')}이므로 ${SG('GE')} : ${SG('AD')} = ${SG('BE')} : ${SG('BD')} = ${j} : ${s}이고 ${SG('GE')} = ${ge} cm이다. △ABC에서 ${par('GF', 'BC')}이므로 ${SG('GF')} : ${SG('BC')} = ${SG('AF')} : ${SG('AC')} = ${i} : ${s}이고 ${SG('GF')} = ${gf} cm이다. ${SG('EF')} = ${SG('GF')} − ${SG('GE')} = ${gf} − ${ge} = ${gf - ge}(cm)이다.`,
+        facts: { calc: [[`${bc}*${i}/(${j}+${i})-${ad}*${j}/(${j}+${i})`, 0]] }
+      });
+    }),
+    H('hard-trap-mid-diag', '사다리꼴의 밑변의 중점과 두 대각선', '①29', (d) => {
+      // AP : PM = AD : BM, DQ : QM = AD : MC 이고 BM = MC 이므로 PQ ∥ AD. PQ = AD × BM ÷ (AD + BM)
+      const [ad, bc, pq] = d.pick([[15, 20, 6], [14, 21, 6], [5, 15, 3], [10, 30, 6], [3, 12, 2], [6, 24, 4]]), bm = bc / 2, g = gcd(ad, bm), x = ad / g, y = bm / g;
+      const v = d.until(() => {
+        const P0 = trapOf(ad, bc, bc * d.pick([0.5, 0.58, 0.66]), (bc - ad) * d.pick([0.3, 0.45, 0.6]));
+        P0.M = half(P0.B, P0.C); P0.P = meet(P0.A, P0.M, P0.B, P0.D); P0.Q = meet(P0.D, P0.M, P0.A, P0.C);
+        const fig = Fig(P0, [200, 140], { hub: 'ABCD' }).poly('ABCD').seg('AM BD DM AC PQ').arrow('AD', 1, 0.5).arrow('BC', 1, 0.1).tick('BM MC').name('ABCD').name('M', 270).free('P', 'AMBDQ').free('Q', 'DMACP').len('AD', cm(ad), null, { gap: 9 }).bow('BC', cm(bc), 26);
+        return { fig };
+      }, (z) => !z.fig.clash());
+      return lenQ(`${par('AD', 'BC')}인 사다리꼴 ABCD에서 변 BC의 중점을 M이라 하고, ${jo('AM', '과/와')} ${SG('BD')}가 만나는 점을 P, ${jo('DM', '과/와')} ${SG('AC')}가 만나는 점을 Q라 하자. ${eq('AD', ad)}, ${eq('BC', bc)}일 때, ${SG('PQ')}의 길이는?`, pq, {
+        figure: v.fig.svg(`사다리꼴 ABCD. 윗변 AD와 아랫변 BC에 평행하다는 표시가 있다. 점 M은 변 BC의 중점이다(길이가 같다는 표시). 선분 AM과 대각선 BD가 점 P에서, 선분 DM과 대각선 AC가 점 Q에서 만나고 선분 PQ가 그어져 있다. AD = ${cm(ad)}, BC = ${cm(bc)}`),
+        explain: `${SG('BM')} = ${SG('MC')} = ${bm} cm이다. ${par('AD', 'BM')}이므로 ${SG('AP')} : ${SG('PM')} = ${SG('AD')} : ${SG('BM')} = ${simple(ad, bm)}이고, ${par('AD', 'MC')}이므로 ${SG('DQ')} : ${SG('QM')} = ${SG('AD')} : ${SG('MC')} = ${simple(ad, bm)}이다. △MAD에서 ${SG('MP')} : ${SG('PA')} = ${SG('MQ')} : ${SG('QD')}이므로 ${par('PQ', 'AD')}이고 ${SG('PQ')} : ${SG('AD')} = ${SG('MP')} : ${SG('MA')} = ${y} : ${x + y}이다. ${SG('PQ')} = ${ad} × ${frac(y, x + y)} = ${pq}(cm)이다.`,
+        facts: { calc: [[`${ad}*(${bc}/2)/(${ad}+${bc}/2)`, 0]], unseen: [2] }
+      });
+    }),
+    H('hard-median-mid', '중선의 중점을 지나는 선분', '심27 ①44', (d, n) => {
+      if (n === 0) {
+        const k = d.int(2, 7), ae = 3 * k;
+        const v = d.until(() => {
+          const t3 = sas(d.pick([11, 12, 13]), d.pick([11, 12, 13]), d.int(10, 15) * 5), P0 = Object.assign({}, t3, { D: half(t3.A, t3.B), F: lerp(t3.B, t3.C, 2 / 3) }); P0.E = half(P0.D, P0.C);
+          const fig = Fig(P0, [184, 150], { hub: 'ABC' }).poly('ABC').seg('DC AF').tick('AD DB').tick('DE EC', 2).name('ABCD').name('F', 270).free('E', 'AFDC').lead('AE', cm(ae), 'AC', 12);
+          return { t3, fig };
+        }, (x) => fine(x.t3, 44, 88) && !x.fig.clash());
+        return lenQ(`△ABC에서 변 AB의 중점을 D, ${SG('DC')}의 중점을 E라 하고, ${SG('AE')}의 연장선이 변 BC와 만나는 점을 F라 하자. ${eq('AE', ae)}일 때, ${SG('EF')}의 길이는?`, k, {
+          figure: v.fig.svg(`삼각형 ABC. 점 D는 변 AB의 중점이고(길이가 같다는 표시) 선분 DC가 그어져 있다. 점 E는 선분 DC의 중점이다(길이가 같다는 표시). 점 A에서 점 E를 지나 변 BC 위의 점 F까지 선분 AF가 그어져 있다. AE = ${cm(ae)}`),
+          explain: `점 D를 지나고 변 BC에 평행한 직선이 ${SG('AF')}와 만나는 점을 G라 하자. △EDG와 △ECF에서 ${nb(`${SG('ED')} = ${SG('EC')}`)}, ∠DEG = ∠CEF(맞꼭지각), ∠EDG = ∠ECF(엇각)이므로 두 삼각형은 합동이고 ${nb(`${SG('EG')} = ${SG('EF')}`)}이다. △ABF에서 점 D는 ${SG('AB')}의 중점이고 ${par('DG', 'BF')}이므로 ${nb(`${SG('AG')} = ${SG('GF')}`)}이고, ${SG('GF')} = 2 × ${SG('EF')}이다. ${SG('AE')} = ${SG('AG')} + ${SG('GE')} = 3 × ${SG('EF')}이므로 ${SG('EF')} = ${ae} ÷ 3 = ${k}(cm)이다.`,
+          facts: { calc: [[`${ae}/3`, 0]], unseen: [3] }
+        });
+      }
+      const k = d.int(2, 8), bc = 3 * k;
+      const v = d.until(() => {
+        const t3 = sab(d.pick([12, 13, 14]), d.pick([7, 8]), d.int(11, 14) * 5), P0 = Object.assign({}, t3, { D: lerp(t3.B, t3.A, 2), E: half(t3.A, t3.C), F: lerp(t3.B, t3.C, 2 / 3) });
+        const fig = Fig(P0, [176, 206], { hub: 'ABC' }).poly('ABC').seg('AD DF').tick('AB AD').tick('AE EC', 2).name('BC').name('D', 90).name('F', 270).nameAway('A', 'CEF').free('E', 'ACDF').bow('BC', cm(bc), 26);
+        return { t3, fig };
+      }, (x) => fine(x.t3, 40, 92) && !x.fig.clash());
+      return lenQ(`△ABC에서 변 BA의 연장선 위에 ${nb(`${SG('AB')} = ${SG('AD')}`)}인 점 D를 잡고, 변 AC의 중점을 E, ${SG('DE')}의 연장선이 변 BC와 만나는 점을 F라 하자. ${eq('BC', bc)}일 때, ${SG('CF')}의 길이는?`, k, {
+        figure: v.fig.svg(`삼각형 ABC. 변 BA를 점 A 너머로 늘인 선 위에 점 D가 있고 선분 AB와 선분 AD에 길이가 같다는 표시가 있다. 점 E는 변 AC의 중점이다(길이가 같다는 표시). 점 D에서 점 E를 지나 변 BC 위의 점 F까지 선분 DF가 그어져 있다. BC = ${cm(bc)}`),
+        explain: `점 A를 지나고 변 BC에 평행한 직선이 ${SG('DF')}와 만나는 점을 G라 하자. △AEG와 △CEF에서 ${nb(`${SG('AE')} = ${SG('CE')}`)}, ∠GAE = ∠FCE(엇각), ∠AEG = ∠CEF(맞꼭지각)이므로 두 삼각형은 합동이고 ${nb(`${SG('AG')} = ${SG('CF')}`)}이다. △DBF에서 점 A는 ${SG('DB')}의 중점이고 ${par('AG', 'BF')}이므로 ${SG('BF')} = 2 × ${SG('AG')} = 2 × ${SG('CF')}이다. ${SG('BC')} = ${SG('BF')} + ${SG('CF')} = 3 × ${SG('CF')}이므로 ${SG('CF')} = ${bc} ÷ 3 = ${k}(cm)이다.`,
+        facts: { calc: [[`${bc}/3`, 0]], unseen: [3] }
+      });
+    }, { count: 2 }),
+    H('hard-zigzag', '번갈아 평행한 선분이 꺾이며 이어지는 삼각형', '심8', (d) => {
+      // AD : DF = AE : EG = AF : FH = AG : GC = AH : HB (평행선의 비를 네 번 잇는다)
+      const v = d.until(() => {
+        const [ad, df, fh, hb] = d.pick([[8, 4, 6, 9], [16, 8, 12, 18], [24, 12, 18, 27], [27, 9, 12, 16]]), af = ad + df, ah = af + fh, ab = ah + hb, t3 = sas(12, d.pick([10.5, 11.5, 12.5]), d.int(10, 13) * 5);
+        const P0 = Object.assign({}, t3, { D: lerp(t3.A, t3.B, ad / ab), F: lerp(t3.A, t3.B, af / ab), H: lerp(t3.A, t3.B, ah / ab), E: lerp(t3.A, t3.C, ad / ah), G: lerp(t3.A, t3.C, af / ah) });
+        const fig = Fig(P0, [190, 200], { hub: 'ABC' }).poly('ABC').seg('DE FE FG HG HC').arrow('DE FG HC', 1, 0.55).arrow('FE HG BC', 2, 0.45).name('ABCDFHEG').len('AD', cm(ad)).len('DF', cm(df));
+        return { ad, df, fh, hb, af, ah, t3, fig };
+      }, (x) => fine(x.t3, 44, 88) && !x.fig.clash());
+      const { ad, df, fh, hb, af, ah } = v, g = gcd(ad, df), p = ad / g, q = df / g;
+      return two(`△ABC에서 변 AB 위에 점 A에서 가까운 쪽부터 세 점 D, F, H가, 변 AC 위에 점 A에서 가까운 쪽부터 두 점 E, G가 있고 ${par('DE', 'FG', 'HC')}, ${par('FE', 'HG', 'BC')}이다. ${eq('AD', ad)}, ${eq('DF', df)}일 때, ${jo('FH', '과/와')} ${SG('HB')}의 길이를 각각 구하시오.`, [[SG('FH'), fh], [SG('HB'), hb]], {
+        figure: v.fig.svg(`삼각형 ABC. 변 AB 위에 점 A에서 가까운 쪽부터 점 D, F, H가, 변 AC 위에 점 A에서 가까운 쪽부터 점 E, G가 있다. 선분 DE, FE, FG, HG, HC가 차례로 꺾이며 그어져 있다. 선분 DE, FG, HC에 평행하다는 표시가, 선분 FE, HG와 변 BC에 평행하다는 다른 표시가 있다. AD = ${cm(ad)}, DF = ${cm(df)}`),
+        explain: `△AFG에서 ${par('DE', 'FG')}이므로 ${SG('AE')} : ${SG('EG')} = ${SG('AD')} : ${SG('DF')} = ${simple(ad, df)}이다. △AHG에서 ${par('FE', 'HG')}이므로 ${SG('AF')} : ${SG('FH')} = ${SG('AE')} : ${SG('EG')} = ${p} : ${q}이고, ${SG('AF')} = ${ad} + ${df} = ${af}(cm)이므로 ${SG('FH')} = ${fh} cm이다. △AHC에서 ${par('FG', 'HC')}이므로 ${SG('AG')} : ${SG('GC')} = ${SG('AF')} : ${SG('FH')} = ${p} : ${q}이다. △ABC에서 ${par('HG', 'BC')}이므로 ${SG('AH')} : ${SG('HB')} = ${SG('AG')} : ${SG('GC')} = ${p} : ${q}이고, ${SG('AH')} = ${af} + ${fh} = ${ah}(cm)이므로 ${SG('HB')} = ${hb} cm이다.`,
+        facts: { calc: [[`(${ad}+${df})*${df}/${ad}`, 0], [`(${ad}+${df}+(${ad}+${df})*${df}/${ad})*${df}/${ad}`, 1]] }
+      });
+    }),
+    H('hard-cevians', '두 변 위의 점과 맞은편 꼭짓점을 이은 두 선분의 교점', '심10', (d) => {
+      // AD : DB = m : n, AE : EC = r : s 이면 BP : PE = n(r + s) : ms. 점 D 를 지나고 BE 에 평행한 보조선을 스스로 그어야 한다.
+      const v = d.until(() => {
+        const [m, n] = d.pick([[2, 3], [1, 1], [1, 2], [2, 1], [3, 2], [3, 4], [1, 3]]), [r, s] = d.pick([[4, 3], [1, 1], [2, 1], [1, 2], [3, 2], [2, 3], [3, 1], [3, 4]]), u = d.int(1, 5), w = d.int(1, 5);
+        const ad = m * u, db = n * u, ae = r * w, ec = s * w, ab = ad + db, ac = ae + ec, fe = ae * db / ab, t3 = sas(ab, ac, d.int(10, 15) * 5), P0 = Object.assign({}, t3, { D: lerp(t3.A, t3.B, ad / ab), E: lerp(t3.A, t3.C, ae / ac) }); P0.P = meet(P0.B, P0.E, P0.C, P0.D);
+        const fig = Fig(P0, [184, 150], { hub: 'ABC' }).poly('ABC').seg('BE CD').name('ABCDE').free('P', 'BECD').len('AD', cm(ad)).len('DB', cm(db)).len('AE', cm(ae)).len('EC', cm(ec));
+        return { m, n, r, s, ad, db, ae, ec, ab, ac, fe, t3, fig };
+      }, (x) => !(x.m === x.n && x.r === x.s) && Number.isInteger(x.fe) && x.ab <= 20 && x.ac <= 20 && Math.max(x.ab / x.ac, x.ac / x.ab) <= 1.5 && Math.min(x.ad, x.db, x.ae, x.ec) >= 2 && x.ad * x.ec / (x.ad * x.ec + x.db * (x.ae + x.ec)) >= 0.2 && fine(x.t3, 44, 88) && !x.fig.clash());
+      const { ad, db, ae, ec, ab, fe } = v, big = db * (ae + ec), small = ad * ec, g = gcd(big, small), bp = big / g, pe = small / g, cf = ec + fe;
+      return ratio2(`△ABC에서 점 D는 변 AB 위의 점, 점 E는 변 AC 위의 점이고, ${jo('BE', '과/와')} ${SG('CD')}가 만나는 점을 P라 하자. ${eq('AD', ad)}, ${eq('DB', db)}, ${eq('AE', ae)}, ${eq('EC', ec)}일 때, ${nb(`${SG('BP')} : ${SG('PE')}`)}를 ${RATIO}`, bp, pe, {
+        figure: v.fig.svg(`삼각형 ABC. 점 D는 변 AB 위에, 점 E는 변 AC 위에 있고, 선분 BE와 선분 CD가 점 P에서 만난다. AD = ${cm(ad)}, DB = ${cm(db)}, AE = ${cm(ae)}, EC = ${cm(ec)}`),
+        explain: `점 D를 지나고 ${SG('BE')}에 평행한 직선이 변 AC와 만나는 점을 F라 하자. △ABE에서 ${par('DF', 'BE')}이므로 ${SG('DF')} : ${SG('BE')} = ${SG('AD')} : ${SG('AB')} = ${simple(ad, ab)}이고, ${SG('AF')} : ${SG('FE')} = ${SG('AD')} : ${SG('DB')} = ${simple(ad, db)}이므로 ${SG('FE')} = ${ae} × ${fracOrInt(db, ab)} = ${fe}(cm)이다. △CDF에서 ${par('PE', 'DF')}이므로 ${SG('PE')} : ${SG('DF')} = ${SG('CE')} : ${SG('CF')} = ${simple(ec, cf)}이다. ${SG('PE')} = ${fracOrInt(ec, cf)}${SG('DF')} = ${fracOrInt(ec, cf)} × ${fracOrInt(ad, ab)}${SG('BE')} = ${fracOrInt(pe, bp + pe)}${SG('BE')}이므로 ${SG('BP')} : ${SG('PE')} = ${bp} : ${pe}이다.`,
+        facts: { calc: [[`${db}*(${ae}+${ec})/${g}`, 0], [`${ad}*${ec}/${g}`, 1]], unseen: [g] }
+      });
+    }),
+    H('hard-para-cuts', '평행사변형의 두 변 위의 점을 이은 선분이 잘린 길이', '심12', (d) => {
+      // AE = EF = FD, BG : GC = g1 : g2. EH : HG = EF : BG, EI : IG = ED : BG. HI = EH × 3·g1 ÷ (2(g1 + g2) + 3·g1)
+      const v = d.until(() => {
+        const [g1, g2, eh0, hi0] = d.pick([[3, 1, 17, 9], [1, 1, 7, 3], [2, 1, 2, 1], [1, 2, 3, 1], [3, 2, 19, 9], [1, 3, 11, 3], [2, 3, 8, 3]]), t = d.int(Math.ceil(4 / eh0), Math.max(1, Math.floor(24 / eh0))), eh = eh0 * t, hi = hi0 * t, x = g1 + g2;
+        const P0 = paraOf(13, d.pick([9, 9.6, 10.2]), d.int(13, 16) * 5);
+        Object.assign(P0, { E: lerp(P0.A, P0.D, 1 / 3), F: lerp(P0.A, P0.D, 2 / 3), G: lerp(P0.B, P0.C, g1 / x) }); P0.H = meet(P0.E, P0.G, P0.B, P0.F); P0.I = meet(P0.E, P0.G, P0.B, P0.D);
+        const fig = Fig(P0, [220, 150], { hub: 'ABCD' }).poly('ABCD').seg('BF EG BD').tick('AE EF FD').name('ABCD').name('EF', 90).name('G', 270).free('H', 'EGBF').free('I', 'EGBD').len('EH', cm(eh), 'F');
+        return { g1, g2, eh0, hi0, eh, hi, x, fig };
+      }, (z) => !z.fig.clash());
+      const { g1, g2, eh0, hi0, eh, hi, x } = v, r1 = gcd(x, 3 * g1), r2 = gcd(2 * x, 3 * g1), h1 = [x / r1, 3 * g1 / r1], i1 = [2 * x / r2, 3 * g1 / r2];
+      return lenQ(`평행사변형 ABCD에서 변 AD 위에 점 A에서 가까운 쪽부터 두 점 E, F가 있어 ${nb(`${SG('AE')} = ${SG('EF')} = ${SG('FD')}`)}이고, 변 BC 위의 점 G에 대하여 ${nb(`${SG('BG')} : ${SG('GC')} = ${g1} : ${g2}`)}이다. ${SG('EG')}가 ${SG('BF')}, ${SG('BD')}와 만나는 점을 각각 H, I라 하자. ${eq('EH', eh)}일 때, ${SG('HI')}의 길이는?`, hi, {
+        figure: v.fig.svg(`평행사변형 ABCD. 변 AD 위에 점 A에서 가까운 쪽부터 점 E, F가 있고 선분 AE, EF, FD에 길이가 같다는 표시가 있다. 점 G는 변 BC 위에 있다. 선분 EG가 선분 BF와 점 H에서, 대각선 BD와 점 I에서 만나고, 선분 EG 위에 점 E, H, I, G가 이 차례로 놓여 있다. EH = ${cm(eh)}`),
+        explain: `${SG('AD')} = ${SG('BC')} = ${ka(3 * x)}라 하면 ${SG('EF')} = ${ka(x)}, ${SG('ED')} = ${ka(2 * x)}, ${SG('BG')} = ${ka(3 * g1)}이다. ${par('EF', 'BG')}이므로 ${SG('EH')} : ${SG('HG')} = ${SG('EF')} : ${SG('BG')} = ${h1[0]} : ${h1[1]}이고 ${SG('EH')} = ${frac(h1[0], h1[0] + h1[1])}${SG('EG')}이다. ${par('ED', 'BG')}이므로 ${SG('EI')} : ${SG('IG')} = ${SG('ED')} : ${SG('BG')} = ${i1[0]} : ${i1[1]}이고 ${SG('EI')} = ${frac(i1[0], i1[0] + i1[1])}${SG('EG')}이다. ${SG('HI')} = ${SG('EI')} − ${SG('EH')}이므로 ${SG('EH')} : ${SG('HI')} = ${frac(h1[0], h1[0] + h1[1])} : (${frac(i1[0], i1[0] + i1[1])} − ${frac(h1[0], h1[0] + h1[1])}) = ${eh0} : ${hi0}이다. ${SG('HI')} = ${eh} × ${frac(hi0, eh0)} = ${hi}(cm)이다.`,
+        facts: { calc: [[`${eh}*3*${g1}/(2*(${g1}+${g2})+3*${g1})`, 0]], unseen: [3, 2] }
+      });
+    }),
+    H('hard-bisector', '삼각형의 내각과 외각의 이등분선이 밑변과 만나는 점', '심13', (d) => {
+      // AB : AC = BD : DC = BE : CE. 문제 글에서 이 성질을 알려 주지 않는다(평행한 보조선을 그어 이등변삼각형을 만들면 이 단원의 내용으로 풀린다).
+      const v = d.until(() => {
+        const [c, b, bd, cd, ce] = d.pick(BIS), a = bd + cd, t3 = sss(a, b, c), P0 = Object.assign({}, t3, { D: [bd, 0], E: [a + ce, 0], T: lerp(t3.B, t3.A, 1 + 0.32 * Math.min(1, (a + ce) / (2 * c))) });
+        const fig = Fig(P0, [250, 150], { hub: 'ABC' }).poly('ABC').seg('AD AE CE').seg('AT', 'thin').name('B', 180).name('DCE', 270).free('A', 'BDCET').len('AB', cm(c)).len('AC', cm(b), 'B', { t: 0.6 }).len('BD', cm(bd), 'A');
+        mark(fig, 'A', 'B', 'D', 'dot', 30); mark(fig, 'A', 'D', 'C', 'dot', 30); mark(fig, 'A', 'C', 'E', 'x', 22); mark(fig, 'A', 'E', 'T', 'x', 22);
+        return { c, b, bd, cd, ce, a, t3, fig };
+      }, (x) => fine(x.t3, 24, 110) && K.angAt(x.t3.A, x.t3.B, x.t3.C) >= 40 && !x.fig.clash());
+      const { c, b, bd, cd, ce, a } = v, g = gcd(c, b);
+      return lenQ(`△ABC에서 ∠A의 이등분선이 변 BC와 만나는 점을 D, ∠A의 외각의 이등분선이 변 BC의 연장선과 만나는 점을 E라 하자. ${eq('AB', c)}, ${eq('AC', b)}, ${eq('BD', bd)}일 때, ${SG('CE')}의 길이는?`, ce, {
+        figure: v.fig.svg(`삼각형 ABC. 변 BA를 점 A 너머로 늘인 선과 변 BC를 점 C 너머로 늘인 선이 그어져 있다. 점 D는 변 BC 위에 있고, 각 BAD와 각 DAC에 크기가 같다는 표시가 있다. 점 E는 변 BC를 점 C 너머로 늘인 선 위에 있고, 각 CAE와, 선분 AE와 변 BA를 늘인 선이 이루는 각에 크기가 같다는 다른 표시가 있다. AB = ${cm(c)}, AC = ${cm(b)}, BD = ${cm(bd)}`),
+        explain: `점 C를 지나고 ${SG('AD')}에 평행한 직선이 ${SG('BA')}의 연장선과 만나는 점을 F라 하면 ∠AFC = ∠BAD(동위각), ∠ACF = ∠DAC(엇각)이므로 △ACF는 ${nb(`${SG('AF')} = ${SG('AC')}`)}인 이등변삼각형이다. △BFC에서 ${par('AD', 'FC')}이므로 ${SG('BD')} : ${SG('DC')} = ${SG('BA')} : ${SG('AF')} = ${simple(c, b)}이고 ${SG('DC')} = ${cd} cm, ${SG('BC')} = ${bd} + ${cd} = ${a}(cm)이다. 또 점 C를 지나고 ${SG('AE')}에 평행한 직선이 변 AB와 만나는 점을 P라 하면 같은 방법으로 ${nb(`${SG('AP')} = ${SG('AC')}`)}이고, △BEA에서 ${par('PC', 'AE')}이므로 ${SG('BE')} : ${SG('CE')} = ${SG('BA')} : ${SG('PA')} = ${c / g} : ${b / g}이다. (${a} + ${SG('CE')}) : ${SG('CE')} = ${c / g} : ${b / g}에서 ${SG('CE')} = ${ce} cm이다.`,
+        facts: { calc: [[`(${bd}+${bd}*${b}/${c})*${b}/(${c}-${b})`, 0]] }
+      });
+    }),
+    H('hard-two-right', '한 직선 위에 선 두 직각삼각형의 빗변의 교점', '심20', (d) => {
+      // EC = DC 이므로 EG = FG. (EC − FG) : BC = FG : AB 에서 FG = AB × EC ÷ (AB + BE + EC)
+      const v = d.until(() => {
+        const [a, e, c, x] = d.pick([[6, 2, 8, 3], [4, 2, 6, 2], [6, 3, 9, 3], [8, 4, 12, 4], [4, 4, 8, 2], [6, 6, 12, 3], [10, 2, 8, 4], [9, 3, 6, 3], [8, 2, 6, 3], [12, 4, 8, 4], [6, 4, 10, 3], [10, 5, 15, 5], [5, 3, 12, 3], [15, 3, 12, 6], [10, 4, 6, 3], [12, 2, 10, 5], [12, 6, 6, 3], [9, 6, 12, 4]]);
+        const P0 = { A: [0, a], B: [0, 0], E: [e, 0], C: [e + c, 0], D: [e + c, c] }; P0.F = meet(P0.A, P0.C, P0.E, P0.D); P0.G = [P0.F[0], 0];
+        const fig = Fig(P0, [200, 136]).seg('AB BC CD AC ED FG').right('ABC').right('DCB').right('FGC').name('A', 90).name('D', 90).name('BEGC', 270).free('F', 'ACEDG').len('AB', cm(a), 'C').len('DC', cm(c), 'B');
+        fig.b.dim(fig.P.B, fig.P.E, cm(e), fig.P.A, 26).dim(fig.P.E, fig.P.C, cm(c), fig.P.A, 26);
+        return { a, e, c, x, fig };
+      }, (z) => !z.fig.clash());
+      const { a, e, c, x } = v;
+      return lenQ(`그림과 같이 ∠B = 90°인 직각삼각형 ABC와 ∠C = 90°인 직각삼각형 DEC가 있고, 점 E는 변 BC 위의 점이다. ${jo('AC', '과/와')} ${SG('DE')}가 만나는 점을 F, 점 F에서 변 BC에 내린 수선의 발을 G라 하자. ${eq('AB', a)}, ${eq('DC', c)}, ${eq('BE', e)}, ${eq('EC', c)}일 때, ${SG('FG')}의 길이는?`, x, {
+        figure: v.fig.svg(`가로로 놓인 선분 BC 위에 점 B에서 가까운 쪽부터 점 E, G가 있다. 점 B에서 위로 선분 AB가, 점 C에서 위로 선분 DC가 서 있고(직각 표시) 선분 AC와 선분 DE가 점 F에서 만난다. 점 F에서 점 G까지 선분 FG가 선분 BC에 수직으로 그어져 있다(직각 표시). AB = ${cm(a)}, DC = ${cm(c)}, BE = ${cm(e)}, EC = ${cm(c)}`),
+        explain: `${SG('AB')}, ${SG('FG')}, ${SG('DC')}는 모두 ${SG('BC')}에 수직이므로 서로 평행하다. △DEC에서 ${par('FG', 'DC')}이므로 ${SG('EG')} : ${SG('EC')} = ${SG('FG')} : ${SG('DC')}이고, ${SG('EC')} = ${SG('DC')} = ${c} cm이므로 ${nb(`${SG('EG')} = ${SG('FG')}`)}이다. ${SG('FG')} = ${X} cm라 하면 ${SG('GC')} = (${c} − ${X}) cm이고 ${SG('BC')} = ${e} + ${c} = ${e + c}(cm)이다. △ABC에서 ${par('FG', 'AB')}이므로 ${SG('CG')} : ${SG('CB')} = ${SG('FG')} : ${SG('AB')}, 곧 (${c} − ${X}) : ${e + c} = ${X} : ${a}이다. ${a}(${c} − ${X}) = ${e + c}${X}에서 ${X} = ${x}이다.`,
+        facts: { calc: [[`${a}*${c}/(${a}+${e}+${c})`, 0]] }
+      });
+    }),
+    H('hard-bisect-perp', '각의 이등분선에 내린 수선과 밑변의 중점', '심28', (d) => {
+      // △ABE ≡ △AFE 이므로 AF = AB, BE = EF. EM ∥ FC, EM = (AC − AB) ÷ 2. DM : DC = EM : AC 에서 DM : MC = (AC − AB) : (AC + AB)
+      const v = d.until(() => {
+        const [c, b] = d.pick([[4, 8], [6, 10], [5, 10], [4, 10], [5, 9], [6, 12], [6, 9], [8, 12], [5, 11], [9, 15], [6, 14], [8, 14], [3, 7]]), t3 = sas(c, b, d.int(13, 18) * 5);
+        const P0 = Object.assign({}, t3, { D: lerp(t3.B, t3.C, c / (b + c)), M: half(t3.B, t3.C), F: lerp(t3.A, t3.C, c / b) }); P0.E = half(P0.B, P0.F);
+        const fig = Fig(P0, [214, 150], { hub: 'ABC' }).poly('ABC').seg('AD BF').right('AEB').tick('BM MC').name('ABC').name('DM', 270).nameAway('F', 'B').free('E', 'ADBF').len('AB', cm(c)).bow('AC', cm(b), 26);
+        mark(fig, 'A', 'B', 'D', 'dot', 26); mark(fig, 'A', 'D', 'C', 'dot', 26);
+        return { c, b, t3, fig };
+      }, (x) => fine(x.t3, 26, 100) && !x.fig.clash());
+      const { c, b } = v, fc = b - c, g = gcd(b - c, b + c), g2 = gcd(fc, 2 * b);
+      return ratio2(`△ABC에서 ∠A의 이등분선이 변 BC와 만나는 점을 D, 변 BC의 중점을 M이라 하자. 점 B에서 ${SG('AD')}에 내린 수선의 발을 E라 하고, ${SG('BE')}의 연장선이 변 AC와 만나는 점을 F라 하자. ${eq('AB', c)}, ${eq('AC', b)}일 때, ${nb(`${SG('DM')} : ${SG('MC')}`)}를 ${RATIO}`, (b - c) / g, (b + c) / g, {
+        figure: v.fig.svg(`삼각형 ABC. 점 D는 변 BC 위에 있고 각 BAD와 각 DAC에 크기가 같다는 표시가 있다. 점 M은 변 BC의 중점이다(길이가 같다는 표시). 점 B에서 그은 선분 BF가 선분 AD와 점 E에서 수직으로 만나고(직각 표시) 변 AC와 점 F에서 만난다. 변 BC 위에 점 B, D, M, C가 이 차례로 놓여 있다. AB = ${cm(c)}, AC = ${cm(b)}`),
+        explain: `△ABE와 △AFE에서 ∠BAE = ∠FAE, ${SG('AE')}는 공통, ∠AEB = ∠AEF = 90°이므로 두 삼각형은 합동이다. ${SG('AF')} = ${SG('AB')} = ${c} cm, ${nb(`${SG('BE')} = ${SG('EF')}`)}이고 ${SG('FC')} = ${b} − ${c} = ${fc}(cm)이다. △BCF에서 두 점 E, M은 각각 ${SG('BF')}, ${SG('BC')}의 중점이므로 ${par('EM', 'FC')}이고 ${SG('EM')} = ${frac(1, 2)}${SG('FC')} = ${fracOrInt(fc, 2)}(cm)이다. △DCA에서 ${par('EM', 'AC')}이므로 ${SG('DM')} : ${SG('DC')} = ${SG('EM')} : ${SG('AC')} = ${fc / g2} : ${2 * b / g2}이다. 따라서 ${SG('DM')} : ${SG('MC')} = ${fc / g2} : (${2 * b / g2} − ${fc / g2}) = ${(b - c) / g} : ${(b + c) / g}이다.`,
+        facts: { calc: [[`(${b}-${c})/${g}`, 0], [`(${b}+${c})/${g}`, 1]], unseen: [g] }
+      });
+    }),
+    H('hard-trap-three-mid', '사다리꼴의 두 밑변과 대각선의 중점이 만든 삼각형의 넓이', '심31', (d) => {
+      // 점 E 는 BD 의 중점이라 두 밑변까지의 거리가 높이의 반이다. △GEF = □ABFG − (△ABD − △GED) − △EBF = h(b − a) ÷ 8
+      const [a, b, h] = d.pick([[8, 12, 6], [8, 12, 8], [6, 10, 8], [6, 14, 8], [10, 14, 8], [8, 16, 8], [12, 16, 8], [10, 18, 8]]), area = h * (b - a) / 8;
+      const v = d.until(() => {
+        const P0 = trapOf(a, b, h, (b - a) * d.pick([0.2, 0.3, 0.4])); Object.assign(P0, { G: half(P0.A, P0.D), F: half(P0.B, P0.C), E: half(P0.B, P0.D) });
+        const fig = Fig(P0, [190, 132], { hub: 'ABCD' }).tint('GEF').poly('ABCD').seg('BD GE EF GF').arrow('AD', 1, 0.39).arrow('BC', 1, 0.12).tick('AG GD').tick('BF FC', 2).tick('BE ED', 3).name('AB').name('DG', 90).name('CF', 270).free('E', 'BDGF');
+        fig.b.dim(fig.P.A, fig.P.D, cm(a), fig.P.B, 26).dim(fig.P.B, fig.P.C, cm(b), fig.P.A, 26);
+        const top = fig.P.D[1], low = fig.P.C[1], at = fig.P.C[0] + 14;
+        fig.b.seg(fig.P.D, [at + 5, top], 'cut').seg(fig.P.C, [at + 5, low], 'cut').dim([at, top], [at, low], cm(h), [at - 30, (top + low) / 2], 0);
+        return { fig };
+      }, (z) => !z.fig.clash());
+      const s1 = (a / 2 + b / 2) * h / 2, s2 = a * h / 2, s3 = a * h / 8, s4 = b * h / 8;
+      return areaQ(`${par('AD', 'BC')}인 사다리꼴 ABCD에서 ${eq('AD', a)}, ${eq('BC', b)}이고 높이는 ${h} cm이다. ${SG('AD')}, ${SG('BC')}, ${SG('BD')}의 중점을 각각 G, F, E라 할 때, △GEF의 넓이는?`, area, {
+        figure: v.fig.svg(`사다리꼴 ABCD와 대각선 BD. 윗변 AD와 아랫변 BC에 평행하다는 표시가 있다. 점 G는 변 AD의 중점, 점 F는 변 BC의 중점, 점 E는 대각선 BD의 중점이다(길이가 같다는 표시). 선분 GE, EF, GF가 그어져 있고 삼각형 GEF가 색칠되어 있다. AD = ${cm(a)}, BC = ${cm(b)}, 두 밑변 사이의 거리(높이)는 ${cm(h)}`),
+        explain: `점 E는 ${SG('BD')}의 중점이므로 점 E에서 두 밑변 AD, BC까지의 거리는 각각 높이의 ${frac(1, 2)}인 ${h / 2} cm이다. □ABFG의 넓이는 ${frac(1, 2)} × (${a / 2} + ${b / 2}) × ${h} = ${s1}(${SQ})이다. △ABD의 넓이는 ${frac(1, 2)} × ${a} × ${h} = ${s2}(${SQ}), △GED의 넓이는 ${frac(1, 2)} × ${a / 2} × ${h / 2} = ${s3}(${SQ})이므로 □ABEG의 넓이는 ${s2} − ${s3} = ${s2 - s3}(${SQ})이다. △EBF의 넓이는 ${frac(1, 2)} × ${b / 2} × ${h / 2} = ${s4}(${SQ})이다. △GEF의 넓이는 ${s1} − ${s2 - s3} − ${s4} = ${area}(${SQ})이다.`,
+        facts: { calc: [[`${h}*(${b}-${a})/8`, 0]], unseen: [8] }
+      });
+    }),
+    H('hard-para-mids', '평행사변형의 세 변의 중점을 이은 선분이 잘라 낸 길이의 비', '심32', (d) => {
+      // 점 E 는 QD 의 중점, ER = QC ÷ 2, PE = 3QC ÷ 2. EF : FQ = PE : QC = 3 : 2 이므로 EF = QD × (1/2) × (3/5)
+      const v = d.until(() => {
+        const P0 = paraOf(d.pick([12, 13, 14]), d.pick([8, 9, 10]), d.int(12, 15) * 5);
+        Object.assign(P0, { P: half(P0.A, P0.B), Q: half(P0.B, P0.C), R: half(P0.C, P0.D) }); P0.E = half(P0.Q, P0.D); P0.F = lerp(P0.E, P0.Q, 3 / 5);
+        const fig = Fig(P0, [214, 140], { hub: 'ABCD' }).poly('ABCD').seg('PR QD PC').arrow('AD BC', 1, 0.3).arrow('PR', 1, 0.14).tick('AP PB CR RD').tick('BQ QC', 2).name('ABCDPQR').free('E', 'PRQD').free('F', 'QDPC');
+        return { fig };
+      }, (z) => !z.fig.clash());
+      return ratio2(`평행사변형 ABCD에서 세 변 AB, BC, CD의 중점을 각각 P, Q, R라 하면 ${par('AD', 'PR', 'BC')}이다. ${SG('QD')}가 ${SG('PR')}, ${SG('PC')}와 만나는 점을 각각 E, F라 할 때, ${nb(`${SG('QD')} : ${SG('EF')}`)}를 ${RATIO}`, 10, 3, {
+        figure: v.fig.svg('평행사변형 ABCD. 점 P, Q, R는 각각 변 AB, BC, CD의 중점이다(길이가 같다는 표시). 선분 PR, 선분 QD, 선분 PC가 그어져 있고, 변 AD, 선분 PR, 변 BC에 평행하다는 표시가 있다. 선분 QD는 선분 PR와 점 E에서, 선분 PC와 점 F에서 만나고, 선분 QD 위에 점 Q, F, E, D가 이 차례로 놓여 있다'),
+        explain: `△DQC에서 점 R는 ${SG('DC')}의 중점이고 ${par('ER', 'QC')}이므로 점 E는 ${SG('DQ')}의 중점이고 ${SG('ER')} = ${frac(1, 2)}${SG('QC')}이다. ${SG('PR')} = ${SG('BC')} = 2${SG('QC')}이므로 ${SG('PE')} = ${SG('PR')} − ${SG('ER')} = ${frac(3, 2)}${SG('QC')}이다. ${par('PE', 'QC')}이므로 ${SG('EF')} : ${SG('FQ')} = ${SG('PE')} : ${SG('QC')} = 3 : 2이다. ${SG('EF')} = ${frac(3, 5)}${SG('EQ')} = ${frac(3, 5)} × ${frac(1, 2)}${SG('QD')} = ${frac(3, 10)}${SG('QD')}이므로 ${SG('QD')} : ${SG('EF')} = 10 : 3이다.`,
+        facts: { calc: [['2*5', 0], ['3', 1]], unseen: [2, 5, 3] }
+      });
+    }),
+    H('hard-cent-incenter', '무게중심과 내심을 함께 지나는 평행선', '심35', (d) => {
+      // 무게중심과 내심을 지나는 직선이 BC 에 평행한 것은 AB + AC = 2BC 일 때다(그림은 그 삼각형으로 그린다). DB = AB ÷ 3, EC = AC ÷ 3, DI = DB, IE = EC
+      const v = d.until(() => {
+        const [c, b] = d.pick([[18, 12], [12, 18], [15, 9], [9, 15], [21, 15], [15, 21], [24, 18], [18, 24], [15, 12], [12, 15], [12, 6], [6, 12]]), t3 = sss((b + c) / 2, b, c);
+        const P0 = Object.assign({}, t3, { D: lerp(t3.A, t3.B, 2 / 3), E: lerp(t3.A, t3.C, 2 / 3), G: cen(t3), I: incOf(t3) });
+        const fig = Fig(P0, [196, 160], { hub: 'ABC' }).poly('ABC').seg('DE').dot('GI').arrow('DE BC', 1, 0.1).name('ABC');
+        fig.name('D', dirOf(fig.P.B, fig.P.A) + 90).name('E', dirOf(fig.P.C, fig.P.A) - 90).name('G', 90, 12).name('I', 270, 12).bow('AB', cm(c), 26).bow('AC', cm(b), 26);
+        return { c, b, t3, fig };
+      }, (x) => fine(x.t3, 34, 100) && !x.fig.clash());
+      const { c, b } = v;
+      return lenQ(`△ABC에서 점 G는 무게중심, 점 I는 내심이다. 두 점 G, I를 지나는 직선이 변 BC에 평행하고, 이 직선이 두 변 AB, AC와 만나는 점을 각각 D, E라 하자. ${eq('AB', c)}, ${eq('AC', b)}일 때, ${SG('DE')}의 길이는?`, (b + c) / 3, {
+        figure: v.fig.svg(`삼각형 ABC. 삼각형의 내부에 두 점 G, I가 있고, 두 점을 지나는 선분 DE가 변 AB와 점 D에서, 변 AC와 점 E에서 만난다. 선분 DE와 변 BC에 평행하다는 표시가 있다. AB = ${cm(c)}, AC = ${cm(b)}`),
+        explain: `${SG('AG')}의 연장선이 변 BC와 만나는 점을 M이라 하면 ${SG('AM')}은 중선이고 ${SG('AG')} : ${SG('GM')} = 2 : 1이다. ${par('DE', 'BC')}이므로 ${SG('AD')} : ${SG('DB')} = ${SG('AE')} : ${SG('EC')} = 2 : 1이고 ${SG('DB')} = ${c} × ${frac(1, 3)} = ${c / 3}(cm), ${SG('EC')} = ${b} × ${frac(1, 3)} = ${b / 3}(cm)이다. 점 I는 내심이므로 ∠DBI = ∠IBC이고, ${par('DE', 'BC')}이므로 ∠IBC = ∠DIB(엇각)이다. △DBI는 ${nb(`${SG('DI')} = ${SG('DB')}`)}인 이등변삼각형이고, 같은 방법으로 ${nb(`${SG('IE')} = ${SG('EC')}`)}이다. ${SG('DE')} = ${c / 3} + ${b / 3} = ${(b + c) / 3}(cm)이다.`,
+        facts: { calc: [[`${c}/3+${b}/3`, 0]], unseen: [3] }
+      });
+    }),
+    H('hard-roll', '굴러가는 정삼각형의 무게중심이 움직인 거리', '심39', (d) => {
+      // 한 번 굴릴 때 무게중심은 반지름이 (중선의 2/3), 중심각이 120°인 호를 그린다. 세 번 굴리면 처음과 같은 자세가 된다.
+      const k = d.int(1, 6), m = 3 * k, h = Math.sqrt(3) / 2, y = h / 3;
+      const P0 = { L: [-0.34, 0], Z: [4.4, 0], B: [0, 0], C: [1, 0], A: [0.5, h], G: [0.5, y], J: [1.5, h], U: [1.5, y], K: [2, 0], M: [2.5, h], V: [2.5, y], N: [3, 0], R: [3.5, h], W: [3.5, y], S: [4, 0] };
+      const fig = Fig(P0, [256, 64], { show: { J: 'B', K: 'A', M: 'C', N: 'B', R: 'A', S: 'C' } }).seg('LZ').poly('ABC').seg('CJ JK KM MN', 'cut').poly('NRS').dot('GUVW').name('AJMR', 90).name('BCKNS', 270).name('G', 90, 11);
+      fig.b.text([fig.P.Z[0] + 9, fig.P.Z[1]], sv('l'), { plain: true });
+      return piLen(`중선의 길이가 ${m} cm인 정삼각형 ABC의 무게중심을 G라 하자. 그림과 같이 △ABC를 직선 ${LV('l')} 위에서 미끄러지지 않게 오른쪽으로 굴려, 변 BC가 다시 직선 ${LV('l')} 위에 놓일 때까지 이동시켰다. 이때 점 G가 움직인 거리는?`, 4 * k, {
+        figure: fig.svg('직선 l 위에 정삼각형 ABC가 변 BC를 직선에 붙이고 놓여 있고, 삼각형의 내부에 점 G가 있다. 그 오른쪽으로 삼각형을 한 번, 두 번 굴린 모양이 점선으로, 세 번 굴린 모양이 실선으로 그려져 있다. 한 번 굴린 삼각형은 변 CA가, 두 번 굴린 삼각형은 변 AB가, 세 번 굴린 삼각형은 다시 변 BC가 직선에 붙어 있다. 삼각형마다 무게중심의 자리에 점이 찍혀 있다'),
+        explain: `삼각형이 직선 위의 한 꼭짓점을 중심으로 돌 때, 점 G는 그 꼭짓점이 중심이고 반지름이 꼭짓점에서 점 G까지의 거리인 호를 그린다. 정삼각형의 세 중선의 길이는 같으므로 꼭짓점에서 점 G까지의 거리는 ${m} × ${frac(2, 3)} = ${2 * k}(cm)이다. 한 번 굴릴 때 도는 각의 크기는 정삼각형의 한 외각의 크기인 120°이므로 호 하나의 길이는 2π × ${2 * k} × ${frac(120, 360)} = ${fracOrInt(4 * k, 3)}π(cm)이다. 변 BC가 다시 직선 위에 놓일 때까지 세 번 굴리므로 점 G가 움직인 거리는 ${fracOrInt(4 * k, 3)}π × 3 = ${4 * k}π(cm)이다.`,
+        facts: { calc: [[`2*${m}*2*120*3/3/360`, 0]], unseen: [2, 120, 3, 360] }
+      });
+    }),
+    H('hard-para-three', '평행사변형의 두 변의 중점과 대각선이 나눈 사각형의 넓이', '심45', (d) => {
+      const k = d.int(1, 5), S = 24 * k;
+      const v = d.until(() => {
+        const P0 = anyPara(d); Object.assign(P0, { M: half(P0.B, P0.C), N: half(P0.C, P0.D), E: lerp(P0.B, P0.D, 1 / 3), F: lerp(P0.B, P0.D, 2 / 3) });
+        const fig = Fig(P0, [196, 130], { hub: 'ABCD' }).tint('EMNF').poly('ABCD').seg('BD AM AN MN').tick('BM MC').tick('CN ND', 2).name('ABCDMN').free('E', 'BDAM').free('F', 'BDAN');
+        return { fig };
+      }, (x) => !x.fig.clash());
+      return areaQ(`${PARA_LEAD} ${SG('AM')}, ${jo('AN', '과/와')} 만나는 점을 각각 E, F라 하자. □ABCD의 넓이가 ${S} ${SQ}일 때, □EMNF의 넓이는?`, 5 * k, {
+        figure: v.fig.svg('평행사변형 ABCD. 점 M은 변 BC의 중점, 점 N은 변 CD의 중점이다(길이가 같다는 표시). 대각선 BD가 그어져 있고, 선분 AM은 대각선 BD와 점 E에서, 선분 AN은 대각선 BD와 점 F에서 만난다. 선분 MN이 그어져 있고 사각형 EMNF가 색칠되어 있다'),
+        explain: `대각선 AC를 그으면 점 E는 △ABC의 무게중심, 점 F는 △ACD의 무게중심이므로 ${nb(`${SG('BE')} = ${SG('EF')} = ${SG('FD')}`)}이고, △AEF의 넓이는 △ABD의 넓이의 ${frac(1, 3)}인 ${S} × ${frac(1, 2)} × ${frac(1, 3)} = ${4 * k}(${SQ})이다. △ABM과 △AND의 넓이는 각각 ${S} × ${frac(1, 4)} = ${6 * k}(${SQ})이고, △MCN의 넓이는 △BCD의 넓이의 ${frac(1, 4)}인 ${S} × ${frac(1, 2)} × ${frac(1, 4)} = ${3 * k}(${SQ})이다. △AMN의 넓이는 ${S} − ${6 * k} − ${6 * k} − ${3 * k} = ${9 * k}(${SQ})이므로 □EMNF의 넓이는 ${9 * k} − ${4 * k} = ${5 * k}(${SQ})이다.`,
+        facts: { calc: [[`${S}*5/24`, 0]], unseen: [5, 24] }
+      });
+    })
+  ]);
+
   // ── 기본 묶음에 덧붙이는 꼴 ──
   // 받으면서 실력에서 기본으로 내린 꼴: 기본에서 하는 일을 다시 묻거나 한 번에 풀리는 것.
   const TB = (id, title, ref, make, more) => Object.assign({ id, level: '기본', title, source: src(ref), make: K.glued(make) }, more || {});
