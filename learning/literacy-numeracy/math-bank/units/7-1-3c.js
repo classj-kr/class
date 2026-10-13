@@ -487,4 +487,283 @@
       });
     }, { standard: STD1 })
   ]);
+
+  // ── 다시 실은 꼴(2026-10-13) ──
+  // 처음 지을 때 「정도를 넘는다 · 지나치게 복잡하다 · 꼬임이 있다 · 요령이 필요하다 · 같은 일이라 한 유형만 싣는다」는 까닭으로 뺀 꼴을 다시 보고,
+  // 이 단원과 앞 단원의 내용만으로 풀리는 것을 덧붙였다. 이미 실린 유형의 이름·차례·문항은 그대로이고, 새 유형은 묶음마다 맨 끝에 붙는다.
+  // 꼴마다의 판정(다시 실음 / 그대로 뺌과 까닭)은 대조표(싣기_대조표.md)의 「다시 싣기」에 있다.
+  //  실력 ① 뜻을 정확히 대야 풀리는 것: 범위만 준 문자의 식의 크기(심21), −x¹⁰⁰과 (−x)¹⁰⁰을 가리는 대입(심28·29), 전개도에서 마주 보는 면(심52),
+  //   수선과 변을 가려 쓰는 사각형의 넓이(①104)
+  //  실력 ② 세 단계 넘게 잇는 것: 식 덩어리의 값(심32), 상수항을 문자로 두기(①100 심37), 하나씩만 알려진 두 식(심49), 분수 꼴 식의 잘못 계산(①94),
+  //   한 식이 다른 식에 매인 조건(①96·심51의 변형), 삼각형 둘을 빼는 넓이(①101), 문자로 둔 수가 없어지는 차(심69)
+  //  기본: 정사각형 모양으로 늘어나는 바둑돌(심62), 분자와 분모가 모두 분수가 되는 대입(심24), 문자가 둘인 생활 공식(①41), 수를 곱한 괄호가 낀 여러 겹 괄호(심44의 변형),
+  //   빼는 넓이가 괄호가 있는 식인 색칠한 부분(①101 심58)
+  // 그대로 뺀 것: 문자가 둘인 다항식의 덧셈·뺄셈과 문자끼리의 약분(중2), 방정식·등식(다음 단원), 새로 약속한 기호(교육과정: 사칙계산 이외의 이항연산 문제는 다루지 않는다),
+  //  그림을 끝내 알 수 없는 것, 따로 구한 값을 뜻 없이 더하는 꼬리, 이미 실린 유형과 같은 일.
+  const { valueOK } = K;
+  const sj = signedJs, SQ = `cm${sup(2)}`;
+  const thin = (path) => `<path d="${path}" style="fill:none;stroke:${INK};stroke-width:1"/>`;
+
+  // ── 그림 ──
+  // 바둑돌을 정사각형 모양으로 늘어놓은 그림(1번째부터 4번째까지)
+  function squareStonesFig() {
+    const gap = 13, base = 49;
+    let out = '';
+    [22, 62, 112, 176].forEach((x, i) => {
+      const k = i + 1;
+      for (let c = 0; c < k; c += 1) for (let r = 0; r < k; r += 1) out += `<circle cx="${x + c * gap}" cy="${base - r * gap}" r="4.8" style="fill:#374151;stroke:#111827;stroke-width:1"/>`;
+      out += `<text x="${x + (k - 1) * gap / 2}" y="${base + 23}" text-anchor="middle" style="font-size:12.5px;font-weight:600;fill:${INK}">${k}번째</text>`;
+    });
+    return svg(234, base + 31, '바둑돌을 정사각형 모양으로 늘어놓은 그림: 1번째는 1개, 2번째는 가로와 세로에 2개씩 4개, 3번째는 가로와 세로에 3개씩 9개, 4번째는 가로와 세로에 4개씩 16개이다', out);
+  }
+  // 사다리꼴 안에서 직사각형을 뺀 나머지를 색칠한 그림. k: 아랫변이 윗변의 몇 배인가(그림의 비율), hole: 직사각형의 [가로, 세로]. 길이는 식 글로 준다.
+  function trapHoleFig(top, bottom, height, hole, k, unit) {
+    const tw = 268 / k, tl = k === 2 ? 86 : 60, hx = tl + 44, hy = 40, hw = 44, hh = 64;
+    return svg(296, 154, `사다리꼴 안에서 직사각형을 뺀 나머지를 색칠한 그림: 사다리꼴의 윗변의 길이는 ${said(top, unit)}, 아랫변의 길이는 ${said(bottom, unit)}, 높이는 ${said(height, unit)}이고, 직사각형의 가로의 길이는 ${said(hole[0], unit)}, 세로의 길이는 ${said(hole[1], unit)}`,
+      shape(`M${tl} 22h${tw.toFixed(1)}L282 128H14z`, TINT) + shape(`M${hx} ${hy}h${hw}v${hh}h${-hw}z`, '#fff')
+      + `<path d="M${tl} 22v106" style="fill:none;stroke:${INK};stroke-width:1;stroke-dasharray:4 3"/>` + thin(`M${tl} 120h8v8`)
+      + label(tl + tw / 2, 15, top, unit) + label(148, 146, bottom, unit) + label(tl + 6, 80, height, unit, 'start') + label(hx + hw / 2, hy + hh + 16, hole[0], unit) + label(hx + hw + 6, hy + hh - 12, hole[1], unit, 'start'));
+  }
+  // 큰 직사각형에서 그 안쪽에 있는 작은 직사각형을 뺀 나머지를 색칠한 그림. 작은 직사각형은 왼쪽·오른쪽 변에서 side, 위쪽 변에서 up, 아래쪽 변에서 down 만큼 떨어져 있다.
+  // upWider: 위쪽 틈이 아래쪽 틈보다 넓은가(그림에서 넓은 쪽을 넓게 그린다)
+  function insetFig(W, Hh, side, up, down, unit, upWider) {
+    const x0 = 22, y0 = 26, w = 220, h = 124, gx = 48, gt = upWider ? 38 : 30, gb = upWider ? 30 : 38, ix = x0 + gx, iy = y0 + gt, iw = w - 2 * gx, ih = h - gt - gb, my = iy + ih / 2, mx = x0 + w / 2;
+    return svg(296, y0 + h + 8, `큰 직사각형에서 그 안쪽에 있는 작은 직사각형을 뺀 나머지를 색칠한 그림: 큰 직사각형은 가로 ${said(W, unit)}, 세로 ${said(Hh, unit)}이다. 작은 직사각형의 변은 큰 직사각형의 왼쪽 변과 오른쪽 변에서 각각 ${said(side, unit)}, 위쪽 변에서 ${said(up, unit)}, 아래쪽 변에서 ${said(down, unit)} 떨어져 있다`,
+      shape(`M${x0} ${y0}h${w}v${h}h${-w}z`, TINT) + shape(`M${ix} ${iy}h${iw}v${ih}h${-iw}z`, '#fff')
+      + thin(`M${x0} ${my}h${gx}`) + thin(`M${ix + iw} ${my}h${gx}`) + thin(`M${mx} ${y0}v${gt}`) + thin(`M${mx} ${iy + ih}v${gb}`)
+      + label(x0 + gx / 2, my - 6, side, unit) + label(ix + iw + gx / 2, my - 6, side, unit) + label(mx + 6, y0 + gt / 2 + 5, up, unit, 'start') + label(mx + 6, iy + ih + gb / 2 + 5, down, unit, 'start')
+      + label(mx, y0 - 9, W, unit) + label(x0 + w + 6, y0 + h / 2 + 5, Hh, unit, 'start'));
+  }
+  // 정육면체의 전개도: 정사각형 4개가 가로로 한 줄로 이어지고, 그 위쪽과 아래쪽에 하나씩 붙는다. row: 가로줄의 네 칸, top·bottom: [붙는 자리(0~3), 글]. 글은 식 글이나 이름표(㉠)
+  function netCubeFig(row, top, bottom) {
+    const s = 62, x0 = 24, y0 = 4, isTag = (t) => /^[㉠-㉯]$/.test(t), told = (t) => (isTag(t) ? t : plainX(X(t))), ORD = ['첫째', '둘째', '셋째', '넷째'];
+    const cell = (x, y, t) => `<rect x="${x}" y="${y}" width="${s}" height="${s}" style="fill:${isTag(t) ? 'rgba(37,99,235,0.1)' : '#fff'};stroke:${INK};stroke-width:1.2"/>`
+      + `<text x="${x + s / 2}" y="${y + s / 2 + 5}" text-anchor="middle" style="font-size:${isTag(t) ? 16 : 13}px;font-weight:600;fill:${isTag(t) ? EDGE : INK}">${isTag(t) ? t : svgX(X(t))}</text>`;
+    return svg(2 * x0 + 4 * s, 3 * s + 2 * y0, `정육면체의 전개도: 정사각형 4개가 가로로 한 줄로 이어져 있고, 그 줄의 왼쪽에서 ${ORD[top[0]]} 정사각형의 위쪽과 ${ORD[bottom[0]]} 정사각형의 아래쪽에 정사각형이 하나씩 붙어 있다. 가로줄의 정사각형에 적힌 것은 왼쪽부터 ${row.map(told).join(', ')}이고, 위쪽에 붙은 정사각형에 적힌 것은 ${told(top[1])}, 아래쪽에 붙은 정사각형에 적힌 것은 ${told(bottom[1])}`,
+      row.map((t, i) => cell(x0 + i * s, y0 + s, t)).join('') + cell(x0 + top[0] * s, y0, top[1]) + cell(x0 + bottom[0] * s, y0 + 2 * s, bottom[1]));
+  }
+  // 직사각형에서 직각삼각형 둘을 뺀 나머지를 색칠한 그림. 위쪽 변은 왼쪽부터 p, q 로, 오른쪽 변은 위부터 u × (문자), w × (문자)로 나뉜다.
+  function cutRectFig(p, q, u, w, letter, unit) {
+    const x0 = 30, y0 = 30, W = 196, Hh = 120, clamp = (t) => Math.min(0.68, Math.max(0.32, t)), ex = Math.round(x0 + W * clamp(p / (p + q))), fy = Math.round(y0 + Hh * clamp(u / (u + w)));
+    return svg(296, y0 + Hh + 8, `직사각형의 한 부분을 색칠한 그림: 직사각형의 위쪽 변은 왼쪽부터 길이가 ${p} ${unit}, ${q} ${unit}인 두 부분으로, 오른쪽 변은 위부터 길이가 ${u}${letter} ${unit}, ${w}${letter} ${unit}인 두 부분으로 나뉘어 있다. 위쪽 변을 나눈 점과 오른쪽 변을 나눈 점을 이은 선분, 오른쪽 변을 나눈 점과 왼쪽 아래 꼭짓점을 이은 선분이 직사각형을 세 부분으로 나누고, 그 가운데 왼쪽 위 꼭짓점이 있는 사각형이 색칠되어 있다. 색칠하지 않은 두 부분은 직각삼각형이다`,
+      shape(`M${x0} ${y0}h${W}v${Hh}h${-W}z`, '#fff') + shape(`M${x0} ${y0}L${ex} ${y0}L${x0 + W} ${fy}L${x0} ${y0 + Hh}z`, TINT)
+      + label((x0 + ex) / 2, y0 - 9, String(p), unit) + label((ex + x0 + W) / 2, y0 - 9, String(q), unit) + label(x0 + W + 7, (y0 + fy) / 2 + 5, `${u}${letter}`, unit, 'start') + label(x0 + W + 7, (fy + y0 + Hh) / 2 + 5, `${w}${letter}`, unit, 'start'));
+  }
+  // 각 D가 직각인 사각형 ABCD와 꼭짓점 A에서 변 BC에 그은 수선. 변 AD의 길이 k, 수선의 길이 h 는 수, 변 BC·변 DC 의 길이는 문자 x, y
+  function quadFig(k, h, unit) {
+    const name = (x, y, t, anchor) => `<text x="${x}" y="${y}" text-anchor="${anchor}" style="font-size:13.5px;font-weight:600;fill:${INK}">${t}</text>`;
+    return svg(272, 190, `사각형 ABCD: 변 AD의 길이는 ${k} ${unit}, 변 DC의 길이는 y ${unit}, 변 BC의 길이는 x ${unit}이고, 각 D는 직각이다. 꼭짓점 A에서 변 BC에 그은 수선의 길이는 ${h} ${unit}이다`,
+      shape('M66 72L121 23L246 164L30 164z', TINT) + `<path d="M66 72v92" style="fill:none;stroke:${INK};stroke-width:1;stroke-dasharray:4 3"/>` + thin('M66 156h8v8') + thin('M114.3 29L120.3 35.7L127 29.7')
+      + name(58, 70, 'A', 'end') + name(22, 172, 'B', 'end') + name(252, 172, 'C', 'start') + name(123, 17, 'D', 'middle')
+      + label(86, 39, String(k), unit, 'end') + label(191, 87, 'y', unit, 'start') + label(138, 182, 'x', unit) + label(73, 124, String(h), unit, 'start'));
+  }
+
+  // ── 실력 묶음에 덧붙이는 꼴 ──
+  B.addTypes('7-1-3', 'hard', [
+    H('hard-range-rank', '범위만 주어진 문자의 식의 값의 크기 비교', '심21', (d) => {
+      // 함정: 수가 주어지지 않아 범위 안의 수를 스스로 골라 넣어야 한다. 절댓값이 1보다 작은 수는 거듭제곱할수록 절댓값이 작아지고 그 역수의 절댓값은 1보다 크다는 것,
+      //  음수를 짝수 번·홀수 번 곱한 부호를 놓치면 틀린다.
+      const pos = d.bool(), big = d.bool(), POOL = ['a', 'a^2', '-a', '-a^2', 'a^3', '[1|a]', '-[1|a]'];
+      const probes = (pos ? [Q(1, 2), Q(1, 3), Q(3, 4)] : [Q(-1, 2), Q(-1, 3), Q(-3, 4)]).map((q) => ({ a: q })), env = probes[0];
+      const rows = d.until(() => d.shuffle(POOL).slice(0, 4), (list) => list.filter((r) => (xv(r, env).p > 0) === big).length >= 2 && list.some((r) => r.includes('|')) && list.some((r) => r.includes('^')));
+      // 범위 안의 어느 수를 넣어도 크기의 차례가 같은지 수 셋으로 확인한다.
+      const orders = probes.map((e) => { const vals = rows.map((r) => fl(xv(r, e))); return vals.map((x) => vals.filter((y) => y > x).length).join(); });
+      if (new Set(orders).size !== 1) throw new Error('범위 안에서 크기의 차례가 달라진다');
+      const values = rows.map((r) => fl(xv(r, env))), at = values.indexOf(big ? Math.max(...values) : Math.min(...values));
+      // 대입한 식과 값: 대입한 글이 값과 같으면(a = −1/2) 값만 적는다.
+      const bare = (hh) => hh.replace(/<[^>]+>/g, '').replace(/[()\s]/g, ''), put = (r) => { const sub = xsub(r, env), val = tx(xv(r, env)); return bare(sub) === bare(val) ? val : sub + ' = ' + val; };
+      return C(`${nb(pos ? `0 &lt; ${V('a')} &lt; 1` : `${MINUS}1 &lt; ${V('a')} &lt; 0`)}일 때, 다음 중 식의 값이 가장 ${big ? '큰' : '작은'} 것은?`, rows.map(xh), at, {
+        explain: `${V('a')}는 절댓값이 1보다 작은 ${pos ? '양수' : '음수'}이다. 절댓값이 1보다 작은 수는 거듭제곱할수록 절댓값이 작아지고, 그 역수의 절댓값은 1보다 크다. 범위 안의 수 ${nb(`${V('a')} = ${tx(env.a)}`)}${tail(lastOf(env.a), '을/를')} 대입하면 ${rows.map((r) => `${xh(r)} = ${put(r)}`).join(', ')}이다. 범위 안의 다른 수를 대입해도 크기의 차례는 같다.`,
+        facts: { rank: { values, nth: big ? 1 : 4 } }
+      });
+    }, { standard: STD1 }),
+    H('hard-pow-sign', '지수가 큰 거듭제곱과 부호가 겹친 식에 음수 대입하기', '심28·29', (d) => {
+      // 함정: −x¹⁰⁰은 x¹⁰⁰에 −를 붙인 것이다((−x)¹⁰⁰이 아니다). −1을 괄호 없이 넣거나, 짝수 번·홀수 번 곱한 부호를 헷갈리면 틀린다.
+      // 단계: 거듭제곱 넷의 값을 정한다 → 곱셈과 나눗셈을 앞에서부터 계산한다 → 괄호 앞의 −를 처리한다.
+      const y = d.pick([2, 3]), E = d.pick([50, 98, 200, 2024]), O = d.pick([77, 99, 101, 2025]), evenFirst = d.bool(), env = { x: Q(-1), y: Q(y) };
+      const t1 = `-x^${evenFirst ? E : O}`, t2 = `-x^${evenFirst ? O : E}`, src = `${t1}*(-y)^3:([y|x])^2-(${t2})`;
+      const v1 = xv(t1, env), v2 = xv(t2, env), cube = Q(-y * y * y), sq = y * y, first = qdiv(qmul(v1, cube), Q(sq)), v = xv(src, env);
+      return ansV(`${given(env)}일 때, 다음 식의 값은?`, v, 'int', {
+        figure: xex(src),
+        explain: `${MINUS}1은 짝수 번 곱하면 1, 홀수 번 곱하면 ${MINUS}1이다. ${xh(t1)} = ${xsub(t1, env)} = ${tx(v1)}, ${xh('(-y)^3')} = ${xsub('(-y)^3', env)} = ${tx(cube)}, ${xh('([y|x])^2')} = ${nb(`(${MINUS}${y})${sup(2)}`)} = ${sq}, ${xh(t2)} = ${xsub(t2, env)} = ${tx(v2)}이다. 따라서 식의 값은 ${nb(`${qs(v1)} × ${qs(cube)} ÷ ${sq} ${MINUS} ${qs(v2)}`)} = ${nb(`${tx(first)} ${MINUS} ${qs(v2)}`)} = ${tx(v)}이다. 괄호 없이 ${MINUS}가 붙은 거듭제곱은 거듭제곱을 먼저 계산한 다음 ${MINUS}를 붙인다.`,
+        facts: { value: xjs(src, env) }
+      });
+    }, { standard: STD1 }),
+    H('hard-chunk-value', '식 덩어리의 값으로 다른 식의 값 구하기', '심32', (d) => {
+      // 단계: 분자와 분모를 분배법칙으로 묶는다 → 주어진 식의 역수가 나타난 것을 알아본다 → 수끼리 곱한다. 문자 하나하나의 값은 구할 수 없다.
+      const [p, q] = d.until(() => [d.int(2, 7), d.int(2, 7)], ([a, b]) => gcd(a, b) === 1), t = d.int(2, 4), u = d.pick([1, 1, 2]), m = t * p * u, n = q * u, form = d.int(0, 2);
+      const den = [`-${n}x+${n}y`, `${n}y-${n}x`, `${n}x-${n}y`][form], sign = form === 2 ? 1 : -1, src = `[${m}a+${m}b|${den}]`, v = Q(sign * t), tied = `${form === 2 ? '' : '-'}${n}(x-y)`;
+      // 조건에 맞는 수를 실제로 넣어 답을 확인한다: a + b = q, x − y = p
+      const env = { a: Q(q + 1), b: Q(-1), x: Q(p + 2), y: Q(2) };
+      if (qcmp(xv('[x-y|a+b]', env), Q(p, q)) !== 0 || qcmp(xv(src, env), v) !== 0) throw new Error('식의 값이 맞지 않는다');
+      return ansV(`${nb(`${htmlX(X('[x-y|a+b]'))} = ${frac(p, q)}`)}일 때, ${xh(src)}의 값은?`, v, 'int', {
+        explain: `분배법칙을 이용하면 ${xh(`${m}a+${m}b`)} = ${xh(`${m}(a+b)`)}, ${xh(den)} = ${xh(tied)}이다. ${nb(`${htmlX(X('[x-y|a+b]'))} = ${frac(p, q)}`)}이면 그 역수는 ${nb(`${htmlX(X('[a+b|x-y]'))} = ${frac(q, p)}`)}이므로 ${xh(src)} = ${xh(`[${m}(a+b)|${tied}]`)} = ${nb(`${qs(Q(sign * m, n))} × ${frac(q, p)}`)} = ${tx(v)}이다.`,
+        facts: { value: `(${sign < 0 ? '-' : ''}${m}/${n})*(${q}/${p})` }
+      });
+    }, { standard: STD1 }),
+    H('hard-coef-only', '일차항의 계수만 아는 일차식의 두 식의 값의 차', '심37 / 기본 ①100', (d) => {
+      // 단계: 모르는 상수항을 문자로 둔다 → 두 식의 값을 그 문자를 사용한 식으로 나타낸다 → 빼면 상수항이 없어진다.
+      const k = pm(d) * d.int(2, 7), [p, q] = d.until(() => [nz(d, -4, 6), nz(d, -4, 6)], ([x, y]) => x !== y), back = d.bool(), v = back ? k * (q - p) : k * (p - q);
+      const a = V('a'), b = V('b'), ask = nb(back ? `${b} ${MINUS} ${a}` : `${a} ${MINUS} ${b}`), va = pn([[k * p, ''], [1, 'k']]), vb = pn([[k * q, ''], [1, 'k']]);
+      return ansV(`${V('x')}의 계수가 ${tx(Q(k))}인 어떤 일차식에서 ${nb(`${V('x')} = ${tx(Q(p))}`)}일 때의 식의 값이 ${a}, ${nb(`${V('x')} = ${tx(Q(q))}`)}일 때의 식의 값이 ${b}이다. ${ask}의 값은?`, Q(v), 'int', {
+        explain: `상수항을 ${V('k')}라 하면 이 일차식은 ${xh(`${pn([[k, 'x']])}+k`)}이다. ${nb(`${a} = ${qs(k)} × ${qs(p)} + ${V('k')}`)} = ${xh(va)}, ${nb(`${b} = ${qs(k)} × ${qs(q)} + ${V('k')}`)} = ${xh(vb)}이므로 ${ask} = ${xh(back ? `(${vb})-(${va})` : `(${va})-(${vb})`)} = ${tx(Q(v))}이다. 상수항 ${V('k')}는 빼는 과정에서 없어진다.`,
+        facts: { value: back ? `${sj(k)}*${sj(q)}-${sj(k)}*${sj(p)}` : `${sj(k)}*${sj(p)}-${sj(k)}*${sj(q)}` }
+      });
+    }),
+    H('hard-partial-two', '계수와 상수항이 하나씩만 알려진 두 일차식', '심49', (d) => {
+      // 단계: 두 식을 더하면 계수끼리, 상수항끼리 더해진다는 것으로 B의 계수와 A의 상수항을 구한다 → 두 식을 정한다 → 뺀다(괄호).
+      const v = 'x', A = V('A'), Bv = V('B');
+      const [al, p, q, be] = d.until(() => [coef(d, -6, 6), coef(d, -8, 8), coef(d, -5, 5), coef(d, -8, 8)], (t) => t[0] + t[2] !== 0 && t[1] + t[3] !== 0 && t[0] - t[2] !== 0 && t[1] - t[3] !== 0 && Math.abs(t[0]) !== Math.abs(t[2]) && Math.abs(t[1]) !== Math.abs(t[3]));
+      const ga = al + q, de = p + be, src = `(${ln(al, p, v)})-(${ln(q, be, v)})`;
+      return linQ(`${A}는 ${V('x')}의 계수가 ${tx(Q(al))}인 일차식이고, ${Bv}는 상수항이 ${tx(Q(be))}인 일차식이다. ${nb(`${A} + ${Bv} = ${htmlX(X(ln(ga, de, v)))}`)}일 때, ${nb(`${A} ${MINUS} ${Bv}`)}를 계산하시오.`, src, v, {
+        explain: `두 일차식을 더하면 ${V('x')}의 계수끼리, 상수항끼리 더해진다. ${Bv}의 ${V('x')}의 계수는 ${nb(`${tx(Q(ga))} ${MINUS} ${qs(al)} = ${tx(Q(q))}`)}이고, ${A}의 상수항은 ${nb(`${tx(Q(de))} ${MINUS} ${qs(be)} = ${tx(Q(p))}`)}이다. 따라서 ${nb(`${A} = ${htmlX(X(ln(al, p, v)))}`)}, ${nb(`${Bv} = ${htmlX(X(ln(q, be, v)))}`)}이고 ${nb(`${A} ${MINUS} ${Bv}`)} = ${xh(src)} = ${xh(ln(al - q, p - be, v))}이다.`,
+        facts: { calc: [[`${sj(al)}-(${sj(ga)}-${sj(al)})`, 0], [`${sj(de)}-${sj(be)}-${sj(be)}`, 1]], unseen: [1] }
+      });
+    }),
+    H('hard-wrong-add-frac', '분수 꼴 일차식을 잘못 더하거나 뺀 계산 바로잡기', '기본 ①94', (d) => {
+      // 단계: 잘못 계산한 결과에서 거꾸로 셈해 어떤 식을 구한다(통분) → 바르게 계산한다(통분) → 약분한다. 어떤 식을 구한 데서 멈추면 틀린다.
+      const v = 'x', h = d.pick([2, 3]), q = 2 * h, s = pm(d);     // s = 1: 더할 것을 뺌(바른 식 = R + 2P), s = −1: 뺄 것을 더함(바른 식 = R − 2P)
+      const [A, Bc, a, b, c, e] = d.until(() => { const t = [coef(d, -4, 4), coef(d, -5, 5), d.int(1, 5), coef(d, -5, 5)]; return t.concat([h * t[0] - s * t[2], h * t[1] - s * t[3]]); },
+        (t) => t[4] >= 1 && t[4] <= 9 && t[5] !== 0 && Math.abs(t[5]) <= 9 && gcd(gcd(t[2], Math.abs(t[3])), q) === 1 && gcd(gcd(t[4], Math.abs(t[5])), h) === 1 && 2 * t[4] + s * t[2] !== 0 && 2 * t[5] + s * t[3] !== 0);
+      const P = `[${ln(a, b, v)}|${q}]`, R = `[${ln(c, e, v)}|${h}]`, op = s > 0 ? '+' : '-', src = `${R}${op}${P}${op}${P}`, some = `[${ln(2 * c + s * a, 2 * e + s * b, v)}|${q}]`;
+      const Pj = (pair) => xh(P) + tail(Math.abs(b), pair), Rj = (pair) => xh(R) + tail(Math.abs(e), pair);
+      return linQ(`어떤 식${s > 0 ? `에 ${Pj('을/를')} 더해야 할 것을 잘못하여 뺐더니` : `에서 ${Pj('을/를')} 빼야 할 것을 잘못하여 더했더니`} ${Rj('이/가')} 되었다. 바르게 계산한 식을 구하시오.`, src, v, {
+        explain: `어떤 식${s > 0 ? '에서' : '에'} ${Pj('을/를')} ${s > 0 ? '빼어' : '더하여'} ${Rj('이/가')} 되었으므로 어떤 식은 ${xh(`${R}${op}${P}`)} = ${xh(`[${kp(2, ln(c, e, v))}${op}(${ln(a, b, v)})|${q}]`)} = ${xh(some)}이다. 바르게 계산하면 ${xh(`${some}${op}${P}`)} = ${xh(`[${ln(q * A, q * Bc, v)}|${q}]`)} = ${xh(ln(A, Bc, v))}이다.`,
+        facts: { calc: [[`(${c}*${q}/${h}${op}${a}${op}${a})/${q}`, 0], [`(${sj(e)}*${q}/${h}${op}${sj(b)}${op}${sj(b)})/${q}`, 1]], unseen: [1] }
+      });
+    }),
+    H('hard-two-conds-chain', '한 식이 다른 식에 매인 조건으로 두 식 구하기', '심51 / 기본 ①96', (d, n) => {
+      // 단계: (가)에서 거꾸로 셈해 A를 구한다 → 구한 A를 (나)에 넣어 B를 구한다 → 두 식을 더한다. B는 A를 구해야 정해진다.
+      const v = 'x', A = V('A'), Bv = V('B'), f = (c0) => ln(c0[0], c0[1], v), plus = (x, y, m) => [x[0] + m * y[0], x[1] + m * y[1]];
+      const [P, R, U] = d.until(() => [[coef(d, -5, 5), coef(d, -8, 8)], [coef(d, -5, 5), coef(d, -8, 8)], [coef(d, -4, 4), coef(d, -6, 6)]], ([p0, r0, u0]) => {
+        const a0 = plus(r0, p0, 1), b0 = plus(a0, u0, n === 0 ? -1 : 2), sum = plus(a0, b0, 1);
+        return a0.concat(b0, sum).every((x) => x !== 0 && Math.abs(x) <= 30) && (a0[0] !== u0[0] || a0[1] !== u0[1]);
+      });
+      const a = plus(R, P, 1), b = plus(a, U, n === 0 ? -1 : 2), sum = plus(a, b, 1), src = n === 0 ? `(${f(a)})+{(${f(a)})-(${f(U)})}` : `(${f(a)})+{(${f(a)})+2(${f(U)})}`;
+      const tailJs = (i) => (n === 0 ? `-${sj(U[i])}` : `+${sj(U[i])}+${sj(U[i])}`);
+      return linQ(`두 식 ${A}, ${Bv}에 대하여 다음이 성립할 때, ${nb(`${A} + ${Bv}`)}를 계산하시오.`, src, v, {
+        figure: tagged([`${A}에서 ${lj(P[0], P[1], v, '을/를')} 빼면 ${lj(R[0], R[1], v, '이/가')} 된다.`, n === 0 ? `${xh(f(U))}에 ${Bv}를 더하면 ${A}가 된다.` : `${A}에 ${lj(U[0], U[1], v, '을/를')} 두 번 더하면 ${Bv}가 된다.`], ['(가)', '(나)']),
+        explain: `(가)에서 ${A} = ${xh(`(${f(R)})+(${f(P)})`)} = ${xh(f(a))}이다. (나)에서 ${Bv} = ${xh(n === 0 ? `(${f(a)})-(${f(U)})` : `(${f(a)})+2(${f(U)})`)} = ${xh(f(b))}이다. 따라서 ${nb(`${A} + ${Bv}`)} = ${xh(`(${f(a)})+(${f(b)})`)} = ${xh(f(sum))}이다.`,
+        facts: { calc: [0, 1].map((i) => [`${sj(R[i])}+${sj(P[i])}+${sj(R[i])}+${sj(P[i])}${tailJs(i)}`, i]), unseen: [1], rule: 'two-conds-chain-' + n }
+      });
+    }, { count: 2 }),
+    H('hard-net-faces', '전개도에서 마주 보는 면에 적힌 식의 합이 같을 때 빈 면의 식', '심52', (d) => {
+      // 함정·단계: 전개도에서 이웃한 면은 마주 보지 않는다. 한 줄로 이어진 네 면은 한 칸 건너 있는 면끼리, 위와 아래에 붙은 두 면은 서로 마주 본다.
+      //  마주 보는 면을 찾는다 → 두 식이 모두 적힌 쌍으로 합을 구한다 → 합에서 마주 보는 면의 식을 뺀다.
+      const v = 'x', f = (c0) => ln(c0[0], c0[1], v), sub = (x, y) => [x[0] - y[0], x[1] - y[1]], key = (c0) => c0.join();
+      const [S, P1, T1, Qc] = d.until(() => [[coef(d, -6, 7), coef(d, -6, 9)], [coef(d, -5, 5), coef(d, -7, 7)], [coef(d, -5, 5), coef(d, -7, 7)], [coef(d, -5, 5), coef(d, -7, 7)]], ([s0, x, y, z]) => {
+        const all = [x, sub(s0, x), y, sub(s0, y), z, sub(s0, z)];
+        return all.every((c0) => c0[0] !== 0 && c0[1] !== 0 && Math.abs(c0[0]) <= 9 && Math.abs(c0[1]) <= 9) && new Set(all.map(key)).size === 6;
+      });
+      const ans = sub(S, Qc), where = d.int(0, 2), known = d.shuffle([[P1, sub(S, P1)], [T1, sub(S, T1)]]), mine = d.bool() ? [LAB[0], f(Qc)] : [f(Qc), LAB[0]];
+      // 세 쌍의 자리: 0 = 가로줄의 첫째·셋째, 1 = 가로줄의 둘째·넷째, 2 = 위쪽·아래쪽. ㉠이 든 쌍을 where 에, 나머지 두 쌍을 남은 자리에 차례로 놓는다.
+      const slots = [null, null, null], rest = [0, 1, 2].filter((i) => i !== where);
+      slots[where] = mine; rest.forEach((i, j) => { slots[i] = known[j].map(f); });
+      const PLACE = ['가로줄의 첫째 면과 셋째 면', '가로줄의 둘째 면과 넷째 면', '위쪽과 아래쪽에 붙은 두 면'], [c1, c2] = known[0];
+      return linQ('그림은 정육면체의 전개도이다. 이 전개도를 접어 만든 정육면체에서 마주 보는 두 면에 적힌 식의 합이 모두 같을 때, ㉠에 알맞은 식을 구하시오.', `(${f(c1)})+(${f(c2)})-(${f(Qc)})`, v, {
+        figure: netCubeFig([slots[0][0], slots[1][0], slots[0][1], slots[1][1]], [d.int(0, 3), slots[2][0]], [d.int(0, 3), slots[2][1]]),
+        explain: `전개도를 접으면 한 줄로 이어진 네 면은 한 칸 건너 있는 면끼리 마주 보고, 위쪽과 아래쪽에 붙은 두 면이 서로 마주 본다. ${PLACE[rest[0]]}이 마주 보므로 마주 보는 두 면에 적힌 식의 합은 ${xh(`(${f(c1)})+(${f(c2)})`)} = ${xh(f(S))}이다. ㉠과 마주 보는 면에 적힌 식은 ${xh(f(Qc))}이므로 ㉠ = ${xh(`(${f(S)})-(${f(Qc)})`)} = ${xh(f(ans))}이다.`,
+        facts: { calc: [0, 1].map((i) => [`${sj(c1[i])}+${sj(c2[i])}-${sj(Qc[i])}`, i]), unseen: [1] }
+      });
+    }),
+    H('hard-shaded-cut', '직사각형에서 직각삼각형 둘을 뺀 부분의 넓이', '기본 ①101', (d) => {
+      // 단계: 나뉜 변의 길이를 더해 직사각형의 가로·세로를 구한다 → 직사각형의 넓이 → 색칠하지 않은 직각삼각형 둘의 넓이 → 빼어 동류항끼리 계산한다.
+      const [p, q, u, w] = d.until(() => [d.int(3, 8), d.int(2, 6), d.int(2, 5), d.int(2, 5)], ([x, y, z, t]) => x !== y && z !== t && (y * z) % 2 === 0 && ((x + y) * t) % 2 === 0);
+      const W = p + q, whole = W * (u + w), t1 = q * u / 2, t2 = W * w / 2, c = whole - t1 - t2, a = V('a');
+      return M(`그림과 같은 직사각형에서 색칠한 부분의 넓이를 ${a}를 사용한 식으로 간단히 나타내시오.`, [{ answer: c, signed: true, unit: `${a} (${SQ})` }], {
+        figure: cutRectFig(p, q, u, w, 'a', 'cm'), shown: `${xh(`${c}a`)} (${SQ})`,
+        explain: `직사각형의 가로의 길이는 ${p} + ${q} = ${W} (cm), 세로의 길이는 ${xh(`${u}a+${w}a`)} = ${withUnit(`${u + w}a`, 'cm')}이므로 넓이는 ${xh(`${W}*${u + w}a`)} = ${withUnit(`${whole}a`, SQ)}이다. 색칠하지 않은 부분은 직각삼각형 2개이고, 넓이는 위쪽이 ${xh(`[1|2]*${q}*${u}a`)} = ${withUnit(`${t1}a`, SQ)}, 아래쪽이 ${xh(`[1|2]*${W}*${w}a`)} = ${withUnit(`${t2}a`, SQ)}이다. 색칠한 부분의 넓이는 ${xh(`${whole}a-${t1}a-${t2}a`)} = ${withUnit(`${c}a`, SQ)}이다.`,
+        facts: { calc: [[`(${p}+${q})*(${u}+${w})-${q}*${u}/2-(${p}+${q})*${w}/2`, 0]], unseen: [2] }
+      });
+    }),
+    H('hard-quad-split', '대각선으로 나누어 구하는 사각형의 넓이', '기본 ①104', (d) => {
+      // 함정·단계: 사각형의 넓이 공식이 없으므로 대각선 AC로 삼각형 둘로 나눈다. 삼각형 ABC의 높이는 변 AB가 아니라 꼭짓점 A에서 그은 수선이고,
+      //  삼각형 ACD는 각 D가 직각이므로 변 AD와 변 DC가 밑변과 높이이다. 1/2을 빠뜨리거나 한쪽에만 곱하는 아이, 사다리꼴의 공식을 쓰는 아이가 틀린다.
+      // 그림의 변 AD와 수선의 길이의 비(약 0.8)에서 크게 벗어나지 않는 수만 쓴다.
+      const [h, k] = d.pick([[4, 3], [5, 3], [5, 4], [6, 4], [6, 5], [7, 5], [7, 6], [8, 5], [8, 6], [8, 7]]), right = pn([[Q(h, 2), 'x'], [Q(k, 2), 'y']]);
+      // 틀린 보기: 두 삼각형 모두 1/2을 곱하지 않은 아이 / 뒤 삼각형에만 곱하지 않은 아이 / 앞 삼각형에만 곱하지 않은 아이 / 사다리꼴로 보아 (x + k) × h ÷ 2를 쓴 아이 / 밑변과 높이의 짝을 바꾼 아이
+      return pickX(d, `그림과 같은 사각형 ABCD의 넓이를 ${V('x')}, ${V('y')}를 사용한 식으로 나타낸 것은?`, right, [pn([[h, 'x'], [k, 'y']]), pn([[Q(h, 2), 'x'], [k, 'y']]), pn([[h, 'x'], [Q(k, 2), 'y']]), pn([[Q(h, 2), 'x'], [Q(h * k, 2), '']]), pn([[Q(k, 2), 'x'], [Q(h, 2), 'y']])], {
+        unit: SQ, figure: quadFig(k, h, 'cm'),
+        explain: `대각선 AC를 그어 삼각형 2개로 나눈다. 삼각형 ABC는 밑변의 길이가 ${V('x')} cm, 높이가 ${h} cm이므로 넓이가 ${xh(`[1|2]*x*${h}`)} = ${withUnit(pn([[Q(h, 2), 'x']]), SQ)}이다. 삼각형 ACD는 각 D가 직각이므로 밑변의 길이가 ${k} cm, 높이가 ${V('y')} cm이고 넓이가 ${xh(`[1|2]*${k}*y`)} = ${withUnit(pn([[Q(k, 2), 'y']]), SQ)}이다. 사각형 ABCD의 넓이는 ${withUnit(right, SQ)}이다.`
+      });
+    }, { standard: STD1 }),
+    H('hard-cancel-count', '문자로 둔 수가 없어지는 두 수의 차', '심69', (d) => {
+      // 단계: 꺼낸 빨간 구슬의 수를 문자로 둔다 → 꺼낸 파란 구슬, 남은 파란 구슬의 수를 차례로 식으로 나타낸다 → 빼면 문자가 없어진다.
+      const R = d.int(12, 20), K0 = d.int(12, 20), more = d.bool(), diff = d.int(2, 7), n = more ? K0 + diff : K0 - diff, a = V('a'), rest = pn([[1, 'a'], [K0 - n, '']]);
+      return N(`주머니에 빨간 구슬 ${R}개와 파란 구슬 ${K0}개가 들어 있다. 이 주머니에서 구슬 ${n}개를 꺼냈을 때, 꺼낸 빨간 구슬의 수와 주머니에 남은 파란 구슬의 수의 차는 몇 개인가?`, diff, {
+        unit: '개',
+        explain: `꺼낸 빨간 구슬을 ${a}개라 하면 꺼낸 파란 구슬은 ${withUnit(`${n}-a`, '개')}이다. 주머니에 남은 파란 구슬은 ${xh(`${K0}-(${n}-a)`)} = ${withUnit(rest, '개')}이다. 두 수의 차는 ${xh(more ? `a-(${rest})` : `(${rest})-a`)} = ${diff}(개)이다. 꺼낸 빨간 구슬이 몇 개이든 차는 ${diff}개이다.`,
+        facts: { value: more ? `${n}-${K0}` : `${K0}-${n}` }
+      });
+    })
+  ]);
+
+  // ── 기본 묶음에 덧붙이는 꼴 ──
+  B.addTypes('7-1-3', 'omit', [
+    TB('omit-stones-square', '정사각형 모양으로 늘어나는 바둑돌의 개수를 식으로 나타내기', '심62', (d) => pickX(d, `그림과 같이 바둑돌을 정사각형 모양으로 늘어놓을 때, ${V('n')}번째에 놓이는 바둑돌의 개수를 ${vj('n', '을/를')} 사용한 식으로 나타낸 것은?`, 'n^2', ['2n', '3n-2', '2n-1', '4n-3', '4n-4'], {
+      // 틀린 보기: 첫째(와 둘째)만 맞는 식 — 일정하게 늘어난다고 본 아이(3n − 2, 2n − 1, 4n − 3), 가로·세로를 더하는 아이(2n), 둘레의 개수로 본 아이(4n − 4)
+      unit: '개', figure: squareStonesFig(),
+      explain: `바둑돌의 개수는 1번째부터 차례로 1 × 1 = 1, 2 × 2 = 4, 3 × 3 = 9, 4 × 4 = 16(개)이다. ${V('n')}번째에는 가로와 세로에 ${V('n')}개씩 놓이므로 ${xh('n*n')} = ${withUnit('n^2', '개')}이다.`
+    }))
+  ]);
+  B.addTypes('7-1-3', 'value', [
+    TB('value-frac-both', '분자와 분모가 모두 분수가 되는 대입', '심24', (d) => {
+      const [src, top, bottom, env] = d.until(() => {
+        const [p, q] = d.until(() => [d.int(2, 5), d.int(2, 5)], ([x, y]) => x !== y), op = d.bool() ? '+' : '-';
+        return [`[xy|x${op}y]`, 'xy', `x${op}y`, { x: Q(pm(d), p), y: Q(pm(d), q) }];
+      }, ([e, , , env0]) => valueOK(e, env0, 'frac'));
+      const tv = xv(top, env), bv = xv(bottom, env), v = xv(src, env);
+      return ansV(`${given(env)}일 때, ${xh(src)}의 값은?`, v, 'frac', {
+        explain: `분자와 분모의 값을 각각 구한 다음 나눈다. 분자는 ${xh(top)} = ${worked(top, env)}, 분모는 ${xh(bottom)} = ${worked(bottom, env)}이므로 식의 값은 ${nb(`${qs(tv)} ÷ ${qs(bv)}`)} = ${nb(`${qs(tv)} × ${qs(qdiv(Q(1), bv))}`)} = ${tx(v)}이다.`,
+        facts: { value: xjs(src, env), rule: 'value-frac-both' }
+      });
+    }, { standard: STD1 }),
+    TB('value-formula-two', '문자가 둘인 생활 속 공식에 수를 대입하기', '①41', (d) => {
+      // 불쾌지수: 답이 소수 첫째 자리까지인 수가 되는 기온과 습도만 쓴다(기온 20 °C에서는 습도가 20 %의 배수일 때 그렇다).
+      const x0 = 20, y0 = d.pick([20, 40, 60, 80]), src = '[9|5]x-0.55(1-[y|100])([9|5]x-26)+32', env = { x: Q(x0), y: Q(y0) }, v = xv(src, env);
+      const t = 9 * x0 / 5, m = t - 26, wet = (100 - y0) / 100, cut = qmul(qmul(Q(55, 100), Q(100 - y0, 100)), Q(m)), one = (r) => (r.p / r.q).toFixed(1);
+      return ansV(`기온이 ${V('x')} °C, 습도가 ${V('y')} %인 날의 불쾌지수는 다음 식으로 구한다. 기온이 ${x0} °C, 습도가 ${y0} %인 날의 불쾌지수는?`, v, 'dec', {
+        // 식이 길어 한 줄에 넣으려고 글씨를 줄인다(사이트 읽기 글꼴에서는 조금 더 넓어진다).
+        figure: `<span class="mb-expr" style="font-size:0.9rem">${xe(src)}</span>`,
+        explain: `${nb(`${V('x')} = ${x0}`)}, ${nb(`${V('y')} = ${y0}`)}${tail(y0, '을/를')} 대입한다. ${nb(`${frac(9, 5)} × ${x0} = ${t}`)}, ${nb(`1 ${MINUS} ${frac(y0, 100)} = ${wet}`)}, ${nb(`${t} ${MINUS} 26 = ${m}`)}이므로 불쾌지수는 ${nb(`${t} ${MINUS} 0.55 × ${wet} × ${m} + 32`)} = ${nb(`${t} ${MINUS} ${one(cut)} + 32`)} = ${one(v)}이다.`,
+        facts: { value: `(9/5)*${x0}-0.55*(1-${y0}/100)*((9/5)*${x0}-26)+32`, rule: 'value-formula-two' }
+      });
+    }, { standard: STD1 })
+  ]);
+  B.addTypes('7-1-3', 'like', [
+    TB('like-nested-scaled', '수를 곱한 괄호가 낀 여러 겹 괄호의 계산', '심44', (d) => {
+      // −k(ax + b) − [cx + (1/m){e − (fx − g)}] = (−ka − c + f/m)x + (−kb − (e + g)/m)
+      const v = 'x', m = d.pick([2, 3]);
+      const [k, a, b, c, e, f, g] = d.until(() => [d.int(2, 4), d.int(2, 4), coef(d, -4, 4), d.int(2, 7), d.int(1, 9), m * d.int(1, 3), d.int(1, 9)],
+        (t) => (t[4] + t[6]) % m === 0 && t[3] - t[5] / m !== 0 && -t[0] * t[1] - t[3] + t[5] / m !== 0 && -t[0] * t[2] - (t[4] + t[6]) / m !== 0);
+      const E1 = (e + g) / m, F1 = f / m, front = `-${k}(${ln(a, b, v)})`, back = `<${c}x+[1|${m}]{${e}-(${f}x-${g})}>`, src = `${front}-${back}`, mid = ln(c - F1, E1, v);
+      return linQ(CALC, src, v, {
+        // 한 줄에 다 적으면 휴대폰 너비를 넘으므로 뺄셈 기호 앞에서 줄을 바꾸어 두 줄로 적는다.
+        figure: `<span class="mb-expr" style="font-size:1.15rem;line-height:2">${xe(front)}<br><i>${MINUS}</i> ${xe(back)}</span>`,
+        explain: `안쪽 괄호부터 차례로 푼다. ${xh(`${e}-(${f}x-${g})`)} = ${xh(pn([[e, ''], [-f, v], [g, '']]))} = ${xh(nl(e + g, -f, v))}이고, ${xh(`[1|${m}](${nl(e + g, -f, v)})`)} = ${xh(nl(E1, -F1, v))}이다. 대괄호 안은 ${xh(pn([[c, v], [E1, ''], [-F1, v]]))} = ${xh(mid)}이므로 주어진 식은 ${xh(`${front}-(${mid})`)} = ${xh(pn([[-k * a, v], [-k * b, ''], [-(c - F1), v], [-E1, '']]))} = ${xh(ln(-k * a - c + F1, -k * b - E1, v))}이다.`,
+        facts: { calc: [[`-${k}*${a}-${c}+${f}/${m}`, 0], [`-${k}*${sj(b)}-(${e}+${g})/${m}`, 1]], unseen: [1], rule: 'nested-scaled' }
+      });
+    })
+  ]);
+  B.addTypes('7-1-3', 'find', [
+    TB('find-shaded-paren', '빼는 넓이가 괄호가 있는 식인 색칠한 부분의 넓이', '①101 심58', (d, n) => {
+      if (n === 0) {
+        // 사다리꼴 (1/2)(x + kx) × H 에서 직사각형 w(x − c) 를 뺀다. 빼는 식의 괄호를 풀며 상수항의 부호가 바뀐다.
+        const k = d.pick([2, 3]), H2 = k === 2 ? 2 * d.int(2, 4) : d.int(3, 6), w = d.int(2, 3), c = d.int(1, 3), area = (1 + k) * H2 / 2, src = `[1|2](x+${k}x)*${H2}-${w}(x-${c})`;
+        return linQ(`그림과 같이 사다리꼴 안에서 직사각형을 잘라 냈다. 색칠한 부분의 넓이를 ${V('x')}를 사용한 식으로 간단히 나타내시오.`, src, 'x', {
+          unit: SQ, figure: trapHoleFig('x', `${k}x`, String(H2), [String(w), `x-${c}`], k, 'cm'),
+          explain: `사다리꼴의 넓이는 ${xh(`[1|2]*(x+${k}x)*${H2}`)} = ${xh(`${area}x`)}이고, 직사각형의 넓이는 ${xh(`${w}(x-${c})`)}이다. 색칠한 부분의 넓이는 ${xh(`${area}x-${w}(x-${c})`)} = ${xh(pn([[area, 'x'], [-w, 'x'], [w * c, '']]))} = ${xh(ln(area - w, w * c))}이다. 빼는 식은 괄호로 묶고, 괄호를 풀 때 괄호 안의 모든 항의 부호를 바꾼다.`,
+          facts: { calc: [[`(1+${k})*${H2}/2-${w}`, 0], [`${w}*${c}`, 1]], unseen: [1, 2], rule: 'find-shaded-trap' }
+        });
+      }
+      // 큰 직사각형 W × H 에서 안쪽 직사각형 (W − 2x) × (H − up − down) 을 뺀다. 안쪽 직사각형의 가로는 양쪽에서 x씩 줄어든다.
+      // 그림의 가로와 세로의 비(약 1.8)에서 크게 벗어나지 않는 수만 쓴다.
+      const [W, H2, up, down] = d.until(() => [d.int(12, 20), d.int(7, 12), d.int(1, 3), d.int(1, 3)], (t) => t[2] !== t[3] && t[0] >= 1.4 * t[1] && t[0] <= 2.3 * t[1] && t[1] - t[2] - t[3] >= 3), h = H2 - up - down, src = `${W}*${H2}-${h}(${W}-2x)`;
+      return linQ(`그림과 같이 가로의 길이가 ${W} cm, 세로의 길이가 ${H2} cm인 직사각형의 안쪽에 작은 직사각형이 있다. 색칠한 부분의 넓이를 ${V('x')}를 사용한 식으로 간단히 나타내시오.`, src, 'x', {
+        unit: SQ, figure: insetFig(String(W), String(H2), 'x', String(up), String(down), 'cm', up > down),
+        explain: `작은 직사각형의 가로의 길이는 ${withUnit(`${W}-2x`, 'cm')}, 세로의 길이는 ${H2} ${MINUS} ${up} ${MINUS} ${down} = ${h} (cm)이다. 색칠한 부분의 넓이는 ${xh(src)} = ${xh(pn([[W * H2, ''], [-h * W, ''], [2 * h, 'x']]))} = ${xh(ln(2 * h, W * H2 - h * W))}이다. 빼는 식의 괄호를 풀 때 괄호 안의 모든 항의 부호를 바꾼다.`,
+        facts: { calc: [[`2*(${H2}-${up}-${down})`, 0], [`${W}*${H2}-(${H2}-${up}-${down})*${W}`, 1]], unseen: [2], rule: 'find-shaded-inset' }
+      });
+    }, { count: 2 })
+  ]);
 })(typeof window !== 'undefined' ? window : globalThis);

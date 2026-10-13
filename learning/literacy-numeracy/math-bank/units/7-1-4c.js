@@ -17,13 +17,16 @@
 // 실력에는 ① 문제의 식·말·상황에 장치가 있어 배운 뜻을 정확히 대야 풀리는 문제와 ② 두 번 넘게 생각해야 풀리는 문제(한 방정식의 해를 다른 방정식에 넣기,
 // 해가 같은 두 방정식의 상수, 잘못 본 부호를 되돌려 바르게 풀기, 도중에 바뀌는 속력, 뒤따라가 만나기, 두 사람의 일의 양, 정가와 할인, 한쪽만 늘어난 수)만 실었다.
 // 기본에서 하는 일을 고르기로 바꾼 것, 수만 키운 방정식, 풀이 과정의 빈칸, 여러 방정식의 해 비교, 등식의 성질 문장의 참·거짓은 기본 묶음에 있다.
+// 2026-10-13: 처음 지을 때 「꼬였다」「지나치게 복잡한 활용이다」「범위 밖이다」로 뺐던 꼴 가운데 중1까지의 내용만으로 풀리는 것을 묶음 끝에 다시 실었다(hard-three-eq 부터).
+//  그 유형들이 겨누는 잘못: 「해의 절댓값이 같다」를 「해가 같다」로만 읽는다. 0을 자연수나 음의 정수로 센다. 「해가 무수히 많다」를 x = 0 으로 적거나 일차방정식이 되는 조건과 섞는다.
+//  둘째로 준 것이 「남은 것」의 몇 분의 몇임을 놓친다. 두 소금물의 농도를 그냥 더하거나 평균을 낸다. 할인은 정가에, 이익은 원가에 건다는 것을 섞는다.
 // 묻는 말: 수나 값은 「~은?/~는?」, 양은 「몇 ~인가?」, 시키는 말은 「~하시오.」
 (function (root) {
   'use strict';
   const B = root.MathBank;
-  const { josa, name, NAMES, frac, N, M, C } = B.kit;
-  const { LAB, MINUS, GE, gcd, lcm, Q, dc, dc2, qadd, qsub, qmul, qdiv, qcmp, tx, nb, tail, lastOf, js, sup, nz, pm, ansV, claimQ } = B.kit.mid;
-  const { STD3, STD4, HAN, x, va, vb, vc, iq, xu, tm, tg, tf, ts, sideH, eqH, eqB, eqF, termH, tagEq, eqProc, evS, solJ, gather, sideOf, solQ, flatS, scS, subS, solve, sameEq, follows, mix, nice } = B.kit.m714;
+  const { josa, name, NAMES, frac, N, M, C, F } = B.kit;
+  const { LAB, MINUS, GE, gcd, lcm, Q, dc, dc2, qadd, qsub, qmul, qdiv, qneg, qcmp, tx, nb, tail, lastOf, js, V, sup, nz, pm, ansV, claimQ } = B.kit.mid;
+  const { STD3, STD4, HAN, x, va, vb, vc, iq, xu, tm, tg, tf, ts, sideH, eqH, exq, keep, eqB, eqF, termH, tagEq, eqProc, evS, solJ, gather, sideOf, solQ, flatS, scS, subS, solve, sameEq, follows, valsQ, mix, nice } = B.kit.m714;
   // 실력 문항. 기본 자료에서만 나온 꼴은 ref 를 '기본 ①22' 처럼 적는다.
   const H = (id, title, ref, make, more) => Object.assign({ id, level: '실력', title, source: ref.startsWith('기본 ') ? '수집본 기본 자료(' + ref.slice(3) + ')' : '수집본 심화 자료(' + ref + ')', make }, more || {});
   const told = (L, R) => `방정식을 세우면 ${eqB(L, R)}이다. ${solve(L, R, 'x').text}`;
@@ -33,6 +36,16 @@
     const at = (v) => { const e = Object.assign({ x: Q(v), X: Q(v * v) }, env); return qsub(evS(L, e), evS(R, e)); }, c = at(0), p = at(1), m = at(-1);
     return qsub(qmul(qadd(p, m), Q(1, 2)), c).p === 0 && qsub(p, m).p !== 0;
   };
+  // ── 다시 실은 꼴(아래 「처음 지을 때 뺐다가 다시 실은 꼴」)이 쓰는 도구 ──
+  const vy = V('y'), vA = V('A');
+  // 백분율을 소수로 적은 수(30 % → 0.3, 75 % → 0.75)
+  const pct = (p) => (p % 10 === 0 ? dc(p / 10) : dc2(p));
+  const upTo = (n) => Array.from({ length: n }, (_, i) => i + 1);
+  const divisors = (n) => upTo(n).filter((v) => n % v === 0);
+  // 검사가 다시 셈하는 식: a 가 num 의 약수이면 1, 아니면 0 (num 을 a 로 나눈 나머지가 0인가를 몫으로 가린다)
+  const divJ = (num, a) => `(1-((${num})%${a}+${a}-1-((${num})%${a}+${a}-1)%${a})/${a})`;
+  // 음수는 괄호에 넣어 적는 수(곱셈 기호 뒤)
+  const pq = (n) => (n < 0 ? `(${iq(n)})` : String(n));
 
   B.addGroup('7-1-4', {
     id: 'hard', title: '실력 문제', standard: STD4,
@@ -341,6 +354,319 @@
           unit: '명',
           explain: `늘어난 전체 학생의 수는 ${nb(`${all} × ${frac(q, 100)} = ${inc}`)}이고, 여학생의 수는 그대로이므로 이것은 늘어난 남학생의 수와 같다. 작년 남학생의 수를 ${x}라 하면 늘어난 남학생의 수는 ${nb(sideH(L, true))}이다. ${told(L, R)} 작년 남학생이 ${boys}명이므로 올해 남학생은 ${nb(`${boys} + ${inc} = ${boys + inc}`)}(명)이다.`,
           facts: { value: `${all}*${q}/${p}*(100+${p})/100`, unseen: [100] }
+        });
+      }),
+
+      // ── 처음 지을 때 뺐다가 다시 실은 꼴(2026-10-13) ──
+      // 「꼬였다」「지나치게 복잡한 활용이다」「교육과정의 정도를 넘는다」는 까닭으로 뺐던 꼴 가운데 중1까지의 내용만으로 풀리는 것을 실었다.
+      // 답이 여럿인 꼴은 개수·가장 큰(작은) 수·두 칸으로, 뜻 없이 더하게 하던 답(2a − b, 값의 합)은 값마다의 칸으로 바꾸었다.
+      H('hard-three-eq', '해가 같은 세 방정식의 상수 둘', '기본 ①49', (d) => {
+        // 상수가 없는 ㉮를 풀어 얻은 해를 ㉯, ㉰에 차례로 넣는다. (검사가 정수 셈으로 다시 셈하도록 세 방정식의 계수는 모두 정수이다.)
+        const u = () => d.int(1, 9);
+        const withA = [
+          () => [ts([d.int(2, 5), 'x'], [-u(), '']), ts([1, 'a'])],
+          () => [ts([1, 'ax'], [-u(), '']), ts([u(), ''], [-d.int(1, 4), 'x'])],
+          () => [[tg(d.int(2, 4), ts([1, 'x'], [1, 'a']))], ts([d.int(5, 9), 'x'], [nz(d, -9, 9), ''])]
+        ];
+        const withB = [
+          () => [ts([u(), ''], [-d.int(2, 5), 'x']), ts([d.int(2, 3), 'b'])],
+          () => [ts([1, 'bx'], [u(), '']), ts([d.int(2, 5), 'x'], [-u(), ''])],
+          () => [[tg(d.int(2, 4), ts([1, 'b'], [-1, 'x']))], ts([1, 'x'], [nz(d, -9, 9), ''])]
+        ];
+        const m = d.until(() => {
+          const first = d.bool() ? [[tg(d.int(2, 4), ts([1, 'x'], [nz(d, -6, 6), '']))], ts([d.int(1, 6), 'x'], [nz(d, -9, 9), ''])] : [ts([d.int(2, 7), 'x'], [nz(d, -12, 12), '']), [tg(d.int(2, 3), ts([1, 'x'], [nz(d, -5, 5), '']))]];
+          const i = d.int(0, 2), j = d.pick([0, 1, 2].filter((w) => w !== i));
+          return { first, second: withA[i](), third: withB[j]() };
+        }, (r) => {
+          const v = solQ(r.first[0], r.first[1]); if (!nice(v, 'int') || Math.abs(v.p) > 9) return false;
+          const a = solQ(subS(r.second[0], 'x', v), subS(r.second[1], 'x', v), 'a'), b = solQ(subS(r.third[0], 'x', v), subS(r.third[1], 'x', v), 'b');
+          return nice(a, 'int') && nice(b, 'int') && a.p !== b.p && Boolean(solQ(r.second[0], r.second[1], 'x', { a })) && Boolean(solQ(r.third[0], r.third[1], 'x', { b }));
+        });
+        const v = solQ(m.first[0], m.first[1]), sub = (eq) => [subS(eq[0], 'x', v), subS(eq[1], 'x', v)], [La, Ra] = sub(m.second), [Lb, Rb] = sub(m.third), sa = solve(La, Ra, 'a'), sb = solve(Lb, Rb, 'b');
+        const xJ = `(${solJ(m.first[0], m.first[1], 'x', {})})`, put = `${nb(`${x} = ${tx(v)}`)}${tail(lastOf(v), '을/를')} 대입하면`;
+        return valsQ(`${x}에 대한 세 방정식 ㉮, ㉯, ㉰의 해가 모두 같을 때, 상수 ${va}, ${vb}의 값은?`, [['a', sa.v.p], ['b', sb.v.p]], {
+          figure: tagEq([m.first, m.second, m.third].map(([L, R]) => eqH(L, R)), ['㉮', '㉯', '㉰']),
+          explain: `${va}, ${vb}가 없는 ㉮를 먼저 푼다. ㉮에서 ${solve(m.first[0], m.first[1], 'x').text} 세 방정식의 해가 같으므로 ㉯에 ${put} ${eqB(La, Ra)}이다. ${sa.text} ㉰에 ${put} ${eqB(Lb, Rb)}이다. ${sb.text}`,
+          facts: { calc: [[solJ(m.second[0], m.second[1], 'a', { x: xJ }), 0], [solJ(m.third[0], m.third[1], 'b', { x: xJ }), 1]], unseen: [0, 1] }
+        });
+      }),
+      H('hard-sol-ratio', '두 방정식의 해의 비가 주어질 때 상수 구하기', '기본 ①51 / 심23', (d) => {
+        // 두 방정식을 저마다 x 에 대하여 풀어 해를 a 의 식으로 나타낸 뒤, 해의 비로 비례식을 세운다.
+        //  ㉮ (x − p)/k1 = a + q ⇨ x = k1·a + (k1·q + p),  ㉯ k2(x − e) = (k2·c)a ⇨ x = c·a + e
+        const m = d.until(() => ({ k1: d.pick([2, 3, 4]), p: nz(d, -5, 5), q: nz(d, -4, 4), k2: d.pick([2, 3]), c: d.int(1, 3), e: nz(d, -6, 6), ratio: d.pick([[2, 1], [3, 1], [1, 2], [3, 2], [2, 3], [1, 3], [4, 3]]) }), (r) => {
+          const [u, w] = r.ratio, den = w * r.k1 - u * r.c, num = u * r.e - w * (r.k1 * r.q + r.p); if (den === 0 || num % den !== 0 || r.k1 * r.q + r.p === 0) return false;
+          const a = num / den, x1 = r.k1 * a + r.k1 * r.q + r.p, x2 = r.c * a + r.e;
+          return a !== 0 && Math.abs(a) <= 12 && x1 > 0 && x2 > 0 && x1 <= 40 && x2 <= 40;
+        });
+        const { k1, p, q, k2, c, e } = m, [u, w] = m.ratio, E1 = [[tf(ts([1, 'x'], [-p, '']), k1, 1)], ts([1, 'a'], [q, ''])], E2 = [[tg(k2, ts([1, 'x'], [-e, '']))], ts([k2 * c, 'a'])];
+        const s1 = ts([k1, 'a'], [k1 * q + p, '']), s2 = ts([c, 'a'], [e, '']), L = w === 1 ? s1 : [tg(w, s1)], R = u === 1 ? s2 : [tg(u, s2)], s = solve(L, R, 'a'), a = s.v.p, said = nb(`${u} : ${w}`);
+        return ansV(`${x}에 대한 두 방정식 ㉮, ㉯에서 ㉮의 해와 ㉯의 해의 비가 ${said}일 때, 상수 ${va}의 값은?`, s.v, 'int', {
+          figure: tagEq([eqH(E1[0], E1[1]), eqH(E2[0], E2[1])], ['㉮', '㉯']),
+          explain: `두 방정식의 해를 ${va}의 식으로 나타낸다. ㉮의 양변에 ${k1}${tail(k1, '을/를')} 곱하면 ${eqB(ts([1, 'x'], [-p, '']), ts([k1, 'a'], [k1 * q, '']))}이므로 ${nb(`${x} = ${sideH(s1, true)}`)}이다. ㉯의 양변을 ${k2}${tail(k2, '으로/로')} 나누면 ${eqB(ts([1, 'x'], [-e, '']), ts([c, 'a']))}이므로 ${nb(`${x} = ${sideH(s2, true)}`)}이다. 두 해의 비가 ${said}이므로 ${nb(`(${sideH(s1, true)}) : (${sideH(s2, true)}) = ${u} : ${w}`)}이다. 비례식에서 외항의 곱과 내항의 곱은 같으므로 ${eqB(L, R)}이다. ${s.text} 이때 ㉮의 해는 ${k1 * a + k1 * q + p}, ㉯의 해는 ${c * a + e}이다.`,
+          facts: { value: `(${u}*(${e})-${w}*(${k1}*(${q})+(${p})))/(${w}*${k1}-${u}*${k2 * c}/${k2})` }
+        });
+      }),
+      H('hard-abs-sol', '해의 절댓값이 같은 두 방정식의 상수', '기본 ①52', (d) => {
+        // 함정: 「해의 절댓값이 같다」를 「해가 같다」로만 읽는 아이는 값을 하나만 구한다. 절댓값이 같은 수는 그 수와 부호가 반대인 수 둘이다.
+        //  (검사가 정수 셈으로 다시 셈하도록 두 방정식의 계수는 모두 정수이다.)
+        const u = () => d.int(1, 9);
+        const m = d.until(() => {
+          const first = d.bool() ? [[tg(d.int(2, 4), ts([1, 'x'], [nz(d, -6, 6), '']))], ts([d.int(1, 6), 'x'], [nz(d, -9, 9), ''])] : [ts([d.int(2, 7), 'x'], [nz(d, -12, 12), '']), ts([d.int(1, 6), 'x'], [nz(d, -12, 12), ''])];
+          const second = d.bool() ? [ts([d.int(4, 9), 'x'], [-u(), '']), ts([d.int(1, 3), 'x'], [-d.int(2, 4), 'a'])] : [[tg(d.int(2, 4), ts([1, 'x'], [1, 'a']))], ts([d.int(5, 9), 'x'], [nz(d, -9, 9), ''])];
+          return { first, second };
+        }, (r) => {
+          const v = solQ(r.first[0], r.first[1]); if (!nice(v, 'int') || Math.abs(v.p) > 6) return false;
+          const at = (t) => solQ(subS(r.second[0], 'x', Q(t)), subS(r.second[1], 'x', Q(t)), 'a'), same = at(v.p), opp = at(-v.p);
+          return nice(same, 'int') && nice(opp, 'int') && same.p !== opp.p;
+        });
+        const v = solQ(m.first[0], m.first[1]).p, size = Math.abs(v), sub = (t) => [subS(m.second[0], 'x', Q(t)), subS(m.second[1], 'x', Q(t))], [L1, R1] = sub(v), [L2, R2] = sub(-v), s1 = solve(L1, R1, 'a'), s2 = solve(L2, R2, 'a');
+        const firstJ = solJ(m.first[0], m.first[1], 'x', {}), j1 = solJ(m.second[0], m.second[1], 'a', { x: `(${firstJ})` }), j2 = solJ(m.second[0], m.second[1], 'a', { x: `(-(${firstJ}))` });
+        const small = Math.min(s1.v.p, s2.v.p), big = Math.max(s1.v.p, s2.v.p), put = (t) => `㉯에 ${nb(`${x} = ${iq(t)}`)}${tail(size, '을/를')} 대입하면`;
+        return M(`${x}에 대한 두 방정식 ㉮, ㉯의 해의 절댓값이 서로 같을 때, 상수 ${va}의 값이 될 수 있는 수를 모두 구하시오.`, [{ label: '작은 수', answer: small, signed: true }, { label: '큰 수', answer: big, signed: true }], {
+          figure: tagEq([eqH(m.first[0], m.first[1]), eqH(m.second[0], m.second[1])], ['㉮', '㉯']),
+          shown: `${nb(`${va} = ${iq(small)}`)}, ${nb(`${va} = ${iq(big)}`)}`,
+          explain: `${va}가 없는 ㉮를 먼저 푼다. ㉮에서 ${solve(m.first[0], m.first[1], 'x').text} 절댓값이 ${size}인 수는 ${size}${tail(size, '과/와')} ${iq(-size)}이므로 ㉯의 해는 ${nb(`${x} = ${size}`)} 또는 ${nb(`${x} = ${iq(-size)}`)}이다. ${put(v)} ${eqB(L1, R1)}이다. ${s1.text} ${put(-v)} ${eqB(L2, R2)}이다. ${s2.text} 해가 같은 경우만 따지면 값 하나를 놓친다.`,
+          facts: { calc: s1.v.p < s2.v.p ? [[j1, 0], [j2, 1]] : [[j2, 0], [j1, 1]], unseen: [0, 1] }
+        });
+      }, { standard: STD4 }),
+      H('hard-natural-sol', '해가 자연수(정수)가 되게 하는 상수 찾기', '기본 ①54 / 심24·25·26', (d, n) => {
+        // 해와 상수의 관계를 식으로 나타낸 뒤 자연수(정수)가 되는 경우를 따진다. 「모두 구하시오」는 개수나 가장 큰(작은) 수로 물었다.
+        // 함정: 0은 자연수도 음의 정수도 아니다. 해가 0이 되는 상수까지 세는 아이가 걸린다.
+        const many = `자연수 ${va}는 모두 몇 개인가?`;
+        if (n === 0) {
+          // ax + b = c: x = (c − b)/a 이므로 a 는 c − b 의 약수이다.
+          const num = d.pick([6, 8, 10, 12, 14, 15, 16, 18, 20, 21, 24, 28, 30]), b = d.until(() => nz(d, -9, 9), (w) => num + w > 0), c = num + b, left = d.bool();
+          const L = left ? ts([1, 'ax'], [b, '']) : ts([c, '']), R = left ? ts([c, '']) : ts([1, 'ax'], [b, '']), divs = divisors(num);
+          return N(`${x}에 대한 일차방정식 ${eqB(L, R)}의 해가 자연수가 되게 하는 ${many}`, divs.length, {
+            unit: '개',
+            explain: `${iq(b)}${tail(Math.abs(b), '을/를')} 이항하여 정리하면 ${nb(`${va}${x} = ${num}`)}이므로 ${nb(`${x} = ${frac(num, va)}`)}이다. ${x}가 자연수이려면 ${va}는 ${num}의 약수이어야 한다. ${num}의 약수는 ${divs.join(', ')}의 ${divs.length}개이다.`,
+            facts: { value: upTo(num).map((t) => divJ(`${c}-(${b})`, t)).join('+'), unseen: upTo(num), rule: 'natural-0' }
+          });
+        }
+        if (n === 1) {
+          // 해가 a 와의 차로 정해진다: 범위만 따진다.
+          if (d.bool()) {
+            const k = d.int(2, 5), p = d.int(4, 9), L = [tg(k, ts([p, ''], [-1, 'x']))], R = ts([k, 'a']);
+            return N(`${x}에 대한 일차방정식 ${eqB(L, R)}의 해가 자연수가 되게 하는 ${many}`, p - 1, {
+              unit: '개',
+              explain: `양변을 ${k}${tail(k, '으로/로')} 나누면 ${eqB(ts([p, ''], [-1, 'x']), ts([1, 'a']))}이므로 ${nb(`${x} = ${p} − ${va}`)}이다. ${nb(`${p} − ${va}`)}가 자연수이려면 ${va}는 ${p}보다 작은 자연수이어야 하므로 ${va}는 1부터 ${p - 1}까지의 ${p - 1}개이다. ${nb(`${va} = ${p}`)}이면 ${nb(`${x} = 0`)}이고 0은 자연수가 아니다.`,
+              facts: { value: `${p}-1`, unseen: [1], rule: 'natural-1' }
+            });
+          }
+          const [k, e] = d.until(() => [d.pick([2, 3, 4, 5]), d.int(1, 4)], ([s, t]) => s * t >= 4 && s * t <= 12), top = k * e, L = [tg(Q(1, k), ts([k - 1, 'x'], [1, 'a']))], R = ts([1, 'x'], [e, '']);
+          return N(`다음 ${x}에 대한 일차방정식의 해가 음의 정수가 되게 하는 ${many}`, top - 1, {
+            unit: '개', figure: eqF(L, R),
+            explain: `양변에 ${k}${tail(k, '을/를')} 곱하면 ${eqB(ts([k - 1, 'x'], [1, 'a']), ts([k, 'x'], [top, '']))}이고, 정리하면 ${nb(`${x} = ${va} − ${top}`)}이다. ${nb(`${va} − ${top}`)}${tail(top, '이/가')} 음의 정수이려면 ${va}는 ${top}보다 작은 자연수이어야 하므로 ${va}는 1부터 ${top - 1}까지의 ${top - 1}개이다. ${nb(`${va} = ${top}`)}이면 ${nb(`${x} = 0`)}이고 0은 음의 정수가 아니다.`,
+            facts: { value: `${k}*${e}-1`, unseen: [1], rule: 'natural-1' }
+          });
+        }
+        if (n === 2) {
+          // k(p − qx) = a: x 에 자연수를 차례로 넣으면 a 가 정해진다(범위에 배수 조건이 겹친다).
+          const [k, q, p] = d.until(() => [d.int(2, 4), d.int(1, 3), d.int(4, 11)], ([, s, t]) => { const count = Math.floor((t - 1) / s); return count >= 2 && count <= 4; });
+          const L = [tg(k, ts([p, ''], [-q, 'x']))], R = ts([1, 'a']), count = Math.floor((p - 1) / q), list = upTo(count).map((t) => k * (p - q * t)), next = k * (p - q * (count + 1));
+          return N(`${x}에 대한 일차방정식 ${eqB(L, R)}의 해가 자연수가 되게 하는 ${many}`, count, {
+            unit: '개',
+            explain: `${x}에 자연수를 작은 수부터 차례로 대입하여 ${va}의 값을 구한다. ${list.map((t, i) => `${nb(`${x} = ${i + 1}`)}일 때 ${nb(`${va} = ${t}`)}`).join(', ')}이고, ${nb(`${x} = ${count + 1}`)}일 때는 ${nb(`${va} = ${iq(next)}`)}${tail(Math.abs(next), '이/가')} 되어 자연수가 아니다. ${x}가 커질수록 ${va}는 작아지므로 ${va}는 ${list.join(', ')}의 ${count}개이다.`,
+            facts: { value: `(${p}-1-(${p}-1)%${q})/${q}`, unseen: [1], rule: 'natural-2' }
+          });
+        }
+        if (n === 3) {
+          // −x + (j/k)(cx + a) = e: 가장 큰 a 는 가장 작은 x 에서 나오지만, x = 1 일 때는 a 가 자연수가 아니다. 조건에 맞는 a 는 둘 넘게 있다.
+          const m = d.until(() => { const k = d.pick([3, 4, 5]), j = d.pick([2, 3].filter((w) => w < k && gcd(w, k) === 1)), c = d.int(2, 4), e = d.int(3, 9), D = j * c - k; return { k, j, c, e, D, at: [1, 2, 3].find((t) => k * e - D * t > 0 && (k * e - D * t) % j === 0) }; }, (r) => r.D >= 2 && r.at !== undefined && r.at >= 2 && r.k * r.e - r.D * (r.at + r.j) > 0);
+          const { k, j, c, e, D, at } = m, best = (k * e - D * at) / j, L = [tm(-1, 'x'), tg(Q(j, k), ts([c, 'x'], [1, 'a']))], R = ts([e, '']);
+          const tries = upTo(at).map((t) => `${nb(`${x} = ${t}`)}일 때 ${nb(`${j}${va} = ${k * e - D * t}`)}에서 ${nb(`${va} = ${tx(Q(k * e - D * t, j))}`)}${t < at ? '이므로 자연수가 아니고' : '이다'}`).join(', ');
+          return ansV(`다음 ${x}에 대한 일차방정식의 해가 자연수가 되게 하는 자연수 ${va} 가운데 가장 큰 수는?`, Q(best), 'int', {
+            figure: eqF(L, R),
+            explain: `양변에 ${k}${tail(k, '을/를')} 곱하면 ${eqB([tm(-k, 'x'), tg(j, ts([c, 'x'], [1, 'a']))], ts([k * e, '']))}이고, 괄호를 풀어 정리하면 ${eqB(ts([D, 'x'], [j, 'a']), ts([k * e, '']))}, 곧 ${nb(`${j}${va} = ${k * e} − ${D}${x}`)}이다. ${x}가 작을수록 ${va}가 크므로 ${x}에 자연수를 작은 수부터 대입한다. ${tries}. 따라서 가장 큰 수는 ${best}이다.`,
+            facts: { value: `(${k}*${e}-(${j}*${c}-${k})*${at})/${j}`, unseen: [at], rule: 'natural-3' }
+          });
+        }
+        if (n === 4) {
+          // 가장 작은 a: a − e 가 양수이면서 어떤 수의 배수이어야 한다(a = e 이면 해가 0이다).
+          const least = `다음 ${x}에 대한 일차방정식의 해가 자연수가 되게 하는 가장 작은 자연수 ${va}의 값은?`;
+          if (d.bool()) {
+            const [p, q] = d.until(() => [d.int(1, 6), d.int(4, 9)], ([s, t]) => [3, 7, 9].includes(t - s)), D = q - p, e = d.int(2, 9), L = ts([dc(p), 'x'], [1, 'a']), R = ts([dc(q), 'x'], [e, '']);
+            return ansV(least, Q(e + D), 'int', {
+              figure: eqF(L, R),
+              explain: `양변에 10을 곱하면 ${eqB(ts([p, 'x'], [10, 'a']), ts([q, 'x'], [10 * e, '']))}이고, 정리하면 ${nb(`${D}${x} = 10${va} − ${10 * e}`)}, 곧 ${nb(`${D}${x} = 10(${va} − ${e})`)}이다. ${D}${tail(D, '과/와')} 10은 서로소이므로 ${x}가 자연수이려면 ${nb(`${va} − ${e}`)}${tail(e, '이/가')} ${D}의 배수인 자연수이어야 한다. 가장 작은 경우는 ${nb(`${va} − ${e} = ${D}`)}일 때이므로 ${nb(`${va} = ${e + D}`)}이고, 이때 ${nb(`${x} = 10`)}이다. ${nb(`${va} = ${e}`)}이면 ${nb(`${x} = 0`)}이고 0은 자연수가 아니다.`,
+              facts: { value: `${e}+(${js(dc(q))}-${js(dc(p))})*10`, unseen: [10], rule: 'natural-4' }
+            });
+          }
+          const k = d.pick([3, 4, 5]), j = d.pick([2, 3].filter((w) => w < k && gcd(w, k) === 1)), e = d.int(2, 9), L = ts([Q(j, k), 'x'], [e, '']), R = ts([1, 'a']);
+          return ansV(least, Q(e + j), 'int', {
+            figure: eqF(L, R),
+            explain: `${e}${tail(e, '을/를')} 이항하고 양변에 ${k}${tail(k, '을/를')} 곱하면 ${nb(`${j}${x} = ${k}(${va} − ${e})`)}이다. ${j}${tail(j, '과/와')} ${k}${tail(k, '은/는')} 서로소이므로 ${x}가 자연수이려면 ${nb(`${va} − ${e}`)}${tail(e, '이/가')} ${j}의 배수인 자연수이어야 한다. 가장 작은 경우는 ${nb(`${va} − ${e} = ${j}`)}일 때이므로 ${nb(`${va} = ${e + j}`)}이고, 이때 ${nb(`${x} = ${k}`)}이다. ${nb(`${va} = ${e}`)}이면 ${nb(`${x} = 0`)}이고 0은 자연수가 아니다.`,
+            facts: { value: `${e}+${j}`, rule: 'natural-4' }
+          });
+        }
+        // ax ∓ c = ka: x = k ± c/a 이므로 a 는 c 의 약수이다(a 가 양변에 있다).
+        const c = d.pick([6, 8, 10, 12, 14, 15, 18, 20, 21, 22, 26, 27]), k = d.int(2, 6), minus = d.bool(), L = ts([1, 'ax'], [minus ? -c : c, '']), R = ts([k, 'a']), divs = divisors(c);
+        return N(`${x}에 대한 일차방정식 ${eqB(L, R)}의 해가 정수가 되게 하는 ${many}`, divs.length, {
+          unit: '개',
+          explain: `${iq(minus ? -c : c)}${tail(c, '을/를')} 이항하면 ${nb(`${va}${x} = ${k}${va} ${minus ? '+' : MINUS} ${c}`)}이다. ${va}는 0이 아니므로 양변을 ${va}로 나누면 ${nb(`${x} = ${k} ${minus ? '+' : MINUS} ${frac(c, va)}`)}이다. ${x}가 정수이려면 ${nb(frac(c, va) + '가')} 정수이어야 하므로 ${va}는 ${c}의 약수이다. ${c}의 약수는 ${divs.join(', ')}의 ${divs.length}개이다.`,
+          facts: { value: upTo(c).map((t) => divJ(String(c), t)).join('+'), unseen: upTo(c), rule: 'natural-5' }
+        });
+      }, { count: 6 }),
+      H('hard-infinite', '해가 무수히 많은 방정식의 상수', '심27', (d) => {
+        // 함정: 「해가 무수히 많다」는 x에 어떤 수를 대입하여도 참이라는 뜻이다(항등식). 일차방정식이 되는 조건(x의 계수가 0이 아니다)과 거꾸로이고,
+        //  「x = 0」 하나를 해로 적는 아이가 걸린다. 양변의 상수항은 이미 같게 두어 x의 계수만 맞추면 된다.
+        const k = d.int(2, 4), q = d.int(2, 5), c0 = d.int(2, 6), first = d.bool(), p = d.until(() => d.int(2, 9), (w) => w !== k * q && w !== k), a = first ? k * q - p : p - k;
+        const L = first ? ts([k * c0, ''], [-1, 'ax']) : [tg(k, ts([1, 'x'], [-c0, ''])), tm(1, 'ax')], R = first ? [tm(p, 'x'), tg(k, ts([c0, ''], [-q, 'x']))] : ts([p, 'x'], [-k * c0, '']);
+        const tidied = first ? `우변의 괄호를 풀어 정리하면 ${nb(sideH(ts([p - k * q, 'x'], [k * c0, '']), true))}이다. 양변의 상수항이 같으므로 ${x}를 포함한 항을 모두 좌변으로 이항하여 정리하면 ${nb(`(${iq(a)} − ${va})${x} = 0`)}이다.`
+          : `좌변의 괄호를 풀어 정리하면 ${nb(`(${k} + ${va})${x} − ${k * c0}`)}이다. 양변의 상수항이 같으므로 ${x}를 포함한 항을 모두 좌변으로 이항하여 정리하면 ${nb(`(${va} ${a > 0 ? MINUS : '+'} ${Math.abs(a)})${x} = 0`)}이다.`;
+        return ansV(`다음 ${x}에 대한 방정식의 해가 무수히 많을 때, 상수 ${va}의 값은?`, Q(a), 'int', {
+          figure: eqF(L, R),
+          explain: `${tidied} ${x}의 계수가 0이 아니면 이 등식을 참이 되게 하는 ${x}의 값은 0 하나뿐이다. 해가 무수히 많으려면 ${x}에 어떤 수를 대입하여도 등식이 참이어야 하므로 ${x}의 계수가 0이어야 한다. 따라서 ${nb(`${va} = ${iq(a)}`)}이고, 이때 주어진 등식은 ${x}에 대한 항등식이다.`,
+          facts: { value: first ? `${k}*${q}-${p}` : `${p}-${k}` }
+        });
+      }, { standard: STD3 }),
+      H('hard-chunk', '문자가 둘인 등식에서 되풀이되는 식의 값 구하기', '심28', (d) => {
+        // 함정: 문자가 둘이라 x, y의 값은 정해지지 않는다. 같은 식이 두 번 들어 있음을 보고 그 식을 한 문자로 놓으면 일차방정식이 된다.
+        const [pc, qc] = d.pick([[2, 1], [1, 2], [3, 1], [1, 3], [2, 3], [3, 2], [1, -2], [2, -1], [3, -2]]);
+        const m = d.until(() => { const first = d.bool(), k = d.int(2, 5), j = d.until(() => d.int(2, 6), (w) => w !== k), r = d.int(1, 6), s = d.int(1, 9); return { first, k, j, r, s, num: first ? k * r - s : r + k * s, den: first ? k - 1 : k - j }; }, (t) => t.num % t.den === 0 && t.num !== 0 && Math.abs(t.num / t.den) <= 12);
+        // unit(덧붙일 항들): 되풀이되는 식(또는 그 자리에 놓은 한 문자)에 항을 덧붙인 변
+        //  times(k): 그 식의 k배(되풀이되는 식은 괄호로 묶고, 한 문자는 계수만 붙인다)
+        const build = (unit, times) => (m.first ? [unit().concat([tg(-m.k, unit([[-m.r, '']])), tm(-m.s, '')]), ts([0, ''])] : [[times(m.j), tm(m.r, '')], [tg(m.k, unit([[-m.s, '']]))]]);
+        const both = (more) => ts(...[[pc, 'x'], [qc, 'y']].concat(more || [])), [L, R] = build(both, (k) => tg(k, both())), [LA, RA] = build((more) => ts(...[[1, 'A']].concat(more || [])), (k) => tm(k, 'A')), s = solve(LA, RA, 'A'), chunk = nb(sideH(both(), true));
+        return ansV(`두 수 ${x}, ${vy}에 대하여 다음 등식이 성립할 때, ${chunk}의 값은?`, s.v, 'int', {
+          figure: eqF(L, R),
+          explain: `주어진 등식에는 ${chunk}가 두 번 들어 있다. ${chunk}를 한 문자 ${vA}로 놓으면 주어진 등식은 ${vA}에 대한 일차방정식 ${eqB(LA, RA)}이다. ${s.text} 따라서 ${chunk}의 값은 ${tx(s.v)}이다.`,
+          facts: { value: m.first ? `(${m.k}*${m.r}-${m.s})/(${m.k}-1)` : `(${m.r}+${m.k}*${m.s})/(${m.k}-${m.j})`, unseen: [1] }
+        });
+      }),
+      H('hard-new-op', '새로 약속한 기호가 든 방정식', '심29·30', (d, n) => {
+        // 약속한 대로 식을 바꾸어 적으면 일차방정식이 된다. 첫째는 약속을 두 번 쓰고, 둘째는 약속한 계산의 결과에 약속을 한 번 더 쓰고, 셋째는 일차식을 수의 짝으로 적는 약속이다.
+        if (n === 0) {
+          const OP = '◎', m = d.until(() => ({ p: d.int(3, 7), q: d.int(2, 6), r: nz(d, -4, 5), s: nz(d, -9, 9) }), (t) => { const den = t.p - t.q, num = t.s + t.p + t.q * t.r - t.q - t.r; return den !== 0 && num % den === 0 && num !== 0 && Math.abs(num / den) <= 12 && t.q * t.r - t.q - t.r !== 0; });
+          const { p, q, r, s } = m, xr = ts([1, 'x'], [r, '']), xrH = sideH(xr, true), A = ts([p - 1, 'x'], [-p, '']), Bq = ts([q - 1, 'x'], [q * r - q - r, '']), L = [tg(1, A), tg(-1, Bq)], R = ts([s, '']), sol = solve(L, R, 'x');
+          return ansV(`두 수 ${va}, ${vb}에 대하여 ${nb(`${va} ${OP} ${vb} = ${va}${vb} − (${va} + ${vb})`)}로 약속할 때, 다음 방정식을 풀어 ${x}의 값을 구하시오.`, sol.v, 'int', {
+            figure: exq(`(${x} <i>${OP}</i> ${p}) <i>${MINUS}</i> {${q} <i>${OP}</i> (${sideH(xr)})} <i>=</i> ${iq(s)}`),
+            explain: `약속에 따라 ${nb(`${x} ${OP} ${p} = ${p}${x} − (${x} + ${p})`)} ${nb(`= ${sideH(A, true)}`)}이고, ${keep(`${q} ${OP} (${xrH}) = ${q}(${xrH}) − (${q} + ${xrH})`)} ${nb(`= ${sideH(Bq, true)}`)}이다. 따라서 주어진 방정식은 ${eqB(L, R)}이다. ${sol.text}`,
+            facts: { value: `((${s})+${p}+${q}*(${r})-${q}-(${r}))/(${p}-${q})`, rule: 'new-op-0' }
+          });
+        }
+        if (n === 1) {
+          const OP = '★', m = d.until(() => { const k = d.int(1, 3), j = d.int(2, 3), p = d.int(1, 3), q = nz(d, -3, 3), v = nz(d, -5, 5), al = 1 - j * p, be = k * p, ga = 1 - j * q, de = k * q; return { k, j, p, q, v, al, be, ga, de, t: ga * (al * v + be) + de }; }, (r) => r.t !== 0 && Math.abs(r.t) <= 60 && r.p !== r.q);
+          const { k, j, p, q, al, be, ga, de, t } = m, inner = ts([al, 'x'], [be, '']), L = [tg(ga, inner), tm(de, '')], R = ts([t, '']), sol = solve(L, R, 'x'), qH = pq(q);
+          return ansV(`두 수 ${va}, ${vb}에 대하여 ${nb(`${va} ${OP} ${vb} = ${sideH(ts([1, 'a'], [k, 'b'], [-j, 'ab']), true)}`)}로 약속할 때, 다음 등식을 만족시키는 ${x}의 값을 구하시오.`, sol.v, 'int', {
+            figure: exq(`(${x} <i>${OP}</i> ${p}) <i>${OP}</i> ${qH} <i>=</i> ${iq(t)}`),
+            explain: `약속에 따라 ${keep(`${x} ${OP} ${p} = ${x} + ${k} × ${p} − ${j} × ${x} × ${p}`)} ${nb(`= ${sideH(inner, true)}`)}이다. 이 식을 ${vA}라 하면 ${keep(`${vA} ${OP} ${qH} = ${vA} + ${k} × ${qH} − ${j} × ${vA} × ${qH}`)} ${nb(`= ${sideH(ts([ga, 'A'], [de, '']), true)}`)}이므로 주어진 등식은 ${eqB(L, R)}이다. ${sol.text}`,
+            facts: { value: `((${t})-${k}*(${q})-(1-${j}*(${q}))*${k}*${p})/((1-${j}*(${q}))*(1-${j}*${p}))`, unseen: [1], rule: 'new-op-1' }
+          });
+        }
+        const m = d.until(() => ({ p: d.int(1, 9), q: d.int(1, 4), r: nz(d, -6, 6), k: d.int(2, 4), s: nz(d, -5, 5), j: d.int(2, 5) }), (t) => { const num = t.p - t.r - t.k * t.s, den = t.q + t.k; return num % den === 0 && num !== 0 && Math.abs(num / den) <= 9; });
+        const { p, q, r, k, s, j } = m, ang = (c1, c2) => `〈${c1}, ${c2}〉`, L = [tm(p, ''), tg(-1, ts([q, 'x'], [r, '']))], R = [tg(k, ts([1, 'x'], [s, '']))], sol = solve(L, R, 'x'), v = sol.v.p;
+        return ansV(`${x}에 대한 식 ${nb(`${va}${x} + ${vb}`)}를 ${nb(ang(va, vb))}로 나타내기로 약속할 때, 다음 등식을 만족시키는 ${x}에 대하여 ${nb(ang(j, 0))}의 값은?`, Q(j * v), 'int', {
+          figure: exq(`${ang(0, p)} <i>${MINUS}</i> ${ang(q, iq(r))} <i>=</i> ${k}${ang(1, iq(s))}`),
+          explain: `약속에 따라 ${nb(`${ang(0, p)} = 0 × ${x} + ${p} = ${p}`)}, ${nb(`${ang(q, iq(r))} = ${sideH(ts([q, 'x'], [r, '']), true)}`)}, ${nb(`${ang(1, iq(s))} = ${sideH(ts([1, 'x'], [s, '']), true)}`)}이므로 주어진 등식은 ${eqB(L, R)}이다. ${sol.text} ${nb(`${ang(j, 0)} = ${j}${x}`)}이므로 구하는 값은 ${nb(`${j} × ${pq(v)} = ${iq(j * v)}`)}이다.`,
+          facts: { value: `${j}*((${p})-(${r})-${k}*(${s}))/(${q}+${k})`, rule: 'new-op-2' }
+        });
+      }, { count: 3 }),
+      H('hard-mix-salt', '농도가 다른 두 소금물을 섞기', '기본 ①76', (d) => {
+        // 섞기 전 두 소금물에 든 소금의 양의 합이 섞은 뒤의 소금의 양과 같다. 농도끼리 더하거나 평균을 내는 아이가 걸린다(두 소금물의 양이 다르다).
+        const m = d.until(() => { const p = d.int(4, 15), v = d.int(5, 20), first = 100 * d.int(1, 5), second = 100 * d.int(1, 5); return { p, v, first, second, r: (p * first + v * second) / (first + second) }; }, (t) => Number.isInteger(t.r) && Math.abs(t.v - t.p) >= 3 && t.first !== t.second);
+        const { p, v, first, second, r } = m, all = first + second, L = ts([p * first / 100, ''], [second / 100, 'x']), R = ts([r * all / 100, '']);
+        return N(`${p} %의 소금물 ${first} g에 ${x} %의 소금물 ${second} g을 섞었더니 ${r} %의 소금물이 되었다. ${x}의 값은?`, v, {
+          explain: `섞기 전 두 소금물에 든 소금의 양의 합은 섞은 뒤의 소금물에 든 소금의 양과 같다. 두 소금물에 든 소금의 양은 ${nb(`${frac(p, 100)} × ${first} = ${p * first / 100}`)}(g), ${nb(`${frac(x, 100)} × ${second} = ${termH(second / 100, 'x')}`)}(g)이고, 섞은 뒤의 소금물 ${all} g에 든 소금의 양은 ${nb(`${frac(r, 100)} × ${all} = ${r * all / 100}`)}(g)이다. ${told(L, R)}`,
+          facts: { value: `(${r}*(${first}+${second})-${p}*${first})/${second}` }
+        });
+      }),
+      H('hard-two-discount', '할인율이 다른 두 물건의 정가', '기본 ①79', (d) => {
+        // 두 정가를 한 문자로 나타내고(차), 저마다 다른 할인율을 건다.
+        const m = d.until(() => { const price = 100 * d.int(10, 40), gap = 100 * d.int(2, 8), p = d.pick([10, 20, 25, 30, 40]), q = d.pick([10, 20, 25, 30, 40]); return { price, gap, p, q, total: (price * (100 - p) + (price - gap) * (100 - q)) / 100 }; }, (t) => t.p !== t.q && t.price - t.gap >= 500 && Number.isInteger(t.total) && t.total % 10 === 0);
+        const { price, gap, p, q, total } = m, [dear, cheap] = d.pick([['필통', '지우개'], ['가위', '풀'], ['컵', '접시']]), L = [tm(pct(100 - p), 'x'), tg(pct(100 - q), ts([1, 'x'], [-gap, '']))], R = ts([total, '']);
+        return N(`어느 가게에서 ${dear} 한 개의 정가는 ${cheap} 한 개의 정가보다 ${gap}원 비싸다. ${josa(dear, '은/는')} 정가의 ${p} %를, ${josa(cheap, '은/는')} 정가의 ${q} %를 할인하여 한 개씩 샀더니 모두 ${total}원이었다. ${dear} 한 개의 정가는 얼마인가?`, price, {
+          unit: '원',
+          explain: `${dear} 한 개의 정가를 ${x}원이라 하면 ${cheap} 한 개의 정가는 ${nb(`(${x} − ${gap})`)}원이다. 정가의 ${p} %를 할인한 값은 정가의 ${100 - p} %이고, 정가의 ${q} %를 할인한 값은 정가의 ${100 - q} %이다. ${told(L, R)}`,
+          facts: { value: `(100*${total}+(100-${q})*${gap})/((100-${p})+(100-${q}))`, unseen: [100] }
+        });
+      }),
+      H('hard-up-down', '한쪽은 늘고 한쪽은 준 학생 수', '심42', (d) => {
+        // 늘어난 수와 줄어든 수의 차가 전체의 변화이다. 구한 해는 작년 남학생의 수이고 묻는 것은 올해 남학생의 수이다.
+        const m = d.until(() => { const boys = 50 * d.int(4, 14), girls = 50 * d.int(4, 14), p = d.pick([2, 4, 6, 8, 10, 12]), q = d.pick([2, 4, 6, 8, 10, 12]); return { boys, girls, p, q, change: (boys * p - girls * q) / 100 }; }, (t) => t.p !== t.q && t.change !== 0 && Math.abs(t.change) <= 20 && t.boys !== t.girls);
+        const { boys, girls, p, q, change } = m, all = boys + girls, more = boys * p / 100, size = Math.abs(change), L = [tm(pct(p), 'x'), tg(qneg(pct(q)), ts([all, ''], [-1, 'x']))], R = ts([change, '']);
+        return N(`어느 중학교의 작년 전체 학생은 ${all}명이었다. 올해는 작년보다 남학생의 수가 ${p} % 늘고 여학생의 수가 ${q} % 줄어서 전체 학생의 수가 ${size}명 ${change > 0 ? '늘었다' : '줄었다'}. 올해 남학생은 몇 명인가?`, boys + more, {
+          unit: '명',
+          explain: `작년 남학생의 수를 ${x}라 하면 작년 여학생의 수는 ${nb(`${all} − ${x}`)}이다. 늘어난 남학생의 수는 ${nb(sideH([tm(pct(p), 'x')], true))}, 줄어든 여학생의 수는 ${nb(`${tx(pct(q))}(${all} − ${x})`)}이다. 전체 학생의 수가 ${size}명 ${change > 0 ? '늘었으므로' : '줄었으므로'} 늘어난 수에서 줄어든 수를 뺀 값이 ${iq(change)}이다. ${told(L, R)} 작년 남학생이 ${boys}명이므로 올해 남학생은 ${nb(`${boys} + ${more} = ${boys + more}`)}(명)이다.`,
+          facts: { value: `(${q}*${all}${change > 0 ? '+' : '-'}${size}*100)/(${p}+${q})*(100+${p})/100`, unseen: [100] }
+        });
+      }),
+      H('hard-ratio-pass', '지원자·합격자·불합격자의 남녀의 비', '심43', (d) => {
+        // 합격자를 비로 나누어 수로 고치고, 불합격자를 한 문자로 나타낸 뒤 지원자의 비로 비례식을 세운다.
+        const m = d.until(() => {
+          const [b1, b2] = d.pick([[5, 2], [3, 2], [4, 3], [2, 1], [3, 1], [5, 3], [4, 1], [5, 4]]), [c1, c2] = d.pick([[1, 1], [1, 1], [2, 1], [1, 2]]), [a1, a2] = d.pick([[3, 2], [2, 1], [4, 3], [5, 3], [5, 4], [7, 5], [7, 4], [3, 1], [5, 2], [6, 5], [7, 6], [1, 1]]);
+          return { b1, b2, c1, c2, a1, a2, t: 5 * d.int(2, 12), den: a2 * c1 - a1 * c2, num: a1 * b2 - a2 * b1 };
+        }, (r) => { if (r.den === 0 || r.num === 0) return false; const k = r.t * r.num / r.den; return Number.isInteger(k) && k >= 5 && k <= 150 && (r.b1 + r.b2) * r.t <= 600 && r.a1 * r.c2 !== r.a2 * r.c1; });
+        const { b1, b2, c1, c2, a1, a2, t } = m, k = t * m.num / m.den, pass = (b1 + b2) * t, men = b1 * t, women = b2 * t, fail = (c1 + c2) * k, said = (p, q) => nb(`${p} : ${q}`);
+        const side = (k, list) => (k === 1 ? list : [tg(k, list)]), L = side(a2, ts([men, ''], [c1, 'x'])), R = side(a1, ts([women, ''], [c2, 'x']));
+        return N(`어느 시험에서 지원자의 남녀의 비는 ${said(a1, a2)}, 합격자의 남녀의 비는 ${said(b1, b2)}, 불합격자의 남녀의 비는 ${said(c1, c2)}${tail(c2, '이었다/였다')}. 합격자가 ${pass}명일 때, 지원자는 모두 몇 명인가?`, pass + fail, {
+          unit: '명',
+          explain: `합격자 ${pass}명을 ${said(b1, b2)}${tail(b2, '으로/로')} 나누면 합격한 남자는 ${men}명, 여자는 ${women}명이다. 불합격자의 남녀의 비가 ${said(c1, c2)}이므로 불합격한 남자를 ${termH(c1, 'x')}명, 여자를 ${termH(c2, 'x')}명이라 하면 지원한 남자는 ${nb(`(${men} + ${termH(c1, 'x')})`)}명, 여자는 ${nb(`(${women} + ${termH(c2, 'x')})`)}명이다. 지원자의 남녀의 비에서 ${nb(`(${men} + ${termH(c1, 'x')}) : (${women} + ${termH(c2, 'x')}) = ${a1} : ${a2}`)}이고, 비례식에서 외항의 곱과 내항의 곱은 같으므로 ${told(L, R)} 불합격자는 ${nb(`${c1 + c2} × ${k} = ${fail}`)}(명)이므로 지원자는 ${nb(`${pass} + ${fail} = ${pass + fail}`)}(명)이다.`,
+          facts: { value: `${pass}+(${c1}+${c2})*(${a1}*${pass}*${b2}/(${b1}+${b2})-${a2}*${pass}*${b1}/(${b1}+${b2}))/(${a2}*${c1}-${a1}*${c2})` }
+        });
+      }),
+      H('hard-clock', '시침과 분침이 겹치거나 반대 방향으로 일직선이 되는 시각', '심47', (d, n) => {
+        // 분침은 1분에 6°, 시침은 1분에 0.5°씩 움직인다. h시 정각에 시침은 12시 방향에서 30h°만큼 돌아간 곳에 있다(분침은 0°).
+        //  첫째는 두 바늘이 겹치고(두 각이 같다), 둘째는 반대 방향으로 일직선을 이룬다(두 각의 차가 180°이고, 어느 바늘이 앞서는지는 시각에 따라 다르다).
+        const h = n === 0 ? d.int(1, 10) : d.pick([1, 2, 3, 4, 7, 8, 9, 10, 11]), base = 30 * h, ahead = h < 6;
+        const L = ts([6, 'x']), R = n === 0 ? ts([dc(5), 'x'], [base, '']) : ts([dc(5), 'x'], [base, ''], [ahead ? 180 : -180, '']), sol = solve(L, R, 'x');
+        const hands = `분침은 60분에 360°를 돌므로 1분에 6°씩 움직이고, 시침은 60분에 30°를 돌므로 1분에 0.5°씩 움직인다. ${h}시 정각에 시침은 12시 방향에서 ${base}°만큼 돌아간 곳에 있다. ${h}시 ${x}분에 12시 방향에서 돌아간 각의 크기는 분침이 ${nb(`6${x}°`)}, 시침이 ${nb(`(0.5${x} + ${base})°`)}이다.`;
+        return F(n === 0 ? `${h}시와 ${h + 1}시 사이에 시계의 시침과 분침이 겹치는 시각은 ${h}시 몇 분인가?` : `${h}시와 ${h + 1}시 사이에 시계의 시침과 분침이 서로 반대 방향으로 일직선을 이루는 시각은 ${h}시 몇 분인가?`, sol.v.p, sol.v.q, {
+          improper: true, anyForm: true, unit: '분',
+          explain: n === 0 ? `${hands} 두 바늘이 겹치면 두 각의 크기가 같으므로 ${told(L, R)}`
+            : `${hands} 두 바늘이 서로 반대 방향으로 일직선을 이루면 두 각의 크기의 차가 180°이다. ${h}시와 ${h + 1}시 사이에서는 ${ahead ? '분침이 시침보다' : '시침이 분침보다'} 180°만큼 더 돌아간 곳에 있을 때이므로 ${told(L, R)}`,
+          facts: { value: `(360/12*${h}${n === 0 ? '' : ahead ? '+180' : '-180'})/(360/60-360/12/60)`, unseen: [360, 12, 60, 180], rule: 'clock-' + n }
+        });
+      }, { count: 2 }),
+      H('hard-evaporate', '물을 증발시킨 뒤 소금을 더 넣어 농도 맞추기', '심48', (d) => {
+        // 물을 증발시켜도 소금의 양은 그대로이고, 소금을 더 넣으면 소금의 양과 소금물의 양이 함께 늘어난다.
+        const m = d.until(() => { const p = d.int(4, 15), w = 100 * d.int(2, 6), e = 50 * d.int(1, 4), r = d.pick([10, 20, 25, 30, 40]); return { p, w, e, r, v: (r * (w - e) - p * w) / (100 - r) }; }, (t) => t.e <= t.w - 100 && Number.isInteger(t.v) && t.v >= 5 && t.v <= 200);
+        const { p, w, e, r, v } = m, salt = p * w / 100, rest = w - e, L = ts([salt, ''], [1, 'x']), R = [tg(pct(r), ts([rest, ''], [1, 'x']))];
+        return N(`${p} %의 소금물 ${w} g에서 물 ${e} g을 증발시킨 뒤, 소금을 더 넣어 ${r} %의 소금물을 만들려고 한다. 더 넣어야 하는 소금의 양은 몇 g인가?`, v, {
+          unit: 'g',
+          explain: `물을 증발시켜도 소금의 양은 변하지 않는다. 처음 소금물에 든 소금의 양은 ${nb(`${frac(p, 100)} × ${w} = ${salt}`)}(g)이고, 물 ${e} g을 증발시키면 소금물의 양은 ${nb(`${w} − ${e} = ${rest}`)}(g)이다. 소금을 ${xu('g')} 더 넣으면 소금의 양은 ${nb(`(${salt} + ${x})`)} g, 소금물의 양은 ${nb(`(${rest} + ${x})`)} g이 되고, 소금의 양이 소금물의 양의 ${r} %이다. ${told(L, R)}`,
+          facts: { value: `(${r}*(${w}-${e})-${p}*${w})/(100-${r})`, unseen: [100] }
+        });
+      }),
+      H('hard-work-three', '세 사람이 세 구간으로 나누어 하는 일', '심51', (d) => {
+        // 혼자 → 둘이 함께 → 혼자의 세 구간이다. 마지막 구간의 날수는 걸린 날수에서 앞의 두 구간을 빼어 한 문자로 나타낸다.
+        const DAYS = [6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 30, 36];
+        const m = d.until(() => ({ a: d.pick(DAYS), b: d.pick(DAYS), c: d.pick(DAYS), t: d.int(2, 8), v: d.int(2, 6), y: d.int(1, 6) }), (r) => r.a !== r.b && r.b !== r.c && r.a !== r.c && r.v !== r.y && r.v !== r.t && r.v * r.b * r.c + r.t * r.a * r.c + r.t * r.a * r.b + r.y * r.a * r.c === r.a * r.b * r.c);
+        const { a, b, c, t, v, y } = m, total = v + t + y, [p1, p2, p3] = d.shuffle(NAMES).slice(0, 3), both = Q(t * (b + c), b * c);
+        const L = [tm(Q(1, a), 'x'), tm(both, ''), tf(ts([total - t, ''], [-1, 'x']), b, 1)], R = ts([1, '']);
+        return N(`어떤 일을 혼자서 끝내는 데 ${name(p1, '은/는')} ${a}일, ${name(p2, '은/는')} ${b}일, ${name(p3, '은/는')} ${c}일이 걸린다. 이 일을 ${name(p1, '이/가')} 혼자 며칠 동안 하다가, 이어서 ${name(p2, '과/와')} ${name(p3, '이/가')} 함께 ${t}일 동안 하고, 나머지를 ${name(p2, '이/가')} 혼자 하여 일을 시작한 지 ${total}일 만에 끝냈다. ${name(p1, '이/가')} 혼자 일한 날은 며칠인가?`, v, {
+          unit: '일',
+          explain: `전체 일의 양을 1이라 하면 하루에 하는 일의 양은 ${name(p1, '이/가')} ${nb(frac(1, a) + ',')} ${name(p2, '이/가')} ${nb(frac(1, b) + ',')} ${name(p3, '이/가')} ${nb(frac(1, c) + '이다.')} ${name(p1, '이/가')} 혼자 일한 날을 ${x}일이라 하면 ${name(p2, '이/가')} 마지막에 혼자 일한 날은 ${nb(`${total} − ${t} − ${x} = ${total - t} − ${x}`)}(일)이다. ${name(p2, '과/와')} ${name(p3, '이/가')} 함께 ${t}일 동안 한 일의 양은 ${nb(`${t} × (${frac(1, b)} + ${frac(1, c)}) = ${tx(both)}`)}이다. 세 구간에서 한 일의 양의 합이 1이므로 ${told(L, R)}`,
+          facts: { value: `(1-${t}*(1/${b}+1/${c})-(${total}-${t})/${b})/(1/${a}-1/${b})`, unseen: [1] }
+        });
+      }),
+      H('hard-margin', '할인하여 팔아도 이익이 남게 하는 정가', '심52', (d) => {
+        // 할인은 정가에 걸고 이익은 원가에 건다. 할인한 값이 원가에 이익을 더한 값과 같다.
+        const m = d.until(() => { const cost = 1000 * d.int(2, 10), p = d.pick([10, 20, 25, 30, 40]), q = d.pick([5, 8, 10, 12, 15, 20, 26, 30, 35, 40, 44, 50]); return { cost, p, q, v: cost * (p + q) / (100 - p) }; }, (t) => Number.isInteger(t.v) && t.v % 100 === 0 && t.v < t.cost && t.v <= 9900);
+        const { cost, p, q, v } = m, sold = cost * (100 + q) / 100, L = [tg(pct(100 - p), ts([1, 'x'], [cost, '']))], R = ts([sold, '']);
+        return N(`원가가 ${cost}원인 물건이 있다. 정가의 ${p} %를 할인하여 팔아도 원가의 ${q} %의 이익이 남게 하려면, 원가에 얼마의 이익을 붙여 정가를 정해야 하는가?`, v, {
+          unit: '원',
+          explain: `원가에 ${x}원의 이익을 붙이면 정가는 ${nb(`(${x} + ${cost})`)}원이다. 정가의 ${p} %를 할인한 값은 정가의 ${100 - p} %이므로 ${nb(sideH(L, true))}원이다. 원가의 ${q} %의 이익이 남으려면 판 값이 ${nb(`${cost} + ${cost} × ${frac(q, 100)} = ${sold}`)}(원)이어야 한다. ${told(L, R)}`,
+          facts: { value: `${cost}*(100+${q})/(100-${p})-${cost}`, unseen: [100] }
+        });
+      }),
+      H('hard-leftover', '남은 것의 몇 분의 몇을 거듭 주고 남은 수에서 처음 수 구하기', '심53', (d) => {
+        // 함정: 둘째로 준 것은 처음 수가 아니라 「남은 것」의 몇 분의 몇이다. 처음 수의 몇 분의 몇으로 식을 세우는 아이가 걸린다.
+        const m = d.until(() => { const k1 = d.pick([2, 3, 4, 5]), k2 = d.pick([2, 3, 4]), e1 = d.int(1, 4), e2 = d.int(1, 3), e3 = d.int(1, 3), last = d.int(1, 5), r1 = (last + e3 + e2) * k2 / (k2 - 1); return { k1, k2, e1, e2, e3, last, r1, v: (r1 + e1) * k1 / (k1 - 1) }; }, (t) => t.k1 !== t.k2 && Number.isInteger(t.r1) && Number.isInteger(t.v) && t.v <= 90 && t.v % t.k1 === 0 && t.r1 % t.k2 === 0);
+        const { k1, k2, e1, e2, e3, last, v } = m, who = d.pick(NAMES), inner = [tm(Q(k1 - 1, k1), 'x'), tm(-e1, '')], second = [tg(Q(k2 - 1, k2), inner), tm(-e2, '')], L = second.concat([tm(-e3, '')]), R = ts([last, '']);
+        return N(`${name(who, '은/는')} 구슬을 몇 개 가지고 있었다. 먼저 가진 구슬의 ${frac(1, k1)}과 ${e1}개를 동생에게 주고, 다음에 남은 구슬의 ${frac(1, k2)}과 ${e2}개를 친구에게 주었다. 마지막으로 ${e3}개를 잃어버렸더니 ${last}개가 남았다. ${name(who, '이/가')} 처음에 가지고 있던 구슬은 몇 개인가?`, v, {
+          unit: '개',
+          explain: `처음에 가지고 있던 구슬의 수를 ${x}라 하자. 동생에게 주고 남은 구슬의 수는 ${nb(`${x} − ${frac(x, k1)} − ${e1} = ${sideH(inner, true)}`)}이다. 친구에게 준 것은 이 남은 구슬의 ${frac(1, k2)}과 ${e2}개이므로 그 뒤에 남은 구슬의 수는 ${nb(sideH(second, true))}이다. 여기에서 ${e3}개를 잃어버리고 ${last}개가 남았으므로 ${told(L, R)}`,
+          facts: { value: `((${last}+${e3}+${e2})*${k2}/(${k2}-1)+${e1})*${k1}/(${k1}-1)`, unseen: [1] }
+        });
+      }),
+      H('hard-pairing', '상대의 수가 한 명씩 늘어나는 짝에서 사람 수 구하기', '심54', (d) => {
+        // 함정: 몇 번째 여학생인가와 상대한 남학생의 수의 차가 늘 같다는 것을 찾아야 식이 선다. 마지막 여학생의 차례가 여학생의 수이고, 그 상대가 남학생 전체이다.
+        const s = d.int(4, 9), girls = d.int(5, 12), boys = girls + s - 1, all = boys + girls, L = [tm(1, 'x'), tg(1, ts([1, 'x'], [-(s - 1), '']))], R = ts([all, '']);
+        return N(`어느 탁구 모임에 남학생과 여학생이 합하여 ${all}명 있다. 첫 번째 여학생은 남학생 ${s}명과 한 번씩 경기를 하였고, 두 번째 여학생은 남학생 ${s + 1}명과, 세 번째 여학생은 남학생 ${s + 2}명과 한 번씩 경기를 하였다. 이와 같이 상대하는 남학생을 한 명씩 늘려 갔더니 마지막 여학생은 남학생 모두와 한 번씩 경기를 하였다. 이 모임의 남학생은 몇 명인가?`, boys, {
+          unit: '명',
+          explain: `첫 번째 여학생은 남학생 ${s}명, 두 번째 여학생은 ${s + 1}명, 세 번째 여학생은 ${s + 2}명과 경기를 하였으므로 상대한 남학생의 수는 여학생의 차례보다 늘 ${s - 1}만큼 크다. 마지막 여학생의 차례는 여학생의 수와 같고, 이 여학생이 상대한 남학생의 수는 남학생 전체의 수이다. 남학생의 수를 ${x}라 하면 여학생의 수는 ${nb(`${x} − ${s - 1}`)}이다. ${told(L, R)}`,
+          facts: { value: `(${all}+${s}-1)/2`, unseen: [1, 2] }
         });
       })
     ]
