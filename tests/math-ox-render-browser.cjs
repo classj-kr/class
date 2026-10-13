@@ -104,6 +104,9 @@ dataSource.split(/\r?\n/).forEach((line, i) => {
           for (let n = walker.nextNode(); n; n = walker.nextNode()) text += n.nodeValue + ' ';
           const leak = text.match(/\$|\\[()[\]]|\\[a-zA-Z]{2,}|[\^_]\{/);
           if (leak) issues.push(name + ': 수식 밖에 TeX 가 보임 ⟨' + text.slice(Math.max(0, leak.index - 30), leak.index + 40).trim() + '⟩');
+          // 글은 innerHTML 로 그대로 들어가므로 마크다운 강조 표시는 별표째 찍힌다.
+          const stars = text.indexOf('**');
+          if (stars !== -1) issues.push(name + ': 별표(**)가 글자로 보임 ⟨' + text.slice(Math.max(0, stars - 20), stars + 30).trim() + '⟩');
           for (const k of el.querySelectorAll('.katex')) { const r = k.getBoundingClientRect(); boxes.push([Math.round(r.width * 100) / 100, Math.round(r.height * 100) / 100]); }
         }
         return { id: Number(card.id.replace('q-card-', '')), issues, fields, boxes };
