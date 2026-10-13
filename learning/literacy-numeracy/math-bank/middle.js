@@ -463,7 +463,7 @@
   function monoAns(text, coef, vars, o) {
     if (!Number.isInteger(coef) || coef === 0 || !vars.length || vars.some(([, e]) => !Number.isInteger(e) || e < 1)) throw new Error('단항식 답: 계수는 0이 아닌 정수, 지수는 자연수여야 한다');
     const template = '{0}' + vars.map(([name], i) => V(name) + '<sup>{' + (i + 1) + '}</sup>').join('');
-    const shownText = mono(coef, vars.map(([name, e]) => V(name) + (e > 1 ? sup(e) : '')).join(''));
+    const shownText = (coef < 0 ? MINUS : '') + mono(coef, vars.map(([name, e]) => V(name) + (e > 1 ? sup(e) : '')).join(''));
     return inline(text + ' <span style="white-space:nowrap">(단, 지수가 1이면 1을 적는다.)</span>', template, [{ answer: coef, signed: true }].concat(vars.map(([, e]) => ({ answer: e }))), Object.assign({}, o, { shown: shownText }));
   }
   // 답이 다항식인 문항: 항마다 「[±][ ] 문자」로 받는다. terms 는 [[계수, 문자 글], …](문자 글은 V('x'), V('x') + sup(2), 상수항은 ''). 계수는 0이 아닌 정수이고, 1이어도 1을 적게 한다.
