@@ -253,4 +253,185 @@
       });
     })
   ]);
+
+  // ── 다시 실은 꼴 ──
+  // 처음 지을 때 「합동을 두 번 넘게 쓴다」「보조선을 그어야 한다」「경우가 많다」「요령이 든다」는 까닭으로 뺀 꼴을 다시 보고 실었다(그대로 뺀 것과 다시 실은 것의 목록은 7-2-2a.js 머리 주석).
+  //  - 직각이 둘 있는 두 삼각형(수선의 발, 접은 종이)은 나머지 한 각을 구하여 ASA 합동으로 설명한다. 직각삼각형의 합동 조건(중2)의 이름은 쓰지 않는다.
+  //  - 정사각형의 대각선이 한 각을 이등분한다는 것은 △ABD ≡ △CBD (SSS 합동)로, 두 대각선의 교점에서 생기는 같은 각은 △OBC ≡ △OCD (SAS 합동)로 댄다. 이등변삼각형의 성질(중2)은 쓰지 않는다.
+  //  - 설명을 고르게 하는 유형은 빈칸 꼴로 물었다. 「바르게 설명한 것」으로 물으면 합동을 알고 난 뒤에 얻는 변을 쓴 보기도 다른 길로는 설명이 되어 답이 갈린다.
+  //  - ②53 은 hard-square-cross#2 와 같은 그림·같은 답이어서 싣지 않았다. 문자로 놓은 두 각의 합을 쓰는 일은 hard-square-sum 이 맡는다.
+  const { polar, sub, BLK, LONGEST, T } = K, { lines } = B.kit;
+  B.addTypes(UNIT, 'hard', [
+    H('hard-chain-two', '첫 합동에서 얻은 것으로 둘째 합동을 설명하기: 설명의 빈칸', '기본 ①55', (d) => {
+      // △ABC ≡ △DBE (ASA)에서 BC = BE, ∠BCA = ∠BED 를 얻어야 △AEF 와 △DCF 의 한 변과 그 양 끝 각이 갖추어진다.
+      // 틀린 보기: 첫 합동의 조건을 SAS 로 읽은 것, 둘째 합동을 알고 난 뒤에야 얻는 변(DF)을 댄 것, 양 끝 각이 아닌 각(∠DFC)을 댄 것
+      const O = [0, 0], lo = d.pick([4, 8]), hi = lo + d.pick([44, 48]), pts = { B: O, E: polar(O, 2.3, lo), A: polar(O, 4.5, lo), C: polar(O, 2.3, hi), D: polar(O, 4.5, hi) };
+      pts.F = meet(pts.A, sub(pts.C, pts.A), pts.D, sub(pts.E, pts.D));
+      const rows = [`△ABC와 △DBE에서 ${eqs('AB', 'DB')}, ∠BAC = ∠BDE, ∠B는 공통이므로 △ABC ≡ △DBE (${BLK[0]} 합동)`,
+        `따라서 ${eqs('BC', 'BE')}이므로 ${sg('AE')} = ${BLK[1]}이고, ∠BCA = ∠BED이므로 ∠AEF = ${BLK[2]}이다.`,
+        `△AEF와 △DCF에서 ${sg('AE')} = ${BLK[1]}, ∠EAF = ∠CDF, ∠AEF = ${BLK[2]}이므로 △AEF ≡ △DCF (ASA 합동)`];
+      const opt = (k, side, angle) => `${k}, ${sg(side)}, ${angle}`;
+      return pickOne(d, `다음은 그림에서 ${eqs('AB', 'DB')}, ∠BAC = ∠BDE이고 점 F가 선분 AC와 선분 DE의 교점일 때, △AEF ≡ △DCF임을 설명하는 과정이다. ${BLK.join(', ')}에 알맞은 것을 차례로 나열한 것은?`,
+        opt('ASA', 'DC', '∠DCF'), [opt('SAS', 'DC', '∠DCF'), opt('ASA', 'DF', '∠DCF'), opt('ASA', 'DC', '∠DFC')], {
+          figure: shape({ pts, segs: ['BA', 'BD', 'AC', 'DE'], angs: [['BAC', '', 'arc'], ['BDE', '', 'arc']], dots: 'EC' })
+            .svg('점 B에서 나간 두 선분 BA, BD가 있다. 선분 BA 위에 점 E가, 선분 BD 위에 점 C가 있다. 선분 AC와 선분 DE가 점 F에서 만난다. ∠BAC와 ∠BDE에 같은 표시(호)가 있다.', { k: 40 }) + lines(rows),
+          explain: `△ABC와 △DBE에서 ${sg('AB')}의 양 끝 각은 ∠BAC와 ∠B이고 ${sg('DB')}의 양 끝 각은 ∠BDE와 ∠B이므로 ASA 합동이다. ${eqs('BC', 'BE')}이므로 ${sg('AE')} = ${sg('AB')} − ${sg('BE')} = ${sg('DB')} − ${sg('BC')} = ${sg('DC')}이다. ∠BCA = ∠BED이므로 ∠AEF = 180° − ∠BED = 180° − ∠BCA = ∠DCF이다. ${sg('AE')}의 양 끝 각은 ∠EAF와 ∠AEF이고 ${sg('DC')}의 양 끝 각은 ∠CDF와 ∠DCF이다.`
+        });
+    }),
+    H('hard-feet', '직각을 낀 두 변의 길이가 같은 삼각형의 두 꼭짓점에서 직선에 내린 수선', '기본 ①67 ②54', (d) => {
+      // ∠ABD = 90° − ∠BAD = ∠CAE 를 각 셈으로 찾아 △ABD ≡ △CAE (ASA)를 대고, 대응변 두 쌍(AD = CE, BD = AE)을 옮겨 선분 DE 를 나눈다.
+      const [p, q] = d.until(() => [d.int(3, 15), d.int(3, 15)], ([x, y]) => Math.max(x, y) >= 2.2 * Math.min(x, y) && Math.max(x, y) <= 3.2 * Math.min(x, y)), de = p + q, f = 5.3 / de;
+      const ask = d.pick(['BD', 'CE']), other = ask === 'BD' ? 'CE' : 'BD', given = ask === 'BD' ? q : p, answer = ask === 'BD' ? p : q;
+      const pts = { B: [-q * f, p * f], C: [p * f, q * f], D: [-q * f, 0], A: [0, 0], E: [p * f, 0] }, pic = new Pic().seg([pts.D[0] - 0.75, 0], [pts.E[0] + 0.85, 0]);
+      shape({ pts, segs: ['AB', 'AC', 'BC', 'BD', 'CE'], ticks: { AB: 1, AC: 1 }, angs: [['BDA', '', 'right'], ['CEA', '', 'right'], ['BAC', '', 'right']], lens: { [other]: cm(given) }, dirs: { D: [-1, -0.85], E: [1, -0.85] } }, pic);
+      // 선분 DE 의 길이: 점 A 의 이름과 겹치지 않게, 두 끝에서 내린 가는 선 아래에 점선 활을 그린다.
+      const low = (name) => [pts[name][0], -0.56];
+      pic.seg(pts.D, low('D'), 'thin').seg(pts.E, low('E'), 'thin').span(low('D'), low('E'), cm(de), pts.B);
+      pic.name([pts.E[0] + 0.85, 0], 'l', [1, 0], { italic: true, gap: 4 });
+      const near = ask === 'BD' ? `${sg('AD')} = ${sg('CE')} = ${cm(given)}이고 ${sg('BD')} = ${sg('AE')} = ${sg('DE')} − ${sg('AD')}` : `${sg('AE')} = ${sg('BD')} = ${cm(given)}이고 ${sg('CE')} = ${sg('AD')} = ${sg('DE')} − ${sg('AE')}`;
+      return N(`그림과 같이 ∠BAC = 90°, ${eqs('AB', 'AC')}인 △ABC의 꼭짓점 A를 지나는 직선 ${V('l')}이 있다. 두 꼭짓점 B, C에서 직선 ${V('l')}에 내린 수선의 발을 각각 D, E라 하자. ${sg('DE')} = ${cm(de)}, ${sg(other)} = ${cm(given)}일 때, ${sg(ask)}의 길이는 몇 cm인가?`, answer, {
+        unit: 'cm', figure: pic.svg(`가로로 놓인 직선 l 위에 세 점 D, A, E가 왼쪽부터 차례로 있다. 직선 l의 위쪽에 두 점 B, C가 있고, 선분 BD와 선분 CE는 직선 l과 수직으로 만난다(점 D와 점 E에 직각 표시). 삼각형 ABC에서 ∠BAC에 직각 표시가 있고, 변 AB와 변 AC에 같은 표시가 있다. 선분 DE의 길이는 ${cm(de)}, 선분 ${other}의 길이는 ${cm(given)}.`),
+        explain: `△ABD에서 ∠ABD + ∠BAD = 90°이고, 평각에서 ∠BAD + ∠CAE = 180° − 90° = 90°이므로 ∠ABD = ∠CAE이다. 같은 방법으로 ∠BAD = ∠ACE이다. △ABD와 △CAE에서 ${eqs('AB', 'CA')}이고 그 양 끝 각의 크기가 각각 같으므로 △ABD ≡ △CAE (ASA 합동)이다. 따라서 ${near} = ${de} − ${given} = ${answer} (cm)이다.`,
+        facts: { calc: [[`${de}-${given}`, 0]] }
+      });
+    }),
+    H('hard-overlap-squares', '한 정사각형의 두 대각선의 교점에 꼭짓점을 둔 다른 정사각형: 겹친 부분의 넓이', '기본 ①68', (d) => {
+      // 둘째 정사각형의 한 변의 길이는 답에 쓰이지 않는다. △OBH ≡ △OCI (ASA)를 찾아 겹친 사각형을 △OBC 로 옮겨야 한다.
+      const s = d.pick([6, 8, 10, 12, 14, 16]), t = s >= 10 && d.bool() ? s - 2 : s, phi = d.pick([16, 20, 24]), u = 3.3, h = u / 2, len = u * t / s, sn = Math.sin(phi * RAD), cs = Math.cos(phi * RAD);
+      const pts = { A: [-h, h], D: [h, h], B: [-h, -h], C: [h, -h], O: [0, 0], H: [-h * sn / cs, -h], I: [h, -h * sn / cs], E: [-len * sn, -len * cs], G: [len * cs, -len * sn] };
+      pts.F = [pts.E[0] + pts.G[0], pts.E[1] + pts.G[1]];
+      const two = t === s ? `한 변의 길이가 ${cm(s)}인 두 정사각형 ABCD, OEFG가 있다.` : `한 변의 길이가 각각 ${cm(s)}, ${cm(t)}인 두 정사각형 ABCD, OEFG가 있다.`;
+      return N(`그림과 같이 ${two} 점 O는 정사각형 ABCD의 두 대각선의 교점이다. 변 OE와 변 BC의 교점을 H, 변 OG와 변 CD의 교점을 I라 할 때, 사각형 OHCI의 넓이는 몇 cm²인가?`, s * s / 4, {
+        unit: 'cm²', figure: shape({ pts, fills: ['OHCI'], segs: ['AB', 'BC', 'CD', 'AD', 'AC', 'BD', 'OE', 'EF', 'FG', 'GO'], lens: Object.assign({ AD: cm(s) }, t === s ? {} : { EF: cm(t) }), dirs: { O: [0, 1], I: [1, 0.7], H: [0.45, -1] } })
+          .svg(`정사각형 ABCD. 점 A는 왼쪽 위, 점 D는 오른쪽 위, 점 B는 왼쪽 아래, 점 C는 오른쪽 아래에 있고 두 대각선이 점 O에서 만난다. 점 O를 한 꼭짓점으로 하는 정사각형 OEFG가 비스듬히 놓여, 변 OE가 변 BC와 점 H에서, 변 OG가 변 CD와 점 I에서 만난다. 사각형 OHCI가 색칠되어 있다. 변 AD의 길이는 ${cm(s)}${t === s ? '' : `, 변 EF의 길이는 ${cm(t)}`}.`, { maxH: 240 }),
+        explain: `정사각형의 두 대각선은 길이가 같고 서로를 수직이등분하므로 ${eqs('OB', 'OC')} = ${sg('OD')}, ∠BOC = ∠COD = 90°이다. 따라서 △OBC ≡ △OCD (SAS 합동)이고 ∠OBH = ∠OCI이다. 또 ∠BOH = 90° − ∠HOC = ∠COI이다. △OBH와 △OCI에서 ${eqs('OB', 'OC')}이고 그 양 끝 각의 크기가 각각 같으므로 △OBH ≡ △OCI (ASA 합동)이다. 사각형 OHCI의 넓이는 △OHC와 △OCI의 넓이의 합이고, 이것은 △OHC와 △OBH의 넓이의 합인 △OBC의 넓이와 같다. △OBC의 넓이는 정사각형 ABCD의 넓이를 4로 나눈 것이므로 ${s} × ${s} ÷ 4 = ${s * s / 4} (cm²)이다.`,
+        facts: { calc: [[`${s}*${s}/4`, 0]], unseen: [4] }
+      });
+    }),
+    H('hard-five-sticks', '막대 다섯 가운데 셋으로 만들 수 있는 삼각형의 개수', '심11', (d) => {
+      // 열 가지를 빠짐없이 따져야 한다. 두 막대의 길이의 합이 가장 긴 막대의 길이와 같은 묶음이 꼭 낀다.
+      const pick3 = (x) => { const out = []; for (let i = 0; i < 5; i += 1) for (let j = i + 1; j < 5; j += 1) for (let k = j + 1; k < 5; k += 1) out.push([x[i], x[j], x[k]]); return out; }, ok = ([a, b, c]) => a + b > c;
+      const s = d.until(() => d.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]).slice(0, 5).sort((x, y) => x - y), (x) => { const k = pick3(x).filter(ok).length; return k >= 4 && k <= 8 && pick3(x).some(([a, b, c]) => a + b === c); });
+      const sets = pick3(s), flags = sets.map(ok), k = flags.filter(Boolean).length, show = (t) => `(${t.join(', ')})`, even = sets.filter(([a, b, c]) => a + b === c);
+      return N(`길이가 ${s.map(cm).join(', ')}인 막대 5개 가운데 서로 다른 3개를 골라 만들 수 있는 삼각형은 모두 몇 개인가?`, k, {
+        unit: '개', explain: `${LONGEST} 가장 긴 막대를 먼저 정하고 나머지 두 막대를 고르면서 빠짐없이 따져 보면, 삼각형을 만들 수 있는 것은 ${sets.filter(ok).map(show).join(', ')}의 ${k}개이다. ${even.map((t) => `${show(t)}은 ${t[0]} + ${t[1]} = ${t[2]}`).join(', ')}이므로 삼각형이 되지 않는다.`,
+        facts: { count: flags }
+      });
+    }, { standard: STD3 }),
+    H('hard-right-thirds', '직각을 셋으로 나누는 작도에서 각의 크기', '심8', (d) => {
+      // 작도에서 같은 반지름으로 그린 원 위의 점들이므로 OX = OQ = XQ 이다. 세 변의 길이가 같은 삼각형이 정삼각형임을 대야 60°가 나온다.
+      const O = [0, 0], r = 2.75, len = 3.8, X = [0, r], Y = [r, 0], P = polar(O, r, 60), Q = polar(O, r, 30), s = SYM.slice(0, 4), pic = new Pic();
+      pic.seg(O, [len, 0]).seg(O, [0, len]).seg(O, polar(O, len, 60)).seg(O, polar(O, len, 30)).arc(O, r, -7, 97).nick(X, Q, 0.42).nick(Y, P, 0.42).dot(O);
+      pic.name(O, 'O', [-1, -1]).name([0, len], 'A', [0, 1]).name([len, 0], 'B', [1, 0]).name(X, 'X', [-1, 0.25], { gap: 5 }).name(Y, 'Y', [0.25, -1], { gap: 5 }).name(P, 'P', [-0.8, 0.75], { gap: 6 }).name(Q, 'Q', [0.75, -0.8], { gap: 6 });
+      const [ask, calc, tail] = d.pick([['∠BOQ', '90-60', '∠BOQ = 90° − ∠XOQ = 90° − 60° = 30°이다.'], ['∠AOP', '90-60', '∠AOP = 90° − ∠YOP = 90° − 60° = 30°이다.'], ['∠POQ', '60+60-90', '∠POQ = ∠XOQ + ∠YOP − 90° = 60° + 60° − 90° = 30°이다.']]);
+      const rows = ['점 O를 중심으로 하는 원을 그려 반직선 OA, OB와의 교점을 각각 X, Y라 한다.', `점 X를 중심으로 하고 반지름의 길이가 ${sg('OX')}인 원을 그려 ${s[0]}의 원과의 교점을 Q라 한다.`, `점 Y를 중심으로 하고 반지름의 길이가 ${sg('OY')}인 원을 그려 ${s[0]}의 원과의 교점을 P라 한다.`, '반직선 OP, OQ를 긋는다.'];
+      return N(`그림은 ∠AOB = 90°일 때 다음 순서로 작도한 것이다. ${ask}의 크기는 몇 도인가?`, 30, {
+        unit: '°', figure: pic.svg('직각인 ∠AOB. 반직선 OA는 위쪽으로, 반직선 OB는 오른쪽으로 나간다. 점 O를 중심으로 하는 호가 반직선 OA와 점 X에서, 반직선 OB와 점 Y에서 만난다. 이 호 위에 점 Y에서 가까운 차례로 두 점 Q, P가 있고, 점 Q와 점 P를 지나는 짧은 호가 하나씩 있다. 반직선 OP와 반직선 OQ가 그어져 있다.', { k: 36 }) + tagged(rows, s),
+        explain: `점 Q는 ${s[0]}의 원 위에 있으므로 ${eqs('OX', 'OQ')}이고, ${s[1]}의 원 위에 있으므로 ${eqs('XQ', 'OX')}이다. △OXQ는 세 변의 길이가 같은 정삼각형이므로 ∠XOQ = 60°이다. 같은 방법으로 △OYP도 정삼각형이고 ∠YOP = 60°이다. 따라서 ${tail}`,
+        facts: { calc: [[calc, 0]], unseen: [60] }
+      });
+    }, { standard: STD3 }),
+    H('hard-quad-pairs', '두 대각선을 그은 사각형에서 합동인 삼각형 모두 찾기', '심30', (d, n) => {
+      // 한 합동에서 얻은 변이나 각을 다음 합동의 조건으로 써야 세 쌍을 모두 찾는다. 차례 0 은 SAS → SSS, 차례 1 은 SSS → ASA 이다.
+      const pts = { A: [-1.45, 2.5], D: [1.45, 2.5], B: [-2.65, 0], C: [2.65, 0] }, tri = (x, y) => `△${x} ≡ △${y}`, cant = (x, y) => `${sg(x)}와 ${sg(y)}의 길이가 같다고 할 수 없다.`;
+      pts.O = meet(pts.A, sub(pts.C, pts.A), pts.B, sub(pts.D, pts.B));
+      const no = d.shuffle([[tri('AOD', 'COB'), false, cant('AO', 'CO')], [tri('ABO', 'ADO'), false, cant('BO', 'DO')], [tri('ABD', 'BAC'), false, cant('AD', 'BC')]]).slice(0, 2);
+      const rows = d.shuffle([[tri('AOB', 'DOC'), true], [tri('ABD', 'DCA'), true], [tri('ABC', 'DCB'), true]].concat(no)), ask = '다음 중 서로 합동인 두 삼각형을 바르게 나타낸 것을 모두 고른 것은?';
+      const wrong = rows.map((r, i) => (r[1] ? '' : `${SYM[i]}: ${r[2]}`)).filter(Boolean).join(' '), base = '사각형 ABCD와 두 대각선 AC, BD. 점 A는 왼쪽 위, 점 D는 오른쪽 위, 점 B는 왼쪽 아래, 점 C는 오른쪽 아래에 있고, 변 AD는 변 BC보다 짧다. 두 대각선이 점 O에서 만난다. ';
+      if (n === 0) {
+        return allQ(d, `그림의 사각형 ABCD에서 두 대각선의 교점을 O라 하자. ${eqs('AO', 'DO')}, ${eqs('BO', 'CO')}일 때, ${ask}`, SYM, rows.map((r) => r[1]), {
+          figure: shape({ pts, segs: ['AB', 'BC', 'CD', 'AD', 'AC', 'BD'], ticks: { AO: 1, DO: 1, BO: 2, CO: 2 } }).svg(base + '선분 AO와 선분 DO에 같은 표시(한 줄), 선분 BO와 선분 CO에 같은 표시(두 줄)가 있다.') + tagged(rows.map((r) => r[0]), SYM),
+          explain: `△AOB와 △DOC에서 ${eqs('AO', 'DO')}, ${eqs('BO', 'CO')}, ∠AOB = ∠DOC(맞꼭지각)이므로 △AOB ≡ △DOC (SAS 합동)이고 ${eqs('AB', 'DC')}이다. 또 ${sg('AC')} = ${sg('AO')} + ${sg('CO')} = ${sg('DO')} + ${sg('BO')} = ${sg('DB')}이다. △ABD와 △DCA에서 ${eqs('AB', 'DC')}, ${eqs('BD', 'CA')}, ${sg('AD')}는 공통이므로 △ABD ≡ △DCA (SSS 합동)이고, △ABC와 △DCB에서 ${eqs('AB', 'DC')}, ${eqs('AC', 'DB')}, ${sg('BC')}는 공통이므로 △ABC ≡ △DCB (SSS 합동)이다. ${wrong}`
+        });
+      }
+      return allQ(d, `그림과 같이 ${sg('AD')} ∥ ${sg('BC')}인 사다리꼴 ABCD에서 두 대각선의 교점을 O라 하자. ${eqs('AB', 'DC')}, ${eqs('AC', 'DB')}일 때, ${ask}`, SYM, rows.map((r) => r[1]), {
+        figure: shape({ pts, segs: ['AB', 'BC', 'CD', 'AD', 'AC', 'BD'], ticks: { AB: 1, DC: 1 } }).svg(base + '변 AB와 변 DC에 같은 표시(한 줄)가 있다.') + tagged(rows.map((r) => r[0]), SYM),
+        explain: `△ABC와 △DCB에서 ${eqs('AB', 'DC')}, ${eqs('AC', 'DB')}, ${sg('BC')}는 공통이므로 △ABC ≡ △DCB (SSS 합동)이다. △ABD와 △DCA에서 ${eqs('AB', 'DC')}, ${eqs('BD', 'CA')}, ${sg('AD')}는 공통이므로 △ABD ≡ △DCA (SSS 합동)이다. 이 두 합동에서 ∠BAC = ∠CDB, ∠ABD = ∠DCA를 얻는다. △AOB와 △DOC에서 ${eqs('AB', 'DC')}이고 그 양 끝 각의 크기가 ∠BAO = ∠CDO, ∠ABO = ∠DCO로 각각 같으므로 △AOB ≡ △DOC (ASA 합동)이다. ${wrong}`
+      });
+    }, { count: 2 }),
+    H('hard-fold', '직사각형 모양의 종이를 대각선으로 접을 때 삼각형의 넓이', '심37', (d) => {
+      // 그림에 적힌 길이는 접혀 나온 삼각형 CDE 의 세 변뿐이다. 접은 변(CD = CF = AB)과 △ABE ≡ △CDE (ASA)에서 얻은 BE = DE 로 밑변과 높이를 만들어야 한다.
+      const [x, h, y] = d.pick([[3, 4, 5], [6, 8, 10], [8, 6, 10], [5, 12, 13], [9, 12, 15], [12, 16, 20]]), w = x + y, f = 6.3 / w;
+      const pts = { A: [0, h * f], F: [w * f, h * f], B: [0, 0], C: [w * f, 0], E: [x * f, 0], D: [x * w / y * f, -h * x / y * f] };
+      return N(`그림과 같이 직사각형 모양의 종이 ABCF를 대각선 AC를 접는 선으로 하여 접었더니 꼭짓점 F가 점 D에 놓였다. 선분 AD와 변 BC의 교점을 E라 하자. ${sg('DE')} = ${cm(x)}, ${sg('CD')} = ${cm(h)}, ${sg('EC')} = ${cm(y)}일 때, △ABC의 넓이는 몇 cm²인가?`, h * w / 2, {
+        unit: 'cm²', figure: shape({ pts, segs: ['AB', 'BC', 'AC', 'AD', 'CD'], dash: ['AF', 'FC'], lens: { DE: cm(x), CD: cm(h), EC: cm(y) }, away: { DE: pts.C, CD: pts.E, EC: pts.D }, dirs: { E: [-0.7, -1] } })
+          .svg(`직사각형 ABCF. 점 A는 왼쪽 위, 점 F는 오른쪽 위, 점 B는 왼쪽 아래, 점 C는 오른쪽 아래에 있다. 대각선 AC를 접는 선으로 하여 접어, 꼭짓점 F가 변 BC의 아래쪽에 있는 점 D에 놓였다. 접기 전의 변 AF와 변 FC는 점선으로 그려져 있다. 선분 AD와 변 BC가 점 E에서 만난다. 선분 DE의 길이는 ${cm(x)}, 선분 CD의 길이는 ${cm(h)}, 선분 EC의 길이는 ${cm(y)}.`, { maxH: 240 }),
+        explain: `접은 것이므로 △ADC ≡ △AFC이고 ${sg('CD')} = ${sg('CF')} = ${sg('AB')} = ${cm(h)}, ∠ADC = ∠AFC = 90°이다. △ABE와 △CDE에서 ∠ABE = ∠CDE = 90°, ∠AEB = ∠CED(맞꼭지각)이므로 나머지 한 각의 크기도 같아 ∠BAE = ∠DCE이다. ${eqs('AB', 'CD')}이고 그 양 끝 각의 크기가 각각 같으므로 △ABE ≡ △CDE (ASA 합동)이다. 따라서 ${sg('BE')} = ${sg('DE')} = ${cm(x)}, ${sg('BC')} = ${x} + ${y} = ${w} (cm)이고, △ABC의 넓이는 ${w} × ${h} ÷ 2 = ${h * w / 2} (cm²)이다.`,
+        facts: { calc: [[`(${x}+${y})*${h}/2`, 0]], unseen: [2] }
+      });
+    }),
+    H('hard-tilted-square', '한 꼭짓점을 함께 가진 기울어진 정사각형: 보조선을 그어 삼각형의 넓이 구하기', '심39', (d) => {
+      // 기울어진 정사각형의 한 변의 길이는 답에 쓰이지 않는다. 선분 FB 를 그어 △FBC ≡ △GDC (SAS: 끼인각은 90°에서 같은 각을 뺀 각)를 찾아야 밑변과 높이를 아는 삼각형으로 옮길 수 있다.
+      const [s, t] = d.pick([[4, 5], [8, 10], [12, 13], [12, 15], [16, 20]]), m = Math.sqrt(t * t - s * s), f = 6.1 / (2 * s);
+      const raw = { A: [0, s], D: [s, s], B: [0, 0], C: [s, 0], F: [s - m, s], G: [2 * s, m], E: [2 * s - m, s + m] }, pts = {};
+      Object.keys(raw).forEach((name) => { pts[name] = [raw[name][0] * f, raw[name][1] * f]; });
+      return N(`그림과 같이 한 변의 길이가 각각 ${cm(s)}, ${cm(t)}인 두 정사각형 ABCD, EFCG가 있다. 정사각형 EFCG의 꼭짓점 F가 변 AD 위에 있을 때, △GDC의 넓이는 몇 cm²인가?`, s * s / 2, {
+        unit: 'cm²', figure: shape({ pts, fills: ['GDC'], segs: ['AB', 'BC', 'CD', 'AD', 'FC', 'CG', 'GE', 'EF', 'GD'], lens: { BC: cm(s), GE: cm(t) }, away: { BC: pts.A, GE: pts.F } })
+          .svg(`정사각형 ABCD. 점 A는 왼쪽 위, 점 D는 오른쪽 위, 점 B는 왼쪽 아래, 점 C는 오른쪽 아래에 있다. 꼭짓점 C를 함께 가진 정사각형 EFCG가 오른쪽 위로 기울어져 놓여 있고, 그 꼭짓점 F는 변 AD 위에, 꼭짓점 G는 정사각형 ABCD의 오른쪽 바깥에 있다. 삼각형 GDC가 색칠되어 있다. 변 BC의 길이는 ${cm(s)}, 변 GE의 길이는 ${cm(t)}.`, { maxH: 240 }),
+        explain: `선분 FB를 긋는다. △FBC와 △GDC에서 ${eqs('FC', 'GC')}, ${eqs('BC', 'DC')}이고 ∠FCB = 90° − ∠DCF = ∠GCD이므로 △FBC ≡ △GDC (SAS 합동)이다. 점 F가 변 AD 위에 있으므로 △FBC는 밑변의 길이가 ${sg('BC')} = ${cm(s)}, 높이가 ${sg('AB')} = ${cm(s)}인 삼각형이고 넓이는 ${s} × ${s} ÷ 2 = ${s * s / 2} (cm²)이다. 따라서 △GDC의 넓이도 ${s * s / 2} cm²이다.`,
+        facts: { calc: [[`${s}*${s}/2`, 0]], unseen: [2] }
+      });
+    }),
+    H('hard-inner-tri', '정삼각형의 세 선분이 만드는 삼각형: 합동을 두 번 쓰는 설명의 빈칸', '심42', (d) => {
+      const x = d.pick([0.25, 0.28]), P = equiPts(4.7);
+      P.D = lerp(P.A, P.B, x); P.E = lerp(P.B, P.C, x); P.F = lerp(P.C, P.A, x);
+      P.P = meet(P.A, sub(P.E, P.A), P.C, sub(P.D, P.C)); P.Q = meet(P.A, sub(P.E, P.A), P.B, sub(P.F, P.B)); P.R = meet(P.B, sub(P.F, P.B), P.C, sub(P.D, P.C));
+      const rows = [`△ABE, △BCF, △CAD에서 ${eqs('AB', 'BC')} = ${sg('CA')}, ${eqs('BE', 'CF')} = ${sg('AD')}, ∠ABE = ∠BCF = ∠CAD = 60°`, `이므로 세 삼각형은 서로 합동이다(${BLK[0]} 합동). 따라서 ∠BAE = ∠CBF = ∠ACD이다.`,
+        `△ABQ, △BCR, △CAP에서 ${eqs('AB', 'BC')} = ${sg('CA')}, ∠BAQ = ∠CBR = ∠ACP, ∠ABQ = ∠BCR = ∠CAP`, `이므로 세 삼각형은 서로 합동이다(${BLK[1]} 합동). 따라서 ${eqs('AQ', 'BR')} = ${sg('CP')}, ${eqs('BQ', 'CR')} = ${BLK[2]}이다.`,
+        `${sg('PQ')} = ${sg('AQ')} − ${sg('AP')}, ${sg('QR')} = ${sg('BR')} − ${sg('BQ')}, ${sg('RP')} = ${sg('CP')} − ${sg('CR')}이므로 △PQR는 세 변의 길이가 같은 정삼각형이다.`];
+      const opt = (a, b, c) => `${a}, ${b}, ${sg(c)}`;
+      return pickOne(d, `다음은 그림의 정삼각형 ABC에서 ${eqs('AD', 'BE')} = ${sg('CF')}일 때, 세 선분 AE, BF, CD로 둘러싸인 △PQR가 정삼각형임을 설명하는 과정이다. ${BLK.join(', ')}에 알맞은 것을 차례로 나열한 것은?`, opt('SAS', 'ASA', 'AP'), [opt('SAS', 'SAS', 'AP'), opt('SAS', 'ASA', 'AQ'), opt('ASA', 'SAS', 'AP')], {
+        figure: shape({ pts: P, segs: ['AB', 'BC', 'AC', 'AE', 'BF', 'CD'], ticks: { AD: 1, BE: 1, CF: 1 } })
+          .svg('정삼각형 ABC. 점 A는 위, 점 B는 왼쪽 아래, 점 C는 오른쪽 아래에 있다. 변 AB 위에 점 D, 변 BC 위에 점 E, 변 CA 위에 점 F가 있고 선분 AD, BE, CF에 같은 표시가 있다. 선분 AE와 선분 CD가 점 P에서, 선분 AE와 선분 BF가 점 Q에서, 선분 BF와 선분 CD가 점 R에서 만나 가운데에 삼각형 PQR가 생긴다.', { k: 42, maxH: 240 }) + lines(rows),
+        explain: `△ABE, △BCF, △CAD는 대응하는 두 변의 길이가 각각 같고 그 끼인각의 크기가 60°로 같으므로 SAS 합동이다. 이 합동에서 ∠BAE = ∠CBF = ∠ACD를 얻고, ∠ABQ, ∠BCR, ∠CAP는 60°에서 이 각을 뺀 각이므로 크기가 서로 같다. △ABQ, △BCR, △CAP는 대응하는 한 변의 길이가 같고 그 양 끝 각의 크기가 각각 같으므로 ASA 합동이다. 꼭짓점 A와 B와 C, B와 C와 A, Q와 R와 P가 각각 대응하므로 ${sg('BQ')}의 대응변은 ${sg('CR')}, ${sg('AP')}이다.`
+      });
+    }),
+    H('hard-square-sum', '정사각형의 두 변 위에 같은 길이로 잡은 두 점: 따로 구할 수 없는 두 각의 크기의 합', '심48', (d) => {
+      // ∠GAD 와 ∠GFD 는 따로 정해지지 않는다. △ABE ≡ △BCF (SAS)에서 ∠AGB = 90°를 얻은 다음, 사각형 AGFD 의 네 각의 크기의 합을 써야 한다.
+      const u = 3.7, pts = squarePts(u), cut = u * Math.tan(d.pick([22, 27, 32]) * RAD);
+      pts.E = [cut, 0]; pts.F = [u, cut]; pts.G = meet(pts.A, sub(pts.E, pts.A), pts.B, pts.F);
+      return N(`그림의 정사각형 ABCD에서 ${eqs('BE', 'CF')}이다. 선분 AE와 선분 BF의 교점을 G라 할 때, ∠GAD + ∠GFD의 크기는 몇 도인가?`, 180, {
+        unit: '°', figure: shape({ pts, segs: ['AB', 'BC', 'CD', 'AD', 'AE', 'BF'], ticks: { BE: 1, CF: 1 }, dirs: { E: [0, -1], F: [1, 0], G: [1, 0.25] } }).svg(SQUARE + '변 BC 위에 점 E, 변 CD 위에 점 F가 있고 선분 BE와 선분 CF에 같은 표시가 있다. 선분 AE와 선분 BF가 점 G에서 만난다. 각의 크기는 적혀 있지 않다.'),
+        explain: `△ABE와 △BCF에서 ${eqs('AB', 'BC')}, ${eqs('BE', 'CF')}, ∠ABE = ∠BCF = 90°이므로 △ABE ≡ △BCF (SAS 합동)이고 ∠BAE = ∠CBF이다. △ABG에서 ∠BAG + ∠ABG = ∠CBF + ∠ABG = 90°이므로 ∠AGB = 90°이고 ∠AGF = 180° − 90° = 90°이다. 사각형 AGFD의 네 각의 크기의 합은 360°이고 ∠AGF = ∠ADF = 90°이므로 ∠GAD + ∠GFD = 360° − (90° + 90°) = 180°이다.`,
+        facts: { calc: [['360-(90+90)', 0]], unseen: [360, 90] }
+      });
+    }),
+    H('hard-diagonal-point', '정사각형의 대각선 위의 점: 합동을 이어 써서 각의 크기 구하기', '심49', (d) => {
+      // 대각선 BD 가 ∠ABC 를 이등분한다는 것부터 △ABD ≡ △CBD (SSS)로 대야 △ABE ≡ △CBE (SAS)가 선다.
+      const u = 3.3, phi = d.pick([24, 26, 27, 28, 29, 31, 32, 33]), tn = Math.tan(phi * RAD), e = u / (1 + tn), pts = Object.assign(squarePts(u), { E: [e, e], F: [u / tn, 0] });
+      return N(`그림의 정사각형 ABCD에서 점 E는 대각선 BD 위의 점이고, 점 F는 선분 AE의 연장선과 변 BC의 연장선의 교점이다. ∠AFB = ${phi}°일 때, ∠BCE의 크기는 몇 도인가?`, 90 - phi, {
+        unit: '°', figure: shape({ pts, segs: ['AB', 'BF', 'CD', 'AD', 'BD', 'AF', 'CE'], angs: [['AFB', phi + '°']] }).svg(SQUARE + `대각선 BD 위에 점 E가 있다. 선분 AE를 점 E 너머로 늘인 선과 변 BC를 점 C 너머로 늘인 선이 점 F에서 만난다. 선분 CE가 그어져 있다. ∠AFB의 크기는 ${phi}°.`),
+        explain: `△ABD와 △CBD에서 ${eqs('AB', 'CB')}, ${eqs('AD', 'CD')}, ${sg('BD')}는 공통이므로 △ABD ≡ △CBD (SSS 합동)이고 ∠ABD = ∠CBD이다. △ABE와 △CBE에서 ${eqs('AB', 'CB')}, ${sg('BE')}는 공통, ∠ABE = ∠CBE이므로 △ABE ≡ △CBE (SAS 합동)이고 ∠BCE = ∠BAE이다. △ABF에서 ∠BAF = 180° − (90° + ${phi}°) = ${90 - phi}°이므로 ∠BCE = ${90 - phi}°이다.`,
+        facts: { calc: [[`180-(90+${phi})`, 0]], unseen: [180, 90] }
+      });
+    }),
+    H('hard-square-45', '정사각형 안의 45°: 변을 늘여 합동인 삼각형을 만들기', '심51', (d, n) => {
+      // 그림 안에는 합동인 삼각형이 없다. 변 CB 의 연장선 위에 BG = DF 인 점 G 를 잡아 △ABG ≡ △ADF (SAS), 이어서 △AGE ≡ △AFE (SAS)를 만들어야 한다.
+      const al = d.pick(n === 0 ? [62, 66, 70, 72] : [60, 65, 70, 75]), be = 90 - al, u = 3.9, pts = Object.assign(squarePts(u), { E: [u * Math.tan(be * RAD), 0], F: [u, u - u * Math.tan((45 - be) * RAD)] });
+      const figure = shape({ pts, segs: ['AB', 'BC', 'CD', 'AD', 'AE', 'EF', 'AF'], angs: [['EAF', '45°'], ['AEF', al + '°']], dirs: { E: [0, -1], F: [1, 0] } }).svg(SQUARE + `변 BC 위에 점 E, 변 CD 위에 점 F가 있고 삼각형 AEF가 그려져 있다. ∠EAF의 크기는 45°, ∠AEF의 크기는 ${al}°.`, { k: 40 });
+      const head = `변 CB의 연장선 위에 ${eqs('BG', 'DF')}인 점 G를 잡는다. △ABG와 △ADF에서 ${eqs('AB', 'AD')}, ${eqs('BG', 'DF')}, ∠ABG = ∠ADF = 90°이므로 △ABG ≡ △ADF (SAS 합동)이고 ${eqs('AG', 'AF')}, ∠BAG = ∠DAF이다. ∠GAE = ∠BAG + ∠BAE = ∠DAF + ∠BAE = 90° − 45° = 45°이므로, △AGE와 △AFE에서 ${eqs('AG', 'AF')}, ${sg('AE')}는 공통, ∠GAE = ∠FAE이다. 따라서 △AGE ≡ △AFE (SAS 합동)이다.`;
+      if (n === 0) {
+        return N(`그림의 정사각형 ABCD에서 변 BC 위의 점 E와 변 CD 위의 점 F에 대하여 ∠EAF = 45°, ∠AEF = ${al}°일 때, ∠FEC의 크기는 몇 도인가?`, 180 - 2 * al, {
+          unit: '°', figure, explain: `${head} ∠AEG = ∠AEF = ${al}°이므로 ∠FEC = 180° − (${al}° + ${al}°) = ${180 - 2 * al}°이다.`, facts: { calc: [[`180-(${al}+${al})`, 0]], unseen: [180] }
+        });
+      }
+      return N(`그림의 정사각형 ABCD에서 변 BC 위의 점 E와 변 CD 위의 점 F에 대하여 ∠EAF = 45°, ∠AEF = ${al}°일 때, ∠AFD의 크기는 몇 도인가?`, 135 - al, {
+        unit: '°', figure, explain: `${head} △AEF에서 ∠AFE = 180° − (45° + ${al}°) = ${135 - al}°이고 ∠AGE = ∠AFE = ${135 - al}°이다. ∠AFD의 대응각은 ∠AGB이므로 ∠AFD = ${135 - al}°이다.`, facts: { calc: [[`180-(45+${al})`, 0]], unseen: [180] }
+      });
+    }, { count: 2 })
+  ]);
+  B.addTypes(UNIT, 'find', [
+    T('find-bisector-feet', '각의 이등분선 위의 점에서 두 변에 내린 수선: 옳지 않은 것', '②50', (d) => {
+      // 직각이 둘이므로 나머지 한 각의 크기가 같다. 공통인 변 OP 의 양 끝 각이 각각 같아 ASA 합동이다(직각삼각형의 합동 조건의 이름은 쓰지 않는다).
+      const th = d.pick([19, 22, 25]), O = [0, 0], reach = 3.5 * Math.cos(th * RAD), pts = { O, X: polar(O, 4.35, 2 * th), A: polar(O, reach, 2 * th), P: polar(O, 3.5, th), B: [reach, 0], Y: [4.35, 0] };
+      const pic = new Pic().seg(pts.X, polar(O, 4.8, 2 * th)).seg(pts.Y, [4.8, 0]).seg(O, polar(O, 4.6, th));
+      shape({ pts, segs: ['OX', 'OY', 'PA', 'PB'], angs: [['OAP', '', 'right'], ['OBP', '', 'right'], ['AOP', '', 'dot'], ['POB', '', 'dot']], dots: 'XY', dirs: { X: [-Math.sin(2 * th * RAD), Math.cos(2 * th * RAD)] } }, pic);
+      const yes = d.shuffle([eqs('OA', 'OB'), eqs('PA', 'PB'), '∠APO = ∠BPO', '△AOP ≡ △BOP']).slice(0, 3);
+      const bad = d.pick([['∠APO = ∠PBO', '∠APO의 대응각은 ∠BPO이다. ∠PBO는 직각이다.'], [eqs('OA', 'OP'), `${sg('OA')}의 대응변은 ${sg('OB')}이다. ${sg('OA')}와 ${sg('OP')}의 길이는 같다고 할 수 없다.`], [eqs('PA', 'OB'), `${sg('PA')}의 대응변은 ${sg('PB')}이다. ${sg('PA')}와 ${sg('OB')}의 길이는 같다고 할 수 없다.`]]);
+      return pickOne(d, '그림에서 반직선 OP는 ∠XOY의 이등분선이다. 점 P에서 두 반직선 OX, OY에 내린 수선의 발을 각각 A, B라 할 때, 다음 중 옳지 않은 것은?', bad[0], yes, {
+        figure: pic.svg('점 O에서 나간 두 반직선 OX, OY가 있다. 반직선 OY는 오른쪽으로, 반직선 OX는 오른쪽 위로 나간다. 그 사이에 반직선 OP가 있고, ∠XOP와 ∠POY에 같은 표시(점)가 있다. 점 P에서 반직선 OX에 그은 선분 PA와 반직선 OY에 그은 선분 PB가 있고, 점 A와 점 B에 직각 표시가 있다.'),
+        explain: `△AOP와 △BOP에서 ∠AOP = ∠BOP이고 ∠OAP = ∠OBP = 90°이므로 나머지 한 각의 크기도 같아 ∠APO = ∠BPO이다. ${sg('OP')}는 공통이고 그 양 끝 각의 크기가 각각 같으므로 △AOP ≡ △BOP (ASA 합동)이다. 따라서 ${eqs('OA', 'OB')}, ${eqs('PA', 'PB')}이다. ${bad[1]}`
+      });
+    })
+  ]);
 })(typeof window !== 'undefined' ? window : globalThis);

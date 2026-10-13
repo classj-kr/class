@@ -268,4 +268,212 @@
       })
     ]
   });
+
+  // ══ 처음 지을 때 뺀 꼴을 다시 보고 덧붙인 실력 문항(2026-10-13) ══
+  // 사용자: 「수학실력에 필요해보이는문제는 다 넣어」. 꼬임·조건 여럿·여러 번 잇기라는 까닭으로 뺐던 꼴을 다시 실었다.
+  //  - 부호 조건을 거듭 푸는 사분면: 한 문자의 부호와 합·차(①28), 두 좌표가 모두 식인 점에서 거꾸로(심16 ①28), 거꾸로 푼 뒤 대칭(심17·18 ①28), 수직선의 세 수(심19)
+  //  - 대칭인 점: 문자의 값(①31 심20), 두 번 옮기기(심21), 문자를 정한 뒤의 넓이(①37)
+  //  - 넓이: 둘러싼 직사각형에서 빼는 사각형(심29), 넓이에서 꼭짓점의 좌표를 거꾸로 구하기(심30)
+  //  - 그래프: 두 구간의 빠르기를 구해 빼고 나누기(①68)
+  // 그대로 뺀 것: 중2(①41), 다음 단원(①69), 그림을 끝내 알 수 없는 것(①56·67 심44), 실린 유형과 같은 일(①46), 낱낱이 짝 지어 세는 개수(심2).
+  // 이 단원에서 아이들이 흔히 잘못 아는 것(덧붙인 문항의 장치)
+  //  - 차 a − b 의 부호를 두 수의 부호로만 정하려 한다(차의 부호는 크기를 견주어 정한다: 작은 수에서 큰 수를 빼면 음수이다).
+  //  - 합이 음수이면 두 수가 모두 음수라고 여긴다(한 수가 양수이면 다른 수가 음수라는 것만 알 수 있다).
+  //  - 대칭인 두 점의 좌표를 그대로 같다고 놓는다(부호가 바뀌는 좌표는 식 전체의 부호를 바꾸어 놓아야 한다).
+  //  - 넓이에서 변의 길이를 구한 뒤 한쪽 방향만 생각한다(같은 길이만큼 떨어진 점은 양쪽에 있고, 조건으로 하나를 고른다).
+  const { f1, V } = B.kit.mid, { signWord } = B.kit.m715;
+  const ABOUT = [XA, YA, '원점'], SX = [1, -1, -1], SY = [-1, 1, -1];
+  const SYM_WHY = [`${XA}에 대하여 대칭인 점은 ${XC}는 같고 ${YC}의 부호만 바뀐다.`, `${YA}에 대하여 대칭인 점은 ${YC}는 같고 ${XC}의 부호만 바뀐다.`, `원점에 대하여 대칭인 점은 ${XC}와 ${YC}의 부호가 모두 바뀐다.`];
+  const quadAt = (sx, sy) => QS.findIndex(([x, y]) => x === sx && y === sy);
+  // 등식 하나를 줄이 갈리지 않는 한 덩이로 적는다.
+  const eq = (left, right) => nb(left + ' = ' + right);
+  // 두 문자 p, q 의 부호가 정해지면 부호가 정해지는 식. 7-1-5a.js 의 EX 와 같되 문자를 바꿔 쓸 수 있고 몫이 더 있다(EX 는 올라가 있는 문항이 쓰므로 건드리지 않는다).
+  const signsOf = (p, q) => ({
+    a: { h: p, s: (sa) => sa }, b: { h: q, s: (sa, sb) => sb }, na: { h: MINUS + p, s: (sa) => -sa }, nb: { h: MINUS + q, s: (sa, sb) => -sb },
+    ab: { h: p + q, s: (sa, sb) => sa * sb }, nab: { h: MINUS + p + q, s: (sa, sb) => -sa * sb }, bda: { h: frac(q, p), s: (sa, sb) => sa * sb }, adb: { h: frac(p, q), s: (sa, sb) => sa * sb },
+    amb: { h: `${p} ${MINUS} ${q}`, s: (sa, sb) => (sa !== sb ? sa : 0) }, bma: { h: `${q} ${MINUS} ${p}`, s: (sa, sb) => (sa !== sb ? sb : 0) }, apb: { h: `${p} + ${q}`, s: (sa, sb) => (sa === sb ? sa : 0) }
+  });
+  const EA = signsOf(va, vb), EXY = signsOf(vx, vy);
+  // 식의 갈래: 문자 하나(a / b), 곱·몫, 합·차. 한 점의 두 좌표는 서로 다른 갈래에서 고른다.
+  const FAMILY = { a: 'a', na: 'a', b: 'b', nb: 'b', ab: 'm', nab: 'm', bda: 'm', adb: 'm', amb: 'd', bma: 'd', apb: 'd' };
+  const SIMPLE = [['na', 'b'], ['a', 'nb'], ['b', 'a'], ['nb', 'a'], ['b', 'na'], ['na', 'nb'], ['nb', 'na']];
+  // 점을 적은 글. 바로 뒤의 토씨(josa)를 함께 묶어, 토씨만 다음 줄 머리로 떨어지지 않게 한다.
+  const pOf = (E, k1, k2, name, josa) => nb((name || '') + '(' + E[k1].h + ', ' + E[k2].h + ')' + (josa || ''));
+  const qOf = (E, k1, k2, sa, sb) => { const s1 = E[k1].s(sa, sb), s2 = E[k2].s(sa, sb); return s1 && s2 ? quadAt(s1, s2) : -1; };
+  const pairsOf = (E, sa, sb, ok) => { const keys = Object.keys(E).filter((k) => E[k].s(sa, sb) !== 0), out = []; for (const k1 of keys) for (const k2 of keys) if (FAMILY[k1] !== FAMILY[k2] && !(k1 === 'a' && k2 === 'b') && (!ok || ok(k1, k2))) out.push([k1, k2]); return out; };
+  // 식의 부호를 적은 글(문자 하나 그대로인 식은 적지 않는다)과, 식으로 된 점이 놓이는 사분면을 풀어 적은 글
+  const whyOf = (E, keys, sa, sb) => keys.filter((k, i) => k !== 'a' && k !== 'b' && keys.indexOf(k) === i).map((k) => cmp0(E[k].h, E[k].s(sa, sb))).join(', ');
+  const toldOf = (E, k1, k2, sa, sb, name) => { const why = whyOf(E, [k1, k2], sa, sb); return `${why ? why + '이므로 ' : ''}점 ${pOf(E, k1, k2, name, '는')} ${XC}가 ${signWord(E[k1].s(sa, sb))}, ${YC}가 ${signWord(E[k2].s(sa, sb))}이다. 따라서 ${QN[qOf(E, k1, k2, sa, sb)]} 위의 점이다.`; };
+  const ITALIC = "font-style:italic;font-family:'MB Math','Times New Roman',serif";
+  // 수의 자리만 나타낸 수직선: 눈금에 적힌 수는 0뿐이고, 문자로 나타낸 수는 왼쪽부터 크기의 차례로 놓인다. marks: [{ name, at }] (0은 name 이 '0').
+  function signLine(marks) {
+    const W = 264, y = 20, x = (v) => f1(W / 2 + v * 27);
+    let out = `<line class="mb-axis" x1="14" y1="${y}" x2="${W - 14}" y2="${y}"/><path d="M8 ${y}l7 -3.6v7.2z" style="fill:#1f2933"/><path d="M${W - 8} ${y}l-7 -3.6v7.2z" style="fill:#1f2933"/>`;
+    for (const m of marks) {
+      out += `<line class="mb-axis" x1="${x(m.at)}" y1="${y - 5.5}" x2="${x(m.at)}" y2="${y + 5.5}"/>` + (m.name === '0' ? '' : `<circle class="mb-dot" cx="${x(m.at)}" cy="${y}" r="3.3"/>`)
+        + `<text x="${x(m.at)}" y="${y + 22}" text-anchor="middle" style="font-size:${m.name === '0' ? 13 : 15}px;fill:#1f2933;${m.name === '0' ? 'font-weight:600' : ITALIC}">${m.name}</text>`;
+    }
+    return `<svg class="mb-numberline" viewBox="0 0 ${W} 50" width="${W}" role="img" aria-label="수직선: 왼쪽부터 ${marks.map((m) => m.name).join(', ')}의 차례로 놓여 있다. 눈금에 적힌 수는 0뿐이다.">${out}</svg>`;
+  }
+
+  B.addTypes(UNIT, 'hard', [
+    // ── ② 두 번 넘게 생각해야 풀리는 문제: 부호 조건을 거듭 푸는 사분면 ──
+    H('hard-sign-chain', '한 문자의 부호와 합·차의 부호를 이어 두 문자의 부호를 정해 점의 사분면 가리기', '①28', (d, n) => {
+      if (n === 0) {
+        // 부등식 둘: 한 문자의 부호와 차의 부호. a < 0, a − b > 0 이면 b < a < 0 이다(부호가 같아지는 경우만 정해진다).
+        // 걸리는 아이: 차의 부호에서 크기를 읽지 못하는 아이, a − b > 0 을 「b 는 양수」로 읽는 아이.
+        const s = pm(d), viaA = d.bool(), known = viaA ? va : vb, other = viaA ? vb : va, ds = viaA ? -s : s, flip = d.bool();
+        const diffH = flip ? `${vb} ${MINUS} ${va}` : `${va} ${MINUS} ${vb}`, diffS = flip ? -ds : ds;
+        const [k1, k2] = d.pick(pairsOf(EA, s, s, (x, y) => [x, y].includes('apb') && ![x, y].some((k) => k === 'bda' || k === 'adb')));
+        return quadQ(`${cmp0(known, s)}, ${cmp0(diffH, diffS)}일 때, 점 ${pOf(EA, k1, k2, 'A', '는')} 제몇 사분면 위의 점인가?`, qOf(EA, k1, k2, s, s),
+          `${cmp0(diffH, diffS)}이므로 ${nb(`${va} ${ds > 0 ? GT : LT} ${vb}`)}이다. ${cmp0(known, s)}이고 ${other}는 ${known}보다 ${s < 0 ? '작으므로' : '크므로'} ${cmp0(other, s)}이다. ${toldOf(EA, k1, k2, s, s, 'A')}`);
+      }
+      // 점의 사분면에서: 한 좌표는 문자 하나, 다른 좌표는 합이다. 합의 부호가 알려진 문자의 부호와 반대이면 다른 문자의 부호가 정해진다(b > 0, a + b < 0 이면 a < 0).
+      const sk = pm(d), viaA = d.bool(), single = viaA ? d.pick(['a', 'na']) : d.pick(['b', 'nb']), sa = viaA ? sk : -sk, sb = -sa, known = viaA ? va : vb, other = viaA ? vb : va;
+      const given = d.bool() ? ['apb', single] : [single, 'apb'], gs = given.map((k) => (k === 'apb' ? -sk : EA[k].s(sa, sb))), gq = quadAt(gs[0], gs[1]);
+      const [k1, k2] = d.pick(pairsOf(EA, sa, sb, (x, y) => [x, y].some((k) => (FAMILY[k] === 'a' || FAMILY[k] === 'b') && k !== single) && [x, y].some((k) => k === 'ab' || k === 'nab' || k === 'bda')));
+      return quadQ(`점 ${pOf(EA, given[0], given[1], 'P', '가')} ${QN[gq]} 위의 점일 때, 점 ${pOf(EA, k1, k2, 'Q', '는')} 제몇 사분면 위의 점인가?`, qOf(EA, k1, k2, sa, sb),
+        `점 P가 ${QN[gq]} 위의 점이므로 ${given.map((k, i) => cmp0(EA[k].h, gs[i])).join(', ')}이다. ${single.length > 1 ? `${cmp0(EA[single].h, EA[single].s(sa, sb))}에서 ${cmp0(known, sk)}이다. ` : ''}합 ${nb(EA.apb.h)}가 ${signWord(-sk)}인데 ${known}가 ${signWord(sk)}이므로 ${other}는 ${signWord(-sk)}이다. ${toldOf(EA, k1, k2, sa, sb, 'Q')}`);
+    }, { count: 2, standard: STD5 }),
+    H('hard-quad-two', '두 좌표가 모두 두 문자의 식인 점의 사분면에서 두 문자의 부호 정하기', '심16 ①28', (d, n) => {
+      if (n === 0) {
+        // 곱과 차: 곱이 음수이면 부호가 다르고, 차의 부호로 어느 쪽이 큰지(양수인지) 정한다.
+        const sa = pm(d), sb = -sa, prod = d.pick(['ab', 'nab']), diff = d.pick(['amb', 'bma']), given = d.bool() ? [prod, diff] : [diff, prod], gq = qOf(EA, given[0], given[1], sa, sb), [k1, k2] = d.pick(SIMPLE);
+        return quadQ(`점 ${pOf(EA, given[0], given[1], 'A', '가')} ${QN[gq]} 위의 점일 때, 점 ${pOf(EA, k1, k2, 'B', '는')} 제몇 사분면 위의 점인가?`, qOf(EA, k1, k2, sa, sb),
+          `점 A가 ${QN[gq]} 위의 점이므로 ${given.map((k) => cmp0(EA[k].h, EA[k].s(sa, sb))).join(', ')}이다. ${cmp0(ab, -1)}이므로 ${va}, ${vb}의 부호는 서로 다르다. ${cmp0(EA[diff].h, EA[diff].s(sa, sb))}이므로 ${nb(`${va} ${sa > 0 ? GT : LT} ${vb}`)}이고, 큰 수가 양수, 작은 수가 음수이므로 ${cmp0(va, sa)}, ${cmp0(vb, sb)}이다. ${toldOf(EA, k1, k2, sa, sb, 'B')}`);
+      }
+      // 합과 곱: 곱이 양수이면 부호가 같고, 합의 부호가 두 수의 부호이다. 보기의 틀린 점은 모두 다른 사분면 위의 점이다.
+      const s = pm(d), given = d.bool() ? ['apb', 'ab'] : ['ab', 'apb'], gq = qOf(EA, given[0], given[1], s, s);
+      const all = pairsOf(EA, s, s, (x, y) => ![x, y].some((k) => k === 'bda' || k === 'adb') && [x, y].some((k) => FAMILY[k] === 'a' || FAMILY[k] === 'b'));
+      const want = d.pick([0, 1, 2, 3].filter((v) => v !== gq)), right = d.pick(all.filter(([x, y]) => qOf(EA, x, y, s, s) === want)), rows = d.shuffle([right].concat(d.shuffle(all.filter(([x, y]) => qOf(EA, x, y, s, s) !== want)).slice(0, 3)));
+      return C(`점 ${pOf(EA, given[0], given[1], '', '가')} ${QN[gq]} 위의 점일 때, 다음 중 ${QN[want]} 위의 점은?`, rows.map(([x, y]) => pOf(EA, x, y)), rows.indexOf(right), {
+        explain: `${given.map((k) => cmp0(EA[k].h, EA[k].s(s, s))).join(', ')}이다. ${cmp0(ab, 1)}이므로 ${va}, ${vb}의 부호는 서로 같고, ${cmp0(EA.apb.h, s)}이므로 ${va}, ${vb}는 모두 ${signWord(s)}이다. ${rows.map(([x, y]) => `${pOf(EA, x, y, '', '는')} ${QN[qOf(EA, x, y, s, s)]}`).join(', ')} 위의 점이다.`,
+        facts: { truth: rows.map(([x, y]) => qOf(EA, x, y, s, s) === want), want: true }
+      });
+    }, { count: 2, standard: STD5 }),
+    H('hard-back-sym', '식으로 된 점의 사분면에서 부호를 구한 뒤 대칭인 점의 사분면 가리기', '심17·18 ①28', (d, n) => {
+      const k = d.int(0, 2), flipOf = ([u, v]) => [u * SX[k], v * SY[k]];
+      if (n === 0) {
+        // 곱과 차로 부호를 정한 뒤, 문자 하나씩으로 된 점을 대칭으로 옮긴다.
+        const sx = pm(d), sy = -sx, prod = d.pick(['ab', 'nab']), diff = d.pick(['amb', 'bma']), given = d.bool() ? [prod, diff] : [diff, prod], gq = qOf(EXY, given[0], given[1], sx, sy), [k1, k2] = d.pick(SIMPLE);
+        const mid = [EXY[k1].s(sx, sy), EXY[k2].s(sx, sy)], end = flipOf(mid);
+        return quadQ(`점 ${pOf(EXY, given[0], given[1], '', '가')} ${QN[gq]} 위의 점일 때, 점 ${pOf(EXY, k1, k2, '', '와')} ${ABOUT[k]}에 대하여 대칭인 점은 제몇 사분면 위의 점인가?`, quadAt(end[0], end[1]),
+          `${given.map((g) => cmp0(EXY[g].h, EXY[g].s(sx, sy))).join(', ')}이다. ${cmp0(vx + vy, -1)}이므로 ${vx}, ${vy}의 부호는 서로 다르고, ${cmp0(EXY[diff].h, EXY[diff].s(sx, sy))}이므로 ${nb(`${vx} ${sx > 0 ? GT : LT} ${vy}`)}이다. 따라서 ${cmp0(vx, sx)}, ${cmp0(vy, sy)}이다. ${toldOf(EXY, k1, k2, sx, sy)} ${SYM_WHY[k]} 대칭인 점은 ${XC}가 ${signWord(end[0])}, ${YC}가 ${signWord(end[1])}이므로 ${QN[quadAt(end[0], end[1])]} 위의 점이다.`);
+      }
+      // 합과 곱으로 부호를 정한 뒤, 몫이 든 점을 대칭으로 옮긴다.
+      const s = pm(d), given = d.bool() ? ['apb', 'ab'] : ['ab', 'apb'], gq = qOf(EA, given[0], given[1], s, s);
+      const [k1, k2] = d.pick(pairsOf(EA, s, s, (x, y) => [x, y].some((g) => g === 'bda') && [x, y].some((g) => FAMILY[g] === 'a' || FAMILY[g] === 'b')));
+      const mid = [EA[k1].s(s, s), EA[k2].s(s, s)], end = flipOf(mid);
+      return quadQ(`점 ${pOf(EA, given[0], given[1], 'P', '가')} ${QN[gq]} 위의 점일 때, 점 ${pOf(EA, k1, k2, 'Q', '와')} ${ABOUT[k]}에 대하여 대칭인 점은 제몇 사분면 위의 점인가?`, quadAt(end[0], end[1]),
+        `${given.map((g) => cmp0(EA[g].h, EA[g].s(s, s))).join(', ')}이다. ${cmp0(ab, 1)}이므로 ${va}, ${vb}의 부호는 서로 같고, ${cmp0(EA.apb.h, s)}이므로 ${va}, ${vb}는 모두 ${signWord(s)}이다. ${toldOf(EA, k1, k2, s, s, 'Q')} ${SYM_WHY[k]} 대칭인 점은 ${XC}가 ${signWord(end[0])}, ${YC}가 ${signWord(end[1])}이므로 ${QN[quadAt(end[0], end[1])]} 위의 점이다.`);
+    }, { count: 2, standard: STD5 }),
+    H('hard-line-signs', '수직선 위의 세 수의 크기와 부호로 식으로 된 점의 사분면 가리기', '심19', (d) => {
+      // 세 수의 부호는 0의 어느 쪽에 있는지로, 차의 부호는 수직선에서의 왼쪽·오른쪽(크기)으로 정한다. 보기마다 식 둘의 부호를 가린다.
+      // 걸리는 아이: 음수끼리의 차 a − b 를 「음수에서 음수를 빼면 양수」처럼 부호만으로 정하는 아이, 몫의 부호를 놓치는 아이.
+      const vc = V('c'), two = d.bool(), g = two ? [-1, -1, 1] : [-1, 1, 1];
+      const dif = (p, q, s) => ({ h: `${p} ${MINUS} ${q}`, s, kind: 'd' }), mul = (h, s) => ({ h, s, kind: 'm' });
+      const pool = [dif(va, vb, -1), dif(vb, va, 1), dif(va, vc, -1), dif(vc, va, 1), dif(vb, vc, -1), dif(vc, vb, 1), mul(va + vb, g[0] * g[1]), mul(vb + vc, g[1] * g[2]), mul(va + vc, g[0] * g[2]), mul(frac(va + vb, vc), g[0] * g[1] * g[2]), mul(frac(vc, vb), g[1] * g[2])];
+      const all = []; for (const p of pool) for (const q of pool) if (p.kind !== q.kind) all.push([p, q]);
+      const qd = ([p, q]) => quadAt(p.s, q.s), show = ([p, q], josa) => nb('(' + p.h + ', ' + q.h + ')' + (josa || '')), want = d.int(0, 3);
+      const right = d.pick(all.filter((r) => qd(r) === want)), rows = d.shuffle([right].concat(d.shuffle(all.filter((r) => qd(r) !== want)).slice(0, 3)));
+      const order = two ? nb(`${va} ${LT} ${vb} ${LT} 0 ${LT} ${vc}`) : nb(`${va} ${LT} 0 ${LT} ${vb} ${LT} ${vc}`);
+      return C(`수직선 위에 세 수 ${va}, ${vb}, ${vc}를 나타내면 그림과 같다. 다음 중 ${QN[want]} 위의 점은?`, rows.map((r) => show(r)), rows.indexOf(right), {
+        figure: signLine(two ? [{ name: 'a', at: -3.4 }, { name: 'b', at: -1.5 }, { name: '0', at: 0 }, { name: 'c', at: 2.3 }] : [{ name: 'a', at: -2.4 }, { name: '0', at: 0 }, { name: 'b', at: 1.5 }, { name: 'c', at: 3.4 }]),
+        explain: `수직선에서 ${order}이므로 ${two ? `${va}, ${vb}는 음수, ${vc}는 양수` : `${va}는 음수, ${vb}, ${vc}는 양수`}이다. 작은 수에서 큰 수를 빼면 음수이고, 큰 수에서 작은 수를 빼면 양수이다. ${rows.map((r) => `${cmp0(r[0].h, r[0].s)}, ${cmp0(r[1].h, r[1].s)}이므로 점 ${show(r, '는')} ${QN[qd(r)]}`).join(', ')} 위의 점이다.`,
+        facts: { truth: rows.map((r) => qd(r) === want), want: true }
+      });
+    }, { standard: STD5 }),
+
+    // ── 대칭인 점 ──
+    H('hard-sym-letter', '대칭인 두 점의 좌표에 든 문자의 값 구하기', '①31 심20', (d, n) => {
+      const ask = `${va}, ${vb}의 값은?`, inputs = (a, b) => [{ label: 'a', answer: a, signed: true }, { label: 'b', answer: b, signed: true }], zero = (on, v) => (on > 0 ? jx(v) : '0-' + jx(v));
+      if (n === 0) {
+        // 좌표마다 문자가 하나씩 있다. 걸리는 아이: 두 점의 좌표를 그대로 같다고 놓는 아이, 어느 좌표의 부호가 바뀌는지 거꾸로 대는 아이.
+        const k = d.int(0, 2), c = d.pick([1, 1, 2, -1, -2]);
+        const [a, p, b, s] = d.until(() => [nz(d, -4, 4), nz(d, -6, 6), nz(d, -5, 5), nz(d, -6, 6)], ([x, y, z, w]) => c * x + y !== 0 && Math.abs(c * x + y) <= 9 && z + w !== 0 && Math.abs(z + w) <= 9);
+        const X = c * a + p, Y = b + s, r = SX[k] * X, q = SY[k] * Y, h1 = c < 0 ? poly([[p, ''], [c, va]]) : poly([[c, va], [p, '']]), h2 = lin(1, s, vb);
+        return M(`점 ${nb('(' + h1 + ', ' + iq(q) + ')' + tail(Math.abs(q), '과/와'))} ${ABOUT[k]}에 대하여 대칭인 점의 좌표가 ${nb('(' + iq(r) + ', ' + h2 + ')일')} 때, ${ask}`, inputs(a, b), {
+          explain: `${SYM_WHY[k]} ${XC}는 ${SX[k] > 0 ? '서로 같으므로' : '부호만 다르므로'} ${eq(h1, iq(X))}, ${eq(va, iq(a))}이다. ${YC}는 ${SY[k] > 0 ? '서로 같으므로' : '부호만 다르므로'} ${eq(h2, iq(Y))}, ${eq(vb, iq(b))}이다.`,
+          facts: { calc: [[`(${zero(SX[k], r)}-${jx(p)})/${jx(c)}`, 0], [`${zero(SY[k], q)}-${jx(s)}`, 1]], unseen: [0, 1], rule: 'sym-each' }
+        });
+      }
+      if (n === 1) {
+        // 한 좌표에 두 문자가 함께 있다: 문자가 하나뿐인 좌표에서 a 의 값을 먼저 구해 넣는다. x좌표의 부호가 바뀌는 대칭(y축, 원점)만 쓴다.
+        const k = d.pick([1, 2]), m = d.pick([2, 3]);
+        const [a, p, q] = d.until(() => [nz(d, -4, 4), nz(d, -6, 6), nz(d, -6, 6)], ([x, y, z]) => { const b0 = (1 - m) * x - y, px = m * x + y; return b0 !== 0 && Math.abs(b0) <= 9 && z !== x && px !== 0 && Math.abs(px) <= 12; });
+        const b = (1 - m) * a - p, r = SY[k] * (q - a), ya = poly([[-1, va], [q, '']]), xb = poly([[1, vb], [-a, '']]), aEx = `${jx(q)}${SY[k] > 0 ? '-' : '+'}${jx(r)}`;
+        return M(`두 점 ${nb('P(' + lin(m, p, va) + ', ' + ya + ')')}, ${nb('Q(' + poly([[-1, va], [1, vb]]) + ', ' + iq(r) + ')' + tail(Math.abs(r), '이/가'))} ${ABOUT[k]}에 대하여 대칭일 때, ${ask}`, inputs(a, b), {
+          explain: `${SYM_WHY[k]} ${YC}는 ${SY[k] > 0 ? '서로 같으므로' : '부호만 다르므로'} ${eq(ya, iq(SY[k] * r))}, ${eq(va, iq(a))}이다. 이때 점 P의 ${XC}는 ${iq(m * a + p)}, 점 Q의 ${XC}는 ${xb}이다. ${XC}는 부호만 다르므로 ${eq(xb, iq(-(m * a + p)))}, ${eq(vb, iq(b))}이다.`,
+          facts: { calc: [[aEx, 0], [`(1-${m})*(${aEx})-${jx(p)}`, 1]], unseen: [1], rule: 'sym-shared' }
+        });
+      }
+      // 한 점을 옮긴 점과 다른 점을 옮긴 점이 같다: 두 점을 저마다 대칭으로 옮긴 뒤 자리끼리 견준다.
+      const [k1, k2] = d.shuffle([0, 1, 2]).slice(0, 2), sx = SX[k1] * SX[k2], sy = SY[k1] * SY[k2];
+      const [p, r, q, s] = d.until(() => [nz(d, -6, 6), nz(d, -7, 7), nz(d, -7, 7), nz(d, -6, 6)], ([p0, r0, q0, s0]) => { const a0 = sx * r0 - p0, b0 = s0 - sy * q0; return a0 !== 0 && Math.abs(a0) <= 9 && b0 !== 0 && Math.abs(b0) <= 9; });
+      const a = sx * r - p, b = s - sy * q, h1 = lin(1, p, va), h2 = poly([[s, ''], [-1, vb]]), m1 = SX[k1] > 0 ? h1 : poly([[-1, va], [-p, '']]), m2 = SY[k2] > 0 ? h2 : poly([[1, vb], [-s, '']]);
+      return M(`점 ${nb('(' + h1 + ', ' + iq(q) + ')' + tail(Math.abs(q), '과/와'))} ${ABOUT[k1]}에 대하여 대칭인 점이 점 ${nb('(' + iq(r) + ', ' + h2 + ')와')} ${ABOUT[k2]}에 대하여 대칭인 점과 같을 때, ${ask}`, inputs(a, b), {
+        explain: `점 ${nb('(' + h1 + ', ' + iq(q) + ')' + tail(Math.abs(q), '과/와'))} ${ABOUT[k1]}에 대하여 대칭인 점의 좌표는 ${nb('(' + m1 + ', ' + iq(SY[k1] * q) + ')이고')}, 점 ${nb('(' + iq(r) + ', ' + h2 + ')와')} ${ABOUT[k2]}에 대하여 대칭인 점의 좌표는 ${nb('(' + iq(SX[k2] * r) + ', ' + m2 + ')이다')}. 두 점이 같으므로 ${eq(m1, iq(SX[k2] * r))}에서 ${eq(va, iq(a))}이고, ${eq(m2, iq(SY[k1] * q))}에서 ${eq(vb, iq(b))}이다.`,
+        facts: { calc: [[`${zero(sx, r)}-${jx(p)}`, 0], [`${jx(s)}${sy > 0 ? '-' : '+'}${jx(q)}`, 1]], unseen: [0], rule: 'sym-both-moved' }
+      });
+    }, { count: 3, standard: STD5 }),
+    H('hard-sym-twice', '자리를 바꾼 점을 두 번 대칭으로 옮긴 점의 사분면 가리기', '심21', (d) => {
+      const q = d.int(0, 3), [sa, sb] = QS[q], [k1, k2] = d.pick(SIMPLE.filter(([x]) => FAMILY[x] === 'b')), [m1, m2] = d.shuffle([0, 1, 2]).slice(0, 2);
+      const s0 = [EA[k1].s(sa, sb), EA[k2].s(sa, sb)], s1 = [s0[0] * SX[m1], s0[1] * SY[m1]], s2 = [s1[0] * SX[m2], s1[1] * SY[m2]];
+      return quadQ(`점 ${nb('P(' + va + ', ' + vb + ')가')} ${QN[q]} 위의 점이다. 점 ${pOf(EA, k1, k2, 'Q', '와')} ${ABOUT[m1]}에 대하여 대칭인 점을 S라 할 때, 점 S와 ${ABOUT[m2]}에 대하여 대칭인 점은 제몇 사분면 위의 점인가?`, quadAt(s2[0], s2[1]),
+        `점 P가 ${QN[q]} 위의 점이므로 ${cmp0(va, sa)}, ${cmp0(vb, sb)}이다. ${toldOf(EA, k1, k2, sa, sb, 'Q')} ${SYM_WHY[m1]} 점 S는 ${XC}가 ${signWord(s1[0])}, ${YC}가 ${signWord(s1[1])}이므로 ${QN[quadAt(s1[0], s1[1])]} 위의 점이다. ${SYM_WHY[m2]} 구하는 점은 ${XC}가 ${signWord(s2[0])}, ${YC}가 ${signWord(s2[1])}이므로 ${QN[quadAt(s2[0], s2[1])]} 위의 점이다.`);
+    }, { standard: STD5 }),
+    H('hard-sym-letter-area', '대칭 조건으로 문자의 값을 정한 뒤 삼각형의 넓이 구하기', '①37', (d) => {
+      // 같은 좌표끼리는 같다고, 부호가 바뀌는 좌표끼리는 한쪽의 부호를 바꾸어 같다고 놓는다. 두 점을 이은 변은 좌표축에 평행하고, 원점에서 그 변까지의 거리가 높이이다.
+      const onX = d.bool(), m1 = d.pick([3, 4]), m2 = d.pick([1, 2]), t = d.pick([2, 3]);
+      const [a, X, b, Y] = d.until(() => [nz(d, -3, 3), pm(d) * d.int(2, 6), nz(d, -5, 5), pm(d) * d.int(2, 8)], ([a0, X0, b0, Y0]) => [X0 - m1 * a0, X0 - m2 * a0, Y0 + b0, -Y0 - t * b0].every((v) => v !== 0 && Math.abs(v) <= 12) && Math.abs(X0) !== Math.abs(Y0));
+      const p1 = X - m1 * a, p2 = X - m2 * a, c = Y + b, u = -Y - t * b, e1 = lin(m1, p1, va), e2 = lin(m2, p2, va), g1 = poly([[c, ''], [-1, vb]]), g2 = lin(t, u, vb), area = Math.abs(X) * Math.abs(Y);
+      const A = onX ? [X, Y] : [Y, X], Bp = onX ? [X, -Y] : [-Y, X], same = onX ? XC : YC, opp = onX ? YC : XC;
+      return N(`두 점 ${nb('A(' + (onX ? e1 + ', ' + g1 : g1 + ', ' + e1) + ')')}, ${nb('B(' + (onX ? e2 + ', ' + g2 : g2 + ', ' + e2) + ')' + tail(Math.abs(onX ? u : p2), '이/가'))} ${onX ? XA : YA}에 대하여 대칭일 때, 삼각형 OAB의 넓이는? (단, O는 원점이다.)`, area, {
+        explain: `${onX ? XA : YA}에 대하여 대칭인 두 점은 ${same}가 같고 ${opp}는 부호만 다르다. ${eq(e1, e2)}에서 ${eq(va, iq(a))}이고, ${eq(g1, MINUS + '(' + g2 + ')')}에서 ${eq(vb, iq(b))}이다. 두 점의 좌표는 ${P('A', A[0], A[1])}, ${P('B', Bp[0], Bp[1])}이다. 변 AB는 ${onX ? YA : XA}에 평행하고 길이는 ${2 * Math.abs(Y)}이며, 원점 O에서 변 AB까지의 거리는 ${Math.abs(X)}이다. 넓이는 ${nb(`${frac(1, 2)} × ${2 * Math.abs(Y)} × ${Math.abs(X)} = ${area}`)}이다.`,
+        facts: { value: `${X * Y < 0 ? '0-' : ''}(${m1}*(${jx(p2)}-${jx(p1)})/(${m1}-${m2})+${jx(p1)})*(${jx(c)}+(${jx(u)}+${jx(c)})/(${t}-1))`, unseen: [0, 1] }
+      });
+    }, { standard: STD5 }),
+
+    // ── 넓이 ──
+    H('hard-area-quad', '좌표축에 평행한 변이 하나뿐인 사각형의 넓이', '심29', (d) => {
+      // 사각형을 둘러싸는 직사각형에서 모서리의 직각삼각형 셋을 뺀다. A 는 직사각형의 꼭짓점에, B·C 는 그 맞은편 변 위에, D 는 남은 변 위에 놓았다(뒤집거나 가로·세로를 바꾸어 놓기도 한다).
+      // 좌표가 ±1인 꼭짓점은 두지 않는다(이름이 눈금 수와 겹친다). 삼각형(hard-area-tilted)과 달리 빼는 조각이 어느 모서리에 생기는지부터 가려야 한다.
+      const [x1, x2, y1, y2, xb, xc, yd] = d.until(() => [d.int(-4, -2), d.int(2, 4), d.int(-4, -2), d.int(2, 4), nz(d, -3, 3), nz(d, -3, 3), nz(d, -3, 3)],
+        ([a1, a2, b1, b2, p, q, r]) => p > a1 && q - p >= 2 && q < a2 && r > b1 && r < b2 && [p, q, r].every((v) => Math.abs(v) !== 1) && ((p - a1) * (b2 - b1) + (a2 - q) * (r - b1) + (a2 - a1) * (b2 - r)) % 2 === 0);
+      const fx = pm(d), fy = pm(d), turn = d.bool(), pts = [[x1, y2], [xb, y1], [xc, y1], [x2, yd]].map(([x, y]) => (turn ? [fy * y, fx * x] : [fx * x, fy * y]));
+      const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]), W = span(Math.min(...xs), Math.max(...xs)), Hh = span(Math.min(...ys), Math.max(...ys));
+      const legs = [[0, 1], [2, 3], [3, 0]].map(([i, j]) => [span(pts[i][0], pts[j][0]), span(pts[i][1], pts[j][1])]), cut2 = legs.map(([p, q]) => p.len * q.len), area = W.len * Hh.len - cut2.reduce((s, v) => s + v, 0) / 2;
+      const cen = [xs.reduce((s, v) => s + v, 0) / 4, ys.reduce((s, v) => s + v, 0) / 4], side = ([x, y]) => (y >= cen[1] ? 'u' : 'd') + (x >= cen[0] ? 'r' : 'l');
+      return N('그림과 같이 좌표평면 위에 네 점 A, B, C, D를 꼭짓점으로 하는 사각형이 있다. 사각형 ABCD의 넓이는?', area, {
+        figure: plane({ poly: pts, points: pts.map((p, i) => ({ x: p[0], y: p[1], name: NAMES4[i], side: side(p) })) }),
+        explain: `네 점의 좌표는 ${pts.map((p, i) => P(NAMES4[i], p[0], p[1])).join(', ')}이다. 변 BC만 좌표축에 평행하므로, 사각형을 둘러싸는 가로 ${W.len}, 세로 ${Hh.len}인 직사각형의 넓이에서 모서리에 생기는 직각삼각형 세 개의 넓이를 뺀다. 직사각형의 넓이는 ${nb(`${W.len} × ${Hh.len} = ${W.len * Hh.len}`)}이고, 세 직각삼각형의 넓이는 ${legs.map(([p, q]) => nb(`${frac(1, 2)} × ${p.len} × ${q.len} = ${half(p.len * q.len)}`)).join(', ')}이다. 사각형 ABCD의 넓이는 ${nb(`${W.len * Hh.len} − ${half(cut2.reduce((s, v) => s + v, 0))} = ${area}`)}이다.`,
+        facts: { value: `${W.ex}*${Hh.ex}-(${legs.map(([p, q]) => `${p.ex}*${q.ex}`).join('+')})/2`, unseen: [0, 2], rule: 'quad-tilted' }
+      });
+    }, { standard: STD5 }),
+    H('hard-area-back', '넓이가 주어진 삼각형의 꼭짓점의 좌표 구하기', '심30', (d) => {
+      // 높이(좌표의 차) → 넓이에서 밑변의 길이 → 밑변의 한 끝에서 그 길이만큼 떨어진 두 곳 가운데 조건에 맞는 곳.
+      // 걸리는 아이: 밑변의 길이를 그대로 좌표로 답하는 아이, 한쪽 방향만 생각하여 조건(양수·음수)에 맞지 않는 값을 답하는 아이.
+      const flatBase = d.bool();
+      const [q0, y0, p0, t0, L, sg] = d.until(() => [nz(d, -5, 5), nz(d, -4, 4), d.int(-4, 4), nz(d, -6, 6), d.int(4, 12), pm(d)], ([q, y, p, t, len, s]) => { const h = Math.abs(t - y); return h >= 3 && h <= 9 && (h * len) % 2 === 0 && len > Math.abs(q) && Math.abs(q + s * len) <= 12 && p !== q; });
+      const h = Math.abs(t0 - y0), S = L * h / 2, a = q0 + sg * L, hi = Math.max(t0, y0), lo = Math.min(t0, y0), sw = (x, y) => (flatBase ? [x, y] : [y, x]), A = sw(p0, t0), Bq = sw(q0, y0), on = flatBase ? XA : YA, same = flatBase ? YC : XC;
+      return N(`세 점 ${P('A', A[0], A[1])}, ${P('B', Bq[0], Bq[1])}, ${flatBase ? nb('C(' + va + ', ' + iq(y0) + ')' + tail(Math.abs(y0), '을/를')) : nb('C(' + iq(y0) + ', ' + va + ')를')} 꼭짓점으로 하는 삼각형 ABC의 넓이가 ${S}일 때, ${va}의 값은? (단, ${cmp0(va, sg)})`, a, {
+        signed: true,
+        explain: `두 점 B, C는 ${same}가 같으므로 변 BC는 ${on}에 평행하다. 변 BC를 밑변으로 하면 높이는 점 A에서 변 BC까지의 거리인 ${minus(hi, lo)} = ${h}이다. ${nb(`${frac(1, 2)} × (변 BC의 길이) × ${h} = ${S}`)}이므로 변 BC의 길이는 ${L}이다. 점 C는 점 B에서 ${L}만큼 떨어져 있으므로 ${nb(`${va} = ${iq(q0)} + ${L} = ${iq(q0 + L)}`)} 또는 ${nb(`${va} = ${iq(q0)} ${MINUS} ${L} = ${iq(q0 - L)}`)}이다. ${cmp0(va, sg)}이므로 ${eq(va, iq(a))}이다.`,
+        facts: { value: `${jx(q0)}${sg > 0 ? '+' : '-'}2*${S}/(${jx(hi)}-${jx(lo)})`, unseen: [2] }
+      });
+    }, { standard: STD5 }),
+
+    // ── 그래프 ──
+    H('hard-two-taps', '두 구간의 빠르기를 구해 한 수도꼭지로만 채우는 시간 구하기', '①68', (d) => {
+      // 꺾이기 전의 가파르기는 두 수도꼭지를 합한 빠르기, 꺾인 뒤의 가파르기는 수도꼭지 A의 빠르기이다. 두 빠르기의 차가 수도꼭지 B의 빠르기이다.
+      // 걸리는 아이: 꺾이기 전의 빠르기를 수도꼭지 B의 빠르기로 쓰는 아이, 그래프의 끝 값(다 찬 때)을 그대로 답하는 아이.
+      const s = d.pick([{ V: 60, t1: 6, y1: 30, t2: 21, xs: 3, ys: 10 }, { V: 60, t1: 5, y1: 40, t2: 15, xs: 5, ys: 10 }, { V: 60, t1: 6, y1: 30, t2: 16, xs: 2, ys: 10 }, { V: 120, t1: 6, y1: 60, t2: 21, xs: 3, ys: 20 }, { V: 120, t1: 4, y1: 80, t2: 12, xs: 2, ys: 20 }]);
+      const both = s.y1 / s.t1, rA = (s.V - s.y1) / (s.t2 - s.t1), rB = both - rA, ans = s.V / rB;
+      return N(`들이가 ${s.V} L인 빈 물통에 두 수도꼭지 A, B를 함께 틀어 물을 받다가, 도중에 B를 잠그고 A로만 받아 물통을 가득 채웠다. 다음은 물을 받기 시작한 지 ${vx}분 후 물통에 담긴 물의 양을 ${vy} L라 하고 ${REL} 처음부터 수도꼭지 B만 틀어 이 물통을 가득 채우는 데 걸리는 시간은 몇 분인가? (단, 두 수도꼭지에서는 각각 매분 일정한 양의 물이 나온다.)`, ans, {
+        unit: '분', figure: G('시간(분)', '물의 양(L)', s.t2 + s.xs, s.V + s.ys, s.xs, s.ys, [[[0, 0], [s.t1, s.y1], [s.t2, s.V]]]),
+        explain: `그래프가 ${s.t1}분에서 꺾이므로 수도꼭지 B를 잠근 것은 ${s.t1}분 후이다. 처음 ${s.t1}분 동안 두 수도꼭지로 ${s.y1} L를 받았으므로 두 수도꼭지에서는 1분에 모두 ${nb(`${s.y1} ÷ ${s.t1} = ${both}(L)`)}의 물이 나온다. 그 뒤 ${nb(`${s.t2} − ${s.t1} = ${s.t2 - s.t1}(분)`)} 동안 수도꼭지 A로만 ${nb(`${s.V} − ${s.y1} = ${s.V - s.y1}(L)`)}를 받았으므로 수도꼭지 A에서는 1분에 ${nb(`${s.V - s.y1} ÷ ${s.t2 - s.t1} = ${rA}(L)`)}의 물이 나온다. 수도꼭지 B에서는 1분에 ${nb(`${both} − ${rA} = ${rB}(L)`)}의 물이 나오므로 걸리는 시간은 ${nb(`${s.V} ÷ ${rB} = ${ans}(분)`)}이다.`,
+        facts: { value: `${s.V}/(${s.y1}/${s.t1}-(${s.V}-${s.y1})/(${s.t2}-${s.t1}))` }
+      });
+    })
+  ]);
 })(typeof window !== 'undefined' ? window : globalThis);
